@@ -1,0 +1,8 @@
+# Python dependencies for the repo's asset-generation skills
+# (.claude/skills/generate-image and .claude/skills/generate-music).
+# Install into a local venv:  python3 -m venv venv && ./venv/bin/pip install -r requirements.txt
+
+requests>=2.31      # HTTP calls to the image/music APIs (both skills)
+Pillow>=10.0        # image decode / metadata strip / WebP re-encode (generate-image)
+numpy>=1.26         # fast chroma-key alpha for --transparent (generate-image; optional but recommended)
+python-dotenv>=1.0  # load API keys from a .env file (optional; both skills fall back without it)
