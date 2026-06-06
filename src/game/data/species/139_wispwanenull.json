@@ -1,0 +1,85 @@
+{
+  "id": 139,
+  "slug": "wispwanenull",
+  "name": "WispwaneNull",
+  "types": [
+    "Dark",
+    "Light"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "B",
+  "stats": {
+    "hp": 56,
+    "atk": 45,
+    "def": 63,
+    "spa": 49,
+    "spd": 63,
+    "spe": 74
+  },
+  "bst": 350,
+  "ability": "nullheart",
+  "hidden_ability": "forager",
+  "catchRate": 175,
+  "kindling": {
+    "into": 140,
+    "trigger": {
+      "kind": "level",
+      "level": 30
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "gloom_spit"
+      },
+      {
+        "level": 9,
+        "move": "blight_touch"
+      },
+      {
+        "level": 13,
+        "move": "hollow_pulse"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A guttering will-o'-wisp of the Coldfog Marches \u2014 a Light kin slowly drained by the Hollowing, now barely half-lit; it drifts erratically, luring rivals toward the coldfog while leaking residual radiance. A kin that is visibly sick \u2014 players feel an immediate urge to 'rescue' it, which is emotionall",
+    "category": "Dark Trickster Kin",
+    "size_cm": 25,
+    "weight_kg": 0.1,
+    "habitat": "outer"
+  },
+  "encounters": [
+    {
+      "area": "coldfog_marches",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 49,
+      "max": 52
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Small floating orb of pale light, but the glow is sickly and flickering; half its body fades into dark-grey shadow; a pained face barely visible in the dim half; dark mist trails from its underside; haunting and sad at 16px.",
+    "palette": "Small floating orb of pale light, but the glow is sickly and flickering; half its body fades into dark-grey shadow; a pained face barely visible in the dim half; dark mist trails from its underside; haunting and sad at 16px.",
+    "direction": "A kin that is visibly sick \u2014 players feel an immediate urge to 'rescue' it, which is emotionally resonant."
+  },
+  "provenance_concept_id": "B09-032"
+}

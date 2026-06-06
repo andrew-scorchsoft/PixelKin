@@ -1,0 +1,84 @@
+{
+  "id": 137,
+  "slug": "nullmoth",
+  "name": "Nullmoth",
+  "types": [
+    "Dark"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "C",
+  "stats": {
+    "hp": 67,
+    "atk": 57,
+    "def": 75,
+    "spa": 59,
+    "spd": 75,
+    "spe": 85
+  },
+  "bst": 418,
+  "ability": "nullheart",
+  "hidden_ability": "forager",
+  "catchRate": 120,
+  "kindling": {
+    "into": 138,
+    "trigger": {
+      "kind": "level",
+      "level": 36
+    }
+  },
+  "from": 136,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "gloom_spit"
+      },
+      {
+        "level": 9,
+        "move": "blight_touch"
+      },
+      {
+        "level": 13,
+        "move": "hollow_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "voidburst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A palm-sized moth draped in velvet-grey wings that shed fine null-dust \u2014 a powder that drains faint light sources on contact. Its dead lantern marking on each hindwing is unmistakable. The snuffed-lantern wing pattern is the emblem of the Coldfog Marches \u2014 instantly iconic.",
+    "category": "Dark Trickster Kin",
+    "size_cm": 22,
+    "weight_kg": 0.8,
+    "habitat": "outer"
+  },
+  "encounters": [
+    {
+      "area": "coldfog_marches",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 52,
+      "max": 54
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Slate-grey wings with a stylised snuffed-lantern motif on each hindwing \u2014 the lantern arch and pane visible but the flame glyph hollow; body wrapped in soft ashen fuzz; dull violet undersides.",
+    "palette": "Slate-grey wings with a stylised snuffed-lantern motif on each hindwing \u2014 the lantern arch and pane visible but the flame glyph hollow; body wrapped in soft ashen fuzz; dull violet undersides.",
+    "direction": "The snuffed-lantern wing pattern is the emblem of the Coldfog Marches \u2014 instantly iconic."
+  },
+  "provenance_concept_id": "B10-002"
+}

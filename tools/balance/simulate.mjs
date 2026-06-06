@@ -63,6 +63,8 @@ if (noAnswer.length) console.log(`  !! NO SE answer for: ${noAnswer.join(", ")}`
 const rand = rng(SEED);
 const wins = Object.fromEntries(TYPES.map((t) => [t, 0]));
 const games = Object.fromEntries(TYPES.map((t) => [t, 0]));
+const winsST = Object.fromEntries(TYPES.map((t) => [t, 0]));   // same-tier only
+const gamesST = Object.fromEntries(TYPES.map((t) => [t, 0]));
 const spWins = new Map(), spGames = new Map();
 for (const s of roster) { spWins.set(s.id, 0); spGames.set(s.id, 0); }
 let draws = 0;
@@ -77,6 +79,11 @@ for (let i = 0; i < BATTLES; i++) {
   if (res === 1) { wins[a.types[0]]++; spWins.set(a.id, spWins.get(a.id) + 1); }
   else if (res === -1) { wins[b.types[0]]++; spWins.set(b.id, spWins.get(b.id) + 1); }
   else draws++;
+  if (a.tier === b.tier) {                 // same-tier: isolates TYPE from tier composition
+    gamesST[a.types[0]]++; gamesST[b.types[0]]++;
+    if (res === 1) winsST[a.types[0]]++;
+    else if (res === -1) winsST[b.types[0]]++;
+  }
 }
 
 console.log(`\n=== MONTE CARLO (${BATTLES} fair 1v1, seed ${SEED}, L${LEVEL}, base stats) ===`);
@@ -86,7 +93,16 @@ for (const { t, wr } of ranked) {
   lo = Math.min(lo, wr); hi = Math.max(hi, wr);
   console.log(`${t.padEnd(9)} ${pct(wr).padStart(6)}  ${"#".repeat(Math.round(wr * 50))}`);
 }
-console.log(`type win-rate spread: ${pct(lo)} .. ${pct(hi)}  (guardrail ~45-55% as-distributed)`);
+console.log(`type win-rate spread: ${pct(lo)} .. ${pct(hi)}  (raw, mixes tiers; skew = tier composition + abilities excluded)`);
+
+console.log(`\n=== SAME-TIER type win-rates (isolates TYPE from tier composition) ===`);
+const rankedST = TYPES.map((t) => ({ t, wr: winsST[t] / Math.max(1, gamesST[t]) })).sort((a, b) => b.wr - a.wr);
+let loST = 1, hiST = 0;
+for (const { t, wr } of rankedST) {
+  loST = Math.min(loST, wr); hiST = Math.max(hiST, wr);
+  console.log(`${t.padEnd(9)} ${pct(wr).padStart(6)}  ${"#".repeat(Math.round(wr * 50))}`);
+}
+console.log(`same-tier spread: ${pct(loST)} .. ${pct(hiST)}  (this is the true type-balance signal; abilities/status still excluded)`);
 
 // --- Per-species outliers (note: cross-tier, so big tiers naturally skew) -
 const spStats = roster.map((s) => ({

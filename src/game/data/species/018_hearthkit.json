@@ -1,0 +1,80 @@
+{
+  "id": 18,
+  "slug": "hearthkit",
+  "name": "Hearthkit",
+  "types": [
+    "Ember"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "A",
+  "stats": {
+    "hp": 53,
+    "atk": 53,
+    "def": 53,
+    "spa": 53,
+    "spd": 53,
+    "spe": 47
+  },
+  "bst": 312,
+  "ability": "emberheart",
+  "hidden_ability": "forager",
+  "catchRate": 210,
+  "kindling": {
+    "into": 19,
+    "trigger": {
+      "kind": "bond",
+      "min": 160
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "ember_jab"
+      },
+      {
+        "level": 9,
+        "move": "scorch_veil"
+      },
+      {
+        "level": 13,
+        "move": "flame_lash"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A small round hearth-fox kitten that nests inside unused fireplaces and glows soft amber when it purrs; it smells permanently of woodsmoke and cinnamon. The kitten that lives in the fireplace and purrs \u2014 every kid wants one as a bedroom companion.",
+    "category": "Ember Wanderer Kin",
+    "size_cm": 24,
+    "weight_kg": 2.2,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 3,
+      "max": 6
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Round-bodied kitten, deep apricot coat with cream markings, curled ember-glow tail, closed-eyed happy expression; warm and cosy silhouette at 32px.",
+    "palette": "Round-bodied kitten, deep apricot coat with cream markings, curled ember-glow tail, closed-eyed happy expression; warm and cosy silhouette at 32px.",
+    "direction": "The kitten that lives in the fireplace and purrs \u2014 every kid wants one as a bedroom companion."
+  },
+  "provenance_concept_id": "B01-024"
+}

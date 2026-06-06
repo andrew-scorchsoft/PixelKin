@@ -1,0 +1,79 @@
+{
+  "id": 151,
+  "slug": "dawnbrael",
+  "name": "Dawnbrael",
+  "types": [
+    "Solar",
+    "Light"
+  ],
+  "role": "Physical Sweeper",
+  "tier": "F",
+  "stats": {
+    "hp": 90,
+    "atk": 148,
+    "def": 83,
+    "spa": 63,
+    "spd": 83,
+    "spe": 175
+  },
+  "bst": 642,
+  "ability": "daybringer",
+  "hidden_ability": "sunsoak",
+  "catchRate": 6,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "sun_jab"
+      },
+      {
+        "level": 9,
+        "move": "bask"
+      },
+      {
+        "level": 13,
+        "move": "solar_lash"
+      },
+      {
+        "level": 19,
+        "move": "radiant_strike"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "flare_crown"
+      },
+      {
+        "level": 40,
+        "move": "sunburst_nova"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The Dawn Legendary \u2014 the kin that was always there, sleeping beneath Dawnstead in a sealed reliquary of sunrise-stone, waiting for the day that never came. It is not a new creature: it is the oldest kin in Vesperholm, the guardian of the first dawn, placed there by the original star-tenders as a fai",
+    "category": "Solar Striker Kin",
+    "size_cm": 280,
+    "weight_kg": 340,
+    "habitat": "post"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "A lion-stag \u2014 lion's body with a stag's great antlers \u2014 made of and wreathed in actual sunlight. The coat is amber-to-white radiance, the mane a full halo of solar corona arcs in diamond-cyan and fire-orange. The antlers are molten gold with sun-flare tips, casting hard shadows in every direction. Eyes are two full solar discs: white-hot centres with amber halos. In the post-game palette of true daylight colours, it reads as a creature from a different, brighter world \u2014 because it is.",
+    "palette": "A lion-stag \u2014 lion's body with a stag's great antlers \u2014 made of and wreathed in actual sunlight. The coat is amber-to-white radiance, the mane a full halo of solar corona arcs in diamond-cyan and fire-orange. The antlers are molten gold with sun-flare tips, casting hard shadows in every direction. Eyes are two full solar discs: white-hot centres with amber halos. In the post-game palette of true daylight colours, it reads as a creature from a different, brighter world \u2014 because it is.",
+    "direction": "The reward for completing the journey. The moment Dawnbrael steps into real sunlight for the first time, the game earns everything it promised."
+  },
+  "provenance_concept_id": "B11-011"
+}

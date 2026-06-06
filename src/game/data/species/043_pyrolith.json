@@ -1,0 +1,87 @@
+{
+  "id": 43,
+  "slug": "pyrolith",
+  "name": "Pyrolith",
+  "types": [
+    "Ember",
+    "Stone"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "stats": {
+    "hp": 70,
+    "atk": 48,
+    "def": 60,
+    "spa": 126,
+    "spd": 70,
+    "spe": 124
+  },
+  "bst": 498,
+  "ability": "emberheart",
+  "hidden_ability": "brisk",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 42,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "tuft_spark"
+      },
+      {
+        "level": 9,
+        "move": "scorch_veil"
+      },
+      {
+        "level": 13,
+        "move": "cinder_spit"
+      },
+      {
+        "level": 19,
+        "move": "crystal_beam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "hearth_pulse"
+      },
+      {
+        "level": 40,
+        "move": "sunflare_burst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A crystallised magma-titan whose body has solidified into angular obsidian with a blazing reactor core visible through the translucent chest-plate. A tiny coal rolling in the dark became this godlike obsidian titan \u2014 the mine's final secret.",
+    "category": "Ember Caster Kin",
+    "size_cm": 180,
+    "weight_kg": 320.0,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 22,
+      "max": 24
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Tall imposing angular silhouette, jet obsidian faceted body, a glowing diamond-orange core blazing through a transparent chest section, jutting shoulder-spurs; monolithic at 64px.",
+    "palette": "Tall imposing angular silhouette, jet obsidian faceted body, a glowing diamond-orange core blazing through a transparent chest section, jutting shoulder-spurs; monolithic at 64px.",
+    "direction": "A tiny coal rolling in the dark became this godlike obsidian titan \u2014 the mine's final secret."
+  },
+  "provenance_concept_id": "B01-023"
+}

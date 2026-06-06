@@ -1,0 +1,80 @@
+{
+  "id": 56,
+  "slug": "sporeling",
+  "name": "Sporeling",
+  "types": [
+    "Verdant"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "A",
+  "stats": {
+    "hp": 50,
+    "atk": 41,
+    "def": 56,
+    "spa": 44,
+    "spd": 56,
+    "spe": 65
+  },
+  "bst": 312,
+  "ability": "verdant_vigor",
+  "hidden_ability": "forager",
+  "catchRate": 210,
+  "kindling": {
+    "into": 57,
+    "trigger": {
+      "kind": "level",
+      "level": 14
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spore_puff"
+      },
+      {
+        "level": 9,
+        "move": "sleep_pollen"
+      },
+      {
+        "level": 13,
+        "move": "lifedrain"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A tiny mushroom-cap sprite native to Lowleaf Hollow. Its cap glows faintly and pulses when excited. It releases a gentle sleepy spore mist when threatened. Canon atlas kin \u2014 the iconic Lowleaf mushroom sprite every new player meets.",
+    "category": "Verdant Trickster Kin",
+    "size_cm": 20,
+    "weight_kg": 1.2,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 12,
+      "max": 15
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Round mushroom-cap head (pale lavender with white spots), two stubby legs, tiny arms, big innocent eyes; fits in a cupped hand.",
+    "palette": "Round mushroom-cap head (pale lavender with white spots), two stubby legs, tiny arms, big innocent eyes; fits in a cupped hand.",
+    "direction": "Canon atlas kin \u2014 the iconic Lowleaf mushroom sprite every new player meets. Adorable first-catch energy."
+  },
+  "provenance_concept_id": "B03-007"
+}

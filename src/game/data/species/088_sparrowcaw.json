@@ -1,0 +1,80 @@
+{
+  "id": 88,
+  "slug": "sparrowcaw",
+  "name": "Sparrowcaw",
+  "types": [
+    "Storm"
+  ],
+  "role": "Glass Cannon",
+  "tier": "A",
+  "stats": {
+    "hp": 34,
+    "atk": 81,
+    "def": 29,
+    "spa": 37,
+    "spd": 34,
+    "spe": 97
+  },
+  "bst": 312,
+  "ability": "static_skin",
+  "hidden_ability": "forager",
+  "catchRate": 210,
+  "kindling": {
+    "into": 89,
+    "trigger": {
+      "kind": "level",
+      "level": 23
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spark_nip"
+      },
+      {
+        "level": 9,
+        "move": "numb_coil"
+      },
+      {
+        "level": 13,
+        "move": "thunder_kick"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A scrappy little terrace-sparrow that pecks spark-producing pyrite from the cliff walls and stores the flint-chips under its wing to use as a crude battery during battle. A sparrow that carries flint to start fires \u2014 more resourceful than it looks.",
+    "category": "Storm Fragile Kin",
+    "size_cm": 12,
+    "weight_kg": 0.2,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 26,
+      "max": 29
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Compact passerine bird, rust-brown and dark slate-blue plumage, a puffed chest crossed by a small leather-look pouch of flint pebbles, tiny defiant eyes; cheeky and small at 32px.",
+    "palette": "Compact passerine bird, rust-brown and dark slate-blue plumage, a puffed chest crossed by a small leather-look pouch of flint pebbles, tiny defiant eyes; cheeky and small at 32px.",
+    "direction": "A sparrow that carries flint to start fires \u2014 more resourceful than it looks."
+  },
+  "provenance_concept_id": "B05-039"
+}

@@ -1,0 +1,84 @@
+{
+  "id": 48,
+  "slug": "rubbol",
+  "name": "Rubbol",
+  "types": [
+    "Stone"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "C",
+  "stats": {
+    "hp": 72,
+    "atk": 71,
+    "def": 71,
+    "spa": 71,
+    "spd": 71,
+    "spe": 62
+  },
+  "bst": 418,
+  "ability": "stonehide",
+  "hidden_ability": "forager",
+  "catchRate": 120,
+  "kindling": {
+    "into": 49,
+    "trigger": {
+      "kind": "level",
+      "level": 30
+    }
+  },
+  "from": 47,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "pebble_toss"
+      },
+      {
+        "level": 9,
+        "move": "stone_wall"
+      },
+      {
+        "level": 13,
+        "move": "rock_hurl"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "boulder_smash"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A stocky boulder-torso kin with a cracked surface revealing faint mineral veins; it rolls defensively when threatened. The middle stage that looks like it means business \u2014 mineral veins hint at the spectacular final form.",
+    "category": "Stone Wanderer Kin",
+    "size_cm": 62,
+    "weight_kg": 48,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 22,
+      "max": 24
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Squat, wide-shouldered stone body with visible grey-white mineral veins along arms; amber eyes now set in a craggy brow ridge; four sturdy legs planted firmly.",
+    "palette": "Squat, wide-shouldered stone body with visible grey-white mineral veins along arms; amber eyes now set in a craggy brow ridge; four sturdy legs planted firmly.",
+    "direction": "The middle stage that looks like it means business \u2014 mineral veins hint at the spectacular final form."
+  },
+  "provenance_concept_id": "B04-002"
+}

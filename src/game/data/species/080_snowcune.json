@@ -1,0 +1,80 @@
+{
+  "id": 80,
+  "slug": "snowcune",
+  "name": "Snowcune",
+  "types": [
+    "Frost"
+  ],
+  "role": "Special Sweeper",
+  "tier": "A",
+  "stats": {
+    "hp": 44,
+    "atk": 30,
+    "def": 37,
+    "spa": 79,
+    "spd": 44,
+    "spe": 78
+  },
+  "bst": 312,
+  "ability": "coldblood",
+  "hidden_ability": "brisk",
+  "catchRate": 210,
+  "kindling": {
+    "into": 81,
+    "trigger": {
+      "kind": "level",
+      "level": 17
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "snow_veil"
+      },
+      {
+        "level": 9,
+        "move": "chill_mist"
+      },
+      {
+        "level": 13,
+        "move": "glacier_beam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A playful little snow-hare with oversized feet perfect for bounding across deep powder. Its fur coat is two layers: the outer is a coarse frost-white that repels snow, and the inner radiates a faint warmth. It moves in bounding arcs, always landing softly, leaving only the faintest impressions. The ",
+    "category": "Frost Caster Kin",
+    "size_cm": 34,
+    "weight_kg": 3.6,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 26,
+      "max": 29
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Classic hare silhouette; very large hind feet, long upright ears with pale icy tips; powder-white fur with a subtle blue-grey shadow tone; round body, small face with a tiny dark nose; speed-suggesting long-legged pose at 32px.",
+    "palette": "Classic hare silhouette; very large hind feet, long upright ears with pale icy tips; powder-white fur with a subtle blue-grey shadow tone; round body, small face with a tiny dark nose; speed-suggesting long-legged pose at 32px.",
+    "direction": "The oversized snow-hare feet are immediately charming; the dual-coat detail rewards a player who reads the dex entry."
+  },
+  "provenance_concept_id": "B06-020"
+}

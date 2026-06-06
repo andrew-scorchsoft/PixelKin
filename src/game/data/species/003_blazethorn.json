@@ -1,0 +1,82 @@
+{
+  "id": 3,
+  "slug": "blazethorn",
+  "name": "Blazethorn",
+  "types": [
+    "Ember"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "stats": {
+    "hp": 70,
+    "atk": 49,
+    "def": 60,
+    "spa": 125,
+    "spd": 70,
+    "spe": 124
+  },
+  "bst": 498,
+  "ability": "emberheart",
+  "hidden_ability": "brisk",
+  "catchRate": 65,
+  "kindling": null,
+  "from": 1,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "tuft_spark"
+      },
+      {
+        "level": 9,
+        "move": "scorch_veil"
+      },
+      {
+        "level": 13,
+        "move": "cinder_spit"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "hearth_pulse"
+      },
+      {
+        "level": 40,
+        "move": "sunflare_burst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The final form of the starter Vulpyre: a proud, sleek fire-fox whose mane erupts into a blazing crown of tall flame-spines, channelling its hearth-bond into devastating focused special blasts. The Vulpyre you picked as a tiny cub grew into this gorgeous, powerful guardian \u2014 the payoff of your whole ",
+    "category": "Ember Caster Kin",
+    "size_cm": 110,
+    "weight_kg": 26.5,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 10,
+      "max": 12
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Upright fox silhouette, deep ember-red coat, cream underbelly, mane erupting upward in a spike-crown of orange-to-white flames; regal and fast at 64px.",
+    "palette": "Upright fox silhouette, deep ember-red coat, cream underbelly, mane erupting upward in a spike-crown of orange-to-white flames; regal and fast at 64px.",
+    "direction": "The Vulpyre you picked as a tiny cub grew into this gorgeous, powerful guardian \u2014 the payoff of your whole journey together."
+  },
+  "provenance_concept_id": "B01-016"
+}

@@ -1,0 +1,89 @@
+{
+  "id": 24,
+  "slug": "shimmral",
+  "name": "Shimmral",
+  "types": [
+    "Tide",
+    "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "C",
+  "stats": {
+    "hp": 59,
+    "atk": 42,
+    "def": 50,
+    "spa": 104,
+    "spd": 59,
+    "spe": 104
+  },
+  "bst": 418,
+  "ability": "tidecaller",
+  "hidden_ability": "brisk",
+  "catchRate": 120,
+  "kindling": {
+    "into": 25,
+    "trigger": {
+      "kind": "level",
+      "level": 30
+    }
+  },
+  "from": 23,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "mist_spray"
+      },
+      {
+        "level": 9,
+        "move": "drench_song"
+      },
+      {
+        "level": 13,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "tide_pulse"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The glintfin shoal has merged into a single larger fish with a spectacular prismatic fin-mantle. It blasts light-refractions as attack. The rainbow fin reveal mid-fight is a wow moment \u2014 fans debate the best name for the colour pattern.",
+    "category": "Tide Caster Kin",
+    "size_cm": 55,
+    "weight_kg": 8.5,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 10,
+      "max": 12
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Elegant mid-sized fish, iridescent blue-silver body, enormous fan-fin with rainbow diffraction pattern, graceful trailing fin-rays, bright intelligent eyes.",
+    "palette": "Elegant mid-sized fish, iridescent blue-silver body, enormous fan-fin with rainbow diffraction pattern, graceful trailing fin-rays, bright intelligent eyes.",
+    "direction": "The rainbow fin reveal mid-fight is a wow moment \u2014 fans debate the best name for the colour pattern."
+  },
+  "provenance_concept_id": "B02-015"
+}

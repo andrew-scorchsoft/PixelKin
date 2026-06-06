@@ -1,0 +1,89 @@
+{
+  "id": 60,
+  "slug": "poolfrond",
+  "name": "Poolfrond",
+  "types": [
+    "Verdant",
+    "Tide"
+  ],
+  "role": "Special Sweeper",
+  "tier": "C",
+  "stats": {
+    "hp": 59,
+    "atk": 37,
+    "def": 50,
+    "spa": 109,
+    "spd": 59,
+    "spe": 104
+  },
+  "bst": 418,
+  "ability": "verdant_vigor",
+  "hidden_ability": "brisk",
+  "catchRate": 120,
+  "kindling": {
+    "into": 61,
+    "trigger": {
+      "kind": "level",
+      "level": 26
+    }
+  },
+  "from": 59,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spore_puff"
+      },
+      {
+        "level": 9,
+        "move": "sleep_pollen"
+      },
+      {
+        "level": 13,
+        "move": "lifedrain"
+      },
+      {
+        "level": 19,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "bloomburst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A lily-pad kin that glides on still forest pools. Its broad flat body floats on the surface while long submerged fronds trail below, sensing disturbances. Satisfying mid-form \u2014 clearly more capable than a dewdrop yet still serene and a little absurd; slides elegantly on water.",
+    "category": "Verdant Caster Kin",
+    "size_cm": 80,
+    "weight_kg": 32,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 22,
+      "max": 24
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Flat circular green body like a great lily-pad, smooth emerald top, pale root-fronds hanging down, periscope eyes on short stalks, small trailing flowers at the rim.",
+    "palette": "Flat circular green body like a great lily-pad, smooth emerald top, pale root-fronds hanging down, periscope eyes on short stalks, small trailing flowers at the rim.",
+    "direction": "Satisfying mid-form \u2014 clearly more capable than a dewdrop yet still serene and a little absurd; slides elegantly on water."
+  },
+  "provenance_concept_id": "B03-015"
+}

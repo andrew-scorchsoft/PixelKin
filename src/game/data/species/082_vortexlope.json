@@ -1,0 +1,87 @@
+{
+  "id": 82,
+  "slug": "vortexlope",
+  "name": "Vortexlope",
+  "types": [
+    "Frost",
+    "Storm"
+  ],
+  "role": "Glass Cannon",
+  "tier": "D",
+  "stats": {
+    "hp": 55,
+    "atk": 129,
+    "def": 49,
+    "spa": 60,
+    "spd": 55,
+    "spe": 150
+  },
+  "bst": 498,
+  "ability": "coldblood",
+  "hidden_ability": "forager",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 81,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "frost_nip"
+      },
+      {
+        "level": 9,
+        "move": "chill_mist"
+      },
+      {
+        "level": 13,
+        "move": "ice_fang"
+      },
+      {
+        "level": 19,
+        "move": "thunder_kick"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "avalanche"
+      },
+      {
+        "level": 40,
+        "move": "blizzard_howl"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A blizzard-speed hare of remarkable size whose constant motion generates a persistent personal blizzard. It never truly stops moving \u2014 even resting, it trembles with contained velocity. When it runs at full speed the snow-vortex behind it is visible for kilometres. The fastest kin native to the nort",
+    "category": "Frost Fragile Kin",
+    "size_cm": 145,
+    "weight_kg": 32,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 38,
+      "max": 40
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Tall, long-limbed, powerful hare; fur has crystallised into blade-like ridge-plates along the entire back and limbs; swept-back ears now rigid and tapered like antennae; a trailing blizzard-halo always swirls behind it; dynamic forward-leaning pose at 48px.",
+    "palette": "Tall, long-limbed, powerful hare; fur has crystallised into blade-like ridge-plates along the entire back and limbs; swept-back ears now rigid and tapered like antennae; a trailing blizzard-halo always swirls behind it; dynamic forward-leaning pose at 48px.",
+    "direction": "The glass-cannon blizzard-hare is an archetype-fulfilling powerhouse with strong visual storytelling in its silhouette alone."
+  },
+  "provenance_concept_id": "B06-022"
+}

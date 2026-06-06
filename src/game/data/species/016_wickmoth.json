@@ -1,0 +1,80 @@
+{
+  "id": 16,
+  "slug": "wickmoth",
+  "name": "Wickmoth",
+  "types": [
+    "Ember"
+  ],
+  "role": "Glass Cannon",
+  "tier": "A",
+  "stats": {
+    "hp": 34,
+    "atk": 81,
+    "def": 31,
+    "spa": 37,
+    "spd": 34,
+    "spe": 95
+  },
+  "bst": 312,
+  "ability": "emberheart",
+  "hidden_ability": "forager",
+  "catchRate": 210,
+  "kindling": {
+    "into": 17,
+    "trigger": {
+      "kind": "level",
+      "level": 18
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "ember_jab"
+      },
+      {
+        "level": 9,
+        "move": "scorch_veil"
+      },
+      {
+        "level": 13,
+        "move": "flame_lash"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A small ember-winged moth that navigates by following warm light and scorches anything it bumps into by accident. The classic 'dangerous but clumsy' charm \u2014 a burny little moth you can't help but root for.",
+    "category": "Ember Fragile Kin",
+    "size_cm": 22,
+    "weight_kg": 0.8,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 3,
+      "max": 6
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Tiny round fuzzy moth body in ash-grey, wings tipped in orange-to-yellow ember gradients, two long antennae with spark-dot tips; reads as a fluttering silhouette at 32px.",
+    "palette": "Tiny round fuzzy moth body in ash-grey, wings tipped in orange-to-yellow ember gradients, two long antennae with spark-dot tips; reads as a fluttering silhouette at 32px.",
+    "direction": "The classic 'dangerous but clumsy' charm \u2014 a burny little moth you can't help but root for."
+  },
+  "provenance_concept_id": "B01-004"
+}

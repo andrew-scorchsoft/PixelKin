@@ -1,0 +1,87 @@
+{
+  "id": 142,
+  "slug": "embergone",
+  "name": "Embergone",
+  "types": [
+    "Dark",
+    "Ember"
+  ],
+  "role": "Glass Cannon",
+  "tier": "D",
+  "stats": {
+    "hp": 55,
+    "atk": 129,
+    "def": 49,
+    "spa": 60,
+    "spd": 55,
+    "spe": 150
+  },
+  "bst": 498,
+  "ability": "nullheart",
+  "hidden_ability": "forager",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 141,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "shade_nip"
+      },
+      {
+        "level": 9,
+        "move": "blight_touch"
+      },
+      {
+        "level": 13,
+        "move": "null_claw"
+      },
+      {
+        "level": 19,
+        "move": "flame_lash"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "shadow_rend"
+      },
+      {
+        "level": 40,
+        "move": "voidburst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The snuffed final form of a proud ember-kin lineage \u2014 a tall hound whose once-brilliant coat is reduced to cracked obsidian shot through with dying ember veins. It runs in silence, trailing no warmth. The hollow in its chest is the shape of a lost flame. Named for what it lost \u2014 kids will feel the t",
+    "category": "Dark Fragile Kin",
+    "size_cm": 88,
+    "weight_kg": 28,
+    "habitat": "outer"
+  },
+  "encounters": [
+    {
+      "area": "coldfog_marches",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 52,
+      "max": 54
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Lean upright hound, obsidian-black body with orange-amber hairline cracks radiating from a dark chest hollow; ears still flame-tapered but dull copper; tail a dead cinder-stump; eyes a faint dying coal-glow.",
+    "palette": "Lean upright hound, obsidian-black body with orange-amber hairline cracks radiating from a dark chest hollow; ears still flame-tapered but dull copper; tail a dead cinder-stump; eyes a faint dying coal-glow.",
+    "direction": "Named for what it lost \u2014 kids will feel the tragedy in the name before reading a word of the dex entry."
+  },
+  "provenance_concept_id": "B10-005"
+}

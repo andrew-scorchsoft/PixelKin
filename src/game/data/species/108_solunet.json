@@ -1,0 +1,85 @@
+{
+  "id": 108,
+  "slug": "solunet",
+  "name": "Solunet",
+  "types": [
+    "Lunar",
+    "Tide"
+  ],
+  "role": "Special Sweeper",
+  "tier": "A",
+  "stats": {
+    "hp": 44,
+    "atk": 30,
+    "def": 37,
+    "spa": 79,
+    "spd": 44,
+    "spe": 78
+  },
+  "bst": 312,
+  "ability": "nightsight",
+  "hidden_ability": "brisk",
+  "catchRate": 210,
+  "kindling": {
+    "into": 109,
+    "trigger": {
+      "kind": "level",
+      "level": 14
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "dream_wisp"
+      },
+      {
+        "level": 9,
+        "move": "lull"
+      },
+      {
+        "level": 13,
+        "move": "moonbeam"
+      },
+      {
+        "level": 19,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A little moon-tide sprite shaped like a water-drop with a crescent inside; it skips across wet rooftops in Nightreach when the moon is high, riding the silver reflections of puddles. A moon caught inside a raindrop \u2014 the most delicate little thing, made of two beautiful things at once.",
+    "category": "Lunar Caster Kin",
+    "size_cm": 16,
+    "weight_kg": 0.4,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 38,
+      "max": 41
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Teardrop body, translucent cool-blue with a glowing silver crescent suspended inside, tiny stub feet, round hopeful eyes; simple and lovely at 32px.",
+    "palette": "Teardrop body, translucent cool-blue with a glowing silver crescent suspended inside, tiny stub feet, round hopeful eyes; simple and lovely at 32px.",
+    "direction": "A moon caught inside a raindrop \u2014 the most delicate little thing, made of two beautiful things at once."
+  },
+  "provenance_concept_id": "B08-032"
+}

@@ -1,0 +1,84 @@
+{
+  "id": 78,
+  "slug": "crystarn",
+  "name": "Crystarn",
+  "types": [
+    "Frost"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "C",
+  "stats": {
+    "hp": 72,
+    "atk": 71,
+    "def": 71,
+    "spa": 71,
+    "spd": 71,
+    "spe": 62
+  },
+  "bst": 418,
+  "ability": "coldblood",
+  "hidden_ability": "forager",
+  "catchRate": 120,
+  "kindling": {
+    "into": 79,
+    "trigger": {
+      "kind": "level",
+      "level": 30
+    }
+  },
+  "from": 77,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "frost_nip"
+      },
+      {
+        "level": 9,
+        "move": "chill_mist"
+      },
+      {
+        "level": 13,
+        "move": "ice_fang"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "avalanche"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A half-grown snow-bird that has shed its chick-fluff for proper iridescent feathers underlaid with tiny ice-crystal filaments. It can now fly, and its wingbeats scatter prismatic ice-dust. Flocks of Crystarn spiral above the glacier in breathtaking chevrons. The transformation from helpless chick-ba",
+    "category": "Frost Wanderer Kin",
+    "size_cm": 58,
+    "weight_kg": 6.5,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 36,
+      "max": 39
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Medium bird form; streamlined body with swept-back tail feathers tipped in crystal points; feathers shaded blue-white to silver; wing edges fringed with tiny icicle spurs; alert amber eye with a diamond highlight; clean aerodynamic silhouette at 40px.",
+    "palette": "Medium bird form; streamlined body with swept-back tail feathers tipped in crystal points; feathers shaded blue-white to silver; wing edges fringed with tiny icicle spurs; alert amber eye with a diamond highlight; clean aerodynamic silhouette at 40px.",
+    "direction": "The transformation from helpless chick-ball to elegant crystal-feathered flier is the core kindling-joy moment."
+  },
+  "provenance_concept_id": "B06-011"
+}

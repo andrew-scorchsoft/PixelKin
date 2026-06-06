@@ -1,0 +1,85 @@
+{
+  "id": 20,
+  "slug": "tidmote",
+  "name": "Tidmote",
+  "types": [
+    "Tide",
+    "Light"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "A",
+  "stats": {
+    "hp": 41,
+    "atk": 47,
+    "def": 47,
+    "spa": 47,
+    "spd": 47,
+    "spe": 83
+  },
+  "bst": 312,
+  "ability": "tidecaller",
+  "hidden_ability": "brisk",
+  "catchRate": 210,
+  "kindling": {
+    "into": 21,
+    "trigger": {
+      "kind": "level",
+      "level": 13
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "mist_spray"
+      },
+      {
+        "level": 9,
+        "move": "drench_song"
+      },
+      {
+        "level": 13,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A tiny darting water-sprite that skims the sea surface, trailing a thread of moonlit water behind it. So fast it appears to teleport between waves. The impossible-to-catch tiny speedster \u2014 Glintfin's spiritual counterpart that players spend hours trying to lamp.",
+    "category": "Tide Courier Kin",
+    "size_cm": 8,
+    "weight_kg": 0.1,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 3,
+      "max": 6
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Tiny sprite, blue-white water droplet shape with trailing wisps, two pinpoint bright eyes, a single glowing ribbon-tail. Appears as a moving sparkle on water surfaces.",
+    "palette": "Tiny sprite, blue-white water droplet shape with trailing wisps, two pinpoint bright eyes, a single glowing ribbon-tail. Appears as a moving sparkle on water surfaces.",
+    "direction": "The impossible-to-catch tiny speedster \u2014 Glintfin's spiritual counterpart that players spend hours trying to lamp."
+  },
+  "provenance_concept_id": "B02-031"
+}

@@ -1,0 +1,74 @@
+{
+  "id": 130,
+  "slug": "heliovast",
+  "name": "Heliovast",
+  "types": [
+    "Solar"
+  ],
+  "role": "Special Sweeper",
+  "tier": "E",
+  "stats": {
+    "hp": 78,
+    "atk": 50,
+    "def": 67,
+    "spa": 139,
+    "spd": 78,
+    "spe": 146
+  },
+  "bst": 558,
+  "ability": "daybringer",
+  "hidden_ability": "sunsoak",
+  "catchRate": 24,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "glint_ray"
+      },
+      {
+        "level": 9,
+        "move": "bask"
+      },
+      {
+        "level": 13,
+        "move": "daybeam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "sunburst_nova"
+      },
+      {
+        "level": 48,
+        "move": "flare_crown"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "Sealed inside the Helia Vault \u2014 a reliquary off Sunvault Climb whose door can only be unlocked by Sunsketch \u2014 Heliovast is the most concentrated pocket of stored sunlight in Vesperholm. It resembles a vast solar-ray fish, drifting through the sealed interior of the vault in a self-sustaining solar c",
+    "category": "Solar Caster Kin",
+    "size_cm": 250,
+    "weight_kg": 280,
+    "habitat": "west"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "A great disc-bodied ray with an enormous central solar-eye at the front face, surrounded by radiating fin-rays like a living sun diagram. The body is deep gold with white-hot veins. The fin-rays are translucent amber, trailing fading light halos at their tips. The eye is an intense white-core disc. Even at idle, the battle background behind it yellows. The silhouette at 64px is a sun \u2014 because it is one.",
+    "palette": "A great disc-bodied ray with an enormous central solar-eye at the front face, surrounded by radiating fin-rays like a living sun diagram. The body is deep gold with white-hot veins. The fin-rays are translucent amber, trailing fading light halos at their tips. The eye is an intense white-core disc. Even at idle, the battle background behind it yellows. The silhouette at 64px is a sun \u2014 because it is one.",
+    "direction": "The one kin where catching it makes the battle screen itself change colour. Players will remember exactly where they first saw it."
+  },
+  "provenance_concept_id": "B11-015"
+}

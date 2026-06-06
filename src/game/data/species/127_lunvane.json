@@ -1,0 +1,83 @@
+{
+  "id": 127,
+  "slug": "lunvane",
+  "name": "Lunvane",
+  "types": [
+    "Light",
+    "Lunar"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "D",
+  "stats": {
+    "hp": 80,
+    "atk": 67,
+    "def": 89,
+    "spa": 70,
+    "spd": 90,
+    "spe": 102
+  },
+  "bst": 498,
+  "ability": "mirrorlight",
+  "hidden_ability": "forager",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 126,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spark_mote"
+      },
+      {
+        "level": 9,
+        "move": "dazzle_flash"
+      },
+      {
+        "level": 13,
+        "move": "light_pulse"
+      },
+      {
+        "level": 19,
+        "move": "moonbeam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "dawnburst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A vast lunar-herald moth whose wing-span casts a moon-shadow over the battlefield; it confuses, charms, and sleep-dusts opponents with an otherworldly calm that feels like drifting off to sleep under open skies. The moon made into a moth \u2014 one of the most atmospheric kin in the game; collectors will",
+    "category": "Light Trickster Kin",
+    "size_cm": 180,
+    "weight_kg": 3.2,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "very_rare",
+      "min": 48,
+      "max": 50
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Enormous wingspan; wings are deep midnight-blue with silver crescent and star-chart patterns that shift slowly; a long graceful body of silver-white; two large feathery antennae like plumes; hovers silently; presence fills the battle frame at 64px.",
+    "palette": "Enormous wingspan; wings are deep midnight-blue with silver crescent and star-chart patterns that shift slowly; a long graceful body of silver-white; two large feathery antennae like plumes; hovers silently; presence fills the battle frame at 64px.",
+    "direction": "The moon made into a moth \u2014 one of the most atmospheric kin in the game; collectors will feel privileged to own one."
+  },
+  "provenance_concept_id": "B09-024"
+}

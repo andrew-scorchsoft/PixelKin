@@ -1,0 +1,85 @@
+{
+  "id": 6,
+  "slug": "wickmere",
+  "name": "Wickmere",
+  "types": [
+    "Light",
+    "Ember"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "B",
+  "stats": {
+    "hp": 56,
+    "atk": 45,
+    "def": 63,
+    "spa": 49,
+    "spd": 63,
+    "spe": 74
+  },
+  "bst": 350,
+  "ability": "mirrorlight",
+  "hidden_ability": "forager",
+  "catchRate": 175,
+  "kindling": {
+    "into": 7,
+    "trigger": {
+      "kind": "level",
+      "level": 32
+    }
+  },
+  "from": 5,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spark_mote"
+      },
+      {
+        "level": 9,
+        "move": "dazzle_flash"
+      },
+      {
+        "level": 13,
+        "move": "light_pulse"
+      },
+      {
+        "level": 19,
+        "move": "cinder_spit"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A half-grown candle-folk that has learned to shape its wax body mid-battle, flowing around attacks and re-forming with a warm laugh, frustrating physical hitters. The three-flame crown is immediately distinctive and memorable on a team roster.",
+    "category": "Light Trickster Kin",
+    "size_cm": 55,
+    "weight_kg": 3.1,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 9,
+      "max": 12
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Slender humanoid of ivory wax, three flames now crowning its head like a candelabra; half-melted wax drapes off shoulders like a cape; cheerful smiling face; rounded candle-base feet; reads clearly at 32px.",
+    "palette": "Slender humanoid of ivory wax, three flames now crowning its head like a candelabra; half-melted wax drapes off shoulders like a cape; cheerful smiling face; rounded candle-base feet; reads clearly at 32px.",
+    "direction": "The three-flame crown is immediately distinctive and memorable on a team roster."
+  },
+  "provenance_concept_id": "B09-008"
+}

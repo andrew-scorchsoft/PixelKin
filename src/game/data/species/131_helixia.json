@@ -1,0 +1,74 @@
+{
+  "id": 131,
+  "slug": "helixia",
+  "name": "Helixia",
+  "types": [
+    "Solar"
+  ],
+  "role": "Special Sweeper",
+  "tier": "E",
+  "stats": {
+    "hp": 78,
+    "atk": 56,
+    "def": 67,
+    "spa": 139,
+    "spd": 78,
+    "spe": 140
+  },
+  "bst": 558,
+  "ability": "daybringer",
+  "hidden_ability": "sunsoak",
+  "catchRate": 24,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "glint_ray"
+      },
+      {
+        "level": 9,
+        "move": "bask"
+      },
+      {
+        "level": 13,
+        "move": "daybeam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "sunburst_nova"
+      },
+      {
+        "level": 48,
+        "move": "flare_crown"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The Helia Vault's guardian: a great solar apex kin shaped like a living orrery, its body a central amber core ringed by three concentric hoops of golden light that rotate at different speeds, releasing precision solar lances. A living golden armillary sphere \u2014 the awe-pinnacle of the Solar type and ",
+    "category": "Solar Caster Kin",
+    "size_cm": 150,
+    "weight_kg": 88.0,
+    "habitat": "west"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "Spherical amber core roughly lion-headed, with three glowing golden rings orbiting at different angles (like an armillary sphere); each ring is studded with small radiant nodes; the whole structure rotates; breathtaking at 64px.",
+    "palette": "Spherical amber core roughly lion-headed, with three glowing golden rings orbiting at different angles (like an armillary sphere); each ring is studded with small radiant nodes; the whole structure rotates; breathtaking at 64px.",
+    "direction": "A living golden armillary sphere \u2014 the awe-pinnacle of the Solar type and the centrepiece of Helia Vault. Nothing else in the dex looks anything like it."
+  },
+  "provenance_concept_id": "B07-028"
+}

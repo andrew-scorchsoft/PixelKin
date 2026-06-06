@@ -1,0 +1,85 @@
+{
+  "id": 44,
+  "slug": "flickore",
+  "name": "Flickore",
+  "types": [
+    "Stone",
+    "Storm"
+  ],
+  "role": "Special Sweeper",
+  "tier": "A",
+  "stats": {
+    "hp": 44,
+    "atk": 28,
+    "def": 37,
+    "spa": 81,
+    "spd": 44,
+    "spe": 78
+  },
+  "bst": 312,
+  "ability": "stonehide",
+  "hidden_ability": "brisk",
+  "catchRate": 210,
+  "kindling": {
+    "into": 45,
+    "trigger": {
+      "kind": "level",
+      "level": 17
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "gravel_spray"
+      },
+      {
+        "level": 9,
+        "move": "stone_wall"
+      },
+      {
+        "level": 13,
+        "move": "crystal_beam"
+      },
+      {
+        "level": 19,
+        "move": "volt_arc"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A small static-furred rodent whose iron-ore-flecked pelt crackles with friction sparks as it scurries through the tunnels. Base form of the Sparkrat line. The classic small cave rodent \u2014 but charged.",
+    "category": "Stone Caster Kin",
+    "size_cm": 22,
+    "weight_kg": 0.9,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 12,
+      "max": 15
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Rat-sized, wiry body covered in dark iron-grey fur with tiny amber sparks visible along the spine; prominent rounded ears; long thin tail tipped with an ore nugget.",
+    "palette": "Rat-sized, wiry body covered in dark iron-grey fur with tiny amber sparks visible along the spine; prominent rounded ears; long thin tail tipped with an ore nugget.",
+    "direction": "The classic small cave rodent \u2014 but charged. Kids will love the sparking fur."
+  },
+  "provenance_concept_id": "B04-006"
+}

@@ -1,0 +1,82 @@
+{
+  "id": 140,
+  "slug": "wisprestored",
+  "name": "Wisprestored",
+  "types": [
+    "Light"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "D",
+  "stats": {
+    "hp": 84,
+    "atk": 84,
+    "def": 86,
+    "spa": 85,
+    "spd": 85,
+    "spe": 74
+  },
+  "bst": 498,
+  "ability": "mirrorlight",
+  "hidden_ability": "forager",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 139,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "glimmer"
+      },
+      {
+        "level": 9,
+        "move": "dazzle_flash"
+      },
+      {
+        "level": 13,
+        "move": "radiant_strike"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "prism_beam"
+      },
+      {
+        "level": 40,
+        "move": "dawnburst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "When a Wispwane is loved and re-kindled, the Hollowing's taint burns away and it blazes back as a radiant wisp of pure light \u2014 joyful, fast, and full of a renewed warmth. The kindling evolution IS the narrative \u2014 recovering a drained kin back to full brilliance is the game's whole theme in one line.",
+    "category": "Light Wanderer Kin",
+    "size_cm": 60,
+    "weight_kg": 0.3,
+    "habitat": "outer"
+  },
+  "encounters": [
+    {
+      "area": "coldfog_marches",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 52,
+      "max": 54
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "A now-healthy glowing orb, bright amber-white, streaming a long comet-tail of light-motes; a beaming face visible in its core; no dark shadow remains; moves with joyful swooping arcs; reads as a blazing meteor-head at 48px.",
+    "palette": "A now-healthy glowing orb, bright amber-white, streaming a long comet-tail of light-motes; a beaming face visible in its core; no dark shadow remains; moves with joyful swooping arcs; reads as a blazing meteor-head at 48px.",
+    "direction": "The kindling evolution IS the narrative \u2014 recovering a drained kin back to full brilliance is the game's whole theme in one line."
+  },
+  "provenance_concept_id": "B09-033"
+}

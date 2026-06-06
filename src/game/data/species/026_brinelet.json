@@ -1,0 +1,80 @@
+{
+  "id": 26,
+  "slug": "brinelet",
+  "name": "Brinelet",
+  "types": [
+    "Tide"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "A",
+  "stats": {
+    "hp": 45,
+    "atk": 47,
+    "def": 47,
+    "spa": 47,
+    "spd": 47,
+    "spe": 79
+  },
+  "bst": 312,
+  "ability": "tidecaller",
+  "hidden_ability": "brisk",
+  "catchRate": 210,
+  "kindling": {
+    "into": 27,
+    "trigger": {
+      "kind": "level",
+      "level": 14
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "mist_spray"
+      },
+      {
+        "level": 9,
+        "move": "drench_song"
+      },
+      {
+        "level": 13,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A tiny round tidepool creature that rolls with the surf, collecting trinkets in a dimpled shell-belly. Scouts ahead with quick darting bursts. Endearingly pudgy and curious \u2014 kids love how it collects bits of the beach in its belly-dip.",
+    "category": "Tide Courier Kin",
+    "size_cm": 18,
+    "weight_kg": 0.9,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 3,
+      "max": 6
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Plump oval body, translucent blue-grey with a pale underbelly, two bright bead eyes, stubby flipper-feet, and a dimpled concave belly-shell that catches pebbles and seaweed bits. Readable at 16px.",
+    "palette": "Plump oval body, translucent blue-grey with a pale underbelly, two bright bead eyes, stubby flipper-feet, and a dimpled concave belly-shell that catches pebbles and seaweed bits. Readable at 16px.",
+    "direction": "Endearingly pudgy and curious \u2014 kids love how it collects bits of the beach in its belly-dip."
+  },
+  "provenance_concept_id": "B02-001"
+}

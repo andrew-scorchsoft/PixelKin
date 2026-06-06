@@ -1,0 +1,87 @@
+{
+  "id": 22,
+  "slug": "tidwraith",
+  "name": "Tidwraith",
+  "types": [
+    "Tide",
+    "Light"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "D",
+  "stats": {
+    "hp": 75,
+    "atk": 75,
+    "def": 75,
+    "spa": 75,
+    "spd": 75,
+    "spe": 123
+  },
+  "bst": 498,
+  "ability": "tidecaller",
+  "hidden_ability": "brisk",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 21,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "mist_spray"
+      },
+      {
+        "level": 9,
+        "move": "drench_song"
+      },
+      {
+        "level": 13,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "tide_pulse"
+      },
+      {
+        "level": 40,
+        "move": "maelstrom"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The fully kindled water-light sprite \u2014 now a ghostly shining figure of pure tide-light that moves faster than the eye can track. The transcendent final form of the tiniest starter \u2014 trainers who raise a Tidmote are rewarded with the coast's most ethereal kin.",
+    "category": "Tide Courier Kin",
+    "size_cm": 110,
+    "weight_kg": 8,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 10,
+      "max": 12
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Tall, translucent humanoid sprite of flowing water and moonlight \u2014 silver-white with luminous aqua veins, streaming ribbon-limbs, a face of pure calm radiance, and a cascading tail of moon-foam.",
+    "palette": "Tall, translucent humanoid sprite of flowing water and moonlight \u2014 silver-white with luminous aqua veins, streaming ribbon-limbs, a face of pure calm radiance, and a cascading tail of moon-foam.",
+    "direction": "The transcendent final form of the tiniest starter \u2014 trainers who raise a Tidmote are rewarded with the coast's most ethereal kin."
+  },
+  "provenance_concept_id": "B02-033"
+}

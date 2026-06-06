@@ -1,0 +1,89 @@
+{
+  "id": 109,
+  "slug": "tidalune",
+  "name": "Tidalune",
+  "types": [
+    "Lunar",
+    "Tide"
+  ],
+  "role": "Special Sweeper",
+  "tier": "C",
+  "stats": {
+    "hp": 59,
+    "atk": 37,
+    "def": 50,
+    "spa": 109,
+    "spd": 59,
+    "spe": 104
+  },
+  "bst": 418,
+  "ability": "nightsight",
+  "hidden_ability": "brisk",
+  "catchRate": 120,
+  "kindling": {
+    "into": 110,
+    "trigger": {
+      "kind": "level",
+      "level": 32
+    }
+  },
+  "from": 108,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "dream_wisp"
+      },
+      {
+        "level": 9,
+        "move": "lull"
+      },
+      {
+        "level": 13,
+        "move": "moonbeam"
+      },
+      {
+        "level": 19,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "eclipse_wave"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A moon-tide sprite that has gathered enough water to form a proper fluid body, hovering in a rotating sphere of water illuminated from within by crescent-light. It pulls at opponents with slow tidal forces. A moon living inside a sphere of water \u2014 hypnotic to watch and quietly threatening.",
+    "category": "Lunar Caster Kin",
+    "size_cm": 55,
+    "weight_kg": 18.0,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 48,
+      "max": 50
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Sphere of slowly rotating pale blue water with a luminous crescent core, small fine-featured face at the water surface, trailing water-arc tails; elegant floating orb at 48px.",
+    "palette": "Sphere of slowly rotating pale blue water with a luminous crescent core, small fine-featured face at the water surface, trailing water-arc tails; elegant floating orb at 48px.",
+    "direction": "A moon living inside a sphere of water \u2014 hypnotic to watch and quietly threatening."
+  },
+  "provenance_concept_id": "B08-033"
+}

@@ -1,0 +1,79 @@
+{
+  "id": 144,
+  "slug": "nullhusk",
+  "name": "Nullhusk",
+  "types": [
+    "Storm",
+    "Dark"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "E",
+  "stats": {
+    "hp": 89,
+    "atk": 74,
+    "def": 100,
+    "spa": 78,
+    "spd": 100,
+    "spe": 117
+  },
+  "bst": 558,
+  "ability": "stormcall",
+  "hidden_ability": "static_skin",
+  "catchRate": 24,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "static_jolt"
+      },
+      {
+        "level": 9,
+        "move": "numb_coil"
+      },
+      {
+        "level": 13,
+        "move": "volt_arc"
+      },
+      {
+        "level": 19,
+        "move": "hollow_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "tempest"
+      },
+      {
+        "level": 48,
+        "move": "gale_slam"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The charged husk of the Hollowfen Stillworks \u2014 a derelict Hollowing null-works set-piece in Coldfog Marches. Once a thunderhead-kin captured and drained into a null-lantern to power the Stillworks machinery, Nullhusk has become something new: a storm-shaped void that still generates electricity thro",
+    "category": "Storm Trickster Kin",
+    "size_cm": 220,
+    "weight_kg": 240,
+    "habitat": "outer"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "A thunderhead-bull silhouette rendered in absolute void: the body outline is a deep storm-shape filled with dark non-light, negative-space body, but from it leak erratic arcs of dead-current in a sickly violet-grey that never quite reaches the warmth of true storm-blue. The eyes are empty null-lantern apertures \u2014 circular, glass-cold, unlit. The horns still crackle with charge. Reads as something that was majestic and is now entirely hollow.",
+    "palette": "A thunderhead-bull silhouette rendered in absolute void: the body outline is a deep storm-shape filled with dark non-light, negative-space body, but from it leak erratic arcs of dead-current in a sickly violet-grey that never quite reaches the warmth of true storm-blue. The eyes are empty null-lantern apertures \u2014 circular, glass-cold, unlit. The horns still crackle with charge. Reads as something that was majestic and is now entirely hollow.",
+    "direction": "The most haunting optional encounter in the game: a thunderstorm that has been hollowed out. Players will feel C\u00f2r's philosophy as something terrible and real through this one battle."
+  },
+  "provenance_concept_id": "B11-022"
+}

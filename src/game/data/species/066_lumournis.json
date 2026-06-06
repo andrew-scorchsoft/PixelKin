@@ -1,0 +1,87 @@
+{
+  "id": 66,
+  "slug": "lumournis",
+  "name": "Lumournis",
+  "types": [
+    "Verdant",
+    "Light"
+  ],
+  "role": "Special Tank",
+  "tier": "D",
+  "stats": {
+    "hp": 99,
+    "atk": 45,
+    "def": 70,
+    "spa": 109,
+    "spd": 90,
+    "spe": 85
+  },
+  "bst": 498,
+  "ability": "verdant_vigor",
+  "hidden_ability": "thickcoat",
+  "catchRate": 65,
+  "kindling": null,
+  "from": 65,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spore_puff"
+      },
+      {
+        "level": 9,
+        "move": "sleep_pollen"
+      },
+      {
+        "level": 13,
+        "move": "lifedrain"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "bloomburst"
+      },
+      {
+        "level": 40,
+        "move": "overgrowth"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A grand glowing moth whose wings are broad leaf-panels veined with bioluminescent channels. It radiates a healing aura that calms wild kin and soothes blight. starter candidate \u2014 gorgeous moth finale that doubles as a mobile lantern; special tank role gives it defensive staying power, feels like a p",
+    "category": "Verdant Channeler Kin",
+    "size_cm": 130,
+    "weight_kg": 18,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 22,
+      "max": 24
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Large moth form; four broad wings each shaped like a glowing leaf, veined in cyan and gold; soft downy body, feathered antennae, six slender legs; the whole silhouette looks like a living stained-glass window.",
+    "palette": "Large moth form; four broad wings each shaped like a glowing leaf, veined in cyan and gold; soft downy body, feathered antennae, six slender legs; the whole silhouette looks like a living stained-glass window.",
+    "direction": "starter candidate \u2014 gorgeous moth finale that doubles as a mobile lantern; special tank role gives it defensive staying power, feels like a protector."
+  },
+  "provenance_concept_id": "B03-004"
+}

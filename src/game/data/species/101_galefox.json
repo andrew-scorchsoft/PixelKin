@@ -1,0 +1,84 @@
+{
+  "id": 101,
+  "slug": "galefox",
+  "name": "Galefox",
+  "types": [
+    "Storm"
+  ],
+  "role": "Physical Sweeper",
+  "tier": "C",
+  "stats": {
+    "hp": 59,
+    "atk": 96,
+    "def": 54,
+    "spa": 40,
+    "spd": 54,
+    "spe": 115
+  },
+  "bst": 418,
+  "ability": "static_skin",
+  "hidden_ability": "brisk",
+  "catchRate": 120,
+  "kindling": {
+    "into": 102,
+    "trigger": {
+      "kind": "level",
+      "level": 35
+    }
+  },
+  "from": 100,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spark_nip"
+      },
+      {
+        "level": 9,
+        "move": "numb_coil"
+      },
+      {
+        "level": 13,
+        "move": "thunder_kick"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "gale_slam"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A sleek mid-stage gust-fox who now runs so fast it creates a visible bow-wave of compressed air ahead of it; close-combat opponents are pushed back by the pressure wave before it even strikes. The bow-wave around it makes the ground look like it's peeling back ahead of every sprint.",
+    "category": "Storm Striker Kin",
+    "size_cm": 80,
+    "weight_kg": 14.5,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 36,
+      "max": 39
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Lithe medium fox silhouette, deep storm-blue body fading to pale silver at the throat and belly, a single bold tail crackling at the tip, wind-distortion ripples around the paws; pure velocity at 48px.",
+    "palette": "Lithe medium fox silhouette, deep storm-blue body fading to pale silver at the throat and belly, a single bold tail crackling at the tip, wind-distortion ripples around the paws; pure velocity at 48px.",
+    "direction": "The bow-wave around it makes the ground look like it's peeling back ahead of every sprint."
+  },
+  "provenance_concept_id": "B05-034"
+}

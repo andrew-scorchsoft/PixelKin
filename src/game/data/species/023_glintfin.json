@@ -1,0 +1,85 @@
+{
+  "id": 23,
+  "slug": "glintfin",
+  "name": "Glintfin",
+  "types": [
+    "Tide",
+    "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "A",
+  "stats": {
+    "hp": 44,
+    "atk": 29,
+    "def": 37,
+    "spa": 80,
+    "spd": 44,
+    "spe": 78
+  },
+  "bst": 312,
+  "ability": "tidecaller",
+  "hidden_ability": "brisk",
+  "catchRate": 210,
+  "kindling": {
+    "into": 24,
+    "trigger": {
+      "kind": "level",
+      "level": 15
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "mist_spray"
+      },
+      {
+        "level": 9,
+        "move": "drench_song"
+      },
+      {
+        "level": 13,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A small glinting schooling fish with a single prismatic scale that acts like a signal mirror. Groups of them communicate with flashes. Cute little mirror-fish \u2014 the tutorial kin for Tide typing; appears in water as soon as the player gets Tidecall.",
+    "category": "Tide Caster Kin",
+    "size_cm": 12,
+    "weight_kg": 0.3,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 3,
+      "max": 6
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Tiny silvery fish with oversized prism-scale fin fanning out like a tail-fan, blue-teal body, big friendly eye, subtle light-refracting markings.",
+    "palette": "Tiny silvery fish with oversized prism-scale fin fanning out like a tail-fan, blue-teal body, big friendly eye, subtle light-refracting markings.",
+    "direction": "Cute little mirror-fish \u2014 the tutorial kin for Tide typing; appears in water as soon as the player gets Tidecall."
+  },
+  "provenance_concept_id": "B02-014"
+}

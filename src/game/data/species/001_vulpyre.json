@@ -1,0 +1,80 @@
+{
+  "id": 1,
+  "slug": "vulpyre",
+  "name": "Vulpyre",
+  "types": [
+    "Ember"
+  ],
+  "role": "Special Sweeper",
+  "tier": "B",
+  "stats": {
+    "hp": 56,
+    "atk": 61,
+    "def": 50,
+    "spa": 65,
+    "spd": 52,
+    "spe": 72
+  },
+  "bst": 356,
+  "ability": "emberheart",
+  "hidden_ability": "brisk",
+  "catchRate": 175,
+  "kindling": {
+    "into": 3,
+    "trigger": {
+      "kind": "level",
+      "level": 16
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "tuft_spark"
+      },
+      {
+        "level": 9,
+        "move": "scorch_veil"
+      },
+      {
+        "level": 13,
+        "move": "cinder_spit"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "It dozes on sun-warmed stones and bolts at the first drop of rain. When a Vulpyre trusts you, its mane burns a steadier gold.",
+    "category": "Hearth-Fox Kin",
+    "size_cm": 60,
+    "weight_kg": 9.4,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 6,
+      "max": 9
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "(existing art)",
+    "palette": "(existing art)",
+    "direction": ""
+  },
+  "provenance_concept_id": "X-VULPYRE"
+}

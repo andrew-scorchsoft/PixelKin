@@ -1,0 +1,87 @@
+{
+  "id": 15,
+  "slug": "pyriven",
+  "name": "Pyriven",
+  "types": [
+    "Ember",
+    "Dark"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "stats": {
+    "hp": 70,
+    "atk": 46,
+    "def": 60,
+    "spa": 128,
+    "spd": 70,
+    "spe": 124
+  },
+  "bst": 498,
+  "ability": "emberheart",
+  "hidden_ability": "brisk",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 14,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "tuft_spark"
+      },
+      {
+        "level": 9,
+        "move": "scorch_veil"
+      },
+      {
+        "level": 13,
+        "move": "cinder_spit"
+      },
+      {
+        "level": 19,
+        "move": "hollow_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "hearth_pulse"
+      },
+      {
+        "level": 40,
+        "move": "sunflare_burst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A towering cinder-wraith whose body is a column of black smoke wreathed in fierce orange-white flames, haunting the ruins of old hearths. The ash-fairy grew into a ghost made of fire \u2014 spooky, beautiful, and unforgettable.",
+    "category": "Ember Caster Kin",
+    "size_cm": 175,
+    "weight_kg": 8.0,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 10,
+      "max": 12
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Tall ghostly pillar silhouette: smoke-black upper body fading into blazing fire-orange lower half, spectral arms, hollow bright eyes; striking contrast at 64px.",
+    "palette": "Tall ghostly pillar silhouette: smoke-black upper body fading into blazing fire-orange lower half, spectral arms, hollow bright eyes; striking contrast at 64px.",
+    "direction": "The ash-fairy grew into a ghost made of fire \u2014 spooky, beautiful, and unforgettable."
+  },
+  "provenance_concept_id": "B01-014"
+}

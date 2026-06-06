@@ -1,0 +1,78 @@
+{
+  "id": 148,
+  "slug": "lampling",
+  "name": "Lampling",
+  "types": [
+    "Light"
+  ],
+  "role": "Special Wall",
+  "tier": "C",
+  "stats": {
+    "hp": 84,
+    "atk": 30,
+    "def": 71,
+    "spa": 59,
+    "spd": 103,
+    "spe": 71
+  },
+  "bst": 418,
+  "ability": "mirrorlight",
+  "hidden_ability": "thickcoat",
+  "catchRate": 112,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spark_mote"
+      },
+      {
+        "level": 9,
+        "move": "dazzle_flash"
+      },
+      {
+        "level": 13,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "dawnburst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The beloved mascot of Vesper Crossroads \u2014 a sentient vesperlamp kin that has been glowing at the crossroads inn for longer than anyone can remember. It welcomes every weary traveller with a warm amber light and an unhurried tilt of its brass hood. It IS the crossroads \u2014 the mascot every player will ",
+    "category": "Light Warden Kin",
+    "size_cm": 42,
+    "weight_kg": 3.8,
+    "habitat": "central"
+  },
+  "encounters": [
+    {
+      "area": "umbral_spire",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 60,
+      "max": 62
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Squat, teardrop-shaped body of burnished brass, a round glass-chimney belly filled with warm amber glow; two small mitten-like hands grip the base; tiny curled feet; a brass hood sits slightly askew like a jaunty cap; warm cream light pools at its base; instantly iconic at 32px \u2014 fat oval + hat silhouette.",
+    "palette": "Squat, teardrop-shaped body of burnished brass, a round glass-chimney belly filled with warm amber glow; two small mitten-like hands grip the base; tiny curled feet; a brass hood sits slightly askew like a jaunty cap; warm cream light pools at its base; instantly iconic at 32px \u2014 fat oval + hat silhouette.",
+    "direction": "It IS the crossroads \u2014 the mascot every player will bond with on their first visit. A hug in kin form."
+  },
+  "provenance_concept_id": "B09-003"
+}

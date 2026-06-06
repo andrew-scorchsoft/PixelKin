@@ -1,0 +1,80 @@
+{
+  "id": 53,
+  "slug": "oreling",
+  "name": "Oreling",
+  "types": [
+    "Stone"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "A",
+  "stats": {
+    "hp": 62,
+    "atk": 69,
+    "def": 56,
+    "spa": 31,
+    "spd": 47,
+    "spe": 47
+  },
+  "bst": 312,
+  "ability": "grounded",
+  "hidden_ability": "stonehide",
+  "catchRate": 210,
+  "kindling": {
+    "into": 54,
+    "trigger": {
+      "kind": "level",
+      "level": 16
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "pebble_toss"
+      },
+      {
+        "level": 9,
+        "move": "stone_wall"
+      },
+      {
+        "level": 13,
+        "move": "rock_hurl"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A dumpling-shaped cave-grub with a body fused to a piece of raw iron ore; it headbutts walls to eat mineral flakes, slowly growing heavier. The ore-grub that looks like it's been bolted to a rock \u2014 endearing clumsiness.",
+    "category": "Stone Brute Kin",
+    "size_cm": 18,
+    "weight_kg": 3,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 12,
+      "max": 15
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Chubby grub-like body wrapped around a dark iron-ore lump; tiny arms, vestigial; rounded head with a wide flat mouth for scraping ore; small black eyes; warm grey-brown colouring.",
+    "palette": "Chubby grub-like body wrapped around a dark iron-ore lump; tiny arms, vestigial; rounded head with a wide flat mouth for scraping ore; small black eyes; warm grey-brown colouring.",
+    "direction": "The ore-grub that looks like it's been bolted to a rock \u2014 endearing clumsiness."
+  },
+  "provenance_concept_id": "B04-017"
+}

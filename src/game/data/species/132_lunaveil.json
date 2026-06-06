@@ -1,0 +1,74 @@
+{
+  "id": 132,
+  "slug": "lunaveil",
+  "name": "Lunaveil",
+  "types": [
+    "Lunar"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "E",
+  "stats": {
+    "hp": 80,
+    "atk": 84,
+    "def": 84,
+    "spa": 84,
+    "spd": 84,
+    "spe": 142
+  },
+  "bst": 558,
+  "ability": "nightfall",
+  "hidden_ability": "nightsight",
+  "catchRate": 24,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "dream_wisp"
+      },
+      {
+        "level": 9,
+        "move": "lull"
+      },
+      {
+        "level": 13,
+        "move": "moonbeam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "eclipse_wave"
+      },
+      {
+        "level": 48,
+        "move": "nightfall_veil"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The luminous anchor of the Lunar Constellation, a silken serpent-moth of impossible size \u2014 its wingspan covers the Nightreach Observatory's dome when it alights. Nessa Cole has been tracking its orbital path through the sky for years without knowing what it was. It navigates by the Lunar star alone;",
+    "category": "Lunar Courier Kin",
+    "size_cm": 320,
+    "weight_kg": 140,
+    "habitat": "west"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "Vast serpent-body with two enormous moth-wings, each wing a deep night-blue scattered with hundreds of cold diamond-cyan star-point scales. The serpent body is dark as ink with a faint silver-blue iridescence. The head is moth-like with long feeler-antennae tipped with cold silver sparks. In the night-blue palette of the Observatory, it is nearly invisible until it moves.",
+    "palette": "Vast serpent-body with two enormous moth-wings, each wing a deep night-blue scattered with hundreds of cold diamond-cyan star-point scales. The serpent body is dark as ink with a faint silver-blue iridescence. The head is moth-like with long feeler-antennae tipped with cold silver sparks. In the night-blue palette of the Observatory, it is nearly invisible until it moves.",
+    "direction": "The night sky as a creature. Anyone who watches its entrance animation will screenshot it immediately."
+  },
+  "provenance_concept_id": "B11-008"
+}

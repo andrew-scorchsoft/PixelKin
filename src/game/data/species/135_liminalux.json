@@ -1,0 +1,83 @@
+{
+  "id": 135,
+  "slug": "liminalux",
+  "name": "Liminalux",
+  "types": [
+    "Dark",
+    "Light"
+  ],
+  "role": "Special Tank",
+  "tier": "D",
+  "stats": {
+    "hp": 99,
+    "atk": 42,
+    "def": 70,
+    "spa": 112,
+    "spd": 90,
+    "spe": 85
+  },
+  "bst": 498,
+  "ability": "nullheart",
+  "hidden_ability": "thickcoat",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 134,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "gloom_spit"
+      },
+      {
+        "level": 9,
+        "move": "blight_touch"
+      },
+      {
+        "level": 13,
+        "move": "hollow_pulse"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "voidburst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The resolved form of a wisp that survived the Hollowing's full pull and did not fall entirely dark \u2014 nor entirely light. It exists as a stable chimera, its body a sphere of coexisting radiance and void. Its presence calms both lit and hollow kin. A kin that resolved the game's central conflict in it",
+    "category": "Dark Channeler Kin",
+    "size_cm": 70,
+    "weight_kg": 9.5,
+    "habitat": "outer"
+  },
+  "encounters": [
+    {
+      "area": "coldfog_marches",
+      "terrain": "tall_grass",
+      "rarity": "very_rare",
+      "min": 52,
+      "max": 54
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Large orb-being, one hemisphere bright bone-white with a golden core, the other deep void-black with a violet inner light; a belt of crackling silver sparks rings the equator; two long pale tendrils drift like arms.",
+    "palette": "Large orb-being, one hemisphere bright bone-white with a golden core, the other deep void-black with a violet inner light; a belt of crackling silver sparks rings the equator; two long pale tendrils drift like arms.",
+    "direction": "A kin that resolved the game's central conflict in its own body \u2014 the reward for finding it feels earned."
+  },
+  "provenance_concept_id": "B10-008"
+}

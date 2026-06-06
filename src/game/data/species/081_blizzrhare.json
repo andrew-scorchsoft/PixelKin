@@ -1,0 +1,84 @@
+{
+  "id": 81,
+  "slug": "blizzrhare",
+  "name": "Blizzrhare",
+  "types": [
+    "Frost"
+  ],
+  "role": "Special Sweeper",
+  "tier": "C",
+  "stats": {
+    "hp": 59,
+    "atk": 39,
+    "def": 50,
+    "spa": 107,
+    "spd": 59,
+    "spe": 104
+  },
+  "bst": 418,
+  "ability": "coldblood",
+  "hidden_ability": "brisk",
+  "catchRate": 120,
+  "kindling": {
+    "into": 82,
+    "trigger": {
+      "kind": "level",
+      "level": 35
+    }
+  },
+  "from": 80,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "snow_veil"
+      },
+      {
+        "level": 9,
+        "move": "chill_mist"
+      },
+      {
+        "level": 13,
+        "move": "glacier_beam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "blizzard_howl"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A mid-form hare that has shed its soft pup-coat for sleek winter fur hardened into wind-channelling ridges. It runs so fast it generates a localised snow-vortex around itself. Pale Vault villagers call these small spinning snow-devils 'hare-ghosts.'. The hare-ghost snow-vortex detail is the kind of ",
+    "category": "Frost Caster Kin",
+    "size_cm": 72,
+    "weight_kg": 9.8,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 36,
+      "max": 39
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Taller, leaner hare form; fur now has aerodynamic ridge-lines down the flanks; elongated ears swept back; narrow, aerodynamic face; the overall silhouette reads like a sprinter frozen at the instant of launch at 40px.",
+    "palette": "Taller, leaner hare form; fur now has aerodynamic ridge-lines down the flanks; elongated ears swept back; narrow, aerodynamic face; the overall silhouette reads like a sprinter frozen at the instant of launch at 40px.",
+    "direction": "The hare-ghost snow-vortex detail is the kind of world-building kids pass on to friends."
+  },
+  "provenance_concept_id": "B06-021"
+}

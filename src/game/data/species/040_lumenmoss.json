@@ -1,0 +1,87 @@
+{
+  "id": 40,
+  "slug": "lumenmoss",
+  "name": "Lumenmoss",
+  "types": [
+    "Light",
+    "Verdant"
+  ],
+  "role": "Physical Wall",
+  "tier": "D",
+  "stats": {
+    "hp": 94,
+    "atk": 70,
+    "def": 123,
+    "spa": 41,
+    "spd": 85,
+    "spe": 85
+  },
+  "bst": 498,
+  "ability": "mirrorlight",
+  "hidden_ability": "thickcoat",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 39,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "glimmer"
+      },
+      {
+        "level": 9,
+        "move": "dazzle_flash"
+      },
+      {
+        "level": 13,
+        "move": "radiant_strike"
+      },
+      {
+        "level": 19,
+        "move": "root_strike"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "prism_beam"
+      },
+      {
+        "level": 40,
+        "move": "dawnburst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "An ancient moss-lord of the Hollow whose entire body is a cathedral of bioluminescent growth; it breathes out a spore-fog that coats opponents' scales and slows their movement, while healing allies who stand within its light. A creature that IS a living forest shrine \u2014 kids who love Verdant AND Ligh",
+    "category": "Light Bulwark Kin",
+    "size_cm": 220,
+    "weight_kg": 180,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 22,
+      "max": 24
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Huge bipedal form entirely cloaked in thick layered glowing moss-panels; a great antler-rack of twisted branches sprouting glowing spore-bulbs; a solemn carved-wood face deep within a moss-arch; radiates green-amber light in gentle pulses; awe-inspiring at 48px.",
+    "palette": "Huge bipedal form entirely cloaked in thick layered glowing moss-panels; a great antler-rack of twisted branches sprouting glowing spore-bulbs; a solemn carved-wood face deep within a moss-arch; radiates green-amber light in gentle pulses; awe-inspiring at 48px.",
+    "direction": "A creature that IS a living forest shrine \u2014 kids who love Verdant AND Light kin will feel this is made for them."
+  },
+  "provenance_concept_id": "B09-016"
+}

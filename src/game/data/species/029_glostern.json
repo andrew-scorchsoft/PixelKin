@@ -1,0 +1,85 @@
+{
+  "id": 29,
+  "slug": "glostern",
+  "name": "Glostern",
+  "types": [
+    "Tide",
+    "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "B",
+  "stats": {
+    "hp": 49,
+    "atk": 33,
+    "def": 42,
+    "spa": 87,
+    "spd": 49,
+    "spe": 90
+  },
+  "bst": 350,
+  "ability": "tidecaller",
+  "hidden_ability": "brisk",
+  "catchRate": 175,
+  "kindling": {
+    "into": 30,
+    "trigger": {
+      "kind": "level",
+      "level": 26
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "mist_spray"
+      },
+      {
+        "level": 9,
+        "move": "drench_song"
+      },
+      {
+        "level": 13,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A small jellyfish-lantern drifting through Pearlmoor harbour. Its translucent bell glows with trapped moonlight, and it fires bioluminescent pulses at threats. A living lantern in the harbour \u2014 its gentle glow is the most iconic visual on the Pearlmoor loading screen.",
+    "category": "Tide Caster Kin",
+    "size_cm": 28,
+    "weight_kg": 0.4,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 6,
+      "max": 9
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Dome bell in soft aqua-blue with a warm gold luminescent core; four trailing tendril-ribbons with tiny pearl droplets at their tips, and a cluster of gentle light-spot eyes beneath the bell.",
+    "palette": "Dome bell in soft aqua-blue with a warm gold luminescent core; four trailing tendril-ribbons with tiny pearl droplets at their tips, and a cluster of gentle light-spot eyes beneath the bell.",
+    "direction": "A living lantern in the harbour \u2014 its gentle glow is the most iconic visual on the Pearlmoor loading screen."
+  },
+  "provenance_concept_id": "B02-010"
+}

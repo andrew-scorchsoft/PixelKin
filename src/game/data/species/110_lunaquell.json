@@ -1,0 +1,83 @@
+{
+  "id": 110,
+  "slug": "lunaquell",
+  "name": "Lunaquell",
+  "types": [
+    "Lunar",
+    "Tide"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "stats": {
+    "hp": 70,
+    "atk": 48,
+    "def": 60,
+    "spa": 126,
+    "spd": 70,
+    "spe": 124
+  },
+  "bst": 498,
+  "ability": "nightsight",
+  "hidden_ability": "brisk",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 109,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "dream_wisp"
+      },
+      {
+        "level": 9,
+        "move": "lull"
+      },
+      {
+        "level": 13,
+        "move": "moonbeam"
+      },
+      {
+        "level": 19,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "eclipse_wave"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The tide-moon spirit in its full form: a vast oceanic omen-being whose water-sphere has grown to contain a miniature tidal sea, with a full moon disc blazing at its heart. It calls tides even in landlocked places. It carries the whole ocean in a sphere and a moon inside that \u2014 one of Vesperholm's mo",
+    "category": "Lunar Caster Kin",
+    "size_cm": 195,
+    "weight_kg": 340.0,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 48,
+      "max": 50
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Large hovering sphere of churning dark ocean water, full moon-disc blazing silver at the exact centre, visible wave-turbulence inside the sphere, trailing ocean-mist arcs; vast and awe-inspiring at 64px.",
+    "palette": "Large hovering sphere of churning dark ocean water, full moon-disc blazing silver at the exact centre, visible wave-turbulence inside the sphere, trailing ocean-mist arcs; vast and awe-inspiring at 64px.",
+    "direction": "It carries the whole ocean in a sphere and a moon inside that \u2014 one of Vesperholm's most staggering final forms."
+  },
+  "provenance_concept_id": "B08-034"
+}

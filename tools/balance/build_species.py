@@ -181,6 +181,24 @@ def parse_trigger(text, stage, tier):
         return {"kind": "location", "area": REGION_AREA.get("east")[0]}
     return {"kind": "level", "level": lvl}
 
+# Canonical data for the two pre-existing starters (docs/sample-kin.md + assets/).
+CANON = {
+    "vulpyre": {
+        "stats": {"hp": 56, "atk": 61, "def": 50, "spa": 65, "spd": 52, "spe": 72},
+        "ability": "emberheart", "hidden_ability": "brisk", "signature": "tuft_spark",
+        "size_cm": 60, "weight_kg": 9.4,
+        "entry": "It dozes on sun-warmed stones and bolts at the first drop of rain. When a Vulpyre trusts you, its mane burns a steadier gold.",
+        "category": "Hearth-Fox Kin",
+    },
+    "brinix": {
+        "stats": {"hp": 62, "atk": 53, "def": 58, "spa": 60, "spd": 64, "spe": 55},
+        "ability": "tidecaller", "hidden_ability": "mistveil", "signature": "bubble_hum",
+        "size_cm": 52, "weight_kg": 11.5,
+        "entry": "Its side-fins glow softly in deep water. Brinix hums a bubbling tune that settles nervous kin, and rides fast currents purely for the fun of it.",
+        "category": "Tide-Hum Kin",
+    },
+}
+
 def slugify(name):
     return re.sub(r"[^a-z0-9]+", "_", name.lower()).strip("_")
 
@@ -254,8 +272,8 @@ def main():
             "dex": {
                 "entry": dex_entry(e),
                 "category": category(e),
-                "size_cm": e.get("size_cm", 60),
-                "weight_kg": e.get("weight_kg", 10),
+                "size_cm": e.get("size_cm") or (320 if tier in ("E", "F") else 70),
+                "weight_kg": e.get("weight_kg") or (240 if tier in ("E", "F") else 12),
                 "habitat": e.get("region", "south"),
             },
             "encounters": encounters(e.get("region","south"), e.get("rarity","common"), tier, stage, scripted),
@@ -270,6 +288,16 @@ def main():
         # clamp catchRate into band
         lo, hi = {"A":(190,235),"B":(150,200),"C":(90,150),"D":(45,90),"E":(20,45),"F":(3,10)}[tier]
         rec["catchRate"] = max(lo, min(hi, rec["catchRate"]))
+        # apply canonical overrides for the two existing starters
+        canon = CANON.get(rec["slug"])
+        if canon:
+            rec["stats"] = canon["stats"]; rec["bst"] = sum(canon["stats"].values())
+            rec["ability"] = canon["ability"]; rec["hidden_ability"] = canon["hidden_ability"]
+            rec["dex"]["entry"] = canon["entry"]; rec["dex"]["category"] = canon["category"]
+            rec["dex"]["size_cm"] = canon["size_cm"]; rec["dex"]["weight_kg"] = canon["weight_kg"]
+            sig = canon["signature"]
+            if sig in MOVE_IDS and not any(e["move"] == sig for e in rec["learnset"]["levelup"]):
+                rec["learnset"]["levelup"].insert(0, {"level": 1, "move": sig})
         out_all.append(rec)
         with open(os.path.join(OUTDIR, f"{e['dex_id']:03d}_{rec['slug']}.json"), "w") as f:
             json.dump(rec, f, indent=2)

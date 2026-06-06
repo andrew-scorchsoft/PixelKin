@@ -1,0 +1,83 @@
+{
+  "id": 34,
+  "slug": "tideveil",
+  "name": "Tideveil",
+  "types": [
+    "Tide",
+    "Light"
+  ],
+  "role": "Special Wall",
+  "tier": "E",
+  "stats": {
+    "hp": 112,
+    "atk": 40,
+    "def": 95,
+    "spa": 78,
+    "spd": 138,
+    "spe": 95
+  },
+  "bst": 558,
+  "ability": "phoenix",
+  "hidden_ability": "tidecaller",
+  "catchRate": 24,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "mist_spray"
+      },
+      {
+        "level": 9,
+        "move": "drench_song"
+      },
+      {
+        "level": 13,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "tide_pulse"
+      },
+      {
+        "level": 40,
+        "move": "maelstrom"
+      },
+      {
+        "level": 48,
+        "move": "undertow"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The Tide Constellation Warden \u2014 a vast, semi-transparent sea-spirit that dwells in the Tideglass Cavern landmark. When Reyl relights the Tide constellation, Tideveil surfaces to confirm the pact. It is the living embodiment of the moonlit sea. The constellation kin of the sea \u2014 seeing it surface in ",
+    "category": "Tide Warden Kin",
+    "size_cm": 1800,
+    "weight_kg": 4200,
+    "habitat": "south"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "Enormous translucent whale-like form, body almost entirely composed of moon-on-water refraction \u2014 shifting aqua, silver, and pale gold layers visible within. No hard edges, no single colour \u2014 a living sea-mirror. Two vast luminous crescent eyes and trailing aurora-thread fins.",
+    "palette": "Enormous translucent whale-like form, body almost entirely composed of moon-on-water refraction \u2014 shifting aqua, silver, and pale gold layers visible within. No hard edges, no single colour \u2014 a living sea-mirror. Two vast luminous crescent eyes and trailing aurora-thread fins.",
+    "direction": "The constellation kin of the sea \u2014 seeing it surface in the Cavern is the south coast's defining awe moment."
+  },
+  "provenance_concept_id": "B02-045"
+}

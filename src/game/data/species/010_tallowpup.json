@@ -1,0 +1,80 @@
+{
+  "id": 10,
+  "slug": "tallowpup",
+  "name": "Tallowpup",
+  "types": [
+    "Ember"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "A",
+  "stats": {
+    "hp": 56,
+    "atk": 53,
+    "def": 53,
+    "spa": 53,
+    "spd": 53,
+    "spe": 44
+  },
+  "bst": 312,
+  "ability": "emberheart",
+  "hidden_ability": "forager",
+  "catchRate": 210,
+  "kindling": {
+    "into": 11,
+    "trigger": {
+      "kind": "level",
+      "level": 14
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "ember_jab"
+      },
+      {
+        "level": 9,
+        "move": "scorch_veil"
+      },
+      {
+        "level": 13,
+        "move": "flame_lash"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A stumpy wax-coated pup whose stubby tail is a flickering tallow candle that warms everything it curls against. The single candle-tail is irresistibly cute \u2014 kids will want to protect the little flame.",
+    "category": "Ember Wanderer Kin",
+    "size_cm": 28,
+    "weight_kg": 4.2,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 3,
+      "max": 6
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Chunky cream-and-butter-yellow puppy body, ink nose, a single pale candle-flame tail with a soft wax drip; big round eyes; reads as one warm blob at 32px.",
+    "palette": "Chunky cream-and-butter-yellow puppy body, ink nose, a single pale candle-flame tail with a soft wax drip; big round eyes; reads as one warm blob at 32px.",
+    "direction": "The single candle-tail is irresistibly cute \u2014 kids will want to protect the little flame."
+  },
+  "provenance_concept_id": "B01-001"
+}

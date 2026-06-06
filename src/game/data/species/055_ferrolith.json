@@ -1,0 +1,82 @@
+{
+  "id": 55,
+  "slug": "ferrolith",
+  "name": "Ferrolith",
+  "types": [
+    "Stone"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "D",
+  "stats": {
+    "hp": 99,
+    "atk": 110,
+    "def": 90,
+    "spa": 49,
+    "spd": 75,
+    "spe": 75
+  },
+  "bst": 498,
+  "ability": "grounded",
+  "hidden_ability": "stonehide",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 54,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "pebble_toss"
+      },
+      {
+        "level": 9,
+        "move": "stone_wall"
+      },
+      {
+        "level": 13,
+        "move": "rock_hurl"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "boulder_smash"
+      },
+      {
+        "level": 40,
+        "move": "tremor_quake"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A massive iron-ore golem whose body is now a dense interlock of stone and metal; each strike sends shockwaves through the mine tunnel walls. The iron golem that grew from a grub \u2014 the shock of scale makes its evolution line feel rewarding.",
+    "category": "Stone Brute Kin",
+    "size_cm": 220,
+    "weight_kg": 1100,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 22,
+      "max": 24
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Imposing wide-shouldered biped; entire body studded with iron-ore protrusions and plates; massive stone fists each larger than a human torso; slow-burning orange eyes set deep in a craggy face; silhouette is pure power.",
+    "palette": "Imposing wide-shouldered biped; entire body studded with iron-ore protrusions and plates; massive stone fists each larger than a human torso; slow-burning orange eyes set deep in a craggy face; silhouette is pure power.",
+    "direction": "The iron golem that grew from a grub \u2014 the shock of scale makes its evolution line feel rewarding."
+  },
+  "provenance_concept_id": "B04-019"
+}

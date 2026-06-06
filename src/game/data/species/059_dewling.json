@@ -1,0 +1,85 @@
+{
+  "id": 59,
+  "slug": "dewling",
+  "name": "Dewling",
+  "types": [
+    "Verdant",
+    "Tide"
+  ],
+  "role": "Special Sweeper",
+  "tier": "A",
+  "stats": {
+    "hp": 44,
+    "atk": 27,
+    "def": 37,
+    "spa": 82,
+    "spd": 44,
+    "spe": 78
+  },
+  "bst": 312,
+  "ability": "verdant_vigor",
+  "hidden_ability": "brisk",
+  "catchRate": 210,
+  "kindling": {
+    "into": 60,
+    "trigger": {
+      "kind": "level",
+      "level": 13
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spore_puff"
+      },
+      {
+        "level": 9,
+        "move": "sleep_pollen"
+      },
+      {
+        "level": 13,
+        "move": "lifedrain"
+      },
+      {
+        "level": 19,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A droplet-shaped seedling that lives in pools of forest dew. It is translucent, with a single seed-core visible inside its water-plant body. Impossibly tiny and translucent \u2014 a glowing dewdrop with eyes.",
+    "category": "Verdant Caster Kin",
+    "size_cm": 12,
+    "weight_kg": 0.3,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 12,
+      "max": 15
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Teardrop body of pale green water-gel, a tiny brown seed core at its centre, thin tendrils as limbs, enormous shiny eyes; ethereally small.",
+    "palette": "Teardrop body of pale green water-gel, a tiny brown seed core at its centre, thin tendrils as limbs, enormous shiny eyes; ethereally small.",
+    "direction": "Impossibly tiny and translucent \u2014 a glowing dewdrop with eyes. Players love hatching something this small."
+  },
+  "provenance_concept_id": "B03-014"
+}

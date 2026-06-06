@@ -1,0 +1,87 @@
+{
+  "id": 93,
+  "slug": "cumulance",
+  "name": "Cumulance",
+  "types": [
+    "Storm",
+    "Light"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "D",
+  "stats": {
+    "hp": 84,
+    "atk": 84,
+    "def": 89,
+    "spa": 85,
+    "spd": 85,
+    "spe": 71
+  },
+  "bst": 498,
+  "ability": "static_skin",
+  "hidden_ability": "forager",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 92,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spark_nip"
+      },
+      {
+        "level": 9,
+        "move": "numb_coil"
+      },
+      {
+        "level": 13,
+        "move": "thunder_kick"
+      },
+      {
+        "level": 19,
+        "move": "radiant_strike"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "gale_slam"
+      },
+      {
+        "level": 40,
+        "move": "tempest"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The cloud-hound's final form \u2014 a great silver-and-gold stormhound whose body is a living thunderhead, radiating soft dawn-light even through the Galehigh dusk. A cloud-puppy grew into the living heart of a thunderstorm lit from within by golden light.",
+    "category": "Storm Wanderer Kin",
+    "size_cm": 170,
+    "weight_kg": 52.0,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 38,
+      "max": 40
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Majestic hound silhouette, body a sculptured mass of dark-silver cloud, a blazing golden core visible through the chest, mane of vertical lightning-columns, four cloud-pad legs leaving gold hoofprints; awe-inspiring at 64px.",
+    "palette": "Majestic hound silhouette, body a sculptured mass of dark-silver cloud, a blazing golden core visible through the chest, mane of vertical lightning-columns, four cloud-pad legs leaving gold hoofprints; awe-inspiring at 64px.",
+    "direction": "A cloud-puppy grew into the living heart of a thunderstorm lit from within by golden light."
+  },
+  "provenance_concept_id": "B05-008"
+}

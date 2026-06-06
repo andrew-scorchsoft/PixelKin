@@ -1,0 +1,84 @@
+{
+  "id": 14,
+  "slug": "embrift",
+  "name": "Embrift",
+  "types": [
+    "Ember"
+  ],
+  "role": "Special Sweeper",
+  "tier": "C",
+  "stats": {
+    "hp": 59,
+    "atk": 42,
+    "def": 50,
+    "spa": 104,
+    "spd": 59,
+    "spe": 104
+  },
+  "bst": 418,
+  "ability": "emberheart",
+  "hidden_ability": "brisk",
+  "catchRate": 120,
+  "kindling": {
+    "into": 15,
+    "trigger": {
+      "kind": "level",
+      "level": 32
+    }
+  },
+  "from": 13,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "tuft_spark"
+      },
+      {
+        "level": 9,
+        "move": "scorch_veil"
+      },
+      {
+        "level": 13,
+        "move": "cinder_spit"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "hearth_pulse"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A swirling ash-sprite that has grown a permanent vortex of superheated cinders around its body, moving like a living dust-devil. A tiny fairy has become a swirling pillar of flame \u2014 awe-inducing mid-stage transformation.",
+    "category": "Ember Caster Kin",
+    "size_cm": 60,
+    "weight_kg": 2.1,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 10,
+      "max": 12
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Hovering humanoid silhouette ringed by a spinning debris-halo of cinders, orange core glowing at the heart, long wispy arms; dynamic at 48px.",
+    "palette": "Hovering humanoid silhouette ringed by a spinning debris-halo of cinders, orange core glowing at the heart, long wispy arms; dynamic at 48px.",
+    "direction": "A tiny fairy has become a swirling pillar of flame \u2014 awe-inducing mid-stage transformation."
+  },
+  "provenance_concept_id": "B01-013"
+}

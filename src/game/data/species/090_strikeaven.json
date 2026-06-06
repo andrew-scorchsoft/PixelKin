@@ -1,0 +1,82 @@
+{
+  "id": 90,
+  "slug": "strikeaven",
+  "name": "Strikeaven",
+  "types": [
+    "Storm"
+  ],
+  "role": "Glass Cannon",
+  "tier": "D",
+  "stats": {
+    "hp": 55,
+    "atk": 129,
+    "def": 46,
+    "spa": 60,
+    "spd": 55,
+    "spe": 153
+  },
+  "bst": 498,
+  "ability": "static_skin",
+  "hidden_ability": "forager",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 89,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spark_nip"
+      },
+      {
+        "level": 9,
+        "move": "numb_coil"
+      },
+      {
+        "level": 13,
+        "move": "thunder_kick"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "gale_slam"
+      },
+      {
+        "level": 40,
+        "move": "tempest"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The apex flint-raven: a large, sleek storm-bird whose entire beak has become a solid static-discharge rod that releases a plasma bolt on each strike; the more it attacks, the stronger each blow. Each hit charges it more \u2014 a slow build into an unstoppable momentum that rewards not retreating.",
+    "category": "Storm Fragile Kin",
+    "size_cm": 120,
+    "weight_kg": 16.5,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 38,
+      "max": 40
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Tall raven silhouette, ink-black feathers with electric-blue iridescence, a long bladed beak crackling with a continuous spark-arc, wingtips trailing static filaments; sleek and lethal at 64px.",
+    "palette": "Tall raven silhouette, ink-black feathers with electric-blue iridescence, a long bladed beak crackling with a continuous spark-arc, wingtips trailing static filaments; sleek and lethal at 64px.",
+    "direction": "Each hit charges it more \u2014 a slow build into an unstoppable momentum that rewards not retreating."
+  },
+  "provenance_concept_id": "B05-041"
+}

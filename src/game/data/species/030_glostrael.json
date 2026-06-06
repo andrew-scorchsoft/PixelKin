@@ -1,0 +1,87 @@
+{
+  "id": 30,
+  "slug": "glostrael",
+  "name": "Glostrael",
+  "types": [
+    "Tide",
+    "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "stats": {
+    "hp": 70,
+    "atk": 49,
+    "def": 60,
+    "spa": 125,
+    "spd": 70,
+    "spe": 124
+  },
+  "bst": 498,
+  "ability": "tidecaller",
+  "hidden_ability": "brisk",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 29,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "mist_spray"
+      },
+      {
+        "level": 9,
+        "move": "drench_song"
+      },
+      {
+        "level": 13,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "tide_pulse"
+      },
+      {
+        "level": 40,
+        "move": "maelstrom"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "Glostern's kindled form \u2014 its bell has expanded enormously and its moon-glow fills the surrounding sea. A moving constellation-lantern. The biggest visual surprise on the southern coast \u2014 seeing one rise out of the harbour is awe-inspiring.",
+    "category": "Tide Caster Kin",
+    "size_cm": 180,
+    "weight_kg": 12,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 10,
+      "max": 12
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Vast translucent bell filled with golden light that fractures like stained glass, eight long trailing tentacles tipped with bright orbs like low-hanging stars. Deep navy outer bell, blazing gold interior.",
+    "palette": "Vast translucent bell filled with golden light that fractures like stained glass, eight long trailing tentacles tipped with bright orbs like low-hanging stars. Deep navy outer bell, blazing gold interior.",
+    "direction": "The biggest visual surprise on the southern coast \u2014 seeing one rise out of the harbour is awe-inspiring."
+  },
+  "provenance_concept_id": "B02-011"
+}

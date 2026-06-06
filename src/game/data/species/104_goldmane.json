@@ -1,0 +1,87 @@
+{
+  "id": 104,
+  "slug": "goldmane",
+  "name": "Goldmane",
+  "types": [
+    "Solar",
+    "Stone"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "D",
+  "stats": {
+    "hp": 99,
+    "atk": 115,
+    "def": 90,
+    "spa": 44,
+    "spd": 75,
+    "spe": 75
+  },
+  "bst": 498,
+  "ability": "sunsoak",
+  "hidden_ability": "forager",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 103,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "sun_jab"
+      },
+      {
+        "level": 9,
+        "move": "bask"
+      },
+      {
+        "level": 13,
+        "move": "solar_lash"
+      },
+      {
+        "level": 19,
+        "move": "rock_hurl"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "flare_crown"
+      },
+      {
+        "level": 40,
+        "move": "sunburst_nova"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A gilded stone lion whose mane has erupted into a crown of solar-flare spines; it stores massive amounts of daylight in its dense mineral body and releases it in searing physical charges. A gilded stone lion whose mane is made of sunlight \u2014 the apex predator of the Solarium, and unmistakably a troph",
+    "category": "Solar Brute Kin",
+    "size_cm": 155,
+    "weight_kg": 210.0,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 48,
+      "max": 50
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Large, imposing lion silhouette with a barrel chest; mane replaced by radiant gold-stone spines fanning outward like sun rays; body plates carved with spiral solar motifs; heavy paws leave glowing prints; dramatic at 64px.",
+    "palette": "Large, imposing lion silhouette with a barrel chest; mane replaced by radiant gold-stone spines fanning outward like sun rays; body plates carved with spiral solar motifs; heavy paws leave glowing prints; dramatic at 64px.",
+    "direction": "A gilded stone lion whose mane is made of sunlight \u2014 the apex predator of the Solarium, and unmistakably a trophy."
+  },
+  "provenance_concept_id": "B07-010"
+}

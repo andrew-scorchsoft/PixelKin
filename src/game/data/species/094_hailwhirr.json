@@ -1,0 +1,85 @@
+{
+  "id": 94,
+  "slug": "hailwhirr",
+  "name": "Hailwhirr",
+  "types": [
+    "Storm",
+    "Frost"
+  ],
+  "role": "Special Sweeper",
+  "tier": "B",
+  "stats": {
+    "hp": 49,
+    "atk": 35,
+    "def": 42,
+    "spa": 87,
+    "spd": 49,
+    "spe": 88
+  },
+  "bst": 350,
+  "ability": "static_skin",
+  "hidden_ability": "brisk",
+  "catchRate": 175,
+  "kindling": {
+    "into": 95,
+    "trigger": {
+      "kind": "level",
+      "level": 26
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "static_jolt"
+      },
+      {
+        "level": 9,
+        "move": "numb_coil"
+      },
+      {
+        "level": 13,
+        "move": "volt_arc"
+      },
+      {
+        "level": 19,
+        "move": "glacier_beam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A small blizzard-wasp native to the high passes above Galehigh, spinning frost crystals from its wing-tips as it spirals in updrafts; its sting is numbing cold rather than venom. A winter wasp that spins ice from its wings \u2014 pretty until it stings.",
+    "category": "Storm Caster Kin",
+    "size_cm": 18,
+    "weight_kg": 0.4,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 29,
+      "max": 32
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Compact wasp silhouette, ice-blue and silver banding, wings that frost the air visibly as they beat, a sharp pointed abdomen tipped with a pale blue crystal stinger; crisp geometry at 32px.",
+    "palette": "Compact wasp silhouette, ice-blue and silver banding, wings that frost the air visibly as they beat, a sharp pointed abdomen tipped with a pale blue crystal stinger; crisp geometry at 32px.",
+    "direction": "A winter wasp that spins ice from its wings \u2014 pretty until it stings."
+  },
+  "provenance_concept_id": "B05-026"
+}

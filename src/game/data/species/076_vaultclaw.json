@@ -1,0 +1,87 @@
+{
+  "id": 76,
+  "slug": "vaultclaw",
+  "name": "Vaultclaw",
+  "types": [
+    "Frost",
+    "Stone"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "D",
+  "stats": {
+    "hp": 99,
+    "atk": 115,
+    "def": 90,
+    "spa": 44,
+    "spd": 75,
+    "spe": 75
+  },
+  "bst": 498,
+  "ability": "coldblood",
+  "hidden_ability": "forager",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 75,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "frost_nip"
+      },
+      {
+        "level": 9,
+        "move": "chill_mist"
+      },
+      {
+        "level": 13,
+        "move": "ice_fang"
+      },
+      {
+        "level": 19,
+        "move": "rock_hurl"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "avalanche"
+      },
+      {
+        "level": 40,
+        "move": "blizzard_howl"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A colossal glacier-hermit whose geode shell has become a literal ice-cave it carries. The crystal interior is now large enough to shelter small kin in blizzards \u2014 some say Frostkit families nest inside willing Vaultclaw shells. Its claws can carve new passages through glacier ice. A walking crystal ",
+    "category": "Frost Brute Kin",
+    "size_cm": 195,
+    "weight_kg": 680,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 38,
+      "max": 40
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Large, powerful crustacean body; the carapace is now a massive dome of geode and ice-crystal formations, towering above the body; huge armoured claws; a walking glacier-cave silhouette \u2014 dramatic and distinctive at 48px, dominated by the crystal dome above.",
+    "palette": "Large, powerful crustacean body; the carapace is now a massive dome of geode and ice-crystal formations, towering above the body; huge armoured claws; a walking glacier-cave silhouette \u2014 dramatic and distinctive at 48px, dominated by the crystal dome above.",
+    "direction": "A walking crystal cave that shelters other kin \u2014 the ecological and visual storytelling is irresistible."
+  },
+  "provenance_concept_id": "B06-017"
+}

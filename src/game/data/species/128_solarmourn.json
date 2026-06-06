@@ -1,0 +1,74 @@
+{
+  "id": 128,
+  "slug": "solarmourn",
+  "name": "Solarmourn",
+  "types": [
+    "Solar"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "E",
+  "stats": {
+    "hp": 94,
+    "atk": 99,
+    "def": 95,
+    "spa": 95,
+    "spd": 95,
+    "spe": 80
+  },
+  "bst": 558,
+  "ability": "daybringer",
+  "hidden_ability": "sunsoak",
+  "catchRate": 24,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "sun_jab"
+      },
+      {
+        "level": 9,
+        "move": "bask"
+      },
+      {
+        "level": 13,
+        "move": "solar_lash"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "flare_crown"
+      },
+      {
+        "level": 40,
+        "move": "sunburst_nova"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The luminous anchor of the Solar Constellation, a great heron-phoenix whose plumage is the last fragment of stored daylight in the Sunken Solarium. It doesn't burn \u2014 it glows with the warm memory of sunlight, a diffuse gold that makes everything it stands beside look briefly like afternoon. Lucan Py",
+    "category": "Solar Wanderer Kin",
+    "size_cm": 195,
+    "weight_kg": 85,
+    "habitat": "west"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "Tall, elegant heron-phoenix with long sweeping tail feathers that trail behind like a train. Plumage in warm gold and honey-amber, edged with faint diamond-cyan light. The chest and neck are pale as bone-white parchment. One wing is slightly shorter \u2014 an old wound that never quite healed. Eyes are deep amber, warm and patient. The silhouette is all grace and faded glory.",
+    "palette": "Tall, elegant heron-phoenix with long sweeping tail feathers that trail behind like a train. Plumage in warm gold and honey-amber, edged with faint diamond-cyan light. The chest and neck are pale as bone-white parchment. One wing is slightly shorter \u2014 an old wound that never quite healed. Eyes are deep amber, warm and patient. The silhouette is all grace and faded glory.",
+    "direction": "The sorrowful beauty of something magnificent that has endured too long alone. Players who battle this one in the Solarium will feel the whole Vesperholm mood in one encounter."
+  },
+  "provenance_concept_id": "B11-007"
+}

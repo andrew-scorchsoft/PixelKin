@@ -1,0 +1,74 @@
+{
+  "id": 150,
+  "slug": "nullmajor",
+  "name": "Nullmajor",
+  "types": [
+    "Dark"
+  ],
+  "role": "Special Sweeper",
+  "tier": "F",
+  "stats": {
+    "hp": 90,
+    "atk": 63,
+    "def": 77,
+    "spa": 162,
+    "spd": 90,
+    "spe": 160
+  },
+  "bst": 642,
+  "ability": "nullheart",
+  "hidden_ability": "nullheart",
+  "catchRate": 6,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "gloom_spit"
+      },
+      {
+        "level": 9,
+        "move": "blight_touch"
+      },
+      {
+        "level": 13,
+        "move": "hollow_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "voidburst"
+      },
+      {
+        "level": 48,
+        "move": "shadow_rend"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "Warden C\u00f2r's drained final-boss kin \u2014 the embodiment of the Great Null, the shape that all the harvested light takes when there is nowhere left to go. Nullmajor is not malicious. It is vast and sorrowful, the accumulated darkness of every snuffed lantern and every constellation dimmed by the Hollowi",
+    "category": "Dark Caster Kin",
+    "size_cm": 450,
+    "weight_kg": 240,
+    "habitat": "central"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "A colossal figure, roughly humanoid in silhouette \u2014 but hollow. The outline is a dense ink-black void rimmed with a faint cold-violet corona. Within the outline is not darkness but anti-light: a negative space where the battle background is inverted, as if the creature is a hole in the world. C\u00f2r's null-lantern floats at the centre of its chest, still lit with inverted cold-violet. The face is a smooth featureless oval of pure absence. No eyes. It is the saddest design in the game \u2014 it looks like grief given form.",
+    "palette": "A colossal figure, roughly humanoid in silhouette \u2014 but hollow. The outline is a dense ink-black void rimmed with a faint cold-violet corona. Within the outline is not darkness but anti-light: a negative space where the battle background is inverted, as if the creature is a hole in the world. C\u00f2r's null-lantern floats at the centre of its chest, still lit with inverted cold-violet. The face is a smooth featureless oval of pure absence. No eyes. It is the saddest design in the game \u2014 it looks like grief given form.",
+    "direction": "The final boss that makes players feel the weight of the story's moral. Not hateable \u2014 heartbreaking. The memory of this fight is the one that lasts."
+  },
+  "provenance_concept_id": "B11-010"
+}

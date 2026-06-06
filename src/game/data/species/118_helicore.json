@@ -1,0 +1,84 @@
+{
+  "id": 118,
+  "slug": "helicore",
+  "name": "Helicore",
+  "types": [
+    "Solar"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "C",
+  "stats": {
+    "hp": 57,
+    "atk": 63,
+    "def": 63,
+    "spa": 63,
+    "spd": 63,
+    "spe": 109
+  },
+  "bst": 418,
+  "ability": "sunsoak",
+  "hidden_ability": "brisk",
+  "catchRate": 112,
+  "kindling": {
+    "into": 119,
+    "trigger": {
+      "kind": "level",
+      "level": 40
+    }
+  },
+  "from": 117,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "glint_ray"
+      },
+      {
+        "level": 9,
+        "move": "bask"
+      },
+      {
+        "level": 13,
+        "move": "daybeam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "sunburst_nova"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A solar orb kin that has cracked open slightly to reveal a molten amber core; the spinning has accelerated so much that it now hovers just above the ground, leaving a faint scorch ring where it rests. A spinning engine of stored sunlight on the verge of breaking open \u2014 it feels genuinely powerful an",
+    "category": "Solar Courier Kin",
+    "size_cm": 55,
+    "weight_kg": 14.0,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 48,
+      "max": 50
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Slightly larger orb with a glowing fracture line around the equator revealing golden inner light; a halo of heat distortion shimmers above it; sun-ray notches are now clearly defined ridges; bold at 48px.",
+    "palette": "Slightly larger orb with a glowing fracture line around the equator revealing golden inner light; a halo of heat distortion shimmers above it; sun-ray notches are now clearly defined ridges; bold at 48px.",
+    "direction": "A spinning engine of stored sunlight on the verge of breaking open \u2014 it feels genuinely powerful and a little dangerous."
+  },
+  "provenance_concept_id": "B07-007"
+}

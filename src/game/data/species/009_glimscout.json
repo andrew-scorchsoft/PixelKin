@@ -1,0 +1,78 @@
+{
+  "id": 9,
+  "slug": "glimscout",
+  "name": "Glimscout",
+  "types": [
+    "Light"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "D",
+  "stats": {
+    "hp": 71,
+    "atk": 75,
+    "def": 75,
+    "spa": 75,
+    "spd": 75,
+    "spe": 127
+  },
+  "bst": 498,
+  "ability": "mirrorlight",
+  "hidden_ability": "brisk",
+  "catchRate": 65,
+  "kindling": null,
+  "from": 8,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spark_mote"
+      },
+      {
+        "level": 9,
+        "move": "dazzle_flash"
+      },
+      {
+        "level": 13,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "dawnburst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A grown firefly-courier that blazes a trail of lingering glow-motes wherever it streaks, marking safe paths through the dusk for those who follow. It looks fast even when standing still \u2014 older players will immediately clock it as a pivot piece.",
+    "category": "Light Courier Kin",
+    "size_cm": 38,
+    "weight_kg": 1.2,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 10,
+      "max": 12
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Elongated, dragonfly-like frame; four layered wings edged with cyan; abdomen striped amber and cream, tip blazing a permanent steady beacon; big compound eyes catching every glint; reads as a streak of light at 32px.",
+    "palette": "Elongated, dragonfly-like frame; four layered wings edged with cyan; abdomen striped amber and cream, tip blazing a permanent steady beacon; big compound eyes catching every glint; reads as a streak of light at 32px.",
+    "direction": "It looks fast even when standing still \u2014 older players will immediately clock it as a pivot piece."
+  },
+  "provenance_concept_id": "B09-002"
+}

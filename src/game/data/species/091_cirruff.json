@@ -1,0 +1,85 @@
+{
+  "id": 91,
+  "slug": "cirruff",
+  "name": "Cirruff",
+  "types": [
+    "Storm",
+    "Light"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "B",
+  "stats": {
+    "hp": 63,
+    "atk": 60,
+    "def": 60,
+    "spa": 59,
+    "spd": 59,
+    "spe": 49
+  },
+  "bst": 350,
+  "ability": "static_skin",
+  "hidden_ability": "forager",
+  "catchRate": 175,
+  "kindling": {
+    "into": 92,
+    "trigger": {
+      "kind": "level",
+      "level": 25
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spark_nip"
+      },
+      {
+        "level": 9,
+        "move": "numb_coil"
+      },
+      {
+        "level": 13,
+        "move": "thunder_kick"
+      },
+      {
+        "level": 19,
+        "move": "radiant_strike"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A cloud-fluff pup born inside a high cirrus cloud; its fur is made of compressed cloud-stuff that crackles with soft static, and it glows faintly gold at the edges when happy. A puppy made of cloud-fluff that sparkles \u2014 you'll want to hug it even knowing it shocks back.",
+    "category": "Storm Wanderer Kin",
+    "size_cm": 30,
+    "weight_kg": 1.8,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 29,
+      "max": 32
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Plump round pup, fluffy white cloud-textured fur that puffs out at the paws and tail, faint gold edge-glow, two bright eyes and a tiny static-spark nose; irresistibly soft at 32px.",
+    "palette": "Plump round pup, fluffy white cloud-textured fur that puffs out at the paws and tail, faint gold edge-glow, two bright eyes and a tiny static-spark nose; irresistibly soft at 32px.",
+    "direction": "A puppy made of cloud-fluff that sparkles \u2014 you'll want to hug it even knowing it shocks back."
+  },
+  "provenance_concept_id": "B05-006"
+}

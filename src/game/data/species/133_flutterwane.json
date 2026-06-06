@@ -1,0 +1,85 @@
+{
+  "id": 133,
+  "slug": "flutterwane",
+  "name": "Flutterwane",
+  "types": [
+    "Dark",
+    "Light"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "A",
+  "stats": {
+    "hp": 41,
+    "atk": 47,
+    "def": 47,
+    "spa": 47,
+    "spd": 47,
+    "spe": 83
+  },
+  "bst": 312,
+  "ability": "nullheart",
+  "hidden_ability": "brisk",
+  "catchRate": 210,
+  "kindling": {
+    "into": 134,
+    "trigger": {
+      "kind": "level",
+      "level": 22
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "gloom_spit"
+      },
+      {
+        "level": 9,
+        "move": "blight_touch"
+      },
+      {
+        "level": 13,
+        "move": "hollow_pulse"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A tiny will-o'-wisp no bigger than a fist, its glow cycling between warm amber and drained grey as if the Hollowing pulls at something it refuses to release. It blinks in and out of visibility like a guttering candle. A kin visibly fighting its own hollowing \u2014 warm and dark at once, genuinely moving",
+    "category": "Dark Courier Kin",
+    "size_cm": 12,
+    "weight_kg": 0.2,
+    "habitat": "outer"
+  },
+  "encounters": [
+    {
+      "area": "coldfog_marches",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 46,
+      "max": 49
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Teardrop wisp shape, half its body bathed in warm amber-white, half in cool ashen grey; the divide is not a clean line but a flickering blurred edge; tiny trailing tail of mist.",
+    "palette": "Teardrop wisp shape, half its body bathed in warm amber-white, half in cool ashen grey; the divide is not a clean line but a flickering blurred edge; tiny trailing tail of mist.",
+    "direction": "A kin visibly fighting its own hollowing \u2014 warm and dark at once, genuinely moving."
+  },
+  "provenance_concept_id": "B10-006"
+}

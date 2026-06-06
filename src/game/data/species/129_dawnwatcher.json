@@ -1,0 +1,79 @@
+{
+  "id": 129,
+  "slug": "dawnwatcher",
+  "name": "Dawnwatcher",
+  "types": [
+    "Lunar",
+    "Light"
+  ],
+  "role": "Special Tank",
+  "tier": "E",
+  "stats": {
+    "hp": 112,
+    "atk": 44,
+    "def": 78,
+    "spa": 129,
+    "spd": 100,
+    "spe": 95
+  },
+  "bst": 558,
+  "ability": "nightfall",
+  "hidden_ability": "nightsight",
+  "catchRate": 24,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "dream_wisp"
+      },
+      {
+        "level": 9,
+        "move": "lull"
+      },
+      {
+        "level": 13,
+        "move": "moonbeam"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "eclipse_wave"
+      },
+      {
+        "level": 48,
+        "move": "nightfall_veil"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The sub-legendary apex of the Lunar constellation \u2014 a great celestial heron of crystallised moonlight and captured starfire, said to stand vigil at the exact moment between night and dawn. Nightreach astronomers built the observatory to watch for it. Lunar/Light Constellation Warden. The heron that ",
+    "category": "Lunar Channeler Kin",
+    "size_cm": 280,
+    "weight_kg": 95.0,
+    "habitat": "west"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "Tall elegant heron silhouette, body formed of layered plates of translucent crystalline moonlight, long neck and crest trailing silver-white starfire, vast wings spanning full starfield patterns, a single blazing star-eye; monumentally graceful at 64px.",
+    "palette": "Tall elegant heron silhouette, body formed of layered plates of translucent crystalline moonlight, long neck and crest trailing silver-white starfire, vast wings spanning full starfield patterns, a single blazing star-eye; monumentally graceful at 64px.",
+    "direction": "The heron that watches the sky so dawn can come \u2014 the Warden of the Lunar constellation, and the reason Nightreach Observatory exists at all."
+  },
+  "provenance_concept_id": "B08-035"
+}

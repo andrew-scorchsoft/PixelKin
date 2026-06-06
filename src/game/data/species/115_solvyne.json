@@ -1,0 +1,89 @@
+{
+  "id": 115,
+  "slug": "solvyne",
+  "name": "Solvyne",
+  "types": [
+    "Verdant",
+    "Solar"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "C",
+  "stats": {
+    "hp": 75,
+    "atk": 71,
+    "def": 71,
+    "spa": 71,
+    "spd": 71,
+    "spe": 59
+  },
+  "bst": 418,
+  "ability": "verdant_vigor",
+  "hidden_ability": "forager",
+  "catchRate": 112,
+  "kindling": {
+    "into": 116,
+    "trigger": {
+      "kind": "level",
+      "level": 36
+    }
+  },
+  "from": 114,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "vine_tap"
+      },
+      {
+        "level": 9,
+        "move": "sleep_pollen"
+      },
+      {
+        "level": 13,
+        "move": "root_strike"
+      },
+      {
+        "level": 19,
+        "move": "solar_lash"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "bramble_crush"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A tall vine-wreathed sun-fae whose open flower-crown channels stored daylight into its spiral tendrils, healing wounds with warm radiance. It tends to wounded kin in the Solarium ruins like a guardian \u2014 an ally that glows warmer the more it trusts you.",
+    "category": "Verdant Wanderer Kin",
+    "size_cm": 90,
+    "weight_kg": 18.2,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 48,
+      "max": 50
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Slender humanoid silhouette wrapped in glowing vines; broad open sunflower crown framing the face; amber-gold light streams from the petal edges; reads as a confident mid-stage at 48px.",
+    "palette": "Slender humanoid silhouette wrapped in glowing vines; broad open sunflower crown framing the face; amber-gold light streams from the petal edges; reads as a confident mid-stage at 48px.",
+    "direction": "It tends to wounded kin in the Solarium ruins like a guardian \u2014 an ally that glows warmer the more it trusts you."
+  },
+  "provenance_concept_id": "B07-002"
+}

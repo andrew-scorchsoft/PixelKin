@@ -1,0 +1,80 @@
+{
+  "id": 41,
+  "slug": "scorchite",
+  "name": "Scorchite",
+  "types": [
+    "Ember"
+  ],
+  "role": "Special Sweeper",
+  "tier": "A",
+  "stats": {
+    "hp": 44,
+    "atk": 29,
+    "def": 37,
+    "spa": 80,
+    "spd": 44,
+    "spe": 78
+  },
+  "bst": 312,
+  "ability": "emberheart",
+  "hidden_ability": "brisk",
+  "catchRate": 210,
+  "kindling": {
+    "into": 42,
+    "trigger": {
+      "kind": "level",
+      "level": 14
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "tuft_spark"
+      },
+      {
+        "level": 9,
+        "move": "scorch_veil"
+      },
+      {
+        "level": 13,
+        "move": "cinder_spit"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A marble-sized wandering coal-sprite with a single bright eye; it rolls into warm crevices in Cinderhead Mine and hums contentedly. The smallest, round-est creature in the mine \u2014 impossibly cute in its simplicity.",
+    "category": "Ember Caster Kin",
+    "size_cm": 12,
+    "weight_kg": 0.9,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 12,
+      "max": 15
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Near-perfect sphere, dull black coal texture with a single amber-glow eye, two tiny round feet; the simplest possible round silhouette at 32px.",
+    "palette": "Near-perfect sphere, dull black coal texture with a single amber-glow eye, two tiny round feet; the simplest possible round silhouette at 32px.",
+    "direction": "The smallest, round-est creature in the mine \u2014 impossibly cute in its simplicity."
+  },
+  "provenance_concept_id": "B01-021"
+}

@@ -1,0 +1,80 @@
+{
+  "id": 117,
+  "slug": "helibud",
+  "name": "Helibud",
+  "types": [
+    "Solar"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "B",
+  "stats": {
+    "hp": 53,
+    "atk": 46,
+    "def": 52,
+    "spa": 52,
+    "spd": 52,
+    "spe": 95
+  },
+  "bst": 350,
+  "ability": "sunsoak",
+  "hidden_ability": "brisk",
+  "catchRate": 175,
+  "kindling": {
+    "into": 118,
+    "trigger": {
+      "kind": "level",
+      "level": 25
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "glint_ray"
+      },
+      {
+        "level": 9,
+        "move": "bask"
+      },
+      {
+        "level": 13,
+        "move": "daybeam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A rolling solar-seed that bounced free of the Solarium's golden arches; it spins constantly to charge itself with stored daylight, emitting a faint hum and a warm amber glow. Endlessly spinning and humming with stored warmth \u2014 a living solar toy kids will want to roll everywhere.",
+    "category": "Solar Courier Kin",
+    "size_cm": 26,
+    "weight_kg": 3.9,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 41,
+      "max": 44
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Smooth orb-shaped kin, deep amber with eight radial sun-ray notches carved around its equator; two small leaf-wing nubs; single glowing eye; reads cleanly as a spinning ball at 32px.",
+    "palette": "Smooth orb-shaped kin, deep amber with eight radial sun-ray notches carved around its equator; two small leaf-wing nubs; single glowing eye; reads cleanly as a spinning ball at 32px.",
+    "direction": "Endlessly spinning and humming with stored warmth \u2014 a living solar toy kids will want to roll everywhere."
+  },
+  "provenance_concept_id": "B07-006"
+}

@@ -1,0 +1,83 @@
+{
+  "id": 107,
+  "slug": "lunarbel",
+  "name": "Lunarbel",
+  "types": [
+    "Lunar",
+    "Light"
+  ],
+  "role": "Special Tank",
+  "tier": "D",
+  "stats": {
+    "hp": 99,
+    "atk": 39,
+    "def": 70,
+    "spa": 115,
+    "spd": 90,
+    "spe": 85
+  },
+  "bst": 498,
+  "ability": "nightsight",
+  "hidden_ability": "thickcoat",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 106,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "dream_wisp"
+      },
+      {
+        "level": 9,
+        "move": "lull"
+      },
+      {
+        "level": 13,
+        "move": "moonbeam"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "eclipse_wave"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A great moon-ram whose wool has become a cascade of solidified moonlight, each strand a fine thread of pure silver-white luminescence. It stands watch over sleeping kin, radiating a calming aura that suppresses nightmares. A sky-sheep made of moonlight, standing guard in the dark \u2014 the most reassuri",
+    "category": "Lunar Channeler Kin",
+    "size_cm": 155,
+    "weight_kg": 88.0,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 48,
+      "max": 50
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Large broad-shouldered ram, glowing silver-white flowing wool, full moon-disk framed between sweeping horn-arcs, radiant star-pupils, soft halo aura; majestic and otherworldly at 64px.",
+    "palette": "Large broad-shouldered ram, glowing silver-white flowing wool, full moon-disk framed between sweeping horn-arcs, radiant star-pupils, soft halo aura; majestic and otherworldly at 64px.",
+    "direction": "A sky-sheep made of moonlight, standing guard in the dark \u2014 the most reassuring sight in the night highlands."
+  },
+  "provenance_concept_id": "B08-003"
+}

@@ -122,28 +122,46 @@ def main():
         root = members[0]
         ptype = root["types"][0]
         sc = sum(m["_score"] for m in members)/len(members)
-        # completeness bonus: coherent multi-stage with climbing tiers
+        # completeness bonus: reward coherent multi-stage lines so the dex gets
+        # plenty of A/B/C base+mid forms (the awe curve) rather than standalone apexes
         bonus = 0
-        if len(members) >= 2: bonus += 3
+        if len(members) == 2: bonus += 3
+        elif len(members) >= 3: bonus += 7
         tg = tag_line(members, "")
         L.append({"members": members, "ptype": ptype, "size": len(members),
                   "score": round(sc + bonus, 2), "tags": tg, "root": root,
                   "region": root.get("region","south")})
 
     chosen, used = [], Counter()
+    tier_used = Counter()
     chosen_ids = set()
+    TIER_CAP = {"E": 14, "F": 6}  # hard rarity caps: apexes/legendaries stay rare
+    def tiers_of(line):
+        return Counter(m.get("tier") for m in line["members"])
+    def tier_ok(line):
+        tc = tiers_of(line)
+        return all(tier_used[t] + tc.get(t, 0) <= cap for t, cap in TIER_CAP.items())
     def take(line, why):
         if id(line) in chosen_ids: return
         chosen.append((line, why)); chosen_ids.add(id(line)); used[line["ptype"]] += line["size"]
+        for m in line["members"]: tier_used[m.get("tier")] += 1
 
     # 1) forced: existing starter finals (inject Vulpyre/Brinix as stage-1 members)
     VULPYRE = {"concept_id":"X-VULPYRE","name":"Vulpyre","types":["Ember"],"role":"Special Sweeper","tier":"B","region":"south","rarity":"common","line":{"shape":"two-stage","stage":1},"concept":"(existing starter)","visual":"(existing art)","_score":99,"existing":True}
     BRINIX  = {"concept_id":"X-BRINIX","name":"Brinix","types":["Tide"],"role":"Special Wall","tier":"B","region":"south","rarity":"common","line":{"shape":"two-stage","stage":1},"concept":"(existing starter)","visual":"(existing art)","_score":99,"existing":True}
-    for line in L:
-        if line["tags"]["fromVulpyre"] and not any(m.get("name","").lower()=="vulpyre" for m in line["members"]):
-            line["members"] = [VULPYRE] + line["members"]; line["size"] = len(line["members"]); take(line, "Vulpyre line (existing starter #1)")
-        if line["tags"]["fromBrinix"] and not any(m.get("name","").lower()=="brinix" for m in line["members"]):
-            line["members"] = [BRINIX] + line["members"]; line["size"] = len(line["members"]); take(line, "Brinix line (existing starter #2)")
+    def inject_existing(tag, base, why):
+        cand = sorted([l for l in L if l["tags"][tag] and id(l) not in chosen_ids], key=lambda l:-l["score"])
+        if not cand: return
+        line = cand[0]
+        bn = base["name"].lower()
+        # only prepend a synthetic base if the pool didn't already include one
+        if not any(m.get("name", "").lower() == bn for m in line["members"]):
+            base["line"]["kindles_into"] = line["members"][0]["concept_id"]
+            line["members"] = [base] + line["members"]; line["size"] = len(line["members"])
+        line["ptype"] = line["members"][0]["types"][0]
+        take(line, why)
+    inject_existing("fromVulpyre", VULPYRE, "Vulpyre line (existing starter #1)")
+    inject_existing("fromBrinix", BRINIX, "Brinix line (existing starter #2)")
 
     # 2) mascot
     for line in sorted([l for l in L if l["tags"]["mascot"]], key=lambda l:-l["score"])[:1]:
@@ -172,7 +190,7 @@ def main():
         for line in remaining:
             if id(line) in chosen_ids: continue
             if line["ptype"] != t: continue
-            if used[t] + line["size"] <= QUOTA[t]:
+            if used[t] + line["size"] <= QUOTA[t] and tier_ok(line):
                 take(line, f"fill {t}")
 
     total = sum(used.values())
@@ -183,11 +201,12 @@ def main():
         deficits = sorted(TYPES, key=lambda t: (used[t]-QUOTA[t]))
         for t in deficits:
             for line in sorted([l for l in L if id(l) not in chosen_ids and l["ptype"]==t], key=lambda l:-l["score"]):
-                if used[t] + line["size"] <= QUOTA[t] + 1:
+                if used[t] + line["size"] <= QUOTA[t] + 1 and tier_ok(line):
                     take(line, f"balance-add {t}"); return True
-        # last resort: any line that fits
+        # last resort: any non-E/F line that fits within +2 of its quota
         for line in sorted([l for l in L if id(l) not in chosen_ids], key=lambda l:-l["score"]):
-            take(line, "balance-add any"); return True
+            if tier_ok(line) and used[line["ptype"]] + line["size"] <= QUOTA[line["ptype"]] + 2:
+                take(line, "balance-add any"); return True
         return False
     def remove_worst():
         # remove lowest-score non-forced line from most-over-quota type
@@ -198,7 +217,9 @@ def main():
             cand.sort(key=lambda x: x[0]["score"])
             if cand:
                 line,why = cand[0]
-                chosen.remove((line,why)); chosen_ids.discard(id(line)); used[line["ptype"]]-=line["size"]; return True
+                chosen.remove((line,why)); chosen_ids.discard(id(line)); used[line["ptype"]]-=line["size"]
+                for m in line["members"]: tier_used[m.get("tier")] -= 1
+                return True
         return False
 
     guard = 0
@@ -219,15 +240,19 @@ def main():
     def line_has(line, nm): return any(m.get("name","").lower()==nm for m in line["members"])
     ordered = [l for l in sel_lines if line_has(l,"vulpyre")] + [l for l in sel_lines if line_has(l,"brinix")] + \
               [l for l in sel_lines if not (line_has(l,"vulpyre") or line_has(l,"brinix"))]
-    dex_id = 1
+    next_id = 3  # 1 and 2 are reserved for the existing Vulpyre / Brinix
     out_lines = []
     for line in ordered:
         ids_here = []
         for m in line["members"]:
+            nm = m.get("name", "").lower()
+            if nm == "vulpyre": did = 1
+            elif nm == "brinix": did = 2
+            else: did = next_id; next_id += 1
             entry = dict(m)
-            entry["dex_id"] = dex_id
+            entry["dex_id"] = did
             entry["line_primary_type"] = line["ptype"]
-            ids_here.append(dex_id); dex_id += 1
+            ids_here.append(did)
             selected.append(entry)
         out_lines.append({"primary_type": line["ptype"], "region": line["region"],
                           "score": line["score"], "dex_ids": ids_here,

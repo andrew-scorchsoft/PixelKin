@@ -1,0 +1,85 @@
+{
+  "id": 62,
+  "slug": "barkhelm",
+  "name": "Barkhelm",
+  "types": [
+    "Verdant",
+    "Stone"
+  ],
+  "role": "Physical Wall",
+  "tier": "A",
+  "stats": {
+    "hp": 59,
+    "atk": 44,
+    "def": 77,
+    "spa": 26,
+    "spd": 53,
+    "spe": 53
+  },
+  "bst": 312,
+  "ability": "verdant_vigor",
+  "hidden_ability": "thickcoat",
+  "catchRate": 210,
+  "kindling": {
+    "into": 63,
+    "trigger": {
+      "kind": "level",
+      "level": 16
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "vine_tap"
+      },
+      {
+        "level": 9,
+        "move": "sleep_pollen"
+      },
+      {
+        "level": 13,
+        "move": "root_strike"
+      },
+      {
+        "level": 19,
+        "move": "rock_hurl"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A sturdy tortoise-like creature whose shell is made of compressed bark and stone. It sleeps for weeks, growing new bark-rings like a tree. A living tree-stump that turns out to be a baby \u2014 the double-take moment when it opens its eyes.",
+    "category": "Verdant Bulwark Kin",
+    "size_cm": 18,
+    "weight_kg": 4,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 12,
+      "max": 15
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Tiny squat form, rounded bark-ring shell like a tree cross-section, four stubby rock-grey legs, a small snout peering out; looks like a living tree stump.",
+    "palette": "Tiny squat form, rounded bark-ring shell like a tree cross-section, four stubby rock-grey legs, a small snout peering out; looks like a living tree stump.",
+    "direction": "A living tree-stump that turns out to be a baby \u2014 the double-take moment when it opens its eyes."
+  },
+  "provenance_concept_id": "B03-024"
+}

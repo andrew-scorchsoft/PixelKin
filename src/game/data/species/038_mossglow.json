@@ -1,0 +1,85 @@
+{
+  "id": 38,
+  "slug": "mossglow",
+  "name": "Mossglow",
+  "types": [
+    "Light",
+    "Verdant"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "A",
+  "stats": {
+    "hp": 50,
+    "atk": 41,
+    "def": 56,
+    "spa": 44,
+    "spd": 56,
+    "spe": 65
+  },
+  "bst": 312,
+  "ability": "mirrorlight",
+  "hidden_ability": "forager",
+  "catchRate": 210,
+  "kindling": {
+    "into": 39,
+    "trigger": {
+      "kind": "level",
+      "level": 18
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spark_mote"
+      },
+      {
+        "level": 9,
+        "move": "dazzle_flash"
+      },
+      {
+        "level": 13,
+        "move": "light_pulse"
+      },
+      {
+        "level": 19,
+        "move": "lifedrain"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A fuzzy moss-ball that slowly rolls through the forest floor of Lowleaf Hollow, leaving a trail of faint bioluminescent spores; too round and soft to be scary but deeply easy to underestimate. It looks completely harmless \u2014 players discover that its spore cloud inflicts Sleep, which is a lovely reve",
+    "category": "Light Trickster Kin",
+    "size_cm": 18,
+    "weight_kg": 1.4,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 12,
+      "max": 15
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Near-perfect sphere of dense green moss with scattered amber spore-dots; no obvious limbs but two tiny leaf-stubs; a single sleepy eye peeking out from the moss; rolls via a wobble-wiggle motion; reads as a mossy marble at 16px.",
+    "palette": "Near-perfect sphere of dense green moss with scattered amber spore-dots; no obvious limbs but two tiny leaf-stubs; a single sleepy eye peeking out from the moss; rolls via a wobble-wiggle motion; reads as a mossy marble at 16px.",
+    "direction": "It looks completely harmless \u2014 players discover that its spore cloud inflicts Sleep, which is a lovely reveal."
+  },
+  "provenance_concept_id": "B09-014"
+}

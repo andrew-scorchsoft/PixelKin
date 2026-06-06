@@ -1,0 +1,78 @@
+{
+  "id": 138,
+  "slug": "voidmantle",
+  "name": "Voidmantle",
+  "types": [
+    "Dark"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "D",
+  "stats": {
+    "hp": 80,
+    "atk": 64,
+    "def": 89,
+    "spa": 70,
+    "spd": 90,
+    "spe": 105
+  },
+  "bst": 498,
+  "ability": "nullheart",
+  "hidden_ability": "forager",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 137,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "gloom_spit"
+      },
+      {
+        "level": 9,
+        "move": "blight_touch"
+      },
+      {
+        "level": 13,
+        "move": "hollow_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "voidburst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A large, crepuscular moth whose wingspan fills a doorway. Its wings are so saturated with null-dust that they absorb the ambient glow from nearby kin, leaving a sphere of unnatural dark around it. An apex predator of light. A moth that eats light itself \u2014 awe-inducing at the right stage of the game.",
+    "category": "Dark Trickster Kin",
+    "size_cm": 95,
+    "weight_kg": 6.2,
+    "habitat": "outer"
+  },
+  "encounters": [
+    {
+      "area": "coldfog_marches",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 52,
+      "max": 54
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Huge moth, wings deep charcoal edged in ghostly silver-white trim; six dead-lantern symbols across both wings; a feathered thorax like a burial shroud; compound eyes a milky, sightless grey.",
+    "palette": "Huge moth, wings deep charcoal edged in ghostly silver-white trim; six dead-lantern symbols across both wings; a feathered thorax like a burial shroud; compound eyes a milky, sightless grey.",
+    "direction": "A moth that eats light itself \u2014 awe-inducing at the right stage of the game."
+  },
+  "provenance_concept_id": "B10-003"
+}

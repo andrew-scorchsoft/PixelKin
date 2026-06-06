@@ -1,0 +1,84 @@
+{
+  "id": 42,
+  "slug": "coalump",
+  "name": "Coalump",
+  "types": [
+    "Ember"
+  ],
+  "role": "Special Sweeper",
+  "tier": "C",
+  "stats": {
+    "hp": 59,
+    "atk": 37,
+    "def": 50,
+    "spa": 109,
+    "spd": 59,
+    "spe": 104
+  },
+  "bst": 418,
+  "ability": "emberheart",
+  "hidden_ability": "brisk",
+  "catchRate": 120,
+  "kindling": {
+    "into": 43,
+    "trigger": {
+      "kind": "level",
+      "level": 30
+    }
+  },
+  "from": 41,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "tuft_spark"
+      },
+      {
+        "level": 9,
+        "move": "scorch_veil"
+      },
+      {
+        "level": 13,
+        "move": "cinder_spit"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "hearth_pulse"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The little coal-sprite has absorbed enough heat to grow limbs and a second eye; its body now cracks open in starbursts of orange light when it attacks. Watching those cracks spread as it gets stronger makes every battle feel like building toward an explosion.",
+    "category": "Ember Caster Kin",
+    "size_cm": 50,
+    "weight_kg": 18.0,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 22,
+      "max": 24
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Lumpy rounded torso, short sturdy limbs, two glowing eyes, body covered in expanding crack-pattern glow lines; reads as power building at 48px.",
+    "palette": "Lumpy rounded torso, short sturdy limbs, two glowing eyes, body covered in expanding crack-pattern glow lines; reads as power building at 48px.",
+    "direction": "Watching those cracks spread as it gets stronger makes every battle feel like building toward an explosion."
+  },
+  "provenance_concept_id": "B01-022"
+}

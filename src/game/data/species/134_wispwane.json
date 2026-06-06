@@ -1,0 +1,89 @@
+{
+  "id": 134,
+  "slug": "wispwane",
+  "name": "Wispwane",
+  "types": [
+    "Dark",
+    "Light"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "C",
+  "stats": {
+    "hp": 67,
+    "atk": 59,
+    "def": 75,
+    "spa": 59,
+    "spd": 75,
+    "spe": 83
+  },
+  "bst": 418,
+  "ability": "nullheart",
+  "hidden_ability": "forager",
+  "catchRate": 112,
+  "kindling": {
+    "into": 135,
+    "trigger": {
+      "kind": "level",
+      "level": 38
+    }
+  },
+  "from": 133,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "gloom_spit"
+      },
+      {
+        "level": 9,
+        "move": "blight_touch"
+      },
+      {
+        "level": 13,
+        "move": "hollow_pulse"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "voidburst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A wisp caught between the Skyweave and the Hollowing \u2014 half its body radiates pale golden light, the other half swirls with cold dark vapour. It is the living boundary between what Vesperholm was and what it is becoming. Neither side has won yet. The one kin that embodies the whole game's conflict i",
+    "category": "Dark Trickster Kin",
+    "size_cm": 45,
+    "weight_kg": 1.4,
+    "habitat": "outer"
+  },
+  "encounters": [
+    {
+      "area": "coldfog_marches",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 52,
+      "max": 54
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Elongated wisp with a clear left/right split: the light half is warm ivory-gold with a faint inner shimmer; the dark half is deep indigo-void with null-mist tendrils; the division is a crackling seam of sparks.",
+    "palette": "Elongated wisp with a clear left/right split: the light half is warm ivory-gold with a faint inner shimmer; the dark half is deep indigo-void with null-mist tendrils; the division is a crackling seam of sparks.",
+    "direction": "The one kin that embodies the whole game's conflict in its body \u2014 kids will argue about whether it's dark or light."
+  },
+  "provenance_concept_id": "B10-007"
+}

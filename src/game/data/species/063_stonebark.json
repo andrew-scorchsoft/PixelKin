@@ -1,0 +1,89 @@
+{
+  "id": 63,
+  "slug": "stonebark",
+  "name": "Stonebark",
+  "types": [
+    "Verdant",
+    "Stone"
+  ],
+  "role": "Physical Wall",
+  "tier": "C",
+  "stats": {
+    "hp": 79,
+    "atk": 59,
+    "def": 103,
+    "spa": 35,
+    "spd": 71,
+    "spe": 71
+  },
+  "bst": 418,
+  "ability": "verdant_vigor",
+  "hidden_ability": "thickcoat",
+  "catchRate": 120,
+  "kindling": {
+    "into": 64,
+    "trigger": {
+      "kind": "level",
+      "level": 32
+    }
+  },
+  "from": 62,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "vine_tap"
+      },
+      {
+        "level": 9,
+        "move": "sleep_pollen"
+      },
+      {
+        "level": 13,
+        "move": "root_strike"
+      },
+      {
+        "level": 19,
+        "move": "rock_hurl"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "bramble_crush"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A medium bark-golem that moves with deliberate slowness. Its bark-ring shell has mineralised completely, giving it near-impenetrable defences. The middle of a great defensive line \u2014 growing visibly stronger while staying unhurried and serene.",
+    "category": "Verdant Bulwark Kin",
+    "size_cm": 90,
+    "weight_kg": 185,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 22,
+      "max": 24
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Stocky upright tortoise-golem, concentric mineral-bark rings clearly visible on shell, mossy patches on flat back, two large stone-knuckled fists, calm half-lidded eyes.",
+    "palette": "Stocky upright tortoise-golem, concentric mineral-bark rings clearly visible on shell, mossy patches on flat back, two large stone-knuckled fists, calm half-lidded eyes.",
+    "direction": "The middle of a great defensive line \u2014 growing visibly stronger while staying unhurried and serene."
+  },
+  "provenance_concept_id": "B03-025"
+}

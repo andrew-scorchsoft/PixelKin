@@ -1,0 +1,87 @@
+{
+  "id": 116,
+  "slug": "auravane",
+  "name": "Auravane",
+  "types": [
+    "Verdant",
+    "Solar"
+  ],
+  "role": "Special Tank",
+  "tier": "D",
+  "stats": {
+    "hp": 99,
+    "atk": 42,
+    "def": 70,
+    "spa": 112,
+    "spd": 90,
+    "spe": 85
+  },
+  "bst": 498,
+  "ability": "verdant_vigor",
+  "hidden_ability": "thickcoat",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 115,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spore_puff"
+      },
+      {
+        "level": 9,
+        "move": "sleep_pollen"
+      },
+      {
+        "level": 13,
+        "move": "lifedrain"
+      },
+      {
+        "level": 19,
+        "move": "daybeam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "bloomburst"
+      },
+      {
+        "level": 40,
+        "move": "overgrowth"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A great solar-vine sovereign whose canopy of golden petals releases stored daylight in wide solar pulses, sustaining the last living flora of the Sunken Solarium. The undisputed caretaker of the Solarium \u2014 a radiant tree-creature that makes every battle feel like fighting a living sunrise.",
+    "category": "Verdant Channeler Kin",
+    "size_cm": 165,
+    "weight_kg": 94.0,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 48,
+      "max": 50
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Large, stately kin with a thick trunk-like lower body anchored by root-feet; eight grand petals fan outward like a sun-disc crown, each veined with liquid gold light; dominant, warm silhouette at 64px.",
+    "palette": "Large, stately kin with a thick trunk-like lower body anchored by root-feet; eight grand petals fan outward like a sun-disc crown, each veined with liquid gold light; dominant, warm silhouette at 64px.",
+    "direction": "The undisputed caretaker of the Solarium \u2014 a radiant tree-creature that makes every battle feel like fighting a living sunrise."
+  },
+  "provenance_concept_id": "B07-003"
+}
