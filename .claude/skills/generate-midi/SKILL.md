@@ -161,13 +161,18 @@ separators are ignored. On a `drums` voice, tokens are kit names:
   brand. "Bright Game-Boy-Color overworld in C major" — good. "Sounds like
   <franchise>'s town theme" — not allowed.
 
-## Lush render path (optional): real SoundFonts
+## Lush render path (opt-in only): real SoundFonts
 
-The chip synth is mono and deliberately lo-fi-authentic — perfect for chip eras.
-For richer `snes`/`hifi` showpieces (title, final boss, big story cues) render
-the **same `.mid`** through a real SoundFont with `--engine soundfont`. It uses
-the pure-pip `tinysoundfont` synth (no system libraries), so it's a two-step
-one-time setup:
+> **Default to the chip engine for *every* track**, including `snes`/`hifi`
+> ones. The lo-fi chip sound is PixelKin's house style, and rendering the whole
+> soundtrack through one engine is what keeps it cohesive. **Only** use
+> `--engine soundfont` when the user *explicitly* asks for a lusher / more
+> orchestral / "high-fidelity" render of a specific track. Don't reach for it on
+> your own, and never mix engines across the soundtrack without being asked.
+
+When you *are* asked for it, render the **same `.mid`** through a real SoundFont
+with `--engine soundfont`. It uses the pure-pip `tinysoundfont` synth (no system
+libraries), so it's a two-step one-time setup:
 
 ```bash
 # 1) install the optional engine (no-deps: skips a playback-only dependency)

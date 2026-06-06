@@ -127,17 +127,19 @@ The point of generating every track through this one skill is a soundtrack that
 
 ## 5. Rendering: chip synth vs. soundfont
 
-- **`--engine chip` (default).** The built-in numpy synthesizer: authentic
-  pulse/triangle/noise/wave timbres. Zero system dependencies, and it's *more*
-  era-true than a generic GM soundfont — these chip timbres are the iconic
-  sound. Use it for everything chip (`nes`/`gb`/`gbc`) and it's perfectly good
-  for `snes`/`hifi` too.
-- **`--engine soundfont`.** Renders the same `.mid` through a real `.sf2`
-  SoundFont (sampled instruments) — lusher strings/brass/pads for `snes`/`hifi`
-  showpieces (title, final boss, big story cues). Uses the pure-pip
-  `tinysoundfont` engine, so it's a one-time setup:
-  `pip install --no-deps -r requirements-soundfont.txt` then
-  `fetch_soundfont.py` (GeneralUser GS by default). It auto-finds the soundfont
-  in `assets/audio/midi/soundfonts/`, or pass `--soundfont path/to.sf2`.
-  Reach for it on the big moments; keep chip eras on the chip engine. The `.mid`
+- **`--engine chip` — the default, and the house style for the *whole*
+  soundtrack.** The built-in numpy synthesizer: authentic pulse/triangle/noise/
+  wave timbres. Zero system dependencies, and it's *more* era-true than a generic
+  GM soundfont — these chip timbres are the iconic sound. Use it for **every**
+  track, including `snes`/`hifi` ones (a `snes` track still renders on the chip
+  engine with richer voices + reverb). Rendering everything through one engine is
+  what keeps the soundtrack cohesive — don't break that without being asked.
+- **`--engine soundfont` — opt-in only.** Renders the same `.mid` through a real
+  `.sf2` SoundFont (sampled instruments), lusher but *off* the house style. Use
+  it **only when the user explicitly asks** for a more orchestral / hi-fi render
+  of a specific track — not by default, and never as a silent mix of engines
+  across the soundtrack. Uses the pure-pip `tinysoundfont` engine (one-time
+  setup: `pip install --no-deps -r requirements-soundfont.txt` then
+  `fetch_soundfont.py`, GeneralUser GS by default); auto-finds the soundfont in
+  `assets/audio/midi/soundfonts/`, or pass `--soundfont path/to.sf2`. The `.mid`
   is the portable source either way — switch engines anytime without recomposing.
