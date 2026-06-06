@@ -21,65 +21,70 @@ constellations, the fog recedes; when the **Skyweave Crown** completes, **four c
 roads** open inward at once and the **Vesper Crossroads** becomes the late-game fast-travel
 hub. The slow loop collapses into a fast four-way wheel exactly when you've earned it.
 
+Towns (rectangles) are joined by **themed routes** (stadium nodes) — the connective
+grass/coast/marsh/forest/cave/mountain/frost/garden where most wild encounters and the
+traversal gating live. Dotted edges need a Lantern Gift.
+
 ```mermaid
 graph TD
-    subgraph OUTER_RIM["Outer rim (travelled clockwise early game)"]
-      TW["Tinderwick<br/>(start town · Lumenary 1)"]
-      DC["Dimglass Coast<br/>(route)"]
-      PQ["Pearlmoor Quay<br/>(town · Lumenary 2)"]
-      LH["Lowleaf Hollow<br/>(forest town · Lumenary 3)"]
-      CM["Cinderhead Mine<br/>(cave town · Lumenary 4)"]
-      GT["Galehigh Terraces<br/>(cliff town · Lumenary 5)"]
-      PV["Pale Vault Glacier<br/>(ice town · Lumenary 6)"]
-      SS["Sunken Solarium<br/>(ruin · Lumenary 7)"]
-      NO["Nightreach Observatory<br/>(town · Lumenary 8)"]
-      CF["Coldfog Marches<br/>(blighted wetland)"]
+    subgraph RIM["Outer rim — towns linked by themed routes (clockwise early game)"]
+      TW["Tinderwick<br/>town · Lumenary 1"]
+      DC(["Dimglass Coast<br/>route · coast + grass"])
+      PQ["Pearlmoor Quay<br/>town · Lumenary 2"]
+      SF(["Saltreach Fen<br/>route · marsh + water"])
+      LH["Lowleaf Hollow<br/>forest town · Lumenary 3"]
+      CM(["Cinderhead Mine<br/>cave route · Lumenary 4"])
+      GT["Galehigh Terraces<br/>cliff town · Lumenary 5"]
+      WS(["Windward Stair<br/>route · mountain"])
+      PV["Pale Vault Glacier<br/>ice town · Lumenary 6"]
+      HP(["Hushfrost Pass<br/>route · frozen + coldfog"])
+      SS["Sunken Solarium<br/>ruin · Lumenary 7"]
+      SV(["Sunvault Climb<br/>route · sun-garden"])
+      NO["Nightreach Observatory<br/>town · Lumenary 8"]
+      CF(["Coldfog Marches<br/>route · blighted marsh"])
     end
-    VC["Vesper Crossroads<br/>(outer-ring hub waystation)"]
-    PR["Penumbra Ring<br/>(dark-fog barrier)"]
-    US["Umbral Spire<br/>(central · climax)"]
-    DS["Dawnstead<br/>(epilogue town)"]
+    VC{{"Vesper Crossroads<br/>outer-ring hub"}}
+    PR["Penumbra Ring<br/>dark-fog barrier"]
+    US["Umbral Spire<br/>central · climax"]
+    DS["Dawnstead<br/>epilogue"]
 
-    TW --> DC
-    DC --> PQ
-    PQ -. "Tidecall: islets & shrine" .-> PQ
-    PQ --> LH
-    LH -. "Glimmerstep: hollow interior" .-> LH
-    LH --> CM
-    CM -. "Glimmerstep: deep mine" .-> CM
+    TW --> DC --> PQ
+    PQ --> SF --> LH
+    SF -. "Tidecall: deep channels" .-> SF
+    LH -. "Glimmerstep: into the mine" .-> CM
     CM --> GT
-    GT -. "Updraft Kite: high terraces" .-> GT
-    GT --> PV
-    PV -. "Emberward: coldfog pass" .-> PV
-    PV --> SS
-    SS -. "Sunsketch: sun-vine bridges" .-> SS
-    SS --> NO
+    GT --> WS
+    WS -. "Updraft Kite: high gaps" .-> PV
+    PV --> HP
+    HP -. "Emberward: coldfog" .-> SS
+    SS --> SV
+    SV -. "Sunsketch: sun-vine bridges" .-> NO
     CF -. "Emberward" .-> NO
 
-    TW --- VC
-    PQ --- VC
-    LH --- VC
-    GT --- VC
-    NO --- VC
+    TW -. Lanternway .- VC
+    PQ -. Lanternway .- VC
+    LH -. Lanternway .- VC
+    GT -. Lanternway .- VC
+    NO -. Lanternway .- VC
 
-    VC == "flag:crown_south (S constellations relit)" ==> PR
-    VC == "flag:crown_east (E constellations relit)" ==> PR
-    VC == "flag:crown_north (N constellations relit)" ==> PR
-    VC == "flag:crown_west (W constellations relit)" ==> PR
+    VC == "crown_south" ==> PR
+    VC == "crown_east" ==> PR
+    VC == "crown_north" ==> PR
+    VC == "crown_west" ==> PR
     PR -. "Starreach: final voids" .-> US
     US --> DS
 ```
 
 **Regions (for the 4-way hub model in `graph.ts`):**
 
-| Region | Areas | Hub approach opens on |
+| Region | Areas (towns **bold**, routes in italics) | Hub approach opens on |
 |--------|-------|-----------------------|
-| south | Tinderwick, Dimglass Coast, Pearlmoor Quay | `flag:crown_south` (Ember + Tide relit) |
-| east | Lowleaf Hollow, Cinderhead Mine | `flag:crown_east` (Verdant + Stone relit) |
-| north | Galehigh Terraces, Pale Vault Glacier | `flag:crown_north` (Storm + Frost relit) |
-| west | Sunken Solarium, Nightreach Observatory | `flag:crown_west` (Solar + Lunar relit) |
-| outer | Vesper Crossroads, Coldfog Marches | — (rim connectors) |
-| central | Penumbra Ring, Umbral Spire | all four → `flag:hub_unlocked` |
+| south | **Tinderwick**, *Dimglass Coast*, **Pearlmoor Quay** | `flag:crown_south` (Ember + Tide relit) |
+| east | *Saltreach Fen*, **Lowleaf Hollow**, *Cinderhead Mine* | `flag:crown_east` (Verdant + Stone relit) |
+| north | **Galehigh Terraces**, *Windward Stair*, **Pale Vault Glacier** | `flag:crown_north` (Storm + Frost relit) |
+| west | *Hushfrost Pass*, **Sunken Solarium**, *Sunvault Climb*, **Nightreach Observatory** | `flag:crown_west` (Solar + Lunar relit) |
+| outer | **Vesper Crossroads**, *Coldfog Marches*, *Lanternway* spokes | — (rim connectors) |
+| central | *Penumbra Ring*, **Umbral Spire** | all four → `flag:hub_unlocked` |
 
 > The four `crown_*` flags each set when that quadrant's two anchor-constellations are
 > relit; all four set `flag:hub_unlocked`, which fully parts the Penumbra and opens the
@@ -244,7 +249,36 @@ direct `generate-midi` brief: *preset · mood · instrumentation · tempo & key 
 
 ---
 
-## 3. Encounter-table principle
+## 3. Routes & connective terrain
+
+Like the cartridge-era games, **towns are joined by routes, and the routes carry the
+adventure**: this is where most wild encounters live, where traversal gating (the Lantern
+Gifts) opens new ground, and where the world deliberately rotates through its terrain
+palette so no two stretches feel the same. Routes are first-class `MapDefinition`s
+(`kind: 'route' | 'water' | 'cave'`) with their own `EncounterZone`s; they are nodes in
+`VESPERHOLM_GRAPH` (see `src/game/data/world/graph.ts`), so a gift earned in a town opens
+the route beyond it.
+
+**Four of the area cards above double as routes** — *Dimglass Coast* (coast + grass, water
+via Tidecall), *Lowleaf Hollow* (deep forest, dark interior via Glimmerstep), *Cinderhead
+Mine* (a full cave dungeon you traverse, via Glimmerstep), and *Coldfog Marches* (blighted
+marsh, via Emberward). The remaining connective routes:
+
+| Route | Links | Terrain (encounter) | Gate | Graphics | Music brief | Kin |
+|-------|-------|---------------------|------|----------|-------------|-----|
+| **Saltreach Fen** | Pearlmoor → Lowleaf | `tall_grass` + `water` | **Tidecall** (deep channels) | brackish reed shallows, `deepBlue` water, `grass` reeds, `bone` mist, `diamond` glints | *overworld · slow marsh wander · woodwind lead over lapping water + soft pad · ~104 BPM, gentle minor · loop* | reed-stalk heron (Tide/Flying), mudskip pup (Tide), marsh-lantern frog (Tide/Light) |
+| **Windward Stair** | Galehigh → Pale Vault | `tall_grass` (ledges) | **Updraft Kite** (high gaps) | switchback cliff stairs, `stone` greys, `fire` sunset into `night`, `diamond` updraft motes | *overworld · climbing, airy, building · high pulse lead + wind-swell noise + steady bass · ~132 BPM, bright major · loop* | crag-climber ram (Stone/Storm), slate-wing moth (Stone/Flying), gust-finch (Storm) |
+| **Hushfrost Pass** | Pale Vault → Solarium | `tall_grass` (sheltered) | **Emberward** (coldfog) | snowed canyon, `deepBlue` ice, `ink` coldfog walls, your lamp the only warmth | *emotional · cold, sparse, tense-but-tender · lone bell + low pad + faint heartbeat · ~68 BPM, suspended minor · loop* | ice-burrower (Frost), frost-wisp (Frost/Light), numbed ex-Ember kin near the fog (Frost/Dark) |
+| **Sunvault Climb** | Solarium → Nightreach | `tall_grass` | **Sunsketch** (sun-vine bridges) | overgrown golden terraces, sun-vine bridges blooming open, `bone` steps, `fire`-warm glows | *overworld · warm, ascending, hopeful · major arpeggio lead + soft brass-ish pulse + harp · ~112 BPM, radiant major · loop* | sun-seedling (Verdant/Solar), vine-serpent (Verdant), glass-wing bee (Verdant/Light) |
+| **Lanternway** (spokes) | rim towns ↔ Vesper Crossroads | `tall_grass` | none (open) | hedged, lantern-lined country lanes, milestones, `grass`, `soil` path, `diamond` lamp dots | *overworld · the signature cosy travel loop, walking pace · plucky pulse lead + triangle bass + light bell · ~120 BPM, comfortable major · loop* | path-pup (Normal/Verdant), stile-cricket (Bug), lamp-moth (Light) |
+
+**Terrain coverage across the world:** grass road (*Lanternway*), coast/shore (*Dimglass*),
+marsh/shallow water (*Saltreach Fen*, *Coldfog Marches*), deep forest (*Lowleaf*), cave
+dungeon (*Cinderhead Mine*), mountain/cliff (*Windward Stair*), frozen pass (*Hushfrost*),
+and overgrown ruin-garden (*Sunvault Climb*) — every classic route flavour, each gating a
+different Lantern Gift so the routes also teach traversal.
+
+## 4. Encounter-table principle
 
 Kin **thematically occupy areas**, so encounter tables are written *per area, per terrain*:
 each `EncounterZone` (see [`README.md`](./README.md) and `src/game/data/world/types.ts`)
@@ -257,7 +291,7 @@ lists weighted kin with level ranges. Cohesion rules:
 - **Rarity:** common roamers fill `tall_grass`; rarer kin gate behind `water`/`cave`
   terrain that needs a Lantern Gift, rewarding traversal unlocks with new collectables.
 
-## 4. Music production note
+## 5. Music production note
 
 Every area card's **Music** line is written as a direct brief for the **`generate-midi`**
 skill: it names a **preset**, then mood, instrumentation, tempo/key feel, and loop intent.

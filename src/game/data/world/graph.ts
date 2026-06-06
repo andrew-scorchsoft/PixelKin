@@ -61,30 +61,42 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
   start_map: 'tinderwick',
   start_at: { tx: 8, ty: 12 },
   nodes: [
+    // Towns and the themed routes that connect them (routes carry the wild encounters
+    // and most of the traversal gating — see docs/world/atlas.md §3).
     { map_id: 'tinderwick', region: 'south' },
-    { map_id: 'dimglass_coast', region: 'south' },
+    { map_id: 'dimglass_coast', region: 'south' }, // route: coast + grass
     { map_id: 'pearlmoor_quay', region: 'south' },
-    { map_id: 'lowleaf_hollow', region: 'east' },
-    { map_id: 'cinderhead_mine', region: 'east' },
+    { map_id: 'saltreach_fen', region: 'east' }, // route: marsh + water
+    { map_id: 'lowleaf_hollow', region: 'east' }, // forest route + town
+    { map_id: 'cinderhead_mine', region: 'east' }, // cave route + town
     { map_id: 'galehigh_terraces', region: 'north' },
+    { map_id: 'windward_stair', region: 'north' }, // route: mountain
     { map_id: 'pale_vault_glacier', region: 'north' },
+    { map_id: 'hushfrost_pass', region: 'west' }, // route: frozen + coldfog
     { map_id: 'sunken_solarium', region: 'west' },
+    { map_id: 'sunvault_climb', region: 'west' }, // route: sun-garden
     { map_id: 'nightreach_observatory', region: 'west' },
-    { map_id: 'coldfog_marches', region: 'outer' },
+    { map_id: 'coldfog_marches', region: 'outer' }, // route: blighted marsh
     { map_id: 'vesper_crossroads', region: 'outer' },
     { map_id: 'penumbra_ring', region: 'central' },
     { map_id: 'umbral_spire', region: 'central', unlocked_by_flag: 'flag:hub_unlocked' },
     { map_id: 'dawnstead', region: 'south', unlocked_by_flag: 'flag:dawn' },
   ],
   edges: [
+    // Outer rim, clockwise: town -> route -> town. The route between two towns is its
+    // own map, and the gift earned in/around a town opens the route beyond it.
     { from_map: 'tinderwick', to_map: 'dimglass_coast', via_warp: 'to_coast', bidirectional: true },
     { from_map: 'dimglass_coast', to_map: 'pearlmoor_quay', via_warp: 'to_quay', bidirectional: true },
-    { from_map: 'pearlmoor_quay', to_map: 'lowleaf_hollow', via_warp: 'to_hollow', bidirectional: true },
+    { from_map: 'pearlmoor_quay', to_map: 'saltreach_fen', via_warp: 'to_fen', bidirectional: true },
+    { from_map: 'saltreach_fen', to_map: 'lowleaf_hollow', via_warp: 'to_hollow', bidirectional: true },
     { from_map: 'lowleaf_hollow', to_map: 'cinderhead_mine', via_warp: 'to_mine', requires_ability: 'glimmerstep', bidirectional: true },
     { from_map: 'cinderhead_mine', to_map: 'galehigh_terraces', via_warp: 'to_terraces', bidirectional: true },
-    { from_map: 'galehigh_terraces', to_map: 'pale_vault_glacier', via_warp: 'to_glacier', requires_ability: 'updraft_kite', bidirectional: true },
-    { from_map: 'pale_vault_glacier', to_map: 'sunken_solarium', via_warp: 'to_solarium', requires_ability: 'emberward', bidirectional: true },
-    { from_map: 'sunken_solarium', to_map: 'nightreach_observatory', via_warp: 'to_observatory', requires_ability: 'sunsketch', bidirectional: true },
+    { from_map: 'galehigh_terraces', to_map: 'windward_stair', via_warp: 'to_stair', bidirectional: true },
+    { from_map: 'windward_stair', to_map: 'pale_vault_glacier', via_warp: 'to_glacier', requires_ability: 'updraft_kite', bidirectional: true },
+    { from_map: 'pale_vault_glacier', to_map: 'hushfrost_pass', via_warp: 'to_pass', bidirectional: true },
+    { from_map: 'hushfrost_pass', to_map: 'sunken_solarium', via_warp: 'to_solarium', requires_ability: 'emberward', bidirectional: true },
+    { from_map: 'sunken_solarium', to_map: 'sunvault_climb', via_warp: 'to_climb', bidirectional: true },
+    { from_map: 'sunvault_climb', to_map: 'nightreach_observatory', via_warp: 'to_observatory', requires_ability: 'sunsketch', bidirectional: true },
     { from_map: 'coldfog_marches', to_map: 'nightreach_observatory', via_warp: 'to_observatory_fog', requires_ability: 'emberward', bidirectional: true },
     // Rim spokes into the outer-ring hub.
     { from_map: 'tinderwick', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
