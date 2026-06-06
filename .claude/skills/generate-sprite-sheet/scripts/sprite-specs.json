@@ -2,6 +2,7 @@
   "_notes": "Locked sprite-type specs for PixelKin. The art source of truth is docs/art-style.md; this file operationalises it for generation. Each type fixes a canvas, grid, anchor, and prompt template. Prompt templates use {subject}, {fw}, {fh}, {cols}, {rows}, {canvas_w}, {canvas_h}, {fill_pct}. The shared _style preamble and _originality clause are prepended to every prompt so all types stay consistent and copyright-clean. DO NOT mention the background colour in templates — the skill owns it: for the default OpenAI gpt-image-2 path it prepends a magenta chroma-key preamble and strips the magenta to transparent in post; for the Google path it uses the native transparent route.",
   "_style": "Authentic late-1990s / early-2000s handheld pixel art, in the visual register of a Game Boy Color game growing toward Game Boy Advance. STRICT RULES: hard 1-pixel edges, absolutely NO anti-aliasing, no blur, no smooth gradients (a small deliberate dithered pixel gradient is fine). Limited palette of roughly 8-16 colours. A dark outline (deep ink, NOT pure black) around the outer silhouette, lighter internal linework. Consistent light source from the TOP-LEFT. Strong, instantly readable silhouette. Cute, stylised, slightly oversized head and eyes for readability; not realistic, not gritty. Chunky, deliberate square pixels as if drawn pixel-by-pixel on a tiny {fw}x{fh} canvas. No semi-transparent shading. Subject only: no background scenery, no ground, no cast shadow, no frame or border.",
   "_originality": "This is original content for PixelKin, a creature-collecting RPG inspired by the genre but a copy of nothing. It must NOT resemble any existing commercial game's creature, character, silhouette, palette signature, logo, font, or UI. Describe by genre and mood only. Make it distinctly original.",
+  "_area_style": "COHESION: this tile belongs to ONE map area called \"{area}\" and must read as part of a single unified tile set. Use a shared limited palette of about 10-14 flat colours: {palette}. Keep the SAME pixel density, the SAME top-left light direction, and a matching value range as the rest of the set, so a screen built from these tiles looks like one place and does not visually buzz. Tessellate seamlessly when repeated edge-to-edge; no border, frame, or outline around the tile edge.",
   "types": {
     "creature-front": {
       "label": "Creature battle front sprite",
@@ -98,6 +99,114 @@
       "anchor": "top-left",
       "fill": 1.0,
       "prompt": "A single original {fw}x{fh} world TILE for a retro top-down monster-collecting RPG overworld, designed to tessellate seamlessly when repeated edge-to-edge on a grid. Tile: {subject}. Fill the whole {fw}x{fh} frame to the edges (no margin, no outline around the tile border). Keep interior detail low and evenly distributed so a field of these tiles does not visually buzz or show an obvious repeat."
+    },
+    "tile-ground": {
+      "label": "Ground fill tile",
+      "use_for": "A seamless interior ground-fill tile for an area set (grass, dirt, sand, stone floor).",
+      "file": "ground.png",
+      "frame_width": 16,
+      "frame_height": 16,
+      "cols": 1,
+      "rows": 1,
+      "anchor": "top-left",
+      "fill": 1.0,
+      "prompt": "A single original {fw}x{fh} GROUND-FILL world tile for a retro top-down monster-collecting RPG, the base surface a player walks on across a whole field. Surface: {subject}. Fill the frame edge-to-edge with low, even interior detail so a large field of these tiles reads as one smooth surface with no obvious seam or repeating hotspot."
+    },
+    "tile-path": {
+      "label": "Path / road tile",
+      "use_for": "A seamless path or road tile that tessellates into a walkway through ground tiles.",
+      "file": "path.png",
+      "frame_width": 16,
+      "frame_height": 16,
+      "cols": 1,
+      "rows": 1,
+      "anchor": "top-left",
+      "fill": 1.0,
+      "prompt": "A single original {fw}x{fh} PATH tile for a retro top-down monster-collecting RPG: the trodden walkway surface. Path: {subject}. Fill the frame edge-to-edge so straight runs of the tile form a continuous path; keep edges neutral so it abuts the area's ground tile cleanly. Low, even detail, no border line around the tile."
+    },
+    "tile-water": {
+      "label": "Open water tile",
+      "use_for": "A seamless open-water tile (sea, lake, river body).",
+      "file": "water.png",
+      "frame_width": 16,
+      "frame_height": 16,
+      "cols": 1,
+      "rows": 1,
+      "anchor": "top-left",
+      "fill": 1.0,
+      "prompt": "A single original {fw}x{fh} open-WATER tile for a retro top-down monster-collecting RPG. Water: {subject}. Fill the frame edge-to-edge with a gently rippled surface that tessellates so a large body of water reads as continuous, no obvious repeat. Low, even detail; no shoreline or border in this tile (that is the separate water-edge tile)."
+    },
+    "tile-water-edge": {
+      "label": "Water/land edge tile",
+      "use_for": "The transition tile where water meets land; pairs with the set's water and ground tiles.",
+      "file": "water_edge.png",
+      "frame_width": 16,
+      "frame_height": 16,
+      "cols": 1,
+      "rows": 1,
+      "anchor": "top-left",
+      "fill": 1.0,
+      "prompt": "A single original {fw}x{fh} WATER-EDGE transition tile for a retro top-down monster-collecting RPG: the boundary where water meets land, with water along one side and shoreline/ground along the other. Edge: {subject}. The water side must tessellate with the set's plain water tile and the land side with the set's ground tile, so it slots between them with no seam. Fill the frame edge-to-edge, no border line."
+    },
+    "tile-cliff": {
+      "label": "Cliff / ledge face tile",
+      "use_for": "A vertical cliff or ledge face tile (the wall of a height change).",
+      "file": "cliff.png",
+      "frame_width": 16,
+      "frame_height": 16,
+      "cols": 1,
+      "rows": 1,
+      "anchor": "top-left",
+      "fill": 1.0,
+      "prompt": "A single original {fw}x{fh} CLIFF-FACE tile for a retro top-down monster-collecting RPG: the vertical rock/earth face of a ledge or height drop, tiling horizontally along a cliff and vertically down a tall face. Face: {subject}. Fill the frame edge-to-edge; keep it readable as a solid impassable wall. Low, even detail, no border line."
+    },
+    "tile-cliff-edge": {
+      "label": "Cliff top-edge tile",
+      "use_for": "The top lip of a cliff where the upper ground meets the cliff face; pairs with cliff + ground.",
+      "file": "cliff_edge.png",
+      "frame_width": 16,
+      "frame_height": 16,
+      "cols": 1,
+      "rows": 1,
+      "anchor": "top-left",
+      "fill": 1.0,
+      "prompt": "A single original {fw}x{fh} CLIFF-TOP-EDGE tile for a retro top-down monster-collecting RPG: the lip where upper ground meets the start of a cliff face below. Edge: {subject}. The top must tessellate with the set's ground tile and the bottom with the set's cliff-face tile, so it slots between them. Fill the frame edge-to-edge, no border line."
+    },
+    "tile-roof": {
+      "label": "Building roof tile",
+      "use_for": "A seamless building-roof tile (rendered on the 'above' layer so players pass behind).",
+      "file": "roof.png",
+      "frame_width": 16,
+      "frame_height": 16,
+      "cols": 1,
+      "rows": 1,
+      "anchor": "top-left",
+      "fill": 1.0,
+      "prompt": "A single original {fw}x{fh} building-ROOF tile for a retro top-down monster-collecting RPG, tiling across the top of a structure. Roof: {subject}. Fill the frame edge-to-edge so a roof area reads as continuous; consistent top-left light. Low, even detail, no border line."
+    },
+    "tile-wall": {
+      "label": "Building wall tile",
+      "use_for": "A seamless building/structure wall tile (the solid face below a roof).",
+      "file": "wall.png",
+      "frame_width": 16,
+      "frame_height": 16,
+      "cols": 1,
+      "rows": 1,
+      "anchor": "top-left",
+      "fill": 1.0,
+      "prompt": "A single original {fw}x{fh} building-WALL tile for a retro top-down monster-collecting RPG: the solid front face of a structure beneath its roof. Wall: {subject}. Fill the frame edge-to-edge so walls tile horizontally; consistent top-left light. Low, even detail, no border line."
+    },
+    "tile-decor": {
+      "label": "Decoration tile",
+      "use_for": "A small standalone decoration that sits on a deco layer over ground (flower, sign, crate, lamp). Keeps transparency around it.",
+      "file": "decor.png",
+      "frame_width": 16,
+      "frame_height": 16,
+      "cols": 1,
+      "rows": 1,
+      "anchor": "center",
+      "fill": 0.9,
+      "prompt": "A single small original {fw}x{fh} DECORATION object for a retro top-down monster-collecting RPG overworld, sitting alone so it can be placed over a ground tile (transparent around the object, NOT a full edge-to-edge surface). Object: {subject}. Centred in the frame, chunky and readable at {fw}x{fh}, consistent top-left light, dark non-black outline."
     }
   }
 }

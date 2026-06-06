@@ -1,0 +1,77 @@
+{
+  "_notes": "Master world palette for Vesperholm tilesets. Every area's tile set derives its --palette from here so the whole world reads as one cohesive place (see docs/world/atlas.md and the generate-sprite-sheet tileset flow). The 8 brand anchors come from src/game/config.ts; the extras are derived neutrals/shades for tile art (wood, soil, stone, sand, aurora). Keep tile sets to ~10-14 flat colours drawn from this set plus the area's 1-2 accents.",
+  "brand_anchors": {
+    "night": "#0b1026",
+    "deepBlue": "#13205a",
+    "diamond": "#9fe7ff",
+    "grass": "#7bdc6b",
+    "fire": "#ff8a3d",
+    "water": "#4fb4ff",
+    "ink": "#1a1430",
+    "bone": "#f5f0e1"
+  },
+  "derived_neutrals": {
+    "grass_dark": "#4a9a55",
+    "soil": "#6b4a3a",
+    "soil_dark": "#3f2a22",
+    "stone": "#6c6f86",
+    "stone_dark": "#3b3e55",
+    "sand": "#e8d8a8",
+    "wood_warm": "#b9763f",
+    "aurora": "#b6f0c8"
+  },
+  "areas": {
+    "tinderwick": {
+      "palette": "blue-hour coastal village: bone-cream walls, warm fire-orange candlelight, deepBlue sea, grass verges, soil paths, ink outlines",
+      "accents": ["#f5f0e1", "#ff8a3d", "#13205a"]
+    },
+    "dimglass_coast": {
+      "palette": "tidal cliff route: deepBlue water with diamond-cyan foam, ink rocks, grass tufts, sand, dim night sky",
+      "accents": ["#4fb4ff", "#9fe7ff", "#1a1430"]
+    },
+    "pearlmoor_quay": {
+      "palette": "moonlit port: wet bone boardwalk, water glints, deepBlue depths, brass-warm lamp dots, big cyan moon",
+      "accents": ["#9fe7ff", "#4fb4ff", "#b9763f"]
+    },
+    "lowleaf_hollow": {
+      "palette": "bioluminescent fern forest: grass and grass-dark foliage shot through with diamond glowmoss, deep ink shadow, dim-green dark",
+      "accents": ["#7bdc6b", "#9fe7ff", "#1a1430"]
+    },
+    "cinderhead_mine": {
+      "palette": "gem mine: ink-black tunnels, stone and stone-dark rock, veins of diamond crystal, fire lamp pools, soil rubble",
+      "accents": ["#6c6f86", "#9fe7ff", "#ff8a3d"]
+    },
+    "galehigh_terraces": {
+      "palette": "windy cliff farms: grass terraces, fire-orange sunset bleeding into deepBlue, bone clouds, diamond updraft motes",
+      "accents": ["#7bdc6b", "#ff8a3d", "#13205a"]
+    },
+    "pale_vault_glacier": {
+      "palette": "aurora ice field: deepBlue ice, bone snow, pale aurora green-cyan ribbons, diamond highlights, ink crevasses",
+      "accents": ["#b6f0c8", "#9fe7ff", "#f5f0e1"]
+    },
+    "sunken_solarium": {
+      "palette": "flooded sun-garden ruin: bone columns, fire stored-daylight glows under water-blue, grass overgrowth, deepBlue depths",
+      "accents": ["#ff8a3d", "#4fb4ff", "#f5f0e1"]
+    },
+    "nightreach_observatory": {
+      "palette": "hilltop star-temple: bone domes, deepBlue stone, brass, the densest diamond starfield in the game, ink night",
+      "accents": ["#9fe7ff", "#13205a", "#f5f0e1"]
+    },
+    "coldfog_marches": {
+      "palette": "blighted wetland: desaturated muted blues, snuffed grey lanterns, ink mist swallowing colour, dull grass",
+      "accents": ["#3b3e55", "#6c6f86", "#13205a"]
+    },
+    "vesper_crossroads": {
+      "palette": "cosy lantern-lit waystation: bone inn, warm fire windows, grass, soil paths, diamond lamp glints, deepBlue dusk",
+      "accents": ["#ff8a3d", "#f5f0e1", "#9fe7ff"]
+    },
+    "umbral_spire": {
+      "palette": "central dark mountain: black basalt (ink, stone-dark), null-lantern anti-light, faint diamond Skyweave glow above",
+      "accents": ["#1a1430", "#3b3e55", "#9fe7ff"]
+    },
+    "dawnstead": {
+      "palette": "first-sunrise town: Tinderwick flooded with fire-orange and bone daylight, warm shadows, grass, open bright sky",
+      "accents": ["#ff8a3d", "#f5f0e1", "#7bdc6b"]
+    }
+  }
+}

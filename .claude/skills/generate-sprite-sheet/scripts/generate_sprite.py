@@ -93,7 +93,8 @@ def nearest_aspect(canvas_w: int, canvas_h: int) -> str:
     return min(ASPECTS, key=lambda k: abs(ASPECTS[k] - target))
 
 
-def build_prompt(specs: dict, spec: dict, subject: str) -> str:
+def build_prompt(specs: dict, spec: dict, subject: str,
+                 area: str | None = None, palette: str | None = None) -> str:
     cols, rows = spec["cols"], spec["rows"]
     fw, fh = spec["frame_width"], spec["frame_height"]
     fields = {
@@ -109,7 +110,12 @@ def build_prompt(specs: dict, spec: dict, subject: str) -> str:
     style = specs["_style"].format(**fields)
     body = spec["prompt"].format(**fields)
     originality = specs["_originality"]
-    return f"{style}\n\n{body}\n\n{originality}"
+    prompt = f"{style}\n\n{body}\n\n{originality}"
+    # Tile-set cohesion: when generating a member of a named area's tile set,
+    # append the shared area-style clause so every tile in the set matches.
+    if area and palette and specs.get("_area_style"):
+        prompt += "\n\n" + specs["_area_style"].format(area=area, palette=palette)
+    return prompt
 
 
 # --------------------------------------------------------------------------- #
@@ -313,6 +319,10 @@ def main() -> int:
     p.add_argument("--output", help="Explicit output .png path. Overrides the creature convention.")
     p.add_argument("--creature-id", type=int, help="Creature dex id (with --creature-slug, auto-places under assets/creatures/NNN_slug/).")
     p.add_argument("--creature-slug", help="Creature slug, e.g. 'sproutle'.")
+    p.add_argument("--area", help="Tile-set area name (with a tile/tile-* type). Adds the shared "
+                   "area-style cohesion clause and auto-files under assets/tilesets/<area>/<role>.png.")
+    p.add_argument("--palette", help="Shared palette description for the area's tile set (e.g. from "
+                   "assets/tilesets/world-palette.json). Used with --area for cross-tile cohesion.")
     p.add_argument("--provider", choices=["google", "openai"], default=DEFAULT_PROVIDER,
                    help="Image provider. 'google' (default) uses Nano Banana Pro's transparent "
                         "path. 'openai' uses gpt-image-2 with a magenta chroma-key for transparency.")
@@ -356,8 +366,13 @@ def main() -> int:
         repo = find_repo_root(Path.cwd().resolve())
         creature_dir = repo / "assets" / "creatures" / f"{args.creature_id:03d}_{args.creature_slug}"
         out_path = creature_dir / spec["file"]
+    elif args.area:
+        repo = find_repo_root(Path.cwd().resolve())
+        # role = the tile type without its 'tile-' prefix ('tile' stays 'tile').
+        role = args.type[len("tile-"):] if args.type.startswith("tile-") else args.type
+        out_path = repo / "assets" / "tilesets" / args.area / f"{role}.png"
     else:
-        p.error("Provide --output, or both --creature-id and --creature-slug.")
+        p.error("Provide --output, both --creature-id and --creature-slug, or --area with a tile type.")
     if out_path.suffix.lower() != ".png":
         p.error("Output must be a .png (sprites need a real alpha channel).")
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -376,7 +391,7 @@ def main() -> int:
                 raise SystemExit(f"--from-image not found: {src_path}")
             source = Image.open(src_path)
         else:
-            prompt = build_prompt(specs, spec, args.subject)
+            prompt = build_prompt(specs, spec, args.subject, area=args.area, palette=args.palette)
             if chroma_path:
                 prompt = f"{CHROMA_PREAMBLE}\n\n{prompt}"
             aspect = nearest_aspect(spec["frame_width"] * spec["cols"],
@@ -417,6 +432,7 @@ def main() -> int:
         "resample": args.resample,
         "aligned": (not args.no_align) if is_sheet else None,
         "source": "from-image" if args.from_image else "generated",
+        "area": args.area,
         "references": args.reference or [],
         "provider": gen_info.get("provider") or (None if args.from_image else args.provider),
         "model": gen_info.get("model"),
