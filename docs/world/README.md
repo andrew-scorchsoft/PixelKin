@@ -10,7 +10,13 @@ then read in order:
 2. **[`atlas.md`](./atlas.md)** — the world map: the connectivity graph, the central-hub
    lock/unlock, which Lantern Gift gates each path, and per-area **graphics direction**,
    **`generate-midi` music brief**, **kin**, and **encounter terrain**.
-3. This file — the **data + authoring conventions** the engine and the asset pipeline use.
+3. **[`music-direction.md`](./music-direction.md)** — the soundtrack plan: **2–3
+   auditionable music options for every area and route**, each a ready `generate-midi`
+   brief. The cohesion rules behind them (the *Vesper motif*, per-element sonic
+   signatures, the voice/era policy, the dusk→dawn key arc, and how we study the
+   cartridge era without copying it) live in the skill's
+   [`pixelkin-soundtrack.md`](../../.claude/skills/generate-midi/references/pixelkin-soundtrack.md).
+4. This file — the **data + authoring conventions** the engine and the asset pipeline use.
 
 > Everything here is original to PixelKin per [`../../VISION.md`](../../VISION.md):
 > inspired by the monster-collecting genre, a copy of nothing.

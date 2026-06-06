@@ -366,3 +366,11 @@ A first pass can generate one loop per area straight from these briefs; battle, 
 (arena), and victory stings are shared cross-region cues layered on top. Keep all tracks in
 the GBC→GBA voice budget the skill enforces, and write mp3 loops into
 `public/assets/audio/music/` keyed to each `MapDefinition.music`.
+
+> **Want options?** Each area card above gives *one* music brief. For **2–3
+> auditionable music options per area and route** — each a ready `generate-midi`
+> brief, grounded in the place's mood/element and the cartridge-era inspiration —
+> see **[`music-direction.md`](./music-direction.md)**. The cohesion rules behind
+> all of them (the recurring *Vesper motif*, per-element sonic signatures, the
+> voice/era policy, the dusk→dawn key arc) live in the skill's
+> [`pixelkin-soundtrack.md`](../../.claude/skills/generate-midi/references/pixelkin-soundtrack.md).
