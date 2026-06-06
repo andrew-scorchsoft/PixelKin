@@ -1,0 +1,60 @@
+{
+  "_notes": "Style presets aligned with the Control Standard brand palette (paper #F5F1EA, ink #0F1B2D, signal #C8211B). Each preset is a prompt fragment appended to the user prompt. Use the 'brand-*' presets for anything that will appear inside the product or e-learning content; use the 'neutral-*' presets when no brand alignment is required.",
+  "presets": {
+    "brand-flat-infographic": {
+      "label": "Brand flat infographic",
+      "use_for": "Concept diagrams, process flows, comparison panels for e-learning slides.",
+      "prompt_suffix": "Flat 2D vector infographic illustration. Warm off-white paper background (#F5F1EA). Primary line work and type in deep navy ink (#0F1B2D). A single deliberate red accent (#C8211B) used sparingly for emphasis only — never as decoration. Clean geometric shapes, generous negative space, thin 2px strokes, subtle paper grain. No gradients, no drop shadows, no neon, no 3D. Editorial textbook quality."
+    },
+    "brand-isometric-diagram": {
+      "label": "Brand isometric diagram",
+      "use_for": "Systems, architectures, multi-step processes shown in 3/4 perspective.",
+      "prompt_suffix": "Isometric vector diagram at a true 30° projection. Warm off-white paper background (#F5F1EA). Navy ink linework (#0F1B2D) over muted paper tones. Single red signal colour (#C8211B) reserved for the focal element. Flat shading, no perspective distortion, no photoreal textures, no glow."
+    },
+    "brand-line-illustration": {
+      "label": "Brand line illustration",
+      "use_for": "Section openers, chapter headers, quiet supporting visuals.",
+      "prompt_suffix": "Single-weight line illustration on warm off-white paper (#F5F1EA). All lines in deep navy (#0F1B2D), 2px stroke, no fill except optional signal-red (#C8211B) accent on one detail. Confident editorial linework, no cross-hatching, no shading, no colour beyond the palette."
+    },
+    "brand-whiteboard-sketch": {
+      "label": "Brand whiteboard sketch",
+      "use_for": "Explainer-style sketches inside e-learning modules and walkthroughs.",
+      "prompt_suffix": "Looks like a confident dry-erase marker sketch on an off-white paper-textured board (#F5F1EA). Hand-drawn navy strokes (#0F1B2D) with very slight wobble. Small red marker accents (#C8211B) on one or two emphasised elements only. No photographic textures, no eraser smudges, no marker glare."
+    },
+    "brand-photo-editorial": {
+      "label": "Brand editorial photo",
+      "use_for": "Module heroes and chapter opener photography.",
+      "prompt_suffix": "Editorial photograph, natural daylight, muted warm tones that complement an off-white paper background. Shallow depth of field, calm composition, plenty of negative space on one side for text overlay. No stock-photo clichés, no oversaturated colour, no lens flare, no HDR."
+    },
+    "brand-icon-mark": {
+      "label": "Brand icon mark",
+      "use_for": "Single-concept icons for UI, course nav, and inline content markers.",
+      "prompt_suffix": "Single centred icon on a transparent or warm off-white background (#F5F1EA). Geometric, 2px stroke, deep navy (#0F1B2D), optional signal-red (#C8211B) on at most one detail. Designed at 96×96 viewbox, balanced negative space, recognisable at 24px. No gradients, no shadows, no text."
+    },
+    "brand-data-viz": {
+      "label": "Brand data visualisation",
+      "use_for": "Mock charts and dashboards used as illustrative imagery (not real data).",
+      "prompt_suffix": "Clean editorial data visualisation. Warm off-white paper background (#F5F1EA), navy axes and type (#0F1B2D), one series highlighted in signal red (#C8211B), supporting series in muted paper-darker tones. Thin gridlines, generous padding, no 3D, no glow, no Excel defaults."
+    },
+    "brand-artifact-mockup": {
+      "label": "Brand artifact mockup",
+      "use_for": "Rendered emails, status updates, Slack messages, tickets, sign-off notes, and other written artifacts shown as objects in their own right. For the 'good vs bad update', 'bad news early' Slack scene, weak vs strong written-update comparisons, and similar moments where the document itself is the lesson.",
+      "prompt_suffix": "Realistic-but-stylised mock-up of a document or message artifact rendered on warm off-white paper (#F5F1EA). Body text in deep navy (#0F1B2D) using a clean editorial sans-serif (or monospace where it would naturally be monospace, e.g. terminal/ticket). One or two short load-bearing phrases may be underlined or highlighted in signal red (#C8211B); the rest of the type stays navy. The artifact sits flat to camera, slight paper grain, soft shadow under the edge only — no skeuomorphic glare, no glossy chrome, no app frame, no UI buttons. Text inside the artifact should be legible and spelled correctly; if specific wording is required, generate the artifact text-free and overlay text in HTML/CSS."
+    },
+    "brand-timeline": {
+      "label": "Brand timeline / cadence",
+      "use_for": "Horizontal time-axis visuals: Shape Up six-week cycles, SLO review rhythms, +1/+7/+30 spaced-review beats, escalation cadence, before→during→after sequences where the *spacing in time* is the point.",
+      "prompt_suffix": "Horizontal editorial timeline on warm off-white paper (#F5F1EA). A single thin navy axis line (#0F1B2D, 2px) runs left to right with evenly spaced tick marks. Each beat sits on the axis as a small navy circle or square; one focal beat is rendered in signal red (#C8211B). Labels float above or below the axis in clean navy sans-serif with generous breathing room. No 3D, no gradients, no calendar grids, no arrows other than the axis itself. The proportions of the gaps between ticks should reflect real time-spacing where stated, not be evenly spaced by default."
+    },
+    "neutral-flat-vector": {
+      "label": "Neutral flat vector",
+      "use_for": "General-purpose vector imagery when brand alignment is not required.",
+      "prompt_suffix": "Flat 2D vector illustration, balanced restrained palette, clean geometric shapes, no gradients, no shadows, no neon."
+    },
+    "neutral-photo": {
+      "label": "Neutral editorial photo",
+      "use_for": "General-purpose photography when brand alignment is not required.",
+      "prompt_suffix": "Editorial photograph, natural light, muted tones, calm composition, shallow depth of field. No stock-photo clichés, no oversaturation."
+    }
+  }
+}
