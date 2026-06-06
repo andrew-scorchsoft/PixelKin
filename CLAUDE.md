@@ -40,6 +40,7 @@ Python skills (image/music generation):
 python3 -m venv venv && ./venv/bin/pip install -r requirements.txt   # first time
 ./venv/bin/python .claude/skills/generate-music/scripts/generate_music.py --list-presets
 ./venv/bin/python .claude/skills/generate-image/scripts/generate.py --list-styles
+./venv/bin/python .claude/skills/generate-midi/scripts/midi.py presets
 ```
 
 ## Layout
@@ -71,7 +72,7 @@ Path aliases (see `tsconfig.json` / `vite.config.ts`): `@/*` → `src`,
 
 ## Asset generation skills
 
-Skills live in `.claude/skills/`. Use them instead of hand-rolling:
+Five skills live in `.claude/skills/`. Use them instead of hand-rolling:
 
 - **generate-sprite-sheet** — the **preferred** path for in-game pixel art:
   creature battle/icon/overworld/portrait sprites, NPC walk sheets, battle
@@ -83,8 +84,13 @@ Skills live in `.claude/skills/`. Use them instead of hand-rolling:
   Briefs must be original; never reference another franchise. Repo-friendly
   WebP/PNG. (generate-sprite-sheet drives this under the hood.)
 - **generate-music** — original background music/jingles via the ElevenLabs
-  Music API. Instrumental, loop-minded, preset-driven. Writes mp3 into
-  `public/assets/audio/music/`.
+  Music API (text-prompt → produced audio). Instrumental, loop-minded,
+  preset-driven. Writes mp3 into `public/assets/audio/music/`.
+- **generate-midi** — original, era-authentic **chiptune/MIDI** music that
+  Claude *composes* as note data. Builds real `.mid` (honouring each platform's
+  voice budget and looping conventions) and renders it with a built-in chip
+  synth to `.mp3`. Offline, no API key. Use for true retro/MIDI; use
+  generate-music when you want a text-prompt render instead.
 - **copy-editing** — for any prose deliverable (docs, dialogue review,
   marketing copy).
 

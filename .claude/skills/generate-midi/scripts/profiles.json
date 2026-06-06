@@ -1,0 +1,198 @@
+{
+  "_comment": "Data for the generate-midi skill. THREE tables: era profiles (hardware constraints + character), the voice catalog (named instruments mapped to both a General-MIDI program for portable .mid playback AND a chip-synth timbre for the built-in renderer), and form presets (composition briefs with sensible era/tempo/length/loop defaults). Edited by humans/Claude, read by midi.py. See SKILL.md and references/.",
+
+  "eras": {
+    "nes": {
+      "label": "NES / Famicom (2A03)",
+      "max_voices": 4,
+      "chords": false,
+      "reverb": 0.0,
+      "channels": ["pulse", "pulse", "triangle", "noise"],
+      "tempo_range": [80, 200],
+      "character": "Five hardware channels but realistically 4 melodic: two pulse waves (duty 12.5/25/50), one triangle (bass, fixed volume), one noise (percussion). No real chords — imply harmony with fast arpeggios on a single pulse channel. Bright, brittle, iconic.",
+      "voice_palette": ["pulse12", "pulse25", "pulse50", "triangle", "tri_bass", "noise", "drums"]
+    },
+    "gb": {
+      "label": "Game Boy (DMG) — R/B/Y era",
+      "max_voices": 4,
+      "chords": false,
+      "reverb": 0.0,
+      "channels": ["pulse", "pulse", "wave", "noise"],
+      "tempo_range": [80, 200],
+      "character": "Four channels: two pulse, one 4-bit wavetable (the 'wave' — often a soft bass or hollow lead), one noise. Mono. The classic monster-collector handheld sound: thin, catchy, relentless hooks that survive a tiny speaker.",
+      "voice_palette": ["pulse12", "pulse25", "pulse50", "wave", "tri_bass", "noise", "drums"]
+    },
+    "gbc": {
+      "label": "Game Boy Color — G/S/C era",
+      "max_voices": 4,
+      "chords": false,
+      "reverb": 0.05,
+      "channels": ["pulse", "pulse", "wave", "noise"],
+      "tempo_range": [80, 200],
+      "character": "Same 4 channels as DMG, but late-era composers pushed them harder: tighter arpeggios, busier basslines, more confident melodies. The peak of the 4-channel handheld craft.",
+      "voice_palette": ["pulse12", "pulse25", "pulse50", "wave", "tri_bass", "noise", "drums"]
+    },
+    "snes": {
+      "label": "SNES / Super Famicom (SPC700)",
+      "max_voices": 8,
+      "chords": true,
+      "reverb": 0.18,
+      "channels": [],
+      "tempo_range": [60, 200],
+      "character": "Eight sample-based voices with per-voice ADSR and a hardware echo unit. Real chords, lush pads, plucked basses, faux-orchestral colour. The platform-action and grand-RPG sound — warm, reverberant, cinematic within 8 notes.",
+      "voice_palette": ["square", "pulse25", "saw", "strings", "pad", "bell", "pluck", "bass", "tri_bass", "flute", "brass", "organ", "drums"]
+    },
+    "gba": {
+      "label": "Game Boy Advance",
+      "max_voices": 8,
+      "chords": true,
+      "reverb": 0.1,
+      "channels": [],
+      "tempo_range": [60, 210],
+      "character": "Legacy PSG channels plus two PCM 'direct sound' channels; most games ran a sampled, MIDI-like sequencer. Brighter and thinner than SNES but more voices than the handhelds before it.",
+      "voice_palette": ["square", "pulse25", "saw", "strings", "pad", "bell", "pluck", "bass", "flute", "brass", "organ", "drums"]
+    },
+    "hifi": {
+      "label": "Hi-fi sequenced MIDI (PS1 / GM, FF-VII-era)",
+      "max_voices": 16,
+      "chords": true,
+      "reverb": 0.12,
+      "channels": [],
+      "tempo_range": [40, 220],
+      "character": "Full General-MIDI-style sequencing with a large voice budget and sample-based instruments. The early-3D-RPG sound: ambitious, emotional, orchestral-leaning — 'it's MIDI but it sets the whole scene'.",
+      "voice_palette": ["square", "saw", "strings", "pad", "bell", "pluck", "bass", "tri_bass", "flute", "brass", "organ", "drums"]
+    }
+  },
+
+  "voices": {
+    "pulse12": {"timbre": "pulse", "duty": 0.125, "gm": 80, "env": "lead", "desc": "Thin nasal pulse (12.5% duty). Sparkly secondary lead / arpeggio."},
+    "pulse25": {"timbre": "pulse", "duty": 0.25, "gm": 80, "env": "lead", "desc": "Classic chip lead (25% duty). The default melody voice."},
+    "pulse50": {"timbre": "pulse", "duty": 0.5, "gm": 80, "env": "lead", "desc": "Full square (50% duty). Round, hollow, organ-like."},
+    "square": {"timbre": "pulse", "duty": 0.5, "gm": 80, "env": "lead", "desc": "Alias of pulse50."},
+    "triangle": {"timbre": "triangle", "duty": 0.5, "gm": 80, "env": "lead", "desc": "Soft triangle lead / counter-melody (ocarina-ish)."},
+    "tri_bass": {"timbre": "triangle", "duty": 0.5, "gm": 38, "env": "bass", "desc": "Triangle in the bass register. The NES/GB low end."},
+    "wave": {"timbre": "wave", "duty": 0.5, "gm": 80, "env": "lead", "desc": "Game Boy 4-bit wavetable — hollow, mellow; bass or pad."},
+    "saw": {"timbre": "saw", "duty": 0.5, "gm": 81, "env": "lead", "desc": "Bright buzzy saw. Aggressive lead / synth brass."},
+    "bass": {"timbre": "saw", "duty": 0.5, "gm": 38, "env": "bass", "desc": "Punchy sampled-style bass (SNES/GBA/hifi)."},
+    "pluck": {"timbre": "triangle", "duty": 0.5, "gm": 24, "env": "pluck", "desc": "Short decaying pluck — harp / guitar / koto feel."},
+    "bell": {"timbre": "sine", "duty": 0.5, "gm": 9, "env": "bell", "desc": "Glassy bell / music-box. Sparkle and accents."},
+    "strings": {"timbre": "saw", "duty": 0.5, "gm": 48, "env": "string", "desc": "Bowed string ensemble (sustained pad with vibrato)."},
+    "pad": {"timbre": "saw", "duty": 0.5, "gm": 89, "env": "pad", "desc": "Warm sustained pad for atmosphere."},
+    "brass": {"timbre": "pulse", "duty": 0.5, "gm": 61, "env": "brass", "desc": "Punchy brass section stab/lead."},
+    "flute": {"timbre": "sine", "duty": 0.5, "gm": 73, "env": "flute", "desc": "Airy flute/whistle (sine + vibrato)."},
+    "organ": {"timbre": "pulse", "duty": 0.5, "gm": 16, "env": "organ", "desc": "Sustained organ (square, no decay)."},
+    "noise": {"timbre": "noise", "duty": 0.5, "gm": 80, "env": "lead", "desc": "Pitched/atmospheric noise (wind, surf, hiss)."},
+    "drums": {"timbre": "drums", "duty": 0.5, "gm": 0, "env": "drums", "desc": "Percussion track. Note names map to kit pieces — see SKILL.md."}
+  },
+
+  "envelopes": {
+    "lead":   {"a": 0.004, "d": 0.04, "s": 0.85, "r": 0.06, "vib_depth": 0.0,  "vib_rate": 0.0},
+    "bass":   {"a": 0.004, "d": 0.08, "s": 0.70, "r": 0.05, "vib_depth": 0.0,  "vib_rate": 0.0},
+    "pluck":  {"a": 0.002, "d": 0.18, "s": 0.0,  "r": 0.10, "vib_depth": 0.0,  "vib_rate": 0.0},
+    "pad":    {"a": 0.10,  "d": 0.25, "s": 0.85, "r": 0.30, "vib_depth": 0.06, "vib_rate": 4.5},
+    "bell":   {"a": 0.002, "d": 0.7,  "s": 0.0,  "r": 0.5,  "vib_depth": 0.0,  "vib_rate": 0.0},
+    "organ":  {"a": 0.012, "d": 0.0,  "s": 1.0,  "r": 0.04, "vib_depth": 0.0,  "vib_rate": 0.0},
+    "string": {"a": 0.07,  "d": 0.12, "s": 0.88, "r": 0.18, "vib_depth": 0.12, "vib_rate": 5.0},
+    "flute":  {"a": 0.05,  "d": 0.06, "s": 0.92, "r": 0.09, "vib_depth": 0.10, "vib_rate": 5.5},
+    "brass":  {"a": 0.02,  "d": 0.08, "s": 0.80, "r": 0.07, "vib_depth": 0.05, "vib_rate": 5.0},
+    "drums":  {"a": 0.001, "d": 0.10, "s": 0.0,  "r": 0.04, "vib_depth": 0.0,  "vib_rate": 0.0}
+  },
+
+  "drum_map": {
+    "_comment": "Note name -> drum sound for the built-in synth. Also written as GM percussion note numbers in the .mid (channel 10).",
+    "kick":  {"note": "C2",  "gm": 36, "type": "kick"},
+    "snare": {"note": "D2",  "gm": 38, "type": "snare"},
+    "hat":   {"note": "F#2", "gm": 42, "type": "hat"},
+    "ohat":  {"note": "A#2", "gm": 46, "type": "ohat"},
+    "tom":   {"note": "A2",  "gm": 45, "type": "tom"},
+    "crash": {"note": "C#3", "gm": 49, "type": "crash"},
+    "clap":  {"note": "D#2", "gm": 39, "type": "snare"}
+  },
+
+  "presets": {
+    "title": {
+      "label": "Title screen theme",
+      "use_for": "Main menu / boot. The promise of the adventure.",
+      "era": "hifi", "tempo": 96, "length_seconds": 36, "loop": true,
+      "form": "Short rubato intro -> grand statement of the main motif -> loop body. The single most-heard melody in the game; make the hook unmistakable.",
+      "voicing": "Lead = strings or brass over pad; pluck/bell sparkle; bass + drums optional and restrained."
+    },
+    "overworld": {
+      "label": "Overworld / route theme",
+      "use_for": "Walking routes between towns; the default exploration loop.",
+      "era": "gbc", "tempo": 132, "length_seconds": 32, "loop": true,
+      "form": "AABA or ABAC, 16–32 bars. Bright, forward-moving, endlessly hummable — it must not annoy after the 20th loop.",
+      "voicing": "pulse25 lead, pulse12 harmony/arps, tri_bass walking bass, noise/drums light backbeat."
+    },
+    "town": {
+      "label": "Town / village theme",
+      "use_for": "Safe hubs, villages, shops.",
+      "era": "gbc", "tempo": 108, "length_seconds": 30, "loop": true,
+      "form": "Relaxed AB, warm major key. Cosy and slightly slower than the road.",
+      "voicing": "pulse25 or wave lead, gentle pulse50 chords-by-arp, soft tri_bass, minimal percussion."
+    },
+    "battle": {
+      "label": "Wild encounter battle",
+      "use_for": "Standard creature battles.",
+      "era": "gbc", "tempo": 156, "length_seconds": 28, "loop": true,
+      "form": "Driving intro stab -> tense loop. Urgent but exciting, not scary.",
+      "voicing": "pulse25 lead, pulse12 fast arps for harmony, busy tri_bass, steady noise drums."
+    },
+    "boss": {
+      "label": "Boss / rival / champion battle",
+      "use_for": "Climactic fights.",
+      "era": "snes", "tempo": 168, "length_seconds": 40, "loop": true,
+      "form": "Heroic minor key, bold motif, a clear B-section that lifts. High stakes.",
+      "voicing": "brass/saw lead, string pad, pluck/arp tension, strong bass + full drums."
+    },
+    "cave": {
+      "label": "Cave / dungeon theme",
+      "use_for": "Caves, dungeons, mysterious interiors.",
+      "era": "gbc", "tempo": 96, "length_seconds": 34, "loop": true,
+      "form": "Sparse, modal/minor, lots of space. Tension + wonder, slow reveal.",
+      "voicing": "wave or pulse50 lead with long notes, deep tri_bass, occasional noise drips."
+    },
+    "emotional": {
+      "label": "Emotional / story moment",
+      "use_for": "Cutscenes, partings, tender beats.",
+      "era": "snes", "tempo": 76, "length_seconds": 40, "loop": true,
+      "form": "Slow, lyrical, bittersweet. Let one melody breathe over gentle harmony.",
+      "voicing": "flute or strings lead, pad, pluck arpeggios, soft bass, no drums."
+    },
+    "victory": {
+      "label": "Victory fanfare",
+      "use_for": "Post-battle win. ONE-SHOT jingle, not a loop.",
+      "era": "hifi", "tempo": 140, "length_seconds": 6, "loop": false,
+      "form": "Ascending triumphant phrase that resolves hard on the tonic. 2–6 s.",
+      "voicing": "brass/square lead + pluck + bass; a crash to finish."
+    },
+    "level_up": {
+      "label": "Level-up / learn jingle",
+      "use_for": "A creature levels up or learns a move. ONE-SHOT.",
+      "era": "gbc", "tempo": 150, "length_seconds": 2, "loop": false,
+      "form": "Tiny rising 3–5 note flourish. <2 s. Optimistic.",
+      "voicing": "pulse25 + bell sparkle."
+    },
+    "item_get": {
+      "label": "Item-get jingle",
+      "use_for": "Picking up a key item. ONE-SHOT.",
+      "era": "gbc", "tempo": 150, "length_seconds": 3, "loop": false,
+      "form": "Short, bright, conclusive 'ta-da'. 1–3 s.",
+      "voicing": "pulse25 + pulse12 harmony, resolve on tonic."
+    },
+    "evolution": {
+      "label": "Evolution / transformation theme",
+      "use_for": "A creature evolves. Short, can loop briefly during the animation.",
+      "era": "snes", "tempo": 100, "length_seconds": 12, "loop": true,
+      "form": "Mysterious build with rising tension, then release. Loops until the animation ends.",
+      "voicing": "pad + bell shimmer, rising pluck arps, swelling strings."
+    },
+    "game_over": {
+      "label": "Game-over / faint theme",
+      "use_for": "Defeat / blackout. ONE-SHOT.",
+      "era": "snes", "tempo": 72, "length_seconds": 6, "loop": false,
+      "form": "Descending, deflating cadence to a minor resolution. 3–6 s.",
+      "voicing": "strings or wave lead, low bass, no drums."
+    }
+  }
+}

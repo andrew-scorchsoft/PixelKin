@@ -1,8 +1,10 @@
 # Python dependencies for the repo's asset-generation skills
-# (.claude/skills/generate-image and .claude/skills/generate-music).
+# (.claude/skills/generate-image, generate-music, and generate-midi).
 # Install into a local venv:  python3 -m venv venv && ./venv/bin/pip install -r requirements.txt
 
-requests>=2.31      # HTTP calls to the image/music APIs (both skills)
-Pillow>=10.0        # image decode / metadata strip / WebP re-encode (generate-image)
-numpy>=1.26         # fast chroma-key alpha for --transparent (generate-image; optional but recommended)
-python-dotenv>=1.0  # load API keys from a .env file (optional; both skills fall back without it)
+requests>=2.31         # HTTP calls to the image/music APIs (generate-image, generate-music)
+Pillow>=10.0           # image decode / metadata strip / WebP re-encode (generate-image)
+numpy>=1.26            # chroma-key alpha (generate-image); chiptune synth (generate-midi)
+python-dotenv>=1.0     # load API keys from a .env file (optional; skills fall back without it)
+mido>=1.3              # read/write .mid files (generate-midi)
+imageio-ffmpeg>=0.4    # bundled static ffmpeg for MIDI->MP3 encoding (generate-midi; no apt needed)
