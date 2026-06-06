@@ -31,6 +31,9 @@ a time; code does the layout.
 - An **NPC/human walking sheet** (3×4, directional).
 - A **battle effect** animation sheet (sparks, slashes, bursts).
 - A **world tile** (16×16, tileable).
+- A **cohesive area tile set** — many related 16×16 tiles (ground, path, water, edges,
+  cliff, roof, wall, decor) generated to share one palette, then packed into a tileset
+  atlas + metadata. See **Generating a map tile set** below.
 
 Do **not** use it for: UI chrome you can build in CSS/HTML, the logo (already in
 `assets/`), or music/SFX (use `generate-music`).
@@ -121,6 +124,13 @@ Run `--list-types` for the live list. Current types (all defined in
 | `human-overworld`    |  32×32 | 3×4  | bottom-centre |
 | `effect`             |  32×32 | 4×4  | centre        |
 | `tile`               |  16×16 | 1×1  | top-left      |
+| `tile-ground` / `tile-path` / `tile-water` / `tile-water-edge` / `tile-cliff` / `tile-cliff-edge` / `tile-roof` / `tile-wall` | 16×16 | 1×1 | top-left | 
+| `tile-decor`         |  16×16 | 1×1  | centre        |
+
+The `tile-*` subtypes are role-specific variants of `tile` for building a cohesive area
+set (edge tiles are prompted to match their neighbours; `tile-decor` keeps transparency
+around a small object). Use them with `--area`/`--palette` (see **Generating a map tile
+set**).
 
 ### Arguments worth knowing
 
@@ -147,11 +157,80 @@ Run `--list-types` for the live list. Current types (all defined in
 - `--no-align` — for sheets, skip per-frame baseline alignment and just
   downscale the whole sheet (use if the model's own layout was already good and
   the per-cell trim is clipping something).
+- `--area NAME` — (with a `tile`/`tile-*` type) names the area's tile set: appends the
+  shared **area-style cohesion clause** to the prompt and auto-files the tile under
+  `assets/tilesets/<area>/<role>.png`. See **Generating a map tile set**.
+- `--palette "desc"` — the area's shared palette description (derive it from
+  `assets/tilesets/world-palette.json`). Used with `--area` so every tile in the set
+  matches.
 - `--from-image PATH` — skip the API call and just run the snap pipeline on an
   existing transparent PNG. Useful for cleaning up hand-made art or a sprite you
   already generated.
 - `--keep-temp` — also save the raw high-res generation next to the output.
 - `--list-types` — print all types and exit.
+
+## Generating a map tile set
+
+A map area (a town, a route, a cave) needs a *set* of tiles that read as one place. Same
+two-system split: the model makes each tile, `pack_tileset.py` assembles them. Briefs and
+the world palette come from the world docs (`docs/world/atlas.md`, `docs/world/README.md`,
+and the master `assets/tilesets/world-palette.json`).
+
+**Step 1 — generate the tiles, anchor-first for cohesion.** Generate the area's **ground
+tile first**, then pass it as `--reference` to every sibling tile so palette and pixel
+density carry across the set. Give every tile the same `--area` and `--palette`:
+
+```bash
+AREA=tinderwick
+PAL="blue-hour coastal village: bone-cream walls, warm fire-orange candlelight, deepBlue sea, grass verges, soil paths, ink outlines"
+GEN=.claude/skills/generate-sprite-sheet/scripts/generate_sprite.py
+
+# anchor tile first (auto-files to assets/tilesets/tinderwick/ground.png)
+./venv/bin/python $GEN --type tile-ground --area $AREA --palette "$PAL" \
+  --subject "short coastal meadow grass, cool morning green"
+
+# then the rest, seeded with the ground tile as a reference (fire in parallel)
+./venv/bin/python $GEN --type tile-path  --area $AREA --palette "$PAL" \
+  --reference assets/tilesets/$AREA/ground.png --subject "packed sandy footpath"
+./venv/bin/python $GEN --type tile-water --area $AREA --palette "$PAL" \
+  --reference assets/tilesets/$AREA/ground.png --subject "calm deepblue sea, gentle cyan ripples"
+./venv/bin/python $GEN --type tile-water-edge --area $AREA --palette "$PAL" \
+  --reference assets/tilesets/$AREA/ground.png --subject "wet sand shoreline meeting the sea"
+# …roof, wall, cliff, cliff-edge, decor as the area needs
+```
+
+Run the self-check loop on each tile (and eyeball that a few laid edge-to-edge don't seam
+or buzz). The two prior areas' ground tiles make good extra `--reference`s so neighbouring
+regions read as one world.
+
+**Step 2 — pack into an atlas + tileset metadata.** Write a manifest in the area's tile
+folder that fixes tile order and the per-tile properties the game reads (`collides`,
+`requires_ability`, `encounter_terrain`), then pack:
+
+```jsonc
+// assets/tilesets/tinderwick/tileset.manifest.json
+{ "name": "tinderwick_set", "columns": 8, "tiles": [
+  { "file": "ground.png", "role": "ground", "encounter_terrain": "tall_grass" },
+  { "file": "path.png",   "role": "path" },
+  { "file": "wall.png",   "role": "wall",  "collides": true },
+  { "file": "water.png",  "role": "water", "collides": true,
+    "requires_ability": "tidecall", "encounter_terrain": "water" }
+] }
+```
+
+```bash
+./venv/bin/python .claude/skills/generate-sprite-sheet/scripts/pack_tileset.py \
+  --tiles-dir assets/tilesets/tinderwick
+# -> public/assets/tilesets/tinderwick_set.png  +  tinderwick_set.tileset.json
+```
+
+The emitted `<name>.tileset.json` is consumed directly by the game's map loader (its
+per-tile `collides` / `requires_ability` / `encounter_terrain` drive collision,
+ability-gating, and encounters — see `src/game/data/world/types.ts`). A map JSON then
+references the atlas via a `TilesetRef` and assigns its `first_gid`.
+
+Generated source tiles live at repo-root `assets/tilesets/<area>/` (not served); the packed
+atlas + metadata land in `public/assets/tilesets/` (served by Vite).
 
 ## Two layers of checking
 
@@ -245,8 +324,9 @@ Rules that still apply:
   The output reads as authentic pixel art because the final canvas is tiny, but
   it won't be hand-pixelled perfection. For hero assets, treat generation as a
   strong base and clean up by hand if needed (then re-run with `--from-image`).
-- This skill **does not** build atlases. That's the separate packing step (art
-  bible §9), intentionally left to code, not the model.
+- This skill **does not** build creature/sprite atlases. That's the separate packing step
+  (art bible §9), intentionally left to code, not the model. (Map **tilesets** are the one
+  packing step that exists today — `pack_tileset.py`, see **Generating a map tile set**.)
 
 ## What it deliberately does *not* do
 
