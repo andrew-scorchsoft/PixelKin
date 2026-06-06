@@ -205,9 +205,11 @@ Image models, however, can't reliably emit alpha. So generation uses a flat
 - Background must be perfectly flat — no checkerboard, no gradient, no plate.
 - Pipeline: **generate on magenta → strip magenta → export transparent PNG**.
 
-The `generate-sprite-sheet` skill handles this automatically (it drives
-`generate-image --transparent`, which uses OpenAI's native alpha or Google's
-magenta chroma-key, then snaps the result to the exact canvas).
+The `generate-sprite-sheet` skill handles this automatically. Its default model,
+**Google Nano Banana Pro**, renders on a magenta field that gets keyed out to a
+transparent PNG before snapping to the exact canvas. The optional **OpenAI
+`gpt-image-2`** path (`--provider openai`) does the same magenta chroma-key, but
+in-skill — gpt-image-2 has no native transparent mode.
 
 ---
 

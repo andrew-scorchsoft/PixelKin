@@ -36,8 +36,36 @@ from PIL import Image
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 SPECS_PATH = SCRIPT_DIR / "sprite-specs.json"
-# The sibling generate-image skill does the actual API call + transparency.
+# The sibling generate-image skill does the actual API call.
 GENERATE_IMAGE = SCRIPT_DIR.parent.parent / "generate-image" / "scripts" / "generate.py"
+
+# Default provider. Google Nano Banana Pro is the default: it handles
+# transparency and reference-image fidelity best and is reliable here. OpenAI
+# gpt-image-2 is available via --provider openai, but it has no native
+# transparent mode (we chroma-key a magenta field instead) and its safety
+# filter can reject benign prompts, so it's a fallback rather than the default.
+DEFAULT_PROVIDER = "google"
+
+# When the OpenAI path IS used, gpt-image-2 has no native transparent-background
+# mode (only the older gpt-image-1 does), so we render the sprite on a flat
+# magenta chroma-key field and strip it ourselves. This preamble forces that
+# field. Reuse the chroma-key implementation from the generate-image skill.
+sys.path.insert(0, str(GENERATE_IMAGE.parent))
+try:
+    from generate import chroma_key_to_alpha  # type: ignore
+except Exception:  # pragma: no cover - helper is optional at import time
+    chroma_key_to_alpha = None  # type: ignore
+
+CHROMA_PREAMBLE = (
+    "Paint the sprite on a SOLID FLAT UNIFORM pure magenta background, hex "
+    "#FF00FF (R=255 G=0 B=255), filling the whole canvas edge to edge. The "
+    "magenta is a chroma-key colour removed in post-processing to make the "
+    "background transparent. CRITICAL: do NOT use magenta, pink, or any "
+    "near-magenta hue anywhere on the subject itself (those pixels get "
+    "deleted); do not draw a checkerboard, transparency grid, frame, border, "
+    "card, or cast-shadow plate — just the subject sitting directly on flat "
+    "magenta, with crisp edges (no soft pink halo)."
+)
 
 # Aspect ratios generate-image / the underlying image APIs accept, as w/h.
 ASPECTS = {
@@ -87,12 +115,20 @@ def build_prompt(specs: dict, spec: dict, subject: str) -> str:
 # --------------------------------------------------------------------------- #
 # Generation (delegates to the generate-image skill)
 # --------------------------------------------------------------------------- #
-def generate_source(prompt: str, aspect: str, *, provider: str | None,
-                    max_retries: int, out_png: Path) -> dict:
-    """Run generate-image --transparent to produce a high-res source PNG.
+def generate_source(prompt: str, aspect: str, *, provider: str,
+                    native_transparent: bool, max_retries: int, out_png: Path,
+                    references: list[str] | None = None) -> dict:
+    """Run generate-image to produce a high-res source PNG.
+
+    With ``native_transparent`` (Google path) we pass --transparent and
+    generate-image returns real alpha. Without it (OpenAI gpt-image-2 path) we
+    render opaque on a magenta field — the prompt already carries the chroma
+    preamble — and this script keys the magenta out afterwards.
 
     We disable generate-image's own downscale (--max-dim 0) so we keep the full
-    resolution for our own pixel-art-aware snap step.
+    resolution for our own pixel-art-aware snap step. Any `references` are
+    passed through as --input-image so the model keeps a creature/character
+    visually consistent with existing art (e.g. the logo).
     """
     if not GENERATE_IMAGE.is_file():
         raise SystemExit(f"Cannot find generate-image script at {GENERATE_IMAGE}")
@@ -100,13 +136,15 @@ def generate_source(prompt: str, aspect: str, *, provider: str | None,
         sys.executable, str(GENERATE_IMAGE),
         "--prompt", prompt,
         "--output", str(out_png),
-        "--transparent",
         "--aspect", aspect,
         "--max-dim", "0",
         "--max-retries", str(max_retries),
+        "--provider", provider,
     ]
-    if provider:
-        cmd += ["--provider", provider]
+    if native_transparent:
+        cmd += ["--transparent"]
+    for ref in references or []:
+        cmd += ["--input-image", ref]
     proc = subprocess.run(cmd, capture_output=True, text=True)
     if proc.returncode != 0:
         raise SystemExit(
@@ -275,12 +313,17 @@ def main() -> int:
     p.add_argument("--output", help="Explicit output .png path. Overrides the creature convention.")
     p.add_argument("--creature-id", type=int, help="Creature dex id (with --creature-slug, auto-places under assets/creatures/NNN_slug/).")
     p.add_argument("--creature-slug", help="Creature slug, e.g. 'sproutle'.")
-    p.add_argument("--provider", choices=["google", "openai"], help="Force image provider.")
+    p.add_argument("--provider", choices=["google", "openai"], default=DEFAULT_PROVIDER,
+                   help="Image provider. 'google' (default) uses Nano Banana Pro's transparent "
+                        "path. 'openai' uses gpt-image-2 with a magenta chroma-key for transparency.")
     p.add_argument("--resample", choices=["lanczos", "box", "nearest"], default="lanczos",
                    help="Downscale filter. lanczos (default) reads cleanest at tiny sizes; nearest is hardest-edged.")
     p.add_argument("--fill", type=float, help="Override the type's subject fill fraction (0-1).")
     p.add_argument("--no-align", action="store_true",
                    help="For sheets: skip per-frame baseline alignment; just downscale the whole sheet.")
+    p.add_argument("--reference", action="append", metavar="PATH",
+                   help="Reference image to keep the subject visually consistent (e.g. a logo crop). "
+                        "Repeat for multiple. Passed to generate-image as --input-image. Ignored with --from-image.")
     p.add_argument("--from-image", help="Skip the API call and post-process this existing transparent PNG instead.")
     p.add_argument("--keep-temp", action="store_true", help="Keep the raw high-res generated PNG next to the output.")
     p.add_argument("--max-retries", type=int, default=2, help="API retry count passed to generate-image.")
@@ -321,6 +364,10 @@ def main() -> int:
 
     is_sheet = spec["cols"] * spec["rows"] > 1
     gen_info: dict = {}
+    # OpenAI gpt-image-2 has no native alpha: render on magenta and key it out.
+    # Google's transparent path returns real alpha directly.
+    chroma_path = args.provider == "openai"
+    transparency_method = "chroma_key" if chroma_path else "native"
 
     with tempfile.TemporaryDirectory() as td:
         if args.from_image:
@@ -330,12 +377,23 @@ def main() -> int:
             source = Image.open(src_path)
         else:
             prompt = build_prompt(specs, spec, args.subject)
+            if chroma_path:
+                prompt = f"{CHROMA_PREAMBLE}\n\n{prompt}"
             aspect = nearest_aspect(spec["frame_width"] * spec["cols"],
                                     spec["frame_height"] * spec["rows"])
             raw_png = Path(td) / "raw.png"
             gen_info = generate_source(prompt, aspect, provider=args.provider,
-                                       max_retries=args.max_retries, out_png=raw_png)
+                                       native_transparent=not chroma_path,
+                                       max_retries=args.max_retries, out_png=raw_png,
+                                       references=args.reference)
             source = Image.open(raw_png)
+            if chroma_path:
+                if chroma_key_to_alpha is None:
+                    raise SystemExit(
+                        "chroma-key helper could not be imported from the generate-image "
+                        "skill; cannot make the gpt-image-2 output transparent."
+                    )
+                source = chroma_key_to_alpha(source.convert("RGBA"))
             if args.keep_temp:
                 keep = out_path.with_name(out_path.stem + ".raw.png")
                 source.save(keep)
@@ -359,9 +417,10 @@ def main() -> int:
         "resample": args.resample,
         "aligned": (not args.no_align) if is_sheet else None,
         "source": "from-image" if args.from_image else "generated",
-        "provider": gen_info.get("provider"),
+        "references": args.reference or [],
+        "provider": gen_info.get("provider") or (None if args.from_image else args.provider),
         "model": gen_info.get("model"),
-        "transparency_method": gen_info.get("transparency_method"),
+        "transparency_method": None if args.from_image else transparency_method,
     }
 
     if args.creature_id is not None and args.creature_slug and not args.output:

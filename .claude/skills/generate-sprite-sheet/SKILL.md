@@ -1,6 +1,6 @@
 ---
 name: generate-sprite-sheet
-description: Generate consistent, standard-compliant PixelKin sprites and sprite sheets (creature battle/icon/overworld/portrait art, NPC walk sheets, battle effects, world tiles) from original briefs. Drives the image-generation API (OpenAI gpt-image-2 / Google Nano Banana Pro) through the generate-image skill, then deterministically snaps every result to the exact canvas size, anchor, and transparent-PNG format defined in docs/art-style.md. Use whenever the user wants a creature sprite, character sprite, walk sheet, battle effect, tile, icon, or portrait for the game.
+description: Generate consistent, standard-compliant PixelKin sprites and sprite sheets (creature battle/icon/overworld/portrait art, NPC walk sheets, battle effects, world tiles) from original briefs. Uses Google Nano Banana Pro by default (best for transparency and reference fidelity), with OpenAI gpt-image-2 as a selectable fallback, via the generate-image skill — then deterministically snaps every result to the exact canvas size and anchor defined in docs/art-style.md. Use whenever the user wants a creature sprite, character sprite, walk sheet, battle effect, tile, icon, or portrait for the game.
 ---
 
 # generate-sprite-sheet
@@ -35,24 +35,43 @@ a time; code does the layout.
 Do **not** use it for: UI chrome you can build in CSS/HTML, the logo (already in
 `assets/`), or music/SFX (use `generate-music`).
 
+## Image model
+
+**Default: Google Nano Banana Pro** (`gemini-3-pro-image-preview`). It renders
+on a magenta field that the generate-image skill keys out to a transparent PNG,
+and it's the most reliable here — it handles transparency cleanly and stays
+faithful to a **reference image** (important for matching the logo creatures).
+
+**Fallback: OpenAI `gpt-image-2`** (`--provider openai`). Two caveats made it
+the fallback rather than the default:
+
+- gpt-image-2 has **no native transparent mode** (only the older gpt-image-1
+  does), so the skill renders it on a flat **magenta `#FF00FF`** field and
+  chroma-keys it out itself.
+- its **safety filter can reject benign prompts** (it blocked plain
+  cute-creature briefs in testing). If you hit a `400 rejected by the safety
+  system`, that's why — switch to the default Google path.
+
+See docs/art-style.md §6 for the transparency pipeline.
+
 ## Prerequisites
 
 - Run via the **project venv**: `./venv/bin/python …` from the repo root. The
   script needs Pillow (and numpy for clean edges) — both in `requirements.txt`.
   If the venv doesn't exist: `python3 -m venv venv && ./venv/bin/pip install -r requirements.txt`.
-- An image-provider key in the environment — `GOOGLE_AI_STUDIO_API_KEY`
-  (preferred, Nano Banana Pro) or `OPENAI_API_KEY` (gpt-image-2). The skill
-  delegates the actual API call to the sibling `generate-image` skill, which
-  handles provider choice and the transparent-background pipeline.
+- **`GOOGLE_AI_STUDIO_API_KEY`** in the environment for the default path (or
+  `OPENAI_API_KEY` for `--provider openai`). The skill delegates the actual API
+  call to the sibling `generate-image` skill.
 
 ## How it works
 
 For each asset the script:
 
-1. Builds a prompt = shared **style preamble** + **originality clause** +
-   the locked **per-type template** (`sprite-specs.json`) + your **subject**.
-2. Calls `generate-image --transparent` to get a high-res transparent source
-   (OpenAI native alpha, or Google magenta chroma-key — handled for you).
+1. Builds a prompt = magenta chroma-key preamble + shared **style preamble** +
+   **originality clause** + the locked **per-type template**
+   (`sprite-specs.json`) + your **subject**.
+2. Calls `generate-image` with **gpt-image-2** to render the sprite on flat
+   magenta, then **keys the magenta out** to a transparent source.
 3. **Snaps** it to the type's exact pixel canvas: alpha-trim → scale to the fill
    fraction → composite at the type's anchor. Multi-frame sheets are aligned
    **per cell**, so every frame shares a baseline (feet line up).
@@ -113,7 +132,14 @@ Run `--list-types` for the live list. Current types (all defined in
 - `--output` — explicit `.png` destination. **Or** use the creature convention:
 - `--creature-id N` + `--creature-slug name` — auto-files under
   `assets/creatures/NNN_slug/<role>.png` and writes/updates `metadata.json`.
-- `--provider google|openai` — force the provider (default: auto).
+- `--reference PATH` — a reference image to keep the subject visually
+  consistent (e.g. a crop of the same creature from the logo, or its own front
+  sprite when generating its back/icon). Repeat for multiple. Routed to
+  `generate-image --input-image`; gpt-image-2 honours references via its edits
+  route.
+- `--provider openai|google` — image provider. **`openai` (default)** uses
+  **gpt-image-2** + magenta chroma-key. `google` uses Nano Banana Pro's native
+  transparent path.
 - `--resample lanczos|box|nearest` — downscale filter. **`lanczos` (default)**
   reads cleanest at tiny sizes; `nearest` gives the hardest edges. (Rendering
   stays crisp regardless — Phaser nearest-upscales the small source.)
