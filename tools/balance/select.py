@@ -233,6 +233,17 @@ def main():
                           "score": line["score"], "dex_ids": ids_here,
                           "names": [m["name"] for m in line["members"]]})
 
+    # de-duplicate names within the final 151 (pool has a few cross-batch dups):
+    # keep the first occurrence's name; flag later ones for a rename in flesh-out.
+    seen_names = {}
+    for e in selected:
+        key = e["name"].strip().lower()
+        if key in seen_names:
+            e["_needs_rename"] = True
+            e["_dup_of"] = seen_names[key]
+        else:
+            seen_names[key] = e["name"]
+
     chosen_concept_ids = set(e["concept_id"] for e in selected if not e.get("existing"))
     cut = [c for c in concepts if c["concept_id"] not in chosen_concept_ids]
 
