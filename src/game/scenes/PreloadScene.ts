@@ -18,6 +18,15 @@ export class PreloadScene extends Phaser.Scene {
     // this.load.spritesheet('player', 'assets/sprites/player.png', { frameWidth: 16, frameHeight: 24 });
     // this.load.tilemapTiledJSON('town', 'assets/maps/town.json');
     // this.load.audio('overworld', 'assets/audio/music/overworld.mp3');
+
+    // Wild-encounter battle music — three interchangeable dusk-themed loops.
+    // Rotate them per encounter so random battles stay fresh; each is a
+    // seamless loop, so play with `{ loop: true }`.
+    this.load.audio('battle-lanternlight', 'assets/audio/music/battle-lanternlight.mp3');
+    this.load.audio('battle-gloaming', 'assets/audio/music/battle-gloaming.mp3');
+    this.load.audio('battle-lastlight', 'assets/audio/music/battle-lastlight.mp3');
+    // Boss / hard-opponent battle music — lusher, higher-stakes loop.
+    this.load.audio('battle-boss-keeper', 'assets/audio/music/battle-boss-keeper.mp3');
   }
 
   create(): void {
