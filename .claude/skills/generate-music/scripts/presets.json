@@ -1,0 +1,44 @@
+{
+  "presets": {
+    "overworld": {
+      "label": "Overworld / route theme",
+      "use_for": "Walking routes between towns; the default exploration loop.",
+      "prompt_suffix": "Upbeat, adventurous handheld-RPG overworld theme in the style of late-1990s Game Boy Color games. Bright chiptune-leaning instrumentation with a hummable lead melody, steady walking tempo around 130 BPM, warm and nostalgic. Fully instrumental, seamless looping, no vocals."
+    },
+    "town": {
+      "label": "Town / village theme",
+      "use_for": "Safe hub areas, villages, shops.",
+      "prompt_suffix": "Cosy, gentle village theme for a retro handheld RPG. Relaxed mid-tempo, friendly major-key melody, soft chiptune bells and rounded synth, welcoming and peaceful. Fully instrumental, seamless looping, no vocals."
+    },
+    "battle": {
+      "label": "Wild encounter battle",
+      "use_for": "Standard creature battles.",
+      "prompt_suffix": "Energetic, driving battle theme for a retro handheld creature-RPG. Fast tempo around 150 BPM, punchy chiptune lead, urgent bassline, exciting but not menacing. Fully instrumental, seamless looping, no vocals."
+    },
+    "boss": {
+      "label": "Champion / boss battle",
+      "use_for": "Rival, gym-leader-style, and climactic fights.",
+      "prompt_suffix": "Dramatic, high-stakes boss battle theme for a retro handheld RPG. Intense and heroic, minor key with a triumphant motif, fast tempo, bold chiptune brass-like leads and pounding percussion. Fully instrumental, seamless looping, no vocals."
+    },
+    "victory": {
+      "label": "Victory fanfare",
+      "use_for": "Short post-battle win jingle (set --length 6 to 10).",
+      "prompt_suffix": "Short triumphant victory fanfare in classic handheld-RPG style. Bright, celebratory, ascending chiptune melody, resolves cleanly. Fully instrumental, no vocals. A brief jingle, not a loop."
+    },
+    "cave": {
+      "label": "Cave / dungeon theme",
+      "use_for": "Caves, dungeons, mysterious interiors.",
+      "prompt_suffix": "Atmospheric, mysterious cave theme for a retro handheld RPG. Slow-to-mid tempo, sparse echoing chiptune notes, slightly tense and wondrous minor key, sense of depth and exploration. Fully instrumental, seamless looping, no vocals."
+    },
+    "title": {
+      "label": "Title screen theme",
+      "use_for": "Main menu / title screen.",
+      "prompt_suffix": "Sweeping, nostalgic title-screen theme for a retro handheld creature-collecting RPG. Grand but warm, memorable main motif, evokes the start of a childhood adventure, classic chiptune-orchestral blend. Fully instrumental, seamless looping, no vocals."
+    },
+    "emotional": {
+      "label": "Emotional / story moment",
+      "use_for": "Cutscenes, partings, tender story beats.",
+      "prompt_suffix": "Tender, emotional theme for a story moment in a retro handheld RPG. Slow, heartfelt melody, soft chiptune piano-like and string-like tones, bittersweet and nostalgic. Fully instrumental, seamless looping, no vocals."
+    }
+  }
+}

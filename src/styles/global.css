@@ -1,0 +1,41 @@
+/* Full-bleed canvas with safe-area insets so the game sits correctly inside a
+   mobile webview (notches / rounded corners) once wrapped with Capacitor. */
+:root {
+  color-scheme: dark;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0b1026;
+  /* Disable text selection / long-press callouts that feel un-game-like on touch. */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#game-root {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+/* Crisp scaling for pixel art — never smooth our chunky sprites. */
+canvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  touch-action: none;
+}

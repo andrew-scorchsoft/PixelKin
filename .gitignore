@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+*.tsbuildinfo
+
+# Python venv for the asset-generation skills
+venv/
+__pycache__/
+*.pyc
+
+# Secrets — never commit API keys
+.env
+.env.local
+.env.*.local
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+*.log
+
+# Future mobile (Capacitor) native projects are generated, not committed by default
+# /ios
+# /android
