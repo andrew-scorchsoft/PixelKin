@@ -72,6 +72,23 @@ The viewport is **15×10 tiles** (240×160 at `TILE_SIZE` 16).
   via the world graph — never one giant map (keeps camera bounds, encounter tables, and
   warp reasoning local).
 
+### Route structure
+
+Towns are joined by **routes**, and routes carry the wild encounters and traversal gating
+(full network in [`atlas.md`](./atlas.md) §3). Four conventions, all expressed in the world
+graph (`src/game/data/world/graph.ts`):
+
+- **Segmented chains** — a main route is two named maps (e.g. `dimglass_coast_i` /
+  `_ii`), the gift-gate sitting on the segment boundary.
+- **Spurs** — optional dead-end maps flagged `optional: true` on their `AreaNode`, usually
+  gated by a *later* Gift so the player backtracks for the reward.
+- **Landmarks** — bigger optional micro-dungeons (also `optional: true`) with a unique kin.
+- **Shortcuts** — edges gated by a `flag:shortcut_*` that open from the far side and
+  permanently re-link a route to the hub.
+
+Rewards stay in-schema: a rare kin is a low-weight `EncounterZone` entry (or a static
+`EventTrigger`), a hidden item is an `EventTrigger` (`kind: 'script'`) that sets a flag.
+
 ### World state & saves
 
 All world progress (current map, player tile/facing, earned abilities, set flags) is a

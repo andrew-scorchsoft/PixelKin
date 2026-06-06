@@ -252,31 +252,98 @@ direct `generate-midi` brief: *preset · mood · instrumentation · tempo & key 
 ## 3. Routes & connective terrain
 
 Like the cartridge-era games, **towns are joined by routes, and the routes carry the
-adventure**: this is where most wild encounters live, where traversal gating (the Lantern
-Gifts) opens new ground, and where the world deliberately rotates through its terrain
-palette so no two stretches feel the same. Routes are first-class `MapDefinition`s
-(`kind: 'route' | 'water' | 'cave'`) with their own `EncounterZone`s; they are nodes in
-`VESPERHOLM_GRAPH` (see `src/game/data/world/graph.ts`), so a gift earned in a town opens
-the route beyond it.
+adventure** — most wild encounters, the traversal gating, and the shifts in terrain happen
+out on the road. Routes are first-class `MapDefinition`s (`kind: 'route' | 'water' |
+'cave'`) and nodes in `VESPERHOLM_GRAPH` (`src/game/data/world/graph.ts`); a gift earned in
+or near a town opens the route beyond it.
 
-**Four of the area cards above double as routes** — *Dimglass Coast* (coast + grass, water
-via Tidecall), *Lowleaf Hollow* (deep forest, dark interior via Glimmerstep), *Cinderhead
-Mine* (a full cave dungeon you traverse, via Glimmerstep), and *Coldfog Marches* (blighted
-marsh, via Emberward). The remaining connective routes:
+**Conventions** (all wired into the graph):
 
-| Route | Links | Terrain (encounter) | Gate | Graphics | Music brief | Kin |
-|-------|-------|---------------------|------|----------|-------------|-----|
-| **Saltreach Fen** | Pearlmoor → Lowleaf | `tall_grass` + `water` | **Tidecall** (deep channels) | brackish reed shallows, `deepBlue` water, `grass` reeds, `bone` mist, `diamond` glints | *overworld · slow marsh wander · woodwind lead over lapping water + soft pad · ~104 BPM, gentle minor · loop* | reed-stalk heron (Tide/Flying), mudskip pup (Tide), marsh-lantern frog (Tide/Light) |
-| **Windward Stair** | Galehigh → Pale Vault | `tall_grass` (ledges) | **Updraft Kite** (high gaps) | switchback cliff stairs, `stone` greys, `fire` sunset into `night`, `diamond` updraft motes | *overworld · climbing, airy, building · high pulse lead + wind-swell noise + steady bass · ~132 BPM, bright major · loop* | crag-climber ram (Stone/Storm), slate-wing moth (Stone/Flying), gust-finch (Storm) |
-| **Hushfrost Pass** | Pale Vault → Solarium | `tall_grass` (sheltered) | **Emberward** (coldfog) | snowed canyon, `deepBlue` ice, `ink` coldfog walls, your lamp the only warmth | *emotional · cold, sparse, tense-but-tender · lone bell + low pad + faint heartbeat · ~68 BPM, suspended minor · loop* | ice-burrower (Frost), frost-wisp (Frost/Light), numbed ex-Ember kin near the fog (Frost/Dark) |
-| **Sunvault Climb** | Solarium → Nightreach | `tall_grass` | **Sunsketch** (sun-vine bridges) | overgrown golden terraces, sun-vine bridges blooming open, `bone` steps, `fire`-warm glows | *overworld · warm, ascending, hopeful · major arpeggio lead + soft brass-ish pulse + harp · ~112 BPM, radiant major · loop* | sun-seedling (Verdant/Solar), vine-serpent (Verdant), glass-wing bee (Verdant/Light) |
-| **Lanternway** (spokes) | rim towns ↔ Vesper Crossroads | `tall_grass` | none (open) | hedged, lantern-lined country lanes, milestones, `grass`, `soil` path, `diamond` lamp dots | *overworld · the signature cosy travel loop, walking pace · plucky pulse lead + triangle bass + light bell · ~120 BPM, comfortable major · loop* | path-pup (Normal/Verdant), stile-cricket (Bug), lamp-moth (Light) |
+- **Segmented chains.** Each main inter-town route splits into **two named segments**
+  (e.g. *Dimglass Coast I → II*), with the gift-gate on the segment *boundary* — the
+  classic "Route 1 → Route 2" pacing, so crossing into the next stretch feels earned.
+- **Spurs.** Each region has an optional **dead-end branch** ending in a reward, usually
+  blocked by a *later* Gift so you come back for it — the "derelict works with a rare
+  creature inside" pattern. (`AreaNode.optional` flags these.)
+- **Signature landmarks.** A few bigger optional **micro-dungeons**, each with a unique
+  kin reward.
+- **Late shortcuts.** One-way links that **open from the far side** and permanently re-link
+  a route to the hub — exploration that pays off as moves/story unlock.
+
+### Segmented main routes (four also appear as area cards in §2)
+
+| Route (segments) | Links | Terrain | Boundary gate |
+|------------------|-------|---------|---------------|
+| *Dimglass Coast I → II* † | Tinderwick ↔ Pearlmoor | cliff shore → tidal flats | open (Tidecall opens a shore spur) |
+| **Saltreach Fen I → II** | Pearlmoor ↔ Lowleaf | open marsh → deep channels | **Tidecall** (I→II) |
+| *Lowleaf Hollow → Glowmoss Deep* † | forest town → cave mouth | deep forest → glowing dark interior | **Glimmerstep** (into the deep) |
+| *Cinderhead Mine → Cinderhead Deep* † | Lowleaf ↔ Galehigh | upper galleries → deep cave | **Glimmerstep** (deep) |
+| **Windward Stair I → II** | Galehigh ↔ Pale Vault | lower switchbacks → high crags | **Updraft Kite** (I→II) |
+| **Hushfrost Pass I → II** | Pale Vault ↔ Solarium | snow canyon → coldfog throat | **Emberward** (I→II) |
+| **Sunvault Climb I → II** | Solarium ↔ Nightreach | overgrown terraces → sun-vine bridges | **Sunsketch** (I→II) |
+| *Coldfog Marches I → II* † | Crossroads ↔ Nightreach (detour) | blighted marsh → deep coldfog | **Emberward** |
+| **Lanternway** (spokes) | rim towns ↔ Crossroads | grass country lanes | open |
+
+† doubles as an area card in §2 (its graphics/music/kin are there).
+
+**Connective route detail** (graphics · music · kin) for the routes that aren't area cards:
+
+| Route | Terrain (encounter) | Graphics | Music brief | Kin |
+|-------|---------------------|----------|-------------|-----|
+| **Saltreach Fen** | `tall_grass` + `water` | brackish reed shallows, `deepBlue` water, `grass` reeds, `bone` mist, `diamond` glints | *overworld · slow marsh wander · woodwind lead over lapping water + soft pad · ~104 BPM, gentle minor · loop* | reed-stalk heron (Tide/Flying), mudskip pup (Tide), marsh-lantern frog (Tide/Light) |
+| **Windward Stair** | `tall_grass` (ledges) | switchback cliff stairs, `stone` greys, `fire` sunset into `night`, `diamond` updraft motes | *overworld · climbing, airy, building · high pulse lead + wind-swell noise + steady bass · ~132 BPM, bright major · loop* | crag-climber ram (Stone/Storm), slate-wing moth (Stone/Flying), gust-finch (Storm) |
+| **Hushfrost Pass** | `tall_grass` (sheltered) | snowed canyon, `deepBlue` ice, `ink` coldfog walls, your lamp the only warmth | *emotional · cold, sparse, tense-but-tender · lone bell + low pad + faint heartbeat · ~68 BPM, suspended minor · loop* | ice-burrower (Frost), frost-wisp (Frost/Light), numbed ex-Ember kin near the fog (Frost/Dark) |
+| **Sunvault Climb** | `tall_grass` | overgrown golden terraces, sun-vine bridges blooming open, `bone` steps, `fire`-warm glows | *overworld · warm, ascending, hopeful · major arpeggio lead + soft brass-ish pulse + harp · ~112 BPM, radiant major · loop* | sun-seedling (Verdant/Solar), vine-serpent (Verdant), glass-wing bee (Verdant/Light) |
+| **Lanternway** (spokes) | `tall_grass` | hedged, lantern-lined country lanes, milestones, `grass`, `soil` path, `diamond` lamp dots | *overworld · the signature cosy travel loop, walking pace · plucky pulse lead + triangle bass + light bell · ~120 BPM, comfortable major · loop* | path-pup (Normal/Verdant), stile-cricket (Bug), lamp-moth (Light) |
+
+### Optional content & rewards (spurs + landmarks)
+
+| Place | Type | Off route | Gate | Reward |
+|-------|------|-----------|------|--------|
+| Gullcry Rock | spur | Dimglass II | Tidecall | rare sea-bird kin + a Tide charm |
+| **Tideglass Cavern** | landmark | Dimglass II | Glimmerstep | micro-dungeon; a signature rare water kin |
+| Sunkbell Shallows | spur | Saltreach II | Tidecall | rare Tide kin + item (flooded shrine) |
+| Spore Grotto | spur | Glowmoss Deep | Glimmerstep | rare Bug/Verdant kin + item |
+| Crystoll Vault | spur (late) | Cinderhead Deep | **Starreach** | rare Stone/Light kin (return trip) |
+| **Wind-Eye** | landmark | Galehigh | Updraft Kite | sky-grotto micro-dungeon; a unique Storm kin |
+| Thunderroost | spur | Windward II | Updraft Kite | rare Storm/Flying kin + item |
+| Aurora Hollow | spur | Hushfrost II | Emberward | rare Frost/Light kin + item |
+| Helia Vault | spur | Sunvault II | Sunsketch | rare Solar kin + item (sealed reliquary) |
+| Drownlight Beacon | spur | Coldfog II | Emberward | rare Dark kin in a snuffed lighthouse |
+| **Hollowfen Stillworks** | landmark | Coldfog II | Glimmerstep | a derelict Hollowing null-works hiding a powerful Storm/Dark "charged husk" kin — the "old power-plant" set-piece |
+| **Starwell** | landmark (post-Crown) | Penumbra Ring | **Starreach** | a near-legendary kin |
+
+> **How rewards are represented in data** (no new schema needed — see
+> `src/game/data/world/types.ts`): a rare-kin reward is a low-weight `EncounterZone` entry
+> (or a one-off static `EventTrigger` for a fixed catch); a hidden item is an
+> `EventTrigger` (`kind: 'script'`) that sets a flag.
+
+### Late shortcuts
+
+- *Windward Stair II → Galehigh* — a ledge-drop back down, opened once you reach the crags
+  (`flag:shortcut_windward`).
+- *Cinderhead Deep → Vesper Crossroads* — a sealed mine door opened from the inside
+  (`flag:shortcut_mine`), linking the eastern cave straight to the hub.
+
+### Example: the south region in detail
+
+Every region follows this shape — a segmented chain, a spur, a landmark, and a hub spoke:
+
+```mermaid
+graph LR
+    TW["Tinderwick"] --> D1(["Dimglass Coast I"]) --> D2(["Dimglass Coast II"]) --> PQ["Pearlmoor Quay"]
+    D2 -. "Tidecall" .-> GR(["Gullcry Rock<br/>spur · rare kin + charm"])
+    D2 -. "Glimmerstep" .-> TC(["Tideglass Cavern<br/>landmark micro-dungeon"])
+    TW -. "Lanternway" .- VC{{"Vesper Crossroads"}}
+    PQ -. "Lanternway" .- VC
+```
 
 **Terrain coverage across the world:** grass road (*Lanternway*), coast/shore (*Dimglass*),
-marsh/shallow water (*Saltreach Fen*, *Coldfog Marches*), deep forest (*Lowleaf*), cave
-dungeon (*Cinderhead Mine*), mountain/cliff (*Windward Stair*), frozen pass (*Hushfrost*),
-and overgrown ruin-garden (*Sunvault Climb*) — every classic route flavour, each gating a
-different Lantern Gift so the routes also teach traversal.
+marsh/shallow water (*Saltreach Fen*, *Coldfog Marches*), deep forest (*Lowleaf/Glowmoss*),
+cave dungeon (*Cinderhead*), mountain/cliff (*Windward Stair*), frozen pass (*Hushfrost*),
+overgrown ruin-garden (*Sunvault Climb*), plus optional sea-cave, sky-grotto, ice-hollow,
+and a derelict works — every classic route flavour, each gating a different Lantern Gift so
+the routes also teach traversal.
 
 ## 4. Encounter-table principle
 
