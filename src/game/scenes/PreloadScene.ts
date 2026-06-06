@@ -18,6 +18,17 @@ export class PreloadScene extends Phaser.Scene {
     // this.load.spritesheet('player', 'assets/sprites/player.png', { frameWidth: 16, frameHeight: 24 });
     // this.load.tilemapTiledJSON('town', 'assets/maps/town.json');
     // this.load.audio('overworld', 'assets/audio/music/overworld.mp3');
+
+    // Battle music — lush SNES-era dusk themes. 'dusk-duel' is the default
+    // wild-encounter theme; emberfall/nightfall/veil are interchangeable
+    // siblings to rotate per encounter so random battles stay fresh. Each is a
+    // seamless loop, so play with `{ loop: true }`.
+    this.load.audio('battle-dusk-duel', 'assets/audio/music/battle-main-dusk-duel.mp3');
+    this.load.audio('battle-emberfall', 'assets/audio/music/battle-emberfall.mp3');
+    this.load.audio('battle-nightfall', 'assets/audio/music/battle-nightfall.mp3');
+    this.load.audio('battle-veil', 'assets/audio/music/battle-veil.mp3');
+    // Boss / hard-opponent theme — grander, with a key-lifting climax.
+    this.load.audio('battle-boss-eclipse', 'assets/audio/music/battle-boss-eclipse.mp3');
   }
 
   create(): void {
