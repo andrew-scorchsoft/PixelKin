@@ -53,6 +53,12 @@ same way the hardware did:
   nearest-neighbour, so pixels stay crisp, square, and deliberate at any screen
   size. No smooth, modern, vector-y art. Ever.
 
+The full, binding rulebook for how every sprite, tile, icon, and portrait is
+made — canvas sizes, palette, lighting, anchors, the chroma-key pipeline, and
+prompt standards — lives in **`docs/art-style.md`** (the Art & Sprite Bible).
+Read it before creating or generating any visual asset; the
+`generate-sprite-sheet` skill enforces it.
+
 The PixelKin logo (`assets/pixelkin-logo.png`) sets the palette and tone:
 deep night-blue backdrops, a bright diamond cyan, and grass / fire / water
 creature accents.

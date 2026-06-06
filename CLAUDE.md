@@ -72,11 +72,17 @@ Path aliases (see `tsconfig.json` / `vite.config.ts`): `@/*` → `src`,
 
 ## Asset generation skills
 
-Four skills live in `.claude/skills/`. Use them instead of hand-rolling:
+Five skills live in `.claude/skills/`. Use them instead of hand-rolling:
 
-- **generate-image** — creature/UI/tileset art via Google Nano Banana Pro
-  (preferred) or OpenAI. Briefs must be original; never reference another
-  franchise. Output as repo-friendly WebP/PNG.
+- **generate-sprite-sheet** — the **preferred** path for in-game pixel art:
+  creature battle/icon/overworld/portrait sprites, NPC walk sheets, battle
+  effects, and tiles. Enforces the canvas/anchor/palette standards in
+  **`docs/art-style.md`** (the Art & Sprite Bible) and writes transparent PNGs
+  on the exact standard canvas. Read the art bible before generating any sprite.
+- **generate-image** — general-purpose art via Google Nano Banana Pro
+  (preferred) or OpenAI, for visuals that aren't standardised game sprites.
+  Briefs must be original; never reference another franchise. Repo-friendly
+  WebP/PNG. (generate-sprite-sheet drives this under the hood.)
 - **generate-music** — original background music/jingles via the ElevenLabs
   Music API (text-prompt → produced audio). Instrumental, loop-minded,
   preset-driven. Writes mp3 into `public/assets/audio/music/`.

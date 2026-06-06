@@ -1,0 +1,103 @@
+{
+  "_notes": "Locked sprite-type specs for PixelKin. The art source of truth is docs/art-style.md; this file operationalises it for generation. Each type fixes a canvas, grid, anchor, and prompt template. Prompt templates use {subject}, {fw}, {fh}, {cols}, {rows}, {canvas_w}, {canvas_h}, {fill_pct}. The shared _style preamble and _originality clause are prepended to every prompt so all types stay consistent and copyright-clean. DO NOT mention the background colour in templates — the skill owns it: for the default OpenAI gpt-image-2 path it prepends a magenta chroma-key preamble and strips the magenta to transparent in post; for the Google path it uses the native transparent route.",
+  "_style": "Authentic late-1990s / early-2000s handheld pixel art, in the visual register of a Game Boy Color game growing toward Game Boy Advance. STRICT RULES: hard 1-pixel edges, absolutely NO anti-aliasing, no blur, no smooth gradients (a small deliberate dithered pixel gradient is fine). Limited palette of roughly 8-16 colours. A dark outline (deep ink, NOT pure black) around the outer silhouette, lighter internal linework. Consistent light source from the TOP-LEFT. Strong, instantly readable silhouette. Cute, stylised, slightly oversized head and eyes for readability; not realistic, not gritty. Chunky, deliberate square pixels as if drawn pixel-by-pixel on a tiny {fw}x{fh} canvas. No semi-transparent shading. Subject only: no background scenery, no ground, no cast shadow, no frame or border.",
+  "_originality": "This is original content for PixelKin, a creature-collecting RPG inspired by the genre but a copy of nothing. It must NOT resemble any existing commercial game's creature, character, silhouette, palette signature, logo, font, or UI. Describe by genre and mood only. Make it distinctly original.",
+  "types": {
+    "creature-front": {
+      "label": "Creature battle front sprite",
+      "use_for": "The forward-facing battle sprite the player sees of an opponent kin.",
+      "file": "battle_front.png",
+      "frame_width": 64,
+      "frame_height": 64,
+      "cols": 1,
+      "rows": 1,
+      "anchor": "bottom-center",
+      "fill": 0.8,
+      "prompt": "A single original creature for a monster-collecting RPG, shown as a battle FRONT sprite: a three-quarter front view, facing the viewer in a calm battle-ready idle pose. Subject: {subject}. The creature should fill about {fill_pct}% of the {fw}x{fh} frame, centred horizontally, body base resting near the lower edge so it 'stands' on the ground line. Whole creature in frame, nothing cropped."
+    },
+    "creature-back": {
+      "label": "Creature battle back sprite",
+      "use_for": "The rear-view battle sprite of the player's own kin (back turned to the camera).",
+      "file": "battle_back.png",
+      "frame_width": 64,
+      "frame_height": 64,
+      "cols": 1,
+      "rows": 1,
+      "anchor": "bottom-center",
+      "fill": 0.8,
+      "prompt": "The SAME original creature seen from BEHIND for a monster-collecting RPG battle back sprite: a three-quarter view from the rear, back turned to the viewer, battle-ready idle pose. Subject: {subject}. It must read as the SAME species as its front sprite — identical palette, proportions and signature features, just viewed from behind. Fills about {fill_pct}% of the {fw}x{fh} frame, centred horizontally, base near the lower edge."
+    },
+    "creature-icon": {
+      "label": "Creature menu icon",
+      "use_for": "Tiny party/box/menu icon for a kin. Head/silhouette focus, must read at 32px.",
+      "file": "icon.png",
+      "frame_width": 32,
+      "frame_height": 32,
+      "cols": 1,
+      "rows": 1,
+      "anchor": "center",
+      "fill": 0.85,
+      "prompt": "A tiny, simplified menu ICON of an original creature for a monster-collecting RPG, focused on the head and most recognisable silhouette. Subject: {subject}. Drop any fine detail that would vanish at {fw}x{fh}; keep it bold, chunky and instantly readable. Centred in the frame, filling about {fill_pct}%."
+    },
+    "creature-overworld": {
+      "label": "Creature overworld mini-sprite",
+      "use_for": "A kin roaming the overworld. Very simple, single idle frame by default.",
+      "file": "overworld.png",
+      "frame_width": 32,
+      "frame_height": 32,
+      "cols": 1,
+      "rows": 1,
+      "anchor": "bottom-center",
+      "fill": 0.75,
+      "prompt": "A very simple overworld mini-sprite of an original creature for a monster-collecting RPG, in a gentle top-down-leaning view, single idle pose. Subject: {subject}. Keep it minimal and charming — readable at {fw}x{fh}, the same species as its battle sprite but simplified. Centred horizontally, feet near the lower edge, filling about {fill_pct}% of the frame."
+    },
+    "creature-portrait": {
+      "label": "Creature portrait",
+      "use_for": "Larger profile / dex art for a kin. Richer than the battle sprite, same character.",
+      "file": "portrait.png",
+      "frame_width": 96,
+      "frame_height": 96,
+      "cols": 1,
+      "rows": 1,
+      "anchor": "center",
+      "fill": 0.85,
+      "prompt": "A portrait / dex illustration of an original creature for a monster-collecting RPG: a characterful three-quarter front bust or full pose with a touch more colour and detail than the small battle sprite, but the SAME character, palette and personality. Subject: {subject}. Centred in the {fw}x{fh} frame, filling about {fill_pct}%."
+    },
+    "human-overworld": {
+      "label": "Human / NPC overworld walk sheet",
+      "use_for": "A walking character sheet for towns and routes: 3 columns x 4 rows, 32px frames.",
+      "file": "overworld.png",
+      "frame_width": 32,
+      "frame_height": 32,
+      "cols": 3,
+      "rows": 4,
+      "anchor": "bottom-center",
+      "fill": 0.7,
+      "prompt": "An original human character walking sprite SHEET for a retro monster-collecting RPG, laid out as a strict grid of {cols} columns by {rows} rows of {fw}x{fh} frames ({canvas_w}x{canvas_h} total). Rows are facing directions top to bottom: row 1 facing DOWN, row 2 facing LEFT, row 3 facing RIGHT, row 4 facing UP. Columns are the walk cycle left to right: column 1 idle stance, column 2 step (left foot forward), column 3 step (right foot forward). Character: {subject}. Keep the head height, proportions and palette identical in every frame — only the legs and arms move. The character must stand on the SAME foot baseline in every cell, centred horizontally, about 20-24px wide inside each 32px frame. Even spacing, each pose isolated in its own cell."
+    },
+    "effect": {
+      "label": "Battle effect frame sheet",
+      "use_for": "A reusable battle effect animation (spark, slash, burst, splash) as a frame grid.",
+      "file": "effect.png",
+      "frame_width": 32,
+      "frame_height": 32,
+      "cols": 4,
+      "rows": 4,
+      "anchor": "center",
+      "fill": 0.95,
+      "prompt": "An original battle EFFECT animation sheet for a retro monster-collecting RPG, laid out as a strict grid of {cols} columns by {rows} rows of {fw}x{fh} frames ({canvas_w}x{canvas_h} total), read left-to-right then top-to-bottom as the animation progresses from start to dissipation. Effect: {subject}. Each frame is one moment of the animation, centred in its cell. Bright, punchy, chunky pixel shapes; no creature or character in the frames — the effect only. Even spacing, one frame per cell."
+    },
+    "tile": {
+      "label": "World tile",
+      "use_for": "A single 16x16 tileable world tile (grass, path, water edge, etc.).",
+      "file": "tile.png",
+      "frame_width": 16,
+      "frame_height": 16,
+      "cols": 1,
+      "rows": 1,
+      "anchor": "top-left",
+      "fill": 1.0,
+      "prompt": "A single original {fw}x{fh} world TILE for a retro top-down monster-collecting RPG overworld, designed to tessellate seamlessly when repeated edge-to-edge on a grid. Tile: {subject}. Fill the whole {fw}x{fh} frame to the edges (no margin, no outline around the tile border). Keep interior detail low and evenly distributed so a field of these tiles does not visually buzz or show an obvious repeat."
+    }
+  }
+}
