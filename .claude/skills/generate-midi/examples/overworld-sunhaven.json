@@ -1,0 +1,38 @@
+{
+  "title": "Sunhaven Route",
+  "_note": "Worked example: a bright Game-Boy-Color-era overworld loop. Two pulse channels (lead + arpeggio harmony), a triangle bass, and a light noise-drum backbeat — exactly the 4-voice budget of the DMG/GBC hardware. AABA-ish, 16 bars, loops seamlessly. Use it as a template; replace the notes, keep the voice discipline.",
+  "era": "gbc",
+  "tempo": 132,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "notes": "E4q G4q C5q B4q | A4q G4q E4h | F4q A4q C5q B4q | G4h G4h | E4q G4q C5q B4q | A4q G4q E4h | D4q F4q A4q G4q | C4h C4h"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.6,
+      "notes": "C4e E4e G4e E4e C4e E4e G4e E4e | A3e C4e E4e C4e A3e C4e E4e C4e | F3e A3e C4e A3e F3e A3e C4e A3e | G3e B3e D4e B3e G3e B3e D4e B3e | C4e E4e G4e E4e C4e E4e G4e E4e | A3e C4e E4e C4e A3e C4e E4e C4e | F3e A3e C4e A3e D3e F3e A3e F3e | G3e B3e D4e B3e G3e B3e D4e B3e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "notes": "C2q C3q G2q G3q | A2q A3q E2q E3q | F2q F3q C2q C3q | G2q G3q G2q G3q | C2q C3q G2q G3q | A2q A3q E2q E3q | F2q F3q D2q D3q | G2q G3q G2q G3q"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "_note": "A standalone 'e' sets the running duration to eighths; every hit after it is an eighth note. kick on 1 & 3, snare on 2 & 4, hat on every eighth — the classic backbeat. Spans all 8 bars with a crash fill closing bars 4 and 8.",
+      "notes": "e kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat crash"
+    }
+  ]
+}

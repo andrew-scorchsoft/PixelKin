@@ -1,0 +1,14 @@
+# OPTIONAL extra for the generate-midi skill's lush `--engine soundfont` render
+# path (renders a .mid through a real .sf2 SoundFont — for SNES/orchestral
+# showpieces). The chip engine needs none of this.
+#
+# Install WITHOUT dependencies — tinysoundfont only lists pyaudio for *live*
+# playback, which we don't use for offline rendering and which needs system
+# PortAudio libs to build:
+#
+#     ./venv/bin/pip install --no-deps -r requirements-soundfont.txt
+#
+# Then fetch a soundfont:
+#     ./venv/bin/python .claude/skills/generate-midi/scripts/fetch_soundfont.py
+
+tinysoundfont>=0.2   # pure-pip SoundFont synth (bundles native code; no system libs)
