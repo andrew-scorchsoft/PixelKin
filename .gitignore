@@ -10,6 +10,10 @@ venv/
 __pycache__/
 *.pyc
 
+# SoundFonts for generate-midi's lush render path — large, downloaded on demand
+# by fetch_soundfont.py, not committed.
+assets/audio/midi/soundfonts/
+
 # Secrets — never commit API keys
 .env
 .env.local

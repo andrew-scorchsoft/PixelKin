@@ -132,8 +132,12 @@ The point of generating every track through this one skill is a soundtrack that
   era-true than a generic GM soundfont — these chip timbres are the iconic
   sound. Use it for everything chip (`nes`/`gb`/`gbc`) and it's perfectly good
   for `snes`/`hifi` too.
-- **`--engine soundfont --soundfont path/to.sf2`.** If you have `fluidsynth`
-  and a quality `.sf2`, this renders the same `.mid` with sampled instruments —
-  lusher strings/brass for `snes`/`hifi` showpieces. Optional; not installed by
-  default. The `.mid` is the portable source of truth either way, so you can
-  re-render any track through a better soundfont later without recomposing.
+- **`--engine soundfont`.** Renders the same `.mid` through a real `.sf2`
+  SoundFont (sampled instruments) — lusher strings/brass/pads for `snes`/`hifi`
+  showpieces (title, final boss, big story cues). Uses the pure-pip
+  `tinysoundfont` engine, so it's a one-time setup:
+  `pip install --no-deps -r requirements-soundfont.txt` then
+  `fetch_soundfont.py` (GeneralUser GS by default). It auto-finds the soundfont
+  in `assets/audio/midi/soundfonts/`, or pass `--soundfont path/to.sf2`.
+  Reach for it on the big moments; keep chip eras on the chip engine. The `.mid`
+  is the portable source either way — switch engines anytime without recomposing.

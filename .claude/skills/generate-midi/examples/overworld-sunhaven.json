@@ -31,7 +31,8 @@
     {
       "name": "drums",
       "voice": "drums",
-      "notes": "kick+hat e hat e snare+hat e hat e kick+hat e kick e snare+hat e hat e | kick+hat e hat e snare+hat e hat e kick+hat e kick e snare+hat e crash e"
+      "_note": "A standalone 'e' sets the running duration to eighths; every hit after it is an eighth note. kick on 1 & 3, snare on 2 & 4, hat on every eighth — the classic backbeat. Spans all 8 bars with a crash fill closing bars 4 and 8.",
+      "notes": "e kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat crash"
     }
   ]
 }

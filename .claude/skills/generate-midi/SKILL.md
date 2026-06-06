@@ -135,7 +135,7 @@ later (different era feel, or through a real soundfont) without recomposing.
     { "name": "bass",  "voice": "tri_bass", "octave": 2,
       "notes": "C2q C3q G2q G3q" },
     { "name": "drums", "voice": "drums",
-      "notes": "kick+hat e hat e snare+hat e hat e" }
+      "notes": "e kick+hat hat snare+hat hat kick+hat kick snare+hat hat" }
   ]
 }
 ```
@@ -143,9 +143,11 @@ later (different era feel, or through a real soundfont) without recomposing.
 **Note DSL:** UPPER-case pitch letter + optional `#`/`b` + optional octave
 (`C4`, `F#3`, `Bb5`; bare letter uses the track `octave`). Duration suffix
 `w h q e s` (whole→sixteenth), dotted `.`/`..`, triplet `t`; **omit the suffix to
-reuse the previous duration.** Chord = `C4+E4+G4q` (chord-capable eras only).
-Rest = `r`/`-`. Velocity = `@1..127`. `|` bar separators are ignored. On a
-`drums` voice, tokens are kit names: `kick snare hat ohat tom crash clap`.
+reuse the previous duration**, or write a duration on its own (`e`, `q.`) to set
+the running duration for the notes after it. Chord = `C4+E4+G4q` (chord-capable
+eras only). Rest = `r`/`-` (e.g. `re`, `rq`). Velocity = `@1..127`. `|` bar
+separators are ignored. On a `drums` voice, tokens are kit names:
+`kick snare hat ohat tom crash clap`.
 
 ## Originality & licensing (non-negotiable)
 
@@ -159,11 +161,33 @@ Rest = `r`/`-`. Velocity = `@1..127`. `|` bar separators are ignored. On a
   brand. "Bright Game-Boy-Color overworld in C major" — good. "Sounds like
   <franchise>'s town theme" — not allowed.
 
+## Lush render path (optional): real SoundFonts
+
+The chip synth is mono and deliberately lo-fi-authentic — perfect for chip eras.
+For richer `snes`/`hifi` showpieces (title, final boss, big story cues) render
+the **same `.mid`** through a real SoundFont with `--engine soundfont`. It uses
+the pure-pip `tinysoundfont` synth (no system libraries), so it's a two-step
+one-time setup:
+
+```bash
+# 1) install the optional engine (no-deps: skips a playback-only dependency)
+./venv/bin/pip install --no-deps -r requirements-soundfont.txt
+# 2) fetch a soundfont (GeneralUser GS by default; ~31 MB, freely redistributable)
+./venv/bin/python .claude/skills/generate-midi/scripts/fetch_soundfont.py
+# 3) render
+./venv/bin/python .claude/skills/generate-midi/scripts/midi.py render \
+  --input assets/audio/midi/boss.mid \
+  --output public/assets/audio/music/boss.mp3 --engine soundfont
+```
+
+It auto-finds `GeneralUser-GS.sf2` in `assets/audio/midi/soundfonts/`, or pass
+`--soundfont path/to.sf2` for your own. Soundfonts are gitignored (large) and
+re-fetched per fresh container. The `.mid` is the portable source either way, so
+you can switch engines or soundfonts anytime without recomposing. The chip path
+needs none of this.
+
 ## Notes & limits
 
-- The chip synth is mono and deliberately lo-fi-authentic. For a lusher render
-  of `snes`/`hifi` showpieces, `--engine soundfont --soundfont x.sf2` uses
-  `fluidsynth` if you have it (optional, not installed by default).
 - Keep loop assets to **one rendered pass** (`--loops 1`); the game loops them.
   Use `--loops N` / `--fade-out` only for previews.
 - This skill writes only `.mid`, `.wav`, and `.mp3`. For text-prompt audio use

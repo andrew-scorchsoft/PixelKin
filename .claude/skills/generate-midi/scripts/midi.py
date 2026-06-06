@@ -38,6 +38,31 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 PROFILES_PATH = SCRIPT_DIR / "profiles.json"
 
 SAMPLE_RATE = 44100
+
+
+def _repo_root() -> Path:
+    """Walk up from this script to the repo root (a dir with .git / requirements.txt)."""
+    for d in SCRIPT_DIR.parents:
+        if (d / ".git").exists() or (d / "requirements.txt").is_file():
+            return d
+    return SCRIPT_DIR.parents[-1]
+
+
+# Soundfonts live with the MIDI sources, not in the served bundle, and are
+# gitignored (too big to commit). fetch_soundfont.py populates this folder.
+SOUNDFONT_DIR = _repo_root() / "assets" / "audio" / "midi" / "soundfonts"
+# Preferred default soundfont filename, if several are present.
+DEFAULT_SOUNDFONT = "GeneralUser-GS.sf2"
+
+
+def resolve_default_soundfont() -> str | None:
+    if not SOUNDFONT_DIR.is_dir():
+        return None
+    preferred = SOUNDFONT_DIR / DEFAULT_SOUNDFONT
+    if preferred.is_file():
+        return str(preferred)
+    found = sorted(SOUNDFONT_DIR.glob("*.sf2"))
+    return str(found[0]) if found else None
 DRUM_CHANNEL = 9  # GM channel 10 (0-indexed)
 
 # Quarter-note-relative durations for the compact note DSL.
@@ -124,6 +149,13 @@ def _parse_dsl(text: str, default_octave: int, drums: bool, drum_map: dict) -> l
         if not tok:
             continue
         body, beats, vel = _split_dur(tok)
+
+        # A standalone duration token ("e", "q.", "h"...) sets the running note
+        # duration for everything after it (tracker-style), so "e kick hat snare"
+        # is three eighth-note hits. Rests must be written explicitly (r / -).
+        if body == "" and beats >= 0 and tok not in ("r", "-"):
+            last_beats = beats
+            continue
 
         if drums and body not in ("r", "-", ""):
             # Drum names are whole words; some end in a duration letter (e.g.
@@ -494,14 +526,17 @@ def _reverb(x, amount: float):
     return (out / peak * float(np.max(np.abs(x)) or 1.0)).astype(np.float32)
 
 
-def parse_midi_notes(mid) -> tuple[list[dict], float, str | None, bool]:
-    """Read a .mid into [{start, dur, freq?, gm_note, vel, voice}], plus end time,
-    an embedded era tag (if any), and whether it is marked as a seamless loop."""
+def parse_midi_notes(mid) -> tuple[list[dict], float, str | None, bool, float]:
+    """Read a .mid into [{start, dur, freq?, gm_note, vel, voice}], plus the last
+    note-off time, an embedded era tag (if any), whether it is a seamless loop,
+    and the loop-body length in seconds (from the loopEnd marker — this includes
+    any trailing rest, so loops tile without drifting)."""
     ppq = mid.ticks_per_beat
     # tempo map (abs_tick -> tempo)
     tempo_changes: list[tuple[int, int]] = []
     era_tag: str | None = None
     is_loop = False
+    loop_end_tick = 0
     for trk in mid.tracks:
         at = 0
         for msg in trk:
@@ -512,6 +547,8 @@ def parse_midi_notes(mid) -> tuple[list[dict], float, str | None, bool]:
                 era_tag = msg.text.split("=", 1)[1]
             elif msg.type == "marker" and msg.text == "loopStart":
                 is_loop = True
+            elif msg.type == "marker" and msg.text == "loopEnd":
+                loop_end_tick = max(loop_end_tick, at)
     tempo_changes.sort()
     if not tempo_changes:
         tempo_changes = [(0, 500000)]
@@ -560,7 +597,38 @@ def parse_midi_notes(mid) -> tuple[list[dict], float, str | None, bool]:
                             "channel": msg.channel,
                         }
                     )
-    return notes, tick_to_sec(end_tick), era_tag, is_loop
+    loop_end_sec = tick_to_sec(loop_end_tick) if loop_end_tick else 0.0
+    return notes, tick_to_sec(end_tick), era_tag, is_loop, loop_end_sec
+
+
+def _body_and_tail(last_sec: float, is_loop: bool, loop_end_sec: float) -> tuple[float, float]:
+    """One self-contained pass = body_sec; tail_sec rings past it. A loop body is
+    its loopEnd (incl. trailing rests) with NO tail so it tiles seamlessly; a
+    one-shot is up to its last note with a short ring-out tail."""
+    if is_loop:
+        return (loop_end_sec if loop_end_sec > 0 else last_sec), 0.0
+    return last_sec, 0.6
+
+
+def _finalize(buf, body_sec: float, tail_sec: float, loops: int, fade_out: float):
+    """Shared post-processing for both engines: normalise, trim to one pass
+    (body + tail), tile extra loop copies for previews, apply an optional fade."""
+    import numpy as np
+
+    peak = float(np.max(np.abs(buf))) or 1.0
+    buf = buf / peak * 0.89
+    buf = np.tanh(buf * 1.1).astype(np.float32)
+
+    body_n = max(1, int(body_sec * SAMPLE_RATE))
+    pass_n = min(len(buf), int((body_sec + tail_sec) * SAMPLE_RATE))
+    out = buf[:pass_n]
+    if loops > 1:
+        body = buf[:body_n]
+        out = np.concatenate([np.tile(body, loops - 1), out])
+    if fade_out > 0:
+        fn = min(len(out), int(fade_out * SAMPLE_RATE))
+        out[-fn:] *= np.linspace(1.0, 0.0, fn)
+    return out
 
 
 def render_audio(mid_path: Path, profiles: dict, *, reverb: float | None,
@@ -573,18 +641,17 @@ def render_audio(mid_path: Path, profiles: dict, *, reverb: float | None,
     drum_map = profiles["drum_map"]
 
     mid = mido.MidiFile(mid_path)
-    notes, end_sec, era_tag, is_loop = parse_midi_notes(mid)
+    notes, last_sec, era_tag, is_loop, loop_end_sec = parse_midi_notes(mid)
     if not notes:
         raise SystemExit(f"no notes found in {mid_path}")
 
     if reverb is None:
         reverb = profiles["eras"].get(era_tag, {}).get("reverb", 0.0) if era_tag else 0.0
 
-    # A loop is rendered to exactly its body length so it tiles seamlessly when
-    # the game repeats the file; a one-shot gets a tail so its final note rings.
-    tail = 0.0 if is_loop else 0.6
-    one_len = int((end_sec + tail) * SAMPLE_RATE)
-    buf = np.zeros(one_len, dtype=np.float32)
+    body_sec, tail = _body_and_tail(last_sec, is_loop, loop_end_sec)
+    # Scratch buffer with headroom for note releases and the reverb tail.
+    work_len = int((max(body_sec, last_sec) + tail + 1.0) * SAMPLE_RATE)
+    buf = np.zeros(work_len, dtype=np.float32)
 
     for nt in notes:
         if nt["voice"] == "drums" or nt["channel"] == DRUM_CHANNEL:
@@ -594,28 +661,55 @@ def render_audio(mid_path: Path, profiles: dict, *, reverb: float | None,
             seg = _synth_note(_midi_to_freq(nt["gm_note"]), nt["dur"], nt["vel"],
                               voice, voices, envelopes)
         start = int(nt["start"] * SAMPLE_RATE)
-        endp = min(one_len, start + len(seg))
+        endp = min(work_len, start + len(seg))
         buf[start:endp] += seg[: endp - start]
 
     if reverb and reverb > 0:
         buf = _reverb(buf, float(reverb))
 
-    # Normalise with a touch of headroom + soft limit.
-    peak = float(np.max(np.abs(buf))) or 1.0
-    buf = buf / peak * 0.89
-    buf = np.tanh(buf * 1.1).astype(np.float32)
+    out = _finalize(buf, body_sec, tail, loops, fade_out)
+    return out, float(reverb), is_loop
 
-    if loops > 1:
-        # Tile the exact composition (the .mid is written to loop seamlessly);
-        # drop the ring-out tail on every copy except the last.
-        body = buf[: int(end_sec * SAMPLE_RATE)]
-        buf = np.concatenate([np.tile(body, loops - 1), buf])
 
-    if fade_out > 0:
-        fn = min(len(buf), int(fade_out * SAMPLE_RATE))
-        buf[-fn:] *= np.linspace(1.0, 0.0, fn)
+def render_soundfont_tsf(mid_path: Path, soundfont: str, profiles: dict, *,
+                         loops: int, fade_out: float, gain: float) -> "object":
+    """Lush render path: synthesize the .mid through a real SoundFont using the
+    pure-pip tinysoundfont engine (no system libs). Same loop/tail discipline as
+    the chip engine, so SNES/hifi showpieces drop straight into the game."""
+    import mido
+    import numpy as np
+    import tinysoundfont
 
-    return buf, float(reverb), is_loop
+    if not Path(soundfont).is_file():
+        raise SystemExit(
+            f"soundfont not found: {soundfont}\n"
+            f"Fetch one first:  ./venv/bin/python "
+            f".claude/skills/generate-midi/scripts/fetch_soundfont.py"
+        )
+
+    mid = mido.MidiFile(mid_path)
+    _, last_sec, _, is_loop, loop_end_sec = parse_midi_notes(mid)
+    body_sec, tail = _body_and_tail(last_sec, is_loop, loop_end_sec)
+
+    synth = tinysoundfont.Synth(gain=gain, samplerate=SAMPLE_RATE)
+    synth.sfload(str(soundfont))
+    seq = tinysoundfont.Sequencer(synth)
+    seq.midi_load(str(mid_path))
+
+    chunk = 0.05
+    n = int(chunk * SAMPLE_RATE)
+    render_for = max(body_sec, last_sec) + tail + 1.0  # +1s for releases
+    chunks: list = []
+    elapsed = 0.0
+    while elapsed < render_for:
+        seq.process(chunk)
+        chunks.append(np.frombuffer(synth.generate(n), dtype=np.float32).copy())
+        elapsed += chunk
+    stereo = np.concatenate(chunks).reshape(-1, 2)
+    mono = stereo.mean(axis=1).astype(np.float32)
+
+    out = _finalize(mono, body_sec, tail, loops, fade_out)
+    return out, is_loop
 
 
 def write_wav(path: Path, buf) -> None:
@@ -657,32 +751,6 @@ def write_mp3(path: Path, buf, bitrate: str) -> None:
         tmp_path.unlink(missing_ok=True)
 
 
-def render_with_fluidsynth(mid_path: Path, out_path: Path, soundfont: str,
-                           bitrate: str) -> None:
-    import shutil
-    import subprocess
-    import tempfile
-
-    fs = shutil.which("fluidsynth")
-    if not fs:
-        raise SystemExit("--engine soundfont needs `fluidsynth` on PATH.")
-    with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp:
-        tmp_path = Path(tmp.name)
-    try:
-        subprocess.run([fs, "-ni", "-F", str(tmp_path), "-r", str(SAMPLE_RATE),
-                        soundfont, str(mid_path)], check=True, capture_output=True)
-        if out_path.suffix.lower() == ".wav":
-            shutil.copyfile(tmp_path, out_path)
-        else:
-            import imageio_ffmpeg
-            ffmpeg = imageio_ffmpeg.get_ffmpeg_exe()
-            subprocess.run([ffmpeg, "-y", "-i", str(tmp_path), "-codec:a",
-                            "libmp3lame", "-b:a", bitrate, str(out_path)],
-                           check=True, capture_output=True)
-    finally:
-        tmp_path.unlink(missing_ok=True)
-
-
 # --------------------------------------------------------------------------- #
 # CLI
 # --------------------------------------------------------------------------- #
@@ -712,7 +780,7 @@ Song spec (JSON) — Claude composes this; `build` renders it to .mid.
     },
     {
       "name": "drums", "voice": "drums",
-      "notes": "kick+hat e hat e snare+hat e hat e"
+      "notes": "e kick+hat hat snare+hat hat kick+hat kick snare+hat hat"
     }
   ]
 }
@@ -723,12 +791,14 @@ NOTE DSL (the `notes` string):
   duration suffix w=whole h=half q=quarter e=eighth s=sixteenth;
            dotted '.' (×1.5), double '..' (×1.75), triplet 't' (×2/3).
            OMIT the suffix to reuse the previous note's duration.
+  set dur  a duration on its own ("e", "q.") sets the running duration for the
+           notes after it:  "e kick hat snare"  -> three eighth-note hits.
   chord    join with '+'  ->  C4+E4+G4q   (only on chord-capable eras: snes/gba/hifi)
-  rest     r or -          ->  re  (eighth rest)
+  rest     r or -          ->  rq (quarter rest), re (eighth rest), r (inherit)
   velocity '@1..127'       ->  C4q@110
   bars     '|' is optional and ignored (use it to keep yourself honest)
   drums    on a "drums" voice, tokens are kit names: kick snare hat ohat tom crash clap
-           e.g. "kick+hat e hat e snare+hat e hat e"
+           e.g. "e kick+hat hat snare+hat hat kick+hat kick snare+hat hat"
 
 You can also pass "notes" as a list:
   [{"pitch": "C4", "beats": 1, "vel": 100}, {"pitch": ["C4","E4","G4"], "beats": 2}]
@@ -781,11 +851,24 @@ def cmd_render(args, profiles: dict) -> int:
     out.parent.mkdir(parents=True, exist_ok=True)
 
     if args.engine == "soundfont":
-        sf = args.soundfont
+        sf = args.soundfont or resolve_default_soundfont()
         if not sf:
-            raise SystemExit("--engine soundfont requires --soundfont path/to.sf2")
-        render_with_fluidsynth(mid_path, out, sf, args.bitrate)
-        info = {"path": str(out), "engine": "soundfont", "soundfont": sf}
+            raise SystemExit(
+                "No soundfont found. Pass --soundfont path/to.sf2, or fetch one:\n"
+                "  ./venv/bin/python .claude/skills/generate-midi/scripts/fetch_soundfont.py"
+            )
+        buf, is_loop = render_soundfont_tsf(
+            mid_path, sf, profiles, loops=args.loops,
+            fade_out=args.fade_out, gain=args.gain)
+        if out.suffix.lower() == ".wav":
+            write_wav(out, buf)
+        else:
+            write_mp3(out, buf, args.bitrate)
+        info = {
+            "path": str(out), "engine": "soundfont",
+            "soundfont": str(Path(sf).name), "loop": is_loop, "loops": args.loops,
+            "seconds": round(len(buf) / SAMPLE_RATE, 2),
+        }
     else:
         buf, used_reverb, is_loop = render_audio(
             mid_path, profiles, reverb=args.reverb,
@@ -819,8 +902,13 @@ def main() -> int:
     pr.add_argument("--input", required=True, help="Input .mid path.")
     pr.add_argument("--output", required=True, help="Output .mp3 or .wav path.")
     pr.add_argument("--engine", choices=["chip", "soundfont"], default="chip",
-                    help="chip = built-in synth (default); soundfont = fluidsynth+.sf2.")
-    pr.add_argument("--soundfont", default=None, help=".sf2 path (soundfont engine).")
+                    help="chip = built-in chiptune synth (default, authentic & lo-fi); "
+                         "soundfont = render through a real .sf2 (lush; SNES/orchestral).")
+    pr.add_argument("--soundfont", default=None,
+                    help=".sf2 path. Default: GeneralUser-GS.sf2 in assets/audio/midi/"
+                         "soundfonts/ (run fetch_soundfont.py to get one).")
+    pr.add_argument("--gain", type=float, default=0.0,
+                    help="Soundfont engine output gain in dB (default 0).")
     pr.add_argument("--reverb", type=float, default=None,
                     help="0..0.5 reverb mix. Default: from the era tag in the .mid.")
     pr.add_argument("--loops", type=int, default=1,
