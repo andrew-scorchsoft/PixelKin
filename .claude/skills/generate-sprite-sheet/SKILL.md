@@ -153,9 +153,51 @@ Run `--list-types` for the live list. Current types (all defined in
 - `--keep-temp` — also save the raw high-res generation next to the output.
 - `--list-types` — print all types and exit.
 
+## Two layers of checking
+
+Generation is checked at **two** levels — keep them distinct:
+
+1. **Geometry — automated** (`validate_sprites.py`). Deterministic, free, and
+   **baked in**: it asserts the *measurable* spec — canvas size, real alpha,
+   anchor position, fill, no visible magenta, and per-frame baselines on sheets.
+2. **Art — the self-check loop** (you, below). The *judgement* calls a script
+   can't make: subject, style, artifacts, **originality**.
+
+The validator can't tell you a sprite looks like another franchise; the
+self-check can't measure a 1px baseline drift across 12 frames. You need both.
+
+## Validation — the automated test
+
+`scripts/validate_sprites.py` is the testing mechanism for the art spec. It runs
+**automatically after every generation** (the JSON summary carries a
+`validation: { ok, errors, warnings }` block — if `ok` is false, fix it before
+moving on), and you can also run it standalone as a CI/spec gate:
+
+```bash
+# Validate the whole asset tree (exit non-zero on any error)
+./venv/bin/python .claude/skills/generate-sprite-sheet/scripts/validate_sprites.py --all
+
+# One creature folder (also cross-checks metadata.json against the files)
+./venv/bin/python .claude/skills/generate-sprite-sheet/scripts/validate_sprites.py \
+  --creature-dir assets/creatures/001_vulpyre
+
+# A single file against a type
+./venv/bin/python .claude/skills/generate-sprite-sheet/scripts/validate_sprites.py \
+  --file assets/trainers/player_indi.png --type human-overworld
+```
+
+It checks each sprite for: correct **dimensions** for its type; a real **alpha
+channel** with an actually-transparent background; no visible **magenta** chroma
+bleed; correct **anchor** (bottom-centre / centre / top-left) and a sensible
+**fill** with no edge **clipping**; and for sheets, that **every frame is
+non-empty and all frames share a baseline**. Creature folders also assert
+`metadata.json` matches the files on disk. Errors fail the run; softer issues are
+warnings (`--strict` promotes warnings to failures). Wire `--all` into CI to keep
+the whole dex spec-compliant as it grows.
+
 ## The self-check loop — mandatory
 
-The script standardises geometry; it does **not** judge the art. You do. Each
+The validator covers geometry; it does **not** judge the art. You do. Each
 call costs money — be deliberate.
 
 After every generation:

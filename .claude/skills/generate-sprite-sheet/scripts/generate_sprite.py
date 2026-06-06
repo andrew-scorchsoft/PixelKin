@@ -428,6 +428,16 @@ def main() -> int:
                                     args.creature_slug, args.type, spec, spec["file"])
         summary["metadata"] = str(meta_path)
 
+    # Baked-in validation: verify the snapped output actually matches the spec
+    # (size, alpha, anchor, fill, and per-frame baselines for sheets).
+    try:
+        from validate_sprites import validate_sprite_image
+        vrep = validate_sprite_image(Image.open(out_path).convert("RGBA"), spec,
+                                     label=str(out_path))
+        summary["validation"] = {"ok": vrep.ok, "errors": vrep.errors, "warnings": vrep.warns}
+    except Exception as e:  # never let a validator hiccup lose a good generation
+        summary["validation"] = {"ok": None, "note": f"validator unavailable: {e}"}
+
     print(json.dumps(summary, indent=2))
     return 0
 

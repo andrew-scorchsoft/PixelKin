@@ -300,12 +300,16 @@ The robust workflow, per asset:
 
 1. **Generate** a source sprite from the type's locked template + your original
    subject brief.
-2. **Inspect** it (open the file; check silhouette, palette, no artifacts, no
-   franchise resemblance).
-3. **Snap** to the exact standard canvas + anchor (the skill does this).
-4. **Iterate** if needed (max 3 attempts per asset — naming the specific
+2. **Snap** to the exact standard canvas + anchor (the skill does this).
+3. **Validate — automated.** The skill runs `validate_sprites.py` on every
+   output (size, alpha, anchor, fill, sheet baselines) and reports a
+   `validation` block; run `validate_sprites.py --all` as a repo-wide spec gate.
+4. **Inspect — by eye.** Open the file; check silhouette, palette, no artifacts,
+   no franchise resemblance. The validator measures geometry; only you can judge
+   art and originality.
+5. **Iterate** if needed (max 3 attempts per asset — naming the specific
    problem each time).
-5. Later, **pack** into atlases with the build step.
+6. Later, **pack** into atlases with the build step.
 
 Do **not** try to get the model to emit the final 151-creature sheet directly.
 Generate sources, standardise with code, pack with code. That division of labour
