@@ -206,8 +206,10 @@ any surface that has an inside and an outside, you need the **9-slice** (centre 
   variants per area), visibly distinct from decorative grass.
 - **Fences / low walls / signs / lamp-posts / lantern-buoys:** the funnelling + breadcrumb
   kit — small `deco` props that read as soft barriers and as light-guidance.
-- **Interior kit:** floor + wall 9-slice, doormat/exit tile, plus furniture props (bed,
-  table, shelf, rug) as `deco`.
+- **Interior kit:** the dedicated `interior_set` (faced wall 9-slice with visible
+  height, patterned floor, doormat/exit, window) + furniture as `interior_*` objects.
+  Interiors follow the SNES-enclosure convention — **see `docs/world/interiors.md`
+  (binding)**; don't author an interior as a flat plan on the overworld tileset.
 - **Caves:** floor, **wall-edge 9-slice**, rubble/rock blockers, and the **dark-cave tile**
   flagged `requires_ability: 'glimmerstep'`.
 

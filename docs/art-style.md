@@ -310,6 +310,20 @@ and saved as WebP. Naming: `area-slug-a.webp`, `-b.webp`, … (e.g.
 map in `src/game/data/world/maps.ts` (`battle_backdrops`); the BattleScene picks
 one at random and falls back to the plain night fill if a map has none.
 
+### I) Interior tilesets & furniture (`interior_set` + `interior_*` objects)
+
+Building interiors are **not** a flat plan on the overworld tileset — they use a
+dedicated interior kit and follow the SNES-era enclosure convention. The binding
+spec (look, tileset vocabulary, per-room theming, layout) is
+**`docs/world/interiors.md`** — read it before authoring any interior. In short:
+walls are drawn with a **visible vertical face** (a `wall_cap` cornice row above a
+`wall_face` row on the top wall; one face tile on the sides), the **floor is
+patterned** (not flat), a **bordered rug** stages the room, **furniture lines the
+walls** (packed as `interior_*` objects via `pack_objects.py`), one warm focal
+point sits top-centre, and a single **doormat** exit sits centre-bottom. Same
+canvas/anchor/palette/outline rules as every other tile (§3, §G); cool
+stone/dark-panel accents for Lumenaries, warm wood/plaster for homes/shops/inns.
+
 ---
 
 ## 6. Transparency & the chroma-key pipeline

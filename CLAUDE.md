@@ -186,6 +186,7 @@ go digging on every task.
 | World map, areas, routes, gating | `docs/world/atlas.md` |
 | Canonical user-journey / walkthrough | `docs/world/walkthrough/` (spine + per-region) |
 | Map & level-design rules (binding) | `docs/world/level-design.md` |
+| Interior design rules (binding, SNES-style) | `docs/world/interiors.md` |
 | Per-area/route music briefs | `docs/world/music-direction.md` |
 | Mechanics design (start here) | `docs/mechanics/00-overview.md` |
 | Readable full dex (all 151) | `docs/mechanics/dex.md` |
@@ -410,6 +411,14 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   under `public/assets/backgrounds/battle/` + list them on the map; no map with a list = it
   keeps the plain night fill. Briefs/standards live in `docs/art-style.md` (§5-H). Keep them
   subtle so sprites/plates stay readable.
+- **Interiors are SNES-enclosure rooms, not a flat plan.** Build them with the dedicated
+  `interior_set` (walls drawn with a visible vertical FACE — `wall_cap` cornice + `wall_face`
+  on the top wall, faced sides/corners — over a *patterned* floor), a bordered rug staging the
+  room, furniture as `interior_*` objects lining the walls, one warm focal point top-centre
+  (hearth/counter/altar), a single `doormat` exit centre-bottom, ≥2 lights. Cool stone/dark
+  panel accents for Lumenaries (a shrine, not a cabin); warm wood/plaster for homes/shops/inns.
+  Binding spec: `docs/world/interiors.md`. If a render looks like props on an open field, the
+  wall-face is missing — that's a hard fail. Keep a walkable lane from the door to every NPC/trigger.
 - **Bottom-anchored battle menus must be height-aware.** The screen is only 160px tall
   and the message strip eats the bottom ~38px, so a fixed `y` clips the last row (this is
   how RUN went missing). Size battle menus with `BattleScene.menuY(rows)`, which
