@@ -189,21 +189,35 @@ the tiles out of it.** Four scripts plus the autotile tooling:
 | `render_map.py` | Composite a finished map to a PNG for **by-eye QA** against the handheld bar. |
 | `tools/autotile/` | Expand a map's `terrain` layer into the right corner/edge/inner gids (blob autotiling). |
 
-### A) Terrain family → autotile set (clean corners & edges)
+### A) Terrain family → autotile set (clean corners & edges) — PROVEN RECIPE
+
+The reliable way to get a CORRECT 9-slice (the model can't free-paint a valid
+47-blob, but it follows per-cell instructions well — verified by an autotiled
+lake with a continuous wrapping shoreline): describe the **9 cells explicitly** as
+a 3×3 `tile-sheet`, then slice with the `edges9` layout (which tags the roles).
 
 ```bash
 GEN=.claude/skills/generate-sprite-sheet/scripts
-# 1. Paint a coherent patch of the terrain on its surroundings (all edges/corners in one image)
-./venv/bin/python $GEN/generate_block.py --type terrain-block \
-  --subject "lush blue-hour coastal meadow grass" --cols 6 --rows 6 \
-  --area tinderwick --palette "$PAL" --output /tmp/grass_block.png
-# 2. Slice + quantise. Use a layout to tag autotile roles, or slice generically and tag by hand.
-./venv/bin/python $GEN/slice_tileset.py /tmp/grass_block.png --out assets/tilesets/grass_blob \
-  --cols 6 --rows 6 --terrain grass --quantize-area tinderwick
-# 3. Hand-tune the manifest so each tile's `autotile` role is right (fill / edge_n / corner_nw /
-#    inner_ne / …) — open the sliced tiles and assign; the model can't place a correct 47-blob.
-# 4. pack_tileset.py as usual (it carries terrain+autotile into the sidecar).
+# 1. Paint the 9-slice, one cell per piece (foam shore on the OUTWARD side(s) only):
+./venv/bin/python $GEN/generate_block.py --type tile-sheet --cols 3 --rows 3 \
+  --area tinderwick --palette "$PAL" --output /tmp/water9.png \
+  --subject "a 9-piece WATER SHORELINE set, rims aligned so cells abut: \
+(1) foam shore TOP+LEFT; (2) shore TOP; (3) TOP+RIGHT; (4) LEFT; (5) plain water; \
+(6) RIGHT; (7) BOTTOM+LEFT; (8) BOTTOM; (9) BOTTOM+RIGHT"
+# 2. Slice with the edges9 layout -> tiles tagged corner_nw/edge_n/.../fill + terrain:
+./venv/bin/python $GEN/slice_tileset.py /tmp/water9.png --out assets/tilesets/water_blob \
+  --cols 3 --rows 3 --layout edges9 --terrain water
+# 3. make_tileable the FILL cell only; eyeball a meshing test (assemble a region and tile it).
+# 4. pack_tileset.py carries terrain+autotile into the sidecar.
 ```
+
+Per area you need a set like this for **ground/grass, tall-grass, sand, water,
+and cliffs/ledges** (the cliff set is a *vertical* one — walkable lit top vs
+colliding face + corners; describe those pieces per cell too). For inner corners
+(the full 13-piece) add 4 more cells describing the concave notches.
+
+Alternative for organic terrains: `--type terrain-block` paints an irregular
+patch and you `--harvest`/hand-tag the cells — looser, but good for variety.
 
 Then **author the map with a `terrain` layer** (a 0/1 presence grid tagged
 `terrain` + `set`) instead of hand-placing corner gids, and expand it:
@@ -289,6 +303,19 @@ Open the PNG and judge it against the Pokémon-era bar: clean terrain borders,
 varied fills, decoration, depth, real contrast. If it doesn't read as
 *designed*, iterate the tiles/layout and re-render. This is the map-level twin of
 the sprite self-check loop (below).
+
+**Then MEASURE it** — `validate_map.py` is the objective gate (the twin of
+`validate_sprites.py`). It splits the two halves of the problem: `autotile-vocab`
+(does the *tileset* provide edge/corner pieces?) and `meshing`/`water-shoreline`/
+`decoration`/`tree-depth`/`border` (does the *map* use them well?):
+
+```bash
+./venv/bin/python $GEN/validate_map.py public/assets/maps/<map>.json   # FAILs if below standard
+```
+
+A map is "done" only when it renders to the bar AND `validate_map.py` passes with
+no FAILs. (Running it on a map built from a kit with no terrain tags correctly
+FAILs `autotile-vocab` — fix the tileset first.)
 
 ## Generating a cohesive area tile set (the turnkey recipe)
 
