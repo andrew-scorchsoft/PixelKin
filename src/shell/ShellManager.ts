@@ -36,6 +36,21 @@ export const SHELL_INPUT_EVENT = 'pixelkin-input';
 
 type ActionListener = (action: ShellAction, isDown: boolean) => void;
 
+/**
+ * Keyboard equivalents per on-screen control, shown as a native hover tooltip so a
+ * desktop player learns the shortcut for A/B (and the rest) without leaving the game.
+ * Keep these in sync with the bindings in InputController.
+ */
+const KEY_HINTS: Record<ShellAction, string> = {
+  up: 'Up  (↑ / W)',
+  down: 'Down  (↓ / S)',
+  left: 'Left  (← / A)',
+  right: 'Right  (→ / D)',
+  confirm: 'Confirm  (Z / Enter / Space)',
+  cancel: 'Back  (X / Backspace)',
+  menu: 'Menu  (Esc)',
+};
+
 const SHELL_CLASSES: Record<ShellMode, string> = {
   device: 'pk-shell-device',
   overlay: 'pk-shell-overlay',
@@ -170,6 +185,9 @@ class ShellManagerImpl {
     const el = document.createElement('div');
     el.className = className;
     if (label !== undefined) el.textContent = label;
+    // Hovering a control reveals its keyboard shortcut (e.g. A → "Confirm (Z/Enter/Space)").
+    el.title = KEY_HINTS[action];
+    el.setAttribute('aria-label', KEY_HINTS[action]);
 
     const down = (ev: Event): void => {
       ev.preventDefault();
