@@ -99,9 +99,18 @@ Each card gives **Kind** (drives the `MapDefinition.kind` and music default), **
 direct `generate-midi` brief: *preset · mood · instrumentation · tempo & key feel · loop*),
 **Kin** (archetypes → encounter tables), and **Terrain** (encounter-zone types).
 
+> Each card opens with its **concept mood-piece** — a wide pixel-art establishing shot
+> setting the place's palette and feel (and, for the eight gym towns, the interior of its
+> **Lumenary**). These are *inspiration key-art, not game assets*; the full set (areas,
+> routes, Lumenary interiors, landmarks) lives in
+> [`assets/concept-art/`](../../assets/concept-art/).
+
 ---
 
 ### 1 · Tinderwick — *cosy coastal starting village (Lumenary 1: Ember)*
+
+<img src="../../assets/concept-art/areas/tinderwick.webp" alt="Tinderwick — concept art" width="328"> <img src="../../assets/concept-art/lumenaries/ember.webp" alt="Ember Lumenary interior — concept art" width="328">
+
 - **Kind:** town · **Region:** south · **Gate:** none (start)
 - **Graphics:** `bone`-cream cottages with candle-`fire` windows against a `night` sky and
   `deepBlue` sea; everything lit by tiny flames; `ink` outlines; the blue-hour wash that
@@ -114,6 +123,9 @@ direct `generate-midi` brief: *preset · mood · instrumentation · tempo & key 
 - **Terrain:** none in town (battles are the Lumenary + scripted).
 
 ### 2 · Dimglass Coast — *tidal cliffside route*
+
+<img src="../../assets/concept-art/areas/dimglass-coast.webp" alt="Dimglass Coast — concept art" width="480">
+
 - **Kind:** route · **Region:** south · **Gate:** none
 - **Graphics:** `deepBlue` water with `diamond` foam highlights, dark `ink` rocks,
   lantern-buoys glowing cyan along the path; grass tufts catching the last light.
@@ -125,6 +137,9 @@ direct `generate-midi` brief: *preset · mood · instrumentation · tempo & key 
 - **Terrain:** `tall_grass` (verges), `water` (shallows — needs **Tidecall** to enter).
 
 ### 3 · Pearlmoor Quay — *moonlit fishing port (Lumenary 2: Tide)*
+
+<img src="../../assets/concept-art/areas/pearlmoor-quay.webp" alt="Pearlmoor Quay — concept art" width="328"> <img src="../../assets/concept-art/lumenaries/tide.webp" alt="Tide Lumenary interior — concept art" width="328">
+
 - **Kind:** town · **Region:** south · **Gate:** **Tidecall** (islets & sea-shrine)
 - **Graphics:** wet boardwalks reflecting moonlight, `water` glints, `bone` sails,
   a big cyan moon; lantern strings between masts.
@@ -135,6 +150,9 @@ direct `generate-midi` brief: *preset · mood · instrumentation · tempo & key 
 - **Terrain:** `water` (harbour & islet routes — **Tidecall**).
 
 ### 4 · Lowleaf Hollow — *bioluminescent fern forest (Lumenary 3: Verdant)*
+
+<img src="../../assets/concept-art/areas/lowleaf-hollow.webp" alt="Lowleaf Hollow — concept art" width="328"> <img src="../../assets/concept-art/lumenaries/verdant.webp" alt="Verdant Lumenary interior — concept art" width="328">
+
 - **Kind:** route/town · **Region:** east · **Gate:** **Glimmerstep** (hollow interiors)
 - **Graphics:** `grass` foliage shot through with `diamond` glowmoss, deep `ink` shadows,
   a magical dim-green dark; dew catching cyan light.
@@ -145,6 +163,9 @@ direct `generate-midi` brief: *preset · mood · instrumentation · tempo & key 
 - **Terrain:** `tall_grass`, `cave` (interior hollows — **Glimmerstep**).
 
 ### 5 · Cinderhead Mine — *abandoned gem mine, deep-earth gleam (Lumenary 4: Stone)*
+
+<img src="../../assets/concept-art/areas/cinderhead-mine.webp" alt="Cinderhead Mine — concept art" width="328"> <img src="../../assets/concept-art/lumenaries/stone.webp" alt="Stone Lumenary interior — concept art" width="328">
+
 - **Kind:** cave · **Region:** east · **Gate:** **Glimmerstep** (deep galleries)
 - **Graphics:** `ink`-black tunnels lit by veins of `diamond` crystal and `fire` lamps;
   claustrophobic and sparkly; cart rails and timber.
@@ -155,6 +176,9 @@ direct `generate-midi` brief: *preset · mood · instrumentation · tempo & key 
 - **Terrain:** `cave` (**Glimmerstep**).
 
 ### 6 · Galehigh Terraces — *windy stepped cliff-farms (Lumenary 5: Storm)*
+
+<img src="../../assets/concept-art/areas/galehigh-terraces.webp" alt="Galehigh Terraces — concept art" width="328"> <img src="../../assets/concept-art/lumenaries/storm.webp" alt="Storm Lumenary interior — concept art" width="328">
+
 - **Kind:** route/town · **Region:** north · **Gate:** **Updraft Kite** (high terraces)
 - **Graphics:** layered terraces, `fire` sunset bleeding into `night`-blue, kite
   silhouettes, fast-moving clouds, `diamond` updraft motes.
@@ -165,6 +189,9 @@ direct `generate-midi` brief: *preset · mood · instrumentation · tempo & key 
 - **Terrain:** `tall_grass` (terraces). High ledges & gaps need **Updraft Kite**.
 
 ### 7 · Pale Vault Glacier — *aurora ice field (Lumenary 6: Frost)*
+
+<img src="../../assets/concept-art/areas/pale-vault-glacier.webp" alt="Pale Vault Glacier — concept art" width="328"> <img src="../../assets/concept-art/lumenaries/frost.webp" alt="Frost Lumenary interior — concept art" width="328">
+
 - **Kind:** route/town · **Region:** north · **Gate:** **Emberward** (coldfog pass)
 - **Graphics:** cold `deepBlue` ice, `diamond` + faint `grass`-green aurora ribbons across
   the sky, `bone` snow, `ink` crevasses.
@@ -176,6 +203,9 @@ direct `generate-midi` brief: *preset · mood · instrumentation · tempo & key 
   to reach the Lumenary).
 
 ### 8 · Sunken Solarium — *half-flooded ruined sun-garden (Lumenary 7: Solar)*
+
+<img src="../../assets/concept-art/areas/sunken-solarium.webp" alt="Sunken Solarium — concept art" width="328"> <img src="../../assets/concept-art/lumenaries/solar.webp" alt="Solar Lumenary interior — concept art" width="328">
+
 - **Kind:** route/ruin · **Region:** west · **Gate:** **Sunsketch** (sun-vine bridges)
 - **Graphics:** submerged golden architecture, `fire` "stored daylight" glows under
   `water`, `bone` columns; warm light remembered in a drowned place.
@@ -186,6 +216,9 @@ direct `generate-midi` brief: *preset · mood · instrumentation · tempo & key 
 - **Terrain:** `water` (flooded halls — **Tidecall**), sun-vine bridges (**Sunsketch**).
 
 ### 9 · Nightreach Observatory — *hilltop star-temple town (Lumenary 8: Lunar)*
+
+<img src="../../assets/concept-art/areas/nightreach-observatory.webp" alt="Nightreach Observatory — concept art" width="328"> <img src="../../assets/concept-art/lumenaries/lunar.webp" alt="Lunar Lumenary interior — concept art" width="328">
+
 - **Kind:** town · **Region:** west · **Gate:** **Emberward** (final coldfog approach)
 - **Graphics:** a domed observatory in `bone` + `deepBlue`, telescope brass, the densest
   `diamond` starfield in the game; the most "sky-forward" town.
@@ -196,6 +229,9 @@ direct `generate-midi` brief: *preset · mood · instrumentation · tempo & key 
 - **Terrain:** none in town; the approach route carries `tall_grass`.
 
 ### 10 · Coldfog Marches — *the Hollowing-blighted wetland*
+
+<img src="../../assets/concept-art/areas/coldfog-marches.webp" alt="Coldfog Marches — concept art" width="480">
+
 - **Kind:** route · **Region:** outer · **Gate:** **Emberward** (push through coldfog)
 - **Graphics:** sickly desaturated blues, snuffed lanterns, `ink` mist swallowing colour —
   the one "drained" area; the visual cost of the Hollowing made plain.
@@ -206,6 +242,9 @@ direct `generate-midi` brief: *preset · mood · instrumentation · tempo & key 
 - **Terrain:** `tall_grass` (blighted), coldfog blockers (**Emberward**).
 
 ### 11 · Vesper Crossroads — *outer-ring hub waystation*
+
+<img src="../../assets/concept-art/areas/vesper-crossroads.webp" alt="Vesper Crossroads — concept art" width="480">
+
 - **Kind:** hub · **Region:** outer · **Gate:** rim always; spokes to Spire need the
   `crown_*` / `flag:hub_unlocked` flags
 - **Graphics:** a cosy lantern-lit inn at a many-way fork, warm windows, a great signpost;
@@ -217,6 +256,9 @@ direct `generate-midi` brief: *preset · mood · instrumentation · tempo & key 
 - **Terrain:** none (safe hub).
 
 ### 12 · Penumbra Ring — *the dark-fog barrier around the centre*
+
+<img src="../../assets/concept-art/areas/penumbra-ring.webp" alt="Penumbra Ring — concept art" width="480">
+
 - **Kind:** route (barrier) · **Region:** central · **Gate:** recedes by `crown_*` flags;
   final crossings need **Starreach**
 - **Graphics:** a literal wall of swirling `ink`-and-shadow that recedes wedge by wedge as
@@ -227,6 +269,9 @@ direct `generate-midi` brief: *preset · mood · instrumentation · tempo & key 
 - **Terrain:** none; pure traversal/gating space.
 
 ### 13 · Umbral Spire — *central locked mountain + the Ninth Lantern (climax)*
+
+<img src="../../assets/concept-art/areas/umbral-spire.webp" alt="Umbral Spire — concept art" width="480">
+
 - **Kind:** cave/hub · **Region:** central · **Gate:** **Starreach** + `flag:hub_unlocked`
 - **Graphics:** black basalt, the dead Lumenary, Còr's null-lanterns leaking anti-light;
   the final ascent under the completing **Skyweave Crown** overhead.
@@ -238,6 +283,9 @@ direct `generate-midi` brief: *preset · mood · instrumentation · tempo & key 
 - **Terrain:** scripted encounters only.
 
 ### 14 · Dawnstead — *the first-sunrise epilogue town*
+
+<img src="../../assets/concept-art/areas/dawnstead.webp" alt="Dawnstead — concept art" width="480">
+
 - **Kind:** town · **Region:** south (near Tinderwick) · **Gate:** post-game
 - **Graphics:** Tinderwick's silhouette flooded with `fire`-orange + `bone` **daylight** —
   the visual payoff of the whole journey; warm shadows, open sky.
@@ -297,6 +345,16 @@ or near a town opens the route beyond it.
 | **Sunvault Climb** | `tall_grass` | overgrown golden terraces, sun-vine bridges blooming open, `bone` steps, `fire`-warm glows | *overworld · warm, ascending, hopeful · major arpeggio lead + soft brass-ish pulse + harp · ~112 BPM, radiant major · loop* | sun-seedling (Verdant/Solar), vine-serpent (Verdant), glass-wing bee (Verdant/Light) |
 | **Lanternway** (spokes) | `tall_grass` | hedged, lantern-lined country lanes, milestones, `grass`, `soil` path, `diamond` lamp dots | *overworld · the signature cosy travel loop, walking pace · plucky pulse lead + triangle bass + light bell · ~120 BPM, comfortable major · loop* | path-pup (Normal/Verdant), stile-cricket (Bug), lamp-moth (Light) |
 
+**Concept mood-pieces — the connective routes:**
+
+<p>
+  <img src="../../assets/concept-art/areas/saltreach-fen.webp" alt="Saltreach Fen — concept art" width="232">
+  <img src="../../assets/concept-art/areas/windward-stair.webp" alt="Windward Stair — concept art" width="232">
+  <img src="../../assets/concept-art/areas/hushfrost-pass.webp" alt="Hushfrost Pass — concept art" width="232">
+  <img src="../../assets/concept-art/areas/sunvault-climb.webp" alt="Sunvault Climb — concept art" width="232">
+  <img src="../../assets/concept-art/areas/lanternway.webp" alt="Lanternway — concept art" width="232">
+</p>
+
 ### Optional content & rewards (spurs + landmarks)
 
 | Place | Type | Off route | Gate | Reward |
@@ -318,6 +376,17 @@ or near a town opens the route beyond it.
 > `src/game/data/world/types.ts`): a rare-kin reward is a low-weight `EncounterZone` entry
 > (or a one-off static `EventTrigger` for a fixed catch); a hidden item is an
 > `EventTrigger` (`kind: 'script'`) that sets a flag.
+
+**Concept mood-pieces — the signature landmarks & set-pieces:**
+
+<p>
+  <img src="../../assets/concept-art/landmarks/glowmoss-deep.webp" alt="Glowmoss Deep — concept art" width="232">
+  <img src="../../assets/concept-art/landmarks/tideglass-cavern.webp" alt="Tideglass Cavern — concept art" width="232">
+  <img src="../../assets/concept-art/landmarks/wind-eye.webp" alt="Wind-Eye — concept art" width="232">
+  <img src="../../assets/concept-art/landmarks/hollowfen-stillworks.webp" alt="Hollowfen Stillworks — concept art" width="232">
+  <img src="../../assets/concept-art/landmarks/drownlight-beacon.webp" alt="Drownlight Beacon — concept art" width="232">
+  <img src="../../assets/concept-art/landmarks/starwell.webp" alt="Starwell — concept art" width="232">
+</p>
 
 ### Late shortcuts
 
