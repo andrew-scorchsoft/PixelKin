@@ -108,6 +108,17 @@ def build_tile_meta(index: int, tile: dict, n_tiles: int, warnings: list[str]) -
     if role:
         entry["role"] = role
 
+    # Autotile tagging (informational at runtime; read by tools/autotile to expand
+    # a map's terrain layer into the right blob tile). `terrain` = which material
+    # group this tile belongs to; `autotile` = its role in that group's blob set
+    # (fill / edge_n / corner_nw / inner_ne / ...). See docs/art-style.md §11.
+    terrain_group = tile.get("terrain")
+    if terrain_group:
+        entry["terrain"] = terrain_group
+    autotile = tile.get("autotile")
+    if autotile:
+        entry["autotile"] = autotile
+
     if tile.get("collides") is True:
         entry["collides"] = True
         has_behaviour = True
@@ -154,8 +165,8 @@ def build_tile_meta(index: int, tile: dict, n_tiles: int, warnings: list[str]) -
         entry["animation"] = {"frames": frames, "duration_ms": duration}
         has_behaviour = True
 
-    # Keep the entry if it carries real behaviour OR an explicit role (debug aid).
-    if has_behaviour or role:
+    # Keep the entry if it carries real behaviour OR an explicit role/terrain tag.
+    if has_behaviour or role or terrain_group or autotile:
         return entry
     return None
 

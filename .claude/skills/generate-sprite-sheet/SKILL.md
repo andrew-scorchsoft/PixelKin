@@ -28,12 +28,16 @@ a time; code does the layout.
 
 - The user wants any creature art: **battle front/back, icon, overworld
   mini-sprite, or portrait**.
-- An **NPC/human walking sheet** (3×4, directional).
+- An **NPC/human walking sheet** (4×4, directional — a real walk cycle).
 - A **battle effect** animation sheet (sparks, slashes, bursts).
 - A **world tile** (16×16, tileable).
-- A **cohesive area tile set** — many related 16×16 tiles (ground, path, water, edges,
-  cliff, roof, wall, decor) generated to share one palette, then packed into a lossless-WebP
-  tileset atlas + sidecar metadata. See **Generating a cohesive area tile set** below.
+- A **cohesive area tile set** — best built the modern way: paint a coherent
+  terrain family / scene as ONE picture and **slice it into tiles with code**
+  (see **The richer tile pipeline** below), which fixes the seam/flatness/drift
+  problems isolated per-tile generation causes. The older per-tile recipe
+  (**Generating a cohesive area tile set**) still works for one-off tiles.
+- An **autotile terrain** (grass/water/cliff with clean corners & edges) and
+  **animated tiles** (water ripple, lamp) — see **The richer tile pipeline**.
 
 Do **not** use it for: UI chrome you can build in CSS/HTML, the logo (already in
 `assets/`), or music/SFX (use `generate-music`).
@@ -70,11 +74,11 @@ See docs/art-style.md §6 for the transparency pipeline.
 
 For each asset the script:
 
-1. Builds a prompt = magenta chroma-key preamble + shared **style preamble** +
-   **originality clause** + the locked **per-type template**
-   (`sprite-specs.json`) + your **subject**.
-2. Calls `generate-image` with **gpt-image-2** to render the sprite on flat
-   magenta, then **keys the magenta out** to a transparent source.
+1. Builds a prompt = shared **style preamble** + **originality clause** + the
+   locked **per-type template** (`sprite-specs.json`) + your **subject** (plus a
+   magenta chroma-key preamble only on the OpenAI path).
+2. Calls `generate-image`. **Default Google Nano Banana Pro** returns native
+   transparency; the OpenAI path renders on flat magenta and **keys it out**.
 3. **Snaps** it to the type's exact pixel canvas: alpha-trim → scale to the fill
    fraction → composite at the type's anchor. Multi-frame sheets are aligned
    **per cell**, so every frame shares a baseline (feet line up).
@@ -121,7 +125,7 @@ Run `--list-types` for the live list. Current types (all defined in
 | `creature-icon`      |  32×32 | 1×1  | centre        |
 | `creature-overworld` |  32×32 | 1×1  | bottom-centre |
 | `creature-portrait`  |  96×96 | 1×1  | centre        |
-| `human-overworld`    |  32×32 | 3×4  | bottom-centre |
+| `human-overworld`    |  32×32 | 4×4  | bottom-centre |
 | `effect`             |  32×32 | 4×4  | centre        |
 | `tile`               |  16×16 | 1×1  | top-left      |
 | `tile-ground` / `tile-soil` / `tile-sand` / `tile-floor` / `tile-path` / `tile-water` / `tile-water-edge` / `tile-cliff` / `tile-cliff-edge` / `tile-roof` / `tile-wall` / `tile-door` / `tile-fence` | 16×16 | 1×1 | top-left | 
@@ -147,9 +151,9 @@ set**).
   sprite when generating its back/icon). Repeat for multiple. Routed to
   `generate-image --input-image`; gpt-image-2 honours references via its edits
   route.
-- `--provider openai|google` — image provider. **`openai` (default)** uses
-  **gpt-image-2** + magenta chroma-key. `google` uses Nano Banana Pro's native
-  transparent path.
+- `--provider google|openai` — image provider. **`google` (default)** uses Nano
+  Banana Pro's native transparent path. `openai` uses gpt-image-2 + magenta
+  chroma-key (fallback; its safety filter can reject benign briefs).
 - `--resample lanczos|box|nearest` — downscale filter. **`lanczos` (default)**
   reads cleanest at tiny sizes; `nearest` gives the hardest edges. (Rendering
   stays crisp regardless — Phaser nearest-upscales the small source.)
@@ -168,6 +172,90 @@ set**).
   already generated.
 - `--keep-temp` — also save the raw high-res generation next to the output.
 - `--list-types` — print all types and exit.
+
+## The richer tile pipeline (paint together → slice) — PREFERRED
+
+Isolated 16×16 tile generation is the root cause of flat, washed-out, seamy
+maps: the model can't see the neighbour a tile must line up with, so edges don't
+meet and the palette drifts. The fix (docs/art-style.md §11–§15) applies the
+two-system rule one level up — **the model paints a coherent picture; code cuts
+the tiles out of it.** Four scripts plus the autotile tooling:
+
+| Script | Job |
+|--------|-----|
+| `generate_block.py` | Paint a coherent **block**: a terrain family, an area scene mockup, or an animation strip (kept full-res). |
+| `slice_tileset.py` | Cut a block onto the 16px grid into tiles + a draft `tileset.manifest.json`; `--harvest` dedupes a scene; `--layout` tags autotile roles. |
+| `quantize_to_palette.py` | Snap tiles to the area's locked `working_palette` (kills colour drift / flatness). |
+| `render_map.py` | Composite a finished map to a PNG for **by-eye QA** against the handheld bar. |
+| `tools/autotile/` | Expand a map's `terrain` layer into the right corner/edge/inner gids (blob autotiling). |
+
+### A) Terrain family → autotile set (clean corners & edges)
+
+```bash
+GEN=.claude/skills/generate-sprite-sheet/scripts
+# 1. Paint a coherent patch of the terrain on its surroundings (all edges/corners in one image)
+./venv/bin/python $GEN/generate_block.py --type terrain-block \
+  --subject "lush blue-hour coastal meadow grass" --cols 6 --rows 6 \
+  --area tinderwick --palette "$PAL" --output /tmp/grass_block.png
+# 2. Slice + quantise. Use a layout to tag autotile roles, or slice generically and tag by hand.
+./venv/bin/python $GEN/slice_tileset.py /tmp/grass_block.png --out assets/tilesets/grass_blob \
+  --cols 6 --rows 6 --terrain grass --quantize-area tinderwick
+# 3. Hand-tune the manifest so each tile's `autotile` role is right (fill / edge_n / corner_nw /
+#    inner_ne / …) — open the sliced tiles and assign; the model can't place a correct 47-blob.
+# 4. pack_tileset.py as usual (it carries terrain+autotile into the sidecar).
+```
+
+Then **author the map with a `terrain` layer** (a 0/1 presence grid tagged
+`terrain` + `set`) instead of hand-placing corner gids, and expand it:
+
+```bash
+node tools/autotile/expand.mjs public/assets/maps/<map>.json   # stamps the right gids into base
+node tools/autotile/blob.mjs --test                            # the classifier's self-test
+```
+
+The blob rule (`tools/autotile/blob.mjs`) picks fill / edge / outer-corner /
+inner-corner per cell from its 8 neighbours; the expander resolves that role to a
+tile by `(terrain, autotile)` and degrades gracefully if a set only has the
+9-slice pieces.
+
+### B) Scene mockup → harvest (cohesion + variety)
+
+```bash
+./venv/bin/python $GEN/generate_block.py --type scene-mockup \
+  --subject "blue-hour coastal village green: grass, a soil path, a little sea with shoreline, flowers" \
+  --cols 12 --rows 8 --area tinderwick --palette "$PAL" --output /tmp/scene.png
+./venv/bin/python $GEN/slice_tileset.py /tmp/scene.png --out assets/tilesets/tinderwick_harvest \
+  --cols 12 --rows 8 --harvest --quantize-area tinderwick
+# -> distinct fill variants + decoration tiles, all sharing one palette/light.
+```
+
+### C) Animated tiles (water ripple, lamp, glowmoss)
+
+```bash
+./venv/bin/python $GEN/generate_block.py --type tile-anim \
+  --subject "calm deep-blue sea water" --cols 3 --rows 1 \
+  --area tinderwick --palette "$PAL" --output /tmp/water_anim.png
+./venv/bin/python $GEN/slice_tileset.py /tmp/water_anim.png --out /tmp/water_frames \
+  --cols 3 --rows 1 --layout anim3 --quantize-area tinderwick
+```
+
+Put the 3 frames in the set, then in the manifest give the base water tile
+`"animation": { "frames": [<localIdxs>], "duration_ms": 700 }`. The engine
+(`MapRenderer` + `WorldScene.tickAnimatedTiles`) cycles them live — keep it slow
+and low-amplitude (docs/art-style.md §12).
+
+### D) Map QA — render & audit (the standing gate)
+
+```bash
+./venv/bin/python $GEN/render_map.py public/assets/maps/<map>.json --output /tmp/<map>.png --scale 4
+#   --layer deco    one layer in isolation     --no-above   without the over-player layer
+#   --grid          overlay the 16px grid       --list-layers
+```
+
+Open the PNG and judge it against the Pokémon-era bar: clean terrain borders,
+varied fills, decoration, depth, real contrast. If it doesn't read as
+*designed*, iterate the tiles/layout and re-render. This is the map-level twin of
+the sprite self-check loop (below).
 
 ## Generating a cohesive area tile set (the turnkey recipe)
 

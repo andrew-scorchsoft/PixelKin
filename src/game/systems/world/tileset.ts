@@ -24,6 +24,14 @@ export interface TileMeta {
   index: number;
   /** Authoring role, informational: 'ground' | 'path' | 'water' | 'wall' | 'roof' | 'decor' ... */
   role?: string;
+  /**
+   * Autotile group this tile belongs to (e.g. 'grass', 'water', 'cliff'). Set on
+   * the tiles of a 47-blob/9-slice set. Informational at runtime; read by
+   * tools/autotile to expand a map's terrain layer. See docs/art-style.md §11.
+   */
+  terrain?: string;
+  /** This tile's role within its terrain's blob set ('fill' | 'edge_n' | 'corner_nw' | 'inner_ne' | ...). */
+  autotile?: string;
   /** Solid — the player cannot stand on it (walls, water without tidecall, etc.). */
   collides?: boolean;
   /** Marks this tile as a given encounter terrain (ties to EncounterZone.terrain). */
