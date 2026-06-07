@@ -5,7 +5,7 @@
  * The world plugs in from here.
  */
 import Phaser from 'phaser';
-import { GAME_WIDTH, GAME_HEIGHT } from '@game/config';
+import { GAME_WIDTH } from '@game/config';
 import { theme } from '@game/ui/theme';
 import { Menu } from '@game/ui/Menu';
 import { DialogueBox } from '@game/ui/DialogueBox';
@@ -20,6 +20,16 @@ import type { SaveGame } from '@game/systems/save/types';
 /** The dedicated title riff (Vesper-motif theme), with a graceful silent fallback. */
 const TITLE_MUSIC = { key: 'title', url: 'assets/audio/music/title.mp3' };
 const IDLE_TO_ATTRACT_MS = 15000;
+
+/**
+ * Screen layout (240×160). The logo is 4:3, so capping it by width alone left it
+ * ~144px tall and clipping/overlapping the menu — cap it by HEIGHT too and give it
+ * the top band, then anchor the menu in the lower band so they never collide.
+ */
+const LOGO_CENTER_Y = 48;
+const LOGO_MAX_WIDTH = GAME_WIDTH - 64; // 176
+const LOGO_MAX_HEIGHT = 84;
+const MENU_Y = 104;
 
 export class TitleScene extends Phaser.Scene {
   private sfx!: Sfx;
@@ -41,11 +51,11 @@ export class TitleScene extends Phaser.Scene {
     this.input.on('pointerdown', () => this.armIdle());
 
     const cx = GAME_WIDTH / 2;
-    const cy = GAME_HEIGHT / 2;
 
-    const logo = this.add.image(cx, cy - 28, 'logo').setOrigin(0.5);
-    const maxLogoWidth = GAME_WIDTH - 48;
-    if (logo.width > maxLogoWidth) logo.setScale(maxLogoWidth / logo.width);
+    const logo = this.add.image(cx, LOGO_CENTER_Y, 'logo').setOrigin(0.5);
+    // Fit within both the width and height budget (the logo is 4:3, so height binds).
+    const scale = Math.min(LOGO_MAX_WIDTH / logo.width, LOGO_MAX_HEIGHT / logo.height, 1);
+    logo.setScale(scale);
     this.tweens.add({
       targets: logo,
       y: logo.y - 4,
@@ -68,7 +78,7 @@ export class TitleScene extends Phaser.Scene {
         { label: 'CONTINUE', value: 'continue', enabled: save !== null },
         { label: 'SETTINGS', value: 'settings' },
       ],
-      { x: GAME_WIDTH / 2 - 44, y: GAME_HEIGHT / 2 + 18, width: 88, cancellable: false, sfx: this.sfx },
+      { x: GAME_WIDTH / 2 - 44, y: MENU_Y, width: 88, cancellable: false, sfx: this.sfx },
     );
 
     const choice = await menu.run();
@@ -101,7 +111,7 @@ export class TitleScene extends Phaser.Scene {
         { label: 'KEEP SAVE', value: 'no' },
         { label: 'OVERWRITE', value: 'yes' },
       ],
-      { x: GAME_WIDTH / 2 - 44, y: GAME_HEIGHT / 2 + 18, width: 88, sfx: this.sfx },
+      { x: GAME_WIDTH / 2 - 44, y: MENU_Y, width: 88, sfx: this.sfx },
     ).run();
     return choice === 'yes';
   }
