@@ -16,7 +16,12 @@ then read in order:
    signatures, the voice/era policy, the dusk→dawn key arc, and how we study the
    cartridge era without copying it) live in the skill's
    [`pixelkin-soundtrack.md`](../../.claude/skills/generate-midi/references/pixelkin-soundtrack.md).
-4. This file — the **data + authoring conventions** the engine and the asset pipeline use.
+4. **[`level-design.md`](./level-design.md)** — the **binding map & level-design guide**:
+   the 15×10-window rules, per-`MapKind` sizes, the readability/guidance toolkit, the
+   starter-town & tutorial-route patterns, encounter-design rules, layer discipline, the
+   required tile vocabulary, annotated layout sketches (Tinderwick / house / Dimglass
+   Coast), and the pre-/post-flight authoring checklist. Read before authoring any map.
+5. This file — the **data + authoring conventions** the engine and the asset pipeline use.
 
 > Everything here is original to PixelKin per [`../../VISION.md`](../../VISION.md):
 > inspired by the monster-collecting genre, a copy of nothing.

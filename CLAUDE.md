@@ -161,6 +161,7 @@ go digging on every task.
 | Vision / copyright rules | `VISION.md` |
 | Story, cast, antagonist, lore | `docs/world/story-bible.md` |
 | World map, areas, routes, gating | `docs/world/atlas.md` |
+| Map & level-design rules (binding) | `docs/world/level-design.md` |
 | Per-area/route music briefs | `docs/world/music-direction.md` |
 | Mechanics design (start here) | `docs/mechanics/00-overview.md` |
 | Readable full dex (all 151) | `docs/mechanics/dex.md` |
