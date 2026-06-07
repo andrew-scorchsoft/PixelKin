@@ -13,6 +13,7 @@ import { DebugOverlay } from '@game/ui/DebugOverlay';
 import { DialogueBox } from '@game/ui/DialogueBox';
 import { Menu } from '@game/ui/Menu';
 import { PartyMenu } from '@game/ui/PartyMenu';
+import { ItemsMenu } from '@game/ui/ItemsMenu';
 import { SettingsMenu } from '@game/ui/SettingsMenu';
 import { fadeIn, fadeOut } from '@game/ui/Transitions';
 import { KinInstance } from '@game/systems/party/KinInstance';
@@ -511,7 +512,22 @@ export class WorldScene extends Phaser.Scene {
     void this.persist();
   }
 
-  /** In-game pause menu (Start/Esc): Resume / Kin / Save / Settings. */
+  /**
+   * Pack viewer (pause menu → ITEMS): see what you're carrying and read each item's
+   * description. Read-only — items aren't usable from the field yet — so nothing to
+   * persist on close.
+   */
+  private async openItemsMenu(): Promise<void> {
+    if (Object.keys(this.inventory.items).length === 0) {
+      await new DialogueBox(this, this.sfx).run([
+        { text: 'Your pack is empty — nothing to carry but your lamp, for now.' },
+      ]);
+      return;
+    }
+    await new ItemsMenu(this, this.inventory, this.sfx).run();
+  }
+
+  /** In-game pause menu (Start/Esc): Resume / Kin / Items / Save / Settings. */
   private async openPauseMenu(): Promise<void> {
     this.modal = true;
     // A holder so the closure write in onImport survives TS flow analysis.
@@ -523,6 +539,7 @@ export class WorldScene extends Phaser.Scene {
         [
           { label: 'RESUME', value: 'resume' },
           { label: 'KIN', value: 'kin' },
+          { label: 'ITEMS', value: 'items' },
           { label: 'SAVE', value: 'save' },
           { label: 'SETTINGS', value: 'settings' },
         ],
@@ -531,6 +548,8 @@ export class WorldScene extends Phaser.Scene {
 
       if (choice === 'kin') {
         await this.openPartyMenu();
+      } else if (choice === 'items') {
+        await this.openItemsMenu();
       } else if (choice === 'save') {
         await this.persist();
         void this.sfx.playVariant('ui-save', ['a', 'b']);
