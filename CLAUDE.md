@@ -286,6 +286,15 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **Don't hand-edit served assets.** Music `.mp3`s in `public/assets/audio/music/`
   are renders of `.mid` masters in `assets/audio/midi/` — edit the master and
   re-render. Same for sprites/tilesets (masters in `assets/`, packed into `public/`).
+- **Area music ships in the richer `snes` register, not bare `gbc`.** Keep the
+  Option-A tune's `pulse25` lead + `tri_bass` bass note-for-note, then open the
+  band: `strings`/`pad` real chords, `pluck` harp arp, sparse `bell` (Light), an
+  optional `flute` counter; `era: "snes"` (warm reverb + chords) but still render
+  through `--engine chip`. Registers stay separated (bass o2 / pad o3 / lead o4 /
+  bell o5), ≤7 peak voices. The first-encounter maps (`tinderwick-a/-b`,
+  `dimglass-coast-a`) already follow this; full recipe in the generate-midi score
+  bible §3.3. Bare 4-voice `gbc` is still right for the sparsest cues (deep caves,
+  the Hollowing's drained zones).
 - **Use the canon vocabulary** (kin, Lumenary, Gleam, Lantern Gift, kindling,
   vesperlamp) in code, data, dialogue, and commits — not generic "monster/gym/badge,"
   and never another franchise's terms (even in prompts and commit messages).
