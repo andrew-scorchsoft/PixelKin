@@ -1,0 +1,80 @@
+{
+  "id": 152,
+  "slug": "cloverkit",
+  "name": "Cloverkit",
+  "types": [
+    "Verdant"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "B",
+  "stats": {
+    "hp": 72,
+    "atk": 78,
+    "def": 64,
+    "spa": 36,
+    "spd": 53,
+    "spe": 53
+  },
+  "bst": 356,
+  "ability": "verdant_vigor",
+  "hidden_ability": "bramble",
+  "catchRate": 175,
+  "kindling": {
+    "into": 153,
+    "trigger": {
+      "kind": "level",
+      "level": 18
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "vine_tap"
+      },
+      {
+        "level": 9,
+        "move": "sleep_pollen"
+      },
+      {
+        "level": 13,
+        "move": "root_strike"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A sprout-cub that wears a four-leaf clover like a tiny lantern-leaf; in the Long Dusk the clover gathers what light remains and glows a gentle green. A Cloverkit that trusts you is said to share its luck.",
+    "category": "Clover-Cub Kin",
+    "size_cm": 45,
+    "weight_kg": 6.5,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 6,
+      "max": 9
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Small leaf-fox sprout cub; a four-leaf clover sprouts from the top of its head, large pointed leaf-ears, lime-green face and cream underbelly, big friendly dark eyes, soft leafy tufts; faint seed-sparkles drift around it. Passes the black-blob test at 32px. Brand greens (#7bdc6b) with cream (#f5f0e1) and an ink (#1a1430) outline, ~12 colours.",
+    "palette": "Small leaf-fox sprout cub; a four-leaf clover sprouts from the top of its head, large pointed leaf-ears, lime-green face and cream underbelly, big friendly dark eyes, soft leafy tufts; faint seed-sparkles drift around it. Passes the black-blob test at 32px. Brand greens (#7bdc6b) with cream (#f5f0e1) and an ink (#1a1430) outline, ~12 colours.",
+    "direction": "The lucky third starter \u2014 cosy, plucky, and grows into a steadfast guardian who never leaves a friend in the dark."
+  },
+  "provenance_concept_id": "X-CLOVERKIT"
+}

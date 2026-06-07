@@ -197,6 +197,22 @@ CANON = {
         "entry": "Its side-fins glow softly in deep water. Brinix hums a bubbling tune that settles nervous kin, and rides fast currents purely for the fun of it.",
         "category": "Tide-Hum Kin",
     },
+    # Third starter (Verdant) — completes the founding trio with Vulpyre/Brinix.
+    # Logo creature; full art in assets/creatures/152_cloverkit/.
+    "cloverkit": {
+        "stats": {"hp": 72, "atk": 78, "def": 64, "spa": 36, "spd": 53, "spe": 53},
+        "ability": "verdant_vigor", "hidden_ability": "bramble", "signature": "vine_tap",
+        "size_cm": 45, "weight_kg": 6.5,
+        "entry": "A sprout-cub that wears a four-leaf clover like a tiny lantern-leaf; in the Long Dusk the clover gathers what light remains and glows a gentle green. A Cloverkit that trusts you is said to share its luck.",
+        "category": "Clover-Cub Kin",
+    },
+    "cloverhart": {
+        "stats": {"hp": 100, "atk": 112, "def": 95, "spa": 48, "spd": 78, "spe": 65},
+        "ability": "verdant_vigor", "hidden_ability": "bramble", "signature": "root_strike",
+        "size_cm": 165, "weight_kg": 98,
+        "entry": "Cloverkit's kindled form: a great clover-crowned stag whose antlers bloom with year-round green even beneath the dark sky. It plants its hooves and shields the grove, taking blows that would fell lesser kin. The cub you raised became the forest's gentle guardian.",
+        "category": "Grove-Guardian Kin",
+    },
 }
 
 def slugify(name):

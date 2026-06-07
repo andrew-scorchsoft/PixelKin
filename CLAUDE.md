@@ -137,9 +137,16 @@ go digging on every task.
 - **Stats — the genre's six:** hp/atk/def/spa/spd/spe. Power is costed against a
   shared budget (EPS) and **empirically balanced** by a Monte Carlo sim — all
   types land 46.7–53.3% win-rate. (`docs/mechanics/02-stats-and-balance.md`)
-- **Roster:** **151 kin**, curated from ~463 concepts via a panel-scored pipeline
-  (the ~312 cuts are archived as an idea bank). Moves: **≤4 per kin** from a
-  ~94-move shared pool + 28 abilities. (`docs/mechanics/dex.md` for the readable dex)
+- **Roster:** **153 kin** — the **151** curated from ~463 concepts via a panel-scored
+  pipeline (the ~312 cuts are archived as an idea bank), **plus the third starter line
+  added later** (#152 **Cloverkit** → #153 **Cloverhart**, Verdant; appended at the end
+  so the original 1–151 numbering is untouched). Moves: **≤4 per kin** from a ~94-move
+  shared pool + 28 abilities. (`docs/mechanics/dex.md` for the readable dex)
+- **Starters:** the founding trio is **complete** — #1 **Vulpyre** (Ember), #2 **Brinix**
+  (Tide), #152 **Cloverkit** (Verdant) — the three creatures on the logo. To add/retune a
+  starter or any kin, edit `docs/mechanics/concepts/selected.json` (+ a `CANON` override in
+  `tools/balance/build_species.py` for pinned stats), then re-run `build_species.py` and the
+  validators — never hand-edit only `species.json`.
 - **World structure:** 14 areas, 8 Lampwardens (Gleams collected in roughly a set
   order), 6 Lantern Gifts gating traversal, a four-way central hub (the **Umbral
   Spire**) that opens once all 8 Gleams are earned. (`docs/world/atlas.md`)

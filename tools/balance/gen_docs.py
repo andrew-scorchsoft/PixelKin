@@ -12,7 +12,7 @@ RNAME = {"south":"South — Tinderwick / coast (Ember, Tide)","east":"East — L
          "north":"North — Galehigh & Pale Vault (Storm, Frost)","west":"West — Solarium & Nightreach (Solar, Lunar)",
          "outer":"Outer — Coldfog Marches (Dark)","central":"Central — Umbral Spire (legendaries)","post":"Post-game — Dawnstead"}
 
-out = ["# PixelKin — The Dex (151)\n",
+out = [f"# PixelKin — The Dex ({len(sp)})\n",
        "> Generated from `src/game/data/species.json` by `tools/balance/gen_docs.py`. "
        "Every entry is original (VISION.md). Lines show kindling chains (→).\n"]
 
