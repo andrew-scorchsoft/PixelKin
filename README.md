@@ -12,6 +12,15 @@ late-'90s handheld gaming, for the millennials who grew up on it.
 originality/copyright rules every contributor (human or AI) must follow.
 For working in the repo, see **[`CLAUDE.md`](CLAUDE.md)**.
 
+<p align="center">
+  <img src="assets/concept-art/areas/tinderwick.webp" alt="Tinderwick concept art" width="200">
+  <img src="assets/concept-art/areas/lowleaf-hollow.webp" alt="Lowleaf Hollow concept art" width="200">
+  <img src="assets/concept-art/areas/pale-vault-glacier.webp" alt="Pale Vault Glacier concept art" width="200">
+  <img src="assets/concept-art/areas/nightreach-observatory.webp" alt="Nightreach Observatory concept art" width="200">
+  <br>
+  <sub><i>Concept mood-pieces from <a href="docs/world/atlas.md">Vesperholm</a> — Tinderwick · Lowleaf Hollow · Pale Vault Glacier · Nightreach Observatory</i></sub>
+</p>
+
 ## The game so far
 
 The design is data-locked **and the engine to play it now exists** — the first
@@ -27,8 +36,9 @@ What's already in the repo:
 
 - **A playable game engine** (Phaser 3 + TypeScript). Tile maps from our own JSON
   schema, grid movement, NPCs/signs/warps/cutscenes, a data-driven turn-based battle
-  system, a pause-menu **party screen** (inspect a kin's stats/moves and reorder
-  who leads), and an item/flag/save layer behind the platform seam — all built on
+  system, a **pause menu** (a party screen to inspect a kin's stats/moves and reorder
+  who leads, **the Hearth** for kin storage, and an items screen to heal), and a
+  flag/save layer behind the platform seam — all built on
   one in-canvas **UI design language** ([`src/game/ui/theme.ts`](src/game/ui/theme.ts))
   every screen shares. Engine code is in [`src/game/`](src/game/), the DOM
   screen-shells in [`src/shell/`](src/shell/); map/level-design rules are binding in
@@ -38,7 +48,8 @@ What's already in the repo:
   lamp-tender's apprentice relighting the sky one constellation at a time,
   against **the Hollowing** — a sympathetic, never-cartoonish movement that wants
   a gentle permanent dark. Full cast, lore, and the 14-area world map live in
-  [`docs/world/`](docs/world/).
+  [`docs/world/`](docs/world/) — each area illustrated with a pixel-art **concept
+  mood-piece** ([`assets/concept-art/`](assets/concept-art/)).
 - **Creatures & battles.** **153 original *kin*** across **10 elemental types**
   (Ember, Tide, Verdant, Stone, Storm, Frost, Solar, Lunar, Light, Dark), with
   six stats, ~94 moves + 28 abilities, capture via **Lamps**, and evolution via
@@ -98,6 +109,7 @@ python3 -m venv venv && ./venv/bin/pip install -r requirements.txt   # one-time
 | Vision & copyright rules | [`VISION.md`](VISION.md) |
 | Story, cast, lore | [`docs/world/story-bible.md`](docs/world/story-bible.md) |
 | World map (14 areas, routes, gating) | [`docs/world/atlas.md`](docs/world/atlas.md) |
+| Area concept art (mood-pieces) | [`assets/concept-art/`](assets/concept-art/README.md) |
 | Full walkthrough / user journey | [`docs/world/walkthrough/`](docs/world/walkthrough/README.md) |
 | Soundtrack plan | [`docs/world/music-direction.md`](docs/world/music-direction.md) |
 | Mechanics & balance (start here) | [`docs/mechanics/00-overview.md`](docs/mechanics/00-overview.md) |
