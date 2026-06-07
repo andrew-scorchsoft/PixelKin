@@ -13,8 +13,10 @@ all generated to one cohesive style so the whole world reads as a single game.
 
 ## What's here
 
-`areas/<slug>.webp` — one 3:2 mood piece per area/route. Slugs match the area
-cards in [`docs/world/atlas.md`](../../docs/world/atlas.md):
+One 3:2 mood piece per place, in three sets. Slugs match
+[`docs/world/atlas.md`](../../docs/world/atlas.md).
+
+**`areas/<slug>.webp`** — the world-map areas & routes (19):
 
 | Region | Pieces |
 |--------|--------|
@@ -25,7 +27,23 @@ cards in [`docs/world/atlas.md`](../../docs/world/atlas.md):
 | outer | `vesper-crossroads`, `coldfog-marches`, `lanternway` |
 | central | `penumbra-ring`, `umbral-spire` |
 
-(19 total — the 14 area cards plus the 5 connective routes that aren't cards.)
+(The 14 area cards plus the 5 connective routes that aren't cards.)
+
+**`lumenaries/<element>.webp`** — the 8 Lumenary (gym) interiors, one per
+constellation element, each an empty arena-shrine with its constellation in the
+domed ceiling: `ember` (Tinderwick), `tide` (Pearlmoor), `verdant` (Lowleaf),
+`stone` (Cinderhead), `storm` (Galehigh), `frost` (Pale Vault), `solar`
+(Solarium), `lunar` (Nightreach).
+
+**`landmarks/<slug>.webp`** — distinct micro-dungeons & set-pieces beyond the
+area cards: `glowmoss-deep` (glowing cave interior), `tideglass-cavern`
+(sea-cave), `wind-eye` (sky-grotto), `hollowfen-stillworks` (derelict null-works
+— the "old power-plant"), `drownlight-beacon` (snuffed lighthouse), `starwell`
+(post-Crown shrine).
+
+(41 pieces total. The remaining minor optional spurs — Gullcry Rock, Sunkbell
+Shallows, Spore Grotto, Crystoll Vault, Thunderroost, Aurora Hollow, Helia
+Vault — aren't done yet; add them the same way if/when they want art.)
 
 ## How they were made / how to regenerate
 
@@ -35,8 +53,12 @@ anti-aliasing, original-only) baked in, so the set stays cohesive. To redo or
 add one:
 
 ```bash
-bash assets/concept-art/gen.sh <slug> "<subject brief drawn from the area card>"
+bash assets/concept-art/gen.sh <subdir>/<slug> "<subject brief drawn from the area card>"
+# e.g.  areas/tinderwick   lumenaries/ember   landmarks/wind-eye
 ```
+
+The `<slug>` may include its subfolder (`areas/…`, `lumenaries/…`,
+`landmarks/…`); `gen.sh` creates the folder and writes `assets/concept-art/<slug>.webp`.
 
 Each area's subject brief is paraphrased from its **Graphics** line in
 `atlas.md`. Inspect every result by eye (the model occasionally bakes in a

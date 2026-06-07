@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# Concept-art mood pieces for every Vesperholm area & route.
+# Concept-art mood pieces for every Vesperholm area, route, Lumenary & landmark.
 # Usage: gen.sh <slug> "<subject brief>"
+#   <slug> may include a subfolder, e.g. "areas/tinderwick", "lumenaries/ember".
 # Bakes the shared PixelKin "Long Dusk" pixel-art style into every prompt so the
 # whole set reads as one cohesive game. These are inspiration/key-art thumbnails,
 # NOT tilesets and NOT top-down maps.
@@ -26,8 +27,11 @@ a copy of nothing; no real-world brands, no franchise references. No text, no wo
 no UI, no HUD, no frame, no watermark, no creatures and no people (at most tiny distant \
 silhouettes).'
 
+OUT="assets/concept-art/${SLUG}.webp"
+mkdir -p "$(dirname "$OUT")"
+
 exec ./venv/bin/python .claude/skills/generate-image/scripts/generate.py \
   --prompt "$SUBJECT $STYLE" \
   --aspect 3:2 \
   --quality 90 \
-  --output "assets/concept-art/areas/${SLUG}.webp"
+  --output "$OUT"
