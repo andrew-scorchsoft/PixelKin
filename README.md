@@ -23,10 +23,11 @@ being built. What's already in the repo:
   against **the Hollowing** — a sympathetic, never-cartoonish movement that wants
   a gentle permanent dark. Full cast, lore, and the 14-area world map live in
   [`docs/world/`](docs/world/).
-- **Creatures & battles.** **151 original *kin*** across **10 elemental types**
+- **Creatures & battles.** **153 original *kin*** across **10 elemental types**
   (Ember, Tide, Verdant, Stone, Storm, Frost, Solar, Lunar, Light, Dark), with
   six stats, ~94 moves + 28 abilities, capture via **Lamps**, and evolution via
-  **Kindling**. The roster was curated from ~463 concepts and **empirically
+  **Kindling**. The roster was curated from ~463 concepts (151) and rounded out by
+  the third starter line (Cloverkit → Cloverhart), all **empirically
   balanced** with a Monte Carlo simulator (every type lands a fair win-rate). The
   data is the source of truth in [`src/game/data/`](src/game/data/); the design
   and tooling are in [`docs/mechanics/`](docs/mechanics/) and

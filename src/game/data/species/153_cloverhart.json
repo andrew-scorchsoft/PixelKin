@@ -1,0 +1,82 @@
+{
+  "id": 153,
+  "slug": "cloverhart",
+  "name": "Cloverhart",
+  "types": [
+    "Verdant"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "D",
+  "stats": {
+    "hp": 100,
+    "atk": 112,
+    "def": 95,
+    "spa": 48,
+    "spd": 78,
+    "spe": 65
+  },
+  "bst": 498,
+  "ability": "verdant_vigor",
+  "hidden_ability": "bramble",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 152,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "vine_tap"
+      },
+      {
+        "level": 9,
+        "move": "sleep_pollen"
+      },
+      {
+        "level": 13,
+        "move": "root_strike"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "bramble_crush"
+      },
+      {
+        "level": 40,
+        "move": "overgrowth"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "Cloverkit's kindled form: a great clover-crowned stag whose antlers bloom with year-round green even beneath the dark sky. It plants its hooves and shields the grove, taking blows that would fell lesser kin. The cub you raised became the forest's gentle guardian.",
+    "category": "Grove-Guardian Kin",
+    "size_cm": 165,
+    "weight_kg": 98,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 10,
+      "max": 12
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Tall, sturdy clover-crowned forest stag; broad antlers blooming with four-leaf clovers and moss, deep-green coat, cream chest, a mossy mane, planted hooves; calm guardian gaze. Bold readable silhouette at 64px. Deep verdant greens with gold-green clover accents and an ink outline.",
+    "palette": "Tall, sturdy clover-crowned forest stag; broad antlers blooming with four-leaf clovers and moss, deep-green coat, cream chest, a mossy mane, planted hooves; calm guardian gaze. Bold readable silhouette at 64px. Deep verdant greens with gold-green clover accents and an ink outline.",
+    "direction": "The satisfying payoff of raising your clover-cub \u2014 a majestic, immovable grove-guardian stag."
+  },
+  "provenance_concept_id": "X-CLOVERHART"
+}

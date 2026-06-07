@@ -1,9 +1,9 @@
-# PixelKin — The Dex (151)
+# PixelKin — The Dex (153)
 
 > Generated from `src/game/data/species.json` by `tools/balance/gen_docs.py`. Every entry is original (VISION.md). Lines show kindling chains (→).
 
-- **Total:** 151  |  **Tiers:** A:33 B:19 C:35 D:47 E:14 F:3
-- **Primary types:** Ember:16  Tide:16  Verdant:17  Stone:16  Storm:17  Frost:15  Solar:13  Lunar:13  Light:16  Dark:12
+- **Total:** 153  |  **Tiers:** A:33 B:20 C:35 D:48 E:14 F:3
+- **Primary types:** Ember:16  Tide:16  Verdant:19  Stone:16  Storm:17  Frost:15  Solar:13  Lunar:13  Light:16  Dark:12
 
 
 ## South — Tinderwick / coast (Ember, Tide)
@@ -44,6 +44,8 @@
 | 32 | **Lumplass** | Tide/Light | D | Special Wall | 498 | (from Lumpin) | 65 | 65cm/28kg | Lumpin's shell has fused into a radiant broad disc; it now clings to sea-cliff faces and… |
 | 33 | **Embralux** | Ember/Light | E | Special Sweeper | 558 |  | 24 | 160cm/52kg | An apex Ember/Light candidate for the south region's secret Lumenary approach — a great … |
 | 34 | **Tideveil** | Tide/Light | E | Special Wall | 558 |  | 24 | 1800cm/4200kg | The Tide Constellation Warden — a vast, semi-transparent sea-spirit that dwells in the T… |
+| 152 | **Cloverkit** | Verdant | B | Physical Bruiser | 356 | → Cloverhart (L18) | 175 | 45cm/6.5kg | A sprout-cub that wears a four-leaf clover like a tiny lantern-leaf; in the Long Dusk th… |
+| 153 | **Cloverhart** | Verdant | D | Physical Bruiser | 498 | (from Cloverkit) | 57 | 165cm/98kg | Cloverkit's kindled form: a great clover-crowned stag whose antlers bloom with year-roun… |
 
 ## East — Lowleaf & Cinderhead (Verdant, Stone)
 

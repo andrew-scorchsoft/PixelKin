@@ -4303,5 +4303,53 @@
   "_panel": 93.0,
   "dex_id": 151,
   "line_primary_type": "Solar"
+ },
+ {
+  "concept_id": "X-CLOVERKIT",
+  "name": "Cloverkit",
+  "types": [
+   "Verdant"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "B",
+  "region": "south",
+  "rarity": "common",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "X-CLOVERHART",
+   "kindle_trigger": "level 18"
+  },
+  "concept": "The third starter \u2014 the Verdant kin of the founding trio, given by the Tinderwick mentor alongside Vulpyre and Brinix. A plucky sprout-cub that wears a four-leaf clover like a tiny lantern-leaf, gathering what light remains in the Long Dusk and glowing a gentle green. Bulky and brave for its size, it plants itself between trouble and its friends.",
+  "visual": "Small leaf-fox sprout cub; a four-leaf clover sprouts from the top of its head, large pointed leaf-ears, lime-green face and cream underbelly, big friendly dark eyes, soft leafy tufts; faint seed-sparkles drift around it. Passes the black-blob test at 32px. Brand greens (#7bdc6b) with cream (#f5f0e1) and an ink (#1a1430) outline, ~12 colours.",
+  "size_cm": 45,
+  "weight_kg": 6.5,
+  "hook": "The lucky third starter \u2014 cosy, plucky, and grows into a steadfast guardian who never leaves a friend in the dark.",
+  "dex_id": 152,
+  "line_primary_type": "Verdant"
+ },
+ {
+  "concept_id": "X-CLOVERHART",
+  "name": "Cloverhart",
+  "types": [
+   "Verdant"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "D",
+  "region": "south",
+  "rarity": "rare",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "concept": "Cloverkit's kindled form \u2014 a great clover-crowned grove stag whose broad antlers bloom with year-round green even beneath the dark sky. It roots its hooves and shields the grove, soaking blows that would fell lesser kin and answering with heavy, patient strength. The cub you raised became the forest's gentle guardian.",
+  "visual": "Tall, sturdy clover-crowned forest stag; broad antlers blooming with four-leaf clovers and moss, deep-green coat, cream chest, a mossy mane, planted hooves; calm guardian gaze. Bold readable silhouette at 64px. Deep verdant greens with gold-green clover accents and an ink outline.",
+  "size_cm": 165,
+  "weight_kg": 98,
+  "hook": "The satisfying payoff of raising your clover-cub \u2014 a majestic, immovable grove-guardian stag.",
+  "dex_id": 153,
+  "line_primary_type": "Verdant"
  }
 ]
