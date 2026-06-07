@@ -421,6 +421,33 @@ cause of our old seam problem. So:
    Runtime stays plain gids — the cleverness is offline authoring tooling, like
    the balance pipeline. See `docs/world/level-design.md`.
 
+### Seamless fills & the two kinds of transition (hard-won)
+
+Three rules separate a polished map from a gridded one — proven on Tinderwick:
+
+1. **Fills must be borderless and banding-free.** Generate a fill as a *single
+   continuous texture* ("one uniform surface filling the frame, no tiles, no grid,
+   no border, no vignette") — **never ask for "a tile"** (the model draws a bordered
+   tile shape → a visible grid of rounded squares). Derive the 16×16 by a
+   *whole-image downscale* (kills the left-right gradient that bands), then run
+   `make_tileable` (toroidal — matches *opposite* edges). Tessellation-test it.
+2. **Edges seam-match along their run.** A straight edge repeats; if its
+   perpendicular ends don't agree you get cross-seams (a shoreline of separate
+   blobs). `make_tileable --axis h|v` fixes it (h = top/bottom edges, v = sides).
+3. **Two transition types, two methods.** A **flat** transition (path-on-grass,
+   tall-grass-on-grass) is *composited* deterministically from two uniform fills
+   (`tools/autotile/composite_overlay.py`) — identical fill everywhere, matching
+   junctions, an inherently seamless dithered edge; AI-painting flat path cells
+   instead gives mismatched dirt and a junction that doesn't line up. An **organic**
+   transition (foam shoreline, dense tree canopy, cliff face) is *AI-painted*
+   per-cell (the drawn detail matters), then its fill is swapped for the seamless
+   one and its edges `--axis`-matched.
+
+**Tall grass is a terrain BODY, not a fill.** A patch gets the full autotile set
+(via the compositor) so it meshes into one field with a soft fringe — not a grid of
+independent boxed clumps. The same is true of *every* special surface: grass, path,
+sand, water, tree-wall, cliff.
+
 ### Scene-mockup harvest (for cohesion + variety)
 
 For the richest, most cohesive sets, also generate a `scene-mockup`: one small

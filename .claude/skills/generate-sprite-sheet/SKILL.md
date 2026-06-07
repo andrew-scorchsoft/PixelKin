@@ -186,38 +186,72 @@ the tiles out of it.** Four scripts plus the autotile tooling:
 | `generate_block.py` | Paint a coherent **block**: a terrain family, an area scene mockup, or an animation strip (kept full-res). |
 | `slice_tileset.py` | Cut a block onto the 16px grid into tiles + a draft `tileset.manifest.json`; `--harvest` dedupes a scene; `--layout` tags autotile roles. |
 | `quantize_to_palette.py` | Snap tiles to the area's locked `working_palette` (kills colour drift / flatness). |
+| `make_tileable.py` | Toroidal seam fix for a uniform fill; `--axis h\|v` seam-matches a directional EDGE tile along its run. |
 | `render_map.py` | Composite a finished map to a PNG for **by-eye QA** against the handheld bar. |
-| `tools/autotile/` | Expand a map's `terrain` layer into the right corner/edge/inner gids (blob autotiling). |
+| `validate_map.py` | Automated gate: layers / autotile-vocab / **meshing** / decoration / border. Must PASS. |
+| `tools/autotile/expand.mjs` | Expand a map's `terrain` layer into corner/edge/strip gids (blob autotiling; off-map = continuation). |
+| `tools/autotile/composite_overlay.py` | Build a seamless 9-slice **+ strips** for a FLAT transition (dirt/blades over grass) from two uniform fills. |
+| `tools/maps/build_tinderwick.py` | **Reference area builder** — copy it: procedural layout + the full tileset/seam pipeline, gold standard. |
 
-### A) Terrain family → autotile set (clean corners & edges) — PROVEN RECIPE
+### A) Autotile terrains — the seamless standard (PROVEN, hard-won)
 
-The reliable way to get a CORRECT 9-slice (the model can't free-paint a valid
-47-blob, but it follows per-cell instructions well — verified by an autotiled
-lake with a continuous wrapping shoreline): describe the **9 cells explicitly** as
-a 3×3 `tile-sheet`, then slice with the `edges9` layout (which tags the roles).
+Every special surface in an area (grass, **tall-grass**, path, sand, water,
+forest/tree-wall, cliff) is an autotile **BODY** — a `terrain` presence layer
+meshed by `tools/autotile/expand.mjs`, **never** independent fill tiles plonked
+down (that's what makes tall grass read as boxed clumps instead of a field). Two
+kinds of terrain, two methods — pick by whether the transition is flat or organic:
+
+**FLAT transition (path-on-grass, tall-grass-on-grass) → COMPOSITE, do NOT AI-paint.**
+AI-painting flat path cells gives mismatched dirt, per-tile banding, and a junction
+tile that doesn't match the strips. Build the whole set deterministically from two
+**uniform fills** with `tools/autotile/composite_overlay.py`:
+
+```bash
+# dirt16/blades16/grass16 = uniform fills (see "Seamless fills" below), make_tileable'd
+python tools/autotile/composite_overlay.py /tmp/dirt16.png   /tmp/grass16.png /tmp/path_auto --depth 3
+python tools/autotile/composite_overlay.py /tmp/blades16.png /tmp/grass16.png /tmp/tg_auto   --depth 3
+```
+
+→ a seamless 9-slice **+ strip_h/strip_v** with identical fill everywhere (so
+crossroads/junctions match), a subtle dithered grass edge, inherently tileable
+(16 % 4 == 0). Tall grass meshes into one body; the path connects cleanly.
+
+**ORGANIC transition (foam shoreline, dense tree canopy, cliff face) → AI per-cell 9-slice.**
+Here the drawn detail matters. Describe the **9 cells explicitly** as a 3×3
+`tile-sheet`, slice with `edges9`, then **swap in the seamless fill** and
+**seam-match the edges** (below):
 
 ```bash
 GEN=.claude/skills/generate-sprite-sheet/scripts
-# 1. Paint the 9-slice, one cell per piece (foam shore on the OUTWARD side(s) only):
-./venv/bin/python $GEN/generate_block.py --type tile-sheet --cols 3 --rows 3 \
-  --area tinderwick --palette "$PAL" --output /tmp/water9.png \
-  --subject "a 9-piece WATER SHORELINE set, rims aligned so cells abut: \
-(1) foam shore TOP+LEFT; (2) shore TOP; (3) TOP+RIGHT; (4) LEFT; (5) plain water; \
-(6) RIGHT; (7) BOTTOM+LEFT; (8) BOTTOM; (9) BOTTOM+RIGHT"
-# 2. Slice with the edges9 layout -> tiles tagged corner_nw/edge_n/.../fill + terrain:
-./venv/bin/python $GEN/slice_tileset.py /tmp/water9.png --out assets/tilesets/water_blob \
-  --cols 3 --rows 3 --layout edges9 --terrain water
-# 3. make_tileable the FILL cell only; eyeball a meshing test (assemble a region and tile it).
-# 4. pack_tileset.py carries terrain+autotile into the sidecar.
+$GEN/generate_block.py --type tile-sheet --cols 3 --rows 3 --area $A --palette "$PAL" \
+  --output /tmp/shore.png --subject "a 9-piece WATER SHORELINE: wet sand OUTWARD, a \
+soft foam line, calm water inward; (1) corner NW; (2) top edge; ... (9) corner SE"
+$GEN/slice_tileset.py /tmp/shore.png --out .../water_blob --cols 3 --rows 3 --layout edges9 --terrain water
+cp /tmp/water_fill.png .../water_blob/04_fill.png   # use the uniform CALM-water fill, not the painted cell
 ```
 
-Per area you need a set like this for **ground/grass, tall-grass, sand, water,
-and cliffs/ledges** (the cliff set is a *vertical* one — walkable lit top vs
-colliding face + corners; describe those pieces per cell too). For inner corners
-(the full 13-piece) add 4 more cells describing the concave notches.
+The cliff set is a *vertical* one (walkable lit top vs colliding face + corners).
 
-Alternative for organic terrains: `--type terrain-block` paints an irregular
-patch and you `--harvest`/hand-tag the cells — looser, but good for variety.
+**Seamless fills — applies to EVERY fill (kills "gridded / per-tile border / banding"):**
+1. Generate the fill as a **single CONTINUOUS texture**: *"one uniform surface
+   filling the whole frame, NO tiles, NO grid/cells, NO border/outline, NO
+   vignette, NO bright corner."* Asking for *"a tile"* makes the model draw a
+   bordered tile shape → the janky grid. (Google may return `IMAGE_RECITATION` on
+   plain ground prompts — rephrase, or fall back to `--provider openai`.)
+2. Derive the 16px tile by a **whole-image downscale** (`resize((16,16))`) —
+   maximally uniform; this kills the left-right gradient that causes vertical
+   banding. Keep faint grain (e.g. tall-grass blades) only via a 32px→center-crop-16.
+3. `make_tileable.py <fill>` — **toroidal**: matches *opposite* edges so the seam
+   vanishes when tiled. (The old 1px clamp left left≠right and a faint grid stayed.)
+
+**Edges must seam-match along their run.** An edge tile repeats (edge_n/edge_s
+left↔right, edge_w/edge_e top↔bottom); if its perpendicular ends don't agree it
+shows cross-seams (the shoreline-of-blobs bug). Fix with
+`make_tileable.py <edge> --axis h|v` (h = top/bottom edges, v = side edges). The
+area builder applies this per-edge automatically.
+
+**Always** tessellation-test a fill (tile it 5×5) *and* `render_map`+`validate_map`
+the area before calling it done — verify, don't assume.
 
 Then **author the map with a `terrain` layer** (a 0/1 presence grid tagged
 `terrain` + `set`) instead of hand-placing corner gids, and expand it:
@@ -354,6 +388,19 @@ docs (`docs/world/atlas.md`, `docs/world/README.md`, and the master
 
 This recipe is **proven** — it built the first three sets (Tinderwick town, Dimglass Coast,
 the cottage interior). Follow it and any future area is turnkey.
+
+> **Gold standard (start here, don't re-derive it).** The fastest correct path is to
+> **copy `tools/maps/build_tinderwick.py`** — the reference area builder — and adapt its
+> layout. It already encodes everything below at the quality bar: every surface an autotile
+> **body** (§A); **continuous-texture → whole-downscale → `make_tileable`** fills (no
+> banding/grid); **`composite_overlay.py`** for FLAT transitions (path, tall-grass) and AI
+> per-cell only for ORGANIC ones (shoreline foam, tree canopy, cliffs); per-edge
+> `--axis` seam-matching; a 2-deep **tree-wall border** that runs off the map edges; a
+> 3-row beach (edge/fill/edge) + a big sea; whole-object buildings/lamps/trees on the
+> object layer. Then `expand.mjs` → strip terrain layers → `render_map` + `validate_map`
+> (PASS) → tessellation-test any fill you doubt. A new area is: new layout + new
+> area-specific *organic* sets (its shoreline/cliffs/canopy), reusing the compositor and
+> seam tooling unchanged.
 
 ### The big cohesion win: a SHARED overworld vocabulary
 

@@ -334,6 +334,15 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   quantising flattens it). Always `make_tileable.py` the fills + tessellation-test, then
   `render_map.py <map> --output …` to eyeball the whole map against the bar (docs/art-style.md
   §11–§15). Autotile corners/edges/inner = offline `tools/autotile/` over a map `terrain` layer.
+- **New area? Copy `tools/maps/build_tinderwick.py` — it's the gold-standard builder.** It
+  encodes the seamless-tiling standard so you don't re-derive it (it was a multi-pass climb):
+  every surface is an autotile **body**; fills = continuous-texture → *whole-image* downscale
+  → `make_tileable` (toroidal, kills banding) — **never ask the model for "a tile"** (it draws
+  a bordered square → a grid); **FLAT** transitions (path/tall-grass on grass) via
+  `tools/autotile/composite_overlay.py`, **ORGANIC** ones (shoreline foam, tree canopy, cliffs)
+  AI per-cell then fill-swap + `make_tileable --axis h|v` per edge; off-map = continuation
+  (terrain runs off the edge, no border). Finish: `expand.mjs` → strip terrain layers →
+  `render_map` + `validate_map` (must PASS). Recipe: SKILL.md §A + "turnkey recipe".
 - **The device shell screen is locked to 3:2.** `shells.css` sizes `#game-root` to the
   largest 3:2 box that fits, so `Scale.FIT` never pillarboxes (no black side bars). The
   `plain`/`overlay` shells are intentionally full-bleed and still letterbox.
