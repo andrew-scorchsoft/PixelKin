@@ -328,12 +328,21 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   spin up a transient `InputController` — they `destroy()` it on close; do the same if
   you add one.
 - **Actors prefer real walk-sheets, fall back to placeholder.** Human walk-sheets are
-  3×4 / 32×32 (`HUMAN_WALK_FRAMES` in `entities/Actor.ts`), packed from `assets/trainers/`
-  by `pack_trainers.py` → `public/assets/sprites/trainers/` + manifest, loaded eagerly in
-  `PreloadScene`. `Player`/`Npc` use the real sheet if its texture loaded, else the runtime
-  coloured-box placeholder. Map a new NPC `sprite` key → a packed stem in `Npc.SPRITE_SHEETS`.
+  4×4 / 32×32 (`HUMAN_WALK_FRAMES` in `entities/Actor.ts`: rows down/left/right/up, cols
+  idle/contact-L/passing/contact-R), packed from `assets/trainers/` by `pack_trainers.py` →
+  `public/assets/sprites/trainers/` + manifest, loaded eagerly in `PreloadScene`.
+  `Player`/`Npc` use the real sheet if its texture loaded, else the runtime coloured-box
+  placeholder. Map a new NPC `sprite` key → a packed stem in `Npc.SPRITE_SHEETS`.
   (Creature *battle/overworld* sprites are a separate path — `CreatureSprites.ts` — still
   unwired into title/starter/battle, so those previews are still placeholder squares.)
+- **Character animation is 3 layered sheets, not one big sheet** (docs/art-style.md §A/§A2/§A3):
+  layer 1 = the 4×4 walk sheet (required; *running* is free — same frames, faster, so don't
+  expand it); layer 2 = ONE shared `emote` bubble sheet (`assets/effects/emotes.png`, reused
+  by all characters); layer 3 = an OPTIONAL per-character `human-actions` sheet
+  (`<stem>_actions.png`: raise-lamp/toss/gift/sit/hurt, mainly the player). `Actor.playAction()`
+  / `Actor.showEmote()` drive layers 3/2; `pack_trainers.py` packs all three + the manifest.
+  **Build an action sheet from single `human-pose` gens + `assemble_action_sheet.py`** — never
+  one-shot the 8-cell grid (the model subdivides cells and repeats stances).
 - **Field tiles need a seamless pass.** Image gen bakes a 1–2px lighter rim onto tiles that
   tiles into a visible grid; after generating a uniform ground/floor/path tile, run
   `make_tileable.py <tile.png>` (clamps the outer ring to its neighbour) and eyeball a 3×3

@@ -8,6 +8,7 @@
  * by string ref (e.g. EventTrigger.ref = 'sign.tinderwick_dock').
  */
 import type { TileCoord, Facing, WorldFlag } from '@game/data/world/types';
+import type { ActionName, EmoteName } from '@game/entities/Actor';
 
 // ---- Dialogue ---------------------------------------------------------------
 
@@ -32,6 +33,8 @@ export type CutsceneStep =
   | { op: 'wait'; ms: number }
   | { op: 'move'; actor: ActorRef; to: TileCoord }
   | { op: 'face'; actor: ActorRef; facing: Facing }
+  | { op: 'emote'; actor: ActorRef; emote: EmoteName; holdMs?: number } // pop a bubble above an actor
+  | { op: 'action'; actor: ActorRef; action: ActionName; holdMs?: number } // play a one-shot pose
   | { op: 'fade'; dir: 'out' | 'in'; ms?: number }
   | { op: 'setFlag'; flag: WorldFlag; value?: boolean }
   | { op: 'giveStarter' } // run StarterSelect, add chosen kin to the party

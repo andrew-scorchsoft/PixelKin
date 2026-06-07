@@ -8,11 +8,21 @@ import {
   creatureTextureKey,
   type CreatureView,
 } from '@game/systems/sprites/CreatureSprites';
+import { ACTIONS_KEY_SUFFIX, EMOTE_TEXTURE } from '@game/entities/Actor';
 
+interface SheetEntry {
+  path: string;
+  width: number;
+  height: number;
+  cols?: number;
+  rows?: number;
+}
 interface TrainerManifest {
   frame_width: number;
   frame_height: number;
-  trainers: Record<string, { path: string; width: number; height: number }>;
+  trainers: Record<string, SheetEntry & { actions?: SheetEntry }>;
+  /** One shared emote/bubble sheet, popped above any character (Actor.showEmote). */
+  emotes?: SheetEntry;
 }
 
 /**
@@ -68,12 +78,16 @@ export class PreloadScene extends Phaser.Scene {
     // by master stem; Player/Npc load them by that key and fall back to a runtime
     // placeholder if one is missing. Adding a trainer = re-pack, no code change.
     const trainers = trainerManifest as TrainerManifest;
+    const frame = { frameWidth: trainers.frame_width, frameHeight: trainers.frame_height };
     for (const [key, t] of Object.entries(trainers.trainers)) {
-      this.load.spritesheet(key, t.path, {
-        frameWidth: trainers.frame_width,
-        frameHeight: trainers.frame_height,
-      });
+      this.load.spritesheet(key, t.path, frame);
+      // Optional layer-3 action sheet (raise-lamp/toss/gift/sit/hurt), keyed
+      // `<key>_actions` — same 32×32 frame, fewer cells. Actor swaps to it for
+      // one-shot event poses (see entities/Actor.ts).
+      if (t.actions) this.load.spritesheet(`${key}${ACTIONS_KEY_SUFFIX}`, t.actions.path, frame);
     }
+    // Layer-2 shared emote sheet — one texture, popped above any character.
+    if (trainers.emotes) this.load.spritesheet(EMOTE_TEXTURE, trainers.emotes.path, frame);
 
     // Whole-structure object sprites (buildings, big trees, lamps), packed by
     // pack_objects.py. Loaded as plain images keyed by name; MapRenderer places

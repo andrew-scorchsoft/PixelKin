@@ -4,7 +4,7 @@
  * WorldScene can run encounter / trigger / warp checks for the tile just entered.
  */
 import Phaser from 'phaser';
-import { Actor, ensurePlaceholderCharacter, HUMAN_WALK_FRAMES } from './Actor';
+import { Actor, actionTextureKey, ensurePlaceholderCharacter, HUMAN_WALK_FRAMES } from './Actor';
 import { InputController, InputAction } from '@game/systems/input/InputController';
 import type { Facing } from '@game/data/world/types';
 import { COLORS } from '@game/config';
@@ -24,7 +24,9 @@ export class Player extends Actor {
     // Prefer the real walk-sheet; fall back to the runtime placeholder if the
     // art failed to load, so the world stays playable either way.
     if (scene.textures.exists(PLAYER_SHEET)) {
-      super(scene, tx, ty, facing, PLAYER_SHEET, HUMAN_WALK_FRAMES);
+      // Pass the layer-3 action sheet too (raise-lamp/toss/gift/sit/hurt), if it
+      // loaded — enables `playAction` for cutscene poses.
+      super(scene, tx, ty, facing, PLAYER_SHEET, HUMAN_WALK_FRAMES, actionTextureKey(PLAYER_SHEET));
     } else {
       ensurePlaceholderCharacter(scene, 'player_placeholder', COLORS.diamond);
       super(scene, tx, ty, facing, 'player_placeholder');

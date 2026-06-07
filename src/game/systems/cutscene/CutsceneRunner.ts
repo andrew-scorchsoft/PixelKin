@@ -84,6 +84,14 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       ctx.getActor(step.actor)?.setFacing(step.facing);
       return true;
     }
+    case 'emote': {
+      await ctx.getActor(step.actor)?.showEmote(step.emote, step.holdMs);
+      return true;
+    }
+    case 'action': {
+      await ctx.getActor(step.actor)?.playAction(step.action, step.holdMs);
+      return true;
+    }
     case 'fade':
       if (step.dir === 'out') await fadeOut(scene, step.ms);
       else await fadeIn(scene, step.ms);

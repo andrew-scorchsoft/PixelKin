@@ -7,12 +7,26 @@
     "player_indi": {
       "path": "assets/sprites/trainers/player_indi.webp",
       "width": 128,
-      "height": 128
+      "height": 128,
+      "actions": {
+        "path": "assets/sprites/trainers/player_indi_actions.webp",
+        "width": 128,
+        "height": 64,
+        "cols": 4,
+        "rows": 2
+      }
     },
     "professor_fenn": {
       "path": "assets/sprites/trainers/professor_fenn.webp",
       "width": 128,
       "height": 128
     }
+  },
+  "emotes": {
+    "path": "assets/sprites/trainers/emotes.webp",
+    "width": 128,
+    "height": 64,
+    "cols": 4,
+    "rows": 2
   }
 }
