@@ -64,6 +64,11 @@ def resolve_default_soundfont() -> str | None:
     found = sorted(SOUNDFONT_DIR.glob("*.sf2"))
     return str(found[0]) if found else None
 DRUM_CHANNEL = 9  # GM channel 10 (0-indexed)
+# Pitch-bend range (± semitones) our writer/synth agree on for glide "sweeps".
+# Wide enough for octave-plus SFX slides; written into the .mid as a text meta.
+BEND_RANGE = 24
+BEND_STEPS = 24  # bend control points emitted across a glide note
+NOISE_DENSITY = 8.0  # pitched-noise grain: new random per (freq * this) per second
 
 # Quarter-note-relative durations for the compact note DSL.
 DUR_BEATS = {"w": 4.0, "h": 2.0, "q": 1.0, "e": 0.5, "s": 0.25}
@@ -76,6 +81,16 @@ NOTE_SEMITONE = {"C": 0, "D": 2, "E": 4, "F": 5, "G": 7, "A": 9, "B": 11}
 def load_profiles() -> dict:
     with PROFILES_PATH.open() as f:
         return json.load(f)
+
+
+def _meta_text(s: str) -> str:
+    """MIDI meta strings are latin-1; titles/track-names often carry em-dashes or
+    curly quotes. Normalise the common offenders, then drop anything still
+    un-encodable so a stray glyph never crashes `build`."""
+    s = (s.replace("—", "-").replace("–", "-")
+          .replace("‘", "'").replace("’", "'")
+          .replace("“", '"').replace("”", '"'))
+    return s.encode("latin-1", "replace").decode("latin-1")
 
 
 # --------------------------------------------------------------------------- #
@@ -172,12 +187,20 @@ def _parse_dsl(text: str, default_octave: int, drums: bool, drum_map: dict) -> l
         if body in ("r", "-", ""):
             out.append({"midi": [], "beats": beats, "vel": 0})
             continue
+        # Pitch GLIDE (the chip "sweep"): "C6~C4" bends from the first pitch to
+        # the second over the note's duration. Monophonic; not for drums.
+        glide_to = None
+        if not drums and "~" in body:
+            head, _, tail = body.partition("~")
+            body = head
+            glide_to = pitch_to_midi(tail, default_octave)
         parts = body.split("+")
         if drums:
             midis = [_drum_gm(p, drum_map) for p in parts]
         else:
             midis = [pitch_to_midi(p, default_octave) for p in parts]
-        out.append({"midi": midis, "beats": beats, "vel": vel if vel is not None else 96})
+        out.append({"midi": midis, "beats": beats,
+                    "vel": vel if vel is not None else 96, "glide": glide_to})
     return out
 
 
@@ -191,11 +214,13 @@ def _parse_list(items: list, default_octave: int, drums: bool, drum_map: dict) -
             out.append({"midi": [], "beats": beats, "vel": 0})
             continue
         plist = pitch if isinstance(pitch, list) else [pitch]
+        glide = it.get("glide_to", it.get("glide"))
+        glide_to = pitch_to_midi(glide, default_octave) if glide and not drums else None
         if drums:
             midis = [_drum_gm(p, drum_map) for p in plist]
         else:
             midis = [pitch_to_midi(p, default_octave) for p in plist]
-        out.append({"midi": midis, "beats": beats, "vel": vel})
+        out.append({"midi": midis, "beats": beats, "vel": vel, "glide": glide_to})
     return out
 
 
@@ -224,12 +249,13 @@ def build_midi(spec: dict, profiles: dict) -> tuple[object, dict]:
 
     # Meta track: name, tempo, time signature, era tag, loop markers.
     meta = mido.MidiTrack()
-    meta.append(mido.MetaMessage("track_name", name=title, time=0))
+    meta.append(mido.MetaMessage("track_name", name=_meta_text(title), time=0))
     meta.append(mido.MetaMessage("set_tempo", tempo=mido.bpm2tempo(tempo), time=0))
     meta.append(
         mido.MetaMessage("time_signature", numerator=ts[0], denominator=ts[1], time=0)
     )
     meta.append(mido.MetaMessage("text", text=f"era={era_key}", time=0))
+    meta.append(mido.MetaMessage("text", text=f"bendrange={BEND_RANGE}", time=0))
     if loop:
         meta.append(mido.MetaMessage("marker", text="loopStart", time=0))
     mid.tracks.append(meta)
@@ -271,13 +297,15 @@ def build_midi(spec: dict, profiles: dict) -> tuple[object, dict]:
         # Encode the chip voice in the track name as "name::voice" so render can
         # recover the exact timbre the composer chose.
         trk.append(
-            mido.MetaMessage("track_name", name=f"{tdef.get('name', voice_name)}::{voice_name}", time=0)
+            mido.MetaMessage("track_name", name=_meta_text(f"{tdef.get('name', voice_name)}::{voice_name}"), time=0)
         )
         if not is_drums:
             trk.append(mido.Message("program_change", channel=chan, program=vinfo["gm"], time=0))
 
         # Absolute-tick event list, then emit as deltas.
-        ev: list[tuple[int, int, int, int]] = []  # (tick, kind 0=off/1=on, note, vel)
+        # kind: 0=note_off, 1=note_on, 2=pitchwheel (the `note` slot carries the
+        # bend value -8192..8191 instead of a pitch).
+        ev: list[tuple[int, int, int, int]] = []
         cur = 0
         for e in events:
             dur = max(1, int(round(e["beats"] * ppq)))
@@ -285,22 +313,44 @@ def build_midi(spec: dict, profiles: dict) -> tuple[object, dict]:
                 if len(e["midi"]) > 1 and not is_drums:
                     used_chord = True
                 vel = max(1, min(127, int(round(e["vel"] * gain))))
-                for n in e["midi"]:
-                    note = n if is_drums else max(0, min(127, n + transpose))
-                    ev.append((cur, 1, note, vel))
-                    ev.append((cur + dur, 0, note, 0))
-                    if not is_drums:
-                        spans.append((cur, cur + dur))
+                glide = e.get("glide")
+                if glide is not None and not is_drums:
+                    # Monophonic glide: hold the start pitch and bend it to the
+                    # target across the note (the hardware "sweep").
+                    start_n = max(0, min(127, e["midi"][0] + transpose))
+                    semis = max(0, min(127, glide + transpose)) - start_n
+                    ev.append((cur, 1, start_n, vel))
+                    # Ramp the wheel across the note, landing the final point one
+                    # tick INSIDE the note so the post-note reset (below) doesn't
+                    # bleed into this note's own release tail.
+                    for k in range(BEND_STEPS + 1):
+                        frac = k / BEND_STEPS
+                        bend = int(round(semis * frac / BEND_RANGE * 8192))
+                        ev.append((cur + int(round(frac * (dur - 1))), 2,
+                                   max(-8192, min(8191, bend)), 0))
+                    ev.append((cur + dur, 0, start_n, 0))
+                    ev.append((cur + dur, 2, 0, 0))  # reset wheel for later notes
+                    spans.append((cur, cur + dur))
+                else:
+                    for n in e["midi"]:
+                        note = n if is_drums else max(0, min(127, n + transpose))
+                        ev.append((cur, 1, note, vel))
+                        ev.append((cur + dur, 0, note, 0))
+                        if not is_drums:
+                            spans.append((cur, cur + dur))
             cur += dur
         total_ticks = max(total_ticks, cur)
 
-        ev.sort(key=lambda x: (x[0], x[1]))  # off before on at same tick
+        ev.sort(key=lambda x: (x[0], x[1]))  # off(0) before on(1) before bend(2)
         last = 0
         for tick, kind, note, vel in ev:
             delta = tick - last
             last = tick
-            msg = "note_on" if kind == 1 else "note_off"
-            trk.append(mido.Message(msg, channel=chan, note=note, velocity=vel, time=delta))
+            if kind == 2:
+                trk.append(mido.Message("pitchwheel", channel=chan, pitch=note, time=delta))
+            else:
+                msg = "note_on" if kind == 1 else "note_off"
+                trk.append(mido.Message(msg, channel=chan, note=note, velocity=vel, time=delta))
         mid.tracks.append(trk)
 
     if loop:
@@ -414,7 +464,19 @@ def _osc(timbre: str, phase, duty: float):
     return np.sin(2 * np.pi * frac).astype(np.float32)
 
 
-def _synth_note(freq, dur_s, vel, voice, voices, envelopes):
+def _bend_freq(base_freq, bend, t):
+    """Per-sample frequency for a glide: interpolate the bend curve (rel_sec ->
+    semitones) over t and apply it to the base frequency. np.interp holds the
+    endpoint values outside the curve's range, so the pitch settles on target."""
+    import numpy as np
+
+    xs = np.array([p[0] for p in bend], dtype=np.float32)
+    ys = np.array([p[1] for p in bend], dtype=np.float32)
+    semis = np.interp(t, xs, ys).astype(np.float32)
+    return (base_freq * (2.0 ** (semis / 12.0))).astype(np.float32)
+
+
+def _synth_note(freq, dur_s, vel, voice, voices, envelopes, bend=None):
     import numpy as np
 
     vinfo = voices[voice]
@@ -425,15 +487,27 @@ def _synth_note(freq, dur_s, vel, voice, voices, envelopes):
     n_total = n_main + n_rel
     t = np.arange(n_total, dtype=np.float32) / SAMPLE_RATE
 
-    # Vibrato via phase integration when needed; linear phase otherwise.
+    # Instantaneous frequency: a glide curve (pitch bend) wins, else vibrato,
+    # else a flat tone. Phase integrates frequency so glides slide smoothly.
     vd, vr = env_def["vib_depth"], env_def["vib_rate"]
-    if vd > 0 and vr > 0:
+    if bend:
+        phase = np.cumsum(_bend_freq(freq, bend, t)) / SAMPLE_RATE
+    elif vd > 0 and vr > 0:
         f_t = freq * (2.0 ** (vd / 12.0 * np.sin(2 * np.pi * vr * t)))
         phase = np.cumsum(f_t) / SAMPLE_RATE
     else:
         phase = freq * t
 
-    wave_buf = _osc(vinfo["timbre"], phase, vinfo["duty"])
+    if vinfo["timbre"] == "noise":
+        # Pitched noise via sample-and-hold driven by the (possibly gliding)
+        # phase: higher pitch = finer grain = brighter hiss, so a glide makes the
+        # noise sweep — the iconic chip whoosh / zap / wind.
+        idx = np.floor(phase * NOISE_DENSITY).astype(np.int64)
+        idx -= int(idx.min())
+        randoms = np.random.uniform(-1.0, 1.0, int(idx.max()) + 2).astype(np.float32)
+        wave_buf = randoms[idx]
+    else:
+        wave_buf = _osc(vinfo["timbre"], phase, vinfo["duty"])
 
     a = int(env_def["a"] * SAMPLE_RATE)
     d = int(env_def["d"] * SAMPLE_RATE)
@@ -537,6 +611,8 @@ def parse_midi_notes(mid) -> tuple[list[dict], float, str | None, bool, float]:
     era_tag: str | None = None
     is_loop = False
     loop_end_tick = 0
+    bend_range = float(BEND_RANGE)
+    bends: dict[int, list[tuple[int, int]]] = {}  # channel -> [(tick, raw_pitch)]
     for trk in mid.tracks:
         at = 0
         for msg in trk:
@@ -545,11 +621,20 @@ def parse_midi_notes(mid) -> tuple[list[dict], float, str | None, bool, float]:
                 tempo_changes.append((at, msg.tempo))
             elif msg.type == "text" and msg.text.startswith("era="):
                 era_tag = msg.text.split("=", 1)[1]
+            elif msg.type == "text" and msg.text.startswith("bendrange="):
+                try:
+                    bend_range = float(msg.text.split("=", 1)[1])
+                except ValueError:
+                    pass
+            elif msg.type == "pitchwheel":
+                bends.setdefault(msg.channel, []).append((at, msg.pitch))
             elif msg.type == "marker" and msg.text == "loopStart":
                 is_loop = True
             elif msg.type == "marker" and msg.text == "loopEnd":
                 loop_end_tick = max(loop_end_tick, at)
     tempo_changes.sort()
+    for ch in bends:
+        bends[ch].sort()
     if not tempo_changes:
         tempo_changes = [(0, 500000)]
 
@@ -563,6 +648,26 @@ def parse_midi_notes(mid) -> tuple[list[dict], float, str | None, bool, float]:
             prev_tick, prev_tempo = ct, tp
         sec += (tick - prev_tick) / ppq * (prev_tempo / 1_000_000.0)
         return sec
+
+    def note_bend(channel: int, start_tick: int, end_tick: int):
+        """Bend automation overlapping a note -> [(rel_sec, semitones)] or None
+        (None = no glide on this note's channel)."""
+        ch = bends.get(channel)
+        if not ch:
+            return None
+        start_sec = tick_to_sec(start_tick)
+        val0 = 0
+        for tk, raw in ch:
+            if tk <= start_tick:
+                val0 = raw
+            else:
+                break
+        pts = [(0.0, val0 / 8192.0 * bend_range)]
+        pts += [(tick_to_sec(tk) - start_sec, raw / 8192.0 * bend_range)
+                for tk, raw in ch if start_tick < tk < end_tick]
+        if len(pts) == 1 and abs(pts[0][1]) < 1e-6:
+            return None
+        return pts
 
     notes: list[dict] = []
     end_tick = 0
@@ -595,19 +700,22 @@ def parse_midi_notes(mid) -> tuple[list[dict], float, str | None, bool, float]:
                             "vel": vel,
                             "voice": voice,
                             "channel": msg.channel,
+                            "bend": note_bend(msg.channel, start_tick, at),
                         }
                     )
     loop_end_sec = tick_to_sec(loop_end_tick) if loop_end_tick else 0.0
     return notes, tick_to_sec(end_tick), era_tag, is_loop, loop_end_sec
 
 
-def _body_and_tail(last_sec: float, is_loop: bool, loop_end_sec: float) -> tuple[float, float]:
+def _body_and_tail(last_sec: float, is_loop: bool, loop_end_sec: float,
+                   tail: float = 0.6) -> tuple[float, float]:
     """One self-contained pass = body_sec; tail_sec rings past it. A loop body is
     its loopEnd (incl. trailing rests) with NO tail so it tiles seamlessly; a
-    one-shot is up to its last note with a short ring-out tail."""
+    one-shot is up to its last note with a `tail`-second ring-out (shorter for
+    tight SFX blips, longer for sparkle/chime cues)."""
     if is_loop:
         return (loop_end_sec if loop_end_sec > 0 else last_sec), 0.0
-    return last_sec, 0.6
+    return last_sec, tail
 
 
 def _finalize(buf, body_sec: float, tail_sec: float, loops: int, fade_out: float):
@@ -632,7 +740,7 @@ def _finalize(buf, body_sec: float, tail_sec: float, loops: int, fade_out: float
 
 
 def render_audio(mid_path: Path, profiles: dict, *, reverb: float | None,
-                 loops: int, fade_out: float) -> "object":
+                 loops: int, fade_out: float, tail: float | None = None) -> "object":
     import mido
     import numpy as np
 
@@ -645,10 +753,12 @@ def render_audio(mid_path: Path, profiles: dict, *, reverb: float | None,
     if not notes:
         raise SystemExit(f"no notes found in {mid_path}")
 
+    era = profiles["eras"].get(era_tag, {}) if era_tag else {}
     if reverb is None:
-        reverb = profiles["eras"].get(era_tag, {}).get("reverb", 0.0) if era_tag else 0.0
+        reverb = era.get("reverb", 0.0)
+    use_tail = tail if tail is not None else era.get("tail", 0.6)
 
-    body_sec, tail = _body_and_tail(last_sec, is_loop, loop_end_sec)
+    body_sec, tail = _body_and_tail(last_sec, is_loop, loop_end_sec, use_tail)
     # Scratch buffer with headroom for note releases and the reverb tail.
     work_len = int((max(body_sec, last_sec) + tail + 1.0) * SAMPLE_RATE)
     buf = np.zeros(work_len, dtype=np.float32)
@@ -659,7 +769,7 @@ def render_audio(mid_path: Path, profiles: dict, *, reverb: float | None,
         else:
             voice = nt["voice"] if nt["voice"] in voices else "pulse25"
             seg = _synth_note(_midi_to_freq(nt["gm_note"]), nt["dur"], nt["vel"],
-                              voice, voices, envelopes)
+                              voice, voices, envelopes, bend=nt.get("bend"))
         start = int(nt["start"] * SAMPLE_RATE)
         endp = min(work_len, start + len(seg))
         buf[start:endp] += seg[: endp - start]
@@ -672,7 +782,8 @@ def render_audio(mid_path: Path, profiles: dict, *, reverb: float | None,
 
 
 def render_soundfont_tsf(mid_path: Path, soundfont: str, profiles: dict, *,
-                         loops: int, fade_out: float, gain: float) -> "object":
+                         loops: int, fade_out: float, gain: float,
+                         tail: float | None = None) -> "object":
     """Lush render path: synthesize the .mid through a real SoundFont using the
     pure-pip tinysoundfont engine (no system libs). Same loop/tail discipline as
     the chip engine, so SNES/hifi showpieces drop straight into the game."""
@@ -688,8 +799,10 @@ def render_soundfont_tsf(mid_path: Path, soundfont: str, profiles: dict, *,
         )
 
     mid = mido.MidiFile(mid_path)
-    _, last_sec, _, is_loop, loop_end_sec = parse_midi_notes(mid)
-    body_sec, tail = _body_and_tail(last_sec, is_loop, loop_end_sec)
+    _, last_sec, era_tag, is_loop, loop_end_sec = parse_midi_notes(mid)
+    era = profiles["eras"].get(era_tag, {}) if era_tag else {}
+    use_tail = tail if tail is not None else era.get("tail", 0.6)
+    body_sec, tail = _body_and_tail(last_sec, is_loop, loop_end_sec, use_tail)
 
     synth = tinysoundfont.Synth(gain=gain, samplerate=SAMPLE_RATE)
     synth.sfload(str(soundfont))
@@ -759,7 +872,7 @@ Song spec (JSON) — Claude composes this; `build` renders it to .mid.
 
 {
   "title": "Sunhaven Route",
-  "era": "gbc",                 // nes | gb | gbc | snes | gba | hifi
+  "era": "gbc",                 // nes | gb | gbc | snes | gba | hifi | sfx
   "tempo": 132,                 // BPM
   "time_signature": [4, 4],
   "ppq": 480,                   // MIDI ticks per quarter (480 is plenty)
@@ -794,6 +907,9 @@ NOTE DSL (the `notes` string):
   set dur  a duration on its own ("e", "q.") sets the running duration for the
            notes after it:  "e kick hat snare"  -> three eighth-note hits.
   chord    join with '+'  ->  C4+E4+G4q   (only on chord-capable eras: snes/gba/hifi)
+  glide    join with '~'  ->  C6~C4s   pitch SLIDES from C6 down to C4 over the
+           note (the chip "sweep"); monophonic. On the 'noise' voice it sweeps the
+           hiss (whoosh/zap). Up=jump/positive, down=fall/zap. Great for SFX.
   rest     r or -          ->  rq (quarter rest), re (eighth rest), r (inherit)
   velocity '@1..127'       ->  C4q@110
   bars     '|' is optional and ignored (use it to keep yourself honest)
@@ -801,7 +917,13 @@ NOTE DSL (the `notes` string):
            e.g. "e kick+hat hat snare+hat hat kick+hat kick snare+hat hat"
 
 You can also pass "notes" as a list:
-  [{"pitch": "C4", "beats": 1, "vel": 100}, {"pitch": ["C4","E4","G4"], "beats": 2}]
+  [{"pitch": "C4", "beats": 1, "vel": 100}, {"pitch": ["C4","E4","G4"], "beats": 2},
+   {"pitch": "C6", "glide_to": "C4", "beats": 0.5}]   // glide in list form
+
+SOUND EFFECTS: use era "sfx" + loop:false for short one-shot cues (blips, coins,
+zaps, whooshes, hits, sparkles). Lean on glides ('~') and the 'noise' voice
+(real pitched noise). Render with --tail (e.g. 0.03 tight, 0.4 ring-out). See
+references/sfx-cookbook.md for the PixelKin SFX catalog and recipes.
 """
 
 
@@ -859,7 +981,7 @@ def cmd_render(args, profiles: dict) -> int:
             )
         buf, is_loop = render_soundfont_tsf(
             mid_path, sf, profiles, loops=args.loops,
-            fade_out=args.fade_out, gain=args.gain)
+            fade_out=args.fade_out, gain=args.gain, tail=args.tail)
         if out.suffix.lower() == ".wav":
             write_wav(out, buf)
         else:
@@ -872,7 +994,7 @@ def cmd_render(args, profiles: dict) -> int:
     else:
         buf, used_reverb, is_loop = render_audio(
             mid_path, profiles, reverb=args.reverb,
-            loops=args.loops, fade_out=args.fade_out)
+            loops=args.loops, fade_out=args.fade_out, tail=args.tail)
         if out.suffix.lower() == ".wav":
             write_wav(out, buf)
         else:
@@ -915,6 +1037,10 @@ def main() -> int:
                     help="Repeat the loop body N times for a longer preview (default 1).")
     pr.add_argument("--fade-out", type=float, default=0.0,
                     help="Seconds of fade at the very end (for previews, not loops).")
+    pr.add_argument("--tail", type=float, default=None,
+                    help="One-shot ring-out seconds past the last note. Default: the "
+                         "era's tail (sfx=0.08) or 0.6. Use ~0.03 for tight blips, "
+                         "~0.4 for sparkle/chime cues. Ignored for loops.")
     pr.add_argument("--bitrate", default="160k", help="MP3 bitrate (default 160k).")
 
     args = p.parse_args()

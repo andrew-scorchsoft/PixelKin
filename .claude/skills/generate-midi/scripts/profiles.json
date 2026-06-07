@@ -61,6 +61,17 @@
       "tempo_range": [40, 220],
       "character": "Full General-MIDI-style sequencing with a large voice budget and sample-based instruments. The early-3D-RPG sound: ambitious, emotional, orchestral-leaning — 'it's MIDI but it sets the whole scene'.",
       "voice_palette": ["square", "saw", "strings", "pad", "bell", "pluck", "bass", "tri_bass", "flute", "brass", "organ", "drums"]
+    },
+    "sfx": {
+      "label": "Sound-effects bench (chip one-shots)",
+      "max_voices": 8,
+      "chords": true,
+      "reverb": 0.0,
+      "tail": 0.08,
+      "channels": [],
+      "tempo_range": [40, 400],
+      "character": "Not a music era — a workbench for short one-shot sound effects on the chip voices: pulse blips, noise bursts/whooshes, triangle thunks, and pitch glides (the hardware 'sweep'). High tempo + sixteenths/32nds (and triplets) for tight timing; layer a couple of voices freely. ALWAYS loop:false. Keep most cues well under ~0.6 s; reserve longer ring-out for sparkle/chime cues. See references/sfx-cookbook.md.",
+      "voice_palette": ["pulse12", "pulse25", "pulse50", "triangle", "tri_bass", "wave", "noise", "drums"]
     }
   },
 
@@ -193,6 +204,42 @@
       "era": "snes", "tempo": 72, "length_seconds": 6, "loop": false,
       "form": "Descending, deflating cadence to a minor resolution. 3–6 s.",
       "voicing": "strings or wave lead, low bass, no drums."
+    },
+
+    "sfx_blip": {
+      "label": "UI blip / cursor / text tick (SFX)",
+      "use_for": "Menu cursor moves, text-print ticks, tiny confirms. ONE-SHOT, tiny.",
+      "era": "sfx", "tempo": 240, "length_seconds": 0.1, "loop": false,
+      "form": "1–3 very short pulse notes (32nd/16th). Up = positive (confirm), down = negative (cancel/back). <0.15 s. Render --tail 0.03.",
+      "voicing": "pulse25 or pulse12, one voice, snappy."
+    },
+    "sfx_coin": {
+      "label": "Pickup / coin / item-grab (SFX)",
+      "use_for": "Grabbing a pickup on the ground; small reward chirp. ONE-SHOT.",
+      "era": "sfx", "tempo": 220, "length_seconds": 0.2, "loop": false,
+      "form": "The classic two-note chirp: a short blip then a higher held note. ~0.15–0.3 s.",
+      "voicing": "pulse25 lead (+ optional pulse12 octave sparkle)."
+    },
+    "sfx_sweep": {
+      "label": "Glide / whoosh / zap / jump (SFX)",
+      "use_for": "Jumps, falls, lasers/zaps, scene-transition whooshes, lamp throws. ONE-SHOT.",
+      "era": "sfx", "tempo": 200, "length_seconds": 0.25, "loop": false,
+      "form": "A single pitch GLIDE note (Start~Endq): up = jump/positive, down = fall/zap. Use the noise voice for airy whooshes, a pulse for tonal zaps. ~0.1–0.4 s.",
+      "voicing": "pulse25 or pulse12 for tonal; noise for airy/whoosh."
+    },
+    "sfx_hit": {
+      "label": "Impact / hit / thud (SFX)",
+      "use_for": "Attack impacts, bumps, door knocks. ONE-SHOT.",
+      "era": "sfx", "tempo": 200, "length_seconds": 0.15, "loop": false,
+      "form": "Short noise burst (often with a downward glide on the noise for weight), optionally over a low tri_bass thunk. <0.2 s. Render --tail 0.05.",
+      "voicing": "noise (+ tri_bass for body); drums 'kick'/'snare' also work."
+    },
+    "sfx_sparkle": {
+      "label": "Sparkle / chime / get / heal (SFX)",
+      "use_for": "Capture success, Gleam earned, heal, kindling bloom, save. ONE-SHOT.",
+      "era": "sfx", "tempo": 200, "length_seconds": 0.6, "loop": false,
+      "form": "A small rising arpeggio resolving up, with a bell-ish ring-out. Bigger events = more notes / wider span. ~0.3–1.0 s. Render --tail 0.4 for the ring.",
+      "voicing": "pulse25 or wave + bell; resolve on the tonic, let it ring."
     }
   }
 }

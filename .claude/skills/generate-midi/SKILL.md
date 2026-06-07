@@ -1,6 +1,6 @@
 ---
 name: generate-midi
-description: Compose original, era-authentic retro game music as real MIDI (.mid) and optionally render it to .mp3. Use whenever the user wants chiptune / sequenced retro music — an overworld, town, battle, boss, cave, title, emotional cue, victory fanfare, level-up/item jingle, evolution or game-over theme — in the style of cartridge-era handhelds and consoles (NES, Game Boy/Color, SNES, GBA, PS1-era sequenced MIDI). Claude composes a declarative song spec applying classic composition rules; a Python toolkit builds the .mid (honouring the platform's voice budget and looping conventions) and renders it with a built-in chiptune synth. Produces .mid source + game-ready .mp3. Does NOT use a text-to-audio model (that's generate-music) and does NOT make sound effects or speech.
+description: Compose original, era-authentic retro game music AND retro sound effects as real MIDI (.mid) and render to .mp3. Music — overworld, town, battle, boss, cave, title, emotional cue, victory fanfare, level-up/item jingle, evolution or game-over theme — in the style of cartridge-era handhelds/consoles (NES, Game Boy/Color, SNES, GBA, PS1-era sequenced MIDI). Sound effects — the short one-shot chip cues a creature-RPG needs: menu blips/confirm/cancel, coin/item pickup, door, stairs, scene-transition whoosh, jump/bump, attack hits (incl. per-element), super-effective, faint, low-HP beep, lamp throw/catch, level-up, kindling, Gleam/sparkle. Claude composes a declarative spec applying classic rules; a Python toolkit builds the .mid (honouring the platform's voice budget, plus pitch-glide "sweeps" and a real noise channel for SFX) and renders it with a built-in chiptune synth. Produces .mid source + game-ready .mp3. Does NOT use a text-to-audio model (that's generate-music) and does NOT make speech.
 ---
 
 # generate-midi
@@ -25,10 +25,14 @@ synthesizer.
 - They want music that's authentically *of the platform/era* and note-level
   controllable — not a one-shot text-to-audio render.
 
+- They want **sound effects** — the short one-shot chip cues (UI blips, coins,
+  doors, stairs, hits, the catch, sparkles). See **§ Sound effects** below and
+  **`references/sfx-cookbook.md`** for the full PixelKin SFX catalog and recipes.
+
 Use **`generate-music`** instead when they want a text-prompt → audio render
 from the ElevenLabs model (richer/“produced” timbres, less control). Use this
 skill (`generate-midi`) when they want true chiptune/MIDI, editable note data,
-and tight era authenticity. Neither makes **sound effects** or **speech**.
+and tight era authenticity. Neither makes **speech**.
 
 ## Read these first (the craft)
 
@@ -41,6 +45,11 @@ non-trivial:
 - **`references/style-guide.md`** — era voice budgets, **clip lengths**,
   **looping vs. one-shot conventions**, tempo/key/form, and soundtrack
   cohesion. This is *how long it should be and how it should loop*.
+- **`references/sfx-cookbook.md`** — read before making **sound effects**: the
+  SFX discipline (short, dry, one-shot), the five chip-SFX primitives (blip,
+  chirp, glide/sweep, noise burst, sparkle), the `sfx` era + glide + noise + tail
+  knobs, and the **full PixelKin SFX catalog** (every effect the game needs,
+  grounded in the mechanics, with a ready recipe for each).
 - **`references/pixelkin-soundtrack.md`** — the **PixelKin score bible**: the
   "lanterns in the dark" brief, how we study the cartridge-era handheld
   monster-RPG soundtracks *without copying a bar*, and the **cohesion system**
@@ -155,6 +164,36 @@ the running duration for the notes after it. Chord = `C4+E4+G4q` (chord-capable
 eras only). Rest = `r`/`-` (e.g. `re`, `rq`). Velocity = `@1..127`. `|` bar
 separators are ignored. On a `drums` voice, tokens are kit names:
 `kick snare hat ohat tom crash clap`.
+
+## Sound effects
+
+This skill makes **short one-shot sound effects** too — the chip cues a
+creature-RPG lives on (menu blips, coin/item pickup, door, **stairs**, **scene
+transitions**, jump/bump, attack hits — including per-element — super-effective,
+faint, low-HP beep, the **Lamp** throw/catch, level-up, **Kindling**, **Gleam**
+sparkle). Same `build`→`render` pipeline; you just compose a **tiny `loop:false`
+spec in the `sfx` era**.
+
+**Read `references/sfx-cookbook.md` first** — it's the SFX craft guide *and* the
+full catalog of what the game needs (2–3 variants each), with a ready recipe per
+effect. The essentials:
+
+- **Era `sfx`, `loop: false`.** A workbench era: 8 voices, wide tempo, dry, short
+  default ring-out. Keep most cues **under ~0.6 s**; thin (1–2 voices).
+- **Glide / "sweep"** — join two pitches with `~`: `C4~C6e` slides C4 up to C6
+  over the note (the chip sweep unit). Up = jump/positive, down = fall/zap. On the
+  **`noise`** voice a glide becomes an airy **whoosh**; on a pulse it's a tonal
+  **zap/boing**. Spans up to ±2 octaves.
+- **`noise` voice** is real pitched noise now (its pitch = brightness) — use it
+  for impacts, footsteps, whooshes, wind, transitions.
+- **`--tail` (render flag)** sets the one-shot ring-out: `--tail 0.02` for snappy
+  blips, `--tail 0.4`+ for `bell`/sparkle cues. (`sfx` default is 0.08.)
+
+Files (mirror the music layout, namespaced under `sfx/`): spec →
+`assets/audio/midi/sfx/specs/<name>-<v>.json`, master `.mid` →
+`assets/audio/midi/sfx/<name>-<v>.mid`, game `.mp3` →
+`public/assets/audio/sfx/<name>-<v>.mp3`. Play once in Phaser
+(`this.sound.play('ui-confirm')`) — never loop a one-shot.
 
 ## Originality & licensing (non-negotiable)
 

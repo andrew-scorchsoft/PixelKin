@@ -1,0 +1,14 @@
+{
+  "title": "SFX — Gleam earned (constellation relit)",
+  "_note": "Worked SFX example for a BIG diegetic reward: a wide bright rising arpeggio that hints the Vesper motif (G->C->D ... settling up), with a noise 'aurora' up-whoosh underneath and a long bell shimmer. Layering + glide + a held bell. Render with a long ring-out:  render --tail 0.7  -> public/assets/audio/sfx/world-gleam-a.mp3. Allowed to run ~1s (the only class of SFX that may). See references/sfx-cookbook.md §B.",
+  "era": "sfx",
+  "tempo": 180,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "rise",   "voice": "pulse25", "octave": 4, "notes": "G4s C5s D5s G5s C6e@120" },
+    { "name": "shimmer","voice": "bell",    "octave": 6, "gain": 0.8, "notes": "rq C6+E6h" },
+    { "name": "aurora", "voice": "noise",   "octave": 3, "gain": 0.4, "notes": "C3~C6h@70" }
+  ]
+}
