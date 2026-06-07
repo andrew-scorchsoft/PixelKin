@@ -12,6 +12,17 @@ import Phaser from 'phaser';
 import { theme, hex } from '@game/ui/theme';
 import { makeText } from '@game/ui/Text';
 import type { Species, KinType } from '@game/data/dex';
+import {
+  hasCreatureSprite,
+  creatureTextureKey,
+  loadCreatureSprite,
+  type CreatureView,
+} from '@game/systems/sprites/CreatureSprites';
+
+/** Battle view for a side: the foe shows its front, the player's kin its back. */
+function viewFor(side: 'player' | 'foe'): CreatureView {
+  return side === 'foe' ? 'front' : 'back';
+}
 
 /** A type → colour map for the placeholder battlers (themed, original palette). */
 const TYPE_COLOR: Record<KinType, number> = {
@@ -33,6 +44,10 @@ const TYPE_COLOR: Record<KinType, number> = {
  * and return that instead — the rest of the battle UI is unaffected.
  */
 export function battlerTexture(scene: Phaser.Scene, species: Species, side: 'player' | 'foe'): string {
+  // Prefer a packed creature sprite once it's loaded; otherwise a placeholder.
+  const realKey = creatureTextureKey(species.id, viewFor(side));
+  if (scene.textures.exists(realKey)) return realKey;
+
   const color = TYPE_COLOR[species.types[0]] ?? hex(theme.color.panelEdge);
   const key = `battler_ph_${species.types[0]}_${side}`;
   if (!scene.textures.exists(key)) {
@@ -52,13 +67,15 @@ export function battlerTexture(scene: Phaser.Scene, species: Species, side: 'pla
 export class Battler {
   readonly container: Phaser.GameObjects.Container;
   readonly sprite: Phaser.GameObjects.Image;
+  /** Guards against a late sprite load overwriting a newer species. */
+  private loadToken = 0;
 
   constructor(
     scene: Phaser.Scene,
     x: number,
     y: number,
     species: Species,
-    side: 'player' | 'foe',
+    private readonly side: 'player' | 'foe',
   ) {
     this.sprite = scene.add.image(0, 0, battlerTexture(scene, species, side)).setOrigin(0.5);
     const label = makeText(scene, 0, side === 'foe' ? -28 : 26, species.name, theme.text.dim).setOrigin(0.5);
@@ -66,13 +83,27 @@ export class Battler {
       .container(x, y, [this.sprite, label])
       .setDepth(theme.depth.world + 5)
       .setScrollFactor(0);
+    this.applyRealSprite(scene, species);
   }
 
-  /** Swap to a different species' placeholder (used when the active kin changes). */
+  /** Swap to a different species (used when the active kin changes). */
   setSpecies(scene: Phaser.Scene, species: Species, side: 'player' | 'foe'): void {
     this.sprite.setTexture(battlerTexture(scene, species, side));
     const label = this.container.list[1] as Phaser.GameObjects.Text | undefined;
     label?.setText(species.name);
+    this.applyRealSprite(scene, species);
+  }
+
+  /** Lazily load and swap in the packed creature sprite if one exists. */
+  private applyRealSprite(scene: Phaser.Scene, species: Species): void {
+    const view = viewFor(this.side);
+    if (!hasCreatureSprite(species.id, view)) return;
+    const token = ++this.loadToken;
+    void loadCreatureSprite(scene, species.id, view).then((key) => {
+      if (key && token === this.loadToken && this.sprite.active) {
+        this.sprite.setTexture(key);
+      }
+    });
   }
 
   /** A small hop/shake when the kin acts or is hit. */

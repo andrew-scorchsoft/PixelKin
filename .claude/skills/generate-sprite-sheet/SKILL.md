@@ -295,6 +295,31 @@ with the packed atlas. (The map references the atlas via a `TilesetRef` + its `f
 Generated source tiles live at repo-root `assets/tilesets/<area>/` and `_shared/` (not
 served); the packed atlas + sidecar land in `public/assets/tilesets/` (served by Vite).
 
+## Packing creature sprites (`pack_creatures.py`)
+
+The creature analogue of `pack_tileset.py`. The model makes each kin's five source PNGs
+into `assets/creatures/NNN_slug/` (`battle_front.png`, `battle_back.png`, `icon.png`,
+`overworld.png`, `portrait.png` + `metadata.json`); this script packs **every** creature
+folder into served, lossless-WebP sprites plus one manifest the engine loads:
+
+```bash
+./venv/bin/python .claude/skills/generate-sprite-sheet/scripts/pack_creatures.py
+```
+
+No args needed — it walks `assets/creatures/*`, writes per-view
+`public/assets/sprites/creatures/NNN_slug/<view>.webp` (one lossless WebP per view, not an
+atlas — battle loads one kin at a time), and emits
+`public/assets/sprites/creatures/creatures.manifest.json` keyed by numeric kin `id` →
+`{ slug, front, back, icon, overworld, portrait }` with each view's served path + width/
+height. It asserts every master matches the art-bible canvas (64×64 battle, 32×32
+icon/overworld, 96×96 portrait), verifies each WebP round-trips visually lossless (alpha +
+visible RGB), and prints a JSON summary (counts, ids, warnings). Re-run it after generating
+or fixing any kin's art — packing the rest of the dex is this one command.
+
+The game reads the manifest through `src/game/systems/sprites/CreatureSprites.ts`
+(`hasCreatureSprite` / `creatureTextureKey` / lazy `loadCreatureSprite`), which resolves
+null for any kin/view not yet packed so callers can fall back to a placeholder.
+
 ## Two layers of checking
 
 Generation is checked at **two** levels — keep them distinct:

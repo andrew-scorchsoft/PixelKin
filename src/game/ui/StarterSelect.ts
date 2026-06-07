@@ -15,6 +15,7 @@ import { Cursor } from './Cursor';
 import { InputController, InputAction } from '@game/systems/input/InputController';
 import { SPECIES_BY_ID, type KinType } from '@game/data/dex';
 import { STARTERS } from '@game/content/starters';
+import { hasCreatureSprite, loadCreatureSprite } from '@game/systems/sprites/CreatureSprites';
 import type { Sfx } from '@game/systems/audio/Sfx';
 
 const TYPE_TINT: Partial<Record<KinType, string>> = {
@@ -56,6 +57,18 @@ export class StarterSelect {
         .setStrokeStyle(1, hex(theme.color.panelShadow));
       this.panel.add(swatch);
       this.swatches.push(swatch);
+
+      // Swap the swatch for the real kin icon once it loads.
+      if (hasCreatureSprite(opt.species_id, 'icon')) {
+        void loadCreatureSprite(scene, opt.species_id, 'icon').then((key) => {
+          if (key && swatch.active) {
+            const icon = scene.add.image(PAD + 12, rowY + 4, key).setOrigin(0, 0).setDisplaySize(16, 16);
+            this.panel.add(icon);
+            this.panel.container.bringToTop(this.cursor.sprite);
+            swatch.setVisible(false);
+          }
+        });
+      }
 
       const name = `${species?.name ?? '???'}  ${species?.types.join('/') ?? ''}`;
       this.panel.add(makeText(scene, PAD + 34, rowY, name, theme.text.base));
