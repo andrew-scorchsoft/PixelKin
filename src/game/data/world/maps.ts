@@ -25,6 +25,18 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'town',
     music: 'assets/audio/music/tinderwick-a.mp3',
   },
+  tinderwick_house: {
+    json: 'assets/maps/tinderwick_house.json',
+    tilesets: { tinderwick_house_set: 'assets/tilesets/tinderwick_house_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/tinderwick-b.mp3',
+  },
+  dimglass_coast: {
+    json: 'assets/maps/dimglass_coast.json',
+    tilesets: { dimglass_coast_set: 'assets/tilesets/dimglass_coast_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/dimglass-coast-a.mp3',
+  },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
 };

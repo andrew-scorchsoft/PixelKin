@@ -68,11 +68,11 @@ export interface WorldGraph {
  */
 export const VESPERHOLM_GRAPH: WorldGraph = {
   start_map: 'tinderwick',
-  start_at: { tx: 8, ty: 12 },
+  start_at: { tx: 8, ty: 16 },
   nodes: [
     // ---- South: Tinderwick -> Dimglass Coast (2 segments) -> Pearlmoor Quay ----------
     { map_id: 'tinderwick', region: 'south' },
-    { map_id: 'dimglass_coast_i', region: 'south' }, // route: cliff path + shore
+    { map_id: 'dimglass_coast', region: 'south' }, // route segment I: cliff path + shore (authored)
     { map_id: 'dimglass_coast_ii', region: 'south' }, // route: tidal flats
     { map_id: 'gullcry_rock', region: 'south', optional: true, reward: 'rare sea-bird kin + a Tide charm' },
     { map_id: 'tideglass_cavern', region: 'south', optional: true, reward: 'landmark micro-dungeon; a signature rare water kin' },
@@ -117,8 +117,8 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
   ],
   edges: [
     // ---- Main rim, clockwise: town -> route segment -> ... -> town -------------------
-    { from_map: 'tinderwick', to_map: 'dimglass_coast_i', via_warp: 'to_coast', bidirectional: true },
-    { from_map: 'dimglass_coast_i', to_map: 'dimglass_coast_ii', via_warp: 'to_coast_ii', bidirectional: true },
+    { from_map: 'tinderwick', to_map: 'dimglass_coast', via_warp: 'to_coast', bidirectional: true },
+    { from_map: 'dimglass_coast', to_map: 'dimglass_coast_ii', via_warp: 'to_coast_ii', bidirectional: true },
     { from_map: 'dimglass_coast_ii', to_map: 'pearlmoor_quay', via_warp: 'to_quay', bidirectional: true },
     { from_map: 'pearlmoor_quay', to_map: 'saltreach_fen_i', via_warp: 'to_fen', bidirectional: true },
     { from_map: 'saltreach_fen_i', to_map: 'saltreach_fen_ii', via_warp: 'to_fen_ii', requires_ability: 'tidecall', bidirectional: true },
