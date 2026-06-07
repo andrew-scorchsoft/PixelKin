@@ -1,0 +1,41 @@
+{
+  "title": "Windward Stair - Stone & Gust",
+  "_note": "Option B mood sibling. gbc 4-voice band. 6/8 compound meter (6 eighths per bar), bright A major with a grounded F#-minor lean (the Stone half). A careful step-step-rest climbing gait, more solitary than triumphant. Vesper motif RESET into compound meter: leap-and-settle becomes a step-step-leap-settle gait figure, the overshoot landing softly on a triplet/offbeat. Intermittent lonelier gust swells (ohat) less frequently than Option A. 18-bar loop; last bar steps down to E (dominant) -> voice-leads up into the bar-1 A lift.",
+  "era": "gbc",
+  "tempo": 126,
+  "time_signature": [6, 8],
+  "ppq": 480,
+  "loop": true,
+  "key": "A major (F# minor lean)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "lilting compound-meter melody, step-step-rest gait. 6 eighths per bar.",
+      "notes": "E4e A4e re B4e C#5e re | A4e B4e C#5q. | E4e A4e re B4e C#5e re | D5e C#5e B4q. | F#4e B4e re C#5e D5e re | B4e C#5e D5q. | E4e A4e re G#4e A4e re | B4q. A4q. | E4e B4e re C#5e D5e re | E5e D5e C#5q. | F#4e C#5e re D5e E5e re | C#5e B4e A4q. | G#4e C#5e re D5e E5e re | E5e D5e C#5q. | A4e D5e re E5e F#5e re | E5e D5e B4q. | E5e C#5e re B4e A4e re | B4e C#5e E4q."
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 3,
+      "gain": 0.6,
+      "_note": "rolling triplet figures, lighter touch (broken triads across 6/8).",
+      "notes": "A3e C#4e E4e A4e E4e C#4e | A3e C#4e E4e A4e E4e C#4e | A3e C#4e E4e A4e E4e C#4e | B3e D4e F#4e B4e F#4e D4e | F#3e A3e C#4e F#4e C#4e A3e | B3e D4e F#4e B4e F#4e D4e | A3e C#4e E4e A4e E4e C#4e | E4e G#4e B4e E5e B4e G#4e | A3e C#4e E4e A4e E4e C#4e | E4e G#4e B4e E5e B4e G#4e | F#3e A3e C#4e F#4e C#4e A3e | A3e C#4e E4e A4e E4e C#4e | E4e G#4e B4e E5e B4e G#4e | A3e C#4e E4e A4e E4e C#4e | D4e F#4e A4e D5e A4e F#4e | B3e D4e F#4e B4e F#4e D4e | E4e G#4e B4e E5e B4e G#4e | A3e C#4e E4e E4e G#4e B4e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "_note": "dotted 6/8 pattern, weightier and deliberate (Stone). Dotted-quarter on each compound beat.",
+      "notes": "A2q. E2q. | A2q. E2q. | A2q. E2q. | B2q. F#2q. | F#2q. C#3q. | B2q. F#2q. | A2q. E2q. | E3q. B2q. | A2q. E2q. | E3q. B2q. | F#2q. C#3q. | A2q. E2q. | E3q. B2q. | A2q. E2q. | D3q. A2q. | B2q. F#2q. | E3q. B2q. | A2q. E2q."
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "_note": "swung 6/8 kick/hat; intermittent lonelier gust swells (ohat), less frequent than Option A.",
+      "notes": "e kick hat hat snare hat hat | kick hat hat snare hat hat | kick hat hat snare hat hat | kick hat hat snare hat ohat | kick hat hat snare hat hat | kick hat hat snare hat hat | kick hat hat snare hat hat | kick hat hat snare hat ohat | kick hat hat snare hat hat | kick hat hat snare hat hat | kick hat hat snare hat hat | kick hat hat snare hat ohat | kick hat hat snare hat hat | kick hat hat snare hat hat | kick hat hat snare hat hat | kick hat hat snare hat ohat | kick hat hat snare hat hat | kick hat hat snare hat crash"
+    }
+  ]
+}

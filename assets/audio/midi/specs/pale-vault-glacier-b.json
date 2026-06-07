@@ -1,0 +1,41 @@
+{
+  "title": "Pale Vault Glacier - Snow-Hushed Town",
+  "_note": "Option B mood sibling. gbc 4-voice band, 80 BPM (gbc floor, OK). The ice-TOWN: people and lanterns here. A small warm hummable melody framed by cold. Gentle A minor warming toward C major. Vesper motif TENDER MINOR reading, sung softly and nearly complete (E4->A4->B4 leap, C5->B4->A4 settle), the minor colouring the hope as fragile. Quiet heartbeat bass; one distant aurora swell (ohat) per phrase. 18-bar loop; last bar lands on E (the v) leaning back into the bar-1 A-minor lift.",
+  "era": "gbc",
+  "tempo": 80,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "A minor warming to C major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.95,
+      "_note": "faint tender hummable melody, more human than A. The Vesper spine sung nearly complete.",
+      "notes": "E4q A4q B4h | C5q B4q A4h | A4q B4q C5q B4q | A4h rh | E4q A4q C5h | B4q A4q G4h | A4q G4q E4q G4q | A4h rh | C5q E5q D5h | C5q B4q A4h | B4q C5q D5q C5q | B4h rh | E4q G4q C5h | B4q A4q G4h | A4q B4q C5q E5q | D5h C5h | B4q C5q A4q B4q | E4h G4h | A4q B4q C5q B4q | A4q G4q E4h"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 3,
+      "gain": 0.55,
+      "_note": "soft music-box arpeggio, slow and rounded (broken triads, no stacking).",
+      "notes": "A3e C4e E4e C4e A3e C4e E4e C4e | A3e C4e E4e C4e A3e C4e E4e C4e | F3e A3e C4e A3e F3e A3e C4e A3e | A3e C4e E4e C4e A3e C4e E4e C4e | A3e C4e E4e C4e A3e C4e E4e C4e | E3e G3e B3e G3e E3e G3e B3e G3e | A3e C4e E4e C4e E3e G3e B3e G3e | A3e C4e E4e C4e A3e C4e E4e C4e | C4e E4e G4e E4e C4e E4e G4e E4e | F3e A3e C4e A3e A3e C4e E4e C4e | G3e B3e D4e B3e G3e B3e D4e B3e | E3e G3e B3e G3e E3e G3e B3e G3e | C4e E4e G4e E4e C4e E4e G4e E4e | E3e G3e B3e G3e E3e G3e B3e G3e | A3e C4e E4e C4e C4e E4e G4e E4e | G3e B3e D4e B3e C4e E4e G4e E4e | E3e G3e B3e G3e A3e C4e E4e C4e | E3e G3e B3e G3e G3e B3e D4e B3e | A3e C4e E4e C4e G3e B3e D4e B3e | A3e C4e E4e C4e E3e G3e B3e G3e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "_note": "slow steady half-notes, a quiet heartbeat of warmth.",
+      "notes": "A2h A2h | A2h A2h | F2h F2h | A2h A2h | A2h A2h | E2h E2h | A2h E2h | A2h A2h | C3h C3h | F2h A2h | G2h G2h | E2h E2h | C3h C3h | E2h E2h | A2h C3h | G2h C3h | E2h A2h | E2h G2h | A2h G2h | A2h E2h"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "_note": "sparse single muffled pulse on the downbeat; one distant aurora swell (ohat) per phrase.",
+      "notes": "h kick r | kick r | kick r | kick ohat | kick r | kick r | kick r | kick ohat | kick r | kick r | kick r | kick ohat | kick r | kick r | kick r | kick ohat | kick r | kick r | kick r | kick ohat"
+    }
+  ]
+}

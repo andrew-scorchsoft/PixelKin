@@ -1,0 +1,50 @@
+{
+  "title": "Pale Vault Glacier - Glasslight",
+  "_note": "Option C lush ambient register. era snes (8 voices, chords allowed, warm reverb) - the explicit richer-register option for this area; snes tempo floor is 60 so 66 BPM is fine. Suspended C major, Lydian-tinged F#: no firm thirds, sus2/sus4 and a glinting #4. Voices: soft bell-pad lead with long shimmering tones; a layered glassy bell chime arp; a sustained suspended pad (the chords chip eras couldn't stack, now ringing in full); a warm sustained low pad-bass, deep and still; a single soft reversed-cymbal aurora swoosh (ohat) per 4 bars; echo glues it. Vesper SUSPENDED/LUMINOUS: slow bell entries (G3->C4->D4 lift blooming into a sustained chord-swell), the settle dissolving into reverb rather than resolving. 16-bar loop; last bar holds a Dsus2 colour -> dissolves back into the bar-1 G lift. 5 voices peak, well within 8; clarity over count.",
+  "era": "snes",
+  "tempo": 66,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "C major (suspended, Lydian-tinged)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "bell",
+      "octave": 4,
+      "gain": 0.9,
+      "_note": "soft bell-pad lead, long shimmering tones - the stretched Vesper spine.",
+      "notes": "G3h. rq | C4w | D4h. rq | G4h rh | E4h. rq | D4w | rh C4q D4q | D4w | G4h. A4q | C5h G4h | D5h. rq | G4w | E4h D4h | C4h. rq | D4w | D4h rh"
+    },
+    {
+      "name": "pad",
+      "voice": "pad",
+      "octave": 3,
+      "gain": 0.55,
+      "_note": "sustained suspended pad chords (snes allows chords) - sus2/sus4/quartal, no firm thirds.",
+      "notes": "C3+G3+D4w | C3+G3+D4w | C3+F3+G3w | G3+D4+G4w | C3+G3+D4w | C3+F3+C4w | G3+D4+A4w | G3+C4+D4w | C3+G3+D4w | C3+G3+E4w | D3+A3+D4w | G3+D4+G4w | C3+G3+D4w | C3+F3+C4w | G3+D4+G4w | G3+D4+A4w"
+    },
+    {
+      "name": "arp",
+      "voice": "bell",
+      "octave": 4,
+      "gain": 0.45,
+      "_note": "layered glassy chime arpeggio over the pad - quartal/suspended drift, Lydian #4 (F#) glint.",
+      "notes": "C4h G4h | D4h G4h | C4h F#4h | D4h G4h | C4h G4h | F4h C5h | D4h A4h | C4h D4h | C4h G4h | E4h G4h | D4h A4h | D4h G4h | C4h G4h | F#4h C5h | D4h G4h | A4h D5h"
+    },
+    {
+      "name": "bass",
+      "voice": "pad",
+      "octave": 2,
+      "gain": 0.5,
+      "_note": "warm sustained low pad-bass, deep and still.",
+      "notes": "C2w | C2w | F2w | G2w | C2w | F2w | G2w | G2w | C2w | C2w | D2w | G2w | C2w | F2w | G2w | G2w"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "_note": "no kit - a single soft reversed-cymbal aurora swoosh (ohat) per 4 bars; echo glues the rest.",
+      "notes": "w r | r | r | ohat | r | r | r | ohat | r | r | r | ohat | r | r | r | ohat"
+    }
+  ]
+}

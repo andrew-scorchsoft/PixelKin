@@ -1,0 +1,57 @@
+{
+  "title": "Galehigh Terraces - Skyborne",
+  "_note": "Option C diegetic/relit variant. era gba (8 voices, chords allowed, some reverb) - the richer register the brief reserves for the relit Storm constellation. Radiant D major, Lydian-tinged G#. Voices: bright pulse25 lead with wide soaring intervals; a second airy triangle counter-lead trading the hook; shimmering pulse12 arp; a sustained pad (real chord, gba-only) for the 'lift'; tri_bass driving; drums + a wide aurora-adjacent noise swoosh (ohat/crash) as the updraft catches. Vesper SOARING transform: rising leap WIDENED to a sixth/octave (A4->D5->B5...), the line floats up before its settle - the motif taking flight. 24-bar loop; final bar lands on A (dominant) -> floats back into the bar-1 lift. 6 voices peak, within the 8 budget; clarity over count.",
+  "era": "gba",
+  "tempo": 134,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "D major (Lydian-tinged)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "bright lead, wide soaring intervals; the widened Vesper leap.",
+      "notes": "A4q D5q B5h | A5q F#5q E5h | F#5q B5q A5h | G#5q A5q B5h | A4q D5q B5h | C#6q B5q A5h | G5q E5q F#5h | E5q D5h rq | D5q G5q E6h | D6q B5q A5h | B5q E6q D6h | C#6q B5q A5h | A5q D6q B5h | A5q G5q F#5h | E5q F#5q G5q A5q | F#5h E5h | D5q A5q F#6h | E6q D6q B5h | A5q B5q C#6q B5q | A5h r h | E5q A5q C#6h | B5q A5q G5h | F#5q E5q D5q E5q | F#5h A4h"
+    },
+    {
+      "name": "counter",
+      "voice": "triangle",
+      "octave": 4,
+      "gain": 0.7,
+      "_note": "airy second lead, answers the hook a register below, trading phrases.",
+      "notes": "rw | rw | rw | rw | F#4q A4q D5h | A4q G#4q A4h | B4q G4q A4h | B4q A4h rq | rw | rw | rw | rw | F#5q D5q A4h | B4q C#5q D5h | E5q D5q C#5q B4q | A4h G#4h | rw | rw | rw | rw | A4q E5q A4h | G4q F#4q E4h | A4q B4q D5q C#5q | D5h r h"
+    },
+    {
+      "name": "arp",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.55,
+      "_note": "shimmering kite-tail arpeggio, fast broken triads.",
+      "notes": "D4s F#4s A4s D5s F#4s A4s D5s F#4s D4s F#4s A4s D5s F#4s A4s D5s F#4s | A3s C#4s E4s A4s C#4s E4s A4s C#4s A3s C#4s E4s A4s C#4s E4s A4s C#4s | B3s D4s G4s B4s D4s G4s B4s D4s B3s D4s G4s B4s D4s G4s B4s D4s | E4s G#4s B4s E5s G#4s B4s E5s G#4s E4s G#4s B4s E5s G#4s B4s E5s G#4s | D4s F#4s A4s D5s F#4s A4s D5s F#4s D4s F#4s A4s D5s F#4s A4s D5s F#4s | A3s C#4s E4s A4s C#4s E4s A4s C#4s A3s C#4s E4s A4s C#4s E4s A4s C#4s | B3s D4s G4s B4s D4s G4s B4s D4s E4s G4s B4s E5s G4s B4s E5s G4s | A3s C#4s E4s A4s C#4s E4s A4s C#4s A3s C#4s E4s A4s C#4s E4s A4s C#4s | G3s B3s D4s G4s B3s D4s G4s B3s G3s B3s D4s G4s B3s D4s G4s B3s | D4s F#4s A4s D5s F#4s A4s D5s F#4s D4s F#4s A4s D5s F#4s A4s D5s F#4s | E4s G4s B4s E5s G4s B4s E5s G4s E4s G4s B4s E5s G4s B4s E5s G4s | A3s C#4s E4s A4s C#4s E4s A4s C#4s A3s C#4s E4s A4s C#4s E4s A4s C#4s | D4s F#4s A4s D5s F#4s A4s D5s F#4s D4s F#4s A4s D5s F#4s A4s D5s F#4s | A3s C#4s E4s A4s C#4s E4s A4s C#4s A3s C#4s E4s A4s C#4s E4s A4s C#4s | B3s D4s G4s B4s D4s G4s B4s D4s A3s C#4s E4s A4s C#4s E4s A4s C#4s | D4s F#4s A4s D5s F#4s A4s D5s F#4s A3s C#4s E4s A4s C#4s E4s A4s C#4s | D4s F#4s A4s D5s F#4s A4s D5s F#4s D4s F#4s A4s D5s F#4s A4s D5s F#4s | A3s C#4s E4s A4s C#4s E4s A4s C#4s A3s C#4s E4s A4s C#4s E4s A4s C#4s | B3s D4s G4s B4s D4s G4s B4s D4s B3s D4s G4s B4s D4s G4s B4s D4s | E4s G#4s B4s E5s G#4s B4s E5s G#4s E4s G#4s B4s E5s G#4s B4s E5s G#4s | D4s F#4s A4s D5s F#4s A4s D5s F#4s D4s F#4s A4s D5s F#4s A4s D5s F#4s | A3s C#4s E4s A4s C#4s E4s A4s C#4s A3s C#4s E4s A4s C#4s E4s A4s C#4s | B3s D4s G4s B4s D4s G4s B4s D4s E4s G4s B4s E5s G4s B4s E5s G4s | A3s C#4s E4s A4s C#4s E4s A4s C#4s A3s E4s A4s C#5s E4s A4s C#5s E4s"
+    },
+    {
+      "name": "pad",
+      "voice": "pad",
+      "octave": 3,
+      "gain": 0.5,
+      "_note": "sustained pad chords (gba allows chords) - the 'lift' the richer register affords.",
+      "notes": "D3+F#3+A3w | A3+C#4+E4w | B3+D4+G4w | E3+G#3+B3w | D3+F#3+A3w | A3+C#4+E4w | B3+D4+E4w | A3+C#4+E4w | G3+B3+D4w | D3+F#3+A3w | E3+G4+B4w | A3+C#4+E4w | D3+F#3+A3w | A3+C#4+E4w | B3+D4+G4w | A3+C#4+E4w | D3+F#3+A3w | B3+D4+G4w | E3+G#3+B3w | D3+F#3+A3w | A3+C#4+E4w | B3+D4+E4w | A3+C#4+E4w | A3+C#4+E4w"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "_note": "driving, with light reverb glue.",
+      "notes": "D2e D3e A2e A3e D2e D3e A2e A3e | A2e A3e E2e E3e A2e A3e E2e E3e | B2e B3e G2e G3e B2e B3e G2e G3e | E2e E3e B2e B3e E2e E3e B2e B3e | D2e D3e A2e A3e D2e D3e A2e A3e | A2e A3e E2e E3e A2e A3e E2e E3e | B2e B3e G2e G3e E2e E3e B2e B3e | A2e A3e E2e E3e A2e A3e E2e E3e | G2e G3e D2e D3e G2e G3e D2e D3e | D2e D3e A2e A3e D2e D3e A2e A3e | E2e E3e B2e B3e E2e E3e B2e B3e | A2e A3e E2e E3e A2e A3e E2e E3e | D2e D3e A2e A3e D2e D3e A2e A3e | A2e A3e E2e E3e A2e A3e E2e E3e | B2e B3e G2e G3e D2e D3e A2e A3e | A2e A3e E2e E3e A2e A3e E2e E3e | D2e D3e A2e A3e D2e D3e A2e A3e | B2e B3e G2e G3e B2e B3e G2e G3e | E2e E3e B2e B3e E2e E3e B2e B3e | D2e D3e A2e A3e D2e D3e A2e A3e | A2e A3e E2e E3e A2e A3e E2e E3e | B2e B3e G2e G3e E2e E3e B2e B3e | A2e A3e E2e E3e A2e A3e E2e E3e | A2e A3e E2e E3e A2q A2q"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "_note": "energetic kit; a wide aurora-adjacent noise swoosh (ohat->crash) as the updraft catches every 4 bars.",
+      "notes": "e kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+ohat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+ohat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+ohat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+ohat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+ohat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat snare+hat kick+hat snare+hat kick+hat snare+hat tom+ohat crash"
+    }
+  ]
+}
