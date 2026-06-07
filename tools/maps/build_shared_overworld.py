@@ -30,6 +30,8 @@ import json, subprocess, sys
 from pathlib import Path
 import numpy as np
 from PIL import Image
+from tileforge import (load, deborder, jitter, roll, flip_h,  # reusable seam helpers
+                       KEEP, H_TILE, V_TILE)
 
 REPO = Path(__file__).resolve().parents[2]
 TW = REPO / "assets" / "tilesets" / "tinderwick"          # proven master kit (by manifest)
@@ -40,71 +42,12 @@ MT = SCRIPTS / "make_tileable.py"
 OUT.mkdir(parents=True, exist_ok=True)
 
 
-def load(p: Path) -> Image.Image:
-    im = Image.open(p).convert("RGBA")
-    # Only resample if it isn't already 16x16 — a same-size LANCZOS pass softens the
-    # crisp pixel edges and can reintroduce a faint rim (the grid-seam gotcha).
-    return im if im.size == (16, 16) else im.resize((16, 16), Image.NEAREST)
-
-
 def arr(im: Image.Image) -> np.ndarray:
     return np.asarray(im).astype(np.int16)
 
 
 def img(a: np.ndarray) -> Image.Image:
     return Image.fromarray(np.clip(a, 0, 255).astype(np.uint8), "RGBA")
-
-
-def jitter(im: Image.Image, seed: int, amt: int = 10) -> Image.Image:
-    """Per-pixel value jitter on opaque pixels — a different-but-same fill variant."""
-    a = arr(im)
-    rng = np.random.default_rng(seed)
-    noise = rng.integers(-amt, amt + 1, size=a.shape[:2])
-    for c in range(3):
-        a[..., c] = a[..., c] + noise
-    a[..., 3] = arr(im)[..., 3]  # keep alpha
-    return img(a)
-
-
-def roll(im: Image.Image, dx: int, dy: int) -> Image.Image:
-    """Phase-shift the texture (foam crest moves along the shore) -> a new edge variant."""
-    a = np.asarray(im)
-    return Image.fromarray(np.roll(np.roll(a, dx, axis=1), dy, axis=0))
-
-
-def flip_h(im: Image.Image) -> Image.Image:
-    return im.transpose(Image.FLIP_LEFT_RIGHT)
-
-
-# Which sides of an autotile role carry the DESIGNED transition (keep them); every
-# other side's 1px rim is the model's baked ink border and must be stripped or it
-# tiles into a visible grid (the seam the user flagged). After stripping, the axis
-# the tile repeats on is seam-matched (opposite edges averaged) so it's toroidal.
-KEEP = {
-    "edge_n": {"N"}, "edge_s": {"S"}, "edge_w": {"W"}, "edge_e": {"E"},
-    "corner_nw": {"N", "W"}, "corner_ne": {"N", "E"},
-    "corner_se": {"S", "E"}, "corner_sw": {"S", "W"},
-    "strip_h": {"N", "S"}, "strip_v": {"E", "W"}, "fill": set(),
-}
-H_TILE = {"edge_n", "edge_s", "strip_h", "fill"}   # repeats left↔right
-V_TILE = {"edge_w", "edge_e", "strip_v", "fill"}   # repeats top↔bottom
-
-
-def deborder(im: Image.Image, role: str) -> Image.Image:
-    """Strip the baked rim on non-transition sides and seam the tiling axis."""
-    a = np.asarray(im).astype(np.int16).copy()
-    keep = KEEP.get(role, set())
-    if "N" not in keep: a[0, :, :] = a[1, :, :]
-    if "S" not in keep: a[-1, :, :] = a[-2, :, :]
-    if "W" not in keep: a[:, 0, :] = a[:, 1, :]
-    if "E" not in keep: a[:, -1, :] = a[:, -2, :]
-    if role in H_TILE:
-        m = (a[:, 0, :] + a[:, -1, :]) // 2
-        a[:, 0, :] = m; a[:, -1, :] = m
-    if role in V_TILE:
-        m = (a[0, :, :] + a[-1, :, :]) // 2
-        a[0, :, :] = m; a[-1, :, :] = m
-    return img(a)
 
 
 # ---- ordered tile list -------------------------------------------------------

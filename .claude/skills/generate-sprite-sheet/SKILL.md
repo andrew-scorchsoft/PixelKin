@@ -445,9 +445,11 @@ and writes `assets/tilesets/_shared/vesper_overworld.index.json` (name → local
 builders consume that via **`tools/maps/mapkit.py`** — `mk.shared_tileset_ref()`,
 `mk.gid("flowers")`, grid/scatter helpers, and `mk.finalize()` (the standing pipeline:
 expand → strip terrain → render → validate). See `build_tinderwick.py` / `build_dimglass.py`
-as the two worked examples; copy one for a new area. (mapkit/build_shared_overworld import
-cleanly; note build_shared_overworld runs at import, so call it as a script, don't `import`
-it for its helpers — copy the small `deborder`/variant helpers if you need them elsewhere.)
+as the two worked examples; copy one for a new area. The reusable seam tooling lives in
+**`tools/maps/tileforge.py`** (`deborder(im, role)`, `jitter`, `roll`, `flip_h`,
+`whole_downscale`) — import it in any builder; it's side-effect-free. (`build_shared_overworld.py`
+runs its build on execution, so run it as a script, not as an import — get the helpers from
+`tileforge`.)
 
 > **When you DO need new tiles** (a new biome's organics — a cave, a snowfield, a different
 > cliff), generate them with the prompting standard below, deborder/variant them, and append
