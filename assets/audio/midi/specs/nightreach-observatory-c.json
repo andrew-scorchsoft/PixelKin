@@ -1,0 +1,58 @@
+{
+  "title": "Nightreach Observatory - Skyweave",
+  "_note": "Option C lush snes richer register. era snes (8 voices, chords, warm reverb/echo). 84 BPM, 4/4, contemplative A minor blooming to C major, 24 bars. Lonely lead (now with warm reverb), answered by a soft 2nd lead a phrase later — call-and-response across the dome. Lush snes pad CHORDS under a glassy bell arpeggio — the densest, most orchestral texture in the region. Deep sustained low end. Faint clockwork tick + a soft distant timpani-ish (tom) swell at section turns; light shimmer at the seam. Vesper motif stated vast and arpeggiated by lead one (E4->A4->B4 ... C5->B4->A4), then ANSWERED by the 2nd lead in full major over the pads — the motif's clearest, most orchestral bloom in the west, the score plainly reaching toward true dawn. ~6-7 voices (within snes's 8). Last bar G->C pickup voice-leads to bar 1.",
+  "era": "snes",
+  "tempo": 84,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "A minor -> C major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "Lonely lead with warm reverb. Vesper vast/arpeggiated; resolves minor toward C major at the turn.",
+      "notes": "E4h. A4q | B4w | rh C5h | B4h. A4q | rw | E4h G4h | A4w | rh E4h | rw | A4h. G4q | C5h. B4q | A4w | rw | E4h A4h | C5h. B4q | A4w | rw | C5h E5h | A5h. G5q | E5h C5h | rw | G4h C5h | E5h D5h | C5h. B4q"
+    },
+    {
+      "name": "answer",
+      "voice": "flute",
+      "octave": 4,
+      "gain": 0.55,
+      "_note": "Soft 2nd lead answering across the dome a phrase later, blooming in full major.",
+      "notes": "rw | rw | E4h. A4q | rw | B4h. C5q | rw | rw | A4h. G4q | E4h G4h | rw | rw | rw | C5h. B4q | rw | rw | rw | C5h E5h | rw | rw | rw | A5h. G5q | E5h C5h | rw | rw"
+    },
+    {
+      "name": "bells",
+      "voice": "bell",
+      "octave": 4,
+      "gain": 0.5,
+      "_note": "Glassy bell arpeggio over the pads — Lunar/Light shimmer.",
+      "notes": "A4e C5e E5e A5e E5e C5e A4e E4e | A4e C5e E5e A5e E5e C5e A4e E4e | C5e E5e G5e C6e G5e E5e C5e G4e | E4e A4e C5e E5e C5e A4e E4e A4e | C4e E4e G4e C5e G4e E4e C4e G3e | A4e C5e E5e A5e E5e C5e A4e E4e | E4e G4e B4e E5e B4e G4e E4e B3e | A4e C5e E5e A5e E5e C5e A4e E4e | F4e A4e C5e F5e C5e A4e F4e C4e | A4e C5e E5e A5e E5e C5e A4e E4e | C4e E4e G4e C5e G4e E4e C4e G3e | G4e B4e D5e G5e D5e B4e G4e D4e | A4e C5e E5e A5e E5e C5e A4e E4e | F4e A4e C5e F5e C5e A4e F4e C4e | C4e E4e G4e C5e G4e E4e C4e G3e | E4e A4e C5e E5e C5e A4e E4e A4e | A4e C5e E5e A5e E5e C5e A4e E4e | C4e E4e G4e C5e G4e E4e C4e G3e | C4e E4e G4e C5e G4e E4e C4e G3e | A4e C5e E5e A5e E5e C5e A4e E4e | E4e G4e B4e E5e B4e G4e E4e B3e | C4e E4e G4e C5e G4e E4e C4e G3e | F4e A4e C5e F5e C5e A4e F4e C4e | G4e B4e D5e G5e D5e B4e G4e D4e"
+    },
+    {
+      "name": "pad",
+      "voice": "pad",
+      "octave": 3,
+      "gain": 0.45,
+      "_note": "Lush snes pad chords — Am, F, C, G, Em; blooms toward C major. Chords allowed on snes.",
+      "notes": "A3+C4+E4w | A3+C4+E4w | C4+E4+G4w | E3+A3+C4w | C3+E3+G3w | A3+C4+E4w | E3+G3+B3w | A3+C4+E4w | F3+A3+C4w | A3+C4+E4w | C3+E3+G3w | G3+B3+D4w | A3+C4+E4w | F3+A3+C4w | C3+E3+G3w | E3+A3+C4w | A3+C4+E4w | C3+E3+G3w | C3+E3+G3w | A3+C4+E4w | E3+G3+B3w | C3+E3+G3w | F3+A3+C4w | G3+B3+D4w"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.9,
+      "_note": "Deep sustained low end with warm SNES echo.",
+      "notes": "A2w | A2w | C2w | E2h A2h | C2w | A2w | E2w | A2h C3h | F2w | A2w | C2w | G2w | A2w | F2w | C2w | E2h A2h | A2w | C2w | C2w | A2w | E2w | C2w | F2h C2h | G2h G2h"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "_note": "Faint clockwork tick (hat on quarters) + a soft distant timpani-ish tom swell at section turns; light shimmer at the seam.",
+      "notes": "q hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat tom | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat tom | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat tom | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat tom | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat tom | hat hat hat hat | hat hat hat hat | hat hat hat tom | hat hat tom crash"
+    }
+  ]
+}

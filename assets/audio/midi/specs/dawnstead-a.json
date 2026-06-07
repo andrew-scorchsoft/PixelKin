@@ -1,0 +1,43 @@
+{
+  "title": "Dawnstead - The Lullaby in Full",
+  "_note": "Anchor / dawn payoff. gbc 4-voice, no chords. 100 BPM, 4/4, C major, radiant, NO minor turn. Reprises Tinderwick A's Lantern Lullaby melody WHOLE but confident, mid-tempo - the wistful A-minor answer now resolved to a glowing C-major answer. Same town, same melody, finally in daylight. Vesper motif = the FULL BLOOM, the lift finally reaching the sky. Harmony = the old music-box arp opened into a flowing harp-like ascending arp (Light sparkle). Bass = warm walking root-motion (the hearth pulse grown into a confident stride). Percussion = gentle present groove, soft kick/brush, warm fill at seam. 16-bar loop (the lullaby's own length, in daylight) ~38s.",
+  "era": "gbc",
+  "tempo": 100,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "Tinderwick's lullaby reprised whole, confident in major. Vesper full bloom: G3->C4->D4 lift ... E4->D4->C4 settle, the lift now reaching higher (up to G4/C5). The former A-minor B section now glows in C major (C-E-G / F-A-C / G). Final bar leans on G (V) into bar 1.",
+      "notes": "G3q C4q D4h | E4q D4q C4h | G3q C4q D4q E4q | G4h. E4q | G3q C4q D4h | E4q D4q C4h | C4q E4q G4q E4q | C4h. rq | E4q G4q C5h | B4q A4q G4h | F4q E4q D4q E4q | C4h. C5q | G3q C4q D4h | E4q D4q C4h | E4q G4q C5q G4q | E4q D4q G3h"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.55,
+      "_note": "Flowing harp-like ascending arpeggio (Light sparkle) - the old music-box opened up. Broken triads rolling upward, eighths. C, F, G, Am following the bass; all resolving bright.",
+      "notes": "C4e E4e G4e C5e G4e E4e C4e E4e | C4e E4e G4e C5e G4e E4e C4e E4e | C4e E4e G4e C5e E4e G4e C5e G4e | G4e B4e D5e G5e D5e B4e G4e B4e | C4e E4e G4e C5e G4e E4e C4e E4e | C4e E4e G4e C5e G4e E4e C4e E4e | C4e E4e G4e C5e G4e E4e C4e E4e | C4e E4e G4e C5e E4e G4e C5e E5e | C4e E4e G4e C5e E5e C5e G4e E4e | G4e B4e D5e G5e D5e B4e G4e B4e | F4e A4e C5e F5e C5e A4e F4e A4e | C4e E4e G4e C5e G4e E4e C4e E4e | C4e E4e G4e C5e G4e E4e C4e E4e | C4e E4e G4e C5e G4e E4e C4e E4e | C4e E4e G4e C5e E5e C5e G4e E4e | G4e B4e D5e B4e G4e B4e D5e G4e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.95,
+      "_note": "Warm walking root-motion bass - the hearth pulse grown into a confident stride. Quarter motion, root-fifth-octave walks.",
+      "notes": "C2q G2q C3q G2q | C2q E2q G2q E2q | C2q G2q C3q E3q | G2q B2q D3q G2q | C2q G2q C3q G2q | C2q E2q G2q E2q | C2q E2q G2q C3q | C2q G2q E2q G2q | C2q E2q G2q C3q | G2q D3q B2q G2q | F2q A2q C3q F3q | C2q G2q E2q C2q | C2q G2q C3q G2q | C2q E2q G2q E2q | C2q E2q G2q C3q | G2q D3q G2q G3q"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.6,
+      "_note": "Gentle present groove: soft kick on 1&3, brushy hat on offbeats, a warm crash fill at the seam (bars 8 & 16).",
+      "notes": "e kick hat hat hat kick hat hat hat | kick hat snare hat kick hat hat hat | kick hat hat hat kick hat hat hat | kick hat snare hat kick hat hat hat | kick hat hat hat kick hat hat hat | kick hat snare hat kick hat hat hat | kick hat hat hat kick hat hat hat | kick hat snare hat kick hat snare crash | kick hat hat hat kick hat hat hat | kick hat snare hat kick hat hat hat | kick hat hat hat kick hat hat hat | kick hat snare hat kick hat hat hat | kick hat hat hat kick hat hat hat | kick hat snare hat kick hat hat hat | kick hat hat hat kick hat hat hat | kick hat snare hat kick hat snare crash"
+    }
+  ]
+}

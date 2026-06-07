@@ -1,0 +1,58 @@
+{
+  "title": "Sunken Solarium - Sunsketch Bloom",
+  "_note": "Option C relit/brightened variant. era gba (richer register, chords allowed, warm reverb). 100 BPM, 4/4, radiant G major, 24 bars. Brighter, more active lead — wistful sighs replaced with lifts. Faster harp-like pluck arpeggio PLUS a soft warm gba pad sustaining underneath for bloom. Warm walking bass with more forward motion. Fuller soft kit + light shaker hat, gentle forward groove. A soft warm counter-lead (pad/triangle) echoes the main lead a bar later — call-and-response. Vesper motif stated in full radiant major (D4->G4->A4 ... B4->A4->G4) then ANSWERED by the warm counter-voice, the motif sung twice, second time brighter: the score reaching toward dawn. ~6 voices (within gba's 8). Last bar D->G pickup voice-leads to bar 1.",
+  "era": "gba",
+  "tempo": 100,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "G major (radiant)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "Brighter, active; lifts not sighs. Vesper motif radiant major.",
+      "notes": "D4q G4q A4h | B4q A4q G4q B4q | D5q B4q A4q G4q | A4h G4h | D4q G4q B4h | D5q B4q A4q D5q | C5q B4q A4q G4q | B4h A4h | E4q A4q C5h | B4q A4q G4q E4q | D4q G4q B4q D5q | E5q D5q B4h | D4q G4q A4h | B4q A4q G4q B4q | D5q C5q B4q A4q | G4h B4h | D5q B4q G4q A4q | B4q C5q D5h | E5q D5q B4q G4q | A4q B4q D5h | G5q E5q D5q B4q | A4q G4q E4q D4q | D4q G4q B4q D5q | A4q G4q D4h"
+    },
+    {
+      "name": "counter",
+      "voice": "triangle",
+      "octave": 4,
+      "gain": 0.6,
+      "_note": "Warm counter-lead echoing the motif a bar/phrase later — call-and-response, the second statement brighter.",
+      "notes": "rw | D4q G4q A4h | rw | B4q A4q G4h | rw | G4q B4q D5h | rw | D5q C5q B4h | rw | A4q G4q E4h | rw | B4q A4q G4h | rw | D4q G4q A4h | rw | B4q D5q G4h | rw | D5q B4q A4h | rw | B4q A4q G4h | rw | E4q D4q B3h | rw | D4q G4q D4h"
+    },
+    {
+      "name": "harmony",
+      "voice": "pluck",
+      "octave": 3,
+      "gain": 0.6,
+      "_note": "Faster harp-like pluck arpeggio rolling, the radiant Solar bloom.",
+      "notes": "G3s B3s D4s G4s B4s G4s D4s B3s G3s B3s D4s G4s B4s G4s D4s B3s | D3s G3s B3s D4s G4s D4s B3s G3s D3s G3s B3s D4s G4s D4s B3s G3s | G3s B3s D4s G4s B4s G4s D4s B3s G3s B3s D4s G4s B4s G4s D4s B3s | D3s F#3s A3s D4s F#4s D4s A3s F#3s D3s F#3s A3s D4s F#4s D4s A3s F#3s | G3s B3s D4s G4s B4s G4s D4s B3s G3s B3s D4s G4s B4s G4s D4s B3s | G3s B3s D4s G4s B4s G4s D4s B3s G3s B3s D4s G4s B4s G4s D4s B3s | C3s E3s G3s C4s E4s C4s G3s E3s C3s E3s G3s C4s E4s C4s G3s E3s | D3s F#3s A3s D4s F#4s D4s A3s F#3s D3s F#3s A3s D4s F#4s D4s A3s F#3s | A3s C4s E4s A4s C5s A4s E4s C4s A3s C4s E4s A4s C5s A4s E4s C4s | D3s F#3s A3s D4s F#4s D4s A3s F#3s D3s F#3s A3s D4s F#4s D4s A3s F#3s | G3s B3s D4s G4s B4s G4s D4s B3s G3s B3s D4s G4s B4s G4s D4s B3s | E3s G3s B3s E4s G4s E4s B3s G3s E3s G3s B3s E4s G4s E4s B3s G3s | G3s B3s D4s G4s B4s G4s D4s B3s G3s B3s D4s G4s B4s G4s D4s B3s | D3s G3s B3s D4s G4s D4s B3s G3s D3s G3s B3s D4s G4s D4s B3s G3s | G3s B3s D4s G4s B4s G4s D4s B3s C3s E3s G3s C4s E4s C4s G3s E3s | D3s F#3s A3s D4s F#4s D4s A3s F#3s D3s F#3s A3s D4s F#4s D4s A3s F#3s | G3s B3s D4s G4s B4s G4s D4s B3s G3s B3s D4s G4s B4s G4s D4s B3s | D3s G3s B3s D4s G4s D4s B3s G3s D3s G3s B3s D4s G4s D4s B3s G3s | G3s B3s D4s G4s B4s G4s D4s B3s G3s B3s D4s G4s B4s G4s D4s B3s | D3s F#3s A3s D4s F#4s D4s A3s F#3s D3s F#3s A3s D4s F#4s D4s A3s F#3s | G3s B3s D4s G4s B4s G4s D4s B3s G3s B3s D4s G4s B4s G4s D4s B3s | C3s E3s G3s C4s E4s C4s G3s E3s C3s E3s G3s C4s E4s C4s G3s E3s | G3s B3s D4s G4s B4s G4s D4s B3s D3s G3s B3s D4s G4s D4s B3s G3s | D3s F#3s A3s D4s F#4s D4s A3s F#3s A3s D4s F#4s A4s D4s A3s F#3s D3s"
+    },
+    {
+      "name": "pad",
+      "voice": "pad",
+      "octave": 3,
+      "gain": 0.45,
+      "_note": "Soft warm gba pad sustaining underneath for bloom — real chords allowed on gba.",
+      "notes": "G3+B3+D4w | G3+B3+D4w | G3+B3+D4w | D3+F#3+A3w | G3+B3+D4w | G3+B3+D4w | C3+E3+G3w | D3+F#3+A3w | A3+C4+E4w | D3+F#3+A3w | G3+B3+D4w | E3+G3+B3w | G3+B3+D4w | G3+B3+D4w | C3+E3+G3w | D3+F#3+A3w | G3+B3+D4w | G3+B3+D4w | G3+B3+D4w | D3+F#3+A3w | G3+B3+D4w | C3+E3+G3w | G3+B3+D4w | D3+F#3+A3w"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.9,
+      "_note": "Warm walking bass with more forward motion.",
+      "notes": "G2q D3q G2q B2q | D2q A2q D3q A2q | G2q D3q G2q B2q | D2q A2q D2q F#2q | G2q D3q G2q B2q | G2q D3q B2q G2q | C2q G2q C3q G2q | D2q A2q D3q A2q | A2q E3q A2q C#3q | D2q A2q D3q A2q | G2q D3q G2q B2q | E2q B2q E3q B2q | G2q D3q G2q B2q | D2q A2q D3q A2q | C2q G2q E2q C2q | D2q A2q D3q A2q | G2q D3q G2q B2q | G2q D3q B2q G2q | G2q D3q G2q B2q | D2q A2q D2q F#2q | G2q D3q G2q B2q | C2q G2q C3q G2q | G2q D3q B2q G2q | D2q A2q D2q D3q"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "_note": "Fuller soft kit + light shaker hat, gentle forward groove; fill at the seam.",
+      "notes": "e kick hat hat hat snare hat hat hat | kick hat hat hat snare hat kick hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat kick crash | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat kick hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat kick crash | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat kick hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat kick crash | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat kick hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat kick crash | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat kick hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat kick crash | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat kick hat | kick hat hat hat snare hat hat hat | kick snare hat snare kick snare hat crash"
+    }
+  ]
+}
