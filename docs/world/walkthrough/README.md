@@ -119,7 +119,7 @@ point?*
 | A1 Meet & choose | Tinderwick | Friendly; "race you to complete the map" |
 | A2 First friendly battle | Dimglass Coast | Teaches trainer battles; Wren ~2 levels under you |
 | A3 Shaken | Lowleaf/Cinderhead (east) | After the first drained site, Wren voices sympathy for the Hollowing |
-| A4 The wobble | Pale Vault (north) | At a low point Wren *nearly* joins the Hollowing; a hard battle, then they walk off unsure |
+| A4 The wobble | Pale Vault (north) | At a low point Wren *nearly* joins the Hollowing; a hard battle (Wren is deliberately **at/above** the player's level here — the one beat that breaks the usual "Wren ~2 under you" pattern; don't "correct" it), then they walk off unsure |
 | A5 Return | West / Spire approach | Wren comes back having reasoned it through; helps at the Spire |
 | A6 Resolved | Dawnstead (post-game) | Wren in daylight, at peace; optional rematch |
 

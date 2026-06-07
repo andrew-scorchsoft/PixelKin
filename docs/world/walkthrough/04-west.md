@@ -19,8 +19,8 @@
 |---|---|
 | **Areas** | Hushfrost Pass I → II (frozen route) · **Sunken Solarium** (ruin, Lumenary 7) · Sunvault Climb I → II (sun-garden route) · **Nightreach Observatory** (star-temple town, Lumenary 8) · outer detour **Coldfog Marches I → II** · spurs/landmarks **Aurora Hollow**, **Helia Vault**, **Drownlight Beacon**, **Hollowfen Stillworks** |
 | **Reading order (MAIN PATH)** | `pale_vault_glacier` → **Hushfrost Pass I → II** → **Sunken Solarium** → **Sunvault Climb I → II** → **Nightreach Observatory** → `vesper_crossroads` (handed to Central). The **Coldfog Marches** detour is OPTIONAL and taken LATE, from the hub — not the road to Nightreach. |
-| **Entry state** (from North) | ~lv40 · holds **Tidecall + Glimmerstep + Updraft Kite + Emberward** · `gleam:storm` + `gleam:frost` · `flag:crown_north` · `flag:shortcut_windward` · `flag:met_cor` |
-| **Exit state** (to Central) | ~lv52 · holds **ALL SIX Lantern Gifts** (adds Sunsketch + Starreach) · **all eight Gleams** · `flag:crown_west` · `flag:hub_unlocked` · `flag:great_null_known`; the Spire is now openable |
+| **Entry state** (from North) | ~lv40 · holds **Tidecall + Glimmerstep + Updraft Kite + Emberward** · `gleam:storm` + `gleam:frost` · `flag:crown_north` · `flag:shortcut_windward` · narrative ledger `flag:dusk_begins` + `flag:met_hollowing` + `flag:met_cor` |
+| **Exit state** (to Central) | ~lv52 · holds **ALL SIX Lantern Gifts** (adds Sunsketch + Starreach) · **all eight Gleams** · `flag:crown_west` · `flag:hub_unlocked` · narrative ledger `flag:dusk_begins` + `flag:met_hollowing` + `flag:met_cor` + `flag:great_null_known`; the Spire is now openable |
 | **Gleams earned** | **Solar** (Lucan Pyre, Sunken Solarium, ace ~46) · **Lunar** (Nessa Cole, Nightreach, ace ~52) — both relit → `flag:crown_west` → `flag:hub_unlocked` |
 | **Lantern Gifts earned** | **Sunsketch** (Sunken Solarium) · **Starreach** (Nightreach) — the endgame traversal |
 | **Arc beats landing here** | **B4** full-scale Hollowing (Coldfog Marches + Hollowfen Stillworks; the **Great Null** aimed at the **Keystar** is named → `flag:great_null_known`) · **A5** Wren returns resolved (late West / Spire approach) · **C4** Fenn's counsel before the Spire (Nightreach) · **E** Last-Warm-Day (Solarium), Star-vigil (Nightreach) |
@@ -581,8 +581,9 @@ held) · **Gleam:** none · **rec. level ~46–50.**
 The Central writer picks up at **`nightreach_observatory → vesper_crossroads`** (Lanternway,
 `to_crossroads`) with the player at **~lv52**, holding **ALL SIX Lantern Gifts** (Tidecall +
 Glimmerstep + Updraft Kite + Emberward + **Sunsketch** + **Starreach**), **all eight Gleams**,
-**`flag:crown_west`**, **`flag:hub_unlocked`**, **`flag:great_null_known`**,
-**`flag:met_cor`**, **`flag:shortcut_windward`**. The Crown is complete, the Penumbra has parted,
+**`flag:crown_west`**, **`flag:hub_unlocked`**, **`flag:shortcut_windward`**, and the persistent
+narrative ledger **`flag:dusk_begins`** + **`flag:met_hollowing`** + **`flag:met_cor`** +
+**`flag:great_null_known`**. The Crown is complete, the Penumbra has parted,
 and the four cardinal roads `vesper_crossroads → penumbra_ring` (`requires_flag:
 flag:hub_unlocked`) are open; `penumbra_ring → umbral_spire` (`requires_ability: starreach` — now
 held) is the final ascent. **Starreach** reopenings handed to Central/East: **Crystoll Vault**

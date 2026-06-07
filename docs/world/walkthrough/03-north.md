@@ -18,8 +18,8 @@
 |---|---|
 | **Areas** | Galehigh Terraces (cliff town, Lumenary 5) · Windward Stair I → II (mountain route) · Pale Vault Glacier (ice town, Lumenary 6) · spurs **Wind-Eye**, **Thunderroost** |
 | **Reading order** | `cinderhead_deep` → **Galehigh Terraces** → **Windward Stair I → II** → **Pale Vault Glacier** → `hushfrost_pass_i` (handed to West) |
-| **Entry state** (from East) | ~lv28 · holds **Tidecall + Glimmerstep** · `gleam:verdant` + `gleam:stone` · `flag:crown_east` · `flag:met_hollowing` |
-| **Exit state** (to West) | ~lv40 · holds **Tidecall + Glimmerstep + Updraft Kite + Emberward** · `gleam:storm` + `gleam:frost` · `flag:crown_north` · `flag:shortcut_windward` · `flag:met_cor` |
+| **Entry state** (from East) | ~lv28 · holds **Tidecall + Glimmerstep** · `gleam:verdant` + `gleam:stone` · `flag:crown_east` · narrative ledger `flag:dusk_begins` + `flag:met_hollowing` |
+| **Exit state** (to West) | ~lv40 · holds **Tidecall + Glimmerstep + Updraft Kite + Emberward** · `gleam:storm` + `gleam:frost` · `flag:crown_north` · `flag:shortcut_windward` · narrative ledger `flag:dusk_begins` + `flag:met_hollowing` + `flag:met_cor` (all persistent, carried forward) |
 | **Gleams earned** | **Storm** (Mira Vael, Galehigh, ace ~34) · **Frost** (Ysolde Frost, Pale Vault, ace ~40) — both relit → `flag:crown_north` |
 | **Lantern Gifts earned** | **Updraft Kite** (Galehigh) · **Emberward** (Pale Vault) |
 | **Arc beats landing here** | **B3** Còr appears in person (`flag:met_cor`, near Pale Vault — no battle) · **A4** Wren's wobble (hard rival battle near Pale Vault) · **C3** Fenn reveals the shared past with Còr |
@@ -353,7 +353,8 @@ deep-ice spurs), **NOT** the town or Lumenary · **Gleam:** Frost (Ysolde Frost,
 
 The West writer picks up at **`pale_vault_glacier → hushfrost_pass_i`** (ungated) with the player
 at **~lv40**, holding **Tidecall + Glimmerstep + Updraft Kite + Emberward**, `gleam:storm` +
-`gleam:frost`, **`flag:crown_north`**, **`flag:shortcut_windward`**, **`flag:met_cor`**. The
+`gleam:frost`, **`flag:crown_north`**, **`flag:shortcut_windward`**, and the persistent narrative
+ledger **`flag:dusk_begins`** + **`flag:met_hollowing`** + **`flag:met_cor`** (all carried forward). The
 **Hushfrost Pass I → II** boundary (`to_pass_ii`) is gated by **Emberward — now held** — so the
 West onward path is open the moment the player arrives. **Aurora Hollow** (off Hushfrost II,
 Emberward) is West's to write. Arc beats still owed downstream: **A5** (Wren returns, resolved),

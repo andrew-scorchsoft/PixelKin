@@ -192,60 +192,25 @@ landmarks from earlier regions are now reachable. They were teased as backtrack 
 game; post-game (or any time after Starreach) is when you cash them in. Both are
 completionist destinations, reached through the now-open hub.
 
-#### Crystoll Vault — *a crystal-lit deep vault off the eastern mine*
+Both are **owned and fully spec'd on their home maps** — this section is the *journey* beat
+(when you cash them in), not a second home for the data. Don't re-author their At-a-glance /
+validation hooks here; cross-check them where they live:
 
-**At a glance** — `crystoll_vault` · spur (late) · east · entry: in from `cinderhead_deep` via
-`to_crystoll` (`requires_ability: starreach`), bidir · gate: **Starreach** · reward: **rare
-Stone/Light kin** (atlas §3) · rec. level: 55–65.
+- **Crystoll Vault** — a crystal-lit deep vault off the eastern mine. Reach `cinderhead_deep`
+  (via the `flag:shortcut_mine` hub re-link, or the Glimmerstep mine route), then cross the
+  **Starreach** void in. Reward: a rare **Stone/Light** kin. `[MUST-DO]` for completionists —
+  the `[LATER]` teased back in East closes here. **Node + hooks owned by
+  [`02-east.md`](./02-east.md)** (Cinderhead Deep; `cinderhead_deep → crystoll_vault`,
+  `requires_ability: starreach`, `graph.ts:148`).
+- **Starwell** — a near-legendary kin in the heart of the parted Penumbra. Through the open hub
+  to `penumbra_ring`, then cross the final **Starreach** voids in; the game's standout optional
+  catch. `[MUST-DO]` — the `[LATER]` teased from the West/endgame closes here. **Node + hooks
+  owned by [`05-central-endgame.md`](./05-central-endgame.md)** (Penumbra Ring;
+  `penumbra_ring → starwell`, `requires_ability: starreach`, `graph.ts:155`).
 
-1. **Main path** — reach `cinderhead_deep` (via the `flag:shortcut_mine` re-link to the hub,
-   or the Glimmerstep mine route), then cross the **Starreach** void into the vault; a short
-   crystal micro-spur to the rare-kin reward.
-2. **Story beats** — none; pure collecting payoff. The "I marked this on the map twenty hours
-   ago" satisfaction is the beat.
-3. **Mechanic introductions** — none new; **Starreach** (held) is the key that opens the door.
-4. **Optional content**
-   - **Crystoll Vault rare Stone/Light kin** — `[MUST-DO]` for completionists; the unique
-     reward this spur has been holding since the East region.
-5. **Don't-miss callouts** — **it was a `[LATER]` from East all along** — the back-reference
-   closes here (spine §5 Starreach row lists Crystoll Vault).
-6. **Validation hooks**
-   - **Map id / kind:** `crystoll_vault` · spur, `optional: true`, region `east`
-     (`graph.ts:89`).
-   - **Edge:** `cinderhead_deep → crystoll_vault` via `to_crystoll`, **`requires_ability:
-     starreach`**, bidir (`graph.ts:148`). No soft-lock: Starreach is earned at Nightreach,
-     far earlier in §2 than this edge is crossed.
-   - **Reward:** rare **Stone/Light** kin as a low-weight `EncounterZone` entry (or a one-off
-     static `EventTrigger` catch) per atlas §3 / the "how rewards are represented" note.
-   - **Curve:** encounter band 55–65 (§4 post-game), continuous with the post-dawn world.
-
-#### Starwell — *a near-legendary kin in the heart of the parted Penumbra*
-
-**At a glance** — `starwell` · landmark (post-Crown) · central · entry: in from `penumbra_ring`
-via `to_starwell` (`requires_ability: starreach`), bidir · gate: **Starreach** (+ reachable
-once the Penumbra parts on `hub_unlocked`) · reward: **a near-legendary kin** (atlas §3) ·
-rec. level: 55–65.
-
-1. **Main path** — through the open hub to `penumbra_ring`, then cross the final **Starreach**
-   voids into the well; the climactic optional catch of the game.
-2. **Story beats** — the near-legendary catch is itself the capstone collecting beat; keep any
-   flavour in the bittersweet-warm register (a light that waited out the long night).
-3. **Mechanic introductions** — none new; **Starreach** is the key.
-4. **Optional content**
-   - **Starwell near-legendary kin** — `[MUST-DO]` for completionists; the rarest reward in
-     the post-Crown map.
-5. **Don't-miss callouts** — **it was a `[LATER]` from the West/endgame** (spine §5 Starreach
-   row lists Starwell); reachable only once the Penumbra parted.
-6. **Validation hooks**
-   - **Map id / kind:** `starwell` · landmark, `optional: true`, region `central`
-     (`graph.ts:114`).
-   - **Edge:** `penumbra_ring → starwell` via `to_starwell`, **`requires_ability: starreach`**,
-     bidir (`graph.ts:155`). Reachable only once `penumbra_ring` itself is (i.e. after
-     `flag:hub_unlocked` parts the Penumbra) — no soft-lock, since both Starreach and
-     `hub_unlocked` precede the Spire/endgame in §2.
-   - **Reward:** near-legendary kin as a low-weight `EncounterZone` entry or a one-off static
-     `EventTrigger` catch (atlas §3).
-   - **Curve:** band 55–65 (§4 post-game).
+Neither is a soft-lock: Starreach is earned at Nightreach (and the Penumbra parts on
+`hub_unlocked`), both well before either edge is crossed (spine §2). Keep any flavour in the
+bittersweet-warm register; encounter band 55–65 (§4 post-game).
 
 > **Other `[LATER]` content gated by Starreach + dawn.** Per the spine §5 Starreach row, the
 > *only* two map landmarks that wait specifically on **Starreach** are **Crystoll Vault** and

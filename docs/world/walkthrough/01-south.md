@@ -271,6 +271,10 @@ per spine §0 rule 1) · **Gleam: Tide** (Reyl Wash, ace ~16) + **Tidecall** · 
    6. **Now-accessible callout:** with **Tidecall** in hand, **backtrack to Dimglass II →
       Gullcry Rock** (rare sea-bird kin + Tide charm), cross Pearlmoor's own shallow islets to
       the sea-shrine, and the East road's **Saltreach Fen I→II** boundary is now passable.
+   7. **The 12→16 on-ramp.** Pearlmoor is entered at ~12 but South exits at ~16 (spine §4): the
+      ~4 levels are meant to be earned *here*, in Pearlmoor's Tidecall islet/sea-shrine loop and
+      the Gullcry Rock backtrack, before stepping into Saltreach Fen — so East opens with no
+      level cliff. (The Tidecall content is the on-ramp, not optional grind.)
 
 2. **Story beats**
    - **E — the Tide-blessing.** Reyl's Gleam is given inside the port's tide festival; warm,

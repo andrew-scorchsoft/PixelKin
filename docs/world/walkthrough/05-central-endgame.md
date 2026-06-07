@@ -21,7 +21,7 @@
 |---|---|
 | **Areas** | Vesper Crossroads (outer-ring hub) · Penumbra Ring (dark-fog barrier) · Umbral Spire (climax dungeon) · landmark **Starwell** |
 | **Reading order** | West hands off → **Vesper Crossroads** (hub, now fully open) → **Penumbra Ring** (Starreach final crossings) → **Umbral Spire** (ascent → climax) → `dawnstead` (handed to post-game) |
-| **Entry state** (from West) | **~lv52** · holds **ALL SIX Lantern Gifts** (Tidecall, Glimmerstep, Updraft Kite, Emberward, Sunsketch, **Starreach**) · all **eight Gleams** · **`flag:hub_unlocked`** · `flag:great_null_known` · **Wren returned** (A5) |
+| **Entry state** (from West) | **~lv52** · holds **ALL SIX Lantern Gifts** (Tidecall, Glimmerstep, Updraft Kite, Emberward, Sunsketch, **Starreach**) · all **eight Gleams** · **`flag:hub_unlocked`** · `flag:crown_west` · narrative ledger `flag:dusk_begins` + `flag:met_hollowing` + `flag:met_cor` + `flag:great_null_known` · **Wren returned** (A5) |
 | **Exit state** (to post-game) | **~lv56+** · **`flag:keystar_relit`** · **`flag:dawn`** set → hands to [`06-postgame.md`](./06-postgame.md) at `umbral_spire → dawnstead` |
 | **Gleams / Gifts earned** | **None** — every Gleam and Gift is already in hand. This region is where they all *converge and pay off*, not where new ones are taught. |
 | **Arc beats landing here** | **B5** climax (confront the Great Null, relight the Keystar, resolve by *out-remembering*) · **A5→A6 transition** (Wren helps at the Spire, side-by-side — full A6 is post-game) · **C4** Fenn's counsel before the Spire |
