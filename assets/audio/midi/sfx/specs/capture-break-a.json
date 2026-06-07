@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- capture break a (pop + down-flick, light escapes)",
+  "_note": "Lamp pops open: noise burst descends (the pop/crack) while a pulse down-glide deflates -- the kin's light breaking free. Disappointing but not harsh.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "pop",   "voice": "noise",   "octave": 5, "gain": 0.8, "notes": "C5~C3e@100" },
+    { "name": "flick", "voice": "pulse25", "octave": 5, "gain": 0.8, "notes": "E5~C5e@90" }
+  ]
+}

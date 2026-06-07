@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- progress learn a (bright confirming sparkle + bell)",
+  "_note": "A move is learned: G5-C6-E6 ascending run on pulse12 for brightness, with a bell ping on the final note. Confident and bright.",
+  "era": "sfx",
+  "tempo": 220,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "sparkle", "voice": "pulse12", "octave": 5, "gain": 0.9, "notes": "G5s C6s E6e@115" },
+    { "name": "ping",    "voice": "bell",    "octave": 6, "gain": 0.7, "notes": "rs rs E6e@80" }
+  ]
+}

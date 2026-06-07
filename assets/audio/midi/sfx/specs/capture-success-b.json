@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- capture success b (two-voice warm bloom)",
+  "_note": "Variant: pulse25 chirps up from E4 to C5 in 4 steps while a wave voice sweeps warmly underneath -- fuller, more 'wrapped in light' feeling. Bell holds longer.",
+  "era": "sfx",
+  "tempo": 180,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "rise",  "voice": "pulse25", "octave": 4, "gain": 0.9, "notes": "E4s G4s B4s E5e@115" },
+    { "name": "warmth","voice": "bell",    "octave": 5, "gain": 0.75,"notes": "rs G5q@85" }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- capture throw b (arc glide + click)",
+  "_note": "Pulse glide arcs upward (the Lamp sailing through air) then a short noise tick on impact -- airier and more tonal than -a.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "arc",   "voice": "pulse25", "octave": 4, "gain": 0.8, "notes": "C4~G4e@85" },
+    { "name": "click", "voice": "noise",   "octave": 4, "gain": 0.6, "notes": "rs G4s@80" }
+  ]
+}

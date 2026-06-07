@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- capture success c (click-lock + dual-voice sparkle)",
+  "_note": "Crisper click on pulse12, then a two-voice ascending figure: pulse25 plays the core arpeggio while a quiet wave adds harmonic warmth. Bell shimmer on top completes it.",
+  "era": "sfx",
+  "tempo": 220,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "click", "voice": "pulse12", "octave": 4, "gain": 1.0, "notes": "C4s@120 rs G4s C5s E5e@120" },
+    { "name": "bell",  "voice": "bell",    "octave": 6, "gain": 0.65,"notes": "re C6e@80" }
+  ]
+}

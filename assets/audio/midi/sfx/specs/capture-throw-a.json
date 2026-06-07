@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- capture throw a (underhand whoosh into tap)",
+  "_note": "Lamp is thrown with a light underhand whoosh (noise up-glide) into a soft pulse tap on landing. Warm, hopeful gesture.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "whoosh", "voice": "noise",   "octave": 3, "gain": 0.7, "notes": "A3~D4e@90" },
+    { "name": "tap",    "voice": "pulse25", "octave": 4, "gain": 0.9, "notes": "rs D4s@100" }
+  ]
+}

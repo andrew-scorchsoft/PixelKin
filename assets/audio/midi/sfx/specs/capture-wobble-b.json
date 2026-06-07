@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- capture wobble b (lower thunk tick)",
+  "_note": "Slightly lower and duller than -a: tri_bass thud + quiet noise. Feels like the lamp physically rocking on the ground.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "thud",  "voice": "tri_bass","octave": 3, "gain": 0.8, "notes": "E3s@90" },
+    { "name": "noise", "voice": "noise",   "octave": 3, "gain": 0.4, "notes": "E3s@60" }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- progress levelup b (ascending 4-note sparkle with pulse12 shimmer)",
+  "_note": "Slightly richer variant: pulse25 leads the rise (G4-C5-E5-G5) while pulse12 adds a quiet shimmer on the top note -- a touch more 'reward' without becoming a full jingle.",
+  "era": "sfx",
+  "tempo": 220,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "rise",   "voice": "pulse25", "octave": 4, "gain": 1.0, "notes": "G4s C5s E5s G5e@120" },
+    { "name": "shimmer","voice": "pulse12", "octave": 6, "gain": 0.45,"notes": "rs rs rs G6e@70" }
+  ]
+}

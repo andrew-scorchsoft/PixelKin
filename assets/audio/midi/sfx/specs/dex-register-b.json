@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- dex register b (ascending chirp into bell, warmer)",
+  "_note": "Variant: instead of two blips, a small ascending chirp (E6-G6) on pulse25 reads as a question resolved -- then a bell answers above. More melodic than -a, less clinical.",
+  "era": "sfx",
+  "tempo": 220,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "chirp", "voice": "pulse25", "octave": 6, "gain": 0.85,"notes": "E6s G6e@100" },
+    { "name": "bell",  "voice": "bell",    "octave": 6, "gain": 0.8, "notes": "rs C7e@85" }
+  ]
+}

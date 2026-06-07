@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- dex register a (data blip then confirming bell ping)",
+  "_note": "A new kin recorded in the vesperlamp: two quick pulse12 blips (data writing) then a bell chimes a fifth above to confirm -- small, tidy, satisfying.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "blip", "voice": "pulse12", "octave": 6, "gain": 0.9, "notes": "C6s C6s@85" },
+    { "name": "ping", "voice": "bell",    "octave": 6, "gain": 0.75,"notes": "rs rs G6e@90" }
+  ]
+}
