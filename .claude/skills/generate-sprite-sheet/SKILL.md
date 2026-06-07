@@ -232,6 +232,33 @@ inner-corner per cell from its 8 neighbours; the expander resolves that role to 
 tile by `(terrain, autotile)` and degrades gracefully if a set only has the
 9-slice pieces.
 
+### A2) Whole-object structures (buildings, lamps, big trees) — the visual hierarchy
+
+Buildings, lamp-posts, signs, big trees are **NOT tiled** from wall/roof pieces
+(that's what makes them read flat). Generate each as **ONE transparent multi-tile
+object** with real shape, then slice only for placement (art-style §14b):
+
+```bash
+GI=.claude/skills/generate-image/scripts/generate.py
+./venv/bin/python $GI --provider google --transparent --max-dim 0 --aspect 3:4 \
+  --output /tmp/house.png --prompt "<pixel-art preamble> a single COSY COTTAGE as ONE \
+building object on a TRANSPARENT background: peaked clay roof with OVERHANGING eaves + \
+shadow line, shaded timber walls, door, glowing windows, a soft contact shadow at the base. \
+Lit top-left. HARD 1px edges, NO anti-aliasing, NO soft glow/halo. Higher contrast than ground."
+```
+
+Then **declutter → snap to a tile multiple → slice → place** (body on `deco`
+collides, the overhanging top row(s) on `above` so the player walks behind).
+
+**Hard-won lessons (proven):**
+- **No soft glows/halos/shadows on transparent objects.** Semi-transparent pixels
+  pick up the magenta chroma key as a **pink/purple halo**. Keep all shading
+  hard-edged; drop alpha < ~110 and kill magenta bleed in a declutter pass.
+- **Multi-tile by default** — cottage ~5×6 tiles, lamp ~1×3. A one-tile lamp/house
+  is the tell of a flat map.
+- **Draw dominant** (higher contrast/saturation than the recessive ground) so the
+  hierarchy reads.
+
 ### B) Scene mockup → harvest (cohesion + variety)
 
 ```bash

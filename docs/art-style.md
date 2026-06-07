@@ -457,6 +457,44 @@ Flat maps read as flat. Our map format already has the layers; use them:
 
 ---
 
+## 14b. The two classes of art (visual hierarchy — the "10x")
+
+A map read *as a picture* must have a **value hierarchy**: the eye instantly
+separates ground from path from building. That comes from drawing two classes of
+art with **opposite** intent — conflating them is what makes a map read as a flat
+field of "tiles placed."
+
+**Class 1 — Ground / terrain (recessive, seamless).**
+- Drawn as autotile surfaces (§11). **No outline around a tile**, ever — a dark
+  per-tile rim is the #1 cause of the "everything has a border / grid" look.
+- **Low contrast, slightly desaturated** — ground is the *backdrop*, not the
+  subject. Keep its value range narrow and its mid tone away from the structure
+  palette.
+- **2–4 fill variants per surface**, scattered at author time, or a field tiles
+  into a visible repeating pattern.
+
+**Class 2 — Structures / objects (dominant, whole sprites).**
+Buildings, big trees, lamp-posts, signs, fences, wells. These are **NOT tiled**
+from wall/roof pieces — that's what makes houses read as flat. Each is **one
+multi-tile object**, designed with real shape, then sliced only for placement:
+- **Drawn as a single transparent image** with: a clear silhouette, a **roof/eave
+  overhang** that reads as 3-D, **shaded walls** (lit top-left, shadow
+  bottom-right), windows/door with depth, and a **soft contact shadow** on the
+  ground at its base.
+- **Higher contrast and saturation than the ground** so it pops (the hierarchy).
+- **Multi-tile by default** — a cottage is ~4×4–5×5 tiles, a lamp-post ~1×2–1×3.
+  A one-tile lamp is wrong.
+- **Placed as a unit**: body on `deco` (collides), the overhanging top on `above`
+  (player walks behind it). Generate the object whole → slice into tiles → stamp
+  the slice across its footprint (same "draw together, slice with code" rule as
+  terrain — the design lives in the whole image, not in interchangeable tiles).
+- **Transparent** (native alpha) so it sits over any ground.
+
+> Honest ceiling: AI tile-by-tile assembly tops out at exactly the things a flat
+> map gets wrong — hierarchy, building shape, borderless ground. Ground autotiles
+> are well within reach; **hero structures are whole drawn objects** and may need
+> a hand-finishing pass on top of the generated base.
+
 ## 15. Map QA — render & audit against the bar
 
 Before a map is "done", **render it to a PNG and look at it** against the
