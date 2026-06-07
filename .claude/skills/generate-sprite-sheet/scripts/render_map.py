@@ -136,6 +136,16 @@ def main() -> int:
                     blit_gid(canvas, gid, tx, ty)
         drawn.append(ly["name"])
 
+    # Whole-structure objects (buildings, trees, lamps): composite each sprite at
+    # its tile position over the ground (art-style §14b). Skipped if --layer isolates one.
+    if not args.layer:
+        for obj in m.get("objects", []):
+            sp = served_path(repo, f"assets/sprites/objects/{obj['sprite']}.webp")
+            if not sp.is_file():
+                continue
+            img = Image.open(sp).convert("RGBA")
+            canvas.alpha_composite(img, (obj["at"]["tx"] * tw, obj["at"]["ty"] * th))
+
     # Flatten onto night-blue so transparency reads like the in-game backdrop.
     bg = Image.new("RGBA", canvas.size, (11, 16, 38, 255))
     bg.alpha_composite(canvas)

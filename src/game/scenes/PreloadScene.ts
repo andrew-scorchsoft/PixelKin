@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT, COLORS } from '@game/config';
 import { allBattleBackdrops } from '@game/data/world/maps';
 import trainerManifest from '../../../public/assets/sprites/trainers/trainers.manifest.json';
+import objectManifest from '../../../public/assets/sprites/objects/objects.manifest.json';
 import {
   creatureSpritePath,
   creatureTextureKey,
@@ -72,6 +73,14 @@ export class PreloadScene extends Phaser.Scene {
         frameWidth: trainers.frame_width,
         frameHeight: trainers.frame_height,
       });
+    }
+
+    // Whole-structure object sprites (buildings, big trees, lamps), packed by
+    // pack_objects.py. Loaded as plain images keyed by name; MapRenderer places
+    // them per the map's `objects`, falling back to none if a key is missing.
+    const objects = objectManifest as { objects: Record<string, { path: string }> };
+    for (const [key, o] of Object.entries(objects.objects)) {
+      this.load.image(key, o.path);
     }
   }
 

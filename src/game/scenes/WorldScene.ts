@@ -186,6 +186,7 @@ export class WorldScene extends Phaser.Scene {
     this.player?.destroy();
     for (const npc of this.npcs) npc.destroy();
     this.npcs = [];
+    for (const o of this.render?.objects ?? []) o.destroy();
     this.render?.tilemap.destroy();
     this.render = undefined;
   }

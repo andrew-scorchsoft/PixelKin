@@ -1,0 +1,18 @@
+{
+  "objects": {
+    "tinderwick_cottage": {
+      "path": "assets/sprites/objects/tinderwick_cottage.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "tinderwick_lamp_post": {
+      "path": "assets/sprites/objects/tinderwick_lamp_post.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    }
+  }
+}

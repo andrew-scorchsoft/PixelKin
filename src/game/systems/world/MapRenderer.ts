@@ -31,8 +31,42 @@ export interface MapRenderResult {
   aboveLayers: Phaser.Tilemaps.TilemapLayer[];
   /** Placed tiles that cycle frames; driven by `tickAnimatedTiles` each frame. */
   animatedTiles: AnimatedTilePlacement[];
+  /** Whole-structure object sprites (buildings, trees, lamps) — destroy on teardown. */
+  objects: Phaser.GameObjects.Image[];
   pixelWidth: number;
   pixelHeight: number;
+}
+
+/** Depths for object halves: body just below the player (~10), overhang above the `above` layer (20). */
+const OBJECT_BODY_DEPTH = 9;
+const OBJECT_OVERHANG_DEPTH = 21;
+
+/**
+ * Place each whole-structure object (art-style §14b) as one transparent sprite,
+ * split so the top `overhang` rows render over the player (walk-behind eaves /
+ * canopies) and the rest below. Footprint collision is handled by CollisionGrid.
+ */
+function renderObjects(scene: Phaser.Scene, map: RuntimeMap): Phaser.GameObjects.Image[] {
+  const out: Phaser.GameObjects.Image[] = [];
+  for (const obj of map.def.objects ?? []) {
+    if (!scene.textures.exists(obj.sprite)) continue; // art not packed yet — collision still applies
+    const px = obj.at.tx * TILE_SIZE;
+    const py = obj.at.ty * TILE_SIZE;
+    const wpx = obj.w * TILE_SIZE;
+    const hpx = obj.h * TILE_SIZE;
+    const overhangPx = (obj.overhang ?? 0) * TILE_SIZE;
+
+    const body = scene.add.image(px, py, obj.sprite).setOrigin(0, 0).setDepth(OBJECT_BODY_DEPTH);
+    if (overhangPx > 0) body.setCrop(0, overhangPx, wpx, hpx - overhangPx);
+    out.push(body);
+
+    if (overhangPx > 0) {
+      const over = scene.add.image(px, py, obj.sprite).setOrigin(0, 0).setDepth(OBJECT_OVERHANG_DEPTH);
+      over.setCrop(0, 0, wpx, overhangPx);
+      out.push(over);
+    }
+  }
+  return out;
 }
 
 /**
@@ -191,7 +225,9 @@ export async function renderMap(scene: Phaser.Scene, map: RuntimeMap): Promise<M
     if (layerDef.role === 'above') aboveLayers.push(layer);
   }
 
+  const objects = renderObjects(scene, map);
+
   const pixelWidth = map.width * TILE_SIZE;
   const pixelHeight = map.height * TILE_SIZE;
-  return { tilemap, layers, aboveLayers, animatedTiles, pixelWidth, pixelHeight };
+  return { tilemap, layers, aboveLayers, animatedTiles, objects, pixelWidth, pixelHeight };
 }
