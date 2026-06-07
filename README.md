@@ -98,6 +98,7 @@ python3 -m venv venv && ./venv/bin/pip install -r requirements.txt   # one-time
 | Vision & copyright rules | [`VISION.md`](VISION.md) |
 | Story, cast, lore | [`docs/world/story-bible.md`](docs/world/story-bible.md) |
 | World map (14 areas, routes, gating) | [`docs/world/atlas.md`](docs/world/atlas.md) |
+| Full walkthrough / user journey | [`docs/world/walkthrough/`](docs/world/walkthrough/README.md) |
 | Soundtrack plan | [`docs/world/music-direction.md`](docs/world/music-direction.md) |
 | Mechanics & balance (start here) | [`docs/mechanics/00-overview.md`](docs/mechanics/00-overview.md) |
 | The full dex (all 151 kin) | [`docs/mechanics/dex.md`](docs/mechanics/dex.md) |

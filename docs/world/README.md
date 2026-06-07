@@ -21,7 +21,13 @@ then read in order:
    starter-town & tutorial-route patterns, encounter-design rules, layer discipline, the
    required tile vocabulary, annotated layout sketches (Tinderwick / house / Dimglass
    Coast), and the pre-/post-flight authoring checklist. Read before authoring any map.
-5. This file — the **data + authoring conventions** the engine and the asset pipeline use.
+5. **[`walkthrough/`](./walkthrough/README.md)** — the **canonical user-journey blueprint**
+   (*The Long Dusk*, start to finish): the golden thread, the five interlocking arcs, the
+   level curve, the Lantern-Gift cadence, and a beat-by-beat region walkthrough (main path,
+   side quests, must-dos) with **per-area validation hooks**. Written before the game exists,
+   it is both the "spirit of things" and the **acceptance spec** every generated area is
+   checked against. Read its spine (`walkthrough/README.md`) before authoring an area's content.
+6. This file — the **data + authoring conventions** the engine and the asset pipeline use.
 
 > Everything here is original to PixelKin per [`../../VISION.md`](../../VISION.md):
 > inspired by the monster-collecting genre, a copy of nothing.

@@ -160,6 +160,17 @@ go digging on every task.
 - **World structure:** 14 areas, 8 Lampwardens (Gleams collected in roughly a set
   order), 6 Lantern Gifts gating traversal, a four-way central hub (the **Umbral
   Spire**) that opens once all 8 Gleams are earned. (`docs/world/atlas.md`)
+- **The journey is canon, written before the game.** `docs/world/walkthrough/` is the
+  start-to-finish **user-journey blueprint** — golden thread, five interlocking arcs (Wren,
+  the Hollowing/Còr, Fenn, the celestial calendar, festivals), the level curve, the
+  Lantern-Gift cadence, and a beat-by-beat per-region walkthrough. It is the **acceptance
+  spec for content**: when you author/generate an area, follow the spine's §0 rules and
+  validate the map against that region file's **Validation hooks** (map ids, `requires_ability`/
+  `requires_flag`, `sets_flags`, encounter bands). New canon names locked there: the rival
+  **Wren**, the mentor **Star-tender Fenn**, the eight festivals, the Keystar-kin **Keylumen**,
+  and **Lamplight** — the vesperlamp's brightness tiers (Ember-glow→Radiant) as a *continuous,
+  additive, non-blocking* exploration axis alongside the six Lantern Gifts (reveals optional
+  content only; never gates the main path).
 - **Maps are our own JSON** (not Tiled), snake_case keyed, parsed into
   `src/game/data/world/types.ts`. Map authoring is **content, not engine code**;
   the end-to-end flow is in `docs/world/README.md`.
@@ -171,6 +182,7 @@ go digging on every task.
 | Vision / copyright rules | `VISION.md` |
 | Story, cast, antagonist, lore | `docs/world/story-bible.md` |
 | World map, areas, routes, gating | `docs/world/atlas.md` |
+| Canonical user-journey / walkthrough | `docs/world/walkthrough/` (spine + per-region) |
 | Map & level-design rules (binding) | `docs/world/level-design.md` |
 | Per-area/route music briefs | `docs/world/music-direction.md` |
 | Mechanics design (start here) | `docs/mechanics/00-overview.md` |
