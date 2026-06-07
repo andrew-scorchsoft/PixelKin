@@ -4,7 +4,7 @@
   "tile_width": 16,
   "tile_height": 16,
   "columns": 12,
-  "tile_count": 102,
+  "tile_count": 107,
   "tiles": [
     {
       "index": 0,
@@ -584,75 +584,110 @@
       "index": 89,
       "role": "cliff",
       "terrain": "cliff",
-      "autotile": "corner_ne",
+      "autotile": "edge_n",
       "collides": true
     },
     {
       "index": 90,
       "role": "cliff",
       "terrain": "cliff",
-      "autotile": "edge_w",
+      "autotile": "corner_ne",
       "collides": true
     },
     {
       "index": 91,
       "role": "cliff",
       "terrain": "cliff",
-      "autotile": "fill",
+      "autotile": "edge_w",
       "collides": true
     },
     {
       "index": 92,
       "role": "cliff",
       "terrain": "cliff",
-      "autotile": "edge_e",
+      "autotile": "edge_w",
       "collides": true
     },
     {
       "index": 93,
       "role": "cliff",
       "terrain": "cliff",
-      "autotile": "corner_sw",
+      "autotile": "fill",
       "collides": true
     },
     {
       "index": 94,
       "role": "cliff",
       "terrain": "cliff",
-      "autotile": "edge_s",
+      "autotile": "fill",
       "collides": true
     },
     {
       "index": 95,
       "role": "cliff",
       "terrain": "cliff",
-      "autotile": "corner_se",
+      "autotile": "edge_e",
       "collides": true
     },
     {
       "index": 96,
-      "role": "decor"
+      "role": "cliff",
+      "terrain": "cliff",
+      "autotile": "edge_e",
+      "collides": true
     },
     {
       "index": 97,
-      "role": "sign",
+      "role": "cliff",
+      "terrain": "cliff",
+      "autotile": "corner_sw",
       "collides": true
     },
     {
       "index": 98,
-      "role": "fence",
+      "role": "cliff",
+      "terrain": "cliff",
+      "autotile": "edge_s",
       "collides": true
     },
     {
       "index": 99,
-      "role": "decor"
+      "role": "cliff",
+      "terrain": "cliff",
+      "autotile": "edge_s",
+      "collides": true
     },
     {
       "index": 100,
-      "role": "decor"
+      "role": "cliff",
+      "terrain": "cliff",
+      "autotile": "corner_se",
+      "collides": true
     },
     {
       "index": 101,
+      "role": "decor"
+    },
+    {
+      "index": 102,
+      "role": "sign",
+      "collides": true
+    },
+    {
+      "index": 103,
+      "role": "fence",
+      "collides": true
+    },
+    {
+      "index": 104,
+      "role": "decor"
+    },
+    {
+      "index": 105,
+      "role": "decor"
+    },
+    {
+      "index": 106,
       "role": "floor"
     }
   ]

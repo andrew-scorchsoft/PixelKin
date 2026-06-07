@@ -253,6 +253,7 @@ cliff_map = {
     "edge_w": "cliff_03", "fill": "cliff_04", "edge_e": None,   # mirror of edge_w
     "corner_sw": "cliff_05", "edge_s": "cliff_07", "corner_se": "cliff_06",
 }
+CLIFF_VARIANTS = {"fill": 1, "edge_n": 1, "edge_s": 1, "edge_w": 1, "edge_e": 1}
 for r in NINE:
     src = cliff_map.get(r)
     if src:
@@ -261,8 +262,22 @@ for r in NINE:
         im = flip_h(load(ck / "cliff_03.png"))
     else:
         im = load(ck / "cliff_04.png")
+    im = deborder(im, r)
     add(f"cliff_{r}", im, role="cliff", terrain="cliff", autotile=r, collides=True,
-        seam_axis=SEAM_OF.get(r), tileable_fill=(r == "fill"))
+        tileable_fill=(r == "fill"))
+    # variants so a tall cliff wall / long ledge doesn't stamp one rock face
+    for i in range(CLIFF_VARIANTS.get(r, 0)):
+        seed = abs(hash(("cliff", r, i))) % 100000
+        if r == "fill":
+            v = jitter(im, seed, 8)
+        elif SEAM_OF.get(r) == "h":
+            v = roll(im, dx=(i + 1) * 5 + 1, dy=0)
+        elif SEAM_OF.get(r) == "v":
+            v = roll(im, dx=0, dy=(i + 1) * 5 + 1)
+        else:
+            v = jitter(im, seed, 6)
+        add(f"cliff_{r}_v{i+1}", deborder(v, r), role="cliff", terrain="cliff",
+            autotile=r, collides=True, tileable_fill=(r == "fill"))
 
 # --- 4) accents / decor (reuse) ----------------------------------------------
 add("flowers", load(TW / "t55_flowers.png"), role="decor")

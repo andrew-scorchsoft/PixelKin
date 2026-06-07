@@ -334,15 +334,25 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   quantising flattens it). Always `make_tileable.py` the fills + tessellation-test, then
   `render_map.py <map> --output …` to eyeball the whole map against the bar (docs/art-style.md
   §11–§15). Autotile corners/edges/inner = offline `tools/autotile/` over a map `terrain` layer.
-- **New area? Copy `tools/maps/build_tinderwick.py` — it's the gold-standard builder.** It
-  encodes the seamless-tiling standard so you don't re-derive it (it was a multi-pass climb):
-  every surface is an autotile **body**; fills = continuous-texture → *whole-image* downscale
-  → `make_tileable` (toroidal, kills banding) — **never ask the model for "a tile"** (it draws
-  a bordered square → a grid); **FLAT** transitions (path/tall-grass on grass) via
-  `tools/autotile/composite_overlay.py`, **ORGANIC** ones (shoreline foam, tree canopy, cliffs)
-  AI per-cell then fill-swap + `make_tileable --axis h|v` per edge; off-map = continuation
-  (terrain runs off the edge, no border). Finish: `expand.mjs` → strip terrain layers →
-  `render_map` + `validate_map` (must PASS). Recipe: SKILL.md §A + "turnkey recipe".
+- **Overworld maps share ONE packed tileset — `vesper_overworld_set`.** Don't bake a bespoke
+  atlas per area. A map lists the shared set in `tilesets[]` (name + `first_gid`) and paints
+  terrain layers; the engine resolves gids across tilesets by range (`MapLoader.ts`) so an area
+  adds only its objects (+ optional accent set at a higher first_gid). Build/refresh it with
+  `python3 tools/maps/build_shared_overworld.py` (REUSE-first: promotes the proven Tinderwick
+  families, adds variants + scatter decor, reuses Dimglass cliff/buoy/dock). Map builders use
+  `tools/maps/mapkit.py` (`shared_tileset_ref()`, `gid()`, grid/scatter helpers, `finalize()`).
+- **New area? Copy `tools/maps/build_tinderwick.py` or `build_dimglass.py` (the two worked
+  examples).** Every surface is an autotile **body**; fills = continuous flat-lit texture →
+  *whole-image* downscale (**never "a tile"** — the model bakes a vignette+rim that becomes the
+  grid; measured rim 73→2 when you ask for a large FLAT-lit field instead); **FLAT** transitions
+  (path/tall-grass) via `tools/autotile/composite_overlay.py`, **ORGANIC** ones AI-per-cell.
+  De-repeat edges/fills with **variants** (2–3 tiles sharing `terrain`+`autotile`; the autotiler
+  scatters them per cell). Strip the baked rim with the role-aware **`deborder`** in
+  `build_shared_overworld.py` (keeps the transition side, seams the tiling axis) — it supersedes
+  `make_tileable --axis` for autotile tiles (that only averaged, leaving the rim as a grid line).
+  Off-map = continuation. Finish via `mk.finalize()`: `expand.mjs` → strip terrain → `render_map`
+  + `validate_map` (must PASS). For tiles prefer `--provider google` (Nano); the OpenAI tile path
+  is slow/fragile today (opaque+chroma+creature-preamble+retries). Recipe: SKILL.md §A.
 - **The device shell screen is locked to 3:2.** `shells.css` sizes `#game-root` to the
   largest 3:2 box that fits, so `Scale.FIT` never pillarboxes (no black side bars). The
   `plain`/`overlay` shells are intentionally full-bleed and still letterbox.

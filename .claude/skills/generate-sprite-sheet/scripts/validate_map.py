@@ -195,6 +195,35 @@ def main() -> int:
     elif tree_bases:
         rep.add("tree-depth", "PASS", "tall objects use the above layer")
 
+    # --- 6b. Variation: no long stamped run of one terrain tile (the repeat tell) ---
+    if base:
+        # Only EDGE/CORNER tiles should vary along a boundary — a uniform fill interior
+        # (deep sea, big sand flat) is legitimately repetitive (and water animates), so
+        # restrict the run check to autotile edge roles: that's the stamped-shoreline /
+        # corduroy-tree-line tell, not flat ground.
+        def longest_run(line: list[int]) -> int:
+            best = run = 0
+            for i in range(1, len(line)):
+                g = line[i]
+                is_edge = meta(g).get("autotile") in EDGE_ROLES
+                same = g == line[i - 1] and g > 0 and is_edge
+                run = run + 1 if same else 0
+                best = max(best, run)
+            return best + 1 if best else 0
+        worst = 0
+        for y in range(H):
+            worst = max(worst, longest_run([base[y * W + x] for x in range(W)]))
+        for x in range(W):
+            worst = max(worst, longest_run([base[y * W + x] for y in range(H)]))
+        limit = max(12, int(0.6 * max(W, H)))
+        if worst > limit:
+            rep.add("variation", "WARN",
+                    f"a terrain tile repeats identically for {worst} cells in a row "
+                    f"(>{limit}) — add edge/fill VARIANTS so it doesn't read as stamped")
+        else:
+            rep.add("variation", "PASS",
+                    f"no terrain tile runs longer than {worst} identical cells (variants scatter)")
+
     # --- 7. Solid border on non-warp edges ---
     if base:
         warp_tiles = {(w["at"]["tx"], w["at"]["ty"]) for w in m.get("warps", [])}

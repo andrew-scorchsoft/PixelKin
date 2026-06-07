@@ -1,9 +1,9 @@
 {
-  "_notes": "Locked sprite-type specs for PixelKin. The art source of truth is docs/art-style.md; this file operationalises it for generation. Each type fixes a canvas, grid, anchor, and prompt template. Prompt templates use {subject}, {fw}, {fh}, {cols}, {rows}, {canvas_w}, {canvas_h}, {fill_pct}. The shared _style preamble and _originality clause are prepended to every prompt so all types stay consistent and copyright-clean. DO NOT mention the background colour in templates — the skill owns it: for the default OpenAI gpt-image-2 path it prepends a magenta chroma-key preamble and strips the magenta to transparent in post; for the Google path it uses the native transparent route.",
+  "_notes": "Locked sprite-type specs for PixelKin. The art source of truth is docs/art-style.md; this file operationalises it for generation. Each type fixes a canvas, grid, anchor, and prompt template. Prompt templates use {subject}, {fw}, {fh}, {cols}, {rows}, {canvas_w}, {canvas_h}, {fill_pct}. The shared _style preamble and _originality clause are prepended to every prompt so all types stay consistent and copyright-clean. DO NOT mention the background colour in templates \u2014 the skill owns it: for the default OpenAI gpt-image-2 path it prepends a magenta chroma-key preamble and strips the magenta to transparent in post; for the Google path it uses the native transparent route.",
   "_style": "Authentic late-1990s / early-2000s handheld pixel art, in the visual register of a Game Boy Color game growing toward Game Boy Advance. STRICT RULES: hard 1-pixel edges, absolutely NO anti-aliasing, no blur, no smooth gradients (a small deliberate dithered pixel gradient is fine). Limited palette of roughly 8-16 colours. A dark outline (deep ink, NOT pure black) around the outer silhouette, lighter internal linework. Consistent light source from the TOP-LEFT. Strong, instantly readable silhouette. Cute, stylised, slightly oversized head and eyes for readability; not realistic, not gritty. Chunky, deliberate square pixels as if drawn pixel-by-pixel on a tiny {fw}x{fh} canvas. No semi-transparent shading. Subject only: no background scenery, no ground, no cast shadow, no frame or border.",
   "_originality": "This is original content for PixelKin, a creature-collecting RPG inspired by the genre but a copy of nothing. It must NOT resemble any existing commercial game's creature, character, silhouette, palette signature, logo, font, or UI. Describe by genre and mood only. Make it distinctly original.",
-  "_area_style": "COHESION: this tile belongs to ONE map area called \"{area}\" and must read as part of a single unified tile set. Use a shared limited palette of about 10-14 flat colours: {palette}. Keep the SAME pixel density, the SAME top-left light direction, and a matching value range as the rest of the set, so a screen built from these tiles looks like one place and does not visually buzz. Tessellate seamlessly when repeated edge-to-edge; no border, frame, or outline around the tile edge.",
-  "_block_style": "Authentic late-1990s / early-2000s handheld top-down pixel-art TILE ART (Game Boy Color growing toward Game Boy Advance), painted as ONE coherent picture so neighbouring tiles line up and share colours exactly. STRICT RULES: hard 1-pixel edges, absolutely NO anti-aliasing, no blur, no smooth gradients (deliberate dithered pixel gradients are fine). High-CONTRAST limited palette: every material shows a dark shadow tone, a mid body tone AND a bright top-left highlight — never a single flat colour (flatness is the failure to avoid). Consistent light from the TOP-LEFT (lit top/left edges, shadow on bottom/right). Chunky deliberate square pixels on a {tile}-pixel tile grid. No text, no captions, no labels, no drawn grid lines, no frame or border around the whole image. {originality}",
+  "_area_style": "COHESION: this tile belongs to ONE map area called \"{area}\" and must read as part of a single unified tile set. Use a shared limited palette of about 10-14 flat colours: {palette}. Keep the SAME pixel density, the SAME top-left light direction, and a matching value range as the rest of the set, so a screen built from these tiles looks like one place and does not visually buzz. Tessellate seamlessly when repeated edge-to-edge; no border, frame, or outline around the tile edge. Light every tile FLATLY and EVENLY (no per-tile vignette or directional shadow) so a field of them never grids.",
+  "_block_style": "Authentic late-1990s / early-2000s handheld top-down pixel-art TILE ART (Game Boy Color growing toward Game Boy Advance), painted as ONE coherent picture so neighbouring tiles line up and share colours exactly. STRICT RULES: hard 1-pixel edges, absolutely NO anti-aliasing, no blur, no smooth gradients (deliberate dithered pixel gradients are fine). High-CONTRAST limited palette: every material shows a dark shadow tone, a mid body tone AND a bright top-left highlight \u2014 never a single flat colour (flatness is the failure to avoid). Consistent light from the TOP-LEFT (lit top/left edges, shadow on bottom/right). Chunky deliberate square pixels on a {tile}-pixel tile grid. No text, no captions, no labels, no drawn grid lines, no frame or border around the whole image. {originality}",
   "_blocks": {
     "terrain-block": {
       "label": "Autotile terrain block (paint family -> slice)",
@@ -13,17 +13,17 @@
     "scene-mockup": {
       "label": "Area scene mockup (paint vignette -> harvest)",
       "use_for": "One small top-down vignette of an area to harvest cohesive fill variants + decoration from.",
-      "prompt": "A small top-down SCENE VIGNETTE of one place in a retro monster-collecting RPG, on a {cols}x{rows} grid of {tile}px tiles ({canvas_w}x{canvas_h}), as if a screenshot of the game world. Scene: {subject}. Include a few different patches of the area's ground, a path or track crossing it, a little water with its shoreline, a rock or low ledge, and scattered small plants/flowers/pebbles — all in ONE unified palette and light so every tile harvested from it matches. Natural, lived-in arrangement; clear readable shapes at this tiny scale; no characters, no UI, no text."
+      "prompt": "A small top-down SCENE VIGNETTE of one place in a retro monster-collecting RPG, on a {cols}x{rows} grid of {tile}px tiles ({canvas_w}x{canvas_h}), as if a screenshot of the game world. Scene: {subject}. Include a few different patches of the area's ground, a path or track crossing it, a little water with its shoreline, a rock or low ledge, and scattered small plants/flowers/pebbles \u2014 all in ONE unified palette and light so every tile harvested from it matches. Natural, lived-in arrangement; clear readable shapes at this tiny scale; no characters, no UI, no text."
     },
     "tile-anim": {
       "label": "Animated tile frames (paint together -> slice frames)",
       "use_for": "The 2-4 frames of one animated tile (water ripple, foam, glowmoss, lamp), painted in a row so they're the same tile with the motion shifted.",
-      "prompt": "An ANIMATION STRIP of one seamless top-down {subject} tile for a retro monster-collecting RPG, laid out as {cols} frames left-to-right in a {cols}x1 row of {tile}px tiles ({canvas_w}x{canvas_h}). Every frame is the SAME tile — identical palette, layout and edges so it still tessellates — with only the small highlights/ripple shifted a few pixels between frames to read as a gentle loop. Low amplitude, calm motion. No text, no frame numbers, no borders."
+      "prompt": "An ANIMATION STRIP of one seamless top-down {subject} tile for a retro monster-collecting RPG, laid out as {cols} frames left-to-right in a {cols}x1 row of {tile}px tiles ({canvas_w}x{canvas_h}). Every frame is the SAME tile \u2014 identical palette, layout and edges so it still tessellates \u2014 with only the small highlights/ripple shifted a few pixels between frames to read as a gentle loop. Low amplitude, calm motion. No text, no frame numbers, no borders."
     },
     "tile-sheet": {
       "label": "Multi-material tile sheet (one call -> slice many tiles)",
       "use_for": "Several DISTINCT materials in one image to slice into separate tiles (cheapest per tile; watch for grid drift).",
-      "prompt": "A TILE SHEET for a retro top-down monster-collecting RPG overworld: a strict, perfectly regular grid of EXACTLY {cols} columns by {rows} rows of separate {tile}px world tiles ({canvas_w}x{canvas_h} total). CRITICAL GRID DISCIPLINE: every cell is exactly {tile}x{tile}, the cells abut edge-to-edge with NO gutter, NO margin, NO drawn grid lines, NO labels or numbers, and nothing spans across a cell boundary — each cell is one independent, seamlessly-tileable tile. Read left-to-right then top-to-bottom, the cells are: {subject}. Keep ONE consistent limited palette and a consistent top-left light across the whole sheet so the tiles read as a single matched set. Each ground/water/floor tile must tessellate when its own cell is repeated."
+      "prompt": "A TILE SHEET for a retro top-down monster-collecting RPG overworld: a strict, perfectly regular grid of EXACTLY {cols} columns by {rows} rows of separate {tile}px world tiles ({canvas_w}x{canvas_h} total). CRITICAL GRID DISCIPLINE: every cell is exactly {tile}x{tile}, the cells abut edge-to-edge with NO gutter, NO margin, NO drawn grid lines, NO labels or numbers, and nothing spans across a cell boundary \u2014 each cell is one independent, seamlessly-tileable tile. Read left-to-right then top-to-bottom, the cells are: {subject}. Keep ONE consistent limited palette and a consistent top-left light across the whole sheet so the tiles read as a single matched set. Each ground/water/floor tile must tessellate when its own cell is repeated."
     }
   },
   "types": {
@@ -49,7 +49,7 @@
       "rows": 1,
       "anchor": "bottom-center",
       "fill": 0.8,
-      "prompt": "The SAME original creature seen from BEHIND for a monster-collecting RPG battle back sprite: a three-quarter view from the rear, back turned to the viewer, battle-ready idle pose. Subject: {subject}. It must read as the SAME species as its front sprite — identical palette, proportions and signature features, just viewed from behind. Fills about {fill_pct}% of the {fw}x{fh} frame, centred horizontally, base near the lower edge."
+      "prompt": "The SAME original creature seen from BEHIND for a monster-collecting RPG battle back sprite: a three-quarter view from the rear, back turned to the viewer, battle-ready idle pose. Subject: {subject}. It must read as the SAME species as its front sprite \u2014 identical palette, proportions and signature features, just viewed from behind. Fills about {fill_pct}% of the {fw}x{fh} frame, centred horizontally, base near the lower edge."
     },
     "creature-icon": {
       "label": "Creature menu icon",
@@ -73,7 +73,7 @@
       "rows": 1,
       "anchor": "bottom-center",
       "fill": 0.75,
-      "prompt": "A very simple overworld mini-sprite of an original creature for a monster-collecting RPG, in a gentle top-down-leaning view, single idle pose. Subject: {subject}. Keep it minimal and charming — readable at {fw}x{fh}, the same species as its battle sprite but simplified. Centred horizontally, feet near the lower edge, filling about {fill_pct}% of the frame."
+      "prompt": "A very simple overworld mini-sprite of an original creature for a monster-collecting RPG, in a gentle top-down-leaning view, single idle pose. Subject: {subject}. Keep it minimal and charming \u2014 readable at {fw}x{fh}, the same species as its battle sprite but simplified. Centred horizontally, feet near the lower edge, filling about {fill_pct}% of the frame."
     },
     "creature-portrait": {
       "label": "Creature portrait",
@@ -97,7 +97,7 @@
       "rows": 4,
       "anchor": "bottom-center",
       "fill": 0.7,
-      "prompt": "An original human character walking sprite SHEET for a retro monster-collecting RPG, laid out as a strict grid of {cols} columns by {rows} rows of {fw}x{fh} frames ({canvas_w}x{canvas_h} total). Rows are facing directions top to bottom: row 1 facing DOWN, row 2 facing LEFT, row 3 facing RIGHT, row 4 facing UP. Columns are a WALK CYCLE left to right: column 1 IDLE (standing, weight even, both feet planted); column 2 CONTACT-LEFT (left foot planted forward, right leg trailing back, arms swung in opposition); column 3 PASSING (both legs together under the body mid-stride, and the WHOLE body raised by 1 pixel so the head bobs); column 4 CONTACT-RIGHT (the mirror of column 2 — right foot forward, left trailing). Character: {subject}. The two contact poses (cols 2 and 4) must be CLEARLY different from each other — visible leg crossover and opposite arm swing — or the walk reads as a shuffle. Keep head height, proportions and palette identical in every frame; only legs, arms and the 1px passing lift move. Feet sit on the SAME baseline in the idle and both contact frames; the passing frame is 1px higher. Centred horizontally, about 20-24px wide inside each 32px frame. Even spacing, one pose isolated per cell."
+      "prompt": "An original human character walking sprite SHEET for a retro monster-collecting RPG, laid out as a strict grid of {cols} columns by {rows} rows of {fw}x{fh} frames ({canvas_w}x{canvas_h} total). Rows are facing directions top to bottom: row 1 facing DOWN, row 2 facing LEFT, row 3 facing RIGHT, row 4 facing UP. Columns are a WALK CYCLE left to right: column 1 IDLE (standing, weight even, both feet planted); column 2 CONTACT-LEFT (left foot planted forward, right leg trailing back, arms swung in opposition); column 3 PASSING (both legs together under the body mid-stride, and the WHOLE body raised by 1 pixel so the head bobs); column 4 CONTACT-RIGHT (the mirror of column 2 \u2014 right foot forward, left trailing). Character: {subject}. The two contact poses (cols 2 and 4) must be CLEARLY different from each other \u2014 visible leg crossover and opposite arm swing \u2014 or the walk reads as a shuffle. Keep head height, proportions and palette identical in every frame; only legs, arms and the 1px passing lift move. Feet sit on the SAME baseline in the idle and both contact frames; the passing frame is 1px higher. Centred horizontally, about 20-24px wide inside each 32px frame. Even spacing, one pose isolated per cell."
     },
     "effect": {
       "label": "Battle effect frame sheet",
@@ -109,7 +109,7 @@
       "rows": 4,
       "anchor": "center",
       "fill": 0.95,
-      "prompt": "An original battle EFFECT animation sheet for a retro monster-collecting RPG, laid out as a strict grid of {cols} columns by {rows} rows of {fw}x{fh} frames ({canvas_w}x{canvas_h} total), read left-to-right then top-to-bottom as the animation progresses from start to dissipation. Effect: {subject}. Each frame is one moment of the animation, centred in its cell. Bright, punchy, chunky pixel shapes; no creature or character in the frames — the effect only. Even spacing, one frame per cell."
+      "prompt": "An original battle EFFECT animation sheet for a retro monster-collecting RPG, laid out as a strict grid of {cols} columns by {rows} rows of {fw}x{fh} frames ({canvas_w}x{canvas_h} total), read left-to-right then top-to-bottom as the animation progresses from start to dissipation. Effect: {subject}. Each frame is one moment of the animation, centred in its cell. Bright, punchy, chunky pixel shapes; no creature or character in the frames \u2014 the effect only. Even spacing, one frame per cell."
     },
     "tile": {
       "label": "World tile",
@@ -121,7 +121,7 @@
       "rows": 1,
       "anchor": "top-left",
       "fill": 1.0,
-      "prompt": "A single original {fw}x{fh} world TILE for a retro top-down monster-collecting RPG overworld, designed to tessellate seamlessly when repeated edge-to-edge on a grid. Tile: {subject}. Fill the whole {fw}x{fh} frame to the edges (no margin, no outline around the tile border). Keep interior detail low and evenly distributed so a field of these tiles does not visually buzz or show an obvious repeat."
+      "prompt": "A single original {fw}x{fh} world TILE for a retro top-down monster-collecting RPG overworld, designed to tessellate seamlessly when repeated edge-to-edge on a grid. Tile: {subject}. Fill the whole {fw}x{fh} frame to the edges (no margin, no outline around the tile border). Keep interior detail low and evenly distributed so a field of these tiles does not visually buzz or show an obvious repeat. Light the surface FLATLY and EVENLY across the entire tile \u2014 no vignette, no corner or edge shadows, no darkening toward the borders, no single baked-in light source \u2014 otherwise repeated tiles form a visible grid. BEST RESULTS: generate this as a large continuous swatch and downscale the whole image (or slice an interior cell of a block), never as one bordered tile."
     },
     "tile-ground": {
       "label": "Ground fill tile",
@@ -133,7 +133,7 @@
       "rows": 1,
       "anchor": "top-left",
       "fill": 1.0,
-      "prompt": "A single original {fw}x{fh} GROUND-FILL world tile for a retro top-down monster-collecting RPG, the base surface a player walks on across a whole field. Surface: {subject}. Fill the frame edge-to-edge with low, even interior detail so a large field of these tiles reads as one smooth surface with no obvious seam or repeating hotspot."
+      "prompt": "A single original {fw}x{fh} GROUND-FILL world tile for a retro top-down monster-collecting RPG, the base surface a player walks on across a whole field. Surface: {subject}. Fill the frame edge-to-edge with low, even interior detail so a large field of these tiles reads as one smooth surface with no obvious seam or repeating hotspot. Light the surface FLATLY and EVENLY across the entire tile \u2014 no vignette, no corner or edge shadows, no darkening toward the borders, no single baked-in light source \u2014 otherwise repeated tiles form a visible grid. BEST RESULTS: generate this as a large continuous swatch and downscale the whole image (or slice an interior cell of a block), never as one bordered tile."
     },
     "tile-path": {
       "label": "Path / road tile",
@@ -145,7 +145,7 @@
       "rows": 1,
       "anchor": "top-left",
       "fill": 1.0,
-      "prompt": "A single original {fw}x{fh} PATH tile for a retro top-down monster-collecting RPG: the trodden walkway surface. Path: {subject}. Fill the frame edge-to-edge so straight runs of the tile form a continuous path; keep edges neutral so it abuts the area's ground tile cleanly. Low, even detail, no border line around the tile."
+      "prompt": "A single original {fw}x{fh} PATH tile for a retro top-down monster-collecting RPG: the trodden walkway surface. Path: {subject}. Fill the frame edge-to-edge so straight runs of the tile form a continuous path; keep edges neutral so it abuts the area's ground tile cleanly. Low, even detail, no border line around the tile. Light the surface FLATLY and EVENLY across the entire tile \u2014 no vignette, no corner or edge shadows, no darkening toward the borders, no single baked-in light source \u2014 otherwise repeated tiles form a visible grid. BEST RESULTS: generate this as a large continuous swatch and downscale the whole image (or slice an interior cell of a block), never as one bordered tile."
     },
     "tile-water": {
       "label": "Open water tile",
@@ -157,7 +157,7 @@
       "rows": 1,
       "anchor": "top-left",
       "fill": 1.0,
-      "prompt": "A single original {fw}x{fh} open-WATER tile for a retro top-down monster-collecting RPG. Water: {subject}. Fill the frame edge-to-edge with a gently rippled surface that tessellates so a large body of water reads as continuous, no obvious repeat. Low, even detail; no shoreline or border in this tile (that is the separate water-edge tile)."
+      "prompt": "A single original {fw}x{fh} open-WATER tile for a retro top-down monster-collecting RPG. Water: {subject}. Fill the frame edge-to-edge with a gently rippled surface that tessellates so a large body of water reads as continuous, no obvious repeat. Low, even detail; no shoreline or border in this tile (that is the separate water-edge tile). Light the surface FLATLY and EVENLY across the entire tile \u2014 no vignette, no corner or edge shadows, no darkening toward the borders, no single baked-in light source \u2014 otherwise repeated tiles form a visible grid. BEST RESULTS: generate this as a large continuous swatch and downscale the whole image (or slice an interior cell of a block), never as one bordered tile."
     },
     "tile-water-edge": {
       "label": "Water/land edge tile",
@@ -169,7 +169,7 @@
       "rows": 1,
       "anchor": "top-left",
       "fill": 1.0,
-      "prompt": "A single original {fw}x{fh} WATER-EDGE transition tile for a retro top-down monster-collecting RPG: the boundary where water meets land, with water along one side and shoreline/ground along the other. Edge: {subject}. The water side must tessellate with the set's plain water tile and the land side with the set's ground tile, so it slots between them with no seam. Fill the frame edge-to-edge, no border line."
+      "prompt": "A single original {fw}x{fh} WATER-EDGE transition tile for a retro top-down monster-collecting RPG: the boundary where water meets land, with water along one side and shoreline/ground along the other. Edge: {subject}. The water side must tessellate with the set's plain water tile and the land side with the set's ground tile, so it slots between them with no seam. Fill the frame edge-to-edge, no border line. Keep lighting FLAT and EVEN along the axis this tile repeats on (no vignette, no end-darkening) so it shows no seam when tiled; only the perpendicular transition side carries gradient. BEST RESULTS: paint the transition as a long strip and slice a clean interior cross-section, not one bordered tile."
     },
     "tile-cliff": {
       "label": "Cliff / ledge face tile",
@@ -181,7 +181,7 @@
       "rows": 1,
       "anchor": "top-left",
       "fill": 1.0,
-      "prompt": "A single original {fw}x{fh} CLIFF-FACE tile for a retro top-down monster-collecting RPG: the vertical rock/earth face of a ledge or height drop, tiling horizontally along a cliff and vertically down a tall face. Face: {subject}. Fill the frame edge-to-edge; keep it readable as a solid impassable wall. Low, even detail, no border line."
+      "prompt": "A single original {fw}x{fh} CLIFF-FACE tile for a retro top-down monster-collecting RPG: the vertical rock/earth face of a ledge or height drop, tiling horizontally along a cliff and vertically down a tall face. Face: {subject}. Fill the frame edge-to-edge; keep it readable as a solid impassable wall. Low, even detail, no border line. Light the surface FLATLY and EVENLY across the entire tile \u2014 no vignette, no corner or edge shadows, no darkening toward the borders, no single baked-in light source \u2014 otherwise repeated tiles form a visible grid. BEST RESULTS: generate this as a large continuous swatch and downscale the whole image (or slice an interior cell of a block), never as one bordered tile."
     },
     "tile-cliff-edge": {
       "label": "Cliff top-edge tile",
@@ -193,7 +193,7 @@
       "rows": 1,
       "anchor": "top-left",
       "fill": 1.0,
-      "prompt": "A single original {fw}x{fh} CLIFF-TOP-EDGE tile for a retro top-down monster-collecting RPG: the lip where upper ground meets the start of a cliff face below. Edge: {subject}. The top must tessellate with the set's ground tile and the bottom with the set's cliff-face tile, so it slots between them. Fill the frame edge-to-edge, no border line."
+      "prompt": "A single original {fw}x{fh} CLIFF-TOP-EDGE tile for a retro top-down monster-collecting RPG: the lip where upper ground meets the start of a cliff face below. Edge: {subject}. The top must tessellate with the set's ground tile and the bottom with the set's cliff-face tile, so it slots between them. Fill the frame edge-to-edge, no border line. Keep lighting FLAT and EVEN along the axis this tile repeats on (no vignette, no end-darkening) so it shows no seam when tiled; only the perpendicular transition side carries gradient. BEST RESULTS: paint the transition as a long strip and slice a clean interior cross-section, not one bordered tile."
     },
     "tile-roof": {
       "label": "Building roof tile",
@@ -217,7 +217,7 @@
       "rows": 1,
       "anchor": "top-left",
       "fill": 1.0,
-      "prompt": "A single original {fw}x{fh} building-WALL tile for a retro top-down monster-collecting RPG: the solid front face of a structure beneath its roof. Wall: {subject}. Fill the frame edge-to-edge so walls tile horizontally; consistent top-left light. Low, even detail, no border line."
+      "prompt": "A single original {fw}x{fh} building-WALL tile for a retro top-down monster-collecting RPG: the solid front face of a structure beneath its roof. Wall: {subject}. Fill the frame edge-to-edge so walls tile horizontally; consistent top-left light. Low, even detail, no border line. Light the surface FLATLY and EVENLY across the entire tile \u2014 no vignette, no corner or edge shadows, no darkening toward the borders, no single baked-in light source \u2014 otherwise repeated tiles form a visible grid. BEST RESULTS: generate this as a large continuous swatch and downscale the whole image (or slice an interior cell of a block), never as one bordered tile."
     },
     "tile-soil": {
       "label": "Bare soil / dirt ground tile",
@@ -229,7 +229,7 @@
       "rows": 1,
       "anchor": "top-left",
       "fill": 1.0,
-      "prompt": "A single original {fw}x{fh} bare SOIL ground-fill world tile for a retro top-down monster-collecting RPG: trodden earth a player walks on. Surface: {subject}. Fill the frame edge-to-edge with low, even interior detail so a field of these tiles reads as one continuous earthy surface with no seam or repeating hotspot."
+      "prompt": "A single original {fw}x{fh} bare SOIL ground-fill world tile for a retro top-down monster-collecting RPG: trodden earth a player walks on. Surface: {subject}. Fill the frame edge-to-edge with low, even interior detail so a field of these tiles reads as one continuous earthy surface with no seam or repeating hotspot. Light the surface FLATLY and EVENLY across the entire tile \u2014 no vignette, no corner or edge shadows, no darkening toward the borders, no single baked-in light source \u2014 otherwise repeated tiles form a visible grid. BEST RESULTS: generate this as a large continuous swatch and downscale the whole image (or slice an interior cell of a block), never as one bordered tile."
     },
     "tile-sand": {
       "label": "Sand ground tile",
@@ -241,7 +241,7 @@
       "rows": 1,
       "anchor": "top-left",
       "fill": 1.0,
-      "prompt": "A single original {fw}x{fh} SAND ground-fill world tile for a retro top-down monster-collecting RPG: soft coastal sand a player walks on. Surface: {subject}. Fill the frame edge-to-edge with low, even grainy detail so a beach of these tiles reads as one continuous surface with no obvious seam or repeat."
+      "prompt": "A single original {fw}x{fh} SAND ground-fill world tile for a retro top-down monster-collecting RPG: soft coastal sand a player walks on. Surface: {subject}. Fill the frame edge-to-edge with low, even grainy detail so a beach of these tiles reads as one continuous surface with no obvious seam or repeat. Light the surface FLATLY and EVENLY across the entire tile \u2014 no vignette, no corner or edge shadows, no darkening toward the borders, no single baked-in light source \u2014 otherwise repeated tiles form a visible grid. BEST RESULTS: generate this as a large continuous swatch and downscale the whole image (or slice an interior cell of a block), never as one bordered tile."
     },
     "tile-floor": {
       "label": "Plaza / interior floor tile",
@@ -253,7 +253,7 @@
       "rows": 1,
       "anchor": "top-left",
       "fill": 1.0,
-      "prompt": "A single original {fw}x{fh} FLOOR fill tile for a retro top-down monster-collecting RPG: a paved plaza or board/wood floor a player walks on. Surface: {subject}. Fill the frame edge-to-edge; if it has planks or paving, align them so the tile tessellates into a continuous regular floor with no broken seam. Low, even detail, no border line."
+      "prompt": "A single original {fw}x{fh} FLOOR fill tile for a retro top-down monster-collecting RPG: a paved plaza or board/wood floor a player walks on. Surface: {subject}. Fill the frame edge-to-edge; if it has planks or paving, align them so the tile tessellates into a continuous regular floor with no broken seam. Low, even detail, no border line. Light the surface FLATLY and EVENLY across the entire tile \u2014 no vignette, no corner or edge shadows, no darkening toward the borders, no single baked-in light source \u2014 otherwise repeated tiles form a visible grid. BEST RESULTS: generate this as a large continuous swatch and downscale the whole image (or slice an interior cell of a block), never as one bordered tile."
     },
     "tile-door": {
       "label": "Door tile",

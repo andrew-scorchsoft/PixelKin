@@ -58,12 +58,11 @@ several maps.** Honour README's caps (overworld soft-cap 64×64, interior ~32×3
 **A map should never need more than ~9 screens (3×3) of scrolling.** Past that, segment it
 and connect through the world graph — exactly what `dimglass_coast_i`/`_ii` already does.
 
-> **Critique of the current `tinderwick.json` (10×8).** It is **too small for a starter
-> town** — it's one screen with no room to teach movement→talk→sign→enter→encounter as
-> distinct beats, and it can't host house + Lumenary + shop + verge + two exits with breathing
-> room. It also **contradicts the graph**: `VESPERHOLM_GRAPH.start_at` is `{tx:8, ty:12}`,
-> off the bottom of an 8-tall map. Treat that file as a **schema smoke-test, not a design
-> reference** — the Tinderwick sketch in §7 is the design target (28×24).
+> **Status:** `tinderwick.json` has been **rebuilt to this 28×24 target** on the shared
+> `vesper_overworld_set` (`tools/maps/build_tinderwick.py`) — organic tree-line, lit spine,
+> shop + Lumenary plaza, cottage, tall-grass verge, inland pond, sand beach + sea, scatter
+> decor — and passes `validate_map`. `dimglass_coast.json` likewise rebuilt to §7.3
+> (`build_dimglass.py`). The §7 sketches below are the design targets the builders realise.
 
 ### Fork B — Guidance & gating without cheap invisible walls
 
