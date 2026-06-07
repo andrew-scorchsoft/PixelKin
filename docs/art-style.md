@@ -188,6 +188,37 @@ The classic handheld RPG tile. Top-left anchored so they pack edge-to-edge into
 a tileset with no seams. Design tiles to tessellate; keep interior detail low so
 they don't visually buzz when tiled across a field.
 
+### H) Battle backdrops (240×160, full canvas)
+
+The scene *behind* a battle — what fills the screen instead of flat black. One
+per area, with **a few variants** so repeat fights in the same place don't all
+look identical. Unlike everything above these are **opaque, full-canvas, and not
+sprites**: a single 240×160 image (the whole internal resolution), shipped as
+**lossless-ish WebP** under `public/assets/backgrounds/battle/`, no alpha, no
+chroma-key.
+
+The hard rule is **subtlety** — the backdrop sits *under* the creatures and the
+UI plates, so it must never compete with them:
+
+- **Dark and low-contrast.** Anchor on `night`/`deepBlue`; keep the brightest
+  notes small (a lantern, a star, a line of foam). If a battler sprite or an HP
+  plate gets hard to read against it, it's too busy.
+- **Keep the lower-middle empty.** The player battler stands bottom-left, the foe
+  top-right; leave those zones as a calm, near-flat ground plane and push scenery
+  to the upper half and the edges. A gentle vignette down to deep night-blue at
+  the bottom helps the sprites pop.
+- **In-world mood, not a photo.** Cosy *Long Dusk* — lanterns in the dark,
+  constellations overhead (the thing you're out here to relight). Same palette and
+  chunky-pixel feel as the matching area's tiles.
+- **No characters, creatures, text, UI, or frames** baked in.
+
+These are generated with the **generate-image** skill (no brand preset; the
+pixel-art direction lives in the prompt), then **downscaled to exactly 240×160**
+and saved as WebP. Naming: `area-slug-a.webp`, `-b.webp`, … (e.g.
+`tinderwick-a.webp`, `dimglass-coast-b.webp`). Register the variant list on the
+map in `src/game/data/world/maps.ts` (`battle_backdrops`); the BattleScene picks
+one at random and falls back to the plain night fill if a map has none.
+
 ---
 
 ## 6. Transparency & the chroma-key pipeline
