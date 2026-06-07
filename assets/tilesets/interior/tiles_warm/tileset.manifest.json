@@ -1,0 +1,14 @@
+{
+  "name": "interior_set",
+  "columns": 8,
+  "tiles": [
+    { "file": "floor_fill.png",   "role": "floor" },
+    { "file": "floor_fill_b.png", "role": "floor" },
+    { "file": "doormat.png",      "role": "door" },
+    { "file": "wall_cap.png",     "role": "wall", "collides": true },
+    { "file": "wall_face.png",    "role": "wall", "collides": true },
+    { "file": "wall_corner.png",  "role": "wall", "collides": true },
+    { "file": "wall_s.png",       "role": "wall", "collides": true },
+    { "file": "window.png",       "role": "wall", "collides": true }
+  ]
+}
