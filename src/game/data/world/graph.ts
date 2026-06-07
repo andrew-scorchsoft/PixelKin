@@ -68,10 +68,13 @@ export interface WorldGraph {
  */
 export const VESPERHOLM_GRAPH: WorldGraph = {
   start_map: 'tinderwick',
-  start_at: { tx: 28, ty: 20 }, // in front of the player's cottage (SE), facing the door
+  start_at: { tx: 6, ty: 17 }, // on the lane just outside the player's cottage door, facing up
   nodes: [
     // ---- South: Tinderwick -> Dimglass Coast (2 segments) -> Pearlmoor Quay ----------
     { map_id: 'tinderwick', region: 'south' },
+    { map_id: 'tinderwick_house', region: 'south' }, // interior: the apprentice's cottage
+    { map_id: 'tinderwick_shop', region: 'south' }, // interior: the general store
+    { map_id: 'tinderwick_lumenary', region: 'south' }, // interior: the Ember Lumenary (Brisa Tallow)
     { map_id: 'dimglass_coast', region: 'south' }, // route segment I: cliff path + shore (authored)
     { map_id: 'dimglass_coast_ii', region: 'south' }, // route: tidal flats
     { map_id: 'gullcry_rock', region: 'south', optional: true, reward: 'rare sea-bird kin + a Tide charm' },
@@ -116,6 +119,11 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'dawnstead', region: 'south', unlocked_by_flag: 'flag:dawn' },
   ],
   edges: [
+    // ---- Tinderwick interiors (door warps, both ways) --------------------------------
+    { from_map: 'tinderwick', to_map: 'tinderwick_house', via_warp: 'to_house', bidirectional: true },
+    { from_map: 'tinderwick', to_map: 'tinderwick_shop', via_warp: 'to_shop', bidirectional: true },
+    { from_map: 'tinderwick', to_map: 'tinderwick_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
+
     // ---- Main rim, clockwise: town -> route segment -> ... -> town -------------------
     { from_map: 'tinderwick', to_map: 'dimglass_coast', via_warp: 'to_coast', bidirectional: true },
     { from_map: 'dimglass_coast', to_map: 'dimglass_coast_ii', via_warp: 'to_coast_ii', bidirectional: true },

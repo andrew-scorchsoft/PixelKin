@@ -28,7 +28,7 @@ export interface MapRegistryEntry {
 export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   tinderwick: {
     json: 'assets/maps/tinderwick.json',
-    tilesets: { tinderwick_set: 'assets/tilesets/tinderwick_set.webp' },
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'town',
     music: 'assets/audio/music/tinderwick-a.mp3',
     battle_backdrops: [
@@ -46,9 +46,21 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/tinderwick-house-b.webp',
     ],
   },
+  tinderwick_shop: {
+    json: 'assets/maps/tinderwick_shop.json',
+    tilesets: { tinderwick_house_set: 'assets/tilesets/tinderwick_house_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/tinderwick-b.mp3',
+  },
+  tinderwick_lumenary: {
+    json: 'assets/maps/tinderwick_lumenary.json',
+    tilesets: { tinderwick_house_set: 'assets/tilesets/tinderwick_house_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/tinderwick-a.mp3',
+  },
   dimglass_coast: {
     json: 'assets/maps/dimglass_coast.json',
-    tilesets: { dimglass_coast_set: 'assets/tilesets/dimglass_coast_set.webp' },
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'route',
     music: 'assets/audio/music/dimglass-coast-a.mp3',
     battle_backdrops: [
