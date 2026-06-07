@@ -88,6 +88,31 @@ export function neighbours(grid, width, height, x, y, edge = 'continue') {
   };
 }
 
+/**
+ * Deterministic variant picker — kills the "one tile per role, stamped across a
+ * whole edge" repetition that screams "tiled" (the corduroy tree-wall, the single
+ * shoreline wave repeated 34×). When a terrain role has several interchangeable
+ * variant tiles in the set, choose one from a stable hash of (x, y, salt) so the
+ * same cell always resolves to the same tile (no flicker, fully reproducible) but
+ * neighbours scatter. `salt` separates terrains/roles so two families don't pick
+ * in lockstep. Returns the chosen element; a 1-element list is returned as-is.
+ */
+export function pickVariant(list, x, y, salt = 0) {
+  if (!list || list.length <= 1) return list ? list[0] : undefined;
+  // xorshift-ish integer hash over the coords + salt -> a well-mixed 32-bit value.
+  let h = (x * 374761393 + y * 668265263 + salt * 2147483647) | 0;
+  h = (h ^ (h >>> 13)) * 1274126177;
+  h = (h ^ (h >>> 16)) >>> 0;
+  return list[h % list.length];
+}
+
+/** A small stable integer salt for a (terrain, role) pair so families decorrelate. */
+export function variantSalt(terrain, role) {
+  let h = 2166136261;
+  for (const ch of `${terrain}:${role}`) h = (Math.imul(h ^ ch.charCodeAt(0), 16777619)) >>> 0;
+  return h & 0x7fffffff;
+}
+
 /** Fallback chain: if a set lacks `role`, try simpler roles down to fill. */
 export function roleFallbacks(role) {
   if (role.startsWith('inner_')) return [role, 'fill'];

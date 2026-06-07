@@ -299,6 +299,26 @@ inner-corner per cell from its 8 neighbours; the expander resolves that role to 
 tile by `(terrain, autotile)` and degrades gracefully if a set only has the
 9-slice pieces.
 
+**VARIANTS kill the "one tile stamped across the whole edge" repeat (the corduroy
+tree-line, the single shoreline wave ×34).** A `(terrain, autotile)` role may have
+SEVERAL tiles in the set — just tag 2–3 tiles with the same `terrain` + `autotile`.
+`expand.mjs` scatters them deterministically per cell (`pickVariant`, a stable
+hash of x/y/role), so edges and fills vary without flicker and stay reproducible.
+One tile per role still works unchanged. Add variants to the *high-visibility*
+roles first: water `edge_*` (shorelines), tree/cliff `edge_n` (wall tops), and
+sand/path `fill`. Cheap deterministic variants: a horizontal/vertical **roll** of
+a debordered edge (phase-shifts the foam/crest) or a small value **jitter** of a
+fill — see `tools/maps/build_shared_overworld.py`.
+
+**Role-aware DEBORDER is the real rim fix (supersedes `make_tileable --axis` for
+autotile tiles).** The model bakes a 1px ink rim on *every* side; `make_tileable
+--axis h|v` only *averages* two edges, leaving the rim as a consistent dark line —
+the grid you still see. `deborder(im, role)` in `build_shared_overworld.py` strips
+the rim on every side EXCEPT the designed transition side(s) (e.g. keep N for
+`edge_n`, keep N+W for `corner_nw`, keep none for `fill`), then seams the tiling
+axis. Deborder the BASE tile *before* deriving roll/jitter variants — rolling a
+rimmed tile drags the border into the interior where no edge-pass can reach it.
+
 ### A2) Whole-object structures (buildings, lamps, big trees) — the visual hierarchy
 
 Buildings, lamp-posts, signs, big trees are **NOT tiled** from wall/roof pieces
@@ -435,15 +455,88 @@ the cottage interior). Follow it and any future area is turnkey.
 > area-specific *organic* sets (its shoreline/cliffs/canopy), reusing the compositor and
 > seam tooling unchanged.
 
-### The big cohesion win: a SHARED overworld vocabulary
+### The big cohesion win: ONE packed SHARED overworld set every map references
 
-Don't generate a full independent set per area — that triples cost and the regions drift
-apart visually. Instead generate ONE shared Vesperholm overworld vocab once (grass,
-grass_dark, path, soil, water + 2 extra water frames, water_edge, sand, cliff, cliff_edge,
-wall, roof, door, sign, fence, flowers, lamp, tree_top) into `assets/tilesets/_shared/`,
-then **reuse it across areas**, adding only 1–2 area-specific accent tiles each (e.g. a
-lantern-buoy + dock board for a coast). An area's tile dir is then mostly *copies* of the
-shared masters arranged in the order that area's map gids expect, plus its accents.
+**This is now the standing convention (don't bake a bespoke atlas per area).** There is one
+packed shared set — `vesper_overworld_set` — and every overworld map lists it in
+`tilesets[]` by name + `first_gid` and just paints terrain layers. The engine resolves gids
+across any number of tilesets by `first_gid` range (`MapLoader.ts`), and `tools/autotile`
+keys terrain by `set` name, so a map can mix the shared set + a small area accent set at a
+higher `first_gid` with zero engine changes. An area adds only its **objects** (buildings)
+and, if it truly needs them, a few accent tiles — never a copy of the whole kit.
+
+Build/refresh the shared set with the builder (REUSE-first; no per-tile API calls needed):
+
+```bash
+python3 tools/maps/build_shared_overworld.py   # -> public/assets/tilesets/vesper_overworld_set.{webp,tileset.json}
+```
+
+It promotes the proven Tinderwick autotile families (grass/path/sand/tree/tall-grass/water
+9-slice + water anim + flowers/sign/fence), adds **de-repetition variants** + **scatter
+decor**, reuses the Dimglass cliff/buoy/dock masters, applies the role-aware **deborder**,
+and writes `assets/tilesets/_shared/vesper_overworld.index.json` (name → local index). Map
+builders consume that via **`tools/maps/mapkit.py`** — `mk.shared_tileset_ref()`,
+`mk.gid("flowers")`, grid/scatter helpers, and `mk.finalize()` (the standing pipeline:
+expand → strip terrain → render → validate). See `build_tinderwick.py` / `build_dimglass.py`
+as the two worked examples; copy one for a new area. The reusable seam tooling lives in
+**`tools/maps/tileforge.py`** (`deborder(im, role)`, `jitter`, `roll`, `flip_h`,
+`whole_downscale`) — import it in any builder; it's side-effect-free. (`build_shared_overworld.py`
+runs its build on execution, so run it as a script, not as an import — get the helpers from
+`tileforge`.)
+
+> **When you DO need new tiles** (a new biome's organics — a cave, a snowfield, a different
+> cliff), generate them with the prompting standard below, deborder/variant them, and append
+> them to the shared set's builder (or a small accent set). The first three areas are
+> REUSE; new biomes are targeted generation on top of the shared base.
+
+**Build a NEW area — turnkey:**
+
+```bash
+# 0. (once) ensure the shared set exists / is current
+python3 tools/maps/build_shared_overworld.py
+# 1. copy a worked builder and edit the layout (size by MapKind, §7 sketch)
+cp tools/maps/build_dimglass.py tools/maps/build_<area>.py    # or build_tinderwick.py
+#    - paint terrain presence grids (mk.make_grid/rect/vline/organic_border)
+#    - mk.shared_tileset_ref() in tilesets[]; mk.gid("flowers") etc. for deco/objects
+#    - mk.scatter_decor(...) to break the field; objects[] for buildings/trees
+# 2. build → expand (variant autotiling) → strip terrain → render → validate, one call:
+python3 tools/maps/build_<area>.py     # mk.finalize() prints the QA report; aim for PASS
+# 3. register the map in src/game/data/world/maps.ts + edges in world/graph.ts (content, not engine)
+```
+
+If the area needs a NEW organic tile (cliff/cave/biome edge), generate it (prompting standard
+below), `tileforge.whole_downscale`/`deborder`/variant it, and append it in
+`build_shared_overworld.py` (shared) or a small per-area accent set at a higher `first_gid`.
+
+### Generating new tiles: the prompting standard (measured, not folklore)
+
+The model paints "a tile" as a framed little picture — top-left light, a **vignette**, a 1px
+border — *ignoring* "no border / tessellate". Measured: a single-tile raw has rim≈73 (outer
+ring vs interior), and that rim *is* the grid when tiled. The fix is prompt + sampling:
+
+- **Fills:** ask for a **large continuous swatch**, *"completely FLAT EVEN lighting, NO
+  vignette, NO darkening at the edges, full-bleed, uniform density,"* then **downscale the
+  WHOLE image** to 16px (or slice an interior cell of a block). Measured rim drops 73 → ~2
+  (33×). The tile prompt templates now carry this wording.
+- **Edges:** paint the transition as a long **strip** and slice a clean interior
+  cross-section; keep lighting flat along the repeat axis. Then `deborder(im, role)`.
+- **Model choice (measured A/B, corrected flat-lit prompt):** both models drop the rim hugely
+  vs the old single-tile prompt (73 → single digits), so the *prompt* is the main lever. Split:
+  - **Uniform FILLS (grass/sand/stone/water): gpt-image-2 is cleaner** — it draws a literal even
+    texture (sand rim **0.6**), while Nano embellishes a fill with scene detail (rocks/puddles,
+    rim **8.9**) that fights tiling. Use OpenAI for pure fills *when it's behaving*.
+  - **EDGES / DECOR / OBJECTS / anything transparent: Nano** — cleaner edge (rim 0.7 vs gpt 18)
+    and native transparency; gpt's edge picked up a vignette.
+  - **Reliability caveat (today):** our sprite tooling routes OpenAI through opaque + magenta-
+    chroma + the *creature* preamble + retries, so gpt tiles are **slow and frequently fail** in
+    this env (the cliff fill fell back to Nano). Until the OpenAI tile path uses native
+    `background:transparent` + a tile-specific preamble + no retries, **default `--provider
+    google` for tiles**, and only reach for OpenAI on a stubborn uniform fill. Generate fills as
+    a large flat field and `whole_downscale` regardless of model.
+
+The legacy per-area `_shared/` recipe below still documents the from-scratch generate flow;
+it remains valid for a brand-new biome, but the *default* is now "reference the packed
+shared set."
 
 ### Step 1 — generate tiles, anchor-first, into `_shared/`
 

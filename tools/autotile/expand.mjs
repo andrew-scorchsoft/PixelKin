@@ -23,7 +23,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
-import { classify, neighbours, roleFallbacks } from './blob.mjs';
+import { classify, neighbours, roleFallbacks, pickVariant, variantSalt } from './blob.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const REPO = resolve(HERE, '..', '..');
@@ -41,11 +41,21 @@ function loadSidecar(setName) {
   return JSON.parse(readFileSync(path, 'utf8'));
 }
 
-/** Build role -> local index map for one terrain group within a sidecar. */
+/**
+ * Build role -> [local index, …] map for one terrain group within a sidecar.
+ *
+ * A role can map to SEVERAL tiles (variants): every tile tagged with the same
+ * (terrain, autotile) is a valid pick for that role. The autotiler then scatters
+ * among them deterministically (pickVariant) so edges/fills don't repeat. A set
+ * with one tile per role behaves exactly as before (single-element lists).
+ */
 function roleIndex(sidecar, terrain) {
   const map = new Map();
   for (const t of sidecar.tiles ?? []) {
-    if (t.terrain === terrain && t.autotile) map.set(t.autotile, t.index);
+    if (t.terrain === terrain && t.autotile) {
+      if (!map.has(t.autotile)) map.set(t.autotile, []);
+      map.get(t.autotile).push(t.index);
+    }
   }
   return map;
 }
@@ -99,12 +109,14 @@ function main() {
         // `layer.edge`: 'continue' (default) runs the terrain off the map edge with
         // no border; 'border' makes it visibly end at the edge.
         const role = classify(neighbours(grid, width, height, x, y, layer.edge || 'continue'));
-        let local;
+        let variants, chosenRole;
         for (const cand of roleFallbacks(role)) {
-          if (roles.has(cand)) { local = roles.get(cand); break; }
+          if (roles.has(cand)) { variants = roles.get(cand); chosenRole = cand; break; }
         }
-        if (local == null) { missing.add(role); local = roles.get('fill'); }
-        if (local == null) continue;
+        if (variants == null) { missing.add(role); variants = roles.get('fill'); chosenRole = 'fill'; }
+        if (variants == null) continue;
+        // Scatter among interchangeable variants of this role (deterministic per cell).
+        const local = pickVariant(variants, x, y, variantSalt(layer.terrain, chosenRole));
         base[y * width + x] = fg + local;
         placed += 1;
       }
