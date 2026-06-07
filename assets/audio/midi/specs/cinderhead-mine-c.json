@@ -1,0 +1,43 @@
+{
+  "title": "Cinderhead Mine - Crystal Gallery",
+  "_note": "Option C relit / Light-leaning variant. gbc 4-voice band. 82bpm, 4/4, A minor warming toward C major (relative-major lift). Brighter bell-timbre pulse25 lead - the crystal chime promoted to lead, an ascending sparkle line, hopeful; pulse12 glassy ascending bell arpeggios catching light (Light signature), fuller than A; tri_bass drone that rises stepwise to the relative major and warms; soft drums pick-tap, a bright chime-shimmer (ohat) at the seam. Vesper states the spine ascending into the relative-major lift: E3->A3->B3 ... then resolving up C5->B4->C5, the overshoot finally allowed to land bright - the east region's hopeful 'discovery' beat. 24-bar loop, voice-leads home.",
+  "era": "gbc",
+  "tempo": 82,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "A minor warming to C major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "Bright bell-timbre lead, ascending sparkle, hopeful. Vesper ascends: E3->A3->B3 stated low then the line climbs; the settle lands bright C5->B4->C5 in the relative major. Starts in the cave's low register, rises to the gallery's gleam.",
+      "notes": "E3q A3q B3h | C4q E4q A4h | rh G4q E4q | A4h. rq | E4q A4q C5q B4q | A4h G4q E4q | C4q E4q G4q A4q | C5h. rq | E4q G4q C5q B4q | A4q G4q E4q G4q | A4h. rq | G4q A4q C5q D5q | E5h. C5q | B4q A4q G4q E4q | C5q D5q E5q G5q | E5h. rq | A4q C5q E5q D5q | C5q B4q A4q G4q | E4q G4q A4q C5q | E5h. rq | C5q E5q G5q E5q | D5q C5q B4q C5q | A4q C5q B4q C5q | C5h B4q C5q"
+    },
+    {
+      "name": "arp",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.55,
+      "_note": "Glassy ascending bell arpeggios catching light. Am(ACE), F(FAC), C(CEG), G(GBD) - the harmony warming from A minor toward C major.",
+      "notes": "A3e C4e E4e A4e E4e C4e A3e C4e | A3e C4e E4e A4e E4e C4e A3e C4e | F3e A3e C4e F4e C4e A3e F3e A3e | A3e C4e E4e A4e E4e C4e A3e C4e | A3e C4e E4e A4e E4e C4e A3e C4e | E3e G3e B3e E4e B3e G3e E3e G3e | C4e E4e G4e C5e G4e E4e C4e E4e | C4e E4e G4e C5e G4e E4e C4e E4e | A3e C4e E4e A4e E4e C4e A3e C4e | E3e G3e B3e E4e B3e G3e E3e G3e | F3e A3e C4e F4e C4e A3e F3e A3e | G3e B3e D4e G4e D4e B3e G3e B3e | C4e E4e G4e C5e G4e E4e C4e E4e | A3e C4e E4e A4e E4e C4e A3e C4e | C4e E4e G4e C5e G4e E4e C4e E4e | C4e E4e G4e C5e G4e E4e C4e E4e | A3e C4e E4e A4e E4e C4e A3e C4e | F3e A3e C4e F4e C4e A3e F3e A3e | A3e C4e E4e A4e E4e C4e A3e C4e | C4e E4e G4e C5e G4e E4e C4e E4e | C4e E4e G4e C5e G4e E4e C4e E4e | G3e B3e D4e G4e D4e B3e G3e B3e | F3e A3e C4e F4e C4e A3e F3e A3e | G3e B3e D4e G4e D4e B3e G3e B3e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 1,
+      "gain": 0.95,
+      "_note": "Drone that rises stepwise to the relative major and warms. Roots: A - F - C - G arc, drifting upward toward C.",
+      "notes": "A1w | A1w | F1w | A1w | A1w | E1w | C2w | C2w | A1w | E1w | F1w | G1w | C2w | A1w | C2w | C2w | A1w | F1w | A1w | C2w | C2w | G1w | F1w | G1h G1h"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.65,
+      "_note": "Soft pick-tap (kick) keeping gentle time, an occasional dew-tick hat, a bright chime-shimmer (ohat) at the loop seam.",
+      "notes": "kickq rq rq hatq | kickq rq rq rq | kickq rq rq hatq | kickq rq rq rq | kickq rq rq hatq | kickq rq rq rq | kickq rq rq hatq | kickq rq rq rq | kickq rq rq hatq | kickq rq rq rq | kickq rq rq hatq | kickq rq rq rq | kickq rq rq hatq | kickq rq rq rq | kickq rq rq hatq | kickq rq rq rq | kickq rq rq hatq | kickq rq rq rq | kickq rq rq hatq | kickq rq rq rq | kickq rq rq hatq | kickq rq rq rq | kickq rq rq hatq | kickq hatq ohatq ohatq"
+    }
+  ]
+}

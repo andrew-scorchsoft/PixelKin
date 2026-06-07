@@ -1,0 +1,43 @@
+{
+  "title": "Cinderhead Mine - Pressure & Spark",
+  "_note": "Option B mood sibling, more tense. gbc 4-voice band. A harmonic minor (raised 7th G#), 96bpm. Staccato low pulse25 motif, terse and recurring - a held-breath pulse rather than a melody; pulse12 fast nervous arpeggio flickering in short bursts (Sparkrat static) then cutting to silence; driving low tri_bass ostinato, a steady tense walk under the silence; dry pick-tap drums plus an occasional gust/static noise swell (Storm leaking in). Vesper: the rising leap clipped into a staccato stab E3->A3->B3 repeating like a nervous tic; the harmonic-minor G# sharpens the unease - the motif under strain. 24-bar loop; last bar voice-leads (E->A) home.",
+  "era": "gbc",
+  "tempo": 96,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "A harmonic minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 3,
+      "gain": 0.95,
+      "_note": "Staccato low motif, terse recurring stabs. Vesper rising leap clipped: E3->A3->B3 as a nervous tic. G# (harmonic minor) appears for unease.",
+      "notes": "E3e A3e B3e re re A3e re re | E3e A3e B3e re re A3e re re | C4e B3e re re E3e A3e re re | G#3e A3e re re re re re re | E3e A3e B3e re re A3e re re | E3e A3e B3e re re A3e re re | C4e B3e re re A3e G#3e re re | A3e re re re re re re re | E3e A3e B3e re re A3e re re | E3e A3e B3e re re A3e re re | D4e C4e re re B3e A3e re re | G#3e A3e re re re re re re | E3e A3e B3e re re A3e re re | E3e A3e B3e re re A3e re re | C4e B3e re re E3e A3e re re | G#3e A3e re re re re re re | E3e A3e B3e re re A3e re re | E3e A3e B3e re re A3e re re | C4e B3e re re D4e C4e re re | B3e A3e re re re re re re | E3e A3e B3e re re A3e re re | C4e B3e A3e re re G#3e re re | A3e re B3e re C4e re B3e re | A3e re re re E3e re G#3e re"
+    },
+    {
+      "name": "spark",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.5,
+      "_note": "Fast nervous arpeggio flickering in short bursts (Sparkrat static), then cutting to silence. Am/E7 color, the G# leading-tone flicker.",
+      "notes": "rw | A4e C5e E5e C5e re re re re | rw | rw | rw | A4e C5e E5e C5e re re re re | rw | rw | rw | B4e E5e G#5e E5e re re re re | rw | rw | rw | A4e C5e E5e C5e re re re re | rw | rw | rw | E5e G#5e B5e G#5e re re re re | rw | rw | rw | A4e C5e E5e C5e re re re re | rw | E5e C5e A4e re re re re re"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 1,
+      "gain": 1.0,
+      "_note": "Driving low ostinato, a steady tense walk under the silence. Eighth-note pulse on A, with the E/G# tension at phrase ends.",
+      "notes": "A1e A1e A1e A1e A1e A1e A1e A1e | A1e A1e A1e A1e A1e A1e A1e A1e | A1e A1e A1e A1e E2e E2e E2e E2e | E2e E2e G#1e G#1e A1e A1e A1e A1e | A1e A1e A1e A1e A1e A1e A1e A1e | A1e A1e A1e A1e A1e A1e A1e A1e | F1e F1e F1e F1e E2e E2e E2e E2e | A1e A1e A1e A1e A1e A1e A1e A1e | A1e A1e A1e A1e A1e A1e A1e A1e | A1e A1e A1e A1e A1e A1e A1e A1e | D2e D2e D2e D2e E2e E2e E2e E2e | E2e E2e G#1e G#1e A1e A1e A1e A1e | A1e A1e A1e A1e A1e A1e A1e A1e | A1e A1e A1e A1e A1e A1e A1e A1e | A1e A1e A1e A1e E2e E2e E2e E2e | E2e E2e G#1e G#1e A1e A1e A1e A1e | A1e A1e A1e A1e A1e A1e A1e A1e | A1e A1e A1e A1e A1e A1e A1e A1e | F1e F1e F1e F1e D2e D2e D2e D2e | E2e E2e E2e E2e E2e E2e E2e E2e | A1e A1e A1e A1e A1e A1e A1e A1e | F1e F1e F1e F1e E2e E2e E2e E2e | A1e A1e A1e A1e A1e A1e A1e A1e | E2e E2e E2e E2e E2e E2e G#1e G#1e"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.7,
+      "_note": "Dry pick-tap (kick) plus an occasional gust/static noise swell (ohat) - the Storm element leaking in. Held-breath spacing.",
+      "notes": "kickq rq kickq rq | rq rq rq ohatq | kickq rq kickq rq | rw | kickq rq kickq rq | rq rq rq ohatq | kickq rq kickq rq | rw | kickq rq kickq rq | rq rq rq ohatq | kickq rq kickq rq | rw | kickq rq kickq rq | rq rq rq ohatq | kickq rq kickq rq | rw | kickq rq kickq rq | rq rq rq ohatq | kickq rq kickq rq | rw | kickq rq kickq rq | rq rq rq ohatq | kickq rq kickq rq | kickq ohatq kickq ohatq"
+    }
+  ]
+}
