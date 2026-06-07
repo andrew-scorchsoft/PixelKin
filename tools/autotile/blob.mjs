@@ -69,10 +69,19 @@ export function classify({ n, e, s, w, ne, se, sw, nw }) {
   return 'single';
 }
 
-/** Read an 8-neighbour window out of a presence grid (1 = terrain present). */
-export function neighbours(grid, width, height, x, y) {
+/**
+ * Read an 8-neighbour window out of a presence grid (1 = terrain present).
+ *
+ * `edge` controls what's "off the map": 'continue' (default) treats out-of-bounds
+ * as the SAME terrain, so a region touching the map edge runs off-screen with no
+ * spurious border (a cliff top at the top of the map continues off it; water/tall
+ * grass bleed off the scene). 'border' treats off-map as different (a region that
+ * should visibly end at the edge).
+ */
+export function neighbours(grid, width, height, x, y, edge = 'continue') {
+  const oob = edge === 'continue';
   const at = (xx, yy) =>
-    xx >= 0 && yy >= 0 && xx < width && yy < height ? grid[yy * width + xx] === 1 : false;
+    xx >= 0 && yy >= 0 && xx < width && yy < height ? grid[yy * width + xx] === 1 : oob;
   return {
     n: at(x, y - 1), e: at(x + 1, y), s: at(x, y + 1), w: at(x - 1, y),
     ne: at(x + 1, y - 1), se: at(x + 1, y + 1), sw: at(x - 1, y + 1), nw: at(x - 1, y - 1),

@@ -133,7 +133,7 @@ def main() -> int:
         def terr(x: int, y: int):
             if 0 <= x < W and 0 <= y < H:
                 return meta(base[y * W + x]).get("terrain")
-            return None
+            return "__edge__"  # off-map = continuation (matches the autotiler), not a boundary
         raw_boundary = 0
         boundary_total = 0
         water_raw = 0
@@ -146,7 +146,8 @@ def main() -> int:
                 if meta(g).get("encounter_terrain") == "tall_grass":
                     continue  # tall-grass is a flat encounter patch, not a bordered surface
                 neigh = [terr(x, y - 1), terr(x + 1, y), terr(x, y + 1), terr(x - 1, y)]
-                if any(nb != t for nb in neigh):  # this cell is on a terrain boundary
+                # off-map (__edge__) is continuation, not a boundary
+                if any(nb != t and nb != "__edge__" for nb in neigh):
                     boundary_total += 1
                     role = meta(g).get("autotile")
                     if role not in EDGE_ROLES:  # boundary cell drawn with a non-edge tile

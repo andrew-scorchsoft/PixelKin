@@ -96,7 +96,9 @@ function main() {
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
         if (grid[y * width + x] !== 1) continue;
-        const role = classify(neighbours(grid, width, height, x, y));
+        // `layer.edge`: 'continue' (default) runs the terrain off the map edge with
+        // no border; 'border' makes it visibly end at the edge.
+        const role = classify(neighbours(grid, width, height, x, y, layer.edge || 'continue'));
         let local;
         for (const cand of roleFallbacks(role)) {
           if (roles.has(cand)) { local = roles.get(cand); break; }
