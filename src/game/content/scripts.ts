@@ -41,6 +41,22 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'gleam', element: 'ember' },
     { op: 'say', speaker: 'BRISA TALLOW', text: 'There — the Ember Gleam burns again in the southern sky. Let it stand up there a while. Carry it well, Wayfarer.' },
   ],
+
+  // Second Lumenary (pearlmoor_lumenary): the player crosses the sea-shrine chamber to
+  // old ferryman Reyl Wash, hears him out, battles him, and on victory relights the Tide
+  // constellation — the second Gleam, wrapped in the Tide-blessing festival (Arc E). The
+  // trainer's reward_flags ('gleam:tide', 'crown_south') AND reward_abilities ('tidecall')
+  // are applied by the BattleScene on a win; here we add the diegetic Gleam cue and the
+  // closing beat handing over the Lantern Gift.
+  'script.lumenary_pearlmoor': [
+    { op: 'face', actor: 'player', facing: 'up' },
+    { op: 'face', actor: 'reyl', facing: 'down' },
+    { op: 'say', speaker: 'REYL WASH', text: 'Came on foot, did you — no need of the tides to reach my door. Good. The light should be free to all who seek it.' },
+    { op: 'say', speaker: 'REYL WASH', text: 'Now. Read the water with me, Wayfarer, and we shall see if the sea will listen to you.' },
+    { op: 'battle', trainer: 'lampwarden_pearlmoor' },
+    { op: 'gleam', element: 'tide' },
+    { op: 'say', speaker: 'REYL WASH', text: 'The Tide Gleam stands up over Pearlmoor again. And the Tidecall is yours — go on, ask the shallows to part. The harbour keeps its secrets for those who can cross.' },
+  ],
 };
 
 export function getScript(ref: string): import('./types').CutsceneStep[] | undefined {

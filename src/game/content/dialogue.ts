@@ -82,6 +82,36 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'WREN', text: "When you're set, the two of us should battle proper. No Lamps, no stakes — just us and our partners." },
     { speaker: 'WREN', text: 'Did you see the sky a moment ago? A star just... went out. Gave me the shivers. Keep your lamp close out here.' },
   ],
+
+  // --- Pearlmoor Quay (town) ---
+  'sign.pearlmoor_welcome': [
+    { text: 'PEARLMOOR QUAY\nMind the wet boards. Lanterns strung mast to mast since the Long Dusk — the moon is our only other light.' },
+  ],
+  'sign.pearlmoor_lumenary': [
+    { text: 'THE TIDE LUMENARY\nLampwarden Reyl Wash tends the Tide constellation. The door is open to all — no lit shallows needed.' },
+  ],
+  'sign.pearlmoor_harbour': [
+    { text: 'THE HARBOUR SHALLOWS\nThe moon-water will not part for the unlit. Earn the Tidecall, and the islets and sea-shrine open to you.' },
+  ],
+  'sign.pearlmoor_shop': [
+    { text: 'PEARLMOOR CHANDLERY\nNets, oil, salve, and tide-charms for the crossing. Step in out of the spray.' },
+  ],
+  'npc.pearlmoor_shopkeeper': [
+    { speaker: 'CHANDLER', text: 'Welcome in off the boards. Restocking before you face Reyl, are you?' },
+    { speaker: 'CHANDLER', text: "Bring a warm partner — an Ember or a leafy one. Reyl's whole crew runs Tide, and the triangle favours the prepared." },
+    { speaker: 'CHANDLER', text: '(The counter is being restocked — wares open up properly once the shop system is wired.)' },
+  ],
+  'npc.reyl_wash': [
+    { speaker: 'REYL WASH', text: 'Step up to the sea-altar when your bond is ready, Wayfarer. The Tide does not hurry, and neither shall we.' },
+  ],
+  'npc.pearlmoor_innkeep': [
+    { speaker: 'INNKEEP', text: "Rest your feet, Wayfarer. The Tide-blessing's near — the whole quay hangs fresh lanterns for it." },
+    { speaker: 'INNKEEP', text: 'They say when Reyl relights the Tide, the harbour shallows answer a lit lamp. Old ferryman magic. The moon listens to him.' },
+  ],
+  'npc.pearlmoor_fisher': [
+    { speaker: 'FISHER', text: 'Tide-blessing tonight! We string the buoys, sing the old going-out song, and ask the sea to bring our lights home.' },
+    { speaker: 'FISHER', text: 'Reyl tends the Lumenary up the boardwalk — tallest hall on the quay, you cannot miss its moon-lamp.' },
+  ],
 };
 
 const FALLBACK: DialogueLine[] = [{ text: '...' }];
