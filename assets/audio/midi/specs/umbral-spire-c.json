@@ -1,0 +1,59 @@
+{
+  "title": "Umbral Spire - First True Dawn",
+  "_note": "CLIMAX triumphant-resolve variant - the Keystar-relight resolution as its own cue: dark turns to dawn, Keylumen radiant, the Skyweave Crown completing overhead. The emotional peak setting up the Dawnstead epilogue. snes era (8 voices, chords, generous reverb). 120 BPM, 4/4, radiant A MAJOR. 24-bar loop. Vesper motif TOTAL PAYOFF - cosy at the hub, broken at Coldfog, withheld at the Penumbra, minor at the Spire, now stated WHOLE in triumphant A major, fully harmonised: E4->A4->B4 lift ... C#5->B4->A4 settle home. lead=pulse25 singing the motif complete and soaring. counter-lead=a harmonising second line. harmony=lush warm chords + harp-like pluck arpeggio + swelling pad, generous reverb. bass=warm, full, grounded. drums=triumphant, big but joyful, a final crash. Last bar E(V) -> resolves to A bar 1.",
+  "era": "snes",
+  "tempo": 120,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "A major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "The Vesper motif WHOLE in triumphant A major. Bars 1-2 the lift E4->A4->B4, bars 3-4 the settle C#5->B4->A4. Soaring, complete.",
+      "notes": "E4q A4q B4h | C#5q B4q A4h | E4q A4q B4q C#5q | E5h C#5h | E4q A4q B4h | C#5q B4q A4h | D5q C#5q B4q A4q | A4h. E4q | A4q C#5q E5q D5q | C#5q B4q A4h | F#4q A4q D5q C#5q | B4h E5q E4q | E4q A4q B4h | C#5q B4q A4h | E5q D5q C#5q B4q | A4h. E4q | E5q C#5q A4q E5q | D5q C#5q B4h | A4q C#5q E5q F#5q | E5q C#5q A4h | F#4q A4q D5q C#5q | B4q A4q G#4q B4q | A4q C#5q E5q C#5q | B4q E4q E4h"
+    },
+    {
+      "name": "counter",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.6,
+      "_note": "Harmonising second line, mostly a third/sixth below the lead, filling the call-and-response.",
+      "notes": "A3q C#4q E4h | E4q E4q C#4h | A3q C#4q E4q A4q | A4h A4h | A3q C#4q E4h | E4q E4q C#4h | F#4q E4q D4q C#4q | C#4h. A3q | C#4q E4q A4q F#4q | E4q D4q C#4h | D4q F#4q A4q E4q | D4h B4q A3q | A3q C#4q E4h | E4q E4q C#4h | C#5q B4q A4q G#4q | C#4h. A3q | A4q E4q C#4q A4q | F#4q E4q D4h | C#4q E4q A4q B4q | A4q E4q C#4h | D4q F#4q A4q E4q | D4q C#4q B3q D4q | C#4q A3q B3q A3q | G#3q B3q E4h"
+    },
+    {
+      "name": "arp",
+      "voice": "pluck",
+      "octave": 4,
+      "gain": 0.6,
+      "_note": "Harp-like ascending pluck arpeggio (broken major triads), flowing and radiant - the Light/Solar sparkle of the dawn.",
+      "notes": "A4e C#5e E5e C#5e A4e C#5e E5e C#5e | A4e C#5e E5e A5e E5e C#5e A4e C#5e | A4e C#5e E5e C#5e A4e C#5e E5e C#5e | E4e G#4e B4e G#4e E4e G#4e B4e E5e | A4e C#5e E5e C#5e A4e C#5e E5e C#5e | A4e C#5e E5e A5e E5e C#5e A4e C#5e | D4e F#4e A4e D5e A4e F#4e D4e F#4e | E4e G#4e B4e E5e B4e G#4e E4e G#4e | A4e C#5e E5e C#5e A4e C#5e E5e C#5e | A4e C#5e E5e A5e E5e C#5e A4e C#5e | D4e F#4e A4e D5e A4e F#4e D4e F#4e | E4e G#4e B4e E5e B4e G#4e E4e G#4e | A4e C#5e E5e C#5e A4e C#5e E5e C#5e | A4e C#5e E5e A5e E5e C#5e A4e C#5e | E4e G#4e B4e E5e B4e G#4e E4e G#4e | A4e C#5e E5e C#5e A4e C#5e E5e A5e | A4e C#5e E5e A5e E5e C#5e A4e C#5e | F#4e A4e D5e A4e F#4e A4e D5e F#5e | A4e C#5e E5e A5e E5e C#5e A4e C#5e | A4e C#5e E5e C#5e A4e C#5e E5e C#5e | D4e F#4e A4e D5e A4e F#4e D4e F#4e | G#4e B4e E5e B4e G#4e B4e E5e B4e | A4e C#5e E5e A5e E5e C#5e A4e C#5e | E4e G#4e B4e E5e B4e G#4e E4e G#4e"
+    },
+    {
+      "name": "pad",
+      "voice": "pad",
+      "octave": 3,
+      "gain": 0.55,
+      "_note": "Lush warm A-major chords, swelling, generous reverb. I-V-IV-vi color, all bright.",
+      "notes": "A2+E3+A3+C#4w | A2+E3+A3+C#4w | A2+E3+A3+C#4w | E2+B2+E3+G#3w | A2+E3+A3+C#4w | A2+E3+A3+C#4w | D3+F#3+A3+D4w | E2+B2+E3+G#3w | A2+E3+A3+C#4w | A2+E3+A3+C#4w | D3+F#3+A3+D4w | E2+B2+E3+G#3w | A2+E3+A3+C#4w | A2+E3+A3+C#4w | E2+B2+E3+G#3w | A2+E3+A3+C#4w | A2+E3+A3+C#4w | D3+F#3+A3+D4w | A2+E3+A3+C#4w | A2+E3+A3+C#4w | D3+F#3+A3+D4w | E2+B2+E3+G#3w | A2+E3+A3+C#4w | E2+B2+E3+G#3w"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 1,
+      "gain": 1.0,
+      "_note": "Warm, full, grounded. Walking root motion. Last bar E(V) voice-leads to A bar 1.",
+      "notes": "A1q E2q A1q E2q | A1q E2q A1q E2q | A1q E2q A1q E2q | E1q B1q E1q B1q | A1q E2q A1q E2q | A1q E2q A1q E2q | D1q A1q D1q A1q | E1q B1q E1q B1q | A1q E2q A1q E2q | A1q E2q A1q E2q | D1q A1q D1q A1q | E1q B1q E1q B1q | A1q E2q A1q E2q | A1q E2q A1q E2q | E1q B1q E1q B1q | A1q E2q A1q E2q | A1q E2q A1q E2q | D1q A1q D1q A1q | A1q E2q A1q E2q | A1q E2q A1q E2q | D1q A1q D1q A1q | E1q B1q E1q B1q | A1q E2q A1q E2q | E1q B1q E1h"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.8,
+      "_note": "Triumphant, big but joyful. Steady driving groove, crash accents at phrase tops, a final crash fill at the seam.",
+      "notes": "e kick+crash hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | s kick snare kick snare tom tom snare snare kick kick snare snare crash crash crash"
+    }
+  ]
+}
