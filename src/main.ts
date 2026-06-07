@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { GAME_WIDTH, GAME_HEIGHT, COLORS } from '@game/config';
+import { GAME_WIDTH, GAME_HEIGHT, COLORS, RENDER_SCALE } from '@game/config';
 import { BootScene } from '@game/scenes/BootScene';
 import { PreloadScene } from '@game/scenes/PreloadScene';
 import { TitleScene } from '@game/scenes/TitleScene';
@@ -11,7 +11,13 @@ import { BattleScene } from '@game/scenes/BattleScene';
  * Game entry point. Boots Phaser at a fixed handheld-era internal resolution
  * and scales it up to fill whatever screen it lands on — desktop browser today,
  * a Capacitor mobile webview tomorrow. `pixelArt: true` forces nearest-neighbour
- * sampling so the upscale stays crisp.
+ * sampling so the world art stays crisp and chunky.
+ *
+ * `scale.zoom: RENDER_SCALE` renders the 240x160 game into a higher-resolution
+ * framebuffer (the world art is still nearest-sampled, so it reads identically —
+ * just at more device pixels). That gives the in-canvas pixel font real pixels to
+ * render into, so text is crisp rather than a 240x160 bitmap stretched by the
+ * upscale. Game coordinates remain 240x160 (see config.ts).
  */
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
@@ -24,6 +30,7 @@ const config: Phaser.Types.Core.GameConfig = {
   scale: {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
+    zoom: RENDER_SCALE,
   },
   physics: {
     default: 'arcade',

@@ -72,6 +72,7 @@ public/                     # SERVED/BUILT output — what Vite ships (base './'
   assets/
     audio/music/*.mp3       #   rendered loops (area + battle) — output of assets/audio/midi/
     maps/*.json             #   game-loaded map data
+    backgrounds/battle/*.webp #  per-map battle backdrops (240×160) — generate-image output
     ui/logo.png             #   served copy of the logo
     sprites/ tilesets/ fonts/ audio/sfx/   # packed/served output (filling in as built)
 src/
@@ -182,7 +183,8 @@ go digging on every task.
 | Balance/roster tooling | `tools/balance/` |
 | Visual standards (binding) | `docs/art-style.md` |
 | Asset masters (source) | `assets/` (`assets/README.md`) |
-| Served/rendered assets | `public/assets/` (music, maps, logo) |
+| Area mood pieces (concept art / tile refs) | `assets/concept-art/` (`assets/concept-art/README.md`) |
+| Served/rendered assets | `public/assets/` (music, maps, battle backdrops, logo) |
 
 ## Asset generation skills
 
@@ -286,6 +288,15 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **Don't hand-edit served assets.** Music `.mp3`s in `public/assets/audio/music/`
   are renders of `.mid` masters in `assets/audio/midi/` — edit the master and
   re-render. Same for sprites/tilesets (masters in `assets/`, packed into `public/`).
+- **Area music ships in the richer `snes` register, not bare `gbc`.** Keep the
+  Option-A tune's `pulse25` lead + `tri_bass` bass note-for-note, then open the
+  band: `strings`/`pad` real chords, `pluck` harp arp, sparse `bell` (Light), an
+  optional `flute` counter; `era: "snes"` (warm reverb + chords) but still render
+  through `--engine chip`. Registers stay separated (bass o2 / pad o3 / lead o4 /
+  bell o5), ≤7 peak voices. The first-encounter maps (`tinderwick-a/-b`,
+  `dimglass-coast-a`) already follow this; full recipe in the generate-midi score
+  bible §3.3. Bare 4-voice `gbc` is still right for the sparsest cues (deep caves,
+  the Hollowing's drained zones).
 - **Use the canon vocabulary** (kin, Lumenary, Gleam, Lantern Gift, kindling,
   vesperlamp) in code, data, dialogue, and commits — not generic "monster/gym/badge,"
   and never another franchise's terms (even in prompts and commit messages).
@@ -326,3 +337,15 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **The device shell screen is locked to 3:2.** `shells.css` sizes `#game-root` to the
   largest 3:2 box that fits, so `Scale.FIT` never pillarboxes (no black side bars). The
   `plain`/`overlay` shells are intentionally full-bleed and still letterbox.
+- **Crisp text rides on `RENDER_SCALE`.** Game logic is still 240×160, but the canvas is
+  rendered into a higher-res framebuffer via `scale.zoom: RENDER_SCALE` (`config.ts` →
+  `main.ts`) so the pixel font isn't a 240×160 bitmap blown up by nearest-neighbour. World
+  art stays chunky (NEAREST); `ui/Text.ts` sets each Text's `resolution` to `RENDER_SCALE`
+  so glyphs get real pixels. Build text through `makeText` (it's the only place that sets
+  resolution) — a raw `scene.add.text` will render blocky again.
+- **Battle backdrops are a per-map data edit.** A battle's background is chosen from the
+  map's `battle_backdrops` list in `data/world/maps.ts` (random variant), preloaded in
+  `PreloadScene`, drawn behind the battlers in `BattleScene`. New area = add 240×160 WebPs
+  under `public/assets/backgrounds/battle/` + list them on the map; no map with a list = it
+  keeps the plain night fill. Briefs/standards live in `docs/art-style.md` (§5-H). Keep them
+  subtle so sprites/plates stay readable.

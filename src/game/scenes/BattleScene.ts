@@ -38,6 +38,7 @@ import { HpPanel } from '@game/ui/battle/HpPanel';
 import { BattleMessage } from '@game/ui/battle/BattleMessage';
 import { getTrainer, getTrainerLines } from '@game/content/trainers';
 import { getItem } from '@game/content/items';
+import { resolveBattleBackdrop } from '@game/data/world/maps';
 import type { KinInstanceData, InventoryData } from '@game/systems/save/types';
 import type { WorldFlag } from '@game/data/world/types';
 
@@ -61,7 +62,11 @@ export interface BattleResult {
 }
 
 /** Full scene data = the request plus the result callback. */
-export type BattleSceneData = BattleRequest & { onComplete: (result: BattleResult) => void };
+export type BattleSceneData = BattleRequest & {
+  onComplete: (result: BattleResult) => void;
+  /** Map the fight started on; selects the battle backdrop (see data/world/maps.ts). */
+  mapId?: string;
+};
 
 const FOE_POS = { x: GAME_WIDTH - 56, y: 50 };
 const PLAYER_POS = { x: 56, y: 104 };
@@ -124,12 +129,27 @@ export class BattleScene extends Phaser.Scene {
   }
 
   private buildScene(): void {
+    this.addBackdrop();
     this.foeBattler = new Battler(this, FOE_POS.x, FOE_POS.y, this.engine.foe.species, 'foe');
     this.playerBattler = new Battler(this, PLAYER_POS.x, PLAYER_POS.y, this.engine.player.species, 'player');
-    this.foeHp = new HpPanel(this, 6, 8, this.engine.foe, false);
-    this.playerHp = new HpPanel(this, GAME_WIDTH - 84, GAME_HEIGHT - 78, this.engine.player, true);
+    this.foeHp = new HpPanel(this, 6, 8, this.engine.foe, false, 'left');
+    this.playerHp = new HpPanel(this, GAME_WIDTH - 6, GAME_HEIGHT - 78, this.engine.player, true, 'right');
     this.msg = new BattleMessage(this);
     this.cameras.main.fadeIn(theme.transition.fadeMs, 0, 0, 0);
+  }
+
+  /**
+   * Drop the map's battle backdrop behind the battlers, over the night fill. The
+   * variant was chosen (and the texture preloaded) for this map; if there is none,
+   * or it somehow isn't loaded, we just keep the plain night camera fill.
+   */
+  private addBackdrop(): void {
+    const path = resolveBattleBackdrop(this.request.mapId);
+    if (!path || !this.textures.exists(path)) return;
+    this.add
+      .image(GAME_WIDTH / 2, GAME_HEIGHT / 2, path)
+      .setDepth(theme.depth.world - 1)
+      .setScrollFactor(0);
   }
 
   private startMusic(): void {

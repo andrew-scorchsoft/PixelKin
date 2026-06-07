@@ -391,7 +391,7 @@ export class WorldScene extends Phaser.Scene {
         this.modal = false;
         resolve(result);
       };
-      this.scene.launch('Battle', { ...request, onComplete });
+      this.scene.launch('Battle', { ...request, onComplete, mapId: this.map.def.id });
       this.scene.pause();
     });
   }
