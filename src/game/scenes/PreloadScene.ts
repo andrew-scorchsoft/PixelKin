@@ -9,6 +9,7 @@ import {
   type CreatureView,
 } from '@game/systems/sprites/CreatureSprites';
 import { ACTIONS_KEY_SUFFIX, EMOTE_TEXTURE } from '@game/entities/Actor';
+import { ARENA_LAYER_PATHS } from './AttractScene';
 
 interface SheetEntry {
   path: string;
@@ -65,6 +66,13 @@ export class PreloadScene extends Phaser.Scene {
     for (const [id, v] of FEATURED) {
       const path = creatureSpritePath(id, v);
       if (path) this.load.image(creatureTextureKey(id, v), path);
+    }
+
+    // Parallax arena layers behind the attract-mode duel — seamless mirror
+    // strips scrolled at different speeds for a slow "orbit the arena" depth.
+    // Keyed by their asset path (same convention as battle backdrops).
+    for (const path of ARENA_LAYER_PATHS) {
+      this.load.image(path, path);
     }
 
     // Per-map battle backdrops (240x160 WebP). Keyed by their asset path so the

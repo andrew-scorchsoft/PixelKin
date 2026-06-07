@@ -392,3 +392,17 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   doubles as the gate: its first key/tap/shell-press unlocks the context, so the attract
   trailer plays with music. Don't move music ahead of that gate, and if you add a new
   pre-interaction entry point, unlock audio there too.
+- **The attract duel has a parallax arena.** `AttractScene` stacks three seamless
+  mirror-strip layers (far sky → mid stone tiers → near braziers) and scrolls them in
+  `update()` at rising speeds (`ARENA_LAYERS`) for a slow "orbit the arena" depth — not a
+  side-scroll. They sit behind the battlers under a dim overlay so the kin always read first.
+  Served strips: `public/assets/backgrounds/attract/*.webp`; masters (raw gens):
+  `assets/backgrounds/attract/`. To re-render, regen the master then rebuild the seamless
+  strip (downscale to 160 tall + append an h-flipped copy → guaranteed wrap). `TitleScene`
+  caps the 4:3 logo by **height** (`LOGO_MAX_HEIGHT`), not just width — capping by width alone
+  made it ~144px tall and overlapped the menu (logo gets the top band, menu the bottom).
+- **`--transparent` image gens need `OPENAI_IMAGE_MODEL=gpt-image-1`.** The managed env pins
+  `OPENAI_IMAGE_MODEL=gpt-image-2`, which the generate-image script honours but which rejects
+  `background=transparent`. Prefix the one transparent call:
+  `OPENAI_IMAGE_MODEL=gpt-image-1 ./venv/bin/python …/generate.py --transparent …` (Google
+  has no native alpha, so transparent always routes to OpenAI).

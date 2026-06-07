@@ -33,17 +33,36 @@ const FOE_KIN = { id: 2, view: 'front' as CreatureView, color: COLORS.water }; /
 const FOE_POS = { x: GAME_WIDTH - 58, y: 62 };
 const PLAYER_POS = { x: 60, y: 108 };
 
+/**
+ * The parallax arena behind the duel. Three seamless mirror-strip layers
+ * (far sky → mid stone tiers → near silhouetted braziers) scrolled in the same
+ * direction at rising speeds, so the scene reads as a slow orbit around an arena
+ * rather than a side-scrolling treadmill. `speed` is in px/sec; all stay behind
+ * the battlers (negative depth) and dim, so the kin always read first.
+ */
+const ARENA_LAYERS = [
+  { key: 'assets/backgrounds/attract/arena-sky.webp', alpha: 1, speed: 4, depth: -30 },
+  { key: 'assets/backgrounds/attract/arena-tiers.webp', alpha: 0.8, speed: 9, depth: -20 },
+  { key: 'assets/backgrounds/attract/arena-fore.webp', alpha: 0.95, speed: 16, depth: -10 },
+] as const;
+
+/** Asset paths for the parallax layers, for PreloadScene to queue. */
+export const ARENA_LAYER_PATHS: readonly string[] = ARENA_LAYERS.map((l) => l.key);
+
 export class AttractScene extends Phaser.Scene {
   private music!: MusicDirector;
   private shellHandler?: (e: Event) => void;
+  private parallax: { sprite: Phaser.GameObjects.TileSprite; speed: number }[] = [];
 
   constructor() {
     super('Attract');
   }
 
   create(): void {
+    this.parallax = [];
     this.cameras.main.setBackgroundColor(COLORS.night);
     this.cameras.main.fadeIn(theme.transition.fadeMs, 0, 0, 0);
+    this.buildArena();
     this.music = new MusicDirector(this, 0.4);
     void this.music.play('battle-main-dusk-duel', 'assets/audio/music/battle-main-dusk-duel.mp3');
     const sfx = new Sfx(this);
@@ -94,6 +113,57 @@ export class AttractScene extends Phaser.Scene {
     this.shellHandler = () => go();
     window.addEventListener(SHELL_INPUT_EVENT, this.shellHandler);
     this.time.delayedCall(DEMO_MS, go);
+  }
+
+  /** Continuously pan each parallax layer; differing speeds give the depth. */
+  update(_time: number, delta: number): void {
+    for (const layer of this.parallax) {
+      layer.sprite.tilePositionX += (layer.speed * delta) / 1000;
+    }
+  }
+
+  /**
+   * Build the parallax arena: stacked seamless tile-strips behind the battlers, a
+   * gentle dim overlay so the kin pop, and a few drifting lantern motes for depth.
+   * Falls back gracefully to the plain night fill if a layer texture is missing.
+   */
+  private buildArena(): void {
+    for (const layer of ARENA_LAYERS) {
+      if (!this.textures.exists(layer.key)) continue;
+      const sprite = this.add
+        .tileSprite(0, 0, GAME_WIDTH, GAME_HEIGHT, layer.key)
+        .setOrigin(0, 0)
+        .setAlpha(layer.alpha)
+        .setDepth(layer.depth);
+      this.parallax.push({ sprite, speed: layer.speed });
+    }
+    // Knock the whole backdrop back a touch so the duel stays the focus.
+    this.add
+      .rectangle(0, 0, GAME_WIDTH, GAME_HEIGHT, hex(COLORS.night), 0.22)
+      .setOrigin(0, 0)
+      .setDepth(-5);
+    this.addMotes();
+  }
+
+  /** A handful of slow-rising lantern sparks — subtle atmosphere, never busy. */
+  private addMotes(): void {
+    for (let i = 0; i < 7; i++) {
+      const x = Phaser.Math.Between(8, GAME_WIDTH - 8);
+      const y = Phaser.Math.Between(20, GAME_HEIGHT - 24);
+      const mote = this.add
+        .circle(x, y, 1, hex(COLORS.diamond), 0.7)
+        .setDepth(-4);
+      this.tweens.add({
+        targets: mote,
+        y: y - Phaser.Math.Between(10, 20),
+        alpha: 0.15,
+        duration: Phaser.Math.Between(2200, 3800),
+        delay: Phaser.Math.Between(0, 1500),
+        yoyo: true,
+        repeat: -1,
+        ease: 'Sine.inOut',
+      });
+    }
   }
 
   /**
