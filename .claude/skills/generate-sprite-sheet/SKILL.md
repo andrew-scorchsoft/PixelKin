@@ -456,6 +456,25 @@ runs its build on execution, so run it as a script, not as an import — get the
 > them to the shared set's builder (or a small accent set). The first three areas are
 > REUSE; new biomes are targeted generation on top of the shared base.
 
+**Build a NEW area — turnkey:**
+
+```bash
+# 0. (once) ensure the shared set exists / is current
+python3 tools/maps/build_shared_overworld.py
+# 1. copy a worked builder and edit the layout (size by MapKind, §7 sketch)
+cp tools/maps/build_dimglass.py tools/maps/build_<area>.py    # or build_tinderwick.py
+#    - paint terrain presence grids (mk.make_grid/rect/vline/organic_border)
+#    - mk.shared_tileset_ref() in tilesets[]; mk.gid("flowers") etc. for deco/objects
+#    - mk.scatter_decor(...) to break the field; objects[] for buildings/trees
+# 2. build → expand (variant autotiling) → strip terrain → render → validate, one call:
+python3 tools/maps/build_<area>.py     # mk.finalize() prints the QA report; aim for PASS
+# 3. register the map in src/game/data/world/maps.ts + edges in world/graph.ts (content, not engine)
+```
+
+If the area needs a NEW organic tile (cliff/cave/biome edge), generate it (prompting standard
+below), `tileforge.whole_downscale`/`deborder`/variant it, and append it in
+`build_shared_overworld.py` (shared) or a small per-area accent set at a higher `first_gid`.
+
 ### Generating new tiles: the prompting standard (measured, not folklore)
 
 The model paints "a tile" as a framed little picture — top-left light, a **vignette**, a 1px
