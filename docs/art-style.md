@@ -477,6 +477,11 @@ field of "tiles placed."
 Buildings, big trees, lamp-posts, signs, fences, wells. These are **NOT tiled**
 from wall/roof pieces — that's what makes houses read as flat. Each is **one
 multi-tile object**, designed with real shape, then sliced only for placement:
+- **Projection: flat top-down orthographic — the GBC/GBA "JRPG town" look, NEVER
+  isometric.** A building is a **front wall facing the camera straight-on** with
+  the **roof seen from slightly above, flat, directly over the wall** — no
+  receding 3-D side walls, no dimetric/isometric angle. Match the 2001-handheld
+  monster-RPG town register, not a modern iso builder.
 - **Drawn as a single transparent image** with: a clear silhouette, a **roof/eave
   overhang** that reads as 3-D, **shaded walls** (lit top-left, shadow
   bottom-right), windows/door with depth, and a **soft contact shadow** on the
