@@ -215,6 +215,29 @@ The point is that the web build *is* the mobile build later. So:
   edit, not new code. This also keeps original content cleanly separated.
 - Match the surrounding code's style. Strict TypeScript is on.
 
+## Keeping docs current
+
+Treat `README.md` and this file as part of the change, not an afterthought. When
+your work changes something a reader would otherwise discover the hard way,
+update the docs **in the same commit** — then a future run (or human) gets it for
+free instead of re-deriving it.
+
+- **`README.md`** is the outside-in overview. Update it when the *shape of the
+  project* changes: a new top-level area, a new major system/feature, a new
+  command or setup step, a moved/renamed key folder, or a meaningful jump in
+  content (e.g. the dex or world growing). Keep it a summary that links to the
+  deeper docs — don't paste detail that belongs in `docs/`.
+- **`CLAUDE.md`** (this file) is the always-loaded brief. Update it when you'd
+  want *your next session* to know something on turn one: changed structure or
+  conventions, a new canon fact (Game canon), a new place things live (the index
+  table), or a repeat-prone mistake (Gotchas & learned steers — you have standing
+  permission to append there).
+- **Strike the balance.** These two files are read on every run; bloat costs
+  attention. Prefer a one-line summary + a pointer to the authoritative doc over
+  inlining detail. If it's deep, niche, or fast-changing, it belongs in `docs/`
+  (or a local `README.md`) and gets a *link* here, not a copy. When in doubt,
+  shorter — and prune anything that's gone stale while you're in the file.
+
 ## Git
 
 - Develop on the feature branch you were given; commit with clear messages;
