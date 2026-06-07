@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- Tide attack hit B (bell-buoy chime lilt)",
+  "_note": "Tide variant B: a bell chime ping then a wave hollow roll-off. More musical, bell-buoy character -- the tidal hit rings like a nautical chime rather than pure splash. Render --tail 0.15 to let the bell glint.",
+  "era": "sfx",
+  "tempo": 220,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "buoy",  "voice": "bell",  "octave": 6, "gain": 0.85, "notes": "G6s@115 E6s@80" },
+    { "name": "swell", "voice": "wave",  "octave": 4, "gain": 0.7,  "notes": "rs C4~G3e@70" }
+  ]
+}

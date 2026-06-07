@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- Solar attack hit B (harp pluck sunburst)",
+  "_note": "Solar variant B: a two-note harp-like pluck pair (pulse12 bright, quick pair) then a noise warm flash burst. More percussive than A -- the stored sunlight releases in a sharp pluck rather than a glide. Render --tail 0.10.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "pluck",  "voice": "pulse12", "octave": 6, "gain": 0.9, "notes": "E6s@120 G6s@100" },
+    { "name": "burst",  "voice": "noise",   "octave": 5, "gain": 0.55, "notes": "C6~C4s@75" }
+  ]
+}

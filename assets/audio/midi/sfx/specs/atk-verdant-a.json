@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- Verdant attack hit A (Lydian shimmer ping)",
+  "_note": "Verdant's hit: a pulse12 Lydian-tinged shimmer using the #4 (F#) colour note -- the dewy glowmoss glint. Three notes with the sharp fourth for a bright, unexpected sparkle. Render --tail 0.12.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C Lydian",
+  "tracks": [
+    { "name": "shimmer", "voice": "pulse12", "octave": 6, "gain": 0.85, "notes": "C6s F#6s C6e@110" },
+    { "name": "dew",     "voice": "bell",    "octave": 6, "gain": 0.5,  "notes": "rs rs F#6e@60" }
+  ]
+}

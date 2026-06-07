@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- Lunar attack hit B (moonlit bell pulse shimmer)",
+  "_note": "Lunar variant B: a bell note then a slow wave hollow note one step down -- like moonlight shifting. Quieter, more tonal dreamlike quality. More shimmer than glide. Render --tail 0.18.",
+  "era": "sfx",
+  "tempo": 200,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "moonpulse", "voice": "bell",  "octave": 6, "gain": 0.8, "notes": "G6e@95" },
+    { "name": "hollow",    "voice": "wave",  "octave": 5, "gain": 0.7, "notes": "E5~C5e@80" }
+  ]
+}

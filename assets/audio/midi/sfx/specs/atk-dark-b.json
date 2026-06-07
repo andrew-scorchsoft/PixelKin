@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- Dark attack hit B (cold void pulse drop)",
+  "_note": "Dark variant B: a pulse50 low stab (cold, hollow) followed by a noise down-glide coldfog drain. More ominous than A -- the hit lands cold and heavy, the fog swallows the sound. Render --tail 0.08.",
+  "era": "sfx",
+  "tempo": 220,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C minor",
+  "tracks": [
+    { "name": "void",  "voice": "pulse50", "octave": 3, "gain": 0.8, "notes": "C3s@105 rs A2s@75" },
+    { "name": "drain", "voice": "noise",   "octave": 4, "gain": 0.7, "notes": "C5~C2e@80" }
+  ]
+}

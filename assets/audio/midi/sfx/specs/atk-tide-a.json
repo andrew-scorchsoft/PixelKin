@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- Tide attack hit A (rounded splash down-glide)",
+  "_note": "Tide's hit: a rounded wave voice down-glide (water falling) + soft noise wash beneath it. Matches Tide's lilting, rounded character: gentle compound rocking, bell-buoy, water-fall. Render --tail 0.07.",
+  "era": "sfx",
+  "tempo": 220,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "splash", "voice": "wave",  "octave": 5, "gain": 0.9, "notes": "G5~C4e@110" },
+    { "name": "wash",   "voice": "noise", "octave": 4, "gain": 0.55, "notes": "C5~C3e@70" }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- Light attack hit A (bright ascending starlight sparkle)",
+  "_note": "Light's hit: a quick rising arpeggio on pulse25 -- C6 E6 G6 C7 -- true starlight ascending. Matches Light's bright bell timbre and ascending sparkle signature. Render --tail 0.15 to let the top note shimmer.",
+  "era": "sfx",
+  "tempo": 320,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "sparkle", "voice": "pulse25", "octave": 6, "gain": 0.9, "notes": "C6s E6s G6s C7s@120" },
+    { "name": "glint",   "voice": "bell",    "octave": 7, "gain": 0.6, "notes": "rs rs rs C7s@90" }
+  ]
+}
