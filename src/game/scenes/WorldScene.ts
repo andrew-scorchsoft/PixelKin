@@ -17,12 +17,24 @@ import { loadMap, RuntimeMap } from '@game/systems/world/MapLoader';
 import { renderMap } from '@game/systems/world/MapRenderer';
 import type { MapRenderResult } from '@game/systems/world/MapRenderer';
 import { CollisionGrid } from '@game/systems/world/CollisionGrid';
+import { EncounterSystem } from '@game/systems/world/EncounterSystem';
+import type { BattleRequest, BattleResult } from '@game/scenes/BattleScene';
 import { MusicDirector } from '@game/systems/audio/MusicDirector';
 import { Sfx } from '@game/systems/audio/Sfx';
 import { FlagStore } from '@game/systems/flags/FlagStore';
 import { Player } from '@game/entities/Player';
 import { Npc } from '@game/entities/Npc';
+import type { Actor } from '@game/entities/Actor';
 import { getDialogue } from '@game/content/dialogue';
+import { getScript } from '@game/content/scripts';
+import { makeStarterKin } from '@game/content/starters';
+import { runCutscene } from '@game/systems/cutscene/CutsceneRunner';
+import type { CutsceneContext } from '@game/systems/cutscene/CutsceneRunner';
+import type { ActorRef } from '@game/content/types';
+import type { KinInstanceData, InventoryData, SaveGame } from '@game/systems/save/types';
+import { SAVE_SCHEMA_VERSION } from '@game/systems/save/types';
+import { SaveManager } from '@game/systems/save/SaveManager';
+import type { WorldSnapshot } from '@game/data/world/types';
 import { MAP_REGISTRY } from '@game/data/world/maps';
 import { VESPERHOLM_GRAPH } from '@game/data/world/graph';
 import type { AbilityId, Facing, Warp, EventTrigger } from '@game/data/world/types';
@@ -32,6 +44,8 @@ export interface WorldSceneData {
   spawn?: { tx: number; ty: number; facing?: Facing };
   flags?: Record<string, boolean>;
   abilities?: AbilityId[];
+  party?: KinInstanceData[];
+  inventory?: InventoryData;
 }
 
 /** Depth band for actors: above deco (5), below the 'above' layer (20). */
@@ -49,9 +63,13 @@ export class WorldScene extends Phaser.Scene {
 
   private map!: RuntimeMap;
   private collision!: CollisionGrid;
+  private encounters!: EncounterSystem;
   private render?: MapRenderResult;
   private player!: Player;
   private npcs: Npc[] = [];
+
+  private party: KinInstanceData[] = [];
+  private inventory: InventoryData = { items: {} };
 
   constructor() {
     super('World');
@@ -63,6 +81,8 @@ export class WorldScene extends Phaser.Scene {
     this.controller = new InputController(this);
     this.flags = new FlagStore(data.flags);
     this.abilities = new Set(data.abilities ?? []);
+    this.party = data.party ?? [];
+    this.inventory = data.inventory ?? { items: {} };
     this.music = new MusicDirector(this);
     this.sfx = new Sfx(this);
     this.debug = new DebugOverlay(this);
@@ -92,6 +112,7 @@ export class WorldScene extends Phaser.Scene {
     const map = await loadMap(mapId);
     this.map = map;
     this.collision = new CollisionGrid(map);
+    this.encounters = new EncounterSystem(map);
     this.render = await renderMap(this, map);
     this.cameras.main.setBounds(0, 0, this.render.pixelWidth, this.render.pixelHeight);
 
@@ -108,6 +129,31 @@ export class WorldScene extends Phaser.Scene {
 
     if (initial) this.cameras.main.fadeIn(theme.transition.fadeMs, 0, 0, 0);
     this.ready = true;
+    void this.persist(); // autosave on entering any map (so Continue always works)
+  }
+
+  /** Snapshot the live world state into the canonical save shape. */
+  private buildSnapshot(): WorldSnapshot {
+    return {
+      current_map: this.map.def.id,
+      player: { tx: this.player.tx, ty: this.player.ty, facing: this.player.facing },
+      abilities: [...this.abilities],
+      flags: this.flags.snapshot(),
+      schema_version: SAVE_SCHEMA_VERSION,
+    };
+  }
+
+  /** Autosave through the storage seam. */
+  async persist(): Promise<void> {
+    const game: SaveGame = {
+      schema_version: SAVE_SCHEMA_VERSION,
+      saved_at: Date.now(),
+      play_seconds: 0,
+      world: this.buildSnapshot(),
+      party: this.party,
+      inventory: this.inventory,
+    };
+    await SaveManager.save(game);
   }
 
   private teardownMap(): void {
@@ -199,12 +245,48 @@ export class WorldScene extends Phaser.Scene {
     if (trigger.requires_flag && !this.flags.get(trigger.requires_flag)) return;
     if (trigger.once && this.flags.triggerFired(trigger.id)) return;
 
-    // Script / cutscene triggers wait for the cutscene system (next phase).
-    if (trigger.kind === 'script' || trigger.kind === 'cutscene') return;
+    if (trigger.kind === 'script' || trigger.kind === 'cutscene') {
+      const steps = getScript(trigger.ref);
+      if (!steps) return;
+      this.modal = true;
+      await runCutscene(this.cutsceneContext(), steps);
+      this.flags.setMany(trigger.sets_flags);
+      if (trigger.once) this.flags.markTriggerFired(trigger.id);
+      void this.persist(); // lock in story progress (starter, items, flags)
+      this.modal = false;
+      return;
+    } else {
+      await this.runDialogue(trigger.ref);
+    }
 
-    await this.runDialogue(trigger.ref);
     this.flags.setMany(trigger.sets_flags);
     if (trigger.once) this.flags.markTriggerFired(trigger.id);
+  }
+
+  private cutsceneContext(): CutsceneContext {
+    return {
+      scene: this,
+      sfx: this.sfx,
+      music: this.music,
+      flags: this.flags,
+      getActor: (ref: ActorRef): Actor | undefined =>
+        ref === 'player' ? this.player : this.npcs.find((n) => n.id === ref),
+      canEnter: (tx, ty) => this.playerCanEnter(tx, ty),
+      onGiveStarter: (speciesId) => {
+        this.party.push(makeStarterKin(speciesId));
+      },
+      onGiveItem: (item, count) => {
+        this.inventory.items[item] = (this.inventory.items[item] ?? 0) + count;
+      },
+      startTrainerBattle: async (trainer: string): Promise<void> => {
+        await this.startBattle({
+          kind: 'trainer',
+          trainer,
+          party: this.party,
+          inventory: this.inventory,
+        });
+      },
+    };
   }
 
   // --- Step-on (on arrival) -----------------------------------------------
@@ -223,9 +305,53 @@ export class WorldScene extends Phaser.Scene {
     const trigger = this.map.def.triggers.find(
       (t) => t.activation === 'step_on' && t.at.tx === tx && t.at.ty === ty,
     );
-    if (trigger) void this.handleTrigger(trigger);
-    // Encounter checks plug in here once the battle scene exists.
+    if (trigger) {
+      void this.handleTrigger(trigger);
+      return;
+    }
+
+    // Wild encounter — only if we have a kin able to fight.
+    if (this.hasHealthyKin()) {
+      const intent = this.encounters.roll(tx, ty, this.abilities);
+      if (intent) {
+        void this.startBattle({
+          kind: 'wild',
+          species_id: intent.species_id,
+          level: intent.level,
+          party: this.party,
+          inventory: this.inventory,
+        });
+      }
+    }
   };
+
+  private hasHealthyKin(): boolean {
+    return this.party.some((k) => k.hp > 0);
+  }
+
+  // --- Battle bridge -------------------------------------------------------
+
+  /** Launch a battle over the (paused) overworld; resolve when it returns. */
+  private startBattle(request: BattleRequest): Promise<BattleResult> {
+    return new Promise((resolve) => {
+      this.modal = true;
+      const onComplete = (result: BattleResult): void => {
+        this.applyBattleResult(result);
+        this.scene.resume('World');
+        this.modal = false;
+        resolve(result);
+      };
+      this.scene.launch('Battle', { ...request, onComplete });
+      this.scene.pause();
+    });
+  }
+
+  private applyBattleResult(result: BattleResult): void {
+    this.party = result.party;
+    this.inventory = result.inventory;
+    if (result.set_flags) this.flags.setMany(result.set_flags);
+    void this.persist();
+  }
 
   private warpAllowed(warp: Warp): boolean {
     if (warp.requires_ability && !this.abilities.has(warp.requires_ability)) return false;

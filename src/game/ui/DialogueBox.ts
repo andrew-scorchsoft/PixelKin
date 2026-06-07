@@ -62,6 +62,7 @@ export class DialogueBox {
 
     return new Promise((resolve) => {
       if (lines.length === 0) {
+        input.destroy();
         this.destroy();
         resolve();
         return;
@@ -98,6 +99,7 @@ export class DialogueBox {
             page++;
             if (page >= lines.length) {
               this.scene.events.off(Phaser.Scenes.Events.UPDATE, tick);
+              input.destroy();
               this.destroy();
               resolve();
               return;

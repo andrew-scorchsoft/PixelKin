@@ -128,6 +128,7 @@ export class Menu {
       };
       const finish = (value: string | null): void => {
         this.scene.events.off(Phaser.Scenes.Events.UPDATE, tick);
+        input.destroy();
         this.destroy();
         resolve(value);
       };

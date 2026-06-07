@@ -7,6 +7,7 @@
  * eventual Capacitor / mobile port cheap: swap the input source, not the game.
  */
 import Phaser from 'phaser';
+import { SHELL_INPUT_EVENT, type ShellInputDetail, type ShellAction } from '@/shell/ShellManager';
 
 /** Every discrete thing the player can ask the game to do. */
 export enum InputAction {
@@ -30,13 +31,36 @@ export const DIRECTION_ACTIONS = [
  * A digital input source. Keyboard implements this directly; VirtualDpad pushes
  * presses in through `injectPress`/`injectRelease` on a shared controller.
  */
+/** Map a shell control action string onto an InputAction. */
+const SHELL_ACTION_MAP: Record<ShellAction, InputAction> = {
+  up: InputAction.Up,
+  down: InputAction.Down,
+  left: InputAction.Left,
+  right: InputAction.Right,
+  confirm: InputAction.Confirm,
+  cancel: InputAction.Cancel,
+  menu: InputAction.Menu,
+};
+
 export class InputController {
   private readonly down = new Set<InputAction>();
   private readonly pressedThisFrame = new Set<InputAction>();
   private readonly injected = new Set<InputAction>();
   private keys: Record<string, Phaser.Input.Keyboard.Key> = {};
+  private readonly shellHandler: (e: Event) => void;
 
   constructor(private readonly scene: Phaser.Scene) {
+    // On-screen (touch) controls dispatch the same abstract actions via a window
+    // event, so this controller is the one place keyboard and touch converge.
+    this.shellHandler = (e: Event): void => {
+      const detail = (e as CustomEvent<ShellInputDetail>).detail;
+      const action = SHELL_ACTION_MAP[detail.action];
+      if (!action) return;
+      if (detail.isDown) this.injectPress(action);
+      else this.injectRelease(action);
+    };
+    window.addEventListener(SHELL_INPUT_EVENT, this.shellHandler);
+
     const kb = scene.input.keyboard;
     if (kb) {
       this.keys = kb.addKeys(
@@ -115,5 +139,10 @@ export class InputController {
   injectTap(action: InputAction): void {
     this.injected.add(action);
     this.scene.time.delayedCall(0, () => this.injected.delete(action));
+  }
+
+  /** Detach the shell input listener. Call when a transient controller is done. */
+  destroy(): void {
+    window.removeEventListener(SHELL_INPUT_EVENT, this.shellHandler);
   }
 }
