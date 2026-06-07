@@ -1,0 +1,43 @@
+{
+  "title": "Lanternway - Long Lane Home",
+  "_note": "The signature travel loop dialled to 'lanterns coming on at dusk' - cosier, a shade melancholy, the walk back. gbc 4-voice band. 112 BPM, 4/4, warm G major with a gentle vi (em) lean. 32-bar AABA. Vesper motif BOUNCING form relaxed into a strolling sway: the hop (D4->G4->A4 lift) softened to legato quarters, the settle-home (B4->A4->G4) savoured. lead=same hook but softer/more legato, wistful evening colour. harmony=arps slower and rounder, fewer sparkle notes. bass=walking but relaxed, quarter-note feel. drums=lighter brushed feel, no fills. Last bar D(V) -> resolves to G bar 1.",
+  "era": "gbc",
+  "tempo": 112,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "G major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "Softer legato strolling version. A (1-8), A (9-16), B with vi/em lean (17-24), A home (25-32).",
+      "notes": "D4q G4q A4h | B4q A4q G4h | D4q G4q A4q B4q | A4q G4q E4h | D4q G4q A4h | B4q A4q G4h | E4q G4q B4q A4q | G4h G4h | D4q G4q A4h | B4q A4q G4h | D4q G4q A4q B4q | A4q G4q E4h | D4q G4q A4h | B4q A4q G4h | E4q G4q A4q F#4q | G4h G4h | E4q G4q B4h | C5q B4q A4h | E4q G4q B4q A4q | G4q E4q D4h | E4q G4q B4h | A4q B4q D5h | C5q B4q A4q F#4q | G4q A4q D4h | D4q G4q A4h | B4q A4q G4h | D4q G4q A4q B4q | A4q G4q E4h | D4q G4q A4h | B4q A4q G4h | E4q G4q B4q A4q | A4q F#4q D4h"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.5,
+      "_note": "Slower rounder arps, fewer sparkle notes (quarters not eighths). G - em - C - D, bridge C - am - D.",
+      "notes": "G4q B4q D5h | G4q B4q D5h | C4q E4q G4h | D4q F#4q A4h | G4q B4q D5h | G4q B4q D5h | E4q G4q B4h | D4q F#4q A4h | G4q B4q D5h | G4q B4q D5h | C4q E4q G4h | D4q F#4q A4h | G4q B4q D5h | G4q B4q D5h | E4q G4q B4h | D4q F#4q A4h | C4q E4q G4h | E4q G4q B4h | D4q F#4q A4h | G4q B4q D5h | C4q E4q G4h | A3q C4q E4h | D4q F#4q A4h | D4q F#4q A4h | G4q B4q D5h | G4q B4q D5h | C4q E4q G4h | D4q F#4q A4h | G4q B4q D5h | G4q B4q D5h | E4q G4q B4h | D4q F#4q A4h"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.9,
+      "_note": "Walking but relaxed, quarter-note feel. G-em-C-D. Last bar D voice-leads to G.",
+      "notes": "G2q D3q B2q G2q | G2q D3q B2q G2q | C2q G2q E2q C2q | D2q A2q F#2q D2q | G2q D3q B2q G2q | G2q D3q B2q G2q | E2q B2q G2q E2q | D2q A2q F#2q D2q | G2q D3q B2q G2q | G2q D3q B2q G2q | C2q G2q E2q C2q | D2q A2q F#2q D2q | G2q D3q B2q G2q | G2q D3q B2q G2q | E2q B2q G2q E2q | D2q A2q F#2q D2q | C2q G2q E2q C2q | E2q B2q G2q E2q | D2q A2q F#2q D2q | G2q D3q B2q G2q | C2q G2q E2q C2q | A2q E3q C3q A2q | D2q A2q F#2q D2q | D2q A2q F#2q D2q | G2q D3q B2q G2q | G2q D3q B2q G2q | C2q G2q E2q C2q | D2q A2q F#2q D2q | G2q D3q B2q G2q | G2q D3q B2q G2q | E2q B2q G2q E2q | D2q A2q D3q D2q"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.55,
+      "_note": "Lighter, brushed feel, no fills. Soft kick on 1, hat offbeats, light snare on 3.",
+      "notes": "q kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat"
+    }
+  ]
+}

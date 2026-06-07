@@ -1,0 +1,43 @@
+{
+  "title": "Dimglass Coast - Buoy-Light Drift",
+  "_note": "Sparser explore-light ambient. gbc 4-voice, no chords. 104 BPM, 4/4, G major, Light-leaning. Lead = thin pulse25 stating ONLY the Vesper lift fragment (D4->G4->A4), widely spaced, answered by bell sparkle. Harmony = bright ascending bell figures (Light signature) over slow Tide chimes. Bass = slow sustained drifting roots. Percussion = a single soft foam-wash brush per bar. 16-bar loop. The route's hook reduced to a glint so it never fatigues.",
+  "era": "gbc",
+  "tempo": 104,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "G major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.95,
+      "_note": "Vesper lift fragment only (D4->G4->A4), widely spaced, answered by silence/sparkle. Drifting and unhurried.",
+      "notes": "D4q G4q A4h | rw | D4q G4q A4q B4q | rw | D4q G4q A4h | rw | B4q A4q G4h | rw | G4q A4q B4h | rw | D4q G4q A4q B4q | rw | D4q G4q A4h | rw | B4q A4q G4h | r h D4q A4q"
+    },
+    {
+      "name": "sparkle",
+      "voice": "pulse12",
+      "octave": 5,
+      "gain": 0.5,
+      "_note": "Bright ascending bell sparkle (Light) over slow Tide chimes. Broken triads glinting up; fills the lead's gaps.",
+      "notes": "rh G5e B5e D6e B5e | G4e B4e D5e G5e r h | rh D5e G5e B5e D6e | D5e G5e B5e D6e r h | rh G5e B5e D6e B5e | C5e E5e G5e C6e r h | rh D5e F#5e A5e D6e | G4e B4e D5e G5e r h | rh G5e B5e D6e B5e | G4e B4e D5e G5e r h | rh D5e G5e B5e D6e | D5e G5e B5e D6e r h | rh G5e B5e D6e B5e | C5e E5e G5e C6e r h | rh G5e B5e D6e G6e | D6e B5e G5e D5e G5e B5e r e r e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.85,
+      "_note": "Slow sustained drifting roots, whole notes, almost still.",
+      "notes": "G2w | G2w | D2w | D2w | G2w | C2w | D2w | G2w | G2w | G2w | D2w | D2w | G2w | C2w | G2h D2h | D2w"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.45,
+      "_note": "A single soft foam-wash brush (hat) per bar on beat 1, nothing else. 16 bars.",
+      "notes": "q hat r r r | hat r r r | hat r r r | hat r r r | hat r r r | hat r r r | hat r r r | hat r r r | hat r r r | hat r r r | hat r r r | hat r r r | hat r r r | hat r r r | hat r r r | hat r r ohat"
+    }
+  ]
+}

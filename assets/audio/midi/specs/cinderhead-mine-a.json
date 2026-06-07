@@ -22,7 +22,7 @@
       "octave": 4,
       "gain": 0.5,
       "_note": "Sparse crystal-chime — a single bright broken-triad glint every 2-4 bars, far above the drone. Mostly silence. Briefly voices the Vesper settle C5->B4->A4 (bars 13-14, 25) as a glint of hope.",
-      "notes": "rw | rw | rw | rh A4e C5e B4q | rw | rw | rw | rh E5e C5e A4q | rw | rw | rw | rw | rq C5q B4q rq | rh A4h | rw | rw | rw | rh A4e C5e E5q | rw | rw | rw | rw | rw | rq C5q B4q A4q | rw | rw | rw | rh A4e r e r q"
+      "notes": "rw | rw | rw | rh A4e C5e B4q | rw | rw | rw | rh E5e C5e A4q | rw | rw | rw | rw | rq C5q B4q rq | rh A4h | rw | rw | rw | rh A4e C5e E5q | rw | rw | rw | rw | rw | rq C5q B4q A4q | rw | rw | rw | rh A4q rq"
     },
     {
       "name": "bass",
@@ -37,7 +37,7 @@
       "voice": "drums",
       "gain": 0.7,
       "_note": "Distant pick-tap — a dry knock every bar or two, occasional doubled tap echoing, vast silence between. Uses kick as the dry low knock, hat as the far echo.",
-      "notes": "h kick r | r r | h r kick | r r | h kick r | r r | h r kick | r kick r | h r r | r kick r | h kick r | r r | h r kick | r r | h kick r | r r | h r kick | r kick r | h r r | r kick r | h kick r | r r | h r kick | r r | h kick r | r r | h r kick | h hat kick"
+      "notes": "kickh rh | rw | rh kickh | rw | kickh rh | rw | rh kickh | rh kickh | rw | rh kickh | kickh rh | rw | rh kickh | rw | kickh rh | rw | rh kickh | rh kickh | rw | rh kickh | kickh rh | rw | rh kickh | rw | kickh rh | rw | rh kickh | hath kickh"
     }
   ]
 }

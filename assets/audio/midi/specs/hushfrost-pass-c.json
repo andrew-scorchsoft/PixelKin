@@ -1,0 +1,42 @@
+{
+  "title": "Hushfrost Pass - Aurora Over Ice",
+  "_note": "Option C sparser ambient / Frost-forward. gbc 4-voice band. emotional/ambient. Suspended C minor with a lifted, aurora-bright color (sus2/sus4, Eb softened by Bb/F), 70 BPM, 4/4, 16 bars. Very high glassy chimes, sparse and shimmering — more sparkle than tune. pulse12 suspended arpeggio that sweeps up and back down like an aurora ribbon (wide swoosh of arpeggiated motion). Soft sustained low bass, mostly still. Drums almost absent — a single soft hat shimmer at the loop seam, no heartbeat. Vesper motif as an upward shimmer: the rising leap G4->C5->D5 becomes the bottom of an ascending sparkle run rather than a melody, vast and impersonal. Ties timbrally to Pale Vault Glacier. Last bar G->C pickup voice-leads to bar 1.",
+  "era": "gbc",
+  "tempo": 70,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "C minor (suspended, aurora-bright)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 5,
+      "gain": 0.85,
+      "_note": "Very high glassy chimes, sparse shimmer. Motif G4->C5->D5 as the foot of an ascending sparkle.",
+      "notes": "G4q C5q D5h | rh Eb5h | rw | F5h D5h | rh G4q C5q | D5h Eb5q F5q | rw | G5h D5h | rh Bb4q Eb5q | F5h G5h | rw | D5h C5h | G4q C5q D5h | rh Eb5h | F5q G5q Bb5q G5q | F5h D5h"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.55,
+      "_note": "Suspended arpeggio sweeping up then back down — the aurora ribbon swoosh. Cm/sus, Ab, Bb, Eb, no firm thirds for long.",
+      "notes": "C4e G4e C5e D5e G5e D5e C5e G4e | C4e F4e Bb4e C5e F5e C5e Bb4e F4e | C4e G4e C5e D5e G5e D5e C5e G4e | Bb3e F4e Bb4e D5e F5e D5e Bb4e F4e | C4e G4e C5e D5e G5e D5e C5e G4e | Eb4e Bb4e Eb5e F5e Bb5e F5e Eb5e Bb4e | C4e G4e C5e D5e G5e D5e C5e G4e | G3e D4e G4e Bb4e D5e Bb4e G4e D4e | C4e G4e C5e Eb5e G5e Eb5e C5e G4e | Eb4e Bb4e Eb5e F5e Bb5e F5e Eb5e Bb4e | C4e G4e C5e D5e G5e D5e C5e G4e | Bb3e F4e Bb4e C5e F5e C5e Bb4e F4e | C4e G4e C5e D5e G5e D5e C5e G4e | C4e F4e Bb4e C5e F5e C5e Bb4e F4e | Eb4e Bb4e Eb5e G5e Bb5e G5e Eb5e Bb4e | C4e G4e C5e G4e C4e G3e C4e G4e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.85,
+      "_note": "Soft sustained low note, mostly still.",
+      "notes": "C2w | C2w | C2w | Bb1w | C2w | Eb2w | C2w | G1w | C2w | Eb2w | C2w | Bb1w | C2w | C2w | Eb2w | G1h C2h"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "_note": "Almost absent — no heartbeat. A single soft hat shimmer only at the loop seam (final bar).",
+      "notes": "rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | q hat hat hat hat"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "title": "Sunvault Climb - Morning on the Terraces",
+  "_note": "Option B mood sibling, warmer/pastoral. gbc 4-voice band. overworld. Gentle Lydian-tinged D major (raised 4th = G#), 108 BPM, 4/4, 24 bars. More lyrical singing melody (less pure-arpeggio, more tune), the Lydian #4 lift for dewy Verdant wonder. Softer, slower glassy-bell arp — sun-vines and growth rather than sparkle. Rounder, gently bouncing bass. Lighter kit: soft kick + brushed hat, an easier stroll. Vesper motif sung lyrically with a Lydian raised note on the overshoot: rising leap A3->D4->E4, the overshoot glinting on G#4 (#4) before the gentle settle F#4->E4->D4. Growth, not urgency. Last bar A->D pickup voice-leads to bar 1.",
+  "era": "gbc",
+  "tempo": 108,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "D Lydian major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "Lyrical, singing; Lydian #4 (G#) glints on the overshoot. Vesper motif sung tenderly.",
+      "notes": "A3q D4q E4h | G#4q F#4q E4h | D4q E4q F#4q A4q | F#4h E4h | A3q D4q E4h | G#4q A4q B4h | A4q F#4q E4q D4q | E4h rh | F#4q A4q B4h | C#5q B4q A4h | G#4q A4q B4q D5q | B4h A4h | A3q D4q F#4h | G#4q F#4q E4h | D4q F#4q A4q B4q | A4h F#4h | E4q F#4q G#4h | A4q B4q A4h | F#4q E4q D4q E4q | F#4h E4h | A4q B4q D5h | C#5q B4q A4h | F#4q E4q D4q E4q | F#4q E4q A4h"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 3,
+      "gain": 0.55,
+      "_note": "Softer, slower glassy-bell arp — broken triads, sun-vine growth. D, A, Bm, G(#4 color), F#m.",
+      "notes": "D3e F#3e A3e D4e A3e F#3e D3e A3e | A3e C#4e E4e A4e E4e C#4e A3e E3e | D3e F#3e A3e D4e A3e F#3e D3e A3e | A3e C#4e E4e A4e E4e C#4e A3e E3e | D3e F#3e A3e D4e A3e F#3e D3e A3e | A3e C#4e E4e A4e E4e C#4e A3e E3e | D3e F#3e A3e D4e A3e F#3e D3e A3e | E3e G#3e B3e E4e B3e G#3e E3e B2e | F#3e A3e C#4e F#4e C#4e A3e F#3e C#3e | A3e C#4e E4e A4e E4e C#4e A3e E3e | E3e G#3e B3e E4e B3e G#3e E3e B2e | A3e C#4e E4e A4e E4e C#4e A3e E3e | D3e F#3e A3e D4e A3e F#3e D3e A3e | E3e G#3e B3e E4e B3e G#3e E3e B2e | D3e F#3e A3e D4e A3e F#3e D3e A3e | F#3e A3e C#4e F#4e C#4e A3e F#3e C#3e | E3e G#3e B3e E4e B3e G#3e E3e B2e | A3e C#4e E4e A4e E4e C#4e A3e E3e | D3e F#3e A3e D4e A3e F#3e D3e A3e | A3e C#4e E4e A4e E4e C#4e A3e E3e | D3e F#3e A3e D4e A3e F#3e D3e A3e | A3e C#4e E4e A4e E4e C#4e A3e E3e | D3e F#3e A3e D4e A3e F#3e D3e A3e | A3e E3e C#4e A3e E4e C#4e A4e E4e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.9,
+      "_note": "Rounder, gently bouncing bass — root and fifth, easy stroll.",
+      "notes": "D2q A2q D2q F#2q | A2q E3q A2q E2q | D2q A2q D2q F#2q | A2q E3q A2q E2q | D2q A2q D2q F#2q | A2q E3q A2q C#3q | D2q A2q D2q F#2q | E2q B2q E2q B2q | F#2q C#3q F#2q A2q | A2q E3q A2q E2q | E2q B2q E2q B2q | A2q E3q A2q E2q | D2q A2q D2q F#2q | E2q B2q E2q B2q | D2q A2q D2q F#2q | F#2q C#3q F#2q A2q | E2q B2q E2q B2q | A2q E3q A2q E2q | D2q A2q D2q F#2q | A2q E3q A2q E2q | D2q A2q D2q F#2q | A2q E3q A2q E2q | D2q A2q D2q F#2q | A2q A2q E2q E2q"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "_note": "Lighter pastoral kit: soft kick on 1 & 3, brushed hat on offbeats, no busy snare. Light fill at the seam.",
+      "notes": "e kick hat r hat kick hat r hat | kick hat r hat kick hat r hat | kick hat r hat kick hat r hat | kick hat r hat kick hat snare hat | kick hat r hat kick hat r hat | kick hat r hat kick hat r hat | kick hat r hat kick hat r hat | kick hat r hat kick hat snare hat | kick hat r hat kick hat r hat | kick hat r hat kick hat r hat | kick hat r hat kick hat r hat | kick hat r hat kick hat snare hat | kick hat r hat kick hat r hat | kick hat r hat kick hat r hat | kick hat r hat kick hat r hat | kick hat r hat kick hat snare hat | kick hat r hat kick hat r hat | kick hat r hat kick hat r hat | kick hat r hat kick hat r hat | kick hat r hat kick hat snare hat | kick hat r hat kick hat r hat | kick hat r hat kick hat r hat | kick hat r hat kick hat r hat | kick hat snare hat kick snare hat snare"
+    }
+  ]
+}

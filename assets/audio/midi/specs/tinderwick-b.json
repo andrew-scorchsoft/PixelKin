@@ -14,7 +14,7 @@
       "octave": 4,
       "gain": 1.0,
       "_note": "Contracted Vesper: the lift reaches E3->A3->B3 then sighs back instead of overshooting; settle sags. 6/8: each bar two dotted-quarter pulses. Final bar lifts toward C (relative major) and to E (V of Am) to lead back.",
-      "notes": "E3q. A3q. | B3q A3e A3q. | C4q B3e A3q. | A3q. rq. | E3q. A3q. | B3q A3e G3q. | A3q B3e A3q. | A3q. rq. | C4q. B3q. | A3q G3e A3q. | D4q C4e B3q. | A3q. rq. | E3q. A3q. | C4q B3e A3q. | E4q D4e C4q. | C4q. B3q E3q"
+      "notes": "E3q. A3q. | B3q A3e A3q. | C4q B3e A3q. | A3q. rq. | E3q. A3q. | B3q A3e G3q. | A3q B3e A3q. | A3q. rq. | C4q. B3q. | A3q G3e A3q. | D4q C4e B3q. | A3q. rq. | E3q. A3q. | C4q B3e A3q. | E4q D4e C4q. | C4q. B3e E3e r"
     },
     {
       "name": "harmony",

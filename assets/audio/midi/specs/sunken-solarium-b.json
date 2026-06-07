@@ -1,0 +1,42 @@
+{
+  "title": "Sunken Solarium - Drowned Halls",
+  "_note": "Option B mood sibling, more melancholy / Tide-forward. gbc 4-voice band. emotional. G major slipping toward its relative E minor, 88 BPM, 4/4, 24 bars. Slower, more spacious lead with more rests; sinking phrases that don't always climb back. Arp slowed and submerged — a watery rolling figure, lower register, Tide-cool against the Solar warmth. Deeper bass with a gentle swelling pulse like a slow tide. Minimal drums — a soft low thud and occasional droplet-tick hat. Vesper motif in relative minor: rising contour D4->G4->A4 now wistful, the settle B4->A4->G4 lands lower than home (resolving to E, a third short of comfort). Last bar E->D->G pickup voice-leads to bar 1.",
+  "era": "gbc",
+  "tempo": 88,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "G major / E minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.95,
+      "_note": "Wistful, spacious, sinking phrases. Motif in relative minor, settling lower than home.",
+      "notes": "D4q G4q A4h | B4q A4q G4h | rh E4q G4q | A4h rh | D4q G4q B4h | A4q G4q E4h | rh D4q E4q | G4h rh | E4q A4q G4h | F#4q E4q D4h | rh B3q D4q | E4h rh | D4q G4q A4h | C5q B4q A4h | rh G4q E4q | D4h rh | B3q E4q G4h | A4q G4q F#4h | rh E4q D4q | B3h rh | E4q G4q B4h | A4q G4q E4h | rh D4q E4q | G4q F#4q D4h"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 3,
+      "gain": 0.55,
+      "_note": "Submerged, watery rolling arp in a lower register — Tide-cool. G, Em, C, D, Am.",
+      "notes": "G2e B2e D3e G3e D3e B2e G2e D2e | G2e B2e D3e B2e G2e D3e B2e G2e | E2e G2e B2e E3e B2e G2e E2e B1e | D2e F#2e A2e D3e A2e F#2e D2e A1e | G2e B2e D3e G3e D3e B2e G2e D2e | C2e E2e G2e C3e G2e E2e C2e G1e | E2e G2e B2e E3e B2e G2e E2e B1e | G2e B2e D3e B2e G2e D3e B2e G2e | A2e C3e E3e A3e E3e C3e A2e E2e | D2e F#2e A2e D3e A2e F#2e D2e A1e | E2e G2e B2e E3e B2e G2e E2e B1e | E2e G2e B2e E3e B2e G2e E2e B1e | G2e B2e D3e G3e D3e B2e G2e D2e | C2e E2e G2e C3e G2e E2e C2e G1e | E2e G2e B2e E3e B2e G2e E2e B1e | D2e F#2e A2e D3e A2e F#2e D2e A1e | E2e G2e B2e E3e B2e G2e E2e B1e | D2e F#2e A2e D3e A2e F#2e D2e A1e | E2e G2e B2e E3e B2e G2e E2e B1e | E2e G2e B2e E3e B2e G2e E2e B1e | E2e G2e B2e E3e B2e G2e E2e B1e | C2e E2e G2e C3e G2e E2e C2e G1e | G2e B2e D3e G3e D3e B2e G2e D2e | D2e F#2e A2e D3e A2e F#2e D2e A1e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.9,
+      "_note": "Deeper, slow tidal swell — long roots, two-step rocking.",
+      "notes": "G1w | G1h D2h | E2w | D2h A1h | G1w | C2h G1h | E2w | G1h D2h | A1w | D2h A1h | E2w | E2h B1h | G1w | C2h G1h | E2w | D2h A1h | E2w | D2h A1h | E2w | E2h B1h | E2w | C2h G1h | G1h D2h | D2h G1h"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "_note": "Minimal: soft low thud (kick) on beat 1, occasional droplet-tick hat. 8 eighth-slots per bar.",
+      "notes": "e kick r r r r r hat r | kick r r r r r r r | kick r r r r r hat r | kick r r r r r r r | kick r r r r r hat r | kick r r r r r r r | kick r r r r r hat r | kick r r r r r r r | kick r r r r r hat r | kick r r r r r r r | kick r r r r r hat r | kick r r r r r r r | kick r r r r r hat r | kick r r r r r r r | kick r r r r r hat r | kick r r r r r r r | kick r r r r r hat r | kick r r r r r r r | kick r r r r r hat r | kick r r r r r r r | kick r r r r r hat r | kick r r r r r r r | kick r r r r r hat r | kick r r r hat r hat r"
+    }
+  ]
+}

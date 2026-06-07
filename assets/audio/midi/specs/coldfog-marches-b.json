@@ -1,0 +1,43 @@
+{
+  "title": "Coldfog Marches - Ink That Swallows Colour",
+  "_note": "Drained-zone mood sibling. Less melody, more dread-as-weather - mostly the fog itself. gbc 4-voice band. 66 BPM (intentionally below gbc 80 floor - accept slow-tempo warning), 4/4, suspended A minor, no resolution. 24 bars heavy silence. Vesper motif BARELY A GHOST: only the first interval of the rising leap (E3->A3) surfaces once per loop, unanswered, before the drone reclaims it. lead=one or two faltering pulse25 notes per phrase, more breath than melody. harmony=single sustained pulse12 fog-drone swelling/fading like mist breathing. bass=barely-there pedal tone, sub-felt. drums=a single hollow noise thud at long intervals. Last bar = drone hangs unresolved into the silent top.",
+  "era": "gbc",
+  "tempo": 66,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "A minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.8,
+      "_note": "One or two faltering notes per phrase. The ghost of the rising leap (E3->A3) once, around bar 9-10; otherwise near-silent.",
+      "notes": "r w | r w | r w | r r r A3 | r w | r w | r w | r w | r r E3 r | A3 r r r | r w | r w | r w | r w | r r B3 r | r w | r w | r w | r r A3 r | r w | r w | r w | r w | r w"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 3,
+      "gain": 0.38,
+      "_note": "Single sustained fog-drone, swelling and fading. A held mostly; slips to E then F then back, never resolving. Long held whole notes with a few gaps.",
+      "notes": "A3w | A3w | r w | A3w | A3w | r w | E3w | E3w | r w | A3w | A3w | r w | F3w | F3w | r w | A3w | A3w | r w | E3w | E3w | r w | A3w | A3w | E3w"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 1,
+      "gain": 0.8,
+      "_note": "Barely-there pedal tone, sub-felt. A held for long stretches, slips to F, ends unresolved on E.",
+      "notes": "A1w | A1w | A1w | A1w | A1w | A1w | A1w | A1w | A1w | A1w | A1w | A1w | F1w | F1w | F1w | A1w | A1w | A1w | A1w | A1w | A1w | A1w | E1w | E1w"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.38,
+      "_note": "A single hollow noise thud at long intervals - every several bars, off-grid feel.",
+      "notes": "q r r r kick | r r r r | r r r r | r r r r | r r kick r | r r r r | r r r r | r r r r | q r r r kick | r r r r | r r r r | r r r r | r kick r r | r r r r | r r r r | r r r r | q r r kick r | r r r r | r r r r | r r r r | r r r r | r r kick r | r r r r | r r r r"
+    }
+  ]
+}

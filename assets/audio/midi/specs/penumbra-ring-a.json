@@ -1,0 +1,43 @@
+{
+  "title": "Penumbra Ring - Wall of Ink",
+  "_note": "Barrier anchor / early-dark state. The first, darkest crossing - almost no melody, just the breathing wall and your own pulse. With Coldfog, the least-resolved point in the whole score (bottom of the dawn arc). gbc 4-voice band. 60 BPM (deliberately slow/hollow, well below gbc 80 floor - accept the intentional slow-tempo warning), 4/4 felt as a slow pulse, dark D minor unresolved. 24 bars. Vesper motif WITHHELD - only its lowest root note (D) glows once per loop, a memory of a tune you can't yet reach inside the dark. lead=almost none, one lonely low pulse25 note swelling out of the drone every few bars. harmony=low evolving fog-pad, dark and slowly shifting, detuned at the edges. bass=deep pedal drone, oppressive and still. drums=sparse heartbeat, a single soft kick every two bars. Last bar = drone + dom-ish A pull hangs unresolved into the silent D-minor top.",
+  "era": "gbc",
+  "tempo": 60,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "D minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 3,
+      "gain": 0.75,
+      "_note": "Almost none - one lonely low note swelling out of the drone every few bars. No real melody. The withheld Vesper root D glows once (bar 13).",
+      "notes": "r w | r w | r r D3 r | r w | r w | r w | r r F3 r | r w | r w | r w | r r A3 r | r w | D3 r r r | r w | r w | r w | r r F3 r | r w | r w | r w | r r D3 r | r w | r w | r w"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 3,
+      "gain": 0.42,
+      "_note": "Low evolving fog-pad, dark and slowly shifting, detuned-at-edges feel via slow moving held tones. D minor never resolving: D - Bb - F - A - back.",
+      "notes": "D3w | D3w | F3w | D3w | D3w | Bb2w | D3w | D3w | F3w | A3w | F3w | D3w | D3w | F3w | A3w | A3w | Bb2w | D3w | F3w | D3w | D3w | A3w | A3w | A3w"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 1,
+      "gain": 0.85,
+      "_note": "Deep pedal drone, oppressive and still. D held for bars; slips to Bb; ends on A (unresolved dominant pull into the silent D top).",
+      "notes": "D1w | D1w | D1w | D1w | D1w | D1w | D1w | D1w | Bb1w | Bb1w | D1w | D1w | D1w | D1w | D1w | D1w | Bb1w | Bb1w | D1w | D1w | D1w | A1w | A1w | A1w"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.42,
+      "_note": "Sparse heartbeat - a single soft kick every two bars, the only sign of life.",
+      "notes": "q kick r r r | r r r r | q kick r r r | r r r r | q kick r r r | r r r r | q kick r r r | r r r r | q kick r r r | r r r r | q kick r r r | r r r r | q kick r r r | r r r r | q kick r r r | r r r r | q kick r r r | r r r r | q kick r r r | r r r r | q kick r r r | r r r r | q kick r r r | r r r r"
+    }
+  ]
+}

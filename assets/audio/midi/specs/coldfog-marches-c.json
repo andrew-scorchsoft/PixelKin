@@ -1,0 +1,43 @@
+{
+  "title": "Coldfog Marches - Emberward Pushing Through",
+  "_note": "Drained-zone 'as it relights' variant - Emberward burns the coldfog back, bells and warmth bleed into the hollow drone. gbc 4-voice band. 74 BPM (intentionally below gbc 80 floor - accept slow-tempo warning), 4/4, A minor warming toward C major. 24 bars. Vesper motif: the fragmented motif finally RESOLVES - the settle-home phrase (E4->D4->C4) that guttered out in A completes for the first time, in warming major. lead=faltering melody finding its footing, phrases begin to complete. harmony=hopeful pulse12 bell notes creep IN over the detuned drone, warming/steadying it. bass=tri_bass lifts off its single root into a gentle walk. drums=soft slow heartbeat kick appears and steadies. Last bar G(V) -> warm pull back into A-minor top that is now thawing.",
+  "era": "gbc",
+  "tempo": 74,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "A minor to C major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.95,
+      "_note": "Phrases begin to complete. Rising leap E3->A3->B3 early; the settle-home E4->D4->C4 completes in warming major from bar 17.",
+      "notes": "r h E3q A3q | B3h. r q | r h A3q B3q | C4h r h | E3q A3q B3q C4q | B3h r h | r h C4q D4q | E4h r h | E4q A3q C4q E4q | D4h C4q r q | F4q E4q D4q C4q | D4h r h | E4q G4q E4q C4q | D4h. r q | E4q D4q C4q E4q | G4h r h | E4q D4q C4h | D4q C4q B3h | C4q E4q G4q E4q | D4q C4q D4h | E4q D4q C4q B3q | A3q C4q E4h | G3q C4q E4q D4q | E4q D4q G3h"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 3,
+      "gain": 0.5,
+      "_note": "Detuned drone (low) at first, hopeful bell notes (higher) creeping in and warming. Am -> F -> C -> G, growing.",
+      "notes": "A3w | A3w | A3w | C4w | A3q C4q E4h | A3w | F3q A3q C4h | C4w | A3q C4q E4q C4q | A3w | F3q A3q C4q A3q | G3w | C4q E4q G4q E4q | C4w | A3q C4q E4q C4q | E4w | C4q E4q G4q E4q | A3q C4q E4h | C4q E4q G4q E4q | F3q A3q C4h | A3q C4q E4q C4q | F3q A3q C4h | C4q E4q G4q E4q | G3q B3q D4h"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.85,
+      "_note": "Lifts off the single root into a gentle walk. Am pedal early; gradually root motion Am-F-C-G. Last bar G voice-leads to A/C top.",
+      "notes": "A1w | A1w | A1w | A1w | A1h C2h | A1w | F1h A1h | C2w | A1h E2h | A1w | F1h C2h | G1w | C2h G2h | C2w | A1h E2h | E2w | C2h G2h | A1h E2h | C2h G2h | F1h C2h | A1h E2h | F1h C2h | C2h E2h | G1h G2h"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.45,
+      "_note": "Soft slow heartbeat kick appears and steadies - sparse early, then a gentle pulse on 1 and 3 by the end.",
+      "notes": "q r r r r | r r r r | q kick r r r | r r r r | q kick r r r | r r r r | q kick r kick r | r r r r | q kick r kick r | kick r r r | q kick r kick r | kick r r r | q kick r kick r | kick r r r | q kick r kick r | kick r kick r | q kick r kick r | kick r kick r | q kick r kick r | kick r kick r | q kick r kick r | kick r kick r | q kick r kick r | kick r snare r"
+    }
+  ]
+}

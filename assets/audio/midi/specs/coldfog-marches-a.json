@@ -14,7 +14,7 @@
       "octave": 4,
       "gain": 0.85,
       "_note": "Guttering lone melody. Rising leap E3->A3->B3 attempted, settle withheld. Long rests; phrases trail off. Notes hang then die into silence.",
-      "notes": "rw | E3h. A3q | B3h rh | rw | rh A3q B3q | C4h. rq | rw | rw | E3q A3q B3h | rh C4q rq | rw | B3w | rw | rh E3q A3q | B3h. rq | rw | C4h B3q A3q | rh rq A3q | rw | E3w | rh A3q B3q | C4q B3h rq | rw | rh E3h. E3q"
+      "notes": "rw | E3h. A3q | B3h rh | rw | rh A3q B3q | C4h. rq | rw | rw | E3q A3q B3h | rh C4q rq | rw | B3w | rw | rh E3q A3q | B3h. rq | rw | C4h B3q A3q | rh rq A3q | rw | E3w | rh A3q B3q | C4q B3h rq | rw | rh rq E3q"
     },
     {
       "name": "harmony",
@@ -37,7 +37,7 @@
       "voice": "drums",
       "gain": 0.4,
       "_note": "Faint irregular noise 'drip' instead of a beat. Hats land off-grid and sparse, lots of dead air.",
-      "notes": "rh rq hat | rw | rh. hat rq | rw | rw | rq hat rh | rw | rh. hat rq | rw | rw | rq hat rh | rw | rw | rh. hat rq | rw | rq hat rh | rw | rw | rh hat rq | rw | rw | rq hat rh | rw | rh hat rq"
+      "notes": "q r r r hat | r r r r | q r hat r r | r r r r | r r r r | q r r hat | r r r r | q r hat r r | r r r r | r r r r | q r r hat | r r r r | r r r r | q r hat r | r r r r | q r r hat | r r r r | r r r r | q r hat r | r r r r | r r r r | q r r hat | r r r r | q r r hat"
     }
   ]
 }

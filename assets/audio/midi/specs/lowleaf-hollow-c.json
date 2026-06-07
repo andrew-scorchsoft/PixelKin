@@ -1,0 +1,59 @@
+{
+  "title": "Lowleaf Hollow - Deep Glimmer",
+  "_note": "Option C richer-register / explore-light variant. era GBA (Option C only) - up to 8 voices, chords allowed, warm reverb; the 'breathy pad' is now a real sustaining pad. 90bpm, 4/4, Lydian-tinged G major (raised 4th C#). Glassy bell lead; shimmering bell arpeggio; a faint second counter-bell answering the spine a bar late and a fifth up; a real warm pad chord sustaining underneath; warm sustained low pad-bass; sparse soft taps + a gentle dew-shimmer swell. Vesper: same Lydian ascent as A (lift D4->G4->A4, settle B4->A4->G4, overshoot stretched by the #4 C#) - the counter-bell echoes the spine a bar late and a fifth up, the motif heard as glimmers answering across the dark. 24-bar loop, voice-leads home. Rendered on chip engine per house style.",
+  "era": "gba",
+  "tempo": 90,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "G Lydian-tinged major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "bell",
+      "octave": 4,
+      "gain": 0.95,
+      "_note": "Glassy bell lead hanging on C#5 (#4). Vesper lift D4->G4->A4, settle B4->A4->G4.",
+      "notes": "rh D4q G4q | A4h. C#5q | B4h. A4q | G4w | rq G4q A4q B4q | C#5h. B4q | A4h G4h | rw | rh D4q G4q | A4q B4q C#5q D5q | C#5h. B4q | A4h G4h | rq B4q C#5q D5q | E5h. D5q | C#5h B4q A4q | G4w | rh D4q G4q | A4h. C#5q | B4q A4q G4q A4q | B4h rh | rq A4q B4q C#5q | D5h. C#5q | B4q A4q G4q F#4q | G4h rq D4q"
+    },
+    {
+      "name": "counter",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.5,
+      "_note": "Faint second counter-bell answering the spine a bar late and a fifth up - glimmers across the dark. Sparse; enters after the lead phrases.",
+      "notes": "rw | rh A4q D5q | E5h. D5q | rw | rw | rh D5q E5q | F#5h E5h | rw | rw | rw | rh A4q D5q | E5h. D5q | rw | rw | rh D5q E5q | F#5h E5h | rw | rw | rw | rh E5q D5q | rw | rh A4q D5q | rw | rw"
+    },
+    {
+      "name": "arp",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.5,
+      "_note": "Shimmering bell arpeggio under the lead, broken major triads with the Lydian glint.",
+      "notes": "G3e B3e D4e G4e D4e B3e G3e B3e | G3e B3e D4e G4e D4e B3e G3e B3e | C4e E4e G4e C5e G4e E4e C4e E4e | C4e E4e G4e C5e G4e E4e C4e E4e | C#4e E4e A4e C#5e A4e E4e C#4e E4e | C#4e E4e A4e C#5e A4e E4e C#4e E4e | D4e F#4e A4e D5e A4e F#4e D4e F#4e | D4e F#4e A4e D5e A4e F#4e D4e F#4e | G3e B3e D4e G4e D4e B3e G3e B3e | G3e B3e D4e G4e D4e B3e G3e B3e | C4e E4e G4e C5e G4e E4e C4e E4e | C4e E4e G4e C5e G4e E4e C4e E4e | C#4e E4e A4e C#5e A4e E4e C#4e E4e | C#4e E4e A4e C#5e A4e E4e C#4e E4e | D4e F#4e A4e D5e A4e F#4e D4e F#4e | G3e B3e D4e G4e D4e B3e G3e B3e | G3e B3e D4e G4e D4e B3e G3e B3e | C4e E4e G4e C5e G4e E4e C4e E4e | C#4e E4e A4e C#5e A4e E4e C#4e E4e | D4e F#4e A4e D5e A4e F#4e D4e F#4e | C4e E4e G4e C5e G4e E4e C4e E4e | C#4e E4e A4e C#5e A4e E4e C#4e E4e | D4e F#4e A4e D5e A4e F#4e D4e F#4e | D4e F#4e A4e C#5e A4e F#4e D4e A3e"
+    },
+    {
+      "name": "pad",
+      "voice": "pad",
+      "octave": 3,
+      "gain": 0.5,
+      "_note": "Real sustaining pad chord (GBA allows chords) - the breathy pad now affordable. One held triad per bar following G - C - Lydian-A(D/F#/A over C# bass color) - D.",
+      "notes": "G3+B3+D4w | G3+B3+D4w | C4+E4+G4w | C4+E4+G4w | C#4+E4+A4w | C#4+E4+A4w | D4+F#4+A4w | D4+F#4+A4w | G3+B3+D4w | G3+B3+D4w | C4+E4+G4w | C4+E4+G4w | C#4+E4+A4w | C#4+E4+A4w | D4+F#4+A4w | G3+B3+D4w | G3+B3+D4w | C4+E4+G4w | C#4+E4+A4w | D4+F#4+A4w | C4+E4+G4w | C#4+E4+A4w | D4+F#4+A4w | D4+F#4+A4w"
+    },
+    {
+      "name": "bass",
+      "voice": "wave",
+      "octave": 2,
+      "gain": 0.85,
+      "_note": "Warm sustained low pad-bass with light echo (GBA reverb). One held root per bar following the pad.",
+      "notes": "G1w | G1w | C2w | C2w | C#2w | C#2w | D2w | D2w | G1w | G1w | C2w | C2w | C#2w | C#2w | D2w | G1w | G1w | C2w | C#2w | D2w | C2w | C#2w | D2w | D2h A1h"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.55,
+      "_note": "Sparse soft taps + a gentle dew-shimmer swell (ohat). More room ambience than A. Soft shimmer at the seam.",
+      "notes": "kickq rq rq ohatq | kickq rq rq rq | kickq rq rq ohatq | kickq rq rq rq | kickq rq rq ohatq | kickq rq rq rq | kickq rq rq ohatq | kickq rq rq rq | kickq rq rq ohatq | kickq rq rq rq | kickq rq rq ohatq | kickq rq rq rq | kickq rq rq ohatq | kickq rq rq rq | kickq rq rq ohatq | kickq rq rq rq | kickq rq rq ohatq | kickq rq rq rq | kickq rq rq ohatq | kickq rq rq rq | kickq rq rq ohatq | kickq rq rq rq | kickq rq rq ohatq | kickq rq ohatq ohatq"
+    }
+  ]
+}
