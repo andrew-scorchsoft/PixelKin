@@ -118,6 +118,9 @@ none · **rec. level 40 → 42.**
   first-timer sweeps it before the warmth of the Solarium pulls them on. (This is **West's** map
   — the North writer only cross-referenced it.)
 - **Hidden item in a sheltered snow-hollow** off the main lane in segment I — **[MISSABLE]**.
+- **Lamplight reveals (snow-hollow caches)** — `[LATER: Lamplight ≥ Radiant]` `[MISSABLE]`:
+  wall-hollows along the canyon that sit beyond the lamp's reach now; a post-game **Radiant**
+  return picks them out (spine §5). Optional only — the lit canyon route is visible at any tier.
 
 ### 5. Don't-miss callouts
 
@@ -217,8 +220,9 @@ Pyre, ace ~46) · **rec. level ~42 → 46.**
   the Sunvault II map — cross-referenced here because Sunsketch is earned at the Solarium.)
 - **Flooded-hall item caches** (Tidecall, held) — **[MISSABLE]** rewards in the drowned inner
   ruin; sweep them before leaving.
-- **Sun-vine back-fold within the ruin** (Sunsketch, just-earned) — **[MISSABLE]** a short bridge
-  blooming to a hidden Solar kin / item once you hold the Gift.
+- **Sun-vine back-fold within the ruin** (Sunsketch, just-earned) — **[MISSABLE]** a short
+  **sequential-bloom** puzzle (bloom one vine to reach the next) opening to a hidden Solar kin /
+  item — the gentle first taste of the Sunsketch puzzle dimension (spine §5) before Helia Vault.
 
 ### 5. Don't-miss callouts
 
@@ -302,10 +306,17 @@ bridges) · kind route · region west · **enter** from `sunken_solarium` (ungat
 
 - **Helia Vault** — spur off `sunvault_climb_ii`, `requires_ability: sunsketch`; reward: rare
   **Solar kin + item** in a sealed reliquary. **[MISSABLE]** — open from the moment you reach the
-  segment (Sunsketch held); a dead-end you must choose to bloom into. (This is the spur the
-  Solarium section's Sunsketch callout points at — the back-reference closes here.)
+  segment (Sunsketch held). **Promote it from a plain locked room to a Sunsketch *puzzle*
+  micro-dungeon** (spine §5): a sealed reliquary you cross by **sequential blooming** (bloom a
+  sun-vine to reach a sunnier ledge, from which you bloom the next) and **redirecting** a pocket
+  of daylight off a sun-mirror flower to a vine you can't reach directly — so the West's signature
+  Solar reward is *earned*, not merely gated. The puzzle is entirely optional; nothing on the main
+  Sunvault path requires it.
 - **High-terrace hidden item** reachable across a bloomed sun-vine off the main lane —
   **[MISSABLE]**.
+- **Optional puzzle terrace** (Sunvault II) — a short, skippable detour using **timed blooming**
+  (a bloomed bridge slowly closes; bloom-and-cross, or bloom two to hold the span) for a small
+  reward. **[MISSABLE]** — a teaching room for the Helia Vault puzzle; never on the main lane.
 
 ### 5. Don't-miss callouts
 
@@ -526,6 +537,10 @@ held) · **Gleam:** none · **rec. level ~46–50.**
 - **Type band — pure Dark.** The drained roster (Nullmoth, Wispwane, Embergone) is the game's
   densest Dark pocket — Light-typed kin thin out here (atlas §4) and bloom on the relit rim. Note
   the encounter-table contrast as a deliberate Arc-D read.
+- **The drained dark resists Lamplight (spine §5 caveat).** Coldfog is the one place the
+  vesperlamp's growing brightness does *not* push back the dark — even at Radiant the fog stays
+  oppressive (Arc D: blighted zones don't brighten with your progress). Its secrets lean on
+  **Emberward / Glimmerstep**, never on Lamplight — the deliberate counter-image to the rim.
 
 ### 4. Optional content
 

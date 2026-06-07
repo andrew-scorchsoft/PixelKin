@@ -10,13 +10,15 @@
 
 **The morning after the long night.** This is the only region played in true daylight — the
 visual and emotional payoff of the whole Wayfaring. The Keystar is relit, the Penumbra is
-gone, and Vesperholm has woken into its first dawn in years. Post-game delivers four things:
+gone, and Vesperholm has woken into its first dawn in years. Post-game delivers five things:
 the epilogue town of **Dawnstead** (Tinderwick reborn in open sky, with the lullaby returned
 in triumphant major); a fresh collecting hook in the **day-forms** of early kin that the
 relit sky now wakes; the **late-backtrack landmarks** that only Starreach + dawn make worth a
-return (**Crystoll Vault**, **Starwell**); and the **gentle arc resolutions** — Wren at peace
-in daylight (A6), and Warden Còr's quiet aftermath. No new Lantern Gifts: all six are already
-earned, so post-game is *collecting, rematches, and resolution*, not traversal.
+return (**Crystoll Vault**, **Starwell**); the **Radiant-Lamplight backtracks** — the early
+dark areas, re-walked with the vesperlamp at its brightest, finally giving up the optional
+content that sat beyond your old reach (spine §5); and the **gentle arc resolutions** — Wren at
+peace in daylight (A6), and Warden Còr's quiet aftermath. No new Lantern Gifts: all six are
+already earned, so post-game is *collecting, rematches, and resolution*, not traversal.
 
 - **Entry state:** the climax is done. Player at **~lv55+**, party of bonded kin, holding
   **all six Lantern Gifts** (Tidecall, Glimmerstep, Updraft Kite, Emberward, Sunsketch,
@@ -218,6 +220,41 @@ bittersweet-warm register; encounter band 55–65 (§4 post-game).
 > (Tidecall/Glimmerstep/Updraft Kite/Emberward/Sunsketch) and so is already cleared by entry
 > here — there is no further Starreach-gated map content to backtrack for. What the rest of the
 > post-game world offers is the **day-form re-walk** (previous section), not new gated rooms.
+
+---
+
+### Radiant-Lamplight backtracks — *the early dark, finally fully seen*
+
+The day-form re-walk isn't the *only* reason to revisit. By post-game the vesperlamp sits at
+**Radiant** (spine §5, eight Gleams) — its reveal-radius is at its widest — so the **dark areas
+you first crept through at Ember-glow/Warmlight now give up the optional content that sat beyond
+your old reach**. This is the deliberate counterpart to the front-loaded Lantern Gifts: the
+discrete Gifts reopened the early map *as keys*; **Radiant Lamplight reopens it as sight**, and
+because it's spread across every dark area, the late-game discovery thrill is everywhere, not
+bottlenecked behind the two Starreach spurs.
+
+1. **Main path** — none; this is pure optional collecting, available any time the lamp is bright
+   enough but headlined here as the completionist's post-credits sweep.
+2. **Mechanic** — **Lamplight (Radiant)**, the continuous axis from spine §5. *Additive, never
+   blocking* — every one of these reveals is optional; nothing required was ever hidden.
+3. **Where to return (each a `[LATER: Lamplight ≥ tier]` reveal, all `[MISSABLE]`):**
+   - **Tideglass Cavern** (South) — first seen at Warmlight; at **Starlight+** a deeper nook and
+     a hidden item resolve out of the dark.
+   - **Glowmoss Deep / Spore Grotto** (East) — **Brightlight+** reveals glow-shadowed side-cells
+     off the main glowmoss run.
+   - **Cinderhead Mine / Deep** (East) — **Starlight/Radiant** lights the far galleries and a
+     late alcove the cramped early visit kept hidden.
+   - **Hushfrost Pass** (West) — **Radiant** picks out snow-hollow caches along the canyon walls.
+   - *(Coldfog Marches resists Lamplight — its drained dark never brightens; its secrets stay on
+     Emberward/Glimmerstep, not brightness. Spine §5 caveat.)*
+4. **Validation hooks** — these are **optional `EncounterZone`/`EventTrigger` rewards on existing
+   dark maps**, surfaced by a `reveal_at_tier` marker (spine §5 render feature), **not** new
+   warps or flags. They must sit **off** the lit main route (which stays visible at any tier), so
+   no required path ever depends on brightness. Reward band 55–65 (§4).
+
+> **Tone.** Frame each reveal in the bittersweet-warm register: the lamp you carried through the
+> long night is bright enough now to show you what the dark was always holding — *you didn't beat
+> the dark, you out-shone it.*
 
 ---
 

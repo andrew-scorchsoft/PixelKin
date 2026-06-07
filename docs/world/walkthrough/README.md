@@ -153,7 +153,10 @@ weight and a reason Fenn understands Còr.
 The global lighting warms one quadrant at a time. **Each region file must open visibly
 lighter than the previous region** (south = deep blue hour → west = near-dawn pallor), the
 vesperlamp brighter, and note any flag-gated encounter-table shift when its constellation
-relights. Day-forms arrive only post-`dawn` (see [`06-postgame.md`](./06-postgame.md)).
+relights. Day-forms arrive only post-`dawn` (see [`06-postgame.md`](./06-postgame.md)). The
+arc's **mechanical, player-held expression is Lamplight** (§5): the vesperlamp's reveal-radius
+climbs a tier roughly every two Gleams, so the player literally *carries the returning dawn* —
+the world brightens both overhead (constellations) and in-hand (the lamp).
 
 ### Arc E — Town Festivals
 Every Lumenary town wraps its Gleam in a festival — *belonging, not conquest*. Each is a
@@ -254,6 +257,98 @@ engine roadmap (`docs/mechanics/battle-runtime-plan.md`) but not yet wired. Regi
 write battles that *use* status (e.g. a Lampwarden built around `doze`), and should flag
 where a beat depends on these so they're prioritised.
 
+### The vesperlamp's growing light — the *continuous* exploration axis ("Lamplight")
+
+The six Lantern Gifts are **discrete** keys: each crosses a *specific* barrier, and they're
+mostly earned early-to-mid, so they front-load the "map reopens" thrill. Running underneath
+them is a second, **continuous** axis that grows to the very end and back-loads it: the
+**vesperlamp's brightness itself**. This is already canon — the lamp "catches and holds the
+light you restore, *grows brighter as you progress*" (`story-bible.md` §2). This blueprint
+promotes it from flavour to a designed mechanic, **Lamplight**.
+
+> **THE BINDING RULE — Lamplight is additive, never blocking.** Lamplight only ever
+> *reveals* or *eases* **optional** content. It never gates a Gleam, a Lantern Gift, a
+> main-path warp, or any required step. The audited soft-lock chain, level curve, and arc
+> beats of §2–§4 are **untouched**. A first-timer with a dim lamp completes everything
+> required; a brighter lamp simply *shows more*. (This is what keeps the addition from ever
+> damaging the existing playthrough.)
+
+**How it works.** In **dark terrain** (caves, deep woods, coldfog, the Spire), the world
+falls away beyond a **reveal radius** centred on the player; the radius is the lamp's current
+brightness. The intended route is always **diegetically lit** — lamp-posts, glowmoss, crystal
+veins, lantern-buoys (per `level-design.md` "funnel with light") — so the critical path is
+visible at *any* brightness. What hides in the unlit dark beyond your radius is **optional**:
+side alcoves, hidden items, the mouths of optional spurs, and quiet foreshadow detail.
+
+**The tiers (keyed to Gleam count — each relit constellation feeds the lamp):**
+
+| Tier | Gleams | Reach |
+|------|--------|-------|
+| **Ember-glow** | 0–1 | a candle's circle — the cosy, close opening |
+| **Warmlight** | 2–3 | a lantern's reach |
+| **Brightlight** | 4–5 | a strong, confident lamp |
+| **Starlight** | 6–7 | a far, clean reach |
+| **Radiant** | 8 / post-Crown | near-daylight in its circle — you carry the dawn |
+
+**The late-game backtrack engine (this is the point).** Because early dark areas are first
+walked at low Lamplight, **returning to them later, brighter, reveals new optional content** —
+spread across the *whole* early map, not bottlenecked behind one late Gift. This is the
+elegant resolution of the front-load problem: **Gifts front-load reopening; Lamplight
+back-loads it.** Tideglass Cavern (Warmlight) hides nooks you only see at Starlight; Cinderhead
+Deep's far galleries open new alcoves once Radiant; the Spire is darkest exactly when your lamp
+is brightest (thematic peak). Region files place a **"return brighter"** callout on dark areas
+that hold tier-gated optional content, tagged `[LATER: Lamplight ≥ <tier>]`.
+
+**Where it applies (per-area spec for map authors):**
+
+| Area (dark terrain) | First seen at ~ | Reveals at higher Lamplight |
+|---------------------|-----------------|------------------------------|
+| Tideglass Cavern (South landmark) | Warmlight | Starlight: deeper nook + a hidden item |
+| Glowmoss Deep / Spore Grotto (East) | Warmlight | Brightlight: glow-shadowed side-cells |
+| Cinderhead Mine / Deep (East) | Warmlight | Starlight/Radiant: far galleries, a late alcove |
+| Hushfrost Pass / Coldfog Marches (West) | Brightlight | Radiant: fog-shrouded caches (the drained dark resists — see below) |
+| Umbral Spire (Central) | Starlight→Radiant | the climax dark, met with your fullest light |
+
+**Two honest caveats.** (1) **Coldfog/blighted dark resists Lamplight** — the Hollowing's
+drained dark stays oppressive regardless of tier (Arc D rule: it doesn't brighten with your
+progress), so its reveals lean on Emberward/Glimmerstep, not brightness. (2) **Engine cost:**
+one contained render feature — a radial light/dark mask on maps flagged "dark," radius bound to
+a brightness value derived from Gleam count, plus optional `reveal_at_tier` markers on hidden
+content. Designed here; not built by this blueprint (see §8).
+
+### Sunsketch as an optional light-puzzle — depth on one Gift
+
+The Gifts are all "cross this barrier" keys; **Sunsketch** is the natural one to also carry a
+light *puzzle* dimension, because Solar's fantasy is **stored, placeable daylight**. Sunsketch
+releases a "pocket of daylight" that blooms shut night-flowers into bridges — extend that so
+the daylight is **directional and fading**:
+
+- **Sequential bloom** — blooming one vine reaches a sunnier spot from which you can bloom the
+  next, *routing* a path across a gap a single bloom can't span.
+- **Timed bloom** — a bloomed bridge slowly closes again; you bloom-and-cross, or bloom two to
+  hold a longer span — light the path before it fades.
+- **Redirect** — bloom a "sun-mirror" flower that bends the pocket of daylight to a vine you
+  can't reach directly.
+
+> **Same binding rule.** **Main-path Sunsketch bridges stay simple** — a single bloom that
+> stays open — so required progress is *never* a puzzle. The puzzle dimension lives **only in
+> optional rooms**: a back-fold in the Sunken Solarium, an optional Sunvault Climb terrace, and
+> above all **Helia Vault** (promote that spur from a plain locked room to a proper Sunsketch
+> puzzle micro-dungeon — it makes the West's signature Solar reward earned, not just gated).
+> Engine: chains of `AbilityGate` (`make_passable`/`remove_tile`) cover sequential/redirect
+> now; the *timed* variant is a small addition (flag it).
+
+### How the two axes share the work (the curve, restated)
+
+- **Discrete Lantern Gifts** (Tidecall → Starreach) front-load exploration: most of the
+  "go back and reopen the early map" payoff lands in the first two-thirds.
+- **Continuous Lamplight** back-loads it: the brighter your lamp, the more the *already-visited*
+  dark gives up — so the late game keeps the discovery thrill spread across the whole world,
+  not crammed behind the finale.
+- **Starreach** stays the **finale key** (Gleams 8): its two payoffs (Crystoll Vault, Starwell)
+  are intentionally endgame, and that's now *fine* — it isn't carrying the late-game exploration
+  load alone, Lamplight is.
+
 ---
 
 ## 6. Region map & reading order
@@ -313,13 +408,16 @@ data) freely; ⚠️ ones are written as flavour until the system exists.
 | **Wren rival battles** | Arc A | ✅ **Now (data)** — trainer-battle cutscene step + `reward_flags`; add trainer entries |
 | **Fenn–Còr shared past** | Climax weight (Arc C) | ✅ **Now** — pure narrative; no mechanic |
 | **Celestial calendar / day-forms** | Arc D payoff; post-game collecting | ⚠️ **Partial** — permanent "constellation relit" table swaps work via flag-gated `EncounterZone`s; true day/night *cycling* needs a small system → propose for post-MVP |
-| **Vesperlamp brightness tiers** | Make Arc D legible (lamp brightens per Gleam) | ⚠️ Art/flavour now; a real map-light radius is a small render proposal |
+| **Lamplight** (vesperlamp brightness tiers — the continuous exploration axis, §5) | Makes Arc D legible *and* is the late-game backtrack engine (early dark areas give up more as the lamp brightens) | ⚠️ **Designed** (§5), one contained render feature: a radial light/dark mask on "dark" maps, radius from Gleam count, + optional `reveal_at_tier` markers. **Additive/non-blocking by rule** — safe to author optional reveals toward it now |
+| **Sunsketch light-puzzle** (directional/timed/redirect blooming, §5) | Adds genuine puzzle depth on one Gift without touching the main path | ⚠️ Sequential/redirect **expressible now** (chained `AbilityGate`); the *timed* bloom is a small addition. Optional rooms only (Helia Vault, Solarium back-fold, a Sunvault terrace) |
 | **Status conditions + move-learn prompt** | Mid-game battle depth (assumed from Pearlmoor on) | ⚠️ Already roadmapped (`battle-runtime-plan.md`) — flag as dependency, don't author around its absence |
 | **Quest counters** (multi-step fetch/track beyond booleans) | A few side-quests want "3 of 3" state | ⚠️ Small `FlagStore` extension (shadow `Record<string,number>`); keep side-quests boolean-only for MVP |
 
 **Canon extensions locked by this blueprint** (region files must use, consistently):
 the rival is **Wren**; the mentor is **Star-tender Fenn**; **Fenn and Còr share a past as
-star-tenders**; the eight **festivals** in §3 Arc E; the Keystar-kin is **Keylumen** (atlas).
+star-tenders**; the eight **festivals** in §3 Arc E; the Keystar-kin is **Keylumen** (atlas);
+**Lamplight** (the vesperlamp's brightness tiers — Ember-glow → Warmlight → Brightlight →
+Starlight → Radiant — as the continuous, additive, non-blocking exploration axis of §5).
 
 ---
 

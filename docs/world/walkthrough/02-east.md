@@ -307,6 +307,11 @@ Stone** (→ `flag:crown_east`) · rec. level ~22.
      come-back is explicit.
    - A high-band crystal item in a deep gallery (deliberate grind reward to help beat Otho) —
      **[MISSABLE]**.
+   - **Lamplight reveals (far galleries)** — `[LATER: Lamplight ≥ Starlight]` `[MISSABLE]`:
+     the mine is first walked at **Warmlight**, so its far galleries and a late alcove sit beyond
+     the lamp's reach; a brighter return (Starlight/Radiant, post-Gleam-6+ or post-game) lights
+     them and their optional catches (spine §5). The crystal-vein-lit main route stays visible at
+     any tier — additive only, never a gate.
 5. **Don't-miss callouts** — **Grind the deep galleries before Otho.** The wall is intentional;
    the deep encounters (24–27) are how you beat it. Also: a **Glowpan** (Light) caught in the
    mine is a clean answer to the Stone/Dark threats of the deeper game. And on the Deep's far

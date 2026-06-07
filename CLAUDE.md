@@ -167,7 +167,10 @@ go digging on every task.
   spec for content**: when you author/generate an area, follow the spine's §0 rules and
   validate the map against that region file's **Validation hooks** (map ids, `requires_ability`/
   `requires_flag`, `sets_flags`, encounter bands). New canon names locked there: the rival
-  **Wren**, the mentor **Star-tender Fenn**, the eight festivals, the Keystar-kin **Keylumen**.
+  **Wren**, the mentor **Star-tender Fenn**, the eight festivals, the Keystar-kin **Keylumen**,
+  and **Lamplight** — the vesperlamp's brightness tiers (Ember-glow→Radiant) as a *continuous,
+  additive, non-blocking* exploration axis alongside the six Lantern Gifts (reveals optional
+  content only; never gates the main path).
 - **Maps are our own JSON** (not Tiled), snake_case keyed, parsed into
   `src/game/data/world/types.ts`. Map authoring is **content, not engine code**;
   the end-to-end flow is in `docs/world/README.md`.

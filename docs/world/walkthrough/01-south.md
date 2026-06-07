@@ -227,7 +227,10 @@ boundary is ungated; the *spurs* off it are gift-gated) · Gleam: — · rec. le
    - **Gullcry Rock** (spur) — `[LATER]` **Tidecall** (this region, at Pearlmoor): rare sea-bird
      kin + Tide charm. **Becomes accessible the moment you earn Tidecall — backtrack here.**
    - **Tideglass Cavern** (landmark) — `[LATER]` **Glimmerstep** (East): signature rare water
-     kin in a micro-dungeon. Long-game return.
+     kin in a micro-dungeon. Long-game return. **Also the canonical Lamplight exemplar** (spine
+     §5): first explored at **Warmlight**, the cavern keeps a deeper nook + a hidden item beyond
+     the lamp's reach until a **Starlight+** return reveals them — `[LATER: Lamplight ≥ Starlight]`
+     `[MISSABLE]`, additive only (the glowmoss/water-lit route is visible at any tier).
 
 5. **Don't-miss callouts**
    - **Remember this junction.** It is the South region's single richest backtrack node: one

@@ -35,7 +35,11 @@ windows golden. The **Penumbra Ring** is a near-total black — your lamp-glow t
 within — but it *recedes visibly* as you cross, hopeful notes leaking into the drone. The **Umbral
 Spire** is black basalt and Còr's anti-light null-lanterns: the single darkest place in the game —
 **yet the Skyweave Crown completes overhead as you ascend**, so the darkest place sits under the
-greatest light. At the Keystar relight the boss theme resolves minor→major. **The actual dawn is
+greatest light. This is also the **Lamplight peak** (spine §5): the vesperlamp is at **Radiant**,
+its widest reach, exactly as you enter the deepest dark — your fullest light meeting Còr's
+fullest null. (Còr's anti-light null-lanterns *locally* press the reveal-radius back in, the one
+place the dark fights your Radiant lamp — a battle of lights, not a brightness *gate*; the lit
+ascent stays walkable.) At the Keystar relight the boss theme resolves minor→major. **The actual dawn is
 the post-game** (`flag:dawn` is *set* here at the climax; Dawnstead blooms in
 [`06-postgame.md`](./06-postgame.md)). Tie every lighting beat to the player's progression flags,
 not to which tile they walked in from (spine §0 rule 2).
