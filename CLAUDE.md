@@ -342,6 +342,13 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   under `public/assets/backgrounds/battle/` + list them on the map; no map with a list = it
   keeps the plain night fill. Briefs/standards live in `docs/art-style.md` (§5-H). Keep them
   subtle so sprites/plates stay readable.
+- **Bottom-anchored battle menus must be height-aware.** The screen is only 160px tall
+  and the message strip eats the bottom ~38px, so a fixed `y` clips the last row (this is
+  how RUN went missing). Size battle menus with `BattleScene.menuY(rows)`, which
+  bottom-aligns them just above the message strip. The overworld party viewer lives in
+  `ui/PartyMenu.ts` (pause menu → KIN): list → SUMMARY (stat/move card) or MOVE (reorder;
+  slot 0 is the battle lead). It returns the reordered `KinInstanceData[]`; the caller
+  assigns it back and persists. Per-type swatch colours are `theme.typeColor`.
 - **Audio can't autoplay before a user gesture.** Browsers start the Web Audio context
   suspended, so any `music.play()` before the player interacts is silent. The boot flow gates
   on `SplashScene` (Preload → Splash → Attract) — the animated "Andrew Ward Studios" sting

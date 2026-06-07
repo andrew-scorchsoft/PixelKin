@@ -231,6 +231,17 @@ export class BattleScene extends Phaser.Scene {
 
   // --- Menus ---------------------------------------------------------------
 
+  /**
+   * Bottom-align a menu of `rows` options so it sits just above the message strip
+   * and its last row (e.g. RUN) is never clipped off the 160px-tall screen.
+   */
+  private menuY(rows: number): number {
+    const ROW_H = 12;
+    const height = theme.space.lg * 2 + rows * ROW_H;
+    const messageTop = GAME_HEIGHT - 34 - 4; // mirrors BattleMessage's HEIGHT + MARGIN
+    return messageTop - 2 - height;
+  }
+
   private rootMenu(): Promise<string | null> {
     const opts: MenuOption[] = [
       { label: 'FIGHT', value: 'fight' },
@@ -243,7 +254,7 @@ export class BattleScene extends Phaser.Scene {
     } else {
       opts.push({ label: 'RUN', value: 'run' });
     }
-    return new Menu(this, opts, { x: 6, y: GAME_HEIGHT - 52, sfx: this.sfx, cancellable: false }).run();
+    return new Menu(this, opts, { x: 6, y: this.menuY(opts.length), sfx: this.sfx, cancellable: false }).run();
   }
 
   /** Returns engine events for the chosen move, or null if the player backed out. */
@@ -258,7 +269,7 @@ export class BattleScene extends Phaser.Scene {
       await this.msg.show(`${this.engine.player.displayName} has no charges left!`);
       return null;
     }
-    const choice = await new Menu(this, opts, { x: 6, y: GAME_HEIGHT - 60, sfx: this.sfx }).run();
+    const choice = await new Menu(this, opts, { x: 6, y: this.menuY(opts.length), sfx: this.sfx }).run();
     if (choice === null) return null;
     return this.engine.takeTurn({ kind: 'move', moveIndex: Number(choice) });
   }
@@ -275,7 +286,7 @@ export class BattleScene extends Phaser.Scene {
     }));
     const choice = await new Menu(this, opts, {
       x: 6,
-      y: GAME_HEIGHT - 8 - opts.length * 12 - 12,
+      y: this.menuY(opts.length),
       sfx: this.sfx,
       cancellable,
     }).run();
@@ -293,7 +304,7 @@ export class BattleScene extends Phaser.Scene {
       await this.msg.show('Your bag is empty.');
       return null;
     }
-    const choice = await new Menu(this, opts, { x: 6, y: GAME_HEIGHT - 60, sfx: this.sfx }).run();
+    const choice = await new Menu(this, opts, { x: 6, y: this.menuY(opts.length), sfx: this.sfx }).run();
     if (choice === null) return null;
 
     const def = getItem(choice);

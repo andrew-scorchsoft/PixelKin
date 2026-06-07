@@ -12,6 +12,7 @@ import { theme } from '@game/ui/theme';
 import { DebugOverlay } from '@game/ui/DebugOverlay';
 import { DialogueBox } from '@game/ui/DialogueBox';
 import { Menu } from '@game/ui/Menu';
+import { PartyMenu } from '@game/ui/PartyMenu';
 import { SettingsMenu } from '@game/ui/SettingsMenu';
 import { fadeIn, fadeOut } from '@game/ui/Transitions';
 import { KinInstance } from '@game/systems/party/KinInstance';
@@ -491,7 +492,22 @@ export class WorldScene extends Phaser.Scene {
     });
   };
 
-  /** In-game pause menu (Start/Esc): Resume / Save / Settings. */
+  /**
+   * Party viewer (pause menu → KIN): see your kin, inspect their stats/moves, and
+   * reorder them (slot 0 leads the next battle). Persists the new order on close.
+   */
+  private async openPartyMenu(): Promise<void> {
+    if (this.party.length === 0) {
+      await new DialogueBox(this, this.sfx).run([
+        { text: 'No kin walk with you yet — your lamp is still your only companion.' },
+      ]);
+      return;
+    }
+    this.party = await new PartyMenu(this, this.party, this.sfx).run();
+    void this.persist();
+  }
+
+  /** In-game pause menu (Start/Esc): Resume / Kin / Save / Settings. */
   private async openPauseMenu(): Promise<void> {
     this.modal = true;
     // A holder so the closure write in onImport survives TS flow analysis.
@@ -502,13 +518,16 @@ export class WorldScene extends Phaser.Scene {
         this,
         [
           { label: 'RESUME', value: 'resume' },
+          { label: 'KIN', value: 'kin' },
           { label: 'SAVE', value: 'save' },
           { label: 'SETTINGS', value: 'settings' },
         ],
         { x: 8, y: 8, sfx: this.sfx },
       ).run();
 
-      if (choice === 'save') {
+      if (choice === 'kin') {
+        await this.openPartyMenu();
+      } else if (choice === 'save') {
         await this.persist();
         void this.sfx.playVariant('ui-save', ['a', 'b']);
       } else if (choice === 'settings') {
