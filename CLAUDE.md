@@ -183,6 +183,7 @@ go digging on every task.
 | Balance/roster tooling | `tools/balance/` |
 | Visual standards (binding) | `docs/art-style.md` |
 | Asset masters (source) | `assets/` (`assets/README.md`) |
+| Area mood pieces (concept art / tile refs) | `assets/concept-art/` (`assets/concept-art/README.md`) |
 | Served/rendered assets | `public/assets/` (music, maps, battle backdrops, logo) |
 
 ## Asset generation skills
