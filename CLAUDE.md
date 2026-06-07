@@ -139,7 +139,9 @@ go digging on every task.
   **Lumenaries** run by **Lampwardens**; "badges" are **Gleams** (relit
   constellations — diegetic, visible in the sky); "field moves" are **Lantern
   Gifts**; capture devices are **Lamps**; evolution is **Kindling** (a kin
-  *kindles*). The player's device is the **vesperlamp**.
+  *kindles*). The player's device is the **vesperlamp**. Kin storage (the genre's
+  "box/PC") is **the Hearth** — the warm keep where kin *rest* when not in your lamp,
+  tended by the **Hearthkeeper**.
 - **Types — exactly 10:** Ember, Tide, Verdant, Stone, Storm, Frost, Solar, Lunar
   (the 8 constellation elements) + Light, Dark. Two mirror axes hit mutually
   super-effective: Solar↔Lunar and Light↔Dark. Dual-typing allowed.
@@ -326,7 +328,19 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **Input is abstract.** Read `InputController`'s `InputAction`, never raw keys; touch
   shells feed the same actions. Promise-based modals (Menu/DialogueBox/StarterSelect)
   spin up a transient `InputController` — they `destroy()` it on close; do the same if
-  you add one.
+  you add one. Multi-phase screens (PartyMenu/ItemsMenu/HearthMenu) **don't** keep one
+  long-lived loop: each phase (`pickX`) attaches its own tick + input and tears both
+  down before opening a sub-`Menu`, so presses are never double-read.
+- **Pause menu = RESUME / KIN / HEARTH / ITEMS / SAVE / SETTINGS** (`WorldScene.openPauseMenu`).
+  KIN→`PartyMenu`, HEARTH→`HearthMenu` (kin storage), ITEMS→`ItemsMenu` (view + use a
+  medicine to heal). Each returns its mutated data; the caller assigns it back and
+  `persist()`s. Shell A/B buttons carry a `title` keyboard-hint via `KEY_HINTS` in
+  `ShellManager.ts` — keep it in sync with the InputController bindings.
+- **The Hearth is real kin storage; `SaveGame.box` is now live.** Storage is persisted
+  + threaded through battle (`BattleRequest`/`BattleResult` carry `box`). A catch with a
+  full lamp (`Party.isFull`) **overflows to the Hearth** in `BattleScene.complete()` —
+  never silently dropped (the old bug). `Party.fromData` slices to `MAX_PARTY=6`, so any
+  new party-mutating screen must enforce ≤6 itself (HearthMenu does).
 - **Actors prefer real walk-sheets, fall back to placeholder.** Human walk-sheets are
   4×4 / 32×32 (`HUMAN_WALK_FRAMES` in `entities/Actor.ts`: rows down/left/right/up, cols
   idle/contact-L/passing/contact-R), packed from `assets/trainers/` by `pack_trainers.py` →

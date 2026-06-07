@@ -13,6 +13,8 @@ import { DebugOverlay } from '@game/ui/DebugOverlay';
 import { DialogueBox } from '@game/ui/DialogueBox';
 import { Menu } from '@game/ui/Menu';
 import { PartyMenu } from '@game/ui/PartyMenu';
+import { ItemsMenu } from '@game/ui/ItemsMenu';
+import { HearthMenu } from '@game/ui/HearthMenu';
 import { SettingsMenu } from '@game/ui/SettingsMenu';
 import { fadeIn, fadeOut } from '@game/ui/Transitions';
 import { KinInstance } from '@game/systems/party/KinInstance';
@@ -49,6 +51,8 @@ export interface WorldSceneData {
   flags?: Record<string, boolean>;
   abilities?: AbilityId[];
   party?: KinInstanceData[];
+  /** Kin resting at the Hearth (storage beyond the active party). */
+  box?: KinInstanceData[];
   inventory?: InventoryData;
 }
 
@@ -73,6 +77,8 @@ export class WorldScene extends Phaser.Scene {
   private npcs: Npc[] = [];
 
   private party: KinInstanceData[] = [];
+  /** Kin kept at the Hearth (storage); overflow from a full lamp lands here. */
+  private box: KinInstanceData[] = [];
   private inventory: InventoryData = { items: {} };
 
   constructor() {
@@ -86,6 +92,7 @@ export class WorldScene extends Phaser.Scene {
     this.flags = new FlagStore(data.flags);
     this.abilities = new Set(data.abilities ?? []);
     this.party = data.party ?? [];
+    this.box = data.box ?? [];
     this.inventory = data.inventory ?? { items: {} };
     this.music = new MusicDirector(this);
     this.sfx = new Sfx(this);
@@ -173,6 +180,7 @@ export class WorldScene extends Phaser.Scene {
       play_seconds: 0,
       world: this.buildSnapshot(),
       party: this.party,
+      box: this.box,
       inventory: this.inventory,
     };
   }
@@ -325,6 +333,7 @@ export class WorldScene extends Phaser.Scene {
           kind: 'trainer',
           trainer,
           party: this.party,
+          box: this.box,
           inventory: this.inventory,
         });
         if (result.outcome !== 'win') {
@@ -367,6 +376,7 @@ export class WorldScene extends Phaser.Scene {
           species_id: intent.species_id,
           level: intent.level,
           party: this.party,
+          box: this.box,
           inventory: this.inventory,
         }).then((result) => {
           if (result.outcome === 'lose') void this.blackout();
@@ -400,6 +410,7 @@ export class WorldScene extends Phaser.Scene {
 
   private applyBattleResult(result: BattleResult): void {
     this.party = result.party;
+    this.box = result.box;
     this.inventory = result.inventory;
     if (result.set_flags) this.flags.setMany(result.set_flags);
     void this.persist();
@@ -511,7 +522,37 @@ export class WorldScene extends Phaser.Scene {
     void this.persist();
   }
 
-  /** In-game pause menu (Start/Esc): Resume / Kin / Save / Settings. */
+  /**
+   * Pack viewer (pause menu → ITEMS): see what you're carrying, read each item's
+   * description, and use a medicine on a kin. Returns the (possibly healed) party
+   * and the (possibly decremented) inventory, which are persisted on close.
+   */
+  private async openItemsMenu(): Promise<void> {
+    if (Object.keys(this.inventory.items).length === 0) {
+      await new DialogueBox(this, this.sfx).run([
+        { text: 'Your pack is empty — nothing to carry but your lamp, for now.' },
+      ]);
+      return;
+    }
+    const result = await new ItemsMenu(this, this.inventory, this.party, this.sfx).run();
+    this.party = result.party;
+    this.inventory = result.inventory;
+    void this.persist();
+  }
+
+  /**
+   * The Hearth (pause menu → HEARTH): the warm keep where kin rest when they're not
+   * travelling in your lamp. Move kin between the party (max 6) and storage; a full
+   * lamp also overflows here on a catch. Returns the new party + box order to persist.
+   */
+  private async openHearthMenu(): Promise<void> {
+    const result = await new HearthMenu(this, this.party, this.box, this.sfx).run();
+    this.party = result.party;
+    this.box = result.box;
+    void this.persist();
+  }
+
+  /** In-game pause menu (Start/Esc): Resume / Kin / Hearth / Items / Save / Settings. */
   private async openPauseMenu(): Promise<void> {
     this.modal = true;
     // A holder so the closure write in onImport survives TS flow analysis.
@@ -523,6 +564,8 @@ export class WorldScene extends Phaser.Scene {
         [
           { label: 'RESUME', value: 'resume' },
           { label: 'KIN', value: 'kin' },
+          { label: 'HEARTH', value: 'hearth' },
+          { label: 'ITEMS', value: 'items' },
           { label: 'SAVE', value: 'save' },
           { label: 'SETTINGS', value: 'settings' },
         ],
@@ -531,6 +574,10 @@ export class WorldScene extends Phaser.Scene {
 
       if (choice === 'kin') {
         await this.openPartyMenu();
+      } else if (choice === 'hearth') {
+        await this.openHearthMenu();
+      } else if (choice === 'items') {
+        await this.openItemsMenu();
       } else if (choice === 'save') {
         await this.persist();
         void this.sfx.playVariant('ui-save', ['a', 'b']);
@@ -559,6 +606,7 @@ export class WorldScene extends Phaser.Scene {
         flags: loaded.world.flags,
         abilities: loaded.world.abilities,
         party: loaded.party,
+        box: loaded.box,
         inventory: loaded.inventory,
       });
     }
