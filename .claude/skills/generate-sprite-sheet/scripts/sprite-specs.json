@@ -196,6 +196,66 @@
       "fill": 1.0,
       "prompt": "A single original {fw}x{fh} building-WALL tile for a retro top-down monster-collecting RPG: the solid front face of a structure beneath its roof. Wall: {subject}. Fill the frame edge-to-edge so walls tile horizontally; consistent top-left light. Low, even detail, no border line."
     },
+    "tile-soil": {
+      "label": "Bare soil / dirt ground tile",
+      "use_for": "A seamless bare-earth ground-fill tile (tilled soil, dirt yard) for an area set.",
+      "file": "soil.png",
+      "frame_width": 16,
+      "frame_height": 16,
+      "cols": 1,
+      "rows": 1,
+      "anchor": "top-left",
+      "fill": 1.0,
+      "prompt": "A single original {fw}x{fh} bare SOIL ground-fill world tile for a retro top-down monster-collecting RPG: trodden earth a player walks on. Surface: {subject}. Fill the frame edge-to-edge with low, even interior detail so a field of these tiles reads as one continuous earthy surface with no seam or repeating hotspot."
+    },
+    "tile-sand": {
+      "label": "Sand ground tile",
+      "use_for": "A seamless sand ground-fill tile (beach, shore flat) for an area set.",
+      "file": "sand.png",
+      "frame_width": 16,
+      "frame_height": 16,
+      "cols": 1,
+      "rows": 1,
+      "anchor": "top-left",
+      "fill": 1.0,
+      "prompt": "A single original {fw}x{fh} SAND ground-fill world tile for a retro top-down monster-collecting RPG: soft coastal sand a player walks on. Surface: {subject}. Fill the frame edge-to-edge with low, even grainy detail so a beach of these tiles reads as one continuous surface with no obvious seam or repeat."
+    },
+    "tile-floor": {
+      "label": "Plaza / interior floor tile",
+      "use_for": "A seamless paved plaza or interior floor fill tile (stone plaza, wood/board floor) for an area or building set.",
+      "file": "floor.png",
+      "frame_width": 16,
+      "frame_height": 16,
+      "cols": 1,
+      "rows": 1,
+      "anchor": "top-left",
+      "fill": 1.0,
+      "prompt": "A single original {fw}x{fh} FLOOR fill tile for a retro top-down monster-collecting RPG: a paved plaza or board/wood floor a player walks on. Surface: {subject}. Fill the frame edge-to-edge; if it has planks or paving, align them so the tile tessellates into a continuous regular floor with no broken seam. Low, even detail, no border line."
+    },
+    "tile-door": {
+      "label": "Door tile",
+      "use_for": "A door tile set into a wall (an entrance the player faces); fills its frame, abuts the wall tile.",
+      "file": "door.png",
+      "frame_width": 16,
+      "frame_height": 16,
+      "cols": 1,
+      "rows": 1,
+      "anchor": "top-left",
+      "fill": 1.0,
+      "prompt": "A single original {fw}x{fh} DOOR tile for a retro top-down monster-collecting RPG: a closed doorway set into a building wall, viewed head-on. Door: {subject}. Fill the frame edge-to-edge so the surrounding wall material matches the set's wall tile and the door sits centred within it; consistent top-left light. Low, even detail, no border line around the tile."
+    },
+    "tile-fence": {
+      "label": "Fence / railing tile",
+      "use_for": "A fence or railing tile that tiles horizontally to bound a yard or dock; transparent above the rail.",
+      "file": "fence.png",
+      "frame_width": 16,
+      "frame_height": 16,
+      "cols": 1,
+      "rows": 1,
+      "anchor": "top-left",
+      "fill": 1.0,
+      "prompt": "A single original {fw}x{fh} FENCE tile for a retro top-down monster-collecting RPG: a low wooden fence or railing seen from the front, the rail running horizontally so a row of these tiles forms one continuous fence. Fence: {subject}. The rail sits in the lower-middle of the tile with transparent space above it; the posts align so the tile repeats horizontally with no break. Consistent top-left light, dark non-black outline."
+    },
     "tile-decor": {
       "label": "Decoration tile",
       "use_for": "A small standalone decoration that sits on a deco layer over ground (flower, sign, crate, lamp). Keeps transparency around it.",

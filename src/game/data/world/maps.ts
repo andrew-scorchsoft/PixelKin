@@ -21,9 +21,9 @@ export interface MapRegistryEntry {
 export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   tinderwick: {
     json: 'assets/maps/tinderwick.json',
-    tilesets: { tinderwick_set: 'assets/tilesets/tinderwick_set.png' },
+    tilesets: { tinderwick_set: 'assets/tilesets/tinderwick_set.webp' },
     kind: 'town',
-    music: 'assets/audio/music/tinderwick.mp3',
+    music: 'assets/audio/music/tinderwick-a.mp3',
   },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.

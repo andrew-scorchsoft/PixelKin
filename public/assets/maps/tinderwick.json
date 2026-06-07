@@ -9,12 +9,12 @@
   "tilesets": [
     {
       "name": "tinderwick_set",
-      "image": "assets/tilesets/tinderwick_set.png",
+      "image": "assets/tilesets/tinderwick_set.webp",
       "tile_width": 16,
       "tile_height": 16,
       "first_gid": 1,
       "columns": 8,
-      "tile_count": 32
+      "tile_count": 19
     }
   ],
   "layers": [
@@ -154,5 +154,5 @@
       "effect": "make_passable"
     }
   ],
-  "music": "assets/audio/music/tinderwick.mp3"
+  "music": "assets/audio/music/tinderwick-a.mp3"
 }

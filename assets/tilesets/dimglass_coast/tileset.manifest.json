@@ -1,0 +1,23 @@
+{
+  "name": "dimglass_coast_set",
+  "columns": 8,
+  "_notes": "Dimglass Coast tidal-cliff route tile set. Reuses the shared Vesperholm overworld vocab (assets/tilesets/_shared/) plus two coast accents (lantern_buoy, dock_board) so it reads as the same world as Tinderwick. Water (index 1) animates across [1, 12, 13]. Tile order fixes the LOCAL 0-based index; a dimglass_coast map JSON assigns gids = index + first_gid.",
+  "tiles": [
+    { "file": "00_grass.png", "role": "ground", "encounter_terrain": "tall_grass" },
+    { "file": "01_water.png", "role": "water", "collides": true, "requires_ability": "tidecall", "encounter_terrain": "water", "animation": { "frames": [1, 12, 13], "duration_ms": 700 } },
+    { "file": "02_sand.png", "role": "sand", "encounter_terrain": "sand" },
+    { "file": "03_water_edge.png", "role": "water_edge", "collides": true },
+    { "file": "04_cliff.png", "role": "cliff", "collides": true },
+    { "file": "05_cliff_edge.png", "role": "cliff_edge", "collides": true },
+    { "file": "06_path.png", "role": "path" },
+    { "file": "07_grass_dark.png", "role": "ground", "encounter_terrain": "tall_grass" },
+    { "file": "08_flowers.png", "role": "decor" },
+    { "file": "09_sign.png", "role": "sign", "collides": true },
+    { "file": "10_lamp.png", "role": "decor", "collides": true },
+    { "file": "11_fence.png", "role": "fence", "collides": true },
+    { "file": "12_water_2.png", "role": "water" },
+    { "file": "13_water_3.png", "role": "water" },
+    { "file": "14_lantern_buoy.png", "role": "decor", "collides": true },
+    { "file": "15_dock_board.png", "role": "dock" }
+  ]
+}

@@ -32,8 +32,8 @@ a time; code does the layout.
 - A **battle effect** animation sheet (sparks, slashes, bursts).
 - A **world tile** (16×16, tileable).
 - A **cohesive area tile set** — many related 16×16 tiles (ground, path, water, edges,
-  cliff, roof, wall, decor) generated to share one palette, then packed into a tileset
-  atlas + metadata. See **Generating a map tile set** below.
+  cliff, roof, wall, decor) generated to share one palette, then packed into a lossless-WebP
+  tileset atlas + sidecar metadata. See **Generating a cohesive area tile set** below.
 
 Do **not** use it for: UI chrome you can build in CSS/HTML, the logo (already in
 `assets/`), or music/SFX (use `generate-music`).
@@ -124,7 +124,7 @@ Run `--list-types` for the live list. Current types (all defined in
 | `human-overworld`    |  32×32 | 3×4  | bottom-centre |
 | `effect`             |  32×32 | 4×4  | centre        |
 | `tile`               |  16×16 | 1×1  | top-left      |
-| `tile-ground` / `tile-path` / `tile-water` / `tile-water-edge` / `tile-cliff` / `tile-cliff-edge` / `tile-roof` / `tile-wall` | 16×16 | 1×1 | top-left | 
+| `tile-ground` / `tile-soil` / `tile-sand` / `tile-floor` / `tile-path` / `tile-water` / `tile-water-edge` / `tile-cliff` / `tile-cliff-edge` / `tile-roof` / `tile-wall` / `tile-door` / `tile-fence` | 16×16 | 1×1 | top-left | 
 | `tile-decor`         |  16×16 | 1×1  | centre        |
 
 The `tile-*` subtypes are role-specific variants of `tile` for building a cohesive area
@@ -159,7 +159,7 @@ set**).
   the per-cell trim is clipping something).
 - `--area NAME` — (with a `tile`/`tile-*` type) names the area's tile set: appends the
   shared **area-style cohesion clause** to the prompt and auto-files the tile under
-  `assets/tilesets/<area>/<role>.png`. See **Generating a map tile set**.
+  `assets/tilesets/<area>/<role>.png`. See **Generating a cohesive area tile set**.
 - `--palette "desc"` — the area's shared palette description (derive it from
   `assets/tilesets/world-palette.json`). Used with `--area` so every tile in the set
   matches.
@@ -169,68 +169,131 @@ set**).
 - `--keep-temp` — also save the raw high-res generation next to the output.
 - `--list-types` — print all types and exit.
 
-## Generating a map tile set
+## Generating a cohesive area tile set (the turnkey recipe)
 
 A map area (a town, a route, a cave) needs a *set* of tiles that read as one place. Same
-two-system split: the model makes each tile, `pack_tileset.py` assembles them. Briefs and
-the world palette come from the world docs (`docs/world/atlas.md`, `docs/world/README.md`,
-and the master `assets/tilesets/world-palette.json`).
+two-system split: the model makes each tile, `pack_tileset.py` assembles them into the
+exact atlas + sidecar the engine reads. Briefs and the world palette come from the world
+docs (`docs/world/atlas.md`, `docs/world/README.md`, and the master
+`assets/tilesets/world-palette.json`).
 
-**Step 1 — generate the tiles, anchor-first for cohesion.** Generate the area's **ground
-tile first**, then pass it as `--reference` to every sibling tile so palette and pixel
-density carry across the set. Give every tile the same `--area` and `--palette`:
+This recipe is **proven** — it built the first three sets (Tinderwick town, Dimglass Coast,
+the cottage interior). Follow it and any future area is turnkey.
+
+### The big cohesion win: a SHARED overworld vocabulary
+
+Don't generate a full independent set per area — that triples cost and the regions drift
+apart visually. Instead generate ONE shared Vesperholm overworld vocab once (grass,
+grass_dark, path, soil, water + 2 extra water frames, water_edge, sand, cliff, cliff_edge,
+wall, roof, door, sign, fence, flowers, lamp, tree_top) into `assets/tilesets/_shared/`,
+then **reuse it across areas**, adding only 1–2 area-specific accent tiles each (e.g. a
+lantern-buoy + dock board for a coast). An area's tile dir is then mostly *copies* of the
+shared masters arranged in the order that area's map gids expect, plus its accents.
+
+### Step 1 — generate tiles, anchor-first, into `_shared/`
+
+Generate the **ground (grass) tile first** as the cohesion anchor, then pass it as
+`--reference` to **every** sibling so palette, value range, pixel density and top-left light
+carry across the whole set. The `--reference` mechanism is confirmed working: Nano Banana
+Pro honours it via Gemini's multimodal input, and it visibly keeps the palette tight.
+Derive `--palette` from `assets/tilesets/world-palette.json` (area brief + brand anchors)
+and pass the SAME string to every tile.
 
 ```bash
-AREA=tinderwick
-PAL="blue-hour coastal village: bone-cream walls, warm fire-orange candlelight, deepBlue sea, grass verges, soil paths, ink outlines"
+PAL="blue-hour coastal Vesperholm village at dusk: cool grass green and darker grass-green, bone-cream stone, soil brown paths, deepBlue (#13205a) sea, sandy tan, warm fire-orange (#ff8a3d) lamp accents, deep ink (#1a1430) outlines, diamond-cyan (#9fe7ff) highlights"
 GEN=.claude/skills/generate-sprite-sheet/scripts/generate_sprite.py
 
-# anchor tile first (auto-files to assets/tilesets/tinderwick/ground.png)
-./venv/bin/python $GEN --type tile-ground --area $AREA --palette "$PAL" \
-  --subject "short coastal meadow grass, cool morning green"
+# 1. anchor tile FIRST
+./venv/bin/python $GEN --type tile-ground --area _shared --palette "$PAL" \
+  --subject "short cool-green coastal meadow grass at blue hour" \
+  --output assets/tilesets/_shared/grass.png
 
-# then the rest, seeded with the ground tile as a reference (fire in parallel)
-./venv/bin/python $GEN --type tile-path  --area $AREA --palette "$PAL" \
-  --reference assets/tilesets/$AREA/ground.png --subject "packed sandy footpath"
-./venv/bin/python $GEN --type tile-water --area $AREA --palette "$PAL" \
-  --reference assets/tilesets/$AREA/ground.png --subject "calm deepblue sea, gentle cyan ripples"
-./venv/bin/python $GEN --type tile-water-edge --area $AREA --palette "$PAL" \
-  --reference assets/tilesets/$AREA/ground.png --subject "wet sand shoreline meeting the sea"
-# …roof, wall, cliff, cliff-edge, decor as the area needs
+# 2. every other tile seeded with grass.png as --reference (fire these in parallel)
+REF=assets/tilesets/_shared/grass.png
+./venv/bin/python $GEN --type tile-path  --area _shared --palette "$PAL" --reference $REF \
+  --subject "packed pale soil-brown footpath, fine gravel" --output assets/tilesets/_shared/path.png
+./venv/bin/python $GEN --type tile-water --area _shared --palette "$PAL" --reference $REF \
+  --subject "calm deepBlue sea, gentle cyan ripple glints" --output assets/tilesets/_shared/water.png
+./venv/bin/python $GEN --type tile-water-edge --area _shared --palette "$PAL" --reference $REF \
+  --subject "wet sandy shoreline, water at the bottom, sand at the top" --output assets/tilesets/_shared/water_edge.png
+# …grass_dark, soil, sand, cliff, cliff-edge, wall, roof, door, fence (tile-*), and
+#   flowers/lamp/sign/tree_top via --type tile-decor (transparent around the object).
+# For an ANIMATED water tile, also generate water_2 / water_3 seeded with water.png.
 ```
 
-Run the self-check loop on each tile (and eyeball that a few laid edge-to-edge don't seam
-or buzz). The two prior areas' ground tiles make good extra `--reference`s so neighbouring
-regions read as one world.
+Tile subtypes available (run `generate_sprite.py --list-types`): `tile-ground`, `tile-soil`,
+`tile-sand`, `tile-floor` (plaza/board/wood floor), `tile-path`, `tile-water`,
+`tile-water-edge`, `tile-cliff`, `tile-cliff-edge`, `tile-wall`, `tile-roof`, `tile-door`,
+`tile-fence`, `tile-decor` (transparent standalone object), and the generic `tile`.
 
-**Step 2 — pack into an atlas + tileset metadata.** Write a manifest in the area's tile
-folder that fixes tile order and the per-tile properties the game reads (`collides`,
-`requires_ability`, `encounter_terrain`), then pack:
+Run the self-check loop on each tile, and **eyeball a 3×3 montage** of each laid
+edge-to-edge to confirm it tessellates without a visible seam or repeat hotspot (ground,
+water, path, sand are the ones that buzz if wrong). The prior areas' ground tiles make good
+extra `--reference`s so neighbouring regions stay one world.
+
+### Step 2 — assemble each area's tile dir + manifest
+
+For each map, copy the shared masters into `assets/tilesets/<area>/` **in the order the
+map's gids expect** (numeric prefixes like `00_grass.png` keep the order obvious), add any
+accent tiles, and write a `tileset.manifest.json`. Tile ORDER fixes the LOCAL 0-based index
+(row-major); a map's gids map to indices via `gid - first_gid`.
 
 ```jsonc
 // assets/tilesets/tinderwick/tileset.manifest.json
 { "name": "tinderwick_set", "columns": 8, "tiles": [
-  { "file": "ground.png", "role": "ground", "encounter_terrain": "tall_grass" },
-  { "file": "path.png",   "role": "path" },
-  { "file": "wall.png",   "role": "wall",  "collides": true },
-  { "file": "water.png",  "role": "water", "collides": true,
-    "requires_ability": "tidecall", "encounter_terrain": "water" }
+  { "file": "00_grass.png", "role": "ground", "encounter_terrain": "tall_grass" },
+  { "file": "01_water.png", "role": "water", "collides": true,
+    "requires_ability": "tidecall", "encounter_terrain": "water",
+    "animation": { "frames": [1, 17, 18], "duration_ms": 700 } }, // frames = LOCAL indices
+  { "file": "02_path.png", "role": "path" },
+  // …index 3,4,… in gid order; extra vocab tiles can follow after the gid-pinned ones.
+  { "file": "17_water_2.png", "role": "water" },
+  { "file": "18_water_3.png", "role": "water" }
 ] }
 ```
+
+Manifest per-tile keys (all optional, validated against the engine enums): `role` (info),
+`collides`, `encounter_terrain` (`tall_grass|water|cave|sand`), `requires_ability`
+(`glimmerstep|tidecall|emberward|updraft_kite|sunsketch|starreach`), and `animation`
+(`{ frames:[localIdx…], duration_ms }`). A typo in a terrain/ability value fails the pack
+loudly rather than producing a tile the engine silently ignores.
+
+### Step 3 — pack into the atlas + sidecar
 
 ```bash
 ./venv/bin/python .claude/skills/generate-sprite-sheet/scripts/pack_tileset.py \
   --tiles-dir assets/tilesets/tinderwick
-# -> public/assets/tilesets/tinderwick_set.png  +  tinderwick_set.tileset.json
+# -> public/assets/tilesets/tinderwick_set.webp  +  tinderwick_set.tileset.json
 ```
 
-The emitted `<name>.tileset.json` is consumed directly by the game's map loader (its
-per-tile `collides` / `requires_ability` / `encounter_terrain` drive collision,
-ability-gating, and encounters — see `src/game/data/world/types.ts`). A map JSON then
-references the atlas via a `TilesetRef` and assigns its `first_gid`.
+`pack_tileset.py` composes the atlas in manifest index order and emits a **lossless WebP**
+(`public/assets/tilesets/<name>.webp`) plus the `<name>.tileset.json` sidecar. It
+**verifies** the WebP is visually lossless (alpha identical everywhere, RGB identical
+everywhere alpha>0) and aborts if not — lossy WebP would smear the crisp 1px pixel edges.
 
-Generated source tiles live at repo-root `assets/tilesets/<area>/` (not served); the packed
-atlas + metadata land in `public/assets/tilesets/` (served by Vite).
+The sidecar matches `PackedTileset` in `src/game/systems/world/tileset.ts` EXACTLY:
+
+```jsonc
+{ "name": "tinderwick_set",
+  "image": "assets/tilesets/tinderwick_set.webp",   // served path (vite drops public/)
+  "tile_width": 16, "tile_height": 16, "columns": 8, "tile_count": 19,
+  "tiles": [ /* SPARSE TileMeta[]: only tiles with behaviour or an explicit role.
+                each: { index, role?, collides?, encounter_terrain?,
+                        requires_ability?, animation?{frames,duration_ms} } */ ] }
+```
+
+The engine reads tile *behaviour* (collision, encounter terrain, ability gating, animation)
+only from this sidecar — never from the map JSON, which carries gids alone. Adding behaviour
+to a tile is a manifest edit + re-pack, done.
+
+### Step 4 — wire the map
+
+Point the map JSON's `tilesets[].image` and `src/game/data/world/maps.ts`'s
+`MAP_REGISTRY` tileset path at the `.webp`. Keep the map's `tile_count`/`columns` in sync
+with the packed atlas. (The map references the atlas via a `TilesetRef` + its `first_gid`.)
+
+Generated source tiles live at repo-root `assets/tilesets/<area>/` and `_shared/` (not
+served); the packed atlas + sidecar land in `public/assets/tilesets/` (served by Vite).
 
 ## Two layers of checking
 
@@ -326,7 +389,7 @@ Rules that still apply:
   strong base and clean up by hand if needed (then re-run with `--from-image`).
 - This skill **does not** build creature/sprite atlases. That's the separate packing step
   (art bible §9), intentionally left to code, not the model. (Map **tilesets** are the one
-  packing step that exists today — `pack_tileset.py`, see **Generating a map tile set**.)
+  packing step that exists today — `pack_tileset.py`, see **Generating a cohesive area tile set**.)
 
 ## What it deliberately does *not* do
 

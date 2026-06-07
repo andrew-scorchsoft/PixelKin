@@ -1,0 +1,26 @@
+{
+  "name": "tinderwick_set",
+  "columns": 8,
+  "_notes": "Tinderwick town tile set. Tile ORDER fixes the LOCAL 0-based index (row-major). Indices 0-9 are pinned to public/assets/maps/tinderwick.json's gid layout: base gids 1-4 -> idx 0-3, deco gids 5,6,7,9,10 -> idx 4,5,6,8,9. Indices 10+ are extra Vesperholm-vocab tiles the map can grow into. Tiles are copies of the shared vocab in assets/tilesets/_shared/ plus the town plaza floor. Re-pack with pack_tileset.py after any edit.",
+  "tiles": [
+    { "file": "00_grass.png", "role": "ground", "encounter_terrain": "tall_grass" },
+    { "file": "01_water.png", "role": "water", "collides": true, "requires_ability": "tidecall", "encounter_terrain": "water", "animation": { "frames": [1, 17, 18], "duration_ms": 700 } },
+    { "file": "02_path.png", "role": "path" },
+    { "file": "03_floor.png", "role": "floor" },
+    { "file": "04_flowers.png", "role": "decor" },
+    { "file": "05_sign.png", "role": "sign", "collides": true },
+    { "file": "06_tree_top.png", "role": "tree", "collides": true },
+    { "file": "07_grass_dark.png", "role": "ground", "encounter_terrain": "tall_grass" },
+    { "file": "08_lamp.png", "role": "decor", "collides": true },
+    { "file": "09_door.png", "role": "door" },
+    { "file": "10_wall.png", "role": "wall", "collides": true },
+    { "file": "11_roof.png", "role": "roof", "collides": true },
+    { "file": "12_sand.png", "role": "sand", "encounter_terrain": "sand" },
+    { "file": "13_water_edge.png", "role": "water_edge", "collides": true },
+    { "file": "14_fence.png", "role": "fence", "collides": true },
+    { "file": "15_cliff.png", "role": "cliff", "collides": true },
+    { "file": "16_cliff_edge.png", "role": "cliff_edge", "collides": true },
+    { "file": "17_water_2.png", "role": "water" },
+    { "file": "18_water_3.png", "role": "water" }
+  ]
+}
