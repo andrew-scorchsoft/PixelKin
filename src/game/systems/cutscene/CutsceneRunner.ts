@@ -27,7 +27,8 @@ export interface CutsceneContext {
   canEnter(tx: number, ty: number): boolean;
   onGiveStarter(speciesId: number): void;
   onGiveItem(item: string, count: number): void;
-  startTrainerBattle?(trainer: string): Promise<void>;
+  /** Run a trainer battle; resolves true if the player won (false aborts the scene). */
+  startTrainerBattle?(trainer: string): Promise<boolean>;
 }
 
 function delay(scene: Phaser.Scene, ms: number): Promise<void> {
@@ -61,65 +62,72 @@ async function walkTo(
   }
 }
 
-async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<void> {
+/** Run one step. Returns false to ABORT the rest of the scene (a lost battle). */
+async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolean> {
   const { scene } = ctx;
   switch (step.op) {
     case 'say':
       await new DialogueBox(scene, ctx.sfx).run([{ speaker: step.speaker, text: step.text }]);
-      return;
+      return true;
     case 'dialogue':
       await new DialogueBox(scene, ctx.sfx).run(getDialogue(step.ref));
-      return;
+      return true;
     case 'wait':
       await delay(scene, step.ms);
-      return;
+      return true;
     case 'move': {
       const actor = ctx.getActor(step.actor);
       if (actor) await walkTo(actor, step.to.tx, step.to.ty, ctx.canEnter);
-      return;
+      return true;
     }
     case 'face': {
       ctx.getActor(step.actor)?.setFacing(step.facing);
-      return;
+      return true;
     }
     case 'fade':
       if (step.dir === 'out') await fadeOut(scene, step.ms);
       else await fadeIn(scene, step.ms);
-      return;
+      return true;
     case 'setFlag':
       ctx.flags.set(step.flag, step.value ?? true);
-      return;
+      return true;
     case 'giveStarter': {
       const speciesId = await new StarterSelect(scene, ctx.sfx).run();
       ctx.onGiveStarter(speciesId);
       void ctx.sfx.play('dex-register');
-      return;
+      return true;
     }
     case 'giveItem':
       ctx.onGiveItem(step.item, step.count ?? 1);
       void ctx.sfx.play('world-pickup');
-      return;
+      return true;
     case 'sfx':
       void ctx.sfx.play(step.key);
-      return;
+      return true;
     case 'music':
       if (step.key === null) ctx.music.stop();
       else void ctx.music.play(step.key, `assets/audio/music/${step.key}.mp3`);
-      return;
+      return true;
     case 'battle':
-      if (ctx.startTrainerBattle) await ctx.startTrainerBattle(step.trainer);
-      return;
+      // A lost trainer battle aborts the scene (so a defeat never narrates a win).
+      if (ctx.startTrainerBattle) return ctx.startTrainerBattle(step.trainer);
+      return true;
     case 'gleam': {
       void ctx.sfx.playVariant('world-gleam', ['a', 'b', 'c']);
       // A short triumphant fanfare for relighting a constellation (one-shot).
       const ok = await loadAudio(scene, 'gleam-fanfare', 'assets/audio/music/gleam-fanfare.mp3');
       if (ok) scene.sound.play('gleam-fanfare', { volume: 0.6 });
       await flash(scene, 220);
-      return;
+      return true;
     }
   }
 }
 
-export async function runCutscene(ctx: CutsceneContext, steps: CutsceneStep[]): Promise<void> {
-  for (const step of steps) await runStep(ctx, step);
+/** Play a scene's steps in order. Returns true if it ran to completion (not aborted). */
+export async function runCutscene(ctx: CutsceneContext, steps: CutsceneStep[]): Promise<boolean> {
+  for (const step of steps) {
+    const carryOn = await runStep(ctx, step);
+    if (!carryOn) return false;
+  }
+  return true;
 }

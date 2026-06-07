@@ -28,7 +28,9 @@ export function attemptCatch(
 ): CatchResult {
   const maxHp = target.maxHp;
   const hp = Math.max(1, target.hp);
-  const rate = target.species.catchRate;
+  // Clamp to >= 1 so a data error (catchRate 0) can't make a kin uncatchable or
+  // divide by zero below.
+  const rate = Math.max(1, target.species.catchRate);
 
   const a = ((3 * maxHp - 2 * hp) / (3 * maxHp)) * rate * Math.max(0.1, lampBonus);
 

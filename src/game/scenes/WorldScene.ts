@@ -11,7 +11,10 @@ import { COLORS } from '@game/config';
 import { theme } from '@game/ui/theme';
 import { DebugOverlay } from '@game/ui/DebugOverlay';
 import { DialogueBox } from '@game/ui/DialogueBox';
+import { Menu } from '@game/ui/Menu';
+import { SettingsMenu } from '@game/ui/SettingsMenu';
 import { fadeIn, fadeOut } from '@game/ui/Transitions';
+import { KinInstance } from '@game/systems/party/KinInstance';
 import { InputController, InputAction } from '@game/systems/input/InputController';
 import { loadMap, RuntimeMap } from '@game/systems/world/MapLoader';
 import { renderMap } from '@game/systems/world/MapRenderer';
@@ -88,6 +91,13 @@ export class WorldScene extends Phaser.Scene {
     this.debug = new DebugOverlay(this);
     this.cameras.main.setBackgroundColor(COLORS.night);
 
+    // Release music + the global shell-input listener when the scene ends, so a
+    // later World restart doesn't stack a second music track or input listener.
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+      this.music.stop();
+      this.controller.destroy();
+    });
+
     const spawn = data.spawn ?? this.defaultSpawn(data.mapId);
     void this.enterMap(data.mapId, spawn, spawn.facing, true);
   }
@@ -109,27 +119,38 @@ export class WorldScene extends Phaser.Scene {
     this.ready = false;
     this.teardownMap();
 
-    const map = await loadMap(mapId);
-    this.map = map;
-    this.collision = new CollisionGrid(map);
-    this.encounters = new EncounterSystem(map);
-    this.render = await renderMap(this, map);
-    this.cameras.main.setBounds(0, 0, this.render.pixelWidth, this.render.pixelHeight);
+    try {
+      const map = await loadMap(mapId);
+      this.map = map;
+      this.collision = new CollisionGrid(map);
+      this.encounters = new EncounterSystem(map);
+      this.render = await renderMap(this, map);
+      this.cameras.main.setBounds(0, 0, this.render.pixelWidth, this.render.pixelHeight);
 
-    const safe = this.findSafeTile(spawn.tx, spawn.ty);
-    this.player = new Player(this, safe.tx, safe.ty, facing ?? 'down');
-    this.cameras.main.startFollow(this.player.sprite, true, 1, 1);
+      const safe = this.findSafeTile(spawn.tx, spawn.ty);
+      this.player = new Player(this, safe.tx, safe.ty, facing ?? 'down');
+      this.cameras.main.startFollow(this.player.sprite, true, 1, 1);
 
-    this.spawnNpcs();
+      this.spawnNpcs();
+      this.playMapMusic();
 
-    if (map.def.music) {
-      const key = map.def.music.split('/').pop()?.replace(/\.[a-z0-9]+$/i, '') ?? 'map-music';
-      void this.music.play(key, map.def.music);
+      if (initial) this.cameras.main.fadeIn(theme.transition.fadeMs, 0, 0, 0);
+      this.ready = true;
+      void this.persist(); // autosave on entering any map (so Continue always works)
+    } catch (err) {
+      // A missing/malformed map must not freeze the game on a black screen.
+      console.error(`Failed to enter map "${mapId}":`, err);
+      this.cameras.main.fadeIn(theme.transition.fadeMs, 0, 0, 0);
+      this.modal = false;
     }
+  }
 
-    if (initial) this.cameras.main.fadeIn(theme.transition.fadeMs, 0, 0, 0);
-    this.ready = true;
-    void this.persist(); // autosave on entering any map (so Continue always works)
+  /** Play (or resume) the current map's music loop. */
+  private playMapMusic(): void {
+    const music = this.map?.def.music;
+    if (!music) return;
+    const key = music.split('/').pop()?.replace(/\.[a-z0-9]+$/i, '') ?? 'map-music';
+    void this.music.play(key, music);
   }
 
   /** Snapshot the live world state into the canonical save shape. */
@@ -143,9 +164,9 @@ export class WorldScene extends Phaser.Scene {
     };
   }
 
-  /** Autosave through the storage seam. */
-  async persist(): Promise<void> {
-    const game: SaveGame = {
+  /** Build the full save blob from live state. */
+  private buildSaveGame(): SaveGame {
+    return {
       schema_version: SAVE_SCHEMA_VERSION,
       saved_at: Date.now(),
       play_seconds: 0,
@@ -153,7 +174,11 @@ export class WorldScene extends Phaser.Scene {
       party: this.party,
       inventory: this.inventory,
     };
-    await SaveManager.save(game);
+  }
+
+  /** Autosave through the storage seam. */
+  async persist(): Promise<void> {
+    await SaveManager.save(this.buildSaveGame());
   }
 
   private teardownMap(): void {
@@ -242,25 +267,40 @@ export class WorldScene extends Phaser.Scene {
   }
 
   private async handleTrigger(trigger: EventTrigger): Promise<void> {
-    if (trigger.requires_flag && !this.flags.get(trigger.requires_flag)) return;
+    if (trigger.requires_flag && !this.flags.get(trigger.requires_flag)) {
+      // If the player actively tried this, tell them it's not ready yet.
+      if (trigger.activation === 'interact') await this.showHint();
+      return;
+    }
     if (trigger.once && this.flags.triggerFired(trigger.id)) return;
 
     if (trigger.kind === 'script' || trigger.kind === 'cutscene') {
       const steps = getScript(trigger.ref);
       if (!steps) return;
       this.modal = true;
-      await runCutscene(this.cutsceneContext(), steps);
-      this.flags.setMany(trigger.sets_flags);
-      if (trigger.once) this.flags.markTriggerFired(trigger.id);
-      void this.persist(); // lock in story progress (starter, items, flags)
+      const completed = await runCutscene(this.cutsceneContext(), steps);
+      // Only bank progress if the scene actually finished (a lost battle aborts it).
+      if (completed) {
+        this.flags.setMany(trigger.sets_flags);
+        if (trigger.once) this.flags.markTriggerFired(trigger.id);
+        void this.persist();
+      }
       this.modal = false;
       return;
-    } else {
-      await this.runDialogue(trigger.ref);
     }
 
+    await this.runDialogue(trigger.ref);
     this.flags.setMany(trigger.sets_flags);
     if (trigger.once) this.flags.markTriggerFired(trigger.id);
+  }
+
+  /** A short "the way is shut" message when a gated thing isn't ready. */
+  private async showHint(): Promise<void> {
+    this.modal = true;
+    await new DialogueBox(this, this.sfx).run([
+      { text: 'It is not time yet — something is still needed here.' },
+    ]);
+    this.modal = false;
   }
 
   private cutsceneContext(): CutsceneContext {
@@ -278,13 +318,18 @@ export class WorldScene extends Phaser.Scene {
       onGiveItem: (item, count) => {
         this.inventory.items[item] = (this.inventory.items[item] ?? 0) + count;
       },
-      startTrainerBattle: async (trainer: string): Promise<void> => {
-        await this.startBattle({
+      startTrainerBattle: async (trainer: string): Promise<boolean> => {
+        const result = await this.startBattle({
           kind: 'trainer',
           trainer,
           party: this.party,
           inventory: this.inventory,
         });
+        if (result.outcome !== 'win') {
+          await this.blackout();
+          return false;
+        }
+        return true;
       },
     };
   }
@@ -292,6 +337,7 @@ export class WorldScene extends Phaser.Scene {
   // --- Step-on (on arrival) -----------------------------------------------
 
   private onPlayerArrive = (tx: number, ty: number): void => {
+    if (this.modal) return; // a warp/cutscene/battle is already in progress
     void this.sfx.playVariant('world-footstep', ['a', 'b']);
 
     const warp = this.map.def.warps.find(
@@ -320,6 +366,8 @@ export class WorldScene extends Phaser.Scene {
           level: intent.level,
           party: this.party,
           inventory: this.inventory,
+        }).then((result) => {
+          if (result.outcome === 'lose') void this.blackout();
         });
       }
     }
@@ -335,9 +383,11 @@ export class WorldScene extends Phaser.Scene {
   private startBattle(request: BattleRequest): Promise<BattleResult> {
     return new Promise((resolve) => {
       this.modal = true;
+      this.music.stop(); // hand the soundtrack over to the battle scene
       const onComplete = (result: BattleResult): void => {
         this.applyBattleResult(result);
         this.scene.resume('World');
+        this.playMapMusic(); // restore the overworld loop
         this.modal = false;
         resolve(result);
       };
@@ -353,6 +403,29 @@ export class WorldScene extends Phaser.Scene {
     void this.persist();
   }
 
+  /** Defeat recovery: revive the party and wake back at the start town. */
+  private async blackout(): Promise<void> {
+    this.modal = true;
+    this.healParty();
+    void this.sfx.playVariant('world-heal', ['a', 'b']);
+    await new DialogueBox(this, this.sfx).run([
+      { text: 'Your lamp guttered low... but a kind light carried you home.' },
+    ]);
+    await fadeOut(this);
+    await this.enterMap(VESPERHOLM_GRAPH.start_map, VESPERHOLM_GRAPH.start_at, 'down', false);
+    await fadeIn(this);
+    this.modal = false;
+  }
+
+  /** Fully restore every kin in the party (used by blackout recovery). */
+  private healParty(): void {
+    this.party = this.party.map((d) => {
+      const kin = KinInstance.fromData(d);
+      kin.fullHeal();
+      return kin.toData();
+    });
+  }
+
   private warpAllowed(warp: Warp): boolean {
     if (warp.requires_ability && !this.abilities.has(warp.requires_ability)) return false;
     if (warp.requires_flag && !this.flags.get(warp.requires_flag)) return false;
@@ -360,7 +433,10 @@ export class WorldScene extends Phaser.Scene {
   }
 
   private async executeWarp(warp: Warp): Promise<void> {
-    if (!this.warpAllowed(warp)) return;
+    if (!this.warpAllowed(warp)) {
+      if (warp.trigger === 'interact') await this.showHint();
+      return;
+    }
     // Tolerant: ignore warps whose target map isn't authored/registered yet.
     if (!MAP_REGISTRY[warp.to_map]) return;
     this.modal = true;
@@ -378,10 +454,12 @@ export class WorldScene extends Phaser.Scene {
     this.controller.update();
 
     if (!this.modal) {
-      if (!this.player.isMoving && this.controller.justPressed(InputAction.Confirm)) {
+      if (this.controller.justPressed(InputAction.Menu)) {
+        void this.openPauseMenu();
+      } else if (!this.player.isMoving && this.controller.justPressed(InputAction.Confirm)) {
         void this.interact();
       } else {
-        this.player.update(this.controller, this.playerCanEnter, this.onPlayerArrive);
+        this.player.update(this.controller, this.playerCanEnter, this.onPlayerArrive, this.onBump);
       }
       for (const npc of this.npcs) npc.update(delta, this.npcCanEnter);
     }
@@ -395,5 +473,71 @@ export class WorldScene extends Phaser.Scene {
       `npcs: ${this.npcs.length}  flags: ${Object.keys(this.flags.snapshot()).length}`,
       `modal: ${this.modal}`,
     ]);
+  }
+
+  /** Feedback when walking into a wall: a throttled bump sfx + a tiny squash. */
+  private lastBumpAt = 0;
+  private onBump = (): void => {
+    const now = this.time.now;
+    if (now - this.lastBumpAt < 280) return;
+    this.lastBumpAt = now;
+    void this.sfx.playVariant('world-bump', ['a', 'b']);
+    this.tweens.add({
+      targets: this.player.sprite,
+      scaleX: 0.9,
+      scaleY: 1.06,
+      duration: 70,
+      yoyo: true,
+    });
+  };
+
+  /** In-game pause menu (Start/Esc): Resume / Save / Settings. */
+  private async openPauseMenu(): Promise<void> {
+    this.modal = true;
+    // A holder so the closure write in onImport survives TS flow analysis.
+    const pending: { load: SaveGame | null } = { load: null };
+    let open = true;
+    while (open) {
+      const choice = await new Menu(
+        this,
+        [
+          { label: 'RESUME', value: 'resume' },
+          { label: 'SAVE', value: 'save' },
+          { label: 'SETTINGS', value: 'settings' },
+        ],
+        { x: 8, y: 8, sfx: this.sfx },
+      ).run();
+
+      if (choice === 'save') {
+        await this.persist();
+        void this.sfx.playVariant('ui-save', ['a', 'b']);
+      } else if (choice === 'settings') {
+        await new SettingsMenu(this, {
+          getSave: () => this.buildSaveGame(),
+          onImport: async (imported) => {
+            await SaveManager.save(imported);
+            pending.load = imported;
+          },
+          sfx: this.sfx,
+        }).run();
+        if (pending.load) open = false;
+      } else {
+        open = false; // Resume or cancel
+      }
+    }
+
+    this.modal = false;
+    const loaded = pending.load;
+    if (loaded) {
+      // Apply an imported save by reloading the world from it.
+      this.scene.start('World', {
+        mapId: loaded.world.current_map,
+        spawn: loaded.world.player,
+        flags: loaded.world.flags,
+        abilities: loaded.world.abilities,
+        party: loaded.party,
+        inventory: loaded.inventory,
+      });
+    }
   }
 }

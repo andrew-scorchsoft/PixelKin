@@ -8,6 +8,7 @@ import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT } from '@game/config';
 import { theme } from '@game/ui/theme';
 import { Menu } from '@game/ui/Menu';
+import { DialogueBox } from '@game/ui/DialogueBox';
 import { SettingsMenu } from '@game/ui/SettingsMenu';
 import { Sfx } from '@game/systems/audio/Sfx';
 import { MusicDirector } from '@game/systems/audio/MusicDirector';
@@ -71,8 +72,13 @@ export class TitleScene extends Phaser.Scene {
     );
 
     const choice = await menu.run();
-    if (choice === 'new') this.start({ mapId: VESPERHOLM_GRAPH.start_map });
-    else if (choice === 'continue' && save) this.start(this.continueData(save));
+    if (choice === 'new') {
+      if (save && !(await this.confirmOverwrite())) {
+        void this.showMenu();
+        return;
+      }
+      this.start({ mapId: VESPERHOLM_GRAPH.start_map });
+    } else if (choice === 'continue' && save) this.start(this.continueData(save));
     else if (choice === 'settings') {
       await new SettingsMenu(this, {
         getSave: () => save,
@@ -83,6 +89,21 @@ export class TitleScene extends Phaser.Scene {
       }).run();
       void this.showMenu(); // re-show the title menu after settings
     }
+  }
+
+  /** Guard a destructive New Game when a save exists. */
+  private async confirmOverwrite(): Promise<boolean> {
+    const box = new DialogueBox(this, this.sfx);
+    await box.run([{ text: 'Starting anew will overwrite your saved journey.' }]);
+    const choice = await new Menu(
+      this,
+      [
+        { label: 'KEEP SAVE', value: 'no' },
+        { label: 'OVERWRITE', value: 'yes' },
+      ],
+      { x: GAME_WIDTH / 2 - 44, y: GAME_HEIGHT / 2 + 18, width: 88, sfx: this.sfx },
+    ).run();
+    return choice === 'yes';
   }
 
   private continueData(save: SaveGame): WorldSceneData {

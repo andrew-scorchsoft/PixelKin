@@ -19,7 +19,10 @@ export class DebugOverlay {
       .setDepth(theme.depth.toast + 10)
       .setVisible(false);
     this.text.setColor('#9fe7ff');
-    scene.input.keyboard?.on('keydown-ZERO', () => this.toggle());
+    // Dev-only: never let a stray '0' dump debug state over a shipped build.
+    if (import.meta.env.DEV) {
+      scene.input.keyboard?.on('keydown-ZERO', () => this.toggle());
+    }
   }
 
   toggle(): void {
