@@ -1,6 +1,11 @@
 import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT, COLORS } from '@game/config';
 import trainerManifest from '../../../public/assets/sprites/trainers/trainers.manifest.json';
+import {
+  creatureSpritePath,
+  creatureTextureKey,
+  type CreatureView,
+} from '@game/systems/sprites/CreatureSprites';
 
 interface TrainerManifest {
   frame_width: number;
@@ -36,6 +41,19 @@ export class PreloadScene extends Phaser.Scene {
     this.load.audio('battle-veil', 'assets/audio/music/battle-veil.mp3');
     // Boss / hard-opponent theme — grander, with a key-lifting climax.
     this.load.audio('battle-boss-eclipse', 'assets/audio/music/battle-boss-eclipse.mp3');
+
+    // The two starters the attract-mode trailer pits against each other (the
+    // pair on the logo): Vulpyre's back view (player side) vs Brinix's front
+    // (foe side). Preloaded so the demo battle shows real kin from frame one
+    // instead of popping in mid-loop.
+    const FEATURED: ReadonlyArray<[number, CreatureView]> = [
+      [1, 'back'],
+      [2, 'front'],
+    ];
+    for (const [id, v] of FEATURED) {
+      const path = creatureSpritePath(id, v);
+      if (path) this.load.image(creatureTextureKey(id, v), path);
+    }
 
     // Human walk-sheets (player + named NPCs), packed by pack_trainers.py. Keyed
     // by master stem; Player/Npc load them by that key and fall back to a runtime

@@ -1,43 +1,51 @@
 {
-  "title": "PixelKin - Title Theme (Lanterns in the Dark)",
-  "_note": "The iconic title-screen riff under the logo + New Game/Continue/Settings. gbc house style (4-voice band) for seamless cohesion with the Tinderwick 'Lantern Lullaby' (same C-major/A-minor world, same pulse25 lead + pulse12 music-box arp + tri_bass hearth pulse + near-absent noise tick). 96 BPM, 4/4. The loop PROUDLY states the Vesper motif (G3->C4->D4 lift, overshooting; E4->D4->C4 settle home) up front and warm-but-wistful, then lifts it an octave for the 'proud' B-statement, with a homesick A-minor turn before resolving home. 16-bar loop body (~24s at 96 BPM). Last bar voice-leads G2(dom)->C downbeat so the loop seam is seamless (no dead-stop tonic). Slightly brighter and more confident than the town lullaby (this is the title fanfare-ish statement), but unmistakably the same tune the player will hear when they reach Tinderwick.",
-  "era": "gbc",
-  "tempo": 96,
+  "title": "PixelKin - Title Theme (Lanterns to the Sky)",
+  "_note": "The title-screen statement under the logo + New Game/Continue/Settings - the single most-heard melody in the game, so the hook is front-loaded and unmistakable. This is a deliberate GRAND, ASPIRATIONAL reorchestration of the Vesper motif (G3->C4->D4 lift, overshooting; settle), the same leitmotif the player meets again as Tinderwick's lullaby - but where the town theme is wistful gbc lullaby, the TITLE soars: snes era (8 voices, warm reverb), full major key, an aspirational I-iii-IV-V bed, a soaring pulse25 lead doubled by a warm string pad and bell sparkle, a moving sampled bass and a gentle-but-present drum groove. ~100 BPM, 4/4, 16-bar loop (~38s). Structure: A proud Vesper statement that climbs instead of settling; A' the same lifted an octave (the 'reach for the sky' peak); B an aspirational IV->V build; A'' resolves home and the final bar voice-leads on the G dominant back into the C downbeat (seamless loop). Renders on the chip engine like the rest of the score for cohesion.",
+  "era": "snes",
+  "tempo": 100,
   "time_signature": [4, 4],
   "ppq": 480,
   "loop": true,
-  "key": "C major (wistful turn to A minor)",
+  "key": "C major (aspirational, I-iii-IV-V)",
   "tracks": [
     {
       "name": "lead",
       "voice": "pulse25",
       "octave": 4,
       "gain": 1.0,
-      "_note": "A: proud full Vesper statement (G3->C4->D4 ... E4->D4->C4), a touch more dotted/confident than the lullaby. A': the motif lifted an octave (G4->C5->D5 ... E5->D5->C5) - the 'sky' statement, the proud peak of the riff. B: A-minor homesick answer (the catch in the throat) walking up F4->G4 toward the dominant. A'': resolve home, the leap settling firmly to C, then a small turn down to G3 so the line lifts back into bar 1.",
-      "notes": "G3q. C4e D4h | E4q D4q C4h | G3q C4q D4q E4q | D4h. C4q | G4q. C5e D5h | E5q D5q C5h | G4q C5q D5q E5q | D5h. C5q | A4q E4q A4q C5q | B4q A4q G4h | F4q E4q F4q G4q | A4h. G4q | G3q. C4e D4h | E4q D4q C4h | E4q D4q C4q D4q | C4h G3h"
+      "_note": "The Vesper motif made proud and rising. A: lift G3->C4->D4 then climb to G4 instead of settling low. A': the whole shape an octave up (the 'sky' peak). B: an aspirational reach over IV->V. A'': home statement, final reach up, then voice-lead down to G3 (dominant) into bar 1.",
+      "notes": "G3q. C4e D4h | E4q D4q E4q G4q | C4q. E4e G4h | G4q E4q D4h | G4q. C5e D5h | E5q D5q E5q G5q | C5q. E5e G5h | G5q E5q D5h | F4q G4q A4q C5q | A4q G4q F4h | D4q E4q F4q G4q | G4q B4q D5h | G3q. C4e D4h | E4q D4q C4h | E4q G4q C5q E5q | D5q. B4e G3h"
     },
     {
-      "name": "harmony",
-      "voice": "pulse12",
-      "octave": 4,
-      "gain": 0.5,
-      "_note": "Slow music-box broken-chord arp (eighths), exactly the lullaby's texture so the two themes are siblings. C-E-G under major, G-B-D under the dominant cadence; the octave-up A' brightens to C-G-C-E sparkle; A-C-E under the A-minor turn, F-A-C / G-B-D under the answer.",
-      "notes": "C4e E4e G4e E4e C4e E4e G4e E4e | C4e E4e G4e E4e G3e B3e D4e B3e | C4e E4e G4e E4e C4e E4e G4e E4e | G3e B3e D4e B3e G3e B3e D4e B3e | C4e G4e C5e G4e C4e G4e C5e G4e | C4e G4e C5e G4e G3e D4e G4e D4e | C4e G4e C5e G4e C4e G4e C5e G4e | G3e D4e G4e D4e G3e B3e D4e B3e | A3e C4e E4e C4e A3e C4e E4e C4e | E3e G3e B3e G3e A3e C4e E4e C4e | F3e A3e C4e A3e F3e A3e C4e A3e | E3e G3e B3e G3e G3e B3e D4e B3e | C4e E4e G4e E4e C4e E4e G4e E4e | C4e E4e G4e E4e G3e B3e D4e B3e | A3e C4e E4e C4e G3e B3e D4e B3e | C4e E4e G4e E4e G3e B3e D4e B3e"
+      "name": "pad",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.55,
+      "_note": "Warm sustained string bed - real triads (snes can stack) voiced in the mid register below the lead so the harmony glows without mudding the tune. The aspirational I-iii-IV-V progression: C - Em - F - G, twice; then a IV->V build (F F G G); then home C C C - G to lead the seam.",
+      "notes": "C3+E3+G3w | E3+G3+B3w | F3+A3+C4w | G3+B3+D4w | C3+E3+G3w | E3+G3+B3w | F3+A3+C4w | G3+B3+D4w | F3+A3+C4w | F3+A3+C4w | G3+B3+D4w | G3+B3+D4w | C3+E3+G3w | C3+E3+G3w | C3+E3+G3w | G3+B3+D4w"
+    },
+    {
+      "name": "sparkle",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.45,
+      "_note": "Music-box / starlight sparkle - sparse, used as colour, not a second tune. A few high twinkles over the 'sky' octave-up section (A'), then a rising sparkle on the final reach so the resolve glints. Silent elsewhere (silence is an instrument).",
+      "notes": "rw | rw | rw | rw | G5q rq C6q rq | rw | A5q rq C6q rq | rw | rw | rw | rw | rw | rw | rw | C6q E6q G6q E6q | D6h rh"
     },
     {
       "name": "bass",
-      "voice": "tri_bass",
+      "voice": "bass",
       "octave": 2,
       "gain": 0.9,
-      "_note": "Warm rocking root-fifth 'hearth' pulse, two half-notes per bar - the lullaby's bass. Walks A->E and F->G under the B-section. Final bar holds G2->G2 (dominant) to voice-lead into the C downbeat of bar 1: seamless seam.",
-      "notes": "C2h G2h | C2h G2h | C2h G2h | G2h G2h | C2h G2h | C2h G2h | C2h G2h | G2h G2h | A2h E2h | E2h E2h | F2h A2h | E2h G2h | C2h G2h | C2h G2h | A2h G2h | C2h G2h"
+      "_note": "Punchy sampled-style root-fifth bass with octave motion - gives the title forward lift instead of a static pad. Roots track the C-Em-F-G progression; final bar lands on G (dominant) to pull the loop back to the C downbeat.",
+      "notes": "C2q G2q C3q G2q | E2q B2q E3q B2q | F2q C3q F3q C3q | G2q D3q G3q D3q | C2q G2q C3q G2q | E2q B2q E3q B2q | F2q C3q F3q C3q | G2q D3q G3q D3q | F2q C3q F3q C3q | F2q A2q C3q A2q | G2q D3q G3q D3q | G2q B2q D3q B2q | C2q G2q C3q G2q | C2q E2q G2q E2q | C2q G2q C3q E3q | G2q D3q G2q D2q"
     },
     {
       "name": "drums",
       "voice": "drums",
       "gain": 0.5,
-      "_note": "Near-absent, like the lullaby: a soft noise tick on each bar downbeat (one hat + a half-rest's worth of silence = 4 beats), with a gentle offbeat hat on the proud octave-up A' section to lend the title a little shine, and a soft fill at the loop seam so the repeat breathes. Each bar = 4 beats.",
-      "notes": "hatq rq rh | hatq rq rh | hatq rq rh | hatq rq rh | hatq rq hatq rq | hatq rq hatq rq | hatq rq hatq rq | hatq rq hatq rq | hatq rq rh | hatq rq rh | hatq rq rh | hatq rq rh | hatq rq rh | hatq rq rh | hatq rq rh | hatq hatq snareq rq"
+      "_note": "A gentle but present backbeat (this title aspires, it doesn't tiptoe): soft kick on 1 & 3, snare on 2 & 4, hats on the eighths. A crash opens each big section (the sky A', the B build, the home A''), and a small fill closes the loop seam so the repeat breathes. Each bar = 8 eighths.",
+      "notes": "e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+crash hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+crash hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+crash hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick snare snare crash"
     }
   ]
 }
