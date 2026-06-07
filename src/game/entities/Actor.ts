@@ -31,18 +31,22 @@ export const PLACEHOLDER_FRAMES: ActorFrames = {
 };
 
 /**
- * The 3×4 human walk-sheet layout: rows = down/left/right/up, columns =
- * idle/step-1/step-2. The walk cycle alternates a step with the idle pose so the
- * feet read as moving (`step1, idle, step2, idle`).
+ * The 4×4 human walk-sheet layout (docs/art-style.md §5A): rows =
+ * down/left/right/up, columns = idle / contact-L / passing / contact-R. The walk
+ * cycle is a real stride — `contactL → passing → contactR → passing` — so the
+ * legs cross over and the body bobs (the passing frame is drawn 1px higher),
+ * instead of the old two-frame shuffle. The engine plays this continuously
+ * across consecutive tiles (it never resets to idle between steps); it settles
+ * to the idle frame only when movement actually stops (`stopWalking`).
  */
 export const HUMAN_WALK_FRAMES: ActorFrames = (() => {
   const row: Record<Facing, number> = { down: 0, left: 1, right: 2, up: 3 };
   const idle = {} as Record<Facing, number>;
   const walk = {} as Record<Facing, number[]>;
   (['down', 'left', 'right', 'up'] as Facing[]).forEach((f) => {
-    const base = row[f] * 3; // col0 idle, col1 step-1, col2 step-2
+    const base = row[f] * 4; // col0 idle, col1 contact-L, col2 passing, col3 contact-R
     idle[f] = base;
-    walk[f] = [base + 1, base, base + 2, base];
+    walk[f] = [base + 1, base + 2, base + 3, base + 2];
   });
   return { idle, walk };
 })();
@@ -140,6 +144,9 @@ export class Actor {
     this.moving = true;
     this.tx = nx;
     this.ty = ny;
+    // `true` = ignoreIfPlaying: when the player holds a direction over several
+    // tiles this keeps ONE walk cycle flowing instead of restarting it (and
+    // flashing the idle frame) at every tile boundary — the old "shuffle".
     if (this.frames.walk) this.sprite.play(`${this.textureKey}__walk_${facing}`, true);
     const { x, y } = Actor.tileToWorld(nx, ny);
     this.scene.tweens.add({
@@ -149,15 +156,24 @@ export class Actor {
       duration: durationMs,
       ease: 'Linear',
       onComplete: () => {
+        // Don't stop here — if another step follows, the cycle carries on
+        // seamlessly. `stopWalking()` settles us to idle once movement ends.
         this.moving = false;
-        if (this.frames.walk) {
-          this.sprite.stop();
-          this.sprite.setFrame(this.frames.idle[this.facing]);
-        }
         onArrive?.(nx, ny);
       },
     });
     return true;
+  }
+
+  /**
+   * Settle to the idle pose when movement has stopped. Call this each frame the
+   * actor is NOT taking a step (no held direction, a blocked bump, etc.) so the
+   * continuously-playing walk cycle stops cleanly on the standing frame.
+   */
+  stopWalking(): void {
+    if (this.moving || !this.frames.walk) return;
+    if (this.sprite.anims.isPlaying) this.sprite.stop();
+    this.sprite.setFrame(this.frames.idle[this.facing]);
   }
 
   /** Keep depth in sync with row so actors sort correctly among deco tiles. */

@@ -604,6 +604,62 @@ description: Assemble a PixelKin MapDefinition (town/route/interior/cave/hub) fr
 
 ---
 
+## 10. The meshing standard — a tileset problem AND a map-design problem
+
+The single biggest gap between our early maps and a polished handheld map is
+**meshing**: in good maps *nothing sits in an isolated square*. Water wraps in a
+continuous shoreline, grass/sand/path blend with soft transitions, cliffs have
+lit tops over shadowed faces with corners, and forests are contiguous masses with
+a clean border. This is **two problems that must be solved together** — fixing one
+without the other still looks wrong:
+
+**A) The tileset must PROVIDE the vocabulary** (art workstream — `generate-sprite-sheet`).
+For every surface with an inside and an outside, the kit needs the **9-slice**
+(fill + 4 edges + 4 outer corners) and ideally the **4 inner corners** (13-piece),
+tagged with `terrain` + `autotile` role in the tileset manifest (Fork F). Without
+this, *no amount of careful authoring can mesh* — `validate_map.py` reports
+`autotile-vocab: FAIL`.
+
+*Proven production recipe (it works — see the autotiled lake test):* describe the
+9 pieces **cell by cell** to the image model as a 3×3 `tile-sheet`, then slice with
+`slice_tileset.py --layout edges9 --terrain <name>`:
+
+> "(1) water with foam shore on TOP+LEFT; (2) shore on TOP; (3) TOP+RIGHT; (4) LEFT;
+> (5) plain fill; (6) RIGHT; (7) BOTTOM+LEFT; (8) BOTTOM; (9) BOTTOM+RIGHT"
+
+Per area, the kit needs autotile sets for: **ground/grass**, **tall-grass**
+(encounter, visibly distinct), **sand/dirt**, **water** (shoreline), and the
+hardest — **cliffs/ledges** (a *vertical* set: walkable lit **top** edge distinct
+from the colliding **face**, plus L/R + inner corners, and the hop-down ledge),
+plus contiguous **tree-mass** edges and multi-tile **buildings**.
+
+**B) The map must USE it** (this workstream). Author terrain as **regions, not
+hand-placed corner gids**: paint a `terrain` layer (a 0/1 presence grid tagged
+`terrain` + `set`) per material, then expand it so the blob rule stamps the right
+edge/corner tile automatically:
+
+```bash
+node tools/autotile/expand.mjs public/assets/maps/<map>.json   # terrain layer -> meshed base gids
+```
+
+Then layer decoration (`deco`) and walk-under tops (`above`) per Fork G, shape
+encounter patches (Fork E), and lead with light (§3).
+
+**C) Validate both halves — the gate before "done":**
+
+```bash
+./venv/bin/python .claude/skills/generate-sprite-sheet/scripts/render_map.py  <map> --output /tmp/x.png --scale 4   # SEE it
+./venv/bin/python .claude/skills/generate-sprite-sheet/scripts/validate_map.py <map>                                  # MEASURE it
+```
+
+`validate_map.py` checks layer discipline, **autotile vocabulary** (tileset half),
+**meshing %** at terrain boundaries, water shorelines, decoration density, tree
+depth, and the solid border (map half) — and fails the build if a map is below
+standard. A map is not done until it renders to the bar **and** passes the
+validator with no FAILs.
+
+---
+
 > **In one line:** design screen-by-screen for the 15×10 window, lead the eye with light,
 > gate with geography, teach the opening hour as a gentle ramp, keep layers and encounter
 > zones disciplined — and run the checklist every time.

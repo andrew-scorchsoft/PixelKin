@@ -4,9 +4,10 @@ Trainer / human walk-sheet packer for PixelKin.
 
 The "code does the layout" half of character-sprite generation, mirroring
 pack_creatures.py / pack_tileset.py. The masters under assets/trainers/ are
-3x4 walk sheets (32x32 frames, 96x128 total) per docs/art-style.md §A:
-rows = down/left/right/up, cols = idle/step-1/step-2. This script packs each
-master into a served, lossless-WebP spritesheet plus one manifest the game loads.
+4x4 walk sheets (32x32 frames, 128x128 total) per docs/art-style.md §A:
+rows = down/left/right/up, cols = idle / contact-L / passing / contact-R (a real
+walk cycle). This script packs each master into a served, lossless-WebP
+spritesheet plus one manifest the game loads.
 
 Source (read-only masters, NOT served):
 
@@ -20,10 +21,10 @@ Output (served — vite drops the public/ prefix at runtime):
 Manifest shape (consumed by PreloadScene):
 
   {
-    "frame_width": 32, "frame_height": 32, "cols": 3, "rows": 4,
+    "frame_width": 32, "frame_height": 32, "cols": 4, "rows": 4,
     "trainers": {
-      "player_indi":    { "path": "assets/sprites/trainers/player_indi.webp",    "width": 96, "height": 128 },
-      "professor_fenn": { "path": "assets/sprites/trainers/professor_fenn.webp", "width": 96, "height": 128 }
+      "player_indi":    { "path": "assets/sprites/trainers/player_indi.webp",    "width": 128, "height": 128 },
+      "professor_fenn": { "path": "assets/sprites/trainers/professor_fenn.webp", "width": 128, "height": 128 }
     }
   }
 
@@ -43,7 +44,7 @@ from pathlib import Path
 from PIL import Image, ImageChops
 
 # Human walk-sheet canvas standard (docs/art-style.md §4 / §A).
-FRAME_W, FRAME_H, COLS, ROWS = 32, 32, 3, 4
+FRAME_W, FRAME_H, COLS, ROWS = 32, 32, 4, 4
 SHEET_W, SHEET_H = FRAME_W * COLS, FRAME_H * ROWS
 
 REPO = Path(__file__).resolve().parents[4]
@@ -75,7 +76,7 @@ def pack() -> None:
         img = Image.open(master).convert("RGBA")
         if img.size != (SHEET_W, SHEET_H):
             raise SystemExit(
-                f"FAIL {master.name}: expected {SHEET_W}x{SHEET_H} 3x4 walk sheet, got "
+                f"FAIL {master.name}: expected {SHEET_W}x{SHEET_H} 4x4 walk sheet, got "
                 f"{img.size[0]}x{img.size[1]} (see docs/art-style.md §A)"
             )
         out = OUT_DIR / f"{stem}.webp"

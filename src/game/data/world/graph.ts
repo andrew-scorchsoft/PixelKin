@@ -68,7 +68,7 @@ export interface WorldGraph {
  */
 export const VESPERHOLM_GRAPH: WorldGraph = {
   start_map: 'tinderwick',
-  start_at: { tx: 8, ty: 16 },
+  start_at: { tx: 28, ty: 20 }, // in front of the player's cottage (SE), facing the door
   nodes: [
     // ---- South: Tinderwick -> Dimglass Coast (2 segments) -> Pearlmoor Quay ----------
     { map_id: 'tinderwick', region: 'south' },

@@ -26,22 +26,54 @@ from pathlib import Path
 from PIL import Image
 
 
+def _avg(a, b):
+    return tuple((a[i] + b[i]) // 2 for i in range(len(a)))
+
+
 def clamp_edges(img: Image.Image, ring: int) -> Image.Image:
-    """Replace the outer `ring` rows/cols on every side with the adjacent inner line."""
+    """Make a uniform field tile tile seamlessly.
+
+    Two steps: (1) overwrite the outer `ring` with the adjacent inner line to kill
+    the model's baked rim/vignette; (2) make OPPOSITE edges identical (average the
+    top with the bottom, the left with the right) so a tile's right edge equals the
+    next tile's left edge — a true toroidal seam. Step 2 is what the old 1px clamp
+    was missing (clamping to the interior still left left≠right, so a faint grid
+    remained). Whole-pixel ops only; for near-flat fills the averaging is invisible.
+    """
     px = img.load()
     w, h = img.size
     if w <= 2 * ring or h <= 2 * ring:
         raise SystemExit(f"tile {w}x{h} too small for ring {ring}")
-    # Top & bottom rows ← first/last interior row.
+    # (1) kill the rim: outer ring ← adjacent inner line.
     for r in range(ring):
         for x in range(w):
             px[x, r] = px[x, ring]
             px[x, h - 1 - r] = px[x, h - 1 - ring]
-    # Left & right cols ← first/last interior col (after rows are fixed, so corners agree).
     for c in range(ring):
         for y in range(h):
             px[c, y] = px[ring, y]
             px[w - 1 - c, y] = px[w - 1 - ring, y]
+    # (2) toroidal: opposite outer lines made identical so the seam vanishes when tiled.
+    for x in range(w):
+        m = _avg(px[x, 0], px[x, h - 1]); px[x, 0] = m; px[x, h - 1] = m
+    for y in range(h):
+        m = _avg(px[0, y], px[w - 1, y]); px[0, y] = m; px[w - 1, y] = m
+    return img
+
+
+def match_axis(img: Image.Image, axis: str) -> Image.Image:
+    """Seam-match a directional EDGE tile along the one axis it repeats on, leaving
+    its perpendicular (designed) transition untouched. 'h' = top/bottom edges that
+    repeat left-to-right (make left col == right col); 'v' = side edges that repeat
+    top-to-bottom (make top row == bottom row). Use this on edge_n/edge_s ('h') and
+    edge_w/edge_e ('v') so shorelines, paths and walls have no cross-seams."""
+    px = img.load(); w, h = img.size
+    if axis == "h":
+        for y in range(h):
+            m = _avg(px[0, y], px[w - 1, y]); px[0, y] = m; px[w - 1, y] = m
+    elif axis == "v":
+        for x in range(w):
+            m = _avg(px[x, 0], px[x, h - 1]); px[x, 0] = m; px[x, h - 1] = m
     return img
 
 
@@ -49,13 +81,15 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("tiles", nargs="+", help="tile PNG paths to make seamless (in place)")
     ap.add_argument("--ring", type=int, default=1, help="edge width to clamp (default 1)")
+    ap.add_argument("--axis", choices=["both", "h", "v"], default="both",
+                    help="both=uniform fill (default); h/v=one-axis edge tile")
     args = ap.parse_args()
 
     for t in args.tiles:
         p = Path(t)
         img = Image.open(p).convert("RGBA")
-        clamp_edges(img, args.ring).save(p)
-        print(f"  seamless ring={args.ring} -> {p}")
+        (clamp_edges(img, args.ring) if args.axis == "both" else match_axis(img, args.axis)).save(p)
+        print(f"  seamless axis={args.axis} -> {p}")
 
 
 if __name__ == "__main__":

@@ -105,15 +105,15 @@ point.
 | Asset type          | Frame size | Sheet (cols×rows) | Anchor         | Subject fills |
 |---------------------|-----------:|:-----------------:|----------------|--------------:|
 | World tile          |      16×16 | 1×1               | top-left       | 100%          |
-| Human overworld     |      32×32 | 3×4               | bottom-centre  | ~20–24px wide |
-| Creature overworld  |      32×32 | 1×1 (opt. 3×4/4×1)| bottom-centre  | ~75%          |
+| Human overworld     |      32×32 | 4×4               | bottom-centre  | ~20–24px wide |
+| Creature overworld  |      32×32 | 1×1 (opt. 4×4/4×1)| bottom-centre  | ~75%          |
 | Creature battle front |    64×64 | 1×1               | bottom-centre  | ~80% height   |
 | Creature battle back  |    64×64 | 1×1               | bottom-centre  | ~80% height   |
 | Creature icon       |      32×32 | 1×1               | centre         | ~85%          |
 | Creature portrait   |      96×96 | 1×1               | centre         | ~85%          |
 | Battle effect       |      32×32 | grid (e.g. 4×4)   | centre         | per-frame     |
 
-Total sheet pixel size = frame × cols/rows (e.g. human overworld = 96×128;
+Total sheet pixel size = frame × cols/rows (e.g. human overworld = 128×128;
 4×4 effect at 32px = 128×128).
 
 ### Anchors / pivots
@@ -132,15 +132,30 @@ Every type has a defined pivot so a short creature and a tall creature still
 
 ### A) Human / NPC overworld walking sheets
 
-Walking around towns and routes.
+Walking around towns and routes. **A real walk cycle, not a two-frame shuffle** —
+this is what sells movement.
 
-- Sheet **3 columns × 4 rows**, 32×32 frames (96×128 total).
+- Sheet **4 columns × 4 rows**, 32×32 frames (128×128 total).
 - **Rows = directions:** row 1 down, row 2 left, row 3 right, row 4 up.
-- **Columns = animation:** col 1 idle, col 2 step-1, col 3 step-2.
-- **Feet sit on the same baseline in every frame.** Body centred horizontally.
-  Character ~20–24px wide inside the 32px frame, 2–4px padding all round.
-- Head height and proportions identical across frames — only limbs/feet move.
-- Pivot: **bottom-centre**.
+- **Columns = the walk cycle:** col 1 **idle** (standing, weight even),
+  col 2 **contact-L** (left foot planted forward, right trailing, arms swung),
+  col 3 **passing** (legs together mid-stride, the *whole body lifted 1px* — the
+  bounce), col 4 **contact-R** (mirror of contact-L: right foot forward). The
+  engine loops `contactL → passing → contactR → passing` (`HUMAN_WALK_FRAMES` in
+  `entities/Actor.ts`).
+- **The two contact poses must be genuinely distinct** — visible leg crossover
+  and opposite arm swing. If you can't tell contact-L from contact-R as flat
+  silhouettes, the walk will read as a shuffle. That distinctness is the whole
+  point of the 4-frame standard.
+- **The passing frame sits 1px higher** than the contacts so the head bobs once
+  per step — the classic handheld bounce. Don't bake the bob into the engine;
+  bake it into the art here.
+- **Feet sit on the same baseline in the contact + idle frames** (passing is the
+  1px lift). Body centred horizontally, ~20–24px wide inside the 32px frame.
+- Head height and proportions identical across frames — only limbs/feet (and the
+  1px passing lift) move.
+- Pivot: **bottom-centre**. Generate each frame from a locked reference of the
+  idle so proportions never drift cell-to-cell (the cause of jitter).
 
 ### B) Creature overworld mini-sprites
 
@@ -187,6 +202,20 @@ from creatures** so they're reusable across all of them. Lay out as a grid
 The classic handheld RPG tile. Top-left anchored so they pack edge-to-edge into
 a tileset with no seams. Design tiles to tessellate; keep interior detail low so
 they don't visually buzz when tiled across a field.
+
+**A tile is never an island.** The quality of a retro map comes from the
+*relationships* between tiles — clean borders where two materials meet, variety
+within one material, decoration on top. So we do not author the overworld as a
+bag of isolated fills. The three pillars (full rules in §11–§14):
+
+1. **Terrain families, not lone fills.** A material (grass, water, cliff) ships
+   as an **autotile set** — fill + all edge/corner/inner-corner pieces — so a
+   region of it gets crisp borders against everything else automatically (§11).
+2. **Variety + decoration.** 2–4 fill variants per material to kill the obvious
+   repeat, plus a transparent **decor layer** of small objects scattered on top
+   (§13, §14).
+3. **Animation.** Water, foam, glowmoss and lamps cycle frames so the world
+   breathes (§12).
 
 ### H) Battle backdrops (240×160, full canvas)
 
@@ -345,3 +374,207 @@ The robust workflow, per asset:
 Do **not** try to get the model to emit the final 151-creature sheet directly.
 Generate sources, standardise with code, pack with code. That division of labour
 is what makes a consistent dex achievable.
+
+---
+
+## 11. Terrain families & autotiling (the biggest quality lever)
+
+This is what an expert tile artist did back in the day and what our maps were
+missing. **A terrain is a *set*, not a tile.** Where two materials meet, the
+boundary is a *designed transition* — a lit top-edge, a shadowed corner, an inner
+corner where the region wraps a concavity — never a hard square seam. That single
+discipline is most of the visual gap between our old screens and a polished
+handheld RPG.
+
+### The 47-blob set
+
+Each autotile terrain (the area's ground, its water, its cliff) is authored as a
+**47-tile "blob" set**: every distinct combination of "which of my 8 neighbours
+are the same terrain" that needs its own art — the centre fill, the 4 straight
+edges, the 4 outer corners, the 4 inner corners, T-junctions, narrow strips, and
+the lone-tile dot. 47 is the deduplicated count once you drop combinations that
+look identical. A region painted from a blob set has clean, rounded, lit borders
+against everything around it, automatically.
+
+A simpler **9-slice set** (4 edges, 4 outer corners, 1 fill — no inner corners)
+is allowed for terrains that never wrap a concave shape (e.g. a straight cliff
+band). When in doubt, author the full 47.
+
+### How we make them (paint together → slice with code)
+
+Models are good at *art* and bad at *deterministic grids* (§2). An isolated
+16×16 edge tile generated on its own will never tessellate with its siblings —
+**the model can't see the neighbour it has to line up with.** That is the root
+cause of our old seam problem. So:
+
+1. **Generate the family together.** Use the `terrain-block` type
+   (`generate-sprite-sheet`): the model paints a *coherent patch* of the terrain
+   sitting on its surroundings, with the edges and corners drawn in one picture
+   so they are mutually consistent in palette, light and value.
+2. **Slice with code.** `slice_tileset.py` cuts the painted block on the 16px
+   grid, dedupes near-identical cells, and writes the tiles plus a draft
+   `tileset.manifest.json` tagging each tile's terrain + blob role.
+3. **Author with a terrain layer; expand with tooling.** Maps carry a `terrain`
+   layer (region = which terrain each cell is) instead of hand-placed corner
+   gids. `tools/autotile/expand.mjs` reads the terrain layer + the blob set's
+   tags and stamps the correct 47-blob tile into a normal gid `base` layer.
+   Runtime stays plain gids — the cleverness is offline authoring tooling, like
+   the balance pipeline. See `docs/world/level-design.md`.
+
+### Seamless fills & the two kinds of transition (hard-won)
+
+Three rules separate a polished map from a gridded one — proven on Tinderwick:
+
+1. **Fills must be borderless and banding-free.** Generate a fill as a *single
+   continuous texture* ("one uniform surface filling the frame, no tiles, no grid,
+   no border, no vignette") — **never ask for "a tile"** (the model draws a bordered
+   tile shape → a visible grid of rounded squares). Derive the 16×16 by a
+   *whole-image downscale* (kills the left-right gradient that bands), then run
+   `make_tileable` (toroidal — matches *opposite* edges). Tessellation-test it.
+2. **Edges seam-match along their run.** A straight edge repeats; if its
+   perpendicular ends don't agree you get cross-seams (a shoreline of separate
+   blobs). `make_tileable --axis h|v` fixes it (h = top/bottom edges, v = sides).
+3. **Two transition types, two methods.** A **flat** transition (path-on-grass,
+   tall-grass-on-grass) is *composited* deterministically from two uniform fills
+   (`tools/autotile/composite_overlay.py`) — identical fill everywhere, matching
+   junctions, an inherently seamless dithered edge; AI-painting flat path cells
+   instead gives mismatched dirt and a junction that doesn't line up. An **organic**
+   transition (foam shoreline, dense tree canopy, cliff face) is *AI-painted*
+   per-cell (the drawn detail matters), then its fill is swapped for the seamless
+   one and its edges `--axis`-matched.
+
+**Tall grass is a terrain BODY, not a fill.** A patch gets the full autotile set
+(via the compositor) so it meshes into one field with a soft fringe — not a grid of
+independent boxed clumps. The same is true of *every* special surface: grass, path,
+sand, water, tree-wall, cliff.
+
+### Scene-mockup harvest (for cohesion + variety)
+
+For the richest, most cohesive sets, also generate a `scene-mockup`: one small
+top-down *vignette* of the area (its ground, a path crossing it, a pond with a
+shore, a cliff, some flowers) painted as a single picture. Harvest fill variants
+and decoration tiles from it with `slice_tileset.py --harvest`. Because it was
+one painting, every tile shares the exact palette and light — instant cohesion.
+
+---
+
+## 12. Animated tiles
+
+The world should breathe. Water ripples, foam laps, glowmoss pulses, lamps
+flicker. A tile animates by **cycling a short list of frames**; the frames are
+just more tiles in the same set, referenced by local index in the tileset
+sidecar (`animation: { frames: [...], duration_ms }`, see
+`systems/world/tileset.ts`). The renderer cycles them live
+(`MapRenderer`/`WorldScene`).
+
+- **Keep it 2–4 frames, slow (≈500–900ms/cycle), low-amplitude.** Retro water is
+  a gentle shimmer, not a churn. A few pixels of highlight drifting is plenty.
+- **Generate animation frames as a family**, exactly like terrain edges: paint
+  the 2–4 frames together (the `tile-anim` block) so they're the same tile with
+  the ripple shifted, then slice. Frames generated in isolation jump.
+- The whole family (base + extra frames) packs into one atlas; the base tile's
+  `animation.frames` lists the local indices to cycle.
+
+---
+
+## 13. Palette & contrast (fixing "washed-out")
+
+Flat, low-contrast tiles are the other half of the old "poor feel." The fix is a
+**locked master palette with real value range**, in
+`assets/tilesets/world-palette.json`:
+
+- Every material is a **4-step value ladder** — `outline → dark → mid → light`
+  (`ramps` in the palette file). **Use all four on every tile.** A tile painted
+  in only its mid colour is the washed-out look; the dark (down-right) and light
+  (top-left) steps are what give it form under our fixed top-left light.
+- Each area has a **`working_palette`** (≈12–16 hexes) drawn from those ramps
+  plus 1–2 accents. Pass it to generation as `--palette`, then **snap the output
+  to it** with `quantize_to_palette.py` so nothing drifts off-palette and the
+  whole set shares exactly one set of colours.
+- The `outline` step is shared across materials so adjacent tiles share their
+  dark linework and read as one coherent set, not a collage.
+- **Variety lives in the same palette.** A grass variant is the same 4 greens
+  with a different blade pattern, not new colours.
+
+---
+
+## 14. Depth & layering
+
+Flat maps read as flat. Our map format already has the layers; use them:
+
+- **`base`** (depth 0) — the ground the player walks on (ground/path/water,
+  expanded from the terrain layer).
+- **`deco`** (depth ~5) — transparent objects *on* the ground (flowers, rocks,
+  signs, single bushes, fences). This is where variety and life come from; a bare
+  base layer always looks empty.
+- **`above`** (depth ~20) — drawn *over* the player so they pass behind it: tree
+  canopies, roof eaves, tall-grass front blades, cliff-top overhangs. Pair a
+  `deco`/`base` trunk/wall with an `above` canopy/eave to get instant 3D.
+- **Cliffs read as height** when the lit top-edge tile sits a row above the
+  shadowed face tile — that vertical light contrast *is* the depth cue.
+
+---
+
+## 14b. The two classes of art (visual hierarchy — the "10x")
+
+A map read *as a picture* must have a **value hierarchy**: the eye instantly
+separates ground from path from building. That comes from drawing two classes of
+art with **opposite** intent — conflating them is what makes a map read as a flat
+field of "tiles placed."
+
+**Class 1 — Ground / terrain (recessive, seamless).**
+- Drawn as autotile surfaces (§11). **No outline around a tile**, ever — a dark
+  per-tile rim is the #1 cause of the "everything has a border / grid" look.
+- **Low contrast, slightly desaturated** — ground is the *backdrop*, not the
+  subject. Keep its value range narrow and its mid tone away from the structure
+  palette.
+- **2–4 fill variants per surface**, scattered at author time, or a field tiles
+  into a visible repeating pattern.
+
+**Class 2 — Structures / objects (dominant, whole sprites).**
+Buildings, big trees, lamp-posts, signs, fences, wells. These are **NOT tiled**
+from wall/roof pieces — that's what makes houses read as flat. Each is **one
+multi-tile object**, designed with real shape, then sliced only for placement:
+- **Projection: flat top-down orthographic — the GBC/GBA "JRPG town" look, NEVER
+  isometric.** A building is a **front wall facing the camera straight-on** with
+  the **roof seen from slightly above, flat, directly over the wall** — no
+  receding 3-D side walls, no dimetric/isometric angle. Match the 2001-handheld
+  monster-RPG town register, not a modern iso builder.
+- **Drawn as a single transparent image** with: a clear silhouette, a **roof/eave
+  overhang** that reads as 3-D, **shaded walls** (lit top-left, shadow
+  bottom-right), windows/door with depth, and a **soft contact shadow** on the
+  ground at its base.
+- **Higher contrast and saturation than the ground** so it pops (the hierarchy).
+- **Multi-tile by default** — a cottage is ~4×4–5×5 tiles, a lamp-post ~1×2–1×3.
+  A one-tile lamp is wrong.
+- **Placed as a unit**: body on `deco` (collides), the overhanging top on `above`
+  (player walks behind it). Generate the object whole → slice into tiles → stamp
+  the slice across its footprint (same "draw together, slice with code" rule as
+  terrain — the design lives in the whole image, not in interchangeable tiles).
+- **Transparent** (native alpha) so it sits over any ground.
+
+> Honest ceiling: AI tile-by-tile assembly tops out at exactly the things a flat
+> map gets wrong — hierarchy, building shape, borderless ground. Ground autotiles
+> are well within reach; **hero structures are whole drawn objects** and may need
+> a hand-finishing pass on top of the generated base.
+
+## 15. Map QA — render & audit against the bar
+
+Before a map is "done", **render it to a PNG and look at it** against the
+handheld-era quality bar — no browser needed:
+
+```bash
+./venv/bin/python .claude/skills/generate-sprite-sheet/scripts/render_map.py \
+  public/assets/maps/<map>.json --output /tmp/<map>.png --scale 4
+#   --layer deco      render one layer in isolation
+#   --no-above        composite without the over-player layer
+#   --grid            overlay the 16px tile grid
+#   --list-layers     list the map's layers and exit
+```
+
+The compositor resolves the map's tilesets, crops each gid from the atlas, and
+stacks the layers in depth order (animated tiles show their base frame). Use it
+as a standing gate: if the rendered map doesn't read as cohesive, contrasty and
+*designed* — clean terrain borders, varied fills, decoration, depth — it isn't
+finished; iterate the tiles or the layout and re-render. This is the same
+"validate by eye" loop as sprites (§10.4), applied to whole maps.

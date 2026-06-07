@@ -3,6 +3,29 @@
   "_style": "Authentic late-1990s / early-2000s handheld pixel art, in the visual register of a Game Boy Color game growing toward Game Boy Advance. STRICT RULES: hard 1-pixel edges, absolutely NO anti-aliasing, no blur, no smooth gradients (a small deliberate dithered pixel gradient is fine). Limited palette of roughly 8-16 colours. A dark outline (deep ink, NOT pure black) around the outer silhouette, lighter internal linework. Consistent light source from the TOP-LEFT. Strong, instantly readable silhouette. Cute, stylised, slightly oversized head and eyes for readability; not realistic, not gritty. Chunky, deliberate square pixels as if drawn pixel-by-pixel on a tiny {fw}x{fh} canvas. No semi-transparent shading. Subject only: no background scenery, no ground, no cast shadow, no frame or border.",
   "_originality": "This is original content for PixelKin, a creature-collecting RPG inspired by the genre but a copy of nothing. It must NOT resemble any existing commercial game's creature, character, silhouette, palette signature, logo, font, or UI. Describe by genre and mood only. Make it distinctly original.",
   "_area_style": "COHESION: this tile belongs to ONE map area called \"{area}\" and must read as part of a single unified tile set. Use a shared limited palette of about 10-14 flat colours: {palette}. Keep the SAME pixel density, the SAME top-left light direction, and a matching value range as the rest of the set, so a screen built from these tiles looks like one place and does not visually buzz. Tessellate seamlessly when repeated edge-to-edge; no border, frame, or outline around the tile edge.",
+  "_block_style": "Authentic late-1990s / early-2000s handheld top-down pixel-art TILE ART (Game Boy Color growing toward Game Boy Advance), painted as ONE coherent picture so neighbouring tiles line up and share colours exactly. STRICT RULES: hard 1-pixel edges, absolutely NO anti-aliasing, no blur, no smooth gradients (deliberate dithered pixel gradients are fine). High-CONTRAST limited palette: every material shows a dark shadow tone, a mid body tone AND a bright top-left highlight — never a single flat colour (flatness is the failure to avoid). Consistent light from the TOP-LEFT (lit top/left edges, shadow on bottom/right). Chunky deliberate square pixels on a {tile}-pixel tile grid. No text, no captions, no labels, no drawn grid lines, no frame or border around the whole image. {originality}",
+  "_blocks": {
+    "terrain-block": {
+      "label": "Autotile terrain block (paint family -> slice)",
+      "use_for": "A coherent patch of one terrain on its surroundings, containing every edge/corner/inner-corner situation, to slice into an autotile set.",
+      "prompt": "A top-down TERRAIN PATCH for a retro monster-collecting RPG overworld, on a {cols}x{rows} grid of {tile}px tiles ({canvas_w}x{canvas_h}). Paint an irregular, rounded ISLAND of {subject} sitting on the area's surrounding ground, so the single picture naturally contains, all painted consistently together: large solid CENTRE fill of the terrain; clean straight EDGES where it meets the surroundings on all four sides; rounded OUTER CORNERS; and concave INNER CORNERS where the shape bends back on itself. The terrain reads as gently raised: lit top-left rim, soft shadow on the bottom-right rim. Keep the surrounding ground simple and flat-ish so the terrain's border pixels are the star. Edges and corners MUST align tile-to-tile because they are one image."
+    },
+    "scene-mockup": {
+      "label": "Area scene mockup (paint vignette -> harvest)",
+      "use_for": "One small top-down vignette of an area to harvest cohesive fill variants + decoration from.",
+      "prompt": "A small top-down SCENE VIGNETTE of one place in a retro monster-collecting RPG, on a {cols}x{rows} grid of {tile}px tiles ({canvas_w}x{canvas_h}), as if a screenshot of the game world. Scene: {subject}. Include a few different patches of the area's ground, a path or track crossing it, a little water with its shoreline, a rock or low ledge, and scattered small plants/flowers/pebbles — all in ONE unified palette and light so every tile harvested from it matches. Natural, lived-in arrangement; clear readable shapes at this tiny scale; no characters, no UI, no text."
+    },
+    "tile-anim": {
+      "label": "Animated tile frames (paint together -> slice frames)",
+      "use_for": "The 2-4 frames of one animated tile (water ripple, foam, glowmoss, lamp), painted in a row so they're the same tile with the motion shifted.",
+      "prompt": "An ANIMATION STRIP of one seamless top-down {subject} tile for a retro monster-collecting RPG, laid out as {cols} frames left-to-right in a {cols}x1 row of {tile}px tiles ({canvas_w}x{canvas_h}). Every frame is the SAME tile — identical palette, layout and edges so it still tessellates — with only the small highlights/ripple shifted a few pixels between frames to read as a gentle loop. Low amplitude, calm motion. No text, no frame numbers, no borders."
+    },
+    "tile-sheet": {
+      "label": "Multi-material tile sheet (one call -> slice many tiles)",
+      "use_for": "Several DISTINCT materials in one image to slice into separate tiles (cheapest per tile; watch for grid drift).",
+      "prompt": "A TILE SHEET for a retro top-down monster-collecting RPG overworld: a strict, perfectly regular grid of EXACTLY {cols} columns by {rows} rows of separate {tile}px world tiles ({canvas_w}x{canvas_h} total). CRITICAL GRID DISCIPLINE: every cell is exactly {tile}x{tile}, the cells abut edge-to-edge with NO gutter, NO margin, NO drawn grid lines, NO labels or numbers, and nothing spans across a cell boundary — each cell is one independent, seamlessly-tileable tile. Read left-to-right then top-to-bottom, the cells are: {subject}. Keep ONE consistent limited palette and a consistent top-left light across the whole sheet so the tiles read as a single matched set. Each ground/water/floor tile must tessellate when its own cell is repeated."
+    }
+  },
   "types": {
     "creature-front": {
       "label": "Creature battle front sprite",
@@ -66,15 +89,15 @@
     },
     "human-overworld": {
       "label": "Human / NPC overworld walk sheet",
-      "use_for": "A walking character sheet for towns and routes: 3 columns x 4 rows, 32px frames.",
+      "use_for": "A walking character sheet for towns and routes: 4 columns x 4 rows, 32px frames (a real walk cycle, not a 2-frame shuffle).",
       "file": "overworld.png",
       "frame_width": 32,
       "frame_height": 32,
-      "cols": 3,
+      "cols": 4,
       "rows": 4,
       "anchor": "bottom-center",
       "fill": 0.7,
-      "prompt": "An original human character walking sprite SHEET for a retro monster-collecting RPG, laid out as a strict grid of {cols} columns by {rows} rows of {fw}x{fh} frames ({canvas_w}x{canvas_h} total). Rows are facing directions top to bottom: row 1 facing DOWN, row 2 facing LEFT, row 3 facing RIGHT, row 4 facing UP. Columns are the walk cycle left to right: column 1 idle stance, column 2 step (left foot forward), column 3 step (right foot forward). Character: {subject}. Keep the head height, proportions and palette identical in every frame — only the legs and arms move. The character must stand on the SAME foot baseline in every cell, centred horizontally, about 20-24px wide inside each 32px frame. Even spacing, each pose isolated in its own cell."
+      "prompt": "An original human character walking sprite SHEET for a retro monster-collecting RPG, laid out as a strict grid of {cols} columns by {rows} rows of {fw}x{fh} frames ({canvas_w}x{canvas_h} total). Rows are facing directions top to bottom: row 1 facing DOWN, row 2 facing LEFT, row 3 facing RIGHT, row 4 facing UP. Columns are a WALK CYCLE left to right: column 1 IDLE (standing, weight even, both feet planted); column 2 CONTACT-LEFT (left foot planted forward, right leg trailing back, arms swung in opposition); column 3 PASSING (both legs together under the body mid-stride, and the WHOLE body raised by 1 pixel so the head bobs); column 4 CONTACT-RIGHT (the mirror of column 2 — right foot forward, left trailing). Character: {subject}. The two contact poses (cols 2 and 4) must be CLEARLY different from each other — visible leg crossover and opposite arm swing — or the walk reads as a shuffle. Keep head height, proportions and palette identical in every frame; only legs, arms and the 1px passing lift move. Feet sit on the SAME baseline in the idle and both contact frames; the passing frame is 1px higher. Centred horizontally, about 20-24px wide inside each 32px frame. Even spacing, one pose isolated per cell."
     },
     "effect": {
       "label": "Battle effect frame sheet",

@@ -17,7 +17,7 @@ import { fadeIn, fadeOut } from '@game/ui/Transitions';
 import { KinInstance } from '@game/systems/party/KinInstance';
 import { InputController, InputAction } from '@game/systems/input/InputController';
 import { loadMap, RuntimeMap } from '@game/systems/world/MapLoader';
-import { renderMap } from '@game/systems/world/MapRenderer';
+import { renderMap, tickAnimatedTiles } from '@game/systems/world/MapRenderer';
 import type { MapRenderResult } from '@game/systems/world/MapRenderer';
 import { CollisionGrid } from '@game/systems/world/CollisionGrid';
 import { EncounterSystem } from '@game/systems/world/EncounterSystem';
@@ -186,6 +186,7 @@ export class WorldScene extends Phaser.Scene {
     this.player?.destroy();
     for (const npc of this.npcs) npc.destroy();
     this.npcs = [];
+    for (const o of this.render?.objects ?? []) o.destroy();
     this.render?.tilemap.destroy();
     this.render = undefined;
   }
@@ -449,8 +450,11 @@ export class WorldScene extends Phaser.Scene {
 
   // --- Loop ----------------------------------------------------------------
 
-  update(_time: number, delta: number): void {
+  update(time: number, delta: number): void {
     if (!this.ready) return;
+    // Cycle water/lamp/etc. frames — keeps the world breathing even while a
+    // dialogue or menu is open (movement is what a modal pauses, not the scenery).
+    if (this.render) tickAnimatedTiles(this.render.animatedTiles, time);
     this.controller.update();
 
     if (!this.modal) {

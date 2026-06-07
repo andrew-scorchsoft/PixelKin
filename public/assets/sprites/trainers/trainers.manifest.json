@@ -1,17 +1,17 @@
 {
   "frame_width": 32,
   "frame_height": 32,
-  "cols": 3,
+  "cols": 4,
   "rows": 4,
   "trainers": {
     "player_indi": {
       "path": "assets/sprites/trainers/player_indi.webp",
-      "width": 96,
+      "width": 128,
       "height": 128
     },
     "professor_fenn": {
       "path": "assets/sprites/trainers/professor_fenn.webp",
-      "width": 96,
+      "width": 128,
       "height": 128
     }
   }

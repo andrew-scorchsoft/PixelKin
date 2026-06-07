@@ -42,6 +42,22 @@ export class CollisionGrid {
       }
     }
 
+    // Whole-structure objects (buildings, big trees): their footprint collides
+    // except the overhanging top rows the player walks under (art-style §14b).
+    for (const obj of this.map.def.objects ?? []) {
+      if (obj.solid === false) continue;
+      // Buildings collide on their whole footprint; only walk-under objects (trees,
+      // lamps) free their overhang rows so the player can pass beneath the canopy.
+      const startRow = obj.walk_under ? (obj.overhang ?? 0) : 0;
+      for (let dy = startRow; dy < obj.h; dy++) {
+        for (let dx = 0; dx < obj.w; dx++) {
+          const tx = obj.at.tx + dx;
+          const ty = obj.at.ty + dy;
+          if (this.map.inBounds(tx, ty)) this.solid[ty * this.w + tx] = true;
+        }
+      }
+    }
+
     // Ability gates override: listed tiles become conditional on their gift.
     for (const gate of this.map.def.gates) {
       if (gate.effect === 'make_passable' || gate.effect === 'remove_tile') {

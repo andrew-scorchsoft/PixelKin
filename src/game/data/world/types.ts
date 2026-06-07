@@ -149,6 +149,34 @@ export interface AbilityGate {
 
 export type MapKind = 'town' | 'route' | 'interior' | 'water' | 'cave' | 'hub';
 
+/**
+ * A whole multi-tile STRUCTURE placed as a single transparent sprite (a building,
+ * big tree, lamp-post, sign) — not tiled (docs/art-style.md §14b). Drawn over the
+ * ground; the top `overhang` rows render ABOVE the player (walk-behind eaves /
+ * canopies), the rest below. Footprint cells collide unless `solid` is false.
+ */
+export interface MapObject {
+  id: string;
+  /** Object sprite texture key (packed by pack_objects.py, loaded in PreloadScene). */
+  sprite: string;
+  /** Top-left tile of the object's footprint. */
+  at: TileCoord;
+  /** Footprint size in tiles. */
+  w: number;
+  h: number;
+  /** Top N rows that render over the player (overhanging roof/eave/canopy). Default 0. */
+  overhang?: number;
+  /** Whether the footprint blocks movement. Default true. */
+  solid?: boolean;
+  /**
+   * If true, the `overhang` rows are PASSABLE (the player walks under them — tree
+   * canopies, a lamp's arm). If false (default), the whole footprint is solid even
+   * though the overhang rows still render over the player — buildings, where the
+   * roof must draw above a player standing north of it but you can't walk into it.
+   */
+  walk_under?: boolean;
+}
+
 export interface MapDefinition {
   id: string; // 'tinderwick', matches the JSON filename stem
   display_name: string;
@@ -161,6 +189,8 @@ export interface MapDefinition {
   kind: MapKind;
   tilesets: TilesetRef[];
   layers: MapLayer[];
+  /** Whole multi-tile structures placed as sprites (buildings, big trees, lamps). */
+  objects?: MapObject[];
   warps: Warp[];
   triggers: EventTrigger[];
   encounters: EncounterZone[];

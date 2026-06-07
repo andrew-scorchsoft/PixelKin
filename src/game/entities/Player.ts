@@ -43,13 +43,22 @@ export class Player extends Actor {
   ): void {
     if (this.isMoving) return;
     const dir = input.heldDirection();
-    if (dir === null) return;
+    if (dir === null) {
+      this.stopWalking(); // no input: settle the walk cycle onto the idle pose
+      return;
+    }
     const facing = ACTION_TO_FACING[dir];
-    if (!facing) return;
+    if (!facing) {
+      this.stopWalking();
+      return;
+    }
     // Turning to face a new way isn't a bump; walking into a wall you already
     // face is — that's when we give feedback.
     const wasFacing = this.facing;
     const moved = this.step(facing, canEnter, onArrive);
-    if (!moved && wasFacing === facing) onBump?.();
+    if (!moved) {
+      this.stopWalking(); // turned or bumped, but didn't step: don't keep cycling
+      if (wasFacing === facing) onBump?.();
+    }
   }
 }
