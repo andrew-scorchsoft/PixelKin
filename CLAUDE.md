@@ -343,6 +343,13 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   / `Actor.showEmote()` drive layers 3/2; `pack_trainers.py` packs all three + the manifest.
   **Build an action sheet from single `human-pose` gens + `assemble_action_sheet.py`** — never
   one-shot the 8-cell grid (the model subdivides cells and repeats stances).
+- **Walk-sheet rows must be true DIFFERENT viewpoints, not one front pose ×4.** The engine maps
+  rows down/left/right/up (`HUMAN_WALK_FRAMES`); if the art draws a forward-facing face in the
+  left/right/up rows the character looks like it's "facing you" while walking sideways/up (this
+  bit `player_indi`). The `human-overworld` template in `sprite-specs.json` now spells out each
+  viewpoint (down=full face, left=left profile, right=mirror, **up=back of head in EVERY column
+  incl. walk frames, no face**). After regenerating a walk sheet, eyeball the 4×4 grid and
+  confirm the up row shows the back of the head in all 4 cells before repacking.
 - **Field tiles need a seamless pass.** Image gen bakes a 1–2px lighter rim onto tiles that
   tiles into a visible grid; after generating a uniform ground/floor/path tile, run
   `make_tileable.py <tile.png>` (clamps the outer ring to its neighbour) and eyeball a 3×3
@@ -396,6 +403,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `ui/PartyMenu.ts` (pause menu → KIN): list → SUMMARY (stat/move card) or MOVE (reorder;
   slot 0 is the battle lead). It returns the reordered `KinInstanceData[]`; the caller
   assigns it back and persists. Per-type swatch colours are `theme.typeColor`.
+- **Don't pack wrapped long text into a fixed per-row slot in a list.** A word-wrapped
+  blurb/description is multi-line; drawing it inside each row's `ROW_H` (it can't know how
+  tall the wrap is) overflows into the next rows and overlaps (this is how StarterSelect
+  rendered as a jumble). Use **list + detail pane**: compact one-line rows (icon + name)
+  plus ONE description Text below that shows only the *selected* item's blurb and refreshes
+  on cursor move (`StarterSelect.refresh()`). Size the detail pane for the longest entry.
 - **Audio can't autoplay before a user gesture.** Browsers start the Web Audio context
   suspended, so any `music.play()` before the player interacts is silent. The boot flow gates
   on `SplashScene` (Preload → Splash → Attract) — the animated "Andrew Ward Studios" sting

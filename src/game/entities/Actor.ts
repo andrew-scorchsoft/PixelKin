@@ -161,8 +161,15 @@ export class Actor {
 
   setFacing(facing: Facing): void {
     this.facing = facing;
-    // While moving the walk animation owns the frame; only the idle pose here.
-    if (!this.moving) this.sprite.setFrame(this.frames.idle[facing]);
+    // The walk animation owns the displayed frame whenever it's running — both
+    // while a tile tween is in flight (`moving`) AND in the brief gap between
+    // consecutive held-direction steps, where `moving` has flipped false but the
+    // looping cycle is still playing. Stamping the idle frame in that gap (every
+    // `step()` begins with setFacing) flashed a "standing" frame at each tile
+    // boundary — the twitch. Only settle to idle when nothing is animating.
+    if (!this.moving && !this.sprite.anims.isPlaying) {
+      this.sprite.setFrame(this.frames.idle[facing]);
+    }
   }
 
   /** The tile directly in front of the actor. */
