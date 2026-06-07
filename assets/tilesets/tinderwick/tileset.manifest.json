@@ -19,204 +19,267 @@
       "role": "ground"
     },
     {
-      "file": "t04_tallgrass_a.png",
-      "role": "ground",
-      "terrain": "tallgrass",
-      "autotile": "fill",
-      "encounter_terrain": "tall_grass"
-    },
-    {
-      "file": "t05_tallgrass_b.png",
-      "role": "ground",
-      "terrain": "tallgrass",
-      "autotile": "fill",
-      "encounter_terrain": "tall_grass"
-    },
-    {
-      "file": "t06_path_corner_nw.png",
+      "file": "t04_path_corner_nw.png",
       "role": "path",
       "terrain": "path",
       "autotile": "corner_nw"
     },
     {
-      "file": "t07_path_edge_n.png",
+      "file": "t05_path_edge_n.png",
       "role": "path",
       "terrain": "path",
       "autotile": "edge_n"
     },
     {
-      "file": "t08_path_corner_ne.png",
+      "file": "t06_path_corner_ne.png",
       "role": "path",
       "terrain": "path",
       "autotile": "corner_ne"
     },
     {
-      "file": "t09_path_edge_w.png",
+      "file": "t07_path_edge_w.png",
       "role": "path",
       "terrain": "path",
       "autotile": "edge_w"
     },
     {
-      "file": "t10_path_fill.png",
+      "file": "t08_path_fill.png",
       "role": "path",
       "terrain": "path",
       "autotile": "fill"
     },
     {
-      "file": "t11_path_edge_e.png",
+      "file": "t09_path_edge_e.png",
       "role": "path",
       "terrain": "path",
       "autotile": "edge_e"
     },
     {
-      "file": "t12_path_corner_sw.png",
+      "file": "t10_path_corner_sw.png",
       "role": "path",
       "terrain": "path",
       "autotile": "corner_sw"
     },
     {
-      "file": "t13_path_edge_s.png",
+      "file": "t11_path_edge_s.png",
       "role": "path",
       "terrain": "path",
       "autotile": "edge_s"
     },
     {
-      "file": "t14_path_corner_se.png",
+      "file": "t12_path_corner_se.png",
       "role": "path",
       "terrain": "path",
       "autotile": "corner_se"
     },
     {
-      "file": "t15_path_strip_h.png",
+      "file": "t13_path_strip_h.png",
       "role": "path",
       "terrain": "path",
       "autotile": "strip_h"
     },
     {
-      "file": "t16_path_strip_v.png",
+      "file": "t14_path_strip_v.png",
       "role": "path",
       "terrain": "path",
       "autotile": "strip_v"
     },
     {
-      "file": "t17_sand_corner_nw.png",
+      "file": "t15_tallgrass_corner_nw.png",
+      "role": "ground",
+      "terrain": "tallgrass",
+      "autotile": "corner_nw",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "t16_tallgrass_edge_n.png",
+      "role": "ground",
+      "terrain": "tallgrass",
+      "autotile": "edge_n",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "t17_tallgrass_corner_ne.png",
+      "role": "ground",
+      "terrain": "tallgrass",
+      "autotile": "corner_ne",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "t18_tallgrass_edge_w.png",
+      "role": "ground",
+      "terrain": "tallgrass",
+      "autotile": "edge_w",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "t19_tallgrass_fill.png",
+      "role": "ground",
+      "terrain": "tallgrass",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "t20_tallgrass_edge_e.png",
+      "role": "ground",
+      "terrain": "tallgrass",
+      "autotile": "edge_e",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "t21_tallgrass_corner_sw.png",
+      "role": "ground",
+      "terrain": "tallgrass",
+      "autotile": "corner_sw",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "t22_tallgrass_edge_s.png",
+      "role": "ground",
+      "terrain": "tallgrass",
+      "autotile": "edge_s",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "t23_tallgrass_corner_se.png",
+      "role": "ground",
+      "terrain": "tallgrass",
+      "autotile": "corner_se",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "t24_tallgrass_strip_h.png",
+      "role": "ground",
+      "terrain": "tallgrass",
+      "autotile": "strip_h",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "t25_tallgrass_strip_v.png",
+      "role": "ground",
+      "terrain": "tallgrass",
+      "autotile": "strip_v",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "t26_sand_corner_nw.png",
       "role": "sand",
       "terrain": "sand",
       "autotile": "corner_nw"
     },
     {
-      "file": "t18_sand_edge_n.png",
+      "file": "t27_sand_edge_n.png",
       "role": "sand",
       "terrain": "sand",
       "autotile": "edge_n"
     },
     {
-      "file": "t19_sand_corner_ne.png",
+      "file": "t28_sand_corner_ne.png",
       "role": "sand",
       "terrain": "sand",
       "autotile": "corner_ne"
     },
     {
-      "file": "t20_sand_edge_w.png",
+      "file": "t29_sand_edge_w.png",
       "role": "sand",
       "terrain": "sand",
       "autotile": "edge_w"
     },
     {
-      "file": "t21_sand_fill.png",
+      "file": "t30_sand_fill.png",
       "role": "sand",
       "terrain": "sand",
       "autotile": "fill"
     },
     {
-      "file": "t22_sand_edge_e.png",
+      "file": "t31_sand_edge_e.png",
       "role": "sand",
       "terrain": "sand",
       "autotile": "edge_e"
     },
     {
-      "file": "t23_sand_corner_sw.png",
+      "file": "t32_sand_corner_sw.png",
       "role": "sand",
       "terrain": "sand",
       "autotile": "corner_sw"
     },
     {
-      "file": "t24_sand_edge_s.png",
+      "file": "t33_sand_edge_s.png",
       "role": "sand",
       "terrain": "sand",
       "autotile": "edge_s"
     },
     {
-      "file": "t25_sand_corner_se.png",
+      "file": "t34_sand_corner_se.png",
       "role": "sand",
       "terrain": "sand",
       "autotile": "corner_se"
     },
     {
-      "file": "t26_tree_corner_nw.png",
+      "file": "t35_tree_corner_nw.png",
       "role": "tree",
       "terrain": "tree",
       "autotile": "corner_nw",
       "collides": true
     },
     {
-      "file": "t27_tree_edge_n.png",
+      "file": "t36_tree_edge_n.png",
       "role": "tree",
       "terrain": "tree",
       "autotile": "edge_n",
       "collides": true
     },
     {
-      "file": "t28_tree_corner_ne.png",
+      "file": "t37_tree_corner_ne.png",
       "role": "tree",
       "terrain": "tree",
       "autotile": "corner_ne",
       "collides": true
     },
     {
-      "file": "t29_tree_edge_w.png",
+      "file": "t38_tree_edge_w.png",
       "role": "tree",
       "terrain": "tree",
       "autotile": "edge_w",
       "collides": true
     },
     {
-      "file": "t30_tree_fill.png",
+      "file": "t39_tree_fill.png",
       "role": "tree",
       "terrain": "tree",
       "autotile": "fill",
       "collides": true
     },
     {
-      "file": "t31_tree_edge_e.png",
+      "file": "t40_tree_edge_e.png",
       "role": "tree",
       "terrain": "tree",
       "autotile": "edge_e",
       "collides": true
     },
     {
-      "file": "t32_tree_corner_sw.png",
+      "file": "t41_tree_corner_sw.png",
       "role": "tree",
       "terrain": "tree",
       "autotile": "corner_sw",
       "collides": true
     },
     {
-      "file": "t33_tree_edge_s.png",
+      "file": "t42_tree_edge_s.png",
       "role": "tree",
       "terrain": "tree",
       "autotile": "edge_s",
       "collides": true
     },
     {
-      "file": "t34_tree_corner_se.png",
+      "file": "t43_tree_corner_se.png",
       "role": "tree",
       "terrain": "tree",
       "autotile": "corner_se",
       "collides": true
     },
     {
-      "file": "t35_water_corner_nw.png",
+      "file": "t44_water_corner_nw.png",
       "role": "water",
       "terrain": "water",
       "autotile": "corner_nw",
@@ -225,7 +288,7 @@
       "requires_ability": "tidecall"
     },
     {
-      "file": "t36_water_edge_n.png",
+      "file": "t45_water_edge_n.png",
       "role": "water",
       "terrain": "water",
       "autotile": "edge_n",
@@ -234,7 +297,7 @@
       "requires_ability": "tidecall"
     },
     {
-      "file": "t37_water_corner_ne.png",
+      "file": "t46_water_corner_ne.png",
       "role": "water",
       "terrain": "water",
       "autotile": "corner_ne",
@@ -243,7 +306,7 @@
       "requires_ability": "tidecall"
     },
     {
-      "file": "t38_water_edge_w.png",
+      "file": "t47_water_edge_w.png",
       "role": "water",
       "terrain": "water",
       "autotile": "edge_w",
@@ -252,7 +315,7 @@
       "requires_ability": "tidecall"
     },
     {
-      "file": "t39_water_fill.png",
+      "file": "t48_water_fill.png",
       "role": "water",
       "terrain": "water",
       "autotile": "fill",
@@ -261,15 +324,15 @@
       "requires_ability": "tidecall",
       "animation": {
         "frames": [
-          39,
-          44,
-          45
+          48,
+          53,
+          54
         ],
         "duration_ms": 800
       }
     },
     {
-      "file": "t40_water_edge_e.png",
+      "file": "t49_water_edge_e.png",
       "role": "water",
       "terrain": "water",
       "autotile": "edge_e",
@@ -278,7 +341,7 @@
       "requires_ability": "tidecall"
     },
     {
-      "file": "t41_water_corner_sw.png",
+      "file": "t50_water_corner_sw.png",
       "role": "water",
       "terrain": "water",
       "autotile": "corner_sw",
@@ -287,7 +350,7 @@
       "requires_ability": "tidecall"
     },
     {
-      "file": "t42_water_edge_s.png",
+      "file": "t51_water_edge_s.png",
       "role": "water",
       "terrain": "water",
       "autotile": "edge_s",
@@ -296,7 +359,7 @@
       "requires_ability": "tidecall"
     },
     {
-      "file": "t43_water_corner_se.png",
+      "file": "t52_water_corner_se.png",
       "role": "water",
       "terrain": "water",
       "autotile": "corner_se",
@@ -305,21 +368,21 @@
       "requires_ability": "tidecall"
     },
     {
-      "file": "t44_water_a2.png",
+      "file": "t53_water_a2.png",
       "role": "water",
       "collides": true
     },
     {
-      "file": "t45_water_a3.png",
+      "file": "t54_water_a3.png",
       "role": "water",
       "collides": true
     },
     {
-      "file": "t46_flowers.png",
+      "file": "t55_flowers.png",
       "role": "decor"
     },
     {
-      "file": "t47_sign.png",
+      "file": "t56_sign.png",
       "role": "sign",
       "collides": true
     }

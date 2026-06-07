@@ -28,8 +28,10 @@ MT = REPO / ".claude/skills/generate-sprite-sheet/scripts/make_tileable.py"
 EDGES = ["corner_nw","edge_n","corner_ne","edge_w","fill","edge_e","corner_sw","edge_s","corner_se"]
 
 def nine(terrain, srcdir, **flags):
-    role = flags.pop("role", terrain); out = []
-    for r in EDGES:
+    """9-slice (+ optional strip_h/strip_v if strips=True) for an autotile terrain."""
+    role = flags.pop("role", terrain); strips = flags.pop("strips", False); out = []
+    roles = list(EDGES) + (["strip_h", "strip_v"] if strips else [])
+    for r in roles:
         f = next(Path(srcdir).glob(f"*_{r}.png"))
         out.append(dict(name=f"{terrain}_{r}", src=str(f), role=role, terrain=terrain,
                         autotile=r, tileable=(r == "fill"), **flags))
@@ -41,14 +43,11 @@ T = [
     dict(name="grass1", src=str(GV/"grass_01.png"), role="ground", tileable=True),
     dict(name="grass2", src=str(GV/"grass_02.png"), role="ground", tileable=True),
     dict(name="grass3", src=str(GV/"grass_03.png"), role="ground", tileable=True),
-    dict(name="tallgrass_a", src="/tmp/tallgrass_t/00_tile.png", role="ground",
-         terrain="tallgrass", autotile="fill", encounter="tall_grass", tileable=True),
-    dict(name="tallgrass_b", src="/tmp/tallgrass_t/01_tile.png", role="ground",
-         terrain="tallgrass", autotile="fill", encounter="tall_grass", tileable=True),
 ]
-T += nine("path", "/tmp/path9_t", role="path")
-T.append(dict(name="path_strip_h", src="/tmp/pathstrip_t/00_tile.png", role="path", terrain="path", autotile="strip_h"))
-T.append(dict(name="path_strip_v", src="/tmp/pathstrip_t/01_tile.png", role="path", terrain="path", autotile="strip_v"))
+# path + tall-grass are FLAT transitions -> composited autotile bodies (uniform
+# fill + dithered grass edge), not AI-per-cell. tall grass meshes into one field.
+T += nine("path", "/tmp/path_auto", role="path", strips=True)
+T += nine("tallgrass", "/tmp/tg_auto", role="ground", encounter="tall_grass", strips=True)
 T += nine("sand", "/tmp/sand9_t", role="sand")
 T += nine("tree", "/tmp/tree9_t", role="tree", collides=True)
 T += nine("water", "/tmp/water9_tiles", role="water", collides=True, encounter="water", ability="tidecall")
