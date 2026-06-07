@@ -360,4 +360,8 @@ export function ensurePlaceholderCharacter(scene: Phaser.Scene, key: string, col
     ctx.fillRect(mx - 1, my - 1, 2, 2);
   });
   canvas.refresh();
+  // Register one 16x16 frame per facing (0=down,1=left,2=right,3=up) so actors can
+  // setFrame(idle[facing]) — a CanvasTexture otherwise has only the whole-image
+  // `__BASE` frame, and requesting frame "1"/"2"/"3" would warn and show nothing.
+  facings.forEach((_facing, i) => canvas.add(i, 0, i * size, 0, size, size));
 }

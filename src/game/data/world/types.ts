@@ -142,7 +142,10 @@ export type AbilityGateEffect = 'make_passable' | 'remove_tile' | 'set_flag';
 export interface AbilityGate {
   id: string;
   ability: AbilityId;
-  tiles: TileCoord[];
+  /** The gated region in tile units (preferred — matches warps/zones). */
+  rect?: { tx: number; ty: number; w: number; h: number };
+  /** Explicit tile list — legacy alternative to `rect`. One of the two is required. */
+  tiles?: TileCoord[];
   effect: AbilityGateEffect;
   sets_flag?: WorldFlag;
 }

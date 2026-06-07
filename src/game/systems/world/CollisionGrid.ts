@@ -6,8 +6,25 @@
  * as "requires ability". `AbilityGate`s of effect make_passable/remove_tile turn
  * listed tiles into the same conditional form. NPCs and the player both query this.
  */
-import type { AbilityId } from '@game/data/world/types';
+import type { AbilityGate, AbilityId, TileCoord } from '@game/data/world/types';
 import type { RuntimeMap } from './MapLoader';
+
+/**
+ * The tiles a gate covers, from whichever form it uses: a `rect` region
+ * (preferred — matches warps/encounter zones) expanded to its tiles, or an
+ * explicit `tiles` list (legacy). Empty if neither is present.
+ */
+function gateTiles(gate: AbilityGate): TileCoord[] {
+  if (gate.rect) {
+    const { tx, ty, w, h } = gate.rect;
+    const out: TileCoord[] = [];
+    for (let dy = 0; dy < h; dy++) {
+      for (let dx = 0; dx < w; dx++) out.push({ tx: tx + dx, ty: ty + dy });
+    }
+    return out;
+  }
+  return gate.tiles ?? [];
+}
 
 export class CollisionGrid {
   private readonly w: number;
@@ -61,7 +78,7 @@ export class CollisionGrid {
     // Ability gates override: listed tiles become conditional on their gift.
     for (const gate of this.map.def.gates) {
       if (gate.effect === 'make_passable' || gate.effect === 'remove_tile') {
-        for (const t of gate.tiles) {
+        for (const t of gateTiles(gate)) {
           if (!this.map.inBounds(t.tx, t.ty)) continue;
           const i = t.ty * this.w + t.tx;
           this.solid[i] = false;
