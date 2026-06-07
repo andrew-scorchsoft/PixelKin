@@ -19,6 +19,11 @@
       "label": "Animated tile frames (paint together -> slice frames)",
       "use_for": "The 2-4 frames of one animated tile (water ripple, foam, glowmoss, lamp), painted in a row so they're the same tile with the motion shifted.",
       "prompt": "An ANIMATION STRIP of one seamless top-down {subject} tile for a retro monster-collecting RPG, laid out as {cols} frames left-to-right in a {cols}x1 row of {tile}px tiles ({canvas_w}x{canvas_h}). Every frame is the SAME tile — identical palette, layout and edges so it still tessellates — with only the small highlights/ripple shifted a few pixels between frames to read as a gentle loop. Low amplitude, calm motion. No text, no frame numbers, no borders."
+    },
+    "tile-sheet": {
+      "label": "Multi-material tile sheet (one call -> slice many tiles)",
+      "use_for": "Several DISTINCT materials in one image to slice into separate tiles (cheapest per tile; watch for grid drift).",
+      "prompt": "A TILE SHEET for a retro top-down monster-collecting RPG overworld: a strict, perfectly regular grid of EXACTLY {cols} columns by {rows} rows of separate {tile}px world tiles ({canvas_w}x{canvas_h} total). CRITICAL GRID DISCIPLINE: every cell is exactly {tile}x{tile}, the cells abut edge-to-edge with NO gutter, NO margin, NO drawn grid lines, NO labels or numbers, and nothing spans across a cell boundary — each cell is one independent, seamlessly-tileable tile. Read left-to-right then top-to-bottom, the cells are: {subject}. Keep ONE consistent limited palette and a consistent top-left light across the whole sheet so the tiles read as a single matched set. Each ground/water/floor tile must tessellate when its own cell is repeated."
     }
   },
   "types": {

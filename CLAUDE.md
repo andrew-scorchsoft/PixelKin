@@ -316,6 +316,13 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `make_tileable.py <tile.png>` (clamps the outer ring to its neighbour) and eyeball a 3×3
   montage. Don't run it on edge/structural tiles (water_edge, cliff_edge) — it eats their
   designed borders.
+- **Tiles: paint together, slice with code; audit with `render_map.py`.** Generate an area's
+  *surfaces* as ONE combined `tile-sheet` (cheapest, cohesive), terrain families/animation
+  as one `terrain-block`/`tile-anim` → `slice_tileset.py`; do transparent *decor*
+  individually. Don't `--quantize` a combined sheet (a single image is already one palette —
+  quantising flattens it). Always `make_tileable.py` the fills + tessellation-test, then
+  `render_map.py <map> --output …` to eyeball the whole map against the bar (docs/art-style.md
+  §11–§15). Autotile corners/edges/inner = offline `tools/autotile/` over a map `terrain` layer.
 - **The device shell screen is locked to 3:2.** `shells.css` sizes `#game-root` to the
   largest 3:2 box that fits, so `Scale.FIT` never pillarboxes (no black side bars). The
   `plain`/`overlay` shells are intentionally full-bleed and still letterbox.

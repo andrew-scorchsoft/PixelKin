@@ -244,6 +244,39 @@ Put the 3 frames in the set, then in the manifest give the base water tile
 (`MapRenderer` + `WorldScene.tickAnimatedTiles`) cycles them live — keep it slow
 and low-amplitude (docs/art-style.md §12).
 
+### E) Combined tile-sheet (cheapest — one call, many materials)
+
+For several DISTINCT materials at once, `--type tile-sheet` paints them as a
+labelled-by-position grid in **one ~20¢ call** instead of one call per tile.
+List the cells in reading order in `--subject`:
+
+```bash
+./venv/bin/python $GEN/generate_block.py --type tile-sheet --cols 4 --rows 4 \
+  --area tinderwick --palette "$PAL" --output /tmp/sheet.png \
+  --subject "(1) meadow grass; (2) dark grass; (3) soil path; (4) cobbled stone; \
+(5) sand; (6) sea water; (7) wet shoreline; (8) clay roof; (9) timber wall; …"
+./venv/bin/python $GEN/slice_tileset.py /tmp/sheet.png --out /tmp/sheet --cols 4 --rows 4
+```
+
+**Proven findings (cost vs quality), use these:**
+- **Surfaces win big here.** Ground/water/floor/roof/wall fills come out cohesive
+  and contrasty in one call — equal-or-better than per-tile, ~1/10th the cost.
+- **Do NOT `--quantize` a combined sheet.** A single image is *already* one
+  palette; quantising on top flattens the contrast you want. (Quantise only
+  cross-checks tiles generated in *separate* calls.)
+- **Always `make_tileable.py` the pure fills and tessellation-test 3×3** — the
+  thumbnail can look great while the tiled fill buzzes or stripes. This pass is
+  needed whatever the generation mode.
+- **Decor/transparent objects don't belong on a combined sheet** — it's opaque,
+  so a flower/lamp/tree comes out on a baked background. Generate those
+  individually (`tile-decor`, native transparency), or background-remove.
+- **Watch grid drift** on busy/structural cells (walls, doors); eyeball the slice
+  and regenerate or re-slice if a cell is off the 16px grid.
+
+So the rule of thumb: **one combined sheet for the area's surfaces; individual
+transparent gens for decor; generate-together-then-slice for terrain families and
+animation.**
+
 ### D) Map QA — render & audit (the standing gate)
 
 ```bash
