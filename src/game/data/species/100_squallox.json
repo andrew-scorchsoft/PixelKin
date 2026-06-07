@@ -1,0 +1,80 @@
+{
+  "id": 100,
+  "slug": "squallox",
+  "name": "Squallox",
+  "types": [
+    "Storm"
+  ],
+  "role": "Physical Sweeper",
+  "tier": "B",
+  "stats": {
+    "hp": 49,
+    "atk": 80,
+    "def": 46,
+    "spa": 33,
+    "spd": 46,
+    "spe": 96
+  },
+  "bst": 350,
+  "ability": "static_skin",
+  "hidden_ability": "brisk",
+  "catchRate": 175,
+  "kindling": {
+    "into": 101,
+    "trigger": {
+      "kind": "level",
+      "level": 25
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spark_nip"
+      },
+      {
+        "level": 9,
+        "move": "numb_coil"
+      },
+      {
+        "level": 13,
+        "move": "thunder_kick"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A gust-fox kit born on the exposed upper terraces, its tail a perpetual blurred blur of motion that keeps it airborne a fraction of a second longer than it should be able to stay. The fox whose tail moves so fast it looks like it has three tails at once \u2014 speed incarnate.",
+    "category": "Storm Striker Kin",
+    "size_cm": 32,
+    "weight_kg": 3.8,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 29,
+      "max": 32
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Compact kit silhouette, deep azure-blue fur, four white paws, a tall pointed ear-fan on each side, a blurred fan-tail of multiple stacked ghost images; looks like it's still mid-run at 32px.",
+    "palette": "Compact kit silhouette, deep azure-blue fur, four white paws, a tall pointed ear-fan on each side, a blurred fan-tail of multiple stacked ghost images; looks like it's still mid-run at 32px.",
+    "direction": "The fox whose tail moves so fast it looks like it has three tails at once \u2014 speed incarnate."
+  },
+  "provenance_concept_id": "B05-033"
+}

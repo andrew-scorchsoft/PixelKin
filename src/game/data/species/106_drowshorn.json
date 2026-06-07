@@ -1,0 +1,84 @@
+{
+  "id": 106,
+  "slug": "drowshorn",
+  "name": "Drowshorn",
+  "types": [
+    "Lunar"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "C",
+  "stats": {
+    "hp": 72,
+    "atk": 71,
+    "def": 71,
+    "spa": 71,
+    "spd": 71,
+    "spe": 62
+  },
+  "bst": 418,
+  "ability": "nightsight",
+  "hidden_ability": "forager",
+  "catchRate": 120,
+  "kindling": {
+    "into": 107,
+    "trigger": {
+      "kind": "level",
+      "level": 33
+    }
+  },
+  "from": 105,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "moon_nip"
+      },
+      {
+        "level": 9,
+        "move": "lull"
+      },
+      {
+        "level": 13,
+        "move": "lunar_claw"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "nightfall_veil"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A mid-sized dream-ram whose crescent horns have grown into proper moon-arcs that hum with soporific resonance; anything caught near it during its slow, dreamy patrol gradually loses focus. Peaceful but quietly menacing \u2014 it doesn't fight you, it just makes you forget you wanted to.",
+    "category": "Lunar Wanderer Kin",
+    "size_cm": 85,
+    "weight_kg": 38.0,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 48,
+      "max": 50
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Stocky ram silhouette, deep slate-blue wool, full crescent moon-arc horns lit with cool silver, half-lidded star-pupils, trail of floating dream-motes; calm and commanding at 48px.",
+    "palette": "Stocky ram silhouette, deep slate-blue wool, full crescent moon-arc horns lit with cool silver, half-lidded star-pupils, trail of floating dream-motes; calm and commanding at 48px.",
+    "direction": "Peaceful but quietly menacing \u2014 it doesn't fight you, it just makes you forget you wanted to."
+  },
+  "provenance_concept_id": "B08-002"
+}

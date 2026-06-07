@@ -1,0 +1,83 @@
+{
+  "id": 96,
+  "slug": "frigalance",
+  "name": "Frigalance",
+  "types": [
+    "Storm",
+    "Frost"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "stats": {
+    "hp": 70,
+    "atk": 50,
+    "def": 60,
+    "spa": 124,
+    "spd": 70,
+    "spe": 124
+  },
+  "bst": 498,
+  "ability": "static_skin",
+  "hidden_ability": "brisk",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 95,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "static_jolt"
+      },
+      {
+        "level": 9,
+        "move": "numb_coil"
+      },
+      {
+        "level": 13,
+        "move": "volt_arc"
+      },
+      {
+        "level": 19,
+        "move": "glacier_beam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "tempest"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The apex blizzard-wasp: a slender, blade-like creature that moves through lightning-charged blizzards with total ease, delivering shots of frozen plasma that combine electric and ice damage. Beautiful, lethal, and utterly cold \u2014 the sky's version of a thrown spear.",
+    "category": "Storm Caster Kin",
+    "size_cm": 110,
+    "weight_kg": 9.0,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 38,
+      "max": 40
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Long aerodynamic wasp silhouette, pale near-white with deep azure markings, a pair of blade-like crystal wings, four foreleg-lances each tipped with frozen lightning; cold elegance at 64px.",
+    "palette": "Long aerodynamic wasp silhouette, pale near-white with deep azure markings, a pair of blade-like crystal wings, four foreleg-lances each tipped with frozen lightning; cold elegance at 64px.",
+    "direction": "Beautiful, lethal, and utterly cold \u2014 the sky's version of a thrown spear."
+  },
+  "provenance_concept_id": "B05-028"
+}

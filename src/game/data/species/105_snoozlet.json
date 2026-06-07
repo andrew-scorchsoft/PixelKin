@@ -1,0 +1,80 @@
+{
+  "id": 105,
+  "slug": "snoozlet",
+  "name": "Snoozlet",
+  "types": [
+    "Lunar"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "A",
+  "stats": {
+    "hp": 54,
+    "atk": 53,
+    "def": 53,
+    "spa": 53,
+    "spd": 53,
+    "spe": 46
+  },
+  "bst": 312,
+  "ability": "nightsight",
+  "hidden_ability": "forager",
+  "catchRate": 210,
+  "kindling": {
+    "into": 106,
+    "trigger": {
+      "kind": "level",
+      "level": 16
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "moon_nip"
+      },
+      {
+        "level": 9,
+        "move": "lull"
+      },
+      {
+        "level": 13,
+        "move": "lunar_claw"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A drowsy round moon-sheep that drifts half-awake through the Nightreach highlands, trailing softly glowing wool-tufts that carry faint dream-motes wherever they float. The sleepiest, softest sheep in the world \u2014 just looking at it makes you yawn.",
+    "category": "Lunar Wanderer Kin",
+    "size_cm": 32,
+    "weight_kg": 7.5,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 38,
+      "max": 41
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Plump round sheep body in pale cream-blue, half-closed crescent eyes, small crescent-moon horns, fluffy wool with faint silver-blue glow-wisps drifting off it; maximally round silhouette at 32px.",
+    "palette": "Plump round sheep body in pale cream-blue, half-closed crescent eyes, small crescent-moon horns, fluffy wool with faint silver-blue glow-wisps drifting off it; maximally round silhouette at 32px.",
+    "direction": "The sleepiest, softest sheep in the world \u2014 just looking at it makes you yawn."
+  },
+  "provenance_concept_id": "B08-001"
+}

@@ -1,0 +1,89 @@
+{
+  "id": 75,
+  "slug": "geodrake",
+  "name": "Geodrake",
+  "types": [
+    "Frost",
+    "Stone"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "C",
+  "stats": {
+    "hp": 84,
+    "atk": 95,
+    "def": 75,
+    "spa": 38,
+    "spd": 63,
+    "spe": 63
+  },
+  "bst": 418,
+  "ability": "coldblood",
+  "hidden_ability": "forager",
+  "catchRate": 112,
+  "kindling": {
+    "into": 76,
+    "trigger": {
+      "kind": "level",
+      "level": 36
+    }
+  },
+  "from": 74,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "frost_nip"
+      },
+      {
+        "level": 9,
+        "move": "chill_mist"
+      },
+      {
+        "level": 13,
+        "move": "ice_fang"
+      },
+      {
+        "level": 19,
+        "move": "rock_hurl"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "avalanche"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A mid-sized geode-armoured crustacean that has grown additional crystal growths along its carapace. The crystals serve as both armour and weapon \u2014 Geodrake can launch crystal shards by flexing its shell. Deep glacier miners warn that Geodrake territories are marked by shattered walls. The growing cr",
+    "category": "Frost Brute Kin",
+    "size_cm": 65,
+    "weight_kg": 48,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 36,
+      "max": 39
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Wider, heavier crustacean form; carapace now densely covered in faceted crystal protrusions in purple-to-ice-blue; thicker claws tipped with drill-point crystal spires; mid-form still crablike but clearly larger and more weaponised at 40px.",
+    "palette": "Wider, heavier crustacean form; carapace now densely covered in faceted crystal protrusions in purple-to-ice-blue; thicker claws tipped with drill-point crystal spires; mid-form still crablike but clearly larger and more weaponised at 40px.",
+    "direction": "The growing crystal-armour escalation makes each stage feel like an upgrade."
+  },
+  "provenance_concept_id": "B06-016"
+}

@@ -1,0 +1,80 @@
+{
+  "id": 136,
+  "slug": "mothdim",
+  "name": "Mothdim",
+  "types": [
+    "Dark"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "A",
+  "stats": {
+    "hp": 41,
+    "atk": 47,
+    "def": 47,
+    "spa": 47,
+    "spd": 47,
+    "spe": 83
+  },
+  "bst": 312,
+  "ability": "nullheart",
+  "hidden_ability": "brisk",
+  "catchRate": 210,
+  "kindling": {
+    "into": 137,
+    "trigger": {
+      "kind": "level",
+      "level": 20
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "gloom_spit"
+      },
+      {
+        "level": 9,
+        "move": "blight_touch"
+      },
+      {
+        "level": 13,
+        "move": "hollow_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A small grey moth whose wing-eyes were once luminous but are now flat and lightless \u2014 ashen circles where the glow used to be. It flutters through coldfog seeking the warmth it can no longer feel. A moth whose eye-spots have gone dark \u2014 instantly melancholy, immediately recognisable.",
+    "category": "Dark Courier Kin",
+    "size_cm": 8,
+    "weight_kg": 0.1,
+    "habitat": "outer"
+  },
+  "encounters": [
+    {
+      "area": "coldfog_marches",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 46,
+      "max": 49
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Coin-sized moth, chalk-grey wings with faded circular eye-markings that hold no light; segmented dusty body, antennae curled downward; at 16px reads as a tiny winged oval.",
+    "palette": "Coin-sized moth, chalk-grey wings with faded circular eye-markings that hold no light; segmented dusty body, antennae curled downward; at 16px reads as a tiny winged oval.",
+    "direction": "A moth whose eye-spots have gone dark \u2014 instantly melancholy, immediately recognisable."
+  },
+  "provenance_concept_id": "B10-001"
+}

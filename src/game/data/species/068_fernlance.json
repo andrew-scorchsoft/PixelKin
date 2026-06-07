@@ -1,0 +1,87 @@
+{
+  "id": 68,
+  "slug": "fernlance",
+  "name": "Fernlance",
+  "types": [
+    "Verdant",
+    "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "stats": {
+    "hp": 70,
+    "atk": 48,
+    "def": 60,
+    "spa": 126,
+    "spd": 70,
+    "spe": 124
+  },
+  "bst": 498,
+  "ability": "verdant_vigor",
+  "hidden_ability": "brisk",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 67,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spore_puff"
+      },
+      {
+        "level": 9,
+        "move": "sleep_pollen"
+      },
+      {
+        "level": 13,
+        "move": "lifedrain"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "bloomburst"
+      },
+      {
+        "level": 40,
+        "move": "overgrowth"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A fully adult fern-serpent, now as long as a felled tree, wreathed in blazing bioluminescent fronds. It can launch focused beams of purified green-gold light. Revered by Lowleaf villagers as a forest guardian. The Lowleaf Hollow signature rare \u2014 seeing a Fernlance flowing through glowing ferns is th",
+    "category": "Verdant Caster Kin",
+    "size_cm": 380,
+    "weight_kg": 95,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 22,
+      "max": 24
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Long undulating serpent, densely fringed with fern-fronds that blaze gold and cyan along their edges; head-crown has expanded into a full luminous halo; tail tapers to a glowing spike.",
+    "palette": "Long undulating serpent, densely fringed with fern-fronds that blaze gold and cyan along their edges; head-crown has expanded into a full luminous halo; tail tapers to a glowing spike.",
+    "direction": "The Lowleaf Hollow signature rare \u2014 seeing a Fernlance flowing through glowing ferns is the image on the east region's poster."
+  },
+  "provenance_concept_id": "B03-011"
+}

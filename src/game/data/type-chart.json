@@ -1,0 +1,18 @@
+{
+  "_notes": "PixelKin elemental type chart. Authoritative source for both the game engine and the balance simulator (tools/balance). chart[ATTACKER][DEFENDER] = damage multiplier; any pair not listed defaults to 1.0 (neutral). Mirrors docs/mechanics/01-type-system.md (keep in sync). The ten types are the eight constellation elements (Ember, Tide, Verdant, Stone, Storm, Frost, Solar, Lunar) plus the universal Light/Dark axis from the Vesperholm story bible. Two deliberate 'mirror' axes deal mutual super-effective damage for climactic, swingy matchups: Solar<->Lunar (day vs night) and Light<->Dark (radiance vs the Hollowing's null).",
+  "version": 1,
+  "types": ["Ember", "Tide", "Verdant", "Stone", "Storm", "Frost", "Solar", "Lunar", "Light", "Dark"],
+  "multipliers": { "immune": 0, "resist": 0.5, "neutral": 1, "super": 2 },
+  "chart": {
+    "Ember":   { "Verdant": 2, "Frost": 2, "Ember": 0.5, "Tide": 0.5, "Stone": 0.5, "Solar": 0.5 },
+    "Tide":    { "Ember": 2, "Stone": 2, "Tide": 0.5, "Verdant": 0.5, "Storm": 0.5, "Lunar": 0.5 },
+    "Verdant": { "Tide": 2, "Stone": 2, "Verdant": 0.5, "Ember": 0.5 },
+    "Stone":   { "Ember": 2, "Storm": 2, "Stone": 0.5, "Tide": 0.5, "Verdant": 0.5 },
+    "Storm":   { "Tide": 2, "Verdant": 2, "Solar": 2, "Storm": 0.5, "Frost": 0.5, "Stone": 0 },
+    "Frost":   { "Verdant": 2, "Storm": 2, "Stone": 2, "Frost": 0.5, "Ember": 0.5, "Tide": 0.5, "Solar": 0.5 },
+    "Solar":   { "Frost": 2, "Lunar": 2, "Dark": 2, "Solar": 0.5, "Ember": 0.5, "Tide": 0.5, "Stone": 0.5 },
+    "Lunar":   { "Solar": 2, "Tide": 2, "Lunar": 0.5, "Dark": 0 },
+    "Light":   { "Dark": 2, "Light": 0.5, "Stone": 0.5 },
+    "Dark":    { "Light": 2, "Lunar": 2, "Dark": 0.5, "Solar": 0.5 }
+  }
+}

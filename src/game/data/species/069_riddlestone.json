@@ -1,0 +1,78 @@
+{
+  "id": 69,
+  "slug": "riddlestone",
+  "name": "Riddlestone",
+  "types": [
+    "Stone"
+  ],
+  "role": "Special Wall",
+  "tier": "C",
+  "stats": {
+    "hp": 84,
+    "atk": 32,
+    "def": 71,
+    "spa": 59,
+    "spd": 101,
+    "spe": 71
+  },
+  "bst": 418,
+  "ability": "stonehide",
+  "hidden_ability": "thickcoat",
+  "catchRate": 120,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "gravel_spray"
+      },
+      {
+        "level": 9,
+        "move": "stone_wall"
+      },
+      {
+        "level": 13,
+        "move": "crystal_beam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "tremor_quake"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A sphinx-like cave construct that has formed naturally from layered sedimentary stone; its face is barely distinguishable from the rock, and it moves only rarely. The cave-sphinx that barely moves \u2014 an atmosphere piece that's also a wall in battle.",
+    "category": "Stone Warden Kin",
+    "size_cm": 120,
+    "weight_kg": 240,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 19,
+      "max": 22
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Recumbent cat-lion shape carved entirely from layered sandstone bands in amber, cream, and grey; face is stylised and smooth like worn sculpture; heavy paws; eyes are two oval pieces of polished amber.",
+    "palette": "Recumbent cat-lion shape carved entirely from layered sandstone bands in amber, cream, and grey; face is stylised and smooth like worn sculpture; heavy paws; eyes are two oval pieces of polished amber.",
+    "direction": "The cave-sphinx that barely moves \u2014 an atmosphere piece that's also a wall in battle."
+  },
+  "provenance_concept_id": "B04-025"
+}

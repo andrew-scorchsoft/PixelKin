@@ -1,0 +1,74 @@
+{
+  "id": 147,
+  "slug": "skyweavelet",
+  "name": "Skyweavelet",
+  "types": [
+    "Light"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "B",
+  "stats": {
+    "hp": 53,
+    "atk": 48,
+    "def": 52,
+    "spa": 52,
+    "spd": 52,
+    "spe": 93
+  },
+  "bst": 350,
+  "ability": "mirrorlight",
+  "hidden_ability": "brisk",
+  "catchRate": 175,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spark_mote"
+      },
+      {
+        "level": 9,
+        "move": "dazzle_flash"
+      },
+      {
+        "level": 13,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A mote of the Skyweave itself given semi-sapient form \u2014 a thread-sprite that weaves small patches of the celestial fabric back together wherever the Hollowing has frayed it, arriving at the Crossroads ahead of each constellation relight. It is literally mending the sky \u2014 the game's lore made playabl",
+    "category": "Light Courier Kin",
+    "size_cm": 20,
+    "weight_kg": 0.02,
+    "habitat": "central"
+  },
+  "encounters": [
+    {
+      "area": "umbral_spire",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 58,
+      "max": 61
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Tiny humanoid woven entirely from luminous thread; body is a loose tangle of glowing filaments in soft cyan, gold and white; legs and arms are thread-loops; a face of two bright white dots in a small thread-loop oval; carries a spool of golden thread on one wrist; whimsical and unique at 16px.",
+    "palette": "Tiny humanoid woven entirely from luminous thread; body is a loose tangle of glowing filaments in soft cyan, gold and white; legs and arms are thread-loops; a face of two bright white dots in a small thread-loop oval; carries a spool of golden thread on one wrist; whimsical and unique at 16px.",
+    "direction": "It is literally mending the sky \u2014 the game's lore made playable in a tiny, charming form. Players who love the story will feel this kin IS the journey."
+  },
+  "provenance_concept_id": "B09-042"
+}

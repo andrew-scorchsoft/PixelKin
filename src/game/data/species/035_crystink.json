@@ -1,0 +1,85 @@
+{
+  "id": 35,
+  "slug": "crystink",
+  "name": "Crystink",
+  "types": [
+    "Stone",
+    "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "A",
+  "stats": {
+    "hp": 44,
+    "atk": 30,
+    "def": 37,
+    "spa": 79,
+    "spd": 44,
+    "spe": 78
+  },
+  "bst": 312,
+  "ability": "stonehide",
+  "hidden_ability": "brisk",
+  "catchRate": 210,
+  "kindling": {
+    "into": 36,
+    "trigger": {
+      "kind": "level",
+      "level": 19
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "gravel_spray"
+      },
+      {
+        "level": 9,
+        "move": "stone_wall"
+      },
+      {
+        "level": 13,
+        "move": "crystal_beam"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A small crystal-beetle whose wing-cases are faceted like cut gems; it scurries through the Crystoll Vault tunnels collecting fragments of pure diamond crystal to patch its growing shell. The crystal beetle that collects gems for its own shell \u2014 adorable self-improvement.",
+    "category": "Stone Caster Kin",
+    "size_cm": 12,
+    "weight_kg": 0.3,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 12,
+      "max": 15
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Beetle-form about the size of a thumb; transparent faceted wing-cases filled with cyan-white crystal shards that catch light; six iridescent legs; eyes are tiny perfect gem-spheres in deep blue.",
+    "palette": "Beetle-form about the size of a thumb; transparent faceted wing-cases filled with cyan-white crystal shards that catch light; six iridescent legs; eyes are tiny perfect gem-spheres in deep blue.",
+    "direction": "The crystal beetle that collects gems for its own shell \u2014 adorable self-improvement."
+  },
+  "provenance_concept_id": "B04-034"
+}

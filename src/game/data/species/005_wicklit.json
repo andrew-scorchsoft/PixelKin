@@ -1,0 +1,85 @@
+{
+  "id": 5,
+  "slug": "wicklit",
+  "name": "Wicklit",
+  "types": [
+    "Light",
+    "Ember"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "A",
+  "stats": {
+    "hp": 50,
+    "atk": 43,
+    "def": 56,
+    "spa": 44,
+    "spd": 56,
+    "spe": 63
+  },
+  "bst": 312,
+  "ability": "mirrorlight",
+  "hidden_ability": "forager",
+  "catchRate": 210,
+  "kindling": {
+    "into": 6,
+    "trigger": {
+      "kind": "level",
+      "level": 16
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spark_mote"
+      },
+      {
+        "level": 9,
+        "move": "dazzle_flash"
+      },
+      {
+        "level": 13,
+        "move": "light_pulse"
+      },
+      {
+        "level": 19,
+        "move": "cinder_spit"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A matchstick sprite, barely the height of a thumb, that ignites itself to draw attention away from endangered kin, then safely regrows its wax body overnight. It sacrifices its own flame to protect others \u2014 children love a scrappy little helper with a big heart.",
+    "category": "Light Trickster Kin",
+    "size_cm": 9,
+    "weight_kg": 0.04,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 3,
+      "max": 6
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Thin matchstick body of pale cream wax, a spherical amber head topped by a single tiny flame-tuft; two twig-thin arms; big worried eyes; small enough to balance on a coin at 16px.",
+    "palette": "Thin matchstick body of pale cream wax, a spherical amber head topped by a single tiny flame-tuft; two twig-thin arms; big worried eyes; small enough to balance on a coin at 16px.",
+    "direction": "It sacrifices its own flame to protect others \u2014 children love a scrappy little helper with a big heart."
+  },
+  "provenance_concept_id": "B09-007"
+}

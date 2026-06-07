@@ -1,0 +1,79 @@
+{
+  "id": 37,
+  "slug": "prismara",
+  "name": "Prismara",
+  "types": [
+    "Stone",
+    "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "E",
+  "stats": {
+    "hp": 78,
+    "atk": 53,
+    "def": 67,
+    "spa": 139,
+    "spd": 78,
+    "spe": 143
+  },
+  "bst": 558,
+  "ability": "phoenix",
+  "hidden_ability": "stonehide",
+  "catchRate": 24,
+  "kindling": null,
+  "from": 36,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "gravel_spray"
+      },
+      {
+        "level": 9,
+        "move": "stone_wall"
+      },
+      {
+        "level": 13,
+        "move": "crystal_beam"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "tremor_quake"
+      },
+      {
+        "level": 48,
+        "move": "boulder_smash"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The apex Stone/Light crystal kin of the Crystoll Vault \u2014 a towering crystal-stag whose entire body is now fused into a living prism; it refracts all light into a full spectrum and its presence causes crystal growths to bloom across the cave walls. The Stone Constellation Warden. The Crystoll Vault's",
+    "category": "Stone Caster Kin",
+    "size_cm": 240,
+    "weight_kg": 800,
+    "habitat": "east"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "Grand stag-form; body is smooth translucent white crystal shot through with a continuous rainbow refraction; diamond-branching antlers reach nearly to cave ceilings; four crystal-column legs; eyes emit soft white radiance; when still it is indistinguishable from a perfect crystal formation.",
+    "palette": "Grand stag-form; body is smooth translucent white crystal shot through with a continuous rainbow refraction; diamond-branching antlers reach nearly to cave ceilings; four crystal-column legs; eyes emit soft white radiance; when still it is indistinguishable from a perfect crystal formation.",
+    "direction": "The Crystoll Vault's secret \u2014 the most spectacular kin in the eastern region and a genuine jaw-drop moment."
+  },
+  "provenance_concept_id": "B04-036"
+}

@@ -1,0 +1,87 @@
+{
+  "id": 87,
+  "slug": "prismantus",
+  "name": "Prismantus",
+  "types": [
+    "Light",
+    "Frost"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "D",
+  "stats": {
+    "hp": 99,
+    "atk": 109,
+    "def": 90,
+    "spa": 50,
+    "spd": 75,
+    "spe": 75
+  },
+  "bst": 498,
+  "ability": "mirrorlight",
+  "hidden_ability": "forager",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 86,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "glimmer"
+      },
+      {
+        "level": 9,
+        "move": "dazzle_flash"
+      },
+      {
+        "level": 13,
+        "move": "radiant_strike"
+      },
+      {
+        "level": 19,
+        "move": "ice_fang"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "prism_beam"
+      },
+      {
+        "level": 40,
+        "move": "dawnburst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A fully grown glacier-bear whose crystal-fur has solidified into great diamond-hard prism-plates; it slams opponents with rainbow-refracting claws and can freeze the air around it into a blinding prismatic storm. The wholesome cute cub grows into a crystal-armoured powerhouse \u2014 a satisfying arc for ",
+    "category": "Light Brute Kin",
+    "size_cm": 200,
+    "weight_kg": 320,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "very_rare",
+      "min": 38,
+      "max": 40
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Large polar bear; thick layered prism-crystal plates replace the fur on its shoulders and back like natural armour; claws are translucent crystal-blade; fur in gaps is still white; dignified and powerful; beautiful and formidable at 64px.",
+    "palette": "Large polar bear; thick layered prism-crystal plates replace the fur on its shoulders and back like natural armour; claws are translucent crystal-blade; fur in gaps is still white; dignified and powerful; beautiful and formidable at 64px.",
+    "direction": "The wholesome cute cub grows into a crystal-armoured powerhouse \u2014 a satisfying arc for players who raised it."
+  },
+  "provenance_concept_id": "B09-038"
+}

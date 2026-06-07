@@ -1,0 +1,74 @@
+{
+  "id": 146,
+  "slug": "bogvast",
+  "name": "Bogvast",
+  "types": [
+    "Dark"
+  ],
+  "role": "Physical Wall",
+  "tier": "E",
+  "stats": {
+    "hp": 106,
+    "atk": 78,
+    "def": 134,
+    "spa": 50,
+    "spd": 95,
+    "spe": 95
+  },
+  "bst": 558,
+  "ability": "nullheart",
+  "hidden_ability": "nullheart",
+  "catchRate": 24,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "shade_nip"
+      },
+      {
+        "level": 9,
+        "move": "blight_touch"
+      },
+      {
+        "level": 13,
+        "move": "null_claw"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "shadow_rend"
+      },
+      {
+        "level": 40,
+        "move": "voidburst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "An enormous null-beast that has become part of the coldfog marshes themselves \u2014 its body encrusted with dead reed-stalks, snuffed lantern-frames, and darkened mineral deposits. Travelers have always assumed it was a piece of geography. It moves only when something enters its null-field. An apex crea",
+    "category": "Dark Bulwark Kin",
+    "size_cm": 420,
+    "weight_kg": 4800,
+    "habitat": "outer"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "Vast tortoise-like creature, entirely hidden beneath an shell of snuffed lanterns, dead reeds, and null-stone; only the deep void-dark eyes and four pillar-legs betray it as alive; its back looks like a section of blighted marsh terrain.",
+    "palette": "Vast tortoise-like creature, entirely hidden beneath an shell of snuffed lanterns, dead reeds, and null-stone; only the deep void-dark eyes and four pillar-legs betray it as alive; its back looks like a section of blighted marsh terrain.",
+    "direction": "An apex creature that IS the coldfog marsh \u2014 players who didn't look carefully will be stunned when it moves."
+  },
+  "provenance_concept_id": "B10-027"
+}

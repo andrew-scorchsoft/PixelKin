@@ -1,0 +1,85 @@
+{
+  "id": 67,
+  "slug": "fennlight",
+  "name": "Fennlight",
+  "types": [
+    "Verdant",
+    "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "B",
+  "stats": {
+    "hp": 49,
+    "atk": 35,
+    "def": 42,
+    "spa": 87,
+    "spd": 49,
+    "spe": 88
+  },
+  "bst": 350,
+  "ability": "verdant_vigor",
+  "hidden_ability": "brisk",
+  "catchRate": 175,
+  "kindling": {
+    "into": 68,
+    "trigger": {
+      "kind": "level",
+      "level": 20
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spore_puff"
+      },
+      {
+        "level": 9,
+        "move": "sleep_pollen"
+      },
+      {
+        "level": 13,
+        "move": "lifedrain"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A lithe glowing fern-serpent native to Lowleaf Hollow's bioluminescent undergrowth. Its body traces the pattern of fern fronds, and it darts through the dark emitting soft cyan pulses. Canon atlas kin \u2014 the glowing fern-serpent, fast and magical.",
+    "category": "Verdant Caster Kin",
+    "size_cm": 65,
+    "weight_kg": 4,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 15,
+      "max": 18
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Slender vine-serpent body, fern-leaf pattern along its sides that glows cyan, bright curious eyes, small frond-crown on its head; sinuous and quick.",
+    "palette": "Slender vine-serpent body, fern-leaf pattern along its sides that glows cyan, bright curious eyes, small frond-crown on its head; sinuous and quick.",
+    "direction": "Canon atlas kin \u2014 the glowing fern-serpent, fast and magical. Hits Verdant/Light coverage and doubles as a moving lantern."
+  },
+  "provenance_concept_id": "B03-010"
+}

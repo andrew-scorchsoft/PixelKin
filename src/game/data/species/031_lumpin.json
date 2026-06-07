@@ -1,0 +1,85 @@
+{
+  "id": 31,
+  "slug": "lumpin",
+  "name": "Lumpin",
+  "types": [
+    "Tide",
+    "Light"
+  ],
+  "role": "Special Wall",
+  "tier": "B",
+  "stats": {
+    "hp": 70,
+    "atk": 25,
+    "def": 59,
+    "spa": 49,
+    "spd": 88,
+    "spe": 59
+  },
+  "bst": 350,
+  "ability": "tidecaller",
+  "hidden_ability": "thickcoat",
+  "catchRate": 175,
+  "kindling": {
+    "into": 32,
+    "trigger": {
+      "kind": "level",
+      "level": 22
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "mist_spray"
+      },
+      {
+        "level": 9,
+        "move": "drench_song"
+      },
+      {
+        "level": 13,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A limpet-kin whose flat shell glows with stored moonlight. It clings to coastal rocks and pulses a gentle beacon to guide lost kin home. A cosy little lighthouse-limpet \u2014 kids want one as a nightlight companion.",
+    "category": "Tide Warden Kin",
+    "size_cm": 22,
+    "weight_kg": 1.4,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 6,
+      "max": 9
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Conical shell in deep blue-grey with a soft gold radiant glow from within; plump body underneath, two wide-set gentle eyes, four tiny suction-tipped feet. Bioluminescent ring pattern on shell rim.",
+    "palette": "Conical shell in deep blue-grey with a soft gold radiant glow from within; plump body underneath, two wide-set gentle eyes, four tiny suction-tipped feet. Bioluminescent ring pattern on shell rim.",
+    "direction": "A cosy little lighthouse-limpet \u2014 kids want one as a nightlight companion."
+  },
+  "provenance_concept_id": "B02-004"
+}

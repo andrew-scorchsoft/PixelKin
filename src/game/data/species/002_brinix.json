@@ -1,0 +1,80 @@
+{
+  "id": 2,
+  "slug": "brinix",
+  "name": "Brinix",
+  "types": [
+    "Tide"
+  ],
+  "role": "Special Wall",
+  "tier": "B",
+  "stats": {
+    "hp": 62,
+    "atk": 53,
+    "def": 58,
+    "spa": 60,
+    "spd": 64,
+    "spe": 55
+  },
+  "bst": 352,
+  "ability": "tidecaller",
+  "hidden_ability": "mistveil",
+  "catchRate": 175,
+  "kindling": {
+    "into": 4,
+    "trigger": {
+      "kind": "level",
+      "level": 32
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "mist_spray"
+      },
+      {
+        "level": 9,
+        "move": "drench_song"
+      },
+      {
+        "level": 13,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "Its side-fins glow softly in deep water. Brinix hums a bubbling tune that settles nervous kin, and rides fast currents purely for the fun of it.",
+    "category": "Tide-Hum Kin",
+    "size_cm": 52,
+    "weight_kg": 11.5,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 6,
+      "max": 9
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Existing art (see assets/creatures/002_brinix/). Compact crested water-shelled body, seafoam palette, bold silhouette.",
+    "palette": "Existing art (see assets/creatures/002_brinix/). Compact crested water-shelled body, seafoam palette, bold silhouette.",
+    "direction": "The trusty starter \u2014 reliable, stoic, and grows into something formidable."
+  },
+  "provenance_concept_id": "B02-006"
+}

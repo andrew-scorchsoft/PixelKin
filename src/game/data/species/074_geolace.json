@@ -1,0 +1,85 @@
+{
+  "id": 74,
+  "slug": "geolace",
+  "name": "Geolace",
+  "types": [
+    "Frost",
+    "Stone"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "A",
+  "stats": {
+    "hp": 62,
+    "atk": 75,
+    "def": 56,
+    "spa": 25,
+    "spd": 47,
+    "spe": 47
+  },
+  "bst": 312,
+  "ability": "coldblood",
+  "hidden_ability": "forager",
+  "catchRate": 210,
+  "kindling": {
+    "into": 75,
+    "trigger": {
+      "kind": "level",
+      "level": 18
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "frost_nip"
+      },
+      {
+        "level": 9,
+        "move": "chill_mist"
+      },
+      {
+        "level": 13,
+        "move": "ice_fang"
+      },
+      {
+        "level": 19,
+        "move": "rock_hurl"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A small, crystalline geode-crab whose outer shell is a natural geode split down the middle, exposing a cavity glittering with frost-crystal druzy. It scuttles along glacier crevasse walls and eats mineral-rich ice. Its shell grows a new layer of crystals each winter. A geode as a crab-shell is visua",
+    "category": "Frost Brute Kin",
+    "size_cm": 25,
+    "weight_kg": 8.5,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 26,
+      "max": 29
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Squat crab-like form; body is literally a split geode half \u2014 rough dark mineral exterior with a spectacular glittering interior visible from above; six short spiky legs; two crystal-tipped pincer claws; unique silhouette readable at 32px as a lumpy oval with jutting points.",
+    "palette": "Squat crab-like form; body is literally a split geode half \u2014 rough dark mineral exterior with a spectacular glittering interior visible from above; six short spiky legs; two crystal-tipped pincer claws; unique silhouette readable at 32px as a lumpy oval with jutting points.",
+    "direction": "A geode as a crab-shell is visually unlike anything else \u2014 the glittering interior is a treasure chest on legs."
+  },
+  "provenance_concept_id": "B06-015"
+}

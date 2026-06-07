@@ -1,0 +1,85 @@
+{
+  "id": 103,
+  "slug": "gilpaw",
+  "name": "Gilpaw",
+  "types": [
+    "Solar",
+    "Stone"
+  ],
+  "role": "Physical Wall",
+  "tier": "A",
+  "stats": {
+    "hp": 59,
+    "atk": 44,
+    "def": 75,
+    "spa": 28,
+    "spd": 53,
+    "spe": 53
+  },
+  "bst": 312,
+  "ability": "sunsoak",
+  "hidden_ability": "thickcoat",
+  "catchRate": 210,
+  "kindling": {
+    "into": 104,
+    "trigger": {
+      "kind": "level",
+      "level": 28
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "sun_jab"
+      },
+      {
+        "level": 9,
+        "move": "bask"
+      },
+      {
+        "level": 13,
+        "move": "solar_lash"
+      },
+      {
+        "level": 19,
+        "move": "rock_hurl"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A small leonine cub whose coat has mineralised into gilded stone plates, soaking up ambient Solar energy from the Solarium's ruins. It naps in sun-warmed arches and radiates stored heat. A golden armoured cub \u2014 solid, warm, and endearing, like a sun-kissed statue that decided to yawn.",
+    "category": "Solar Bulwark Kin",
+    "size_cm": 38,
+    "weight_kg": 22.0,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 38,
+      "max": 41
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Compact lion-cub silhouette; body covered in smooth gold-toned stone plates like overlapping scales; four stubby paws with amber glowing pawpads; round face with bright amber eyes; cute and sturdy at 32px.",
+    "palette": "Compact lion-cub silhouette; body covered in smooth gold-toned stone plates like overlapping scales; four stubby paws with amber glowing pawpads; round face with bright amber eyes; cute and sturdy at 32px.",
+    "direction": "A golden armoured cub \u2014 solid, warm, and endearing, like a sun-kissed statue that decided to yawn."
+  },
+  "provenance_concept_id": "B07-009"
+}

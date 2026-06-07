@@ -1,0 +1,4307 @@
+[
+ {
+  "concept_id": "X-VULPYRE",
+  "name": "Vulpyre",
+  "types": [
+   "Ember"
+  ],
+  "role": "Special Sweeper",
+  "tier": "B",
+  "region": "south",
+  "rarity": "common",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "B01-016"
+  },
+  "concept": "(existing starter)",
+  "visual": "(existing art)",
+  "_score": 99,
+  "existing": true,
+  "dex_id": 1,
+  "line_primary_type": "Ember"
+ },
+ {
+  "concept_id": "B01-016",
+  "name": "Blazethorn",
+  "types": [
+   "Ember"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "south",
+  "rarity": "uncommon",
+  "concept": "The final form of the starter Vulpyre: a proud, sleek fire-fox whose mane erupts into a blazing crown of tall flame-spines, channelling its hearth-bond into devastating focused special blasts.",
+  "visual": "Upright fox silhouette, deep ember-red coat, cream underbelly, mane erupting upward in a spike-crown of orange-to-white flames; regal and fast at 64px.",
+  "size_cm": 110,
+  "weight_kg": 26.5,
+  "signature_idea": "Crown Blaze \u2014 channelled fire beam boosted by bond strength; Blazethorn exclusive",
+  "hook": "The Vulpyre you picked as a tiny cub grew into this gorgeous, powerful guardian \u2014 the payoff of your whole journey together.",
+  "_batch": "batch-01.json",
+  "_score": 74.1,
+  "_panel": 75.0,
+  "dex_id": 3,
+  "line_primary_type": "Ember"
+ },
+ {
+  "concept_id": "B02-006",
+  "name": "Brinix",
+  "types": [
+   "Tide"
+  ],
+  "role": "Special Wall",
+  "tier": "B",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "B02-007",
+   "kindle_trigger": "level 32"
+  },
+  "region": "south",
+  "rarity": "uncommon",
+  "concept": "The starter Tide kin \u2014 a stoic crested water-shelled kin that shields its allies with briny resilience. Already has art; this entry just anchors it in the line schema.",
+  "visual": "Existing art (see assets/creatures/002_brinix/). Compact crested water-shelled body, seafoam palette, bold silhouette.",
+  "size_cm": 55,
+  "weight_kg": 9,
+  "signature_idea": null,
+  "hook": "The trusty starter \u2014 reliable, stoic, and grows into something formidable.",
+  "_batch": "batch-02.json",
+  "_score": 73.5,
+  "_panel": 75.5,
+  "dex_id": 2,
+  "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "B02-007",
+  "name": "Brinarch",
+  "types": [
+   "Tide"
+  ],
+  "role": "Special Wall",
+  "tier": "D",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "south",
+  "rarity": "rare",
+  "concept": "Brinix's final kindled form. The brine-crest has broadened into a sweeping crown of sea-glass plating; its bulk and endurance are legendary on the southern coast. Becomes the region's apex defender.",
+  "visual": "Tall, broad-shouldered, slate-blue shell plating crested with sea-glass spurs in translucent teal. Wide stance, deep chest, a calm but commanding gaze behind a brow-ridge. Dual water-crystal shoulder guards.",
+  "size_cm": 145,
+  "weight_kg": 98,
+  "signature_idea": "Brine Bulwark \u2014 sets a tide-flavoured reflect that scales with HP remaining",
+  "hook": "The satisfying payoff of raising your starter \u2014 a true coastal fortress on the field.",
+  "_batch": "batch-02.json",
+  "_score": 75.5,
+  "_panel": 77.0,
+  "dex_id": 4,
+  "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "B09-007",
+  "name": "Wicklit",
+  "types": [
+   "Light",
+   "Ember"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B09-008",
+   "kindle_trigger": "level 16"
+  },
+  "region": "south",
+  "rarity": "common",
+  "concept": "A matchstick sprite, barely the height of a thumb, that ignites itself to draw attention away from endangered kin, then safely regrows its wax body overnight.",
+  "visual": "Thin matchstick body of pale cream wax, a spherical amber head topped by a single tiny flame-tuft; two twig-thin arms; big worried eyes; small enough to balance on a coin at 16px.",
+  "size_cm": 9,
+  "weight_kg": 0.04,
+  "signature_idea": null,
+  "hook": "It sacrifices its own flame to protect others \u2014 children love a scrappy little helper with a big heart.",
+  "_batch": "batch-09.json",
+  "_score": 78.3,
+  "_panel": 81.0,
+  "dex_id": 5,
+  "line_primary_type": "Light"
+ },
+ {
+  "concept_id": "B09-008",
+  "name": "Wickmere",
+  "types": [
+   "Light",
+   "Ember"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "B",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B09-009",
+   "kindle_trigger": "level 32"
+  },
+  "region": "south",
+  "rarity": "uncommon",
+  "concept": "A half-grown candle-folk that has learned to shape its wax body mid-battle, flowing around attacks and re-forming with a warm laugh, frustrating physical hitters.",
+  "visual": "Slender humanoid of ivory wax, three flames now crowning its head like a candelabra; half-melted wax drapes off shoulders like a cape; cheerful smiling face; rounded candle-base feet; reads clearly at 32px.",
+  "size_cm": 55,
+  "weight_kg": 3.1,
+  "signature_idea": "Soft Wax \u2014 when hit by a physical move, has a 30% chance to reduce the attacker's Attack by one stage (wax clings and slows).",
+  "hook": "The three-flame crown is immediately distinctive and memorable on a team roster.",
+  "_batch": "batch-09.json",
+  "_score": 76.4,
+  "_panel": 77.0,
+  "dex_id": 6,
+  "line_primary_type": "Light"
+ },
+ {
+  "concept_id": "B09-009",
+  "name": "Wicklord",
+  "types": [
+   "Light",
+   "Ember"
+  ],
+  "role": "Special Tank",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "south",
+  "rarity": "rare",
+  "concept": "A regal candelabra-kin whose body is a flowing pillar of warm wax lined with seven blazing wicks; it calms storms of fear and darkness with a steady, generous light that seems to make everyone in range feel safer.",
+  "visual": "Tall, dignified humanoid; torso is a layered tiered candelabra of poured wax, seven distinct flames each a different warm hue from amber to rose; long draping arms of flowing wax; a composed, kind face half-shadowed by a wax-brim hat; strikes a warm silhouette at 48px.",
+  "size_cm": 160,
+  "weight_kg": 42,
+  "signature_idea": "Seven Wicks \u2014 activates Reflect AND Light Screen simultaneously at reduced duration (3 turns each), at the cost of the user's next action.",
+  "hook": "The seven-flame crown doubles as a personality \u2014 each flame flickers differently; players will call it iconic.",
+  "_batch": "batch-09.json",
+  "_score": 75.7,
+  "_panel": 76.0,
+  "dex_id": 7,
+  "line_primary_type": "Light"
+ },
+ {
+  "concept_id": "B09-001",
+  "name": "Glimflit",
+  "types": [
+   "Light"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "A",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "B09-002",
+   "kindle_trigger": "level 20"
+  },
+  "region": "south",
+  "rarity": "common",
+  "concept": "A tiny firefly-sprite that bobs through Tinderwick's evening air, its tail-lantern blinking in rhythmic code only other Glimflit can read.",
+  "visual": "Transparent-winged insectoid sprite, thumbnail-sized; round mint-green body, a single amber bead tail-lamp that pulses on and off; long antennae tipped with spark-dots; silhouette reads as a floating comma at 16px.",
+  "size_cm": 8,
+  "weight_kg": 0.05,
+  "signature_idea": "Beacon Blink \u2014 switches itself and one ally's positions, also removing one entry hazard from the target's side.",
+  "hook": "It blinks at you with a friendly rhythm \u2014 kids will try to tap along.",
+  "_batch": "batch-09.json",
+  "_score": 80.4,
+  "_panel": 84.0,
+  "dex_id": 8,
+  "line_primary_type": "Light"
+ },
+ {
+  "concept_id": "B09-002",
+  "name": "Glimscout",
+  "types": [
+   "Light"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "D",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "south",
+  "rarity": "uncommon",
+  "concept": "A grown firefly-courier that blazes a trail of lingering glow-motes wherever it streaks, marking safe paths through the dusk for those who follow.",
+  "visual": "Elongated, dragonfly-like frame; four layered wings edged with cyan; abdomen striped amber and cream, tip blazing a permanent steady beacon; big compound eyes catching every glint; reads as a streak of light at 32px.",
+  "size_cm": 38,
+  "weight_kg": 1.2,
+  "signature_idea": "Trailblaze \u2014 sets a field effect for 5 turns that boosts ally Speed by one stage on entry and negates accuracy drops.",
+  "hook": "It looks fast even when standing still \u2014 older players will immediately clock it as a pivot piece.",
+  "_batch": "batch-09.json",
+  "_score": 75.8,
+  "_panel": 77.5,
+  "dex_id": 9,
+  "line_primary_type": "Light"
+ },
+ {
+  "concept_id": "B01-001",
+  "name": "Tallowpup",
+  "types": [
+   "Ember"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B01-002",
+   "kindle_trigger": "level 14"
+  },
+  "region": "south",
+  "rarity": "common",
+  "concept": "A stumpy wax-coated pup whose stubby tail is a flickering tallow candle that warms everything it curls against.",
+  "visual": "Chunky cream-and-butter-yellow puppy body, ink nose, a single pale candle-flame tail with a soft wax drip; big round eyes; reads as one warm blob at 32px.",
+  "size_cm": 28,
+  "weight_kg": 4.2,
+  "signature_idea": null,
+  "hook": "The single candle-tail is irresistibly cute \u2014 kids will want to protect the little flame.",
+  "_batch": "batch-01.json",
+  "_score": 75.3,
+  "_panel": 78.0,
+  "dex_id": 10,
+  "line_primary_type": "Ember"
+ },
+ {
+  "concept_id": "B01-002",
+  "name": "Tallowcrest",
+  "types": [
+   "Ember"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B01-003",
+   "kindle_trigger": "level 28"
+  },
+  "region": "south",
+  "rarity": "uncommon",
+  "concept": "A mid-sized candle-hound with a crown of five dripping tallow flames that shift colour depending on its mood.",
+  "visual": "Robust tawny dog silhouette, wax-drip markings down the haunches, a starburst of five pastel-hued candle-flames crowning the head; distinct and bold at 48px.",
+  "size_cm": 62,
+  "weight_kg": 14.5,
+  "signature_idea": null,
+  "hook": "The mood-colour flames make it feel alive \u2014 a warm ally that visibly cares.",
+  "_batch": "batch-01.json",
+  "_score": 76.7,
+  "_panel": 80.0,
+  "dex_id": 11,
+  "line_primary_type": "Ember"
+ },
+ {
+  "concept_id": "B01-003",
+  "name": "Chandrek",
+  "types": [
+   "Ember",
+   "Light"
+  ],
+  "role": "Special Tank",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "south",
+  "rarity": "rare",
+  "concept": "A great candlewood hound whose entire mane is a cathedral of living candles, radiating warm golden light that soothes nearby kin.",
+  "visual": "Large, dignified canine silhouette; back and mane bristle with tall tapers in cream, gold, and amber; pooling light halos the outline; dramatic yet soft at 64px.",
+  "size_cm": 110,
+  "weight_kg": 48.0,
+  "signature_idea": "Warm Vigil \u2014 buffs allies' Special Defense for two turns",
+  "hook": "An apex hound made of living light \u2014 the kind of kin you want walking beside you in the dark.",
+  "_batch": "batch-01.json",
+  "_score": 75.0,
+  "_panel": 75.0,
+  "dex_id": 12,
+  "line_primary_type": "Ember"
+ },
+ {
+  "concept_id": "B01-012",
+  "name": "Ashlette",
+  "types": [
+   "Ember"
+  ],
+  "role": "Special Sweeper",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B01-013",
+   "kindle_trigger": "level 13"
+  },
+  "region": "south",
+  "rarity": "common",
+  "concept": "A tiny ash-fairy that drifts on warm updrafts, trailing grey motes; when it sneezes, it blasts a puff of concentrated fire-dust.",
+  "visual": "Near-translucent teardrop fairy body in pale smoke-grey with a tiny ember core, gossamer ash-wings, two stub arms; minimal but charming at 32px.",
+  "size_cm": 15,
+  "weight_kg": 0.3,
+  "signature_idea": null,
+  "hook": "The sneeze that accidentally launches a fireball \u2014 endearingly powerful.",
+  "_batch": "batch-01.json",
+  "_score": 71.8,
+  "_panel": 73.0,
+  "dex_id": 13,
+  "line_primary_type": "Ember"
+ },
+ {
+  "concept_id": "B01-013",
+  "name": "Embrift",
+  "types": [
+   "Ember"
+  ],
+  "role": "Special Sweeper",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B01-014",
+   "kindle_trigger": "level 32"
+  },
+  "region": "south",
+  "rarity": "uncommon",
+  "concept": "A swirling ash-sprite that has grown a permanent vortex of superheated cinders around its body, moving like a living dust-devil.",
+  "visual": "Hovering humanoid silhouette ringed by a spinning debris-halo of cinders, orange core glowing at the heart, long wispy arms; dynamic at 48px.",
+  "size_cm": 60,
+  "weight_kg": 2.1,
+  "signature_idea": null,
+  "hook": "A tiny fairy has become a swirling pillar of flame \u2014 awe-inducing mid-stage transformation.",
+  "_batch": "batch-01.json",
+  "_score": 73.2,
+  "_panel": 75.0,
+  "dex_id": 14,
+  "line_primary_type": "Ember"
+ },
+ {
+  "concept_id": "B01-014",
+  "name": "Pyriven",
+  "types": [
+   "Ember",
+   "Dark"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "south",
+  "rarity": "rare",
+  "concept": "A towering cinder-wraith whose body is a column of black smoke wreathed in fierce orange-white flames, haunting the ruins of old hearths.",
+  "visual": "Tall ghostly pillar silhouette: smoke-black upper body fading into blazing fire-orange lower half, spectral arms, hollow bright eyes; striking contrast at 64px.",
+  "size_cm": 175,
+  "weight_kg": 8.0,
+  "signature_idea": "Charcoal Hex \u2014 special Dark move that also applies a burn",
+  "hook": "The ash-fairy grew into a ghost made of fire \u2014 spooky, beautiful, and unforgettable.",
+  "_batch": "batch-01.json",
+  "_score": 75.0,
+  "_panel": 75.0,
+  "dex_id": 15,
+  "line_primary_type": "Ember"
+ },
+ {
+  "concept_id": "B01-004",
+  "name": "Wickmoth",
+  "types": [
+   "Ember"
+  ],
+  "role": "Glass Cannon",
+  "tier": "A",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "B01-005",
+   "kindle_trigger": "level 18"
+  },
+  "region": "south",
+  "rarity": "common",
+  "concept": "A small ember-winged moth that navigates by following warm light and scorches anything it bumps into by accident.",
+  "visual": "Tiny round fuzzy moth body in ash-grey, wings tipped in orange-to-yellow ember gradients, two long antennae with spark-dot tips; reads as a fluttering silhouette at 32px.",
+  "size_cm": 22,
+  "weight_kg": 0.8,
+  "signature_idea": null,
+  "hook": "The classic 'dangerous but clumsy' charm \u2014 a burny little moth you can't help but root for.",
+  "_batch": "batch-01.json",
+  "_score": 77.0,
+  "_panel": 80.5,
+  "dex_id": 16,
+  "line_primary_type": "Ember"
+ },
+ {
+  "concept_id": "B01-005",
+  "name": "Scorchwing",
+  "types": [
+   "Ember"
+  ],
+  "role": "Glass Cannon",
+  "tier": "D",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "south",
+  "rarity": "uncommon",
+  "concept": "A magnificent ember-moth with broad, vein-lit wings that trail blazing filaments and leave a shower of sparks with every wingbeat.",
+  "visual": "Wide, spread-wing moth silhouette; upper wings are deep charcoal laced with bright ember veins, lower wings trail glowing filaments; menacing and beautiful at 64px.",
+  "size_cm": 75,
+  "weight_kg": 5.2,
+  "signature_idea": "Flare Scatter \u2014 hits all opponents with low-power fire sparks",
+  "hook": "From clumsy little Wickmoth to this gorgeous blazing terror \u2014 one of the most satisfying glow-ups in Vesperholm.",
+  "_batch": "batch-01.json",
+  "_score": 74.4,
+  "_panel": 75.5,
+  "dex_id": 17,
+  "line_primary_type": "Ember"
+ },
+ {
+  "concept_id": "B01-024",
+  "name": "Hearthkit",
+  "types": [
+   "Ember"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "A",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "B01-025",
+   "kindle_trigger": "bond"
+  },
+  "region": "south",
+  "rarity": "uncommon",
+  "concept": "A small round hearth-fox kitten that nests inside unused fireplaces and glows soft amber when it purrs; it smells permanently of woodsmoke and cinnamon.",
+  "visual": "Round-bodied kitten, deep apricot coat with cream markings, curled ember-glow tail, closed-eyed happy expression; warm and cosy silhouette at 32px.",
+  "size_cm": 24,
+  "weight_kg": 2.2,
+  "signature_idea": null,
+  "hook": "The kitten that lives in the fireplace and purrs \u2014 every kid wants one as a bedroom companion.",
+  "_batch": "batch-01.json",
+  "_score": 76.0,
+  "_panel": 79.0,
+  "dex_id": 18,
+  "line_primary_type": "Ember"
+ },
+ {
+  "concept_id": "B01-025",
+  "name": "Warmantis",
+  "types": [
+   "Ember",
+   "Light"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "D",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "south",
+  "rarity": "rare",
+  "concept": "The hearth-kitten has grown into a luminous fire-cat that forms a bond so deep it can project its warmth as a visible golden aura shielding its trainer.",
+  "visual": "Elegant long-bodied cat silhouette, warm gold-and-cream coat, a soft luminous aura halo, ember-tip tail; graceful and glowing at 64px.",
+  "size_cm": 95,
+  "weight_kg": 19.0,
+  "signature_idea": "Hearth-Oath \u2014 dramatically raises ally's Defense and Sp.Defense for 3 turns; usable once per battle",
+  "hook": "The bond evolution payoff \u2014 it literally becomes an aura of love around you.",
+  "_batch": "batch-01.json",
+  "_score": 73.2,
+  "_panel": 72.5,
+  "dex_id": 19,
+  "line_primary_type": "Ember"
+ },
+ {
+  "concept_id": "B02-031",
+  "name": "Tidmote",
+  "types": [
+   "Tide",
+   "Light"
+  ],
+  "role": "Utility/Speedster",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B02-032",
+   "kindle_trigger": "level 13"
+  },
+  "region": "south",
+  "rarity": "common",
+  "concept": "A tiny darting water-sprite that skims the sea surface, trailing a thread of moonlit water behind it. So fast it appears to teleport between waves.",
+  "visual": "Tiny sprite, blue-white water droplet shape with trailing wisps, two pinpoint bright eyes, a single glowing ribbon-tail. Appears as a moving sparkle on water surfaces.",
+  "size_cm": 8,
+  "weight_kg": 0.1,
+  "signature_idea": null,
+  "hook": "The impossible-to-catch tiny speedster \u2014 Glintfin's spiritual counterpart that players spend hours trying to lamp.",
+  "_batch": "batch-02.json",
+  "_score": 75.8,
+  "_panel": 77.5,
+  "dex_id": 20,
+  "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "B02-032",
+  "name": "Tidmaren",
+  "types": [
+   "Tide",
+   "Light"
+  ],
+  "role": "Utility/Speedster",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B02-033",
+   "kindle_trigger": "level 28"
+  },
+  "region": "south",
+  "rarity": "uncommon",
+  "concept": "The water-sprite is now a swift silver shape that dances between moonbeams, spreading brief distraction-glimmers to cover allies.",
+  "visual": "Slim, elegant aquatic sprite \u2014 silver with pale moonlight-blue highlights, long streaming water-veil wings, a crescent-shaped luminous head-marking, twin ribbon tails.",
+  "size_cm": 48,
+  "weight_kg": 3.2,
+  "signature_idea": "Moonveil \u2014 applies an Evasion buff and a Light-type reflect-burst to adjacent ally",
+  "hook": "The support speedster that doubles as a gorgeous visual \u2014 its moonveil makes other kin look good.",
+  "_batch": "batch-02.json",
+  "_score": 72.9,
+  "_panel": 72.0,
+  "dex_id": 21,
+  "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "B02-033",
+  "name": "Tidwraith",
+  "types": [
+   "Tide",
+   "Light"
+  ],
+  "role": "Utility/Speedster",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "south",
+  "rarity": "rare",
+  "concept": "The fully kindled water-light sprite \u2014 now a ghostly shining figure of pure tide-light that moves faster than the eye can track.",
+  "visual": "Tall, translucent humanoid sprite of flowing water and moonlight \u2014 silver-white with luminous aqua veins, streaming ribbon-limbs, a face of pure calm radiance, and a cascading tail of moon-foam.",
+  "size_cm": 110,
+  "weight_kg": 8,
+  "signature_idea": "Phantom Current \u2014 Tide/Light priority move; phases through Shields and barriers",
+  "hook": "The transcendent final form of the tiniest starter \u2014 trainers who raise a Tidmote are rewarded with the coast's most ethereal kin.",
+  "_batch": "batch-02.json",
+  "_score": 75.3,
+  "_panel": 75.5,
+  "dex_id": 22,
+  "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "B02-014",
+  "name": "Glintfin",
+  "types": [
+   "Tide",
+   "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B02-015",
+   "kindle_trigger": "level 15"
+  },
+  "region": "south",
+  "rarity": "common",
+  "concept": "A small glinting schooling fish with a single prismatic scale that acts like a signal mirror. Groups of them communicate with flashes.",
+  "visual": "Tiny silvery fish with oversized prism-scale fin fanning out like a tail-fan, blue-teal body, big friendly eye, subtle light-refracting markings.",
+  "size_cm": 12,
+  "weight_kg": 0.3,
+  "signature_idea": null,
+  "hook": "Cute little mirror-fish \u2014 the tutorial kin for Tide typing; appears in water as soon as the player gets Tidecall.",
+  "_batch": "batch-02.json",
+  "_score": 73.8,
+  "_panel": 74.5,
+  "dex_id": 23,
+  "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "B02-015",
+  "name": "Shimmral",
+  "types": [
+   "Tide",
+   "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B02-016",
+   "kindle_trigger": "level 30"
+  },
+  "region": "south",
+  "rarity": "uncommon",
+  "concept": "The glintfin shoal has merged into a single larger fish with a spectacular prismatic fin-mantle. It blasts light-refractions as attack.",
+  "visual": "Elegant mid-sized fish, iridescent blue-silver body, enormous fan-fin with rainbow diffraction pattern, graceful trailing fin-rays, bright intelligent eyes.",
+  "size_cm": 55,
+  "weight_kg": 8.5,
+  "signature_idea": "Prism Burst \u2014 high-power Light special move with a recoil-reduced spread effect",
+  "hook": "The rainbow fin reveal mid-fight is a wow moment \u2014 fans debate the best name for the colour pattern.",
+  "_batch": "batch-02.json",
+  "_score": 73.2,
+  "_panel": 72.5,
+  "dex_id": 24,
+  "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "B02-016",
+  "name": "Prismare",
+  "types": [
+   "Tide",
+   "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "south",
+  "rarity": "rare",
+  "concept": "The fully kindled form \u2014 a magnificent reef-fish whose entire body is a living prism. Light bends through it into weapons.",
+  "visual": "Majestic, long-bodied fish with translucent crystalline fins that refract all light into dazzling arcs, pale blue-white body with thin crystalline armour plates, twin feeler-fins curled like antennae, piercing white eyes.",
+  "size_cm": 130,
+  "weight_kg": 48,
+  "signature_idea": "Wavelength \u2014 Tide/Light hybrid move that hits both types' super-effective targets",
+  "hook": "The crystalline fish that turns any battlefield into a light show. Trainers use it for style points as much as power.",
+  "_batch": "batch-02.json",
+  "_score": 73.9,
+  "_panel": 73.5,
+  "dex_id": 25,
+  "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "B02-001",
+  "name": "Brinelet",
+  "types": [
+   "Tide"
+  ],
+  "role": "Utility/Speedster",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B02-002",
+   "kindle_trigger": "level 14"
+  },
+  "region": "south",
+  "rarity": "common",
+  "concept": "A tiny round tidepool creature that rolls with the surf, collecting trinkets in a dimpled shell-belly. Scouts ahead with quick darting bursts.",
+  "visual": "Plump oval body, translucent blue-grey with a pale underbelly, two bright bead eyes, stubby flipper-feet, and a dimpled concave belly-shell that catches pebbles and seaweed bits. Readable at 16px.",
+  "size_cm": 18,
+  "weight_kg": 0.9,
+  "signature_idea": null,
+  "hook": "Endearingly pudgy and curious \u2014 kids love how it collects bits of the beach in its belly-dip.",
+  "_batch": "batch-02.json",
+  "_score": 75.3,
+  "_panel": 78.0,
+  "dex_id": 26,
+  "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "B02-002",
+  "name": "Brineroll",
+  "types": [
+   "Tide"
+  ],
+  "role": "Utility/Speedster",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B02-003",
+   "kindle_trigger": "level 28"
+  },
+  "region": "south",
+  "rarity": "uncommon",
+  "concept": "Brinelet has grown a proper ridged shell and longer fins, tumbling through shallows with surprising speed. It spins to deflect attacks.",
+  "visual": "Rounder, smoother armadillo-ish shell with tidal spiral ridges in seafoam-blue and cream. Wide webbed paddle-feet, curious antenna-stalks with glowing tips, bright confident eyes.",
+  "size_cm": 40,
+  "weight_kg": 6.5,
+  "signature_idea": "Tidecurl \u2014 a rolling physical move that gains speed-boost on use",
+  "hook": "The satisfying glow-up from its wobbly baby form \u2014 it's fast now and knows it.",
+  "_batch": "batch-02.json",
+  "_score": 74.4,
+  "_panel": 75.5,
+  "dex_id": 27,
+  "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "B02-003",
+  "name": "Brinewrath",
+  "types": [
+   "Tide"
+  ],
+  "role": "Utility/Speedster",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "south",
+  "rarity": "rare",
+  "concept": "The line's final form \u2014 a sleek armoured tidal-beast that rides currents at high speed, its shell now a hydrodynamic shield. Commands entire tidal zones.",
+  "visual": "Streamlined low-slung body, swept-back shell ridges like breaking waves, twin luminous teal eye-stalks, long trailing fin-limbs. Seafoam-blue and deep indigo palette, white crest markings.",
+  "size_cm": 110,
+  "weight_kg": 52,
+  "signature_idea": "Rip Current \u2014 priority move that also sets a Hazard on the field",
+  "hook": "From beach-trinket collector to tidal apex \u2014 the full transformation arc hits hard at its reveal.",
+  "_batch": "batch-02.json",
+  "_score": 70.6,
+  "_panel": 70.0,
+  "dex_id": 28,
+  "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "B02-010",
+  "name": "Glostern",
+  "types": [
+   "Tide",
+   "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "B",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "B02-011",
+   "kindle_trigger": "level 26"
+  },
+  "region": "south",
+  "rarity": "uncommon",
+  "concept": "A small jellyfish-lantern drifting through Pearlmoor harbour. Its translucent bell glows with trapped moonlight, and it fires bioluminescent pulses at threats.",
+  "visual": "Dome bell in soft aqua-blue with a warm gold luminescent core; four trailing tendril-ribbons with tiny pearl droplets at their tips, and a cluster of gentle light-spot eyes beneath the bell.",
+  "size_cm": 28,
+  "weight_kg": 0.4,
+  "signature_idea": "Pearl Pulse \u2014 special Light-attribute projectile that has a chance to blind",
+  "hook": "A living lantern in the harbour \u2014 its gentle glow is the most iconic visual on the Pearlmoor loading screen.",
+  "_batch": "batch-02.json",
+  "_score": 77.8,
+  "_panel": 79.0,
+  "dex_id": 29,
+  "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "B02-011",
+  "name": "Glostrael",
+  "types": [
+   "Tide",
+   "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "south",
+  "rarity": "rare",
+  "concept": "Glostern's kindled form \u2014 its bell has expanded enormously and its moon-glow fills the surrounding sea. A moving constellation-lantern.",
+  "visual": "Vast translucent bell filled with golden light that fractures like stained glass, eight long trailing tentacles tipped with bright orbs like low-hanging stars. Deep navy outer bell, blazing gold interior.",
+  "size_cm": 180,
+  "weight_kg": 12,
+  "signature_idea": "Stellar Cascade \u2014 multi-hit Light/Tide combo that lowers target's Spd",
+  "hook": "The biggest visual surprise on the southern coast \u2014 seeing one rise out of the harbour is awe-inspiring.",
+  "_batch": "batch-02.json",
+  "_score": 77.1,
+  "_panel": 78.0,
+  "dex_id": 30,
+  "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "B02-004",
+  "name": "Lumpin",
+  "types": [
+   "Tide",
+   "Light"
+  ],
+  "role": "Special Wall",
+  "tier": "B",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "B02-005",
+   "kindle_trigger": "level 22"
+  },
+  "region": "south",
+  "rarity": "common",
+  "concept": "A limpet-kin whose flat shell glows with stored moonlight. It clings to coastal rocks and pulses a gentle beacon to guide lost kin home.",
+  "visual": "Conical shell in deep blue-grey with a soft gold radiant glow from within; plump body underneath, two wide-set gentle eyes, four tiny suction-tipped feet. Bioluminescent ring pattern on shell rim.",
+  "size_cm": 22,
+  "weight_kg": 1.4,
+  "signature_idea": "Shell Glow \u2014 boosts own Special Defence and applies a mild dazzle to attacker",
+  "hook": "A cosy little lighthouse-limpet \u2014 kids want one as a nightlight companion.",
+  "_batch": "batch-02.json",
+  "_score": 78.8,
+  "_panel": 80.5,
+  "dex_id": 31,
+  "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "B02-005",
+  "name": "Lumplass",
+  "types": [
+   "Tide",
+   "Light"
+  ],
+  "role": "Special Wall",
+  "tier": "D",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "south",
+  "rarity": "uncommon",
+  "concept": "Lumpin's shell has fused into a radiant broad disc; it now clings to sea-cliff faces and projects a beam of moonlit brine-light that disrupts approaching attackers.",
+  "visual": "Wide flat disc-shell patterned with concentric gold-and-aqua rings, textured like hammered moonstone. The creature beneath is plump and soft-looking with a single large circular eye at the shell's centre aperture.",
+  "size_cm": 65,
+  "weight_kg": 28,
+  "signature_idea": "Moonglass Barrier \u2014 sets a Light-screen equivalent that also prevents stat-lowering moves from landing",
+  "hook": "A gorgeous, bizarre disc-creature \u2014 its single-eye silhouette is instantly iconic.",
+  "_batch": "batch-02.json",
+  "_score": 74.7,
+  "_panel": 74.5,
+  "dex_id": 32,
+  "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "B11-034",
+  "name": "Embralux",
+  "types": [
+   "Ember",
+   "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "E",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "south",
+  "rarity": "very_rare",
+  "concept": "An apex Ember/Light candidate for the south region's secret Lumenary approach \u2014 a great phoenix-fox that embodies the moment between ember and starlight: the exact colour temperature where a flame is indistinguishable from a star. It inhabits the warm updraft columns around Tinderwick's lighthouse and has been spotted ascending and descending from the direction of the Ember constellation for generations. Some star-tenders believe it is a messenger between the anchor-kin and the constellation itself \u2014 the light-courier of the south sky.",
+  "visual": "Sleek, long-limbed fox with enormous flame-and-star-ray tail plumes that trail behind it like a comet's tail. The body is amber-to-white radiant, as though lit from inside. The plume-tails shift between ember-orange at the base and cool diamond-cyan at the feathered tips \u2014 the gradient between fire and starlight. The ears are long and spark-tipped. The 64px sprite will look like a running star.",
+  "size_cm": 160,
+  "weight_kg": 52,
+  "signature_idea": "Ember Ascent \u2014 a rising strike that deals Ember damage on the way up and Light damage on the way down as the attack arc completes; triggers both STAB bonuses if the user holds both types, and always sets a Radiance field on landing.",
+  "hook": "The fox that is also a comet. For players who fell in love with the south region's warmth and wanted an apex that belongs entirely to that feeling.",
+  "_batch": "batch-11.json",
+  "_score": 81.7,
+  "_panel": 84.5,
+  "dex_id": 33,
+  "line_primary_type": "Ember"
+ },
+ {
+  "concept_id": "B02-045",
+  "name": "Tideveil",
+  "types": [
+   "Tide",
+   "Light"
+  ],
+  "role": "Special Wall",
+  "tier": "E",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "south",
+  "rarity": "very_rare",
+  "concept": "The Tide Constellation Warden \u2014 a vast, semi-transparent sea-spirit that dwells in the Tideglass Cavern landmark. When Reyl relights the Tide constellation, Tideveil surfaces to confirm the pact. It is the living embodiment of the moonlit sea.",
+  "visual": "Enormous translucent whale-like form, body almost entirely composed of moon-on-water refraction \u2014 shifting aqua, silver, and pale gold layers visible within. No hard edges, no single colour \u2014 a living sea-mirror. Two vast luminous crescent eyes and trailing aurora-thread fins.",
+  "size_cm": 1800,
+  "weight_kg": 4200,
+  "signature_idea": "Tidal Crown \u2014 once per battle, raises all Tide-type kin's stats by one stage; cancels the opponent's weather/terrain effects",
+  "hook": "The constellation kin of the sea \u2014 seeing it surface in the Cavern is the south coast's defining awe moment.",
+  "_batch": "batch-02.json",
+  "_score": 80.2,
+  "_panel": 82.5,
+  "dex_id": 34,
+  "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "B04-034",
+  "name": "Crystink",
+  "types": [
+   "Stone",
+   "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B04-035",
+   "kindle_trigger": "level 19"
+  },
+  "region": "east",
+  "rarity": "uncommon",
+  "concept": "A small crystal-beetle whose wing-cases are faceted like cut gems; it scurries through the Crystoll Vault tunnels collecting fragments of pure diamond crystal to patch its growing shell.",
+  "visual": "Beetle-form about the size of a thumb; transparent faceted wing-cases filled with cyan-white crystal shards that catch light; six iridescent legs; eyes are tiny perfect gem-spheres in deep blue.",
+  "size_cm": 12,
+  "weight_kg": 0.3,
+  "signature_idea": null,
+  "hook": "The crystal beetle that collects gems for its own shell \u2014 adorable self-improvement.",
+  "_batch": "batch-04.json",
+  "_score": 74.4,
+  "_panel": 75.5,
+  "dex_id": 35,
+  "line_primary_type": "Stone"
+ },
+ {
+  "concept_id": "B04-035",
+  "name": "Lumecite",
+  "types": [
+   "Stone",
+   "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B04-036",
+   "kindle_trigger": "level 38"
+  },
+  "region": "east",
+  "rarity": "rare",
+  "concept": "A radiant crystal-stag whose antlers are grown entirely from pure luminous diamond crystal; it illuminates entire mine chambers as it walks, and its light is said to repel the Hollowing.",
+  "visual": "Elegant deer-like kin with a white-grey crystal body; antlers are an elaborate branching structure of cyan-diamond crystal that glow continuously; eyes are large and clear as water; hooves are polished white stone; beautiful and otherworldly.",
+  "size_cm": 115,
+  "weight_kg": 90,
+  "signature_idea": null,
+  "hook": "The crystal-antlered stag lighting the dark mine \u2014 majestic and mysterious, every player wants to find it.",
+  "_batch": "batch-04.json",
+  "_score": 74.8,
+  "_panel": 76.0,
+  "dex_id": 36,
+  "line_primary_type": "Stone"
+ },
+ {
+  "concept_id": "B04-036",
+  "name": "Prismara",
+  "types": [
+   "Stone",
+   "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "E",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "east",
+  "rarity": "very_rare",
+  "concept": "The apex Stone/Light crystal kin of the Crystoll Vault \u2014 a towering crystal-stag whose entire body is now fused into a living prism; it refracts all light into a full spectrum and its presence causes crystal growths to bloom across the cave walls. The Stone Constellation Warden.",
+  "visual": "Grand stag-form; body is smooth translucent white crystal shot through with a continuous rainbow refraction; diamond-branching antlers reach nearly to cave ceilings; four crystal-column legs; eyes emit soft white radiance; when still it is indistinguishable from a perfect crystal formation.",
+  "size_cm": 240,
+  "weight_kg": 800,
+  "signature_idea": "Prismatic Cascade \u2014 refracts stored light into a multi-hit special barrage that hits all types neutrally but with devastating power; lights up the battlefield for several turns.",
+  "hook": "The Crystoll Vault's secret \u2014 the most spectacular kin in the eastern region and a genuine jaw-drop moment.",
+  "_batch": "batch-04.json",
+  "_score": 72.5,
+  "_panel": 71.5,
+  "dex_id": 37,
+  "line_primary_type": "Stone"
+ },
+ {
+  "concept_id": "B09-014",
+  "name": "Mossglow",
+  "types": [
+   "Light",
+   "Verdant"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B09-015",
+   "kindle_trigger": "level 18"
+  },
+  "region": "east",
+  "rarity": "common",
+  "concept": "A fuzzy moss-ball that slowly rolls through the forest floor of Lowleaf Hollow, leaving a trail of faint bioluminescent spores; too round and soft to be scary but deeply easy to underestimate.",
+  "visual": "Near-perfect sphere of dense green moss with scattered amber spore-dots; no obvious limbs but two tiny leaf-stubs; a single sleepy eye peeking out from the moss; rolls via a wobble-wiggle motion; reads as a mossy marble at 16px.",
+  "size_cm": 18,
+  "weight_kg": 1.4,
+  "signature_idea": null,
+  "hook": "It looks completely harmless \u2014 players discover that its spore cloud inflicts Sleep, which is a lovely reveal.",
+  "_batch": "batch-09.json",
+  "_score": 73.0,
+  "_panel": 73.5,
+  "dex_id": 38,
+  "line_primary_type": "Light"
+ },
+ {
+  "concept_id": "B09-015",
+  "name": "Mossmantle",
+  "types": [
+   "Light",
+   "Verdant"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B09-016",
+   "kindle_trigger": "level 34"
+  },
+  "region": "east",
+  "rarity": "uncommon",
+  "concept": "A half-formed moss-treeling that has grown a cloak of living bioluminescent fronds; when it opens its arms the spore cloud it releases can confuse or sedate an entire clearing.",
+  "visual": "Short bipedal figure draped in a thick cape of glowing green moss-fronds; a wooden face-plate with amber eyes showing through the moss hood; stubby arms ending in leaf-fans; a round body hidden under the living mantle; warm and eerie at 32px.",
+  "size_cm": 88,
+  "weight_kg": 14,
+  "signature_idea": null,
+  "hook": "A walking haunted coat of moss \u2014 kids will love the idea of a kin that is basically a living cloak.",
+  "_batch": "batch-09.json",
+  "_score": 73.4,
+  "_panel": 74.0,
+  "dex_id": 39,
+  "line_primary_type": "Light"
+ },
+ {
+  "concept_id": "B09-016",
+  "name": "Lumenmoss",
+  "types": [
+   "Light",
+   "Verdant"
+  ],
+  "role": "Physical Wall",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "east",
+  "rarity": "rare",
+  "concept": "An ancient moss-lord of the Hollow whose entire body is a cathedral of bioluminescent growth; it breathes out a spore-fog that coats opponents' scales and slows their movement, while healing allies who stand within its light.",
+  "visual": "Huge bipedal form entirely cloaked in thick layered glowing moss-panels; a great antler-rack of twisted branches sprouting glowing spore-bulbs; a solemn carved-wood face deep within a moss-arch; radiates green-amber light in gentle pulses; awe-inspiring at 48px.",
+  "size_cm": 220,
+  "weight_kg": 180,
+  "signature_idea": "Sporemist Cathedral \u2014 poisons all foes with a lingering light-spore variant (Glowblight: takes 1/8 HP each turn + -1 Speed) while curing all allied status ailments.",
+  "hook": "A creature that IS a living forest shrine \u2014 kids who love Verdant AND Light kin will feel this is made for them.",
+  "_batch": "batch-09.json",
+  "_score": 75.7,
+  "_panel": 76.0,
+  "dex_id": 40,
+  "line_primary_type": "Light"
+ },
+ {
+  "concept_id": "B01-021",
+  "name": "Scorchite",
+  "types": [
+   "Ember"
+  ],
+  "role": "Special Sweeper",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B01-022",
+   "kindle_trigger": "level 14"
+  },
+  "region": "east",
+  "rarity": "common",
+  "concept": "A marble-sized wandering coal-sprite with a single bright eye; it rolls into warm crevices in Cinderhead Mine and hums contentedly.",
+  "visual": "Near-perfect sphere, dull black coal texture with a single amber-glow eye, two tiny round feet; the simplest possible round silhouette at 32px.",
+  "size_cm": 12,
+  "weight_kg": 0.9,
+  "signature_idea": null,
+  "hook": "The smallest, round-est creature in the mine \u2014 impossibly cute in its simplicity.",
+  "_batch": "batch-01.json",
+  "_score": 75.3,
+  "_panel": 78.0,
+  "dex_id": 41,
+  "line_primary_type": "Ember"
+ },
+ {
+  "concept_id": "B01-022",
+  "name": "Coalump",
+  "types": [
+   "Ember"
+  ],
+  "role": "Special Sweeper",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B01-023",
+   "kindle_trigger": "level 30"
+  },
+  "region": "east",
+  "rarity": "uncommon",
+  "concept": "The little coal-sprite has absorbed enough heat to grow limbs and a second eye; its body now cracks open in starbursts of orange light when it attacks.",
+  "visual": "Lumpy rounded torso, short sturdy limbs, two glowing eyes, body covered in expanding crack-pattern glow lines; reads as power building at 48px.",
+  "size_cm": 50,
+  "weight_kg": 18.0,
+  "signature_idea": null,
+  "hook": "Watching those cracks spread as it gets stronger makes every battle feel like building toward an explosion.",
+  "_batch": "batch-01.json",
+  "_score": 69.3,
+  "_panel": 69.5,
+  "dex_id": 42,
+  "line_primary_type": "Ember"
+ },
+ {
+  "concept_id": "B01-023",
+  "name": "Pyrolith",
+  "types": [
+   "Ember",
+   "Stone"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "east",
+  "rarity": "rare",
+  "concept": "A crystallised magma-titan whose body has solidified into angular obsidian with a blazing reactor core visible through the translucent chest-plate.",
+  "visual": "Tall imposing angular silhouette, jet obsidian faceted body, a glowing diamond-orange core blazing through a transparent chest section, jutting shoulder-spurs; monolithic at 64px.",
+  "size_cm": 180,
+  "weight_kg": 320.0,
+  "signature_idea": "Core Breach \u2014 massive single-hit fire blast; user loses some HP as recoil",
+  "hook": "A tiny coal rolling in the dark became this godlike obsidian titan \u2014 the mine's final secret.",
+  "_batch": "batch-01.json",
+  "_score": 75.7,
+  "_panel": 76.0,
+  "dex_id": 43,
+  "line_primary_type": "Ember"
+ },
+ {
+  "concept_id": "B04-006",
+  "name": "Flickore",
+  "types": [
+   "Stone",
+   "Storm"
+  ],
+  "role": "Special Sweeper",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B04-007",
+   "kindle_trigger": "level 17"
+  },
+  "region": "east",
+  "rarity": "common",
+  "concept": "A small static-furred rodent whose iron-ore-flecked pelt crackles with friction sparks as it scurries through the tunnels. Base form of the Sparkrat line.",
+  "visual": "Rat-sized, wiry body covered in dark iron-grey fur with tiny amber sparks visible along the spine; prominent rounded ears; long thin tail tipped with an ore nugget.",
+  "size_cm": 22,
+  "weight_kg": 0.9,
+  "signature_idea": null,
+  "hook": "The classic small cave rodent \u2014 but charged. Kids will love the sparking fur.",
+  "_batch": "batch-04.json",
+  "_score": 69.5,
+  "_panel": 68.5,
+  "dex_id": 44,
+  "line_primary_type": "Stone"
+ },
+ {
+  "concept_id": "B04-007",
+  "name": "Sparkrat",
+  "types": [
+   "Stone",
+   "Storm"
+  ],
+  "role": "Special Sweeper",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B04-008",
+   "kindle_trigger": "level 32"
+  },
+  "region": "east",
+  "rarity": "uncommon",
+  "concept": "A larger, more confident ore-rodent whose entire coat is threaded with conductive mineral filaments; static discharge is constant and audible as a faint hiss. Canon Cinderhead Mine kin.",
+  "visual": "Medium-sized stout rodent; fur is dark grey-black with arcing amber-white spark threads woven through it; black iron-ore patches on shoulders and haunches; tail has two ore-bead segments that clatter together.",
+  "size_cm": 55,
+  "weight_kg": 9,
+  "signature_idea": null,
+  "hook": "The sparking mine-rat everyone wants to catch; its crackling silhouette is instantly recognisable in the cave dark.",
+  "_batch": "batch-04.json",
+  "_score": 76.5,
+  "_panel": 78.5,
+  "dex_id": 45,
+  "line_primary_type": "Stone"
+ },
+ {
+  "concept_id": "B04-008",
+  "name": "Voltcrag",
+  "types": [
+   "Stone",
+   "Storm"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "east",
+  "rarity": "rare",
+  "concept": "A large, heavily-built ore-beast that acts as a living conductor; veins of metallic mineral run visibly beneath its hide, and static builds in the mine walls around it.",
+  "visual": "Bear-sized quadruped; charcoal-black stone-dense hide with bright amber charge-lines tracing the mineral veins; mane of stiff iron-ore bristles along the neck; tail a coiled ore-spring that arcs sparks when lashing.",
+  "size_cm": 145,
+  "weight_kg": 220,
+  "signature_idea": "Ore Discharge \u2014 a powerful Stone/Storm special move that chains between nearby metal-bearing surfaces for bonus damage in caves.",
+  "hook": "The terrifying final form of the mine-rat \u2014 it's become a living storm-generator buried in stone.",
+  "_batch": "batch-04.json",
+  "_score": 75.3,
+  "_panel": 75.5,
+  "dex_id": 46,
+  "line_primary_type": "Stone"
+ },
+ {
+  "concept_id": "B04-001",
+  "name": "Pebbit",
+  "types": [
+   "Stone"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B04-002",
+   "kindle_trigger": "level 18"
+  },
+  "region": "east",
+  "rarity": "common",
+  "concept": "A round pebble-sprite no larger than a fist that clings to cave walls with adhesive stone-dust feet, bouncing away when startled.",
+  "visual": "Almost perfectly spherical grey-brown body with two stub legs and wide amber eyes; tiny chip-marks on its shell like natural wear marks; silhouette reads as a rolling ball at 16px.",
+  "size_cm": 14,
+  "weight_kg": 1.8,
+  "signature_idea": null,
+  "hook": "Every kid will want to collect the round little pebble-thing first; it's adorable and bouncy.",
+  "_batch": "batch-04.json",
+  "_score": 73.5,
+  "_panel": 75.5,
+  "dex_id": 47,
+  "line_primary_type": "Stone"
+ },
+ {
+  "concept_id": "B04-002",
+  "name": "Rubbol",
+  "types": [
+   "Stone"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B04-003",
+   "kindle_trigger": "level 30"
+  },
+  "region": "east",
+  "rarity": "uncommon",
+  "concept": "A stocky boulder-torso kin with a cracked surface revealing faint mineral veins; it rolls defensively when threatened.",
+  "visual": "Squat, wide-shouldered stone body with visible grey-white mineral veins along arms; amber eyes now set in a craggy brow ridge; four sturdy legs planted firmly.",
+  "size_cm": 62,
+  "weight_kg": 48,
+  "signature_idea": null,
+  "hook": "The middle stage that looks like it means business \u2014 mineral veins hint at the spectacular final form.",
+  "_batch": "batch-04.json",
+  "_score": 71.1,
+  "_panel": 72.0,
+  "dex_id": 48,
+  "line_primary_type": "Stone"
+ },
+ {
+  "concept_id": "B04-003",
+  "name": "Gravelo",
+  "types": [
+   "Stone"
+  ],
+  "role": "Physical Wall",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "east",
+  "rarity": "rare",
+  "concept": "A broad, slow-moving tortoise whose domed shell is encrusted with genuine crystal growths from the mine, each facet catching the lamp-light differently. Canon Cinderhead Mine resident.",
+  "visual": "Massive hexagonal-plated shell studded with diamond-crystal spires; four column-thick legs; small blunt head with half-lidded stone-grey eyes; walks with serene deliberateness; silhouette unmistakable at any size.",
+  "size_cm": 140,
+  "weight_kg": 310,
+  "signature_idea": "Crystal Rampart \u2014 raises Defense sharply while shedding crystal shards as a hazard.",
+  "hook": "The iconic crystal-shelled tortoise of Cinderhead Mine; seeing it lumbering through the cave is an awe moment.",
+  "_batch": "batch-04.json",
+  "_score": 75.1,
+  "_panel": 76.5,
+  "dex_id": 49,
+  "line_primary_type": "Stone"
+ },
+ {
+  "concept_id": "B04-031",
+  "name": "Fossik",
+  "types": [
+   "Stone"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B04-032",
+   "kindle_trigger": "level 20"
+  },
+  "region": "east",
+  "rarity": "common",
+  "concept": "A small fossil-shrimp kin that has come back to life; its carapace is the hard chalk-white of ancient bone-stone and it navigates by vibrating its antennae against rock.",
+  "visual": "Trilobite-like segmented body in pale bone-white chalk; two long swept-back antennae; multiple small legs; small eyes set in a wide flat head; delicate and prehistoric in feel.",
+  "size_cm": 16,
+  "weight_kg": 0.4,
+  "signature_idea": null,
+  "hook": "The little fossil come to life \u2014 ancient and delicate, like holding deep time.",
+  "_batch": "batch-04.json",
+  "_score": 70.8,
+  "_panel": 71.5,
+  "dex_id": 50,
+  "line_primary_type": "Stone"
+ },
+ {
+  "concept_id": "B04-032",
+  "name": "Crevasser",
+  "types": [
+   "Stone"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B04-033",
+   "kindle_trigger": "level 36"
+  },
+  "region": "east",
+  "rarity": "uncommon",
+  "concept": "A revived fossil-crustacean that has grown larger and harder; its shell now has genuine crevasse-deep ridges and it moves along cave floors with quiet authority.",
+  "visual": "Larger segmented crustacean; thick ridged carapace in layered grey-cream; heavy claws useful for gripping rock; wide eyes set at the edge of its head-plate; moves with a side-to-side deliberate walk.",
+  "size_cm": 75,
+  "weight_kg": 55,
+  "signature_idea": null,
+  "hook": "The fossil mid-form that looks genuinely ancient \u2014 evolution as palaeontology.",
+  "_batch": "batch-04.json",
+  "_score": 72.8,
+  "_panel": 74.5,
+  "dex_id": 51,
+  "line_primary_type": "Stone"
+ },
+ {
+  "concept_id": "B04-033",
+  "name": "Lithonyx",
+  "types": [
+   "Stone"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "east",
+  "rarity": "rare",
+  "concept": "A massive revived fossil-predator whose carapace has grown thick enough to shrug off cave-ins; it swings its tail like a wrecking ball and its eyes glow with a faint ancient light.",
+  "visual": "Large quadruped; thick ridged stone-white carapace with deep limestone-cream and grey layering; broad low head with two faintly glowing amber eyes; heavy armoured tail; primordial and formidable.",
+  "size_cm": 200,
+  "weight_kg": 650,
+  "signature_idea": "Ancient Force \u2014 a powerful physical attack drawing on the kin's aeons of preserved energy; never misses.",
+  "hook": "The fossil that never should have woken up \u2014 ancient predator energy in a modern cave.",
+  "_batch": "batch-04.json",
+  "_score": 72.0,
+  "_panel": 72.0,
+  "dex_id": 52,
+  "line_primary_type": "Stone"
+ },
+ {
+  "concept_id": "B04-017",
+  "name": "Oreling",
+  "types": [
+   "Stone"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B04-018",
+   "kindle_trigger": "level 16"
+  },
+  "region": "east",
+  "rarity": "common",
+  "concept": "A dumpling-shaped cave-grub with a body fused to a piece of raw iron ore; it headbutts walls to eat mineral flakes, slowly growing heavier.",
+  "visual": "Chubby grub-like body wrapped around a dark iron-ore lump; tiny arms, vestigial; rounded head with a wide flat mouth for scraping ore; small black eyes; warm grey-brown colouring.",
+  "size_cm": 18,
+  "weight_kg": 3,
+  "signature_idea": null,
+  "hook": "The ore-grub that looks like it's been bolted to a rock \u2014 endearing clumsiness.",
+  "_batch": "batch-04.json",
+  "_score": 71.8,
+  "_panel": 73.0,
+  "dex_id": 53,
+  "line_primary_type": "Stone"
+ },
+ {
+  "concept_id": "B04-018",
+  "name": "Orebound",
+  "types": [
+   "Stone"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B04-019",
+   "kindle_trigger": "level 34"
+  },
+  "region": "east",
+  "rarity": "uncommon",
+  "concept": "A stocky bipedal kin that has grown up around its ore core; fists and elbows reinforced with raw iron protrusions, and new ore deposits form on its shoulders.",
+  "visual": "Short biped with a barrel chest; iron-ore growth on both fists and elbows like natural knuckledusters; shoulder ore-knobs; dark grey skin with metallic flecks; small determined face.",
+  "size_cm": 80,
+  "weight_kg": 95,
+  "signature_idea": null,
+  "hook": "The mid-form that looks like it means business \u2014 ore-plated and ready to brawl.",
+  "_batch": "batch-04.json",
+  "_score": 68.6,
+  "_panel": 68.5,
+  "dex_id": 54,
+  "line_primary_type": "Stone"
+ },
+ {
+  "concept_id": "B04-019",
+  "name": "Ferrolith",
+  "types": [
+   "Stone"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "east",
+  "rarity": "rare",
+  "concept": "A massive iron-ore golem whose body is now a dense interlock of stone and metal; each strike sends shockwaves through the mine tunnel walls.",
+  "visual": "Imposing wide-shouldered biped; entire body studded with iron-ore protrusions and plates; massive stone fists each larger than a human torso; slow-burning orange eyes set deep in a craggy face; silhouette is pure power.",
+  "size_cm": 220,
+  "weight_kg": 1100,
+  "signature_idea": "Ironclad Slam \u2014 a devastating physical move that ignores Defense-raising effects on the target.",
+  "hook": "The iron golem that grew from a grub \u2014 the shock of scale makes its evolution line feel rewarding.",
+  "_batch": "batch-04.json",
+  "_score": 74.1,
+  "_panel": 75.0,
+  "dex_id": 55,
+  "line_primary_type": "Stone"
+ },
+ {
+  "concept_id": "B03-007",
+  "name": "Sporeling",
+  "types": [
+   "Verdant"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B03-008",
+   "kindle_trigger": "level 14"
+  },
+  "region": "east",
+  "rarity": "common",
+  "concept": "A tiny mushroom-cap sprite native to Lowleaf Hollow. Its cap glows faintly and pulses when excited. It releases a gentle sleepy spore mist when threatened.",
+  "visual": "Round mushroom-cap head (pale lavender with white spots), two stubby legs, tiny arms, big innocent eyes; fits in a cupped hand.",
+  "size_cm": 20,
+  "weight_kg": 1.2,
+  "signature_idea": null,
+  "hook": "Canon atlas kin \u2014 the iconic Lowleaf mushroom sprite every new player meets. Adorable first-catch energy.",
+  "_batch": "batch-03.json",
+  "_score": 77.4,
+  "_panel": 81.0,
+  "dex_id": 56,
+  "line_primary_type": "Verdant"
+ },
+ {
+  "concept_id": "B03-008",
+  "name": "Sporemid",
+  "types": [
+   "Verdant"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B03-009",
+   "kindle_trigger": "level 28"
+  },
+  "region": "east",
+  "rarity": "uncommon",
+  "concept": "A taller, more confident mushroom-kin with a fully developed cap and a ring of satellite cap-growths around its torso. It exhales layered spore clouds with varied effects.",
+  "visual": "Human-height mushroom form, broader cap with bioluminescent gill-lines underneath, satellite caps on its shoulders, dusty mauve-green coloured; stance is wide and assured.",
+  "size_cm": 80,
+  "weight_kg": 28,
+  "signature_idea": null,
+  "hook": "The bridge form \u2014 visibly more capable than Sporeling but with that same odd-cute mushroom energy.",
+  "_batch": "batch-03.json",
+  "_score": 71.1,
+  "_panel": 72.0,
+  "dex_id": 57,
+  "line_primary_type": "Verdant"
+ },
+ {
+  "concept_id": "B03-009",
+  "name": "Mycelarch",
+  "types": [
+   "Verdant",
+   "Dark"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "east",
+  "rarity": "rare",
+  "concept": "The ancient lord of the Spore Grotto, a towering fungal entity whose underground mycelium network spans the entire Hollow. Its spores can read the emotional state of any creature nearby.",
+  "visual": "Massive pillar-like mushroom body with many layered caps in deep indigo and midnight-green; trailing root-tendrils like a cloak; eyes gleam with dim amber light in shadow.",
+  "size_cm": 240,
+  "weight_kg": 580,
+  "signature_idea": "Mycelweb \u2014 status move that links all wild kin in the area to the user, mirroring status conditions",
+  "hook": "The awe pay-off at the end of the Sporeling line \u2014 gentle sprout becomes an ancient, eerie fungal elder that secretly controls the whole forest floor.",
+  "_batch": "batch-03.json",
+  "_score": 77.4,
+  "_panel": 78.5,
+  "dex_id": 58,
+  "line_primary_type": "Verdant"
+ },
+ {
+  "concept_id": "B03-014",
+  "name": "Dewling",
+  "types": [
+   "Verdant",
+   "Tide"
+  ],
+  "role": "Special Sweeper",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B03-015",
+   "kindle_trigger": "level 13"
+  },
+  "region": "east",
+  "rarity": "common",
+  "concept": "A droplet-shaped seedling that lives in pools of forest dew. It is translucent, with a single seed-core visible inside its water-plant body.",
+  "visual": "Teardrop body of pale green water-gel, a tiny brown seed core at its centre, thin tendrils as limbs, enormous shiny eyes; ethereally small.",
+  "size_cm": 12,
+  "weight_kg": 0.3,
+  "signature_idea": null,
+  "hook": "Impossibly tiny and translucent \u2014 a glowing dewdrop with eyes. Players love hatching something this small.",
+  "_batch": "batch-03.json",
+  "_score": 74.1,
+  "_panel": 75.0,
+  "dex_id": 59,
+  "line_primary_type": "Verdant"
+ },
+ {
+  "concept_id": "B03-015",
+  "name": "Poolfrond",
+  "types": [
+   "Verdant",
+   "Tide"
+  ],
+  "role": "Special Sweeper",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B03-016",
+   "kindle_trigger": "level 26"
+  },
+  "region": "east",
+  "rarity": "uncommon",
+  "concept": "A lily-pad kin that glides on still forest pools. Its broad flat body floats on the surface while long submerged fronds trail below, sensing disturbances.",
+  "visual": "Flat circular green body like a great lily-pad, smooth emerald top, pale root-fronds hanging down, periscope eyes on short stalks, small trailing flowers at the rim.",
+  "size_cm": 80,
+  "weight_kg": 32,
+  "signature_idea": null,
+  "hook": "Satisfying mid-form \u2014 clearly more capable than a dewdrop yet still serene and a little absurd; slides elegantly on water.",
+  "_batch": "batch-03.json",
+  "_score": 73.4,
+  "_panel": 74.0,
+  "dex_id": 60,
+  "line_primary_type": "Verdant"
+ },
+ {
+  "concept_id": "B03-016",
+  "name": "Tidalarch",
+  "types": [
+   "Verdant",
+   "Tide"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "east",
+  "rarity": "rare",
+  "concept": "A great water-plant entity that spans a pool entirely, raising arching vine-bridges of woven kelp. Rumoured to be a single kin or many acting as one.",
+  "visual": "Long arching serpentine plant form, dark teal body, many tributary fronds like trailing ribbons, lotus blossom crown of bioluminescent petals; fluid and enormous.",
+  "size_cm": 500,
+  "weight_kg": 1100,
+  "signature_idea": "Surge Canopy \u2014 special move raising a curtain of pressurised water-and-vine that damages on entry",
+  "hook": "The spectacular pool finale \u2014 starts as something you could hold in one hand and becomes something you walk under.",
+  "_batch": "batch-03.json",
+  "_score": 74.7,
+  "_panel": 74.5,
+  "dex_id": 61,
+  "line_primary_type": "Verdant"
+ },
+ {
+  "concept_id": "B03-024",
+  "name": "Barkhelm",
+  "types": [
+   "Verdant",
+   "Stone"
+  ],
+  "role": "Physical Wall",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B03-025",
+   "kindle_trigger": "level 16"
+  },
+  "region": "east",
+  "rarity": "common",
+  "concept": "A sturdy tortoise-like creature whose shell is made of compressed bark and stone. It sleeps for weeks, growing new bark-rings like a tree.",
+  "visual": "Tiny squat form, rounded bark-ring shell like a tree cross-section, four stubby rock-grey legs, a small snout peering out; looks like a living tree stump.",
+  "size_cm": 18,
+  "weight_kg": 4,
+  "signature_idea": null,
+  "hook": "A living tree-stump that turns out to be a baby \u2014 the double-take moment when it opens its eyes.",
+  "_batch": "batch-03.json",
+  "_score": 71.3,
+  "_panel": 71.0,
+  "dex_id": 62,
+  "line_primary_type": "Verdant"
+ },
+ {
+  "concept_id": "B03-025",
+  "name": "Stonebark",
+  "types": [
+   "Verdant",
+   "Stone"
+  ],
+  "role": "Physical Wall",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B03-026",
+   "kindle_trigger": "level 32"
+  },
+  "region": "east",
+  "rarity": "uncommon",
+  "concept": "A medium bark-golem that moves with deliberate slowness. Its bark-ring shell has mineralised completely, giving it near-impenetrable defences.",
+  "visual": "Stocky upright tortoise-golem, concentric mineral-bark rings clearly visible on shell, mossy patches on flat back, two large stone-knuckled fists, calm half-lidded eyes.",
+  "size_cm": 90,
+  "weight_kg": 185,
+  "signature_idea": null,
+  "hook": "The middle of a great defensive line \u2014 growing visibly stronger while staying unhurried and serene.",
+  "_batch": "batch-03.json",
+  "_score": 72.0,
+  "_panel": 72.0,
+  "dex_id": 63,
+  "line_primary_type": "Verdant"
+ },
+ {
+  "concept_id": "B03-026",
+  "name": "Rootwarden",
+  "types": [
+   "Verdant",
+   "Stone"
+  ],
+  "role": "Physical Wall",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "east",
+  "rarity": "rare",
+  "concept": "An ancient bark-golem so old that saplings have begun growing from its back. It stands immobile as a boulder for centuries and only moves when the forest is threatened.",
+  "visual": "Massive standing golem of layered stone-bark, a living forest growing from its shoulders (small ferns, mosses, a small sapling), deep carved-wood face half-hidden by roots, feet rooted into the ground.",
+  "size_cm": 280,
+  "weight_kg": 1800,
+  "signature_idea": "Ancient Stand \u2014 ability: reduces all incoming damage by 20% while the user has not moved that turn",
+  "hook": "A walking old-growth forest \u2014 the awe moment of realising the clearing you just walked through was a sleeping kin.",
+  "_batch": "batch-03.json",
+  "_score": 75.3,
+  "_panel": 75.5,
+  "dex_id": 64,
+  "line_primary_type": "Verdant"
+ },
+ {
+  "concept_id": "B03-003",
+  "name": "Glowsip",
+  "types": [
+   "Verdant",
+   "Light"
+  ],
+  "role": "Special Tank",
+  "tier": "B",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "B03-004",
+   "kindle_trigger": "level 19"
+  },
+  "region": "east",
+  "rarity": "uncommon",
+  "concept": "A small nectar-moth larva that drinks bioluminescent glowmoss dew, storing liquid light in a translucent belly-sac. Its antennae drip soft cyan glow.",
+  "visual": "Pale cream grub-body, faintly luminous belly like a nightlight, two feathery cyan antennae, soft compound eyes; round and huggable.",
+  "size_cm": 22,
+  "weight_kg": 2.5,
+  "signature_idea": null,
+  "hook": "starter candidate \u2014 glowing larva that looks like a living lantern; perfect for the lamplight aesthetic.",
+  "_batch": "batch-03.json",
+  "_score": 73.0,
+  "_panel": 73.5,
+  "dex_id": 65,
+  "line_primary_type": "Verdant"
+ },
+ {
+  "concept_id": "B03-004",
+  "name": "Lumournis",
+  "types": [
+   "Verdant",
+   "Light"
+  ],
+  "role": "Special Tank",
+  "tier": "D",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "east",
+  "rarity": "uncommon",
+  "concept": "A grand glowing moth whose wings are broad leaf-panels veined with bioluminescent channels. It radiates a healing aura that calms wild kin and soothes blight.",
+  "visual": "Large moth form; four broad wings each shaped like a glowing leaf, veined in cyan and gold; soft downy body, feathered antennae, six slender legs; the whole silhouette looks like a living stained-glass window.",
+  "size_cm": 130,
+  "weight_kg": 18,
+  "signature_idea": "Dawnveil \u2014 special move that wraps an ally in luminous leaf-light, raising their special defence",
+  "hook": "starter candidate \u2014 gorgeous moth finale that doubles as a mobile lantern; special tank role gives it defensive staying power, feels like a protector.",
+  "_batch": "batch-03.json",
+  "_score": 76.4,
+  "_panel": 77.0,
+  "dex_id": 66,
+  "line_primary_type": "Verdant"
+ },
+ {
+  "concept_id": "B03-010",
+  "name": "Fennlight",
+  "types": [
+   "Verdant",
+   "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "B",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "B03-011",
+   "kindle_trigger": "level 20"
+  },
+  "region": "east",
+  "rarity": "uncommon",
+  "concept": "A lithe glowing fern-serpent native to Lowleaf Hollow's bioluminescent undergrowth. Its body traces the pattern of fern fronds, and it darts through the dark emitting soft cyan pulses.",
+  "visual": "Slender vine-serpent body, fern-leaf pattern along its sides that glows cyan, bright curious eyes, small frond-crown on its head; sinuous and quick.",
+  "size_cm": 65,
+  "weight_kg": 4,
+  "signature_idea": null,
+  "hook": "Canon atlas kin \u2014 the glowing fern-serpent, fast and magical. Hits Verdant/Light coverage and doubles as a moving lantern.",
+  "_batch": "batch-03.json",
+  "_score": 79.0,
+  "_panel": 82.0,
+  "dex_id": 67,
+  "line_primary_type": "Verdant"
+ },
+ {
+  "concept_id": "B03-011",
+  "name": "Fernlance",
+  "types": [
+   "Verdant",
+   "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "east",
+  "rarity": "rare",
+  "concept": "A fully adult fern-serpent, now as long as a felled tree, wreathed in blazing bioluminescent fronds. It can launch focused beams of purified green-gold light. Revered by Lowleaf villagers as a forest guardian.",
+  "visual": "Long undulating serpent, densely fringed with fern-fronds that blaze gold and cyan along their edges; head-crown has expanded into a full luminous halo; tail tapers to a glowing spike.",
+  "size_cm": 380,
+  "weight_kg": 95,
+  "signature_idea": "Frondbeam \u2014 special move, channels gathered forest-light into a single radiant strike",
+  "hook": "The Lowleaf Hollow signature rare \u2014 seeing a Fernlance flowing through glowing ferns is the image on the east region's poster.",
+  "_batch": "batch-03.json",
+  "_score": 74.3,
+  "_panel": 74.0,
+  "dex_id": 68,
+  "line_primary_type": "Verdant"
+ },
+ {
+  "concept_id": "B04-025",
+  "name": "Riddlestone",
+  "types": [
+   "Stone"
+  ],
+  "role": "Special Wall",
+  "tier": "C",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "east",
+  "rarity": "uncommon",
+  "concept": "A sphinx-like cave construct that has formed naturally from layered sedimentary stone; its face is barely distinguishable from the rock, and it moves only rarely.",
+  "visual": "Recumbent cat-lion shape carved entirely from layered sandstone bands in amber, cream, and grey; face is stylised and smooth like worn sculpture; heavy paws; eyes are two oval pieces of polished amber.",
+  "size_cm": 120,
+  "weight_kg": 240,
+  "signature_idea": "Stone Patience \u2014 greatly raises Special Defense at the cost of Speed; lore: it has waited in the mine for centuries.",
+  "hook": "The cave-sphinx that barely moves \u2014 an atmosphere piece that's also a wall in battle.",
+  "_batch": "batch-04.json",
+  "_score": 75.1,
+  "_panel": 76.5,
+  "dex_id": 69,
+  "line_primary_type": "Stone"
+ },
+ {
+  "concept_id": "B11-020",
+  "name": "Mycovast",
+  "types": [
+   "Verdant",
+   "Stone"
+  ],
+  "role": "Special Tank",
+  "tier": "E",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "east",
+  "rarity": "very_rare",
+  "concept": "The apex kin of Spore Grotto \u2014 a vast, ancient fungal titan that has been growing through the rock of Glowmoss Deep for centuries, its mycelial network threading through both soil and stone until the two are indistinguishable in its body. The grotto it inhabits is as much part of it as its visible cap; remove the creature and the cave would slowly collapse. Mycovast communicates across its network in slow mineral resonance \u2014 a signal that takes hours but covers the whole eastern region. It is the oldest living thing in Vesperholm that isn't a star.",
+  "visual": "An enormous mushroom-capped behemoth walking on six thick stone-threaded root-legs. The cap is deep earth-brown with bioluminescent Verdant spots in diamond-cyan and pale green. Beneath the cap hangs a fringe of glowing sporecurtain. The legs are stone-grey with thick mycelial cords wrapped around them like rope around pillars. The face is a flat, calm disc with two dim-glow eyes. At 64px it reads as a cave and a creature simultaneously.",
+  "size_cm": 300,
+  "weight_kg": 2200,
+  "signature_idea": "Mycelial Surge \u2014 sends a pulse through its underground network that strikes every opponent with Verdant damage and inflicts the Rooted status (Speed halved, immune to forced switches) for two turns; the move that says the ground itself is the kin.",
+  "hook": "The creature that makes players realise the whole grotto has been alive this whole time. A boss encounter with ecological horror charm.",
+  "_batch": "batch-11.json",
+  "_score": 82.0,
+  "_panel": 85.0,
+  "dex_id": 70,
+  "line_primary_type": "Verdant"
+ },
+ {
+  "concept_id": "B06-040",
+  "name": "Iceling",
+  "types": [
+   "Frost"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B06-041",
+   "kindle_trigger": "level 16"
+  },
+  "region": "north",
+  "rarity": "common",
+  "concept": "A small, round ice-sprite no bigger than a fist that forms spontaneously wherever glacier ice meets air in a specific temperature band. It bounces off ice surfaces playfully, and its body is technically just very sophisticated ice \u2014 though Pale Vault philosophers debate this warmly over tea.",
+  "visual": "Tiny, perfectly round body of translucent blue-white ice; a simple expressive face of two dark eyes and a small curved mouth pressed into the ice surface; stubby arms and legs of solid ice protrusions; bounces on the bottom like a rubber ball; the quintessential sprite form at 32px.",
+  "size_cm": 18,
+  "weight_kg": 2.5,
+  "signature_idea": null,
+  "hook": "The philosophical question of whether it's a kin or just very ambitious ice is the perfect dex-entry hook.",
+  "_batch": "batch-06.json",
+  "_score": 73.2,
+  "_panel": 75.0,
+  "dex_id": 71,
+  "line_primary_type": "Frost"
+ },
+ {
+  "concept_id": "B06-041",
+  "name": "Glaceling",
+  "types": [
+   "Frost"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B06-042",
+   "kindle_trigger": "level 34"
+  },
+  "region": "north",
+  "rarity": "uncommon",
+  "concept": "A more developed ice-sprite that has gathered enough ambient ice to give itself a more defined, humanoid shape. It still bounces on rounded feet, but now manifests ice structures around itself \u2014 walls, bridges, steps \u2014 apparently decorating its territory. The structures always collapse after a day.",
+  "visual": "Slightly taller, more defined sprite form; a distinct head on a short neck, arms with three-fingered ice hands; face is more expressive and detailed; occasionally surrounded by small floating ice-crystal fragments it is sculpting; mid-ground presence at 40px.",
+  "size_cm": 55,
+  "weight_kg": 12,
+  "signature_idea": null,
+  "hook": "The ice-sculpting-territory-decoration behaviour makes it feel like a small, weird artist \u2014 immediately lovable.",
+  "_batch": "batch-06.json",
+  "_score": 70.8,
+  "_panel": 71.5,
+  "dex_id": 72,
+  "line_primary_type": "Frost"
+ },
+ {
+  "concept_id": "B06-042",
+  "name": "Frostholm",
+  "types": [
+   "Frost",
+   "Light"
+  ],
+  "role": "Special Wall",
+  "tier": "E",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "north",
+  "rarity": "very_rare",
+  "concept": "The apex form of the ice-sprite lineage \u2014 a vast, ancient glacier-golem that has accumulated centuries of ice, starlight, and aurora-glow into a self-aware glacier monument. Frostholm is the living embodiment of the Pale Vault itself; legends say the glacier exists because Frostholm chose to sleep there, and it dreams the aurora into being. It is the Frost Constellation Warden \u2014 the Aurora Hollow's true guardian.",
+  "visual": "Towering, broad-shouldered golem form sculpted from ancient blue-white glacial ice; its surface etched with centuries of swirling aurora-pattern carvings; the face is serene, simple, and impossibly old; aurora-light leaks from the carved lines across its body; at 48px it fills the frame completely, a walking glacier-face.",
+  "size_cm": 620,
+  "weight_kg": 14000,
+  "signature_idea": "Aurora Sanctum \u2014 a Light/Frost special move that raises both the user's special defence and special attack and launches an aurora-wave dealing moderate damage to all opponents",
+  "hook": "The Frost Constellation Warden \u2014 the glacier guardian that dreams the aurora. Finding it in Aurora Hollow is the north's equivalent of the story's whole promise.",
+  "_batch": "batch-06.json",
+  "_score": 79.2,
+  "_panel": 81.0,
+  "dex_id": 73,
+  "line_primary_type": "Frost"
+ },
+ {
+  "concept_id": "B06-015",
+  "name": "Geolace",
+  "types": [
+   "Frost",
+   "Stone"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B06-016",
+   "kindle_trigger": "level 18"
+  },
+  "region": "north",
+  "rarity": "uncommon",
+  "concept": "A small, crystalline geode-crab whose outer shell is a natural geode split down the middle, exposing a cavity glittering with frost-crystal druzy. It scuttles along glacier crevasse walls and eats mineral-rich ice. Its shell grows a new layer of crystals each winter.",
+  "visual": "Squat crab-like form; body is literally a split geode half \u2014 rough dark mineral exterior with a spectacular glittering interior visible from above; six short spiky legs; two crystal-tipped pincer claws; unique silhouette readable at 32px as a lumpy oval with jutting points.",
+  "size_cm": 25,
+  "weight_kg": 8.5,
+  "signature_idea": null,
+  "hook": "A geode as a crab-shell is visually unlike anything else \u2014 the glittering interior is a treasure chest on legs.",
+  "_batch": "batch-06.json",
+  "_score": 75.1,
+  "_panel": 76.5,
+  "dex_id": 74,
+  "line_primary_type": "Frost"
+ },
+ {
+  "concept_id": "B06-016",
+  "name": "Geodrake",
+  "types": [
+   "Frost",
+   "Stone"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B06-017",
+   "kindle_trigger": "level 36"
+  },
+  "region": "north",
+  "rarity": "rare",
+  "concept": "A mid-sized geode-armoured crustacean that has grown additional crystal growths along its carapace. The crystals serve as both armour and weapon \u2014 Geodrake can launch crystal shards by flexing its shell. Deep glacier miners warn that Geodrake territories are marked by shattered walls.",
+  "visual": "Wider, heavier crustacean form; carapace now densely covered in faceted crystal protrusions in purple-to-ice-blue; thicker claws tipped with drill-point crystal spires; mid-form still crablike but clearly larger and more weaponised at 40px.",
+  "size_cm": 65,
+  "weight_kg": 48,
+  "signature_idea": null,
+  "hook": "The growing crystal-armour escalation makes each stage feel like an upgrade.",
+  "_batch": "batch-06.json",
+  "_score": 70.2,
+  "_panel": 69.5,
+  "dex_id": 75,
+  "line_primary_type": "Frost"
+ },
+ {
+  "concept_id": "B06-017",
+  "name": "Vaultclaw",
+  "types": [
+   "Frost",
+   "Stone"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "north",
+  "rarity": "rare",
+  "concept": "A colossal glacier-hermit whose geode shell has become a literal ice-cave it carries. The crystal interior is now large enough to shelter small kin in blizzards \u2014 some say Frostkit families nest inside willing Vaultclaw shells. Its claws can carve new passages through glacier ice.",
+  "visual": "Large, powerful crustacean body; the carapace is now a massive dome of geode and ice-crystal formations, towering above the body; huge armoured claws; a walking glacier-cave silhouette \u2014 dramatic and distinctive at 48px, dominated by the crystal dome above.",
+  "size_cm": 195,
+  "weight_kg": 680,
+  "signature_idea": "Geovault \u2014 a Stone/Frost physical move that also raises the user's defence as crystal armour hardens further",
+  "hook": "A walking crystal cave that shelters other kin \u2014 the ecological and visual storytelling is irresistible.",
+  "_batch": "batch-06.json",
+  "_score": 77.8,
+  "_panel": 79.0,
+  "dex_id": 76,
+  "line_primary_type": "Frost"
+ },
+ {
+  "concept_id": "B06-010",
+  "name": "Chillpip",
+  "types": [
+   "Frost"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B06-011",
+   "kindle_trigger": "level 14"
+  },
+  "region": "north",
+  "rarity": "common",
+  "concept": "A plump little snow-chick with a soft fluff coat of powder-white down. The ice crystals in its down scatter light into tiny rainbows. It tumbles more than walks and cannot yet fly, but its cheerful chirping keeps glacier travellers' spirits up.",
+  "visual": "Round, egg-shaped chick body; big round head with a tiny curved beak; oversized fluffy wings it can't quite fold correctly; powder-white with a pale sky-blue belly; crystal glints in the down; one of the roundest, chubbiest silhouettes in the roster at 32px.",
+  "size_cm": 22,
+  "weight_kg": 1.8,
+  "signature_idea": null,
+  "hook": "Maximum chick-fluff energy \u2014 the crystal-scatter rainbow detail is a small treasure that rewards close attention.",
+  "_batch": "batch-06.json",
+  "_score": 75.3,
+  "_panel": 78.0,
+  "dex_id": 77,
+  "line_primary_type": "Frost"
+ },
+ {
+  "concept_id": "B06-011",
+  "name": "Crystarn",
+  "types": [
+   "Frost"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B06-012",
+   "kindle_trigger": "level 30"
+  },
+  "region": "north",
+  "rarity": "uncommon",
+  "concept": "A half-grown snow-bird that has shed its chick-fluff for proper iridescent feathers underlaid with tiny ice-crystal filaments. It can now fly, and its wingbeats scatter prismatic ice-dust. Flocks of Crystarn spiral above the glacier in breathtaking chevrons.",
+  "visual": "Medium bird form; streamlined body with swept-back tail feathers tipped in crystal points; feathers shaded blue-white to silver; wing edges fringed with tiny icicle spurs; alert amber eye with a diamond highlight; clean aerodynamic silhouette at 40px.",
+  "size_cm": 58,
+  "weight_kg": 6.5,
+  "signature_idea": null,
+  "hook": "The transformation from helpless chick-ball to elegant crystal-feathered flier is the core kindling-joy moment.",
+  "_batch": "batch-06.json",
+  "_score": 70.4,
+  "_panel": 71.0,
+  "dex_id": 78,
+  "line_primary_type": "Frost"
+ },
+ {
+  "concept_id": "B06-012",
+  "name": "Glacitern",
+  "types": [
+   "Frost",
+   "Storm"
+  ],
+  "role": "Physical Sweeper",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "north",
+  "rarity": "rare",
+  "concept": "A fully matured blizzard-tern of startling size. Its wings generate localised ice-laced gales, and it dives at speed to shatter thin ice with its crystallised bill. Glacier pilots say Glacitern dives are visible from three valleys away \u2014 a diving streak of white and blue lightning.",
+  "visual": "Large seabird-inspired form; sharply swept wings with serrated trailing-edge icicle spurs; elongated blade-like bill crackling with frost and static; body sleek from head to forked tail; blue-grey body, white underside, lightning-blue wing tips; fierce predator silhouette at 48px.",
+  "size_cm": 140,
+  "weight_kg": 28,
+  "signature_idea": "Icestrike Dive \u2014 a priority physical move that does bonus damage to grounded targets",
+  "hook": "The evolution from round snow-chick to diving blizzard predator spans the full emotional register of creature design.",
+  "_batch": "batch-06.json",
+  "_score": 77.1,
+  "_panel": 78.0,
+  "dex_id": 79,
+  "line_primary_type": "Frost"
+ },
+ {
+  "concept_id": "B06-020",
+  "name": "Snowcune",
+  "types": [
+   "Frost"
+  ],
+  "role": "Special Sweeper",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B06-021",
+   "kindle_trigger": "level 17"
+  },
+  "region": "north",
+  "rarity": "common",
+  "concept": "A playful little snow-hare with oversized feet perfect for bounding across deep powder. Its fur coat is two layers: the outer is a coarse frost-white that repels snow, and the inner radiates a faint warmth. It moves in bounding arcs, always landing softly, leaving only the faintest impressions.",
+  "visual": "Classic hare silhouette; very large hind feet, long upright ears with pale icy tips; powder-white fur with a subtle blue-grey shadow tone; round body, small face with a tiny dark nose; speed-suggesting long-legged pose at 32px.",
+  "size_cm": 34,
+  "weight_kg": 3.6,
+  "signature_idea": null,
+  "hook": "The oversized snow-hare feet are immediately charming; the dual-coat detail rewards a player who reads the dex entry.",
+  "_batch": "batch-06.json",
+  "_score": 73.2,
+  "_panel": 75.0,
+  "dex_id": 80,
+  "line_primary_type": "Frost"
+ },
+ {
+  "concept_id": "B06-021",
+  "name": "Blizzrhare",
+  "types": [
+   "Frost"
+  ],
+  "role": "Special Sweeper",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B06-022",
+   "kindle_trigger": "level 35"
+  },
+  "region": "north",
+  "rarity": "uncommon",
+  "concept": "A mid-form hare that has shed its soft pup-coat for sleek winter fur hardened into wind-channelling ridges. It runs so fast it generates a localised snow-vortex around itself. Pale Vault villagers call these small spinning snow-devils 'hare-ghosts.'",
+  "visual": "Taller, leaner hare form; fur now has aerodynamic ridge-lines down the flanks; elongated ears swept back; narrow, aerodynamic face; the overall silhouette reads like a sprinter frozen at the instant of launch at 40px.",
+  "size_cm": 72,
+  "weight_kg": 9.8,
+  "signature_idea": null,
+  "hook": "The hare-ghost snow-vortex detail is the kind of world-building kids pass on to friends.",
+  "_batch": "batch-06.json",
+  "_score": 71.8,
+  "_panel": 73.0,
+  "dex_id": 81,
+  "line_primary_type": "Frost"
+ },
+ {
+  "concept_id": "B06-022",
+  "name": "Vortexlope",
+  "types": [
+   "Frost",
+   "Storm"
+  ],
+  "role": "Glass Cannon",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "north",
+  "rarity": "rare",
+  "concept": "A blizzard-speed hare of remarkable size whose constant motion generates a persistent personal blizzard. It never truly stops moving \u2014 even resting, it trembles with contained velocity. When it runs at full speed the snow-vortex behind it is visible for kilometres. The fastest kin native to the north.",
+  "visual": "Tall, long-limbed, powerful hare; fur has crystallised into blade-like ridge-plates along the entire back and limbs; swept-back ears now rigid and tapered like antennae; a trailing blizzard-halo always swirls behind it; dynamic forward-leaning pose at 48px.",
+  "size_cm": 145,
+  "weight_kg": 32,
+  "signature_idea": "Blizzardbreak \u2014 the highest-speed-tier Frost special attack, power scales with the user's speed advantage over the target",
+  "hook": "The glass-cannon blizzard-hare is an archetype-fulfilling powerhouse with strong visual storytelling in its silhouette alone.",
+  "_batch": "batch-06.json",
+  "_score": 76.0,
+  "_panel": 76.5,
+  "dex_id": 82,
+  "line_primary_type": "Frost"
+ },
+ {
+  "concept_id": "B06-007",
+  "name": "Hushvole",
+  "types": [
+   "Frost"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B06-008",
+   "kindle_trigger": "level 16"
+  },
+  "region": "north",
+  "rarity": "common",
+  "concept": "A small, round snow-vole that buries itself just below the glacier surface and pops up to startle travellers. Its breath muffles all nearby sounds \u2014 experienced Pale Vault guides say you've entered Hushvole territory when your footsteps go quiet.",
+  "visual": "Chubby, button-eyed little rodent; pale grey-white fur with a faint blue undertone; stubby frost-tipped claws; oversized round ears; a perfectly spherical snow-dusted silhouette at 32px that reads as one compact ball.",
+  "size_cm": 18,
+  "weight_kg": 1.2,
+  "signature_idea": null,
+  "hook": "The sound-muffling concept is evocative and spooky in a cosy way \u2014 the glacier going silent around you.",
+  "_batch": "batch-06.json",
+  "_score": 73.9,
+  "_panel": 76.0,
+  "dex_id": 83,
+  "line_primary_type": "Frost"
+ },
+ {
+  "concept_id": "B06-008",
+  "name": "Hushbore",
+  "types": [
+   "Frost"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B06-009",
+   "kindle_trigger": "level 34"
+  },
+  "region": "north",
+  "rarity": "uncommon",
+  "concept": "A mid-sized burrowing rodent with thickened ice-plated shoulder pads from tunnelling through frozen earth. The silence aura has intensified \u2014 within a short radius, even battle cries and ability sounds are absorbed. It uses this quiet as both hunting cover and territory defence.",
+  "visual": "Stout, compact rodent; broad shoulders covered in layered ice-plate armour; long digging claws with ice-crystal edges; flattened wide head; small round eyes; a side-profile silhouette with strong armour shapes readable at 40px.",
+  "size_cm": 52,
+  "weight_kg": 14,
+  "signature_idea": null,
+  "hook": "The ice-armour shoulder transformation makes the 'quiet predator' concept click into an intimidating mid-form.",
+  "_batch": "batch-06.json",
+  "_score": 72.1,
+  "_panel": 73.5,
+  "dex_id": 84,
+  "line_primary_type": "Frost"
+ },
+ {
+  "concept_id": "B06-009",
+  "name": "Stillwarden",
+  "types": [
+   "Frost",
+   "Dark"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "north",
+  "rarity": "rare",
+  "concept": "A massive glacier-burrower whose silence aura has expanded to blanket entire cave systems. Its back has erupted into a ridge of obsidian-black ice spurs. Where Stillwarden rests, no sound exists \u2014 not wind, not water, not other kin. Hushfrost Pass travellers whisper that silence means it is near.",
+  "visual": "Large, powerfully built rodent body; spinal ridge of black ice-crystal spurs along the back; thick neck, wide flat head with deep-set ice-pale eyes; slate-dark colouration on the upper body, pale beneath; silhouette dominated by the spine ridge at 48px.",
+  "size_cm": 130,
+  "weight_kg": 95,
+  "signature_idea": "Deadsilence \u2014 a Dark/Frost status move that prevents the target using sound-based or vocal moves for 3 turns",
+  "hook": "The transition from cute snow-vole to something that makes silence feel ominous is a perfect awe-curve story.",
+  "_batch": "batch-06.json",
+  "_score": 74.3,
+  "_panel": 74.0,
+  "dex_id": 85,
+  "line_primary_type": "Frost"
+ },
+ {
+  "concept_id": "B09-037",
+  "name": "Prismcub",
+  "types": [
+   "Light",
+   "Frost"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "A",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "B09-038",
+   "kindle_trigger": "level 22"
+  },
+  "region": "north",
+  "rarity": "common",
+  "concept": "A round-eared ice-bear cub of the Pale Vault Glacier whose fur is threaded with prism-crystal filaments; it tumbles through snowdrifts leaving miniature rainbow trails in its wake.",
+  "visual": "Chubby bear cub with snow-white fur laced with fine crystal-threads that catch light in rainbow refractions; a big round nose; small triangular ears; wide trusting eyes; stumbles more than walks; irresistibly cute at 16px.",
+  "size_cm": 38,
+  "weight_kg": 9,
+  "signature_idea": null,
+  "hook": "A glittery rainbow bear cub \u2014 the purest concentrated 'kids will love this' design in the batch.",
+  "_batch": "batch-09.json",
+  "_score": 80.0,
+  "_panel": 83.5,
+  "dex_id": 86,
+  "line_primary_type": "Light"
+ },
+ {
+  "concept_id": "B09-038",
+  "name": "Prismantus",
+  "types": [
+   "Light",
+   "Frost"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "D",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "north",
+  "rarity": "very_rare",
+  "concept": "A fully grown glacier-bear whose crystal-fur has solidified into great diamond-hard prism-plates; it slams opponents with rainbow-refracting claws and can freeze the air around it into a blinding prismatic storm.",
+  "visual": "Large polar bear; thick layered prism-crystal plates replace the fur on its shoulders and back like natural armour; claws are translucent crystal-blade; fur in gaps is still white; dignified and powerful; beautiful and formidable at 64px.",
+  "size_cm": 200,
+  "weight_kg": 320,
+  "signature_idea": "Prism Slam \u2014 physical Light-type move that deals damage and has a 30% chance to inflict Dazzle (foe accuracy -2) from the rainbow flash; boosted by ice terrain.",
+  "hook": "The wholesome cute cub grows into a crystal-armoured powerhouse \u2014 a satisfying arc for players who raised it.",
+  "_batch": "batch-09.json",
+  "_score": 78.8,
+  "_panel": 80.5,
+  "dex_id": 87,
+  "line_primary_type": "Light"
+ },
+ {
+  "concept_id": "B05-039",
+  "name": "Sparrowcaw",
+  "types": [
+   "Storm"
+  ],
+  "role": "Glass Cannon",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B05-040",
+   "kindle_trigger": "level 23"
+  },
+  "region": "north",
+  "rarity": "common",
+  "concept": "A scrappy little terrace-sparrow that pecks spark-producing pyrite from the cliff walls and stores the flint-chips under its wing to use as a crude battery during battle.",
+  "visual": "Compact passerine bird, rust-brown and dark slate-blue plumage, a puffed chest crossed by a small leather-look pouch of flint pebbles, tiny defiant eyes; cheeky and small at 32px.",
+  "size_cm": 12,
+  "weight_kg": 0.2,
+  "signature_idea": null,
+  "hook": "A sparrow that carries flint to start fires \u2014 more resourceful than it looks.",
+  "_batch": "batch-05.json",
+  "_score": 71.5,
+  "_panel": 72.5,
+  "dex_id": 88,
+  "line_primary_type": "Storm"
+ },
+ {
+  "concept_id": "B05-040",
+  "name": "Flintbeak",
+  "types": [
+   "Storm"
+  ],
+  "role": "Glass Cannon",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B05-041",
+   "kindle_trigger": "level 35"
+  },
+  "region": "north",
+  "rarity": "uncommon",
+  "concept": "A mid-stage strike-bird whose beak has hardened into a flint-edged chisel that sparks on every strike, and whose charge builds faster the more consecutive hits it lands.",
+  "visual": "Lean raptor, dark charcoal and slate-blue feathers, a dramatically elongated flint-edged beak that cracks sparks on impact, talons wrapped in static; focused aggression at 48px.",
+  "size_cm": 55,
+  "weight_kg": 3.8,
+  "signature_idea": null,
+  "hook": "The beak-as-thunderstrike concept makes every hit feel satisfying \u2014 a natural woodpecker of electricity.",
+  "_batch": "batch-05.json",
+  "_score": 72.1,
+  "_panel": 73.5,
+  "dex_id": 89,
+  "line_primary_type": "Storm"
+ },
+ {
+  "concept_id": "B05-041",
+  "name": "Strikeaven",
+  "types": [
+   "Storm"
+  ],
+  "role": "Glass Cannon",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "north",
+  "rarity": "rare",
+  "concept": "The apex flint-raven: a large, sleek storm-bird whose entire beak has become a solid static-discharge rod that releases a plasma bolt on each strike; the more it attacks, the stronger each blow.",
+  "visual": "Tall raven silhouette, ink-black feathers with electric-blue iridescence, a long bladed beak crackling with a continuous spark-arc, wingtips trailing static filaments; sleek and lethal at 64px.",
+  "size_cm": 120,
+  "weight_kg": 16.5,
+  "signature_idea": "Momentum Strike \u2014 deals damage that scales with each consecutive hit in a chain; chain resets if it misses or is swapped out.",
+  "hook": "Each hit charges it more \u2014 a slow build into an unstoppable momentum that rewards not retreating.",
+  "_batch": "batch-05.json",
+  "_score": 72.7,
+  "_panel": 73.0,
+  "dex_id": 90,
+  "line_primary_type": "Storm"
+ },
+ {
+  "concept_id": "B05-006",
+  "name": "Cirruff",
+  "types": [
+   "Storm",
+   "Light"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "B",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B05-007",
+   "kindle_trigger": "level 25"
+  },
+  "region": "north",
+  "rarity": "uncommon",
+  "concept": "A cloud-fluff pup born inside a high cirrus cloud; its fur is made of compressed cloud-stuff that crackles with soft static, and it glows faintly gold at the edges when happy.",
+  "visual": "Plump round pup, fluffy white cloud-textured fur that puffs out at the paws and tail, faint gold edge-glow, two bright eyes and a tiny static-spark nose; irresistibly soft at 32px.",
+  "size_cm": 30,
+  "weight_kg": 1.8,
+  "signature_idea": null,
+  "hook": "A puppy made of cloud-fluff that sparkles \u2014 you'll want to hug it even knowing it shocks back.",
+  "_batch": "batch-05.json",
+  "_score": 74.4,
+  "_panel": 75.5,
+  "dex_id": 91,
+  "line_primary_type": "Storm"
+ },
+ {
+  "concept_id": "B05-007",
+  "name": "Nimbruff",
+  "types": [
+   "Storm",
+   "Light"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B05-008",
+   "kindle_trigger": "level 36"
+  },
+  "region": "north",
+  "rarity": "uncommon",
+  "concept": "The cloud-pup's fur has densified into cumulonimbus wool that flashes with internal lightning; it's cheerful but the gold-edged static halos around its body scatter light in every direction.",
+  "visual": "Larger barrel-chested dog, dense grey-and-white thundercloud fur, a visible inner-glow pulsing electric-gold, long windswept ears, silver underbelly; bold presence at 48px.",
+  "size_cm": 75,
+  "weight_kg": 12.0,
+  "signature_idea": null,
+  "hook": "A golden glow behind storm-grey clouds \u2014 every battle with it feels like watching a storm roll in.",
+  "_batch": "batch-05.json",
+  "_score": 75.1,
+  "_panel": 76.5,
+  "dex_id": 92,
+  "line_primary_type": "Storm"
+ },
+ {
+  "concept_id": "B05-008",
+  "name": "Cumulance",
+  "types": [
+   "Storm",
+   "Light"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "north",
+  "rarity": "rare",
+  "concept": "The cloud-hound's final form \u2014 a great silver-and-gold stormhound whose body is a living thunderhead, radiating soft dawn-light even through the Galehigh dusk.",
+  "visual": "Majestic hound silhouette, body a sculptured mass of dark-silver cloud, a blazing golden core visible through the chest, mane of vertical lightning-columns, four cloud-pad legs leaving gold hoofprints; awe-inspiring at 64px.",
+  "size_cm": 170,
+  "weight_kg": 52.0,
+  "signature_idea": "Goldstrike \u2014 a special move that targets both opposing Sp.Def and applies a Light-type radiance debuff.",
+  "hook": "A cloud-puppy grew into the living heart of a thunderstorm lit from within by golden light.",
+  "_batch": "batch-05.json",
+  "_score": 76.8,
+  "_panel": 77.5,
+  "dex_id": 93,
+  "line_primary_type": "Storm"
+ },
+ {
+  "concept_id": "B05-026",
+  "name": "Hailwhirr",
+  "types": [
+   "Storm",
+   "Frost"
+  ],
+  "role": "Special Sweeper",
+  "tier": "B",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B05-027",
+   "kindle_trigger": "level 26"
+  },
+  "region": "north",
+  "rarity": "uncommon",
+  "concept": "A small blizzard-wasp native to the high passes above Galehigh, spinning frost crystals from its wing-tips as it spirals in updrafts; its sting is numbing cold rather than venom.",
+  "visual": "Compact wasp silhouette, ice-blue and silver banding, wings that frost the air visibly as they beat, a sharp pointed abdomen tipped with a pale blue crystal stinger; crisp geometry at 32px.",
+  "size_cm": 18,
+  "weight_kg": 0.4,
+  "signature_idea": null,
+  "hook": "A winter wasp that spins ice from its wings \u2014 pretty until it stings.",
+  "_batch": "batch-05.json",
+  "_score": 74.8,
+  "_panel": 76.0,
+  "dex_id": 94,
+  "line_primary_type": "Storm"
+ },
+ {
+  "concept_id": "B05-027",
+  "name": "Glacewing",
+  "types": [
+   "Storm",
+   "Frost"
+  ],
+  "role": "Special Sweeper",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B05-028",
+   "kindle_trigger": "level 36"
+  },
+  "region": "north",
+  "rarity": "uncommon",
+  "concept": "A mid-stage blizzard-wasp that has grown compound crystal eyes and whose wingbeats create a spiralling vortex of hail shards around its flight path.",
+  "visual": "Larger angular wasp, wide iridescent frost-blue compound eyes, four wings edged with jagged ice-crystal trim, abdomen trailing a coil of hail particles; dynamic danger at 48px.",
+  "size_cm": 55,
+  "weight_kg": 3.5,
+  "signature_idea": null,
+  "hook": "The ice-vortex around it makes it look like it's already mid-attack even while resting.",
+  "_batch": "batch-05.json",
+  "_score": 72.7,
+  "_panel": 73.0,
+  "dex_id": 95,
+  "line_primary_type": "Storm"
+ },
+ {
+  "concept_id": "B05-028",
+  "name": "Frigalance",
+  "types": [
+   "Storm",
+   "Frost"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "north",
+  "rarity": "rare",
+  "concept": "The apex blizzard-wasp: a slender, blade-like creature that moves through lightning-charged blizzards with total ease, delivering shots of frozen plasma that combine electric and ice damage.",
+  "visual": "Long aerodynamic wasp silhouette, pale near-white with deep azure markings, a pair of blade-like crystal wings, four foreleg-lances each tipped with frozen lightning; cold elegance at 64px.",
+  "size_cm": 110,
+  "weight_kg": 9.0,
+  "signature_idea": "Sleet Lance \u2014 a special Storm/Frost hybrid move with a chance to both paralyse and freeze.",
+  "hook": "Beautiful, lethal, and utterly cold \u2014 the sky's version of a thrown spear.",
+  "_batch": "batch-05.json",
+  "_score": 76.4,
+  "_panel": 77.0,
+  "dex_id": 96,
+  "line_primary_type": "Storm"
+ },
+ {
+  "concept_id": "B05-003",
+  "name": "Thrumvane",
+  "types": [
+   "Storm"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "B",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B05-004",
+   "kindle_trigger": "level 24"
+  },
+  "region": "north",
+  "rarity": "common",
+  "concept": "A small, plump kin whose tail spins like a weathervane in wind; the rotation charges a static field around its body and it uses that stored charge to jam opponents' moves.",
+  "visual": "Chubby oval body, stubby limbs, a broad four-blade tail that spins freely, grey-blue fur with yellow static-spark highlights at the vane tips; cute windmill shape at 32px.",
+  "size_cm": 25,
+  "weight_kg": 3.2,
+  "signature_idea": null,
+  "hook": "A living windmill with a static personality \u2014 every time it spins faster, sparks fly.",
+  "_batch": "batch-05.json",
+  "_score": 73.2,
+  "_panel": 75.0,
+  "dex_id": 97,
+  "line_primary_type": "Storm"
+ },
+ {
+  "concept_id": "B05-004",
+  "name": "Thrumble",
+  "types": [
+   "Storm"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B05-005",
+   "kindle_trigger": "level 34"
+  },
+  "region": "north",
+  "rarity": "uncommon",
+  "concept": "A mid-stage kin whose vane-tail has grown wider and generates a continuous hum of low-frequency electricity that muddles the senses of nearby opponents.",
+  "visual": "Sleeker torso, elongated limbs, tail now a six-blade fan crackling at each tip with pale yellow sparks, a thin electric halo around the body's outline; reads as actively buzzing at 48px.",
+  "size_cm": 65,
+  "weight_kg": 12.5,
+  "signature_idea": null,
+  "hook": "You can feel the hum before you see it \u2014 that constant low vibration is deeply unsettling to fight.",
+  "_batch": "batch-05.json",
+  "_score": 75.0,
+  "_panel": 77.5,
+  "dex_id": 98,
+  "line_primary_type": "Storm"
+ },
+ {
+  "concept_id": "B05-005",
+  "name": "Vortavane",
+  "types": [
+   "Storm"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "north",
+  "rarity": "rare",
+  "concept": "The apex vane-beast: a tall, regal kin whose entire dorsal spine has become a bank of spinning turbine-blades, generating a tornado-like static field that blinds and staggers opponents.",
+  "visual": "Upright digitigrade silhouette, dark storm-grey coat, a full spine-ridge of spinning vane-blades each trailing a spark arc, crackling eye-markings that pulse in sync with the vanes; imposing at 64px.",
+  "size_cm": 140,
+  "weight_kg": 48.0,
+  "signature_idea": "Stormfield \u2014 creates a persistent static field that has a chance to paralyse any kin that uses a contact move.",
+  "hook": "The windmill grew into a roaring turbine \u2014 impossible to touch without getting shocked.",
+  "_batch": "batch-05.json",
+  "_score": 74.1,
+  "_panel": 75.0,
+  "dex_id": 99,
+  "line_primary_type": "Storm"
+ },
+ {
+  "concept_id": "B05-033",
+  "name": "Squallox",
+  "types": [
+   "Storm"
+  ],
+  "role": "Physical Sweeper",
+  "tier": "B",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B05-034",
+   "kindle_trigger": "level 25"
+  },
+  "region": "north",
+  "rarity": "uncommon",
+  "concept": "A gust-fox kit born on the exposed upper terraces, its tail a perpetual blurred blur of motion that keeps it airborne a fraction of a second longer than it should be able to stay.",
+  "visual": "Compact kit silhouette, deep azure-blue fur, four white paws, a tall pointed ear-fan on each side, a blurred fan-tail of multiple stacked ghost images; looks like it's still mid-run at 32px.",
+  "size_cm": 32,
+  "weight_kg": 3.8,
+  "signature_idea": null,
+  "hook": "The fox whose tail moves so fast it looks like it has three tails at once \u2014 speed incarnate.",
+  "_batch": "batch-05.json",
+  "_score": 75.3,
+  "_panel": 78.0,
+  "dex_id": 100,
+  "line_primary_type": "Storm"
+ },
+ {
+  "concept_id": "B05-034",
+  "name": "Galefox",
+  "types": [
+   "Storm"
+  ],
+  "role": "Physical Sweeper",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B05-035",
+   "kindle_trigger": "level 35"
+  },
+  "region": "north",
+  "rarity": "uncommon",
+  "concept": "A sleek mid-stage gust-fox who now runs so fast it creates a visible bow-wave of compressed air ahead of it; close-combat opponents are pushed back by the pressure wave before it even strikes.",
+  "visual": "Lithe medium fox silhouette, deep storm-blue body fading to pale silver at the throat and belly, a single bold tail crackling at the tip, wind-distortion ripples around the paws; pure velocity at 48px.",
+  "size_cm": 80,
+  "weight_kg": 14.5,
+  "signature_idea": null,
+  "hook": "The bow-wave around it makes the ground look like it's peeling back ahead of every sprint.",
+  "_batch": "batch-05.json",
+  "_score": 71.5,
+  "_panel": 72.5,
+  "dex_id": 101,
+  "line_primary_type": "Storm"
+ },
+ {
+  "concept_id": "B05-035",
+  "name": "Tempestail",
+  "types": [
+   "Storm"
+  ],
+  "role": "Physical Sweeper",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "north",
+  "rarity": "rare",
+  "concept": "The apex gust-fox \u2014 a lithe, white-silver predator whose tail is now a visible thunderstorm compressed into a spinning cylinder; at full sprint its approach sounds like a breaking gale.",
+  "visual": "Elegant large fox silhouette, white-silver fur with storm-blue markings, a spiralling tornado-tail that crackles with visible charge, twin ear-fins swept back; the apex of aerodynamic at 64px.",
+  "size_cm": 145,
+  "weight_kg": 40.0,
+  "signature_idea": "Gale Rush \u2014 a high-priority physical move that doubles in power if used first in a turn.",
+  "hook": "The little kit that couldn't quite leave the ground became this magnificent silver storm-predator.",
+  "_batch": "batch-05.json",
+  "_score": 75.1,
+  "_panel": 76.5,
+  "dex_id": 102,
+  "line_primary_type": "Storm"
+ },
+ {
+  "concept_id": "B07-009",
+  "name": "Gilpaw",
+  "types": [
+   "Solar",
+   "Stone"
+  ],
+  "role": "Physical Wall",
+  "tier": "A",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "B07-010",
+   "kindle_trigger": "level 28"
+  },
+  "region": "west",
+  "rarity": "uncommon",
+  "concept": "A small leonine cub whose coat has mineralised into gilded stone plates, soaking up ambient Solar energy from the Solarium's ruins. It naps in sun-warmed arches and radiates stored heat.",
+  "visual": "Compact lion-cub silhouette; body covered in smooth gold-toned stone plates like overlapping scales; four stubby paws with amber glowing pawpads; round face with bright amber eyes; cute and sturdy at 32px.",
+  "size_cm": 38,
+  "weight_kg": 22.0,
+  "signature_idea": null,
+  "hook": "A golden armoured cub \u2014 solid, warm, and endearing, like a sun-kissed statue that decided to yawn.",
+  "_batch": "batch-07.json",
+  "_score": 74.1,
+  "_panel": 75.0,
+  "dex_id": 103,
+  "line_primary_type": "Solar"
+ },
+ {
+  "concept_id": "B07-010",
+  "name": "Goldmane",
+  "types": [
+   "Solar",
+   "Stone"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "D",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "west",
+  "rarity": "rare",
+  "concept": "A gilded stone lion whose mane has erupted into a crown of solar-flare spines; it stores massive amounts of daylight in its dense mineral body and releases it in searing physical charges.",
+  "visual": "Large, imposing lion silhouette with a barrel chest; mane replaced by radiant gold-stone spines fanning outward like sun rays; body plates carved with spiral solar motifs; heavy paws leave glowing prints; dramatic at 64px.",
+  "size_cm": 155,
+  "weight_kg": 210.0,
+  "signature_idea": "Solarite Charge \u2014 physical Solar move that scales with the user's Defense stat",
+  "hook": "A gilded stone lion whose mane is made of sunlight \u2014 the apex predator of the Solarium, and unmistakably a trophy.",
+  "_batch": "batch-07.json",
+  "_score": 75.7,
+  "_panel": 76.0,
+  "dex_id": 104,
+  "line_primary_type": "Solar"
+ },
+ {
+  "concept_id": "B08-001",
+  "name": "Snoozlet",
+  "types": [
+   "Lunar"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B08-002",
+   "kindle_trigger": "level 16"
+  },
+  "region": "west",
+  "rarity": "common",
+  "concept": "A drowsy round moon-sheep that drifts half-awake through the Nightreach highlands, trailing softly glowing wool-tufts that carry faint dream-motes wherever they float.",
+  "visual": "Plump round sheep body in pale cream-blue, half-closed crescent eyes, small crescent-moon horns, fluffy wool with faint silver-blue glow-wisps drifting off it; maximally round silhouette at 32px.",
+  "size_cm": 32,
+  "weight_kg": 7.5,
+  "signature_idea": null,
+  "hook": "The sleepiest, softest sheep in the world \u2014 just looking at it makes you yawn.",
+  "_batch": "batch-08.json",
+  "_score": 75.3,
+  "_panel": 78.0,
+  "dex_id": 105,
+  "line_primary_type": "Lunar"
+ },
+ {
+  "concept_id": "B08-002",
+  "name": "Drowshorn",
+  "types": [
+   "Lunar"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B08-003",
+   "kindle_trigger": "level 33"
+  },
+  "region": "west",
+  "rarity": "uncommon",
+  "concept": "A mid-sized dream-ram whose crescent horns have grown into proper moon-arcs that hum with soporific resonance; anything caught near it during its slow, dreamy patrol gradually loses focus.",
+  "visual": "Stocky ram silhouette, deep slate-blue wool, full crescent moon-arc horns lit with cool silver, half-lidded star-pupils, trail of floating dream-motes; calm and commanding at 48px.",
+  "size_cm": 85,
+  "weight_kg": 38.0,
+  "signature_idea": null,
+  "hook": "Peaceful but quietly menacing \u2014 it doesn't fight you, it just makes you forget you wanted to.",
+  "_batch": "batch-08.json",
+  "_score": 74.6,
+  "_panel": 77.0,
+  "dex_id": 106,
+  "line_primary_type": "Lunar"
+ },
+ {
+  "concept_id": "B08-003",
+  "name": "Lunarbel",
+  "types": [
+   "Lunar",
+   "Light"
+  ],
+  "role": "Special Tank",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "west",
+  "rarity": "rare",
+  "concept": "A great moon-ram whose wool has become a cascade of solidified moonlight, each strand a fine thread of pure silver-white luminescence. It stands watch over sleeping kin, radiating a calming aura that suppresses nightmares.",
+  "visual": "Large broad-shouldered ram, glowing silver-white flowing wool, full moon-disk framed between sweeping horn-arcs, radiant star-pupils, soft halo aura; majestic and otherworldly at 64px.",
+  "size_cm": 155,
+  "weight_kg": 88.0,
+  "signature_idea": "Dream Warden \u2014 raises own Sp. Def and inflicts sleep on a switched-in opponent",
+  "hook": "A sky-sheep made of moonlight, standing guard in the dark \u2014 the most reassuring sight in the night highlands.",
+  "_batch": "batch-08.json",
+  "_score": 74.7,
+  "_panel": 74.5,
+  "dex_id": 107,
+  "line_primary_type": "Lunar"
+ },
+ {
+  "concept_id": "B08-032",
+  "name": "Solunet",
+  "types": [
+   "Lunar",
+   "Tide"
+  ],
+  "role": "Special Sweeper",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B08-033",
+   "kindle_trigger": "level 14"
+  },
+  "region": "west",
+  "rarity": "common",
+  "concept": "A little moon-tide sprite shaped like a water-drop with a crescent inside; it skips across wet rooftops in Nightreach when the moon is high, riding the silver reflections of puddles.",
+  "visual": "Teardrop body, translucent cool-blue with a glowing silver crescent suspended inside, tiny stub feet, round hopeful eyes; simple and lovely at 32px.",
+  "size_cm": 16,
+  "weight_kg": 0.4,
+  "signature_idea": null,
+  "hook": "A moon caught inside a raindrop \u2014 the most delicate little thing, made of two beautiful things at once.",
+  "_batch": "batch-08.json",
+  "_score": 73.0,
+  "_panel": 73.5,
+  "dex_id": 108,
+  "line_primary_type": "Lunar"
+ },
+ {
+  "concept_id": "B08-033",
+  "name": "Tidalune",
+  "types": [
+   "Lunar",
+   "Tide"
+  ],
+  "role": "Special Sweeper",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B08-034",
+   "kindle_trigger": "level 32"
+  },
+  "region": "west",
+  "rarity": "uncommon",
+  "concept": "A moon-tide sprite that has gathered enough water to form a proper fluid body, hovering in a rotating sphere of water illuminated from within by crescent-light. It pulls at opponents with slow tidal forces.",
+  "visual": "Sphere of slowly rotating pale blue water with a luminous crescent core, small fine-featured face at the water surface, trailing water-arc tails; elegant floating orb at 48px.",
+  "size_cm": 55,
+  "weight_kg": 18.0,
+  "signature_idea": null,
+  "hook": "A moon living inside a sphere of water \u2014 hypnotic to watch and quietly threatening.",
+  "_batch": "batch-08.json",
+  "_score": 74.8,
+  "_panel": 76.0,
+  "dex_id": 109,
+  "line_primary_type": "Lunar"
+ },
+ {
+  "concept_id": "B08-034",
+  "name": "Lunaquell",
+  "types": [
+   "Lunar",
+   "Tide"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "west",
+  "rarity": "rare",
+  "concept": "The tide-moon spirit in its full form: a vast oceanic omen-being whose water-sphere has grown to contain a miniature tidal sea, with a full moon disc blazing at its heart. It calls tides even in landlocked places.",
+  "visual": "Large hovering sphere of churning dark ocean water, full moon-disc blazing silver at the exact centre, visible wave-turbulence inside the sphere, trailing ocean-mist arcs; vast and awe-inspiring at 64px.",
+  "size_cm": 195,
+  "weight_kg": 340.0,
+  "signature_idea": "Neap Call \u2014 calls a tidal wave that hits all opponents and sharply lowers their Speed",
+  "hook": "It carries the whole ocean in a sphere and a moon inside that \u2014 one of Vesperholm's most staggering final forms.",
+  "_batch": "batch-08.json",
+  "_score": 75.7,
+  "_panel": 76.0,
+  "dex_id": 110,
+  "line_primary_type": "Lunar"
+ },
+ {
+  "concept_id": "B08-016",
+  "name": "Spirlet",
+  "types": [
+   "Lunar"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B08-017",
+   "kindle_trigger": "level 15"
+  },
+  "region": "west",
+  "rarity": "common",
+  "concept": "A tiny night-spirit sprite that looks like a faint crescent cut from silver tissue paper; it drifts on the cold night air above Nightreach Observatory, emitting a soft high hum that unsettles nearby kin.",
+  "visual": "Simple crescent-moon silhouette form, translucent silver-white body, two tiny round eyes, a faint shimmer trail; minimal and eerie at 32px.",
+  "size_cm": 18,
+  "weight_kg": 0.05,
+  "signature_idea": null,
+  "hook": "A tiny sliver of moon given life \u2014 impossibly delicate and just a little unsettling.",
+  "_batch": "batch-08.json",
+  "_score": 72.5,
+  "_panel": 74.0,
+  "dex_id": 111,
+  "line_primary_type": "Lunar"
+ },
+ {
+  "concept_id": "B08-017",
+  "name": "Nightwraith",
+  "types": [
+   "Lunar"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B08-018",
+   "kindle_trigger": "level 30"
+  },
+  "region": "west",
+  "rarity": "uncommon",
+  "concept": "A mid-stage moon-spirit that has grown a veil of dark mist around its crescent core; it whispers in a frequency that plants doubt and unease in the minds of those who hear it.",
+  "visual": "Hovering crescent-core wrapped in a flowing ink-and-silver mist veil, two luminous crescent eyes, long wispy trailing arms of mist; spectral and unnerving at 48px.",
+  "size_cm": 70,
+  "weight_kg": 0.8,
+  "signature_idea": null,
+  "hook": "The cute crescent sprite grew into a whispering dusk-wraith \u2014 one of those rare mid-stages worth using in its own right.",
+  "_batch": "batch-08.json",
+  "_score": 73.5,
+  "_panel": 75.5,
+  "dex_id": 112,
+  "line_primary_type": "Lunar"
+ },
+ {
+  "concept_id": "B08-018",
+  "name": "Omenire",
+  "types": [
+   "Lunar",
+   "Dark"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "west",
+  "rarity": "rare",
+  "concept": "A towering eclipse-spirit whose crescent core is now fully ringed by a disc of null-dark; it embodies the omen of a total eclipse \u2014 foreboding, still, and able to drain conviction from anyone who meets its gaze.",
+  "visual": "Tall spectral silhouette, a full solar-eclipse disc at the chest (silver rim, ink-dark centre), long ink-mist arms reaching wide, crescent crown of pale fire atop the head; dramatic and eerie at 64px.",
+  "size_cm": 175,
+  "weight_kg": 4.5,
+  "signature_idea": "Eclipse Omen \u2014 lowers all opponent stats by one stage simultaneously; usable once",
+  "hook": "The crescent grew into an eclipse \u2014 the omen of everything going still before something terrible or wonderful happens.",
+  "_batch": "batch-08.json",
+  "_score": 74.3,
+  "_panel": 74.0,
+  "dex_id": 113,
+  "line_primary_type": "Lunar"
+ },
+ {
+  "concept_id": "B07-001",
+  "name": "Sunsprout",
+  "types": [
+   "Verdant",
+   "Solar"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B07-002",
+   "kindle_trigger": "level 20"
+  },
+  "region": "west",
+  "rarity": "uncommon",
+  "concept": "A compact sun-flower bulb kin that drifted into the Sunken Solarium long ago and absorbed stored daylight through its roots, giving its petals a warm inner glow even in perpetual dusk.",
+  "visual": "Squat round green bulb body, four petals splayed around an amber-glowing centre disc, tiny leafy feet; warm gold halo at the petal tips; reads as a bright flower silhouette at 32px.",
+  "size_cm": 32,
+  "weight_kg": 5.4,
+  "signature_idea": null,
+  "hook": "A cheerful sun-petal kin glowing from the inside \u2014 the first Solar kin a player will meet, and it feels like holding a tiny lantern.",
+  "_batch": "batch-07.json",
+  "_score": 71.3,
+  "_panel": 71.0,
+  "dex_id": 114,
+  "line_primary_type": "Verdant"
+ },
+ {
+  "concept_id": "B07-002",
+  "name": "Solvyne",
+  "types": [
+   "Verdant",
+   "Solar"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B07-003",
+   "kindle_trigger": "level 36"
+  },
+  "region": "west",
+  "rarity": "rare",
+  "concept": "A tall vine-wreathed sun-fae whose open flower-crown channels stored daylight into its spiral tendrils, healing wounds with warm radiance.",
+  "visual": "Slender humanoid silhouette wrapped in glowing vines; broad open sunflower crown framing the face; amber-gold light streams from the petal edges; reads as a confident mid-stage at 48px.",
+  "size_cm": 90,
+  "weight_kg": 18.2,
+  "signature_idea": null,
+  "hook": "It tends to wounded kin in the Solarium ruins like a guardian \u2014 an ally that glows warmer the more it trusts you.",
+  "_batch": "batch-07.json",
+  "_score": 74.1,
+  "_panel": 75.0,
+  "dex_id": 115,
+  "line_primary_type": "Verdant"
+ },
+ {
+  "concept_id": "B07-003",
+  "name": "Auravane",
+  "types": [
+   "Verdant",
+   "Solar"
+  ],
+  "role": "Special Tank",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "west",
+  "rarity": "rare",
+  "concept": "A great solar-vine sovereign whose canopy of golden petals releases stored daylight in wide solar pulses, sustaining the last living flora of the Sunken Solarium.",
+  "visual": "Large, stately kin with a thick trunk-like lower body anchored by root-feet; eight grand petals fan outward like a sun-disc crown, each veined with liquid gold light; dominant, warm silhouette at 64px.",
+  "size_cm": 165,
+  "weight_kg": 94.0,
+  "signature_idea": "Solar Bloom \u2014 releases a pulse of stored light that heals self and chips all foes with Solar damage",
+  "hook": "The undisputed caretaker of the Solarium \u2014 a radiant tree-creature that makes every battle feel like fighting a living sunrise.",
+  "_batch": "batch-07.json",
+  "_score": 74.7,
+  "_panel": 74.5,
+  "dex_id": 116,
+  "line_primary_type": "Verdant"
+ },
+ {
+  "concept_id": "B07-006",
+  "name": "Helibud",
+  "types": [
+   "Solar"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "B",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B07-007",
+   "kindle_trigger": "level 25"
+  },
+  "region": "west",
+  "rarity": "uncommon",
+  "concept": "A rolling solar-seed that bounced free of the Solarium's golden arches; it spins constantly to charge itself with stored daylight, emitting a faint hum and a warm amber glow.",
+  "visual": "Smooth orb-shaped kin, deep amber with eight radial sun-ray notches carved around its equator; two small leaf-wing nubs; single glowing eye; reads cleanly as a spinning ball at 32px.",
+  "size_cm": 26,
+  "weight_kg": 3.9,
+  "signature_idea": null,
+  "hook": "Endlessly spinning and humming with stored warmth \u2014 a living solar toy kids will want to roll everywhere.",
+  "_batch": "batch-07.json",
+  "_score": 73.2,
+  "_panel": 75.0,
+  "dex_id": 117,
+  "line_primary_type": "Solar"
+ },
+ {
+  "concept_id": "B07-007",
+  "name": "Helicore",
+  "types": [
+   "Solar"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B07-008",
+   "kindle_trigger": "level 40"
+  },
+  "region": "west",
+  "rarity": "rare",
+  "concept": "A solar orb kin that has cracked open slightly to reveal a molten amber core; the spinning has accelerated so much that it now hovers just above the ground, leaving a faint scorch ring where it rests.",
+  "visual": "Slightly larger orb with a glowing fracture line around the equator revealing golden inner light; a halo of heat distortion shimmers above it; sun-ray notches are now clearly defined ridges; bold at 48px.",
+  "size_cm": 55,
+  "weight_kg": 14.0,
+  "signature_idea": null,
+  "hook": "A spinning engine of stored sunlight on the verge of breaking open \u2014 it feels genuinely powerful and a little dangerous.",
+  "_batch": "batch-07.json",
+  "_score": 75.0,
+  "_panel": 77.5,
+  "dex_id": 118,
+  "line_primary_type": "Solar"
+ },
+ {
+  "concept_id": "B07-008",
+  "name": "Helithorn",
+  "types": [
+   "Solar"
+  ],
+  "role": "Glass Cannon",
+  "tier": "E",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "west",
+  "rarity": "very_rare",
+  "concept": "The fully awakened solar apex \u2014 the outer shell has burst open into a ring of eight radiant thorn-spokes orbiting a blazing amber core, discharging stored daylight in flares that scorch the air around it.",
+  "visual": "Central blazing amber sphere orbited by eight angled spike-shards like a sun diagram; the whole assembly rotates slowly; corona of golden light bleeds outward; unmistakable, awe-defining at 64px.",
+  "size_cm": 130,
+  "weight_kg": 48.0,
+  "signature_idea": "Sunburst Crown \u2014 charges one turn then releases all stored light in a radial explosion hitting every foe",
+  "hook": "The most purely Solar thing in the dex \u2014 a miniature sun wearing its own corona, rotating in midair. Jaw-dropping on first encounter.",
+  "_batch": "batch-07.json",
+  "_score": 74.1,
+  "_panel": 75.0,
+  "dex_id": 119,
+  "line_primary_type": "Solar"
+ },
+ {
+  "concept_id": "B07-015",
+  "name": "Dawnfawn",
+  "types": [
+   "Solar",
+   "Verdant"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "B",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "B07-016",
+   "kindle_trigger": "level 30"
+  },
+  "region": "west",
+  "rarity": "uncommon",
+  "concept": "A young sun-stag fawn whose antler stubs are flowering sun-vine shoots; it drinks stored daylight through the vines and runs so fast it leaves a brief trail of golden motes on the overgrown Sunvault Climb terraces.",
+  "visual": "Slender fawn silhouette; cream-gold coat with amber dappling; two short antler stubs sprouting bright yellow sun-flowers; four long sprinting legs; tail is a tuft of glowing seedfluff; lively and leggy at 40px.",
+  "size_cm": 62,
+  "weight_kg": 12.5,
+  "signature_idea": null,
+  "hook": "A golden fawn trailing flower-petals as it runs \u2014 fleet-footed, joyful, and impossible not to chase.",
+  "_batch": "batch-07.json",
+  "_score": 77.6,
+  "_panel": 80.0,
+  "dex_id": 120,
+  "line_primary_type": "Solar"
+ },
+ {
+  "concept_id": "B07-016",
+  "name": "Sunstag",
+  "types": [
+   "Solar",
+   "Verdant"
+  ],
+  "role": "Physical Sweeper",
+  "tier": "D",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "west",
+  "rarity": "very_rare",
+  "concept": "A great dawn-stag with a full crown of antlers wreathed in blooming sun-vine flowers; each tine blazes with stored Solar energy, and its passage across the terraces floods the path with warm golden light.",
+  "visual": "Tall, proud stag silhouette; twelve-point antler crown flowering at every tip with radiant amber blooms; broad chest, powerful haunches; coat shifts from deep amber at the hooves to pale gold at the neck; commanding at 64px.",
+  "size_cm": 190,
+  "weight_kg": 155.0,
+  "signature_idea": "Crown Gallop \u2014 Physical Solar/Verdant combo charge that deals both type damage and scatters healing petals",
+  "hook": "A magnificent blazing stag with antlers in full flower \u2014 the single most impressive creature on the Sunvault Climb, an instant collector's trophy.",
+  "_batch": "batch-07.json",
+  "_score": 77.1,
+  "_panel": 78.0,
+  "dex_id": 121,
+  "line_primary_type": "Solar"
+ },
+ {
+  "concept_id": "B07-011",
+  "name": "Solray",
+  "types": [
+   "Solar"
+  ],
+  "role": "Special Sweeper",
+  "tier": "B",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "B07-012",
+   "kindle_trigger": "level 30"
+  },
+  "region": "west",
+  "rarity": "uncommon",
+  "concept": "A flat, disc-shaped solar ray-fish that drifts through the Solarium's flooded halls like a living sunbeam, its body fully translucent except for a golden radial pattern of stored-light cells.",
+  "visual": "Flat circular body, translucent amber with a golden starburst vein-pattern at the centre; six thin trailing rays fanning back like a sun's corona; floats serenely; elegant at 40px.",
+  "size_cm": 44,
+  "weight_kg": 5.2,
+  "signature_idea": null,
+  "hook": "A solar ray floating in dark water like a living stained-glass window \u2014 beautiful and alien.",
+  "_batch": "batch-07.json",
+  "_score": 73.9,
+  "_panel": 76.0,
+  "dex_id": 122,
+  "line_primary_type": "Solar"
+ },
+ {
+  "concept_id": "B07-012",
+  "name": "Solreach",
+  "types": [
+   "Solar"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "west",
+  "rarity": "very_rare",
+  "concept": "A vast solar disc-ray that has doubled in size and brightness, now trailing twelve long luminous rays that each end in a focused point of concentrated daylight capable of cutting stone.",
+  "visual": "Wide disc silhouette, now with a visible central eye that pulses golden; twelve long ray-trails fan out in all directions, each tipped with a bright point; at 64px it fills the frame like a living sun glyph.",
+  "size_cm": 190,
+  "weight_kg": 38.0,
+  "signature_idea": "Ray Convergence \u2014 twelve rays briefly merge into a single concentrated beam for massive Solar damage",
+  "hook": "A creature shaped exactly like the sun \u2014 ancient, enormous, and utterly unmatched in the flooded dark.",
+  "_batch": "batch-07.json",
+  "_score": 76.9,
+  "_panel": 79.0,
+  "dex_id": 123,
+  "line_primary_type": "Solar"
+ },
+ {
+  "concept_id": "B08-006",
+  "name": "Petalune",
+  "types": [
+   "Lunar",
+   "Frost"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "B",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "B08-007",
+   "kindle_trigger": "level 28"
+  },
+  "region": "west",
+  "rarity": "uncommon",
+  "concept": "A quick frost-moth with wings patterned in delicate ice-crystal mandalas that catch moonlight and scatter it as prismatic cold sparks. It flits between the telescope domes leaving frosty petal-impressions on the glass.",
+  "visual": "Slender moth silhouette, pale blue-white body, broad wings with intricate frost-mandala patterning in silver and ice-blue, long tapered antennae; delicate and swift at 48px.",
+  "size_cm": 40,
+  "weight_kg": 0.9,
+  "signature_idea": null,
+  "hook": "A moth made of moonlit frost \u2014 beautiful, fleeting, and endlessly collectible.",
+  "_batch": "batch-08.json",
+  "_score": 75.1,
+  "_panel": 76.5,
+  "dex_id": 124,
+  "line_primary_type": "Lunar"
+ },
+ {
+  "concept_id": "B08-007",
+  "name": "Crystalune",
+  "types": [
+   "Lunar",
+   "Frost"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "D",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "west",
+  "rarity": "rare",
+  "concept": "A large moon-moth whose wings have crystallised into translucent ice-panels etched with star-map engravings. It navigates by the stars with uncanny precision and can flash-freeze the air around it.",
+  "visual": "Wide-span moth, deep midnight-blue body, enormous translucent ice-panel wings with fine star-chart etchings glowing silver, trail of ice-crystal motes; grand and luminous at 64px.",
+  "size_cm": 110,
+  "weight_kg": 8.5,
+  "signature_idea": "Starmap Veil \u2014 sets a two-turn Frost field that slows all grounded opponents",
+  "hook": "Its wings are literally a star atlas carved in ice \u2014 the most visually stunning moth in Vesperholm.",
+  "_batch": "batch-08.json",
+  "_score": 79.5,
+  "_panel": 81.5,
+  "dex_id": 125,
+  "line_primary_type": "Lunar"
+ },
+ {
+  "concept_id": "B09-023",
+  "name": "Lunveil",
+  "types": [
+   "Light",
+   "Lunar"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "B",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "B09-024",
+   "kindle_trigger": "level 28"
+  },
+  "region": "west",
+  "rarity": "uncommon",
+  "concept": "A silvery curtain-moth near the Nightreach Observatory, its wings folded like shut eyelids; at night it opens them to reveal glowing Lunar-map markings that disorient rivals.",
+  "visual": "Mid-sized moth with broad flat wings folded at rest; wings are dove-grey with eyes-shut markings on the outer face, but when spread reveal detailed silver-on-indigo moonphase maps; antennae tipped with small white orbs; elegant and mysterious at 32px.",
+  "size_cm": 55,
+  "weight_kg": 0.9,
+  "signature_idea": null,
+  "hook": "Two completely different wing faces \u2014 the shy closed moth and the revelatory open moth \u2014 give it a double life kids will find fascinating.",
+  "_batch": "batch-09.json",
+  "_score": 76.2,
+  "_panel": 78.0,
+  "dex_id": 126,
+  "line_primary_type": "Light"
+ },
+ {
+  "concept_id": "B09-024",
+  "name": "Lunvane",
+  "types": [
+   "Light",
+   "Lunar"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "D",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "west",
+  "rarity": "very_rare",
+  "concept": "A vast lunar-herald moth whose wing-span casts a moon-shadow over the battlefield; it confuses, charms, and sleep-dusts opponents with an otherworldly calm that feels like drifting off to sleep under open skies.",
+  "visual": "Enormous wingspan; wings are deep midnight-blue with silver crescent and star-chart patterns that shift slowly; a long graceful body of silver-white; two large feathery antennae like plumes; hovers silently; presence fills the battle frame at 64px.",
+  "size_cm": 180,
+  "weight_kg": 3.2,
+  "signature_idea": "Moonfall Curtain \u2014 inflicts Sleep on one target with 90% accuracy; if the target is already Confused, inflicts Sleep automatically and also leaves a 3-turn Drowsy field that slows all grounded foes.",
+  "hook": "The moon made into a moth \u2014 one of the most atmospheric kin in the game; collectors will feel privileged to own one.",
+  "_batch": "batch-09.json",
+  "_score": 79.9,
+  "_panel": 82.0,
+  "dex_id": 127,
+  "line_primary_type": "Light"
+ },
+ {
+  "concept_id": "B11-007",
+  "name": "Solarmourn",
+  "types": [
+   "Solar"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "E",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "west",
+  "rarity": "very_rare",
+  "concept": "The luminous anchor of the Solar Constellation, a great heron-phoenix whose plumage is the last fragment of stored daylight in the Sunken Solarium. It doesn't burn \u2014 it glows with the warm memory of sunlight, a diffuse gold that makes everything it stands beside look briefly like afternoon. Lucan Pyre found it roosting in the solarium's highest dry arch, a decade ago, and has kept its presence secret, because he was afraid. It embodies not the heat of the sun but the feeling of warmth remembered \u2014 a comfort, not a weapon.",
+  "visual": "Tall, elegant heron-phoenix with long sweeping tail feathers that trail behind like a train. Plumage in warm gold and honey-amber, edged with faint diamond-cyan light. The chest and neck are pale as bone-white parchment. One wing is slightly shorter \u2014 an old wound that never quite healed. Eyes are deep amber, warm and patient. The silhouette is all grace and faded glory.",
+  "size_cm": 195,
+  "weight_kg": 85,
+  "signature_idea": "Last Warm Day \u2014 floods the battlefield with stored solar warmth, raising all allies' Speed and Special Attack for three turns while giving the user near-perfect priority on its next move; a pivot move built from memory.",
+  "hook": "The sorrowful beauty of something magnificent that has endured too long alone. Players who battle this one in the Solarium will feel the whole Vesperholm mood in one encounter.",
+  "_batch": "batch-11.json",
+  "_score": 82.8,
+  "_panel": 87.5,
+  "dex_id": 128,
+  "line_primary_type": "Solar"
+ },
+ {
+  "concept_id": "B08-035",
+  "name": "Dawnwatcher",
+  "types": [
+   "Lunar",
+   "Light"
+  ],
+  "role": "Special Tank",
+  "tier": "E",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "west",
+  "rarity": "very_rare",
+  "concept": "The sub-legendary apex of the Lunar constellation \u2014 a great celestial heron of crystallised moonlight and captured starfire, said to stand vigil at the exact moment between night and dawn. Nightreach astronomers built the observatory to watch for it. Lunar/Light Constellation Warden.",
+  "visual": "Tall elegant heron silhouette, body formed of layered plates of translucent crystalline moonlight, long neck and crest trailing silver-white starfire, vast wings spanning full starfield patterns, a single blazing star-eye; monumentally graceful at 64px.",
+  "size_cm": 280,
+  "weight_kg": 95.0,
+  "signature_idea": "Starfire Vigil \u2014 marks one opponent for true damage every turn for 3 turns while raising own defenses",
+  "hook": "The heron that watches the sky so dawn can come \u2014 the Warden of the Lunar constellation, and the reason Nightreach Observatory exists at all.",
+  "_batch": "batch-08.json",
+  "_score": 76.8,
+  "_panel": 77.5,
+  "dex_id": 129,
+  "line_primary_type": "Lunar"
+ },
+ {
+  "concept_id": "B11-015",
+  "name": "Heliovast",
+  "types": [
+   "Solar"
+  ],
+  "role": "Special Sweeper",
+  "tier": "E",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "west",
+  "rarity": "very_rare",
+  "concept": "Sealed inside the Helia Vault \u2014 a reliquary off Sunvault Climb whose door can only be unlocked by Sunsketch \u2014 Heliovast is the most concentrated pocket of stored sunlight in Vesperholm. It resembles a vast solar-ray fish, drifting through the sealed interior of the vault in a self-sustaining solar current. The vault was built specifically to contain it safely, because its presence causes nearby plants to bloom years ahead of schedule and dormant seeds from other regions to germinate in the stone cracks. It doesn't fight to harm \u2014 it radiates, and the radiation is overwhelming.",
+  "visual": "A great disc-bodied ray with an enormous central solar-eye at the front face, surrounded by radiating fin-rays like a living sun diagram. The body is deep gold with white-hot veins. The fin-rays are translucent amber, trailing fading light halos at their tips. The eye is an intense white-core disc. Even at idle, the battle background behind it yellows. The silhouette at 64px is a sun \u2014 because it is one.",
+  "size_cm": 250,
+  "weight_kg": 280,
+  "signature_idea": "Solar Surge \u2014 charges for one turn building internal solar pressure, then releases a total-immolation Special strike that deals Solar damage to all opponents and leaves a persistent Sunfield that boosts Solar-type attacks for three turns.",
+  "hook": "The one kin where catching it makes the battle screen itself change colour. Players will remember exactly where they first saw it.",
+  "_batch": "batch-11.json",
+  "_score": 80.8,
+  "_panel": 84.5,
+  "dex_id": 130,
+  "line_primary_type": "Solar"
+ },
+ {
+  "concept_id": "B07-028",
+  "name": "Helixia",
+  "types": [
+   "Solar"
+  ],
+  "role": "Special Sweeper",
+  "tier": "E",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "west",
+  "rarity": "very_rare",
+  "concept": "The Helia Vault's guardian: a great solar apex kin shaped like a living orrery, its body a central amber core ringed by three concentric hoops of golden light that rotate at different speeds, releasing precision solar lances.",
+  "visual": "Spherical amber core roughly lion-headed, with three glowing golden rings orbiting at different angles (like an armillary sphere); each ring is studded with small radiant nodes; the whole structure rotates; breathtaking at 64px.",
+  "size_cm": 150,
+  "weight_kg": 88.0,
+  "signature_idea": "Orrery Lance \u2014 fires a targeted beam from each ring simultaneously, three hits of Solar damage in one turn",
+  "hook": "A living golden armillary sphere \u2014 the awe-pinnacle of the Solar type and the centrepiece of Helia Vault. Nothing else in the dex looks anything like it.",
+  "_batch": "batch-07.json",
+  "_score": 78.6,
+  "_panel": 81.5,
+  "dex_id": 131,
+  "line_primary_type": "Solar"
+ },
+ {
+  "concept_id": "B11-008",
+  "name": "Lunaveil",
+  "types": [
+   "Lunar"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "E",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "west",
+  "rarity": "very_rare",
+  "concept": "The luminous anchor of the Lunar Constellation, a silken serpent-moth of impossible size \u2014 its wingspan covers the Nightreach Observatory's dome when it alights. Nessa Cole has been tracking its orbital path through the sky for years without knowing what it was. It navigates by the Lunar star alone; when that star was dimmed, it circled the Observatory for months, lost, and finally settled behind the great lens. Its wings are the night sky itself, each scale a pinprick of cold blue starlight. When it moves, it leaves a fading trail of lunar dust.",
+  "visual": "Vast serpent-body with two enormous moth-wings, each wing a deep night-blue scattered with hundreds of cold diamond-cyan star-point scales. The serpent body is dark as ink with a faint silver-blue iridescence. The head is moth-like with long feeler-antennae tipped with cold silver sparks. In the night-blue palette of the Observatory, it is nearly invisible until it moves.",
+  "size_cm": 320,
+  "weight_kg": 140,
+  "signature_idea": "Lunar Drift \u2014 phases partially out of material existence, making the user immune to all moves for one turn and then slamming back into reality with a high-Speed special strike that always moves first.",
+  "hook": "The night sky as a creature. Anyone who watches its entrance animation will screenshot it immediately.",
+  "_batch": "batch-11.json",
+  "_score": 82.8,
+  "_panel": 87.5,
+  "dex_id": 132,
+  "line_primary_type": "Lunar"
+ },
+ {
+  "concept_id": "B10-006",
+  "name": "Flutterwane",
+  "types": [
+   "Dark",
+   "Light"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B10-007",
+   "kindle_trigger": "level 22"
+  },
+  "region": "outer",
+  "rarity": "uncommon",
+  "concept": "A tiny will-o'-wisp no bigger than a fist, its glow cycling between warm amber and drained grey as if the Hollowing pulls at something it refuses to release. It blinks in and out of visibility like a guttering candle.",
+  "visual": "Teardrop wisp shape, half its body bathed in warm amber-white, half in cool ashen grey; the divide is not a clean line but a flickering blurred edge; tiny trailing tail of mist.",
+  "size_cm": 12,
+  "weight_kg": 0.2,
+  "signature_idea": null,
+  "hook": "A kin visibly fighting its own hollowing \u2014 warm and dark at once, genuinely moving.",
+  "_batch": "batch-10.json",
+  "_score": 77.6,
+  "_panel": 80.0,
+  "dex_id": 133,
+  "line_primary_type": "Dark"
+ },
+ {
+  "concept_id": "B10-007",
+  "name": "Wispwane",
+  "types": [
+   "Dark",
+   "Light"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B10-008",
+   "kindle_trigger": "level 38"
+  },
+  "region": "outer",
+  "rarity": "rare",
+  "concept": "A wisp caught between the Skyweave and the Hollowing \u2014 half its body radiates pale golden light, the other half swirls with cold dark vapour. It is the living boundary between what Vesperholm was and what it is becoming. Neither side has won yet.",
+  "visual": "Elongated wisp with a clear left/right split: the light half is warm ivory-gold with a faint inner shimmer; the dark half is deep indigo-void with null-mist tendrils; the division is a crackling seam of sparks.",
+  "size_cm": 45,
+  "weight_kg": 1.4,
+  "signature_idea": "Waning Pulse \u2014 hits as both Dark and Light simultaneously; deals reduced damage but cannot be fully resisted by either type",
+  "hook": "The one kin that embodies the whole game's conflict in its body \u2014 kids will argue about whether it's dark or light.",
+  "_batch": "batch-10.json",
+  "_score": 80.2,
+  "_panel": 82.5,
+  "dex_id": 134,
+  "line_primary_type": "Dark"
+ },
+ {
+  "concept_id": "B10-008",
+  "name": "Liminalux",
+  "types": [
+   "Dark",
+   "Light"
+  ],
+  "role": "Special Tank",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "outer",
+  "rarity": "very_rare",
+  "concept": "The resolved form of a wisp that survived the Hollowing's full pull and did not fall entirely dark \u2014 nor entirely light. It exists as a stable chimera, its body a sphere of coexisting radiance and void. Its presence calms both lit and hollow kin.",
+  "visual": "Large orb-being, one hemisphere bright bone-white with a golden core, the other deep void-black with a violet inner light; a belt of crackling silver sparks rings the equator; two long pale tendrils drift like arms.",
+  "size_cm": 70,
+  "weight_kg": 9.5,
+  "signature_idea": "Equilibrium \u2014 raises own SpA and SpD simultaneously; also halves the opponent's most recent type modifier",
+  "hook": "A kin that resolved the game's central conflict in its own body \u2014 the reward for finding it feels earned.",
+  "_batch": "batch-10.json",
+  "_score": 80.9,
+  "_panel": 83.5,
+  "dex_id": 135,
+  "line_primary_type": "Dark"
+ },
+ {
+  "concept_id": "B10-001",
+  "name": "Mothdim",
+  "types": [
+   "Dark"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "A",
+  "line": {
+   "shape": "three-stage",
+   "stage": 1,
+   "kindles_into": "B10-002",
+   "kindle_trigger": "level 20"
+  },
+  "region": "outer",
+  "rarity": "common",
+  "concept": "A small grey moth whose wing-eyes were once luminous but are now flat and lightless \u2014 ashen circles where the glow used to be. It flutters through coldfog seeking the warmth it can no longer feel.",
+  "visual": "Coin-sized moth, chalk-grey wings with faded circular eye-markings that hold no light; segmented dusty body, antennae curled downward; at 16px reads as a tiny winged oval.",
+  "size_cm": 8,
+  "weight_kg": 0.1,
+  "signature_idea": null,
+  "hook": "A moth whose eye-spots have gone dark \u2014 instantly melancholy, immediately recognisable.",
+  "_batch": "batch-10.json",
+  "_score": 74.6,
+  "_panel": 77.0,
+  "dex_id": 136,
+  "line_primary_type": "Dark"
+ },
+ {
+  "concept_id": "B10-002",
+  "name": "Nullmoth",
+  "types": [
+   "Dark"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "C",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B10-003",
+   "kindle_trigger": "level 36"
+  },
+  "region": "outer",
+  "rarity": "uncommon",
+  "concept": "A palm-sized moth draped in velvet-grey wings that shed fine null-dust \u2014 a powder that drains faint light sources on contact. Its dead lantern marking on each hindwing is unmistakable.",
+  "visual": "Slate-grey wings with a stylised snuffed-lantern motif on each hindwing \u2014 the lantern arch and pane visible but the flame glyph hollow; body wrapped in soft ashen fuzz; dull violet undersides.",
+  "size_cm": 22,
+  "weight_kg": 0.8,
+  "signature_idea": "Null Dust \u2014 entry hazard that dims incoming Light-type moves for 3 turns",
+  "hook": "The snuffed-lantern wing pattern is the emblem of the Coldfog Marches \u2014 instantly iconic.",
+  "_batch": "batch-10.json",
+  "_score": 79.0,
+  "_panel": 82.0,
+  "dex_id": 137,
+  "line_primary_type": "Dark"
+ },
+ {
+  "concept_id": "B10-003",
+  "name": "Voidmantle",
+  "types": [
+   "Dark"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "D",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "outer",
+  "rarity": "rare",
+  "concept": "A large, crepuscular moth whose wingspan fills a doorway. Its wings are so saturated with null-dust that they absorb the ambient glow from nearby kin, leaving a sphere of unnatural dark around it. An apex predator of light.",
+  "visual": "Huge moth, wings deep charcoal edged in ghostly silver-white trim; six dead-lantern symbols across both wings; a feathered thorax like a burial shroud; compound eyes a milky, sightless grey.",
+  "size_cm": 95,
+  "weight_kg": 6.2,
+  "signature_idea": "Shroud Drift \u2014 spreads Null Dust field, forces opponent switches on entry",
+  "hook": "A moth that eats light itself \u2014 awe-inducing at the right stage of the game.",
+  "_batch": "batch-10.json",
+  "_score": 77.9,
+  "_panel": 80.5,
+  "dex_id": 138,
+  "line_primary_type": "Dark"
+ },
+ {
+  "concept_id": "B09-032",
+  "name": "Wispwane",
+  "types": [
+   "Dark",
+   "Light"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "B",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "B09-033",
+   "kindle_trigger": "level 30"
+  },
+  "region": "outer",
+  "rarity": "uncommon",
+  "concept": "A guttering will-o'-wisp of the Coldfog Marches \u2014 a Light kin slowly drained by the Hollowing, now barely half-lit; it drifts erratically, luring rivals toward the coldfog while leaking residual radiance.",
+  "visual": "Small floating orb of pale light, but the glow is sickly and flickering; half its body fades into dark-grey shadow; a pained face barely visible in the dim half; dark mist trails from its underside; haunting and sad at 16px.",
+  "size_cm": 25,
+  "weight_kg": 0.1,
+  "signature_idea": null,
+  "hook": "A kin that is visibly sick \u2014 players feel an immediate urge to 'rescue' it, which is emotionally resonant.",
+  "_batch": "batch-09.json",
+  "_score": 79.7,
+  "_panel": 83.0,
+  "dex_id": 139,
+  "line_primary_type": "Dark",
+  "_needs_rename": true,
+  "_dup_of": "Wispwane"
+ },
+ {
+  "concept_id": "B09-033",
+  "name": "Wisprestored",
+  "types": [
+   "Light"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "D",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "outer",
+  "rarity": "rare",
+  "concept": "When a Wispwane is loved and re-kindled, the Hollowing's taint burns away and it blazes back as a radiant wisp of pure light \u2014 joyful, fast, and full of a renewed warmth.",
+  "visual": "A now-healthy glowing orb, bright amber-white, streaming a long comet-tail of light-motes; a beaming face visible in its core; no dark shadow remains; moves with joyful swooping arcs; reads as a blazing meteor-head at 48px.",
+  "size_cm": 60,
+  "weight_kg": 0.3,
+  "signature_idea": "Rekindle \u2014 restores 50% of the user's HP; if the user was affected by any status condition, it is cleansed and the user gets +1 to all stats for 2 turns.",
+  "hook": "The kindling evolution IS the narrative \u2014 recovering a drained kin back to full brilliance is the game's whole theme in one line.",
+  "_batch": "batch-09.json",
+  "_score": 81.8,
+  "_panel": 86.0,
+  "dex_id": 140,
+  "line_primary_type": "Dark"
+ },
+ {
+  "concept_id": "B10-004",
+  "name": "Cindersob",
+  "types": [
+   "Dark",
+   "Ember"
+  ],
+  "role": "Glass Cannon",
+  "tier": "B",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "B10-005",
+   "kindle_trigger": "level 30"
+  },
+  "region": "outer",
+  "rarity": "uncommon",
+  "concept": "A small creature shaped like a charred ember-hound pup \u2014 the hollowed remnant of a once-warm hearth companion. Its body is ash-black with faint orange cracks where embers still smoulder inside a hollowed chest.",
+  "visual": "Small four-legged hound of black char, ribs faintly visible as orange-glow cracks; a wisp of cold smoke from a snuffed tail-flame; dull copper eyes; silhouette reads as a small dog at 16px.",
+  "size_cm": 35,
+  "weight_kg": 5.8,
+  "signature_idea": null,
+  "hook": "A puppy that is clearly the ghost of a warm hearth-dog \u2014 heartbreaking and immediately sympathetic.",
+  "_batch": "batch-10.json",
+  "_score": 79.0,
+  "_panel": 82.0,
+  "dex_id": 141,
+  "line_primary_type": "Dark"
+ },
+ {
+  "concept_id": "B10-005",
+  "name": "Embergone",
+  "types": [
+   "Dark",
+   "Ember"
+  ],
+  "role": "Glass Cannon",
+  "tier": "D",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "outer",
+  "rarity": "rare",
+  "concept": "The snuffed final form of a proud ember-kin lineage \u2014 a tall hound whose once-brilliant coat is reduced to cracked obsidian shot through with dying ember veins. It runs in silence, trailing no warmth. The hollow in its chest is the shape of a lost flame.",
+  "visual": "Lean upright hound, obsidian-black body with orange-amber hairline cracks radiating from a dark chest hollow; ears still flame-tapered but dull copper; tail a dead cinder-stump; eyes a faint dying coal-glow.",
+  "size_cm": 88,
+  "weight_kg": 28,
+  "signature_idea": "Cinder Grief \u2014 special Dark move that deals bonus damage equal to missing ember-warmth; ignores type resistances on a 'remembered fire' mechanic flavour",
+  "hook": "Named for what it lost \u2014 kids will feel the tragedy in the name before reading a word of the dex entry.",
+  "_batch": "batch-10.json",
+  "_score": 80.2,
+  "_panel": 82.5,
+  "dex_id": 142,
+  "line_primary_type": "Dark"
+ },
+ {
+  "concept_id": "B05-036",
+  "name": "Whorlix",
+  "types": [
+   "Storm",
+   "Dark"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "C",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "outer",
+  "rarity": "rare",
+  "concept": "A storm-husk kin that drifted in from the Coldfog Marches: a hollow shell of compressed dark air and residual lightning, still discharging sporadically from inside an empty void-core.",
+  "visual": "Tall hollow silhouette like a funnel-cloud with a gap where the centre should be, dark ink-purple swirling walls faintly lit by trapped lightning, jagged trailing tendrils; uneasy void-shape at 48px.",
+  "size_cm": 100,
+  "weight_kg": 2.0,
+  "signature_idea": "Void Static \u2014 drains opponent's PP on the moves they use most frequently; applies confusion.",
+  "hook": "A storm made of nothing \u2014 the Hollowing's mark on electricity, eerie and unforgettable.",
+  "_batch": "batch-05.json",
+  "_score": 75.0,
+  "_panel": 75.0,
+  "dex_id": 143,
+  "line_primary_type": "Storm"
+ },
+ {
+  "concept_id": "B11-022",
+  "name": "Nullhusk",
+  "types": [
+   "Storm",
+   "Dark"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "E",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "outer",
+  "rarity": "very_rare",
+  "concept": "The charged husk of the Hollowfen Stillworks \u2014 a derelict Hollowing null-works set-piece in Coldfog Marches. Once a thunderhead-kin captured and drained into a null-lantern to power the Stillworks machinery, Nullhusk has become something new: a storm-shaped void that still generates electricity through pure muscle memory while the light it once had has been entirely eaten. It haunts the Stillworks' shattered null-lantern array, discharging arcs of dead-charged dark-storm energy into the rusted machinery. It does not know it has been emptied \u2014 it keeps generating, a habit that outlasted its soul.",
+  "visual": "A thunderhead-bull silhouette rendered in absolute void: the body outline is a deep storm-shape filled with dark non-light, negative-space body, but from it leak erratic arcs of dead-current in a sickly violet-grey that never quite reaches the warmth of true storm-blue. The eyes are empty null-lantern apertures \u2014 circular, glass-cold, unlit. The horns still crackle with charge. Reads as something that was majestic and is now entirely hollow.",
+  "size_cm": 220,
+  "weight_kg": 0,
+  "signature_idea": "Dead Circuit \u2014 discharges all accumulated null-charge in a single catastrophic arc that deals Dark damage scaled to how many status conditions are on the field, then wipes all field effects including its own; a scorched-earth move that clears everything.",
+  "hook": "The most haunting optional encounter in the game: a thunderstorm that has been hollowed out. Players will feel C\u00f2r's philosophy as something terrible and real through this one battle.",
+  "_batch": "batch-11.json",
+  "_score": 83.4,
+  "_panel": 87.0,
+  "dex_id": 144,
+  "line_primary_type": "Storm"
+ },
+ {
+  "concept_id": "B10-038",
+  "name": "Cindervast",
+  "types": [
+   "Dark"
+  ],
+  "role": "Special Sweeper",
+  "tier": "E",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "outer",
+  "rarity": "very_rare",
+  "concept": "The Drownlight Beacon sub-legendary \u2014 a vast shadow-whale that was once a Solar-type celestial guardian of the old beacon. The Hollowing snuffed its stored daylight entirely and refashioned it into a creature of pure null. It circles the beacon's foundations in the deep fog, singing a song at a frequency no living thing can hear.",
+  "visual": "Enormous cetacean silhouette, deep void-black with faint silver constellation-marks still visible along its flanks (the ghost of what it was); fins trail null-mist; a crescent of anti-light glows where its blowhole was; awe-tier size.",
+  "size_cm": 900,
+  "weight_kg": 45000,
+  "signature_idea": "Null Tide \u2014 the signature: a wave of void that hits the entire opposing side; drains one positive stat stage from each target; requires the Drownlight Beacon encounter to access",
+  "hook": "A beacon-whale who once lit the coast, now the dark that extinguishes it \u2014 the most poignant creature in the dex.",
+  "_batch": "batch-10.json",
+  "_score": 83.2,
+  "_panel": 88.0,
+  "dex_id": 145,
+  "line_primary_type": "Dark"
+ },
+ {
+  "concept_id": "B10-027",
+  "name": "Bogvast",
+  "types": [
+   "Dark"
+  ],
+  "role": "Physical Wall",
+  "tier": "E",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "outer",
+  "rarity": "very_rare",
+  "concept": "An enormous null-beast that has become part of the coldfog marshes themselves \u2014 its body encrusted with dead reed-stalks, snuffed lantern-frames, and darkened mineral deposits. Travelers have always assumed it was a piece of geography. It moves only when something enters its null-field.",
+  "visual": "Vast tortoise-like creature, entirely hidden beneath an shell of snuffed lanterns, dead reeds, and null-stone; only the deep void-dark eyes and four pillar-legs betray it as alive; its back looks like a section of blighted marsh terrain.",
+  "size_cm": 420,
+  "weight_kg": 4800,
+  "signature_idea": "Stillmarch \u2014 on entry, sets a terrain field that reduces all opponents' Speed by one stage per turn spent in battle; the 'being slowly swallowed by the marsh' feeling",
+  "hook": "An apex creature that IS the coldfog marsh \u2014 players who didn't look carefully will be stunned when it moves.",
+  "_batch": "batch-10.json",
+  "_score": 78.6,
+  "_panel": 81.5,
+  "dex_id": 146,
+  "line_primary_type": "Dark"
+ },
+ {
+  "concept_id": "B09-042",
+  "name": "Skyweavelet",
+  "types": [
+   "Light"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "B",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "central",
+  "rarity": "uncommon",
+  "concept": "A mote of the Skyweave itself given semi-sapient form \u2014 a thread-sprite that weaves small patches of the celestial fabric back together wherever the Hollowing has frayed it, arriving at the Crossroads ahead of each constellation relight.",
+  "visual": "Tiny humanoid woven entirely from luminous thread; body is a loose tangle of glowing filaments in soft cyan, gold and white; legs and arms are thread-loops; a face of two bright white dots in a small thread-loop oval; carries a spool of golden thread on one wrist; whimsical and unique at 16px.",
+  "size_cm": 20,
+  "weight_kg": 0.02,
+  "signature_idea": "Skyweave Stitch \u2014 removes all field hazards from both sides of the battlefield AND prevents hazards being placed on the ally's side for 2 turns; if used before a relit-area encounter it gives the whole party +5% exp.",
+  "hook": "It is literally mending the sky \u2014 the game's lore made playable in a tiny, charming form. Players who love the story will feel this kin IS the journey.",
+  "_batch": "batch-09.json",
+  "_score": 80.8,
+  "_panel": 84.5,
+  "dex_id": 147,
+  "line_primary_type": "Light"
+ },
+ {
+  "concept_id": "B09-003",
+  "name": "Lampling",
+  "types": [
+   "Light"
+  ],
+  "role": "Special Wall",
+  "tier": "C",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "central",
+  "rarity": "rare",
+  "concept": "The beloved mascot of Vesper Crossroads \u2014 a sentient vesperlamp kin that has been glowing at the crossroads inn for longer than anyone can remember. It welcomes every weary traveller with a warm amber light and an unhurried tilt of its brass hood.",
+  "visual": "Squat, teardrop-shaped body of burnished brass, a round glass-chimney belly filled with warm amber glow; two small mitten-like hands grip the base; tiny curled feet; a brass hood sits slightly askew like a jaunty cap; warm cream light pools at its base; instantly iconic at 32px \u2014 fat oval + hat silhouette.",
+  "size_cm": 42,
+  "weight_kg": 3.8,
+  "signature_idea": "Heartlight \u2014 sets a persistent healing field for 4 turns (allies recover 1/8 HP each turn) and clears all party status conditions on use.",
+  "hook": "It IS the crossroads \u2014 the mascot every player will bond with on their first visit. A hug in kin form.",
+  "_batch": "batch-09.json",
+  "_score": 79.7,
+  "_panel": 83.0,
+  "dex_id": 148,
+  "line_primary_type": "Light"
+ },
+ {
+  "concept_id": "B11-009",
+  "name": "Keylumen",
+  "types": [
+   "Light"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "F",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "central",
+  "rarity": "legendary",
+  "concept": "The Keystar-kin. At the heart of the Umbral Spire, sealed within the Ninth Lantern, rests the being that the old Vesperholm star-tenders simply called the First Light \u2014 the original anchor of the Keystar, the central star without which no other constellation can hold. Keylumen is not a creature that chose to be a star: it is a star that chose to become a creature, once, long ago, because it was curious about the world below. It is vast and tender and utterly singular. When the Hollowing's Great Null reaches toward the Keystar, Keylumen rises from within the darkened lantern \u2014 not to fight, but to remember. And in remembering, it outshines everything around it. Scripted encounter; cannot be encountered in the wild.",
+  "visual": "A tall, upright cervine figure \u2014 like a great stag, but made entirely of woven starlight. No hard edges: the silhouette blooms and shifts like a constellation drawing. The body is a deep midnight-blue field shot through with dense white-gold star-points; the antlers are open latticework of pure light, each tip a true star. The eyes are two full-disc pupils of warm solar gold. At rest it looks like a lantern-constellation stepped down from the sky. In battle it pulses with ever-brightening rings of diamond-cyan. The art reads iconic at every sprite size.",
+  "size_cm": 300,
+  "weight_kg": 0,
+  "signature_idea": "Keylight \u2014 the Keystar flares through the user, striking all opposing kin simultaneously with pure Light damage that ignores resistances and then leaving a Radiance field that heals the user's side each turn for three turns; the move that relights the sky.",
+  "hook": "Keylumen is the answer to the whole game's question. Catching it feels not like a victory but like being trusted.",
+  "_batch": "batch-11.json",
+  "_score": 87.0,
+  "_panel": 93.5,
+  "dex_id": 149,
+  "line_primary_type": "Light"
+ },
+ {
+  "concept_id": "B11-010",
+  "name": "Nullmajor",
+  "types": [
+   "Dark"
+  ],
+  "role": "Special Sweeper",
+  "tier": "F",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "central",
+  "rarity": "legendary",
+  "concept": "Warden C\u00f2r's drained final-boss kin \u2014 the embodiment of the Great Null, the shape that all the harvested light takes when there is nowhere left to go. Nullmajor is not malicious. It is vast and sorrowful, the accumulated darkness of every snuffed lantern and every constellation dimmed by the Hollowing's null-lanterns. In battle at the Umbral Spire's peak, it does not attack: it absorbs. It pulls light from the air, from the player's kin, from the Skyweave Crown itself. To face it is to understand what C\u00f2r was trying to create \u2014 a world where the pain of losing light simply stops, because there is none left. Post-story, C\u00f2r releases it; it dissolves into the sky as dawn returns, becoming the last dark before morning.",
+  "visual": "A colossal figure, roughly humanoid in silhouette \u2014 but hollow. The outline is a dense ink-black void rimmed with a faint cold-violet corona. Within the outline is not darkness but anti-light: a negative space where the battle background is inverted, as if the creature is a hole in the world. C\u00f2r's null-lantern floats at the centre of its chest, still lit with inverted cold-violet. The face is a smooth featureless oval of pure absence. No eyes. It is the saddest design in the game \u2014 it looks like grief given form.",
+  "size_cm": 450,
+  "weight_kg": 0,
+  "signature_idea": "Great Null \u2014 draws every Light-typed bonus, Radiance effect, and STAB boost from the field into itself, converting them to raw Dark power and unleashing them as a single devastating pulse that also lowers all enemy kin's Special Attack for two turns; the anti-dawn.",
+  "hook": "The final boss that makes players feel the weight of the story's moral. Not hateable \u2014 heartbreaking. The memory of this fight is the one that lasts.",
+  "_batch": "batch-11.json",
+  "_score": 85.3,
+  "_panel": 91.0,
+  "dex_id": 150,
+  "line_primary_type": "Dark"
+ },
+ {
+  "concept_id": "B11-011",
+  "name": "Dawnbrael",
+  "types": [
+   "Solar",
+   "Light"
+  ],
+  "role": "Physical Sweeper",
+  "tier": "F",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "region": "post",
+  "rarity": "legendary",
+  "concept": "The Dawn Legendary \u2014 the kin that was always there, sleeping beneath Dawnstead in a sealed reliquary of sunrise-stone, waiting for the day that never came. It is not a new creature: it is the oldest kin in Vesperholm, the guardian of the first dawn, placed there by the original star-tenders as a failsafe for a worst case they hoped would never arrive. When dawn finally returns and the Dawnstead reliquary opens, Dawnbrael emerges as a lion-stag blazing with actual sunlight \u2014 not stored, not remembered, but real. For the first time in the game, a kin casts hard-edged shadows behind it. It is the payoff for finishing everything.",
+  "visual": "A lion-stag \u2014 lion's body with a stag's great antlers \u2014 made of and wreathed in actual sunlight. The coat is amber-to-white radiance, the mane a full halo of solar corona arcs in diamond-cyan and fire-orange. The antlers are molten gold with sun-flare tips, casting hard shadows in every direction. Eyes are two full solar discs: white-hot centres with amber halos. In the post-game palette of true daylight colours, it reads as a creature from a different, brighter world \u2014 because it is.",
+  "size_cm": 280,
+  "weight_kg": 340,
+  "signature_idea": "First Dawn \u2014 summons a true solar field that replaces all weather effects, boosts every Solar- and Light-typed move by \u00d71.5 for five turns, and deals full-power physical Solar damage to the target with a follow-through Light pulse that hits every remaining opponent at half power; the move the game was building toward.",
+  "hook": "The reward for completing the journey. The moment Dawnbrael steps into real sunlight for the first time, the game earns everything it promised.",
+  "_batch": "batch-11.json",
+  "_score": 87.6,
+  "_panel": 93.0,
+  "dex_id": 151,
+  "line_primary_type": "Solar"
+ }
+]

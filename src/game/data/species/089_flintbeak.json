@@ -1,0 +1,84 @@
+{
+  "id": 89,
+  "slug": "flintbeak",
+  "name": "Flintbeak",
+  "types": [
+    "Storm"
+  ],
+  "role": "Glass Cannon",
+  "tier": "C",
+  "stats": {
+    "hp": 46,
+    "atk": 109,
+    "def": 36,
+    "spa": 50,
+    "spd": 46,
+    "spe": 131
+  },
+  "bst": 418,
+  "ability": "static_skin",
+  "hidden_ability": "forager",
+  "catchRate": 120,
+  "kindling": {
+    "into": 90,
+    "trigger": {
+      "kind": "level",
+      "level": 35
+    }
+  },
+  "from": 88,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spark_nip"
+      },
+      {
+        "level": 9,
+        "move": "numb_coil"
+      },
+      {
+        "level": 13,
+        "move": "thunder_kick"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "gale_slam"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A mid-stage strike-bird whose beak has hardened into a flint-edged chisel that sparks on every strike, and whose charge builds faster the more consecutive hits it lands. The beak-as-thunderstrike concept makes every hit feel satisfying \u2014 a natural woodpecker of electricity.",
+    "category": "Storm Fragile Kin",
+    "size_cm": 55,
+    "weight_kg": 3.8,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 36,
+      "max": 39
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Lean raptor, dark charcoal and slate-blue feathers, a dramatically elongated flint-edged beak that cracks sparks on impact, talons wrapped in static; focused aggression at 48px.",
+    "palette": "Lean raptor, dark charcoal and slate-blue feathers, a dramatically elongated flint-edged beak that cracks sparks on impact, talons wrapped in static; focused aggression at 48px.",
+    "direction": "The beak-as-thunderstrike concept makes every hit feel satisfying \u2014 a natural woodpecker of electricity."
+  },
+  "provenance_concept_id": "B05-040"
+}

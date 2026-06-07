@@ -1,0 +1,83 @@
+{
+  "id": 85,
+  "slug": "stillwarden",
+  "name": "Stillwarden",
+  "types": [
+    "Frost",
+    "Dark"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "D",
+  "stats": {
+    "hp": 80,
+    "atk": 70,
+    "def": 89,
+    "spa": 70,
+    "spd": 90,
+    "spe": 99
+  },
+  "bst": 498,
+  "ability": "coldblood",
+  "hidden_ability": "forager",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 84,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "snow_veil"
+      },
+      {
+        "level": 9,
+        "move": "chill_mist"
+      },
+      {
+        "level": 13,
+        "move": "glacier_beam"
+      },
+      {
+        "level": 19,
+        "move": "hollow_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "blizzard_howl"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A massive glacier-burrower whose silence aura has expanded to blanket entire cave systems. Its back has erupted into a ridge of obsidian-black ice spurs. Where Stillwarden rests, no sound exists \u2014 not wind, not water, not other kin. Hushfrost Pass travellers whisper that silence means it is near. Th",
+    "category": "Frost Trickster Kin",
+    "size_cm": 130,
+    "weight_kg": 95,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 38,
+      "max": 40
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Large, powerfully built rodent body; spinal ridge of black ice-crystal spurs along the back; thick neck, wide flat head with deep-set ice-pale eyes; slate-dark colouration on the upper body, pale beneath; silhouette dominated by the spine ridge at 48px.",
+    "palette": "Large, powerfully built rodent body; spinal ridge of black ice-crystal spurs along the back; thick neck, wide flat head with deep-set ice-pale eyes; slate-dark colouration on the upper body, pale beneath; silhouette dominated by the spine ridge at 48px.",
+    "direction": "The transition from cute snow-vole to something that makes silence feel ominous is a perfect awe-curve story."
+  },
+  "provenance_concept_id": "B06-009"
+}

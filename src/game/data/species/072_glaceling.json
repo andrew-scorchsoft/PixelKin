@@ -1,0 +1,84 @@
+{
+  "id": 72,
+  "slug": "glaceling",
+  "name": "Glaceling",
+  "types": [
+    "Frost"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "C",
+  "stats": {
+    "hp": 76,
+    "atk": 71,
+    "def": 71,
+    "spa": 71,
+    "spd": 71,
+    "spe": 58
+  },
+  "bst": 418,
+  "ability": "coldblood",
+  "hidden_ability": "forager",
+  "catchRate": 120,
+  "kindling": {
+    "into": 73,
+    "trigger": {
+      "kind": "level",
+      "level": 34
+    }
+  },
+  "from": 71,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "frost_nip"
+      },
+      {
+        "level": 9,
+        "move": "chill_mist"
+      },
+      {
+        "level": 13,
+        "move": "ice_fang"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "avalanche"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A more developed ice-sprite that has gathered enough ambient ice to give itself a more defined, humanoid shape. It still bounces on rounded feet, but now manifests ice structures around itself \u2014 walls, bridges, steps \u2014 apparently decorating its territory. The structures always collapse after a day. ",
+    "category": "Frost Wanderer Kin",
+    "size_cm": 55,
+    "weight_kg": 12,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 36,
+      "max": 39
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Slightly taller, more defined sprite form; a distinct head on a short neck, arms with three-fingered ice hands; face is more expressive and detailed; occasionally surrounded by small floating ice-crystal fragments it is sculpting; mid-ground presence at 40px.",
+    "palette": "Slightly taller, more defined sprite form; a distinct head on a short neck, arms with three-fingered ice hands; face is more expressive and detailed; occasionally surrounded by small floating ice-crystal fragments it is sculpting; mid-ground presence at 40px.",
+    "direction": "The ice-sculpting-territory-decoration behaviour makes it feel like a small, weird artist \u2014 immediately lovable."
+  },
+  "provenance_concept_id": "B06-041"
+}

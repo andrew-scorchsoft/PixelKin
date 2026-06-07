@@ -1,0 +1,84 @@
+{
+  "id": 54,
+  "slug": "orebound",
+  "name": "Orebound",
+  "types": [
+    "Stone"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "C",
+  "stats": {
+    "hp": 84,
+    "atk": 93,
+    "def": 75,
+    "spa": 40,
+    "spd": 63,
+    "spe": 63
+  },
+  "bst": 418,
+  "ability": "grounded",
+  "hidden_ability": "stonehide",
+  "catchRate": 120,
+  "kindling": {
+    "into": 55,
+    "trigger": {
+      "kind": "level",
+      "level": 34
+    }
+  },
+  "from": 53,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "pebble_toss"
+      },
+      {
+        "level": 9,
+        "move": "stone_wall"
+      },
+      {
+        "level": 13,
+        "move": "rock_hurl"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "boulder_smash"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A stocky bipedal kin that has grown up around its ore core; fists and elbows reinforced with raw iron protrusions, and new ore deposits form on its shoulders. The mid-form that looks like it means business \u2014 ore-plated and ready to brawl.",
+    "category": "Stone Brute Kin",
+    "size_cm": 80,
+    "weight_kg": 95,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 22,
+      "max": 24
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Short biped with a barrel chest; iron-ore growth on both fists and elbows like natural knuckledusters; shoulder ore-knobs; dark grey skin with metallic flecks; small determined face.",
+    "palette": "Short biped with a barrel chest; iron-ore growth on both fists and elbows like natural knuckledusters; shoulder ore-knobs; dark grey skin with metallic flecks; small determined face.",
+    "direction": "The mid-form that looks like it means business \u2014 ore-plated and ready to brawl."
+  },
+  "provenance_concept_id": "B04-018"
+}

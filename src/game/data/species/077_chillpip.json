@@ -1,0 +1,80 @@
+{
+  "id": 77,
+  "slug": "chillpip",
+  "name": "Chillpip",
+  "types": [
+    "Frost"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "A",
+  "stats": {
+    "hp": 53,
+    "atk": 53,
+    "def": 53,
+    "spa": 53,
+    "spd": 53,
+    "spe": 47
+  },
+  "bst": 312,
+  "ability": "coldblood",
+  "hidden_ability": "forager",
+  "catchRate": 210,
+  "kindling": {
+    "into": 78,
+    "trigger": {
+      "kind": "level",
+      "level": 14
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "frost_nip"
+      },
+      {
+        "level": 9,
+        "move": "chill_mist"
+      },
+      {
+        "level": 13,
+        "move": "ice_fang"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A plump little snow-chick with a soft fluff coat of powder-white down. The ice crystals in its down scatter light into tiny rainbows. It tumbles more than walks and cannot yet fly, but its cheerful chirping keeps glacier travellers' spirits up. Maximum chick-fluff energy \u2014 the crystal-scatter rainbo",
+    "category": "Frost Wanderer Kin",
+    "size_cm": 22,
+    "weight_kg": 1.8,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 26,
+      "max": 29
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Round, egg-shaped chick body; big round head with a tiny curved beak; oversized fluffy wings it can't quite fold correctly; powder-white with a pale sky-blue belly; crystal glints in the down; one of the roundest, chubbiest silhouettes in the roster at 32px.",
+    "palette": "Round, egg-shaped chick body; big round head with a tiny curved beak; oversized fluffy wings it can't quite fold correctly; powder-white with a pale sky-blue belly; crystal glints in the down; one of the roundest, chubbiest silhouettes in the roster at 32px.",
+    "direction": "Maximum chick-fluff energy \u2014 the crystal-scatter rainbow detail is a small treasure that rewards close attention."
+  },
+  "provenance_concept_id": "B06-010"
+}

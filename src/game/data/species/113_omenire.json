@@ -1,0 +1,83 @@
+{
+  "id": 113,
+  "slug": "omenire",
+  "name": "Omenire",
+  "types": [
+    "Lunar",
+    "Dark"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "D",
+  "stats": {
+    "hp": 80,
+    "atk": 66,
+    "def": 89,
+    "spa": 70,
+    "spd": 90,
+    "spe": 103
+  },
+  "bst": 498,
+  "ability": "nightsight",
+  "hidden_ability": "forager",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 112,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "dream_wisp"
+      },
+      {
+        "level": 9,
+        "move": "lull"
+      },
+      {
+        "level": 13,
+        "move": "moonbeam"
+      },
+      {
+        "level": 19,
+        "move": "hollow_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "eclipse_wave"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A towering eclipse-spirit whose crescent core is now fully ringed by a disc of null-dark; it embodies the omen of a total eclipse \u2014 foreboding, still, and able to drain conviction from anyone who meets its gaze. The crescent grew into an eclipse \u2014 the omen of everything going still before something ",
+    "category": "Lunar Trickster Kin",
+    "size_cm": 175,
+    "weight_kg": 4.5,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 48,
+      "max": 50
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Tall spectral silhouette, a full solar-eclipse disc at the chest (silver rim, ink-dark centre), long ink-mist arms reaching wide, crescent crown of pale fire atop the head; dramatic and eerie at 64px.",
+    "palette": "Tall spectral silhouette, a full solar-eclipse disc at the chest (silver rim, ink-dark centre), long ink-mist arms reaching wide, crescent crown of pale fire atop the head; dramatic and eerie at 64px.",
+    "direction": "The crescent grew into an eclipse \u2014 the omen of everything going still before something terrible or wonderful happens."
+  },
+  "provenance_concept_id": "B08-018"
+}

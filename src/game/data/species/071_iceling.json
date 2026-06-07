@@ -1,0 +1,80 @@
+{
+  "id": 71,
+  "slug": "iceling",
+  "name": "Iceling",
+  "types": [
+    "Frost"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "A",
+  "stats": {
+    "hp": 53,
+    "atk": 53,
+    "def": 53,
+    "spa": 53,
+    "spd": 53,
+    "spe": 47
+  },
+  "bst": 312,
+  "ability": "coldblood",
+  "hidden_ability": "forager",
+  "catchRate": 210,
+  "kindling": {
+    "into": 72,
+    "trigger": {
+      "kind": "level",
+      "level": 16
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "frost_nip"
+      },
+      {
+        "level": 9,
+        "move": "chill_mist"
+      },
+      {
+        "level": 13,
+        "move": "ice_fang"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A small, round ice-sprite no bigger than a fist that forms spontaneously wherever glacier ice meets air in a specific temperature band. It bounces off ice surfaces playfully, and its body is technically just very sophisticated ice \u2014 though Pale Vault philosophers debate this warmly over tea. The phi",
+    "category": "Frost Wanderer Kin",
+    "size_cm": 18,
+    "weight_kg": 2.5,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 26,
+      "max": 29
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Tiny, perfectly round body of translucent blue-white ice; a simple expressive face of two dark eyes and a small curved mouth pressed into the ice surface; stubby arms and legs of solid ice protrusions; bounces on the bottom like a rubber ball; the quintessential sprite form at 32px.",
+    "palette": "Tiny, perfectly round body of translucent blue-white ice; a simple expressive face of two dark eyes and a small curved mouth pressed into the ice surface; stubby arms and legs of solid ice protrusions; bounces on the bottom like a rubber ball; the quintessential sprite form at 32px.",
+    "direction": "The philosophical question of whether it's a kin or just very ambitious ice is the perfect dex-entry hook."
+  },
+  "provenance_concept_id": "B06-040"
+}

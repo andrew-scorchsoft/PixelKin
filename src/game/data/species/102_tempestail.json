@@ -1,0 +1,82 @@
+{
+  "id": 102,
+  "slug": "tempestail",
+  "name": "Tempestail",
+  "types": [
+    "Storm"
+  ],
+  "role": "Physical Sweeper",
+  "tier": "D",
+  "stats": {
+    "hp": 70,
+    "atk": 115,
+    "def": 65,
+    "spa": 47,
+    "spd": 65,
+    "spe": 136
+  },
+  "bst": 498,
+  "ability": "static_skin",
+  "hidden_ability": "brisk",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 101,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spark_nip"
+      },
+      {
+        "level": 9,
+        "move": "numb_coil"
+      },
+      {
+        "level": 13,
+        "move": "thunder_kick"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "gale_slam"
+      },
+      {
+        "level": 40,
+        "move": "tempest"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The apex gust-fox \u2014 a lithe, white-silver predator whose tail is now a visible thunderstorm compressed into a spinning cylinder; at full sprint its approach sounds like a breaking gale. The little kit that couldn't quite leave the ground became this magnificent silver storm-predator.",
+    "category": "Storm Striker Kin",
+    "size_cm": 145,
+    "weight_kg": 40.0,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 38,
+      "max": 40
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Elegant large fox silhouette, white-silver fur with storm-blue markings, a spiralling tornado-tail that crackles with visible charge, twin ear-fins swept back; the apex of aerodynamic at 64px.",
+    "palette": "Elegant large fox silhouette, white-silver fur with storm-blue markings, a spiralling tornado-tail that crackles with visible charge, twin ear-fins swept back; the apex of aerodynamic at 64px.",
+    "direction": "The little kit that couldn't quite leave the ground became this magnificent silver storm-predator."
+  },
+  "provenance_concept_id": "B05-035"
+}

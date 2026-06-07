@@ -1,0 +1,80 @@
+{
+  "id": 13,
+  "slug": "ashlette",
+  "name": "Ashlette",
+  "types": [
+    "Ember"
+  ],
+  "role": "Special Sweeper",
+  "tier": "A",
+  "stats": {
+    "hp": 44,
+    "atk": 29,
+    "def": 37,
+    "spa": 80,
+    "spd": 44,
+    "spe": 78
+  },
+  "bst": 312,
+  "ability": "emberheart",
+  "hidden_ability": "brisk",
+  "catchRate": 210,
+  "kindling": {
+    "into": 14,
+    "trigger": {
+      "kind": "level",
+      "level": 13
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "tuft_spark"
+      },
+      {
+        "level": 9,
+        "move": "scorch_veil"
+      },
+      {
+        "level": 13,
+        "move": "cinder_spit"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A tiny ash-fairy that drifts on warm updrafts, trailing grey motes; when it sneezes, it blasts a puff of concentrated fire-dust. The sneeze that accidentally launches a fireball \u2014 endearingly powerful.",
+    "category": "Ember Caster Kin",
+    "size_cm": 15,
+    "weight_kg": 0.3,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 3,
+      "max": 6
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Near-translucent teardrop fairy body in pale smoke-grey with a tiny ember core, gossamer ash-wings, two stub arms; minimal but charming at 32px.",
+    "palette": "Near-translucent teardrop fairy body in pale smoke-grey with a tiny ember core, gossamer ash-wings, two stub arms; minimal but charming at 32px.",
+    "direction": "The sneeze that accidentally launches a fireball \u2014 endearingly powerful."
+  },
+  "provenance_concept_id": "B01-012"
+}

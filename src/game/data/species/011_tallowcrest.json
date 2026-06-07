@@ -1,0 +1,84 @@
+{
+  "id": 11,
+  "slug": "tallowcrest",
+  "name": "Tallowcrest",
+  "types": [
+    "Ember"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "C",
+  "stats": {
+    "hp": 76,
+    "atk": 71,
+    "def": 71,
+    "spa": 71,
+    "spd": 71,
+    "spe": 58
+  },
+  "bst": 418,
+  "ability": "emberheart",
+  "hidden_ability": "forager",
+  "catchRate": 120,
+  "kindling": {
+    "into": 12,
+    "trigger": {
+      "kind": "level",
+      "level": 28
+    }
+  },
+  "from": 10,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "ember_jab"
+      },
+      {
+        "level": 9,
+        "move": "scorch_veil"
+      },
+      {
+        "level": 13,
+        "move": "flame_lash"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "pyre_slam"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A mid-sized candle-hound with a crown of five dripping tallow flames that shift colour depending on its mood. The mood-colour flames make it feel alive \u2014 a warm ally that visibly cares.",
+    "category": "Ember Wanderer Kin",
+    "size_cm": 62,
+    "weight_kg": 14.5,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 10,
+      "max": 12
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Robust tawny dog silhouette, wax-drip markings down the haunches, a starburst of five pastel-hued candle-flames crowning the head; distinct and bold at 48px.",
+    "palette": "Robust tawny dog silhouette, wax-drip markings down the haunches, a starburst of five pastel-hued candle-flames crowning the head; distinct and bold at 48px.",
+    "direction": "The mood-colour flames make it feel alive \u2014 a warm ally that visibly cares."
+  },
+  "provenance_concept_id": "B01-002"
+}

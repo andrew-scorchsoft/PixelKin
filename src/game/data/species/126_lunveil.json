@@ -1,0 +1,85 @@
+{
+  "id": 126,
+  "slug": "lunveil",
+  "name": "Lunveil",
+  "types": [
+    "Light",
+    "Lunar"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "B",
+  "stats": {
+    "hp": 56,
+    "atk": 43,
+    "def": 63,
+    "spa": 49,
+    "spd": 63,
+    "spe": 76
+  },
+  "bst": 350,
+  "ability": "mirrorlight",
+  "hidden_ability": "forager",
+  "catchRate": 175,
+  "kindling": {
+    "into": 127,
+    "trigger": {
+      "kind": "level",
+      "level": 28
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spark_mote"
+      },
+      {
+        "level": 9,
+        "move": "dazzle_flash"
+      },
+      {
+        "level": 13,
+        "move": "light_pulse"
+      },
+      {
+        "level": 19,
+        "move": "moonbeam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A silvery curtain-moth near the Nightreach Observatory, its wings folded like shut eyelids; at night it opens them to reveal glowing Lunar-map markings that disorient rivals. Two completely different wing faces \u2014 the shy closed moth and the revelatory open moth \u2014 give it a double life kids will find",
+    "category": "Light Trickster Kin",
+    "size_cm": 55,
+    "weight_kg": 0.9,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 41,
+      "max": 44
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Mid-sized moth with broad flat wings folded at rest; wings are dove-grey with eyes-shut markings on the outer face, but when spread reveal detailed silver-on-indigo moonphase maps; antennae tipped with small white orbs; elegant and mysterious at 32px.",
+    "palette": "Mid-sized moth with broad flat wings folded at rest; wings are dove-grey with eyes-shut markings on the outer face, but when spread reveal detailed silver-on-indigo moonphase maps; antennae tipped with small white orbs; elegant and mysterious at 32px.",
+    "direction": "Two completely different wing faces \u2014 the shy closed moth and the revelatory open moth \u2014 give it a double life kids will find fascinating."
+  },
+  "provenance_concept_id": "B09-023"
+}

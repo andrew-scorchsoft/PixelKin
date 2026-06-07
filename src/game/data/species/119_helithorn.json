@@ -1,0 +1,74 @@
+{
+  "id": 119,
+  "slug": "helithorn",
+  "name": "Helithorn",
+  "types": [
+    "Solar"
+  ],
+  "role": "Glass Cannon",
+  "tier": "E",
+  "stats": {
+    "hp": 61,
+    "atk": 145,
+    "def": 55,
+    "spa": 67,
+    "spd": 61,
+    "spe": 169
+  },
+  "bst": 558,
+  "ability": "daybringer",
+  "hidden_ability": "sunsoak",
+  "catchRate": 24,
+  "kindling": null,
+  "from": 118,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "sun_jab"
+      },
+      {
+        "level": 9,
+        "move": "bask"
+      },
+      {
+        "level": 13,
+        "move": "solar_lash"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "flare_crown"
+      },
+      {
+        "level": 40,
+        "move": "sunburst_nova"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The fully awakened solar apex \u2014 the outer shell has burst open into a ring of eight radiant thorn-spokes orbiting a blazing amber core, discharging stored daylight in flares that scorch the air around it. The most purely Solar thing in the dex \u2014 a miniature sun wearing its own corona, rotating in mi",
+    "category": "Solar Fragile Kin",
+    "size_cm": 130,
+    "weight_kg": 48.0,
+    "habitat": "west"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "Central blazing amber sphere orbited by eight angled spike-shards like a sun diagram; the whole assembly rotates slowly; corona of golden light bleeds outward; unmistakable, awe-defining at 64px.",
+    "palette": "Central blazing amber sphere orbited by eight angled spike-shards like a sun diagram; the whole assembly rotates slowly; corona of golden light bleeds outward; unmistakable, awe-defining at 64px.",
+    "direction": "The most purely Solar thing in the dex \u2014 a miniature sun wearing its own corona, rotating in midair. Jaw-dropping on first encounter."
+  },
+  "provenance_concept_id": "B07-008"
+}

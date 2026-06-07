@@ -1,0 +1,89 @@
+{
+  "id": 21,
+  "slug": "tidmaren",
+  "name": "Tidmaren",
+  "types": [
+    "Tide",
+    "Light"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "C",
+  "stats": {
+    "hp": 60,
+    "atk": 63,
+    "def": 63,
+    "spa": 63,
+    "spd": 63,
+    "spe": 106
+  },
+  "bst": 418,
+  "ability": "tidecaller",
+  "hidden_ability": "brisk",
+  "catchRate": 120,
+  "kindling": {
+    "into": 22,
+    "trigger": {
+      "kind": "level",
+      "level": 28
+    }
+  },
+  "from": 20,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "mist_spray"
+      },
+      {
+        "level": 9,
+        "move": "drench_song"
+      },
+      {
+        "level": 13,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "tide_pulse"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The water-sprite is now a swift silver shape that dances between moonbeams, spreading brief distraction-glimmers to cover allies. The support speedster that doubles as a gorgeous visual \u2014 its moonveil makes other kin look good.",
+    "category": "Tide Courier Kin",
+    "size_cm": 48,
+    "weight_kg": 3.2,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 10,
+      "max": 12
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Slim, elegant aquatic sprite \u2014 silver with pale moonlight-blue highlights, long streaming water-veil wings, a crescent-shaped luminous head-marking, twin ribbon tails.",
+    "palette": "Slim, elegant aquatic sprite \u2014 silver with pale moonlight-blue highlights, long streaming water-veil wings, a crescent-shaped luminous head-marking, twin ribbon tails.",
+    "direction": "The support speedster that doubles as a gorgeous visual \u2014 its moonveil makes other kin look good."
+  },
+  "provenance_concept_id": "B02-032"
+}

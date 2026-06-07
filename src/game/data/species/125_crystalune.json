@@ -1,0 +1,83 @@
+{
+  "id": 125,
+  "slug": "crystalune",
+  "name": "Crystalune",
+  "types": [
+    "Lunar",
+    "Frost"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "D",
+  "stats": {
+    "hp": 74,
+    "atk": 75,
+    "def": 75,
+    "spa": 75,
+    "spd": 75,
+    "spe": 124
+  },
+  "bst": 498,
+  "ability": "nightsight",
+  "hidden_ability": "brisk",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 124,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "dream_wisp"
+      },
+      {
+        "level": 9,
+        "move": "lull"
+      },
+      {
+        "level": 13,
+        "move": "moonbeam"
+      },
+      {
+        "level": 19,
+        "move": "glacier_beam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "eclipse_wave"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A large moon-moth whose wings have crystallised into translucent ice-panels etched with star-map engravings. It navigates by the stars with uncanny precision and can flash-freeze the air around it. Its wings are literally a star atlas carved in ice \u2014 the most visually stunning moth in Vesperholm.",
+    "category": "Lunar Courier Kin",
+    "size_cm": 110,
+    "weight_kg": 8.5,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 48,
+      "max": 50
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Wide-span moth, deep midnight-blue body, enormous translucent ice-panel wings with fine star-chart etchings glowing silver, trail of ice-crystal motes; grand and luminous at 64px.",
+    "palette": "Wide-span moth, deep midnight-blue body, enormous translucent ice-panel wings with fine star-chart etchings glowing silver, trail of ice-crystal motes; grand and luminous at 64px.",
+    "direction": "Its wings are literally a star atlas carved in ice \u2014 the most visually stunning moth in Vesperholm."
+  },
+  "provenance_concept_id": "B08-007"
+}

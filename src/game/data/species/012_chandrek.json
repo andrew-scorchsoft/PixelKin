@@ -1,0 +1,87 @@
+{
+  "id": 12,
+  "slug": "chandrek",
+  "name": "Chandrek",
+  "types": [
+    "Ember",
+    "Light"
+  ],
+  "role": "Special Tank",
+  "tier": "D",
+  "stats": {
+    "hp": 99,
+    "atk": 39,
+    "def": 70,
+    "spa": 115,
+    "spd": 90,
+    "spe": 85
+  },
+  "bst": 498,
+  "ability": "emberheart",
+  "hidden_ability": "thickcoat",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 11,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "tuft_spark"
+      },
+      {
+        "level": 9,
+        "move": "scorch_veil"
+      },
+      {
+        "level": 13,
+        "move": "cinder_spit"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "hearth_pulse"
+      },
+      {
+        "level": 40,
+        "move": "sunflare_burst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A great candlewood hound whose entire mane is a cathedral of living candles, radiating warm golden light that soothes nearby kin. An apex hound made of living light \u2014 the kind of kin you want walking beside you in the dark.",
+    "category": "Ember Channeler Kin",
+    "size_cm": 110,
+    "weight_kg": 48.0,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 10,
+      "max": 12
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Large, dignified canine silhouette; back and mane bristle with tall tapers in cream, gold, and amber; pooling light halos the outline; dramatic yet soft at 64px.",
+    "palette": "Large, dignified canine silhouette; back and mane bristle with tall tapers in cream, gold, and amber; pooling light halos the outline; dramatic yet soft at 64px.",
+    "direction": "An apex hound made of living light \u2014 the kind of kin you want walking beside you in the dark."
+  },
+  "provenance_concept_id": "B01-003"
+}

@@ -1,0 +1,74 @@
+{
+  "id": 145,
+  "slug": "cindervast",
+  "name": "Cindervast",
+  "types": [
+    "Dark"
+  ],
+  "role": "Special Sweeper",
+  "tier": "E",
+  "stats": {
+    "hp": 78,
+    "atk": 50,
+    "def": 67,
+    "spa": 139,
+    "spd": 78,
+    "spe": 146
+  },
+  "bst": 558,
+  "ability": "nullheart",
+  "hidden_ability": "nullheart",
+  "catchRate": 24,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "gloom_spit"
+      },
+      {
+        "level": 9,
+        "move": "blight_touch"
+      },
+      {
+        "level": 13,
+        "move": "hollow_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "voidburst"
+      },
+      {
+        "level": 48,
+        "move": "shadow_rend"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The Drownlight Beacon sub-legendary \u2014 a vast shadow-whale that was once a Solar-type celestial guardian of the old beacon. The Hollowing snuffed its stored daylight entirely and refashioned it into a creature of pure null. It circles the beacon's foundations in the deep fog, singing a song at a freq",
+    "category": "Dark Caster Kin",
+    "size_cm": 900,
+    "weight_kg": 45000,
+    "habitat": "outer"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "Enormous cetacean silhouette, deep void-black with faint silver constellation-marks still visible along its flanks (the ghost of what it was); fins trail null-mist; a crescent of anti-light glows where its blowhole was; awe-tier size.",
+    "palette": "Enormous cetacean silhouette, deep void-black with faint silver constellation-marks still visible along its flanks (the ghost of what it was); fins trail null-mist; a crescent of anti-light glows where its blowhole was; awe-tier size.",
+    "direction": "A beacon-whale who once lit the coast, now the dark that extinguishes it \u2014 the most poignant creature in the dex."
+  },
+  "provenance_concept_id": "B10-038"
+}

@@ -1,0 +1,80 @@
+{
+  "id": 122,
+  "slug": "solray",
+  "name": "Solray",
+  "types": [
+    "Solar"
+  ],
+  "role": "Special Sweeper",
+  "tier": "B",
+  "stats": {
+    "hp": 49,
+    "atk": 29,
+    "def": 42,
+    "spa": 87,
+    "spd": 49,
+    "spe": 94
+  },
+  "bst": 350,
+  "ability": "sunsoak",
+  "hidden_ability": "brisk",
+  "catchRate": 175,
+  "kindling": {
+    "into": 123,
+    "trigger": {
+      "kind": "level",
+      "level": 30
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "glint_ray"
+      },
+      {
+        "level": 9,
+        "move": "bask"
+      },
+      {
+        "level": 13,
+        "move": "daybeam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A flat, disc-shaped solar ray-fish that drifts through the Solarium's flooded halls like a living sunbeam, its body fully translucent except for a golden radial pattern of stored-light cells. A solar ray floating in dark water like a living stained-glass window \u2014 beautiful and alien.",
+    "category": "Solar Caster Kin",
+    "size_cm": 44,
+    "weight_kg": 5.2,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 41,
+      "max": 44
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Flat circular body, translucent amber with a golden starburst vein-pattern at the centre; six thin trailing rays fanning back like a sun's corona; floats serenely; elegant at 40px.",
+    "palette": "Flat circular body, translucent amber with a golden starburst vein-pattern at the centre; six thin trailing rays fanning back like a sun's corona; floats serenely; elegant at 40px.",
+    "direction": "A solar ray floating in dark water like a living stained-glass window \u2014 beautiful and alien."
+  },
+  "provenance_concept_id": "B07-011"
+}

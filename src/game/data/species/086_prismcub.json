@@ -1,0 +1,85 @@
+{
+  "id": 86,
+  "slug": "prismcub",
+  "name": "Prismcub",
+  "types": [
+    "Light",
+    "Frost"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "A",
+  "stats": {
+    "hp": 54,
+    "atk": 53,
+    "def": 53,
+    "spa": 53,
+    "spd": 53,
+    "spe": 46
+  },
+  "bst": 312,
+  "ability": "mirrorlight",
+  "hidden_ability": "forager",
+  "catchRate": 210,
+  "kindling": {
+    "into": 87,
+    "trigger": {
+      "kind": "level",
+      "level": 22
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "glimmer"
+      },
+      {
+        "level": 9,
+        "move": "dazzle_flash"
+      },
+      {
+        "level": 13,
+        "move": "radiant_strike"
+      },
+      {
+        "level": 19,
+        "move": "ice_fang"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A round-eared ice-bear cub of the Pale Vault Glacier whose fur is threaded with prism-crystal filaments; it tumbles through snowdrifts leaving miniature rainbow trails in its wake. A glittery rainbow bear cub \u2014 the purest concentrated 'kids will love this' design in the batch.",
+    "category": "Light Wanderer Kin",
+    "size_cm": 38,
+    "weight_kg": 9,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 26,
+      "max": 29
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Chubby bear cub with snow-white fur laced with fine crystal-threads that catch light in rainbow refractions; a big round nose; small triangular ears; wide trusting eyes; stumbles more than walks; irresistibly cute at 16px.",
+    "palette": "Chubby bear cub with snow-white fur laced with fine crystal-threads that catch light in rainbow refractions; a big round nose; small triangular ears; wide trusting eyes; stumbles more than walks; irresistibly cute at 16px.",
+    "direction": "A glittery rainbow bear cub \u2014 the purest concentrated 'kids will love this' design in the batch."
+  },
+  "provenance_concept_id": "B09-037"
+}

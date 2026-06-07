@@ -1,0 +1,80 @@
+{
+  "id": 50,
+  "slug": "fossik",
+  "name": "Fossik",
+  "types": [
+    "Stone"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "A",
+  "stats": {
+    "hp": 54,
+    "atk": 53,
+    "def": 53,
+    "spa": 53,
+    "spd": 53,
+    "spe": 46
+  },
+  "bst": 312,
+  "ability": "stonehide",
+  "hidden_ability": "forager",
+  "catchRate": 210,
+  "kindling": {
+    "into": 51,
+    "trigger": {
+      "kind": "level",
+      "level": 20
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "pebble_toss"
+      },
+      {
+        "level": 9,
+        "move": "stone_wall"
+      },
+      {
+        "level": 13,
+        "move": "rock_hurl"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A small fossil-shrimp kin that has come back to life; its carapace is the hard chalk-white of ancient bone-stone and it navigates by vibrating its antennae against rock. The little fossil come to life \u2014 ancient and delicate, like holding deep time.",
+    "category": "Stone Wanderer Kin",
+    "size_cm": 16,
+    "weight_kg": 0.4,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 12,
+      "max": 15
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Trilobite-like segmented body in pale bone-white chalk; two long swept-back antennae; multiple small legs; small eyes set in a wide flat head; delicate and prehistoric in feel.",
+    "palette": "Trilobite-like segmented body in pale bone-white chalk; two long swept-back antennae; multiple small legs; small eyes set in a wide flat head; delicate and prehistoric in feel.",
+    "direction": "The little fossil come to life \u2014 ancient and delicate, like holding deep time."
+  },
+  "provenance_concept_id": "B04-031"
+}

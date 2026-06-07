@@ -1,0 +1,87 @@
+{
+  "id": 58,
+  "slug": "mycelarch",
+  "name": "Mycelarch",
+  "types": [
+    "Verdant",
+    "Dark"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "D",
+  "stats": {
+    "hp": 80,
+    "atk": 66,
+    "def": 89,
+    "spa": 70,
+    "spd": 90,
+    "spe": 103
+  },
+  "bst": 498,
+  "ability": "verdant_vigor",
+  "hidden_ability": "forager",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 57,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spore_puff"
+      },
+      {
+        "level": 9,
+        "move": "sleep_pollen"
+      },
+      {
+        "level": 13,
+        "move": "lifedrain"
+      },
+      {
+        "level": 19,
+        "move": "hollow_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "bloomburst"
+      },
+      {
+        "level": 40,
+        "move": "overgrowth"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The ancient lord of the Spore Grotto, a towering fungal entity whose underground mycelium network spans the entire Hollow. Its spores can read the emotional state of any creature nearby. The awe pay-off at the end of the Sporeling line \u2014 gentle sprout becomes an ancient, eerie fungal elder that secr",
+    "category": "Verdant Trickster Kin",
+    "size_cm": 240,
+    "weight_kg": 580,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 22,
+      "max": 24
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Massive pillar-like mushroom body with many layered caps in deep indigo and midnight-green; trailing root-tendrils like a cloak; eyes gleam with dim amber light in shadow.",
+    "palette": "Massive pillar-like mushroom body with many layered caps in deep indigo and midnight-green; trailing root-tendrils like a cloak; eyes gleam with dim amber light in shadow.",
+    "direction": "The awe pay-off at the end of the Sporeling line \u2014 gentle sprout becomes an ancient, eerie fungal elder that secretly controls the whole forest floor."
+  },
+  "provenance_concept_id": "B03-009"
+}

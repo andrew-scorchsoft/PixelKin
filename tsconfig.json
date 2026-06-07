@@ -17,11 +17,10 @@
     "verbatimModuleSyntax": true,
     "useDefineForClassFields": true,
     "outDir": "dist",
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@game/*": ["src/game/*"],
-      "@platform/*": ["src/platform/*"]
+      "@/*": ["./src/*"],
+      "@game/*": ["./src/game/*"],
+      "@platform/*": ["./src/platform/*"]
     }
   },
   "include": ["src"]

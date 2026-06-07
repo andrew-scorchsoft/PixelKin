@@ -1,0 +1,84 @@
+{
+  "id": 112,
+  "slug": "nightwraith",
+  "name": "Nightwraith",
+  "types": [
+    "Lunar"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "C",
+  "stats": {
+    "hp": 67,
+    "atk": 56,
+    "def": 75,
+    "spa": 59,
+    "spd": 75,
+    "spe": 86
+  },
+  "bst": 418,
+  "ability": "nightsight",
+  "hidden_ability": "forager",
+  "catchRate": 120,
+  "kindling": {
+    "into": 113,
+    "trigger": {
+      "kind": "level",
+      "level": 30
+    }
+  },
+  "from": 111,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "dream_wisp"
+      },
+      {
+        "level": 9,
+        "move": "lull"
+      },
+      {
+        "level": 13,
+        "move": "moonbeam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "eclipse_wave"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A mid-stage moon-spirit that has grown a veil of dark mist around its crescent core; it whispers in a frequency that plants doubt and unease in the minds of those who hear it. The cute crescent sprite grew into a whispering dusk-wraith \u2014 one of those rare mid-stages worth using in its own right.",
+    "category": "Lunar Trickster Kin",
+    "size_cm": 70,
+    "weight_kg": 0.8,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 48,
+      "max": 50
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Hovering crescent-core wrapped in a flowing ink-and-silver mist veil, two luminous crescent eyes, long wispy trailing arms of mist; spectral and unnerving at 48px.",
+    "palette": "Hovering crescent-core wrapped in a flowing ink-and-silver mist veil, two luminous crescent eyes, long wispy trailing arms of mist; spectral and unnerving at 48px.",
+    "direction": "The cute crescent sprite grew into a whispering dusk-wraith \u2014 one of those rare mid-stages worth using in its own right."
+  },
+  "provenance_concept_id": "B08-017"
+}

@@ -1,0 +1,89 @@
+{
+  "id": 95,
+  "slug": "glacewing",
+  "name": "Glacewing",
+  "types": [
+    "Storm",
+    "Frost"
+  ],
+  "role": "Special Sweeper",
+  "tier": "C",
+  "stats": {
+    "hp": 59,
+    "atk": 39,
+    "def": 50,
+    "spa": 107,
+    "spd": 59,
+    "spe": 104
+  },
+  "bst": 418,
+  "ability": "static_skin",
+  "hidden_ability": "brisk",
+  "catchRate": 120,
+  "kindling": {
+    "into": 96,
+    "trigger": {
+      "kind": "level",
+      "level": 36
+    }
+  },
+  "from": 94,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "static_jolt"
+      },
+      {
+        "level": 9,
+        "move": "numb_coil"
+      },
+      {
+        "level": 13,
+        "move": "volt_arc"
+      },
+      {
+        "level": 19,
+        "move": "glacier_beam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "tempest"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A mid-stage blizzard-wasp that has grown compound crystal eyes and whose wingbeats create a spiralling vortex of hail shards around its flight path. The ice-vortex around it makes it look like it's already mid-attack even while resting.",
+    "category": "Storm Caster Kin",
+    "size_cm": 55,
+    "weight_kg": 3.5,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 36,
+      "max": 39
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Larger angular wasp, wide iridescent frost-blue compound eyes, four wings edged with jagged ice-crystal trim, abdomen trailing a coil of hail particles; dynamic danger at 48px.",
+    "palette": "Larger angular wasp, wide iridescent frost-blue compound eyes, four wings edged with jagged ice-crystal trim, abdomen trailing a coil of hail particles; dynamic danger at 48px.",
+    "direction": "The ice-vortex around it makes it look like it's already mid-attack even while resting."
+  },
+  "provenance_concept_id": "B05-027"
+}

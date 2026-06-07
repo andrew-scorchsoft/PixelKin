@@ -1,0 +1,87 @@
+{
+  "id": 121,
+  "slug": "sunstag",
+  "name": "Sunstag",
+  "types": [
+    "Solar",
+    "Verdant"
+  ],
+  "role": "Physical Sweeper",
+  "tier": "D",
+  "stats": {
+    "hp": 70,
+    "atk": 115,
+    "def": 65,
+    "spa": 49,
+    "spd": 65,
+    "spe": 134
+  },
+  "bst": 498,
+  "ability": "sunsoak",
+  "hidden_ability": "brisk",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 120,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "sun_jab"
+      },
+      {
+        "level": 9,
+        "move": "bask"
+      },
+      {
+        "level": 13,
+        "move": "solar_lash"
+      },
+      {
+        "level": 19,
+        "move": "root_strike"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "flare_crown"
+      },
+      {
+        "level": 40,
+        "move": "sunburst_nova"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A great dawn-stag with a full crown of antlers wreathed in blooming sun-vine flowers; each tine blazes with stored Solar energy, and its passage across the terraces floods the path with warm golden light. A magnificent blazing stag with antlers in full flower \u2014 the single most impressive creature on",
+    "category": "Solar Striker Kin",
+    "size_cm": 190,
+    "weight_kg": 155.0,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "very_rare",
+      "min": 48,
+      "max": 50
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Tall, proud stag silhouette; twelve-point antler crown flowering at every tip with radiant amber blooms; broad chest, powerful haunches; coat shifts from deep amber at the hooves to pale gold at the neck; commanding at 64px.",
+    "palette": "Tall, proud stag silhouette; twelve-point antler crown flowering at every tip with radiant amber blooms; broad chest, powerful haunches; coat shifts from deep amber at the hooves to pale gold at the neck; commanding at 64px.",
+    "direction": "A magnificent blazing stag with antlers in full flower \u2014 the single most impressive creature on the Sunvault Climb, an instant collector's trophy."
+  },
+  "provenance_concept_id": "B07-016"
+}

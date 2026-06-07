@@ -1,0 +1,80 @@
+{
+  "id": 97,
+  "slug": "thrumvane",
+  "name": "Thrumvane",
+  "types": [
+    "Storm"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "B",
+  "stats": {
+    "hp": 56,
+    "atk": 45,
+    "def": 63,
+    "spa": 49,
+    "spd": 63,
+    "spe": 74
+  },
+  "bst": 350,
+  "ability": "static_skin",
+  "hidden_ability": "forager",
+  "catchRate": 175,
+  "kindling": {
+    "into": 98,
+    "trigger": {
+      "kind": "level",
+      "level": 24
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "static_jolt"
+      },
+      {
+        "level": 9,
+        "move": "numb_coil"
+      },
+      {
+        "level": 13,
+        "move": "volt_arc"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A small, plump kin whose tail spins like a weathervane in wind; the rotation charges a static field around its body and it uses that stored charge to jam opponents' moves. A living windmill with a static personality \u2014 every time it spins faster, sparks fly.",
+    "category": "Storm Trickster Kin",
+    "size_cm": 25,
+    "weight_kg": 3.2,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 29,
+      "max": 32
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Chubby oval body, stubby limbs, a broad four-blade tail that spins freely, grey-blue fur with yellow static-spark highlights at the vane tips; cute windmill shape at 32px.",
+    "palette": "Chubby oval body, stubby limbs, a broad four-blade tail that spins freely, grey-blue fur with yellow static-spark highlights at the vane tips; cute windmill shape at 32px.",
+    "direction": "A living windmill with a static personality \u2014 every time it spins faster, sparks fly."
+  },
+  "provenance_concept_id": "B05-003"
+}

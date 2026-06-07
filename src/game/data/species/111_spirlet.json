@@ -1,0 +1,80 @@
+{
+  "id": 111,
+  "slug": "spirlet",
+  "name": "Spirlet",
+  "types": [
+    "Lunar"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "A",
+  "stats": {
+    "hp": 50,
+    "atk": 41,
+    "def": 56,
+    "spa": 44,
+    "spd": 56,
+    "spe": 65
+  },
+  "bst": 312,
+  "ability": "nightsight",
+  "hidden_ability": "forager",
+  "catchRate": 210,
+  "kindling": {
+    "into": 112,
+    "trigger": {
+      "kind": "level",
+      "level": 15
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "dream_wisp"
+      },
+      {
+        "level": 9,
+        "move": "lull"
+      },
+      {
+        "level": 13,
+        "move": "moonbeam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A tiny night-spirit sprite that looks like a faint crescent cut from silver tissue paper; it drifts on the cold night air above Nightreach Observatory, emitting a soft high hum that unsettles nearby kin. A tiny sliver of moon given life \u2014 impossibly delicate and just a little unsettling.",
+    "category": "Lunar Trickster Kin",
+    "size_cm": 18,
+    "weight_kg": 0.05,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 38,
+      "max": 41
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Simple crescent-moon silhouette form, translucent silver-white body, two tiny round eyes, a faint shimmer trail; minimal and eerie at 32px.",
+    "palette": "Simple crescent-moon silhouette form, translucent silver-white body, two tiny round eyes, a faint shimmer trail; minimal and eerie at 32px.",
+    "direction": "A tiny sliver of moon given life \u2014 impossibly delicate and just a little unsettling."
+  },
+  "provenance_concept_id": "B08-016"
+}

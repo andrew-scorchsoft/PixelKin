@@ -1,0 +1,83 @@
+{
+  "id": 46,
+  "slug": "voltcrag",
+  "name": "Voltcrag",
+  "types": [
+    "Stone",
+    "Storm"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "stats": {
+    "hp": 70,
+    "atk": 47,
+    "def": 60,
+    "spa": 127,
+    "spd": 70,
+    "spe": 124
+  },
+  "bst": 498,
+  "ability": "stonehide",
+  "hidden_ability": "brisk",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 45,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "gravel_spray"
+      },
+      {
+        "level": 9,
+        "move": "stone_wall"
+      },
+      {
+        "level": 13,
+        "move": "crystal_beam"
+      },
+      {
+        "level": 19,
+        "move": "volt_arc"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "tremor_quake"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A large, heavily-built ore-beast that acts as a living conductor; veins of metallic mineral run visibly beneath its hide, and static builds in the mine walls around it. The terrifying final form of the mine-rat \u2014 it's become a living storm-generator buried in stone.",
+    "category": "Stone Caster Kin",
+    "size_cm": 145,
+    "weight_kg": 220,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 22,
+      "max": 24
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Bear-sized quadruped; charcoal-black stone-dense hide with bright amber charge-lines tracing the mineral veins; mane of stiff iron-ore bristles along the neck; tail a coiled ore-spring that arcs sparks when lashing.",
+    "palette": "Bear-sized quadruped; charcoal-black stone-dense hide with bright amber charge-lines tracing the mineral veins; mane of stiff iron-ore bristles along the neck; tail a coiled ore-spring that arcs sparks when lashing.",
+    "direction": "The terrifying final form of the mine-rat \u2014 it's become a living storm-generator buried in stone."
+  },
+  "provenance_concept_id": "B04-008"
+}

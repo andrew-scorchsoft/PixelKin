@@ -1,0 +1,82 @@
+{
+  "id": 28,
+  "slug": "brinewrath",
+  "name": "Brinewrath",
+  "types": [
+    "Tide"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "D",
+  "stats": {
+    "hp": 70,
+    "atk": 75,
+    "def": 75,
+    "spa": 75,
+    "spd": 75,
+    "spe": 128
+  },
+  "bst": 498,
+  "ability": "tidecaller",
+  "hidden_ability": "brisk",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 27,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "mist_spray"
+      },
+      {
+        "level": 9,
+        "move": "drench_song"
+      },
+      {
+        "level": 13,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "tide_pulse"
+      },
+      {
+        "level": 40,
+        "move": "maelstrom"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The line's final form \u2014 a sleek armoured tidal-beast that rides currents at high speed, its shell now a hydrodynamic shield. Commands entire tidal zones. From beach-trinket collector to tidal apex \u2014 the full transformation arc hits hard at its reveal.",
+    "category": "Tide Courier Kin",
+    "size_cm": 110,
+    "weight_kg": 52,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 10,
+      "max": 12
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Streamlined low-slung body, swept-back shell ridges like breaking waves, twin luminous teal eye-stalks, long trailing fin-limbs. Seafoam-blue and deep indigo palette, white crest markings.",
+    "palette": "Streamlined low-slung body, swept-back shell ridges like breaking waves, twin luminous teal eye-stalks, long trailing fin-limbs. Seafoam-blue and deep indigo palette, white crest markings.",
+    "direction": "From beach-trinket collector to tidal apex \u2014 the full transformation arc hits hard at its reveal."
+  },
+  "provenance_concept_id": "B02-003"
+}

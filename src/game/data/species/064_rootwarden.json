@@ -1,0 +1,87 @@
+{
+  "id": 64,
+  "slug": "rootwarden",
+  "name": "Rootwarden",
+  "types": [
+    "Verdant",
+    "Stone"
+  ],
+  "role": "Physical Wall",
+  "tier": "D",
+  "stats": {
+    "hp": 94,
+    "atk": 70,
+    "def": 123,
+    "spa": 41,
+    "spd": 85,
+    "spe": 85
+  },
+  "bst": 498,
+  "ability": "verdant_vigor",
+  "hidden_ability": "thickcoat",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 63,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "vine_tap"
+      },
+      {
+        "level": 9,
+        "move": "sleep_pollen"
+      },
+      {
+        "level": 13,
+        "move": "root_strike"
+      },
+      {
+        "level": 19,
+        "move": "rock_hurl"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "bramble_crush"
+      },
+      {
+        "level": 40,
+        "move": "overgrowth"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "An ancient bark-golem so old that saplings have begun growing from its back. It stands immobile as a boulder for centuries and only moves when the forest is threatened. A walking old-growth forest \u2014 the awe moment of realising the clearing you just walked through was a sleeping kin.",
+    "category": "Verdant Bulwark Kin",
+    "size_cm": 280,
+    "weight_kg": 1800,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 22,
+      "max": 24
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Massive standing golem of layered stone-bark, a living forest growing from its shoulders (small ferns, mosses, a small sapling), deep carved-wood face half-hidden by roots, feet rooted into the ground.",
+    "palette": "Massive standing golem of layered stone-bark, a living forest growing from its shoulders (small ferns, mosses, a small sapling), deep carved-wood face half-hidden by roots, feet rooted into the ground.",
+    "direction": "A walking old-growth forest \u2014 the awe moment of realising the clearing you just walked through was a sleeping kin."
+  },
+  "provenance_concept_id": "B03-026"
+}

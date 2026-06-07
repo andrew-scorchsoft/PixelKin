@@ -1,0 +1,74 @@
+{
+  "id": 149,
+  "slug": "keylumen",
+  "name": "Keylumen",
+  "types": [
+    "Light"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "F",
+  "stats": {
+    "hp": 111,
+    "atk": 109,
+    "def": 109,
+    "spa": 109,
+    "spd": 109,
+    "spe": 95
+  },
+  "bst": 642,
+  "ability": "lumenward",
+  "hidden_ability": "mirrorlight",
+  "catchRate": 6,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "glimmer"
+      },
+      {
+        "level": 9,
+        "move": "dazzle_flash"
+      },
+      {
+        "level": 13,
+        "move": "radiant_strike"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "prism_beam"
+      },
+      {
+        "level": 40,
+        "move": "dawnburst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The Keystar-kin. At the heart of the Umbral Spire, sealed within the Ninth Lantern, rests the being that the old Vesperholm star-tenders simply called the First Light \u2014 the original anchor of the Keystar, the central star without which no other constellation can hold. Keylumen is not a creature that",
+    "category": "Light Wanderer Kin",
+    "size_cm": 300,
+    "weight_kg": 240,
+    "habitat": "central"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "A tall, upright cervine figure \u2014 like a great stag, but made entirely of woven starlight. No hard edges: the silhouette blooms and shifts like a constellation drawing. The body is a deep midnight-blue field shot through with dense white-gold star-points; the antlers are open latticework of pure light, each tip a true star. The eyes are two full-disc pupils of warm solar gold. At rest it looks like a lantern-constellation stepped down from the sky. In battle it pulses with ever-brightening rings of diamond-cyan. The art reads iconic at every sprite size.",
+    "palette": "A tall, upright cervine figure \u2014 like a great stag, but made entirely of woven starlight. No hard edges: the silhouette blooms and shifts like a constellation drawing. The body is a deep midnight-blue field shot through with dense white-gold star-points; the antlers are open latticework of pure light, each tip a true star. The eyes are two full-disc pupils of warm solar gold. At rest it looks like a lantern-constellation stepped down from the sky. In battle it pulses with ever-brightening rings of diamond-cyan. The art reads iconic at every sprite size.",
+    "direction": "Keylumen is the answer to the whole game's question. Catching it feels not like a victory but like being trusted."
+  },
+  "provenance_concept_id": "B11-009"
+}

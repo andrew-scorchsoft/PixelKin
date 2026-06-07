@@ -1,0 +1,85 @@
+{
+  "id": 120,
+  "slug": "dawnfawn",
+  "name": "Dawnfawn",
+  "types": [
+    "Solar",
+    "Verdant"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "B",
+  "stats": {
+    "hp": 53,
+    "atk": 50,
+    "def": 52,
+    "spa": 52,
+    "spd": 52,
+    "spe": 91
+  },
+  "bst": 350,
+  "ability": "sunsoak",
+  "hidden_ability": "brisk",
+  "catchRate": 175,
+  "kindling": {
+    "into": 121,
+    "trigger": {
+      "kind": "level",
+      "level": 30
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "glint_ray"
+      },
+      {
+        "level": 9,
+        "move": "bask"
+      },
+      {
+        "level": 13,
+        "move": "daybeam"
+      },
+      {
+        "level": 19,
+        "move": "lifedrain"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A young sun-stag fawn whose antler stubs are flowering sun-vine shoots; it drinks stored daylight through the vines and runs so fast it leaves a brief trail of golden motes on the overgrown Sunvault Climb terraces. A golden fawn trailing flower-petals as it runs \u2014 fleet-footed, joyful, and impossibl",
+    "category": "Solar Courier Kin",
+    "size_cm": 62,
+    "weight_kg": 12.5,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 41,
+      "max": 44
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Slender fawn silhouette; cream-gold coat with amber dappling; two short antler stubs sprouting bright yellow sun-flowers; four long sprinting legs; tail is a tuft of glowing seedfluff; lively and leggy at 40px.",
+    "palette": "Slender fawn silhouette; cream-gold coat with amber dappling; two short antler stubs sprouting bright yellow sun-flowers; four long sprinting legs; tail is a tuft of glowing seedfluff; lively and leggy at 40px.",
+    "direction": "A golden fawn trailing flower-petals as it runs \u2014 fleet-footed, joyful, and impossible not to chase."
+  },
+  "provenance_concept_id": "B07-015"
+}

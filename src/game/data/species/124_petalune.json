@@ -1,0 +1,85 @@
+{
+  "id": 124,
+  "slug": "petalune",
+  "name": "Petalune",
+  "types": [
+    "Lunar",
+    "Frost"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "B",
+  "stats": {
+    "hp": 53,
+    "atk": 51,
+    "def": 52,
+    "spa": 52,
+    "spd": 52,
+    "spe": 90
+  },
+  "bst": 350,
+  "ability": "nightsight",
+  "hidden_ability": "brisk",
+  "catchRate": 175,
+  "kindling": {
+    "into": 125,
+    "trigger": {
+      "kind": "level",
+      "level": 28
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "dream_wisp"
+      },
+      {
+        "level": 9,
+        "move": "lull"
+      },
+      {
+        "level": 13,
+        "move": "moonbeam"
+      },
+      {
+        "level": 19,
+        "move": "glacier_beam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A quick frost-moth with wings patterned in delicate ice-crystal mandalas that catch moonlight and scatter it as prismatic cold sparks. It flits between the telescope domes leaving frosty petal-impressions on the glass. A moth made of moonlit frost \u2014 beautiful, fleeting, and endlessly collectible.",
+    "category": "Lunar Courier Kin",
+    "size_cm": 40,
+    "weight_kg": 0.9,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 41,
+      "max": 44
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Slender moth silhouette, pale blue-white body, broad wings with intricate frost-mandala patterning in silver and ice-blue, long tapered antennae; delicate and swift at 48px.",
+    "palette": "Slender moth silhouette, pale blue-white body, broad wings with intricate frost-mandala patterning in silver and ice-blue, long tapered antennae; delicate and swift at 48px.",
+    "direction": "A moth made of moonlit frost \u2014 beautiful, fleeting, and endlessly collectible."
+  },
+  "provenance_concept_id": "B08-006"
+}

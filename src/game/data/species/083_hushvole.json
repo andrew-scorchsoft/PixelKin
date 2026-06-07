@@ -1,0 +1,80 @@
+{
+  "id": 83,
+  "slug": "hushvole",
+  "name": "Hushvole",
+  "types": [
+    "Frost"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "A",
+  "stats": {
+    "hp": 50,
+    "atk": 41,
+    "def": 56,
+    "spa": 44,
+    "spd": 56,
+    "spe": 65
+  },
+  "bst": 312,
+  "ability": "coldblood",
+  "hidden_ability": "forager",
+  "catchRate": 210,
+  "kindling": {
+    "into": 84,
+    "trigger": {
+      "kind": "level",
+      "level": 16
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "snow_veil"
+      },
+      {
+        "level": 9,
+        "move": "chill_mist"
+      },
+      {
+        "level": 13,
+        "move": "glacier_beam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A small, round snow-vole that buries itself just below the glacier surface and pops up to startle travellers. Its breath muffles all nearby sounds \u2014 experienced Pale Vault guides say you've entered Hushvole territory when your footsteps go quiet. The sound-muffling concept is evocative and spooky in",
+    "category": "Frost Trickster Kin",
+    "size_cm": 18,
+    "weight_kg": 1.2,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 26,
+      "max": 29
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Chubby, button-eyed little rodent; pale grey-white fur with a faint blue undertone; stubby frost-tipped claws; oversized round ears; a perfectly spherical snow-dusted silhouette at 32px that reads as one compact ball.",
+    "palette": "Chubby, button-eyed little rodent; pale grey-white fur with a faint blue undertone; stubby frost-tipped claws; oversized round ears; a perfectly spherical snow-dusted silhouette at 32px that reads as one compact ball.",
+    "direction": "The sound-muffling concept is evocative and spooky in a cosy way \u2014 the glacier going silent around you."
+  },
+  "provenance_concept_id": "B06-007"
+}

@@ -1,0 +1,83 @@
+{
+  "id": 33,
+  "slug": "embralux",
+  "name": "Embralux",
+  "types": [
+    "Ember",
+    "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "E",
+  "stats": {
+    "hp": 78,
+    "atk": 53,
+    "def": 67,
+    "spa": 139,
+    "spd": 78,
+    "spe": 143
+  },
+  "bst": 558,
+  "ability": "daybringer",
+  "hidden_ability": "emberheart",
+  "catchRate": 24,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "tuft_spark"
+      },
+      {
+        "level": 9,
+        "move": "scorch_veil"
+      },
+      {
+        "level": 13,
+        "move": "cinder_spit"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "hearth_pulse"
+      },
+      {
+        "level": 40,
+        "move": "sunflare_burst"
+      },
+      {
+        "level": 48,
+        "move": "pyre_slam"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "An apex Ember/Light candidate for the south region's secret Lumenary approach \u2014 a great phoenix-fox that embodies the moment between ember and starlight: the exact colour temperature where a flame is indistinguishable from a star. It inhabits the warm updraft columns around Tinderwick's lighthouse a",
+    "category": "Ember Caster Kin",
+    "size_cm": 160,
+    "weight_kg": 52,
+    "habitat": "south"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "Sleek, long-limbed fox with enormous flame-and-star-ray tail plumes that trail behind it like a comet's tail. The body is amber-to-white radiant, as though lit from inside. The plume-tails shift between ember-orange at the base and cool diamond-cyan at the feathered tips \u2014 the gradient between fire and starlight. The ears are long and spark-tipped. The 64px sprite will look like a running star.",
+    "palette": "Sleek, long-limbed fox with enormous flame-and-star-ray tail plumes that trail behind it like a comet's tail. The body is amber-to-white radiant, as though lit from inside. The plume-tails shift between ember-orange at the base and cool diamond-cyan at the feathered tips \u2014 the gradient between fire and starlight. The ears are long and spark-tipped. The 64px sprite will look like a running star.",
+    "direction": "The fox that is also a comet. For players who fell in love with the south region's warmth and wanted an apex that belongs entirely to that feeling."
+  },
+  "provenance_concept_id": "B11-034"
+}

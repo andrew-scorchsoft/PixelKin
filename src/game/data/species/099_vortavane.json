@@ -1,0 +1,78 @@
+{
+  "id": 99,
+  "slug": "vortavane",
+  "name": "Vortavane",
+  "types": [
+    "Storm"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "D",
+  "stats": {
+    "hp": 80,
+    "atk": 70,
+    "def": 89,
+    "spa": 70,
+    "spd": 90,
+    "spe": 99
+  },
+  "bst": 498,
+  "ability": "static_skin",
+  "hidden_ability": "forager",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 98,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "static_jolt"
+      },
+      {
+        "level": 9,
+        "move": "numb_coil"
+      },
+      {
+        "level": 13,
+        "move": "volt_arc"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "tempest"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The apex vane-beast: a tall, regal kin whose entire dorsal spine has become a bank of spinning turbine-blades, generating a tornado-like static field that blinds and staggers opponents. The windmill grew into a roaring turbine \u2014 impossible to touch without getting shocked.",
+    "category": "Storm Trickster Kin",
+    "size_cm": 140,
+    "weight_kg": 48.0,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 38,
+      "max": 40
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Upright digitigrade silhouette, dark storm-grey coat, a full spine-ridge of spinning vane-blades each trailing a spark arc, crackling eye-markings that pulse in sync with the vanes; imposing at 64px.",
+    "palette": "Upright digitigrade silhouette, dark storm-grey coat, a full spine-ridge of spinning vane-blades each trailing a spark arc, crackling eye-markings that pulse in sync with the vanes; imposing at 64px.",
+    "direction": "The windmill grew into a roaring turbine \u2014 impossible to touch without getting shocked."
+  },
+  "provenance_concept_id": "B05-005"
+}

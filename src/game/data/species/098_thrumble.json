@@ -1,0 +1,84 @@
+{
+  "id": 98,
+  "slug": "thrumble",
+  "name": "Thrumble",
+  "types": [
+    "Storm"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "C",
+  "stats": {
+    "hp": 67,
+    "atk": 57,
+    "def": 75,
+    "spa": 59,
+    "spd": 75,
+    "spe": 85
+  },
+  "bst": 418,
+  "ability": "static_skin",
+  "hidden_ability": "forager",
+  "catchRate": 120,
+  "kindling": {
+    "into": 99,
+    "trigger": {
+      "kind": "level",
+      "level": 34
+    }
+  },
+  "from": 97,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "static_jolt"
+      },
+      {
+        "level": 9,
+        "move": "numb_coil"
+      },
+      {
+        "level": 13,
+        "move": "volt_arc"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "tempest"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A mid-stage kin whose vane-tail has grown wider and generates a continuous hum of low-frequency electricity that muddles the senses of nearby opponents. You can feel the hum before you see it \u2014 that constant low vibration is deeply unsettling to fight.",
+    "category": "Storm Trickster Kin",
+    "size_cm": 65,
+    "weight_kg": 12.5,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 36,
+      "max": 39
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Sleeker torso, elongated limbs, tail now a six-blade fan crackling at each tip with pale yellow sparks, a thin electric halo around the body's outline; reads as actively buzzing at 48px.",
+    "palette": "Sleeker torso, elongated limbs, tail now a six-blade fan crackling at each tip with pale yellow sparks, a thin electric halo around the body's outline; reads as actively buzzing at 48px.",
+    "direction": "You can feel the hum before you see it \u2014 that constant low vibration is deeply unsettling to fight."
+  },
+  "provenance_concept_id": "B05-004"
+}

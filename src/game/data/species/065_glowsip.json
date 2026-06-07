@@ -1,0 +1,85 @@
+{
+  "id": 65,
+  "slug": "glowsip",
+  "name": "Glowsip",
+  "types": [
+    "Verdant",
+    "Light"
+  ],
+  "role": "Special Tank",
+  "tier": "B",
+  "stats": {
+    "hp": 70,
+    "atk": 26,
+    "def": 49,
+    "spa": 83,
+    "spd": 63,
+    "spe": 59
+  },
+  "bst": 350,
+  "ability": "verdant_vigor",
+  "hidden_ability": "thickcoat",
+  "catchRate": 175,
+  "kindling": {
+    "into": 66,
+    "trigger": {
+      "kind": "level",
+      "level": 19
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spore_puff"
+      },
+      {
+        "level": 9,
+        "move": "sleep_pollen"
+      },
+      {
+        "level": 13,
+        "move": "lifedrain"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A small nectar-moth larva that drinks bioluminescent glowmoss dew, storing liquid light in a translucent belly-sac. Its antennae drip soft cyan glow. starter candidate \u2014 glowing larva that looks like a living lantern; perfect for the lamplight aesthetic.",
+    "category": "Verdant Channeler Kin",
+    "size_cm": 22,
+    "weight_kg": 2.5,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 15,
+      "max": 18
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Pale cream grub-body, faintly luminous belly like a nightlight, two feathery cyan antennae, soft compound eyes; round and huggable.",
+    "palette": "Pale cream grub-body, faintly luminous belly like a nightlight, two feathery cyan antennae, soft compound eyes; round and huggable.",
+    "direction": "starter candidate \u2014 glowing larva that looks like a living lantern; perfect for the lamplight aesthetic."
+  },
+  "provenance_concept_id": "B03-003"
+}

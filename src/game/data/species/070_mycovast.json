@@ -1,0 +1,83 @@
+{
+  "id": 70,
+  "slug": "mycovast",
+  "name": "Mycovast",
+  "types": [
+    "Verdant",
+    "Stone"
+  ],
+  "role": "Special Tank",
+  "tier": "E",
+  "stats": {
+    "hp": 112,
+    "atk": 45,
+    "def": 78,
+    "spa": 128,
+    "spd": 100,
+    "spe": 95
+  },
+  "bst": 558,
+  "ability": "phoenix",
+  "hidden_ability": "verdant_vigor",
+  "catchRate": 24,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spore_puff"
+      },
+      {
+        "level": 9,
+        "move": "sleep_pollen"
+      },
+      {
+        "level": 13,
+        "move": "lifedrain"
+      },
+      {
+        "level": 19,
+        "move": "crystal_beam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "bloomburst"
+      },
+      {
+        "level": 40,
+        "move": "overgrowth"
+      },
+      {
+        "level": 48,
+        "move": "bramble_crush"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The apex kin of Spore Grotto \u2014 a vast, ancient fungal titan that has been growing through the rock of Glowmoss Deep for centuries, its mycelial network threading through both soil and stone until the two are indistinguishable in its body. The grotto it inhabits is as much part of it as its visible c",
+    "category": "Verdant Channeler Kin",
+    "size_cm": 300,
+    "weight_kg": 2200,
+    "habitat": "east"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "An enormous mushroom-capped behemoth walking on six thick stone-threaded root-legs. The cap is deep earth-brown with bioluminescent Verdant spots in diamond-cyan and pale green. Beneath the cap hangs a fringe of glowing sporecurtain. The legs are stone-grey with thick mycelial cords wrapped around them like rope around pillars. The face is a flat, calm disc with two dim-glow eyes. At 64px it reads as a cave and a creature simultaneously.",
+    "palette": "An enormous mushroom-capped behemoth walking on six thick stone-threaded root-legs. The cap is deep earth-brown with bioluminescent Verdant spots in diamond-cyan and pale green. Beneath the cap hangs a fringe of glowing sporecurtain. The legs are stone-grey with thick mycelial cords wrapped around them like rope around pillars. The face is a flat, calm disc with two dim-glow eyes. At 64px it reads as a cave and a creature simultaneously.",
+    "direction": "The creature that makes players realise the whole grotto has been alive this whole time. A boss encounter with ecological horror charm."
+  },
+  "provenance_concept_id": "B11-020"
+}

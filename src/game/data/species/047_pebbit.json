@@ -1,0 +1,80 @@
+{
+  "id": 47,
+  "slug": "pebbit",
+  "name": "Pebbit",
+  "types": [
+    "Stone"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "A",
+  "stats": {
+    "hp": 54,
+    "atk": 53,
+    "def": 53,
+    "spa": 53,
+    "spd": 53,
+    "spe": 46
+  },
+  "bst": 312,
+  "ability": "stonehide",
+  "hidden_ability": "forager",
+  "catchRate": 210,
+  "kindling": {
+    "into": 48,
+    "trigger": {
+      "kind": "level",
+      "level": 18
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "pebble_toss"
+      },
+      {
+        "level": 9,
+        "move": "stone_wall"
+      },
+      {
+        "level": 13,
+        "move": "rock_hurl"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A round pebble-sprite no larger than a fist that clings to cave walls with adhesive stone-dust feet, bouncing away when startled. Every kid will want to collect the round little pebble-thing first; it's adorable and bouncy.",
+    "category": "Stone Wanderer Kin",
+    "size_cm": 14,
+    "weight_kg": 1.8,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 12,
+      "max": 15
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Almost perfectly spherical grey-brown body with two stub legs and wide amber eyes; tiny chip-marks on its shell like natural wear marks; silhouette reads as a rolling ball at 16px.",
+    "palette": "Almost perfectly spherical grey-brown body with two stub legs and wide amber eyes; tiny chip-marks on its shell like natural wear marks; silhouette reads as a rolling ball at 16px.",
+    "direction": "Every kid will want to collect the round little pebble-thing first; it's adorable and bouncy."
+  },
+  "provenance_concept_id": "B04-001"
+}

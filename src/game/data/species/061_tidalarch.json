@@ -1,0 +1,87 @@
+{
+  "id": 61,
+  "slug": "tidalarch",
+  "name": "Tidalarch",
+  "types": [
+    "Verdant",
+    "Tide"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "stats": {
+    "hp": 70,
+    "atk": 46,
+    "def": 60,
+    "spa": 128,
+    "spd": 70,
+    "spe": 124
+  },
+  "bst": 498,
+  "ability": "verdant_vigor",
+  "hidden_ability": "brisk",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 60,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spore_puff"
+      },
+      {
+        "level": 9,
+        "move": "sleep_pollen"
+      },
+      {
+        "level": 13,
+        "move": "lifedrain"
+      },
+      {
+        "level": 19,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "bloomburst"
+      },
+      {
+        "level": 40,
+        "move": "overgrowth"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A great water-plant entity that spans a pool entirely, raising arching vine-bridges of woven kelp. Rumoured to be a single kin or many acting as one. The spectacular pool finale \u2014 starts as something you could hold in one hand and becomes something you walk under.",
+    "category": "Verdant Caster Kin",
+    "size_cm": 500,
+    "weight_kg": 1100,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 22,
+      "max": 24
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Long arching serpentine plant form, dark teal body, many tributary fronds like trailing ribbons, lotus blossom crown of bioluminescent petals; fluid and enormous.",
+    "palette": "Long arching serpentine plant form, dark teal body, many tributary fronds like trailing ribbons, lotus blossom crown of bioluminescent petals; fluid and enormous.",
+    "direction": "The spectacular pool finale \u2014 starts as something you could hold in one hand and becomes something you walk under."
+  },
+  "provenance_concept_id": "B03-016"
+}

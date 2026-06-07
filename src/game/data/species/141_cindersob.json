@@ -1,0 +1,85 @@
+{
+  "id": 141,
+  "slug": "cindersob",
+  "name": "Cindersob",
+  "types": [
+    "Dark",
+    "Ember"
+  ],
+  "role": "Glass Cannon",
+  "tier": "B",
+  "stats": {
+    "hp": 38,
+    "atk": 91,
+    "def": 34,
+    "spa": 42,
+    "spd": 38,
+    "spe": 107
+  },
+  "bst": 350,
+  "ability": "nullheart",
+  "hidden_ability": "forager",
+  "catchRate": 175,
+  "kindling": {
+    "into": 142,
+    "trigger": {
+      "kind": "level",
+      "level": 30
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "shade_nip"
+      },
+      {
+        "level": 9,
+        "move": "blight_touch"
+      },
+      {
+        "level": 13,
+        "move": "null_claw"
+      },
+      {
+        "level": 19,
+        "move": "flame_lash"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A small creature shaped like a charred ember-hound pup \u2014 the hollowed remnant of a once-warm hearth companion. Its body is ash-black with faint orange cracks where embers still smoulder inside a hollowed chest. A puppy that is clearly the ghost of a warm hearth-dog \u2014 heartbreaking and immediately sy",
+    "category": "Dark Fragile Kin",
+    "size_cm": 35,
+    "weight_kg": 5.8,
+    "habitat": "outer"
+  },
+  "encounters": [
+    {
+      "area": "coldfog_marches",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 49,
+      "max": 52
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Small four-legged hound of black char, ribs faintly visible as orange-glow cracks; a wisp of cold smoke from a snuffed tail-flame; dull copper eyes; silhouette reads as a small dog at 16px.",
+    "palette": "Small four-legged hound of black char, ribs faintly visible as orange-glow cracks; a wisp of cold smoke from a snuffed tail-flame; dull copper eyes; silhouette reads as a small dog at 16px.",
+    "direction": "A puppy that is clearly the ghost of a warm hearth-dog \u2014 heartbreaking and immediately sympathetic."
+  },
+  "provenance_concept_id": "B10-004"
+}

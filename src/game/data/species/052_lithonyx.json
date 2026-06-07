@@ -1,0 +1,82 @@
+{
+  "id": 52,
+  "slug": "lithonyx",
+  "name": "Lithonyx",
+  "types": [
+    "Stone"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "D",
+  "stats": {
+    "hp": 99,
+    "atk": 115,
+    "def": 90,
+    "spa": 44,
+    "spd": 75,
+    "spe": 75
+  },
+  "bst": 498,
+  "ability": "grounded",
+  "hidden_ability": "stonehide",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 51,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "pebble_toss"
+      },
+      {
+        "level": 9,
+        "move": "stone_wall"
+      },
+      {
+        "level": 13,
+        "move": "rock_hurl"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "boulder_smash"
+      },
+      {
+        "level": 40,
+        "move": "tremor_quake"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A massive revived fossil-predator whose carapace has grown thick enough to shrug off cave-ins; it swings its tail like a wrecking ball and its eyes glow with a faint ancient light. The fossil that never should have woken up \u2014 ancient predator energy in a modern cave.",
+    "category": "Stone Brute Kin",
+    "size_cm": 200,
+    "weight_kg": 650,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 22,
+      "max": 24
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Large quadruped; thick ridged stone-white carapace with deep limestone-cream and grey layering; broad low head with two faintly glowing amber eyes; heavy armoured tail; primordial and formidable.",
+    "palette": "Large quadruped; thick ridged stone-white carapace with deep limestone-cream and grey layering; broad low head with two faintly glowing amber eyes; heavy armoured tail; primordial and formidable.",
+    "direction": "The fossil that never should have woken up \u2014 ancient predator energy in a modern cave."
+  },
+  "provenance_concept_id": "B04-033"
+}

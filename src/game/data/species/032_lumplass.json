@@ -1,0 +1,87 @@
+{
+  "id": 32,
+  "slug": "lumplass",
+  "name": "Lumplass",
+  "types": [
+    "Tide",
+    "Light"
+  ],
+  "role": "Special Wall",
+  "tier": "D",
+  "stats": {
+    "hp": 99,
+    "atk": 39,
+    "def": 85,
+    "spa": 70,
+    "spd": 120,
+    "spe": 85
+  },
+  "bst": 498,
+  "ability": "tidecaller",
+  "hidden_ability": "thickcoat",
+  "catchRate": 65,
+  "kindling": null,
+  "from": 31,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "mist_spray"
+      },
+      {
+        "level": 9,
+        "move": "drench_song"
+      },
+      {
+        "level": 13,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "tide_pulse"
+      },
+      {
+        "level": 40,
+        "move": "maelstrom"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "Lumpin's shell has fused into a radiant broad disc; it now clings to sea-cliff faces and projects a beam of moonlit brine-light that disrupts approaching attackers. A gorgeous, bizarre disc-creature \u2014 its single-eye silhouette is instantly iconic.",
+    "category": "Tide Warden Kin",
+    "size_cm": 65,
+    "weight_kg": 28,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 10,
+      "max": 12
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Wide flat disc-shell patterned with concentric gold-and-aqua rings, textured like hammered moonstone. The creature beneath is plump and soft-looking with a single large circular eye at the shell's centre aperture.",
+    "palette": "Wide flat disc-shell patterned with concentric gold-and-aqua rings, textured like hammered moonstone. The creature beneath is plump and soft-looking with a single large circular eye at the shell's centre aperture.",
+    "direction": "A gorgeous, bizarre disc-creature \u2014 its single-eye silhouette is instantly iconic."
+  },
+  "provenance_concept_id": "B02-005"
+}

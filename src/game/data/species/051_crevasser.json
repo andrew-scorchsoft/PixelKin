@@ -1,0 +1,84 @@
+{
+  "id": 51,
+  "slug": "crevasser",
+  "name": "Crevasser",
+  "types": [
+    "Stone"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "C",
+  "stats": {
+    "hp": 76,
+    "atk": 71,
+    "def": 71,
+    "spa": 71,
+    "spd": 71,
+    "spe": 58
+  },
+  "bst": 418,
+  "ability": "stonehide",
+  "hidden_ability": "forager",
+  "catchRate": 120,
+  "kindling": {
+    "into": 52,
+    "trigger": {
+      "kind": "level",
+      "level": 36
+    }
+  },
+  "from": 50,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "pebble_toss"
+      },
+      {
+        "level": 9,
+        "move": "stone_wall"
+      },
+      {
+        "level": 13,
+        "move": "rock_hurl"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "boulder_smash"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A revived fossil-crustacean that has grown larger and harder; its shell now has genuine crevasse-deep ridges and it moves along cave floors with quiet authority. The fossil mid-form that looks genuinely ancient \u2014 evolution as palaeontology.",
+    "category": "Stone Wanderer Kin",
+    "size_cm": 75,
+    "weight_kg": 55,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 22,
+      "max": 24
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Larger segmented crustacean; thick ridged carapace in layered grey-cream; heavy claws useful for gripping rock; wide eyes set at the edge of its head-plate; moves with a side-to-side deliberate walk.",
+    "palette": "Larger segmented crustacean; thick ridged carapace in layered grey-cream; heavy claws useful for gripping rock; wide eyes set at the edge of its head-plate; moves with a side-to-side deliberate walk.",
+    "direction": "The fossil mid-form that looks genuinely ancient \u2014 evolution as palaeontology."
+  },
+  "provenance_concept_id": "B04-032"
+}

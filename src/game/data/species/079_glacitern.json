@@ -1,0 +1,87 @@
+{
+  "id": 79,
+  "slug": "glacitern",
+  "name": "Glacitern",
+  "types": [
+    "Frost",
+    "Storm"
+  ],
+  "role": "Physical Sweeper",
+  "tier": "D",
+  "stats": {
+    "hp": 70,
+    "atk": 115,
+    "def": 65,
+    "spa": 50,
+    "spd": 65,
+    "spe": 133
+  },
+  "bst": 498,
+  "ability": "coldblood",
+  "hidden_ability": "brisk",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 78,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "frost_nip"
+      },
+      {
+        "level": 9,
+        "move": "chill_mist"
+      },
+      {
+        "level": 13,
+        "move": "ice_fang"
+      },
+      {
+        "level": 19,
+        "move": "thunder_kick"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "avalanche"
+      },
+      {
+        "level": 40,
+        "move": "blizzard_howl"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A fully matured blizzard-tern of startling size. Its wings generate localised ice-laced gales, and it dives at speed to shatter thin ice with its crystallised bill. Glacier pilots say Glacitern dives are visible from three valleys away \u2014 a diving streak of white and blue lightning. The evolution fro",
+    "category": "Frost Striker Kin",
+    "size_cm": 140,
+    "weight_kg": 28,
+    "habitat": "north"
+  },
+  "encounters": [
+    {
+      "area": "galehigh_terraces",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 38,
+      "max": 40
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Large seabird-inspired form; sharply swept wings with serrated trailing-edge icicle spurs; elongated blade-like bill crackling with frost and static; body sleek from head to forked tail; blue-grey body, white underside, lightning-blue wing tips; fierce predator silhouette at 48px.",
+    "palette": "Large seabird-inspired form; sharply swept wings with serrated trailing-edge icicle spurs; elongated blade-like bill crackling with frost and static; body sleek from head to forked tail; blue-grey body, white underside, lightning-blue wing tips; fierce predator silhouette at 48px.",
+    "direction": "The evolution from round snow-chick to diving blizzard predator spans the full emotional register of creature design."
+  },
+  "provenance_concept_id": "B06-012"
+}

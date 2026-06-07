@@ -1,0 +1,82 @@
+{
+  "id": 17,
+  "slug": "scorchwing",
+  "name": "Scorchwing",
+  "types": [
+    "Ember"
+  ],
+  "role": "Glass Cannon",
+  "tier": "D",
+  "stats": {
+    "hp": 55,
+    "atk": 129,
+    "def": 47,
+    "spa": 60,
+    "spd": 55,
+    "spe": 152
+  },
+  "bst": 498,
+  "ability": "emberheart",
+  "hidden_ability": "forager",
+  "catchRate": 65,
+  "kindling": null,
+  "from": 16,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "ember_jab"
+      },
+      {
+        "level": 9,
+        "move": "scorch_veil"
+      },
+      {
+        "level": 13,
+        "move": "flame_lash"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "pyre_slam"
+      },
+      {
+        "level": 40,
+        "move": "sunflare_burst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A magnificent ember-moth with broad, vein-lit wings that trail blazing filaments and leave a shower of sparks with every wingbeat. From clumsy little Wickmoth to this gorgeous blazing terror \u2014 one of the most satisfying glow-ups in Vesperholm.",
+    "category": "Ember Fragile Kin",
+    "size_cm": 75,
+    "weight_kg": 5.2,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 10,
+      "max": 12
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Wide, spread-wing moth silhouette; upper wings are deep charcoal laced with bright ember veins, lower wings trail glowing filaments; menacing and beautiful at 64px.",
+    "palette": "Wide, spread-wing moth silhouette; upper wings are deep charcoal laced with bright ember veins, lower wings trail glowing filaments; menacing and beautiful at 64px.",
+    "direction": "From clumsy little Wickmoth to this gorgeous blazing terror \u2014 one of the most satisfying glow-ups in Vesperholm."
+  },
+  "provenance_concept_id": "B01-005"
+}

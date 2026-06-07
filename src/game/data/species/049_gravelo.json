@@ -1,0 +1,82 @@
+{
+  "id": 49,
+  "slug": "gravelo",
+  "name": "Gravelo",
+  "types": [
+    "Stone"
+  ],
+  "role": "Physical Wall",
+  "tier": "D",
+  "stats": {
+    "hp": 94,
+    "atk": 70,
+    "def": 125,
+    "spa": 39,
+    "spd": 85,
+    "spe": 85
+  },
+  "bst": 498,
+  "ability": "grounded",
+  "hidden_ability": "stonehide",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 48,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "pebble_toss"
+      },
+      {
+        "level": 9,
+        "move": "stone_wall"
+      },
+      {
+        "level": 13,
+        "move": "rock_hurl"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "boulder_smash"
+      },
+      {
+        "level": 40,
+        "move": "tremor_quake"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A broad, slow-moving tortoise whose domed shell is encrusted with genuine crystal growths from the mine, each facet catching the lamp-light differently. Canon Cinderhead Mine resident. The iconic crystal-shelled tortoise of Cinderhead Mine; seeing it lumbering through the cave is an awe moment.",
+    "category": "Stone Bulwark Kin",
+    "size_cm": 140,
+    "weight_kg": 310,
+    "habitat": "east"
+  },
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 22,
+      "max": 24
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Massive hexagonal-plated shell studded with diamond-crystal spires; four column-thick legs; small blunt head with half-lidded stone-grey eyes; walks with serene deliberateness; silhouette unmistakable at any size.",
+    "palette": "Massive hexagonal-plated shell studded with diamond-crystal spires; four column-thick legs; small blunt head with half-lidded stone-grey eyes; walks with serene deliberateness; silhouette unmistakable at any size.",
+    "direction": "The iconic crystal-shelled tortoise of Cinderhead Mine; seeing it lumbering through the cave is an awe moment."
+  },
+  "provenance_concept_id": "B04-003"
+}

@@ -1,0 +1,79 @@
+{
+  "id": 73,
+  "slug": "frostholm",
+  "name": "Frostholm",
+  "types": [
+    "Frost",
+    "Light"
+  ],
+  "role": "Special Wall",
+  "tier": "E",
+  "stats": {
+    "hp": 112,
+    "atk": 43,
+    "def": 95,
+    "spa": 78,
+    "spd": 135,
+    "spe": 95
+  },
+  "bst": 558,
+  "ability": "aurora_guard",
+  "hidden_ability": "coldblood",
+  "catchRate": 24,
+  "kindling": null,
+  "from": 72,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "snow_veil"
+      },
+      {
+        "level": 9,
+        "move": "chill_mist"
+      },
+      {
+        "level": 13,
+        "move": "glacier_beam"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "blizzard_howl"
+      },
+      {
+        "level": 48,
+        "move": "avalanche"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The apex form of the ice-sprite lineage \u2014 a vast, ancient glacier-golem that has accumulated centuries of ice, starlight, and aurora-glow into a self-aware glacier monument. Frostholm is the living embodiment of the Pale Vault itself; legends say the glacier exists because Frostholm chose to sleep t",
+    "category": "Frost Warden Kin",
+    "size_cm": 620,
+    "weight_kg": 14000,
+    "habitat": "north"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "Towering, broad-shouldered golem form sculpted from ancient blue-white glacial ice; its surface etched with centuries of swirling aurora-pattern carvings; the face is serene, simple, and impossibly old; aurora-light leaks from the carved lines across its body; at 48px it fills the frame completely, a walking glacier-face.",
+    "palette": "Towering, broad-shouldered golem form sculpted from ancient blue-white glacial ice; its surface etched with centuries of swirling aurora-pattern carvings; the face is serene, simple, and impossibly old; aurora-light leaks from the carved lines across its body; at 48px it fills the frame completely, a walking glacier-face.",
+    "direction": "The Frost Constellation Warden \u2014 the glacier guardian that dreams the aurora. Finding it in Aurora Hollow is the north's equivalent of the story's whole promise."
+  },
+  "provenance_concept_id": "B06-042"
+}

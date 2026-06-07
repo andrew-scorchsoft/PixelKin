@@ -1,0 +1,84 @@
+{
+  "id": 27,
+  "slug": "brineroll",
+  "name": "Brineroll",
+  "types": [
+    "Tide"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "C",
+  "stats": {
+    "hp": 62,
+    "atk": 63,
+    "def": 63,
+    "spa": 63,
+    "spd": 63,
+    "spe": 104
+  },
+  "bst": 418,
+  "ability": "tidecaller",
+  "hidden_ability": "brisk",
+  "catchRate": 120,
+  "kindling": {
+    "into": 28,
+    "trigger": {
+      "kind": "level",
+      "level": 28
+    }
+  },
+  "from": 26,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "mist_spray"
+      },
+      {
+        "level": 9,
+        "move": "drench_song"
+      },
+      {
+        "level": 13,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "tide_pulse"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "Brinelet has grown a proper ridged shell and longer fins, tumbling through shallows with surprising speed. It spins to deflect attacks. The satisfying glow-up from its wobbly baby form \u2014 it's fast now and knows it.",
+    "category": "Tide Courier Kin",
+    "size_cm": 40,
+    "weight_kg": 6.5,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 10,
+      "max": 12
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Rounder, smoother armadillo-ish shell with tidal spiral ridges in seafoam-blue and cream. Wide webbed paddle-feet, curious antenna-stalks with glowing tips, bright confident eyes.",
+    "palette": "Rounder, smoother armadillo-ish shell with tidal spiral ridges in seafoam-blue and cream. Wide webbed paddle-feet, curious antenna-stalks with glowing tips, bright confident eyes.",
+    "direction": "The satisfying glow-up from its wobbly baby form \u2014 it's fast now and knows it."
+  },
+  "provenance_concept_id": "B02-002"
+}

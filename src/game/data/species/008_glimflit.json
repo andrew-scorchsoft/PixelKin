@@ -1,0 +1,80 @@
+{
+  "id": 8,
+  "slug": "glimflit",
+  "name": "Glimflit",
+  "types": [
+    "Light"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "A",
+  "stats": {
+    "hp": 47,
+    "atk": 47,
+    "def": 47,
+    "spa": 47,
+    "spd": 47,
+    "spe": 77
+  },
+  "bst": 312,
+  "ability": "mirrorlight",
+  "hidden_ability": "brisk",
+  "catchRate": 210,
+  "kindling": {
+    "into": 9,
+    "trigger": {
+      "kind": "level",
+      "level": 20
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spark_mote"
+      },
+      {
+        "level": 9,
+        "move": "dazzle_flash"
+      },
+      {
+        "level": 13,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A tiny firefly-sprite that bobs through Tinderwick's evening air, its tail-lantern blinking in rhythmic code only other Glimflit can read. It blinks at you with a friendly rhythm \u2014 kids will try to tap along.",
+    "category": "Light Courier Kin",
+    "size_cm": 8,
+    "weight_kg": 0.05,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 3,
+      "max": 6
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Transparent-winged insectoid sprite, thumbnail-sized; round mint-green body, a single amber bead tail-lamp that pulses on and off; long antennae tipped with spark-dots; silhouette reads as a floating comma at 16px.",
+    "palette": "Transparent-winged insectoid sprite, thumbnail-sized; round mint-green body, a single amber bead tail-lamp that pulses on and off; long antennae tipped with spark-dots; silhouette reads as a floating comma at 16px.",
+    "direction": "It blinks at you with a friendly rhythm \u2014 kids will try to tap along."
+  },
+  "provenance_concept_id": "B09-001"
+}

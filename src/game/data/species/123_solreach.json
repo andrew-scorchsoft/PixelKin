@@ -1,0 +1,78 @@
+{
+  "id": 123,
+  "slug": "solreach",
+  "name": "Solreach",
+  "types": [
+    "Solar"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "stats": {
+    "hp": 70,
+    "atk": 45,
+    "def": 60,
+    "spa": 129,
+    "spd": 70,
+    "spe": 124
+  },
+  "bst": 498,
+  "ability": "sunsoak",
+  "hidden_ability": "brisk",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 122,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "glint_ray"
+      },
+      {
+        "level": 9,
+        "move": "bask"
+      },
+      {
+        "level": 13,
+        "move": "daybeam"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "sunburst_nova"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A vast solar disc-ray that has doubled in size and brightness, now trailing twelve long luminous rays that each end in a focused point of concentrated daylight capable of cutting stone. A creature shaped exactly like the sun \u2014 ancient, enormous, and utterly unmatched in the flooded dark.",
+    "category": "Solar Caster Kin",
+    "size_cm": 190,
+    "weight_kg": 38.0,
+    "habitat": "west"
+  },
+  "encounters": [
+    {
+      "area": "sunken_solarium",
+      "terrain": "water",
+      "rarity": "very_rare",
+      "min": 48,
+      "max": 50
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Wide disc silhouette, now with a visible central eye that pulses golden; twelve long ray-trails fan out in all directions, each tipped with a bright point; at 64px it fills the frame like a living sun glyph.",
+    "palette": "Wide disc silhouette, now with a visible central eye that pulses golden; twelve long ray-trails fan out in all directions, each tipped with a bright point; at 64px it fills the frame like a living sun glyph.",
+    "direction": "A creature shaped exactly like the sun \u2014 ancient, enormous, and utterly unmatched in the flooded dark."
+  },
+  "provenance_concept_id": "B07-012"
+}

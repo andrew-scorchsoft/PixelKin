@@ -1,0 +1,82 @@
+{
+  "id": 4,
+  "slug": "brinarch",
+  "name": "Brinarch",
+  "types": [
+    "Tide"
+  ],
+  "role": "Special Wall",
+  "tier": "D",
+  "stats": {
+    "hp": 99,
+    "atk": 39,
+    "def": 85,
+    "spa": 70,
+    "spd": 120,
+    "spe": 85
+  },
+  "bst": 498,
+  "ability": "tidecaller",
+  "hidden_ability": "thickcoat",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 2,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "mist_spray"
+      },
+      {
+        "level": 9,
+        "move": "drench_song"
+      },
+      {
+        "level": 13,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "tide_pulse"
+      },
+      {
+        "level": 40,
+        "move": "maelstrom"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "Brinix's final kindled form. The brine-crest has broadened into a sweeping crown of sea-glass plating; its bulk and endurance are legendary on the southern coast. Becomes the region's apex defender. The satisfying payoff of raising your starter \u2014 a true coastal fortress on the field.",
+    "category": "Tide Warden Kin",
+    "size_cm": 145,
+    "weight_kg": 98,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 10,
+      "max": 12
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Tall, broad-shouldered, slate-blue shell plating crested with sea-glass spurs in translucent teal. Wide stance, deep chest, a calm but commanding gaze behind a brow-ridge. Dual water-crystal shoulder guards.",
+    "palette": "Tall, broad-shouldered, slate-blue shell plating crested with sea-glass spurs in translucent teal. Wide stance, deep chest, a calm but commanding gaze behind a brow-ridge. Dual water-crystal shoulder guards.",
+    "direction": "The satisfying payoff of raising your starter \u2014 a true coastal fortress on the field."
+  },
+  "provenance_concept_id": "B02-007"
+}

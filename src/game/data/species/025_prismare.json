@@ -1,0 +1,87 @@
+{
+  "id": 25,
+  "slug": "prismare",
+  "name": "Prismare",
+  "types": [
+    "Tide",
+    "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "stats": {
+    "hp": 70,
+    "atk": 44,
+    "def": 60,
+    "spa": 130,
+    "spd": 70,
+    "spe": 124
+  },
+  "bst": 498,
+  "ability": "tidecaller",
+  "hidden_ability": "brisk",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 24,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "mist_spray"
+      },
+      {
+        "level": 9,
+        "move": "drench_song"
+      },
+      {
+        "level": 13,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "tide_pulse"
+      },
+      {
+        "level": 40,
+        "move": "maelstrom"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The fully kindled form \u2014 a magnificent reef-fish whose entire body is a living prism. Light bends through it into weapons. The crystalline fish that turns any battlefield into a light show.",
+    "category": "Tide Caster Kin",
+    "size_cm": 130,
+    "weight_kg": 48,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 10,
+      "max": 12
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Majestic, long-bodied fish with translucent crystalline fins that refract all light into dazzling arcs, pale blue-white body with thin crystalline armour plates, twin feeler-fins curled like antennae, piercing white eyes.",
+    "palette": "Majestic, long-bodied fish with translucent crystalline fins that refract all light into dazzling arcs, pale blue-white body with thin crystalline armour plates, twin feeler-fins curled like antennae, piercing white eyes.",
+    "direction": "The crystalline fish that turns any battlefield into a light show. Trainers use it for style points as much as power."
+  },
+  "provenance_concept_id": "B02-016"
+}
