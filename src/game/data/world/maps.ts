@@ -38,7 +38,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   },
   tinderwick_house: {
     json: 'assets/maps/tinderwick_house.json',
-    tilesets: { tinderwick_house_set: 'assets/tilesets/tinderwick_house_set.webp' },
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/tinderwick-b.mp3',
     battle_backdrops: [
@@ -48,13 +48,13 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   },
   tinderwick_shop: {
     json: 'assets/maps/tinderwick_shop.json',
-    tilesets: { tinderwick_house_set: 'assets/tilesets/tinderwick_house_set.webp' },
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/tinderwick-b.mp3',
   },
   tinderwick_lumenary: {
     json: 'assets/maps/tinderwick_lumenary.json',
-    tilesets: { tinderwick_house_set: 'assets/tilesets/tinderwick_house_set.webp' },
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/tinderwick-a.mp3',
   },
@@ -80,19 +80,19 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   },
   pearlmoor_lumenary: {
     json: 'assets/maps/pearlmoor_lumenary.json',
-    tilesets: { tinderwick_house_set: 'assets/tilesets/tinderwick_house_set.webp' },
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/dimglass-coast-a.mp3',
   },
   pearlmoor_shop: {
     json: 'assets/maps/pearlmoor_shop.json',
-    tilesets: { tinderwick_house_set: 'assets/tilesets/tinderwick_house_set.webp' },
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/dimglass-coast-a.mp3',
   },
   pearlmoor_inn: {
     json: 'assets/maps/pearlmoor_inn.json',
-    tilesets: { tinderwick_house_set: 'assets/tilesets/tinderwick_house_set.webp' },
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/dimglass-coast-a.mp3',
   },
