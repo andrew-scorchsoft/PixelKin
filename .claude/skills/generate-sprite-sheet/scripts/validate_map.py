@@ -31,7 +31,8 @@ from pathlib import Path
 
 EDGE_ROLES = {"edge_n", "edge_e", "edge_s", "edge_w",
               "corner_nw", "corner_ne", "corner_se", "corner_sw",
-              "inner_nw", "inner_ne", "inner_se", "inner_sw"}
+              "inner_nw", "inner_ne", "inner_se", "inner_sw",
+              "strip_h", "strip_v", "end_n", "end_e", "end_s", "end_w", "single"}
 
 
 def find_repo_root(start: Path) -> Path:
@@ -139,6 +140,8 @@ def main() -> int:
                 t = meta(g).get("terrain")
                 if not t:
                     continue
+                if meta(g).get("encounter_terrain") == "tall_grass":
+                    continue  # tall-grass is a flat encounter patch, not a bordered surface
                 neigh = [terr(x, y - 1), terr(x + 1, y), terr(x, y + 1), terr(x - 1, y)]
                 if any(nb != t for nb in neigh):  # this cell is on a terrain boundary
                     boundary_total += 1

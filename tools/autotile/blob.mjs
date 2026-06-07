@@ -51,21 +51,22 @@ export function classify({ n, e, s, w, ne, se, sw, nw }) {
     if (!n && !e) return 'corner_ne';
     if (!s && !e) return 'corner_se';
     if (!s && !w) return 'corner_sw';
-    // Opposite pair open (a 1-wide strip): approximate with the matching edge.
-    if (!n && !s) return e && w ? 'fill' : 'edge_n';
-    if (!e && !w) return n && s ? 'fill' : 'edge_w';
+    // Opposite pair open -> a 1-wide STRIP (the terrain runs through; both flanks open).
+    if (!n && !s) return 'strip_h'; // runs left-right, grass top+bottom
+    if (!e && !w) return 'strip_v'; // runs up-down, grass left+right
   }
 
-  // One side filled: a peninsula tip — approximate with the corner on its open side.
+  // One side filled: a peninsula tip — an END CAP, open end facing away from the
+  // single same-terrain neighbour.
   if (orth === 1) {
-    if (s) return 'corner_nw'; // only south filled -> top is open all around
-    if (n) return 'corner_sw';
-    if (e) return 'corner_nw';
-    if (w) return 'corner_ne';
+    if (s) return 'end_n'; // only south is terrain -> capped/open at the top
+    if (n) return 'end_s';
+    if (e) return 'end_w';
+    if (w) return 'end_e';
   }
 
-  // Isolated cell (no same-terrain neighbour): a lone dot — use fill.
-  return 'fill';
+  // Isolated cell (no same-terrain neighbour): a lone dot.
+  return 'single';
 }
 
 /** Read an 8-neighbour window out of a presence grid (1 = terrain present). */
@@ -88,6 +89,13 @@ export function roleFallbacks(role) {
     return [role, a, b, 'fill'];
   }
   if (role.startsWith('edge_')) return [role, 'fill'];
+  if (role === 'strip_h') return ['strip_h', 'edge_n', 'fill'];
+  if (role === 'strip_v') return ['strip_v', 'edge_w', 'fill'];
+  if (role.startsWith('end_')) {
+    const d = role.split('_')[1];
+    return [role, role === 'end_n' || role === 'end_s' ? 'strip_v' : 'strip_h', `edge_${d}`, 'fill'];
+  }
+  if (role === 'single') return ['single', 'fill'];
   return [role];
 }
 
