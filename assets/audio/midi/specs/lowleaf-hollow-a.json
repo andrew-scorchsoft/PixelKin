@@ -1,0 +1,41 @@
+{
+  "title": "Lowleaf Hollow - Glowmoss Wonder",
+  "_note": "Option A anchor. gbc 4-voice band. Lydian-tinged G major (raised 4th C#). Lead is the glassy pulse12 bell timbre that hangs on the #4 before resolving; pulse25 carries the glassy bell ARPEGGIO (broken major triads with the Lydian glint) sparkling under the lead; tri_bass soft long breathy bass (pad stand-in); drums barely there. Vesper floats up through Lydian: lift D4->G4->A4, settle B4->A4->G4, overshoot stretched by the #4 (C#). 24-bar loop, voice-leads home.",
+  "era": "gbc",
+  "tempo": 88,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "G Lydian-tinged major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.95,
+      "_note": "Slow wondering phrases that hang on C#5 (#4) before resolving. Vesper lift D4->G4->A4, settle B4->A4->G4. The C# is the magic; let it linger.",
+      "notes": "rh D4q G4q | A4h. C#5q | B4h. A4q | G4h rh | rq G4q A4q B4q | C#5h. B4q | A4h G4q rq | rw | rh D4q G4q | A4q B4q C#5q D5q | C#5h. B4q | A4h G4h | rq B4q C#5q D5q | E5h. D5q | C#5h B4q A4q | G4h rh | rh D4q G4q | A4h. C#5q | B4q A4q G4q A4q | B4h rh | rq A4q B4q C#5q | D5h. C#5q | B4q A4q G4q F#4q | G4h rq D4q"
+    },
+    {
+      "name": "arp",
+      "voice": "pulse25",
+      "octave": 3,
+      "gain": 0.6,
+      "_note": "Glassy bell arpeggio, slow broken major triads with the Lydian glint. G(GBD) - C#dim/Lydian color (C#-E-G uses the raised 4) - C(CEG) - D(DF#A). Sparkles under the lead.",
+      "notes": "G3e B3e D4e G4e D4e B3e G3e B3e | G3e B3e D4e G4e D4e B3e G3e B3e | C4e E4e G4e C5e G4e E4e C4e E4e | C4e E4e G4e C5e G4e E4e C4e E4e | C#4e E4e A4e C#5e A4e E4e C#4e E4e | C#4e E4e A4e C#5e A4e E4e C#4e E4e | D4e F#4e A4e D5e A4e F#4e D4e F#4e | D4e F#4e A4e D5e A4e F#4e D4e F#4e | G3e B3e D4e G4e D4e B3e G3e B3e | G3e B3e D4e G4e D4e B3e G3e B3e | C4e E4e G4e C5e G4e E4e C4e E4e | C4e E4e G4e C5e G4e E4e C4e E4e | C#4e E4e A4e C#5e A4e E4e C#4e E4e | C#4e E4e A4e C#5e A4e E4e C#4e E4e | D4e F#4e A4e D5e A4e F#4e D4e F#4e | G3e B3e D4e G4e D4e B3e G3e B3e | G3e B3e D4e G4e D4e B3e G3e B3e | C4e E4e G4e C5e G4e E4e C4e E4e | C#4e E4e A4e C#5e A4e E4e C#4e E4e | D4e F#4e A4e D5e A4e F#4e D4e F#4e | C4e E4e G4e C5e G4e E4e C4e E4e | C#4e E4e A4e C#5e A4e E4e C#4e E4e | D4e F#4e A4e D5e A4e F#4e D4e F#4e | D4e F#4e A4e C#5e A4e F#4e D4e A3e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "_note": "Low breathy long notes, the pad stand-in. One held root per bar following G-G-C-C-C#-C#-D-D.",
+      "notes": "G1w | G1w | C2w | C2w | C#2w | C#2w | D2w | D2w | G1w | G1w | C2w | C2w | C#2w | C#2w | D2w | G1w | G1w | C2w | C#2w | D2w | C2w | C#2w | D2w | D2h A1h"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "_note": "Barely there: a single soft tap per bar (kick), an occasional dew-drip hat. Lots of silence. Soft shimmer hat at the loop seam.",
+      "notes": "q kick rq rq rq | kick rq rq rq | kick rq rq hat | kick rq rq rq | kick rq rq rq | kick rq rq hat | kick rq rq rq | kick rq rq rq | kick rq rq rq | kick rq rq hat | kick rq rq rq | kick rq rq rq | kick rq rq hat | kick rq rq rq | kick rq rq rq | kick rq rq hat | kick rq rq rq | kick rq rq rq | kick rq rq hat | kick rq rq rq | kick rq rq rq | kick rq rq hat | kick rq rq rq | kick rq hat hat"
+    }
+  ]
+}

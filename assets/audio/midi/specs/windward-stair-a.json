@@ -1,0 +1,40 @@
+{
+  "title": "Windward Stair - The Long Climb",
+  "_note": "Option A anchor. gbc 4-voice band. Vesper motif CLIMBING transform: the spine (rising leap that overshoots + stepwise settle) is sequenced upward, each 4-bar phrase re-launching a scale-step higher so the loop FEELS like ascent. Crash 'wind-swell' crests each switchback every 4 bars. 16-bar loop; last bar steps down to E (the dominant) -> voice-leads back up into the bar-1 A-major lift.",
+  "era": "gbc",
+  "tempo": 132,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "A major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "notes": "E4q A4q B4q A4q | C#5q B4q A4h | F#4q B4q C#5q B4q | D5q C#5q B4h | G#4q C#5q D5q C#5q | E5q D5q C#5h | A4q D5q E5q D5q | F#5q E5q D5h | E5q A5q B5q A5q | G#5q F#5q E5h | C#5q F#5q G#5q F#5q | E5q D5q C#5h | B4q E5q F#5q E5q | D5q C#5q B4h | A4q C#5q E5q D5q | C#5q B4q E4h"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.6,
+      "_note": "steady ascending arpeggio rung like footsteps on stone.",
+      "notes": "A3e C#4e E4e A4e A3e C#4e E4e A4e | A3e C#4e E4e A4e A3e C#4e E4e A4e | B3e D4e F#4e B4e B3e D4e F#4e B4e | E4e G#4e B4e E5e E4e G#4e B4e E5e | C#4e E4e G#4e C#5e C#4e E4e G#4e C#5e | A3e C#4e E4e A4e A3e C#4e E4e A4e | D4e F#4e A4e D5e D4e F#4e A4e D5e | E4e G#4e B4e E5e E4e G#4e B4e E5e | A3e E4e A4e C#5e A3e E4e A4e C#5e | E4e G#4e B4e E5e E4e G#4e B4e E5e | F#3e C#4e F#4e A4e F#3e C#4e F#4e A4e | A3e C#4e E4e A4e A3e C#4e E4e A4e | E4e G#4e B4e E5e E4e G#4e B4e E5e | B3e D4e F#4e B4e B3e D4e F#4e B4e | A3e C#4e E4e A4e A3e C#4e E4e A4e | E3e G#3e B3e E4e E3e B3e E4e B3e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "_note": "firm even quarter-to-eighth tread, the reliable climbing pulse.",
+      "notes": "A2q A2e E2e A2q E2q | A2q A2e E2e A2q E2q | B2q B2e F#2e B2q F#2q | E2q E2e B2e E2q B2q | C#3q C#3e G#2e C#3q G#2q | A2q A2e E2e A2q E2q | D3q D3e A2e D3q A2q | E3q E3e B2e E3q B2q | A2q A2e E2e A2q E2q | E3q E3e B2e E3q B2q | F#2q F#2e C#3e F#2q C#3q | A2q A2e E2e A2q E2q | E3q E3e B2e E3q B2q | B2q B2e F#2e B2q F#2q | A2q A2e E2e A2q E2q | E2q E2e B2e E2q E2q"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "_note": "steady marching kick/hat with snare backbeat; crash wind-swell cresting each 4-bar switchback.",
+      "notes": "e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat crash | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat crash | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat crash | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat snare+hat snare+hat crash"
+    }
+  ]
+}

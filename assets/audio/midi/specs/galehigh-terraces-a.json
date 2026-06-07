@@ -1,0 +1,38 @@
+{
+  "title": "Galehigh Terraces - Updraft",
+  "_note": "Option A anchor. gbc 4-voice band. Vesper motif (A3->D4->E4 lift overshooting to E, then F#4->E4->D4 settle) chopped into staccato kite-hops, overshoot landing on a cheeky offbeat. Driving altitude route. Noise gust swell crests and cuts every 4 bars (the wind). 16-bar loop, last bar voice-leads (A on the and-of-4) back to the bar-1 lift.",
+  "era": "gbc",
+  "tempo": 138,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "D major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "notes": "A3e D4e re E4e re F#4e E4e D4e | A4e re F#4e D4e E4e re D4e re | A3e D4e re E4e re G4e F#4e E4e | F#4q E4q D4h | A3e D4e re E4e re F#4e E4e D4e | A4e re F#4e D4e E4e re B4e re | A4e re G4e F#4e E4e re D4e re | F#4e E4e D4e re D4q A3e re | A3e D4e re E4e re F#4e E4e D4e | A4e re F#4e D4e E4e re D4e re | B4e re A4e F#4e G4e re E4e re | F#4q D4q E4h | A4e re G4e F#4e E4e D4e B3e D4e | A4e re F#4e D4e G4e re E4e re | F#4e re E4e re D4e E4e F#4e G4e | A4q F#4q E4e D4e A3e re"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.6,
+      "notes": "D4e F#4e A4e F#4e D4e F#4e A4e F#4e | E4e G4e B4e G4e E4e G4e B4e G4e | D4e F#4e A4e F#4e D4e F#4e A4e F#4e | A3e D4e F#4e D4e A3e C#4e E4e C#4e | D4e F#4e A4e F#4e D4e F#4e A4e F#4e | E4e G4e B4e G4e E4e G4e B4e G4e | D4e F#4e A4e F#4e G3e B3e D4e B3e | A3e C#4e E4e C#4e A3e C#4e E4e C#4e | D4e F#4e A4e F#4e D4e F#4e A4e F#4e | E4e G4e B4e G4e E4e G4e B4e G4e | G3e B3e D4e B3e G3e B3e D4e B3e | D4e F#4e A4e F#4e A3e C#4e E4e C#4e | D4e F#4e A4e F#4e D4e F#4e A4e F#4e | E4e G4e B4e G4e E4e G4e B4e G4e | G3e B3e D4e B3e A3e C#4e E4e C#4e | D4e F#4e A4e F#4e A3e C#4e E4e C#4e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "notes": "e D2 D2 A2 A2 D2 D2 A2 A2 | E2 E2 B2 B2 E2 E2 B2 B2 | D2 D2 A2 A2 D2 D2 A2 A2 | A2 A2 A2 A2 E2 E2 E2 E2 | D2 D2 A2 A2 D2 D2 A2 A2 | E2 E2 B2 B2 E2 E2 B2 B2 | D2 D2 A2 A2 G2 G2 D2 D2 | A2 A2 A2 A2 A2 A2 A2 A2 | D2 D2 A2 A2 D2 D2 A2 A2 | E2 E2 B2 B2 E2 E2 B2 B2 | G2 G2 D2 D2 G2 G2 D2 D2 | D2 D2 A2 A2 A2 A2 A2 A2 | D2 D2 A2 A2 D2 D2 A2 A2 | E2 E2 B2 B2 E2 E2 B2 B2 | G2 G2 D2 D2 A2 A2 A2 A2 | D2 D2 A2 A2 A2 A2 A2 A2"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "_note": "Brisk kick/snare with hat sixteenths feel via eighth hats; gust = a crash swell every 4th bar at the seam of each phrase.",
+      "notes": "e kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat snare+hat snare+hat crash"
+    }
+  ]
+}

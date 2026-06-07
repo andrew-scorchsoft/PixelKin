@@ -1,0 +1,41 @@
+{
+  "title": "Pale Vault Glacier - Aurora Vault",
+  "_note": "Option A anchor. gbc 4-voice band, deliberately glacial (72 BPM is gbc tempo floor - benign feel). Suspended C major: no firm thirds, sus2 (D) and sus4 (F) colour. Vesper motif FROZEN/STRETCHED: the spine slowed to long suspended tones (G3->C4->D4 lift over bars 1-2, settle E... hangs on D=sus2 and never lands the tonic firmly). Wide noise 'aurora swoosh' (crash swell) every 4 bars in place of a beat. 16-bar loop; last bar holds D (sus2) -> resolves up into bar-1 G lift.",
+  "era": "gbc",
+  "tempo": 72,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "C major (suspended)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.9,
+      "_note": "slow sparse glassy chime-melody, a few long notes per phrase, lots of rest. The stretched Vesper spine.",
+      "notes": "G3h. rq | C4w | D4h. rq | G4h rh | E4h. rq | D4w | rh C4q D4q | D4h rh | G4h. A4q | C5h G4h | D5h. rq | G4w | E4h D4h | C4h. rq | D4w | D4h rh"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.55,
+      "_note": "widely-spaced suspended/quartal arpeggio drifting up like cold light (C-D-G-C quartal/sus, no thirds).",
+      "notes": "C4h G4h | D4h G4h | C4h F4h | D4h G4h | C4h G4h | F4h C5h | D4h G4h | A3h D4h | C4h G4h | C4h G4h | D4h A4h | D4h G4h | C4h G4h | F4h C5h | D4h G4h | D4h A4h"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "_note": "very slow sustained low pedal tones, barely moving.",
+      "notes": "C2w | C2w | F2w | G2w | C2w | F2w | G2w | G2w | C2w | C2w | F2w | G2w | C2w | F2w | G2w | G2w"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "_note": "minimal; a wide aurora-swoosh (crash) rising every 4 bars in place of a beat, otherwise near silence.",
+      "notes": "w r | r | r | crash | r | r | r | crash | r | r | r | crash | r | r | r | crash"
+    }
+  ]
+}
