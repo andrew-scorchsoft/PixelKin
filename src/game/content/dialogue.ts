@@ -11,12 +11,18 @@ export const DIALOGUE: DialogueRegistry = {
   'sign.tinderwick_dock': [
     { text: 'TINDERWICK DOCKS\nMind the lanterns — the tide comes in quiet since the Long Dusk.' },
   ],
+  // Star-tender Fenn — spoken to again after the intro cutscene. Warm, unhurried.
   'npc.mentor_intro': [
-    { speaker: 'MENTOR', text: 'There you are, apprentice. The sky lost another light last night.' },
-    { speaker: 'MENTOR', text: 'Take your vesperlamp. A kin will walk with you. Tend the dark, and it tends you back.' },
+    { speaker: 'FENN', text: 'Steady now, apprentice. The dark is only the dark — it keeps no grudge.' },
+    { speaker: 'FENN', text: 'Catch a kin in the verge by the north gate, then take its bond to Brisa. The Lumenary is the tall hall up the square.' },
+    { speaker: 'FENN', text: 'Tend your lamp, and it tends you back. I will be along the coast road when you are ready.' },
   ],
-  'npc.child_lanterns': [
-    { speaker: 'CHILD', text: "I counted the lamps! Three went out by the quay. Will you light them again?" },
+  // The rival Wren — a fellow young Wayfarer in the plaza (A1). Warm and competitive;
+  // by canon Wren takes the starter that beats yours along Ember->Verdant->Tide->Ember.
+  'npc.wren_intro': [
+    { speaker: 'WREN', text: 'You as well? Ha — Fenn sends us all out the same week. Good.' },
+    { speaker: 'WREN', text: "Whatever partner you pick, I'm taking the one that gives you trouble. Only fair." },
+    { speaker: 'WREN', text: "Race you to fill the whole map with light, then. Loser carries the lamp oil." },
   ],
 
   // --- Tinderwick town signs ---
@@ -38,11 +44,29 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'GRAN', text: 'Off on your Wayfaring at last. Keep your vesperlamp trimmed, and come home warm.' },
   ],
 
+  // --- Tinderwick general store (interior) ---
+  'sign.tinderwick_shop_wares': [
+    { text: 'TINDERWICK GENERAL STORE\nLamp oil, salve, spare wicks — all a Wayfarer needs for the dark road.' },
+  ],
+  'npc.tinderwick_shopkeeper': [
+    { speaker: 'SHOPKEEPER', text: 'Welcome in, out of the dusk. Stocking up for your Wayfaring, are you?' },
+    { speaker: 'SHOPKEEPER', text: 'Lamp oil keeps the vesperlamp bright; a salve mends a tired kin. Take what you need — the road north is long.' },
+    { speaker: 'SHOPKEEPER', text: '(The counter is being restocked — wares open up properly once the shop system is wired.)' },
+  ],
+
+  // --- Tinderwick Lumenary (interior) ---
+  'sign.tinderwick_lumenary_inside': [
+    { text: 'THE EMBER LUMENARY\nHere the Ember constellation is tended. Bring a steady bond, and a steady hand.' },
+  ],
+  'npc.brisa_tallow': [
+    { speaker: 'BRISA TALLOW', text: 'Mind the aisle, dear — step up to the altar when your kin is ready, and we shall light the sky together.' },
+  ],
+
   // --- Dimglass Coast route ---
   'sign.dimglass_buoys': [
     { text: 'DIMGLASS COAST\nThe buoys offshore only answer a lit lamp. Gullcry Rock waits past the shallows.' },
   ],
-  'sign.dimglass_shore': [
+  'sign.dimglass_cave': [
     { text: 'A dark mouth gapes in the cliff. Too deep to walk without a lantern that drinks the dark.' },
   ],
   'sign.dimglass_route': [
@@ -51,9 +75,12 @@ export const DIALOGUE: DialogueRegistry = {
   'sign.dimglass_to_pearlmoor': [
     { text: 'NORTH: PEARLMOOR QUAY\nThe tidal flats lie ahead, where the lamps stand in the water.' },
   ],
+  // The coast NPC is the rival Wren again (A2): canon has Wren's first friendly battle here.
+  // Until the trainer-battle cutscene is wired, this lands the beat as a clear dialogue tease.
   'npc.dimglass_wayfarer': [
-    { speaker: 'WAYFARER', text: 'Cosy night for a walk, if you keep to the lamps. Watch the grass — Brinelets are quick.' },
-    { speaker: 'WAYFARER', text: 'Those buoys? They light a path over the shallows, once your lamp can call the tide.' },
+    { speaker: 'WREN', text: "Caught up already? You keep to the lamps, I'll cut through the grass — let's see who reaches Pearlmoor first." },
+    { speaker: 'WREN', text: "When you're set, the two of us should battle proper. No Lamps, no stakes — just us and our partners." },
+    { speaker: 'WREN', text: 'Did you see the sky a moment ago? A star just... went out. Gave me the shivers. Keep your lamp close out here.' },
   ],
 };
 
