@@ -268,7 +268,12 @@ def validate_tree(repo: Path, specs: dict) -> list[Report]:
     trainers = repo / "assets" / "trainers"
     if trainers.is_dir():
         for f in sorted(trainers.glob("*.png")):
-            reports.append(validate_file(f, "human-overworld", specs))
+            # `<stem>_actions.png` is a layer-3 action sheet (4×2); the rest are walk sheets.
+            kind = "human-actions" if f.stem.endswith("_actions") else "human-overworld"
+            reports.append(validate_file(f, kind, specs))
+    emotes = repo / "assets" / "effects" / "emotes.png"
+    if emotes.exists():
+        reports.append(validate_file(emotes, "emote", specs))
     return reports
 
 

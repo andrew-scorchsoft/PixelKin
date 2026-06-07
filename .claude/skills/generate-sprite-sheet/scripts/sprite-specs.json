@@ -99,6 +99,44 @@
       "fill": 0.7,
       "prompt": "An original human character walking sprite SHEET for a retro monster-collecting RPG, laid out as a strict grid of {cols} columns by {rows} rows of {fw}x{fh} frames ({canvas_w}x{canvas_h} total). Rows are facing directions top to bottom: row 1 facing DOWN, row 2 facing LEFT, row 3 facing RIGHT, row 4 facing UP. Columns are a WALK CYCLE left to right: column 1 IDLE (standing, weight even, both feet planted); column 2 CONTACT-LEFT (left foot planted forward, right leg trailing back, arms swung in opposition); column 3 PASSING (both legs together under the body mid-stride, and the WHOLE body raised by 1 pixel so the head bobs); column 4 CONTACT-RIGHT (the mirror of column 2 — right foot forward, left trailing). Character: {subject}. The two contact poses (cols 2 and 4) must be CLEARLY different from each other — visible leg crossover and opposite arm swing — or the walk reads as a shuffle. Keep head height, proportions and palette identical in every frame; only legs, arms and the 1px passing lift move. Feet sit on the SAME baseline in the idle and both contact frames; the passing frame is 1px higher. Centred horizontally, about 20-24px wide inside each 32px frame. Even spacing, one pose isolated per cell."
     },
+    "human-actions": {
+      "label": "Human action / pose sheet (optional, layer 3)",
+      "use_for": "Optional bespoke event poses for a character (mainly the player): raise-lamp/relight, lamp-toss/catch, Lantern-Gift cast, sit, hurt. Front-facing (toward camera). Pairs with the base human-overworld walk sheet of the SAME character; pass that sheet as --reference so the body matches.",
+      "file": "actions.png",
+      "frame_width": 32,
+      "frame_height": 32,
+      "cols": 4,
+      "rows": 2,
+      "anchor": "bottom-center",
+      "fill": 0.7,
+      "prompt": "An original wordless human-character pose sheet for a retro monster-collecting RPG. ABSOLUTE RULE, MOST IMPORTANT: this image contains ZERO text — no words, no labels, no captions, no titles, no letters, no numbers, no writing of any kind in any cell. Draw ONLY the character figure in each cell, nothing written. Layout: a strict grid of {cols} columns by {rows} rows of {fw}x{fh} frames ({canvas_w}x{canvas_h} total), read left-to-right then top-to-bottom. Every cell shows the SAME character from the front (facing the viewer), standing on the same baseline with identical head height, proportions and palette — only the arms, body and the small handheld lantern they carry change between cells. Character: {subject}. The eight cells, in order, are these poses: first, beginning to lift the little lantern with the arm bent at the chest; second, the lantern held high overhead at arm's length and glowing, head tilted up; third, body coiled with the lantern drawn back beside the head ready to throw; fourth, the arm thrown forward and fully extended as the lantern just leaves the hand; fifth, both hands bringing the lantern up in front of the chest; sixth, the lantern thrust forward at arm's length casting light ahead; seventh, sitting on the ground with knees up, relaxed; eighth, flinching backward with one arm raised and knees bent in recoil. Centred horizontally, feet on the same baseline in the standing cells, about 20-24px wide inside each {fw}px frame, one clear pose isolated per cell with even spacing. Remember: absolutely no text or lettering anywhere.",
+      "_engine_layout": "Actor.HUMAN_ACTION_FRAMES: raiseLamp=[0,1], toss=[2,3], gift=[4,5], sit=[6], hurt=[7] (row-major)."
+    },
+    "human-pose": {
+      "label": "Single human action pose (assemble into an action sheet)",
+      "use_for": "ONE front-facing character pose on a 32x32 frame — the ROBUST way to build a human-actions sheet (image models are weak at multi-pose grids). Generate each pose with the character's walk sheet as --reference, then assemble the 4x2 sheet with assemble_action_sheet.py.",
+      "file": "pose.png",
+      "frame_width": 32,
+      "frame_height": 32,
+      "cols": 1,
+      "rows": 1,
+      "anchor": "bottom-center",
+      "fill": 0.7,
+      "prompt": "A single original human character POSE sprite for a retro monster-collecting RPG: ONE figure only, seen from the FRONT (facing the viewer), centred horizontally with the feet near the lower edge so it stands on the ground line. Character and pose: {subject}. Fills about {fill_pct}% of the {fw}x{fh} frame, whole figure in frame, nothing cropped. CRITICAL: exactly ONE single figure — not a row, not a grid, not multiple copies — and absolutely NO text, NO labels, NO words, NO numbers anywhere."
+    },
+    "emote": {
+      "label": "Shared overworld emote / status bubble sheet (layer 2, reusable by ALL characters)",
+      "use_for": "One shared sheet of floating reaction bubbles popped above any character's head during cutscenes/events (surprise, question, heart, etc.). Generate ONCE; reused across every character — do not bake emotes into per-character sheets.",
+      "file": "emotes.png",
+      "frame_width": 32,
+      "frame_height": 32,
+      "cols": 4,
+      "rows": 2,
+      "anchor": "center",
+      "fill": 0.7,
+      "prompt": "A sheet of original floating EMOTE / status BUBBLES for a retro monster-collecting RPG, the little symbols that pop above a character's head in a cutscene. Strict grid of {cols} columns by {rows} rows of {fw}x{fh} frames ({canvas_w}x{canvas_h} total), read left-to-right then top-to-bottom. Each cell holds ONE small rounded speech-bubble with a bold symbol inside it, centred in the cell, NO character or scenery — the bubble only, with its little tail pointing down. The eight bubbles are, in order: (1) a bold EXCLAMATION mark '!' (surprise/alert); (2) a QUESTION mark '?' (confusion); (3) a HEART (affection); (4) an ELLIPSIS of three dots '...' (speechless/thinking); (5) a SWEAT-DROP (awkward/nervous); (6) a sleepy double-Z 'Zz' (sleeping/bored); (7) a MUSIC NOTE (happy/humming); (8) an ANGER cross-pop / vein mark (annoyed). Bright, chunky, instantly readable at tiny size, consistent top-left light, dark non-black outline. One bubble per cell, even spacing.",
+      "_engine_layout": "Actor.EMOTE_FRAMES: alert=0, question=1, heart=2, ellipsis=3, sweat=4, sleep=5, music=6, anger=7 (row-major)."
+    },
     "effect": {
       "label": "Battle effect frame sheet",
       "use_for": "A reusable battle effect animation (spark, slash, burst, splash) as a frame grid.",

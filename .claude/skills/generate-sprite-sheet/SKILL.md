@@ -126,6 +126,9 @@ Run `--list-types` for the live list. Current types (all defined in
 | `creature-overworld` |  32×32 | 1×1  | bottom-centre |
 | `creature-portrait`  |  96×96 | 1×1  | centre        |
 | `human-overworld`    |  32×32 | 4×4  | bottom-centre |
+| `human-pose`         |  32×32 | 1×1  | bottom-centre |
+| `human-actions`      |  32×32 | 4×2  | bottom-centre |
+| `emote`              |  32×32 | 4×2  | centre        |
 | `effect`             |  32×32 | 4×4  | centre        |
 | `tile`               |  16×16 | 1×1  | top-left      |
 | `tile-ground` / `tile-soil` / `tile-sand` / `tile-floor` / `tile-path` / `tile-water` / `tile-water-edge` / `tile-cliff` / `tile-cliff-edge` / `tile-roof` / `tile-wall` / `tile-door` / `tile-fence` | 16×16 | 1×1 | top-left | 
@@ -135,6 +138,36 @@ The `tile-*` subtypes are role-specific variants of `tile` for building a cohesi
 set (edge tiles are prompted to match their neighbours; `tile-decor` keeps transparency
 around a small object). Use them with `--area`/`--palette` (see **Generating a map tile
 set**).
+
+### Character animation — three layers (docs/art-style.md §A/§A2/§A3)
+
+A character animates from up to three sheets, all on the same 32×32 grid:
+
+1. **`human-overworld`** (4×4) — the walk sheet. **Required** for every character.
+   *Running* is free (same frames, faster), so don't expand this sheet.
+2. **`emote`** (4×2) — the **one shared** reaction-bubble sheet for the whole
+   game (alert/question/heart/…). Generate once into `assets/effects/emotes.png`;
+   reused by every character. Don't bake emotes into per-character sheets.
+3. **`human-actions`** (4×2) — **optional** bespoke event poses (raise-lamp,
+   toss, gift, sit, hurt), mainly the player. **Build it the robust way:**
+   generate each pose with `--type human-pose` (single 32×32, with the character's
+   walk sheet as `--reference`), then assemble with `assemble_action_sheet.py` —
+   do **not** ask the model for the whole 8-cell grid at once (it subdivides cells
+   and repeats stances). Save as `assets/trainers/<stem>_actions.png`.
+
+`pack_trainers.py` packs all three (walk + `<stem>_actions` + the shared
+`emotes.png`) into `public/assets/sprites/trainers/` and one manifest; the engine
+(`entities/Actor.ts`: `playAction`, `showEmote`) loads them via `PreloadScene`.
+
+```bash
+GEN=.claude/skills/generate-sprite-sheet/scripts
+REF=assets/trainers/player_indi.png
+# 8 poses in cell order (raise-start, raise-hold, toss-wind, toss-throw, gift-raise, gift-cast, sit, hurt)
+$GEN/generate_sprite.py --type human-pose --reference $REF --subject "<char> holding a lantern aloft, glowing" --output /tmp/p1.png
+# …generate the other 7…
+$GEN/assemble_action_sheet.py --output assets/trainers/player_indi_actions.png /tmp/p0.png … /tmp/p7.png
+$GEN/pack_trainers.py
+```
 
 ### Arguments worth knowing
 

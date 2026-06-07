@@ -51,6 +51,48 @@ export const HUMAN_WALK_FRAMES: ActorFrames = (() => {
   return { idle, walk };
 })();
 
+/**
+ * Suffix for a character's optional layer-3 action texture: a walk-sheet texture
+ * `player_indi` has its action sheet loaded as `player_indi_actions` (see
+ * PreloadScene + pack_trainers.py). `actionTextureKey()` builds it.
+ */
+export const ACTIONS_KEY_SUFFIX = '_actions';
+/** Texture key of the one shared layer-2 emote/bubble sheet (docs/art-style.md §A3). */
+export const EMOTE_TEXTURE = 'emotes';
+
+/** Build the action-texture key for a walk-sheet key (e.g. `player_indi` → `player_indi_actions`). */
+export const actionTextureKey = (walkKey: string): string => `${walkKey}${ACTIONS_KEY_SUFFIX}`;
+
+/**
+ * Event poses on a layer-3 action sheet (4×2, docs/art-style.md §A2), as frame
+ * lists played as one-shots. Two-frame poses animate (start → hold); single-frame
+ * poses are a held pose. Must match the sheet's cell order.
+ */
+export const HUMAN_ACTION_FRAMES = {
+  raiseLamp: [0, 1],
+  toss: [2, 3],
+  gift: [4, 5],
+  sit: [6],
+  hurt: [7],
+} as const;
+export type ActionName = keyof typeof HUMAN_ACTION_FRAMES;
+
+/**
+ * Emote bubbles on the shared layer-2 emote sheet (4×2, docs/art-style.md §A3),
+ * by cell index. Popped above an actor via `showEmote`.
+ */
+export const EMOTE_FRAMES = {
+  alert: 0,
+  question: 1,
+  heart: 2,
+  ellipsis: 3,
+  sweat: 4,
+  sleep: 5,
+  music: 6,
+  anger: 7,
+} as const;
+export type EmoteName = keyof typeof EMOTE_FRAMES;
+
 const FACING_DELTA: Record<Facing, { dx: number; dy: number }> = {
   down: { dx: 0, dy: 1 },
   up: { dx: 0, dy: -1 },
@@ -68,6 +110,9 @@ export class Actor {
   facing: Facing;
   private moving = false;
 
+  /** True while a one-shot action pose is playing; movement is suspended. */
+  private acting = false;
+
   constructor(
     protected scene: Phaser.Scene,
     tx: number,
@@ -75,6 +120,8 @@ export class Actor {
     facing: Facing,
     private readonly textureKey: string,
     private readonly frames: ActorFrames = PLACEHOLDER_FRAMES,
+    /** Optional layer-3 action texture key (e.g. `player_indi_actions`); enables `playAction`. */
+    private readonly actionsKey?: string,
   ) {
     this.tx = tx;
     this.ty = ty;
@@ -134,7 +181,7 @@ export class Actor {
     onArrive?: (tx: number, ty: number) => void,
     durationMs = STEP_MS,
   ): boolean {
-    if (this.moving) return false;
+    if (this.moving || this.acting) return false;
     this.setFacing(facing);
     const d = FACING_DELTA[facing];
     const nx = this.tx + d.dx;
@@ -174,6 +221,90 @@ export class Actor {
     if (this.moving || !this.frames.walk) return;
     if (this.sprite.anims.isPlaying) this.sprite.stop();
     this.sprite.setFrame(this.frames.idle[this.facing]);
+  }
+
+  /** Whether this actor has a layer-3 action sheet (so `playAction` will do something). */
+  get hasActions(): boolean {
+    return !!this.actionsKey && this.scene.textures.exists(this.actionsKey);
+  }
+
+  /** Register (once) a one-shot animation for an action pose on the action texture. */
+  private ensureActionAnim(key: string, name: ActionName): void {
+    const animKey = `${key}__act_${name}`;
+    if (this.scene.anims.exists(animKey)) return;
+    const frames = HUMAN_ACTION_FRAMES[name];
+    this.scene.anims.create({
+      key: animKey,
+      frames: frames.map((frame) => ({ key, frame })),
+      frameRate: 1000 / 150, // ~150ms per pose frame
+      repeat: 0,
+    });
+  }
+
+  /**
+   * Play a one-shot event pose (raise-lamp, toss, gift, sit, hurt) from the
+   * layer-3 action sheet, then settle back to idle. No-op (resolves immediately)
+   * for actors without an action sheet, so cutscene code can call it
+   * unconditionally. Movement is suspended for the duration. `holdMs` is how long
+   * the final pose holds before returning to idle.
+   */
+  playAction(name: ActionName, holdMs = 600): Promise<void> {
+    const key = this.actionsKey;
+    if (!key || !this.scene.textures.exists(key) || this.acting) return Promise.resolve();
+    this.acting = true;
+    this.stopWalking();
+    this.ensureActionAnim(key, name);
+    return new Promise<void>((resolve) => {
+      const finish = () => {
+        this.acting = false;
+        this.sprite.setTexture(this.textureKey, this.frames.idle[this.facing]);
+        resolve();
+      };
+      this.sprite.play(`${key}__act_${name}`);
+      this.sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+        this.scene.time.delayedCall(holdMs, finish);
+      });
+    });
+  }
+
+  /**
+   * Pop a shared emote bubble (alert, question, heart, …) above the actor's head:
+   * a transient overlay sprite that scales in, bobs, holds, then fades and
+   * destroys itself. No-op (resolves immediately) if the emote sheet isn't loaded.
+   */
+  showEmote(name: EmoteName, holdMs = 900): Promise<void> {
+    if (!this.scene.textures.exists(EMOTE_TEXTURE)) return Promise.resolve();
+    const restY = this.sprite.y - TILE_SIZE - 6; // just above the head
+    const bubble = this.scene.add
+      .sprite(this.sprite.x, restY + 4, EMOTE_TEXTURE, EMOTE_FRAMES[name])
+      .setOrigin(0.5, 1)
+      .setDepth(this.sprite.depth + 1000)
+      .setAlpha(0)
+      .setScale(0.5);
+    return new Promise<void>((resolve) => {
+      this.scene.tweens.add({
+        targets: bubble,
+        alpha: 1,
+        scale: 1,
+        y: restY,
+        duration: 140,
+        ease: 'Back.easeOut',
+        onComplete: () => {
+          this.scene.tweens.add({ targets: bubble, y: restY - 2, duration: 260, yoyo: true, repeat: 1 });
+          this.scene.time.delayedCall(holdMs, () => {
+            this.scene.tweens.add({
+              targets: bubble,
+              alpha: 0,
+              duration: 140,
+              onComplete: () => {
+                bubble.destroy();
+                resolve();
+              },
+            });
+          });
+        },
+      });
+    });
   }
 
   /** Keep depth in sync with row so actors sort correctly among deco tiles. */

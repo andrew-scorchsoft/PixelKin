@@ -106,6 +106,8 @@ point.
 |---------------------|-----------:|:-----------------:|----------------|--------------:|
 | World tile          |      16×16 | 1×1               | top-left       | 100%          |
 | Human overworld     |      32×32 | 4×4               | bottom-centre  | ~20–24px wide |
+| Human action poses  |      32×32 | 4×2 (optional)    | bottom-centre  | ~20–24px wide |
+| Overworld emote     |      32×32 | 4×2 (shared)      | centre         | per-bubble    |
 | Creature overworld  |      32×32 | 1×1 (opt. 4×4/4×1)| bottom-centre  | ~75%          |
 | Creature battle front |    64×64 | 1×1               | bottom-centre  | ~80% height   |
 | Creature battle back  |    64×64 | 1×1               | bottom-centre  | ~80% height   |
@@ -156,6 +158,66 @@ this is what sells movement.
   1px passing lift) move.
 - Pivot: **bottom-centre**. Generate each frame from a locked reference of the
   idle so proportions never drift cell-to-cell (the cause of jitter).
+
+> **Character animation is layered, not one giant sheet.** A character's states
+> come from up to **three** sheets so background NPCs stay cheap and the player
+> gets the rich set, all on the same 32×32 grid:
+>
+> | Layer | Sheet | Who needs it | What it gives |
+> |------:|-------|--------------|---------------|
+> | **1** | `human-overworld` (4×4, §A) | **every** character — required | idle + a real walk cycle per direction (and *running* for free: same frames, faster) |
+> | **2** | `emote` (4×2, §A3) | **one shared** sheet, reused by all | floating reaction bubbles popped above the head |
+> | **3** | `human-actions` (4×2, §A2) | **opt-in** (mainly the player) | bespoke event poses (raise-lamp, toss, gift-cast, sit, hurt) |
+>
+> Keep each layer a **separate sheet** — never bolt extra rows onto the walk
+> sheet. The engine (`entities/Actor.ts`) keeps the walk sheet as the body and
+> overlays/swaps the others, so layers 2–3 drop in without disturbing layer 1.
+> Don't expand the walk sheet itself: it's already a true stride and *running*
+> needs no new art (just a higher frame-rate).
+
+### A2) Human action / pose sheets (optional — layer 3)
+
+Bespoke, **event-triggered** poses for the moments a walk cycle can't sell — the
+constellation **relight**, tossing a **Lamp**, casting a **Lantern Gift**. Only
+generate this for characters that earn it (the **player** always; a story NPC
+when a cutscene needs it); a background NPC ships with layer 1 alone.
+
+- Sheet **4 columns × 2 rows**, 32×32 frames (128×64 total). Same body scale,
+  baseline, palette and proportions as that character's walk sheet — **generate
+  it with the walk sheet as `--reference`** so the body matches when the engine
+  swaps textures.
+- **All poses face the camera (down).** Cutscenes face the actor forward; bespoke
+  directional action art is out of scope (flip horizontally for left/right if
+  ever needed).
+- Cells, in reading order (these map to `Actor.HUMAN_ACTION_FRAMES`):
+  1. **raise-lamp start** · 2. **raise-lamp hold** (lantern aloft, glowing — the
+  *relight* beat) · 3. **throw wind-up** · 4. **throw release** (Lamp toss /
+  catch) · 5. **gift raise** · 6. **gift cast** (Lantern Gift) · 7. **sit** ·
+  8. **hurt** (recoil).
+- The engine plays the two-frame ones as one-shots: `raiseLamp=[0,1]`,
+  `toss=[2,3]`, `gift=[4,5]`; `sit=[6]` and `hurt=[7]` are single holds.
+- Pivot: **bottom-centre** (so a pose swaps in over the walk frame with the feet
+  in the same place).
+- **Build it from single poses, don't one-shot the grid.** Image models are weak
+  at multi-pose grids (they subdivide cells or repeat a stance). The robust path
+  is the two-system rule: generate each pose as a `human-pose` sprite (single
+  32×32, with the walk sheet as `--reference` so the body stays on-model), then
+  let code lay them out with `assemble_action_sheet.py`. Pack with
+  `pack_trainers.py` (it auto-detects `<stem>_actions.png`).
+
+### A3) Overworld emotes (shared — layer 2)
+
+The little bubbles that pop above a head in a cutscene. **Kept entirely separate
+from characters** (exactly like battle effects, §F) so **one** sheet serves every
+character — never bake emotes into a per-character sheet.
+
+- Sheet **4 columns × 2 rows**, 32×32 frames (128×64 total), **centre-anchored**.
+- Each cell is one rounded bubble + symbol, tail pointing down, no character.
+- Cells, in reading order (map to `Actor.EMOTE_FRAMES`): 1. **alert** `!` ·
+  2. **question** `?` · 3. **heart** · 4. **ellipsis** `…` · 5. **sweat** ·
+  6. **sleep** `Zz` · 7. **music** ♪ · 8. **anger** cross-pop.
+- The engine pops one above the actor (scale/alpha-in, a small bob, hold, fade)
+  via `Actor.showEmote(name)` — it's a transient overlay sprite, not a body swap.
 
 ### B) Creature overworld mini-sprites
 
