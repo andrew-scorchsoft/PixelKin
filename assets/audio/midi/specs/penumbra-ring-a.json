@@ -14,7 +14,7 @@
       "octave": 3,
       "gain": 0.75,
       "_note": "Almost none - one lonely low note swelling out of the drone every few bars. No real melody. The withheld Vesper root D glows once (bar 13).",
-      "notes": "r w | r w | r r D3 r | r w | r w | r w | r r F3 r | r w | r w | r w | r r A3 r | r w | D3 r r r | r w | r w | r w | r r F3 r | r w | r w | r w | r r D3 r | r w | r w | r w"
+      "notes": "rw | rw | rh D3h | rw | rw | rw | rh F3h | rw | rw | rw | rh A3h | rw | D3h rh | rw | rw | rw | rh F3h | rw | rw | rw | rh D3h | rw | rw | rw"
     },
     {
       "name": "harmony",

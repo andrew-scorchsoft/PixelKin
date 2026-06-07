@@ -14,7 +14,7 @@
       "octave": 4,
       "gain": 0.8,
       "_note": "One or two faltering notes per phrase. The ghost of the rising leap (E3->A3) once, around bar 9-10; otherwise near-silent.",
-      "notes": "r w | r w | r w | r r r A3 | r w | r w | r w | r w | r r E3 r | A3 r r r | r w | r w | r w | r w | r r B3 r | r w | r w | r w | r r A3 r | r w | r w | r w | r w | r w"
+      "notes": "rw | rw | rw | rh. A3q | rw | rw | rw | rw | rh E3q rq | A3h rh | rw | rw | rw | rw | rh B3q rq | rw | rw | rw | rh A3q rq | rw | rw | rw | rw | rw"
     },
     {
       "name": "harmony",
@@ -22,7 +22,7 @@
       "octave": 3,
       "gain": 0.38,
       "_note": "Single sustained fog-drone, swelling and fading. A held mostly; slips to E then F then back, never resolving. Long held whole notes with a few gaps.",
-      "notes": "A3w | A3w | r w | A3w | A3w | r w | E3w | E3w | r w | A3w | A3w | r w | F3w | F3w | r w | A3w | A3w | r w | E3w | E3w | r w | A3w | A3w | E3w"
+      "notes": "A3w | A3w | rw | A3w | A3w | rw | E3w | E3w | rw | A3w | A3w | rw | F3w | F3w | rw | A3w | A3w | rw | E3w | E3w | rw | A3w | A3w | E3w"
     },
     {
       "name": "bass",

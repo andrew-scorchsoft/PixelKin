@@ -14,7 +14,7 @@
       "octave": 4,
       "gain": 0.95,
       "_note": "Phrases begin to complete. Rising leap E3->A3->B3 early; the settle-home E4->D4->C4 completes in warming major from bar 17.",
-      "notes": "r h E3q A3q | B3h. r q | r h A3q B3q | C4h r h | E3q A3q B3q C4q | B3h r h | r h C4q D4q | E4h r h | E4q A3q C4q E4q | D4h C4q r q | F4q E4q D4q C4q | D4h r h | E4q G4q E4q C4q | D4h. r q | E4q D4q C4q E4q | G4h r h | E4q D4q C4h | D4q C4q B3h | C4q E4q G4q E4q | D4q C4q D4h | E4q D4q C4q B3q | A3q C4q E4h | G3q C4q E4q D4q | E4q D4q G3h"
+      "notes": "rh E3q A3q | B3h. rq | rh A3q B3q | C4h rh | E3q A3q B3q C4q | B3h rh | rh C4q D4q | E4h rh | E4q A3q C4q E4q | D4h C4q rq | F4q E4q D4q C4q | D4h rh | E4q G4q E4q C4q | D4h. rq | E4q D4q C4q E4q | G4h rh | E4q D4q C4h | D4q C4q B3h | C4q E4q G4q E4q | D4q C4q D4h | E4q D4q C4q B3q | A3q C4q E4h | G3q C4q E4q D4q | E4q D4q G3h"
     },
     {
       "name": "harmony",
