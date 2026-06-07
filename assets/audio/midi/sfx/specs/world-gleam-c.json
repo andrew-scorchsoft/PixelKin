@@ -1,0 +1,14 @@
+{
+  "title": "SFX -- world Gleam earned (constellation relit, aurora bloom)",
+  "_note": "Third Gleam variant: starts with a wide noise aurora sweep (C2 to C6) anchoring the full range, then a pulse25 Vesper-gesture arpeggio (G4 C5 E5 G5 E6) resolves into a sustained bell cluster. More dramatic, darker-to-light arc. Render with --tail 0.7.",
+  "era": "sfx",
+  "tempo": 260,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "aurora",  "voice": "noise",   "octave": 2, "gain": 0.5,  "notes": "C2~C6q@80"                  },
+    { "name": "ascent",  "voice": "pulse25", "octave": 4, "gain": 1.0,  "notes": "G4s C5s E5s G5s E6e@120"   },
+    { "name": "crown",   "voice": "bell",    "octave": 6, "gain": 0.85, "notes": "rs G6+C7q"                  }
+  ]
+}

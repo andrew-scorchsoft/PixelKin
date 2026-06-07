@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- world door open (warmer creak)",
+  "_note": "A warmer door open: wider noise up-glide from B2 to E3 then a two-note pulse resolve (G4 to C5). More welcoming feel. Render with --tail 0.08.",
+  "era": "sfx",
+  "tempo": 200,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "creak",   "voice": "noise",   "octave": 2, "gain": 0.65, "notes": "B2~E3e@80"   },
+    { "name": "resolve", "voice": "pulse25", "octave": 4, "gain": 0.85, "notes": "rs G4s C5s@100" }
+  ]
+}

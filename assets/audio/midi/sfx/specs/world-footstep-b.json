@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- world footstep (stone tap)",
+  "_note": "A single stone-ish step: lower noise tick at A2 plus a tri_bass thunk for weight. Harder, denser feel than grass. Render with --tail 0.03.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "tap",   "voice": "noise",    "octave": 2, "gain": 0.8,  "notes": "A2s@100" },
+    { "name": "thunk", "voice": "tri_bass", "octave": 2, "gain": 0.5,  "notes": "C2s@80"  }
+  ]
+}

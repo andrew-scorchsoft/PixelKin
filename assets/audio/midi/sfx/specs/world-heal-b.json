@@ -1,0 +1,14 @@
+{
+  "title": "SFX -- world heal (Hearthrest restore, softer wave bloom)",
+  "_note": "A second heal variant: a wave up-glide (C4 to G5) for a warm sighing breath, then a bright pulse25 high G6 and bell ring. Feels more like a sigh of relief than a sprightly arpeggio. Render with --tail 0.4.",
+  "era": "sfx",
+  "tempo": 200,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "breath",  "voice": "wave",    "octave": 4, "gain": 0.7,  "notes": "C4~G5e@85"   },
+    { "name": "crown",   "voice": "pulse25", "octave": 6, "gain": 0.85, "notes": "re G6e@110"  },
+    { "name": "shimmer", "voice": "bell",    "octave": 6, "gain": 0.7,  "notes": "re E6e@80"   }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- world pickup (warm blip)",
+  "_note": "A warmer, more melodic pickup: three ascending notes ending on a held E6, on pulse25. Feels like a tiny resolve. Render with --tail 0.05.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "chirp", "voice": "pulse25", "octave": 5, "gain": 0.95, "notes": "G5s C6s E6e@120" }
+  ]
+}

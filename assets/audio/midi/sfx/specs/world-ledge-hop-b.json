@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- world ledge hop (boing down with thud)",
+  "_note": "Hopping down a ledge with landing impact: pulse down-glide from A5 to D5 plus a brief noise thud on landing. More grounded than variant a. Render with --tail 0.06.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "boing",  "voice": "pulse25", "octave": 5, "gain": 0.9,  "notes": "A5~D5e@110" },
+    { "name": "land",   "voice": "noise",   "octave": 3, "gain": 0.55, "notes": "re B3s@80"   }
+  ]
+}

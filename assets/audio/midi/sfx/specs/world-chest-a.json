@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- world chest open (creak then sparkle)",
+  "_note": "Opening a treasure chest: noise creak glide up (C3 to F3), then a bright pulse25 sparkle arpeggio. Two voices, short gestural shape. Render with --tail 0.3.",
+  "era": "sfx",
+  "tempo": 280,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "creak",   "voice": "noise",   "octave": 3, "gain": 0.65, "notes": "C3~F3e@80"           },
+    { "name": "sparkle", "voice": "pulse25", "octave": 6, "gain": 0.9,  "notes": "rs C6s E6s G6e@120"  }
+  ]
+}

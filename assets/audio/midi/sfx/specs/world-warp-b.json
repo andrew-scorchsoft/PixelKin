@@ -1,0 +1,14 @@
+{
+  "title": "SFX -- world warp (vesperlamp fast-travel, arpeggio burst)",
+  "_note": "A second warp variant: a quick wave up-glide (C4 to C6) layered with a bright four-note pulse25 arpeggio burst, then bell ring. More energetic, flash-of-light feel. Render with --tail 0.4.",
+  "era": "sfx",
+  "tempo": 220,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "sweep",   "voice": "wave",    "octave": 4, "gain": 0.6,  "notes": "C4~C6e@80"           },
+    { "name": "burst",   "voice": "pulse25", "octave": 5, "gain": 0.9,  "notes": "C5s E5s G5s C6e@115" },
+    { "name": "bell",    "voice": "bell",    "octave": 6, "gain": 0.7,  "notes": "rs G6e@85"           }
+  ]
+}

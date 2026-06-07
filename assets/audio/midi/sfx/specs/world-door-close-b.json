@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- world door close (heavier thud)",
+  "_note": "A heavier door close: noise down-glide then a low tri_bass thump for a solid wooden feel. Render with --tail 0.08.",
+  "era": "sfx",
+  "tempo": 200,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "creak", "voice": "noise",    "octave": 3, "gain": 0.65, "notes": "E3~B2e@80"  },
+    { "name": "thud",  "voice": "tri_bass", "octave": 2, "gain": 0.85, "notes": "rs C2s@110" }
+  ]
+}

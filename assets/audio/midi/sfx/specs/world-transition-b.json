@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- world transition (descending fade, going deeper)",
+  "_note": "Area/scene change descending into a darker area: noise down-sweep C5 to C2, with a soft pulse downbeat landing. Render with --tail 0.08.",
+  "era": "sfx",
+  "tempo": 180,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "whoosh",  "voice": "noise",   "octave": 4, "gain": 0.8,  "notes": "C5~C2q@85" },
+    { "name": "landing", "voice": "pulse50", "octave": 3, "gain": 0.7,  "notes": "rq C3s@90"  }
+  ]
+}

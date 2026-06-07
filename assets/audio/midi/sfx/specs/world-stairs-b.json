@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- world stairs (descending run)",
+  "_note": "Stepping down stairs: a quick falling run of 4 equal ticks from G5 down to D5, with a quiet noise under each step for texture. Render with --tail 0.05.",
+  "era": "sfx",
+  "tempo": 260,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "steps",  "voice": "pulse25", "octave": 5, "gain": 0.85, "notes": "G5s F5s E5s D5s" },
+    { "name": "texture","voice": "noise",   "octave": 3, "gain": 0.3,  "notes": "B3s A3s G3s F3s" }
+  ]
+}

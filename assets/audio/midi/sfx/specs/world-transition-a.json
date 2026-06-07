@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- world transition (airy up-whoosh, entering brighter)",
+  "_note": "Area/scene change entering a brighter area: rising noise whoosh C3 to C6. Wide glide sweep for a sweeping-into-light feel. Render with --tail 0.08.",
+  "era": "sfx",
+  "tempo": 180,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "whoosh", "voice": "noise", "octave": 3, "gain": 0.8, "notes": "C3~C6q@90" }
+  ]
+}

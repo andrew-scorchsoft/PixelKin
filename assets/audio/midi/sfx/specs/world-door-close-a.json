@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- world door close (down-glide + thud)",
+  "_note": "Closing a door: noise down-glide (reverse creak from D3 to A2) then a low thud. Render with --tail 0.08.",
+  "era": "sfx",
+  "tempo": 200,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "creak", "voice": "noise",   "octave": 3, "gain": 0.7,  "notes": "D3~A2e@85"  },
+    { "name": "thud",  "voice": "pulse50", "octave": 3, "gain": 0.8,  "notes": "rs C3s@100" }
+  ]
+}
