@@ -253,14 +253,14 @@
     {
       "id": "to_town",
       "at": {
-        "tx": 5,
+        "tx": 6,
         "ty": 8
       },
       "trigger": "step_on",
       "to_map": "tinderwick",
       "to": {
-        "tx": 8,
-        "ty": 16
+        "tx": 6,
+        "ty": 17
       },
       "facing": "down",
       "transition": "door"
