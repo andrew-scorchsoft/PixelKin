@@ -76,8 +76,10 @@ export class PreloadScene extends Phaser.Scene {
   }
 
   create(): void {
-    // Open with the attract-mode demo; it hands off to the Title on input/timeout.
-    this.scene.start('Attract');
+    // Open on the studio splash: it doubles as the audio gate — its first gesture
+    // unlocks the Web Audio context (browsers block sound until then), so the
+    // attract demo it hands off to plays its battle music from frame one.
+    this.scene.start('Splash');
   }
 
   private drawLoadingUi(): void {

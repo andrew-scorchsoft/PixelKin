@@ -342,3 +342,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   under `public/assets/backgrounds/battle/` + list them on the map; no map with a list = it
   keeps the plain night fill. Briefs/standards live in `docs/art-style.md` (§5-H). Keep them
   subtle so sprites/plates stay readable.
+- **Audio can't autoplay before a user gesture.** Browsers start the Web Audio context
+  suspended, so any `music.play()` before the player interacts is silent. The boot flow gates
+  on `SplashScene` (Preload → Splash → Attract) — the animated "Andrew Ward Studios" sting
+  doubles as the gate: its first key/tap/shell-press unlocks the context, so the attract
+  trailer plays with music. Don't move music ahead of that gate, and if you add a new
+  pre-interaction entry point, unlock audio there too.
