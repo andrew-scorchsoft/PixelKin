@@ -1,0 +1,95 @@
+{
+  "name": "dimglass_coast_set",
+  "image": "assets/tilesets/dimglass_coast_set.webp",
+  "tile_width": 16,
+  "tile_height": 16,
+  "columns": 8,
+  "tile_count": 16,
+  "tiles": [
+    {
+      "index": 0,
+      "role": "ground",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "index": 1,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          1,
+          12,
+          13
+        ],
+        "duration_ms": 700
+      }
+    },
+    {
+      "index": 2,
+      "role": "sand",
+      "encounter_terrain": "sand"
+    },
+    {
+      "index": 3,
+      "role": "water_edge",
+      "collides": true
+    },
+    {
+      "index": 4,
+      "role": "cliff",
+      "collides": true
+    },
+    {
+      "index": 5,
+      "role": "cliff_edge",
+      "collides": true
+    },
+    {
+      "index": 6,
+      "role": "path"
+    },
+    {
+      "index": 7,
+      "role": "ground",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "index": 8,
+      "role": "decor"
+    },
+    {
+      "index": 9,
+      "role": "sign",
+      "collides": true
+    },
+    {
+      "index": 10,
+      "role": "decor",
+      "collides": true
+    },
+    {
+      "index": 11,
+      "role": "fence",
+      "collides": true
+    },
+    {
+      "index": 12,
+      "role": "water"
+    },
+    {
+      "index": 13,
+      "role": "water"
+    },
+    {
+      "index": 14,
+      "role": "decor",
+      "collides": true
+    },
+    {
+      "index": 15,
+      "role": "dock"
+    }
+  ]
+}

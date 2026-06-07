@@ -1,0 +1,368 @@
+{
+  "creatures": {
+    "1": {
+      "slug": "vulpyre",
+      "front": {
+        "path": "assets/sprites/creatures/001_vulpyre/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/001_vulpyre/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/001_vulpyre/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/001_vulpyre/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/001_vulpyre/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "2": {
+      "slug": "brinix",
+      "front": {
+        "path": "assets/sprites/creatures/002_brinix/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/002_brinix/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/002_brinix/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/002_brinix/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/002_brinix/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "5": {
+      "slug": "wicklit",
+      "front": {
+        "path": "assets/sprites/creatures/005_wicklit/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/005_wicklit/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/005_wicklit/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/005_wicklit/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/005_wicklit/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "8": {
+      "slug": "glimflit",
+      "front": {
+        "path": "assets/sprites/creatures/008_glimflit/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/008_glimflit/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/008_glimflit/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/008_glimflit/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/008_glimflit/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "10": {
+      "slug": "tallowpup",
+      "front": {
+        "path": "assets/sprites/creatures/010_tallowpup/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/010_tallowpup/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/010_tallowpup/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/010_tallowpup/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/010_tallowpup/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "13": {
+      "slug": "ashlette",
+      "front": {
+        "path": "assets/sprites/creatures/013_ashlette/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/013_ashlette/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/013_ashlette/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/013_ashlette/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/013_ashlette/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "16": {
+      "slug": "wickmoth",
+      "front": {
+        "path": "assets/sprites/creatures/016_wickmoth/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/016_wickmoth/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/016_wickmoth/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/016_wickmoth/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/016_wickmoth/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "18": {
+      "slug": "hearthkit",
+      "front": {
+        "path": "assets/sprites/creatures/018_hearthkit/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/018_hearthkit/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/018_hearthkit/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/018_hearthkit/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/018_hearthkit/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "20": {
+      "slug": "tidmote",
+      "front": {
+        "path": "assets/sprites/creatures/020_tidmote/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/020_tidmote/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/020_tidmote/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/020_tidmote/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/020_tidmote/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "23": {
+      "slug": "glintfin",
+      "front": {
+        "path": "assets/sprites/creatures/023_glintfin/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/023_glintfin/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/023_glintfin/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/023_glintfin/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/023_glintfin/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "26": {
+      "slug": "brinelet",
+      "front": {
+        "path": "assets/sprites/creatures/026_brinelet/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/026_brinelet/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/026_brinelet/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/026_brinelet/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/026_brinelet/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "31": {
+      "slug": "lumpin",
+      "front": {
+        "path": "assets/sprites/creatures/031_lumpin/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/031_lumpin/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/031_lumpin/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/031_lumpin/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/031_lumpin/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "152": {
+      "slug": "cloverkit",
+      "front": {
+        "path": "assets/sprites/creatures/152_cloverkit/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/152_cloverkit/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/152_cloverkit/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/152_cloverkit/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/152_cloverkit/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    }
+  }
+}

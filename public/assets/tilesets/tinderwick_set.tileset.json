@@ -1,0 +1,109 @@
+{
+  "name": "tinderwick_set",
+  "image": "assets/tilesets/tinderwick_set.webp",
+  "tile_width": 16,
+  "tile_height": 16,
+  "columns": 8,
+  "tile_count": 19,
+  "tiles": [
+    {
+      "index": 0,
+      "role": "ground",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "index": 1,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          1,
+          17,
+          18
+        ],
+        "duration_ms": 700
+      }
+    },
+    {
+      "index": 2,
+      "role": "path"
+    },
+    {
+      "index": 3,
+      "role": "floor"
+    },
+    {
+      "index": 4,
+      "role": "decor"
+    },
+    {
+      "index": 5,
+      "role": "sign",
+      "collides": true
+    },
+    {
+      "index": 6,
+      "role": "tree",
+      "collides": true
+    },
+    {
+      "index": 7,
+      "role": "ground",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "index": 8,
+      "role": "decor",
+      "collides": true
+    },
+    {
+      "index": 9,
+      "role": "door"
+    },
+    {
+      "index": 10,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 11,
+      "role": "roof",
+      "collides": true
+    },
+    {
+      "index": 12,
+      "role": "sand",
+      "encounter_terrain": "sand"
+    },
+    {
+      "index": 13,
+      "role": "water_edge",
+      "collides": true
+    },
+    {
+      "index": 14,
+      "role": "fence",
+      "collides": true
+    },
+    {
+      "index": 15,
+      "role": "cliff",
+      "collides": true
+    },
+    {
+      "index": 16,
+      "role": "cliff_edge",
+      "collides": true
+    },
+    {
+      "index": 17,
+      "role": "water"
+    },
+    {
+      "index": 18,
+      "role": "water"
+    }
+  ]
+}

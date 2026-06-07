@@ -1,0 +1,548 @@
+/**
+ * BattleScene — the turn-based battle screen (scene key 'Battle').
+ *
+ * ── How the orchestrator starts a battle ───────────────────────────────────
+ *   const onComplete = (result: BattleResult) => {
+ *     // apply result.party / result.inventory / result.set_flags to the save,
+ *     // add result.caught to the party, then:
+ *     this.scene.resume('World');
+ *   };
+ *   this.scene.pause('World');
+ *   this.scene.launch('Battle', { ...request, onComplete });
+ *
+ * `request` is a `BattleRequest` (wild or trainer). BattleScene runs the whole
+ * fight, then calls `onComplete(result)` and stops itself (Phaser scenes can't
+ * return a value, so the result is handed back through this callback). The world
+ * stays paused underneath and resumes when onComplete runs.
+ *
+ * The scene is otherwise self-contained: it owns the BattleEngine, the battlers,
+ * the HP plates, the action menus and the message strip, all built from the
+ * shared UI kit so the look matches the rest of the game.
+ */
+import Phaser from 'phaser';
+import { GAME_WIDTH, GAME_HEIGHT, COLORS } from '@game/config';
+import { theme } from '@game/ui/theme';
+import { Menu } from '@game/ui/Menu';
+import type { MenuOption } from '@game/ui/Menu';
+import { DialogueBox } from '@game/ui/DialogueBox';
+import { fadeIn } from '@game/ui/Transitions';
+import { Sfx } from '@game/systems/audio/Sfx';
+import { MusicDirector } from '@game/systems/audio/MusicDirector';
+import { Party } from '@game/systems/party/Party';
+import { KinInstance } from '@game/systems/party/KinInstance';
+import { BattleEngine } from '@game/systems/battle/BattleEngine';
+import type { BattleEvent } from '@game/systems/battle/types';
+import { effectivenessLabel } from '@game/systems/battle/types';
+import { Battler } from '@game/ui/battle/Battler';
+import { HpPanel } from '@game/ui/battle/HpPanel';
+import { BattleMessage } from '@game/ui/battle/BattleMessage';
+import { getTrainer, getTrainerLines } from '@game/content/trainers';
+import { getItem } from '@game/content/items';
+import type { KinInstanceData, InventoryData } from '@game/systems/save/types';
+import type { WorldFlag } from '@game/data/world/types';
+
+const MUSIC_DIR = 'assets/audio/music/';
+
+/** What the caller hands in to start a fight. */
+export type BattleRequest =
+  | { kind: 'wild'; species_id: number; level: number; party: KinInstanceData[]; inventory: InventoryData }
+  | { kind: 'trainer'; trainer: string; party: KinInstanceData[]; inventory: InventoryData };
+
+/** What the scene hands back via onComplete. */
+export interface BattleResult {
+  outcome: 'win' | 'lose' | 'caught' | 'fled';
+  /** Player party with mutated hp/exp/levels (and any newly caught kin appended). */
+  party: KinInstanceData[];
+  inventory: InventoryData;
+  /** The kin caught this battle (also already appended to `party`). */
+  caught?: KinInstanceData;
+  /** Flags to set on win (e.g. a trainer's reward_flags). */
+  set_flags?: string[];
+}
+
+/** Full scene data = the request plus the result callback. */
+export type BattleSceneData = BattleRequest & { onComplete: (result: BattleResult) => void };
+
+const FOE_POS = { x: GAME_WIDTH - 56, y: 50 };
+const PLAYER_POS = { x: 56, y: 104 };
+
+export class BattleScene extends Phaser.Scene {
+  private request!: BattleSceneData;
+  private engine!: BattleEngine;
+  private playerParty!: Party;
+  private inventory!: InventoryData;
+  private sfx!: Sfx;
+  private music!: MusicDirector;
+
+  private playerBattler!: Battler;
+  private foeBattler!: Battler;
+  private playerHp!: HpPanel;
+  private foeHp!: HpPanel;
+  private msg!: BattleMessage;
+
+  private setFlags: string[] = [];
+  private finished = false;
+
+  constructor() {
+    super('Battle');
+  }
+
+  create(data: BattleSceneData): void {
+    this.request = data;
+    this.finished = false;
+    this.setFlags = [];
+    this.cameras.main.setBackgroundColor(COLORS.night);
+    this.sfx = new Sfx(this);
+    this.music = new MusicDirector(this);
+
+    this.playerParty = Party.fromData(data.party);
+    this.inventory = { items: { ...data.inventory.items } };
+
+    const foeParty = this.buildFoeParty();
+    this.engine = new BattleEngine({
+      kind: data.kind,
+      playerParty: this.playerParty,
+      foeParty,
+    });
+
+    this.buildScene();
+    void this.run();
+  }
+
+  // --- Setup ---------------------------------------------------------------
+
+  private buildFoeParty(): Party {
+    if (this.request.kind === 'wild') {
+      return new Party([KinInstance.create(this.request.species_id, this.request.level)]);
+    }
+    const trainer = getTrainer(this.request.trainer);
+    if (!trainer || trainer.party.length === 0) {
+      // Fallback so a missing trainer id doesn't hard-crash the slice.
+      return new Party([KinInstance.create(1, 5)]);
+    }
+    return new Party(trainer.party.map((k) => KinInstance.create(k.species_id, k.level)));
+  }
+
+  private buildScene(): void {
+    this.foeBattler = new Battler(this, FOE_POS.x, FOE_POS.y, this.engine.foe.species, 'foe');
+    this.playerBattler = new Battler(this, PLAYER_POS.x, PLAYER_POS.y, this.engine.player.species, 'player');
+    this.foeHp = new HpPanel(this, 6, 8, this.engine.foe, false);
+    this.playerHp = new HpPanel(this, GAME_WIDTH - 84, GAME_HEIGHT - 78, this.engine.player, true);
+    this.msg = new BattleMessage(this);
+    this.cameras.main.fadeIn(theme.transition.fadeMs, 0, 0, 0);
+  }
+
+  private startMusic(): void {
+    const key = this.request.kind === 'trainer'
+      ? getTrainer(this.request.trainer)?.music ?? 'battle-main-dusk-duel'
+      : 'battle-main-dusk-duel';
+    void this.music.play(key, `${MUSIC_DIR}${key}.mp3`);
+  }
+
+  // --- Top-level flow ------------------------------------------------------
+
+  private async run(): Promise<void> {
+    await fadeIn(this);
+    void this.sfx.play('battle-encounter');
+    this.startMusic();
+
+    if (this.request.kind === 'trainer') {
+      const trainer = getTrainer(this.request.trainer);
+      const intro = getTrainerLines(trainer?.intro_ref);
+      if (intro.length > 0) {
+        this.msg.setVisible(false);
+        await new DialogueBox(this, this.sfx).run(intro);
+        this.msg.setVisible(true);
+      }
+      await this.msg.show(`${trainer?.name ?? 'Foe'} sent out ${this.engine.foe.displayName}!`);
+    } else {
+      await this.msg.show(`A wild ${this.engine.foe.displayName} appeared!`);
+    }
+    await this.msg.show(`Go, ${this.engine.player.displayName}!`, { wait: false });
+
+    await this.loop();
+  }
+
+  /** The main decision → resolution loop. */
+  private async loop(): Promise<void> {
+    while (!this.engine.ended) {
+      const events = await this.chooseAndResolve();
+      await this.playEvents(events);
+
+      // If our active kin fainted but we have more, prompt a replacement.
+      if (!this.engine.ended && this.engine.player.isFainted) {
+        await this.forceSwitch();
+      }
+    }
+    await this.finish();
+  }
+
+  /** Present the root menu and resolve the chosen action into engine events. */
+  private async chooseAndResolve(): Promise<BattleEvent[]> {
+    this.msg.set('What will you do?');
+    const root = await this.rootMenu();
+
+    switch (root) {
+      case 'fight': {
+        const events = await this.fightMenu();
+        return events ?? this.chooseAndResolve();
+      }
+      case 'catch':
+        return this.engine.catchWithBonus('vesperlamp', this.lampBonus('vesperlamp'));
+      case 'switch': {
+        const idx = await this.switchMenu(true);
+        if (idx === null) return this.chooseAndResolve();
+        return this.engine.takeTurn({ kind: 'switch', partyIndex: idx });
+      }
+      case 'bag': {
+        const ev = await this.bagMenu();
+        return ev ?? this.chooseAndResolve();
+      }
+      case 'run':
+        return this.engine.takeTurn({ kind: 'run' });
+      default:
+        return this.chooseAndResolve();
+    }
+  }
+
+  private lampBonus(itemId: string): number {
+    return getItem(itemId)?.catch_bonus ?? 1.0;
+  }
+
+  // --- Menus ---------------------------------------------------------------
+
+  private rootMenu(): Promise<string | null> {
+    const opts: MenuOption[] = [
+      { label: 'FIGHT', value: 'fight' },
+      { label: 'BAG', value: 'bag' },
+      { label: 'KIN', value: 'switch' },
+    ];
+    if (this.request.kind === 'wild') {
+      opts.splice(1, 0, { label: 'LAMP', value: 'catch' });
+      opts.push({ label: 'RUN', value: 'run' });
+    } else {
+      opts.push({ label: 'RUN', value: 'run' });
+    }
+    return new Menu(this, opts, { x: 6, y: GAME_HEIGHT - 52, sfx: this.sfx, cancellable: false }).run();
+  }
+
+  /** Returns engine events for the chosen move, or null if the player backed out. */
+  private async fightMenu(): Promise<BattleEvent[] | null> {
+    const moves = this.engine.player.moves;
+    const opts: MenuOption[] = moves.map((k, i) => ({
+      label: `${k.move.name}  ${k.charges}/${k.move.charges}`,
+      value: String(i),
+      enabled: k.charges > 0,
+    }));
+    if (opts.length === 0 || opts.every((o) => o.enabled === false)) {
+      await this.msg.show(`${this.engine.player.displayName} has no charges left!`);
+      return null;
+    }
+    const choice = await new Menu(this, opts, { x: 6, y: GAME_HEIGHT - 60, sfx: this.sfx }).run();
+    if (choice === null) return null;
+    return this.engine.takeTurn({ kind: 'move', moveIndex: Number(choice) });
+  }
+
+  /**
+   * Party menu. When `cancellable` is false (a forced switch after a faint) the
+   * player must pick a healthy kin. Returns the chosen index or null.
+   */
+  private async switchMenu(cancellable: boolean): Promise<number | null> {
+    const opts: MenuOption[] = this.playerParty.all.map((k, i) => ({
+      label: `${k.displayName} Lv${k.level} ${k.isFainted ? 'FNT' : `${k.hp}/${k.maxHp}`}`,
+      value: String(i),
+      enabled: !k.isFainted && i !== this.playerParty.activeSlot,
+    }));
+    const choice = await new Menu(this, opts, {
+      x: 6,
+      y: GAME_HEIGHT - 8 - opts.length * 12 - 12,
+      sfx: this.sfx,
+      cancellable,
+    }).run();
+    return choice === null ? null : Number(choice);
+  }
+
+  /** Bag (medicine + lamps). Returns engine events if an action was taken. */
+  private async bagMenu(): Promise<BattleEvent[] | null> {
+    const owned = Object.entries(this.inventory.items).filter(([, n]) => n > 0);
+    const opts: MenuOption[] = owned.map(([id, n]) => {
+      const def = getItem(id);
+      return { label: `${def?.name ?? id} x${n}`, value: id, enabled: this.itemUsable(id) };
+    });
+    if (opts.length === 0) {
+      await this.msg.show('Your bag is empty.');
+      return null;
+    }
+    const choice = await new Menu(this, opts, { x: 6, y: GAME_HEIGHT - 60, sfx: this.sfx }).run();
+    if (choice === null) return null;
+
+    const def = getItem(choice);
+    if (!def) return null;
+
+    if (def.category === 'lamp') {
+      if (this.request.kind !== 'wild') {
+        await this.msg.show("You can't catch another warden's kin!");
+        return null;
+      }
+      this.consumeItem(choice);
+      return this.engine.catchWithBonus(choice, def.catch_bonus ?? 1.0);
+    }
+
+    if (def.category === 'medicine' && def.heal) {
+      const target = this.engine.player;
+      if (target.hpRatio >= 1) {
+        await this.msg.show(`${target.displayName} is already at full health.`);
+        return null;
+      }
+      const healed = target.heal(def.heal);
+      this.consumeItem(choice);
+      await this.msg.show(`Used ${def.name}. ${target.displayName} recovered ${healed} HP.`);
+      await this.playerHp.animateTo();
+      // Using an item costs the turn; the foe attacks back.
+      return this.engine.takeTurn({ kind: 'item', itemId: choice });
+    }
+
+    await this.msg.show("That can't be used right now.");
+    return null;
+  }
+
+  private itemUsable(id: string): boolean {
+    const def = getItem(id);
+    if (!def) return false;
+    if (def.category === 'lamp') return this.request.kind === 'wild';
+    if (def.category === 'medicine') return true;
+    return false;
+  }
+
+  private consumeItem(id: string): void {
+    if (this.inventory.items[id] > 0) this.inventory.items[id]--;
+  }
+
+  /** After our active kin faints (battle not over), make the player send another. */
+  private async forceSwitch(): Promise<void> {
+    await this.msg.show(`${this.engine.player.displayName} fainted!`);
+    const idx = await this.switchMenu(false);
+    const events = this.engine.sendOut(idx ?? this.playerParty.firstHealthyIndex());
+    await this.playEvents(events);
+  }
+
+  // --- Event playback ------------------------------------------------------
+
+  private async playEvents(events: BattleEvent[]): Promise<void> {
+    for (const ev of events) {
+      await this.playEvent(ev);
+    }
+  }
+
+  private async playEvent(ev: BattleEvent): Promise<void> {
+    switch (ev.type) {
+      case 'message':
+        await this.msg.show(ev.text);
+        return;
+      case 'move-used': {
+        const who = ev.side === 'player' ? this.engine.player : this.engine.foe;
+        (ev.side === 'player' ? this.playerBattler : this.foeBattler).nudge(this, ev.side === 'player' ? 6 : -6);
+        await this.msg.show(`${who.displayName} used ${ev.move.name}!`, { wait: false });
+        return;
+      }
+      case 'miss':
+        void this.sfx.play('battle-miss');
+        await this.msg.show('But it missed!');
+        return;
+      case 'no-charges':
+        await this.msg.show('No charges left for that move!');
+        return;
+      case 'damage': {
+        await this.playDamage(ev);
+        return;
+      }
+      case 'stat-change': {
+        const who = ev.side === 'player' ? this.engine.player : this.engine.foe;
+        const up = ev.delta > 0;
+        await this.msg.show(`${who.displayName}'s ${ev.stat.toUpperCase()} ${up ? 'rose' : 'fell'}!`);
+        return;
+      }
+      case 'status': {
+        const who = ev.side === 'player' ? this.engine.player : this.engine.foe;
+        await this.msg.show(`${who.displayName} was afflicted with ${ev.status}!`);
+        return;
+      }
+      case 'faint':
+        await this.playFaint(ev.side);
+        return;
+      case 'switch':
+        await this.playSwitch(ev.side, ev.incoming);
+        return;
+      case 'catch-throw':
+        void this.sfx.playVariant('capture-throw', ['a', 'b']);
+        await this.msg.show(`You raised your lamp toward ${this.engine.foe.displayName}...`);
+        return;
+      case 'catch-wobble':
+        for (let i = 0; i < ev.count; i++) {
+          void this.sfx.play('capture-wobble');
+          await this.msg.show('...', { wait: true });
+        }
+        return;
+      case 'catch-success':
+        void this.sfx.playVariant('capture-success', ['a', 'b', 'c']);
+        await this.msg.show(`${this.engine.foe.displayName} walks with you now!`);
+        return;
+      case 'catch-break':
+        void this.sfx.play('capture-break');
+        await this.msg.show(`${this.engine.foe.displayName} slipped free!`);
+        return;
+      case 'run-success':
+        void this.sfx.play('battle-flee');
+        await this.msg.show('You slipped away into the dusk.');
+        return;
+      case 'run-fail':
+        await this.msg.show("Couldn't get away!");
+        return;
+      case 'item-used':
+        return;
+      default:
+        return;
+    }
+  }
+
+  private async playDamage(ev: Extract<BattleEvent, { type: 'damage' }>): Promise<void> {
+    const hitPlayer = ev.side === 'player';
+    const battler = hitPlayer ? this.playerBattler : this.foeBattler;
+    const panel = hitPlayer ? this.playerHp : this.foeHp;
+
+    battler.flashHit(this);
+    if (ev.crit) void this.sfx.play('battle-critical');
+    else void this.sfx.playVariant('battle-hit-physical', ['a', 'b', 'c']);
+
+    await panel.animateTo();
+
+    const label = effectivenessLabel(ev.effectiveness);
+    if (label === 'super') {
+      void this.sfx.play('battle-super-effective');
+      await this.msg.show("It's super effective!");
+    } else if (label === 'not') {
+      void this.sfx.play('battle-not-effective');
+      await this.msg.show("It's not very effective...");
+    } else if (label === 'none') {
+      await this.msg.show('It had no effect...');
+    } else if (ev.crit) {
+      await this.msg.show('A critical hit!');
+    }
+  }
+
+  private async playFaint(side: 'player' | 'foe'): Promise<void> {
+    void this.sfx.playVariant('battle-faint', ['a', 'b', 'c']);
+    const who = side === 'player' ? this.engine.player : this.engine.foe;
+    const battler = side === 'player' ? this.playerBattler : this.foeBattler;
+    await battler.fall(this);
+    await this.msg.show(`${who.displayName} fainted!`);
+  }
+
+  private async playSwitch(side: 'player' | 'foe', incoming: KinInstance): Promise<void> {
+    if (side === 'player') {
+      this.playerBattler.setSpecies(this, incoming.species, 'player');
+      this.playerBattler.container.setAlpha(1).setY(PLAYER_POS.y);
+      this.playerHp.setKin(incoming);
+      await this.msg.show(`Go, ${incoming.displayName}!`, { wait: false });
+    } else {
+      this.foeBattler.setSpecies(this, incoming.species, 'foe');
+      this.foeBattler.container.setAlpha(1).setY(FOE_POS.y);
+      this.foeHp.setKin(incoming);
+      const trainer = this.request.kind === 'trainer' ? getTrainer(this.request.trainer) : undefined;
+      await this.msg.show(`${trainer?.name ?? 'Foe'} sent out ${incoming.displayName}!`);
+    }
+  }
+
+  // --- Win / lose / exit ---------------------------------------------------
+
+  private async finish(): Promise<void> {
+    const outcome = this.engine.outcome ?? 'fled';
+
+    if (outcome === 'win') {
+      await this.awardExp();
+      if (this.request.kind === 'trainer') {
+        const trainer = getTrainer(this.request.trainer);
+        const lines = getTrainerLines(trainer?.defeat_ref);
+        if (lines.length > 0) {
+          this.msg.setVisible(false);
+          await new DialogueBox(this, this.sfx).run(lines);
+          this.msg.setVisible(true);
+        }
+        for (const f of trainer?.reward_flags ?? []) this.setFlags.push(f as WorldFlag);
+      }
+    } else if (outcome === 'lose') {
+      await this.msg.show('Your lamp guttered out... You hurry home to the hearth.');
+    }
+
+    this.complete(outcome);
+  }
+
+  /** Grant exp to the active (and a share to other participants is out of scope). */
+  private async awardExp(): Promise<void> {
+    // Simple yield: summed over the foe party, weighted by level & BST tier.
+    const winner = this.playerParty.firstHealthy() ?? this.engine.player;
+    let totalGain = 0;
+    for (const defeated of this.engine.foeParty.all) {
+      totalGain += this.expYield(defeated);
+    }
+    if (totalGain <= 0) return;
+
+    void this.sfx.play('battle-xp');
+    const before = winner.level;
+    const { learned } = winner.gainExp(totalGain);
+    await this.msg.show(`${winner.displayName} gained ${totalGain} EXP!`);
+    await this.playerHp.animateTo();
+
+    if (winner.level > before) {
+      void this.sfx.playVariant('progress-levelup', ['a', 'b']);
+      this.playerHp.refresh();
+      await this.msg.show(`${winner.displayName} grew to Lv${winner.level}!`);
+      for (const m of learned) {
+        await this.msg.show(`${winner.displayName} learned ${m.name}!`);
+      }
+    }
+  }
+
+  /** EXP a defeated kin yields: level-scaled, lightly weighted by its BST. */
+  private expYield(defeated: KinInstance): number {
+    return Math.max(1, Math.floor((defeated.species.bst * defeated.level) / 60));
+  }
+
+  private complete(outcome: BattleResult['outcome']): void {
+    if (this.finished) return;
+    this.finished = true;
+
+    let caught: KinInstanceData | undefined;
+    if (outcome === 'caught' && this.engine.caught) {
+      // Append the caught kin to the returned party if there's room; the caller
+      // fills caught_at (it knows the world position) before persisting.
+      this.playerParty.add(this.engine.caught);
+      caught = this.engine.caught.toData();
+    }
+
+    const result: BattleResult = {
+      outcome,
+      party: this.playerParty.toData(),
+      inventory: this.inventory,
+      caught,
+      set_flags: this.setFlags.length > 0 ? this.setFlags : undefined,
+    };
+
+    this.music.stop();
+    const done = this.request.onComplete;
+    this.cameras.main.fadeOut(theme.transition.fadeMs, 0, 0, 0);
+    this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
+      this.teardown();
+      done(result);
+      this.scene.stop();
+    });
+  }
+
+  private teardown(): void {
+    this.playerBattler?.destroy();
+    this.foeBattler?.destroy();
+    this.playerHp?.destroy();
+    this.foeHp?.destroy();
+    this.msg?.destroy();
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "tinderwick_house_set",
+  "image": "assets/tilesets/tinderwick_house_set.webp",
+  "tile_width": 16,
+  "tile_height": 16,
+  "columns": 8,
+  "tile_count": 6,
+  "tiles": [
+    {
+      "index": 0,
+      "role": "floor"
+    },
+    {
+      "index": 1,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 2,
+      "role": "floor"
+    },
+    {
+      "index": 3,
+      "role": "furniture",
+      "collides": true
+    },
+    {
+      "index": 4,
+      "role": "furniture",
+      "collides": true
+    },
+    {
+      "index": 5,
+      "role": "door"
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+/*
+ * Shell chrome — DOM/CSS that wraps the Phaser canvas WITHOUT changing the fixed
+ * 240x160 internal resolution. ShellManager toggles a class on <body> and (for
+ * the device shell) injects an original handheld-style frame around #game-root.
+ *
+ * Nothing here is a real-brand handheld: the casing, grille, d-pad and buttons
+ * are generic, original retro shapes. All sizing is relative / safe-area aware so
+ * it never fights Phaser Scale.FIT and lands correctly inside a mobile webview.
+ */
+
+/* ------------------------------------------------------------------ tokens -- */
+:root {
+  --shell-casing: #1a1430; /* COLORS.ink */
+  --shell-casing-edge: #0b1026; /* COLORS.night */
+  --shell-accent: #9fe7ff; /* COLORS.diamond */
+  --shell-button: #13205a; /* COLORS.deepBlue */
+  --shell-button-press: #4fb4ff; /* COLORS.water */
+  --shell-grille: rgba(159, 231, 255, 0.18);
+}
+
+/* Touch controls must never select/scroll the page or show callouts. */
+.pk-control,
+.pk-shell-frame {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none;
+}
+
+/* ====================================================================== plain
+   Default look: just the scaled canvas. global.css already centres #game-root,
+   so 'plain' is the absence of any shell class — no rules needed. */
+
+/* ===================================================================== device
+   A decorative handheld casing. #game-root becomes the cut-out "screen"; the
+   casing sits behind it via a fixed full-bleed frame, with original controls. */
+body.pk-shell-device #game-root {
+  /* Inset the screen so the casing reads as a border around the canvas. */
+  padding: 0;
+  border: 2px solid var(--shell-accent);
+  border-radius: 6px;
+  background: #000;
+  box-shadow:
+    0 0 0 10px var(--shell-casing),
+    0 0 0 12px var(--shell-casing-edge),
+    0 8px 24px rgba(0, 0, 0, 0.5);
+  /* Leave room around the canvas for the casing + controls + safe areas.
+     Order: top right bottom left (extra room at the bottom for the controls). */
+  inset: max(env(safe-area-inset-top), 16px) clamp(16px, 6vw, 96px)
+    clamp(72px, 22vh, 180px) clamp(16px, 6vw, 96px);
+}
+
+/* Full-bleed casing backdrop behind everything. */
+.pk-shell-frame {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(120% 80% at 50% 0%, #221a40 0%, var(--shell-casing) 60%, var(--shell-casing-edge) 100%);
+  pointer-events: none;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+/* Speaker grille — a row of dots near the bottom-right of the casing. */
+.pk-grille {
+  position: absolute;
+  right: clamp(16px, 6vw, 80px);
+  bottom: clamp(16px, 4vh, 36px);
+  display: grid;
+  grid-template-columns: repeat(4, 6px);
+  grid-auto-rows: 6px;
+  gap: 5px;
+}
+.pk-grille i {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--shell-grille);
+}
+
+/* The control cluster sits in the casing below the screen (device shell). */
+body.pk-shell-device .pk-controls {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: max(env(safe-area-inset-bottom), 12px);
+  height: clamp(64px, 18vh, 160px);
+  z-index: 2;
+  pointer-events: none; /* only the buttons capture, not the gaps */
+}
+
+/* ==================================================================== overlay
+   Canvas fills the viewport; translucent controls float over it. */
+body.pk-shell-overlay #game-root {
+  inset: 0;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+body.pk-shell-overlay .pk-controls {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: max(env(safe-area-inset-bottom), 12px);
+  height: clamp(72px, 22vh, 200px);
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* Hidden state (toggle). */
+.pk-controls.pk-hidden {
+  display: none;
+}
+
+/* --------------------------------------------------------- control elements -- */
+/* D-pad bottom-left, A/B bottom-right, Start centred. */
+.pk-dpad {
+  position: absolute;
+  left: max(env(safe-area-inset-left), 16px);
+  bottom: 8px;
+  width: 108px;
+  height: 108px;
+}
+.pk-dpad .pk-control {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  background: var(--shell-button);
+  border: 1px solid var(--shell-accent);
+  pointer-events: auto;
+  cursor: pointer;
+}
+.pk-dpad .pk-up {
+  left: 36px;
+  top: 0;
+  border-radius: 6px 6px 0 0;
+}
+.pk-dpad .pk-down {
+  left: 36px;
+  bottom: 0;
+  border-radius: 0 0 6px 6px;
+}
+.pk-dpad .pk-left {
+  left: 0;
+  top: 36px;
+  border-radius: 6px 0 0 6px;
+}
+.pk-dpad .pk-right {
+  right: 0;
+  top: 36px;
+  border-radius: 0 6px 6px 0;
+}
+.pk-dpad .pk-center {
+  left: 36px;
+  top: 36px;
+  background: var(--shell-button);
+  border: 1px solid var(--shell-accent);
+  border-radius: 0;
+  pointer-events: none;
+}
+
+.pk-face {
+  position: absolute;
+  right: max(env(safe-area-inset-right), 16px);
+  bottom: 12px;
+  width: 116px;
+  height: 92px;
+}
+.pk-face .pk-control {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--shell-button);
+  border: 1px solid var(--shell-accent);
+  color: var(--shell-accent);
+  font-family: 'PixelKin', monospace;
+  font-size: 14px;
+  line-height: 44px;
+  text-align: center;
+  pointer-events: auto;
+  cursor: pointer;
+}
+.pk-face .pk-a {
+  right: 0;
+  top: 8px;
+}
+.pk-face .pk-b {
+  left: 0;
+  bottom: 8px;
+}
+
+.pk-start {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 8px;
+  min-width: 56px;
+  height: 18px;
+  border-radius: 9px;
+  background: var(--shell-button);
+  border: 1px solid var(--shell-accent);
+  color: var(--shell-accent);
+  font-family: 'PixelKin', monospace;
+  font-size: 8px;
+  line-height: 18px;
+  text-align: center;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Pressed feedback for any control. */
+.pk-control.pk-active,
+.pk-start.pk-active {
+  background: var(--shell-button-press);
+  color: #000;
+}

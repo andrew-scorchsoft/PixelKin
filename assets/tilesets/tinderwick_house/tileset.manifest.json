@@ -1,0 +1,13 @@
+{
+  "name": "tinderwick_house_set",
+  "columns": 8,
+  "_notes": "Tinderwick house interior tile set (cosy cottage). Small set for the tinderwick_house map. Floor/rug are passable; walls collide; table and bed collide. Door is the exit warp tile (passable so the warp triggers).",
+  "tiles": [
+    { "file": "floor.png", "role": "floor" },
+    { "file": "wall.png", "role": "wall", "collides": true },
+    { "file": "rug.png", "role": "floor" },
+    { "file": "table.png", "role": "furniture", "collides": true },
+    { "file": "bed.png", "role": "furniture", "collides": true },
+    { "file": "door.png", "role": "door" }
+  ]
+}
