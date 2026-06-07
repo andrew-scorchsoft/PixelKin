@@ -304,3 +304,18 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   shells feed the same actions. Promise-based modals (Menu/DialogueBox/StarterSelect)
   spin up a transient `InputController` — they `destroy()` it on close; do the same if
   you add one.
+- **Actors prefer real walk-sheets, fall back to placeholder.** Human walk-sheets are
+  3×4 / 32×32 (`HUMAN_WALK_FRAMES` in `entities/Actor.ts`), packed from `assets/trainers/`
+  by `pack_trainers.py` → `public/assets/sprites/trainers/` + manifest, loaded eagerly in
+  `PreloadScene`. `Player`/`Npc` use the real sheet if its texture loaded, else the runtime
+  coloured-box placeholder. Map a new NPC `sprite` key → a packed stem in `Npc.SPRITE_SHEETS`.
+  (Creature *battle/overworld* sprites are a separate path — `CreatureSprites.ts` — still
+  unwired into title/starter/battle, so those previews are still placeholder squares.)
+- **Field tiles need a seamless pass.** Image gen bakes a 1–2px lighter rim onto tiles that
+  tiles into a visible grid; after generating a uniform ground/floor/path tile, run
+  `make_tileable.py <tile.png>` (clamps the outer ring to its neighbour) and eyeball a 3×3
+  montage. Don't run it on edge/structural tiles (water_edge, cliff_edge) — it eats their
+  designed borders.
+- **The device shell screen is locked to 3:2.** `shells.css` sizes `#game-root` to the
+  largest 3:2 box that fits, so `Scale.FIT` never pillarboxes (no black side bars). The
+  `plain`/`overlay` shells are intentionally full-bleed and still letterbox.

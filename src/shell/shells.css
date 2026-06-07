@@ -36,8 +36,17 @@
    A decorative handheld casing. #game-root becomes the cut-out "screen"; the
    casing sits behind it via a fixed full-bleed frame, with original controls. */
 body.pk-shell-device #game-root {
+  /* The room left for the screen once casing margins + the control deck at the
+     bottom + safe areas are reserved. */
+  --pk-side: clamp(16px, 6vw, 96px);
+  --pk-top: max(env(safe-area-inset-top), 16px);
+  --pk-bottom: clamp(72px, 22vh, 180px);
+  --pk-avail-w: calc(100vw - 2 * var(--pk-side));
+  --pk-avail-h: calc(100dvh - var(--pk-top) - var(--pk-bottom));
+
   /* Inset the screen so the casing reads as a border around the canvas. */
   padding: 0;
+  box-sizing: border-box;
   border: 2px solid var(--shell-accent);
   border-radius: 6px;
   background: #000;
@@ -45,10 +54,18 @@ body.pk-shell-device #game-root {
     0 0 0 10px var(--shell-casing),
     0 0 0 12px var(--shell-casing-edge),
     0 8px 24px rgba(0, 0, 0, 0.5);
-  /* Leave room around the canvas for the casing + controls + safe areas.
-     Order: top right bottom left (extra room at the bottom for the controls). */
-  inset: max(env(safe-area-inset-top), 16px) clamp(16px, 6vw, 96px)
-    clamp(72px, 22vh, 180px) clamp(16px, 6vw, 96px);
+
+  /* Lock the screen cut-out to the canvas's 3:2 — the largest 3:2 box that fits
+     the available room — so the casing hugs the canvas and Scale.FIT never has
+     to pillarbox (no black bars beside the game). Centred horizontally, pinned
+     to the top of the available band with the control deck below. */
+  inset: auto;
+  left: 50%;
+  top: var(--pk-top);
+  transform: translateX(-50%);
+  width: min(var(--pk-avail-w), var(--pk-avail-h) * 3 / 2);
+  height: auto;
+  aspect-ratio: 3 / 2;
 }
 
 /* Full-bleed casing backdrop behind everything. */

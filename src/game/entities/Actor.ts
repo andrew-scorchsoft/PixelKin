@@ -4,16 +4,48 @@
  * Movement is tile-based: an actor occupies a tile, faces a direction, and steps
  * to an adjacent tile with a short tween (no free movement — classic handheld feel).
  * Sprites are anchored bottom-centre on their tile so taller walk-sheets sit right.
- * Until real walk-sheets exist, a placeholder 4-facing character texture is drawn at
- * runtime so movement and NPC facing are fully testable.
+ * An actor draws from real 3×4 walk-sheets (`HUMAN_WALK_FRAMES`, with a step cycle)
+ * where the art is packed; callers fall back to a runtime placeholder texture
+ * (`PLACEHOLDER_FRAMES`) so movement and facing stay testable when art is missing.
  */
 import Phaser from 'phaser';
 import { TILE_SIZE } from '@game/config';
 import { hex } from '@game/ui/theme';
 import type { Facing } from '@game/data/world/types';
 
-/** Facing → frame index in the (placeholder and real) walk sheet: down/left/right/up. */
-export const FACING_FRAME: Record<Facing, number> = { down: 0, left: 1, right: 2, up: 3 };
+/**
+ * How an actor's texture maps facing → frame(s). The placeholder is a single-row
+ * 4-frame sheet (one idle pose per direction); a real human walk-sheet is the
+ * 3×4 / 32×32 standard (docs/art-style.md §A) with a step cycle per direction.
+ */
+export interface ActorFrames {
+  /** Standing/idle frame index per facing. */
+  idle: Record<Facing, number>;
+  /** Optional step-cycle frames per facing, played while moving. */
+  walk?: Record<Facing, number[]>;
+}
+
+/** Placeholder sheet: 4 frames, one idle pose per facing (no walk cycle). */
+export const PLACEHOLDER_FRAMES: ActorFrames = {
+  idle: { down: 0, left: 1, right: 2, up: 3 },
+};
+
+/**
+ * The 3×4 human walk-sheet layout: rows = down/left/right/up, columns =
+ * idle/step-1/step-2. The walk cycle alternates a step with the idle pose so the
+ * feet read as moving (`step1, idle, step2, idle`).
+ */
+export const HUMAN_WALK_FRAMES: ActorFrames = (() => {
+  const row: Record<Facing, number> = { down: 0, left: 1, right: 2, up: 3 };
+  const idle = {} as Record<Facing, number>;
+  const walk = {} as Record<Facing, number[]>;
+  (['down', 'left', 'right', 'up'] as Facing[]).forEach((f) => {
+    const base = row[f] * 3; // col0 idle, col1 step-1, col2 step-2
+    idle[f] = base;
+    walk[f] = [base + 1, base, base + 2, base];
+  });
+  return { idle, walk };
+})();
 
 const FACING_DELTA: Record<Facing, { dx: number; dy: number }> = {
   down: { dx: 0, dy: 1 },
@@ -37,13 +69,34 @@ export class Actor {
     tx: number,
     ty: number,
     facing: Facing,
-    textureKey: string,
+    private readonly textureKey: string,
+    private readonly frames: ActorFrames = PLACEHOLDER_FRAMES,
   ) {
     this.tx = tx;
     this.ty = ty;
     this.facing = facing;
+    if (frames.walk) Actor.ensureWalkAnims(scene, textureKey, frames.walk);
     const { x, y } = Actor.tileToWorld(tx, ty);
-    this.sprite = scene.add.sprite(x, y, textureKey, FACING_FRAME[facing]).setOrigin(0.5, 1);
+    this.sprite = scene.add.sprite(x, y, textureKey, frames.idle[facing]).setOrigin(0.5, 1);
+  }
+
+  /** Register one looping walk animation per facing for a texture (idempotent). */
+  private static ensureWalkAnims(
+    scene: Phaser.Scene,
+    textureKey: string,
+    walk: Record<Facing, number[]>,
+  ): void {
+    (['down', 'left', 'right', 'up'] as Facing[]).forEach((f) => {
+      const key = `${textureKey}__walk_${f}`;
+      if (scene.anims.exists(key)) return;
+      scene.anims.create({
+        key,
+        frames: walk[f].map((frame) => ({ key: textureKey, frame })),
+        // One full cycle spans a single tile step.
+        frameRate: (walk[f].length * 1000) / STEP_MS,
+        repeat: -1,
+      });
+    });
   }
 
   /** Bottom-centre world position of a tile (origin 0.5,1 sits the feet on the tile). */
@@ -57,7 +110,8 @@ export class Actor {
 
   setFacing(facing: Facing): void {
     this.facing = facing;
-    this.sprite.setFrame(FACING_FRAME[facing]);
+    // While moving the walk animation owns the frame; only the idle pose here.
+    if (!this.moving) this.sprite.setFrame(this.frames.idle[facing]);
   }
 
   /** The tile directly in front of the actor. */
@@ -86,6 +140,7 @@ export class Actor {
     this.moving = true;
     this.tx = nx;
     this.ty = ny;
+    if (this.frames.walk) this.sprite.play(`${this.textureKey}__walk_${facing}`, true);
     const { x, y } = Actor.tileToWorld(nx, ny);
     this.scene.tweens.add({
       targets: this.sprite,
@@ -95,6 +150,10 @@ export class Actor {
       ease: 'Linear',
       onComplete: () => {
         this.moving = false;
+        if (this.frames.walk) {
+          this.sprite.stop();
+          this.sprite.setFrame(this.frames.idle[this.facing]);
+        }
         onArrive?.(nx, ny);
       },
     });

@@ -1,5 +1,12 @@
 import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT, COLORS } from '@game/config';
+import trainerManifest from '../../../public/assets/sprites/trainers/trainers.manifest.json';
+
+interface TrainerManifest {
+  frame_width: number;
+  frame_height: number;
+  trainers: Record<string, { path: string; width: number; height: number }>;
+}
 
 /**
  * Loads the game's assets behind a progress bar. Right now there is almost
@@ -29,6 +36,17 @@ export class PreloadScene extends Phaser.Scene {
     this.load.audio('battle-veil', 'assets/audio/music/battle-veil.mp3');
     // Boss / hard-opponent theme — grander, with a key-lifting climax.
     this.load.audio('battle-boss-eclipse', 'assets/audio/music/battle-boss-eclipse.mp3');
+
+    // Human walk-sheets (player + named NPCs), packed by pack_trainers.py. Keyed
+    // by master stem; Player/Npc load them by that key and fall back to a runtime
+    // placeholder if one is missing. Adding a trainer = re-pack, no code change.
+    const trainers = trainerManifest as TrainerManifest;
+    for (const [key, t] of Object.entries(trainers.trainers)) {
+      this.load.spritesheet(key, t.path, {
+        frameWidth: trainers.frame_width,
+        frameHeight: trainers.frame_height,
+      });
+    }
   }
 
   create(): void {

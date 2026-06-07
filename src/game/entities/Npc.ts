@@ -5,11 +5,16 @@
  * flags (handled by WorldScene when it instantiates them).
  */
 import Phaser from 'phaser';
-import { Actor, ensurePlaceholderCharacter } from './Actor';
+import { Actor, type ActorFrames, ensurePlaceholderCharacter, HUMAN_WALK_FRAMES } from './Actor';
 import type { NpcPlacement, Facing } from '@game/data/world/types';
 import { COLORS } from '@game/config';
 
 const FACINGS: Facing[] = ['down', 'left', 'right', 'up'];
+
+/** Map NPC sprite keys → a served walk-sheet texture where real art exists. */
+const SPRITE_SHEETS: Record<string, string> = {
+  npc_mentor: 'professor_fenn',
+};
 
 /** Placeholder body colours so distinct NPCs read apart before real walk-sheets. */
 const SPRITE_COLORS: Record<string, string> = {
@@ -25,10 +30,23 @@ export class Npc extends Actor {
     scene: Phaser.Scene,
     readonly placement: NpcPlacement,
   ) {
+    super(scene, placement.at.tx, placement.at.ty, placement.facing, ...Npc.resolveSheet(scene, placement));
+  }
+
+  /**
+   * Pick this NPC's texture: the real walk-sheet if it loaded, else a runtime
+   * placeholder swatch. Returned as super() args so it can run before `super`.
+   */
+  private static resolveSheet(
+    scene: Phaser.Scene,
+    placement: NpcPlacement,
+  ): [string, ActorFrames?] {
+    const sheet = SPRITE_SHEETS[placement.sprite];
+    if (sheet && scene.textures.exists(sheet)) return [sheet, HUMAN_WALK_FRAMES];
     const color = SPRITE_COLORS[placement.sprite] ?? COLORS.fire;
     const key = `npc_placeholder_${placement.sprite}`;
     ensurePlaceholderCharacter(scene, key, color);
-    super(scene, placement.at.tx, placement.at.ty, placement.facing, key);
+    return [key];
   }
 
   get id(): string {

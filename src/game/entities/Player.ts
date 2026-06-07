@@ -4,10 +4,13 @@
  * WorldScene can run encounter / trigger / warp checks for the tile just entered.
  */
 import Phaser from 'phaser';
-import { Actor, ensurePlaceholderCharacter } from './Actor';
+import { Actor, ensurePlaceholderCharacter, HUMAN_WALK_FRAMES } from './Actor';
 import { InputController, InputAction } from '@game/systems/input/InputController';
 import type { Facing } from '@game/data/world/types';
 import { COLORS } from '@game/config';
+
+/** Served walk-sheet texture for the player (packed from assets/trainers/). */
+const PLAYER_SHEET = 'player_indi';
 
 const ACTION_TO_FACING: Partial<Record<InputAction, Facing>> = {
   [InputAction.Up]: 'up',
@@ -18,8 +21,14 @@ const ACTION_TO_FACING: Partial<Record<InputAction, Facing>> = {
 
 export class Player extends Actor {
   constructor(scene: Phaser.Scene, tx: number, ty: number, facing: Facing) {
-    ensurePlaceholderCharacter(scene, 'player_placeholder', COLORS.diamond);
-    super(scene, tx, ty, facing, 'player_placeholder');
+    // Prefer the real walk-sheet; fall back to the runtime placeholder if the
+    // art failed to load, so the world stays playable either way.
+    if (scene.textures.exists(PLAYER_SHEET)) {
+      super(scene, tx, ty, facing, PLAYER_SHEET, HUMAN_WALK_FRAMES);
+    } else {
+      ensurePlaceholderCharacter(scene, 'player_placeholder', COLORS.diamond);
+      super(scene, tx, ty, facing, 'player_placeholder');
+    }
   }
 
   /**
