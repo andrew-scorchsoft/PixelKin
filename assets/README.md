@@ -30,6 +30,10 @@ packed** copies from `public/assets/` at runtime. Think of it as
 - **`tilesets/world-palette.json`** — the shared world palette; derive per-area
   palettes from it so areas stay cohesive.
 - **`pixelkin-logo.png`** — the logo master (the served copy is `public/assets/ui/logo.png`).
+- **`concept-art/`** — inspiration **mood pieces** (one wide pixel-art key-art per
+  area/route) — not shipped, not tilesets; a cohesive visual reference for each
+  place, usable as an `--input-image` when generating that area's tiles. See
+  [`concept-art/README.md`](concept-art/README.md).
 
 ## Rule of thumb
 
