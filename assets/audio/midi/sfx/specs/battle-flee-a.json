@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- battle flee (anchor)",
+  "_note": "Successfully fled. Down-and-away whoosh: noise down-glide plus a pulse falling slide.",
+  "era": "sfx",
+  "tempo": 220,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "whoosh", "voice": "noise",   "octave": 5, "gain": 0.8, "notes": "C5~C3e@90" },
+    { "name": "slide",  "voice": "pulse25", "octave": 5, "gain": 0.7, "notes": "C5~C4e@80" }
+  ]
+}

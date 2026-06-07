@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- battle hit physical (variant C)",
+  "_note": "Two-stage hit: short noise crack then a deep thunk, like a punch landing twice.",
+  "era": "sfx",
+  "tempo": 280,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "crack",  "voice": "noise",    "octave": 6, "gain": 0.9, "notes": "C6s@110 C3s@100" },
+    { "name": "thud",   "voice": "tri_bass", "octave": 2, "gain": 1.0, "notes": "rs C2s@120" }
+  ]
+}

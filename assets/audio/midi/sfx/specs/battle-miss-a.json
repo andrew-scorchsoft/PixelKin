@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- battle miss (anchor)",
+  "_note": "Attack misses. Quick whoosh past, no impact. Noise up-glide, no punch.",
+  "era": "sfx",
+  "tempo": 220,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "whoosh", "voice": "noise", "octave": 3, "gain": 0.8, "notes": "A3~A5e@90" }
+  ]
+}

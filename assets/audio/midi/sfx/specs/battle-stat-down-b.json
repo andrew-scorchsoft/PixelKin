@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- battle stat down (variant B)",
+  "_note": "Falling glide on pulse25 for a deflating power-drain feel.",
+  "era": "sfx",
+  "tempo": 220,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "drain", "voice": "pulse25", "octave": 6, "gain": 1.0, "notes": "C6~C5e@100" },
+    { "name": "moan",  "voice": "pulse12", "octave": 5, "gain": 0.4, "notes": "re C5s@70" }
+  ]
+}

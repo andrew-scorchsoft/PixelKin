@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- battle faint (variant B)",
+  "_note": "Faint with a stepwise descending run on pulse25 then a final noise thump on a second track offset by three sixteenth rests.",
+  "era": "sfx",
+  "tempo": 200,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "tumble", "voice": "pulse25", "octave": 5, "gain": 1.0, "notes": "C5s@110 A4s@100 F4s@90 C4e@80" },
+    { "name": "thud",   "voice": "noise",   "octave": 2, "gain": 0.7, "notes": "rs rs rs C2s@90" }
+  ]
+}

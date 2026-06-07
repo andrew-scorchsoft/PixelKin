@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- battle HP low beep (anchor)",
+  "_note": "Low-HP warning. ONE sharp high beep; the game loops this. Must be a single tick.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "beep", "voice": "pulse25", "octave": 6, "gain": 1.0, "notes": "A6s@110" }
+  ]
+}

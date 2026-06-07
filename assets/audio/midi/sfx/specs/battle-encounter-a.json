@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- battle encounter (anchor)",
+  "_note": "Wild battle starts. Rising noise whoosh into a pulse tension sting. Noise up-glide + pulse stab.",
+  "era": "sfx",
+  "tempo": 200,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "swoosh", "voice": "noise",   "octave": 3, "gain": 0.7, "notes": "C3~C5e@90" },
+    { "name": "sting",  "voice": "pulse25", "octave": 3, "gain": 1.0, "notes": "re G3s C4s@120" }
+  ]
+}

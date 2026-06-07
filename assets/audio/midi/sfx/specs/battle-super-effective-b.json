@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- battle super effective (variant B)",
+  "_note": "Sharp high noise burst plus ascending two-note pulse sting for a crisp crack-pow feel.",
+  "era": "sfx",
+  "tempo": 280,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "hit",   "voice": "noise",   "octave": 6, "gain": 1.0, "notes": "C6~C4s@127" },
+    { "name": "sting", "voice": "pulse25", "octave": 5, "gain": 1.0, "notes": "E5s@110 C6s@127" }
+  ]
+}

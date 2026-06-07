@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- battle critical hit (variant B)",
+  "_note": "Critical with a brighter double-stab ring: two quick high pulse notes then noise impact.",
+  "era": "sfx",
+  "tempo": 280,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "ring",   "voice": "pulse12", "octave": 7, "gain": 0.9, "notes": "C7s@120 G7s@127" },
+    { "name": "impact", "voice": "noise",   "octave": 6, "gain": 1.0, "notes": "rs C6~C3s@120" }
+  ]
+}
