@@ -3329,14 +3329,20 @@
       "encounter_rate": 0.07,
       "table": [
         {
-          "kin_id": 16,
-          "weight": 60,
+          "kin_id": 8,
+          "weight": 55,
           "min_level": 2,
           "max_level": 4
         },
         {
           "kin_id": 10,
-          "weight": 40,
+          "weight": 30,
+          "min_level": 2,
+          "max_level": 3
+        },
+        {
+          "kin_id": 16,
+          "weight": 15,
           "min_level": 2,
           "max_level": 3
         }

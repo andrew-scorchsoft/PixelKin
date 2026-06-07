@@ -120,7 +120,8 @@ direct `generate-midi` brief: *preset · mood · instrumentation · tempo & key 
 - **Music:** *preset `overworld` · airy, exploratory, the signature travel theme · wandering
   pulse-lead over lapping wave percussion + soft pad · ~120 BPM, bright major · loop.*
 - **Kin:** *Brinelet* (round tide-pool kin, Tide); *Lumpin* (limpet with a glowing shell,
-  Tide/Light).
+  Tide/Light); *Glimflit* (firefly-sprite, Light — drifts down the shore from Tinderwick,
+  giving an Ember-starter a fair fight on a coast that otherwise favours Tide).
 - **Terrain:** `tall_grass` (verges), `water` (shallows — needs **Tidecall** to enter).
 
 ### 3 · Pearlmoor Quay — *moonlit fishing port (Lumenary 2: Tide)*
