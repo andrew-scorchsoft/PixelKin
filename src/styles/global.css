@@ -1,3 +1,15 @@
+/* The one in-game UI font: Press Start 2P (SIL OFL 1.1). Bundled under
+   public/assets/fonts/ with its licence. Referenced everywhere via the
+   'PixelKin' family name through ui/theme.ts, never hard-coded elsewhere. */
+@font-face {
+  font-family: 'PixelKin';
+  /* Bundled from src so Vite fingerprints it and the URL resolves under both the
+     dev server and the './'-based static build (Capacitor webview). Licence:
+     public/assets/fonts/OFL.txt. */
+  src: url('./fonts/PressStart2P-Regular.ttf') format('truetype');
+  font-display: block;
+}
+
 /* Full-bleed canvas with safe-area insets so the game sits correctly inside a
    mobile webview (notches / rounded corners) once wrapped with Capacitor. */
 :root {

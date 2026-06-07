@@ -3,6 +3,7 @@ import { GAME_WIDTH, GAME_HEIGHT, COLORS } from '@game/config';
 import { BootScene } from '@game/scenes/BootScene';
 import { PreloadScene } from '@game/scenes/PreloadScene';
 import { TitleScene } from '@game/scenes/TitleScene';
+import { WorldScene } from '@game/scenes/WorldScene';
 
 /**
  * Game entry point. Boots Phaser at a fixed handheld-era internal resolution
@@ -32,7 +33,7 @@ const config: Phaser.Types.Core.GameConfig = {
     keyboard: true,
     touch: true,
   },
-  scene: [BootScene, PreloadScene, TitleScene],
+  scene: [BootScene, PreloadScene, TitleScene, WorldScene],
 };
 
 new Phaser.Game(config);

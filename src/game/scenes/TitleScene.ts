@@ -1,5 +1,7 @@
 import Phaser from 'phaser';
-import { GAME_WIDTH, GAME_HEIGHT, COLORS } from '@game/config';
+import { GAME_WIDTH, GAME_HEIGHT } from '@game/config';
+import { makeText } from '@game/ui/Text';
+import { theme } from '@game/ui/theme';
 
 /**
  * The title screen — the first real taste of the game's feel. Logo, a gentle
@@ -32,13 +34,7 @@ export class TitleScene extends Phaser.Scene {
       ease: 'Sine.inOut',
     });
 
-    const prompt = this.add
-      .text(cx, cy + 48, 'PRESS ENTER / TAP', {
-        fontFamily: 'monospace',
-        fontSize: '10px',
-        color: COLORS.bone,
-      })
-      .setOrigin(0.5);
+    const prompt = makeText(this, cx, cy + 48, 'PRESS ENTER / TAP', theme.text.base).setOrigin(0.5);
 
     this.tweens.add({
       targets: prompt,
@@ -56,10 +52,9 @@ export class TitleScene extends Phaser.Scene {
   }
 
   private startGame(): void {
-    // TODO: swap for the WorldScene once it exists.
-    this.cameras.main.fadeOut(300, 0, 0, 0);
+    this.cameras.main.fadeOut(theme.transition.fadeMs, 0, 0, 0);
     this.cameras.main.once('camerafadeoutcomplete', () => {
-      this.scene.restart();
+      this.scene.start('World', { mapId: 'tinderwick' });
     });
   }
 }
