@@ -1,51 +1,51 @@
 {
   "title": "PixelKin - Title Theme (Lanterns to the Sky)",
-  "_note": "The title-screen statement under the logo + New Game/Continue/Settings - the single most-heard melody in the game, so the hook is front-loaded and unmistakable. This is a deliberate GRAND, ASPIRATIONAL reorchestration of the Vesper motif (G3->C4->D4 lift, overshooting; settle), the same leitmotif the player meets again as Tinderwick's lullaby - but where the town theme is wistful gbc lullaby, the TITLE soars: snes era (8 voices, warm reverb), full major key, an aspirational I-iii-IV-V bed, a soaring pulse25 lead doubled by a warm string pad and bell sparkle, a moving sampled bass and a gentle-but-present drum groove. ~100 BPM, 4/4, 16-bar loop (~38s). Structure: A proud Vesper statement that climbs instead of settling; A' the same lifted an octave (the 'reach for the sky' peak); B an aspirational IV->V build; A'' resolves home and the final bar voice-leads on the G dominant back into the C downbeat (seamless loop). Renders on the chip engine like the rest of the score for cohesion.",
+  "_note": "The title-screen statement under the logo - the single most-heard melody in the game, so the hook is front-loaded and unmistakable. ASPIRATIONAL FANFARE reading of the Vesper motif (the G->C->D lift): punchy REPEATED staccato notes with little gaps - 'beat-beat-beat' - that leap from a low register up to a soaring high one and GAIN ALTITUDE each phrase (the leap-up target climbs G4 -> C5 -> E5 -> G5), the classic triumphant cartridge-title shape - reaching for the sky - written entirely as our own contour (never copying any real game's theme; see VISION.md). snes era (8 voices, warm reverb), bright C major, driving 120 BPM. A sustained string pad soars underneath the punchy lead, a driving eighth-note bass and a present backbeat give it propulsion, and a music-box bell sparkles in the gaps. 16-bar loop (~32s). Structure: A punchy rising call, A' the same up an octave (the peak), B a IV->V build, A'' resolves home; the final bar lands on the G dominant to voice-lead back into the C downbeat (seamless loop). Renders on the chip engine like the rest of the score for cohesion.",
   "era": "snes",
-  "tempo": 100,
+  "tempo": 120,
   "time_signature": [4, 4],
   "ppq": 480,
   "loop": true,
-  "key": "C major (aspirational, I-iii-IV-V)",
+  "key": "C major (aspirational fanfare)",
   "tracks": [
     {
       "name": "lead",
       "voice": "pulse25",
       "octave": 4,
       "gain": 1.0,
-      "_note": "The Vesper motif made proud and rising. A: lift G3->C4->D4 then climb to G4 instead of settling low. A': the whole shape an octave up (the 'sky' peak). B: an aspirational reach over IV->V. A'': home statement, final reach up, then voice-lead down to G3 (dominant) into bar 1.",
-      "notes": "G3q. C4e D4h | E4q D4q E4q G4q | C4q. E4e G4h | G4q E4q D4h | G4q. C5e D5h | E5q D5q E5q G5q | C5q. E5e G5h | G5q E5q D5h | F4q G4q A4q C5q | A4q G4q F4h | D4q E4q F4q G4q | G4q B4q D5h | G3q. C4e D4h | E4q D4q C4h | E4q G4q C5q E5q | D5q. B4e G3h"
+      "_note": "Punchy fanfare. Each phrase = repeated staccato notes (eighths) with a gap (rest), then a LEAP up to a higher repeated group or a held peak - and the leap target climbs each phrase so the tune gains altitude (G4->C5->E5->G5). A: the rising call. A': octave-up restatement, peaking on G5. B: a reaching IV->V build. A'': home, a triumphant descending arpeggio, then voice-lead down to the G dominant into bar 1.",
+      "notes": "G4e G4e G4e re C5e C5e C5e re | C5e C5e C5e re D5h | G4e G4e G4e re E5e E5e E5e re | D5q C5q G4h | G4e G4e G4e re C5e C5e C5e re | E5e E5e E5e re G5h | G5e G5e G5e re E5e E5e E5e re | D5q C5q G4h | F4e F4e F4e re A4e A4e A4e re | A4e A4e A4e re C5h | G4e G4e G4e re B4e B4e D5e re | G4q B4q D5q G5q | G4e G4e G4e re C5e C5e C5e re | E5e E5e E5e re G5h | G5e E5e C5e re G4e E4e C4e re | D4q B3q G3h"
     },
     {
       "name": "pad",
       "voice": "strings",
       "octave": 3,
-      "gain": 0.55,
-      "_note": "Warm sustained string bed - real triads (snes can stack) voiced in the mid register below the lead so the harmony glows without mudding the tune. The aspirational I-iii-IV-V progression: C - Em - F - G, twice; then a IV->V build (F F G G); then home C C C - G to lead the seam.",
-      "notes": "C3+E3+G3w | E3+G3+B3w | F3+A3+C4w | G3+B3+D4w | C3+E3+G3w | E3+G3+B3w | F3+A3+C4w | G3+B3+D4w | F3+A3+C4w | F3+A3+C4w | G3+B3+D4w | G3+B3+D4w | C3+E3+G3w | C3+E3+G3w | C3+E3+G3w | G3+B3+D4w"
+      "gain": 0.5,
+      "_note": "Warm sustained string bed that SOARS under the punchy lead - real triads (snes can stack) in the mid register so the harmony glows without mudding the tune. A stable, triumphant tonic-prolongation fanfare bed (C held, dropping to the G dominant to close each phrase), with a IV->V (F->G) lift in the B-section.",
+      "notes": "C3+E3+G3w | C3+E3+G3w | C3+E3+G3w | G3+B3+D4w | C3+E3+G3w | C3+E3+G3w | C3+E3+G3w | G3+B3+D4w | F3+A3+C4w | F3+A3+C4w | G3+B3+D4w | G3+B3+D4w | C3+E3+G3w | C3+E3+G3w | C3+E3+G3w | G3+B3+D4w"
     },
     {
       "name": "sparkle",
       "voice": "bell",
       "octave": 5,
-      "gain": 0.45,
-      "_note": "Music-box / starlight sparkle - sparse, used as colour, not a second tune. A few high twinkles over the 'sky' octave-up section (A'), then a rising sparkle on the final reach so the resolve glints. Silent elsewhere (silence is an instrument).",
-      "notes": "rw | rw | rw | rw | G5q rq C6q rq | rw | A5q rq C6q rq | rw | rw | rw | rw | rw | rw | rw | C6q E6q G6q E6q | D6h rh"
+      "gain": 0.4,
+      "_note": "Music-box / starlight sparkle - sparse, dropped into the gaps over each held peak so it glints without crowding the punch. Silent elsewhere (silence is an instrument).",
+      "notes": "rw | G5q rq C6q rq | rw | rw | rw | G5q rq C6q rq | rw | rw | rw | A5q rq C6q rq | rw | rw | rw | C6q rq E6q rq | rw | rw"
     },
     {
       "name": "bass",
       "voice": "bass",
       "octave": 2,
-      "gain": 0.9,
-      "_note": "Punchy sampled-style root-fifth bass with octave motion - gives the title forward lift instead of a static pad. Roots track the C-Em-F-G progression; final bar lands on G (dominant) to pull the loop back to the C downbeat.",
-      "notes": "C2q G2q C3q G2q | E2q B2q E3q B2q | F2q C3q F3q C3q | G2q D3q G3q D3q | C2q G2q C3q G2q | E2q B2q E3q B2q | F2q C3q F3q C3q | G2q D3q G3q D3q | F2q C3q F3q C3q | F2q A2q C3q A2q | G2q D3q G3q D3q | G2q B2q D3q B2q | C2q G2q C3q G2q | C2q E2q G2q E2q | C2q G2q C3q E3q | G2q D3q G2q D2q"
+      "gain": 0.95,
+      "_note": "Driving eighth-note root-fifth bass - the propulsion that makes the fanfare feel fast and forward. Roots track the C / G / F progression; final bar pedals G (dominant) to pull the loop back to the C downbeat.",
+      "notes": "C2e G2e C2e G2e C2e G2e C2e G2e | C2e G2e C2e G2e C2e G2e C2e G2e | C2e G2e C2e G2e C2e G2e C2e G2e | G2e D3e G2e D3e G2e D3e G2e D3e | C2e G2e C2e G2e C2e G2e C2e G2e | C2e G2e C2e G2e C2e G2e C2e G2e | C2e G2e C2e G2e C2e G2e C2e G2e | G2e D3e G2e D3e G2e D3e G2e D3e | F2e C3e F2e C3e F2e C3e F2e C3e | F2e C3e F2e C3e F2e C3e F2e C3e | G2e D3e G2e D3e G2e D3e G2e D3e | G2e D3e G2e D3e G2e D3e G2e D3e | C2e G2e C2e G2e C2e G2e C2e G2e | C2e G2e C2e G2e C2e G2e C2e G2e | C2e G2e C2e G2e C2e G2e C2e G2e | G2e D3e G2e D3e G2e D3e G2e G2e"
     },
     {
       "name": "drums",
       "voice": "drums",
-      "gain": 0.5,
-      "_note": "A gentle but present backbeat (this title aspires, it doesn't tiptoe): soft kick on 1 & 3, snare on 2 & 4, hats on the eighths. A crash opens each big section (the sky A', the B build, the home A''), and a small fill closes the loop seam so the repeat breathes. Each bar = 8 eighths.",
-      "notes": "e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+crash hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+crash hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+crash hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick+hat hat snare+hat hat | kick+hat hat snare+hat hat kick snare snare crash"
+      "gain": 0.55,
+      "_note": "A driving backbeat to match the punch: kick on 1 & 3 with a push on the 'and of 3', snare on 2 & 4, hats on the eighths. A crash opens each big section (A', the B build, the home A''), and a small fill closes the loop seam. Each bar = 8 eighths.",
+      "notes": "e kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+crash hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+crash hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+crash hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick snare snare crash"
     }
   ]
 }
