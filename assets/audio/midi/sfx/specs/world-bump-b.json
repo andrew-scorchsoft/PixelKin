@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- world bump (wall thunk heavy)",
+  "_note": "A heavier wall bump with a downward noise glide for extra impact weight, plus a low tri_bass. Render with --tail 0.05.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "thunk", "voice": "tri_bass", "octave": 2, "gain": 0.9,  "notes": "D2s@110" },
+    { "name": "whump", "voice": "noise",    "octave": 3, "gain": 0.75, "notes": "C3~A2s@100" }
+  ]
+}

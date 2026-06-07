@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- battle hit physical (anchor)",
+  "_note": "Melee contact hit. Noise burst downward glide for impact weight, plus a tri_bass thunk.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "impact", "voice": "noise",    "octave": 5, "gain": 1.0, "notes": "C5~C2s@120" },
+    { "name": "thunk",  "voice": "tri_bass", "octave": 2, "gain": 0.9, "notes": "C2s@110" }
+  ]
+}

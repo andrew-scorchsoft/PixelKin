@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- battle hit special (variant C)",
+  "_note": "Two-note tonal strike: a high stab then a rapid downward sweep for a laser-zap feel.",
+  "era": "sfx",
+  "tempo": 280,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "strike", "voice": "pulse25", "octave": 6, "gain": 1.0, "notes": "C7s@120 C7~C4e@100" }
+  ]
+}

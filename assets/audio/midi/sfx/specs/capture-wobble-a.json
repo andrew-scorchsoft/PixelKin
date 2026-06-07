@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- capture wobble a (mechanical tick)",
+  "_note": "One small mechanical tick: a mid pulse click + faint noise tap. Played 1-3x by the game engine. Tiny and dry.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "tick",  "voice": "pulse50", "octave": 4, "gain": 0.9, "notes": "G4s@100" },
+    { "name": "rattle","voice": "noise",   "octave": 3, "gain": 0.5, "notes": "G3s@70" }
+  ]
+}

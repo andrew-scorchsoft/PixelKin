@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- Frost attack hit B (aurora swoosh swell)",
+  "_note": "Frost variant B: a slow noise upward aurora swoosh + a high bell glint at the peak. More atmospheric than A -- the ice hits with an icy wind swelling upward. Render --tail 0.2.",
+  "era": "sfx",
+  "tempo": 200,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "aurora", "voice": "noise",  "octave": 3, "gain": 0.65, "notes": "C3~C6e@80" },
+    { "name": "glint",  "voice": "bell",   "octave": 7, "gain": 0.85, "notes": "re C7s@110" }
+  ]
+}

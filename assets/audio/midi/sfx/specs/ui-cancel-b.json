@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- ui-cancel-b",
+  "_note": "B-button / back: short falling glide on pulse12 -- a slight descending zap-feel cancellation.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "glide", "voice": "pulse12", "octave": 5, "notes": "G5~C5e@100" }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "title": "SFX -- world Gleam earned (constellation relit, anchor)",
+  "_note": "The grandest SFX: a constellation is relit. Wide bright rising arpeggio hinting the Vesper motif (G->C->D->G->C), noise aurora whoosh underneath, long bell shimmer. Allowed ~1s. Render with --tail 0.7.",
+  "era": "sfx",
+  "tempo": 260,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "rise",    "voice": "pulse25", "octave": 4, "gain": 1.0,  "notes": "G4s C5s D5s G5s C6e@120" },
+    { "name": "shimmer", "voice": "bell",    "octave": 6, "gain": 0.8,  "notes": "rs C6+E6q"               },
+    { "name": "aurora",  "voice": "noise",   "octave": 3, "gain": 0.4,  "notes": "C3~C6q@70"               }
+  ]
+}

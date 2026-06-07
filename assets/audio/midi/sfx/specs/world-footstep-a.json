@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- world footstep (grass tap)",
+  "_note": "A single soft grass-ish step: low noise tick at D3, bright enough to feel earthy/soft. Render with --tail 0.03.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "step", "voice": "noise", "octave": 3, "gain": 0.75, "notes": "D3s@90" }
+  ]
+}

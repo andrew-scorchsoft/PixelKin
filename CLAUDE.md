@@ -183,10 +183,14 @@ Five skills live in `.claude/skills/`. Use them instead of hand-rolling:
 - **generate-music** — original background music/jingles via the ElevenLabs
   Music API (text-prompt → produced audio). Instrumental, loop-minded,
   preset-driven. Writes mp3 into `public/assets/audio/music/`.
-- **generate-midi** — original, era-authentic **chiptune/MIDI** music that
-  Claude *composes* as note data. Builds real `.mid` (honouring each platform's
-  voice budget and looping conventions) and renders it with a built-in chip
-  synth to `.mp3`. Offline, no API key. Use for true retro/MIDI; use
+- **generate-midi** — original, era-authentic **chiptune/MIDI** music *and*
+  retro **sound effects** that Claude *composes* as note data. Builds real `.mid`
+  (honouring each platform's voice budget and looping conventions; for SFX, pitch
+  "sweeps" + a real noise channel) and renders it with a built-in chip synth to
+  `.mp3`. Offline, no API key. Use for true retro/MIDI music, and for the game's
+  one-shot SFX (UI blips, coin/door/stairs, attack hits, the Lamp catch,
+  Gleam/kindle sparkles — see the skill's `references/sfx-cookbook.md`). SFX
+  masters: `assets/audio/midi/sfx/` → rendered to `public/assets/audio/sfx/`. Use
   generate-music when you want a text-prompt render instead.
 - **copy-editing** — for any prose deliverable (docs, dialogue review,
   marketing copy).

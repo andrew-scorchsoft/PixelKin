@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- Ember attack hit A (warm crackle)",
+  "_note": "Ember's hit: warm crackle noise burst down-glide + a pulse25 flicker pair. Matches Ember's hearth-fire character: warm 25% pulse, soft and flickery. Render --tail 0.05.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "crackle", "voice": "noise",   "octave": 5, "gain": 0.9, "notes": "C6~C4e@110" },
+    { "name": "flicker", "voice": "pulse25",  "octave": 5, "gain": 0.8, "notes": "C5s G5s@90" }
+  ]
+}

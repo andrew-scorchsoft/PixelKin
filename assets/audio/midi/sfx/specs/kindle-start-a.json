@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- kindle start a (mysterious rising shimmer trigger sting)",
+  "_note": "A Kindling begins: wave voice sweeps upward (C4~C5, hollow and mysterious) while pulse12 adds three quick ascending sparkle notes above -- the trigger sting before the full evolution music takes over.",
+  "era": "sfx",
+  "tempo": 180,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "sweep",   "voice": "wave",   "octave": 4, "gain": 0.8, "notes": "C4~C5e@90" },
+    { "name": "sparkle", "voice": "pulse12","octave": 6, "gain": 0.65,"notes": "rs C6s E6s G6s@80" }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- ui-text-blip-b",
+  "_note": "Per-character dialogue print tick: slightly lower tri_bass tick. Different tonal character for NPC voices.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "blip", "voice": "tri_bass", "octave": 5, "notes": "E5s@65" }
+  ]
+}

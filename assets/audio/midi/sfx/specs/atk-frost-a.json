@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- Frost attack hit A (glassy bell crack + shard)",
+  "_note": "Frost's hit: a high bell ping (glassy) then a thin pulse12 downward shard -- ice cracking into a descending fragment. Frost's aurora/glassy character. Render --tail 0.2 to let the bell glint ring.",
+  "era": "sfx",
+  "tempo": 220,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "crack",  "voice": "bell",    "octave": 7, "gain": 0.9, "notes": "C7s@120" },
+    { "name": "shard",  "voice": "pulse12",  "octave": 6, "gain": 0.75, "notes": "rs C7~G6e@90" }
+  ]
+}

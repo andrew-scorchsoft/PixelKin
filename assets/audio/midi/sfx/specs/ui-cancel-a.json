@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- ui-cancel-a",
+  "_note": "B-button / back: two-note falling blip on pulse25. Cookbook anchor: G5s C5s.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "blip", "voice": "pulse25", "octave": 5, "notes": "G5s@105 C5s@90" }
+  ]
+}

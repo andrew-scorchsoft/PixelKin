@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- battle critical hit (anchor)",
+  "_note": "Critical hit: sharp high-velocity accent on top of the impact. Pulse25 high stab + noise down-glide.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "accent", "voice": "pulse25", "octave": 7, "gain": 1.0, "notes": "C7s@127" },
+    { "name": "impact", "voice": "noise",   "octave": 6, "gain": 1.0, "notes": "C6~C3s@120" }
+  ]
+}

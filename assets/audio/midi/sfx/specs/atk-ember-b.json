@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- Ember attack hit B (hearth pulse swell)",
+  "_note": "Ember variant B: a warm pulse25 up-glide bloom (the hearth-fire flares) over a tri_bass low thud. More tonal than A -- the fire swells rather than crackles. Render --tail 0.07.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "flame",  "voice": "pulse25",  "octave": 4, "gain": 0.9, "notes": "C4~G5e@115" },
+    { "name": "thud",   "voice": "tri_bass", "octave": 2, "gain": 0.7, "notes": "C2s@100" }
+  ]
+}

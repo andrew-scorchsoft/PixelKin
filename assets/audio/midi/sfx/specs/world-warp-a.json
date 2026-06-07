@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- world warp (vesperlamp fast-travel, shimmer rise)",
+  "_note": "Vesperlamp fast-travel: a shimmering rising glide on pulse12 from C5 to C6, with a bell ring-out. Magical, instant-teleport feel. Render with --tail 0.4.",
+  "era": "sfx",
+  "tempo": 200,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "shimmer", "voice": "pulse12", "octave": 5, "gain": 0.95, "notes": "C5~C6e@110" },
+    { "name": "bell",    "voice": "bell",    "octave": 6, "gain": 0.75, "notes": "rs C6e@90"  }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- battle hit special (anchor)",
+  "_note": "Energy/elemental hit, type-neutral. Tonal zap: pulse25 downward glide.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "zap", "voice": "pulse25", "octave": 6, "gain": 1.0, "notes": "C6~C3s@120" }
+  ]
+}

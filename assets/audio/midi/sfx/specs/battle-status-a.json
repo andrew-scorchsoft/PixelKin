@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- battle status inflicted (anchor)",
+  "_note": "Status inflicted (Scorch/Drench/Numb/Chill etc). Unsettled wavering sting: pulse12 down-glide + noise hiss.",
+  "era": "sfx",
+  "tempo": 200,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "waver", "voice": "pulse12", "octave": 4, "gain": 1.0, "notes": "E4~C4e@100" },
+    { "name": "hiss",  "voice": "noise",   "octave": 4, "gain": 0.6, "notes": "C4~C3e@80" }
+  ]
+}

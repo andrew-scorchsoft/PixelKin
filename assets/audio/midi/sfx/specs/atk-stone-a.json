@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- Stone attack hit A (heavy deep thunk)",
+  "_note": "Stone's hit: deep tri_bass thunk + low noise burst. Stone's character is heavy, deep-earth, sparse and warm-tense. Very short impact with real weight. Render --tail 0.05.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "thunk", "voice": "tri_bass", "octave": 2, "gain": 1.0, "notes": "C2s@120" },
+    { "name": "rumble", "voice": "noise",   "octave": 2, "gain": 0.8, "notes": "C3~C2s@100" }
+  ]
+}

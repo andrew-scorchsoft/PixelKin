@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- world lantern light (Lantern Gift flare)",
+  "_note": "Using a Lantern Gift / lighting a lamp: a warm flare. Soft wave up-glide (C4 to G4) blooms into a bell glint on C6. Warm and magical. Render with --tail 0.4.",
+  "era": "sfx",
+  "tempo": 200,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "flare", "voice": "wave", "octave": 4, "gain": 0.85, "notes": "C4~G4e@95" },
+    { "name": "glint", "voice": "bell", "octave": 6, "gain": 0.8,  "notes": "rs C6e@100" }
+  ]
+}

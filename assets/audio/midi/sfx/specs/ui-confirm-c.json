@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- ui-confirm-c",
+  "_note": "A-button / accept: two-voice confirm -- pulse25 rising blip with a soft pulse12 octave sparkle above.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "blip",    "voice": "pulse25", "octave": 6, "notes": "C6s@100 G6s@110" },
+    { "name": "sparkle", "voice": "pulse12", "octave": 7, "gain": 0.5, "notes": "rs G7s@70" }
+  ]
+}

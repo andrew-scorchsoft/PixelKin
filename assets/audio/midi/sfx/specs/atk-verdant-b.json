@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- Verdant attack hit B (dewy moss rustle)",
+  "_note": "Verdant variant B: a soft noise rustle (leaves/moss) followed by a bright Lydian bell glint. More organic -- the nature hit rustles before the glowmoss gleams. Render --tail 0.15.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C Lydian",
+  "tracks": [
+    { "name": "rustle", "voice": "noise",  "octave": 5, "gain": 0.6, "notes": "C5~C4s@80" },
+    { "name": "glint",  "voice": "bell",   "octave": 6, "gain": 0.9, "notes": "rs E6s@110 G6e@90" }
+  ]
+}

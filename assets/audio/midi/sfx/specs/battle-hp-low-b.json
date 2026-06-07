@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- battle HP low beep (variant B)",
+  "_note": "Slightly shriller beep using pulse12 for a more urgent tone. Single tick.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "beep", "voice": "pulse12", "octave": 6, "gain": 1.0, "notes": "B6s@115" }
+  ]
+}

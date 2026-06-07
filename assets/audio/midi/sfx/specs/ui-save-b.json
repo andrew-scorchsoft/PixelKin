@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- ui-save-b",
+  "_note": "Saving to the journal: a gentle 4-note rising resolve on pulse12 with a warmer, longer bell ring-out. More melodic than -a.",
+  "era": "sfx",
+  "tempo": 160,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "resolve", "voice": "pulse12", "octave": 5, "notes": "E5s@90 G5s@100 C6s@110 E6e@115" },
+    { "name": "shine",   "voice": "bell",    "octave": 6, "gain": 0.8, "notes": "re C6e@75" }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- battle status inflicted (variant B)",
+  "_note": "More ominous status sting: tri_bass thud plus a wiry pulse12 descending note for a creeping feel.",
+  "era": "sfx",
+  "tempo": 200,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "creep", "voice": "pulse12",  "octave": 4, "gain": 0.9, "notes": "G4~D4e@90" },
+    { "name": "low",   "voice": "tri_bass", "octave": 2, "gain": 0.7, "notes": "C2e@80" }
+  ]
+}

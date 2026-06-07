@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- ui-menu-open-b",
+  "_note": "Open pause/menu: upward glide on pulse12 -- a smooth sweep into the menu, softer and more fluid than -a.",
+  "era": "sfx",
+  "tempo": 220,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "sweep", "voice": "pulse12", "octave": 5, "notes": "C5~G5e@100" }
+  ]
+}

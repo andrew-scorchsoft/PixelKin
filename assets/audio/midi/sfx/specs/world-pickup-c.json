@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- world pickup (bright upward zing)",
+  "_note": "A third pickup variant: a quick up-glide on pulse12 from D5 to G6 (a tonal zing) for a brighter, lighter feel. No chord, pure sweep. Render with --tail 0.05.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "zing", "voice": "pulse12", "octave": 5, "gain": 0.95, "notes": "D5~G6e@115" }
+  ]
+}

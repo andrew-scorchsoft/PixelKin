@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- Storm attack hit A (fast staccato zap + gust)",
+  "_note": "Storm's hit: fast pulse25 down-zap + noise gust. Storm's character is staccato, fast, lightning. The zap is instant and sharp. Render --tail 0.05.",
+  "era": "sfx",
+  "tempo": 280,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "zap",  "voice": "pulse25", "octave": 6, "gain": 1.0, "notes": "C7~C4s@127" },
+    { "name": "gust", "voice": "noise",   "octave": 5, "gain": 0.7, "notes": "C6~C4s@90" }
+  ]
+}

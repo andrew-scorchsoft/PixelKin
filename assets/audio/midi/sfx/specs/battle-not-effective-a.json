@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- battle not effective (anchor)",
+  "_note": "Resisted hit. Dull muffled low thunk, no sparkle. Flat pulse50 + soft low noise.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "dull",  "voice": "pulse50", "octave": 3, "gain": 0.8, "notes": "C3s@90" },
+    { "name": "thud",  "voice": "noise",   "octave": 2, "gain": 0.6, "notes": "C2s@70" }
+  ]
+}

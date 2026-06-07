@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- ui-cancel-c",
+  "_note": "B-button / back: three-note descending arpeggio -- more emphatic than -a, like a mini fanfare in reverse.",
+  "era": "sfx",
+  "tempo": 220,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "blip", "voice": "pulse25", "octave": 5, "notes": "A5s@105 E5s@95 C5e@85" }
+  ]
+}

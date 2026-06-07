@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- battle hit physical (variant B)",
+  "_note": "Heavier crunch: starts with a noise hit at mid-high pitch then sweeps low; no tri_bass but bigger noise glide.",
+  "era": "sfx",
+  "tempo": 200,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "crunch", "voice": "noise",    "octave": 5, "gain": 1.0, "notes": "C5~C2e@127" },
+    { "name": "crack",  "voice": "pulse50",  "octave": 3, "gain": 0.6, "notes": "C3s@100" }
+  ]
+}

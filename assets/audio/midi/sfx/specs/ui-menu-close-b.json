@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- ui-menu-close-b",
+  "_note": "Close menu: downward glide on pulse12 -- a smooth descending sweep, softer counterpart to open-b.",
+  "era": "sfx",
+  "tempo": 220,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "sweep", "voice": "pulse12", "octave": 5, "notes": "G5~C5e@100" }
+  ]
+}

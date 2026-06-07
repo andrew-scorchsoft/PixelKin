@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- battle faint (anchor)",
+  "_note": "Kin faints. Deflating descending glide on pulse25, like a power winding down.",
+  "era": "sfx",
+  "tempo": 180,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "deflate", "voice": "pulse25", "octave": 5, "gain": 1.0, "notes": "C5~C3q@110" }
+  ]
+}

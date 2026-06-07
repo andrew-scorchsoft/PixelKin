@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- battle miss (variant B)",
+  "_note": "Dodge whoosh with a slight airy character: mid-pitch noise up-sweep with softer velocity.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "dodge",  "voice": "noise",   "octave": 3, "gain": 0.6, "notes": "C3~C5e@80" },
+    { "name": "swish",  "voice": "pulse25", "octave": 5, "gain": 0.3, "notes": "re G5s@60" }
+  ]
+}

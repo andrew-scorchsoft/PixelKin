@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- Light attack hit B (starlight twin-glint burst)",
+  "_note": "Light variant B: a pulse12 high twin-ping (two short notes, a third apart) over a soft noise flash -- like a burst of starlight scattering. Brighter and more percussive than A's arpeggio sweep. Render --tail 0.2 for bell shimmer.",
+  "era": "sfx",
+  "tempo": 320,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "twin",  "voice": "pulse12", "octave": 6, "gain": 0.9, "notes": "E6s@120 G6s@110 C7s@100" },
+    { "name": "flash", "voice": "noise",   "octave": 6, "gain": 0.45, "notes": "C7~C5s@65" }
+  ]
+}

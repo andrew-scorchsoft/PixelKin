@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- battle XP tick (anchor)",
+  "_note": "XP bar filling. ONE tiny tick the game repeats. Keep it minimal.",
+  "era": "sfx",
+  "tempo": 280,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "tick", "voice": "pulse12", "octave": 6, "gain": 0.8, "notes": "E6s@80" }
+  ]
+}

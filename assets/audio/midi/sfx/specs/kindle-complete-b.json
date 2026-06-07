@@ -1,0 +1,14 @@
+{
+  "title": "SFX -- kindle complete b (three-voice bright bloom)",
+  "_note": "Richer variant: pulse25 arpeggio (G4-C5-G5-C6) paired with a noise aurora whoosh (the light surging) and a long bell ring-out. More 'eruption of light' than -a.",
+  "era": "sfx",
+  "tempo": 160,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "flare",  "voice": "pulse25", "octave": 4, "gain": 1.0, "notes": "G4s C5s G5s C6e@120" },
+    { "name": "aurora", "voice": "noise",   "octave": 3, "gain": 0.45,"notes": "C3~C6e@65" },
+    { "name": "bell",   "voice": "bell",    "octave": 6, "gain": 0.85,"notes": "re E6q@90" }
+  ]
+}

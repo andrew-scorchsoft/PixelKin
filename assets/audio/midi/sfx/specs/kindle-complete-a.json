@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- kindle complete a (bloom flare resolving bright)",
+  "_note": "The Kindling lands: wide rising arpeggio C5-G5-C6-E6 on pulse25, then a held bell chord rings out long. A kin blazed into its brighter form -- proud and luminous.",
+  "era": "sfx",
+  "tempo": 180,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "flare", "voice": "pulse25", "octave": 5, "gain": 1.0, "notes": "C5s G5s C6s E6e@125" },
+    { "name": "bell",  "voice": "bell",    "octave": 6, "gain": 0.8, "notes": "re C6q@95" }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- battle XP tick (variant B)",
+  "_note": "Slightly brighter XP tick using pulse25 at a higher pitch. Single tick.",
+  "era": "sfx",
+  "tempo": 280,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "tick", "voice": "pulse25", "octave": 6, "gain": 0.7, "notes": "G6s@75" }
+  ]
+}

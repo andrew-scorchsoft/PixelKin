@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- Solar attack hit A (radiant warm up-glint + bell)",
+  "_note": "Solar's hit: a warm pulse25 up-glide that flares toward the sky + a bell glint at the peak. Solar is stored daylight, radiant-but-remembered, warm major. The upward glide is the light flaring bright. Render --tail 0.12.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "flare", "voice": "pulse25", "octave": 5, "gain": 0.9, "notes": "G5~C6e@115" },
+    { "name": "glint", "voice": "bell",    "octave": 6, "gain": 0.75, "notes": "re C6s@100" }
+  ]
+}

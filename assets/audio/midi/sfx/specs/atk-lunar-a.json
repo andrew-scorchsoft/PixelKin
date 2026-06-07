@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- Lunar attack hit A (cool wave glide + clockwork tick)",
+  "_note": "Lunar's hit: a slow hollow wave down-glide (dreamlight falling) + a faint pulse12 clockwork tick. Lunar is slow arpeggiated dreamlight, a lonely lead, faint clockwork. Cool and detached. Render --tail 0.10.",
+  "era": "sfx",
+  "tempo": 200,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "dreamfall", "voice": "wave",    "octave": 5, "gain": 0.85, "notes": "C5~G4e@105" },
+    { "name": "tick",      "voice": "pulse12",  "octave": 6, "gain": 0.5,  "notes": "rs C6s@60" }
+  ]
+}

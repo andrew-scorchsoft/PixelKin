@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- world door open (creak + click)",
+  "_note": "Entering a building: soft noise up-glide (creak) into a small click. A2 to D3 noise glide then a pulse click. Render with --tail 0.08.",
+  "era": "sfx",
+  "tempo": 200,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "creak", "voice": "noise",   "octave": 2, "gain": 0.7,  "notes": "A2~D3e@80"  },
+    { "name": "click", "voice": "pulse25", "octave": 4, "gain": 0.85, "notes": "rs G4s@100" }
+  ]
+}

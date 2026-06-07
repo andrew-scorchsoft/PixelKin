@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- battle encounter (variant B)",
+  "_note": "Sharper alarm-style double stab then rising noise burst.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "alarm",  "voice": "pulse25", "octave": 4, "gain": 1.0, "notes": "G4s@110 C5s@127" },
+    { "name": "rush",   "voice": "noise",   "octave": 3, "gain": 0.6, "notes": "rs C3~C6e@80" }
+  ]
+}

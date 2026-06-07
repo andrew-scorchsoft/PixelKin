@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- capture success a (click-lock then warm rising chime)",
+  "_note": "The game's most-wanted reward. A dry pulse click (the lock seating), then a warm 3-note rising arpeggio that blooms into a bell shimmer. Satisfying and complete.",
+  "era": "sfx",
+  "tempo": 200,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "lock",  "voice": "pulse25", "octave": 4, "gain": 1.0, "notes": "C4s@110 G4s C5s E5e@120" },
+    { "name": "shine", "voice": "bell",    "octave": 5, "gain": 0.7, "notes": "re E5q@90" }
+  ]
+}

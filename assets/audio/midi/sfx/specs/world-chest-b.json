@@ -1,0 +1,14 @@
+{
+  "title": "SFX -- world chest open (click-lock then rise)",
+  "_note": "A second chest variant: a decisive click on pulse50 (the lock), then a bright three-note pulse25 rise with a bell shimmer. Feels like a lid snapping open and revealing light. Render with --tail 0.35.",
+  "era": "sfx",
+  "tempo": 280,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "lock",    "voice": "pulse50", "octave": 4, "gain": 0.85, "notes": "G4s@110"             },
+    { "name": "rise",    "voice": "pulse25", "octave": 5, "gain": 0.95, "notes": "rs E5s G5s C6e@120"  },
+    { "name": "shimmer", "voice": "bell",    "octave": 6, "gain": 0.6,  "notes": "rs C6e@80"           }
+  ]
+}

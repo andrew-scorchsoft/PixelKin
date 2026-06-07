@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- world bump (wall thunk)",
+  "_note": "Walking into a wall: a dull low double-thunk. tri_bass plus a low noise burst for impact. Short and blocky. Render with --tail 0.05.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "thunk", "voice": "tri_bass", "octave": 2, "gain": 0.9,  "notes": "C2s@110" },
+    { "name": "noise", "voice": "noise",    "octave": 2, "gain": 0.7,  "notes": "C2s@90"  }
+  ]
+}

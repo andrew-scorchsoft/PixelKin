@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- battle hit special (variant B)",
+  "_note": "Pulse12 high zap with a soft noise sizzle underneath for energy texture.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "zap",    "voice": "pulse12", "octave": 6, "gain": 1.0, "notes": "C6~C4s@120" },
+    { "name": "sizzle", "voice": "noise",   "octave": 5, "gain": 0.4, "notes": "C5~C3s@70" }
+  ]
+}

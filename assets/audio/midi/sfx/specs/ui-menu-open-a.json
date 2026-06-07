@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- ui-menu-open-a",
+  "_note": "Open pause/menu: quick rising 3-note run on pulse25. Cookbook anchor: C5s E5s G5e.",
+  "era": "sfx",
+  "tempo": 220,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "rise", "voice": "pulse25", "octave": 5, "notes": "C5s@95 E5s@100 G5e@110" }
+  ]
+}

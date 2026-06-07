@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- Storm attack hit B (double-crack lightning bolt)",
+  "_note": "Storm variant B: two quick pulse25 stabs (the double-crack of close lightning) with a noise gust swell between them. More percussive than A, suggests the thunderclap following the bolt. Render --tail 0.05.",
+  "era": "sfx",
+  "tempo": 280,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "bolt",  "voice": "pulse25", "octave": 6, "gain": 1.0, "notes": "C7s@127 rs C6s@100" },
+    { "name": "crack", "voice": "noise",   "octave": 5, "gain": 0.8, "notes": "C6~C3e@85" }
+  ]
+}

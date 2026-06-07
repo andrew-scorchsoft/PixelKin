@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- Stone attack hit B (grinding boulder crack)",
+  "_note": "Stone variant B: a low pulse50 drone stab + a noise down-glide grinding crack. More tonal than A -- suggests grinding rock rather than a pure impact thud. Render --tail 0.05.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "grind",  "voice": "pulse50",  "octave": 2, "gain": 0.85, "notes": "C2e@115" },
+    { "name": "crack",  "voice": "noise",    "octave": 3, "gain": 0.75, "notes": "C4~C2s@100" }
+  ]
+}

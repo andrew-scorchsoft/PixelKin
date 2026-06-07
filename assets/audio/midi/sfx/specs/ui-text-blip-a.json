@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- ui-text-blip-a",
+  "_note": "Per-character dialogue print tick: barely-there pulse12 tick. Cookbook anchor: C6s@70. Very quiet, very short.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "blip", "voice": "pulse12", "octave": 6, "notes": "C6s@70" }
+  ]
+}
