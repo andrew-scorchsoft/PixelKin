@@ -10,13 +10,23 @@ import { theme } from '@game/ui/theme';
 import { Menu } from '@game/ui/Menu';
 import { SettingsMenu } from '@game/ui/SettingsMenu';
 import { Sfx } from '@game/systems/audio/Sfx';
+import { MusicDirector } from '@game/systems/audio/MusicDirector';
 import { SaveManager } from '@game/systems/save/SaveManager';
 import { VESPERHOLM_GRAPH } from '@game/data/world/graph';
 import type { WorldSceneData } from './WorldScene';
 import type { SaveGame } from '@game/systems/save/types';
 
+/**
+ * Title music. Uses the cosy "Lantern Lullaby" town theme until a dedicated title
+ * riff (title.mp3) is composed, then this key swaps to 'title'.
+ */
+const TITLE_MUSIC = { key: 'tinderwick-a', url: 'assets/audio/music/tinderwick-a.mp3' };
+const IDLE_TO_ATTRACT_MS = 15000;
+
 export class TitleScene extends Phaser.Scene {
   private sfx!: Sfx;
+  private music!: MusicDirector;
+  private idle?: Phaser.Time.TimerEvent;
 
   constructor() {
     super('Title');
@@ -24,6 +34,14 @@ export class TitleScene extends Phaser.Scene {
 
   create(): void {
     this.sfx = new Sfx(this);
+    this.music = new MusicDirector(this, 0.4);
+    void this.music.play(TITLE_MUSIC.key, TITLE_MUSIC.url);
+
+    // Left idle, fall back to the attract demo (reset on any input).
+    this.armIdle();
+    this.input.keyboard?.on('keydown', () => this.armIdle());
+    this.input.on('pointerdown', () => this.armIdle());
+
     const cx = GAME_WIDTH / 2;
     const cy = GAME_HEIGHT / 2;
 
@@ -81,10 +99,22 @@ export class TitleScene extends Phaser.Scene {
     };
   }
 
+  private armIdle(): void {
+    this.idle?.remove();
+    this.idle = this.time.delayedCall(IDLE_TO_ATTRACT_MS, () => {
+      this.music.stop();
+      this.cameras.main.fadeOut(theme.transition.fadeMs, 0, 0, 0);
+      this.cameras.main.once('camerafadeoutcomplete', () => this.scene.start('Attract'));
+    });
+  }
+
   private start(data: WorldSceneData): void {
+    this.idle?.remove();
+    this.music.stop();
     this.cameras.main.fadeOut(theme.transition.fadeMs, 0, 0, 0);
     this.cameras.main.once('camerafadeoutcomplete', () => {
       this.scene.start('World', data);
     });
   }
 }
+

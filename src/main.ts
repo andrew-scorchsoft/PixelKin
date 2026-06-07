@@ -3,6 +3,7 @@ import { GAME_WIDTH, GAME_HEIGHT, COLORS } from '@game/config';
 import { BootScene } from '@game/scenes/BootScene';
 import { PreloadScene } from '@game/scenes/PreloadScene';
 import { TitleScene } from '@game/scenes/TitleScene';
+import { AttractScene } from '@game/scenes/AttractScene';
 import { WorldScene } from '@game/scenes/WorldScene';
 import { BattleScene } from '@game/scenes/BattleScene';
 
@@ -34,7 +35,7 @@ const config: Phaser.Types.Core.GameConfig = {
     keyboard: true,
     touch: true,
   },
-  scene: [BootScene, PreloadScene, TitleScene, WorldScene, BattleScene],
+  scene: [BootScene, PreloadScene, AttractScene, TitleScene, WorldScene, BattleScene],
 };
 
 new Phaser.Game(config);

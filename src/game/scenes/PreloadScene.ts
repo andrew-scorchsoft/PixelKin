@@ -32,7 +32,8 @@ export class PreloadScene extends Phaser.Scene {
   }
 
   create(): void {
-    this.scene.start('Title');
+    // Open with the attract-mode demo; it hands off to the Title on input/timeout.
+    this.scene.start('Attract');
   }
 
   private drawLoadingUi(): void {
