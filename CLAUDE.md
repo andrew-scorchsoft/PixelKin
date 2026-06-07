@@ -443,3 +443,15 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `background=transparent`. Prefix the one transparent call:
   `OPENAI_IMAGE_MODEL=gpt-image-1 ./venv/bin/python …/generate.py --transparent …` (Google
   has no native alpha, so transparent always routes to OpenAI).
+- **Lampwardens grant Lantern Gifts via `TrainerDef.reward_abilities`.** A trainer win pushes
+  `reward_flags` AND `reward_abilities` (BattleScene.finish → BattleResult.grant_abilities →
+  WorldScene.applyBattleResult adds them to the live `abilities` Set, which `persist()` already
+  snapshots). So a Gleam-giving battle that also hands over a Gift is pure data: set both on the
+  trainer (e.g. Reyl Wash = `reward_flags:['gleam:tide','crown_south']` + `reward_abilities:['tidecall']`).
+- **A `dock`/`floor` tile over `water` does NOT make it walkable — water still gates it.** Water
+  carries `requires_ability:'tidecall'` in its tileset metadata, and CollisionGrid keys the tile
+  on the water gid regardless of a `floor` deco on top. So a boardwalk pier laid over open water is
+  Tidecall-gated (a fine *tease*); an *always-walkable* pier/jetty must sit on a non-water base
+  (carve the water grid out under it and lay sand). Likewise an `AbilityGate make_passable` rect
+  force-gates *every* tile it covers (even sand) — keep its rect on pure water and split it around
+  any ungated jetty (see `tools/maps/build_pearlmoor.py`).

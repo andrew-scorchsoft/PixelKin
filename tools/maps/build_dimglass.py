@@ -141,8 +141,11 @@ m = {
     "warps": [
         {"id": "from_tinderwick", "at": {"tx": 6, "ty": 32}, "trigger": "step_on",
          "to_map": "tinderwick", "to": {"tx": 13, "ty": 2}, "facing": "down", "transition": "fade"},
-        {"id": "to_coast_ii", "at": {"tx": 7, "ty": 0}, "trigger": "step_on",
-         "to_map": "dimglass_coast_ii", "to": {"tx": 7, "ty": 31}, "facing": "up", "transition": "fade"},
+        # North exit now leads straight to Pearlmoor Quay (dimglass_coast_ii is not built yet;
+        # repointed here to make Tinderwick <-> Dimglass <-> Pearlmoor fully traversable). Lands
+        # the player on Pearlmoor's always-walkable central arrival jetty.
+        {"id": "to_quay", "at": {"tx": 7, "ty": 0}, "trigger": "step_on",
+         "to_map": "pearlmoor_quay", "to": {"tx": 13, "ty": 20}, "facing": "up", "transition": "fade"},
         {"id": "to_tideglass", "at": {"tx": 2, "ty": 10}, "trigger": "interact",
          "to_map": "tideglass_cavern", "to": {"tx": 5, "ty": 8}, "facing": "left",
          "requires_ability": "glimmerstep", "transition": "door"},

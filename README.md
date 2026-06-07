@@ -19,7 +19,9 @@ hour is playable end-to-end: attract demo → title (New Game / Continue / Setti
 → story intro where you're given a vesperlamp and **choose a starter** → explore
 **Tinderwick**, talk to townsfolk, read signs, enter the house → earn the first
 **Gleam** from Lampwarden Brisa Tallow in a real turn-based battle → head north
-onto **Dimglass Coast** with wild encounters. Progress autosaves (with JSON
+onto **Dimglass Coast** with wild encounters → on to **Pearlmoor Quay**, the
+moonlit Tide port, where Lampwarden Reyl Wash grants the **Tide Gleam** and the
+**Tidecall** Lantern Gift (which then opens the harbour's gated water). Progress autosaves (with JSON
 export/import), and the screen can show as a handheld-device frame, fullscreen with
 translucent touch controls, or plain. Run it with `npm install && npm run dev`.
 

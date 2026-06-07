@@ -1,5 +1,33 @@
 {
   "objects": {
+    "pearlmoor_boat": {
+      "path": "assets/sprites/objects/pearlmoor_boat.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "pearlmoor_inn": {
+      "path": "assets/sprites/objects/pearlmoor_inn.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "pearlmoor_lumenary": {
+      "path": "assets/sprites/objects/pearlmoor_lumenary.webp",
+      "width": 96,
+      "height": 96,
+      "tw": 6,
+      "th": 6
+    },
+    "pearlmoor_shop": {
+      "path": "assets/sprites/objects/pearlmoor_shop.webp",
+      "width": 80,
+      "height": 64,
+      "tw": 5,
+      "th": 4
+    },
     "tinderwick_cottage": {
       "path": "assets/sprites/objects/tinderwick_cottage.webp",
       "width": 80,
