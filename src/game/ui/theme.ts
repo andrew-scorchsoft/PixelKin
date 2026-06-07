@@ -13,6 +13,7 @@
  */
 import Phaser from 'phaser';
 import { COLORS } from '@game/config';
+import type { KinType } from '@game/data/dex';
 
 /** The bundled pixel font's CSS family name (see global.css @font-face). */
 export const FONT_FAMILY = 'PixelKin';
@@ -29,7 +30,25 @@ export const theme = {
     selected: COLORS.fire,
     danger: COLORS.fire,
     overlay: 'rgba(11, 16, 38, 0.62)', // dim the world behind modal UI
+    /** HP bar fill by remaining ratio (high > 50% > mid > 20% > low). */
+    hpHigh: COLORS.grass,
+    hpMid: COLORS.fire,
+    hpLow: '#ff5a5a',
   },
+
+  /** Per-type accent colours for swatches/tags (the 8 elements + Light/Dark). */
+  typeColor: {
+    Ember: '#ff8a3d',
+    Tide: '#4fb4ff',
+    Verdant: '#7bdc6b',
+    Stone: '#c9a86a',
+    Storm: '#b9a6ff',
+    Frost: '#a9e8ff',
+    Solar: '#ffd76b',
+    Lunar: '#8aa0ff',
+    Light: '#fff3c0',
+    Dark: '#6b6480',
+  } as Record<KinType, string>,
 
   /** Spacing scale in source pixels — keep layouts on this grid. */
   space: { xs: 1, sm: 2, md: 4, lg: 6, xl: 8, xxl: 12 },
