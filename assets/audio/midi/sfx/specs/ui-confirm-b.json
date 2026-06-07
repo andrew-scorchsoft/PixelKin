@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- ui-confirm-b",
+  "_note": "A-button / accept: three-note rising arpeggio with a quick upward glide close, warmer feel.",
+  "era": "sfx",
+  "tempo": 220,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "blip", "voice": "pulse25", "octave": 5, "notes": "E5s@95 G5s@105 C6e@115" }
+  ]
+}

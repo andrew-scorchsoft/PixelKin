@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- ui-cursor-c",
+  "_note": "Menu cursor moves: a tri_bass low-mid click. Deeper tonal thunk for a thicker cursor feel.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "click", "voice": "tri_bass", "octave": 4, "notes": "C4s@90" }
+  ]
+}

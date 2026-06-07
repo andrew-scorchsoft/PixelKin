@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- ui-toggle-b",
+  "_note": "Flip an option on/off: a single short tick on tri_bass followed by a high pulse25 ping. Mechanical click character.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "thunk", "voice": "tri_bass", "octave": 3, "notes": "G3s@100" },
+    { "name": "ping",  "voice": "pulse25",  "octave": 6, "notes": "rs E6s@85" }
+  ]
+}

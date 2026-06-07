@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- ui-error-b",
+  "_note": "Invalid / can't-do: short downward glide on pulse50 -- more of a low descending buzz-zap.",
+  "era": "sfx",
+  "tempo": 200,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "zap", "voice": "pulse50", "octave": 3, "notes": "D3~A2e@90" }
+  ]
+}

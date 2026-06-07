@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- ui-save-a",
+  "_note": "Saving to the journal: 3-note reassuring resolve on pulse25 + bell shimmer. Cookbook anchor: G5s C6s E6e + bell. Render with --tail 0.3.",
+  "era": "sfx",
+  "tempo": 180,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "resolve", "voice": "pulse25", "octave": 5, "notes": "G5s@95 C6s@105 E6e@115" },
+    { "name": "shimmer", "voice": "bell",    "octave": 6, "gain": 0.7, "notes": "re E6e@80" }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- ui-confirm-a",
+  "_note": "A-button / accept: two-note rising blip on pulse25. Cookbook anchor: C6s G6s.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "blip", "voice": "pulse25", "octave": 6, "notes": "C6s@100 G6s@110" }
+  ]
+}

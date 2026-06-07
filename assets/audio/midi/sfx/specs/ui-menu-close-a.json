@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- ui-menu-close-a",
+  "_note": "Close menu: quick falling 3-note run on pulse25. Mirror of ui-menu-open-a: G5s E5s C5e.",
+  "era": "sfx",
+  "tempo": 220,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "fall", "voice": "pulse25", "octave": 5, "notes": "G5s@110 E5s@100 C5e@90" }
+  ]
+}

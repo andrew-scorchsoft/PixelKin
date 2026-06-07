@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- ui-cursor-a",
+  "_note": "Menu cursor moves: single neutral tick on pulse12. High, short, dry. Anchor variant per cookbook recipe.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "tick", "voice": "pulse12", "octave": 6, "notes": "E6s@85" }
+  ]
+}

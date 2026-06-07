@@ -1,0 +1,12 @@
+{
+  "title": "SFX -- ui-error-a",
+  "_note": "Invalid / can't-do: low flat buzz on pulse50 with a slight downward drift. Dull and unhappy.",
+  "era": "sfx",
+  "tempo": 200,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "buzz", "voice": "pulse50", "octave": 3, "notes": "C3e@95 B2s@80" }
+  ]
+}
