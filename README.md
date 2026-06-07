@@ -17,7 +17,8 @@ For working in the repo, see **[`CLAUDE.md`](CLAUDE.md)**.
 The design is data-locked **and the engine to play it now exists** — the first
 hour is playable end-to-end: attract demo → title (New Game / Continue / Settings)
 → story intro where you're given a vesperlamp and **choose a starter** → explore
-**Tinderwick**, talk to townsfolk, read signs, enter the house → earn the first
+**Tinderwick**, talk to townsfolk, read signs, step into its homes, shop and
+Lumenary chamber → earn the first
 **Gleam** from Lampwarden Brisa Tallow in a real turn-based battle → head north
 onto **Dimglass Coast** with wild encounters → on to **Pearlmoor Quay**, the
 moonlit Tide port, where Lampwarden Reyl Wash grants the **Tide Gleam** and the
@@ -34,7 +35,8 @@ What's already in the repo:
   one in-canvas **UI design language** ([`src/game/ui/theme.ts`](src/game/ui/theme.ts))
   every screen shares. Engine code is in [`src/game/`](src/game/), the DOM
   screen-shells in [`src/shell/`](src/shell/); map/level-design rules are binding in
-  [`docs/world/level-design.md`](docs/world/level-design.md).
+  [`docs/world/level-design.md`](docs/world/level-design.md), with SNES-style
+  interior rules in [`docs/world/interiors.md`](docs/world/interiors.md).
 - **A world & story — *The Long Dusk*.** *Vesperholm*, a crescent of valleys
   around a darkened mountain where night fell and won't lift. You play a young
   lamp-tender's apprentice relighting the sky one constellation at a time,
