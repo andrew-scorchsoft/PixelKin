@@ -25,8 +25,12 @@ on handheld hardware, with love.
 
 Three things follow from that and bind every track:
 
-1. **It's a chip soundtrack first** (the house era is `gbc`). The 4-voice
-   discipline *is* the sound, not a limitation to apologise for.
+1. **It's a chip soundtrack at heart** — every track renders through the one
+   **chip engine**, and the 4-voice *roles* (lead / arp / bass / noise) carry the
+   tune. But the register can open up: many shipping area tracks lift from the
+   bare `gbc` band into the lusher **`snes`** voices (pads, real chords, a pluck
+   harp, bell sparkle, warm reverb) — see §3.3. Same engine, same tune, more
+   colour; the discipline is a *style*, not a ceiling.
 2. **It's one journey from dusk to dawn.** The score *warms* over the game — the
    start is blue-hour wistful, the blighted areas are the darkest/least-resolved
    points, and the epilogue is radiant major. Each area sits where it falls on
@@ -130,16 +134,41 @@ signature(s) of its element so a region "reads as one ecosystem" by ear:
 
 ### 3.3 Voice palette & era policy
 
-- **Default to `gbc`** for in-world area tracks — the 4-voice band: **`pulse25`
-  lead, `pulse12` arp/harmony, `tri_bass` bass, `drums` (noise) percussion.**
-  Same voices for the same roles across the whole score keeps timbres related.
-- **Reserve `gba`/`snes`** (pads, real chords, a 2nd lead, reverb) for the
-  genuinely **big rooms** — Nightreach Observatory and the Umbral Spire climax —
-  and for explicit **"richer register" Option C** variants (e.g. the glacier as
-  lush ambient, Dawnstead's curtain-call). Don't reach for it casually; rendering
-  everything through the **chip engine** (even `snes` specs) is what keeps the
-  soundtrack cohesive (see `style-guide.md` §5). Only use `--engine soundfont`
-  when the user explicitly asks for a lusher render of a specific track.
+- **`gbc` is the band, not the ceiling.** The 4-voice roles — **`pulse25` lead,
+  arp/harmony, `tri_bass` bass, `drums` (noise) percussion** — define the score's
+  *identity*: the tune lives here. Keep those roles (and the same voices for the
+  same roles) on every track so timbres stay related. But the *register* the band
+  plays in is a choice (see the next two bullets), and most shipping area tracks
+  now open up from the bare 4-voice chip into the lusher **`snes`** register.
+- **Ship the early-game "first impression" maps in the richer `snes` register.**
+  The first areas the player actually walks (the start town, its interior, the
+  first route) carry the game's whole first impression, so they get the lush
+  16-bit treatment rather than the bare chip. The recipe (the **SNES enrichment**,
+  used on `tinderwick-a`, `tinderwick-b`, `dimglass-coast-a`):
+  1. **Keep the tune.** Take the `gbc` Option-A lead and bass **note-for-note** —
+     that's the area's identity and the Vesper motif; don't rewrite it.
+  2. **Open the band.** Add, within the 8-voice `snes` budget (aim for **≤7 peak
+     voices**, clarity over density): a warm sustained **`strings`/`pad`** carrying
+     the **real chords** the chip could only imply; the arp re-voiced from
+     `pulse12` to a **`pluck`** harp/music-box (same notes); a **sparse `bell`**
+     glint at phrase ends for the **Light** signature; and an optional **`flute`**
+     counter-melody answering the lead in a B section (call-and-response).
+  3. **Separate registers** so it never muds: **bass `tri_bass` oct 2**, **pad
+     `strings` oct 3**, **lead oct 4**, **`bell`/sparkle oct 5**. Pad/strings gain
+     low (~0.28–0.3) — a bed, not a wall.
+  4. **`era: "snes"`** gives the warm reverb (0.18) and chord stacking; still
+     **render through the default `--engine chip`** — the chip synth plays the
+     `snes` voices with reverb, which is what keeps the lush tracks cohesive with
+     the rest of the score.
+- **`gba`/`snes` for the genuinely big rooms too** — Nightreach Observatory, the
+  Umbral Spire climax — and the explicit **"richer register" Option C** variants
+  (the glacier as lush ambient, Dawnstead's curtain-call). A bare `gbc` 4-voice
+  reading still has its place for the sparsest, loneliest cues (deep caves, the
+  Hollowing's drained zones) where silence and thinness *are* the point.
+- **Keep rendering through the chip engine.** Even `snes` specs render on
+  `--engine chip` — that one engine across the whole soundtrack is the cohesion
+  (see `style-guide.md` §5). Only use `--engine soundfont` when the user
+  explicitly asks for a lusher/orchestral render of a specific track.
 
 ### 3.4 Key & tempo bands
 
