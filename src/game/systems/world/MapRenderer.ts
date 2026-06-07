@@ -15,13 +15,38 @@ import { TILE_SIZE, COLORS } from '@game/config';
 import type { RuntimeMap, ResolvedTileset } from './MapLoader';
 import type { TileMeta } from './tileset';
 
+/** A placed tile that cycles through frames (water ripple, lamp flicker, glowmoss). */
+export interface AnimatedTilePlacement {
+  tile: Phaser.Tilemaps.Tile;
+  /** Global gids to cycle through, in order. */
+  frames: number[];
+  /** Milliseconds each frame is shown. */
+  frameMs: number;
+}
+
 export interface MapRenderResult {
   tilemap: Phaser.Tilemaps.Tilemap;
   layers: Phaser.Tilemaps.TilemapLayer[];
   /** Layers whose role is 'above' — drawn over the player. */
   aboveLayers: Phaser.Tilemaps.TilemapLayer[];
+  /** Placed tiles that cycle frames; driven by `tickAnimatedTiles` each frame. */
+  animatedTiles: AnimatedTilePlacement[];
   pixelWidth: number;
   pixelHeight: number;
+}
+
+/**
+ * Advance animated tiles to the frame for `timeMs` (call once per frame from the
+ * owning scene's update). Frames are derived from each tile's
+ * `animation.frames`/`duration_ms` in the tileset sidecar; the cycle is purely a
+ * function of wall-clock time, so all tiles of a kind ripple in sync.
+ */
+export function tickAnimatedTiles(animated: AnimatedTilePlacement[], timeMs: number): void {
+  for (const a of animated) {
+    const idx = Math.floor(timeMs / a.frameMs) % a.frames.length;
+    const gid = a.frames[idx];
+    if (a.tile.index !== gid) a.tile.index = gid;
+  }
 }
 
 const ROLE_COLORS: Record<string, string> = {
@@ -137,6 +162,7 @@ export async function renderMap(scene: Phaser.Scene, map: RuntimeMap): Promise<M
 
   const layers: Phaser.Tilemaps.TilemapLayer[] = [];
   const aboveLayers: Phaser.Tilemaps.TilemapLayer[] = [];
+  const animatedTiles: AnimatedTilePlacement[] = [];
 
   for (const layerDef of map.def.layers) {
     if (layerDef.role === 'collision') continue; // logical only, never drawn
@@ -146,7 +172,19 @@ export async function renderMap(scene: Phaser.Scene, map: RuntimeMap): Promise<M
     for (let ty = 0; ty < map.height; ty++) {
       for (let tx = 0; tx < map.width; tx++) {
         const gid = layerDef.data[ty * map.width + tx] ?? 0;
-        if (gid > 0) layer.putTileAt(gid, tx, ty);
+        if (gid <= 0) continue;
+        const tile = layer.putTileAt(gid, tx, ty);
+        // Register any frame-cycling tile (water ripple, lamp flicker, …). Frame
+        // indices in the sidecar are local; convert to global gids here.
+        const look = map.lookupGid(gid);
+        const anim = look?.meta.animation;
+        if (tile && look && anim && anim.frames.length > 1 && anim.duration_ms > 0) {
+          animatedTiles.push({
+            tile,
+            frames: anim.frames.map((f) => look.tileset.ref.first_gid + f),
+            frameMs: anim.duration_ms / anim.frames.length,
+          });
+        }
       }
     }
     layers.push(layer);
@@ -155,5 +193,5 @@ export async function renderMap(scene: Phaser.Scene, map: RuntimeMap): Promise<M
 
   const pixelWidth = map.width * TILE_SIZE;
   const pixelHeight = map.height * TILE_SIZE;
-  return { tilemap, layers, aboveLayers, pixelWidth, pixelHeight };
+  return { tilemap, layers, aboveLayers, animatedTiles, pixelWidth, pixelHeight };
 }

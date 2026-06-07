@@ -1,5 +1,5 @@
 {
-  "_notes": "Master world palette for Vesperholm tilesets. Every area's tile set derives its --palette from here so the whole world reads as one cohesive place (see docs/world/atlas.md and the generate-sprite-sheet tileset flow). The 8 brand anchors come from src/game/config.ts; the extras are derived neutrals/shades for tile art (wood, soil, stone, sand, aurora). Keep tile sets to ~10-14 flat colours drawn from this set plus the area's 1-2 accents.",
+  "_notes": "Master world palette for Vesperholm tilesets. Every area's tile set derives its --palette from here so the whole world reads as one cohesive place (see docs/world/atlas.md and the generate-sprite-sheet tileset flow). The 8 brand anchors come from src/game/config.ts. The `ramps` give each material a real 4-step value ladder (outline -> dark -> mid -> light) so tiles have proper CONTRAST instead of reading flat and washed-out — the #1 quality lever. Quantise every generated tile to the area's working palette with quantize_to_palette.py. Keep tile sets to ~10-16 flat colours drawn from this set plus the area's 1-2 accents.",
   "brand_anchors": {
     "night": "#0b1026",
     "deepBlue": "#13205a",
@@ -20,14 +20,34 @@
     "wood_warm": "#b9763f",
     "aurora": "#b6f0c8"
   },
+  "_ramp_notes": "Each material is a 4-step value ladder: outline (darkest, the deep-ink linework) -> dark (shadow / down-right faces) -> mid (the body colour) -> light (top-left highlight). Use all four on every tile: a tile painted in only its mid colour is the washed-out look we are fixing. The outline step doubles as the area's shared dark so adjacent materials share linework and read as one set.",
+  "ramps": {
+    "ink": ["#0b1026", "#1a1430", "#2a2342", "#3b3e55"],
+    "grass": ["#1a3a24", "#3f7a44", "#5fb755", "#9ff07a"],
+    "grass_cool": ["#173034", "#2f6a5a", "#4aa07e", "#7fdcb0"],
+    "soil": ["#2a1a14", "#4a3024", "#6b4a3a", "#9a6f4f"],
+    "sand": ["#7a5a3a", "#b59a64", "#e0c98c", "#f6ecc0"],
+    "stone": ["#2a2c40", "#4a4d66", "#6c6f86", "#9a9db4"],
+    "stone_warm": ["#3a2630", "#5e4450", "#8a6f74", "#bfa39a"],
+    "water": ["#0e2a55", "#1f5aa0", "#4fb4ff", "#9fe7ff"],
+    "wood": ["#3a2418", "#7a4a28", "#b9763f", "#e0a466"],
+    "bone": ["#7a6f5a", "#bcae90", "#e6dcc0", "#f8f2e2"],
+    "snow": ["#7f8fb0", "#aebfe0", "#d8e4f6", "#ffffff"],
+    "fire": ["#7a2a14", "#c85a22", "#ff8a3d", "#ffc070"]
+  },
+  "_autotile_terrains": "An autotile terrain is one material rendered as a 47-blob set (corners, edges, inner corners, fill) so a region of it gets clean borders against everything else automatically. Author maps with a `terrain` layer (see docs/world/level-design.md) and expand it with tools/autotile. Typical terrains per area: the ground fill, water, and cliff/ledge. Each terrain pulls its 4-step value ladder from `ramps` above.",
   "areas": {
     "tinderwick": {
       "palette": "blue-hour coastal village: bone-cream walls, warm fire-orange candlelight, deepBlue sea, grass verges, soil paths, ink outlines",
-      "accents": ["#f5f0e1", "#ff8a3d", "#13205a"]
+      "accents": ["#f5f0e1", "#ff8a3d", "#13205a"],
+      "terrains": { "ground": "grass", "water": "water", "cliff": "stone" },
+      "working_palette": ["#0b1026", "#1a1430", "#1a3a24", "#3f7a44", "#5fb755", "#9ff07a", "#4a3024", "#6b4a3a", "#9a6f4f", "#1f5aa0", "#4fb4ff", "#9fe7ff", "#7a4a28", "#b9763f", "#e0a466", "#e6dcc0", "#f8f2e2", "#ff8a3d"]
     },
     "dimglass_coast": {
       "palette": "tidal cliff route: deepBlue water with diamond-cyan foam, ink rocks, grass tufts, sand, dim night sky",
-      "accents": ["#4fb4ff", "#9fe7ff", "#1a1430"]
+      "accents": ["#4fb4ff", "#9fe7ff", "#1a1430"],
+      "terrains": { "ground": "grass", "water": "water", "cliff": "stone" },
+      "working_palette": ["#0b1026", "#1a1430", "#2a2c40", "#4a4d66", "#6c6f86", "#9a9db4", "#1a3a24", "#3f7a44", "#5fb755", "#0e2a55", "#1f5aa0", "#4fb4ff", "#9fe7ff", "#b59a64", "#e0c98c", "#f6ecc0"]
     },
     "pearlmoor_quay": {
       "palette": "moonlit port: wet bone boardwalk, water glints, deepBlue depths, brass-warm lamp dots, big cyan moon",
@@ -35,23 +55,28 @@
     },
     "lowleaf_hollow": {
       "palette": "bioluminescent fern forest: grass and grass-dark foliage shot through with diamond glowmoss, deep ink shadow, dim-green dark",
-      "accents": ["#7bdc6b", "#9fe7ff", "#1a1430"]
+      "accents": ["#7bdc6b", "#9fe7ff", "#1a1430"],
+      "terrains": { "ground": "grass_cool", "water": "water", "cliff": "stone" }
     },
     "cinderhead_mine": {
       "palette": "gem mine: ink-black tunnels, stone and stone-dark rock, veins of diamond crystal, fire lamp pools, soil rubble",
-      "accents": ["#6c6f86", "#9fe7ff", "#ff8a3d"]
+      "accents": ["#6c6f86", "#9fe7ff", "#ff8a3d"],
+      "terrains": { "ground": "stone", "cliff": "stone" }
     },
     "galehigh_terraces": {
       "palette": "windy cliff farms: grass terraces, fire-orange sunset bleeding into deepBlue, bone clouds, diamond updraft motes",
-      "accents": ["#7bdc6b", "#ff8a3d", "#13205a"]
+      "accents": ["#7bdc6b", "#ff8a3d", "#13205a"],
+      "terrains": { "ground": "grass", "cliff": "stone" }
     },
     "pale_vault_glacier": {
       "palette": "aurora ice field: deepBlue ice, bone snow, pale aurora green-cyan ribbons, diamond highlights, ink crevasses",
-      "accents": ["#b6f0c8", "#9fe7ff", "#f5f0e1"]
+      "accents": ["#b6f0c8", "#9fe7ff", "#f5f0e1"],
+      "terrains": { "ground": "snow", "water": "water", "cliff": "stone" }
     },
     "sunken_solarium": {
       "palette": "flooded sun-garden ruin: bone columns, fire stored-daylight glows under water-blue, grass overgrowth, deepBlue depths",
-      "accents": ["#ff8a3d", "#4fb4ff", "#f5f0e1"]
+      "accents": ["#ff8a3d", "#4fb4ff", "#f5f0e1"],
+      "terrains": { "ground": "bone", "water": "water" }
     },
     "nightreach_observatory": {
       "palette": "hilltop star-temple: bone domes, deepBlue stone, brass, the densest diamond starfield in the game, ink night",

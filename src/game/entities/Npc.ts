@@ -68,6 +68,9 @@ export class Npc extends Actor {
   /** Ambient movement. `canEnter` prevents walking into walls or onto the player. */
   update(deltaMs: number, canEnter: (tx: number, ty: number) => boolean): void {
     if (this.isMoving) return;
+    // Standing this frame: settle the walk cycle onto the idle pose. step()
+    // below replays the cycle if this NPC actually moves.
+    this.stopWalking();
     const move = this.placement.movement;
     if (move === 'static') return;
 
