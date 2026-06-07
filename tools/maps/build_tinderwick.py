@@ -65,6 +65,10 @@ for i, t in enumerate(T):
     Image.open(t["src"]).convert("RGBA").resize((16, 16), Image.LANCZOS).save(dst)
     if t.get("tileable"):
         subprocess.run([sys.executable, str(MT), str(dst)], capture_output=True)
+    # edge tiles: seam-match along the axis they repeat on (shoreline/path/wall)
+    ax = {"edge_n": "h", "edge_s": "h", "edge_w": "v", "edge_e": "v"}.get(t.get("autotile"))
+    if ax:
+        subprocess.run([sys.executable, str(MT), str(dst), "--axis", ax], capture_output=True)
     e = {"file": dst.name, "role": t["role"]}
     for k, kk in [("terrain","terrain"),("autotile","autotile"),("collides","collides"),
                   ("encounter","encounter_terrain"),("ability","requires_ability")]:
@@ -73,8 +77,8 @@ for i, t in enumerate(T):
 manifest[idx["water_fill"]]["animation"] = {"frames":[idx["water_fill"],idx["water_a2"],idx["water_a3"]],"duration_ms":800}
 (TD/"tileset.manifest.json").write_text(json.dumps({"name":"tinderwick_set","columns":8,"tiles":manifest}, indent=2)+"\n")
 
-# --- procedural layout (34x26) -----------------------------------------------
-W, H = 34, 26
+# --- procedural layout (34x30) -----------------------------------------------
+W, H = 34, 30
 def grid(): return [0]*(W*H)
 def rect(g, x0, y0, x1, y1):
     for y in range(max(0,y0), min(H,y1+1)):
@@ -85,18 +89,18 @@ def vline(g, x, y0, y1): rect(g, x, y0, x, y1)
 EXIT = (16, 18)        # north exit gap columns
 STREET_Y = 10
 SPINE_X = 17
-SEA_Y0 = 23            # rows 23-25 sea; 21-22 sand
+SEA_Y0 = 24            # big sea rows 24-29; wide beach rows 22-23
 
 # tree wall: 2-deep N/E/W (down to the sand), gap at the north exit
 tree = grid()
 rect(tree, 0, 0, W-1, 1)                       # north band (2 deep)
 for x in range(EXIT[0], EXIT[1]+1):            # punch the exit gap
     tree[0*W+x] = 0; tree[1*W+x] = 0
-rect(tree, 0, 0, 1, SEA_Y0-1)                  # west band
-rect(tree, W-2, 0, W-1, SEA_Y0-1)             # east band
+rect(tree, 0, 0, 1, SEA_Y0-4)                  # west band (stops above the beach)
+rect(tree, W-2, 0, W-1, SEA_Y0-4)             # east band
 
-water = grid(); rect(water, 0, SEA_Y0, W-1, H-1)
-sand = grid(); rect(sand, 0, SEA_Y0-2, W-1, SEA_Y0-1)
+water = grid(); rect(water, 0, SEA_Y0, W-1, H-1)        # full-width sea, continues off bottom
+sand = grid(); rect(sand, 0, SEA_Y0-3, W-1, SEA_Y0-1)   # full-width 3-row beach (edge/fill/edge)
 tallgrass = grid(); rect(tallgrass, 9, 3, 13, 4)   # verge near the exit approach
 
 # paths: spine (exit -> street -> shore) + the street + door stubs

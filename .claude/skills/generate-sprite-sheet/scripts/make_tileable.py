@@ -61,17 +61,35 @@ def clamp_edges(img: Image.Image, ring: int) -> Image.Image:
     return img
 
 
+def match_axis(img: Image.Image, axis: str) -> Image.Image:
+    """Seam-match a directional EDGE tile along the one axis it repeats on, leaving
+    its perpendicular (designed) transition untouched. 'h' = top/bottom edges that
+    repeat left-to-right (make left col == right col); 'v' = side edges that repeat
+    top-to-bottom (make top row == bottom row). Use this on edge_n/edge_s ('h') and
+    edge_w/edge_e ('v') so shorelines, paths and walls have no cross-seams."""
+    px = img.load(); w, h = img.size
+    if axis == "h":
+        for y in range(h):
+            m = _avg(px[0, y], px[w - 1, y]); px[0, y] = m; px[w - 1, y] = m
+    elif axis == "v":
+        for x in range(w):
+            m = _avg(px[x, 0], px[x, h - 1]); px[x, 0] = m; px[x, h - 1] = m
+    return img
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("tiles", nargs="+", help="tile PNG paths to make seamless (in place)")
     ap.add_argument("--ring", type=int, default=1, help="edge width to clamp (default 1)")
+    ap.add_argument("--axis", choices=["both", "h", "v"], default="both",
+                    help="both=uniform fill (default); h/v=one-axis edge tile")
     args = ap.parse_args()
 
     for t in args.tiles:
         p = Path(t)
         img = Image.open(p).convert("RGBA")
-        clamp_edges(img, args.ring).save(p)
-        print(f"  seamless ring={args.ring} -> {p}")
+        (clamp_edges(img, args.ring) if args.axis == "both" else match_axis(img, args.axis)).save(p)
+        print(f"  seamless axis={args.axis} -> {p}")
 
 
 if __name__ == "__main__":
