@@ -13,6 +13,7 @@ import { DialogueBox } from '@game/ui/DialogueBox';
 import { StarterSelect } from '@game/ui/StarterSelect';
 import { fadeIn, fadeOut, flash } from '@game/ui/Transitions';
 import { getDialogue } from '@game/content/dialogue';
+import { loadAudio } from '@game/systems/audio/loadAudio';
 import type { FlagStore } from '@game/systems/flags/FlagStore';
 import type { Sfx } from '@game/systems/audio/Sfx';
 import type { MusicDirector } from '@game/systems/audio/MusicDirector';
@@ -108,10 +109,14 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<void> 
     case 'battle':
       if (ctx.startTrainerBattle) await ctx.startTrainerBattle(step.trainer);
       return;
-    case 'gleam':
+    case 'gleam': {
       void ctx.sfx.playVariant('world-gleam', ['a', 'b', 'c']);
+      // A short triumphant fanfare for relighting a constellation (one-shot).
+      const ok = await loadAudio(scene, 'gleam-fanfare', 'assets/audio/music/gleam-fanfare.mp3');
+      if (ok) scene.sound.play('gleam-fanfare', { volume: 0.6 });
       await flash(scene, 220);
       return;
+    }
   }
 }
 

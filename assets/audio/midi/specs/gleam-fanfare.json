@@ -1,0 +1,44 @@
+{
+  "title": "PixelKin - Gleam Fanfare (first constellation relit)",
+  "_note": "Brief triumphant one-shot (~5s incl. ring-out; resolves home at ~3.4s) played when the player earns a Gleam (relights a constellation - the game's 'badge' moment). NOT looped: it builds and resolves HARD on the tonic, ringing out. Distinct from the existing ~1s 'world-gleam' SFX sparkle - this is the full musical payoff cue. Cohesive with the score: C major, pulse25 lead + pulse12 music-box arp + tri_bass, plus a bright bell for the Light/'true starlight' signature (a constellation is relighting). The melody is the Vesper motif made TRIUMPHANT: the hopeful rising lift (G->C->D) blooms upward and overshoots to the octave, then the settle (E->D->C) lands firmly home on a high C with a bell sparkle - 'the lantern lifted to the sky, the warmth returning'. Render with --loops 1 and a small tail for the bell ring.",
+  "era": "gbc",
+  "tempo": 140,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "Vesper motif made triumphant, tight ~3-bar one-shot. Pickup lift G3->C4->D4 then climbs E4->G4->C5 (the constellation rising), overshoots up to D5->E5, then the settle E5->D5->C5 lands hard HOME on the downbeat of bar 3, held and ringing. Ascending and conclusive.",
+      "notes": "G3e C4e D4e E4e G4q C5q | D5q E5q D5q C5q | C5h."
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.55,
+      "_note": "Fast rising broken-chord arp (the chip 'chord') outlining C -> G(dom) under the rise, then a bright C-triad sparkle landing on the bar-3 home and ringing.",
+      "notes": "C4s E4s G4s C5s E4s G4s C5s E5s C4s E4s G4s C5s E4s G4s C5s E5s | G3s D4s G4s B4s D5s B4s G4s D4s G3s D4s G4s B4s D5s B4s G4s D4s | C5s E5s G5s C6s C5q."
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.95,
+      "_note": "Strong root motion C -> G(dom) -> C, the classic triumphant cadence, landing hard on the C downbeat of bar 3 and holding under the resolve.",
+      "notes": "C2q C2q G2q G2q | G2q G2q G2q G2q | C2h."
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.7,
+      "_note": "Light-signature sparkle: silent under the rise, then a ringing high C-E-G bell chime exactly on the bar-3 home resolution (the constellation catching light). Tail rings out.",
+      "notes": "rw | rw | C6q E6q G6q"
+    }
+  ]
+}

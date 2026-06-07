@@ -16,11 +16,8 @@ import { VESPERHOLM_GRAPH } from '@game/data/world/graph';
 import type { WorldSceneData } from './WorldScene';
 import type { SaveGame } from '@game/systems/save/types';
 
-/**
- * Title music. Uses the cosy "Lantern Lullaby" town theme until a dedicated title
- * riff (title.mp3) is composed, then this key swaps to 'title'.
- */
-const TITLE_MUSIC = { key: 'tinderwick-a', url: 'assets/audio/music/tinderwick-a.mp3' };
+/** The dedicated title riff (Vesper-motif theme), with a graceful silent fallback. */
+const TITLE_MUSIC = { key: 'title', url: 'assets/audio/music/title.mp3' };
 const IDLE_TO_ATTRACT_MS = 15000;
 
 export class TitleScene extends Phaser.Scene {
