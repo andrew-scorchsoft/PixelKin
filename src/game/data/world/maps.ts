@@ -28,7 +28,7 @@ export interface MapRegistryEntry {
 export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   tinderwick: {
     json: 'assets/maps/tinderwick.json',
-    tilesets: { tinderwick_set: 'assets/tilesets/tinderwick_set.webp' },
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'town',
     music: 'assets/audio/music/tinderwick-a.mp3',
     battle_backdrops: [
@@ -38,7 +38,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   },
   tinderwick_house: {
     json: 'assets/maps/tinderwick_house.json',
-    tilesets: { tinderwick_house_set: 'assets/tilesets/tinderwick_house_set.webp' },
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/tinderwick-b.mp3',
     battle_backdrops: [
@@ -46,15 +46,55 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/tinderwick-house-b.webp',
     ],
   },
+  tinderwick_shop: {
+    json: 'assets/maps/tinderwick_shop.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/tinderwick-b.mp3',
+  },
+  tinderwick_lumenary: {
+    json: 'assets/maps/tinderwick_lumenary.json',
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/tinderwick-a.mp3',
+  },
   dimglass_coast: {
     json: 'assets/maps/dimglass_coast.json',
-    tilesets: { dimglass_coast_set: 'assets/tilesets/dimglass_coast_set.webp' },
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'route',
     music: 'assets/audio/music/dimglass-coast-a.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/dimglass-coast-a.webp',
       'assets/backgrounds/battle/dimglass-coast-b.webp',
     ],
+  },
+  pearlmoor_quay: {
+    json: 'assets/maps/pearlmoor_quay.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'town',
+    music: 'assets/audio/music/dimglass-coast-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/pearlmoor-quay-a.webp',
+      'assets/backgrounds/battle/pearlmoor-quay-b.webp',
+    ],
+  },
+  pearlmoor_lumenary: {
+    json: 'assets/maps/pearlmoor_lumenary.json',
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/dimglass-coast-a.mp3',
+  },
+  pearlmoor_shop: {
+    json: 'assets/maps/pearlmoor_shop.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/dimglass-coast-a.mp3',
+  },
+  pearlmoor_inn: {
+    json: 'assets/maps/pearlmoor_inn.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/dimglass-coast-a.mp3',
   },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.

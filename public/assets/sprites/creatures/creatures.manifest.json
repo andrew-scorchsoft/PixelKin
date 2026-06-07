@@ -140,6 +140,34 @@
         "height": 96
       }
     },
+    "11": {
+      "slug": "tallowcrest",
+      "front": {
+        "path": "assets/sprites/creatures/011_tallowcrest/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/011_tallowcrest/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/011_tallowcrest/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/011_tallowcrest/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/011_tallowcrest/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
     "13": {
       "slug": "ashlette",
       "front": {
@@ -280,6 +308,34 @@
         "height": 96
       }
     },
+    "24": {
+      "slug": "shimmral",
+      "front": {
+        "path": "assets/sprites/creatures/024_shimmral/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/024_shimmral/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/024_shimmral/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/024_shimmral/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/024_shimmral/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
     "26": {
       "slug": "brinelet",
       "front": {
@@ -304,6 +360,34 @@
       },
       "portrait": {
         "path": "assets/sprites/creatures/026_brinelet/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "27": {
+      "slug": "brineroll",
+      "front": {
+        "path": "assets/sprites/creatures/027_brineroll/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/027_brineroll/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/027_brineroll/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/027_brineroll/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/027_brineroll/portrait.webp",
         "width": 96,
         "height": 96
       }

@@ -7,7 +7,7 @@
  * matching registry in this folder, never new engine code. Maps reference these
  * by string ref (e.g. EventTrigger.ref = 'sign.tinderwick_dock').
  */
-import type { TileCoord, Facing, WorldFlag } from '@game/data/world/types';
+import type { TileCoord, Facing, WorldFlag, AbilityId } from '@game/data/world/types';
 import type { ActionName, EmoteName } from '@game/entities/Actor';
 
 // ---- Dialogue ---------------------------------------------------------------
@@ -92,6 +92,13 @@ export interface TrainerDef {
   defeat_ref?: string; // dialogue after losing
   /** Flags set when the player wins (e.g. the first Gleam). */
   reward_flags?: WorldFlag[];
+  /**
+   * Lantern Gifts (abilities) granted when the player wins — e.g. a Lampwarden
+   * handing over the traversal Gift tied to their constellation. Added to the
+   * player's ability set and persisted, so they survive a save/load and
+   * immediately unlock gated tiles/warps.
+   */
+  reward_abilities?: AbilityId[];
   /** Battle music key override. */
   music?: string;
 }

@@ -8,34 +8,54 @@ import type { ScriptRegistry } from './types';
 export const SCRIPTS: ScriptRegistry = {
   // The opening beat: the mentor crosses to you, gives the vesperlamp, and lets you
   // choose a companion from the founding trio. Sets the flags later content checks.
+  // C1 (walkthrough/01-south §2): Star-tender Fenn — warm, unhurried, never a "Professor".
+  // Fenn waits on the lit spine at (13,12); the player triggers this from (13,11), one tile
+  // north. Fenn turns up to the apprentice and gifts the vesperlamp + a starter.
   'script.intro_mentor': [
     { op: 'face', actor: 'player', facing: 'up' },
-    // The mentor waits on the lit spine at (12,11); the player triggers this from (12,10),
-    // one tile north. Step down to stand face-to-face, then turn to the apprentice.
-    { op: 'move', actor: 'mentor', to: { tx: 12, ty: 11 } },
     { op: 'face', actor: 'mentor', facing: 'up' },
-    { op: 'say', speaker: 'MENTOR', text: 'Steady, now. Another light went out of the sky last night.' },
-    { op: 'say', speaker: 'MENTOR', text: 'It is time for your Wayfaring. Take this — your vesperlamp.' },
+    { op: 'say', speaker: 'FENN', text: 'There you are. The sky lost another light in the small hours — I felt it go.' },
+    { op: 'say', speaker: 'FENN', text: 'So. It is time for your Wayfaring, at last. Every Wayfarer leaves Tinderwick with two things.' },
+    { op: 'say', speaker: 'FENN', text: 'The first — a lamp, to carry the light home. Take it. Your vesperlamp.' },
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'giveItem', item: 'vesperlamp', count: 1 },
-    { op: 'say', speaker: 'MENTOR', text: 'And a companion to walk the dark with you. Choose.' },
+    { op: 'say', speaker: 'FENN', text: 'And the second — a friend, to share the walk through the dark. Go on. Choose.' },
     { op: 'giveStarter' },
-    { op: 'say', speaker: 'MENTOR', text: 'Good. Tend the light, and it will tend you. Off you go.' },
-    { op: 'say', speaker: 'MENTOR', text: 'Brisa keeps the Lumenary up the square. Earn her Gleam when your kin is ready.' },
+    { op: 'say', speaker: 'FENN', text: 'Mind you tend them both, and they will tend you. Off into the dusk with you.' },
+    { op: 'say', speaker: 'FENN', text: 'Brisa keeps the Lumenary up the square. Catch a kin first — then go earn her Ember Gleam.' },
     { op: 'setFlag', flag: 'flag:has_vesperlamp' },
     { op: 'setFlag', flag: 'flag:has_starter' },
   ],
 
-  // First Lumenary: walk into Brisa Tallow's hall, hear her out, battle her, and on
-  // victory relight the Ember constellation — the first Gleam. The trainer reward_flags
-  // ('gleam:ember', 'crown_south') are applied by the BattleScene on a win; here we add
-  // the diegetic Gleam cue and the closing beat.
+  // First Lumenary (now a proper enterable chamber — tinderwick_lumenary): the player steps
+  // up the aisle to Brisa Tallow's altar, hears her out, battles her, and on victory relights
+  // the Ember constellation — the first Gleam, wrapped in the Lantern-fair's warmth (Arc E).
+  // The trainer reward_flags ('gleam:ember', 'crown_south') are applied by the BattleScene on
+  // a win; here we add the diegetic Gleam cue and the closing beat.
   'script.lumenary_tinderwick': [
     { op: 'face', actor: 'player', facing: 'up' },
-    { op: 'say', speaker: 'BRISA TALLOW', text: 'The lamp-tender sent you, then. Step into the Lumenary — let us see your spark.' },
+    { op: 'face', actor: 'brisa', facing: 'down' },
+    { op: 'say', speaker: 'BRISA TALLOW', text: 'The lamp-tender sent you up, did she. Come closer — let me see what spark you carry.' },
+    { op: 'say', speaker: 'BRISA TALLOW', text: 'A small flame is no lesser thing, dear. Show me you have kept yours steady.' },
     { op: 'battle', trainer: 'lampwarden_tinderwick' },
     { op: 'gleam', element: 'ember' },
-    { op: 'say', speaker: 'BRISA TALLOW', text: 'There — the Ember Gleam burns again in the southern sky. Carry it well, Wayfarer.' },
+    { op: 'say', speaker: 'BRISA TALLOW', text: 'There — the Ember Gleam burns again in the southern sky. Let it stand up there a while. Carry it well, Wayfarer.' },
+  ],
+
+  // Second Lumenary (pearlmoor_lumenary): the player crosses the sea-shrine chamber to
+  // old ferryman Reyl Wash, hears him out, battles him, and on victory relights the Tide
+  // constellation — the second Gleam, wrapped in the Tide-blessing festival (Arc E). The
+  // trainer's reward_flags ('gleam:tide', 'crown_south') AND reward_abilities ('tidecall')
+  // are applied by the BattleScene on a win; here we add the diegetic Gleam cue and the
+  // closing beat handing over the Lantern Gift.
+  'script.lumenary_pearlmoor': [
+    { op: 'face', actor: 'player', facing: 'up' },
+    { op: 'face', actor: 'reyl', facing: 'down' },
+    { op: 'say', speaker: 'REYL WASH', text: 'Came on foot, did you — no need of the tides to reach my door. Good. The light should be free to all who seek it.' },
+    { op: 'say', speaker: 'REYL WASH', text: 'Now. Read the water with me, Wayfarer, and we shall see if the sea will listen to you.' },
+    { op: 'battle', trainer: 'lampwarden_pearlmoor' },
+    { op: 'gleam', element: 'tide' },
+    { op: 'say', speaker: 'REYL WASH', text: 'The Tide Gleam stands up over Pearlmoor again. And the Tidecall is yours — go on, ask the shallows to part. The harbour keeps its secrets for those who can cross.' },
   ],
 };
 

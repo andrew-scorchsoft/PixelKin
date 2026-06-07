@@ -4,6 +4,16 @@
   "cols": 4,
   "rows": 4,
   "trainers": {
+    "npc_lampwarden": {
+      "path": "assets/sprites/trainers/npc_lampwarden.webp",
+      "width": 128,
+      "height": 128
+    },
+    "npc_shopkeeper": {
+      "path": "assets/sprites/trainers/npc_shopkeeper.webp",
+      "width": 128,
+      "height": 128
+    },
     "player_indi": {
       "path": "assets/sprites/trainers/player_indi.webp",
       "width": 128,
@@ -18,6 +28,11 @@
     },
     "professor_fenn": {
       "path": "assets/sprites/trainers/professor_fenn.webp",
+      "width": 128,
+      "height": 128
+    },
+    "wren": {
+      "path": "assets/sprites/trainers/wren.webp",
       "width": 128,
       "height": 128
     }

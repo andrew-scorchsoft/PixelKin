@@ -14,12 +14,18 @@ const FACINGS: Facing[] = ['down', 'left', 'right', 'up'];
 /** Map NPC sprite keys → a served walk-sheet texture where real art exists. */
 const SPRITE_SHEETS: Record<string, string> = {
   npc_mentor: 'professor_fenn',
+  wren: 'wren',
+  npc_shopkeeper: 'npc_shopkeeper',
+  npc_lampwarden: 'npc_lampwarden',
 };
 
 /** Placeholder body colours so distinct NPCs read apart before real walk-sheets. */
 const SPRITE_COLORS: Record<string, string> = {
   npc_mentor: COLORS.bone,
   npc_child: COLORS.grass,
+  wren: COLORS.diamond,
+  npc_shopkeeper: COLORS.fire,
+  npc_lampwarden: COLORS.deepBlue,
 };
 
 export class Npc extends Actor {

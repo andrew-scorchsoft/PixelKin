@@ -77,6 +77,13 @@
       "rarity": "uncommon",
       "min": 10,
       "max": 12
+    },
+    {
+      "area": "pearlmoor_quay",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 11,
+      "max": 12
     }
   ],
   "scripted": false,

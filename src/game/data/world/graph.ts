@@ -68,15 +68,21 @@ export interface WorldGraph {
  */
 export const VESPERHOLM_GRAPH: WorldGraph = {
   start_map: 'tinderwick',
-  start_at: { tx: 28, ty: 20 }, // in front of the player's cottage (SE), facing the door
+  start_at: { tx: 6, ty: 17 }, // on the lane just outside the player's cottage door, facing up
   nodes: [
     // ---- South: Tinderwick -> Dimglass Coast (2 segments) -> Pearlmoor Quay ----------
     { map_id: 'tinderwick', region: 'south' },
+    { map_id: 'tinderwick_house', region: 'south' }, // interior: the apprentice's cottage
+    { map_id: 'tinderwick_shop', region: 'south' }, // interior: the general store
+    { map_id: 'tinderwick_lumenary', region: 'south' }, // interior: the Ember Lumenary (Brisa Tallow)
     { map_id: 'dimglass_coast', region: 'south' }, // route segment I: cliff path + shore (authored)
     { map_id: 'dimglass_coast_ii', region: 'south' }, // route: tidal flats
     { map_id: 'gullcry_rock', region: 'south', optional: true, reward: 'rare sea-bird kin + a Tide charm' },
     { map_id: 'tideglass_cavern', region: 'south', optional: true, reward: 'landmark micro-dungeon; a signature rare water kin' },
     { map_id: 'pearlmoor_quay', region: 'south' },
+    { map_id: 'pearlmoor_lumenary', region: 'south' }, // interior: the Tide Lumenary (Reyl Wash)
+    { map_id: 'pearlmoor_shop', region: 'south' }, // interior: the port chandlery
+    { map_id: 'pearlmoor_inn', region: 'south' }, // interior: the quayside inn
     // ---- East: Saltreach Fen (2 segments) -> Lowleaf forest -> Cinderhead cave -------
     { map_id: 'saltreach_fen_i', region: 'east' }, // route: open marsh
     { map_id: 'saltreach_fen_ii', region: 'east' }, // route: deep channels
@@ -116,9 +122,25 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'dawnstead', region: 'south', unlocked_by_flag: 'flag:dawn' },
   ],
   edges: [
+    // ---- Tinderwick interiors (door warps, both ways) --------------------------------
+    { from_map: 'tinderwick', to_map: 'tinderwick_house', via_warp: 'to_house', bidirectional: true },
+    { from_map: 'tinderwick', to_map: 'tinderwick_shop', via_warp: 'to_shop', bidirectional: true },
+    { from_map: 'tinderwick', to_map: 'tinderwick_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
+
+    // ---- Pearlmoor Quay interiors (door warps, both ways) ----------------------------
+    { from_map: 'pearlmoor_quay', to_map: 'pearlmoor_shop', via_warp: 'to_shop', bidirectional: true },
+    { from_map: 'pearlmoor_quay', to_map: 'pearlmoor_inn', via_warp: 'to_inn', bidirectional: true },
+    { from_map: 'pearlmoor_quay', to_map: 'pearlmoor_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
+
     // ---- Main rim, clockwise: town -> route segment -> ... -> town -------------------
     { from_map: 'tinderwick', to_map: 'dimglass_coast', via_warp: 'to_coast', bidirectional: true },
-    { from_map: 'dimglass_coast', to_map: 'dimglass_coast_ii', via_warp: 'to_coast_ii', bidirectional: true },
+    // dimglass_coast_ii is not built yet; Dimglass I's north exit is repointed straight to
+    // Pearlmoor (build_dimglass.py `to_quay`), and Pearlmoor returns via `to_dimglass`, so
+    // Tinderwick <-> Dimglass <-> Pearlmoor is fully traversable today.
+    { from_map: 'dimglass_coast', to_map: 'pearlmoor_quay', via_warp: 'to_quay', bidirectional: false },
+    { from_map: 'pearlmoor_quay', to_map: 'dimglass_coast', via_warp: 'to_dimglass', bidirectional: false },
+    // (When dimglass_coast_ii is built, splice it back in between Dimglass I and Pearlmoor and
+    //  restore the `to_coast_ii` -> dimglass_coast_ii -> `to_quay` -> pearlmoor_quay chain.)
     { from_map: 'dimglass_coast_ii', to_map: 'pearlmoor_quay', via_warp: 'to_quay', bidirectional: true },
     { from_map: 'pearlmoor_quay', to_map: 'saltreach_fen_i', via_warp: 'to_fen', bidirectional: true },
     { from_map: 'saltreach_fen_i', to_map: 'saltreach_fen_ii', via_warp: 'to_fen_ii', requires_ability: 'tidecall', bidirectional: true },

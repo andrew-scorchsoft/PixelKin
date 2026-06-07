@@ -1,0 +1,47 @@
+{
+  "name": "interior_stone_set",
+  "image": "assets/tilesets/interior_stone_set.webp",
+  "tile_width": 16,
+  "tile_height": 16,
+  "columns": 8,
+  "tile_count": 8,
+  "tiles": [
+    {
+      "index": 0,
+      "role": "floor"
+    },
+    {
+      "index": 1,
+      "role": "floor"
+    },
+    {
+      "index": 2,
+      "role": "floor"
+    },
+    {
+      "index": 3,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 4,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 5,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 6,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 7,
+      "role": "wall",
+      "collides": true
+    }
+  ]
+}
