@@ -16,6 +16,13 @@ export interface MapRegistryEntry {
   kind: MapKind;
   /** mp3 loop under public/assets/audio/music/ (optional). */
   music?: string;
+  /**
+   * Battle-backdrop variants (240x160 WebP under public/assets/backgrounds/battle/).
+   * One is picked at random when a battle starts on this map, so fights here have a
+   * sense of place instead of flat black, and don't all look identical. Omit to fall
+   * back to the plain night fill. See docs/art-style.md ("Battle backdrops").
+   */
+  battle_backdrops?: string[];
 }
 
 export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
@@ -24,19 +31,50 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { tinderwick_set: 'assets/tilesets/tinderwick_set.webp' },
     kind: 'town',
     music: 'assets/audio/music/tinderwick-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/tinderwick-a.webp',
+      'assets/backgrounds/battle/tinderwick-b.webp',
+    ],
   },
   tinderwick_house: {
     json: 'assets/maps/tinderwick_house.json',
     tilesets: { tinderwick_house_set: 'assets/tilesets/tinderwick_house_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/tinderwick-b.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/tinderwick-house-a.webp',
+      'assets/backgrounds/battle/tinderwick-house-b.webp',
+    ],
   },
   dimglass_coast: {
     json: 'assets/maps/dimglass_coast.json',
     tilesets: { dimglass_coast_set: 'assets/tilesets/dimglass_coast_set.webp' },
     kind: 'route',
     music: 'assets/audio/music/dimglass-coast-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/dimglass-coast-a.webp',
+      'assets/backgrounds/battle/dimglass-coast-b.webp',
+    ],
   },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
 };
+
+/** Every distinct battle-backdrop image across the registry (for preloading). */
+export function allBattleBackdrops(): string[] {
+  const seen = new Set<string>();
+  for (const entry of Object.values(MAP_REGISTRY)) {
+    for (const path of entry.battle_backdrops ?? []) seen.add(path);
+  }
+  return [...seen];
+}
+
+/**
+ * Pick a battle backdrop for a map (random variant), or null if the map has none
+ * — in which case the battle keeps its plain night fill.
+ */
+export function resolveBattleBackdrop(mapId: string | undefined): string | null {
+  const variants = (mapId && MAP_REGISTRY[mapId]?.battle_backdrops) || [];
+  if (variants.length === 0) return null;
+  return variants[Math.floor(Math.random() * variants.length)];
+}

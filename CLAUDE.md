@@ -72,6 +72,7 @@ public/                     # SERVED/BUILT output — what Vite ships (base './'
   assets/
     audio/music/*.mp3       #   rendered loops (area + battle) — output of assets/audio/midi/
     maps/*.json             #   game-loaded map data
+    backgrounds/battle/*.webp #  per-map battle backdrops (240×160) — generate-image output
     ui/logo.png             #   served copy of the logo
     sprites/ tilesets/ fonts/ audio/sfx/   # packed/served output (filling in as built)
 src/
@@ -182,7 +183,7 @@ go digging on every task.
 | Balance/roster tooling | `tools/balance/` |
 | Visual standards (binding) | `docs/art-style.md` |
 | Asset masters (source) | `assets/` (`assets/README.md`) |
-| Served/rendered assets | `public/assets/` (music, maps, logo) |
+| Served/rendered assets | `public/assets/` (music, maps, battle backdrops, logo) |
 
 ## Asset generation skills
 
@@ -328,3 +329,15 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **The device shell screen is locked to 3:2.** `shells.css` sizes `#game-root` to the
   largest 3:2 box that fits, so `Scale.FIT` never pillarboxes (no black side bars). The
   `plain`/`overlay` shells are intentionally full-bleed and still letterbox.
+- **Crisp text rides on `RENDER_SCALE`.** Game logic is still 240×160, but the canvas is
+  rendered into a higher-res framebuffer via `scale.zoom: RENDER_SCALE` (`config.ts` →
+  `main.ts`) so the pixel font isn't a 240×160 bitmap blown up by nearest-neighbour. World
+  art stays chunky (NEAREST); `ui/Text.ts` sets each Text's `resolution` to `RENDER_SCALE`
+  so glyphs get real pixels. Build text through `makeText` (it's the only place that sets
+  resolution) — a raw `scene.add.text` will render blocky again.
+- **Battle backdrops are a per-map data edit.** A battle's background is chosen from the
+  map's `battle_backdrops` list in `data/world/maps.ts` (random variant), preloaded in
+  `PreloadScene`, drawn behind the battlers in `BattleScene`. New area = add 240×160 WebPs
+  under `public/assets/backgrounds/battle/` + list them on the map; no map with a list = it
+  keeps the plain night fill. Briefs/standards live in `docs/art-style.md` (§5-H). Keep them
+  subtle so sprites/plates stay readable.

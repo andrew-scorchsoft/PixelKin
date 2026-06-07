@@ -5,6 +5,9 @@ node_modules/
 dist/
 *.tsbuildinfo
 
+# Scratch / throwaway asset previews (e.g. raw generate-image output before downscale)
+tmp/
+
 # Python venv for the asset-generation skills
 venv/
 __pycache__/

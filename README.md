@@ -46,7 +46,8 @@ What's already in the repo:
   balanced** with a Monte Carlo simulator (every type lands a fair win-rate). The
   data is the source of truth in [`src/game/data/`](src/game/data/); the design
   and tooling are in [`docs/mechanics/`](docs/mechanics/) and
-  [`tools/balance/`](tools/balance/).
+  [`tools/balance/`](tools/balance/). Battles read their backdrop from the map —
+  subtle, per-area scenes (with a few variants each) instead of flat black.
 - **An original soundtrack.** Loop-ready area and battle music for the world,
   composed via the repo's music skills into
   [`public/assets/audio/music/`](public/assets/audio/music/); the per-area plan
