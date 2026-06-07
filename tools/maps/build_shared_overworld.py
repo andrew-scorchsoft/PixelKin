@@ -30,7 +30,7 @@ import json, subprocess, sys
 from pathlib import Path
 import numpy as np
 from PIL import Image
-from tileforge import (load, deborder, jitter, roll, flip_h,  # reusable seam helpers
+from tileforge import (load, deborder, jitter, roll, flip_h, whole_downscale,  # seam helpers
                        KEEP, H_TILE, V_TILE)
 
 REPO = Path(__file__).resolve().parents[2]
@@ -183,29 +183,36 @@ tw_family("water", "water", "water", collides=True, encounter="water", ability="
 add("water_a2", load(TW / "t53_water_a2.png"), role="water", collides=True, tileable_fill=True)
 add("water_a3", load(TW / "t54_water_a3.png"), role="water", collides=True, tileable_fill=True)
 
+# Cleaner sand→water shoreline (production art, Nano) added as water edge_n/edge_s variants:
+# a horizontal wet-sand→foam→water band. edge_n = land(sand) above/water below (as drawn);
+# edge_s = the same band flipped vertically. Gives a crisp foam shore beside a beach.
+SRC = OUT.parent / "_src"
+sw_n = whole_downscale(SRC / "swater.png", "edge_n")
+sw_s = deborder(Image.fromarray(np.flipud(np.asarray(sw_n.convert("RGBA")))), "edge_s")
+add("water_edge_n_sw", sw_n, role="water", terrain="water", autotile="edge_n", collides=True)
+add("water_edge_s_sw", sw_s, role="water", terrain="water", autotile="edge_s", collides=True)
+
 # tree canopy (above-layer walk-under top) — kept for object trees too
 add("canopy", load(TW / "t39_tree_fill.png"), role="canopy")
 
-# --- 3) cliff family from the Dimglass coast masters (collide blob) ----------
-# A grass-topped coastal cliff that meshes like the tree-wall. The kit is a partial
-# 9-slice; we map what exists and mirror to fill the rest so every boundary cell gets
-# an edge/corner tile (meshing PASS) and the wall reads as honest rock.
-ck = DG / "cliff_kit"
-cliff_map = {
-    "corner_nw": "cliff_00", "edge_n": "cliff_01", "corner_ne": "cliff_02",
-    "edge_w": "cliff_03", "fill": "cliff_04", "edge_e": None,   # mirror of edge_w
-    "corner_sw": "cliff_05", "edge_s": "cliff_07", "corner_se": "cliff_06",
+# --- 3) cliff family from PRODUCTION ART (rugged slate cliff, grass-lip top) --
+# A grass-topped coastal rock cliff that meshes like the tree-wall. Rock face on the
+# fill + side/bottom edges; the grassy LIP on the top edge & top corners. Whole-image
+# downscale of the flat-lit field renders, then role-aware deborder + variants so a
+# tall wall doesn't stamp one face. (Replaces the old brick-looking legacy kit.)
+cliff_face = whole_downscale(SRC / "cliff_face.png", "fill")          # rugged rock
+cliff_lip = whole_downscale(SRC / "cliff_top.png", "edge_n")         # grass-on-top lip
+CLIFF_BASE = {
+    "fill": ("fill", cliff_face), "edge_n": ("edge_n", cliff_lip),
+    "corner_nw": ("corner_nw", cliff_lip), "corner_ne": ("corner_ne", cliff_lip),
+    "edge_e": ("edge_e", cliff_face), "edge_w": ("edge_w", cliff_face),
+    "edge_s": ("edge_s", cliff_face), "corner_sw": ("corner_sw", cliff_face),
+    "corner_se": ("corner_se", cliff_face),
 }
 CLIFF_VARIANTS = {"fill": 1, "edge_n": 1, "edge_s": 1, "edge_w": 1, "edge_e": 1}
 for r in NINE:
-    src = cliff_map.get(r)
-    if src:
-        im = load(ck / f"{src}.png")
-    elif r == "edge_e":
-        im = flip_h(load(ck / "cliff_03.png"))
-    else:
-        im = load(ck / "cliff_04.png")
-    im = deborder(im, r)
+    role_src, src_im = CLIFF_BASE[r]
+    im = deborder(src_im, r)
     add(f"cliff_{r}", im, role="cliff", terrain="cliff", autotile=r, collides=True,
         tileable_fill=(r == "fill"))
     # variants so a tall cliff wall / long ledge doesn't stamp one rock face

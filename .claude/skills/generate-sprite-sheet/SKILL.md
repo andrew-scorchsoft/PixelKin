@@ -468,11 +468,19 @@ ring vs interior), and that rim *is* the grid when tiled. The fix is prompt + sa
   (33×). The tile prompt templates now carry this wording.
 - **Edges:** paint the transition as a long **strip** and slice a clean interior
   cross-section; keep lighting flat along the repeat axis. Then `deborder(im, role)`.
-- **Model note:** Nano Banana Pro (default) is the reliable tile path — native transparency,
-  good `--reference` palette lock, ~20s. gpt-image-2's raw API works (~15s) but our sprite
-  tooling routes OpenAI through opaque + magenta-chroma + the *creature* style preamble +
-  retries, so for **tiles** it's slow/fragile today; prefer `--provider google` for tiles
-  until the OpenAI tile path uses native `background:transparent` + a tile-specific preamble.
+- **Model choice (measured A/B, corrected flat-lit prompt):** both models drop the rim hugely
+  vs the old single-tile prompt (73 → single digits), so the *prompt* is the main lever. Split:
+  - **Uniform FILLS (grass/sand/stone/water): gpt-image-2 is cleaner** — it draws a literal even
+    texture (sand rim **0.6**), while Nano embellishes a fill with scene detail (rocks/puddles,
+    rim **8.9**) that fights tiling. Use OpenAI for pure fills *when it's behaving*.
+  - **EDGES / DECOR / OBJECTS / anything transparent: Nano** — cleaner edge (rim 0.7 vs gpt 18)
+    and native transparency; gpt's edge picked up a vignette.
+  - **Reliability caveat (today):** our sprite tooling routes OpenAI through opaque + magenta-
+    chroma + the *creature* preamble + retries, so gpt tiles are **slow and frequently fail** in
+    this env (the cliff fill fell back to Nano). Until the OpenAI tile path uses native
+    `background:transparent` + a tile-specific preamble + no retries, **default `--provider
+    google` for tiles**, and only reach for OpenAI on a stubborn uniform fill. Generate fills as
+    a large flat field and `whole_downscale` regardless of model.
 
 The legacy per-area `_shared/` recipe below still documents the from-scratch generate flow;
 it remains valid for a brand-new biome, but the *default* is now "reference the packed
