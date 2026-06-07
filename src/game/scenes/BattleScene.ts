@@ -40,7 +40,7 @@ import { getTrainer, getTrainerLines } from '@game/content/trainers';
 import { getItem } from '@game/content/items';
 import { resolveBattleBackdrop } from '@game/data/world/maps';
 import type { KinInstanceData, InventoryData } from '@game/systems/save/types';
-import type { WorldFlag } from '@game/data/world/types';
+import type { WorldFlag, AbilityId } from '@game/data/world/types';
 
 const MUSIC_DIR = 'assets/audio/music/';
 
@@ -61,6 +61,8 @@ export interface BattleResult {
   caught?: KinInstanceData;
   /** Flags to set on win (e.g. a trainer's reward_flags). */
   set_flags?: string[];
+  /** Lantern Gifts (abilities) granted on win (e.g. a Lampwarden's reward_abilities). */
+  grant_abilities?: AbilityId[];
 }
 
 /** Full scene data = the request plus the result callback. */
@@ -90,6 +92,7 @@ export class BattleScene extends Phaser.Scene {
   private msg!: BattleMessage;
 
   private setFlags: string[] = [];
+  private grantAbilities: AbilityId[] = [];
   private finished = false;
 
   constructor() {
@@ -100,6 +103,7 @@ export class BattleScene extends Phaser.Scene {
     this.request = data;
     this.finished = false;
     this.setFlags = [];
+    this.grantAbilities = [];
     this.cameras.main.setBackgroundColor(COLORS.night);
     this.sfx = new Sfx(this);
     this.music = new MusicDirector(this);
@@ -511,6 +515,7 @@ export class BattleScene extends Phaser.Scene {
           this.msg.setVisible(true);
         }
         for (const f of trainer?.reward_flags ?? []) this.setFlags.push(f as WorldFlag);
+        for (const a of trainer?.reward_abilities ?? []) this.grantAbilities.push(a);
       }
     } else if (outcome === 'lose') {
       await this.msg.show('Your lamp guttered out... You hurry home to the hearth.');
@@ -571,6 +576,7 @@ export class BattleScene extends Phaser.Scene {
       inventory: this.inventory,
       caught,
       set_flags: this.setFlags.length > 0 ? this.setFlags : undefined,
+      grant_abilities: this.grantAbilities.length > 0 ? this.grantAbilities : undefined,
     };
 
     this.music.stop();

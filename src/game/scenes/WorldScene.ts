@@ -413,6 +413,11 @@ export class WorldScene extends Phaser.Scene {
     this.box = result.box;
     this.inventory = result.inventory;
     if (result.set_flags) this.flags.setMany(result.set_flags);
+    // Lantern Gifts granted by a Lampwarden win — add to the live ability set so
+    // gated tiles/warps unlock immediately, and persist() (below) saves them.
+    if (result.grant_abilities) {
+      for (const a of result.grant_abilities) this.abilities.add(a);
+    }
     void this.persist();
   }
 
