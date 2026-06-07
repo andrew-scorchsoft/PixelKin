@@ -1,0 +1,38 @@
+{
+  "title": "Hushfrost Pass - Lamp in the Canyon",
+  "_note": "Option A anchor. gbc 4-voice band. emotional preset. Suspended F minor, 68 BPM, max negative space. Vesper motif stretched and fragile: the rising leap (C4->F4->G4) overshoots and hangs too long before a stepwise settle (Ab4->G4->F4). Lone pulse25 bell-call answered by silence; pulse12 slow suspended (sus2/sus4) arp at low gain; tri_bass tonic pedal drone moving only at phrase ends; drums a muffled heartbeat (soft kick on 1, faint pulse on the 'and' of 3). 16 bars, last bar voice-leads back to bar 1 (G2->C... pickup tension to F).",
+  "era": "gbc",
+  "tempo": 68,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "F minor (suspended)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "notes": "C4q F4h. | G4w | rh Ab4q G4q | F4h rh | C4q F4h. | G4h. rq | Ab4h G4q F4q | F4h rh | C4q Db4h. | C4w | rh Bb3q C4q | F4h rh | Db4q C4q Bb3q G3q | Ab4h G4h | F4h C4q F4q | G4h rh"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 3,
+      "gain": 0.55,
+      "notes": "F3h G3h | C4h F3h | Db4h C4h | F3h G3h | F3h G3h | C4h Bb3h | Db4h C4h | F3h G3h | F3h Ab3h | Eb4h Db4h | Bb3h C4h | F3h Ab3h | Db4h C4h | Eb4h Db4h | F3h C4h | G3h C4h"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "notes": "F2w | F2w | F2h Db2h | F2w | F2w | F2w | Db2h C2h | F2w | F2w | Ab2w | Bb2h F2h | F2w | Db2w | Eb2h Db2h | F2w | G2h C3h"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "_note": "Muffled heartbeat: 8 eighth-slots per bar; soft kick on beat 1 (slot 1), faint kick on the 'and' of 3 (slot 6). Lots of silence.",
+      "notes": "e kick r r r r kick r r | kick r r r r kick r r | kick r r r r kick r r | kick r r r r kick r r | kick r r r r kick r r | kick r r r r kick r r | kick r r r r kick r r | kick r r r r kick r r | kick r r r r kick r r | kick r r r r kick r r | kick r r r r kick r r | kick r r r r kick r r | kick r r r r kick r r | kick r r r r kick r r | kick r r r r kick r r | kick r r r r kick r r"
+    }
+  ]
+}

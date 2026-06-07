@@ -1,0 +1,38 @@
+{
+  "title": "Sunken Solarium - Remembered Summer",
+  "_note": "Option A anchor. gbc 4-voice band. emotional preset. Nostalgic G major with one wistful borrowed minor turn (E minor / C minor color). 96 BPM, 4/4, 24 bars (~30s). Vesper motif stated warmly and fully in major as the lead's opening: rising leap D4->G4->A4 (radiant overshoot) then tender settle B4->A4->G4. Lead phrases rise then sigh down a step. pulse12 soft harp-like rolling broken-triad arpeggio (Solar signature). tri_bass slow warm root-fifth. drums soft brushed kick on 1 & 3, faint hat — light lapping on water. Last bar (D7 chord implied via arp + bass D->G pickup) voice-leads to bar 1.",
+  "era": "gbc",
+  "tempo": 96,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "G major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "notes": "D4q G4q A4h | B4q A4q G4h | D4q G4q B4q A4q | G4h rh | D4q G4q A4h | B4q A4q D5h | C5q B4q A4q G4q | A4h rh | E4q A4q B4h | C5q B4q A4h | D4q G4q B4q D5q | B4h rh | E4q G4q C5q B4q | A4q G4q E4h | D4q E4q G4q A4q | G4h rh | D5q B4q G4h | C5q A4q F#4h | B4q G4q D4h | E4q F#4q G4h | A4q B4q C5q B4q | A4q G4q E4h | D4q E4q G4q A4q | B4q A4q D4h"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 3,
+      "gain": 0.6,
+      "notes": "G3e B3e D4e B3e G3e B3e D4e B3e | D3e G3e B3e G3e D3e G3e B3e G3e | E3e G3e B3e G3e E3e G3e B3e G3e | D3e F#3e A3e F#3e D3e F#3e A3e F#3e | G3e B3e D4e B3e G3e B3e D4e B3e | D3e G3e B3e D4e D3e G3e B3e D4e | C3e E3e G3e E3e C3e E3e G3e E3e | D3e F#3e A3e F#3e D3e F#3e A3e F#3e | A3e C4e E4e C4e A3e C4e E4e C4e | D3e F#3e A3e F#3e D3e F#3e A3e F#3e | G3e B3e D4e B3e G3e B3e D4e B3e | E3e G3e B3e G3e E3e G3e B3e G3e | C3e E3e G3e E3e C3e E3e G3e E3e | E3e G3e B3e G3e E3e G3e B3e G3e | D3e G3e B3e G3e D3e G3e B3e G3e | G3e B3e D4e B3e G3e B3e D4e B3e | G3e B3e D4e B3e G3e B3e D4e B3e | D3e F#3e A3e F#3e D3e F#3e A3e F#3e | G3e B3e D4e B3e G3e B3e D4e B3e | C3e E3e G3e E3e E3e G3e B3e G3e | A3e C4e E4e C4e A3e C4e E4e C4e | C3e E3e G3e E3e C3e E3e G3e E3e | G3e B3e D4e B3e D3e G3e B3e D4e | D3e F#3e A3e C4e D3e F#3e A3e C4e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "notes": "G2h D3h | G2h D3h | E2h B2h | D2h A2h | G2h D3h | G2h D3h | C2h G2h | D2h A2h | A2h E3h | D2h A2h | G2h D3h | E2h B2h | C2h G2h | E2h B2h | D2h A2h | G2h D3h | G2h D3h | D2h A2h | G2h D3h | C2h E2h | A2h E3h | C2h G2h | G2h D3h | D2h A2h"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "_note": "Soft brushed kick on 1 and 3, faint hat on offbeats — light lapping on water. 8 eighth-slots per bar.",
+      "notes": "e kick r hat r kick r hat r | kick r hat r kick r hat r | kick r hat r kick r hat r | kick r hat r kick r hat r | kick r hat r kick r hat r | kick r hat r kick r hat r | kick r hat r kick r hat r | kick r hat r kick r hat r | kick r hat r kick r hat r | kick r hat r kick r hat r | kick r hat r kick r hat r | kick r hat r kick r hat r | kick r hat r kick r hat r | kick r hat r kick r hat r | kick r hat r kick r hat r | kick r hat r kick r hat r | kick r hat r kick r hat r | kick r hat r kick r hat r | kick r hat r kick r hat r | kick r hat r kick r hat r | kick r hat r kick r hat r | kick r hat r kick r hat r | kick r hat r kick r hat r | kick r hat r kick r hat hat"
+    }
+  ]
+}

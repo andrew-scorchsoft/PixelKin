@@ -41,6 +41,13 @@ non-trivial:
 - **`references/style-guide.md`** — era voice budgets, **clip lengths**,
   **looping vs. one-shot conventions**, tempo/key/form, and soundtrack
   cohesion. This is *how long it should be and how it should loop*.
+- **`references/pixelkin-soundtrack.md`** — the **PixelKin score bible**: the
+  "lanterns in the dark" brief, how we study the cartridge-era handheld
+  monster-RPG soundtracks *without copying a bar*, and the **cohesion system**
+  (the recurring *Vesper motif*, per-element sonic signatures, voice/era policy,
+  the dusk→dawn key arc). Read it before scoring any **world-map area or route** —
+  the ready-to-build, **2–3-options-per-area** brief list it points to lives in
+  [`docs/world/music-direction.md`](../../../docs/world/music-direction.md).
 
 ## Prerequisites
 

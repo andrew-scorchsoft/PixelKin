@@ -1,0 +1,43 @@
+{
+  "title": "Vesper Crossroads - Quiet Hours at the Inn",
+  "_note": "Hub mood sibling. Lonelier, lamplit, after-dark: same inn at 2am, one window still glowing. gbc 4-voice band. 96 BPM, 4/4, warm C major with one wistful turn to vi (Am). Vesper motif stretched/slowed, the settle-home phrase lingering on its final note before resolving - tender not chipper. lead=sparse pulse25, more rests, music-box. harmony=slow rolled arps, fewer notes, ringing longer. bass=half-note pillars, restful. drums=soft heartbeat-rate kick only. 16-bar loop. Last bar G(V) -> resolves to C bar 1.",
+  "era": "gbc",
+  "tempo": 96,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.95,
+      "_note": "Stretched Vesper motif, lots of rest. Bars 1-2 the lift, 3-4 the settle lingering. vi turn around bar 9-12.",
+      "notes": "G3h C4q D4q | E4h. rq | E4q D4q C4h | rh C4q rq | G3h C4q D4q | E4h. rq | F4h E4q D4q | C4h. rq | A3h C4q E4q | A4h. rq | F4q E4q D4q C4q | D4h rh | G3h C4q D4q | E4h D4q C4q | D4q C4q B3q D4q | C4q B3q D4h"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.5,
+      "_note": "Slow rolled arps, fewer notes, ringing longer (half/quarter, not eighths). I-vi-IV-V with the vi turn.",
+      "notes": "C4q E4q G4h | C4q E4q G4h | A3q C4q E4h | A3q C4q E4h | C4q E4q G4h | C4q E4q G4h | F3q A3q C4h | C4q E4q G4h | A3q C4q E4h | A3q C4q E4h | F3q A3q C4h | G3q B3q D4h | C4q E4q G4h | A3q C4q E4h | F3q A3q C4h | G3q B3q D4h"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.85,
+      "_note": "Half-note pillars, restful. I-vi-IV-V. Last bar G voice-leads to C.",
+      "notes": "C2h G2h | C2h G2h | A2h E2h | A2h E2h | C2h G2h | C2h G2h | F2h C2h | C2h G2h | A2h E2h | A2h E2h | F2h C2h | G2h D2h | C2h G2h | A2h E2h | F2h G2h | G2h G2h"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.4,
+      "_note": "Soft heartbeat-rate kick only, on beat 1 (and a faint pulse on 3). Almost silent.",
+      "notes": "q kick r kick r | kick r kick r | kick r kick r | kick r kick r | kick r kick r | kick r kick r | kick r kick r | kick r kick r | kick r kick r | kick r kick r | kick r kick r | kick r kick r | kick r kick r | kick r kick r | kick r kick r | kick r snare r"
+    }
+  ]
+}

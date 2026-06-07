@@ -1,0 +1,58 @@
+{
+  "title": "Sunvault Climb - First Light at the Top",
+  "_note": "Option C Light-forward / brightened variant. era gba (richer register, chords allowed). 116 BPM, 4/4, brilliant D major, 24 bars. Lead carries the ascending arpeggio melody, DOUBLED at the octave by a high bright bell for ascending sparkle (true-starlight Light signature). A secondary warm gba pad sustains underneath the climb for bloom; harp pluck arp continues over it. Strong forward walking bass. Full bright kit, crash/fill at the loop seam. Vesper motif reaches its highest statement — leap and settle an octave up, doubled in bell timbre, sparkling. Pre-echoes the Observatory's Light bells. ~6 voices (within gba's 8). Last bar A->D pickup voice-leads to bar 1.",
+  "era": "gba",
+  "tempo": 116,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "D major (brilliant)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "Ascending arpeggio melody, climbing; the Vesper climb at its highest. Settle each phrase.",
+      "notes": "A4q D5q F#5q A5q | F#5q E5q D5h | B4q E5q G5q B5q | A5q F#5q E5h | A4q D5q F#5q A5q | B5q A5q F#5q D5q | E5q G5q B5q A5q | F#5h E5h | F#5q A5q D6q A5q | B5q C#6q D6h | E6q D6q B5q A5q | F#5q E5q D5h | A4q D5q F#5q A5q | F#5q E5q D5h | B4q E5q G5q B5q | A5h F#5h | D6q A5q F#5q D5q | E5q F#5q G5q A5q | B5q A5q G5q E5q | F#5q E5q D5h | A5q D6q F#6q E6q | D6q B5q A5q F#5q | E5q D5q F#5q A5q | A5q F#5q E5q D5q"
+    },
+    {
+      "name": "bell",
+      "voice": "pulse12",
+      "octave": 5,
+      "gain": 0.55,
+      "_note": "High bright bell doubling the lead at the octave for ascending sparkle.",
+      "notes": "A5q D6q F#6q A6q | F#6q E6q D6h | B5q E6q G6q B6q | A6q F#6q E6h | A5q D6q F#6q A6q | B6q A6q F#6q D6q | E6q G6q B6q A6q | F#6h E6h | F#6q A6q D7q A6q | B6q C#7q D7h | E7q D7q B6q A6q | F#6q E6q D6h | A5q D6q F#6q A6q | F#6q E6q D6h | B5q E6q G6q B6q | A6h F#6h | D7q A6q F#6q D6q | E6q F#6q G6q A6q | B6q A6q G6q E6q | F#6q E6q D6h | A6q D7q F#7q E7q | D7q B6q A6q F#6q | E6q D6q F#6q A6q | A6q F#6q E6q D6q"
+    },
+    {
+      "name": "harmony",
+      "voice": "pluck",
+      "octave": 3,
+      "gain": 0.6,
+      "_note": "Harp pluck arp rolling upward beneath the climb.",
+      "notes": "D3e A3e D4e F#4e A4e F#4e D4e A3e | A3e E4e A4e C#5e A4e E4e C#4e A3e | E3e B3e E4e G4e B4e G4e E4e B3e | A3e E4e A4e C#5e A4e E4e C#4e A3e | D3e A3e D4e F#4e A4e F#4e D4e A3e | D3e A3e D4e F#4e A4e F#4e D4e A3e | E3e B3e E4e G4e B4e G4e E4e B3e | A3e E4e A4e C#5e A4e E4e C#4e A3e | D3e A3e D4e F#4e A4e F#4e D4e A3e | A3e E4e A4e C#5e A4e E4e C#4e A3e | E3e B3e E4e G4e B4e G4e E4e B3e | A3e E4e A4e C#5e A4e E4e C#4e A3e | D3e A3e D4e F#4e A4e F#4e D4e A3e | G3e D4e G4e B4e D5e B4e G4e D4e | E3e B3e E4e G4e B4e G4e E4e B3e | A3e E4e A4e C#5e A4e E4e C#4e A3e | D3e A3e D4e F#4e A4e F#4e D4e A3e | A3e E4e A4e C#5e A4e E4e C#4e A3e | G3e D4e G4e B4e D5e B4e G4e D4e | D3e A3e D4e F#4e A4e F#4e D4e A3e | D3e A3e D4e F#4e A4e F#4e D4e A3e | G3e D4e G4e B4e D5e B4e G4e D4e | E3e B3e E4e G4e B4e G4e E4e B3e | A3e E4e A4e C#5e E4e C#4e A3e E3e"
+    },
+    {
+      "name": "pad",
+      "voice": "pad",
+      "octave": 3,
+      "gain": 0.4,
+      "_note": "Warm gba pad sustaining under the climb for bloom — chords allowed on gba.",
+      "notes": "D3+F#3+A3w | A3+C#4+E4w | E3+G3+B3w | A3+C#4+E4w | D3+F#3+A3w | D3+F#3+A3w | E3+G3+B3w | A3+C#4+E4w | D3+F#3+A3w | A3+C#4+E4w | E3+G3+B3w | A3+C#4+E4w | D3+F#3+A3w | G3+B3+D4w | E3+G3+B3w | A3+C#4+E4w | D3+F#3+A3w | A3+C#4+E4w | G3+B3+D4w | D3+F#3+A3w | D3+F#3+A3w | G3+B3+D4w | E3+G3+B3w | A3+C#4+E4w"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.95,
+      "_note": "Strong forward walking bass.",
+      "notes": "D2q A2q D3q F#3q | A2q E3q A2q C#3q | E2q B2q E3q G2q | A2q E3q A2q E2q | D2q A2q D3q F#3q | D2q A2q D3q A2q | E2q B2q E3q B2q | A2q E3q A2q E2q | D2q A2q D3q F#3q | A2q E3q A2q C#3q | E2q B2q E3q G2q | A2q E3q A2q E2q | D2q A2q D3q F#3q | G2q D3q G2q B2q | E2q B2q E3q B2q | A2q E3q A2q E2q | D2q A2q D3q F#3q | A2q E3q A2q C#3q | G2q D3q G2q B2q | D2q A2q D3q A2q | D2q A2q D3q F#3q | G2q D3q G2q B2q | E2q B2q E3q B2q | A2q E2q A2q A2q"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "_note": "Full bright kit, crash/fill at the seam.",
+      "notes": "e kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat snare+hat kick+hat snare+hat kick snare kick crash"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "title": "Pearlmoor Quay - Festival of the Floating Lights",
+  "_note": "Festival variant. gbc 4-voice, no chords. 116 BPM, 3/4, F major, bright. Lively waltz - the Vesper motif ORNAMENTED with quick grace-note runs (sixteenths), celebratory; the town's hook in its happiest dress. Harmony = busier Tide bell-buoy chimes + bright Light sparkle on phrase ends. Bass = bouncier waltz with a little sixteenth anticipation into beat 1. Percussion = light noise brush on 1 + cheerful tambourine-style hat on 2&3, a fill at the seam. 24-bar loop ~37s.",
+  "era": "gbc",
+  "tempo": 116,
+  "time_signature": [3, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "F major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "Waltz Vesper in F ornamented with quick sixteenth grace runs, festive. lift C4->F4->G4, settle A4->G4->F4. Final bar leans on C (V) into bar 1.",
+      "notes": "C4q F4e G4e A4q | G4e F4e G4h | F4e G4e A4q C5q | A4h rq | C4q F4e G4e A4q | G4e F4e G4h | A4e B4e C5q A4q | F4h. | F4q A4e C5e D5q | C5e B4e A4h | C5e D5e C5q B4q | A4q. rq | A4q C5e D5e C5q | B4e A4e G4h | A4e G4e A4q B4q | A4h. | C4q F4e G4e A4q | G4e F4e G4h | F4e G4e A4q C5q | A4q. rq | F4e G4e A4q C5q | A4e G4e F4q E4q | F4h. | C4e D4e E4q C4q"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.55,
+      "_note": "Busier Tide bell-buoy chimes on 2&3 with Light sparkle (high broken triads) at phrase ends. F(A-C), C(C-E/G), Dm(F-A), Bb(D-F), Gm(D-G).",
+      "notes": "rq A4e C5e C5e E5e | rq C5e E5e G5e E5e | rq A4e C5e F5e A5e | rq C5e E5e G5e C6e | rq A4e C5e C5e E5e | rq C5e E5e G5e E5e | rq A4e C5e C5e F5e | rq A4e C5e A4e C5e | rq A4e C5e D5e F5e | rq A4e C5e E5e A5e | rq C5e E5e D5e G5e | rq B4e D5e G5e B5e | rq A4e C5e E5e G5e | rq C5e E5e G5e C6e | rq B4e D5e G5e B5e | rq A4e C5e A4e C5e | rq A4e C5e C5e E5e | rq C5e E5e G5e E5e | rq A4e C5e F5e A5e | rq C5e E5e G5e C6e | rq A4e C5e C5e E5e | rq C5e E5e G5e E5e | rq A4e C5e F5e A5e | rq C5e E5e G5e C6e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.95,
+      "_note": "Bouncier waltz bass, root on 1, fifth on 2&3, with a little sixteenth anticipation lift into the next downbeat. F(F-C), C(C-G), Dm(D-A), Bb(Bb-F), Gm(G-D).",
+      "notes": "F2q C3q C3e D3e | C2q G2q G2e A2e | F2q C3q C3e D3e | F2q C3q C3q | F2q C3q C3e D3e | C2q G2q G2e A2e | C2q G2q G2e A2e | F2q C3q C3q | F2q C3q C3e D3e | D2q A2q A2e B2e | C2q G2q G2e A2e | G2q D3q D3q | F2q C3q C3e D3e | C2q G2q G2e A2e | G2q D3q D3e E3e | F2q C3q C3q | F2q C3q C3e D3e | C2q G2q G2e A2e | F2q C3q C3e D3e | C2q G2q G2q | F2q C3q C3e D3e | C2q G2q G2q | F2q C3q C3e D3e | C2q G2q C3q"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.6,
+      "_note": "Light noise brush (kick) on beat 1 + cheerful tambourine-style hat on 2&3, a crash fill at the seam.",
+      "notes": "q kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick hat ohat | kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick hat ohat | kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick snare crash"
+    }
+  ]
+}

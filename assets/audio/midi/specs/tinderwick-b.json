@@ -1,0 +1,43 @@
+{
+  "title": "Tinderwick - Embers Banked Low",
+  "_note": "Mood sibling: melancholy lean. gbc 4-voice, no chords. 80 BPM, 6/8, A minor leaning to relative C major only at the very last bar. Lead = Vesper contour CONTRACTED - the hopeful leap undershoots and lingers, more sigh than lift (E3->A3->B3 reaching, then sagging back). Harmony = slow rolling 6/8 arpeggio, fewer notes, more air. Bass = gentle dotted 6/8 lilt, like slow breathing. Percussion = none / one felt brush at phrase ends. 16 bars 6/8.",
+  "era": "gbc",
+  "tempo": 80,
+  "time_signature": [6, 8],
+  "ppq": 480,
+  "loop": true,
+  "key": "A minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "Contracted Vesper: the lift reaches E3->A3->B3 then sighs back instead of overshooting; settle sags. 6/8: each bar two dotted-quarter pulses. Final bar lifts toward C (relative major) and to E (V of Am) to lead back.",
+      "notes": "E3q. A3q. | B3q A3e A3q. | C4q B3e A3q. | A3q. rq. | E3q. A3q. | B3q A3e G3q. | A3q B3e A3q. | A3q. rq. | C4q. B3q. | A3q G3e A3q. | D4q C4e B3q. | A3q. rq. | E3q. A3q. | C4q B3e A3q. | E4q D4e C4q. | C4q. B3e E3e r"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.5,
+      "_note": "Slow rolling 6/8 arpeggio, fewer notes, more air. Am(A-C-E), G(G-B-D), F(F-A-C), Em(E-G-B), C(C-E-G) under the final relative-major turn.",
+      "notes": "A3e C4e E4e A3e C4e E4e | A3e C4e E4e A3e C4e E4e | F3e A3e C4e F3e A3e C4e | E3e G3e B3e E3e G3e B3e | A3e C4e E4e A3e C4e E4e | G3e B3e D4e G3e B3e D4e | A3e C4e E4e A3e C4e E4e | E3e G3e B3e E3e G3e B3e | F3e A3e C4e F3e A3e C4e | E3e G3e B3e E3e G3e B3e | D3e F3e A3e D3e F3e A3e | A3e C4e E4e A3e C4e E4e | A3e C4e E4e A3e C4e E4e | F3e A3e C4e F3e A3e C4e | C4e E4e G4e C4e E4e G4e | C4e E4e G4e E3e G3e B3e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.9,
+      "_note": "Gentle dotted 6/8 lilt, like slow breathing - one note per dotted-quarter beat.",
+      "notes": "A2q. E2q. | A2q. E2q. | F2q. C2q. | E2q. B2q. | A2q. E2q. | G2q. D2q. | A2q. E2q. | E2q. B2q. | F2q. C2q. | E2q. B2q. | D2q. A2q. | A2q. E2q. | A2q. E2q. | F2q. C2q. | C2q. G2q. | C2q. E2q."
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.45,
+      "_note": "Near-silent: one felt brush (hat) at the end of each 2-bar phrase. 16 bars 6/8 = two dotted-quarter beats per bar.",
+      "notes": "q. rq. rq. | rq. hat | rq. rq. | rq. hat | rq. rq. | rq. hat | rq. rq. | rq. hat | rq. rq. | rq. hat | rq. rq. | rq. hat | rq. rq. | rq. hat | rq. rq. | rq. hat"
+    }
+  ]
+}

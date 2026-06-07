@@ -1,0 +1,43 @@
+{
+  "title": "Vesper Crossroads - The Signpost Tune",
+  "_note": "Hub waystation anchor. The Vesper motif at its cosy home base: stated plainly and complete in bars 1-2 (G3->C4->D4 lift overshoots, E4->D4->C4 settles home). gbc 4-voice band. 108 BPM, 4/4, comfortable C major. 16-bar loop, tight and never-grating. harmony=light bell-ish pulse12 arps outlining I-vi-IV-V. bass=simple rooted walk bouncing on 1 and 3. drums=soft brushy hat + light kick. Last bar G dom -> resolves into C downbeat of bar 1.",
+  "era": "gbc",
+  "tempo": 108,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "A: full Vesper statement, friendly. A': repeat with a small turn. B: gentle vi/IV lift. A'': home. Small range C4-A4.",
+      "notes": "G3q C4q D4h | E4q D4q C4h | G3q C4q D4q E4q | G4h E4h | G3q C4q D4h | E4q D4q C4h | A4q G4q E4q D4q | C4h. rq | A3q C4q E4q G4q | A4h G4q E4q | F4q E4q D4q E4q | G4h G4q rq | G3q C4q D4h | E4q D4q C4h | A4q G4q E4q D4q | E4q D4q G3h"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.55,
+      "_note": "Light bell-like broken-chord arps, eighths. I (C) - vi (Am) - IV (F) - V (G) outline.",
+      "notes": "C4e E4e G4e E4e C4e E4e G4e E4e | A3e C4e E4e C4e A3e C4e E4e C4e | F3e A3e C4e A3e F3e A3e C4e A3e | G3e B3e D4e B3e G3e B3e D4e B3e | C4e E4e G4e E4e C4e E4e G4e E4e | A3e C4e E4e C4e A3e C4e E4e C4e | F3e A3e C4e A3e F3e A3e C4e A3e | G3e B3e D4e B3e G3e B3e D4e B3e | A3e C4e E4e C4e A3e C4e E4e C4e | F3e A3e C4e A3e F3e A3e C4e A3e | C4e E4e G4e E4e C4e E4e G4e E4e | G3e B3e D4e B3e G3e B3e D4e B3e | C4e E4e G4e E4e C4e E4e G4e E4e | A3e C4e E4e C4e A3e C4e E4e C4e | F3e A3e C4e A3e G3e B3e D4e B3e | G3e B3e D4e B3e G3e B3e D4e B3e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.9,
+      "_note": "Simple rooted walk, gently bouncing on 1 and 3 (root then fifth). I-vi-IV-V. Last bar G->G voice-leads to C.",
+      "notes": "C2q rq G2q rq | A2q rq E2q rq | F2q rq C2q rq | G2q rq G2q rq | C2q rq G2q rq | A2q rq E2q rq | F2q rq C2q rq | G2q rq G2q rq | A2q rq E2q rq | F2q rq C2q rq | C2q rq G2q rq | G2q rq D2q rq | C2q rq G2q rq | A2q rq E2q rq | F2q rq G2q rq | G2q rq G2q rq"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.5,
+      "_note": "Soft brushy hat + light kick, never busy. Kick on 1, hat on offbeats. Tiny fill into the loop seam.",
+      "notes": "e kick hat hat hat kick hat snare hat | kick hat hat hat kick hat snare hat | kick hat hat hat kick hat snare hat | kick hat hat hat kick hat snare hat | kick hat hat hat kick hat snare hat | kick hat hat hat kick hat snare hat | kick hat hat hat kick hat snare hat | kick hat hat hat kick hat snare hat | kick hat hat hat kick hat snare hat | kick hat hat hat kick hat snare hat | kick hat hat hat kick hat snare hat | kick hat hat hat kick hat snare hat | kick hat hat hat kick hat snare hat | kick hat hat hat kick hat snare hat | kick hat hat hat kick hat snare hat | kick hat snare hat kick snare kick snare"
+    }
+  ]
+}

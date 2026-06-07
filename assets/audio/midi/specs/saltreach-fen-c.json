@@ -1,0 +1,43 @@
+{
+  "title": "Saltreach Fen - Tidecall Channels",
+  "_note": "Option C relit/deep-water variant. gbc 4-voice band. 6/8 compound, 108bpm, brightening D major with a wistful minor turn. Clearer warmer pulse25 lilting waltz-feel lead, more confident than A; pulse12 proper bell-buoy chime arpeggios (fast broken major triads = chip 'chord'), dewy and ringing; rocking compound tri_bass with a touch more propulsion; soft drums - kick-on-one with light offbeat hat, a chime-tap (ohat) at the seam. Vesper states the spine cleanly in major: A3->D4->E4 ... F#4->E4->D4, the overshoot lands hopeful. 24 bars in 6/8.",
+  "era": "gbc",
+  "tempo": 108,
+  "time_signature": [6, 8],
+  "ppq": 480,
+  "loop": true,
+  "key": "D major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "Confident lilting waltz-feel line. Vesper in major: lift A3->D4->E4, settle F#4->E4->D4 lands hopeful. One wistful B-minor turn in the bridge.",
+      "notes": "A3e D4q E4q. | F#4q E4e D4q. | E4q F#4e A4q. | F#4q. rq. | A3e D4q E4q. | F#4q A4e B4q. | A4q F#4e E4q. | D4q. rq. | B3e E4q F#4q. | G4q F#4e E4q. | F#4q D4e B3q. | A3q. rq. | A3e D4q E4q. | F#4q A4e D5q. | C#5q B4e A4q. | F#4q. rq. | D5e A4q F#4q. | E4q F#4e D4q. | E4q D4e C#4q. | D4q. rq. | A4e F#4q E4q. | D4q E4e F#4q. | E4q D4e C#4q. | D4h A3q"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.55,
+      "_note": "Proper bell-buoy chime arpeggios, fast broken major triads. D(DF#A), A(AC#E), G(GBD), Bm(BDF#). Dewy and ringing on the compound lilt.",
+      "notes": "D4e F#4e A4e D5e A4e F#4e | D4e F#4e A4e D5e A4e F#4e | A3e C#4e E4e A4e E4e C#4e | A3e C#4e E4e A4e E4e C#4e | D4e F#4e A4e D5e A4e F#4e | B3e D4e F#4e B4e F#4e D4e | A3e C#4e E4e A4e E4e C#4e | D4e F#4e A4e D5e A4e F#4e | E4e G4e B4e E5e B4e G4e | E4e G4e B4e E5e B4e G4e | B3e D4e F#4e B4e F#4e D4e | A3e C#4e E4e A4e E4e C#4e | D4e F#4e A4e D5e A4e F#4e | D4e F#4e A4e D5e A4e F#4e | A3e C#4e E4e A4e E4e C#4e | D4e F#4e A4e D5e A4e F#4e | A3e C#4e E4e A4e E4e C#4e | D4e F#4e A4e D5e A4e F#4e | A3e C#4e E4e A4e E4e C#4e | D4e F#4e A4e D5e A4e F#4e | B3e D4e F#4e B4e F#4e D4e | E4e G4e B4e E5e B4e G4e | A3e C#4e E4e A4e E4e C#4e | A3e C#4e E4e A4e E4e C#4e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.95,
+      "_note": "Rocking compound bass, root on beat 1, fifth on beat 4, a touch more propulsion - a passing note into the next bar at phrase ends.",
+      "notes": "D2q. A2q. | D2q. A2q. | A1q. E2q. | A1q. E2q. | D2q. A2q. | B1q. F#2q. | A1q. E2q. | D2q. A2q. | E2q. B2q. | E2q. B2q. | B1q. F#2q. | A1q. E2q. | D2q. A2q. | D2q. A2q. | A1q. E2q. | D2q. A2q. | A1q. E2q. | D2q. A2q. | A1q. E2q. | D2q. A2q. | B1q. F#2q. | E2q. B2q. | A1q. E2q. | A1q. E2e A2e E2e"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.7,
+      "_note": "Soft kick on beat 1 (of each dotted-quarter group), a light offbeat hat. A chime-tap (ohat) fill at the loop seam.",
+      "notes": "kickq. hatq. | kickq. hatq. | kickq. hatq. | kickq. hatq. | kickq. hatq. | kickq. hatq. | kickq. hatq. | kickq. hatq. | kickq. hatq. | kickq. hatq. | kickq. hatq. | kickq. hatq. | kickq. hatq. | kickq. hatq. | kickq. hatq. | kickq. hatq. | kickq. hatq. | kickq. hatq. | kickq. hatq. | kickq. hatq. | kickq. hatq. | kickq. hatq. | kickq. hatq. | kickq. ohate hate ohate"
+    }
+  ]
+}

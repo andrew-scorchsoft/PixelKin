@@ -1,0 +1,43 @@
+{
+  "title": "Dimglass Coast - Salt Wind, Last Light",
+  "_note": "Mood sibling, pensive. gbc 4-voice, no chords. 112 BPM, 4/4, E minor (relative minor of the anchor's G). Same wandering travel line but WISTFUL - longer held notes, the leap reaching out over dark water rather than skipping. Vesper contour intact in minor, lift stretched/yearning (B3->E4->F#4 ... G4->F#4->E4 settle). Sibling color to Tinderwick B. Harmony = slower, airier Tide arps with more gaps. Bass = deeper, more rolling wave swell. Percussion = sparser foam-wash, no fills, just tide. 16-bar loop ~34s.",
+  "era": "gbc",
+  "tempo": 112,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "E minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "Wandering wistful line in Em, Vesper contour stretched. Longer held notes, the leap yearns. Last bar leans on B (V of Em) into bar 1.",
+      "notes": "B3q E4q F#4h | G4q F#4q E4h | B3q E4q G4q F#4q | E4h. rq | B3q E4q F#4h | G4q F#4q E4h | A4q G4q F#4q E4q | F#4h. rq | E4q G4q B4h | A4q G4q F#4h | E4q A4q G4q F#4q | E4h. rq | B3q E4q F#4h | G4q F#4q E4h | B3q E4q G4q A4q | G4q F#4q B3h"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.55,
+      "_note": "Slower airier Tide arps with gaps. Em(E-G-B), G(G-B-D), C(C-E-G), Am(A-C-E), Bm(B-D-F#) following bass. Rests open air.",
+      "notes": "E4e G4e B4e G4e r h | E4e G4e B4e G4e r h | G3e B3e D4e B3e r h | E4e G4e B4e G4e r h | E4e G4e B4e G4e r h | E4e G4e B4e G4e r h | C4e E4e G4e E4e r h | B3e D4e F#4e D4e r h | E4e G4e B4e G4e r h | C4e E4e G4e E4e r h | A3e C4e E4e C4e r h | B3e D4e F#4e D4e r h | E4e G4e B4e G4e r h | E4e G4e B4e G4e r h | G3e B3e D4e B3e C4e E4e G4e E4e | B3e D4e F#4e D4e r h"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.95,
+      "_note": "Deeper rolling wave swell, half-note motion, root-fifth.",
+      "notes": "E2h B2h | E2h B2h | G2h D3h | E2h B2h | E2h B2h | E2h B2h | C2h G2h | B2h F#3h | E2h B2h | C2h G2h | A2h E3h | B2h F#3h | E2h B2h | E2h B2h | G2h C2h | B2h F#2h"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.55,
+      "_note": "Sparser foam-wash, no fills. Soft kick on 1, brushy wash hat on 3, nothing busy.",
+      "notes": "q kick r hat r | kick r hat r | kick r hat r | kick r hat r | kick r hat r | kick r hat r | kick r hat r | kick r hat r | kick r hat r | kick r hat r | kick r hat r | kick r hat r | kick r hat r | kick r hat r | kick r hat r | kick r hat r"
+    }
+  ]
+}

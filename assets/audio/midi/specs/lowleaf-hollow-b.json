@@ -1,0 +1,43 @@
+{
+  "title": "Lowleaf Hollow - The Hollow Sleeps",
+  "_note": "Option B mood sibling, town-leaning. gbc 4-voice band. 3/4 waltz, 84bpm, warm G major with a gentle minor turn (E minor / C). Rounded pulse25 music-box lullaby melody, cosier and more tuneful than A; pulse12 soft music-box arpeggio, slow and even, hearth not glass; tri_bass gentle waltz root-fall-fifth rocking warm; soft drums brush on beats 2-3, a single chime per phrase. Vesper as the lullaby hook in lilting 3/4: lift D4->G4->A4, settle B4->A4->G4, rounded and even - the cosy 'you're home' reading. 20 bars in 3/4; each bar = 3 quarters; last bar voice-leads home.",
+  "era": "gbc",
+  "tempo": 84,
+  "time_signature": [3, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "G major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "Rounded music-box lullaby. Vesper as the waltz hook: lift D4->G4->A4, settle B4->A4->G4. A gentle minor turn (Em) in the bridge.",
+      "notes": "D4q G4q A4q | B4h. | A4q G4q E4q | G4h. | D4q G4q B4q | A4q G4q A4q | B4q A4q G4q | A4h. | E4q G4q B4q | C5q B4q A4q | B4q A4q G4q | E4h. | D4q G4q A4q | B4h. | A4q B4q C5q | B4h. | A4q G4q E4q | D4q E4q G4q | A4q B4q A4q | G4h D4q"
+    },
+    {
+      "name": "arp",
+      "voice": "pulse12",
+      "octave": 3,
+      "gain": 0.55,
+      "_note": "Soft music-box arpeggio, slow and even, hearth not glass. Broken triads: G(GBD), C(CEG), D(DF#A), Em(EGB). One note per beat, waltz.",
+      "notes": "G3q B3q D4q | G3q B3q D4q | C4q E4q G4q | C4q E4q G4q | G3q B3q D4q | D4q F#4q A4q | G3q B3q D4q | D4q F#4q A4q | E4q G4q B4q | C4q E4q G4q | D4q F#4q A4q | E4q G4q B4q | G3q B3q D4q | G3q B3q D4q | C4q E4q G4q | G3q B3q D4q | C4q E4q G4q | C4q E4q G4q | D4q F#4q A4q | G3q B3q D4q"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.95,
+      "_note": "Gentle waltz root-fall-fifth: root on 1, fifth on 2 and 3 (oom-pah-pah). Warm and rocking.",
+      "notes": "G2q D3q D3q | G2q D3q D3q | C2q G2q G2q | C2q G2q G2q | G2q D3q D3q | D2q A2q A2q | G2q D3q D3q | D2q A2q A2q | E2q B2q B2q | C2q G2q G2q | D2q A2q A2q | E2q B2q B2q | G2q D3q D3q | G2q D3q D3q | C2q G2q G2q | G2q D3q D3q | C2q G2q G2q | C2q G2q G2q | D2q A2q A2q | G2q D3q D3q"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.6,
+      "_note": "Soft brush on beats 2 and 3 (hat), a single chime (ohat) at phrase ends. Beat 1 left to the bass thump.",
+      "notes": "rq hatq hatq | rq hatq hatq | rq hatq hatq | rq hatq ohatq | rq hatq hatq | rq hatq hatq | rq hatq hatq | rq hatq ohatq | rq hatq hatq | rq hatq hatq | rq hatq hatq | rq hatq ohatq | rq hatq hatq | rq hatq hatq | rq hatq hatq | rq hatq ohatq | rq hatq hatq | rq hatq hatq | rq hatq hatq | rq hatq ohatq"
+    }
+  ]
+}

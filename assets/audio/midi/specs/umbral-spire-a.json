@@ -1,0 +1,51 @@
+{
+  "title": "Umbral Spire - Crown of Null",
+  "_note": "THE CLIMAX (anchor). The dead Lumenary and the Ninth Lantern - dread building to soaring, the soundtrack's biggest moment, the dawn finally turning. snes era (8 voices, chords allowed, warm reverb) - the one big-register area. Through-composed single loop body: INTRO (dread, ~16 bars, sparse) -> LOOP (driving battle, ~24 bars) -> RESOLVE (triumphant A MAJOR, ~16 bars), last bars voice-lead back into bar 1's dread for the loop. 132 BPM, 4/4, A minor -> triumphant A major. Vesper motif is the whole game's payoff: BOOMED in dark minor (E3->A3->B3 ... C4->B3->A3) through intro+loop, then RESOLVED into triumphant A major (E4->A4->B4 ... C#5->B4->A4) at the Keystar relight. The broken/withheld motif from Coldfog and Penumbra finally made whole and glorious. lead=layered pulse25 booming the motif; counter-lead=second pulse answering; harmony=real chords + swelling reverbed pad gluing the space; bass=driving tri_bass/wave urgent; drums=full, building from sparse intro to pounding loop, crash at the resolve.",
+  "era": "snes",
+  "tempo": 132,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "A minor to A major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "INTRO 1-16: dread, the Vesper motif booming low in A minor, sparse. LOOP 17-40: driving minor motif. RESOLVE 41-56: motif RESOLVED in triumphant A major, soaring. Bar 56 leads back to the dread of bar 1.",
+      "notes": "E3h A3h | B3h. rq | C4q B3q A3h | r w | E3h A3h | B3h. rq | C4q B3q A3q G3q | A3w | E3q A3q B3q C4q | B3h A3h | E3q A3q C4q B3q | A3w | A3q C4q E4q D4q | C4q B3q A3h | E4q D4q C4q B3q | A3h r h | E4q A4q B4q A4q | C5q B4q A4q E4q | E4q A4q B4q C5q | B4q A4q E4h | E4q A4q B4q A4q | C5q B4q A4q G4q | A4q C5q E5q D5q | C5q B4q A4h | E4q A4q B4q A4q | C5q B4q A4q E4q | F4q E4q D4q C4q | B3q C4q D4q E4q | A4q E4q C5q B4q | A4q G4q F4q E4q | D4q E4q F4q G4q | E4q D4q E4h | E4q A4q B4q A4q | C5q B4q C5q E5q | A4q C5q E5q A5q | G5q E5q C5q B4q | A4q E4q A4q C#5q | E5q C#5q B4q A4q | A4q B4q C#5q E5q | D5q C#5q B4h | E5q C#5q A4q E4q | A4q C#5q E5q A5q | G#5q E5q C#5q B4q | A4q E4q C#4q E4q | A4q B4q C#5q D5q | E5q D5q C#5q B4q | A4q C#5q E5q C#5q | B4q A4q B4h | A4q C#5q E5q A5q | E5q C#5q B4q A4q | B4q C#5q D5q E5q | C#5q B4q A4q B4q | A4q E4q A4q C#5q | E5q A5q E5q C#5q | A4q E4q C4q A3q | E4q B3q E3q B3q"
+    },
+    {
+      "name": "counter",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.65,
+      "_note": "Counter-lead answering the motif. Silent/sparse in the dread intro, darting under the loop, harmonising the major resolve.",
+      "notes": "r w | r w | r w | r w | r w | r w | r w | r w | r w | r w | r w | r w | r w | r w | r w | r w | C4q E4q E4q C4q | E4q D4q C4q B3q | C4q E4q E4q C4q | D4q C4q B3h | C4q E4q E4q C4q | E4q D4q C4q E4q | E4q E4q G4q F4q | E4q D4q C4h | C4q E4q E4q C4q | E4q D4q C4q B3q | A3q B3q C4q A3q | G3q A3q B3q C4q | C4q B3q E4q D4q | C4q B3q A3q G3q | F3q G3q A3q B3q | C4q B3q C4h | E4q E4q G#4q A4q | E4q G4q A4q E4q | E4q A4q C5q E5q | E5q B4q A4q G#4q | A4q C#5q E5q E4q | E4q A4q G#4q E4q | E4q E4q A4q G#4q | A4q E4q E4h | A4q E4q C#5q A4q | E4q A4q C#5q E5q | E5q B4q G#4q E4q | E4q A4q E4q C#4q | A4q G#4q A4q B4q | C#5q B4q A4q G#4q | A4q E5q A4q E4q | E4q E4q E4h | A4q C#5q E5q A4q | C#5q A4q G#4q E4q | G#4q A4q B4q C#5q | B4q A4q E4q E4q | A4q C#5q E4q A4q | C#5q E5q C#5q A4q | E4q C#4q A3q E3q | B3q E3q B3q E3q"
+    },
+    {
+      "name": "pad",
+      "voice": "pad",
+      "octave": 3,
+      "gain": 0.5,
+      "_note": "Swelling reverbed pad, real CHORDS (snes allows). Dread minor chords held in the intro/loop, blooming to bright A-major chords at the resolve.",
+      "notes": "A2+E3+A3w | A2+E3+A3w | F2+C3+F3w | F2+C3+F3w | A2+E3+A3w | A2+E3+A3w | E2+B2+E3w | E2+B2+E3w | A2+E3+A3w | F2+C3+F3w | A2+E3+A3w | E2+B2+E3w | A2+E3+A3w | F2+C3+F3w | E2+B2+G#3w | A2+E3+A3w | A2+E3+A3w | F2+C3+F3w | A2+E3+A3w | E2+B2+E3w | A2+E3+A3w | F2+C3+F3w | C3+G3+C4w | E2+B2+E3w | A2+E3+A3w | F2+C3+F3w | D2+A2+D3w | E2+B2+E3w | A2+E3+A3w | F2+C3+F3w | D2+A2+D3w | E2+B2+E3w | A2+E3+A3+C#4w | A2+E3+A3+C#4w | A2+E3+A3+C#4w | E2+B2+G#3+E4w | A2+E3+A3+C#4w | A2+E3+A3+C#4w | A2+E3+A3+C#4w | E2+B2+E3w | A2+E3+A3+C#4w | A2+E3+A3+C#4w | E2+B2+G#3+E4w | A2+E3+A3w | D3+A3+D4w | A2+E3+A3+C#4w | A2+E3+A3+C#4w | E2+B2+G#3+E4w | A2+E3+A3+C#4w | A2+E3+A3+C#4w | D3+F#3+A3+D4w | A2+E3+A3+C#4w | A2+E3+A3+C#4w | E2+B2+G#3+E4w | A2+E3+A3w | E2+B2+E3w"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 1,
+      "gain": 1.0,
+      "_note": "Driving, urgent, relentless. Sparse pedal in the dread intro, pounding eighths in the loop and resolve. Last bar E (V) drives back to the A of bar 1.",
+      "notes": "A1w | A1w | F1w | F1w | A1w | A1w | E1w | E1w | A1h E1h | F1h C2h | A1h E1h | E1w | A1h E1h | F1h C2h | E1w | E1h E2h | A1e A1e E2e A1e A1e E2e A1e E1e | A1e A1e E2e A1e A1e E2e A1e E1e | F1e F1e C2e F1e F1e C2e F1e C1e | F1e F1e C2e F1e E1e E1e E1e E1e | A1e A1e E2e A1e A1e E2e A1e E1e | A1e A1e E2e A1e A1e E2e A1e E1e | C2e C2e G2e C2e C2e G2e C2e G1e | E1e E1e B1e E1e E1e B1e E1e E2e | A1e A1e E2e A1e A1e E2e A1e E1e | A1e A1e E2e A1e A1e E2e A1e E1e | D1e D1e A1e D1e D1e A1e D1e A1e | E1e E1e B1e E1e E1e B1e E1e E2e | A1e A1e E2e A1e A1e E2e A1e E1e | F1e F1e C2e F1e F1e C2e F1e C1e | D1e D1e A1e D1e E1e E1e E1e E1e | E1e E1e B1e E1e E1e E1e E2e E1e | A1e A1e E2e A1e A1e E2e A1e E1e | A1e A1e E2e A1e A1e E2e A1e E1e | A1e A1e E2e A1e A1e E2e A1e E1e | E1e E1e B1e E1e E1e B1e E1e E2e | A1e A1e E2e A1e A1e E2e A1e E1e | A1e A1e E2e A1e A1e E2e A1e E1e | A1e A1e E2e A1e A1e E2e A1e E1e | E1e E1e B1e E1e E1e B1e E1e E2e | A1e A1e E2e A1e A1e E2e A1e E1e | D1e D1e A1e D1e D1e A1e D1e A1e | A1e A1e E2e A1e A1e E2e A1e E1e | A1e A1e E2e A1e A1e E2e A1e E1e | E1e E1e B1e E1e E1e B1e E1e E2e | A1e A1e E2e A1e A1e E2e A1e E1e | A1e A1e E2e A1e A1e E2e A1e E1e | D1e D1e A1e D1e D1e A1e D1e A1e | A1e A1e E2e A1e A1e E2e A1e E1e | A1e A1e E2e A1e A1e E2e A1e E1e | E1e E1e B1e E1e E1e B1e E1e E2e | A1h A1q E1q | E1q E1q E1h"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.85,
+      "_note": "Builds from sparse dread intro to a pounding driving loop; crash at the resolve (bar 41) and big fills at section turns. Bar 56 fills back into the loop.",
+      "notes": "q kick r r r | r r r r | q kick r r r | r r r r | q kick r r r | r r r r | q kick r r r | r r r r | q kick r kick r | r kick r r | q kick r kick r | r kick r r | q kick r kick r | r kick r r | q kick r kick r | s tom tom snare snare tom tom snare snare kick kick snare snare crash crash crash crash | e kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | s tom tom snare snare tom tom snare snare kick kick snare snare crash crash crash crash | e kick+hat hat snare+hat hat kick+hat kick snare+hat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat crash | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | s kick snare kick snare tom tom snare snare kick kick snare snare crash crash crash"
+    }
+  ]
+}

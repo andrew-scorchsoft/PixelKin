@@ -1,0 +1,43 @@
+{
+  "title": "Dawnstead - Warm Shadows, Open Sky",
+  "_note": "Mood sibling, bittersweet. gbc 4-voice, no chords. 96 BPM, 4/4, C major, tender-radiant. The Tinderwick lullaby reprised in major - but gentler and more intimate than A: joy with a tear in it, the memory of the long night still warm in the major. Vesper FULL BLOOM in major, but stated tenderly (exhaled) not triumphantly. Harmony = soft flowing arpeggio, less sparkle more glow. Bass = warm rocking hearth pulse (closer to Tinderwick A's), not a busy stride. Percussion = very light, a soft heartbeat brush. 16-bar loop (the lullaby's own length) ~40s.",
+  "era": "gbc",
+  "tempo": 96,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.95,
+      "_note": "Lullaby in major, tender/intimate. Vesper bloom exhaled: G3->C4->D4 lift ... E4->D4->C4 settle, lower register than A, more rests, more breath. Former B section glows but stays gentle. Final bar leans on G (V) into bar 1.",
+      "notes": "G3q C4q D4h | E4q D4q C4h | C4q E4q D4q E4q | C4h. rq | G3q C4q D4h | E4q D4q C4h | E4q D4q C4q D4q | C4h. rq | E4q G4q E4h | F4q E4q C4h | E4q F4q E4q D4q | C4h. rq | G3q C4q D4h | E4q D4q C4h | E4q G4q E4q D4q | C4h G3q D4q"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.5,
+      "_note": "Soft flowing arpeggio, less sparkle more glow - rounded broken triads, eighths, lower register than A. C, F, G, with bright resolutions.",
+      "notes": "C4e E4e G4e E4e C4e E4e G4e E4e | C4e E4e G4e E4e C4e E4e G4e E4e | C4e E4e G4e E4e G3e B3e D4e B3e | C4e E4e G4e E4e C4e E4e G4e E4e | C4e E4e G4e E4e C4e E4e G4e E4e | C4e E4e G4e E4e C4e E4e G4e E4e | C4e E4e G4e E4e G3e B3e D4e B3e | C4e E4e G4e E4e C4e E4e G4e E4e | C4e E4e G4e E4e C4e E4e G4e C5e | F3e A3e C4e A3e F3e A3e C4e A3e | C4e E4e G4e E4e G3e B3e D4e B3e | C4e E4e G4e E4e C4e E4e G4e E4e | C4e E4e G4e E4e C4e E4e G4e E4e | C4e E4e G4e E4e C4e E4e G4e E4e | C4e E4e G4e E4e G3e B3e D4e B3e | C4e E4e G4e E4e G3e B3e D4e G3e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.9,
+      "_note": "Warm rocking hearth pulse (closer to Tinderwick A), root-fifth half notes, not a busy stride.",
+      "notes": "C2h G2h | C2h G2h | C2h G2h | C2h G2h | C2h G2h | C2h G2h | C2h G2h | C2h G2h | C2h G2h | F2h C2h | C2h G2h | C2h G2h | C2h G2h | C2h G2h | C2h G2h | C2h G2h"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.45,
+      "_note": "Very light, a soft heartbeat brush - kick on 1 and a faint pulse on the 'and' of 3. A soft ohat at the seam.",
+      "notes": "e kick r r r r r hat r | kick r r r r r hat r | kick r r r r r hat r | kick r r r r r hat r | kick r r r r r hat r | kick r r r r r hat r | kick r r r r r hat r | kick r r r r r hat r | kick r r r r r hat r | kick r r r r r hat r | kick r r r r r hat r | kick r r r r r hat r | kick r r r r r hat r | kick r r r r r hat r | kick r r r r r hat r | kick r r r r r hat ohat"
+    }
+  ]
+}

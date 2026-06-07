@@ -1,0 +1,42 @@
+{
+  "title": "Nightreach Observatory - Under the Whole Sky",
+  "_note": "Option A anchor. gbc 4-voice band. town/reverent. Contemplative A minor resolving toward C major, 84 BPM, 4/4, 24 bars (~34s). Lonely spacious lead — long notes, wide intervals, lots of air. pulse12 slow arpeggiated pad-figure (broken chords slow enough to read as a pad) = Lunar dreamlight. Deep slow sustained tri_bass roots. Faint clockwork tick (dry hat on a steady subdivision, no kit groove). Vesper motif vast and arpeggiated: rising leap E4->A4->B4 unfolds slowly, the settle resolving from minor into major (C5...E5->D5->C5) at the loop's turn — hope dawning. Last bar G->C pickup voice-leads to bar 1 (E4 a-minor start).",
+  "era": "gbc",
+  "tempo": 84,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "A minor -> C major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "Vesper vast/arpeggiated: the rising leap E4->A4->B4 unfolds slowly across wide air; settle C5->B4->A4. Loop turn lifts toward C major.",
+      "notes": "E4h. A4q | B4w | rh C5h | B4h. A4q | E4h G4h | A4w | rh E4h | A4h. G4q | C5h. B4q | A4h E4h | G4h C5h | B4w | E4h A4h | C5h. B4q | A4h. G4q | E4w | A4h C5h | E5h. D5q | C5h B4h | A4w | G4h C5h | E5h D5h | C5h. B4q | A4h G4h"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 3,
+      "gain": 0.55,
+      "_note": "Slow arpeggiated pad-figure: broken chords slow enough to read as a pad. Am, F, C, G, Em -> the Lunar shimmer; resolves toward C at the turn.",
+      "notes": "A3e C4e E4e A4e E4e C4e A3e E3e | A3e C4e E4e A4e E4e C4e A3e E3e | C4e E4e G4e C5e G4e E4e C4e G3e | E3e A3e C4e E4e C4e A3e E3e A3e | C3e E3e G3e C4e G3e E3e C3e G2e | A3e C4e E4e A4e E4e C4e A3e E3e | E3e G3e B3e E4e B3e G3e E3e B2e | A3e C4e E4e A4e E4e C4e A3e C4e | F3e A3e C4e F4e C4e A3e F3e C3e | A3e C4e E4e A4e E4e C4e A3e E3e | C3e E3e G3e C4e G3e E3e C3e G2e | G3e B3e D4e G4e D4e B3e G3e D3e | A3e C4e E4e A4e E4e C4e A3e E3e | F3e A3e C4e F4e C4e A3e F3e C3e | C3e E3e G3e C4e G3e E3e C3e G2e | E3e A3e C4e E4e C4e A3e E3e A3e | A3e C4e E4e A4e E4e C4e A3e E3e | C3e E3e G3e C4e G3e E3e C3e G2e | C3e E3e G3e C4e G3e E3e C3e G2e | A3e C4e E4e A4e E4e C4e A3e E3e | E3e G3e B3e E4e B3e G3e E3e B2e | C3e E3e G3e C4e G3e E3e C3e G2e | F3e A3e C4e F4e C4e A3e F3e C3e | G3e B3e D4e G4e D4e B3e G3e D3e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.9,
+      "_note": "Deep, slow, sustained roots.",
+      "notes": "A2w | A2w | C2w | E2h A2h | C2w | A2w | E2w | A2h C3h | F2w | A2w | C2w | G2w | A2w | F2w | C2w | E2h A2h | A2w | C2w | C2w | A2w | E2w | C2w | F2h C2h | G2h G2h"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "_note": "Faint clockwork tick: a soft dry hat on every quarter (steady telescope mechanism), no kick/snare groove. A single soft tom- tick at the loop seam.",
+      "notes": "q hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat hat | hat hat hat tom"
+    }
+  ]
+}

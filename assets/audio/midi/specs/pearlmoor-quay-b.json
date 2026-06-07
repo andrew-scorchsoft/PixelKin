@@ -1,0 +1,43 @@
+{
+  "title": "Pearlmoor Quay - Low Tide, Lantern Strings",
+  "_note": "Mood sibling, melancholy. gbc 4-voice, no chords. 92 BPM, 3/4, D minor (relative minor of the anchor's F). Same waltz line, slower and bare - the accordion lilt now a lonely sway. Waltz contour in minor, the lift hesitant - sibling sadness to Tinderwick B and Dimglass B (the south's wistful blue-hour family). Harmony = sparse bell-buoy chimes ringing into the gaps. Bass = slower rocking waltz bass, deeper, like a tide gone out. Percussion = none (the creak of empty boards implied by space). 24-bar loop ~47s.",
+  "era": "gbc",
+  "tempo": 92,
+  "time_signature": [3, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "D minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "Waltz contour in D minor, lift hesitant (A3->D4->E4 ... F4->E4->D4 settle). Slower, barer, more rests. Final bar leans on A (V of Dm) into bar 1.",
+      "notes": "A3q D4q E4q | F4h. | E4q D4q rq | D4h. | A3q D4q E4q | F4h E4q | D4q E4q rq | D4h. | F4q A4q rq | G4q F4q E4q | F4q E4q rq | D4h. | A4q G4q F4q | E4h. | D4q E4q F4q | E4h. | A3q D4q E4q | F4h. | E4q D4q rq | D4h. | F4q E4q D4q | C#4q D4q rq | D4h. | A3h A3q"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.5,
+      "_note": "Sparse bell-buoy chimes ringing into gaps, on beats 2&3 only, dropping out often. Dm(F-A), C(C-E), Bb(D-F), Gm(D-G), A(C#-E).",
+      "notes": "rq F4q A4q | rq rq rq | rq F4q A4q | rq rq rq | rq F4q A4q | rq rq A4q | rq F4q A4q | rq rq rq | rq A4q C5q | rq rq rq | rq A4q C5q | rq rq rq | rq G4q Bb4q | rq rq rq | rq F4q A4q | rq rq rq | rq F4q A4q | rq rq rq | rq F4q A4q | rq rq rq | rq F4q A4q | rq C#5q E5q | rq rq rq | rq C#5q E5q"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.9,
+      "_note": "Slower, deeper rocking waltz bass - root on 1, fifth on 2 only (3 left empty for the tide-gone-out feel). Dm(D-A), C(C-G), Bb(Bb-F), Gm(G-D), A(A-E).",
+      "notes": "D2q A2q rq | C2q G2q rq | D2q A2q rq | D2q A2q rq | D2q A2q rq | C2q G2q rq | D2q A2q rq | D2q A2q rq | D2q A2q rq | Bb1q F2q rq | C2q G2q rq | G2q D3q rq | D2q A2q rq | C2q G2q rq | Bb1q F2q rq | A2q E3q rq | D2q A2q rq | C2q G2q rq | D2q A2q rq | D2q A2q rq | D2q A2q rq | A2q E3q rq | D2q A2q rq | A2q E3q rq"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.35,
+      "_note": "None through the body - one faint hat at the very seam to voice-lead the loop.",
+      "notes": "h. r | r | r | r | r | r | r | r | r | r | r | r | r | r | r | r | r | r | r | r | r | r | r | q rq rq hat"
+    }
+  ]
+}

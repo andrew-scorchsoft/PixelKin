@@ -1,0 +1,42 @@
+{
+  "title": "Nightreach Observatory - The Haunted Lumenary",
+  "_note": "Option B mood sibling, more melancholy / Lunar-dark. gbc 4-voice band. town/reverent. Held A minor that never fully resolves, 80 BPM, 4/4, 24 bars. Thinner, more isolated lead — lonelier, sadder, trailing into long rests. Slow minor arp, occasionally a dissonant suspension (B against Am, F against Em) before resolving. Low sparse bass with long silences between roots. Clockwork tick made unsteady — slightly irregular, a clock running down. Vesper motif's settle home DENIED: the rising leap E4->A4->B4 reaches up and resolves to a suspension (B4 over A, the 9th) instead of the tonic, hanging unresolved across the loop seam. Last bar leaves B4/E pickup tension into bar 1.",
+  "era": "gbc",
+  "tempo": 80,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "A minor (unresolved)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.95,
+      "_note": "Thin, isolated, trailing into rests. Motif's settle denied — resolves to a suspension (B), hanging.",
+      "notes": "E4h. A4q | B4h rh | rh C5h | B4h. rq | E4h G4h | A4h rh | rw | G4h B4h | A4h. E4q | rw | C5h B4h | rh B4h | E4h A4h | B4h rh | rh C5h | B4w | A4h C5h | rw | E5h. D5q | C5h B4h | rw | G4h C5h | B4h rh | rh B4h"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 3,
+      "gain": 0.5,
+      "_note": "Slow minor arp; dissonant suspension before resolving (B against Am). Drops to silence in places. Am, F, Em, Dm, never C-bright for long.",
+      "notes": "A3e C4e E4e A4e E4e C4e A3e B3e | A3e C4e E4e A4e E4e C4e A3e E3e | C4e E4e A4e B4e A4e E4e C4e A3e | E3e A3e C4e E4e C4e A3e E3e A3e | C3e E3e G3e C4e G3e E3e C3e B2e | A3e C4e E4e A4e E4e C4e A3e E3e | rw | E3e G3e B3e E4e B3e G3e E3e A3e | A3e C4e E4e A4e E4e C4e A3e B3e | rw | F3e A3e C4e F4e B3e A3e F3e C3e | E3e G3e B3e E4e B3e G3e E3e B2e | A3e C4e E4e A4e E4e C4e A3e B3e | A3e C4e E4e A4e E4e C4e A3e E3e | C4e E4e A4e B4e A4e E4e C4e A3e | E3e A3e B3e E4e B3e A3e E3e B2e | A3e C4e E4e A4e E4e C4e A3e B3e | rw | E3e A3e C4e E4e C4e A3e E3e A3e | C3e E3e G3e C4e G3e E3e C3e B2e | rw | F3e A3e C4e F4e C4e A3e F3e C3e | E3e G3e B3e E4e B3e G3e E3e B2e | E3e A3e B3e E4e B3e A3e E3e B2e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.85,
+      "_note": "Low, sparse, long silences between ominous roots.",
+      "notes": "A2w | A2h rh | C2w | E2w | C2w | A2h rh | rw | E2w | A2w | rw | F2w | E2w | A2w | A2h rh | C2w | E2w | A2w | rw | E2w | C2w | rw | F2w | E2w | E2h B1h"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "_note": "Unsteady clockwork: a dry hat tick, slightly irregular (sometimes skips a beat or drags onto the 'and'), a clock running down. 8 eighth-slots per bar.",
+      "notes": "e hat r hat r hat r hat r | hat r hat r r hat hat r | hat r hat r hat r hat r | hat r r hat hat r hat r | hat r hat r hat r hat r | hat r hat r r hat hat r | r r hat r hat r r hat | hat r hat r hat r hat r | hat r hat r hat r hat r | hat r r hat hat r hat r | hat r hat r hat r hat r | hat r hat r r hat hat r | hat r hat r hat r hat r | hat r r hat hat r hat r | hat r hat r hat r hat r | hat r hat r r hat hat r | hat r hat r hat r hat r | r r hat r hat r r hat | hat r hat r hat r hat r | hat r r hat hat r hat r | hat r hat r hat r hat r | hat r hat r r hat hat r | hat r hat r hat r hat r | hat r r hat hat r tom r"
+    }
+  ]
+}

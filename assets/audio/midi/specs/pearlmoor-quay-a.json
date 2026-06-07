@@ -1,0 +1,43 @@
+{
+  "title": "Pearlmoor Quay - Moonlit Quay Waltz",
+  "_note": "Anchor. gbc 4-voice, no chords. 100 BPM, 3/4, F major. Accordion-flavoured lilting WALTZ - the Vesper contour reshaped to swing on the downbeat-and-lift of 3/4 (lift lands on the bar downbeat, settle sways over beats 2-3). Carries the Tinderwick lullaby DNA as a 3/4 waltz. Tide signature fully foregrounded. Harmony = Tide bell-buoy chimes on beats 2&3 (oom-pah-pah upper voice). Bass = classic waltz - root on 1, rocking fifths on 2&3, like a moored hull. Percussion = soft noise brush only on beat 1, the boardwalk creak. 24-bar loop ~43s.",
+  "era": "gbc",
+  "tempo": 100,
+  "time_signature": [3, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "F major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "Vesper as a waltz in F: lift C4->F4->G4 lands on downbeats, settle A4->G4->F4 sways over 2-3. AABA-leaning across 24 bars; D-minor (relative) lean in B section. Final bar leans on C (V) into bar 1.",
+      "notes": "C4q F4q G4q | A4h G4q | F4q A4q C5q | A4h. | C4q F4q G4q | A4h G4q | G4q F4q E4q | F4h. | F4q A4q C5q | D5h C5q | C5q B4q A4q | G4h. | A4q C5q D5q | C5h A4q | G4q A4q B4q | A4h. | C4q F4q G4q | A4h G4q | F4q A4q C5q | A4h G4q | F4q G4q A4q | G4q F4q E4q | F4h. | C4h C4q"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.55,
+      "_note": "Tide bell-buoy chimes on beats 2&3 (the 'pah-pah'). Rest on beat 1 (bass owns it). Broken-triad upper notes: F(A-C), C(C-E), Dm(F-A), Bb(D-F), Gm(D-G), Am(C-E) following the changes.",
+      "notes": "rq A4q C5q | rq C5q E5q | rq A4q C5q | rq C5q F5q | rq A4q C5q | rq C5q E5q | rq G4q C5q | rq A4q C5q | rq A4q C5q | rq A4q D5q | rq C5q E5q | rq B4q D5q | rq A4q C5q | rq A4q C5q | rq B4q D5q | rq A4q C5q | rq A4q C5q | rq C5q E5q | rq A4q C5q | rq C5q E5q | rq A4q C5q | rq G4q C5q | rq A4q C5q | rq C5q E5q"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.95,
+      "_note": "Classic waltz: root on 1, rocking fifth on 2&3. F(F-C), C(C-G), Dm(D-A), Bb(Bb-F), Gm(G-D), Am(A-E).",
+      "notes": "F2q C3q C3q | C2q G2q G2q | F2q C3q C3q | F2q C3q C3q | F2q C3q C3q | C2q G2q G2q | C2q G2q G2q | F2q C3q C3q | F2q C3q C3q | D2q A2q A2q | C2q G2q G2q | G2q D3q D3q | F2q C3q C3q | F2q C3q C3q | G2q D3q D3q | F2q C3q C3q | F2q C3q C3q | C2q G2q G2q | F2q C3q C3q | C2q G2q G2q | F2q C3q C3q | C2q G2q G2q | F2q C3q C3q | C2q G2q C3q"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.5,
+      "_note": "Soft noise brush (hat) only on beat 1 - the boardwalk creak. A small ohat at the loop seam.",
+      "notes": "q hat r r | hat r r | hat r r | hat r r | hat r r | hat r r | hat r r | hat r r | hat r r | hat r r | hat r r | hat r r | hat r r | hat r r | hat r r | hat r r | hat r r | hat r r | hat r r | hat r r | hat r r | hat r r | hat r r | hat r ohat"
+    }
+  ]
+}

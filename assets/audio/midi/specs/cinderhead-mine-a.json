@@ -1,0 +1,43 @@
+{
+  "title": "Cinderhead Mine - Veinlight",
+  "_note": "Option A anchor. gbc 4-voice band. A natural minor, 80bpm (deliberate slow cave cue; benign 'outside tempo range' warning is intentional per brief). Low pulse25 drone-lead moving only a step or two; sparse pulse12 crystal-chime glint every 2-4 bars far up the register; deep slow tri_bass drone held long; distant dry pick-tap drums with vast silence. Vesper fragmented: only the rising leap E3->A3->B3 sounds low in the drone-lead, the settle never fully arrives (loop stays unresolved/uneasy). The crystal chime alone, far above, briefly voices the settle phrase C5->B4->A4 as a glint of hope. 28-bar long loop; last bar voice-leads (G->A pull) back to bar 1.",
+  "era": "gbc",
+  "tempo": 80,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "A natural minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 3,
+      "gain": 0.95,
+      "_note": "Low drone-lead. Long held low notes moving only a step or two. The Vesper rising leap E3->A3->B3 is the only fragment that sounds; the settle home never fully arrives. Faintly tense-but-warm, never hurried.",
+      "notes": "A3w | A3w | E3h A3h | B3w | A3w | rw | E3h G3h | A3w | rw | A3h B3h | A3w | rw | E3h A3h | B3h A3h | rw | A3w | E3h A3h | B3w | A3h G3h | A3w | rw | E3h A3h | B3h C4h | B3w | A3w | rw | E3h G3h | A3h G3h"
+    },
+    {
+      "name": "chime",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.5,
+      "_note": "Sparse crystal-chime — a single bright broken-triad glint every 2-4 bars, far above the drone. Mostly silence. Briefly voices the Vesper settle C5->B4->A4 (bars 13-14, 25) as a glint of hope.",
+      "notes": "rw | rw | rw | rh A4e C5e B4q | rw | rw | rw | rh E5e C5e A4q | rw | rw | rw | rw | rq C5q B4q rq | rh A4h | rw | rw | rw | rh A4e C5e E5q | rw | rw | rw | rw | rw | rq C5q B4q A4q | rw | rw | rw | rh A4q rq"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 1,
+      "gain": 1.0,
+      "_note": "Deep slow drone, root held long, the cave's floor. Moves only at section turns following Am - F - Am - Dm - Am.",
+      "notes": "A1w | A1w | A1w | A1w | A1w | F1w | F1w | A1w | A1w | A1w | A1w | A1w | D2w | D2w | A1w | A1w | A1w | A1w | F1w | F1w | A1w | A1w | A1w | D2w | A1w | A1w | E1w | E1w"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.7,
+      "_note": "Distant pick-tap — a dry knock every bar or two, occasional doubled tap echoing, vast silence between. Uses kick as the dry low knock, hat as the far echo.",
+      "notes": "kickh rh | rw | rh kickh | rw | kickh rh | rw | rh kickh | rh kickh | rw | rh kickh | kickh rh | rw | rh kickh | rw | kickh rh | rw | rh kickh | rh kickh | rw | rh kickh | kickh rh | rw | rh kickh | rw | kickh rh | rw | rh kickh | hath kickh"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "title": "Penumbra Ring - Wedge by Wedge",
+  "_note": "Barrier mood sibling / late-receding state - same place after several constellations relit, fog receded, hope bled into the drone. The evolving-state pair to A: same DNA, audibly thawing. gbc 4-voice band. 64 BPM (deliberately slow, below gbc 80 floor - accept the intentional slow-tempo warning), 4/4, D minor brightening toward F major. 24 bars. Vesper motif EMERGES for the first time - the rising hopeful leap (D3->G3->A3) surfaces out of the pad, incomplete but reaching, foreshadowing its full triumphant return at the Spire. lead=the lonely note grown into hopeful tentative ascending bell-tipped phrases creeping over the drone. harmony=fog-pad lightens, detune resolving, warm intervals opening up. bass=drone lifts into slow hopeful root movement. drums=heartbeat strengthens and steadies, a soft hat joining. Last bar C(V of F) -> warm pull back into the now-thawing top.",
+  "era": "gbc",
+  "tempo": 64,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "D minor to F major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 3,
+      "gain": 0.85,
+      "_note": "Lonely note grows into hopeful tentative phrases. The Vesper rising leap D3->G3->A3 reaches up but the settle stays incomplete - reaching, not landing. Brightens toward F by the end.",
+      "notes": "r w | r r D3 r | r h F3h | r w | r h D3q G3q | A3h r h | r w | r h F3q A3q | C4h r h | r w | D3q G3q A3q C4q | A3h r h | r w | F3q A3q C4q A3q | r h G3q A3q | r w | A3q C4q F4q C4q | A3h r h | r w | F3q A3q C4q D4q | C4q A3q F3q A3q | r w | A3q C4q F4q C4q | A3h G3q r q"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 3,
+      "gain": 0.48,
+      "_note": "Fog-pad lightening, detune resolving, warm intervals opening. Dm -> F -> C, slowly brightening. Slow moving held tones with a few warm broken-thirds appearing.",
+      "notes": "D3w | D3w | F3q A3q C4h | F3w | D3w | A3q D3q F3h | D3w | F3q A3q C4h | F3w | A3w | F3q A3q C4q A3q | F3w | F3w | F3q A3q C4q A3q | C3w | F3w | F3q A3q C4q F4q | C4w | F3w | F3q A3q C4q A3q | F3q A3q C4h | C3w | F3q A3q C4q F4q | C4q G3q C3h"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 1,
+      "gain": 0.85,
+      "_note": "Drone lifts into slow hopeful root movement. D pedal early; gradually Dm-F-C motion. Last bar C voice-leads toward F/D top.",
+      "notes": "D1w | D1w | D1w | F1w | D1w | D1w | D1w | F1w | F1w | A1w | F1w | F1w | F1w | F1w | C2w | F1w | F1w | C2w | F1w | F1w | A1w | C2w | F1w | C2w"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.5,
+      "_note": "Heartbeat strengthens and steadies, a soft hat joining. Begins like A (kick every 2 bars), then settles into kick-on-1 + offbeat hat.",
+      "notes": "q kick r r r | r r r r | q kick r r r | r r r r | q kick r hat r | r r r r | q kick r hat r | r r hat r | q kick r hat r | r r hat r | q kick r hat r | r r hat r | q kick hat hat hat | kick hat hat hat | q kick hat hat hat | kick hat hat hat | q kick hat hat hat | kick hat hat hat | q kick hat hat hat | kick hat hat hat | q kick hat hat hat | kick hat hat hat | q kick hat hat hat | kick hat snare hat"
+    }
+  ]
+}

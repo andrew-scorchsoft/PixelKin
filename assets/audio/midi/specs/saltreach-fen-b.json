@@ -1,0 +1,43 @@
+{
+  "title": "Saltreach Fen - Bone Mist",
+  "_note": "Option B mood sibling. gbc 4-voice band. 6/8 compound, 92bpm, suspended D Dorian (raised 6th B-natural glints over minor). Sparser pulse25 lead, one drifting questioning phrase per two bars; faint pulse12 bell-buoy chime arpeggio in triplet lilt, once or twice a phrase; deep slow lilting compound rocking tri_bass (Tide signature); almost no drums - one soft noise 'wash' (hat) per phrase like mist moving. Vesper fragments: only the rising leap A3->D4->E4 survives, hanging unresolved; the settle home withheld until the very last bar, where it finally falls to D and voice-leads into the loop. 20 bars in 6/8; each bar = two dotted-quarters (6 eighths).",
+  "era": "gbc",
+  "tempo": 92,
+  "time_signature": [6, 8],
+  "ppq": 480,
+  "loop": true,
+  "key": "D Dorian (suspended)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "One drifting phrase per two bars. Vesper rising leap A3->D4->E4 hangs unresolved (B-natural Dorian glint colors the answer). Settle (F4->E4->D4) withheld to the final bar.",
+      "notes": "A3q. D4q. | E4q. rq. | rq. F4q. | E4q. rq. | A3q. D4q. | E4q. B3q. | rq. D4q. | E4q. rq. | rq. A3q. | D4q. F4q. | E4q. rq. | rq. rq. | A3q. D4q. | E4q. F4q. | E4q. B3q. | D4q. rq. | rq. A3q. | D4q. E4q. | F4q. E4q. | D4h C#4q"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.5,
+      "_note": "Faint bell-buoy chime arpeggio, compound triplet lilt, glinting once or twice a phrase. Mostly air. Dorian color: B-natural in the Dm/Bdim arps.",
+      "notes": "rq. D4e A4e D5e | rq. rq. | rq. A3e E4e A4e | rq. rq. | rq. D4e A4e D5e | rq. B3e F#4e B4e | rq. rq. | rq. A3e E4e A4e | rq. rq. | rq. D4e A4e D5e | rq. rq. | rq. rq. | rq. D4e A4e D5e | rq. F4e A4e D5e | rq. B3e F#4e B4e | rq. rq. | rq. rq. | rq. D4e A4e D5e | rq. F4e C5e F5e | rq. A3e D4e A4e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.9,
+      "_note": "Deep slow lilting compound rocking - the Tide rocking-bass signature. Root on beat 1, fifth on beat 4 (the two dotted-quarter pulses).",
+      "notes": "D2q. A2q. | D2q. A2q. | A1q. E2q. | A1q. E2q. | D2q. A2q. | B1q. F#2q. | D2q. A2q. | A1q. E2q. | D2q. A2q. | D2q. A2q. | A1q. E2q. | D2q. A2q. | D2q. A2q. | F2q. C3q. | B1q. F#2q. | D2q. A2q. | A1q. E2q. | D2q. A2q. | F2q. C3q. | A1q. E2q."
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.6,
+      "_note": "Almost none - one soft noise 'wash' (open hat) per phrase, like mist moving. Vast silence; a faint roll-in at the seam.",
+      "notes": "rq. ohatq. | rq. rq. | rq. rq. | ohatq. rq. | rq. rq. | rq. ohatq. | rq. rq. | rq. rq. | rq. ohatq. | rq. rq. | rq. rq. | ohatq. rq. | rq. rq. | rq. rq. | rq. ohatq. | rq. rq. | rq. rq. | ohatq. rq. | rq. rq. | rq. hatq."
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "title": "Dawnstead - First True Dawn",
+  "_note": "Richer-register curtain-call (the south's one allowed era step-up). era snes (8 voices, chords allowed, warm reverb) - still rendered on the chip engine for cohesion. 100 BPM, 4/4, C major, fully radiant. The emotional summit of the whole dusk->dawn arc. Lead (pulse25-warm) carries the Tinderwick lullaby; a soft warm COUNTER-LEAD weaves a counter-melody quoting the Dimglass route's BOUNCED Vesper contour (town & road themes embracing at the finish). Harp arpeggio (pluck) + a soft sustained PAD bed for genuine chords. Warm full bass with real low-end motion. Drums = fuller gentle groove, triumphant fill + crash at seam. Vesper FULL BLOOM across two voices at once. 24-bar loop ~58s (the brief names 32 bars/~51s; 24 bars balances the curtain-call grandeur with the stated duration and gives the two leads room to trade).",
+  "era": "snes",
+  "tempo": 100,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "The Tinderwick lullaby, radiant and confident. Vesper full bloom: G3->C4->D4 lift reaching up to C5, E4->D4->C4 settle. 24 bars: A (1-4) state, A (5-8), B-bloom (9-16) lifts highest, A (17-20) return, tag (21-24) bloom into the loop. Final bar leans on G (V) into bar 1.",
+      "notes": "G3q C4q D4h | E4q D4q C4h | G3q C4q D4q E4q | G4h. E4q | G3q C4q D4h | E4q D4q C4h | C4q E4q G4q E4q | C4h. rq | E4q G4q C5h | B4q A4q G4h | F4q E4q D4q E4q | C4h. rq | G4q C5q E5h | D5q C5q B4h | A4q G4q F4q E4q | G4h. rq | G3q C4q D4h | E4q D4q C4h | E4q G4q C5q G4q | E4q D4q C4h | C4q E4q G4q C5q | E5q D5q C5h | E4q D4q C4q D4q | E4h G3q D4q"
+    },
+    {
+      "name": "counter",
+      "voice": "triangle",
+      "octave": 4,
+      "gain": 0.7,
+      "_note": "Soft warm 2nd lead weaving the Dimglass route's BOUNCED Vesper contour (G->C->D bounced, springy) as a counter-melody answering the lullaby. Sits below/between the lead, mostly in its rests. Town & road embracing.",
+      "notes": "rw | G3e C4e D4e C4e E4q D4q | rw | G3q E4q D4q C4q | rw | G3e C4e D4e C4e E4q G4q | rw | E4e D4e C4e D4e E4q rq | rw | G3e C4e D4e E4e G4q E4q | rw | rh G3q C4q | rw | rh G4q E4q | rw | G3e C4e D4e E4e G4h | rw | G3e C4e D4e C4e E4q D4q | rw | rh C4q D4q | rw | G3e C4e D4e E4e G4q C5q | rw | G3q C4q D4q G3q"
+    },
+    {
+      "name": "harp",
+      "voice": "pluck",
+      "octave": 4,
+      "gain": 0.6,
+      "_note": "Flowing harp arpeggio (the brief's named harp), ascending broken chords, sixteenths/eighths rolling up. C, F, G, Am, Em following the harmony.",
+      "notes": "C4e E4e G4e C5e G4e E4e C4e E4e | C4e E4e G4e C5e G4e E4e C4e E4e | C4e E4e G4e C5e E4e G4e C5e G4e | G4e B4e D5e G5e D5e B4e G4e B4e | C4e E4e G4e C5e G4e E4e C4e E4e | C4e E4e G4e C5e G4e E4e C4e E4e | C4e E4e G4e C5e G4e E4e C4e E4e | C4e E4e G4e C5e E4e G4e C5e E5e | C4e E4e G4e C5e E5e C5e G4e E4e | G4e B4e D5e G5e D5e B4e G4e B4e | F4e A4e C5e F5e C5e A4e F4e A4e | C4e E4e G4e C5e G4e E4e C4e E4e | E4e G4e C5e E5e C5e G4e E4e G4e | G4e B4e D5e G5e D5e B4e G4e B4e | F4e A4e C5e F5e A4e C5e F4e A4e | G4e B4e D5e G5e D5e B4e G4e B4e | C4e E4e G4e C5e G4e E4e C4e E4e | C4e E4e G4e C5e G4e E4e C4e E4e | C4e E4e G4e C5e E5e C5e G4e E4e | G4e B4e D5e G5e D5e B4e G4e B4e | C4e E4e G4e C5e E5e G5e C6e G5e | E4e G4e C5e E5e C5e G4e E4e C5e | C4e E4e G4e C5e G4e E4e C4e E4e | G4e B4e D5e B4e G4e B4e D5e G4e"
+    },
+    {
+      "name": "pad",
+      "voice": "pad",
+      "octave": 3,
+      "gain": 0.45,
+      "_note": "Soft sustained PAD bed - REAL CHORDS (snes allows). Whole-note triads under each bar's harmony: C, F, G, Am, Em. The chords the chip eras withheld, finally ringing.",
+      "notes": "C3+E3+G3w | C3+E3+G3w | C3+E3+G3w | G3+B3+D4w | C3+E3+G3w | C3+E3+G3w | C3+E3+G3w | C3+E3+G3w | C3+E3+G3w | G3+B3+D4w | F3+A3+C4w | C3+E3+G3w | C3+E3+G3w | G3+B3+D4w | F3+A3+C4w | G3+B3+D4w | C3+E3+G3w | C3+E3+G3w | C3+E3+G3w | G3+B3+D4w | C3+E3+G3w | C3+E3+G3w | C3+E3+G3w | G3+B3+D4w"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.95,
+      "_note": "Warm full bass with real low-end motion - walking root-fifth-octave stride.",
+      "notes": "C2q G2q C3q G2q | C2q E2q G2q E2q | C2q G2q C3q E3q | G2q D3q B2q G2q | C2q G2q C3q G2q | C2q E2q G2q E2q | C2q E2q G2q C3q | C2q G2q E2q G2q | C2q E2q G2q C3q | G2q D3q B2q G2q | F2q A2q C3q F3q | C2q G2q E2q C2q | C2q E2q G2q C3q | G2q D3q B2q G2q | F2q A2q C3q F3q | G2q D3q B2q G2q | C2q G2q C3q G2q | C2q E2q G2q E2q | C2q G2q C3q E3q | G2q D3q B2q G2q | C2q E2q G2q C3q | E2q G2q C3q E3q | C2q G2q E2q G2q | G2q D3q G2q G3q"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.65,
+      "_note": "Fuller gentle groove: kick on 1&3, snare on 2&4, hat eighths; triumphant fill + crash at the seam (bars 8, 16, 24).",
+      "notes": "e kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | kick hat snare hat snare hat snare crash | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | kick hat snare hat snare hat snare crash | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | kick snare tom snare kick snare crash crash"
+    }
+  ]
+}

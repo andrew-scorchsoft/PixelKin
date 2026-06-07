@@ -1,0 +1,42 @@
+{
+  "title": "Hushfrost Pass - Numbed at the Throat",
+  "_note": "Option B mood sibling, more Dark. gbc 4-voice band. emotional. Unresolved F Locrian-leaning minor (b2 Gb, b5 Cb=B nat), 66 BPM, 4/4, 16 bars. Lead that gutters: phrases start clean then waver and trail off mid-phrase into rests (faked by chromatic neighbour wobble + long rests). Cold cluster arp (Gb/Cb against F) that refuses to resolve and drops out for whole bars. Faltering bass occasionally a beat late. Heartbeat slowed and thinned — every other bar it skips, the pulse failing. Vesper motif appears then FAILS to land: rising leap C4->F4->Gb4 reaches up, the settle never completes, dissolving into a rest. Last bar leaves an unresolved Gb->C tritone tension voice-leading into bar 1's F.",
+  "era": "gbc",
+  "tempo": 66,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "F Locrian minor (unresolved)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.9,
+      "_note": "Guttering: clean attack, then a chromatic waver (neighbour tone) then trails off. The motif reaches Gb (b2) and never settles home.",
+      "notes": "C4q F4h. | Gb4h F4q Gb4q | F4h rh | rw | C4q F4h Gb4q | Gb4q F4q rh | Cb4h rh | rw | Db4q C4q Cb3q Bb3q | Ab3h. rq | F4q Gb4h rq | rw | C4q F4h. | Gb4h rh | Cb4q Bb3q Ab3q rq | Gb4h rh"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 3,
+      "gain": 0.45,
+      "_note": "Cold cluster arp refusing to resolve; drops out for whole bars (rests).",
+      "notes": "F3h Gb3h | Cb4h Gb3h | rw | Db4h C4h | F3h Gb3h | rw | Cb4h Gb3h | rw | Db4h Ab3h | rw | F3h Cb4h | Gb3h C4h | F3h Gb3h | rw | Cb4h Ab3h | Gb3h Cb4h"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.85,
+      "_note": "Faltering low end, sometimes a beat late (rest before the note), holding ominous roots.",
+      "notes": "F2w | rq F2h. | F2w | Db2w | F2w | rq F2h. | Cb2w | C2w | Db2w | rq Ab1h. | F2w | C2w | F2w | rq Gb2h. | Cb2w | Gb2h C2h"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "_note": "Heartbeat slowed/thinned: a soft kick on 1 only; every other bar the pulse skips entirely (whole-bar rest). The pulse failing.",
+      "notes": "q kick rq rq rq | rw | q kick rq rq rq | rw | q kick rq rq rq | rw | q kick rq rq rq | rw | q kick rq rq rq | rw | q kick rq rq rq | rw | q kick rq rq rq | rw | q kick rq rq rq | rw"
+    }
+  ]
+}

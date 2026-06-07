@@ -1,0 +1,43 @@
+{
+  "title": "Coldfog Marches - Snuffed",
+  "_note": "Drained-zone anchor (Dark/Hollowing). gbc 4-voice band. 70 BPM (intentionally below gbc 80 floor - accept the slow-tempo warning), 4/4 felt loose, unresolved A minor. 24 bars with heavy silence. Vesper motif FRAGMENTED: the rising leap (E3->A3->B3) is attempted but the settle-home never resolves; it gutters out on the overshoot. lead=lone pulse25 guttering, phrases trail off into rests, never completing. harmony=sparse pulse12 cold drone note or two, mostly absent. bass=tri_bass low slow root held bars at a time. perc=faint irregular noise drip, no beat. Last bar leaves an unresolved E (dom-ish) drip that bleeds back to the silent A-minor top.",
+  "era": "gbc",
+  "tempo": 70,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "A minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.85,
+      "_note": "Guttering lone melody. Rising leap E3->A3->B3 attempted, settle withheld. Long rests; phrases trail off. Notes hang then die into silence.",
+      "notes": "rw | E3h. A3q | B3h rh | rw | rh A3q B3q | C4h. rq | rw | rw | E3q A3q B3h | rh C4q rq | rw | B3w | rw | rh E3q A3q | B3h. rq | rw | C4h B3q A3q | rh rq A3q | rw | E3w | rh A3q B3q | C4q B3h rq | rw | rh rq E3q"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 3,
+      "gain": 0.4,
+      "_note": "Cold drone, mostly absent. One or two detuned-feel long notes per stretch; long silences. Sits a step under the lead's home, refusing to resolve.",
+      "notes": "A3w | rw | rw | E3w | rw | rw | A3w | rw | rw | rw | F3w | rw | rw | A3w | rw | rw | rw | E3w | rw | rw | rw | A3w | rw | E3w"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.85,
+      "_note": "Low slow ominous root, held for bars at a time. A held long, slips to F, back to A, ends on E (unresolved dominant pull into the silent A top).",
+      "notes": "A1w | A1w | A1w | A1w | A1w | A1w | F1w | F1w | A1w | A1w | A1w | A1w | F1w | F1w | A1w | A1w | A1w | A1w | A1w | A1w | F1w | F1w | E1w | E1w"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.4,
+      "_note": "Faint irregular noise 'drip' instead of a beat. Hats land off-grid and sparse, lots of dead air.",
+      "notes": "q r r r hat | r r r r | q r hat r r | r r r r | r r r r | q r r hat | r r r r | q r hat r r | r r r r | r r r r | q r r hat | r r r r | r r r r | q r hat r | r r r r | q r r hat | r r r r | r r r r | q r hat r | r r r r | r r r r | q r r hat | r r r r | q r r hat"
+    }
+  ]
+}

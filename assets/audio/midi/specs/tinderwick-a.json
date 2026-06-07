@@ -1,0 +1,43 @@
+{
+  "title": "Tinderwick - Lantern Lullaby",
+  "_note": "SOURCE town theme + first full statement of the Vesper motif. gbc 4-voice band. 92 BPM, 4/4, C major with a wistful A-minor turn in the answer phrase. 16-bar AABA-leaning loop. Lead = slow tender Vesper motif (G3->C4->D4 lift ... E4->D4->C4 settle). Harmony = slow music-box broken-chord arp (C-E-G, A-C-E under minor turn), low gain. Bass = warm rocking root-fifth hearth pulse, 2 notes/bar. Percussion = near-absent, one soft noise tick on bar downbeats.",
+  "era": "gbc",
+  "tempo": 92,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "A: full Vesper statement. A': repeat. B: A-minor homesick turn (the catch in the throat). A'': resolve home.",
+      "notes": "G3q C4q D4h | E4q D4q C4h | G3q C4q D4q E4q | D4h. C4q | G3q C4q D4h | E4q D4q C4h | A3q C4q E4q D4q | C4h. rq | E4q A3q C4h | D4q C4q B3h | F4q E4q D4q C4q | B3h. A3q | G3q C4q D4h | E4q D4q C4h | A3q C4q D4q E4q | D4q C4q G3h"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.55,
+      "_note": "Slow music-box broken-chord arp, eighths. C-E-G under major; A-C-E under the A-minor turn; F-A-C and G-B-D under the answer cadence.",
+      "notes": "C4e E4e G4e E4e C4e E4e G4e E4e | C4e E4e G4e E4e C4e E4e G4e E4e | C4e E4e G4e E4e G3e B3e D4e B3e | C4e E4e G4e E4e C4e E4e G4e E4e | C4e E4e G4e E4e C4e E4e G4e E4e | C4e E4e G4e E4e C4e E4e G4e E4e | A3e C4e E4e C4e A3e C4e E4e C4e | C4e E4e G4e E4e C4e E4e G4e E4e | A3e C4e E4e C4e A3e C4e E4e C4e | F3e A3e C4e A3e G3e B3e D4e B3e | F3e A3e C4e A3e A3e C4e E4e C4e | G3e B3e D4e B3e G3e B3e D4e B3e | C4e E4e G4e E4e C4e E4e G4e E4e | C4e E4e G4e E4e C4e E4e G4e E4e | A3e C4e E4e C4e G3e B3e D4e B3e | C4e E4e G4e E4e G3e B3e D4e B3e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.9,
+      "_note": "Warm rocking root-fifth hearth pulse, two notes per bar (half notes). Last bar voice-leads G2->G2(dom) back to C downbeat of bar 1.",
+      "notes": "C2h G2h | C2h G2h | C2h G2h | C2h G2h | C2h G2h | C2h G2h | A2h E2h | C2h G2h | A2h E2h | F2h G2h | F2h A2h | G2h G2h | C2h G2h | C2h G2h | A2h G2h | C2h G2h"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.5,
+      "_note": "Almost absent: one soft noise tick on each bar downbeat, like a clock by the fire. 16 bars.",
+      "notes": "h hat rh | hat rh | hat rh | hat rh | hat rh | hat rh | hat rh | hat rh | hat rh | hat rh | hat rh | hat rh | hat rh | hat rh | hat rh | hat rh"
+    }
+  ]
+}

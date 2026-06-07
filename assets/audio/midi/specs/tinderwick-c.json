@@ -1,0 +1,43 @@
+{
+  "title": "Tinderwick - First Light on the Water",
+  "_note": "Explore-light / Light-leaning ambient. gbc 4-voice, no chords. 88 BPM, 4/4, C Lydian-tinted major (raised 4th = F# for wonder). Lead = sparse, ONLY the motif's lift fragment (G3->C4->D4) answered by silence - fewer notes than A. Harmony(bell-timbre via pulse12) = bright ascending sparkle figures (Light signature) like candle-windows on the sea. Bass = very slow sustained roots, almost a drone. Percussion = a single soft noise shimmer at the loop seam. 16 bars.",
+  "era": "gbc",
+  "tempo": 88,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "C Lydian",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.95,
+      "_note": "Only the Vesper lift fragment G3->C4->D4, then silence. The question left unanswered. F# (Lydian #4) glints once. Sparse, lots of rest.",
+      "notes": "G3q C4q D4h | rw | G3q C4q D4q E4q | rw | G3q C4q D4h | rw | F#4q E4q D4h | rw | C4q D4q E4h | rw | G3q C4q D4q F#4q | rw | G3q C4q D4h | rw | E4q D4q C4h | r h G3q D4q"
+    },
+    {
+      "name": "sparkle",
+      "voice": "pulse12",
+      "octave": 5,
+      "gain": 0.5,
+      "_note": "Bright bell-timbre ascending sparkle (Light signature). Broken-chord glints rising; F# Lydian color. Fills the spaces the lead leaves.",
+      "notes": "rh C5e E5e G5e B5e | C5e D5e E5e G5e r h | rh G4e B4e D5e F#5e | G4e A4e B4e D5e r h | rh C5e E5e G5e B5e | C5e E5e G5e C6e r h | rh D5e F#5e A5e C6e | rh G5e E5e C5e r e | rh C5e E5e G5e B5e | rh G5e C6e E6e r e | rh G4e B4e D5e F#5e | G4e B4e D5e G5e r h | rh C5e E5e G5e B5e | C5e E5e G5e C6e r h | rh E5e G5e B5e D6e | C6e B5e G5e E5e G5e C6e r e r e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.85,
+      "_note": "Very slow sustained roots, almost a drone. One or two long notes per bar.",
+      "notes": "C2w | C2w | G2w | G2w | C2w | C2w | D2w | G2w | C2w | C2w | G2w | G2w | C2w | C2w | A2h G2h | G2w"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.4,
+      "_note": "Almost silent: a single soft shimmer (ohat) only at the loop seam (last bar).",
+      "notes": "w r | r | r | r | r | r | r | r | r | r | r | r | r | r | r | h r ohat"
+    }
+  ]
+}

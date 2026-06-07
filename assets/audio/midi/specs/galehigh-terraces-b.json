@@ -1,0 +1,41 @@
+{
+  "title": "Galehigh Terraces - Lanterns on the Wind",
+  "_note": "Option B mood sibling. gbc 4-voice band. The cliff-TOWN reading: cosier, warm D major with a wistful B-minor turn, the wind a background sigh. Vesper motif stated nearly straight and tender at walking pace (A4->D5->E5 hopeful leap, F#5->E5->D5 settle), the B-minor turn colouring the settle home. Distant noise swell once per phrase, never gusty. 20-bar loop; last bar lands on A (dominant) leaning back into the bar-1 lift.",
+  "era": "gbc",
+  "tempo": 112,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "D major (wistful B minor turn)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "rounder, lyrical, longer held notes leaning into the breeze. Vesper spine tender.",
+      "notes": "A4q D5q E5h | F#5q E5q D5h | E5q F#5q G5q F#5q | E5h D5h | A4q D5q E5h | F#5q A5q F#5h | E5q D5q B4q D5q | A4h r h | B4q D5q F#5h | E5q D5q B4h | A4q B4q D5q B4q | A4h F#4h | A4q D5q E5h | F#5q E5q D5h | G5q F#5q E5q D5q | E5h C#5h | B4q E5q F#5h | G5q F#5q E5h | F#5q E5q D5q C#5q | D5h A4h"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 3,
+      "gain": 0.6,
+      "_note": "gentle rolling arpeggio, slower and warmer (broken triads, the chip 'chord').",
+      "notes": "D4e F#4e A4e F#4e D4e F#4e A4e F#4e | A3e D4e F#4e D4e A3e C#4e E4e C#4e | E4e G4e B4e G4e E4e G4e B4e G4e | D4e F#4e A4e F#4e D4e F#4e A4e F#4e | D4e F#4e A4e F#4e D4e F#4e A4e F#4e | A3e D4e F#4e D4e D4e F#4e A4e F#4e | B3e D4e F#4e D4e G3e B3e D4e B3e | A3e C#4e E4e C#4e A3e C#4e E4e C#4e | B3e D4e F#4e D4e B3e D4e F#4e D4e | E4e G4e B4e G4e B3e D4e F#4e D4e | D4e F#4e A4e F#4e D4e F#4e A4e F#4e | D4e F#4e A4e F#4e A3e C#4e E4e C#4e | D4e F#4e A4e F#4e D4e F#4e A4e F#4e | A3e D4e F#4e D4e A3e C#4e E4e C#4e | G3e B3e D4e B3e D4e F#4e A4e F#4e | A3e C#4e E4e C#4e A3e C#4e E4e C#4e | E4e G4e B4e G4e E4e G4e B4e G4e | E4e G4e B4e G4e D4e F#4e A4e F#4e | D4e F#4e A4e F#4e A3e C#4e E4e C#4e | D4e F#4e A4e F#4e A3e C#4e E4e C#4e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "_note": "relaxed quarter-note pulse, settled rather than driving.",
+      "notes": "D2q A2q D2q A2q | A2q E2q A2q E2q | E2q B2q E2q B2q | D2q A2q D2q A2q | D2q A2q D2q A2q | A2q F#2q A2q D2q | B2q F#2q G2q D2q | A2q E2q A2q E2q | B2q F#2q B2q F#2q | E2q B2q B2q F#2q | D2q A2q D2q A2q | D2q A2q A2q E2q | D2q A2q D2q A2q | A2q E2q A2q E2q | G2q D2q D2q A2q | A2q E2q A2q E2q | E2q B2q E2q B2q | E2q B2q D2q A2q | D2q A2q A2q E2q | D2q A2q A2q E2q"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "_note": "soft brush-like kick/hat, sparse; one quiet distant noise swell (ohat) per phrase.",
+      "notes": "q kick hat snare hat | kick hat snare ohat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare ohat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare ohat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare ohat | kick hat snare hat | kick hat snare hat | kick hat snare hat | kick hat snare crash"
+    }
+  ]
+}

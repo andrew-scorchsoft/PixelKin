@@ -1,0 +1,51 @@
+{
+  "title": "Umbral Spire - The Black Ascent",
+  "_note": "CLIMAX mood sibling - the pure dread/ascent loop for the climb itself: Cor's null-lanterns leaking anti-light, the fight against the dark before the win. All tension, no release; the darkest energy in the score. gba era (8 voices, chords allowed). 140 BPM, 4/4, relentless A minor (NO resolution). 32-bar loop, deliberately unresolved. Vesper motif driven in HARD MINOR, urgent and overshooting (E3->A3->B3 ... settle DENIED) - it never resolves, holding tension until the major payoff of Option A/C. lead=pulse25 driving the minor motif hard, anxious and climbing. counter-lead=a second darting line raising tension. harmony=tense reverbed pad + an anti-light shimmer (detuned high voice for the leaking null-lanterns). bass=pounding driving bass, no rest. drums=full relentless, fills ratcheting tension. Last bar = E(V) drives straight back to bar 1's A, no release.",
+  "era": "gba",
+  "tempo": 140,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "A minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "Driving minor motif, anxious, climbing. Vesper leap E3->A3->B3 hammered; the settle never lands - it climbs and reaches but stays unresolved.",
+      "notes": "E4q A4q B4q A4q | C5q B4q A4q E4q | E4q A4q B4q C5q | B4q A4q E4h | E4q A4q B4q A4q | C5q B4q A4q G4q | A4q B4q C5q D5q | E5q D5q C5q B4q | E4q A4q B4q A4q | C5q B4q A4q E4q | E4q A4q C5q B4q | A4q E4q A4h | A4q C5q E5q D5q | C5q B4q A4q G4q | E5q D5q C5q B4q | C5q B4q E5h | A4q E5q C5q B4q | A4q G4q E4q A4q | A4q C5q E5q D5q | C5q B4q A4h | E4q A4q B4q A4q | C5q B4q A4q E4q | F4q E4q D4q C4q | B3q C4q D4q E4q | A4q C5q E5q C5q | B4q A4q G4q F4q | E4q G4q B4q D5q | C5q B4q A4q E4q | E5q C5q A4q E4q | F4q G4q A4q B4q | C5q B4q A4q G4q | E4q E5q B4q E4q"
+    },
+    {
+      "name": "counter",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.65,
+      "_note": "Darting second line raising tension - fast nervous answers under the lead.",
+      "notes": "A3q C4q E4q C4q | E4q D4q C4q B3q | A3q C4q E4q A4q | E4q C4q A3q B3q | A3q C4q E4q C4q | E4q D4q C4q E4q | E4q E4q G4q F4q | E4q D4q C4q B3q | A3q C4q E4q C4q | E4q D4q C4q B3q | A3q E4q C4q E4q | C4q B3q C4h | A3q E4q C4q E4q | E4q D4q C4q B3q | C4q E4q G4q F4q | E4q D4q C4h | C4q E4q A4q E4q | C4q B3q A3q C4q | A3q C4q E4q F4q | E4q D4q C4h | A3q C4q E4q C4q | E4q D4q C4q B3q | D4q C4q B3q A3q | G3q A3q B3q C4q | E4q E4q G4q E4q | D4q C4q B3q A3q | G3q B3q D4q F4q | E4q D4q C4q B3q | C4q A3q E4q C4q | D4q E4q F4q G4q | E4q D4q C4q B3q | E4q G4q E4q B3q"
+    },
+    {
+      "name": "pad",
+      "voice": "pad",
+      "octave": 3,
+      "gain": 0.45,
+      "_note": "Tense reverbed pad, dark minor chords held; an anti-light shimmer (high detuned-feel voice) lives in the harmony arp via the counter. Chords sustain the dread.",
+      "notes": "A2+E3+A3w | E2+B2+E3w | A2+E3+A3w | E2+B2+E3w | A2+E3+A3w | E2+B2+E3w | C3+G3+C4w | E2+B2+E3w | A2+E3+A3w | E2+B2+E3w | A2+E3+A3w | E2+B2+E3w | F2+C3+F3w | E2+B2+E3w | C3+G3+C4w | E2+B2+E3w | A2+E3+A3w | F2+C3+F3w | F2+C3+F3w | E2+B2+E3w | A2+E3+A3w | E2+B2+E3w | D2+A2+D3w | E2+B2+E3w | A2+E3+A3w | F2+C3+F3w | G2+D3+G3w | E2+B2+E3w | A2+E3+A3w | F2+C3+F3w | E2+B2+E3w | E2+B2+E3w"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 1,
+      "gain": 1.0,
+      "_note": "Pounding driving bass, no rest - relentless eighths. Last bar E(V) drives back to A bar 1.",
+      "notes": "A1e A1e E2e A1e A1e E2e A1e E1e | E1e E1e B1e E1e E1e B1e E1e E2e | A1e A1e E2e A1e A1e E2e A1e E1e | E1e E1e B1e E1e E1e B1e E1e E2e | A1e A1e E2e A1e A1e E2e A1e E1e | E1e E1e B1e E1e E1e B1e E1e E2e | C2e C2e G2e C2e C2e G2e C2e G1e | E1e E1e B1e E1e E1e B1e E1e E2e | A1e A1e E2e A1e A1e E2e A1e E1e | E1e E1e B1e E1e E1e B1e E1e E2e | A1e A1e E2e A1e A1e E2e A1e E1e | E1e E1e B1e E1e E1e B1e E1e E2e | F1e F1e C2e F1e F1e C2e F1e C1e | E1e E1e B1e E1e E1e B1e E1e E2e | C2e C2e G2e C2e C2e G2e C2e G1e | E1e E1e B1e E1e E1e B1e E1e E2e | A1e A1e E2e A1e A1e E2e A1e E1e | F1e F1e C2e F1e F1e C2e F1e C1e | F1e F1e C2e F1e F1e C2e F1e C1e | E1e E1e B1e E1e E1e B1e E1e E2e | A1e A1e E2e A1e A1e E2e A1e E1e | E1e E1e B1e E1e E1e B1e E1e E2e | D1e D1e A1e D1e D1e A1e D1e A1e | E1e E1e B1e E1e E1e B1e E1e E2e | A1e A1e E2e A1e A1e E2e A1e E1e | F1e F1e C2e F1e F1e C2e F1e C1e | G1e G1e D2e G1e G1e D2e G1e D1e | E1e E1e B1e E1e E1e B1e E1e E2e | A1e A1e E2e A1e A1e E2e A1e E1e | F1e F1e C2e F1e F1e C2e F1e C1e | E1e E1e B1e E1e E1e B1e E1e E2e | E1e E1e B1e E1e E1q E1q"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.85,
+      "_note": "Full relentless kit, driving sixteenth hats; fills ratchet tension every 8 bars. Last bar fills hard back into the loop, no release.",
+      "notes": "e kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | s kick snare kick snare tom tom snare snare kick kick snare snare crash crash crash | e kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | s kick snare kick snare tom tom snare snare kick kick snare snare crash crash crash | e kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | s kick snare kick snare tom tom snare snare kick kick snare snare crash crash crash | e kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | s kick snare kick snare tom tom snare snare kick snare tom tom snare crash crash"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "title": "Saltreach Fen - Reedwalk Lull",
+  "_note": "Option A anchor. gbc 4-voice band. D natural minor slow marsh wander. Breathy long-held pulse25 lead leaving rests for the water; pulse12 rocking root-fifth water-lap; tri_bass gentle rocking root-fifth sway; very sparse drums. Vesper spine in minor: lift A3->D4->E4, settle F4->E4->D4 sagging a half-step longer. 24-bar loop, last bar voice-leads back to bar 1.",
+  "era": "gbc",
+  "tempo": 104,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "D natural minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "A: full Vesper lift+settle (the spine). A': repeat. B: questioning lift to G, the homesick turn. A'': settle that voice-leads home. Long notes + rests = water answers.",
+      "notes": "rq A3q D4q E4q | F4h. E4q | D4h rh | rw | A3q D4q E4q F4q | E4h D4h | F4q E4q D4q C4q | D4h rh | rq D4q F4q G4q | A4h. G4q | F4h E4q D4q | rw | A3q D4q E4q F4q | G4h F4h | E4q D4q C4q D4q | E4h rh | rq A3q D4q E4q | F4h. E4q | D4q F4q E4q D4q | C4h rh | A3q D4q F4q E4q | D4h C4q D4q | E4q D4q C4q E4q | D4h A3q E4q"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 3,
+      "gain": 0.55,
+      "_note": "Slow rocking two-note root-fifth lapping figure, never busy. Follows Dm - Dm - Bb - Bb - F - C - Dm pattern of the bass.",
+      "notes": "D3q A3q D3q A3q | D3q A3q D3q A3q | Bb2q F3q Bb2q F3q | Bb2q F3q Bb2q F3q | F2q C3q F2q C3q | C3q G3q C3q G3q | D3q A3q D3q A3q | D3q A3q D3q A3q | D3q A3q D3q A3q | D3q A3q D3q A3q | Bb2q F3q Bb2q F3q | Bb2q F3q Bb2q F3q | F2q C3q F2q C3q | C3q G3q C3q G3q | D3q A3q D3q A3q | D3q A3q D3q A3q | D3q A3q D3q A3q | D3q A3q D3q A3q | Bb2q F3q Bb2q F3q | C3q G3q C3q G3q | D3q A3q D3q A3q | Bb2q F3q Bb2q F3q | F2q C3q F2q C3q | A2q E3q A2q E3q"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "_note": "Gentle rocking root-fifth on-beat sway, two moves per bar.",
+      "notes": "D2h A2h | D2h A2h | Bb1h F2h | Bb1h F2h | F1h C2h | C2h G2h | D2h A2h | D2h A2h | D2h A2h | D2h A2h | Bb1h F2h | Bb1h F2h | F1h C2h | C2h G2h | D2h A2h | D2h A2h | D2h A2h | D2h A2h | Bb1h F2h | C2h G2h | D2h A2h | Bb1h F2h | F1h C2h | A1h E2h"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "_note": "Very sparse: a soft hat on the offbeat and a single low kick per bar, lots of silence. A faint fill at the loop seam (bar 24).",
+      "notes": "q kick rq hat rq | kick rq hat rq | kick rq hat rq | kick rq hat rq | kick rq hat rq | kick rq hat rq | kick rq hat rq | kick rq hat rq | kick rq hat rq | kick rq hat rq | kick rq hat rq | kick rq hat rq | kick rq hat rq | kick rq hat rq | kick rq hat rq | kick rq hat rq | kick rq hat rq | kick rq hat rq | kick rq hat rq | kick rq hat rq | kick rq hat rq | kick rq hat rq | kick rq hat rq | kick hat kick hat"
+    }
+  ]
+}
