@@ -13,6 +13,17 @@ import type { KinInstance } from '@game/systems/party/KinInstance';
 
 const BAR_W = 48;
 const BAR_H = 4;
+const PAD = theme.space.lg;
+/** Floor so the bar (and HP numbers) always fit even for very short names. */
+const MIN_W = PAD * 2 + BAR_W;
+
+/**
+ * Where the panel is pinned. The foe plate hugs the top-left and grows
+ * rightwards; the player plate hugs the bottom-right and grows leftwards, so a
+ * long "Name  Lv99" can never run off the right edge of the 240px screen (the
+ * bug where Vulpyre's level was clipped).
+ */
+export type HpPanelAlign = 'left' | 'right';
 
 export class HpPanel {
   private readonly panel: Panel;
@@ -20,41 +31,39 @@ export class HpPanel {
   private readonly barBg: Phaser.GameObjects.Rectangle;
   private readonly nameText: Phaser.GameObjects.Text;
   private readonly hpText?: Phaser.GameObjects.Text;
+  private readonly height: number;
   private kin: KinInstance;
 
   constructor(
     private readonly scene: Phaser.Scene,
-    x: number,
-    y: number,
+    /** The pinned x: the panel's left edge when align='left', its right edge when align='right'. */
+    private readonly anchorX: number,
+    private readonly y: number,
     kin: KinInstance,
     showNumbers: boolean,
+    private readonly align: HpPanelAlign = 'left',
   ) {
     this.kin = kin;
-    const w = 78;
-    const h = showNumbers ? 34 : 26;
-    this.panel = new Panel(scene, x, y, w, h).fixedToCamera();
+    this.height = showNumbers ? 34 : 26;
+    this.panel = new Panel(scene, anchorX, this.y, MIN_W, this.height).fixedToCamera();
 
-    this.nameText = makeText(scene, theme.space.lg, theme.space.md, '', theme.text.base);
-    const lvlY = theme.space.md;
+    this.nameText = makeText(scene, PAD, theme.space.md, '', theme.text.base);
     const barY = 16;
     this.panel.add(this.nameText);
 
     this.barBg = scene.add
-      .rectangle(theme.space.lg, barY, BAR_W, BAR_H, hex(theme.color.panelShadow))
+      .rectangle(PAD, barY, BAR_W, BAR_H, hex(theme.color.panelShadow))
       .setOrigin(0, 0)
       .setScrollFactor(0);
     this.bar = scene.add
-      .rectangle(theme.space.lg, barY, BAR_W, BAR_H, hex(COLORS.grass))
+      .rectangle(PAD, barY, BAR_W, BAR_H, hex(COLORS.grass))
       .setOrigin(0, 0)
       .setScrollFactor(0);
     this.panel.add(this.barBg);
     this.panel.add(this.bar);
 
-    // "Lv" label sits to the right of the name.
-    void lvlY;
-
     if (showNumbers) {
-      this.hpText = makeText(scene, theme.space.lg, barY + 6, '', theme.text.dim);
+      this.hpText = makeText(scene, PAD, barY + 6, '', theme.text.dim);
       this.panel.add(this.hpText);
     }
 
@@ -74,6 +83,15 @@ export class HpPanel {
     this.bar.width = Math.max(0, Math.round(BAR_W * ratio));
     this.bar.fillColor = this.colorFor(ratio);
     this.hpText?.setText(`${Math.max(0, this.kin.hp)}/${this.kin.maxHp}`);
+    this.layout();
+  }
+
+  /** Grow the frame to fit the name+level line and re-pin it to its anchor edge. */
+  private layout(): void {
+    const w = Math.max(MIN_W, Math.ceil(this.nameText.width) + PAD * 2);
+    this.panel.bg.setSize(w, this.height);
+    const x = this.align === 'right' ? this.anchorX - w : this.anchorX;
+    this.panel.container.setPosition(x, this.y);
   }
 
   private colorFor(ratio: number): number {

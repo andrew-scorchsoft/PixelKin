@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT, COLORS } from '@game/config';
+import { allBattleBackdrops } from '@game/data/world/maps';
 import trainerManifest from '../../../public/assets/sprites/trainers/trainers.manifest.json';
 import {
   creatureSpritePath,
@@ -53,6 +54,13 @@ export class PreloadScene extends Phaser.Scene {
     for (const [id, v] of FEATURED) {
       const path = creatureSpritePath(id, v);
       if (path) this.load.image(creatureTextureKey(id, v), path);
+    }
+
+    // Per-map battle backdrops (240x160 WebP). Keyed by their asset path so the
+    // BattleScene can add the chosen variant with no further loading. Maps without
+    // a backdrop fall back to the plain night fill. See data/world/maps.ts.
+    for (const path of allBattleBackdrops()) {
+      this.load.image(path, path);
     }
 
     // Human walk-sheets (player + named NPCs), packed by pack_trainers.py. Keyed
