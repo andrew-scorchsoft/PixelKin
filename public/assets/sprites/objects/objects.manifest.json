@@ -13,6 +13,27 @@
       "height": 48,
       "tw": 1,
       "th": 3
+    },
+    "tinderwick_lumenary": {
+      "path": "assets/sprites/objects/tinderwick_lumenary.webp",
+      "width": 96,
+      "height": 96,
+      "tw": 6,
+      "th": 6
+    },
+    "tinderwick_shop": {
+      "path": "assets/sprites/objects/tinderwick_shop.webp",
+      "width": 80,
+      "height": 64,
+      "tw": 5,
+      "th": 4
+    },
+    "tinderwick_tree": {
+      "path": "assets/sprites/objects/tinderwick_tree.webp",
+      "width": 48,
+      "height": 64,
+      "tw": 3,
+      "th": 4
     }
   }
 }

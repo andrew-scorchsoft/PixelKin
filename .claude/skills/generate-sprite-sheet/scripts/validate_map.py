@@ -96,16 +96,19 @@ def main() -> int:
         return gid_meta.get(gid, {})
 
     # --- 1. Layer discipline ---
+    objs = m.get("objects", [])
+    overhang_objs = any(o.get("overhang", 0) > 0 for o in objs)
     have = {r: (r in by_role and any(any(g > 0 for g in l["data"]) for l in by_role[r]))
             for r in ("base", "deco", "above")}
     if not have["base"]:
         rep.add("layers", "FAIL", "no populated 'base' layer")
-    elif not have["deco"]:
-        rep.add("layers", "WARN", "no decoration layer — map will read as empty/flat")
-    elif not have["above"]:
-        rep.add("layers", "WARN", "no 'above' layer — no walk-under depth (tree/roof tops)")
+    elif not have["deco"] and not objs:
+        rep.add("layers", "WARN", "no decoration layer or objects — map will read as empty/flat")
+    elif not have["above"] and not overhang_objs:
+        rep.add("layers", "WARN", "no walk-under depth (no 'above' layer and no overhanging objects)")
     else:
-        rep.add("layers", "PASS", "base + deco + above all present and used")
+        depth = "above layer" if have["above"] else "object overhangs"
+        rep.add("layers", "PASS", f"base + deco + {depth} (walk-under depth) present")
 
     base = by_role.get("base", [{}])[0].get("data")
 
@@ -171,11 +174,14 @@ def main() -> int:
         deco_cells = 0
         for ly in by_role.get("deco", []):
             deco_cells += sum(1 for g in ly["data"] if g > 0)
-        ratio = deco_cells / max(1, walkable)
+        # whole-structure objects (buildings/trees/lamps) also fill the scene
+        obj_cells = sum(o.get("w", 0) * o.get("h", 0) for o in objs)
+        filled = deco_cells + obj_cells
+        ratio = filled / max(1, walkable)
         status = "PASS" if ratio >= 0.06 else "WARN"
         rep.add("decoration", status,
-                f"deco props cover {ratio*100:.0f}% of walkable ground "
-                f"({deco_cells} props / {walkable} walkable)")
+                f"deco props + objects cover {ratio*100:.0f}% of walkable ground "
+                f"({deco_cells} props + {obj_cells} object tiles / {walkable} walkable)")
 
     # --- 6. Tree depth (base on deco, canopy on above) ---
     tree_bases = sum(1 for ly in by_role.get("deco", [])

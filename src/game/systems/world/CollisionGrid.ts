@@ -46,8 +46,10 @@ export class CollisionGrid {
     // except the overhanging top rows the player walks under (art-style §14b).
     for (const obj of this.map.def.objects ?? []) {
       if (obj.solid === false) continue;
-      const overhang = obj.overhang ?? 0;
-      for (let dy = overhang; dy < obj.h; dy++) {
+      // Buildings collide on their whole footprint; only walk-under objects (trees,
+      // lamps) free their overhang rows so the player can pass beneath the canopy.
+      const startRow = obj.walk_under ? (obj.overhang ?? 0) : 0;
+      for (let dy = startRow; dy < obj.h; dy++) {
         for (let dx = 0; dx < obj.w; dx++) {
           const tx = obj.at.tx + dx;
           const ty = obj.at.ty + dy;

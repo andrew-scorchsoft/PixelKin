@@ -4,7 +4,7 @@
   "tile_width": 16,
   "tile_height": 16,
   "columns": 8,
-  "tile_count": 52,
+  "tile_count": 48,
   "tiles": [
     {
       "index": 0,
@@ -16,224 +16,214 @@
     },
     {
       "index": 2,
-      "role": "ground",
-      "terrain": "tallgrass",
-      "autotile": "fill",
-      "encounter_terrain": "tall_grass"
+      "role": "ground"
     },
     {
       "index": 3,
+      "role": "ground"
+    },
+    {
+      "index": 4,
       "role": "ground",
       "terrain": "tallgrass",
       "autotile": "fill",
       "encounter_terrain": "tall_grass"
     },
     {
-      "index": 4,
-      "role": "path",
-      "terrain": "path",
-      "autotile": "corner_nw"
-    },
-    {
       "index": 5,
-      "role": "path",
-      "terrain": "path",
-      "autotile": "edge_n"
+      "role": "ground",
+      "terrain": "tallgrass",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
     },
     {
       "index": 6,
       "role": "path",
       "terrain": "path",
-      "autotile": "corner_ne"
+      "autotile": "corner_nw"
     },
     {
       "index": 7,
       "role": "path",
       "terrain": "path",
-      "autotile": "edge_w"
+      "autotile": "edge_n"
     },
     {
       "index": 8,
       "role": "path",
       "terrain": "path",
-      "autotile": "fill"
+      "autotile": "corner_ne"
     },
     {
       "index": 9,
       "role": "path",
       "terrain": "path",
-      "autotile": "edge_e"
+      "autotile": "edge_w"
     },
     {
       "index": 10,
       "role": "path",
       "terrain": "path",
-      "autotile": "corner_sw"
+      "autotile": "fill"
     },
     {
       "index": 11,
       "role": "path",
       "terrain": "path",
-      "autotile": "edge_s"
+      "autotile": "edge_e"
     },
     {
       "index": 12,
       "role": "path",
       "terrain": "path",
-      "autotile": "corner_se"
+      "autotile": "corner_sw"
     },
     {
       "index": 13,
       "role": "path",
       "terrain": "path",
-      "autotile": "strip_h"
+      "autotile": "edge_s"
     },
     {
       "index": 14,
       "role": "path",
       "terrain": "path",
-      "autotile": "strip_v"
+      "autotile": "corner_se"
     },
     {
       "index": 15,
-      "role": "sand",
-      "terrain": "sand",
-      "autotile": "corner_nw"
+      "role": "path",
+      "terrain": "path",
+      "autotile": "strip_h"
     },
     {
       "index": 16,
-      "role": "sand",
-      "terrain": "sand",
-      "autotile": "edge_n"
+      "role": "path",
+      "terrain": "path",
+      "autotile": "strip_v"
     },
     {
       "index": 17,
       "role": "sand",
       "terrain": "sand",
-      "autotile": "corner_ne"
+      "autotile": "corner_nw"
     },
     {
       "index": 18,
       "role": "sand",
       "terrain": "sand",
-      "autotile": "edge_w"
+      "autotile": "edge_n"
     },
     {
       "index": 19,
       "role": "sand",
       "terrain": "sand",
-      "autotile": "fill"
+      "autotile": "corner_ne"
     },
     {
       "index": 20,
       "role": "sand",
       "terrain": "sand",
-      "autotile": "edge_e"
+      "autotile": "edge_w"
     },
     {
       "index": 21,
       "role": "sand",
       "terrain": "sand",
-      "autotile": "corner_sw"
+      "autotile": "fill"
     },
     {
       "index": 22,
       "role": "sand",
       "terrain": "sand",
-      "autotile": "edge_s"
+      "autotile": "edge_e"
     },
     {
       "index": 23,
       "role": "sand",
       "terrain": "sand",
-      "autotile": "corner_se"
+      "autotile": "corner_sw"
     },
     {
       "index": 24,
-      "role": "tree",
-      "terrain": "tree",
-      "autotile": "corner_nw",
-      "collides": true
+      "role": "sand",
+      "terrain": "sand",
+      "autotile": "edge_s"
     },
     {
       "index": 25,
-      "role": "tree",
-      "terrain": "tree",
-      "autotile": "edge_n",
-      "collides": true
+      "role": "sand",
+      "terrain": "sand",
+      "autotile": "corner_se"
     },
     {
       "index": 26,
       "role": "tree",
       "terrain": "tree",
-      "autotile": "corner_ne",
+      "autotile": "corner_nw",
       "collides": true
     },
     {
       "index": 27,
       "role": "tree",
       "terrain": "tree",
-      "autotile": "edge_w",
+      "autotile": "edge_n",
       "collides": true
     },
     {
       "index": 28,
       "role": "tree",
       "terrain": "tree",
-      "autotile": "fill",
+      "autotile": "corner_ne",
       "collides": true
     },
     {
       "index": 29,
       "role": "tree",
       "terrain": "tree",
-      "autotile": "edge_e",
+      "autotile": "edge_w",
       "collides": true
     },
     {
       "index": 30,
       "role": "tree",
       "terrain": "tree",
-      "autotile": "corner_sw",
+      "autotile": "fill",
       "collides": true
     },
     {
       "index": 31,
       "role": "tree",
       "terrain": "tree",
-      "autotile": "edge_s",
+      "autotile": "edge_e",
       "collides": true
     },
     {
       "index": 32,
       "role": "tree",
       "terrain": "tree",
-      "autotile": "corner_se",
+      "autotile": "corner_sw",
       "collides": true
     },
     {
       "index": 33,
-      "role": "water",
-      "terrain": "water",
-      "autotile": "corner_nw",
-      "collides": true,
-      "encounter_terrain": "water",
-      "requires_ability": "tidecall"
+      "role": "tree",
+      "terrain": "tree",
+      "autotile": "edge_s",
+      "collides": true
     },
     {
       "index": 34,
-      "role": "water",
-      "terrain": "water",
-      "autotile": "edge_n",
-      "collides": true,
-      "encounter_terrain": "water",
-      "requires_ability": "tidecall"
+      "role": "tree",
+      "terrain": "tree",
+      "autotile": "corner_se",
+      "collides": true
     },
     {
       "index": 35,
       "role": "water",
       "terrain": "water",
-      "autotile": "corner_ne",
+      "autotile": "corner_nw",
       "collides": true,
       "encounter_terrain": "water",
       "requires_ability": "tidecall"
@@ -242,7 +232,7 @@
       "index": 36,
       "role": "water",
       "terrain": "water",
-      "autotile": "edge_w",
+      "autotile": "edge_n",
       "collides": true,
       "encounter_terrain": "water",
       "requires_ability": "tidecall"
@@ -251,24 +241,16 @@
       "index": 37,
       "role": "water",
       "terrain": "water",
-      "autotile": "fill",
+      "autotile": "corner_ne",
       "collides": true,
       "encounter_terrain": "water",
-      "requires_ability": "tidecall",
-      "animation": {
-        "frames": [
-          37,
-          42,
-          43
-        ],
-        "duration_ms": 800
-      }
+      "requires_ability": "tidecall"
     },
     {
       "index": 38,
       "role": "water",
       "terrain": "water",
-      "autotile": "edge_e",
+      "autotile": "edge_w",
       "collides": true,
       "encounter_terrain": "water",
       "requires_ability": "tidecall"
@@ -277,16 +259,24 @@
       "index": 39,
       "role": "water",
       "terrain": "water",
-      "autotile": "corner_sw",
+      "autotile": "fill",
       "collides": true,
       "encounter_terrain": "water",
-      "requires_ability": "tidecall"
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          39,
+          44,
+          45
+        ],
+        "duration_ms": 800
+      }
     },
     {
       "index": 40,
       "role": "water",
       "terrain": "water",
-      "autotile": "edge_s",
+      "autotile": "edge_e",
       "collides": true,
       "encounter_terrain": "water",
       "requires_ability": "tidecall"
@@ -295,7 +285,7 @@
       "index": 41,
       "role": "water",
       "terrain": "water",
-      "autotile": "corner_se",
+      "autotile": "corner_sw",
       "collides": true,
       "encounter_terrain": "water",
       "requires_ability": "tidecall"
@@ -303,48 +293,39 @@
     {
       "index": 42,
       "role": "water",
-      "collides": true
+      "terrain": "water",
+      "autotile": "edge_s",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
     },
     {
       "index": 43,
       "role": "water",
-      "collides": true
+      "terrain": "water",
+      "autotile": "corner_se",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
     },
     {
       "index": 44,
-      "role": "wall",
+      "role": "water",
       "collides": true
     },
     {
       "index": 45,
-      "role": "roof"
+      "role": "water",
+      "collides": true
     },
     {
       "index": 46,
-      "role": "door"
-    },
-    {
-      "index": 47,
       "role": "decor"
     },
     {
-      "index": 48,
+      "index": 47,
       "role": "sign",
       "collides": true
-    },
-    {
-      "index": 49,
-      "role": "decor",
-      "collides": true
-    },
-    {
-      "index": 50,
-      "role": "fence",
-      "collides": true
-    },
-    {
-      "index": 51,
-      "role": "tree"
     }
   ]
 }

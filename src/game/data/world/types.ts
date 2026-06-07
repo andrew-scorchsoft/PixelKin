@@ -166,8 +166,15 @@ export interface MapObject {
   h: number;
   /** Top N rows that render over the player (overhanging roof/eave/canopy). Default 0. */
   overhang?: number;
-  /** Whether the non-overhang footprint blocks movement. Default true. */
+  /** Whether the footprint blocks movement. Default true. */
   solid?: boolean;
+  /**
+   * If true, the `overhang` rows are PASSABLE (the player walks under them — tree
+   * canopies, a lamp's arm). If false (default), the whole footprint is solid even
+   * though the overhang rows still render over the player — buildings, where the
+   * roof must draw above a player standing north of it but you can't walk into it.
+   */
+  walk_under?: boolean;
 }
 
 export interface MapDefinition {
