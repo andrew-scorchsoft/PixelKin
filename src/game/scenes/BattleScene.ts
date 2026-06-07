@@ -46,16 +46,18 @@ const MUSIC_DIR = 'assets/audio/music/';
 
 /** What the caller hands in to start a fight. */
 export type BattleRequest =
-  | { kind: 'wild'; species_id: number; level: number; party: KinInstanceData[]; inventory: InventoryData }
-  | { kind: 'trainer'; trainer: string; party: KinInstanceData[]; inventory: InventoryData };
+  | { kind: 'wild'; species_id: number; level: number; party: KinInstanceData[]; box: KinInstanceData[]; inventory: InventoryData }
+  | { kind: 'trainer'; trainer: string; party: KinInstanceData[]; box: KinInstanceData[]; inventory: InventoryData };
 
 /** What the scene hands back via onComplete. */
 export interface BattleResult {
   outcome: 'win' | 'lose' | 'caught' | 'fled';
   /** Player party with mutated hp/exp/levels (and any newly caught kin appended). */
   party: KinInstanceData[];
+  /** Kin at the Hearth, with any full-lamp catch overflow appended. */
+  box: KinInstanceData[];
   inventory: InventoryData;
-  /** The kin caught this battle (also already appended to `party`). */
+  /** The kin caught this battle (appended to `party`, or to `box` if the lamp was full). */
   caught?: KinInstanceData;
   /** Flags to set on win (e.g. a trainer's reward_flags). */
   set_flags?: string[];
@@ -75,6 +77,8 @@ export class BattleScene extends Phaser.Scene {
   private request!: BattleSceneData;
   private engine!: BattleEngine;
   private playerParty!: Party;
+  /** Kin at the Hearth; a catch made with a full lamp overflows into this list. */
+  private box: KinInstanceData[] = [];
   private inventory!: InventoryData;
   private sfx!: Sfx;
   private music!: MusicDirector;
@@ -101,6 +105,7 @@ export class BattleScene extends Phaser.Scene {
     this.music = new MusicDirector(this);
 
     this.playerParty = Party.fromData(data.party);
+    this.box = [...(data.box ?? [])];
     this.inventory = { items: { ...data.inventory.items } };
 
     const foeParty = this.buildFoeParty();
@@ -416,7 +421,13 @@ export class BattleScene extends Phaser.Scene {
         return;
       case 'catch-success':
         void this.sfx.playVariant('capture-success', ['a', 'b', 'c']);
-        await this.msg.show(`${this.engine.foe.displayName} walks with you now!`);
+        // isFull is still true here — the add happens in complete() — so it
+        // correctly predicts whether this catch will overflow to the Hearth.
+        if (this.playerParty.isFull) {
+          await this.msg.show(`Your lamp is full! ${this.engine.foe.displayName} will rest at the Hearth.`);
+        } else {
+          await this.msg.show(`${this.engine.foe.displayName} walks with you now!`);
+        }
         return;
       case 'catch-break':
         void this.sfx.play('capture-break');
@@ -545,15 +556,18 @@ export class BattleScene extends Phaser.Scene {
 
     let caught: KinInstanceData | undefined;
     if (outcome === 'caught' && this.engine.caught) {
-      // Append the caught kin to the returned party if there's room; the caller
-      // fills caught_at (it knows the world position) before persisting.
-      this.playerParty.add(this.engine.caught);
-      caught = this.engine.caught.toData();
+      // Append the caught kin to the party if there's room; otherwise the lamp is
+      // full and it overflows to the Hearth (never silently lost). The catch-success
+      // message already told the player which happened.
+      const c = this.engine.caught;
+      caught = c.toData();
+      if (!this.playerParty.add(c)) this.box.push(caught);
     }
 
     const result: BattleResult = {
       outcome,
       party: this.playerParty.toData(),
+      box: this.box,
       inventory: this.inventory,
       caught,
       set_flags: this.setFlags.length > 0 ? this.setFlags : undefined,
