@@ -14,9 +14,24 @@ For working in the repo, see **[`CLAUDE.md`](CLAUDE.md)**.
 
 ## The game so far
 
-The design is largely settled and data-locked; the engine to play it is still
-being built. What's already in the repo:
+The design is data-locked **and the engine to play it now exists** — the first
+hour is playable end-to-end: attract demo → title (New Game / Continue / Settings)
+→ story intro where you're given a vesperlamp and **choose a starter** → explore
+**Tinderwick**, talk to townsfolk, read signs, enter the house → earn the first
+**Gleam** from Lampwarden Brisa Tallow in a real turn-based battle → head north
+onto **Dimglass Coast** with wild encounters. Progress autosaves (with JSON
+export/import), and the screen can show as a handheld-device frame, fullscreen with
+translucent touch controls, or plain. Run it with `npm install && npm run dev`.
 
+What's already in the repo:
+
+- **A playable game engine** (Phaser 3 + TypeScript). Tile maps from our own JSON
+  schema, grid movement, NPCs/signs/warps/cutscenes, a data-driven turn-based battle
+  system, and an item/flag/save layer behind the platform seam — all built on one
+  in-canvas **UI design language** ([`src/game/ui/theme.ts`](src/game/ui/theme.ts))
+  every screen shares. Engine code is in [`src/game/`](src/game/), the DOM
+  screen-shells in [`src/shell/`](src/shell/); map/level-design rules are binding in
+  [`docs/world/level-design.md`](docs/world/level-design.md).
 - **A world & story — *The Long Dusk*.** *Vesperholm*, a crescent of valleys
   around a darkened mountain where night fell and won't lift. You play a young
   lamp-tender's apprentice relighting the sky one constellation at a time,

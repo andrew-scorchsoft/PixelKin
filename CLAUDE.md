@@ -75,12 +75,21 @@ public/                     # SERVED/BUILT output — what Vite ships (base './'
     ui/logo.png             #   served copy of the logo
     sprites/ tilesets/ fonts/ audio/sfx/   # packed/served output (filling in as built)
 src/
-  main.ts                   # entry: boots Phaser
+  main.ts                   # entry: boots Phaser + mounts the DOM shell
   game/
     config.ts               # resolution (240×160), tile size, palette
-    scenes/                 # Boot -> Preload -> Title (World/Battle still to build)
-    entities/               # Player, NPC, Kin classes (stubs)
-    systems/                # battle, party, inventory, save, dialogue (stubs)
+    scenes/                 # Boot -> Preload -> Attract -> Title -> World <-> Battle
+    entities/               # Actor (grid-walker) + Player, Npc (placeholder art until sprites packed)
+    systems/                # the engine, grouped by job:
+      input/                #   InputController (keyboard + shell/touch -> abstract InputAction)
+      world/                #   MapLoader/MapRenderer/CollisionGrid/EncounterSystem/AnimatedTiles + tileset format
+      battle/ party/        #   turn-based BattleEngine + KinInstance/Party
+      cutscene/ dialogue/   #   data-driven CutsceneRunner
+      flags/ inventory/ save/  # FlagStore, Inventory, SaveManager/SaveCodec (+ export/import)
+      audio/                #   MusicDirector, Sfx (tolerant lazy loaders)
+    ui/                     # in-canvas kit, ALL driven by theme.ts: Panel/Menu/DialogueBox/
+                            #   Cursor/Text/Transitions/StarterSelect/SettingsMenu/DebugOverlay
+    content/                # data registries: dialogue, scripts, items, starters, trainers
     data/                   # data-driven defs (the bulk of real content — see below)
       type-chart.json       #   authoritative 10-type effectiveness chart
       moves.json            #   94 moves + 28 abilities
@@ -88,9 +97,9 @@ src/
       species/NNN_slug.json #   one file per kin (the final 151)
       dex.ts                #   typed access layer over the JSON (the engine's entry point)
       world/                #   custom map/world schema (types/graph/maps + example)
-    ui/                     # HUD, dialogue boxes, menus (stubs)
-  platform/                 # platform seam (storage now; input/audio later)
-  styles/                   # global.css
+  shell/                    # DOM chrome OUTSIDE the canvas: device/overlay/plain views + touch controls
+  platform/                 # platform seam (storage; input/audio go through systems/)
+  styles/                   # global.css + bundled pixel font
 docs/
   art-style.md              # the Art & Sprite Bible (binding visual rulebook)
   mechanics/                # types, stats, moves, capture, kindling, selection, schema, sim
@@ -280,3 +289,18 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **Use the canon vocabulary** (kin, Lumenary, Gleam, Lantern Gift, kindling,
   vesperlamp) in code, data, dialogue, and commits — not generic "monster/gym/badge,"
   and never another franchise's terms (even in prompts and commit messages).
+- **In-canvas UI goes through `game/ui/theme.ts`.** Never hard-code a colour, font,
+  or size in a screen — add/reuse a theme token and build from Panel/Menu/DialogueBox/
+  Text. DOM is *only* for the shell chrome in `src/shell/` (the three views + touch
+  controls), never for in-game UI (it must scale with the 240×160 canvas).
+- **Served tilesets/sprites are lossless WebP** packed from PNG masters in `assets/`
+  via `pack_tileset.py`; the engine reads tile collision/terrain/ability/animation
+  from the `*.tileset.json` sidecar, never from the map JSON (maps carry only gids).
+- **Maps are content.** A new area = author JSON to `public/assets/maps/`, register in
+  `world/maps.ts` + edges in `world/graph.ts`, add tilesets — no engine code. Author
+  to `docs/world/level-design.md`; the engine no-ops warps to unregistered maps (safe
+  inert teases). Spawn/NPC/trigger/warp tiles must be non-colliding.
+- **Input is abstract.** Read `InputController`'s `InputAction`, never raw keys; touch
+  shells feed the same actions. Promise-based modals (Menu/DialogueBox/StarterSelect)
+  spin up a transient `InputController` — they `destroy()` it on close; do the same if
+  you add one.
