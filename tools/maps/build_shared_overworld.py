@@ -217,8 +217,27 @@ tw_family("sand", "sand", "sand",
           post=_sand_post)
 tw_family("tree", "tree", "tree", collides=True,
           variants={"edge_n": 2, "edge_s": 1, "edge_w": 1, "edge_e": 1})
+# Water: value-match the deep fill toward the edge tiles' water tone — the raw
+# fill is far darker than the foam-edge water, so concave bays and pond centres
+# read as abrupt dark blocks instead of one body of water.
+_w_edge = deborder(load(TW / _TW_BY_ROLE[("water", "edge_n")]), "edge_n")
+_W_EDGE_MEAN = np.asarray(_w_edge.convert("RGBA")).astype(np.float64)[10:16, :, :3].mean()
+
+
+def _water_post(r, im):
+    if r != "fill":
+        return im
+    a = np.asarray(im.convert("RGBA")).astype(np.float64)
+    body = a[..., :3].mean()
+    if body > 1:
+        k = max(1.0, min(1.45, 0.4 + 0.6 * _W_EDGE_MEAN / body))
+        a[..., :3] = np.clip(a[..., :3] * k, 0, 255)
+    return Image.fromarray(a.astype(np.uint8), "RGBA")
+
+
 tw_family("water", "water", "water", collides=True, encounter="water", ability="tidecall",
-          variants={"edge_n": 2, "edge_s": 2, "edge_w": 2, "edge_e": 2})
+          variants={"edge_n": 2, "edge_s": 2, "edge_w": 2, "edge_e": 2},
+          post=_water_post)
 
 # Tall grass is REDRAWN, not promoted: readable staggered blade-fan clumps over a
 # darkened bed (tileforge.tallgrass_tuft). Hard-edged single tiles by design — the
@@ -234,8 +253,8 @@ for _i, _ph in enumerate((5, 11)):
         terrain="tallgrass", autotile="fill", encounter="tall_grass")
 
 # water animation frames (referenced by the water fill tile, local indices resolved later)
-add("water_a2", load(TW / "t53_water_a2.png"), role="water", collides=True, tileable_fill=True)
-add("water_a3", load(TW / "t54_water_a3.png"), role="water", collides=True, tileable_fill=True)
+add("water_a2", _water_post("fill", load(TW / "t53_water_a2.png")), role="water", collides=True, tileable_fill=True)
+add("water_a3", _water_post("fill", load(TW / "t54_water_a3.png")), role="water", collides=True, tileable_fill=True)
 
 # Cleaner sand→water shoreline (production art, Nano) added as water edge_n/edge_s variants:
 # a horizontal wet-sand→foam→water band. edge_n = land(sand) above/water below (as drawn);

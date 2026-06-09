@@ -135,6 +135,8 @@ objects = [
     {"id": "tree_d", "sprite": "tinderwick_tree", "at": {"tx": 16, "ty": 14}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "tree_e", "sprite": "tinderwick_tree", "at": {"tx": 1, "ty": 11}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "tree_f", "sprite": "tinderwick_tree", "at": {"tx": 25, "ty": 7}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+    {"id": "tree_g", "sprite": "tinderwick_tree", "at": {"tx": 4, "ty": 0}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+    {"id": "tree_h", "sprite": "tinderwick_tree", "at": {"tx": 1, "ty": 16}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "lamp_a", "sprite": "tinderwick_lamp_post", "at": {"tx": 12, "ty": 5}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "lamp_b", "sprite": "tinderwick_lamp_post", "at": {"tx": 15, "ty": 13}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "lamp_c", "sprite": "tinderwick_lamp_post", "at": {"tx": 12, "ty": 18}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
