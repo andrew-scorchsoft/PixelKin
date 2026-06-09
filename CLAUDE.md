@@ -365,6 +365,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   viewpoint (down=full face, left=left profile, right=mirror, **up=back of head in EVERY column
   incl. walk frames, no face**). After regenerating a walk sheet, eyeball the 4×4 grid and
   confirm the up row shows the back of the head in all 4 cells before repacking.
+- **Fills tile into a grid unless vignette-flattened.** `deborder` fixes only the outer
+  ring; the cure is `flatten_vignette` (fills) + `flatten_axis` (edges, along the tiling
+  axis), edge variants by flip (never roll), edges value-matched to their fill. Interior
+  floors: `tools/maps/cure_interior_floors.py`. No 1-tile lamps — use the 1×3 lamp-post
+  object beside (never on) the lane.
 - **Field tiles need a seamless pass.** Image gen bakes a 1–2px lighter rim onto tiles that
   tiles into a visible grid; after generating a uniform ground/floor/path tile, run
   `make_tileable.py <tile.png>` (clamps the outer ring to its neighbour) and eyeball a 3×3
@@ -384,13 +389,20 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `python3 tools/maps/build_shared_overworld.py` (REUSE-first: promotes the proven Tinderwick
   families, adds variants + scatter decor, reuses Dimglass cliff/buoy/dock). Map builders use
   `tools/maps/mapkit.py` (`shared_tileset_ref()`, `gid()`, grid/scatter helpers, `finalize()`).
-- **New area? Copy `tools/maps/build_tinderwick.py` or `build_dimglass.py` (the two worked
-  examples).** Every surface is an autotile **body**; fills = continuous flat-lit texture →
+- **New area? Copy `tools/maps/build_tinderwick.py`, `build_dimglass.py` or
+  `build_dimglass_ii.py` (the worked examples), and compose to `docs/world/level-design.md`
+  §11 (the binding composition standard: no flat voids, deep organic borders + crown trees,
+  one elevation accent, blob shores/patches, building aprons + a fenced garden, hard-edged
+  tuft tall-grass, trainer beats on routes).** Tile-quality passes are deterministic first:
+  `tools/maps/tileforge.py` (texture/tuft/cliff-wall/deglow/inner-corner/prop helpers,
+  applied by `build_shared_overworld.py`) — reach for image-gen only for genuinely new art. Every surface is an autotile **body**; fills = continuous flat-lit texture →
   *whole-image* downscale (**never "a tile"** — the model bakes a vignette+rim that becomes the
   grid; measured rim 73→2 when you ask for a large FLAT-lit field instead); **FLAT** transitions
   (path/tall-grass) via `tools/autotile/composite_overlay.py`, **ORGANIC** ones AI-per-cell.
   De-repeat edges/fills with **variants** (2–3 tiles sharing `terrain`+`autotile`; the autotiler
-  scatters them per cell). Strip the baked rim with the role-aware **`deborder`** in
+  scatters them per cell). **Exception: tall grass is hard-edged fill-only by design** (classic
+  encounter-tile convention; `tallgrass_tuft`) — and every fill variant must carry the
+  `encounter_terrain` tag or scattered cells silently stop triggering encounters. Strip the baked rim with the role-aware **`deborder`** in
   `build_shared_overworld.py` (keeps the transition side, seams the tiling axis) — it supersedes
   `make_tileable --axis` for autotile tiles (that only averaged, leaving the rim as a grid line).
   Off-map = continuation. Finish via `mk.finalize()`: `expand.mjs` → strip terrain → `render_map`
@@ -452,6 +464,10 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `background=transparent`. Prefix the one transparent call:
   `OPENAI_IMAGE_MODEL=gpt-image-1 ./venv/bin/python …/generate.py --transparent …` (Google
   has no native alpha, so transparent always routes to OpenAI).
+- **The South level curve is data-locked to the walkthrough:** Brisa ace 10 → Dimglass I wilds
+  3–6 (+ Wren's friendly battle A2 + the B1 `dusk_begins` beat) → Dimglass II wilds 8–10 + two
+  route-trainer beats → Reyl 12–16. Route trainer beat = static NPC + `step_on` cutscene tile
+  on a choked lane (`script.flats_trainer_*` pattern); next warden's ace ≈ previous +5–6.
 - **Lampwardens grant Lantern Gifts via `TrainerDef.reward_abilities`.** A trainer win pushes
   `reward_flags` AND `reward_abilities` (BattleScene.finish → BattleResult.grant_abilities →
   WorldScene.applyBattleResult adds them to the live `abilities` Set, which `persist()` already

@@ -29,19 +29,24 @@ MAPS = REPO / "public/assets/maps"
 SCRIPTS = REPO / ".claude/skills/generate-sprite-sheet/scripts"
 
 # --- tileset refs (first_gid=1) -------------------------------------------------
-# WARM interior_set local indices: 0 floor 1 floor_b 2 doormat 3 cap 4 face 5 corner 6 wall_s 7 window
-# COOL interior_stone_set:         0 floor 1 floor_b 2 runner 3 cap 4 face 5 corner 6 wall_s 7 banner
+# Both kits share one 13-tile order (build_interior_walls.py writes the masters +
+# manifests): 0 floor 1 floor_b 2 doormat|runner 3 face 4 window|banner
+# 5 cap_s 6 cap_n 7 cap_e 8 cap_w 9 cap_tl 10 cap_tr 11 cap_bl 12 cap_br.
+# The caps are the dark WALL-TOP band with a lit inner lip on the floor side; the
+# face is the real north wall (plaster+wainscot / coursed stone).
 WARM_SET = {
     "name": "interior_set", "image": "assets/tilesets/interior_set.webp",
-    "tile_width": 16, "tile_height": 16, "first_gid": 1, "columns": 8, "tile_count": 8,
+    "tile_width": 16, "tile_height": 16, "first_gid": 1, "columns": 8, "tile_count": 13,
 }
 COOL_SET = {
     "name": "interior_stone_set", "image": "assets/tilesets/interior_stone_set.webp",
-    "tile_width": 16, "tile_height": 16, "first_gid": 1, "columns": 8, "tile_count": 8,
+    "tile_width": 16, "tile_height": 16, "first_gid": 1, "columns": 8, "tile_count": 13,
 }
 # gids = local index + 1
-FLOOR, FLOOR_B, DOORMAT, CAP, FACE, CORNER, WALL_S, WINDOW = 1, 2, 3, 4, 5, 6, 7, 8
-RUNNER, BANNER = 3, 8  # cool-set aliases for indices 2 and 7
+FLOOR, FLOOR_B, DOORMAT, FACE, WINDOW = 1, 2, 3, 4, 5
+CAP_S, CAP_N, CAP_E, CAP_W = 6, 7, 8, 9
+CAP_TL, CAP_TR, CAP_BL, CAP_BR = 10, 11, 12, 13
+RUNNER, BANNER = 3, 5  # cool-set aliases
 
 
 def grid(w, h, fill=0):
@@ -73,23 +78,24 @@ def faced_room(W, H, door_x, floor_fill=FLOOR, floor_alt=FLOOR_B):
         for x in range(1, W - 1):
             if (x + y) % 2 == 0:
                 base[y * W + x] = floor_alt
-    # top frame: cap row + face row (the HEIGHT)
+    # SNES wall system: the dark wall-TOP band frames the room — only the north
+    # wall shows a FACE below its cap; side/bottom walls point away from camera,
+    # so they are the band alone. The band's lit lip always faces the room, and
+    # the corner tiles turn it so the lip line wraps unbroken.
     for x in range(W):
-        over[0 * W + x] = CAP
-        over[1 * W + x] = FACE
-    over[0 * W + 0] = CORNER
-    over[0 * W + (W - 1)] = CORNER
-    over[1 * W + 0] = CORNER
-    over[1 * W + (W - 1)] = CORNER
-    # side faces
-    for y in range(2, H - 1):
-        over[y * W + 0] = FACE
-        over[y * W + (W - 1)] = FACE
-    # bottom wall + faced corners + doormat
-    for x in range(W):
-        over[(H - 1) * W + x] = WALL_S
-    over[(H - 1) * W + 0] = CORNER
-    over[(H - 1) * W + (W - 1)] = CORNER
+        over[0 * W + x] = CAP_S                 # north band, lip toward the face/floor
+        over[1 * W + x] = FACE                  # the visible wall face
+    over[0 * W + 0] = CAP_TL
+    over[0 * W + (W - 1)] = CAP_TR
+    over[1 * W + 0] = CAP_E                     # side band starts beside the face
+    over[1 * W + (W - 1)] = CAP_W
+    for y in range(2, H - 1):                   # side bands, lip toward the floor
+        over[y * W + 0] = CAP_E
+        over[y * W + (W - 1)] = CAP_W
+    for x in range(W):                          # bottom band, lip toward the floor
+        over[(H - 1) * W + x] = CAP_N
+    over[(H - 1) * W + 0] = CAP_BL
+    over[(H - 1) * W + (W - 1)] = CAP_BR
     base[(H - 1) * W + door_x] = DOORMAT
     over[(H - 1) * W + door_x] = 0  # doormat shows through the bottom wall (the exit gap)
     return base, over
@@ -144,11 +150,19 @@ def build_lumenary(id_, name, music, out_warp, script_ref, sign_ref, warden_id, 
     objects = [
         # focal altar/lamp-shrine at top-centre (its glowing lantern overhangs into the face)
         obj("altar", "interior_altar", door_x - 1, 2, 3, 3, overhang=1),
+        # a bordered rug stages the bond-test floor before the dais (interiors.md §2)
+        obj("rug", "interior_rug", door_x - 1, 5, 3, 2, solid=False),
         # braziers flanking the aisle (two pairs) — warm light
         obj("brazier_l1", "interior_brazier", door_x - 3, 5, 1, 2, overhang=1),
         obj("brazier_r1", "interior_brazier", door_x + 3, 5, 1, 2, overhang=1),
         obj("brazier_l2", "interior_brazier", door_x - 3, 8, 1, 2, overhang=1),
         obj("brazier_r2", "interior_brazier", door_x + 3, 8, 1, 2, overhang=1),
+        # star-ledger shelves + offering barrels line the side walls — a furnished
+        # shrine, not props on a checkerboard (interiors.md §2 perimeter rule)
+        obj("ledger_l", "interior_bookcase", 1, 2, 2, 2),
+        obj("ledger_r", "interior_bookcase", W - 3, 2, 2, 2),
+        obj("offerings_l", "interior_barrels", 1, 8, 2, 1),
+        obj("offerings_r", "interior_barrels", W - 3, 8, 2, 1),
     ]
     warps = [
         {"id": "to_town", "at": {"tx": door_x, "ty": H - 1}, "trigger": "step_on",

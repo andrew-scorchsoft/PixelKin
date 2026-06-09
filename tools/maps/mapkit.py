@@ -82,18 +82,39 @@ def organic_border(g, w, h, *, top=0, left=0, right=0, depth=2,
                     g[y * w + x] = 1
 
 
-def scatter_decor(deco, base, w, h, rng, *, density=0.10, avoid=None):
-    """Sprinkle sparse ground decor (pebble/tuft/daisy/patch) onto plain-grass cells —
-    the Pokémon trick that breaks a flat fill grid. `avoid` = set of (x,y) to skip."""
+def blob(g, w, h, cx, cy, rx, ry=None, val=1):
+    """An elliptical organic patch — the shape encounter grass / terraces / bays
+    want instead of a ruled rect (level-design §11: 'regions, not rectangles')."""
+    ry = ry if ry is not None else rx
+    for y in range(int(cy - ry), int(cy + ry) + 1):
+        for x in range(int(cx - rx), int(cx + rx) + 1):
+            if 0 <= x < w and 0 <= y < h and \
+                    ((x - cx) / rx) ** 2 + ((y - cy) / ry) ** 2 <= 1.0:
+                g[y * w + x] = val
+
+
+def fence_run(deco, w, h, x0, y, x1):
+    """A W-E fence line: slat tiles capped with end posts (collides via tileset)."""
+    for x in range(x0, x1 + 1):
+        deco[y * w + x] = gid("fence_h")
+    deco[y * w + x0] = gid("fence_post")
+    deco[y * w + x1] = gid("fence_post")
+
+
+def scatter_decor(deco, base, w, h, rng, *, density=0.10, avoid=None, flowers=0.12):
+    """Sprinkle sparse ground decor (pebble/tuft/daisy/patch + occasional flowerbed)
+    onto plain-grass cells — the Pokémon trick that breaks a flat fill grid.
+    `avoid` = set of (x,y) to skip; `flowers` = share of picks that bloom."""
     grass = {gid(n) for n in ("grass0", "grass1", "grass2", "grass3")}
     props = [gid("g_tuft"), gid("g_tuft"), gid("g_daisy"), gid("g_pebble"), gid("g_patch")]
+    blooms = [gid("flowerbed_a"), gid("flowerbed_b")]
     avoid = avoid or set()
     for y in range(h):
         for x in range(w):
             i = y * w + x
             if base[i] in grass and deco[i] == 0 and (x, y) not in avoid \
                     and rng.random() < density:
-                deco[i] = rng.choice(props)
+                deco[i] = rng.choice(blooms) if rng.random() < flowers else rng.choice(props)
 
 
 # ---- the standing build pipeline --------------------------------------------

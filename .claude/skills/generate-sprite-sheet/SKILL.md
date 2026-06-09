@@ -228,11 +228,28 @@ the tiles out of it.** Four scripts plus the autotile tooling:
 
 ### A) Autotile terrains — the seamless standard (PROVEN, hard-won)
 
-Every special surface in an area (grass, **tall-grass**, path, sand, water,
-forest/tree-wall, cliff) is an autotile **BODY** — a `terrain` presence layer
-meshed by `tools/autotile/expand.mjs`, **never** independent fill tiles plonked
-down (that's what makes tall grass read as boxed clumps instead of a field). Two
-kinds of terrain, two methods — pick by whether the transition is flat or organic:
+Every special surface in an area (grass, path, sand, water, forest/tree-wall,
+cliff) is an autotile **BODY** — a `terrain` presence layer meshed by
+`tools/autotile/expand.mjs`, **never** independent fill tiles plonked down. Two
+kinds of terrain, two methods — pick by whether the transition is flat or organic.
+
+> **The deterministic finishing kit comes FIRST (no API).** Before generating new
+> art, check `tools/maps/tileforge.py` — the 2026-06 quality pass lives there and
+> closes most of the gap to the reference-era bar: `texture_grass` (blade dashes on
+> flat ground fills), `tallgrass_tuft` (the encounter tile — **tall grass is now
+> hard-edged fill-only by design**, classic-style, no transition ring), `grade` +
+> `cliff_strata` + `cliff_wall_edge` (lifted stratified cliff whose S/W/E edges are
+> complete wall tiles: lit rim → face → dark contact seam → ground), `deglow`
+> (kills baked highlight rims on pale fills), **`flatten_vignette` on every fill +
+> `flatten_axis` on every edge/strip** (the per-tile-border "joints" cure; edge
+> variants are flips, never rolls; value-match edges to their fill — level-design
+> §11), `key_alpha` (props generated on an opaque card — the "white bag" cure;
+> better: place the 1×3 lamp-post OBJECT, never a 1-tile lamp), `inner_corner`
+> (13-piece completion — good for path/sand/tree/cliff, **skip water**), and drawn
+> props (`draw_fence_h`,
+> `draw_fence_post`, `draw_boulder`, `draw_flowerbed`). `build_shared_overworld.py`
+> applies all of these when packing the shared set. Compose maps to
+> `docs/world/level-design.md` **§11** (the composition standard).
 
 **FLAT transition (path-on-grass, tall-grass-on-grass) → COMPOSITE, do NOT AI-paint.**
 AI-painting flat path cells gives mismatched dirt, per-tile banding, and a junction

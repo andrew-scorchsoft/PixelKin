@@ -49,26 +49,46 @@ cottage_door = door_tile(COTTAGE)    # (6, 16)
 lum_door_r = (lum_door[0] + 1, lum_door[1])   # (20, 7) walkable twin (grand double entrance)
 
 # ---- terrain presence grids -------------------------------------------------
+# Composition per level-design §11: a DEEP organic enclosure (the camera margin is
+# always forest/cliff/sea, never flat void), one elevation accent (the NE cliff
+# terrace behind the Lumenary), and organic — not ruled — shores and patches.
 tree = mk.make_grid(W, H)
 mk.organic_border(tree, W, H, top=1, left=1, right=1, depth=2,
-                  bumps=[(5, 4, 1), (24, 4, 1), (3, 9, 1), (25, 11, 1), (3, 18, 1)])
+                  bumps=[(5, 4, 2), (9, 2, 1), (3, 9, 2), (25, 11, 2), (3, 18, 2),
+                         (26, 16, 1), (2, 13, 1)])
 for x in (13, 14):                       # punch the north exit gap
     tree[0 * W + x] = 0; tree[1 * W + x] = 0
 mk.rect(tree, W, H, 0, 19, W - 1, H - 1, 0)   # clear the border below the shoreline
 
+# NE cliff terrace — the town's elevation accent, rising behind the Lumenary so the
+# landmark sits against rock, not empty field (the reference-map "terrace" read).
+cliff = mk.make_grid(W, H)
+mk.rect(cliff, W, H, 23, 0, W - 1, 2)
+mk.blob(cliff, W, H, 25, 3, 2.2, 1.2)
+mk.rect(tree, W, H, 23, 0, W - 1, 4, 0)       # cliff replaces the tree border here
+
 water_sea = mk.make_grid(W, H)
 mk.rect(water_sea, W, H, 0, 22, W - 1, H - 1)            # full-width sea (continues off bottom)
+mk.blob(water_sea, W, H, 4, 22, 2.6, 1.4)                # the tideline bites the beach…
+mk.blob(water_sea, W, H, 19, 22, 3.0, 1.4)
 pond = mk.make_grid(W, H)
 mk.rect(pond, W, H, 22, 12, 25, 14)                      # small inland ornamental pond (right side)
 sand = mk.make_grid(W, H)
 mk.rect(sand, W, H, 0, 19, W - 1, 21)                    # 3-row beach
+mk.blob(sand, W, H, 7, 18, 2.4, 1.2)                     # dunes lap up into the green
+mk.blob(sand, W, H, 22, 18, 2.0, 1.2)
 tallgrass = mk.make_grid(W, H)
-mk.rect(tallgrass, W, H, 10, 2, 15, 3)                   # verge straddling the exit lane
+mk.rect(tallgrass, W, H, 10, 2, 15, 4)                   # verge straddling the exit lane
+for (x, y) in ((10, 2), (15, 2), (10, 4), (15, 4)):      # clipped corners -> organic patch
+    tallgrass[y * W + x] = 0
 
 # ---- the lit path spine + approach lanes to every door ----------------------
 path = mk.make_grid(W, H)
 mk.vline(path, W, H, 13, 2, 18); mk.vline(path, W, H, 14, 2, 18)  # N–S spine (2 wide)
 mk.hline(path, W, H, 8, 5, 21)                            # plaza street along the building fronts
+# the plaza street is TWO rows deep (8-9) — a square, not a footpath — so the
+# building fronts open onto a real town apron (the reference-town read).
+mk.rect(path, W, H, 5, 8, 21, 9)
 # shop approach: door (5,7) -> below (5,8) is on the street row (8). add the stub up to it.
 path[8 * W + shop_door[0]] = 1
 # lumenary approach: doors (19,7)/(20,7) -> below row 8 on the street.
@@ -87,6 +107,8 @@ terrain_layers = [
      "set": "vesper_overworld_set", "depth": 0, "data": tallgrass},
     {"name": "t_tree", "role": "terrain", "terrain": "tree",
      "set": "vesper_overworld_set", "depth": 0, "data": tree},
+    {"name": "t_cliff", "role": "terrain", "terrain": "cliff",
+     "set": "vesper_overworld_set", "depth": 0, "data": cliff},
     {"name": "t_path", "role": "terrain", "terrain": "path",
      "set": "vesper_overworld_set", "depth": 0, "data": path},
     {"name": "t_sand", "role": "terrain", "terrain": "sand",
@@ -105,11 +127,20 @@ objects = [
      "w": LUMENARY["w"], "h": LUMENARY["h"], "overhang": 3},
     {"id": "house", "sprite": "tinderwick_cottage", "at": {"tx": COTTAGE["at"][0], "ty": COTTAGE["at"][1]},
      "w": COTTAGE["w"], "h": COTTAGE["h"], "overhang": 3},
+    # Object trees with REAL crowns are scattered along the tree-line and pond so the
+    # forest reads as overlapping canopies, not one repeating hedge tile (§11).
     {"id": "tree_a", "sprite": "tinderwick_tree", "at": {"tx": 9, "ty": 10}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
-    {"id": "tree_b", "sprite": "tinderwick_tree", "at": {"tx": 24, "ty": 16}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+    {"id": "tree_b", "sprite": "tinderwick_tree", "at": {"tx": 24, "ty": 15}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+    {"id": "tree_c", "sprite": "tinderwick_tree", "at": {"tx": 1, "ty": 5}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+    {"id": "tree_d", "sprite": "tinderwick_tree", "at": {"tx": 16, "ty": 14}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+    {"id": "tree_e", "sprite": "tinderwick_tree", "at": {"tx": 1, "ty": 11}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+    {"id": "tree_f", "sprite": "tinderwick_tree", "at": {"tx": 25, "ty": 7}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+    {"id": "tree_g", "sprite": "tinderwick_tree", "at": {"tx": 4, "ty": 0}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+    {"id": "tree_h", "sprite": "tinderwick_tree", "at": {"tx": 1, "ty": 16}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "lamp_a", "sprite": "tinderwick_lamp_post", "at": {"tx": 12, "ty": 5}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "lamp_b", "sprite": "tinderwick_lamp_post", "at": {"tx": 15, "ty": 13}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "lamp_c", "sprite": "tinderwick_lamp_post", "at": {"tx": 12, "ty": 18}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    {"id": "lamp_d", "sprite": "tinderwick_lamp_post", "at": {"tx": 22, "ty": 8}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
 ]
 building_cells = set()
 for o in objects:
@@ -119,15 +150,20 @@ for o in objects:
 
 # cells the player can't decorate over: any terrain + building footprints
 covered = {(x, y) for y in range(H) for x in range(W)
-           if any(gr[y * W + x] for gr in (tree, water_sea, pond, sand, tallgrass, path))}
+           if any(gr[y * W + x] for gr in (tree, cliff, water_sea, pond, sand, tallgrass, path))}
 avoid = covered | building_cells
 
-# ---- deco: flowers garden + signs (beside the path) + scatter + buoys --------
+# ---- deco: fenced flower garden + signs (beside the path) + scatter + buoys --
 deco = mk.make_grid(W, H)
-for (x, y) in [(8, 11), (10, 11), (9, 12), (8, 13)]:             # small fenced flower garden (left, off-path)
-    deco[y * W + x] = gid("flowers")
-for (x, y) in [(7, 10), (11, 10), (7, 14), (11, 14)]:            # garden fence posts
-    deco[y * W + x] = gid("fence")
+# A proper fenced flower garden (east of the spine, below the Lumenary square):
+# slat fence top + bottom with end posts, flowerbeds inside, open east mouth.
+mk.fence_run(deco, W, H, 16, 10, 19)
+mk.fence_run(deco, W, H, 16, 13, 19)
+deco[11 * W + 16] = gid("fence_post")
+deco[12 * W + 16] = gid("fence_post")
+for (x, y) in [(17, 11), (18, 11), (17, 12), (18, 12)]:
+    deco[y * W + x] = gid("flowerbed_a") if (x + y) % 2 else gid("flowerbed_b")
+deco[11 * W + 19] = gid("flowers")
 # Signs sit immediately BESIDE the path the player walks, never mid-field:
 sign_tiles = {
     "sign_shop": (4, 8),       # left of the shop door, on the plaza street
@@ -139,7 +175,14 @@ for (x, y) in sign_tiles.values():
     deco[y * W + x] = gid("sign")
 for (x, y) in [(7, 20), (16, 20), (21, 20)]:                     # lantern-buoys on the shore
     deco[y * W + x] = gid("buoy")
-mk.scatter_decor(deco, base, W, H, rng, density=0.10, avoid=avoid)
+for (x, y) in [(2, 20), (25, 20), (11, 20)]:                     # shore boulders
+    deco[y * W + x] = gid("boulder")
+for (x, y) in [(23, 11), (26, 13)]:                              # pondside rocks
+    deco[y * W + x] = gid("boulder")
+# choke the spine at the mentor beat: the intro cutscene tile is (13,11) on the
+# 2-wide spine — the boulder closes col 14 so the Wayfaring can't start unstarted.
+deco[11 * W + 14] = gid("boulder")
+mk.scatter_decor(deco, base, W, H, rng, density=0.16, avoid=avoid)
 
 # ---- assemble ---------------------------------------------------------------
 m = {
@@ -181,7 +224,7 @@ m = {
          "activation": "interact", "ref": "sign.tinderwick_dock"},
     ],
     "encounters": [
-        {"id": "verge_grass", "terrain": "tall_grass", "rect": {"tx": 10, "ty": 2, "w": 6, "h": 2},
+        {"id": "verge_grass", "terrain": "tall_grass", "rect": {"tx": 10, "ty": 2, "w": 6, "h": 3},
          "encounter_rate": 0.07,
          "table": [{"kin_id": 16, "weight": 60, "min_level": 2, "max_level": 4},
                    {"kin_id": 10, "weight": 40, "min_level": 2, "max_level": 3}]}],
@@ -189,8 +232,8 @@ m = {
         # Star-tender Fenn — the mentor, on the spine; the intro cutscene fires just north of him.
         {"id": "mentor", "at": {"tx": 13, "ty": 12}, "facing": "down", "sprite": "npc_mentor",
          "movement": "static", "dialogue_ref": "npc.mentor_intro"},
-        # Wren — the rival, a fellow young Wayfarer milling in the plaza.
-        {"id": "wren", "at": {"tx": 17, "ty": 13}, "facing": "left", "sprite": "wren",
+        # Wren — the rival, a fellow young Wayfarer milling by the garden.
+        {"id": "wren", "at": {"tx": 19, "ty": 15}, "facing": "left", "sprite": "wren",
          "movement": "wander", "dialogue_ref": "npc.wren_intro"}],
     "gates": [], "music": "assets/audio/music/tinderwick-a.mp3",
     "_doors": {"shop": shop_door, "lumenary": lum_door, "lumenary_twin": lum_door_r,

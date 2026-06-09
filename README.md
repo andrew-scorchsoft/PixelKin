@@ -42,7 +42,9 @@ hour is playable end-to-end: attract demo → title (New Game / Continue / Setti
 **Tinderwick**, talk to townsfolk, read signs, step into its homes, shop and
 Lumenary chamber → earn the first
 **Gleam** from Lampwarden Brisa Tallow in a real turn-based battle → head north
-onto **Dimglass Coast** with wild encounters → on to **Pearlmoor Quay**, the
+onto **Dimglass Coast** with wild encounters, your rival Wren's first friendly
+battle, and the night the dusk deepens → across the **Dimglass tidal flats**
+(route trainers and rising wild kin bridge the levels) → on to **Pearlmoor Quay**, the
 moonlit Tide port, where Lampwarden Reyl Wash grants the **Tide Gleam** and the
 **Tidecall** Lantern Gift (which then opens the harbour's gated water). Progress autosaves (with JSON
 export/import), and the screen can show as a handheld-device frame, fullscreen with

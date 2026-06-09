@@ -83,6 +83,29 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'WREN', text: 'Did you see the sky a moment ago? A star just... went out. Gave me the shivers. Keep your lamp close out here.' },
   ],
 
+  // --- Dimglass Coast II (the tidal flats) ---
+  'sign.flats_gullcry': [
+    { text: 'GULLCRY ROCK — past the buoy line.\nThe shallows answer only a Tidecall. Lamps out, Wayfarer.' },
+  ],
+  'sign.flats_cave': [
+    { text: 'TIDEGLASS CAVERN\nDark past the third step. Without a Glimmerstep, the dark keeps it.' },
+  ],
+  'sign.flats_to_quay': [
+    { text: 'NORTH: PEARLMOOR QUAY\nSee the lantern-strings on the masts? Nearly there.' },
+  ],
+  'npc.flats_wayfarer_a': [
+    { speaker: 'MORROW', text: 'The flats look empty, but the dune grass is alive. Good place to toughen a young kin before the harbour.' },
+  ],
+  'npc.flats_wayfarer_b': [
+    { speaker: 'ELSPETH', text: 'I run letters between the Lumenaries. Reyl Wash at Pearlmoor — now THERE is a battle worth the walk.' },
+  ],
+  // C2 — Fenn finds the player after `dusk_begins` and names the Skyweave
+  // (walkthrough/01-south: this may land here at the head of II).
+  'npc.flats_sky_watcher': [
+    { speaker: 'STAR-TENDER FENN', text: 'You saw it too, then. The sky and the ground hold hands here, child — snuff a kin\'s light and a star goes dark with it.' },
+    { speaker: 'STAR-TENDER FENN', text: 'That is what we walk against. Relight the constellations, one Gleam at a time. Pearlmoor keeps the second.' },
+  ],
+
   // --- Pearlmoor Quay (town) ---
   'sign.pearlmoor_welcome': [
     { text: 'PEARLMOOR QUAY\nMind the wet boards. Lanterns strung mast to mast since the Long Dusk — the moon is our only other light.' },

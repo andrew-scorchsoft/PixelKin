@@ -57,6 +57,37 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'gleam', element: 'tide' },
     { op: 'say', speaker: 'REYL WASH', text: 'The Tide Gleam stands up over Pearlmoor again. And the Tidecall is yours — go on, ask the shallows to part. The harbour keeps its secrets for those who can cross.' },
   ],
+
+  // A2 (Dimglass Coast I): Wren's first FRIENDLY trainer battle — the route beat that
+  // teaches trainer battles. Low-stakes by design; a loss just gets a kind word, and the
+  // trigger's `once` means the road on is never blocked either way.
+  'script.wren_dimglass': [
+    { op: 'face', actor: 'wren', facing: 'right' },
+    { op: 'say', speaker: 'WREN', text: 'There you are! I was starting to think the grass ate you.' },
+    { op: 'say', speaker: 'WREN', text: "Listen — every Wayfarer's first proper battle should be with a friend. So?" },
+    { op: 'battle', trainer: 'wren_dimglass' },
+    { op: 'say', speaker: 'WREN', text: 'Same road, different lamps. See you up the coast!' },
+  ],
+
+  // B1 (Dimglass Coast I): the inciting incident — a far constellation winks out on the
+  // first nightfall here. Quiet, not loud; the dread is in the quiet (walkthrough/01-south).
+  'script.dusk_begins': [
+    { op: 'wait', ms: 400 },
+    { op: 'say', text: 'Far out over the water, a constellation flickers... and goes dark.' },
+    { op: 'say', text: 'For a heartbeat, every lantern-buoy on the coast gutters.' },
+    { op: 'wait', ms: 400 },
+    { op: 'say', text: "...that's the third star gone south of here this month. The dusk is getting deeper." },
+  ],
+
+  // Dimglass Coast II route trainers (the XP bridge toward Pearlmoor's 12).
+  'script.flats_trainer_a': [
+    { op: 'face', actor: 'wayfarer_a', facing: 'right' },
+    { op: 'battle', trainer: 'flats_wayfarer_a' },
+  ],
+  'script.flats_trainer_b': [
+    { op: 'face', actor: 'wayfarer_b', facing: 'left' },
+    { op: 'battle', trainer: 'flats_wayfarer_b' },
+  ],
 };
 
 export function getScript(ref: string): import('./types').CutsceneStep[] | undefined {

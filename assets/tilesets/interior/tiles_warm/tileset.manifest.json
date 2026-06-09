@@ -2,13 +2,54 @@
   "name": "interior_set",
   "columns": 8,
   "tiles": [
-    { "file": "floor_fill.png",   "role": "floor" },
-    { "file": "floor_fill_b.png", "role": "floor" },
-    { "file": "doormat.png",      "role": "door" },
-    { "file": "wall_cap.png",     "role": "wall", "collides": true },
-    { "file": "wall_face.png",    "role": "wall", "collides": true },
-    { "file": "wall_corner.png",  "role": "wall", "collides": true },
-    { "file": "wall_s.png",       "role": "wall", "collides": true },
-    { "file": "window.png",       "role": "wall", "collides": true }
+    {
+      "file": "floor_fill.png"
+    },
+    {
+      "file": "floor_fill_b.png"
+    },
+    {
+      "file": "doormat.png"
+    },
+    {
+      "file": "face.png",
+      "collides": true
+    },
+    {
+      "file": "window.png",
+      "collides": true
+    },
+    {
+      "file": "cap_s.png",
+      "collides": true
+    },
+    {
+      "file": "cap_n.png",
+      "collides": true
+    },
+    {
+      "file": "cap_e.png",
+      "collides": true
+    },
+    {
+      "file": "cap_w.png",
+      "collides": true
+    },
+    {
+      "file": "cap_tl.png",
+      "collides": true
+    },
+    {
+      "file": "cap_tr.png",
+      "collides": true
+    },
+    {
+      "file": "cap_bl.png",
+      "collides": true
+    },
+    {
+      "file": "cap_br.png",
+      "collides": true
+    }
   ]
 }
