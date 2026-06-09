@@ -144,11 +144,19 @@ def build_lumenary(id_, name, music, out_warp, script_ref, sign_ref, warden_id, 
     objects = [
         # focal altar/lamp-shrine at top-centre (its glowing lantern overhangs into the face)
         obj("altar", "interior_altar", door_x - 1, 2, 3, 3, overhang=1),
+        # a bordered rug stages the bond-test floor before the dais (interiors.md §2)
+        obj("rug", "interior_rug", door_x - 1, 5, 3, 2, solid=False),
         # braziers flanking the aisle (two pairs) — warm light
         obj("brazier_l1", "interior_brazier", door_x - 3, 5, 1, 2, overhang=1),
         obj("brazier_r1", "interior_brazier", door_x + 3, 5, 1, 2, overhang=1),
         obj("brazier_l2", "interior_brazier", door_x - 3, 8, 1, 2, overhang=1),
         obj("brazier_r2", "interior_brazier", door_x + 3, 8, 1, 2, overhang=1),
+        # star-ledger shelves + offering barrels line the side walls — a furnished
+        # shrine, not props on a checkerboard (interiors.md §2 perimeter rule)
+        obj("ledger_l", "interior_bookcase", 1, 2, 2, 2),
+        obj("ledger_r", "interior_bookcase", W - 3, 2, 2, 2),
+        obj("offerings_l", "interior_barrels", 1, 8, 2, 1),
+        obj("offerings_r", "interior_barrels", W - 3, 8, 2, 1),
     ]
     warps = [
         {"id": "to_town", "at": {"tx": door_x, "ty": H - 1}, "trigger": "step_on",

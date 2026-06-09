@@ -365,6 +365,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   viewpoint (down=full face, left=left profile, right=mirror, **up=back of head in EVERY column
   incl. walk frames, no face**). After regenerating a walk sheet, eyeball the 4×4 grid and
   confirm the up row shows the back of the head in all 4 cells before repacking.
+- **Fills tile into a grid unless vignette-flattened.** `deborder` fixes only the outer
+  ring; the cure is `flatten_vignette` (fills) + `flatten_axis` (edges, along the tiling
+  axis), edge variants by flip (never roll), edges value-matched to their fill. Interior
+  floors: `tools/maps/cure_interior_floors.py`. No 1-tile lamps — use the 1×3 lamp-post
+  object beside (never on) the lane.
 - **Field tiles need a seamless pass.** Image gen bakes a 1–2px lighter rim onto tiles that
   tiles into a visible grid; after generating a uniform ground/floor/path tile, run
   `make_tileable.py <tile.png>` (clamps the outer ring to its neighbour) and eyeball a 3×3

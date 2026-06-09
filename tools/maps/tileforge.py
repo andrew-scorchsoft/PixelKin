@@ -107,6 +107,62 @@ def grade(im: Image.Image, mul: float = 1.0, add: int = 0) -> Image.Image:
     return _img(a)
 
 
+def flatten_vignette(im: Image.Image, radius: int = 3, strength: float = 1.0) -> Image.Image:
+    """Remove the per-tile low-frequency gradient (the baked vignette) that turns a
+    tiled fill into a visible grid: high-pass the tile against a TOROIDAL box blur,
+    then restore the original mean. Detail survives; the lighting bow does not.
+    This is the joints cure for fills — deborder only fixes the outer ring."""
+    a = _arr(im)
+    rgb = a[..., :3].astype(np.float64)
+    lp = np.zeros_like(rgb)
+    n = 0
+    for dy in range(-radius, radius + 1):
+        for dx in range(-radius, radius + 1):
+            lp += np.roll(np.roll(rgb, dy, axis=0), dx, axis=1)
+            n += 1
+    lp /= n
+    mean = rgb.reshape(-1, 3).mean(0)
+    flat = rgb - strength * (lp - mean)
+    a[..., :3] = np.clip(flat, 0, 255)
+    return _img(a)
+
+
+def flatten_axis(im: Image.Image, axis: str, radius: int = 3) -> Image.Image:
+    """flatten_vignette restricted to ONE axis — the joints cure for EDGE tiles.
+    An edge tile keeps a designed gradient ACROSS the transition, but along its
+    tiling axis the lighting must be flat or repeats show joints. axis='h' for
+    tiles that repeat left-right (edge_n/s, strip_h): flattens the per-COLUMN
+    mean profile (toroidal); axis='v' for top-bottom repeats (edge_w/e, strip_v)."""
+    a = _arr(im)
+    rgb = a[..., :3].astype(np.float64)
+    ax = 1 if axis == "h" else 0
+    prof = rgb.mean(axis=1 - ax)                       # (16, 3) per-col or per-row means
+    lp = np.zeros_like(prof)
+    for d in range(-radius, radius + 1):
+        lp += np.roll(prof, d, axis=0)
+    lp /= (2 * radius + 1)
+    corr = prof - lp                                   # the lighting bow along the axis
+    if ax == 1:
+        rgb -= corr[np.newaxis, :, :]
+    else:
+        rgb -= corr[:, np.newaxis, :]
+    a[..., :3] = np.clip(rgb, 0, 255)
+    return _img(a)
+
+
+def flip_v(im: Image.Image) -> Image.Image:
+    return im.transpose(Image.FLIP_TOP_BOTTOM)
+
+
+def key_alpha(im: Image.Image, rgb=(255, 255, 255), tol: int = 28) -> Image.Image:
+    """Key a baked background colour to transparency (e.g. a prop generated on an
+    opaque white card — the 'white bag' look when stamped on grass)."""
+    a = _arr(im)
+    d = np.abs(a[..., :3] - np.array(rgb, dtype=np.int16)).sum(-1)
+    a[..., 3] = np.where(d <= tol * 3, 0, a[..., 3])
+    return _img(a)
+
+
 def deglow(im: Image.Image, thresh: int = 190, k: float = 0.55) -> Image.Image:
     """Compress highlights above `thresh` — kills the baked luminous rim that
     image-gen leaves on pale materials (sand) without touching the body."""

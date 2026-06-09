@@ -143,6 +143,13 @@ objects = [
      "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "lamp_b", "sprite": "tinderwick_lamp_post", "at": {"tx": 15, "ty": 13},
      "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    # the promenade + quay lamps are OBJECTS too (no 1-tile lamps anywhere)
+    {"id": "lamp_c", "sprite": "tinderwick_lamp_post", "at": {"tx": 5, "ty": 12},
+     "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    {"id": "lamp_d", "sprite": "tinderwick_lamp_post", "at": {"tx": 21, "ty": 12},
+     "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    {"id": "lamp_e", "sprite": "tinderwick_lamp_post", "at": {"tx": 16, "ty": 14},
+     "w": 1, "h": 3, "overhang": 2, "walk_under": True},
 ]
 building_cells = set()
 for o in objects:
@@ -174,9 +181,6 @@ for (x, y) in dock_cells:
 for (x, y) in [(4, 21), (10, 22), (18, 22), (23, 21), (6, 20), (21, 20)]:
     deco[y * W + x] = gid("buoy")
 
-# lamp breadcrumbs along the lit spine + promenade
-for (x, y) in [(13, 8), (14, 12), (5, 13), (22, 13)]:
-    deco[y * W + x] = gid("lamp")
 
 # signs immediately beside the path the player walks (never mid-field)
 sign_tiles = {

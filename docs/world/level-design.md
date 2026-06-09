@@ -710,6 +710,21 @@ a stray sand wedge), and the drawn props `draw_fence_h`/`draw_fence_post`/
 `draw_boulder`/`draw_flowerbed`. `build_shared_overworld.py` applies them when packing
 the shared set.
 
+**The joints cure (the "every tile has a border" disease).** Generated fills carry a
+baked per-tile vignette; tiled, it becomes a visible grid that `deborder` (outer ring
+only) cannot reach. The cure is `flatten_vignette` (toroidal high-pass, keeps detail +
+mean) on every FILL, and `flatten_axis` on every EDGE/strip (flattens the lighting bow
+along the tiling axis only, preserving the designed transition across it). Edge
+*variants* are mirror-flips + jitter, never `roll` (rolling a non-toroidal texture
+drags its interior seam into view). Edge tiles are also **value-matched** to their
+fill (`_sand_post` pattern) or the surface reads as a darker ring with a hard inner
+line. Interior floors get the same cure via `tools/maps/cure_interior_floors.py`
+(edits the masters + repacks both interior sets).
+
+**No 1-tile lamps.** The lamp breadcrumb is the 1×3 `tinderwick_lamp_post` OBJECT
+(walk-under, trunk *beside* the lane), never the legacy single `lamp` tile — a
+one-tile prop on an opaque card is the "white bag" look (art-style §14b).
+
 **Known gap (raise, don't paint around):** path/water cells punched through a sand
 flat leave raw sand fill at the contact (the path's own edges carry the seam — a
 cosmetic WARN in `validate_map`). The proper fix is a dedicated sand↔path FLAT

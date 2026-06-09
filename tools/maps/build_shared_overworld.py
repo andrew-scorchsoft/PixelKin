@@ -33,8 +33,9 @@ from PIL import Image
 from tileforge import (load, deborder, jitter, roll, flip_h, whole_downscale,  # seam helpers
                        KEEP, H_TILE, V_TILE,
                        grade, deglow, texture_grass, tallgrass_tuft, cliff_strata,
-                       cliff_wall_edge, inner_corner, draw_fence_h, draw_fence_post,
-                       draw_boulder, draw_flowerbed)
+                       cliff_wall_edge, inner_corner, flatten_vignette, flatten_axis,
+                       flip_v, key_alpha,
+                       draw_fence_h, draw_fence_post, draw_boulder, draw_flowerbed)
 
 REPO = Path(__file__).resolve().parents[2]
 TW = REPO / "assets" / "tilesets" / "tinderwick"          # proven master kit (by manifest)
@@ -117,9 +118,9 @@ def tw_family(prefix: str, terrain: str, role: str, *, collides=False,
             if is_fill:
                 v = jitter(base, seed, 9)
             elif SEAM_OF.get(r) == "h":
-                v = roll(base, dx=(i + 1) * 4 + 1, dy=0)
+                v = jitter(flip_h(base), seed, 5) if i == 0 else jitter(base, seed, 6)
             elif SEAM_OF.get(r) == "v":
-                v = roll(base, dx=0, dy=(i + 1) * 4 + 1)
+                v = jitter(flip_v(base), seed, 5) if i == 0 else jitter(base, seed, 6)
             else:
                 v = jitter(base, seed, 7)
             v = deborder(v, r)   # re-seam after the transform
@@ -132,7 +133,7 @@ def tw_family(prefix: str, terrain: str, role: str, *, collides=False,
 # grass0 stays the plain anchor; 1-3 carry sparse blade texture at rising density
 # so a field reads as grass, not an untextured void (level-design §11).
 for i in range(4):
-    g = load(TW / f"t0{i}_grass{i}.png")
+    g = flatten_vignette(load(TW / f"t0{i}_grass{i}.png"))
     if i > 0:
         g = texture_grass(g, seed=50 + i, density=5 + i * 2)
     add(f"grass{i}", g, role="ground", tileable_fill=True)
@@ -181,10 +182,39 @@ decor("g_patch", _patch)
 
 # --- 2) autotile families (with de-repetition variants) ----------------------
 tw_family("path", "path", "path", strips=True,
-          variants={"fill": 2, "edge_n": 1, "edge_s": 1, "edge_w": 1, "edge_e": 1})
+          variants={"fill": 2, "edge_n": 1, "edge_s": 1, "edge_w": 1, "edge_e": 1},
+          post=lambda r, im: flatten_vignette(im) if r == "fill" else im)
+# Sand: de-glow the baked highlight rim, flatten the fill, then VALUE-MATCH each
+# edge tile's sand body to the fill's mean — otherwise the pocket/beach is ringed
+# by a visibly darker edge band with a hard line where it meets the fill.
+_sand_fill_master = flatten_vignette(deglow(deborder(
+    load(TW / _TW_BY_ROLE[("sand", "fill")]), "fill"), 185, 0.6))
+_SAND_MEAN = np.asarray(_sand_fill_master.convert("RGBA")).astype(np.float64)[..., :3].mean()
+
+
+def _sand_post(r, im):
+    im = deglow(im, 185, 0.6)
+    if r == "fill":
+        return flatten_vignette(im)
+    a = np.asarray(im.convert("RGBA")).astype(np.float64)
+    keep = KEEP.get(r, set())
+    y0, y1, x0, x1 = 0, 16, 0, 16
+    if "N" in keep: y0 = 6
+    if "S" in keep: y1 = 10
+    if "W" in keep: x0 = 6
+    if "E" in keep: x1 = 10
+    body = a[y0:y1, x0:x1, :3].mean()
+    if body > 1:
+        k = max(0.92, min(1.18, _SAND_MEAN / body))
+        out = a.copy()
+        out[..., :3] = np.clip(a[..., :3] * k, 0, 255)
+        return Image.fromarray(out.astype(np.uint8), "RGBA")
+    return im
+
+
 tw_family("sand", "sand", "sand",
           variants={"fill": 2, "edge_n": 2, "edge_s": 2, "edge_w": 1, "edge_e": 1},
-          post=lambda r, im: deglow(im, 185, 0.6))
+          post=_sand_post)
 tw_family("tree", "tree", "tree", collides=True,
           variants={"edge_n": 2, "edge_s": 1, "edge_w": 1, "edge_e": 1})
 tw_family("water", "water", "water", collides=True, encounter="water", ability="tidecall",
@@ -194,7 +224,7 @@ tw_family("water", "water", "water", collides=True, encounter="water", ability="
 # darkened bed (tileforge.tallgrass_tuft). Hard-edged single tiles by design — the
 # classic handheld encounter tile has no transition ring, which is exactly what makes
 # a patch read as "grass you fight in" vs decorative ground. Fill + 2 phase variants.
-_tg_base = load(TW / "t00_grass0.png")
+_tg_base = flatten_vignette(load(TW / "t00_grass0.png"))
 add("tallgrass_fill", tallgrass_tuft(_tg_base, 0), role="ground",
     terrain="tallgrass", autotile="fill", encounter="tall_grass")
 for _i, _ph in enumerate((5, 11)):
@@ -234,7 +264,7 @@ GRASS_MEAN = tuple(int(v) for v in GRASS[..., :3].reshape(-1, 3).mean(0))
 # contact seam -> ground, tileforge.cliff_wall_edge) — that vertical light ladder
 # is the height cue (art-style §14); raw face texture ending abruptly is the old
 # "texture slab" look.
-_face = cliff_strata(grade(cliff_face, 1.38, 6), seed=11)
+_face = cliff_strata(grade(flatten_vignette(cliff_face), 1.38, 6), seed=11)
 _lip = grade(cliff_lip, 1.28, 6)
 CLIFF_TILES = {
     "fill": _face,
@@ -258,9 +288,9 @@ for r in NINE:
         if r == "fill":
             v = jitter(im, seed, 8)
         elif SEAM_OF.get(r) == "h":
-            v = roll(im, dx=(i + 1) * 5 + 1, dy=0)
+            v = jitter(flip_h(im), seed, 5)
         elif SEAM_OF.get(r) == "v":
-            v = roll(im, dx=0, dy=(i + 1) * 5 + 1)
+            v = jitter(flip_v(im), seed, 5)
         else:
             v = jitter(im, seed, 6)
         add(f"cliff_{r}_v{i+1}", deborder(v, r), role="cliff", terrain="cliff",
@@ -290,7 +320,7 @@ for fam, terr, coll, abil, bite in _INNER_FAMS:
 add("flowers", load(TW / "t55_flowers.png"), role="decor")
 add("sign", load(TW / "t56_sign.png"), role="sign", collides=True)
 add("fence", load(TW / "14_fence.png"), role="fence", collides=True)
-add("lamp", load(DG / "10_lamp.png"), role="decor")          # lamp-post breadcrumb
+add("lamp", key_alpha(load(DG / "10_lamp.png")), role="decor")  # legacy 1-tile lamp (keyed); prefer the lamp-post OBJECT
 add("buoy", load(DG / "14_lantern_buoy.png"), role="decor")  # lantern-buoy (Tidecall tease)
 add("dock", load(DG / "15_dock_board.png"), role="floor")    # dock plank
 
@@ -314,6 +344,9 @@ for i, (nm, im, extra) in enumerate(TILES):
     # seamless pass: autotile tiles by their role; plain ground/anim fills as 'fill'.
     role = extra.get("autotile")
     if role:
+        ax = SEAM_OF.get(role)
+        if ax:
+            im = flatten_axis(im, ax)
         im = deborder(im, role)
     elif nm in _tileable:
         im = deborder(im, "fill")

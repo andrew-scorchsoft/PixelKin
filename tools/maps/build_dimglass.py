@@ -88,6 +88,12 @@ objects = [
     {"id": "tree_b", "sprite": "tinderwick_tree", "at": {"tx": 3, "ty": 23}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "tree_c", "sprite": "tinderwick_tree", "at": {"tx": 2, "ty": 11}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "tree_d", "sprite": "tinderwick_tree", "at": {"tx": 11, "ty": 18}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+    # Lamp breadcrumbs are the 1x3 lamp-post OBJECT (art-style 14b: a one-tile lamp is
+    # wrong) — trunks stand just BESIDE the lit lane, never on it.
+    {"id": "lamp_a", "sprite": "tinderwick_lamp_post", "at": {"tx": 7, "ty": 6}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    {"id": "lamp_b", "sprite": "tinderwick_lamp_post", "at": {"tx": 8, "ty": 14}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    {"id": "lamp_c", "sprite": "tinderwick_lamp_post", "at": {"tx": 7, "ty": 19}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    {"id": "lamp_d", "sprite": "tinderwick_lamp_post", "at": {"tx": 11, "ty": 24}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
 ]
 building_cells = {(x, y) for o in objects
                   for y in range(o["at"]["ty"], o["at"]["ty"] + o["h"])
@@ -129,10 +135,6 @@ for k, (ty, side) in sign_rows.items():
     x, y = beside_spine(ty, side)
     sign_xy[k] = (x, y)
     deco[y * W + x] = gid("sign")
-# lamp breadcrumbs ON the lit lane (left spine column) every few rows:
-for ty in (4, 11, 18, 24):
-    cx = spine_col(ty)
-    deco[ty * W + cx] = gid("lamp")
 # Scatter decor ONLY beside the lit lane (within 2 tiles of a path cell), so the open
 # field stays clean and the eye follows the lamps — not random tufts mid-meadow.
 near_path = set()

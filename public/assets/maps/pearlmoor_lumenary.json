@@ -354,6 +354,17 @@
       "overhang": 1
     },
     {
+      "id": "rug",
+      "sprite": "interior_rug",
+      "at": {
+        "tx": 6,
+        "ty": 5
+      },
+      "w": 3,
+      "h": 2,
+      "solid": false
+    },
+    {
       "id": "brazier_l1",
       "sprite": "interior_brazier",
       "at": {
@@ -396,6 +407,46 @@
       "w": 1,
       "h": 2,
       "overhang": 1
+    },
+    {
+      "id": "ledger_l",
+      "sprite": "interior_bookcase",
+      "at": {
+        "tx": 1,
+        "ty": 2
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "ledger_r",
+      "sprite": "interior_bookcase",
+      "at": {
+        "tx": 11,
+        "ty": 2
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "offerings_l",
+      "sprite": "interior_barrels",
+      "at": {
+        "tx": 1,
+        "ty": 8
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "offerings_r",
+      "sprite": "interior_barrels",
+      "at": {
+        "tx": 11,
+        "ty": 8
+      },
+      "w": 2,
+      "h": 1
     }
   ],
   "warps": [

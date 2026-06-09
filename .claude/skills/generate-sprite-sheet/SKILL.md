@@ -240,8 +240,13 @@ kinds of terrain, two methods — pick by whether the transition is flat or orga
 > hard-edged fill-only by design**, classic-style, no transition ring), `grade` +
 > `cliff_strata` + `cliff_wall_edge` (lifted stratified cliff whose S/W/E edges are
 > complete wall tiles: lit rim → face → dark contact seam → ground), `deglow`
-> (kills baked highlight rims on pale fills), `inner_corner` (13-piece completion —
-> good for path/sand/tree/cliff, **skip water**), and drawn props (`draw_fence_h`,
+> (kills baked highlight rims on pale fills), **`flatten_vignette` on every fill +
+> `flatten_axis` on every edge/strip** (the per-tile-border "joints" cure; edge
+> variants are flips, never rolls; value-match edges to their fill — level-design
+> §11), `key_alpha` (props generated on an opaque card — the "white bag" cure;
+> better: place the 1×3 lamp-post OBJECT, never a 1-tile lamp), `inner_corner`
+> (13-piece completion — good for path/sand/tree/cliff, **skip water**), and drawn
+> props (`draw_fence_h`,
 > `draw_fence_post`, `draw_boulder`, `draw_flowerbed`). `build_shared_overworld.py`
 > applies all of these when packing the shared set. Compose maps to
 > `docs/world/level-design.md` **§11** (the composition standard).
