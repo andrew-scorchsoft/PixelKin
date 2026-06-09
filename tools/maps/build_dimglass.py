@@ -20,10 +20,15 @@ W, H = 18, 34
 rng = random.Random(19)
 
 # ---- terrain presence grids -------------------------------------------------
+# Composition per level-design §11: the west cliff is a real WALL (2-3 deep with
+# organic bumps — its lit-rim/face/seam edges carry the height read), the east
+# shore is a wavy tideline, and the grass beats are shaped patches, not rects.
 cliff = mk.make_grid(W, H)
 mk.rect(cliff, W, H, 0, 0, 1, H - 1)                 # west cliff wall (continues off-west)
 mk.rect(cliff, W, H, 0, 0, W - 1, 1)                 # north cliff band
 mk.rect(cliff, W, H, 0, H - 2, W - 1, H - 1)         # south cliff band
+for (bx, by, br) in [(2, 4, 1), (2, 14, 2), (2, 21, 1), (2, 28, 1), (3, 9, 1)]:
+    mk.blob(cliff, W, H, bx, by, br + 0.4, br)       # the wall bulges into the shelf
 for x in range(6, 9):                                # north exit gap
     cliff[0 * W + x] = 0; cliff[1 * W + x] = 0
 for x in range(5, 9):                                # south entry gap (land-in from Tinderwick)
@@ -31,14 +36,18 @@ for x in range(5, 9):                                # south entry gap (land-in 
 
 water = mk.make_grid(W, H)
 mk.rect(water, W, H, 14, 2, W - 1, H - 3)            # sea along the east (continues off-east)
+mk.blob(water, W, H, 14, 9, 1.6, 2.0)                # the tide bites into the beach…
+mk.blob(water, W, H, 14, 24, 1.6, 1.6)
 sand = mk.make_grid(W, H)
-mk.rect(sand, W, H, 13, 2, 13, H - 3)               # thin beach line meeting the sea
+mk.rect(sand, W, H, 12, 2, 13, H - 3)               # beach band meeting the sea
+mk.blob(sand, W, H, 12, 16, 1.6, 2.2)               # …and the dunes bite back
 mk.rect(sand, W, H, 9, 26, 13, 29)                  # widened sand rest pocket before the boundary
 
-# alternating tall-grass beats (encounter patches), each a clean rect
+# alternating tall-grass beats (encounter patches) — shaped blobs, a safe lane always
 tallgrass = mk.make_grid(W, H)
-for (x0, y0, x1, y1) in [(3, 5, 6, 8), (8, 12, 11, 15), (4, 17, 7, 20), (8, 22, 11, 25)]:
-    mk.rect(tallgrass, W, H, x0, y0, x1, y1)
+for (cx, cy, rx, ry) in [(4.5, 6.5, 2.4, 2.2), (9.5, 13.5, 2.4, 2.2),
+                         (5.5, 18.5, 2.4, 2.2), (9.5, 23.5, 2.4, 2.2)]:
+    mk.blob(tallgrass, W, H, cx, cy, rx, ry)
 
 # the lit path spine — a continuous safe lane from the south entry to the north exit
 path = mk.make_grid(W, H)
@@ -73,10 +82,12 @@ terrain_layers = [
      "set": "vesper_overworld_set", "depth": 0, "data": water},
 ]
 
-# ---- objects: a few canopy trees for walk-under depth ------------------------
+# ---- objects: canopy trees for walk-under depth (crowns break the hedge read) --
 objects = [
     {"id": "tree_a", "sprite": "tinderwick_tree", "at": {"tx": 10, "ty": 6}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "tree_b", "sprite": "tinderwick_tree", "at": {"tx": 3, "ty": 23}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+    {"id": "tree_c", "sprite": "tinderwick_tree", "at": {"tx": 2, "ty": 11}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+    {"id": "tree_d", "sprite": "tinderwick_tree", "at": {"tx": 11, "ty": 18}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
 ]
 building_cells = {(x, y) for o in objects
                   for y in range(o["at"]["ty"], o["at"]["ty"] + o["h"])
@@ -92,9 +103,14 @@ avoid = covered | building_cells
 deco = mk.make_grid(W, H)
 for (x, y) in [cave_xy, (cave_xy[0], cave_xy[1] + 1)]:    # dark cave recess
     deco[y * W + x] = gid("cliff_fill")
-# lantern-buoys OFFSHORE in the sea (east), reading as the Tidecall tease line:
-for (x, y) in [(15, 6), (16, 13), (15, 20), (16, 27)]:
+# lantern-buoys OFFSHORE in the sea (east) — a LINE arcing out toward Gullcry Rock,
+# so the Tidecall tease reads as a route, not random floats:
+for (x, y) in [(14, 5), (15, 6), (16, 7), (15, 13), (16, 14), (15, 20), (16, 27)]:
     deco[y * W + x] = gid("buoy")
+# shore boulders + a rock choke at each story beat (the spine narrows to ONE tile
+# at Wren and at the night-sky beat so the cutscene tile can't be walked around):
+for (x, y) in [(12, 4), (13, 11), (12, 22), (3, 15), (10, 11), (9, 28)]:
+    deco[y * W + x] = gid("boulder")
 
 def beside_spine(ty, side=-1):
     """A walkable grass tile just off the spine at row ty (side -1 = left, +2 = right)."""
@@ -141,11 +157,10 @@ m = {
     "warps": [
         {"id": "from_tinderwick", "at": {"tx": 6, "ty": 32}, "trigger": "step_on",
          "to_map": "tinderwick", "to": {"tx": 13, "ty": 2}, "facing": "down", "transition": "fade"},
-        # North exit now leads straight to Pearlmoor Quay (dimglass_coast_ii is not built yet;
-        # repointed here to make Tinderwick <-> Dimglass <-> Pearlmoor fully traversable). Lands
-        # the player on Pearlmoor's always-walkable central arrival jetty.
-        {"id": "to_quay", "at": {"tx": 7, "ty": 0}, "trigger": "step_on",
-         "to_map": "pearlmoor_quay", "to": {"tx": 13, "ty": 20}, "facing": "up", "transition": "fade"},
+        # North exit continues onto the tidal flats of Dimglass Coast II (the canon
+        # segment chain: I -> II -> Pearlmoor; see graph.ts and walkthrough/01-south).
+        {"id": "to_coast_ii", "at": {"tx": 7, "ty": 0}, "trigger": "step_on",
+         "to_map": "dimglass_coast_ii", "to": {"tx": 7, "ty": 29}, "facing": "up", "transition": "fade"},
         {"id": "to_tideglass", "at": {"tx": 2, "ty": 10}, "trigger": "interact",
          "to_map": "tideglass_cavern", "to": {"tx": 5, "ty": 8}, "facing": "left",
          "requires_ability": "glimmerstep", "transition": "door"},
@@ -159,28 +174,52 @@ m = {
          "activation": "interact", "ref": "sign.dimglass_route"},
         {"id": "sign_boundary", "kind": "sign", "at": {"tx": sign_xy["sign_boundary"][0], "ty": sign_xy["sign_boundary"][1]},
          "activation": "interact", "ref": "sign.dimglass_to_pearlmoor"},
+        # A2 — Wren's first FRIENDLY trainer battle (walkthrough/01-south §2). The spine
+        # is choked to one tile here (boulder at (10,11)) so the beat can't be skirted.
+        {"id": "wren_first_battle", "kind": "cutscene", "at": {"tx": 9, "ty": 11},
+         "activation": "step_on", "ref": "script.wren_dimglass", "once": True,
+         "requires_flag": "flag:has_starter",
+         "sets_flags": ["flag:wren_dimglass_battled"]},
+        # B1 — the inciting incident: a far constellation winks out on first nightfall
+        # here. Quiet, not loud. Spine choked by the boulder at (9,28).
+        {"id": "dusk_begins", "kind": "cutscene", "at": {"tx": 8, "ty": 28},
+         "activation": "step_on", "ref": "script.dusk_begins", "once": True,
+         "sets_flags": ["flag:dusk_begins"]},
     ],
     # A Tide coast (walkthrough/01-south): wild kin are Tide/Light, not Ember. Common
     # #26 Brinelet (Tide); #31 Lumpin (Tide/Light); #8 Glimflit (Light, drifted from town).
     # Level band 3-6. The Tidecall-gated shallows keep the #2 Brinix rare-read.
+    # Four grass beats ramping 3-5 -> 4-6 down the route (walkthrough band 3-6, §4
+    # "5 -> ~8"): the player who fights the beats arrives at II around level 7.
     "encounters": [
-        {"id": "grass_a", "terrain": "tall_grass", "rect": {"tx": 3, "ty": 5, "w": 4, "h": 4},
+        {"id": "grass_a", "terrain": "tall_grass", "rect": {"tx": 2, "ty": 4, "w": 5, "h": 5},
          "encounter_rate": 0.09,
          "table": [{"kin_id": 26, "weight": 55, "min_level": 3, "max_level": 5},
+                   {"kin_id": 31, "weight": 30, "min_level": 3, "max_level": 5},
+                   {"kin_id": 8, "weight": 15, "min_level": 3, "max_level": 5}]},
+        {"id": "grass_b", "terrain": "tall_grass", "rect": {"tx": 7, "ty": 11, "w": 5, "h": 5},
+         "encounter_rate": 0.09,
+         "table": [{"kin_id": 26, "weight": 55, "min_level": 3, "max_level": 6},
                    {"kin_id": 31, "weight": 30, "min_level": 4, "max_level": 6},
                    {"kin_id": 8, "weight": 15, "min_level": 3, "max_level": 5}]},
-        {"id": "grass_b", "terrain": "tall_grass", "rect": {"tx": 8, "ty": 12, "w": 4, "h": 4},
+        {"id": "grass_c", "terrain": "tall_grass", "rect": {"tx": 3, "ty": 16, "w": 5, "h": 5},
          "encounter_rate": 0.09,
          "table": [{"kin_id": 26, "weight": 55, "min_level": 4, "max_level": 6},
                    {"kin_id": 31, "weight": 30, "min_level": 4, "max_level": 6},
-                   {"kin_id": 8, "weight": 15, "min_level": 3, "max_level": 5}]},
+                   {"kin_id": 8, "weight": 15, "min_level": 4, "max_level": 6}]},
+        {"id": "grass_d", "terrain": "tall_grass", "rect": {"tx": 7, "ty": 21, "w": 5, "h": 5},
+         "encounter_rate": 0.09,
+         "table": [{"kin_id": 26, "weight": 55, "min_level": 4, "max_level": 6},
+                   {"kin_id": 31, "weight": 30, "min_level": 4, "max_level": 6},
+                   {"kin_id": 8, "weight": 15, "min_level": 4, "max_level": 6}]},
         {"id": "tide_shallows", "terrain": "water", "rect": {"tx": 14, "ty": 5, "w": 2, "h": 4},
          "encounter_rate": 0.06, "requires_ability": "tidecall",
          "table": [{"kin_id": 2, "weight": 100, "min_level": 4, "max_level": 6}]}],
     "npcs": [
-        # The rival Wren again (A2 — the first friendly trainer battle, here a dialogue beat).
+        # The rival Wren (A2 — the first friendly trainer battle fires from the spine
+        # tile beside them; see the wren_first_battle trigger + script.wren_dimglass).
         {"id": "wren", "at": {"tx": 8, "ty": 11}, "facing": "right", "sprite": "wren",
-         "movement": "look_around", "dialogue_ref": "npc.dimglass_wayfarer"}],
+         "movement": "static", "dialogue_ref": "npc.dimglass_wayfarer"}],
     "gates": [
         {"id": "tide_gate", "ability": "tidecall", "effect": "make_passable",
          "rect": {"tx": 14, "ty": 5, "w": 2, "h": 4}}],

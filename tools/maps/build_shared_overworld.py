@@ -31,7 +31,10 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 from tileforge import (load, deborder, jitter, roll, flip_h, whole_downscale,  # seam helpers
-                       KEEP, H_TILE, V_TILE)
+                       KEEP, H_TILE, V_TILE,
+                       grade, deglow, texture_grass, tallgrass_tuft, cliff_strata,
+                       cliff_wall_edge, inner_corner, draw_fence_h, draw_fence_post,
+                       draw_boulder, draw_flowerbed)
 
 REPO = Path(__file__).resolve().parents[2]
 TW = REPO / "assets" / "tilesets" / "tinderwick"          # proven master kit (by manifest)
@@ -88,9 +91,10 @@ _TW_BY_ROLE = {(t.get("terrain"), t.get("autotile")): t["file"]
 
 
 def tw_family(prefix: str, terrain: str, role: str, *, collides=False,
-              encounter=None, ability=None, strips=False, variants=None):
+              encounter=None, ability=None, strips=False, variants=None, post=None):
     """Promote a Tinderwick autotile family by its manifest file names, with optional
-    per-role variants (derived from the role's base tile) to break repetition."""
+    per-role variants (derived from the role's base tile) to break repetition.
+    `post(role, im) -> im` runs a per-tile grade/texture pass after deborder."""
     variants = variants or {}
     roles = list(NINE) + (STRIPS if strips else [])
     for r in roles:
@@ -101,6 +105,8 @@ def tw_family(prefix: str, terrain: str, role: str, *, collides=False,
         # rolling a clean (toroidal) tile keeps it seamless; rolling a rimmed one drags
         # the dark border into the interior (a stripe deborder can't reach afterwards).
         base = deborder(load(TW / fname), r)
+        if post:
+            base = deborder(post(r, base), r)
         nm = f"{prefix}_{r}"
         is_fill = (r == "fill")
         add(nm, base, role=role, terrain=terrain, autotile=r, collides=collides,
@@ -123,8 +129,13 @@ def tw_family(prefix: str, terrain: str, role: str, *, collides=False,
 
 
 # --- 1) ground grass fills (base scatter) + scatter decor --------------------
+# grass0 stays the plain anchor; 1-3 carry sparse blade texture at rising density
+# so a field reads as grass, not an untextured void (level-design §11).
 for i in range(4):
-    add(f"grass{i}", load(TW / f"t0{i}_grass{i}.png"), role="ground", tileable_fill=True)
+    g = load(TW / f"t0{i}_grass{i}.png")
+    if i > 0:
+        g = texture_grass(g, seed=50 + i, density=5 + i * 2)
+    add(f"grass{i}", g, role="ground", tileable_fill=True)
 
 GRASS = arr(load(TW / "t00_grass0.png"))
 gmean = GRASS[..., :3].reshape(-1, 3).mean(0)
@@ -171,13 +182,26 @@ decor("g_patch", _patch)
 # --- 2) autotile families (with de-repetition variants) ----------------------
 tw_family("path", "path", "path", strips=True,
           variants={"fill": 2, "edge_n": 1, "edge_s": 1, "edge_w": 1, "edge_e": 1})
-tw_family("tallgrass", "tallgrass", "ground", encounter="tall_grass", strips=True)
 tw_family("sand", "sand", "sand",
-          variants={"fill": 2, "edge_n": 2, "edge_s": 2, "edge_w": 1, "edge_e": 1})
+          variants={"fill": 2, "edge_n": 2, "edge_s": 2, "edge_w": 1, "edge_e": 1},
+          post=lambda r, im: deglow(im, 185, 0.6))
 tw_family("tree", "tree", "tree", collides=True,
           variants={"edge_n": 2, "edge_s": 1, "edge_w": 1, "edge_e": 1})
 tw_family("water", "water", "water", collides=True, encounter="water", ability="tidecall",
           variants={"edge_n": 2, "edge_s": 2, "edge_w": 2, "edge_e": 2})
+
+# Tall grass is REDRAWN, not promoted: readable staggered blade-fan clumps over a
+# darkened bed (tileforge.tallgrass_tuft). Hard-edged single tiles by design — the
+# classic handheld encounter tile has no transition ring, which is exactly what makes
+# a patch read as "grass you fight in" vs decorative ground. Fill + 2 phase variants.
+_tg_base = load(TW / "t00_grass0.png")
+add("tallgrass_fill", tallgrass_tuft(_tg_base, 0), role="ground",
+    terrain="tallgrass", autotile="fill", encounter="tall_grass")
+for _i, _ph in enumerate((5, 11)):
+    # variants carry the encounter tag too — the autotiler scatters them per cell,
+    # and a tall-grass cell must trigger encounters whichever variant landed on it.
+    add(f"tallgrass_fill_v{_i+1}", tallgrass_tuft(_tg_base, _ph), role="ground",
+        terrain="tallgrass", autotile="fill", encounter="tall_grass")
 
 # water animation frames (referenced by the water fill tile, local indices resolved later)
 add("water_a2", load(TW / "t53_water_a2.png"), role="water", collides=True, tileable_fill=True)
@@ -202,17 +226,30 @@ add("canopy", load(TW / "t39_tree_fill.png"), role="canopy")
 # tall wall doesn't stamp one face. (Replaces the old brick-looking legacy kit.)
 cliff_face = whole_downscale(SRC / "cliff_face.png", "fill")          # rugged rock
 cliff_lip = whole_downscale(SRC / "cliff_top.png", "edge_n")         # grass-on-top lip
-CLIFF_BASE = {
-    "fill": ("fill", cliff_face), "edge_n": ("edge_n", cliff_lip),
-    "corner_nw": ("corner_nw", cliff_lip), "corner_ne": ("corner_ne", cliff_lip),
-    "edge_e": ("edge_e", cliff_face), "edge_w": ("edge_w", cliff_face),
-    "edge_s": ("edge_s", cliff_face), "corner_sw": ("corner_sw", cliff_face),
-    "corner_se": ("corner_se", cliff_face),
+GRASS_MEAN = tuple(int(v) for v in GRASS[..., :3].reshape(-1, 3).mean(0))
+# The raw face renders near-black on a map (the old "void cliff" read). Lift it
+# ~1.4x + strata seams so it reads as stratified rock. Edge semantics for a
+# TOP-DOWN cliff mass: the open-NORTH side keeps the grassy plateau lip, but the
+# open-SOUTH/W/E sides are drawn as complete WALL tiles (lit rim -> face -> dark
+# contact seam -> ground, tileforge.cliff_wall_edge) — that vertical light ladder
+# is the height cue (art-style §14); raw face texture ending abruptly is the old
+# "texture slab" look.
+_face = cliff_strata(grade(cliff_face, 1.38, 6), seed=11)
+_lip = grade(cliff_lip, 1.28, 6)
+CLIFF_TILES = {
+    "fill": _face,
+    "edge_n": _lip,
+    "corner_nw": cliff_wall_edge(_lip, GRASS_MEAN, "w"),
+    "corner_ne": cliff_wall_edge(_lip, GRASS_MEAN, "e"),
+    "edge_s": cliff_wall_edge(_face, GRASS_MEAN, "s"),
+    "edge_w": cliff_wall_edge(_face, GRASS_MEAN, "w"),
+    "edge_e": cliff_wall_edge(_face, GRASS_MEAN, "e"),
+    "corner_sw": cliff_wall_edge(cliff_wall_edge(_face, GRASS_MEAN, "s"), GRASS_MEAN, "w"),
+    "corner_se": cliff_wall_edge(cliff_wall_edge(_face, GRASS_MEAN, "s"), GRASS_MEAN, "e"),
 }
 CLIFF_VARIANTS = {"fill": 1, "edge_n": 1, "edge_s": 1, "edge_w": 1, "edge_e": 1}
 for r in NINE:
-    role_src, src_im = CLIFF_BASE[r]
-    im = deborder(src_im, r)
+    im = deborder(CLIFF_TILES[r], r)
     add(f"cliff_{r}", im, role="cliff", terrain="cliff", autotile=r, collides=True,
         tileable_fill=(r == "fill"))
     # variants so a tall cliff wall / long ledge doesn't stamp one rock face
@@ -229,13 +266,41 @@ for r in NINE:
         add(f"cliff_{r}_v{i+1}", deborder(v, r), role="cliff", terrain="cliff",
             autotile=r, collides=True, tileable_fill=(r == "fill"))
 
-# --- 4) accents / decor (reuse) ----------------------------------------------
+# --- 3b) inner (concave) corners — the 13-piece completion --------------------
+# Synthesised from each family's fill + matching outer corner (tileforge.inner_corner)
+# so concave joins (a bay in a shoreline, an alcove in a tree-line or cliff) curve
+# instead of butting fill against edge at a hard right angle.
+_BY_NAME = {nm: im for (nm, im, _e) in TILES}
+# (water is deliberately absent: a synthetic concave foam corner reads as a stray
+# sand wedge at 1x — water's fill fallback at inner corners looks better.)
+_INNER_FAMS = [
+    ("path", "path", False, None, 4), ("sand", "sand", False, None, 4),
+    ("tree", "tree", True, None, 5), ("cliff", "cliff", True, None, 5),
+]
+for fam, terr, coll, abil, bite in _INNER_FAMS:
+    fill_im = _BY_NAME.get(f"{fam}_fill")
+    for q in ("nw", "ne", "sw", "se"):
+        outer = _BY_NAME.get(f"{fam}_corner_{q}")
+        if fill_im is None or outer is None:
+            continue
+        add(f"{fam}_inner_{q}", inner_corner(fill_im, outer, q, r=bite), role=fam,
+            terrain=terr, autotile=f"inner_{q}", collides=coll, ability=abil)
+
+# --- 4) accents / decor (reuse + drawn props) ---------------------------------
 add("flowers", load(TW / "t55_flowers.png"), role="decor")
 add("sign", load(TW / "t56_sign.png"), role="sign", collides=True)
 add("fence", load(TW / "14_fence.png"), role="fence", collides=True)
 add("lamp", load(DG / "10_lamp.png"), role="decor")          # lamp-post breadcrumb
 add("buoy", load(DG / "14_lantern_buoy.png"), role="decor")  # lantern-buoy (Tidecall tease)
 add("dock", load(DG / "15_dock_board.png"), role="floor")    # dock plank
+
+# Drawn vocabulary props (tileforge) — the funnelling/garden kit the reference-era
+# maps lean on: fence runs + end posts, boulders, and flowerbed clusters.
+add("fence_h", draw_fence_h(), role="fence", collides=True)
+add("fence_post", draw_fence_post(), role="fence", collides=True)
+add("boulder", draw_boulder(), role="decor", collides=True)
+add("flowerbed_a", draw_flowerbed(1), role="decor")
+add("flowerbed_b", draw_flowerbed(7), role="decor")
 
 # ---- write masters, manifest, index, then pack ------------------------------
 name_index = {nm: i for i, (nm, _, _) in enumerate(TILES)}

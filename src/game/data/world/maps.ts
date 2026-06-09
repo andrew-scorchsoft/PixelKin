@@ -68,6 +68,16 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/dimglass-coast-b.webp',
     ],
   },
+  dimglass_coast_ii: {
+    json: 'assets/maps/dimglass_coast_ii.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/dimglass-coast-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/dimglass-coast-a.webp',
+      'assets/backgrounds/battle/dimglass-coast-b.webp',
+    ],
+  },
   pearlmoor_quay: {
     json: 'assets/maps/pearlmoor_quay.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },

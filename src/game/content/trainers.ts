@@ -17,12 +17,55 @@ export const TRAINERS: TrainerRegistry = {
     name: 'BRISA TALLOW',
     title: 'Lampwarden',
     party: [
-      { species_id: 10, level: 6 }, // Tallowpup — Ember
-      { species_id: 18, level: 8 }, // Hearthkit — Ember
+      { species_id: 10, level: 7 }, // Tallowpup — Ember
+      { species_id: 18, level: 10 }, // Hearthkit — Ember (ace ~10 per walkthrough/01-south)
     ],
     intro_ref: 'trainer.lampwarden_tinderwick.intro',
     defeat_ref: 'trainer.lampwarden_tinderwick.defeat',
     reward_flags: ['gleam:ember', 'crown_south'],
+    music: 'battle-emberfall',
+  },
+
+  // A2 — Wren's first FRIENDLY battle on Dimglass Coast I (walkthrough/01-south §2):
+  // teaches trainer battles in a low-stakes, cosy frame, pitched ~2 levels under the
+  // player (~7 at the second grass beat). No reward flags — the route trigger tracks it.
+  wren_dimglass: {
+    id: 'wren_dimglass',
+    name: 'WREN',
+    title: 'Wayfarer',
+    party: [
+      { species_id: 8, level: 5 }, // Glimflit — Light
+      { species_id: 26, level: 6 }, // Brinelet — Tide
+    ],
+    intro_ref: 'trainer.wren_dimglass.intro',
+    defeat_ref: 'trainer.wren_dimglass.defeat',
+    music: 'battle-emberfall',
+  },
+
+  // Dimglass Coast II route trainers — the XP bridge between the Ember Gleam (~10)
+  // and Pearlmoor (rec. 12): two travelling Wayfarers on the tidal flats.
+  flats_wayfarer_a: {
+    id: 'flats_wayfarer_a',
+    name: 'MORROW',
+    title: 'Wayfarer',
+    party: [
+      { species_id: 26, level: 9 }, // Brinelet — Tide
+      { species_id: 31, level: 9 }, // Lumpin — Tide/Light
+    ],
+    intro_ref: 'trainer.flats_wayfarer_a.intro',
+    defeat_ref: 'trainer.flats_wayfarer_a.defeat',
+    music: 'battle-emberfall',
+  },
+  flats_wayfarer_b: {
+    id: 'flats_wayfarer_b',
+    name: 'ELSPETH',
+    title: 'Lamp-courier',
+    party: [
+      { species_id: 27, level: 10 }, // Brineroll — Tide
+      { species_id: 31, level: 11 }, // Lumpin — Tide/Light
+    ],
+    intro_ref: 'trainer.flats_wayfarer_b.intro',
+    defeat_ref: 'trainer.flats_wayfarer_b.defeat',
     music: 'battle-emberfall',
   },
 
@@ -58,6 +101,24 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   'trainer.lampwarden_tinderwick.defeat': [
     { speaker: 'BRISA TALLOW', text: 'Hah! A warm flame indeed. The southern crown remembers your light.' },
     { speaker: 'BRISA TALLOW', text: 'Take the Ember Gleam. One constellation relit — only seven dusks to go.' },
+  ],
+  'trainer.wren_dimglass.intro': [
+    { speaker: 'WREN', text: "No Lamps, no stakes — just us and our partners. Show me what your bond's worth." },
+  ],
+  'trainer.wren_dimglass.defeat': [
+    { speaker: 'WREN', text: "Ha! Knew you'd be good. Race you to Pearlmoor — keep to the lamps, Wayfarer." },
+  ],
+  'trainer.flats_wayfarer_a.intro': [
+    { speaker: 'MORROW', text: 'Hold there, friend. Two lamps on a dark flat had better test their wicks — that is the custom.' },
+  ],
+  'trainer.flats_wayfarer_a.defeat': [
+    { speaker: 'MORROW', text: 'A steady flame, yours. Pearlmoor sits past the buoys — the old ferryman keeps the second Gleam.' },
+  ],
+  'trainer.flats_wayfarer_b.intro': [
+    { speaker: 'ELSPETH', text: 'Courier post! Letters for Pearlmoor — and a standing wager for any Wayfarer who dares the flats.' },
+  ],
+  'trainer.flats_wayfarer_b.defeat': [
+    { speaker: 'ELSPETH', text: 'The wager is yours. Mind the tide pools, and tell Reyl his letters are late because of you.' },
   ],
   'trainer.lampwarden_pearlmoor.intro': [
     { speaker: 'REYL WASH', text: 'Apprentice, is it. I have ferried a hundred Wayfarers across this harbour. Few read the water right.' },

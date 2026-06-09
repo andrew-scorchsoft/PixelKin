@@ -661,6 +661,62 @@ validator with no FAILs.
 
 ---
 
+## 11. The composition standard (closing the gap to the genre's best maps)
+
+A map can pass every mechanical check and still read as *empty* next to a classic
+handheld route. Side-by-side comparison against reference-era maps shows the gap is
+**composition**, and it reduces to seven enforceable rules. These were applied to
+Tinderwick / Dimglass I+II / Pearlmoor in the 2026-06 rebuild; hold every new area
+to them (the §8 checklist now includes this section by reference).
+
+1. **No flat voids.** Every walkable screenful carries texture: ground fills are the
+   *textured* grass variants (`grass1-3` carry blade texture; `grass0` is the plain
+   anchor), `scatter_decor` density **0.14–0.16** (not 0.10), and any open meadow
+   larger than ~5×4 gets a prop cluster (flowerbeds, boulder, tuft) or a reason to
+   exist. The reference maps are ~70% "occupied"; ours were ~20%.
+2. **Deep organic enclosure.** Borders are 2–3 deep with `organic_border` bumps of
+   radius ≥2 (radius-1 bumps make plus-shaped pockets), and the camera margin is
+   always forest/cliff/sea — never void. Object trees with real crowns are scattered
+   ON the tree-line (3–6 per map) so the forest reads as overlapping canopies, not a
+   repeating hedge tile.
+3. **One elevation accent per outdoor map.** A cliff terrace, bluff or rock shelf
+   (the `cliff` family's wall edges carry the lit-rim → face → contact-seam ladder)
+   so the map has height, like the reference maps' terraces. Towns: behind the
+   landmark building. Routes: the flanking wall itself, bulging organically.
+4. **Organic shapes, not ruled rects.** Shores, encounter patches and terraces are
+   `blob()`s (or rects with bitten corners). The tide *bites* the beach; dunes lap
+   into the green. A dead-straight full-width shoreline is a fail.
+5. **Buildings sit in a town, not on a lawn.** Every building front opens onto a
+   real apron (the plaza street is ≥2 rows), and the town has at least one **fenced
+   garden** (fence runs + end posts + flowerbeds) plus signs/lamps on the walked
+   lanes. A building floating in grass is the old look.
+6. **Encounter grass is hard-edged tufts, by design.** The `tallgrass` family ships
+   fill(+variants) ONLY — staggered blade-fan clumps over a darkened bed, no
+   transition ring — so a patch reads instantly as "grass you fight in" (the classic
+   convention). Patches are shaped (rule 4), 2–4 deep, with the safe lane intact.
+7. **Routes carry gameplay, not just terrain.** Per route segment: 1–3 **trainer
+   beats** (static NPC + step_on cutscene tile on a choked lane — a boulder or the
+   NPC closes the other column so the beat can't be skirted), wild bands that
+   **bridge the towns' levels** (next Lampwarden's ace ≈ previous ace +5–6; the
+   route's band fills the gap — e.g. Dimglass I 3–6 → II 8–10 → Pearlmoor 12), and
+   the story beats the walkthrough pins (A2/B1 live on Dimglass I).
+
+**Tile-kit notes backing the rules** (all deterministic, in `tools/maps/tileforge.py` —
+no API needed): `texture_grass` (blade dashes), `tallgrass_tuft` (the encounter tile),
+`grade`/`cliff_strata`/`cliff_wall_edge` (the lifted, stratified cliff with true wall
+edges), `deglow` (kills baked highlight rims on pale fills), `inner_corner` (13-piece
+completion for path/sand/tree/cliff — *not* water, where the synthetic bite reads as
+a stray sand wedge), and the drawn props `draw_fence_h`/`draw_fence_post`/
+`draw_boulder`/`draw_flowerbed`. `build_shared_overworld.py` applies them when packing
+the shared set.
+
+**Known gap (raise, don't paint around):** path/water cells punched through a sand
+flat leave raw sand fill at the contact (the path's own edges carry the seam — a
+cosmetic WARN in `validate_map`). The proper fix is a dedicated sand↔path FLAT
+transition via `composite_overlay.py` when the flats biome gets its art pass.
+
+---
+
 > **In one line:** design screen-by-screen for the 15×10 window, lead the eye with light,
 > gate with geography, teach the opening hour as a gentle ramp, keep layers and encounter
-> zones disciplined — and run the checklist every time.
+> zones disciplined, compose to §11 — and run the checklist every time.

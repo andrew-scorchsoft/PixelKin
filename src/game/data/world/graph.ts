@@ -134,13 +134,10 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
 
     // ---- Main rim, clockwise: town -> route segment -> ... -> town -------------------
     { from_map: 'tinderwick', to_map: 'dimglass_coast', via_warp: 'to_coast', bidirectional: true },
-    // dimglass_coast_ii is not built yet; Dimglass I's north exit is repointed straight to
-    // Pearlmoor (build_dimglass.py `to_quay`), and Pearlmoor returns via `to_dimglass`, so
-    // Tinderwick <-> Dimglass <-> Pearlmoor is fully traversable today.
-    { from_map: 'dimglass_coast', to_map: 'pearlmoor_quay', via_warp: 'to_quay', bidirectional: false },
-    { from_map: 'pearlmoor_quay', to_map: 'dimglass_coast', via_warp: 'to_dimglass', bidirectional: false },
-    // (When dimglass_coast_ii is built, splice it back in between Dimglass I and Pearlmoor and
-    //  restore the `to_coast_ii` -> dimglass_coast_ii -> `to_quay` -> pearlmoor_quay chain.)
+    // The canon segment chain: Dimglass I -> the tidal flats of Dimglass II -> Pearlmoor.
+    // II is the South spine's level bridge (~8-10 band + two route-trainer beats) and the
+    // home of both gift-gated spurs (Gullcry Rock / Tideglass Cavern).
+    { from_map: 'dimglass_coast', to_map: 'dimglass_coast_ii', via_warp: 'to_coast_ii', bidirectional: true },
     { from_map: 'dimglass_coast_ii', to_map: 'pearlmoor_quay', via_warp: 'to_quay', bidirectional: true },
     { from_map: 'pearlmoor_quay', to_map: 'saltreach_fen_i', via_warp: 'to_fen', bidirectional: true },
     { from_map: 'saltreach_fen_i', to_map: 'saltreach_fen_ii', via_warp: 'to_fen_ii', requires_ability: 'tidecall', bidirectional: true },

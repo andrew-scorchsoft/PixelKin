@@ -51,7 +51,7 @@ inn_door = door_tile(INN)             # (22, 11)
 # quay + boardwalks) fills the south. The lit path spine runs the dry land between.
 tree = mk.make_grid(W, H)
 mk.organic_border(tree, W, H, top=1, left=1, right=1, depth=2,
-                  bumps=[(4, 4, 1), (24, 4, 1), (2, 14, 1), (25, 15, 1)])
+                  bumps=[(4, 4, 2), (24, 4, 2), (2, 14, 2), (25, 14, 2)])
 for x in (5, 6, 7):                       # punch the south-entry gap from Dimglass (land-in)
     pass
 mk.rect(tree, W, H, 0, 15, W - 1, H - 1, 0)   # clear the border below the quay line
@@ -63,15 +63,19 @@ mk.rect(tree, W, H, 0, 15, W - 1, H - 1, 0)   # clear the border below the quay 
 # open WATER inherits the water tile's Tidecall gate, so the side-piers read as gated tease.
 water = mk.make_grid(W, H)
 mk.rect(water, W, H, 0, 18, W - 1, H - 1)     # full-width harbour sea (continues off-south)
+mk.blob(water, W, H, 4, 18, 2.4, 1.2)         # the tide bites the quay line…
+mk.blob(water, W, H, 24, 18, 2.2, 1.2)
 sand = mk.make_grid(W, H)
 mk.rect(sand, W, H, 0, 16, W - 1, 17)         # 2-row sand quay meeting the sea
+mk.blob(sand, W, H, 9, 15, 2.0, 1.2)          # …and the quay sand laps up into the green
+mk.blob(sand, W, H, 19, 15, 1.8, 1.2)
 mk.rect(sand, W, H, 13, 18, 14, 21, 1)        # central arrival jetty (sand) down into the harbour
 # carve the water out from under the jetty so the jetty boards stay ungated/walkable
 mk.rect(water, W, H, 13, 18, 14, 21, 0)
 
 # tall-grass fringe (grass-kin encounter patch) tucked top-left under the tree-line
 tallgrass = mk.make_grid(W, H)
-mk.rect(tallgrass, W, H, 2, 4, 5, 7)
+mk.blob(tallgrass, W, H, 3.5, 5.5, 2.4, 2.2)
 
 # ---- the lit path spine + approach lanes to every door ----------------------
 path = mk.make_grid(W, H)
@@ -79,7 +83,7 @@ path = mk.make_grid(W, H)
 mk.vline(path, W, H, 13, 7, 16)
 mk.vline(path, W, H, 14, 7, 16)
 # the quay promenade street along the building fronts / waterline approach
-mk.hline(path, W, H, 12, 4, 23)
+mk.rect(path, W, H, 4, 12, 23, 13)
 # Lumenary forecourt: door (13,6)/(14,6) -> row 7 is the spine head; carve the forecourt
 mk.hline(path, W, H, 7, 12, 15)
 # shop approach: door (5,11) -> below (5,12) on the promenade street row 12
@@ -129,6 +133,12 @@ objects = [
      "w": 2, "h": 3, "overhang": 0},
     {"id": "boat_b", "sprite": "pearlmoor_boat", "at": {"tx": 18, "ty": 18},
      "w": 2, "h": 3, "overhang": 0},
+    {"id": "tree_c", "sprite": "tinderwick_tree", "at": {"tx": 18, "ty": 3},
+     "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+    {"id": "tree_d", "sprite": "tinderwick_tree", "at": {"tx": 1, "ty": 10},
+     "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+    {"id": "tree_e", "sprite": "tinderwick_tree", "at": {"tx": 7, "ty": 3},
+     "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "lamp_a", "sprite": "tinderwick_lamp_post", "at": {"tx": 12, "ty": 9},
      "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "lamp_b", "sprite": "tinderwick_lamp_post", "at": {"tx": 15, "ty": 13},
@@ -178,10 +188,14 @@ sign_tiles = {
 for (x, y) in sign_tiles.values():
     deco[y * W + x] = gid("sign")
 
-# a couple of fenced flowers for warmth, off-path by the inn
-for (x, y) in [(18, 12), (19, 13)]:
-    if (x, y) not in avoid:
-        deco[y * W + x] = gid("flowers")
+# a fenced flower garden for warmth, between the spine and the inn
+mk.fence_run(deco, W, H, 17, 9, 19)
+for (x, y) in [(17, 10), (18, 10), (19, 10)]:
+    deco[y * W + x] = gid("flowerbed_a") if x % 2 else gid("flowerbed_b")
+mk.fence_run(deco, W, H, 17, 11, 19)
+# quay boulders + harbour-mouth rocks
+for (x, y) in [(2, 16), (25, 17), (10, 16), (26, 21)]:
+    deco[y * W + x] = gid("boulder")
 
 # scatter decor only beside the lit lane so the open field stays clean
 near_path = set()
@@ -194,7 +208,7 @@ for y in range(H):
 deco_avoid = avoid | {(x, y) for y in range(H) for x in range(W) if (x, y) not in near_path}
 # keep scatter off the dock/buoy/sign/lamp/flower cells already placed
 deco_avoid |= {(x, y) for (x, y) in dock_cells}
-mk.scatter_decor(deco, base, W, H, rng, density=0.10, avoid=deco_avoid)
+mk.scatter_decor(deco, base, W, H, rng, density=0.15, avoid=deco_avoid)
 
 # ---- assemble ---------------------------------------------------------------
 m = {
@@ -209,9 +223,9 @@ m = {
         # South land-in from / return to Dimglass Coast: the player arrives on foot at the
         # seaward tip of the central sand jetty (always-walkable) and heads up the spine.
         {"id": "to_dimglass", "at": {"tx": 13, "ty": 21}, "trigger": "step_on",
-         "to_map": "dimglass_coast", "to": {"tx": 7, "ty": 1}, "facing": "up", "transition": "fade"},
+         "to_map": "dimglass_coast_ii", "to": {"tx": 7, "ty": 1}, "facing": "down", "transition": "fade"},
         {"id": "to_dimglass_e", "at": {"tx": 14, "ty": 21}, "trigger": "step_on",
-         "to_map": "dimglass_coast", "to": {"tx": 7, "ty": 1}, "facing": "up", "transition": "fade"},
+         "to_map": "dimglass_coast_ii", "to": {"tx": 7, "ty": 1}, "facing": "down", "transition": "fade"},
         # Lumenary door — interact on the arch door-art tile (col 2); col 3 is the twin
         # walkable approach. Reachable WITHOUT Tidecall (spine §0 rule 1); soft-gated on
         # holding a starter, like Tinderwick's.
