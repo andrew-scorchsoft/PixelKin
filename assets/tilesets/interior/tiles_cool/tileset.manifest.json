@@ -2,13 +2,54 @@
   "name": "interior_stone_set",
   "columns": 8,
   "tiles": [
-    { "file": "floor_fill.png",   "role": "floor" },
-    { "file": "floor_fill_b.png", "role": "floor" },
-    { "file": "runner.png",       "role": "floor" },
-    { "file": "wall_cap.png",     "role": "wall", "collides": true },
-    { "file": "wall_face.png",    "role": "wall", "collides": true },
-    { "file": "wall_corner.png",  "role": "wall", "collides": true },
-    { "file": "wall_s.png",       "role": "wall", "collides": true },
-    { "file": "banner.png",       "role": "wall", "collides": true }
+    {
+      "file": "floor_fill.png"
+    },
+    {
+      "file": "floor_fill_b.png"
+    },
+    {
+      "file": "runner.png"
+    },
+    {
+      "file": "face.png",
+      "collides": true
+    },
+    {
+      "file": "banner.png",
+      "collides": true
+    },
+    {
+      "file": "cap_s.png",
+      "collides": true
+    },
+    {
+      "file": "cap_n.png",
+      "collides": true
+    },
+    {
+      "file": "cap_e.png",
+      "collides": true
+    },
+    {
+      "file": "cap_w.png",
+      "collides": true
+    },
+    {
+      "file": "cap_tl.png",
+      "collides": true
+    },
+    {
+      "file": "cap_tr.png",
+      "collides": true
+    },
+    {
+      "file": "cap_bl.png",
+      "collides": true
+    },
+    {
+      "file": "cap_br.png",
+      "collides": true
+    }
   ]
 }
