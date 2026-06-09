@@ -33,7 +33,7 @@ from PIL import Image
 from tileforge import (load, deborder, jitter, roll, flip_h, whole_downscale,  # seam helpers
                        KEEP, H_TILE, V_TILE,
                        grade, deglow, texture_grass, tallgrass_tuft, cliff_strata,
-                       cliff_wall_edge, inner_corner, flatten_vignette, flatten_axis,
+                       cliff_wall_edge, inner_corner, flatten_vignette, flatten_axis, match_green_to,
                        flip_v, key_alpha,
                        draw_fence_h, draw_fence_post, draw_boulder, draw_flowerbed)
 
@@ -132,10 +132,25 @@ def tw_family(prefix: str, terrain: str, role: str, *, collides=False,
 # --- 1) ground grass fills (base scatter) + scatter decor --------------------
 # grass0 stays the plain anchor; 1-3 carry sparse blade texture at rising density
 # so a field reads as grass, not an untextured void (level-design §11).
+_g0 = flatten_vignette(load(TW / "t00_grass0.png"))
+_G0_MEAN = np.asarray(_g0.convert("RGBA")).astype(np.float64)[..., :3].mean()
+GRASS_RGB = tuple(int(v) for v in np.asarray(_g0.convert("RGBA"))
+                  .astype(np.float64)[..., :3].reshape(-1, 3).mean(0))
+
+
+def _norm_mean(im):
+    """Pin a ground fill's mean to grass0's so the base scatter never checkers."""
+    a = np.asarray(im.convert("RGBA")).astype(np.float64)
+    m = a[..., :3].mean()
+    if m > 1:
+        a[..., :3] = np.clip(a[..., :3] * (_G0_MEAN / m), 0, 255)
+    return Image.fromarray(a.astype(np.uint8), "RGBA")
+
+
 for i in range(4):
-    g = flatten_vignette(load(TW / f"t0{i}_grass{i}.png"))
+    g = _g0 if i == 0 else flatten_vignette(load(TW / f"t0{i}_grass{i}.png"))
     if i > 0:
-        g = texture_grass(g, seed=50 + i, density=5 + i * 2)
+        g = _norm_mean(texture_grass(g, seed=50 + i, density=5 + i * 2))
     add(f"grass{i}", g, role="ground", tileable_fill=True)
 
 GRASS = arr(load(TW / "t00_grass0.png"))
@@ -206,17 +221,18 @@ def _sand_post(r, im):
     body = a[y0:y1, x0:x1, :3].mean()
     if body > 1:
         k = max(0.92, min(1.18, _SAND_MEAN / body))
-        out = a.copy()
-        out[..., :3] = np.clip(a[..., :3] * k, 0, 255)
-        return Image.fromarray(out.astype(np.uint8), "RGBA")
-    return im
+        a = a.copy()
+        a[..., :3] = np.clip(a[..., :3] * k, 0, 255)
+        im = Image.fromarray(a.astype(np.uint8), "RGBA")
+    return match_green_to(im, GRASS_RGB)
 
 
 tw_family("sand", "sand", "sand",
           variants={"fill": 2, "edge_n": 2, "edge_s": 2, "edge_w": 1, "edge_e": 1},
           post=_sand_post)
 tw_family("tree", "tree", "tree", collides=True,
-          variants={"edge_n": 2, "edge_s": 1, "edge_w": 1, "edge_e": 1})
+          variants={"fill": 2, "edge_n": 2, "edge_s": 1, "edge_w": 1, "edge_e": 1},
+          post=lambda r, im: im if r == "fill" else match_green_to(im, GRASS_RGB, 22))
 # Water: value-match the deep fill toward the edge tiles' water tone — the raw
 # fill is far darker than the foam-edge water, so concave bays and pond centres
 # read as abrupt dark blocks instead of one body of water.
@@ -246,7 +262,7 @@ tw_family("water", "water", "water", collides=True, encounter="water", ability="
 _tg_base = flatten_vignette(load(TW / "t00_grass0.png"))
 add("tallgrass_fill", tallgrass_tuft(_tg_base, 0), role="ground",
     terrain="tallgrass", autotile="fill", encounter="tall_grass")
-for _i, _ph in enumerate((5, 11)):
+for _i, _ph in enumerate((5, 11, 23)):
     # variants carry the encounter tag too — the autotiler scatters them per cell,
     # and a tall-grass cell must trigger encounters whichever variant landed on it.
     add(f"tallgrass_fill_v{_i+1}", tallgrass_tuft(_tg_base, _ph), role="ground",
@@ -284,7 +300,7 @@ GRASS_MEAN = tuple(int(v) for v in GRASS[..., :3].reshape(-1, 3).mean(0))
 # is the height cue (art-style §14); raw face texture ending abruptly is the old
 # "texture slab" look.
 _face = cliff_strata(grade(flatten_vignette(cliff_face), 1.38, 6), seed=11)
-_lip = grade(cliff_lip, 1.28, 6)
+_lip = match_green_to(grade(cliff_lip, 1.28, 6), GRASS_RGB)
 CLIFF_TILES = {
     "fill": _face,
     "edge_n": _lip,
@@ -296,7 +312,7 @@ CLIFF_TILES = {
     "corner_sw": cliff_wall_edge(cliff_wall_edge(_face, GRASS_MEAN, "s"), GRASS_MEAN, "w"),
     "corner_se": cliff_wall_edge(cliff_wall_edge(_face, GRASS_MEAN, "s"), GRASS_MEAN, "e"),
 }
-CLIFF_VARIANTS = {"fill": 1, "edge_n": 1, "edge_s": 1, "edge_w": 1, "edge_e": 1}
+CLIFF_VARIANTS = {"fill": 2, "edge_n": 1, "edge_s": 1, "edge_w": 1, "edge_e": 1}
 for r in NINE:
     im = deborder(CLIFF_TILES[r], r)
     add(f"cliff_{r}", im, role="cliff", terrain="cliff", autotile=r, collides=True,

@@ -210,8 +210,29 @@ def tallgrass_tuft(base: Image.Image, phase: int = 0) -> Image.Image:
         for (x, y) in [(cx - 1, cy + 2), (cx, cy + 2), (cx + 1, cy + 2)]:
             a[y % 16, x % 16, :3] = out
 
+    rng = np.random.default_rng(97 + phase)
     for (cx, cy) in ((4, 5), (12, 5), (8, 12), (0, 12)):
-        clump((cx + phase) % 16, cy)
+        jx, jy = int(rng.integers(-2, 3)), int(rng.integers(-1, 2))
+        clump((cx + jx) % 16, cy + jy)
+    return _img(a)
+
+
+def match_green_to(im: Image.Image, target_rgb, min_greenness: int = 14) -> Image.Image:
+    """Selectively recolor green-dominant pixels (the baked daylight-green grass
+    border many generated transition tiles carry) toward OUR ground tone,
+    preserving each pixel's relative shading. The cure for edge tiles whose
+    grass side glows lime against the dusk-teal field."""
+    a = _arr(im)
+    rgb = a[..., :3].astype(np.float64)
+    greenness = rgb[..., 1] - (rgb[..., 0] + rgb[..., 2]) / 2
+    mask = greenness > min_greenness
+    if mask.any():
+        t = np.array(target_rgb, dtype=np.float64)
+        lum = rgb.mean(-1, keepdims=True)
+        src_lum = rgb[mask].mean()
+        shaded = t[np.newaxis, np.newaxis, :] * (lum / max(src_lum, 1.0))
+        out = np.where(mask[..., np.newaxis], 0.15 * rgb + 0.85 * shaded, rgb)
+        a[..., :3] = np.clip(out, 0, 255)
     return _img(a)
 
 
@@ -222,8 +243,8 @@ def cliff_strata(im: Image.Image, seed: int = 3) -> Image.Image:
     rng = np.random.default_rng(seed)
     for sy in (5, 11):
         y = (sy + int(rng.integers(-1, 2))) % 16
-        a[y, :, :3] = (a[y, :, :3] * 0.72).astype(int)
-        a[(y - 1) % 16, :, :3] = np.clip(a[(y - 1) % 16, :, :3] * 1.18 + 8, 0, 255)
+        a[y, :, :3] = (a[y, :, :3] * 0.78).astype(int)
+        a[(y - 1) % 16, :, :3] = np.clip(a[(y - 1) % 16, :, :3] * 1.08 + 3, 0, 255)
     return _img(a)
 
 
