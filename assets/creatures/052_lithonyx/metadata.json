@@ -1,0 +1,45 @@
+{
+  "id": 52,
+  "name": "Lithonyx",
+  "slug": "lithonyx",
+  "types": [],
+  "sprites": {
+    "battle_front": {
+      "file": "battle_front.png",
+      "width": 64,
+      "height": 64,
+      "anchor": "bottom-center"
+    },
+    "battle_back": {
+      "file": "battle_back.png",
+      "width": 64,
+      "height": 64,
+      "anchor": "bottom-center"
+    },
+    "icon": {
+      "file": "icon.png",
+      "width": 32,
+      "height": 32,
+      "anchor": "center"
+    },
+    "overworld": {
+      "file": "overworld.png",
+      "width": 32,
+      "height": 32,
+      "anchor": "bottom-center"
+    },
+    "portrait": {
+      "file": "portrait.png",
+      "width": 96,
+      "height": 96,
+      "anchor": "center"
+    }
+  },
+  "scale": 1.0,
+  "offsets": {
+    "battleX": 0,
+    "battleY": 0,
+    "iconX": 0,
+    "iconY": 0
+  }
+}
