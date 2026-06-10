@@ -469,8 +469,8 @@
         1,
         2,
         1,
-        48,
-        50,
+        55,
+        56,
         52,
         53,
         1,
@@ -485,20 +485,20 @@
         1,
         4,
         13,
-        19,
-        4,
-        2,
-        1,
-        1,
-        1,
-        1,
-        1,
-        4,
-        3,
-        1,
-        49,
-        108,
-        51,
+        101,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
         51,
         109,
         44,
@@ -525,8 +525,8 @@
         30,
         1,
         1,
-        48,
-        52,
+        43,
+        45,
         56,
         57,
         57,
@@ -1143,6 +1143,7 @@
         0,
         6,
         0,
+        117,
         6,
         7,
         0,
@@ -1183,22 +1184,21 @@
         0,
         0,
         0,
-        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
         0,
         0,
         6,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0,
         0,
@@ -1224,7 +1224,7 @@
         117,
         0,
         0,
-        0,
+        6,
         0,
         0,
         0,
@@ -2311,6 +2311,21 @@
       "facing": "down",
       "requires_flag": "flag:has_starter",
       "transition": "door"
+    },
+    {
+      "id": "to_crossroads",
+      "at": {
+        "tx": 27,
+        "ty": 16
+      },
+      "trigger": "step_on",
+      "to_map": "vesper_crossroads",
+      "to": {
+        "tx": 2,
+        "ty": 9
+      },
+      "facing": "right",
+      "transition": "fade"
     }
   ],
   "triggers": [
@@ -2368,6 +2383,16 @@
       },
       "activation": "interact",
       "ref": "sign.tinderwick_dock"
+    },
+    {
+      "id": "sign_lanternway",
+      "kind": "sign",
+      "at": {
+        "tx": 21,
+        "ty": 15
+      },
+      "activation": "interact",
+      "ref": "sign.tinderwick_lanternway"
     }
   ],
   "encounters": [
@@ -2419,6 +2444,30 @@
       "sprite": "wren",
       "movement": "wander",
       "dialogue_ref": "npc.wren_intro"
+    },
+    {
+      "id": "fair_piper",
+      "at": {
+        "tx": 16,
+        "ty": 9
+      },
+      "facing": "down",
+      "sprite": "npc_shopkeeper",
+      "movement": "look_around",
+      "dialogue_ref": "npc.fair_piper",
+      "requires_flag": "gleam:ember"
+    },
+    {
+      "id": "fair_kid",
+      "at": {
+        "tx": 11,
+        "ty": 9
+      },
+      "facing": "up",
+      "sprite": "npc_child",
+      "movement": "wander",
+      "dialogue_ref": "npc.fair_kid",
+      "requires_flag": "gleam:ember"
     }
   ],
   "gates": [],

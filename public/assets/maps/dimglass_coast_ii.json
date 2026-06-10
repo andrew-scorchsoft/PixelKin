@@ -14,7 +14,7 @@
       "tile_height": 16,
       "first_gid": 1,
       "columns": 12,
-      "tile_count": 143
+      "tile_count": 152
     }
   ],
   "layers": [
@@ -2104,6 +2104,30 @@
       "sprite": "npc_mentor",
       "movement": "look_around",
       "dialogue_ref": "npc.flats_sky_watcher"
+    },
+    {
+      "id": "cache_balm",
+      "at": {
+        "tx": 11,
+        "ty": 9
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_flats_balm",
+      "hidden_when_flag": "flag:picked_flats_balm"
+    },
+    {
+      "id": "cache_lamp",
+      "at": {
+        "tx": 5,
+        "ty": 16
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_flats_lamp",
+      "hidden_when_flag": "flag:picked_flats_lamp"
     }
   ],
   "gates": [

@@ -35,6 +35,9 @@ export const DIALOGUE: DialogueRegistry = {
   'sign.tinderwick_mentor': [
     { text: 'The lit path runs north to the coast. South, the sea sleeps under the Long Dusk.' },
   ],
+  'sign.tinderwick_lanternway': [
+    { text: 'EAST: THE LANTERNWAY\nEvery lit road in Vesperholm meets at the Vesper Crossroads. Keep to the lamps.' },
+  ],
 
   // --- Apprentice's house interior ---
   'sign.house_shelf': [
@@ -48,10 +51,10 @@ export const DIALOGUE: DialogueRegistry = {
   'sign.tinderwick_shop_wares': [
     { text: 'TINDERWICK GENERAL STORE\nLamp oil, salve, spare wicks — all a Wayfarer needs for the dark road.' },
   ],
+  // The plain keeper — appears once the kit script has run (flag:tinderwick_kit).
   'npc.tinderwick_shopkeeper': [
-    { speaker: 'SHOPKEEPER', text: 'Welcome in, out of the dusk. Stocking up for your Wayfaring, are you?' },
-    { speaker: 'SHOPKEEPER', text: 'Lamp oil keeps the vesperlamp bright; a salve mends a tired kin. Take what you need — the road north is long.' },
-    { speaker: 'SHOPKEEPER', text: '(The counter is being restocked — wares open up properly once the shop system is wired.)' },
+    { speaker: 'SHOPKEEPER', text: 'How is the kit holding up? A lamp catches a kin; the balm mends one. Use them well.' },
+    { speaker: 'SHOPKEEPER', text: 'Next trade-cart comes down the Lanternway soon. Until then, the verge grass is generous to a careful Wayfarer.' },
   ],
 
   // --- Tinderwick Lumenary (interior) ---
@@ -60,6 +63,22 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   'npc.brisa_tallow': [
     { speaker: 'BRISA TALLOW', text: 'Mind the aisle, dear — step up to the altar when your kin is ready, and we shall light the sky together.' },
+  ],
+  // Brisa's "not yet" — the bond-test waits until the player has caught a wild kin
+  // (the catch-first soft gate; blocked_ref on the lumenary_battle trigger).
+  'npc.brisa_not_ready': [
+    { speaker: 'BRISA TALLOW', text: 'Eager, dear — I do like that. But a Wayfaring is walked with friends you CHOOSE, not only the one you were given.' },
+    { speaker: 'BRISA TALLOW', text: 'Go catch a wild kin in the verge by the north gate — the grass is generous tonight. Then come light the sky with me.' },
+  ],
+  // Lantern-fair! Festival NPCs appear in the square once the Ember Gleam is lit
+  // (requires_flag 'gleam:ember') — Arc E: a Gleam is belonging, not conquest.
+  'npc.fair_piper': [
+    { speaker: 'FAIR PIPER', text: 'Hear the square tonight! Brisa rang the fair-bell the moment the Ember stood back up in the sky.' },
+    { speaker: 'FAIR PIPER', text: 'Your doing, was it? Then the first dance is yours, Wayfarer. The Long Dusk can sit this one out.' },
+  ],
+  'npc.fair_kid': [
+    { speaker: 'LANTERN KID', text: 'Look UP, look up! That one, the warm one — Gran says it went dark before I was even born!' },
+    { speaker: 'LANTERN KID', text: 'When I get my vesperlamp, I am going to relight a WHOLE sky. Maybe two skies.' },
   ],
 
   // --- Dimglass Coast route ---
@@ -116,13 +135,19 @@ export const DIALOGUE: DialogueRegistry = {
   'sign.pearlmoor_harbour': [
     { text: 'THE HARBOUR SHALLOWS\nThe moon-water will not part for the unlit. Earn the Tidecall, and the islets and sea-shrine open to you.' },
   ],
+  'sign.pearlmoor_lanternway': [
+    { text: 'WEST: THE LANTERNWAY\nThe lit road to the Vesper Crossroads, where every way in Vesperholm meets.' },
+  ],
+  'sign.pearlmoor_to_fen': [
+    { text: 'EAST: SALTREACH FEN\nThe fen-road sleeps unlit. When the southern crown stands whole, the east wakes.' },
+  ],
   'sign.pearlmoor_shop': [
     { text: 'PEARLMOOR CHANDLERY\nNets, oil, salve, and tide-charms for the crossing. Step in out of the spray.' },
   ],
+  // The plain chandler — appears once the crossing-kit has been given.
   'npc.pearlmoor_shopkeeper': [
-    { speaker: 'CHANDLER', text: 'Welcome in off the boards. Restocking before you face Reyl, are you?' },
-    { speaker: 'CHANDLER', text: "Bring a warm partner — an Ember or a leafy one. Reyl's whole crew runs Tide, and the triangle favours the prepared." },
-    { speaker: 'CHANDLER', text: '(The counter is being restocked — wares open up properly once the shop system is wired.)' },
+    { speaker: 'CHANDLER', text: "Bright lamps hold their catch — worth it for the harbour kin. Reyl's whole crew runs Tide; the triangle favours the prepared." },
+    { speaker: 'CHANDLER', text: 'Once you hold the Tidecall, mind you walk the shallows. The sea keeps gifts for those who can cross.' },
   ],
   'npc.reyl_wash': [
     { speaker: 'REYL WASH', text: 'Step up to the sea-altar when your bond is ready, Wayfarer. The Tide does not hurry, and neither shall we.' },
@@ -134,6 +159,39 @@ export const DIALOGUE: DialogueRegistry = {
   'npc.pearlmoor_fisher': [
     { speaker: 'FISHER', text: 'Tide-blessing tonight! We string the buoys, sing the old going-out song, and ask the sea to bring our lights home.' },
     { speaker: 'FISHER', text: 'Reyl tends the Lumenary up the boardwalk — tallest hall on the quay, you cannot miss its moon-lamp.' },
+  ],
+  // Tide-blessing festival NPCs — appear on the quay once 'gleam:tide' is lit.
+  'npc.blessing_elder': [
+    { speaker: 'QUAY ELDER', text: 'The Tide stands up over the water again. Sixty years I waited to see the going-out song sung under it.' },
+    { speaker: 'QUAY ELDER', text: 'Tides go out so they can come back. Reyl always says it. Tonight, child, you brought one back.' },
+  ],
+  'npc.blessing_kid': [
+    { speaker: 'NET-MENDER', text: 'The shallows are ANSWERING! Watch — every buoy lights when the moon-water moves. The old folk are crying. Happy crying!' },
+    { speaker: 'NET-MENDER', text: 'They say the Wayfarer who relit it can walk the harbour water now. Gullcry Rock, the sea-shrine, all of it. Imagine!' },
+  ],
+
+  // --- Dimglass Coast: the witness (appears after flag:dusk_begins, B1) -------
+  'npc.dimglass_witness': [
+    { speaker: 'OLD LAMPLIGHTER', text: 'You stood under it too, did you. One breath it was there — the next, a hole in the sky shaped like a star.' },
+    { speaker: 'OLD LAMPLIGHTER', text: 'Third one this season, south of here. Towns gone quiet, lamps unlit... Walk careful, young one. And walk LIT.' },
+  ],
+
+  // --- Gullcry Rock (Tidecall spur — the backtrack payoff) --------------------
+  'sign.gullcry_rock': [
+    { text: 'GULLCRY ROCK\nThe sea-birds kept this light when no one else could reach it. Tread kindly — the harbour-lights nest in the spray.' },
+  ],
+
+  // --- Vesper Crossroads (the Lanternway hub) ---------------------------------
+  'sign.crossroads': [
+    { text: 'VESPER CROSSROADS\nAll the Lanternway meets here. SOUTH-WEST: Tinderwick. SOUTH-EAST: Pearlmoor Quay. The other roads sleep, unlit.' },
+  ],
+  'sign.crossroads_spire': [
+    { text: 'The inward road. Eight braziers stand cold around its gate — one for each constellation. The mountain waits.' },
+  ],
+  'npc.lanternway_keeper': [
+    { speaker: 'WAYKEEPER', text: 'Every road in Vesperholm touches this stone sooner or later. I keep the lamps lit on the two that still walk.' },
+    { speaker: 'WAYKEEPER', text: 'When more Gleams stand up in the sky, more roads wake. That is how the Lanternway has always worked.' },
+    { speaker: 'WAYKEEPER', text: 'The inward road? Eight Gleams, Wayfarer. Eight. Do not hurry the dark.' },
   ],
 };
 

@@ -569,6 +569,10 @@ export class BattleScene extends Phaser.Scene {
       if (!this.playerParty.add(c)) this.box.push(caught);
     }
 
+    // The first wild catch is a progression beat (Brisa's bond-test waits for
+    // it) — every catch sets the flag; setting it twice is harmless.
+    if (outcome === 'caught') this.setFlags.push('flag:caught_first_kin');
+
     const result: BattleResult = {
       outcome,
       party: this.playerParty.toData(),

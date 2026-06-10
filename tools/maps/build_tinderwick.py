@@ -97,6 +97,11 @@ path[8 * W + lum_door_r[0]] = 1
 # cottage lane: door (6,16) -> down to the spine. carve a vertical lane.
 mk.vline(path, W, H, cottage_door[0], cottage_door[1] + 1, 18)   # (6, 17..18)
 mk.hline(path, W, H, 18, 6, 14)                                  # join cottage lane to the spine
+# the Lanternway: a lane east below the garden, out to Vesper Crossroads (graph.ts
+# tinderwick <-> vesper_crossroads). Runs under tree_d's crown (walk-under rows).
+mk.hline(path, W, H, 16, 14, W - 1)
+for x in (W - 2, W - 1):                                          # punch the east border
+    tree[16 * W + x] = 0
 
 # ---- base = full grass scatter; terrain layers mesh over it -----------------
 gg = [gid("grass0"), gid("grass1"), gid("grass2"), gid("grass3")]
@@ -170,6 +175,7 @@ sign_tiles = {
     "sign_lumenary": (21, 8),  # right of the Lumenary door, on the plaza street
     "sign_mentor": (12, 11),   # on the spine, by Fenn
     "sign_dock": (15, 18),     # by the shore-bound lane
+    "sign_lanternway": (21, 15),  # beside the east lane, pointing to the Crossroads
 }
 for (x, y) in sign_tiles.values():
     deco[y * W + x] = gid("sign")
@@ -209,6 +215,10 @@ m = {
         {"id": "to_lumenary", "at": {"tx": lum_door[0], "ty": lum_door[1]}, "trigger": "interact",
          "to_map": "tinderwick_lumenary", "to": {"tx": 7, "ty": 9}, "facing": "down",
          "requires_flag": "flag:has_starter", "transition": "door"},
+        # The Lanternway east to Vesper Crossroads (the hub; graph.ts spoke).
+        {"id": "to_crossroads", "at": {"tx": W - 1, "ty": 16}, "trigger": "step_on",
+         "to_map": "vesper_crossroads", "to": {"tx": 2, "ty": 9}, "facing": "right",
+         "transition": "fade"},
     ],
     "triggers": [
         {"id": "intro_mentor", "kind": "cutscene", "at": {"tx": 13, "ty": 11},
@@ -222,6 +232,9 @@ m = {
          "activation": "interact", "ref": "sign.tinderwick_mentor"},
         {"id": "sign_dock", "kind": "sign", "at": {"tx": sign_tiles["sign_dock"][0], "ty": sign_tiles["sign_dock"][1]},
          "activation": "interact", "ref": "sign.tinderwick_dock"},
+        {"id": "sign_lanternway", "kind": "sign",
+         "at": {"tx": sign_tiles["sign_lanternway"][0], "ty": sign_tiles["sign_lanternway"][1]},
+         "activation": "interact", "ref": "sign.tinderwick_lanternway"},
     ],
     "encounters": [
         {"id": "verge_grass", "terrain": "tall_grass", "rect": {"tx": 10, "ty": 2, "w": 6, "h": 3},
@@ -234,7 +247,15 @@ m = {
          "movement": "static", "dialogue_ref": "npc.mentor_intro"},
         # Wren — the rival, a fellow young Wayfarer milling by the garden.
         {"id": "wren", "at": {"tx": 19, "ty": 15}, "facing": "left", "sprite": "wren",
-         "movement": "wander", "dialogue_ref": "npc.wren_intro"}],
+         "movement": "wander", "dialogue_ref": "npc.wren_intro"},
+        # The Lantern-fair (Arc E): festival folk fill the square once the Ember
+        # Gleam stands — the "Gleam = belonging" payoff, pure data via requires_flag.
+        {"id": "fair_piper", "at": {"tx": 16, "ty": 9}, "facing": "down", "sprite": "npc_shopkeeper",
+         "movement": "look_around", "dialogue_ref": "npc.fair_piper",
+         "requires_flag": "gleam:ember"},
+        {"id": "fair_kid", "at": {"tx": 11, "ty": 9}, "facing": "up", "sprite": "npc_child",
+         "movement": "wander", "dialogue_ref": "npc.fair_kid",
+         "requires_flag": "gleam:ember"}],
     "gates": [], "music": "assets/audio/music/tinderwick-a.mp3",
     "_doors": {"shop": shop_door, "lumenary": lum_door, "lumenary_twin": lum_door_r,
                "house": cottage_door},

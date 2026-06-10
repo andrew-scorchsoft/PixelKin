@@ -27,6 +27,13 @@ export const ITEMS: ItemRegistry = {
     category: 'medicine',
     heal: 20,
   },
+  tide_charm: {
+    id: 'tide_charm',
+    name: 'Tide Charm',
+    desc: 'A wave-worn charm lashed to a lamp-frame; the sea trusts it. The surest catch in the South.',
+    category: 'lamp',
+    catch_bonus: 2.0,
+  },
 };
 
 export function getItem(id: string): ItemDef | undefined {

@@ -43,7 +43,7 @@ import { SaveManager } from '@game/systems/save/SaveManager';
 import type { WorldSnapshot } from '@game/data/world/types';
 import { MAP_REGISTRY } from '@game/data/world/maps';
 import { VESPERHOLM_GRAPH } from '@game/data/world/graph';
-import type { AbilityId, Facing, Warp, EventTrigger } from '@game/data/world/types';
+import type { AbilityId, Facing, Warp, EventTrigger, NpcPlacement } from '@game/data/world/types';
 
 export interface WorldSceneData {
   mapId: string;
@@ -219,10 +219,29 @@ export class WorldScene extends Phaser.Scene {
     return { tx: cx, ty: cy };
   }
 
+  private npcVisible(placement: NpcPlacement): boolean {
+    if (placement.requires_flag && !this.flags.get(placement.requires_flag)) return false;
+    if (placement.hidden_when_flag && this.flags.get(placement.hidden_when_flag)) return false;
+    return true;
+  }
+
   private spawnNpcs(): void {
     for (const placement of this.map.def.npcs) {
-      if (placement.requires_flag && !this.flags.get(placement.requires_flag)) continue;
-      if (placement.hidden_when_flag && this.flags.get(placement.hidden_when_flag)) continue;
+      if (this.npcVisible(placement)) this.npcs.push(new Npc(this, placement));
+    }
+  }
+
+  /** Re-evaluate flag-conditional NPCs after flags change (a picked-up item
+   *  cache vanishes immediately; a festival crowd appears without a re-entry). */
+  private refreshNpcs(): void {
+    this.npcs = this.npcs.filter((npc) => {
+      if (this.npcVisible(npc.placement)) return true;
+      npc.destroy();
+      return false;
+    });
+    for (const placement of this.map.def.npcs) {
+      if (!this.npcVisible(placement)) continue;
+      if (this.npcs.some((n) => n.placement === placement)) continue;
       this.npcs.push(new Npc(this, placement));
     }
   }
@@ -252,6 +271,19 @@ export class WorldScene extends Phaser.Scene {
     const npc = this.npcAt(ahead.tx, ahead.ty);
     if (npc) {
       npc.facePoint(this.player.tx, this.player.ty);
+      // An NPC whose dialogue_ref is a script runs it as a cutscene (inn rest,
+      // item caches, festival beats) — NPCs stay pure data either way.
+      if (npc.dialogueRef?.startsWith('script.')) {
+        const steps = getScript(npc.dialogueRef);
+        if (steps) {
+          this.modal = true;
+          const completed = await runCutscene(this.cutsceneContext(), steps);
+          if (completed) void this.persist();
+          this.modal = false;
+          this.refreshNpcs();
+        }
+        return;
+      }
       await this.runDialogue(npc.dialogueRef);
       return;
     }
@@ -278,8 +310,10 @@ export class WorldScene extends Phaser.Scene {
 
   private async handleTrigger(trigger: EventTrigger): Promise<void> {
     if (trigger.requires_flag && !this.flags.get(trigger.requires_flag)) {
-      // If the player actively tried this, tell them it's not ready yet.
-      if (trigger.activation === 'interact') await this.showHint();
+      // If the player actively tried this, tell them it's not ready yet —
+      // with the trigger's own "not yet" dialogue when it has one.
+      if (trigger.blocked_ref) await this.runDialogue(trigger.blocked_ref);
+      else if (trigger.activation === 'interact') await this.showHint();
       return;
     }
     if (trigger.once && this.flags.triggerFired(trigger.id)) return;
@@ -296,6 +330,7 @@ export class WorldScene extends Phaser.Scene {
         void this.persist();
       }
       this.modal = false;
+      this.refreshNpcs();
       return;
     }
 
@@ -327,6 +362,9 @@ export class WorldScene extends Phaser.Scene {
       },
       onGiveItem: (item, count) => {
         this.inventory.items[item] = (this.inventory.items[item] ?? 0) + count;
+      },
+      onHealParty: () => {
+        this.healParty();
       },
       startTrainerBattle: async (trainer: string): Promise<boolean> => {
         const result = await this.startBattle({

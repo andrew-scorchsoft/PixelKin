@@ -191,7 +191,16 @@ m = {
         {"id": "wayfarer_b", "at": {"tx": 9, "ty": 23}, "facing": "left", "sprite": "npc_shopkeeper",
          "movement": "static", "dialogue_ref": "npc.flats_wayfarer_b"},
         {"id": "sky_watcher", "at": {"tx": 12, "ty": 18}, "facing": "up", "sprite": "npc_mentor",
-         "movement": "look_around", "dialogue_ref": "npc.flats_sky_watcher"}],
+         "movement": "look_around", "dialogue_ref": "npc.flats_sky_watcher"},
+        # Item caches on the flats (interact -> pickup script -> vanish by flag).
+        {"id": "cache_balm", "at": {"tx": 11, "ty": 9}, "facing": "down",
+         "sprite": "item_cache", "movement": "static",
+         "dialogue_ref": "script.pickup_flats_balm",
+         "hidden_when_flag": "flag:picked_flats_balm"},
+        {"id": "cache_lamp", "at": {"tx": 5, "ty": 16}, "facing": "down",
+         "sprite": "item_cache", "movement": "static",
+         "dialogue_ref": "script.pickup_flats_lamp",
+         "hidden_when_flag": "flag:picked_flats_lamp"}],
     "gates": [
         # The shallow finger to Gullcry opens with Tidecall — rect kept on PURE water
         # (an AbilityGate force-gates every tile it covers; see CLAUDE.md gotcha).

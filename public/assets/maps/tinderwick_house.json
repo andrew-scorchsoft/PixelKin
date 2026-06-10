@@ -339,6 +339,16 @@
       },
       "activation": "interact",
       "ref": "sign.house_shelf"
+    },
+    {
+      "id": "bed_rest",
+      "kind": "script",
+      "at": {
+        "tx": 9,
+        "ty": 4
+      },
+      "activation": "interact",
+      "ref": "script.home_rest"
     }
   ],
   "encounters": [],

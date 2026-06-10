@@ -106,6 +106,23 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/dimglass-coast-a.mp3',
   },
+  gullcry_rock: {
+    json: 'assets/maps/gullcry_rock.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/dimglass-coast-a.mp3',
+    // open-sea spur: the harbour backdrops carry the same moon-on-water read
+    battle_backdrops: [
+      'assets/backgrounds/battle/pearlmoor-quay-a.webp',
+      'assets/backgrounds/battle/pearlmoor-quay-b.webp',
+    ],
+  },
+  vesper_crossroads: {
+    json: 'assets/maps/vesper_crossroads.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'hub',
+    music: 'assets/audio/music/tinderwick-a.mp3',
+  },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
 };

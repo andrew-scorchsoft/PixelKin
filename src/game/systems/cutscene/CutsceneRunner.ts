@@ -29,6 +29,8 @@ export interface CutsceneContext {
   onGiveItem(item: string, count: number): void;
   /** Run a trainer battle; resolves true if the player won (false aborts the scene). */
   startTrainerBattle?(trainer: string): Promise<boolean>;
+  /** Fully restore the party (the inn-rest / hearthside-heal op). */
+  onHealParty?(): void;
 }
 
 function delay(scene: Phaser.Scene, ms: number): Promise<void> {
@@ -119,6 +121,10 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
     case 'battle':
       // A lost trainer battle aborts the scene (so a defeat never narrates a win).
       if (ctx.startTrainerBattle) return ctx.startTrainerBattle(step.trainer);
+      return true;
+    case 'heal':
+      ctx.onHealParty?.();
+      void ctx.sfx.playVariant('world-heal', ['a', 'b']);
       return true;
     case 'gleam': {
       void ctx.sfx.playVariant('world-gleam', ['a', 'b', 'c']);

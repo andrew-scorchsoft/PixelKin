@@ -95,6 +95,14 @@ mk.vline(path, W, H, inn_door[0], inn_door[1] + 1, 12)
 # connect the promenade down across the quay to the sand jetty head (rows 12->17)
 mk.vline(path, W, H, 13, 12, 17)
 mk.vline(path, W, H, 14, 12, 17)
+# the Lanternway WEST to Vesper Crossroads + the EAST road tease toward Saltreach
+# Fen (East region; inert until authored — the engine no-ops unregistered warps).
+mk.hline(path, W, H, 12, 0, 4)
+mk.hline(path, W, H, 12, 23, W - 1)
+for x in (0, 1, 2):
+    tree[12 * W + x] = 0
+for x in (25, 26, 27):
+    tree[12 * W + x] = 0
 
 # ---- base = full grass scatter; terrain layers mesh over it -----------------
 gg = [gid("grass0"), gid("grass1"), gid("grass2"), gid("grass3")]
@@ -192,6 +200,8 @@ sign_tiles = {
     "sign_lumenary": (15, 7),    # right of the Lumenary door
     "sign_shop": (4, 12),        # left of the shop door, on the promenade
     "sign_harbour": (15, 16),    # by the quay/boardwalk, facing the gated water
+    "sign_lanternway": (2, 11),  # beside the west lane, pointing to the Crossroads
+    "sign_fen": (25, 11),        # beside the east lane, the sleeping Saltreach road
 }
 for (x, y) in sign_tiles.values():
     deco[y * W + x] = gid("sign")
@@ -246,6 +256,14 @@ m = {
         # Inn door — interact on the inn's door-art tile (col 2).
         {"id": "to_inn", "at": {"tx": inn_door[0], "ty": inn_door[1]}, "trigger": "interact",
          "to_map": "pearlmoor_inn", "to": {"tx": 6, "ty": 7}, "facing": "down", "transition": "door"},
+        # The Lanternway west to Vesper Crossroads (the hub; graph.ts spoke).
+        {"id": "to_crossroads", "at": {"tx": 0, "ty": 12}, "trigger": "step_on",
+         "to_map": "vesper_crossroads", "to": {"tx": 17, "ty": 9}, "facing": "left",
+         "transition": "fade"},
+        # East road to Saltreach Fen (East region) — inert tease until authored.
+        {"id": "to_fen", "at": {"tx": W - 1, "ty": 12}, "trigger": "step_on",
+         "to_map": "saltreach_fen_i", "to": {"tx": 2, "ty": 10}, "facing": "right",
+         "transition": "fade"},
     ],
     "triggers": [
         {"id": "sign_welcome", "kind": "sign", "at": {"tx": sign_tiles["sign_welcome"][0], "ty": sign_tiles["sign_welcome"][1]},
@@ -256,6 +274,11 @@ m = {
          "activation": "interact", "ref": "sign.pearlmoor_shop"},
         {"id": "sign_harbour", "kind": "sign", "at": {"tx": sign_tiles["sign_harbour"][0], "ty": sign_tiles["sign_harbour"][1]},
          "activation": "interact", "ref": "sign.pearlmoor_harbour"},
+        {"id": "sign_lanternway", "kind": "sign",
+         "at": {"tx": sign_tiles["sign_lanternway"][0], "ty": sign_tiles["sign_lanternway"][1]},
+         "activation": "interact", "ref": "sign.pearlmoor_lanternway"},
+        {"id": "sign_fen", "kind": "sign", "at": {"tx": sign_tiles["sign_fen"][0], "ty": sign_tiles["sign_fen"][1]},
+         "activation": "interact", "ref": "sign.pearlmoor_to_fen"},
     ],
     # Tide port (walkthrough/01-south): grass-fringe Tide kin lv 8-11; the Tidecall-gated
     # harbour water carries the rarer Tide reads lv 10-12. Every kin_id is in the creatures
@@ -281,6 +304,14 @@ m = {
         # Townsfolk for Tide-blessing flavour, beside the promenade (not mid-field).
         {"id": "fisher", "at": {"tx": 16, "ty": 13}, "facing": "left", "sprite": "wren",
          "movement": "look_around", "dialogue_ref": "npc.pearlmoor_fisher"},
+        # The Tide-blessing festival (Arc E): once 'gleam:tide' stands, the quay
+        # fills — the second "Gleam = belonging" payoff, pure data.
+        {"id": "blessing_elder", "at": {"tx": 10, "ty": 13}, "facing": "down",
+         "sprite": "npc_shopkeeper", "movement": "static",
+         "dialogue_ref": "npc.blessing_elder", "requires_flag": "gleam:tide"},
+        {"id": "blessing_kid", "at": {"tx": 18, "ty": 13}, "facing": "down",
+         "sprite": "npc_child", "movement": "wander",
+         "dialogue_ref": "npc.blessing_kid", "requires_flag": "gleam:tide"},
     ],
     # AbilityGate (Tidecall, make_passable) over the open harbour water — split W/E of the
     # central arrival jetty (cols 13-14) so the always-walkable jetty is never gated.

@@ -221,7 +221,22 @@ m = {
         # The rival Wren (A2 — the first friendly trainer battle fires from the spine
         # tile beside them; see the wren_first_battle trigger + script.wren_dimglass).
         {"id": "wren", "at": {"tx": 8, "ty": 11}, "facing": "right", "sprite": "wren",
-         "movement": "static", "dialogue_ref": "npc.dimglass_wayfarer"}],
+         "movement": "static", "dialogue_ref": "npc.dimglass_wayfarer"},
+        # B1 witness — an old lamplighter appears near the beat once dusk_begins has
+        # fired, so the winking-out lands on a person, not just narration.
+        {"id": "witness", "at": {"tx": beside_spine(27, +2)[0], "ty": 27}, "facing": "up",
+         "sprite": "npc_shopkeeper", "movement": "look_around",
+         "dialogue_ref": "npc.dimglass_witness", "requires_flag": "flag:dusk_begins"},
+        # Route item caches (sprite 'item_cache'): interact runs the pickup script,
+        # then hidden_when_flag removes the bundle — the classic ground item.
+        {"id": "cache_balm", "at": {"tx": beside_spine(18, +2)[0], "ty": 18}, "facing": "down",
+         "sprite": "item_cache", "movement": "static",
+         "dialogue_ref": "script.pickup_dimglass_balm",
+         "hidden_when_flag": "flag:picked_dimglass_balm"},
+        {"id": "cache_lamps", "at": {"tx": beside_spine(24, -1)[0], "ty": 24}, "facing": "down",
+         "sprite": "item_cache", "movement": "static",
+         "dialogue_ref": "script.pickup_dimglass_lamps",
+         "hidden_when_flag": "flag:picked_dimglass_lamps"}],
     "gates": [
         {"id": "tide_gate", "ability": "tidecall", "effect": "make_passable",
          "rect": {"tx": 14, "ty": 5, "w": 2, "h": 4}}],

@@ -92,6 +92,9 @@ export interface EventTrigger {
   ref: string; // e.g. 'sign.tinderwick_dock', 'script.intro_mentor'
   once?: boolean; // fire at most once (tracked via a flag)
   requires_flag?: WorldFlag;
+  /** Dialogue shown when requires_flag is unmet (a diegetic "not yet" beat
+   *  instead of the generic hint), e.g. Brisa asking you to catch a kin first. */
+  blocked_ref?: string;
   sets_flags?: WorldFlag[]; // flags set when this fires (progression)
 }
 

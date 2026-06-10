@@ -477,7 +477,8 @@
       "activation": "step_on",
       "ref": "script.lumenary_tinderwick",
       "once": true,
-      "requires_flag": "flag:has_starter"
+      "requires_flag": "flag:caught_first_kin",
+      "blocked_ref": "npc.brisa_not_ready"
     },
     {
       "id": "sign_lumenary",

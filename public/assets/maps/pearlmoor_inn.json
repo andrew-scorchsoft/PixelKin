@@ -438,7 +438,7 @@
       "facing": "down",
       "sprite": "npc_shopkeeper",
       "movement": "static",
-      "dialogue_ref": "npc.pearlmoor_innkeep"
+      "dialogue_ref": "script.inn_rest"
     },
     {
       "id": "fisher",

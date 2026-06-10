@@ -88,6 +88,74 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'face', actor: 'wayfarer_b', facing: 'left' },
     { op: 'battle', trainer: 'flats_wayfarer_b' },
   ],
+
+  // --- Rest points (the genre's heal loop, diegetic) -------------------------
+  // The inn: a paid-in-kindness full rest. The innkeep NPC's dialogue_ref runs this.
+  'script.inn_rest': [
+    { op: 'say', speaker: 'INNKEEP', text: 'Rest your feet, Wayfarer — and your kin. The hearth is warm and the boards are dry.' },
+    { op: 'fade', dir: 'out' },
+    { op: 'wait', ms: 700 },
+    { op: 'heal' },
+    { op: 'fade', dir: 'in' },
+    { op: 'say', speaker: 'INNKEEP', text: 'There. Lamps trimmed, kin bright-eyed. The dusk can wait on you a while yet.' },
+  ],
+  // Home: the bed in the apprentice's house. Free, always — home is home.
+  'script.home_rest': [
+    { op: 'say', text: 'Your own bed, under the old quilt. The lamp hums low...' },
+    { op: 'fade', dir: 'out' },
+    { op: 'wait', ms: 700 },
+    { op: 'heal' },
+    { op: 'fade', dir: 'in' },
+    { op: 'say', text: 'You wake warm. Your kin are rested and bright.' },
+  ],
+
+  // --- Wayfarer's kits (the shops, until coin is a thing) --------------------
+  // Each town keeper hands a starter bundle ONCE: the kit NPC swaps for the plain
+  // keeper via flags (hidden_when_flag / requires_flag pair on the placements).
+  'script.shop_kit_tinderwick': [
+    { op: 'say', speaker: 'SHOPKEEPER', text: 'Welcome in, out of the dusk. Off on your Wayfaring? Then the first kit is on the house — town custom.' },
+    { op: 'giveItem', item: 'vesperlamp', count: 2 },
+    { op: 'giveItem', item: 'tallow_balm', count: 2 },
+    { op: 'say', speaker: 'SHOPKEEPER', text: 'Two spare lamps and a pot of tallow balm. Lamp catches a kin; balm mends one. The road north is long.' },
+    { op: 'setFlag', flag: 'flag:tinderwick_kit' },
+  ],
+  'script.shop_kit_pearlmoor': [
+    { op: 'say', speaker: 'CHANDLER', text: 'Welcome in off the boards. Facing Reyl, are you? Take the crossing-kit — the sea is kinder to the prepared.' },
+    { op: 'giveItem', item: 'bright_lamp', count: 2 },
+    { op: 'giveItem', item: 'tallow_balm', count: 2 },
+    { op: 'say', speaker: 'CHANDLER', text: 'Bright lamps hold a catch better than plain ones. And mind the triangle — his whole crew runs Tide.' },
+    { op: 'setFlag', flag: 'flag:pearlmoor_kit' },
+  ],
+
+  // --- Route item caches (sprite 'item_cache' NPCs; vanish via hidden_when_flag)
+  'script.pickup_dimglass_balm': [
+    { op: 'giveItem', item: 'tallow_balm', count: 1 },
+    { op: 'say', text: 'A waxed bundle, left for whoever needs it. Found a TALLOW BALM!' },
+    { op: 'setFlag', flag: 'flag:picked_dimglass_balm' },
+  ],
+  'script.pickup_dimglass_lamps': [
+    { op: 'giveItem', item: 'vesperlamp', count: 2 },
+    { op: 'say', text: "A wayfarer's drop-cache under the lamp post. Found 2 VESPERLAMPS!" },
+    { op: 'setFlag', flag: 'flag:picked_dimglass_lamps' },
+  ],
+  'script.pickup_flats_balm': [
+    { op: 'giveItem', item: 'tallow_balm', count: 2 },
+    { op: 'say', text: 'Sea-wrapped and sound. Found 2 TALLOW BALMS!' },
+    { op: 'setFlag', flag: 'flag:picked_flats_balm' },
+  ],
+  'script.pickup_flats_lamp': [
+    { op: 'giveItem', item: 'bright_lamp', count: 1 },
+    { op: 'say', text: 'Tucked dry in the dune grass. Found a BRIGHT LAMP!' },
+    { op: 'setFlag', flag: 'flag:picked_flats_lamp' },
+  ],
+  // Gullcry Rock's prize: the Tide Charm (a sea-blessed lamp; see items.ts).
+  'script.pickup_gullcry_charm': [
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'giveItem', item: 'tide_charm', count: 1 },
+    { op: 'say', text: 'Lashed to the highest stone, wave-worn and humming. Found the TIDE CHARM!' },
+    { op: 'say', text: 'It beats softly in your hand, like a held breath of the sea.' },
+    { op: 'setFlag', flag: 'flag:picked_gullcry_charm' },
+  ],
 };
 
 export function getScript(ref: string): import('./types').CutsceneStep[] | undefined {

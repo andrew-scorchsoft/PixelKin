@@ -14,7 +14,7 @@
       "tile_height": 16,
       "first_gid": 1,
       "columns": 12,
-      "tile_count": 126
+      "tile_count": 152
     }
   ],
   "layers": [
@@ -331,8 +331,8 @@
         1,
         48,
         50,
-        51,
-        54,
+        56,
+        58,
         1,
         2,
         1,
@@ -357,13 +357,13 @@
         1,
         2,
         1,
-        48,
-        50,
-        51,
-        109,
-        47,
-        1,
-        9,
+        55,
+        57,
+        24,
+        24,
+        24,
+        24,
+        11,
         10,
         11,
         11,
@@ -382,14 +382,14 @@
         10,
         10,
         11,
-        12,
-        2,
-        43,
-        108,
-        52,
-        51,
-        51,
-        109,
+        11,
+        24,
+        24,
+        24,
+        24,
+        45,
+        46,
+        46,
         47,
         20,
         21,
@@ -412,9 +412,9 @@
         21,
         23,
         43,
-        108,
-        51,
-        52,
+        45,
+        44,
+        46,
         56,
         57,
         56,
@@ -1012,7 +1012,7 @@
         0,
         0,
         0,
-        0,
+        117,
         0,
         0,
         0,
@@ -1035,7 +1035,7 @@
         0,
         0,
         0,
-        125,
+        117,
         0,
         0,
         0,
@@ -1100,7 +1100,9 @@
         0,
         0,
         0,
+        125,
         8,
+        0,
         0,
         0,
         0,
@@ -1123,7 +1125,6 @@
         0,
         0,
         0,
-        0,
         6,
         0,
         0,
@@ -1134,12 +1135,11 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
         8,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0,
         0,
@@ -2333,6 +2333,36 @@
       },
       "facing": "down",
       "transition": "door"
+    },
+    {
+      "id": "to_crossroads",
+      "at": {
+        "tx": 0,
+        "ty": 12
+      },
+      "trigger": "step_on",
+      "to_map": "vesper_crossroads",
+      "to": {
+        "tx": 17,
+        "ty": 9
+      },
+      "facing": "left",
+      "transition": "fade"
+    },
+    {
+      "id": "to_fen",
+      "at": {
+        "tx": 27,
+        "ty": 12
+      },
+      "trigger": "step_on",
+      "to_map": "saltreach_fen_i",
+      "to": {
+        "tx": 2,
+        "ty": 10
+      },
+      "facing": "right",
+      "transition": "fade"
     }
   ],
   "triggers": [
@@ -2375,6 +2405,26 @@
       },
       "activation": "interact",
       "ref": "sign.pearlmoor_harbour"
+    },
+    {
+      "id": "sign_lanternway",
+      "kind": "sign",
+      "at": {
+        "tx": 2,
+        "ty": 11
+      },
+      "activation": "interact",
+      "ref": "sign.pearlmoor_lanternway"
+    },
+    {
+      "id": "sign_fen",
+      "kind": "sign",
+      "at": {
+        "tx": 25,
+        "ty": 11
+      },
+      "activation": "interact",
+      "ref": "sign.pearlmoor_to_fen"
     }
   ],
   "encounters": [
@@ -2479,6 +2529,30 @@
       "sprite": "wren",
       "movement": "look_around",
       "dialogue_ref": "npc.pearlmoor_fisher"
+    },
+    {
+      "id": "blessing_elder",
+      "at": {
+        "tx": 10,
+        "ty": 13
+      },
+      "facing": "down",
+      "sprite": "npc_shopkeeper",
+      "movement": "static",
+      "dialogue_ref": "npc.blessing_elder",
+      "requires_flag": "gleam:tide"
+    },
+    {
+      "id": "blessing_kid",
+      "at": {
+        "tx": 18,
+        "ty": 13
+      },
+      "facing": "down",
+      "sprite": "npc_child",
+      "movement": "wander",
+      "dialogue_ref": "npc.blessing_kid",
+      "requires_flag": "gleam:tide"
     }
   ],
   "gates": [
