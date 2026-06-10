@@ -34,7 +34,8 @@ live" sections below map them) so you're editing canon, not re-inventing it.
 ```bash
 npm install            # install JS deps (first time)
 npm run dev            # Vite dev server at http://localhost:5173
-npm run build          # typecheck + production build to dist/
+npm run build          # typecheck + production build to dist/ (full-fidelity audio + sourcemap)
+npm run build:dist     # build, then shrink dist/ audio to 64k mono + drop sourcemaps — the upload-ready bundle (needs ffmpeg)
 npm run preview        # serve the production build
 npm run typecheck      # tsc --noEmit
 ```
