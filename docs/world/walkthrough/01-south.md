@@ -86,9 +86,10 @@ spawn at house door `{tx:8,ty:16}`, exit: north edge to `dimglass_coast` · gate
      the opening warmth; nothing gated.
    - **Town signs (square / dock / Lumenary / mentor)** — `[MISSABLE]` the "interact" lessons;
      the dock sign teases the sea-shallows ("the buoys only answer a lit lamp").
-   - **Lanternway spoke to Vesper Crossroads** — `[LATER]` a `to_crossroads` exit exists in the
-     graph; the hub is discovered as the South fast-travel anchor but its inward roads need
-     `flag:hub_unlocked` (West/endgame). Tag as a tease only.
+   - **Lanternway spoke to Vesper Crossroads** — **[BUILT]** the `to_crossroads` lane leaves
+     Tinderwick's east edge (and Pearlmoor's west); the hub (`vesper_crossroads`) is live with
+     the Waykeeper, the Waystone plaza and signed sleeping roads. Its inward Spire road needs
+     `flag:hub_unlocked` (West/endgame) and the north marsh road is an inert tease.
 
 5. **Don't-miss callouts**
    - **Catch your first kin in the verge before challenging Brisa** — the soft-gate is the
@@ -105,8 +106,10 @@ spawn at house door `{tx:8,ty:16}`, exit: north edge to `dimglass_coast` · gate
    - **Triggers / flags:** `intro_mentor` `cutscene` `step_on {tx:12,ty:10}`, `once:true`,
      `ref:script.intro_mentor`, **`sets_flags:[flag:has_vesperlamp, flag:has_starter]`**.
      `lumenary_battle` `cutscene` `interact {tx:18,ty:8}`, `ref:script.lumenary_tinderwick`,
-     `once:true`, **`requires_flag:flag:has_starter`** — and must additionally require the
-     "caught a wild kin" soft-gate flag (spine §4) before Brisa fights; **earns `gleam:ember`**.
+     `once:true` — **[BUILT]** the soft-gate is enforced: the trigger carries
+     **`requires_flag:flag:caught_first_kin`** (set by the engine on ANY successful catch) with
+     **`blocked_ref:npc.brisa_not_ready`** so Brisa herself sends the player to the verge;
+     **earns `gleam:ember`**.
      Signs: `sign_shop {6,9}`, `sign_lumenary {21,9}`, `sign_mentor {13,11}`, `sign_dock {9,18}`.
    - **Encounters:** `verge_grass` · `tall_grass` · `rect{tx:12,ty:2,w:6,h:2}` ·
      `encounter_rate 0.07` · table kin_id **16** (w60, lv2–4) + **10** (w40, lv2–3) — Ember /
@@ -157,9 +160,12 @@ spawn at house door `{tx:8,ty:16}`, exit: north edge to `dimglass_coast` · gate
    gated buoy-water and cavern-mouth, deliberately unsolvable yet).
 
 4. **Optional content**
-   - **Gullcry Rock** (spur, off Dimglass **II**) — `[LATER]` needs **Tidecall** (earned at
-     Pearlmoor this region). Visible from I as the offshore buoy line; reward: rare sea-bird
-     kin + a Tide charm. Becomes a same-region backtrack the moment Tidecall is in hand.
+   - **Gullcry Rock** (spur, off Dimglass **II**) — **[BUILT]** needs **Tidecall** (earned at
+     Pearlmoor this region). Visible from I as the offshore buoy line; reward: the rare
+     **harbour-light kin (#29 Glostern)** in the surf + the **Tide Charm** (the South's best
+     lamp, catch ×2.0) at the high stone. *(The old "sea-bird kin" note predates the locked
+     dex, which has no Tide bird — Glostern's drifting harbour-lantern read carries the same
+     "the rock keeps a light" promise.)* A same-region backtrack the moment Tidecall lands.
    - **Tideglass Cavern** (landmark, off Dimglass **II**) — `[LATER]` needs **Glimmerstep**
      (earned at Lowleaf, *East*). The dark cliff-mouth `to_tideglass` warp; signature rare
      water kin. A long-game backtrack — tag and move on.
@@ -224,8 +230,9 @@ boundary is ungated; the *spurs* off it are gift-gated) · Gleam: — · rec. le
    can't yet open and learns to remember it.
 
 4. **Optional content**
-   - **Gullcry Rock** (spur) — `[LATER]` **Tidecall** (this region, at Pearlmoor): rare sea-bird
-     kin + Tide charm. **Becomes accessible the moment you earn Tidecall — backtrack here.**
+   - **Gullcry Rock** (spur) — **[BUILT]** **Tidecall** (this region, at Pearlmoor): the rare
+     harbour-light kin (#29 Glostern) + the Tide Charm. **Becomes accessible the moment you
+     earn Tidecall — backtrack here.**
    - **Tideglass Cavern** (landmark) — `[LATER]` **Glimmerstep** (East): signature rare water
      kin in a micro-dungeon. Long-game return. **Also the canonical Lamplight exemplar** (spine
      §5): first explored at **Warmlight**, the cavern keeps a deeper nook + a hidden item beyond
@@ -265,14 +272,17 @@ per spine §0 rule 1) · **Gleam: Tide** (Reyl Wash, ace ~16) + **Tidecall** · 
       masts. The cosiest, saltiest town music in South.
    2. **The Lumenary is reachable on foot** (no Tidecall needed — §0 rule 1). The town's own
       *islets and sea-shrine* are the Tidecall-gated content, teased from the quay.
-   3. **Heal, restock, build the party to ~12.** Bring an Ember or grassy partner — Reyl's team
+   3. **Heal, restock, build the party to ~12.** **[BUILT]** the inn's keeper rests the party
+      to full (`script.inn_rest` — the genre's heal loop, diegetic), and the chandlery hands a
+      one-time crossing-kit (bright lamps + balms; coin comes later). Bring an Ember or grassy
+      partner — Reyl's team
       is Tide; the triangle matters.
    4. **Face Lampwarden Reyl Wash (Tide, ace ~16).** Winning earns **Gleam: Tide** and the
       **Tidecall** Lantern Gift, wrapped in the **Tide-blessing** festival (Arc E).
    5. **`flag:crown_south` sets** (engine-set once both Ember + Tide are held) — the South
       quadrant's two constellations are relit; the Vesper Crossroads' south approach is primed.
    6. **Now-accessible callout:** with **Tidecall** in hand, **backtrack to Dimglass II →
-      Gullcry Rock** (rare sea-bird kin + Tide charm), cross Pearlmoor's own shallow islets to
+      Gullcry Rock** (the rare harbour-light kin + Tide Charm), cross Pearlmoor's own shallow islets to
       the sea-shrine, and the East road's **Saltreach Fen I→II** boundary is now passable.
    7. **The 12→16 on-ramp.** Pearlmoor is entered at ~12 but South exits at ~16 (spine §4): the
       ~4 levels are meant to be earned *here*, in Pearlmoor's Tidecall islet/sea-shrine loop and
@@ -296,15 +306,16 @@ per spine §0 rule 1) · **Gleam: Tide** (Reyl Wash, ace ~16) + **Tidecall** · 
 4. **Optional content**
    - **Pearlmoor sea-shrine / islets** — `[MUST-DO]` once Tidecall lands: the town's own
      Tidecall content, a short rewarding loop and the cleanest demonstration of the new Gift.
-   - **Gullcry Rock backtrack** (Dimglass II spur) — `[MUST-DO]` rare sea-bird kin + Tide charm,
-     now reachable; the region's signature "the map reopened" payoff.
+   - **Gullcry Rock backtrack** (Dimglass II spur) — `[MUST-DO]` **[BUILT]** the rare
+     harbour-light kin (Glostern) + the Tide Charm, now reachable; the region's signature
+     "the map reopened" payoff.
    - **Lanternway → Vesper Crossroads** — `[MISSABLE]` discover the hub as South's fast-travel
      anchor; its inward Spire roads remain `[LATER]` (`flag:hub_unlocked`, West/endgame).
 
 5. **Don't-miss callouts**
    - **Run the Gullcry Rock backtrack before leaving South** — it is the clearest lesson the
-     game ever teaches about *why you keep a list of teased spots*, and the Tide charm + sea-bird
-     kin are a tidy reward right when the party wants depth.
+     game ever teaches about *why you keep a list of teased spots*, and the Tide Charm +
+     harbour-light kin are a tidy reward right when the party wants depth.
    - **The Tide-blessing festival** — pair it with the Lantern-fair as South's two warm
      set-pieces; together they establish "Gleam = belonging" before the stakes harden in East.
 

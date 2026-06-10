@@ -389,25 +389,28 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `python3 tools/maps/build_shared_overworld.py` (REUSE-first: promotes the proven Tinderwick
   families, adds variants + scatter decor, reuses Dimglass cliff/buoy/dock). Map builders use
   `tools/maps/mapkit.py` (`shared_tileset_ref()`, `gid()`, grid/scatter helpers, `finalize()`).
-- **New area? Copy `tools/maps/build_tinderwick.py`, `build_dimglass.py` or
-  `build_dimglass_ii.py` (the worked examples), and compose to `docs/world/level-design.md`
+- **Terrain tiles are DRAWN in code, never AI-generated (the GBA-register standard).**
+  `tools/maps/gbaforge.py` draws every shared terrain family — flat dusk-palette base +
+  deliberate repeated motifs (grass ticks, dot clusters, strata, blade-fans); variants are
+  alternative motif *layouts*, never jitter noise (noise = the old "AI static" look).
+  `build_shared_overworld.py` applies it as a name-keyed override with **stable tile order**
+  (existing maps update for free; new tiles are APPENDED), and **skips all seam passes on
+  drawn tiles** (seamless by construction; the passes would smear their 1px borders).
+  Transition families are **context-correct**: `path`→grass, `trail`→sand (dune lanes),
+  `pond`=water-over-grass, `water`=sand shore — painting one over the wrong ground rings it
+  with the wrong colour; append a new family via `gbaforge.overlay_tile` instead. Image-gen
+  is for OBJECTS (buildings, crown trees, props) only. A free-standing `cliff` mass mid-field
+  reads as a wall slab — use a boulder cluster for an outcrop; keep cliff for map-edge
+  walls/terraces. Full rule: `docs/world/level-design.md` §11 rule 8.
+- **New area? Copy `tools/maps/build_tinderwick.py`, `build_dimglass.py`, `build_gullcry.py`
+  or `build_crossroads.py` (the worked examples), and compose to `docs/world/level-design.md`
   §11 (the binding composition standard: no flat voids, deep organic borders + crown trees,
   one elevation accent, blob shores/patches, building aprons + a fenced garden, hard-edged
-  tuft tall-grass, trainer beats on routes).** Tile-quality passes are deterministic first:
-  `tools/maps/tileforge.py` (texture/tuft/cliff-wall/deglow/inner-corner/prop helpers,
-  applied by `build_shared_overworld.py`) — reach for image-gen only for genuinely new art. Every surface is an autotile **body**; fills = continuous flat-lit texture →
-  *whole-image* downscale (**never "a tile"** — the model bakes a vignette+rim that becomes the
-  grid; measured rim 73→2 when you ask for a large FLAT-lit field instead); **FLAT** transitions
-  (path/tall-grass) via `tools/autotile/composite_overlay.py`, **ORGANIC** ones AI-per-cell.
-  De-repeat edges/fills with **variants** (2–3 tiles sharing `terrain`+`autotile`; the autotiler
-  scatters them per cell). **Exception: tall grass is hard-edged fill-only by design** (classic
-  encounter-tile convention; `tallgrass_tuft`) — and every fill variant must carry the
-  `encounter_terrain` tag or scattered cells silently stop triggering encounters. Strip the baked rim with the role-aware **`deborder`** in
-  `build_shared_overworld.py` (keeps the transition side, seams the tiling axis) — it supersedes
-  `make_tileable --axis` for autotile tiles (that only averaged, leaving the rim as a grid line).
-  Off-map = continuation. Finish via `mk.finalize()`: `expand.mjs` → strip terrain → `render_map`
-  + `validate_map` (must PASS). For tiles prefer `--provider google` (Nano); the OpenAI tile path
-  is slow/fragile today (opaque+chroma+creature-preamble+retries). Recipe: SKILL.md §A.
+  tuft tall-grass, trainer beats on routes, drawn structured terrain).** Tall grass stays
+  hard-edged fill-only (classic encounter-tile convention) — and every fill variant must carry
+  the `encounter_terrain` tag or scattered cells silently stop triggering encounters. Off-map
+  = continuation. Finish via `mk.finalize()`: `expand.mjs` → strip terrain → `render_map` +
+  `validate_map` (must PASS). Recipe: SKILL.md §A.
 - **The device shell screen is locked to 3:2.** `shells.css` sizes `#game-root` to the
   largest 3:2 box that fits, so `Scale.FIT` never pillarboxes (no black side bars). The
   `plain`/`overlay` shells are intentionally full-bleed and still letterbox.
@@ -468,6 +471,16 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   3–6 (+ Wren's friendly battle A2 + the B1 `dusk_begins` beat) → Dimglass II wilds 8–10 + two
   route-trainer beats → Reyl 12–16. Route trainer beat = static NPC + `step_on` cutscene tile
   on a choked lane (`script.flats_trainer_*` pattern); next warden's ace ≈ previous +5–6.
+- **The first-hour kit is wired and is the per-region standard** (walkthrough README "standing
+  per-region kit"): inn/home **rest-heals** (NPC/trigger `dialogue_ref` may be a `script.*` —
+  WorldScene runs it as a cutscene; the `heal` op restores the party), one-time **shop kits**
+  (kit NPC + plain keeper swapped by a flag pair; `refreshNpcs()` makes flag-conditional NPCs
+  appear/vanish live), **item caches** (`sprite:'item_cache'` NPC + pickup script +
+  `hidden_when_flag`), **festival NPCs** (`requires_flag:'gleam:*'`), and the **catch-first
+  gate** (every catch sets `flag:caught_first_kin`; Brisa's battle trigger requires it, with
+  `blocked_ref` for her "not yet" line). South's optional payoffs are BUILT: `gullcry_rock`
+  (Tidecall spur — rare Glostern surf + the **Tide Charm**, catch ×2.0) and `vesper_crossroads`
+  (the Lanternway hub; live Tinderwick/Pearlmoor spokes, signed sleeping roads).
 - **Lampwardens grant Lantern Gifts via `TrainerDef.reward_abilities`.** A trainer win pushes
   `reward_flags` AND `reward_abilities` (BattleScene.finish → BattleResult.grant_abilities →
   WorldScene.applyBattleResult adds them to the live `abilities` Set, which `persist()` already

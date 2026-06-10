@@ -257,6 +257,24 @@ engine roadmap (`docs/mechanics/battle-runtime-plan.md`) but not yet wired. Regi
 write battles that *use* status (e.g. a Lampwarden built around `doze`), and should flag
 where a beat depends on these so they're prioritised.
 
+### The standing per-region kit (BUILT in South — every region copies it)
+South established the small, repeatable mechanics every region is expected to ship, all
+pure data (see `tools/maps/build_*.py` + `src/game/content/` for the worked patterns):
+- **Rest points** — each town keeps one full-heal: an inn keeper or hearth/bed whose
+  NPC/trigger `dialogue_ref` is a *script* ending in the `heal` op (`script.inn_rest`,
+  `script.home_rest`). Never leave a Lumenary town without one.
+- **Shop kits (until coin is wired)** — the keeper hands a one-time kit via a script that
+  sets a flag; a `hidden_when_flag`/`requires_flag` NPC pair swaps the keeper's dialogue.
+- **Item caches** — 2–3 ground pickups per route: `sprite:'item_cache'` NPCs whose script
+  gives the item, says the find, sets `flag:picked_*`; `hidden_when_flag` removes them live.
+- **Festival payoff NPCs** — each Gleam adds 2+ `requires_flag:'gleam:<element>'` townsfolk
+  (Arc E: belonging, not conquest). Cheap, and the town visibly *answers* the victory.
+- **Witness beats** — pair every story `step_on` cutscene with a flag-gated NPC who reacts
+  afterwards, so the beat lands on a person.
+- **The catch-first gate** — the engine sets `flag:caught_first_kin` on any successful
+  catch; the first Lumenary's battle trigger requires it, with a `blocked_ref` line in the
+  warden's own voice.
+
 ### The vesperlamp's growing light — the *continuous* exploration axis ("Lamplight")
 
 The six Lantern Gifts are **discrete** keys: each crosses a *specific* barrier, and they're

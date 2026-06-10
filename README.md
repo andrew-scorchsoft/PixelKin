@@ -46,7 +46,12 @@ onto **Dimglass Coast** with wild encounters, your rival Wren's first friendly
 battle, and the night the dusk deepens → across the **Dimglass tidal flats**
 (route trainers and rising wild kin bridge the levels) → on to **Pearlmoor Quay**, the
 moonlit Tide port, where Lampwarden Reyl Wash grants the **Tide Gleam** and the
-**Tidecall** Lantern Gift (which then opens the harbour's gated water). Progress autosaves (with JSON
+**Tidecall** Lantern Gift — which opens the harbour's gated water, the **Gullcry
+Rock** backtrack (a rare kin + the Tide Charm), and the **Vesper Crossroads**
+Lanternway hub. Along the way: catch-gated Lumenary etiquette (Brisa won't battle
+until you've befriended a wild kin), inn and hearth **rest-heals**, free shop
+kits, item caches on the routes, and festival crowds that fill each town after
+its Gleam is relit. Progress autosaves (with JSON
 export/import), and the screen can show as a handheld-device frame, fullscreen with
 translucent touch controls, or plain. Run it with `npm install && npm run dev`.
 

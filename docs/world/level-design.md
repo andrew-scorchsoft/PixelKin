@@ -701,34 +701,47 @@ to them (the §8 checklist now includes this section by reference).
    route's band fills the gap — e.g. Dimglass I 3–6 → II 8–10 → Pearlmoor 12), and
    the story beats the walkthrough pins (A2/B1 live on Dimglass I).
 
-**Tile-kit notes backing the rules** (all deterministic, in `tools/maps/tileforge.py` —
-no API needed): `texture_grass` (blade dashes), `tallgrass_tuft` (the encounter tile),
-`grade`/`cliff_strata`/`cliff_wall_edge` (the lifted, stratified cliff with true wall
-edges), `deglow` (kills baked highlight rims on pale fills), `inner_corner` (13-piece
-completion for path/sand/tree/cliff — *not* water, where the synthetic bite reads as
-a stray sand wedge), and the drawn props `draw_fence_h`/`draw_fence_post`/
-`draw_boulder`/`draw_flowerbed`. `build_shared_overworld.py` applies them when packing
-the shared set.
+8. **Structure, not noise — terrain is DRAWN (the GBA-register standard, 2026-06).**
+   Cartridge-era ground art is a flat base colour carrying a few deliberate, repeated
+   MOTIFS (grass ticks, dot clusters, strata lines) with crisp 1px-bordered rounded
+   transitions — random per-pixel speckle reads as static, never as ground. The shared
+   set's terrain families are now drawn in code by **`tools/maps/gbaforge.py`** (flat
+   fills + hand-placed motif layouts; variants are *alternative layouts*, never jitter
+   noise) and applied by `build_shared_overworld.py` as a name-keyed override (tile
+   order is stable, so existing maps update for free). Transitions are composed with
+   `gbaforge.overlay_tile` (rounded corner, 1px dark border, inner shade) — and they
+   are **context-correct**: `path` transitions to grass, `trail` is the same lane over
+   SAND (dune routes), `pond` is water-over-GRASS (inland pools) vs the sand-shore
+   `water` family. Painting a family over the wrong ground rings it with the wrong
+   colour — add a family rather than tolerate the ring. Two placement notes: a
+   free-standing `cliff` mass mid-field reads as a wall slab (use a boulder cluster
+   for an outcrop; keep cliff for map-edge walls and terraces), and AI image-gen is
+   now reserved for *objects* (buildings, crown trees, props) — never terrain fills.
 
-**The joints cure (the "every tile has a border" disease).** Generated fills carry a
-baked per-tile vignette; tiled, it becomes a visible grid that `deborder` (outer ring
-only) cannot reach. The cure is `flatten_vignette` (toroidal high-pass, keeps detail +
-mean) on every FILL, and `flatten_axis` on every EDGE/strip (flattens the lighting bow
-along the tiling axis only, preserving the designed transition across it). Edge
-*variants* are mirror-flips + jitter, never `roll` (rolling a non-toroidal texture
-drags its interior seam into view). Edge tiles are also **value-matched** to their
-fill (`_sand_post` pattern) or the surface reads as a darker ring with a hard inner
-line. Interior floors get the same cure via `tools/maps/cure_interior_floors.py`
-(edits the masters + repacks both interior sets).
+**Tile-kit notes backing the rules**: the structured families live in
+`tools/maps/gbaforge.py` (rule 8); `tools/maps/tileforge.py` keeps the deterministic
+cures + drawn props that still back the painterly masters: `grade`, `deglow`,
+`key_alpha`, `inner_corner`, and `draw_fence_h`/`draw_fence_post`/`draw_boulder`/
+`draw_flowerbed`. `build_shared_overworld.py` applies all of it when packing the
+shared set.
+
+**The joints cure (the "every tile has a border" disease)** — *still applies to any
+AI-generated/painterly tile* (objects' baked grounds, future organic families):
+generated fills carry a baked per-tile vignette; tiled, it becomes a visible grid that
+`deborder` (outer ring only) cannot reach. The cure is `flatten_vignette` (toroidal
+high-pass, keeps detail + mean) on every FILL, and `flatten_axis` on every EDGE/strip.
+Edge *variants* are mirror-flips + jitter, never `roll`. gbaforge tiles skip ALL seam
+passes — they are seamless by construction, and the passes would smear their designed
+1px borders. Interior floors get the cure via `tools/maps/cure_interior_floors.py`.
 
 **No 1-tile lamps.** The lamp breadcrumb is the 1×3 `tinderwick_lamp_post` OBJECT
 (walk-under, trunk *beside* the lane), never the legacy single `lamp` tile — a
 one-tile prop on an opaque card is the "white bag" look (art-style §14b).
 
-**Known gap (raise, don't paint around):** path/water cells punched through a sand
-flat leave raw sand fill at the contact (the path's own edges carry the seam — a
-cosmetic WARN in `validate_map`). The proper fix is a dedicated sand↔path FLAT
-transition via `composite_overlay.py` when the flats biome gets its art pass.
+**Known gap — CLOSED (2026-06):** the sand↔path contact is now the dedicated `trail`
+family (path-over-sand, drawn by gbaforge); Dimglass II's dune lane uses it. The same
+pattern (add a context-correct family, appended to the shared set so indices hold)
+is the standing answer for any new ground-pair seam.
 
 ---
 
