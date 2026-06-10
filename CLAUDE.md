@@ -212,6 +212,7 @@ go digging on every task.
 | Mechanics design (start here) | `docs/mechanics/00-overview.md` |
 | Readable full dex (all 151) | `docs/mechanics/dex.md` |
 | Balance results | `docs/mechanics/balance-report.md` |
+| Expert panel reviews (first-hour; full-game audit) | `docs/reviews/` |
 | Economy: wicks, shops, Star-charts, XP/battle budget | `docs/mechanics/10-economy.md` (+ `tools/balance/progression.mjs`) |
 | Cut-concept idea bank | `docs/mechanics/concepts/archive/` |
 | Authoritative game data | `src/game/data/` (chart, moves, species, world) |
