@@ -1,0 +1,32 @@
+# The release gates the design docs call "binding": types must compile, the
+# roster must validate, the type chart must stay inside the fair-fight band,
+# and the journey model must stay solvent. Anything here failing means a data
+# or balance contract broke — fix the data (or the mirrored constants), don't
+# skip the check. See CLAUDE.md "Gotchas & learned steers".
+name: checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Roster schema + power budget + evolution lines
+        run: node tools/balance/validate.mjs
+      - name: Type chart fair-fight band
+        run: node tools/balance/chart_check.mjs
+      - name: Full-roster balance sim
+        run: node tools/balance/simulate.mjs
+      - name: Journey progression + wick economy
+        run: node tools/balance/progression.mjs

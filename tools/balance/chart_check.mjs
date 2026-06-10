@@ -123,3 +123,6 @@ if (outliers.length) {
 } else {
   console.log(`\nAll types within the 45-55% guardrail. Chart is balanced for fair fights.`);
 }
+
+// CI gate: a type outside the fair-fight band is a failed contract.
+process.exit(outliers.length ? 1 : 0);

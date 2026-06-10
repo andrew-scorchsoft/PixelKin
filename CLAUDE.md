@@ -187,13 +187,26 @@ go digging on every task.
   and **the Waykeeper's Round** is the cross-region delivery line anchored at
   `vesper_crossroads`.
 - **Economy (2026-06, BUILT):** money is **wicks** (waxed lamp-wicks, traded;
-  `SaveGame.money`, save schema v2); taught-move items are **Star-charts** (single-use,
+  `SaveGame.money`, save schema v3); taught-move items are **Star-charts** (single-use,
   type/Plain/learnset-compatible, used from ITEMS); shops are data
-  (`content/shops.ts` + the `shop` cutscene op — Tinderwick & Pearlmoor counters live);
-  trainer wins pay `payout` = class rate × ace (route 16 / keeper 20 / rival 24 /
+  (`content/shops.ts` + the `shop` cutscene op — Tinderwick & Pearlmoor counters live;
+  a stock line may carry `requires_flag` for tier unlocks); trainer wins pay `payout`
+  = class rate × ace (route 16 / keeper 20 / rival 24 /
   warden 60 / Còr 120); blackout keeps a 10% wick tithe; XP yield is `bst·level/20`,
   ×1.5 vs trainers, **catches pay like knock-outs**. Design + per-region battle/earnings
   budget: `docs/mechanics/10-economy.md`; executable model: `tools/balance/progression.mjs`.
+- **Catching = one vesperlamp + charges (2026-06, BUILT):** the vesperlamp is a key
+  item (plain throw free, ×1.0); **charges** (`category:'charge'`, `catch_bonus`) are
+  one-throw boosters — Glow ×1.5 (200w), Beacon ×2.5 (600w, shops once `gleam:ember`),
+  Tide Charm ×2.0 (quest), Starlamp guaranteed (quest). Catch = the classic four-shake
+  roll (P≈a/255) + status bonus (doze/chill ×2.5, others ×1.5). `docs/mechanics/04-capture.md`.
+- **Battle runtime Part B is BUILT (2026-06):** the seven canon statuses run for real
+  (gates/chip/stat hooks — exact constants atop `BattleEngine.ts`, mirrored in
+  `03-moves.md`), as do drain/recoil/flinch/heal/cure/screens/caltrops/pivot/selfDoze/
+  highCrit. **Kindling is live**: level-trigger checks in `gainExp` → `ui/KindlePrompt`
+  (declining re-offers next level); Hearthkit's bond trigger awaits a bond system.
+  `TrainerDef.ai:'smart'` = warden/boss AI tier. Re-run `simulate.mjs` after status/move
+  changes — it now exit-codes (one waived utility-kit outlier list lives in the script).
 - **Maps are our own JSON** (not Tiled), snake_case keyed, parsed into
   `src/game/data/world/types.ts`. Map authoring is **content, not engine code**;
   the end-to-end flow is in `docs/world/README.md`.
@@ -368,12 +381,21 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   you add one. Multi-phase screens (PartyMenu/ItemsMenu/HearthMenu) **don't** keep one
   long-lived loop: each phase (`pickX`) attaches its own tick + input and tears both
   down before opening a sub-`Menu`, so presses are never double-read.
-- **Pause menu = RESUME / KIN / HEARTH / ITEMS / LORE / SAVE / SETTINGS** (`WorldScene.openPauseMenu`).
-  KIN→`PartyMenu`, HEARTH→`HearthMenu` (kin storage), ITEMS→`ItemsMenu` (view + use a
+- **Pause menu = RESUME / KIN / REGISTER / HEARTH / ITEMS / LORE / SAVE / SETTINGS** (`WorldScene.openPauseMenu`).
+  KIN→`PartyMenu`, REGISTER→`RegisterMenu` (the dex: seen/caught from `SaveGame.dex`, lazy kin
+  icons, silhouettes until caught), HEARTH→`HearthMenu` (kin storage), ITEMS→`ItemsMenu` (view + use a
   medicine to heal), LORE→`GlossaryMenu` (read-only codex of canon vocabulary). Each returns its
   mutated data; the caller assigns it back and `persist()`s. Shell A/B buttons carry a `title`
   keyboard-hint via `KEY_HINTS` in `ShellManager.ts` — keep it in sync with the InputController
   bindings.
+- **Gameplay prefs ride `ui/preferences.ts`, not storage reads.** Settings adds Pace
+  (always-run; hold-B runs regardless) and Text speed (Cosy/Brisk/Instant — DialogueBox
+  multiplies its cps); `ShellManager.init` applies persisted values at boot, the
+  SettingsMenu writes through live. Every `persist()` flashes a quiet SAVED corner glyph.
+  First use of each Lantern Gift on gated ground plays a once-per-Gift raise-lamp
+  flourish (`WorldScene.playGiftFlourish`, `flag:gift_first_*`).
+- **CI is binding:** `.github/workflows/checks.yml` runs typecheck + all four balance
+  gates on every PR; `chart_check`/`simulate` now exit non-zero on violations.
 - **The LORE codex (`GlossaryMenu`) is a data-driven, flag-staggered reference.** Entries live in
   `content/glossary.ts` (ordered array; canon voice). An entry with no `unlock_flag` is known from
   the start; one with an `unlock_flag` stays a "? ? ?" tease until that flag is held — and it reuses
