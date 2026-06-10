@@ -44,6 +44,10 @@
       },
       {
         "level": 13,
+        "move": "moonshard"
+      },
+      {
+        "level": 22,
         "move": "lunar_claw"
       },
       {

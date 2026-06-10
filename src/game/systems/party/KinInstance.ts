@@ -199,45 +199,72 @@ export class KinInstance {
 
   /**
    * Grant exp; level up (re-deriving stats and topping up the hp gain) and learn
-   * new level-up moves as thresholds are crossed. Returns the levels gained and
-   * the moves newly learned, so the caller can narrate them.
+   * new level-up moves as thresholds are crossed. Moves that fit a free slot are
+   * learned automatically (`learned`); when all four slots are taken the move
+   * lands in `pending` instead — the caller runs MoveLearnPrompt so the PLAYER
+   * chooses what to set aside (never a silent overwrite).
    */
-  gainExp(amount: number): { levelsGained: number; learned: Move[] } {
-    if (amount <= 0 || this.level >= MAX_LEVEL) return { levelsGained: 0, learned: [] };
+  gainExp(amount: number): { levelsGained: number; learned: Move[]; pending: Move[] } {
+    if (amount <= 0 || this.level >= MAX_LEVEL) return { levelsGained: 0, learned: [], pending: [] };
     const startLevel = this.level;
     this.exp += Math.floor(amount);
     const newLevel = levelForExp(this.exp);
     const learned: Move[] = [];
+    const pending: Move[] = [];
     if (newLevel > startLevel) {
       const prevMax = this.maxHp;
       this.level = newLevel;
       // Carry the hp gain so a level-up feels like a small heal, not a reset.
       this.hp += this.maxHp - prevMax;
       for (let lv = startLevel + 1; lv <= newLevel; lv++) {
-        learned.push(...this.learnMovesAt(lv));
+        for (const entry of this.species.learnset.levelup) {
+          if (entry.level !== lv) continue;
+          const move = MOVE_BY_ID.get(entry.move);
+          if (!move || this.knowsMove(move.id) || pending.some((m) => m.id === move.id)) continue;
+          if (this.learnMove(move)) learned.push(move);
+          else pending.push(move);
+        }
       }
     }
-    return { levelsGained: newLevel - startLevel, learned };
+    return { levelsGained: newLevel - startLevel, learned, pending };
   }
 
-  /** Learn (auto, oldest-replaced) any level-up moves taught at `level`. */
-  private learnMovesAt(level: number): Move[] {
-    const learned: Move[] = [];
-    for (const entry of this.species.learnset.levelup) {
-      if (entry.level !== level) continue;
-      const move = MOVE_BY_ID.get(entry.move);
-      if (!move) continue;
-      if (this.moves.some((k) => k.move.id === move.id)) continue;
-      if (this.moves.length < MAX_MOVES) {
-        this.moves.push({ move, charges: move.charges });
-      } else {
-        // Replace the first slot (simple auto-learn; a proper UI prompt is later).
-        this.moves[0] = { move, charges: move.charges };
-      }
-      learned.push(move);
-    }
-    return learned;
+  // --- Taught moves (Star-charts + the move-learn prompt share these) ----------
+
+  knowsMove(moveId: string): boolean {
+    return this.moves.some((k) => k.move.id === moveId);
   }
+
+  /**
+   * Whether this kin can study a Star-chart for `move`: it shares the move's
+   * type, the move is Plain (any kin may read a plain figure), or the move is
+   * already somewhere in its species learnset. Returns why not, for narration.
+   */
+  canStudy(move: Move): 'ok' | 'knows' | 'type' {
+    if (this.knowsMove(move.id)) return 'knows';
+    if (move.type === 'Plain') return 'ok';
+    if (this.species.types.includes(move.type)) return 'ok';
+    const ls = this.species.learnset;
+    const inLearnset =
+      ls.levelup.some((e) => e.move === move.id) ||
+      ls.kindling.includes(move.id) ||
+      ls.tutor.includes(move.id);
+    return inLearnset ? 'ok' : 'type';
+  }
+
+  /** Learn into a free slot. Returns false when all four slots are taken. */
+  learnMove(move: Move): boolean {
+    if (this.knowsMove(move.id) || this.moves.length >= MAX_MOVES) return false;
+    this.moves.push({ move, charges: move.charges });
+    return true;
+  }
+
+  /** Overwrite a known-move slot (the "forget which?" choice). */
+  replaceMove(slot: number, move: Move): void {
+    if (slot < 0 || slot >= this.moves.length) return;
+    this.moves[slot] = { move, charges: move.charges };
+  }
+
 }
 
 /** The up-to-4 most recent level-up moves a species knows at `level`. */

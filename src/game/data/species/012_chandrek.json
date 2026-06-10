@@ -31,7 +31,7 @@
       },
       {
         "level": 1,
-        "move": "tuft_spark"
+        "move": "cinder_spit"
       },
       {
         "level": 9,
@@ -39,11 +39,11 @@
       },
       {
         "level": 13,
-        "move": "cinder_spit"
+        "move": "hearth_pulse"
       },
       {
         "level": 19,
-        "move": "light_pulse"
+        "move": "spark_mote"
       },
       {
         "level": 24,
@@ -51,7 +51,7 @@
       },
       {
         "level": 31,
-        "move": "hearth_pulse"
+        "move": "hearthstorm"
       },
       {
         "level": 40,

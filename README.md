@@ -55,7 +55,10 @@ moonlit Tide port, where Lampwarden Reyl Wash grants the **Tide Gleam** and the
 Rock** backtrack (a rare kin + the Tide Charm), and the **Vesper Crossroads**
 Lanternway hub. Along the way: catch-gated Lumenary etiquette (Brisa won't battle
 until you've befriended a wild kin), inn and hearth **rest-heals**, free shop
-kits, item caches on the routes, and festival crowds that fill each town after
+kits — and a working **wick economy**: trainers pay out wicks, town keepers run
+real **buy/sell counters**, and single-use **Star-charts** teach kin new moves
+(tuned end-to-end by a journey model, `tools/balance/progression.mjs`) — plus
+item caches on the routes, and festival crowds that fill each town after
 its Gleam is relit. Progress autosaves (with JSON
 export/import), and the screen can show as a handheld-device frame, fullscreen with
 translucent touch controls, or plain. Run it with `npm install && npm run dev`.

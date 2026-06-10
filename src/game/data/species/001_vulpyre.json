@@ -32,11 +32,15 @@
     "levelup": [
       {
         "level": 1,
+        "move": "tuft_spark"
+      },
+      {
+        "level": 1,
         "move": "quick_jab"
       },
       {
         "level": 1,
-        "move": "tuft_spark"
+        "move": "cinder_spit"
       },
       {
         "level": 9,
@@ -44,7 +48,7 @@
       },
       {
         "level": 13,
-        "move": "cinder_spit"
+        "move": "hearth_pulse"
       },
       {
         "level": 24,

@@ -20,9 +20,12 @@ import { Panel } from './Panel';
 import { Cursor } from './Cursor';
 import { Menu, type MenuOption } from './Menu';
 import { DialogueBox } from './DialogueBox';
+import { MoveLearnPrompt } from './MoveLearnPrompt';
 import { InputController, InputAction } from '@game/systems/input/InputController';
 import { KinInstance } from '@game/systems/party/KinInstance';
+import { MOVE_BY_ID } from '@game/data/dex';
 import { getItem } from '@game/content/items';
+import { formatWicks } from '@game/content/economy';
 import type { ItemCategory } from '@game/content/types';
 import type { KinInstanceData, InventoryData } from '@game/systems/save/types';
 import type { Sfx } from '@game/systems/audio/Sfx';
@@ -49,6 +52,7 @@ interface PackEntry {
   desc: string;
   category: ItemCategory;
   heal?: number;
+  teach_move?: string;
   count: number;
 }
 
@@ -72,6 +76,8 @@ export class ItemsMenu {
     private readonly inventory: InventoryData,
     party: KinInstanceData[],
     private readonly sfx?: Sfx,
+    /** When provided, the wallet shows beside the title (read-only here). */
+    private readonly money?: number,
   ) {
     this.members = party.map((d) => KinInstance.fromData(d));
 
@@ -86,7 +92,8 @@ export class ItemsMenu {
     this.detailTop = height - PAD - DETAIL_LINES * DETAIL_LINE_H;
     this.panel = new Panel(scene, 4, 4, this.width, height).fixedToCamera();
 
-    this.panel.add(makeText(scene, PAD, PAD - 2, 'ITEMS', theme.text.accent));
+    const title = this.money !== undefined ? `ITEMS — ${formatWicks(this.money)}` : 'ITEMS';
+    this.panel.add(makeText(scene, PAD, PAD - 2, title, theme.text.accent));
     this.panel.add(
       makeText(scene, this.width - PAD, PAD - 2, 'A USE  B BACK', theme.text.dim).setOrigin(1, 0),
     );
@@ -116,9 +123,17 @@ export class ItemsMenu {
       if (count <= 0) continue;
       const def = getItem(id);
       if (!def) continue;
-      out.push({ id, name: def.name, desc: def.desc, category: def.category, heal: def.heal, count });
+      out.push({
+        id,
+        name: def.name,
+        desc: def.desc,
+        category: def.category,
+        heal: def.heal,
+        teach_move: def.teach_move,
+        count,
+      });
     }
-    const order: Record<ItemCategory, number> = { lamp: 0, medicine: 1, key: 2, misc: 3 };
+    const order: Record<ItemCategory, number> = { lamp: 0, medicine: 1, chart: 2, valuable: 3, key: 4, misc: 5 };
     out.sort((a, b) => order[a.category] - order[b.category] || a.name.localeCompare(b.name));
     return out;
   }
@@ -227,8 +242,12 @@ export class ItemsMenu {
     });
   }
 
-  /** Use one item: medicines heal a chosen kin; everything else can't be used here. */
+  /** Use one item: medicines heal a kin; Star-charts teach one; the rest stay packed. */
   private async useEntry(entry: PackEntry): Promise<void> {
+    if (entry.category === 'chart' && entry.teach_move) {
+      await this.studyChart(entry);
+      return;
+    }
     if (entry.category !== 'medicine' || !entry.heal) {
       await new DialogueBox(this.scene, this.sfx).run([{ text: `You can't use the ${entry.name} out here.` }]);
       return;
@@ -259,12 +278,61 @@ export class ItemsMenu {
     this.rebuild();
   }
 
+  /**
+   * Study a Star-chart: pick a kin, check it can read the figure (type match,
+   * Plain, or already in its learnset — KinInstance.canStudy), then learn into a
+   * free slot or choose a move to set aside. One study consumes the chart.
+   */
+  private async studyChart(entry: PackEntry): Promise<void> {
+    const move = MOVE_BY_ID.get(entry.teach_move ?? '');
+    if (!move) {
+      await new DialogueBox(this.scene, this.sfx).run([{ text: 'The chart\'s figure has faded beyond reading.' }]);
+      return;
+    }
+    if (this.members.length === 0) {
+      await new DialogueBox(this.scene, this.sfx).run([{ text: 'No kin walk with you to study it.' }]);
+      return;
+    }
+
+    const target = await this.pickKin(() => true);
+    if (target === null) return;
+    const kin = this.members[target];
+
+    const why = kin.canStudy(move);
+    if (why === 'knows') {
+      await new DialogueBox(this.scene, this.sfx).run([
+        { text: `${kin.displayName} already knows ${move.name}.` },
+      ]);
+      return;
+    }
+    if (why === 'type') {
+      await new DialogueBox(this.scene, this.sfx).run([
+        { text: `${kin.displayName} peers at the figure, but its light isn't theirs to draw.` },
+      ]);
+      return;
+    }
+
+    await new DialogueBox(this.scene, this.sfx).run([
+      { text: `${kin.displayName} traces the chart by lamplight...` },
+    ]);
+    const learned = await new MoveLearnPrompt(this.scene, kin, move, this.sfx).run();
+    if (!learned) return; // gave up — the chart is unspent
+
+    // Spend the chart.
+    this.inventory.items[entry.id] = (this.inventory.items[entry.id] ?? 1) - 1;
+    if (this.inventory.items[entry.id] <= 0) delete this.inventory.items[entry.id];
+    await new DialogueBox(this.scene, this.sfx).run([
+      { text: 'The chart\'s glow fades — its figure now lives in your kin.' },
+    ]);
+    this.rebuild();
+  }
+
   /** A kin picker (re-using Menu), showing each member's HP. Resolves index or null. */
-  private pickKin(): Promise<number | null> {
+  private pickKin(enabled: (k: KinInstance) => boolean = (k) => k.hp < k.maxHp): Promise<number | null> {
     const opts: MenuOption[] = this.members.map((k, i) => ({
       label: `${k.displayName} ${Math.max(0, k.hp)}/${k.maxHp}`,
       value: String(i),
-      enabled: k.hp < k.maxHp,
+      enabled: enabled(k),
     }));
     return new Menu(this.scene, opts, { x: 8, y: 8, sfx: this.sfx, cancellable: true })
       .run()

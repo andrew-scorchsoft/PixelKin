@@ -227,9 +227,11 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', text: 'You wake warm. Your kin are rested and bright.' },
   ],
 
-  // --- Wayfarer's kits (the shops, until coin is a thing) --------------------
-  // Each town keeper hands a starter bundle ONCE: the kit NPC swaps for the plain
-  // keeper via flags (hidden_when_flag / requires_flag pair on the placements).
+  // --- Wayfarer's kits + the open counters ------------------------------------
+  // Each town keeper hands a starter bundle ONCE (the kit NPC swaps for the
+  // trading keeper via flags), and thereafter keeps a live counter: the keeper's
+  // script says its flavour line then opens the shop (content/shops.ts) with the
+  // 'shop' op. Buying/selling is the ShopMenu; prices live on the ItemDefs.
   'script.shop_kit_tinderwick': [
     { op: 'say', speaker: 'SHOPKEEPER', text: 'Welcome in, out of the dusk. Off on your Wayfaring? Then the first kit is on the house — town custom.' },
     { op: 'giveItem', item: 'vesperlamp', count: 2 },
@@ -243,6 +245,16 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'giveItem', item: 'tallow_balm', count: 2 },
     { op: 'say', speaker: 'CHANDLER', text: 'Bright lamps hold a catch better than plain ones. And mind the triangle — his whole crew runs Tide.' },
     { op: 'setFlag', flag: 'flag:pearlmoor_kit' },
+  ],
+
+  // The open counters (the post-kit keepers' dialogue_refs point here).
+  'script.shop_tinderwick': [
+    { op: 'dialogue', ref: 'npc.tinderwick_shopkeeper' },
+    { op: 'shop', shop: 'tinderwick_general' },
+  ],
+  'script.shop_pearlmoor': [
+    { op: 'dialogue', ref: 'npc.pearlmoor_shopkeeper' },
+    { op: 'shop', shop: 'pearlmoor_chandlery' },
   ],
 
   // --- Route item caches (sprite 'item_cache' NPCs; vanish via hidden_when_flag)

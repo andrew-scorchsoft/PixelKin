@@ -1,0 +1,485 @@
+#!/usr/bin/env node
+/**
+ * progression.mjs — the journey-long XP + wick-economy model.
+ *
+ * Walks the canonical journey (docs/world/walkthrough/ §4 level curve) leg by
+ * leg with the engine's real formulas (exp = L³; yield = bst·level/20 to the
+ * active battler, ×1.5 in trainer battles, catches pay like knock-outs;
+ * payouts/prices from docs/mechanics/10-economy.md) and reports,
+ * for three player profiles, the lead's level and the wallet at every
+ * checkpoint against the spine's recommended level.
+ *
+ *   node tools/balance/progression.mjs           # report + checks
+ *   node tools/balance/progression.mjs --verbose # per-leg ledger
+ *
+ * The JOURNEY table below is the binding battle & earnings budget per region:
+ * built South legs mirror src/game/content/trainers.ts exactly (a drift check
+ * recomputes their payouts); unbuilt legs are the DESIGN budget that region
+ * authors must ship (trainer counts/levels, quest wicks, cache valuables).
+ * Change a price, payout, band, or trainer roster → re-run this; the checks
+ * fail loudly when the curve or the wallet breaks. Tuning rules live in
+ * docs/mechanics/10-economy.md §8.
+ *
+ * Profiles:
+ *   rusher   — fights only what the lanes force (mandatory crossings + trainers)
+ *   mainline — fights what it meets, does the earned loops (the target player)
+ *   explorer — optional grass, all named quests, sells every valuable
+ */
+import { readFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
+const SPECIES = JSON.parse(readFileSync(join(ROOT, 'src/game/data/species.json'), 'utf8')).species;
+const MOVES = JSON.parse(readFileSync(join(ROOT, 'src/game/data/moves.json'), 'utf8'));
+const VERBOSE = process.argv.includes('--verbose');
+
+// ---------------------------------------------------------------------------
+// Engine formulas (mirror KinInstance.ts / BattleScene.ts — keep in sync)
+// ---------------------------------------------------------------------------
+const expForLevel = (l) => l * l * l;
+const levelForExp = (e) => Math.min(100, Math.floor(Math.cbrt(Math.max(1, e))));
+/** Tuned by this model (2026-06): /60 left the curve unreachable (-18 by the
+ *  climax); /20 with the trainer bonus + catch XP lands every checkpoint. */
+const YIELD_DIVISOR = 20;
+const TRAINER_XP_MULT = 1.5; // the genre's trainer-battle bonus
+const expYield = (bst, level) => Math.max(1, Math.floor((bst * level) / YIELD_DIVISOR));
+
+// ---------------------------------------------------------------------------
+// Economy constants (mirror src/game/content/economy.ts + items.ts)
+// ---------------------------------------------------------------------------
+const STARTING_WICKS = 250;
+/** payout-per-ace-level by trainer class (10-economy.md §4). */
+const PAYOUT_RATE = { route: 16, keeper: 20, rival: 24, warden: 60, cor: 120 };
+const PRICES = {
+  tallow_balm: 120, warm_balm: 500, bright_balm: 1200,
+  vesperlamp: 200, bright_lamp: 600, radiant_lamp: 1500,
+  chart_early: 800, chart_mid: 1400, chart_late: 2400, chart_end: 4000,
+};
+
+// ---------------------------------------------------------------------------
+// Wild BST per area, from the dex's own encounter data (rarity-weighted),
+// with a level-trend fallback for areas the dex hasn't placed kin in yet.
+// ---------------------------------------------------------------------------
+const RARITY_W = { common: 55, uncommon: 30, rare: 12, very_rare: 3, 'very rare': 3 };
+const areaBst = new Map(); // area -> { bstSum, wSum }
+const trend = []; // [midLevel, bst, weight]
+for (const s of SPECIES) {
+  for (const e of s.encounters ?? []) {
+    const w = RARITY_W[e.rarity] ?? 10;
+    const cur = areaBst.get(e.area) ?? { bstSum: 0, wSum: 0 };
+    cur.bstSum += s.bst * w;
+    cur.wSum += w;
+    areaBst.set(e.area, cur);
+    trend.push([(e.min + e.max) / 2, s.bst, w]);
+  }
+}
+// Weighted linear fit bst ≈ a + b·level over every dex encounter record.
+const fit = (() => {
+  let sw = 0, sx = 0, sy = 0, sxx = 0, sxy = 0;
+  for (const [x, y, w] of trend) { sw += w; sx += w * x; sy += w * y; sxx += w * x * x; sxy += w * x * y; }
+  const b = (sw * sxy - sx * sy) / (sw * sxx - sx * sx);
+  const a = (sy - b * sx) / sw;
+  return (level) => a + b * level;
+})();
+/** Avg wild BST for a leg: dex data for its areas if placed, else the trend. */
+function wildBst(areas, band) {
+  let bstSum = 0, wSum = 0;
+  for (const area of areas ?? []) {
+    const cur = areaBst.get(area);
+    if (cur) { bstSum += cur.bstSum; wSum += cur.wSum; }
+  }
+  if (wSum > 0) return bstSum / wSum;
+  return fit((band[0] + band[1]) / 2);
+}
+/** Trainer kin run a notch above the local wild average (raised, kindled). */
+const trainerBst = (level, klass) => fit(level) * (klass === 'warden' || klass === 'cor' ? 1.22 : 1.12);
+const speciesBst = (id) => SPECIES.find((s) => s.id === id)?.bst ?? fit(20);
+
+// ---------------------------------------------------------------------------
+// THE JOURNEY — the binding battle & earnings budget (see file header).
+// Each leg: wild {areas?, band, fights per profile}, trainers, income, spend.
+//   trainer: { name, class, kin: [{level, species?}] }  (species = built roster)
+//   income:  { quests, valuables, finds }  — wicks from named quests, sellable
+//            valuables found, and loose giveMoney finds, per profile reach
+//   spend:   the planned core kit purchases at this stop (mainline; rusher
+//            buys half the balms and no charts; explorer buys all + a spare)
+// checkpoint: { name, rec, ace } — the spine §4 row this leg ends on.
+// ---------------------------------------------------------------------------
+const T = (name, klass, kin) => ({ name, class: klass, kin });
+const K = (level, species) => ({ level, species });
+
+/**
+ * leadShare — what fraction of a leg's XP lands on the player's strongest kin
+ * (the one the spine's "recommended party" tracks). Engine XP goes to the
+ * active battler only, so this models *who the player sends out*: in the South
+ * and East the team is still being built (fresh catches eat most XP); from the
+ * North the core is set and the ace absorbs it. Rusher solo-aces (+0.2);
+ * explorer spreads the love (−0.05). These are design assumptions — tune here,
+ * never per-profile fudge factors elsewhere.
+ */
+const shareFor = (leg, profile) => {
+  const base = leg.leadShare;
+  if (profile === 'rusher') return Math.min(1, base + 0.2);
+  if (profile === 'explorer') return Math.max(0.3, base - 0.05);
+  return base;
+};
+
+const JOURNEY = [
+  // ---- SOUTH (built through Pearlmoor; breakwater loop is planned data) ----
+  {
+    name: 'Tinderwick & the verge',
+    leadShare: 0.70,
+    wild: { areas: ['dimglass_coast'], band: [2, 4], fights: { rusher: 3, mainline: 6, explorer: 10 } },
+    trainers: [],
+    income: { quests: 0, valuables: 0, finds: 0 },
+    spend: { tallow_balm: 2 },
+  },
+  {
+    name: 'Dimglass Coast I + Beacon ascent',
+    leadShare: 0.55,
+    wild: { areas: ['dimglass_coast'], band: [3, 6], fights: { rusher: 4, mainline: 9, explorer: 14 } },
+    trainers: [
+      T('Wren (A2)', 'rival', [K(5, 8), K(6, 26)]),
+      T('Tansy', 'keeper', [K(7, 16)]),
+      T('Cole', 'keeper', [K(7, 10), K(8, 16)]),
+      T('Brisa Tallow', 'warden', [K(7, 10), K(10, 18)]),
+    ],
+    income: { quests: 150, valuables: 250, finds: 0 }, // beacon errand thanks + a wax cake cache
+    spend: { tallow_balm: 2, vesperlamp: 2 },
+    checkpoint: { name: 'Ember Gleam (Brisa)', rec: 10, ace: 10 },
+  },
+  {
+    name: 'Dimglass Coast II (the flats)',
+    leadShare: 0.45,
+    wild: { areas: ['dimglass_coast'], band: [8, 10], fights: { rusher: 4, mainline: 8, explorer: 13 } },
+    trainers: [
+      T('Morrow', 'route', [K(9, 26), K(9, 31)]),
+      T('Elspeth', 'route', [K(10, 27), K(11, 31)]),
+    ],
+    income: { quests: 200, valuables: 0, finds: 100 },
+    spend: { tallow_balm: 2 },
+    checkpoint: { name: 'Pearlmoor arrival', rec: 12 },
+  },
+  {
+    name: 'Pearlmoor Quay + breakwater loop',
+    leadShare: 0.42,
+    wild: { areas: ['pearlmoor_quay'], band: [8, 11], fights: { rusher: 2, mainline: 6, explorer: 10 } },
+    trainers: [
+      T('Breakwater netmender', 'route', [K(12)]),
+      T('Breakwater oarhand', 'route', [K(12), K(13)]),
+      T('Reyl Wash', 'warden', [K(12, 26), K(13, 31), K(14, 27), K(16, 24)]),
+    ],
+    income: { quests: 400, valuables: 250, finds: 0 }, // bell-rope quest + Round leg
+    spend: { warm_balm: 1, bright_lamp: 2, chart_mid: 1 },
+    checkpoint: { name: 'Tide Gleam (Reyl)', rec: 12, ace: 16 },
+  },
+
+  // ---- EAST ----------------------------------------------------------------
+  {
+    name: 'Saltreach Fen I→II',
+    leadShare: 0.42,
+    wild: { band: [15, 18], fights: { rusher: 5, mainline: 10, explorer: 16 } },
+    trainers: [
+      T('Fen forager', 'route', [K(16), K(16)]),
+      T('Eel-lamp warden', 'route', [K(17)]),
+      T('Stilt-walker', 'route', [K(17), K(18)]),
+    ],
+    income: { quests: 350, valuables: 0, finds: 150 },
+    spend: { tallow_balm: 3 },
+    checkpoint: { name: 'Lowleaf arrival', rec: 18 },
+  },
+  {
+    name: 'Lowleaf Hollow (tending loop)',
+    leadShare: 0.45,
+    wild: { areas: ['lowleaf_hollow'], band: [17, 20], fights: { rusher: 3, mainline: 7, explorer: 12 } },
+    trainers: [
+      T('Glowmoss tender', 'keeper', [K(20), K(20)]),
+      T('Kiln-hand', 'keeper', [K(21), K(21)]),
+      T('Sable Quill', 'warden', [K(18), K(19), K(20), K(22)]),
+    ],
+    income: { quests: 500, valuables: 600, finds: 0 }, // bed-warming chain + moth-amber
+    spend: { warm_balm: 2, bright_lamp: 1, chart_mid: 1 },
+    checkpoint: { name: 'Verdant Gleam (Sable)', rec: 18, ace: 22 },
+  },
+  {
+    name: 'Glowmoss Deep → Cinderhead galleries',
+    leadShare: 0.50,
+    wild: { band: [22, 27], fights: { rusher: 6, mainline: 12, explorer: 18 } },
+    trainers: [
+      T('Deep prospector', 'keeper', [K(23), K(23)]),
+      T('Cartlamp hauler', 'keeper', [K(24), K(24)]),
+      T('Gallery surveyor', 'keeper', [K(25), K(25)]),
+      T('Vigil miner A', 'keeper', [K(26), K(26)]),
+      T('Vigil miner B', 'keeper', [K(26), K(27)]),
+    ],
+    income: { quests: 600, valuables: 600, finds: 200 }, // vigil-lamp errand pays
+    spend: { warm_balm: 2, tallow_balm: 2 },
+    checkpoint: { name: 'Cinderhead arrival', rec: 22 },
+  },
+  {
+    name: 'Otho Grist (the wall)',
+    leadShare: 0.55,
+    wild: { band: [24, 27], fights: { rusher: 3, mainline: 7, explorer: 11 } },
+    trainers: [T('Otho Grist', 'warden', [K(24), K(25), K(26), K(28)])],
+    income: { quests: 300, valuables: 0, finds: 0 },
+    spend: { chart_mid: 1 },
+    // rec 26, not the §4 entry-level 22: the wall design sends the player
+    // through the 24–27 deep galleries (the Descent Vigil) before the test.
+    checkpoint: { name: 'Stone Gleam (Otho)', rec: 26, ace: 28 },
+  },
+
+  // ---- NORTH ---------------------------------------------------------------
+  {
+    name: 'Windward Stair I → Galehigh',
+    leadShare: 0.60,
+    wild: { areas: ['galehigh_terraces'], band: [27, 31], fights: { rusher: 5, mainline: 10, explorer: 16 } },
+    trainers: [
+      T('Stair runner', 'route', [K(29), K(29)]),
+      T('Kite-string seller', 'route', [K(30)]),
+      T('Terrace shepherd', 'route', [K(30), K(31)]),
+      T('Winch-hand', 'keeper', [K(32), K(32)]),
+      T('Kite-rising marshal', 'keeper', [K(33), K(33)]),
+      T('Mira Vael', 'warden', [K(30), K(31), K(32), K(34)]),
+    ],
+    income: { quests: 700, valuables: 600, finds: 200 },
+    spend: { warm_balm: 3, bright_lamp: 2, chart_late: 1 },
+    checkpoint: { name: 'Storm Gleam (Mira)', rec: 28, ace: 34 },
+  },
+  {
+    name: 'Windward II → Pale Vault (+ Wren A4)',
+    leadShare: 0.70,
+    wild: { band: [34, 38], fights: { rusher: 6, mainline: 11, explorer: 17 } },
+    trainers: [
+      T('Crag percher', 'route', [K(35), K(35)]),
+      T('Snowline courier', 'route', [K(36)]),
+      T('Ice-lamp warden', 'route', [K(36), K(36)]),
+      T('Wren (A4 — the wobble)', 'rival', [K(37), K(38), K(38)]),
+      T('Undercroft tender A', 'keeper', [K(38), K(38)]),
+      T('Undercroft tender B', 'keeper', [K(39), K(39)]),
+      T('Ysolde Frost', 'warden', [K(36), K(37), K(38), K(38), K(40)]),
+    ],
+    income: { quests: 900, valuables: 600, finds: 200 }, // lamp-line quest + aurora-oil thanks
+    spend: { warm_balm: 2, bright_balm: 1, chart_late: 1 },
+    checkpoint: { name: 'Frost Gleam (Ysolde)', rec: 36, ace: 40 },
+  },
+
+  // ---- WEST ----------------------------------------------------------------
+  {
+    name: 'Hushfrost Pass I→II → Solarium',
+    leadShare: 0.80,
+    wild: { areas: ['sunken_solarium'], band: [40, 44], fights: { rusher: 5, mainline: 10, explorer: 15 } },
+    trainers: [
+      T('Coldfog lampman', 'route', [K(41), K(41)]),
+      T('Pass survivor', 'route', [K(42)]),
+      T('Thaw-tender', 'route', [K(42), K(42)]),
+      T('Sunmote diver A', 'keeper', [K(43), K(43)]),
+      T('Sunmote diver B', 'keeper', [K(44), K(44)]),
+      T('Lucan Pyre', 'warden', [K(42), K(43), K(44), K(44), K(46)]),
+    ],
+    income: { quests: 1100, valuables: 1500, finds: 300 }, // stage-lighting chain + starglass
+    spend: { bright_balm: 2, radiant_lamp: 1, chart_late: 1 },
+    checkpoint: { name: 'Solar Gleam (Lucan)', rec: 42, ace: 46 },
+  },
+  {
+    name: 'Sunvault Climb → Nightreach',
+    leadShare: 0.90,
+    wild: { band: [45, 50], fights: { rusher: 6, mainline: 11, explorer: 16 } },
+    trainers: [
+      T('Vault climber', 'route', [K(46), K(46)]),
+      T('Sun-vine gardener', 'route', [K(47)]),
+      T('Heliographer', 'route', [K(47), K(48)]),
+      T('Observatory aide', 'route', [K(48), K(48)]),
+      T('Vigil-walk keeper A', 'keeper', [K(49), K(49)]),
+      T('Vigil-walk keeper B', 'keeper', [K(50), K(50)]),
+      T('Nessa Cole', 'warden', [K(48), K(49), K(50), K(50), K(52)]),
+    ],
+    income: { quests: 1300, valuables: 1500, finds: 300 },
+    spend: { bright_balm: 2, chart_end: 1 },
+    checkpoint: { name: 'Lunar Gleam (Nessa)', rec: 48, ace: 52 },
+  },
+
+  // ---- CENTRAL / ENDGAME ----------------------------------------------------
+  {
+    name: 'Penumbra Ring → Umbral Spire',
+    leadShare: 1.00,
+    wild: { areas: ['umbral_spire', 'coldfog_marches'], band: [52, 56], fights: { rusher: 6, mainline: 10, explorer: 14 } },
+    trainers: [
+      T('Hollowing acolyte A', 'keeper', [K(52), K(52)]),
+      T('Hollowing acolyte B', 'keeper', [K(53), K(53)]),
+      T('Hollowing acolyte C', 'keeper', [K(54), K(54)]),
+      T('Hollowing warden-aide A', 'keeper', [K(54), K(55)]),
+      T('Hollowing warden-aide B', 'keeper', [K(55), K(55)]),
+      T('Warden Còr', 'cor', [K(53), K(54), K(55), K(55), K(56)]),
+    ],
+    income: { quests: 1500, valuables: 1500, finds: 0 }, // the Long Round closes
+    spend: { bright_balm: 3, chart_end: 1 },
+    checkpoint: { name: 'Warden Còr (climax)', rec: 54, ace: 56 },
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Drift check: built trainers' authored payouts must match class rate × ace.
+// (Mirrors src/game/content/trainers.ts — update BOTH when a roster changes.)
+// ---------------------------------------------------------------------------
+const BUILT_PAYOUTS = {
+  lampwarden_tinderwick: ['warden', 10, 600],
+  beacon_keeper_a: ['keeper', 7, 140],
+  beacon_keeper_b: ['keeper', 8, 160],
+  wren_dimglass: ['rival', 6, 144],
+  flats_wayfarer_a: ['route', 9, 144],
+  flats_wayfarer_b: ['route', 11, 176],
+  lampwarden_pearlmoor: ['warden', 16, 960],
+};
+const failures = [];
+for (const [id, [klass, ace, authored]] of Object.entries(BUILT_PAYOUTS)) {
+  const expect = PAYOUT_RATE[klass] * ace;
+  if (expect !== authored) failures.push(`payout drift: ${id} authored ${authored}, formula says ${expect}`);
+}
+// Chart price sanity: the in-game chart items must use these tier prices.
+// (Tier mapping lives in 10-economy.md §6; this guards the tiers themselves.)
+if (!(PRICES.chart_early < PRICES.chart_mid && PRICES.chart_mid < PRICES.chart_late && PRICES.chart_late < PRICES.chart_end)) {
+  failures.push('chart price tiers must ascend');
+}
+// Move-id sanity for the shipped charts (mirror items.ts teach_move values).
+for (const id of ['cinder_spit', 'mist_spray', 'gust_up', 'focus_mind', 'wave_crash', 'hearth_pulse']) {
+  if (!MOVES.moves.some((m) => m.id === id)) failures.push(`chart teaches unknown move '${id}'`);
+}
+
+// ---------------------------------------------------------------------------
+// The walk
+// ---------------------------------------------------------------------------
+const PROFILES = {
+  rusher: { questShare: 0.34, spendBalms: 0.5, spendCharts: 0, catchesPerLeg: 0.2 },
+  mainline: { questShare: 1.0, spendBalms: 1.0, spendCharts: 1, catchesPerLeg: 1 },
+  explorer: { questShare: 1.0, spendBalms: 1.0, spendCharts: 1, extraWilds: 0.5, catchesPerLeg: 2 },
+};
+
+function priceOf(key) {
+  if (key in PRICES) return PRICES[key];
+  throw new Error(`unknown spend key ${key}`);
+}
+
+function simulate(profileName) {
+  const p = PROFILES[profileName];
+  let exp = expForLevel(5); // the starter, level 5
+  let wicks = STARTING_WICKS;
+  let minWicks = wicks;
+  const rows = [];
+  const ledger = [];
+
+  for (const leg of JOURNEY) {
+    let earned = 0, spent = 0, gained = 0;
+
+    // Wild battles fought on this leg.
+    let fights = leg.wild.fights[profileName] ?? leg.wild.fights.mainline;
+    if (p.extraWilds) fights = Math.round(fights * (1 + p.extraWilds));
+    const bst = wildBst(leg.wild.areas, leg.wild.band);
+    const avgLevel = (leg.wild.band[0] + leg.wild.band[1]) / 2;
+    gained += fights * expYield(bst, avgLevel);
+    // Catches pay the same XP as a knock-out (the collecting pillar stays on-curve).
+    gained += Math.round(p.catchesPerLeg) * expYield(bst, avgLevel);
+
+    // Trainer battles (everyone fights them — they're posted on the lanes).
+    for (const t of leg.trainers) {
+      const ace = Math.max(...t.kin.map((k) => k.level));
+      earned += PAYOUT_RATE[t.class] * ace;
+      for (const k of t.kin) {
+        const kinBst = k.species ? speciesBst(k.species) : trainerBst(k.level, t.class);
+        gained += Math.floor(expYield(kinBst, k.level) * TRAINER_XP_MULT);
+      }
+    }
+
+    // Quest / cache / valuable income, by how much optional content the profile does.
+    earned += Math.round((leg.income.quests + leg.income.finds) * p.questShare);
+    earned += profileName === 'rusher' ? 0 : leg.income.valuables; // valuables exist to be sold
+
+    // The planned kit purchases at this stop.
+    for (const [key, qty] of Object.entries(leg.spend ?? {})) {
+      const isChart = key.startsWith('chart');
+      const isBalm = key.includes('balm');
+      let n = qty;
+      if (isChart) n = Math.round(qty * p.spendCharts);
+      else if (isBalm) n = Math.round(qty * p.spendBalms);
+      spent += n * priceOf(key);
+    }
+
+    exp += Math.round(gained * shareFor(leg, profileName));
+    wicks += earned - spent;
+    minWicks = Math.min(minWicks, wicks);
+    ledger.push({ leg: leg.name, gained, earned, spent, wicks, level: levelForExp(exp) });
+
+    if (leg.checkpoint) {
+      rows.push({
+        checkpoint: leg.checkpoint.name,
+        rec: leg.checkpoint.rec,
+        ace: leg.checkpoint.ace,
+        level: levelForExp(exp),
+        wicks,
+      });
+    }
+  }
+  return { rows, ledger, minWicks };
+}
+
+// ---------------------------------------------------------------------------
+// Report
+// ---------------------------------------------------------------------------
+const pad = (s, n) => String(s).padEnd(n);
+const num = (s, n) => String(s).padStart(n);
+
+console.log('PixelKin progression & economy model');
+console.log(`(exp = L^3; yield = bst*level/20, trainer x1.5, catch XP on; wild BST from the dex where placed)`);
+
+const results = {};
+for (const name of Object.keys(PROFILES)) results[name] = simulate(name);
+
+console.log(`\n${pad('CHECKPOINT', 28)}${num('rec', 5)}${num('ace', 5)}` +
+  Object.keys(PROFILES).map((n) => num(n, 10) + num('wicks', 8)).join(''));
+results.mainline.rows.forEach((_, i) => {
+  const row = results.mainline.rows[i];
+  let line = `${pad(row.checkpoint, 28)}${num(row.rec ?? '—', 5)}${num(row.ace ?? '—', 5)}`;
+  for (const n of Object.keys(PROFILES)) {
+    const r = results[n].rows[i];
+    line += num(`L${r.level}`, 10) + num(r.wicks, 8);
+  }
+  console.log(line);
+});
+
+if (VERBOSE) {
+  for (const n of Object.keys(PROFILES)) {
+    console.log(`\n--- ${n} ledger ---`);
+    for (const l of results[n].ledger) {
+      console.log(`${pad(l.leg, 38)} +${num(l.gained, 6)}xp  +${num(l.earned, 5)}w  -${num(l.spent, 5)}w  = ${num(l.wicks, 6)}w  L${l.level}`);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Checks (the acceptance bar — see 10-economy.md §8)
+// ---------------------------------------------------------------------------
+for (const [i, row] of results.mainline.rows.entries()) {
+  if (row.rec === undefined) continue;
+  const d = row.level - row.rec;
+  if (d < -1) failures.push(`mainline UNDER curve at "${row.checkpoint}": L${row.level} vs rec ${row.rec}`);
+  if (d > 4) failures.push(`mainline OVER curve at "${row.checkpoint}": L${row.level} vs rec ${row.rec} (too easy)`);
+  const rush = results.rusher.rows[i];
+  if (rush.level - row.rec < -3) failures.push(`rusher too far under at "${row.checkpoint}": L${rush.level} vs rec ${row.rec}`);
+  const exp = results.explorer.rows[i];
+  if (row.ace !== undefined && exp.level - row.ace > 4) {
+    failures.push(`explorer trivialises "${row.checkpoint}": L${exp.level} vs ace ${row.ace}`);
+  }
+}
+for (const n of Object.keys(PROFILES)) {
+  if (results[n].minWicks < 0) failures.push(`${n} wallet goes NEGATIVE (min ${results[n].minWicks}w) — cut prices or raise payouts`);
+}
+// The mainline player should be able to afford each region's chart purchase as
+// planned (already enforced by the non-negative wallet since spends are applied).
+
+console.log('');
+if (failures.length > 0) {
+  console.log(`FAIL — ${failures.length} issue(s):`);
+  for (const f of failures) console.log(`  ✗ ${f}`);
+  process.exit(1);
+}
+console.log('PASS — curve continuous, wallet solvent, payouts on formula.');

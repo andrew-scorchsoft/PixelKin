@@ -31,6 +31,10 @@ export interface CutsceneContext {
   startTrainerBattle?(trainer: string): Promise<boolean>;
   /** Fully restore the party (the inn-rest / hearthside-heal op). */
   onHealParty?(): void;
+  /** Hand the player wicks (quest rewards, found purses). */
+  onGiveMoney?(amount: number): void;
+  /** Open a shop counter by id (mutates inventory + wicks via the host). */
+  openShop?(shopId: string): Promise<void>;
   /** Pan/zoom the camera onto a world tile (host supplies tile→pixel + freeze). */
   cameraFocusTile?(tx: number, ty: number, ms: number, zoom?: number): Promise<void>;
   /** Re-follow the player and restore zoom after a focus. */
@@ -181,6 +185,13 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
     case 'heal':
       ctx.onHealParty?.();
       void ctx.sfx.playVariant('world-heal', ['a', 'b']);
+      return true;
+    case 'giveMoney':
+      ctx.onGiveMoney?.(step.amount);
+      void ctx.sfx.playVariant('world-pickup', ['a', 'b', 'c']);
+      return true;
+    case 'shop':
+      await ctx.openShop?.(step.shop);
       return true;
     case 'gleam': {
       void ctx.sfx.playVariant('world-gleam', ['a', 'b', 'c']);

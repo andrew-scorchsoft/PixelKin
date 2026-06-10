@@ -74,10 +74,11 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'SHOPKEEPER', text: "His satchel? There by the counter, dear — he'd forget his own lamp if it weren't lit. Take it out to him." },
     { speaker: 'SHOPKEEPER', text: 'And tell him the trade-cart is late again. He likes knowing things.' },
   ],
-  // The plain keeper — appears once the kit script has run (flag:tinderwick_kit).
+  // The trading keeper — appears once the kit script has run (flag:tinderwick_kit);
+  // their placement ref is script.shop_tinderwick (these lines, then the counter).
   'npc.tinderwick_shopkeeper': [
     { speaker: 'SHOPKEEPER', text: 'How is the kit holding up? A lamp catches a kin; the balm mends one. Use them well.' },
-    { speaker: 'SHOPKEEPER', text: 'Next trade-cart comes down the Lanternway soon. Until then, the verge grass is generous to a careful Wayfarer.' },
+    { speaker: 'SHOPKEEPER', text: 'And the counter is open, dear — wicks for wares, wares for wicks. Have a look.' },
   ],
 
   // --- Tinderwick Lumenary hall (interior) + the Beacon quest stages ---
@@ -201,10 +202,11 @@ export const DIALOGUE: DialogueRegistry = {
   'sign.pearlmoor_shop': [
     { text: 'PEARLMOOR CHANDLERY\nNets, oil, salve, and tide-charms for the crossing. Step in out of the spray.' },
   ],
-  // The plain chandler — appears once the crossing-kit has been given.
+  // The trading chandler — appears once the crossing-kit has been given;
+  // their placement ref is script.shop_pearlmoor (these lines, then the counter).
   'npc.pearlmoor_shopkeeper': [
     { speaker: 'CHANDLER', text: "Bright lamps hold their catch — worth it for the harbour kin. Reyl's whole crew runs Tide; the triangle favours the prepared." },
-    { speaker: 'CHANDLER', text: 'Once you hold the Tidecall, mind you walk the shallows. The sea keeps gifts for those who can cross.' },
+    { speaker: 'CHANDLER', text: 'The counter is open — salves, lamps, and a few Star-charts off the last cart. Wicks well spent, Wayfarer.' },
   ],
   'npc.reyl_wash': [
     { speaker: 'REYL WASH', text: 'Step up to the sea-altar when your bond is ready, Wayfarer. The Tide does not hurry, and neither shall we.' },

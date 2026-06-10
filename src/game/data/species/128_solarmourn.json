@@ -38,6 +38,10 @@
       },
       {
         "level": 13,
+        "move": "glint_fang"
+      },
+      {
+        "level": 22,
         "move": "solar_lash"
       },
       {
@@ -51,6 +55,10 @@
       {
         "level": 40,
         "move": "sunburst_nova"
+      },
+      {
+        "level": 46,
+        "move": "mourninglight"
       }
     ],
     "kindling": [],

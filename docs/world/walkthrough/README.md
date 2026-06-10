@@ -233,6 +233,16 @@ stop's existing level band from the table above. An earned loop must never force
 traversal the main path doesn't already require; if a design wants one, it's the wrong
 design for that region.
 
+**The curve is now economically modelled (2026-06).** This table's reachability — and the
+wick economy that rides on it — is validated end-to-end by `tools/balance/progression.mjs`
+against the **per-region battle & earnings budget** in
+[`docs/mechanics/10-economy.md`](../../mechanics/10-economy.md) §8 (binding on region
+authors: trainer counts/classes per segment, quest wicks, valuables, shop stock). Change a
+band, a roster, a price, or a payout → update the model's JOURNEY leg and re-run; it fails
+loudly when the curve or the wallet breaks. (Tuning fallout already locked: XP yield is
+`bst·level/20`, trainer battles ×1.5, **a catch pays like a knock-out** — and at Otho the
+post-Vigil expectation is ~26 vs his ace 28, the designed wall.)
+
 ---
 
 ## 5. Mechanic-introduction cadence & how exploration widens
@@ -276,10 +286,11 @@ From `graph.ts` edges + atlas §3. Each Gift, once earned, opens these — regio
 
 ### Engine mechanics the journey assumes (dependencies, not new design)
 The battle beats from ~Pearlmoor on assume **status conditions** (`scorch · drench · numb ·
-doze · blight · dazzle · chill`) and a **move-learning prompt** are live — both are on the
-engine roadmap (`docs/mechanics/battle-runtime-plan.md`) but not yet wired. Region files may
-write battles that *use* status (e.g. a Lampwarden built around `doze`), and should flag
-where a beat depends on these so they're prioritised.
+doze · blight · dazzle · chill`) are live — still on the engine roadmap
+(`docs/mechanics/battle-runtime-plan.md` Part B), so region files may write battles that
+*use* status but should flag the dependency. The **move-learning prompt IS live** (Part A,
+2026-06: `ui/MoveLearnPrompt`, shared by level-ups and Star-charts), as are the **wick
+economy, shops and Star-charts** (`10-economy.md`).
 
 ### The standing per-region kit (BUILT in South — every region copies it)
 South established the small, repeatable mechanics every region is expected to ship, all
@@ -287,8 +298,13 @@ pure data (see `tools/maps/build_*.py` + `src/game/content/` for the worked patt
 - **Rest points** — each town keeps one full-heal: an inn keeper or hearth/bed whose
   NPC/trigger `dialogue_ref` is a *script* ending in the `heal` op (`script.inn_rest`,
   `script.home_rest`). Never leave a Lumenary town without one.
-- **Shop kits (until coin is wired)** — the keeper hands a one-time kit via a script that
-  sets a flag; a `hidden_when_flag`/`requires_flag` NPC pair swaps the keeper's dialogue.
+- **Shop kits + the open counter (coin is WIRED — wicks)** — the keeper still hands the
+  one-time kit via a script + flag pair, but the post-kit keeper now *trades*: their
+  dialogue_ref is a script ending in `{ op: 'shop', shop: '<id>' }` (ShopDef in
+  `content/shops.ts`; prices on the ItemDefs). Trainer wins pay wicks
+  (`TrainerDef.payout` = class rate × ace level), quests/valuables top up the purse, and
+  **Star-charts** (single-use taught-move items) are the aspirational sink. Stocking rules,
+  payout classes and the per-region budget: [`10-economy.md`](../../mechanics/10-economy.md).
 - **Item caches** — 2–3 ground pickups per route: `sprite:'item_cache'` NPCs whose script
   gives the item, says the find, sets `flag:picked_*`; `hidden_when_flag` removes them live.
 - **Festival payoff NPCs** — each Gleam adds 2+ `requires_flag:'gleam:<element>'` townsfolk
@@ -506,6 +522,9 @@ the rival is **Wren**; the mentor is **Star-tender Fenn**; **Fenn and Còr share
 star-tenders**; the eight **festivals** in §3 Arc E; the Keystar-kin is **Keylumen** (atlas);
 **Lamplight** (the vesperlamp's brightness tiers — Ember-glow → Warmlight → Brightlight →
 Starlight → Radiant — as the continuous, additive, non-blocking exploration axis of §5).
+Locked 2026-06 by the economy design (`docs/mechanics/10-economy.md`): money is **wicks**
+(waxed lamp-wicks, traded; Tinderwick minted the custom) and taught-move items are
+**Star-charts** (pressed constellation figures, single-use) — never "gold/coins" or "TM/HM".
 
 ---
 

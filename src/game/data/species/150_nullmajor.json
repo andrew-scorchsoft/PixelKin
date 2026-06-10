@@ -46,11 +46,19 @@
       },
       {
         "level": 31,
+        "move": "gloomswell"
+      },
+      {
+        "level": 40,
         "move": "voidburst"
       },
       {
         "level": 48,
         "move": "shadow_rend"
+      },
+      {
+        "level": 52,
+        "move": "hollowing_hymn"
       }
     ],
     "kindling": [],

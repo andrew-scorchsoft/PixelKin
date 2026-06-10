@@ -10,7 +10,7 @@
 import type { WorldSnapshot } from '@game/data/world/types';
 
 /** The current schema version — bump and add a migration in SaveCodec when shapes change. */
-export const SAVE_SCHEMA_VERSION = 1;
+export const SAVE_SCHEMA_VERSION = 2;
 
 export type KinStatus = 'none' | 'sleep' | 'burn' | 'freeze' | 'paralysis' | 'poison';
 
@@ -42,4 +42,6 @@ export interface SaveGame {
   party: KinInstanceData[]; // first entry is the battle lead
   box?: KinInstanceData[]; // overflow storage (later)
   inventory: InventoryData;
+  /** The player's wicks (currency — see content/economy.ts). */
+  money: number;
 }

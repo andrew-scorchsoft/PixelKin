@@ -364,7 +364,7 @@
       "facing": "down",
       "sprite": "npc_shopkeeper",
       "movement": "static",
-      "dialogue_ref": "npc.pearlmoor_shopkeeper",
+      "dialogue_ref": "script.shop_pearlmoor",
       "requires_flag": "flag:pearlmoor_kit"
     }
   ],

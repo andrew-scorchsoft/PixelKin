@@ -6,7 +6,14 @@ pieces were intentionally stubbed; this plans them so they land cleanly on the
 existing engine rather than as bolt-ons. Neither changes balance data — they make
 the already-authored move `effect`s and the dex `learnset` actually play.
 
-## Part A — Move-learning prompt (replace the silent auto-replace)
+> **Status: Part A SHIPPED (2026-06).** `KinInstance.gainExp` returns
+> `{ levelsGained, learned, pending }` (free-slot moves auto-learn; a full kit
+> defers to the player), and the shared **`ui/MoveLearnPrompt`** runs the
+> classic set-one-aside choice — consumed by `BattleScene.awardExp` (level-ups)
+> and `ItemsMenu.studyChart` (Star-charts). Part B (status engine) remains the
+> open piece and is the next battle-runtime priority.
+
+## Part A — Move-learning prompt (replace the silent auto-replace) — ✅ SHIPPED
 
 **Today:** `KinInstance.learnMovesAt()` (KinInstance.ts) auto-overwrites move slot 0
 when a kin already knows 4 and levels into a new move. The player never sees it and
@@ -37,6 +44,10 @@ which move? / Give up on Ember Jab."*
 **Touch points:** `systems/party/KinInstance.ts` (return shape + replaceMove), new
 `ui/MoveLearnPrompt.ts`, `scenes/BattleScene.ts` (consume `pending`). No data changes.
 Small, self-contained; ~half a day.
+
+> **As built:** `KinInstance.knowsMove/canStudy/learnMove/replaceMove` +
+> `ui/MoveLearnPrompt` (the set-one-aside flow); `ItemsMenu.studyChart()` delegates to
+> the same prompt, so battle level-ups and chart study share one UI exactly as planned.
 
 ## Part B — Status condition engine (run, don't just narrate)
 

@@ -9,6 +9,7 @@ const dmgByType = {};
 for (const t of [...TYPES, "Plain"]) dmgByType[t] = { physical: [], special: [] };
 for (const m of MOVES_DATA.moves) {
   if (m.category === "status" || m.power === 0) continue;
+  if (m.signature) continue; // signatures belong to one line; owners add theirs below
   (dmgByType[m.type] ||= { physical: [], special: [] })[m.category].push(m);
 }
 for (const t of Object.keys(dmgByType)) {
@@ -35,6 +36,11 @@ export function autoMoveset(sp) {
   const seen = new Set();
   const push = (m) => { if (m && !seen.has(m.id)) { seen.add(m.id); picks.push(m.id); } };
 
+  // a damaging signature from this species' own learnset leads its kit
+  for (const e of sp.learnset?.levelup || []) {
+    const m = MOVES[e.move];
+    if (m?.signature && m.category !== "status" && m.power > 0) push(m);
+  }
   // primary STAB: top two damaging moves of primary type in preferred channel
   const t0 = sp.types[0];
   const prim = dmgByType[t0]?.[chan] || [];
