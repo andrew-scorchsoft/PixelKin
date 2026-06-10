@@ -80,7 +80,7 @@ terrain_layers = [
     {"name": "t_water", "role": "terrain", "terrain": "water",
      "set": "vesper_overworld_set", "depth": 0, "data": water},
     # path expands LAST: the lit lane stays continuous where tide pools lap it
-    {"name": "t_path", "role": "terrain", "terrain": "path",
+    {"name": "t_path", "role": "terrain", "terrain": "trail",
      "set": "vesper_overworld_set", "depth": 0, "data": path},
 ]
 

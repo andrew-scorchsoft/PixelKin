@@ -113,7 +113,7 @@ terrain_layers = [
      "set": "vesper_overworld_set", "depth": 0, "data": path},
     {"name": "t_sand", "role": "terrain", "terrain": "sand",
      "set": "vesper_overworld_set", "depth": 0, "data": sand},
-    {"name": "t_pond", "role": "terrain", "terrain": "water",
+    {"name": "t_pond", "role": "terrain", "terrain": "pond",
      "set": "vesper_overworld_set", "depth": 0, "data": pond},
     {"name": "t_sea", "role": "terrain", "terrain": "water",
      "set": "vesper_overworld_set", "depth": 0, "data": water_sea},
