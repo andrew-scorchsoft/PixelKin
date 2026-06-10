@@ -1,0 +1,84 @@
+{
+  "id": 154,
+  "slug": "vulcinder",
+  "name": "Vulcinder",
+  "types": [
+    "Ember"
+  ],
+  "role": "Special Sweeper",
+  "tier": "C",
+  "stats": {
+    "hp": 59,
+    "atk": 38,
+    "def": 50,
+    "spa": 108,
+    "spd": 59,
+    "spe": 104
+  },
+  "bst": 418,
+  "ability": "emberheart",
+  "hidden_ability": "brisk",
+  "catchRate": 112,
+  "kindling": {
+    "into": 3,
+    "trigger": {
+      "kind": "level",
+      "level": 34
+    }
+  },
+  "from": 1,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "tuft_spark"
+      },
+      {
+        "level": 9,
+        "move": "scorch_veil"
+      },
+      {
+        "level": 13,
+        "move": "cinder_spit"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "hearth_pulse"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "Vulpyre's kindled middle form \u2014 a lean adolescent ember-fox caught between kit and crown. Its mane has lifted into a running crest of small steady flames and its paws leave brief warm prints that fade like blown-out matches. Quick-tempered but loyal, it circles its trainer at dusk like a lantern doi",
+    "category": "Ember Caster Kin",
+    "size_cm": 95,
+    "weight_kg": 19.5,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 10,
+      "max": 12
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Lean adolescent fox, deep ember-red coat with cream underbelly and chest blaze; mane risen into a low crest of orange flame tongues tipped white; longer legs and brush tail with a glowing ember core; alert amber eyes. Clearly between Vulpyre's round kit and Blazethorn's spike-crowned regal fox at 64px.",
+    "palette": "Lean adolescent fox, deep ember-red coat with cream underbelly and chest blaze; mane risen into a low crest of orange flame tongues tipped white; longer legs and brush tail with a glowing ember core; alert amber eyes. Clearly between Vulpyre's round kit and Blazethorn's spike-crowned regal fox at 64px.",
+    "direction": "The awkward fierce teenage years of your first flame \u2014 faster than it knows what to do with."
+  },
+  "provenance_concept_id": "X-VULCINDER"
+}

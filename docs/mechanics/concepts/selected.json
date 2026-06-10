@@ -10,9 +10,10 @@
   "region": "south",
   "rarity": "common",
   "line": {
-   "shape": "two-stage",
+   "shape": "three-stage",
    "stage": 1,
-   "kindles_into": "B01-016"
+   "kindles_into": "X-VULCINDER",
+   "kindle_trigger": "level 16"
   },
   "concept": "(existing starter)",
   "visual": "(existing art)",
@@ -30,8 +31,8 @@
   "role": "Special Sweeper",
   "tier": "D",
   "line": {
-   "shape": "two-stage",
-   "stage": 2,
+   "shape": "three-stage",
+   "stage": 3,
    "kindles_into": null,
    "kindle_trigger": null
   },
@@ -58,10 +59,10 @@
   "role": "Special Wall",
   "tier": "B",
   "line": {
-   "shape": "two-stage",
+   "shape": "three-stage",
    "stage": 1,
-   "kindles_into": "B02-007",
-   "kindle_trigger": "level 32"
+   "kindles_into": "X-BRINDRIFT",
+   "kindle_trigger": "level 17"
   },
   "region": "south",
   "rarity": "uncommon",
@@ -86,8 +87,8 @@
   "role": "Special Wall",
   "tier": "D",
   "line": {
-   "shape": "two-stage",
-   "stage": 2,
+   "shape": "three-stage",
+   "stage": 3,
    "kindles_into": null,
    "kindle_trigger": null
   },
@@ -799,7 +800,7 @@
   "role": "Special Sweeper",
   "tier": "B",
   "line": {
-   "shape": "two-stage",
+   "shape": "three-stage",
    "stage": 1,
    "kindles_into": "B02-011",
    "kindle_trigger": "level 26"
@@ -828,10 +829,10 @@
   "role": "Special Sweeper",
   "tier": "D",
   "line": {
-   "shape": "two-stage",
+   "shape": "three-stage",
    "stage": 2,
-   "kindles_into": null,
-   "kindle_trigger": null
+   "kindles_into": "X-PHAROLUX",
+   "kindle_trigger": "level 48"
   },
   "region": "south",
   "rarity": "rare",
@@ -2914,7 +2915,7 @@
   "role": "Physical Wall",
   "tier": "A",
   "line": {
-   "shape": "two-stage",
+   "shape": "four-stage",
    "stage": 1,
    "kindles_into": "B07-010",
    "kindle_trigger": "level 28"
@@ -2943,10 +2944,10 @@
   "role": "Physical Bruiser",
   "tier": "D",
   "line": {
-   "shape": "two-stage",
+   "shape": "four-stage",
    "stage": 2,
-   "kindles_into": null,
-   "kindle_trigger": null
+   "kindles_into": "X-COROLION",
+   "kindle_trigger": "level 47"
   },
   "region": "west",
   "rarity": "rare",
@@ -4315,9 +4316,9 @@
   "region": "south",
   "rarity": "common",
   "line": {
-   "shape": "two-stage",
+   "shape": "three-stage",
    "stage": 1,
-   "kindles_into": "X-CLOVERHART",
+   "kindles_into": "X-CLOVERBUCK",
    "kindle_trigger": "level 18"
   },
   "concept": "The third starter \u2014 the Verdant kin of the founding trio, given by the Tinderwick mentor alongside Vulpyre and Brinix. A plucky sprout-cub that wears a four-leaf clover like a tiny lantern-leaf, gathering what light remains in the Long Dusk and glowing a gentle green. Bulky and brave for its size, it plants itself between trouble and its friends.",
@@ -4339,8 +4340,8 @@
   "region": "south",
   "rarity": "rare",
   "line": {
-   "shape": "two-stage",
-   "stage": 2,
+   "shape": "three-stage",
+   "stage": 3,
    "kindles_into": null,
    "kindle_trigger": null
   },
@@ -4351,5 +4352,152 @@
   "hook": "The satisfying payoff of raising your clover-cub \u2014 a majestic, immovable grove-guardian stag.",
   "dex_id": 153,
   "line_primary_type": "Verdant"
+ },
+ {
+  "concept_id": "X-VULCINDER",
+  "name": "Vulcinder",
+  "types": [
+   "Ember"
+  ],
+  "role": "Special Sweeper",
+  "tier": "C",
+  "region": "south",
+  "rarity": "rare",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B01-016",
+   "kindle_trigger": "level 34"
+  },
+  "concept": "Vulpyre's kindled middle form \u2014 a lean adolescent ember-fox caught between kit and crown. Its mane has lifted into a running crest of small steady flames and its paws leave brief warm prints that fade like blown-out matches. Quick-tempered but loyal, it circles its trainer at dusk like a lantern doing the rounds.",
+  "visual": "Lean adolescent fox, deep ember-red coat with cream underbelly and chest blaze; mane risen into a low crest of orange flame tongues tipped white; longer legs and brush tail with a glowing ember core; alert amber eyes. Clearly between Vulpyre's round kit and Blazethorn's spike-crowned regal fox at 64px.",
+  "size_cm": 95,
+  "weight_kg": 19.5,
+  "hook": "The awkward fierce teenage years of your first flame \u2014 faster than it knows what to do with.",
+  "dex_id": 154,
+  "line_primary_type": "Ember"
+ },
+ {
+  "concept_id": "X-BRINDRIFT",
+  "name": "Brindrift",
+  "types": [
+   "Tide"
+  ],
+  "role": "Special Wall",
+  "tier": "C",
+  "region": "south",
+  "rarity": "rare",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "B02-007",
+   "kindle_trigger": "level 35"
+  },
+  "concept": "Brinix's kindled middle form \u2014 a broader, current-riding shell-back that has learned to hold its ground in open water. Sea-glass spurs are budding along its crest, and it hums a deeper, slower tune that calms rough water around small boats. It plants itself between the swell and anything smaller than itself.",
+  "visual": "Mid-sized crested water-kin, slate-blue shell plating starting to crest with small translucent teal sea-glass spurs; seafoam underside, sturdy fin-limbs, calm deep eyes; visibly grown from Brinix's compact crested body toward Brinarch's broad-shouldered bulk at 64px.",
+  "size_cm": 110,
+  "weight_kg": 42,
+  "hook": "The steady middle verse of the tide-song \u2014 your pond-friend learning to be a harbour wall.",
+  "dex_id": 155,
+  "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "X-CLOVERBUCK",
+  "name": "Cloverbuck",
+  "types": [
+   "Verdant"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "C",
+  "region": "south",
+  "rarity": "rare",
+  "line": {
+   "shape": "three-stage",
+   "stage": 2,
+   "kindles_into": "X-CLOVERHART",
+   "kindle_trigger": "level 36"
+  },
+  "concept": "Cloverkit's kindled middle form \u2014 a young grove buck whose first antlers have budded as soft green sprigs, each tipped with a tiny folded clover not yet in bloom. Gangly and brave, it stands its ground before it really has the size for it, glowing faintly where the clover gathers what light remains.",
+  "visual": "Young leaf-deer, lime-and-deep-green coat with cream chest; slender budding antlers as curling green sprigs tipped with folded clovers; the head-clover from its kit days now worn like a small crown sprout; long legs, big dark earnest eyes. Between Cloverkit's sprout-cub and Cloverhart's broad clover-crowned stag at 64px.",
+  "size_cm": 105,
+  "weight_kg": 34,
+  "hook": "Kit, buck, hart \u2014 the lucky sprout finds its legs and starts standing between you and trouble.",
+  "dex_id": 156,
+  "line_primary_type": "Verdant"
+ },
+ {
+  "concept_id": "X-PHAROLUX",
+  "name": "Pharolux",
+  "types": [
+   "Tide",
+   "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "E",
+  "region": "south",
+  "rarity": "very_rare",
+  "line": {
+   "shape": "three-stage",
+   "stage": 3,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "concept": "Glostrael's rare apex kindling \u2014 a vast lantern-bell leviathan the old quay-folk call the living lighthouse. Its golden core burns steady as a beacon and its eight tendrils trail star-bright orbs that mark safe water for miles. Sailors of Dimglass swear the Long Dusk never fully settles over a bay a Pharolux has chosen.",
+  "visual": "Immense translucent bell-jelly like a cathedral lantern; stained-glass panes of gold light in an aqua-blue dome, a blazing warm beacon-core at the crown that sweeps slow beams; eight long tendrils each ending in a bright pearl-orb like a hung star; drifting, weightless, regal at 64px.",
+  "size_cm": 380,
+  "weight_kg": 210,
+  "hook": "The rare surf catch grows into a literal lighthouse \u2014 the bay it loves never goes dark.",
+  "dex_id": 157,
+  "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "X-COROLION",
+  "name": "Corolion",
+  "types": [
+   "Solar",
+   "Stone"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "E",
+  "region": "west",
+  "rarity": "very_rare",
+  "line": {
+   "shape": "four-stage",
+   "stage": 3,
+   "kindles_into": "X-DAWNREGENT",
+   "kindle_trigger": "level 56"
+  },
+  "concept": "Goldmane's apex kindling \u2014 a crowned sun-lion whose stone mane has fused into a full corona of carved gold rays. It walks ridge-lines at the dusk's edge like a piece of the missing sun out for a patrol, and the spiral sigils on its plates glow brighter the darker the sky gets. Old herders leave the high gates open for it.",
+  "visual": "Massive regal lion, body of smooth gold-toned stone plates carved with spiral sun sigils that glow amber; mane a complete radiating corona of sculpted gold-stone rays like a sun disc behind its head; molten-gold eyes, heavy unhurried stance; reads as a walking sun-crown at 64px.",
+  "size_cm": 240,
+  "weight_kg": 410,
+  "hook": "The cub with golden paws becomes a piece of the sun that patrols the dark.",
+  "dex_id": 158,
+  "line_primary_type": "Solar"
+ },
+ {
+  "concept_id": "X-DAWNREGENT",
+  "name": "Dawnregent",
+  "types": [
+   "Solar",
+   "Light"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "F",
+  "region": "west",
+  "rarity": "very_rare",
+  "line": {
+   "shape": "four-stage",
+   "stage": 4,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "concept": "The fourth and final kindling of the Gilpaw line, reached only by a Corolion raised far beyond most wayfarings \u2014 and the only known kin to kindle into the legendary register. Its stone plates have burned away to leave a being of warm dawn-light wearing the old carved corona like a crown; where it stands, the horizon mistakes itself for morning. The histories record fewer Dawnregents than relit constellations, and the histories may be generous.",
+  "visual": "Towering luminous lion of living dawn-light, gold-white body with a soft sunrise gradient of rose and amber along the spine; the carved stone corona of its old form worn as a vast crown ring behind its head, now blazing; long light-trailing mane and tail like streamers of morning sky, calm sovereign eyes. Epic, serene, sunrise-bringing at 64px.",
+  "size_cm": 320,
+  "weight_kg": 180,
+  "hook": "Raise one line far enough and it answers the Long Dusk in person \u2014 a walking sunrise.",
+  "dex_id": 159,
+  "line_primary_type": "Solar"
  }
 ]

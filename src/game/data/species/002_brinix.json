@@ -20,10 +20,10 @@
   "hidden_ability": "mistveil",
   "catchRate": 175,
   "kindling": {
-    "into": 4,
+    "into": 155,
     "trigger": {
       "kind": "level",
-      "level": 32
+      "level": 17
     }
   },
   "from": null,

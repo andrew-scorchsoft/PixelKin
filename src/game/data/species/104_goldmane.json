@@ -20,7 +20,13 @@
   "ability": "sunsoak",
   "hidden_ability": "forager",
   "catchRate": 57,
-  "kindling": null,
+  "kindling": {
+    "into": 158,
+    "trigger": {
+      "kind": "level",
+      "level": 47
+    }
+  },
   "from": 103,
   "stage": 2,
   "learnset": {

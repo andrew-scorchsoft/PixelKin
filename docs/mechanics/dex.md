@@ -1,19 +1,19 @@
-# PixelKin — The Dex (153)
+# PixelKin — The Dex (159)
 
 > Generated from `src/game/data/species.json` by `tools/balance/gen_docs.py`. Every entry is original (VISION.md). Lines show kindling chains (→).
 
-- **Total:** 153  |  **Tiers:** A:33 B:20 C:35 D:48 E:14 F:3
-- **Primary types:** Ember:16  Tide:16  Verdant:19  Stone:16  Storm:17  Frost:15  Solar:13  Lunar:13  Light:16  Dark:12
+- **Total:** 159  |  **Tiers:** A:33 B:20 C:38 D:48 E:16 F:4
+- **Primary types:** Ember:17  Tide:18  Verdant:20  Stone:16  Storm:17  Frost:15  Solar:15  Lunar:13  Light:16  Dark:12
 
 
 ## South — Tinderwick / coast (Ember, Tide)
 
 | # | Name | Types | Tier | Role | BST | Kindles | Catch | Size | Dex entry |
 |--:|------|-------|:--:|------|--:|---------|--:|-----|-----------|
-| 1 | **Vulpyre** | Ember | B | Special Sweeper | 356 | → Blazethorn (L16) | 175 | 60cm/9.4kg | It dozes on sun-warmed stones and bolts at the first drop of rain. When a Vulpyre trusts… |
-| 2 | **Brinix** | Tide | B | Special Wall | 352 | → Brinarch (L32) | 175 | 52cm/11.5kg | Its side-fins glow softly in deep water. Brinix hums a bubbling tune that settles nervou… |
-| 3 | **Blazethorn** | Ember | D | Special Sweeper | 498 | (from Vulpyre) | 65 | 110cm/26.5kg | The final form of the starter Vulpyre: a proud, sleek fire-fox whose mane erupts into a … |
-| 4 | **Brinarch** | Tide | D | Special Wall | 498 | (from Brinix) | 57 | 145cm/98kg | Brinix's final kindled form. The brine-crest has broadened into a sweeping crown of sea-… |
+| 1 | **Vulpyre** | Ember | B | Special Sweeper | 356 | → Vulcinder (L16) | 175 | 60cm/9.4kg | It dozes on sun-warmed stones and bolts at the first drop of rain. When a Vulpyre trusts… |
+| 2 | **Brinix** | Tide | B | Special Wall | 352 | → Brindrift (L17) | 175 | 52cm/11.5kg | Its side-fins glow softly in deep water. Brinix hums a bubbling tune that settles nervou… |
+| 3 | **Blazethorn** | Ember | D | Special Sweeper | 498 | (from Vulcinder) | 65 | 110cm/26.5kg | The final form of the starter Vulpyre: a proud, sleek fire-fox whose mane erupts into a … |
+| 4 | **Brinarch** | Tide | D | Special Wall | 498 | (from Brindrift) | 57 | 145cm/98kg | Brinix's final kindled form. The brine-crest has broadened into a sweeping crown of sea-… |
 | 5 | **Wicklit** | Light/Ember | A | Disruptor / Status | 312 | → Wickmere (L16) | 210 | 9cm/0.04kg | A matchstick sprite, barely the height of a thumb, that ignites itself to draw attention… |
 | 6 | **Wickmere** | Light/Ember | B | Disruptor / Status | 350 | → Wicklord (L32) | 175 | 55cm/3.1kg | A half-grown candle-folk that has learned to shape its wax body mid-battle, flowing arou… |
 | 7 | **Wicklord** | Light/Ember | D | Special Tank | 498 | (from Wickmere) | 57 | 160cm/42kg | A regal candelabra-kin whose body is a flowing pillar of warm wax lined with seven blazi… |
@@ -39,13 +39,17 @@
 | 27 | **Brineroll** | Tide | C | Utility / Speedster | 418 | → Brinewrath (L28) | 120 | 40cm/6.5kg | Brinelet has grown a proper ridged shell and longer fins, tumbling through shallows with… |
 | 28 | **Brinewrath** | Tide | D | Utility / Speedster | 498 | (from Brineroll) | 57 | 110cm/52kg | The line's final form — a sleek armoured tidal-beast that rides currents at high speed, … |
 | 29 | **Glostern** | Tide/Light | B | Special Sweeper | 350 | → Glostrael (L26) | 175 | 28cm/0.4kg | A small jellyfish-lantern drifting through Pearlmoor harbour. Its translucent bell glows… |
-| 30 | **Glostrael** | Tide/Light | D | Special Sweeper | 498 | (from Glostern) | 57 | 180cm/12kg | Glostern's kindled form — its bell has expanded enormously and its moon-glow fills the s… |
+| 30 | **Glostrael** | Tide/Light | D | Special Sweeper | 498 | → Pharolux (L48) | 57 | 180cm/12kg | Glostern's kindled form — its bell has expanded enormously and its moon-glow fills the s… |
 | 31 | **Lumpin** | Tide/Light | B | Special Wall | 350 | → Lumplass (L22) | 175 | 22cm/1.4kg | A limpet-kin whose flat shell glows with stored moonlight. It clings to coastal rocks an… |
 | 32 | **Lumplass** | Tide/Light | D | Special Wall | 498 | (from Lumpin) | 65 | 65cm/28kg | Lumpin's shell has fused into a radiant broad disc; it now clings to sea-cliff faces and… |
 | 33 | **Embralux** | Ember/Light | E | Special Sweeper | 558 |  | 24 | 160cm/52kg | An apex Ember/Light candidate for the south region's secret Lumenary approach — a great … |
 | 34 | **Tideveil** | Tide/Light | E | Special Wall | 558 |  | 24 | 1800cm/4200kg | The Tide Constellation Warden — a vast, semi-transparent sea-spirit that dwells in the T… |
-| 152 | **Cloverkit** | Verdant | B | Physical Bruiser | 356 | → Cloverhart (L18) | 175 | 45cm/6.5kg | A sprout-cub that wears a four-leaf clover like a tiny lantern-leaf; in the Long Dusk th… |
-| 153 | **Cloverhart** | Verdant | D | Physical Bruiser | 498 | (from Cloverkit) | 57 | 165cm/98kg | Cloverkit's kindled form: a great clover-crowned stag whose antlers bloom with year-roun… |
+| 152 | **Cloverkit** | Verdant | B | Physical Bruiser | 356 | → Cloverbuck (L18) | 175 | 45cm/6.5kg | A sprout-cub that wears a four-leaf clover like a tiny lantern-leaf; in the Long Dusk th… |
+| 153 | **Cloverhart** | Verdant | D | Physical Bruiser | 498 | (from Cloverbuck) | 57 | 165cm/98kg | Cloverkit's kindled form: a great clover-crowned stag whose antlers bloom with year-roun… |
+| 154 | **Vulcinder** | Ember | C | Special Sweeper | 418 | → Blazethorn (L34) | 112 | 95cm/19.5kg | Vulpyre's kindled middle form — a lean adolescent ember-fox caught between kit and crown… |
+| 155 | **Brindrift** | Tide | C | Special Wall | 418 | → Brinarch (L35) | 112 | 110cm/42kg | Brinix's kindled middle form — a broader, current-riding shell-back that has learned to … |
+| 156 | **Cloverbuck** | Verdant | C | Physical Bruiser | 418 | → Cloverhart (L36) | 112 | 105cm/34kg | Cloverkit's kindled middle form — a young grove buck whose first antlers have budded as … |
+| 157 | **Pharolux** | Tide/Light | E | Special Sweeper | 558 | (from Glostrael) | 24 | 380cm/210kg | Glostrael's rare apex kindling — a vast lantern-bell leviathan the old quay-folk call th… |
 
 ## East — Lowleaf & Cinderhead (Verdant, Stone)
 
@@ -130,7 +134,7 @@
 | # | Name | Types | Tier | Role | BST | Kindles | Catch | Size | Dex entry |
 |--:|------|-------|:--:|------|--:|---------|--:|-----|-----------|
 | 103 | **Gilpaw** | Solar/Stone | A | Physical Wall | 312 | → Goldmane (L28) | 210 | 38cm/22.0kg | A small leonine cub whose coat has mineralised into gilded stone plates, soaking up ambi… |
-| 104 | **Goldmane** | Solar/Stone | D | Physical Bruiser | 498 | (from Gilpaw) | 57 | 155cm/210.0kg | A gilded stone lion whose mane has erupted into a crown of solar-flare spines; it stores… |
+| 104 | **Goldmane** | Solar/Stone | D | Physical Bruiser | 498 | → Corolion (L47) | 57 | 155cm/210.0kg | A gilded stone lion whose mane has erupted into a crown of solar-flare spines; it stores… |
 | 105 | **Snoozlet** | Lunar | A | Balanced / Pivot | 312 | → Drowshorn (L16) | 210 | 32cm/7.5kg | A drowsy round moon-sheep that drifts half-awake through the Nightreach highlands, trail… |
 | 106 | **Drowshorn** | Lunar | C | Balanced / Pivot | 418 | → Lunarbel (L33) | 120 | 85cm/38.0kg | A mid-sized dream-ram whose crescent horns have grown into proper moon-arcs that hum wit… |
 | 107 | **Lunarbel** | Lunar/Light | D | Special Tank | 498 | (from Drowshorn) | 57 | 155cm/88.0kg | A great moon-ram whose wool has become a cascade of solidified moonlight, each strand a … |
@@ -159,6 +163,8 @@
 | 130 | **Heliovast** | Solar | E | Special Sweeper | 558 |  | 24 | 250cm/280kg | Sealed inside the Helia Vault — a reliquary off Sunvault Climb whose door can only be un… |
 | 131 | **Helixia** | Solar | E | Special Sweeper | 558 |  | 24 | 150cm/88.0kg | The Helia Vault's guardian: a great solar apex kin shaped like a living orrery, its body… |
 | 132 | **Lunaveil** | Lunar | E | Utility / Speedster | 558 |  | 24 | 320cm/140kg | The luminous anchor of the Lunar Constellation, a silken serpent-moth of impossible size… |
+| 158 | **Corolion** | Solar/Stone | E | Physical Bruiser | 558 | → Dawnregent (L56) | 24 | 240cm/410kg | Goldmane's apex kindling — a crowned sun-lion whose stone mane has fused into a full cor… |
+| 159 | **Dawnregent** | Solar/Light | F | Physical Bruiser | 642 | (from Corolion) | 6 | 320cm/180kg | The fourth and final kindling of the Gilpaw line, reached only by a Corolion raised far … |
 
 ## Outer — Coldfog Marches (Dark)
 

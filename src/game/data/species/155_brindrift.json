@@ -1,0 +1,84 @@
+{
+  "id": 155,
+  "slug": "brindrift",
+  "name": "Brindrift",
+  "types": [
+    "Tide"
+  ],
+  "role": "Special Wall",
+  "tier": "C",
+  "stats": {
+    "hp": 84,
+    "atk": 31,
+    "def": 71,
+    "spa": 59,
+    "spd": 102,
+    "spe": 71
+  },
+  "bst": 418,
+  "ability": "tidecaller",
+  "hidden_ability": "thickcoat",
+  "catchRate": 112,
+  "kindling": {
+    "into": 4,
+    "trigger": {
+      "kind": "level",
+      "level": 35
+    }
+  },
+  "from": 2,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "mist_spray"
+      },
+      {
+        "level": 9,
+        "move": "drench_song"
+      },
+      {
+        "level": 13,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "tide_pulse"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "Brinix's kindled middle form \u2014 a broader, current-riding shell-back that has learned to hold its ground in open water. Sea-glass spurs are budding along its crest, and it hums a deeper, slower tune that calms rough water around small boats. It plants itself between the swell and anything smaller tha",
+    "category": "Tide Warden Kin",
+    "size_cm": 110,
+    "weight_kg": 42,
+    "habitat": "south"
+  },
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 10,
+      "max": 12
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "Mid-sized crested water-kin, slate-blue shell plating starting to crest with small translucent teal sea-glass spurs; seafoam underside, sturdy fin-limbs, calm deep eyes; visibly grown from Brinix's compact crested body toward Brinarch's broad-shouldered bulk at 64px.",
+    "palette": "Mid-sized crested water-kin, slate-blue shell plating starting to crest with small translucent teal sea-glass spurs; seafoam underside, sturdy fin-limbs, calm deep eyes; visibly grown from Brinix's compact crested body toward Brinarch's broad-shouldered bulk at 64px.",
+    "direction": "The steady middle verse of the tide-song \u2014 your pond-friend learning to be a harbour wall."
+  },
+  "provenance_concept_id": "X-BRINDRIFT"
+}

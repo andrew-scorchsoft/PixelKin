@@ -20,7 +20,7 @@
   "hidden_ability": "brisk",
   "catchRate": 175,
   "kindling": {
-    "into": 3,
+    "into": 154,
     "trigger": {
       "kind": "level",
       "level": 16

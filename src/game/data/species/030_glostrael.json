@@ -20,7 +20,13 @@
   "ability": "tidecaller",
   "hidden_ability": "brisk",
   "catchRate": 57,
-  "kindling": null,
+  "kindling": {
+    "into": 157,
+    "trigger": {
+      "kind": "level",
+      "level": 48
+    }
+  },
   "from": 29,
   "stage": 2,
   "learnset": {

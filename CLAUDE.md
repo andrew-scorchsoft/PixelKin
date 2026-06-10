@@ -149,16 +149,22 @@ go digging on every task.
 - **Stats — the genre's six:** hp/atk/def/spa/spd/spe. Power is costed against a
   shared budget (EPS) and **empirically balanced** by a Monte Carlo sim — all
   types land 46.7–53.3% win-rate. (`docs/mechanics/02-stats-and-balance.md`)
-- **Roster:** **153 kin** — the **151** curated from ~463 concepts via a panel-scored
-  pipeline (the ~312 cuts are archived as an idea bank), **plus the third starter line
-  added later** (#152 **Cloverkit** → #153 **Cloverhart**, Verdant; appended at the end
-  so the original 1–151 numbering is untouched). Moves: **≤4 per kin** from a ~94-move
-  shared pool + 28 abilities. (`docs/mechanics/dex.md` for the readable dex)
-- **Starters:** the founding trio is **complete** — #1 **Vulpyre** (Ember), #2 **Brinix**
-  (Tide), #152 **Cloverkit** (Verdant) — the three creatures on the logo. To add/retune a
-  starter or any kin, edit `docs/mechanics/concepts/selected.json` (+ a `CANON` override in
+- **Roster:** **159 kin** — the **151** curated from ~463 concepts via a panel-scored
+  pipeline (the ~312 cuts are archived as an idea bank), **plus appended additions**
+  (later ids never renumber the original 1–151): the third starter line (#152–#153),
+  the three starter middle stages (#154–#156), and the apex kindlings #157 **Pharolux**
+  (Glostern line) and #158 **Corolion** → #159 **Dawnregent**. Moves: **≤4 per kin**
+  from a ~94-move shared pool + 28 abilities. (`docs/mechanics/dex.md` for the readable dex)
+- **Starters:** the founding trio is **complete** and every starter is a **three-stage
+  line** — #1 **Vulpyre** →#154 Vulcinder→ #3 Blazethorn (Ember), #2 **Brinix** →#155
+  Brindrift→ #4 Brinarch (Tide), #152 **Cloverkit** →#156 Cloverbuck→ #153 Cloverhart
+  (Verdant); the trio are the three creatures on the logo. The **Gilpaw line is the lone
+  four-stage line** (#103→#104→#158→#159 Dawnregent at lv 56, F-tier — the only evolved kin
+  in the legendary register). To add/retune a starter or any kin, edit
+  `docs/mechanics/concepts/selected.json` (+ a `CANON` override in
   `tools/balance/build_species.py` for pinned stats), then re-run `build_species.py` and the
-  validators — never hand-edit only `species.json`.
+  validators — never hand-edit only `species.json` (the generator now preserves hand-added
+  encounter rows like `pearlmoor_quay`).
 - **World structure:** 14 areas, 8 Lampwardens (Gleams collected in roughly a set
   order), 6 Lantern Gifts gating traversal, a four-way central hub (the **Umbral
   Spire**) that opens once all 8 Gleams are earned. (`docs/world/atlas.md`)
@@ -364,7 +370,7 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   separate creature path — `systems/sprites/CreatureSprites.ts` — is now wired into
   `StarterSelect`, `Battler` (battle), `PartyMenu`, and `AttractScene`: each lazy-loads a packed
   sprite keyed `kin_<id>_<view>` and falls back to the type-tinted placeholder **only** when a kin
-  isn't packed. **All 153 kin are packed** under `public/assets/sprites/creatures/NNN_slug/` —
+  isn't packed. **All 159 kin are packed** under `public/assets/sprites/creatures/NNN_slug/` —
   5 views each (battle_front/back, icon, overworld, portrait) listed in `creatures.manifest.json`.
   Regenerate any kin's full view set from its species `art` block with
   `./venv/bin/python tools/assets/gen_creature.py <id>` (supports `--provider openai` when Google

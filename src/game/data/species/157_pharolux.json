@@ -1,0 +1,83 @@
+{
+  "id": 157,
+  "slug": "pharolux",
+  "name": "Pharolux",
+  "types": [
+    "Tide",
+    "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "E",
+  "stats": {
+    "hp": 78,
+    "atk": 52,
+    "def": 67,
+    "spa": 139,
+    "spd": 78,
+    "spe": 144
+  },
+  "bst": 558,
+  "ability": "phoenix",
+  "hidden_ability": "tidecaller",
+  "catchRate": 24,
+  "kindling": null,
+  "from": 30,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "mist_spray"
+      },
+      {
+        "level": 9,
+        "move": "drench_song"
+      },
+      {
+        "level": 13,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 19,
+        "move": "light_pulse"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "tide_pulse"
+      },
+      {
+        "level": 40,
+        "move": "maelstrom"
+      },
+      {
+        "level": 48,
+        "move": "undertow"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "Glostrael's rare apex kindling \u2014 a vast lantern-bell leviathan the old quay-folk call the living lighthouse. Its golden core burns steady as a beacon and its eight tendrils trail star-bright orbs that mark safe water for miles. Sailors of Dimglass swear the Long Dusk never fully settles over a bay a",
+    "category": "Tide Caster Kin",
+    "size_cm": 380,
+    "weight_kg": 210,
+    "habitat": "south"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "Immense translucent bell-jelly like a cathedral lantern; stained-glass panes of gold light in an aqua-blue dome, a blazing warm beacon-core at the crown that sweeps slow beams; eight long tendrils each ending in a bright pearl-orb like a hung star; drifting, weightless, regal at 64px.",
+    "palette": "Immense translucent bell-jelly like a cathedral lantern; stained-glass panes of gold light in an aqua-blue dome, a blazing warm beacon-core at the crown that sweeps slow beams; eight long tendrils each ending in a bright pearl-orb like a hung star; drifting, weightless, regal at 64px.",
+    "direction": "The rare surf catch grows into a literal lighthouse \u2014 the bay it loves never goes dark."
+  },
+  "provenance_concept_id": "X-PHAROLUX"
+}
