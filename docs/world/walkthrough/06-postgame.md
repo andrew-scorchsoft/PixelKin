@@ -99,6 +99,27 @@ gate: **post-game (`flag:dawn`)** · Gleam: none (all eight held) · rec. level:
    - **Day-form starter-line variant** — `[MISSABLE]` the sun-bright **Wickmoth** day-form
      (atlas card 14) is the signature catch that announces the whole day-form hook.
 
+   **Named quests** (spine §5 kit; the post-game slate):
+   - **P1 "First-Dawn Letters"** — giver: the **Waykeeper** (his daylight round) · steps:
+     carry first-dawn letters out along the spokes — to Wren, to Fenn, and to the eight
+     wardens' towns (each recipient a one-line daylight reaction; deliverable in any
+     order, each its own boolean flag `flag:q_post_letter_*`) · reward: the Waykeeper's
+     thanks + a keepsake stamp per quadrant · maps: every spoke town · `[MISSABLE]` —
+     the Round re-used as the post-game's victory lap.
+   - **P2 "A Wick for Còr"** — giver: **Fenn** · steps: take a wick **from the Tinderwick
+     Beacon's lantern room** → carry it to **Còr at his lamp** · flags: `flag:q_post_wick`
+     → `flag:q_post_wick_given` · reward: Còr's last line — and his lamp burning a shade
+     warmer thereafter (deco swap) · maps: `tinderwick_beacon_top`, `dawnstead` ·
+     `[MISSABLE]` — the game's first earned landmark closes its last arc.
+   - **P3 "The Day-form Survey"** — giver: **Fenn** · steps: show him three caught
+     day-forms (party checks via dialogue branches) · flags: `flag:q_post_survey(_done)` ·
+     reward: a **Radiant-tier Lamplight tease** + his field-journal page · maps:
+     `dawnstead` + the relit valleys · `[MISSABLE]`. *Counter note (spine §8): wants
+     "3 of 3" — boolean fallback: Fenn asks for one named day-form at a time.*
+   - *(Also cross-ref: **X1 "The Caretaker's Lamp"** (04-west) pays off here — with
+     `flag:dawn` set, the caretaker's numbed kin is AWAKE at her side in Hushfrost II
+     (NPC swap), the quietest echo of the whole B arc.)*
+
 5. **Don't-miss callouts**
    - **Just stand in the daylight first.** The single payoff the game has spent the whole
      dusk earning — don't rush past the sky into the menus.
@@ -151,6 +172,9 @@ a clock.
    3. **Brightened dark folds.** Previously gloomy interiors and blighted edges (e.g. the once
       sickly Coldfog Marches) read warmer post-dawn; Light-typed kin, which thinned in drained
       areas (atlas §4), **bloom back** in relit ones — a visible, catchable sign of the win.
+      The same flag drives the small human payoffs: **X1's caretaker** (Hushfrost II, 04-west)
+      now sits beside her kin AWAKE (`flag:dawn` NPC swap) — author every region's post-dawn
+      swap candidates as `flag:dawn`-keyed pairs like hers.
 
 2. **Story beats** — Arc D's quiet aftermath, told through ecology rather than cutscene: the
    world the player healed is now *full of light to collect*. No new arc beats land here; this

@@ -45,8 +45,9 @@ the **BEACON** `tinderwick_beacon_i/_ii/_top`) · town · south · entry: spawn 
 gate: the beacon's foot door needs **`flag:has_beacon_wick`** · **Gleam: Ember** (Brisa
 Tallow, ace ~10, at the **beacon top**) · rec. level: start 5, bond-test ~8–9.
 
-**The earned first Gleam (the 2026-06 restructure).** Tinderwick's tower — the **old
-beacon** on the NE bluff — is where the Ember is actually relit. Brisa's bond-test no
+**The earned first Gleam (the 2026-06 restructure; spine §5, shape #1: tower ascent —
+the BUILT worked example every region's loop varies from).** Tinderwick's tower — the
+**old beacon** on the NE bluff — is where the Ember is actually relit. Brisa's bond-test no
 longer happens in the hall five minutes in; it is *earned* via a loop that sends the
 player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff:
 
@@ -102,6 +103,14 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
      Tinderwick's east edge (and Pearlmoor's west); the hub (`vesper_crossroads`) is live with
      the Waykeeper, the Waystone plaza and signed sleeping roads. Its inward Spire road needs
      `flag:hub_unlocked` (West/endgame) and the north marsh road is an inert tease.
+
+   **Named quests** (spine §5 kit):
+   - **S2 "A Letter for Fenn"** — giver: the **house parent** (`tinderwick_house`) · steps:
+     take Gran's keepsake letter → hand it to **Fenn** at his sky-watcher spot on the flats
+     (post-C2 placement) → return for her thanks · flags: `flag:q_south_letter` →
+     `flag:q_south_letter_given` · reward: balms + a warm line about the Wayfaring ·
+     maps: `tinderwick_house`, `dimglass_coast_ii` · `[MISSABLE]` — deliberately the
+     game's first delivery quest, teaching the pattern the Waykeeper's Round scales up.
 
 5. **Don't-miss callouts**
    - **Catch your first kin in the verge before Brisa will even talk quests** — the
@@ -245,9 +254,13 @@ boundary is ungated; the *spurs* off it are gift-gated) · Gleam: — · rec. le
    can't yet open and learns to remember it.
 
 4. **Optional content**
+   - **The netmender's net-floats** — a single item cache on the flats
+     (`flag:picked_net_floats`, band 8–10): the collinear errand leg of Pearlmoor's
+     **Causeway Bell** loop (see Pearlmoor §1). New ref to add when wired.
    - **Gullcry Rock** (spur) — **[BUILT]** **Tidecall** (this region, at Pearlmoor): the rare
      harbour-light kin (#29 Glostern) + the Tide Charm. **Becomes accessible the moment you
-     earn Tidecall — backtrack here.**
+     earn Tidecall — backtrack here.** (Post-Tidecall it also hosts S1's three dark buoys —
+     see Pearlmoor's Named quests.)
    - **Tideglass Cavern** (landmark) — `[LATER]` **Glimmerstep** (East): signature rare water
      kin in a micro-dungeon. Long-game return. **Also the canonical Lamplight exemplar** (spine
      §5): first explored at **Warmlight**, the cavern keeps a deeper nook + a hidden item beyond
@@ -277,32 +290,51 @@ boundary is ungated; the *spurs* off it are gift-gated) · Gleam: — · rec. le
 
 ### Pearlmoor Quay — *moonlit fishing port; the second Gleam and the first Gift*
 
-**At a glance** — `pearlmoor_quay` · town · south · entry: south from `dimglass_coast_ii`,
-exit: onward to `saltreach_fen_i` (via `to_fen`, East) + Lanternway `to_crossroads` ·
-gate: **Tidecall** (its own islets & sea-shrine — but the Lumenary itself is **not** gated,
-per spine §0 rule 1) · **Gleam: Tide** (Reyl Wash, ace ~16) + **Tidecall** · rec. level: 12.
+**At a glance** — `pearlmoor_quay` (+ the breakwater `pearlmoor_breakwater` **[NEW MAP]**) ·
+town · south · entry: south from `dimglass_coast_ii`, exit: onward to `saltreach_fen_i`
+(via `to_fen`, East) + Lanternway `to_crossroads` · gate: **Tidecall** (its own islets &
+sea-shrine — but the Lumenary itself is **not** gated, per spine §0 rule 1; the breakwater
+is walked **on foot**) · **Gleam: Tide** (Reyl Wash, ace ~16, at the **Moor-bell shrine**)
++ **Tidecall** · rec. level: 12, bond-test ~13–14.
+
+**The earned loop — "The Causeway Bell" (spine §5, shape #2: breakwater walk).** The
+Tide-blessing cannot begin until the Moor-bell rings — and the bell-rope is in the
+netmender's keeping.
 
 1. **Main path:**
    1. **Arrive on the wet boardwalks** — moon on water, `bone` sails, lantern-strings between
-      masts. The cosiest, saltiest town music in South.
-   2. **The Lumenary is reachable on foot** (no Tidecall needed — §0 rule 1). The town's own
-      *islets and sea-shrine* are the Tidecall-gated content, teased from the quay.
-   3. **Heal, restock, build the party to ~12.** **[BUILT]** the inn's keeper rests the party
-      to full (`script.inn_rest` — the genre's heal loop, diegetic), and the chandlery hands a
-      one-time crossing-kit (bright lamps + balms; coin comes later). Bring an Ember or grassy
-      partner — Reyl's team
-      is Tide; the triangle matters.
-   4. **Face Lampwarden Reyl Wash (Tide, ace ~16).** Winning earns **Gleam: Tide** and the
-      **Tidecall** Lantern Gift, wrapped in the **Tide-blessing** festival (Arc E).
-   5. **`flag:crown_south` sets** (engine-set once both Ember + Tide are held) — the South
+      masts. The cosiest, saltiest town music in South. **The tease:** out along the
+      breakwater, visible from the first screen, stands the **Moor-bell shrine** — bell
+      silent, the Tide-blessing boats idle at their moorings.
+   2. **The Lumenary hall is reachable on foot** (no Tidecall needed — §0 rule 1). Reyl
+      meets you there with the hook: *"Tides go out so they can come back — but the
+      blessing waits on the moor-bell, and the moor-bell waits on you."*
+      (`script.reyl_quest` → `flag:q_south_bell`; until the bell rings his bond-test
+      trigger answers with a `blocked_ref` in the same voice.)
+   3. **The netmender's errand (collinear).** The quay netmender keeps the bell-rope, but
+      her **net-floats** drifted south in the last storm — a single item cache one screen
+      back on **Dimglass Coast II** (band 8–10, ground just walked). Return them →
+      `flag:q_south_has_rope` (NPC swap hands the rope).
+   4. **Walk the breakwater** (`pearlmoor_breakwater` — the foot gate needs the rope;
+      blocked line in the netmender's voice). Two **net-hand sight trainers** (lv 12–14)
+      work the causeway; the bell platform and shrine stand at its end over open water.
+   5. **Ring the Moor-bell** (`script.ring_moorbell` → `flag:q_south_bell_rung`) — the
+      Tide-blessing begins behind you: boats light, the quay sings, and **Reyl walks out
+      to the shrine** (hall ↔ shrine NPC swap).
+   6. **Face Lampwarden Reyl Wash at the shrine (Tide, ace ~16).** Winning earns
+      **Gleam: Tide** and the **Tidecall** Lantern Gift, inside the festival (Arc E) —
+      heal/restock first: **[BUILT]** the inn rest (`script.inn_rest`) + the chandlery's
+      one-time crossing-kit.
+   7. **`flag:crown_south` sets** (engine-set once both Ember + Tide are held) — the South
       quadrant's two constellations are relit; the Vesper Crossroads' south approach is primed.
-   6. **Now-accessible callout:** with **Tidecall** in hand, **backtrack to Dimglass II →
-      Gullcry Rock** (the rare harbour-light kin + Tide Charm), cross Pearlmoor's own shallow islets to
-      the sea-shrine, and the East road's **Saltreach Fen I→II** boundary is now passable.
-   7. **The 12→16 on-ramp.** Pearlmoor is entered at ~12 but South exits at ~16 (spine §4): the
-      ~4 levels are meant to be earned *here*, in Pearlmoor's Tidecall islet/sea-shrine loop and
-      the Gullcry Rock backtrack, before stepping into Saltreach Fen — so East opens with no
-      level cliff. (The Tidecall content is the on-ramp, not optional grind.)
+   8. **Now-accessible callout:** with **Tidecall** in hand, **backtrack to Dimglass II →
+      Gullcry Rock** (the rare harbour-light kin + Tide Charm), cross Pearlmoor's own shallow
+      islets to the sea-shrine, and the East road's **Saltreach Fen I→II** boundary is now
+      passable.
+   9. **The 12→16 on-ramp.** The bell loop carries the player to ~13–14 against Reyl's ace 16
+      (the same cliff-softening the Beacon did for 5-vs-10); the remaining levels are earned
+      in Pearlmoor's Tidecall islet/sea-shrine loop and the Gullcry Rock backtrack before
+      Saltreach Fen — so East opens with no level cliff.
 
 2. **Story beats**
    - **E — the Tide-blessing.** Reyl's Gleam is given inside the port's tide festival; warm,
@@ -327,6 +359,26 @@ per spine §0 rule 1) · **Gleam: Tide** (Reyl Wash, ace ~16) + **Tidecall** · 
    - **Lanternway → Vesper Crossroads** — `[MISSABLE]` discover the hub as South's fast-travel
      anchor; its inward Spire roads remain `[LATER]` (`flag:hub_unlocked`, West/endgame).
 
+   **Named quests** (spine §5 kit; South's slate, with S2 over in Tinderwick):
+   - **S1 "The Last Buoy Out"** — giver: the **netmender** (post-bell, her swap NPC) ·
+     steps: relight the three dark buoys in the Dimglass II shallows (interact scripts on
+     the buoy line, Tidecall water) → return · flags: `flag:q_south_buoys` →
+     `flag:q_south_buoys_lit` · reward: the **Drift Charm** · maps: `pearlmoor_quay`,
+     `dimglass_coast_ii` · `[LATER: Tidecall]` (a "now accessible" callout the moment the
+     Gift lands).
+   - **S3 "The Cavern Keeps a Light"** — giver: the **old fisher** (inn) · steps: relight
+     the wreck-lamp deep in **Tideglass Cavern** → tell him it still burns · flags:
+     `flag:q_south_wrecklamp` → `flag:q_south_wrecklamp_lit` · reward: a **Tide Charm
+     upgrade** · maps: `pearlmoor_quay`, `tideglass_cavern` · `[LATER: Glimmerstep]`, with
+     a deeper page beyond the lamp's reach `[LATER: Lamplight ≥ Starlight]`.
+   - **R1 "Wicks for the Lamplighter"** — the Waykeeper's Round, leg 1 (live now): parcel
+     from the **Waykeeper** (`vesper_crossroads`) → the **old lamplighter** (Dimglass I) ·
+     flags: `flag:q_round_lamplighter` · reward: bright-lamp kit · `[wakes with spoke]`
+     (south spokes are live).
+   - **R2 "Salt-glass for the Chandler"** — Round leg 2 (live now): Waykeeper parcel → the
+     **Pearlmoor chandler** · flags: `flag:q_round_chandler` · reward: balm kit ·
+     `[wakes with spoke]`.
+
 5. **Don't-miss callouts**
    - **Run the Gullcry Rock backtrack before leaving South** — it is the clearest lesson the
      game ever teaches about *why you keep a list of teased spots*, and the Tide Charm +
@@ -334,15 +386,28 @@ per spine §0 rule 1) · **Gleam: Tide** (Reyl Wash, ace ~16) + **Tidecall** · 
    - **The Tide-blessing festival** — pair it with the Lantern-fair as South's two warm
      set-pieces; together they establish "Gleam = belonging" before the stakes harden in East.
 
-6. **Validation hooks** (`pearlmoor_quay` — to be built)
-   - **Map id / kind:** `pearlmoor_quay` · town.
+6. **Validation hooks** (`pearlmoor_quay` is built; the bell loop + `pearlmoor_breakwater`
+   are new refs to add when built)
+   - **Map id / kind:** `pearlmoor_quay` · town; **`pearlmoor_breakwater`** **[NEW MAP]** ·
+     route/causeway, ~12×28, walked on foot (no Tidecall anywhere on it — §0 rule 1).
    - **Entry/exit:** south land-in from `dimglass_coast_ii` (paired with its `to_quay`); onward
      **`to_fen`** → `saltreach_fen_i` (graph edge, ungated); **`to_crossroads`** → `vesper_crossroads`
-     (Lanternway spoke, bidirectional, per `graph.ts:159`).
-   - **Lumenary (ungated) + Gift + flags:** a `lumenary_pearlmoor` cutscene trigger,
-     `requires_flag:flag:has_starter` (and reachable **without** Tidecall — §0 rule 1),
-     **earns `gleam:tide`** and **grants ability `tidecall`**; the engine sets **`flag:crown_south`**
-     once `gleam:ember`+`gleam:tide` are both held. Lampwarden **Reyl Wash** (Tide, ace ~16).
+     (Lanternway spoke, bidirectional, per `graph.ts:159`); breakwater foot gate
+     **`to_breakwater`** `requires_flag:flag:q_south_has_rope` with a `blocked_ref` in the
+     netmender's voice.
+   - **The bell quest chain (all data):** `script.reyl_quest` (hall) sets `flag:q_south_bell`
+     → net-floats item cache on `dimglass_coast_ii` (`flag:picked_net_floats`) → netmender
+     NPC swap gives the rope (`flag:q_south_has_rope`) → breakwater walk (2 net-hand SIGHT
+     trainers, lv 12–14) → `script.ring_moorbell` sets `flag:q_south_bell_rung` (festival
+     NPC wave + Reyl hall↔shrine swap).
+   - **Lumenary (ungated) + Gift + flags:** the bond-test trigger at the **Moor-bell shrine**,
+     `requires_flag:flag:q_south_bell_rung` with `blocked_ref` (Reyl's "the moor-bell waits
+     on you"), **earns `gleam:tide`** and **grants ability `tidecall`**; the engine sets
+     **`flag:crown_south`** once `gleam:ember`+`gleam:tide` are both held. Lampwarden
+     **Reyl Wash** (Tide, ace ~16).
+   - **Quest-chain hooks (rule 3):** opened `flag:q_south_bell` / `q_south_has_rope` /
+     `q_south_bell_rung` are consumed by the breakwater gate, the netmender swap pair and
+     the bond-test trigger; S1/S3/R1/R2 flags as listed in their Named-quests entries.
    - **Tidecall-gated town content:** islet/sea-shrine warps + `water` `EncounterZone`s with
      **`requires_ability:tidecall`**; an `AbilityGate` (`tidecall`,`make_passable`) over the
      harbour shallows.

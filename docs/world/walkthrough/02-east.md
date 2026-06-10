@@ -118,6 +118,15 @@ Gleam: none · rec. level ~18.
      **Tide** kin (low-weight encounter) + an item cache (atlas §3 reward). Sign the
      turn-off so the *come-back* is explicit even if skipped.
    - Hidden item on a far reed isle reachable only by a parted channel — **[MISSABLE]**.
+
+   **Named quests** (spine §5 kit):
+   - **E1 "The Quiet Reeds"** — giver: the **fen fisher** on the channel jetty · steps:
+     re-kindle three snuffed lantern-reeds along the channels (interact scripts) — the
+     first two take; **the third will not light**, and the fisher has no answer for it
+     (a SILENT B2 foreshadow: no one names the Hollowing — that belongs to Glowmoss Deep) ·
+     flags: `flag:q_east_reeds` → `flag:q_east_reeds_done` (set on reporting back, third
+     reed still dark) · reward: the **Marsh Lamp** · maps: `saltreach_fen_ii` ·
+     `[MISSABLE]`.
 5. **Don't-miss callouts** — Sunkbell Shallows is the region's "you can already get this"
    reward — it pays off Tidecall immediately and seeds the habit of detouring for spurs that
    the rest of East leans on hard.
@@ -147,11 +156,28 @@ Crossroads (`to_crossroads`, Lanternway) · **Lumenary 3: Sable Quill (Verdant)*
 
 1. **Main path** — A cosy forest town in a fern hollow: `bone` cottages half-grown over with
    `diamond` glowmoss, lantern-strings between trunks, the **Glowmoss Bloom** festival in full
-   swing (Arc E). Beats: (1) arrive at the festival edge — stalls, dancing lights, NPCs;
-   (2) the town spine leads to **Sable Quill's Lumenary**, central and tallest, doors open;
-   (3) the **Verdant Gleam** battle; (4) Sable grants **Glimmerstep** and points you at the
-   dark hollow-mouth she "can never get into"; (5) the now-lit `to_deepwood` mouth on the
-   town's north edge, plus the Lanternway spoke west to the hub.
+   swing (Arc E). **The earned loop — "The Tended Bed" (spine §5, shape #3: in-town tending;
+   deliberately the LIGHTEST loop, a breath between the Causeway Bell and the Descent
+   Vigil).** Beats:
+   (1) arrive at the festival edge — stalls, dancing lights, NPCs; **the tease:** at the
+   hollow's heart, the Bloom's centrepiece — the **Elder Bed**, the oldest moss-bed in
+   town — lies **grey** amid all that glow. (A festival NPC fences the B-arc explicitly:
+   *"not the Hollowing, love — just a tired old bed after a cold spring"* — first contact
+   with the Hollowing still belongs to Glowmoss Deep; escalation stays monotonic.)
+   (2) the town spine leads to **Sable Quill's Lumenary**, central and tallest, doors open —
+   and Sable's hook: *"The Bloom won't crown over a grey bed. Warm the old moss first —
+   then we'll see what your light's worth."* (`script.sable_quest` → `flag:q_east_bloom`;
+   her bond-test trigger carries a `blocked_ref` in the same voice until the bed blooms.)
+   (3) **the kilner's errand (collinear):** the festival kilner's kiln has gone out; dry
+   **fen-wood** sits cached on the town map's own forest fringe (band 18–20, the lane
+   watched by **two bloom-warden sight trainers**) → `flag:picked_fenwood` →
+   `script.kiln_relight` → `flag:q_east_hearthspore` (the kilner fires a **hearth-spore**);
+   (4) **warm the Elder Bed** (`script.warm_elder_bed` → `flag:q_east_bed_warm`) — the bed
+   blooms grey→green (the §8 null-lantern data pattern reused warmly: deco/NPC swap), and
+   the festival crowns around it;
+   (5) the **Verdant Gleam** bond-test at the blooming bed; (6) Sable grants **Glimmerstep**
+   and points you at the dark hollow-mouth she "can never get into"; (7) the now-lit
+   `to_deepwood` mouth on the town's north edge, plus the Lanternway spoke west to the hub.
 2. **Story beats** — **Arc E (Glowmoss Bloom):** the festival frames the Gleam as *belonging*,
    not conquest — Sable, a shy botanist, is more comfortable letting her glowmoss vouch for you
    than making a speech. **Arc A (A2→A3 setup):** Wren is here, but **A3 (Wren shaken) properly
@@ -181,6 +207,19 @@ Crossroads (`to_crossroads`, Lanternway) · **Lumenary 3: Sable Quill (Verdant)*
      a Glimmerstep landmark the player can backtrack to immediately.
    - Festival mini-rewards (a Glowmoss-Bloom Lamp from a stall; a glowmoss item from a child
      NPC) — **[MISSABLE]**.
+
+   **Named quests** (spine §5 kit; East's slate, E1 over in Fen II, E3 in Cinderhead):
+   - **E2 "Spores for the Stall"** — giver: the **Bloom stall-keeper** · steps: gather two
+     spore caches in Glowmoss Deep → drive off the cross **Sporeling** squatting on the
+     third (a scripted battle) → return · flags: `flag:q_east_spores` →
+     `flag:q_east_spores_done` · reward: **Glow Salve** + the stall-keeper points out a
+     **Fennlight** static catch · maps: `lowleaf_hollow`, `glowmoss_deep` ·
+     `[LATER: Glimmerstep]` (held by then — a same-visit backtrack).
+   - **R3 "Moss for the Quay"** — the Waykeeper's Round, leg 3: parcel (a living glowmoss
+     plug) from the **Waykeeper** → the **Pearlmoor shrine-keep** · flags:
+     `flag:q_round_moss` · reward: balm kit + a Lanternway line · maps:
+     `vesper_crossroads`, `lowleaf_hollow`, `pearlmoor_quay` · `[wakes with spoke]`
+     (the Lowleaf spoke wakes with `gleam:verdant`).
 5. **Don't-miss callouts** — Catch a **Fennlight** (Verdant/Light) during the Bloom — the
    signature town kin and a strong early Light-typed answer for the road ahead. And read the
    pinned letter: it is the only Còr foreshadow a careful player gets before the Deep.
@@ -194,6 +233,12 @@ Crossroads (`to_crossroads`, Lanternway) · **Lumenary 3: Sable Quill (Verdant)*
      **not** set `crown_east` here); a `kind:'script'` step that **grants the `glimmerstep`
      ability**; festival cutscene (`once:true`). The pinned letter is a `kind:'sign'` trigger,
      `dialogue_ref:'sign.cor_letter'`.
+   - **The Tended Bed chain (rule 3):** `script.sable_quest` sets `flag:q_east_bloom`;
+     fen-wood cache `flag:picked_fenwood`; `script.kiln_relight` sets
+     `flag:q_east_hearthspore`; `script.warm_elder_bed` sets `flag:q_east_bed_warm`
+     (+ the Elder Bed grey→green deco/NPC swap); the bond-test trigger
+     `requires_flag:flag:q_east_bed_warm` with `blocked_ref:npc.sable_not_ready`.
+     Two **bloom-warden sight trainers** (lv 19–21) on the fringe lane.
    - Lumenary battle: **Sable Quill**, Verdant, ace ~22; trainer entry + `dialogue_ref`.
    - encounter zones: `tall_grass` forest-fringe — **Sporeling** (Verdant), **Fennlight**
      (Verdant/Light), **Mossmole** (Verdant) (atlas card 4); level band **18–20**; rate ~0.10.
@@ -280,10 +325,26 @@ Stone** (→ `flag:crown_east`) · rec. level ~22.
 
 1. **Main path** — A miners' settlement at a mine mouth: timber headframe, cart rails,
    `fire`-lamp light against `ink` rock and `diamond` crystal veins; the **Lamp-down vigil**
-   festival is underway (Arc E). Beats: (1) arrive at the lamplit mine-mouth town; (2) the vigil
-   gathering — miners lowering their lamps in remembrance; (3) **Otho Grist's Lumenary** at the
-   mouth, the **Stone Gleam** wall battle; (4) on the win, the `to_deep` gallery door opens to
-   Glimmerstep; (5) Cinderhead Deep beyond.
+   festival is underway (Arc E). **The earned loop — "The Descent Vigil" (spine §5, shape #4:
+   mine descent — the HEAVY loop, and the §4 wall made diegetic).** Beats:
+   (1) arrive at the lamplit mine-mouth town; **the tease:** the town's lamps hang
+   **lowered and stay lowered** — the vigil cannot close until the old crew's vigil-lamp
+   comes up from the deep — and the dark `to_deep` gallery mouth gapes at the town's back;
+   (2) the vigil gathering — miners with lowered lamps, waiting;
+   (3) **Otho Grist's Lumenary** at the mouth, and his hook: *"Down here, light's not
+   given — it's kept. My crew left the vigil-lamp at the third gallery when the dark came
+   up. Bring it back still lit — then we'll talk about a Gleam."* (`script.otho_quest` →
+   `flag:q_east_vigil`; his bond-test trigger carries a `blocked_ref` in the same voice);
+   (4) **descend `cinderhead_deep`** (Glimmerstep, held since Lowleaf — legal under §0
+   rule 1: Stone grants no Gift) to the **vigil-lamp chamber** at mid-depth, through the
+   top-of-band galleries (24–27) and **two gallery-miner sight trainers** (lv 24–26) —
+   the §4 gap-closer is now the *mandatory* pre-battle leg, not optional grind;
+   (5) **carry the lamp up still lit** (`script.take_vigil_lamp` →
+   `flag:q_east_vigil_lamp`) — the vigil relights around it, lamps rising one by one;
+   (6) the **Stone Gleam** wall battle against Otho (ace ~28, now met at ~26–27);
+   (7) onward: the Deep again, this time crossing to its far side for Galehigh and the
+   shortcut. *(Note: `to_deep` is **Glimmerstep-gated, full stop** — `graph.ts:128`. An
+   earlier draft said it "opens on the win"; the graph is canon.)*
 2. **Story beats** — **Arc E (Lamp-down vigil):** the most *melancholy* festival — miners dim
    their lamps together to honour the dark they work in, a quiet counterpoint to the Hollowing's
    argument (the town tends the dark *and* keeps its own light; it does not surrender to it).
@@ -312,6 +373,16 @@ Stone** (→ `flag:crown_east`) · rec. level ~22.
      the lamp's reach; a brighter return (Starlight/Radiant, post-Gleam-6+ or post-game) lights
      them and their optional catches (spine §5). The crystal-vein-lit main route stays visible at
      any tier — additive only, never a gate.
+
+   **Named quests** (spine §5 kit):
+   - **E3 "The Foreman's Ledger"** — giver: the **lone miner** by the sealed shortcut door ·
+     steps: recover the old crew's ledger from a side gallery in Cinderhead Deep → bring it
+     back · flags: `flag:q_east_ledger` → `flag:q_east_ledger_found` · reward: a high-band
+     **crystal item** (folds in the existing grind-reward bullet) · maps: `cinderhead_mine`,
+     `cinderhead_deep` · `[MISSABLE]`; the ledger's last page hints at the far galleries —
+     a second page sits beyond the lamp's reach `[LATER: Lamplight ≥ Starlight]`.
+   - **E1 "The Quiet Reeds"** — see Saltreach Fen II's Named-quests entry (giver lives
+     there); listed here for the regional slate count (E1 · E2 · E3 · R3).
 5. **Don't-miss callouts** — **Grind the deep galleries before Otho.** The wall is intentional;
    the deep encounters (24–27) are how you beat it. Also: a **Glowpan** (Light) caught in the
    mine is a clean answer to the Stone/Dark threats of the deeper game. And on the Deep's far
@@ -323,6 +394,11 @@ Stone** (→ `flag:crown_east`) · rec. level ~22.
    - triggers / flags: Stone-Gleam cutscene at the Lumenary **`sets_flags:['gleam:stone']`**
      — this is the **second** quadrant Gleam, so the engine now derives **`flag:crown_east`**
      (do not hand-set it). Lamp-down vigil cutscene (`once:true`, festival NPCs flag-gated).
+   - **The Descent Vigil chain (rule 3):** `script.otho_quest` sets `flag:q_east_vigil`;
+     the vigil-lamp chamber script in `cinderhead_deep` (`script.take_vigil_lamp`) sets
+     `flag:q_east_vigil_lamp`; the vigil-relight cutscene + Otho's bond-test trigger
+     `requires_flag:flag:q_east_vigil_lamp` with `blocked_ref:npc.otho_not_ready` consume
+     it. Two **gallery-miner sight trainers** (lv 24–26) in the Deep on the chamber leg.
    - Lumenary battle: **Otho Grist**, Stone, ace ~28 (the wall); trainer entry + `dialogue_ref`.
    - encounter zones: `cave` — **Gravelo** (Stone), **Sparkrat** (Stone/Storm), **Glowpan**
      (Light) (atlas card 5); mine-mouth band **22–24**; rate ~0.12.
@@ -338,7 +414,11 @@ rec. level ~24–27 (top of band).
 
 1. **Main path** — The deepest, darkest galleries — Glimmerstep mandatory, encounters at the
    region's ceiling. Branchy cave layout (chokes, cart-rail rooms). Beats: (1) descend from the
-   mine mouth into the high-band galleries (the Otho grind ground); (2) cross a deep cavern with
+   mine mouth into the high-band galleries; (1b) **the vigil-lamp chamber** at mid-depth,
+   *before* the far-side door — the Descent Vigil's turnaround (see Cinderhead Mine §1:
+   `script.take_vigil_lamp` → `flag:q_east_vigil_lamp`; two gallery-miner sight trainers
+   hold the leg, and the first visit ends here, carrying the lamp back up to Otho);
+   (2) cross a deep cavern with
    the Crystoll void-gap tease; (3) reach the **far side** — a sealed mine door; (4) **open it
    from the inside**, setting **`flag:shortcut_mine`** (the Cinderhead Deep → Vesper Crossroads
    re-link, spine §0 rule 3); (5) the gallery out to the **Galehigh Terraces** (the East→North

@@ -32,6 +32,9 @@ region file:
    (atlas "Gate:" line) applies only to that area's **onward route-segment II and its
    spurs/depths — never to the town or Lumenary itself.** (Pale Vault's Lumenary grants
    Emberward, so it *must* be reachable without Emberward; Lowleaf's grants Glimmerstep; etc.)
+   Corollary for the **earned Gleam loops** (§5): the earned thing is always a *key, pass,
+   errand or trial* — never the region's own Gift. A loop MAY lean on a Gift earned in an
+   EARLIER region that the main path already requires (e.g. Tidecall at the Solarium).
 2. **Geography ≠ progress; the eight Gleams are the clock.** A few back-door edges exist (e.g.
    the Coldfog detour can reach Nightreach with only Emberward — `graph.ts:141`). The **main
    path is the rim** (always reach Nightreach via Sunvault Climb / the Solar Gleam first);
@@ -42,7 +45,11 @@ region file:
    shortcuts use `flag:shortcut_windward` (set on reaching the Windward Stair II crags — a
    ledge-drop back to Galehigh) and `flag:shortcut_mine` (set on reaching Cinderhead Deep's
    far side — a sealed door opened from inside, re-linking the mine to the hub). Whichever
-   region introduces a shortcut/spur must set its flag.
+   region introduces a shortcut/spur must set its flag. **Quest flags** follow the
+   convention `flag:q_<region>_<short>` (e.g. `flag:q_south_bell`) and the same discipline:
+   every `flag:q_*` a region file opens must be consumed by a named trigger/NPC swap in
+   that file. (South's built Beacon flags — `flag:beacon_quest`, `flag:has_beacon_wick` —
+   predate the convention and stay grandfathered.)
 
 > **Counts, reconciled (so the numbers don't trip you):** **9 valleys** (the lore framing) =
 > 8 Lumenary towns + Dawnstead; **14 area cards** in `atlas.md` §2; **43 graph nodes** in
@@ -207,7 +214,15 @@ never faces an ace-10 Lumenary. This is the tutorial's natural "go catch a kin f
 Lumenary — the largest party-to-ace gap in the curve. This is intentional (Cinderhead's
 "trusts what endures the dark" theme), so Cinderhead's deep-gallery encounters should sit at
 the upper end of their band (24–27) to let a careful player close the gap; do not under-level
-the mine or it becomes a cliff.
+the mine or it becomes a cliff. *(The Descent Vigil earned loop — §5 — institutionalises
+this: Otho's vigil-lamp errand sends the player into exactly that 24–27 band before the
+bond-test, the same way the Beacon fixed the 5-vs-10 gap.)*
+
+**The collinearity rule (binding on earned loops and quests):** every errand reuses ground
+the player walks anyway — the region's own routes, dungeon legs and town maps, inside that
+stop's existing level band from the table above. An earned loop must never force a route
+traversal the main path doesn't already require; if a design wants one, it's the wrong
+design for that region.
 
 ---
 
@@ -283,12 +298,34 @@ pure data (see `tools/maps/build_*.py` + `src/game/content/` for the worked patt
   (the lit lane carved out across them; use the context-correct grass family — `dunegrass`
   on sand) so travel itself rolls encounters; the larger flanking patches stay optional
   grind spots (level-design §11 rule 7).
-- **The earned landmark (the Beacon pattern)** — a region's signature Gleam should be
-  *walked for*, not handed over: a visible, locked landmark in town → a quest hook in the
-  warden's own voice → the key/pass earned out on the route → a short multi-floor ascent
-  with trainer beats → the bond-test at the top. South's worked example is the Tinderwick
-  Beacon (`build_beacon.py` + the `has_beacon_wick` chain); later Lumenaries may vary the
-  shape (a descent, a causeway, a grove) but keep the loop: *tease → errand → earn → climb*.
+- **The earned Gleam loop (BINDING — every Lumenary).** No Gleam is handed over at the door:
+  every bond-test sits at the end of a loop with the same grammar — **tease** (something
+  visible and locked/dark/silent in town) → **hook** (the errand asked in the warden's own
+  voice, with a `blocked_ref` line until it's done) → **collinear errand** (on ground the
+  main path already walks, inside the §4 band) → **key / pass / trial** (a flag chain —
+  NEVER the region's own Gift, §0 rule 1) → **bond-test**. The SHAPE must vary region to
+  region so the loop never goes formulaic; weights alternate full-loop ↔ light. The eight
+  canonical shapes (each specified in its region file):
+
+  | # | Gleam · Warden | Shape (weight) | Locked tease | Earned thing | New-map cost |
+  |---|---|---|---|---|---|
+  | 1 | Ember · Brisa | tower ascent (full) | the wick-locked Beacon | wick-key from the Dimglass lamplighter | BUILT (3) |
+  | 2 | Tide · Reyl | breakwater walk (medium) | the silent Moor-bell shrine | the netmender's bell-rope (net-floats errand) | 1 (`pearlmoor_breakwater`) |
+  | 3 | Verdant · Sable | in-town tending (light) | the grey Elder Bed amid the Bloom | warm the bed (kiln + fen-wood chain) | 0 |
+  | 4 | Stone · Otho | mine descent (heavy) | the dark `to_deep` mouth; lamps lowered | the crew's still-lit vigil-lamp from the deep | 0 |
+  | 5 | Storm · Mira | festival winch climb (medium) | the launch ledge, kite-strings rising | a town-built kite flown at the Kite-rising | 1 (`galehigh_skyloft`) |
+  | 6 | Frost · Ysolde | ice lamp-line (single-map trial) | the undercroft door, seven dark brackets | aurora-oil, then seven brackets lit in line | 1 (`pale_vault_undercroft`) |
+  | 7 | Solar · Lucan | flooded gathering (light-medium) | the dark Heliarium stage | three sunmote phials from the Tidecall halls | 0 |
+  | 8 | Lunar · Nessa | ceremony walk (capstone) | seven unlit watch-lamps under a relit sky | keep the Star-vigil: one lamp per held Gleam | 0 |
+
+- **Named side quests (BINDING — every region ships 3+).** Each region file's "Optional
+  content" carries a *Named quests* sub-block: quest name · giver NPC · 2–4 steps · flags
+  (`flag:q_*`) · reward · maps touched · tags (`[MISSABLE]`/`[LATER]`). Always including
+  that region's leg of **the Waykeeper's Round** — the cross-region delivery line anchored
+  at the Waykeeper (`vesper_crossroads`): a parcel per spoke, each leg waking with its
+  spoke's flag (tag `[wakes with spoke]`), closing post-`hub_unlocked` with "The Long
+  Round". Side quests are pure data: flag chains + NPC swaps + script dialogue_refs +
+  item caches.
 
 ### The vesperlamp's growing light — the *continuous* exploration axis ("Lamplight")
 
@@ -396,7 +433,9 @@ its four roads to the Spire open only on `hub_unlocked`.
 
 Every region follows the same shape (atlas §3): a **segmented main route** (I→II, gift-gated
 on the boundary) → a **town/Lumenary** → an **optional spur** (gated by a *later* Gift —
-backtrack bait) → a **landmark micro-dungeon** → a **hub spoke**.
+backtrack bait) → a **landmark micro-dungeon** → a **hub spoke**. The Lanternway also
+carries **the Waykeeper's Round** (§5): each spoke wakes its delivery leg as its region is
+authored, so the hub accumulates purpose all game long.
 
 ---
 
@@ -413,6 +452,8 @@ scannable and validatable:
 3. **Mechanic introductions** — Gift earned / capture-or-kindling teaching / new terrain
 4. **Optional content** — spurs · landmarks · hidden items, each tagged:
       [MUST-DO] don't-leave-without · [MISSABLE] easy to walk past · [LATER] needs a Gift you don't have yet (name it)
+      PLUS a **Named quests** sub-block (mandatory for town/route areas — §5 kit):
+      - <Quest name> — giver: <NPC> · steps (2–4) · flags (`flag:q_*`) · reward · maps touched · tags
 5. **Don't-miss callouts** — the exploration payoffs a first-timer shouldn't pass
 6. **Validation hooks** — the data a built map MUST contain:
       - map id(s) and kind; entry/exit warp coords agreed with neighbours
@@ -420,6 +461,8 @@ scannable and validatable:
       - key triggers with their `sets_flags` (use the canon flag strings in §2)
       - encounter zones: terrain · element-matched kin (atlas) · level band (§4)
       - NPC / Lumenary / festival placements + dialogue/script refs
+      - quest-chain hooks: every `flag:q_*` the area sets or consumes, with the NPC
+        swap pairs / blocked_refs that carry it (rule 3: opened ⇒ consumed)
 ```
 
 Tag discipline: **[MUST-DO]/[MISSABLE]/[LATER]** are mandatory on every optional entry so the
@@ -439,12 +482,14 @@ data) freely; ⚠️ ones are written as flavour until the system exists.
 | **Town festivals** | Arc E warmth; "belonging not conquest" | ✅ **Now** — cutscene + flag-gated NPCs |
 | **Còr foreshadow encounters** | So the climax isn't a cold open (B3) | ✅ **Now** — cutscene/dialogue only |
 | **Wren rival battles** | Arc A | ✅ **Now (data)** — trainer-battle cutscene step + `reward_flags`; add trainer entries |
+| **Earned Gleam loops** (§5 kit — all eight) | Gleams feel walked-for, not handed over; fixes ace-gap cliffs | ✅ **Now** — flag chains + NPC swaps + `requires_flag`/`blocked_ref` triggers + sight trainers + item caches (the built Beacon proves the whole stack) |
+| **Side-quest chains / the Waykeeper's Round** | Towns feel alive; the hub accumulates purpose; dense optional content | ✅ **Now** — same data stack as above; parcels are key items via `giveItem` |
 | **Fenn–Còr shared past** | Climax weight (Arc C) | ✅ **Now** — pure narrative; no mechanic |
 | **Celestial calendar / day-forms** | Arc D payoff; post-game collecting | ⚠️ **Partial** — permanent "constellation relit" table swaps work via flag-gated `EncounterZone`s; true day/night *cycling* needs a small system → propose for post-MVP |
 | **Lamplight** (vesperlamp brightness tiers — the continuous exploration axis, §5) | Makes Arc D legible *and* is the late-game backtrack engine (early dark areas give up more as the lamp brightens) | ⚠️ **Designed** (§5), one contained render feature: a radial light/dark mask on "dark" maps, radius from Gleam count, + optional `reveal_at_tier` markers. **Additive/non-blocking by rule** — safe to author optional reveals toward it now |
 | **Sunsketch light-puzzle** (directional/timed/redirect blooming, §5) | Adds genuine puzzle depth on one Gift without touching the main path | ⚠️ Sequential/redirect **expressible now** (chained `AbilityGate`); the *timed* bloom is a small addition. Optional rooms only (Helia Vault, Solarium back-fold, a Sunvault terrace) |
 | **Status conditions + move-learn prompt** | Mid-game battle depth (assumed from Pearlmoor on) | ⚠️ Already roadmapped (`battle-runtime-plan.md`) — flag as dependency, don't author around its absence |
-| **Quest counters** (multi-step fetch/track beyond booleans) | A few side-quests want "3 of 3" state | ⚠️ Small `FlagStore` extension (shadow `Record<string,number>`); keep side-quests boolean-only for MVP |
+| **Quest counters** (multi-step fetch/track beyond booleans) | Exactly three quests want "N of M" state (*The Inn's Empty Lamps*, *The Long Round*, *The Day-form Survey*) | ⚠️ Small `FlagStore` extension (shadow `Record<string,number>`); **each of the three has a written boolean-chain fallback** (step B's giver only appears once step A's flag is set), so nothing blocks on it |
 
 **Canon extensions locked by this blueprint** (region files must use, consistently):
 the rival is **Wren**; the mentor is **Star-tender Fenn**; **Fenn and Còr share a past as

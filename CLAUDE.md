@@ -172,7 +172,11 @@ go digging on every task.
   **Wren**, the mentor **Star-tender Fenn**, the eight festivals, the Keystar-kin **Keylumen**,
   and **Lamplight** — the vesperlamp's brightness tiers (Ember-glow→Radiant) as a *continuous,
   additive, non-blocking* exploration axis alongside the six Lantern Gifts (reveals optional
-  content only; never gates the main path).
+  content only; never gates the main path). Also locked there (2026-06): **all 8 Gleams are
+  EARNED** via varied per-region loops (spine §5's binding variation table — never the
+  region's own Gift; quest flags `flag:q_*`), every region ships **3+ named side quests**,
+  and **the Waykeeper's Round** is the cross-region delivery line anchored at
+  `vesper_crossroads`.
 - **Maps are our own JSON** (not Tiled), snake_case keyed, parsed into
   `src/game/data/world/types.ts`. Map authoring is **content, not engine code**;
   the end-to-end flow is in `docs/world/README.md`.
