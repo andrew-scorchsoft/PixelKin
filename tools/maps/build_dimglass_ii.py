@@ -163,10 +163,21 @@ m = {
                {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)}],
     "objects": objects,
     "warps": [
-        {"id": "from_coast_i", "at": {"tx": 7, "ty": 30}, "trigger": "step_on",
-         "to_map": "dimglass_coast", "to": {"tx": 7, "ty": 2}, "facing": "down", "transition": "fade"},
+        # South gap is 3 wide -> a warp per tile, landing ON segment I's exit warps.
+        {"id": "from_coast_i_w", "at": {"tx": 6, "ty": 31}, "trigger": "step_on",
+         "to_map": "dimglass_coast", "to": {"tx": 6, "ty": 0}, "facing": "down", "transition": "fade"},
+        {"id": "from_coast_i", "at": {"tx": 7, "ty": 31}, "trigger": "step_on",
+         "to_map": "dimglass_coast", "to": {"tx": 7, "ty": 0}, "facing": "down", "transition": "fade"},
+        {"id": "from_coast_i_e", "at": {"tx": 8, "ty": 31}, "trigger": "step_on",
+         "to_map": "dimglass_coast", "to": {"tx": 8, "ty": 0}, "facing": "down", "transition": "fade"},
+        # North: the boardwalk causeway (3 wide) onto Pearlmoor's jetty (2 wide),
+        # landing ON the quay's return warps at the jetty tip.
+        {"id": "to_quay_w", "at": {"tx": 6, "ty": 0}, "trigger": "step_on",
+         "to_map": "pearlmoor_quay", "to": {"tx": 13, "ty": 21}, "facing": "up", "transition": "fade"},
         {"id": "to_quay", "at": {"tx": 7, "ty": 0}, "trigger": "step_on",
-         "to_map": "pearlmoor_quay", "to": {"tx": 13, "ty": 20}, "facing": "up", "transition": "fade"},
+         "to_map": "pearlmoor_quay", "to": {"tx": 13, "ty": 21}, "facing": "up", "transition": "fade"},
+        {"id": "to_quay_e", "at": {"tx": 8, "ty": 0}, "trigger": "step_on",
+         "to_map": "pearlmoor_quay", "to": {"tx": 14, "ty": 21}, "facing": "up", "transition": "fade"},
         # The two gift-gated spurs (graph.ts pins both off II — the South region's
         # richest backtrack node). Inert until their target maps are authored; the
         # engine no-ops warps to unregistered maps (safe teases).

@@ -534,7 +534,11 @@ tease (dark mouth in the cliff → Tideglass Cavern), each signed; Pearlmoor sig
 - [ ] **Walk it mentally screen-by-screen**: can you reach every exit, NPC, sign, item?
 - [ ] **Safe lane through grass** exists on early maps; player can't be trapped.
 - [ ] **No 1-wide forced grass corridors**; patches are 2–4 deep with a clear edge.
-- [ ] **Warp round-trips** are consistent both ways (A→B land tile is just outside B→A).
+- [ ] **Warp audit passes** (`tools/maps/audit_warps.py`, run by `mk.finalize()`): every
+      tile of a wide entrance carries a warp (a 3-tile gap with one warp strands the
+      player on the silent tiles); every landing is in bounds + walkable; and a return
+      warp to the source sits within 1 tile of every landing — the convention is to land
+      **ON** the return warp (the engine never auto-fires a step_on warp on arrival).
 - [ ] **Reward/tease cadence** matches the route conventions ([`atlas.md`](./atlas.md) §3:
       segmented chain, a spur, a landmark, a hub spoke).
 - [ ] **Originality** ([`../../VISION.md`](../../VISION.md)): no layout, silhouette, or sign

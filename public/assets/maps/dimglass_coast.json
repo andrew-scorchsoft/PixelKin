@@ -1976,18 +1976,78 @@
   ],
   "warps": [
     {
-      "id": "from_tinderwick",
+      "id": "from_tinderwick_a",
       "at": {
-        "tx": 6,
-        "ty": 32
+        "tx": 5,
+        "ty": 33
       },
       "trigger": "step_on",
       "to_map": "tinderwick",
       "to": {
         "tx": 13,
-        "ty": 2
+        "ty": 0
       },
       "facing": "down",
+      "transition": "fade"
+    },
+    {
+      "id": "from_tinderwick_b",
+      "at": {
+        "tx": 6,
+        "ty": 33
+      },
+      "trigger": "step_on",
+      "to_map": "tinderwick",
+      "to": {
+        "tx": 13,
+        "ty": 0
+      },
+      "facing": "down",
+      "transition": "fade"
+    },
+    {
+      "id": "from_tinderwick_c",
+      "at": {
+        "tx": 7,
+        "ty": 33
+      },
+      "trigger": "step_on",
+      "to_map": "tinderwick",
+      "to": {
+        "tx": 14,
+        "ty": 0
+      },
+      "facing": "down",
+      "transition": "fade"
+    },
+    {
+      "id": "from_tinderwick_d",
+      "at": {
+        "tx": 8,
+        "ty": 33
+      },
+      "trigger": "step_on",
+      "to_map": "tinderwick",
+      "to": {
+        "tx": 14,
+        "ty": 0
+      },
+      "facing": "down",
+      "transition": "fade"
+    },
+    {
+      "id": "to_coast_ii_w",
+      "at": {
+        "tx": 6,
+        "ty": 0
+      },
+      "trigger": "step_on",
+      "to_map": "dimglass_coast_ii",
+      "to": {
+        "tx": 6,
+        "ty": 31
+      },
+      "facing": "up",
       "transition": "fade"
     },
     {
@@ -2000,7 +2060,22 @@
       "to_map": "dimglass_coast_ii",
       "to": {
         "tx": 7,
-        "ty": 29
+        "ty": 31
+      },
+      "facing": "up",
+      "transition": "fade"
+    },
+    {
+      "id": "to_coast_ii_e",
+      "at": {
+        "tx": 8,
+        "ty": 0
+      },
+      "trigger": "step_on",
+      "to_map": "dimglass_coast_ii",
+      "to": {
+        "tx": 8,
+        "ty": 31
       },
       "facing": "up",
       "transition": "fade"

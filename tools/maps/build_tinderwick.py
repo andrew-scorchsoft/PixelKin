@@ -209,10 +209,12 @@ m = {
                {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)}],
     "objects": objects,
     "warps": [
+        # Land ON the coast's return warps (the engine never auto-fires a step_on
+        # warp on arrival) so going back is always one step — audit_warps.py.
         {"id": "to_coast", "at": {"tx": 13, "ty": 0}, "trigger": "step_on",
-         "to_map": "dimglass_coast", "to": {"tx": 6, "ty": 32}, "facing": "up", "transition": "fade"},
+         "to_map": "dimglass_coast", "to": {"tx": 6, "ty": 33}, "facing": "up", "transition": "fade"},
         {"id": "to_coast_e", "at": {"tx": 14, "ty": 0}, "trigger": "step_on",
-         "to_map": "dimglass_coast", "to": {"tx": 7, "ty": 32}, "facing": "up", "transition": "fade"},
+         "to_map": "dimglass_coast", "to": {"tx": 7, "ty": 33}, "facing": "up", "transition": "fade"},
         # House door — interact on the actual door-art tile (cottage col 2).
         {"id": "to_house", "at": {"tx": cottage_door[0], "ty": cottage_door[1]}, "trigger": "interact",
          "to_map": "tinderwick_house", "to": {"tx": 6, "ty": 7}, "facing": "down", "transition": "door"},
@@ -226,7 +228,7 @@ m = {
          "requires_flag": "flag:has_starter", "transition": "door"},
         # The Lanternway east to Vesper Crossroads (the hub; graph.ts spoke).
         {"id": "to_crossroads", "at": {"tx": W - 1, "ty": 16}, "trigger": "step_on",
-         "to_map": "vesper_crossroads", "to": {"tx": 2, "ty": 9}, "facing": "right",
+         "to_map": "vesper_crossroads", "to": {"tx": 0, "ty": 9}, "facing": "right",
          "transition": "fade"},
         # The Beacon foot door — wick-locked until the key comes home from the
         # coast road (the earned-first-Gleam quest; see graph.ts + build_beacon.py).

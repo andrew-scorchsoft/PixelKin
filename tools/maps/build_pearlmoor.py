@@ -241,24 +241,25 @@ m = {
         # South land-in from / return to Dimglass Coast: the player arrives on foot at the
         # seaward tip of the central sand jetty (always-walkable) and heads up the spine.
         {"id": "to_dimglass", "at": {"tx": 13, "ty": 21}, "trigger": "step_on",
-         "to_map": "dimglass_coast_ii", "to": {"tx": 7, "ty": 1}, "facing": "down", "transition": "fade"},
+         "to_map": "dimglass_coast_ii", "to": {"tx": 7, "ty": 0}, "facing": "down", "transition": "fade"},
         {"id": "to_dimglass_e", "at": {"tx": 14, "ty": 21}, "trigger": "step_on",
-         "to_map": "dimglass_coast_ii", "to": {"tx": 7, "ty": 1}, "facing": "down", "transition": "fade"},
+         "to_map": "dimglass_coast_ii", "to": {"tx": 8, "ty": 0}, "facing": "down", "transition": "fade"},
         # Lumenary door — interact on the arch door-art tile (col 2); col 3 is the twin
         # walkable approach. Reachable WITHOUT Tidecall (spine §0 rule 1); soft-gated on
         # holding a starter, like Tinderwick's.
         {"id": "to_lumenary", "at": {"tx": lum_door[0], "ty": lum_door[1]}, "trigger": "interact",
-         "to_map": "pearlmoor_lumenary", "to": {"tx": 7, "ty": 11}, "facing": "down",
+         "to_map": "pearlmoor_lumenary", "to": {"tx": 7, "ty": 9}, "facing": "down",
          "requires_flag": "flag:has_starter", "transition": "door"},
         # Shop door — interact on the chandlery's door-art tile (col 2).
         {"id": "to_shop", "at": {"tx": shop_door[0], "ty": shop_door[1]}, "trigger": "interact",
          "to_map": "pearlmoor_shop", "to": {"tx": 6, "ty": 7}, "facing": "down", "transition": "door"},
         # Inn door — interact on the inn's door-art tile (col 2).
+        # The inn room is 14 wide -> its doormat column is 7, not the shops' 6.
         {"id": "to_inn", "at": {"tx": inn_door[0], "ty": inn_door[1]}, "trigger": "interact",
-         "to_map": "pearlmoor_inn", "to": {"tx": 6, "ty": 7}, "facing": "down", "transition": "door"},
+         "to_map": "pearlmoor_inn", "to": {"tx": 7, "ty": 8}, "facing": "down", "transition": "door"},
         # The Lanternway west to Vesper Crossroads (the hub; graph.ts spoke).
         {"id": "to_crossroads", "at": {"tx": 0, "ty": 12}, "trigger": "step_on",
-         "to_map": "vesper_crossroads", "to": {"tx": 17, "ty": 9}, "facing": "left",
+         "to_map": "vesper_crossroads", "to": {"tx": 19, "ty": 9}, "facing": "left",
          "transition": "fade"},
         # East road to Saltreach Fen (East region) — inert tease until authored.
         {"id": "to_fen", "at": {"tx": W - 1, "ty": 12}, "trigger": "step_on",

@@ -14,7 +14,7 @@
       "tile_height": 16,
       "first_gid": 1,
       "columns": 12,
-      "tile_count": 152
+      "tile_count": 155
     }
   ],
   "layers": [
@@ -2268,7 +2268,7 @@
       "to_map": "dimglass_coast_ii",
       "to": {
         "tx": 7,
-        "ty": 1
+        "ty": 0
       },
       "facing": "down",
       "transition": "fade"
@@ -2282,8 +2282,8 @@
       "trigger": "step_on",
       "to_map": "dimglass_coast_ii",
       "to": {
-        "tx": 7,
-        "ty": 1
+        "tx": 8,
+        "ty": 0
       },
       "facing": "down",
       "transition": "fade"
@@ -2298,7 +2298,7 @@
       "to_map": "pearlmoor_lumenary",
       "to": {
         "tx": 7,
-        "ty": 11
+        "ty": 9
       },
       "facing": "down",
       "requires_flag": "flag:has_starter",
@@ -2328,8 +2328,8 @@
       "trigger": "interact",
       "to_map": "pearlmoor_inn",
       "to": {
-        "tx": 6,
-        "ty": 7
+        "tx": 7,
+        "ty": 8
       },
       "facing": "down",
       "transition": "door"
@@ -2343,7 +2343,7 @@
       "trigger": "step_on",
       "to_map": "vesper_crossroads",
       "to": {
-        "tx": 17,
+        "tx": 19,
         "ty": 9
       },
       "facing": "left",

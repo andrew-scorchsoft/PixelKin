@@ -413,7 +413,14 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   hard-edged fill-only (classic encounter-tile convention) — and every fill variant must carry
   the `encounter_terrain` tag or scattered cells silently stop triggering encounters. Off-map
   = continuation. Finish via `mk.finalize()`: `expand.mjs` → strip terrain → `render_map` +
-  `validate_map` (must PASS). Recipe: SKILL.md §A.
+  `validate_map` + **`tools/maps/audit_warps.py`** (all must PASS). Recipe: SKILL.md §A.
+- **Warp conventions (enforced by `audit_warps.py`).** A wide entrance warps on EVERY
+  walkable tile of its opening (one warp in a 3-tile gap strands players on the silent
+  tiles); landings are in-bounds + walkable; and each landing sits ON (or within 1 tile of)
+  a return warp to the source — landing ON is safe because the engine never auto-fires a
+  step_on warp on arrival (`enterMap` places, it doesn't step). The audit caught real bugs
+  (an out-of-bounds Lumenary landing, an inn landing aimed at the wrong door column) — run
+  it after ANY warp edit, not just new maps.
 - **The device shell screen is locked to 3:2.** `shells.css` sizes `#game-root` to the
   largest 3:2 box that fits, so `Scale.FIT` never pillarboxes (no black side bars). The
   `plain`/`overlay` shells are intentionally full-bleed and still letterbox.

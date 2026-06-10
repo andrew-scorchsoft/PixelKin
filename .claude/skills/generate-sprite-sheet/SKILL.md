@@ -446,6 +446,14 @@ varied fills, decoration, depth, real contrast. If it doesn't read as
 *designed*, iterate the tiles/layout and re-render. This is the map-level twin of
 the sprite self-check loop (below).
 
+**Then AUDIT THE CONNECTIONS** — `tools/maps/audit_warps.py` is the cross-map gate
+(`mk.finalize()` runs it focused on the map; run it bare for the whole world):
+wide entrances must warp on EVERY walkable tile of the opening, every landing must
+be in bounds + walkable, and a return warp to the source must sit within 1 tile of
+every landing (land **ON** the return warp — the engine never auto-fires a step_on
+warp on arrival, so the classic mutual-tile pattern is safe). Warps to unauthored
+maps are reported as teases (the engine no-ops them).
+
 **Then MEASURE it** — `validate_map.py` is the objective gate (the twin of
 `validate_sprites.py`). It splits the two halves of the problem: `autotile-vocab`
 (does the *tileset* provide edge/corner pieces?) and `meshing`/`water-shoreline`/

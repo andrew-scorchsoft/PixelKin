@@ -176,12 +176,24 @@ m = {
                {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)}],
     "objects": objects,
     "warps": [
-        {"id": "from_tinderwick", "at": {"tx": 6, "ty": 32}, "trigger": "step_on",
-         "to_map": "tinderwick", "to": {"tx": 13, "ty": 2}, "facing": "down", "transition": "fade"},
+        # South entry gap is 4 tiles wide -> a warp on EVERY tile, each landing ON
+        # one of Tinderwick's two exit warps (audit_warps.py conventions).
+        {"id": "from_tinderwick_a", "at": {"tx": 5, "ty": 33}, "trigger": "step_on",
+         "to_map": "tinderwick", "to": {"tx": 13, "ty": 0}, "facing": "down", "transition": "fade"},
+        {"id": "from_tinderwick_b", "at": {"tx": 6, "ty": 33}, "trigger": "step_on",
+         "to_map": "tinderwick", "to": {"tx": 13, "ty": 0}, "facing": "down", "transition": "fade"},
+        {"id": "from_tinderwick_c", "at": {"tx": 7, "ty": 33}, "trigger": "step_on",
+         "to_map": "tinderwick", "to": {"tx": 14, "ty": 0}, "facing": "down", "transition": "fade"},
+        {"id": "from_tinderwick_d", "at": {"tx": 8, "ty": 33}, "trigger": "step_on",
+         "to_map": "tinderwick", "to": {"tx": 14, "ty": 0}, "facing": "down", "transition": "fade"},
         # North exit continues onto the tidal flats of Dimglass Coast II (the canon
-        # segment chain: I -> II -> Pearlmoor; see graph.ts and walkthrough/01-south).
+        # segment chain: I -> II -> Pearlmoor); 3-wide gap, 3 warps.
+        {"id": "to_coast_ii_w", "at": {"tx": 6, "ty": 0}, "trigger": "step_on",
+         "to_map": "dimglass_coast_ii", "to": {"tx": 6, "ty": 31}, "facing": "up", "transition": "fade"},
         {"id": "to_coast_ii", "at": {"tx": 7, "ty": 0}, "trigger": "step_on",
-         "to_map": "dimglass_coast_ii", "to": {"tx": 7, "ty": 29}, "facing": "up", "transition": "fade"},
+         "to_map": "dimglass_coast_ii", "to": {"tx": 7, "ty": 31}, "facing": "up", "transition": "fade"},
+        {"id": "to_coast_ii_e", "at": {"tx": 8, "ty": 0}, "trigger": "step_on",
+         "to_map": "dimglass_coast_ii", "to": {"tx": 8, "ty": 31}, "facing": "up", "transition": "fade"},
         {"id": "to_tideglass", "at": {"tx": 2, "ty": 10}, "trigger": "interact",
          "to_map": "tideglass_cavern", "to": {"tx": 5, "ty": 8}, "facing": "left",
          "requires_ability": "glimmerstep", "transition": "door"},
