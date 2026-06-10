@@ -17,12 +17,27 @@ const SPRITE_SHEETS: Record<string, string> = {
   wren: 'wren',
   npc_shopkeeper: 'npc_shopkeeper',
   npc_lampwarden: 'npc_lampwarden',
+  // Generic, reusable townsfolk archetypes — drop these on any NpcPlacement.sprite.
+  npc_man: 'npc_man',
+  npc_woman: 'npc_woman',
+  npc_old_man: 'npc_old_man',
+  npc_old_woman: 'npc_old_woman',
+  npc_boy: 'npc_boy',
+  npc_girl: 'npc_girl',
+  // 'npc_child' is the long-standing generic-kid key; point it at the boy sheet.
+  npc_child: 'npc_boy',
 };
 
 /** Placeholder body colours so distinct NPCs read apart before real walk-sheets. */
 const SPRITE_COLORS: Record<string, string> = {
   npc_mentor: COLORS.bone,
   npc_child: COLORS.grass,
+  npc_boy: COLORS.grass,
+  npc_girl: COLORS.diamond,
+  npc_man: COLORS.deepBlue,
+  npc_woman: COLORS.fire,
+  npc_old_man: COLORS.bone,
+  npc_old_woman: COLORS.bone,
   wren: COLORS.diamond,
   npc_shopkeeper: COLORS.fire,
   npc_lampwarden: COLORS.deepBlue,

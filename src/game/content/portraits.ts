@@ -53,6 +53,18 @@ export const PORTRAITS: Record<string, PortraitDef> = {
     path: 'assets/portraits/lamplighter.png',
     expressions: { neutral: 0, grave: 1 },
   },
+  // The Hearthkeeper — tends the Hearth (kin storage); met early, warm and motherly.
+  hearthkeeper: {
+    id: 'portrait_hearthkeeper',
+    path: 'assets/portraits/hearthkeeper.png',
+    expressions: { neutral: 0, warm: 1 },
+  },
+  // Warden Còr — the Hollowing's gentle, sorrowful leader; seeded as quiet early dread.
+  cor: {
+    id: 'portrait_cor',
+    path: 'assets/portraits/cor.png',
+    expressions: { neutral: 0, grave: 1 },
+  },
 };
 
 /** Resolve a portrait id + expression to its texture key and frame index. */
