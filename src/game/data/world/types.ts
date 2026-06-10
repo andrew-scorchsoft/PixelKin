@@ -120,6 +120,12 @@ export interface EncounterZone {
   table: EncounterTableEntry[];
   /** Some terrains only become enterable with a gift (e.g. water -> tidecall). */
   requires_ability?: AbilityId;
+  /** Zone only rolls once this flag is held (e.g. a restored site's encounters
+   *  blooming after `flag:met_hollowing`). Permanent table swaps ride a pair:
+   *  one zone with `hidden_when_flag`, its successor with `requires_flag`. */
+  requires_flag?: WorldFlag;
+  /** Zone stops rolling once this flag is held (the swap's other half). */
+  hidden_when_flag?: WorldFlag;
 }
 
 export type NpcMovement = 'static' | 'wander' | 'patrol' | 'look_around';

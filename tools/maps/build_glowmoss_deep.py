@@ -81,25 +81,22 @@ def put(x, y, name):
 
 
 # glow-shroom breadcrumbs along the walked spine (lead with light, §3)
-for (x, y, n) in [(6, 24, "glowshroom_a"), (10, 21, "glowshroom_b"), (8, 20, "glowshroom_a"),
+for (x, y, n) in [(6, 24, "glowshroom_a"), (8, 20, "glowshroom_a"),
                   (6, 16, "glowshroom_b"), (11, 14, "glowshroom_a"), (12, 11, "glowshroom_b"),
                   (4, 10, "glowshroom_a"), (3, 6, "glowshroom_b"),
-                  (24, 12, "glowshroom_a"), (27, 16, "glowshroom_b"), (26, 12, "glowshroom_a"),
+                  (24, 12, "glowshroom_a"), (27, 15, "glowshroom_b"),
                   (24, 20, "glowshroom_b"), (26, 22, "glowshroom_a")]:
     put(x, y, n)
 # the drained site: every tuft grey, nothing glows (B2 set dressing)
-for (x, y, n) in [(15, 8, "greymoss_a"), (16, 11, "greymoss_b"), (19, 8, "greymoss_b"),
+for (x, y, n) in [(15, 8, "greymoss_a"), (16, 11, "greymoss_b"), (20, 12, "greymoss_b"),
                   (20, 11, "greymoss_a"), (18, 12, "greymoss_b"), (14, 10, "greymoss_b"),
-                  (19, 6, "greymoss_a"), (16, 7, "greymoss_b")]:
+                  (19, 7, "greymoss_a"), (16, 7, "greymoss_b")]:
     put(x, y, n)
-# THE NULL-LANTERN — the centrepiece, at the heart of the drained site
-NULL_LANTERN = (18, 8)
-put(*NULL_LANTERN, "null_lantern")
 # wave-worn boulders breaking the chamber floors
-for (x, y) in [(5, 21), (11, 23), (4, 12), (12, 15), (22, 13), (27, 11), (23, 21)]:
+for (x, y) in [(5, 21), (11, 23), (4, 12), (12, 15), (26, 17), (27, 11), (23, 21)]:
     put(x, y, "boulder")
 # stray pale pebbles
-for (x, y) in [(9, 24), (6, 13), (10, 11), (26, 14), (24, 15), (16, 12), (20, 9), (3, 5)]:
+for (x, y) in [(9, 24), (6, 13), (9, 14), (26, 14), (24, 15), (16, 12), (20, 9), (3, 5)]:
     put(x, y, "g_pebble")
 # signs: the mouth (entry) + the Spore Grotto turn-off (tease, signed)
 SIGN_MOUTH = (6, 22)
@@ -118,7 +115,20 @@ m = {
     "layers": [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers +
               [{"name": "deco", "role": "deco", "depth": 5, "data": deco},
                {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)}],
-    "objects": [],
+    # Generated-object set-dressing (packed via pack_objects.py — image-gen is
+    # for OBJECTS, terrain stays drawn): the mossheart tree is chamber B's living
+    # landmark; the NULL-LANTERN SHRINE is the drained site's centrepiece (the
+    # relight script cameraFocuses it); the shroom clusters bookend the spine.
+    "objects": [
+        {"id": "mossheart", "sprite": "glowmoss_deep_mossheart_tree",
+         "at": {"tx": 9, "ty": 8}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+        {"id": "null_lantern_shrine", "sprite": "glowmoss_deep_null_lantern_shrine",
+         "at": {"tx": 18, "ty": 7}, "w": 2, "h": 3, "overhang": 1, "walk_under": False},
+        {"id": "shrooms_entry", "sprite": "glowmoss_deep_glowshrooms_teal",
+         "at": {"tx": 9, "ty": 21}, "w": 2, "h": 2, "overhang": 1, "walk_under": True},
+        {"id": "shrooms_gallery", "sprite": "glowmoss_deep_glowshrooms_ember",
+         "at": {"tx": 25, "ty": 12}, "w": 2, "h": 2, "overhang": 1, "walk_under": True},
+    ],
     "warps": [
         # South throat back to Lowleaf Hollow (2-wide: a warp on EVERY open tile).
         # Lowleaf is unauthored yet — inert tease until its builder pairs the landing.
@@ -163,9 +173,14 @@ m = {
     # (level-design Fork E). #56 Sporeling (Verdant), #38 Mossglow (Light/Verdant
     # — the glowing moss kin), #67 Fennlight (Verdant/Light, the town signature).
     # The DRAINED site has no zone at all: the moss is grey, the kin are gone —
-    # that absence IS the Hollowing (the post-restore bloom is deferred; see
-    # the builder report — EncounterZone has no requires_flag yet).
+    # that absence IS the Hollowing. Once the null-lantern is relit
+    # (flag:met_hollowing) the chamber wakes: a quiet flag-gated cave-floor bed
+    # blooms in (EncounterZone.requires_flag) — life seeping back, not a thicket.
     "encounters": [
+        {"id": "drained_woken", "terrain": "cave", "rect": {"tx": 14, "ty": 6, "w": 8, "h": 7},
+         "encounter_rate": 0.06, "requires_flag": "flag:met_hollowing",
+         "table": [{"kin_id": 38, "weight": 55, "min_level": 20, "max_level": 22},
+                   {"kin_id": 67, "weight": 45, "min_level": 21, "max_level": 22}]},
         {"id": "glow_b", "terrain": "tall_grass", "rect": {"tx": 4, "ty": 11, "w": 8, "h": 4},
          "encounter_rate": 0.12,
          "table": [{"kin_id": 56, "weight": 45, "min_level": 20, "max_level": 22},
@@ -218,7 +233,7 @@ m = {
          "sprite": "npc_man", "movement": "static",
          "dialogue_ref": "npc.glowmoss_acolyte_b",
          "hidden_when_flag": "flag:met_hollowing"},
-        {"id": "cowled_figure", "at": {"tx": 21, "ty": 7}, "facing": "down",
+        {"id": "cowled_figure", "at": {"tx": 20, "ty": 7}, "facing": "down",
          "sprite": "npc_old_man", "movement": "static",
          "dialogue_ref": "npc.glowmoss_cowled",
          "hidden_when_flag": "flag:met_hollowing"},

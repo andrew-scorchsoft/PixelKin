@@ -600,7 +600,7 @@ export class WorldScene extends Phaser.Scene {
 
     // Wild encounter — only if we have a kin able to fight.
     if (this.hasHealthyKin()) {
-      const intent = this.encounters.roll(tx, ty, this.abilities);
+      const intent = this.encounters.roll(tx, ty, this.abilities, (flag) => this.flags.get(flag));
       if (intent) {
         void this.startBattle({
           kind: 'wild',

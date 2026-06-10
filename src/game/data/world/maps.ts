@@ -156,13 +156,15 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   // East: the first true cave dungeon — the hollow's dark interior past Lowleaf
   // (Glimmerstep-gated on Lowleaf's `to_deepwood` warp; B2 first Hollowing contact).
   // The track is "Deep Glimmer", the Lowleaf brief's deep-interior variant.
-  // No battle_backdrops yet: the plain night fill suits the lightless deep until
-  // a drained/grey backdrop is rendered (walkthrough/02-east "assets owed").
   glowmoss_deep: {
     json: 'assets/maps/glowmoss_deep.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
     music: 'assets/audio/music/lowleaf-hollow-c.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/glowmoss-deep-a.webp',
+      'assets/backgrounds/battle/glowmoss-deep-b.webp',
+    ],
   },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.

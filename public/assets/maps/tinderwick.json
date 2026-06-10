@@ -14,7 +14,7 @@
       "tile_height": 16,
       "first_gid": 1,
       "columns": 12,
-      "tile_count": 155
+      "tile_count": 183
     }
   ],
   "layers": [
@@ -2481,6 +2481,18 @@
       "movement": "static",
       "dialogue_ref": "npc.gatewarden_after",
       "requires_flag": "flag:has_starter"
+    },
+    {
+      "id": "cache_waxcake",
+      "at": {
+        "tx": 3,
+        "ty": 15
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_tinderwick_waxcake",
+      "hidden_when_flag": "flag:picked_tinderwick_waxcake"
     },
     {
       "id": "wren",

@@ -241,9 +241,9 @@ export const SCRIPTS: ScriptRegistry = {
   ],
   'script.shop_kit_pearlmoor': [
     { op: 'say', speaker: 'CHANDLER', text: 'Welcome in off the boards. Facing Reyl, are you? Take the crossing-kit — the sea is kinder to the prepared.' },
-    { op: 'giveItem', item: 'bright_lamp', count: 2 },
+    { op: 'giveItem', item: 'glow_charge', count: 2 },
     { op: 'giveItem', item: 'tallow_balm', count: 2 },
-    { op: 'say', speaker: 'CHANDLER', text: 'Bright lamps hold a catch better than plain ones. And mind the triangle — his whole crew runs Tide.' },
+    { op: 'say', speaker: 'CHANDLER', text: 'Feed a charge to your lamp before a throw — a charged flame holds a catch better than a plain one. And mind the triangle — his whole crew runs Tide.' },
     { op: 'setFlag', flag: 'flag:pearlmoor_kit' },
   ],
 
@@ -274,9 +274,23 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:picked_flats_balm' },
   ],
   'script.pickup_flats_lamp': [
-    { op: 'giveItem', item: 'bright_lamp', count: 1 },
-    { op: 'say', text: 'Tucked dry in the dune grass. Found a BRIGHT LAMP!' },
+    { op: 'giveItem', item: 'glow_charge', count: 1 },
+    { op: 'say', text: 'Tucked dry in the dune grass. Found a GLOW CHARGE!' },
     { op: 'setFlag', flag: 'flag:picked_flats_lamp' },
+  ],
+  // The cache-variety finds (spine rule): a found-to-sell nugget in Tinderwick's
+  // SW corner, and loose wicks west of the flats' lane.
+  'script.pickup_tinderwick_waxcake': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'wax_cake', count: 1 },
+    { op: 'say', text: 'Wrapped in oilcloth behind the hedgerow — a pressed WAX CAKE! Any keeper will trade well for it.' },
+    { op: 'setFlag', flag: 'flag:picked_tinderwick_waxcake' },
+  ],
+  'script.pickup_flats_wicks': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 80 },
+    { op: 'say', text: "A dropped courier's purse, half-buried in the sand. Found 80 WICKS!" },
+    { op: 'setFlag', flag: 'flag:picked_flats_wicks' },
   ],
   // --- Glowmoss Deep (East) — the first cave dungeon + the B2 set-piece -------
   // The deep wood's sight keepers (level-design §11 rule 7): they hold the lane
@@ -311,7 +325,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'ACOLYTE', text: 'Oh — a Wayfarer. Please, tread soft. She is not hurt. She is RESTING.' },
     { op: 'say', speaker: 'ACOLYTE', text: 'Does the quiet not look gentle, after all that flickering? No more guttering. No more going out. Just... rest.' },
     { op: 'say', speaker: 'ACOLYTE', text: 'We are the Hollowing. Our Warden Còr teaches that the dark asks nothing of anyone. We only help the tired lights lie down.' },
-    { op: 'cameraFocus', to: { tx: 21, ty: 7 }, ms: 800 },
+    { op: 'cameraFocus', to: { tx: 20, ty: 7 }, ms: 800 },
     { op: 'sfx', key: 'world-star-gutter' },
     { op: 'narrate', text: 'At the chamber\'s far edge a cowled figure stands very still, watching you. It bows its head — sorrowing, almost kind — then turns, and is gone into the dark.' },
     { op: 'cameraReset', ms: 600 },

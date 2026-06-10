@@ -487,6 +487,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   the `encounter_terrain` tag or scattered cells silently stop triggering encounters. Off-map
   = continuation. Finish via `mk.finalize()`: `expand.mjs` → strip terrain → `render_map` +
   `validate_map` + **`tools/maps/audit_warps.py`** (all must PASS). Recipe: SKILL.md §A.
+- **Cave dungeon? Copy `tools/maps/build_glowmoss_deep.py` (the worked example).** The shared
+  set ships gbaforge-drawn cave families: `cavefloor0-3` (the base), `cavewall` (13-piece; fill
+  = void-dark wall TOP, S edges = the lamp-lit FACE — the cliff convention indoors), `glowmoss`
+  (the cave encounter tile, fill-only, tagged `tall_grass`) + `glowshroom/greymoss/null_lantern`
+  decor. Carve rooms as blobs from a solid wall grid, join with 1-wide chokes, and put story
+  step_on triggers ON the chokes so they can't be walked around.
 - **Warp conventions (enforced by `audit_warps.py`).** A wide entrance warps on EVERY
   walkable tile of its opening (one warp in a 3-tile gap strands players on the silent
   tiles); landings are in-bounds + walkable; and each landing sits ON (or within 1 tile of)
