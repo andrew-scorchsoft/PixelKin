@@ -5,10 +5,14 @@
  * when the last page is dismissed. Owns its own input so `await box.run(lines)` works
  * anywhere. One consistent look via the theme + Panel.
  *
- * A line may carry a character `portrait` (a 32×32 bust drawn top-left, the body
- * text reflowing beside it) and/or `style: 'narrate'` (un-attributed, softer prose
- * for cold-open / cutscene narration). Both are additive: a missing portrait or a
- * plain `{speaker,text}` line renders exactly as before.
+ * Authors write one `DialogueLine` per *thought*, not per screen: any line too long
+ * for the box is auto-paginated here (word-wrapped, then split into box-height pages),
+ * so a long message just chunks itself on playback — no need to hand-split it.
+ *
+ * A line may also carry a character `portrait` (a 32×32 bust drawn top-left, the body
+ * text reflowing — and paginating — beside it) and/or `style: 'narrate'` (un-attributed,
+ * softer prose for cold-open / cutscene narration). Both are additive: a missing portrait
+ * or a plain `{speaker,text}` line renders exactly as before.
  */
 import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT } from '@game/config';
@@ -21,8 +25,10 @@ import type { DialogueLine } from '@game/content/types';
 import type { Sfx } from '@game/systems/audio/Sfx';
 
 const MARGIN = 6;
-const HEIGHT = 46;
+const HEIGHT = 52;
 const PAD = theme.space.lg;
+/** Body text sits below the speaker-name row. */
+const BODY_TOP = PAD + 8;
 
 export class DialogueBox {
   private readonly panel: Panel;
@@ -43,20 +49,66 @@ export class DialogueBox {
     this.panel = new Panel(scene, MARGIN, y, this.width, HEIGHT).fixedToCamera().setDepth(theme.depth.panel);
 
     this.name = makeText(scene, PAD, PAD - 2, '', theme.text.accent);
-    this.body = makeText(scene, PAD, PAD + 8, '', theme.text.base);
+    this.body = makeText(scene, PAD, BODY_TOP, '', theme.text.base);
+    this.body.setWordWrapWidth(this.width - PAD * 2);
     this.caret = makeText(scene, this.width - PAD - 6, HEIGHT - PAD - 6, '▼', theme.text.accent);
     this.panel.add(this.name);
     this.panel.add(this.body);
     this.panel.add(this.caret);
   }
 
-  /** Position the portrait / name / body and the body wrap for this page's layout. */
+  /** The portrait bust to show for a line, if one resolves and its texture is loaded. */
+  private portraitFor(line: DialogueLine): { def: { id: string }; frame: number } | undefined {
+    if (line.style === 'narrate') return undefined;
+    const pr = resolvePortrait(line.portrait, line.expr);
+    return pr && this.scene.textures.exists(pr.def.id) ? pr : undefined;
+  }
+
+  /** Left edge of the text column — shifted right when a portrait bust is present. */
+  private textLeft(pr: { def: { id: string } } | undefined): number {
+    return pr ? theme.portrait.inset + theme.portrait.size + theme.portrait.gap : PAD;
+  }
+
+  /** Body word-wrap width for a line (narrower when a portrait sits to its left). */
+  private bodyWrap(pr: { def: { id: string } } | undefined): number {
+    return this.width - this.textLeft(pr) - PAD;
+  }
+
+  /**
+   * Split an authored line into box-sized pages: word-wrap it to the line's body width
+   * (so we break on word boundaries, never mid-word), then group the wrapped lines into
+   * chunks that fit the box vertically. Carries the line's speaker/portrait/style onto
+   * every page. Returns at least one page so an empty line still advances.
+   */
+  private paginate(line: DialogueLine, maxLines: number): DialogueLine[] {
+    this.body.setWordWrapWidth(this.bodyWrap(this.portraitFor(line)));
+    const wrapped = this.body.getWrappedText(line.text);
+    if (wrapped.length === 0) return [{ ...line, text: '' }];
+    const pages: DialogueLine[] = [];
+    for (let i = 0; i < wrapped.length; i += maxLines) {
+      pages.push({ ...line, text: wrapped.slice(i, i + maxLines).join('\n') });
+    }
+    return pages;
+  }
+
+  /** How many wrapped lines fit in the body area, from the measured font line height. */
+  private maxBodyLines(): number {
+    const prev = this.body.text;
+    this.body.setWordWrapWidth(0); // measure a single unwrapped line
+    this.body.setText('Mg');
+    const lineHeight = this.body.height;
+    this.body.setWordWrapWidth(this.width - PAD * 2);
+    this.body.setText(prev);
+    const available = HEIGHT - BODY_TOP - PAD;
+    return Math.max(1, Math.floor(available / Math.max(1, lineHeight)));
+  }
+
+  /** Position the portrait / name / body for this page and pick the typewriter speed. */
   private layout(line: DialogueLine): { cps: number; fastCps: number } {
-    const narrate = line.style === 'narrate';
-    const pr = narrate ? undefined : resolvePortrait(line.portrait, line.expr);
+    const pr = this.portraitFor(line);
 
     // Portrait bust, vertically centred at the box's left edge when present.
-    if (pr && this.scene.textures.exists(pr.def.id)) {
+    if (pr) {
       const size = theme.portrait.size;
       const py = Math.round((HEIGHT - size) / 2);
       if (!this.portrait) {
@@ -68,19 +120,23 @@ export class DialogueBox {
       this.portrait?.setVisible(false);
     }
 
-    const textLeft = this.portrait?.visible ? theme.portrait.inset + theme.portrait.size + theme.portrait.gap : PAD;
-    this.name.setX(textLeft);
-    this.body.setX(textLeft);
-    this.body.setWordWrapWidth(this.width - textLeft - PAD);
+    const left = this.textLeft(pr);
+    this.name.setX(left);
+    this.body.setX(left);
 
-    if (narrate) {
+    let speed: { cps: number; fastCps: number };
+    if (line.style === 'narrate') {
       this.name.setVisible(false);
-      this.body.setStyle(theme.text.narrate).setY(PAD + 4);
-      return { cps: theme.typewriter.narrateCps, fastCps: theme.typewriter.fastCps };
+      this.body.setStyle(theme.text.narrate);
+      speed = { cps: theme.typewriter.narrateCps, fastCps: theme.typewriter.fastCps };
+    } else {
+      this.name.setVisible(true);
+      this.body.setStyle(theme.text.base);
+      speed = { cps: theme.typewriter.cps, fastCps: theme.typewriter.fastCps };
     }
-    this.name.setVisible(true);
-    this.body.setStyle(theme.text.base).setY(PAD + 8);
-    return { cps: theme.typewriter.cps, fastCps: theme.typewriter.fastCps };
+    // Set the wrap AFTER setStyle (which replaces the style config) so it sticks.
+    this.body.setWordWrapWidth(this.bodyWrap(pr));
+    return speed;
   }
 
   /** Show the pages in order; resolve once the last is dismissed. */
@@ -88,6 +144,11 @@ export class DialogueBox {
     const input = new InputController(this.scene);
     this.input = input;
     let armed = false; // ignore the keypress that opened the box until released
+
+    // Expand each authored line into one-or-more box-sized pages up front.
+    const maxLines = this.maxBodyLines();
+    const pages: DialogueLine[] = lines.flatMap((line) => this.paginate(line, maxLines));
+
     let page = 0;
     let shown = 0; // chars revealed
     let acc = 0; // ms accumulator
@@ -95,7 +156,7 @@ export class DialogueBox {
     let speed: { cps: number; fastCps: number } = { cps: theme.typewriter.cps, fastCps: theme.typewriter.fastCps };
 
     const startPage = (): void => {
-      const line = lines[page];
+      const line = pages[page];
       speed = this.layout(line);
       this.name.setText(line.speaker ?? '');
       full = line.text;
@@ -106,8 +167,7 @@ export class DialogueBox {
     };
 
     return new Promise((resolve) => {
-      if (lines.length === 0) {
-        input.destroy();
+      if (pages.length === 0) {
         this.destroy();
         resolve();
         return;
@@ -142,9 +202,7 @@ export class DialogueBox {
           if (input.justPressed(InputAction.Confirm)) {
             void this.sfx?.play(theme.cursor.confirmSfx);
             page++;
-            if (page >= lines.length) {
-              this.scene.events.off(Phaser.Scenes.Events.UPDATE, tick);
-              input.destroy();
+            if (page >= pages.length) {
               this.destroy();
               resolve();
               return;
