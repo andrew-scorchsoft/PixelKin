@@ -462,6 +462,17 @@ corner where the region wraps a concavity — never a hard square seam. That sin
 discipline is most of the visual gap between our old screens and a polished
 handheld RPG.
 
+> **Structure, not noise (binding, 2026-06).** The second half of that gap was the
+> tile *interior*: cartridge-era ground is a FLAT base colour with a few deliberate,
+> repeated motifs (grass ticks, dot clusters, strata lines) — not per-pixel speckle.
+> The shared overworld terrain families are therefore **drawn in code**
+> (`tools/maps/gbaforge.py`, applied by `build_shared_overworld.py`): flat fills +
+> hand-placed motif layouts (variants = different layouts, never jitter), crisp
+> rounded 1px-bordered transitions, context-correct families (`path`→grass,
+> `trail`→sand, `pond`=water-on-grass, `water`=sand shore). Image generation is for
+> OBJECTS (buildings, trees, props), never terrain fills. See level-design §11
+> rule 8 and the generate-sprite-sheet skill §A.
+
 ### The 47-blob set
 
 Each autotile terrain (the area's ground, its water, its cliff) is authored as a

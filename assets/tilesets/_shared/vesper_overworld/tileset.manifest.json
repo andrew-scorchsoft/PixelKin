@@ -808,6 +808,210 @@
     {
       "file": "125_flowerbed_b.png",
       "role": "decor"
+    },
+    {
+      "file": "126_trail_corner_nw.png",
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "corner_nw"
+    },
+    {
+      "file": "127_trail_edge_n.png",
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "edge_n"
+    },
+    {
+      "file": "128_trail_corner_ne.png",
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "corner_ne"
+    },
+    {
+      "file": "129_trail_edge_w.png",
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "edge_w"
+    },
+    {
+      "file": "130_trail_fill.png",
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "fill"
+    },
+    {
+      "file": "131_trail_edge_e.png",
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "edge_e"
+    },
+    {
+      "file": "132_trail_corner_sw.png",
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "corner_sw"
+    },
+    {
+      "file": "133_trail_edge_s.png",
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "edge_s"
+    },
+    {
+      "file": "134_trail_corner_se.png",
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "corner_se"
+    },
+    {
+      "file": "135_trail_strip_h.png",
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "strip_h"
+    },
+    {
+      "file": "136_trail_strip_v.png",
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "strip_v"
+    },
+    {
+      "file": "137_trail_inner_nw.png",
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "inner_nw"
+    },
+    {
+      "file": "138_trail_inner_ne.png",
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "inner_ne"
+    },
+    {
+      "file": "139_trail_inner_sw.png",
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "inner_sw"
+    },
+    {
+      "file": "140_trail_inner_se.png",
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "inner_se"
+    },
+    {
+      "file": "141_trail_fill_v1.png",
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "fill"
+    },
+    {
+      "file": "142_trail_fill_v2.png",
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "fill"
+    },
+    {
+      "file": "143_pond_corner_nw.png",
+      "role": "water",
+      "terrain": "pond",
+      "autotile": "corner_nw",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "144_pond_edge_n.png",
+      "role": "water",
+      "terrain": "pond",
+      "autotile": "edge_n",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "145_pond_corner_ne.png",
+      "role": "water",
+      "terrain": "pond",
+      "autotile": "corner_ne",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "146_pond_edge_w.png",
+      "role": "water",
+      "terrain": "pond",
+      "autotile": "edge_w",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "147_pond_edge_e.png",
+      "role": "water",
+      "terrain": "pond",
+      "autotile": "edge_e",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "148_pond_corner_sw.png",
+      "role": "water",
+      "terrain": "pond",
+      "autotile": "corner_sw",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "149_pond_edge_s.png",
+      "role": "water",
+      "terrain": "pond",
+      "autotile": "edge_s",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "150_pond_corner_se.png",
+      "role": "water",
+      "terrain": "pond",
+      "autotile": "corner_se",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "151_pond_fill.png",
+      "role": "water",
+      "terrain": "pond",
+      "autotile": "fill",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          151,
+          79,
+          80
+        ],
+        "duration_ms": 800
+      }
+    },
+    {
+      "file": "152_dunegrass_fill.png",
+      "role": "ground",
+      "terrain": "dunegrass",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "153_dunegrass_fill_v1.png",
+      "role": "ground",
+      "terrain": "dunegrass",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "154_dunegrass_fill_v2.png",
+      "role": "ground",
+      "terrain": "dunegrass",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
     }
   ]
 }

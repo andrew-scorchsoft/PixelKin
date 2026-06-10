@@ -233,23 +233,34 @@ cliff) is an autotile **BODY** — a `terrain` presence layer meshed by
 `tools/autotile/expand.mjs`, **never** independent fill tiles plonked down. Two
 kinds of terrain, two methods — pick by whether the transition is flat or organic.
 
-> **The deterministic finishing kit comes FIRST (no API).** Before generating new
-> art, check `tools/maps/tileforge.py` — the 2026-06 quality pass lives there and
-> closes most of the gap to the reference-era bar: `texture_grass` (blade dashes on
-> flat ground fills), `tallgrass_tuft` (the encounter tile — **tall grass is now
-> hard-edged fill-only by design**, classic-style, no transition ring), `grade` +
-> `cliff_strata` + `cliff_wall_edge` (lifted stratified cliff whose S/W/E edges are
-> complete wall tiles: lit rim → face → dark contact seam → ground), `deglow`
-> (kills baked highlight rims on pale fills), **`flatten_vignette` on every fill +
-> `flatten_axis` on every edge/strip** (the per-tile-border "joints" cure; edge
-> variants are flips, never rolls; value-match edges to their fill — level-design
-> §11), `key_alpha` (props generated on an opaque card — the "white bag" cure;
-> better: place the 1×3 lamp-post OBJECT, never a 1-tile lamp), `inner_corner`
-> (13-piece completion — good for path/sand/tree/cliff, **skip water**), and drawn
-> props (`draw_fence_h`,
-> `draw_fence_post`, `draw_boulder`, `draw_flowerbed`). `build_shared_overworld.py`
-> applies all of these when packing the shared set. Compose maps to
-> `docs/world/level-design.md` **§11** (the composition standard).
+> **TERRAIN IS DRAWN, NOT GENERATED (the GBA-register standard, 2026-06).** The
+> shared set's terrain families — grass, path, sand, water, pond, trail, cliff,
+> tall-grass, tree fills — are drawn pixel-by-pixel in **`tools/maps/gbaforge.py`**:
+> flat dusk-palette bases carrying a few deliberate, repeated MOTIFS (grass ticks,
+> dot clusters, strata lines, blade-fans), with rounded 1px-bordered transitions
+> from `gbaforge.overlay_tile` (all 13 roles + strips, any inner/outer fill pair).
+> Variants are *alternative motif layouts*, never jitter noise — random speckle is
+> exactly the "AI static" look this standard replaced. `build_shared_overworld.py`
+> applies gbaforge as a name-keyed override when packing (stable tile order, so
+> existing maps update for free), and **skips all seam passes on drawn tiles**
+> (seamless by construction; the passes would smear the designed borders).
+> Transitions must be **context-correct**: `path`→grass, `trail`→sand, `pond` =
+> water-over-grass, `water` = sand-shore. Need a lane/pool over a new ground? Add
+> a family (append to the set — indices hold), don't tolerate the wrong-colour ring.
+>
+> **CONCEPT BRIEF BEFORE TILES.** Before building/retouching any area, read its
+> atlas entry + walkthrough region file (+ `assets/concept-art/`) and name **three
+> signature touches** the map must carry (level-design §8 pre-flight) — then make
+> the tiles/objects serve them. A map that validates but carries no nod to its
+> concept is not done.
+>
+> **Image-gen is for OBJECTS only** (buildings, crown trees, props, decor) — never
+> terrain fills. For painterly masters that remain, `tools/maps/tileforge.py` keeps
+> the cures: `deglow`, `flatten_vignette`/`flatten_axis` (the "joints" cure),
+> `key_alpha` (the "white bag" cure; better: the 1×3 lamp-post OBJECT, never a
+> 1-tile lamp), `inner_corner`, and the drawn props (`draw_fence_h`,
+> `draw_fence_post`, `draw_boulder`, `draw_flowerbed`). Compose maps to
+> `docs/world/level-design.md` **§11** (the composition standard, incl. rule 8).
 
 **FLAT transition (path-on-grass, tall-grass-on-grass) → COMPOSITE, do NOT AI-paint.**
 AI-painting flat path cells gives mismatched dirt, per-tile banding, and a junction
@@ -434,6 +445,14 @@ Open the PNG and judge it against the Pokémon-era bar: clean terrain borders,
 varied fills, decoration, depth, real contrast. If it doesn't read as
 *designed*, iterate the tiles/layout and re-render. This is the map-level twin of
 the sprite self-check loop (below).
+
+**Then AUDIT THE CONNECTIONS** — `tools/maps/audit_warps.py` is the cross-map gate
+(`mk.finalize()` runs it focused on the map; run it bare for the whole world):
+wide entrances must warp on EVERY walkable tile of the opening, every landing must
+be in bounds + walkable, and a return warp to the source must sit within 1 tile of
+every landing (land **ON** the return warp — the engine never auto-fires a step_on
+warp on arrival, so the classic mutual-tile pattern is safe). Warps to unauthored
+maps are reported as teases (the engine no-ops them).
 
 **Then MEASURE it** — `validate_map.py` is the objective gate (the twin of
 `validate_sprites.py`). It splits the two halves of the problem: `autotile-vocab`

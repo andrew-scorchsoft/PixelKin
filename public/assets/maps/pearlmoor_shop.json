@@ -344,6 +344,18 @@
   "encounters": [],
   "npcs": [
     {
+      "id": "chandler_kit",
+      "at": {
+        "tx": 6,
+        "ty": 2
+      },
+      "facing": "down",
+      "sprite": "npc_shopkeeper",
+      "movement": "static",
+      "dialogue_ref": "script.shop_kit_pearlmoor",
+      "hidden_when_flag": "flag:pearlmoor_kit"
+    },
+    {
       "id": "chandler",
       "at": {
         "tx": 6,
@@ -352,7 +364,8 @@
       "facing": "down",
       "sprite": "npc_shopkeeper",
       "movement": "static",
-      "dialogue_ref": "npc.pearlmoor_shopkeeper"
+      "dialogue_ref": "npc.pearlmoor_shopkeeper",
+      "requires_flag": "flag:pearlmoor_kit"
     }
   ],
   "gates": [],

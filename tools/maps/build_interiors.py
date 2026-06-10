@@ -136,7 +136,8 @@ def obj(id_, sprite, tx, ty, w, h, overhang=0, solid=True):
 # =============================================================================
 #  LUMENARIES (cool register, shrine) — tinderwick & pearlmoor
 # =============================================================================
-def build_lumenary(id_, name, music, out_warp, script_ref, sign_ref, warden_id, warden_dialogue):
+def build_lumenary(id_, name, music, out_warp, script_ref, sign_ref, warden_id, warden_dialogue,
+                   gate_flag="flag:has_starter", blocked_ref=None, npcs_override=None):
     W, H = 14, 11
     door_x = W // 2  # tx 7
     base, over = faced_room(W, H, door_x, floor_fill=FLOOR, floor_alt=FLOOR_B)
@@ -170,25 +171,34 @@ def build_lumenary(id_, name, music, out_warp, script_ref, sign_ref, warden_id, 
          "facing": "down", "transition": "door"},
     ]
     triggers = [
-        # step-on bond-test trigger sits on the aisle just south of where the warden stands
-        {"id": "lumenary_battle", "kind": "cutscene", "at": {"tx": door_x, "ty": 6},
-         "activation": "step_on", "ref": script_ref, "once": True,
-         "requires_flag": "flag:has_starter"},
         {"id": "sign_lumenary", "kind": "sign", "at": {"tx": 2, "ty": 2}, "activation": "interact",
          "ref": sign_ref},
     ]
-    npcs = [
-        # the warden stands at the foot of the altar dais (row 5, just below the 3x3 altar)
-        {"id": warden_id, "at": {"tx": door_x, "ty": 5}, "facing": "down",
-         "sprite": "npc_lampwarden", "movement": "static", "dialogue_ref": warden_dialogue},
-    ]
+    if script_ref:
+        # step-on bond-test trigger on the aisle just south of where the warden stands
+        battle_trigger = {"id": "lumenary_battle", "kind": "cutscene", "at": {"tx": door_x, "ty": 6},
+                          "activation": "step_on", "ref": script_ref, "once": True,
+                          "requires_flag": gate_flag}
+        if blocked_ref:
+            battle_trigger["blocked_ref"] = blocked_ref
+        triggers.insert(0, battle_trigger)
+    if npcs_override is not None:
+        npcs = [dict(n, at={"tx": door_x, "ty": 5}) if n.get("at") == "dais" else n
+                for n in npcs_override]
+    else:
+        npcs = [
+            # the warden stands at the foot of the altar dais (row 5, below the 3x3 altar)
+            {"id": warden_id, "at": {"tx": door_x, "ty": 5}, "facing": "down",
+             "sprite": "npc_lampwarden", "movement": "static", "dialogue_ref": warden_dialogue},
+        ]
     return mapdef(id_, name, W, H, COOL_SET, base, over, objects, warps, triggers, npcs, music)
 
 
 # =============================================================================
 #  SHOPS (warm) — tinderwick & pearlmoor
 # =============================================================================
-def build_shop(id_, name, music, out_warp, sign_ref, keeper_id, keeper_dialogue):
+def build_shop(id_, name, music, out_warp, sign_ref, keeper_id, keeper_dialogue,
+               kit_script=None, kit_flag=None):
     W, H = 12, 9
     door_x = W // 2  # tx 6
     base, over = faced_room(W, H, door_x)
@@ -215,11 +225,20 @@ def build_shop(id_, name, music, out_warp, sign_ref, keeper_id, keeper_dialogue)
         {"id": "sign_wares", "kind": "sign", "at": {"tx": W - 2, "ty": 5}, "activation": "interact",
          "ref": sign_ref},
     ]
-    npcs = [
-        # behind the counter (counter occupies ty 3-4; keeper at ty 2, the wall-face is row 1 so 2 is floor)
-        {"id": keeper_id, "at": {"tx": door_x, "ty": 2}, "facing": "down",
-         "sprite": "npc_shopkeeper", "movement": "static", "dialogue_ref": keeper_dialogue},
-    ]
+    # Until coin is wired, the keeper hands a one-time Wayfarer's kit: the KIT
+    # placement (runs the gift script) swaps for the PLAIN keeper via the kit
+    # flag — refreshNpcs() makes the swap land the moment the script finishes.
+    npcs = []
+    if kit_script and kit_flag:
+        npcs.append({"id": f"{keeper_id}_kit", "at": {"tx": door_x, "ty": 2}, "facing": "down",
+                     "sprite": "npc_shopkeeper", "movement": "static",
+                     "dialogue_ref": kit_script, "hidden_when_flag": kit_flag})
+        npcs.append({"id": keeper_id, "at": {"tx": door_x, "ty": 2}, "facing": "down",
+                     "sprite": "npc_shopkeeper", "movement": "static",
+                     "dialogue_ref": keeper_dialogue, "requires_flag": kit_flag})
+    else:
+        npcs.append({"id": keeper_id, "at": {"tx": door_x, "ty": 2}, "facing": "down",
+                     "sprite": "npc_shopkeeper", "movement": "static", "dialogue_ref": keeper_dialogue})
     return mapdef(id_, name, W, H, WARM_SET, base, over, objects, warps, triggers, npcs, music)
 
 
@@ -256,8 +275,10 @@ def build_inn():
          "ref": "sign.pearlmoor_welcome"},
     ]
     npcs = [
+        # The innkeep's dialogue_ref is a SCRIPT: talking to them runs the full
+        # rest-heal beat (script.inn_rest) — the genre's heal loop, diegetic.
         {"id": "innkeep", "at": {"tx": 2, "ty": 3}, "facing": "down",
-         "sprite": "npc_shopkeeper", "movement": "static", "dialogue_ref": "npc.pearlmoor_innkeep"},
+         "sprite": "npc_shopkeeper", "movement": "static", "dialogue_ref": "script.inn_rest"},
         {"id": "fisher", "at": {"tx": W - 5, "ty": 5}, "facing": "right",
          "sprite": "wren", "movement": "static", "dialogue_ref": "npc.pearlmoor_fisher"},
     ]
@@ -291,6 +312,9 @@ def build_house():
     triggers = [
         {"id": "sign_shelf", "kind": "sign", "at": {"tx": 2, "ty": 2}, "activation": "interact",
          "ref": "sign.house_shelf"},
+        # your own bed = a free full rest (interact with the bed's foot tile)
+        {"id": "bed_rest", "kind": "script", "at": {"tx": W - 3, "ty": 4}, "activation": "interact",
+         "ref": "script.home_rest"},
     ]
     npcs = [
         {"id": "house_parent", "at": {"tx": W - 4, "ty": 6}, "facing": "down",
@@ -315,18 +339,44 @@ def all_maps():
         build_house(),
         build_shop("tinderwick_shop", "Tinderwick General Store",
                    "assets/audio/music/tinderwick-b.mp3", ("tinderwick", 5, 8),
-                   "sign.tinderwick_shop_wares", "shopkeeper", "npc.tinderwick_shopkeeper"),
+                   "sign.tinderwick_shop_wares", "shopkeeper", "npc.tinderwick_shopkeeper",
+                   kit_script="script.shop_kit_tinderwick", kit_flag="flag:tinderwick_kit"),
+        # The Ember Lumenary HALL: no battle here any more — the bond-test waits
+        # at the BEACON TOP (the earned first Gleam). Brisa stages the quest from
+        # the dais: catch-first -> the wick-key errand -> "meet me at the lantern"
+        # -> the post-Gleam festival line. Pure flag-pair NPC swaps.
         build_lumenary("tinderwick_lumenary", "Tinderwick Lumenary",
                        "assets/audio/music/tinderwick-a.mp3", ("tinderwick", 19, 8),
-                       "script.lumenary_tinderwick", "sign.tinderwick_lumenary_inside",
-                       "brisa", "npc.brisa_tallow"),
+                       None, "sign.tinderwick_lumenary_inside",
+                       "brisa", "npc.brisa_tallow",
+                       npcs_override=[
+                           {"id": "brisa_pre", "at": "dais", "facing": "down",
+                            "sprite": "npc_lampwarden", "movement": "static",
+                            "dialogue_ref": "npc.brisa_not_ready",
+                            "hidden_when_flag": "flag:caught_first_kin"},
+                           {"id": "brisa_quest", "at": "dais", "facing": "down",
+                            "sprite": "npc_lampwarden", "movement": "static",
+                            "dialogue_ref": "script.brisa_quest",
+                            "requires_flag": "flag:caught_first_kin",
+                            "hidden_when_flag": "flag:has_beacon_wick"},
+                           {"id": "brisa_ready", "at": "dais", "facing": "down",
+                            "sprite": "npc_lampwarden", "movement": "static",
+                            "dialogue_ref": "npc.brisa_meet_beacon",
+                            "requires_flag": "flag:has_beacon_wick",
+                            "hidden_when_flag": "gleam:ember"},
+                           {"id": "brisa_fair", "at": "dais", "facing": "down",
+                            "sprite": "npc_lampwarden", "movement": "static",
+                            "dialogue_ref": "npc.brisa_after",
+                            "requires_flag": "gleam:ember"},
+                       ]),
         build_lumenary("pearlmoor_lumenary", "Pearlmoor Tide Lumenary",
                        "assets/audio/music/dimglass-coast-a.mp3", ("pearlmoor_quay", 14, 7),
                        "script.lumenary_pearlmoor", "sign.pearlmoor_lumenary",
                        "reyl", "npc.reyl_wash"),
         build_shop("pearlmoor_shop", "Pearlmoor Chandlery",
                    "assets/audio/music/dimglass-coast-a.mp3", ("pearlmoor_quay", 5, 12),
-                   "sign.pearlmoor_shop", "chandler", "npc.pearlmoor_shopkeeper"),
+                   "sign.pearlmoor_shop", "chandler", "npc.pearlmoor_shopkeeper",
+                   kit_script="script.shop_kit_pearlmoor", kit_flag="flag:pearlmoor_kit"),
         build_inn(),
     ]
 

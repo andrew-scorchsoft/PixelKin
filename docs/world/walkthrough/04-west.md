@@ -122,6 +122,15 @@ none · **rec. level 40 → 42.**
   wall-hollows along the canyon that sit beyond the lamp's reach now; a post-game **Radiant**
   return picks them out (spine §5). Optional only — the lit canyon route is visible at any tier.
 
+**Named quests** (spine §5 kit):
+- **X1 "The Caretaker's Lamp"** — giver: the **caretaker** in a segment-II shelter, sitting
+  with a **numbed, sleeping kin** the coldfog touched · steps: fetch **aurora-oil** from
+  Aurora Hollow (Emberward, held) → fill her lamp · flags: `flag:q_west_caretaker` →
+  `flag:q_west_caretaker_done` · reward: a **Bright Lamp** — and the kin sleeps *easier*,
+  not awake (keep B-arc's weight) · maps: `hushfrost_pass_ii`, `aurora_hollow` ·
+  `[MISSABLE]` — **post-game payoff:** once `flag:dawn` is set, the kin is awake at her
+  side (NPC swap; cross-ref 06-postgame) — the quietest B-arc echo in the game.
+
 ### 5. Don't-miss callouts
 
 - **Aurora Hollow is the last Frost reward** before the quadrant warms — grab it while the cold
@@ -162,22 +171,39 @@ Pyre, ace ~46) · **rec. level ~42 → 46.**
    columns (atlas §2 card 8). The first genuine *warmth* since the south — a place that
    *remembers* the sun. The lit causeway leads in across the shallows.
 2. **The flooded halls (Tidecall, held).** Inner halls are knee-deep in night-water; **Tidecall**
-   (earned long ago at Pearlmoor) parts them so you cross to the inner ruin. Place a small
-   **"already accessible"** read — the player feels their old Gift still earning its keep — and
-   warm-water kin (Glentide, Tide/Solar) swim the flooded zones. *(Do NOT gate the Lumenary
-   behind Tidecall either — funnel a dry path to Lucan as well.)*
+   (earned long ago at Pearlmoor) parts them so you cross to the inner ruin, and warm-water
+   kin (Glentide, Tide/Solar) swim the flooded zones. *(A dry causeway to Lucan himself
+   always exists — the Lumenary and the festival are never behind any Gift. The bond-test
+   ERRAND, though, deliberately walks the Tidecall water: the old Gift made load-bearing —
+   see the loop below.)*
 3. **The Last-Warm-Day is underway.** The festival fills the sunlit upper terrace of the ruin
    (Arc E, below); Lucan Pyre is its theatrical ringleader. Sun-roster kin in the dry tall-grass
    (Sunsprout Verdant/Solar, Helibud Solar).
-4. **Lumenary 7 — Lucan Pyre (Solar).** Reachable on foot / by the dry causeway — **no Sunsketch
-   needed to enter** (spine §0 rule 1). A theatrical, warm, dramatic Solar fight; ace ~46. Win →
-   **Solar Gleam** + **Sunsketch** + `gleam:solar`, ability `sunsketch`. (Solar relit; the west
-   quadrant is now half-complete — `crown_west` waits on the Lunar Gleam at Nightreach.)
-5. **The map reopens (Sunsketch).** Now sun-vine bridges bloom open. Place a **"now accessible"**
+   **The earned loop — "The Lit Stage" (spine §5, shape #7: flooded gathering).**
+   **The tease:** at the garden's heart, the **Heliarium stage** — a sunken performance
+   terrace, its **three braziers dead**, the Last-Warm-Day troupe waiting in costume
+   beside it. Lucan's hook: *"A bond that remembers the sun! Then prove the memory — the
+   stage is dark and the daylight's drowned. Fetch it up, spark by spark."*
+   (`script.lucan_quest` → `flag:q_west_stage`.)
+4. **The sunmote errand (collinear, Tidecall).** Three **sunmote phials** — stored daylight —
+   wait in the flooded inner halls (band 42–46; the existing flooded-hall content promoted
+   from missable to quest), the water lanes worked by **two troupe-player sight trainers**
+   (lv 43–45). Each phial lights its brazier in sequence (brazier scripts chained, each
+   requiring its mote flag: `flag:q_west_mote_1..3`); each lighting **blooms a row of
+   night-flowers** along the stage rim — a purely *visual* Sunsketch foreshadow, no
+   Sunsketch required. Third brazier → `flag:q_west_stage_lit`; the troupe takes the stage
+   and the festival crests.
+5. **Lumenary 7 — Lucan Pyre (Solar), on the lit stage.** Reachable on foot / by the dry
+   causeway — **no Sunsketch needed to enter** (spine §0 rule 1); the bond-test trigger
+   requires `flag:q_west_stage_lit` (`blocked_ref` in Lucan's voice). A theatrical, warm,
+   dramatic Solar fight; ace ~46 met at ~44–45. Win → **Solar Gleam** + **Sunsketch** +
+   `gleam:solar`, ability `sunsketch`. (Solar relit; the west quadrant is now
+   half-complete — `crown_west` waits on the Lunar Gleam at Nightreach.)
+6. **The map reopens (Sunsketch).** Now sun-vine bridges bloom open. Place a **"now accessible"**
    callout at the **`sunvault_climb_i → sunvault_climb_ii`** boundary (the onward route, gated by
    Sunsketch) and at the **Helia Vault** reliquary (off Sunvault II) — both now openable. Also
    note any sun-vine bridges *within* the ruin that bloom into a back-fold reward.
-6. **Exit west** to `sunvault_climb_i` (ungated — the lower terraces need no Gift; the *boundary*
+7. **Exit west** to `sunvault_climb_i` (ungated — the lower terraces need no Gift; the *boundary*
    I→II is what Sunsketch gates).
 
 ### 2. Story beats
@@ -224,6 +250,19 @@ Pyre, ace ~46) · **rec. level ~42 → 46.**
   **sequential-bloom** puzzle (bloom one vine to reach the next) opening to a hidden Solar kin /
   item — the gentle first taste of the Sunsketch puzzle dimension (spine §5) before Helia Vault.
 
+**Named quests** (spine §5 kit; West's slate, X1 over in Hushfrost II, X3 at Nightreach):
+- **X2 "The Troupe's Sun-mask"** — giver: a **troupe player** (post-stage, their swap NPC) ·
+  steps: the troupe's gilt sun-mask sank in a side room off the flooded halls — dive the
+  Tidecall water and bring it back for the closing scene · flags: `flag:q_west_mask` →
+  `flag:q_west_mask_found` · reward: the **Sun Charm** · maps: `sunken_solarium` ·
+  `[MISSABLE]`.
+- **R5 "A Chart for the Waykeeper"** — the Waykeeper's Round, leg 5: the **Nightreach
+  junior watcher** entrusts a fresh star-chart → carry it home to the **Waykeeper**
+  himself; the Round comes full circle · flags: `flag:q_round_chart` · reward: the
+  Waykeeper hangs it on the Waystone (deco/NPC swap) + a Lanternway line · maps:
+  `nightreach_observatory`, `vesper_crossroads` · `[wakes with spoke]` (the Nightreach
+  spoke wakes with `gleam:lunar`).
+
 ### 5. Don't-miss callouts
 
 - **Spend the Last-Warm-Day** before facing Lucan — the festival is the warmth the Solar Gleam is
@@ -247,6 +286,12 @@ Pyre, ace ~46) · **rec. level ~42 → 46.**
   are held — NOT here; do not set it at the Solarium.)
 - **Internal gating:** flooded-hall `water` `EncounterZone`s `requires_ability: tidecall` (held);
   any in-ruin sun-vine bridge `AbilityGate` `sunsketch` (`make_passable`).
+- **The Lit Stage chain (rule 3):** `script.lucan_quest` sets `flag:q_west_stage`; the three
+  sunmote phial scripts in the flooded halls set `flag:q_west_mote_1..3`; the brazier
+  scripts (each requiring its mote + the previous brazier) chain to `flag:q_west_stage_lit`
+  (+ the night-flower deco swaps per brazier); Lucan's bond-test trigger
+  `requires_flag:flag:q_west_stage_lit` with `blocked_ref:npc.lucan_not_ready`. Two
+  **troupe-player sight trainers** (lv 43–45) on the water lanes.
 - **Encounter zones:** dry `tall_grass`/ruin — Sunsprout (Verdant/Solar), Helibud (Solar);
   `water` (flooded halls, Tidecall) — Glentide (Tide/Solar) at low weight; level band ~42–46
   (continuous with Hushfrost 40–42 and Sunvault 46–48).
@@ -358,26 +403,37 @@ Central) · **gate ability:** Emberward (the Coldfog back-door only — **not** 
 2. **Walk straight in — no gate.** The observatory town and its Lumenary are reachable on foot
    from the rim (spine §0 rule 1). The **Star-vigil** festival glimmers across the temple steps
    (Arc E, below).
-3. **C4 — Fenn's counsel before the Spire.** **Star-tender Fenn** finds you at the observatory —
-   the old shared craft of reading the sky made literal here. He counsels you for what's coming
-   at the Spire, building on his North confession: the Crown is nearly whole, and what you do at
-   the Keystar will answer Còr, not defeat him. (Detail in §2.)
-4. **A5 — Wren returns, resolved.** **Wren comes back to your side**, having reasoned the
-   Hollowing's question through after the wobble at Pale Vault — they've decided the dawn is worth
-   the dusk, and they say so plainly. A warm reunion (optionally a friendly battle); Wren commits
-   to help at the Spire. (Detail in §2.) *(Places on the late-West / Spire approach per spine §3.)*
-5. **Lumenary 8 — Nessa Cole (Lunar).** A quiet insomniac astronomer, **the most powerful and
-   most haunted Warden**; ace ~52. A contemplative, dreamlight Lunar fight (write around `doze`,
-   spine §5). Win → **Lunar Gleam** + **Starreach** + `gleam:lunar`, ability `starreach`. With
-   Solar + Lunar both held, the engine sets **`flag:crown_west`** and — this being the **last
-   quadrant** — **`flag:hub_unlocked`**: the Crown completes, the Penumbra fully parts, and the
-   four cardinal roads open inward at the Crossroads.
-6. **B4 thread — Nessa ties Còr to this place.** As the most haunted Warden, Nessa knows the
-   observatory's history and Còr's part in it; her account (alongside Coldfog/Stillworks if the
-   player has done the detour) is where the **Great Null aimed at the Keystar** is fully named —
-   setting **`flag:great_null_known`** (the named stakes of B4; see the Coldfog section for the
-   set-piece that shows the works). (Detail in §2.)
-7. **The map reopens (Starreach) + hand-off.** Starreach — **step across short voids of pure
+   **The earned loop — "The Vigil of the Seven" (spine §5, shape #8: ceremony walk — the
+   capstone).** **The tease:** the **Astral Walk** — seven watch-lamps lining the telescope
+   terrace, **all unlit**, while seven relit constellations burn overhead. The sky is lit;
+   the lamps below are not. Nessa's hook, from the eyepiece: *"Seven watch-fires for seven
+   stars you've already given back. Light their lamps along the walk — then come tell the
+   eighth it's time."* (`script.nessa_quest` → `flag:q_west_vigil`.)
+3. **The Walk of the Seven.** Each lamp's script keys on its constellation
+   (`requires_flag` its `gleam:*`, ember→solar, plus the previous lamp — all necessarily
+   held, this being the eighth town: the chain is a *remembrance*, not a fetch). Lamp 1
+   has the loop's one collinear errand — the **old watcher's lost striker**, a single cache
+   back on `sunvault_climb_ii` (band 48–50, the road just walked). Two **junior-watcher
+   sight trainers** (lv 49–51) keep the walk. And the walk *sequences the cluster*:
+   - **Lamp 5 (Frost) — C4, Fenn's counsel.** Fenn waits there and lights it with you:
+     the Crown is nearly whole; the Keystar must be *out-remembered*, not destroyed.
+   - **Lamp 6 (Storm) — A5, Wren returns, resolved.** Wren is sitting under it, easy
+     again; a warm reunion (optionally a friendly battle), and they light it with you.
+     *(If `flag:q_north_ribbon_placed` is set, Wren mentions the ribbon — N3's payoff.)*
+   - **Lamp 7 (Solar) — B4, the Great Null named.** At the great telescope Nessa names
+     what Còr is building — the **Great Null** aimed at the **Keystar** — setting
+     **`flag:great_null_known`**.
+   The seventh lamp lit → `flag:q_west_vigil_kept`; the Star-vigil crests around the walk.
+4. **Lumenary 8 — Nessa Cole (Lunar), under the eyepiece.** A quiet insomniac astronomer,
+   **the most powerful and most haunted Warden**; ace ~52, met at ~50–51. The bond-test
+   trigger requires `flag:q_west_vigil_kept` (`blocked_ref` in her voice). A contemplative,
+   dreamlight Lunar fight (write around `doze`, spine §5). Win → **Lunar Gleam** +
+   **Starreach** + `gleam:lunar`, ability `starreach` — the eighth watch-lamp lights
+   itself as the eighth constellation answers. With Solar + Lunar both held, the engine
+   sets **`flag:crown_west`** and — this being the **last quadrant** —
+   **`flag:hub_unlocked`**: the Crown completes, the Penumbra fully parts, and the four
+   cardinal roads open inward at the Crossroads.
+5. **The map reopens (Starreach) + hand-off.** Starreach — **step across short voids of pure
    dark** — is the **endgame traversal**. Place **"now accessible"** callouts at: the
    `penumbra_ring → starwell` landmark and `penumbra_ring → umbral_spire` ascent (Central's, via
    the now-open hub); and **[LATER]/cross-region** the **Crystoll Vault** (Cinderhead Deep, East)
@@ -439,6 +495,16 @@ Central) · **gate ability:** Emberward (the Coldfog back-door only — **not** 
   named here but **[LATER]/cross-region**; **the Central/East writers own them** — listed only so
   the §5 web closes.
 
+**Named quests** (spine §5 kit):
+- **X3 "Charting the Dark"** — giver: the **junior watcher** (post-walk, her swap NPC) ·
+  steps: take star-readings at three high points — a Sunvault II terrace, the observatory
+  roof, and (optional, bravest) the Coldfog Marches edge · flags: `flag:q_west_chart_1..3`
+  → `flag:q_west_chart_done` · reward: her finished chart — which **names Starwell** (the
+  tease-closer for the Penumbra landmark) · maps: `sunvault_climb_ii`,
+  `nightreach_observatory`, (`coldfog_marches_i` optional) · `[MISSABLE]`.
+- *(X1 is listed under Hushfrost Pass; X2 under the Solarium; R5 under the Solarium's
+  slate block. West's slate: X1 · X2 · X3 · R5.)*
+
 ### 5. Don't-miss callouts
 
 - **Don't skip the C4 / A5 / B4 cluster** — Fenn's counsel, Wren's return, and the naming of the
@@ -462,10 +528,17 @@ Central) · **gate ability:** Emberward (the Coldfog back-door only — **not** 
 - **Lumenary trigger `sets_flags`:** Nessa Cole victory → `gleam:lunar` + grants ability
   `starreach`. With `gleam:solar` already held, the engine sets **`flag:crown_west`** AND (last
   quadrant) **`flag:hub_unlocked`** — do not hand-set, but every "Spire opens" beat depends on them.
-- **Story triggers `sets_flags`:** B4 naming cutscene (Nessa, optionally reinforced by the
-  Coldfog/Stillworks set-piece) → **`flag:great_null_known`** (`script`, `once: true`); C4 Fenn
-  counsel (narrative only); A5 Wren return (`reward_flags` for the rival bookkeeping; optional
-  friendly battle, no progression gate).
+- **Story triggers `sets_flags`:** B4 naming cutscene (Nessa at lamp 7, optionally reinforced
+  by the Coldfog/Stillworks set-piece) → **`flag:great_null_known`** (`script`, `once: true`);
+  C4 Fenn counsel (lamp 5, narrative only); A5 Wren return (lamp 6; `reward_flags` for the
+  rival bookkeeping; optional friendly battle, no progression gate).
+- **The Vigil of the Seven chain (rule 3):** `script.nessa_quest` sets `flag:q_west_vigil`;
+  the striker cache on `sunvault_climb_ii` (`flag:picked_striker`) unlocks lamp 1; lamp
+  scripts chain `flag:q_west_lamp_1..7` (each `requires_flag` its `gleam:*` + the previous
+  lamp; lamps 5/6/7 wrap the C4/A5/B4 cutscene refs above), the seventh setting
+  `flag:q_west_vigil_kept`; Nessa's bond-test trigger
+  `requires_flag:flag:q_west_vigil_kept` with `blocked_ref:npc.nessa_not_ready`. Two
+  **junior-watcher sight trainers** (lv 49–51) on the walk.
 - **Encounter zones:** approach `tall_grass` — Astrowl (Lunar/Light), Dreamoth (Lunar), Tessel
   (Light); level band ~48–52 (continuous with Sunvault 46–48 and the Spire approach ~52). None in
   the town interior.

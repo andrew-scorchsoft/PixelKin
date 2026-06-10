@@ -30,6 +30,7 @@ import json, subprocess, sys
 from pathlib import Path
 import numpy as np
 from PIL import Image
+import gbaforge
 from tileforge import (load, deborder, jitter, roll, flip_h, whole_downscale,  # seam helpers
                        KEEP, H_TILE, V_TILE,
                        grade, deglow, texture_grass, tallgrass_tuft, cliff_strata,
@@ -367,6 +368,110 @@ add("boulder", draw_boulder(), role="decor", collides=True)
 add("flowerbed_a", draw_flowerbed(1), role="decor")
 add("flowerbed_b", draw_flowerbed(7), role="decor")
 
+# --- 5) trail family — path over SAND (dune/beach routes) ---------------------
+# The path family transitions to GRASS; painted across a dune it ringed the lane
+# with grass-coloured borders. Trail is the same drawn lane composed over sand.
+# APPENDED after every existing tile so all prior indices stay valid.
+for _r in list(gbaforge.ROLES_OUTER.keys()) + list(gbaforge.INNER_Q.keys()):
+    if _r == "fill":
+        _tim = gbaforge.path_fill(0)
+    else:
+        _tim = gbaforge.overlay_tile(_r, gbaforge.path_fill(0), gbaforge.sand_fill(0),
+                                     gbaforge.sh(gbaforge.PATH, 0.55),
+                                     shade_rgb=gbaforge.sh(gbaforge.PATH, 0.9))
+    add(f"trail_{_r}", _tim, role="path", terrain="trail", autotile=_r)
+for _i in (1, 2):
+    add(f"trail_fill_v{_i}", gbaforge.path_fill(_i), role="path",
+        terrain="trail", autotile="fill")
+
+# --- 5b) pond family — water over GRASS (inland ponds; appended, index-safe) --
+# The water family's shoreline is drawn against SAND (the coast); an inland pond
+# painted with it gets ringed by a beach. Pond is the same foam edge over grass.
+for _r in [r for r in NINE if r != "fill"]:
+    _pim = gbaforge.water_edge(_r, outer_im=gbaforge.grass_fill(0))
+    add(f"pond_{_r}", _pim, role="water", terrain="pond", autotile=_r,
+        collides=True, ability="tidecall")
+add("pond_fill", gbaforge.water_fill(0), role="water", terrain="pond",
+    autotile="fill", collides=True, encounter="water", ability="tidecall")
+
+# --- 5c) dune grass — the encounter tuft over a SAND bed (tidal-flat crossings).
+# Hard-edged fill-only like tallgrass; every variant carries the encounter tag.
+for _i in range(3):
+    add(f"dunegrass_fill{'' if _i == 0 else f'_v{_i}'}", gbaforge.dunegrass_fill(_i),
+        role="ground", terrain="dunegrass", autotile="fill", encounter="tall_grass")
+
+# ---- GBA-register structured redraw (gbaforge) -------------------------------
+# The terrain families above established the *vocabulary* (names, roles, order —
+# maps reference these by stable index). Their imagery, though, was AI-noise
+# cured with seam passes. gbaforge replaces the imagery per NAME with drawn,
+# structured tiles (flat base + deliberate motifs, crisp rounded transitions) —
+# the cartridge-era look. Order never changes, so existing maps update for free.
+import re as _re
+
+_GBA_ROLE = r"(corner_[ns][we]|edge_[nswe]|fill|strip_[hv]|inner_[ns][we])"
+
+
+def _gba_override(nm: str, cur: Image.Image) -> Image.Image | None:
+    g = gbaforge
+    m = _re.fullmatch(r"tree_(edge_[nswe]|corner_[ns][we])(?:_v\d+)?", nm)
+    if m:
+        # painterly bubble-crown masters stay; their inner half eases into the
+        # drawn fill so the mass interior doesn't band.
+        return g.tree_edge_blend(cur, m.group(1))
+    if _re.fullmatch(r"grass[0-3]", nm):
+        return g.grass_fill(int(nm[-1]))
+    m = _re.fullmatch(r"tallgrass_fill(?:_v(\d+))?", nm)
+    if m:
+        return g.tallgrass_fill(int(m.group(1) or 0))
+    m = _re.fullmatch(r"dunegrass_fill(?:_v(\d+))?", nm)
+    if m:
+        return g.dunegrass_fill(int(m.group(1) or 0))
+    m = _re.fullmatch(r"tree_fill(?:_v(\d+))?", nm)
+    if m:
+        return g.tree_fill(int(m.group(1) or 0))
+    if _re.fullmatch(r"tree_inner_[ns][we]", nm):
+        # concave canopy joins read best as plain canopy (same call water makes)
+        return g.tree_fill(0)
+    if nm == "water_a2":
+        return g.water_fill(1)
+    if nm == "water_a3":
+        return g.water_fill(2)
+    if nm == "water_edge_n_sw":
+        return g.water_edge("edge_n", phase=1)
+    if nm == "water_edge_s_sw":
+        return g.water_edge("edge_s", phase=1)
+    m = _re.fullmatch(rf"(path|sand|water|cliff|trail|pond)_{_GBA_ROLE}(?:_v(\d+))?", nm)
+    if not m:
+        return None
+    fam, role, v = m.group(1), m.group(2), int(m.group(3) or 0)
+    if fam == "pond":
+        if role == "fill":
+            return g.water_fill(0)
+        return g.water_edge(role, outer_im=g.grass_fill(0), phase=v)
+    if fam == "trail":
+        if role == "fill":
+            return g.path_fill(v)
+        return g.overlay_tile(role, g.path_fill(v), g.sand_fill(v),
+                              g.sh(g.PATH, 0.55), shade_rgb=g.sh(g.PATH, 0.9))
+    if fam == "path":
+        if role == "fill":
+            return g.path_fill(v)
+        return g.overlay_tile(role, g.path_fill(v), g.grass_fill(v),
+                              g.sh(g.PATH, 0.55), shade_rgb=g.sh(g.PATH, 0.9))
+    if fam == "sand":
+        if role == "fill":
+            return g.sand_fill(v)
+        return g.overlay_tile(role, g.sand_fill(v), g.grass_fill(v),
+                              g.sh(g.SAND, 0.62), shade_rgb=g.sh(g.SAND, 0.88))
+    if fam == "water":
+        if role == "fill":
+            return g.water_fill(0)
+        return g.water_edge(role, phase=v)
+    if fam == "cliff":
+        return g.cliff_tile(role, v)
+    return None
+
+
 # ---- write masters, manifest, index, then pack ------------------------------
 name_index = {nm: i for i, (nm, _, _) in enumerate(TILES)}
 # resolve the water animation now that indices are known
@@ -376,19 +481,28 @@ water_anim = {"frames": [name_index["water_fill"], name_index["water_a2"],
 manifest_tiles = []
 for i, (nm, im, extra) in enumerate(TILES):
     fn = f"{i:03d}_{nm}.png"
-    # seamless pass: autotile tiles by their role; plain ground/anim fills as 'fill'.
-    role = extra.get("autotile")
-    if role:
-        ax = SEAM_OF.get(role)
-        if ax:
-            im = flatten_axis(im, ax)
-        im = deborder(im, role)
-    elif nm in _tileable:
-        im = deborder(im, "fill")
+    ov = _gba_override(nm, im)
+    if ov is not None:
+        # drawn tiles are seamless by construction — no seam pass (it would
+        # smear the designed 1px borders).
+        im = ov
+    else:
+        # seamless pass: autotile tiles by their role; plain ground/anim fills as 'fill'.
+        role = extra.get("autotile")
+        if role:
+            ax = SEAM_OF.get(role)
+            if ax:
+                im = flatten_axis(im, ax)
+            im = deborder(im, role)
+        elif nm in _tileable:
+            im = deborder(im, "fill")
     im.save(OUT / fn)
     entry = {"file": fn, **extra}
     if nm == "water_fill":
         entry["animation"] = water_anim
+    if nm == "pond_fill":
+        entry["animation"] = {"frames": [name_index["pond_fill"], name_index["water_a2"],
+                                         name_index["water_a3"]], "duration_ms": 800}
     manifest_tiles.append(entry)
 
 manifest = {"name": "vesper_overworld_set", "columns": 12, "tiles": manifest_tiles}

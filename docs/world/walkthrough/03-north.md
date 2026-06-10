@@ -66,16 +66,33 @@ ace ~34) · **rec. level ~28.**
    first **Updraft Kite tease** (signed: *"the high terraces only open to a kin that rides the
    thermals"*).
 3. **The Kite-rising is in full swing.** The festival fills the central terrace (Arc E, below).
-   Mira Vael is up here, flying.
-4. **Lumenary 5 — Mira Vael (Storm).** The Lumenary sits on the highest *reachable* terrace
-   (no Updraft needed to enter — spine §0 rule 1; Updraft is the *reward*, not the gate). A
-   fast, adrenaline-keyed Storm fight; ace ~34. Win → **Storm Gleam** + **Updraft Kite** +
-   `gleam:storm`, ability `updraft_kite`.
-5. **The map reopens.** With Updraft Kite in hand, the teased high ledges click open: the
+   **The earned loop — "The Kite-Rising Winch" (spine §5, shape #5: festival winch climb).**
+   **The tease:** above the festival terrace, kite-strings run all the way up to the
+   **launch ledge** — and the great timber **winch** that hauls riders up to it stands
+   idle. *(Distinct from the Updraft-tease ledges of beat 2: those are Gift-gated and keep
+   their sign; the launch ledge is festival-gated — the winch, not the wind, takes you up.)*
+   Mira is up there, flying, and shouts the hook down: *"You want the Storm Gleam? Then
+   fly! Nobody meets the wind from the ground — raise a kite with the town, and meet me at
+   the launch ledge."* (`script.mira_quest` → `flag:q_north_kite`.)
+4. **The kite-maker's errand (collinear).** The kite-maker's three best kites blew loose in
+   last night's squall and snagged across the **lower terraces** (band 28–30, ground the
+   player crosses anyway): three **chained caches** — finding the spar reveals the sail's
+   giver, the sail the tail's (`flag:picked_kite_a` → `picked_kite_b` → `picked_kite_c`;
+   a boolean chain, no counters) → `script.kite_built` → `flag:q_north_kite_ready`.
+5. **Fly at the Kite-rising** — the festival cutscene takes your kite up with the town's
+   (`flag:q_north_kite_blessed`); the winch-keeper starts the drum, and the winch warp
+   opens to **`galehigh_skyloft`** **[NEW MAP]**: a wind-raked top terrace held by **two
+   wind-ward sight trainers** (lv 29–31), the launch ledge at its head.
+6. **Lumenary 5 — Mira Vael (Storm), at the launch ledge** (the skyloft is winch-gated by
+   the festival flag, never by Updraft — spine §0 rule 1; Updraft is the *reward*, not the
+   gate). A fast, adrenaline-keyed Storm fight; ace ~34 met at ~30–31. Win → **Storm
+   Gleam** + **Updraft Kite** + `gleam:storm`, ability `updraft_kite` — and the **glide
+   down** from the ledge is the Gift's first taste.
+7. **The map reopens.** With Updraft Kite in hand, the teased high ledges click open: the
    **Wind-Eye** landmark warp, the Galehigh→Windward high route, and (later) the
    Windward→Galehigh drop shortcut. Place a **"now accessible"** callout at the first
    high-ledge you couldn't reach in step 2.
-6. **Exit north** to `windward_stair_i` (ungated — the lower switchbacks need no Gift; the
+8. **Exit north** to `windward_stair_i` (ungated — the lower switchbacks need no Gift; the
    *boundary* I→II is what Updraft gates).
 
 ### 2. Story beats
@@ -117,6 +134,24 @@ ace ~34) · **rec. level ~28.**
 - **High-terrace hidden item** reachable only with Updraft — **[MISSABLE]**.
 - The Windward→Galehigh drop **shortcut** appears later (set at Windward II) — **[LATER]** here.
 
+**Named quests** (spine §5 kit; North's slate, N2 over at Pale Vault, N3 given by Mira):
+- **N1 "The Crag-tender's Kettle"** — giver: the **crag-tender** on the upper switchbacks
+  (Windward Stair I) · steps: pick the wind-burnt **ledge-herb** (cache on a Galehigh high
+  terrace, post-Updraft) → carry it up to her kettle · flags: `flag:q_north_kettle` →
+  `flag:q_north_kettle_done` · reward: the **Warm Flask** (a `chill`-flavoured comfort
+  item) · maps: `galehigh_terraces`, `windward_stair_i` · `[LATER: Updraft Kite]`.
+- **N3 "Wren's Ribbon"** — giver: **Mira**, after the A4 beat at Pale Vault · steps: Mira
+  found Wren's dropped kite-ribbon from the Kite-rising; carry it to the quiet Windward II
+  ledge where Wren sat · place it (a wordless interact — no dialogue by design) · flags:
+  `flag:q_north_ribbon` → `flag:q_north_ribbon_placed` · reward: none here — paid off by
+  one extra Wren line at Nightreach's lamp 6 (see 04-west) · maps: `galehigh_terraces`,
+  `windward_stair_ii` · `[MISSABLE]` — the A4→A5 connective tissue.
+- **R4 "A Kite for the Waystone Kid"** — the Waykeeper's Round, leg 4: the **kite-maker**
+  hands the Waykeeper's commissioned kite → deliver to the **Waystone kid**
+  (`vesper_crossroads`) · flags: `flag:q_round_kite` · reward: balm kit + the kid flies it
+  on the plaza thereafter (NPC swap) · `[wakes with spoke]` (the Galehigh spoke wakes with
+  `gleam:storm`).
+
 ### 5. Don't-miss callouts
 
 - **Wind-Eye is the region's signature optional reward** — do not leave Galehigh's airspace
@@ -136,8 +171,14 @@ ace ~34) · **rec. level ~28.**
 - **Lumenary trigger `sets_flags`:** Mira Vael victory → `gleam:storm` + grants ability
   `updraft_kite` (engine sets `flag:crown_north` only once **both** `gleam:storm` and
   `gleam:frost` are held — do not set it here).
-- **Lumenary entry is NOT ability-gated** (spine §0 rule 1) — the door may require
-  `flag:has_starter` at most, never `updraft_kite`.
+- **Lumenary entry is NOT ability-gated** (spine §0 rule 1) — the winch warp keys on the
+  festival flag, never `updraft_kite`.
+- **The Kite-Rising Winch chain (rule 3):** `script.mira_quest` sets `flag:q_north_kite`;
+  the three chained kite caches (`flag:picked_kite_a/b/c` — each reveals the next giver);
+  `script.kite_built` sets `flag:q_north_kite_ready`; the festival fly cutscene sets
+  `flag:q_north_kite_blessed`; consumed by the winch warp to **`galehigh_skyloft`**
+  **[NEW MAP]** (landmark, ~18×12; 2 wind-ward SIGHT trainers lv 29–31; the launch ledge +
+  Mira's bond-test at its head, `blocked_ref:npc.mira_not_ready` until blessed).
 - **Encounter zones:** `tall_grass` (terraces) — Kiteling (Storm), Thrumvane (Storm), Cirruff
   (Storm/Light); level band ~28–30 (continuous with Cinderhead Deep's 24–27 and Windward's 34+).
 - **NPC / Lumenary / festival:** Mira Vael (Storm Lampwarden) on a high reachable terrace;
@@ -241,25 +282,45 @@ deep-ice spurs), **NOT** the town or Lumenary · **Gleam:** Frost (Ysolde Frost,
 2. **Walk straight into town — no gate.** The glacier town and its Lumenary are reachable on
    foot from the crags (spine §0 rule 1). **Do not** place a coldfog/thin-ice barrier between
    the town entrance and Ysolde. The Aurora-watch festival glimmers on the ice (Arc E, below).
-3. **B3 — Còr appears, in person.** Before or beside the Lumenary, on the still, cold ice, the
-   **Hollowing's leader arrives in the flesh** for the first time — courteous, sad, *persuasive*.
-   He pays off the East foreshadow (the cowled figure / letter). **No battle.** He states his
-   case plainly, even gently, and leaves. Sets **`flag:met_cor`**. (Detail in §2.)
-4. **C3 — Fenn and the shared past.** Around Còr's visit, **Star-tender Fenn** finds you and
-   reveals the canon-locked truth: **Fenn and Còr were once fellow star-tenders** — two answers
-   to the same loss. This is *why* Fenn understands him, and the weight the climax will need.
-5. **A4 — Wren's wobble.** At this low, cold point Wren **nearly joins the Hollowing**. A **hard
-   rival battle** (Wren's toughest yet — at/above your level), and afterward they walk off
-   **unsure**, neither converted nor convinced. (Detail in §2.)
-6. **Lumenary 6 — Ysolde Frost (Frost).** A serene, riddling glaciologist; ace ~40. Win →
-   **Frost Gleam** + **Emberward** + `gleam:frost`, ability `emberward`. With Storm + Frost both
-   held, the engine sets **`flag:crown_north`** — the North quadrant of the Skyweave Crown
-   completes overhead.
-7. **The map reopens (Emberward).** Now the onward path and the deep-ice spurs open. Place a
+   **The earned loop — "The Lamp-Line" (spine §5, shape #6: ice lamp-line, a single-map
+   trial).** **The tease:** beneath the Lumenary, the **undercroft door** — and through the
+   clear blue ice beside it, **seven dark lamp-brackets** visible in a descending line.
+   *(The undercroft is dark blue ICE, never coldfog — Emberward stays out of this loop and
+   no barrier ever stands between the town entrance and Ysolde herself.)*
+   Ysolde's hook, at the door: *"Cold does not hate the flame, wanderer. It only waits to
+   see if the flame means it. Walk my vault, light the seven brackets — and let me see the
+   light hold."* (`script.ysolde_quest` → `flag:q_north_lampline`.)
+3. **The tallow-keeper's errand (collinear).** The brackets burn **aurora-oil**, and the
+   tallow-keeper in the sheltered approach hollows (band 36–38, the same hollows the lit
+   path crosses) cannot render it — her hearth is doused. Relight it with the cached
+   **storm-kindling** nearby (`flag:picked_stormwood`) → `script.render_oil` →
+   `flag:q_north_aurora_oil`.
+4. **B3 — Còr appears, in person** — on the open ice during the oil leg, where the calm
+   lands hardest. Courteous, sad, *persuasive*; pays off the East foreshadow. **No battle.**
+   Sets **`flag:met_cor`**. (Detail in §2.)
+5. **C3 — Fenn and the shared past.** On Còr's heels, **Star-tender Fenn** finds you and
+   reveals the canon-locked truth: **Fenn and Còr were once fellow star-tenders** — two
+   answers to the same loss.
+6. **A4 — Wren's wobble — at the undercroft door.** Wren stands where you are about to
+   prove a light can hold, and **nearly joins the Hollowing**. The **hard rival battle**
+   (Wren's toughest yet), and afterward they walk off **unsure**. *(The staging is the
+   argument: Wren wavers at the exact threshold of the light-holding trial.)*
+7. **The Lamp-Line** — the undercroft door takes the oil (`requires_flag`, blocked line in
+   Ysolde's voice) → **`pale_vault_undercroft`** **[NEW MAP]**: one blue-ice floor, the
+   seven brackets lit **in line** (each script requires the previous —
+   `flag:q_north_lamp_1..7`, the seventh setting `flag:q_north_lamps_held`), **two
+   frost-ward sight trainers** (lv 37–39) between brackets.
+8. **Lumenary 6 — Ysolde Frost (Frost), at the vault's heart.** A serene, riddling
+   glaciologist; ace ~40, met at ~38–39. The bond-test trigger requires
+   `flag:q_north_lamps_held` (`blocked_ref` in her voice). Win → **Frost Gleam** +
+   **Emberward** + `gleam:frost`, ability `emberward`. With Storm + Frost both held, the
+   engine sets **`flag:crown_north`** — the North quadrant of the Skyweave Crown completes
+   overhead, the Aurora-watch lifting its lamps around you.
+9. **The map reopens (Emberward).** Now the onward path and the deep-ice spurs open. Place a
    **"now accessible"** callout at the **`hushfrost_pass_i → hushfrost_pass_ii`** coldfog throat
    (the West writer's onward segment, gated by Emberward — which you now hold) and at Pale
    Vault's own deep-ice / Aurora-watch back-folds.
-8. **Exit west** to `hushfrost_pass_i` (ungated) — hand off to West at ~lv40 holding
+10. **Exit west** to `hushfrost_pass_i` (ungated) — hand off to West at ~lv40 holding
    Tidecall + Glimmerstep + Updraft Kite + Emberward, `crown_north`, `met_cor`, `shortcut_windward`.
 
 ### 2. Story beats
@@ -312,6 +373,16 @@ deep-ice spurs), **NOT** the town or Lumenary · **Gleam:** Frost (Ysolde Frost,
 - **Pale Vault deep-ice / Aurora-watch back-folds** — Emberward-gated within the glacier;
   rare Frost kin. **[MISSABLE]** once Emberward is earned (don't leave the glacier without
   sweeping them). *(If authored as a separate node later, gate it `emberward`, not the town.)*
+
+**Named quests** (spine §5 kit):
+- **N2 "The Aurora Sketcher"** — giver: a **painter NPC** at the Aurora-watch · steps:
+  stand with her at three sketching viewpoints (interacts: a Windward II crag, the glacier
+  shore, the festival ice) while she works · flags: `flag:q_north_sketch_1..3` →
+  `flag:q_north_sketch_done` · reward: the **Aurora Charm** · maps: `windward_stair_ii`,
+  `pale_vault_glacier` · `[MISSABLE]` — pure stillness; the quiet sibling of the
+  Lamp-down vigil.
+- *(N1 and N3 are listed under Galehigh's Named quests; R4 under Galehigh. North's slate:
+  N1 · N2 · N3 · R4.)*
 - **No Galehigh/Windward content waits on Emberward** — its reopenings are all West-region or
   Pale-Vault-deep, keeping this region's backtrack web honest.
 
@@ -337,8 +408,16 @@ deep-ice spurs), **NOT** the town or Lumenary · **Gleam:** Frost (Ysolde Frost,
   With `gleam:storm` already held, the engine sets **`flag:crown_north`** (do not hand-set it,
   but the section depends on it).
 - **Story triggers `sets_flags`:** Còr-in-person cutscene → **`flag:met_cor`** (`script`,
-  `once: true`); Fenn C3 cutscene (narrative only, no flag required); Wren A4 trainer battle
-  (`reward_flags` for the rival-battle bookkeeping — Arc A4, no progression gate).
+  `once: true`, staged on the oil leg); Fenn C3 cutscene (narrative only, no flag required);
+  Wren A4 trainer battle **at the undercroft door** (`reward_flags` for the rival-battle
+  bookkeeping — Arc A4, no progression gate).
+- **The Lamp-Line chain (rule 3):** `script.ysolde_quest` sets `flag:q_north_lampline`;
+  kindling cache `flag:picked_stormwood`; `script.render_oil` sets
+  `flag:q_north_aurora_oil`; the undercroft door warp `requires_flag:flag:q_north_aurora_oil`
+  (blocked line in Ysolde's voice) → **`pale_vault_undercroft`** **[NEW MAP]** (cave
+  interior, ~20×16; bracket scripts chained `flag:q_north_lamp_1..7`, the seventh setting
+  `flag:q_north_lamps_held`; 2 frost-ward SIGHT trainers lv 37–39); Ysolde's bond-test
+  trigger `requires_flag:flag:q_north_lamps_held` with `blocked_ref:npc.ysolde_not_ready`.
 - **Encounter zones:** `tall_grass` (sheltered hollows) — Frostkit (Frost), Auralisk
   (Frost/Light), Snowtoll (Frost); level band 36–40 (continuous with Windward 34–36 and West's
   Hushfrost entry ~40). Emberward-gated deep-ice zones carry rarer Frost kin at low weight.

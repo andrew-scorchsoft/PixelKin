@@ -36,14 +36,14 @@ import { getScript } from '@game/content/scripts';
 import { makeStarterKin } from '@game/content/starters';
 import { runCutscene } from '@game/systems/cutscene/CutsceneRunner';
 import type { CutsceneContext } from '@game/systems/cutscene/CutsceneRunner';
-import type { ActorRef } from '@game/content/types';
+import type { ActorRef, CutsceneStep } from '@game/content/types';
 import type { KinInstanceData, InventoryData, SaveGame } from '@game/systems/save/types';
 import { SAVE_SCHEMA_VERSION } from '@game/systems/save/types';
 import { SaveManager } from '@game/systems/save/SaveManager';
 import type { WorldSnapshot } from '@game/data/world/types';
 import { MAP_REGISTRY } from '@game/data/world/maps';
 import { VESPERHOLM_GRAPH } from '@game/data/world/graph';
-import type { AbilityId, Facing, Warp, EventTrigger } from '@game/data/world/types';
+import type { AbilityId, Facing, Warp, EventTrigger, NpcPlacement } from '@game/data/world/types';
 
 export interface WorldSceneData {
   mapId: string;
@@ -219,10 +219,29 @@ export class WorldScene extends Phaser.Scene {
     return { tx: cx, ty: cy };
   }
 
+  private npcVisible(placement: NpcPlacement): boolean {
+    if (placement.requires_flag && !this.flags.get(placement.requires_flag)) return false;
+    if (placement.hidden_when_flag && this.flags.get(placement.hidden_when_flag)) return false;
+    return true;
+  }
+
   private spawnNpcs(): void {
     for (const placement of this.map.def.npcs) {
-      if (placement.requires_flag && !this.flags.get(placement.requires_flag)) continue;
-      if (placement.hidden_when_flag && this.flags.get(placement.hidden_when_flag)) continue;
+      if (this.npcVisible(placement)) this.npcs.push(new Npc(this, placement));
+    }
+  }
+
+  /** Re-evaluate flag-conditional NPCs after flags change (a picked-up item
+   *  cache vanishes immediately; a festival crowd appears without a re-entry). */
+  private refreshNpcs(): void {
+    this.npcs = this.npcs.filter((npc) => {
+      if (this.npcVisible(npc.placement)) return true;
+      npc.destroy();
+      return false;
+    });
+    for (const placement of this.map.def.npcs) {
+      if (!this.npcVisible(placement)) continue;
+      if (this.npcs.some((n) => n.placement === placement)) continue;
       this.npcs.push(new Npc(this, placement));
     }
   }
@@ -252,6 +271,19 @@ export class WorldScene extends Phaser.Scene {
     const npc = this.npcAt(ahead.tx, ahead.ty);
     if (npc) {
       npc.facePoint(this.player.tx, this.player.ty);
+      // An NPC whose dialogue_ref is a script runs it as a cutscene (inn rest,
+      // item caches, festival beats) — NPCs stay pure data either way.
+      if (npc.dialogueRef?.startsWith('script.')) {
+        const steps = getScript(npc.dialogueRef);
+        if (steps) {
+          this.modal = true;
+          const completed = await runCutscene(this.cutsceneContext(), steps);
+          if (completed) void this.persist();
+          this.modal = false;
+          this.refreshNpcs();
+        }
+        return;
+      }
       await this.runDialogue(npc.dialogueRef);
       return;
     }
@@ -278,8 +310,10 @@ export class WorldScene extends Phaser.Scene {
 
   private async handleTrigger(trigger: EventTrigger): Promise<void> {
     if (trigger.requires_flag && !this.flags.get(trigger.requires_flag)) {
-      // If the player actively tried this, tell them it's not ready yet.
-      if (trigger.activation === 'interact') await this.showHint();
+      // If the player actively tried this, tell them it's not ready yet —
+      // with the trigger's own "not yet" dialogue when it has one.
+      if (trigger.blocked_ref) await this.runDialogue(trigger.blocked_ref);
+      else if (trigger.activation === 'interact') await this.showHint();
       return;
     }
     if (trigger.once && this.flags.triggerFired(trigger.id)) return;
@@ -296,6 +330,7 @@ export class WorldScene extends Phaser.Scene {
         void this.persist();
       }
       this.modal = false;
+      this.refreshNpcs();
       return;
     }
 
@@ -328,6 +363,9 @@ export class WorldScene extends Phaser.Scene {
       onGiveItem: (item, count) => {
         this.inventory.items[item] = (this.inventory.items[item] ?? 0) + count;
       },
+      onHealParty: () => {
+        this.healParty();
+      },
       startTrainerBattle: async (trainer: string): Promise<boolean> => {
         const result = await this.startBattle({
           kind: 'trainer',
@@ -343,6 +381,60 @@ export class WorldScene extends Phaser.Scene {
         return true;
       },
     };
+  }
+
+  // --- Route-trainer line of sight ------------------------------------------
+
+  /** True if this NPC is an undefeated sight-trainer with the player in its
+   *  unobstructed straight-ahead line. */
+  private npcSeesPlayer(npc: Npc): boolean {
+    const p = npc.placement;
+    const range = p.sight_range ?? 0;
+    if (!range || !p.dialogue_ref?.startsWith('script.')) return false;
+    if (p.defeated_flag && this.flags.get(p.defeated_flag)) return false;
+    const delta: Record<Facing, { dx: number; dy: number }> = {
+      down: { dx: 0, dy: 1 },
+      up: { dx: 0, dy: -1 },
+      left: { dx: -1, dy: 0 },
+      right: { dx: 1, dy: 0 },
+    };
+    const { dx, dy } = delta[npc.facing];
+    for (let i = 1; i <= range; i++) {
+      const cx = npc.tx + dx * i;
+      const cy = npc.ty + dy * i;
+      if (this.player.tx === cx && this.player.ty === cy) return true;
+      if (this.collision.isBlocked(cx, cy, this.abilities)) return false;
+      if (this.npcAt(cx, cy)) return false;
+    }
+    return false;
+  }
+
+  /** The classic challenge: alert (!), march up to the player, face off, run
+   *  the trainer's script (battle inside), bank the defeated flag on a win. */
+  private async engageTrainer(npc: Npc): Promise<void> {
+    const steps = getScript(npc.dialogueRef ?? '');
+    if (!steps) return;
+    this.modal = true;
+    void this.sfx.playVariant('ui-confirm', ['a', 'b']);
+    await npc.showEmote('alert');
+    // march to the tile adjacent to the player along the (axis-aligned) line,
+    // then face off before the script's first line
+    const sx = Math.sign(this.player.tx - npc.tx);
+    const sy = Math.sign(this.player.ty - npc.ty);
+    const npcFacing: Facing = sx > 0 ? 'right' : sx < 0 ? 'left' : sy > 0 ? 'down' : 'up';
+    const playerFacing: Facing = sx > 0 ? 'left' : sx < 0 ? 'right' : sy > 0 ? 'up' : 'down';
+    const approach: CutsceneStep[] = [
+      { op: 'move', actor: npc.id, to: { tx: this.player.tx - sx, ty: this.player.ty - sy } },
+      { op: 'face', actor: npc.id, facing: npcFacing },
+      { op: 'face', actor: 'player', facing: playerFacing },
+    ];
+    const completed = await runCutscene(this.cutsceneContext(), [...approach, ...steps]);
+    if (completed) {
+      if (npc.placement.defeated_flag) this.flags.set(npc.placement.defeated_flag, true);
+      void this.persist();
+    }
+    this.modal = false;
+    this.refreshNpcs();
   }
 
   // --- Step-on (on arrival) -----------------------------------------------
@@ -364,6 +456,14 @@ export class WorldScene extends Phaser.Scene {
     );
     if (trigger) {
       void this.handleTrigger(trigger);
+      return;
+    }
+
+    // Route trainers: stepping into a trainer's line of sight starts the
+    // challenge (and pre-empts a same-step wild encounter, like the classics).
+    const spotter = this.npcs.find((n) => this.npcSeesPlayer(n));
+    if (spotter) {
+      void this.engageTrainer(spotter);
       return;
     }
 

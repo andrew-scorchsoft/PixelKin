@@ -42,6 +42,7 @@ export type CutsceneStep =
   | { op: 'sfx'; key: string }
   | { op: 'music'; key: string | null }
   | { op: 'battle'; trainer: string } // start a trainer battle by id
+  | { op: 'heal' } // fully restore the party (inn rest, hearthside kindness)
   | { op: 'gleam'; element: string }; // diegetic Gleam cue (relight the sky)
 
 /** ref -> a cutscene's steps. */

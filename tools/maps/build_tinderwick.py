@@ -97,6 +97,15 @@ path[8 * W + lum_door_r[0]] = 1
 # cottage lane: door (6,16) -> down to the spine. carve a vertical lane.
 mk.vline(path, W, H, cottage_door[0], cottage_door[1] + 1, 18)   # (6, 17..18)
 mk.hline(path, W, H, 18, 6, 14)                                  # join cottage lane to the spine
+# the Lanternway: a lane east below the garden, out to Vesper Crossroads (graph.ts
+# tinderwick <-> vesper_crossroads). Runs under tree_d's crown (walk-under rows).
+mk.hline(path, W, H, 16, 14, W - 1)
+for x in (W - 2, W - 1):                                          # punch the east border
+    tree[16 * W + x] = 0
+# the BEACON approach: a short spur from the plaza street to the old lamp-tower's
+# foot door on the NE bluff (the tower object stands over the cliff terrace)
+mk.hline(path, W, H, 8, 22, 24)
+path[7 * W + 24] = 1
 
 # ---- base = full grass scatter; terrain layers mesh over it -----------------
 gg = [gid("grass0"), gid("grass1"), gid("grass2"), gid("grass3")]
@@ -113,7 +122,7 @@ terrain_layers = [
      "set": "vesper_overworld_set", "depth": 0, "data": path},
     {"name": "t_sand", "role": "terrain", "terrain": "sand",
      "set": "vesper_overworld_set", "depth": 0, "data": sand},
-    {"name": "t_pond", "role": "terrain", "terrain": "water",
+    {"name": "t_pond", "role": "terrain", "terrain": "pond",
      "set": "vesper_overworld_set", "depth": 0, "data": pond},
     {"name": "t_sea", "role": "terrain", "terrain": "water",
      "set": "vesper_overworld_set", "depth": 0, "data": water_sea},
@@ -127,6 +136,10 @@ objects = [
      "w": LUMENARY["w"], "h": LUMENARY["h"], "overhang": 3},
     {"id": "house", "sprite": "tinderwick_cottage", "at": {"tx": COTTAGE["at"][0], "ty": COTTAGE["at"][1]},
      "w": COTTAGE["w"], "h": COTTAGE["h"], "overhang": 3},
+    # THE OLD BEACON — the town's tower, standing on the NE cliff terrace. Its
+    # foot door is wick-locked until the Dimglass lamplighter's key comes home.
+    {"id": "beacon", "sprite": "tinderwick_beacon", "at": {"tx": 23, "ty": 0},
+     "w": 4, "h": 7, "overhang": 3},
     # Object trees with REAL crowns are scattered along the tree-line and pond so the
     # forest reads as overlapping canopies, not one repeating hedge tile (§11).
     {"id": "tree_a", "sprite": "tinderwick_tree", "at": {"tx": 9, "ty": 10}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
@@ -170,6 +183,8 @@ sign_tiles = {
     "sign_lumenary": (21, 8),  # right of the Lumenary door, on the plaza street
     "sign_mentor": (12, 11),   # on the spine, by Fenn
     "sign_dock": (15, 18),     # by the shore-bound lane
+    "sign_lanternway": (21, 15),  # beside the east lane, pointing to the Crossroads
+    "sign_beacon": (23, 7),       # at the beacon's foot, beside the door spur
 }
 for (x, y) in sign_tiles.values():
     deco[y * W + x] = gid("sign")
@@ -194,10 +209,12 @@ m = {
                {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)}],
     "objects": objects,
     "warps": [
+        # Land ON the coast's return warps (the engine never auto-fires a step_on
+        # warp on arrival) so going back is always one step — audit_warps.py.
         {"id": "to_coast", "at": {"tx": 13, "ty": 0}, "trigger": "step_on",
-         "to_map": "dimglass_coast", "to": {"tx": 6, "ty": 32}, "facing": "up", "transition": "fade"},
+         "to_map": "dimglass_coast", "to": {"tx": 6, "ty": 33}, "facing": "up", "transition": "fade"},
         {"id": "to_coast_e", "at": {"tx": 14, "ty": 0}, "trigger": "step_on",
-         "to_map": "dimglass_coast", "to": {"tx": 7, "ty": 32}, "facing": "up", "transition": "fade"},
+         "to_map": "dimglass_coast", "to": {"tx": 7, "ty": 33}, "facing": "up", "transition": "fade"},
         # House door — interact on the actual door-art tile (cottage col 2).
         {"id": "to_house", "at": {"tx": cottage_door[0], "ty": cottage_door[1]}, "trigger": "interact",
          "to_map": "tinderwick_house", "to": {"tx": 6, "ty": 7}, "facing": "down", "transition": "door"},
@@ -209,6 +226,15 @@ m = {
         {"id": "to_lumenary", "at": {"tx": lum_door[0], "ty": lum_door[1]}, "trigger": "interact",
          "to_map": "tinderwick_lumenary", "to": {"tx": 7, "ty": 9}, "facing": "down",
          "requires_flag": "flag:has_starter", "transition": "door"},
+        # The Lanternway east to Vesper Crossroads (the hub; graph.ts spoke).
+        {"id": "to_crossroads", "at": {"tx": W - 1, "ty": 16}, "trigger": "step_on",
+         "to_map": "vesper_crossroads", "to": {"tx": 0, "ty": 9}, "facing": "right",
+         "transition": "fade"},
+        # The Beacon foot door — wick-locked until the key comes home from the
+        # coast road (the earned-first-Gleam quest; see graph.ts + build_beacon.py).
+        {"id": "to_beacon", "at": {"tx": 24, "ty": 6}, "trigger": "interact",
+         "to_map": "tinderwick_beacon_i", "to": {"tx": 6, "ty": 7}, "facing": "down",
+         "requires_flag": "flag:has_beacon_wick", "transition": "door"},
     ],
     "triggers": [
         {"id": "intro_mentor", "kind": "cutscene", "at": {"tx": 13, "ty": 11},
@@ -222,6 +248,12 @@ m = {
          "activation": "interact", "ref": "sign.tinderwick_mentor"},
         {"id": "sign_dock", "kind": "sign", "at": {"tx": sign_tiles["sign_dock"][0], "ty": sign_tiles["sign_dock"][1]},
          "activation": "interact", "ref": "sign.tinderwick_dock"},
+        {"id": "sign_lanternway", "kind": "sign",
+         "at": {"tx": sign_tiles["sign_lanternway"][0], "ty": sign_tiles["sign_lanternway"][1]},
+         "activation": "interact", "ref": "sign.tinderwick_lanternway"},
+        {"id": "sign_beacon", "kind": "sign",
+         "at": {"tx": sign_tiles["sign_beacon"][0], "ty": sign_tiles["sign_beacon"][1]},
+         "activation": "interact", "ref": "sign.beacon_door"},
     ],
     "encounters": [
         {"id": "verge_grass", "terrain": "tall_grass", "rect": {"tx": 10, "ty": 2, "w": 6, "h": 3},
@@ -234,7 +266,15 @@ m = {
          "movement": "static", "dialogue_ref": "npc.mentor_intro"},
         # Wren — the rival, a fellow young Wayfarer milling by the garden.
         {"id": "wren", "at": {"tx": 19, "ty": 15}, "facing": "left", "sprite": "wren",
-         "movement": "wander", "dialogue_ref": "npc.wren_intro"}],
+         "movement": "wander", "dialogue_ref": "npc.wren_intro"},
+        # The Lantern-fair (Arc E): festival folk fill the square once the Ember
+        # Gleam stands — the "Gleam = belonging" payoff, pure data via requires_flag.
+        {"id": "fair_piper", "at": {"tx": 16, "ty": 9}, "facing": "down", "sprite": "npc_shopkeeper",
+         "movement": "look_around", "dialogue_ref": "npc.fair_piper",
+         "requires_flag": "gleam:ember"},
+        {"id": "fair_kid", "at": {"tx": 11, "ty": 9}, "facing": "up", "sprite": "npc_child",
+         "movement": "wander", "dialogue_ref": "npc.fair_kid",
+         "requires_flag": "gleam:ember"}],
     "gates": [], "music": "assets/audio/music/tinderwick-a.mp3",
     "_doors": {"shop": shop_door, "lumenary": lum_door, "lumenary_twin": lum_door_r,
                "house": cottage_door},

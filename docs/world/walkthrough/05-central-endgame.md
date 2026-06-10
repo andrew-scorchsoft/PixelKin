@@ -152,6 +152,33 @@ none · **rec. level ~52** (transit; no battles in the hub itself).
   reachable now from the hub via the mine shortcut. **[LATER]** (different region) → effectively
   **[MISSABLE]** at this point (you hold Starreach; go back for it before or after the Spire).
 
+**Named quests** (spine §5 kit). The Crossroads is also **the Waykeeper's Round's home
+base** — the cross-region delivery line (spine §5): the **Waykeeper** hands one parcel per
+spoke, each leg waking with its spoke's flag and detailed in its region file —
+**R1** Wicks for the Lamplighter + **R2** Salt-glass for the Chandler (south, live first),
+**R3** Moss for the Quay (east), **R4** A Kite for the Waystone Kid (north), **R5** A Chart
+for the Waykeeper (west; the Round comes home). Tag every leg `[wakes with spoke]`.
+- **C1 "Lampling's Trail"** — giver: the **Waystone kid** · steps: follow the plaza
+  lamp-flickers she's spotted (three interacts around the plaza at dusk-lamps that gutter
+  as you approach) → the trail ends at **Lampling**, surfaced as the static catch · flags:
+  `flag:q_central_trail` → `flag:q_central_trail_done` · reward: the **Lampling** catch
+  itself (this quests the existing [MUST-DO] so it can't be walked past) · maps:
+  `vesper_crossroads` · **[MUST-DO]**.
+- **C2 "The Inn's Empty Lamps"** — giver: the **innkeeper** · steps: bring one
+  **lamp-token** from each quadrant's festival (the festival NPCs hand them once their
+  `gleam:*` pair is held) → hang all four in the inn · flags: `flag:q_central_tokens` →
+  `flag:q_central_tokens_done` · reward: the **Radiant Lamp** (the best pre-Spire lamp) ·
+  maps: the four festival towns + `vesper_crossroads` · `[MISSABLE]`. *Counter note
+  (spine §8): wants a "4 of 4" check — until quest counters exist, use the boolean chain:
+  the innkeeper acknowledges tokens in fixed quadrant order (south→east→north→west), each
+  token's giver appearing once the previous token's flag is set.*
+- **C3 "The Long Round"** — giver: the **Waykeeper**, once R1–R5 are all done (boolean
+  chain: each leg's giver only appears when the previous leg's flag is set, so R5 done ⇒
+  all done — no counter needed) · steps: one last walk of the plaza lamps with him ·
+  flags: `flag:q_central_round_done` · reward: the **Way-lamp** keepsake + his Lamplight
+  tease line ("a lamp that's walked every road burns a little farther") · maps:
+  `vesper_crossroads` · `[MISSABLE]`, post-`hub_unlocked`.
+
 ### 5. Don't-miss callouts
 
 - **Catch Lampling** before leaving the hub — the cosy mascot exists only here. **[MUST-DO]**
@@ -183,6 +210,11 @@ none · **rec. level ~52** (transit; no battles in the hub itself).
 - **Flags:** depends on `flag:hub_unlocked` (and the four `crown_*`) being set; sets **no new
   progression flag** here (C4/A5 are narrative cutscenes; `reward_flags` only for Wren-arc
   bookkeeping if used).
+- **Quest-chain hooks (rule 3):** the Waykeeper's parcel swaps (`flag:q_round_lamplighter` /
+  `q_round_chandler` / `q_round_moss` / `q_round_kite` / `q_round_chart`, each gated on its
+  spoke's wake-flag); C1's trail interacts → `flag:q_central_trail(_done)`; C2's token chain
+  → `flag:q_central_tokens(_done)` (boolean-order fallback per spine §8); C3 requires
+  `flag:q_round_chart` (the last leg ⇒ all legs) → `flag:q_central_round_done`.
 
 ---
 

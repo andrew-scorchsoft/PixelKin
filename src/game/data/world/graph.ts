@@ -74,7 +74,10 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'tinderwick', region: 'south' },
     { map_id: 'tinderwick_house', region: 'south' }, // interior: the apprentice's cottage
     { map_id: 'tinderwick_shop', region: 'south' }, // interior: the general store
-    { map_id: 'tinderwick_lumenary', region: 'south' }, // interior: the Ember Lumenary (Brisa Tallow)
+    { map_id: 'tinderwick_lumenary', region: 'south' }, // interior: the Ember Lumenary hall (Brisa Tallow)
+    { map_id: 'tinderwick_beacon_i', region: 'south' }, // interior: the old beacon, stair floor I (wick-key gated)
+    { map_id: 'tinderwick_beacon_ii', region: 'south' }, // interior: the old beacon, stair floor II
+    { map_id: 'tinderwick_beacon_top', region: 'south' }, // interior: the lantern room — the Ember bond-test
     { map_id: 'dimglass_coast', region: 'south' }, // route segment I: cliff path + shore (authored)
     { map_id: 'dimglass_coast_ii', region: 'south' }, // route: tidal flats
     { map_id: 'gullcry_rock', region: 'south', optional: true, reward: 'rare sea-bird kin + a Tide charm' },
@@ -126,6 +129,12 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'tinderwick', to_map: 'tinderwick_house', via_warp: 'to_house', bidirectional: true },
     { from_map: 'tinderwick', to_map: 'tinderwick_shop', via_warp: 'to_shop', bidirectional: true },
     { from_map: 'tinderwick', to_map: 'tinderwick_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
+    // The old beacon on the NE bluff — the earned first Gleam: door opens with the
+    // wick-key from the Dimglass lamplighter, the floors carry wick-tender trainers,
+    // and Brisa's bond-test waits in the lantern room at the top.
+    { from_map: 'tinderwick', to_map: 'tinderwick_beacon_i', via_warp: 'to_beacon', requires_flag: 'flag:has_beacon_wick', bidirectional: true },
+    { from_map: 'tinderwick_beacon_i', to_map: 'tinderwick_beacon_ii', via_warp: 'up_stairs', bidirectional: true },
+    { from_map: 'tinderwick_beacon_ii', to_map: 'tinderwick_beacon_top', via_warp: 'up_stairs', bidirectional: true },
 
     // ---- Pearlmoor Quay interiors (door warps, both ways) ----------------------------
     { from_map: 'pearlmoor_quay', to_map: 'pearlmoor_shop', via_warp: 'to_shop', bidirectional: true },

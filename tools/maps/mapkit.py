@@ -120,8 +120,9 @@ def scatter_decor(deco, base, w, h, rng, *, density=0.10, avoid=None, flowers=0.
 # ---- the standing build pipeline --------------------------------------------
 def finalize(m: dict, *, scale: int = 3, render: bool = True) -> bool:
     """Write the map, expand terrain -> base (variant autotiling), strip the terrain
-    layers (runtime wants plain gids), re-write, render a QA PNG, and validate.
-    Returns True iff validate_map passes."""
+    layers (runtime wants plain gids), re-write, render a QA PNG, validate, and
+    run the cross-map WARP AUDIT (wide-entrance coverage, landings, round trips).
+    Returns True iff validate_map AND audit_warps pass."""
     map_path = REPO / "public/assets/maps" / f"{m['id']}.json"
     map_path.write_text(json.dumps(m, indent=2) + "\n")
 
@@ -145,4 +146,9 @@ def finalize(m: dict, *, scale: int = 3, render: bool = True) -> bool:
     val = subprocess.run([sys.executable, str(SCRIPTS / "validate_map.py"), str(map_path)],
                          capture_output=True, text=True)
     print(val.stdout)
-    return val.returncode == 0
+
+    # cross-map warp audit, focused on this map (tools/maps/audit_warps.py)
+    aud = subprocess.run([sys.executable, str(REPO / "tools/maps/audit_warps.py"), m["id"]],
+                         capture_output=True, text=True)
+    print(aud.stdout)
+    return val.returncode == 0 and aud.returncode == 0

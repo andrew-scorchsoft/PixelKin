@@ -63,6 +63,26 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/tinderwick-lumenary-b.webp',
     ],
   },
+  // The old beacon — the earned first Gleam: wick-key gated ascent, wick-tender
+  // sight trainers on the stairs, Brisa's bond-test in the lantern room.
+  tinderwick_beacon_i: {
+    json: 'assets/maps/tinderwick_beacon_i.json',
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/tinderwick-a.mp3',
+  },
+  tinderwick_beacon_ii: {
+    json: 'assets/maps/tinderwick_beacon_ii.json',
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/tinderwick-a.mp3',
+  },
+  tinderwick_beacon_top: {
+    json: 'assets/maps/tinderwick_beacon_top.json',
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/tinderwick-a.mp3',
+  },
   dimglass_coast: {
     json: 'assets/maps/dimglass_coast.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
@@ -115,6 +135,23 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/dimglass-coast-a.mp3',
+  },
+  gullcry_rock: {
+    json: 'assets/maps/gullcry_rock.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/dimglass-coast-a.mp3',
+    // open-sea spur: the harbour backdrops carry the same moon-on-water read
+    battle_backdrops: [
+      'assets/backgrounds/battle/pearlmoor-quay-a.webp',
+      'assets/backgrounds/battle/pearlmoor-quay-b.webp',
+    ],
+  },
+  vesper_crossroads: {
+    json: 'assets/maps/vesper_crossroads.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'hub',
+    music: 'assets/audio/music/tinderwick-a.mp3',
   },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.

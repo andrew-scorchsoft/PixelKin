@@ -39,28 +39,40 @@ first traversal Gift, **Tidecall**.
 
 ### Tinderwick — *cosy coastal village at the blue hour; the Wayfaring begins*
 
-**At a glance** — `tinderwick` (+ interior `tinderwick_house`) · town · south · entry:
-spawn at house door `{tx:8,ty:16}`, exit: north edge to `dimglass_coast` · gate: none
-(start) · **Gleam: Ember** (Brisa Tallow, ace ~10) · rec. level: start 5.
+**At a glance** — `tinderwick` (+ interiors `tinderwick_house` · `tinderwick_lumenary` hall ·
+the **BEACON** `tinderwick_beacon_i/_ii/_top`) · town · south · entry: spawn at house door
+`{tx:8,ty:16}`, exit: north edge to `dimglass_coast`, east Lanternway to `vesper_crossroads` ·
+gate: the beacon's foot door needs **`flag:has_beacon_wick`** · **Gleam: Ember** (Brisa
+Tallow, ace ~10, at the **beacon top**) · rec. level: start 5, bond-test ~8–9.
 
-1. **Main path** (the "lantern spine", south→north per level-design §4/§7.1):
-   1. **Step out of the house.** Spawn at the door tile; the only action is to move — movement
-      taught by doing. (Optional: the warm interior `tinderwick_house` first.)
-   2. **Meet Fenn + Wren on the spine.** A few tiles north the path narrows past **Star-tender
-      Fenn** (the `intro_mentor` cutscene); Wren is here too, another young Wayfarer. Talking
-      is taught; the cutscene gifts the **vesperlamp** and lets the player **choose a starter**.
-   3. **Read a sign.** Square/dock/Lumenary/mentor signs along the spine teach "interact"
-      (no pop-up tutorials).
-   4. **The soft gate.** The **Lumenary** sits central and tallest as the visible goal — but
-      Brisa won't hold the bond-test on a lone level-5 starter. The player is nudged: *go catch
-      a kin first.* (The town's small verge does that; see below.)
-   5. **First wild battle in the verge.** The tall-grass band straddles the north exit lane —
-      the classic "first step into the grass" happens as the player heads out (and gives them
-      a wild kin to catch toward the soft-gate).
-   6. **Earn the Ember Gleam.** With a caught kin in tow, return to the Lumenary; **Brisa
-      Tallow** vouches the player's bond. Earns **Gleam: Ember** — wrapped in the
-      **Lantern-fair** festival (Arc E).
-   7. **North to the coast** when ready (`to_coast` edge).
+**The earned first Gleam (the 2026-06 restructure; spine §5, shape #1: tower ascent —
+the BUILT worked example every region's loop varies from).** Tinderwick's tower — the
+**old beacon** on the NE bluff — is where the Ember is actually relit. Brisa's bond-test no
+longer happens in the hall five minutes in; it is *earned* via a loop that sends the
+player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff:
+
+1. **Main path** (the "lantern spine" + the beacon loop):
+   1. **Step out of the house.** Spawn at the door tile; movement taught by doing.
+      (Optional: the warm interior, with a free **bed rest-heal**, first.)
+   2. **Meet Fenn + Wren on the spine.** The `intro_mentor` cutscene gifts the
+      **vesperlamp** and the **starter**; signs teach "interact".
+   3. **Catch a kin in the verge** (the band straddling the north exit lane). Any catch
+      sets `flag:caught_first_kin` — until then Brisa only teases (`npc.brisa_not_ready`).
+   4. **Brisa's errand (the hall).** In the Lumenary hall Brisa explains: the Ember is
+      relit from the **beacon**, whose **wick-key was lost on the coast road**
+      (`script.brisa_quest` → `flag:beacon_quest`). The wick-locked tower door + sign
+      are visible from the square — the goal stands over the town the whole time.
+   5. **Walk Dimglass Coast I** — Wren's sight-challenge, the mandatory grass
+      crossings, the `dusk_begins` omen — and receive the **BEACON WICK-KEY** from the
+      **old lamplighter** near the north boundary (`script.give_wick` →
+      `flag:has_beacon_wick`). The player returns at ~lv 7–8, not 5.
+   6. **Climb the beacon.** The foot door answers the key; floors I–II are held by
+      wick-tender **sight trainers** (Tansy lv7, Cole lv7/8); the spiral stairs land in
+      the **lantern room**.
+   7. **Earn the Ember Gleam at the lantern** — `script.beacon_battle`: Brisa's
+      bond-test (ace 10, now a fair fight), then the great lamp blooms and the
+      constellation answers. Down in the square, the **Lantern-fair** (Arc E) is live.
+   8. **North to the coast again** — onward past the flats to Pearlmoor.
 
 2. **Story beats**
    - **C1 — Fenn gifts the lamp & starter.** Warm, unhurried; Fenn is a *Star-tender*, never a
@@ -76,46 +88,58 @@ spawn at house door `{tx:8,ty:16}`, exit: north edge to `dimglass_coast` · gate
      > Brisa: "A small flame's no lesser thing, dear. You've kept yours steady — let it
      > stand up in the sky a while."
 
-3. **Mechanic introductions** — **move · talk · interact · enter buildings** (the house +
-   Lumenary door warps) · **first wild battle** in the verge. (Catching is *taught* here as
-   intent — "go catch a kin first" — and *performed* properly on Dimglass; the engine soft-gate
-   flag is set by catching at least one wild kin per spine §4.)
+3. **Mechanic introductions** — **move · talk · interact · enter buildings** · **first wild
+   battle + catch** in the verge (`flag:caught_first_kin` is engine-set on any catch) ·
+   **the fetch-quest loop** (errand → route → return) · **sight trainers** (first met as
+   Wren on the coast, then formalised on the beacon stairs) · **vertical ascent** (the
+   beacon's three stacked floors — the game's first "going up").
 
 4. **Optional content**
    - **`tinderwick_house` interior** — `[MISSABLE]` cosy cottage, a parent/keepsake line and
      the opening warmth; nothing gated.
    - **Town signs (square / dock / Lumenary / mentor)** — `[MISSABLE]` the "interact" lessons;
      the dock sign teases the sea-shallows ("the buoys only answer a lit lamp").
-   - **Lanternway spoke to Vesper Crossroads** — `[LATER]` a `to_crossroads` exit exists in the
-     graph; the hub is discovered as the South fast-travel anchor but its inward roads need
-     `flag:hub_unlocked` (West/endgame). Tag as a tease only.
+   - **Lanternway spoke to Vesper Crossroads** — **[BUILT]** the `to_crossroads` lane leaves
+     Tinderwick's east edge (and Pearlmoor's west); the hub (`vesper_crossroads`) is live with
+     the Waykeeper, the Waystone plaza and signed sleeping roads. Its inward Spire road needs
+     `flag:hub_unlocked` (West/endgame) and the north marsh road is an inert tease.
+
+   **Named quests** (spine §5 kit):
+   - **S2 "A Letter for Fenn"** — giver: the **house parent** (`tinderwick_house`) · steps:
+     take Gran's keepsake letter → hand it to **Fenn** at his sky-watcher spot on the flats
+     (post-C2 placement) → return for her thanks · flags: `flag:q_south_letter` →
+     `flag:q_south_letter_given` · reward: balms + a warm line about the Wayfaring ·
+     maps: `tinderwick_house`, `dimglass_coast_ii` · `[MISSABLE]` — deliberately the
+     game's first delivery quest, teaching the pattern the Waykeeper's Round scales up.
 
 5. **Don't-miss callouts**
-   - **Catch your first kin in the verge before challenging Brisa** — the soft-gate is the
-     tutorial's natural "go make a friend first" beat; skipping it just walls the Lumenary.
+   - **Catch your first kin in the verge before Brisa will even talk quests** — the
+     catch-first gate is the tutorial's natural "go make a friend first" beat.
    - **The Lantern-fair** — the warmest set-piece of the opening hour; it sets the whole game's
      "lanterns in the dark" tone.
 
-6. **Validation hooks** (against built `tinderwick.json`)
-   - **Map id / kind:** `tinderwick` · town. Interior `tinderwick_house`.
-   - **Entry/exit:** spawn `start_at {tx:8,ty:16}`; north edge-warps `to_coast` `{tx:14,ty:0}`
-     (+ `to_coast_w` `{13,0}`, `to_coast_e` `{15,0}`) → `dimglass_coast` land-in `{tx:6,ty:32}`,
-     `facing:up`, `fade`. House: `to_house` `interact` `{tx:8,ty:15}` → `tinderwick_house`
-     `{tx:5,ty:7}`, `door`.
-   - **Triggers / flags:** `intro_mentor` `cutscene` `step_on {tx:12,ty:10}`, `once:true`,
-     `ref:script.intro_mentor`, **`sets_flags:[flag:has_vesperlamp, flag:has_starter]`**.
-     `lumenary_battle` `cutscene` `interact {tx:18,ty:8}`, `ref:script.lumenary_tinderwick`,
-     `once:true`, **`requires_flag:flag:has_starter`** — and must additionally require the
-     "caught a wild kin" soft-gate flag (spine §4) before Brisa fights; **earns `gleam:ember`**.
-     Signs: `sign_shop {6,9}`, `sign_lumenary {21,9}`, `sign_mentor {13,11}`, `sign_dock {9,18}`.
-   - **Encounters:** `verge_grass` · `tall_grass` · `rect{tx:12,ty:2,w:6,h:2}` ·
-     `encounter_rate 0.07` · table kin_id **16** (w60, lv2–4) + **10** (w40, lv2–3) — Ember /
-     Light town kin (Wickmoth, Tallowpup, Glimflit per atlas), **level band 2–4** (§4 start-5).
-   - **NPCs / Lumenary / festival:** `mentor` (Fenn) `{tx:12,ty:11}` `static`
-     `dialogue_ref:npc.mentor_intro`; `child_runner` (repurpose as **Wren**) `{tx:20,ty:14}`
-     `wander` `npc.child_lanterns`. Lumenary keeper **Brisa Tallow** (Ember) via
-     `script.lumenary_tinderwick`; Lantern-fair staged around the Lumenary as a flag-gated
-     festival cutscene + NPC swap.
+6. **Validation hooks** (against built `tinderwick.json` + the beacon maps)
+   - **Map id / kind:** `tinderwick` · town. Interiors: `tinderwick_house`,
+     `tinderwick_lumenary` (the hall), `tinderwick_beacon_i/_ii/_top` (the tower).
+   - **Entry/exit:** spawn `start_at {tx:8,ty:16}`; north edge-warps `to_coast`/`to_coast_e`
+     → `dimglass_coast`; east `to_crossroads {tx:27,ty:16}` → `vesper_crossroads`; beacon
+     foot door `to_beacon` `interact {tx:24,ty:6}` **`requires_flag:flag:has_beacon_wick`**
+     → `tinderwick_beacon_i`.
+   - **The beacon quest chain (all data):** verge catch → `flag:caught_first_kin` (engine,
+     any catch) → hall: `script.brisa_quest` sets `flag:beacon_quest` → Dimglass I:
+     `script.give_wick` (the old lamplighter, post-`dusk_begins`) gives item `beacon_wick`
+     + sets `flag:has_beacon_wick` → beacon floors: sight trainers `beacon_keeper_a/b`
+     (flags `flag:beacon_keeper_*_beaten`) → top: `beacon_battle` `cutscene`
+     `step_on`, `once:true`, `requires_flag:flag:caught_first_kin`,
+     `blocked_ref:npc.brisa_not_ready`, `ref:script.beacon_battle` — **earns
+     `gleam:ember`** (+ `crown_south` half) via trainer `lampwarden_tinderwick`.
+   - **Brisa's hall stages (flag-pair NPC swaps on the dais):** `npc.brisa_not_ready` →
+     `script.brisa_quest` → `npc.brisa_meet_beacon` → `npc.brisa_after` (post-Gleam).
+   - **Encounters:** `verge_grass` · `tall_grass` · `encounter_rate 0.07` · kin **16**
+     (w60, lv2–4) + **10** (w40, lv2–3) — level band 2–4 (§4 start-5).
+   - **NPCs / festival:** `mentor` (Fenn) static `npc.mentor_intro`; **Wren** wanders the
+     square (`npc.wren_intro`); Lantern-fair NPCs (`fair_piper`, `fair_kid`)
+     `requires_flag:'gleam:ember'`.
 
 ---
 
@@ -157,9 +181,12 @@ spawn at house door `{tx:8,ty:16}`, exit: north edge to `dimglass_coast` · gate
    gated buoy-water and cavern-mouth, deliberately unsolvable yet).
 
 4. **Optional content**
-   - **Gullcry Rock** (spur, off Dimglass **II**) — `[LATER]` needs **Tidecall** (earned at
-     Pearlmoor this region). Visible from I as the offshore buoy line; reward: rare sea-bird
-     kin + a Tide charm. Becomes a same-region backtrack the moment Tidecall is in hand.
+   - **Gullcry Rock** (spur, off Dimglass **II**) — **[BUILT]** needs **Tidecall** (earned at
+     Pearlmoor this region). Visible from I as the offshore buoy line; reward: the rare
+     **harbour-light kin (#29 Glostern)** in the surf + the **Tide Charm** (the South's best
+     lamp, catch ×2.0) at the high stone. *(The old "sea-bird kin" note predates the locked
+     dex, which has no Tide bird — Glostern's drifting harbour-lantern read carries the same
+     "the rock keeps a light" promise.)* A same-region backtrack the moment Tidecall lands.
    - **Tideglass Cavern** (landmark, off Dimglass **II**) — `[LATER]` needs **Glimmerstep**
      (earned at Lowleaf, *East*). The dark cliff-mouth `to_tideglass` warp; signature rare
      water kin. A long-game backtrack — tag and move on.
@@ -183,16 +210,19 @@ spawn at house door `{tx:8,ty:16}`, exit: north edge to `dimglass_coast` · gate
      **`requires_ability:glimmerstep`** → `tideglass_cavern {tx:4,ty:8}`, `door`.
    - **Gates:** `AbilityGate` `shallows_tide` (`ability:tidecall`, `effect:make_passable`) over
      shallows tiles `{14–15, 4–6}`.
-   - **Encounters:** `grass_a rect{3,4,4,3}`, `grass_b rect{4,12,4,3}`, `grass_c rect{12,17,3,3}`,
-     `grass_d rect{3,22,4,3}` — all `tall_grass`, `encounter_rate 0.09`, table kin_id **26**+**27**
-     (Brinelet/Lumpin, Tide / Tide-Light), **level band 3–6** (§4 5→~8). Gated water:
-     `tide_shallows rect{14,4,2,3}` `water` **`requires_ability:tidecall`**, kin_id **29** w100
-     lv5–7 (low-weight rare read).
-   - **NPCs / signs:** `wayfarer` `{tx:9,ty:10}` `look_around` `npc.dimglass_wayfarer` (carries
-     route advice + the Gift teases in-character; the anchor for the **Wren A2** battle script and
-     the **B1** sky cutscene). Signs: `sign_buoys {2,7}` (`sign.dimglass_buoys` — "buoys answer a
-     lit lamp"), `sign_shore {13,8}`, `sign_route {3,16}`, `sign_boundary {2,28}`
-     (`sign.dimglass_to_pearlmoor`).
+   - **Encounters:** four optional patches (`grass_a–d`, `tall_grass`, rate 0.09, band 3–6)
+     PLUS the two **[BUILT] mandatory crossings** — `crossing_a rect{3,9,11,2}` and
+     `crossing_b rect{3,26,11,2}`, rate 0.10 — full-corridor bands (tallgrass on the green,
+     **dunegrass** over the beach) with the lit lane carved out, so the road north passes
+     *through* encounter ground (level-design §11 rule 7). Gated water:
+     `tide_shallows rect{14,5,2,4}` `water` **`requires_ability:tidecall`** (rare read).
+   - **NPCs / signs:** **[BUILT] Wren is a SIGHT trainer** at `{5,11}` facing the lane
+     (`sight_range:4`, `script.wren_dimglass`, swap to `npc.dimglass_wayfarer` once
+     `flag:wren_dimglass_battled`). The **old lamplighter** appears post-`dusk_begins` at
+     `{10,29}` and hands the **beacon wick-key** (`script.give_wick` →
+     `flag:has_beacon_wick`; the Tinderwick beacon quest's route leg), then swaps to the
+     plain witness. Item caches `cache_balm`/`cache_lamps` beside the lane. Signs:
+     buoys / cave / route / boundary.
    - **New refs to add when built:** a `flag:dusk_begins` cutscene trigger (B1) and a `script`
      ref for the Wren A2 trainer-battle cutscene (`reward_flags`); the C2 Fenn cutscene may sit
      here or at the head of `dimglass_coast_ii`.
@@ -224,8 +254,13 @@ boundary is ungated; the *spurs* off it are gift-gated) · Gleam: — · rec. le
    can't yet open and learns to remember it.
 
 4. **Optional content**
-   - **Gullcry Rock** (spur) — `[LATER]` **Tidecall** (this region, at Pearlmoor): rare sea-bird
-     kin + Tide charm. **Becomes accessible the moment you earn Tidecall — backtrack here.**
+   - **The netmender's net-floats** — a single item cache on the flats
+     (`flag:picked_net_floats`, band 8–10): the collinear errand leg of Pearlmoor's
+     **Causeway Bell** loop (see Pearlmoor §1). New ref to add when wired.
+   - **Gullcry Rock** (spur) — **[BUILT]** **Tidecall** (this region, at Pearlmoor): the rare
+     harbour-light kin (#29 Glostern) + the Tide Charm. **Becomes accessible the moment you
+     earn Tidecall — backtrack here.** (Post-Tidecall it also hosts S1's three dark buoys —
+     see Pearlmoor's Named quests.)
    - **Tideglass Cavern** (landmark) — `[LATER]` **Glimmerstep** (East): signature rare water
      kin in a micro-dungeon. Long-game return. **Also the canonical Lamplight exemplar** (spine
      §5): first explored at **Warmlight**, the cavern keeps a deeper nook + a hidden item beyond
@@ -255,29 +290,51 @@ boundary is ungated; the *spurs* off it are gift-gated) · Gleam: — · rec. le
 
 ### Pearlmoor Quay — *moonlit fishing port; the second Gleam and the first Gift*
 
-**At a glance** — `pearlmoor_quay` · town · south · entry: south from `dimglass_coast_ii`,
-exit: onward to `saltreach_fen_i` (via `to_fen`, East) + Lanternway `to_crossroads` ·
-gate: **Tidecall** (its own islets & sea-shrine — but the Lumenary itself is **not** gated,
-per spine §0 rule 1) · **Gleam: Tide** (Reyl Wash, ace ~16) + **Tidecall** · rec. level: 12.
+**At a glance** — `pearlmoor_quay` (+ the breakwater `pearlmoor_breakwater` **[NEW MAP]**) ·
+town · south · entry: south from `dimglass_coast_ii`, exit: onward to `saltreach_fen_i`
+(via `to_fen`, East) + Lanternway `to_crossroads` · gate: **Tidecall** (its own islets &
+sea-shrine — but the Lumenary itself is **not** gated, per spine §0 rule 1; the breakwater
+is walked **on foot**) · **Gleam: Tide** (Reyl Wash, ace ~16, at the **Moor-bell shrine**)
++ **Tidecall** · rec. level: 12, bond-test ~13–14.
+
+**The earned loop — "The Causeway Bell" (spine §5, shape #2: breakwater walk).** The
+Tide-blessing cannot begin until the Moor-bell rings — and the bell-rope is in the
+netmender's keeping.
 
 1. **Main path:**
    1. **Arrive on the wet boardwalks** — moon on water, `bone` sails, lantern-strings between
-      masts. The cosiest, saltiest town music in South.
-   2. **The Lumenary is reachable on foot** (no Tidecall needed — §0 rule 1). The town's own
-      *islets and sea-shrine* are the Tidecall-gated content, teased from the quay.
-   3. **Heal, restock, build the party to ~12.** Bring an Ember or grassy partner — Reyl's team
-      is Tide; the triangle matters.
-   4. **Face Lampwarden Reyl Wash (Tide, ace ~16).** Winning earns **Gleam: Tide** and the
-      **Tidecall** Lantern Gift, wrapped in the **Tide-blessing** festival (Arc E).
-   5. **`flag:crown_south` sets** (engine-set once both Ember + Tide are held) — the South
+      masts. The cosiest, saltiest town music in South. **The tease:** out along the
+      breakwater, visible from the first screen, stands the **Moor-bell shrine** — bell
+      silent, the Tide-blessing boats idle at their moorings.
+   2. **The Lumenary hall is reachable on foot** (no Tidecall needed — §0 rule 1). Reyl
+      meets you there with the hook: *"Tides go out so they can come back — but the
+      blessing waits on the moor-bell, and the moor-bell waits on you."*
+      (`script.reyl_quest` → `flag:q_south_bell`; until the bell rings his bond-test
+      trigger answers with a `blocked_ref` in the same voice.)
+   3. **The netmender's errand (collinear).** The quay netmender keeps the bell-rope, but
+      her **net-floats** drifted south in the last storm — a single item cache one screen
+      back on **Dimglass Coast II** (band 8–10, ground just walked). Return them →
+      `flag:q_south_has_rope` (NPC swap hands the rope).
+   4. **Walk the breakwater** (`pearlmoor_breakwater` — the foot gate needs the rope;
+      blocked line in the netmender's voice). Two **net-hand sight trainers** (lv 12–14)
+      work the causeway; the bell platform and shrine stand at its end over open water.
+   5. **Ring the Moor-bell** (`script.ring_moorbell` → `flag:q_south_bell_rung`) — the
+      Tide-blessing begins behind you: boats light, the quay sings, and **Reyl walks out
+      to the shrine** (hall ↔ shrine NPC swap).
+   6. **Face Lampwarden Reyl Wash at the shrine (Tide, ace ~16).** Winning earns
+      **Gleam: Tide** and the **Tidecall** Lantern Gift, inside the festival (Arc E) —
+      heal/restock first: **[BUILT]** the inn rest (`script.inn_rest`) + the chandlery's
+      one-time crossing-kit.
+   7. **`flag:crown_south` sets** (engine-set once both Ember + Tide are held) — the South
       quadrant's two constellations are relit; the Vesper Crossroads' south approach is primed.
-   6. **Now-accessible callout:** with **Tidecall** in hand, **backtrack to Dimglass II →
-      Gullcry Rock** (rare sea-bird kin + Tide charm), cross Pearlmoor's own shallow islets to
-      the sea-shrine, and the East road's **Saltreach Fen I→II** boundary is now passable.
-   7. **The 12→16 on-ramp.** Pearlmoor is entered at ~12 but South exits at ~16 (spine §4): the
-      ~4 levels are meant to be earned *here*, in Pearlmoor's Tidecall islet/sea-shrine loop and
-      the Gullcry Rock backtrack, before stepping into Saltreach Fen — so East opens with no
-      level cliff. (The Tidecall content is the on-ramp, not optional grind.)
+   8. **Now-accessible callout:** with **Tidecall** in hand, **backtrack to Dimglass II →
+      Gullcry Rock** (the rare harbour-light kin + Tide Charm), cross Pearlmoor's own shallow
+      islets to the sea-shrine, and the East road's **Saltreach Fen I→II** boundary is now
+      passable.
+   9. **The 12→16 on-ramp.** The bell loop carries the player to ~13–14 against Reyl's ace 16
+      (the same cliff-softening the Beacon did for 5-vs-10); the remaining levels are earned
+      in Pearlmoor's Tidecall islet/sea-shrine loop and the Gullcry Rock backtrack before
+      Saltreach Fen — so East opens with no level cliff.
 
 2. **Story beats**
    - **E — the Tide-blessing.** Reyl's Gleam is given inside the port's tide festival; warm,
@@ -296,27 +353,61 @@ per spine §0 rule 1) · **Gleam: Tide** (Reyl Wash, ace ~16) + **Tidecall** · 
 4. **Optional content**
    - **Pearlmoor sea-shrine / islets** — `[MUST-DO]` once Tidecall lands: the town's own
      Tidecall content, a short rewarding loop and the cleanest demonstration of the new Gift.
-   - **Gullcry Rock backtrack** (Dimglass II spur) — `[MUST-DO]` rare sea-bird kin + Tide charm,
-     now reachable; the region's signature "the map reopened" payoff.
+   - **Gullcry Rock backtrack** (Dimglass II spur) — `[MUST-DO]` **[BUILT]** the rare
+     harbour-light kin (Glostern) + the Tide Charm, now reachable; the region's signature
+     "the map reopened" payoff.
    - **Lanternway → Vesper Crossroads** — `[MISSABLE]` discover the hub as South's fast-travel
      anchor; its inward Spire roads remain `[LATER]` (`flag:hub_unlocked`, West/endgame).
 
+   **Named quests** (spine §5 kit; South's slate, with S2 over in Tinderwick):
+   - **S1 "The Last Buoy Out"** — giver: the **netmender** (post-bell, her swap NPC) ·
+     steps: relight the three dark buoys in the Dimglass II shallows (interact scripts on
+     the buoy line, Tidecall water) → return · flags: `flag:q_south_buoys` →
+     `flag:q_south_buoys_lit` · reward: the **Drift Charm** · maps: `pearlmoor_quay`,
+     `dimglass_coast_ii` · `[LATER: Tidecall]` (a "now accessible" callout the moment the
+     Gift lands).
+   - **S3 "The Cavern Keeps a Light"** — giver: the **old fisher** (inn) · steps: relight
+     the wreck-lamp deep in **Tideglass Cavern** → tell him it still burns · flags:
+     `flag:q_south_wrecklamp` → `flag:q_south_wrecklamp_lit` · reward: a **Tide Charm
+     upgrade** · maps: `pearlmoor_quay`, `tideglass_cavern` · `[LATER: Glimmerstep]`, with
+     a deeper page beyond the lamp's reach `[LATER: Lamplight ≥ Starlight]`.
+   - **R1 "Wicks for the Lamplighter"** — the Waykeeper's Round, leg 1 (live now): parcel
+     from the **Waykeeper** (`vesper_crossroads`) → the **old lamplighter** (Dimglass I) ·
+     flags: `flag:q_round_lamplighter` · reward: bright-lamp kit · `[wakes with spoke]`
+     (south spokes are live).
+   - **R2 "Salt-glass for the Chandler"** — Round leg 2 (live now): Waykeeper parcel → the
+     **Pearlmoor chandler** · flags: `flag:q_round_chandler` · reward: balm kit ·
+     `[wakes with spoke]`.
+
 5. **Don't-miss callouts**
    - **Run the Gullcry Rock backtrack before leaving South** — it is the clearest lesson the
-     game ever teaches about *why you keep a list of teased spots*, and the Tide charm + sea-bird
-     kin are a tidy reward right when the party wants depth.
+     game ever teaches about *why you keep a list of teased spots*, and the Tide Charm +
+     harbour-light kin are a tidy reward right when the party wants depth.
    - **The Tide-blessing festival** — pair it with the Lantern-fair as South's two warm
      set-pieces; together they establish "Gleam = belonging" before the stakes harden in East.
 
-6. **Validation hooks** (`pearlmoor_quay` — to be built)
-   - **Map id / kind:** `pearlmoor_quay` · town.
+6. **Validation hooks** (`pearlmoor_quay` is built; the bell loop + `pearlmoor_breakwater`
+   are new refs to add when built)
+   - **Map id / kind:** `pearlmoor_quay` · town; **`pearlmoor_breakwater`** **[NEW MAP]** ·
+     route/causeway, ~12×28, walked on foot (no Tidecall anywhere on it — §0 rule 1).
    - **Entry/exit:** south land-in from `dimglass_coast_ii` (paired with its `to_quay`); onward
      **`to_fen`** → `saltreach_fen_i` (graph edge, ungated); **`to_crossroads`** → `vesper_crossroads`
-     (Lanternway spoke, bidirectional, per `graph.ts:159`).
-   - **Lumenary (ungated) + Gift + flags:** a `lumenary_pearlmoor` cutscene trigger,
-     `requires_flag:flag:has_starter` (and reachable **without** Tidecall — §0 rule 1),
-     **earns `gleam:tide`** and **grants ability `tidecall`**; the engine sets **`flag:crown_south`**
-     once `gleam:ember`+`gleam:tide` are both held. Lampwarden **Reyl Wash** (Tide, ace ~16).
+     (Lanternway spoke, bidirectional, per `graph.ts:159`); breakwater foot gate
+     **`to_breakwater`** `requires_flag:flag:q_south_has_rope` with a `blocked_ref` in the
+     netmender's voice.
+   - **The bell quest chain (all data):** `script.reyl_quest` (hall) sets `flag:q_south_bell`
+     → net-floats item cache on `dimglass_coast_ii` (`flag:picked_net_floats`) → netmender
+     NPC swap gives the rope (`flag:q_south_has_rope`) → breakwater walk (2 net-hand SIGHT
+     trainers, lv 12–14) → `script.ring_moorbell` sets `flag:q_south_bell_rung` (festival
+     NPC wave + Reyl hall↔shrine swap).
+   - **Lumenary (ungated) + Gift + flags:** the bond-test trigger at the **Moor-bell shrine**,
+     `requires_flag:flag:q_south_bell_rung` with `blocked_ref` (Reyl's "the moor-bell waits
+     on you"), **earns `gleam:tide`** and **grants ability `tidecall`**; the engine sets
+     **`flag:crown_south`** once `gleam:ember`+`gleam:tide` are both held. Lampwarden
+     **Reyl Wash** (Tide, ace ~16).
+   - **Quest-chain hooks (rule 3):** opened `flag:q_south_bell` / `q_south_has_rope` /
+     `q_south_bell_rung` are consumed by the breakwater gate, the netmender swap pair and
+     the bond-test trigger; S1/S3/R1/R2 flags as listed in their Named-quests entries.
    - **Tidecall-gated town content:** islet/sea-shrine warps + `water` `EncounterZone`s with
      **`requires_ability:tidecall`**; an `AbilityGate` (`tidecall`,`make_passable`) over the
      harbour shallows.

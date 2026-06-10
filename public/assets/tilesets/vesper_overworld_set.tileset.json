@@ -4,7 +4,7 @@
   "tile_width": 16,
   "tile_height": 16,
   "columns": 12,
-  "tile_count": 126,
+  "tile_count": 155,
   "tiles": [
     {
       "index": 0,
@@ -812,6 +812,210 @@
     {
       "index": 125,
       "role": "decor"
+    },
+    {
+      "index": 126,
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "corner_nw"
+    },
+    {
+      "index": 127,
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "edge_n"
+    },
+    {
+      "index": 128,
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "corner_ne"
+    },
+    {
+      "index": 129,
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "edge_w"
+    },
+    {
+      "index": 130,
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "fill"
+    },
+    {
+      "index": 131,
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "edge_e"
+    },
+    {
+      "index": 132,
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "corner_sw"
+    },
+    {
+      "index": 133,
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "edge_s"
+    },
+    {
+      "index": 134,
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "corner_se"
+    },
+    {
+      "index": 135,
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "strip_h"
+    },
+    {
+      "index": 136,
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "strip_v"
+    },
+    {
+      "index": 137,
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "inner_nw"
+    },
+    {
+      "index": 138,
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "inner_ne"
+    },
+    {
+      "index": 139,
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "inner_sw"
+    },
+    {
+      "index": 140,
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "inner_se"
+    },
+    {
+      "index": 141,
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "fill"
+    },
+    {
+      "index": 142,
+      "role": "path",
+      "terrain": "trail",
+      "autotile": "fill"
+    },
+    {
+      "index": 143,
+      "role": "water",
+      "terrain": "pond",
+      "autotile": "corner_nw",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 144,
+      "role": "water",
+      "terrain": "pond",
+      "autotile": "edge_n",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 145,
+      "role": "water",
+      "terrain": "pond",
+      "autotile": "corner_ne",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 146,
+      "role": "water",
+      "terrain": "pond",
+      "autotile": "edge_w",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 147,
+      "role": "water",
+      "terrain": "pond",
+      "autotile": "edge_e",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 148,
+      "role": "water",
+      "terrain": "pond",
+      "autotile": "corner_sw",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 149,
+      "role": "water",
+      "terrain": "pond",
+      "autotile": "edge_s",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 150,
+      "role": "water",
+      "terrain": "pond",
+      "autotile": "corner_se",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 151,
+      "role": "water",
+      "terrain": "pond",
+      "autotile": "fill",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          151,
+          79,
+          80
+        ],
+        "duration_ms": 800
+      }
+    },
+    {
+      "index": 152,
+      "role": "ground",
+      "terrain": "dunegrass",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "index": 153,
+      "role": "ground",
+      "terrain": "dunegrass",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "index": 154,
+      "role": "ground",
+      "terrain": "dunegrass",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
     }
   ]
 }

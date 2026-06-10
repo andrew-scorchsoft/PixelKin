@@ -43,20 +43,36 @@ mk.rect(sand, W, H, 12, 2, 13, H - 3)               # beach band meeting the sea
 mk.blob(sand, W, H, 12, 16, 1.6, 2.2)               # …and the dunes bite back
 mk.rect(sand, W, H, 9, 26, 13, 29)                  # widened sand rest pocket before the boundary
 
-# alternating tall-grass beats (encounter patches) — shaped blobs, a safe lane always
+# alternating tall-grass beats (encounter patches) — shaped blobs beside the lane
 tallgrass = mk.make_grid(W, H)
 for (cx, cy, rx, ry) in [(4.5, 6.5, 2.4, 2.2), (9.5, 13.5, 2.4, 2.2),
                          (5.5, 18.5, 2.4, 2.2), (9.5, 23.5, 2.4, 2.2)]:
     mk.blob(tallgrass, W, H, cx, cy, rx, ry)
 
-# the lit path spine — a continuous safe lane from the south entry to the north exit
+# MANDATORY crossings (level-design §11 rule 7 / the classic route convention):
+# two grass bands span the whole walkable corridor — tallgrass on the green,
+# DUNEGRASS over the beach band — so the road north passes THROUGH encounter
+# ground, not beside it. The lit lane is carved out at these rows below.
+dunegrass = mk.make_grid(W, H)
+CROSSINGS = [(9, 10), (26, 27)]
+for (y0, y1) in CROSSINGS:
+    for y in range(y0, y1 + 1):
+        for x in range(3, 12):
+            tallgrass[y * W + x] = 1
+        for x in range(12, 14):
+            dunegrass[y * W + x] = 1
+
+# the lit path spine — interrupted at each crossing (the grass spans the road)
 path = mk.make_grid(W, H)
 spine = [6, 6, 6, 7, 7, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 8, 8, 7, 7, 6]
 
 def spine_col(ty):
     return spine[min(ty - 2, len(spine) - 1)]
 
+crossing_rows = {y for (y0, y1) in CROSSINGS for y in range(y0, y1 + 1)}
 for ty in range(2, H - 2):
+    if ty in crossing_rows:
+        continue
     cx = spine_col(ty)
     path[ty * W + cx] = 1; path[ty * W + cx + 1] = 1
 for x in range(6, 9):                                 # connect spine to both gaps
@@ -78,6 +94,9 @@ terrain_layers = [
      "set": "vesper_overworld_set", "depth": 0, "data": path},
     {"name": "t_sand", "role": "terrain", "terrain": "sand",
      "set": "vesper_overworld_set", "depth": 0, "data": sand},
+    # dunegrass expands AFTER sand so the crossing's tufts sit ON the beach band
+    {"name": "t_dunegrass", "role": "terrain", "terrain": "dunegrass",
+     "set": "vesper_overworld_set", "depth": 0, "data": dunegrass},
     {"name": "t_water", "role": "terrain", "terrain": "water",
      "set": "vesper_overworld_set", "depth": 0, "data": water},
 ]
@@ -99,7 +118,7 @@ building_cells = {(x, y) for o in objects
                   for y in range(o["at"]["ty"], o["at"]["ty"] + o["h"])
                   for x in range(o["at"]["tx"], o["at"]["tx"] + o["w"])}
 covered = {(x, y) for y in range(H) for x in range(W)
-           if any(gr[y * W + x] for gr in (cliff, water, sand, tallgrass, path))}
+           if any(gr[y * W + x] for gr in (cliff, water, sand, tallgrass, dunegrass, path))}
 avoid = covered | building_cells
 
 # ---- deco: cave, signs, buoys, lamps, scatter -------------------------------
@@ -126,7 +145,7 @@ def beside_spine(ty, side=-1):
 # signs keyed to refs, each placed beside the spine at its row:
 sign_rows = {
     "sign_buoys": (7, +2),      # right of the spine, facing the offshore buoys
-    "sign_cave": (10, -1),      # left of the spine, by the cliff cave mouth
+    "sign_cave": (11, -1),      # left of the spine, by the cliff cave mouth (row 10 is the crossing)
     "sign_route": (16, -1),     # left of the spine, mid-route
     "sign_boundary": (29, -1),  # left of the spine, by the north boundary
 }
@@ -157,12 +176,24 @@ m = {
                {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)}],
     "objects": objects,
     "warps": [
-        {"id": "from_tinderwick", "at": {"tx": 6, "ty": 32}, "trigger": "step_on",
-         "to_map": "tinderwick", "to": {"tx": 13, "ty": 2}, "facing": "down", "transition": "fade"},
+        # South entry gap is 4 tiles wide -> a warp on EVERY tile, each landing ON
+        # one of Tinderwick's two exit warps (audit_warps.py conventions).
+        {"id": "from_tinderwick_a", "at": {"tx": 5, "ty": 33}, "trigger": "step_on",
+         "to_map": "tinderwick", "to": {"tx": 13, "ty": 0}, "facing": "down", "transition": "fade"},
+        {"id": "from_tinderwick_b", "at": {"tx": 6, "ty": 33}, "trigger": "step_on",
+         "to_map": "tinderwick", "to": {"tx": 13, "ty": 0}, "facing": "down", "transition": "fade"},
+        {"id": "from_tinderwick_c", "at": {"tx": 7, "ty": 33}, "trigger": "step_on",
+         "to_map": "tinderwick", "to": {"tx": 14, "ty": 0}, "facing": "down", "transition": "fade"},
+        {"id": "from_tinderwick_d", "at": {"tx": 8, "ty": 33}, "trigger": "step_on",
+         "to_map": "tinderwick", "to": {"tx": 14, "ty": 0}, "facing": "down", "transition": "fade"},
         # North exit continues onto the tidal flats of Dimglass Coast II (the canon
-        # segment chain: I -> II -> Pearlmoor; see graph.ts and walkthrough/01-south).
+        # segment chain: I -> II -> Pearlmoor); 3-wide gap, 3 warps.
+        {"id": "to_coast_ii_w", "at": {"tx": 6, "ty": 0}, "trigger": "step_on",
+         "to_map": "dimglass_coast_ii", "to": {"tx": 6, "ty": 31}, "facing": "up", "transition": "fade"},
         {"id": "to_coast_ii", "at": {"tx": 7, "ty": 0}, "trigger": "step_on",
-         "to_map": "dimglass_coast_ii", "to": {"tx": 7, "ty": 29}, "facing": "up", "transition": "fade"},
+         "to_map": "dimglass_coast_ii", "to": {"tx": 7, "ty": 31}, "facing": "up", "transition": "fade"},
+        {"id": "to_coast_ii_e", "at": {"tx": 8, "ty": 0}, "trigger": "step_on",
+         "to_map": "dimglass_coast_ii", "to": {"tx": 8, "ty": 31}, "facing": "up", "transition": "fade"},
         {"id": "to_tideglass", "at": {"tx": 2, "ty": 10}, "trigger": "interact",
          "to_map": "tideglass_cavern", "to": {"tx": 5, "ty": 8}, "facing": "left",
          "requires_ability": "glimmerstep", "transition": "door"},
@@ -176,12 +207,8 @@ m = {
          "activation": "interact", "ref": "sign.dimglass_route"},
         {"id": "sign_boundary", "kind": "sign", "at": {"tx": sign_xy["sign_boundary"][0], "ty": sign_xy["sign_boundary"][1]},
          "activation": "interact", "ref": "sign.dimglass_to_pearlmoor"},
-        # A2 — Wren's first FRIENDLY trainer battle (walkthrough/01-south §2). The spine
-        # is choked to one tile here (boulder at (10,11)) so the beat can't be skirted.
-        {"id": "wren_first_battle", "kind": "cutscene", "at": {"tx": 9, "ty": 11},
-         "activation": "step_on", "ref": "script.wren_dimglass", "once": True,
-         "requires_flag": "flag:has_starter",
-         "sets_flags": ["flag:wren_dimglass_battled"]},
+        # (A2 — Wren's friendly battle is now SIGHT-driven: Wren stands beside the
+        # lane with sight_range and challenges the player who walks into view.)
         # B1 — the inciting incident: a far constellation winks out on first nightfall
         # here. Quiet, not loud. Spine choked by the boulder at (9,28).
         {"id": "dusk_begins", "kind": "cutscene", "at": {"tx": 8, "ty": 28},
@@ -214,14 +241,53 @@ m = {
          "table": [{"kin_id": 26, "weight": 55, "min_level": 4, "max_level": 6},
                    {"kin_id": 31, "weight": 30, "min_level": 4, "max_level": 6},
                    {"kin_id": 8, "weight": 15, "min_level": 4, "max_level": 6}]},
+        # The two MANDATORY crossings — the road north passes through these bands
+        # (tallgrass + dunegrass over the beach), so every traveller rolls a few
+        # encounters; the optional patches beside the lane stay the grind spots.
+        {"id": "crossing_a", "terrain": "tall_grass", "rect": {"tx": 3, "ty": 9, "w": 11, "h": 2},
+         "encounter_rate": 0.10,
+         "table": [{"kin_id": 26, "weight": 55, "min_level": 3, "max_level": 5},
+                   {"kin_id": 31, "weight": 30, "min_level": 3, "max_level": 5},
+                   {"kin_id": 8, "weight": 15, "min_level": 3, "max_level": 5}]},
+        {"id": "crossing_b", "terrain": "tall_grass", "rect": {"tx": 3, "ty": 26, "w": 11, "h": 2},
+         "encounter_rate": 0.10,
+         "table": [{"kin_id": 26, "weight": 55, "min_level": 4, "max_level": 6},
+                   {"kin_id": 31, "weight": 30, "min_level": 4, "max_level": 6},
+                   {"kin_id": 8, "weight": 15, "min_level": 4, "max_level": 6}]},
         {"id": "tide_shallows", "terrain": "water", "rect": {"tx": 14, "ty": 5, "w": 2, "h": 4},
          "encounter_rate": 0.06, "requires_ability": "tidecall",
          "table": [{"kin_id": 2, "weight": 100, "min_level": 4, "max_level": 6}]}],
     "npcs": [
-        # The rival Wren (A2 — the first friendly trainer battle fires from the spine
-        # tile beside them; see the wren_first_battle trigger + script.wren_dimglass).
-        {"id": "wren", "at": {"tx": 8, "ty": 11}, "facing": "right", "sprite": "wren",
-         "movement": "static", "dialogue_ref": "npc.dimglass_wayfarer"}],
+        # The rival Wren (A2): a SIGHT trainer — waits beside the lane and challenges
+        # the player who walks into view (the classic "they see you coming" hook).
+        # The beaten placement swaps in once the friendly battle is done.
+        {"id": "wren", "at": {"tx": 5, "ty": 11}, "facing": "right", "sprite": "wren",
+         "movement": "static", "dialogue_ref": "script.wren_dimglass",
+         "sight_range": 4, "defeated_flag": "flag:wren_dimglass_battled",
+         "hidden_when_flag": "flag:wren_dimglass_battled"},
+        {"id": "wren_after", "at": {"tx": 5, "ty": 11}, "facing": "right", "sprite": "wren",
+         "movement": "static", "dialogue_ref": "npc.dimglass_wayfarer",
+         "requires_flag": "flag:wren_dimglass_battled"},
+        # B1 witness — the old lamplighter appears near the beat once dusk_begins has
+        # fired. He KEEPS THE BEACON'S WICK-KEY (the Tinderwick ascent quest): his
+        # first talk hands it over, then the plain witness placement swaps in.
+        {"id": "witness", "at": {"tx": 10, "ty": 29}, "facing": "up",
+         "sprite": "npc_shopkeeper", "movement": "static",
+         "dialogue_ref": "script.give_wick", "requires_flag": "flag:dusk_begins",
+         "hidden_when_flag": "flag:has_beacon_wick"},
+        {"id": "witness_after", "at": {"tx": 10, "ty": 29}, "facing": "up",
+         "sprite": "npc_shopkeeper", "movement": "look_around",
+         "dialogue_ref": "npc.dimglass_witness", "requires_flag": "flag:has_beacon_wick"},
+        # Route item caches (sprite 'item_cache'): interact runs the pickup script,
+        # then hidden_when_flag removes the bundle — the classic ground item.
+        {"id": "cache_balm", "at": {"tx": beside_spine(18, +2)[0], "ty": 18}, "facing": "down",
+         "sprite": "item_cache", "movement": "static",
+         "dialogue_ref": "script.pickup_dimglass_balm",
+         "hidden_when_flag": "flag:picked_dimglass_balm"},
+        {"id": "cache_lamps", "at": {"tx": beside_spine(24, -1)[0], "ty": 24}, "facing": "down",
+         "sprite": "item_cache", "movement": "static",
+         "dialogue_ref": "script.pickup_dimglass_lamps",
+         "hidden_when_flag": "flag:picked_dimglass_lamps"}],
     "gates": [
         {"id": "tide_gate", "ability": "tidecall", "effect": "make_passable",
          "rect": {"tx": 14, "ty": 5, "w": 2, "h": 4}}],

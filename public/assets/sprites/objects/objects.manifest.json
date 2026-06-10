@@ -98,6 +98,13 @@
       "tw": 5,
       "th": 4
     },
+    "tinderwick_beacon": {
+      "path": "assets/sprites/objects/tinderwick_beacon.webp",
+      "width": 64,
+      "height": 112,
+      "tw": 4,
+      "th": 7
+    },
     "tinderwick_cottage": {
       "path": "assets/sprites/objects/tinderwick_cottage.webp",
       "width": 80,

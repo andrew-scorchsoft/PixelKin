@@ -468,18 +468,6 @@
   ],
   "triggers": [
     {
-      "id": "lumenary_battle",
-      "kind": "cutscene",
-      "at": {
-        "tx": 7,
-        "ty": 6
-      },
-      "activation": "step_on",
-      "ref": "script.lumenary_tinderwick",
-      "once": true,
-      "requires_flag": "flag:has_starter"
-    },
-    {
       "id": "sign_lumenary",
       "kind": "sign",
       "at": {
@@ -493,7 +481,7 @@
   "encounters": [],
   "npcs": [
     {
-      "id": "brisa",
+      "id": "brisa_pre",
       "at": {
         "tx": 7,
         "ty": 5
@@ -501,7 +489,46 @@
       "facing": "down",
       "sprite": "npc_lampwarden",
       "movement": "static",
-      "dialogue_ref": "npc.brisa_tallow"
+      "dialogue_ref": "npc.brisa_not_ready",
+      "hidden_when_flag": "flag:caught_first_kin"
+    },
+    {
+      "id": "brisa_quest",
+      "at": {
+        "tx": 7,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "npc_lampwarden",
+      "movement": "static",
+      "dialogue_ref": "script.brisa_quest",
+      "requires_flag": "flag:caught_first_kin",
+      "hidden_when_flag": "flag:has_beacon_wick"
+    },
+    {
+      "id": "brisa_ready",
+      "at": {
+        "tx": 7,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "npc_lampwarden",
+      "movement": "static",
+      "dialogue_ref": "npc.brisa_meet_beacon",
+      "requires_flag": "flag:has_beacon_wick",
+      "hidden_when_flag": "gleam:ember"
+    },
+    {
+      "id": "brisa_fair",
+      "at": {
+        "tx": 7,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "npc_lampwarden",
+      "movement": "static",
+      "dialogue_ref": "npc.brisa_after",
+      "requires_flag": "gleam:ember"
     }
   ],
   "gates": [],

@@ -344,6 +344,18 @@
   "encounters": [],
   "npcs": [
     {
+      "id": "shopkeeper_kit",
+      "at": {
+        "tx": 6,
+        "ty": 2
+      },
+      "facing": "down",
+      "sprite": "npc_shopkeeper",
+      "movement": "static",
+      "dialogue_ref": "script.shop_kit_tinderwick",
+      "hidden_when_flag": "flag:tinderwick_kit"
+    },
+    {
       "id": "shopkeeper",
       "at": {
         "tx": 6,
@@ -352,7 +364,8 @@
       "facing": "down",
       "sprite": "npc_shopkeeper",
       "movement": "static",
-      "dialogue_ref": "npc.tinderwick_shopkeeper"
+      "dialogue_ref": "npc.tinderwick_shopkeeper",
+      "requires_flag": "flag:tinderwick_kit"
     }
   ],
   "gates": [],
