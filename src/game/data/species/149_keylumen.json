@@ -38,6 +38,10 @@
       },
       {
         "level": 13,
+        "move": "lumen_cut"
+      },
+      {
+        "level": 22,
         "move": "radiant_strike"
       },
       {
@@ -51,6 +55,10 @@
       {
         "level": 40,
         "move": "dawnburst"
+      },
+      {
+        "level": 52,
+        "move": "keystar_beam"
       }
     ],
     "kindling": [],

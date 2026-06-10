@@ -39,11 +39,15 @@
       },
       {
         "level": 13,
-        "move": "flame_lash"
+        "move": "cinderclaw"
       },
       {
         "level": 19,
-        "move": "radiant_strike"
+        "move": "lumen_cut"
+      },
+      {
+        "level": 22,
+        "move": "flame_lash"
       },
       {
         "level": 24,

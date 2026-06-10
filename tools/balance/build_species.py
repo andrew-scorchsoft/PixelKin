@@ -107,41 +107,59 @@ def pick_ability(types, role, tier):
         return base.get(t0, "cozy"), "thickcoat"
     return base.get(t0, "keen"), ("brisk" if "spe" in role or "sweep" in role else "forager")
 
+def band(t, chan, power):
+    """The type's damaging move nearest (<=) the requested power band, non-signature."""
+    pool = [m for m in DMG[t][chan] if not m.get("signature")]
+    best = None
+    for m in pool:
+        if m["power"] <= power:
+            best = m
+    return best or (pool[0] if pool else None)
+
 def learnset(types, role, tier):
+    # Band-aware (wave 2, 2026-06): both channels now run a full ladder
+    # (phys 40/58/78/92, spec 58/78/92/115), so learnsets climb it explicitly
+    # instead of indexing the pool — richer mid-game kits, no nuke-at-31.
     phys = role in PHYS_ROLES or (role == "balanced / pivot")
     chan = "physical" if phys else "special"
     t0 = types[0]; t1 = types[1] if len(types) > 1 else None
     lv = []
-    # L1: a plain quick + the primary quick
+    # L1: a plain quick + the primary opener (quick 40 phys / light 58 spec)
     lv.append((1, "quick_jab"))
-    prim = DMG[t0][chan]
-    if prim: lv.append((1, prim[0]["id"]))            # quick/light of primary
+    opener = band(t0, chan, 40 if phys else 58)
+    if opener: lv.append((1, opener["id"]))
     # status flavour move of the type
     if STATUS.get(t0):
         lv.append((9, STATUS[t0][0]["id"]))
-    # standard primary
-    if len(prim) > 1: lv.append((13, prim[1]["id"]))
-    # coverage from secondary type
-    if t1 and DMG[t1][chan]:
-        lv.append((19, DMG[t1][chan][1]["id"] if len(DMG[t1][chan]) > 1 else DMG[t1][chan][0]["id"]))
+    # the mid step (light 58 phys / standard 78 spec)
+    mid = band(t0, chan, 58 if phys else 78)
+    if mid: lv.append((13, mid["id"]))
+    # coverage from secondary type (its light step)
+    if t1:
+        cov = band(t1, chan, 58)
+        if cov: lv.append((19, cov["id"]))
+    # the workhorse standard (phys catches up to 78 here)
+    std = band(t0, chan, 78)
+    if std: lv.append((22, std["id"]))
     # a self-buff utility
     lv.append((24, "hone" if phys else "focus_mind"))
     # heavy primary (mid/final tiers)
-    if tier in ("C","D","E","F") and len(prim) > 2:
-        lv.append((31, prim[2]["id"]))
-    # nuke primary (final/apex/legend)
+    if tier in ("C","D","E","F"):
+        heavy = band(t0, chan, 92)
+        if heavy: lv.append((31, heavy["id"]))
+    # nuke primary (final/apex/legend; the special channel carries the nukes)
     if tier in ("D","E","F"):
-        nuke = DMG[t0]["special"][-1] if DMG[t0]["special"] else (prim[-1] if prim else None)
+        nuke = band(t0, "special", 115)
         if nuke: lv.append((40, nuke["id"]))
-    # legendary signature-ish: strongest off-channel STAB
+    # apex breadth: strongest off-channel STAB
     if tier in ("E","F"):
-        alt = DMG[t0]["physical" if not phys else "special"]
-        if alt: lv.append((48, alt[-1]["id"]))
+        alt = band(t0, "physical" if not phys else "special", 999)
+        if alt: lv.append((48, alt["id"]))
     # dedupe + validate, keep order by level
     seen = set(); out = []
-    for level, mid in sorted(lv, key=lambda x: x[0]):
-        if mid in MOVE_IDS and mid not in seen:
-            seen.add(mid); out.append({"level": level, "move": mid})
+    for level, mid_ in sorted(lv, key=lambda x: x[0]):
+        if mid_ in MOVE_IDS and mid_ not in seen:
+            seen.add(mid_); out.append({"level": level, "move": mid_})
     return out
 
 REGION_AREA = {
@@ -164,6 +182,34 @@ def encounters(region, rarity, tier, stage, scripted):
     if scripted:
         return []  # legendaries/very-rare apexes are scripted/landmark, not in open tables
     return [{"area": area, "terrain": TERRAIN.get(region, "tall_grass"), "rarity": rarity, "min": lo, "max": hi}]
+
+# Hand-curated encounter placements layered on top of the generated defaults —
+# map work (e.g. Pearlmoor's harbour tables) adds entries HERE so a rebuild
+# never erases them. slug -> extra EncounterZone-source rows.
+EXTRA_ENCOUNTERS = {
+    "brinix":    [{"area": "pearlmoor_quay", "terrain": "water", "rarity": "uncommon", "min": 10, "max": 12}],
+    "shimmral":  [{"area": "pearlmoor_quay", "terrain": "water", "rarity": "rare", "min": 11, "max": 12}],
+    "brinelet":  [{"area": "pearlmoor_quay", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 11}],
+    "brineroll": [{"area": "pearlmoor_quay", "terrain": "water", "rarity": "uncommon", "min": 10, "max": 12}],
+    "lumpin":    [{"area": "pearlmoor_quay", "terrain": "tall_grass", "rarity": "common", "min": 9, "max": 11}],
+}
+
+# Wave-2 signature moves (gen_moves.py): one per elemental apex line. Inserted
+# into the owner's learnset late (the awe-curve payoff); excluded from the
+# generic pools by autobuild.mjs/chart_check.mjs so they shape ONLY their owner.
+SIGNATURE_MOVES = {
+    "embralux":    ("last_ember", 48),
+    "tideveil":    ("veiltide", 44),
+    "mycovast":    ("spore_cathedral", 44),
+    "prismara":    ("prism_lance", 48),
+    "nullhusk":    ("static_hollow", 44),
+    "frostholm":   ("hoarfrost_crown", 44),
+    "solarmourn":  ("mourninglight", 46),
+    "lunaveil":    ("dreamlace", 46),
+    "keylumen":    ("keystar_beam", 52),
+    "nullmajor":   ("hollowing_hymn", 52),
+    "dawnbrael":   ("daybreak_lance", 52),
+}
 
 def parse_trigger(text, stage, tier):
     text = (text or "").lower()
@@ -328,13 +374,25 @@ def main():
             sig = canon["signature"]
             if sig in MOVE_IDS and not any(e["move"] == sig for e in rec["learnset"]["levelup"]):
                 rec["learnset"]["levelup"].insert(0, {"level": 1, "move": sig})
+        # hand-curated map placements survive a rebuild
+        rec["encounters"].extend(EXTRA_ENCOUNTERS.get(rec["slug"], []))
+        # apex signature moves (late learnset payoff)
+        sigrow = SIGNATURE_MOVES.get(rec["slug"])
+        if sigrow:
+            sid, slvl = sigrow
+            if sid in MOVE_IDS and not any(e["move"] == sid for e in rec["learnset"]["levelup"]):
+                rec["learnset"]["levelup"].append({"level": slvl, "move": sid})
+                rec["learnset"]["levelup"].sort(key=lambda e: e["level"])
         out_all.append(rec)
         with open(os.path.join(OUTDIR, f"{e['dex_id']:03d}_{rec['slug']}.json"), "w") as f:
             json.dump(rec, f, indent=2)
+            f.write("\n")
 
     combined = {"_notes": "Generated by tools/balance/build_species.py from the panel-selected concepts. Mechanical fields are deterministic from role/tier/type; creative fields come from the selected concepts. Per-species files in src/game/data/species/.",
                 "version": 1, "count": len(out_all), "species": out_all}
-    json.dump(combined, open(os.path.join(ROOT, "src", "game", "data", "species.json"), "w"), indent=2)
+    with open(os.path.join(ROOT, "src", "game", "data", "species.json"), "w") as f:
+        json.dump(combined, f, indent=1)
+        f.write("\n")
     print(f"Built {len(out_all)} species -> src/game/data/species.json (+ per-species files)")
     # quick tier/type tally
     from collections import Counter

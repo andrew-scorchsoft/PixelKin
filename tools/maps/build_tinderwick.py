@@ -20,8 +20,11 @@ door-art tile, with the tile directly BELOW it walkable and on the path.
     approach tiles; the interact-warp sits on the left door tile (col 2), col 3 is also
     clear, and the street runs directly below both. (See _doors below; verify in the render.)
 
-STORY (walkthrough/01-south.md): the mentor is Star-tender **Fenn** (intro cutscene gifts
-the vesperlamp + starter); the young NPC is the rival **Wren** (sprite key `wren`).
+STORY (walkthrough/01-south.md): the opening is the SATCHEL ERRAND — Star-tender **Fenn**
+waits at the Vesper Crossroads waystone (build_crossroads.py) and the lamp+starter ceremony
+happens THERE once his satchel comes home from the store. In town: the north gate-warden
+turns an unstarted player back (script.gate_warden + has_starter-gated coast warps), and
+everyone points east. The young NPC is the rival **Wren** (sprite key `wren`).
 
 Run:  python3 tools/maps/build_tinderwick.py
 Prereq: python3 tools/maps/build_shared_overworld.py  (the shared set must exist).
@@ -194,9 +197,6 @@ for (x, y) in [(2, 20), (25, 20), (11, 20)]:                     # shore boulder
     deco[y * W + x] = gid("boulder")
 for (x, y) in [(23, 11), (26, 13)]:                              # pondside rocks
     deco[y * W + x] = gid("boulder")
-# choke the spine at the mentor beat: the intro cutscene tile is (13,11) on the
-# 2-wide spine — the boulder closes col 14 so the Wayfaring can't start unstarted.
-deco[11 * W + 14] = gid("boulder")
 mk.scatter_decor(deco, base, W, H, rng, density=0.16, avoid=avoid)
 
 # ---- assemble ---------------------------------------------------------------
@@ -211,10 +211,14 @@ m = {
     "warps": [
         # Land ON the coast's return warps (the engine never auto-fires a step_on
         # warp on arrival) so going back is always one step — audit_warps.py.
+        # Both coast warps are has_starter-gated: the gate-warden band at (13,1)
+        # carries the diegetic "not yet" (the warps themselves stay silent).
         {"id": "to_coast", "at": {"tx": 13, "ty": 0}, "trigger": "step_on",
-         "to_map": "dimglass_coast", "to": {"tx": 6, "ty": 33}, "facing": "up", "transition": "fade"},
+         "to_map": "dimglass_coast", "to": {"tx": 6, "ty": 33}, "facing": "up",
+         "requires_flag": "flag:has_starter", "transition": "fade"},
         {"id": "to_coast_e", "at": {"tx": 14, "ty": 0}, "trigger": "step_on",
-         "to_map": "dimglass_coast", "to": {"tx": 7, "ty": 33}, "facing": "up", "transition": "fade"},
+         "to_map": "dimglass_coast", "to": {"tx": 7, "ty": 33}, "facing": "up",
+         "requires_flag": "flag:has_starter", "transition": "fade"},
         # House door — interact on the actual door-art tile (cottage col 2).
         {"id": "to_house", "at": {"tx": cottage_door[0], "ty": cottage_door[1]}, "trigger": "interact",
          "to_map": "tinderwick_house", "to": {"tx": 6, "ty": 7}, "facing": "down", "transition": "door"},
@@ -237,9 +241,13 @@ m = {
          "requires_flag": "flag:has_beacon_wick", "transition": "door"},
     ],
     "triggers": [
-        {"id": "intro_mentor", "kind": "cutscene", "at": {"tx": 13, "ty": 11},
-         "activation": "step_on", "ref": "script.intro_mentor", "once": True,
-         "sets_flags": ["flag:has_vesperlamp", "flag:has_starter"]},
+        # The north-gate band: pre-starter, stepping into the open gate column runs
+        # the warden's intercept (he warns, points east to Fenn, walks you back a
+        # step). The warden's body blocks the other column (14,1), so (13,1) is the
+        # only way through — and the band vanishes once the Wayfaring begins.
+        {"id": "gate_warden", "kind": "cutscene", "at": {"tx": 13, "ty": 1},
+         "activation": "step_on", "ref": "script.gate_warden",
+         "hidden_when_flag": "flag:has_starter"},
         {"id": "sign_shop", "kind": "sign", "at": {"tx": sign_tiles["sign_shop"][0], "ty": sign_tiles["sign_shop"][1]},
          "activation": "interact", "ref": "sign.tinderwick_square"},
         {"id": "sign_lumenary", "kind": "sign", "at": {"tx": sign_tiles["sign_lumenary"][0], "ty": sign_tiles["sign_lumenary"][1]},
@@ -261,12 +269,21 @@ m = {
          "table": [{"kin_id": 16, "weight": 60, "min_level": 2, "max_level": 4},
                    {"kin_id": 10, "weight": 40, "min_level": 2, "max_level": 3}]}],
     "npcs": [
-        # Star-tender Fenn — the mentor, on the spine; the intro cutscene fires just north of him.
-        {"id": "mentor", "at": {"tx": 13, "ty": 12}, "facing": "down", "sprite": "npc_mentor",
-         "movement": "static", "dialogue_ref": "npc.mentor_intro"},
-        # Wren — the rival, a fellow young Wayfarer milling by the garden.
+        # The north gate-warden: posted IN the gate gap pre-starter (his body blocks
+        # col 14; the script band guards col 13), swapped for a well-wisher stood
+        # aside by the verge once the Wayfaring begins. Interacting with him runs
+        # the same warning script as the band.
+        {"id": "gatewarden_pre", "at": {"tx": 14, "ty": 1}, "facing": "down",
+         "sprite": "npc_lampwarden", "movement": "static",
+         "dialogue_ref": "script.gate_warden", "hidden_when_flag": "flag:has_starter"},
+        {"id": "gatewarden_post", "at": {"tx": 15, "ty": 2}, "facing": "left",
+         "sprite": "npc_lampwarden", "movement": "static",
+         "dialogue_ref": "npc.gatewarden_after", "requires_flag": "flag:has_starter"},
+        # Wren — the rival, a fellow young Wayfarer milling by the garden until the
+        # Wayfaring begins (she's off up the coast — A2 — once you hold a starter).
         {"id": "wren", "at": {"tx": 19, "ty": 15}, "facing": "left", "sprite": "wren",
-         "movement": "wander", "dialogue_ref": "npc.wren_intro"},
+         "movement": "wander", "dialogue_ref": "npc.wren_intro",
+         "hidden_when_flag": "flag:has_starter"},
         # The Lantern-fair (Arc E): festival folk fill the square once the Ember
         # Gleam stands — the "Gleam = belonging" payoff, pure data via requires_flag.
         {"id": "fair_piper", "at": {"tx": 16, "ty": 9}, "facing": "down", "sprite": "npc_shopkeeper",

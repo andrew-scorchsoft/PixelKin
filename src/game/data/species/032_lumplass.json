@@ -39,11 +39,11 @@
       },
       {
         "level": 13,
-        "move": "bubble_hum"
+        "move": "tide_pulse"
       },
       {
         "level": 19,
-        "move": "light_pulse"
+        "move": "spark_mote"
       },
       {
         "level": 24,
@@ -51,7 +51,7 @@
       },
       {
         "level": 31,
-        "move": "tide_pulse"
+        "move": "deepsurge"
       },
       {
         "level": 40,

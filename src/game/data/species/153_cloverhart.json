@@ -38,6 +38,10 @@
       },
       {
         "level": 13,
+        "move": "thornswipe"
+      },
+      {
+        "level": 22,
         "move": "root_strike"
       },
       {

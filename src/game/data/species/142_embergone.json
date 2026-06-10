@@ -39,11 +39,15 @@
       },
       {
         "level": 13,
-        "move": "null_claw"
+        "move": "duskmaw"
       },
       {
         "level": 19,
-        "move": "flame_lash"
+        "move": "cinderclaw"
+      },
+      {
+        "level": 22,
+        "move": "null_claw"
       },
       {
         "level": 24,

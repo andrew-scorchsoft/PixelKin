@@ -38,6 +38,10 @@
       },
       {
         "level": 13,
+        "move": "joltfang"
+      },
+      {
+        "level": 22,
         "move": "thunder_kick"
       },
       {

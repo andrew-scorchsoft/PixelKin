@@ -11,11 +11,23 @@ export const DIALOGUE: DialogueRegistry = {
   'sign.tinderwick_dock': [
     { text: 'TINDERWICK DOCKS\nMind the lanterns — the tide comes in quiet since the Long Dusk.' },
   ],
-  // Star-tender Fenn — spoken to again after the intro cutscene. Warm, unhurried.
-  'npc.mentor_intro': [
+  // --- The opening errand (Fenn at the Crossroads waystone) ---
+  // Fenn mid-errand: spoken to again before the satchel comes home.
+  'npc.fenn_waiting': [
+    { speaker: 'FENN', text: 'The general store, dear apprentice — my satchel is on the counter, where I left it like a fool. The keeper will know it.' },
+    { speaker: 'FENN', text: 'I shall mind the waystone. It is good company, for a stone.' },
+  ],
+  // Fenn after the ceremony: the waystone send-off, until the story moves him on.
+  'npc.fenn_waystone_after': [
     { speaker: 'FENN', text: 'Steady now, apprentice. The dark is only the dark — it keeps no grudge.' },
     { speaker: 'FENN', text: 'Catch a kin in the verge by the north gate, then take its bond to Brisa. The Lumenary is the tall hall up the square.' },
     { speaker: 'FENN', text: 'Tend your lamp, and it tends you back. I will be along the coast road when you are ready.' },
+  ],
+  // The north gate-warden, once the Wayfaring has begun (the pre-starter warning
+  // is script.gate_warden; this is the well-wisher swap, stood aside by the verge).
+  'npc.gatewarden_after': [
+    { speaker: 'GATE-WARDEN', text: 'A lamp and a friend — NOW you look like a Wayfarer. The road north is yours.' },
+    { speaker: 'GATE-WARDEN', text: 'Mind the verge grass as you go. Restless, but generous — a careful apprentice walks out of it with a second friend.' },
   ],
   // The rival Wren — a fellow young Wayfarer in the plaza (A1). Warm and competitive;
   // by canon Wren takes the starter that beats yours along Ember->Verdant->Tide->Ember.
@@ -33,7 +45,7 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'TINDERWICK LUMENARY\nLampwarden Brisa Tallow tends the Ember light. Bring a kin and a steady hand.' },
   ],
   'sign.tinderwick_mentor': [
-    { text: 'The lit path runs north to the coast. South, the sea sleeps under the Long Dusk.' },
+    { text: 'NORTH: the coast road, past the gate. EAST: the Lanternway, to the Star-tender\'s waystone. South, the sea sleeps under the Long Dusk.' },
   ],
   'sign.tinderwick_lanternway': [
     { text: 'EAST: THE LANTERNWAY\nEvery lit road in Vesperholm meets at the Vesper Crossroads. Keep to the lamps.' },
@@ -44,17 +56,29 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'A row of spare wicks and an old field-journal. Pages of half-lit constellations.' },
   ],
   'npc.house_parent': [
-    { speaker: 'GRAN', text: 'Off on your Wayfaring at last. Keep your vesperlamp trimmed, and come home warm.' },
+    { speaker: 'GRAN', text: 'Off on your Wayfaring at last. Star-tender Fenn left word — he is out at the Crossroads waystone, east along the Lanternway.' },
+    { speaker: 'GRAN', text: 'Keep to the lit road, love. And come home warm.' },
   ],
 
   // --- Tinderwick general store (interior) ---
   'sign.tinderwick_shop_wares': [
     { text: 'TINDERWICK GENERAL STORE\nLamp oil, salve, spare wicks — all a Wayfarer needs for the dark road.' },
   ],
-  // The plain keeper — appears once the kit script has run (flag:tinderwick_kit).
+  // The keeper before the Wayfaring begins — points the player east to Fenn.
+  'npc.tinderwick_keeper_early': [
+    { speaker: 'SHOPKEEPER', text: 'Looking for the Star-tender? You just missed him — went east along the Lanternway at first bell. Said the Crossroads waystone wanted tending.' },
+    { speaker: 'SHOPKEEPER', text: 'Seemed in a hurry to be waiting for someone, if you take my meaning.' },
+  ],
+  // The keeper during the satchel errand (Fenn has asked; the satchel sits by the counter).
+  'npc.tinderwick_keeper_errand': [
+    { speaker: 'SHOPKEEPER', text: "His satchel? There by the counter, dear — he'd forget his own lamp if it weren't lit. Take it out to him." },
+    { speaker: 'SHOPKEEPER', text: 'And tell him the trade-cart is late again. He likes knowing things.' },
+  ],
+  // The trading keeper — appears once the kit script has run (flag:tinderwick_kit);
+  // their placement ref is script.shop_tinderwick (these lines, then the counter).
   'npc.tinderwick_shopkeeper': [
     { speaker: 'SHOPKEEPER', text: 'How is the kit holding up? A lamp catches a kin; the balm mends one. Use them well.' },
-    { speaker: 'SHOPKEEPER', text: 'Next trade-cart comes down the Lanternway soon. Until then, the verge grass is generous to a careful Wayfarer.' },
+    { speaker: 'SHOPKEEPER', text: 'And the counter is open, dear — wicks for wares, wares for wicks. Have a look.' },
   ],
 
   // --- Tinderwick Lumenary hall (interior) + the Beacon quest stages ---
@@ -178,10 +202,11 @@ export const DIALOGUE: DialogueRegistry = {
   'sign.pearlmoor_shop': [
     { text: 'PEARLMOOR CHANDLERY\nNets, oil, salve, and tide-charms for the crossing. Step in out of the spray.' },
   ],
-  // The plain chandler — appears once the crossing-kit has been given.
+  // The trading chandler — appears once the crossing-kit has been given;
+  // their placement ref is script.shop_pearlmoor (these lines, then the counter).
   'npc.pearlmoor_shopkeeper': [
     { speaker: 'CHANDLER', text: "Bright lamps hold their catch — worth it for the harbour kin. Reyl's whole crew runs Tide; the triangle favours the prepared." },
-    { speaker: 'CHANDLER', text: 'Once you hold the Tidecall, mind you walk the shallows. The sea keeps gifts for those who can cross.' },
+    { speaker: 'CHANDLER', text: 'The counter is open — salves, lamps, and a few Star-charts off the last cart. Wicks well spent, Wayfarer.' },
   ],
   'npc.reyl_wash': [
     { speaker: 'REYL WASH', text: 'Step up to the sea-altar when your bond is ready, Wayfarer. The Tide does not hurry, and neither shall we.' },

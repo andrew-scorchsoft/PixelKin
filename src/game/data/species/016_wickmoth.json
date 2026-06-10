@@ -44,6 +44,10 @@
       },
       {
         "level": 13,
+        "move": "cinderclaw"
+      },
+      {
+        "level": 22,
         "move": "flame_lash"
       },
       {

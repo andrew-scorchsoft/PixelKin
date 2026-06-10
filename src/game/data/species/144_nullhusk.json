@@ -43,7 +43,7 @@
       },
       {
         "level": 19,
-        "move": "hollow_pulse"
+        "move": "gloom_spit"
       },
       {
         "level": 24,
@@ -51,7 +51,15 @@
       },
       {
         "level": 31,
+        "move": "skybreak"
+      },
+      {
+        "level": 40,
         "move": "tempest"
+      },
+      {
+        "level": 44,
+        "move": "static_hollow"
       },
       {
         "level": 48,

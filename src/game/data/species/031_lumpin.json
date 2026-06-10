@@ -45,11 +45,11 @@
       },
       {
         "level": 13,
-        "move": "bubble_hum"
+        "move": "tide_pulse"
       },
       {
         "level": 19,
-        "move": "light_pulse"
+        "move": "spark_mote"
       },
       {
         "level": 24,
@@ -73,6 +73,13 @@
       "rarity": "common",
       "min": 6,
       "max": 9
+    },
+    {
+      "area": "pearlmoor_quay",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 9,
+      "max": 11
     },
     {
       "area": "pearlmoor_quay",

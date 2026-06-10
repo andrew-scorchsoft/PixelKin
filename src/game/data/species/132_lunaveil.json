@@ -46,7 +46,15 @@
       },
       {
         "level": 31,
+        "move": "moonflood"
+      },
+      {
+        "level": 40,
         "move": "eclipse_wave"
+      },
+      {
+        "level": 46,
+        "move": "dreamlace"
       },
       {
         "level": 48,

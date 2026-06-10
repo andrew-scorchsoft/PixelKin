@@ -36,8 +36,10 @@ import { effectivenessLabel } from '@game/systems/battle/types';
 import { Battler } from '@game/ui/battle/Battler';
 import { HpPanel } from '@game/ui/battle/HpPanel';
 import { BattleMessage } from '@game/ui/battle/BattleMessage';
+import { MoveLearnPrompt } from '@game/ui/MoveLearnPrompt';
 import { getTrainer, getTrainerLines } from '@game/content/trainers';
 import { getItem } from '@game/content/items';
+import { trainerPayout } from '@game/content/economy';
 import { resolveBattleBackdrop } from '@game/data/world/maps';
 import type { KinInstanceData, InventoryData } from '@game/systems/save/types';
 import type { WorldFlag, AbilityId } from '@game/data/world/types';
@@ -63,6 +65,8 @@ export interface BattleResult {
   set_flags?: string[];
   /** Lantern Gifts (abilities) granted on win (e.g. a Lampwarden's reward_abilities). */
   grant_abilities?: AbilityId[];
+  /** Wicks won (a beaten trainer's payout; wild battles pay nothing). */
+  money_earned?: number;
 }
 
 /** Full scene data = the request plus the result callback. */
@@ -93,6 +97,7 @@ export class BattleScene extends Phaser.Scene {
 
   private setFlags: string[] = [];
   private grantAbilities: AbilityId[] = [];
+  private moneyEarned = 0;
   private finished = false;
 
   constructor() {
@@ -104,6 +109,7 @@ export class BattleScene extends Phaser.Scene {
     this.finished = false;
     this.setFlags = [];
     this.grantAbilities = [];
+    this.moneyEarned = 0;
     this.cameras.main.setBackgroundColor(COLORS.night);
     this.sfx = new Sfx(this);
     this.music = new MusicDirector(this);
@@ -504,9 +510,11 @@ export class BattleScene extends Phaser.Scene {
   private async finish(): Promise<void> {
     const outcome = this.engine.outcome ?? 'fled';
 
-    if (outcome === 'win') {
+    if (outcome === 'win' || outcome === 'caught') {
+      // A catch pays the same XP as a knock-out — collecting (the game's heart)
+      // must keep the player on the level curve, not punish them off it.
       await this.awardExp();
-      if (this.request.kind === 'trainer') {
+      if (outcome === 'win' && this.request.kind === 'trainer') {
         const trainer = getTrainer(this.request.trainer);
         const lines = getTrainerLines(trainer?.defeat_ref);
         if (lines.length > 0) {
@@ -516,6 +524,12 @@ export class BattleScene extends Phaser.Scene {
         }
         for (const f of trainer?.reward_flags ?? []) this.setFlags.push(f as WorldFlag);
         for (const a of trainer?.reward_abilities ?? []) this.grantAbilities.push(a);
+        const payout = trainerPayout(trainer);
+        if (payout > 0) {
+          this.moneyEarned = payout;
+          void this.sfx.playVariant('world-pickup', ['a', 'b', 'c']);
+          await this.msg.show(`You earned ${payout} wicks for the bout!`);
+        }
       }
     } else if (outcome === 'lose') {
       await this.msg.show('Your lamp guttered out... You hurry home to the hearth.');
@@ -532,11 +546,13 @@ export class BattleScene extends Phaser.Scene {
     for (const defeated of this.engine.foeParty.all) {
       totalGain += this.expYield(defeated);
     }
+    // The genre's trainer-battle bonus — raised kin teach more than wild ones.
+    if (this.request.kind === 'trainer') totalGain = Math.floor(totalGain * 1.5);
     if (totalGain <= 0) return;
 
     void this.sfx.play('battle-xp');
     const before = winner.level;
-    const { learned } = winner.gainExp(totalGain);
+    const { learned, pending } = winner.gainExp(totalGain);
     await this.msg.show(`${winner.displayName} gained ${totalGain} EXP!`);
     await this.playerHp.animateTo();
 
@@ -547,12 +563,23 @@ export class BattleScene extends Phaser.Scene {
       for (const m of learned) {
         await this.msg.show(`${winner.displayName} learned ${m.name}!`);
       }
+      // A full kit met a new move: the player chooses what to set aside.
+      for (const m of pending) {
+        this.msg.setVisible(false);
+        await new MoveLearnPrompt(this, winner, m, this.sfx).run();
+        this.msg.setVisible(true);
+      }
     }
   }
 
-  /** EXP a defeated kin yields: level-scaled, lightly weighted by its BST. */
+  /**
+   * EXP a defeated (or caught) kin yields: level-scaled, weighted by its BST.
+   * The /20 divisor is set by the journey model (tools/balance/progression.mjs)
+   * so the locked level curve is reachable on the designed battle budget —
+   * change it there first, then mirror it here.
+   */
   private expYield(defeated: KinInstance): number {
-    return Math.max(1, Math.floor((defeated.species.bst * defeated.level) / 60));
+    return Math.max(1, Math.floor((defeated.species.bst * defeated.level) / 20));
   }
 
   private complete(outcome: BattleResult['outcome']): void {
@@ -581,6 +608,7 @@ export class BattleScene extends Phaser.Scene {
       caught,
       set_flags: this.setFlags.length > 0 ? this.setFlags : undefined,
       grant_abilities: this.grantAbilities.length > 0 ? this.grantAbilities : undefined,
+      money_earned: this.moneyEarned > 0 ? this.moneyEarned : undefined,
     };
 
     this.music.stop();

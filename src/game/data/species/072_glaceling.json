@@ -44,6 +44,10 @@
       },
       {
         "level": 13,
+        "move": "rimebite"
+      },
+      {
+        "level": 22,
         "move": "ice_fang"
       },
       {

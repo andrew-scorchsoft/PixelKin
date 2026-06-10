@@ -108,11 +108,68 @@ add("Swap Out", "Plain", "status", power=0, acc=0, charges=15, target="self", pr
 add("Lifedrain", "Verdant", "special", (60, 100, 12), effect={"drain": 0.5}, desc="Saps the foe, healing the user for half the damage dealt.")
 add("Sun Nap", "Solar", "status", power=0, acc=0, charges=10, target="self", effect={"heal": 0.5, "to": "self", "needs": "sun"}, desc="Curls up in the light; restores more health under sun.")
 
-# --- Signature moves (existing starters; more added during flesh-out) -----
+# --- Wave 2 (2026-06): complete both damage channels per type --------------
+# A light PHYSICAL (58) and a heavy SPECIAL (92) for every type, so physical
+# kin get a reliable mid step (40 -> 58 -> 78 -> 92) and special kin a heavy
+# step below the nuke (58 -> 78 -> 92 -> 115). Symmetric across all 10 types
+# so the chart's empirical balance is preserved by construction.
+LIGHT_PHYS = {
+    "Ember": "Cinderclaw", "Tide": "Tidewhip", "Verdant": "Thornswipe",
+    "Stone": "Gritfist", "Storm": "Joltfang", "Frost": "Rimebite",
+    "Solar": "Glint Fang", "Lunar": "Moonshard", "Light": "Lumen Cut", "Dark": "Duskmaw",
+}
+HEAVY_SPEC = {
+    "Ember": "Hearthstorm", "Tide": "Deepsurge", "Verdant": "Wildbloom",
+    "Stone": "Shardstorm", "Storm": "Skybreak", "Frost": "Whiteout",
+    "Solar": "Noonblaze", "Lunar": "Moonflood", "Light": "Lightspire", "Dark": "Gloomswell",
+}
+for typ, name in LIGHT_PHYS.items():
+    add(name, typ, "physical", LIGHT, flags=["contact"],
+        desc=f"A reliable {typ.lower()} close-in strike.")
+for typ, name in HEAVY_SPEC.items():
+    add(name, typ, "special", HEAVY,
+        effect={"stat": "spd", "stages": -1, "chance": 20, "to": "foe"},
+        desc=f"A heavy {typ.lower()} surge that may shake the foe's composure.")
+
+# --- Signature moves --------------------------------------------------------
+# Belong to ONE line each (build_species.py SIGNATURE_MOVES / CANON inserts
+# them into the owner's learnset). Excluded from the generic pools in
+# autobuild.mjs and chart_check.mjs, so they shape the OWNER's kit only —
+# late bosses get harder through kit, not just level (10-economy.md §6).
 add("Tuft Spark", "Ember", "special", (45, 100, 25), priority=1, signature=True,
     desc="Vulpyre's signature: a quick crackle from its mane that almost always strikes first.")
 add("Bubble Hum", "Tide", "special", (60, 100, 15), effect={"stat": "atk", "stages": -1, "chance": 100, "to": "foe"}, signature=True,
     desc="Brinix's signature: a soothing pulse that always saps the foe's Attack.")
+# Wave 2: one per elemental apex (the Constellation Wardens + the story Tier-Fs).
+add("Last Ember", "Ember", "special", NUKE, signature=True,
+    effect={"stat": "spa", "stages": 1, "chance": 100, "to": "self"},
+    desc="Embralux's signature: it burns brightest as it falls, rising in power with every cast.")
+add("Veiltide", "Tide", "special", STD, signature=True, effect={"drain": 0.5},
+    desc="Tideveil's signature: the ebb pulls the foe's strength out and folds it into the veil.")
+add("Spore Cathedral", "Verdant", "special", HEAVY, signature=True,
+    effect={"status": "doze", "chance": 30},
+    desc="Mycovast's signature: a slow vault of drifting spores that may lull the foe to sleep.")
+add("Prism Lance", "Stone", "special", NUKE, signature=True, effect={"highCrit": True},
+    desc="Prismara's signature: a refracted lance of crystal light that finds the seams.")
+add("Static Hollow", "Storm", "special", STD, signature=True,
+    effect={"status": "numb", "chance": 50},
+    desc="Nullhusk's signature: a hollow charge that often leaves the foe twitching (Numb).")
+add("Hoarfrost Crown", "Frost", "special", HEAVY, signature=True,
+    effect={"status": "chill", "chance": 20},
+    desc="Frostholm's signature: a crown of ancient rime that may freeze the foe solid (Chill).")
+add("Mourninglight", "Solar", "special", HEAVY, signature=True,
+    effect={"stat": "spa", "stages": -1, "chance": 100, "to": "foe"},
+    desc="Solarmourn's signature: an elegy of stored daylight that dims the foe's own light.")
+add("Dreamlace", "Lunar", "special", STD, priority=1, signature=True,
+    desc="Lunaveil's signature: silk-quick dreamlight that almost always strikes first.")
+add("Keystar Beam", "Light", "special", (120, 90, 5), signature=True,
+    desc="Keylumen's signature: the Keystar's own undimmed light, gathered to a single beam.")
+add("Hollowing Hymn", "Dark", "special", (120, 90, 5), signature=True,
+    effect={"stat": "spa", "stages": -1, "chance": 100, "to": "foe"},
+    desc="Nullmajor's signature: the Great Null's hymn, singing the foe's light quieter.")
+add("Daybreak Lance", "Solar", "physical", (95, 100, 8), flags=["contact"], signature=True,
+    effect={"flinch": 20},
+    desc="Dawnbrael's signature: the first spear of morning; foes may reel from its brightness.")
 
 # --- Abilities ------------------------------------------------------------
 abilities = [

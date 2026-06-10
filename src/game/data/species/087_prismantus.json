@@ -39,11 +39,15 @@
       },
       {
         "level": 13,
-        "move": "radiant_strike"
+        "move": "lumen_cut"
       },
       {
         "level": 19,
-        "move": "ice_fang"
+        "move": "rimebite"
+      },
+      {
+        "level": 22,
+        "move": "radiant_strike"
       },
       {
         "level": 24,

@@ -45,11 +45,11 @@
       },
       {
         "level": 13,
-        "move": "lifedrain"
+        "move": "bloomburst"
       },
       {
         "level": 19,
-        "move": "bubble_hum"
+        "move": "mist_spray"
       },
       {
         "level": 24,
@@ -57,7 +57,7 @@
       },
       {
         "level": 31,
-        "move": "bloomburst"
+        "move": "wildbloom"
       }
     ],
     "kindling": [],

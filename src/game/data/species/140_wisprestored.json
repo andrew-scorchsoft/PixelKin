@@ -38,6 +38,10 @@
       },
       {
         "level": 13,
+        "move": "lumen_cut"
+      },
+      {
+        "level": 22,
         "move": "radiant_strike"
       },
       {

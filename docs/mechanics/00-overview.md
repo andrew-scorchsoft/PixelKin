@@ -36,6 +36,9 @@ copyright rules in `VISION.md` are non-negotiable — everything here is origina
    constrained pipeline.
 8. `08-data-schema.md` — the concept and species JSON contracts.
 9. `09-simulator.md` — how the balance tooling works and how to run it.
+10. `10-economy.md` — wicks (money), shops, Star-charts (taught moves), XP
+   tuning, and the per-region battle & earnings budget (with its executable
+   model, `tools/balance/progression.mjs`).
 
 ## Data & tools
 
@@ -47,6 +50,7 @@ copyright rules in `VISION.md` are non-negotiable — everything here is origina
   - `chart_check.mjs` — validates the type chart on a synthetic fair roster.
   - `validate.mjs` — schema + power-budget + whole-line checks on the roster.
   - `simulate.mjs` — full-roster Monte Carlo, win-rate & outlier report.
+  - `progression.mjs` — journey-long XP + wick-economy model vs the level curve.
   - `select.mjs` — distribution-constrained 500→151 picker.
 - `docs/mechanics/concepts/pool/` — the ~500 brainstormed concepts.
 - `docs/mechanics/concepts/archive/` — the cut concepts (kept as an idea bank).

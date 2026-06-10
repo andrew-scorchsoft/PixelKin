@@ -45,11 +45,15 @@
       },
       {
         "level": 13,
-        "move": "solar_lash"
+        "move": "glint_fang"
       },
       {
         "level": 19,
-        "move": "rock_hurl"
+        "move": "gritfist"
+      },
+      {
+        "level": 22,
+        "move": "solar_lash"
       },
       {
         "level": 24,
