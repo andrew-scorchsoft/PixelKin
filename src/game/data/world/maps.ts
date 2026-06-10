@@ -57,6 +57,11 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/tinderwick-a.mp3',
+    // Lampwarden 1 (Ember) Gleam battle happens here — shrine-interior backdrop.
+    battle_backdrops: [
+      'assets/backgrounds/battle/tinderwick-lumenary-a.webp',
+      'assets/backgrounds/battle/tinderwick-lumenary-b.webp',
+    ],
   },
   dimglass_coast: {
     json: 'assets/maps/dimglass_coast.json',
@@ -93,6 +98,11 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/dimglass-coast-a.mp3',
+    // Lampwarden 2 (Tide) Gleam battle happens here — shrine-interior backdrop.
+    battle_backdrops: [
+      'assets/backgrounds/battle/pearlmoor-lumenary-a.webp',
+      'assets/backgrounds/battle/pearlmoor-lumenary-b.webp',
+    ],
   },
   pearlmoor_shop: {
     json: 'assets/maps/pearlmoor_shop.json',
