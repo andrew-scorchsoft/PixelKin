@@ -99,6 +99,32 @@ export const TRAINERS: TrainerRegistry = {
     music: 'battle-emberfall',
   },
 
+  // Glowmoss Deep (East) — the first cave dungeon's SIGHT keepers (dungeon
+  // keeper class, 10-economy §4), pitched to the walkthrough's ~20 rec. band:
+  // the on-ramp between Sable Quill's ace 22 and the Cinderhead galleries.
+  glowmoss_keeper_a: {
+    id: 'glowmoss_keeper_a',
+    name: 'DELL',
+    title: 'Moss-tender',
+    party: [
+      { species_id: 56, level: 19 }, // Sporeling — Verdant
+      { species_id: 57, level: 20 }, // Sporemid — Verdant (ace)
+    ],
+    payout: 400, // keeper 20 × ace 20
+    music: 'battle-emberfall',
+  },
+  glowmoss_keeper_b: {
+    id: 'glowmoss_keeper_b',
+    name: 'MIRREL',
+    title: 'Deepwood Warden',
+    party: [
+      { species_id: 65, level: 20 }, // Glowsip — Verdant/Light
+      { species_id: 67, level: 21 }, // Fennlight — Verdant/Light (ace)
+    ],
+    payout: 420, // keeper 20 × ace 21
+    music: 'battle-emberfall',
+  },
+
   // Second Lumenary: Reyl Wash, the Lampwarden of Pearlmoor Quay (Tide) — an old
   // ferryman. Beating him relights the Tide constellation: the player earns the Tide
   // Gleam AND the Tidecall Lantern Gift (granted via reward_abilities). 'crown_south'

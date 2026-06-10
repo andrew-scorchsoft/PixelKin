@@ -278,6 +278,86 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', text: 'Tucked dry in the dune grass. Found a BRIGHT LAMP!' },
     { op: 'setFlag', flag: 'flag:picked_flats_lamp' },
   ],
+  // --- Glowmoss Deep (East) — the first cave dungeon + the B2 set-piece -------
+  // The deep wood's sight keepers (level-design §11 rule 7): they hold the lane
+  // into the moss chambers and the gallery out toward the mine.
+  'script.glowmoss_keeper_a': [
+    { op: 'say', speaker: 'DELL', text: 'Hold the lane, Wayfarer! Past me are the nursery beds — every moss-mound a hundred years of held light.' },
+    { op: 'say', speaker: 'DELL', text: 'Show me your lamp walks soft before I let it walk far.' },
+    { op: 'battle', trainer: 'glowmoss_keeper_a' },
+    { op: 'say', speaker: 'DELL', text: 'Soft enough. Go on, then... and mind the grey chamber past the beds. Something has been TENDING it, and not kindly.' },
+    { op: 'setFlag', flag: 'flag:glowmoss_keeper_a_beaten' },
+  ],
+  'script.glowmoss_keeper_b': [
+    { op: 'say', speaker: 'MIRREL', text: 'Out of the grey chamber with your lamp still lit. Most come out quieter than they went in.' },
+    { op: 'say', speaker: 'MIRREL', text: 'One more test before the mine road, then. Deepwood custom.' },
+    { op: 'battle', trainer: 'glowmoss_keeper_b' },
+    { op: 'say', speaker: 'MIRREL', text: 'Well held. The mine-mouth lies east — tell old Otho Grist the deep wood sent you.' },
+    { op: 'setFlag', flag: 'flag:glowmoss_keeper_b_beaten' },
+  ],
+
+  // B2 — FIRST HOLLOWING CONTACT (walkthrough/02-east; cinematics.md cadence:
+  // a "light fails" beat — letterbox, silence, the cold wash; the dread is the
+  // gentleness). Fires on the only choke into the drained site; the cast are
+  // NPC placements (acolyte_a/b, cowled_figure, sleeping_fennlight) that
+  // withdraw via hidden_when_flag once the lantern is relit.
+  'script.glowmoss_drained': [
+    { op: 'letterbox', on: true, ms: 320 },
+    { op: 'silence', ms: 1400 }, // the moss-light dies at the choke-stone
+    { op: 'narrate', text: 'The glow stops at the choke-stone, as if it had been told to. Past it, the moss lies GREY — a whole chamber of kept light, gone out.' },
+    { op: 'tint', color: '#202430', alpha: 0.4, ms: 600 }, // the drained cold
+    { op: 'cameraFocus', to: { tx: 17, ty: 8 }, ms: 900 },
+    { op: 'narrate', text: 'At the heart of it a Fennlight lies curled in the dead moss, dim as a coal under ash. It is not hurt. It is not waking. Beside it stands a lantern built to hold nothing at all.' },
+    { op: 'say', speaker: 'ACOLYTE', text: 'Oh — a Wayfarer. Please, tread soft. She is not hurt. She is RESTING.' },
+    { op: 'say', speaker: 'ACOLYTE', text: 'Does the quiet not look gentle, after all that flickering? No more guttering. No more going out. Just... rest.' },
+    { op: 'say', speaker: 'ACOLYTE', text: 'We are the Hollowing. Our Warden Còr teaches that the dark asks nothing of anyone. We only help the tired lights lie down.' },
+    { op: 'cameraFocus', to: { tx: 21, ty: 7 }, ms: 800 },
+    { op: 'sfx', key: 'world-star-gutter' },
+    { op: 'narrate', text: 'At the chamber\'s far edge a cowled figure stands very still, watching you. It bows its head — sorrowing, almost kind — then turns, and is gone into the dark.' },
+    { op: 'cameraReset', ms: 600 },
+    { op: 'tint', color: '#202430', alpha: 0, ms: 900 },
+    { op: 'narrate', text: 'The null-lantern waits beside the sleeping kin, holding its little piece of dark. Your vesperlamp leans toward it like a struck note.' },
+    { op: 'letterbox', on: false, ms: 320 },
+  ],
+
+  // The null-lantern restoration — the first time the player UNDOES the
+  // Hollowing's work. QUIET by design (a small warm bloom, no festival swell —
+  // this is grief eased, not a Gleam). Sets flag:met_hollowing via the trigger;
+  // the site's cast swaps grey→green on the flag (the §8 null-lantern pattern).
+  'script.glowmoss_relight': [
+    { op: 'cameraFocus', to: { tx: 18, ty: 8 }, ms: 700 },
+    { op: 'narrate', text: 'The null-lantern stands cold at the chamber\'s heart. You raise your vesperlamp and touch flame to the hollow wick.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#9fe8b8', alpha: 0.3, ms: 600 }, // a small green-gold bloom
+    { op: 'narrate', text: 'It takes — small, stubborn, certain. Colour climbs back through the moss-beds like water finding old roots.' },
+    { op: 'tint', color: '#9fe8b8', alpha: 0, ms: 900 },
+    { op: 'narrate', text: 'In the green hush, the Fennlight stirs — blinks — and lifts into the air, trailing light like pollen.' },
+    { op: 'narrate', text: 'The acolytes gather their grey bundles without a word. The last of them pauses at the passage mouth, bows to the waking glow, and follows the dark out.' },
+    { op: 'setFlag', flag: 'flag:met_hollowing' },
+    { op: 'cameraReset', ms: 600 },
+  ],
+
+  // Glowmoss Deep item caches (the standing kit: one valuable, one consumable,
+  // one loose-wicks find — walkthrough README "Item caches").
+  'script.pickup_glowmoss_amber': [
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'giveItem', item: 'moth_amber', count: 1 },
+    { op: 'say', text: 'Half-buried in the oldest moss-bed: a bead of resin with a glow-moth caught mid-shimmer. Found a MOTH-AMBER!' },
+    { op: 'say', text: 'It still holds a little light. A keeper would trade a fair purse for it.' },
+    { op: 'setFlag', flag: 'flag:picked_glowmoss_amber' },
+  ],
+  'script.pickup_glowmoss_balm': [
+    { op: 'giveItem', item: 'warm_balm', count: 1 },
+    { op: 'say', text: 'A waxed tin left where the moss grows thickest, still warm to the touch. Found a WARM BALM!' },
+    { op: 'setFlag', flag: 'flag:picked_glowmoss_balm' },
+  ],
+  'script.pickup_glowmoss_wicks': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 200 },
+    { op: 'say', text: "A miner's drop-purse, stitched shut against the damp. Found 200 WICKS!" },
+    { op: 'setFlag', flag: 'flag:picked_glowmoss_wicks' },
+  ],
+
   // Gullcry Rock's prize: the Tide Charm (a sea-blessed lamp; see items.ts).
   'script.pickup_gullcry_charm': [
     { op: 'sfx', key: 'world-gleam-a' },

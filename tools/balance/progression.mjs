@@ -330,6 +330,8 @@ const BUILT_PAYOUTS = {
   flats_wayfarer_a: ['route', 9, 144],
   flats_wayfarer_b: ['route', 11, 176],
   lampwarden_pearlmoor: ['warden', 16, 960],
+  glowmoss_keeper_a: ['keeper', 20, 400],
+  glowmoss_keeper_b: ['keeper', 21, 420],
 };
 const failures = [];
 for (const [id, [klass, ace, authored]] of Object.entries(BUILT_PAYOUTS)) {

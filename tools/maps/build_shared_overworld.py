@@ -400,6 +400,32 @@ for _i in range(3):
     add(f"dunegrass_fill{'' if _i == 0 else f'_v{_i}'}", gbaforge.dunegrass_fill(_i),
         role="ground", terrain="dunegrass", autotile="fill", encounter="tall_grass")
 
+# --- 5d) glowmoss cave families — Glowmoss Deep & the eastern dark interiors --
+# (gbaforge-drawn; APPENDED so every existing index stays valid.) cavefloor is
+# the cave map's plain ground (like grass0-3); cavewall follows the cliff/
+# interior-wall face convention (fill = wall TOP, S edges = the visible FACE);
+# glowmoss is the cave-context encounter tile — hard-edged fill-only, every
+# variant tagged encounter 'tall_grass' (the dunegrass precedent).
+for _i in range(4):
+    add(f"cavefloor{_i}", gbaforge.cavefloor_fill(_i), role="ground")
+for _r in NINE + ["inner_nw", "inner_ne", "inner_sw", "inner_se"]:
+    add(f"cavewall_{_r}", gbaforge.cavewall_tile(_r, 0), role="cliff",
+        terrain="cavewall", autotile=_r, collides=True)
+for _i in (1, 2):
+    add(f"cavewall_fill_v{_i}", gbaforge.cavewall_tile("fill", _i), role="cliff",
+        terrain="cavewall", autotile="fill", collides=True)
+add("cavewall_edge_s_v1", gbaforge.cavewall_tile("edge_s", 1), role="cliff",
+    terrain="cavewall", autotile="edge_s", collides=True)
+for _i in range(3):
+    add(f"glowmoss_fill{'' if _i == 0 else f'_v{_i}'}", gbaforge.glowmoss_fill(_i),
+        role="ground", terrain="glowmoss", autotile="fill", encounter="tall_grass")
+# drawn cave decor: glow-shroom breadcrumbs, drained grey moss, the null-lantern
+add("glowshroom_a", gbaforge.glowshroom(0), role="decor")
+add("glowshroom_b", gbaforge.glowshroom(1), role="decor")
+add("greymoss_a", gbaforge.greymoss(0), role="decor")
+add("greymoss_b", gbaforge.greymoss(1), role="decor")
+add("null_lantern", gbaforge.null_lantern(), role="decor", collides=True)
+
 # ---- GBA-register structured redraw (gbaforge) -------------------------------
 # The terrain families above established the *vocabulary* (names, roles, order —
 # maps reference these by stable index). Their imagery, though, was AI-noise
@@ -440,6 +466,21 @@ def _gba_override(nm: str, cur: Image.Image) -> Image.Image | None:
         return g.water_edge("edge_n", phase=1)
     if nm == "water_edge_s_sw":
         return g.water_edge("edge_s", phase=1)
+    m = _re.fullmatch(r"cavefloor([0-3])", nm)
+    if m:
+        return g.cavefloor_fill(int(m.group(1)))
+    m = _re.fullmatch(r"glowmoss_fill(?:_v(\d+))?", nm)
+    if m:
+        return g.glowmoss_fill(int(m.group(1) or 0))
+    m = _re.fullmatch(rf"cavewall_{_GBA_ROLE}(?:_v(\d+))?", nm)
+    if m:
+        return g.cavewall_tile(m.group(1), int(m.group(2) or 0))
+    if nm in ("glowshroom_a", "glowshroom_b"):
+        return g.glowshroom(0 if nm.endswith("_a") else 1)
+    if nm in ("greymoss_a", "greymoss_b"):
+        return g.greymoss(0 if nm.endswith("_a") else 1)
+    if nm == "null_lantern":
+        return g.null_lantern()
     m = _re.fullmatch(rf"(path|sand|water|cliff|trail|pond)_{_GBA_ROLE}(?:_v(\d+))?", nm)
     if not m:
         return None

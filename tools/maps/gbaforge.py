@@ -399,6 +399,175 @@ def tree_edge_blend(im: Image.Image, role: str) -> Image.Image:
     return img(a.astype(np.int16))
 
 
+# ---- glowmoss cave (Glowmoss Deep & the eastern dark interiors) ----------------
+# Palette: dusk-violet rock under bioluminescent moss — the East's "dewy
+# bioluminescent dark" register (walkthrough/02-east, Arc D lighting note).
+CAVE = (56, 52, 74)        # cave rock anchor
+MOSS = (74, 168, 124)      # glowmoss green (the living light)
+
+# Per-variant motif layouts for the cave floor: pebble 3-dot clusters + lone
+# pale chips. Hand-placed like the grass layouts; nothing within 2px of a border.
+CAVEFLOOR_LAYOUTS = [
+    [(4, 4, "p"), (11, 7, "c"), (6, 12, "p"), (13, 13, "c")],
+    [(3, 9, "p"), (9, 3, "c"), (12, 11, "p"), (6, 14, "c")],
+    [(5, 6, "c"), (12, 4, "p"), (3, 12, "c"), (10, 12, "p")],
+    [(8, 5, "p"), (3, 4, "c"), (12, 9, "c"), (6, 13, "p"), (13, 3, "c")],
+]
+
+
+def cavefloor_fill(v: int = 0) -> Image.Image:
+    """Walkable cave floor: flat violet-dark rock + structured pebble motifs."""
+    a = flat(sh(CAVE, 0.94))
+    dark = sh(CAVE, 0.74)
+    light = sh(CAVE, 1.22, 8)
+    for (x, y, kind) in CAVEFLOOR_LAYOUTS[v % len(CAVEFLOOR_LAYOUTS)]:
+        if kind == "p":
+            put(a, [(x, y), (x + 2, y + 1), (x + 1, y + 2)], dark)   # pebble cluster
+        else:
+            put(a, [(x, y)], light)                                  # pale chip
+    return img(a)
+
+
+def _mound(a, cx, cy, mid, light, dark, glow):
+    """One rounded glowmoss mound, ~6 wide x 4 tall, anchored at its base (cx, cy)."""
+    body = [(cx - 2, cy), (cx - 1, cy), (cx, cy), (cx + 1, cy), (cx + 2, cy),
+            (cx - 1, cy - 1), (cx, cy - 1), (cx + 1, cy - 1),
+            (cx, cy - 2)]
+    crown = [(cx - 1, cy - 2), (cx + 1, cy - 2), (cx, cy - 3)]
+    base = [(cx - 2, cy + 1), (cx - 1, cy + 1), (cx, cy + 1), (cx + 1, cy + 1), (cx + 2, cy + 1)]
+    put(a, body, mid)
+    put(a, crown, light)
+    put(a, base, dark)
+    put(a, [(cx, cy - 1)], glow)   # the held light at the heart
+
+
+def glowmoss_fill(v: int = 0) -> Image.Image:
+    """The cave ENCOUNTER tile: glowing moss mounds over a darkened bed —
+    hard-edged fill-only, same classic convention as tallgrass/dunegrass."""
+    a = flat(sh(CAVE, 0.58))
+    mid = sh(MOSS, 0.92)
+    light = sh(MOSS, 1.35, 24)
+    dark = sh(MOSS, 0.42)
+    glow = (214, 244, 214)
+    for (cx, cy) in TG_LAYOUTS[v % len(TG_LAYOUTS)]:
+        _mound(a, cx, cy, mid, light, dark, glow)
+    return img(a)
+
+
+def cavewall_top(v: int = 0) -> Image.Image:
+    """The wall-mass surface: deep void-dark rock (the unlit mass the lamp never
+    reaches), a register well BELOW the walkable floor so rooms read as carved
+    light, + sparse structured crack marks."""
+    a = flat(sh(CAVE, 0.58))
+    dark = sh(CAVE, 0.44)
+    lit = sh(CAVE, 0.92, 4)
+    for i, (x, y) in enumerate(CLIFF_TOP_LAYOUTS[v % len(CLIFF_TOP_LAYOUTS)]):
+        put(a, [(x, y), (x + 1, y), (x + 2, y + 1)], dark)
+        if i == 0:
+            put(a, [(x + 3, y - 1)], lit)                  # one crystal glint
+    return img(a)
+
+
+def _cavewall_face(role: str, v: int = 0) -> Image.Image:
+    """edge_s / corner_s*: the visible vertical FACE — lit lip, streaked rock
+    face, dark contact seam, cave floor below (the interior-wall convention)."""
+    g = np.asarray(cavefloor_fill(v).convert("RGBA")).astype(np.int16)
+    a = np.asarray(cavewall_top(v).convert("RGBA")).astype(np.int16).copy()
+    LIP, FACE_END = 4, 12
+    a[LIP, :, :3] = sh(CAVE, 1.50, 18)                     # lit lip
+    face = sh(CAVE, 0.96, 6)                               # lamp-caught rock face
+    streak = sh(CAVE, 0.70)
+    for y in range(LIP + 1, FACE_END + 1):
+        a[y, :, :3] = face
+    x1, x2 = (3 + 3 * v) % 14 + 1, (10 + 3 * v) % 14 + 1
+    for y in range(LIP + 1, 9):
+        a[y, x1, :3] = streak
+    for y in range(9, FACE_END + 1):
+        a[y, x2, :3] = streak
+    a[9, :, :3] = sh(CAVE, 0.78)                           # bedding crack
+    a[FACE_END + 1, :, :3] = sh(CAVE, 0.30)                # contact shadow
+    a[FACE_END + 2:, :] = g[FACE_END + 2:, :]              # floor below
+    if role == "corner_sw":
+        a[:, :2] = g[:, :2]
+        a[:, 2, :3] = sh(CAVE, 0.36)
+    if role == "corner_se":
+        a[:, 14:] = g[:, 14:]
+        a[:, 13, :3] = sh(CAVE, 0.36)
+    return img(a)
+
+
+def cavewall_tile(role: str, v: int = 0) -> Image.Image:
+    """Any of the 13 roles for the cavewall family (the cliff convention,
+    indoors: fill = wall top; S edges = the face; N/W/E = rim transitions)."""
+    if role == "fill":
+        return cavewall_top(v)
+    if role in ("edge_s", "corner_sw", "corner_se"):
+        return _cavewall_face(role, v)
+    return overlay_tile(role, cavewall_top(v), cavefloor_fill(v),
+                        sh(CAVE, 0.34), shade_rgb=sh(CAVE, 0.46))
+
+
+# ---- glowmoss-cave decor props (transparent, deco layer) ------------------------
+def glowshroom(v: int = 0) -> Image.Image:
+    """A small cluster of glowing cave-shrooms — the cave's light breadcrumb."""
+    a = np.zeros((16, 16, 4), dtype=np.int16)
+    cap = sh(MOSS, 1.30, 20)
+    capd = sh(MOSS, 0.80)
+    stem = (188, 184, 200)
+    glow = (224, 248, 224)
+    spots = [(6, 9)] if v % 2 == 0 else [(5, 8), (10, 11)]
+    for (cx, cy) in spots:
+        for (x, y) in [(cx - 1, cy), (cx, cy), (cx + 1, cy)]:
+            a[y % 16, x % 16] = [*cap, 255]
+        a[(cy - 1) % 16, cx % 16] = [*glow, 255]
+        a[(cy + 1) % 16, cx % 16] = [*stem, 255]
+        a[(cy + 1) % 16, (cx + 1) % 16] = [*capd, 255]
+    return img(a)
+
+
+def greymoss(v: int = 0) -> Image.Image:
+    """A DRAINED moss tuft — the grey the Hollowing leaves behind (B2 set
+    dressing). Same mound silhouette as glowmoss, all the light gone."""
+    a = np.zeros((16, 16, 4), dtype=np.int16)
+    mid = (104, 106, 112)
+    dark = (66, 68, 76)
+    anchors = [(6, 9), (11, 12)] if v % 2 == 0 else [(5, 11), (10, 8)]
+    for (cx, cy) in anchors:
+        for (x, y) in [(cx - 1, cy), (cx, cy), (cx + 1, cy), (cx, cy - 1)]:
+            a[y % 16, x % 16] = [*mid, 255]
+        for (x, y) in [(cx - 1, cy + 1), (cx, cy + 1), (cx + 1, cy + 1)]:
+            a[y % 16, x % 16] = [*dark, 255]
+    return img(a)
+
+
+def null_lantern() -> Image.Image:
+    """The Hollowing's null-lantern: a hooded lantern on a short stake, its
+    pane dark — a held absence of light. 1-tile transparent prop (collides)."""
+    a = np.zeros((16, 16, 4), dtype=np.int16)
+    iron = (52, 50, 62)
+    rim = (92, 90, 104)
+    void = (16, 14, 24)
+    # stake
+    for y in range(10, 15):
+        a[y, 7] = [*iron, 255]
+        a[y, 8] = [*iron, 255]
+    # lantern body 6x6 with a dark pane
+    for y in range(3, 10):
+        for x in range(5, 11):
+            a[y, x] = [*iron, 255]
+    for y in range(4, 9):
+        for x in range(6, 10):
+            a[y, x] = [*void, 255]
+    # hood + hanging ring, faintly lit edges so it reads in the dark
+    for x in range(5, 11):
+        a[3, x] = [*rim, 255]
+    a[2, 7] = [*rim, 255]
+    a[2, 8] = [*rim, 255]
+    a[9, 5] = [*rim, 255]
+    a[9, 10] = [*rim, 255]
+    return img(a)
+
+
 # ---- preview ------------------------------------------------------------------
 def _preview(out_path: str) -> None:
     rows = [
@@ -411,6 +580,10 @@ def _preview(out_path: str) -> None:
         [water_fill(i) for i in range(3)] + [water_edge("edge_n")],
         [cliff_tile(r) for r in ("edge_n", "fill", "edge_s", "corner_sw")],
         [dunegrass_fill(i) for i in range(4)],
+        [cavefloor_fill(i) for i in range(4)],
+        [glowmoss_fill(i) for i in range(4)],
+        [cavewall_tile(r) for r in ("edge_n", "fill", "edge_s", "corner_sw")],
+        [glowshroom(0), glowshroom(1), greymoss(0), null_lantern()],
     ]
     S = 6
     W = max(len(r) for r in rows)
