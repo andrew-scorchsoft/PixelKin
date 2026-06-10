@@ -57,6 +57,11 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/tinderwick-a.mp3',
+    // Lampwarden 1 (Ember) Gleam battle happens here — shrine-interior backdrop.
+    battle_backdrops: [
+      'assets/backgrounds/battle/tinderwick-lumenary-a.webp',
+      'assets/backgrounds/battle/tinderwick-lumenary-b.webp',
+    ],
   },
   dimglass_coast: {
     json: 'assets/maps/dimglass_coast.json',
@@ -93,6 +98,11 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/dimglass-coast-a.mp3',
+    // Lampwarden 2 (Tide) Gleam battle happens here — shrine-interior backdrop.
+    battle_backdrops: [
+      'assets/backgrounds/battle/pearlmoor-lumenary-a.webp',
+      'assets/backgrounds/battle/pearlmoor-lumenary-b.webp',
+    ],
   },
   pearlmoor_shop: {
     json: 'assets/maps/pearlmoor_shop.json',
@@ -108,6 +118,63 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
+  // Their battle backdrops are already rendered — see UPCOMING_BATTLE_BACKDROPS below.
+};
+
+/**
+ * Battle backdrops for the upcoming atlas areas (4-14), rendered ahead of the maps
+ * themselves (240x160 WebP under public/assets/backgrounds/battle/, a/b variants per
+ * area, following docs/art-style.md "Battle backdrops"). Keyed by the area's planned
+ * snake_case map id. When you author one of these maps, just spread the matching entry
+ * onto its registry block above — `battle_backdrops: UPCOMING_BATTLE_BACKDROPS.lowleaf_hollow`
+ * — so the art wires up without retyping paths. Once a map moves into MAP_REGISTRY with
+ * its backdrops set, drop its key here to avoid drift.
+ */
+export const UPCOMING_BATTLE_BACKDROPS: Record<string, string[]> = {
+  lowleaf_hollow: [
+    'assets/backgrounds/battle/lowleaf-hollow-a.webp',
+    'assets/backgrounds/battle/lowleaf-hollow-b.webp',
+  ],
+  cinderhead_mine: [
+    'assets/backgrounds/battle/cinderhead-mine-a.webp',
+    'assets/backgrounds/battle/cinderhead-mine-b.webp',
+  ],
+  galehigh_terraces: [
+    'assets/backgrounds/battle/galehigh-terraces-a.webp',
+    'assets/backgrounds/battle/galehigh-terraces-b.webp',
+  ],
+  pale_vault_glacier: [
+    'assets/backgrounds/battle/pale-vault-glacier-a.webp',
+    'assets/backgrounds/battle/pale-vault-glacier-b.webp',
+  ],
+  sunken_solarium: [
+    'assets/backgrounds/battle/sunken-solarium-a.webp',
+    'assets/backgrounds/battle/sunken-solarium-b.webp',
+  ],
+  nightreach_observatory: [
+    'assets/backgrounds/battle/nightreach-observatory-a.webp',
+    'assets/backgrounds/battle/nightreach-observatory-b.webp',
+  ],
+  coldfog_marches: [
+    'assets/backgrounds/battle/coldfog-marches-a.webp',
+    'assets/backgrounds/battle/coldfog-marches-b.webp',
+  ],
+  vesper_crossroads: [
+    'assets/backgrounds/battle/vesper-crossroads-a.webp',
+    'assets/backgrounds/battle/vesper-crossroads-b.webp',
+  ],
+  penumbra_ring: [
+    'assets/backgrounds/battle/penumbra-ring-a.webp',
+    'assets/backgrounds/battle/penumbra-ring-b.webp',
+  ],
+  umbral_spire: [
+    'assets/backgrounds/battle/umbral-spire-a.webp',
+    'assets/backgrounds/battle/umbral-spire-b.webp',
+  ],
+  dawnstead: [
+    'assets/backgrounds/battle/dawnstead-a.webp',
+    'assets/backgrounds/battle/dawnstead-b.webp',
+  ],
 };
 
 /** Every distinct battle-backdrop image across the registry (for preloading). */
