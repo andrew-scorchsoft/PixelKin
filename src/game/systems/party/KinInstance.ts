@@ -220,6 +220,42 @@ export class KinInstance {
     return { levelsGained: newLevel - startLevel, learned };
   }
 
+  // --- Taught moves (Star-charts; the future move-learn prompt reuses these) ----
+
+  knowsMove(moveId: string): boolean {
+    return this.moves.some((k) => k.move.id === moveId);
+  }
+
+  /**
+   * Whether this kin can study a Star-chart for `move`: it shares the move's
+   * type, the move is Plain (any kin may read a plain figure), or the move is
+   * already somewhere in its species learnset. Returns why not, for narration.
+   */
+  canStudy(move: Move): 'ok' | 'knows' | 'type' {
+    if (this.knowsMove(move.id)) return 'knows';
+    if (move.type === 'Plain') return 'ok';
+    if (this.species.types.includes(move.type)) return 'ok';
+    const ls = this.species.learnset;
+    const inLearnset =
+      ls.levelup.some((e) => e.move === move.id) ||
+      ls.kindling.includes(move.id) ||
+      ls.tutor.includes(move.id);
+    return inLearnset ? 'ok' : 'type';
+  }
+
+  /** Learn into a free slot. Returns false when all four slots are taken. */
+  learnMove(move: Move): boolean {
+    if (this.knowsMove(move.id) || this.moves.length >= MAX_MOVES) return false;
+    this.moves.push({ move, charges: move.charges });
+    return true;
+  }
+
+  /** Overwrite a known-move slot (the "forget which?" choice). */
+  replaceMove(slot: number, move: Move): void {
+    if (slot < 0 || slot >= this.moves.length) return;
+    this.moves[slot] = { move, charges: move.charges };
+  }
+
   /** Learn (auto, oldest-replaced) any level-up moves taught at `level`. */
   private learnMovesAt(level: number): Move[] {
     const learned: Move[] = [];

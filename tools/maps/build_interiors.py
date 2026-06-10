@@ -370,7 +370,7 @@ def all_maps():
                         "hidden_when_flag": "flag:tinderwick_kit"},
                        {"id": "shopkeeper", "at": "counter", "facing": "down",
                         "sprite": "npc_shopkeeper", "movement": "static",
-                        "dialogue_ref": "npc.tinderwick_shopkeeper",
+                        "dialogue_ref": "script.shop_tinderwick",
                         "requires_flag": "flag:tinderwick_kit"},
                        {"id": "fenn_satchel", "at": {"tx": 4, "ty": 4}, "facing": "down",
                         "sprite": "item_cache", "movement": "static",
@@ -412,7 +412,7 @@ def all_maps():
                        "reyl", "npc.reyl_wash"),
         build_shop("pearlmoor_shop", "Pearlmoor Chandlery",
                    "assets/audio/music/dimglass-coast-a.mp3", ("pearlmoor_quay", 5, 12),
-                   "sign.pearlmoor_shop", "chandler", "npc.pearlmoor_shopkeeper",
+                   "sign.pearlmoor_shop", "chandler", "script.shop_pearlmoor",
                    kit_script="script.shop_kit_pearlmoor", kit_flag="flag:pearlmoor_kit"),
         build_inn(),
     ]

@@ -38,6 +38,11 @@ which move? / Give up on Ember Jab."*
 `ui/MoveLearnPrompt.ts`, `scenes/BattleScene.ts` (consume `pending`). No data changes.
 Small, self-contained; ~half a day.
 
+> **Head start (2026-06):** the Star-chart system (10-economy.md §6) already shipped
+> `KinInstance.knowsMove/canStudy/learnMove/replaceMove` and a working "set one aside /
+> give up" forget-flow in `ItemsMenu.studyChart()` — Part A should lift that flow into
+> `MoveLearnPrompt` rather than rebuild it.
+
 ## Part B — Status condition engine (run, don't just narrate)
 
 **Today:** `BattleEngine.applyEffect()` maps `{stat,stages}` effects (fully working) but

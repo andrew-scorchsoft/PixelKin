@@ -57,6 +57,11 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     term: 'the Skyweave',
     desc: 'The old belief that the stars are tied to gleaming kin below — and that tending the light keeps dusk and dawn turning.',
   },
+  {
+    id: 'wicks',
+    term: 'Wicks',
+    desc: "Vesperholm's coin: waxed, brass-capped lamp-wicks, bundled and traded. In a land without dawn, everyone always needs one more.",
+  },
 
   // --- Learned on the road (staggered off flags the journey already raises) ---
   {
@@ -88,6 +93,12 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     term: 'the Hollowing',
     desc: "Not villains — frightened folk who'd let the long night come gently and stay. They put luminous kin to sleep and carry their light away.",
     unlock_flag: 'flag:dusk_begins',
+  },
+  {
+    id: 'star_chart',
+    term: 'Star-chart',
+    desc: 'A pressed chart of one small constellation figure. A kin that studies it by lamplight learns to draw that figure in battle — one study burns the glow out.',
+    unlock_flag: 'flag:has_starter',
   },
   {
     id: 'lantern_gift',

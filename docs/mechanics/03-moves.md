@@ -101,7 +101,7 @@ Each species has:
 "learnset": {
   "levelup": [ {"level": 1, "move": "ember_jab"}, {"level": 12, "move": "cinder_lash"}, ... ],
   "kindling": ["flare_crown"],     // moves taught on reaching this kindled form
-  "tutor": ["ember_jab", "sun_nap"]// optional: moves a town tutor can teach
+  "tutor": ["ember_jab", "sun_nap"]// optional: extra Star-chart compatibility (see below)
 }
 ```
 
@@ -114,6 +114,12 @@ Rules:
 - **Signature moves** belong to one line only and are flagged
   `"signature": true` in `moves.json` (e.g. Vulpyre's *Tuft Spark*, Brinix's
   *Bubble Hum*). They count toward EPS movepoolScore.
+- **Taught moves are Star-charts** (never "TMs"): single-use chart items that
+  teach their move from the ITEMS menu. Compatibility is rule-based — the kin
+  shares the move's type, the move is Plain, or it appears anywhere in the
+  species learnset (the `tutor` array exists to grant *extra* compatibility
+  beyond those rules, per species). Design, pricing tiers and distribution:
+  [`10-economy.md`](./10-economy.md) §6.
 
 ## Abilities
 

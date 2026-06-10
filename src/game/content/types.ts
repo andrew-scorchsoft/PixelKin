@@ -60,14 +60,16 @@ export type CutsceneStep =
   | { op: 'cameraReset'; ms?: number } // re-follow the player, restore zoom
   | { op: 'battle'; trainer: string } // start a trainer battle by id
   | { op: 'heal' } // fully restore the party (inn rest, hearthside kindness)
-  | { op: 'gleam'; element: string }; // diegetic Gleam cue (relight the sky)
+  | { op: 'gleam'; element: string } // diegetic Gleam cue (relight the sky)
+  | { op: 'giveMoney'; amount: number } // hand the player wicks (quest rewards, finds)
+  | { op: 'shop'; shop: string }; // open a shop's buy/sell counter (content/shops.ts)
 
 /** ref -> a cutscene's steps. */
 export type ScriptRegistry = Record<string, CutsceneStep[]>;
 
 // ---- Items ------------------------------------------------------------------
 
-export type ItemCategory = 'lamp' | 'medicine' | 'key' | 'misc';
+export type ItemCategory = 'lamp' | 'medicine' | 'chart' | 'valuable' | 'key' | 'misc';
 
 export interface ItemDef {
   id: string;
@@ -78,9 +80,37 @@ export interface ItemDef {
   catch_bonus?: number;
   /** HP restored for 'medicine' items. */
   heal?: number;
+  /**
+   * Shop price in wicks. An item with no price is never stocked or buyable
+   * (key items, quest charms). Sell value defaults to half price — see
+   * content/economy.ts `sellValue()`; 'valuable' items set `sell` explicitly.
+   */
+  price?: number;
+  /** Explicit sell value in wicks (overrides the half-price default). */
+  sell?: number;
+  /** For 'chart' items (Star-charts): the move id this chart teaches. */
+  teach_move?: string;
 }
 
 export type ItemRegistry = Record<string, ItemDef>;
+
+// ---- Shops ------------------------------------------------------------------
+
+/**
+ * A shop's counter: what the keeper stocks, in display order. Prices come from
+ * each ItemDef (`price`), so one item costs the same across Vesperholm; a shop
+ * is purely a *selection*. Opened by the cutscene op `{ op: 'shop', shop: id }`,
+ * so a keeper script can chat first and trade after — pure data either way.
+ */
+export interface ShopDef {
+  id: string;
+  /** Counter title, e.g. 'TINDERWICK GENERAL'. */
+  name: string;
+  /** Item ids stocked, in display order. Every id must have a `price`. */
+  stock: string[];
+}
+
+export type ShopRegistry = Record<string, ShopDef>;
 
 // ---- Glossary ---------------------------------------------------------------
 
@@ -141,6 +171,13 @@ export interface TrainerDef {
   reward_abilities?: AbilityId[];
   /** Battle music key override. */
   music?: string;
+  /**
+   * Wicks paid out when the player wins. Authored to the economy formula
+   * (docs/mechanics/10-economy.md): payout = class rate × ace level — route
+   * trainer 16, dungeon keeper 20, rival 24, Lampwarden 60, Còr 120. Re-run
+   * `node tools/balance/progression.mjs` after changing payouts.
+   */
+  payout?: number;
 }
 
 export type TrainerRegistry = Record<string, TrainerDef>;

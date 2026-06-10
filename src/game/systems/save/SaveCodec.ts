@@ -22,7 +22,9 @@ type RawSave = Partial<SaveGame> & { schema_version?: unknown };
 type Migration = (raw: RawSave) => RawSave;
 
 const MIGRATIONS: Record<number, Migration> = {
-  // v1 is the first schema; no upgrades yet. Add `1: (s) => ({...})` etc. here.
+  // v1 → v2: the wick economy lands. Pre-economy saves get the new-game purse
+  // (they never had a chance to earn, so zero would feel like a fine).
+  1: (raw) => ({ ...raw, money: 250 }),
 };
 
 function isFiniteNumber(v: unknown): v is number {
@@ -39,7 +41,8 @@ function looksLikeSave(raw: RawSave): raw is SaveGame {
     raw.world !== null &&
     Array.isArray(raw.party) &&
     typeof raw.inventory === 'object' &&
-    raw.inventory !== null
+    raw.inventory !== null &&
+    isFiniteNumber(raw.money)
   );
 }
 

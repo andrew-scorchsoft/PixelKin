@@ -23,6 +23,7 @@ export const TRAINERS: TrainerRegistry = {
     intro_ref: 'trainer.lampwarden_tinderwick.intro',
     defeat_ref: 'trainer.lampwarden_tinderwick.defeat',
     reward_flags: ['gleam:ember', 'crown_south'],
+    payout: 600, // Lampwarden 60 × ace 10
     music: 'battle-emberfall',
   },
 
@@ -36,6 +37,7 @@ export const TRAINERS: TrainerRegistry = {
     party: [
       { species_id: 16, level: 7 }, // Wickmoth — Ember
     ],
+    payout: 140, // keeper 20 × ace 7
     music: 'battle-emberfall',
   },
   beacon_keeper_b: {
@@ -46,6 +48,7 @@ export const TRAINERS: TrainerRegistry = {
       { species_id: 10, level: 7 }, // Tallowpup — Ember
       { species_id: 16, level: 8 }, // Wickmoth — Ember
     ],
+    payout: 160, // keeper 20 × ace 8
     music: 'battle-emberfall',
   },
 
@@ -62,6 +65,7 @@ export const TRAINERS: TrainerRegistry = {
     ],
     intro_ref: 'trainer.wren_dimglass.intro',
     defeat_ref: 'trainer.wren_dimglass.defeat',
+    payout: 144, // rival 24 × ace 6
     music: 'battle-emberfall',
   },
 
@@ -77,6 +81,7 @@ export const TRAINERS: TrainerRegistry = {
     ],
     intro_ref: 'trainer.flats_wayfarer_a.intro',
     defeat_ref: 'trainer.flats_wayfarer_a.defeat',
+    payout: 144, // route 16 × ace 9
     music: 'battle-emberfall',
   },
   flats_wayfarer_b: {
@@ -89,6 +94,7 @@ export const TRAINERS: TrainerRegistry = {
     ],
     intro_ref: 'trainer.flats_wayfarer_b.intro',
     defeat_ref: 'trainer.flats_wayfarer_b.defeat',
+    payout: 176, // route 16 × ace 11
     music: 'battle-emberfall',
   },
 
@@ -111,6 +117,7 @@ export const TRAINERS: TrainerRegistry = {
     defeat_ref: 'trainer.lampwarden_pearlmoor.defeat',
     reward_flags: ['gleam:tide', 'crown_south'],
     reward_abilities: ['tidecall'],
+    payout: 960, // Lampwarden 60 × ace 16
     music: 'battle-emberfall',
   },
 };

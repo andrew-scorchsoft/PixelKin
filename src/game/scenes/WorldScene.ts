@@ -34,6 +34,9 @@ import { Npc } from '@game/entities/Npc';
 import type { Actor } from '@game/entities/Actor';
 import { getDialogue } from '@game/content/dialogue';
 import { getScript } from '@game/content/scripts';
+import { getShop } from '@game/content/shops';
+import { STARTING_WICKS, faintTithe } from '@game/content/economy';
+import { ShopMenu } from '@game/ui/ShopMenu';
 import { makeStarterKin } from '@game/content/starters';
 import { runCutscene } from '@game/systems/cutscene/CutsceneRunner';
 import type { CutsceneContext } from '@game/systems/cutscene/CutsceneRunner';
@@ -55,6 +58,8 @@ export interface WorldSceneData {
   /** Kin resting at the Hearth (storage beyond the active party). */
   box?: KinInstanceData[];
   inventory?: InventoryData;
+  /** The player's wicks; a fresh game starts on STARTING_WICKS. */
+  money?: number;
 }
 
 /** Depth band for actors: above deco (5), below the 'above' layer (20). */
@@ -81,6 +86,8 @@ export class WorldScene extends Phaser.Scene {
   /** Kin kept at the Hearth (storage); overflow from a full lamp lands here. */
   private box: KinInstanceData[] = [];
   private inventory: InventoryData = { items: {} };
+  /** The player's wicks (currency — content/economy.ts). */
+  private money = 0;
 
   constructor() {
     super('World');
@@ -95,6 +102,7 @@ export class WorldScene extends Phaser.Scene {
     this.party = data.party ?? [];
     this.box = data.box ?? [];
     this.inventory = data.inventory ?? { items: {} };
+    this.money = data.money ?? STARTING_WICKS;
     this.music = new MusicDirector(this);
     this.sfx = new Sfx(this);
     this.debug = new DebugOverlay(this);
@@ -183,6 +191,7 @@ export class WorldScene extends Phaser.Scene {
       party: this.party,
       box: this.box,
       inventory: this.inventory,
+      money: this.money,
     };
   }
 
@@ -374,6 +383,20 @@ export class WorldScene extends Phaser.Scene {
       onGiveItem: (item, count) => {
         this.inventory.items[item] = (this.inventory.items[item] ?? 0) + count;
       },
+      onGiveMoney: (amount) => {
+        this.money = Math.max(0, this.money + Math.floor(amount));
+      },
+      openShop: async (shopId) => {
+        const shop = getShop(shopId);
+        if (!shop) {
+          await ShopMenu.missing(this, this.sfx);
+          return;
+        }
+        const result = await new ShopMenu(this, shop, this.inventory, this.money, this.sfx).run();
+        this.inventory = result.inventory;
+        this.money = result.money;
+        void this.persist();
+      },
       onHealParty: () => {
         this.healParty();
       },
@@ -553,6 +576,7 @@ export class WorldScene extends Phaser.Scene {
     this.party = result.party;
     this.box = result.box;
     this.inventory = result.inventory;
+    if (result.money_earned) this.money += result.money_earned;
     if (result.set_flags) this.flags.setMany(result.set_flags);
     // Lantern Gifts granted by a Lampwarden win — add to the live ability set so
     // gated tiles/warps unlock immediately, and persist() (below) saves them.
@@ -566,9 +590,13 @@ export class WorldScene extends Phaser.Scene {
   private async blackout(): Promise<void> {
     this.modal = true;
     this.healParty();
+    // The kind light keeps a small tithe of wicks (10%) — losing costs, gently.
+    const tithe = faintTithe(this.money);
+    this.money -= tithe;
     void this.sfx.playVariant('world-heal', ['a', 'b']);
     await new DialogueBox(this, this.sfx).run([
       { text: 'Your lamp guttered low... but a kind light carried you home.' },
+      ...(tithe > 0 ? [{ text: `You left ${tithe} wicks in thanks, as the custom asks.` }] : []),
     ]);
     await fadeOut(this);
     await this.enterMap(VESPERHOLM_GRAPH.start_map, VESPERHOLM_GRAPH.start_at, 'down', false);
@@ -680,7 +708,7 @@ export class WorldScene extends Phaser.Scene {
       ]);
       return;
     }
-    const result = await new ItemsMenu(this, this.inventory, this.party, this.sfx).run();
+    const result = await new ItemsMenu(this, this.inventory, this.party, this.sfx, this.money).run();
     this.party = result.party;
     this.inventory = result.inventory;
     void this.persist();
@@ -757,6 +785,7 @@ export class WorldScene extends Phaser.Scene {
         party: loaded.party,
         box: loaded.box,
         inventory: loaded.inventory,
+        money: loaded.money,
       });
     }
   }

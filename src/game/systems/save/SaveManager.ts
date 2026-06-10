@@ -85,6 +85,7 @@ export const SaveManager = {
     world: WorldSnapshot,
     party: KinInstanceData[],
     inventory: InventoryData,
+    money: number,
   ): SaveGame {
     return {
       schema_version: SAVE_SCHEMA_VERSION,
@@ -93,6 +94,7 @@ export const SaveManager = {
       world,
       party,
       inventory,
+      money,
     };
   },
 } as const;
