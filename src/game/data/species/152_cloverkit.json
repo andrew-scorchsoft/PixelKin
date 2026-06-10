@@ -20,7 +20,7 @@
   "hidden_ability": "bramble",
   "catchRate": 175,
   "kindling": {
-    "into": 153,
+    "into": 156,
     "trigger": {
       "kind": "level",
       "level": 18

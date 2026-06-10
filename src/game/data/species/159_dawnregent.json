@@ -1,0 +1,83 @@
+{
+  "id": 159,
+  "slug": "dawnregent",
+  "name": "Dawnregent",
+  "types": [
+    "Solar",
+    "Light"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "F",
+  "stats": {
+    "hp": 128,
+    "atk": 148,
+    "def": 116,
+    "spa": 58,
+    "spd": 96,
+    "spe": 96
+  },
+  "bst": 642,
+  "ability": "daybringer",
+  "hidden_ability": "sunsoak",
+  "catchRate": 6,
+  "kindling": null,
+  "from": 158,
+  "stage": 4,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "sun_jab"
+      },
+      {
+        "level": 9,
+        "move": "bask"
+      },
+      {
+        "level": 13,
+        "move": "glint_fang"
+      },
+      {
+        "level": 19,
+        "move": "lumen_cut"
+      },
+      {
+        "level": 22,
+        "move": "solar_lash"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "flare_crown"
+      },
+      {
+        "level": 40,
+        "move": "sunburst_nova"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The fourth and final kindling of the Gilpaw line, reached only by a Corolion raised far beyond most wayfarings \u2014 and the only known kin to kindle into the legendary register. Its stone plates have burned away to leave a being of warm dawn-light wearing the old carved corona like a crown; where it st",
+    "category": "Solar Brute Kin",
+    "size_cm": 320,
+    "weight_kg": 180,
+    "habitat": "west"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "Towering luminous lion of living dawn-light, gold-white body with a soft sunrise gradient of rose and amber along the spine; the carved stone corona of its old form worn as a vast crown ring behind its head, now blazing; long light-trailing mane and tail like streamers of morning sky, calm sovereign eyes. Epic, serene, sunrise-bringing at 64px.",
+    "palette": "Towering luminous lion of living dawn-light, gold-white body with a soft sunrise gradient of rose and amber along the spine; the carved stone corona of its old form worn as a vast crown ring behind its head, now blazing; long light-trailing mane and tail like streamers of morning sky, calm sovereign eyes. Epic, serene, sunrise-bringing at 64px.",
+    "direction": "Raise one line far enough and it answers the Long Dusk in person \u2014 a walking sunrise."
+  },
+  "provenance_concept_id": "X-DAWNREGENT"
+}

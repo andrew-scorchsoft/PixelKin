@@ -20,8 +20,8 @@
   "hidden_ability": "bramble",
   "catchRate": 57,
   "kindling": null,
-  "from": 152,
-  "stage": 2,
+  "from": 156,
+  "stage": 3,
   "learnset": {
     "levelup": [
       {

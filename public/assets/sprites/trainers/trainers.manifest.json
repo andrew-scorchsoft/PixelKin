@@ -4,13 +4,43 @@
   "cols": 4,
   "rows": 4,
   "trainers": {
+    "npc_boy": {
+      "path": "assets/sprites/trainers/npc_boy.webp",
+      "width": 128,
+      "height": 128
+    },
+    "npc_girl": {
+      "path": "assets/sprites/trainers/npc_girl.webp",
+      "width": 128,
+      "height": 128
+    },
     "npc_lampwarden": {
       "path": "assets/sprites/trainers/npc_lampwarden.webp",
       "width": 128,
       "height": 128
     },
+    "npc_man": {
+      "path": "assets/sprites/trainers/npc_man.webp",
+      "width": 128,
+      "height": 128
+    },
+    "npc_old_man": {
+      "path": "assets/sprites/trainers/npc_old_man.webp",
+      "width": 128,
+      "height": 128
+    },
+    "npc_old_woman": {
+      "path": "assets/sprites/trainers/npc_old_woman.webp",
+      "width": 128,
+      "height": 128
+    },
     "npc_shopkeeper": {
       "path": "assets/sprites/trainers/npc_shopkeeper.webp",
+      "width": 128,
+      "height": 128
+    },
+    "npc_woman": {
+      "path": "assets/sprites/trainers/npc_woman.webp",
       "width": 128,
       "height": 128
     },

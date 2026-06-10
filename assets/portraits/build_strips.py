@@ -28,6 +28,8 @@ STRIPS = {
     "brisa": ["neutral", "warm", "proud"],
     "reyl": ["neutral", "weathered", "proud"],
     "lamplighter": ["neutral", "grave"],
+    "hearthkeeper": ["neutral", "warm"],
+    "cor": ["neutral", "grave"],
 }
 
 

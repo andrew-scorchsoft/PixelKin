@@ -20,8 +20,8 @@
   "hidden_ability": "thickcoat",
   "catchRate": 57,
   "kindling": null,
-  "from": 2,
-  "stage": 2,
+  "from": 155,
+  "stage": 3,
   "learnset": {
     "levelup": [
       {

@@ -1,0 +1,89 @@
+{
+  "id": 158,
+  "slug": "corolion",
+  "name": "Corolion",
+  "types": [
+    "Solar",
+    "Stone"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "E",
+  "stats": {
+    "hp": 112,
+    "atk": 122,
+    "def": 100,
+    "spa": 56,
+    "spd": 84,
+    "spe": 84
+  },
+  "bst": 558,
+  "ability": "daybringer",
+  "hidden_ability": "sunsoak",
+  "catchRate": 24,
+  "kindling": {
+    "into": 159,
+    "trigger": {
+      "kind": "level",
+      "level": 56
+    }
+  },
+  "from": 104,
+  "stage": 3,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "sun_jab"
+      },
+      {
+        "level": 9,
+        "move": "bask"
+      },
+      {
+        "level": 13,
+        "move": "glint_fang"
+      },
+      {
+        "level": 19,
+        "move": "gritfist"
+      },
+      {
+        "level": 22,
+        "move": "solar_lash"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "flare_crown"
+      },
+      {
+        "level": 40,
+        "move": "sunburst_nova"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "Goldmane's apex kindling \u2014 a crowned sun-lion whose stone mane has fused into a full corona of carved gold rays. It walks ridge-lines at the dusk's edge like a piece of the missing sun out for a patrol, and the spiral sigils on its plates glow brighter the darker the sky gets. Old herders leave the ",
+    "category": "Solar Brute Kin",
+    "size_cm": 240,
+    "weight_kg": 410,
+    "habitat": "west"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "Massive regal lion, body of smooth gold-toned stone plates carved with spiral sun sigils that glow amber; mane a complete radiating corona of sculpted gold-stone rays like a sun disc behind its head; molten-gold eyes, heavy unhurried stance; reads as a walking sun-crown at 64px.",
+    "palette": "Massive regal lion, body of smooth gold-toned stone plates carved with spiral sun sigils that glow amber; mane a complete radiating corona of sculpted gold-stone rays like a sun disc behind its head; molten-gold eyes, heavy unhurried stance; reads as a walking sun-crown at 64px.",
+    "direction": "The cub with golden paws becomes a piece of the sun that patrols the dark."
+  },
+  "provenance_concept_id": "X-COROLION"
+}

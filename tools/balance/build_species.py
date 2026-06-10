@@ -350,6 +350,20 @@ def main():
         # clamp catchRate into band
         lo, hi = {"A":(190,235),"B":(150,200),"C":(90,150),"D":(45,90),"E":(20,45),"F":(3,10)}[tier]
         rec["catchRate"] = max(lo, min(hi, rec["catchRate"]))
+        # Preserve hand-added encounter rows from the existing per-species file.
+        # Map-content work appends area tables the generator doesn't know about
+        # (e.g. pearlmoor_quay); regenerating must not clobber them.
+        if not scripted:
+            prev_path = os.path.join(OUTDIR, f"{e['dex_id']:03d}_{rec['slug']}.json")
+            if os.path.exists(prev_path):
+                try:
+                    prev = json.load(open(prev_path))
+                    gen_keys = {json.dumps(x, sort_keys=True) for x in rec["encounters"]}
+                    for enc in prev.get("encounters", []):
+                        if json.dumps(enc, sort_keys=True) not in gen_keys:
+                            rec["encounters"].append(enc)
+                except Exception:
+                    pass
         # apply canonical overrides for the two existing starters
         canon = CANON.get(rec["slug"])
         if canon:

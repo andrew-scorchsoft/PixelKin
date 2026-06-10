@@ -20,10 +20,10 @@
   "hidden_ability": "mistveil",
   "catchRate": 175,
   "kindling": {
-    "into": 4,
+    "into": 155,
     "trigger": {
       "kind": "level",
-      "level": 32
+      "level": 17
     }
   },
   "from": null,
@@ -72,6 +72,13 @@
       "rarity": "uncommon",
       "min": 6,
       "max": 9
+    },
+    {
+      "area": "pearlmoor_quay",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 10,
+      "max": 12
     },
     {
       "area": "pearlmoor_quay",

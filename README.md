@@ -82,11 +82,12 @@ What's already in the repo:
   a gentle permanent dark. Full cast, lore, and the 14-area world map live in
   [`docs/world/`](docs/world/) — each area illustrated with a pixel-art **concept
   mood-piece** ([`assets/concept-art/`](assets/concept-art/)).
-- **Creatures & battles.** **153 original *kin*** across **10 elemental types**
+- **Creatures & battles.** **159 original *kin*** across **10 elemental types**
   (Ember, Tide, Verdant, Stone, Storm, Frost, Solar, Lunar, Light, Dark), with
   six stats, ~94 moves + 28 abilities, capture via **Lamps**, and evolution via
-  **Kindling**. The roster was curated from ~463 concepts (151) and rounded out by
-  the third starter line (Cloverkit → Cloverhart), all **empirically
+  **Kindling**. The roster was curated from ~463 concepts (151), rounded out by
+  the third starter line and by middle/apex kindling stages (every starter is a
+  three-stage line; one line kindles four stages deep), all **empirically
   balanced** with a Monte Carlo simulator (every type lands a fair win-rate). The
   data is the source of truth in [`src/game/data/`](src/game/data/); the design
   and tooling are in [`docs/mechanics/`](docs/mechanics/) and
@@ -119,7 +120,7 @@ those docs has not been built yet.
   sting / dramatic silence) and screen FX (letterbox, camera focus, tint, shake) —
   the South first hour is the worked example; standard in `docs/world/cinematics.md`.
 - A complete, **data-locked design**: full story and world bible (14 areas), the
-  153-kin roster with empirically balanced battle maths, the type chart, moves,
+  159-kin roster with empirically balanced battle maths, the type chart, moves,
   and abilities — all authored and validated.
 - A **playable opening slice**: attract demo → title → **cold-open prologue** →
   intro and starter choice → explore **Tinderwick** → first **Gleam** battle (a
@@ -183,7 +184,7 @@ python3 -m venv venv && ./venv/bin/pip install -r requirements.txt   # one-time
 | Full walkthrough / user journey | [`docs/world/walkthrough/`](docs/world/walkthrough/README.md) |
 | Soundtrack plan | [`docs/world/music-direction.md`](docs/world/music-direction.md) |
 | Mechanics & balance (start here) | [`docs/mechanics/00-overview.md`](docs/mechanics/00-overview.md) |
-| The full dex (all 151 kin) | [`docs/mechanics/dex.md`](docs/mechanics/dex.md) |
+| The full dex (all 159 kin) | [`docs/mechanics/dex.md`](docs/mechanics/dex.md) |
 | Art & sprite standards | [`docs/art-style.md`](docs/art-style.md) |
 
 ## Project layout
