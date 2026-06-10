@@ -2,10 +2,16 @@
 """
 Vesper Crossroads — the Lanternway hub (graph.ts `vesper_crossroads`, kind `hub`).
 
-Where every lit road in Vesperholm meets (walkthrough/01-south: discovered from
-Pearlmoor as South's fast-travel anchor; its inward Spire road stays `[LATER]`,
-flag:hub_unlocked). A safe, warm clearing — no encounters: four roads meeting at
-a lamplit plaza around the Waystone, deep forest enclosure, one cliff accent.
+Where every lit road in Vesperholm meets (walkthrough/01-south). A safe, warm
+clearing — no encounters: four roads meeting at a lamplit plaza around the
+Waystone, deep forest enclosure, one cliff accent.
+
+THE OPENING HAPPENS HERE (the satchel errand): Star-tender Fenn waits at the
+waystone from minute one — the town points the unstarted player east along the
+safe Lanternway, Fenn sends them back for his forgotten satchel, and the
+vesperlamp + starter ceremony (script.intro_mentor) is held AT the waystone.
+Fenn is four flag-disjoint placements on one tile; the Pearlmoor spoke is
+has_starter-gated so the opening can't wander past the ceremony.
 
 Live spokes: WEST -> Tinderwick, EAST -> Pearlmoor Quay. The NORTH road (Coldfog
 Marches) and SOUTH inward road (the Spire approach / penumbra_ring) are signed,
@@ -118,10 +124,14 @@ m = {
          "to_map": "tinderwick", "to": {"tx": 26, "ty": 16}, "facing": "left", "transition": "fade"},
         {"id": "to_tinderwick_n", "at": {"tx": 0, "ty": CY - 1}, "trigger": "step_on",
          "to_map": "tinderwick", "to": {"tx": 26, "ty": 16}, "facing": "left", "transition": "fade"},
+        # has_starter-gated: the opening's errand loop happens at the waystone —
+        # the east road wakes the moment the ceremony ends.
         {"id": "to_pearlmoor", "at": {"tx": W - 1, "ty": CY}, "trigger": "step_on",
-         "to_map": "pearlmoor_quay", "to": {"tx": 1, "ty": 12}, "facing": "right", "transition": "fade"},
+         "to_map": "pearlmoor_quay", "to": {"tx": 1, "ty": 12}, "facing": "right",
+         "requires_flag": "flag:has_starter", "transition": "fade"},
         {"id": "to_pearlmoor_n", "at": {"tx": W - 1, "ty": CY - 1}, "trigger": "step_on",
-         "to_map": "pearlmoor_quay", "to": {"tx": 1, "ty": 12}, "facing": "right", "transition": "fade"},
+         "to_map": "pearlmoor_quay", "to": {"tx": 1, "ty": 12}, "facing": "right",
+         "requires_flag": "flag:has_starter", "transition": "fade"},
         # sleeping roads (inert teases until their maps are authored)
         {"id": "to_marsh", "at": {"tx": CX, "ty": 0}, "trigger": "step_on",
          "to_map": "coldfog_marches_i", "to": {"tx": 8, "ty": 28}, "facing": "up", "transition": "fade"},
@@ -136,6 +146,14 @@ m = {
          "requires_flag": "flag:hub_unlocked", "transition": "fade"},
     ],
     "triggers": [
+        # Fenn hails the player the first time they step into the plaza from the
+        # west road (both lane rows covered; the script's sets_flags hides both).
+        {"id": "fenn_wave", "kind": "cutscene", "at": {"tx": CX - 2, "ty": CY - 1},
+         "activation": "step_on", "ref": "script.fenn_wave", "once": True,
+         "hidden_when_flag": "flag:fenn_waved", "sets_flags": ["flag:fenn_waved"]},
+        {"id": "fenn_wave_s", "kind": "cutscene", "at": {"tx": CX - 2, "ty": CY},
+         "activation": "step_on", "ref": "script.fenn_wave", "once": True,
+         "hidden_when_flag": "flag:fenn_waved", "sets_flags": ["flag:fenn_waved"]},
         {"id": "sign_waystone", "kind": "sign",
          "at": {"tx": sign_tiles["sign_waystone"][0], "ty": sign_tiles["sign_waystone"][1]},
          "activation": "interact", "ref": "sign.crossroads"},
@@ -149,6 +167,28 @@ m = {
         {"id": "waykeeper", "at": {"tx": CX - 1, "ty": CY - 1}, "facing": "down",
          "sprite": "npc_lampwarden", "movement": "look_around",
          "dialogue_ref": "npc.lanternway_keeper"},
+        # Star-tender Fenn at the waystone — the opening's anchor, in four
+        # flag-disjoint stages on one tile (south of the Waystone, facing it):
+        #   pre   (t0)               -> the satchel ask (script.fenn_crossroads)
+        #   wait  (errand running)   -> "it's on the store counter, dear"
+        #   ready (satchel in hand)  -> THE CEREMONY (script.intro_mentor)
+        #   after (Wayfaring begun)  -> send-off; he moves on once dusk_begins
+        {"id": "fenn_pre", "at": {"tx": CX + 1, "ty": CY + 1}, "facing": "up",
+         "sprite": "npc_mentor", "movement": "static",
+         "dialogue_ref": "script.fenn_crossroads",
+         "hidden_when_flag": "flag:fenn_errand"},
+        {"id": "fenn_waiting", "at": {"tx": CX + 1, "ty": CY + 1}, "facing": "up",
+         "sprite": "npc_mentor", "movement": "static",
+         "dialogue_ref": "npc.fenn_waiting",
+         "requires_flag": "flag:fenn_errand", "hidden_when_flag": "flag:has_satchel"},
+        {"id": "fenn_ready", "at": {"tx": CX + 1, "ty": CY + 1}, "facing": "up",
+         "sprite": "npc_mentor", "movement": "static",
+         "dialogue_ref": "script.intro_mentor",
+         "requires_flag": "flag:has_satchel", "hidden_when_flag": "flag:has_starter"},
+        {"id": "fenn_after", "at": {"tx": CX + 1, "ty": CY + 1}, "facing": "up",
+         "sprite": "npc_mentor", "movement": "static",
+         "dialogue_ref": "npc.fenn_waystone_after",
+         "requires_flag": "flag:has_starter", "hidden_when_flag": "flag:dusk_begins"},
     ],
     "gates": [],
     "music": "assets/audio/music/tinderwick-a.mp3",

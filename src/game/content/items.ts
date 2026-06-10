@@ -27,6 +27,12 @@ export const ITEMS: ItemRegistry = {
     category: 'medicine',
     heal: 20,
   },
+  fenn_satchel: {
+    id: 'fenn_satchel',
+    name: "Fenn's Satchel",
+    desc: 'The Star-tender\'s worn field-satchel, left on the store counter. Heavier than it looks — a Wayfaring lives in it.',
+    category: 'key',
+  },
   beacon_wick: {
     id: 'beacon_wick',
     name: 'Beacon Wick-key',

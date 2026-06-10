@@ -226,6 +226,12 @@ export class WorldScene extends Phaser.Scene {
     return true;
   }
 
+  /** A hidden trigger is GONE (it must not swallow the step's warp/encounter roll),
+   *  unlike a requires_flag one, which stays present to deliver its blocked_ref. */
+  private triggerActive(trigger: EventTrigger): boolean {
+    return !(trigger.hidden_when_flag && this.flags.get(trigger.hidden_when_flag));
+  }
+
   private spawnNpcs(): void {
     for (const placement of this.map.def.npcs) {
       if (this.npcVisible(placement)) this.npcs.push(new Npc(this, placement));
@@ -290,7 +296,11 @@ export class WorldScene extends Phaser.Scene {
     }
 
     const trigger = this.map.def.triggers.find(
-      (t) => t.activation === 'interact' && t.at.tx === ahead.tx && t.at.ty === ahead.ty,
+      (t) =>
+        t.activation === 'interact' &&
+        t.at.tx === ahead.tx &&
+        t.at.ty === ahead.ty &&
+        this.triggerActive(t),
     );
     if (trigger) {
       await this.handleTrigger(trigger);
@@ -483,7 +493,7 @@ export class WorldScene extends Phaser.Scene {
     }
 
     const trigger = this.map.def.triggers.find(
-      (t) => t.activation === 'step_on' && t.at.tx === tx && t.at.ty === ty,
+      (t) => t.activation === 'step_on' && t.at.tx === tx && t.at.ty === ty && this.triggerActive(t),
     );
     if (trigger) {
       void this.handleTrigger(trigger);

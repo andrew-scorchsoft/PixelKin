@@ -344,6 +344,31 @@
   "encounters": [],
   "npcs": [
     {
+      "id": "shopkeeper_early",
+      "at": {
+        "tx": 6,
+        "ty": 2
+      },
+      "facing": "down",
+      "sprite": "npc_shopkeeper",
+      "movement": "static",
+      "dialogue_ref": "npc.tinderwick_keeper_early",
+      "hidden_when_flag": "flag:fenn_errand"
+    },
+    {
+      "id": "shopkeeper_errand",
+      "at": {
+        "tx": 6,
+        "ty": 2
+      },
+      "facing": "down",
+      "sprite": "npc_shopkeeper",
+      "movement": "static",
+      "dialogue_ref": "npc.tinderwick_keeper_errand",
+      "requires_flag": "flag:fenn_errand",
+      "hidden_when_flag": "flag:has_starter"
+    },
+    {
       "id": "shopkeeper_kit",
       "at": {
         "tx": 6,
@@ -353,6 +378,7 @@
       "sprite": "npc_shopkeeper",
       "movement": "static",
       "dialogue_ref": "script.shop_kit_tinderwick",
+      "requires_flag": "flag:has_starter",
       "hidden_when_flag": "flag:tinderwick_kit"
     },
     {
@@ -366,6 +392,19 @@
       "movement": "static",
       "dialogue_ref": "npc.tinderwick_shopkeeper",
       "requires_flag": "flag:tinderwick_kit"
+    },
+    {
+      "id": "fenn_satchel",
+      "at": {
+        "tx": 4,
+        "ty": 4
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.take_satchel",
+      "requires_flag": "flag:fenn_errand",
+      "hidden_when_flag": "flag:has_satchel"
     }
   ],
   "gates": [],

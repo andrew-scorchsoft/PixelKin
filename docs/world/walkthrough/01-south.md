@@ -14,9 +14,11 @@ interact, enter buildings, fight a wild kin, catch with the vesperlamp, the type
 the first trainer battle), lands the story's inciting incident, and hands the player their
 first traversal Gift, **Tidecall**.
 
-- **Entry state:** brand-new game. Level-5 starter, a freshly gifted **vesperlamp**, an
-  empty party of one, no Gleams, no flags. Player spawns at the door of their house in
-  Tinderwick (`start_at {tx:8, ty:16}`).
+- **Entry state:** brand-new game. NO kin and NO lamp yet — the opening is the **satchel
+  errand** (below): the player spawns at the door of their house in Tinderwick, is turned
+  back at the warded north gate, finds **Fenn at the Vesper Crossroads waystone**, fetches
+  his satchel from the store, and receives the **vesperlamp** + level-5 **starter** at the
+  waystone ceremony. No Gleams, no flags.
 - **Exit state handed to East:** ~level 16, party of **2–3** bonded kin, holding
   **Tidecall**, `gleam:ember` + `gleam:tide` earned, **`flag:crown_south` set** (the engine
   sets it once both South constellations relight). The East writer assumes Tidecall is held,
@@ -45,8 +47,14 @@ regions copy its scripts. What's wired (`src/game/content/scripts.ts` + `cinemat
   (`silence` → gutter sting → `flash`) → the lamplit doorway / the calling → a distant cowled
   figure under the dead sky (the Hollowing **seed**). Foreboding **and** aspirational; skippable
   (Cancel). Music: `coldopen-foreboding`.
-- **C1 `intro_mentor`.** Fenn carries **portraits** (grave→warm→smile) and a warm `tint` bloom
-  on the vesperlamp gift; the cosy town bed holds (dread only in his face on the lost-star line).
+- **C1 the satchel errand → `intro_mentor`.** C1 is a small LOOP, not a tile-touch: the
+  north **gate-warden intercepts** an unstarted player (`script.gate_warden` — emote, warning,
+  walked back a step; the coast warps are `has_starter`-gated), every early voice points EAST,
+  Fenn **hails the player across the plaza** (`script.fenn_wave`, camera focus) and asks for his
+  forgotten satchel (`script.fenn_crossroads` → `flag:fenn_errand`); the store counter holds it
+  (`script.take_satchel` → `flag:has_satchel`); the ceremony (`script.intro_mentor`) then runs
+  **at the waystone** — portraits (grave→warm→smile), a warm `tint` bloom on the vesperlamp
+  gift, the cosy bed holding (dread only in Fenn's face on the lost-star line).
 - **B1 `dusk_begins`** — the load-bearing dread set-piece: `letterbox on → silence(hold) →
   narrate → world-star-gutter sting + cold `tint` + `shake` → narrate → crossfade the bed back,
   uneasier → letterbox off`. **This staging is binding for every later "a light fails" beat.**
@@ -76,34 +84,50 @@ the BUILT worked example every region's loop varies from).** Tinderwick's tower 
 longer happens in the hall five minutes in; it is *earned* via a loop that sends the
 player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff:
 
-1. **Main path** (the "lantern spine" + the beacon loop):
+1. **Main path** (the satchel errand + the beacon loop):
    1. **Step out of the house.** Spawn at the door tile; movement taught by doing.
-      (Optional: the warm interior, with a free **bed rest-heal**, first.)
-   2. **Meet Fenn + Wren on the spine.** The `intro_mentor` cutscene gifts the
-      **vesperlamp** and the **starter**; signs teach "interact".
-   3. **Catch a kin in the verge** (the band straddling the north exit lane). Any catch
+      (Optional: the warm interior, with a free **bed rest-heal**, first — Gran points
+      east to Fenn.)
+   2. **Try the north gate (most players will).** The **gate-warden** runs the intercept:
+      it's dangerous out there without a lit lamp, and Star-tender Fenn went EAST to the
+      Crossroads waystone, asking after you. (Band `gate_warden`, hidden once
+      `flag:has_starter`; both coast warps gated on the same flag.) **Wren** wanders by
+      the garden on the way east — A1's meet-the-rival beat.
+   3. **Walk the Lanternway to the waystone.** The lit east lane is safe (and pre-starter,
+      wild encounters can't fire anyway). Fenn hails you into the plaza (`fenn_wave`),
+      then asks the favour: his **satchel**, forgotten on the Tinderwick store counter
+      (`script.fenn_crossroads` → `flag:fenn_errand`). The Pearlmoor spoke east is
+      `has_starter`-gated, so the errand can't be wandered past.
+   4. **Fetch the satchel** (the store, beside the counter — an item_cache;
+      `flag:has_satchel`), and bring it back to the waystone.
+   5. **The ceremony (`script.intro_mentor`).** Out of the satchel: the **vesperlamp**,
+      then the **starter** — chosen at the crossroads where every Wayfaring in
+      Vesperholm begins. Fenn points you home: verge grass, the keeper's kit, Brisa.
+   6. **Catch a kin in the verge** (the band straddling the north exit lane). Any catch
       sets `flag:caught_first_kin` — until then Brisa only teases (`npc.brisa_not_ready`).
-   4. **Brisa's errand (the hall).** In the Lumenary hall Brisa explains: the Ember is
+   7. **Brisa's errand (the hall).** In the Lumenary hall Brisa explains: the Ember is
       relit from the **beacon**, whose **wick-key was lost on the coast road**
       (`script.brisa_quest` → `flag:beacon_quest`). The wick-locked tower door + sign
       are visible from the square — the goal stands over the town the whole time.
-   5. **Walk Dimglass Coast I** — Wren's sight-challenge, the mandatory grass
+   8. **Walk Dimglass Coast I** — Wren's sight-challenge, the mandatory grass
       crossings, the `dusk_begins` omen — and receive the **BEACON WICK-KEY** from the
       **old lamplighter** near the north boundary (`script.give_wick` →
       `flag:has_beacon_wick`). The player returns at ~lv 7–8, not 5.
-   6. **Climb the beacon.** The foot door answers the key; floors I–II are held by
+   9. **Climb the beacon.** The foot door answers the key; floors I–II are held by
       wick-tender **sight trainers** (Tansy lv7, Cole lv7/8); the spiral stairs land in
       the **lantern room**.
-   7. **Earn the Ember Gleam at the lantern** — `script.beacon_battle`: Brisa's
-      bond-test (ace 10, now a fair fight), then the great lamp blooms and the
-      constellation answers. Down in the square, the **Lantern-fair** (Arc E) is live.
-   8. **North to the coast again** — onward past the flats to Pearlmoor.
+   10. **Earn the Ember Gleam at the lantern** — `script.beacon_battle`: Brisa's
+       bond-test (ace 10, now a fair fight), then the great lamp blooms and the
+       constellation answers. Down in the square, the **Lantern-fair** (Arc E) is live.
+   11. **North to the coast again** — onward past the flats to Pearlmoor.
 
 2. **Story beats**
-   - **C1 — Fenn gifts the lamp & starter.** Warm, unhurried; Fenn is a *Star-tender*, never a
-     "Professor."
-     > Fenn: "Every Wayfarer leaves Tinderwick with two things — a lamp to carry the light
-     > home, and a friend to share the walk. Mind you tend them both."
+   - **C1 — the satchel errand → Fenn gifts the lamp & starter at the waystone.** Warm,
+     unhurried; Fenn is a *Star-tender*, never a "Professor" — and a little forgetful, which
+     is what makes the opening a favour between friends rather than a hand-out.
+     > Fenn: "Every Wayfarer leaves with two things, and they have been riding in this old
+     > bag all along... And fitting, is it not — every Wayfaring in Vesperholm begins at a
+     > crossroads."
    - **A1 — Meet & choose (Wren).** Wren is warm and competitive and picks the starter that
      *beats* yours along the Ember→Verdant→Tide→Ember triangle.
      > Wren: "Whatever you pick, I'm taking the one that'll give you trouble. Race you to
@@ -113,21 +137,25 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
      > Brisa: "A small flame's no lesser thing, dear. You've kept yours steady — let it
      > stand up in the sky a while."
 
-3. **Mechanic introductions** — **move · talk · interact · enter buildings** · **first wild
+3. **Mechanic introductions** — **move · talk · interact · enter buildings** · **the
+   fetch-quest loop, twice and rising** (the satchel errand in miniature, then Brisa's
+   wick-key at route scale — the pattern the Waykeeper's Round scales up) · **first wild
    battle + catch** in the verge (`flag:caught_first_kin` is engine-set on any catch) ·
-   **the fetch-quest loop** (errand → route → return) · **sight trainers** (first met as
-   Wren on the coast, then formalised on the beacon stairs) · **vertical ascent** (the
-   beacon's three stacked floors — the game's first "going up").
+   **sight trainers** (first met as Wren on the coast, then formalised on the beacon
+   stairs) · **vertical ascent** (the beacon's three stacked floors — the game's first
+   "going up").
 
 4. **Optional content**
    - **`tinderwick_house` interior** — `[MISSABLE]` cosy cottage, a parent/keepsake line and
      the opening warmth; nothing gated.
    - **Town signs (square / dock / Lumenary / mentor)** — `[MISSABLE]` the "interact" lessons;
      the dock sign teases the sea-shallows ("the buoys only answer a lit lamp").
-   - **Lanternway spoke to Vesper Crossroads** — **[BUILT]** the `to_crossroads` lane leaves
-     Tinderwick's east edge (and Pearlmoor's west); the hub (`vesper_crossroads`) is live with
-     the Waykeeper, the Waystone plaza and signed sleeping roads. Its inward Spire road needs
-     `flag:hub_unlocked` (West/endgame) and the north marsh road is an inert tease.
+   - **Lanternway spoke to Vesper Crossroads** — **[BUILT, and now on the main path]** the
+     `to_crossroads` lane leaves Tinderwick's east edge (and Pearlmoor's west); the hub
+     (`vesper_crossroads`) is live with the Waykeeper, the Waystone plaza, **Fenn's opening
+     stages at the waystone**, and signed sleeping roads. The Pearlmoor spoke is
+     `has_starter`-gated; the inward Spire road needs `flag:hub_unlocked` (West/endgame)
+     and the north marsh road is an inert tease.
 
    **Named quests** (spine §5 kit):
    - **S2 "A Letter for Fenn"** — giver: the **house parent** (`tinderwick_house`) · steps:
@@ -146,10 +174,24 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
 6. **Validation hooks** (against built `tinderwick.json` + the beacon maps)
    - **Map id / kind:** `tinderwick` · town. Interiors: `tinderwick_house`,
      `tinderwick_lumenary` (the hall), `tinderwick_beacon_i/_ii/_top` (the tower).
-   - **Entry/exit:** spawn `start_at {tx:8,ty:16}`; north edge-warps `to_coast`/`to_coast_e`
-     → `dimglass_coast`; east `to_crossroads {tx:27,ty:16}` → `vesper_crossroads`; beacon
-     foot door `to_beacon` `interact {tx:24,ty:6}` **`requires_flag:flag:has_beacon_wick`**
+   - **Entry/exit:** spawn `start_at {tx:6,ty:17}`; north edge-warps `to_coast`/`to_coast_e`
+     → `dimglass_coast`, both **`requires_flag:flag:has_starter`**; east `to_crossroads
+     {tx:27,ty:16}` → `vesper_crossroads` (ungated — the opening's road); beacon foot door
+     `to_beacon` `interact {tx:24,ty:6}` **`requires_flag:flag:has_beacon_wick`**
      → `tinderwick_beacon_i`.
+   - **The opening errand chain (all data):** north gate band `gate_warden` `cutscene`
+     `step_on {tx:13,ty:1}` `hidden_when_flag:flag:has_starter` (warden body at `{14,1}`
+     blocks the twin column) → crossroads: `fenn_wave` once-band, `script.fenn_crossroads`
+     sets `flag:fenn_errand` → shop: item_cache `fenn_satchel` (`script.take_satchel` gives
+     `fenn_satchel`, sets `flag:has_satchel`) → waystone ceremony `script.intro_mentor` sets
+     `flag:has_vesperlamp` + `flag:has_starter`.
+   - **Fenn's waystone stages (flag-disjoint placements on one tile):** `fenn_pre`
+     (`script.fenn_crossroads`) → `fenn_waiting` (`npc.fenn_waiting`) → `fenn_ready`
+     (`script.intro_mentor`) → `fenn_after` (`npc.fenn_waystone_after`, until
+     `flag:dusk_begins` moves him to the coast for C2).
+   - **The shop counter stages:** `shopkeeper_early` (points east) → `shopkeeper_errand`
+     (the satchel) → `shopkeeper_kit` (`requires_flag:flag:has_starter` — the one-time kit)
+     → `shopkeeper` (plain).
    - **The beacon quest chain (all data):** verge catch → `flag:caught_first_kin` (engine,
      any catch) → hall: `script.brisa_quest` sets `flag:beacon_quest` → Dimglass I:
      `script.give_wick` (the old lamplighter, post-`dusk_begins`) gives item `beacon_wick`
@@ -162,9 +204,10 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
      `script.brisa_quest` → `npc.brisa_meet_beacon` → `npc.brisa_after` (post-Gleam).
    - **Encounters:** `verge_grass` · `tall_grass` · `encounter_rate 0.07` · kin **16**
      (w60, lv2–4) + **10** (w40, lv2–3) — level band 2–4 (§4 start-5).
-   - **NPCs / festival:** `mentor` (Fenn) static `npc.mentor_intro`; **Wren** wanders the
-     square (`npc.wren_intro`); Lantern-fair NPCs (`fair_piper`, `fair_kid`)
-     `requires_flag:'gleam:ember'`.
+   - **NPCs / festival:** gate-warden pair `gatewarden_pre`/`gatewarden_post` (swap on
+     `flag:has_starter`); **Wren** wanders near the garden until `flag:has_starter`
+     (`npc.wren_intro`); Lantern-fair NPCs (`fair_piper`, `fair_kid`)
+     `requires_flag:'gleam:ember'`. Fenn is at `vesper_crossroads`, not in town.
 
 ---
 
@@ -381,8 +424,9 @@ netmender's keeping.
    - **Gullcry Rock backtrack** (Dimglass II spur) — `[MUST-DO]` **[BUILT]** the rare
      harbour-light kin (Glostern) + the Tide Charm, now reachable; the region's signature
      "the map reopened" payoff.
-   - **Lanternway → Vesper Crossroads** — `[MISSABLE]` discover the hub as South's fast-travel
-     anchor; its inward Spire roads remain `[LATER]` (`flag:hub_unlocked`, West/endgame).
+   - **Lanternway → Vesper Crossroads** — already known: the hub is where the Wayfaring
+     BEGAN (the satchel errand); from Pearlmoor it now reads as South's fast-travel anchor.
+     Its inward Spire roads remain `[LATER]` (`flag:hub_unlocked`, West/endgame).
 
    **Named quests** (spine §5 kit; South's slate, with S2 over in Tinderwick):
    - **S1 "The Last Buoy Out"** — giver: the **netmender** (post-bell, her swap NPC) ·

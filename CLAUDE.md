@@ -495,6 +495,14 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `background=transparent`. Prefix the one transparent call:
   `OPENAI_IMAGE_MODEL=gpt-image-1 ./venv/bin/python …/generate.py --transparent …` (Google
   has no native alpha, so transparent always routes to OpenAI).
+- **The opening is the SATCHEL ERRAND, not a tile-touch (2026-06).** Fenn is NOT in town: he
+  waits at the `vesper_crossroads` waystone in four flag-disjoint placements (ask → waiting →
+  ceremony `script.intro_mentor` → after), the Tinderwick north gate is held by a warden
+  (intercept band `script.gate_warden` + `has_starter`-gated coast warps; Pearlmoor spoke
+  gated the same), and the satchel is an item_cache in `tinderwick_shop` (4-stage keeper).
+  `EventTrigger` now supports `hidden_when_flag` (mirror of NpcPlacement; a hidden trigger is
+  filtered at lookup so it can't swallow the step's warp/encounter). Pre-starter wandering is
+  safe by construction: wild encounters never fire with an empty party (`hasHealthyKin`).
 - **The South level curve is data-locked to the walkthrough:** Brisa ace 10 → Dimglass I wilds
   3–6 (+ Wren's friendly battle A2 + the B1 `dusk_begins` beat) → Dimglass II wilds 8–10 + two
   route-trainer beats → Reyl 12–16. Route trainer beat = static NPC + `step_on` cutscene tile

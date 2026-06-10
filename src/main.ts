@@ -47,7 +47,13 @@ const config: Phaser.Types.Core.GameConfig = {
   scene: [BootScene, PreloadScene, SplashScene, AttractScene, TitleScene, CinematicScene, WorldScene, BattleScene],
 };
 
-new Phaser.Game(config);
+const game = new Phaser.Game(config);
+
+// Dev-only handle so automated verification (and console poking) can read scene
+// state. Stripped from production builds (import.meta.env.DEV is compile-time).
+if (import.meta.env.DEV) {
+  (window as unknown as { __pixelkin?: Phaser.Game }).__pixelkin = game;
+}
 
 // Mount the device/overlay/plain shell chrome around the canvas (DOM, outside the
 // 240x160 game). Reads the saved view preference; its on-screen controls dispatch

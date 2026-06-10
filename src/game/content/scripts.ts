@@ -6,18 +6,64 @@
 import type { ScriptRegistry } from './types';
 
 export const SCRIPTS: ScriptRegistry = {
-  // The opening beat: the mentor crosses to you, gives the vesperlamp, and lets you
-  // choose a companion from the founding trio. Sets the flags later content checks.
-  // C1 (walkthrough/01-south §2): Star-tender Fenn — warm, unhurried, never a "Professor".
-  // Fenn waits on the lit spine at (13,12); the player triggers this from (13,11), one tile
-  // north. Fenn turns up to the apprentice and gifts the vesperlamp + a starter.
-  'script.intro_mentor': [
+  // --- The opening: the satchel errand at the Vesper Crossroads -----------------
+  // C1 (walkthrough/01-south §2) is now a small LOOP, not a tile-touch: the north
+  // gate-warden turns you back (it's dangerous out there), everyone points EAST to
+  // Star-tender Fenn at the Crossroads waystone, Fenn has left his satchel on the
+  // Tinderwick store counter, and the lamp-and-starter ceremony happens at the
+  // waystone once you bring it out to him. Warm, unhurried, never a "Professor".
+
+  // The north gate, pre-starter: the warden (posted in the gap at (14,1)) spots the
+  // player on the open column (13,1), warns them off, and walks them back a step.
+  // The trigger band is hidden_when 'flag:has_starter'; the warden swaps for a
+  // well-wisher (gatewarden_post) the moment the Wayfaring begins.
+  'script.gate_warden': [
+    { op: 'emote', actor: 'gatewarden_pre', emote: 'alert' },
+    { op: 'face', actor: 'gatewarden_pre', facing: 'left' },
+    { op: 'face', actor: 'player', facing: 'right' },
+    { op: 'say', speaker: 'GATE-WARDEN', text: 'Whoa there, apprentice! Not one step up the coast road without a lit lamp — the grass out there is crawling with wild kin since the dusk.' },
+    { op: 'say', speaker: 'GATE-WARDEN', text: 'Star-tender Fenn was asking after you this very morning. He walked out EAST, along the Lanternway — the Crossroads waystone wanted tending.' },
+    { op: 'say', speaker: 'GATE-WARDEN', text: 'Go on, find him. He had that look about him. The one that means it is YOUR turn.' },
+    { op: 'move', actor: 'player', to: { tx: 13, ty: 3 } },
     { op: 'face', actor: 'player', facing: 'up' },
-    { op: 'face', actor: 'mentor', facing: 'up' },
-    // The cosy Tinderwick bed is already playing; the grave first line rides a
-    // portrait, not a music change — warmth held, dread only in Fenn's face.
-    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'grave', text: 'There you are. The sky lost another light in the small hours — I felt it go.' },
-    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'So. It is time for your Wayfaring, at last. Every Wayfarer leaves Tinderwick with two things.' },
+    { op: 'face', actor: 'gatewarden_pre', facing: 'down' },
+  ],
+
+  // Crossing into the waystone plaza for the first time: Fenn hails the player
+  // from across the clearing so there's no "who do I talk to?" beat to fumble.
+  'script.fenn_wave': [
+    { op: 'emote', actor: 'fenn_pre', emote: 'alert' },
+    { op: 'cameraFocus', actor: 'fenn_pre', ms: 500 },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'Ho — over here, apprentice! By the waystone!' },
+    { op: 'cameraReset', ms: 500 },
+  ],
+
+  // Fenn at the waystone: delight, then the small ask — his satchel, forgotten on
+  // the Tinderwick store counter, with the whole Wayfaring packed inside it.
+  'script.fenn_crossroads': [
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'grave', text: 'There you are. The sky lost another light in the small hours — I felt it go. So I came out to tend the waystone lamp... and to wait for you.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'It is time for your Wayfaring, at last. I have everything you need right here in my—' },
+    { op: 'emote', actor: 'fenn_pre', emote: 'sweat' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'grave', text: '...my satchel. Which is sitting on the counter of the Tinderwick store, sure as sunrise used to be. Old hands, old head.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'Run it out to me, would you? Back west along the Lanternway — the lamps hold that road safe. Your Wayfaring can spare you one small errand first.' },
+    { op: 'setFlag', flag: 'flag:fenn_errand' },
+  ],
+
+  // The satchel on the store counter (an item_cache placement in tinderwick_shop;
+  // appears once Fenn asks, vanishes once taken).
+  'script.take_satchel': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'fenn_satchel', count: 1 },
+    { op: 'say', text: "The Star-tender's field-satchel, heavier than it looks. Took FENN'S SATCHEL!" },
+    { op: 'setFlag', flag: 'flag:has_satchel' },
+  ],
+
+  // The ceremony at the waystone: the satchel comes home, and out of it come the
+  // two things every Wayfarer leaves with. The cosy bed holds; the grave notes ride
+  // portraits, not music changes — warmth held, dread only in Fenn's face.
+  'script.intro_mentor': [
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'smile', text: 'My satchel — and my apprentice. Both delivered by the same pair of feet. A tidy omen, that.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'Now. Every Wayfarer leaves with two things, and they have been riding in this old bag all along.' },
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'The first — a lamp, to carry the light home. Take it. Your vesperlamp.' },
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'tint', color: '#ff8a3d', alpha: 0.28, ms: 240 }, // a warm bloom as the lamp kindles
@@ -25,8 +71,8 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'tint', color: '#ff8a3d', alpha: 0, ms: 600 },
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'And the second — a friend, to share the walk through the dark. Go on. Choose.' },
     { op: 'giveStarter' },
-    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'smile', text: 'Mind you tend them both, and they will tend you. Off into the dusk with you.' },
-    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'Brisa keeps the Lumenary up the square. Catch a kin first — then go earn her Ember Gleam.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'smile', text: 'Mind you tend them both, and they will tend you. And fitting, is it not — every Wayfaring in Vesperholm begins at a crossroads.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'Back along the Lanternway with you now. Catch a kin in the verge by the north gate — the keeper holds a Wayfarer\'s kit for you, town custom — then go see Brisa at the Lumenary.' },
     { op: 'setFlag', flag: 'flag:has_vesperlamp' },
     { op: 'setFlag', flag: 'flag:has_starter' },
   ],

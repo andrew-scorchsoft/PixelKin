@@ -91,7 +91,7 @@ quadrant of the **Skyweave Crown**; the completed Crown parts the **Penumbra** a
 
 | # | Beat | Where | Earns | Sets flags (canon) |
 |---|------|-------|-------|--------------------|
-| 0 | Wayfaring begins — Star-tender **Fenn** gifts the vesperlamp + starter | Tinderwick | starter, vesperlamp | `flag:has_vesperlamp`, `flag:has_starter` |
+| 0 | Wayfaring begins — the **satchel errand**: Fenn waits at the Crossroads waystone; fetch his satchel from town and he gifts the vesperlamp + starter at the waystone | Tinderwick → Vesper Crossroads | starter, vesperlamp | `flag:fenn_errand`, `flag:has_satchel`, `flag:has_vesperlamp`, `flag:has_starter` |
 | 1 | **Ember Gleam** — Brisa Tallow vouches your bond (gentle first Lumenary) | Tinderwick | Gleam: Ember | `gleam:ember` |
 | — | **Inciting incident** — a constellation winks out on your first night | Dimglass Coast | — | `flag:dusk_begins` |
 | 2 | **Tide Gleam** + **Tidecall** | Pearlmoor Quay | Gleam: Tide, Tidecall | `gleam:tide`, ability `tidecall`, → `flag:crown_south` |
@@ -160,7 +160,7 @@ weight and a reason Fenn understands Còr.
 
 | Beat | Area |
 |------|------|
-| C1 Gift the lamp & starter | Tinderwick |
+| C1 Gift the lamp & starter (the satchel errand; ceremony at the waystone) | Tinderwick → Vesper Crossroads |
 | C2 Explain the Skyweave & the winking-out | South (after `dusk_begins`) |
 | C3 Reveal the shared past with Còr | North (around `met_cor`) |
 | C4 Counsel before the Spire | Vesper Crossroads / Nightreach |

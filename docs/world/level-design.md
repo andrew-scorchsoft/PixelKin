@@ -103,9 +103,15 @@ sketch). Anchor placement, from spawn outward:
 
 1. **Spawn at/near the player's house** (south end). The very first action is stepping out
    the door — movement taught by doing.
-2. **Mentor stands on the only natural path** a few tiles north, beside a **sign** — the
-   player can't help but reach them; talking is taught, the sign teaches "interact", and the
-   mentor cutscene grants vesperlamp + starter (`flag:has_vesperlamp`, `flag:has_starter`).
+2. **The mentor is found, not bumped into** *(revised 2026-06 — the built opening)*: the
+   forward (north) exit is held by a **gate-warden** (a `hidden_when_flag` step-on band +
+   `has_starter`-gated edge warps; the warden intercepts, warns, and walks the player back),
+   and every early voice (warden, Gran, shopkeeper, waymark sign) points **east along the
+   safe Lanternway** to Star-tender Fenn at the **Crossroads waystone**. Fenn sends the
+   player back for his forgotten **satchel** (the store counter), and the ceremony —
+   vesperlamp + starter (`flag:has_vesperlamp`, `flag:has_starter`) — happens **at the
+   waystone** when it comes home. Talking is the trigger (`dialogue_ref` scripts on the NPC),
+   never a bare invisible tile.
 3. **The Lumenary sits central and tallest** — the visual landmark of the town, readable
    from spawn, so the player's eye has a goal even before they can win it. (Lumenary 1 is
    gentle/optional-timing; its door can require `flag:has_starter`.)
@@ -118,9 +124,11 @@ sketch). Anchor placement, from spawn outward:
    **return spoke** (the Lanternway to the hub) introduced later. The forward exit is the
    widest, most-lit lane.
 
-Teaching ramp, in order, all without a single pop-up tutorial: *leave house (move) → meet
-mentor (talk + cutscene) → read dock sign (interact) → optionally enter shop/Lumenary
-(door warp) → step into the verge on the way out (first encounter).*
+Teaching ramp, in order, all without a single pop-up tutorial: *leave house (move) → try the
+north gate and meet the warden (a soft "no", and the pointer east) → walk the Lanternway to
+Fenn (talk) → fetch the satchel from the store (enter buildings, the fetch-quest loop in
+miniature) → the waystone ceremony (lamp + starter) → step into the verge on the way north
+(first encounter).*
 
 ### Fork D — Tutorial route design (Dimglass Coast) & teasing locked gifts
 
@@ -277,8 +285,9 @@ art or scatter objects across the wrong layer.
 ## 4. Starter-town pattern (the "lantern spine")
 
 See Fork C for the rules; §7.1 for the annotated Tinderwick sketch realising them. The
-ordered anchors: **house/spawn (S) → mentor + sign on the path → central tall Lumenary →
-shop/sign furniture → verge by the exit → forward route exit (+ later: hub spoke).**
+ordered anchors: **house/spawn (S) → warded forward exit + voices pointing to the mentor
+(the satchel-errand opening, Fork C item 2) → central tall Lumenary → shop/sign furniture →
+verge by the exit → forward route exit (+ the hub spoke, where the ceremony happens).**
 
 ## 5. Tutorial-route pattern (Dimglass Coast)
 
@@ -368,12 +377,16 @@ path; Lumenary central & tall; verge by the north exit; sea (Tidecall-teased) to
   `interact` at **(8,8)**. `to_lumenary` — `interact` at **(18,8)** → `tinderwick_lumenary`
   (optionally `requires_flag:'flag:has_starter'`). *(Later: `to_crossroads` Lanternway spoke
   — add a west or north secondary exit when the hub is built.)*
-- **Triggers:** `intro_mentor` — `cutscene`, `step_on` **(11,11)** beside the mentor,
-  `once:true`, `sets_flags:['flag:has_vesperlamp','flag:has_starter']`. Signs (`kind:'sign'`,
-  `interact`): dock/shore sign **(9,19)** area, square signs at **(2,9)/(11,9)/(20,9)** and a
-  mentor sign **(10,12)** — these are the "press to read" lessons.
-- **NPCs:** `mentor` at **(10,11)** `static`, `dialogue_ref:'npc.mentor_intro'`. `child_runner`
-  / rival-friend at **(14,14)** `wander`. Keep NPC paths off the spine's choke tiles.
+- **Triggers** *(as built — the satchel-errand opening; this sketch predates it)*:
+  `gate_warden` — `cutscene`, `step_on` on the open gate column,
+  `hidden_when_flag:'flag:has_starter'` (the warden's body blocks the other column; the
+  ceremony itself lives on Fenn at the Crossroads waystone, not on a town tile). Signs
+  (`kind:'sign'`, `interact`): dock/shore, square, and the waymark by the spine — the
+  "press to read" lessons.
+- **NPCs:** `gatewarden_pre`/`gatewarden_post` flag-pair at the north gap. Fenn is NOT in
+  town — he waits at `vesper_crossroads` in four flag-disjoint stages (see
+  `build_crossroads.py`). Rival **Wren** wanders near the garden until `flag:has_starter`.
+  Keep NPC paths off the spine's choke tiles.
 - **Encounters:** `verge_grass` `tall_grass`, `rect{tx:13,ty:2,w:6,h:2}` (the `"` band),
   `encounter_rate:0.07`, table = Wickmoth/Tallowpup (atlas kin), lv 2–4.
 - **Gates / `shallows`:** the `s` shallows are a **Tidecall tease** — leave them gated; the

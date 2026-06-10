@@ -198,7 +198,7 @@ def build_lumenary(id_, name, music, out_warp, script_ref, sign_ref, warden_id, 
 #  SHOPS (warm) — tinderwick & pearlmoor
 # =============================================================================
 def build_shop(id_, name, music, out_warp, sign_ref, keeper_id, keeper_dialogue,
-               kit_script=None, kit_flag=None):
+               kit_script=None, kit_flag=None, npcs_override=None):
     W, H = 12, 9
     door_x = W // 2  # tx 6
     base, over = faced_room(W, H, door_x)
@@ -228,8 +228,13 @@ def build_shop(id_, name, music, out_warp, sign_ref, keeper_id, keeper_dialogue,
     # Until coin is wired, the keeper hands a one-time Wayfarer's kit: the KIT
     # placement (runs the gift script) swaps for the PLAIN keeper via the kit
     # flag — refreshNpcs() makes the swap land the moment the script finishes.
+    # `npcs_override` replaces the keeper stack entirely (Tinderwick's opening
+    # errand needs more stages); entries with at="counter" land behind it.
     npcs = []
-    if kit_script and kit_flag:
+    if npcs_override is not None:
+        npcs = [dict(n, at={"tx": door_x, "ty": 2}) if n.get("at") == "counter" else n
+                for n in npcs_override]
+    elif kit_script and kit_flag:
         npcs.append({"id": f"{keeper_id}_kit", "at": {"tx": door_x, "ty": 2}, "facing": "down",
                      "sprite": "npc_shopkeeper", "movement": "static",
                      "dialogue_ref": kit_script, "hidden_when_flag": kit_flag})
@@ -337,10 +342,42 @@ def write_and_render(m):
 def all_maps():
     return [
         build_house(),
+        # The Tinderwick keeper has FOUR flag-disjoint stages (the opening's satchel
+        # errand runs through this counter before the kit/plain pair takes over):
+        #   early  (t0)                      -> points the player east to Fenn
+        #   errand (Fenn asked)              -> "satchel's by the counter, dear"
+        #   kit    (Wayfaring begun, no kit) -> the one-time Wayfarer's kit
+        #   plain  (kit given)               -> flavour
+        # Plus Fenn's satchel itself: an item_cache beside the counter while the
+        # errand runs (script.take_satchel -> flag:has_satchel).
         build_shop("tinderwick_shop", "Tinderwick General Store",
                    "assets/audio/music/tinderwick-b.mp3", ("tinderwick", 5, 8),
                    "sign.tinderwick_shop_wares", "shopkeeper", "npc.tinderwick_shopkeeper",
-                   kit_script="script.shop_kit_tinderwick", kit_flag="flag:tinderwick_kit"),
+                   npcs_override=[
+                       {"id": "shopkeeper_early", "at": "counter", "facing": "down",
+                        "sprite": "npc_shopkeeper", "movement": "static",
+                        "dialogue_ref": "npc.tinderwick_keeper_early",
+                        "hidden_when_flag": "flag:fenn_errand"},
+                       {"id": "shopkeeper_errand", "at": "counter", "facing": "down",
+                        "sprite": "npc_shopkeeper", "movement": "static",
+                        "dialogue_ref": "npc.tinderwick_keeper_errand",
+                        "requires_flag": "flag:fenn_errand",
+                        "hidden_when_flag": "flag:has_starter"},
+                       {"id": "shopkeeper_kit", "at": "counter", "facing": "down",
+                        "sprite": "npc_shopkeeper", "movement": "static",
+                        "dialogue_ref": "script.shop_kit_tinderwick",
+                        "requires_flag": "flag:has_starter",
+                        "hidden_when_flag": "flag:tinderwick_kit"},
+                       {"id": "shopkeeper", "at": "counter", "facing": "down",
+                        "sprite": "npc_shopkeeper", "movement": "static",
+                        "dialogue_ref": "npc.tinderwick_shopkeeper",
+                        "requires_flag": "flag:tinderwick_kit"},
+                       {"id": "fenn_satchel", "at": {"tx": 4, "ty": 4}, "facing": "down",
+                        "sprite": "item_cache", "movement": "static",
+                        "dialogue_ref": "script.take_satchel",
+                        "requires_flag": "flag:fenn_errand",
+                        "hidden_when_flag": "flag:has_satchel"},
+                   ]),
         # The Ember Lumenary HALL: no battle here any more — the bond-test waits
         # at the BEACON TOP (the earned first Gleam). Brisa stages the quest from
         # the dais: catch-first -> the wick-key errand -> "meet me at the lantern"
