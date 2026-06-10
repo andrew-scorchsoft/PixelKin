@@ -286,12 +286,11 @@ From `graph.ts` edges + atlas §3. Each Gift, once earned, opens these — regio
 
 ### Engine mechanics the journey assumes (dependencies, not new design)
 The battle beats from ~Pearlmoor on assume **status conditions** (`scorch · drench · numb ·
-doze · blight · dazzle · chill`) and a **move-learning prompt** are live — both are on the
-engine roadmap (`docs/mechanics/battle-runtime-plan.md`) but not yet wired. Region files may
-write battles that *use* status (e.g. a Lampwarden built around `doze`), and should flag
-where a beat depends on these so they're prioritised. (The **wick economy, shops and
-Star-charts ARE live** — see `10-economy.md`; the chart "set a move aside" flow is the UI
-the move-learning prompt should reuse.)
+doze · blight · dazzle · chill`) are live — still on the engine roadmap
+(`docs/mechanics/battle-runtime-plan.md` Part B), so region files may write battles that
+*use* status but should flag the dependency. The **move-learning prompt IS live** (Part A,
+2026-06: `ui/MoveLearnPrompt`, shared by level-ups and Star-charts), as are the **wick
+economy, shops and Star-charts** (`10-economy.md`).
 
 ### The standing per-region kit (BUILT in South — every region copies it)
 South established the small, repeatable mechanics every region is expected to ship, all

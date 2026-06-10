@@ -43,7 +43,7 @@
       },
       {
         "level": 19,
-        "move": "light_pulse"
+        "move": "spark_mote"
       },
       {
         "level": 24,
@@ -51,11 +51,19 @@
       },
       {
         "level": 31,
+        "move": "shardstorm"
+      },
+      {
+        "level": 40,
         "move": "tremor_quake"
       },
       {
         "level": 48,
         "move": "boulder_smash"
+      },
+      {
+        "level": 48,
+        "move": "prism_lance"
       }
     ],
     "kindling": [],

@@ -51,6 +51,10 @@
       },
       {
         "level": 31,
+        "move": "lightspire"
+      },
+      {
+        "level": 40,
         "move": "dawnburst"
       }
     ],

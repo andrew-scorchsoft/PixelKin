@@ -46,6 +46,10 @@
       },
       {
         "level": 31,
+        "move": "noonblaze"
+      },
+      {
+        "level": 40,
         "move": "sunburst_nova"
       }
     ],

@@ -43,7 +43,7 @@
       },
       {
         "level": 19,
-        "move": "hollow_pulse"
+        "move": "gloom_spit"
       },
       {
         "level": 24,
@@ -51,7 +51,7 @@
       },
       {
         "level": 31,
-        "move": "tempest"
+        "move": "skybreak"
       }
     ],
     "kindling": [],

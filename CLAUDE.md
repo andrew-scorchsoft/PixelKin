@@ -153,8 +153,8 @@ go digging on every task.
 - **Roster:** **153 kin** — the **151** curated from ~463 concepts via a panel-scored
   pipeline (the ~312 cuts are archived as an idea bank), **plus the third starter line
   added later** (#152 **Cloverkit** → #153 **Cloverhart**, Verdant; appended at the end
-  so the original 1–151 numbering is untouched). Moves: **≤4 per kin** from a ~94-move
-  shared pool + 28 abilities. (`docs/mechanics/dex.md` for the readable dex)
+  so the original 1–151 numbering is untouched). Moves: **≤4 per kin** from a **125-move**
+  shared pool (wave 2: full phys/spec ladders per type + 13 signature moves) + 28 abilities. (`docs/mechanics/dex.md` for the readable dex)
 - **Starters:** the founding trio is **complete** — #1 **Vulpyre** (Ember), #2 **Brinix**
   (Tide), #152 **Cloverkit** (Verdant) — the three creatures on the logo. To add/retune a
   starter or any kin, edit `docs/mechanics/concepts/selected.json` (+ a `CANON` override in
@@ -308,6 +308,13 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   validators/sim — update the schema (`docs/mechanics/08-data-schema.md`) and tooling too.
 - **`species.json` is an aggregate** of the per-kin files in `species/`. If you hand-edit
   a species file, regenerate/realign the aggregate rather than editing only one.
+- **`moves.json` + the species files are GENERATED — never hand-edit them.** New/changed
+  moves go in `tools/balance/gen_moves.py`; hand-curated encounter placements in
+  `build_species.py EXTRA_ENCOUNTERS` (the Pearlmoor tables live there); signature-move
+  owners in `SIGNATURE_MOVES`. Re-run `gen_moves.py` → `build_species.py` → `gen_docs.py`,
+  then the validators. Signature moves are excluded from the generic pools in
+  `autobuild.mjs`/`chart_check.mjs` (one-line moves would skew fair fights) — keep that
+  invariant if you touch either.
 - **Re-run the validators after roster/move edits** (`node tools/balance/validate.mjs`,
   then `simulate.mjs`); the roster's selling point is that it's *empirically* balanced.
 - **The economy's numbers live in THREE mirrored places — keep them in sync.** Prices/payouts:

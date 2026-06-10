@@ -20,6 +20,7 @@ import { Panel } from './Panel';
 import { Cursor } from './Cursor';
 import { Menu, type MenuOption } from './Menu';
 import { DialogueBox } from './DialogueBox';
+import { MoveLearnPrompt } from './MoveLearnPrompt';
 import { InputController, InputAction } from '@game/systems/input/InputController';
 import { KinInstance } from '@game/systems/party/KinInstance';
 import { MOVE_BY_ID } from '@game/data/dex';
@@ -311,27 +312,16 @@ export class ItemsMenu {
       return;
     }
 
-    if (!kin.learnMove(move)) {
-      // All four slots taken — the classic choice: set one aside, or give up.
-      const opts: MenuOption[] = kin.moves.map((k, i) => ({
-        label: `${k.move.name}`,
-        value: String(i),
-      }));
-      opts.push({ label: `GIVE UP ON ${move.name.toUpperCase()}`, value: 'giveup' });
-      await new DialogueBox(this.scene, this.sfx).run([
-        { text: `${kin.displayName} wants to learn ${move.name}, but already knows four moves. Set one aside?` },
-      ]);
-      const choice = await new Menu(this.scene, opts, { x: 8, y: 8, sfx: this.sfx, cancellable: true }).run();
-      if (choice === null || choice === 'giveup') return;
-      kin.replaceMove(Number(choice), move);
-    }
+    await new DialogueBox(this.scene, this.sfx).run([
+      { text: `${kin.displayName} traces the chart by lamplight...` },
+    ]);
+    const learned = await new MoveLearnPrompt(this.scene, kin, move, this.sfx).run();
+    if (!learned) return; // gave up — the chart is unspent
 
-    // Spend the chart and celebrate the study.
+    // Spend the chart.
     this.inventory.items[entry.id] = (this.inventory.items[entry.id] ?? 1) - 1;
     if (this.inventory.items[entry.id] <= 0) delete this.inventory.items[entry.id];
-    void this.sfx?.playVariant('progress-learn', ['a', 'b']);
     await new DialogueBox(this.scene, this.sfx).run([
-      { text: `${kin.displayName} traces the chart by lamplight... and learns ${move.name}!` },
       { text: 'The chart\'s glow fades — its figure now lives in your kin.' },
     ]);
     this.rebuild();

@@ -38,6 +38,10 @@
       },
       {
         "level": 13,
+        "move": "gritfist"
+      },
+      {
+        "level": 22,
         "move": "rock_hurl"
       },
       {

@@ -49,7 +49,7 @@
       },
       {
         "level": 19,
-        "move": "bubble_hum"
+        "move": "mist_spray"
       },
       {
         "level": 24,
@@ -57,7 +57,7 @@
       },
       {
         "level": 31,
-        "move": "eclipse_wave"
+        "move": "moonflood"
       }
     ],
     "kindling": [],

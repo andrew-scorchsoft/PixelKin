@@ -32,6 +32,10 @@
     "levelup": [
       {
         "level": 1,
+        "move": "bubble_hum"
+      },
+      {
+        "level": 1,
         "move": "quick_jab"
       },
       {
@@ -44,7 +48,7 @@
       },
       {
         "level": 13,
-        "move": "bubble_hum"
+        "move": "tide_pulse"
       },
       {
         "level": 24,

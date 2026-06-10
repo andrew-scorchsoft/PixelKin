@@ -39,11 +39,15 @@
       },
       {
         "level": 13,
-        "move": "thunder_kick"
+        "move": "joltfang"
       },
       {
         "level": 19,
-        "move": "radiant_strike"
+        "move": "lumen_cut"
+      },
+      {
+        "level": 22,
+        "move": "thunder_kick"
       },
       {
         "level": 24,

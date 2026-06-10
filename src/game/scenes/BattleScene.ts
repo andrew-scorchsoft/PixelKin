@@ -36,6 +36,7 @@ import { effectivenessLabel } from '@game/systems/battle/types';
 import { Battler } from '@game/ui/battle/Battler';
 import { HpPanel } from '@game/ui/battle/HpPanel';
 import { BattleMessage } from '@game/ui/battle/BattleMessage';
+import { MoveLearnPrompt } from '@game/ui/MoveLearnPrompt';
 import { getTrainer, getTrainerLines } from '@game/content/trainers';
 import { getItem } from '@game/content/items';
 import { trainerPayout } from '@game/content/economy';
@@ -551,7 +552,7 @@ export class BattleScene extends Phaser.Scene {
 
     void this.sfx.play('battle-xp');
     const before = winner.level;
-    const { learned } = winner.gainExp(totalGain);
+    const { learned, pending } = winner.gainExp(totalGain);
     await this.msg.show(`${winner.displayName} gained ${totalGain} EXP!`);
     await this.playerHp.animateTo();
 
@@ -561,6 +562,12 @@ export class BattleScene extends Phaser.Scene {
       await this.msg.show(`${winner.displayName} grew to Lv${winner.level}!`);
       for (const m of learned) {
         await this.msg.show(`${winner.displayName} learned ${m.name}!`);
+      }
+      // A full kit met a new move: the player chooses what to set aside.
+      for (const m of pending) {
+        this.msg.setVisible(false);
+        await new MoveLearnPrompt(this, winner, m, this.sfx).run();
+        this.msg.setVisible(true);
       }
     }
   }

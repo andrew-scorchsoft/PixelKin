@@ -125,12 +125,13 @@ sold (a star-tender's hand-pressed originals). Never "TM/HM": traversal is
 the ITEMS menu → pick a kin → learn. Compatibility (`KinInstance.canStudy`):
 the kin **shares the move's type**, the move is **Plain**, or the move is
 already in its species learnset (levelup/kindling/tutor). Already-known
-refuses; a full moveset prompts the classic *set one aside / give up* choice
-(this forget-flow is the same UI the level-up move-learn prompt —
-battle-runtime-plan Part A — should reuse).
+refuses; a full moveset runs the shared **`ui/MoveLearnPrompt`** (the same
+set-one-aside flow battle level-ups use — battle-runtime-plan Part A, shipped).
+Giving up at the prompt leaves the chart **unspent**.
 
-**The pool & pricing tiers.** Charts draw from the existing 94-move pool —
-each type's Light (58) and Standard (78) moves plus Plain utility:
+**The pool & pricing tiers.** Charts draw from the 125-move pool (wave 2 —
+both channels now run full ladders per type); signature moves are **never**
+printed as charts (they belong to one line):
 
 | Tier | Power band | Price | Where |
 |---|---|---:|---|
@@ -143,15 +144,16 @@ Nuke charts (Tempest, Sunburst Nova, Eclipse Wave, Maelstrom…) are
 **find-first**: landmark/Lamplight rewards, with at most one late counter
 stocking one. Heavy/Nuke charts are why late optional content pays.
 
-**Recommendations (move pool).** 94 moves (74 typed + 20 Plain, only **2
-signature**) is *sufficient* for charts v1 but symmetrical to a fault — every
-type has exactly one move per band. Recommended wave 2 (run through the full
-`tools/balance/` pipeline, **not** hand-edits): +20–26 moves — a second
-status/utility per type, a physical/special twin where a type lacks one, and
-**+10–14 signature moves for late warden aces and Tier-E/F kin** so late
-bosses are hard because of *kit*, not just level (Nessa's ace with a
-signature Lunar move ≫ a generic moveset at +2 levels). Re-run `validate.mjs`
-+ `simulate.mjs` after; the win-rate guarantee is the roster's selling point.
+**Wave 2 — DONE (2026-06).** The pool grew 94 → **125** through the pipeline
+(`gen_moves.py`): a light-physical (58) and heavy-special (92) per type
+(symmetric, so the chart's empirical balance held — fair-roster spread
+47.8–53.2% after, vs the same-tier roster signal unchanged from baseline),
+plus **11 apex signature moves** owned by the Constellation Wardens +
+Keylumen/Nullmajor/Dawnbrael (`build_species.py SIGNATURE_MOVES`, learned
+L44–52; excluded from the generic sim pools so they shape only their owners).
+Learnsets were rebuilt band-aware (richer mid-game kits, no more nuke-at-31).
+Still deferred: a second status move per type — wait for the status engine
+(Part B), since the simulator can't cost status yet.
 
 ## 7. XP & the level dynamic (tuned by the model)
 
@@ -243,9 +245,13 @@ Rules for region authors:
 catch XP + trainer ×1.5 + /20 yield · wallet in ITEMS header · glossary
 entries (Wicks, Star-chart) · `tools/balance/progression.mjs`.
 
+**Built (wave 2 follow-up, 2026-06):** the 125-move pool + apex signatures
+(§6) · the move-learn prompt (`ui/MoveLearnPrompt`, shared by level-ups and
+charts — Part A shipped).
+
 **Designed, pending:** status cures + Rekindle Drop (needs battle-runtime
-Part B) · the level-up move-learn prompt (Part A — reuse the chart forget
-flow) · buy-quantity picker (nice-to-have; single-tap works) · a **Loretender**
+Part B) · buy-quantity picker (nice-to-have; single-tap works) · a **Loretender**
 NPC (recall a forgotten learnset move for wicks — the late-game wick sink,
-suggest the Hearthkeeper's counterpart at the Crossroads) · move-pool wave 2
-(§6) · East→Central shop data (per §5 table, as each region is built).
+suggest the Hearthkeeper's counterpart at the Crossroads) · a second status
+move per type (after Part B) · East→Central shop data (per §5 table, as each
+region is built).

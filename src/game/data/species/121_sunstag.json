@@ -39,11 +39,15 @@
       },
       {
         "level": 13,
-        "move": "solar_lash"
+        "move": "glint_fang"
       },
       {
         "level": 19,
-        "move": "root_strike"
+        "move": "thornswipe"
+      },
+      {
+        "level": 22,
+        "move": "solar_lash"
       },
       {
         "level": 24,

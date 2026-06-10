@@ -39,11 +39,11 @@
       },
       {
         "level": 13,
-        "move": "lifedrain"
+        "move": "bloomburst"
       },
       {
         "level": 19,
-        "move": "crystal_beam"
+        "move": "gravel_spray"
       },
       {
         "level": 24,
@@ -51,11 +51,15 @@
       },
       {
         "level": 31,
-        "move": "bloomburst"
+        "move": "wildbloom"
       },
       {
         "level": 40,
         "move": "overgrowth"
+      },
+      {
+        "level": 44,
+        "move": "spore_cathedral"
       },
       {
         "level": 48,

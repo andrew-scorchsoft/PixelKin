@@ -38,6 +38,10 @@
       },
       {
         "level": 13,
+        "move": "duskmaw"
+      },
+      {
+        "level": 22,
         "move": "null_claw"
       },
       {

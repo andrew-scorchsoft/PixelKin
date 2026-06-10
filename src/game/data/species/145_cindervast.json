@@ -46,6 +46,10 @@
       },
       {
         "level": 31,
+        "move": "gloomswell"
+      },
+      {
+        "level": 40,
         "move": "voidburst"
       },
       {

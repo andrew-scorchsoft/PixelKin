@@ -38,6 +38,10 @@
       },
       {
         "level": 13,
+        "move": "glint_fang"
+      },
+      {
+        "level": 22,
         "move": "solar_lash"
       },
       {

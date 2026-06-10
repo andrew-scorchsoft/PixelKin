@@ -45,11 +45,15 @@
       },
       {
         "level": 13,
-        "move": "ice_fang"
+        "move": "rimebite"
       },
       {
         "level": 19,
-        "move": "rock_hurl"
+        "move": "gritfist"
+      },
+      {
+        "level": 22,
+        "move": "ice_fang"
       },
       {
         "level": 24,

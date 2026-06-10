@@ -45,11 +45,15 @@
       },
       {
         "level": 13,
-        "move": "root_strike"
+        "move": "thornswipe"
       },
       {
         "level": 19,
-        "move": "rock_hurl"
+        "move": "gritfist"
+      },
+      {
+        "level": 22,
+        "move": "root_strike"
       },
       {
         "level": 24,

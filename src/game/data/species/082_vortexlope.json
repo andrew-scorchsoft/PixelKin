@@ -39,11 +39,15 @@
       },
       {
         "level": 13,
-        "move": "ice_fang"
+        "move": "rimebite"
       },
       {
         "level": 19,
-        "move": "thunder_kick"
+        "move": "joltfang"
+      },
+      {
+        "level": 22,
+        "move": "ice_fang"
       },
       {
         "level": 24,

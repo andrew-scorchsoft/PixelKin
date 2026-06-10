@@ -18,6 +18,7 @@ for (const t of TYPES) byType[t] = { phys: [], spec: [] };
 const plain = { phys: [], spec: [] };
 for (const m of MOVES_DATA.moves) {
   if (m.category === "status" || m.power === 0) continue;
+  if (m.signature) continue; // one-line moves would make the fair roster unfair
   const bucket = m.type === "Plain" ? plain : byType[m.type];
   if (!bucket) continue;
   bucket[m.category === "physical" ? "phys" : "spec"].push(m);
