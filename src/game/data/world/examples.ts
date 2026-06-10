@@ -70,7 +70,7 @@ export const EXAMPLE_MAP = {
       facing: 'down',
       sprite: 'npc_mentor',
       movement: 'static',
-      dialogue_ref: 'npc.mentor_intro',
+      dialogue_ref: 'npc.fenn_waystone_after',
     },
   ],
   gates: [

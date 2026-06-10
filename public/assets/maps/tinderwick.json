@@ -1024,7 +1024,7 @@
         0,
         117,
         0,
-        124,
+        0,
         0,
         123,
         126,
@@ -2260,6 +2260,7 @@
         "ty": 33
       },
       "facing": "up",
+      "requires_flag": "flag:has_starter",
       "transition": "fade"
     },
     {
@@ -2275,6 +2276,7 @@
         "ty": 33
       },
       "facing": "up",
+      "requires_flag": "flag:has_starter",
       "transition": "fade"
     },
     {
@@ -2357,19 +2359,15 @@
   ],
   "triggers": [
     {
-      "id": "intro_mentor",
+      "id": "gate_warden",
       "kind": "cutscene",
       "at": {
         "tx": 13,
-        "ty": 11
+        "ty": 1
       },
       "activation": "step_on",
-      "ref": "script.intro_mentor",
-      "once": true,
-      "sets_flags": [
-        "flag:has_vesperlamp",
-        "flag:has_starter"
-      ]
+      "ref": "script.gate_warden",
+      "hidden_when_flag": "flag:has_starter"
     },
     {
       "id": "sign_shop",
@@ -2461,15 +2459,28 @@
   ],
   "npcs": [
     {
-      "id": "mentor",
+      "id": "gatewarden_pre",
       "at": {
-        "tx": 13,
-        "ty": 12
+        "tx": 14,
+        "ty": 1
       },
       "facing": "down",
-      "sprite": "npc_mentor",
+      "sprite": "npc_lampwarden",
       "movement": "static",
-      "dialogue_ref": "npc.mentor_intro"
+      "dialogue_ref": "script.gate_warden",
+      "hidden_when_flag": "flag:has_starter"
+    },
+    {
+      "id": "gatewarden_post",
+      "at": {
+        "tx": 15,
+        "ty": 2
+      },
+      "facing": "left",
+      "sprite": "npc_lampwarden",
+      "movement": "static",
+      "dialogue_ref": "npc.gatewarden_after",
+      "requires_flag": "flag:has_starter"
     },
     {
       "id": "wren",
@@ -2480,7 +2491,8 @@
       "facing": "left",
       "sprite": "wren",
       "movement": "wander",
-      "dialogue_ref": "npc.wren_intro"
+      "dialogue_ref": "npc.wren_intro",
+      "hidden_when_flag": "flag:has_starter"
     },
     {
       "id": "fair_piper",

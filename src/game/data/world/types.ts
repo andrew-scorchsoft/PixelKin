@@ -92,6 +92,9 @@ export interface EventTrigger {
   ref: string; // e.g. 'sign.tinderwick_dock', 'script.intro_mentor'
   once?: boolean; // fire at most once (tracked via a flag)
   requires_flag?: WorldFlag;
+  /** Trigger removed once the flag is set (mirror of NpcPlacement.hidden_when_flag) —
+   *  e.g. the pre-starter gate-warden band that stops fizzing once the Wayfaring begins. */
+  hidden_when_flag?: WorldFlag;
   /** Dialogue shown when requires_flag is unmet (a diegetic "not yet" beat
    *  instead of the generic hint), e.g. Brisa asking you to catch a kin first. */
   blocked_ref?: string;
