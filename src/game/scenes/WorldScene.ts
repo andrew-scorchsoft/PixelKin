@@ -16,6 +16,7 @@ import { PartyMenu } from '@game/ui/PartyMenu';
 import { ItemsMenu } from '@game/ui/ItemsMenu';
 import { HearthMenu } from '@game/ui/HearthMenu';
 import { SettingsMenu } from '@game/ui/SettingsMenu';
+import { GlossaryMenu } from '@game/ui/GlossaryMenu';
 import { fadeIn, fadeOut } from '@game/ui/Transitions';
 import { KinInstance } from '@game/systems/party/KinInstance';
 import { InputController, InputAction } from '@game/systems/input/InputController';
@@ -701,6 +702,7 @@ export class WorldScene extends Phaser.Scene {
           { label: 'KIN', value: 'kin' },
           { label: 'HEARTH', value: 'hearth' },
           { label: 'ITEMS', value: 'items' },
+          { label: 'LORE', value: 'lore' },
           { label: 'SAVE', value: 'save' },
           { label: 'SETTINGS', value: 'settings' },
         ],
@@ -713,6 +715,8 @@ export class WorldScene extends Phaser.Scene {
         await this.openHearthMenu();
       } else if (choice === 'items') {
         await this.openItemsMenu();
+      } else if (choice === 'lore') {
+        await new GlossaryMenu(this, (flag) => this.flags.get(flag), this.sfx).run();
       } else if (choice === 'save') {
         await this.persist();
         void this.sfx.playVariant('ui-save', ['a', 'b']);

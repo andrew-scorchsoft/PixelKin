@@ -82,6 +82,28 @@ export interface ItemDef {
 
 export type ItemRegistry = Record<string, ItemDef>;
 
+// ---- Glossary ---------------------------------------------------------------
+
+/**
+ * One entry in the in-vesperlamp glossary (pause menu -> LORE): a canon term and
+ * its cosy, lore-true definition. `unlock_flag` staggers discovery — an entry with
+ * no flag is known from the start (a thing every Vesperholm child grows up with),
+ * one with a flag stays a "? ? ?" tease until that flag is set, so the codex visibly
+ * fills in as the player learns the world. We deliberately reuse flags the journey
+ * already sets (e.g. `gleam:ember`, `flag:dusk_begins`), so staggering costs no new
+ * story wiring.
+ */
+export interface GlossaryEntry {
+  /** Stable id (also the display order is the registry's array order). */
+  id: string;
+  /** The term as it reads in dialogue, e.g. 'Gleam', 'the Hollowing'. */
+  term: string;
+  /** 2-3 sentences, canon voice, wrappable to the detail pane. */
+  desc: string;
+  /** When omitted, always known; when set, revealed once that flag/gleam is held. */
+  unlock_flag?: WorldFlag;
+}
+
 // ---- Starters ---------------------------------------------------------------
 
 /** One option in the choose-your-starter screen. */
