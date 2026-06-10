@@ -77,17 +77,20 @@ def build_subject(sp: dict) -> str:
     return subject
 
 
-def gen_view(cid: int, slug: str, vtype: str, subject: str, reference: Path | None) -> bool:
+def gen_view(cid: int, slug: str, vtype: str, subject: str, reference: Path | None,
+             provider: str | None = None) -> bool:
     cmd = [str(PY), str(GEN), "--type", vtype, "--subject", subject,
            "--creature-id", str(cid), "--creature-slug", slug]
     if reference is not None and reference.is_file():
         cmd += ["--reference", str(reference)]
+    if provider:
+        cmd += ["--provider", provider]
     print(f"  [{cid:03d} {slug}] {vtype} ...", flush=True)
     res = subprocess.run(cmd, cwd=str(REPO))
     return res.returncode == 0
 
 
-def gen_creature(cid: int) -> bool:
+def gen_creature(cid: int, provider: str | None = None) -> bool:
     sp = load_species(cid)
     slug = sp["slug"]
     subject = build_subject(sp)
@@ -97,7 +100,7 @@ def gen_creature(cid: int) -> bool:
     ok = True
     for vtype, fname in VIEWS:
         ref = front if vtype != "creature-front" else None
-        if not gen_view(cid, slug, vtype, subject, ref):
+        if not gen_view(cid, slug, vtype, subject, ref, provider):
             print(f"  !! FAILED {vtype} for {cid:03d}_{slug}", file=sys.stderr)
             ok = False
     # report which files landed
@@ -111,6 +114,10 @@ def main() -> int:
     p.add_argument("ids", nargs="*", type=int, help="Dex ids to generate.")
     p.add_argument("--range", nargs=2, type=int, metavar=("LO", "HI"),
                    help="Inclusive id range to generate.")
+    p.add_argument("--provider", choices=["google", "openai"], default=None,
+                   help="Image provider passed through to generate_sprite.py. Default: the "
+                        "skill's default (google). Use 'openai' as a fallback when Google is "
+                        "rate-limited / spend-capped.")
     args = p.parse_args()
 
     ids: list[int] = list(args.ids)
@@ -122,7 +129,7 @@ def main() -> int:
     failures = []
     for cid in ids:
         print(f"=== creature {cid} ===", flush=True)
-        if not gen_creature(cid):
+        if not gen_creature(cid, provider=args.provider):
             failures.append(cid)
     if failures:
         print(f"\nFAILURES: {failures}", file=sys.stderr)
