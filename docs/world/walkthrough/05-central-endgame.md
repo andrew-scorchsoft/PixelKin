@@ -28,6 +28,23 @@
 | **Festivals (Arc E)** | None — all eight town festivals landed in their regions. The Crossroads is the cosy *between* place, the warmth you return to; the festival here is the whole region lit at once, paid off as dawn. |
 | **Curve** | Crossroads/Penumbra are transit (no encounters); **Umbral Spire ~52 → 56**, Còr's ace ~56, Keylumen ~55. Continuous with West's exit (~52); the **one true difficulty ramp of the endgame** is the Spire's drained Hollowing kin. |
 
+**Cinematic staging (PLANNED — the payoff of the whole toolkit; build from South per
+[`cinematics.md`](../cinematics.md) / §0.4).** This is where every primitive earns its keep, and a
+**second cold open is warranted** — a `CinematicScript` "chapter card" at the Spire's gate (the
+Crown completing overhead, the black mountain opening) mirroring the opening prologue, bookending
+the game. **B5 the climax is the inverse of a boss spectacle:** the victory is *out-remembering*
+Còr, not out-hitting him — so stage it with `silence` and faces, not bombast. Còr at the summit on
+his **portrait** (the same sorrowful grave we've met since North), one last courteous offer; no
+forced battle framing. The **Keystar relight** is the game's apex `gleam`: hold the longest
+`silence`, then the boss bed resolves **minor→major** (`battle-boss-eclipse` → a major reprise of
+`gleam-emotional`) as the Keystar catches — `flashColor`/`tint` warm, `letterbox` off, the Crown
+blazing. **The Penumbra Ring** is the darkest staging: near-total black, the lamp-glow the only
+colour, hopeful notes leaking into a near-`silence` drone as it recedes. **A5→A6** Wren climbs at
+your side (his steady portrait). **Dawn** (`flag:dawn`) should *break* on a held beat — `silence` →
+a slow warm `tint` from black to daylight as the music swells. Assets owed: the Spire-gate chapter
+panel(s), Còr's summit portrait (reuse North's), the Keystar/dawn major reprise cue, a daybreak
+backdrop.
+
 **Arc D — lighting.** This region is the **brightest yet, then the darkest, then the brightest of
 all** — the deliberate paradox §3 Arc D asks for. The **Vesper Crossroads** is the warmest the
 overworld has been: eight relit constellations overhead, the vesperlamp at its fullest tier, lamp

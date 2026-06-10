@@ -38,7 +38,9 @@ For working in the repo, see **[`CLAUDE.md`](CLAUDE.md)**.
 
 The design is data-locked **and the engine to play it now exists** — the first
 hour is playable end-to-end: attract demo → title (New Game / Continue / Settings)
-→ story intro where you're given a vesperlamp and **choose a starter** → explore
+→ an **illustrated cold-open prologue** (the Long Dusk, a star winking out, the
+calling — foreboding but aspirational) → story intro where you're given a vesperlamp
+and **choose a starter** → explore
 **Tinderwick**, talk to townsfolk, read signs, step into its homes, shop and
 Lumenary hall → catch a kin, take Brisa's errand, and walk north onto
 **Dimglass Coast** — wild encounters in mandatory grass crossings, your rival
@@ -109,11 +111,16 @@ those docs has not been built yet.
 - A real, playable **engine** (Phaser 3 + TypeScript): tile maps, grid movement,
   NPCs/signs/warps, data-driven cutscenes, a turn-based **battle system**, the
   pause menu (party, the Hearth, items), and the save/flag layer.
+- A **cinematic storytelling toolkit** (data-driven): an illustrated cold-open
+  scene, character **portraits** in dialogue, music-as-drama (crossfade / fade /
+  sting / dramatic silence) and screen FX (letterbox, camera focus, tint, shake) —
+  the South first hour is the worked example; standard in `docs/world/cinematics.md`.
 - A complete, **data-locked design**: full story and world bible (14 areas), the
   153-kin roster with empirically balanced battle maths, the type chart, moves,
   and abilities — all authored and validated.
-- A **playable opening slice**: attract demo → title → intro and starter choice →
-  explore **Tinderwick** → first **Gleam** battle → north onto **Dimglass Coast**.
+- A **playable opening slice**: attract demo → title → **cold-open prologue** →
+  intro and starter choice → explore **Tinderwick** → first **Gleam** battle (a
+  minor→major payoff) → north onto **Dimglass Coast** with its staged dusk omen.
 - An **original soundtrack** (area + battle loops) and the art/sprite pipeline.
 
 **Not built yet / known gaps:**

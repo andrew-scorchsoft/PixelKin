@@ -14,15 +14,19 @@ export const SCRIPTS: ScriptRegistry = {
   'script.intro_mentor': [
     { op: 'face', actor: 'player', facing: 'up' },
     { op: 'face', actor: 'mentor', facing: 'up' },
-    { op: 'say', speaker: 'FENN', text: 'There you are. The sky lost another light in the small hours — I felt it go.' },
-    { op: 'say', speaker: 'FENN', text: 'So. It is time for your Wayfaring, at last. Every Wayfarer leaves Tinderwick with two things.' },
-    { op: 'say', speaker: 'FENN', text: 'The first — a lamp, to carry the light home. Take it. Your vesperlamp.' },
+    // The cosy Tinderwick bed is already playing; the grave first line rides a
+    // portrait, not a music change — warmth held, dread only in Fenn's face.
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'grave', text: 'There you are. The sky lost another light in the small hours — I felt it go.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'So. It is time for your Wayfaring, at last. Every Wayfarer leaves Tinderwick with two things.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'The first — a lamp, to carry the light home. Take it. Your vesperlamp.' },
     { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#ff8a3d', alpha: 0.28, ms: 240 }, // a warm bloom as the lamp kindles
     { op: 'giveItem', item: 'vesperlamp', count: 1 },
-    { op: 'say', speaker: 'FENN', text: 'And the second — a friend, to share the walk through the dark. Go on. Choose.' },
+    { op: 'tint', color: '#ff8a3d', alpha: 0, ms: 600 },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'And the second — a friend, to share the walk through the dark. Go on. Choose.' },
     { op: 'giveStarter' },
-    { op: 'say', speaker: 'FENN', text: 'Mind you tend them both, and they will tend you. Off into the dusk with you.' },
-    { op: 'say', speaker: 'FENN', text: 'Brisa keeps the Lumenary up the square. Catch a kin first — then go earn her Ember Gleam.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'smile', text: 'Mind you tend them both, and they will tend you. Off into the dusk with you.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'Brisa keeps the Lumenary up the square. Catch a kin first — then go earn her Ember Gleam.' },
     { op: 'setFlag', flag: 'flag:has_vesperlamp' },
     { op: 'setFlag', flag: 'flag:has_starter' },
   ],
@@ -53,32 +57,48 @@ export const SCRIPTS: ScriptRegistry = {
   'script.lumenary_pearlmoor': [
     { op: 'face', actor: 'player', facing: 'up' },
     { op: 'face', actor: 'reyl', facing: 'down' },
-    { op: 'say', speaker: 'REYL WASH', text: 'Came on foot, did you — no need of the tides to reach my door. Good. The light should be free to all who seek it.' },
-    { op: 'say', speaker: 'REYL WASH', text: 'Now. Read the water with me, Wayfarer, and we shall see if the sea will listen to you.' },
+    { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'weathered', text: 'Came on foot, did you — no need of the tides to reach my door. Good. The light should be free to all who seek it.' },
+    { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'neutral', text: 'Now. Read the water with me, Wayfarer, and we shall see if the sea will listen to you.' },
     { op: 'battle', trainer: 'lampwarden_pearlmoor' },
+    // The second Gleam, wrapped in the Tide-blessing — same minor→major payoff, in a
+    // cool moon-on-water key rather than Tinderwick's ember-warm one.
+    { op: 'musicFade', ms: 500 },
+    { op: 'tint', color: '#4fb4ff', alpha: 0.36, ms: 600 },
+    { op: 'narrate', text: 'Reyl rings the moor-bell. Out on the black water, buoy after buoy answers — and overhead, the Tide remembers how to shine.' },
     { op: 'gleam', element: 'tide' },
-    { op: 'say', speaker: 'REYL WASH', text: 'The Tide Gleam stands up over Pearlmoor again. And the Tidecall is yours — go on, ask the shallows to part. The harbour keeps its secrets for those who can cross.' },
+    { op: 'musicCrossfade', key: 'gleam-emotional', ms: 900 },
+    { op: 'tint', color: '#4fb4ff', alpha: 0, ms: 900 },
+    { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'proud', text: 'The Tide Gleam stands up over Pearlmoor again. And the Tidecall is yours — go on, ask the shallows to part. The harbour keeps its secrets for those who can cross.' },
   ],
 
   // A2 (Dimglass Coast I): Wren's first FRIENDLY trainer battle. Wren is a SIGHT
   // trainer — spots the player on the lane, runs up (the engine plays the alert +
   // approach), and this script carries the words + battle. Low-stakes by design.
   'script.wren_dimglass': [
-    { op: 'say', speaker: 'WREN', text: 'There you are! I was starting to think the grass ate you.' },
-    { op: 'say', speaker: 'WREN', text: "Listen — every Wayfarer's first proper battle should be with a friend. So?" },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'eager', text: 'There you are! I was starting to think the grass ate you.' },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'eager', text: "Listen — every Wayfarer's first proper battle should be with a friend. So?" },
     { op: 'battle', trainer: 'wren_dimglass' },
-    { op: 'say', speaker: 'WREN', text: 'Same road, different lamps. See you up the coast!' },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'neutral', text: 'Same road, different lamps. See you up the coast!' },
     { op: 'setFlag', flag: 'flag:wren_dimglass_battled' },
   ],
 
   // B1 (Dimglass Coast I): the inciting incident — a far constellation winks out on the
-  // first nightfall here. Quiet, not loud; the dread is in the quiet (walkthrough/01-south).
+  // first nightfall here. The dread is in the QUIET: letterbox in, fade the bed to
+  // silence and hold, then the gutter sting + cold wash + shake as the star dies. This
+  // is the first-hour's load-bearing foreboding beat (walkthrough/01-south; the
+  // cinematic cadence is binding — see docs/world/cinematics.md).
   'script.dusk_begins': [
-    { op: 'wait', ms: 400 },
-    { op: 'say', text: 'Far out over the water, a constellation flickers... and goes dark.' },
-    { op: 'say', text: 'For a heartbeat, every lantern-buoy on the coast gutters.' },
-    { op: 'wait', ms: 400 },
-    { op: 'say', text: "...that's the third star gone south of here this month. The dusk is getting deeper." },
+    { op: 'letterbox', on: true, ms: 320 },
+    { op: 'silence', ms: 1200 }, // the held quiet before the light fails
+    { op: 'narrate', text: 'Far out over the water, a constellation flickers — and goes dark.' },
+    { op: 'sfx', key: 'world-star-gutter' },
+    { op: 'tint', color: '#0b1026', alpha: 0.55, ms: 180 }, // the dark presses in
+    { op: 'shake', ms: 320, intensity: 0.006 },
+    { op: 'narrate', text: 'For a heartbeat, every lantern-buoy on the coast gutters, as if the sea itself flinched.' },
+    { op: 'tint', color: '#0b1026', alpha: 0, ms: 700 },
+    { op: 'narrate', text: "That's the third star gone south of here this month. The Long Dusk is getting deeper — and it is getting closer." },
+    { op: 'musicCrossfade', key: 'dimglass-coast-a', ms: 900 }, // the bed returns, a shade uneasier
+    { op: 'letterbox', on: false, ms: 320 },
   ],
 
   // Dimglass Coast II route trainers (the XP bridge toward Pearlmoor's 12) —
@@ -100,20 +120,24 @@ export const SCRIPTS: ScriptRegistry = {
   // Brisa sends the new Wayfarer up the coast road for the beacon's lost
   // wick-key before she'll hold the bond-test at the lantern.
   'script.brisa_quest': [
-    { op: 'say', speaker: 'BRISA TALLOW', text: 'So you have made your first friend. Good. Then hear the truth of it, dear — the Ember is not relit from this hall.' },
-    { op: 'say', speaker: 'BRISA TALLOW', text: 'It is relit from the OLD BEACON, on the bluff east of the square. And the beacon has stood dark since its wick-key was lost on the coast road.' },
-    { op: 'say', speaker: 'BRISA TALLOW', text: 'The old lamplighter who carried it walks Dimglass Coast still, up by the north boundary. Find him. Bring the key home.' },
-    { op: 'say', speaker: 'BRISA TALLOW', text: 'Mind the grass, mind the dark — and come back stronger than you leave. The lantern asks a steady flame.' },
+    { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'warm', text: 'So you have made your first friend. Good. Then hear the truth of it, dear — the Ember is not relit from this hall.' },
+    { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'neutral', text: 'It is relit from the OLD BEACON, on the bluff east of the square. And the beacon has stood dark since its wick-key was lost on the coast road.' },
+    { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'neutral', text: 'The old lamplighter who carried it walks Dimglass Coast still, up by the north boundary. Find him. Bring the key home.' },
+    { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'warm', text: 'Mind the grass, mind the dark — and come back stronger than you leave. The lantern asks a steady flame.' },
     { op: 'setFlag', flag: 'flag:beacon_quest' },
   ],
-  // The old lamplighter (Dimglass I, appears after dusk_begins) hands the key.
+  // The old lamplighter (Dimglass I, appears after dusk_begins) hands the key. His
+  // closing aside is the first-hour's quiet Hollowing SEED — a cold that "follows the
+  // dark down off the north road" — foreboding only, no name, no fight (B2 still
+  // introduces the Hollowing formally in East; see docs/world/cinematics.md §tone).
   'script.give_wick': [
-    { op: 'say', speaker: 'OLD LAMPLIGHTER', text: 'You stood under it too, did you. One breath it was there — the next, a hole in the sky shaped like a star.' },
-    { op: 'say', speaker: 'OLD LAMPLIGHTER', text: 'Third one this season. I am too old to climb the Tinderwick beacon now... but you are not, are you.' },
+    { op: 'say', speaker: 'OLD LAMPLIGHTER', portrait: 'lamplighter', expr: 'grave', text: 'You stood under it too, did you. One breath it was there — the next, a hole in the sky shaped like a star.' },
+    { op: 'say', speaker: 'OLD LAMPLIGHTER', portrait: 'lamplighter', expr: 'neutral', text: 'Third one this season. I am too old to climb the Tinderwick beacon now... but you are not, are you.' },
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'beacon_wick', count: 1 },
     { op: 'say', text: 'The lamplighter presses a worn brass key into your hand. Received the BEACON WICK-KEY!' },
-    { op: 'say', speaker: 'OLD LAMPLIGHTER', text: 'Tell Brisa Tallow the road is darker than she remembers. And walk LIT, young one.' },
+    { op: 'say', speaker: 'OLD LAMPLIGHTER', portrait: 'lamplighter', expr: 'grave', text: "And mind yourself out past the north boundary. There's a cold that follows the dark down off that road — quiet, and patient, and it doesn't feel like weather." },
+    { op: 'say', speaker: 'OLD LAMPLIGHTER', portrait: 'lamplighter', expr: 'neutral', text: 'Tell Brisa Tallow the road is darker than she remembers. And walk LIT, young one.' },
     { op: 'setFlag', flag: 'flag:has_beacon_wick' },
   ],
   // The lantern room, beacon top: the bond-test, then the Ember Gleam relit FROM
@@ -121,13 +145,20 @@ export const SCRIPTS: ScriptRegistry = {
   'script.beacon_battle': [
     { op: 'face', actor: 'player', facing: 'up' },
     { op: 'face', actor: 'brisa', facing: 'down' },
-    { op: 'say', speaker: 'BRISA TALLOW', text: 'Up all those dark stairs with the wick-key in your hand. The lamp-tender chose well.' },
-    { op: 'say', speaker: 'BRISA TALLOW', text: 'This lantern lit the Ember for three hundred years, dear. Show me your flame is steady enough to wake it.' },
+    { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'warm', text: 'Up all those dark stairs with the wick-key in your hand. The lamp-tender chose well.' },
+    { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'neutral', text: 'This lantern lit the Ember for three hundred years, dear. Show me your flame is steady enough to wake it.' },
     { op: 'battle', trainer: 'lampwarden_tinderwick' },
+    // The Gleam payoff: minor→major. Hold a beat of silence, the lantern blooms (warm
+    // wash + the lamp sfx), the constellation answers (gleam sting + flash), then the
+    // festival swell rises as the town below begins to dance (Arc E).
+    { op: 'musicFade', ms: 500 },
     { op: 'sfx', key: 'world-lantern-light' },
-    { op: 'say', text: 'Brisa turns the wick-key. The great lantern blooms — and far above, a warm light answers.' },
+    { op: 'tint', color: '#ff8a3d', alpha: 0.4, ms: 600 },
+    { op: 'narrate', text: 'Brisa turns the wick-key. The great lantern blooms — and far above, in the dark, a warm light answers.' },
     { op: 'gleam', element: 'ember' },
-    { op: 'say', speaker: 'BRISA TALLOW', text: 'There — the Ember Gleam burns again in the southern sky. Go down to the square, dear. I believe the town wants to dance with you.' },
+    { op: 'musicCrossfade', key: 'gleam-emotional', ms: 900 },
+    { op: 'tint', color: '#ff8a3d', alpha: 0, ms: 900 },
+    { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'proud', text: 'There — the Ember Gleam burns again in the southern sky. Go down to the square, dear. I believe the town wants to dance with you.' },
   ],
 
   // --- Rest points (the genre's heal loop, diegetic) -------------------------

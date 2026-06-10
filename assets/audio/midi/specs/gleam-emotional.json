@@ -1,0 +1,59 @@
+{
+  "title": "Gleam - Emotional Swell (a constellation relights, the town celebrates)",
+  "_note": "The Gleam payoff / festival swell - plays the instant a constellation relights and the town begins to celebrate. THE EMOTIONAL CORE: state the Vesper motif in MINOR, then resolve to MAJOR - the parallel-key turn (A minor -> A MAJOR) IS the whole point: the dawn answering the dark. 96 BPM, 4/4, snes register (warm strings/pad chords, pluck harp, full bell sung-out), warm reverb 0.18. Warm and swelling, triumphant but a touch bittersweet (the minor half remembers the long night). Tonally NEUTRAL-WARM, not element-specific, so it serves BOTH the Ember (warm) and Tide (cool) Gleams: A as a key, no element-coded ornament. Loops, but the structure is a one-statement arc the engine can hold under the festival: 8 bars MINOR (the motif wistful, the long dusk) -> 8 bars the TURN brightening (Picardy lift, the dawn breaking in) -> ends ringing in radiant A MAJOR, the motif sung out FULL in major. Vesper motif: stated complete twice - first in A minor (the lift E->A->B, the settle C(nat3)->B->A, melancholy), then bloomed in A major (the lift E->A->B, the settle C#->B->A, radiant - the same shape, the third raised, hope arrived). Render --loops 1.",
+  "era": "snes",
+  "tempo": 96,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "A minor -> A major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "The Vesper motif sung out full. Bars 1-8 in A MINOR (lift E4->A4->B4, settle C5(natural 3rd)->B4->A4 - wistful, the dusk remembered, a touch bittersweet). Bars 9-12 the TURN (the line reaches and the third lifts, brightening). Bars 13-16 the same motif BLOOMED in A MAJOR (lift E4->A4->B4, settle C#5->B4->A4 - radiant), then climbs to a soaring high A5 and settles home A major: the dawn answering the dark.",
+      "notes": "E4q A4q B4h | C5q B4q A4h | E4q A4q B4q C5q | B4h A4h | A4q B4q C5q B4q | A4q E4q A4h | rq E4q G#4q B4q | A4h. rq | E4q A4q B4h | C#5q B4q A4h | E4q A4q B4q C#5q | E5h. rq | A4q B4q C#5q E5q | A5h G#5q E5q | C#5q E5q A5q G#5q | A4h. rq"
+    },
+    {
+      "name": "harmony",
+      "voice": "pluck",
+      "octave": 4,
+      "gain": 0.5,
+      "_note": "Pluck harp arpeggios - the music-box opened into a flowing broken-chord roll, swelling. Outlines the harmony: Am - F - C - E(dom) under the minor half; then A - D - E -> A MAJOR under the bloom. Same warm harp on both halves (no element-coded timbre) so it serves Ember or Tide equally.",
+      "notes": "A3e C4e E4e C4e A3e C4e E4e C4e | F3e A3e C4e A3e F3e A3e C4e A3e | C4e E4e G4e E4e C4e E4e G4e E4e | E3e G#3e B3e G#3e E3e G#3e B3e E4e | A3e C4e E4e C4e A3e C4e E4e C4e | F3e A3e C4e A3e E3e G#3e B3e E4e | A3e C4e E4e C4e E3e G#3e B3e E4e | A3e E4e A4e E4e A3e C4e E4e A4e | A3e C#4e E4e C#4e A3e C#4e E4e C#4e | D4e F#4e A4e F#4e D4e F#4e A4e F#4e | A3e C#4e E4e C#4e E4e G#4e B4e E4e | A3e C#4e E4e A4e A3e C#4e E4e A4e | A3e C#4e E4e A4e D4e F#4e A4e D5e | E4e G#4e B4e E5e E4e G#4e B4e E5e | A3e C#4e E4e A4e C#5e A4e E4e C#4e | A3e C#4e E4e A4e A3e C#4e E4e A4e"
+    },
+    {
+      "name": "pad",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.3,
+      "_note": "Warm swelling string pad carrying the real chords - the emotional body. Am - F - C - E (harmonic-minor dominant, G#) through the wistful first half; then A - F#m/D - E -> the big A MAJOR resolution that holds and rings. Swells into the major turn.",
+      "notes": "A2+C3+E3w | F2+A2+C3w | C3+E3+G3w | E3+G#3+B3w | A2+C3+E3w | F2+A2+C3h E3+G#3+B3h | A2+C3+E3h E3+G#3+B3h | A2+C3+E3w | A2+C#3+E3w | D3+F#3+A3w | A2+C#3+E3h E3+G#3+B3h | A2+C#3+E3w | A2+C#3+E3h D3+F#3+A3h | E3+G#3+B3w | A2+C#3+E3w | A2+C#3+E3w"
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.45,
+      "_note": "The bell - the constellation catching light. Sparse and held back through the minor half (a lone wistful glint or two), then RINGS OUT in the major bloom: high A-major chime sparkles crowning the resolution as the town's lights come up. Crowns the high A5 peak and the final home.",
+      "notes": "rw | rw | rh rq E5q | rw | rw | rw | rh B5h | rw | rw | rh rq A5e B5e | rw | C#6q rh. | rw | C#6h E6h | A5q C#6q E6q A6q | A5h. rq"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.95,
+      "_note": "Warm root motion - the hearth pulse grown confident. A - F - C - E walking the minor half (E = harmonic-minor dominant), then A - D - E -> A, the cadence into radiant major that lands hard and holds under the bloom. Last bar holds A so the seam settles into major before the loop returns (a held, contented loop, not an unresolved one).",
+      "notes": "A2h E2h | F2h A2h | C2h G2h | E2h E2h | A2h E2h | F2h E2h | A2h E2h | A2h E2h | A2h E2h | D2h A2h | A2h E2h | A2h E2h | A2h D2h | E2h E2h | A2h E2h | A2h E2h"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.4,
+      "_note": "Gentle, swelling festival groove - soft and warm, never marching. A heartbeat kick + brushy hat through the wistful half, opening to a fuller (but still gentle) celebratory pattern as the major dawns, with a warm fill into the bloom. Joyful, a little teary.",
+      "notes": "kickq hatq rq hatq | kickq hatq rq hatq | kickq hatq rq hatq | kickq hatq rq hatq | kickq hatq rq hatq | kickq hatq rq hatq | kickq hatq rq hatq | kickq hatq snareq hatq | kicke hate hate snaree hate hate kicke hate | kicke hate hate snaree hate hate kicke hate | kicke hate hate snaree hate hate kicke hate | kicke hate hate snaree hate hate snaree hate | kicke hate hate snaree hate hate kicke hate | kicke hate hate snaree hate hate kicke hate | kicke hate hate snaree hate hate snaree hate | snareq hatq snareq crashq"
+    }
+  ]
+}

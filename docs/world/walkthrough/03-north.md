@@ -26,6 +26,20 @@
 | **Festivals (Arc E)** | Galehigh **Kite-rising** · Pale Vault **Aurora-watch** |
 | **Curve** | Galehigh ~28 → Windward 34→36 → Pale Vault ~36 → exit ~40. ~+6/Gleam, continuous with East's exit (~28) and West's entry (~40). |
 
+**Cinematic staging (PLANNED — build from South per [`cinematics.md`](../cinematics.md) / §0.4).**
+North is the **character-drama peak** of the midgame; lean hard on **portraits + `silence`**, not
+spectacle. **B3 Còr in person** (no battle) is the inverse of a boss reveal: `letterbox`, fade the
+aurora bed to near-`silence`, hold long on Còr's **portrait** (grave, sorrowful, *reasonable*) as
+he states his case over a quieted valley — a `cameraFocus`/`tint`-cool on the peaceful drained
+vista he gestures to. **C3 Fenn's revelation** lands immediately after on Fenn's `grave` portrait,
+no music swell — just two faces and the quiet. **A4 Wren's wobble** is the hard rival battle: open
+on Wren's `unsure` portrait, and afterward a `silence` beat before they walk off unresolved (this
+is the one rival fight at *equal* level — let the staging feel heavier than A2). Festivals
+(**Kite-rising**, **Aurora-watch**) use the Gleam swell, but **Aurora-watch is a silent vigil** —
+stage it as `silence` + a slow `tint`/`flashColor` as each lamp lights, deliberately rhyming with
+(and refuting) Còr's vision. Assets owed: Còr portrait (the marquee new face), Fenn `grave`
+already exists, a quieted-valley/aurora backdrop.
+
 **Arc D — lighting.** North is **visibly lighter than East**. You arrive out of Cinderhead's
 ink-black deep into **Galehigh's last fire**: a long, warm `fire`-orange sunset bleeding into
 `night`-blue, kite-silhouettes against banded cloud. As you climb the Windward Stair the

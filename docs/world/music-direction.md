@@ -458,5 +458,30 @@ area). Each can still carry the **Vesper motif** so the whole score stays kin:
 - **Victory fanfare** — `victory`, one-shot (`loop:false`), 2–6 s, hard tonic resolution; states the Vesper motif's *settle home* triumphantly.
 - **Stings** — level-up, item/Gleam-get, evolution (`loop:false` jingles per `style-guide.md`).
 
+### Story/cinematic cues (the cold open & the Gleam payoff — BUILT for South)
+
+The cinematic toolkit (see [`cinematics.md`](./cinematics.md)) leans on two new shared cues,
+both **Vesper-motif transforms**, scored once and reused everywhere:
+
+- **`coldopen-foreboding`** — the cold-open / Long-Dusk underscore (and the reusable "dread"
+  bed for any drained site or omen). Slow (~70–78 BPM), minor/harmonic-minor, sparse and
+  spacious, a low drone under a *fragment* of the motif — the rising leap (A3→D4→E4) sounded,
+  but the **settle-home deliberately never arrives** (a question, not an answer). Foreboding
+  with a thin thread of hope; `snes` register is fine but keep it dark and uncluttered. Must
+  loop cleanly **and** survive being faded to silence mid-phrase (it gets cut for the dread
+  beat). Served: `public/assets/audio/music/coldopen-foreboding.mp3`.
+- **`gleam-emotional`** — the Gleam payoff / festival swell (plays the instant a constellation
+  relights and the town begins to celebrate; reused for **all** Gleams and the dawn). The
+  emotional core of the score's **minor→major** arc: state the motif in **minor**, then resolve
+  it **full major** as the light catches (the dawn answering the dark). ~92–100 BPM, warm,
+  swelling, triumphant-but-bittersweet (bells/strings). Tonally neutral-warm so it serves both
+  the Ember (warm `tint`) and Tide (cool `tint`) reads; melancholy regions (Cinderhead's vigil,
+  Nightreach's Star-vigil) lean on a longer `silence` *before* the lift. Served:
+  `public/assets/audio/music/gleam-emotional.mp3`. *(For the Keystar/dawn climax, plan a full
+  major reprise of this cue layered over `battle-boss-eclipse` — see `05-central-endgame.md`.)*
+- **`world-star-gutter` (sfx)** — a hollow, descending "a light dies" one-shot (a/b variants in
+  `public/assets/audio/sfx/`, listed in `sfx.manifest.json`), distinct from the triumphant
+  `world-gleam` sparkle. The punctuation on every "a star winks out" beat.
+
 > Existing drafts of record (battle set above) are already in
 > `public/assets/audio/music/`; the area loops in this doc are the next pass.

@@ -117,6 +117,14 @@ export const DIALOGUE: DialogueRegistry = {
   'sign.dimglass_route': [
     { text: 'Keep to the lit lane. The grass is restless since the dusk — kin nest in it.' },
   ],
+  // An early Hollowing SEED — a weather-worn notice nailed to a coast post. Courteous,
+  // sorrowful, unsigned (the name scratched out): the player meets the Hollowing's
+  // *voice* long before its face (B2, East). Foreboding only — never explained here.
+  'sign.dimglass_pinned_letter': [
+    { text: "A notice, rain-warped and nailed to a leaning post. The hand is careful, almost kind:" },
+    { text: '"Friends of the coast — grieve no more for the lights that fail. The dark is not your enemy. It is only rest, come early. Let it in, and be at peace."' },
+    { text: 'The signature has been scratched away to bare wood. Below it, in a different, shakier hand: "DO NOT LISTEN."' },
+  ],
   'sign.dimglass_to_pearlmoor': [
     { text: 'NORTH: PEARLMOOR QUAY\nThe tidal flats lie ahead, where the lamps stand in the water.' },
   ],
