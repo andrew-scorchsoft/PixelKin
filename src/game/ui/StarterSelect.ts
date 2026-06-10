@@ -5,9 +5,9 @@
  * cursor moves — so long descriptions never overlap the list and the choice stays
  * in view, using the small screen well. up/down + Confirm picks one (not
  * cancellable — you must choose). Promise-based: resolves with the chosen species
- * id. Built from the shared kit so it matches every other screen. Real portraits
- * drop in later (creature art isn't packed to public/ yet); for now each option
- * shows a type-tinted swatch.
+ * id. Built from the shared kit so it matches every other screen. Each row shows the
+ * kin's real packed icon (lazy-loaded via CreatureSprites), falling back to a
+ * type-tinted swatch only for any kin not yet packed.
  */
 import Phaser from 'phaser';
 import { GAME_WIDTH } from '@game/config';

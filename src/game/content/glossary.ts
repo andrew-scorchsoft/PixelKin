@@ -1,0 +1,103 @@
+/**
+ * Glossary — the in-vesperlamp codex of Vesperholm's vocabulary (pause menu -> LORE).
+ *
+ * The opening hour introduces a lot of bespoke words — kin, Gleam, Lumenary, the
+ * Hollowing — and our player is a time-poor adult who may return after a week away.
+ * This is their quiet reference: "what was a Gleam again?", answered in the lamp's
+ * own keeping. Entries are ORDERED (the list shows them in this order); `unlock_flag`
+ * staggers discovery off flags the journey already sets, so the codex fills in as the
+ * world is learned without any new story wiring.
+ *
+ * Authoring: cosy, a little melancholy, canon vocabulary only (never
+ * monster/gym/badge or another franchise's terms). Keep each `desc` to 2-3 sentences
+ * so it wraps cleanly in the detail pane. Add new terms here as later regions
+ * introduce them; pick an `unlock_flag` the relevant beat already raises.
+ */
+import type { GlossaryEntry } from './types';
+
+export const GLOSSARY: readonly GlossaryEntry[] = [
+  // --- Known from the first step (a thing every Vesperholm child grows up with) ---
+  {
+    id: 'vesperholm',
+    term: 'Vesperholm',
+    desc: 'Your homeland: a crescent of nine valleys around a darkened mountain, caught in a dusk that will not lift.',
+  },
+  {
+    id: 'kin',
+    term: 'Kin',
+    desc: "The creatures you walk beside. Some carry a little of the sky's light — and to befriend one is to share it. You keep them; they keep you.",
+  },
+  {
+    id: 'wayfaring',
+    term: 'the Wayfaring',
+    desc: "The coming-of-age walk: 'complete the map' — visit every valley, befriend its kin, learn its tale — and be counted a true wanderer.",
+  },
+  {
+    id: 'vesperlamp',
+    term: 'Vesperlamp',
+    desc: 'The brass clamshell lantern gifted at the start of your Wayfaring. It holds the light you restore and grows brighter the further you walk.',
+  },
+  {
+    id: 'lamp',
+    term: 'Lamps',
+    desc: "Throwable lanterns. You don't trap a wild kin — you coax its light to settle and rest inside, gently, with its leave.",
+  },
+  {
+    id: 'kindling',
+    term: 'Kindling',
+    desc: 'How a kin grows: taking on more light and blazing into a brighter, stronger form. The same verb the whole journey turns on.',
+  },
+  {
+    id: 'hearth',
+    term: 'the Hearth',
+    desc: 'The warm keep where your kin rest when not in your lamp. A full lamp just means the next friend waits for you by the fire.',
+  },
+  {
+    id: 'skyweave',
+    term: 'the Skyweave',
+    desc: 'The old belief that the stars are tied to gleaming kin below — and that tending the light keeps dusk and dawn turning.',
+  },
+
+  // --- Learned on the road (staggered off flags the journey already raises) ---
+  {
+    id: 'lumenary',
+    term: 'Lumenary',
+    desc: "A valley's lantern-hall, kept by its Lampwarden. Its Gleam isn't won by a fight alone — but by proving your bond is worth the sky.",
+    unlock_flag: 'flag:beacon_quest',
+  },
+  {
+    id: 'lampwarden',
+    term: 'Lampwarden',
+    desc: "Keeper of a valley's Lumenary and its constellation. Eight tend the rim; each will vouch for a Wayfarer who has truly bonded.",
+    unlock_flag: 'flag:beacon_quest',
+  },
+  {
+    id: 'gleam',
+    term: 'Gleam',
+    desc: "A relit constellation — a homecoming, not a trophy, given inside a town's festival. Each warms the dusk a shade; eight complete the Crown.",
+    unlock_flag: 'gleam:ember',
+  },
+  {
+    id: 'lamplight',
+    term: 'Lamplight',
+    desc: 'Your young lamp reaches only a small circle in the dark. Each Gleam you relight widens it, until you all but carry the dawn in hand.',
+    unlock_flag: 'gleam:ember',
+  },
+  {
+    id: 'hollowing',
+    term: 'the Hollowing',
+    desc: "Not villains — frightened folk who'd let the long night come gently and stay. They put luminous kin to sleep and carry their light away.",
+    unlock_flag: 'flag:dusk_begins',
+  },
+  {
+    id: 'lantern_gift',
+    term: 'Lantern Gift',
+    desc: 'A knack a Lampwarden teaches with their Gleam — Tidecall crosses night-water; more come later. Each reopens places you once walked past.',
+    unlock_flag: 'gleam:tide',
+  },
+];
+
+/** Lookup by id (for cutscenes that might surface a single definition later). */
+export function getGlossaryEntry(id: string): GlossaryEntry | undefined {
+  return GLOSSARY.find((e) => e.id === id);
+}

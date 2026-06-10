@@ -336,11 +336,19 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   you add one. Multi-phase screens (PartyMenu/ItemsMenu/HearthMenu) **don't** keep one
   long-lived loop: each phase (`pickX`) attaches its own tick + input and tears both
   down before opening a sub-`Menu`, so presses are never double-read.
-- **Pause menu = RESUME / KIN / HEARTH / ITEMS / SAVE / SETTINGS** (`WorldScene.openPauseMenu`).
+- **Pause menu = RESUME / KIN / HEARTH / ITEMS / LORE / SAVE / SETTINGS** (`WorldScene.openPauseMenu`).
   KIN→`PartyMenu`, HEARTH→`HearthMenu` (kin storage), ITEMS→`ItemsMenu` (view + use a
-  medicine to heal). Each returns its mutated data; the caller assigns it back and
-  `persist()`s. Shell A/B buttons carry a `title` keyboard-hint via `KEY_HINTS` in
-  `ShellManager.ts` — keep it in sync with the InputController bindings.
+  medicine to heal), LORE→`GlossaryMenu` (read-only codex of canon vocabulary). Each returns its
+  mutated data; the caller assigns it back and `persist()`s. Shell A/B buttons carry a `title`
+  keyboard-hint via `KEY_HINTS` in `ShellManager.ts` — keep it in sync with the InputController
+  bindings.
+- **The LORE codex (`GlossaryMenu`) is a data-driven, flag-staggered reference.** Entries live in
+  `content/glossary.ts` (ordered array; canon voice). An entry with no `unlock_flag` is known from
+  the start; one with an `unlock_flag` stays a "? ? ?" tease until that flag is held — and it reuses
+  flags the journey ALREADY sets (`gleam:ember`, `flag:dusk_begins`, `gleam:tide`, …), so the codex
+  fills in with **no new story wiring**. Add a later region's terms here, keyed to a beat's existing
+  flag. The screen is a windowed list + detail pane (the `StarterSelect` pattern), built from the
+  shared UI kit + theme tokens.
 - **The Hearth is real kin storage; `SaveGame.box` is now live.** Storage is persisted
   + threaded through battle (`BattleRequest`/`BattleResult` carry `box`). A catch with a
   full lamp (`Party.isFull`) **overflows to the Hearth** in `BattleScene.complete()` —
@@ -352,8 +360,14 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `public/assets/sprites/trainers/` + manifest, loaded eagerly in `PreloadScene`.
   `Player`/`Npc` use the real sheet if its texture loaded, else the runtime coloured-box
   placeholder. Map a new NPC `sprite` key → a packed stem in `Npc.SPRITE_SHEETS`.
-  (Creature *battle/overworld* sprites are a separate path — `CreatureSprites.ts` — still
-  unwired into title/starter/battle, so those previews are still placeholder squares.)
+- **Creature sprites are wired and live (lazy-load by dex id, placeholder fallback).** The
+  separate creature path — `systems/sprites/CreatureSprites.ts` — is now wired into
+  `StarterSelect`, `Battler` (battle), `PartyMenu`, and `AttractScene`: each lazy-loads a packed
+  sprite keyed `kin_<id>_<view>` and falls back to the type-tinted placeholder **only** when a kin
+  isn't packed. 66 kin (incl. the whole hour-one cast) are packed under
+  `public/assets/sprites/creatures/NNN_slug/` — 5 views each (battle_front/back, icon, overworld,
+  portrait) listed in `creatures.manifest.json`. Adding the rest of the 153 is pack + manifest, no
+  code change. (Don't re-describe these previews as "placeholder squares" — that note was stale.)
 - **Character animation is 3 layered sheets, not one big sheet** (docs/art-style.md §A/§A2/§A3):
   layer 1 = the 4×4 walk sheet (required; *running* is free — same frames, faster, so don't
   expand it); layer 2 = ONE shared `emote` bubble sheet (`assets/effects/emotes.png`, reused

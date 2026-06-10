@@ -401,3 +401,31 @@ protected.*
 
 *Prepared by the convened first-hour panel. Measured against `VISION.md` and the
 `CLAUDE.md` Game canon; no recommendation herein requires a canon change.*
+
+---
+
+## Part 6 — Implementation status (post-review action)
+
+After the review, the findings were taken into the codebase. Acting on them
+surfaced an important correction: **two findings were based on a stale
+`CLAUDE.md` note, not the real build state.** What was actually done:
+
+| ID | Finding | Outcome |
+|----|---------|---------|
+| **F0** | "Creature battle sprites are placeholder squares" | **Already satisfied — finding was stale.** `CreatureSprites` is wired into `Battler`, `StarterSelect`, `PartyMenu`, `AttractScene`; 66 kin (the whole hour-one cast — Vulpyre, Brinix, Tallowpup, Wickmoth, Glostern, Cloverkit, Cloverhart) are packed with all 5 views. **Corrected the stale `CLAUDE.md` gotcha and the stale `StarterSelect` docstring** so the next run doesn't re-derive this. The player walk-sheet (`player_indi`) is also real and passes the viewpoint rule. |
+| **F10** | "Protect the first blip + the Gleam swell in audio priority" | **Already satisfied.** The full priority SFX set exists as `.mid` masters + rendered `.mp3` (`ui-confirm/cancel/cursor`, `ui-text-blip`, `capture-throw/wobble/success`, `world-gleam`, `world-star-gutter`, kindle cues). No action needed. |
+| **F3** | "Stagger vocabulary; add a vesperlamp glossary" | **BUILT.** New **LORE** screen in the pause menu (`GlossaryMenu`), a data-driven codex (`content/glossary.ts`) of 14 canon terms. Entries **stagger off flags the journey already sets** (`gleam:ember`, `flag:dusk_begins`, `gleam:tide`, …) — known terms show from the start, unlearned ones read as "? ? ?" teases — so the codex fills in **with no new story wiring**. Built from the shared UI kit; typecheck + production build green. |
+| **F9** | "Make Wren's A2 battle a clean teaching board" | **DONE (content).** Added a cosy, in-voice teaching line to Wren's Dimglass intro that plants the Ember→Verdant→Tide triangle diegetically (verified against `type-chart.json`). Left the carefully-authored, already-2-under team intact rather than re-tuning balance. |
+| **F1** | "Internal wins in the beacon loop; stair-trainers as confidence-builders" | **Largely already satisfied.** The stair trainers are already low (Tansy lv7, Cole lv7/8) against a player arriving ~7–8, and the loop already spaces wins (verge catch → wick-key → two stair KOs). No re-tune needed; flagged for live playtest confirmation. |
+| **F2** | "Earn attachment before `dusk_begins`" | **Design-tracked.** The warm thread exists (the house-parent / "A Letter for Fenn" beat, the post-omen witness). Deepening it is authored content best done with a playtest in hand; left as a tracked content task rather than speculative edits to tuned scripts. |
+| **F4** | "Sequence status + move-learn ahead of Gleam 2" | **Engine-blocked, escalated.** Both are roadmapped in `battle-runtime-plan.md`, not built. This is a prioritisation/sequencing call for the engine track, not a content edit. Recorded in the risk register (R2). |
+| **F5** | "Differentiate the two festivals" | **Design-tracked.** Festival NPCs exist; the differentiation is primarily palette/music/one-signature-interaction (art+audio), best done when those assets are produced. |
+| **F6** | "Frame the first small reveal-radius diegetically" | **Deferred — depends on Lamplight.** The Lamplight render feature isn't built; the framing line lands when it is (the glossary's **Lamplight** entry already pre-seeds the "young lamp reaches further" idea). |
+| **F7** | "Vary the verb of the two South loops" | **Design-tracked.** Depends on the unbuilt `pearlmoor_breakwater` map; the breakwater-walk framing is captured for when that map is authored. |
+| **F8** | "Confirm every first-hour verb is first-class on touch" | **Verification task.** The new LORE screen uses only the shared input actions (Up/Down/Confirm/Cancel) already carried by the touch shell, so it inherits touch support; a full touch walkthrough remains a QA pass. |
+
+**Net:** the one genuinely-missing, high-value player-facing feature (the **LORE
+glossary**, F3) is built and shipping; F9 got a clean content touch; F0 and F10
+were already done and the stale docs that caused those findings are corrected;
+the rest are honestly triaged as engine-blocked (F4) or content/art-tracked
+(F2/F5/F6/F7) rather than papered over.
