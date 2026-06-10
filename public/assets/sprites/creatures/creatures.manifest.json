@@ -56,6 +56,34 @@
         "height": 96
       }
     },
+    "3": {
+      "slug": "blazethorn",
+      "front": {
+        "path": "assets/sprites/creatures/003_blazethorn/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/003_blazethorn/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/003_blazethorn/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/003_blazethorn/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/003_blazethorn/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
     "5": {
       "slug": "wicklit",
       "front": {
