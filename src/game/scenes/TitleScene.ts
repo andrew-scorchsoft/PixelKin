@@ -87,7 +87,9 @@ export class TitleScene extends Phaser.Scene {
         void this.showMenu();
         return;
       }
-      this.start({ mapId: VESPERHOLM_GRAPH.start_map });
+      // A new game opens on the cold-open prologue (the Long Dusk), which then
+      // hands off to the world at the canon spawn. Continue skips straight in.
+      this.startCinematic('coldopen_south', { mapId: VESPERHOLM_GRAPH.start_map });
     } else if (choice === 'continue' && save) this.start(this.continueData(save));
     else if (choice === 'settings') {
       await new SettingsMenu(this, {
@@ -143,6 +145,16 @@ export class TitleScene extends Phaser.Scene {
     this.cameras.main.fadeOut(theme.transition.fadeMs, 0, 0, 0);
     this.cameras.main.once('camerafadeoutcomplete', () => {
       this.scene.start('World', data);
+    });
+  }
+
+  /** Open a cold-open / chapter cinematic, handing it the world data to spawn into. */
+  private startCinematic(scriptId: string, data: WorldSceneData): void {
+    this.idle?.remove();
+    this.music.stop();
+    this.cameras.main.fadeOut(theme.transition.fadeMs, 0, 0, 0);
+    this.cameras.main.once('camerafadeoutcomplete', () => {
+      this.scene.start('Cinematic', { scriptId, next: { scene: 'World', data } });
     });
   }
 }

@@ -33,6 +33,18 @@ under-prepared player.
 - **Mechanics introduced:** **Glimmerstep** + its mapwide "now accessible" callouts (Tideglass
   Cavern back in South; Spore Grotto here); **kindling** likely fires for the first time here
   (the starter kindles ~16–20 — teach it); **deep-cave navigation**; the **Stone bulk** wall.
+- **Cinematic staging (PLANNED — build from South per [`cinematics.md`](../cinematics.md) / §0.4):**
+  **B2 Glowmoss Deep** is East's marquee set-piece and the first real test of the toolkit —
+  stage the drained chamber like `dusk_begins` writ large: `letterbox on` + `silence` as the
+  colour drains (tiles grey, music gutters out), a slow `cameraFocus` onto the sleeping kin and
+  the null-lantern, the **distant Còr glimpse** as a `cameraFocus` on a cowled actor who turns
+  and withdraws (no battle, no name) — Còr/acolyte **portraits** (sorrowful, kind). Restoring the
+  null-lantern is a quiet `gleam`-adjacent relight (a *small* warm `tint`, no festival swell —
+  this is grief eased, not a Gleam). **A3 Wren shaken** uses Wren's `unsure` portrait. The two
+  festivals (**Glowmoss Bloom**, **Lamp-down vigil**) reuse the South Gleam cadence (minor→major
+  + `gleam-emotional`), but Cinderhead's vigil should stay the most *melancholy* swell (lean on
+  `silence` before the lift). Assets owed: Còr + acolyte portraits, a "grey/drained" battle
+  backdrop, optionally a darker drained-site cue.
 
 **Arc D — lighting note (binding, §3 Arc D).** East must read **visibly lighter than South's
 deep blue hour** — but it is still night. The register is **dewy bioluminescent dark**: the

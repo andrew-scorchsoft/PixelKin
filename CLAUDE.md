@@ -517,3 +517,21 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   (carve the water grid out under it and lay sand). Likewise an `AbilityGate make_passable` rect
   force-gates *every* tile it covers (even sand) — keep its rect on pure water and split it around
   any ungated jetty (see `tools/maps/build_pearlmoor.py`).
+- **Story is delivered cinematically, and it's all DATA.** The cutscene toolkit
+  (`CutsceneRunner` ops + `CinematicScene`) gives you portraits (`say {portrait,expr}` +
+  `content/portraits.ts`), narration (`narrate`), music-as-drama (`music` crossfades now;
+  `musicCrossfade`/`musicFade`/`musicSting`/`silence`), and screen FX
+  (`letterbox`/`shake`/`tint`/`flashColor`/`cameraFocus`/`cameraReset`). New storytelling =
+  scripts + these primitives, **never bespoke scene code**. The cold open is a
+  `CinematicScript` in `content/cinematics.ts` played by `CinematicScene` — and it MUST sit
+  **after** the Splash audio-unlock gesture (New Game routes Title → Cinematic → World), or it's
+  silent. Everything degrades silently (missing panel → starfield, portrait → name-only, cue →
+  quiet), so author scripts before the art lands. The **South first hour is the built worked
+  example**; the binding standard is `docs/world/cinematics.md` (and §0.4 of the walkthrough
+  spine). When staging a later beat, copy a South script.
+- **The Gleam cadence is minor→major.** A relit constellation is the emotional payoff: hold a
+  `silence`, bloom a warm/cool `tint` + the lamp sfx, fire `gleam`, then crossfade to the
+  festival swell (`gleam-emotional`). A Gleam is *belonging*, not a trophy — don't hand it over
+  flat. "A light fails" beats (the dusk omen, drained sites) get the opposite: `letterbox` +
+  `silence` + the `world-star-gutter` sting. Seed the Hollowing as quiet dread early (a distant
+  figure, a pinned letter, a grave aside) — never cartoonish.

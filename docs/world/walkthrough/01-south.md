@@ -35,6 +35,31 @@ first traversal Gift, **Tidecall**.
   Gleam earned here nudges the wash a half-shade warmer and the vesperlamp a notch brighter;
   every region after this opens visibly lighter than South.
 
+### Cinematic staging (BUILT — the worked reference for every later region)
+
+South is the **built example** of the [`cinematics.md`](../cinematics.md) standard; later
+regions copy its scripts. What's wired (`src/game/content/scripts.ts` + `cinematics.ts`):
+
+- **Cold open (`coldopen_south`).** New Game opens on a 4-panel illustrated prologue
+  (`CinematicScene`) before Tinderwick: the constellation-full sky → a star **winks out**
+  (`silence` → gutter sting → `flash`) → the lamplit doorway / the calling → a distant cowled
+  figure under the dead sky (the Hollowing **seed**). Foreboding **and** aspirational; skippable
+  (Cancel). Music: `coldopen-foreboding`.
+- **C1 `intro_mentor`.** Fenn carries **portraits** (grave→warm→smile) and a warm `tint` bloom
+  on the vesperlamp gift; the cosy town bed holds (dread only in his face on the lost-star line).
+- **B1 `dusk_begins`** — the load-bearing dread set-piece: `letterbox on → silence(hold) →
+  narrate → world-star-gutter sting + cold `tint` + `shake` → narrate → crossfade the bed back,
+  uneasier → letterbox off`. **This staging is binding for every later "a light fails" beat.**
+- **Gleam payoffs (`beacon_battle` Ember, `lumenary_pearlmoor` Tide)** — minor→major: `musicFade`
+  to silence → warm/cool `tint` bloom + lamp sfx → `gleam` → **crossfade to the festival swell**
+  (`gleam-emotional`) → Brisa/Reyl portrait `proud`. A Gleam is belonging; the music says so.
+- **Early Hollowing seeds (foreboding only — B2 still formally lands in East):** cold-open panel
+  4; `sign.dimglass_pinned_letter` (the Hollowing's courteous unsigned voice, name scratched out,
+  "DO NOT LISTEN" added beneath); the old lamplighter's grave aside in `give_wick`.
+- **Assets:** panels `public/assets/backgrounds/cinematic/coldopen-0{1..4}.webp`; portraits
+  `public/assets/portraits/{fenn,wren,brisa,reyl,lamplighter}.png`; cues `coldopen-foreboding`,
+  `gleam-emotional`, sfx `world-star-gutter-*`. All degrade silently if absent.
+
 ---
 
 ### Tinderwick — *cosy coastal village at the blue hour; the Wayfaring begins*

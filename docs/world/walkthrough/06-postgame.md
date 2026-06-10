@@ -39,6 +39,17 @@ already earned, so post-game is *collecting, rematches, and resolution*, not tra
   lamp is a *keepsake*, not a necessity — the light is in the sky now. The bittersweet note
   the whole game has been tuning toward lands here: the cycle has resumed, which means **dusk
   will come again — and that is exactly the point.**
+- **Cinematic staging (PLANNED — build from South per [`cinematics.md`](../cinematics.md) / §0.4).**
+  Post-game is the **quiet exhale** after the climax — almost no spectacle, all warmth and faces.
+  The whole region is the festival (a region-wide *first-dawn* `gleam-emotional` reprise in full
+  major as the daytime bed). **A6 Wren** at peace in daylight: his steady/smiling **portrait**, an
+  optional friendly rematch with none of the old edge. **Còr's resolution** is the toolkit's
+  gentlest beat — Còr tending a single lamp off to one side on his **portrait** (grief eased, never
+  punished); a short, unhurried, low-music exchange, a touch of warm `tint`. **Fenn** at peace,
+  narrative only. The closing note (the cycle resumes; dusk will return) should land on a held beat
+  — `narrate` over the open daylit sky, the bittersweet major chord — explicitly rhyming with the
+  opening cold open so the game bookends. Assets owed: daytime/daylight Dawnstead backdrop + bed,
+  Còr's "at peace" portrait expression, reuse of existing portraits.
 
 ---
 

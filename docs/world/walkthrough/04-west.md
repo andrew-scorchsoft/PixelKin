@@ -27,6 +27,20 @@
 | **Festivals (Arc E)** | Sunken Solarium **Last-Warm-Day** · Nightreach **Star-vigil** |
 | **Curve** | Hushfrost 40→42 → Solarium ~42 (Lucan ace ~46) → Sunvault 46→48 → Nightreach ~48 (Nessa ace ~52) → exit ~52. ~+6/Gleam, continuous with North's exit (~40); Coldfog detour sits ~46–50 (late). |
 
+**Cinematic staging (PLANNED — build from South per [`cinematics.md`](../cinematics.md) / §0.4).**
+West is **the threshold of the endgame**; the staging escalates toward the Spire. **B4 the Great
+Null named** (Nessa at the telescope) is an information set-piece — `letterbox`, a low uneasy bed,
+Nessa's **portrait** (haunted), and on the words "aimed at the Keystar" a `silence` + a single cold
+`tint`; this is the moment the stakes go concrete, so let it sit. **Coldfog Marches / Hollowfen** is
+the **drained-zone** register: bare 4-voice `gbc` or `silence`-heavy, desaturated `tint` held over
+the whole zone, no festival warmth — the visual cost of the Hollowing at scale. **A5 Wren returns
+resolved** flips the North wobble: open on Wren's `neutral`/steady portrait, a warmer bed — the
+argument walked all the way round. **C4 Fenn's counsel** is portrait + quiet. Festivals: **Last-
+Warm-Day** (Solarium) is the emotional turn from cold to warmth — the swell should bloom `fire`-warm
+after the coldest regions; **Star-vigil** (Nightreach) is the most reverent — `silence` cresting
+exactly as the Lunar Gleam lights (each watcher's lamp a small `flashColor`). Assets owed: Nessa
+portrait, a drained-zone cue + desaturated backdrop, the Solarium warm-swell variant.
+
 **Arc D — lighting.** West is the **lightest pre-dawn region** — clearly lighter than North.
 You leave Pale Vault's lonely aurora-ice and the cold thins: **Hushfrost Pass** is still cold
 but warming at its mouth, the **Sunken Solarium** is "**warm light remembered**" (`fire` stored

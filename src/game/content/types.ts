@@ -12,10 +12,16 @@ import type { ActionName, EmoteName } from '@game/entities/Actor';
 
 // ---- Dialogue ---------------------------------------------------------------
 
-/** One screen of text, optionally attributed to a speaker. */
+/** One screen of text, optionally attributed to a speaker.
+ *  `portrait`/`expr` show a character bust (see content/portraits.ts); `style`
+ *  switches between attributed speech and un-attributed narration. All optional,
+ *  so existing dialogue keeps rendering exactly as before. */
 export interface DialogueLine {
   speaker?: string;
   text: string;
+  portrait?: string; // portrait registry id, e.g. 'fenn'
+  expr?: string; // expression name within that portrait, e.g. 'warm'
+  style?: 'speech' | 'narrate';
 }
 
 /** ref -> ordered pages of dialogue. */
@@ -28,7 +34,8 @@ export type ActorRef = 'player' | string;
 
 /** A single cutscene instruction. The CutsceneRunner interprets these in order. */
 export type CutsceneStep =
-  | { op: 'say'; speaker?: string; text: string }
+  | { op: 'say'; speaker?: string; text: string; portrait?: string; expr?: string; style?: 'speech' | 'narrate' }
+  | { op: 'narrate'; text: string } // un-attributed, full-width prose (a say with style:'narrate')
   | { op: 'dialogue'; ref: string }
   | { op: 'wait'; ms: number }
   | { op: 'move'; actor: ActorRef; to: TileCoord }
@@ -40,7 +47,17 @@ export type CutsceneStep =
   | { op: 'giveStarter' } // run StarterSelect, add chosen kin to the party
   | { op: 'giveItem'; item: string; count?: number }
   | { op: 'sfx'; key: string }
-  | { op: 'music'; key: string | null }
+  | { op: 'music'; key: string | null } // swap the bed (crossfades when one is playing)
+  | { op: 'musicCrossfade'; key: string; ms?: number } // explicit crossfade to a new bed
+  | { op: 'musicFade'; ms?: number } // fade the current bed to silence
+  | { op: 'musicSting'; key: string; volume?: number } // one-shot cue over the current bed
+  | { op: 'silence'; ms: number } // fade to silence and hold — the dread beat
+  | { op: 'letterbox'; on: boolean; ms?: number } // cinematic bars in/out
+  | { op: 'shake'; ms: number; intensity?: number } // camera shake
+  | { op: 'tint'; color: string; alpha?: number; ms?: number } // full-screen colour wash
+  | { op: 'flashColor'; color: string; ms?: number } // a coloured flash (cyan default via 'gleam')
+  | { op: 'cameraFocus'; actor?: ActorRef; to?: TileCoord; ms?: number; zoom?: number } // pan/zoom onto a subject
+  | { op: 'cameraReset'; ms?: number } // re-follow the player, restore zoom
   | { op: 'battle'; trainer: string } // start a trainer battle by id
   | { op: 'heal' } // fully restore the party (inn rest, hearthside kindness)
   | { op: 'gleam'; element: string }; // diegetic Gleam cue (relight the sky)

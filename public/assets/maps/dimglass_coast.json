@@ -2129,6 +2129,16 @@
       "ref": "sign.dimglass_route"
     },
     {
+      "id": "sign_pinned_letter",
+      "kind": "sign",
+      "at": {
+        "tx": 9,
+        "ty": 20
+      },
+      "activation": "interact",
+      "ref": "sign.dimglass_pinned_letter"
+    },
+    {
       "id": "sign_boundary",
       "kind": "sign",
       "at": {

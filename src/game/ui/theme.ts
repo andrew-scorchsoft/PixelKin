@@ -63,10 +63,19 @@ export const theme = {
     accent: { fontFamily: FONT_FAMILY, fontSize: '8px', color: COLORS.diamond },
     title: { fontFamily: FONT_FAMILY, fontSize: '16px', color: COLORS.diamond },
     small: { fontFamily: FONT_FAMILY, fontSize: '8px', color: COLORS.bone },
+    /** Un-attributed narration / cold-open prose — soft, no speaker, set apart. */
+    narrate: { fontFamily: FONT_FAMILY, fontSize: '8px', color: '#d8d2e8' },
   },
 
-  /** Dialogue typewriter speeds, characters per second. Hold confirm = fast. */
-  typewriter: { cps: 32, fastCps: 120 },
+  /** Dialogue typewriter speeds, characters per second. Hold confirm = fast.
+   *  `narrateCps` is deliberately slower so narration reads with weight. */
+  typewriter: { cps: 32, fastCps: 120, narrateCps: 22 },
+
+  /** Character-portrait bust in the dialogue box (a 32×32 frame, top-left). */
+  portrait: { size: 32, inset: 2, gap: 4 },
+
+  /** Cinematic / cutscene presentation timings (ms). */
+  cinematic: { dissolveMs: 900, letterboxMs: 320, holdMs: 700, crossfadeMs: 700 },
 
   /** The pointing cursor's look + the sfx keys it plays. */
   cursor: {
@@ -87,8 +96,19 @@ export const theme = {
   /** Standard transition timings (ms). */
   transition: { fadeMs: 300, doorMs: 350, swooshMs: 420 },
 
-  /** Depth bands so on-canvas UI always sits above the world. */
-  depth: { world: 0, overlayDim: 900, panel: 1000, text: 1010, cursor: 1020, toast: 1100 },
+  /** Depth bands so on-canvas UI always sits above the world. The cinematic
+   *  tint wash sits in the dim band; letterbox bars frame just under the panel
+   *  so the dialogue box still reads over the lower bar. */
+  depth: {
+    world: 0,
+    tint: 905,
+    overlayDim: 900,
+    letterbox: 950,
+    panel: 1000,
+    text: 1010,
+    cursor: 1020,
+    toast: 1100,
+  },
 } as const;
 
 /** Convert a '#rrggbb' string to the 0xRRGGBB number Phaser graphics want. */

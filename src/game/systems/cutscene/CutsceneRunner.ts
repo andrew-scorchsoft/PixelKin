@@ -11,9 +11,9 @@ import type { Actor } from '@game/entities/Actor';
 import type { Facing } from '@game/data/world/types';
 import { DialogueBox } from '@game/ui/DialogueBox';
 import { StarterSelect } from '@game/ui/StarterSelect';
-import { fadeIn, fadeOut, flash } from '@game/ui/Transitions';
+import { fadeIn, fadeOut, flash, flashColor, shake, tint, letterbox } from '@game/ui/Transitions';
+import { hex } from '@game/ui/theme';
 import { getDialogue } from '@game/content/dialogue';
-import { loadAudio } from '@game/systems/audio/loadAudio';
 import type { FlagStore } from '@game/systems/flags/FlagStore';
 import type { Sfx } from '@game/systems/audio/Sfx';
 import type { MusicDirector } from '@game/systems/audio/MusicDirector';
@@ -31,7 +31,13 @@ export interface CutsceneContext {
   startTrainerBattle?(trainer: string): Promise<boolean>;
   /** Fully restore the party (the inn-rest / hearthside-heal op). */
   onHealParty?(): void;
+  /** Pan/zoom the camera onto a world tile (host supplies tile→pixel + freeze). */
+  cameraFocusTile?(tx: number, ty: number, ms: number, zoom?: number): Promise<void>;
+  /** Re-follow the player and restore zoom after a focus. */
+  cameraReset?(ms: number): Promise<void>;
 }
+
+const MUSIC_URL = (key: string): string => `assets/audio/music/${key}.mp3`;
 
 function delay(scene: Phaser.Scene, ms: number): Promise<void> {
   return new Promise((resolve) => scene.time.delayedCall(ms, () => resolve()));
@@ -69,7 +75,12 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
   const { scene } = ctx;
   switch (step.op) {
     case 'say':
-      await new DialogueBox(scene, ctx.sfx).run([{ speaker: step.speaker, text: step.text }]);
+      await new DialogueBox(scene, ctx.sfx).run([
+        { speaker: step.speaker, text: step.text, portrait: step.portrait, expr: step.expr, style: step.style },
+      ]);
+      return true;
+    case 'narrate':
+      await new DialogueBox(scene, ctx.sfx).run([{ text: step.text, style: 'narrate' }]);
       return true;
     case 'dialogue':
       await new DialogueBox(scene, ctx.sfx).run(getDialogue(step.ref));
@@ -115,8 +126,53 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       void ctx.sfx.play(step.key);
       return true;
     case 'music':
-      if (step.key === null) ctx.music.stop();
-      else void ctx.music.play(step.key, `assets/audio/music/${step.key}.mp3`);
+      // Crossfade when a bed is already playing (smooth swaps); fade to silence on null.
+      if (step.key === null) await ctx.music.fadeToSilence();
+      else if (ctx.music.playingKey) await ctx.music.crossfade(step.key, MUSIC_URL(step.key));
+      else await ctx.music.play(step.key, MUSIC_URL(step.key));
+      return true;
+    case 'musicCrossfade':
+      await ctx.music.crossfade(step.key, MUSIC_URL(step.key), step.ms);
+      return true;
+    case 'musicFade':
+      await ctx.music.fadeToSilence(step.ms);
+      return true;
+    case 'musicSting':
+      ctx.music.playSting(step.key, MUSIC_URL(step.key), step.volume);
+      return true;
+    case 'silence':
+      // The dread beat: fade the bed out and hold on the quiet.
+      await ctx.music.fadeToSilence(Math.min(400, step.ms));
+      await delay(scene, step.ms);
+      return true;
+    case 'letterbox':
+      await letterbox(scene, step.on, step.ms);
+      return true;
+    case 'shake':
+      await shake(scene, step.ms, step.intensity);
+      return true;
+    case 'tint':
+      await tint(scene, hex(step.color), step.alpha, step.ms);
+      return true;
+    case 'flashColor':
+      await flashColor(scene, step.ms, hex(step.color));
+      return true;
+    case 'cameraFocus': {
+      const ms = step.ms ?? 600;
+      let tx = step.to?.tx;
+      let ty = step.to?.ty;
+      if (step.actor) {
+        const a = ctx.getActor(step.actor);
+        if (a) {
+          tx = a.tx;
+          ty = a.ty;
+        }
+      }
+      if (tx !== undefined && ty !== undefined) await ctx.cameraFocusTile?.(tx, ty, ms, step.zoom);
+      return true;
+    }
+    case 'cameraReset':
+      await ctx.cameraReset?.(step.ms ?? 600);
       return true;
     case 'battle':
       // A lost trainer battle aborts the scene (so a defeat never narrates a win).
@@ -128,9 +184,8 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       return true;
     case 'gleam': {
       void ctx.sfx.playVariant('world-gleam', ['a', 'b', 'c']);
-      // A short triumphant fanfare for relighting a constellation (one-shot).
-      const ok = await loadAudio(scene, 'gleam-fanfare', 'assets/audio/music/gleam-fanfare.mp3');
-      if (ok) scene.sound.play('gleam-fanfare', { volume: 0.6 });
+      // A short triumphant fanfare for relighting a constellation (one-shot, over the bed).
+      ctx.music.playSting('gleam-fanfare', MUSIC_URL('gleam-fanfare'), 0.6);
       await flash(scene, 220);
       return true;
     }

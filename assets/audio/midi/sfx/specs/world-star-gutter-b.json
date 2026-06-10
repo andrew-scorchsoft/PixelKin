@@ -1,0 +1,14 @@
+{
+  "title": "SFX -- world star-gutter (a light dies, variant)",
+  "_note": "Variant of the star-gutter snuff. Sparser and colder than -a: a single hollow pulse50 note that flickers (two failing pulses) then collapses in a down-glide and dies, with a low noise sink under it. More 'flicker-flicker-gone' than -a's one long slide - the last guttering of a candle before the dark. Down, hollow, unresolved, no sparkle. ~0.5s. Render --tail 0.18.",
+  "era": "sfx",
+  "tempo": 160,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "A minor",
+  "tracks": [
+    { "name": "flicker", "voice": "pulse50", "octave": 5, "gain": 1.0,  "notes": "A4s@100 rs G4s@80 rs E4~A2e@95" },
+    { "name": "ash",     "voice": "pulse12", "octave": 4, "gain": 0.45, "notes": "rs C4s@60 rs B3~F3e@55" },
+    { "name": "sink",    "voice": "noise",   "octave": 3, "gain": 0.4,  "notes": "rs A4~A2e@65" }
+  ]
+}

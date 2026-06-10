@@ -56,6 +56,15 @@ region file:
 > `graph.ts` (the cards split into segments + spurs + landmarks + hub + central). All three
 > describe the same world at different resolutions.
 
+> **4. Tell it cinematically — delivery is part of the spec.** A beat isn't done when the
+> words are written; it's done when it *lands*. [`cinematics.md`](../cinematics.md) is
+> **binding**: cold opens, portraits, the music-as-drama cadence (crossfade on change,
+> `silence` for dread, `gleam`→minor-major festival swell), and the dark-but-aspirational
+> tone rules. The **South first hour is the built worked example** — copy its scripts
+> (`src/game/content/scripts.ts`, `cinematics.ts`) when staging any later beat. Each region
+> file carries a **"Cinematic staging"** note per major beat (§7); a Gleam without the swell,
+> or a Hollowing reveal without the quiet, is a content bug.
+
 ---
 
 ## 1. How to use this document
@@ -449,6 +458,7 @@ scannable and validatable:
 **At a glance** — map id(s) · kind · region · entry/exit · gate ability · Gleam · rec. level
 1. **Main path** — ordered beats; one screen-decision per beat in spirit (per level-design §15×10)
 2. **Story beats** — which arc beats (A1/B2/…) land here; 1–3 *signature* sample lines that set tone
+   - **Cinematic staging** — for each major beat, the [`cinematics.md`](../cinematics.md) primitives + assets it uses (portraits/expr · music crossfade/`silence`/sting · `letterbox`/`tint`/`shake` · `gleam`→swell · any cold-open/chapter panel). The South scripts are the worked reference. **Binding** per §0.4.
 3. **Mechanic introductions** — Gift earned / capture-or-kindling teaching / new terrain
 4. **Optional content** — spurs · landmarks · hidden items, each tagged:
       [MUST-DO] don't-leave-without · [MISSABLE] easy to walk past · [LATER] needs a Gift you don't have yet (name it)

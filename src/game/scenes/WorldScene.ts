@@ -7,7 +7,7 @@
  * dialogue or a menu is open.
  */
 import Phaser from 'phaser';
-import { COLORS } from '@game/config';
+import { COLORS, TILE_SIZE } from '@game/config';
 import { theme } from '@game/ui/theme';
 import { DebugOverlay } from '@game/ui/DebugOverlay';
 import { DialogueBox } from '@game/ui/DialogueBox';
@@ -380,7 +380,37 @@ export class WorldScene extends Phaser.Scene {
         }
         return true;
       },
+      cameraFocusTile: (tx, ty, ms, zoom) => this.cameraFocusTile(tx, ty, ms, zoom),
+      cameraReset: (ms) => this.cameraResetToPlayer(ms),
     };
+  }
+
+  /** Pan (and optionally zoom) the camera onto a world tile's centre for a beat. */
+  private cameraFocusTile(tx: number, ty: number, ms: number, zoom?: number): Promise<void> {
+    const cam = this.cameras.main;
+    cam.stopFollow();
+    const x = tx * TILE_SIZE + TILE_SIZE / 2;
+    const y = ty * TILE_SIZE + TILE_SIZE / 2;
+    if (zoom && zoom !== cam.zoom) cam.zoomTo(zoom, ms, 'Sine.easeInOut');
+    return new Promise((resolve) => {
+      cam.pan(x, y, ms, 'Sine.easeInOut', false, (_c, progress) => {
+        if (progress >= 1) resolve();
+      });
+    });
+  }
+
+  /** Restore the standard follow-the-player framing and zoom after a focus. */
+  private cameraResetToPlayer(ms: number): Promise<void> {
+    const cam = this.cameras.main;
+    if (cam.zoom !== 1) cam.zoomTo(1, ms, 'Sine.easeInOut');
+    return new Promise((resolve) => {
+      cam.pan(this.player.sprite.x, this.player.sprite.y, ms, 'Sine.easeInOut', false, (_c, progress) => {
+        if (progress >= 1) {
+          cam.startFollow(this.player.sprite, true, 1, 1);
+          resolve();
+        }
+      });
+    });
   }
 
   // --- Route-trainer line of sight ------------------------------------------

@@ -10,6 +10,8 @@ import {
 } from '@game/systems/sprites/CreatureSprites';
 import { ACTIONS_KEY_SUFFIX, EMOTE_TEXTURE } from '@game/entities/Actor';
 import { ARENA_LAYER_PATHS } from './AttractScene';
+import { CINEMATIC_PANEL_PATHS } from '@game/content/cinematics';
+import { PORTRAIT_SHEETS, PORTRAIT_FRAME } from '@game/content/portraits';
 
 interface SheetEntry {
   path: string;
@@ -73,6 +75,18 @@ export class PreloadScene extends Phaser.Scene {
     // Keyed by their asset path (same convention as battle backdrops).
     for (const path of ARENA_LAYER_PATHS) {
       this.load.image(path, path);
+    }
+
+    // Cold-open / cinematic key-art panels (240x160 WebP), keyed by path. The
+    // CinematicScene cross-dissolves these; missing files fall back to a starfield.
+    for (const path of CINEMATIC_PANEL_PATHS) {
+      this.load.image(path, path);
+    }
+
+    // Character portrait busts (32x32-frame sheets) shown in the dialogue box.
+    // Keyed by the registry id; a missing sheet falls back to a name-only box.
+    for (const p of PORTRAIT_SHEETS) {
+      this.load.spritesheet(p.key, p.path, PORTRAIT_FRAME);
     }
 
     // Per-map battle backdrops (240x160 WebP). Keyed by their asset path so the

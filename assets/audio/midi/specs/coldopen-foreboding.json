@@ -1,0 +1,59 @@
+{
+  "title": "Cold Open - Foreboding (The Long Dusk / a star winks out)",
+  "_note": "The cold-open prologue underscore: the Long Dusk falling, a star guttering from the sky. SLOW (74 BPM), harmonic A minor (raised 7th G# for the foreboding leading-tone pull), sparse, lots of space, UNRESOLVED. Richer snes register (a low pad + a thin string thread for body) but kept dark and uncluttered - a bed, not a wall; warm reverb 0.18 only deepens the space. Vesper motif treatment: the FRAGILE high fragment states only the hopeful rising LEAP (E4->A4->B4, the lift overshooting past the tonic to the 2nd) up in the bell/pulse; the settle-home (the stepwise fall back to the tonic) is DELIBERATELY WITHHELD every time - it reaches up and the phrase dies into rests, a question never answered. A thin thread of hope survives in the bell's lone B that hangs, asking. Built to loop seamlessly (the last bar's low E dominant-pedal pulls back to the silent A-minor top) AND to be cut to silence mid-narration (no phrase depends on a downbeat resolving - every phrase already trails into rest). 16-bar loop, lead-in everywhere is rests so a fade-in/fade-out is clean. Render --loops 1.",
+  "era": "snes",
+  "tempo": 74,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "A minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.8,
+      "_note": "The fragile high motif fragment. States only the rising LEAP (E4->A4->B4) - the lift that overshoots to the 2nd - then dies into rests; the settle-home never comes. Each statement reaches a little, hangs on the overshoot B4 (or C5, the minor 3rd above), and gutters out. Sparse: a phrase every few bars, lots of silence between. Last appearance hangs on B4 unresolved into the loop seam.",
+      "notes": "rw | rh E4q A4q | B4h. rq | rw | rw | rh E4q A4q | B4q C5h rq | rw | rw | rh A4q B4q | C5h. rq | rw | rh E4q A4q | B4h rh | rw | rh rq B4q"
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.35,
+      "_note": "The thin thread of hope - a single far-off bell glint answering the lead's reach, ringing once per long phrase into the dark (like the last star still lit). Mostly silent. The final lone E5 hangs into the loop, asking - never resolving down.",
+      "notes": "rw | rw | rw | rh rq A5e B5e | rw | rw | rw | rw | rw | rw | rh rq B5e C6e | rw | rw | rw | rw | rh E5h"
+    },
+    {
+      "name": "pad",
+      "voice": "pad",
+      "octave": 3,
+      "gain": 0.26,
+      "_note": "Warm sustained low pad carrying the dark harmony - the bed under everything. A minor (i) held long, slipping to F (VI) for the ache and the E major (V, with G# leading-tone, harmonic minor) that pulls but never resolves home. Soft, dark, uncluttered - one chord per 1-2 bars, never busy. Ends on E major (dominant) so the loop seam keeps pulling, unresolved.",
+      "notes": "A2+C3+E3w | A2+C3+E3w | A2+C3+E3w | A2+C3+E3w | F2+A2+C3w | F2+A2+C3w | A2+C3+E3w | A2+C3+E3w | F2+A2+C3w | F2+A2+C3w | D2+F2+A2w | D2+F2+A2w | A2+C3+E3w | A2+C3+E3w | E2+G#2+B2w | E2+G#2+B2w"
+    },
+    {
+      "name": "strings",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.22,
+      "_note": "A thin string thread - just a single sustained inner voice that swells and fades, breathing under the pad for warmth in the dark. Enters sparingly so the texture stays uncluttered. Holds the third/fifth of each chord, leaning into the G# leading-tone at the end.",
+      "notes": "rw | rw | E3w | E3w | rw | C3w | rw | E3w | rw | C3w | rw | A3w | rw | E3w | rw | G#3w"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 1,
+      "gain": 0.85,
+      "_note": "Low drone - the foreboding floor. The tonic A held for bars at a time, slipping to F (VI) and finally the E dominant pedal at the seam (which pulls back to the silent A top, so the loop is seamless yet never resolves the melody). Almost still.",
+      "notes": "A1w | A1w | A1w | A1w | F1w | F1w | A1w | A1w | F1w | F1w | D1w | D1w | A1w | A1w | E1w | E1w"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.3,
+      "_note": "Almost absent - a faint, slow heartbeat tick on the downbeat of every other bar, the only pulse of life in the dark. No groove.",
+      "notes": "hatq rq rh | rw | hatq rq rh | rw | hatq rq rh | rw | hatq rq rh | rw | hatq rq rh | rw | hatq rq rh | rw | hatq rq rh | rw | hatq rq rh | rw"
+    }
+  ]
+}

@@ -56,6 +56,17 @@ how you become an adult here. The map is, very literally, the adventure.
 
 ## 3. Story arc
 
+**Cold open (canon — the game's first ~60 seconds).** Before control, a short illustrated
+prologue establishes the Long Dusk: the night sky was *once full of lanterns* — eight
+constellations holding the dark a friend, not a grave; then, one by one, the lights began to
+go out (the player watches a star **wink out**); but where a light fails, the lamp-tenders
+answer — in Tinderwick, a child wakes to their Wayfaring, a lamp to carry and a sky to
+relight; and on a far dark ridge, beneath the dead patch of sky, **a still cowled figure
+waits** — patient, unhurried, unexplained (the first, wordless seed of the Hollowing). Tone:
+foreboding **and** aspirational — dread in the quiet, hope in the calling. This prologue is
+the narrated, scored opening the game has always wanted; it bookends with the dawn at the
+climax. (Built as `coldopen_south`; staging standard in [`cinematics.md`](./cinematics.md).)
+
 **Setup.** The game opens in **Tinderwick**, a cosy coastal village at the blue hour, when
 the sky can't decide between day and night. A retired star-tender — your mentor — gives
 you your vesperlamp and a starter kin, and sends you off on your Wayfaring.
