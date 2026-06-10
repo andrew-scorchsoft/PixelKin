@@ -21,6 +21,7 @@
 import './shells.css';
 import { SaveManager } from '@game/systems/save/SaveManager';
 import type { ShellMode, Settings } from '@game/systems/save/SaveManager';
+import { setAlwaysRun, setTextSpeed } from '@game/ui/preferences';
 
 /** The abstract directional/button actions the on-screen controls emit. */
 export type ShellAction = 'up' | 'down' | 'left' | 'right' | 'confirm' | 'cancel' | 'menu';
@@ -67,6 +68,9 @@ class ShellManagerImpl {
   /** Read persisted settings and apply the saved shell. Call once from main.ts. */
   async init(): Promise<void> {
     this.settings = await SaveManager.loadSettings();
+    // Push the gameplay preferences into their live, per-frame home.
+    setAlwaysRun(this.settings.alwaysRun ?? false);
+    setTextSpeed(this.settings.textSpeed ?? 'cosy');
     this.render();
   }
 

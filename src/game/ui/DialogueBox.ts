@@ -21,6 +21,7 @@ import { makeText } from './Text';
 import { Panel } from './Panel';
 import { InputController, InputAction } from '@game/systems/input/InputController';
 import { resolvePortrait } from '@game/content/portraits';
+import { textSpeedMultiplier } from './preferences';
 import type { DialogueLine } from '@game/content/types';
 import type { Sfx } from '@game/systems/audio/Sfx';
 
@@ -184,10 +185,11 @@ export class DialogueBox {
 
         if (!complete) {
           // Typewriter; hold confirm to speed up, tap to complete instantly.
-          if (input.justPressed(InputAction.Confirm)) {
+          if (input.justPressed(InputAction.Confirm) || textSpeedMultiplier() === Number.POSITIVE_INFINITY) {
             shown = full.length;
           } else {
-            const cps = input.isDown(InputAction.Confirm) ? speed.fastCps : speed.cps;
+            const cps =
+              (input.isDown(InputAction.Confirm) ? speed.fastCps : speed.cps) * textSpeedMultiplier();
             acc += this.scene.game.loop.delta;
             const reveal = Math.floor((acc / 1000) * cps);
             if (reveal > shown) {

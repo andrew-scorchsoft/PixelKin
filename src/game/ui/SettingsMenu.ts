@@ -28,6 +28,7 @@ import type { Settings } from '@game/systems/save/SaveManager';
 import { SaveCodec } from '@game/systems/save/SaveCodec';
 import { ShellManager } from '../../shell/ShellManager';
 import type { ShellMode } from '@game/systems/save/SaveManager';
+import { setAlwaysRun, setTextSpeed, type TextSpeed } from './preferences';
 import { GAME_WIDTH } from '@game/config';
 
 export interface SettingsMenuDeps {
@@ -42,6 +43,12 @@ const SHELL_LABEL: Record<ShellMode, string> = {
   device: 'Device',
   overlay: 'Overlay',
   plain: 'Plain',
+};
+
+const TEXT_SPEED_LABEL: Record<TextSpeed, string> = {
+  cosy: 'Cosy',
+  brisk: 'Brisk',
+  instant: 'Instant',
 };
 
 /** Cycle the shell mode in a stable order. */
@@ -79,6 +86,8 @@ export class SettingsMenu {
         enabled: this.settings.shell !== 'plain',
       },
       { label: `Sound: ${this.settings.muted ? 'Muted' : 'On'}`, value: 'mute' },
+      { label: `Pace: ${this.settings.alwaysRun ? 'Always run' : 'Walk'}`, value: 'run' },
+      { label: `Text: ${TEXT_SPEED_LABEL[this.settings.textSpeed ?? 'cosy']}`, value: 'text' },
       { label: 'Export save', value: 'export', enabled: hasSave },
       { label: 'Import save', value: 'import' },
       { label: 'Back', value: 'back' },
@@ -128,6 +137,24 @@ export class SettingsMenu {
         const muted = !this.settings.muted;
         this.settings = { ...this.settings, muted };
         this.scene.sound.mute = muted;
+        await SaveManager.saveSettings(this.settings);
+        void this.deps.sfx?.play('ui-toggle');
+        return true;
+      }
+      case 'run': {
+        const alwaysRun = !this.settings.alwaysRun;
+        this.settings = { ...this.settings, alwaysRun };
+        setAlwaysRun(alwaysRun);
+        await SaveManager.saveSettings(this.settings);
+        void this.deps.sfx?.play('ui-toggle');
+        return true;
+      }
+      case 'text': {
+        const order: TextSpeed[] = ['cosy', 'brisk', 'instant'];
+        const current = this.settings.textSpeed ?? 'cosy';
+        const next = order[(order.indexOf(current) + 1) % order.length];
+        this.settings = { ...this.settings, textSpeed: next };
+        setTextSpeed(next);
         await SaveManager.saveSettings(this.settings);
         void this.deps.sfx?.play('ui-toggle');
         return true;

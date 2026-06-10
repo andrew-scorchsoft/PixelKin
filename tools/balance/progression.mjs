@@ -53,7 +53,7 @@ const STARTING_WICKS = 250;
 const PAYOUT_RATE = { route: 16, keeper: 20, rival: 24, warden: 60, cor: 120 };
 const PRICES = {
   tallow_balm: 120, warm_balm: 500, bright_balm: 1200,
-  vesperlamp: 200, bright_lamp: 600, radiant_lamp: 1500,
+  glow_charge: 200, beacon_charge: 600,
   chart_early: 800, chart_mid: 1400, chart_late: 2400, chart_end: 4000,
 };
 
@@ -146,7 +146,7 @@ const JOURNEY = [
       T('Brisa Tallow', 'warden', [K(7, 10), K(10, 18)]),
     ],
     income: { quests: 150, valuables: 250, finds: 0 }, // beacon errand thanks + a wax cake cache
-    spend: { tallow_balm: 2, vesperlamp: 2 },
+    spend: { tallow_balm: 2, glow_charge: 2 },
     checkpoint: { name: 'Ember Gleam (Brisa)', rec: 10, ace: 10 },
   },
   {
@@ -171,7 +171,7 @@ const JOURNEY = [
       T('Reyl Wash', 'warden', [K(12, 26), K(13, 31), K(14, 27), K(16, 24)]),
     ],
     income: { quests: 400, valuables: 250, finds: 0 }, // bell-rope quest + Round leg
-    spend: { warm_balm: 1, bright_lamp: 2, chart_mid: 1 },
+    spend: { warm_balm: 1, beacon_charge: 2, chart_mid: 1 },
     checkpoint: { name: 'Tide Gleam (Reyl)', rec: 12, ace: 16 },
   },
 
@@ -199,7 +199,7 @@ const JOURNEY = [
       T('Sable Quill', 'warden', [K(18), K(19), K(20), K(22)]),
     ],
     income: { quests: 500, valuables: 600, finds: 0 }, // bed-warming chain + moth-amber
-    spend: { warm_balm: 2, bright_lamp: 1, chart_mid: 1 },
+    spend: { warm_balm: 2, beacon_charge: 1, chart_mid: 1 },
     checkpoint: { name: 'Verdant Gleam (Sable)', rec: 18, ace: 22 },
   },
   {
@@ -243,7 +243,7 @@ const JOURNEY = [
       T('Mira Vael', 'warden', [K(30), K(31), K(32), K(34)]),
     ],
     income: { quests: 700, valuables: 600, finds: 200 },
-    spend: { warm_balm: 3, bright_lamp: 2, chart_late: 1 },
+    spend: { warm_balm: 3, beacon_charge: 2, chart_late: 1 },
     checkpoint: { name: 'Storm Gleam (Mira)', rec: 28, ace: 34 },
   },
   {
@@ -278,7 +278,7 @@ const JOURNEY = [
       T('Lucan Pyre', 'warden', [K(42), K(43), K(44), K(44), K(46)]),
     ],
     income: { quests: 1100, valuables: 1500, finds: 300 }, // stage-lighting chain + starglass
-    spend: { bright_balm: 2, radiant_lamp: 1, chart_late: 1 },
+    spend: { bright_balm: 2, beacon_charge: 2, chart_late: 1 },
     checkpoint: { name: 'Solar Gleam (Lucan)', rec: 42, ace: 46 },
   },
   {

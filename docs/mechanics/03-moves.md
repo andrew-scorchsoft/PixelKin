@@ -48,19 +48,33 @@ type chart entirely. Plain moves keep early kin functional and give designers a
 { "weather": "sun" }                              // sets field state
 ```
 
+**Implementation status (2026-06):** stat stages, status, drain, recoil, heal,
+flinch, highCrit, cure, screens, the caltrops hazard, pivot and Rest Up's
+selfDoze all run in `BattleEngine`. `multi` and `weather` have **no moves in
+the current 125-pool** and stay unimplemented until a move needs them (add the
+engine support in the same change as the move).
+
 ### Status conditions (our names)
 
-Original names, familiar functions — keeps the cosy lamplight tone:
+Original names, familiar functions — keeps the cosy lamplight tone. **BUILT
+(2026-06):** these run in the engine (`BattleEngine` pre-move gates, end-of-turn
+chip, stat hooks; the exact tuning constants below are the source of truth and
+live at the top of `systems/battle/BattleEngine.ts`):
 
-| Status | Slug | Effect | Genre analogue |
+| Status | Slug | Effect (exact) | Genre analogue |
 |--------|------|--------|----------------|
-| Scorch | `scorch` | chip damage each turn; halves physical Atk | burn |
-| Drench | `drench` | −Speed, occasional skip | (soak/slow) |
-| Numb | `numb` | may be unable to act; −Speed | paralysis |
-| Doze | `doze` | asleep, can't act 1–3 turns | sleep |
-| Blight | `blight` | escalating chip damage each turn | bad poison |
-| Dazzle | `dazzle` | confusion; may hit self | confusion |
-| Chill | `chill` | frozen, can't act until thawed | freeze |
+| Scorch | `scorch` | 1/16 max HP chip each turn; physical Atk ×0.5 | burn |
+| Drench | `drench` | Speed ×0.5; 25% chance an action fails | (soak/slow) |
+| Numb | `numb` | Speed ×0.5; 25% chance unable to act | paralysis |
+| Doze | `doze` | asleep 1–3 turns (no charge spent on blocked turns) | sleep |
+| Blight | `blight` | n/16 max HP chip, n+1 each turn it persists | bad poison |
+| Dazzle | `dazzle` | 1/3 chance each turn to hit itself (40-power typeless, own atk vs def) | confusion |
+| Chill | `chill` | can't act; 20%/turn thaw, or any Ember hit thaws | freeze |
+
+One major status at a time (a second application fails); `fullHeal`/inn rest/
+Cleanse cure; volatile counters (doze turns, blight stacks) reset on send-out;
+status persists outside battle. Statuses also feed the catch `statusBonus`
+(`04-capture.md`).
 
 ## Move-power bands
 

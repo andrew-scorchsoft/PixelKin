@@ -58,7 +58,7 @@ export class KindlePrompt {
     }
 
     // The bloom: a slow white-gold wash, the swap at its peak, then the reveal.
-    void this.sfx?.playVariant('progress-levelup', ['a', 'b']);
+    void this.sfx?.playVariant('kindle-start', ['a', 'b']);
     await this.bloom(() => {
       const { learned, pending } = this.kin.applyKindle(this.kindling);
       this.learnedNow = learned.map((m) => m.name);
@@ -66,6 +66,7 @@ export class KindlePrompt {
       this.onTransform?.();
     });
 
+    void this.sfx?.playVariant('kindle-complete', ['a', 'b', 'c']);
     await new DialogueBox(this.scene, this.sfx).run([
       { text: `${oldName} kindled into ${this.kin.species.name}!` },
     ]);

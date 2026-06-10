@@ -9,6 +9,7 @@
 import Phaser from 'phaser';
 import { COLORS, TILE_SIZE } from '@game/config';
 import { theme } from '@game/ui/theme';
+import { makeText } from '@game/ui/Text';
 import { DebugOverlay } from '@game/ui/DebugOverlay';
 import { DialogueBox } from '@game/ui/DialogueBox';
 import { Menu } from '@game/ui/Menu';
@@ -26,6 +27,7 @@ import { renderMap, tickAnimatedTiles } from '@game/systems/world/MapRenderer';
 import type { MapRenderResult } from '@game/systems/world/MapRenderer';
 import { CollisionGrid } from '@game/systems/world/CollisionGrid';
 import { EncounterSystem } from '@game/systems/world/EncounterSystem';
+import { loadCreatureSprite } from '@game/systems/sprites/CreatureSprites';
 import type { BattleRequest, BattleResult } from '@game/scenes/BattleScene';
 import { MusicDirector } from '@game/systems/audio/MusicDirector';
 import { Sfx } from '@game/systems/audio/Sfx';
@@ -163,6 +165,7 @@ export class WorldScene extends Phaser.Scene {
 
       this.spawnNpcs();
       this.playMapMusic();
+      this.warmEncounterSprites();
 
       if (initial) this.cameras.main.fadeIn(theme.transition.fadeMs, 0, 0, 0);
       this.ready = true;
@@ -173,6 +176,19 @@ export class WorldScene extends Phaser.Scene {
       this.cameras.main.fadeIn(theme.transition.fadeMs, 0, 0, 0);
       this.modal = false;
     }
+  }
+
+  /**
+   * Pre-warm the battle sprites for every kin this map's encounter tables can
+   * roll, so the FIRST wild battle on a new map never hitches on a lazy load.
+   * Fire-and-forget; the tolerant loader no-ops anything already cached.
+   */
+  private warmEncounterSprites(): void {
+    const ids = new Set<number>();
+    for (const zone of this.map.def.encounters) {
+      for (const entry of zone.table) ids.add(entry.kin_id);
+    }
+    for (const id of ids) void loadCreatureSprite(this, id, 'front');
   }
 
   /** Play (or resume) the current map's music loop. */
@@ -209,9 +225,33 @@ export class WorldScene extends Phaser.Scene {
     };
   }
 
-  /** Autosave through the storage seam. */
+  /** Autosave through the storage seam (with a quiet corner glyph so the player
+   *  knows the lamp is keeping their place). */
   async persist(): Promise<void> {
     await SaveManager.save(this.buildSaveGame());
+    this.flashSaveGlyph();
+  }
+
+  private saveGlyph?: Phaser.GameObjects.Text;
+  private flashSaveGlyph(): void {
+    if (this.saveGlyph) return; // one at a time is plenty
+    const { width, height } = this.cameras.main;
+    this.saveGlyph = makeText(this, width - 4, height - 4, 'SAVED', theme.text.dim)
+      .setOrigin(1, 1)
+      .setScrollFactor(0)
+      .setDepth(theme.depth.overlayDim + 1)
+      .setAlpha(0);
+    this.tweens.add({
+      targets: this.saveGlyph,
+      alpha: 0.85,
+      duration: 250,
+      yoyo: true,
+      hold: 700,
+      onComplete: () => {
+        this.saveGlyph?.destroy();
+        this.saveGlyph = undefined;
+      },
+    });
   }
 
   private teardownMap(): void {
@@ -525,6 +565,15 @@ export class WorldScene extends Phaser.Scene {
     if (this.modal) return; // a warp/cutscene/battle is already in progress
     void this.sfx.playVariant('world-footstep', ['a', 'b']);
 
+    // First time a Lantern Gift carries you onto its gated ground, mark the
+    // moment — the lamp raised, a wash of its light. Once per Gift.
+    const gift = this.collision.gateAt(tx, ty);
+    if (gift && this.abilities.has(gift) && !this.flags.get(`flag:gift_first_${gift}`)) {
+      this.flags.set(`flag:gift_first_${gift}`, true);
+      void this.playGiftFlourish(gift);
+      return;
+    }
+
     const warp = this.map.def.warps.find(
       (w) => w.trigger === 'step_on' && w.at.tx === tx && w.at.ty === ty,
     );
@@ -691,6 +740,39 @@ export class WorldScene extends Phaser.Scene {
       `npcs: ${this.npcs.length}  flags: ${Object.keys(this.flags.snapshot()).length}`,
       `modal: ${this.modal}`,
     ]);
+  }
+
+  /**
+   * The first time each Lantern Gift carries the player onto its gated ground:
+   * raise the lamp, wash the screen in the Gift's light, say its name. Two
+   * seconds of ceremony, once per Gift — earning a Gift deserves a moment of
+   * using it.
+   */
+  private async playGiftFlourish(gift: AbilityId): Promise<void> {
+    const LOOK: Partial<Record<AbilityId, { color: number; line: string }>> = {
+      tidecall: { color: 0x66b8d8, line: 'You raise the lamp, and the night-water stills to let you pass. Tidecall.' },
+      glimmerstep: { color: 0xb8d96e, line: 'You raise the lamp, and the dark steps back a stride. Glimmerstep.' },
+      updraft_kite: { color: 0xb9c7e8, line: 'You raise the lamp, and the wind takes its warmth — and you with it. Updraft Kite.' },
+      emberward: { color: 0xe89a5d, line: 'You raise the lamp, and the coldfog curls away from its ember. Emberward.' },
+      sunsketch: { color: 0xf0d77a, line: 'You raise the lamp, and stored daylight blooms ahead of you. Sunsketch.' },
+      starreach: { color: 0xcdb9ea, line: 'You raise the lamp, and the void itself holds your weight. Starreach.' },
+    };
+    const look = LOOK[gift];
+    this.modal = true;
+    void this.sfx.playVariant('world-gleam', ['a', 'b', 'c']);
+    const done = this.player.playAction('raiseLamp', 900);
+    if (look) {
+      const wash = this.add
+        .rectangle(0, 0, this.cameras.main.width, this.cameras.main.height, look.color, 0)
+        .setOrigin(0, 0)
+        .setScrollFactor(0)
+        .setDepth(theme.depth.overlayDim);
+      this.tweens.add({ targets: wash, fillAlpha: 0.4, duration: 450, yoyo: true, onComplete: () => wash.destroy() });
+    }
+    await done;
+    if (look) await new DialogueBox(this, this.sfx).run([{ text: look.line }]);
+    void this.persist();
+    this.modal = false;
   }
 
   /** Feedback when walking into a wall: a throttled bump sfx + a tiny squash. */

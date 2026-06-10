@@ -97,4 +97,10 @@ export class CollisionGrid {
     if (need && !abilities.has(need)) return true;
     return false;
   }
+
+  /** The Lantern Gift this tile is gated behind, if any (for the use flourish). */
+  gateAt(tx: number, ty: number): AbilityId | undefined {
+    if (tx < 0 || ty < 0 || tx >= this.w || ty >= this.h) return undefined;
+    return this.gated.get(ty * this.w + tx);
+  }
 }

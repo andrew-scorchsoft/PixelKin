@@ -25,6 +25,7 @@ export const TRAINERS: TrainerRegistry = {
     reward_flags: ['gleam:ember', 'crown_south'],
     payout: 600, // Lampwarden 60 × ace 10
     music: 'battle-emberfall',
+    ai: 'smart', // Lampwardens play the matchup, not just the biggest number
   },
 
   // The Beacon ascent (Tinderwick): Brisa's wick-tenders hold the stair floors —
@@ -119,6 +120,7 @@ export const TRAINERS: TrainerRegistry = {
     reward_abilities: ['tidecall'],
     payout: 960, // Lampwarden 60 × ace 16
     music: 'battle-emberfall',
+    ai: 'smart', // Lampwardens play the matchup, not just the biggest number
   },
 };
 
