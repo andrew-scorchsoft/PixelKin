@@ -102,6 +102,10 @@ mk.hline(path, W, H, 18, 6, 14)                                  # join cottage 
 mk.hline(path, W, H, 16, 14, W - 1)
 for x in (W - 2, W - 1):                                          # punch the east border
     tree[16 * W + x] = 0
+# the BEACON approach: a short spur from the plaza street to the old lamp-tower's
+# foot door on the NE bluff (the tower object stands over the cliff terrace)
+mk.hline(path, W, H, 8, 22, 24)
+path[7 * W + 24] = 1
 
 # ---- base = full grass scatter; terrain layers mesh over it -----------------
 gg = [gid("grass0"), gid("grass1"), gid("grass2"), gid("grass3")]
@@ -132,6 +136,10 @@ objects = [
      "w": LUMENARY["w"], "h": LUMENARY["h"], "overhang": 3},
     {"id": "house", "sprite": "tinderwick_cottage", "at": {"tx": COTTAGE["at"][0], "ty": COTTAGE["at"][1]},
      "w": COTTAGE["w"], "h": COTTAGE["h"], "overhang": 3},
+    # THE OLD BEACON — the town's tower, standing on the NE cliff terrace. Its
+    # foot door is wick-locked until the Dimglass lamplighter's key comes home.
+    {"id": "beacon", "sprite": "tinderwick_beacon", "at": {"tx": 23, "ty": 0},
+     "w": 4, "h": 7, "overhang": 3},
     # Object trees with REAL crowns are scattered along the tree-line and pond so the
     # forest reads as overlapping canopies, not one repeating hedge tile (§11).
     {"id": "tree_a", "sprite": "tinderwick_tree", "at": {"tx": 9, "ty": 10}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
@@ -176,6 +184,7 @@ sign_tiles = {
     "sign_mentor": (12, 11),   # on the spine, by Fenn
     "sign_dock": (15, 18),     # by the shore-bound lane
     "sign_lanternway": (21, 15),  # beside the east lane, pointing to the Crossroads
+    "sign_beacon": (23, 7),       # at the beacon's foot, beside the door spur
 }
 for (x, y) in sign_tiles.values():
     deco[y * W + x] = gid("sign")
@@ -219,6 +228,11 @@ m = {
         {"id": "to_crossroads", "at": {"tx": W - 1, "ty": 16}, "trigger": "step_on",
          "to_map": "vesper_crossroads", "to": {"tx": 2, "ty": 9}, "facing": "right",
          "transition": "fade"},
+        # The Beacon foot door — wick-locked until the key comes home from the
+        # coast road (the earned-first-Gleam quest; see graph.ts + build_beacon.py).
+        {"id": "to_beacon", "at": {"tx": 24, "ty": 6}, "trigger": "interact",
+         "to_map": "tinderwick_beacon_i", "to": {"tx": 6, "ty": 7}, "facing": "down",
+         "requires_flag": "flag:has_beacon_wick", "transition": "door"},
     ],
     "triggers": [
         {"id": "intro_mentor", "kind": "cutscene", "at": {"tx": 13, "ty": 11},
@@ -235,6 +249,9 @@ m = {
         {"id": "sign_lanternway", "kind": "sign",
          "at": {"tx": sign_tiles["sign_lanternway"][0], "ty": sign_tiles["sign_lanternway"][1]},
          "activation": "interact", "ref": "sign.tinderwick_lanternway"},
+        {"id": "sign_beacon", "kind": "sign",
+         "at": {"tx": sign_tiles["sign_beacon"][0], "ty": sign_tiles["sign_beacon"][1]},
+         "activation": "interact", "ref": "sign.beacon_door"},
     ],
     "encounters": [
         {"id": "verge_grass", "terrain": "tall_grass", "rect": {"tx": 10, "ty": 2, "w": 6, "h": 3},

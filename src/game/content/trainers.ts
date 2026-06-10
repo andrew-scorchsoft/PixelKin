@@ -26,6 +26,29 @@ export const TRAINERS: TrainerRegistry = {
     music: 'battle-emberfall',
   },
 
+  // The Beacon ascent (Tinderwick): Brisa's wick-tenders hold the stair floors —
+  // SIGHT trainers pitched between the coast road (~6) and Brisa's ace 10, so the
+  // climb itself is the on-ramp to the bond-test.
+  beacon_keeper_a: {
+    id: 'beacon_keeper_a',
+    name: 'TANSY',
+    title: 'Wick-tender',
+    party: [
+      { species_id: 16, level: 7 }, // Wickmoth — Ember
+    ],
+    music: 'battle-emberfall',
+  },
+  beacon_keeper_b: {
+    id: 'beacon_keeper_b',
+    name: 'COLE',
+    title: 'Wick-tender',
+    party: [
+      { species_id: 10, level: 7 }, // Tallowpup — Ember
+      { species_id: 16, level: 8 }, // Wickmoth — Ember
+    ],
+    music: 'battle-emberfall',
+  },
+
   // A2 — Wren's first FRIENDLY battle on Dimglass Coast I (walkthrough/01-south §2):
   // teaches trainer battles in a low-stakes, cosy frame, pitched ~2 levels under the
   // player (~7 at the second grass beat). No reward flags — the route trigger tracks it.

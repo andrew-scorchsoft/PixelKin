@@ -150,5 +150,8 @@
   "pond_corner_sw": 148,
   "pond_edge_s": 149,
   "pond_corner_se": 150,
-  "pond_fill": 151
+  "pond_fill": 151,
+  "dunegrass_fill": 152,
+  "dunegrass_fill_v1": 153,
+  "dunegrass_fill_v2": 154
 }

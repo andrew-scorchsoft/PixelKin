@@ -486,6 +486,13 @@ tease (dark mouth in the cliff → Tideglass Cavern), each signed; Pearlmoor sig
 
 ### Pre-flight (before painting)
 
+- [ ] **Concept brief first.** Read the area's atlas entry, its walkthrough region file
+      and any concept art (`assets/concept-art/`) BEFORE laying tiles, and write down
+      **three signature touches** the map must carry — the diegetic nods that make the
+      area *this* place and not generic terrain (Tinderwick: the beacon over the bluff;
+      Dimglass: the buoy line arcing to Gullcry; Pearlmoor: lantern-strings + the jetty
+      arrival). If a touch needs art or a mechanic that doesn't exist, raise it — don't
+      quietly drop the concept.
 - [ ] **Atlas entry exists** — kind, region, gate, graphics, music brief, kin, terrain
       ([`atlas.md`](./atlas.md)).
 - [ ] **Size chosen by `MapKind`** within §2 caps; segment if it would exceed ~3×3 screens.
@@ -695,11 +702,15 @@ to them (the §8 checklist now includes this section by reference).
    transition ring — so a patch reads instantly as "grass you fight in" (the classic
    convention). Patches are shaped (rule 4), 2–4 deep, with the safe lane intact.
 7. **Routes carry gameplay, not just terrain.** Per route segment: 1–3 **trainer
-   beats** (static NPC + step_on cutscene tile on a choked lane — a boulder or the
-   NPC closes the other column so the beat can't be skirted), wild bands that
-   **bridge the towns' levels** (next Lampwarden's ace ≈ previous ace +5–6; the
-   route's band fills the gap — e.g. Dimglass I 3–6 → II 8–10 → Pearlmoor 12), and
-   the story beats the walkthrough pins (A2/B1 live on Dimglass I).
+   beats** — now **SIGHT trainers** (NpcPlacement `sight_range` + `defeated_flag`:
+   they alert, march up and challenge when the player crosses their straight-ahead
+   line; beaten ones swap to a plain-dialogue placement by flag pair) — wild bands
+   that **bridge the towns' levels** (next Lampwarden's ace ≈ previous ace +5–6),
+   and the story beats the walkthrough pins. And **1–2 MANDATORY grass crossings**:
+   full-corridor encounter bands with the lit lane carved out across them, using the
+   context-correct family (`tallgrass` on green, `dunegrass` on sand), so the road
+   itself rolls encounters — the flanking patches stay optional. A route the player
+   can walk end-to-end without one encounter roll or one trainer's eye is a fail.
 
 8. **Structure, not noise — terrain is DRAWN (the GBA-register standard, 2026-06).**
    Cartridge-era ground art is a flat base colour carrying a few deliberate, repeated

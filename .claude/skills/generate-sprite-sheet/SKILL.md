@@ -248,6 +248,12 @@ kinds of terrain, two methods — pick by whether the transition is flat or orga
 > water-over-grass, `water` = sand-shore. Need a lane/pool over a new ground? Add
 > a family (append to the set — indices hold), don't tolerate the wrong-colour ring.
 >
+> **CONCEPT BRIEF BEFORE TILES.** Before building/retouching any area, read its
+> atlas entry + walkthrough region file (+ `assets/concept-art/`) and name **three
+> signature touches** the map must carry (level-design §8 pre-flight) — then make
+> the tiles/objects serve them. A map that validates but carries no nod to its
+> concept is not done.
+>
 > **Image-gen is for OBJECTS only** (buildings, crown trees, props, decor) — never
 > terrain fills. For painterly masters that remain, `tools/maps/tileforge.py` keeps
 > the cures: `deglow`, `flatten_vignette`/`flatten_axis` (the "joints" cure),

@@ -40,11 +40,14 @@ The design is data-locked **and the engine to play it now exists** — the first
 hour is playable end-to-end: attract demo → title (New Game / Continue / Settings)
 → story intro where you're given a vesperlamp and **choose a starter** → explore
 **Tinderwick**, talk to townsfolk, read signs, step into its homes, shop and
-Lumenary chamber → earn the first
-**Gleam** from Lampwarden Brisa Tallow in a real turn-based battle → head north
-onto **Dimglass Coast** with wild encounters, your rival Wren's first friendly
-battle, and the night the dusk deepens → across the **Dimglass tidal flats**
-(route trainers and rising wild kin bridge the levels) → on to **Pearlmoor Quay**, the
+Lumenary hall → catch a kin, take Brisa's errand, and walk north onto
+**Dimglass Coast** — wild encounters in mandatory grass crossings, your rival
+Wren *spotting you* from beside the lane for the first friendly battle, the
+night the dusk deepens, and the old lamplighter's **beacon wick-key** → back to
+town to climb the **Beacon tower** (wick-tender trainers on the spiral stairs)
+and earn the first **Gleam** from Lampwarden Brisa Tallow at the lantern → across
+the **Dimglass tidal flats** and its boardwalk channel crossing
+(sight trainers and rising wild kin bridge the levels) → on to **Pearlmoor Quay**, the
 moonlit Tide port, where Lampwarden Reyl Wash grants the **Tide Gleam** and the
 **Tidecall** Lantern Gift — which opens the harbour's gated water, the **Gullcry
 Rock** backtrack (a rare kin + the Tide Charm), and the **Vesper Crossroads**

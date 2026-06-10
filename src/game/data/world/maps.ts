@@ -58,6 +58,26 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/tinderwick-a.mp3',
   },
+  // The old beacon — the earned first Gleam: wick-key gated ascent, wick-tender
+  // sight trainers on the stairs, Brisa's bond-test in the lantern room.
+  tinderwick_beacon_i: {
+    json: 'assets/maps/tinderwick_beacon_i.json',
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/tinderwick-a.mp3',
+  },
+  tinderwick_beacon_ii: {
+    json: 'assets/maps/tinderwick_beacon_ii.json',
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/tinderwick-a.mp3',
+  },
+  tinderwick_beacon_top: {
+    json: 'assets/maps/tinderwick_beacon_top.json',
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/tinderwick-a.mp3',
+  },
   dimglass_coast: {
     json: 'assets/maps/dimglass_coast.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },

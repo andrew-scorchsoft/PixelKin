@@ -394,6 +394,12 @@ for _r in [r for r in NINE if r != "fill"]:
 add("pond_fill", gbaforge.water_fill(0), role="water", terrain="pond",
     autotile="fill", collides=True, encounter="water", ability="tidecall")
 
+# --- 5c) dune grass — the encounter tuft over a SAND bed (tidal-flat crossings).
+# Hard-edged fill-only like tallgrass; every variant carries the encounter tag.
+for _i in range(3):
+    add(f"dunegrass_fill{'' if _i == 0 else f'_v{_i}'}", gbaforge.dunegrass_fill(_i),
+        role="ground", terrain="dunegrass", autotile="fill", encounter="tall_grass")
+
 # ---- GBA-register structured redraw (gbaforge) -------------------------------
 # The terrain families above established the *vocabulary* (names, roles, order —
 # maps reference these by stable index). Their imagery, though, was AI-noise
@@ -417,6 +423,9 @@ def _gba_override(nm: str, cur: Image.Image) -> Image.Image | None:
     m = _re.fullmatch(r"tallgrass_fill(?:_v(\d+))?", nm)
     if m:
         return g.tallgrass_fill(int(m.group(1) or 0))
+    m = _re.fullmatch(r"dunegrass_fill(?:_v(\d+))?", nm)
+    if m:
+        return g.dunegrass_fill(int(m.group(1) or 0))
     m = _re.fullmatch(r"tree_fill(?:_v(\d+))?", nm)
     if m:
         return g.tree_fill(int(m.group(1) or 0))
@@ -459,13 +468,7 @@ def _gba_override(nm: str, cur: Image.Image) -> Image.Image | None:
             return g.water_fill(0)
         return g.water_edge(role, phase=v)
     if fam == "cliff":
-        if role == "fill":
-            return g.cliff_face(v)
-        if role == "edge_n":
-            return g.cliff_top_rim(v)
-        if role.startswith("inner_"):
-            return g.cliff_inner(role.split("_")[1], v)
-        return g.cliff_wall(role, v)
+        return g.cliff_tile(role, v)
     return None
 
 

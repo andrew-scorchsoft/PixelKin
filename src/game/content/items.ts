@@ -27,6 +27,12 @@ export const ITEMS: ItemRegistry = {
     category: 'medicine',
     heal: 20,
   },
+  beacon_wick: {
+    id: 'beacon_wick',
+    name: 'Beacon Wick-key',
+    desc: "The worn brass key to the Tinderwick beacon's foot door, carried home from the coast road.",
+    category: 'key',
+  },
   tide_charm: {
     id: 'tide_charm',
     name: 'Tide Charm',

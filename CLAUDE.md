@@ -401,7 +401,10 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   with the wrong colour; append a new family via `gbaforge.overlay_tile` instead. Image-gen
   is for OBJECTS (buildings, crown trees, props) only. A free-standing `cliff` mass mid-field
   reads as a wall slab — use a boulder cluster for an outcrop; keep cliff for map-edge
-  walls/terraces. Full rule: `docs/world/level-design.md` §11 rule 8.
+  walls/terraces. Cliffs follow the interior-wall convention outdoors: fill = walk-on-looking
+  PLATEAU TOP, `edge_s`/S-corners = the visible FACE (lit lip → streaked face → contact
+  shadow), N/W/E = rim transitions — a cliff drawn as all-face reads flat ("lost edging").
+  Full rule: `docs/world/level-design.md` §11 rule 8.
 - **New area? Copy `tools/maps/build_tinderwick.py`, `build_dimglass.py`, `build_gullcry.py`
   or `build_crossroads.py` (the worked examples), and compose to `docs/world/level-design.md`
   §11 (the binding composition standard: no flat voids, deep organic borders + crown trees,
@@ -477,10 +480,20 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   (kit NPC + plain keeper swapped by a flag pair; `refreshNpcs()` makes flag-conditional NPCs
   appear/vanish live), **item caches** (`sprite:'item_cache'` NPC + pickup script +
   `hidden_when_flag`), **festival NPCs** (`requires_flag:'gleam:*'`), and the **catch-first
-  gate** (every catch sets `flag:caught_first_kin`; Brisa's battle trigger requires it, with
-  `blocked_ref` for her "not yet" line). South's optional payoffs are BUILT: `gullcry_rock`
-  (Tidecall spur — rare Glostern surf + the **Tide Charm**, catch ×2.0) and `vesper_crossroads`
-  (the Lanternway hub; live Tinderwick/Pearlmoor spokes, signed sleeping roads).
+  gate** (every catch sets `flag:caught_first_kin`). South's optional payoffs are BUILT:
+  `gullcry_rock` (Tidecall spur — rare Glostern surf + the **Tide Charm**, catch ×2.0) and
+  `vesper_crossroads` (the Lanternway hub; live Tinderwick/Pearlmoor spokes, signed sleeping roads).
+- **Routes play like routes: sight trainers + mandatory crossings + the earned landmark.**
+  Trainers carry `sight_range`/`defeated_flag` on their NpcPlacement (alert → march up → run
+  their `script.*`; WorldScene.npcSeesPlayer/engageTrainer; beaten = flag-pair NPC swap; a
+  trainer posted in a room's end row facing down his own column makes the floor crossing
+  unavoidable). Routes carry 1–2 full-corridor grass bands with the lane carved out
+  (`dunegrass` = the sand-context tall grass). The **first Gleam is EARNED at the Tinderwick
+  Beacon** (tower object on the NE bluff): verge catch → Brisa's hall errand
+  (`script.brisa_quest`) → the wick-key from the Dimglass lamplighter (`script.give_wick` →
+  `flag:has_beacon_wick` gates the foot door) → `tinderwick_beacon_i/ii/top` ascent
+  (wick-tender sight trainers) → `script.beacon_battle` at the lantern. The walkthrough
+  spine's "standing per-region kit" codifies all of these for future regions.
 - **Lampwardens grant Lantern Gifts via `TrainerDef.reward_abilities`.** A trainer win pushes
   `reward_flags` AND `reward_abilities` (BattleScene.finish → BattleResult.grant_abilities →
   WorldScene.applyBattleResult adds them to the live `abilities` Set, which `persist()` already

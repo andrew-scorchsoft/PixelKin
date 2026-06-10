@@ -4,7 +4,7 @@
   "tile_width": 16,
   "tile_height": 16,
   "columns": 12,
-  "tile_count": 152,
+  "tile_count": 155,
   "tiles": [
     {
       "index": 0,
@@ -995,6 +995,27 @@
         ],
         "duration_ms": 800
       }
+    },
+    {
+      "index": 152,
+      "role": "ground",
+      "terrain": "dunegrass",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "index": 153,
+      "role": "ground",
+      "terrain": "dunegrass",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "index": 154,
+      "role": "ground",
+      "terrain": "dunegrass",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
     }
   ]
 }

@@ -130,6 +130,12 @@ export interface NpcPlacement {
   movement: NpcMovement;
   patrol?: TileCoord[]; // waypoints for 'patrol'
   dialogue_ref?: string;
+  /** Trainer line-of-sight, in tiles straight ahead along `facing`. When the
+   *  player steps into the unobstructed line, the NPC alerts (!), walks up and
+   *  runs its `dialogue_ref` script — the classic route-trainer challenge. */
+  sight_range?: number;
+  /** Sight engagement stops once this flag is set (the trainer is beaten). */
+  defeated_flag?: WorldFlag;
   requires_flag?: WorldFlag; // only present once the flag is set
   hidden_when_flag?: WorldFlag; // removed once the flag is set
 }

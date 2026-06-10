@@ -123,6 +123,19 @@ def tallgrass_fill(v: int = 0) -> Image.Image:
     return img(a)
 
 
+def dunegrass_fill(v: int = 0) -> Image.Image:
+    """Tall DRY grass on the tidal flats: pale wind-bent tussocks over a damp
+    sand bed. Same hard-edged encounter-tile convention as tallgrass, sand
+    context — so a crossing on the dunes doesn't ring itself with green."""
+    a = flat(sh(SAND, 0.80))
+    mid = sh(PATH, 1.30, 10)
+    light = sh(PATH, 1.70, 26)
+    dark = sh(PATH, 0.62)
+    for (cx, cy) in TG_LAYOUTS[v % len(TG_LAYOUTS)]:
+        _fan(a, cx, cy, mid, light, dark)
+    return img(a)
+
+
 # ---- path & sand fills --------------------------------------------------------
 PATH_LAYOUTS = [
     [(4, 4), (11, 7), (6, 12), (13, 2)],
@@ -286,91 +299,68 @@ def water_edge(role: str, outer_im: Image.Image | None = None,
 
 
 # ---- cliff -------------------------------------------------------------------
-def cliff_face(v: int = 0) -> Image.Image:
-    """Bedded rock: dark strata seams with BROKEN lit chips above (segments, not
-    full rows — full rows band across a wall), plus staggered vertical joints
-    between beds. Darker than ground so a wall never reads walkable."""
-    a = flat(sh(CLIFF, 0.82))
-    seam = sh(CLIFF, 0.52)
-    lit = sh(CLIFF, 1.12, 6)
-    rows = [(2, 7, 12), (3, 8, 13), (2, 8, 13)][v % 3]
-    for i, sy in enumerate(rows):
-        a[sy, :, :3] = seam
-        # lit chips: two short segments per seam, staggered per bed
-        x0 = (3 + 5 * i + 4 * v) % 16
-        for seg in (range(x0, x0 + 4), range(x0 + 8, x0 + 11)):
-            for x in seg:
-                a[(sy - 1) % 16, x % 16, :3] = lit
-    # vertical joints between beds (2-3 px, staggered)
-    joints = [[(5, 3), (12, 8), (2, 13)], [(9, 4), (3, 9), (13, 14)],
-              [(7, 3), (14, 9), (4, 14)]][v % 3]
-    for (jx, jy) in joints:
-        for dy in range(3):
-            a[(jy + dy) % 16, jx, :3] = seam
+# The interior-wall convention, outdoors (art-style §14): a cliff mass is a
+# PLATEAU TOP you look down on, with a visible vertical FACE on its south
+# boundary (lit lip -> shaded face -> dark contact -> ground). N/W/E boundaries
+# are rim transitions against the ground (no face — those sides point away).
+CLIFF_TOP_LAYOUTS = [
+    [(4, 4), (11, 7), (6, 12)],
+    [(9, 3), (3, 9), (12, 12)],
+    [(6, 6), (12, 4), (4, 13)],
+]
+
+
+def cliff_top(v: int = 0) -> Image.Image:
+    """The plateau surface: flat rock-top + sparse structured crack marks."""
+    a = flat(sh(CLIFF, 1.04, 4))
+    dark = sh(CLIFF, 0.84)
+    lit = sh(CLIFF, 1.22, 8)
+    for i, (x, y) in enumerate(CLIFF_TOP_LAYOUTS[v % len(CLIFF_TOP_LAYOUTS)]):
+        put(a, [(x, y), (x + 1, y), (x + 2, y + 1)], dark)   # crack mark
+        if i == 0:
+            put(a, [(x + 3, y - 1)], lit)                     # one chip glint
     return img(a)
 
 
-def cliff_top_rim(v: int = 0) -> Image.Image:
-    """edge_n: upper grass meets the plateau rim — grass band, lit rim line,
-    then face. (The mass's north boundary is the top of the wall.)"""
-    a = np.asarray(cliff_face(v).convert("RGBA")).astype(np.int16).copy()
+def cliff_face_tile(role: str, v: int = 0) -> Image.Image:
+    """edge_s / corner_s*: plateau lip, then the vertical face (streaked), dark
+    contact seam, ground. The vertical light ladder IS the height cue."""
     g = np.asarray(grass_fill(v).convert("RGBA")).astype(np.int16)
-    a[:4] = g[:4]
-    a[4, :, :3] = sh(CLIFF, 0.55)        # crisp dark line under the grass
-    a[5, :, :3] = sh(CLIFF, 1.45, 18)    # lit rim — the height cue
-    return img(a)
-
-
-def cliff_wall(role: str, v: int = 0) -> Image.Image:
-    """S/W/E boundaries drawn as complete wall tiles: face -> dark contact seam
-    -> ground. The vertical light ladder is the depth cue (art-style §14)."""
-    a = np.asarray(cliff_face(v).convert("RGBA")).astype(np.int16).copy()
-    g = np.asarray(grass_fill(v).convert("RGBA")).astype(np.int16)
-    if "s" in role.split("_")[-1] and role != "edge_s":
-        pass
-    if role == "edge_s" or role.startswith("corner_s"):
-        a[14:] = g[14:]
-        a[13, :, :3] = sh(CLIFF, 0.40)   # contact shadow
-        a[12, :, :3] = sh(CLIFF, 0.62)
-    if role in ("edge_w", "corner_nw", "corner_sw"):
+    a = np.asarray(cliff_top(v).convert("RGBA")).astype(np.int16).copy()
+    LIP, FACE_END = 4, 12
+    a[LIP, :, :3] = sh(CLIFF, 1.40, 16)                      # lit lip
+    face = sh(CLIFF, 0.72)
+    streak = sh(CLIFF, 0.56)
+    for y in range(LIP + 1, FACE_END + 1):
+        a[y, :, :3] = face
+    # two PARTIAL vertical cracks (staggered, half-height — full-height bars
+    # read as a grate) + one bedding crack
+    x1, x2 = (3 + 3 * v) % 14 + 1, (10 + 3 * v) % 14 + 1
+    for y in range(LIP + 1, 9):
+        a[y, x1, :3] = streak
+    for y in range(9, FACE_END + 1):
+        a[y, x2, :3] = streak
+    a[9, :, :3] = sh(CLIFF, 0.60)
+    a[FACE_END + 1, :, :3] = sh(CLIFF, 0.34)                 # contact shadow
+    a[FACE_END + 2:, :] = g[FACE_END + 2:, :]                # ground below
+    if role == "corner_sw":
         a[:, :2] = g[:, :2]
-        a[:, 2, :3] = sh(CLIFF, 0.40)
-        a[:, 3, :3] = sh(CLIFF, 1.22, 8)  # lit arris on the lit (west) side
-    if role in ("edge_e", "corner_ne", "corner_se"):
+        a[:, 2, :3] = sh(CLIFF, 0.45)
+    if role == "corner_se":
         a[:, 14:] = g[:, 14:]
-        a[:, 13, :3] = sh(CLIFF, 0.40)
-        a[:, 12, :3] = sh(CLIFF, 0.62)
-    if role.startswith("corner_n"):
-        gg = np.asarray(cliff_top_rim(v).convert("RGBA")).astype(np.int16)
-        a[:6] = gg[:6]
-        if role == "corner_nw":
-            a[:4, :2] = g[:4, :2]
-        if role == "corner_ne":
-            a[:4, 14:] = g[:4, 14:]
+        a[:, 13, :3] = sh(CLIFF, 0.45)
     return img(a)
 
 
-def cliff_inner(q: str, v: int = 0) -> Image.Image:
-    """Concave joins: face everywhere, with the meeting walls' seams crossing."""
-    a = np.asarray(cliff_face(v).convert("RGBA")).astype(np.int16).copy()
-    dark = sh(CLIFF, 0.40)
-    if q in ("nw", "ne"):
-        a[5, :, :3] = sh(CLIFF, 1.45, 18)
-    x = 2 if q in ("nw", "sw") else 13
-    a[:, x, :3] = dark
-    return img(a)
-
-
-def cliff_family() -> dict:
-    fam = {}
-    fam["fill"] = cliff_face(0)
-    fam["edge_n"] = cliff_top_rim(0)
-    for role in ("edge_s", "edge_w", "edge_e",
-                 "corner_nw", "corner_ne", "corner_sw", "corner_se"):
-        fam[role] = cliff_wall(role, 0)
-    for q in INNER_Q:
-        fam[q] = cliff_inner(q.split("_")[1], 0)
-    return fam
+def cliff_tile(role: str, v: int = 0) -> Image.Image:
+    """Any of the 13 roles + strips for the cliff family."""
+    if role == "fill":
+        return cliff_top(v)
+    if role in ("edge_s", "corner_sw", "corner_se"):
+        return cliff_face_tile(role, v)
+    # rim transitions (plateau against ground) for N/W/E + inner corners + strips
+    return overlay_tile(role, cliff_top(v), grass_fill(v),
+                        sh(CLIFF, 0.45), shade_rgb=sh(CLIFF, 0.80))
 
 
 # ---- tree canopy (terrain mass fill) -------------------------------------------
@@ -419,7 +409,8 @@ def _preview(out_path: str) -> None:
                       shade_rgb=sh(PATH, 0.9)) for r in
          ("corner_nw", "edge_n", "fill", "inner_se")],
         [water_fill(i) for i in range(3)] + [water_edge("edge_n")],
-        [cliff_family()[r] for r in ("edge_n", "fill", "edge_s", "corner_sw")],
+        [cliff_tile(r) for r in ("edge_n", "fill", "edge_s", "corner_sw")],
+        [dunegrass_fill(i) for i in range(4)],
     ]
     S = 6
     W = max(len(r) for r in rows)

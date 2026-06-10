@@ -1,8 +1,8 @@
 {
-  "id": "tinderwick_lumenary",
-  "display_name": "Tinderwick Lumenary",
-  "width": 14,
-  "height": 11,
+  "id": "tinderwick_beacon_top",
+  "display_name": "The Beacon \u2014 Lantern Room",
+  "width": 12,
+  "height": 9,
   "tile_width": 16,
   "tile_height": 16,
   "kind": "interior",
@@ -48,9 +48,16 @@
         1,
         1,
         1,
+        3,
+        2,
         1,
+        2,
         1,
+        2,
         1,
+        2,
+        1,
+        2,
         1,
         1,
         2,
@@ -63,10 +70,8 @@
         1,
         2,
         1,
-        2,
         1,
         1,
-        2,
         1,
         2,
         1,
@@ -79,8 +84,6 @@
         2,
         1,
         1,
-        1,
-        1,
         2,
         1,
         2,
@@ -91,10 +94,8 @@
         1,
         2,
         1,
-        2,
         1,
         1,
-        2,
         1,
         2,
         1,
@@ -107,56 +108,11 @@
         2,
         1,
         1,
-        1,
-        1,
         2,
         1,
         2,
         1,
         2,
-        3,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        3,
-        1,
-        2,
-        1,
-        2,
-        1,
-        1,
-        1,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        3,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        3,
         1,
         2,
         1,
@@ -169,8 +125,6 @@
         1,
         1,
         1,
-        1,
-        3,
         1,
         1,
         1,
@@ -195,14 +149,11 @@
         6,
         6,
         6,
-        6,
-        6,
         11,
         8,
         4,
         4,
         4,
-        4,
         5,
         4,
         4,
@@ -210,25 +161,8 @@
         5,
         4,
         4,
-        4,
         9,
         8,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        9,
-        8,
-        0,
-        0,
         0,
         0,
         0,
@@ -251,26 +185,8 @@
         0,
         0,
         0,
-        0,
-        0,
         9,
         8,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        9,
-        8,
-        0,
-        0,
         0,
         0,
         0,
@@ -293,8 +209,6 @@
         0,
         0,
         0,
-        0,
-        0,
         9,
         8,
         0,
@@ -307,12 +221,8 @@
         0,
         0,
         0,
-        0,
-        0,
         9,
         8,
-        0,
-        0,
         0,
         0,
         0,
@@ -331,8 +241,6 @@
         7,
         7,
         7,
-        0,
-        7,
         7,
         7,
         7,
@@ -343,10 +251,10 @@
   ],
   "objects": [
     {
-      "id": "altar",
+      "id": "lantern",
       "sprite": "interior_altar",
       "at": {
-        "tx": 6,
+        "tx": 5,
         "ty": 2
       },
       "w": 3,
@@ -357,7 +265,7 @@
       "id": "rug",
       "sprite": "interior_rug",
       "at": {
-        "tx": 6,
+        "tx": 5,
         "ty": 5
       },
       "w": 3,
@@ -365,10 +273,10 @@
       "solid": false
     },
     {
-      "id": "brazier_l1",
+      "id": "brazier_l",
       "sprite": "interior_brazier",
       "at": {
-        "tx": 4,
+        "tx": 3,
         "ty": 5
       },
       "w": 1,
@@ -376,10 +284,10 @@
       "overhang": 1
     },
     {
-      "id": "brazier_r1",
+      "id": "brazier_r",
       "sprite": "interior_brazier",
       "at": {
-        "tx": 10,
+        "tx": 9,
         "ty": 5
       },
       "w": 1,
@@ -387,148 +295,62 @@
       "overhang": 1
     },
     {
-      "id": "brazier_l2",
+      "id": "brazier_stair",
       "sprite": "interior_brazier",
-      "at": {
-        "tx": 4,
-        "ty": 8
-      },
-      "w": 1,
-      "h": 2,
-      "overhang": 1
-    },
-    {
-      "id": "brazier_r2",
-      "sprite": "interior_brazier",
-      "at": {
-        "tx": 10,
-        "ty": 8
-      },
-      "w": 1,
-      "h": 2,
-      "overhang": 1
-    },
-    {
-      "id": "ledger_l",
-      "sprite": "interior_bookcase",
-      "at": {
-        "tx": 1,
-        "ty": 2
-      },
-      "w": 2,
-      "h": 2
-    },
-    {
-      "id": "ledger_r",
-      "sprite": "interior_bookcase",
-      "at": {
-        "tx": 11,
-        "ty": 2
-      },
-      "w": 2,
-      "h": 2
-    },
-    {
-      "id": "offerings_l",
-      "sprite": "interior_barrels",
-      "at": {
-        "tx": 1,
-        "ty": 8
-      },
-      "w": 2,
-      "h": 1
-    },
-    {
-      "id": "offerings_r",
-      "sprite": "interior_barrels",
-      "at": {
-        "tx": 11,
-        "ty": 8
-      },
-      "w": 2,
-      "h": 1
-    }
-  ],
-  "warps": [
-    {
-      "id": "to_town",
-      "at": {
-        "tx": 7,
-        "ty": 10
-      },
-      "trigger": "step_on",
-      "to_map": "tinderwick",
-      "to": {
-        "tx": 19,
-        "ty": 8
-      },
-      "facing": "down",
-      "transition": "door"
-    }
-  ],
-  "triggers": [
-    {
-      "id": "sign_lumenary",
-      "kind": "sign",
       "at": {
         "tx": 2,
         "ty": 2
       },
-      "activation": "interact",
-      "ref": "sign.tinderwick_lumenary_inside"
+      "w": 1,
+      "h": 2,
+      "overhang": 1
+    }
+  ],
+  "warps": [
+    {
+      "id": "down_stairs",
+      "at": {
+        "tx": 1,
+        "ty": 2
+      },
+      "trigger": "step_on",
+      "to_map": "tinderwick_beacon_ii",
+      "to": {
+        "tx": 2,
+        "ty": 3
+      },
+      "facing": "down",
+      "transition": "fade"
+    }
+  ],
+  "triggers": [
+    {
+      "id": "beacon_battle",
+      "kind": "cutscene",
+      "at": {
+        "tx": 6,
+        "ty": 6
+      },
+      "activation": "step_on",
+      "ref": "script.beacon_battle",
+      "once": true,
+      "requires_flag": "flag:caught_first_kin",
+      "blocked_ref": "npc.brisa_not_ready"
     }
   ],
   "encounters": [],
   "npcs": [
     {
-      "id": "brisa_pre",
+      "id": "brisa",
       "at": {
-        "tx": 7,
+        "tx": 6,
         "ty": 5
       },
       "facing": "down",
       "sprite": "npc_lampwarden",
       "movement": "static",
-      "dialogue_ref": "npc.brisa_not_ready",
-      "hidden_when_flag": "flag:caught_first_kin"
-    },
-    {
-      "id": "brisa_quest",
-      "at": {
-        "tx": 7,
-        "ty": 5
-      },
-      "facing": "down",
-      "sprite": "npc_lampwarden",
-      "movement": "static",
-      "dialogue_ref": "script.brisa_quest",
-      "requires_flag": "flag:caught_first_kin",
-      "hidden_when_flag": "flag:has_beacon_wick"
-    },
-    {
-      "id": "brisa_ready",
-      "at": {
-        "tx": 7,
-        "ty": 5
-      },
-      "facing": "down",
-      "sprite": "npc_lampwarden",
-      "movement": "static",
-      "dialogue_ref": "npc.brisa_meet_beacon",
-      "requires_flag": "flag:has_beacon_wick",
+      "dialogue_ref": "npc.brisa_tallow",
       "hidden_when_flag": "gleam:ember"
-    },
-    {
-      "id": "brisa_fair",
-      "at": {
-        "tx": 7,
-        "ty": 5
-      },
-      "facing": "down",
-      "sprite": "npc_lampwarden",
-      "movement": "static",
-      "dialogue_ref": "npc.brisa_after",
-      "requires_flag": "gleam:ember"
     }
   ],
   "gates": [],

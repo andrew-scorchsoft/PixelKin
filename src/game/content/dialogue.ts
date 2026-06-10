@@ -57,12 +57,38 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'SHOPKEEPER', text: 'Next trade-cart comes down the Lanternway soon. Until then, the verge grass is generous to a careful Wayfarer.' },
   ],
 
-  // --- Tinderwick Lumenary (interior) ---
+  // --- Tinderwick Lumenary hall (interior) + the Beacon quest stages ---
   'sign.tinderwick_lumenary_inside': [
-    { text: 'THE EMBER LUMENARY\nHere the Ember constellation is tended. Bring a steady bond, and a steady hand.' },
+    { text: 'THE EMBER LUMENARY\nThe hall keeps the rite; the OLD BEACON on the east bluff keeps the light. One key serves both.' },
   ],
   'npc.brisa_tallow': [
-    { speaker: 'BRISA TALLOW', text: 'Mind the aisle, dear — step up to the altar when your kin is ready, and we shall light the sky together.' },
+    { speaker: 'BRISA TALLOW', text: 'Mind the aisle, dear — step up when your kin is ready, and we shall light the sky together.' },
+  ],
+  // Stage 3: the wick-key is home — Brisa heads for the lantern room.
+  'npc.brisa_meet_beacon': [
+    { speaker: 'BRISA TALLOW', text: 'The wick-key, home at last! Oh, well WALKED, dear.' },
+    { speaker: 'BRISA TALLOW', text: 'The beacon foot door stands on the east bluff, past the Lumenary. It answers your key now — climb to the lantern. I shall be waiting at the top.' },
+  ],
+  // Stage 4: post-Gleam, back in the hall, festival outside.
+  'npc.brisa_after': [
+    { speaker: 'BRISA TALLOW', text: 'Hear the square? They rang the fair-bell the moment the Ember stood up. That dance is yours, dear.' },
+    { speaker: 'BRISA TALLOW', text: 'When your feet itch again — the coast road runs north past the flats to Pearlmoor. Reyl Wash keeps the Tide. Tell the old ferryman I sent you.' },
+  ],
+  // --- The Beacon (interiors) ---
+  'sign.beacon_door': [
+    { text: 'THE OLD BEACON\nThe foot door is wick-locked. Its key walked away down the coast road, years ago.' },
+  ],
+  'sign.beacon_floor_i': [
+    { text: 'Stair-litany, floor the first: "A flame is carried, never kept."' },
+  ],
+  'sign.beacon_floor_ii': [
+    { text: 'Stair-litany, floor the second: "The dark is only the dark. Climb."' },
+  ],
+  'npc.beacon_keeper_a_after': [
+    { speaker: 'TANSY', text: 'Up you go, then. Mind Cole on the next floor — and mind the litany. It helps, truly.' },
+  ],
+  'npc.beacon_keeper_b_after': [
+    { speaker: 'COLE', text: 'The lantern room is just above. Three hundred years that wick waited... go on. Make it four hundred and none.' },
   ],
   // Brisa's "not yet" — the bond-test waits until the player has caught a wild kin
   // (the catch-first soft gate; blocked_ref on the lumenary_battle trigger).

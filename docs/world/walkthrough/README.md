@@ -274,6 +274,21 @@ pure data (see `tools/maps/build_*.py` + `src/game/content/` for the worked patt
 - **The catch-first gate** — the engine sets `flag:caught_first_kin` on any successful
   catch; the first Lumenary's battle trigger requires it, with a `blocked_ref` line in the
   warden's own voice.
+- **Sight trainers** — route (and dungeon-floor) trainers carry `sight_range` +
+  `defeated_flag` on their placement: they alert (!), march up and run their script when
+  the player crosses their line. Post a trainer in a corridor's end row facing down their
+  own column and the floor crossing is unavoidable; beside a route lane it is the classic
+  "they saw you" beat. Beaten trainers swap to a plain-dialogue placement by flag pair.
+- **Mandatory grass crossings** — each route carries 1–2 full-corridor encounter bands
+  (the lit lane carved out across them; use the context-correct grass family — `dunegrass`
+  on sand) so travel itself rolls encounters; the larger flanking patches stay optional
+  grind spots (level-design §11 rule 7).
+- **The earned landmark (the Beacon pattern)** — a region's signature Gleam should be
+  *walked for*, not handed over: a visible, locked landmark in town → a quest hook in the
+  warden's own voice → the key/pass earned out on the route → a short multi-floor ascent
+  with trainer beats → the bond-test at the top. South's worked example is the Tinderwick
+  Beacon (`build_beacon.py` + the `has_beacon_wick` chain); later Lumenaries may vary the
+  shape (a descent, a causeway, a grove) but keep the loop: *tease → errand → earn → climb*.
 
 ### The vesperlamp's growing light — the *continuous* exploration axis ("Lamplight")
 

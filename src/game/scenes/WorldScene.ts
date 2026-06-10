@@ -36,7 +36,7 @@ import { getScript } from '@game/content/scripts';
 import { makeStarterKin } from '@game/content/starters';
 import { runCutscene } from '@game/systems/cutscene/CutsceneRunner';
 import type { CutsceneContext } from '@game/systems/cutscene/CutsceneRunner';
-import type { ActorRef } from '@game/content/types';
+import type { ActorRef, CutsceneStep } from '@game/content/types';
 import type { KinInstanceData, InventoryData, SaveGame } from '@game/systems/save/types';
 import { SAVE_SCHEMA_VERSION } from '@game/systems/save/types';
 import { SaveManager } from '@game/systems/save/SaveManager';
@@ -383,6 +383,60 @@ export class WorldScene extends Phaser.Scene {
     };
   }
 
+  // --- Route-trainer line of sight ------------------------------------------
+
+  /** True if this NPC is an undefeated sight-trainer with the player in its
+   *  unobstructed straight-ahead line. */
+  private npcSeesPlayer(npc: Npc): boolean {
+    const p = npc.placement;
+    const range = p.sight_range ?? 0;
+    if (!range || !p.dialogue_ref?.startsWith('script.')) return false;
+    if (p.defeated_flag && this.flags.get(p.defeated_flag)) return false;
+    const delta: Record<Facing, { dx: number; dy: number }> = {
+      down: { dx: 0, dy: 1 },
+      up: { dx: 0, dy: -1 },
+      left: { dx: -1, dy: 0 },
+      right: { dx: 1, dy: 0 },
+    };
+    const { dx, dy } = delta[npc.facing];
+    for (let i = 1; i <= range; i++) {
+      const cx = npc.tx + dx * i;
+      const cy = npc.ty + dy * i;
+      if (this.player.tx === cx && this.player.ty === cy) return true;
+      if (this.collision.isBlocked(cx, cy, this.abilities)) return false;
+      if (this.npcAt(cx, cy)) return false;
+    }
+    return false;
+  }
+
+  /** The classic challenge: alert (!), march up to the player, face off, run
+   *  the trainer's script (battle inside), bank the defeated flag on a win. */
+  private async engageTrainer(npc: Npc): Promise<void> {
+    const steps = getScript(npc.dialogueRef ?? '');
+    if (!steps) return;
+    this.modal = true;
+    void this.sfx.playVariant('ui-confirm', ['a', 'b']);
+    await npc.showEmote('alert');
+    // march to the tile adjacent to the player along the (axis-aligned) line,
+    // then face off before the script's first line
+    const sx = Math.sign(this.player.tx - npc.tx);
+    const sy = Math.sign(this.player.ty - npc.ty);
+    const npcFacing: Facing = sx > 0 ? 'right' : sx < 0 ? 'left' : sy > 0 ? 'down' : 'up';
+    const playerFacing: Facing = sx > 0 ? 'left' : sx < 0 ? 'right' : sy > 0 ? 'up' : 'down';
+    const approach: CutsceneStep[] = [
+      { op: 'move', actor: npc.id, to: { tx: this.player.tx - sx, ty: this.player.ty - sy } },
+      { op: 'face', actor: npc.id, facing: npcFacing },
+      { op: 'face', actor: 'player', facing: playerFacing },
+    ];
+    const completed = await runCutscene(this.cutsceneContext(), [...approach, ...steps]);
+    if (completed) {
+      if (npc.placement.defeated_flag) this.flags.set(npc.placement.defeated_flag, true);
+      void this.persist();
+    }
+    this.modal = false;
+    this.refreshNpcs();
+  }
+
   // --- Step-on (on arrival) -----------------------------------------------
 
   private onPlayerArrive = (tx: number, ty: number): void => {
@@ -402,6 +456,14 @@ export class WorldScene extends Phaser.Scene {
     );
     if (trigger) {
       void this.handleTrigger(trigger);
+      return;
+    }
+
+    // Route trainers: stepping into a trainer's line of sight starts the
+    // challenge (and pre-empts a same-step wild encounter, like the classics).
+    const spotter = this.npcs.find((n) => this.npcSeesPlayer(n));
+    if (spotter) {
+      void this.engageTrainer(spotter);
       return;
     }
 

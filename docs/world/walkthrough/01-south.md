@@ -39,28 +39,39 @@ first traversal Gift, **Tidecall**.
 
 ### Tinderwick — *cosy coastal village at the blue hour; the Wayfaring begins*
 
-**At a glance** — `tinderwick` (+ interior `tinderwick_house`) · town · south · entry:
-spawn at house door `{tx:8,ty:16}`, exit: north edge to `dimglass_coast` · gate: none
-(start) · **Gleam: Ember** (Brisa Tallow, ace ~10) · rec. level: start 5.
+**At a glance** — `tinderwick` (+ interiors `tinderwick_house` · `tinderwick_lumenary` hall ·
+the **BEACON** `tinderwick_beacon_i/_ii/_top`) · town · south · entry: spawn at house door
+`{tx:8,ty:16}`, exit: north edge to `dimglass_coast`, east Lanternway to `vesper_crossroads` ·
+gate: the beacon's foot door needs **`flag:has_beacon_wick`** · **Gleam: Ember** (Brisa
+Tallow, ace ~10, at the **beacon top**) · rec. level: start 5, bond-test ~8–9.
 
-1. **Main path** (the "lantern spine", south→north per level-design §4/§7.1):
-   1. **Step out of the house.** Spawn at the door tile; the only action is to move — movement
-      taught by doing. (Optional: the warm interior `tinderwick_house` first.)
-   2. **Meet Fenn + Wren on the spine.** A few tiles north the path narrows past **Star-tender
-      Fenn** (the `intro_mentor` cutscene); Wren is here too, another young Wayfarer. Talking
-      is taught; the cutscene gifts the **vesperlamp** and lets the player **choose a starter**.
-   3. **Read a sign.** Square/dock/Lumenary/mentor signs along the spine teach "interact"
-      (no pop-up tutorials).
-   4. **The soft gate.** The **Lumenary** sits central and tallest as the visible goal — but
-      Brisa won't hold the bond-test on a lone level-5 starter. The player is nudged: *go catch
-      a kin first.* (The town's small verge does that; see below.)
-   5. **First wild battle in the verge.** The tall-grass band straddles the north exit lane —
-      the classic "first step into the grass" happens as the player heads out (and gives them
-      a wild kin to catch toward the soft-gate).
-   6. **Earn the Ember Gleam.** With a caught kin in tow, return to the Lumenary; **Brisa
-      Tallow** vouches the player's bond. Earns **Gleam: Ember** — wrapped in the
-      **Lantern-fair** festival (Arc E).
-   7. **North to the coast** when ready (`to_coast` edge).
+**The earned first Gleam (the 2026-06 restructure).** Tinderwick's tower — the **old
+beacon** on the NE bluff — is where the Ember is actually relit. Brisa's bond-test no
+longer happens in the hall five minutes in; it is *earned* via a loop that sends the
+player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff:
+
+1. **Main path** (the "lantern spine" + the beacon loop):
+   1. **Step out of the house.** Spawn at the door tile; movement taught by doing.
+      (Optional: the warm interior, with a free **bed rest-heal**, first.)
+   2. **Meet Fenn + Wren on the spine.** The `intro_mentor` cutscene gifts the
+      **vesperlamp** and the **starter**; signs teach "interact".
+   3. **Catch a kin in the verge** (the band straddling the north exit lane). Any catch
+      sets `flag:caught_first_kin` — until then Brisa only teases (`npc.brisa_not_ready`).
+   4. **Brisa's errand (the hall).** In the Lumenary hall Brisa explains: the Ember is
+      relit from the **beacon**, whose **wick-key was lost on the coast road**
+      (`script.brisa_quest` → `flag:beacon_quest`). The wick-locked tower door + sign
+      are visible from the square — the goal stands over the town the whole time.
+   5. **Walk Dimglass Coast I** — Wren's sight-challenge, the mandatory grass
+      crossings, the `dusk_begins` omen — and receive the **BEACON WICK-KEY** from the
+      **old lamplighter** near the north boundary (`script.give_wick` →
+      `flag:has_beacon_wick`). The player returns at ~lv 7–8, not 5.
+   6. **Climb the beacon.** The foot door answers the key; floors I–II are held by
+      wick-tender **sight trainers** (Tansy lv7, Cole lv7/8); the spiral stairs land in
+      the **lantern room**.
+   7. **Earn the Ember Gleam at the lantern** — `script.beacon_battle`: Brisa's
+      bond-test (ace 10, now a fair fight), then the great lamp blooms and the
+      constellation answers. Down in the square, the **Lantern-fair** (Arc E) is live.
+   8. **North to the coast again** — onward past the flats to Pearlmoor.
 
 2. **Story beats**
    - **C1 — Fenn gifts the lamp & starter.** Warm, unhurried; Fenn is a *Star-tender*, never a
@@ -76,10 +87,11 @@ spawn at house door `{tx:8,ty:16}`, exit: north edge to `dimglass_coast` · gate
      > Brisa: "A small flame's no lesser thing, dear. You've kept yours steady — let it
      > stand up in the sky a while."
 
-3. **Mechanic introductions** — **move · talk · interact · enter buildings** (the house +
-   Lumenary door warps) · **first wild battle** in the verge. (Catching is *taught* here as
-   intent — "go catch a kin first" — and *performed* properly on Dimglass; the engine soft-gate
-   flag is set by catching at least one wild kin per spine §4.)
+3. **Mechanic introductions** — **move · talk · interact · enter buildings** · **first wild
+   battle + catch** in the verge (`flag:caught_first_kin` is engine-set on any catch) ·
+   **the fetch-quest loop** (errand → route → return) · **sight trainers** (first met as
+   Wren on the coast, then formalised on the beacon stairs) · **vertical ascent** (the
+   beacon's three stacked floors — the game's first "going up").
 
 4. **Optional content**
    - **`tinderwick_house` interior** — `[MISSABLE]` cosy cottage, a parent/keepsake line and
@@ -92,33 +104,33 @@ spawn at house door `{tx:8,ty:16}`, exit: north edge to `dimglass_coast` · gate
      `flag:hub_unlocked` (West/endgame) and the north marsh road is an inert tease.
 
 5. **Don't-miss callouts**
-   - **Catch your first kin in the verge before challenging Brisa** — the soft-gate is the
-     tutorial's natural "go make a friend first" beat; skipping it just walls the Lumenary.
+   - **Catch your first kin in the verge before Brisa will even talk quests** — the
+     catch-first gate is the tutorial's natural "go make a friend first" beat.
    - **The Lantern-fair** — the warmest set-piece of the opening hour; it sets the whole game's
      "lanterns in the dark" tone.
 
-6. **Validation hooks** (against built `tinderwick.json`)
-   - **Map id / kind:** `tinderwick` · town. Interior `tinderwick_house`.
-   - **Entry/exit:** spawn `start_at {tx:8,ty:16}`; north edge-warps `to_coast` `{tx:14,ty:0}`
-     (+ `to_coast_w` `{13,0}`, `to_coast_e` `{15,0}`) → `dimglass_coast` land-in `{tx:6,ty:32}`,
-     `facing:up`, `fade`. House: `to_house` `interact` `{tx:8,ty:15}` → `tinderwick_house`
-     `{tx:5,ty:7}`, `door`.
-   - **Triggers / flags:** `intro_mentor` `cutscene` `step_on {tx:12,ty:10}`, `once:true`,
-     `ref:script.intro_mentor`, **`sets_flags:[flag:has_vesperlamp, flag:has_starter]`**.
-     `lumenary_battle` `cutscene` `interact {tx:18,ty:8}`, `ref:script.lumenary_tinderwick`,
-     `once:true` — **[BUILT]** the soft-gate is enforced: the trigger carries
-     **`requires_flag:flag:caught_first_kin`** (set by the engine on ANY successful catch) with
-     **`blocked_ref:npc.brisa_not_ready`** so Brisa herself sends the player to the verge;
-     **earns `gleam:ember`**.
-     Signs: `sign_shop {6,9}`, `sign_lumenary {21,9}`, `sign_mentor {13,11}`, `sign_dock {9,18}`.
-   - **Encounters:** `verge_grass` · `tall_grass` · `rect{tx:12,ty:2,w:6,h:2}` ·
-     `encounter_rate 0.07` · table kin_id **16** (w60, lv2–4) + **10** (w40, lv2–3) — Ember /
-     Light town kin (Wickmoth, Tallowpup, Glimflit per atlas), **level band 2–4** (§4 start-5).
-   - **NPCs / Lumenary / festival:** `mentor` (Fenn) `{tx:12,ty:11}` `static`
-     `dialogue_ref:npc.mentor_intro`; `child_runner` (repurpose as **Wren**) `{tx:20,ty:14}`
-     `wander` `npc.child_lanterns`. Lumenary keeper **Brisa Tallow** (Ember) via
-     `script.lumenary_tinderwick`; Lantern-fair staged around the Lumenary as a flag-gated
-     festival cutscene + NPC swap.
+6. **Validation hooks** (against built `tinderwick.json` + the beacon maps)
+   - **Map id / kind:** `tinderwick` · town. Interiors: `tinderwick_house`,
+     `tinderwick_lumenary` (the hall), `tinderwick_beacon_i/_ii/_top` (the tower).
+   - **Entry/exit:** spawn `start_at {tx:8,ty:16}`; north edge-warps `to_coast`/`to_coast_e`
+     → `dimglass_coast`; east `to_crossroads {tx:27,ty:16}` → `vesper_crossroads`; beacon
+     foot door `to_beacon` `interact {tx:24,ty:6}` **`requires_flag:flag:has_beacon_wick`**
+     → `tinderwick_beacon_i`.
+   - **The beacon quest chain (all data):** verge catch → `flag:caught_first_kin` (engine,
+     any catch) → hall: `script.brisa_quest` sets `flag:beacon_quest` → Dimglass I:
+     `script.give_wick` (the old lamplighter, post-`dusk_begins`) gives item `beacon_wick`
+     + sets `flag:has_beacon_wick` → beacon floors: sight trainers `beacon_keeper_a/b`
+     (flags `flag:beacon_keeper_*_beaten`) → top: `beacon_battle` `cutscene`
+     `step_on`, `once:true`, `requires_flag:flag:caught_first_kin`,
+     `blocked_ref:npc.brisa_not_ready`, `ref:script.beacon_battle` — **earns
+     `gleam:ember`** (+ `crown_south` half) via trainer `lampwarden_tinderwick`.
+   - **Brisa's hall stages (flag-pair NPC swaps on the dais):** `npc.brisa_not_ready` →
+     `script.brisa_quest` → `npc.brisa_meet_beacon` → `npc.brisa_after` (post-Gleam).
+   - **Encounters:** `verge_grass` · `tall_grass` · `encounter_rate 0.07` · kin **16**
+     (w60, lv2–4) + **10** (w40, lv2–3) — level band 2–4 (§4 start-5).
+   - **NPCs / festival:** `mentor` (Fenn) static `npc.mentor_intro`; **Wren** wanders the
+     square (`npc.wren_intro`); Lantern-fair NPCs (`fair_piper`, `fair_kid`)
+     `requires_flag:'gleam:ember'`.
 
 ---
 
@@ -189,16 +201,19 @@ spawn at house door `{tx:8,ty:16}`, exit: north edge to `dimglass_coast` · gate
      **`requires_ability:glimmerstep`** → `tideglass_cavern {tx:4,ty:8}`, `door`.
    - **Gates:** `AbilityGate` `shallows_tide` (`ability:tidecall`, `effect:make_passable`) over
      shallows tiles `{14–15, 4–6}`.
-   - **Encounters:** `grass_a rect{3,4,4,3}`, `grass_b rect{4,12,4,3}`, `grass_c rect{12,17,3,3}`,
-     `grass_d rect{3,22,4,3}` — all `tall_grass`, `encounter_rate 0.09`, table kin_id **26**+**27**
-     (Brinelet/Lumpin, Tide / Tide-Light), **level band 3–6** (§4 5→~8). Gated water:
-     `tide_shallows rect{14,4,2,3}` `water` **`requires_ability:tidecall`**, kin_id **29** w100
-     lv5–7 (low-weight rare read).
-   - **NPCs / signs:** `wayfarer` `{tx:9,ty:10}` `look_around` `npc.dimglass_wayfarer` (carries
-     route advice + the Gift teases in-character; the anchor for the **Wren A2** battle script and
-     the **B1** sky cutscene). Signs: `sign_buoys {2,7}` (`sign.dimglass_buoys` — "buoys answer a
-     lit lamp"), `sign_shore {13,8}`, `sign_route {3,16}`, `sign_boundary {2,28}`
-     (`sign.dimglass_to_pearlmoor`).
+   - **Encounters:** four optional patches (`grass_a–d`, `tall_grass`, rate 0.09, band 3–6)
+     PLUS the two **[BUILT] mandatory crossings** — `crossing_a rect{3,9,11,2}` and
+     `crossing_b rect{3,26,11,2}`, rate 0.10 — full-corridor bands (tallgrass on the green,
+     **dunegrass** over the beach) with the lit lane carved out, so the road north passes
+     *through* encounter ground (level-design §11 rule 7). Gated water:
+     `tide_shallows rect{14,5,2,4}` `water` **`requires_ability:tidecall`** (rare read).
+   - **NPCs / signs:** **[BUILT] Wren is a SIGHT trainer** at `{5,11}` facing the lane
+     (`sight_range:4`, `script.wren_dimglass`, swap to `npc.dimglass_wayfarer` once
+     `flag:wren_dimglass_battled`). The **old lamplighter** appears post-`dusk_begins` at
+     `{10,29}` and hands the **beacon wick-key** (`script.give_wick` →
+     `flag:has_beacon_wick`; the Tinderwick beacon quest's route leg), then swaps to the
+     plain witness. Item caches `cache_balm`/`cache_lamps` beside the lane. Signs:
+     buoys / cave / route / boundary.
    - **New refs to add when built:** a `flag:dusk_begins` cutscene trigger (B1) and a `script`
      ref for the Wren A2 trainer-battle cutscene (`reward_flags`); the C2 Fenn cutscene may sit
      here or at the head of `dimglass_coast_ii`.

@@ -137,7 +137,7 @@ def obj(id_, sprite, tx, ty, w, h, overhang=0, solid=True):
 #  LUMENARIES (cool register, shrine) — tinderwick & pearlmoor
 # =============================================================================
 def build_lumenary(id_, name, music, out_warp, script_ref, sign_ref, warden_id, warden_dialogue,
-                   gate_flag="flag:has_starter", blocked_ref=None):
+                   gate_flag="flag:has_starter", blocked_ref=None, npcs_override=None):
     W, H = 14, 11
     door_x = W // 2  # tx 7
     base, over = faced_room(W, H, door_x, floor_fill=FLOOR, floor_alt=FLOOR_B)
@@ -170,22 +170,27 @@ def build_lumenary(id_, name, music, out_warp, script_ref, sign_ref, warden_id, 
          "to_map": out_warp[0], "to": {"tx": out_warp[1], "ty": out_warp[2]},
          "facing": "down", "transition": "door"},
     ]
-    battle_trigger = {"id": "lumenary_battle", "kind": "cutscene", "at": {"tx": door_x, "ty": 6},
-                      "activation": "step_on", "ref": script_ref, "once": True,
-                      "requires_flag": gate_flag}
-    if blocked_ref:
-        battle_trigger["blocked_ref"] = blocked_ref
     triggers = [
-        # step-on bond-test trigger sits on the aisle just south of where the warden stands
-        battle_trigger,
         {"id": "sign_lumenary", "kind": "sign", "at": {"tx": 2, "ty": 2}, "activation": "interact",
          "ref": sign_ref},
     ]
-    npcs = [
-        # the warden stands at the foot of the altar dais (row 5, just below the 3x3 altar)
-        {"id": warden_id, "at": {"tx": door_x, "ty": 5}, "facing": "down",
-         "sprite": "npc_lampwarden", "movement": "static", "dialogue_ref": warden_dialogue},
-    ]
+    if script_ref:
+        # step-on bond-test trigger on the aisle just south of where the warden stands
+        battle_trigger = {"id": "lumenary_battle", "kind": "cutscene", "at": {"tx": door_x, "ty": 6},
+                          "activation": "step_on", "ref": script_ref, "once": True,
+                          "requires_flag": gate_flag}
+        if blocked_ref:
+            battle_trigger["blocked_ref"] = blocked_ref
+        triggers.insert(0, battle_trigger)
+    if npcs_override is not None:
+        npcs = [dict(n, at={"tx": door_x, "ty": 5}) if n.get("at") == "dais" else n
+                for n in npcs_override]
+    else:
+        npcs = [
+            # the warden stands at the foot of the altar dais (row 5, below the 3x3 altar)
+            {"id": warden_id, "at": {"tx": door_x, "ty": 5}, "facing": "down",
+             "sprite": "npc_lampwarden", "movement": "static", "dialogue_ref": warden_dialogue},
+        ]
     return mapdef(id_, name, W, H, COOL_SET, base, over, objects, warps, triggers, npcs, music)
 
 
@@ -336,13 +341,34 @@ def all_maps():
                    "assets/audio/music/tinderwick-b.mp3", ("tinderwick", 5, 8),
                    "sign.tinderwick_shop_wares", "shopkeeper", "npc.tinderwick_shopkeeper",
                    kit_script="script.shop_kit_tinderwick", kit_flag="flag:tinderwick_kit"),
-        # Brisa's bond-test waits for the first wild catch (the walkthrough's
-        # catch-first soft gate); her blocked_ref says so in her own voice.
+        # The Ember Lumenary HALL: no battle here any more — the bond-test waits
+        # at the BEACON TOP (the earned first Gleam). Brisa stages the quest from
+        # the dais: catch-first -> the wick-key errand -> "meet me at the lantern"
+        # -> the post-Gleam festival line. Pure flag-pair NPC swaps.
         build_lumenary("tinderwick_lumenary", "Tinderwick Lumenary",
                        "assets/audio/music/tinderwick-a.mp3", ("tinderwick", 19, 8),
-                       "script.lumenary_tinderwick", "sign.tinderwick_lumenary_inside",
+                       None, "sign.tinderwick_lumenary_inside",
                        "brisa", "npc.brisa_tallow",
-                       gate_flag="flag:caught_first_kin", blocked_ref="npc.brisa_not_ready"),
+                       npcs_override=[
+                           {"id": "brisa_pre", "at": "dais", "facing": "down",
+                            "sprite": "npc_lampwarden", "movement": "static",
+                            "dialogue_ref": "npc.brisa_not_ready",
+                            "hidden_when_flag": "flag:caught_first_kin"},
+                           {"id": "brisa_quest", "at": "dais", "facing": "down",
+                            "sprite": "npc_lampwarden", "movement": "static",
+                            "dialogue_ref": "script.brisa_quest",
+                            "requires_flag": "flag:caught_first_kin",
+                            "hidden_when_flag": "flag:has_beacon_wick"},
+                           {"id": "brisa_ready", "at": "dais", "facing": "down",
+                            "sprite": "npc_lampwarden", "movement": "static",
+                            "dialogue_ref": "npc.brisa_meet_beacon",
+                            "requires_flag": "flag:has_beacon_wick",
+                            "hidden_when_flag": "gleam:ember"},
+                           {"id": "brisa_fair", "at": "dais", "facing": "down",
+                            "sprite": "npc_lampwarden", "movement": "static",
+                            "dialogue_ref": "npc.brisa_after",
+                            "requires_flag": "gleam:ember"},
+                       ]),
         build_lumenary("pearlmoor_lumenary", "Pearlmoor Tide Lumenary",
                        "assets/audio/music/dimglass-coast-a.mp3", ("pearlmoor_quay", 14, 7),
                        "script.lumenary_pearlmoor", "sign.pearlmoor_lumenary",
