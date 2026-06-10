@@ -234,7 +234,7 @@ export const SCRIPTS: ScriptRegistry = {
   // 'shop' op. Buying/selling is the ShopMenu; prices live on the ItemDefs.
   'script.shop_kit_tinderwick': [
     { op: 'say', speaker: 'SHOPKEEPER', text: 'Welcome in, out of the dusk. Off on your Wayfaring? Then the first kit is on the house — town custom.' },
-    { op: 'giveItem', item: 'vesperlamp', count: 2 },
+    { op: 'giveItem', item: 'glow_charge', count: 2 },
     { op: 'giveItem', item: 'tallow_balm', count: 2 },
     { op: 'say', speaker: 'SHOPKEEPER', text: 'Two spare lamps and a pot of tallow balm. Lamp catches a kin; balm mends one. The road north is long.' },
     { op: 'setFlag', flag: 'flag:tinderwick_kit' },
@@ -264,8 +264,8 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:picked_dimglass_balm' },
   ],
   'script.pickup_dimglass_lamps': [
-    { op: 'giveItem', item: 'vesperlamp', count: 2 },
-    { op: 'say', text: "A wayfarer's drop-cache under the lamp post. Found 2 VESPERLAMPS!" },
+    { op: 'giveItem', item: 'glow_charge', count: 2 },
+    { op: 'say', text: "A wayfarer's drop-cache under the lamp post. Found 2 GLOW CHARGES!" },
     { op: 'setFlag', flag: 'flag:picked_dimglass_lamps' },
   ],
   'script.pickup_flats_balm': [

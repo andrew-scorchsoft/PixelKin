@@ -18,8 +18,24 @@ export interface CatchResult {
 }
 
 /**
- * Resolve one Lamp throw. `lampBonus` is the item's `catch_bonus` (vesperlamp =
- * 1.0). Pass `rng` for deterministic tests.
+ * Status multiplier (docs/mechanics/04-capture.md): a kin held still by Doze or
+ * Chill is far easier to coax in (×2.5); any other affliction helps a little (×1.5).
+ */
+export function statusBonus(target: KinInstance): number {
+  switch (target.status) {
+    case 'doze':
+    case 'chill':
+      return 2.5;
+    case 'none':
+      return 1.0;
+    default:
+      return 1.5;
+  }
+}
+
+/**
+ * Resolve one Lamp throw. `lampBonus` is the charge's `catch_bonus` (a plain
+ * vesperlamp throw = 1.0). Pass `rng` for deterministic tests.
  */
 export function attemptCatch(
   target: KinInstance,
@@ -32,7 +48,8 @@ export function attemptCatch(
   // divide by zero below.
   const rate = Math.max(1, target.species.catchRate);
 
-  const a = ((3 * maxHp - 2 * hp) / (3 * maxHp)) * rate * Math.max(0.1, lampBonus);
+  const a =
+    ((3 * maxHp - 2 * hp) / (3 * maxHp)) * rate * Math.max(0.1, lampBonus) * statusBonus(target);
 
   // A guaranteed catch when a >= 255 (very weak / very catchable).
   if (a >= 255) return { caught: true, wobbles: 4 };

@@ -10,28 +10,35 @@
  * (the region's elements + a Plain utility), and keeps the previous tier
  * available so a struggling player can stock up cheap.
  */
-import type { ShopDef, ShopRegistry } from './types';
+import type { ShopDef, ShopRegistry, ShopStockEntry } from './types';
 import { ITEMS } from './items';
 
 export const SHOPS: ShopRegistry = {
   // Tinderwick General Store — the first counter; humble, warm, everything a
-  // brand-new Wayfarer can afford within their first hour.
+  // brand-new Wayfarer can afford within their first hour. Beacon Charges
+  // appear on the shelf once Brisa has vouched for you (the first Gleam).
   tinderwick_general: {
     id: 'tinderwick_general',
     name: 'TINDERWICK GENERAL',
-    stock: ['tallow_balm', 'vesperlamp', 'chart_cinder_spit', 'chart_mist_spray'],
+    stock: [
+      'tallow_balm',
+      'glow_charge',
+      { item: 'beacon_charge', requires_flag: 'gleam:ember' },
+      'chart_cinder_spit',
+      'chart_mist_spray',
+    ],
   },
 
-  // Pearlmoor Chandlery — the crossing outfitter; first bright lamps, the
-  // mid salve, and the South's Standard-band charts before Reyl's bond-test.
+  // Pearlmoor Chandlery — the crossing outfitter; charge cells, the mid salve,
+  // and the South's Standard-band charts before Reyl's bond-test.
   pearlmoor_chandlery: {
     id: 'pearlmoor_chandlery',
     name: 'PEARLMOOR CHANDLERY',
     stock: [
       'tallow_balm',
       'warm_balm',
-      'vesperlamp',
-      'bright_lamp',
+      'glow_charge',
+      { item: 'beacon_charge', requires_flag: 'gleam:ember' },
       'chart_wave_crash',
       'chart_hearth_pulse',
       'chart_gust_up',
@@ -44,10 +51,16 @@ export function getShop(id: string): ShopDef | undefined {
   return SHOPS[id];
 }
 
+/** A stock entry's item id (gated or not). */
+export function stockItemId(entry: ShopStockEntry): string {
+  return typeof entry === 'string' ? entry : entry.item;
+}
+
 // Fail fast in dev if a shop stocks something unpriced/unknown — a silent bad
 // id would otherwise surface as a blank row at the counter.
 for (const shop of Object.values(SHOPS)) {
-  for (const id of shop.stock) {
+  for (const entry of shop.stock) {
+    const id = stockItemId(entry);
     const def = ITEMS[id];
     if (!def) console.warn(`Shop ${shop.id} stocks unknown item '${id}'`);
     else if (def.price === undefined) console.warn(`Shop ${shop.id} stocks unpriced item '${id}'`);

@@ -15,7 +15,7 @@
  * It (de)serialises to `KinInstanceData` (save/types.ts) via `toData()` /
  * `KinInstance.fromData()`, so party state round-trips through a save unchanged.
  */
-import type { Species, Move, Stats } from '@game/data/dex';
+import type { Species, Move, Stats, Kindling } from '@game/data/dex';
 import { SPECIES_BY_ID, MOVE_BY_ID } from '@game/data/dex';
 import type { KinInstanceData, KinStatus } from '@game/systems/save/types';
 
@@ -41,7 +41,7 @@ export function levelForExp(exp: number): number {
 }
 
 export class KinInstance {
-  readonly species: Species;
+  species: Species;
   nickname?: string;
   level: number;
   exp: number;
@@ -52,6 +52,14 @@ export class KinInstance {
 
   /** Live stat-stage modifiers for the *current battle* (not persisted). */
   readonly stages: Stats = { hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0 };
+
+  // Per-battle volatile status counters (not persisted; reset on send-out).
+  /** Turns of doze left (rolled 1–3 when the status lands or battle starts). */
+  dozeTurns = 0;
+  /** Blight's escalating chip counter (damage = stacks/16 of max hp). */
+  blightStacks = 0;
+  /** Set when flinched this turn (skips the next action, then clears). */
+  flinched = false;
 
   private constructor(
     species: Species,
@@ -143,7 +151,10 @@ export class KinInstance {
   }
 
   get atk(): number {
-    return this.withStage(this.otherStat(this.species.stats.atk), this.stages.atk);
+    const base = this.withStage(this.otherStat(this.species.stats.atk), this.stages.atk);
+    // Scorch halves physical attack (canon: docs/mechanics/03-moves.md). Kept in
+    // the getter so the foe AI's damage estimates see it too.
+    return this.status === 'scorch' ? Math.max(1, Math.floor(base / 2)) : base;
   }
   get def(): number {
     return this.withStage(this.otherStat(this.species.stats.def), this.stages.def);
@@ -155,7 +166,11 @@ export class KinInstance {
     return this.withStage(this.otherStat(this.species.stats.spd), this.stages.spd);
   }
   get spe(): number {
-    return this.withStage(this.otherStat(this.species.stats.spe), this.stages.spe);
+    const base = this.withStage(this.otherStat(this.species.stats.spe), this.stages.spe);
+    // Numb and Drench both slow (canon: −Speed) — halved, like the classics.
+    return this.status === 'numb' || this.status === 'drench'
+      ? Math.max(1, Math.floor(base / 2))
+      : base;
   }
 
   get isFainted(): boolean {
@@ -188,13 +203,36 @@ export class KinInstance {
     return before - this.hp;
   }
 
-  /** Reset per-battle volatile state (stat stages). Call when (un)sending out. */
-  resetBattleState(): void {
+  /** Reset per-battle volatile state (stat stages + status counters). Call when (un)sending out. */
+  resetBattleState(rng: () => number = Math.random): void {
     this.stages.atk = 0;
     this.stages.def = 0;
     this.stages.spa = 0;
     this.stages.spd = 0;
     this.stages.spe = 0;
+    this.flinched = false;
+    this.blightStacks = this.status === 'blight' ? 1 : 0;
+    // A kin that arrives already dozing gets a fresh 1–3 turn nap counter.
+    this.dozeTurns = this.status === 'doze' ? 1 + Math.floor(rng() * 3) : 0;
+  }
+
+  /**
+   * Apply a major status. The single-status rule: a kin already afflicted keeps
+   * its current condition (returns false). Sets the volatile counters.
+   */
+  applyStatus(status: KinStatus, rng: () => number = Math.random): boolean {
+    if (status === 'none' || this.status !== 'none') return false;
+    this.status = status;
+    if (status === 'doze') this.dozeTurns = 1 + Math.floor(rng() * 3);
+    if (status === 'blight') this.blightStacks = 1;
+    return true;
+  }
+
+  /** Clear any major status (cures, thaws, wakes). */
+  cureStatus(): void {
+    this.status = 'none';
+    this.dozeTurns = 0;
+    this.blightStacks = 0;
   }
 
   /**
@@ -204,8 +242,16 @@ export class KinInstance {
    * lands in `pending` instead — the caller runs MoveLearnPrompt so the PLAYER
    * chooses what to set aside (never a silent overwrite).
    */
-  gainExp(amount: number): { levelsGained: number; learned: Move[]; pending: Move[] } {
-    if (amount <= 0 || this.level >= MAX_LEVEL) return { levelsGained: 0, learned: [], pending: [] };
+  gainExp(amount: number): {
+    levelsGained: number;
+    learned: Move[];
+    pending: Move[];
+    /** Set when a level threshold crossed this kin's kindling trigger — the
+     *  caller runs KindlePrompt so the PLAYER witnesses (or defers) the kindle. */
+    kindleReady: Kindling | null;
+  } {
+    if (amount <= 0 || this.level >= MAX_LEVEL)
+      return { levelsGained: 0, learned: [], pending: [], kindleReady: null };
     const startLevel = this.level;
     this.exp += Math.floor(amount);
     const newLevel = levelForExp(this.exp);
@@ -226,7 +272,53 @@ export class KinInstance {
         }
       }
     }
-    return { levelsGained: newLevel - startLevel, learned, pending };
+    return {
+      levelsGained: newLevel - startLevel,
+      learned,
+      pending,
+      kindleReady: newLevel > startLevel ? this.kindleReady() : null,
+    };
+  }
+
+  // --- Kindling --------------------------------------------------------------
+
+  /** The level-triggered kindling this kin currently qualifies for, if any. */
+  kindleReady(): Kindling | null {
+    const k = this.species.kindling;
+    if (!k) return null;
+    if (k.trigger.kind !== 'level') return null; // stone/bond/location/time go through items/scripts
+    if (typeof k.trigger.level !== 'number' || this.level < k.trigger.level) return null;
+    return SPECIES_BY_ID.has(k.into) ? k : null;
+  }
+
+  /** The kindling a Kindlestone-type item would fire on this kin, if any. */
+  kindleByItem(itemId: string): Kindling | null {
+    const k = this.species.kindling;
+    if (!k || k.trigger.kind !== 'stone' || k.trigger.item !== itemId) return null;
+    return SPECIES_BY_ID.has(k.into) ? k : null;
+  }
+
+  /**
+   * Kindle into the next stage: swap the species, keep level/exp/nickname, carry
+   * the hp *gain* (a kindle is a bloom, never a reset), and surface any kindling
+   * moves the new form is due — returned like gainExp's learned/pending so the
+   * caller can run the same MoveLearnPrompt flow.
+   */
+  applyKindle(kindling: Kindling): { learned: Move[]; pending: Move[] } {
+    const next = SPECIES_BY_ID.get(kindling.into);
+    const learned: Move[] = [];
+    const pending: Move[] = [];
+    if (!next) return { learned, pending };
+    const prevMax = this.maxHp;
+    this.species = next;
+    this.hp = Math.min(this.maxHp, this.hp + Math.max(0, this.maxHp - prevMax));
+    for (const id of next.learnset.kindling) {
+      const move = MOVE_BY_ID.get(id);
+      if (!move || this.knowsMove(move.id)) continue;
+      if (this.learnMove(move)) learned.push(move);
+      else pending.push(move);
+    }
+    return { learned, pending };
   }
 
   // --- Taught moves (Star-charts + the move-learn prompt share these) ----------

@@ -17,6 +17,7 @@ import { ItemsMenu } from '@game/ui/ItemsMenu';
 import { HearthMenu } from '@game/ui/HearthMenu';
 import { SettingsMenu } from '@game/ui/SettingsMenu';
 import { GlossaryMenu } from '@game/ui/GlossaryMenu';
+import { RegisterMenu } from '@game/ui/RegisterMenu';
 import { fadeIn, fadeOut } from '@game/ui/Transitions';
 import { KinInstance } from '@game/systems/party/KinInstance';
 import { InputController, InputAction } from '@game/systems/input/InputController';
@@ -41,7 +42,7 @@ import { makeStarterKin } from '@game/content/starters';
 import { runCutscene } from '@game/systems/cutscene/CutsceneRunner';
 import type { CutsceneContext } from '@game/systems/cutscene/CutsceneRunner';
 import type { ActorRef, CutsceneStep } from '@game/content/types';
-import type { KinInstanceData, InventoryData, SaveGame } from '@game/systems/save/types';
+import type { KinInstanceData, InventoryData, SaveGame, DexProgress } from '@game/systems/save/types';
 import { SAVE_SCHEMA_VERSION } from '@game/systems/save/types';
 import { SaveManager } from '@game/systems/save/SaveManager';
 import type { WorldSnapshot } from '@game/data/world/types';
@@ -60,6 +61,8 @@ export interface WorldSceneData {
   inventory?: InventoryData;
   /** The player's wicks; a fresh game starts on STARTING_WICKS. */
   money?: number;
+  /** Collection progress (the vesperlamp's register). */
+  dex?: DexProgress;
 }
 
 /** Depth band for actors: above deco (5), below the 'above' layer (20). */
@@ -88,6 +91,9 @@ export class WorldScene extends Phaser.Scene {
   private inventory: InventoryData = { items: {} };
   /** The player's wicks (currency — content/economy.ts). */
   private money = 0;
+  /** The vesperlamp's register: species seen/caught (REGISTER screen). */
+  private dexSeen = new Set<number>();
+  private dexCaught = new Set<number>();
 
   constructor() {
     super('World');
@@ -103,6 +109,13 @@ export class WorldScene extends Phaser.Scene {
     this.box = data.box ?? [];
     this.inventory = data.inventory ?? { items: {} };
     this.money = data.money ?? STARTING_WICKS;
+    this.dexSeen = new Set(data.dex?.seen ?? []);
+    this.dexCaught = new Set(data.dex?.caught ?? []);
+    // Whatever walks with you is certainly on the register.
+    for (const k of [...this.party, ...this.box]) {
+      this.dexSeen.add(k.species_id);
+      this.dexCaught.add(k.species_id);
+    }
     this.music = new MusicDirector(this);
     this.sfx = new Sfx(this);
     this.debug = new DebugOverlay(this);
@@ -192,6 +205,7 @@ export class WorldScene extends Phaser.Scene {
       box: this.box,
       inventory: this.inventory,
       money: this.money,
+      dex: { seen: [...this.dexSeen], caught: [...this.dexCaught] },
     };
   }
 
@@ -379,6 +393,8 @@ export class WorldScene extends Phaser.Scene {
       canEnter: (tx, ty) => this.playerCanEnter(tx, ty),
       onGiveStarter: (speciesId) => {
         this.party.push(makeStarterKin(speciesId));
+        this.dexSeen.add(speciesId);
+        this.dexCaught.add(speciesId);
       },
       onGiveItem: (item, count) => {
         this.inventory.items[item] = (this.inventory.items[item] ?? 0) + count;
@@ -392,7 +408,9 @@ export class WorldScene extends Phaser.Scene {
           await ShopMenu.missing(this, this.sfx);
           return;
         }
-        const result = await new ShopMenu(this, shop, this.inventory, this.money, this.sfx).run();
+        const result = await new ShopMenu(this, shop, this.inventory, this.money, this.sfx, (flag) =>
+          this.flags.get(flag),
+        ).run();
         this.inventory = result.inventory;
         this.money = result.money;
         void this.persist();
@@ -578,6 +596,16 @@ export class WorldScene extends Phaser.Scene {
     this.inventory = result.inventory;
     if (result.money_earned) this.money += result.money_earned;
     if (result.set_flags) this.flags.setMany(result.set_flags);
+    for (const id of result.dex_seen ?? []) this.dexSeen.add(id);
+    if (result.caught) {
+      this.dexSeen.add(result.caught.species_id);
+      this.dexCaught.add(result.caught.species_id);
+    }
+    // A kindle mid-battle puts the new form on the register too.
+    for (const k of [...this.party, ...this.box]) {
+      this.dexSeen.add(k.species_id);
+      this.dexCaught.add(k.species_id);
+    }
     // Lantern Gifts granted by a Lampwarden win — add to the live ability set so
     // gated tiles/warps unlock immediately, and persist() (below) saves them.
     if (result.grant_abilities) {
@@ -738,6 +766,7 @@ export class WorldScene extends Phaser.Scene {
         [
           { label: 'RESUME', value: 'resume' },
           { label: 'KIN', value: 'kin' },
+          { label: 'REGISTER', value: 'register' },
           { label: 'HEARTH', value: 'hearth' },
           { label: 'ITEMS', value: 'items' },
           { label: 'LORE', value: 'lore' },
@@ -749,6 +778,8 @@ export class WorldScene extends Phaser.Scene {
 
       if (choice === 'kin') {
         await this.openPartyMenu();
+      } else if (choice === 'register') {
+        await new RegisterMenu(this, { seen: [...this.dexSeen], caught: [...this.dexCaught] }, this.sfx).run();
       } else if (choice === 'hearth') {
         await this.openHearthMenu();
       } else if (choice === 'items') {
@@ -786,6 +817,7 @@ export class WorldScene extends Phaser.Scene {
         box: loaded.box,
         inventory: loaded.inventory,
         money: loaded.money,
+        dex: loaded.dex,
       });
     }
   }

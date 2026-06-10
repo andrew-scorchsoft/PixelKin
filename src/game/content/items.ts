@@ -11,29 +11,38 @@
 import type { ItemDef, ItemRegistry } from './types';
 
 export const ITEMS: ItemRegistry = {
+  // --- The lamp & its charges ------------------------------------------------
+  // The vesperlamp is THE device — given once at the ceremony, never spent. A
+  // plain throw is always free (×1.0). Charges are waxed cells fed to the lamp
+  // for ONE brighter throw; better charges, better odds (docs/mechanics/04-capture.md).
   vesperlamp: {
     id: 'vesperlamp',
     name: 'Vesperlamp',
-    desc: 'Your lamp-tender\'s lantern. Coaxes a wild kin to walk with you.',
-    category: 'lamp',
-    catch_bonus: 1.0,
+    desc: 'Your lamp-tender\'s lantern, warm in the hand. Raised toward a wild kin, it coaxes them to walk with you.',
+    category: 'key',
+  },
+  glow_charge: {
+    id: 'glow_charge',
+    name: 'Glow Charge',
+    desc: 'A waxed charge cell for the vesperlamp. One throw burns keener — better odds of befriending a wild kin.',
+    category: 'charge',
+    catch_bonus: 1.5,
     price: 200,
   },
-  bright_lamp: {
-    id: 'bright_lamp',
-    name: 'Bright Lamp',
-    desc: 'A keener flame. Better odds of befriending a wild kin.',
-    category: 'lamp',
-    catch_bonus: 1.5,
+  beacon_charge: {
+    id: 'beacon_charge',
+    name: 'Beacon Charge',
+    desc: 'A chandler\'s pressed cell, near daylight in the lamp. One blazing throw — the surest catch wicks can buy.',
+    category: 'charge',
+    catch_bonus: 2.5,
     price: 600,
   },
-  radiant_lamp: {
-    id: 'radiant_lamp',
-    name: 'Radiant Lamp',
-    desc: 'A chandler\'s masterwork, near daylight in the hand. The surest catch wicks can buy.',
-    category: 'lamp',
-    catch_bonus: 2.0,
-    price: 1500,
+  starlamp: {
+    id: 'starlamp',
+    name: 'Starlamp',
+    desc: 'A cell of caught starlight, the rarest of gifts. The kin it is raised toward always comes — no wild heart refuses a star.',
+    category: 'charge',
+    catch_bonus: 255,
   },
   tallow_balm: {
     id: 'tallow_balm',
@@ -74,8 +83,8 @@ export const ITEMS: ItemRegistry = {
   tide_charm: {
     id: 'tide_charm',
     name: 'Tide Charm',
-    desc: 'A wave-worn charm lashed to a lamp-frame; the sea trusts it. The surest catch in the South.',
-    category: 'lamp',
+    desc: 'A wave-worn charm lashed to a lamp-frame; the sea trusts it. One throw, and the surest catch in the South.',
+    category: 'charge',
     catch_bonus: 2.0,
   },
 

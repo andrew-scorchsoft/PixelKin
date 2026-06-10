@@ -95,6 +95,11 @@ export const SaveManager = {
       party,
       inventory,
       money,
+      // A fresh register already knows the kin you start with.
+      dex: {
+        seen: [...new Set(party.map((k) => k.species_id))],
+        caught: [...new Set(party.map((k) => k.species_id))],
+      },
     };
   },
 } as const;
