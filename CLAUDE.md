@@ -364,10 +364,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   separate creature path — `systems/sprites/CreatureSprites.ts` — is now wired into
   `StarterSelect`, `Battler` (battle), `PartyMenu`, and `AttractScene`: each lazy-loads a packed
   sprite keyed `kin_<id>_<view>` and falls back to the type-tinted placeholder **only** when a kin
-  isn't packed. 66 kin (incl. the whole hour-one cast) are packed under
-  `public/assets/sprites/creatures/NNN_slug/` — 5 views each (battle_front/back, icon, overworld,
-  portrait) listed in `creatures.manifest.json`. Adding the rest of the 153 is pack + manifest, no
-  code change. (Don't re-describe these previews as "placeholder squares" — that note was stale.)
+  isn't packed. **All 153 kin are packed** under `public/assets/sprites/creatures/NNN_slug/` —
+  5 views each (battle_front/back, icon, overworld, portrait) listed in `creatures.manifest.json`.
+  Regenerate any kin's full view set from its species `art` block with
+  `./venv/bin/python tools/assets/gen_creature.py <id>` (supports `--provider openai` when Google
+  is spend-capped), then re-run `pack_creatures.py`. The placeholder path remains as a safety net.
 - **Character animation is 3 layered sheets, not one big sheet** (docs/art-style.md §A/§A2/§A3):
   layer 1 = the 4×4 walk sheet (required; *running* is free — same frames, faster, so don't
   expand it); layer 2 = ONE shared `emote` bubble sheet (`assets/effects/emotes.png`, reused

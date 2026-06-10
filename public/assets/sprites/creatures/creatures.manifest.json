@@ -1792,6 +1792,2442 @@
         "height": 96
       }
     },
+    "65": {
+      "slug": "glowsip",
+      "front": {
+        "path": "assets/sprites/creatures/065_glowsip/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/065_glowsip/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/065_glowsip/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/065_glowsip/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/065_glowsip/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "66": {
+      "slug": "lumournis",
+      "front": {
+        "path": "assets/sprites/creatures/066_lumournis/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/066_lumournis/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/066_lumournis/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/066_lumournis/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/066_lumournis/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "67": {
+      "slug": "fennlight",
+      "front": {
+        "path": "assets/sprites/creatures/067_fennlight/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/067_fennlight/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/067_fennlight/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/067_fennlight/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/067_fennlight/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "68": {
+      "slug": "fernlance",
+      "front": {
+        "path": "assets/sprites/creatures/068_fernlance/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/068_fernlance/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/068_fernlance/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/068_fernlance/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/068_fernlance/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "69": {
+      "slug": "riddlestone",
+      "front": {
+        "path": "assets/sprites/creatures/069_riddlestone/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/069_riddlestone/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/069_riddlestone/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/069_riddlestone/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/069_riddlestone/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "70": {
+      "slug": "mycovast",
+      "front": {
+        "path": "assets/sprites/creatures/070_mycovast/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/070_mycovast/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/070_mycovast/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/070_mycovast/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/070_mycovast/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "71": {
+      "slug": "iceling",
+      "front": {
+        "path": "assets/sprites/creatures/071_iceling/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/071_iceling/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/071_iceling/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/071_iceling/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/071_iceling/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "72": {
+      "slug": "glaceling",
+      "front": {
+        "path": "assets/sprites/creatures/072_glaceling/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/072_glaceling/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/072_glaceling/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/072_glaceling/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/072_glaceling/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "73": {
+      "slug": "frostholm",
+      "front": {
+        "path": "assets/sprites/creatures/073_frostholm/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/073_frostholm/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/073_frostholm/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/073_frostholm/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/073_frostholm/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "74": {
+      "slug": "geolace",
+      "front": {
+        "path": "assets/sprites/creatures/074_geolace/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/074_geolace/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/074_geolace/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/074_geolace/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/074_geolace/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "75": {
+      "slug": "geodrake",
+      "front": {
+        "path": "assets/sprites/creatures/075_geodrake/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/075_geodrake/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/075_geodrake/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/075_geodrake/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/075_geodrake/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "76": {
+      "slug": "vaultclaw",
+      "front": {
+        "path": "assets/sprites/creatures/076_vaultclaw/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/076_vaultclaw/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/076_vaultclaw/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/076_vaultclaw/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/076_vaultclaw/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "77": {
+      "slug": "chillpip",
+      "front": {
+        "path": "assets/sprites/creatures/077_chillpip/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/077_chillpip/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/077_chillpip/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/077_chillpip/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/077_chillpip/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "78": {
+      "slug": "crystarn",
+      "front": {
+        "path": "assets/sprites/creatures/078_crystarn/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/078_crystarn/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/078_crystarn/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/078_crystarn/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/078_crystarn/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "79": {
+      "slug": "glacitern",
+      "front": {
+        "path": "assets/sprites/creatures/079_glacitern/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/079_glacitern/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/079_glacitern/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/079_glacitern/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/079_glacitern/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "80": {
+      "slug": "snowcune",
+      "front": {
+        "path": "assets/sprites/creatures/080_snowcune/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/080_snowcune/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/080_snowcune/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/080_snowcune/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/080_snowcune/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "81": {
+      "slug": "blizzrhare",
+      "front": {
+        "path": "assets/sprites/creatures/081_blizzrhare/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/081_blizzrhare/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/081_blizzrhare/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/081_blizzrhare/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/081_blizzrhare/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "82": {
+      "slug": "vortexlope",
+      "front": {
+        "path": "assets/sprites/creatures/082_vortexlope/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/082_vortexlope/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/082_vortexlope/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/082_vortexlope/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/082_vortexlope/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "83": {
+      "slug": "hushvole",
+      "front": {
+        "path": "assets/sprites/creatures/083_hushvole/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/083_hushvole/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/083_hushvole/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/083_hushvole/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/083_hushvole/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "84": {
+      "slug": "hushbore",
+      "front": {
+        "path": "assets/sprites/creatures/084_hushbore/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/084_hushbore/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/084_hushbore/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/084_hushbore/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/084_hushbore/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "85": {
+      "slug": "stillwarden",
+      "front": {
+        "path": "assets/sprites/creatures/085_stillwarden/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/085_stillwarden/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/085_stillwarden/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/085_stillwarden/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/085_stillwarden/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "86": {
+      "slug": "prismcub",
+      "front": {
+        "path": "assets/sprites/creatures/086_prismcub/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/086_prismcub/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/086_prismcub/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/086_prismcub/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/086_prismcub/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "87": {
+      "slug": "prismantus",
+      "front": {
+        "path": "assets/sprites/creatures/087_prismantus/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/087_prismantus/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/087_prismantus/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/087_prismantus/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/087_prismantus/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "88": {
+      "slug": "sparrowcaw",
+      "front": {
+        "path": "assets/sprites/creatures/088_sparrowcaw/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/088_sparrowcaw/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/088_sparrowcaw/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/088_sparrowcaw/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/088_sparrowcaw/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "89": {
+      "slug": "flintbeak",
+      "front": {
+        "path": "assets/sprites/creatures/089_flintbeak/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/089_flintbeak/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/089_flintbeak/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/089_flintbeak/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/089_flintbeak/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "90": {
+      "slug": "strikeaven",
+      "front": {
+        "path": "assets/sprites/creatures/090_strikeaven/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/090_strikeaven/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/090_strikeaven/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/090_strikeaven/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/090_strikeaven/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "91": {
+      "slug": "cirruff",
+      "front": {
+        "path": "assets/sprites/creatures/091_cirruff/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/091_cirruff/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/091_cirruff/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/091_cirruff/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/091_cirruff/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "92": {
+      "slug": "nimbruff",
+      "front": {
+        "path": "assets/sprites/creatures/092_nimbruff/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/092_nimbruff/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/092_nimbruff/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/092_nimbruff/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/092_nimbruff/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "93": {
+      "slug": "cumulance",
+      "front": {
+        "path": "assets/sprites/creatures/093_cumulance/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/093_cumulance/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/093_cumulance/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/093_cumulance/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/093_cumulance/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "94": {
+      "slug": "hailwhirr",
+      "front": {
+        "path": "assets/sprites/creatures/094_hailwhirr/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/094_hailwhirr/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/094_hailwhirr/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/094_hailwhirr/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/094_hailwhirr/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "95": {
+      "slug": "glacewing",
+      "front": {
+        "path": "assets/sprites/creatures/095_glacewing/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/095_glacewing/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/095_glacewing/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/095_glacewing/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/095_glacewing/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "96": {
+      "slug": "frigalance",
+      "front": {
+        "path": "assets/sprites/creatures/096_frigalance/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/096_frigalance/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/096_frigalance/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/096_frigalance/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/096_frigalance/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "97": {
+      "slug": "thrumvane",
+      "front": {
+        "path": "assets/sprites/creatures/097_thrumvane/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/097_thrumvane/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/097_thrumvane/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/097_thrumvane/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/097_thrumvane/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "98": {
+      "slug": "thrumble",
+      "front": {
+        "path": "assets/sprites/creatures/098_thrumble/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/098_thrumble/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/098_thrumble/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/098_thrumble/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/098_thrumble/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "99": {
+      "slug": "vortavane",
+      "front": {
+        "path": "assets/sprites/creatures/099_vortavane/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/099_vortavane/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/099_vortavane/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/099_vortavane/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/099_vortavane/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "100": {
+      "slug": "squallox",
+      "front": {
+        "path": "assets/sprites/creatures/100_squallox/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/100_squallox/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/100_squallox/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/100_squallox/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/100_squallox/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "101": {
+      "slug": "galefox",
+      "front": {
+        "path": "assets/sprites/creatures/101_galefox/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/101_galefox/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/101_galefox/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/101_galefox/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/101_galefox/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "102": {
+      "slug": "tempestail",
+      "front": {
+        "path": "assets/sprites/creatures/102_tempestail/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/102_tempestail/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/102_tempestail/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/102_tempestail/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/102_tempestail/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "103": {
+      "slug": "gilpaw",
+      "front": {
+        "path": "assets/sprites/creatures/103_gilpaw/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/103_gilpaw/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/103_gilpaw/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/103_gilpaw/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/103_gilpaw/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "104": {
+      "slug": "goldmane",
+      "front": {
+        "path": "assets/sprites/creatures/104_goldmane/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/104_goldmane/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/104_goldmane/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/104_goldmane/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/104_goldmane/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "105": {
+      "slug": "snoozlet",
+      "front": {
+        "path": "assets/sprites/creatures/105_snoozlet/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/105_snoozlet/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/105_snoozlet/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/105_snoozlet/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/105_snoozlet/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "106": {
+      "slug": "drowshorn",
+      "front": {
+        "path": "assets/sprites/creatures/106_drowshorn/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/106_drowshorn/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/106_drowshorn/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/106_drowshorn/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/106_drowshorn/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "107": {
+      "slug": "lunarbel",
+      "front": {
+        "path": "assets/sprites/creatures/107_lunarbel/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/107_lunarbel/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/107_lunarbel/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/107_lunarbel/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/107_lunarbel/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "108": {
+      "slug": "solunet",
+      "front": {
+        "path": "assets/sprites/creatures/108_solunet/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/108_solunet/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/108_solunet/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/108_solunet/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/108_solunet/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "109": {
+      "slug": "tidalune",
+      "front": {
+        "path": "assets/sprites/creatures/109_tidalune/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/109_tidalune/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/109_tidalune/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/109_tidalune/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/109_tidalune/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "110": {
+      "slug": "lunaquell",
+      "front": {
+        "path": "assets/sprites/creatures/110_lunaquell/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/110_lunaquell/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/110_lunaquell/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/110_lunaquell/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/110_lunaquell/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "111": {
+      "slug": "spirlet",
+      "front": {
+        "path": "assets/sprites/creatures/111_spirlet/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/111_spirlet/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/111_spirlet/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/111_spirlet/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/111_spirlet/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "112": {
+      "slug": "nightwraith",
+      "front": {
+        "path": "assets/sprites/creatures/112_nightwraith/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/112_nightwraith/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/112_nightwraith/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/112_nightwraith/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/112_nightwraith/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "113": {
+      "slug": "omenire",
+      "front": {
+        "path": "assets/sprites/creatures/113_omenire/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/113_omenire/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/113_omenire/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/113_omenire/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/113_omenire/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "114": {
+      "slug": "sunsprout",
+      "front": {
+        "path": "assets/sprites/creatures/114_sunsprout/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/114_sunsprout/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/114_sunsprout/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/114_sunsprout/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/114_sunsprout/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "115": {
+      "slug": "solvyne",
+      "front": {
+        "path": "assets/sprites/creatures/115_solvyne/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/115_solvyne/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/115_solvyne/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/115_solvyne/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/115_solvyne/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "116": {
+      "slug": "auravane",
+      "front": {
+        "path": "assets/sprites/creatures/116_auravane/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/116_auravane/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/116_auravane/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/116_auravane/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/116_auravane/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "117": {
+      "slug": "helibud",
+      "front": {
+        "path": "assets/sprites/creatures/117_helibud/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/117_helibud/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/117_helibud/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/117_helibud/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/117_helibud/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "118": {
+      "slug": "helicore",
+      "front": {
+        "path": "assets/sprites/creatures/118_helicore/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/118_helicore/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/118_helicore/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/118_helicore/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/118_helicore/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "119": {
+      "slug": "helithorn",
+      "front": {
+        "path": "assets/sprites/creatures/119_helithorn/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/119_helithorn/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/119_helithorn/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/119_helithorn/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/119_helithorn/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "120": {
+      "slug": "dawnfawn",
+      "front": {
+        "path": "assets/sprites/creatures/120_dawnfawn/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/120_dawnfawn/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/120_dawnfawn/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/120_dawnfawn/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/120_dawnfawn/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "121": {
+      "slug": "sunstag",
+      "front": {
+        "path": "assets/sprites/creatures/121_sunstag/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/121_sunstag/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/121_sunstag/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/121_sunstag/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/121_sunstag/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "122": {
+      "slug": "solray",
+      "front": {
+        "path": "assets/sprites/creatures/122_solray/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/122_solray/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/122_solray/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/122_solray/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/122_solray/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "123": {
+      "slug": "solreach",
+      "front": {
+        "path": "assets/sprites/creatures/123_solreach/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/123_solreach/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/123_solreach/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/123_solreach/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/123_solreach/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "124": {
+      "slug": "petalune",
+      "front": {
+        "path": "assets/sprites/creatures/124_petalune/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/124_petalune/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/124_petalune/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/124_petalune/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/124_petalune/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "125": {
+      "slug": "crystalune",
+      "front": {
+        "path": "assets/sprites/creatures/125_crystalune/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/125_crystalune/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/125_crystalune/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/125_crystalune/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/125_crystalune/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "126": {
+      "slug": "lunveil",
+      "front": {
+        "path": "assets/sprites/creatures/126_lunveil/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/126_lunveil/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/126_lunveil/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/126_lunveil/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/126_lunveil/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "127": {
+      "slug": "lunvane",
+      "front": {
+        "path": "assets/sprites/creatures/127_lunvane/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/127_lunvane/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/127_lunvane/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/127_lunvane/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/127_lunvane/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "128": {
+      "slug": "solarmourn",
+      "front": {
+        "path": "assets/sprites/creatures/128_solarmourn/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/128_solarmourn/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/128_solarmourn/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/128_solarmourn/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/128_solarmourn/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "129": {
+      "slug": "dawnwatcher",
+      "front": {
+        "path": "assets/sprites/creatures/129_dawnwatcher/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/129_dawnwatcher/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/129_dawnwatcher/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/129_dawnwatcher/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/129_dawnwatcher/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "130": {
+      "slug": "heliovast",
+      "front": {
+        "path": "assets/sprites/creatures/130_heliovast/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/130_heliovast/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/130_heliovast/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/130_heliovast/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/130_heliovast/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "131": {
+      "slug": "helixia",
+      "front": {
+        "path": "assets/sprites/creatures/131_helixia/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/131_helixia/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/131_helixia/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/131_helixia/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/131_helixia/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "132": {
+      "slug": "lunaveil",
+      "front": {
+        "path": "assets/sprites/creatures/132_lunaveil/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/132_lunaveil/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/132_lunaveil/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/132_lunaveil/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/132_lunaveil/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "133": {
+      "slug": "flutterwane",
+      "front": {
+        "path": "assets/sprites/creatures/133_flutterwane/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/133_flutterwane/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/133_flutterwane/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/133_flutterwane/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/133_flutterwane/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "134": {
+      "slug": "wispwane",
+      "front": {
+        "path": "assets/sprites/creatures/134_wispwane/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/134_wispwane/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/134_wispwane/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/134_wispwane/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/134_wispwane/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "135": {
+      "slug": "liminalux",
+      "front": {
+        "path": "assets/sprites/creatures/135_liminalux/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/135_liminalux/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/135_liminalux/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/135_liminalux/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/135_liminalux/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "136": {
+      "slug": "mothdim",
+      "front": {
+        "path": "assets/sprites/creatures/136_mothdim/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/136_mothdim/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/136_mothdim/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/136_mothdim/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/136_mothdim/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "137": {
+      "slug": "nullmoth",
+      "front": {
+        "path": "assets/sprites/creatures/137_nullmoth/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/137_nullmoth/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/137_nullmoth/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/137_nullmoth/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/137_nullmoth/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "138": {
+      "slug": "voidmantle",
+      "front": {
+        "path": "assets/sprites/creatures/138_voidmantle/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/138_voidmantle/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/138_voidmantle/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/138_voidmantle/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/138_voidmantle/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "139": {
+      "slug": "wispwanenull",
+      "front": {
+        "path": "assets/sprites/creatures/139_wispwanenull/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/139_wispwanenull/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/139_wispwanenull/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/139_wispwanenull/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/139_wispwanenull/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "140": {
+      "slug": "wisprestored",
+      "front": {
+        "path": "assets/sprites/creatures/140_wisprestored/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/140_wisprestored/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/140_wisprestored/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/140_wisprestored/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/140_wisprestored/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "141": {
+      "slug": "cindersob",
+      "front": {
+        "path": "assets/sprites/creatures/141_cindersob/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/141_cindersob/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/141_cindersob/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/141_cindersob/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/141_cindersob/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "142": {
+      "slug": "embergone",
+      "front": {
+        "path": "assets/sprites/creatures/142_embergone/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/142_embergone/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/142_embergone/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/142_embergone/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/142_embergone/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "143": {
+      "slug": "whorlix",
+      "front": {
+        "path": "assets/sprites/creatures/143_whorlix/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/143_whorlix/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/143_whorlix/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/143_whorlix/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/143_whorlix/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "144": {
+      "slug": "nullhusk",
+      "front": {
+        "path": "assets/sprites/creatures/144_nullhusk/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/144_nullhusk/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/144_nullhusk/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/144_nullhusk/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/144_nullhusk/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "145": {
+      "slug": "cindervast",
+      "front": {
+        "path": "assets/sprites/creatures/145_cindervast/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/145_cindervast/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/145_cindervast/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/145_cindervast/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/145_cindervast/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "146": {
+      "slug": "bogvast",
+      "front": {
+        "path": "assets/sprites/creatures/146_bogvast/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/146_bogvast/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/146_bogvast/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/146_bogvast/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/146_bogvast/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "147": {
+      "slug": "skyweavelet",
+      "front": {
+        "path": "assets/sprites/creatures/147_skyweavelet/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/147_skyweavelet/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/147_skyweavelet/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/147_skyweavelet/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/147_skyweavelet/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "148": {
+      "slug": "lampling",
+      "front": {
+        "path": "assets/sprites/creatures/148_lampling/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/148_lampling/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/148_lampling/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/148_lampling/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/148_lampling/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "149": {
+      "slug": "keylumen",
+      "front": {
+        "path": "assets/sprites/creatures/149_keylumen/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/149_keylumen/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/149_keylumen/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/149_keylumen/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/149_keylumen/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "150": {
+      "slug": "nullmajor",
+      "front": {
+        "path": "assets/sprites/creatures/150_nullmajor/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/150_nullmajor/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/150_nullmajor/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/150_nullmajor/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/150_nullmajor/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "151": {
+      "slug": "dawnbrael",
+      "front": {
+        "path": "assets/sprites/creatures/151_dawnbrael/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/151_dawnbrael/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/151_dawnbrael/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/151_dawnbrael/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/151_dawnbrael/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
     "152": {
       "slug": "cloverkit",
       "front": {
