@@ -19,7 +19,7 @@ Run:  ./venv/bin/python tools/maps/build_lowleaf_interiors.py
 from __future__ import annotations
 
 from roomkit import (WARM_SET, COOL_SET, BANNER, faced_room, windows, partition_v,
-                     place, wall_mount, runner, mapdef, finish)
+                     place, wall_mount, runner, aisle_runner, mapdef, finish)
 
 
 def build_lumenary():
@@ -30,9 +30,10 @@ def build_lumenary():
     partition_v(over, W, 4, 1, 4, lip="e")
     partition_v(over, W, 12, 1, 4, lip="w")
     windows(over, W, [6, 10], tile=BANNER)
-    runner(base, W, door_x, 5, H - 2)
 
     objects: list = []
+    # the carpet aisle (drawn runner objects, not the ladder-like doormat tile)
+    aisle_runner(objects, door_x, 5, H - 2)
     # the focal moss-shrine on its dais, top-centre; braziers burn green-gold
     place(objects, "altar", door_x - 1, 2)
     place(objects, "brazier", 5, 3, oid="brazier_l")

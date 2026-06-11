@@ -614,7 +614,21 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   floated off the wall), free-standing through manifest-driven `place`. One focal point
   top-centre; cool stone register for Lumenaries; `rk.finish()` renders + audits. Binding
   spec: `docs/world/interiors.md`. Resizing a room moves its doormat — update the town
-  builder's landing coords (audit_warps enforces the pair).
+  builder's landing coords (audit_warps enforces the pair). **The hall AISLE goes through
+  `roomkit.aisle_runner` (stacked drawn `interior_rug_runner` objects), NEVER `runner()` —
+  the DOORMAT tile repeated vertically reads as a ladder (hard black cell borders), the
+  "dodgy path" look. All three Lumenaries use `aisle_runner`.**
+- **A free-standing cavewall/cliff mass mid-floor reads as a dodgy black slab** (level-design
+  §11 r8). Cave-town/dungeon outcrops are boulder + `cinderhead_ore_cart`/`cinderhead_crystal_cluster`
+  CLUSTERS (deco + objects), never a carved wall island. Cinderhead has its own object set
+  (`assets/tilesets/cinderhead/objects/` → `cinderhead_lumenary` headframe hall + ore-cart +
+  crystal cluster, image-gen masters packed by `pack_objects.py`). When a region needs a
+  bespoke prop and none exists, GENERATE it (generate-image, `--transparent`, front projection,
+  declutter the magenta/checkerboard, snap to a 16px multiple) — don't reuse another town's hall.
+- **Cinderhead Deep is a 3-floor ladder maze** (`cinderhead_deep` fork → `_b1f` descent →
+  `_b2f` the "third gallery" with the vigil-lamp), the §2a mid-region-dungeon pattern. Ladder
+  pairs are spur edges in `graph.ts`; all *graph-required* warps (to_terraces/to_crystoll/
+  shortcut) stay on the registered `cinderhead_deep` node, the descent is the optional+quest depth.
 - **Bottom-anchored battle menus must be height-aware.** The screen is only 160px tall
   and the message strip eats the bottom ~38px, so a fixed `y` clips the last row (this is
   how RUN went missing). Size battle menus with `BattleScene.menuY(rows)`, which

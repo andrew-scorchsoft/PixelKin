@@ -1,29 +1,29 @@
 #!/usr/bin/env python3
 """
-Cinderhead Deep — the deep galleries; the road on, and the shortcut home
-(walkthrough/02-east). Glimmerstep mandatory, encounters at the region's
-ceiling (band 24-27, §4 — the grind that closes the gap before Otho).
+Cinderhead Deep (upper galleries) — the mid-region dungeon's TOP floor
+(walkthrough/02-east; level-design §2a: a region's mid dungeon is a multi-floor
+ladder MAZE, not one room). Three interlinked floors:
 
-The Descent Vigil's lower leg (spine §5 shape #4): two vigil-miner SIGHT
-trainers hold the chamber leg, and at mid-depth the still-lit **vigil-lamp**
-waits to be carried back up to Otho (script.take_vigil_lamp ->
-flag:q_east_vigil_lamp; gated on flag:q_east_vigil so it only appears once Otho
-has asked). Three more beats: the **Crystoll void-gap** tease (`to_crystoll`,
-Starreach — a late, signed [LATER] backtrack), the **sealed mine door** opened
-from the inside (script.open_mine_shortcut -> flag:shortcut_mine, the
-Cinderhead Deep -> Vesper Crossroads re-link, spine §0 rule 3), and the
-**ungated gallery out to Galehigh** (`to_terraces`, the East->North handoff —
-galehigh unauthored yet, a safe inert tease).
+    cinderhead_deep      (this file)  — entry from the mine; the FORK
+    cinderhead_deep_b1f                — the descent; gallery-miner B
+    cinderhead_deep_b2f                — the third gallery: the VIGIL-LAMP
 
-Branchy cave (§2a): A entry -> a LOOP (west gallery B -> vigil-lamp chamber C,
-and a right spur straight to the east deep cavern D) -> the sealed far side E.
-E is reachable only through the D->E choke, so the shortcut beat can't be
-skipped. E3's Foreman's Ledger hides a gallery off B (a dead-end that pays).
+This floor is the fork (§3a: choices, not a corridor). From the entry chamber a
+gallery-miner (Druse) holds the only choke down into the hub; from the hub the
+dungeon splits:
+  * WEST — the ladder DOWN, the Descent Vigil's way to the still-lit vigil-lamp
+    two floors below (the §4 gap-closer: 24-27 galleries before Otho's wall);
+  * EAST — the FAR SIDE: the Crystoll void-gap [LATER] tease (Starreach), the
+    sealed mine door opened from inside (flag:shortcut_mine -> the hub re-link),
+    and the ungated gallery OUT to Galehigh (the East->North handoff).
+
+All graph-required warps (to_mine, to_terraces, to_crystoll, shortcut_crossroads)
+live on THIS node; the ladder pair is a spur edge to b1f.
 
 Run:  ./venv/bin/python tools/maps/build_cinderhead_deep.py
 
-audit_flow WAIVER — `loop` WARN may stand: the one-way feel is the sealed-door
-re-link (set on first reaching E), the mid-dungeon requirement per §2a.
+audit_flow WAIVER — `loop` WARN stands: the one-way feel is the sealed-door
+re-link (set on first reaching the far side), the mid-dungeon shortcut per §2a.
 """
 from __future__ import annotations
 import random
@@ -31,7 +31,7 @@ import mapkit as mk
 import patterns as pt
 from mapkit import gid
 
-W, H = 30, 26
+W, H = 28, 22
 rng = random.Random(94)
 owed: list[str] = []
 
@@ -40,34 +40,25 @@ wall = mk.make_grid(W, H)
 mk.rect(wall, W, H, 0, 0, W - 1, H - 1)
 
 floor = mk.make_grid(W, H)
-mk.rect(floor, W, H, 14, 1, 15, 5)                     # top throat in (from the mine; row 0 stays wall)
-mk.blob(floor, W, H, 15.0, 3.5, 4.5, 2.2)              # A — entry chamber
-# A -> B (west gallery): a left run down
-mk.rect(floor, W, H, 7, 5, 12, 6)                      # A's west shoulder
-mk.blob(floor, W, H, 7.5, 10.5, 4.2, 3.4)             # B — west gallery
-mk.vline(floor, W, H, 8, 6, 8)                         # choke A-shoulder -> B
-# B's dead-end ledger gallery (SW nub) — E3 pays here
-mk.hline(floor, W, H, 9, 2, 5)                         # short west spur
-mk.blob(floor, W, H, 2.5, 9.0, 1.6, 1.3)             # the ledger alcove
-# B -> C (vigil-lamp chamber)
-mk.vline(floor, W, H, 8, 13, 17)                       # choke B -> C
-mk.blob(floor, W, H, 8.0, 20.0, 3.6, 2.8)            # C — vigil-lamp chamber
-# A -> D (the right spur — the LOOP's other arm, §3a rule 1)
-mk.rect(floor, W, H, 18, 4, 21, 5)                     # A's east shoulder
-mk.vline(floor, W, H, 21, 5, 11)                       # right run down
-mk.blob(floor, W, H, 23.0, 12.0, 5.0, 3.8)           # D — east deep cavern
-# C -> D (closes the loop): an east hall that stays CLEAR of E (so E's only
-# entrance is the D->E choke, where the sealed-door beat can't be skipped)
-mk.hline(floor, W, H, 18, 11, 18)                      # C's east hall (north of E)
-mk.vline(floor, W, H, 18, 12, 18)                      # up into D
-# D -> E (the sealed far side) — a single choke (the shortcut beat sits here)
-mk.vline(floor, W, H, 24, 15, 19)                      # choke D -> E
-mk.blob(floor, W, H, 24.5, 21.5, 3.6, 2.6)           # E — the far-side chamber
-mk.rect(floor, W, H, 27, 21, 29, 22)                   # E -> the gallery out to Galehigh
+mk.rect(floor, W, H, 13, 1, 14, 4)                     # top throat in (from the mine)
+mk.blob(floor, W, H, 13.5, 4.5, 4.5, 2.2)              # A — entry chamber
+mk.vline(floor, W, H, 13, 6, 9)                         # choke A -> B (gallery-miner A)
+mk.blob(floor, W, H, 13.0, 12.0, 5.0, 3.2)             # B — the hub chamber (the FORK)
+# WEST arm: the ladder-down room (the Descent Vigil's way down)
+mk.hline(floor, W, H, 12, 4, 8)                         # west corridor
+mk.blob(floor, W, H, 4.5, 12.0, 2.4, 2.0)              # ladder room
+# EAST arm: the FAR SIDE (sealed door + Crystoll + the Galehigh exit)
+mk.hline(floor, W, H, 12, 18, 21)                       # east corridor (the choke band)
+mk.blob(floor, W, H, 23.0, 13.0, 3.6, 3.4)             # E — the far-side chamber
+mk.rect(floor, W, H, 26, 12, 27, 13)                   # E -> the gallery out to Galehigh
+mk.vline(floor, W, H, 24, 6, 9)                         # E's north nook (the Crystoll void)
+mk.blob(floor, W, H, 24.0, 6.0, 1.8, 1.6)
 
 for i in range(W * H):                                  # carve the rock
     if floor[i]:
         wall[i] = 0
+
+LADDER_DOWN = (4, 12)        # pairs with b1f's ladder_up
 
 # ---- base + terrain layers ------------------------------------------------------
 cf = [gid("cavefloor0"), gid("cavefloor1"), gid("cavefloor2"), gid("cavefloor3")]
@@ -78,7 +69,7 @@ terrain_layers = [
      "set": "vesper_overworld_set", "depth": 0, "data": wall},
 ]
 
-# ---- deco: sparse crystal light along the spine, rubble, the sealed door ---------
+# ---- deco: crystal-vein light along the spine, rubble, the ladder ----------------
 deco = mk.make_grid(W, H)
 
 
@@ -86,105 +77,97 @@ def put(x, y, name):
     deco[y * W + x] = gid(name)
 
 
-# the deep is darker than the mine — crystal veins only mark the three ways on
-for (x, y, n) in [(14, 4, "glowshroom_a"), (8, 8, "glowshroom_b"), (8, 15, "glowshroom_a"),
-                  (21, 8, "glowshroom_b"), (24, 12, "glowshroom_a"), (24, 18, "glowshroom_b"),
-                  (8, 20, "glowshroom_a")]:
+for (x, y, n) in [(13, 3, "glowshroom_a"), (13, 8, "glowshroom_b"), (10, 12, "glowshroom_a"),
+                  (16, 12, "glowshroom_b"), (20, 12, "glowshroom_a"), (24, 7, "glowshroom_b"),
+                  (23, 13, "glowshroom_a"), (5, 11, "glowshroom_b")]:
     put(x, y, n)
-for (x, y) in [(11, 10), (5, 11), (20, 13), (26, 12), (10, 21), (23, 22)]:
+for (x, y) in [(11, 11), (15, 13), (22, 14), (24, 13), (6, 13)]:
     put(x, y, "boulder")
-for (x, y) in [(13, 4), (6, 9), (9, 12), (22, 10), (25, 14), (8, 22), (16, 21), (3, 9)]:
+for (x, y) in [(12, 3), (10, 13), (17, 11), (21, 13), (25, 12), (4, 13)]:
     put(x, y, "g_pebble")
-# the sealed mine door, in E's far wall (the shortcut opened from the inside)
-put(26, 20, "sign")          # a notice by the sealed door (sign.cinderhead_sealed)
+put(*LADDER_DOWN, "cave_ladder_down")
+put(26, 6, "sign")                                      # the Crystoll void-gap notice
+
+# ---- objects: glowing crystal outcrops (the deep-earth gleam) --------------------
+objects = [
+    {"id": "crystal_a", "sprite": "cinderhead_crystal_cluster", "at": {"tx": 24, "ty": 5},
+     "w": 2, "h": 2, "overhang": 1, "walk_under": True},
+    {"id": "crystal_b", "sprite": "cinderhead_crystal_cluster", "at": {"tx": 9, "ty": 13},
+     "w": 2, "h": 2, "overhang": 1, "walk_under": True},
+    {"id": "ore_cart", "sprite": "cinderhead_ore_cart", "at": {"tx": 17, "ty": 13},
+     "w": 2, "h": 2, "overhang": 0},
+]
 
 m: dict = {
     "id": "cinderhead_deep", "display_name": "Cinderhead Deep", "width": W, "height": H,
     "tile_width": 16, "tile_height": 16, "kind": "cave",
     "tilesets": [mk.shared_tileset_ref()],
-    "objects": [],
+    "objects": objects,
     "warps": [
         # UP — back to the mine mouth (graph.ts `to_deep` return half)
-        {"id": "to_mine", "at": {"tx": 14, "ty": 1}, "trigger": "step_on",
+        {"id": "to_mine", "at": {"tx": 13, "ty": 1}, "trigger": "step_on",
          "to_map": "cinderhead_mine", "to": {"tx": 13, "ty": 22}, "facing": "up",
          "transition": "fade"},
-        {"id": "to_mine_e", "at": {"tx": 15, "ty": 1}, "trigger": "step_on",
+        {"id": "to_mine_e", "at": {"tx": 14, "ty": 1}, "trigger": "step_on",
          "to_map": "cinderhead_mine", "to": {"tx": 14, "ty": 22}, "facing": "up",
          "transition": "fade"},
+        # DOWN — the ladder to b1f (the Descent Vigil; lands ON b1f's ladder_up)
+        {"id": "ladder_down", "at": {"tx": LADDER_DOWN[0], "ty": LADDER_DOWN[1]},
+         "trigger": "step_on", "to_map": "cinderhead_deep_b1f", "to": {"tx": 19, "ty": 3},
+         "facing": "down", "transition": "fade"},
         # OUT — the ungated gallery on to Galehigh (East->North handoff, graph.ts
         # `to_terraces`; galehigh unauthored — a safe inert tease for now)
-        {"id": "to_terraces", "at": {"tx": 29, "ty": 21}, "trigger": "step_on",
+        {"id": "to_terraces", "at": {"tx": 27, "ty": 12}, "trigger": "step_on",
          "to_map": "galehigh_terraces", "to": {"tx": 1, "ty": 14}, "facing": "right",
          "transition": "fade"},
-        {"id": "to_terraces_s", "at": {"tx": 29, "ty": 22}, "trigger": "step_on",
+        {"id": "to_terraces_s", "at": {"tx": 27, "ty": 13}, "trigger": "step_on",
          "to_map": "galehigh_terraces", "to": {"tx": 1, "ty": 15}, "facing": "right",
          "transition": "fade"},
-        # SPUR — Crystoll Vault (graph.ts `to_crystoll`, Starreach — [LATER],
-        # the void-gap signed so the come-back is explicit; crystoll unauthored)
-        {"id": "to_crystoll", "at": {"tx": 27, "ty": 10}, "trigger": "step_on",
+        # SPUR — Crystoll Vault (graph.ts `to_crystoll`, Starreach — [LATER])
+        {"id": "to_crystoll", "at": {"tx": 24, "ty": 5}, "trigger": "step_on",
          "to_map": "crystoll_vault", "to": {"tx": 5, "ty": 8}, "facing": "up",
          "requires_ability": "starreach", "transition": "fade"},
-        # SHORTCUT — the sealed door opened from the inside re-links to the hub
-        # (graph.ts `shortcut_crossroads`, requires_flag set by the far-side beat)
-        {"id": "shortcut_crossroads", "at": {"tx": 25, "ty": 22}, "trigger": "step_on",
+        # SHORTCUT — the sealed door opened from the inside (graph.ts
+        # `shortcut_crossroads`, requires_flag set by the far-side beat below)
+        {"id": "shortcut_crossroads", "at": {"tx": 22, "ty": 15}, "trigger": "step_on",
          "to_map": "vesper_crossroads", "to": {"tx": 8, "ty": 16}, "facing": "up",
          "requires_flag": "flag:shortcut_mine", "transition": "fade"},
     ],
     "triggers": [
-        # THE SEALED-DOOR BEAT — on the only choke into E (col 24, rows 15-19),
-        # banded so it can't be walked around; sets flag:shortcut_mine and opens
-        # the crossroads re-link. The cut's walkable cells are exactly col 24.
-        *[{"id": f"open_shortcut_{ty}", "kind": "script", "at": {"tx": 24, "ty": ty},
+        # THE SEALED-DOOR BEAT — on the only choke into the far side E (the east
+        # corridor, row 12, cols 18-21), banded so it can't be walked around.
+        *[{"id": f"open_shortcut_{tx}", "kind": "script", "at": {"tx": tx, "ty": 12},
            "activation": "step_on", "ref": "script.open_mine_shortcut", "once": True,
            "sets_flags": ["flag:shortcut_mine"],
            "hidden_when_flag": "flag:shortcut_mine"}
-          for ty in (15, 16, 17, 18, 19)],
-        {"id": "sign_sealed", "kind": "sign", "at": {"tx": 26, "ty": 20},
+          for tx in (18, 19, 20, 21)],
+        {"id": "sign_sealed", "kind": "sign", "at": {"tx": 25, "ty": 14},
          "activation": "interact", "ref": "sign.cinderhead_sealed"},
     ],
-    # band 24-27 (top of band, §4): #49 Gravelo, #45 Sparkrat, #35 Crystink.
+    # band 24-26 on the upper galleries (the deeper floors top out at 27).
     "encounters": [
-        {"id": "gallery_b", "terrain": "cave", "rect": {"tx": 4, "ty": 8, "w": 8, "h": 6},
-         "encounter_rate": 0.13,
-         "table": [{"kin_id": 49, "weight": 45, "min_level": 24, "max_level": 26},
-                   {"kin_id": 45, "weight": 35, "min_level": 24, "max_level": 27},
-                   {"kin_id": 35, "weight": 20, "min_level": 25, "max_level": 27}]},
-        {"id": "cavern_d", "terrain": "cave", "rect": {"tx": 18, "ty": 9, "w": 10, "h": 7},
-         "encounter_rate": 0.13,
-         "table": [{"kin_id": 49, "weight": 40, "min_level": 25, "max_level": 27},
-                   {"kin_id": 45, "weight": 35, "min_level": 25, "max_level": 27},
-                   {"kin_id": 35, "weight": 25, "min_level": 25, "max_level": 27}]},
-        {"id": "chamber_c", "terrain": "cave", "rect": {"tx": 5, "ty": 18, "w": 7, "h": 5},
+        {"id": "gallery_a", "terrain": "cave", "rect": {"tx": 9, "ty": 10, "w": 9, "h": 5},
          "encounter_rate": 0.12,
          "table": [{"kin_id": 49, "weight": 45, "min_level": 24, "max_level": 26},
-                   {"kin_id": 45, "weight": 30, "min_level": 24, "max_level": 26},
-                   {"kin_id": 35, "weight": 25, "min_level": 24, "max_level": 26}]},
+                   {"kin_id": 45, "weight": 35, "min_level": 24, "max_level": 26},
+                   {"kin_id": 35, "weight": 20, "min_level": 24, "max_level": 26}]},
+        {"id": "far_side", "terrain": "cave", "rect": {"tx": 20, "ty": 11, "w": 7, "h": 5},
+         "encounter_rate": 0.12,
+         "table": [{"kin_id": 49, "weight": 40, "min_level": 25, "max_level": 26},
+                   {"kin_id": 45, "weight": 35, "min_level": 25, "max_level": 26},
+                   {"kin_id": 35, "weight": 25, "min_level": 25, "max_level": 26}]},
     ],
     "npcs": [
-        # the still-lit VIGIL-LAMP at mid-depth (the Descent Vigil's turnaround) —
-        # only present once Otho has sent you for it (flag:q_east_vigil); taking it
-        # sets flag:q_east_vigil_lamp and the first visit ends here, carrying it up.
-        {"id": "vigil_lamp", "at": {"tx": 8, "ty": 20}, "facing": "down",
-         "sprite": "item_cache", "movement": "static",
-         "dialogue_ref": "script.take_vigil_lamp",
-         "requires_flag": "flag:q_east_vigil",
-         "hidden_when_flag": "flag:q_east_vigil_lamp"},
-        # E3 ledger — the old crew's ledger in B's dead-end alcove
-        {"id": "cache_ledger", "at": {"tx": 2, "ty": 9}, "facing": "down",
-         "sprite": "item_cache", "movement": "static",
-         "dialogue_ref": "script.pickup_ledger",
-         "requires_flag": "flag:q_east_ledger",
-         "hidden_when_flag": "flag:q_east_ledger_found"},
-        # a high-band crystal cache a choke away (the §4 grind reward)
-        {"id": "cache_deepcrystal", "at": {"tx": 27, "ty": 14}, "facing": "down",
-         "sprite": "item_cache", "movement": "static",
-         "dialogue_ref": "script.pickup_deepcrystal",
-         "hidden_when_flag": "flag:picked_deepcrystal"},
         # the far-side lone miner ("been meaning to clear that door for years")
-        {"id": "sealed_miner", "at": {"tx": 23, "ty": 22}, "facing": "right",
+        {"id": "sealed_miner", "at": {"tx": 22, "ty": 13}, "facing": "down",
          "sprite": "npc_man", "movement": "static",
          "dialogue_ref": "npc.cinderhead_sealed_miner",
          "requires_flag": "flag:shortcut_mine"},
+        # an upper-gallery cache a step off the hub (variety: loose wicks)
+        {"id": "cache_deepwicks", "at": {"tx": 11, "ty": 14}, "facing": "down",
+         "sprite": "item_cache", "movement": "static",
+         "dialogue_ref": "script.pickup_cinderhead_wicks_deep",
+         "hidden_when_flag": "flag:picked_cinderhead_wicks_deep"},
     ],
     "gates": [],
     "music": "assets/audio/music/cinderhead-mine-c.mp3",
@@ -194,15 +177,11 @@ m: dict = {
     ],
 }
 
-# the two vigil-miner SIGHT trainers (keeper class) holding the chamber leg:
-# A on the A->B run (facing down its choke), B guarding the vigil-lamp approach.
-owed += pt.trainer_beat(m, tid="gallery_miner_a", at=(8, 7), facing="down",
+# gallery-miner A (keeper) holds the choke down into the hub
+owed += pt.trainer_beat(m, tid="gallery_miner_a", at=(13, 7), facing="down",
                         sight=4, sprite="npc_man")
-owed += pt.trainer_beat(m, tid="gallery_miner_b", at=(8, 16), facing="down",
-                        sight=4, sprite="npc_woman")
-
 # the Crystoll void-gap sign (the [LATER] tease, §5 back-reference)
-owed += pt.sign(m, deco, W, sid="cinderhead_crystoll", at=(27, 11))
+owed += pt.sign(m, deco, W, sid="cinderhead_crystoll", at=(25, 6))
 
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},

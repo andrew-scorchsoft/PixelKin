@@ -176,7 +176,7 @@ m = {
         # return half) — wakes with flag:shortcut_mine, set on opening the sealed
         # door from the deep. Lands beside the deep's far-side return warp.
         {"id": "shortcut_cinderhead", "at": {"tx": CX - 1, "ty": H - 1}, "trigger": "step_on",
-         "to_map": "cinderhead_deep", "to": {"tx": 24, "ty": 22}, "facing": "up",
+         "to_map": "cinderhead_deep", "to": {"tx": 21, "ty": 15}, "facing": "up",
          "requires_flag": "flag:shortcut_mine", "blocked_ref": "sign.crossroads_mineshortcut",
          "transition": "fade"},
     ],

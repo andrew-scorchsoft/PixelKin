@@ -56,7 +56,7 @@ Festivals: Lantern-fair, Tide-blessing. Arcs delivered: A1/A2 (Wren), B1 (`dusk_
 | Glowmoss Deep (B2 first Hollowing contact) + B1F | `glowmoss_deep`, `glowmoss_deep_b1f` | ✅ | `build_glowmoss_deep*.py` |
 | Spore Grotto (Glimmerstep spur) | `spore_grotto` | ✅ | `build_spore_grotto.py` |
 | **Cinderhead Mine (Stone · Otho · Lamp-down vigil)** | `cinderhead_mine` + lumenary | ✅ 2026-06 | `build_cinderhead_mine*.py` |
-| **Cinderhead Deep (vigil-lamp, `shortcut_mine`, → Galehigh)** | `cinderhead_deep` | ✅ 2026-06 | `build_cinderhead_deep.py` |
+| **Cinderhead Deep — a 3-floor ladder maze** (fork → descent → vigil-lamp; `shortcut_mine`, → Galehigh) | `cinderhead_deep` + `_b1f` + `_b2f` | ✅ 2026-06 | `build_cinderhead_deep{,_b1f,_b2f}.py` |
 
 Festivals: Glowmoss Bloom, **Lamp-down vigil**. Arcs delivered: A3 (Wren shaken), B2
 (`met_hollowing` + Còr foreshadow), E. Earned loops: The Tended Bed (#3), **The Descent

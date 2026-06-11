@@ -1386,8 +1386,8 @@
       "trigger": "step_on",
       "to_map": "cinderhead_deep",
       "to": {
-        "tx": 24,
-        "ty": 22
+        "tx": 21,
+        "ty": 15
       },
       "facing": "up",
       "requires_flag": "flag:shortcut_mine",

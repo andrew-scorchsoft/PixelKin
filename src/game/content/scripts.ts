@@ -1032,6 +1032,19 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', text: 'Wedged in a deep seam, a knot of MOTH-AMBER — a collector would pay dearly for it. Found it!' },
     { op: 'setFlag', flag: 'flag:picked_deepcrystal' },
   ],
+  // deeper-floor caches (the descent maze pays in kind, a choke off the lane)
+  'script.pickup_cinderhead_wicks_deep': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 200 },
+    { op: 'say', text: 'A strongbox tucked behind a pit-prop, the crew\'s float still inside. Found 200 WICKS!' },
+    { op: 'setFlag', flag: 'flag:picked_cinderhead_wicks_deep' },
+  ],
+  'script.pickup_cinderhead_balm_deep': [
+    { op: 'giveItem', item: 'warm_balm', count: 2 },
+    { op: 'giveItem', item: 'glow_charge', count: 1 },
+    { op: 'say', text: 'A vigil-relief cache by the down-ladder — balms and a charge for the long climb back. Took them!' },
+    { op: 'setFlag', flag: 'flag:picked_cinderhead_balm_deep' },
+  ],
 
   // The two vigil-miner SIGHT trainers holding the Descent Vigil leg (keeper class).
   'script.gallery_miner_a': [

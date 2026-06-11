@@ -99,7 +99,9 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'spore_grotto', region: 'east', optional: true, reward: 'rare Bug/Verdant kin + item' },
     { map_id: 'cinderhead_mine', region: 'east' }, // cave town + Lumenary (mine mouth)
     { map_id: 'cinderhead_lumenary', region: 'east' }, // interior: the Stone Lumenary (Otho Grist)
-    { map_id: 'cinderhead_deep', region: 'east' }, // deep cave (Glimmerstep) -> Galehigh
+    { map_id: 'cinderhead_deep', region: 'east' }, // deep cave (Glimmerstep): the fork floor -> Galehigh
+    { map_id: 'cinderhead_deep_b1f', region: 'east' }, // the descent's middle floor (gallery-miner B, the ledger)
+    { map_id: 'cinderhead_deep_b2f', region: 'east' }, // the third gallery: the vigil-lamp (deepest)
     { map_id: 'crystoll_vault', region: 'east', optional: true, reward: 'late backtrack (Starreach): rare Stone/Light kin' },
     // ---- North: Galehigh -> Windward Stair (2 segments) -> Pale Vault ---------------
     { map_id: 'galehigh_terraces', region: 'north' },
@@ -186,6 +188,9 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'saltreach_fen_ii', to_map: 'sunkbell_shallows', via_warp: 'to_sunkbell', requires_ability: 'tidecall', bidirectional: true },
     { from_map: 'glowmoss_deep', to_map: 'glowmoss_deep_b1f', via_warp: 'ladder_down', bidirectional: true },
     { from_map: 'glowmoss_deep_b1f', to_map: 'spore_grotto', via_warp: 'to_grotto', requires_ability: 'glimmerstep', bidirectional: true },
+    // Cinderhead Deep is a 3-floor ladder maze (the Descent Vigil); the vigil-lamp sits on b2f.
+    { from_map: 'cinderhead_deep', to_map: 'cinderhead_deep_b1f', via_warp: 'ladder_down', bidirectional: true },
+    { from_map: 'cinderhead_deep_b1f', to_map: 'cinderhead_deep_b2f', via_warp: 'ladder_down', bidirectional: true },
     { from_map: 'cinderhead_deep', to_map: 'crystoll_vault', via_warp: 'to_crystoll', requires_ability: 'starreach', bidirectional: true },
     { from_map: 'galehigh_terraces', to_map: 'wind_eye', via_warp: 'to_windeye', requires_ability: 'updraft_kite', bidirectional: true },
     { from_map: 'windward_stair_ii', to_map: 'thunderroost', via_warp: 'to_roost', requires_ability: 'updraft_kite', bidirectional: true },

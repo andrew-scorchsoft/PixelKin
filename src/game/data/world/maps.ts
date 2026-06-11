@@ -287,11 +287,32 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/cinderhead-mine-b.webp',
     ],
   },
-  // Cinderhead Deep — the deep galleries: the vigil-lamp chamber, the sealed-door
-  // shortcut (flag:shortcut_mine), the Crystoll [LATER] tease, and the ungated
-  // gallery on to Galehigh (the East->North handoff).
+  // Cinderhead Deep — a 3-floor ladder MAZE (the Descent Vigil, level-design §2a).
+  // Upper = the fork: the sealed-door shortcut (flag:shortcut_mine), the Crystoll
+  // [LATER] tease, the ungated gallery to Galehigh, and the ladder down. The
+  // vigil-lamp waits on b2f (the "third gallery").
   cinderhead_deep: {
     json: 'assets/maps/cinderhead_deep.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/cinderhead-mine-c.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/cinderhead-mine-a.webp',
+      'assets/backgrounds/battle/cinderhead-mine-b.webp',
+    ],
+  },
+  cinderhead_deep_b1f: {
+    json: 'assets/maps/cinderhead_deep_b1f.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/cinderhead-mine-c.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/cinderhead-mine-a.webp',
+      'assets/backgrounds/battle/cinderhead-mine-b.webp',
+    ],
+  },
+  cinderhead_deep_b2f: {
+    json: 'assets/maps/cinderhead_deep_b2f.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
     music: 'assets/audio/music/cinderhead-mine-c.mp3',

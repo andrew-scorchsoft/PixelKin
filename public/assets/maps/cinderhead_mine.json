@@ -20,14 +20,14 @@
   "objects": [
     {
       "id": "lumenary",
-      "sprite": "tinderwick_lumenary",
+      "sprite": "cinderhead_lumenary",
       "at": {
         "tx": 9,
-        "ty": 3
+        "ty": 2
       },
       "w": 6,
-      "h": 6,
-      "overhang": 3
+      "h": 7,
+      "overhang": 4
     },
     {
       "id": "cottage_a",
@@ -50,6 +50,64 @@
       "w": 5,
       "h": 5,
       "overhang": 3
+    },
+    {
+      "id": "ore_cart_a",
+      "sprite": "cinderhead_ore_cart",
+      "at": {
+        "tx": 7,
+        "ty": 7
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 0
+    },
+    {
+      "id": "ore_cart_b",
+      "sprite": "cinderhead_ore_cart",
+      "at": {
+        "tx": 19,
+        "ty": 16
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 0
+    },
+    {
+      "id": "crystal_a",
+      "sprite": "cinderhead_crystal_cluster",
+      "at": {
+        "tx": 21,
+        "ty": 15
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "crystal_b",
+      "sprite": "cinderhead_crystal_cluster",
+      "at": {
+        "tx": 5,
+        "ty": 9
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "crystal_c",
+      "sprite": "cinderhead_crystal_cluster",
+      "at": {
+        "tx": 24,
+        "ty": 8
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true
     },
     {
       "id": "lamp_a",
@@ -140,7 +198,7 @@
       "trigger": "step_on",
       "to_map": "cinderhead_deep",
       "to": {
-        "tx": 14,
+        "tx": 13,
         "ty": 2
       },
       "facing": "down",
@@ -157,7 +215,7 @@
       "trigger": "step_on",
       "to_map": "cinderhead_deep",
       "to": {
-        "tx": 15,
+        "tx": 14,
         "ty": 2
       },
       "facing": "down",
@@ -624,8 +682,8 @@
         159,
         157,
         156,
-        160,
-        162,
+        158,
+        156,
         159,
         156,
         159,
@@ -651,10 +709,10 @@
         156,
         157,
         156,
-        163,
-        169,
-        170,
-        165,
+        156,
+        159,
+        156,
+        156,
         159,
         159,
         156,
@@ -680,8 +738,8 @@
         156,
         159,
         157,
-        166,
-        168,
+        158,
+        156,
         156,
         157,
         156,
@@ -888,10 +946,10 @@
         156,
         159,
         156,
-        160,
-        161,
-        161,
-        162,
+        156,
+        156,
+        159,
+        156,
         156,
         156,
         156,
@@ -916,10 +974,10 @@
         158,
         159,
         159,
-        166,
-        167,
-        167,
-        168,
+        156,
+        158,
+        159,
+        156,
         156,
         158,
         159,

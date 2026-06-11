@@ -48,13 +48,9 @@ floor = mk.make_grid(W, H)
 mk.rect(floor, W, H, 2, 3, 25, 20)                     # the main cavern floor
 mk.rect(floor, W, H, 0, 12, 2, 13)                     # west throat in (from the Deepwood)
 mk.rect(floor, W, H, 13, 20, 14, 23)                   # south throat down (the to_deep mouth, 2-wide)
-# a couple of rock masses left standing INSIDE the cavern (depth, not a flat void)
-for (cx, cy, rx, ry) in [(7.5, 7.0, 1.6, 1.4), (20.5, 15.5, 1.8, 1.4)]:
-    blob = mk.make_grid(W, H)
-    mk.blob(blob, W, H, cx, cy, rx, ry)
-    for i in range(W * H):
-        if blob[i]:
-            floor[i] = 0
+# NOTE: no free-standing cavewall masses mid-floor — a wall slab in open ground
+# reads as dodgy graphics (level-design §11 r8). Outcrops are boulder/ore-cart
+# CLUSTERS (deco + objects) instead, which read as a worked mine, not a void.
 
 for i in range(W * H):                                  # carve the rock
     if floor[i]:
@@ -97,15 +93,27 @@ for (x, y) in [(8, 14), (12, 16), (15, 13), (20, 18), (5, 18), (18, 8), (23, 6),
 
 # ---- objects: the town ----------------------------------------------------------
 objects = [
-    # Otho's Stone Lumenary — squat hall at the mine mouth (stone register;
-    # reuse the Tinderwick stone-hall master until a Cinderhead master is packed)
-    {"id": "lumenary", "sprite": "tinderwick_lumenary", "at": {"tx": 9, "ty": 3},
-     "w": 6, "h": 6, "overhang": 3},
+    # Otho's Stone Lumenary — the mine-mouth hall with its timber HEADFRAME tower
+    # (bespoke Cinderhead master: stone hall + pit-winch derrick, generated art)
+    {"id": "lumenary", "sprite": "cinderhead_lumenary", "at": {"tx": 9, "ty": 2},
+     "w": 6, "h": 7, "overhang": 4},
     # miners' cottages cut into the rock
     {"id": "cottage_a", "sprite": "tinderwick_cottage", "at": {"tx": 2, "ty": 15},
      "w": 5, "h": 5, "overhang": 3},
     {"id": "cottage_b", "sprite": "tinderwick_cottage", "at": {"tx": 20, "ty": 3},
      "w": 5, "h": 5, "overhang": 3},
+    # worked-mine props: ore-carts on the floor + glowing crystal outcrops (the
+    # deep-earth gleam) where the old slabs were — clusters, never a wall slab
+    {"id": "ore_cart_a", "sprite": "cinderhead_ore_cart", "at": {"tx": 7, "ty": 7},
+     "w": 2, "h": 2, "overhang": 0},
+    {"id": "ore_cart_b", "sprite": "cinderhead_ore_cart", "at": {"tx": 19, "ty": 16},
+     "w": 2, "h": 2, "overhang": 0},
+    {"id": "crystal_a", "sprite": "cinderhead_crystal_cluster", "at": {"tx": 21, "ty": 15},
+     "w": 2, "h": 2, "overhang": 1, "walk_under": True},
+    {"id": "crystal_b", "sprite": "cinderhead_crystal_cluster", "at": {"tx": 5, "ty": 9},
+     "w": 2, "h": 2, "overhang": 1, "walk_under": True},
+    {"id": "crystal_c", "sprite": "cinderhead_crystal_cluster", "at": {"tx": 24, "ty": 8},
+     "w": 2, "h": 2, "overhang": 1, "walk_under": True},
     # fire-lamp posts (1x3 — never 1-tile lamps), lowered-vigil flavour in dialogue
     {"id": "lamp_a", "sprite": "tinderwick_lamp_post", "at": {"tx": 11, "ty": 10},
      "w": 1, "h": 3, "overhang": 2, "walk_under": True},
@@ -134,11 +142,11 @@ m: dict = {
         # SOUTH — the dark way down (graph.ts `to_deep`, Glimmerstep, held since
         # Lowleaf; §0 rule 1 — Stone grants no Gift, so this is legal to gate)
         {"id": "to_deep", "at": {"tx": 13, "ty": 23}, "trigger": "step_on",
-         "to_map": "cinderhead_deep", "to": {"tx": 14, "ty": 2}, "facing": "down",
+         "to_map": "cinderhead_deep", "to": {"tx": 13, "ty": 2}, "facing": "down",
          "requires_ability": "glimmerstep", "blocked_ref": "sign.cinderhead_deep_mouth",
          "transition": "fade"},
         {"id": "to_deep_e", "at": {"tx": 14, "ty": 23}, "trigger": "step_on",
-         "to_map": "cinderhead_deep", "to": {"tx": 15, "ty": 2}, "facing": "down",
+         "to_map": "cinderhead_deep", "to": {"tx": 14, "ty": 2}, "facing": "down",
          "requires_ability": "glimmerstep", "blocked_ref": "sign.cinderhead_deep_mouth",
          "transition": "fade"},
         # Otho's hall (the door sits on the building's south face)
