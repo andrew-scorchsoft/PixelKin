@@ -31,12 +31,12 @@ export const PORTRAITS: Record<string, PortraitDef> = {
   fenn: {
     id: 'portrait_fenn',
     path: 'assets/portraits/fenn.png',
-    expressions: { neutral: 0, warm: 1, grave: 2, smile: 3 },
+    expressions: { neutral: 0, warm: 1, grave: 2, smile: 3, peace: 4 },
   },
   wren: {
     id: 'portrait_wren',
     path: 'assets/portraits/wren.png',
-    expressions: { neutral: 0, eager: 1, unsure: 2 },
+    expressions: { neutral: 0, eager: 1, unsure: 2, resolved: 3 },
   },
   brisa: {
     id: 'portrait_brisa',
@@ -65,11 +65,36 @@ export const PORTRAITS: Record<string, PortraitDef> = {
     path: 'assets/portraits/sable.png',
     expressions: { neutral: 0, shy: 1, warm: 2 },
   },
-  // Warden Còr — the Hollowing's gentle, sorrowful leader; seeded as quiet early dread.
+  // Warden Còr — the Hollowing's gentle, sorrowful leader; the marquee face of the
+  // late game (B3 Pale Vault, the Spire summit, the post-game lamp-room).
   cor: {
     id: 'portrait_cor',
     path: 'assets/portraits/cor.png',
-    expressions: { neutral: 0, grave: 1 },
+    expressions: { neutral: 0, grave: 1, gentle: 2, sorrowful: 3, at_peace: 4 },
+  },
+  // Mira Vael — the Storm Lampwarden of Galehigh Terraces; breathless kite-flier.
+  mira: {
+    id: 'portrait_mira',
+    path: 'assets/portraits/mira.png',
+    expressions: { neutral: 0, bright: 1, soft: 2 },
+  },
+  // Ysolde Frost — the Frost Lampwarden of Pale Vault; still, watchful, quietly kind.
+  ysolde: {
+    id: 'portrait_ysolde',
+    path: 'assets/portraits/ysolde.png',
+    expressions: { neutral: 0, serene: 1, warm: 2 },
+  },
+  // Lucan Pyre — the Solar Lampwarden of the Sunken Solarium; theatrical, bittersweet.
+  lucan: {
+    id: 'portrait_lucan',
+    path: 'assets/portraits/lucan.png',
+    expressions: { neutral: 0, grand: 1, bittersweet: 2 },
+  },
+  // Nessa Cole — the Lunar Lampwarden of Nightreach; haunted astronomer-priestess.
+  nessa: {
+    id: 'portrait_nessa',
+    path: 'assets/portraits/nessa.png',
+    expressions: { neutral: 0, haunted: 1, reverent: 2 },
   },
 };
 

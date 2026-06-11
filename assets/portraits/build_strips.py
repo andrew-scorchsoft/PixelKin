@@ -23,14 +23,18 @@ FILL = (SIZE - TOP_PAD) / SIZE
 
 # character -> ordered list of (expression-suffix) matching the frame index order.
 STRIPS = {
-    "fenn": ["neutral", "warm", "grave", "smile"],
-    "wren": ["neutral", "eager", "unsure"],
+    "fenn": ["neutral", "warm", "grave", "smile", "peace"],
+    "wren": ["neutral", "eager", "unsure", "resolved"],
     "brisa": ["neutral", "warm", "proud"],
     "reyl": ["neutral", "weathered", "proud"],
     "lamplighter": ["neutral", "grave"],
     "hearthkeeper": ["neutral", "warm"],
-    "cor": ["neutral", "grave"],
+    "cor": ["neutral", "grave", "gentle", "sorrowful", "at_peace"],
     "sable": ["neutral", "shy", "warm"],
+    "mira": ["neutral", "bright", "soft"],
+    "ysolde": ["neutral", "serene", "warm"],
+    "lucan": ["neutral", "grand", "bittersweet"],
+    "nessa": ["neutral", "haunted", "reverent"],
 }
 
 
