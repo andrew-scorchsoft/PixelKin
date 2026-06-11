@@ -21,6 +21,69 @@
       "tw": 2,
       "th": 2
     },
+    "galehigh_cottage": {
+      "path": "assets/sprites/objects/galehigh_cottage.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "galehigh_crop_rows": {
+      "path": "assets/sprites/objects/galehigh_crop_rows.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "galehigh_inn": {
+      "path": "assets/sprites/objects/galehigh_inn.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "galehigh_kite_pole_a": {
+      "path": "assets/sprites/objects/galehigh_kite_pole_a.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "galehigh_kite_pole_b": {
+      "path": "assets/sprites/objects/galehigh_kite_pole_b.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "galehigh_lumenary": {
+      "path": "assets/sprites/objects/galehigh_lumenary.webp",
+      "width": 96,
+      "height": 96,
+      "tw": 6,
+      "th": 6
+    },
+    "galehigh_pulley_basket": {
+      "path": "assets/sprites/objects/galehigh_pulley_basket.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "galehigh_shop": {
+      "path": "assets/sprites/objects/galehigh_shop.webp",
+      "width": 80,
+      "height": 64,
+      "tw": 5,
+      "th": 4
+    },
+    "galehigh_winch": {
+      "path": "assets/sprites/objects/galehigh_winch.webp",
+      "width": 64,
+      "height": 80,
+      "tw": 4,
+      "th": 5
+    },
     "glowmoss_deep_glowshrooms_ember": {
       "path": "assets/sprites/objects/glowmoss_deep_glowshrooms_ember.webp",
       "width": 32,

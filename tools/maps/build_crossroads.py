@@ -36,11 +36,11 @@ mk.rect(tree, W, H, 0, H - 2, W - 1, H - 1)              # bottom border too
 mk.blob(tree, W, H, 5, 15, 2.0, 1.4)
 mk.blob(tree, W, H, 14, 15, 2.0, 1.4)
 
-# the clearing's accent: a small still pool in the NW quadrant (the pond family —
-# water-over-grass foam edge), where wayfarers water their kin. (It moved west
-# when the Lowleaf spoke woke through the old NE corner.)
+# the clearing's accent: a small still pool in the west, where wayfarers water
+# their kin. (It moved south-west when the Galehigh spoke woke through the old
+# NW corner — the pond keeps migrating as the Lanternway wakes.)
 pond = mk.make_grid(W, H)
-mk.blob(pond, W, H, 4.5, 4.5, 1.8, 1.3)
+mk.blob(pond, W, H, 4.5, 12, 1.6, 1.2)
 for y in range(H):                                       # pool replaces tree there
     for x in range(W):
         if pond[y * W + x]:
@@ -57,6 +57,9 @@ mk.vline(path, W, H, CX, CY, H - 1); mk.vline(path, W, H, CX + 1, CY, H - 1)  # 
 # the LOWLEAF spoke: east-north out of the clearing (wakes with the Verdant
 # Gleam — the warp below carries the gate; walkthrough R3 "wakes with spoke")
 mk.hline(path, W, H, 3, CX, W - 1); mk.hline(path, W, H, 4, CX, W - 1)
+# the GALEHIGH spoke: west-north out of the clearing (wakes with the Storm
+# Gleam — same pattern; walkthrough R4 "[wakes with spoke]")
+mk.hline(path, W, H, 3, 0, CX); mk.hline(path, W, H, 4, 0, CX)
 # the MINE-CART HOIST spur (SW, by the south road): the Cinderhead Deep
 # shortcut's hub end — a cart-lift that only runs once the sealed door is
 # opened from the deep (graph.ts `shortcut_crossroads`, wakes with
@@ -71,6 +74,7 @@ for x in (CX, CX + 1):
     tree[(H - 1) * W + x] = 0; tree[(H - 2) * W + x] = 0
 for y in (3, 4):
     tree[y * W + (W - 1)] = 0; tree[y * W + (W - 2)] = 0
+    tree[y * W + 0] = 0; tree[y * W + 1] = 0
 # punch the mine-cart hoist opening (SW edge, col CX-1)
 for y in (16, 17):
     tree[y * W + (CX - 1)] = 0
@@ -119,6 +123,7 @@ sign_tiles = {
     "sign_waystone": (CX + 2, CY),       # on the plaza, by the Waystone
     "sign_spire": (CX - 1, CY + 3),      # beside the south (inward) road
     "sign_lowleaf": (CX + 3, 5),         # beside the east-north (Lowleaf) spoke
+    "sign_galehigh": (CX - 4, 5),        # beside the west-north (Galehigh) spoke
     "sign_mineshortcut": (CX - 2, 16),   # beside the mine-cart hoist (SW stub)
 }
 for (x, y) in sign_tiles.values():
@@ -159,6 +164,18 @@ m = {
         {"id": "to_lowleaf_s", "at": {"tx": W - 1, "ty": 4}, "trigger": "step_on",
          "to_map": "lowleaf_hollow", "to": {"tx": 1, "ty": 15}, "facing": "right",
          "requires_flag": "gleam:verdant", "blocked_ref": "npc.waykeeper_lowleaf_gate",
+         "transition": "fade"},
+        # the Galehigh spoke (west-north) — wakes with the Storm Gleam (the
+        # Lowleaf pattern verbatim: graph.ts declares it ungated, the warp
+        # gates stricter with the Waykeeper's own "not yet"; the long way
+        # round is Cinderhead Deep's gallery, always open).
+        {"id": "to_galehigh", "at": {"tx": 0, "ty": 3}, "trigger": "step_on",
+         "to_map": "galehigh_terraces", "to": {"tx": 15, "ty": 30}, "facing": "up",
+         "requires_flag": "gleam:storm", "blocked_ref": "npc.waykeeper_galehigh_gate",
+         "transition": "fade"},
+        {"id": "to_galehigh_s", "at": {"tx": 0, "ty": 4}, "trigger": "step_on",
+         "to_map": "galehigh_terraces", "to": {"tx": 16, "ty": 30}, "facing": "up",
+         "requires_flag": "gleam:storm", "blocked_ref": "npc.waykeeper_galehigh_gate",
          "transition": "fade"},
         # sleeping roads (inert teases until their maps are authored)
         {"id": "to_marsh", "at": {"tx": CX, "ty": 0}, "trigger": "step_on",
@@ -201,6 +218,9 @@ m = {
         {"id": "sign_lowleaf", "kind": "sign",
          "at": {"tx": sign_tiles["sign_lowleaf"][0], "ty": sign_tiles["sign_lowleaf"][1]},
          "activation": "interact", "ref": "sign.crossroads_lowleaf"},
+        {"id": "sign_galehigh", "kind": "sign",
+         "at": {"tx": sign_tiles["sign_galehigh"][0], "ty": sign_tiles["sign_galehigh"][1]},
+         "activation": "interact", "ref": "sign.crossroads_galehigh"},
         {"id": "sign_mineshortcut", "kind": "sign",
          "at": {"tx": sign_tiles["sign_mineshortcut"][0], "ty": sign_tiles["sign_mineshortcut"][1]},
          "activation": "interact", "ref": "sign.crossroads_mineshortcut"},
@@ -233,6 +253,17 @@ m = {
          "sprite": "npc_mentor", "movement": "static",
          "dialogue_ref": "npc.fenn_waystone_after",
          "requires_flag": "flag:has_starter", "hidden_when_flag": "flag:dusk_begins"},
+        # the Waystone kid — R4 "A Kite for the Waystone Kid"'s delivery anchor
+        # (the kite-maker's leg of the Waykeeper's Round; walkthrough 03-north).
+        # Delivery sets flag:q_round_kite; the kid flies the kite thereafter.
+        {"id": "waystone_kid", "at": {"tx": CX - 2, "ty": CY + 2}, "facing": "up",
+         "sprite": "npc_boy", "movement": "static",
+         "dialogue_ref": "script.round_kite_deliver",
+         "hidden_when_flag": "flag:q_round_kite"},
+        {"id": "waystone_kid_kite", "at": {"tx": CX - 2, "ty": CY + 2}, "facing": "up",
+         "sprite": "npc_boy", "movement": "wander",
+         "dialogue_ref": "npc.waystone_kid_kite",
+         "requires_flag": "flag:q_round_kite"},
     ],
     "gates": [],
     "music": "assets/audio/music/tinderwick-a.mp3",

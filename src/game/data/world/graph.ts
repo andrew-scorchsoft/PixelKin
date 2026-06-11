@@ -105,6 +105,11 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'crystoll_vault', region: 'east', optional: true, reward: 'late backtrack (Starreach): rare Stone/Light kin' },
     // ---- North: Galehigh -> Windward Stair (2 segments) -> Pale Vault ---------------
     { map_id: 'galehigh_terraces', region: 'north' },
+    { map_id: 'galehigh_skyloft', region: 'north' }, // the winch-festival top terrace: Mira's launch-ledge bond-test (Lumenary 5's venue)
+    { map_id: 'galehigh_lumenary', region: 'north' }, // interior: the Storm hall (festival home — the battle is at the skyloft)
+    { map_id: 'galehigh_inn', region: 'north' }, // interior: the terrace inn (rest point)
+    { map_id: 'galehigh_home', region: 'north' }, // interior: a wind-break cottage
+    { map_id: 'galehigh_kitemaker', region: 'north' }, // interior: the kite-maker's workshop (shop)
     { map_id: 'windward_stair_i', region: 'north' }, // route: lower switchbacks
     { map_id: 'windward_stair_ii', region: 'north' }, // route: high crags
     { map_id: 'thunderroost', region: 'north', optional: true, reward: 'rare Storm/Flying kin + item' },
@@ -169,6 +174,14 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'cinderhead_mine', to_map: 'cinderhead_lumenary', via_warp: 'to_lumenary', bidirectional: true },
     { from_map: 'cinderhead_mine', to_map: 'cinderhead_deep', via_warp: 'to_deep', requires_ability: 'glimmerstep', bidirectional: true },
     { from_map: 'cinderhead_deep', to_map: 'galehigh_terraces', via_warp: 'to_terraces', bidirectional: true },
+    // Galehigh interiors (door warps, both ways) + the Kite-Rising Winch: the
+    // skyloft is gated by the FESTIVAL flag (the earned loop, spine §5 shape #5)
+    // — never by Updraft Kite (§0 rule 1; Updraft is Mira's reward).
+    { from_map: 'galehigh_terraces', to_map: 'galehigh_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
+    { from_map: 'galehigh_terraces', to_map: 'galehigh_inn', via_warp: 'to_inn', bidirectional: true },
+    { from_map: 'galehigh_terraces', to_map: 'galehigh_home', via_warp: 'to_home', bidirectional: true },
+    { from_map: 'galehigh_terraces', to_map: 'galehigh_kitemaker', via_warp: 'to_shop', bidirectional: true },
+    { from_map: 'galehigh_terraces', to_map: 'galehigh_skyloft', via_warp: 'to_skyloft', requires_flag: 'flag:q_north_kite_blessed', bidirectional: true },
     { from_map: 'galehigh_terraces', to_map: 'windward_stair_i', via_warp: 'to_stair', bidirectional: true },
     { from_map: 'windward_stair_i', to_map: 'windward_stair_ii', via_warp: 'to_stair_ii', requires_ability: 'updraft_kite', bidirectional: true },
     { from_map: 'windward_stair_ii', to_map: 'pale_vault_glacier', via_warp: 'to_glacier', bidirectional: true },

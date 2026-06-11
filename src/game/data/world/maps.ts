@@ -321,6 +321,54 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/cinderhead-mine-b.webp',
     ],
   },
+  // Galehigh Terraces — the North's cliff-farm town (Lumenary 5, Storm: Mira
+  // Vael) under the Kite-rising; the Kite-Rising Winch earned loop hauls the
+  // player up to the skyloft for the bond-test at the launch ledge.
+  galehigh_terraces: {
+    json: 'assets/maps/galehigh_terraces.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'town',
+    music: 'assets/audio/music/galehigh-terraces-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/galehigh-terraces-a.webp',
+      'assets/backgrounds/battle/galehigh-terraces-b.webp',
+    ],
+  },
+  galehigh_skyloft: {
+    json: 'assets/maps/galehigh_skyloft.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    // spur maps reuse the parent loop + backdrops (the Phase-0 reuse table)
+    music: 'assets/audio/music/galehigh-terraces-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/galehigh-terraces-a.webp',
+      'assets/backgrounds/battle/galehigh-terraces-b.webp',
+    ],
+  },
+  galehigh_lumenary: {
+    json: 'assets/maps/galehigh_lumenary.json',
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/galehigh-terraces-b.mp3',
+  },
+  galehigh_inn: {
+    json: 'assets/maps/galehigh_inn.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/galehigh-terraces-b.mp3',
+  },
+  galehigh_home: {
+    json: 'assets/maps/galehigh_home.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/galehigh-terraces-b.mp3',
+  },
+  galehigh_kitemaker: {
+    json: 'assets/maps/galehigh_kitemaker.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/galehigh-terraces-b.mp3',
+  },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
   // Their battle backdrops are already rendered — see UPCOMING_BATTLE_BACKDROPS below.
@@ -336,10 +384,6 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
  * its backdrops set, drop its key here to avoid drift.
  */
 export const UPCOMING_BATTLE_BACKDROPS: Record<string, string[]> = {
-  galehigh_terraces: [
-    'assets/backgrounds/battle/galehigh-terraces-a.webp',
-    'assets/backgrounds/battle/galehigh-terraces-b.webp',
-  ],
   pale_vault_glacier: [
     'assets/backgrounds/battle/pale-vault-glacier-a.webp',
     'assets/backgrounds/battle/pale-vault-glacier-b.webp',

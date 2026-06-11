@@ -56,7 +56,10 @@ GRANTS: dict[str, list[str]] = {
     "lowleaf_hollow": ["glimmerstep", "gleam:verdant"],
     "cinderhead_mine": ["gleam:stone", "flag:crown_east"],
     "cinderhead_deep": ["flag:shortcut_mine"],
-    "galehigh_terraces": ["updraft_kite", "gleam:storm"],
+    # The Kite-Rising Winch loop: the kite chain + festival blessing happen in
+    # town; Mira's bond-test at the skyloft then grants the Gleam + the Gift.
+    "galehigh_terraces": ["flag:q_north_kite_blessed"],
+    "galehigh_skyloft": ["updraft_kite", "gleam:storm"],
     "windward_stair_ii": ["flag:shortcut_windward"],
     "pale_vault_glacier": ["emberward", "gleam:frost", "flag:crown_north"],
     "sunken_solarium": ["sunsketch", "gleam:solar"],
