@@ -454,8 +454,10 @@ def _gba_override(nm: str, cur: Image.Image) -> Image.Image | None:
     m = _re.fullmatch(r"tree_(edge_[nswe]|corner_[ns][we])(?:_v\d+)?", nm)
     if m:
         # painterly bubble-crown masters stay; their inner half eases into the
-        # drawn fill so the mass interior doesn't band.
-        return g.tree_edge_blend(cur, m.group(1))
+        # drawn fill so the mass interior doesn't band, and their OUTWARD half is
+        # re-grounded onto the real grass fill so the border meets open grass
+        # cleanly (no pale halo rim / off-grass strip).
+        return g.tree_grass_meld(g.tree_edge_blend(cur, m.group(1)), m.group(1))
     if _re.fullmatch(r"grass[0-3]", nm):
         return g.grass_fill(int(nm[-1]))
     m = _re.fullmatch(r"tallgrass_fill(?:_v(\d+))?", nm)

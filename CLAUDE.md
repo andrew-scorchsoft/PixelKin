@@ -499,7 +499,13 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   walls/terraces. Cliffs follow the interior-wall convention outdoors: fill = walk-on-looking
   PLATEAU TOP, `edge_s`/S-corners = the visible FACE (lit lip → streaked face → contact
   shadow), N/W/E = rim transitions — a cliff drawn as all-face reads flat ("lost edging").
-  Full rule: `docs/world/level-design.md` §11 rule 8.
+  Full rule: `docs/world/level-design.md` §11 rule 8. The **tree-mass border** is the one
+  family kept as a painterly bubble-crown master (not drawn): its edge/corner tiles run
+  `gbaforge.tree_edge_blend` (inner half eases into the drawn fill) **then `tree_grass_meld`**
+  (outward half re-grounded onto the real grass fill — keeps the canopy silhouette, replaces
+  the master's off-grass strip + baked pale halo rim so the border meets open grass without a
+  light-green outline, and tucks the crown's lit lip 1px into grass). Both run in
+  `build_shared_overworld._gba_override`; re-run the builder if you touch either.
 - **New area? Use the `build-map` skill** — compose with `tools/maps/patterns.py` stamps on
   mapkit (`build_saltreach_fen_i.py` is the pattern showcase: paint-derived encounter zones,
   trainer-beat/cache/sign stamps, a LEDGED terrace bank). Engine supports one-way **ledges**

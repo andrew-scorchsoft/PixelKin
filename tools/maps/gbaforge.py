@@ -381,14 +381,17 @@ def tree_fill(v: int = 0) -> Image.Image:
     return img(a)
 
 
+TREE_DESIGNED = {"edge_n": ("N",), "edge_s": ("S",), "edge_w": ("W",), "edge_e": ("E",),
+                 "corner_nw": ("N", "W"), "corner_ne": ("N", "E"),
+                 "corner_sw": ("S", "W"), "corner_se": ("S", "E")}
+
+
 def tree_edge_blend(im: Image.Image, role: str) -> Image.Image:
     """Mesh a painterly tree-mass EDGE master with the flat drawn fill: keep its
     designed (bubble-crown) side, ease the inner side into the fill's base tone."""
     a = np.asarray(im.convert("RGBA")).astype(np.float64).copy()
     base = np.array(sh(TREE, 0.60), dtype=np.float64)
-    designed = {"edge_n": ("N",), "edge_s": ("S",), "edge_w": ("W",), "edge_e": ("E",),
-                "corner_nw": ("N", "W"), "corner_ne": ("N", "E"),
-                "corner_sw": ("S", "W"), "corner_se": ("S", "E")}.get(role, ())
+    designed = TREE_DESIGNED.get(role, ())
     if not designed:
         return im
     for y in range(16):
@@ -396,6 +399,61 @@ def tree_edge_blend(im: Image.Image, role: str) -> Image.Image:
             d = min({"N": y, "S": 15 - y, "W": x, "E": 15 - x}[e] for e in designed)
             t = max(0.0, min(1.0, (d - 6) / 7.0))
             a[y, x, :3] = a[y, x, :3] * (1 - t) + base * t
+    return img(a.astype(np.int16))
+
+
+def _dilate(mask: np.ndarray, it: int) -> np.ndarray:
+    """4-neighbour binary dilation, `it` iterations (no scipy dependency)."""
+    m = mask.copy()
+    for _ in range(it):
+        up = np.roll(m, 1, 0); up[0, :] = False
+        dn = np.roll(m, -1, 0); dn[-1, :] = False
+        lf = np.roll(m, 1, 1); lf[:, 0] = False
+        rt = np.roll(m, -1, 1); rt[:, -1] = False
+        m = m | up | dn | lf | rt
+    return m
+
+
+def tree_grass_meld(im: Image.Image, role: str, grass_im: Image.Image | None = None,
+                    it: int = 4, reach: int = 13) -> Image.Image:
+    """Make a tree edge/corner tile meet surrounding grass SEAMLESSLY.
+
+    The painterly bubble-crown masters bake a thin lit halo rim + a slightly-off
+    'grass' strip onto their outward (grass-facing) side, so a tree border reads
+    with a pale outline where it meets the open grass. This re-grounds that strip:
+    the canopy silhouette (the dark leaf mass + the crown bumps sitting on it) is
+    kept; every grass-side pixel OUTSIDE that silhouette is replaced with the real
+    grass fill (a 1px feather softens the join). The canopy bumps become trees on
+    grass, not trees in a pale frame."""
+    designed = TREE_DESIGNED.get(role, ())
+    if not designed:
+        return im
+    a = np.asarray(im.convert("RGBA")).astype(np.float64).copy()
+    g = np.asarray((grass_im or grass_fill(0)).convert("RGBA")).astype(np.float64)
+    # the canopy = the dark leaf mass, dilated to absorb the crown bumps that sit
+    # on its grass-facing lip (the bumps are bright, so threshold-on-dark alone
+    # would drop them; dilation re-attaches them to the mass behind them).
+    canopy = _dilate(a[:, :, 1] < 74, it)
+    # only touch the grass-side band (within `reach` of a designed outer edge) so
+    # a stray light leaf-tick deep in the mass interior is never re-grassed.
+    yy, xx = np.mgrid[0:16, 0:16]
+    band = np.zeros((16, 16), bool)
+    for e in designed:
+        band |= {"N": yy, "S": 15 - yy, "W": xx, "E": 15 - xx}[e] < reach
+    repl = band & ~canopy
+    a[repl, :3] = g[repl, :3]
+    feather = _dilate(repl, 1) & canopy & band
+    a[feather, :3] = 0.5 * a[feather, :3] + 0.5 * g[feather, :3]
+    # Tuck the crown's lit lip into the grass: on the S/E/W masters the bumps sit
+    # flush to the tile edge, so a bump highlight lands right on the grass seam as
+    # a faint dotted line. Ease the outermost ring (and half-ease the next one) of
+    # each grass-facing side toward grass so the canopy nestles into the field.
+    for e in designed:
+        d = {"N": yy, "S": 15 - yy, "W": xx, "E": 15 - xx}[e]
+        ring0 = d == 0
+        ring1 = d == 1
+        a[ring0, :3] = 0.4 * a[ring0, :3] + 0.6 * g[ring0, :3]
+        a[ring1, :3] = 0.75 * a[ring1, :3] + 0.25 * g[ring1, :3]
     return img(a.astype(np.int16))
 
 
