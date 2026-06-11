@@ -61,7 +61,11 @@ GRANTS: dict[str, list[str]] = {
     "galehigh_terraces": ["flag:q_north_kite_blessed"],
     "galehigh_skyloft": ["updraft_kite", "gleam:storm"],
     "windward_stair_ii": ["flag:shortcut_windward"],
-    "pale_vault_glacier": ["emberward", "gleam:frost", "flag:crown_north"],
+    # The Lamp-Line loop: the oil errand happens in town/the hollows; Ysolde's
+    # bond-test at the undercroft's heart then grants the Gleam + the Gift.
+    "pale_vault_glacier": ["flag:q_north_lampline", "flag:q_north_aurora_oil"],
+    "pale_vault_undercroft": ["flag:q_north_lamps_held", "emberward",
+                              "gleam:frost", "flag:crown_north"],
     "sunken_solarium": ["sunsketch", "gleam:solar"],
     "nightreach_observatory": ["starreach", "gleam:lunar", "flag:crown_west",
                                "flag:hub_unlocked"],

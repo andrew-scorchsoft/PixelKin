@@ -415,6 +415,50 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/windward-stair-b.webp',
     ],
   },
+  // Pale Vault Glacier — the North's aurora-lit ice town (Lumenary 6, Frost:
+  // Ysolde Frost) under the Aurora-watch; the Lamp-Line earned loop sends the
+  // player down the undercroft to light seven brackets before the bond-test
+  // at the vault's heart. B3 (Còr in person), C3 (Fenn's confession) and A4
+  // (Wren's wobble) all land on this ice.
+  pale_vault_glacier: {
+    json: 'assets/maps/pale_vault_glacier.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'town',
+    music: 'assets/audio/music/pale-vault-glacier-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/pale-vault-glacier-a.webp',
+      'assets/backgrounds/battle/pale-vault-glacier-b.webp',
+    ],
+  },
+  pale_vault_undercroft: {
+    json: 'assets/maps/pale_vault_undercroft.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    // the trial reuses the parent loop's sparsest variant + backdrops
+    music: 'assets/audio/music/pale-vault-glacier-c.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/pale-vault-glacier-a.webp',
+      'assets/backgrounds/battle/pale-vault-glacier-b.webp',
+    ],
+  },
+  pale_vault_lumenary: {
+    json: 'assets/maps/pale_vault_lumenary.json',
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/pale-vault-glacier-b.mp3',
+  },
+  pale_vault_inn: {
+    json: 'assets/maps/pale_vault_inn.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/pale-vault-glacier-b.mp3',
+  },
+  pale_vault_home: {
+    json: 'assets/maps/pale_vault_home.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/pale-vault-glacier-b.mp3',
+  },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
   // Their battle backdrops are already rendered — see UPCOMING_BATTLE_BACKDROPS below.
@@ -430,10 +474,6 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
  * its backdrops set, drop its key here to avoid drift.
  */
 export const UPCOMING_BATTLE_BACKDROPS: Record<string, string[]> = {
-  pale_vault_glacier: [
-    'assets/backgrounds/battle/pale-vault-glacier-a.webp',
-    'assets/backgrounds/battle/pale-vault-glacier-b.webp',
-  ],
   sunken_solarium: [
     'assets/backgrounds/battle/sunken-solarium-a.webp',
     'assets/backgrounds/battle/sunken-solarium-b.webp',

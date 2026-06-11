@@ -308,6 +308,76 @@
       "tw": 2,
       "th": 2
     },
+    "pale_vault_bracket_dark": {
+      "path": "assets/sprites/objects/pale_vault_bracket_dark.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "pale_vault_bracket_lit": {
+      "path": "assets/sprites/objects/pale_vault_bracket_lit.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "pale_vault_brazier": {
+      "path": "assets/sprites/objects/pale_vault_brazier.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "pale_vault_camp_doused": {
+      "path": "assets/sprites/objects/pale_vault_camp_doused.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "pale_vault_camp_lit": {
+      "path": "assets/sprites/objects/pale_vault_camp_lit.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "pale_vault_home": {
+      "path": "assets/sprites/objects/pale_vault_home.webp",
+      "width": 64,
+      "height": 64,
+      "tw": 4,
+      "th": 4
+    },
+    "pale_vault_ice_spire": {
+      "path": "assets/sprites/objects/pale_vault_ice_spire.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "pale_vault_inn": {
+      "path": "assets/sprites/objects/pale_vault_inn.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "pale_vault_lumenary": {
+      "path": "assets/sprites/objects/pale_vault_lumenary.webp",
+      "width": 96,
+      "height": 96,
+      "tw": 6,
+      "th": 6
+    },
+    "pale_vault_undercroft_arch": {
+      "path": "assets/sprites/objects/pale_vault_undercroft_arch.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
     "pearlmoor_boat": {
       "path": "assets/sprites/objects/pearlmoor_boat.webp",
       "width": 32,

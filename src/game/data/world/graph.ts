@@ -115,6 +115,10 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'thunderroost', region: 'north', optional: true, reward: 'rare Storm/Flying kin + item' },
     { map_id: 'wind_eye', region: 'north', optional: true, reward: 'landmark sky-grotto; a unique Storm kin' },
     { map_id: 'pale_vault_glacier', region: 'north' },
+    { map_id: 'pale_vault_undercroft', region: 'north' }, // the Lamp-Line trial: Ysolde's bond-test at its heart (Lumenary 6's venue)
+    { map_id: 'pale_vault_lumenary', region: 'north' }, // interior: the Frost hall (the Aurora-watch's home — the battle is in the undercroft)
+    { map_id: 'pale_vault_inn', region: 'north' }, // interior: the glacier inn (rest point)
+    { map_id: 'pale_vault_home', region: 'north' }, // interior: an ice-block cottage
     // ---- West: Hushfrost Pass (2 seg) -> Solarium -> Sunvault Climb (2 seg) -> Nightreach
     { map_id: 'hushfrost_pass_i', region: 'west' }, // route: snow canyon
     { map_id: 'hushfrost_pass_ii', region: 'west' }, // route: coldfog throat
@@ -185,6 +189,13 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'galehigh_terraces', to_map: 'windward_stair_i', via_warp: 'to_stair', bidirectional: true },
     { from_map: 'windward_stair_i', to_map: 'windward_stair_ii', via_warp: 'to_stair_ii', requires_ability: 'updraft_kite', bidirectional: true },
     { from_map: 'windward_stair_ii', to_map: 'pale_vault_glacier', via_warp: 'to_glacier', bidirectional: true },
+    // Pale Vault interiors (door warps, both ways) + the Lamp-Line: the
+    // undercroft door takes the aurora-oil (the earned loop, spine §5 shape
+    // #6) — NEVER an ability gate (§0 rule 1: Ysolde is reachable on foot).
+    { from_map: 'pale_vault_glacier', to_map: 'pale_vault_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
+    { from_map: 'pale_vault_glacier', to_map: 'pale_vault_inn', via_warp: 'to_inn', bidirectional: true },
+    { from_map: 'pale_vault_glacier', to_map: 'pale_vault_home', via_warp: 'to_home', bidirectional: true },
+    { from_map: 'pale_vault_glacier', to_map: 'pale_vault_undercroft', via_warp: 'to_undercroft', requires_flag: 'flag:q_north_aurora_oil', bidirectional: true },
     { from_map: 'pale_vault_glacier', to_map: 'hushfrost_pass_i', via_warp: 'to_pass', bidirectional: true },
     { from_map: 'hushfrost_pass_i', to_map: 'hushfrost_pass_ii', via_warp: 'to_pass_ii', requires_ability: 'emberward', bidirectional: true },
     { from_map: 'hushfrost_pass_ii', to_map: 'sunken_solarium', via_warp: 'to_solarium', bidirectional: true },
