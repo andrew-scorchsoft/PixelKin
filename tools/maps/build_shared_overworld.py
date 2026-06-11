@@ -26,7 +26,7 @@ Then it packs to public/assets/tilesets/vesper_overworld_set.{webp,tileset.json}
 assets/tilesets/_shared/vesper_overworld.index.json (name -> local index) for map builders.
 """
 from __future__ import annotations
-import json, subprocess, sys
+import json, subprocess, sys, zlib
 from pathlib import Path
 import numpy as np
 from PIL import Image
@@ -114,8 +114,11 @@ def tw_family(prefix: str, terrain: str, role: str, *, collides=False,
         add(nm, base, role=role, terrain=terrain, autotile=r, collides=collides,
             encounter=(encounter if is_fill else None), ability=ability)
         # variants: derive N extra tiles sharing the same (terrain, role) tag.
+        # Seeds via crc32, NOT hash() — str hash is salted per process, so a
+        # rebuild would silently churn every jittered variant (bit the 2026-06
+        # freeze pass: 5 tree-edge variants drifted on rebuild).
         for i in range(variants.get(r, 0)):
-            seed = abs(hash((terrain, r, i))) % 100000
+            seed = zlib.crc32(f"{terrain}|{r}|{i}".encode()) % 100000
             if is_fill:
                 v = jitter(base, seed, 9)
             elif SEAM_OF.get(r) == "h":
@@ -320,7 +323,7 @@ for r in NINE:
         tileable_fill=(r == "fill"))
     # variants so a tall cliff wall / long ledge doesn't stamp one rock face
     for i in range(CLIFF_VARIANTS.get(r, 0)):
-        seed = abs(hash(("cliff", r, i))) % 100000
+        seed = zlib.crc32(f"cliff|{r}|{i}".encode()) % 100000
         if r == "fill":
             v = jitter(im, seed, 8)
         elif SEAM_OF.get(r) == "h":
@@ -451,6 +454,11 @@ _GBA_ROLE = r"(corner_[ns][we]|edge_[nswe]|fill|strip_[hv]|inner_[ns][we])"
 
 def _gba_override(nm: str, cur: Image.Image) -> Image.Image | None:
     g = gbaforge
+    # TILEFORGE 2026-06 families register their final drawn image at add time
+    # (DRAWN, defined below) — returning it here keeps them on the no-seam-pass
+    # path like every other gbaforge tile.
+    if nm in DRAWN:
+        return DRAWN[nm]
     m = _re.fullmatch(r"tree_(edge_[nswe]|corner_[ns][we])(?:_v\d+)?", nm)
     if m:
         # painterly bubble-crown masters stay; their inner half eases into the
@@ -551,6 +559,158 @@ for _r in ("end_n", "end_s", "end_w", "end_e", "strip_h", "strip_v", "single"):
     add(f"tree_{_r}", gbaforge.tree_nub(_r), role="tree", terrain="tree",
         autotile=_r, collides=True)
 
+# ---- TILEFORGE 2026-06: the remaining regions' families (North / West / -----
+# Central / Dawnstead), ALL gbaforge-drawn, APPENDED in one serialized pass so
+# every existing gid holds — after this block the shared set is FROZEN.
+# DRAWN registers name -> final image; _gba_override returns it so the write
+# loop skips every seam pass (drawn tiles are seamless by construction, and the
+# passes would smear their designed 1px borders).
+DRAWN: dict[str, Image.Image] = {}
+
+
+def add_drawn(name, im, **kw):
+    DRAWN[name] = im
+    add(name, im, **kw)
+
+
+# the full 15-role overlay set (9-slice + strips + inner corners)
+OVER15 = list(gbaforge.ROLES_OUTER.keys()) + list(gbaforge.INNER_Q.keys())
+# the 13-role wall set (9-slice + inner corners — the cavewall precedent)
+WALL13 = NINE + ["inner_nw", "inner_ne", "inner_sw", "inner_se"]
+
+# -- NORTH (Galehigh / Windward Stair / Pale Vault / Hushfrost) -----------------
+# snowfield ground fills (the region's grass0-3 equivalent)
+for _i in range(4):
+    add_drawn(f"snow{_i}", gbaforge.snow_fill(_i), role="ground")
+# snow ⇄ GRASS transition (the snowline against Galehigh's grass terraces)
+for _r in OVER15:
+    add_drawn(f"snowpatch_{_r}", gbaforge.snowpatch_tile(_r, 0), role="ground",
+              terrain="snowpatch", autotile=_r)
+for _i in (1, 2):
+    add_drawn(f"snowpatch_fill_v{_i}", gbaforge.snowpatch_tile("fill", _i),
+              role="ground", terrain="snowpatch", autotile="fill")
+# the trodden lane over SNOW (the `trail` precedent, snow context)
+for _r in OVER15:
+    add_drawn(f"snowtrail_{_r}", gbaforge.snowtrail_tile(_r, 0), role="path",
+              terrain="snowtrail", autotile=_r)
+for _i in (1, 2):
+    add_drawn(f"snowtrail_fill_v{_i}", gbaforge.snowtrail_tile("fill", _i),
+              role="path", terrain="snowtrail", autotile="fill")
+# frozen ponds / glacier sheets over SNOW — walkable (deep-ice spurs are gated
+# by map AbilityGates, not the tile)
+for _r in OVER15:
+    add_drawn(f"ice_{_r}", gbaforge.ice_tile(_r, 0), role="floor",
+              terrain="ice", autotile=_r)
+for _i in (1, 2):
+    add_drawn(f"ice_fill_v{_i}", gbaforge.ice_tile("fill", _i), role="floor",
+              terrain="ice", autotile="fill")
+# glacier cliff (13-slice, the cliff convention: fill = plateau TOP, S edges =
+# the lit ice FACE; rim transitions vs SNOW)
+for _r in WALL13:
+    add_drawn(f"glacierwall_{_r}", gbaforge.glacierwall_tile(_r, 0), role="cliff",
+              terrain="glacierwall", autotile=_r, collides=True)
+for _i in (1, 2):
+    add_drawn(f"glacierwall_fill_v{_i}", gbaforge.glacierwall_tile("fill", _i),
+              role="cliff", terrain="glacierwall", autotile="fill", collides=True)
+add_drawn("glacierwall_edge_s_v1", gbaforge.glacierwall_tile("edge_s", 1),
+          role="cliff", terrain="glacierwall", autotile="edge_s", collides=True)
+# mountain scree/stone ground (Windward Stair's walkable crags)
+for _i in range(3):
+    add_drawn(f"scree{_i}", gbaforge.scree_fill(_i), role="ground")
+# the snow-register encounter tile — hard-edged fill-only, every variant tagged
+for _i in range(3):
+    add_drawn(f"frosttuft_fill{'' if _i == 0 else f'_v{_i}'}",
+              gbaforge.frosttuft_fill(_i), role="ground", terrain="frosttuft",
+              autotile="fill", encounter="tall_grass")
+# context-correct one-way ledges (snow bank; Windward's stone switchback drops)
+add_drawn("snow_ledge_s", gbaforge.snow_ledge_s(0), role="ledge", ledge="down")
+add_drawn("snow_ledge_s_v1", gbaforge.snow_ledge_s(1), role="ledge", ledge="down")
+add_drawn("scree_ledge_s", gbaforge.scree_ledge_s(0), role="ledge", ledge="down")
+add_drawn("scree_ledge_s_v1", gbaforge.scree_ledge_s(1), role="ledge", ledge="down")
+
+# -- WEST (Sunken Solarium / Sunvault Climb / Coldfog Marches) -------------------
+# sun-garden gold grass fills
+for _i in range(4):
+    add_drawn(f"goldgrass{_i}", gbaforge.goldgrass_fill(_i), role="ground")
+# the gold encounter tile
+for _i in range(3):
+    add_drawn(f"goldtuft_fill{'' if _i == 0 else f'_v{_i}'}",
+              gbaforge.goldtuft_fill(_i), role="ground", terrain="goldtuft",
+              autotile="fill", encounter="tall_grass")
+# overgrown ruin paving ⇄ GOLDGRASS (the Solarium/Sunvault garden-roads)
+for _r in OVER15:
+    add_drawn(f"ruinfloor_{_r}", gbaforge.ruinfloor_tile(_r, 0), role="floor",
+              terrain="ruinfloor", autotile=_r)
+for _i in (1, 2):
+    add_drawn(f"ruinfloor_fill_v{_i}", gbaforge.ruinfloor_tile("fill", _i),
+              role="floor", terrain="ruinfloor", autotile="fill")
+# Coldfog's blighted/desaturated marsh ground
+for _i in range(4):
+    add_drawn(f"blight{_i}", gbaforge.blight_fill(_i), role="ground")
+# the Marches' muted encounter tile
+for _i in range(3):
+    add_drawn(f"blighttuft_fill{'' if _i == 0 else f'_v{_i}'}",
+              gbaforge.blighttuft_fill(_i), role="ground", terrain="blighttuft",
+              autotile="fill", encounter="tall_grass")
+# dead-still marsh shallows over BLIGHT (no foam, no animation — drained water;
+# the pond precedent: 9-slice, Tidecall-gated, fill carries the water encounter)
+for _r in [r for r in NINE if r != "fill"]:
+    add_drawn(f"murk_{_r}", gbaforge.murk_edge(_r), role="water", terrain="murk",
+              autotile=_r, collides=True, ability="tidecall")
+add_drawn("murk_fill", gbaforge.murk_fill(0), role="water", terrain="murk",
+          autotile="fill", collides=True, encounter="water", ability="tidecall")
+# the Solarium's flooded halls: standard warm-blue water over RUIN paving
+# (animated like pond — the stored-daylight glow is deco/objects' job)
+for _r in [r for r in NINE if r != "fill"]:
+    add_drawn(f"sunpool_{_r}",
+              gbaforge.water_edge(_r, outer_im=gbaforge.ruinfloor_fill(0)),
+              role="water", terrain="sunpool", autotile=_r,
+              collides=True, ability="tidecall")
+add_drawn("sunpool_fill", gbaforge.water_fill(0), role="water", terrain="sunpool",
+          autotile="fill", collides=True, encounter="water", ability="tidecall")
+
+# -- CENTRAL (Penumbra Ring / Umbral Spire) --------------------------------------
+# black basalt ground fills
+for _i in range(3):
+    add_drawn(f"basalt{_i}", gbaforge.basalt_fill(_i), role="ground")
+# basalt wall (13-slice, cavewall convention: fill = wall TOP, S edges = the
+# lamp-caught FACE; rim transitions vs basalt floor)
+for _r in WALL13:
+    add_drawn(f"basaltwall_{_r}", gbaforge.basaltwall_tile(_r, 0), role="cliff",
+              terrain="basaltwall", autotile=_r, collides=True)
+for _i in (1, 2):
+    add_drawn(f"basaltwall_fill_v{_i}", gbaforge.basaltwall_tile("fill", _i),
+              role="cliff", terrain="basaltwall", autotile="fill", collides=True)
+add_drawn("basaltwall_edge_s_v1", gbaforge.basaltwall_tile("edge_s", 1),
+          role="cliff", terrain="basaltwall", autotile="edge_s", collides=True)
+# the void/penumbra family — DRAWN (chosen over deco objects: it must tile area
+# fills, gate traversal, and read at the GBA register). Starreach steps across
+# it (the water/tidecall pattern); edges have no lit border — light dies at the
+# rim. Full 15-role set (strips make 1-wide chasm crossings possible).
+for _r in OVER15:
+    add_drawn(f"void_{_r}", gbaforge.void_tile(_r), role="void", terrain="void",
+              autotile=_r, collides=True, ability="starreach")
+# wisp-drift animation frames for the void fill (slow, the water grammar)
+add_drawn("void_a2", gbaforge.void_fill(1), role="void", collides=True,
+          ability="starreach")
+add_drawn("void_a3", gbaforge.void_fill(2), role="void", collides=True,
+          ability="starreach")
+
+# -- DAWNSTEAD (the post-game epilogue — the ONE truly daylit palette) ------------
+for _i in range(4):
+    add_drawn(f"dawngrass{_i}", gbaforge.dawngrass_fill(_i), role="ground")
+for _r in OVER15:
+    add_drawn(f"dawnpath_{_r}", gbaforge.dawnpath_tile(_r, 0), role="path",
+              terrain="dawnpath", autotile=_r)
+for _i in (1, 2):
+    add_drawn(f"dawnpath_fill_v{_i}", gbaforge.dawnpath_tile("fill", _i),
+              role="path", terrain="dawnpath", autotile="fill")
+# the sunlit verge encounter tile (the day-form table rolls here)
+for _i in range(3):
+    add_drawn(f"dawntuft_fill{'' if _i == 0 else f'_v{_i}'}",
+              gbaforge.dawntuft_fill(_i), role="ground", terrain="dawntuft",
+              autotile="fill", encounter="tall_grass")
+
 # ---- write masters, manifest, index, then pack ------------------------------
 name_index = {nm: i for i, (nm, _, _) in enumerate(TILES)}
 # resolve the water animation now that indices are known
@@ -582,6 +742,12 @@ for i, (nm, im, extra) in enumerate(TILES):
     if nm == "pond_fill":
         entry["animation"] = {"frames": [name_index["pond_fill"], name_index["water_a2"],
                                          name_index["water_a3"]], "duration_ms": 800}
+    if nm == "sunpool_fill":
+        entry["animation"] = {"frames": [name_index["sunpool_fill"], name_index["water_a2"],
+                                         name_index["water_a3"]], "duration_ms": 800}
+    if nm == "void_fill":
+        entry["animation"] = {"frames": [name_index["void_fill"], name_index["void_a2"],
+                                         name_index["void_a3"]], "duration_ms": 1100}
     manifest_tiles.append(entry)
 
 manifest = {"name": "vesper_overworld_set", "columns": 12, "tiles": manifest_tiles}

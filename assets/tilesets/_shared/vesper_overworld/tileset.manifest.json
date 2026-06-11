@@ -1259,6 +1259,1226 @@
       "terrain": "tree",
       "autotile": "single",
       "collides": true
+    },
+    {
+      "file": "196_snow0.png",
+      "role": "ground"
+    },
+    {
+      "file": "197_snow1.png",
+      "role": "ground"
+    },
+    {
+      "file": "198_snow2.png",
+      "role": "ground"
+    },
+    {
+      "file": "199_snow3.png",
+      "role": "ground"
+    },
+    {
+      "file": "200_snowpatch_corner_nw.png",
+      "role": "ground",
+      "terrain": "snowpatch",
+      "autotile": "corner_nw"
+    },
+    {
+      "file": "201_snowpatch_edge_n.png",
+      "role": "ground",
+      "terrain": "snowpatch",
+      "autotile": "edge_n"
+    },
+    {
+      "file": "202_snowpatch_corner_ne.png",
+      "role": "ground",
+      "terrain": "snowpatch",
+      "autotile": "corner_ne"
+    },
+    {
+      "file": "203_snowpatch_edge_w.png",
+      "role": "ground",
+      "terrain": "snowpatch",
+      "autotile": "edge_w"
+    },
+    {
+      "file": "204_snowpatch_fill.png",
+      "role": "ground",
+      "terrain": "snowpatch",
+      "autotile": "fill"
+    },
+    {
+      "file": "205_snowpatch_edge_e.png",
+      "role": "ground",
+      "terrain": "snowpatch",
+      "autotile": "edge_e"
+    },
+    {
+      "file": "206_snowpatch_corner_sw.png",
+      "role": "ground",
+      "terrain": "snowpatch",
+      "autotile": "corner_sw"
+    },
+    {
+      "file": "207_snowpatch_edge_s.png",
+      "role": "ground",
+      "terrain": "snowpatch",
+      "autotile": "edge_s"
+    },
+    {
+      "file": "208_snowpatch_corner_se.png",
+      "role": "ground",
+      "terrain": "snowpatch",
+      "autotile": "corner_se"
+    },
+    {
+      "file": "209_snowpatch_strip_h.png",
+      "role": "ground",
+      "terrain": "snowpatch",
+      "autotile": "strip_h"
+    },
+    {
+      "file": "210_snowpatch_strip_v.png",
+      "role": "ground",
+      "terrain": "snowpatch",
+      "autotile": "strip_v"
+    },
+    {
+      "file": "211_snowpatch_inner_nw.png",
+      "role": "ground",
+      "terrain": "snowpatch",
+      "autotile": "inner_nw"
+    },
+    {
+      "file": "212_snowpatch_inner_ne.png",
+      "role": "ground",
+      "terrain": "snowpatch",
+      "autotile": "inner_ne"
+    },
+    {
+      "file": "213_snowpatch_inner_sw.png",
+      "role": "ground",
+      "terrain": "snowpatch",
+      "autotile": "inner_sw"
+    },
+    {
+      "file": "214_snowpatch_inner_se.png",
+      "role": "ground",
+      "terrain": "snowpatch",
+      "autotile": "inner_se"
+    },
+    {
+      "file": "215_snowpatch_fill_v1.png",
+      "role": "ground",
+      "terrain": "snowpatch",
+      "autotile": "fill"
+    },
+    {
+      "file": "216_snowpatch_fill_v2.png",
+      "role": "ground",
+      "terrain": "snowpatch",
+      "autotile": "fill"
+    },
+    {
+      "file": "217_snowtrail_corner_nw.png",
+      "role": "path",
+      "terrain": "snowtrail",
+      "autotile": "corner_nw"
+    },
+    {
+      "file": "218_snowtrail_edge_n.png",
+      "role": "path",
+      "terrain": "snowtrail",
+      "autotile": "edge_n"
+    },
+    {
+      "file": "219_snowtrail_corner_ne.png",
+      "role": "path",
+      "terrain": "snowtrail",
+      "autotile": "corner_ne"
+    },
+    {
+      "file": "220_snowtrail_edge_w.png",
+      "role": "path",
+      "terrain": "snowtrail",
+      "autotile": "edge_w"
+    },
+    {
+      "file": "221_snowtrail_fill.png",
+      "role": "path",
+      "terrain": "snowtrail",
+      "autotile": "fill"
+    },
+    {
+      "file": "222_snowtrail_edge_e.png",
+      "role": "path",
+      "terrain": "snowtrail",
+      "autotile": "edge_e"
+    },
+    {
+      "file": "223_snowtrail_corner_sw.png",
+      "role": "path",
+      "terrain": "snowtrail",
+      "autotile": "corner_sw"
+    },
+    {
+      "file": "224_snowtrail_edge_s.png",
+      "role": "path",
+      "terrain": "snowtrail",
+      "autotile": "edge_s"
+    },
+    {
+      "file": "225_snowtrail_corner_se.png",
+      "role": "path",
+      "terrain": "snowtrail",
+      "autotile": "corner_se"
+    },
+    {
+      "file": "226_snowtrail_strip_h.png",
+      "role": "path",
+      "terrain": "snowtrail",
+      "autotile": "strip_h"
+    },
+    {
+      "file": "227_snowtrail_strip_v.png",
+      "role": "path",
+      "terrain": "snowtrail",
+      "autotile": "strip_v"
+    },
+    {
+      "file": "228_snowtrail_inner_nw.png",
+      "role": "path",
+      "terrain": "snowtrail",
+      "autotile": "inner_nw"
+    },
+    {
+      "file": "229_snowtrail_inner_ne.png",
+      "role": "path",
+      "terrain": "snowtrail",
+      "autotile": "inner_ne"
+    },
+    {
+      "file": "230_snowtrail_inner_sw.png",
+      "role": "path",
+      "terrain": "snowtrail",
+      "autotile": "inner_sw"
+    },
+    {
+      "file": "231_snowtrail_inner_se.png",
+      "role": "path",
+      "terrain": "snowtrail",
+      "autotile": "inner_se"
+    },
+    {
+      "file": "232_snowtrail_fill_v1.png",
+      "role": "path",
+      "terrain": "snowtrail",
+      "autotile": "fill"
+    },
+    {
+      "file": "233_snowtrail_fill_v2.png",
+      "role": "path",
+      "terrain": "snowtrail",
+      "autotile": "fill"
+    },
+    {
+      "file": "234_ice_corner_nw.png",
+      "role": "floor",
+      "terrain": "ice",
+      "autotile": "corner_nw"
+    },
+    {
+      "file": "235_ice_edge_n.png",
+      "role": "floor",
+      "terrain": "ice",
+      "autotile": "edge_n"
+    },
+    {
+      "file": "236_ice_corner_ne.png",
+      "role": "floor",
+      "terrain": "ice",
+      "autotile": "corner_ne"
+    },
+    {
+      "file": "237_ice_edge_w.png",
+      "role": "floor",
+      "terrain": "ice",
+      "autotile": "edge_w"
+    },
+    {
+      "file": "238_ice_fill.png",
+      "role": "floor",
+      "terrain": "ice",
+      "autotile": "fill"
+    },
+    {
+      "file": "239_ice_edge_e.png",
+      "role": "floor",
+      "terrain": "ice",
+      "autotile": "edge_e"
+    },
+    {
+      "file": "240_ice_corner_sw.png",
+      "role": "floor",
+      "terrain": "ice",
+      "autotile": "corner_sw"
+    },
+    {
+      "file": "241_ice_edge_s.png",
+      "role": "floor",
+      "terrain": "ice",
+      "autotile": "edge_s"
+    },
+    {
+      "file": "242_ice_corner_se.png",
+      "role": "floor",
+      "terrain": "ice",
+      "autotile": "corner_se"
+    },
+    {
+      "file": "243_ice_strip_h.png",
+      "role": "floor",
+      "terrain": "ice",
+      "autotile": "strip_h"
+    },
+    {
+      "file": "244_ice_strip_v.png",
+      "role": "floor",
+      "terrain": "ice",
+      "autotile": "strip_v"
+    },
+    {
+      "file": "245_ice_inner_nw.png",
+      "role": "floor",
+      "terrain": "ice",
+      "autotile": "inner_nw"
+    },
+    {
+      "file": "246_ice_inner_ne.png",
+      "role": "floor",
+      "terrain": "ice",
+      "autotile": "inner_ne"
+    },
+    {
+      "file": "247_ice_inner_sw.png",
+      "role": "floor",
+      "terrain": "ice",
+      "autotile": "inner_sw"
+    },
+    {
+      "file": "248_ice_inner_se.png",
+      "role": "floor",
+      "terrain": "ice",
+      "autotile": "inner_se"
+    },
+    {
+      "file": "249_ice_fill_v1.png",
+      "role": "floor",
+      "terrain": "ice",
+      "autotile": "fill"
+    },
+    {
+      "file": "250_ice_fill_v2.png",
+      "role": "floor",
+      "terrain": "ice",
+      "autotile": "fill"
+    },
+    {
+      "file": "251_glacierwall_corner_nw.png",
+      "role": "cliff",
+      "terrain": "glacierwall",
+      "autotile": "corner_nw",
+      "collides": true
+    },
+    {
+      "file": "252_glacierwall_edge_n.png",
+      "role": "cliff",
+      "terrain": "glacierwall",
+      "autotile": "edge_n",
+      "collides": true
+    },
+    {
+      "file": "253_glacierwall_corner_ne.png",
+      "role": "cliff",
+      "terrain": "glacierwall",
+      "autotile": "corner_ne",
+      "collides": true
+    },
+    {
+      "file": "254_glacierwall_edge_w.png",
+      "role": "cliff",
+      "terrain": "glacierwall",
+      "autotile": "edge_w",
+      "collides": true
+    },
+    {
+      "file": "255_glacierwall_fill.png",
+      "role": "cliff",
+      "terrain": "glacierwall",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "file": "256_glacierwall_edge_e.png",
+      "role": "cliff",
+      "terrain": "glacierwall",
+      "autotile": "edge_e",
+      "collides": true
+    },
+    {
+      "file": "257_glacierwall_corner_sw.png",
+      "role": "cliff",
+      "terrain": "glacierwall",
+      "autotile": "corner_sw",
+      "collides": true
+    },
+    {
+      "file": "258_glacierwall_edge_s.png",
+      "role": "cliff",
+      "terrain": "glacierwall",
+      "autotile": "edge_s",
+      "collides": true
+    },
+    {
+      "file": "259_glacierwall_corner_se.png",
+      "role": "cliff",
+      "terrain": "glacierwall",
+      "autotile": "corner_se",
+      "collides": true
+    },
+    {
+      "file": "260_glacierwall_inner_nw.png",
+      "role": "cliff",
+      "terrain": "glacierwall",
+      "autotile": "inner_nw",
+      "collides": true
+    },
+    {
+      "file": "261_glacierwall_inner_ne.png",
+      "role": "cliff",
+      "terrain": "glacierwall",
+      "autotile": "inner_ne",
+      "collides": true
+    },
+    {
+      "file": "262_glacierwall_inner_sw.png",
+      "role": "cliff",
+      "terrain": "glacierwall",
+      "autotile": "inner_sw",
+      "collides": true
+    },
+    {
+      "file": "263_glacierwall_inner_se.png",
+      "role": "cliff",
+      "terrain": "glacierwall",
+      "autotile": "inner_se",
+      "collides": true
+    },
+    {
+      "file": "264_glacierwall_fill_v1.png",
+      "role": "cliff",
+      "terrain": "glacierwall",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "file": "265_glacierwall_fill_v2.png",
+      "role": "cliff",
+      "terrain": "glacierwall",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "file": "266_glacierwall_edge_s_v1.png",
+      "role": "cliff",
+      "terrain": "glacierwall",
+      "autotile": "edge_s",
+      "collides": true
+    },
+    {
+      "file": "267_scree0.png",
+      "role": "ground"
+    },
+    {
+      "file": "268_scree1.png",
+      "role": "ground"
+    },
+    {
+      "file": "269_scree2.png",
+      "role": "ground"
+    },
+    {
+      "file": "270_frosttuft_fill.png",
+      "role": "ground",
+      "terrain": "frosttuft",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "271_frosttuft_fill_v1.png",
+      "role": "ground",
+      "terrain": "frosttuft",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "272_frosttuft_fill_v2.png",
+      "role": "ground",
+      "terrain": "frosttuft",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "273_snow_ledge_s.png",
+      "role": "ledge",
+      "ledge": "down"
+    },
+    {
+      "file": "274_snow_ledge_s_v1.png",
+      "role": "ledge",
+      "ledge": "down"
+    },
+    {
+      "file": "275_scree_ledge_s.png",
+      "role": "ledge",
+      "ledge": "down"
+    },
+    {
+      "file": "276_scree_ledge_s_v1.png",
+      "role": "ledge",
+      "ledge": "down"
+    },
+    {
+      "file": "277_goldgrass0.png",
+      "role": "ground"
+    },
+    {
+      "file": "278_goldgrass1.png",
+      "role": "ground"
+    },
+    {
+      "file": "279_goldgrass2.png",
+      "role": "ground"
+    },
+    {
+      "file": "280_goldgrass3.png",
+      "role": "ground"
+    },
+    {
+      "file": "281_goldtuft_fill.png",
+      "role": "ground",
+      "terrain": "goldtuft",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "282_goldtuft_fill_v1.png",
+      "role": "ground",
+      "terrain": "goldtuft",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "283_goldtuft_fill_v2.png",
+      "role": "ground",
+      "terrain": "goldtuft",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "284_ruinfloor_corner_nw.png",
+      "role": "floor",
+      "terrain": "ruinfloor",
+      "autotile": "corner_nw"
+    },
+    {
+      "file": "285_ruinfloor_edge_n.png",
+      "role": "floor",
+      "terrain": "ruinfloor",
+      "autotile": "edge_n"
+    },
+    {
+      "file": "286_ruinfloor_corner_ne.png",
+      "role": "floor",
+      "terrain": "ruinfloor",
+      "autotile": "corner_ne"
+    },
+    {
+      "file": "287_ruinfloor_edge_w.png",
+      "role": "floor",
+      "terrain": "ruinfloor",
+      "autotile": "edge_w"
+    },
+    {
+      "file": "288_ruinfloor_fill.png",
+      "role": "floor",
+      "terrain": "ruinfloor",
+      "autotile": "fill"
+    },
+    {
+      "file": "289_ruinfloor_edge_e.png",
+      "role": "floor",
+      "terrain": "ruinfloor",
+      "autotile": "edge_e"
+    },
+    {
+      "file": "290_ruinfloor_corner_sw.png",
+      "role": "floor",
+      "terrain": "ruinfloor",
+      "autotile": "corner_sw"
+    },
+    {
+      "file": "291_ruinfloor_edge_s.png",
+      "role": "floor",
+      "terrain": "ruinfloor",
+      "autotile": "edge_s"
+    },
+    {
+      "file": "292_ruinfloor_corner_se.png",
+      "role": "floor",
+      "terrain": "ruinfloor",
+      "autotile": "corner_se"
+    },
+    {
+      "file": "293_ruinfloor_strip_h.png",
+      "role": "floor",
+      "terrain": "ruinfloor",
+      "autotile": "strip_h"
+    },
+    {
+      "file": "294_ruinfloor_strip_v.png",
+      "role": "floor",
+      "terrain": "ruinfloor",
+      "autotile": "strip_v"
+    },
+    {
+      "file": "295_ruinfloor_inner_nw.png",
+      "role": "floor",
+      "terrain": "ruinfloor",
+      "autotile": "inner_nw"
+    },
+    {
+      "file": "296_ruinfloor_inner_ne.png",
+      "role": "floor",
+      "terrain": "ruinfloor",
+      "autotile": "inner_ne"
+    },
+    {
+      "file": "297_ruinfloor_inner_sw.png",
+      "role": "floor",
+      "terrain": "ruinfloor",
+      "autotile": "inner_sw"
+    },
+    {
+      "file": "298_ruinfloor_inner_se.png",
+      "role": "floor",
+      "terrain": "ruinfloor",
+      "autotile": "inner_se"
+    },
+    {
+      "file": "299_ruinfloor_fill_v1.png",
+      "role": "floor",
+      "terrain": "ruinfloor",
+      "autotile": "fill"
+    },
+    {
+      "file": "300_ruinfloor_fill_v2.png",
+      "role": "floor",
+      "terrain": "ruinfloor",
+      "autotile": "fill"
+    },
+    {
+      "file": "301_blight0.png",
+      "role": "ground"
+    },
+    {
+      "file": "302_blight1.png",
+      "role": "ground"
+    },
+    {
+      "file": "303_blight2.png",
+      "role": "ground"
+    },
+    {
+      "file": "304_blight3.png",
+      "role": "ground"
+    },
+    {
+      "file": "305_blighttuft_fill.png",
+      "role": "ground",
+      "terrain": "blighttuft",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "306_blighttuft_fill_v1.png",
+      "role": "ground",
+      "terrain": "blighttuft",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "307_blighttuft_fill_v2.png",
+      "role": "ground",
+      "terrain": "blighttuft",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "308_murk_corner_nw.png",
+      "role": "water",
+      "terrain": "murk",
+      "autotile": "corner_nw",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "309_murk_edge_n.png",
+      "role": "water",
+      "terrain": "murk",
+      "autotile": "edge_n",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "310_murk_corner_ne.png",
+      "role": "water",
+      "terrain": "murk",
+      "autotile": "corner_ne",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "311_murk_edge_w.png",
+      "role": "water",
+      "terrain": "murk",
+      "autotile": "edge_w",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "312_murk_edge_e.png",
+      "role": "water",
+      "terrain": "murk",
+      "autotile": "edge_e",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "313_murk_corner_sw.png",
+      "role": "water",
+      "terrain": "murk",
+      "autotile": "corner_sw",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "314_murk_edge_s.png",
+      "role": "water",
+      "terrain": "murk",
+      "autotile": "edge_s",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "315_murk_corner_se.png",
+      "role": "water",
+      "terrain": "murk",
+      "autotile": "corner_se",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "316_murk_fill.png",
+      "role": "water",
+      "terrain": "murk",
+      "autotile": "fill",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "317_sunpool_corner_nw.png",
+      "role": "water",
+      "terrain": "sunpool",
+      "autotile": "corner_nw",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "318_sunpool_edge_n.png",
+      "role": "water",
+      "terrain": "sunpool",
+      "autotile": "edge_n",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "319_sunpool_corner_ne.png",
+      "role": "water",
+      "terrain": "sunpool",
+      "autotile": "corner_ne",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "320_sunpool_edge_w.png",
+      "role": "water",
+      "terrain": "sunpool",
+      "autotile": "edge_w",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "321_sunpool_edge_e.png",
+      "role": "water",
+      "terrain": "sunpool",
+      "autotile": "edge_e",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "322_sunpool_corner_sw.png",
+      "role": "water",
+      "terrain": "sunpool",
+      "autotile": "corner_sw",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "323_sunpool_edge_s.png",
+      "role": "water",
+      "terrain": "sunpool",
+      "autotile": "edge_s",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "324_sunpool_corner_se.png",
+      "role": "water",
+      "terrain": "sunpool",
+      "autotile": "corner_se",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "325_sunpool_fill.png",
+      "role": "water",
+      "terrain": "sunpool",
+      "autotile": "fill",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          325,
+          79,
+          80
+        ],
+        "duration_ms": 800
+      }
+    },
+    {
+      "file": "326_basalt0.png",
+      "role": "ground"
+    },
+    {
+      "file": "327_basalt1.png",
+      "role": "ground"
+    },
+    {
+      "file": "328_basalt2.png",
+      "role": "ground"
+    },
+    {
+      "file": "329_basaltwall_corner_nw.png",
+      "role": "cliff",
+      "terrain": "basaltwall",
+      "autotile": "corner_nw",
+      "collides": true
+    },
+    {
+      "file": "330_basaltwall_edge_n.png",
+      "role": "cliff",
+      "terrain": "basaltwall",
+      "autotile": "edge_n",
+      "collides": true
+    },
+    {
+      "file": "331_basaltwall_corner_ne.png",
+      "role": "cliff",
+      "terrain": "basaltwall",
+      "autotile": "corner_ne",
+      "collides": true
+    },
+    {
+      "file": "332_basaltwall_edge_w.png",
+      "role": "cliff",
+      "terrain": "basaltwall",
+      "autotile": "edge_w",
+      "collides": true
+    },
+    {
+      "file": "333_basaltwall_fill.png",
+      "role": "cliff",
+      "terrain": "basaltwall",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "file": "334_basaltwall_edge_e.png",
+      "role": "cliff",
+      "terrain": "basaltwall",
+      "autotile": "edge_e",
+      "collides": true
+    },
+    {
+      "file": "335_basaltwall_corner_sw.png",
+      "role": "cliff",
+      "terrain": "basaltwall",
+      "autotile": "corner_sw",
+      "collides": true
+    },
+    {
+      "file": "336_basaltwall_edge_s.png",
+      "role": "cliff",
+      "terrain": "basaltwall",
+      "autotile": "edge_s",
+      "collides": true
+    },
+    {
+      "file": "337_basaltwall_corner_se.png",
+      "role": "cliff",
+      "terrain": "basaltwall",
+      "autotile": "corner_se",
+      "collides": true
+    },
+    {
+      "file": "338_basaltwall_inner_nw.png",
+      "role": "cliff",
+      "terrain": "basaltwall",
+      "autotile": "inner_nw",
+      "collides": true
+    },
+    {
+      "file": "339_basaltwall_inner_ne.png",
+      "role": "cliff",
+      "terrain": "basaltwall",
+      "autotile": "inner_ne",
+      "collides": true
+    },
+    {
+      "file": "340_basaltwall_inner_sw.png",
+      "role": "cliff",
+      "terrain": "basaltwall",
+      "autotile": "inner_sw",
+      "collides": true
+    },
+    {
+      "file": "341_basaltwall_inner_se.png",
+      "role": "cliff",
+      "terrain": "basaltwall",
+      "autotile": "inner_se",
+      "collides": true
+    },
+    {
+      "file": "342_basaltwall_fill_v1.png",
+      "role": "cliff",
+      "terrain": "basaltwall",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "file": "343_basaltwall_fill_v2.png",
+      "role": "cliff",
+      "terrain": "basaltwall",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "file": "344_basaltwall_edge_s_v1.png",
+      "role": "cliff",
+      "terrain": "basaltwall",
+      "autotile": "edge_s",
+      "collides": true
+    },
+    {
+      "file": "345_void_corner_nw.png",
+      "role": "void",
+      "terrain": "void",
+      "autotile": "corner_nw",
+      "collides": true,
+      "requires_ability": "starreach"
+    },
+    {
+      "file": "346_void_edge_n.png",
+      "role": "void",
+      "terrain": "void",
+      "autotile": "edge_n",
+      "collides": true,
+      "requires_ability": "starreach"
+    },
+    {
+      "file": "347_void_corner_ne.png",
+      "role": "void",
+      "terrain": "void",
+      "autotile": "corner_ne",
+      "collides": true,
+      "requires_ability": "starreach"
+    },
+    {
+      "file": "348_void_edge_w.png",
+      "role": "void",
+      "terrain": "void",
+      "autotile": "edge_w",
+      "collides": true,
+      "requires_ability": "starreach"
+    },
+    {
+      "file": "349_void_fill.png",
+      "role": "void",
+      "terrain": "void",
+      "autotile": "fill",
+      "collides": true,
+      "requires_ability": "starreach",
+      "animation": {
+        "frames": [
+          349,
+          360,
+          361
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "file": "350_void_edge_e.png",
+      "role": "void",
+      "terrain": "void",
+      "autotile": "edge_e",
+      "collides": true,
+      "requires_ability": "starreach"
+    },
+    {
+      "file": "351_void_corner_sw.png",
+      "role": "void",
+      "terrain": "void",
+      "autotile": "corner_sw",
+      "collides": true,
+      "requires_ability": "starreach"
+    },
+    {
+      "file": "352_void_edge_s.png",
+      "role": "void",
+      "terrain": "void",
+      "autotile": "edge_s",
+      "collides": true,
+      "requires_ability": "starreach"
+    },
+    {
+      "file": "353_void_corner_se.png",
+      "role": "void",
+      "terrain": "void",
+      "autotile": "corner_se",
+      "collides": true,
+      "requires_ability": "starreach"
+    },
+    {
+      "file": "354_void_strip_h.png",
+      "role": "void",
+      "terrain": "void",
+      "autotile": "strip_h",
+      "collides": true,
+      "requires_ability": "starreach"
+    },
+    {
+      "file": "355_void_strip_v.png",
+      "role": "void",
+      "terrain": "void",
+      "autotile": "strip_v",
+      "collides": true,
+      "requires_ability": "starreach"
+    },
+    {
+      "file": "356_void_inner_nw.png",
+      "role": "void",
+      "terrain": "void",
+      "autotile": "inner_nw",
+      "collides": true,
+      "requires_ability": "starreach"
+    },
+    {
+      "file": "357_void_inner_ne.png",
+      "role": "void",
+      "terrain": "void",
+      "autotile": "inner_ne",
+      "collides": true,
+      "requires_ability": "starreach"
+    },
+    {
+      "file": "358_void_inner_sw.png",
+      "role": "void",
+      "terrain": "void",
+      "autotile": "inner_sw",
+      "collides": true,
+      "requires_ability": "starreach"
+    },
+    {
+      "file": "359_void_inner_se.png",
+      "role": "void",
+      "terrain": "void",
+      "autotile": "inner_se",
+      "collides": true,
+      "requires_ability": "starreach"
+    },
+    {
+      "file": "360_void_a2.png",
+      "role": "void",
+      "collides": true,
+      "requires_ability": "starreach"
+    },
+    {
+      "file": "361_void_a3.png",
+      "role": "void",
+      "collides": true,
+      "requires_ability": "starreach"
+    },
+    {
+      "file": "362_dawngrass0.png",
+      "role": "ground"
+    },
+    {
+      "file": "363_dawngrass1.png",
+      "role": "ground"
+    },
+    {
+      "file": "364_dawngrass2.png",
+      "role": "ground"
+    },
+    {
+      "file": "365_dawngrass3.png",
+      "role": "ground"
+    },
+    {
+      "file": "366_dawnpath_corner_nw.png",
+      "role": "path",
+      "terrain": "dawnpath",
+      "autotile": "corner_nw"
+    },
+    {
+      "file": "367_dawnpath_edge_n.png",
+      "role": "path",
+      "terrain": "dawnpath",
+      "autotile": "edge_n"
+    },
+    {
+      "file": "368_dawnpath_corner_ne.png",
+      "role": "path",
+      "terrain": "dawnpath",
+      "autotile": "corner_ne"
+    },
+    {
+      "file": "369_dawnpath_edge_w.png",
+      "role": "path",
+      "terrain": "dawnpath",
+      "autotile": "edge_w"
+    },
+    {
+      "file": "370_dawnpath_fill.png",
+      "role": "path",
+      "terrain": "dawnpath",
+      "autotile": "fill"
+    },
+    {
+      "file": "371_dawnpath_edge_e.png",
+      "role": "path",
+      "terrain": "dawnpath",
+      "autotile": "edge_e"
+    },
+    {
+      "file": "372_dawnpath_corner_sw.png",
+      "role": "path",
+      "terrain": "dawnpath",
+      "autotile": "corner_sw"
+    },
+    {
+      "file": "373_dawnpath_edge_s.png",
+      "role": "path",
+      "terrain": "dawnpath",
+      "autotile": "edge_s"
+    },
+    {
+      "file": "374_dawnpath_corner_se.png",
+      "role": "path",
+      "terrain": "dawnpath",
+      "autotile": "corner_se"
+    },
+    {
+      "file": "375_dawnpath_strip_h.png",
+      "role": "path",
+      "terrain": "dawnpath",
+      "autotile": "strip_h"
+    },
+    {
+      "file": "376_dawnpath_strip_v.png",
+      "role": "path",
+      "terrain": "dawnpath",
+      "autotile": "strip_v"
+    },
+    {
+      "file": "377_dawnpath_inner_nw.png",
+      "role": "path",
+      "terrain": "dawnpath",
+      "autotile": "inner_nw"
+    },
+    {
+      "file": "378_dawnpath_inner_ne.png",
+      "role": "path",
+      "terrain": "dawnpath",
+      "autotile": "inner_ne"
+    },
+    {
+      "file": "379_dawnpath_inner_sw.png",
+      "role": "path",
+      "terrain": "dawnpath",
+      "autotile": "inner_sw"
+    },
+    {
+      "file": "380_dawnpath_inner_se.png",
+      "role": "path",
+      "terrain": "dawnpath",
+      "autotile": "inner_se"
+    },
+    {
+      "file": "381_dawnpath_fill_v1.png",
+      "role": "path",
+      "terrain": "dawnpath",
+      "autotile": "fill"
+    },
+    {
+      "file": "382_dawnpath_fill_v2.png",
+      "role": "path",
+      "terrain": "dawnpath",
+      "autotile": "fill"
+    },
+    {
+      "file": "383_dawntuft_fill.png",
+      "role": "ground",
+      "terrain": "dawntuft",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "384_dawntuft_fill_v1.png",
+      "role": "ground",
+      "terrain": "dawntuft",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "385_dawntuft_fill_v2.png",
+      "role": "ground",
+      "terrain": "dawntuft",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
     }
   ]
 }

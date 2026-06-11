@@ -206,7 +206,11 @@ go digging on every task.
   (gates/chip/stat hooks — exact constants atop `BattleEngine.ts`, mirrored in
   `03-moves.md`), as do drain/recoil/flinch/heal/cure/screens/caltrops/pivot/selfDoze/
   highCrit. **Kindling is live**: level-trigger checks in `gainExp` → `ui/KindlePrompt`
-  (declining re-offers next level); Hearthkit's bond trigger awaits a bond system.
+  (declining re-offers next level). **Bond is live too (2026-06):** +2 per standing
+  participant on a battle win (`BattleScene.warmParticipantsBond`), +1 per medicine heal
+  (`ItemsMenu`), capped 0–255; bond-trigger kindlings (Hearthkit min 160) offer via the
+  same `KindlePrompt`, declining re-offers on the next bond gain. Bond never touches
+  battle maths.
   `TrainerDef.ai:'smart'` = warden/boss AI tier. Re-run `simulate.mjs` after status/move
   changes — it now exit-codes (one waived utility-kit outlier list lives in the script).
 - **Maps are our own JSON** (not Tiled), snake_case keyed, parsed into
@@ -521,6 +525,14 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   stripped, so they can't be re-expanded) run **`tools/maps/apply_tree_nubs.py`**
   (reclassifies the baked tree grid, swaps in nub gids only where a cell is now a
   nub — idempotent, no churn).
+- **The shared overworld set is FROZEN at 386 tiles (TILEFORGE 2026-06).** Every remaining
+  region's terrain family is appended (North snow/snowpatch/snowtrail/ice/glacierwall/scree/
+  frosttuft, West goldgrass/goldtuft/ruinfloor/blight/blighttuft/murk/sunpool, Central
+  basalt/basaltwall/void [Starreach-gated, the water/tidecall pattern], Dawnstead's daylit
+  dawngrass/dawnpath/dawntuft — names in `vesper_overworld.index.json`). Don't append more;
+  new needs = accent sets or objects. If the set ever DOES grow, run
+  **`tools/maps/repin_tile_count.py`** (the general tile_count re-pin, generalised from
+  apply_tree_nubs). Set builds are now deterministic (crc32 seeds, not salted `hash()`).
 - **New area? Use the `build-map` skill** — compose with `tools/maps/patterns.py` stamps on
   mapkit (`build_saltreach_fen_i.py` is the pattern showcase: paint-derived encounter zones,
   trainer-beat/cache/sign stamps, a LEDGED terrace bank). Engine supports one-way **ledges**
