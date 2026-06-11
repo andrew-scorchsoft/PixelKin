@@ -450,6 +450,22 @@
       "transition": "fade"
     },
     {
+      "id": "shortcut_stair",
+      "at": {
+        "tx": 21,
+        "ty": 3
+      },
+      "trigger": "step_on",
+      "to_map": "windward_stair_ii",
+      "to": {
+        "tx": 4,
+        "ty": 20
+      },
+      "facing": "up",
+      "requires_flag": "flag:shortcut_windward",
+      "transition": "fade"
+    },
+    {
       "id": "to_windeye",
       "at": {
         "tx": 28,

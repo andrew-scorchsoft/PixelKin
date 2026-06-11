@@ -405,6 +405,34 @@
       "height": 64,
       "tw": 3,
       "th": 4
+    },
+    "windward_aerie": {
+      "path": "assets/sprites/objects/windward_aerie.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "windward_cairn": {
+      "path": "assets/sprites/objects/windward_cairn.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "windward_kite_wreck": {
+      "path": "assets/sprites/objects/windward_kite_wreck.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "windward_updraft": {
+      "path": "assets/sprites/objects/windward_updraft.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
     }
   }
 }

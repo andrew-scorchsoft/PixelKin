@@ -331,6 +331,12 @@ m["warps"] += [
      "to_map": "galehigh_skyloft", "to": {"tx": 9, "ty": 10}, "facing": "up",
      "requires_flag": "flag:q_north_kite_blessed",
      "blocked_ref": "npc.winch_not_ready", "transition": "fade"},
+    # THE DROP-HOME THERMAL back up to the Windward II crags (the return half
+    # of `shortcut_galehigh` — N2's drop warp lands ON this tile; the ride up
+    # opens with the same flag, set on first reaching the crags)
+    {"id": "shortcut_stair", "at": {"tx": 21, "ty": 3}, "trigger": "step_on",
+     "to_map": "windward_stair_ii", "to": {"tx": 4, "ty": 20}, "facing": "up",
+     "requires_flag": "flag:shortcut_windward", "transition": "fade"},
 ]
 
 # the Wind-Eye mouth on the high terrace (the gated spur promise, §3a rule 8)

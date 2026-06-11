@@ -369,6 +369,52 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/galehigh-terraces-b.mp3',
   },
+  // Windward Stair I → II — the North's great switchback climb (band 34-36);
+  // the I→II wind-gap is the Updraft Kite boundary, and reaching the II crags
+  // sets flag:shortcut_windward (the drop home to Galehigh).
+  windward_stair_i: {
+    json: 'assets/maps/windward_stair_i.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/windward-stair-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/windward-stair-a.webp',
+      'assets/backgrounds/battle/windward-stair-b.webp',
+    ],
+  },
+  windward_stair_ii: {
+    json: 'assets/maps/windward_stair_ii.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/windward-stair-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/windward-stair-a.webp',
+      'assets/backgrounds/battle/windward-stair-b.webp',
+    ],
+  },
+  // The wind country's Updraft spurs reuse the stair loop + backdrops (the
+  // Phase-0 reuse table): the Wind-Eye sky-grotto (unique Storm kin) off
+  // Galehigh, and Thunderroost (the storm-birds' aerie) off Windward II.
+  wind_eye: {
+    json: 'assets/maps/wind_eye.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/windward-stair-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/windward-stair-a.webp',
+      'assets/backgrounds/battle/windward-stair-b.webp',
+    ],
+  },
+  thunderroost: {
+    json: 'assets/maps/thunderroost.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/windward-stair-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/windward-stair-a.webp',
+      'assets/backgrounds/battle/windward-stair-b.webp',
+    ],
+  },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
   // Their battle backdrops are already rendered — see UPCOMING_BATTLE_BACKDROPS below.
