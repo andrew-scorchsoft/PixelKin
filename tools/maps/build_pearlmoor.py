@@ -72,6 +72,13 @@ mk.blob(sand, W, H, 19, 15, 1.8, 1.2)
 mk.rect(sand, W, H, 13, 18, 14, 21, 1)        # central arrival jetty (sand) down into the harbour
 # carve the water out from under the jetty so the jetty boards stay ungated/walkable
 mk.rect(water, W, H, 13, 18, 14, 21, 0)
+# THE BREAKWATER ROOT (the Causeway Bell, walkthrough/01-south): a stone-and-
+# board causeway noses south-east out of the quay toward the Moor-bell shrine
+# (its own map, pearlmoor_breakwater). Carved to SAND so it is walked ON FOOT —
+# never Tidecall-gated (spine §0 rule 1); the moor-gate warps at its seaward
+# end are flag-gated on the netmender's rope instead.
+mk.rect(sand, W, H, 24, 18, 25, 23, 1)
+mk.rect(water, W, H, 24, 18, 25, 23, 0)
 
 # tall-grass fringe (grass-kin encounter patch) tucked top-left under the tree-line
 tallgrass = mk.make_grid(W, H)
@@ -197,6 +204,7 @@ for (x, y) in [(4, 21), (10, 22), (18, 22), (23, 21), (6, 20), (21, 20)]:
 # signs immediately beside the path the player walks (never mid-field)
 sign_tiles = {
     "sign_welcome": (12, 8),     # by the Lumenary forecourt / spine head
+    "sign_breakwater": (26, 16),  # beside the moor-gate, naming the silent bell
     "sign_lumenary": (15, 7),    # right of the Lumenary door
     "sign_shop": (7, 14),        # across the promenade from the shop door — NOT
                                  # at (4,12): that tile is the west lane's only
@@ -215,9 +223,14 @@ mk.fence_run(deco, W, H, 17, 9, 19)
 for (x, y) in [(17, 10), (18, 10), (19, 10)]:
     deco[y * W + x] = gid("flowerbed_a") if x % 2 else gid("flowerbed_b")
 mk.fence_run(deco, W, H, 17, 11, 19)
-# quay boulders + harbour-mouth rocks
-for (x, y) in [(2, 16), (25, 17), (10, 16), (26, 21)]:
+# quay boulders + harbour-mouth rocks ((26,17) keeps the breakwater-root
+# approach at (24-25,17) open — a boulder at (25,17) would seal the moor-gate)
+for (x, y) in [(2, 16), (26, 17), (10, 16), (26, 21)]:
     deco[y * W + x] = gid("boulder")
+# the breakwater root's worked boards (dock over SAND -> always walkable)
+for ty in (18, 19, 20, 21, 22):
+    deco[ty * W + 24] = gid("dock")
+    deco[ty * W + 25] = gid("dock")
 
 # scatter decor only beside the lit lane so the open field stays clean
 near_path = set()
@@ -231,6 +244,25 @@ deco_avoid = avoid | {(x, y) for y in range(H) for x in range(W) if (x, y) not i
 # keep scatter off the dock/buoy/sign/lamp/flower cells already placed
 deco_avoid |= {(x, y) for (x, y) in dock_cells}
 mk.scatter_decor(deco, base, W, H, rng, density=0.15, avoid=deco_avoid)
+
+# ---- the Tide-blessing band (Arc E) -------------------------------------------
+# Row 10 is the one horizontal cut between the Lumenary forecourt and the rest
+# of the quay: every post-Gleam walk back into town crosses it. Band only the
+# WALKABLE cells (tree border, shop/inn footprints and the fenced flowerbeds are
+# solid — a trigger there would audit as unreachable content); the tree_a canopy
+# cells are walk-under, so they ARE banded.
+# (audit_flow choke note: the band's job is to cut Lumenary<->town, which it
+# does completely; the audit's long-axis pair test paths west-gate -> east-gate
+# along row 12 — a route the band never needs to guard — so its "walked around"
+# WARN on script.tide_blessing is expected and justified.)
+BLESSING_ROW = 10
+blessing_cols = [x for x in range(W)
+                 if not tree[BLESSING_ROW * W + x]
+                 and not (SHOP["at"][0] <= x < SHOP["at"][0] + SHOP["w"])
+                 and not (INN["at"][0] <= x < INN["at"][0] + INN["w"])
+                 and x not in (17, 18, 19)   # the fenced flowerbeds
+                 and x != 25]                # col 25 is a sealed pocket (sign_fen
+                                             # at (25,11) closes it from the lane)
 
 # ---- assemble ---------------------------------------------------------------
 m = {
@@ -261,6 +293,17 @@ m = {
         # The inn room is 14 wide -> its doormat column is 7, not the shops' 6.
         {"id": "to_inn", "at": {"tx": inn_door[0], "ty": inn_door[1]}, "trigger": "interact",
          "to_map": "pearlmoor_inn", "to": {"tx": 8, "ty": 10}, "facing": "down", "transition": "door"},
+        # THE MOOR-GATE — the breakwater causeway's seaward end (the Causeway
+        # Bell loop). Gated on the netmender's rope, with her own "not yet"
+        # line; lands ON the breakwater's return pair. Both root columns warp.
+        {"id": "to_breakwater", "at": {"tx": 24, "ty": 23}, "trigger": "step_on",
+         "to_map": "pearlmoor_breakwater", "to": {"tx": 5, "ty": 0}, "facing": "down",
+         "requires_flag": "flag:q_south_has_rope", "blocked_ref": "npc.netmender_gate",
+         "transition": "fade"},
+        {"id": "to_breakwater_e", "at": {"tx": 25, "ty": 23}, "trigger": "step_on",
+         "to_map": "pearlmoor_breakwater", "to": {"tx": 6, "ty": 0}, "facing": "down",
+         "requires_flag": "flag:q_south_has_rope", "blocked_ref": "npc.netmender_gate",
+         "transition": "fade"},
         # The Lanternway west to Vesper Crossroads (the hub; graph.ts spoke).
         {"id": "to_crossroads", "at": {"tx": 0, "ty": 12}, "trigger": "step_on",
          "to_map": "vesper_crossroads", "to": {"tx": 19, "ty": 9}, "facing": "left",
@@ -270,9 +313,23 @@ m = {
          "to_map": "saltreach_fen_i", "to": {"tx": 1, "ty": 38}, "facing": "right",
          "transition": "fade"},
     ],
+    # E — the Tide-blessing set-piece (Arc E, the cool mirror of the Lantern-
+    # fair): banded across every WALKABLE tile of row 10 (see blessing_cols
+    # above) so the first walk back from the Gleam always lands it; each tile
+    # hides itself once the band has fired.
     "triggers": [
+        {"id": f"tide_blessing_{x:02d}", "kind": "cutscene", "at": {"tx": x, "ty": BLESSING_ROW},
+         "activation": "step_on", "ref": "script.tide_blessing", "once": True,
+         "requires_flag": "gleam:tide",
+         "sets_flags": ["flag:tide_blessing_seen"],
+         "hidden_when_flag": "flag:tide_blessing_seen"}
+        for x in blessing_cols
+    ] + [
         {"id": "sign_welcome", "kind": "sign", "at": {"tx": sign_tiles["sign_welcome"][0], "ty": sign_tiles["sign_welcome"][1]},
          "activation": "interact", "ref": "sign.pearlmoor_welcome"},
+        {"id": "sign_breakwater", "kind": "sign",
+         "at": {"tx": sign_tiles["sign_breakwater"][0], "ty": sign_tiles["sign_breakwater"][1]},
+         "activation": "interact", "ref": "sign.breakwater_gate"},
         {"id": "sign_lumenary", "kind": "sign", "at": {"tx": sign_tiles["sign_lumenary"][0], "ty": sign_tiles["sign_lumenary"][1]},
          "activation": "interact", "ref": "sign.pearlmoor_lumenary"},
         {"id": "sign_shop", "kind": "sign", "at": {"tx": sign_tiles["sign_shop"][0], "ty": sign_tiles["sign_shop"][1]},
@@ -299,7 +356,9 @@ m = {
          "table": [{"kin_id": 2, "weight": 45, "min_level": 10, "max_level": 12},
                    {"kin_id": 27, "weight": 35, "min_level": 10, "max_level": 12},
                    {"kin_id": 24, "weight": 20, "min_level": 11, "max_level": 12}]},
-        {"id": "harbour_water_e", "terrain": "water", "rect": {"tx": 16, "ty": 19, "w": 9, "h": 4},
+        # (w 8, not 9: cols 16-23 — the breakwater root at 24-25 stays out of the
+        # gated water so the causeway is never Tidecall-gated.)
+        {"id": "harbour_water_e", "terrain": "water", "rect": {"tx": 16, "ty": 19, "w": 8, "h": 4},
          "encounter_rate": 0.07, "requires_ability": "tidecall",
          "table": [{"kin_id": 2, "weight": 45, "min_level": 10, "max_level": 12},
                    {"kin_id": 27, "weight": 35, "min_level": 10, "max_level": 12},
@@ -309,6 +368,55 @@ m = {
         # Townsfolk for Tide-blessing flavour, beside the promenade (not mid-field).
         {"id": "fisher", "at": {"tx": 16, "ty": 13}, "facing": "left", "sprite": "wren",
          "movement": "look_around", "dialogue_ref": "npc.pearlmoor_fisher"},
+        # THE NETMENDER — keeper of the bell-rope and giver of S1 "The Last Buoy
+        # Out". One body, nine flag-disjoint stages by the moor-gate (the
+        # standing kit's giver-swap pattern; the flag chain is strictly ordered:
+        # q_south_bell -> picked_net_floats -> q_south_has_rope ->
+        # q_south_bell_rung -> gleam:tide -> q_south_buoys -> q_south_buoys_lit
+        # -> q_south_buoys_done, so no two stages can coexist).
+        {"id": "netmender_pre", "at": {"tx": 23, "ty": 17}, "facing": "down",
+         "sprite": "npc_old_woman", "movement": "static",
+         "dialogue_ref": "npc.netmender_pre",
+         "hidden_when_flag": "flag:q_south_bell"},
+        {"id": "netmender_floats", "at": {"tx": 23, "ty": 17}, "facing": "down",
+         "sprite": "npc_old_woman", "movement": "static",
+         "dialogue_ref": "npc.netmender_floats",
+         "requires_flag": "flag:q_south_bell",
+         "hidden_when_flag": "flag:picked_net_floats"},
+        {"id": "netmender_rope", "at": {"tx": 23, "ty": 17}, "facing": "down",
+         "sprite": "npc_old_woman", "movement": "static",
+         "dialogue_ref": "script.netmender_rope",
+         "requires_flag": "flag:picked_net_floats",
+         "hidden_when_flag": "flag:q_south_has_rope"},
+        {"id": "netmender_sent", "at": {"tx": 23, "ty": 17}, "facing": "down",
+         "sprite": "npc_old_woman", "movement": "static",
+         "dialogue_ref": "npc.netmender_sent",
+         "requires_flag": "flag:q_south_has_rope",
+         "hidden_when_flag": "flag:q_south_bell_rung"},
+        {"id": "netmender_rung", "at": {"tx": 23, "ty": 17}, "facing": "down",
+         "sprite": "npc_old_woman", "movement": "static",
+         "dialogue_ref": "npc.netmender_rung",
+         "requires_flag": "flag:q_south_bell_rung",
+         "hidden_when_flag": "gleam:tide"},
+        {"id": "netmender_buoys", "at": {"tx": 23, "ty": 17}, "facing": "down",
+         "sprite": "npc_old_woman", "movement": "static",
+         "dialogue_ref": "script.netmender_buoys",
+         "requires_flag": "gleam:tide",
+         "hidden_when_flag": "flag:q_south_buoys"},
+        {"id": "netmender_buoys_wait", "at": {"tx": 23, "ty": 17}, "facing": "down",
+         "sprite": "npc_old_woman", "movement": "static",
+         "dialogue_ref": "npc.netmender_buoys_wait",
+         "requires_flag": "flag:q_south_buoys",
+         "hidden_when_flag": "flag:q_south_buoys_lit"},
+        {"id": "netmender_drift", "at": {"tx": 23, "ty": 17}, "facing": "down",
+         "sprite": "npc_old_woman", "movement": "static",
+         "dialogue_ref": "script.netmender_drift",
+         "requires_flag": "flag:q_south_buoys_lit",
+         "hidden_when_flag": "flag:q_south_buoys_done"},
+        {"id": "netmender_done", "at": {"tx": 23, "ty": 17}, "facing": "down",
+         "sprite": "npc_old_woman", "movement": "static",
+         "dialogue_ref": "npc.netmender_done",
+         "requires_flag": "flag:q_south_buoys_done"},
         # The Tide-blessing festival (Arc E): once 'gleam:tide' stands, the quay
         # fills — the second "Gleam = belonging" payoff, pure data.
         {"id": "blessing_elder", "at": {"tx": 10, "ty": 13}, "facing": "down",
@@ -317,14 +425,19 @@ m = {
         {"id": "blessing_kid", "at": {"tx": 18, "ty": 13}, "facing": "down",
          "sprite": "npc_child", "movement": "wander",
          "dialogue_ref": "npc.blessing_kid", "requires_flag": "gleam:tide"},
+        {"id": "blessing_singer", "at": {"tx": 12, "ty": 16}, "facing": "right",
+         "sprite": "npc_woman", "movement": "static",
+         "dialogue_ref": "npc.blessing_singer", "requires_flag": "gleam:tide"},
     ],
     # AbilityGate (Tidecall, make_passable) over the open harbour water — split W/E of the
     # central arrival jetty (cols 13-14) so the always-walkable jetty is never gated.
     "gates": [
         {"id": "harbour_gate_w", "ability": "tidecall", "effect": "make_passable",
          "rect": {"tx": 3, "ty": 18, "w": 9, "h": 5}},
+        # (w 8: the gate rect must stay on PURE water — an AbilityGate force-
+        # gates every tile it covers, and cols 24-25 are now the breakwater root.)
         {"id": "harbour_gate_e", "ability": "tidecall", "effect": "make_passable",
-         "rect": {"tx": 16, "ty": 18, "w": 9, "h": 5}}],
+         "rect": {"tx": 16, "ty": 18, "w": 8, "h": 5}}],
     "music": "assets/audio/music/dimglass-coast-a.mp3",
     "_doors": {"lumenary": lum_door, "lumenary_twin": lum_door_r,
                "shop": shop_door, "inn": inn_door},

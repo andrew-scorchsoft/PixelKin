@@ -83,6 +83,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'gullcry_rock', region: 'south', optional: true, reward: 'rare sea-bird kin + a Tide charm' },
     { map_id: 'tideglass_cavern', region: 'south', optional: true, reward: 'landmark micro-dungeon; a signature rare water kin' },
     { map_id: 'pearlmoor_quay', region: 'south' },
+    { map_id: 'pearlmoor_breakwater', region: 'south' }, // the Causeway Bell's foot causeway (Moor-bell shrine)
     { map_id: 'pearlmoor_lumenary', region: 'south' }, // interior: the Tide Lumenary (Reyl Wash)
     { map_id: 'pearlmoor_shop', region: 'south' }, // interior: the port chandlery
     { map_id: 'pearlmoor_inn', region: 'south' }, // interior: the quayside inn
@@ -91,6 +92,8 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'saltreach_fen_ii', region: 'east' }, // route: deep channels
     { map_id: 'sunkbell_shallows', region: 'east', optional: true, reward: 'rare Tide kin + item cache in a flooded shrine' },
     { map_id: 'lowleaf_hollow', region: 'east' }, // forest town + Lumenary
+    { map_id: 'lowleaf_lumenary', region: 'east' }, // interior: the Verdant Lumenary (Sable Quill)
+    { map_id: 'lowleaf_bower', region: 'east' }, // interior: the festival guest-bower (rest point)
     { map_id: 'glowmoss_deep', region: 'east' }, // forest interior (Glimmerstep)
     { map_id: 'glowmoss_deep_b1f', region: 'east' }, // the lower maze floor (ladder pair)
     { map_id: 'spore_grotto', region: 'east', optional: true, reward: 'rare Bug/Verdant kin + item' },
@@ -141,6 +144,9 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'pearlmoor_quay', to_map: 'pearlmoor_shop', via_warp: 'to_shop', bidirectional: true },
     { from_map: 'pearlmoor_quay', to_map: 'pearlmoor_inn', via_warp: 'to_inn', bidirectional: true },
     { from_map: 'pearlmoor_quay', to_map: 'pearlmoor_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
+    // The Causeway Bell: the moor-gate opens with the netmender's rope (the
+    // earned second-Gleam loop; Reyl's bond-test waits on flag:q_south_bell_rung).
+    { from_map: 'pearlmoor_quay', to_map: 'pearlmoor_breakwater', via_warp: 'to_breakwater', requires_flag: 'flag:q_south_has_rope', bidirectional: true },
 
     // ---- Main rim, clockwise: town -> route segment -> ... -> town -------------------
     { from_map: 'tinderwick', to_map: 'dimglass_coast', via_warp: 'to_coast', bidirectional: true },
@@ -152,6 +158,9 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'pearlmoor_quay', to_map: 'saltreach_fen_i', via_warp: 'to_fen', bidirectional: true },
     { from_map: 'saltreach_fen_i', to_map: 'saltreach_fen_ii', via_warp: 'to_fen_ii', requires_ability: 'tidecall', bidirectional: true },
     { from_map: 'saltreach_fen_ii', to_map: 'lowleaf_hollow', via_warp: 'to_hollow', bidirectional: true },
+    // Lowleaf interiors (door warps, both ways)
+    { from_map: 'lowleaf_hollow', to_map: 'lowleaf_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
+    { from_map: 'lowleaf_hollow', to_map: 'lowleaf_bower', via_warp: 'to_bower', bidirectional: true },
     { from_map: 'lowleaf_hollow', to_map: 'glowmoss_deep', via_warp: 'to_deepwood', requires_ability: 'glimmerstep', bidirectional: true },
     { from_map: 'glowmoss_deep', to_map: 'cinderhead_mine', via_warp: 'to_mine', bidirectional: true },
     { from_map: 'cinderhead_mine', to_map: 'cinderhead_deep', via_warp: 'to_deep', requires_ability: 'glimmerstep', bidirectional: true },

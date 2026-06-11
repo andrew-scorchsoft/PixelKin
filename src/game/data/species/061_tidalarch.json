@@ -75,6 +75,13 @@
       "rarity": "rare",
       "min": 22,
       "max": 24
+    },
+    {
+      "area": "sunkbell_shallows",
+      "terrain": "water",
+      "rarity": "very_rare",
+      "min": 19,
+      "max": 20
     }
   ],
   "scripted": false,

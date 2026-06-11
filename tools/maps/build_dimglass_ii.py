@@ -206,6 +206,25 @@ m = {
          "activation": "interact", "ref": "sign.flats_to_quay"},
         # (The two route trainers are SIGHT-driven NPCs now — they stand beside
         # the lane and challenge the player who walks into their line.)
+        # S1 "The Last Buoy Out": the netmender's three storm-dark buoys, relit
+        # IN ORDER quay-outward (a boolean chain — each buoy requires the one
+        # before it, with the netmender's rule as the blocked line). Interact
+        # from the water beside them (Tidecall ground; quest given post-Gleam).
+        {"id": "buoy_first", "kind": "cutscene", "at": {"tx": 14, "ty": 9},
+         "activation": "interact", "ref": "script.buoy_first", "once": True,
+         "requires_flag": "flag:q_south_buoys", "blocked_ref": "npc.buoy_dark",
+         "sets_flags": ["flag:q_south_buoy_a"],
+         "hidden_when_flag": "flag:q_south_buoy_a"},
+        {"id": "buoy_second", "kind": "cutscene", "at": {"tx": 16, "ty": 12},
+         "activation": "interact", "ref": "script.buoy_second", "once": True,
+         "requires_flag": "flag:q_south_buoy_a", "blocked_ref": "npc.buoy_order",
+         "sets_flags": ["flag:q_south_buoy_b"],
+         "hidden_when_flag": "flag:q_south_buoy_b"},
+        {"id": "buoy_last", "kind": "cutscene", "at": {"tx": 16, "ty": 20},
+         "activation": "interact", "ref": "script.buoy_last", "once": True,
+         "requires_flag": "flag:q_south_buoy_b", "blocked_ref": "npc.buoy_order",
+         "sets_flags": ["flag:q_south_buoys_lit"],
+         "hidden_when_flag": "flag:q_south_buoys_lit"},
     ],
     # Level band ~8-10 (walkthrough §6): the bridge into Pearlmoor's 12. Brinelet/
     # Lumpin carry over from I; Brineroll (#27) is the flats' bigger tide-shape.
@@ -252,8 +271,27 @@ m = {
         {"id": "wayfarer_b_after", "at": {"tx": 12, "ty": 22}, "facing": "left", "sprite": "npc_shopkeeper",
          "movement": "static", "dialogue_ref": "npc.flats_wayfarer_b",
          "requires_flag": "flag:flats_trainer_b_beaten"},
+        # FENN's sky-watcher spot (C2 lands here once `dusk_begins` moves him off
+        # the waystone — the crossroads placement hides on the same flag), and
+        # S2 "A Letter for Fenn"'s delivery point: three flag-disjoint stages.
         {"id": "sky_watcher", "at": {"tx": 12, "ty": 18}, "facing": "up", "sprite": "npc_mentor",
-         "movement": "look_around", "dialogue_ref": "npc.flats_sky_watcher"},
+         "movement": "look_around", "dialogue_ref": "npc.flats_sky_watcher",
+         "requires_flag": "flag:dusk_begins",
+         "hidden_when_flag": "flag:q_south_letter"},
+        {"id": "sky_watcher_letter", "at": {"tx": 12, "ty": 18}, "facing": "up", "sprite": "npc_mentor",
+         "movement": "look_around", "dialogue_ref": "script.fenn_letter",
+         "requires_flag": "flag:q_south_letter",
+         "hidden_when_flag": "flag:q_south_letter_given"},
+        {"id": "sky_watcher_after", "at": {"tx": 12, "ty": 18}, "facing": "up", "sprite": "npc_mentor",
+         "movement": "look_around", "dialogue_ref": "npc.flats_sky_watcher_after",
+         "requires_flag": "flag:q_south_letter_given"},
+        # The netmender's storm-drifted NET-FLOATS (the Causeway Bell's collinear
+        # errand leg) — appears on the flats once Reyl sets the quest.
+        {"id": "cache_net_floats", "at": {"tx": 11, "ty": 4}, "facing": "down",
+         "sprite": "item_cache", "movement": "static",
+         "dialogue_ref": "script.pickup_net_floats",
+         "requires_flag": "flag:q_south_bell",
+         "hidden_when_flag": "flag:picked_net_floats"},
         # Item caches on the flats (interact -> pickup script -> vanish by flag).
         {"id": "cache_balm", "at": {"tx": 11, "ty": 9}, "facing": "down",
          "sprite": "item_cache", "movement": "static",

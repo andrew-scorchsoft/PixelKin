@@ -42,14 +42,25 @@ import { getTrainer, getTrainerLines } from '@game/content/trainers';
 import { getItem } from '@game/content/items';
 import { trainerPayout } from '@game/content/economy';
 import { resolveBattleBackdrop } from '@game/data/world/maps';
+import type { ItemDef } from '@game/content/types';
 import type { KinInstanceData, InventoryData } from '@game/systems/save/types';
-import type { WorldFlag, AbilityId } from '@game/data/world/types';
+import type { WorldFlag, AbilityId, EncounterTerrain } from '@game/data/world/types';
 
 const MUSIC_DIR = 'assets/audio/music/';
 
 /** What the caller hands in to start a fight. */
 export type BattleRequest =
-  | { kind: 'wild'; species_id: number; level: number; party: KinInstanceData[]; box: KinInstanceData[]; inventory: InventoryData }
+  | {
+      kind: 'wild';
+      species_id: number;
+      level: number;
+      /** Encounter terrain the kin was met on (tall_grass/water/cave/sand) —
+       *  conditional charges (e.g. the Drift Charm on water) check it at throw time. */
+      terrain?: EncounterTerrain;
+      party: KinInstanceData[];
+      box: KinInstanceData[];
+      inventory: InventoryData;
+    }
   | { kind: 'trainer'; trainer: string; party: KinInstanceData[]; box: KinInstanceData[]; inventory: InventoryData };
 
 /** What the scene hands back via onComplete. */
@@ -103,6 +114,9 @@ export class BattleScene extends Phaser.Scene {
   private moneyEarned = 0;
   private dexSeen = new Set<number>();
   private finished = false;
+  /** Turns already resolved — 0 while choosing the encounter's FIRST action
+   *  (conditional charges with `first_turn` check this at throw time). */
+  private turnsResolved = 0;
 
   constructor() {
     super('Battle');
@@ -115,6 +129,7 @@ export class BattleScene extends Phaser.Scene {
     this.grantAbilities = [];
     this.moneyEarned = 0;
     this.dexSeen = new Set();
+    this.turnsResolved = 0;
     this.cameras.main.setBackgroundColor(COLORS.night);
     this.sfx = new Sfx(this);
     this.music = new MusicDirector(this);
@@ -210,6 +225,7 @@ export class BattleScene extends Phaser.Scene {
     while (!this.engine.ended) {
       const events = await this.chooseAndResolve();
       await this.playEvents(events);
+      this.turnsResolved++;
 
       // If our active kin fainted but we have more, prompt a replacement.
       if (!this.engine.ended && this.engine.player.isFainted) {
@@ -274,7 +290,38 @@ export class BattleScene extends Phaser.Scene {
 
     const def = getItem(choice);
     this.consumeItem(choice);
-    return this.engine.catchWithBonus(choice, def?.catch_bonus ?? 1.0);
+    return this.engine.catchWithBonus(choice, def ? this.effectiveCatchBonus(def) : 1.0);
+  }
+
+  /**
+   * The lamp bonus a charge actually delivers on THIS throw. Unconditional
+   * charges pass their `catch_bonus` straight through; a conditional charge
+   * (docs/mechanics/04-capture.md, "Specialty charges") only burns at its full
+   * bonus while its condition holds — otherwise the throw falls back to a plain
+   * ×1.0 (the charge is still spent; reading the moment is the skill).
+   */
+  private effectiveCatchBonus(def: ItemDef): number {
+    const bonus = def.catch_bonus ?? 1.0;
+    const cond = def.condition;
+    if (!cond) return bonus;
+    const foe = this.engine.foe;
+    const met = ((): boolean => {
+      switch (cond.kind) {
+        case 'terrain':
+          return this.request.kind === 'wild' && this.request.terrain === cond.terrain;
+        case 'hp_below':
+          return foe.hpRatio < cond.ratio;
+        case 'status':
+          return foe.status === cond.status;
+        case 'any_status':
+          return foe.status !== 'none';
+        case 'defender_type':
+          return foe.species.types.some((t) => cond.types.includes(t));
+        case 'first_turn':
+          return this.turnsResolved === 0;
+      }
+    })();
+    return met ? bonus : 1.0;
   }
 
   // --- Menus ---------------------------------------------------------------
@@ -364,7 +411,7 @@ export class BattleScene extends Phaser.Scene {
         return null;
       }
       this.consumeItem(choice);
-      return this.engine.catchWithBonus(choice, def.catch_bonus ?? 1.0);
+      return this.engine.catchWithBonus(choice, this.effectiveCatchBonus(def));
     }
 
     if (def.category === 'medicine' && def.heal) {

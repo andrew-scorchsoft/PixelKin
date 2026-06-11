@@ -150,6 +150,88 @@ export const TRAINERS: TrainerRegistry = {
     music: 'battle-emberfall',
   },
 
+  // Saltreach Fen II — the deep channels' one route trainer: the reed-line
+  // lamplighter who keeps the lantern-reeds (the 17→18 top of the fen ramp).
+  reed_lamplighter: {
+    id: 'reed_lamplighter',
+    name: 'TARN',
+    title: 'Reed-lamplighter',
+    party: [
+      { species_id: 31, level: 17 }, // Lumpin — Tide/Light
+      { species_id: 59, level: 18 }, // Dewling — Verdant/Tide (ace)
+    ],
+    payout: 288, // route 16 × ace 18
+    music: 'battle-emberfall',
+  },
+
+  // Lowleaf Hollow — the forest-fringe lane's two bloom-warden SIGHT trainers
+  // (keeper class, 10-economy §4): the 19–21 on-ramp to Sable's ace 22, posted
+  // on the fen-wood lane so the Tended Bed errand walks through them.
+  bloom_warden_a: {
+    id: 'bloom_warden_a',
+    name: 'IVY',
+    title: 'Bloom-warden',
+    party: [
+      { species_id: 56, level: 19 }, // Sporeling — Verdant
+      { species_id: 65, level: 20 }, // Glowsip — Verdant/Light (ace)
+    ],
+    payout: 400, // keeper 20 × ace 20
+    music: 'battle-emberfall',
+  },
+  bloom_warden_b: {
+    id: 'bloom_warden_b',
+    name: 'FERN',
+    title: 'Bloom-warden',
+    party: [
+      { species_id: 38, level: 20 }, // Mossglow — Light/Verdant
+      { species_id: 67, level: 21 }, // Fennlight — Verdant/Light (ace)
+    ],
+    payout: 420, // keeper 20 × ace 21
+    music: 'battle-emberfall',
+  },
+
+  // E2 "Spores for the Stall" — the cross Sporeling squatting on the third
+  // spore cache in Glowmoss Deep. A wild heart in a trainer's frame (the
+  // scripted-battle pattern); it pays no wicks — it is not a person.
+  spore_squatter: {
+    id: 'spore_squatter',
+    name: 'CROSS SPORELING',
+    party: [
+      { species_id: 56, level: 21 }, // Sporeling — Verdant, cross as a wet cat
+    ],
+    music: 'battle-emberfall',
+  },
+
+  // Pearlmoor breakwater — the Causeway Bell loop's two net-hand SIGHT trainers
+  // (route class, 10-economy §4): the 12→14 on-ramp between arrival (~12) and
+  // Reyl's ace 16, posted so the causeway crossing is mandatory.
+  net_hand_a: {
+    id: 'net_hand_a',
+    name: 'MAREN',
+    title: 'Net-hand',
+    party: [
+      { species_id: 26, level: 12 }, // Brinelet — Tide
+      { species_id: 31, level: 12 }, // Lumpin — Tide/Light (ace)
+    ],
+    intro_ref: 'trainer.net_hand_a.intro',
+    defeat_ref: 'trainer.net_hand_a.defeat',
+    payout: 192, // route 16 × ace 12
+    music: 'battle-emberfall',
+  },
+  net_hand_b: {
+    id: 'net_hand_b',
+    name: 'COB',
+    title: 'Net-hand',
+    party: [
+      { species_id: 31, level: 13 }, // Lumpin — Tide/Light
+      { species_id: 27, level: 14 }, // Brineroll — Tide (ace)
+    ],
+    intro_ref: 'trainer.net_hand_b.intro',
+    defeat_ref: 'trainer.net_hand_b.defeat',
+    payout: 224, // route 16 × ace 14
+    music: 'battle-emberfall',
+  },
+
   // Second Lumenary: Reyl Wash, the Lampwarden of Pearlmoor Quay (Tide) — an old
   // ferryman. Beating him relights the Tide constellation: the player earns the Tide
   // Gleam AND the Tidecall Lantern Gift (granted via reward_abilities). 'crown_south'
@@ -170,6 +252,31 @@ export const TRAINERS: TrainerRegistry = {
     reward_flags: ['gleam:tide', 'crown_south'],
     reward_abilities: ['tidecall'],
     payout: 960, // Lampwarden 60 × ace 16
+    music: 'battle-emberfall',
+    ai: 'smart', // Lampwardens play the matchup, not just the biggest number
+  },
+
+  // Third Lumenary: Sable Quill, the Lampwarden of Lowleaf Hollow (Verdant) —
+  // a shy botanist whose glowmoss vouches where she won't speak. Beating her
+  // relights the Verdant constellation AND grants Glimmerstep. NOTE: she does
+  // NOT carry 'crown_east' — the quadrant crown rides the warden reward_flags
+  // pattern (South's worked example), and East is strictly linear, so the
+  // crown lands on Otho Grist (the SECOND East Gleam) when Cinderhead builds.
+  lampwarden_lowleaf: {
+    id: 'lampwarden_lowleaf',
+    name: 'SABLE QUILL',
+    title: 'Lampwarden',
+    party: [
+      { species_id: 56, level: 18 }, // Sporeling — Verdant
+      { species_id: 59, level: 19 }, // Dewling — Verdant/Tide
+      { species_id: 65, level: 20 }, // Glowsip — Verdant/Light
+      { species_id: 66, level: 22 }, // Lumournis — Verdant/Light (ace)
+    ],
+    intro_ref: 'trainer.lampwarden_lowleaf.intro',
+    defeat_ref: 'trainer.lampwarden_lowleaf.defeat',
+    reward_flags: ['gleam:verdant'],
+    reward_abilities: ['glimmerstep'],
+    payout: 1320, // Lampwarden 60 × ace 22
     music: 'battle-emberfall',
     ai: 'smart', // Lampwardens play the matchup, not just the biggest number
   },
@@ -207,6 +314,20 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   'trainer.flats_wayfarer_b.defeat': [
     { speaker: 'ELSPETH', text: 'The wager is yours. Mind the tide pools, and tell Reyl his letters are late because of you.' },
   ],
+  'trainer.net_hand_a.intro': [
+    { speaker: 'MAREN', text: 'Nobody walks the moor-boards but bell-business and net-hands — and you don\'t smell of either yet.' },
+    { speaker: 'MAREN', text: 'Rope or no rope, the causeway tests every lamp it carries. Out here that\'s the LAW.' },
+  ],
+  'trainer.net_hand_a.defeat': [
+    { speaker: 'MAREN', text: 'Steady on wet stone — that\'s rarer than you\'d think. Go on, then. Mind Cob by the far lantern; he\'s been spoiling for a bout all season.' },
+  ],
+  'trainer.net_hand_b.intro': [
+    { speaker: 'COB', text: 'Past Maren with your boots still dry! Then you\'re the one carrying the old rope home.' },
+    { speaker: 'COB', text: 'One more net between you and the bell, Wayfarer. Mine\'s the heavier.' },
+  ],
+  'trainer.net_hand_b.defeat': [
+    { speaker: 'COB', text: 'Hah! Well hauled. The shrine\'s at the causeway\'s end — ring it LOUD, so the whole quay hears it come back.' },
+  ],
   'trainer.lampwarden_pearlmoor.intro': [
     { speaker: 'REYL WASH', text: 'Apprentice, is it. I have ferried a hundred Wayfarers across this harbour. Few read the water right.' },
     { speaker: 'REYL WASH', text: 'Tides go out so they can come back, see. Show me your bond holds against mine — then I will teach you to ask the sea to part.' },
@@ -214,6 +335,14 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   'trainer.lampwarden_pearlmoor.defeat': [
     { speaker: 'REYL WASH', text: 'Well rowed, Wayfarer. The Tide constellation answers you — see it shiver awake over the masts.' },
     { speaker: 'REYL WASH', text: 'The Tide Gleam is yours, and with it the Tidecall. Step to the shallows now; the moon-water will part where it would not before.' },
+  ],
+  'trainer.lampwarden_lowleaf.intro': [
+    { speaker: 'SABLE QUILL', text: 'I\'m better at this part than the talking part. My moss thinks so too.' },
+    { speaker: 'SABLE QUILL', text: 'Everything green in this hall keeps a little light it was never asked to keep. Show me your kin do the same.' },
+  ],
+  'trainer.lampwarden_lowleaf.defeat': [
+    { speaker: 'SABLE QUILL', text: '...Oh. Oh, that was LOVELY. Don\'t tell anyone I said that out loud.' },
+    { speaker: 'SABLE QUILL', text: 'The Verdant Gleam is yours — the moss vouched for you, and the moss has never once been wrong about a person.' },
   ],
 };
 

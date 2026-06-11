@@ -31,15 +31,16 @@ rng = random.Random(31)
 # Deep forest enclosure on ALL sides (a clearing, not a coast) with organic bumps.
 tree = mk.make_grid(W, H)
 mk.organic_border(tree, W, H, top=1, left=1, right=1, depth=2,
-                  bumps=[(4, 3, 2), (15, 2, 2), (2, 12, 2), (17, 13, 2), (8, 1, 1)])
+                  bumps=[(7, 1, 1), (13, 1, 1), (2, 12, 2), (17, 13, 2), (8, 1, 1)])
 mk.rect(tree, W, H, 0, H - 2, W - 1, H - 1)              # bottom border too
 mk.blob(tree, W, H, 5, 15, 2.0, 1.4)
 mk.blob(tree, W, H, 14, 15, 2.0, 1.4)
 
-# the clearing's accent: a small still pool in the NE quadrant (the pond family —
-# water-over-grass foam edge), where wayfarers water their kin
+# the clearing's accent: a small still pool in the NW quadrant (the pond family —
+# water-over-grass foam edge), where wayfarers water their kin. (It moved west
+# when the Lowleaf spoke woke through the old NE corner.)
 pond = mk.make_grid(W, H)
-mk.blob(pond, W, H, 15.5, 4.5, 1.8, 1.3)
+mk.blob(pond, W, H, 4.5, 4.5, 1.8, 1.3)
 for y in range(H):                                       # pool replaces tree there
     for x in range(W):
         if pond[y * W + x]:
@@ -53,6 +54,9 @@ mk.hline(path, W, H, CY, 0, CX); mk.hline(path, W, H, CY - 1, 0, CX)   # west ro
 mk.hline(path, W, H, CY, CX, W - 1); mk.hline(path, W, H, CY - 1, CX, W - 1)  # east road
 mk.vline(path, W, H, CX, 0, CY); mk.vline(path, W, H, CX + 1, 0, CY)   # north road
 mk.vline(path, W, H, CX, CY, H - 1); mk.vline(path, W, H, CX + 1, CY, H - 1)  # south road
+# the LOWLEAF spoke: east-north out of the clearing (wakes with the Verdant
+# Gleam — the warp below carries the gate; walkthrough R3 "wakes with spoke")
+mk.hline(path, W, H, 3, CX, W - 1); mk.hline(path, W, H, 4, CX, W - 1)
 # punch the borders where the roads leave
 for y in (CY - 1, CY):
     tree[y * W + 0] = 0; tree[y * W + 1] = 0
@@ -60,6 +64,8 @@ for y in (CY - 1, CY):
 for x in (CX, CX + 1):
     tree[0 * W + x] = 0; tree[1 * W + x] = 0
     tree[(H - 1) * W + x] = 0; tree[(H - 2) * W + x] = 0
+for y in (3, 4):
+    tree[y * W + (W - 1)] = 0; tree[y * W + (W - 2)] = 0
 
 # ---- base + layers --------------------------------------------------------------
 gg = [gid("grass0"), gid("grass1"), gid("grass2"), gid("grass3")]
@@ -104,6 +110,7 @@ for (x, y) in [(CX - 2, CY - 2), (CX + 3, CY - 2), (CX - 2, CY + 2), (CX + 3, CY
 sign_tiles = {
     "sign_waystone": (CX + 2, CY),       # on the plaza, by the Waystone
     "sign_spire": (CX - 1, CY + 3),      # beside the south (inward) road
+    "sign_lowleaf": (CX + 3, 5),         # beside the east-north (Lowleaf) spoke
 }
 for (x, y) in sign_tiles.values():
     deco[y * W + x] = gid("sign")
@@ -132,6 +139,18 @@ m = {
         {"id": "to_pearlmoor_n", "at": {"tx": W - 1, "ty": CY - 1}, "trigger": "step_on",
          "to_map": "pearlmoor_quay", "to": {"tx": 1, "ty": 12}, "facing": "right",
          "requires_flag": "flag:has_starter", "transition": "fade"},
+        # the Lowleaf spoke (east-north) — wakes with the Verdant Gleam
+        # (graph.ts declares it ungated; the warp-level flag mirrors the South
+        # pattern of gating stricter than the graph, with the Waykeeper's own
+        # "not yet" — the long way round is the fen-road, always open).
+        {"id": "to_lowleaf", "at": {"tx": W - 1, "ty": 3}, "trigger": "step_on",
+         "to_map": "lowleaf_hollow", "to": {"tx": 1, "ty": 14}, "facing": "right",
+         "requires_flag": "gleam:verdant", "blocked_ref": "npc.waykeeper_lowleaf_gate",
+         "transition": "fade"},
+        {"id": "to_lowleaf_s", "at": {"tx": W - 1, "ty": 4}, "trigger": "step_on",
+         "to_map": "lowleaf_hollow", "to": {"tx": 1, "ty": 15}, "facing": "right",
+         "requires_flag": "gleam:verdant", "blocked_ref": "npc.waykeeper_lowleaf_gate",
+         "transition": "fade"},
         # sleeping roads (inert teases until their maps are authored)
         {"id": "to_marsh", "at": {"tx": CX, "ty": 0}, "trigger": "step_on",
          "to_map": "coldfog_marches_i", "to": {"tx": 8, "ty": 28}, "facing": "up", "transition": "fade"},
@@ -163,6 +182,9 @@ m = {
         {"id": "sign_spire", "kind": "sign",
          "at": {"tx": sign_tiles["sign_spire"][0], "ty": sign_tiles["sign_spire"][1]},
          "activation": "interact", "ref": "sign.crossroads_spire"},
+        {"id": "sign_lowleaf", "kind": "sign",
+         "at": {"tx": sign_tiles["sign_lowleaf"][0], "ty": sign_tiles["sign_lowleaf"][1]},
+         "activation": "interact", "ref": "sign.crossroads_lowleaf"},
     ],
     "encounters": [],   # the hub is safe ground — a breath between roads
     "npcs": [

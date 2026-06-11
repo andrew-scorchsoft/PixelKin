@@ -113,6 +113,18 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/pearlmoor-quay-b.webp',
     ],
   },
+  // The Causeway Bell's walk: the foot causeway out to the Moor-bell shrine
+  // (gated on the netmender's rope; reuses Pearlmoor's music + backdrops).
+  pearlmoor_breakwater: {
+    json: 'assets/maps/pearlmoor_breakwater.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/dimglass-coast-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/pearlmoor-quay-a.webp',
+      'assets/backgrounds/battle/pearlmoor-quay-b.webp',
+    ],
+  },
   pearlmoor_lumenary: {
     json: 'assets/maps/pearlmoor_lumenary.json',
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
@@ -196,6 +208,61 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'route',
     music: 'assets/audio/music/saltreach-fen-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/saltreach-fen-a.webp',
+      'assets/backgrounds/battle/saltreach-fen-b.webp',
+    ],
+  },
+  // Saltreach Fen II — the deep channels: Tidecall load-bearing, the E1
+  // lantern-reed line, the Sunkbell turn-off, the treeline to Lowleaf.
+  saltreach_fen_ii: {
+    json: 'assets/maps/saltreach_fen_ii.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/saltreach-fen-b.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/saltreach-fen-a.webp',
+      'assets/backgrounds/battle/saltreach-fen-b.webp',
+    ],
+  },
+  // Sunkbell Shallows — the drowned-shrine spur off Fen II (Tidecall, MISSABLE).
+  sunkbell_shallows: {
+    json: 'assets/maps/sunkbell_shallows.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/saltreach-fen-c.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/saltreach-fen-a.webp',
+      'assets/backgrounds/battle/saltreach-fen-b.webp',
+    ],
+  },
+  // Lowleaf Hollow — the fern town mid-Glowmoss-Bloom (Lumenary 3, Verdant).
+  lowleaf_hollow: {
+    json: 'assets/maps/lowleaf_hollow.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'town',
+    music: 'assets/audio/music/lowleaf-hollow-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/lowleaf-hollow-a.webp',
+      'assets/backgrounds/battle/lowleaf-hollow-b.webp',
+    ],
+  },
+  lowleaf_lumenary: {
+    json: 'assets/maps/lowleaf_lumenary.json',
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/lowleaf-hollow-b.mp3',
+    // Lampwarden 3 (Verdant) Gleam battle happens here — moss-garden hall backdrop.
+    battle_backdrops: [
+      'assets/backgrounds/battle/lowleaf-lumenary-a.webp',
+      'assets/backgrounds/battle/lowleaf-lumenary-b.webp',
+    ],
+  },
+  lowleaf_bower: {
+    json: 'assets/maps/lowleaf_bower.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/lowleaf-hollow-b.mp3',
   },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
@@ -212,10 +279,6 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
  * its backdrops set, drop its key here to avoid drift.
  */
 export const UPCOMING_BATTLE_BACKDROPS: Record<string, string[]> = {
-  lowleaf_hollow: [
-    'assets/backgrounds/battle/lowleaf-hollow-a.webp',
-    'assets/backgrounds/battle/lowleaf-hollow-b.webp',
-  ],
   cinderhead_mine: [
     'assets/backgrounds/battle/cinderhead-mine-a.webp',
     'assets/backgrounds/battle/cinderhead-mine-b.webp',

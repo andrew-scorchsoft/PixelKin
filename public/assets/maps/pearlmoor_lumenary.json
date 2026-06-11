@@ -549,7 +549,8 @@
       "activation": "step_on",
       "ref": "script.lumenary_pearlmoor",
       "once": true,
-      "requires_flag": "flag:has_starter"
+      "requires_flag": "flag:q_south_bell_rung",
+      "blocked_ref": "npc.reyl_blocked"
     },
     {
       "id": "sign_lumenary",
@@ -565,6 +566,31 @@
   "encounters": [],
   "npcs": [
     {
+      "id": "reyl_quest",
+      "at": {
+        "tx": 8,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "npc_lampwarden",
+      "movement": "static",
+      "dialogue_ref": "script.reyl_quest",
+      "hidden_when_flag": "flag:q_south_bell"
+    },
+    {
+      "id": "reyl_waiting",
+      "at": {
+        "tx": 8,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "npc_lampwarden",
+      "movement": "static",
+      "dialogue_ref": "npc.reyl_waiting",
+      "requires_flag": "flag:q_south_bell",
+      "hidden_when_flag": "flag:q_south_bell_rung"
+    },
+    {
       "id": "reyl",
       "at": {
         "tx": 8,
@@ -573,7 +599,21 @@
       "facing": "down",
       "sprite": "npc_lampwarden",
       "movement": "static",
-      "dialogue_ref": "npc.reyl_wash"
+      "dialogue_ref": "npc.reyl_wash",
+      "requires_flag": "flag:q_south_bell_rung",
+      "hidden_when_flag": "gleam:tide"
+    },
+    {
+      "id": "reyl_after",
+      "at": {
+        "tx": 8,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "npc_lampwarden",
+      "movement": "static",
+      "dialogue_ref": "npc.reyl_after",
+      "requires_flag": "gleam:tide"
     }
   ],
   "gates": [],

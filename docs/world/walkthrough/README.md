@@ -345,7 +345,7 @@ pure data (see `tools/maps/build_*.py` + `src/game/content/` for the worked patt
   | # | Gleam · Warden | Shape (weight) | Locked tease | Earned thing | New-map cost |
   |---|---|---|---|---|---|
   | 1 | Ember · Brisa | tower ascent (full) | the wick-locked Beacon | wick-key from the Dimglass lamplighter | BUILT (3) |
-  | 2 | Tide · Reyl | breakwater walk (medium) | the silent Moor-bell shrine | the netmender's bell-rope (net-floats errand) | 1 (`pearlmoor_breakwater`) |
+  | 2 | Tide · Reyl | breakwater walk (medium) | the silent Moor-bell shrine | the netmender's bell-rope (net-floats errand) | BUILT (1: `pearlmoor_breakwater`) |
   | 3 | Verdant · Sable | in-town tending (light) | the grey Elder Bed amid the Bloom | warm the bed (kiln + fen-wood chain) | 0 |
   | 4 | Stone · Otho | mine descent (heavy) | the dark `to_deep` mouth; lamps lowered | the crew's still-lit vigil-lamp from the deep | 0 |
   | 5 | Storm · Mira | festival winch climb (medium) | the launch ledge, kite-strings rising | a town-built kite flown at the Kite-rising | 1 (`galehigh_skyloft`) |

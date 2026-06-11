@@ -166,8 +166,10 @@ const JOURNEY = [
     leadShare: 0.42,
     wild: { areas: ['pearlmoor_quay'], band: [8, 11], fights: { rusher: 2, mainline: 6, explorer: 10 } },
     trainers: [
-      T('Breakwater netmender', 'route', [K(12)]),
-      T('Breakwater oarhand', 'route', [K(12), K(13)]),
+      // BUILT (the Causeway Bell loop): the breakwater's two net-hand sight
+      // trainers — mirror src/game/content/trainers.ts exactly.
+      T('Maren (net-hand)', 'route', [K(12, 26), K(12, 31)]),
+      T('Cob (net-hand)', 'route', [K(13, 31), K(14, 27)]),
       T('Reyl Wash', 'warden', [K(12, 26), K(13, 31), K(14, 27), K(16, 24)]),
     ],
     income: { quests: 400, valuables: 250, finds: 0 }, // bell-rope quest + Round leg
@@ -179,26 +181,32 @@ const JOURNEY = [
   {
     name: 'Saltreach Fen I→II',
     leadShare: 0.42,
-    wild: { band: [15, 18], fights: { rusher: 5, mainline: 10, explorer: 16 } },
+    // BUILT (fen I + II + Sunkbell): trainers mirror src/game/content/trainers.ts;
+    // quests = E1 "The Quiet Reeds" wick thanks (200); finds = the two fen
+    // wicks tins (150 + 150); valuables = the tide-walk Moth-amber (600).
+    wild: { areas: ['saltreach_fen_i', 'saltreach_fen_ii', 'sunkbell_shallows'], band: [16, 19], fights: { rusher: 5, mainline: 10, explorer: 16 } },
     trainers: [
-      T('Fen forager', 'route', [K(16), K(16)]),
-      T('Eel-lamp warden', 'route', [K(17)]),
-      T('Stilt-walker', 'route', [K(17), K(18)]),
+      T('Marigold (fen-wader)', 'route', [K(16, 59), K(17, 27)]),
+      T('Osprey (plank-courier)', 'route', [K(17, 31), K(18, 60)]),
+      T('Tarn (reed-lamplighter)', 'route', [K(17, 31), K(18, 59)]),
     ],
-    income: { quests: 350, valuables: 0, finds: 150 },
+    income: { quests: 200, valuables: 600, finds: 300 },
     spend: { tallow_balm: 3 },
     checkpoint: { name: 'Lowleaf arrival', rec: 18 },
   },
   {
     name: 'Lowleaf Hollow (tending loop)',
     leadShare: 0.45,
+    // BUILT (the Tended Bed): trainers mirror trainers.ts; quests = the
+    // kiln-fee (150) + E2 stall takings (300); finds = the town's wicks tin
+    // (120); valuables = Glowmoss Deep's Moth-amber (600, found this leg).
     wild: { areas: ['lowleaf_hollow'], band: [17, 20], fights: { rusher: 3, mainline: 7, explorer: 12 } },
     trainers: [
-      T('Glowmoss tender', 'keeper', [K(20), K(20)]),
-      T('Kiln-hand', 'keeper', [K(21), K(21)]),
-      T('Sable Quill', 'warden', [K(18), K(19), K(20), K(22)]),
+      T('Ivy (bloom-warden)', 'keeper', [K(19, 56), K(20, 65)]),
+      T('Fern (bloom-warden)', 'keeper', [K(20, 38), K(21, 67)]),
+      T('Sable Quill', 'warden', [K(18, 56), K(19, 59), K(20, 65), K(22, 66)]),
     ],
-    income: { quests: 500, valuables: 600, finds: 0 }, // bed-warming chain + moth-amber
+    income: { quests: 450, valuables: 600, finds: 120 },
     spend: { warm_balm: 2, beacon_charge: 1, chart_mid: 1 },
     checkpoint: { name: 'Verdant Gleam (Sable)', rec: 18, ace: 22 },
   },
@@ -330,7 +338,13 @@ const BUILT_PAYOUTS = {
   flats_wayfarer_a: ['route', 9, 144],
   fen_wader_a: ['route', 17, 272],
   fen_courier_b: ['route', 18, 288],
+  reed_lamplighter: ['route', 18, 288],
+  bloom_warden_a: ['keeper', 20, 400],
+  bloom_warden_b: ['keeper', 21, 420],
+  lampwarden_lowleaf: ['warden', 22, 1320],
   flats_wayfarer_b: ['route', 11, 176],
+  net_hand_a: ['route', 12, 192],
+  net_hand_b: ['route', 14, 224],
   lampwarden_pearlmoor: ['warden', 16, 960],
   glowmoss_keeper_a: ['keeper', 20, 400],
   glowmoss_keeper_b: ['keeper', 21, 420],

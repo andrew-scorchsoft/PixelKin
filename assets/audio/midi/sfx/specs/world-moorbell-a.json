@@ -1,0 +1,17 @@
+{
+  "title": "World - Moor-bell toll (a)",
+  "_note": "The Pearlmoor moor-bell: one deep harbour-bell strike rolling out over black water. A low bell fundamental + a quiet inharmonic upper partial (the 'clang') struck together, with a soft tri_bass thunk for the strike's body. Diegetic big-moment cue (the Causeway Bell / Tide-blessing) so it may luxuriate — render --tail 1.2 for the long silver ring-out.",
+  "era": "sfx",
+  "tempo": 120,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "F",
+  "tracks": [
+    { "name": "bell", "voice": "bell", "octave": 3, "gain": 1.0,
+      "notes": "F3+C4h" },
+    { "name": "clang", "voice": "bell", "octave": 4, "gain": 0.35,
+      "notes": "F#4e rq." },
+    { "name": "thunk", "voice": "tri_bass", "octave": 2, "gain": 0.5,
+      "notes": "F2s rs rh" }
+  ]
+}

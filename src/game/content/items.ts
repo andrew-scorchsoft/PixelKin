@@ -80,12 +80,92 @@ export const ITEMS: ItemRegistry = {
     desc: "The worn brass key to the Tinderwick beacon's foot door, carried home from the coast road.",
     category: 'key',
   },
+  net_floats: {
+    id: 'net_floats',
+    name: 'Net-floats',
+    desc: 'A string of cork floats stamped with the Pearlmoor netmender\'s mark, carried south by the storm and home by you.',
+    category: 'key',
+  },
+  bell_rope: {
+    id: 'bell_rope',
+    name: 'Moor-bell Rope',
+    desc: 'The netmender\'s bell-rope, salt-stiff and sound, spliced for the silent shrine at the breakwater\'s end.',
+    category: 'key',
+  },
+  fenn_letter: {
+    id: 'fenn_letter',
+    name: "Gran's Letter",
+    desc: 'A letter for Star-tender Fenn, sealed with candle-wax and pressed flat from a night under Gran\'s pillow.',
+    category: 'key',
+  },
   tide_charm: {
     id: 'tide_charm',
     name: 'Tide Charm',
     desc: 'A wave-worn charm lashed to a lamp-frame; the sea trusts it. One throw, and the surest catch in the South.',
     category: 'charge',
     catch_bonus: 2.0,
+  },
+  // The netmender's thanks for relighting her buoy line ("The Last Buoy Out") —
+  // the game's first CONDITIONAL charge: it blazes over open water, and burns
+  // plain anywhere else (docs/mechanics/04-capture.md, "Specialty charges").
+  drift_charm: {
+    id: 'drift_charm',
+    name: 'Drift Charm',
+    desc: 'A buoy-wick dipped in the going-out song. Over open water its throw burns threefold bright; ashore it is only a lamp.',
+    category: 'charge',
+    catch_bonus: 3.0,
+    condition: { kind: 'terrain', terrain: 'water' },
+  },
+  // E1 "The Quiet Reeds" — the fen fisher's thanks for tending her lantern-reed
+  // line (Saltreach Fen II). A reed-wick charge that blazes in deep growth —
+  // reed beds, fringe grass, glowmoss — and burns plain on open ground.
+  marsh_lamp: {
+    id: 'marsh_lamp',
+    name: 'Marsh Lamp',
+    desc: 'A reed-wick lamp cell dipped in fen-oil. Thrown in deep growth its light doubles; on open ground it is only a lamp.',
+    category: 'charge',
+    catch_bonus: 2.0,
+    condition: { kind: 'terrain', terrain: 'tall_grass' },
+  },
+  // E2 "Spores for the Stall" — the Bloom stall-keeper's thanks: a festival
+  // salve pressed from glowmoss spores (quest-only, never sold).
+  glow_salve: {
+    id: 'glow_salve',
+    name: 'Glow Salve',
+    desc: 'A festival salve pressed from bloom-spores, faintly luminous in the tin. Restores a good deal of health.',
+    category: 'medicine',
+    heal: 60,
+  },
+  // The Tended Bed chain (Lowleaf): dry fen-wood for the kiln, and the
+  // hearth-spore the kilner fires from it to warm the Elder Bed.
+  fen_wood: {
+    id: 'fen_wood',
+    name: 'Fen-wood',
+    desc: 'An armful of dry fen-wood from the forest fringe, light as paper and eager to burn.',
+    category: 'key',
+  },
+  // E2 "Spores for the Stall" — the gatherer's bundles carried home from
+  // Glowmoss Deep (three gives of the same key item; the flags track count).
+  bloom_spores: {
+    id: 'bloom_spores',
+    name: 'Spore-bundle',
+    desc: 'A gatherer\'s cloth bundle of glowing bloom-spores, bound for the festival stall. It hums very faintly, like a held bee.',
+    category: 'key',
+  },
+  hearth_spore: {
+    id: 'hearth_spore',
+    name: 'Hearth-spore',
+    desc: 'A kiln-fired glowmoss spore, warm as a held coal. The kilner says the old bed will remember what to do with it.',
+    category: 'key',
+  },
+  // S3 "The Cavern Keeps a Light" — the old fisher's thanks once the wreck-lamp
+  // burns again (completes post-Glimmerstep; the Tide Charm, re-blessed).
+  wrecklight_charm: {
+    id: 'wrecklight_charm',
+    name: 'Wrecklight Charm',
+    desc: 'A Tide Charm re-blessed at the wreck-lamp\'s flame. One throw, steady as a light that would not drown.',
+    category: 'charge',
+    catch_bonus: 2.5,
   },
 
   // --- Valuables (found, never bought; exist to be sold for wicks) ----------
@@ -163,6 +243,32 @@ export const ITEMS: ItemRegistry = {
     category: 'chart',
     teach_move: 'hearth_pulse',
     price: 1400,
+  },
+  // The Lowleaf provisioner's slate (10-economy.md §5: Spore Puff / Root
+  // Strike / Lifedrain — the East's Verdant pair + the drain utility).
+  chart_spore_puff: {
+    id: 'chart_spore_puff',
+    name: 'Star-chart: Spore Puff',
+    desc: 'A pressed chart of the Verdant\'s spore-figure. Teaches a willing kin SPORE PUFF (Verdant). One study burns it out.',
+    category: 'chart',
+    teach_move: 'spore_puff',
+    price: 900,
+  },
+  chart_root_strike: {
+    id: 'chart_root_strike',
+    name: 'Star-chart: Root Strike',
+    desc: 'A pressed chart of the Verdant\'s root-figure. Teaches a willing kin ROOT STRIKE (Verdant). One study burns it out.',
+    category: 'chart',
+    teach_move: 'root_strike',
+    price: 1400,
+  },
+  chart_lifedrain: {
+    id: 'chart_lifedrain',
+    name: 'Star-chart: Lifedrain',
+    desc: 'A pressed chart of the Verdant\'s drinking-figure. Teaches a willing kin LIFEDRAIN (Verdant). One study burns it out.',
+    category: 'chart',
+    teach_move: 'lifedrain',
+    price: 1200,
   },
 };
 

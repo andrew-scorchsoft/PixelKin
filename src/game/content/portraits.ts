@@ -59,6 +59,12 @@ export const PORTRAITS: Record<string, PortraitDef> = {
     path: 'assets/portraits/hearthkeeper.png',
     expressions: { neutral: 0, warm: 1 },
   },
+  // Sable Quill — the Verdant Lampwarden of Lowleaf Hollow; a shy botanist.
+  sable: {
+    id: 'portrait_sable',
+    path: 'assets/portraits/sable.png',
+    expressions: { neutral: 0, shy: 1, warm: 2 },
+  },
   // Warden Còr — the Hollowing's gentle, sorrowful leader; seeded as quiet early dread.
   cor: {
     id: 'portrait_cor',

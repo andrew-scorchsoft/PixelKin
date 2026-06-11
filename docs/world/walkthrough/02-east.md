@@ -125,33 +125,43 @@ Gleam: none · rec. level ~18.
    teaching that Gifts re-shape routes, not only open spurs. Level band tops out the South-to-
    East ramp at ~18 before the Lowleaf Lumenary.
 4. **Optional content** —
-   - **Sunkbell Shallows** (`sunkbell_shallows`) — spur off Fen II, **[MISSABLE]** (reachable
-     **now** with Tidecall; easy to overlook across the water). A half-flooded shrine: rare
-     **Tide** kin (low-weight encounter) + an item cache (atlas §3 reward). Sign the
-     turn-off so the *come-back* is explicit even if skipped.
-   - Hidden item on a far reed isle reachable only by a parted channel — **[MISSABLE]**.
+   - **Sunkbell Shallows** (`sunkbell_shallows`) — **[BUILT]** spur off Fen II, **[MISSABLE]**
+     (reachable **now** with Tidecall; easy to overlook across the water). A half-flooded
+     shrine: rare **Tide** kin (low-weight zone — Shimmral, a young Tidalarch) + the
+     pilgrims' dry-kept caches (2 Beacon Charges by the bell, a balm in the drowned steps).
+     The turn-off is signed (`sign.sunkbell_turnoff`) so the *come-back* is explicit.
+   - Hidden item on a far reed isle reachable only by a parted channel — **[BUILT]** the
+     Moth-amber isle, **[MISSABLE]**.
 
    **Named quests** (spine §5 kit):
-   - **E1 "The Quiet Reeds"** — giver: the **fen fisher** on the channel jetty · steps:
-     re-kindle three snuffed lantern-reeds along the channels (interact scripts) — the
-     first two take; **the third will not light**, and the fisher has no answer for it
+   - **E1 "The Quiet Reeds"** — **[BUILT]** giver: the **fen fisher** on the channel jetty ·
+     steps: re-kindle three snuffed lantern-reeds along the channels in channel order
+     (interact scripts; chained flags `q_east_reed_a` → `_b` → `_third`) — the first two
+     take; **the third will not light**, and the fisher has no answer for it
      (a SILENT B2 foreshadow: no one names the Hollowing — that belongs to Glowmoss Deep) ·
      flags: `flag:q_east_reeds` → `flag:q_east_reeds_done` (set on reporting back, third
-     reed still dark) · reward: the **Marsh Lamp** · maps: `saltreach_fen_ii` ·
+     reed still dark) · reward: the **Marsh Lamp** (+200w) · maps: `saltreach_fen_ii` ·
      `[MISSABLE]`.
 5. **Don't-miss callouts** — Sunkbell Shallows is the region's "you can already get this"
    reward — it pays off Tidecall immediately and seeds the habit of detouring for spurs that
    the rest of East leans on hard.
-6. **Validation hooks**
-   - map id `saltreach_fen_ii`, kind `route`; south land-in paired with Fen I `to_fen_ii.to`;
-     north exit `to_hollow` → `lowleaf_hollow` (graph.ts:125, ungated, `facing:'up'`).
-   - spur edge **`saltreach_fen_ii → sunkbell_shallows requires_ability: tidecall`**
-     (graph.ts:146) — warp `to_sunkbell`; tag **[MISSABLE]**.
-   - encounter zones: `tall_grass` reed isles + `water` parted channels — **marsh-lantern frog**
-     (Tide/Light), **mudskip pup** (Tide), **reed-stalk heron** (Tide/Flying); `sunkbell_shallows`
-     carries a **low-weight rare Tide** entry; level band **17–19**; rate ~0.10 (spur ~0.08).
-   - one dead-reed `deco` prop (the snuffed-lantern foreshadow); fisher NPC + turn-off sign.
-   - no `sets_flags` triggers (Sunkbell's item cache may set a local boolean for the cache only).
+6. **Validation hooks — [BUILT 2026-06, `tools/maps/build_saltreach_fen_ii.py`]**
+   - map id `saltreach_fen_ii`, kind `route`; south land-in paired with Fen I `to_fen_ii.to`
+     (`to_fen_i` at `{15,43}/{16,43}`); north exit `to_hollow` → `lowleaf_hollow`
+     (ungated, `facing:'up'`, lands `{14,30}/{15,30}`).
+   - spur edge **`saltreach_fen_ii → sunkbell_shallows requires_ability: tidecall`** —
+     warps `to_sunkbell`/`to_sunkbell_s` on the east sand outcrop `{31,14}/{31,15}`,
+     buoy breadcrumbs + `sign.sunkbell_turnoff`; tag **[MISSABLE]**.
+   - encounter zones (BUILT): `tall_grass` reed isles — Dewling/Lumpin/Brineroll/Poolfrond,
+     band **17–19**, rate 0.10; the parted channels roll a `water` zone (Tidecall) at 0.06.
+     `sunkbell_shallows` carries the low-weight rare Tide bed (Shimmral + a young Tidalarch).
+   - one ambient dead reed-lamp object (`reed_snuffed` — the silent foreshadow, no dialogue);
+     the fisher's four-stage jetty NPC; the three E1 reed interact chains (A/B swap their
+     dark→lit objects on `flag:q_east_reed_a/_b`; C sets `flag:q_east_reed_third` and STAYS
+     dark); reward = the **Marsh Lamp** (`items.ts`: ×2.0 charge in deep growth) + 200w;
+     `flag:q_east_reeds` → `flag:q_east_reeds_done` closed on report-back.
+   - sight trainer `reed_lamplighter` (route 16 × ace 18 = 288w) holds the treeline neck;
+     caches: tide-walk Moth-amber isle, a 150w tin, balms by the landing.
 
 ---
 
@@ -221,11 +231,15 @@ Crossroads (`to_crossroads`, Lanternway) · **Lumenary 3: Sable Quill (Verdant)*
      NPC) — **[MISSABLE]**.
 
    **Named quests** (spine §5 kit; East's slate, E1 over in Fen II, E3 in Cinderhead):
-   - **E2 "Spores for the Stall"** — giver: the **Bloom stall-keeper** · steps: gather two
-     spore caches in Glowmoss Deep → drive off the cross **Sporeling** squatting on the
-     third (a scripted battle) → return · flags: `flag:q_east_spores` →
-     `flag:q_east_spores_done` · reward: **Glow Salve** + the stall-keeper points out a
-     **Fennlight** static catch · maps: `lowleaf_hollow`, `glowmoss_deep` ·
+   - **E2 "Spores for the Stall"** — **[BUILT]** giver: the **Bloom stall-keeper** · steps:
+     gather two spore caches in Glowmoss Deep (chained: `picked_spore_a` → `_b`) → drive
+     off the cross **Sporeling** squatting on the third (a scripted battle, the
+     `spore_squatter` trainer — no payout, it is not a person) → return · flags:
+     `flag:q_east_spores` → `flag:q_east_spores_done` · reward: **Glow Salve** + 300w +
+     the stall-keeper points the player at the **Fennlight** in the Bloom-lit fringe grass
+     (the "static catch" is delivered as the fringe table's signature entry — a true
+     interact-to-battle static encounter needs an engine op the cutscene kit doesn't have
+     yet; flagged, not faked) · maps: `lowleaf_hollow`, `glowmoss_deep` ·
      `[LATER: Glimmerstep]` (held by then — a same-visit backtrack).
    - **R3 "Moss for the Quay"** — the Waykeeper's Round, leg 3: parcel (a living glowmoss
      plug) from the **Waykeeper** → the **Pearlmoor shrine-keep** · flags:
@@ -235,28 +249,44 @@ Crossroads (`to_crossroads`, Lanternway) · **Lumenary 3: Sable Quill (Verdant)*
 5. **Don't-miss callouts** — Catch a **Fennlight** (Verdant/Light) during the Bloom — the
    signature town kin and a strong early Light-typed answer for the road ahead. And read the
    pinned letter: it is the only Còr foreshadow a careful player gets before the Deep.
-6. **Validation hooks**
-   - map id `lowleaf_hollow`, kind `town` (route/town); interior `lowleaf_lumenary`.
-   - warps: `to_hollow` land-in (paired with Fen II); **`to_deepwood` → `glowmoss_deep`,
-     `requires_ability: 'glimmerstep'`** (graph.ts:126); `to_crossroads` Lanternway spoke
-     (graph.ts:160, ungated); Lumenary door warp (no Gift gate — §0 rule 1).
-   - triggers / flags: Gleam-grant cutscene at the Lumenary **`sets_flags:['gleam:verdant']`**
-     (the engine derives `flag:crown_east` only once **both** Verdant + Stone are held — do
-     **not** set `crown_east` here); a `kind:'script'` step that **grants the `glimmerstep`
-     ability**; festival cutscene (`once:true`). The pinned letter is a `kind:'sign'` trigger,
-     `dialogue_ref:'sign.cor_letter'`.
-   - **The Tended Bed chain (rule 3):** `script.sable_quest` sets `flag:q_east_bloom`;
-     fen-wood cache `flag:picked_fenwood`; `script.kiln_relight` sets
-     `flag:q_east_hearthspore`; `script.warm_elder_bed` sets `flag:q_east_bed_warm`
-     (+ the Elder Bed grey→green deco/NPC swap); the bond-test trigger
-     `requires_flag:flag:q_east_bed_warm` with `blocked_ref:npc.sable_not_ready`.
-     Two **bloom-warden sight trainers** (lv 19–21) on the fringe lane.
-   - Lumenary battle: **Sable Quill**, Verdant, ace ~22; trainer entry + `dialogue_ref`.
-   - encounter zones: `tall_grass` forest-fringe — **Sporeling** (Verdant), **Fennlight**
-     (Verdant/Light), **Mossmole** (Verdant) (atlas card 4); level band **18–20**; rate ~0.10.
-   - "now accessible" callout sign/NPC naming **Tideglass Cavern** + **Spore Grotto** (closes
-     the spine §5 Glimmerstep back-reference).
-   - festival NPCs (flag-gated to the Bloom cutscene); kindling-explainer NPC line.
+6. **Validation hooks — [BUILT 2026-06, `tools/maps/build_lowleaf.py` +
+   `build_lowleaf_interiors.py`]**
+   - map id `lowleaf_hollow`, kind `town`; interiors `lowleaf_lumenary` (cool register,
+     a living moss-garden hall) **and `lowleaf_bower`** (the town's rest-heal,
+     `script.lowleaf_rest`).
+   - warps (BUILT): `to_fen_ii` land-in paired with Fen II; **`to_deepwood` →
+     `glowmoss_deep`, `requires_ability:'glimmerstep'`** (blocked in the deepwood sign's
+     voice); `to_crossroads` Lanternway spoke west — the crossroads side **wakes with
+     `gleam:verdant`** (warp-level gate + `npc.waykeeper_lowleaf_gate`, the South pattern
+     of gating stricter than the graph); Lumenary door soft-gated `flag:has_starter`.
+   - triggers / flags (BUILT): the **Verdant Gleam rides Sable's trainer entry**
+     (`lampwarden_lowleaf`: `reward_flags:['gleam:verdant']`,
+     `reward_abilities:['glimmerstep']` — `crown_east` is **not** set here; it lands on
+     Otho, the second East warden, per the South `reward_flags` pattern). Arrival festival
+     band `script.glowmoss_bloom_arrival` (`once`) on the south tree pinch; post-Gleam
+     crowning band `script.bloom_crowning` around the hall door. The pinned letter is a
+     `kind:'sign'` trigger on the hall's notice-board, ref `sign.cor_letter`.
+   - **The Tended Bed chain (BUILT, rule 3 closed):** `script.sable_quest` →
+     `flag:q_east_bloom`; fen-wood cache → `flag:picked_fenwood`; `script.kiln_relight` →
+     `flag:q_east_hearthspore`; `script.warm_elder_bed` at the bed →
+     `flag:q_east_bed_warm` (+ the Elder Bed **grey→green flag-gated MapObject swap** —
+     the §8 pattern, now supported for objects); the hall bond-test trigger
+     `requires_flag:'flag:q_east_bed_warm'` with `blocked_ref:'npc.sable_not_ready'`.
+     Two **bloom-warden sight trainers** (Ivy 400w / Fern 420w, keeper class) hold the
+     fen-wood lane.
+   - Lumenary battle (BUILT): **Sable Quill** (`lampwarden_lowleaf`), Verdant, ace 22
+     (Lumournis), `ai:'smart'`, payout 1,320w; ceremony `script.lumenary_lowleaf`
+     (minor→major: silence → green tint → `gleam` → `gleam-emotional` swell).
+   - encounter zones (BUILT): `tall_grass` forest-fringe — Sporeling/Fennlight/Mossglow/
+     Barkhelm, band **18–20**, rate 0.10 (Fennlight drifts in for the Bloom — the catch
+     callout).
+   - "now accessible" callout: `npc.bloom_crier` (post-Gleam) + `npc.sable_after` name
+     **Tideglass Cavern** + **Spore Grotto** (closes the spine §5 back-reference).
+   - festival NPCs (piper, fencer-auntie, kids, kindle-explainer elder — unconditional:
+     the Bloom is in full swing on arrival; the crier joins post-Gleam); **Wren in town,
+     bright** (`npc.wren_lowleaf`, hidden once `flag:met_hollowing`); E2's stall-keeper
+     four-stage stack + the provisioner kit/counter (`lowleaf_provisioner`,
+     charts Spore Puff / Root Strike / Lifedrain).
 
 ---
 

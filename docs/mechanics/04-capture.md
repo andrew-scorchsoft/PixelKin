@@ -29,9 +29,18 @@ you carry; using a charge consumes it.
 
 ### Specialty charges (conditional, the fun ones)
 
+> **The condition hook is BUILT (2026-06).** A charge may carry a data-shaped
+> `condition` (`ChargeCondition` in `content/types.ts`); the BattleScene
+> evaluates it **at throw time** and a conditional charge whose moment isn't
+> met burns at a **plain ×1.0** (the charge is still spent — reading the moment
+> is the skill). Unconditional charges are unaffected. The **Drift Charm** is
+> the first shipped conditional charge (the proving case).
+
 | Charge | Effect |
 |------|--------|
 | **Tide Charm** | ×2.0 — wave-worn, lashed to the lamp-frame; the South's spur reward (**BUILT**, Gullcry Rock) |
+| **Drift Charm** | ×3.0 on kin met in **water** terrain (else ×1.0) — the netmender's thanks for "The Last Buoy Out" (**BUILT**, Pearlmoor S1; `condition: { kind: 'terrain', terrain: 'water' }`) |
+| **Wrecklight Charm** | ×2.5 — the Tide Charm re-blessed at the wreck-lamp; S3's reward (**BUILT** as an item; the quest completes post-Glimmerstep) |
 | **Dusk Charge** | ×3.0 at night, or vs **Lunar**/**Dark** kin (else ×1.0) |
 | **Hearth Charge** | ×3.5 if the target is **Dozing** or below 25% HP (else ×1.0) — rewards the proper "weaken then catch" loop |
 | **Moss / Cinder / Tideglass Charges** | ×3.0 on kin met in tall-grass / cave / water terrain (else ×1.0) |
@@ -114,7 +123,21 @@ Charges live in `src/game/content/items.ts`:
   throw — the surest catch wicks can buy." }
 ```
 
-Future conditional charges carry a `condition` the catch routine evaluates
-(`time:night`, `defenderType:Lunar|Dark`, `hpBelow:0.25`, `status:doze`,
-`terrain:water`, `firstTurn:true`, `speciesCaught`) — not yet implemented;
-add alongside the first specialty charge beyond the Tide Charm.
+Conditional charges carry a `condition` the throw evaluates (**implemented
+2026-06** — `BattleScene.effectiveCatchBonus`). The data shapes
+(`ChargeCondition`, `content/types.ts`):
+
+```jsonc
+{ "kind": "terrain", "terrain": "water" }       // met in this encounter terrain (Drift Charm)
+{ "kind": "hp_below", "ratio": 0.25 }           // target below 25% HP
+{ "kind": "status", "status": "doze" }          // target Dozing (exact status)
+{ "kind": "any_status" }                        // target afflicted by anything
+{ "kind": "defender_type", "types": ["Lunar", "Dark"] }
+{ "kind": "first_turn" }                        // the encounter's first action
+```
+
+Unmet → the throw falls back to plain ×1.0 and the charge is spent. The wild
+`BattleRequest` now carries the encounter's `terrain` for the terrain kind;
+a "time of night" kind is deliberately unbuilt (the Long Dusk has no clock —
+revisit post-`flag:dawn` if day-forms need it). `speciesCaught` scaling
+(Kindred Charge) waits on a register-count hook — add with that charge.

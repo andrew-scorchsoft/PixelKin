@@ -53,7 +53,12 @@ the **Dimglass tidal flats** and its boardwalk channel crossing
 moonlit Tide port, where Lampwarden Reyl Wash grants the **Tide Gleam** and the
 **Tidecall** Lantern Gift — which opens the harbour's gated water, the **Gullcry
 Rock** backtrack (a rare kin + the Tide Charm), and the **Vesper Crossroads**
-Lanternway hub. Along the way: catch-gated Lumenary etiquette (Brisa won't battle
+Lanternway hub. The **second hour** continues east: Tidecall carries you across
+the **Saltreach Fen** deep channels (lantern-reeds, a drowned-shrine spur, a
+quest whose third reed *will not light*) into **Lowleaf Hollow** mid-festival —
+warm the grey Elder Bed, earn the **Verdant Gleam** and **Glimmerstep** from shy
+Lampwarden Sable Quill, and walk straight into the dark of **Glowmoss Deep**,
+where the Hollowing is waiting to apologise. Along the way: catch-gated Lumenary etiquette (Brisa won't battle
 until you've befriended a wild kin), inn and hearth **rest-heals**, free shop
 kits — and a working **wick economy**: trainers pay out wicks, town keepers run
 real **buy/sell counters**, and single-use **Star-charts** teach kin new moves

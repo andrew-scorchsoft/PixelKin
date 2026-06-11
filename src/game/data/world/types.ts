@@ -77,6 +77,10 @@ export interface Warp {
   facing?: Facing; // player facing after the warp
   requires_ability?: AbilityId; // warp inactive until the gift is earned
   requires_flag?: WorldFlag; // warp inactive until the flag is set
+  /** Dialogue shown when the warp is gated and the requirement is unmet — a
+   *  diegetic "not yet" in a character's voice (mirror of EventTrigger.blocked_ref),
+   *  e.g. the netmender's chained breakwater gate. Works on step_on and interact. */
+  blocked_ref?: string;
   transition?: WarpTransition;
 }
 
@@ -196,6 +200,15 @@ export interface MapObject {
    * roof must draw above a player standing north of it but you can't walk into it.
    */
   walk_under?: boolean;
+  /**
+   * Flag-gated SET DRESSING (the §8 null-lantern pattern for objects): the object
+   * only DRAWS once the flag is set (`requires_flag`) / until it is (`hidden_when_flag`).
+   * Visibility only — collision is flag-blind (CollisionGrid keeps every footprint),
+   * so a swap pair (e.g. the Lowleaf Elder Bed, grey→green) MUST share the same
+   * footprint and solidity. Re-evaluated live alongside flag-conditional NPCs.
+   */
+  requires_flag?: WorldFlag;
+  hidden_when_flag?: WorldFlag;
 }
 
 export interface MapDefinition {

@@ -158,12 +158,17 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
      and the north marsh road is an inert tease.
 
    **Named quests** (spine §5 kit):
-   - **S2 "A Letter for Fenn"** — giver: the **house parent** (`tinderwick_house`) · steps:
-     take Gran's keepsake letter → hand it to **Fenn** at his sky-watcher spot on the flats
-     (post-C2 placement) → return for her thanks · flags: `flag:q_south_letter` →
-     `flag:q_south_letter_given` · reward: balms + a warm line about the Wayfaring ·
-     maps: `tinderwick_house`, `dimglass_coast_ii` · `[MISSABLE]` — deliberately the
-     game's first delivery quest, teaching the pattern the Waykeeper's Round scales up.
+   - **S2 "A Letter for Fenn"** — **[BUILT]** giver: the **house parent** (`tinderwick_house`;
+     her shaken post-omen stage IS the hook — the F2 witness beat lands on a face) · steps:
+     take Gran's letter (`script.gran_letter`, post-`dusk_begins`) → hand it to **Fenn** at
+     his sky-watcher spot on the flats (`script.fenn_letter`; his crossroads placement hides
+     and the flats placement appears on the same `flag:dusk_begins`) → return for her thanks
+     (`script.gran_thanks`) · flags: `flag:q_south_letter` → `flag:q_south_letter_given`
+     (→ `flag:q_south_letter_done` closes the giver swap) · reward: 2 Tallow + 1 Warm Balm +
+     a warm line · maps: `tinderwick_house`, `dimglass_coast_ii` · `[MISSABLE]` — deliberately
+     the game's first delivery quest, teaching the pattern the Waykeeper's Round scales up.
+     *(Pre-omen, Gran also keeps the **warm keepsake beat** — `npc.house_parent_warm`, the
+     grandfather's brass wick-trimmer — so `dusk_begins` threatens a kitchen, not a town name.)*
 
 5. **Don't-miss callouts**
    - **Catch your first kin in the verge before Brisa will even talk quests** — the
@@ -322,9 +327,10 @@ boundary is ungated; the *spurs* off it are gift-gated) · Gleam: — · rec. le
    can't yet open and learns to remember it.
 
 4. **Optional content**
-   - **The netmender's net-floats** — a single item cache on the flats
-     (`flag:picked_net_floats`, band 8–10): the collinear errand leg of Pearlmoor's
-     **Causeway Bell** loop (see Pearlmoor §1). New ref to add when wired.
+   - **The netmender's net-floats** — **[BUILT]** the cache at `{11,4}` on the flats
+     (`script.pickup_net_floats` → `flag:picked_net_floats`; appears once
+     `flag:q_south_bell` is set, band 8–10): the collinear errand leg of Pearlmoor's
+     **Causeway Bell** loop (see Pearlmoor §1).
    - **Gullcry Rock** (spur) — **[BUILT]** **Tidecall** (this region, at Pearlmoor): the rare
      harbour-light kin (#29 Glostern) + the Tide Charm. **Becomes accessible the moment you
      earn Tidecall — backtrack here.** (Post-Tidecall it also hosts S1's three dark buoys —
@@ -339,7 +345,7 @@ boundary is ungated; the *spurs* off it are gift-gated) · Gleam: — · rec. le
    - **Remember this junction.** It is the South region's single richest backtrack node: one
      Gift (Tidecall) you'll hold within the hour reopens Gullcry Rock right here.
 
-6. **Validation hooks** (`dimglass_coast_ii` — to be built; mirror segment I's conventions)
+6. **Validation hooks** (against built `dimglass_coast_ii.json`)
    - **Map id / kind:** `dimglass_coast_ii` · route, vertical tidal-flats.
    - **Entry/exit:** south land-in `{tx:7,ty:31}` from `dimglass_coast.to_coast_ii`; north warp
      **`to_quay`** → `pearlmoor_quay` (matches graph edge `dimglass_coast_ii → pearlmoor_quay`,
@@ -353,20 +359,30 @@ boundary is ungated; the *spurs* off it are gift-gated) · Gleam: — · rec. le
      Mooncatch-adjacent), **level band ~8–10** (§4, no cliff into Pearlmoor's 12).
    - **Signs/NPC:** a boundary sign sight-lining Pearlmoor; a route NPC reiterating the buoy/cave
      teases. Originality + canon-vocabulary pass per spine §9.
+   - **Quest hooks on this map (BUILT):** the **net-floats cache** `{11,4}`
+     (`requires_flag:flag:q_south_bell`, `script.pickup_net_floats` → `flag:picked_net_floats`);
+     **S1's three buoys** — interact `cutscene` triggers on the buoy line, lit **in order
+     quay-outward** (a boolean chain with the netmender's rule as each `blocked_ref`):
+     `buoy_first {14,9}` (`requires_flag:flag:q_south_buoys` → `flag:q_south_buoy_a`) →
+     `buoy_second {16,12}` (→ `flag:q_south_buoy_b`) → `buoy_last {16,20}` (→
+     `flag:q_south_buoys_lit`); **Fenn's flats stages** — `sky_watcher` (C2,
+     `requires_flag:flag:dusk_begins`, hides on `flag:q_south_letter`) →
+     `sky_watcher_letter` (`script.fenn_letter` → `flag:q_south_letter_given`) →
+     `sky_watcher_after`.
 
 ---
 
 ### Pearlmoor Quay — *moonlit fishing port; the second Gleam and the first Gift*
 
-**At a glance** — `pearlmoor_quay` (+ the breakwater `pearlmoor_breakwater` **[NEW MAP]**) ·
+**At a glance** — `pearlmoor_quay` (+ the breakwater `pearlmoor_breakwater` **[BUILT]**) ·
 town · south · entry: south from `dimglass_coast_ii`, exit: onward to `saltreach_fen_i`
 (via `to_fen`, East) + Lanternway `to_crossroads` · gate: **Tidecall** (its own islets &
 sea-shrine — but the Lumenary itself is **not** gated, per spine §0 rule 1; the breakwater
-is walked **on foot**) · **Gleam: Tide** (Reyl Wash, ace ~16, at the **Moor-bell shrine**)
-+ **Tidecall** · rec. level: 12, bond-test ~13–14.
+is walked **on foot**) · **Gleam: Tide** (Reyl Wash, ace ~16, at his **sea-altar** — the
+bond-test waits on the **Moor-bell**) + **Tidecall** · rec. level: 12, bond-test ~13–14.
 
-**The earned loop — "The Causeway Bell" (spine §5, shape #2: breakwater walk).** The
-Tide-blessing cannot begin until the Moor-bell rings — and the bell-rope is in the
+**The earned loop — "The Causeway Bell" (spine §5, shape #2: breakwater walk) — [BUILT].**
+The Tide-blessing cannot begin until the Moor-bell rings — and the bell-rope is in the
 netmender's keeping.
 
 1. **Main path:**
@@ -387,12 +403,15 @@ netmender's keeping.
       blocked line in the netmender's voice). Two **net-hand sight trainers** (lv 12–14)
       work the causeway; the bell platform and shrine stand at its end over open water.
    5. **Ring the Moor-bell** (`script.ring_moorbell` → `flag:q_south_bell_rung`) — the
-      Tide-blessing begins behind you: boats light, the quay sings, and **Reyl walks out
-      to the shrine** (hall ↔ shrine NPC swap).
-   6. **Face Lampwarden Reyl Wash at the shrine (Tide, ace ~16).** Winning earns
-      **Gleam: Tide** and the **Tidecall** Lantern Gift, inside the festival (Arc E) —
-      heal/restock first: **[BUILT]** the inn rest (`script.inn_rest`) + the chandlery's
-      one-time crossing-kit.
+      blessing begins behind you: boats light, the quay sings, and Reyl steps to his
+      **sea-altar** (the netmender's swap stage sends you to him).
+   6. **Face Lampwarden Reyl Wash at the sea-altar (Tide, ace ~16).** His bond-test
+      trigger answers only the rung bell (`blocked_ref` in his voice until then). Winning
+      earns **Gleam: Tide** and the **Tidecall** Lantern Gift — and the walk back onto the
+      quay lands the **Tide-blessing set-piece** (`script.tide_blessing`, its own cool
+      moon-on-water cue `pearlmoor-blessing`, the bell as its signature note). Heal/restock
+      first: **[BUILT]** the inn rest (`script.inn_rest`) + the chandlery's one-time
+      crossing-kit.
    7. **`flag:crown_south` sets** (engine-set once both Ember + Tide are held) — the South
       quadrant's two constellations are relit; the Vesper Crossroads' south approach is primed.
    8. **Now-accessible callout:** with **Tidecall** in hand, **backtrack to Dimglass II →
@@ -429,17 +448,24 @@ netmender's keeping.
      Its inward Spire roads remain `[LATER]` (`flag:hub_unlocked`, West/endgame).
 
    **Named quests** (spine §5 kit; South's slate, with S2 over in Tinderwick):
-   - **S1 "The Last Buoy Out"** — giver: the **netmender** (post-bell, her swap NPC) ·
-     steps: relight the three dark buoys in the Dimglass II shallows (interact scripts on
-     the buoy line, Tidecall water) → return · flags: `flag:q_south_buoys` →
-     `flag:q_south_buoys_lit` · reward: the **Drift Charm** · maps: `pearlmoor_quay`,
-     `dimglass_coast_ii` · `[LATER: Tidecall]` (a "now accessible" callout the moment the
-     Gift lands).
-   - **S3 "The Cavern Keeps a Light"** — giver: the **old fisher** (inn) · steps: relight
-     the wreck-lamp deep in **Tideglass Cavern** → tell him it still burns · flags:
-     `flag:q_south_wrecklamp` → `flag:q_south_wrecklamp_lit` · reward: a **Tide Charm
-     upgrade** · maps: `pearlmoor_quay`, `tideglass_cavern` · `[LATER: Glimmerstep]`, with
-     a deeper page beyond the lamp's reach `[LATER: Lamplight ≥ Starlight]`.
+   - **S1 "The Last Buoy Out"** — **[BUILT]** giver: the **netmender** (her post-Gleam
+     swap stage, `script.netmender_buoys`) · steps: relight her three storm-dark buoys in
+     the Dimglass II water **in order, quay-outward** (`buoy_first` → `buoy_second` →
+     `buoy_last` — a boolean chain; out-of-order interacts answer with her rule as the
+     `blocked_ref`) → return · flags: `flag:q_south_buoys` → `flag:q_south_buoy_a/_b` →
+     `flag:q_south_buoys_lit` (→ `flag:q_south_buoys_done` closes the swap) · reward: the
+     **Drift Charm** (the game's first **conditional charge**: catch ×3.0 on water-met kin,
+     plain ×1.0 ashore — `04-capture.md`) · maps: `pearlmoor_quay`, `dimglass_coast_ii` ·
+     `[LATER: Tidecall]` (a "now accessible" callout the moment the Gift lands).
+   - **S3 "The Cavern Keeps a Light"** — **[BUILT: giver + reward]** giver: the **old
+     fisher** (inn; his tale opens once the bell rings — `script.fisher_wrecklamp`) ·
+     steps: relight his boat's wreck-lamp deep in **Tideglass Cavern** → tell him it still
+     burns (`script.fisher_thanks`) · flags: `flag:q_south_wrecklamp` →
+     `flag:q_south_wrecklamp_lit` (→ `flag:q_south_wrecklamp_done`) · reward: the
+     **Wrecklight Charm** (the Tide Charm re-blessed, ×2.5) · maps: `pearlmoor_quay`,
+     `tideglass_cavern` · `[LATER: Glimmerstep]` — **the wreck-lamp trigger itself ships
+     with `tideglass_cavern`** (it must set `flag:q_south_wrecklamp_lit`); a deeper page
+     beyond the lamp's reach `[LATER: Lamplight ≥ Starlight]`.
    - **R1 "Wicks for the Lamplighter"** — the Waykeeper's Round, leg 1 (live now): parcel
      from the **Waykeeper** (`vesper_crossroads`) → the **old lamplighter** (Dimglass I) ·
      flags: `flag:q_round_lamplighter` · reward: bright-lamp kit · `[wakes with spoke]`
@@ -455,28 +481,45 @@ netmender's keeping.
    - **The Tide-blessing festival** — pair it with the Lantern-fair as South's two warm
      set-pieces; together they establish "Gleam = belonging" before the stakes harden in East.
 
-6. **Validation hooks** (`pearlmoor_quay` is built; the bell loop + `pearlmoor_breakwater`
-   are new refs to add when built)
-   - **Map id / kind:** `pearlmoor_quay` · town; **`pearlmoor_breakwater`** **[NEW MAP]** ·
-     route/causeway, ~12×28, walked on foot (no Tidecall anywhere on it — §0 rule 1).
+6. **Validation hooks** (against built `pearlmoor_quay.json` + `pearlmoor_breakwater.json`
+   + `pearlmoor_lumenary.json`)
+   - **Map id / kind:** `pearlmoor_quay` · town; **`pearlmoor_breakwater`** **[BUILT]** ·
+     route/causeway, 12×28, walked on foot (no Tidecall anywhere on it — §0 rule 1: the
+     causeway is carved SAND under the boards, never gated water; no encounters — its
+     battles are the two posted net-hands).
    - **Entry/exit:** south land-in from `dimglass_coast_ii` (paired with its `to_quay`); onward
      **`to_fen`** → `saltreach_fen_i` (graph edge, ungated); **`to_crossroads`** → `vesper_crossroads`
-     (Lanternway spoke, bidirectional, per `graph.ts:159`); breakwater foot gate
-     **`to_breakwater`** `requires_flag:flag:q_south_has_rope` with a `blocked_ref` in the
-     netmender's voice.
-   - **The bell quest chain (all data):** `script.reyl_quest` (hall) sets `flag:q_south_bell`
-     → net-floats item cache on `dimglass_coast_ii` (`flag:picked_net_floats`) → netmender
-     NPC swap gives the rope (`flag:q_south_has_rope`) → breakwater walk (2 net-hand SIGHT
-     trainers, lv 12–14) → `script.ring_moorbell` sets `flag:q_south_bell_rung` (festival
-     NPC wave + Reyl hall↔shrine swap).
-   - **Lumenary (ungated) + Gift + flags:** the bond-test trigger at the **Moor-bell shrine**,
-     `requires_flag:flag:q_south_bell_rung` with `blocked_ref` (Reyl's "the moor-bell waits
-     on you"), **earns `gleam:tide`** and **grants ability `tidecall`**; the engine sets
-     **`flag:crown_south`** once `gleam:ember`+`gleam:tide` are both held. Lampwarden
-     **Reyl Wash** (Tide, ace ~16).
+     (Lanternway spoke, bidirectional); the breakwater root (cols 24–25, rows 18–23) ends in
+     the moor-gate pair **`to_breakwater`/`to_breakwater_e`** `{24–25,23}`
+     **`requires_flag:flag:q_south_has_rope`** with **`blocked_ref:npc.netmender_gate`**
+     (Warp.blocked_ref is engine-supported, step_on included) → `pearlmoor_breakwater {5–6,0}`,
+     landing ON its return pair.
+   - **The bell quest chain (all data, BUILT):** `script.reyl_quest` (hall, Reyl's dais
+     stage) sets `flag:q_south_bell` → net-floats cache on `dimglass_coast_ii` `{11,4}`
+     (`flag:picked_net_floats`) → netmender swap `script.netmender_rope` gives the
+     MOOR-BELL ROPE (`flag:q_south_has_rope`) → breakwater walk (net-hand SIGHT trainers
+     **Maren** lv 12/12 + **Cob** lv 13/14 on one-tile boulder chokes, payouts 192/224 —
+     route 16 × ace, mirrored in `progression.mjs BUILT_PAYOUTS`) → `script.ring_moorbell`
+     at the shrine's bell (interact, both base tiles) sets `flag:q_south_bell_rung`.
+   - **Lumenary (ungated) + Gift + flags:** the bond-test trigger `lumenary_battle` `{8,6}`,
+     **`requires_flag:flag:q_south_bell_rung`** with **`blocked_ref:npc.reyl_blocked`**
+     ("the moor-bell waits on you"), runs `script.lumenary_pearlmoor` — **earns `gleam:tide`**
+     and **grants ability `tidecall`**; the engine sets **`flag:crown_south`** once
+     `gleam:ember`+`gleam:tide` are both held. Lampwarden **Reyl Wash** (Tide, ace ~16);
+     his dais runs four flag-disjoint stages (`reyl_quest` → `reyl_waiting` → `reyl` →
+     `reyl_after`).
+   - **The Tide-blessing set-piece (Arc E, BUILT):** `script.tide_blessing` banded across
+     every walkable tile of quay row 10 (the one cut between the Lumenary forecourt and
+     town), `requires_flag:'gleam:tide'`, self-hiding via `flag:tide_blessing_seen`; its
+     cue is **`pearlmoor-blessing`** (SNES-register festival waltz — the anchor's lead/bass
+     note-for-note, the moor-bell tolling through it; master
+     `assets/audio/midi/pearlmoor-blessing.mid`) and its signature sfx **`world-moorbell`**.
    - **Quest-chain hooks (rule 3):** opened `flag:q_south_bell` / `q_south_has_rope` /
-     `q_south_bell_rung` are consumed by the breakwater gate, the netmender swap pair and
-     the bond-test trigger; S1/S3/R1/R2 flags as listed in their Named-quests entries.
+     `q_south_bell_rung` are consumed by the breakwater gate, the netmender stage chain and
+     the bond-test trigger; S1/S3 flags as listed in their Named-quests entries (S3's
+     `flag:q_south_wrecklamp_lit` is the one ref owed by a future map — the wreck-lamp
+     trigger in `tideglass_cavern`); R1/R2 (the Waykeeper's Round legs) remain to wire at
+     `vesper_crossroads`.
    - **Tidecall-gated town content:** islet/sea-shrine warps + `water` `EncounterZone`s with
      **`requires_ability:tidecall`**; an `AbilityGate` (`tidecall`,`make_passable`) over the
      harbour shallows.

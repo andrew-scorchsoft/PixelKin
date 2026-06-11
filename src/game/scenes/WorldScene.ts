@@ -54,7 +54,7 @@ import { SaveManager } from '@game/systems/save/SaveManager';
 import type { WorldSnapshot } from '@game/data/world/types';
 import { MAP_REGISTRY } from '@game/data/world/maps';
 import { VESPERHOLM_GRAPH } from '@game/data/world/graph';
-import type { AbilityId, Facing, Warp, EventTrigger, NpcPlacement } from '@game/data/world/types';
+import type { AbilityId, Facing, Warp, EventTrigger, NpcPlacement, MapObject } from '@game/data/world/types';
 
 export interface WorldSceneData {
   mapId: string;
@@ -171,6 +171,7 @@ export class WorldScene extends Phaser.Scene {
       this.cameras.main.startFollow(this.player.sprite, true, 1, 1);
 
       this.spawnNpcs();
+      this.refreshObjects();
       this.playMapMusic();
       this.warmEncounterSprites();
 
@@ -309,9 +310,26 @@ export class WorldScene extends Phaser.Scene {
     }
   }
 
+  private objectVisible(obj: MapObject): boolean {
+    if (obj.requires_flag && !this.flags.get(obj.requires_flag)) return false;
+    if (obj.hidden_when_flag && this.flags.get(obj.hidden_when_flag)) return false;
+    return true;
+  }
+
+  /** Re-evaluate flag-gated set-dressing objects (the §8 swap pattern — e.g.
+   *  the Lowleaf Elder Bed blooming grey→green). Visibility only: a swap pair
+   *  shares its footprint, so collision never needs re-deriving. */
+  private refreshObjects(): void {
+    for (const img of this.render?.objects ?? []) {
+      const def = img.getData('object_def') as MapObject | undefined;
+      if (def && (def.requires_flag || def.hidden_when_flag)) img.setVisible(this.objectVisible(def));
+    }
+  }
+
   /** Re-evaluate flag-conditional NPCs after flags change (a picked-up item
    *  cache vanishes immediately; a festival crowd appears without a re-entry). */
   private refreshNpcs(): void {
+    this.refreshObjects();
     this.npcs = this.npcs.filter((npc) => {
       if (this.npcVisible(npc.placement)) return true;
       npc.destroy();
@@ -614,6 +632,7 @@ export class WorldScene extends Phaser.Scene {
           kind: 'wild',
           species_id: intent.species_id,
           level: intent.level,
+          terrain: intent.terrain,
           party: this.party,
           box: this.box,
           inventory: this.inventory,
@@ -706,7 +725,11 @@ export class WorldScene extends Phaser.Scene {
 
   private async executeWarp(warp: Warp): Promise<void> {
     if (!this.warpAllowed(warp)) {
-      if (warp.trigger === 'interact') await this.showHint();
+      // A gated warp with its own "not yet" line delivers it in-voice (step_on
+      // included — the player walked into a chained gate); otherwise only an
+      // active interact gets the generic hint.
+      if (warp.blocked_ref) await this.runDialogue(warp.blocked_ref);
+      else if (warp.trigger === 'interact') await this.showHint();
       return;
     }
     // Tolerant: ignore warps whose target map isn't authored/registered yet.
