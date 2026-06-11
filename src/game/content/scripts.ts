@@ -605,6 +605,293 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:picked_fen_islet' },
   ],
 
+  // --- Saltreach Fen II (East) — deep channels, Tidecall load-bearing ----------
+  // The route's one sight trainer: the reed-line lamplighter, posted where the
+  // channels give way to firm ground (the 17→18 top of the fen ramp).
+  'script.reed_lamplighter': [
+    { op: 'say', speaker: 'TARN', text: 'Walked the moon-channels, did you. Then you owe the reed-line a toll — every tide-walker does. Keeps the lamps in oil!' },
+    { op: 'battle', trainer: 'reed_lamplighter' },
+    { op: 'say', speaker: 'TARN', text: 'Paid in full. The treeline ahead is Lowleaf ground — follow the green glow and mind the Bloom crowds.' },
+    { op: 'setFlag', flag: 'flag:reed_lamplighter_beaten' },
+  ],
+
+  // E1 "The Quiet Reeds" — the fen fisher on the channel jetty. Three of the
+  // lantern-reeds on her line have gone dark; the first two take a flame, the
+  // THIRD will not light, and nobody says why. (The B2 foreshadow stays SILENT
+  // — no one names the Hollowing east of Glowmoss Deep.)
+  'script.fen_fisher': [
+    { op: 'say', speaker: 'FEN FISHER', text: 'Evening, tide-walker. You\'ll have seen them on your way in — my lantern-reeds. Three gone dark this season, and reeds don\'t gutter. Reeds GLOW. It\'s what they\'re for.' },
+    { op: 'say', speaker: 'FEN FISHER', text: 'My knees don\'t do channels any more, so the line goes untended and the fish go elsewhere. You carry a lit lamp — would you walk it for me?' },
+    { op: 'say', speaker: 'FEN FISHER', text: 'Channel order, mind: the near reed first, then the mid-water one, then the far one up by the treeline. A line lights from home outward. Always has.' },
+    { op: 'setFlag', flag: 'flag:q_east_reeds' },
+  ],
+  'script.reed_first': [
+    { op: 'narrate', text: 'The near lantern-reed leans dark over its own reflection. You cup the seed-head and touch your vesperlamp to the wick inside.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#ffb86b', alpha: 0.2, ms: 400 },
+    { op: 'narrate', text: 'It takes — a warm amber globe waking over the black water. One. Somewhere below, something small and silver turns toward the light.' },
+    { op: 'tint', color: '#ffb86b', alpha: 0, ms: 600 },
+  ],
+  'script.reed_second': [
+    { op: 'narrate', text: 'The mid-water reed is furred with cold moss, its globe long dark. You clear the wick with a thumbnail and lend it your flame.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#ffb86b', alpha: 0.2, ms: 400 },
+    { op: 'narrate', text: 'Two. Behind you the near reed answers it across the channel, the way a held note answers a held note.' },
+    { op: 'tint', color: '#ffb86b', alpha: 0, ms: 600 },
+  ],
+  // The third reed — it will NOT light. A quiet dread beat, no explanation:
+  // that answer belongs to Glowmoss Deep. (cinematics.md: dread = the quiet.)
+  'script.reed_third': [
+    { op: 'letterbox', on: true, ms: 320 },
+    { op: 'narrate', text: 'The far reed stands dark against the treeline. You raise your vesperlamp and touch flame to the wick, the way you have twice tonight.' },
+    { op: 'silence', ms: 1200 },
+    { op: 'narrate', text: 'The wick drinks your flame and stays dark.' },
+    { op: 'narrate', text: 'You try again, shielding it with both hands. The flame goes into it like a stone into deep water — no smoke, no spark, no reason. The reed is not wet. It is not broken. It is just... finished.' },
+    { op: 'sfx', key: 'world-star-gutter' },
+    { op: 'narrate', text: 'Out in the dark fen, nothing moves. The two reeds you lit burn steadily behind you, and somehow that is worse.' },
+    { op: 'letterbox', on: false, ms: 320 },
+  ],
+  'script.fen_fisher_report': [
+    { op: 'say', speaker: 'FEN FISHER', text: 'I watched the near two stand up from right here — bless your quick hands. And the far one?' },
+    { op: 'narrate', text: 'You tell her. The flame that sank like a stone. The wick that was not wet, and not broken, and would not take.' },
+    { op: 'say', speaker: 'FEN FISHER', text: '...Hm. Forty years on this water and I\'d have said there\'s no such thing as a reed that won\'t light.' },
+    { op: 'say', speaker: 'FEN FISHER', text: 'Probably nothing. A bad wick. A cold spring.' },
+    { op: 'narrate', text: 'She looks past you at the treeline for a long moment, and does not say what she is thinking.' },
+    { op: 'say', speaker: 'FEN FISHER', text: 'Here — the line\'s thanks, and mine. A reed-wick lamp, dipped the old way. In deep growth it burns twice as sure; the fen looks after them as walk it kindly.' },
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'giveItem', item: 'marsh_lamp', count: 1 },
+    { op: 'say', text: 'Received the MARSH LAMP!' },
+    { op: 'giveMoney', amount: 200 },
+    { op: 'say', text: 'She presses a knotted purse on you too — 200 WICKS. "For the oil you burned. No arguing."' },
+    { op: 'setFlag', flag: 'flag:q_east_reeds_done' },
+  ],
+
+  // Fen II caches (the standing kit: a valuable on the tide-walk isle, loose
+  // wicks off the lane, a consumable by the landing).
+  'script.pickup_fen_isle_amber': [
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'giveItem', item: 'moth_amber', count: 1 },
+    { op: 'say', text: 'No plank reaches this isle — only the parted water. Half-sunk in the reed-root: a MOTH-AMBER, still warm with old light!' },
+    { op: 'setFlag', flag: 'flag:picked_fen_isle_amber' },
+  ],
+  'script.pickup_fen_ii_wicks': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 150 },
+    { op: 'say', text: "A fisher's drop-tin, lashed above the waterline. Found 150 WICKS!" },
+    { op: 'setFlag', flag: 'flag:picked_fen_ii_wicks' },
+  ],
+  'script.pickup_fen_ii_balm': [
+    { op: 'giveItem', item: 'tallow_balm', count: 2 },
+    { op: 'say', text: 'Wax-wrapped against the damp, left for the next walker. Found 2 TALLOW BALMS!' },
+    { op: 'setFlag', flag: 'flag:picked_fen_ii_balm' },
+  ],
+
+  // --- Sunkbell Shallows (Tidecall spur) — the half-flooded shrine -------------
+  'script.pickup_sunkbell_charges': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'beacon_charge', count: 2 },
+    { op: 'say', text: 'A pilgrim\'s offering-box, sealed with wax against the flood. Found 2 BEACON CHARGES — left, perhaps, for exactly the kin that swim here.' },
+    { op: 'setFlag', flag: 'flag:picked_sunkbell_charges' },
+  ],
+  'script.pickup_sunkbell_balm': [
+    { op: 'giveItem', item: 'warm_balm', count: 1 },
+    { op: 'say', text: 'Tucked dry in a niche of the drowned steps. Found a WARM BALM!' },
+    { op: 'setFlag', flag: 'flag:picked_sunkbell_balm' },
+  ],
+
+  // --- Lowleaf Hollow (East) — the Glowmoss Bloom + the Tended Bed -------------
+  // Arrival: the festival reveal + the grey Elder Bed tease, banded across the
+  // south corridor so the first walk in always lands it.
+  'script.glowmoss_bloom_arrival': [
+    { op: 'letterbox', on: true, ms: 320 },
+    { op: 'musicCrossfade', key: 'lowleaf-hollow-b', ms: 900 },
+    { op: 'narrate', text: 'The fen gives way to ferns, and the ferns are FULL of light. Lantern-strings between the trunks, stalls under striped awnings, moss glowing green-gold on every roof — Lowleaf Hollow, and the Glowmoss Bloom is in full swing.' },
+    { op: 'narrate', text: 'Children chase a drift of glow-motes across the lane. Somewhere a piper is playing rounds, and nobody is dancing in step, and nobody minds.' },
+    { op: 'cameraFocus', to: { tx: 15, ty: 13 }, ms: 900 },
+    { op: 'silence', ms: 900 },
+    { op: 'narrate', text: 'But at the hollow\'s heart, where the dancing ring turns — the oldest moss-bed in town lies GREY. The festival flows around it the way a song flows around a missed note.' },
+    { op: 'cameraReset', ms: 600 },
+    { op: 'musicCrossfade', key: 'lowleaf-hollow-a', ms: 900 },
+    { op: 'letterbox', on: false, ms: 320 },
+  ],
+
+  // The Tended Bed (spine §5 shape #3 — the LIGHT loop). Sable's hook:
+  'script.sable_quest': [
+    { op: 'say', speaker: 'SABLE QUILL', portrait: 'sable', expr: 'shy', text: 'Oh — a Wayfarer. With two Gleams already over your shoulder, if I\'m reading your lamp right. I, um. Welcome to the Bloom.' },
+    { op: 'say', speaker: 'SABLE QUILL', portrait: 'sable', expr: 'neutral', text: 'You\'ll have seen the Elder Bed on your way in. Grey, at its own festival. Everyone keeps asking me to make a speech about it, and I\'d rather... not make speeches.' },
+    { op: 'say', speaker: 'SABLE QUILL', portrait: 'sable', expr: 'neutral', text: 'The Bloom won\'t crown over a grey bed. Warm the old moss first — then we\'ll see what your light\'s worth.' },
+    { op: 'say', speaker: 'SABLE QUILL', portrait: 'sable', expr: 'shy', text: 'The kilner by the square will know what it needs. Moss doesn\'t want speeches either. It wants warmth, and somebody patient.' },
+    { op: 'setFlag', flag: 'flag:q_east_bloom' },
+  ],
+
+  // The fen-wood cache on the forest fringe (the bloom-warden lane).
+  'script.pickup_fenwood': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'fen_wood', count: 1 },
+    { op: 'say', text: 'Stacked dry under the ferns where the kilners always stack it. Took an armful of FEN-WOOD!' },
+    { op: 'setFlag', flag: 'flag:picked_fenwood' },
+  ],
+
+  // The kilner fires a hearth-spore from your fen-wood.
+  'script.kiln_relight': [
+    { op: 'say', speaker: 'KILNER', text: 'Fen-wood! Dry as a sermon and twice as useful. Give it here, give it here—' },
+    { op: 'narrate', text: 'She racks the wood, strikes her flint twice, and the bloom-kiln wakes with a breath like a sleeping animal rolling over.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#ff8a3d', alpha: 0.25, ms: 500 },
+    { op: 'say', speaker: 'KILNER', text: 'Now — the part nobody under sixty remembers. You don\'t warm an elder bed with fire. You warm it with what fire LEAVES.' },
+    { op: 'narrate', text: 'She rakes the first coals, lifts something from their heart with bronze tongs, and folds it into a wax paper twist: a kiln-fired glowmoss spore, warm as a held coal.' },
+    { op: 'tint', color: '#ff8a3d', alpha: 0, ms: 600 },
+    { op: 'giveItem', item: 'hearth_spore', count: 1 },
+    { op: 'say', text: 'Received the HEARTH-SPORE!' },
+    { op: 'giveMoney', amount: 150 },
+    { op: 'say', text: '"And the kiln-fee — the festival pays whoever feeds the kiln. Tonight that\'s you." Received 150 WICKS!' },
+    { op: 'say', speaker: 'KILNER', text: 'Tuck it under the old moss and STEP BACK. Beds remember what to do. They just need reminding they\'re not done.' },
+    { op: 'setFlag', flag: 'flag:q_east_hearthspore' },
+  ],
+
+  // Warming the Elder Bed — the loop's payoff: the grey→green swap (the §8
+  // null-lantern pattern, warm edition: flag-gated objects + festival NPCs).
+  'script.warm_elder_bed': [
+    { op: 'letterbox', on: true, ms: 320 },
+    { op: 'narrate', text: 'You kneel at the stone ring. Up close the grey is worse — moss like burnt paper, a century of kept light gone to ash-colour.' },
+    { op: 'silence', ms: 1000 },
+    { op: 'narrate', text: 'You work the hearth-spore down under the cold cushion, the way you\'d bank a coal for morning. And step back.' },
+    { op: 'wait', ms: 600 },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#9fe8b8', alpha: 0.35, ms: 800 },
+    { op: 'narrate', text: 'Nothing. Nothing. Then — between two stones, one thread of moss remembers its colour. Then ten. Then the whole bed at once, green-gold racing rim to rim like a rumour through a crowd.' },
+    { op: 'tint', color: '#9fe8b8', alpha: 0, ms: 900 },
+    { op: 'narrate', text: 'Behind you, the piper stops mid-round. The whole festival has turned to look. A child says, very clearly, "it was SLEEPING," and the dancing ring re-forms around the Elder Bed where it has always belonged.' },
+    { op: 'musicCrossfade', key: 'lowleaf-hollow-b', ms: 900 },
+    { op: 'letterbox', on: false, ms: 320 },
+  ],
+
+  // The bloom-warden sight trainers on the fen-wood lane (keeper class).
+  'script.bloom_warden_a': [
+    { op: 'say', speaker: 'IVY', text: 'Hold the lane! Past me are the fringe beds — festival or no festival, every lamp that walks them gets weighed.' },
+    { op: 'battle', trainer: 'bloom_warden_a' },
+    { op: 'say', speaker: 'IVY', text: 'Weighed and welcome. The dry fen-wood is stacked under the far ferns — mind where the moss is sleeping.' },
+    { op: 'setFlag', flag: 'flag:bloom_warden_a_beaten' },
+  ],
+  'script.bloom_warden_b': [
+    { op: 'say', speaker: 'FERN', text: 'A Wayfarer on the wood-lane! Good. Ivy softens them up and I finish the lesson — that\'s the Bloom-watch way.' },
+    { op: 'battle', trainer: 'bloom_warden_b' },
+    { op: 'say', speaker: 'FERN', text: 'Lesson finished. You\'d give Sable herself a fair evening — and I don\'t say that at every festival.' },
+    { op: 'setFlag', flag: 'flag:bloom_warden_b_beaten' },
+  ],
+
+  // The Verdant bond-test + Gleam ceremony (Sable's hall; minor→major, the
+  // Glowmoss Bloom swell — the third "Gleam = belonging" payoff).
+  'script.lumenary_lowleaf': [
+    { op: 'face', actor: 'player', facing: 'up' },
+    { op: 'face', actor: 'sable', facing: 'down' },
+    { op: 'say', speaker: 'SABLE QUILL', portrait: 'sable', expr: 'warm', text: 'You didn\'t make a speech at it. You just... warmed it, and stepped back, and let it remember itself. I watched from the door.' },
+    { op: 'say', speaker: 'SABLE QUILL', portrait: 'sable', expr: 'neutral', text: 'So I won\'t make a speech either. The moss vouches for you. Now show me it\'s right.' },
+    { op: 'battle', trainer: 'lampwarden_lowleaf' },
+    { op: 'musicFade', ms: 500 },
+    { op: 'tint', color: '#9fe8b8', alpha: 0.36, ms: 600 },
+    { op: 'narrate', text: 'Sable opens the hall doors wide. Outside, the Elder Bed answers her hall-moss glow for glow — and overhead, threading green-gold between the stars, the VERDANT remembers how to shine.' },
+    { op: 'gleam', element: 'verdant' },
+    { op: 'musicCrossfade', key: 'gleam-emotional', ms: 900 },
+    { op: 'tint', color: '#9fe8b8', alpha: 0, ms: 900 },
+    { op: 'say', speaker: 'SABLE QUILL', portrait: 'sable', expr: 'warm', text: 'The moss doesn\'t shine FOR anyone. It just... keeps a little light where it can. Be like the moss. Here — this\'ll let you walk where it\'s dark.' },
+    { op: 'say', speaker: 'SABLE QUILL', portrait: 'sable', expr: 'shy', text: 'The Glimmerstep. The deep wood north of town has been shut to me my whole life — too dark past the first bough. Your lamp won\'t mind it now. ...Tell me what grows in there. Please.' },
+  ],
+
+  // The festival crowns around the green bed — banded in town, post-Gleam.
+  'script.bloom_crowning': [
+    { op: 'letterbox', on: true, ms: 320 },
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'narrate', text: 'The hollow is roaring — as much as a town of botanists ever roars. The Elder Bed burns green-gold at the heart of the dancing ring, and over the treeline the Verdant constellation hangs new-lit in the dark.' },
+    { op: 'narrate', text: 'Somebody has crowned the bed\'s tallest stone with a wreath of glowmoss. Somebody else is crying into a moss-cake. The piper has given up on rounds and is simply playing.' },
+    { op: 'say', speaker: 'BLOOM ELDER', text: 'A hundred and nine Blooms I\'ve danced, and I never saw the Bed crowned before. Belonging, child — that\'s what a Gleam is. Tonight you belong to Lowleaf.' },
+    { op: 'musicCrossfade', key: 'lowleaf-hollow-b', ms: 1100 },
+    { op: 'letterbox', on: false, ms: 320 },
+  ],
+
+  // E2 "Spores for the Stall" — the Bloom stall-keeper's gathering errand.
+  'script.stall_quest': [
+    { op: 'say', speaker: 'STALL-KEEPER', text: 'Moss-cakes! Glow-jars! Spore-bread warm from the— oh, who am I fooling. Look at my shelf. EMPTY. The Bloom eats spores faster than the deep wood sends them.' },
+    { op: 'say', speaker: 'STALL-KEEPER', text: 'My gatherer won\'t go past the first bough since the wood went quiet, and now there\'s a lamp in town that walks the dark like it\'s a garden path. That\'s you. I\'ve seen you.' },
+    { op: 'say', speaker: 'STALL-KEEPER', text: 'Three spore-caches, left bundled along the glow-beds in the Deep. Bring them home and the stall feeds the rest of the festival — and you, for life, within reason.' },
+    { op: 'setFlag', flag: 'flag:q_east_spores' },
+  ],
+  'script.pickup_spore_a': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'bloom_spores', count: 1 },
+    { op: 'say', text: 'A gatherer\'s cloth bundle, heavy with glowing spores. One of three. The moss around it leans toward your lamp as you lift it.' },
+    { op: 'setFlag', flag: 'flag:picked_spore_a' },
+  ],
+  'script.pickup_spore_b': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'bloom_spores', count: 1 },
+    { op: 'say', text: 'The second spore-bundle, tucked in a root-hollow. Two of three. Something further up the gallery chitters at you — twice, pointedly.' },
+    { op: 'setFlag', flag: 'flag:picked_spore_b' },
+  ],
+  // The third cache has a squatter: a cross Sporeling, driven off in a battle.
+  'script.spore_squatter': [
+    { op: 'narrate', text: 'The third bundle is RIGHT THERE — and sitting on it, puffed to twice its size, is a Sporeling with the expression of a landlord.' },
+    { op: 'say', text: 'It chitters. It is not a welcoming chitter.' },
+    { op: 'battle', trainer: 'spore_squatter' },
+    { op: 'narrate', text: 'The Sporeling huffs one last cloud of indignation, hops off the bundle, and flounces away into the glow-beds — pride dented, dignity intact.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'bloom_spores', count: 1 },
+    { op: 'say', text: 'Took the last spore-bundle. Three of three!' },
+    { op: 'setFlag', flag: 'flag:spore_squatter_beaten' },
+  ],
+  'script.stall_reward': [
+    { op: 'say', speaker: 'STALL-KEEPER', text: 'Three bundles! And one of them argued for — I can smell the huff on it. You beautiful walking lantern.' },
+    { op: 'narrate', text: 'She has the shelf restocked before you finish explaining, hands moving like a card-sharp\'s. A queue forms behind you instantly.' },
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'giveItem', item: 'glow_salve', count: 1 },
+    { op: 'say', text: 'Received a GLOW SALVE — "festival pressing, not for sale, don\'t tell the provisioner."' },
+    { op: 'giveMoney', amount: 300 },
+    { op: 'say', text: 'And a share of the stall\'s evening: 300 WICKS!' },
+    { op: 'say', speaker: 'STALL-KEEPER', text: 'One more thing, since you like the deep wood: the Fennlight drift into the fringe grass while the Bloom\'s lit. The town\'s own kin, green-and-gold. Take a charge out there and ask one home — no stall-keeper ever had a better lamp-piece.' },
+    { op: 'setFlag', flag: 'flag:q_east_spores_done' },
+  ],
+
+  // Lowleaf's one-time shop kit + the open counter (the standing pattern).
+  'script.shop_kit_lowleaf': [
+    { op: 'say', speaker: 'PROVISIONER', text: 'In off the fen! Then you\'ll want the Bloom-kit — festival custom, no charge, stop arguing.' },
+    { op: 'giveItem', item: 'glow_charge', count: 2 },
+    { op: 'giveItem', item: 'warm_balm', count: 1 },
+    { op: 'say', speaker: 'PROVISIONER', text: 'Two glow charges and a warm balm. The fringe grass is generous during the Bloom — and the deep wood past it is not. Stock accordingly.' },
+    { op: 'setFlag', flag: 'flag:lowleaf_kit' },
+  ],
+  'script.shop_lowleaf': [
+    { op: 'dialogue', ref: 'npc.lowleaf_provisioner' },
+    { op: 'shop', shop: 'lowleaf_provisioner' },
+  ],
+
+  // The guest-bower's rest (the town's full heal — the standing kit).
+  'script.lowleaf_rest': [
+    { op: 'say', speaker: 'BOWER-KEEPER', text: 'Festival or fen-mud, every walker gets the same bower. In you go — the moss-bunks are warm and the lamps are low.' },
+    { op: 'fade', dir: 'out' },
+    { op: 'wait', ms: 700 },
+    { op: 'heal' },
+    { op: 'fade', dir: 'in' },
+    { op: 'say', speaker: 'BOWER-KEEPER', text: 'There. Kin bright-eyed, boots dry. The Bloom keeps till morning — it always does.' },
+  ],
+
+  // Lowleaf caches (variety rule: wicks behind the cottages, a charge by the fringe).
+  'script.pickup_lowleaf_wicks': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 120 },
+    { op: 'say', text: 'A festival takings-tin, forgotten behind the cottage. Found 120 WICKS!' },
+    { op: 'setFlag', flag: 'flag:picked_lowleaf_wicks' },
+  ],
+  'script.pickup_lowleaf_balm': [
+    { op: 'giveItem', item: 'tallow_balm', count: 2 },
+    { op: 'say', text: 'A festival hamper, tucked out of the dancing. Found 2 TALLOW BALMS!' },
+    { op: 'setFlag', flag: 'flag:picked_lowleaf_balm' },
+  ],
+  'script.pickup_lowleaf_charge': [
+    { op: 'giveItem', item: 'glow_charge', count: 1 },
+    { op: 'say', text: 'Left on the fringe-side fence post, wax seal unbroken. Found a GLOW CHARGE!' },
+    { op: 'setFlag', flag: 'flag:picked_lowleaf_charge' },
+  ],
+
   // Gullcry Rock's prize: the Tide Charm (a sea-blessed lamp; see items.ts).
   'script.pickup_gullcry_charm': [
     { op: 'sfx', key: 'world-gleam-a' },

@@ -45,6 +45,22 @@ export const SHOPS: ShopRegistry = {
       'chart_focus_mind',
     ],
   },
+
+  // Lowleaf Provisioner — the Glowmoss Bloom's stall counter (East tier):
+  // both balm tiers, both charges, and the Verdant chart slate (10-economy §5).
+  lowleaf_provisioner: {
+    id: 'lowleaf_provisioner',
+    name: 'LOWLEAF PROVISIONER',
+    stock: [
+      'tallow_balm',
+      'warm_balm',
+      'glow_charge',
+      { item: 'beacon_charge', requires_flag: 'gleam:ember' },
+      'chart_spore_puff',
+      'chart_root_strike',
+      'chart_lifedrain',
+    ],
+  },
 };
 
 export function getShop(id: string): ShopDef | undefined {

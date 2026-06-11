@@ -92,6 +92,8 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'saltreach_fen_ii', region: 'east' }, // route: deep channels
     { map_id: 'sunkbell_shallows', region: 'east', optional: true, reward: 'rare Tide kin + item cache in a flooded shrine' },
     { map_id: 'lowleaf_hollow', region: 'east' }, // forest town + Lumenary
+    { map_id: 'lowleaf_lumenary', region: 'east' }, // interior: the Verdant Lumenary (Sable Quill)
+    { map_id: 'lowleaf_bower', region: 'east' }, // interior: the festival guest-bower (rest point)
     { map_id: 'glowmoss_deep', region: 'east' }, // forest interior (Glimmerstep)
     { map_id: 'glowmoss_deep_b1f', region: 'east' }, // the lower maze floor (ladder pair)
     { map_id: 'spore_grotto', region: 'east', optional: true, reward: 'rare Bug/Verdant kin + item' },
@@ -156,6 +158,9 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'pearlmoor_quay', to_map: 'saltreach_fen_i', via_warp: 'to_fen', bidirectional: true },
     { from_map: 'saltreach_fen_i', to_map: 'saltreach_fen_ii', via_warp: 'to_fen_ii', requires_ability: 'tidecall', bidirectional: true },
     { from_map: 'saltreach_fen_ii', to_map: 'lowleaf_hollow', via_warp: 'to_hollow', bidirectional: true },
+    // Lowleaf interiors (door warps, both ways)
+    { from_map: 'lowleaf_hollow', to_map: 'lowleaf_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
+    { from_map: 'lowleaf_hollow', to_map: 'lowleaf_bower', via_warp: 'to_bower', bidirectional: true },
     { from_map: 'lowleaf_hollow', to_map: 'glowmoss_deep', via_warp: 'to_deepwood', requires_ability: 'glimmerstep', bidirectional: true },
     { from_map: 'glowmoss_deep', to_map: 'cinderhead_mine', via_warp: 'to_mine', bidirectional: true },
     { from_map: 'cinderhead_mine', to_map: 'cinderhead_deep', via_warp: 'to_deep', requires_ability: 'glimmerstep', bidirectional: true },

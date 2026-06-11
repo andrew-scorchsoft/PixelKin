@@ -62,8 +62,9 @@ plain throws free — and the purchasable line is **charges** (one boosted throw
 each; `04-capture.md`). The old Vesperlamp/Bright/Radiant Lamp consumable rung
 is retired; saves migrate (v3) old lamps into charges.
 
-Quest charms (Tide Charm, Drift Charm, Wrecklight Charm, the Starlamp) have
-**no price** — unbuyable, unsellable, earned only. Now that status conditions run (Part B, BUILT), add
+Quest charms (Tide Charm, Drift Charm, Wrecklight Charm, the Marsh Lamp —
+E1's ×2.0 deep-growth conditional — the Starlamp, and the festival Glow Salve)
+have **no price** — unbuyable, unsellable, earned only. Now that status conditions run (Part B, BUILT), add
 next: **Soothing Tea** (cure any status, ~200w) and **Rekindle Drop** (wake a
 fainted kin at half health, ~900w) — add to this table + items.ts together.
 
@@ -205,7 +206,7 @@ The JOURNEY table in `progression.mjs` is the contract; summarised:
 | Region | Trainer battles (class mix) | Wild fights (mainline) | Quest wicks | Valuables |
 |---|---|--:|--:|---|
 | South *(built + breakwater pair)* | 9 — 4 route, 3 keeper, 1 rival, 2 warden | ~29 | 750w | Wax Cake |
-| East | 12 — 3 route, 7 keeper, 2 warden | ~36 | 1,750w | Moth-amber ×2 |
+| East *(fen + Lowleaf built)* | 12 — 3 route, 7 keeper, 2 warden | ~36 | 1,550w | Moth-amber ×2 |
 | North | 13 — 6 route, 4 keeper, 1 rival (A4), 2 warden | ~21 | 1,600w + finds | Moth-amber ×2 |
 | West | 13 — 7 route, 4 keeper, 2 warden | ~21 | 2,400w + finds | Starglass ×2 |
 | Central | 6 — 5 keeper (acolytes), Còr | ~10 | 1,500w | Starglass |

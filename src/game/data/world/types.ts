@@ -200,6 +200,15 @@ export interface MapObject {
    * roof must draw above a player standing north of it but you can't walk into it.
    */
   walk_under?: boolean;
+  /**
+   * Flag-gated SET DRESSING (the §8 null-lantern pattern for objects): the object
+   * only DRAWS once the flag is set (`requires_flag`) / until it is (`hidden_when_flag`).
+   * Visibility only — collision is flag-blind (CollisionGrid keeps every footprint),
+   * so a swap pair (e.g. the Lowleaf Elder Bed, grey→green) MUST share the same
+   * footprint and solidity. Re-evaluated live alongside flag-conditional NPCs.
+   */
+  requires_flag?: WorldFlag;
+  hidden_when_flag?: WorldFlag;
 }
 
 export interface MapDefinition {

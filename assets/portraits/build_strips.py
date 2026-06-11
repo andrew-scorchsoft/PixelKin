@@ -30,6 +30,7 @@ STRIPS = {
     "lamplighter": ["neutral", "grave"],
     "hearthkeeper": ["neutral", "warm"],
     "cor": ["neutral", "grave"],
+    "sable": ["neutral", "shy", "warm"],
 }
 
 

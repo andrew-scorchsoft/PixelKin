@@ -58,11 +58,15 @@ function renderObjects(scene: Phaser.Scene, map: RuntimeMap): Phaser.GameObjects
 
     const body = scene.add.image(px, py, obj.sprite).setOrigin(0, 0).setDepth(OBJECT_BODY_DEPTH);
     if (overhangPx > 0) body.setCrop(0, overhangPx, wpx, hpx - overhangPx);
+    // Carry the placement def so the owning scene can re-evaluate flag-gated
+    // objects (MapObject.requires_flag / hidden_when_flag) when flags change.
+    body.setData('object_def', obj);
     out.push(body);
 
     if (overhangPx > 0) {
       const over = scene.add.image(px, py, obj.sprite).setOrigin(0, 0).setDepth(OBJECT_OVERHANG_DEPTH);
       over.setCrop(0, 0, wpx, overhangPx);
+      over.setData('object_def', obj);
       out.push(over);
     }
   }

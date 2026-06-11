@@ -86,6 +86,34 @@
       "rarity": "uncommon",
       "min": 10,
       "max": 12
+    },
+    {
+      "area": "pearlmoor_quay",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 10,
+      "max": 12
+    },
+    {
+      "area": "saltreach_fen_i",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 16,
+      "max": 18
+    },
+    {
+      "area": "saltreach_fen_ii",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 17,
+      "max": 19
+    },
+    {
+      "area": "sunkbell_shallows",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 17,
+      "max": 19
     }
   ],
   "scripted": false,

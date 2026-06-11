@@ -188,10 +188,24 @@ def encounters(region, rarity, tier, stage, scripted):
 # never erases them. slug -> extra EncounterZone-source rows.
 EXTRA_ENCOUNTERS = {
     "brinix":    [{"area": "pearlmoor_quay", "terrain": "water", "rarity": "uncommon", "min": 10, "max": 12}],
-    "shimmral":  [{"area": "pearlmoor_quay", "terrain": "water", "rarity": "rare", "min": 11, "max": 12}],
+    "shimmral":  [{"area": "pearlmoor_quay", "terrain": "water", "rarity": "rare", "min": 11, "max": 12},
+                  # the drowned shrine's rare circler (the Saltreach spur)
+                  {"area": "sunkbell_shallows", "terrain": "water", "rarity": "rare", "min": 18, "max": 20}],
     "brinelet":  [{"area": "pearlmoor_quay", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 11}],
-    "brineroll": [{"area": "pearlmoor_quay", "terrain": "water", "rarity": "uncommon", "min": 10, "max": 12}],
-    "lumpin":    [{"area": "pearlmoor_quay", "terrain": "tall_grass", "rarity": "common", "min": 9, "max": 11}],
+    "brineroll": [{"area": "pearlmoor_quay", "terrain": "water", "rarity": "uncommon", "min": 10, "max": 12},
+                  {"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 16, "max": 18},
+                  {"area": "saltreach_fen_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 17, "max": 19},
+                  {"area": "sunkbell_shallows", "terrain": "water", "rarity": "common", "min": 17, "max": 19}],
+    "lumpin":    [{"area": "pearlmoor_quay", "terrain": "tall_grass", "rarity": "common", "min": 9, "max": 11},
+                  {"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 16, "max": 18},
+                  {"area": "saltreach_fen_ii", "terrain": "water", "rarity": "uncommon", "min": 17, "max": 19}],
+    # the Saltreach marsh chain (fen I/II + the Sunkbell spur) — the maps'
+    # authored tables, mirrored here as the dex's flavour rows
+    "dewling":   [{"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "common", "min": 16, "max": 18},
+                  {"area": "saltreach_fen_ii", "terrain": "tall_grass", "rarity": "common", "min": 17, "max": 19}],
+    "poolfrond": [{"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "rare", "min": 17, "max": 18},
+                  {"area": "saltreach_fen_ii", "terrain": "tall_grass", "rarity": "rare", "min": 18, "max": 19}],
+    "tidalarch": [{"area": "sunkbell_shallows", "terrain": "water", "rarity": "very_rare", "min": 19, "max": 20}],
 }
 
 # Wave-2 signature moves (gen_moves.py): one per elemental apex line. Inserted

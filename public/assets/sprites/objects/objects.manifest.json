@@ -182,6 +182,48 @@
       "tw": 3,
       "th": 2
     },
+    "lowleaf_cottage": {
+      "path": "assets/sprites/objects/lowleaf_cottage.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "lowleaf_elder_bed_green": {
+      "path": "assets/sprites/objects/lowleaf_elder_bed_green.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "lowleaf_elder_bed_grey": {
+      "path": "assets/sprites/objects/lowleaf_elder_bed_grey.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "lowleaf_kiln": {
+      "path": "assets/sprites/objects/lowleaf_kiln.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "lowleaf_lumenary": {
+      "path": "assets/sprites/objects/lowleaf_lumenary.webp",
+      "width": 96,
+      "height": 96,
+      "tw": 6,
+      "th": 6
+    },
+    "lowleaf_stall": {
+      "path": "assets/sprites/objects/lowleaf_stall.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "pearlmoor_boat": {
       "path": "assets/sprites/objects/pearlmoor_boat.webp",
       "width": 32,
@@ -216,6 +258,27 @@
       "height": 64,
       "tw": 5,
       "th": 4
+    },
+    "saltreach_reed_lantern_dark": {
+      "path": "assets/sprites/objects/saltreach_reed_lantern_dark.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "saltreach_reed_lantern_lit": {
+      "path": "assets/sprites/objects/saltreach_reed_lantern_lit.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "sunkbell_shrine": {
+      "path": "assets/sprites/objects/sunkbell_shrine.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
     },
     "tinderwick_beacon": {
       "path": "assets/sprites/objects/tinderwick_beacon.webp",

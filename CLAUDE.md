@@ -628,6 +628,13 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   3–6 (+ Wren's friendly battle A2 + the B1 `dusk_begins` beat) → Dimglass II wilds 8–10 + two
   route-trainer beats → Reyl 12–16. Route trainer beat = static NPC + `step_on` cutscene tile
   on a choked lane (`script.flats_trainer_*` pattern); next warden's ace ≈ previous +5–6.
+- **The East curve has the same data-lock (second hour, BUILT):** Fen I 16–18 → Fen II 17–19
+  (Tidecall load-bearing; one route trainer) → Lowleaf fringe 18–20 + two keeper beats → Sable
+  ace 22 (grants `gleam:verdant` + `glimmerstep`; `crown_east` waits on Otho — the crown rides
+  warden `reward_flags`, the South pattern). Every `flag:q_east_*` opens AND closes in East content.
+- **MapObjects take `requires_flag`/`hidden_when_flag` (2026-06)** — visibility-only flag swaps,
+  refreshed live alongside NPCs; a swap pair MUST share footprint+solidity (collision is
+  flag-blind). Worked uses: Lowleaf's Elder Bed grey→green, Fen II's lantern-reeds.
 - **The first-hour kit is wired and is the per-region standard** (walkthrough README "standing
   per-region kit"): inn/home **rest-heals** (NPC/trigger `dialogue_ref` may be a `script.*` —
   WorldScene runs it as a cutscene; the `heal` op restores the party), one-time **shop kits**

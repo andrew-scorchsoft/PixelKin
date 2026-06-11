@@ -263,6 +263,25 @@ m = {
          "sprite": "wren", "movement": "static",
          "dialogue_ref": "npc.wren_glowmoss",
          "requires_flag": "flag:met_hollowing"},
+        # --- E2 "Spores for the Stall" (Lowleaf) — the three gatherer's bundles,
+        # a boolean chain (A -> B -> the squatter), visible only while the
+        # quest runs; the third is guarded by a cross Sporeling (a scripted
+        # battle riding the cache's own script — no person, no payout).
+        {"id": "cache_spore_a", "at": {"tx": 6, "ty": 11}, "facing": "down",
+         "sprite": "item_cache", "movement": "static",
+         "dialogue_ref": "script.pickup_spore_a",
+         "requires_flag": "flag:q_east_spores",
+         "hidden_when_flag": "flag:picked_spore_a"},
+        {"id": "cache_spore_b", "at": {"tx": 26, "ty": 16}, "facing": "down",
+         "sprite": "item_cache", "movement": "static",
+         "dialogue_ref": "script.pickup_spore_b",
+         "requires_flag": "flag:picked_spore_a",
+         "hidden_when_flag": "flag:picked_spore_b"},
+        {"id": "cache_spore_c", "at": {"tx": 26, "ty": 21}, "facing": "down",
+         "sprite": "item_cache", "movement": "static",
+         "dialogue_ref": "script.spore_squatter",
+         "requires_flag": "flag:picked_spore_b",
+         "hidden_when_flag": "flag:spore_squatter_beaten"},
         # --- item caches (spine kit: 2-3 per map, one VALUABLE, one loose-wicks) ---
         {"id": "cache_amber", "at": {"tx": 4, "ty": 5}, "facing": "down",
          "sprite": "item_cache", "movement": "static",

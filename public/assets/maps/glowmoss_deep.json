@@ -14,7 +14,7 @@
       "tile_height": 16,
       "first_gid": 1,
       "columns": 12,
-      "tile_count": 187
+      "tile_count": 189
     }
   ],
   "layers": [
@@ -3019,6 +3019,45 @@
       "movement": "static",
       "dialogue_ref": "npc.wren_glowmoss",
       "requires_flag": "flag:met_hollowing"
+    },
+    {
+      "id": "cache_spore_a",
+      "at": {
+        "tx": 6,
+        "ty": 11
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_spore_a",
+      "requires_flag": "flag:q_east_spores",
+      "hidden_when_flag": "flag:picked_spore_a"
+    },
+    {
+      "id": "cache_spore_b",
+      "at": {
+        "tx": 26,
+        "ty": 16
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_spore_b",
+      "requires_flag": "flag:picked_spore_a",
+      "hidden_when_flag": "flag:picked_spore_b"
+    },
+    {
+      "id": "cache_spore_c",
+      "at": {
+        "tx": 26,
+        "ty": 21
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.spore_squatter",
+      "requires_flag": "flag:picked_spore_b",
+      "hidden_when_flag": "flag:spore_squatter_beaten"
     },
     {
       "id": "cache_amber",
