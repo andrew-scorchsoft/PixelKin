@@ -726,7 +726,14 @@ export class WorldScene extends Phaser.Scene {
       } else if (!this.player.isMoving && this.controller.justPressed(InputAction.Confirm)) {
         void this.interact();
       } else {
-        this.player.update(this.controller, this.playerCanEnter, this.onPlayerArrive, this.onBump);
+        this.player.update(
+          this.controller,
+          this.playerCanEnter,
+          this.onPlayerArrive,
+          this.onBump,
+          (tx, ty) => this.collision.ledgeAt(tx, ty),
+          () => void this.sfx.playVariant('world-ledge-hop', ['a', 'b']),
+        );
       }
       for (const npc of this.npcs) npc.update(delta, this.npcCanEnter);
     }

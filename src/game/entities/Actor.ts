@@ -220,6 +220,52 @@ export class Actor {
   }
 
   /**
+   * Hop a one-way LEDGE: a two-tile leap over the ledge tile, with a small arc.
+   * The caller has already verified the ledge direction and that the landing
+   * tile is enterable. Fires `onArrive` at the landing (encounters roll there,
+   * like the classics).
+   */
+  hop(
+    facing: Facing,
+    onArrive?: (tx: number, ty: number) => void,
+    durationMs = STEP_MS * 2,
+  ): boolean {
+    if (this.moving || this.acting) return false;
+    this.setFacing(facing);
+    const d = FACING_DELTA[facing];
+    const nx = this.tx + d.dx * 2;
+    const ny = this.ty + d.dy * 2;
+
+    this.moving = true;
+    this.tx = nx;
+    this.ty = ny;
+    if (this.frames.walk) this.sprite.play(`${this.textureKey}__walk_${facing}`, true);
+    const { x, y } = Actor.tileToWorld(nx, ny);
+    // Linear travel + a little parabolic lift so the leap reads as a jump.
+    const fromX = this.sprite.x;
+    const fromY = this.sprite.y;
+    const lift = 6;
+    this.scene.tweens.addCounter({
+      from: 0,
+      to: 1,
+      duration: durationMs,
+      ease: 'Linear',
+      onUpdate: (tw) => {
+        const t = tw.getValue() ?? 0;
+        this.sprite.x = fromX + (x - fromX) * t;
+        this.sprite.y = fromY + (y - fromY) * t - lift * 4 * t * (1 - t);
+      },
+      onComplete: () => {
+        this.sprite.setPosition(x, y);
+        this.moving = false;
+        this.stopWalking();
+        onArrive?.(nx, ny);
+      },
+    });
+    return true;
+  }
+
+  /**
    * Settle to the idle pose when movement has stopped. Call this each frame the
    * actor is NOT taking a step (no held direction, a blocked bump, etc.) so the
    * continuously-playing walk cycle stops cleanly on the standing frame.

@@ -1190,6 +1190,16 @@
     {
       "file": "184_cave_ladder_up.png",
       "role": "decor"
+    },
+    {
+      "file": "185_grass_ledge_s.png",
+      "role": "ledge",
+      "ledge": "down"
+    },
+    {
+      "file": "186_grass_ledge_s_v1.png",
+      "role": "ledge",
+      "ledge": "down"
     }
   ]
 }

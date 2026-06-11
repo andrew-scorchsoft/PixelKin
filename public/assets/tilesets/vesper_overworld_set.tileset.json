@@ -4,7 +4,7 @@
   "tile_width": 16,
   "tile_height": 16,
   "columns": 12,
-  "tile_count": 185,
+  "tile_count": 187,
   "tiles": [
     {
       "index": 0,
@@ -1194,6 +1194,16 @@
     {
       "index": 184,
       "role": "decor"
+    },
+    {
+      "index": 185,
+      "role": "ledge",
+      "ledge": "down"
+    },
+    {
+      "index": 186,
+      "role": "ledge",
+      "ledge": "down"
     }
   ]
 }

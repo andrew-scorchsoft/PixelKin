@@ -16,8 +16,21 @@ export interface EncounterIntent {
   terrain: EncounterTerrain;
 }
 
+/** Terrains whose encounters fire only ON a matching painted tile (grass tufts,
+ *  surf). 'cave'/'sand' zones roll anywhere in their rect — a cave's whole floor
+ *  is encounter ground, like the classics. */
+const TILE_BOUND = new Set<EncounterTerrain>(['tall_grass', 'water']);
+
 export class EncounterSystem {
   constructor(private readonly map: RuntimeMap) {}
+
+  /** True if any tile stacked at (tx,ty) is tagged as this encounter terrain. */
+  private tileHasTerrain(tx: number, ty: number, terrain: EncounterTerrain): boolean {
+    for (const gid of this.map.gidsAt(tx, ty)) {
+      if (this.map.lookupGid(gid)?.meta.encounter_terrain === terrain) return true;
+    }
+    return false;
+  }
 
   roll(
     tx: number,
@@ -33,6 +46,10 @@ export class EncounterSystem {
       if (zone.hidden_when_flag && hasFlag(zone.hidden_when_flag)) continue;
       const { rect } = zone;
       if (tx < rect.tx || ty < rect.ty || tx >= rect.tx + rect.w || ty >= rect.ty + rect.h) continue;
+      // Tile-bound terrains only fire on a matching painted tile, so a zone's
+      // rect can be a loose bounding box around an ORGANIC patch (the paint is
+      // the truth — see tools/maps/patterns.py zones_from_grid).
+      if (TILE_BOUND.has(zone.terrain) && !this.tileHasTerrain(tx, ty, zone.terrain)) continue;
       if (Math.random() >= zone.encounter_rate) continue;
       if (zone.table.length === 0) continue;
 

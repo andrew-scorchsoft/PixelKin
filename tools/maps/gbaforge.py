@@ -568,6 +568,41 @@ def null_lantern() -> Image.Image:
     return img(a)
 
 
+def grass_ledge_s(v: int = 0) -> Image.Image:
+    """A south-facing one-way LEDGE on grass: walk-on grass above, a lit lip,
+    a short earthen face, contact shadow below — the genre's hop-down tile.
+    The hop behaviour rides the sidecar's `ledge: "down"` meta, the art just
+    has to read as 'a small drop, this way'. Variants shift the lip's nicks."""
+    a = np.zeros((16, 16, 4), dtype=np.int16)
+    grass_top = GRASS
+    grass_dk = sh(GRASS, 0.82)
+    lip = sh(GRASS, 1.32, 10)
+    face = sh(PATH, 0.92)
+    face_dk = sh(PATH, 0.66)
+    shadow = sh(GRASS, 0.55)
+    # walk-on grass above the lip
+    for y in range(0, 7):
+        for x in range(16):
+            a[y, x] = [*grass_top, 255]
+    for (x, y) in ([(3, 2), (9, 4), (13, 1)] if v % 2 == 0 else [(5, 1), (11, 3), (2, 5)]):
+        a[y, x] = [*grass_dk, 255]
+    # the lit lip, nicked so it doesn't read as a ruled line
+    nicks = {4, 11} if v % 2 == 0 else {7, 13}
+    for x in range(16):
+        a[7, x] = [*(grass_dk if x in nicks else lip), 255]
+    # the earthen face (the drop), darkening downward
+    for y in range(8, 13):
+        for x in range(16):
+            a[y, x] = [*(face if y < 11 else face_dk), 255]
+    for (x, y) in ([(2, 9), (8, 10), (13, 9)] if v % 2 == 0 else [(5, 9), (10, 10)]):
+        a[y, x] = [*face_dk, 255]
+    # contact shadow onto the grass below
+    for y in range(13, 16):
+        for x in range(16):
+            a[y, x] = [*(shadow if y == 13 else grass_dk if y == 14 else grass_top), 255]
+    return img(a)
+
+
 def cave_ladder_down() -> Image.Image:
     """A ladder-pit: a dark floor opening with the ladder's top rungs showing —
     the cave-dungeon DESCENT verb (level-design §11a). Transparent prop laid on

@@ -287,6 +287,27 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'WREN', portrait: 'wren', expr: 'neutral', text: 'Forget it. Race you to the mine. ...I am not racing. Walk with me a bit?' },
   ],
 
+  // --- Saltreach Fen I (the marsh route) ----------------------------------------
+  'npc.fen_warden': [
+    { speaker: 'FEN-WARDEN', text: "Mind the planks after dark — the fen's friendly, but it doesn't like to be hurried." },
+    { speaker: 'FEN-WARDEN', text: 'Odd thing, though. The eastern woods have gone quiet of late. Quiet like held breath, not like sleep.' },
+  ],
+  'npc.fen_wader_a_after': [
+    { speaker: 'MARIGOLD', text: 'The reeds north of here run right over the causeway — no way round but through. Mind your step and your lamp.' },
+  ],
+  'npc.fen_courier_b_after': [
+    { speaker: 'OSPREY', text: 'The bank east of the causeway is worth the climb — waders leave what they cannot carry. And the hop down saves the walk back!' },
+  ],
+  'sign.fen_landing': [
+    { text: 'SALTREACH FEN\nPlanks hold the road; the water holds everything else. North to Lowleaf Hollow, by the channel crossing.' },
+  ],
+  'sign.fen_channel': [
+    { text: 'DEEP CHANNEL — planks end here.\nThe still water answers Tidecall. The islet keeps what the tide-walkers leave.' },
+  ],
+  'sign.fen_boundary': [
+    { text: 'FEN BOUNDARY — Saltreach deepens past this channel.\nNo planks beyond: cross by Tidecall or turn back dry.' },
+  ],
+
   // --- Vesper Crossroads (the Lanternway hub) ---------------------------------
   'sign.crossroads': [
     { text: 'VESPER CROSSROADS\nAll the Lanternway meets here. SOUTH-WEST: Tinderwick. SOUTH-EAST: Pearlmoor Quay. The other roads sleep, unlit.' },

@@ -20,6 +20,13 @@ const ACTION_TO_FACING: Partial<Record<InputAction, Facing>> = {
   [InputAction.Right]: 'right',
 };
 
+const DELTA: Record<Facing, { dx: number; dy: number }> = {
+  down: { dx: 0, dy: 1 },
+  up: { dx: 0, dy: -1 },
+  left: { dx: -1, dy: 0 },
+  right: { dx: 1, dy: 0 },
+};
+
 /** Running covers a tile in ~60% of a walking step (hold B, or Pace: Always run). */
 const RUN_MS = Math.round(STEP_MS * 0.6);
 
@@ -46,6 +53,11 @@ export class Player extends Actor {
     canEnter: (tx: number, ty: number) => boolean,
     onArrive: (tx: number, ty: number) => void,
     onBump?: () => void,
+    /** One-way ledge lookup (CollisionGrid.ledgeAt); walking into a ledge facing
+     *  its hop direction leaps it instead of bumping. */
+    ledgeAt?: (tx: number, ty: number) => Facing | undefined,
+    /** Fired when a ledge hop begins (the scene plays the hop sfx). */
+    onHop?: () => void,
   ): void {
     if (this.isMoving) return;
     const dir = input.heldDirection();
@@ -68,6 +80,15 @@ export class Player extends Actor {
     const wasFacing = this.facing;
     const moved = this.step(facing, canEnter, onArrive, running ? RUN_MS : STEP_MS);
     if (!moved) {
+      // A blocked step might be a LEDGE in our hop direction: leap it if the
+      // landing two tiles ahead is open.
+      const ahead = { tx: this.tx + DELTA[facing].dx, ty: this.ty + DELTA[facing].dy };
+      const landing = { tx: this.tx + DELTA[facing].dx * 2, ty: this.ty + DELTA[facing].dy * 2 };
+      if (ledgeAt?.(ahead.tx, ahead.ty) === facing && canEnter(landing.tx, landing.ty)) {
+        onHop?.();
+        this.hop(facing, onArrive);
+        return;
+      }
       this.stopWalking(); // turned or bumped, but didn't step: don't keep cycling
       if (wasFacing === facing) onBump?.();
     }

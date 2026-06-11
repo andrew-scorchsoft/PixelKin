@@ -14,7 +14,7 @@
       "tile_height": 16,
       "first_gid": 1,
       "columns": 12,
-      "tile_count": 155
+      "tile_count": 187
     }
   ],
   "layers": [
@@ -2358,8 +2358,8 @@
       "trigger": "step_on",
       "to_map": "saltreach_fen_i",
       "to": {
-        "tx": 2,
-        "ty": 10
+        "tx": 1,
+        "ty": 38
       },
       "facing": "right",
       "transition": "fade"

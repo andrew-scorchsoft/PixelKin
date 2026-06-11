@@ -429,6 +429,10 @@ add("null_lantern", gbaforge.null_lantern(), role="decor", collides=True)
 # warp rides the tile; the prop is the telegraph) — level-design §11a
 add("cave_ladder_down", gbaforge.cave_ladder_down(), role="decor")
 add("cave_ladder_up", gbaforge.cave_ladder_up(), role="decor")
+# the one-way LEDGE (routes' hop-down shortcut): solid for normal movement,
+# hopped when walked into facing its direction (`ledge` meta -> CollisionGrid)
+add("grass_ledge_s", gbaforge.grass_ledge_s(0), role="ledge", ledge="down")
+add("grass_ledge_s_v1", gbaforge.grass_ledge_s(1), role="ledge", ledge="down")
 
 # ---- GBA-register structured redraw (gbaforge) -------------------------------
 # The terrain families above established the *vocabulary* (names, roles, order —
@@ -489,6 +493,9 @@ def _gba_override(nm: str, cur: Image.Image) -> Image.Image | None:
         return g.cave_ladder_down()
     if nm == "cave_ladder_up":
         return g.cave_ladder_up()
+    m = _re.fullmatch(r"grass_ledge_s(?:_v(\d+))?", nm)
+    if m:
+        return g.grass_ledge_s(int(m.group(1) or 0))
     m = _re.fullmatch(rf"(path|sand|water|cliff|trail|pond)_{_GBA_ROLE}(?:_v(\d+))?", nm)
     if not m:
         return None

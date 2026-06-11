@@ -328,6 +328,8 @@ const BUILT_PAYOUTS = {
   beacon_keeper_b: ['keeper', 8, 160],
   wren_dimglass: ['rival', 6, 144],
   flats_wayfarer_a: ['route', 9, 144],
+  fen_wader_a: ['route', 17, 272],
+  fen_courier_b: ['route', 18, 288],
   flats_wayfarer_b: ['route', 11, 176],
   lampwarden_pearlmoor: ['warden', 16, 960],
   glowmoss_keeper_a: ['keeper', 20, 400],

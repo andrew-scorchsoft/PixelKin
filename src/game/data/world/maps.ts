@@ -178,6 +178,14 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/glowmoss-deep-b.webp',
     ],
   },
+  // Saltreach Fen I — the marsh route east of Pearlmoor (the pattern-library
+  // showcase: ledged bank, plank causeways, paint-derived reed zones).
+  saltreach_fen_i: {
+    json: 'assets/maps/saltreach_fen_i.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/saltreach-fen-a.mp3',
+  },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
   // Their battle backdrops are already rendered — see UPCOMING_BATTLE_BACKDROPS below.

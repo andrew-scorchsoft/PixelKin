@@ -125,6 +125,31 @@ export const TRAINERS: TrainerRegistry = {
     music: 'battle-emberfall',
   },
 
+  // Saltreach Fen I route trainers — the 16→18 on-ramp between Pearlmoor and
+  // the Lowleaf cluster (route class, 10-economy §4).
+  fen_wader_a: {
+    id: 'fen_wader_a',
+    name: 'MARIGOLD',
+    title: 'Fen-wader',
+    party: [
+      { species_id: 59, level: 16 }, // Dewling — Verdant/Tide
+      { species_id: 27, level: 17 }, // Brineroll — Tide (ace)
+    ],
+    payout: 272, // route 16 × ace 17
+    music: 'battle-emberfall',
+  },
+  fen_courier_b: {
+    id: 'fen_courier_b',
+    name: 'OSPREY',
+    title: 'Plank-courier',
+    party: [
+      { species_id: 31, level: 17 }, // Lumpin — Tide/Light
+      { species_id: 60, level: 18 }, // Poolfrond — Verdant/Tide (ace)
+    ],
+    payout: 288, // route 16 × ace 18
+    music: 'battle-emberfall',
+  },
+
   // Second Lumenary: Reyl Wash, the Lampwarden of Pearlmoor Quay (Tide) — an old
   // ferryman. Beating him relights the Tide constellation: the player earns the Tide
   // Gleam AND the Tidecall Lantern Gift (granted via reward_abilities). 'crown_south'

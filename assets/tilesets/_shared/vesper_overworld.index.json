@@ -183,5 +183,7 @@
   "greymoss_b": 181,
   "null_lantern": 182,
   "cave_ladder_down": 183,
-  "cave_ladder_up": 184
+  "cave_ladder_up": 184,
+  "grass_ledge_s": 185,
+  "grass_ledge_s_v1": 186
 }

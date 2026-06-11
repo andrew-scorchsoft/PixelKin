@@ -6,7 +6,7 @@
  * as "requires ability". `AbilityGate`s of effect make_passable/remove_tile turn
  * listed tiles into the same conditional form. NPCs and the player both query this.
  */
-import type { AbilityGate, AbilityId, TileCoord } from '@game/data/world/types';
+import type { AbilityGate, AbilityId, Facing, TileCoord } from '@game/data/world/types';
 import type { RuntimeMap } from './MapLoader';
 
 /**
@@ -33,6 +33,8 @@ export class CollisionGrid {
   private readonly solid: boolean[];
   /** Tile index -> ability that makes it passable (otherwise solid). */
   private readonly gated = new Map<number, AbilityId>();
+  /** Tile index -> the hop direction of a one-way ledge (solid otherwise). */
+  private readonly ledges = new Map<number, Facing>();
 
   constructor(private readonly map: RuntimeMap) {
     this.w = map.width;
@@ -52,6 +54,11 @@ export class CollisionGrid {
           if (meta.requires_ability) {
             // Conditionally passable (e.g. water + tidecall). Last one wins; fine.
             this.gated.set(i, meta.requires_ability);
+          } else if (meta.ledge) {
+            // A one-way ledge: solid for normal entry; Player hops it when
+            // approaching in its direction (see Player.update).
+            this.solid[i] = true;
+            this.ledges.set(i, meta.ledge);
           } else if (meta.collides) {
             this.solid[i] = true;
           }
@@ -102,5 +109,11 @@ export class CollisionGrid {
   gateAt(tx: number, ty: number): AbilityId | undefined {
     if (tx < 0 || ty < 0 || tx >= this.w || ty >= this.h) return undefined;
     return this.gated.get(ty * this.w + tx);
+  }
+
+  /** The hop direction if this tile is a one-way ledge (it reads as solid to isBlocked). */
+  ledgeAt(tx: number, ty: number): Facing | undefined {
+    if (tx < 0 || ty < 0 || tx >= this.w || ty >= this.h) return undefined;
+    return this.ledges.get(ty * this.w + tx);
   }
 }

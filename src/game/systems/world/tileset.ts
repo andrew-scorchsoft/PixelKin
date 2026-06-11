@@ -8,7 +8,7 @@
  * gating, animation) from here. Adding behaviour to a tile is a data edit to the
  * manifest, re-pack, done.
  */
-import type { AbilityId, EncounterTerrain } from '@game/data/world/types';
+import type { AbilityId, EncounterTerrain, Facing } from '@game/data/world/types';
 
 /** A frame-cycling animation. Frame values are LOCAL 0-based tile indices in this set. */
 export interface TileAnimation {
@@ -38,6 +38,12 @@ export interface TileMeta {
   encounter_terrain?: EncounterTerrain;
   /** Tile becomes passable only once this Lantern Gift is held. */
   requires_ability?: AbilityId;
+  /**
+   * A one-way LEDGE: solid for normal movement, but a player walking INTO it
+   * while facing this direction hops over it, landing on the far side (the
+   * genre's hop-down shortcut). NPCs never hop. See CollisionGrid/Player.
+   */
+  ledge?: Facing;
   /** Optional frame-cycle (e.g. water ripple). Omitted = static. */
   animation?: TileAnimation;
 }

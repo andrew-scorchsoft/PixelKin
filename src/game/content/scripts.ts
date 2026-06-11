@@ -379,6 +379,38 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:picked_b1f_chart' },
   ],
 
+  // --- Saltreach Fen I (East) — the marsh route's beats ------------------------
+  'script.fen_wader_a': [
+    { op: 'say', speaker: 'MARIGOLD', text: 'Hold the plank, friend! Fen custom — two lamps that meet on one causeway test their wicks.' },
+    { op: 'battle', trainer: 'fen_wader_a' },
+    { op: 'say', speaker: 'MARIGOLD', text: 'A dry flame in a wet country — well kept. The fen will let you by.' },
+    { op: 'setFlag', flag: 'flag:fen_wader_a_beaten' },
+  ],
+  'script.fen_courier_b': [
+    { op: 'say', speaker: 'OSPREY', text: 'Post for Lowleaf — and a standing toll for the north shore. Paid in a bout, not in wicks!' },
+    { op: 'battle', trainer: 'fen_courier_b' },
+    { op: 'say', speaker: 'OSPREY', text: 'Toll paid in full. The channel ahead answers Tidecall — Pearlmoor taught you that one, I hope.' },
+    { op: 'setFlag', flag: 'flag:fen_courier_b_beaten' },
+  ],
+  'script.pickup_fen_reed': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'glow_charge', count: 1 },
+    { op: 'say', text: 'Tucked behind the reed screen, dry in its wax wrap. Found a GLOW CHARGE!' },
+    { op: 'setFlag', flag: 'flag:picked_fen_reed' },
+  ],
+  'script.pickup_fen_bank_wicks': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 150 },
+    { op: 'say', text: "A wader's purse, left high and dry on the bank. Found 150 WICKS!" },
+    { op: 'setFlag', flag: 'flag:picked_fen_bank_wicks' },
+  ],
+  'script.pickup_fen_islet': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'warm_balm', count: 1 },
+    { op: 'say', text: 'Only the tide-walkers reach this islet — and whoever left a WARM BALM for them.' },
+    { op: 'setFlag', flag: 'flag:picked_fen_islet' },
+  ],
+
   // Gullcry Rock's prize: the Tide Charm (a sea-blessed lamp; see items.ts).
   'script.pickup_gullcry_charm': [
     { op: 'sfx', key: 'world-gleam-a' },

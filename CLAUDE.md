@@ -239,8 +239,13 @@ go digging on every task.
 
 ## Asset generation skills
 
-Five skills live in `.claude/skills/`. Use them instead of hand-rolling:
+Six skills live in `.claude/skills/`. Use them instead of hand-rolling:
 
+- **build-map** — the map-composition skill: builds any area (town/route/cave/
+  interior) from its atlas card + walkthrough hooks via `tools/maps/mapkit.py`
+  + **`patterns.py`** (parametric stamps: zones-from-paint, trainer beats,
+  caches, signs, ledges/terraces, buildings from the objects manifest). Defers
+  to generate-sprite-sheet for any missing art; `level-design.md` is binding.
 - **generate-sprite-sheet** — the **preferred** path for in-game pixel art:
   creature battle/icon/overworld/portrait sprites, NPC walk sheets, battle
   effects, and tiles. Enforces the canvas/anchor/palette standards in
@@ -478,8 +483,14 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   PLATEAU TOP, `edge_s`/S-corners = the visible FACE (lit lip → streaked face → contact
   shadow), N/W/E = rim transitions — a cliff drawn as all-face reads flat ("lost edging").
   Full rule: `docs/world/level-design.md` §11 rule 8.
-- **New area? Copy `tools/maps/build_tinderwick.py`, `build_dimglass.py`, `build_gullcry.py`
-  or `build_crossroads.py` (the worked examples), and compose to `docs/world/level-design.md`
+- **New area? Use the `build-map` skill** — compose with `tools/maps/patterns.py` stamps on
+  mapkit (`build_saltreach_fen_i.py` is the pattern showcase: paint-derived encounter zones,
+  trainer-beat/cache/sign stamps, a LEDGED terrace bank). Engine supports one-way **ledges**
+  (`ledge` tile meta -> CollisionGrid.ledgeAt -> Player hops; `grass_ledge_s` tiles,
+  `world-ledge-hop` sfx). Tile-bound encounter terrains (tall_grass/water) only fire ON
+  matching painted tiles, so zone rects may be loose bounding boxes; cave/sand roll rect-wide.
+  Older worked examples: `build_tinderwick.py`, `build_dimglass.py`,
+  `build_crossroads.py`. Compose to `docs/world/level-design.md`
   §11 (the binding composition standard: no flat voids, deep organic borders + crown trees,
   one elevation accent, blob shores/patches, building aprons + a fenced garden, hard-edged
   tuft tall-grass, trainer beats on routes, drawn structured terrain).** Tall grass stays
