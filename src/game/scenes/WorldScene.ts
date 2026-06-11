@@ -670,13 +670,25 @@ export class WorldScene extends Phaser.Scene {
   /** Launch a battle over the (paused) overworld; resolve when it returns. */
   private startBattle(request: BattleRequest): Promise<BattleResult> {
     return new Promise((resolve) => {
+      // A trainer battle runs as one step INSIDE a cutscene, so modal is already
+      // true when we get here; a wild encounter fires straight from a free step
+      // (modal false). Remember which, and RESTORE it rather than blanket-clearing
+      // below — see the note in onComplete.
+      const wasModal = this.modal;
       this.modal = true;
       this.music.stop(); // hand the soundtrack over to the battle scene
       const onComplete = (result: BattleResult): void => {
         this.applyBattleResult(result);
         this.scene.resume('World');
         this.playMapMusic(); // restore the overworld loop
-        this.modal = false;
+        // Don't force modal off here: when this battle was a cutscene step, the
+        // scene's remaining steps (post-battle lines, banking the defeated_flag,
+        // swapping the beaten NPC in) are still pending. Clearing modal now would
+        // resume world movement and let the player step back into the trainer's
+        // sight before its defeated_flag is set — re-triggering the same fight (the
+        // "fights you twice" bug). The enclosing cutscene handler clears modal once
+        // the whole scene finishes; a wild battle (wasModal=false) clears as before.
+        this.modal = wasModal;
         resolve(result);
       };
       this.scene.launch('Battle', { ...request, onComplete, mapId: this.map.def.id });

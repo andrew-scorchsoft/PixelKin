@@ -19,6 +19,9 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - run: npm ci
       - name: Typecheck
         run: npm run typecheck
@@ -30,3 +33,14 @@ jobs:
         run: node tools/balance/simulate.mjs
       - name: Journey progression + wick economy
         run: node tools/balance/progression.mjs
+      # Map/scene gates: a route the player can't actually walk passes every
+      # per-map picture check, so we walk the world. audit_region's FOOT-PATH
+      # check catches main-path splits (an ungated exit stranded behind a Gift —
+      # the Dimglass Coast dead-end); audit_flow/audit_warps catch reachability,
+      # choke and warp-coverage regressions. Pure-stdlib Python, no deps.
+      - name: Region scene audit (graph sync, progression, foot-path)
+        run: python3 tools/maps/audit_region.py
+      - name: Per-map flow audit (reachability, chokes, pacing)
+        run: python3 tools/maps/audit_flow.py
+      - name: Warp audit (entrance coverage, landings, round trips)
+        run: python3 tools/maps/audit_warps.py

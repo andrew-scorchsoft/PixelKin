@@ -119,6 +119,10 @@ def main() -> int:
     have: set[str] = set()
     reachable = {graph["start_map"]}
     wave_of = {graph["start_map"]: 0}
+    # Gifts the player holds the moment each map first unlocks — captured so the
+    # FOOT-PATH check below walks each map with the right key-ring (a Tidecall map
+    # is entered WITH Tidecall, so its tidal crossings aren't false alarms).
+    entry_abilities: dict[str, set[str]] = {graph["start_map"]: set()}
     wave = 0
     while True:
         grown = True
@@ -138,6 +142,7 @@ def main() -> int:
                     if all(k in have for k in need):
                         reachable.add(b)
                         wave_of[b] = wave
+                        entry_abilities[b] = {k for k in have if k in ALL_ABILITIES}
                         grown = True
         new_keys = {k for mid in reachable for k in GRANTS.get(mid, [])} - have
         if "flag:hub_unlocked" not in have and \
@@ -194,6 +199,61 @@ def main() -> int:
     elif rows:
         add("level-bands", "PASS",
             f"{len(rows)} encounter borders step gently (≤4 levels)")
+
+    # ---- FOOT-PATH: ungated edges must be WALKABLE on arrival --------------------
+    # PROGRESSION unlocks maps at the graph level — it trusts that a reachable map
+    # can be crossed on foot to its onward exits. That hides an INTRA-map split: an
+    # ungated edge whose warp you can't actually reach from where you came in. (The
+    # Dimglass Coast bug: a one-way return ledge plus a tree-trunk footprint sealed
+    # the sole northbound lane behind Tidecall — the audits passed because they grant
+    # every Gift for reachability, so nobody could walk past the lamplighter.) Here we
+    # walk it for real. For each authored overworld map, gather the portals on its
+    # MAIN path — those whose graph edge is ungated, or gated only by a Gift the player
+    # already holds on arrival — and require them to sit in one mutually-reachable
+    # component using just those abilities. Quest/Gift-gated spurs are excluded, so a
+    # legitimately gated crossing is never a false alarm; a real split is a FAIL.
+    gate_ability: dict[tuple[str, str], str | None] = {}
+    gate_flag: dict[tuple[str, str], str | None] = {}
+    for e in edges:
+        for a, b in ([(e["from_map"], e["to_map"])] +
+                     ([(e["to_map"], e["from_map"])] if e["bidirectional"] else [])):
+            gate_ability[(a, b)] = e["requires_ability"]
+            gate_flag[(a, b)] = e["requires_flag"]
+    foot_fails = []
+    for mid in sorted(reachable):
+        m = world.get(mid)
+        if m is None or m.get("kind") == "interior":
+            continue
+        abil = entry_abilities.get(mid, set())
+        mm = MapModel(m)
+        groups = []  # stand-tile sets of this map's main-path portals
+        for p in mm.portals():
+            tgt = p["to_map"]
+            key = (mid, tgt)
+            if key not in gate_ability:
+                continue  # geometry with no declared edge — not a progression claim
+            if gate_flag.get(key):
+                continue  # flag-gated spur (quest/optional) — don't demand it on foot
+            ab = gate_ability.get(key)
+            if ab and ab not in abil:
+                continue  # Gift-gated spur the player can't use yet — intentional
+            stands = [t for t in p["stand"] if mm.standable(*t, abilities=abil)]
+            if stands:
+                groups.append((tgt, stands))
+        if len(groups) < 2:
+            continue  # nothing to connect (single exit / dead-end spur)
+        anchor_tgt, anchor = groups[0]
+        reach = mm.bfs(anchor, abilities=abil)
+        for tgt, stands in groups[1:]:
+            if not any(t in reach for t in stands):
+                keyring = "on foot" if not abil else "with " + "+".join(sorted(abil))
+                foot_fails.append(f"{mid}: exit to '{tgt}' is unreachable {keyring} "
+                                  f"from exit to '{anchor_tgt}' (main-path split)")
+    if foot_fails:
+        add("foot-path", "FAIL", "; ".join(foot_fails[:6]))
+    else:
+        add("foot-path", "PASS",
+            "every map's ungated exits are mutually walkable on arrival")
 
     # ---- TOPOLOGY per region -----------------------------------------------------
     interiors = {mid for mid, m in world.items() if m.get("kind") == "interior"}

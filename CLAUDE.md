@@ -731,3 +731,19 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   flat. "A light fails" beats (the dusk omen, drained sites) get the opposite: `letterbox` +
   `silence` + the `world-star-gutter` sting. Seed the Hollowing as quiet dread early (a distant
   figure, a pinned letter, a grave aside) — never cartoonish.
+- **A cutscene-launched battle must NOT clear `modal` itself.** `WorldScene.startBattle` runs for
+  both wild encounters (fired from a free step, `modal` false) AND trainer battles (one step
+  INSIDE a cutscene, `modal` already true). It now RESTORES the prior `modal` on completion, not a
+  blanket `false`: clearing it mid-cutscene resumed world movement before the scene banked the
+  trainer's `defeated_flag`/swapped the beaten NPC, so the player re-stepped into sight and fought
+  the same trainer twice (the "fights you twice" bug — hit every sight/script trainer: beacon
+  keepers, Wren, route beats). The enclosing handler (`engageTrainer`/`handleTrigger`/`interact`)
+  clears `modal` once the whole scene finishes.
+- **Map audits grant ALL Gifts for reachability — so a foot-only dead-end is invisible to them.**
+  `audit_flow`/`audit_region`'s reach pass BFS with every Lantern Gift, which hid a real progression
+  blocker: in `dimglass_coast` a one-way return ledge + a canopy tree's solid trunk footprint
+  (`tree_d`, rows = `ty+overhang`) sealed the sole northbound walk-around lane behind Tidecall — the
+  player got the wick-key and was stuck. Guard added: `audit_region`'s **FOOT-PATH** check walks each
+  map with only the Gifts held when it unlocks and FAILs a main-path split (an ungated exit
+  unreachable from another). The three map audits (`audit_region`/`audit_flow`/`audit_warps`) are now
+  in CI (`.github/workflows/checks.yml`). Watch object trunk footprints near ledges/chokes.
