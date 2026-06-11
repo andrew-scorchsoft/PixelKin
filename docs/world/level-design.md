@@ -305,6 +305,57 @@ Mechanics (all existing — no engine work):
 - **Solid 1-tile map border** on non-warp edges so the camera never reveals void.
 - **Funnel, never trap.** Always a safe lane past grass on early maps.
 
+### 3a. The structural principles of the greats (BINDING)
+
+The toolkit above makes a map *readable*; these make it a *journey*. They are
+distilled from the cartridge-era masters of the genre — stated by structure,
+never by brand — and every route/cave/town author composes to them. The
+pattern stamps (`tools/maps/patterns.py`) carry several mechanically; the rest
+are composition discipline the checklist (§8) now asks about.
+
+1. **Loops, not corridors.** The best areas are circuits: the long way out,
+   the short way home. Every route/dungeon ships at least ONE earned return —
+   a hop-down ledge line, a one-way drop, a sealed door opened from the far
+   side (`flag:shortcut_*`). An area you must walk back through unchanged is
+   a corridor walked twice.
+2. **Asymmetry by direction.** Design for the FIRST pass (friction: grass
+   bands, trainers, the maze) and let the RETURN pass be fast (the ledge, the
+   shortcut, the now-open gate). Backtracking is only fun when the map
+   acknowledges you've already won it.
+3. **See it before you walk it.** Frame the destination early — the tower on
+   the horizon band, the Lumenary glow past the channel, the exit lantern
+   across the water — then make the path to it indirect. Anticipation is the
+   cheapest content in the game.
+4. **Braided risk-reward.** The mandatory path is safe-ish; the optional
+   strands beside it carry the goods (the deeper grass with the rarer table,
+   the dead end with the cache, the islet behind the Gift). The player should
+   always be making one small "is it worth it?" choice per screen — and an
+   off-path detour must ALWAYS pay (item, kin, vista, or lore; never empty).
+5. **One new idea per screen.** Each ~15×10 screenful introduces or
+   recombines exactly one element — a first ledge, a wider water gap, two
+   trainers covering each other. Two new ideas at once is noise; zero is
+   filler. (The screen grid from §0 is the pacing unit, not just the camera.)
+6. **Pressure, then relief.** Alternate demand and rest on a heartbeat: grass
+   band → dry pocket; trainer pair → rest-heal/inn; maze floor → the ladder
+   room with the breadcrumb light. Never two big demands back-to-back without
+   a pocket between (the blackout tithe makes pressure real; relief keeps it
+   cosy — this is still Vesperholm).
+7. **Lost locally, never globally.** Mazes disorient at corridor scale while
+   the SPINE stays readable: the player should always be able to say "the
+   exit is north" even when they can't say "the next turn is left". Light
+   breadcrumbs (§3) mark the spine; dead ends are short and paid (rule 4).
+8. **Gates rhyme with rewards.** A Gift-gated tease the player CAN'T pass
+   yet (the deep channel, the dark mouth) plants the promise; the same map
+   pays it on return. Place at least one per area, signed in-world — the
+   comeback visit is where "the world remembers me" lives.
+9. **Trainers are geometry.** A sight-trainer is a puzzle piece, not a random
+   event: posted to make a crossing unavoidable, angled to be dodge-able by
+   the observant (an optional fight is a reward for reading the map), paired
+   so two lines overlap only where the good loot is.
+10. **The map remembers.** Beaten trainers stand down, caches stay looted,
+    drained sites bloom after their story beat (flag-paired NPCs/zones).
+    Nothing resets; a revisited map should read as "mine now".
+
 ---
 
 ## 4. Starter-town pattern (the "lantern spine")
@@ -552,6 +603,10 @@ tease (dark mouth in the cliff → Tideglass Cavern), each signed; Pearlmoor sig
 - [ ] **Landmark sight-line** frames the next destination.
 - [ ] **Gated content is teased, visible, and signed**, gated via `requires_ability`
       tiles/warps with a sign/NPC stating the *why* + *come back*.
+- [ ] **§3a structural pass:** the area has a LOOP (an earned return — ledge/drop/shortcut);
+      the return pass is faster than the first; every off-path detour PAYS; each screen
+      carries one new idea; pressure alternates with a rest pocket; in mazes the spine
+      stays readable; at least one Gift-gated tease pays on a comeback visit.
 
 ### Layers & data
 

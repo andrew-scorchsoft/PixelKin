@@ -14,8 +14,14 @@ description: >
 Builds a map as **decisions, not coordinate bookkeeping**: read the area's
 spec, choose its features, stamp them with the pattern library, and let
 `finalize()` prove it. The binding rulebooks are `docs/world/level-design.md`
-(composition, §11 + the dungeon scale ladder §2a) and the area's file in
+(composition §11, the dungeon scale ladder §2a, and **§3a — the structural
+principles of the greats**: loops not corridors, asymmetry by direction,
+see-it-before-you-walk-it, braided risk-reward, one new idea per screen,
+pressure-then-relief, lost-locally-never-globally, gates rhyme with rewards,
+trainers are geometry, the map remembers) and the area's file in
 `docs/world/walkthrough/` (the **Validation hooks** are the acceptance spec).
+Before calling a map done, walk it mentally against §3a — a map that
+validates but plays as a corridor is not done.
 
 ## The flow (every map)
 
