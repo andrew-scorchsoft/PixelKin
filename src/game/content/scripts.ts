@@ -21,7 +21,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'emote', actor: 'gatewarden_pre', emote: 'alert' },
     { op: 'face', actor: 'gatewarden_pre', facing: 'left' },
     { op: 'face', actor: 'player', facing: 'right' },
-    { op: 'say', speaker: 'GATE-WARDEN', text: 'Whoa there, apprentice! Not one step up the coast road without a lit lamp — the grass out there is crawling with wild kin since the dusk.' },
+    { op: 'say', speaker: 'GATE-WARDEN', text: 'Whoa there, apprentice! Not one step up the coast road without a kin of your own at your side — the grass out there is crawling with wild ones since the dusk.' },
     { op: 'say', speaker: 'GATE-WARDEN', text: 'Star-tender Fenn was asking after you this very morning. He walked out EAST, along the Lanternway — the Crossroads waystone wanted tending.' },
     { op: 'say', speaker: 'GATE-WARDEN', text: 'Go on, find him. He had that look about him. The one that means it is YOUR turn.' },
     { op: 'move', actor: 'player', to: { tx: 13, ty: 3 } },
@@ -69,10 +69,14 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'tint', color: '#ff8a3d', alpha: 0.28, ms: 240 }, // a warm bloom as the lamp kindles
     { op: 'giveItem', item: 'vesperlamp', count: 1 },
     { op: 'tint', color: '#ff8a3d', alpha: 0, ms: 600 },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'It does more than light the road. Raise it toward a weary wild kin, and it coaxes them in to rest — every friend you make rides safe inside its glow.' },
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'And the second — a friend, to share the walk through the dark. Go on. Choose.' },
     { op: 'giveStarter' },
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'smile', text: 'Mind you tend them both, and they will tend you. And fitting, is it not — every Wayfaring in Vesperholm begins at a crossroads.' },
-    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'Back along the Lanternway with you now. Catch a kin in the verge by the north gate — the keeper holds a Wayfarer\'s kit for you, town custom — then go see Brisa at the Lumenary.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'Back along the Lanternway with you now. Catch a second friend in the verge grass by the north gate — tire a wild kin in battle first, then raise your LAMP and ask kindly.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'Stop in at the store as you pass — the keeper holds a Wayfarer\'s kit for you. Town custom.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'Then call on Brisa at the Lumenary — the tall lantern-hall up the square. She keeps the Ember constellation, and she will start you toward your first Gleam.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'smile', text: 'And if an old word ever slips you — kin, Gleam, Lumenary — ask your lamp. It keeps a little book of LORE for exactly that.' },
     { op: 'setFlag', flag: 'flag:has_vesperlamp' },
     { op: 'setFlag', flag: 'flag:has_starter' },
   ],
@@ -166,7 +170,7 @@ export const SCRIPTS: ScriptRegistry = {
   // Brisa sends the new Wayfarer up the coast road for the beacon's lost
   // wick-key before she'll hold the bond-test at the lantern.
   'script.brisa_quest': [
-    { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'warm', text: 'So you have made your first friend. Good. Then hear the truth of it, dear — the Ember is not relit from this hall.' },
+    { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'warm', text: 'So you have made your first friend. Good. Then hear the truth of it, dear — the EMBER, the south\'s own constellation, is not relit from this hall.' },
     { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'neutral', text: 'It is relit from the OLD BEACON, on the bluff east of the square. And the beacon has stood dark since its wick-key was lost on the coast road.' },
     { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'neutral', text: 'The old lamplighter who carried it walks Dimglass Coast still, up by the north boundary. Find him. Bring the key home.' },
     { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'warm', text: 'Mind the grass, mind the dark — and come back stronger than you leave. The lantern asks a steady flame.' },
@@ -236,14 +240,15 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'SHOPKEEPER', text: 'Welcome in, out of the dusk. Off on your Wayfaring? Then the first kit is on the house — town custom.' },
     { op: 'giveItem', item: 'glow_charge', count: 2 },
     { op: 'giveItem', item: 'tallow_balm', count: 2 },
-    { op: 'say', speaker: 'SHOPKEEPER', text: 'Two spare lamps and a pot of tallow balm. Lamp catches a kin; balm mends one. The road north is long.' },
+    { op: 'say', speaker: 'SHOPKEEPER', text: 'Two glow charges and a pot of tallow balm. Feed a charge to your lamp for one brighter, surer throw; the balm mends a hurt kin. The road north is long.' },
     { op: 'setFlag', flag: 'flag:tinderwick_kit' },
   ],
   'script.shop_kit_pearlmoor': [
     { op: 'say', speaker: 'CHANDLER', text: 'Welcome in off the boards. Facing Reyl, are you? Take the crossing-kit — the sea is kinder to the prepared.' },
     { op: 'giveItem', item: 'glow_charge', count: 2 },
     { op: 'giveItem', item: 'tallow_balm', count: 2 },
-    { op: 'say', speaker: 'CHANDLER', text: 'Feed a charge to your lamp before a throw — a charged flame holds a catch better than a plain one. And mind the triangle — his whole crew runs Tide.' },
+    { op: 'say', speaker: 'CHANDLER', text: 'Feed a charge to your lamp before a throw — a charged flame holds a catch better than a plain one.' },
+    { op: 'say', speaker: 'CHANDLER', text: 'And mind the old triangle, dear: Ember scorches Verdant, Verdant drinks Tide, Tide drowns Ember. His whole crew runs Tide — bring what beats it.' },
     { op: 'setFlag', flag: 'flag:pearlmoor_kit' },
   ],
 

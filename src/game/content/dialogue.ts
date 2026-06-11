@@ -20,7 +20,7 @@ export const DIALOGUE: DialogueRegistry = {
   // Fenn after the ceremony: the waystone send-off, until the story moves him on.
   'npc.fenn_waystone_after': [
     { speaker: 'FENN', text: 'Steady now, apprentice. The dark is only the dark — it keeps no grudge.' },
-    { speaker: 'FENN', text: 'Catch a kin in the verge by the north gate, then take its bond to Brisa. The Lumenary is the tall hall up the square.' },
+    { speaker: 'FENN', text: 'Catch a kin in the verge grass by the north gate — tire it in battle, then raise your LAMP. Brisa will want to meet that new friend; her Lumenary is the tall hall up the square.' },
     { speaker: 'FENN', text: 'Tend your lamp, and it tends you back. I will be along the coast road when you are ready.' },
   ],
   // The north gate-warden, once the Wayfaring has begun (the pre-starter warning
@@ -42,7 +42,7 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'TINDERWICK SQUARE\nWares and warm lamps within. Mind the step.' },
   ],
   'sign.tinderwick_lumenary': [
-    { text: 'TINDERWICK LUMENARY\nLampwarden Brisa Tallow tends the Ember light. Bring a kin and a steady hand.' },
+    { text: 'TINDERWICK LUMENARY — the town\'s lantern-hall.\nLampwarden Brisa Tallow tends the Ember light. Bring a kin and a steady hand.' },
   ],
   'sign.tinderwick_mentor': [
     { text: 'NORTH: the coast road, past the gate. EAST: the Lanternway, to the Star-tender\'s waystone. South, the sea sleeps under the Long Dusk.' },
@@ -56,8 +56,9 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'A row of spare wicks and an old field-journal. Pages of half-lit constellations.' },
   ],
   'npc.house_parent': [
-    { speaker: 'GRAN', text: 'Off on your Wayfaring at last. Star-tender Fenn left word — he is out at the Crossroads waystone, east along the Lanternway.' },
-    { speaker: 'GRAN', text: 'Keep to the lit road, love. And come home warm.' },
+    { speaker: 'GRAN', text: 'Off on your Wayfaring at last — away to walk the dark valleys, befriend their kin, and relight the sky, the way every lamp-tender\'s apprentice must.' },
+    { speaker: 'GRAN', text: 'Old Fenn left word — the Star-tender, love, who minds what is left of the stars. He waits at the Crossroads waystone, east along the Lanternway. That is the lit road out of town.' },
+    { speaker: 'GRAN', text: 'Keep to the lamps, love. And come home warm.' },
   ],
 
   // --- Tinderwick general store (interior) ---
@@ -77,8 +78,8 @@ export const DIALOGUE: DialogueRegistry = {
   // The trading keeper — appears once the kit script has run (flag:tinderwick_kit);
   // their placement ref is script.shop_tinderwick (these lines, then the counter).
   'npc.tinderwick_shopkeeper': [
-    { speaker: 'SHOPKEEPER', text: 'How is the kit holding up? A lamp catches a kin; the balm mends one. Use them well.' },
-    { speaker: 'SHOPKEEPER', text: 'And the counter is open, dear — wicks for wares, wares for wicks. Have a look.' },
+    { speaker: 'SHOPKEEPER', text: 'How is the kit holding up? A charge brightens your lamp for one throw; the balm mends a weary kin. Use them well.' },
+    { speaker: 'SHOPKEEPER', text: 'And the counter is open, dear. Wicks — those waxed lamp-wicks in your purse — are coin in every town under the dusk. Have a look.' },
   ],
 
   // --- Tinderwick Lumenary hall (interior) + the Beacon quest stages ---
