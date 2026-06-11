@@ -51,6 +51,7 @@ export const COLDOPEN_SOUTH: CinematicScript = {
       lines: [
         'Long ago, the night sky over Vesperholm was full of lanterns.',
         'Eight constellations, burning steady — the light that kept the dark a friend, and not a grave.',
+        'And below them lived the kin: the bright-hearted creatures of valley and shore, each carrying a spark of that same sky.',
       ],
     },
     {
@@ -68,8 +69,8 @@ export const COLDOPEN_SOUTH: CinematicScript = {
       music: 'coldopen-foreboding',
       lines: [
         'But where a light fails, the lamp-tenders answer.',
-        'In the coast-town of Tinderwick, a child wakes to their Wayfaring —',
-        'a lamp to carry, a kin to walk beside, and a whole sky to relight, one Gleam at a time.',
+        'In the coast-town of Tinderwick, a child wakes to their Wayfaring — the long walk every lamp-tender\'s apprentice must one day make.',
+        'A lamp to carry. A kin to walk beside. And a whole sky to relight, one constellation — one Gleam — at a time.',
       ],
     },
     {
