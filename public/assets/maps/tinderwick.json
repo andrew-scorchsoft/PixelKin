@@ -2285,7 +2285,7 @@
         "tx": 6,
         "ty": 16
       },
-      "trigger": "interact",
+      "trigger": "step_on",
       "to_map": "tinderwick_house",
       "to": {
         "tx": 7,
@@ -2300,7 +2300,7 @@
         "tx": 5,
         "ty": 7
       },
-      "trigger": "interact",
+      "trigger": "step_on",
       "to_map": "tinderwick_shop",
       "to": {
         "tx": 7,
@@ -2315,7 +2315,7 @@
         "tx": 19,
         "ty": 7
       },
-      "trigger": "interact",
+      "trigger": "step_on",
       "to_map": "tinderwick_lumenary",
       "to": {
         "tx": 8,
@@ -2323,7 +2323,8 @@
       },
       "facing": "down",
       "requires_flag": "flag:has_starter",
-      "transition": "door"
+      "transition": "door",
+      "blocked_ref": "door.locked_lumenary"
     },
     {
       "id": "to_crossroads",
@@ -2346,7 +2347,7 @@
         "tx": 24,
         "ty": 6
       },
-      "trigger": "interact",
+      "trigger": "step_on",
       "to_map": "tinderwick_beacon_i",
       "to": {
         "tx": 6,
@@ -2354,7 +2355,8 @@
       },
       "facing": "down",
       "requires_flag": "flag:has_beacon_wick",
-      "transition": "door"
+      "transition": "door",
+      "blocked_ref": "door.locked_beacon"
     }
   ],
   "triggers": [

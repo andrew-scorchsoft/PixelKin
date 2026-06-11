@@ -24,7 +24,7 @@
         "tx": 5,
         "ty": 9
       },
-      "trigger": "interact",
+      "trigger": "step_on",
       "to_map": "glowmoss_deep_b1f",
       "to": {
         "tx": 6,

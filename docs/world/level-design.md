@@ -852,6 +852,17 @@ to them (the §8 checklist now includes this section by reference).
    real apron (the plaza street is ≥2 rows), and the town has at least one **fenced
    garden** (fence runs + end posts + flowerbeds) plus signs/lamps on the walked
    lanes. A building floating in grass is the old look.
+5b. **Doors are walk-onto, and the door tile IS the standable tile.** Entry is by
+   *stepping into* the doorway (`Warp.trigger:'step_on'`, `transition:'door'`) — never
+   press-to-enter — so the player just walks in (pressing Confirm at it works too).
+   The engine frees that one tile in collision (`CollisionGrid` frees every
+   `transition:'door'` warp tile), so place the warp **exactly on the building
+   sprite's visible door** — one clear tile the player stands on. If the art's door
+   is unavoidably **two tiles wide, both get their own door warp** (a double-door —
+   either tile enters). A **locked** door carries `requires_flag`/`requires_ability`
+   + a `blocked_ref` line: walking in (or Confirm) plays the "it's locked" beat
+   instead of barring the way in silence. `patterns.building` stamps this; the warp
+   audit FAILs any door left on `interact`. Cave mouths follow the same rule.
 6. **Encounter grass is hard-edged tufts, by design.** The `tallgrass` family ships
    fill(+variants) ONLY — staggered blade-fan clumps over a darkened bed, no
    transition ring — so a patch reads instantly as "grass you fight in" (the classic

@@ -576,6 +576,17 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   it after ANY warp edit, not just new maps. A gated warp may carry `blocked_ref` (mirror
   of EventTrigger's) for a diegetic "not yet" line, step_on included — the Pearlmoor
   moor-gate (`npc.netmender_gate`) is the worked example.
+- **Doors are WALK-ONTO, not press-to-enter (convention, enforced).** A door is a
+  `Warp` with `trigger:'step_on'` + `transition:'door'`; the player walks into the
+  doorway tile and warps. `CollisionGrid` FREES every `transition:'door'` warp tile
+  (it sits in a building's otherwise-solid footprint), and the worldmodel/Walkability
+  audit models mirror that — keep the three in sync. The door warp must sit **on the
+  sprite's visible door** (the standable tile); a 2-wide door = two door warps (both
+  enter). Pressing Confirm at a door also fires it (`WorldScene` Confirm matches door
+  warps), and a **locked** door (gated + `blocked_ref`) answers a walk-in/Confirm with
+  its line — `executeWarp` falls back to a generic "it's locked" if a door has none, so
+  a gated door is never silent. `patterns.building` stamps step_on; `audit_warps` FAILs
+  any door left on `interact`. Worked: `door.locked_*` lines + the 8 gated doors.
 - **The device shell screen is locked to 3:2.** `shells.css` sizes `#game-root` to the
   largest 3:2 box that fits, so `Scale.FIT` never pillarboxes (no black side bars). The
   `plain`/`overlay` shells are intentionally full-bleed and still letterbox.

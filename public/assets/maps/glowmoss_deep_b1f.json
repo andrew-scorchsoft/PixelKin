@@ -1516,7 +1516,7 @@
         "tx": 6,
         "ty": 18
       },
-      "trigger": "interact",
+      "trigger": "step_on",
       "to_map": "spore_grotto",
       "to": {
         "tx": 5,
@@ -1524,7 +1524,8 @@
       },
       "facing": "down",
       "requires_ability": "glimmerstep",
-      "transition": "door"
+      "transition": "door",
+      "blocked_ref": "door.locked_glimmerstep"
     }
   ],
   "triggers": [

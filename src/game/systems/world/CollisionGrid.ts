@@ -82,6 +82,18 @@ export class CollisionGrid {
       }
     }
 
+    // Doorways are WALK-ONTO tiles (the genre's step-into-the-door entry): a
+    // `transition:'door'` warp sits in a building's otherwise-solid footprint (or a
+    // cave mouth), so free its tile or the player could never reach it to walk
+    // through. Runs after the object loop so it overrides the footprint. Gated
+    // ("locked") doors stay freed too — stepping on fires the warp, which delivers
+    // its blocked_ref "it's locked" line rather than silently barring the way.
+    for (const w of this.map.def.warps) {
+      if (w.transition === 'door' && this.map.inBounds(w.at.tx, w.at.ty)) {
+        this.solid[w.at.ty * this.w + w.at.tx] = false;
+      }
+    }
+
     // Ability gates override: listed tiles become conditional on their gift.
     for (const gate of this.map.def.gates) {
       if (gate.effect === 'make_passable' || gate.effect === 'remove_tile') {

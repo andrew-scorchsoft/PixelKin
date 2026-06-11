@@ -2086,7 +2086,7 @@
         "tx": 2,
         "ty": 11
       },
-      "trigger": "interact",
+      "trigger": "step_on",
       "to_map": "tideglass_cavern",
       "to": {
         "tx": 5,
@@ -2094,7 +2094,8 @@
       },
       "facing": "left",
       "requires_ability": "glimmerstep",
-      "transition": "door"
+      "transition": "door",
+      "blocked_ref": "door.locked_glimmerstep"
     }
   ],
   "triggers": [

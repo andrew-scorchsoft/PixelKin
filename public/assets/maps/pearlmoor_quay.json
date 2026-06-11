@@ -2294,7 +2294,7 @@
         "tx": 13,
         "ty": 6
       },
-      "trigger": "interact",
+      "trigger": "step_on",
       "to_map": "pearlmoor_lumenary",
       "to": {
         "tx": 8,
@@ -2302,7 +2302,8 @@
       },
       "facing": "down",
       "requires_flag": "flag:has_starter",
-      "transition": "door"
+      "transition": "door",
+      "blocked_ref": "door.locked_lumenary"
     },
     {
       "id": "to_shop",
@@ -2310,7 +2311,7 @@
         "tx": 5,
         "ty": 11
       },
-      "trigger": "interact",
+      "trigger": "step_on",
       "to_map": "pearlmoor_shop",
       "to": {
         "tx": 7,
@@ -2325,7 +2326,7 @@
         "tx": 22,
         "ty": 11
       },
-      "trigger": "interact",
+      "trigger": "step_on",
       "to_map": "pearlmoor_inn",
       "to": {
         "tx": 8,
