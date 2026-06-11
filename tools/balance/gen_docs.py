@@ -26,10 +26,13 @@ for region in REGION:
     members = [s for s in sp if s["dex"]["habitat"] == region]
     if not members: continue
     out.append(f"\n## {RNAME[region]}\n")
-    out.append("| # | Name | Types | Tier | Role | BST | Kindles | Catch | Size | Dex entry |")
-    out.append("|--:|------|-------|:--:|------|--:|---------|--:|-----|-----------|")
+    out.append("| Art | # | Name | Types | Tier | Role | BST | Kindles | Catch | Size | Dex entry |")
+    out.append("|:--:|--:|------|-------|:--:|------|--:|---------|--:|-----|-----------|")
     for s in sorted(members, key=lambda s: s["id"]):
         types = "/".join(s["types"])
+        slug = f"{s['id']:03d}_{s['slug']}"
+        front = os.path.join("public", "assets", "sprites", "creatures", slug, "battle_front.webp")
+        img = f'<img src="../../{front}" width="48" alt="{s["name"]}">' if os.path.exists(os.path.join(ROOT, front)) else ""
         kn = ""
         if s.get("kindling"):
             nxt = by_id.get(s["kindling"]["into"])
@@ -42,7 +45,7 @@ for region in REGION:
         size = f"{s['dex']['size_cm']}cm/{s['dex']['weight_kg']}kg"
         entry = s["dex"]["entry"].replace("|", "\\|")
         if len(entry) > 90: entry = entry[:88] + "…"
-        out.append(f"| {s['id']} | **{s['name']}** | {types} | {s['tier']} | {s['role']} | {s['bst']} | {kn} | {s['catchRate']} | {size} | {entry} |")
+        out.append(f"| {img} | {s['id']} | **{s['name']}** | {types} | {s['tier']} | {s['role']} | {s['bst']} | {kn} | {s['catchRate']} | {size} | {entry} |")
 
 open(os.path.join(ROOT, "docs", "mechanics", "dex.md"), "w").write("\n".join(out))
 print("Wrote docs/mechanics/dex.md")
