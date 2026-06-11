@@ -62,6 +62,11 @@ mk.organic_border(tree, W, H, top=1, left=1, right=1, depth=2,
 for x in (13, 14):                       # punch the north exit gap
     tree[0 * W + x] = 0; tree[1 * W + x] = 0
 mk.rect(tree, W, H, 0, 19, W - 1, H - 1, 0)   # clear the border below the shoreline
+# Seal the SW border slivers the bump shapes leave: walkable-looking cells with
+# no approach (the cottage + tree bodies enclose them). A pocket the player can
+# SEE but never reach is a broken promise — fill it with forest instead.
+for (x, y) in ((2, 11), (3, 12), (2, 15), (3, 15), (2, 16)):
+    tree[y * W + x] = 1
 
 # NE cliff terrace — the town's elevation accent, rising behind the Lumenary so the
 # landmark sits against rock, not empty field (the reference-map "terrace" read).
@@ -221,14 +226,14 @@ m = {
          "requires_flag": "flag:has_starter", "transition": "fade"},
         # House door — interact on the actual door-art tile (cottage col 2).
         {"id": "to_house", "at": {"tx": cottage_door[0], "ty": cottage_door[1]}, "trigger": "interact",
-         "to_map": "tinderwick_house", "to": {"tx": 6, "ty": 7}, "facing": "down", "transition": "door"},
+         "to_map": "tinderwick_house", "to": {"tx": 7, "ty": 9}, "facing": "down", "transition": "door"},
         # Shop door — interact on the shop's door-art tile (col 2).
         {"id": "to_shop", "at": {"tx": shop_door[0], "ty": shop_door[1]}, "trigger": "interact",
-         "to_map": "tinderwick_shop", "to": {"tx": 6, "ty": 7}, "facing": "down", "transition": "door"},
+         "to_map": "tinderwick_shop", "to": {"tx": 7, "ty": 8}, "facing": "down", "transition": "door"},
         # Lumenary door — interact on the arch door-art tile (col 2); col 3 is the twin
         # walkable approach tile. Requires the player to hold a starter (soft gate).
         {"id": "to_lumenary", "at": {"tx": lum_door[0], "ty": lum_door[1]}, "trigger": "interact",
-         "to_map": "tinderwick_lumenary", "to": {"tx": 7, "ty": 9}, "facing": "down",
+         "to_map": "tinderwick_lumenary", "to": {"tx": 8, "ty": 10}, "facing": "down",
          "requires_flag": "flag:has_starter", "transition": "door"},
         # The Lanternway east to Vesper Crossroads (the hub; graph.ts spoke).
         {"id": "to_crossroads", "at": {"tx": W - 1, "ty": 16}, "trigger": "step_on",
@@ -279,9 +284,11 @@ m = {
         {"id": "gatewarden_post", "at": {"tx": 15, "ty": 2}, "facing": "left",
          "sprite": "npc_lampwarden", "movement": "static",
          "dialogue_ref": "npc.gatewarden_after", "requires_flag": "flag:has_starter"},
-        # A valuable cache tucked in the SW corner (the spine's cache-variety
-        # rule: each region carries a found-to-sell nugget off the lane).
-        {"id": "cache_waxcake", "at": {"tx": 3, "ty": 15}, "facing": "down",
+        # A valuable cache tucked on the strand behind the cottage (the spine's
+        # cache-variety rule: each region carries a found-to-sell nugget off the
+        # lane). NOT in the SW tree pocket — (3,15) had no walkable approach
+        # (audit_flow caught the sealed pocket; those cells are now tree-filled).
+        {"id": "cache_waxcake", "at": {"tx": 1, "ty": 20}, "facing": "down",
          "sprite": "item_cache", "movement": "static",
          "dialogue_ref": "script.pickup_tinderwick_waxcake",
          "hidden_when_flag": "flag:picked_tinderwick_waxcake"},

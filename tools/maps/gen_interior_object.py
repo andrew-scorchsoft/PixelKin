@@ -24,15 +24,32 @@ OBJDIR = REPO / "assets/tilesets/interior/objects"
 PY = sys.executable
 
 MAGENTA = (255, 0, 255)
-STYLE = ("Original 16-bit SNES-era top-down RPG pixel-art furniture sprite, chunky pixels, "
+_BASE = ("Original 16-bit SNES-era RPG pixel-art furniture sprite, chunky pixels, "
          "dark-ink outline, top-left light source, GBC-restrained palette, NO text. "
          "The ENTIRE background is FLAT PURE MAGENTA #FF00FF (no shadow, no gradient, no "
-         "checkerboard) so it can be keyed out; keep magenta OUT of the object's own colours. "
-         "A single object centred, drawn whole, viewed from the same gentle top-down angle as a "
-         "classic RPG room. ")
+         "checkerboard) so it can be keyed out; keep magenta OUT of the object's own colours. ")
+# Two projections (docs/world/interiors.md §1):
+#   topdown — free-standing pieces: visible top surface + short front face.
+#   front   — WALL-MOUNTED pieces: a strict straight-on FRONT ELEVATION (like a
+#             doll's-house wall): absolutely NO isometric or 3/4 angle, NO top
+#             surface visible, NO perspective — and the piece must fill the
+#             frame EDGE TO EDGE so it sits flush against the room's wall.
+STYLE = {
+    "topdown": _BASE + ("A single object drawn whole, viewed from the gentle top-down-with-"
+                        "a-hint-of-front angle of a classic RPG room interior: most of the "
+                        "sprite is the object's TOP surface, with a short front face strip "
+                        "at the bottom. "),
+    "front": _BASE + ("A single piece of furniture drawn as a strict STRAIGHT-ON FRONT "
+                      "ELEVATION, dead-centre eye level, zero perspective — NOT isometric, "
+                      "NOT three-quarter view, no visible top surface, no side faces, no "
+                      "floor. It stands against a wall, so the artwork must FILL THE FRAME "
+                      "EDGE TO EDGE horizontally and reach the very bottom of the frame "
+                      "(its feet/base at the bottom edge). "),
+}
 
 
-def key_and_snap(raw: Path, w_tiles: int, h_tiles: int, top_pad: int) -> Image.Image:
+def key_and_snap(raw: Path, w_tiles: int, h_tiles: int, top_pad: int,
+                 fill: bool = False) -> Image.Image:
     im = Image.open(raw).convert("RGBA")
     px = im.load()
     W, H = im.size
@@ -47,6 +64,17 @@ def key_and_snap(raw: Path, w_tiles: int, h_tiles: int, top_pad: int) -> Image.I
         im = im.crop(bbox)
     tw, th = w_tiles * 16, h_tiles * 16
     body_h = th - top_pad * 16
+    if fill:
+        # wall-elevation pieces must span the canvas edge-to-edge (flush mount):
+        # resize exactly, accepting the small aspect stretch
+        im = im.resize((tw, body_h),
+                       Image.NEAREST if tw >= im.width else Image.LANCZOS)
+        if tw < im.width:
+            al = im.split()[3].point(lambda v: 255 if v >= 128 else 0)
+            im.putalpha(al)
+        canvas = Image.new("RGBA", (tw, th), (0, 0, 0, 0))
+        canvas.alpha_composite(im, (0, th - body_h))
+        return canvas
     # scale to fit within (tw, body_h) preserving aspect
     sc = min(tw / im.width, body_h / im.height)
     nw, nh = max(1, round(im.width * sc)), max(1, round(im.height * sc))
@@ -84,21 +112,28 @@ def main() -> int:
     ap.add_argument("--top-pad", type=int, default=0, help="transparent tile rows reserved on top")
     ap.add_argument("--subject", required=True)
     ap.add_argument("--provider", default="google")
+    ap.add_argument("--projection", choices=("topdown", "front"), default="topdown",
+                    help="'front' = strict wall-elevation (wall-mounted pieces)")
+    ap.add_argument("--outdir", default=None,
+                    help="write somewhere other than the live masters dir (A/B trials)")
     args = ap.parse_args()
 
-    OBJDIR.mkdir(parents=True, exist_ok=True)
+    outdir = Path(args.outdir) if args.outdir else OBJDIR
+    outdir.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as td:
         raw = Path(td) / "raw.png"
-        prompt = STYLE + args.subject
+        prompt = STYLE[args.projection] + args.subject
         r = subprocess.run([PY, str(GEN), "--prompt", prompt, "--output", str(raw),
                             "--provider", args.provider], capture_output=True, text=True)
         if not raw.exists():
             print(r.stdout[-2000:]); print(r.stderr[-2000:]); return 1
-        out = OBJDIR / f"{args.stem}.png"
-        snapped = key_and_snap(raw, args.w, args.h, args.top_pad)
+        out = outdir / f"{args.stem}.png"
+        snapped = key_and_snap(raw, args.w, args.h, args.top_pad,
+                               fill=(args.projection == "front"))
         snapped.save(out)
         checker(snapped).save(f"/tmp/obj_{args.stem}.png")
-        print(f"  wrote {out.relative_to(REPO)}  ({args.w*16}x{args.h*16})  preview /tmp/obj_{args.stem}.png")
+        shown = out.relative_to(REPO) if out.is_relative_to(REPO) else out
+        print(f"  wrote {shown}  ({args.w*16}x{args.h*16})  preview /tmp/obj_{args.stem}.png")
     return 0
 
 

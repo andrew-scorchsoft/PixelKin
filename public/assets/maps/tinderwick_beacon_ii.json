@@ -288,10 +288,11 @@
       "sprite": "interior_shelf",
       "at": {
         "tx": 3,
-        "ty": 6
+        "ty": 1
       },
       "w": 2,
-      "h": 2
+      "h": 3,
+      "overhang": 1
     },
     {
       "id": "barrels",

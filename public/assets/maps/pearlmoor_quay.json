@@ -14,7 +14,7 @@
       "tile_height": 16,
       "first_gid": 1,
       "columns": 12,
-      "tile_count": 187
+      "tile_count": 189
     }
   ],
   "layers": [
@@ -1042,7 +1042,7 @@
         0,
         0,
         0,
-        117,
+        0,
         0,
         0,
         0,
@@ -1101,9 +1101,11 @@
         0,
         0,
         125,
+        117,
+        0,
+        0,
+        0,
         8,
-        0,
-        0,
         0,
         0,
         0,
@@ -1124,7 +1126,6 @@
         0,
         0,
         0,
-        0,
         6,
         0,
         0,
@@ -1139,11 +1140,10 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
         8,
-        0,
-        0,
-        0,
-        0,
         0,
         0,
         0,
@@ -2297,8 +2297,8 @@
       "trigger": "interact",
       "to_map": "pearlmoor_lumenary",
       "to": {
-        "tx": 7,
-        "ty": 9
+        "tx": 8,
+        "ty": 10
       },
       "facing": "down",
       "requires_flag": "flag:has_starter",
@@ -2313,8 +2313,8 @@
       "trigger": "interact",
       "to_map": "pearlmoor_shop",
       "to": {
-        "tx": 6,
-        "ty": 7
+        "tx": 7,
+        "ty": 8
       },
       "facing": "down",
       "transition": "door"
@@ -2328,8 +2328,8 @@
       "trigger": "interact",
       "to_map": "pearlmoor_inn",
       "to": {
-        "tx": 7,
-        "ty": 8
+        "tx": 8,
+        "ty": 10
       },
       "facing": "down",
       "transition": "door"
@@ -2390,8 +2390,8 @@
       "id": "sign_shop",
       "kind": "sign",
       "at": {
-        "tx": 4,
-        "ty": 12
+        "tx": 7,
+        "ty": 14
       },
       "activation": "interact",
       "ref": "sign.pearlmoor_shop"

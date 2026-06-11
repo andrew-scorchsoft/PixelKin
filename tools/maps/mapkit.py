@@ -28,10 +28,66 @@ _INDEX = json.loads((SHARED / "vesper_overworld.index.json").read_text())
 _SIDECAR = json.loads(
     (REPO / "public/assets/tilesets/vesper_overworld_set.tileset.json").read_text())
 
+# Registered tilesets: name -> (first_gid, name->local-index map, sidecar).
+# The shared overworld set is always registered; ACCENT sets join via
+# register_tileset() so an area can stack its own kit at a higher first_gid
+# (the engine resolves gids across tilesets by range — MapLoader.ts).
+_TILESETS: dict[str, tuple[int, dict, dict]] = {
+    "vesper_overworld_set": (SHARED_FIRST_GID, _INDEX, _SIDECAR),
+}
 
-def gid(name: str) -> int:
-    """Global tile id of a named shared tile (for direct base/deco placement)."""
-    return SHARED_FIRST_GID + _INDEX[name]
+
+def register_tileset(name: str, *, index: dict | str | Path | None = None,
+                     first_gid: int | None = None) -> dict:
+    """Register an ACCENT tileset for this build and return its TilesetRef.
+
+    `index` maps tile names -> local indices (a dict, or a path to an index
+    JSON like the shared set's). Without one, tiles are addressable only by
+    local index via `gid_at()`. `first_gid` defaults to stacking directly
+    above every set registered so far. The returned ref goes in the map's
+    `tilesets[]` (alongside `shared_tileset_ref()`); `gid()` then resolves
+    names across every registered set.
+    """
+    side_path = REPO / "public/assets/tilesets" / f"{name}.tileset.json"
+    side = json.loads(side_path.read_text())
+    if first_gid is None:
+        first_gid = next_first_gid()
+    if isinstance(index, (str, Path)):
+        index = json.loads(Path(index).read_text())
+    _TILESETS[name] = (first_gid, index or {}, side)
+    return {
+        "name": name,
+        "image": f"assets/tilesets/{name}.webp",
+        "tile_width": side.get("tile_width", 16),
+        "tile_height": side.get("tile_height", 16),
+        "first_gid": first_gid,
+        "columns": side["columns"],
+        "tile_count": side["tile_count"],
+    }
+
+
+def next_first_gid() -> int:
+    """The first free gid above every registered set (stack accents here)."""
+    return max(fg + side["tile_count"] for fg, _, side in _TILESETS.values())
+
+
+def gid(name: str, set: str | None = None) -> int:
+    """Global tile id of a named tile. Searches the shared set first, then
+    every registered accent set; pass `set=` to disambiguate a name that
+    exists in more than one kit."""
+    if set is not None:
+        fg, index, _ = _TILESETS[set]
+        return fg + index[name]
+    for fg, index, _ in _TILESETS.values():
+        if name in index:
+            return fg + index[name]
+    raise KeyError(f"tile '{name}' not in any registered tileset "
+                   f"({', '.join(_TILESETS)})")
+
+
+def gid_at(set: str, local_index: int) -> int:
+    """Global id of a tile addressed by local index in a registered set."""
+    return _TILESETS[set][0] + local_index
 
 
 def shared_tileset_ref() -> dict:
@@ -120,9 +176,11 @@ def scatter_decor(deco, base, w, h, rng, *, density=0.10, avoid=None, flowers=0.
 # ---- the standing build pipeline --------------------------------------------
 def finalize(m: dict, *, scale: int = 3, render: bool = True) -> bool:
     """Write the map, expand terrain -> base (variant autotiling), strip the terrain
-    layers (runtime wants plain gids), re-write, render a QA PNG, validate, and
-    run the cross-map WARP AUDIT (wide-entrance coverage, landings, round trips).
-    Returns True iff validate_map AND audit_warps pass."""
+    layers (runtime wants plain gids), re-write, render a QA PNG, validate, run the
+    cross-map WARP AUDIT (wide-entrance coverage, landings, round trips) and the
+    FLOW AUDIT (reachability, choke triggers, free-pass, loops, dead-end payoff,
+    screen pacing — the executable §3a pass). Returns True iff validate_map,
+    audit_warps AND audit_flow all pass (flow WARNs don't fail; flow FAILs do)."""
     map_path = REPO / "public/assets/maps" / f"{m['id']}.json"
     map_path.write_text(json.dumps(m, indent=2) + "\n")
 
@@ -151,4 +209,9 @@ def finalize(m: dict, *, scale: int = 3, render: bool = True) -> bool:
     aud = subprocess.run([sys.executable, str(REPO / "tools/maps/audit_warps.py"), m["id"]],
                          capture_output=True, text=True)
     print(aud.stdout)
-    return val.returncode == 0 and aud.returncode == 0
+
+    # flow audit — the executable level-design pass (tools/maps/audit_flow.py)
+    flow = subprocess.run([sys.executable, str(REPO / "tools/maps/audit_flow.py"), m["id"]],
+                          capture_output=True, text=True)
+    print(flow.stdout)
+    return val.returncode == 0 and aud.returncode == 0 and flow.returncode == 0

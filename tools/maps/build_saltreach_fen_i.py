@@ -62,11 +62,15 @@ pt.terrace(cliff, mk.make_grid(W, H), W, H, BANK, gap=(17, 18), gap_side="left",
 #  real deco grid below.)
 
 # reed beds — south bed optional, the big mid bed STRADDLES the lane (mandatory
-# crossing), the north bed guards the shore approach
+# crossing), the north bed guards the shore approach, and the WEST VERGE beds
+# pay the off-lane strip along the tree line (§3a rule 4 — audit_flow flagged
+# the bare pocket; an explorable strip must reward the walk)
 mk.blob(tallgrass, W, H, 17, 40, 3.2, 1.7)
 mk.blob(tallgrass, W, H, 7, 33, 2.5, 1.6)
 mk.blob(tallgrass, W, H, 13, 22, 4.2, 2.3)
 mk.blob(tallgrass, W, H, 8, 12, 3, 2)
+mk.blob(tallgrass, W, H, 3.5, 7, 1.6, 2.0)
+mk.blob(tallgrass, W, H, 3.5, 13.5, 1.5, 1.8)
 
 # warp openings carved out of the enclosure (west entry, north exit)
 for (x, y) in [(0, 37), (0, 38), (1, 37), (1, 38), (15, 0), (16, 0), (15, 1), (16, 1)]:

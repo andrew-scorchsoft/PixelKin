@@ -16,6 +16,11 @@ Spurs: a NW alcove (Moth-amber, the region's valuable cache) and the SE
 Spore Grotto mouth (Glimmerstep warp tease + sign).
 
 Run:  python3 tools/maps/build_glowmoss_deep.py   (after build_shared_overworld.py)
+
+audit_flow WAIVER — `loop` WARN accepted: this is the East's FIRST dungeon
+(level-design §2a — the story set-piece tier; the one-way drop/shortcut loop
+is the MID-dungeon requirement, arriving with Cinderhead Deep). Same waiver
+applies to the B1F floor below.
 """
 from __future__ import annotations
 import random
@@ -162,8 +167,14 @@ m = {
         # B2 — first Hollowing contact: fires on the only choke into the drained
         # site (can't be walked around). The acolytes, the sleeping kin, the
         # distant cowled figure (the Còr foreshadow — no battle, no name said twice).
-        {"id": "drained_site", "kind": "cutscene", "at": {"tx": 14, "ty": 12},
-         "activation": "step_on", "ref": "script.glowmoss_drained", "once": True},
+        # The true cut is the x=14 column, rows 10-12 (audit_flow proved a single
+        # tile here was bypassable) — band the whole column, gate-warden style;
+        # the flag pair hides the band after the first fire.
+        *[{"id": f"drained_site_{ty}", "kind": "cutscene", "at": {"tx": 14, "ty": ty},
+           "activation": "step_on", "ref": "script.glowmoss_drained", "once": True,
+           "sets_flags": ["flag:seen_drained_site"],
+           "hidden_when_flag": "flag:seen_drained_site"}
+          for ty in (10, 11, 12)],
         # The null-lantern restoration — on the only choke OUT of the site east,
         # so no player can tunnel to Cinderhead past it (walkthrough §5 callout).
         {"id": "glowmoss_relight", "kind": "script", "at": {"tx": 22, "ty": 10},

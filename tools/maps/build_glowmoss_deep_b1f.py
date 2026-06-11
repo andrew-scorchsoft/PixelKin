@@ -50,9 +50,13 @@ for i in range(W * H):
     if floor[i]:
         wall[i] = 0
 
-# the deep bed — glowmoss only at the heart (the rest of the floor is dark)
+# the deep bed — glowmoss only at the heart (the rest of the floor is dark)…
 glow = mk.make_grid(W, H)
 mk.blob(glow, W, H, 7.0, 11.5, 2.2, 1.8)
+# …plus a small overflow pooled in the SE chamber, so the floor's east half
+# isn't a dead screenful (§3a rule 5; audit_flow flagged it) and the rubble
+# dead-end's approach carries a roll
+mk.blob(glow, W, H, 18.0, 14.5, 1.4, 1.1)
 for i in range(W * H):
     if glow[i] and not floor[i]:
         glow[i] = 0
@@ -127,6 +131,12 @@ m = {
                    {"kin_id": 38, "weight": 25, "min_level": 21, "max_level": 23},
                    {"kin_id": 57, "weight": 25, "min_level": 21, "max_level": 23},
                    {"kin_id": 67, "weight": 15, "min_level": 22, "max_level": 23}]},
+        # the SE overflow pool — same band, Mossglow-leaning (the light pools)
+        {"id": "se_pool", "terrain": "tall_grass", "rect": {"tx": 16, "ty": 13, "w": 5, "h": 3},
+         "encounter_rate": 0.12,
+         "table": [{"kin_id": 38, "weight": 40, "min_level": 21, "max_level": 23},
+                   {"kin_id": 56, "weight": 35, "min_level": 21, "max_level": 23},
+                   {"kin_id": 57, "weight": 25, "min_level": 21, "max_level": 23}]},
     ],
     "npcs": [
         # dead-end A's prize: a Star-chart cache (the maze pays in kind)

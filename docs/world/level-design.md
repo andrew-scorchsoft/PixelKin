@@ -9,6 +9,8 @@
 > (the authoring flow + data model), the schema in
 > [`../../src/game/data/world/types.ts`](../../src/game/data/world/types.ts), and the tone
 > in [`../../VISION.md`](../../VISION.md) ("lanterns in the dark"). All content original.
+> The evidence base behind §2b/§3a — primary-source research into the cartridge-era
+> masters — lives in [`retro-map-design-research.md`](./retro-map-design-research.md).
 
 This guide was settled by a design panel — three cartridge-era handheld creature-RPG
 designers (the people who laid out cosy starter towns, tutorial routes, and readable
@@ -172,18 +174,27 @@ patches** (a player can choose to step in); the modern designer stressed the pat
   to enter. Avoid 1-tile-wide grass corridors the player is forced down.
 - **`EncounterZone.rect` must cover exactly the painted terrain** — no zone over plain
   ground, no terrain tiles outside a zone. Mismatch = invisible or phantom encounters.
-- **Rate tuning (per-step `encounter_rate`):**
+- **Rate tuning (per-step `encounter_rate`) — the dial is RATE × COVERAGE**
+  (§3a rule 12): how often a step rolls × how many steps are on rolling tiles.
+  Tile-bound terrains (tall_grass/glowmoss/water) only roll ON painted tiles, so
+  small optional patches can run hot; `cave`/`sand` zones roll **rect-wide**
+  (every step inside the rect), so they price like wall-to-wall and run at half
+  or less:
 
   | Context | `encounter_rate` |
   |---------|------------------|
   | Starter-town verge (first ever grass) | **0.06–0.08** |
   | First route (Dimglass) | **0.08–0.10** |
-  | Standard mid-game route | 0.10–0.12 |
-  | Cave / dungeon | 0.10–0.14 (denser, claustrophobic) |
+  | Standard mid-game route (optional patches) | 0.10–0.12 |
+  | Cave glowmoss beds (tile-bound tufts) | 0.10–0.14 (denser, claustrophobic) |
+  | **Rect-wide zones (`cave`/`sand`) & open surf water** | **0.05–0.07** — every step rolls |
   | Gift-gated rare-reward terrain (water/cave spur) | 0.06–0.10, rare kin at **low weight** |
 
   Keep the first hour at the **low end** — a battle every ~10–14 steps reads as "alive", not
   "nagging". A player crossing the first verge should average **1–2 encounters**, not five.
+  A mandatory crossing (§11 rule 7) stays **6–12 tiles deep**: one heartbeat encounter per
+  crossing. Long wall-to-wall stretches need a relief valve — the low rate, a mid-point
+  rest, or a purchasable ward.
 - **Tables:** first-route tables are **1–2 common kin**, narrow level range (see atlas per-area
   kin). Rare/gated kin are **low-weight entries** in the gated-terrain zone, never the common
   pool. Element matches the area's light (atlas §4).
@@ -287,6 +298,62 @@ Mechanics (all existing — no engine work):
   (the spine's cache-variety rule applies per FLOOR, not per dungeon).
 - **Spurs live deep**: an optional landmark's mouth belongs on the lowest
   floor, so its rarity is earned by the descent (Spore Grotto is the model).
+- **Graph before tiles.** Sketch the dungeon as a lock-and-key GRAPH before
+  carving a floor: rooms from entrance to prize, every key drawn above the
+  lock it opens, the floor-item above the obstacles it answers. The graph's
+  shape is the diagnostic — tall-and-narrow is a corridor in disguise, no
+  matter how maze-like the floor plan; aim slightly WIDE (1–2 same-depth
+  choices) with one loop back over the entrance room. Rooms teach before
+  they test (same threat, harder layout — ramp by configuration, not
+  level); the wrong branch always carries a cache; darkness is a comfort
+  gate (disorienting without the light, never a hard wall).
+
+### 2b. The region is the level (BINDING — the scene scale, 2026-06)
+
+A map is one room of the level; the LEVEL is the region — town anchors, route
+legs, the dungeon wall, the spurs, and the hub spoke, read as one journey.
+Research notes: [`retro-map-design-research.md`](./retro-map-design-research.md).
+Validated by `tools/maps/audit_region.py` (graph sync, unlock waves, band
+borders, topology, leg lengths) — run it after ANY warp/table/graph change.
+
+1. **Topology: a loop with stub spurs.** Each region's overworld subgraph must
+   close a circuit (ours close through the Lanternway hub — that's the design,
+   not an accident); spurs stay short and paid. A region that walks back out
+   the way it came in is a corridor at scene scale. The era's strongest beat
+   is **arriving somewhere familiar from a new direction** — stage at least
+   one per act (the Lanternway spokes exist for this).
+2. **Return compressors escalate in scale**: ledge hop (within a map) →
+   flag-opened shortcut (within a region: the sealed door opened from the far
+   side) → cross-region re-link (the late `shortcut_*` edges) → the Lanternway
+   as the flight tier. Open each one just as the walk it collapses is about
+   to turn tedious.
+3. **Every Gift re-opens EARLIER ground, and its locks are seeded before the
+   key.** Place a Gift's gates on maps the player crosses *before* earning it
+   (Dimglass's buoy-line and cave mouth before Tidecall/Glimmerstep are the
+   model), so each grant sends the player's memory — not a quest log —
+   backwards. The first region carries the lesson: powers re-value old maps.
+4. **Level bands are data and they STEP**: adjacent maps' encounter bands
+   overlap by 1–2 levels and rise 2–4 per map; a dungeon runs ~+2 over its
+   feeder route. A border jump >4 is a difficulty cliff (`audit_region`
+   warns); optional spurs may spike — they're priced detours.
+5. **Heal-anchor spacing**: never more than ~2 route legs + 1 dungeon from a
+   rest-heal, and a roadside rest (camp NPC / wayshrine with a `heal` script)
+   belongs AT the mouth of every multi-floor dungeon. The audit prints each
+   leg's door-to-door steps — budget a region's legs against its anchors.
+6. **Seams are designed, not leftover.** Border-to-border continuity at every
+   warp: the terrain underfoot continues on the far side (sand exits land on
+   sand), the camera-facing carries over, and the connector zones between two
+   areas' theme palettes get their own consistent look (the crossroads' dusk
+   meadows are the worked example). Sight-line the next map's landmark from
+   the boundary screen so the player walks toward something.
+7. **Open early, lock corners.** After a region's opening beat, most of it
+   should be *visitable* (if not yet winnable); keep the hard locks few,
+   visible, and named in-world. Soft gates (crossable-but-costly: deep grass,
+   a long dark detour) are as legitimate as hard ones — leave room for the
+   observant to feel clever.
+8. **One kit-breaker per region.** One area per region may break the standard
+   town/route kit *structurally* (the raft-quay, the tree-hung village, the
+   crater town) — exactly one, and its break is the region's signature touch.
 
 ---
 
@@ -355,6 +422,26 @@ are composition discipline the checklist (§8) now asks about.
 10. **The map remembers.** Beaten trainers stand down, caches stay looted,
     drained sites bloom after their story beat (flag-paired NPCs/zones).
     Nothing resets; a revisited map should read as "mine now".
+11. **Fold the path: the S-bend rule.** A route's critical path bends 3–5
+    times across its corridor (the era's first routes ran five S-bends
+    through five grass beats) — straight-line distance is never the walked
+    distance. Each bend is a beat slot: a grass crossing, a trainer's line,
+    a choke with the story band. A route the camera can see straight down
+    is a hallway. (`worldmodel`'s leg lengths make the fold measurable:
+    door-to-door steps should comfortably exceed the maps' long axis.)
+12. **Rate × coverage is the encounter dial.** Small optional patches run
+    hot; mandatory or wall-to-wall terrain runs at HALF or less (the era
+    shipped forests/caves at half the route-grass rate, surf water at a
+    fifth). A mandatory crossing stays ~6–12 tiles deep — one heartbeat
+    encounter per crossing, never a wall. By mid-game most grass is
+    optional: forced grass is an opening-hour teaching tool.
+13. **Threats are readable in one screen.** Sight-trainer ranges stay 2–3
+    typical, 5 max (under the half-screen 7), facing fixed — the player
+    must be able to SEE the line before standing in it. The choke, its
+    guard, and the dodge/escape route all fit one viewport together.
+14. **Graph before tiles** (dungeons — §2a): sketch the lock-and-key graph,
+    keys above locks, slightly-wide shape, a loop over the entrance; then
+    carve floors to fit the graph, never the reverse.
 
 ---
 
@@ -591,8 +678,13 @@ tease (dark mouth in the cliff → Tideglass Cavern), each signed; Pearlmoor sig
 - [ ] **Entry/exit tiles agreed** with neighbouring maps & the **world graph** (`graph.ts`):
       every `Warp.to`/`to_map` has a matching land-in on the target; `start_at`/edge tiles in
       bounds.
+- [ ] **Scene context settled (§2b)**: where this map sits in the region's loop; the level
+      band it bridges (neighbours ±1–2 overlap, +2–4 step); the terrain its borders must
+      continue; which neighbour landmark gets the sight-line; which Gift promise it plants
+      or pays; distance to the nearest rest-heal. Run `audit_region.py` before starting.
 - [ ] **Screen-by-screen plan**: a landmark + a decision roughly per 15×10 screen; the
-      "spine" / dominant axis identified.
+      "spine" / dominant axis identified — and the critical path FOLDED 3–5 times (§3a
+      rule 11), not drawn straight.
 
 ### Layout & readability
 
@@ -632,6 +724,14 @@ tease (dark mouth in the cliff → Tideglass Cavern), each signed; Pearlmoor sig
       player on the silent tiles); every landing is in bounds + walkable; and a return
       warp to the source sits within 1 tile of every landing — the convention is to land
       **ON** the return warp (the engine never auto-fires a step_on warp on arrival).
+- [ ] **Flow audit passes** (`tools/maps/audit_flow.py`, run by `mk.finalize()`): every
+      NPC/trigger/portal reachable; story step_on bands sit on TRUE cuts (band every
+      walkable tile of the choke, flag-paired); no zero-gameplay free pass on routes;
+      a one-way return exists; off-lane pockets pay; no dull screenfuls. WARNs need a
+      written justification in the builder.
+- [ ] **Region audit clean** (`tools/maps/audit_region.py`): graph.ts⇄JSON in sync, no
+      band cliff at this map's borders, the region still loops, the new leg's length fits
+      the heal-anchor budget (§2b).
 - [ ] **Reward/tease cadence** matches the route conventions ([`atlas.md`](./atlas.md) §3:
       segmented chain, a spur, a landmark, a hub spoke).
 - [ ] **Originality** ([`../../VISION.md`](../../VISION.md)): no layout, silhouette, or sign
@@ -642,70 +742,28 @@ tease (dark mouth in the cliff → Tideglass Cavern), each signed; Pearlmoor sig
 
 ---
 
-## 9. Should we build a `design-map` skill? — YES (scaffold below)
+## 9. The build-map skill & the audit stack (BUILT)
 
-**Recommendation.** Map authoring repeats for **~30 areas** (14 area cards + segments, spurs,
-landmarks, hubs, interiors in the world graph), and it's a multi-step, easy-to-do-
-inconsistently activity (size, layers, warps↔graph, encounter rects, the readability
-checklist). By the project's own principle — *"if an activity will repeat, invest in a
-skill"* — this clears the bar comfortably. A skill turns this binding doc into an enforced,
-repeatable pipeline and keeps every area on-pattern.
+The skill this section once proposed **exists**: `.claude/skills/build-map/` composes
+any area from its atlas card + walkthrough hooks via `tools/maps/mapkit.py` +
+`patterns.py` (parametric stamps) and proves it with `mk.finalize()`. Use it for every
+new or revised map; its SKILL.md is the operational companion to this doc.
 
-It should **assemble maps from already-generated tilesets** (it does not draw art — that's
-`generate-sprite-sheet`), output `MapDefinition` JSON to the schema, and run the §8 checklist
-as a lint pass. Scaffold (outline only — not built here):
+The §8 checklist is now **executable**, not just readable — four auditors at three scales:
 
-```
-.claude/skills/design-map/
-  SKILL.md
-  references/
-    level-design.md        # symlink/pointer to docs/world/level-design.md (the rules)
-    schema-cheatsheet.md   # the MapDefinition fields + snake_case JSON crib
-  scripts/
-    new_map.py             # scaffold a sized, bordered blank MapDefinition for a MapKind
-    lint_map.py            # run the §8 checklist programmatically (sizes, layer lengths,
-                           #   gid range, zone-vs-terrain match, warp round-trips vs graph)
-    ascii_to_layers.py     # convert an annotated ASCII sketch (this doc's legend) -> gid layers
-```
+| Tool | Scale | Judges |
+|------|-------|--------|
+| `validate_map.py` (generate-sprite-sheet) | the picture | layers, autotile vocabulary, meshing %, decoration density, borders |
+| `tools/maps/audit_warps.py` | the doors | wide-entrance coverage, landing validity, round trips |
+| `tools/maps/audit_flow.py` | the play | reachability of every NPC/trigger/portal (FAIL), story triggers on true chokes, no zero-gameplay free pass, loop/return asymmetry, dead-end payoff, per-screen interest — the §3a pass, measured |
+| `tools/maps/audit_region.py` | the scene | graph.ts⇄JSON sync (FAIL), Gift unlock waves, level-band cliffs at borders, region topology (corridor vs circuit), route leg lengths |
 
-### `SKILL.md` outline (to fill in when built)
-
-```markdown
----
-name: design-map
-description: Assemble a PixelKin MapDefinition (town/route/interior/cave/hub) from an
-  already-generated tileset, following docs/world/level-design.md — sized by MapKind,
-  layer-disciplined, warps wired to the world graph, encounter zones tuned, and linted
-  against the authoring checklist. Composes maps; does NOT draw tiles (use
-  generate-sprite-sheet) and does NOT touch engine code.
----
-
-# design-map
-
-## When to use
-- Authoring or revising any map JSON in public/assets/maps/ for an atlas area.
-
-## Read first (the craft)
-- docs/world/level-design.md   (this guide — the binding rules & sketches)
-- docs/world/atlas.md          (the area's kind/region/gate/kin/terrain)
-- src/game/data/world/types.ts (the MapDefinition schema)
-- src/game/data/world/graph.ts (the edges/warps this map must satisfy)
-
-## Workflow
-1. Confirm the atlas entry + the packed tileset exist (don't author without the kit).
-2. Choose size by MapKind (level-design §2); scaffold a bordered blank (new_map.py).
-3. Lay the spine/landmarks screen-by-screen (level-design §3, §7 patterns).
-4. Paint base -> deco -> above with strict layer roles (§7 Fork G).
-5. Place warps (matched to graph.ts), triggers, npcs, encounter zones, gates.
-6. Tune encounter_rate + tables to the area (§6) and the first-hour ramp.
-7. Run lint_map.py (the §8 checklist) and fix every failure.
-8. Register in maps.ts + graph.ts; key the music; add dialogue refs.
-
-## Guardrails
-- Composes maps only; never edits assets/tilesets or src/game engine code.
-- Diegetic barriers only; tease gated content; safe lane on early routes.
-- Canon vocabulary (kin/Lumenary/Gleam/Lantern Gift/vesperlamp); originality per VISION.
-```
+`finalize()` runs the first three on every build; run the region audit after any change
+to warps, encounter tables or `graph.ts`. FAILs block; WARNs are design debt to fix or
+justify in the builder's comments. On its first full-world run the flow audit found four
+real shipped bugs (a sealed cache pocket, a sign tile sealing Pearlmoor's west spoke, a
+cavern door with no standable approach, two walk-aroundable story beats) — trust the
+audit over the mental walk, and keep extending it when a new failure class appears.
 
 ---
 

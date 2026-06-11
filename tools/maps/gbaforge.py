@@ -603,6 +603,37 @@ def grass_ledge_s(v: int = 0) -> Image.Image:
     return img(a)
 
 
+def sand_ledge_s(v: int = 0) -> Image.Image:
+    """The grass ledge's SAND-context sibling — a low dune bank with a lit
+    crest, a short sandy face and a contact shadow, for one-way hops across
+    tidal flats / dune routes (same `ledge: "down"` meta; context-correct
+    family rule, level-design §11 rule 8)."""
+    a = np.zeros((16, 16, 4), dtype=np.int16)
+    sand_top = SAND
+    sand_dk = sh(SAND, 0.84)
+    lip = sh(SAND, 1.28, 12)
+    face = sh(SAND, 0.78)
+    face_dk = sh(SAND, 0.6)
+    shadow = sh(SAND, 0.55)
+    for y in range(0, 7):
+        for x in range(16):
+            a[y, x] = [*sand_top, 255]
+    for (x, y) in ([(4, 2), (10, 4), (14, 1)] if v % 2 == 0 else [(6, 1), (12, 3), (3, 5)]):
+        a[y, x] = [*sand_dk, 255]
+    nicks = {5, 12} if v % 2 == 0 else {8, 14}
+    for x in range(16):
+        a[7, x] = [*(sand_dk if x in nicks else lip), 255]
+    for y in range(8, 13):
+        for x in range(16):
+            a[y, x] = [*(face if y < 11 else face_dk), 255]
+    for (x, y) in ([(3, 9), (9, 10), (14, 9)] if v % 2 == 0 else [(6, 9), (11, 10)]):
+        a[y, x] = [*face_dk, 255]
+    for y in range(13, 16):
+        for x in range(16):
+            a[y, x] = [*(shadow if y == 13 else sand_dk if y == 14 else sand_top), 255]
+    return img(a)
+
+
 def cave_ladder_down() -> Image.Image:
     """A ladder-pit: a dark floor opening with the ladder's top rungs showing —
     the cave-dungeon DESCENT verb (level-design §11a). Transparent prop laid on

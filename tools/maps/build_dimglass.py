@@ -14,6 +14,7 @@ Run:  python3 tools/maps/build_dimglass.py   (after build_shared_overworld.py)
 from __future__ import annotations
 import json, random
 import mapkit as mk
+import patterns as pt
 from mapkit import gid
 
 W, H = 18, 34
@@ -46,7 +47,11 @@ mk.rect(sand, W, H, 9, 26, 13, 29)                  # widened sand rest pocket b
 # alternating tall-grass beats (encounter patches) — shaped blobs beside the lane
 tallgrass = mk.make_grid(W, H)
 for (cx, cy, rx, ry) in [(4.5, 6.5, 2.4, 2.2), (9.5, 13.5, 2.4, 2.2),
-                         (5.5, 18.5, 2.4, 2.2), (9.5, 23.5, 2.4, 2.2)]:
+                         (5.5, 18.5, 2.4, 2.2), (9.5, 23.5, 2.4, 2.2),
+                         # the BANK HOLLOW: a sheltered bed in the pocket under
+                         # the return ledge — the hop-down detour's payoff
+                         # (§3a rule 4; zone `bank_hollow` below)
+                         (3.5, 23.5, 1.6, 1.6)]:
     mk.blob(tallgrass, W, H, cx, cy, rx, ry)
 
 # MANDATORY crossings (level-design §11 rule 7 / the classic route convention):
@@ -63,13 +68,17 @@ for (y0, y1) in CROSSINGS:
             dunegrass[y * W + x] = 1
 
 # the lit path spine — interrupted at each crossing (the grass spans the road)
+# and at the ledge BANK (the one-way return shortcut, §3a rule 1): a grass bank
+# at row 21 spans cols 3-11, so the walk NORTH detours east over the beach
+# around it while the walk SOUTH hops it — the route's earned return.
+LEDGE_ROW, LEDGE_X0, LEDGE_X1 = 21, 3, 11
 path = mk.make_grid(W, H)
 spine = [6, 6, 6, 7, 7, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 8, 8, 7, 7, 6]
 
 def spine_col(ty):
     return spine[min(ty - 2, len(spine) - 1)]
 
-crossing_rows = {y for (y0, y1) in CROSSINGS for y in range(y0, y1 + 1)}
+crossing_rows = {y for (y0, y1) in CROSSINGS for y in range(y0, y1 + 1)} | {LEDGE_ROW}
 for ty in range(2, H - 2):
     if ty in crossing_rows:
         continue
@@ -137,6 +146,12 @@ for (x, y) in [(14, 5), (15, 6), (16, 7), (15, 13), (16, 14), (15, 20), (16, 27)
 for (x, y) in [(12, 4), (13, 11), (12, 22), (3, 15), (10, 11), (9, 28)]:
     deco[y * W + x] = gid("boulder")
 
+# THE RETURN BANK (§3a rule 1 — loops, not corridors): a one-way grass ledge
+# across rows-21 cols 4-11. Northbound the lane detours EAST over the beach
+# (cols 12-13, past the boulder); southbound (heading home) the player hops
+# the bank and skips the fold. The cliff bulge at (2,21) seals the west end.
+pt.ledge_run(deco, W, H, LEDGE_ROW, LEDGE_X0 + 1, LEDGE_X1, rng)
+
 def beside_spine(ty, side=-1):
     """A walkable grass tile just off the spine at row ty (side -1 = left, +2 = right)."""
     cx = spine_col(ty)
@@ -194,7 +209,10 @@ m = {
          "to_map": "dimglass_coast_ii", "to": {"tx": 7, "ty": 31}, "facing": "up", "transition": "fade"},
         {"id": "to_coast_ii_e", "at": {"tx": 8, "ty": 0}, "trigger": "step_on",
          "to_map": "dimglass_coast_ii", "to": {"tx": 8, "ty": 31}, "facing": "up", "transition": "fade"},
-        {"id": "to_tideglass", "at": {"tx": 2, "ty": 10}, "trigger": "interact",
+        # The cavern mouth's LOWER tile: (2,10) had no standable neighbour (the
+        # cliff edging seals that row — audit_flow caught it), so the door sits
+        # at (2,11), interacted from the open grass at (3,11) facing left.
+        {"id": "to_tideglass", "at": {"tx": 2, "ty": 11}, "trigger": "interact",
          "to_map": "tideglass_cavern", "to": {"tx": 5, "ty": 8}, "facing": "left",
          "requires_ability": "glimmerstep", "transition": "door"},
     ],
@@ -210,10 +228,16 @@ m = {
         # (A2 — Wren's friendly battle is now SIGHT-driven: Wren stands beside the
         # lane with sight_range and challenges the player who walks into view.)
         # B1 — the inciting incident: a far constellation winks out on first nightfall
-        # here. Quiet, not loud. Spine choked by the boulder at (9,28).
-        {"id": "dusk_begins", "kind": "cutscene", "at": {"tx": 8, "ty": 28},
-         "activation": "step_on", "ref": "script.dusk_begins", "once": True,
-         "sets_flags": ["flag:dusk_begins"]},
+        # here. Quiet, not loud. Row 28 is the route's full-width cut, but the
+        # boulder at (9,28) only splits it — the walkable cells run 4-8 and 10-13
+        # (audit_flow proved the single tile at (8,28) was walk-aroundable). Band
+        # the whole row; triggers on solid cells are inert, and the flag pair
+        # hides the band once the beat has fired.
+        *[{"id": f"dusk_begins_{tx}", "kind": "cutscene", "at": {"tx": tx, "ty": 28},
+           "activation": "step_on", "ref": "script.dusk_begins", "once": True,
+           "sets_flags": ["flag:dusk_begins"],
+           "hidden_when_flag": "flag:dusk_begins"}
+          for tx in range(4, 14)],
     ],
     # A Tide coast (walkthrough/01-south): wild kin are Tide/Light, not Ember. Common
     # #26 Brinelet (Tide); #31 Lumpin (Tide/Light); #8 Glimflit (Light, drifted from town).
@@ -241,6 +265,13 @@ m = {
          "table": [{"kin_id": 26, "weight": 55, "min_level": 4, "max_level": 6},
                    {"kin_id": 31, "weight": 30, "min_level": 4, "max_level": 6},
                    {"kin_id": 8, "weight": 15, "min_level": 4, "max_level": 6}]},
+        # The bank hollow — the pocket under the return ledge. Slightly richer
+        # read (top of the band, Glimflit raised) so the hop-down pays.
+        {"id": "bank_hollow", "terrain": "tall_grass", "rect": {"tx": 2, "ty": 22, "w": 4, "h": 4},
+         "encounter_rate": 0.09,
+         "table": [{"kin_id": 26, "weight": 40, "min_level": 5, "max_level": 6},
+                   {"kin_id": 31, "weight": 35, "min_level": 5, "max_level": 6},
+                   {"kin_id": 8, "weight": 25, "min_level": 5, "max_level": 6}]},
         # The two MANDATORY crossings — the road north passes through these bands
         # (tallgrass + dunegrass over the beach), so every traveller rolls a few
         # encounters; the optional patches beside the lane stay the grind spots.

@@ -49,12 +49,19 @@
       "tw": 2,
       "th": 3
     },
+    "interior_bed_inn": {
+      "path": "assets/sprites/objects/interior_bed_inn.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
     "interior_bookcase": {
       "path": "assets/sprites/objects/interior_bookcase.webp",
       "width": 32,
-      "height": 32,
+      "height": 48,
       "tw": 2,
-      "th": 2
+      "th": 3
     },
     "interior_brazier": {
       "path": "assets/sprites/objects/interior_brazier.webp",
@@ -65,17 +72,59 @@
     },
     "interior_counter": {
       "path": "assets/sprites/objects/interior_counter.webp",
-      "width": 48,
+      "width": 64,
       "height": 32,
-      "tw": 3,
+      "tw": 4,
       "th": 2
     },
-    "interior_hearth": {
-      "path": "assets/sprites/objects/interior_hearth.webp",
+    "interior_crates": {
+      "path": "assets/sprites/objects/interior_crates.webp",
       "width": 32,
       "height": 32,
       "tw": 2,
       "th": 2
+    },
+    "interior_dresser": {
+      "path": "assets/sprites/objects/interior_dresser.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "interior_hearth": {
+      "path": "assets/sprites/objects/interior_hearth.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "interior_lamp_rack": {
+      "path": "assets/sprites/objects/interior_lamp_rack.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "interior_oil_jars": {
+      "path": "assets/sprites/objects/interior_oil_jars.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "interior_pew": {
+      "path": "assets/sprites/objects/interior_pew.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "interior_plant": {
+      "path": "assets/sprites/objects/interior_plant.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
     },
     "interior_rug": {
       "path": "assets/sprites/objects/interior_rug.webp",
@@ -84,8 +133,36 @@
       "tw": 3,
       "th": 2
     },
+    "interior_rug_runner": {
+      "path": "assets/sprites/objects/interior_rug_runner.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    },
+    "interior_sacks": {
+      "path": "assets/sprites/objects/interior_sacks.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
     "interior_shelf": {
       "path": "assets/sprites/objects/interior_shelf.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "interior_stool": {
+      "path": "assets/sprites/objects/interior_stool.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "interior_stove": {
+      "path": "assets/sprites/objects/interior_stove.webp",
       "width": 32,
       "height": 32,
       "tw": 2,
@@ -96,6 +173,13 @@
       "width": 32,
       "height": 32,
       "tw": 2,
+      "th": 2
+    },
+    "interior_table_long": {
+      "path": "assets/sprites/objects/interior_table_long.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
       "th": 2
     },
     "pearlmoor_boat": {

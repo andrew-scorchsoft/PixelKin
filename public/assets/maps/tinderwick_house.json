@@ -1,8 +1,8 @@
 {
   "id": "tinderwick_house",
   "display_name": "Apprentice's House",
-  "width": 12,
-  "height": 9,
+  "width": 14,
+  "height": 11,
   "tile_width": 16,
   "tile_height": 16,
   "kind": "interior",
@@ -49,26 +49,6 @@
         1,
         1,
         1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
         1,
         1,
         1,
@@ -83,6 +63,10 @@
         1,
         2,
         1,
+        2,
+        1,
+        1,
+        2,
         1,
         2,
         1,
@@ -107,6 +91,8 @@
         1,
         2,
         1,
+        2,
+        1,
         1,
         2,
         1,
@@ -117,6 +103,65 @@
         2,
         1,
         2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
         1,
         1,
         1,
@@ -126,6 +171,7 @@
         1,
         1,
         3,
+        1,
         1,
         1,
         1,
@@ -149,10 +195,11 @@
         6,
         6,
         6,
+        6,
+        6,
         11,
         8,
         4,
-        5,
         4,
         4,
         4,
@@ -160,6 +207,9 @@
         4,
         4,
         5,
+        9,
+        4,
+        5,
         4,
         9,
         8,
@@ -171,6 +221,50 @@
         0,
         0,
         0,
+        9,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        0,
         0,
         0,
         9,
@@ -185,16 +279,6 @@
         0,
         0,
         0,
-        9,
-        8,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0,
         9,
@@ -209,20 +293,26 @@
         0,
         0,
         0,
-        9,
-        8,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0,
         9,
         8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
         0,
         0,
         0,
@@ -240,7 +330,9 @@
         7,
         7,
         7,
+        7,
         0,
+        7,
         7,
         7,
         7,
@@ -251,64 +343,130 @@
   ],
   "objects": [
     {
-      "id": "rug",
-      "sprite": "interior_rug",
+      "id": "stove",
+      "sprite": "interior_stove",
       "at": {
-        "tx": 4,
-        "ty": 5
+        "tx": 1,
+        "ty": 1
       },
-      "w": 3,
+      "w": 2,
       "h": 2,
-      "solid": false
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "bookcase",
+      "sprite": "interior_bookcase",
+      "at": {
+        "tx": 3,
+        "ty": 1
+      },
+      "w": 2,
+      "h": 3,
+      "overhang": 1,
+      "walk_under": true
     },
     {
       "id": "hearth",
       "sprite": "interior_hearth",
       "at": {
         "tx": 5,
-        "ty": 2
+        "ty": 1
       },
-      "w": 2,
-      "h": 2
+      "w": 3,
+      "h": 3,
+      "overhang": 1,
+      "walk_under": true
     },
     {
-      "id": "bookcase",
-      "sprite": "interior_bookcase",
+      "id": "sacks",
+      "sprite": "interior_sacks",
       "at": {
         "tx": 1,
-        "ty": 2
+        "ty": 3
       },
       "w": 2,
-      "h": 2
-    },
-    {
-      "id": "bed",
-      "sprite": "interior_bed",
-      "at": {
-        "tx": 9,
-        "ty": 2
-      },
-      "w": 2,
-      "h": 3
-    },
-    {
-      "id": "table",
-      "sprite": "interior_table",
-      "at": {
-        "tx": 5,
-        "ty": 5
-      },
-      "w": 2,
-      "h": 2
+      "h": 1
     },
     {
       "id": "barrels",
       "sprite": "interior_barrels",
       "at": {
         "tx": 1,
+        "ty": 8
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "bed",
+      "sprite": "interior_bed",
+      "at": {
+        "tx": 10,
+        "ty": 2
+      },
+      "w": 2,
+      "h": 3
+    },
+    {
+      "id": "plant",
+      "sprite": "interior_plant",
+      "at": {
+        "tx": 12,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "stool",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 12,
+        "ty": 4
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "rug",
+      "sprite": "interior_rug",
+      "at": {
+        "tx": 4,
+        "ty": 6
+      },
+      "w": 3,
+      "h": 2,
+      "solid": false
+    },
+    {
+      "id": "table_round",
+      "sprite": "interior_table",
+      "at": {
+        "tx": 4,
         "ty": 6
       },
       "w": 2,
+      "h": 2
+    },
+    {
+      "id": "stool_a",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 6,
+        "ty": 6
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "stool_b",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 3,
+        "ty": 7
+      },
+      "w": 1,
       "h": 1
     }
   ],
@@ -316,8 +474,8 @@
     {
       "id": "to_town",
       "at": {
-        "tx": 6,
-        "ty": 8
+        "tx": 7,
+        "ty": 10
       },
       "trigger": "step_on",
       "to_map": "tinderwick",
@@ -334,8 +492,8 @@
       "id": "sign_shelf",
       "kind": "sign",
       "at": {
-        "tx": 2,
-        "ty": 2
+        "tx": 3,
+        "ty": 3
       },
       "activation": "interact",
       "ref": "sign.house_shelf"
@@ -344,7 +502,7 @@
       "id": "bed_rest",
       "kind": "script",
       "at": {
-        "tx": 9,
+        "tx": 10,
         "ty": 4
       },
       "activation": "interact",
@@ -356,8 +514,8 @@
     {
       "id": "house_parent",
       "at": {
-        "tx": 8,
-        "ty": 6
+        "tx": 5,
+        "ty": 5
       },
       "facing": "down",
       "sprite": "npc_parent",

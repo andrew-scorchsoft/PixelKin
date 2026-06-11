@@ -198,7 +198,11 @@ for (x, y) in [(4, 21), (10, 22), (18, 22), (23, 21), (6, 20), (21, 20)]:
 sign_tiles = {
     "sign_welcome": (12, 8),     # by the Lumenary forecourt / spine head
     "sign_lumenary": (15, 7),    # right of the Lumenary door
-    "sign_shop": (4, 12),        # left of the shop door, on the promenade
+    "sign_shop": (7, 14),        # across the promenade from the shop door — NOT
+                                 # at (4,12): that tile is the west lane's only
+                                 # link to the Crossroads gate (audit_flow caught
+                                 # the sign sealing the whole west spoke), and
+                                 # (5,14)/(6,14) hold the lamp trunk + flowerbed
     "sign_harbour": (15, 16),    # by the quay/boardwalk, facing the gated water
     "sign_lanternway": (2, 11),  # beside the west lane, pointing to the Crossroads
     "sign_fen": (25, 11),        # beside the east lane, the sleeping Saltreach road
@@ -248,15 +252,15 @@ m = {
         # walkable approach. Reachable WITHOUT Tidecall (spine §0 rule 1); soft-gated on
         # holding a starter, like Tinderwick's.
         {"id": "to_lumenary", "at": {"tx": lum_door[0], "ty": lum_door[1]}, "trigger": "interact",
-         "to_map": "pearlmoor_lumenary", "to": {"tx": 7, "ty": 9}, "facing": "down",
+         "to_map": "pearlmoor_lumenary", "to": {"tx": 8, "ty": 10}, "facing": "down",
          "requires_flag": "flag:has_starter", "transition": "door"},
         # Shop door — interact on the chandlery's door-art tile (col 2).
         {"id": "to_shop", "at": {"tx": shop_door[0], "ty": shop_door[1]}, "trigger": "interact",
-         "to_map": "pearlmoor_shop", "to": {"tx": 6, "ty": 7}, "facing": "down", "transition": "door"},
+         "to_map": "pearlmoor_shop", "to": {"tx": 7, "ty": 8}, "facing": "down", "transition": "door"},
         # Inn door — interact on the inn's door-art tile (col 2).
         # The inn room is 14 wide -> its doormat column is 7, not the shops' 6.
         {"id": "to_inn", "at": {"tx": inn_door[0], "ty": inn_door[1]}, "trigger": "interact",
-         "to_map": "pearlmoor_inn", "to": {"tx": 7, "ty": 8}, "facing": "down", "transition": "door"},
+         "to_map": "pearlmoor_inn", "to": {"tx": 8, "ty": 10}, "facing": "down", "transition": "door"},
         # The Lanternway west to Vesper Crossroads (the hub; graph.ts spoke).
         {"id": "to_crossroads", "at": {"tx": 0, "ty": 12}, "trigger": "step_on",
          "to_map": "vesper_crossroads", "to": {"tx": 19, "ty": 9}, "facing": "left",
