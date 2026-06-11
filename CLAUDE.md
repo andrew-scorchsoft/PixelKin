@@ -235,6 +235,7 @@ go digging on every task.
 | Visual standards (binding) | `docs/art-style.md` |
 | Asset masters (source) | `assets/` (`assets/README.md`) |
 | Area mood pieces (concept art / tile refs) | `assets/concept-art/` (`assets/concept-art/README.md`) |
+| Concept-art discovery gallery (Charts) | `src/game/content/charts.ts`, `ui/ChartsMenu.ts`, `ui/ChartView.ts` |
 | Served/rendered assets | `public/assets/` (music, maps, battle backdrops, logo) |
 
 ## Asset generation skills
@@ -386,13 +387,26 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   you add one. Multi-phase screens (PartyMenu/ItemsMenu/HearthMenu) **don't** keep one
   long-lived loop: each phase (`pickX`) attaches its own tick + input and tears both
   down before opening a sub-`Menu`, so presses are never double-read.
-- **Pause menu = RESUME / KIN / REGISTER / HEARTH / ITEMS / LORE / SAVE / SETTINGS** (`WorldScene.openPauseMenu`).
+- **Pause menu = RESUME / KIN / REGISTER / HEARTH / ITEMS / LORE / CHARTS / SAVE / SETTINGS** (`WorldScene.openPauseMenu`).
   KIN→`PartyMenu`, REGISTER→`RegisterMenu` (the dex: seen/caught from `SaveGame.dex`, lazy kin
   icons, silhouettes until caught), HEARTH→`HearthMenu` (kin storage), ITEMS→`ItemsMenu` (view + use a
-  medicine to heal), LORE→`GlossaryMenu` (read-only codex of canon vocabulary). Each returns its
+  medicine to heal), LORE→`GlossaryMenu` (read-only codex of canon vocabulary), CHARTS→`ChartsMenu`
+  (the Wayfarer's Charts concept-art gallery, see below). Each returns its
   mutated data; the caller assigns it back and `persist()`s. Shell A/B buttons carry a `title`
   keyboard-hint via `KEY_HINTS` in `ShellManager.ts` — keep it in sync with the InputController
   bindings.
+- **The Wayfarer's Charts surface the concept art in-game.** The `assets/concept-art/` mood pieces
+  are now a collectible gallery: first time the player sets foot in any map listed in a chart's
+  `maps[]` (`content/charts.ts`), `WorldScene.noteChartDiscovery` banks a `chart:<slug>` flag (in
+  `world.flags` — no schema bump) and queues a full-screen reveal that `update()` fires on the next
+  idle frame (so it lands after a warp's fade). The gallery (`ui/ChartsMenu.ts`) is the flag-staggered
+  list+detail pattern (like `GlossaryMenu`) but **region-grouped** with a `found/total` tally; undiscovered
+  places read as `? ? ?` teases (the world's shape, not spoiled). Both the reveal and the gallery's
+  full-screen view use `ui/ChartView.ts` (3:2 art fills the 3:2 screen; gallery flips left/right
+  through *discovered* charts). **The 25 charts (19 areas/routes + 6 landmarks) are served from
+  `public/assets/concept-art/`** (Lumenary interiors excluded) — a chart needs its `.webp` copied there
+  AND a registry entry. A chart with empty `maps[]` (e.g. `lanternway`) is a deliberate forward tease
+  until a map id is added. Adding a later region's place = copy the art into `public/`, add a `ChartEntry`.
 - **Gameplay prefs ride `ui/preferences.ts`, not storage reads.** Settings adds Pace
   (always-run; hold-B runs regardless) and Text speed (Cosy/Brisk/Instant — DialogueBox
   multiplies its cps); `ShellManager.init` applies persisted values at boot, the

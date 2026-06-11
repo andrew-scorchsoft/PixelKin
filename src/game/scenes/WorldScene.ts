@@ -19,6 +19,8 @@ import { HearthMenu } from '@game/ui/HearthMenu';
 import { SettingsMenu } from '@game/ui/SettingsMenu';
 import { GlossaryMenu } from '@game/ui/GlossaryMenu';
 import { RegisterMenu } from '@game/ui/RegisterMenu';
+import { ChartsMenu } from '@game/ui/ChartsMenu';
+import { ChartView } from '@game/ui/ChartView';
 import { fadeIn, fadeOut } from '@game/ui/Transitions';
 import { KinInstance } from '@game/systems/party/KinInstance';
 import { InputController, InputAction } from '@game/systems/input/InputController';
@@ -38,6 +40,8 @@ import type { Actor } from '@game/entities/Actor';
 import { getDialogue } from '@game/content/dialogue';
 import { getScript } from '@game/content/scripts';
 import { getShop } from '@game/content/shops';
+import { chartForMap, chartFlag } from '@game/content/charts';
+import type { ChartEntry } from '@game/content/types';
 import { STARTING_WICKS, faintTithe } from '@game/content/economy';
 import { ShopMenu } from '@game/ui/ShopMenu';
 import { makeStarterKin } from '@game/content/starters';
@@ -96,6 +100,8 @@ export class WorldScene extends Phaser.Scene {
   /** The vesperlamp's register: species seen/caught (REGISTER screen). */
   private dexSeen = new Set<number>();
   private dexCaught = new Set<number>();
+  /** A newly-discovered chart awaiting its full-screen reveal (fires when idle). */
+  private pendingReveal?: ChartEntry;
 
   constructor() {
     super('World');
@@ -104,6 +110,7 @@ export class WorldScene extends Phaser.Scene {
   create(data: WorldSceneData): void {
     this.ready = false;
     this.modal = false;
+    this.pendingReveal = undefined;
     this.controller = new InputController(this);
     this.flags = new FlagStore(data.flags);
     this.abilities = new Set(data.abilities ?? []);
@@ -169,6 +176,7 @@ export class WorldScene extends Phaser.Scene {
 
       if (initial) this.cameras.main.fadeIn(theme.transition.fadeMs, 0, 0, 0);
       this.ready = true;
+      this.noteChartDiscovery(mapId);
       void this.persist(); // autosave on entering any map (so Continue always works)
     } catch (err) {
       // A missing/malformed map must not freeze the game on a black screen.
@@ -721,6 +729,12 @@ export class WorldScene extends Phaser.Scene {
     this.controller.update();
 
     if (!this.modal) {
+      if (this.pendingReveal) {
+        const chart = this.pendingReveal;
+        this.pendingReveal = undefined;
+        void this.revealChart(chart);
+        return;
+      }
       if (this.controller.justPressed(InputAction.Menu)) {
         void this.openPauseMenu();
       } else if (!this.player.isMoving && this.controller.justPressed(InputAction.Confirm)) {
@@ -780,6 +794,59 @@ export class WorldScene extends Phaser.Scene {
     if (look) await new DialogueBox(this, this.sfx).run([{ text: look.line }]);
     void this.persist();
     this.modal = false;
+  }
+
+  /**
+   * First time the player sets foot in a map that belongs to a chart, bank the
+   * discovery flag (so it joins the Wayfarer's Charts gallery and survives a save)
+   * and queue its full-screen reveal — `update()` fires it on the next idle frame,
+   * after any warp fade has settled.
+   */
+  private noteChartDiscovery(mapId: string): void {
+    const chart = chartForMap(mapId);
+    if (!chart || this.flags.get(chartFlag(chart))) return;
+    this.flags.set(chartFlag(chart));
+    this.pendingReveal = chart;
+  }
+
+  /**
+   * Surface a newly-discovered place: bloom in its concept-art mood piece with a
+   * "A NEW CHART" banner + the place's name and mood line, and hold it until the
+   * player presses on. Degrades gracefully — missing art shows a framed name card.
+   */
+  private async revealChart(chart: ChartEntry): Promise<void> {
+    this.modal = true;
+    void this.sfx.playVariant('world-gleam', ['a', 'b', 'c']);
+    const view = new ChartView(this, { mode: 'reveal' });
+    // Start the bloom immediately (alpha 0 this same tick, no black pop) while the
+    // art loads in behind it, then hold once it's fully bloomed.
+    const bloom = view.fadeIn();
+    await view.setChart(chart);
+    await bloom;
+    await this.waitForPress();
+    view.destroy();
+    this.modal = false;
+  }
+
+  /** Resolve on the next Confirm/Cancel press (ignoring one held from before). */
+  private waitForPress(): Promise<void> {
+    const input = new InputController(this);
+    let armed = false;
+    return new Promise((resolve) => {
+      const tick = (): void => {
+        input.update();
+        if (!armed) {
+          if (!input.isDown(InputAction.Confirm) && !input.isDown(InputAction.Cancel)) armed = true;
+          return;
+        }
+        if (input.justPressed(InputAction.Confirm) || input.justPressed(InputAction.Cancel)) {
+          this.events.off(Phaser.Scenes.Events.UPDATE, tick);
+          input.destroy();
+          resolve();
+        }
+      };
+      this.events.on(Phaser.Scenes.Events.UPDATE, tick);
+    });
   }
 
   /** Feedback when walking into a wall: a throttled bump sfx + a tiny squash. */
@@ -859,6 +926,7 @@ export class WorldScene extends Phaser.Scene {
           { label: 'HEARTH', value: 'hearth' },
           { label: 'ITEMS', value: 'items' },
           { label: 'LORE', value: 'lore' },
+          { label: 'CHARTS', value: 'charts' },
           { label: 'SAVE', value: 'save' },
           { label: 'SETTINGS', value: 'settings' },
         ],
@@ -875,6 +943,8 @@ export class WorldScene extends Phaser.Scene {
         await this.openItemsMenu();
       } else if (choice === 'lore') {
         await new GlossaryMenu(this, (flag) => this.flags.get(flag), this.sfx).run();
+      } else if (choice === 'charts') {
+        await new ChartsMenu(this, (flag) => this.flags.get(flag), this.sfx).run();
       } else if (choice === 'save') {
         await this.persist();
         void this.sfx.playVariant('ui-save', ['a', 'b']);

@@ -8,6 +8,7 @@
  * by string ref (e.g. EventTrigger.ref = 'sign.tinderwick_dock').
  */
 import type { TileCoord, Facing, WorldFlag, AbilityId } from '@game/data/world/types';
+import type { Region } from '@game/data/world/graph';
 import type { ActionName, EmoteName } from '@game/entities/Actor';
 
 // ---- Dialogue ---------------------------------------------------------------
@@ -142,6 +143,36 @@ export interface GlossaryEntry {
   desc: string;
   /** When omitted, always known; when set, revealed once that flag/gleam is held. */
   unlock_flag?: WorldFlag;
+}
+
+// ---- Charts (concept-art discovery) -----------------------------------------
+
+/**
+ * One discoverable "chart" in the Wayfarer's Charts gallery (pause menu -> CHARTS):
+ * an area/route/landmark's mood piece (the concept art in `assets/concept-art/`),
+ * surfaced in-game. The first time the player sets foot in any of `maps`, the chart
+ * is discovered — a full-screen reveal plays and it joins the gallery; until then it
+ * shows as a "? ? ?" tease so the world's shape (and what's left to find) is visible
+ * without spoiling it. Charts are grouped by `region` so a player can feel they've
+ * missed a corner of a place. A chart with an empty `maps` list is a forward tease
+ * for content not yet built (e.g. the Lanternway) — permanently locked until a map
+ * id is added here.
+ */
+export interface ChartEntry {
+  /** Stable id; matches the concept-art filename stem (e.g. 'dimglass-coast'). */
+  id: string;
+  /** The place's name, revealed once discovered. */
+  name: string;
+  /** A short mood line (the subtitle on the reveal + the gallery's detail pane). */
+  subtitle: string;
+  /** Which corner of Vesperholm this sits in (gallery grouping). */
+  region: Region;
+  /** Coarse kind for the gallery's little tag. */
+  kind: 'area' | 'route' | 'landmark';
+  /** Served path to the concept art (runtime drops the public/ prefix). */
+  art: string;
+  /** Map ids whose first visit discovers this chart (may be empty = forward tease). */
+  maps: string[];
 }
 
 // ---- Starters ---------------------------------------------------------------
