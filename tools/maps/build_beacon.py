@@ -148,10 +148,12 @@ def all_maps():
         {"id": "up_stairs", "at": {"tx": 1, "ty": 2}, "trigger": "step_on",
          "to_map": "tinderwick_beacon_top", "to": {"tx": 1, "ty": 3},
          "facing": "down", "transition": "fade"})
-    # keep the NW stairwell clear: shift floor II's shelf to the south wall
+    # keep the NW stairwell clear: floor II's shelf slides ALONG the north wall
+    # to cols 3-4 (a wall-elevation piece must stay mounted on a north-facing
+    # wall — parked at the south wall it draws over the bottom wall band)
     for o in floor_ii["objects"]:
         if o["id"] == "shelf":
-            o["at"] = {"tx": 3, "ty": 6}
+            o["at"] = {"tx": 3, "ty": 1}
     return [floor_i, floor_ii, lantern_room()]
 
 
