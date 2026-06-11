@@ -484,6 +484,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `python3 tools/maps/build_shared_overworld.py` (REUSE-first: promotes the proven Tinderwick
   families, adds variants + scatter decor, reuses Dimglass cliff/buoy/dock). Map builders use
   `tools/maps/mapkit.py` (`shared_tileset_ref()`, `gid()`, grid/scatter helpers, `finalize()`).
+  **APPENDING tiles to the set bumps its tile_count — every consuming map bakes a `tile_count`
+  in its tileset ref, and `MapLoader` only resolves `first_gid ≤ gid < first_gid+tile_count`,
+  so a stale count leaves new gids UNRESOLVED (they render empty — bit the tree nubs).** After
+  growing the set, re-pin `tile_count` in every overworld map (all use a single tileset, so
+  widening is collision-free; `apply_tree_nubs.py` does this). New tiles must be APPENDED (never
+  inserted) or every later gid shifts and all maps break.
 - **Terrain tiles are DRAWN in code, never AI-generated (the GBA-register standard).**
   `tools/maps/gbaforge.py` draws every shared terrain family — flat dusk-palette base +
   deliberate repeated motifs (grass ticks, dot clusters, strata, blade-fans); variants are
@@ -506,6 +512,15 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   the master's off-grass strip + baked pale halo rim so the border meets open grass without a
   light-green outline, and tucks the crown's lit lip 1px into grass). Both run in
   `build_shared_overworld._gba_override`; re-run the builder if you touch either.
+  The tree family also carries the **NUB roles the 13-slice set lacked** —
+  `end_n/s/w/e`, `strip_h/v`, `single` (`gbaforge.tree_nub`, drawn: a scalloped
+  rounded blob, leaf crown on the OPEN sides, flush where it joins the mass). The
+  autotiler (`blob.mjs`) already asks for these on a thin spur; without them a
+  protrusion fell back to a flat edge/fill stub. APPENDED last in the build so no
+  gid shifts. To back-fill them into already-shipped maps (whose `terrain` layer is
+  stripped, so they can't be re-expanded) run **`tools/maps/apply_tree_nubs.py`**
+  (reclassifies the baked tree grid, swaps in nub gids only where a cell is now a
+  nub — idempotent, no churn).
 - **New area? Use the `build-map` skill** — compose with `tools/maps/patterns.py` stamps on
   mapkit (`build_saltreach_fen_i.py` is the pattern showcase: paint-derived encounter zones,
   trainer-beat/cache/sign stamps, a LEDGED terrace bank). Engine supports one-way **ledges**

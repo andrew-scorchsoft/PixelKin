@@ -457,6 +457,81 @@ def tree_grass_meld(im: Image.Image, role: str, grass_im: Image.Image | None = N
     return img(a.astype(np.int16))
 
 
+# Which sides of a nub are OPEN (rounded leaf crown) vs join the mass (flat seam).
+# The blob autotiler (tools/autotile/blob.mjs) asks for these on thin protrusions:
+# end_* = a peninsula tip (one join side), strip_* = a 1-wide neck (two join sides),
+# single = a lone clump (no join). Mirrors the role naming there.
+TREE_NUB_OPEN = {
+    "end_n": ("N", "W", "E"), "end_s": ("S", "W", "E"),
+    "end_w": ("W", "N", "S"), "end_e": ("E", "N", "S"),
+    "strip_h": ("N", "S"), "strip_v": ("W", "E"),
+    "single": ("N", "S", "W", "E"),
+}
+_NUB_ADJ = [("N", "W"), ("N", "E"), ("S", "W"), ("S", "E")]
+_NUB_PHASE = {"N": 0, "S": 2, "W": 1, "E": 3}
+
+
+def tree_nub(role: str, grass_im: Image.Image | None = None,
+             fill_im: Image.Image | None = None) -> Image.Image:
+    """Draw a tree-mass NUB: a leaf clump rounded on its OPEN sides and flat where
+    it joins the wider mass — the piece the 13-slice set lacks, so a 1-tile
+    protrusion (the circled nub) rounds cleanly instead of falling back to a flat
+    edge. Built procedurally to match the bubble-crown border: a scalloped rounded
+    silhouette (leaf bumps protrude, dark gaps between) filled with the canopy
+    mass, a lit crown on the open lip, grass outside. `single` rounds all four
+    sides; `strip_*` is a capsule; `end_*` is a tombstone with the join side flush."""
+    open_sides = TREE_NUB_OPEN[role]
+    g = np.asarray((grass_im or grass_fill(0)).convert("RGBA")).astype(np.int16)
+    fill = np.asarray((fill_im or tree_fill(0)).convert("RGBA")).astype(np.int16)
+    lit = (78, 182, 162)         # crown highlight (sampled from the painterly bump cap)
+    mid = (40, 98, 88)           # bump body
+    yy, xx = np.mgrid[0:16, 0:16]
+    depth = {"N": yy, "S": 15 - yy, "W": xx, "E": 15 - xx}
+    axis = {"N": xx, "S": xx, "W": yy, "E": yy}
+    m = np.ones((16, 16), bool)
+    for e in open_sides:
+        # gentle 1px scallop: bumps protrude to depth 1, gaps recede only to 2, so
+        # the leaf band stays CONTINUOUS (grass never pokes between bumps — that
+        # was the thin "dashed" read) while the caps still waver like clumps.
+        bump = ((axis[e] + _NUB_PHASE[e]) % 4) < 2
+        m &= depth[e] >= np.where(bump, 1, 2)
+    R = 4
+    for e1, e2 in _NUB_ADJ:                            # round each open-open corner
+        if e1 in open_sides and e2 in open_sides:
+            d1 = depth[e1].astype(float) - 2; d2 = depth[e2].astype(float) - 2
+            near = (d1 < R) & (d2 < R)
+            outside = (R - np.clip(d1, 0, R)) ** 2 + (R - np.clip(d2, 0, R)) ** 2 > R * R
+            m &= ~(near & outside)
+    out = g.copy()
+    out[m] = fill[m]
+    for e in open_sides:
+        # a continuous mid leaf-band on the outer ring, a darker body ring under it
+        # (3-tone roundness), then lit caps only on the protruding bumps.
+        lip = m & ~_shift_mask(m, e)
+        body = m & _shift_mask(lip, _OPP[e]) & ~lip
+        out[body, :3] = sh(TREE, 0.5)
+        out[lip, :3] = mid
+        cap = lip & (depth[e] <= 1)
+        out[cap, :3] = lit
+    return img(out)
+
+
+_OPP = {"N": "S", "S": "N", "W": "E", "E": "W"}
+
+
+def _shift_mask(mask: np.ndarray, side: str) -> np.ndarray:
+    """The mask shifted one cell toward `side` (off-grid edge becomes False)."""
+    if side == "N":
+        r = np.roll(mask, 1, 0); r[0, :] = False
+    elif side == "S":
+        r = np.roll(mask, -1, 0); r[-1, :] = False
+    elif side == "W":
+        r = np.roll(mask, 1, 1); r[:, 0] = False
+    else:
+        r = np.roll(mask, -1, 1); r[:, -1] = False
+    return r
+
+
 # ---- glowmoss cave (Glowmoss Deep & the eastern dark interiors) ----------------
 # Palette: dusk-violet rock under bioluminescent moss — the East's "dewy
 # bioluminescent dark" register (walkthrough/02-east, Arc D lighting note).
