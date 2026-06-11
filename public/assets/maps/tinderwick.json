@@ -14,7 +14,7 @@
       "tile_height": 16,
       "first_gid": 1,
       "columns": 12,
-      "tile_count": 187
+      "tile_count": 189
     }
   ],
   "layers": [
@@ -2288,8 +2288,8 @@
       "trigger": "interact",
       "to_map": "tinderwick_house",
       "to": {
-        "tx": 6,
-        "ty": 7
+        "tx": 7,
+        "ty": 9
       },
       "facing": "down",
       "transition": "door"
@@ -2303,8 +2303,8 @@
       "trigger": "interact",
       "to_map": "tinderwick_shop",
       "to": {
-        "tx": 6,
-        "ty": 7
+        "tx": 7,
+        "ty": 8
       },
       "facing": "down",
       "transition": "door"
@@ -2318,8 +2318,8 @@
       "trigger": "interact",
       "to_map": "tinderwick_lumenary",
       "to": {
-        "tx": 7,
-        "ty": 9
+        "tx": 8,
+        "ty": 10
       },
       "facing": "down",
       "requires_flag": "flag:has_starter",

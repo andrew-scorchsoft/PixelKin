@@ -252,15 +252,15 @@ m = {
         # walkable approach. Reachable WITHOUT Tidecall (spine §0 rule 1); soft-gated on
         # holding a starter, like Tinderwick's.
         {"id": "to_lumenary", "at": {"tx": lum_door[0], "ty": lum_door[1]}, "trigger": "interact",
-         "to_map": "pearlmoor_lumenary", "to": {"tx": 7, "ty": 9}, "facing": "down",
+         "to_map": "pearlmoor_lumenary", "to": {"tx": 8, "ty": 10}, "facing": "down",
          "requires_flag": "flag:has_starter", "transition": "door"},
         # Shop door — interact on the chandlery's door-art tile (col 2).
         {"id": "to_shop", "at": {"tx": shop_door[0], "ty": shop_door[1]}, "trigger": "interact",
-         "to_map": "pearlmoor_shop", "to": {"tx": 6, "ty": 7}, "facing": "down", "transition": "door"},
+         "to_map": "pearlmoor_shop", "to": {"tx": 7, "ty": 8}, "facing": "down", "transition": "door"},
         # Inn door — interact on the inn's door-art tile (col 2).
         # The inn room is 14 wide -> its doormat column is 7, not the shops' 6.
         {"id": "to_inn", "at": {"tx": inn_door[0], "ty": inn_door[1]}, "trigger": "interact",
-         "to_map": "pearlmoor_inn", "to": {"tx": 7, "ty": 8}, "facing": "down", "transition": "door"},
+         "to_map": "pearlmoor_inn", "to": {"tx": 8, "ty": 10}, "facing": "down", "transition": "door"},
         # The Lanternway west to Vesper Crossroads (the hub; graph.ts spoke).
         {"id": "to_crossroads", "at": {"tx": 0, "ty": 12}, "trigger": "step_on",
          "to_map": "vesper_crossroads", "to": {"tx": 19, "ty": 9}, "facing": "left",

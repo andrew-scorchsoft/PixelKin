@@ -551,14 +551,16 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   under `public/assets/backgrounds/battle/` + list them on the map; no map with a list = it
   keeps the plain night fill. Briefs/standards live in `docs/art-style.md` (§5-H). Keep them
   subtle so sprites/plates stay readable.
-- **Interiors are SNES-enclosure rooms, not a flat plan.** Build them with the dedicated
-  `interior_set` (walls drawn with a visible vertical FACE — `wall_cap` cornice + `wall_face`
-  on the top wall, faced sides/corners — over a *patterned* floor), a bordered rug staging the
-  room, furniture as `interior_*` objects lining the walls, one warm focal point top-centre
-  (hearth/counter/altar), a single `doormat` exit centre-bottom, ≥2 lights. Cool stone/dark
-  panel accents for Lumenaries (a shrine, not a cabin); warm wood/plaster for homes/shops/inns.
-  Binding spec: `docs/world/interiors.md`. If a render looks like props on an open field, the
-  wall-face is missing — that's a hard fail. Keep a walkable lane from the door to every NPC/trigger.
+- **Interiors are multi-room SNES compositions on roomkit (2026-06).** Build on
+  `tools/maps/roomkit.py`: `faced_room` (cap + visible FACE walls, patterned floor, doormat)
+  + at least one INTERNAL `partition_v/_h` (bed nook / storeroom / bunk room / shrine niches
+  — one box of props is the rejected look), furniture from the DRAWN `interiorforge.py` kit
+  (22 pieces; AI-gen retired indoors): wall pieces (3×3 hearth, 2×3 bookcase/shelf, dresser,
+  stove, lamp_rack) go through `wall_mount` so their top row sits OVER the wall face (flush,
+  never floated off the wall), free-standing through manifest-driven `place`. One focal point
+  top-centre; cool stone register for Lumenaries; `rk.finish()` renders + audits. Binding
+  spec: `docs/world/interiors.md`. Resizing a room moves its doormat — update the town
+  builder's landing coords (audit_warps enforces the pair).
 - **Bottom-anchored battle menus must be height-aware.** The screen is only 160px tall
   and the message strip eats the bottom ~38px, so a fixed `y` clips the last row (this is
   how RUN went missing). Size battle menus with `BattleScene.menuY(rows)`, which

@@ -44,7 +44,8 @@ scene the map joins.
    - town → `build_tinderwick.py` · route → `build_dimglass.py` /
      `build_saltreach_fen_i.py` (the pattern-library showcase)
    - cave floor → `build_glowmoss_deep.py` (+ `_b1f.py` for a lower floor)
-   - interior → `build_interiors.py` · hub → `build_crossroads.py`
+   - interior → `build_interiors.py` (all five room types, on **roomkit**)
+     · tower floor → `build_beacon.py` · hub → `build_crossroads.py`
 4. **Paint terrain as presence grids** (`mapkit`: `blob`/`rect`/`hline`/
    `organic_border`), **stamp features** (`patterns`, below), assemble the
    dict, and end with `mk.finalize(m)` — write → autotile expand → strip →
@@ -101,6 +102,20 @@ design debt — fix or justify in the builder's comments. The flow audit found
 four real shipped bugs on its first run (a sealed cache pocket, a sign
 sealing Pearlmoor's west spoke, a cavern door with no standable approach, and
 two walk-aroundable story beats) — trust it over your mental walk.
+
+## Interiors (the roomkit path)
+
+Interiors don't use mapkit/terrain — they compose on **`tools/maps/roomkit.py`**
+to `docs/world/interiors.md` (binding): `faced_room` (the SNES enclosure) →
+**`partition_v`/`partition_h`** (rooms within the room — every interior bigger
+than a cabin gets one: bed nook, storeroom, bunk room, shrine niches) →
+**`wall_mount`** (flush wall furniture: hearth/bookcase/shelf/dresser/stove/
+lamp-rack place with their top row OVER the wall face — never floated a tile
+south of it) + **`place`** (manifest-driven free-standing pieces) →
+`rk.finish()` (write → render → audit_flow). Furniture is DRAWN, never
+AI-generated — the kit lives in `tools/maps/interiorforge.py`; a new piece =
+a new draw function + re-run + `pack_objects.py`. If a room resizes, update
+the town builder's door landing and re-run `audit_warps`.
 
 ## Hard rules the stamps don't cover (memorise)
 

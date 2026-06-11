@@ -43,9 +43,9 @@ def stair_floor(id_, name, *, keeper_id, keeper_script, keeper_after,
         # braziers light the stairwell corner + the west wall
         obj("brazier_stair", "interior_brazier", up_x - 1, up_y, 1, 2, overhang=1),
         obj("brazier_w", "interior_brazier", 1, 4, 1, 2, overhang=1),
-        # wick stores: shelves + barrels on the west wall (keep the keeper's
-        # sight column clear of furniture — blocked tiles block sight)
-        obj("shelf", "interior_shelf", 1, 2, 2, 2),
+        # wick stores: the shelf mounts FLUSH against the north wall (the drawn
+        # 2x3 front-elevation piece; top row over the face), barrels below
+        obj("shelf", "interior_shelf", 1, 1, 2, 3, overhang=1),
         obj("barrels", "interior_barrels", 1, 7, 2, 1),
     ]
     warps = [down_warp]
