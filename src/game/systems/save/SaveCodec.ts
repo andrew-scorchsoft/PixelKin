@@ -25,6 +25,54 @@ const MIGRATIONS: Record<number, Migration> = {
   // v1 → v2: the wick economy lands. Pre-economy saves get the new-game purse
   // (they never had a chance to earn, so zero would feel like a fine).
   1: (raw) => ({ ...raw, money: 250 }),
+
+  // v2 → v3: canon status names, lamp charges, and the register (dex progress).
+  //  - KinStatus placeholders → the canon seven (docs/mechanics/03-moves.md).
+  //  - Lamp items become charges for the one vesperlamp (the device itself is a
+  //    key item now): bright_lamp → glow_charge, radiant_lamp → beacon_charge,
+  //    spare vesperlamps → glow_charges (one stays as the device).
+  //  - `dex` seeded from owned kin (you have certainly seen what walks with you).
+  2: (raw) => {
+    const statusMap: Record<string, string> = {
+      sleep: 'doze',
+      burn: 'scorch',
+      freeze: 'chill',
+      paralysis: 'numb',
+      poison: 'blight',
+    };
+    const fixKin = <T extends { status?: string }>(k: T): T => {
+      if (k.status && statusMap[k.status]) return { ...k, status: statusMap[k.status] as T['status'] };
+      return k;
+    };
+    const party = Array.isArray(raw.party) ? raw.party.map(fixKin) : raw.party;
+    const box = Array.isArray(raw.box) ? raw.box.map(fixKin) : raw.box;
+
+    const items: Record<string, number> = { ...(raw.inventory?.items ?? {}) };
+    const renames: Record<string, string> = { bright_lamp: 'glow_charge', radiant_lamp: 'beacon_charge' };
+    for (const [from, to] of Object.entries(renames)) {
+      if (items[from]) {
+        items[to] = (items[to] ?? 0) + items[from];
+        delete items[from];
+      }
+    }
+    if ((items['vesperlamp'] ?? 0) > 1) {
+      items['glow_charge'] = (items['glow_charge'] ?? 0) + items['vesperlamp'] - 1;
+      items['vesperlamp'] = 1;
+    }
+
+    const owned = [...(party ?? []), ...(box ?? [])]
+      .map((k) => (k as { species_id?: number }).species_id)
+      .filter((id): id is number => typeof id === 'number');
+    const dedupe = [...new Set(owned)];
+
+    return {
+      ...raw,
+      party,
+      box,
+      inventory: { items },
+      dex: { seen: dedupe, caught: dedupe },
+    };
+  },
 };
 
 function isFiniteNumber(v: unknown): v is number {
@@ -42,7 +90,9 @@ function looksLikeSave(raw: RawSave): raw is SaveGame {
     Array.isArray(raw.party) &&
     typeof raw.inventory === 'object' &&
     raw.inventory !== null &&
-    isFiniteNumber(raw.money)
+    isFiniteNumber(raw.money) &&
+    typeof raw.dex === 'object' &&
+    raw.dex !== null
   );
 }
 

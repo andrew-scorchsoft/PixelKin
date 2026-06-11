@@ -52,7 +52,7 @@ several maps.** Honour README's caps (overworld soft-cap 64×64, interior ~32×3
 | `interior` (Lumenary, large shop) | **16×12 → 20×16** | 1–2 | One reveal of depth; arena/counter at the far end. |
 | `town` | **24×20 → 32×28** | ~2×2–3×3 | Big enough for house + Lumenary + shop + verge + 2 exits, small enough to cross in under a minute. |
 | `route` | **20×30 → 32×48** (one long axis) | 2–4 long | Linear with a dominant travel axis; one screen ≈ one "beat". Split into segments (`_i`/`_ii`) before it sprawls. |
-| `cave` | **24×24 → 40×40** | 2–4 | Branchy not linear; rooms joined by 1–2-tile chokes. |
+| `cave` | **24×24 → 40×40** *per floor* | 2–4 | Branchy not linear; rooms joined by 1–2-tile chokes. Caves past the first are **multi-floor** — see the dungeon scale ladder (§2a). |
 | `hub` | **20×20 → 28×28** | ~2×2 | A central signpost readable from spawn; spokes radiate to the edges. |
 
 **A map should never need more than ~9 screens (3×3) of scrolling.** Past that, segment it
@@ -259,9 +259,34 @@ art or scatter objects across the wrong layer.
   there. One screen, maybe one scroll.
 - **town:** 24×20–32×28. House + Lumenary + shop + verge + 2 exits, crossable in <1 min.
 - **route:** 20×30–32×48 on the long axis; **segment before it sprawls past ~3×3 screens**.
-- **cave:** 24×24–40×40, branchy, chokepoint rooms.
+- **cave:** 24×24–40×40 *per floor*, branchy, chokepoint rooms; floors per §2a.
 - **hub:** 20×20–28×28, central signpost readable from spawn.
 - **Absolute cap 128×128**; anything bigger is multiple maps via the world graph.
+
+### 2a. The dungeon scale ladder (BINDING — caves are journeys, not rooms)
+
+The genre's cave identity is the **multi-floor maze**: descend a ladder,
+cross in the dark, surface somewhere new. A single branchy room is only ever
+the *first* dungeon's shape. Authors size every cave to this ladder:
+
+| Tier | Floors | Worked example | Shape |
+|------|:-----:|----------------|-------|
+| **First dungeon** (per region's intro) | 1 (+ spur/lower pocket) | **Glowmoss Deep + B1F** (built) | story set-piece up top; a small dark maze floor below teaching the ladder verb |
+| **Mid dungeon** (the region's wall) | 2–3 | Cinderhead Mine → Deep (spec) | a real maze floor (dead-ends with caches, the rare-kin bed deepest), ONE one-way drop or shortcut looping back to the entrance once crossed |
+| **Late landmark / spur** | 1–2 | Wind-Eye, Tideglass Cavern | compact, but the prize is always a floor or gate beyond the obvious |
+| **The Spire** (climax) | 4+ | Umbral Spire (spec) | the full ascent — each floor one beat of the climb, per `05-central-endgame.md` |
+
+Mechanics (all existing — no engine work):
+- **A floor is a map.** Ladders are **mutual step_on warp pairs landing ON each
+  other** (the engine never auto-fires a warp on arrival; `audit_warps`
+  validates the pair). Tiles: `cave_ladder_down` (the pit) / `cave_ladder_up`
+  (the standing ladder) in the shared set — the prop telegraphs the warp.
+- **Lower floors are darker:** fewer glowshroom breadcrumbs, deeper encounter
+  band (+1–2 levels), the line's *middle stage* gains table weight below.
+- **Dead ends pay**: every maze floor hides 1–2 caches off the solution path
+  (the spine's cache-variety rule applies per FLOOR, not per dungeon).
+- **Spurs live deep**: an optional landmark's mouth belongs on the lowest
+  floor, so its rarity is earned by the descent (Spore Grotto is the model).
 
 ---
 
@@ -279,6 +304,57 @@ art or scatter objects across the wrong layer.
 - **Sight-line a destination.** Frame the next town/structure on the horizon band.
 - **Solid 1-tile map border** on non-warp edges so the camera never reveals void.
 - **Funnel, never trap.** Always a safe lane past grass on early maps.
+
+### 3a. The structural principles of the greats (BINDING)
+
+The toolkit above makes a map *readable*; these make it a *journey*. They are
+distilled from the cartridge-era masters of the genre — stated by structure,
+never by brand — and every route/cave/town author composes to them. The
+pattern stamps (`tools/maps/patterns.py`) carry several mechanically; the rest
+are composition discipline the checklist (§8) now asks about.
+
+1. **Loops, not corridors.** The best areas are circuits: the long way out,
+   the short way home. Every route/dungeon ships at least ONE earned return —
+   a hop-down ledge line, a one-way drop, a sealed door opened from the far
+   side (`flag:shortcut_*`). An area you must walk back through unchanged is
+   a corridor walked twice.
+2. **Asymmetry by direction.** Design for the FIRST pass (friction: grass
+   bands, trainers, the maze) and let the RETURN pass be fast (the ledge, the
+   shortcut, the now-open gate). Backtracking is only fun when the map
+   acknowledges you've already won it.
+3. **See it before you walk it.** Frame the destination early — the tower on
+   the horizon band, the Lumenary glow past the channel, the exit lantern
+   across the water — then make the path to it indirect. Anticipation is the
+   cheapest content in the game.
+4. **Braided risk-reward.** The mandatory path is safe-ish; the optional
+   strands beside it carry the goods (the deeper grass with the rarer table,
+   the dead end with the cache, the islet behind the Gift). The player should
+   always be making one small "is it worth it?" choice per screen — and an
+   off-path detour must ALWAYS pay (item, kin, vista, or lore; never empty).
+5. **One new idea per screen.** Each ~15×10 screenful introduces or
+   recombines exactly one element — a first ledge, a wider water gap, two
+   trainers covering each other. Two new ideas at once is noise; zero is
+   filler. (The screen grid from §0 is the pacing unit, not just the camera.)
+6. **Pressure, then relief.** Alternate demand and rest on a heartbeat: grass
+   band → dry pocket; trainer pair → rest-heal/inn; maze floor → the ladder
+   room with the breadcrumb light. Never two big demands back-to-back without
+   a pocket between (the blackout tithe makes pressure real; relief keeps it
+   cosy — this is still Vesperholm).
+7. **Lost locally, never globally.** Mazes disorient at corridor scale while
+   the SPINE stays readable: the player should always be able to say "the
+   exit is north" even when they can't say "the next turn is left". Light
+   breadcrumbs (§3) mark the spine; dead ends are short and paid (rule 4).
+8. **Gates rhyme with rewards.** A Gift-gated tease the player CAN'T pass
+   yet (the deep channel, the dark mouth) plants the promise; the same map
+   pays it on return. Place at least one per area, signed in-world — the
+   comeback visit is where "the world remembers me" lives.
+9. **Trainers are geometry.** A sight-trainer is a puzzle piece, not a random
+   event: posted to make a crossing unavoidable, angled to be dodge-able by
+   the observant (an optional fight is a reward for reading the map), paired
+   so two lines overlap only where the good loot is.
+10. **The map remembers.** Beaten trainers stand down, caches stay looted,
+    drained sites bloom after their story beat (flag-paired NPCs/zones).
+    Nothing resets; a revisited map should read as "mine now".
 
 ---
 
@@ -527,6 +603,10 @@ tease (dark mouth in the cliff → Tideglass Cavern), each signed; Pearlmoor sig
 - [ ] **Landmark sight-line** frames the next destination.
 - [ ] **Gated content is teased, visible, and signed**, gated via `requires_ability`
       tiles/warps with a sign/NPC stating the *why* + *come back*.
+- [ ] **§3a structural pass:** the area has a LOOP (an earned return — ledge/drop/shortcut);
+      the return pass is faster than the first; every off-path detour PAYS; each screen
+      carries one new idea; pressure alternates with a rest pocket; in mazes the spine
+      stays readable; at least one Gift-gated tease pays on a comeback visit.
 
 ### Layers & data
 

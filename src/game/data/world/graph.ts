@@ -92,6 +92,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'sunkbell_shallows', region: 'east', optional: true, reward: 'rare Tide kin + item cache in a flooded shrine' },
     { map_id: 'lowleaf_hollow', region: 'east' }, // forest town + Lumenary
     { map_id: 'glowmoss_deep', region: 'east' }, // forest interior (Glimmerstep)
+    { map_id: 'glowmoss_deep_b1f', region: 'east' }, // the lower maze floor (ladder pair)
     { map_id: 'spore_grotto', region: 'east', optional: true, reward: 'rare Bug/Verdant kin + item' },
     { map_id: 'cinderhead_mine', region: 'east' }, // cave town + Lumenary (mine mouth)
     { map_id: 'cinderhead_deep', region: 'east' }, // deep cave (Glimmerstep) -> Galehigh
@@ -172,7 +173,8 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'dimglass_coast_ii', to_map: 'gullcry_rock', via_warp: 'to_gullcry', requires_ability: 'tidecall', bidirectional: true },
     { from_map: 'dimglass_coast_ii', to_map: 'tideglass_cavern', via_warp: 'to_tideglass', requires_ability: 'glimmerstep', bidirectional: true },
     { from_map: 'saltreach_fen_ii', to_map: 'sunkbell_shallows', via_warp: 'to_sunkbell', requires_ability: 'tidecall', bidirectional: true },
-    { from_map: 'glowmoss_deep', to_map: 'spore_grotto', via_warp: 'to_grotto', requires_ability: 'glimmerstep', bidirectional: true },
+    { from_map: 'glowmoss_deep', to_map: 'glowmoss_deep_b1f', via_warp: 'ladder_down', bidirectional: true },
+    { from_map: 'glowmoss_deep_b1f', to_map: 'spore_grotto', via_warp: 'to_grotto', requires_ability: 'glimmerstep', bidirectional: true },
     { from_map: 'cinderhead_deep', to_map: 'crystoll_vault', via_warp: 'to_crystoll', requires_ability: 'starreach', bidirectional: true },
     { from_map: 'galehigh_terraces', to_map: 'wind_eye', via_warp: 'to_windeye', requires_ability: 'updraft_kite', bidirectional: true },
     { from_map: 'windward_stair_ii', to_map: 'thunderroost', via_warp: 'to_roost', requires_ability: 'updraft_kite', bidirectional: true },

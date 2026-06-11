@@ -31,6 +31,22 @@ export type BattleEvent =
   | { type: 'no-charges' }
   | { type: 'stat-change'; side: Side; stat: string; delta: number }
   | { type: 'status'; side: Side; status: string }
+  // Status engine (Part B): pre-move gates, ticks, riders.
+  | { type: 'status-block'; side: Side; status: string } // dozing/chilled/numb/drench skip
+  | { type: 'status-wake'; side: Side } // doze ends
+  | { type: 'status-thaw'; side: Side } // chill ends
+  | { type: 'confusion-hit'; side: Side; amount: number } // dazzle: hit itself
+  | { type: 'status-tick'; side: Side; status: string; amount: number } // scorch/blight chip
+  | { type: 'status-cure'; side: Side } // cleansed
+  | { type: 'recoil'; side: Side; amount: number }
+  | { type: 'drain'; side: Side; amount: number } // side = who healed
+  | { type: 'heal'; side: Side; amount: number }
+  | { type: 'flinch'; side: Side }
+  | { type: 'screen-up'; side: Side; screen: string }
+  | { type: 'screen-fade'; side: Side; screen: string }
+  | { type: 'hazard-set'; side: Side } // caltrops laid on `side`'s field
+  | { type: 'hazard-hurt'; side: Side; amount: number }
+  | { type: 'pivot'; side: Side } // the user swaps out after striking
   | { type: 'faint'; side: Side }
   | { type: 'switch'; side: Side; incoming: KinInstance }
   | { type: 'item-used'; itemId: string; healed?: number }

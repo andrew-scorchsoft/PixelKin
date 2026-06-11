@@ -27,6 +27,10 @@ export interface Settings {
   shell: ShellMode;
   controlsVisible: boolean;
   muted?: boolean;
+  /** Walk speed: true = always run (no need to hold B). */
+  alwaysRun?: boolean;
+  /** Dialogue typewriter pace. */
+  textSpeed?: 'cosy' | 'brisk' | 'instant';
 }
 
 /** The defaults a brand-new player gets before they touch the Settings menu. */
@@ -34,6 +38,8 @@ export const DEFAULT_SETTINGS: Settings = {
   shell: 'device',
   controlsVisible: true,
   muted: false,
+  alwaysRun: false,
+  textSpeed: 'cosy',
 };
 
 export const SaveManager = {
@@ -95,6 +101,11 @@ export const SaveManager = {
       party,
       inventory,
       money,
+      // A fresh register already knows the kin you start with.
+      dex: {
+        seen: [...new Set(party.map((k) => k.species_id))],
+        caught: [...new Set(party.map((k) => k.species_id))],
+      },
     };
   },
 } as const;

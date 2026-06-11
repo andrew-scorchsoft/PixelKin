@@ -25,6 +25,7 @@ export const TRAINERS: TrainerRegistry = {
     reward_flags: ['gleam:ember', 'crown_south'],
     payout: 600, // Lampwarden 60 × ace 10
     music: 'battle-emberfall',
+    ai: 'smart', // Lampwardens play the matchup, not just the biggest number
   },
 
   // The Beacon ascent (Tinderwick): Brisa's wick-tenders hold the stair floors —
@@ -98,6 +99,57 @@ export const TRAINERS: TrainerRegistry = {
     music: 'battle-emberfall',
   },
 
+  // Glowmoss Deep (East) — the first cave dungeon's SIGHT keepers (dungeon
+  // keeper class, 10-economy §4), pitched to the walkthrough's ~20 rec. band:
+  // the on-ramp between Sable Quill's ace 22 and the Cinderhead galleries.
+  glowmoss_keeper_a: {
+    id: 'glowmoss_keeper_a',
+    name: 'DELL',
+    title: 'Moss-tender',
+    party: [
+      { species_id: 56, level: 19 }, // Sporeling — Verdant
+      { species_id: 57, level: 20 }, // Sporemid — Verdant (ace)
+    ],
+    payout: 400, // keeper 20 × ace 20
+    music: 'battle-emberfall',
+  },
+  glowmoss_keeper_b: {
+    id: 'glowmoss_keeper_b',
+    name: 'MIRREL',
+    title: 'Deepwood Warden',
+    party: [
+      { species_id: 65, level: 20 }, // Glowsip — Verdant/Light
+      { species_id: 67, level: 21 }, // Fennlight — Verdant/Light (ace)
+    ],
+    payout: 420, // keeper 20 × ace 21
+    music: 'battle-emberfall',
+  },
+
+  // Saltreach Fen I route trainers — the 16→18 on-ramp between Pearlmoor and
+  // the Lowleaf cluster (route class, 10-economy §4).
+  fen_wader_a: {
+    id: 'fen_wader_a',
+    name: 'MARIGOLD',
+    title: 'Fen-wader',
+    party: [
+      { species_id: 59, level: 16 }, // Dewling — Verdant/Tide
+      { species_id: 27, level: 17 }, // Brineroll — Tide (ace)
+    ],
+    payout: 272, // route 16 × ace 17
+    music: 'battle-emberfall',
+  },
+  fen_courier_b: {
+    id: 'fen_courier_b',
+    name: 'OSPREY',
+    title: 'Plank-courier',
+    party: [
+      { species_id: 31, level: 17 }, // Lumpin — Tide/Light
+      { species_id: 60, level: 18 }, // Poolfrond — Verdant/Tide (ace)
+    ],
+    payout: 288, // route 16 × ace 18
+    music: 'battle-emberfall',
+  },
+
   // Second Lumenary: Reyl Wash, the Lampwarden of Pearlmoor Quay (Tide) — an old
   // ferryman. Beating him relights the Tide constellation: the player earns the Tide
   // Gleam AND the Tidecall Lantern Gift (granted via reward_abilities). 'crown_south'
@@ -119,6 +171,7 @@ export const TRAINERS: TrainerRegistry = {
     reward_abilities: ['tidecall'],
     payout: 960, // Lampwarden 60 × ace 16
     music: 'battle-emberfall',
+    ai: 'smart', // Lampwardens play the matchup, not just the biggest number
   },
 };
 

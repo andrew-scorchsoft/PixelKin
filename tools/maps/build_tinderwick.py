@@ -279,6 +279,12 @@ m = {
         {"id": "gatewarden_post", "at": {"tx": 15, "ty": 2}, "facing": "left",
          "sprite": "npc_lampwarden", "movement": "static",
          "dialogue_ref": "npc.gatewarden_after", "requires_flag": "flag:has_starter"},
+        # A valuable cache tucked in the SW corner (the spine's cache-variety
+        # rule: each region carries a found-to-sell nugget off the lane).
+        {"id": "cache_waxcake", "at": {"tx": 3, "ty": 15}, "facing": "down",
+         "sprite": "item_cache", "movement": "static",
+         "dialogue_ref": "script.pickup_tinderwick_waxcake",
+         "hidden_when_flag": "flag:picked_tinderwick_waxcake"},
         # Wren — the rival, a fellow young Wayfarer milling by the garden until the
         # Wayfaring begins (she's off up the coast — A2 — once you hold a starter).
         {"id": "wren", "at": {"tx": 19, "ty": 15}, "facing": "left", "sprite": "wren",

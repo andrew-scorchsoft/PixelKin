@@ -23,8 +23,10 @@ import { Menu } from './Menu';
 import { DialogueBox } from './DialogueBox';
 import { InputController, InputAction } from '@game/systems/input/InputController';
 import { getItem } from '@game/content/items';
+import { stockItemId } from '@game/content/shops';
 import { sellValue, formatWicks } from '@game/content/economy';
 import type { ShopDef } from '@game/content/types';
+import type { WorldFlag } from '@game/data/world/types';
 import type { InventoryData } from '@game/systems/save/types';
 import type { Sfx } from '@game/systems/audio/Sfx';
 
@@ -72,6 +74,8 @@ export class ShopMenu {
     private readonly inventory: InventoryData,
     money: number,
     private readonly sfx?: Sfx,
+    /** Flag check for gated stock lines; absent = gated lines stay hidden. */
+    private readonly hasFlag?: (flag: WorldFlag) => boolean,
   ) {
     this.money = money;
 
@@ -111,10 +115,12 @@ export class ShopMenu {
     return this.inventory.items[id] ?? 0;
   }
 
-  /** The shop's stock, priced for buying. */
+  /** The shop's stock, priced for buying (gated lines appear once their flag is held). */
   private collectBuy(): CounterEntry[] {
     const out: CounterEntry[] = [];
-    for (const id of this.shop.stock) {
+    for (const entry of this.shop.stock) {
+      if (typeof entry !== 'string' && !this.hasFlag?.(entry.requires_flag)) continue;
+      const id = stockItemId(entry);
       const def = getItem(id);
       if (!def || def.price === undefined) continue;
       out.push({ id, name: def.name, desc: def.desc, wicks: def.price, held: this.held(id) });

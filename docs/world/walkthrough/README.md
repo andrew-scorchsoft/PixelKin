@@ -307,6 +307,11 @@ pure data (see `tools/maps/build_*.py` + `src/game/content/` for the worked patt
   payout classes and the per-region budget: [`10-economy.md`](../../mechanics/10-economy.md).
 - **Item caches** — 2–3 ground pickups per route: `sprite:'item_cache'` NPCs whose script
   gives the item, says the find, sets `flag:picked_*`; `hidden_when_flag` removes them live.
+  **Vary the contents** (2026-06): most caches hold consumables (balms, lamp charges), but
+  each region should also place **1–2 valuable caches** (Wax Cake / Moth-amber / Starglass
+  Shard — found-to-sell, the genre's nugget) and **one loose-wicks cache** (`giveMoney`,
+  ~half a route-trainer payout) — finding money in the grass is half the joy of poking
+  about. Caches off the lane > caches on it; dungeons hide the better ones a choke away.
 - **Festival payoff NPCs** — each Gleam adds 2+ `requires_flag:'gleam:<element>'` townsfolk
   (Arc E: belonging, not conquest). Cheap, and the town visibly *answers* the victory.
 - **Witness beats** — pair every story `step_on` cutscene with a flag-gated NPC who reacts
@@ -314,6 +319,11 @@ pure data (see `tools/maps/build_*.py` + `src/game/content/` for the worked patt
 - **The catch-first gate** — the engine sets `flag:caught_first_kin` on any successful
   catch; the first Lumenary's battle trigger requires it, with a `blocked_ref` line in the
   warden's own voice.
+- **Multi-floor caves (2026-06, BINDING)** — caves are ladder mazes, not single rooms:
+  floors are maps joined by mutual ladder-warp pairs, dead ends pay in caches, spur mouths
+  sit on the lowest floor, and only a region's *first* dungeon stays small. The full scale
+  table (first dungeon → mid wall → landmark → the Spire) is `level-design.md` §2a;
+  Glowmoss Deep + B1F is the built worked example.
 - **Sight trainers** — route (and dungeon-floor) trainers carry `sight_range` +
   `defeated_flag` on their placement: they alert (!), march up and run their script when
   the player crosses their line. Post a trainer in a corridor's end row facing down their

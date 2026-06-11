@@ -187,13 +187,26 @@ go digging on every task.
   and **the Waykeeper's Round** is the cross-region delivery line anchored at
   `vesper_crossroads`.
 - **Economy (2026-06, BUILT):** money is **wicks** (waxed lamp-wicks, traded;
-  `SaveGame.money`, save schema v2); taught-move items are **Star-charts** (single-use,
+  `SaveGame.money`, save schema v3); taught-move items are **Star-charts** (single-use,
   type/Plain/learnset-compatible, used from ITEMS); shops are data
-  (`content/shops.ts` + the `shop` cutscene op — Tinderwick & Pearlmoor counters live);
-  trainer wins pay `payout` = class rate × ace (route 16 / keeper 20 / rival 24 /
+  (`content/shops.ts` + the `shop` cutscene op — Tinderwick & Pearlmoor counters live;
+  a stock line may carry `requires_flag` for tier unlocks); trainer wins pay `payout`
+  = class rate × ace (route 16 / keeper 20 / rival 24 /
   warden 60 / Còr 120); blackout keeps a 10% wick tithe; XP yield is `bst·level/20`,
   ×1.5 vs trainers, **catches pay like knock-outs**. Design + per-region battle/earnings
   budget: `docs/mechanics/10-economy.md`; executable model: `tools/balance/progression.mjs`.
+- **Catching = one vesperlamp + charges (2026-06, BUILT):** the vesperlamp is a key
+  item (plain throw free, ×1.0); **charges** (`category:'charge'`, `catch_bonus`) are
+  one-throw boosters — Glow ×1.5 (200w), Beacon ×2.5 (600w, shops once `gleam:ember`),
+  Tide Charm ×2.0 (quest), Starlamp guaranteed (quest). Catch = the classic four-shake
+  roll (P≈a/255) + status bonus (doze/chill ×2.5, others ×1.5). `docs/mechanics/04-capture.md`.
+- **Battle runtime Part B is BUILT (2026-06):** the seven canon statuses run for real
+  (gates/chip/stat hooks — exact constants atop `BattleEngine.ts`, mirrored in
+  `03-moves.md`), as do drain/recoil/flinch/heal/cure/screens/caltrops/pivot/selfDoze/
+  highCrit. **Kindling is live**: level-trigger checks in `gainExp` → `ui/KindlePrompt`
+  (declining re-offers next level); Hearthkit's bond trigger awaits a bond system.
+  `TrainerDef.ai:'smart'` = warden/boss AI tier. Re-run `simulate.mjs` after status/move
+  changes — it now exit-codes (one waived utility-kit outlier list lives in the script).
 - **Maps are our own JSON** (not Tiled), snake_case keyed, parsed into
   `src/game/data/world/types.ts`. Map authoring is **content, not engine code**;
   the end-to-end flow is in `docs/world/README.md`.
@@ -212,6 +225,7 @@ go digging on every task.
 | Mechanics design (start here) | `docs/mechanics/00-overview.md` |
 | Readable full dex (all 151) | `docs/mechanics/dex.md` |
 | Balance results | `docs/mechanics/balance-report.md` |
+| Expert panel reviews (first-hour; full-game audit) | `docs/reviews/` |
 | Economy: wicks, shops, Star-charts, XP/battle budget | `docs/mechanics/10-economy.md` (+ `tools/balance/progression.mjs`) |
 | Cut-concept idea bank | `docs/mechanics/concepts/archive/` |
 | Authoritative game data | `src/game/data/` (chart, moves, species, world) |
@@ -225,8 +239,13 @@ go digging on every task.
 
 ## Asset generation skills
 
-Five skills live in `.claude/skills/`. Use them instead of hand-rolling:
+Six skills live in `.claude/skills/`. Use them instead of hand-rolling:
 
+- **build-map** — the map-composition skill: builds any area (town/route/cave/
+  interior) from its atlas card + walkthrough hooks via `tools/maps/mapkit.py`
+  + **`patterns.py`** (parametric stamps: zones-from-paint, trainer beats,
+  caches, signs, ledges/terraces, buildings from the objects manifest). Defers
+  to generate-sprite-sheet for any missing art; `level-design.md` is binding.
 - **generate-sprite-sheet** — the **preferred** path for in-game pixel art:
   creature battle/icon/overworld/portrait sprites, NPC walk sheets, battle
   effects, and tiles. Enforces the canvas/anchor/palette standards in
@@ -367,12 +386,21 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   you add one. Multi-phase screens (PartyMenu/ItemsMenu/HearthMenu) **don't** keep one
   long-lived loop: each phase (`pickX`) attaches its own tick + input and tears both
   down before opening a sub-`Menu`, so presses are never double-read.
-- **Pause menu = RESUME / KIN / HEARTH / ITEMS / LORE / SAVE / SETTINGS** (`WorldScene.openPauseMenu`).
-  KIN→`PartyMenu`, HEARTH→`HearthMenu` (kin storage), ITEMS→`ItemsMenu` (view + use a
+- **Pause menu = RESUME / KIN / REGISTER / HEARTH / ITEMS / LORE / SAVE / SETTINGS** (`WorldScene.openPauseMenu`).
+  KIN→`PartyMenu`, REGISTER→`RegisterMenu` (the dex: seen/caught from `SaveGame.dex`, lazy kin
+  icons, silhouettes until caught), HEARTH→`HearthMenu` (kin storage), ITEMS→`ItemsMenu` (view + use a
   medicine to heal), LORE→`GlossaryMenu` (read-only codex of canon vocabulary). Each returns its
   mutated data; the caller assigns it back and `persist()`s. Shell A/B buttons carry a `title`
   keyboard-hint via `KEY_HINTS` in `ShellManager.ts` — keep it in sync with the InputController
   bindings.
+- **Gameplay prefs ride `ui/preferences.ts`, not storage reads.** Settings adds Pace
+  (always-run; hold-B runs regardless) and Text speed (Cosy/Brisk/Instant — DialogueBox
+  multiplies its cps); `ShellManager.init` applies persisted values at boot, the
+  SettingsMenu writes through live. Every `persist()` flashes a quiet SAVED corner glyph.
+  First use of each Lantern Gift on gated ground plays a once-per-Gift raise-lamp
+  flourish (`WorldScene.playGiftFlourish`, `flag:gift_first_*`).
+- **CI is binding:** `.github/workflows/checks.yml` runs typecheck + all four balance
+  gates on every PR; `chart_check`/`simulate` now exit non-zero on violations.
 - **The LORE codex (`GlossaryMenu`) is a data-driven, flag-staggered reference.** Entries live in
   `content/glossary.ts` (ordered array; canon voice). An entry with no `unlock_flag` is known from
   the start; one with an `unlock_flag` stays a "? ? ?" tease until that flag is held — and it reuses
@@ -455,8 +483,14 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   PLATEAU TOP, `edge_s`/S-corners = the visible FACE (lit lip → streaked face → contact
   shadow), N/W/E = rim transitions — a cliff drawn as all-face reads flat ("lost edging").
   Full rule: `docs/world/level-design.md` §11 rule 8.
-- **New area? Copy `tools/maps/build_tinderwick.py`, `build_dimglass.py`, `build_gullcry.py`
-  or `build_crossroads.py` (the worked examples), and compose to `docs/world/level-design.md`
+- **New area? Use the `build-map` skill** — compose with `tools/maps/patterns.py` stamps on
+  mapkit (`build_saltreach_fen_i.py` is the pattern showcase: paint-derived encounter zones,
+  trainer-beat/cache/sign stamps, a LEDGED terrace bank). Engine supports one-way **ledges**
+  (`ledge` tile meta -> CollisionGrid.ledgeAt -> Player hops; `grass_ledge_s` tiles,
+  `world-ledge-hop` sfx). Tile-bound encounter terrains (tall_grass/water) only fire ON
+  matching painted tiles, so zone rects may be loose bounding boxes; cave/sand roll rect-wide.
+  Older worked examples: `build_tinderwick.py`, `build_dimglass.py`,
+  `build_crossroads.py`. Compose to `docs/world/level-design.md`
   §11 (the binding composition standard: no flat voids, deep organic borders + crown trees,
   one elevation accent, blob shores/patches, building aprons + a fenced garden, hard-edged
   tuft tall-grass, trainer beats on routes, drawn structured terrain).** Tall grass stays
@@ -464,6 +498,16 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   the `encounter_terrain` tag or scattered cells silently stop triggering encounters. Off-map
   = continuation. Finish via `mk.finalize()`: `expand.mjs` → strip terrain → `render_map` +
   `validate_map` + **`tools/maps/audit_warps.py`** (all must PASS). Recipe: SKILL.md §A.
+- **Cave dungeon? Copy `tools/maps/build_glowmoss_deep.py` (the worked example).** The shared
+  set ships gbaforge-drawn cave families: `cavefloor0-3` (the base), `cavewall` (13-piece; fill
+  = void-dark wall TOP, S edges = the lamp-lit FACE — the cliff convention indoors), `glowmoss`
+  (the cave encounter tile, fill-only, tagged `tall_grass`) + `glowshroom/greymoss/null_lantern`
+  decor. Carve rooms as blobs from a solid wall grid, join with 1-wide chokes, and put story
+  step_on triggers ON the chokes so they can't be walked around. **Caves are multi-floor**
+  (level-design §2a, BINDING): a floor is a map, ladders are mutual step_on warp pairs
+  landing ON each other (`cave_ladder_down`/`cave_ladder_up` tiles), lower floors run
+  darker + a band deeper, spur mouths live on the lowest floor — `build_glowmoss_deep_b1f.py`
+  is the worked floor; only a region's FIRST dungeon may be one floor (+ a small B1F).
 - **Warp conventions (enforced by `audit_warps.py`).** A wide entrance warps on EVERY
   walkable tile of its opening (one warp in a 3-tile gap strands players on the silent
   tiles); landings are in-bounds + walkable; and each landing sits ON (or within 1 tile of)

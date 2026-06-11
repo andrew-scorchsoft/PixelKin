@@ -1,5 +1,33 @@
 {
   "objects": {
+    "glowmoss_deep_glowshrooms_ember": {
+      "path": "assets/sprites/objects/glowmoss_deep_glowshrooms_ember.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "glowmoss_deep_glowshrooms_teal": {
+      "path": "assets/sprites/objects/glowmoss_deep_glowshrooms_teal.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "glowmoss_deep_mossheart_tree": {
+      "path": "assets/sprites/objects/glowmoss_deep_mossheart_tree.webp",
+      "width": 48,
+      "height": 64,
+      "tw": 3,
+      "th": 4
+    },
+    "glowmoss_deep_null_lantern_shrine": {
+      "path": "assets/sprites/objects/glowmoss_deep_null_lantern_shrine.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
     "interior_altar": {
       "path": "assets/sprites/objects/interior_altar.webp",
       "width": 48,

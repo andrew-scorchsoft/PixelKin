@@ -153,6 +153,50 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'hub',
     music: 'assets/audio/music/tinderwick-a.mp3',
   },
+  // East: the first true cave dungeon — the hollow's dark interior past Lowleaf
+  // (Glimmerstep-gated on Lowleaf's `to_deepwood` warp; B2 first Hollowing contact).
+  // The track is "Deep Glimmer", the Lowleaf brief's deep-interior variant.
+  glowmoss_deep: {
+    json: 'assets/maps/glowmoss_deep.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/lowleaf-hollow-c.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/glowmoss-deep-a.webp',
+      'assets/backgrounds/battle/glowmoss-deep-b.webp',
+    ],
+  },
+  // The lower floor (ladder pair from the SE alcove) — the dungeon-scale
+  // ladder's first taught descent; holds the Spore Grotto's true mouth.
+  glowmoss_deep_b1f: {
+    json: 'assets/maps/glowmoss_deep_b1f.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/lowleaf-hollow-c.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/glowmoss-deep-a.webp',
+      'assets/backgrounds/battle/glowmoss-deep-b.webp',
+    ],
+  },
+  // Spore Grotto — the Glowmoss complex's deep spur (off B1F): the rare bed.
+  spore_grotto: {
+    json: 'assets/maps/spore_grotto.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/lowleaf-hollow-c.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/glowmoss-deep-a.webp',
+      'assets/backgrounds/battle/glowmoss-deep-b.webp',
+    ],
+  },
+  // Saltreach Fen I — the marsh route east of Pearlmoor (the pattern-library
+  // showcase: ledged bank, plank causeways, paint-derived reed zones).
+  saltreach_fen_i: {
+    json: 'assets/maps/saltreach_fen_i.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/saltreach-fen-a.mp3',
+  },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
   // Their battle backdrops are already rendered — see UPCOMING_BATTLE_BACKDROPS below.

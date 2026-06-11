@@ -10,9 +10,18 @@
 import type { WorldSnapshot } from '@game/data/world/types';
 
 /** The current schema version — bump and add a migration in SaveCodec when shapes change. */
-export const SAVE_SCHEMA_VERSION = 2;
+export const SAVE_SCHEMA_VERSION = 3;
 
-export type KinStatus = 'none' | 'sleep' | 'burn' | 'freeze' | 'paralysis' | 'poison';
+/** The seven canon status conditions (docs/mechanics/03-moves.md) + none. */
+export type KinStatus =
+  | 'none'
+  | 'scorch' // chip damage each turn; halves physical Atk
+  | 'drench' // −Speed; occasional action skip
+  | 'numb' // −Speed; may be unable to act
+  | 'doze' // asleep 1–3 turns
+  | 'blight' // escalating chip damage each turn
+  | 'dazzle' // confusion; may hit itself
+  | 'chill'; // frozen until thawed
 
 /** A single owned kin, serialised. Resolves its species via SPECIES_BY_ID (dex.ts). */
 export interface KinInstanceData {
@@ -33,6 +42,14 @@ export interface InventoryData {
   items: Record<string, number>;
 }
 
+/** The vesperlamp's register — collection progress for the REGISTER screen. */
+export interface DexProgress {
+  /** Species ids the player has met in battle (or owns). */
+  seen: number[];
+  /** Species ids the player has caught (starters count). */
+  caught: number[];
+}
+
 /** The full save blob persisted under storage key 'save:slot0'. */
 export interface SaveGame {
   schema_version: number;
@@ -44,4 +61,6 @@ export interface SaveGame {
   inventory: InventoryData;
   /** The player's wicks (currency — see content/economy.ts). */
   money: number;
+  /** Collection progress (seen/caught) — the REGISTER screen reads this. */
+  dex: DexProgress;
 }

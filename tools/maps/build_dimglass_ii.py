@@ -253,7 +253,13 @@ m = {
         {"id": "cache_lamp", "at": {"tx": 11, "ty": 19}, "facing": "down",
          "sprite": "item_cache", "movement": "static",
          "dialogue_ref": "script.pickup_flats_lamp",
-         "hidden_when_flag": "flag:picked_flats_lamp"}],
+         "hidden_when_flag": "flag:picked_flats_lamp"},
+        # Loose wicks west of the lane (the cache-variety rule's money find —
+        # ~half a route-trainer payout for poking about the flats).
+        {"id": "cache_wicks", "at": {"tx": 9, "ty": 13}, "facing": "down",
+         "sprite": "item_cache", "movement": "static",
+         "dialogue_ref": "script.pickup_flats_wicks",
+         "hidden_when_flag": "flag:picked_flats_wicks"}],
     "gates": [
         # The shallow finger to Gullcry opens with Tidecall — rect kept on PURE water
         # (an AbilityGate force-gates every tile it covers; see CLAUDE.md gotcha).

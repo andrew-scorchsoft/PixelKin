@@ -263,7 +263,7 @@ m = {
          "transition": "fade"},
         # East road to Saltreach Fen (East region) — inert tease until authored.
         {"id": "to_fen", "at": {"tx": W - 1, "ty": 12}, "trigger": "step_on",
-         "to_map": "saltreach_fen_i", "to": {"tx": 2, "ty": 10}, "facing": "right",
+         "to_map": "saltreach_fen_i", "to": {"tx": 1, "ty": 38}, "facing": "right",
          "transition": "fade"},
     ],
     "triggers": [

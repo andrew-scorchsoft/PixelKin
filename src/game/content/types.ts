@@ -69,15 +69,21 @@ export type ScriptRegistry = Record<string, CutsceneStep[]>;
 
 // ---- Items ------------------------------------------------------------------
 
-export type ItemCategory = 'lamp' | 'medicine' | 'chart' | 'valuable' | 'key' | 'misc';
+export type ItemCategory = 'charge' | 'medicine' | 'chart' | 'valuable' | 'key' | 'misc';
 
 export interface ItemDef {
   id: string;
   name: string;
   desc: string;
   category: ItemCategory;
-  /** Capture multiplier for 'lamp' items (vesperlamp = 1.0). */
+  /**
+   * Capture multiplier for 'charge' items — a waxed charge cell fed to the
+   * vesperlamp for one boosted throw (a plain, chargeless throw = 1.0; a value
+   * of 255 is a guaranteed catch, e.g. the Starlamp).
+   */
   catch_bonus?: number;
+  /** For 'key' Kindlestone-type items: fires a kin's stone-trigger kindling. */
+  kindle_stone?: boolean;
   /** HP restored for 'medicine' items. */
   heal?: number;
   /**
@@ -102,12 +108,16 @@ export type ItemRegistry = Record<string, ItemDef>;
  * is purely a *selection*. Opened by the cutscene op `{ op: 'shop', shop: id }`,
  * so a keeper script can chat first and trade after — pure data either way.
  */
+/** One stocked line: a plain item id, or one that only appears once a flag is
+ *  held (e.g. Beacon Charges appearing after the first Gleam). */
+export type ShopStockEntry = string | { item: string; requires_flag: WorldFlag };
+
 export interface ShopDef {
   id: string;
   /** Counter title, e.g. 'TINDERWICK GENERAL'. */
   name: string;
-  /** Item ids stocked, in display order. Every id must have a `price`. */
-  stock: string[];
+  /** Items stocked, in display order. Every id must have a `price`. */
+  stock: ShopStockEntry[];
 }
 
 export type ShopRegistry = Record<string, ShopDef>;
@@ -171,6 +181,12 @@ export interface TrainerDef {
   reward_abilities?: AbilityId[];
   /** Battle music key override. */
   music?: string;
+  /**
+   * Foe AI tier: 'smart' plays the matchup (type awareness, KO recognition,
+   * status/utility timing) — set it on Lampwardens, the rival's later fights,
+   * and Còr. Route trainers stay on the default 'basic' pick.
+   */
+  ai?: 'basic' | 'smart';
   /**
    * Wicks paid out when the player wins. Authored to the economy formula
    * (docs/mechanics/10-economy.md): payout = class rate × ace level — route

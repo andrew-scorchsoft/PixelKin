@@ -133,7 +133,7 @@ export class ItemsMenu {
         count,
       });
     }
-    const order: Record<ItemCategory, number> = { lamp: 0, medicine: 1, chart: 2, valuable: 3, key: 4, misc: 5 };
+    const order: Record<ItemCategory, number> = { charge: 0, medicine: 1, chart: 2, valuable: 3, key: 4, misc: 5 };
     out.sort((a, b) => order[a.category] - order[b.category] || a.name.localeCompare(b.name));
     return out;
   }

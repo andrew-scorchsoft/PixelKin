@@ -53,14 +53,18 @@ Prices live on `ItemDef.price` (`content/items.ts`); one price everywhere.
 | Tallow Balm | heal 20 | 120w | Tinderwick |
 | Warm Balm | heal 60 | 500w | Pearlmoor |
 | Bright Balm | full heal | 1,200w | Pale Vault |
-| Vesperlamp | catch ×1.0 | 200w | Tinderwick |
-| Bright Lamp | catch ×1.5 | 600w | Pearlmoor |
-| Radiant Lamp | catch ×2.0 | 1,500w | Sunken Solarium |
+| Glow Charge | one throw, catch ×1.5 | 200w | Tinderwick |
+| Beacon Charge | one throw, catch ×2.5 | 600w | everywhere, once `gleam:ember` is held (flag-gated stock) |
 | Star-charts | teach a move | 800–4,000w by tier (§6) | everywhere |
 
-Quest charms (Tide Charm etc.) have **no price** — unbuyable, unsellable,
-earned only. Planned once status conditions land (battle-runtime-plan Part B):
-**Soothing Tea** (cure any status, ~200w) and **Rekindle Drop** (wake a
+**Catching reframed (2026-06):** the vesperlamp is a **key item** — one device,
+plain throws free — and the purchasable line is **charges** (one boosted throw
+each; `04-capture.md`). The old Vesperlamp/Bright/Radiant Lamp consumable rung
+is retired; saves migrate (v3) old lamps into charges.
+
+Quest charms (Tide Charm, the Starlamp) have **no price** — unbuyable,
+unsellable, earned only. Now that status conditions run (Part B, BUILT), add
+next: **Soothing Tea** (cure any status, ~200w) and **Rekindle Drop** (wake a
 fainted kin at half health, ~900w) — add to this table + items.ts together.
 
 ## 4. Trainer payouts
@@ -97,19 +101,19 @@ pattern stays: kit script → flag → the *trading* keeper swaps in
 A new shop = a ShopDef + a keeper script + the NPC pair on the map.
 
 **Per-region stocking plan (design contract).** Each Lumenary town's shop
-carries: its tier of balm + lamp (see §3 "first sold"), **the previous tier
+carries: its tier of balm + charges (see §3 "first sold"), **the previous tier
 too** (a struggling player can stock up cheap), and **2–4 Star-charts** —
 the region's element pair + one Plain utility. Planned counters:
 
 | Shop | New stock beyond the previous tier |
 |---|---|
-| Tinderwick General *(built)* | Tallow Balm, Vesperlamp, charts: Cinder Spit, Mist Spray |
-| Pearlmoor Chandlery *(built)* | Warm Balm, Bright Lamp, charts: Wave Crash, Hearth Pulse, Gust Up, Focus Mind |
+| Tinderwick General *(built)* | Tallow Balm, Glow Charge (+ Beacon Charge once `gleam:ember`), charts: Cinder Spit, Mist Spray |
+| Pearlmoor Chandlery *(built)* | Warm Balm, Glow + Beacon Charges, charts: Wave Crash, Hearth Pulse, Gust Up, Focus Mind |
 | Lowleaf provisioner | charts: Spore Puff, Root Strike, Lifedrain |
 | Cinderhead pit-stores | charts: Rock Hurl, Crystal Beam, Guard Up |
 | Galehigh kite-stall | charts: Thunder Kick, Volt Arc, Swift Step |
 | Pale Vault warm-house | Bright Balm; charts: Ice Fang, Glacier Beam, Veil Up |
-| Solarium dig-counter | Radiant Lamp; charts: Solar Lash, Daybeam, Bask |
+| Solarium dig-counter | charts: Solar Lash, Daybeam, Bask |
 | Nightreach last-counter | charts: Lunar Claw, Moonbeam, Radiant Strike, Hone |
 
 ## 6. Star-charts — the taught-move system

@@ -143,6 +143,18 @@ def build_tile_meta(index: int, tile: dict, n_tiles: int, warnings: list[str]) -
         entry["requires_ability"] = ability
         has_behaviour = True
 
+    # One-way ledge: solid for normal movement, hopped when approached facing
+    # this direction (CollisionGrid/Player; level-design "routes carry gameplay").
+    ledge = tile.get("ledge")
+    if ledge not in (None, False):
+        if ledge not in {"up", "down", "left", "right"}:
+            raise SystemExit(
+                f"Tile #{index} ({tile.get('file')}): ledge '{ledge}' is not a facing "
+                "(up/down/left/right)."
+            )
+        entry["ledge"] = ledge
+        has_behaviour = True
+
     anim = tile.get("animation")
     if anim not in (None, False):
         frames = anim.get("frames")

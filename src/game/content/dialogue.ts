@@ -240,6 +240,77 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'GULLCRY ROCK\nThe sea-birds kept this light when no one else could reach it. Tread kindly — the harbour-lights nest in the spray.' },
   ],
 
+  // --- Glowmoss Deep (East — the first cave dungeon, B2) ----------------------
+  'sign.glowmoss_mouth': [
+    { text: 'GLOWMOSS DEEP\nThe moss keeps a little light where it can. Walk soft, Wayfarer — and lend yours back.' },
+  ],
+  'sign.glowmoss_grotto': [
+    { text: 'LOWER GALLERIES — ladder down.\nThe dark below keeps the old beds. Count your turns, Wayfarer — the deep does not.' },
+  ],
+  'sign.glowmoss_b1f_grotto': [
+    { text: 'SPORE GROTTO — through this notch.\nThe spore-beds answer no lamp but a Glimmerstep. Mind where the shrooms lean.' },
+  ],
+  'npc.glowmoss_keeper_a_after': [
+    { speaker: 'DELL', text: 'The nursery beds are brightest they have been in years... all but the grey chamber.' },
+    { speaker: 'DELL', text: 'We do not speak of the grey chamber. But you are going to walk through it, so — keep your lamp CLOSE.' },
+  ],
+  'npc.glowmoss_keeper_b_after': [
+    { speaker: 'MIRREL', text: 'The mine road is east, past the gallery moss. Old Otho keeps the Stone light at the mouth.' },
+    { speaker: 'MIRREL', text: 'If you meet the cowled ones again... I do not know. They were GENTLE. That is the part I cannot sit with.' },
+  ],
+  // The acolytes at the drained site (pre-restoration; kind, never cruel).
+  'npc.glowmoss_acolyte_a': [
+    { speaker: 'ACOLYTE', text: 'She is not hurt. She is resting. Does the quiet not look gentle, after all that flickering?' },
+  ],
+  'npc.glowmoss_acolyte_b': [
+    { speaker: 'ACOLYTE', text: 'Warden Còr says the dark asks nothing of us. No more failing. No more grief. We only help the tired lights lie down.' },
+    { speaker: 'ACOLYTE', text: 'You think us unkind. Everyone does, at first.' },
+  ],
+  'npc.glowmoss_cowled': [
+    { text: 'The cowled figure regards you from deep in its hood. It says nothing.', style: 'narrate' },
+    { text: 'It bows, slightly — as if in apology. There is no unkindness in it, which is somehow worse.', style: 'narrate' },
+  ],
+  // The sleeping luminous kin → the woken one (the flag-pair swap).
+  'npc.glowmoss_sleeper': [
+    { text: 'The Fennlight lies curled in the dead moss, barely aglow. Its light rises and falls, rises and falls — like slow breathing.', style: 'narrate' },
+    { text: 'It will not wake.', style: 'narrate' },
+  ],
+  'npc.glowmoss_woken': [
+    { text: 'The Fennlight turns in the air, trailing light like pollen. Wherever it drifts, the moss leans after it.', style: 'narrate' },
+  ],
+  // A3 — Wren, shaken, past the drained site. The first crack in the rivalry's
+  // brightness; sympathy for the Hollowing voiced, then carried away unsettled.
+  'npc.wren_glowmoss': [
+    { speaker: 'WREN', portrait: 'wren', expr: 'unsure', text: 'You woke it up. Good. I think.' },
+    { speaker: 'WREN', portrait: 'wren', expr: 'unsure', text: 'They did not fight us. They APOLOGISED. Who apologises while they... while they do that?' },
+    { speaker: 'WREN', portrait: 'wren', expr: 'unsure', text: '...What if they are not wrong? Nothing here got hurt. It was just quiet.' },
+    { speaker: 'WREN', portrait: 'wren', expr: 'neutral', text: 'Forget it. Race you to the mine. ...I am not racing. Walk with me a bit?' },
+  ],
+
+  // --- Saltreach Fen I (the marsh route) ----------------------------------------
+  'npc.fen_warden': [
+    { speaker: 'FEN-WARDEN', text: "Mind the planks after dark — the fen's friendly, but it doesn't like to be hurried." },
+    { speaker: 'FEN-WARDEN', text: 'Odd thing, though. The eastern woods have gone quiet of late. Quiet like held breath, not like sleep.' },
+  ],
+  'npc.fen_wader_a_after': [
+    { speaker: 'MARIGOLD', text: 'The reeds north of here run right over the causeway — no way round but through. Mind your step and your lamp.' },
+  ],
+  'npc.fen_courier_b_after': [
+    { speaker: 'OSPREY', text: 'The bank east of the causeway is worth the climb — waders leave what they cannot carry. And the hop down saves the walk back!' },
+  ],
+  'sign.spore_grotto': [
+    { text: 'SPORE GROTTO\nThe old beds. The moss-tenders leave them be — what grows down here grew before lamps.' },
+  ],
+  'sign.fen_landing': [
+    { text: 'SALTREACH FEN\nPlanks hold the road; the water holds everything else. North to Lowleaf Hollow, by the channel crossing.' },
+  ],
+  'sign.fen_channel': [
+    { text: 'DEEP CHANNEL — planks end here.\nThe still water answers Tidecall. The islet keeps what the tide-walkers leave.' },
+  ],
+  'sign.fen_boundary': [
+    { text: 'FEN BOUNDARY — Saltreach deepens past this channel.\nNo planks beyond: cross by Tidecall or turn back dry.' },
+  ],
+
   // --- Vesper Crossroads (the Lanternway hub) ---------------------------------
   'sign.crossroads': [
     { text: 'VESPER CROSSROADS\nAll the Lanternway meets here. SOUTH-WEST: Tinderwick. SOUTH-EAST: Pearlmoor Quay. The other roads sleep, unlit.' },

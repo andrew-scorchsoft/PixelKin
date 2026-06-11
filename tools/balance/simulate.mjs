@@ -115,7 +115,14 @@ for (const x of spStats.slice(0, 8)) console.log(`  ${x.name.padEnd(14)} ${x.tie
 console.log(`Bottom 8:`);
 for (const x of spStats.slice(-8)) console.log(`  ${x.name.padEnd(14)} ${x.tier} ${x.type.padEnd(14)} ${pct(x.wr)}`);
 
-// Within-tier outliers: a species winning very differently from its tier peers
+// Within-tier outliers: a species winning very differently from its tier peers.
+// UTILITY_KIT lists kin whose value lives in mechanics this 1v1 sim cannot see
+// (pivot/screens/status kits — the same blindness that depresses Light type-wide;
+// see balance-report.md). They're reported but don't fail the gate. Add a name
+// here only with a comment saying WHICH unsimmed mechanic carries it.
+const UTILITY_KIT = new Set([
+  "Wisprestored", // story redemption kin: Balanced/Pivot role — Swap Out + mirrorlight don't exist in a 1v1 sim
+]);
 const byTier = {};
 for (const x of spStats) (byTier[x.tier] ||= []).push(x);
 console.log(`\nWithin-tier outliers (>18pp from tier mean):`);
@@ -126,12 +133,15 @@ for (const t of "ABCDEF") {
   const mean = arr.reduce((a, b) => a + b.wr, 0) / arr.length;
   for (const x of arr) {
     if (Math.abs(x.wr - mean) > 0.18) {
-      console.log(`  [${t}] ${x.name.padEnd(14)} ${x.type.padEnd(14)} ${pct(x.wr)} (tier mean ${pct(mean)})`);
-      flagged++;
+      const waived = UTILITY_KIT.has(x.name);
+      console.log(
+        `  [${t}] ${x.name.padEnd(14)} ${x.type.padEnd(14)} ${pct(x.wr)} (tier mean ${pct(mean)})${waived ? " — waived: utility kit the sim can't see" : ""}`,
+      );
+      if (!waived) flagged++;
     }
   }
 }
-if (!flagged) console.log("  none — every species within 18pp of its tier mean.");
+if (!flagged) console.log("  no gate failures — every species within 18pp of its tier mean (or waived above).");
 
 // --- Speed clustering -----------------------------------------------------
 const spes = roster.map((s) => s.stats.spe).sort((a, b) => a - b);
@@ -139,3 +149,6 @@ const q = (p) => spes[Math.floor(p * (spes.length - 1))];
 console.log(`\nBase Speed spread: min ${spes[0]} | p25 ${q(0.25)} | median ${q(0.5)} | p75 ${q(0.75)} | max ${spes.at(-1)}`);
 
 console.log(`\ndraws: ${draws} (${pct(draws / BATTLES)})`);
+
+// CI gate: a within-tier outlier means a species broke its tier's fairness contract.
+process.exit(flagged ? 1 : 0);

@@ -37,6 +37,7 @@ import { Battler } from '@game/ui/battle/Battler';
 import { HpPanel } from '@game/ui/battle/HpPanel';
 import { BattleMessage } from '@game/ui/battle/BattleMessage';
 import { MoveLearnPrompt } from '@game/ui/MoveLearnPrompt';
+import { KindlePrompt } from '@game/ui/KindlePrompt';
 import { getTrainer, getTrainerLines } from '@game/content/trainers';
 import { getItem } from '@game/content/items';
 import { trainerPayout } from '@game/content/economy';
@@ -63,6 +64,8 @@ export interface BattleResult {
   caught?: KinInstanceData;
   /** Flags to set on win (e.g. a trainer's reward_flags). */
   set_flags?: string[];
+  /** Species ids met this battle — merged into the save's register (seen). */
+  dex_seen?: number[];
   /** Lantern Gifts (abilities) granted on win (e.g. a Lampwarden's reward_abilities). */
   grant_abilities?: AbilityId[];
   /** Wicks won (a beaten trainer's payout; wild battles pay nothing). */
@@ -98,6 +101,7 @@ export class BattleScene extends Phaser.Scene {
   private setFlags: string[] = [];
   private grantAbilities: AbilityId[] = [];
   private moneyEarned = 0;
+  private dexSeen = new Set<number>();
   private finished = false;
 
   constructor() {
@@ -110,6 +114,7 @@ export class BattleScene extends Phaser.Scene {
     this.setFlags = [];
     this.grantAbilities = [];
     this.moneyEarned = 0;
+    this.dexSeen = new Set();
     this.cameras.main.setBackgroundColor(COLORS.night);
     this.sfx = new Sfx(this);
     this.music = new MusicDirector(this);
@@ -123,7 +128,9 @@ export class BattleScene extends Phaser.Scene {
       kind: data.kind,
       playerParty: this.playerParty,
       foeParty,
+      ai: data.kind === 'trainer' ? getTrainer(data.trainer)?.ai ?? 'basic' : 'basic',
     });
+    this.dexSeen.add(this.engine.foe.species.id); // you've met what you're facing
 
     this.buildScene();
     void this.run();
@@ -222,8 +229,10 @@ export class BattleScene extends Phaser.Scene {
         const events = await this.fightMenu();
         return events ?? this.chooseAndResolve();
       }
-      case 'catch':
-        return this.engine.catchWithBonus('vesperlamp', this.lampBonus('vesperlamp'));
+      case 'catch': {
+        const events = await this.lampMenu();
+        return events ?? this.chooseAndResolve();
+      }
       case 'switch': {
         const idx = await this.switchMenu(true);
         if (idx === null) return this.chooseAndResolve();
@@ -240,8 +249,32 @@ export class BattleScene extends Phaser.Scene {
     }
   }
 
-  private lampBonus(itemId: string): number {
-    return getItem(itemId)?.catch_bonus ?? 1.0;
+  /**
+   * The LAMP throw menu: a plain throw is always free (your vesperlamp is the
+   * device, not a consumable); any owned charges are offered as one-throw
+   * boosters and spent on use.
+   */
+  private async lampMenu(): Promise<BattleEvent[] | null> {
+    const charges = Object.entries(this.inventory.items)
+      .filter(([id, n]) => n > 0 && getItem(id)?.category === 'charge')
+      .map(([id, n]) => ({ def: getItem(id)!, count: n }));
+
+    // Nothing to choose between — just raise the lamp.
+    if (charges.length === 0) {
+      return this.engine.catchWithBonus('vesperlamp', 1.0);
+    }
+
+    const opts: MenuOption[] = [
+      { label: 'PLAIN THROW', value: 'plain' },
+      ...charges.map((c) => ({ label: `${c.def.name.toUpperCase()} x${c.count}`, value: c.def.id })),
+    ];
+    const choice = await new Menu(this, opts, { x: 6, y: this.menuY(opts.length), sfx: this.sfx }).run();
+    if (choice === null) return null;
+    if (choice === 'plain') return this.engine.catchWithBonus('vesperlamp', 1.0);
+
+    const def = getItem(choice);
+    this.consumeItem(choice);
+    return this.engine.catchWithBonus(choice, def?.catch_bonus ?? 1.0);
   }
 
   // --- Menus ---------------------------------------------------------------
@@ -325,7 +358,7 @@ export class BattleScene extends Phaser.Scene {
     const def = getItem(choice);
     if (!def) return null;
 
-    if (def.category === 'lamp') {
+    if (def.category === 'charge') {
       if (this.request.kind !== 'wild') {
         await this.msg.show("You can't catch another warden's kin!");
         return null;
@@ -355,7 +388,7 @@ export class BattleScene extends Phaser.Scene {
   private itemUsable(id: string): boolean {
     const def = getItem(id);
     if (!def) return false;
-    if (def.category === 'lamp') return this.request.kind === 'wild';
+    if (def.category === 'charge') return this.request.kind === 'wild';
     if (def.category === 'medicine') return true;
     return false;
   }
@@ -410,7 +443,103 @@ export class BattleScene extends Phaser.Scene {
       }
       case 'status': {
         const who = ev.side === 'player' ? this.engine.player : this.engine.foe;
-        await this.msg.show(`${who.displayName} was afflicted with ${ev.status}!`);
+        await this.msg.show(`${who.displayName} ${statusLanded(ev.status)}`);
+        return;
+      }
+      case 'status-block': {
+        const who = ev.side === 'player' ? this.engine.player : this.engine.foe;
+        await this.msg.show(`${who.displayName} ${statusBlocked(ev.status)}`);
+        return;
+      }
+      case 'status-wake': {
+        const who = ev.side === 'player' ? this.engine.player : this.engine.foe;
+        await this.msg.show(`${who.displayName} woke up!`);
+        return;
+      }
+      case 'status-thaw': {
+        const who = ev.side === 'player' ? this.engine.player : this.engine.foe;
+        await this.msg.show(`${who.displayName} thawed out!`);
+        return;
+      }
+      case 'confusion-hit': {
+        const who = ev.side === 'player' ? this.engine.player : this.engine.foe;
+        void this.sfx.playVariant('battle-hit-physical', ['a', 'b', 'c']);
+        await this.msg.show(`${who.displayName} is dazzled — it hurt itself!`);
+        await (ev.side === 'player' ? this.playerHp : this.foeHp).animateTo();
+        return;
+      }
+      case 'status-tick': {
+        const who = ev.side === 'player' ? this.engine.player : this.engine.foe;
+        await this.msg.show(
+          ev.status === 'scorch'
+            ? `${who.displayName} is seared by its scorch!`
+            : `The blight deepens in ${who.displayName}!`,
+        );
+        await (ev.side === 'player' ? this.playerHp : this.foeHp).animateTo();
+        return;
+      }
+      case 'status-cure': {
+        const who = ev.side === 'player' ? this.engine.player : this.engine.foe;
+        await this.msg.show(`${who.displayName}'s affliction lifted!`);
+        return;
+      }
+      case 'recoil': {
+        const who = ev.side === 'player' ? this.engine.player : this.engine.foe;
+        await this.msg.show(`${who.displayName} is hit by the kickback!`);
+        await (ev.side === 'player' ? this.playerHp : this.foeHp).animateTo();
+        return;
+      }
+      case 'drain': {
+        const who = ev.side === 'player' ? this.engine.player : this.engine.foe;
+        await this.msg.show(`${who.displayName} drew strength from the hit!`);
+        await (ev.side === 'player' ? this.playerHp : this.foeHp).animateTo();
+        return;
+      }
+      case 'heal': {
+        const who = ev.side === 'player' ? this.engine.player : this.engine.foe;
+        void this.sfx.playVariant('world-heal', ['a', 'b']);
+        await this.msg.show(`${who.displayName} recovered ${ev.amount} HP!`);
+        await (ev.side === 'player' ? this.playerHp : this.foeHp).animateTo();
+        return;
+      }
+      case 'flinch': {
+        const who = ev.side === 'player' ? this.engine.player : this.engine.foe;
+        await this.msg.show(`${who.displayName} flinched!`);
+        return;
+      }
+      case 'screen-up': {
+        const mine = ev.side === 'player';
+        await this.msg.show(
+          ev.screen === 'physical'
+            ? `A bulwark settles over ${mine ? 'your' : "the foe's"} side!`
+            : `A soft mist veils ${mine ? 'your' : "the foe's"} side!`,
+        );
+        return;
+      }
+      case 'screen-fade': {
+        const mine = ev.side === 'player';
+        await this.msg.show(`The ${ev.screen === 'physical' ? 'bulwark' : 'mist'} over ${mine ? 'your' : "the foe's"} side faded.`);
+        return;
+      }
+      case 'hazard-set': {
+        const mine = ev.side === 'player';
+        await this.msg.show(`Caltrops scatter across ${mine ? 'your' : "the foe's"} side of the field!`);
+        return;
+      }
+      case 'hazard-hurt': {
+        const who = ev.side === 'player' ? this.engine.player : this.engine.foe;
+        await this.msg.show(`${who.displayName} is hurt by the caltrops!`);
+        await (ev.side === 'player' ? this.playerHp : this.foeHp).animateTo();
+        return;
+      }
+      case 'pivot': {
+        const who = ev.side === 'player' ? this.engine.player : this.engine.foe;
+        await this.msg.show(`${who.displayName} slips back toward the lamplight!`);
+        if (ev.side === 'player') {
+          // The player picks who swaps in (cancel keeps the current kin out).
+          const idx = await this.switchMenu(true);
+          if (idx !== null) await this.playEvents(this.engine.pivotSwitch(idx));
+        }
         return;
       }
       case 'faint':
@@ -497,6 +626,7 @@ export class BattleScene extends Phaser.Scene {
       this.playerHp.setKin(incoming);
       await this.msg.show(`Go, ${incoming.displayName}!`, { wait: false });
     } else {
+      this.dexSeen.add(incoming.species.id);
       this.foeBattler.setSpecies(this, incoming.species, 'foe');
       this.foeBattler.container.setAlpha(1).setY(FOE_POS.y);
       this.foeHp.setKin(incoming);
@@ -552,7 +682,7 @@ export class BattleScene extends Phaser.Scene {
 
     void this.sfx.play('battle-xp');
     const before = winner.level;
-    const { learned, pending } = winner.gainExp(totalGain);
+    const { learned, pending, kindleReady } = winner.gainExp(totalGain);
     await this.msg.show(`${winner.displayName} gained ${totalGain} EXP!`);
     await this.playerHp.animateTo();
 
@@ -569,6 +699,23 @@ export class BattleScene extends Phaser.Scene {
         await new MoveLearnPrompt(this, winner, m, this.sfx).run();
         this.msg.setVisible(true);
       }
+    }
+
+    // The level crossed a kindling threshold — the witnessed ceremony, here at
+    // the battle's end like the classics. Declining is honoured (the kin offers
+    // again after its next level-up).
+    if (kindleReady) {
+      this.msg.setVisible(false);
+      const kindled = await new KindlePrompt(this, winner, kindleReady, this.sfx, () => {
+        if (winner === this.engine.player) {
+          this.playerBattler.setSpecies(this, winner.species, 'player');
+        }
+      }).run();
+      if (kindled) {
+        this.dexSeen.add(winner.species.id);
+        this.playerHp.refresh();
+      }
+      this.msg.setVisible(true);
     }
   }
 
@@ -609,6 +756,7 @@ export class BattleScene extends Phaser.Scene {
       set_flags: this.setFlags.length > 0 ? this.setFlags : undefined,
       grant_abilities: this.grantAbilities.length > 0 ? this.grantAbilities : undefined,
       money_earned: this.moneyEarned > 0 ? this.moneyEarned : undefined,
+      dex_seen: this.dexSeen.size > 0 ? [...this.dexSeen] : undefined,
     };
 
     this.music.stop();
@@ -627,5 +775,30 @@ export class BattleScene extends Phaser.Scene {
     this.playerHp?.destroy();
     this.foeHp?.destroy();
     this.msg?.destroy();
+  }
+}
+
+// --- Status narration (canon names, warm voice) ------------------------------
+
+function statusLanded(status: string): string {
+  switch (status) {
+    case 'scorch': return 'was scorched!';
+    case 'drench': return 'was drenched and slowed!';
+    case 'numb': return 'was numbed!';
+    case 'doze': return 'drifted into a doze...';
+    case 'blight': return 'was blighted!';
+    case 'dazzle': return 'was dazzled!';
+    case 'chill': return 'was chilled through!';
+    default: return `was afflicted with ${status}!`;
+  }
+}
+
+function statusBlocked(status: string): string {
+  switch (status) {
+    case 'doze': return 'is fast asleep.';
+    case 'chill': return 'is chilled solid!';
+    case 'numb': return 'is numb and cannot move!';
+    case 'drench': return 'is waterlogged and cannot move!';
+    default: return 'cannot move!';
   }
 }

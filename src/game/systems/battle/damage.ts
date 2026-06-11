@@ -57,7 +57,9 @@ export function computeDamage(
   const baseStep = Math.floor((2 * level) / 5) + 2;
   let base = Math.floor((Math.floor((baseStep * move.power * atk) / def)) / 50) + 2;
 
-  const crit = rng() < CRIT_CHANCE;
+  // { highCrit: true } rider — a keener edge (1/4 instead of 1/16).
+  const critChance = move.effect?.highCrit === true ? 1 / 4 : CRIT_CHANCE;
+  const crit = rng() < critChance;
   const variance = 0.85 + rng() * 0.15;
   base = base * stab(attacker, move.type) * effectiveness * (crit ? CRIT_MULT : 1) * variance;
 
