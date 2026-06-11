@@ -4,12 +4,21 @@ Inspiration **key-art / mood thumbnails** for every area and route in
 *Vesperholm — The Long Dusk*. One wide pixel-art establishing shot per place,
 all generated to one cohesive style so the whole world reads as a single game.
 
-> **These are inspiration, not game assets.** They are *not* tilesets, *not*
-> top-down maps, and *not* battle backdrops (those live in
-> `public/assets/backgrounds/battle/`). They set the mood/feel of each place and
-> serve as a **visual reference** for downstream art — most usefully as an
+> **Primarily a visual reference** for downstream art — most usefully as an
 > `--input-image` reference when generating that area's **tileset** so the tiles
-> inherit the right palette, lighting and atmosphere.
+> inherit the right palette, lighting and atmosphere. They are *not* tilesets,
+> *not* top-down maps, and *not* battle backdrops (those live in
+> `public/assets/backgrounds/battle/`).
+>
+> **They are ALSO surfaced in-game** as the *Wayfarer's Charts* — a collectible
+> concept-art gallery (pause menu → CHARTS). The first visit to a place reveals
+> its piece full-screen; the gallery then shows discovered places and `? ? ?`
+> teases for the rest. The 25 charter pieces (the 19 areas/routes + 6 landmarks)
+> are copied to **`public/assets/concept-art/`** to be served; the Lumenary
+> interiors are not in the charter. The registry that wires a piece to its
+> trigger maps + mood line is `src/game/content/charts.ts` — when you add or
+> re-render a charter piece here, copy it into `public/assets/concept-art/<set>/`
+> and keep the registry in sync (see CLAUDE.md "The Wayfarer's Charts").
 
 ## What's here
 
