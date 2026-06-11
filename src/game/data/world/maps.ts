@@ -166,6 +166,18 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/glowmoss-deep-b.webp',
     ],
   },
+  // The lower floor (ladder pair from the SE alcove) — the dungeon-scale
+  // ladder's first taught descent; holds the Spore Grotto's true mouth.
+  glowmoss_deep_b1f: {
+    json: 'assets/maps/glowmoss_deep_b1f.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/lowleaf-hollow-c.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/glowmoss-deep-a.webp',
+      'assets/backgrounds/battle/glowmoss-deep-b.webp',
+    ],
+  },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
   // Their battle backdrops are already rendered — see UPCOMING_BATTLE_BACKDROPS below.

@@ -371,6 +371,13 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', text: "A miner's drop-purse, stitched shut against the damp. Found 200 WICKS!" },
     { op: 'setFlag', flag: 'flag:picked_glowmoss_wicks' },
   ],
+  // B1F dead-end A: the maze pays in kind — a Star-chart, dry in its tube.
+  'script.pickup_b1f_chart': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'chart_focus_mind', count: 1 },
+    { op: 'say', text: 'A chart-tube wedged in the rocks, sound and dry. Found a STAR-CHART: FOCUS MIND!' },
+    { op: 'setFlag', flag: 'flag:picked_b1f_chart' },
+  ],
 
   // Gullcry Rock's prize: the Tide Charm (a sea-blessed lamp; see items.ts).
   'script.pickup_gullcry_charm': [

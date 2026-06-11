@@ -319,6 +319,11 @@ pure data (see `tools/maps/build_*.py` + `src/game/content/` for the worked patt
 - **The catch-first gate** — the engine sets `flag:caught_first_kin` on any successful
   catch; the first Lumenary's battle trigger requires it, with a `blocked_ref` line in the
   warden's own voice.
+- **Multi-floor caves (2026-06, BINDING)** — caves are ladder mazes, not single rooms:
+  floors are maps joined by mutual ladder-warp pairs, dead ends pay in caches, spur mouths
+  sit on the lowest floor, and only a region's *first* dungeon stays small. The full scale
+  table (first dungeon → mid wall → landmark → the Spire) is `level-design.md` §2a;
+  Glowmoss Deep + B1F is the built worked example.
 - **Sight trainers** — route (and dungeon-floor) trainers carry `sight_range` +
   `defeated_flag` on their placement: they alert (!), march up and run their script when
   the player crosses their line. Post a trainer in a corridor's end row facing down their

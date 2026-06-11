@@ -103,9 +103,10 @@ SIGN_MOUTH = (6, 22)
 SIGN_GROTTO = (24, 22)
 put(*SIGN_MOUTH, "sign")
 put(*SIGN_GROTTO, "sign")
-# the Spore Grotto mouth: a dark recess in the alcove's south wall face
-GROTTO_MOUTH = (25, 23)
-deco[GROTTO_MOUTH[1] * W + GROTTO_MOUTH[0]] = gid("cavewall_fill")
+# the SE alcove's LADDER-PIT down to B1F (the dungeon-scale ladder, §11a) —
+# the Spore Grotto's true mouth now sits a floor below.
+LADDER_DOWN = (25, 23)
+deco[LADDER_DOWN[1] * W + LADDER_DOWN[0]] = gid("cave_ladder_down")
 
 # ---- assemble --------------------------------------------------------------------
 m = {
@@ -145,11 +146,11 @@ m = {
         {"id": "to_mine_s", "at": {"tx": 29, "ty": 14}, "trigger": "step_on",
          "to_map": "cinderhead_mine", "to": {"tx": 1, "ty": 13}, "facing": "right",
          "transition": "fade"},
-        # The Spore Grotto spur (graph.ts `to_grotto`, Glimmerstep — held, but the
-        # gate keeps the data honest). Dark recess, interact like a cave door.
-        {"id": "to_grotto", "at": {"tx": GROTTO_MOUTH[0], "ty": GROTTO_MOUTH[1]},
-         "trigger": "interact", "to_map": "spore_grotto", "to": {"tx": 5, "ty": 8},
-         "facing": "down", "requires_ability": "glimmerstep", "transition": "door"},
+        # The ladder down to B1F — lands ON the lower floor's up-ladder (the
+        # audited mutual pair; the engine never auto-fires a warp on arrival).
+        {"id": "ladder_down", "at": {"tx": LADDER_DOWN[0], "ty": LADDER_DOWN[1]},
+         "trigger": "step_on", "to_map": "glowmoss_deep_b1f", "to": {"tx": 19, "ty": 4},
+         "facing": "down", "transition": "fade"},
     ],
     "triggers": [
         {"id": "sign_mouth", "kind": "sign",

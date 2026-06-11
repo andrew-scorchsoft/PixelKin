@@ -181,5 +181,7 @@
   "glowshroom_b": 179,
   "greymoss_a": 180,
   "greymoss_b": 181,
-  "null_lantern": 182
+  "null_lantern": 182,
+  "cave_ladder_down": 183,
+  "cave_ladder_up": 184
 }

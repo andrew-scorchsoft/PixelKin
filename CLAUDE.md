@@ -492,7 +492,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   = void-dark wall TOP, S edges = the lamp-lit FACE — the cliff convention indoors), `glowmoss`
   (the cave encounter tile, fill-only, tagged `tall_grass`) + `glowshroom/greymoss/null_lantern`
   decor. Carve rooms as blobs from a solid wall grid, join with 1-wide chokes, and put story
-  step_on triggers ON the chokes so they can't be walked around.
+  step_on triggers ON the chokes so they can't be walked around. **Caves are multi-floor**
+  (level-design §2a, BINDING): a floor is a map, ladders are mutual step_on warp pairs
+  landing ON each other (`cave_ladder_down`/`cave_ladder_up` tiles), lower floors run
+  darker + a band deeper, spur mouths live on the lowest floor — `build_glowmoss_deep_b1f.py`
+  is the worked floor; only a region's FIRST dungeon may be one floor (+ a small B1F).
 - **Warp conventions (enforced by `audit_warps.py`).** A wide entrance warps on EVERY
   walkable tile of its opening (one warp in a 3-tile gap strands players on the silent
   tiles); landings are in-bounds + walkable; and each landing sits ON (or within 1 tile of)

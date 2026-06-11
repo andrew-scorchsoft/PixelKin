@@ -425,6 +425,10 @@ add("glowshroom_b", gbaforge.glowshroom(1), role="decor")
 add("greymoss_a", gbaforge.greymoss(0), role="decor")
 add("greymoss_b", gbaforge.greymoss(1), role="decor")
 add("null_lantern", gbaforge.null_lantern(), role="decor", collides=True)
+# the cave-dungeon vertical verbs: ladder-pit down / standing ladder up (the
+# warp rides the tile; the prop is the telegraph) — level-design §11a
+add("cave_ladder_down", gbaforge.cave_ladder_down(), role="decor")
+add("cave_ladder_up", gbaforge.cave_ladder_up(), role="decor")
 
 # ---- GBA-register structured redraw (gbaforge) -------------------------------
 # The terrain families above established the *vocabulary* (names, roles, order —
@@ -481,6 +485,10 @@ def _gba_override(nm: str, cur: Image.Image) -> Image.Image | None:
         return g.greymoss(0 if nm.endswith("_a") else 1)
     if nm == "null_lantern":
         return g.null_lantern()
+    if nm == "cave_ladder_down":
+        return g.cave_ladder_down()
+    if nm == "cave_ladder_up":
+        return g.cave_ladder_up()
     m = _re.fullmatch(rf"(path|sand|water|cliff|trail|pond)_{_GBA_ROLE}(?:_v(\d+))?", nm)
     if not m:
         return None

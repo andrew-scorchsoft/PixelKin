@@ -568,6 +568,61 @@ def null_lantern() -> Image.Image:
     return img(a)
 
 
+def cave_ladder_down() -> Image.Image:
+    """A ladder-pit: a dark floor opening with the ladder's top rungs showing —
+    the cave-dungeon DESCENT verb (level-design §11a). Transparent prop laid on
+    cavefloor; the warp rides the tile."""
+    a = np.zeros((16, 16, 4), dtype=np.int16)
+    void = (12, 10, 20)
+    rimlit = sh(CAVE, 1.45, 12)
+    rimdk = sh(CAVE, 0.55)
+    rail = (168, 142, 96)
+    raildk = (118, 96, 62)
+    # the pit: a rounded 12x10 opening
+    for y in range(4, 14):
+        for x in range(2, 14):
+            if (x in (2, 13) and y in (4, 13)):
+                continue  # rounded corners
+            a[y, x] = [*void, 255]
+    # rim: lit on the N lip (light from above), dark on the S
+    for x in range(3, 13):
+        a[3, x] = [*rimlit, 255]
+        a[14, x] = [*rimdk, 255]
+    for y in range(4, 14):
+        a[y, 1] = [*rimdk, 255]
+        a[y, 14] = [*rimdk, 255]
+    # the ladder's top: two rails + three rungs sinking into the dark
+    for y in range(5, 13):
+        a[y, 6] = [*(rail if y < 9 else raildk), 255]
+        a[y, 9] = [*(rail if y < 9 else raildk), 255]
+    for y in (6, 9, 12):
+        for x in (7, 8):
+            a[y, x] = [*(rail if y < 9 else raildk), 255]
+    return img(a)
+
+
+def cave_ladder_up() -> Image.Image:
+    """A standing ladder against the rock — the matching ASCENT verb on the
+    floor below. Transparent prop; the warp rides the tile."""
+    a = np.zeros((16, 16, 4), dtype=np.int16)
+    rail = (168, 142, 96)
+    raildk = (118, 96, 62)
+    rock = sh(CAVE, 0.75)
+    # a shadowed rock back-plate so the ladder reads against any floor
+    for y in range(1, 15):
+        for x in range(4, 12):
+            a[y, x] = [*rock, 255]
+    # rails
+    for y in range(1, 15):
+        a[y, 5] = [*rail, 255]
+        a[y, 10] = [*rail, 255]
+    # rungs every 3px, darker toward the bottom
+    for y in (2, 5, 8, 11, 14):
+        for x in range(6, 10):
+            a[y, x] = [*(rail if y < 9 else raildk), 255]
+    return img(a)
+
+
 # ---- preview ------------------------------------------------------------------
 def _preview(out_path: str) -> None:
     rows = [

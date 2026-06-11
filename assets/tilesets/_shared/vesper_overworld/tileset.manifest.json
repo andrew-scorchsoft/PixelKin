@@ -1182,6 +1182,14 @@
       "file": "182_null_lantern.png",
       "role": "decor",
       "collides": true
+    },
+    {
+      "file": "183_cave_ladder_down.png",
+      "role": "decor"
+    },
+    {
+      "file": "184_cave_ladder_up.png",
+      "role": "decor"
     }
   ]
 }

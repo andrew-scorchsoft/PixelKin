@@ -245,7 +245,10 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'GLOWMOSS DEEP\nThe moss keeps a little light where it can. Walk soft, Wayfarer — and lend yours back.' },
   ],
   'sign.glowmoss_grotto': [
-    { text: 'SPORE GROTTO — below this notch.\nThe spore-beds answer no lamp but a Glimmerstep. Mind where the shrooms lean.' },
+    { text: 'LOWER GALLERIES — ladder down.\nThe dark below keeps the old beds. Count your turns, Wayfarer — the deep does not.' },
+  ],
+  'sign.glowmoss_b1f_grotto': [
+    { text: 'SPORE GROTTO — through this notch.\nThe spore-beds answer no lamp but a Glimmerstep. Mind where the shrooms lean.' },
   ],
   'npc.glowmoss_keeper_a_after': [
     { speaker: 'DELL', text: 'The nursery beds are brightest they have been in years... all but the grey chamber.' },

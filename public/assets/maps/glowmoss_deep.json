@@ -14,7 +14,7 @@
       "tile_height": 16,
       "first_gid": 1,
       "columns": 12,
-      "tile_count": 183
+      "tile_count": 185
     }
   ],
   "layers": [
@@ -1585,7 +1585,7 @@
         0,
         0,
         0,
-        164,
+        184,
         0,
         0,
         0,
@@ -2672,20 +2672,19 @@
       "transition": "fade"
     },
     {
-      "id": "to_grotto",
+      "id": "ladder_down",
       "at": {
         "tx": 25,
         "ty": 23
       },
-      "trigger": "interact",
-      "to_map": "spore_grotto",
+      "trigger": "step_on",
+      "to_map": "glowmoss_deep_b1f",
       "to": {
-        "tx": 5,
-        "ty": 8
+        "tx": 19,
+        "ty": 4
       },
       "facing": "down",
-      "requires_ability": "glimmerstep",
-      "transition": "door"
+      "transition": "fade"
     }
   ],
   "triggers": [
