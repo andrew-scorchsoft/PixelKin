@@ -38,10 +38,24 @@ homes, shops, inns) and **cool** `interior_stone_set` (stone/dark panel —
 Lumenaries). Tile roles: cap band (4 dirs + 4 corners), north face, window
 (warm) / banner (cool) insets, patterned floor + variant, doormat/runner.
 
-**Furniture** — the DRAWN kit in `tools/maps/interiorforge.py` (the gbaforge of
-furniture; AI generation is retired for interiors — it produced small,
-half-isometric props that floated off the walls). Two mount classes, packed by
-`pack_objects.py` to `interior_<stem>` keys:
+**Furniture** — a two-stage pipeline, packed by `pack_objects.py` to
+`interior_<stem>` keys:
+
+1. **`tools/maps/interiorforge.py`** draws every piece in code — the structural
+   master that locks the projection, footprint and mount class (and remains the
+   shipping art for tiling/tiny pieces: `rug_runner`, `stool`, `pew`).
+2. **`tools/maps/gen_interior_object.py`** re-renders the hero pieces through
+   the image model with the kit's STRICT projection briefs — `--projection
+   front` (wall pieces: straight-on elevation, edge-to-edge, **never**
+   isometric) or `topdown` (free-standing: top surface + front strip)
+   — for the richer shading the drawn masters can't reach. The first
+   generation's failures (small half-isometric props floating off the walls)
+   came from a loose brief, not the model: the projection contract is now
+   baked into the tool. Always eyeball the keyed result on the checker
+   preview; re-hue any magenta fringe; if a piece comes back angled
+   (the pew did), the drawn master ships instead.
+
+Two mount classes:
 
 | Class | Pieces | Projection & placement |
 |-------|--------|------------------------|

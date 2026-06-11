@@ -554,10 +554,13 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **Interiors are multi-room SNES compositions on roomkit (2026-06).** Build on
   `tools/maps/roomkit.py`: `faced_room` (cap + visible FACE walls, patterned floor, doormat)
   + at least one INTERNAL `partition_v/_h` (bed nook / storeroom / bunk room / shrine niches
-  — one box of props is the rejected look), furniture from the DRAWN `interiorforge.py` kit
-  (22 pieces; AI-gen retired indoors): wall pieces (3×3 hearth, 2×3 bookcase/shelf, dresser,
-  stove, lamp_rack) go through `wall_mount` so their top row sits OVER the wall face (flush,
-  never floated off the wall), free-standing through manifest-driven `place`. One focal point
+  — one box of props is the rejected look), furniture from the two-stage kit: `interiorforge.py`
+  DRAWS the structural masters (projection/footprint/mount locked), then `gen_interior_object.py
+  --projection front|topdown` re-renders hero pieces via image-gen with the strict-projection
+  briefs (loose briefs caused the old isometric floaters; angled results ship the drawn master
+  instead — the pew did). Wall pieces (3×3 hearth, 2×3 bookcase/shelf, dresser, stove,
+  lamp_rack) go through `wall_mount` so their top row sits OVER the wall face (flush, never
+  floated off the wall), free-standing through manifest-driven `place`. One focal point
   top-centre; cool stone register for Lumenaries; `rk.finish()` renders + audits. Binding
   spec: `docs/world/interiors.md`. Resizing a room moves its doormat — update the town
   builder's landing coords (audit_warps enforces the pair).
