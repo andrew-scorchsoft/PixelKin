@@ -298,6 +298,9 @@ export const DIALOGUE: DialogueRegistry = {
   'npc.fen_courier_b_after': [
     { speaker: 'OSPREY', text: 'The bank east of the causeway is worth the climb — waders leave what they cannot carry. And the hop down saves the walk back!' },
   ],
+  'sign.spore_grotto': [
+    { text: 'SPORE GROTTO\nThe old beds. The moss-tenders leave them be — what grows down here grew before lamps.' },
+  ],
   'sign.fen_landing': [
     { text: 'SALTREACH FEN\nPlanks hold the road; the water holds everything else. North to Lowleaf Hollow, by the channel crossing.' },
   ],

@@ -178,6 +178,17 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/glowmoss-deep-b.webp',
     ],
   },
+  // Spore Grotto — the Glowmoss complex's deep spur (off B1F): the rare bed.
+  spore_grotto: {
+    json: 'assets/maps/spore_grotto.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/lowleaf-hollow-c.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/glowmoss-deep-a.webp',
+      'assets/backgrounds/battle/glowmoss-deep-b.webp',
+    ],
+  },
   // Saltreach Fen I — the marsh route east of Pearlmoor (the pattern-library
   // showcase: ledged bank, plank causeways, paint-derived reed zones).
   saltreach_fen_i: {

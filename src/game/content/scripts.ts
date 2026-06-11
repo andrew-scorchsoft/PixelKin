@@ -404,6 +404,12 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', text: "A wader's purse, left high and dry on the bank. Found 150 WICKS!" },
     { op: 'setFlag', flag: 'flag:picked_fen_bank_wicks' },
   ],
+  'script.pickup_grotto_starglass': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'starglass_shard', count: 1 },
+    { op: 'say', text: 'Wedged in the spore-soft dark, a sliver of fallen sky. Found a STARGLASS SHARD!' },
+    { op: 'setFlag', flag: 'flag:picked_grotto_starglass' },
+  ],
   'script.pickup_fen_islet': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'warm_balm', count: 1 },
