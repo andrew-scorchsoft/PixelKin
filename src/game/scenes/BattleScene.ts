@@ -117,6 +117,9 @@ export class BattleScene extends Phaser.Scene {
   /** Turns already resolved — 0 while choosing the encounter's FIRST action
    *  (conditional charges with `first_turn` check this at throw time). */
   private turnsResolved = 0;
+  /** Kin that have been the active player kin this battle — they warm their bond
+   *  on a victory (the lead at send-out + everyone switched in). */
+  private participants = new Set<KinInstance>();
 
   constructor() {
     super('Battle');
@@ -130,6 +133,7 @@ export class BattleScene extends Phaser.Scene {
     this.moneyEarned = 0;
     this.dexSeen = new Set();
     this.turnsResolved = 0;
+    this.participants = new Set();
     this.cameras.main.setBackgroundColor(COLORS.night);
     this.sfx = new Sfx(this);
     this.music = new MusicDirector(this);
@@ -223,6 +227,8 @@ export class BattleScene extends Phaser.Scene {
   /** The main decision → resolution loop. */
   private async loop(): Promise<void> {
     while (!this.engine.ended) {
+      // Whoever is on the field this turn took part — bond warms on a win.
+      this.participants.add(this.engine.player);
       const events = await this.chooseAndResolve();
       await this.playEvents(events);
       this.turnsResolved++;
@@ -691,6 +697,7 @@ export class BattleScene extends Phaser.Scene {
       // A catch pays the same XP as a knock-out — collecting (the game's heart)
       // must keep the player on the level curve, not punish them off it.
       await this.awardExp();
+      await this.warmParticipantsBond();
       if (outcome === 'win' && this.request.kind === 'trainer') {
         const trainer = getTrainer(this.request.trainer);
         const lines = getTrainerLines(trainer?.defeat_ref);
@@ -713,6 +720,32 @@ export class BattleScene extends Phaser.Scene {
     }
 
     this.complete(outcome);
+  }
+
+  /** Small bond a kin earns for taking part in a winning battle (per participant). */
+  private static readonly BOND_PER_WIN = 2;
+
+  /**
+   * Warm the bond of every kin that took part and is still standing, then offer
+   * a bond-trigger kindling for any that crossed its threshold — the same
+   * witnessed KindlePrompt the level path uses (declining re-offers next gain).
+   */
+  private async warmParticipantsBond(): Promise<void> {
+    for (const kin of this.participants) {
+      if (kin.isFainted) continue;
+      const kindling = kin.raiseBond(BattleScene.BOND_PER_WIN);
+      if (!kindling) continue;
+      this.msg.setVisible(false);
+      const isActive = kin === this.engine.player;
+      const kindled = await new KindlePrompt(this, kin, kindling, this.sfx, () => {
+        if (isActive) this.playerBattler.setSpecies(this, kin.species, 'player');
+      }).run();
+      if (kindled) {
+        this.dexSeen.add(kin.species.id);
+        if (isActive) this.playerHp.refresh();
+      }
+      this.msg.setVisible(true);
+    }
   }
 
   /** Grant exp to the active (and a share to other participants is out of scope). */

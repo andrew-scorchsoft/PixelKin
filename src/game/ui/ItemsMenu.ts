@@ -21,6 +21,7 @@ import { Cursor } from './Cursor';
 import { Menu, type MenuOption } from './Menu';
 import { DialogueBox } from './DialogueBox';
 import { MoveLearnPrompt } from './MoveLearnPrompt';
+import { KindlePrompt } from './KindlePrompt';
 import { InputController, InputAction } from '@game/systems/input/InputController';
 import { KinInstance } from '@game/systems/party/KinInstance';
 import { MOVE_BY_ID } from '@game/data/dex';
@@ -57,6 +58,9 @@ interface PackEntry {
 }
 
 export class ItemsMenu {
+  /** Bond a kin earns when tended with a medicine from the pack. */
+  private static readonly BOND_PER_TEND = 1;
+
   private readonly dim: Phaser.GameObjects.Rectangle;
   private readonly panel: Panel;
   private readonly cursor: Cursor;
@@ -275,7 +279,21 @@ export class ItemsMenu {
     await new DialogueBox(this.scene, this.sfx).run([
       { text: `${kin.displayName} recovered ${restored} HP.` },
     ]);
+
+    // Tending a kin warms it a little — and may catch a bond-trigger kindling.
+    const kindling = kin.raiseBond(ItemsMenu.BOND_PER_TEND);
+    if (kindling) {
+      this.setOverlayVisible(false);
+      await new KindlePrompt(this.scene, kin, kindling, this.sfx).run();
+      this.setOverlayVisible(true);
+    }
     this.rebuild();
+  }
+
+  /** Hide/show the menu's own chrome so a full-screen prompt reads cleanly over it. */
+  private setOverlayVisible(visible: boolean): void {
+    this.dim.setVisible(visible);
+    this.panel.setVisible(visible);
   }
 
   /**

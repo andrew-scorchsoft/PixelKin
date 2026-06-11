@@ -15,6 +15,14 @@
  * Canon vocabulary only (kin, Lumenary, Gleam, Lantern Gift, vesperlamp, the Hollowing).
  */
 
+/** One block of the credits roll: a role heading over the names that filled it. */
+export interface CreditsSection {
+  /** The credited role/department, e.g. 'Story & World'. */
+  role: string;
+  /** The people/studios/tools credited under it (one per line). */
+  names: string[];
+}
+
 export interface CinematicBeat {
   /** Panel image key/path (served), e.g. 'assets/backgrounds/cinematic/coldopen-01.webp'.
    *  Omit to hold the previous panel. */
@@ -29,6 +37,15 @@ export interface CinematicBeat {
   fx?: 'shake' | 'flash';
   /** Auto-advance after this hold when the beat has no lines to read. */
   dwellMs?: number;
+  /**
+   * A credits roll for this beat: a slow upward scroll of role/name sections,
+   * rendered over the held panel (or starfield). Skippable like any beat (Cancel
+   * ends the whole sequence). When set, the beat shows the scroll instead of
+   * narration lines. Optional `creditsTitle` heads the scroll.
+   */
+  credits?: CreditsSection[];
+  /** Heading shown at the top of a `credits` scroll (e.g. the game's name). */
+  creditsTitle?: string;
 }
 
 export interface CinematicScript {
@@ -88,8 +105,46 @@ export const COLDOPEN_SOUTH: CinematicScript = {
   next: { scene: 'World' }, // data filled in by the caller (TitleScene) so spawn stays canon
 };
 
+/**
+ * The endgame send-off + credits roll. PLACEHOLDER COPY — a later content agent
+ * replaces the prose and finalises the credited names; this exists so the
+ * capability is real and routable (World → Cinematic('ending_credits') → Title).
+ *
+ * Shape worth keeping: a short held epilogue beat, then a `credits` scroll. The
+ * `ending-credits` music key may not be rendered yet — MusicDirector loads it
+ * tolerantly (missing → silence), so the roll plays regardless.
+ */
+export const ENDING_CREDITS: CinematicScript = {
+  id: 'ending_credits',
+  beats: [
+    {
+      panel: PANEL('ending-01'),
+      music: 'ending-credits',
+      lines: [
+        '[PLACEHOLDER] The last constellation catches, and dawn climbs the eastern ridge over Vesperholm.',
+        '[PLACEHOLDER] The Long Dusk lifts. The lamps you lit will keep — and the road home is warm.',
+      ],
+    },
+    {
+      // The roll holds the dawn panel and scrolls the credits up over it.
+      creditsTitle: 'PixelKin',
+      credits: [
+        { role: 'Story & World', names: ['Andrew Ward Studios'] },
+        { role: 'Game Design', names: ['Andrew Ward Studios'] },
+        { role: 'Code & Engine', names: ['Andrew Ward Studios'] },
+        { role: 'Art & Sprites', names: ['Andrew Ward Studios'] },
+        { role: 'Music & Sound', names: ['Andrew Ward Studios'] },
+        { role: 'Built with', names: ['TypeScript', 'Phaser 3', 'Vite'] },
+        { role: 'For', names: ['Every lamp-tender on their Wayfaring'] },
+      ],
+    },
+  ],
+  next: { scene: 'Title' }, // the ending hands control back to the Title screen
+};
+
 export const CINEMATICS: Record<string, CinematicScript> = {
   [COLDOPEN_SOUTH.id]: COLDOPEN_SOUTH,
+  [ENDING_CREDITS.id]: ENDING_CREDITS,
 };
 
 export function getCinematic(id: string): CinematicScript | undefined {

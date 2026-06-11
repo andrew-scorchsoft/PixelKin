@@ -21,6 +21,9 @@ import type { KinInstanceData, KinStatus } from '@game/systems/save/types';
 
 export const MAX_MOVES = 4;
 export const MAX_LEVEL = 100;
+/** Bond's ceiling — the genre's classic 0..255 friendship range (no designed
+ *  max in docs/mechanics, so we use the convention). */
+export const MAX_BOND = 255;
 
 /** A known move plus how many charges (PP) it has left. */
 export interface KnownMove {
@@ -82,7 +85,7 @@ export class KinInstance {
     this.nickname = opts.nickname;
     this.exp = opts.exp ?? expForLevel(this.level);
     this.status = opts.status ?? 'none';
-    this.bond = Math.max(0, Math.min(255, Math.floor(opts.bond ?? 0)));
+    this.bond = Math.max(0, Math.min(MAX_BOND, Math.floor(opts.bond ?? 0)));
     this.caughtAt = opts.caughtAt;
     this.moves = opts.moves ?? defaultMovesFor(species, this.level);
     this.hp = opts.hp ?? this.maxHp;
@@ -210,6 +213,18 @@ export class KinInstance {
     return before - this.hp;
   }
 
+  /**
+   * Warm this kin's bond by `amount` (clamped to 0..MAX_BOND). Returns the
+   * bond-trigger kindling it now qualifies for, if any — the caller runs the
+   * same KindlePrompt the level path does. Re-offers every gain while eligible
+   * (declining just leaves bond high, so the next gain offers again).
+   */
+  raiseBond(amount: number): Kindling | null {
+    if (amount === 0) return null;
+    this.bond = Math.max(0, Math.min(MAX_BOND, this.bond + Math.floor(amount)));
+    return amount > 0 ? this.bondKindleReady() : null;
+  }
+
   /** Reset per-battle volatile state (stat stages + status counters). Call when (un)sending out. */
   resetBattleState(rng: () => number = Math.random): void {
     this.stages.atk = 0;
@@ -295,6 +310,14 @@ export class KinInstance {
     if (!k) return null;
     if (k.trigger.kind !== 'level') return null; // stone/bond/location/time go through items/scripts
     if (typeof k.trigger.level !== 'number' || this.level < k.trigger.level) return null;
+    return SPECIES_BY_ID.has(k.into) ? k : null;
+  }
+
+  /** The bond-triggered kindling this kin currently qualifies for, if any. */
+  bondKindleReady(): Kindling | null {
+    const k = this.species.kindling;
+    if (!k || k.trigger.kind !== 'bond') return null;
+    if (typeof k.trigger.min !== 'number' || this.bond < k.trigger.min) return null;
     return SPECIES_BY_ID.has(k.into) ? k : null;
   }
 
