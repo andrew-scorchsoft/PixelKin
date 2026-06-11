@@ -113,6 +113,18 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/pearlmoor-quay-b.webp',
     ],
   },
+  // The Causeway Bell's walk: the foot causeway out to the Moor-bell shrine
+  // (gated on the netmender's rope; reuses Pearlmoor's music + backdrops).
+  pearlmoor_breakwater: {
+    json: 'assets/maps/pearlmoor_breakwater.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/dimglass-coast-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/pearlmoor-quay-a.webp',
+      'assets/backgrounds/battle/pearlmoor-quay-b.webp',
+    ],
+  },
   pearlmoor_lumenary: {
     json: 'assets/maps/pearlmoor_lumenary.json',
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },

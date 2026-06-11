@@ -1984,6 +1984,57 @@
       },
       "activation": "interact",
       "ref": "sign.flats_to_quay"
+    },
+    {
+      "id": "buoy_first",
+      "kind": "cutscene",
+      "at": {
+        "tx": 14,
+        "ty": 9
+      },
+      "activation": "interact",
+      "ref": "script.buoy_first",
+      "once": true,
+      "requires_flag": "flag:q_south_buoys",
+      "blocked_ref": "npc.buoy_dark",
+      "sets_flags": [
+        "flag:q_south_buoy_a"
+      ],
+      "hidden_when_flag": "flag:q_south_buoy_a"
+    },
+    {
+      "id": "buoy_second",
+      "kind": "cutscene",
+      "at": {
+        "tx": 16,
+        "ty": 12
+      },
+      "activation": "interact",
+      "ref": "script.buoy_second",
+      "once": true,
+      "requires_flag": "flag:q_south_buoy_a",
+      "blocked_ref": "npc.buoy_order",
+      "sets_flags": [
+        "flag:q_south_buoy_b"
+      ],
+      "hidden_when_flag": "flag:q_south_buoy_b"
+    },
+    {
+      "id": "buoy_last",
+      "kind": "cutscene",
+      "at": {
+        "tx": 16,
+        "ty": 20
+      },
+      "activation": "interact",
+      "ref": "script.buoy_last",
+      "once": true,
+      "requires_flag": "flag:q_south_buoy_b",
+      "blocked_ref": "npc.buoy_order",
+      "sets_flags": [
+        "flag:q_south_buoys_lit"
+      ],
+      "hidden_when_flag": "flag:q_south_buoys_lit"
     }
   ],
   "encounters": [
@@ -2194,7 +2245,47 @@
       "facing": "up",
       "sprite": "npc_mentor",
       "movement": "look_around",
-      "dialogue_ref": "npc.flats_sky_watcher"
+      "dialogue_ref": "npc.flats_sky_watcher",
+      "requires_flag": "flag:dusk_begins",
+      "hidden_when_flag": "flag:q_south_letter"
+    },
+    {
+      "id": "sky_watcher_letter",
+      "at": {
+        "tx": 12,
+        "ty": 18
+      },
+      "facing": "up",
+      "sprite": "npc_mentor",
+      "movement": "look_around",
+      "dialogue_ref": "script.fenn_letter",
+      "requires_flag": "flag:q_south_letter",
+      "hidden_when_flag": "flag:q_south_letter_given"
+    },
+    {
+      "id": "sky_watcher_after",
+      "at": {
+        "tx": 12,
+        "ty": 18
+      },
+      "facing": "up",
+      "sprite": "npc_mentor",
+      "movement": "look_around",
+      "dialogue_ref": "npc.flats_sky_watcher_after",
+      "requires_flag": "flag:q_south_letter_given"
+    },
+    {
+      "id": "cache_net_floats",
+      "at": {
+        "tx": 11,
+        "ty": 4
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_net_floats",
+      "requires_flag": "flag:q_south_bell",
+      "hidden_when_flag": "flag:picked_net_floats"
     },
     {
       "id": "cache_balm",

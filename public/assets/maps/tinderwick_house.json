@@ -520,7 +520,72 @@
       "facing": "down",
       "sprite": "npc_parent",
       "movement": "static",
-      "dialogue_ref": "npc.house_parent"
+      "dialogue_ref": "npc.house_parent",
+      "hidden_when_flag": "flag:has_starter"
+    },
+    {
+      "id": "house_parent_warm",
+      "at": {
+        "tx": 5,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "npc_parent",
+      "movement": "static",
+      "dialogue_ref": "npc.house_parent_warm",
+      "requires_flag": "flag:has_starter",
+      "hidden_when_flag": "flag:dusk_begins"
+    },
+    {
+      "id": "house_parent_letter",
+      "at": {
+        "tx": 5,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "npc_parent",
+      "movement": "static",
+      "dialogue_ref": "script.gran_letter",
+      "requires_flag": "flag:dusk_begins",
+      "hidden_when_flag": "flag:q_south_letter"
+    },
+    {
+      "id": "house_parent_wait",
+      "at": {
+        "tx": 5,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "npc_parent",
+      "movement": "static",
+      "dialogue_ref": "npc.house_parent_wait",
+      "requires_flag": "flag:q_south_letter",
+      "hidden_when_flag": "flag:q_south_letter_given"
+    },
+    {
+      "id": "house_parent_thanks",
+      "at": {
+        "tx": 5,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "npc_parent",
+      "movement": "static",
+      "dialogue_ref": "script.gran_thanks",
+      "requires_flag": "flag:q_south_letter_given",
+      "hidden_when_flag": "flag:q_south_letter_done"
+    },
+    {
+      "id": "house_parent_after",
+      "at": {
+        "tx": 5,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "npc_parent",
+      "movement": "static",
+      "dialogue_ref": "npc.house_parent_after",
+      "requires_flag": "flag:q_south_letter_done"
     }
   ],
   "gates": [],

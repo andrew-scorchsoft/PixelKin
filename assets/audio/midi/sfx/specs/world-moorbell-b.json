@@ -1,0 +1,17 @@
+{
+  "title": "World - Moor-bell toll (b)",
+  "_note": "Variant: the same harbour bell a shade lower and softer (the second toll, heard with the wind off it).",
+  "era": "sfx",
+  "tempo": 120,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "Eb",
+  "tracks": [
+    { "name": "bell", "voice": "bell", "octave": 3, "gain": 0.9,
+      "notes": "Eb3+Bb3h" },
+    { "name": "clang", "voice": "bell", "octave": 4, "gain": 0.3,
+      "notes": "E4e rq." },
+    { "name": "thunk", "voice": "tri_bass", "octave": 2, "gain": 0.45,
+      "notes": "Eb2s rs rh" }
+  ]
+}

@@ -77,6 +77,10 @@ export interface Warp {
   facing?: Facing; // player facing after the warp
   requires_ability?: AbilityId; // warp inactive until the gift is earned
   requires_flag?: WorldFlag; // warp inactive until the flag is set
+  /** Dialogue shown when the warp is gated and the requirement is unmet — a
+   *  diegetic "not yet" in a character's voice (mirror of EventTrigger.blocked_ref),
+   *  e.g. the netmender's chained breakwater gate. Works on step_on and interact. */
+  blocked_ref?: string;
   transition?: WarpTransition;
 }
 

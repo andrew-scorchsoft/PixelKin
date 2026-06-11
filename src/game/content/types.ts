@@ -7,7 +7,7 @@
  * matching registry in this folder, never new engine code. Maps reference these
  * by string ref (e.g. EventTrigger.ref = 'sign.tinderwick_dock').
  */
-import type { TileCoord, Facing, WorldFlag, AbilityId } from '@game/data/world/types';
+import type { TileCoord, Facing, WorldFlag, AbilityId, EncounterTerrain } from '@game/data/world/types';
 import type { Region } from '@game/data/world/graph';
 import type { ActionName, EmoteName } from '@game/entities/Actor';
 
@@ -72,6 +72,21 @@ export type ScriptRegistry = Record<string, CutsceneStep[]>;
 
 export type ItemCategory = 'charge' | 'medicine' | 'chart' | 'valuable' | 'key' | 'misc';
 
+/**
+ * Condition on a *conditional* charge (docs/mechanics/04-capture.md, "Specialty
+ * charges"): the charge's `catch_bonus` applies only while the condition holds —
+ * otherwise the throw burns the charge at a plain ×1.0. Evaluated at throw time
+ * by the BattleScene (it knows the foe, the encounter terrain and the turn).
+ * Data-shaped so new specialty charges are an items.ts edit, never engine code.
+ */
+export type ChargeCondition =
+  | { kind: 'terrain'; terrain: EncounterTerrain } // met in this encounter terrain (e.g. Drift Charm on water)
+  | { kind: 'hp_below'; ratio: number } // target's hp/maxHp strictly below ratio (e.g. 0.25)
+  | { kind: 'status'; status: string } // target afflicted by this exact status (e.g. 'doze')
+  | { kind: 'any_status' } // target afflicted by anything at all
+  | { kind: 'defender_type'; types: string[] } // target carries one of these types (e.g. Lunar/Dark)
+  | { kind: 'first_turn' }; // thrown on the encounter's first turn (the gamble throw)
+
 export interface ItemDef {
   id: string;
   name: string;
@@ -83,6 +98,12 @@ export interface ItemDef {
    * of 255 is a guaranteed catch, e.g. the Starlamp).
    */
   catch_bonus?: number;
+  /**
+   * For *conditional* charges only: `catch_bonus` applies while this holds,
+   * otherwise the throw falls back to plain ×1.0 (the charge is still spent).
+   * Unconditional charges simply omit it — they behave exactly as before.
+   */
+  condition?: ChargeCondition;
   /** For 'key' Kindlestone-type items: fires a kin's stone-trigger kindling. */
   kindle_stone?: boolean;
   /** HP restored for 'medicine' items. */

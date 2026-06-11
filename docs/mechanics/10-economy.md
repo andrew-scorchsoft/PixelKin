@@ -62,8 +62,8 @@ plain throws free — and the purchasable line is **charges** (one boosted throw
 each; `04-capture.md`). The old Vesperlamp/Bright/Radiant Lamp consumable rung
 is retired; saves migrate (v3) old lamps into charges.
 
-Quest charms (Tide Charm, the Starlamp) have **no price** — unbuyable,
-unsellable, earned only. Now that status conditions run (Part B, BUILT), add
+Quest charms (Tide Charm, Drift Charm, Wrecklight Charm, the Starlamp) have
+**no price** — unbuyable, unsellable, earned only. Now that status conditions run (Part B, BUILT), add
 next: **Soothing Tea** (cure any status, ~200w) and **Rekindle Drop** (wake a
 fainted kin at half health, ~900w) — add to this table + items.ts together.
 

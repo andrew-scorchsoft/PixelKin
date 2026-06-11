@@ -48,6 +48,10 @@ GRANTS: dict[str, list[str]] = {
     "vesper_crossroads": ["flag:has_starter"],          # the waystone ceremony
     "dimglass_coast": ["flag:has_beacon_wick"],         # the lamplighter's key
     "tinderwick_beacon_top": ["gleam:ember"],           # the earned first Gleam
+    # The Causeway Bell loop: the netmender hands the bell-rope on the quay
+    # (after the net-floats errand on Dimglass II — both reachable on foot).
+    "pearlmoor_quay": ["flag:q_south_has_rope"],
+    "pearlmoor_breakwater": ["flag:q_south_bell_rung"],  # the Moor-bell rung
     "pearlmoor_lumenary": ["tidecall", "gleam:tide", "flag:crown_south"],
     "lowleaf_hollow": ["glimmerstep", "gleam:verdant"],
     "cinderhead_mine": ["gleam:stone", "flag:crown_east"],

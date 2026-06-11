@@ -47,6 +47,9 @@ export class KinInstance {
   exp: number;
   hp: number;
   status: KinStatus;
+  /** Bond (0..255) — dormant friendship value, persisted for the future
+   *  bond-trigger kindling path (Hearthkit). Nothing raises it yet. */
+  bond: number;
   readonly moves: KnownMove[];
   readonly caughtAt?: { map: string; tx: number; ty: number };
 
@@ -69,6 +72,7 @@ export class KinInstance {
       exp?: number;
       hp?: number;
       status?: KinStatus;
+      bond?: number;
       moves?: KnownMove[];
       caughtAt?: { map: string; tx: number; ty: number };
     } = {},
@@ -78,6 +82,7 @@ export class KinInstance {
     this.nickname = opts.nickname;
     this.exp = opts.exp ?? expForLevel(this.level);
     this.status = opts.status ?? 'none';
+    this.bond = Math.max(0, Math.min(255, Math.floor(opts.bond ?? 0)));
     this.caughtAt = opts.caughtAt;
     this.moves = opts.moves ?? defaultMovesFor(species, this.level);
     this.hp = opts.hp ?? this.maxHp;
@@ -106,6 +111,7 @@ export class KinInstance {
       nickname: data.nickname,
       exp: data.exp,
       status: data.status ?? 'none',
+      bond: data.bond,
       moves: moves.length > 0 ? moves : defaultMovesFor(species, data.level),
       caughtAt: data.caught_at,
     });
@@ -124,6 +130,7 @@ export class KinInstance {
     };
     if (this.nickname) data.nickname = this.nickname;
     if (this.status !== 'none') data.status = this.status;
+    if (this.bond > 0) data.bond = this.bond;
     if (this.caughtAt) data.caught_at = this.caughtAt;
     return data;
   }

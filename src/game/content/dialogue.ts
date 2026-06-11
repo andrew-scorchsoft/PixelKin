@@ -60,6 +60,21 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'GRAN', text: 'Old Fenn left word — the Star-tender, love, who minds what is left of the stars. He waits at the Crossroads waystone, east along the Lanternway. That is the lit road out of town.' },
     { speaker: 'GRAN', text: 'Keep to the lamps, love. And come home warm.' },
   ],
+  // G4/F2 — the warm beat before the road: starter chosen, omen not yet fallen.
+  // A keepsake and a specific human detail, so `dusk_begins` threatens a FACE.
+  'npc.house_parent_warm': [
+    { speaker: 'GRAN', text: 'Let me look at you. A lamp on your belt and a friend at your heel — oh, you are HIS apprentice all right.' },
+    { speaker: 'GRAN', text: 'Your grandfather trimmed every lamp on that square for forty years. Out at first bell, rain or starfall, that old brass trimmer in his coat — and he\'d sing to the stubborn wicks. Swore they burned longer for it.' },
+    { text: 'She takes the worn brass wick-trimmer down from the shelf, folds your fingers around it, and pats them shut.', style: 'narrate' },
+    { speaker: 'GRAN', text: 'He\'d have walked you to the gate, love. Since he can\'t — carry his trimmer, and sing to the stubborn ones. Now: north past the gate, and home before the bread\'s stale.' },
+  ],
+  'npc.house_parent_wait': [
+    { speaker: 'GRAN', text: 'Found him yet? The tidal flats, love — up past the coast road, where the buoys are. He\'ll be the untidy one watching the sky.' },
+  ],
+  'npc.house_parent_after': [
+    { speaker: 'GRAN', text: 'I read his answer again last night and laughed all over. "Some of them are even yours" — honestly, that man.' },
+    { speaker: 'GRAN', text: 'The kettle knows your cup now, love. However far the Wayfaring runs, it\'s never further than this kitchen.' },
+  ],
 
   // --- Tinderwick general store (interior) ---
   'sign.tinderwick_shop_wares': [
@@ -183,6 +198,11 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'STAR-TENDER FENN', text: 'You saw it too, then. The sky and the ground hold hands here, child — snuff a kin\'s light and a star goes dark with it.' },
     { speaker: 'STAR-TENDER FENN', text: 'That is what we walk against. Relight the constellations, one Gleam at a time. Pearlmoor keeps the second.' },
   ],
+  // Fenn on the flats once Gran's letter is delivered (S2 closed).
+  'npc.flats_sky_watcher_after': [
+    { speaker: 'STAR-TENDER FENN', text: 'Did she laugh? At the letter? ...Good. A laugh in a dark kitchen is worth two relit stars, and you may tell the sky I said so.' },
+    { speaker: 'STAR-TENDER FENN', text: 'Pearlmoor keeps the second Gleam, child — the old ferryman reads water the way I read sky. Mind the bell.' },
+  ],
 
   // --- Pearlmoor Quay (town) ---
   'sign.pearlmoor_welcome': [
@@ -212,6 +232,53 @@ export const DIALOGUE: DialogueRegistry = {
   'npc.reyl_wash': [
     { speaker: 'REYL WASH', text: 'Step up to the sea-altar when your bond is ready, Wayfarer. The Tide does not hurry, and neither shall we.' },
   ],
+  // The bond-test trigger's "not yet" (blocked_ref) — Reyl's voice, until the bell rings.
+  'npc.reyl_blocked': [
+    { speaker: 'REYL WASH', text: 'Easy, Wayfarer. The blessing waits on the moor-bell, and the moor-bell waits on you. Come speak with me first — the sea keeps her orders.' },
+  ],
+  // Reyl mid-quest: the hook is given, the bell still silent.
+  'npc.reyl_waiting': [
+    { speaker: 'REYL WASH', text: 'Still quiet out there. The netmender keeps the rope; her floats went south down the flats — ground you have already walked, if your boots remember.' },
+    { speaker: 'REYL WASH', text: 'No hurry, mind. Tides go out so they can come back. But the blessing-boats are at their moorings, and the whole quay is listening for that bell.' },
+  ],
+  // Reyl post-Gleam, back in the hall while the blessing runs outside.
+  'npc.reyl_after': [
+    { speaker: 'REYL WASH', text: 'Hear them out on the water? Sixty voices and not one in a hurry. That is the Tide-blessing, and it is yours as much as theirs tonight.' },
+    { speaker: 'REYL WASH', text: 'When the song lets you go: the Tidecall opens the islets, the sea-shrine, and the fen-road east. And Gullcry Rock, back down the flats — the buoys always did know the way.' },
+  ],
+  // --- The netmender (quay) — the Causeway Bell's keeper, then S1's giver ----
+  'npc.netmender_pre': [
+    { speaker: 'NETMENDER', text: 'Mind the coils, Wayfarer. Nets to mend, floats gone south, and a bell-rope nobody\'s fit to carry. The sea took a whole storm out of MY year, I tell you.' },
+  ],
+  'npc.netmender_floats': [
+    { speaker: 'NETMENDER', text: 'Reyl sent you for the rope? Hmph. The rope is spliced and waiting — it is my FLOATS the sea owes me first.' },
+    { speaker: 'NETMENDER', text: 'The storm carried them south down the tidal flats — cork floats, a whole string, stamped with my mark. Bring them home and the rope is yours, and gladly.' },
+  ],
+  'npc.netmender_sent': [
+    { speaker: 'NETMENDER', text: 'The moor-gate\'s unchained — south end of the quay, where the boards run out. Hang the rope true and ring it LOUD, Wayfarer.' },
+    { speaker: 'NETMENDER', text: 'And give Maren and Cob my regards. By which I mean: beat them politely.' },
+  ],
+  'npc.netmender_rung': [
+    { speaker: 'NETMENDER', text: 'I heard it. The whole QUAY heard it. My splice, your hands — that bell will swing a hundred years on that rope.' },
+    { speaker: 'NETMENDER', text: 'Reyl walked into his hall the moment it rang. Go on — the blessing waits on nobody now.' },
+  ],
+  'npc.netmender_buoys_wait': [
+    { speaker: 'NETMENDER', text: 'Quay-outward, remember: the near one, the middle water, then the last buoy out. A line lights in ORDER or it isn\'t a line, it\'s a scatter.' },
+  ],
+  'npc.netmender_done': [
+    { speaker: 'NETMENDER', text: 'Every night I count them now. Near, middle, far — all standing. You\'d think a body would tire of counting to three. A body does not.' },
+  ],
+  // The chained moor-gate (warp blocked_ref) — her voice, before the rope is earned.
+  'npc.netmender_gate': [
+    { speaker: 'NETMENDER', text: 'The moor-gate stays chained, Wayfarer — those boards have eaten bolder boots than yours. No one walks out to a silent bell without MY rope on their shoulder.' },
+  ],
+  // S1's buoys, refused out of order (trigger blocked_refs on Dimglass II).
+  'npc.buoy_dark': [
+    { text: 'The buoy rocks on its chain, wick drowned and dark. It is somebody\'s tended light — not yours to meddle with, unasked.', style: 'narrate' },
+  ],
+  'npc.buoy_order': [
+    { text: 'This buoy\'s wick is sound but its line-mates nearer the quay still sit dark. A line lights in order, quay-outward — the netmender was firm on it.', style: 'narrate' },
+  ],
   'npc.pearlmoor_innkeep': [
     { speaker: 'INNKEEP', text: "Rest your feet, Wayfarer. The Tide-blessing's near — the whole quay hangs fresh lanterns for it." },
     { speaker: 'INNKEEP', text: 'They say when Reyl relights the Tide, the harbour shallows answer a lit lamp. Old ferryman magic. The moon listens to him.' },
@@ -220,14 +287,47 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'FISHER', text: 'Tide-blessing tonight! We string the buoys, sing the old going-out song, and ask the sea to bring our lights home.' },
     { speaker: 'FISHER', text: 'Reyl tends the Lumenary up the boardwalk — tallest hall on the quay, you cannot miss its moon-lamp.' },
   ],
+  // --- The old fisher (quayside inn) — S3's giver, then keeper of the promise --
+  'npc.old_fisher_pre': [
+    { speaker: 'OLD FISHER', text: 'A dry corner and a warm tin — all an old boat-hand asks. The sea and I are square these days. Mostly square.' },
+    { speaker: 'OLD FISHER', text: 'Ring that moor-bell back to life and maybe I\'ll tell you the story the quay thinks I made up.' },
+  ],
+  'npc.old_fisher_wait': [
+    { speaker: 'OLD FISHER', text: 'Tideglass Cavern, off the flats — the dark cliff-mouth. No lamp of mine ever walked that dark, and yours can\'t yet either. East-country craft, the deep-walking. The GLIMMERSTEP, they call it.' },
+    { speaker: 'OLD FISHER', text: 'No hurry, Wayfarer. That lamp has kept its own counsel forty years. But when your light learns to walk the dark — remember an old man\'s stern-lamp.' },
+  ],
+  'npc.old_fisher_after': [
+    { speaker: 'OLD FISHER', text: 'Forty years I told that story to folk who smiled at their boots. Now look at them — they ask ME to tell it. You gave an old man his true back.' },
+  ],
   // Tide-blessing festival NPCs — appear on the quay once 'gleam:tide' is lit.
   'npc.blessing_elder': [
     { speaker: 'QUAY ELDER', text: 'The Tide stands up over the water again. Sixty years I waited to see the going-out song sung under it.' },
     { speaker: 'QUAY ELDER', text: 'Tides go out so they can come back. Reyl always says it. Tonight, child, you brought one back.' },
   ],
   'npc.blessing_kid': [
-    { speaker: 'NET-MENDER', text: 'The shallows are ANSWERING! Watch — every buoy lights when the moon-water moves. The old folk are crying. Happy crying!' },
-    { speaker: 'NET-MENDER', text: 'They say the Wayfarer who relit it can walk the harbour water now. Gullcry Rock, the sea-shrine, all of it. Imagine!' },
+    { speaker: 'DECKHAND', text: 'The shallows are ANSWERING! Watch — every buoy lights when the moon-water moves. The old folk are crying. Happy crying!' },
+    { speaker: 'DECKHAND', text: 'They say the Wayfarer who relit it can walk the harbour water now. Gullcry Rock, the sea-shrine, all of it. Imagine!' },
+  ],
+  // A third blessing voice by the jetty — the going-out song, named and human.
+  'npc.blessing_singer': [
+    { speaker: 'BOAT-SINGER', text: '"Tides go out so they can come back—" sing it with me, Wayfarer, you of all people have the right tonight.' },
+    { speaker: 'BOAT-SINGER', text: 'My mother led the going-out song from that bow for thirty years, under a dark sky. Tonight I get to sing it under a LIT one. That is your doing.' },
+  ],
+  // --- The breakwater (the Causeway Bell's walk) -------------------------------
+  'sign.breakwater_gate': [
+    { text: 'THE MOOR-GATE\nBreakwater boards beyond — bell-business and net-hands only. The moor-bell hangs silent at the far end, wanting a rope.' },
+  ],
+  'sign.breakwater_mid': [
+    { text: 'Causeway litany, cut into the stone: "The sea is patient. Be lit, and be more patient."' },
+  ],
+  'sign.moorbell_shrine': [
+    { text: 'THE MOOR-BELL SHRINE\nRung to open the Tide-blessing since Pearlmoor first strung a lantern. The sea hears it. So does the sky.' },
+  ],
+  'npc.net_hand_a_after': [
+    { speaker: 'MAREN', text: 'Weighed and steady — I said it and I hold to it. The wind\'s kinder past the elbow lantern. Mostly.' },
+  ],
+  'npc.net_hand_b_after': [
+    { speaker: 'COB', text: 'A week of mending, lost to a bell I could hear from my own bunk. Worth it. WORTH IT.' },
   ],
 
   // --- Dimglass Coast: the witness (appears after flag:dusk_begins, B1) -------

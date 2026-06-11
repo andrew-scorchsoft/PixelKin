@@ -198,8 +198,10 @@ go digging on every task.
 - **Catching = one vesperlamp + charges (2026-06, BUILT):** the vesperlamp is a key
   item (plain throw free, ×1.0); **charges** (`category:'charge'`, `catch_bonus`) are
   one-throw boosters — Glow ×1.5 (200w), Beacon ×2.5 (600w, shops once `gleam:ember`),
-  Tide Charm ×2.0 (quest), Starlamp guaranteed (quest). Catch = the classic four-shake
-  roll (P≈a/255) + status bonus (doze/chill ×2.5, others ×1.5). `docs/mechanics/04-capture.md`.
+  Tide Charm ×2.0 (quest), Starlamp guaranteed (quest). **Conditional charges are live**
+  (`ItemDef.condition`, evaluated at throw time; unmet → plain ×1.0): the Drift Charm
+  (Pearlmoor S1's reward, ×3.0 on water-met kin) is the worked example. Catch = the classic
+  four-shake roll (P≈a/255) + status bonus (doze/chill ×2.5, others ×1.5). `docs/mechanics/04-capture.md`.
 - **Battle runtime Part B is BUILT (2026-06):** the seven canon statuses run for real
   (gates/chip/stat hooks — exact constants atop `BattleEngine.ts`, mirrored in
   `03-moves.md`), as do drain/recoil/flinch/heal/cure/screens/caltrops/pivot/selfDoze/
@@ -522,10 +524,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   engine-faithful movement model + graph.ts parser). On first run flow caught 4 shipped
   bugs (sealed cache, sign sealing Pearlmoor's west spoke, unapproachable Tideglass door,
   walk-aroundable `dusk_begins`/`glowmoss_drained`) — trust the audit over a mental walk.
-- **A story step_on band must cover the WHOLE cut, flag-paired.** One trigger tile on a
-  wide corridor is walk-aroundable (this bit `dusk_begins`); band every walkable tile of
-  the choke (triggers on solid cells are inert, so over-banding is safe) and give each
-  tile `sets_flags` + `hidden_when_flag` on the same flag so the band hides after firing.
+- **A story step_on band must cover the WHOLE cut — but only its WALKABLE tiles.** One
+  trigger tile on a wide corridor is walk-aroundable (this bit `dusk_begins`); but a band
+  tile on a solid/sealed cell now FAILS `audit_flow` as unreachable content (this bit the
+  Tide-blessing band) — compute the cut's walkable cells in the builder and band exactly
+  those, each with `sets_flags` + `hidden_when_flag` on the same flag.
 - **Accent tilesets stack via `mapkit.register_tileset(name, index=…)`** (returns the
   TilesetRef; default `first_gid` = `next_first_gid()`), then `gid(name, set=…)`/`gid_at()`
   resolve names across kits — don't hand-compute first_gids for per-area accent sets.
@@ -549,7 +552,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   a return warp to the source — landing ON is safe because the engine never auto-fires a
   step_on warp on arrival (`enterMap` places, it doesn't step). The audit caught real bugs
   (an out-of-bounds Lumenary landing, an inn landing aimed at the wrong door column) — run
-  it after ANY warp edit, not just new maps.
+  it after ANY warp edit, not just new maps. A gated warp may carry `blocked_ref` (mirror
+  of EventTrigger's) for a diegetic "not yet" line, step_on included — the Pearlmoor
+  moor-gate (`npc.netmender_gate`) is the worked example.
 - **The device shell screen is locked to 3:2.** `shells.css` sizes `#game-root` to the
   largest 3:2 box that fits, so `Scale.FIT` never pillarboxes (no black side bars). The
   `plain`/`overlay` shells are intentionally full-bleed and still letterbox.

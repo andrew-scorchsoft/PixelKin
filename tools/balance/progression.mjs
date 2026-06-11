@@ -166,8 +166,10 @@ const JOURNEY = [
     leadShare: 0.42,
     wild: { areas: ['pearlmoor_quay'], band: [8, 11], fights: { rusher: 2, mainline: 6, explorer: 10 } },
     trainers: [
-      T('Breakwater netmender', 'route', [K(12)]),
-      T('Breakwater oarhand', 'route', [K(12), K(13)]),
+      // BUILT (the Causeway Bell loop): the breakwater's two net-hand sight
+      // trainers — mirror src/game/content/trainers.ts exactly.
+      T('Maren (net-hand)', 'route', [K(12, 26), K(12, 31)]),
+      T('Cob (net-hand)', 'route', [K(13, 31), K(14, 27)]),
       T('Reyl Wash', 'warden', [K(12, 26), K(13, 31), K(14, 27), K(16, 24)]),
     ],
     income: { quests: 400, valuables: 250, finds: 0 }, // bell-rope quest + Round leg
@@ -331,6 +333,8 @@ const BUILT_PAYOUTS = {
   fen_wader_a: ['route', 17, 272],
   fen_courier_b: ['route', 18, 288],
   flats_wayfarer_b: ['route', 11, 176],
+  net_hand_a: ['route', 12, 192],
+  net_hand_b: ['route', 14, 224],
   lampwarden_pearlmoor: ['warden', 16, 960],
   glowmoss_keeper_a: ['keeper', 20, 400],
   glowmoss_keeper_b: ['keeper', 21, 420],

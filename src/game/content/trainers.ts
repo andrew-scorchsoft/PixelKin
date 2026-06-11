@@ -150,6 +150,36 @@ export const TRAINERS: TrainerRegistry = {
     music: 'battle-emberfall',
   },
 
+  // Pearlmoor breakwater — the Causeway Bell loop's two net-hand SIGHT trainers
+  // (route class, 10-economy §4): the 12→14 on-ramp between arrival (~12) and
+  // Reyl's ace 16, posted so the causeway crossing is mandatory.
+  net_hand_a: {
+    id: 'net_hand_a',
+    name: 'MAREN',
+    title: 'Net-hand',
+    party: [
+      { species_id: 26, level: 12 }, // Brinelet — Tide
+      { species_id: 31, level: 12 }, // Lumpin — Tide/Light (ace)
+    ],
+    intro_ref: 'trainer.net_hand_a.intro',
+    defeat_ref: 'trainer.net_hand_a.defeat',
+    payout: 192, // route 16 × ace 12
+    music: 'battle-emberfall',
+  },
+  net_hand_b: {
+    id: 'net_hand_b',
+    name: 'COB',
+    title: 'Net-hand',
+    party: [
+      { species_id: 31, level: 13 }, // Lumpin — Tide/Light
+      { species_id: 27, level: 14 }, // Brineroll — Tide (ace)
+    ],
+    intro_ref: 'trainer.net_hand_b.intro',
+    defeat_ref: 'trainer.net_hand_b.defeat',
+    payout: 224, // route 16 × ace 14
+    music: 'battle-emberfall',
+  },
+
   // Second Lumenary: Reyl Wash, the Lampwarden of Pearlmoor Quay (Tide) — an old
   // ferryman. Beating him relights the Tide constellation: the player earns the Tide
   // Gleam AND the Tidecall Lantern Gift (granted via reward_abilities). 'crown_south'
@@ -206,6 +236,20 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   ],
   'trainer.flats_wayfarer_b.defeat': [
     { speaker: 'ELSPETH', text: 'The wager is yours. Mind the tide pools, and tell Reyl his letters are late because of you.' },
+  ],
+  'trainer.net_hand_a.intro': [
+    { speaker: 'MAREN', text: 'Nobody walks the moor-boards but bell-business and net-hands — and you don\'t smell of either yet.' },
+    { speaker: 'MAREN', text: 'Rope or no rope, the causeway tests every lamp it carries. Out here that\'s the LAW.' },
+  ],
+  'trainer.net_hand_a.defeat': [
+    { speaker: 'MAREN', text: 'Steady on wet stone — that\'s rarer than you\'d think. Go on, then. Mind Cob by the far lantern; he\'s been spoiling for a bout all season.' },
+  ],
+  'trainer.net_hand_b.intro': [
+    { speaker: 'COB', text: 'Past Maren with your boots still dry! Then you\'re the one carrying the old rope home.' },
+    { speaker: 'COB', text: 'One more net between you and the bell, Wayfarer. Mine\'s the heavier.' },
+  ],
+  'trainer.net_hand_b.defeat': [
+    { speaker: 'COB', text: 'Hah! Well hauled. The shrine\'s at the causeway\'s end — ring it LOUD, so the whole quay hears it come back.' },
   ],
   'trainer.lampwarden_pearlmoor.intro': [
     { speaker: 'REYL WASH', text: 'Apprentice, is it. I have ferried a hundred Wayfarers across this harbour. Few read the water right.' },

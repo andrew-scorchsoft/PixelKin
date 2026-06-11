@@ -121,6 +121,170 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'proud', text: 'The Tide Gleam stands up over Pearlmoor again. And the Tidecall is yours — go on, ask the shallows to part. The harbour keeps its secrets for those who can cross.' },
   ],
 
+  // --- The Causeway Bell (Pearlmoor's earned second Gleam; spine §5 shape #2) --
+  // The Tide-blessing cannot begin until the Moor-bell rings, and the bell-rope
+  // is in the netmender's keeping: Reyl's hook (hall) -> the net-floats errand
+  // (Dimglass II) -> the rope -> the breakwater walk -> the bell. All data.
+  'script.reyl_quest': [
+    { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'weathered', text: 'So. The apprentice with the new Ember in their sky. I have ferried a hundred Wayfarers over this harbour, and I read a bond the way I read weather. Yours is nearly ripe for the testing.' },
+    { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'neutral', text: 'Nearly. Tides go out so they can come back — but the blessing waits on the moor-bell, and the moor-bell waits on you.' },
+    { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'grave', text: 'It has hung silent at the breakwater\'s end since the last storm carried its rope away. No bell, no Tide-blessing. No blessing, no bond-test. That is the order of things, and the sea keeps her orders.' },
+    { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'neutral', text: 'The NETMENDER on the quay splices the only rope fit to hang there. Ask her kindly — though I warn you, her temper went south with her floats in that same storm.' },
+    { op: 'setFlag', flag: 'flag:q_south_bell' },
+  ],
+
+  // The netmender, floats home: the rope changes keeping (her swap stage runs this).
+  'script.netmender_rope': [
+    { op: 'say', speaker: 'NETMENDER', text: 'My floats! Every one of them — salt-bleached, sand-scoured, and SOUND. You walked the flats for a stranger\'s nets.' },
+    { op: 'say', speaker: 'NETMENDER', text: 'Then the rope is yours to carry. I spliced it the winter the bell first went quiet, and I have waited on a steady pair of hands since.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'bell_rope', count: 1 },
+    { op: 'say', text: 'She lays a coil of salt-stiff rope across your arms. Received the MOOR-BELL ROPE!' },
+    { op: 'say', speaker: 'NETMENDER', text: 'The moor-gate\'s unchained for you — south end of the quay, where the boards run out over the black water. Walk it to the end, hang the rope true, and ring it LOUD.' },
+    { op: 'say', speaker: 'NETMENDER', text: 'And mind Maren and Cob out on the causeway. Net-hands the both of them, and bored. They will want a bout off you. Custom.' },
+    { op: 'setFlag', flag: 'flag:q_south_has_rope' },
+  ],
+
+  // The breakwater's two net-hand SIGHT trainers (the 12->14 on-ramp to Reyl's 16).
+  'script.net_hand_a': [
+    { op: 'say', speaker: 'MAREN', text: 'Hold it right there, rope-runner! Causeway custom: every lamp that walks the moor-boards gets weighed.' },
+    { op: 'battle', trainer: 'net_hand_a' },
+    { op: 'say', speaker: 'MAREN', text: 'Weighed and found steady. The bell\'s been waiting longer than you have — get on.' },
+    { op: 'setFlag', flag: 'flag:net_hand_a_beaten' },
+  ],
+  'script.net_hand_b': [
+    { op: 'say', speaker: 'COB', text: 'Oi! Nobody rings MY bell without ringing me first. Nets up, Wayfarer!' },
+    { op: 'battle', trainer: 'net_hand_b' },
+    { op: 'say', speaker: 'COB', text: 'Hah — well hauled! Go on then. Ring it loud enough to reach the flats; Maren bet me a week of mending it can\'t be done.' },
+    { op: 'setFlag', flag: 'flag:net_hand_b_beaten' },
+  ],
+
+  // The Moor-bell, rung at the shrine — the loop's payoff and the blessing's first
+  // note. Quiet -> the bell -> the harbour answering: a small minor->major of its
+  // own (the full festival swell waits on the Gleam; docs/world/cinematics.md).
+  'script.ring_moorbell': [
+    { op: 'letterbox', on: true, ms: 320 },
+    { op: 'musicFade', ms: 500 },
+    { op: 'silence', ms: 900 }, // the held breath before the bell
+    { op: 'narrate', text: 'You hang the netmender\'s rope where the old one frayed, take the cold span in both hands — and pull.' },
+    { op: 'sfx', key: 'world-moorbell' },
+    { op: 'tint', color: '#4fb4ff', alpha: 0.3, ms: 500 },
+    { op: 'narrate', text: 'The moor-bell swings. Once. Twice. The sound rolls out flat and silver over the black water, the way it has not rolled in years.' },
+    { op: 'sfx', key: 'world-moorbell' },
+    { op: 'narrate', text: 'And the harbour ANSWERS. Buoy by buoy, mast by mast, lanterns kindle along the quay behind you — and somewhere among the boats, somebody starts to sing the going-out song.' },
+    { op: 'tint', color: '#4fb4ff', alpha: 0, ms: 900 },
+    { op: 'narrate', text: 'The Tide-blessing has begun. Reyl Wash will be waiting at his sea-altar.' },
+    { op: 'musicCrossfade', key: 'dimglass-coast-a', ms: 900 },
+    { op: 'letterbox', on: false, ms: 320 },
+  ],
+
+  // E — the Tide-blessing proper (post `gleam:tide`, banded on the quay forecourt):
+  // Pearlmoor's festival, deliberately the COOL mirror of Tinderwick's warm fair —
+  // open water, moonlight, the bell as its signature note, the new cool-tidal cue.
+  'script.tide_blessing': [
+    { op: 'letterbox', on: true, ms: 320 },
+    { op: 'musicFade', ms: 500 },
+    { op: 'silence', ms: 900 },
+    { op: 'sfx', key: 'world-moorbell' },
+    { op: 'narrate', text: 'Out at the breakwater\'s end the moor-bell is swinging again — and under it, new in the sky, the TIDE hangs over its own reflection.' },
+    { op: 'tint', color: '#4fb4ff', alpha: 0.32, ms: 700 },
+    { op: 'musicCrossfade', key: 'pearlmoor-blessing', ms: 1200 },
+    { op: 'narrate', text: 'The blessing-boats put out in a slow lantern-line, moon on the water and a light on every bow. The whole quay is singing the going-out song — soft, and sure, and not at all sad.' },
+    { op: 'say', speaker: 'QUAY ELDER', text: 'Tides go out so they can come back. Sing it home, child. Tonight, YOU are the rhythm it kept.' },
+    { op: 'tint', color: '#4fb4ff', alpha: 0, ms: 1100 },
+    { op: 'letterbox', on: false, ms: 320 },
+  ],
+
+  // S1 "The Last Buoy Out" — the netmender, once the Tide stands and the player
+  // can walk the water: three of her line went dark in the storm. Lit in order,
+  // quay outward — the LAST buoy out is the one she frets for.
+  'script.netmender_buoys': [
+    { op: 'say', speaker: 'NETMENDER', text: 'Walking the moon-water now, are you. Then I have one more asking in me — and this one I cannot give anyone else.' },
+    { op: 'say', speaker: 'NETMENDER', text: 'Three of my buoy-line went dark in the storm that took the rope. The flats south of here — you will know mine by the drowned wicks.' },
+    { op: 'say', speaker: 'NETMENDER', text: 'Light them quay-outward, the way the line was laid: near one first, then the middle water, then the LAST BUOY OUT. That far one has been dark the longest, and I fret for it.' },
+    { op: 'setFlag', flag: 'flag:q_south_buoys' },
+  ],
+  // The three buoys (Dimglass II, Tidecall water) — small, quiet relights.
+  'script.buoy_first': [
+    { op: 'narrate', text: 'The near buoy rocks on its chain, wick drowned and dark. You steady it and touch your vesperlamp to the well.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'narrate', text: 'It takes — a small stubborn flame in a glass throat. One. The line remembers where it was going.' },
+  ],
+  'script.buoy_second': [
+    { op: 'narrate', text: 'The middle-water buoy lists with a belly full of storm-sand. You bail it with a cupped hand and lend it your flame.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'narrate', text: 'Two. Behind you, the near buoy answers it across the dark water like a held note.' },
+  ],
+  'script.buoy_last': [
+    { op: 'narrate', text: 'The last buoy out. Farthest from the quay, first into every storm — its glass is crazed and its chain sings with the swell.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#4fb4ff', alpha: 0.25, ms: 500 },
+    { op: 'narrate', text: 'Three. The whole line stands lit, quay to open sea — a road of small lights for whoever the dark still holds out there.' },
+    { op: 'tint', color: '#4fb4ff', alpha: 0, ms: 800 },
+  ],
+  'script.netmender_drift': [
+    { op: 'say', speaker: 'NETMENDER', text: 'I watched from the quay-end. Near, middle... and then the far one stood up in the dark, and I am not ashamed to say I sat down on a crab-pot.' },
+    { op: 'say', speaker: 'NETMENDER', text: 'My gran tended that line, and hers before. You kept it a road tonight. Here — this is not payment, it is BELONGING.' },
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'giveItem', item: 'drift_charm', count: 1 },
+    { op: 'say', text: 'A buoy-wick charm, still smelling of the going-out song. Received the DRIFT CHARM!' },
+    { op: 'say', speaker: 'NETMENDER', text: 'Feed it to your lamp over open water and no wild heart will mistake you for a stranger. Ashore it is only a lamp — the sea keeps her own.' },
+    { op: 'setFlag', flag: 'flag:q_south_buoys_done' },
+  ],
+
+  // S2 "A Letter for Fenn" — Gran, after the omen: the game's first delivery
+  // quest. Her shaken witness beat IS the hook (dread lands on a face, F2/G4).
+  'script.gran_letter': [
+    { op: 'say', speaker: 'GRAN', text: '...You felt it too, out on the coast? A star went dark, love. I was at the window with your grandfather\'s trimmer in my hand, and the wick I\'d just cut GUTTERED. Forty years that\'s never once happened.' },
+    { op: 'say', speaker: 'GRAN', text: 'I am not frightened. I am only old enough to know what the quiet sounds like before it gets bigger.' },
+    { op: 'say', speaker: 'GRAN', text: 'So — a favour, while your boots are still warm. I sat up last night and wrote to old Fenn. He watches the sky from the tidal flats now, up past the coast road.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'fenn_letter', count: 1 },
+    { op: 'say', text: 'She presses a wax-sealed letter into your hands, flat from a night under her pillow. Received GRAN\'S LETTER!' },
+    { op: 'say', speaker: 'GRAN', text: 'Ask him plain what I ask him in there: is it coming HERE. And whatever face he makes before he answers — remember it for me.' },
+    { op: 'setFlag', flag: 'flag:q_south_letter' },
+  ],
+  // Fenn takes the letter at his sky-watcher spot on the flats.
+  'script.fenn_letter': [
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'A letter? For ME? Nobody has written to me since— well. Since I last forgot to write back.' },
+    { op: 'narrate', text: 'He breaks the wax with his thumbnail and reads it twice, the second time slower. Somewhere in the middle, he smiles at a line he does not share.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'grave', text: 'She asks if the dark is coming to Tinderwick. The honest answer is: it is coming everywhere, child. That is why there are Wayfarers.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'But tell her this, from me, in these words: "The lamps are in good hands. Some of them are even yours." She will know what I mean by it.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'smile', text: 'And tell her the trade-cart being late is NOT an omen, it is the axle. I do like knowing things.' },
+    { op: 'setFlag', flag: 'flag:q_south_letter_given' },
+  ],
+  'script.gran_thanks': [
+    { op: 'say', speaker: 'GRAN', text: '"The lamps are in good hands. Some of them are even yours." ...That man. Sixty years and he still answers a frightened letter with a WINK.' },
+    { op: 'narrate', text: 'She laughs — properly laughs — and the kitchen is warm again in a way the hearth alone never quite manages.' },
+    { op: 'say', speaker: 'GRAN', text: 'Here, love. Walking fare. A body that carries letters through wild grass deserves better than cold boots and an empty tin.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'tallow_balm', count: 2 },
+    { op: 'giveItem', item: 'warm_balm', count: 1 },
+    { op: 'say', text: 'Received 2 TALLOW BALMS and a WARM BALM!' },
+    { op: 'say', speaker: 'GRAN', text: 'Now off with you — the sky doesn\'t relight itself. And come home warm, you hear?' },
+    { op: 'setFlag', flag: 'flag:q_south_letter_done' },
+  ],
+
+  // S3 "The Cavern Keeps a Light" — the old fisher at the quayside inn. The
+  // wreck-lamp itself waits in Tideglass Cavern (Glimmerstep, East) — this is
+  // the deliberate long-game promise; the trigger lands with that map.
+  'script.fisher_wrecklamp': [
+    { op: 'say', speaker: 'OLD FISHER', text: 'You\'re the one who rang the bell back. Then you\'re the one I\'ll tell it to.' },
+    { op: 'say', speaker: 'OLD FISHER', text: 'Forty years back my boat went down off the flats, and the sea walked me — don\'t ask me how — into Tideglass Cavern. Dark as a closed eye, that place. All but one light.' },
+    { op: 'say', speaker: 'OLD FISHER', text: 'My boat\'s own stern-lamp, wedged in the rocks where she broke. Still burning. It burned three days while I found my way out by it, and I have owed it a wick ever since.' },
+    { op: 'say', speaker: 'OLD FISHER', text: 'It will have guttered by now — years it\'s had. The cavern keeps a dark no lamp of MINE can walk. But a vesperlamp that learns the deep-walking art... go in one day, Wayfarer. Light her stern-lamp again. Then come tell an old man it still burns.' },
+    { op: 'setFlag', flag: 'flag:q_south_wrecklamp' },
+  ],
+  'script.fisher_thanks': [
+    { op: 'say', speaker: 'OLD FISHER', text: '...It burns? You stood under it and it BURNS?' },
+    { op: 'narrate', text: 'For a long moment he looks past you, at some black water forty years gone. Then he nods, once, like a man setting down a net he has carried too far.' },
+    { op: 'say', speaker: 'OLD FISHER', text: 'Then the debt\'s paid, and not by me. Here — she\'d want you to have this. Took the Tide Charm to the wreck-light in my dreams a hundred times; you took it for true.' },
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'giveItem', item: 'wrecklight_charm', count: 1 },
+    { op: 'say', text: 'Received the WRECKLIGHT CHARM!' },
+    { op: 'setFlag', flag: 'flag:q_south_wrecklamp_done' },
+  ],
+
   // A2 (Dimglass Coast I): Wren's first FRIENDLY trainer battle. Wren is a SIGHT
   // trainer — spots the player on the lane, runs up (the engine plays the alert +
   // approach), and this script carries the words + battle. Low-stakes by design.
@@ -296,6 +460,25 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'giveMoney', amount: 80 },
     { op: 'say', text: "A dropped courier's purse, half-buried in the sand. Found 80 WICKS!" },
     { op: 'setFlag', flag: 'flag:picked_flats_wicks' },
+  ],
+  // The netmender's storm-drifted net-floats (the Causeway Bell's collinear
+  // errand leg — appears on the flats once Reyl sets the quest).
+  'script.pickup_net_floats': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'net_floats', count: 1 },
+    { op: 'say', text: 'A string of cork floats, storm-tangled in the dune grass — every one stamped with the Pearlmoor netmender\'s mark. Took the NET-FLOATS!' },
+    { op: 'setFlag', flag: 'flag:picked_net_floats' },
+  ],
+  // Breakwater caches (off the lane, the standing kit).
+  'script.pickup_breakwater_balm': [
+    { op: 'giveItem', item: 'warm_balm', count: 1 },
+    { op: 'say', text: 'Lashed dry under a coil of old net, against the spray. Found a WARM BALM!' },
+    { op: 'setFlag', flag: 'flag:picked_breakwater_balm' },
+  ],
+  'script.pickup_breakwater_charge': [
+    { op: 'giveItem', item: 'glow_charge', count: 1 },
+    { op: 'say', text: 'A bell-tender\'s drop-box, wedged in the stones. Found a GLOW CHARGE!' },
+    { op: 'setFlag', flag: 'flag:picked_breakwater_charge' },
   ],
   // --- Glowmoss Deep (East) — the first cave dungeon + the B2 set-piece -------
   // The deep wood's sight keepers (level-design §11 rule 7): they hold the lane

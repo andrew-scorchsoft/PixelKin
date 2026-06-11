@@ -1,0 +1,59 @@
+{
+  "title": "Pearlmoor Quay - The Tide-blessing (Festival of the Floating Lights)",
+  "_note": "The Tide-blessing festival cue (Arc E, the COOL mirror of Tinderwick's warm fair). SNES-register enrichment of the Pearlmoor anchor per the score bible §3.3: the Option-A 'Moonlit Quay Waltz' lead + waltz bass kept NOTE-FOR-NOTE (the town's identity and the Vesper-motif waltz), quickened 100->112 for festival energy; the band opened within <=7 peak voices — strings DYADS (root+fifth, oct 3, low gain bed), the bell-buoy chime line re-voiced pulse12->pluck (harp, same notes), and a sparse BELL voice that is the festival's signature: the MOOR-BELL tolls low (F4) at each section start and answers phrase ends with cool Light sparkle over the water. Moon-on-water, open, communal, a little melancholy. 24-bar 3/4 loop ~38s. Render --engine chip (house cohesion).",
+  "era": "snes",
+  "tempo": 112,
+  "time_signature": [3, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "F major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "The anchor's waltz lead, note-for-note (Vesper contour as a waltz; AABA-leaning, D-minor lean in B, V into bar 1).",
+      "notes": "C4q F4q G4q | A4h G4q | F4q A4q C5q | A4h. | C4q F4q G4q | A4h G4q | G4q F4q E4q | F4h. | F4q A4q C5q | D5h C5q | C5q B4q A4q | G4h. | A4q C5q D5q | C5h A4q | G4q A4q B4q | A4h. | C4q F4q G4q | A4h G4q | F4q A4q C5q | A4h G4q | F4q G4q A4q | G4q F4q E4q | F4h. | C4h C4q"
+    },
+    {
+      "name": "harp",
+      "voice": "pluck",
+      "octave": 4,
+      "gain": 0.55,
+      "_note": "The Tide bell-buoy chime line (the anchor's pulse12 'pah-pah' on beats 2&3), re-voiced as harp per the snes recipe — same notes.",
+      "notes": "rq A4q C5q | rq C5q E5q | rq A4q C5q | rq C5q F5q | rq A4q C5q | rq C5q E5q | rq G4q C5q | rq A4q C5q | rq A4q C5q | rq A4q D5q | rq C5q E5q | rq B4q D5q | rq A4q C5q | rq A4q C5q | rq B4q D5q | rq A4q C5q | rq A4q C5q | rq C5q E5q | rq A4q C5q | rq C5q E5q | rq A4q C5q | rq G4q C5q | rq A4q C5q | rq C5q E5q"
+    },
+    {
+      "name": "pad",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.28,
+      "_note": "Real harmony the chip could only imply: one root+fifth DYAD per bar (never triads — keeps peak voices at 7), following the waltz changes. A bed, not a wall.",
+      "notes": "F3+C4h. | C3+G3h. | F3+C4h. | F3+C4h. | F3+C4h. | C3+G3h. | C3+G3h. | F3+C4h. | F3+C4h. | D3+A3h. | C3+G3h. | G3+D4h. | F3+C4h. | F3+C4h. | G3+D4h. | F3+C4h. | F3+C4h. | C3+G3h. | F3+C4h. | C3+G3h. | F3+C4h. | C3+G3h. | F3+C4h. | C3+G3h."
+    },
+    {
+      "name": "moorbell",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.5,
+      "_note": "The festival's signature: the MOOR-BELL tolls low (F4, dotted-half) at each 8-bar section start, and cool Light sparkle answers phrase ends out over the water. Sparse — the quiet between tolls is the moon-on-water.",
+      "notes": "F4h. | rh. | rh. | rq C6q A5q | rh. | rh. | rh. | rq F5q C6q | F4h. | rh. | rh. | rq G5q D6q | rh. | rh. | rh. | rq A5q C6q | F4h. | rh. | rh. | rh. | rh. | rh. | rq A5q C6q | rh."
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.95,
+      "_note": "The anchor's classic waltz bass, note-for-note: root on 1, rocking fifths on 2&3 — the moored hull, dancing now.",
+      "notes": "F2q C3q C3q | C2q G2q G2q | F2q C3q C3q | F2q C3q C3q | F2q C3q C3q | C2q G2q G2q | C2q G2q G2q | F2q C3q C3q | F2q C3q C3q | D2q A2q A2q | C2q G2q G2q | G2q D3q D3q | F2q C3q C3q | F2q C3q C3q | G2q D3q D3q | F2q C3q C3q | F2q C3q C3q | C2q G2q G2q | F2q C3q C3q | C2q G2q G2q | F2q C3q C3q | C2q G2q G2q | F2q C3q C3q | C2q G2q C3q"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.45,
+      "_note": "Festival waltz: soft kick on 1 (the boardwalk underfoot), brush hats on 2&3 (the crowd swaying), an open-hat lift at section seams.",
+      "notes": "q kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick hat ohat | kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick hat ohat | kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick hat hat | kick ohat ohat"
+    }
+  ]
+}

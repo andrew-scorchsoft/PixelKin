@@ -203,6 +203,13 @@
       "tw": 6,
       "th": 6
     },
+    "pearlmoor_moorbell": {
+      "path": "assets/sprites/objects/pearlmoor_moorbell.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
     "pearlmoor_shop": {
       "path": "assets/sprites/objects/pearlmoor_shop.webp",
       "width": 80,

@@ -614,6 +614,7 @@ export class WorldScene extends Phaser.Scene {
           kind: 'wild',
           species_id: intent.species_id,
           level: intent.level,
+          terrain: intent.terrain,
           party: this.party,
           box: this.box,
           inventory: this.inventory,
@@ -706,7 +707,11 @@ export class WorldScene extends Phaser.Scene {
 
   private async executeWarp(warp: Warp): Promise<void> {
     if (!this.warpAllowed(warp)) {
-      if (warp.trigger === 'interact') await this.showHint();
+      // A gated warp with its own "not yet" line delivers it in-voice (step_on
+      // included — the player walked into a chained gate); otherwise only an
+      // active interact gets the generic hint.
+      if (warp.blocked_ref) await this.runDialogue(warp.blocked_ref);
+      else if (warp.trigger === 'interact') await this.showHint();
       return;
     }
     // Tolerant: ignore warps whose target map isn't authored/registered yet.

@@ -524,7 +524,7 @@
         39,
         59,
         62,
-        63,
+        69,
         39,
         40,
         82,
@@ -550,10 +550,10 @@
         61,
         82,
         60,
-        67,
-        67,
-        67,
-        82,
+        69,
+        31,
+        36,
+        59,
         60,
         67,
         67,
@@ -569,6 +569,101 @@
         67,
         69,
         32,
+        37,
+        66,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        69,
+        32,
+        37,
+        65,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        68,
+        32,
+        37,
+        64,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        69,
+        32,
+        36,
+        66,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        70,
+        38,
+        42,
+        65,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        68,
+        32,
+        37,
+        65,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        61,
+        61,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        70,
+        31,
         37,
         66,
         67,
@@ -595,105 +690,10 @@
         67,
         67,
         67,
-        68,
+        69,
         32,
         37,
-        64,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        70,
-        38,
-        42,
-        65,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        61,
-        61,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
+        66,
         67
       ]
     },
@@ -1176,6 +1176,7 @@
         0,
         0,
         0,
+        117,
         0,
         0,
         0,
@@ -1213,7 +1214,6 @@
         0,
         0,
         0,
-        0,
         121,
         0,
         0,
@@ -1230,8 +1230,8 @@
         0,
         0,
         0,
-        0,
-        0,
+        121,
+        121,
         0,
         0,
         0,
@@ -1254,51 +1254,6 @@
         0,
         0,
         121,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        120,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        121,
-        121,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        120,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        120,
-        0,
-        0,
-        0,
-        0,
         0,
         0,
         0,
@@ -1316,6 +1271,51 @@
         120,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        121,
+        121,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        120,
+        0,
+        0,
+        121,
+        121,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        120,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        121,
+        121,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        120,
+        121,
+        121,
         124,
         0,
         0,
@@ -1342,8 +1342,8 @@
         0,
         0,
         0,
-        0,
-        0,
+        121,
+        121,
         0,
         0,
         0,
@@ -2335,6 +2335,40 @@
       "transition": "door"
     },
     {
+      "id": "to_breakwater",
+      "at": {
+        "tx": 24,
+        "ty": 23
+      },
+      "trigger": "step_on",
+      "to_map": "pearlmoor_breakwater",
+      "to": {
+        "tx": 5,
+        "ty": 0
+      },
+      "facing": "down",
+      "requires_flag": "flag:q_south_has_rope",
+      "blocked_ref": "npc.netmender_gate",
+      "transition": "fade"
+    },
+    {
+      "id": "to_breakwater_e",
+      "at": {
+        "tx": 25,
+        "ty": 23
+      },
+      "trigger": "step_on",
+      "to_map": "pearlmoor_breakwater",
+      "to": {
+        "tx": 6,
+        "ty": 0
+      },
+      "facing": "down",
+      "requires_flag": "flag:q_south_has_rope",
+      "blocked_ref": "npc.netmender_gate",
+      "transition": "fade"
+    },
+    {
       "id": "to_crossroads",
       "at": {
         "tx": 0,
@@ -2367,6 +2401,166 @@
   ],
   "triggers": [
     {
+      "id": "tide_blessing_02",
+      "kind": "cutscene",
+      "at": {
+        "tx": 2,
+        "ty": 10
+      },
+      "activation": "step_on",
+      "ref": "script.tide_blessing",
+      "once": true,
+      "requires_flag": "gleam:tide",
+      "sets_flags": [
+        "flag:tide_blessing_seen"
+      ],
+      "hidden_when_flag": "flag:tide_blessing_seen"
+    },
+    {
+      "id": "tide_blessing_08",
+      "kind": "cutscene",
+      "at": {
+        "tx": 8,
+        "ty": 10
+      },
+      "activation": "step_on",
+      "ref": "script.tide_blessing",
+      "once": true,
+      "requires_flag": "gleam:tide",
+      "sets_flags": [
+        "flag:tide_blessing_seen"
+      ],
+      "hidden_when_flag": "flag:tide_blessing_seen"
+    },
+    {
+      "id": "tide_blessing_09",
+      "kind": "cutscene",
+      "at": {
+        "tx": 9,
+        "ty": 10
+      },
+      "activation": "step_on",
+      "ref": "script.tide_blessing",
+      "once": true,
+      "requires_flag": "gleam:tide",
+      "sets_flags": [
+        "flag:tide_blessing_seen"
+      ],
+      "hidden_when_flag": "flag:tide_blessing_seen"
+    },
+    {
+      "id": "tide_blessing_10",
+      "kind": "cutscene",
+      "at": {
+        "tx": 10,
+        "ty": 10
+      },
+      "activation": "step_on",
+      "ref": "script.tide_blessing",
+      "once": true,
+      "requires_flag": "gleam:tide",
+      "sets_flags": [
+        "flag:tide_blessing_seen"
+      ],
+      "hidden_when_flag": "flag:tide_blessing_seen"
+    },
+    {
+      "id": "tide_blessing_11",
+      "kind": "cutscene",
+      "at": {
+        "tx": 11,
+        "ty": 10
+      },
+      "activation": "step_on",
+      "ref": "script.tide_blessing",
+      "once": true,
+      "requires_flag": "gleam:tide",
+      "sets_flags": [
+        "flag:tide_blessing_seen"
+      ],
+      "hidden_when_flag": "flag:tide_blessing_seen"
+    },
+    {
+      "id": "tide_blessing_12",
+      "kind": "cutscene",
+      "at": {
+        "tx": 12,
+        "ty": 10
+      },
+      "activation": "step_on",
+      "ref": "script.tide_blessing",
+      "once": true,
+      "requires_flag": "gleam:tide",
+      "sets_flags": [
+        "flag:tide_blessing_seen"
+      ],
+      "hidden_when_flag": "flag:tide_blessing_seen"
+    },
+    {
+      "id": "tide_blessing_13",
+      "kind": "cutscene",
+      "at": {
+        "tx": 13,
+        "ty": 10
+      },
+      "activation": "step_on",
+      "ref": "script.tide_blessing",
+      "once": true,
+      "requires_flag": "gleam:tide",
+      "sets_flags": [
+        "flag:tide_blessing_seen"
+      ],
+      "hidden_when_flag": "flag:tide_blessing_seen"
+    },
+    {
+      "id": "tide_blessing_14",
+      "kind": "cutscene",
+      "at": {
+        "tx": 14,
+        "ty": 10
+      },
+      "activation": "step_on",
+      "ref": "script.tide_blessing",
+      "once": true,
+      "requires_flag": "gleam:tide",
+      "sets_flags": [
+        "flag:tide_blessing_seen"
+      ],
+      "hidden_when_flag": "flag:tide_blessing_seen"
+    },
+    {
+      "id": "tide_blessing_15",
+      "kind": "cutscene",
+      "at": {
+        "tx": 15,
+        "ty": 10
+      },
+      "activation": "step_on",
+      "ref": "script.tide_blessing",
+      "once": true,
+      "requires_flag": "gleam:tide",
+      "sets_flags": [
+        "flag:tide_blessing_seen"
+      ],
+      "hidden_when_flag": "flag:tide_blessing_seen"
+    },
+    {
+      "id": "tide_blessing_16",
+      "kind": "cutscene",
+      "at": {
+        "tx": 16,
+        "ty": 10
+      },
+      "activation": "step_on",
+      "ref": "script.tide_blessing",
+      "once": true,
+      "requires_flag": "gleam:tide",
+      "sets_flags": [
+        "flag:tide_blessing_seen"
+      ],
+      "hidden_when_flag": "flag:tide_blessing_seen"
+    },
+    {
       "id": "sign_welcome",
       "kind": "sign",
       "at": {
@@ -2375,6 +2569,16 @@
       },
       "activation": "interact",
       "ref": "sign.pearlmoor_welcome"
+    },
+    {
+      "id": "sign_breakwater",
+      "kind": "sign",
+      "at": {
+        "tx": 26,
+        "ty": 16
+      },
+      "activation": "interact",
+      "ref": "sign.breakwater_gate"
     },
     {
       "id": "sign_lumenary",
@@ -2491,7 +2695,7 @@
       "rect": {
         "tx": 16,
         "ty": 19,
-        "w": 9,
+        "w": 8,
         "h": 4
       },
       "encounter_rate": 0.07,
@@ -2531,6 +2735,121 @@
       "dialogue_ref": "npc.pearlmoor_fisher"
     },
     {
+      "id": "netmender_pre",
+      "at": {
+        "tx": 23,
+        "ty": 17
+      },
+      "facing": "down",
+      "sprite": "npc_old_woman",
+      "movement": "static",
+      "dialogue_ref": "npc.netmender_pre",
+      "hidden_when_flag": "flag:q_south_bell"
+    },
+    {
+      "id": "netmender_floats",
+      "at": {
+        "tx": 23,
+        "ty": 17
+      },
+      "facing": "down",
+      "sprite": "npc_old_woman",
+      "movement": "static",
+      "dialogue_ref": "npc.netmender_floats",
+      "requires_flag": "flag:q_south_bell",
+      "hidden_when_flag": "flag:picked_net_floats"
+    },
+    {
+      "id": "netmender_rope",
+      "at": {
+        "tx": 23,
+        "ty": 17
+      },
+      "facing": "down",
+      "sprite": "npc_old_woman",
+      "movement": "static",
+      "dialogue_ref": "script.netmender_rope",
+      "requires_flag": "flag:picked_net_floats",
+      "hidden_when_flag": "flag:q_south_has_rope"
+    },
+    {
+      "id": "netmender_sent",
+      "at": {
+        "tx": 23,
+        "ty": 17
+      },
+      "facing": "down",
+      "sprite": "npc_old_woman",
+      "movement": "static",
+      "dialogue_ref": "npc.netmender_sent",
+      "requires_flag": "flag:q_south_has_rope",
+      "hidden_when_flag": "flag:q_south_bell_rung"
+    },
+    {
+      "id": "netmender_rung",
+      "at": {
+        "tx": 23,
+        "ty": 17
+      },
+      "facing": "down",
+      "sprite": "npc_old_woman",
+      "movement": "static",
+      "dialogue_ref": "npc.netmender_rung",
+      "requires_flag": "flag:q_south_bell_rung",
+      "hidden_when_flag": "gleam:tide"
+    },
+    {
+      "id": "netmender_buoys",
+      "at": {
+        "tx": 23,
+        "ty": 17
+      },
+      "facing": "down",
+      "sprite": "npc_old_woman",
+      "movement": "static",
+      "dialogue_ref": "script.netmender_buoys",
+      "requires_flag": "gleam:tide",
+      "hidden_when_flag": "flag:q_south_buoys"
+    },
+    {
+      "id": "netmender_buoys_wait",
+      "at": {
+        "tx": 23,
+        "ty": 17
+      },
+      "facing": "down",
+      "sprite": "npc_old_woman",
+      "movement": "static",
+      "dialogue_ref": "npc.netmender_buoys_wait",
+      "requires_flag": "flag:q_south_buoys",
+      "hidden_when_flag": "flag:q_south_buoys_lit"
+    },
+    {
+      "id": "netmender_drift",
+      "at": {
+        "tx": 23,
+        "ty": 17
+      },
+      "facing": "down",
+      "sprite": "npc_old_woman",
+      "movement": "static",
+      "dialogue_ref": "script.netmender_drift",
+      "requires_flag": "flag:q_south_buoys_lit",
+      "hidden_when_flag": "flag:q_south_buoys_done"
+    },
+    {
+      "id": "netmender_done",
+      "at": {
+        "tx": 23,
+        "ty": 17
+      },
+      "facing": "down",
+      "sprite": "npc_old_woman",
+      "movement": "static",
+      "dialogue_ref": "npc.netmender_done",
+      "requires_flag": "flag:q_south_buoys_done"
+    },
+    {
       "id": "blessing_elder",
       "at": {
         "tx": 10,
@@ -2553,6 +2872,18 @@
       "movement": "wander",
       "dialogue_ref": "npc.blessing_kid",
       "requires_flag": "gleam:tide"
+    },
+    {
+      "id": "blessing_singer",
+      "at": {
+        "tx": 12,
+        "ty": 16
+      },
+      "facing": "right",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "dialogue_ref": "npc.blessing_singer",
+      "requires_flag": "gleam:tide"
     }
   ],
   "gates": [
@@ -2574,7 +2905,7 @@
       "rect": {
         "tx": 16,
         "ty": 18,
-        "w": 9,
+        "w": 8,
         "h": 5
       }
     }

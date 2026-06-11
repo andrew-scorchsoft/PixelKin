@@ -607,6 +607,69 @@
       "sprite": "wren",
       "movement": "static",
       "dialogue_ref": "npc.pearlmoor_fisher"
+    },
+    {
+      "id": "old_fisher_pre",
+      "at": {
+        "tx": 14,
+        "ty": 8
+      },
+      "facing": "left",
+      "sprite": "npc_old_man",
+      "movement": "static",
+      "dialogue_ref": "npc.old_fisher_pre",
+      "hidden_when_flag": "flag:q_south_bell_rung"
+    },
+    {
+      "id": "old_fisher_tale",
+      "at": {
+        "tx": 14,
+        "ty": 8
+      },
+      "facing": "left",
+      "sprite": "npc_old_man",
+      "movement": "static",
+      "dialogue_ref": "script.fisher_wrecklamp",
+      "requires_flag": "flag:q_south_bell_rung",
+      "hidden_when_flag": "flag:q_south_wrecklamp"
+    },
+    {
+      "id": "old_fisher_wait",
+      "at": {
+        "tx": 14,
+        "ty": 8
+      },
+      "facing": "left",
+      "sprite": "npc_old_man",
+      "movement": "static",
+      "dialogue_ref": "npc.old_fisher_wait",
+      "requires_flag": "flag:q_south_wrecklamp",
+      "hidden_when_flag": "flag:q_south_wrecklamp_lit"
+    },
+    {
+      "id": "old_fisher_thanks",
+      "at": {
+        "tx": 14,
+        "ty": 8
+      },
+      "facing": "left",
+      "sprite": "npc_old_man",
+      "movement": "static",
+      "dialogue_ref": "script.fisher_thanks",
+      "requires_flag": "flag:q_south_wrecklamp_lit",
+      "hidden_when_flag": "flag:q_south_wrecklamp_done"
+    },
+    {
+      "id": "old_fisher_after",
+      "at": {
+        "tx": 14,
+        "ty": 8
+      },
+      "facing": "left",
+      "sprite": "npc_old_man",
+      "movement": "static",
+      "dialogue_ref": "npc.old_fisher_after",
+      "requires_flag": "flag:q_south_wrecklamp_done"
     }
   ],
   "gates": [],

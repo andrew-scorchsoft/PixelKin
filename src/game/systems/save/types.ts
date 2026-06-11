@@ -35,6 +35,12 @@ export interface KinInstanceData {
   moves: { id: string; charges: number }[];
   status?: KinStatus;
   caught_at?: { map: string; tx: number; ty: number };
+  /**
+   * Bond — how far this kin's friendship has warmed (0..255). Dormant for now:
+   * persisted so bond-trigger kindling (e.g. the Hearthkit line) can land later
+   * without a save-schema bump. Optional, defaults to 0; old saves load clean.
+   */
+  bond?: number;
 }
 
 /** Item id -> count. Item definitions live in content/items.ts. */

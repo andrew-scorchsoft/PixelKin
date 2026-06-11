@@ -80,12 +80,50 @@ export const ITEMS: ItemRegistry = {
     desc: "The worn brass key to the Tinderwick beacon's foot door, carried home from the coast road.",
     category: 'key',
   },
+  net_floats: {
+    id: 'net_floats',
+    name: 'Net-floats',
+    desc: 'A string of cork floats stamped with the Pearlmoor netmender\'s mark, carried south by the storm and home by you.',
+    category: 'key',
+  },
+  bell_rope: {
+    id: 'bell_rope',
+    name: 'Moor-bell Rope',
+    desc: 'The netmender\'s bell-rope, salt-stiff and sound, spliced for the silent shrine at the breakwater\'s end.',
+    category: 'key',
+  },
+  fenn_letter: {
+    id: 'fenn_letter',
+    name: "Gran's Letter",
+    desc: 'A letter for Star-tender Fenn, sealed with candle-wax and pressed flat from a night under Gran\'s pillow.',
+    category: 'key',
+  },
   tide_charm: {
     id: 'tide_charm',
     name: 'Tide Charm',
     desc: 'A wave-worn charm lashed to a lamp-frame; the sea trusts it. One throw, and the surest catch in the South.',
     category: 'charge',
     catch_bonus: 2.0,
+  },
+  // The netmender's thanks for relighting her buoy line ("The Last Buoy Out") —
+  // the game's first CONDITIONAL charge: it blazes over open water, and burns
+  // plain anywhere else (docs/mechanics/04-capture.md, "Specialty charges").
+  drift_charm: {
+    id: 'drift_charm',
+    name: 'Drift Charm',
+    desc: 'A buoy-wick dipped in the going-out song. Over open water its throw burns threefold bright; ashore it is only a lamp.',
+    category: 'charge',
+    catch_bonus: 3.0,
+    condition: { kind: 'terrain', terrain: 'water' },
+  },
+  // S3 "The Cavern Keeps a Light" — the old fisher's thanks once the wreck-lamp
+  // burns again (completes post-Glimmerstep; the Tide Charm, re-blessed).
+  wrecklight_charm: {
+    id: 'wrecklight_charm',
+    name: 'Wrecklight Charm',
+    desc: 'A Tide Charm re-blessed at the wreck-lamp\'s flame. One throw, steady as a light that would not drown.',
+    category: 'charge',
+    catch_bonus: 2.5,
   },
 
   // --- Valuables (found, never bought; exist to be sold for wicks) ----------
