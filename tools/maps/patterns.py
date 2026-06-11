@@ -226,9 +226,15 @@ def building(m: dict, path_grid, w: int, h: int, *, oid: str, sprite: str,
         {"id": oid, "sprite": sprite, "at": {"tx": at[0], "ty": at[1]},
          "w": tw, "h": th, "overhang": overhang})
     if to_map:
+        # Doors are WALK-ONTO (step_on): the player steps into the doorway tile and
+        # warps — the genre convention (level-design §11 rule 5b). The engine frees
+        # this tile in collision (CollisionGrid frees `transition:'door'` warp tiles)
+        # so it's reachable inside the building footprint, and a Confirm press at it
+        # works too. A locked door carries requires_*/blocked_ref and answers a
+        # walk-in with its "it's locked" line.
         m.setdefault("warps", []).append(
             {"id": f"enter_{oid}", "at": {"tx": door[0], "ty": door[1]},
-             "trigger": "interact", "to_map": to_map,
+             "trigger": "step_on", "to_map": to_map,
              "to": {"tx": to[0], "ty": to[1]}, "facing": "up", "transition": "door"})
     if path_grid is not None:
         for dy in range(apron_rows):

@@ -91,6 +91,14 @@ class Walkability:
                     if 0 <= tx < self.w and 0 <= ty < self.h:
                         solid[ty * self.w + tx] = True
 
+        # Doorways are walk-onto: a transition:'door' warp frees its tile (mirror
+        # of CollisionGrid) so a door inside a building footprint reads walkable.
+        for wp in m.get("warps", []):
+            if wp.get("transition") == "door":
+                at = wp["at"]
+                if 0 <= at["tx"] < self.w and 0 <= at["ty"] < self.h:
+                    solid[at["ty"] * self.w + at["tx"]] = False
+
         # AbilityGates flip their rect's tiles to gated-walkable
         for g in m.get("gates", []):
             if g.get("effect") in ("make_passable", "remove_tile") and "rect" in g:
@@ -130,6 +138,15 @@ def audit(world: dict[str, dict], focus: str | None = None):
         wk = walk[mid]
         warps = m.get("warps", [])
         step_at = {(w["at"]["tx"], w["at"]["ty"]): w for w in warps if w.get("trigger") == "step_on"}
+
+        # ---- DOOR CONVENTION: doors are WALK-ONTO (step_on) ----
+        # The player just walks into the doorway tile (which the engine frees in
+        # collision); pressing Confirm at it also works, and a locked door answers
+        # with its blocked_ref. A door left on 'interact' breaks the convention.
+        for w in warps:
+            if w.get("transition") == "door" and w.get("trigger") != "step_on":
+                rec("FAIL", mid, f"door warp '{w['id']}' is '{w.get('trigger')}' — "
+                    f"doors are walk-onto (step_on) by convention (level-design §11 r5b)")
 
         # ---- COVERAGE: edge runs of open tiles must be all-warp or no-warp ----
         edges = [("N", [(x, 0) for x in range(wk.w)]), ("S", [(x, wk.h - 1) for x in range(wk.w)]),

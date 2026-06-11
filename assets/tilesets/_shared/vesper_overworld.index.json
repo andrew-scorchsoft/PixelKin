@@ -187,5 +187,12 @@
   "grass_ledge_s": 185,
   "grass_ledge_s_v1": 186,
   "sand_ledge_s": 187,
-  "sand_ledge_s_v1": 188
+  "sand_ledge_s_v1": 188,
+  "tree_end_n": 189,
+  "tree_end_s": 190,
+  "tree_end_w": 191,
+  "tree_end_e": 192,
+  "tree_strip_h": 193,
+  "tree_strip_v": 194,
+  "tree_single": 195
 }

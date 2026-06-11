@@ -484,6 +484,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `python3 tools/maps/build_shared_overworld.py` (REUSE-first: promotes the proven Tinderwick
   families, adds variants + scatter decor, reuses Dimglass cliff/buoy/dock). Map builders use
   `tools/maps/mapkit.py` (`shared_tileset_ref()`, `gid()`, grid/scatter helpers, `finalize()`).
+  **APPENDING tiles to the set bumps its tile_count — every consuming map bakes a `tile_count`
+  in its tileset ref, and `MapLoader` only resolves `first_gid ≤ gid < first_gid+tile_count`,
+  so a stale count leaves new gids UNRESOLVED (they render empty — bit the tree nubs).** After
+  growing the set, re-pin `tile_count` in every overworld map (all use a single tileset, so
+  widening is collision-free; `apply_tree_nubs.py` does this). New tiles must be APPENDED (never
+  inserted) or every later gid shifts and all maps break.
 - **Terrain tiles are DRAWN in code, never AI-generated (the GBA-register standard).**
   `tools/maps/gbaforge.py` draws every shared terrain family — flat dusk-palette base +
   deliberate repeated motifs (grass ticks, dot clusters, strata, blade-fans); variants are
@@ -499,7 +505,22 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   walls/terraces. Cliffs follow the interior-wall convention outdoors: fill = walk-on-looking
   PLATEAU TOP, `edge_s`/S-corners = the visible FACE (lit lip → streaked face → contact
   shadow), N/W/E = rim transitions — a cliff drawn as all-face reads flat ("lost edging").
-  Full rule: `docs/world/level-design.md` §11 rule 8.
+  Full rule: `docs/world/level-design.md` §11 rule 8. The **tree-mass border** is the one
+  family kept as a painterly bubble-crown master (not drawn): its edge/corner tiles run
+  `gbaforge.tree_edge_blend` (inner half eases into the drawn fill) **then `tree_grass_meld`**
+  (outward half re-grounded onto the real grass fill — keeps the canopy silhouette, replaces
+  the master's off-grass strip + baked pale halo rim so the border meets open grass without a
+  light-green outline, and tucks the crown's lit lip 1px into grass). Both run in
+  `build_shared_overworld._gba_override`; re-run the builder if you touch either.
+  The tree family also carries the **NUB roles the 13-slice set lacked** —
+  `end_n/s/w/e`, `strip_h/v`, `single` (`gbaforge.tree_nub`, drawn: a scalloped
+  rounded blob, leaf crown on the OPEN sides, flush where it joins the mass). The
+  autotiler (`blob.mjs`) already asks for these on a thin spur; without them a
+  protrusion fell back to a flat edge/fill stub. APPENDED last in the build so no
+  gid shifts. To back-fill them into already-shipped maps (whose `terrain` layer is
+  stripped, so they can't be re-expanded) run **`tools/maps/apply_tree_nubs.py`**
+  (reclassifies the baked tree grid, swaps in nub gids only where a cell is now a
+  nub — idempotent, no churn).
 - **New area? Use the `build-map` skill** — compose with `tools/maps/patterns.py` stamps on
   mapkit (`build_saltreach_fen_i.py` is the pattern showcase: paint-derived encounter zones,
   trainer-beat/cache/sign stamps, a LEDGED terrace bank). Engine supports one-way **ledges**
@@ -555,6 +576,17 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   it after ANY warp edit, not just new maps. A gated warp may carry `blocked_ref` (mirror
   of EventTrigger's) for a diegetic "not yet" line, step_on included — the Pearlmoor
   moor-gate (`npc.netmender_gate`) is the worked example.
+- **Doors are WALK-ONTO, not press-to-enter (convention, enforced).** A door is a
+  `Warp` with `trigger:'step_on'` + `transition:'door'`; the player walks into the
+  doorway tile and warps. `CollisionGrid` FREES every `transition:'door'` warp tile
+  (it sits in a building's otherwise-solid footprint), and the worldmodel/Walkability
+  audit models mirror that — keep the three in sync. The door warp must sit **on the
+  sprite's visible door** (the standable tile); a 2-wide door = two door warps (both
+  enter). Pressing Confirm at a door also fires it (`WorldScene` Confirm matches door
+  warps), and a **locked** door (gated + `blocked_ref`) answers a walk-in/Confirm with
+  its line — `executeWarp` falls back to a generic "it's locked" if a door has none, so
+  a gated door is never silent. `patterns.building` stamps step_on; `audit_warps` FAILs
+  any door left on `interact`. Worked: `door.locked_*` lines + the 8 gated doors.
 - **The device shell screen is locked to 3:2.** `shells.css` sizes `#game-root` to the
   largest 3:2 box that fits, so `Scale.FIT` never pillarboxes (no black side bars). The
   `plain`/`overlay` shells are intentionally full-bleed and still letterbox.

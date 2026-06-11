@@ -381,14 +381,17 @@ def tree_fill(v: int = 0) -> Image.Image:
     return img(a)
 
 
+TREE_DESIGNED = {"edge_n": ("N",), "edge_s": ("S",), "edge_w": ("W",), "edge_e": ("E",),
+                 "corner_nw": ("N", "W"), "corner_ne": ("N", "E"),
+                 "corner_sw": ("S", "W"), "corner_se": ("S", "E")}
+
+
 def tree_edge_blend(im: Image.Image, role: str) -> Image.Image:
     """Mesh a painterly tree-mass EDGE master with the flat drawn fill: keep its
     designed (bubble-crown) side, ease the inner side into the fill's base tone."""
     a = np.asarray(im.convert("RGBA")).astype(np.float64).copy()
     base = np.array(sh(TREE, 0.60), dtype=np.float64)
-    designed = {"edge_n": ("N",), "edge_s": ("S",), "edge_w": ("W",), "edge_e": ("E",),
-                "corner_nw": ("N", "W"), "corner_ne": ("N", "E"),
-                "corner_sw": ("S", "W"), "corner_se": ("S", "E")}.get(role, ())
+    designed = TREE_DESIGNED.get(role, ())
     if not designed:
         return im
     for y in range(16):
@@ -397,6 +400,136 @@ def tree_edge_blend(im: Image.Image, role: str) -> Image.Image:
             t = max(0.0, min(1.0, (d - 6) / 7.0))
             a[y, x, :3] = a[y, x, :3] * (1 - t) + base * t
     return img(a.astype(np.int16))
+
+
+def _dilate(mask: np.ndarray, it: int) -> np.ndarray:
+    """4-neighbour binary dilation, `it` iterations (no scipy dependency)."""
+    m = mask.copy()
+    for _ in range(it):
+        up = np.roll(m, 1, 0); up[0, :] = False
+        dn = np.roll(m, -1, 0); dn[-1, :] = False
+        lf = np.roll(m, 1, 1); lf[:, 0] = False
+        rt = np.roll(m, -1, 1); rt[:, -1] = False
+        m = m | up | dn | lf | rt
+    return m
+
+
+def tree_grass_meld(im: Image.Image, role: str, grass_im: Image.Image | None = None,
+                    it: int = 4, reach: int = 13) -> Image.Image:
+    """Make a tree edge/corner tile meet surrounding grass SEAMLESSLY.
+
+    The painterly bubble-crown masters bake a thin lit halo rim + a slightly-off
+    'grass' strip onto their outward (grass-facing) side, so a tree border reads
+    with a pale outline where it meets the open grass. This re-grounds that strip:
+    the canopy silhouette (the dark leaf mass + the crown bumps sitting on it) is
+    kept; every grass-side pixel OUTSIDE that silhouette is replaced with the real
+    grass fill (a 1px feather softens the join). The canopy bumps become trees on
+    grass, not trees in a pale frame."""
+    designed = TREE_DESIGNED.get(role, ())
+    if not designed:
+        return im
+    a = np.asarray(im.convert("RGBA")).astype(np.float64).copy()
+    g = np.asarray((grass_im or grass_fill(0)).convert("RGBA")).astype(np.float64)
+    # the canopy = the dark leaf mass, dilated to absorb the crown bumps that sit
+    # on its grass-facing lip (the bumps are bright, so threshold-on-dark alone
+    # would drop them; dilation re-attaches them to the mass behind them).
+    canopy = _dilate(a[:, :, 1] < 74, it)
+    # only touch the grass-side band (within `reach` of a designed outer edge) so
+    # a stray light leaf-tick deep in the mass interior is never re-grassed.
+    yy, xx = np.mgrid[0:16, 0:16]
+    band = np.zeros((16, 16), bool)
+    for e in designed:
+        band |= {"N": yy, "S": 15 - yy, "W": xx, "E": 15 - xx}[e] < reach
+    repl = band & ~canopy
+    a[repl, :3] = g[repl, :3]
+    feather = _dilate(repl, 1) & canopy & band
+    a[feather, :3] = 0.5 * a[feather, :3] + 0.5 * g[feather, :3]
+    # Tuck the crown's lit lip into the grass: on the S/E/W masters the bumps sit
+    # flush to the tile edge, so a bump highlight lands right on the grass seam as
+    # a faint dotted line. Ease the outermost ring (and half-ease the next one) of
+    # each grass-facing side toward grass so the canopy nestles into the field.
+    for e in designed:
+        d = {"N": yy, "S": 15 - yy, "W": xx, "E": 15 - xx}[e]
+        ring0 = d == 0
+        ring1 = d == 1
+        a[ring0, :3] = 0.4 * a[ring0, :3] + 0.6 * g[ring0, :3]
+        a[ring1, :3] = 0.75 * a[ring1, :3] + 0.25 * g[ring1, :3]
+    return img(a.astype(np.int16))
+
+
+# Which sides of a nub are OPEN (rounded leaf crown) vs join the mass (flat seam).
+# The blob autotiler (tools/autotile/blob.mjs) asks for these on thin protrusions:
+# end_* = a peninsula tip (one join side), strip_* = a 1-wide neck (two join sides),
+# single = a lone clump (no join). Mirrors the role naming there.
+TREE_NUB_OPEN = {
+    "end_n": ("N", "W", "E"), "end_s": ("S", "W", "E"),
+    "end_w": ("W", "N", "S"), "end_e": ("E", "N", "S"),
+    "strip_h": ("N", "S"), "strip_v": ("W", "E"),
+    "single": ("N", "S", "W", "E"),
+}
+_NUB_ADJ = [("N", "W"), ("N", "E"), ("S", "W"), ("S", "E")]
+_NUB_PHASE = {"N": 0, "S": 2, "W": 1, "E": 3}
+
+
+def tree_nub(role: str, grass_im: Image.Image | None = None,
+             fill_im: Image.Image | None = None) -> Image.Image:
+    """Draw a tree-mass NUB: a leaf clump rounded on its OPEN sides and flat where
+    it joins the wider mass — the piece the 13-slice set lacks, so a 1-tile
+    protrusion (the circled nub) rounds cleanly instead of falling back to a flat
+    edge. Built procedurally to match the bubble-crown border: a scalloped rounded
+    silhouette (leaf bumps protrude, dark gaps between) filled with the canopy
+    mass, a lit crown on the open lip, grass outside. `single` rounds all four
+    sides; `strip_*` is a capsule; `end_*` is a tombstone with the join side flush."""
+    open_sides = TREE_NUB_OPEN[role]
+    g = np.asarray((grass_im or grass_fill(0)).convert("RGBA")).astype(np.int16)
+    fill = np.asarray((fill_im or tree_fill(0)).convert("RGBA")).astype(np.int16)
+    lit = (78, 182, 162)         # crown highlight (sampled from the painterly bump cap)
+    mid = (40, 98, 88)           # bump body
+    yy, xx = np.mgrid[0:16, 0:16]
+    depth = {"N": yy, "S": 15 - yy, "W": xx, "E": 15 - xx}
+    axis = {"N": xx, "S": xx, "W": yy, "E": yy}
+    m = np.ones((16, 16), bool)
+    for e in open_sides:
+        # gentle 1px scallop: bumps protrude to depth 1, gaps recede only to 2, so
+        # the leaf band stays CONTINUOUS (grass never pokes between bumps — that
+        # was the thin "dashed" read) while the caps still waver like clumps.
+        bump = ((axis[e] + _NUB_PHASE[e]) % 4) < 2
+        m &= depth[e] >= np.where(bump, 1, 2)
+    R = 4
+    for e1, e2 in _NUB_ADJ:                            # round each open-open corner
+        if e1 in open_sides and e2 in open_sides:
+            d1 = depth[e1].astype(float) - 2; d2 = depth[e2].astype(float) - 2
+            near = (d1 < R) & (d2 < R)
+            outside = (R - np.clip(d1, 0, R)) ** 2 + (R - np.clip(d2, 0, R)) ** 2 > R * R
+            m &= ~(near & outside)
+    out = g.copy()
+    out[m] = fill[m]
+    for e in open_sides:
+        # a continuous mid leaf-band on the outer ring, a darker body ring under it
+        # (3-tone roundness), then lit caps only on the protruding bumps.
+        lip = m & ~_shift_mask(m, e)
+        body = m & _shift_mask(lip, _OPP[e]) & ~lip
+        out[body, :3] = sh(TREE, 0.5)
+        out[lip, :3] = mid
+        cap = lip & (depth[e] <= 1)
+        out[cap, :3] = lit
+    return img(out)
+
+
+_OPP = {"N": "S", "S": "N", "W": "E", "E": "W"}
+
+
+def _shift_mask(mask: np.ndarray, side: str) -> np.ndarray:
+    """The mask shifted one cell toward `side` (off-grid edge becomes False)."""
+    if side == "N":
+        r = np.roll(mask, 1, 0); r[0, :] = False
+    elif side == "S":
+        r = np.roll(mask, -1, 0); r[-1, :] = False
+    elif side == "W":
+        r = np.roll(mask, 1, 1); r[:, 0] = False
+    else:
+        r = np.roll(mask, -1, 1); r[:, -1] = False
+    return r
 
 
 # ---- glowmoss cave (Glowmoss Deep & the eastern dark interiors) ----------------

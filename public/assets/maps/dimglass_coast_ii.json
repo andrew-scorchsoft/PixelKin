@@ -14,7 +14,7 @@
       "tile_height": 16,
       "first_gid": 1,
       "columns": 12,
-      "tile_count": 189
+      "tile_count": 196
     }
   ],
   "layers": [
@@ -1943,7 +1943,7 @@
         "tx": 2,
         "ty": 13
       },
-      "trigger": "interact",
+      "trigger": "step_on",
       "to_map": "tideglass_cavern",
       "to": {
         "tx": 4,
@@ -1951,7 +1951,8 @@
       },
       "facing": "left",
       "requires_ability": "glimmerstep",
-      "transition": "door"
+      "transition": "door",
+      "blocked_ref": "door.locked_glimmerstep"
     }
   ],
   "triggers": [

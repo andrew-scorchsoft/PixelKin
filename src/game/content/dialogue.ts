@@ -593,6 +593,19 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'WAYKEEPER', text: 'The Lowleaf spoke sleeps yet, Wayfarer — its lamps answer the Verdant, and the Verdant is still dark.' },
     { speaker: 'WAYKEEPER', text: 'The long way round is the fen-road east of Pearlmoor. Roads wake to Gleams; relight the green one and this one will carry you home after.' },
   ],
+
+  // --- Locked-door lines (a gated door warp's blocked_ref) ---
+  // Doors are walk-onto: stepping into a locked one (or pressing Confirm at it)
+  // plays these instead of barring the way in silence. Keep the canon voice.
+  'door.locked_lumenary': [
+    { text: "The Lumenary's door is shut. A Lampwarden won't light a hall for a Wayfarer with no kin — find a friend first, then come back." },
+  ],
+  'door.locked_beacon': [
+    { text: 'The beacon door is locked fast. It wants a wick-key — the Dimglass lamplighter keeps one.' },
+  ],
+  'door.locked_glimmerstep': [
+    { text: 'The gap breathes cold dark, too narrow to chance. Without the Glimmerstep gift to thread it, the cave keeps its own counsel.' },
+  ],
 };
 
 const FALLBACK: DialogueLine[] = [{ text: '...' }];

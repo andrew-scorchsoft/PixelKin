@@ -454,8 +454,10 @@ def _gba_override(nm: str, cur: Image.Image) -> Image.Image | None:
     m = _re.fullmatch(r"tree_(edge_[nswe]|corner_[ns][we])(?:_v\d+)?", nm)
     if m:
         # painterly bubble-crown masters stay; their inner half eases into the
-        # drawn fill so the mass interior doesn't band.
-        return g.tree_edge_blend(cur, m.group(1))
+        # drawn fill so the mass interior doesn't band, and their OUTWARD half is
+        # re-grounded onto the real grass fill so the border meets open grass
+        # cleanly (no pale halo rim / off-grass strip).
+        return g.tree_grass_meld(g.tree_edge_blend(cur, m.group(1)), m.group(1))
     if _re.fullmatch(r"grass[0-3]", nm):
         return g.grass_fill(int(nm[-1]))
     m = _re.fullmatch(r"tallgrass_fill(?:_v(\d+))?", nm)
@@ -470,6 +472,11 @@ def _gba_override(nm: str, cur: Image.Image) -> Image.Image | None:
     if _re.fullmatch(r"tree_inner_[ns][we]", nm):
         # concave canopy joins read best as plain canopy (same call water makes)
         return g.tree_fill(0)
+    m = _re.fullmatch(r"tree_(end_[nswe]|strip_[hv]|single)", nm)
+    if m:
+        # the protrusion pieces the 13-slice lacks — drawn nubs, rounded leaf crown
+        # on the open sides, flush where they join the mass (no seam pass needed).
+        return g.tree_nub(m.group(1))
     if nm == "water_a2":
         return g.water_fill(1)
     if nm == "water_a3":
@@ -534,6 +541,15 @@ def _gba_override(nm: str, cur: Image.Image) -> Image.Image | None:
         return g.cliff_tile(role, v)
     return None
 
+
+# Tree NUBS (the protrusion roles the 13-slice family lacks: end caps, 1-wide
+# strips, lone clump). APPENDED LAST so every existing map's gids are untouched —
+# without these a thin tree spur falls back to a flat edge/fill and reads as a
+# square stub; with them the autotiler rounds every exposed side. Drawn by
+# gbaforge.tree_nub via the override (imagery passed here is the same drawn tile).
+for _r in ("end_n", "end_s", "end_w", "end_e", "strip_h", "strip_v", "single"):
+    add(f"tree_{_r}", gbaforge.tree_nub(_r), role="tree", terrain="tree",
+        autotile=_r, collides=True)
 
 # ---- write masters, manifest, index, then pack ------------------------------
 name_index = {nm: i for i, (nm, _, _) in enumerate(TILES)}

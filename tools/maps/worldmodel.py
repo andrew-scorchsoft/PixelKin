@@ -95,6 +95,17 @@ class MapModel:
                     if 0 <= tx < self.w and 0 <= ty < self.h:
                         self.solid[ty * self.w + tx] = True
 
+        # Doorways are WALK-ONTO: a transition:'door' warp frees its tile so the
+        # player can step into the doorway even though it sits in a building's
+        # footprint (mirror of CollisionGrid). Runs after the object loop so it
+        # overrides the footprint — without it the audit thinks a step_on door is
+        # an unreachable solid tile.
+        for wp in m.get("warps", []):
+            if wp.get("transition") == "door":
+                at = wp["at"]
+                if 0 <= at["tx"] < self.w and 0 <= at["ty"] < self.h:
+                    self.solid[at["ty"] * self.w + at["tx"]] = False
+
         # AbilityGate rects flip their tiles to gated-walkable
         for g in m.get("gates", []):
             if g.get("effect") in ("make_passable", "remove_tile") and "rect" in g:

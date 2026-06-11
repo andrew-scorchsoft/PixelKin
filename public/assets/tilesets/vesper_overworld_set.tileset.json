@@ -4,7 +4,7 @@
   "tile_width": 16,
   "tile_height": 16,
   "columns": 12,
-  "tile_count": 189,
+  "tile_count": 196,
   "tiles": [
     {
       "index": 0,
@@ -1214,6 +1214,55 @@
       "index": 188,
       "role": "ledge",
       "ledge": "down"
+    },
+    {
+      "index": 189,
+      "role": "tree",
+      "terrain": "tree",
+      "autotile": "end_n",
+      "collides": true
+    },
+    {
+      "index": 190,
+      "role": "tree",
+      "terrain": "tree",
+      "autotile": "end_s",
+      "collides": true
+    },
+    {
+      "index": 191,
+      "role": "tree",
+      "terrain": "tree",
+      "autotile": "end_w",
+      "collides": true
+    },
+    {
+      "index": 192,
+      "role": "tree",
+      "terrain": "tree",
+      "autotile": "end_e",
+      "collides": true
+    },
+    {
+      "index": 193,
+      "role": "tree",
+      "terrain": "tree",
+      "autotile": "strip_h",
+      "collides": true
+    },
+    {
+      "index": 194,
+      "role": "tree",
+      "terrain": "tree",
+      "autotile": "strip_v",
+      "collides": true
+    },
+    {
+      "index": 195,
+      "role": "tree",
+      "terrain": "tree",
+      "autotile": "single",
+      "collides": true
     }
   ]
 }

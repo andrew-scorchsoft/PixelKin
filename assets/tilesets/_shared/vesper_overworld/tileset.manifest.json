@@ -1210,6 +1210,55 @@
       "file": "188_sand_ledge_s_v1.png",
       "role": "ledge",
       "ledge": "down"
+    },
+    {
+      "file": "189_tree_end_n.png",
+      "role": "tree",
+      "terrain": "tree",
+      "autotile": "end_n",
+      "collides": true
+    },
+    {
+      "file": "190_tree_end_s.png",
+      "role": "tree",
+      "terrain": "tree",
+      "autotile": "end_s",
+      "collides": true
+    },
+    {
+      "file": "191_tree_end_w.png",
+      "role": "tree",
+      "terrain": "tree",
+      "autotile": "end_w",
+      "collides": true
+    },
+    {
+      "file": "192_tree_end_e.png",
+      "role": "tree",
+      "terrain": "tree",
+      "autotile": "end_e",
+      "collides": true
+    },
+    {
+      "file": "193_tree_strip_h.png",
+      "role": "tree",
+      "terrain": "tree",
+      "autotile": "strip_h",
+      "collides": true
+    },
+    {
+      "file": "194_tree_strip_v.png",
+      "role": "tree",
+      "terrain": "tree",
+      "autotile": "strip_v",
+      "collides": true
+    },
+    {
+      "file": "195_tree_single.png",
+      "role": "tree",
+      "terrain": "tree",
+      "autotile": "single",
+      "collides": true
     }
   ]
 }

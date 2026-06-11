@@ -396,8 +396,16 @@ export class WorldScene extends Phaser.Scene {
       return;
     }
 
+    // Doors are walk-onto (step_on) by convention, but pressing Confirm while
+    // facing one should also work — players instinctively press Enter at a door,
+    // and a LOCKED door must answer that with its "it's locked" line (executeWarp
+    // delivers blocked_ref when the warp is gated). So match interact warps AND any
+    // door warp on the faced tile.
     const warp = this.map.def.warps.find(
-      (w) => w.trigger === 'interact' && w.at.tx === ahead.tx && w.at.ty === ahead.ty,
+      (w) =>
+        w.at.tx === ahead.tx &&
+        w.at.ty === ahead.ty &&
+        (w.trigger === 'interact' || w.transition === 'door'),
     );
     if (warp) await this.executeWarp(warp);
   }
@@ -444,6 +452,16 @@ export class WorldScene extends Phaser.Scene {
     this.modal = true;
     await new DialogueBox(this, this.sfx).run([
       { text: 'It is not time yet — something is still needed here.' },
+    ]);
+    this.modal = false;
+  }
+
+  /** Generic "locked door" line — the fallback when a gated door warp carries no
+   *  blocked_ref of its own, so a walk-in/Confirm is never met with silence. */
+  private async showLockedDoor(): Promise<void> {
+    this.modal = true;
+    await new DialogueBox(this, this.sfx).run([
+      { text: "It's locked. This door won't open yet." },
     ]);
     this.modal = false;
   }
@@ -726,9 +744,12 @@ export class WorldScene extends Phaser.Scene {
   private async executeWarp(warp: Warp): Promise<void> {
     if (!this.warpAllowed(warp)) {
       // A gated warp with its own "not yet" line delivers it in-voice (step_on
-      // included — the player walked into a chained gate); otherwise only an
-      // active interact gets the generic hint.
+      // included — the player walked into a chained gate). A locked DOOR always
+      // answers — its own line if it has one, else a generic "it's locked" — so a
+      // walk-in (or the instinctive Confirm press) is never met with silence.
+      // Other gated warps only hint on an active interact.
       if (warp.blocked_ref) await this.runDialogue(warp.blocked_ref);
+      else if (warp.transition === 'door') await this.showLockedDoor();
       else if (warp.trigger === 'interact') await this.showHint();
       return;
     }
