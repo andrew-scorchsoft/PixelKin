@@ -162,6 +162,20 @@ def runner(base, W, x, y0, y1, tile=RUNNER):
         base[y * W + x] = tile
 
 
+def aisle_runner(objects: list, x: int, y0: int, y1: int) -> None:
+    """A carpet AISLE up the hall: stacked `interior_rug_runner` 1x3 segments
+    (the drawn deep-blue runner with diamond motifs; solid:false, walk-on).
+    Prefer this over `runner()` for any aisle longer than a doormat — the
+    doormat TILE repeated vertically reads as a ladder (hard black cell
+    borders), which is exactly the dodgy-path look it replaces. Spans that
+    aren't a multiple of 3 keep the remainder as plain floor at the door end."""
+    seg = spec("rug_runner")["th"]
+    y = y0
+    while y + seg - 1 <= y1:
+        place(objects, "rug_runner", x, y, oid=f"aisle_{y}", solid=False)
+        y += seg
+
+
 # ---- assembly + QA ----------------------------------------------------------------
 def mapdef(id_, name, W, H, tileset, base, over, objects, warps, triggers, npcs, music):
     return {

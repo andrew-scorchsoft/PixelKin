@@ -355,22 +355,50 @@ object** with real shape, then slice only for placement (art-style §14b):
 
 ```bash
 GI=.claude/skills/generate-image/scripts/generate.py
-./venv/bin/python $GI --provider google --transparent --max-dim 0 --aspect 3:4 \
+# Transparent objects: DO NOT force --provider google. Omit --provider so it
+# routes to OpenAI gpt-image-1, which returns a REAL alpha channel natively
+# (clean, deterministic). Google has no native alpha — it chroma-keys a magenta
+# fill, and the model sometimes ignores that and bakes an OPAQUE background
+# (white/grey/checkerboard) that survives the key and ships as a dirty box.
+./venv/bin/python $GI --transparent --max-dim 0 --aspect 3:4 \
   --output /tmp/house.png --prompt "<pixel-art preamble> a single COSY COTTAGE as ONE \
-building object on a TRANSPARENT background: peaked clay roof with OVERHANGING eaves + \
-shadow line, shaded timber walls, door, glowing windows, a soft contact shadow at the base. \
-Lit top-left. HARD 1px edges, NO anti-aliasing, NO soft glow/halo. Higher contrast than ground."
+building object floating ALONE on a fully transparent background — render NOTHING behind it \
+(no checkerboard, no grey/white squares, no grid, no backdrop). STRAIGHT-ON FRONT view as in \
+a classic top-down RPG town: facade flat and parallel to the viewer, roof seen slightly from \
+above, NO isometric/three-quarter angle, NO visible side wall. Peaked clay roof with \
+OVERHANGING eaves + shadow line, shaded timber walls, door, glowing windows, a hard-edged \
+contact shadow at the base. Lit top-left. HARD 1px edges, NO anti-aliasing, NO soft glow/halo, \
+higher contrast than the ground it sits on."
 ```
 
 Then **declutter → snap to a tile multiple → slice → place** (body on `deco`
-collides, the overhanging top row(s) on `above` so the player walks behind).
+collides, the overhanging top row(s) on `above` so the player walks behind). The
+declutter+snap pass (bottom-anchored, alpha hard-thresholded, magenta/pink bleed
+keyed out) — see the worked `snap()` in any recent object build, e.g. the
+Cinderhead set under `assets/tilesets/cinderhead/objects/`.
 
-**Hard-won lessons (proven):**
+**Hard-won lessons (proven — get it right first time):**
+- **Transparent background = native alpha, not a forced provider.** Omit `--provider`
+  on `--transparent` runs so OpenAI's real alpha is used. If you must use Google,
+  expect to clean an opaque/checkerboard background yourself, and add to the prompt:
+  *"fully transparent background, render nothing behind it, NO checkerboard, NO
+  grey/white squares, NO grid."* (The generate-image script's preamble already says
+  this, but the model obeys it more reliably with native alpha.)
 - **No soft glows/halos/shadows on transparent objects.** Semi-transparent pixels
   pick up the magenta chroma key as a **pink/purple halo**. Keep all shading
-  hard-edged; drop alpha < ~110 and kill magenta bleed in a declutter pass.
-- **Multi-tile by default** — cottage ~5×6 tiles, lamp ~1×3. A one-tile lamp/house
-  is the tell of a flat map.
+  hard-edged; in the snap pass drop alpha < ~110 AND key out magenta/pink bleed
+  (high R&B, low G → alpha 0) before re-thresholding.
+- **State the PROJECTION explicitly** (and pass a reference with `--input-image`).
+  "Straight-on front view, facade parallel to viewer, no isometric/3-quarter angle,
+  no visible side wall" — a loose brief yields an isometric floater that won't sit
+  in a top-down town. Pass a sibling building as `--input-image` to lock register.
+- **Multi-tile by default** — cottage ~5×6 tiles, lamp ~1×3, a town hall ~6×6/6×7.
+  A one-tile lamp/house is the tell of a flat map.
+- **When a region needs a bespoke prop and none exists, GENERATE it — never reuse
+  another town's hall.** Reusing e.g. Tinderwick's Lumenary for a mine reads as a
+  stand-in. A new area's own object set lives in `assets/tilesets/<area>/objects/`
+  → `pack_objects.py`. (Cinderhead's headframe hall + ore-cart + crystal cluster
+  are the worked example.)
 - **Draw dominant** (higher contrast/saturation than the recessive ground) so the
   hierarchy reads.
 

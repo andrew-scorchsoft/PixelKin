@@ -555,6 +555,30 @@ def generate_google(
     raise RuntimeError(f"Google response contained no image part: {payload}")
 
 
+def _warn_if_opaque_transparent(img: Image.Image, *, threshold: float = 0.90) -> None:
+    """Print a loud stderr warning if a `--transparent` result is almost all
+    opaque (i.e. transparency failed — the model baked a solid/checkerboard
+    background the chroma-key couldn't remove). No mutation: a wrong auto-strip
+    would eat a same-coloured subject, so we flag and let the caller regenerate.
+    """
+    try:
+        import numpy as np  # type: ignore
+        a = np.asarray(img.convert("RGBA"))[..., 3]
+        opaque = float((a > 110).mean())
+        corners = float(np.mean([a[:12, :12].mean(), a[:12, -12:].mean(),
+                                 a[-12:, :12].mean(), a[-12:, -12:].mean()]))
+    except Exception:
+        return
+    if opaque >= threshold and corners > 40:
+        sys.stderr.write(
+            f"\n  ⚠️  TRANSPARENCY LIKELY FAILED: {opaque:.0%} of the image is opaque and "
+            f"the corners aren't clear — the model probably baked an opaque background "
+            f"(white/grey/checkerboard) instead of true alpha.\n"
+            f"      Regenerate with NATIVE alpha (omit --provider so OpenAI gpt-image-1 is "
+            f"used), and/or add 'fully transparent background, render nothing behind it, NO "
+            f"checkerboard/grey squares/grid' to the prompt.\n\n")
+
+
 def chroma_key_to_alpha(
     img: Image.Image,
     *,
@@ -668,6 +692,12 @@ def strip_metadata_and_encode(
             new_size = (int(clean.size[0] * ratio), int(clean.size[1] * ratio))
             clean = clean.resize(new_size, Image.LANCZOS)
         clean = chroma_key_to_alpha(clean)
+        # Safety signal: if a transparent gen comes back almost fully opaque, the
+        # model likely baked an OPAQUE background (white/grey/checkerboard) the
+        # magenta key couldn't strip — common on the Google path. Don't silently
+        # ship a dirty box; warn loudly so the caller regenerates (preferably with
+        # native alpha — omit --provider so OpenAI gpt-image-1 is used).
+        _warn_if_opaque_transparent(clean)
 
     if not transparent and max_dim and max(clean.size) > max_dim:
         ratio = max_dim / max(clean.size)

@@ -117,6 +117,12 @@ AI-generated — the kit lives in `tools/maps/interiorforge.py`; a new piece =
 a new draw function + re-run + `pack_objects.py`. If a room resizes, update
 the town builder's door landing and re-run `audit_warps`.
 
+**The hall AISLE uses `roomkit.aisle_runner(objects, door_x, y0, y1)`, NEVER
+`runner()`.** `runner()` paints the DOORMAT *tile* down the aisle; tiled
+vertically its hard black cell borders read as a **ladder** — the "dodgy path"
+look. `aisle_runner` stacks the drawn `interior_rug_runner` objects (solid:false,
+walk-on) so it reads as a carpet. All Lumenaries use it.
+
 ## Hard rules the stamps don't cover (memorise)
 
 - **Terrain is DRAWN, never AI-generated** (`gbaforge.py`); image-gen is for
@@ -124,13 +130,32 @@ the town builder's door landing and re-run `audit_warps`.
   families are APPENDED to `build_shared_overworld.py` (stable tile order).
 - **Caves are multi-floor** (level-design §2a): a floor is a map; ladders are
   mutual step_on warp pairs landing ON each other (`cave_ladder_down`/`_up`);
-  spur mouths live on the lowest floor; only a region's first dungeon stays
-  one floor (+ small B1F).
+  spur mouths live on the lowest floor; only a region's **first** dungeon stays
+  one floor (+ small B1F). A region's **mid** dungeon is a 3-floor ladder MAZE —
+  a single room is under-built (Cinderhead Deep = fork → descent → deepest
+  "third gallery" is the worked example). Keep all *graph-required* warps
+  (region exits, gated spurs, shortcuts) on the **registered** node (the top
+  floor); the lower floors are the optional/quest depth + ladder spur edges.
+- **No free-standing `cavewall`/`cliff` mass mid-floor** — a wall island in open
+  ground reads as a dodgy black slab (level-design §11 r8). Cave outcrops are
+  boulder + generated prop CLUSTERS (deco + `objects[]`: ore-carts, crystal
+  clusters), never a carved-out wall blob. A bespoke prop the area lacks gets
+  GENERATED via generate-sprite-sheet — don't reuse another town's building.
+- **Carve cave rooms+chokes as `rect`s, not blob-edge adjacency.** Two `blob`s
+  whose ellipse *edges* merely touch often DON'T connect a walkable path —
+  `audit_flow` then FAILs the room as unreachable. Use `rect` rooms joined by
+  explicit `rect`/`vline`/`hline` corridors that visibly OVERLAP, and keep
+  ladders off the border rows. Trust `audit_flow` reachability over a mental walk.
 - **Water gates ride the tiles** (water/pond carry `requires_ability:
   tidecall`); an always-walkable jetty needs the water carved out under it.
   `AbilityGate` rects force-gate EVERYTHING they cover — keep them on pure water.
 - **Wide entrances warp on EVERY walkable tile** of the opening; landings sit
   ON (or within 1 of) the return warp (`audit_warps` enforces).
+- **Restructuring a map breaks its NEIGHBOURS' landings.** When you resize/move
+  rooms, every INBOUND warp from another map (and the crossroads/hub spokes) may
+  now land on a solid or out-of-bounds tile. After any layout change, re-run the
+  FULL `audit_warps.py` (not just the focused map) and fix the neighbours' `to:`
+  coords — a landing on a wall/OOB tile is a FAIL, not a warning.
 - **Story step_on triggers go ON chokes** so they can't be walked around —
   and band EVERY walkable tile of the cut (a single trigger on a wide row is
   walk-aroundable; triggers on solid cells are inert, so over-banding is

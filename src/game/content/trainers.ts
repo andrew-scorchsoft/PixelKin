@@ -280,6 +280,59 @@ export const TRAINERS: TrainerRegistry = {
     music: 'battle-emberfall',
     ai: 'smart', // Lampwardens play the matchup, not just the biggest number
   },
+
+  // Fourth Lumenary: Otho Grist, Lampwarden of Cinderhead Mine (Stone) — the
+  // curve's one deliberate WALL (§4: rec ~26 after the Descent Vigil vs ace 28).
+  // A bulk team (roof, not rush): high def/hp Stone that punishes a glass cannon.
+  // His win relights the Stone constellation AND, as East's SECOND Gleam, the
+  // engine derives flag:crown_east (the warden reward_flags pattern, South's
+  // worked example — Stone grants NO Lantern Gift, so no reward_abilities).
+  lampwarden_cinderhead: {
+    id: 'lampwarden_cinderhead',
+    name: 'OTHO GRIST',
+    title: 'Lampwarden',
+    party: [
+      { species_id: 48, level: 25 }, // Rubbol — Stone
+      { species_id: 46, level: 26 }, // Voltcrag — Stone/Storm
+      { species_id: 69, level: 27 }, // Riddlestone — Stone
+      { species_id: 55, level: 28 }, // Ferrolith — Stone (ace, the wall)
+    ],
+    intro_ref: 'trainer.lampwarden_cinderhead.intro',
+    defeat_ref: 'trainer.lampwarden_cinderhead.defeat',
+    reward_flags: ['gleam:stone'],
+    payout: 1680, // Lampwarden 60 × ace 28
+    music: 'battle-emberfall',
+    ai: 'smart',
+  },
+
+  // The two vigil-miner SIGHT trainers in Cinderhead Deep (keeper class) — they
+  // hold the Descent Vigil's chamber leg, the §4 gap-closer made mandatory.
+  gallery_miner_a: {
+    id: 'gallery_miner_a',
+    name: 'DRUSE',
+    title: 'Vigil Miner',
+    party: [
+      { species_id: 47, level: 24 }, // Pebbit — Stone
+      { species_id: 49, level: 25 }, // Gravelo — Stone (ace)
+    ],
+    intro_ref: 'trainer.gallery_miner_a.intro',
+    defeat_ref: 'trainer.gallery_miner_a.defeat',
+    payout: 500, // keeper 20 × ace 25
+    music: 'battle-emberfall',
+  },
+  gallery_miner_b: {
+    id: 'gallery_miner_b',
+    name: 'HOBB',
+    title: 'Vigil Miner',
+    party: [
+      { species_id: 45, level: 25 }, // Sparkrat — Stone/Storm
+      { species_id: 48, level: 26 }, // Rubbol — Stone (ace)
+    ],
+    intro_ref: 'trainer.gallery_miner_b.intro',
+    defeat_ref: 'trainer.gallery_miner_b.defeat',
+    payout: 520, // keeper 20 × ace 26
+    music: 'battle-emberfall',
+  },
 };
 
 /** Intro/defeat dialogue for trainers, kept beside the roster they belong to. */
@@ -343,6 +396,26 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   'trainer.lampwarden_lowleaf.defeat': [
     { speaker: 'SABLE QUILL', text: '...Oh. Oh, that was LOVELY. Don\'t tell anyone I said that out loud.' },
     { speaker: 'SABLE QUILL', text: 'The Verdant Gleam is yours — the moss vouched for you, and the moss has never once been wrong about a person.' },
+  ],
+  'trainer.lampwarden_cinderhead.intro': [
+    { speaker: 'OTHO GRIST', text: 'No rush in my kin and no rush in me. We are the mountain, Wayfarer. We OUTLAST.' },
+    { speaker: 'OTHO GRIST', text: 'Show me a light that does not gutter when the rock leans in. That is all a Gleam ever was.' },
+  ],
+  'trainer.lampwarden_cinderhead.defeat': [
+    { speaker: 'OTHO GRIST', text: 'Hah. You did not out-hit them. You out-LASTED them. ...That, I respect. That is the deep way.' },
+    { speaker: 'OTHO GRIST', text: 'A steady light. The Stone remembers it. Come — let the vigil see what you carried up.' },
+  ],
+  'trainer.gallery_miner_a.intro': [
+    { speaker: 'DRUSE', text: 'Wick against wick, Wayfarer. Crew rule. You do not pass the gallery till you have weighed it.' },
+  ],
+  'trainer.gallery_miner_a.defeat': [
+    { speaker: 'DRUSE', text: 'Steady enough. The lamp is two chambers on — and Hobb is between you and it.' },
+  ],
+  'trainer.gallery_miner_b.intro': [
+    { speaker: 'HOBB', text: 'Last lamp before the vigil-lamp, and it is mine to keep. Come on, then.' },
+  ],
+  'trainer.gallery_miner_b.defeat': [
+    { speaker: 'HOBB', text: 'Well held. Lift the vigil-lamp gentle, now — it has waited a long dark for a steady hand.' },
   ],
 };
 

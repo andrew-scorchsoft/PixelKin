@@ -606,6 +606,83 @@ export const DIALOGUE: DialogueRegistry = {
   'door.locked_glimmerstep': [
     { text: 'The gap breathes cold dark, too narrow to chance. Without the Glimmerstep gift to thread it, the cave keeps its own counsel.' },
   ],
+
+  // ===========================================================================
+  // CINDERHEAD MINE — the Stone wall (walkthrough/02-east; Otho Grist, Stone)
+  // ===========================================================================
+  'sign.cinderhead_welcome': [
+    { text: 'CINDERHEAD MINE\nWe lower the lamps to remember why we carry them. Then we light them again. Walk careful past the vigil, Wayfarer.' },
+  ],
+  'sign.cinderhead_deep_mouth': [
+    { text: 'THE DEEP GALLERIES — down this mouth.\nThe dark below will not take a lamp that cannot see in it. No Glimmerstep, no descent.' },
+  ],
+  'sign.cinderhead_lumenary': [
+    { text: 'STONE LUMENARY — Otho Grist, Lampwarden.\nDown here, light is not given. It is kept.' },
+  ],
+  'sign.cinderhead_sealed': [
+    { text: 'SEALED — by order of the foreman.\nBarred from the OTHER side, years back, to keep the deep dark from wandering up the hoist-line. The bar lifts from here.' },
+  ],
+  'sign.cinderhead_crystoll': [
+    { text: 'CRYSTOLL VAULT — across the void.\nThe floor gives out to pure dark. Only a Starreach steps across a gap like this. Come back when the last constellation is yours.' },
+  ],
+  // the Lamp-down vigil (unconditional — the vigil is underway on arrival)
+  'npc.vigil_elder': [
+    { speaker: 'VIGIL ELDER', text: 'We lower the lamps so we remember why we carry them. Then we light them again. That is the whole of it.' },
+    { speaker: 'VIGIL ELDER', text: "But the vigil cannot CLOSE — not till the old crew's lamp comes up from the third gallery, still lit. Otho won't have it any other way." },
+  ],
+  'npc.vigil_miner_a': [
+    { speaker: 'MINER', text: "Cowled folk passed through, talking gentle about letting the dark just... be. We told them where the door was." },
+    { speaker: 'MINER', text: 'A miner does not surrender to the dark. A miner KEEPS a light in it. There is a difference, and it is the whole of us.' },
+  ],
+  'npc.vigil_miner_b': [
+    { speaker: 'MINER', text: "Mind Otho. He is fair as a plumb-line and twice as hard. His kin are all roof and no rush — you will not out-hit them. Out-LAST them." },
+  ],
+  // post-Gleam payoff (Arc E: the town answers the win — the lamps are up)
+  'npc.vigil_raised_a': [
+    { speaker: 'VIGIL ELDER', text: 'Lamps all risen, and the Stone steady overhead. The vigil is CLOSED, Wayfarer — first time in a long dark. We will not forget the hand that carried it up.' },
+  ],
+  'npc.vigil_raised_b': [
+    { speaker: 'PIT-CHILD', text: 'The lamps went UP! All at once, like a sunrise made of lanterns! Did you see? Did you SEE?' },
+  ],
+  'npc.cinderhead_deep_warden': [
+    { speaker: 'DEEP-WARDEN', text: "The forest Wayfarer — Wren? — went down ahead of you, quiet as I've seen them. Something in that drained wood shook the bright right out of them." },
+  ],
+  // Otho's giver stages (his hall) — the Descent Vigil loop's grammar
+  'npc.otho_waiting': [
+    { speaker: 'OTHO GRIST', text: 'Lamp still up here, is it? The vigil-lamp is THREE galleries down, still burning. Bring it up. Then we talk.' },
+  ],
+  'npc.otho_ready': [
+    { speaker: 'OTHO GRIST', text: 'You carried it up still lit. Through all that dark. ...Then we are ready, you and I. Step to the aisle when your kin are.' },
+  ],
+  'npc.otho_after': [
+    { speaker: 'OTHO GRIST', text: 'The Stone is yours, and the eastern crown with it. Galehigh waits up the deep and out the far side — keep your light steady, the wind up there is not.' },
+  ],
+  'npc.otho_not_ready': [
+    { speaker: 'OTHO GRIST', text: "No vigil-lamp, no bond-test. I don't hand a Gleam to a lamp I've not seen cross the dark. Down you go." },
+  ],
+  // E3 The Foreman's Ledger
+  'npc.ledger_waiting': [
+    { speaker: 'LONE MINER', text: 'Side gallery off the west chamber, that is where it fell. Mind the galleries — they bite, this deep.' },
+  ],
+  'npc.ledger_after': [
+    { speaker: 'LONE MINER', text: 'The whole crew, written down and remembered. You have given an old hand his sleep back, Wayfarer.' },
+  ],
+  'npc.cinderhead_sealed_miner': [
+    { speaker: 'OLD HOIST-HAND', text: "Been meaning to clear that door for years. You did it in a turn. Now the cart-line runs straight to the Crossroads — no more trudging the long fen-road home." },
+  ],
+  'npc.cinderhead_provisioner': [
+    { speaker: 'PIT-PROVISIONER', text: 'Balms, charges, and a chart or two for the deep. What does the dark owe you today?' },
+  ],
+  // the two vigil-miner sight trainers, beaten
+  'npc.gallery_miner_a_after': [
+    { speaker: 'DRUSE', text: 'Lamp two chambers down, still lit. Carry it gentle. Hobb is on the last neck before it — he will want his bout.' },
+  ],
+  'npc.gallery_miner_b_after': [
+    { speaker: 'HOBB', text: 'The vigil-lamp is just there, in the chamber beyond. Lift it slow. A flame that kept this long has earned a careful hand.' },
+  ],
+  'sign.crossroads_mineshortcut': [
+    { text: 'CINDERHEAD CART-HOIST.\nThe deep-mine line. The cars run when the sealed gallery door is opened from the far side — not before.' },
+  ],
 };
 
 const FALLBACK: DialogueLine[] = [{ text: '...' }];

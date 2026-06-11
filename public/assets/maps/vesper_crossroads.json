@@ -350,9 +350,9 @@
         52,
         52,
         51,
-        109,
-        47,
-        14,
+        54,
+        9,
+        100,
         18,
         43,
         108,
@@ -370,9 +370,9 @@
         52,
         50,
         50,
-        51,
         53,
-        13,
+        14,
+        16,
         18,
         48,
         52,
@@ -717,7 +717,7 @@
         0,
         0,
         0,
-        0,
+        117,
         0,
         0,
         0,
@@ -1376,6 +1376,23 @@
       "facing": "down",
       "requires_flag": "flag:hub_unlocked",
       "transition": "fade"
+    },
+    {
+      "id": "shortcut_cinderhead",
+      "at": {
+        "tx": 8,
+        "ty": 17
+      },
+      "trigger": "step_on",
+      "to_map": "cinderhead_deep",
+      "to": {
+        "tx": 21,
+        "ty": 15
+      },
+      "facing": "up",
+      "requires_flag": "flag:shortcut_mine",
+      "blocked_ref": "sign.crossroads_mineshortcut",
+      "transition": "fade"
     }
   ],
   "triggers": [
@@ -1438,6 +1455,16 @@
       },
       "activation": "interact",
       "ref": "sign.crossroads_lowleaf"
+    },
+    {
+      "id": "sign_mineshortcut",
+      "kind": "sign",
+      "at": {
+        "tx": 7,
+        "ty": 16
+      },
+      "activation": "interact",
+      "ref": "sign.crossroads_mineshortcut"
     }
   ],
   "encounters": [],

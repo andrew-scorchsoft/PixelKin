@@ -27,7 +27,7 @@ from __future__ import annotations
 from roomkit import (WARM_SET, COOL_SET, FLOOR, FLOOR_B, DOORMAT, FACE, WINDOW,
                      CAP_S, CAP_N, CAP_E, CAP_W, RUNNER, BANNER,
                      faced_room, windows, partition_v, partition_h,
-                     place, wall_mount, runner, mapdef, obj, finish,
+                     place, wall_mount, runner, aisle_runner, mapdef, obj, finish,
                      write_and_render)
 import roomkit as rk
 
@@ -46,10 +46,10 @@ def build_lumenary(id_, name, music, out_warp, script_ref, sign_ref, warden_id, 
     partition_v(over, W, 12, 1, 3, lip="w")
     # banners flank the dais on the face
     windows(over, W, [6, 10], tile=BANNER)
-    # the runner aisle from the doormat to the dais foot
-    runner(base, W, door_x, 5, H - 2)
-
     objects: list = []
+    # the carpet aisle from the doormat to the dais foot — drawn runner objects,
+    # NOT the doormat tile repeated (that reads as a ladder, the dodgy-path look)
+    aisle_runner(objects, door_x, 5, H - 2)
     # the focal lamp-shrine on its dais, top-centre
     place(objects, "altar", door_x - 1, 2)
     # braziers flanking the dais

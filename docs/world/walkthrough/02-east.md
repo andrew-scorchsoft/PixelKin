@@ -429,7 +429,8 @@ Stone** (→ `flag:crown_east`) · rec. level ~22.
    the deep encounters (24–27) are how you beat it. Also: a **Glowpan** (Light) caught in the
    mine is a clean answer to the Stone/Dark threats of the deeper game. And on the Deep's far
    side, **open the mine shortcut** (below) — it makes every future hub trip from the east trivial.
-6. **Validation hooks**
+6. **Validation hooks — [BUILT 2026-06, `tools/maps/build_cinderhead_mine.py` +
+   `build_cinderhead_interiors.py`]**
    - map id `cinderhead_mine`, kind `cave` (town/mine mouth); interior `cinderhead_lumenary`.
    - warps: `to_mine` land-in (paired with Glowmoss Deep); **`to_deep` → `cinderhead_deep`,
      `requires_ability: 'glimmerstep'`** (graph.ts:128); Lumenary door warp (no Gift gate).
@@ -481,7 +482,7 @@ rec. level ~24–27 (top of band).
 5. **Don't-miss callouts** — **Set the shortcut.** Reaching the far side must fire
    `flag:shortcut_mine`; missing it would leave the east permanently slow. And the Crystoll
    `[LATER]` tease — note it on your mental backtrack list for the Starreach run.
-6. **Validation hooks**
+6. **Validation hooks — [BUILT 2026-06, `tools/maps/build_cinderhead_deep.py`]**
    - map id `cinderhead_deep`, kind `cave`; entry paired with Cinderhead Mine `to_deep`
      (**`requires_ability: 'glimmerstep'`**, graph.ts:128); exit **`to_terraces` →
      `galehigh_terraces`** (graph.ts:129, **ungated** — the East→North handoff).

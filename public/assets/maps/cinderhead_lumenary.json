@@ -1,6 +1,6 @@
 {
-  "id": "tinderwick_lumenary",
-  "display_name": "Tinderwick Lumenary",
+  "id": "cinderhead_lumenary",
+  "display_name": "Cinderhead Stone Lumenary",
   "width": 16,
   "height": 12,
   "tile_width": 16,
@@ -242,14 +242,14 @@
         4,
         4,
         4,
-        8,
-        4,
-        5,
-        4,
         4,
         4,
         5,
         4,
+        4,
+        4,
+        5,
+        4,
         9,
         4,
         4,
@@ -258,23 +258,7 @@
         0,
         0,
         0,
-        8,
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        9,
-        0,
-        0,
-        9,
-        8,
-        0,
-        0,
-        0,
-        8,
         0,
         0,
         0,
@@ -298,7 +282,23 @@
         0,
         0,
         0,
+        9,
         0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
         0,
         0,
         9,
@@ -471,73 +471,84 @@
       "h": 2
     },
     {
-      "id": "ledger",
-      "sprite": "interior_bookcase",
-      "at": {
-        "tx": 1,
-        "ty": 1
-      },
-      "w": 2,
-      "h": 3,
-      "overhang": 1,
-      "walk_under": true
-    },
-    {
-      "id": "offerings",
+      "id": "ore_a",
       "sprite": "interior_barrels",
       "at": {
-        "tx": 13,
-        "ty": 2
+        "tx": 1,
+        "ty": 3
       },
       "w": 2,
       "h": 1
     },
     {
-      "id": "brazier_e",
-      "sprite": "interior_brazier",
+      "id": "foreman_table",
+      "sprite": "interior_table",
       "at": {
-        "tx": 14,
-        "ty": 3
+        "tx": 2,
+        "ty": 7
       },
-      "w": 1,
+      "w": 2,
       "h": 2
     },
     {
-      "id": "pew_l1",
-      "sprite": "interior_pew",
+      "id": "foreman_stool",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 1,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "lamp_rack",
+      "sprite": "interior_lamp_rack",
       "at": {
         "tx": 4,
+        "ty": 1
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "solid": false
+    },
+    {
+      "id": "ore_b",
+      "sprite": "interior_barrels",
+      "at": {
+        "tx": 13,
         "ty": 7
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "ore_c",
+      "sprite": "interior_barrels",
+      "at": {
+        "tx": 13,
+        "ty": 9
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "vigil_pew_l",
+      "sprite": "interior_pew",
+      "at": {
+        "tx": 5,
+        "ty": 8
       },
       "w": 3,
       "h": 1
     },
     {
-      "id": "pew_r1",
+      "id": "vigil_pew_r",
       "sprite": "interior_pew",
       "at": {
         "tx": 10,
-        "ty": 7
-      },
-      "w": 3,
-      "h": 1
-    },
-    {
-      "id": "pew_l2",
-      "sprite": "interior_pew",
-      "at": {
-        "tx": 4,
-        "ty": 9
-      },
-      "w": 3,
-      "h": 1
-    },
-    {
-      "id": "pew_r2",
-      "sprite": "interior_pew",
-      "at": {
-        "tx": 10,
-        "ty": 9
+        "ty": 8
       },
       "w": 3,
       "h": 1
@@ -551,10 +562,10 @@
         "ty": 11
       },
       "trigger": "step_on",
-      "to_map": "tinderwick",
+      "to_map": "cinderhead_mine",
       "to": {
-        "tx": 19,
-        "ty": 8
+        "tx": 12,
+        "ty": 9
       },
       "facing": "down",
       "transition": "door"
@@ -562,20 +573,23 @@
   ],
   "triggers": [
     {
-      "id": "sign_lumenary",
-      "kind": "sign",
+      "id": "lumenary_battle",
+      "kind": "cutscene",
       "at": {
-        "tx": 1,
-        "ty": 3
+        "tx": 8,
+        "ty": 6
       },
-      "activation": "interact",
-      "ref": "sign.tinderwick_lumenary_inside"
+      "activation": "step_on",
+      "ref": "script.lumenary_cinderhead",
+      "once": true,
+      "requires_flag": "flag:q_east_vigil_lamp",
+      "blocked_ref": "npc.otho_not_ready"
     }
   ],
   "encounters": [],
   "npcs": [
     {
-      "id": "brisa_pre",
+      "id": "otho_quest",
       "at": {
         "tx": 8,
         "ty": 5
@@ -583,11 +597,11 @@
       "facing": "down",
       "sprite": "npc_lampwarden",
       "movement": "static",
-      "dialogue_ref": "npc.brisa_not_ready",
-      "hidden_when_flag": "flag:caught_first_kin"
+      "dialogue_ref": "script.otho_quest",
+      "hidden_when_flag": "flag:q_east_vigil"
     },
     {
-      "id": "brisa_quest",
+      "id": "otho_waiting",
       "at": {
         "tx": 8,
         "ty": 5
@@ -595,12 +609,12 @@
       "facing": "down",
       "sprite": "npc_lampwarden",
       "movement": "static",
-      "dialogue_ref": "script.brisa_quest",
-      "requires_flag": "flag:caught_first_kin",
-      "hidden_when_flag": "flag:has_beacon_wick"
+      "dialogue_ref": "npc.otho_waiting",
+      "requires_flag": "flag:q_east_vigil",
+      "hidden_when_flag": "flag:q_east_vigil_lamp"
     },
     {
-      "id": "brisa_ready",
+      "id": "otho",
       "at": {
         "tx": 8,
         "ty": 5
@@ -608,12 +622,12 @@
       "facing": "down",
       "sprite": "npc_lampwarden",
       "movement": "static",
-      "dialogue_ref": "npc.brisa_meet_beacon",
-      "requires_flag": "flag:has_beacon_wick",
-      "hidden_when_flag": "gleam:ember"
+      "dialogue_ref": "npc.otho_ready",
+      "requires_flag": "flag:q_east_vigil_lamp",
+      "hidden_when_flag": "gleam:stone"
     },
     {
-      "id": "brisa_fair",
+      "id": "otho_after",
       "at": {
         "tx": 8,
         "ty": 5
@@ -621,10 +635,10 @@
       "facing": "down",
       "sprite": "npc_lampwarden",
       "movement": "static",
-      "dialogue_ref": "npc.brisa_after",
-      "requires_flag": "gleam:ember"
+      "dialogue_ref": "npc.otho_after",
+      "requires_flag": "gleam:stone"
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/tinderwick-a.mp3"
+  "music": "assets/audio/music/cinderhead-mine-b.mp3"
 }
