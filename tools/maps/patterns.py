@@ -249,6 +249,67 @@ def crown_tree(m: dict, *, oid: str, sprite: str, at: tuple[int, int],
          "walk_under": True})
 
 
+def gift_tease(m: dict, deco, w: int, *, wid: str, at: tuple[int, int],
+               ability: str, to_map: str, to: tuple[int, int],
+               trigger: str = "interact", facing: Facing = "up",
+               sign_id: str | None = None, sign_at: tuple[int, int] | None = None,
+               breadcrumbs: tuple[tuple[int, int], ...] = (),
+               breadcrumb_tile: str = "buoy") -> list[str]:
+    """A GATED SPUR TEASE (§3a rule 8 — gates rhyme with rewards): the visible,
+    signed promise the player can't take yet. Stamps the `requires_ability`
+    warp, an optional sign stating the why + the come-back, and a breadcrumb
+    line (buoys/lamps) leading the eye to it. The target map may be unauthored
+    (the engine no-ops the warp — a safe inert tease) but list it in graph.ts
+    so the region audit tracks the promise. Returns the sign ref owed."""
+    m.setdefault("warps", []).append(
+        {"id": wid, "at": {"tx": at[0], "ty": at[1]}, "trigger": trigger,
+         "to_map": to_map, "to": {"tx": to[0], "ty": to[1]}, "facing": facing,
+         "requires_ability": ability, "transition": "door"})
+    for (x, y) in breadcrumbs:
+        deco[y * w + x] = gid(breadcrumb_tile)
+    owed: list[str] = []
+    if sign_id and sign_at:
+        owed += sign(m, deco, w, sid=sign_id, at=sign_at)
+    return owed
+
+
+def cave_ladder(m: dict, deco, w: int, *, kind: str, at: tuple[int, int],
+                to_map: str, to: tuple[int, int], wid: str | None = None) -> None:
+    """One half of a dungeon FLOOR LINK (level-design §2a): the ladder tile +
+    its step_on warp. kind 'down' stamps the pit (`cave_ladder_down`), 'up'
+    the standing ladder (`cave_ladder_up`). The two halves MUST land ON each
+    other — call this on each floor's builder with mirrored at/to and let
+    `audit_warps` prove the pair (the engine never auto-fires a warp on
+    arrival, so landing on the return warp is safe)."""
+    assert kind in ("down", "up")
+    deco[at[1] * w + at[0]] = gid(f"cave_ladder_{kind}")
+    m.setdefault("warps", []).append(
+        {"id": wid or f"ladder_{kind}", "at": {"tx": at[0], "ty": at[1]},
+         "trigger": "step_on", "to_map": to_map,
+         "to": {"tx": to[0], "ty": to[1]},
+         "facing": "down" if kind == "down" else "up", "transition": "fade"})
+
+
+def mandatory_band(tallgrass, path, w: int, h: int, *,
+                   y0: int, y1: int, x0: int | None = None,
+                   x1: int | None = None) -> None:
+    """A MANDATORY encounter crossing (§11 rule 7): a full-corridor band of
+    encounter terrain with the lane PAUSED through it, so the road itself
+    rolls encounters — flanking patches stay optional. Call AFTER painting
+    the path grid and BEFORE any precedence pass that clears grass under
+    lanes (this stamp already resolves that conflict band-locally: inside
+    the band, grass wins). Rows y0..y1 across columns x0..x1 (default: the
+    full width; enclosure terrains painted later still claim their cells)."""
+    x0 = 0 if x0 is None else x0
+    x1 = w - 1 if x1 is None else x1
+    for y in range(y0, y1 + 1):
+        for x in range(x0, x1 + 1):
+            i = y * w + x
+            tallgrass[i] = 1
+            if path[i]:
+                path[i] = 0
+
+
 def report(owed: list[str]) -> None:
     """Print the registry entries this map still owes (call from the builder)."""
     print("content refs owed by this map (register in src/game/content/):")

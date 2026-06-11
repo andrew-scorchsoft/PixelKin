@@ -62,6 +62,11 @@ mk.organic_border(tree, W, H, top=1, left=1, right=1, depth=2,
 for x in (13, 14):                       # punch the north exit gap
     tree[0 * W + x] = 0; tree[1 * W + x] = 0
 mk.rect(tree, W, H, 0, 19, W - 1, H - 1, 0)   # clear the border below the shoreline
+# Seal the SW border slivers the bump shapes leave: walkable-looking cells with
+# no approach (the cottage + tree bodies enclose them). A pocket the player can
+# SEE but never reach is a broken promise — fill it with forest instead.
+for (x, y) in ((2, 11), (3, 12), (2, 15), (3, 15), (2, 16)):
+    tree[y * W + x] = 1
 
 # NE cliff terrace — the town's elevation accent, rising behind the Lumenary so the
 # landmark sits against rock, not empty field (the reference-map "terrace" read).
@@ -279,9 +284,11 @@ m = {
         {"id": "gatewarden_post", "at": {"tx": 15, "ty": 2}, "facing": "left",
          "sprite": "npc_lampwarden", "movement": "static",
          "dialogue_ref": "npc.gatewarden_after", "requires_flag": "flag:has_starter"},
-        # A valuable cache tucked in the SW corner (the spine's cache-variety
-        # rule: each region carries a found-to-sell nugget off the lane).
-        {"id": "cache_waxcake", "at": {"tx": 3, "ty": 15}, "facing": "down",
+        # A valuable cache tucked on the strand behind the cottage (the spine's
+        # cache-variety rule: each region carries a found-to-sell nugget off the
+        # lane). NOT in the SW tree pocket — (3,15) had no walkable approach
+        # (audit_flow caught the sealed pocket; those cells are now tree-filled).
+        {"id": "cache_waxcake", "at": {"tx": 1, "ty": 20}, "facing": "down",
          "sprite": "item_cache", "movement": "static",
          "dialogue_ref": "script.pickup_tinderwick_waxcake",
          "hidden_when_flag": "flag:picked_tinderwick_waxcake"},

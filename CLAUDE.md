@@ -220,6 +220,7 @@ go digging on every task.
 | World map, areas, routes, gating | `docs/world/atlas.md` |
 | Canonical user-journey / walkthrough | `docs/world/walkthrough/` (spine + per-region) |
 | Map & level-design rules (binding) | `docs/world/level-design.md` |
+| Retro map/route-design research (the §2b/§3a evidence base) | `docs/world/retro-map-design-research.md` |
 | Interior design rules (binding, SNES-style) | `docs/world/interiors.md` |
 | Per-area/route music briefs | `docs/world/music-direction.md` |
 | Mechanics design (start here) | `docs/mechanics/00-overview.md` |
@@ -497,7 +498,27 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   hard-edged fill-only (classic encounter-tile convention) — and every fill variant must carry
   the `encounter_terrain` tag or scattered cells silently stop triggering encounters. Off-map
   = continuation. Finish via `mk.finalize()`: `expand.mjs` → strip terrain → `render_map` +
-  `validate_map` + **`tools/maps/audit_warps.py`** (all must PASS). Recipe: SKILL.md §A.
+  `validate_map` + **`tools/maps/audit_warps.py`** + **`audit_flow.py`** (all must PASS).
+  Recipe: SKILL.md §A.
+- **The audit stack proves PLAY, not just pictures (2026-06).** `tools/maps/audit_flow.py`
+  (in `finalize()`) measures the §3a pass per map — reachability FAILs, choke/free-pass/
+  loop/dead-end/screen WARNs; `tools/maps/audit_region.py` judges the SCENE (graph.ts⇄JSON
+  sync, Gift unlock waves, level-band cliffs >4 at borders, region topology, leg lengths) —
+  run it after any warp/encounter/graph edit. Both ride `tools/maps/worldmodel.py` (the
+  engine-faithful movement model + graph.ts parser). On first run flow caught 4 shipped
+  bugs (sealed cache, sign sealing Pearlmoor's west spoke, unapproachable Tideglass door,
+  walk-aroundable `dusk_begins`/`glowmoss_drained`) — trust the audit over a mental walk.
+- **A story step_on band must cover the WHOLE cut, flag-paired.** One trigger tile on a
+  wide corridor is walk-aroundable (this bit `dusk_begins`); band every walkable tile of
+  the choke (triggers on solid cells are inert, so over-banding is safe) and give each
+  tile `sets_flags` + `hidden_when_flag` on the same flag so the band hides after firing.
+- **Accent tilesets stack via `mapkit.register_tileset(name, index=…)`** (returns the
+  TilesetRef; default `first_gid` = `next_first_gid()`), then `gid(name, set=…)`/`gid_at()`
+  resolve names across kits — don't hand-compute first_gids for per-area accent sets.
+- **Region/scene design rules live in level-design §2b** (loop topology, return-compressor
+  ladder, Gifts re-open earlier seeded ground, band steps ≤4, heal spacing ≈2 legs +
+  1 dungeon, designed seams, one kit-breaker per region) — research basis in
+  `docs/world/retro-map-design-research.md` (brand names stay in that doc only).
 - **Cave dungeon? Copy `tools/maps/build_glowmoss_deep.py` (the worked example).** The shared
   set ships gbaforge-drawn cave families: `cavefloor0-3` (the base), `cavewall` (13-piece; fill
   = void-dark wall TOP, S edges = the lamp-lit FACE — the cliff convention indoors), `glowmoss`

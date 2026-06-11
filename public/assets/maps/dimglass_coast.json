@@ -14,7 +14,7 @@
       "tile_height": 16,
       "first_gid": 1,
       "columns": 12,
-      "tile_count": 155
+      "tile_count": 187
     }
   ],
   "layers": [
@@ -2084,7 +2084,7 @@
       "id": "to_tideglass",
       "at": {
         "tx": 2,
-        "ty": 10
+        "ty": 11
       },
       "trigger": "interact",
       "to_map": "tideglass_cavern",
@@ -2129,16 +2129,6 @@
       "ref": "sign.dimglass_route"
     },
     {
-      "id": "sign_pinned_letter",
-      "kind": "sign",
-      "at": {
-        "tx": 9,
-        "ty": 20
-      },
-      "activation": "interact",
-      "ref": "sign.dimglass_pinned_letter"
-    },
-    {
       "id": "sign_boundary",
       "kind": "sign",
       "at": {
@@ -2149,7 +2139,67 @@
       "ref": "sign.dimglass_to_pearlmoor"
     },
     {
-      "id": "dusk_begins",
+      "id": "dusk_begins_4",
+      "kind": "cutscene",
+      "at": {
+        "tx": 4,
+        "ty": 28
+      },
+      "activation": "step_on",
+      "ref": "script.dusk_begins",
+      "once": true,
+      "sets_flags": [
+        "flag:dusk_begins"
+      ],
+      "hidden_when_flag": "flag:dusk_begins"
+    },
+    {
+      "id": "dusk_begins_5",
+      "kind": "cutscene",
+      "at": {
+        "tx": 5,
+        "ty": 28
+      },
+      "activation": "step_on",
+      "ref": "script.dusk_begins",
+      "once": true,
+      "sets_flags": [
+        "flag:dusk_begins"
+      ],
+      "hidden_when_flag": "flag:dusk_begins"
+    },
+    {
+      "id": "dusk_begins_6",
+      "kind": "cutscene",
+      "at": {
+        "tx": 6,
+        "ty": 28
+      },
+      "activation": "step_on",
+      "ref": "script.dusk_begins",
+      "once": true,
+      "sets_flags": [
+        "flag:dusk_begins"
+      ],
+      "hidden_when_flag": "flag:dusk_begins"
+    },
+    {
+      "id": "dusk_begins_7",
+      "kind": "cutscene",
+      "at": {
+        "tx": 7,
+        "ty": 28
+      },
+      "activation": "step_on",
+      "ref": "script.dusk_begins",
+      "once": true,
+      "sets_flags": [
+        "flag:dusk_begins"
+      ],
+      "hidden_when_flag": "flag:dusk_begins"
+    },
+    {
+      "id": "dusk_begins_8",
       "kind": "cutscene",
       "at": {
         "tx": 8,
@@ -2160,7 +2210,83 @@
       "once": true,
       "sets_flags": [
         "flag:dusk_begins"
-      ]
+      ],
+      "hidden_when_flag": "flag:dusk_begins"
+    },
+    {
+      "id": "dusk_begins_9",
+      "kind": "cutscene",
+      "at": {
+        "tx": 9,
+        "ty": 28
+      },
+      "activation": "step_on",
+      "ref": "script.dusk_begins",
+      "once": true,
+      "sets_flags": [
+        "flag:dusk_begins"
+      ],
+      "hidden_when_flag": "flag:dusk_begins"
+    },
+    {
+      "id": "dusk_begins_10",
+      "kind": "cutscene",
+      "at": {
+        "tx": 10,
+        "ty": 28
+      },
+      "activation": "step_on",
+      "ref": "script.dusk_begins",
+      "once": true,
+      "sets_flags": [
+        "flag:dusk_begins"
+      ],
+      "hidden_when_flag": "flag:dusk_begins"
+    },
+    {
+      "id": "dusk_begins_11",
+      "kind": "cutscene",
+      "at": {
+        "tx": 11,
+        "ty": 28
+      },
+      "activation": "step_on",
+      "ref": "script.dusk_begins",
+      "once": true,
+      "sets_flags": [
+        "flag:dusk_begins"
+      ],
+      "hidden_when_flag": "flag:dusk_begins"
+    },
+    {
+      "id": "dusk_begins_12",
+      "kind": "cutscene",
+      "at": {
+        "tx": 12,
+        "ty": 28
+      },
+      "activation": "step_on",
+      "ref": "script.dusk_begins",
+      "once": true,
+      "sets_flags": [
+        "flag:dusk_begins"
+      ],
+      "hidden_when_flag": "flag:dusk_begins"
+    },
+    {
+      "id": "dusk_begins_13",
+      "kind": "cutscene",
+      "at": {
+        "tx": 13,
+        "ty": 28
+      },
+      "activation": "step_on",
+      "ref": "script.dusk_begins",
+      "once": true,
+      "sets_flags": [
+        "flag:dusk_begins"
+      ],
+      "hidden_when_flag": "flag:dusk_begins"
     }
   ],
   "encounters": [

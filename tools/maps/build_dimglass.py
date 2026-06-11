@@ -194,7 +194,10 @@ m = {
          "to_map": "dimglass_coast_ii", "to": {"tx": 7, "ty": 31}, "facing": "up", "transition": "fade"},
         {"id": "to_coast_ii_e", "at": {"tx": 8, "ty": 0}, "trigger": "step_on",
          "to_map": "dimglass_coast_ii", "to": {"tx": 8, "ty": 31}, "facing": "up", "transition": "fade"},
-        {"id": "to_tideglass", "at": {"tx": 2, "ty": 10}, "trigger": "interact",
+        # The cavern mouth's LOWER tile: (2,10) had no standable neighbour (the
+        # cliff edging seals that row — audit_flow caught it), so the door sits
+        # at (2,11), interacted from the open grass at (3,11) facing left.
+        {"id": "to_tideglass", "at": {"tx": 2, "ty": 11}, "trigger": "interact",
          "to_map": "tideglass_cavern", "to": {"tx": 5, "ty": 8}, "facing": "left",
          "requires_ability": "glimmerstep", "transition": "door"},
     ],
@@ -210,10 +213,16 @@ m = {
         # (A2 — Wren's friendly battle is now SIGHT-driven: Wren stands beside the
         # lane with sight_range and challenges the player who walks into view.)
         # B1 — the inciting incident: a far constellation winks out on first nightfall
-        # here. Quiet, not loud. Spine choked by the boulder at (9,28).
-        {"id": "dusk_begins", "kind": "cutscene", "at": {"tx": 8, "ty": 28},
-         "activation": "step_on", "ref": "script.dusk_begins", "once": True,
-         "sets_flags": ["flag:dusk_begins"]},
+        # here. Quiet, not loud. Row 28 is the route's full-width cut, but the
+        # boulder at (9,28) only splits it — the walkable cells run 4-8 and 10-13
+        # (audit_flow proved the single tile at (8,28) was walk-aroundable). Band
+        # the whole row; triggers on solid cells are inert, and the flag pair
+        # hides the band once the beat has fired.
+        *[{"id": f"dusk_begins_{tx}", "kind": "cutscene", "at": {"tx": tx, "ty": 28},
+           "activation": "step_on", "ref": "script.dusk_begins", "once": True,
+           "sets_flags": ["flag:dusk_begins"],
+           "hidden_when_flag": "flag:dusk_begins"}
+          for tx in range(4, 14)],
     ],
     # A Tide coast (walkthrough/01-south): wild kin are Tide/Light, not Ember. Common
     # #26 Brinelet (Tide); #31 Lumpin (Tide/Light); #8 Glimflit (Light, drifted from town).

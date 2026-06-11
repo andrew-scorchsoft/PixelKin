@@ -14,7 +14,7 @@
       "tile_height": 16,
       "first_gid": 1,
       "columns": 12,
-      "tile_count": 185
+      "tile_count": 187
     }
   ],
   "layers": [
@@ -2709,7 +2709,37 @@
       "ref": "sign.glowmoss_grotto"
     },
     {
-      "id": "drained_site",
+      "id": "drained_site_10",
+      "kind": "cutscene",
+      "at": {
+        "tx": 14,
+        "ty": 10
+      },
+      "activation": "step_on",
+      "ref": "script.glowmoss_drained",
+      "once": true,
+      "sets_flags": [
+        "flag:seen_drained_site"
+      ],
+      "hidden_when_flag": "flag:seen_drained_site"
+    },
+    {
+      "id": "drained_site_11",
+      "kind": "cutscene",
+      "at": {
+        "tx": 14,
+        "ty": 11
+      },
+      "activation": "step_on",
+      "ref": "script.glowmoss_drained",
+      "once": true,
+      "sets_flags": [
+        "flag:seen_drained_site"
+      ],
+      "hidden_when_flag": "flag:seen_drained_site"
+    },
+    {
+      "id": "drained_site_12",
       "kind": "cutscene",
       "at": {
         "tx": 14,
@@ -2717,7 +2747,11 @@
       },
       "activation": "step_on",
       "ref": "script.glowmoss_drained",
-      "once": true
+      "once": true,
+      "sets_flags": [
+        "flag:seen_drained_site"
+      ],
+      "hidden_when_flag": "flag:seen_drained_site"
     },
     {
       "id": "glowmoss_relight",
