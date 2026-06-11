@@ -113,12 +113,14 @@ def zones_from_grid(grid, w: int, h: int, *, terrain: str, rate: float, table,
 
 # ---- ledges & terraces ------------------------------------------------------------
 def ledge_run(deco, w: int, h: int, y: int, x0: int, x1: int,
-              rng: random.Random | None = None) -> None:
+              rng: random.Random | None = None, family: str = "grass") -> None:
     """A south-hop ledge line (one-way shortcut down). Variants scattered so the
-    lip doesn't read as a ruled line. Leave a GAP in the run where the long way
-    round comes back up — a ledge with no gap is a wall with extra steps."""
+    lip doesn't read as a ruled line. `family` picks the context-correct art
+    ('grass' on green, 'sand' = the dune bank on flats — §11 rule 8). Leave a
+    GAP in the run where the long way round comes back up — a ledge with no gap
+    is a wall with extra steps."""
     rng = rng or random.Random(0)
-    tiles = [gid("grass_ledge_s"), gid("grass_ledge_s_v1")]
+    tiles = [gid(f"{family}_ledge_s"), gid(f"{family}_ledge_s_v1")]
     for x in range(x0, x1 + 1):
         deco[y * w + x] = rng.choice(tiles)
 

@@ -433,6 +433,10 @@ add("cave_ladder_up", gbaforge.cave_ladder_up(), role="decor")
 # hopped when walked into facing its direction (`ledge` meta -> CollisionGrid)
 add("grass_ledge_s", gbaforge.grass_ledge_s(0), role="ledge", ledge="down")
 add("grass_ledge_s_v1", gbaforge.grass_ledge_s(1), role="ledge", ledge="down")
+# the sand-context ledge (dune bank) — APPENDED 2026-06 so earlier indices hold;
+# the one-way hop verb for tidal flats / dune routes (context-correct family rule)
+add("sand_ledge_s", gbaforge.sand_ledge_s(0), role="ledge", ledge="down")
+add("sand_ledge_s_v1", gbaforge.sand_ledge_s(1), role="ledge", ledge="down")
 
 # ---- GBA-register structured redraw (gbaforge) -------------------------------
 # The terrain families above established the *vocabulary* (names, roles, order —
@@ -496,6 +500,9 @@ def _gba_override(nm: str, cur: Image.Image) -> Image.Image | None:
     m = _re.fullmatch(r"grass_ledge_s(?:_v(\d+))?", nm)
     if m:
         return g.grass_ledge_s(int(m.group(1) or 0))
+    m = _re.fullmatch(r"sand_ledge_s(?:_v(\d+))?", nm)
+    if m:
+        return g.sand_ledge_s(int(m.group(1) or 0))
     m = _re.fullmatch(rf"(path|sand|water|cliff|trail|pond)_{_GBA_ROLE}(?:_v(\d+))?", nm)
     if not m:
         return None

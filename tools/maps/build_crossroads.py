@@ -148,6 +148,9 @@ m = {
     "triggers": [
         # Fenn hails the player the first time they step into the plaza from the
         # west road (both lane rows covered; the script's sets_flags hides both).
+        # audit_flow WAIVER — `choke` WARN accepted: the wave is a cosmetic
+        # greeting, not a story gate; the ceremony rides the Fenn NPC himself,
+        # so a player who skirts the band loses nothing.
         {"id": "fenn_wave", "kind": "cutscene", "at": {"tx": CX - 2, "ty": CY - 1},
          "activation": "step_on", "ref": "script.fenn_wave", "once": True,
          "hidden_when_flag": "flag:fenn_waved", "sets_flags": ["flag:fenn_waved"]},

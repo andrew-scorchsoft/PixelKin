@@ -16,6 +16,11 @@ Spurs: a NW alcove (Moth-amber, the region's valuable cache) and the SE
 Spore Grotto mouth (Glimmerstep warp tease + sign).
 
 Run:  python3 tools/maps/build_glowmoss_deep.py   (after build_shared_overworld.py)
+
+audit_flow WAIVER — `loop` WARN accepted: this is the East's FIRST dungeon
+(level-design §2a — the story set-piece tier; the one-way drop/shortcut loop
+is the MID-dungeon requirement, arriving with Cinderhead Deep). Same waiver
+applies to the B1F floor below.
 """
 from __future__ import annotations
 import random

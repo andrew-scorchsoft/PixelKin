@@ -15,6 +15,7 @@ Run:  python3 tools/maps/build_dimglass_ii.py   (after build_shared_overworld.py
 from __future__ import annotations
 import random
 import mapkit as mk
+import patterns as pt
 from mapkit import gid
 
 W, H = 18, 32
@@ -82,8 +83,13 @@ spine = [7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 8, 8,
          8, 8, 8, 7, 7, 7, 7, 7, 7, 7]
 def spine_col(ty):
     return spine[min(max(ty - 2, 0), len(spine) - 1)]
+# DUNE BANKS (§3a rule 1 — the flats' earned return): two one-way sand-ledge
+# lines with OFFSET gaps. Northbound the road zigzags — west under the tree
+# crown at row 7, east past the boulder choke at row 24; southbound (heading
+# home) the player hops both banks straight down. Rows skipped from the lane.
+BANKS = [(7, 6, 12), (24, 5, 11)]  # (row, x0, x1)
 for ty in range(3, H - 2):
-    if ty in (16, 17):
+    if ty in (16, 17) or ty in {b[0] for b in BANKS}:
         continue
     cx = spine_col(ty)
     path[ty * W + cx] = 1; path[ty * W + cx + 1] = 1
@@ -144,6 +150,9 @@ for (x, y) in [(4, 1), (11, 1)]:                     # channel buoys flank the p
 # boulders pock the flats + choke the spine at each trainer beat:
 for (x, y) in [(11, 5), (12, 11), (5, 16), (12, 23), (9, 20)]:
     deco[y * W + x] = gid("boulder")
+# the dune banks (one-way south hops; context-correct SAND ledge family)
+for (by, bx0, bx1) in BANKS:
+    pt.ledge_run(deco, W, H, by, bx0, bx1, rng, family="sand")
 sign_xy = {
     "sign_gullcry": (13, 12),    # on the sand, facing the buoy line
     "sign_cave": (4, 16),        # by the cavern mouth

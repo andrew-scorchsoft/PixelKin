@@ -1200,6 +1200,16 @@
       "file": "186_grass_ledge_s_v1.png",
       "role": "ledge",
       "ledge": "down"
+    },
+    {
+      "file": "187_sand_ledge_s.png",
+      "role": "ledge",
+      "ledge": "down"
+    },
+    {
+      "file": "188_sand_ledge_s_v1.png",
+      "role": "ledge",
+      "ledge": "down"
     }
   ]
 }

@@ -178,13 +178,14 @@ def audit_map(mm: MapModel, start_at: tuple[int, int] | None) -> list[dict]:
                     default=10**9)
         d_back = min((mm.bfs(pair[1], abilities=GIFTS).get(t, 10**9) for t in pair[0]),
                      default=10**9)
-        if has_ledge and d_back < d_fwd:
+        lo, hi = min(d_fwd, d_back), max(d_fwd, d_back)
+        if has_ledge and lo < hi:
             add("loop", "PASS",
-                f"one-way shortcut compresses the return: {d_fwd} steps out, "
-                f"{d_back} back ({100 * d_back // max(1, d_fwd)}%)")
+                f"one-way ledges make the trips asymmetric: {hi} steps the long "
+                f"way, {lo} with the hops ({100 * lo // max(1, hi)}%)")
         elif has_ledge:
-            add("loop", "INFO", "ledges present but the return isn't shorter — "
-                "check the hop actually serves the exit-bound player")
+            add("loop", "INFO", "ledges present but both directions walk the same "
+                "distance — check the hops actually cut a fold")
         else:
             add("loop", "WARN", "no one-way ledge/shortcut — the map walks back "
                 "exactly as it walked in (§3a rule 1: loops, not corridors)")
