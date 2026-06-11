@@ -264,6 +264,42 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/lowleaf-hollow-b.mp3',
   },
+  // Cinderhead Mine — the gem-mine settlement (Lumenary 4, Stone: Otho Grist);
+  // the Lamp-down vigil festival + the Descent Vigil earned loop (the §4 wall).
+  cinderhead_mine: {
+    json: 'assets/maps/cinderhead_mine.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/cinderhead-mine-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/cinderhead-mine-a.webp',
+      'assets/backgrounds/battle/cinderhead-mine-b.webp',
+    ],
+  },
+  cinderhead_lumenary: {
+    json: 'assets/maps/cinderhead_lumenary.json',
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/cinderhead-mine-b.mp3',
+    // Lampwarden 4 (Stone) Gleam battle happens here — mine-hall backdrop.
+    battle_backdrops: [
+      'assets/backgrounds/battle/cinderhead-mine-a.webp',
+      'assets/backgrounds/battle/cinderhead-mine-b.webp',
+    ],
+  },
+  // Cinderhead Deep — the deep galleries: the vigil-lamp chamber, the sealed-door
+  // shortcut (flag:shortcut_mine), the Crystoll [LATER] tease, and the ungated
+  // gallery on to Galehigh (the East->North handoff).
+  cinderhead_deep: {
+    json: 'assets/maps/cinderhead_deep.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/cinderhead-mine-c.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/cinderhead-mine-a.webp',
+      'assets/backgrounds/battle/cinderhead-mine-b.webp',
+    ],
+  },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
   // Their battle backdrops are already rendered — see UPCOMING_BATTLE_BACKDROPS below.
@@ -279,10 +315,6 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
  * its backdrops set, drop its key here to avoid drift.
  */
 export const UPCOMING_BATTLE_BACKDROPS: Record<string, string[]> = {
-  cinderhead_mine: [
-    'assets/backgrounds/battle/cinderhead-mine-a.webp',
-    'assets/backgrounds/battle/cinderhead-mine-b.webp',
-  ],
   galehigh_terraces: [
     'assets/backgrounds/battle/galehigh-terraces-a.webp',
     'assets/backgrounds/battle/galehigh-terraces-b.webp',

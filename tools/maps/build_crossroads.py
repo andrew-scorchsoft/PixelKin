@@ -57,6 +57,11 @@ mk.vline(path, W, H, CX, CY, H - 1); mk.vline(path, W, H, CX + 1, CY, H - 1)  # 
 # the LOWLEAF spoke: east-north out of the clearing (wakes with the Verdant
 # Gleam — the warp below carries the gate; walkthrough R3 "wakes with spoke")
 mk.hline(path, W, H, 3, CX, W - 1); mk.hline(path, W, H, 4, CX, W - 1)
+# the MINE-CART HOIST spur (SW, by the south road): the Cinderhead Deep
+# shortcut's hub end — a cart-lift that only runs once the sealed door is
+# opened from the deep (graph.ts `shortcut_crossroads`, wakes with
+# flag:shortcut_mine; walkthrough/02-east §0 rule 3). A short stub to the edge.
+mk.rect(path, W, H, CX - 1, 16, CX, 16); mk.vline(path, W, H, CX - 1, 16, 17)
 # punch the borders where the roads leave
 for y in (CY - 1, CY):
     tree[y * W + 0] = 0; tree[y * W + 1] = 0
@@ -66,6 +71,9 @@ for x in (CX, CX + 1):
     tree[(H - 1) * W + x] = 0; tree[(H - 2) * W + x] = 0
 for y in (3, 4):
     tree[y * W + (W - 1)] = 0; tree[y * W + (W - 2)] = 0
+# punch the mine-cart hoist opening (SW edge, col CX-1)
+for y in (16, 17):
+    tree[y * W + (CX - 1)] = 0
 
 # ---- base + layers --------------------------------------------------------------
 gg = [gid("grass0"), gid("grass1"), gid("grass2"), gid("grass3")]
@@ -111,6 +119,7 @@ sign_tiles = {
     "sign_waystone": (CX + 2, CY),       # on the plaza, by the Waystone
     "sign_spire": (CX - 1, CY + 3),      # beside the south (inward) road
     "sign_lowleaf": (CX + 3, 5),         # beside the east-north (Lowleaf) spoke
+    "sign_mineshortcut": (CX - 2, 16),   # beside the mine-cart hoist (SW stub)
 }
 for (x, y) in sign_tiles.values():
     deco[y * W + x] = gid("sign")
@@ -163,6 +172,13 @@ m = {
         {"id": "to_penumbra_e", "at": {"tx": CX + 1, "ty": H - 1}, "trigger": "step_on",
          "to_map": "penumbra_ring", "to": {"tx": 10, "ty": 2}, "facing": "down",
          "requires_flag": "flag:hub_unlocked", "transition": "fade"},
+        # the Cinderhead Deep mine-cart shortcut (graph.ts `shortcut_crossroads`
+        # return half) — wakes with flag:shortcut_mine, set on opening the sealed
+        # door from the deep. Lands beside the deep's far-side return warp.
+        {"id": "shortcut_cinderhead", "at": {"tx": CX - 1, "ty": H - 1}, "trigger": "step_on",
+         "to_map": "cinderhead_deep", "to": {"tx": 24, "ty": 22}, "facing": "up",
+         "requires_flag": "flag:shortcut_mine", "blocked_ref": "sign.crossroads_mineshortcut",
+         "transition": "fade"},
     ],
     "triggers": [
         # Fenn hails the player the first time they step into the plaza from the
@@ -185,6 +201,9 @@ m = {
         {"id": "sign_lowleaf", "kind": "sign",
          "at": {"tx": sign_tiles["sign_lowleaf"][0], "ty": sign_tiles["sign_lowleaf"][1]},
          "activation": "interact", "ref": "sign.crossroads_lowleaf"},
+        {"id": "sign_mineshortcut", "kind": "sign",
+         "at": {"tx": sign_tiles["sign_mineshortcut"][0], "ty": sign_tiles["sign_mineshortcut"][1]},
+         "activation": "interact", "ref": "sign.crossroads_mineshortcut"},
     ],
     "encounters": [],   # the hub is safe ground — a breath between roads
     "npcs": [

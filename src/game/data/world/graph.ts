@@ -98,6 +98,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'glowmoss_deep_b1f', region: 'east' }, // the lower maze floor (ladder pair)
     { map_id: 'spore_grotto', region: 'east', optional: true, reward: 'rare Bug/Verdant kin + item' },
     { map_id: 'cinderhead_mine', region: 'east' }, // cave town + Lumenary (mine mouth)
+    { map_id: 'cinderhead_lumenary', region: 'east' }, // interior: the Stone Lumenary (Otho Grist)
     { map_id: 'cinderhead_deep', region: 'east' }, // deep cave (Glimmerstep) -> Galehigh
     { map_id: 'crystoll_vault', region: 'east', optional: true, reward: 'late backtrack (Starreach): rare Stone/Light kin' },
     // ---- North: Galehigh -> Windward Stair (2 segments) -> Pale Vault ---------------
@@ -163,6 +164,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'lowleaf_hollow', to_map: 'lowleaf_bower', via_warp: 'to_bower', bidirectional: true },
     { from_map: 'lowleaf_hollow', to_map: 'glowmoss_deep', via_warp: 'to_deepwood', requires_ability: 'glimmerstep', bidirectional: true },
     { from_map: 'glowmoss_deep', to_map: 'cinderhead_mine', via_warp: 'to_mine', bidirectional: true },
+    { from_map: 'cinderhead_mine', to_map: 'cinderhead_lumenary', via_warp: 'to_lumenary', bidirectional: true },
     { from_map: 'cinderhead_mine', to_map: 'cinderhead_deep', via_warp: 'to_deep', requires_ability: 'glimmerstep', bidirectional: true },
     { from_map: 'cinderhead_deep', to_map: 'galehigh_terraces', via_warp: 'to_terraces', bidirectional: true },
     { from_map: 'galehigh_terraces', to_map: 'windward_stair_i', via_warp: 'to_stair', bidirectional: true },

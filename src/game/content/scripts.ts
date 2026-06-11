@@ -900,6 +900,152 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', text: 'It beats softly in your hand, like a held breath of the sea.' },
     { op: 'setFlag', flag: 'flag:picked_gullcry_charm' },
   ],
+
+  // ===========================================================================
+  // CINDERHEAD MINE — the Stone wall (walkthrough/02-east; Lumenary 4: Otho
+  // Grist). The Descent Vigil earned loop (spine §5 shape #4, the HEAVY loop)
+  // + the Lamp-down vigil festival + E3 (The Foreman's Ledger) + the hub
+  // shortcut. The Stone Gleam is the curve's one designed WALL made diegetic.
+  // ===========================================================================
+
+  // Otho's hook — the vigil-lamp errand (the loop's collinear descent; sends the
+  // player through the 24-27 galleries before the wall, the §4 gap-closer).
+  'script.otho_quest': [
+    { op: 'say', speaker: 'OTHO GRIST', text: "You'll be the Wayfarer the vigil's been muttering about. Come for a Gleam, have you." },
+    { op: 'say', speaker: 'OTHO GRIST', text: "Down here, light's not GIVEN. It's kept. My crew left the vigil-lamp at the third gallery when the dark came up — still lit, if they did their job." },
+    { op: 'say', speaker: 'OTHO GRIST', text: "Bring it back up STILL BURNING. Then I'll know your light holds when the rock leans in, and we'll talk about a Gleam. Not before." },
+    { op: 'setFlag', flag: 'flag:q_east_vigil' },
+  ],
+
+  // Carrying the vigil-lamp up (in the deep) — the §8 restoration beat, the
+  // melancholy edition: the gallery lamps lean toward the one flame that kept.
+  'script.take_vigil_lamp': [
+    { op: 'letterbox', on: true, ms: 320 },
+    { op: 'narrate', text: 'The vigil-lamp sits where the crew left it — a small steady flame in a cage of old brass, burning yet, after all this dark. Somebody kept it fed in their heart, and so it kept.' },
+    { op: 'silence', ms: 900 },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#ffd089', alpha: 0.30, ms: 700 },
+    { op: 'narrate', text: 'You lift it carefully, cupping the flame. It does not gutter. As you turn for the long climb, the gallery lamps you passed seem to lean toward it — waiting their turn.' },
+    { op: 'tint', color: '#ffd089', alpha: 0, ms: 700 },
+    { op: 'letterbox', on: false, ms: 320 },
+    { op: 'setFlag', flag: 'flag:q_east_vigil_lamp' },
+  ],
+
+  // The Stone bond-test + Gleam (Otho's hall) — the most MELANCHOLY swell of the
+  // eight: lean on `silence` before the lift (Arc E, the Lamp-down vigil). Sets
+  // gleam:stone; the engine derives flag:crown_east (East's second quadrant).
+  'script.lumenary_cinderhead': [
+    { op: 'face', actor: 'player', facing: 'up' },
+    { op: 'face', actor: 'otho', facing: 'down' },
+    { op: 'say', speaker: 'OTHO GRIST', text: "You carried it up still burning. Through the deep galleries, in the dark, without letting it go out." },
+    { op: 'say', speaker: 'OTHO GRIST', text: "Anyone can LIGHT a lamp. Carrying one through the dark without dropping it — that's the trick of the whole thing. Now show me your kin can do it too." },
+    { op: 'battle', trainer: 'lampwarden_cinderhead' },
+    { op: 'musicFade', ms: 600 },
+    { op: 'silence', ms: 1100 },
+    { op: 'narrate', text: 'Otho says nothing for a long moment. Then he lifts the vigil-lamp from its cage — and one by one, all through the town behind him, the lowered lamps begin to rise.' },
+    { op: 'tint', color: '#caa46a', alpha: 0.34, ms: 800 },
+    { op: 'narrate', text: 'And overhead, through a fault in the cavern roof no miner ever marked, the STONE constellation steadies in the dark — patient, unhurried, the way the mountain is.' },
+    { op: 'gleam', element: 'stone' },
+    { op: 'musicCrossfade', key: 'gleam-emotional', ms: 1000 },
+    { op: 'tint', color: '#caa46a', alpha: 0, ms: 900 },
+    { op: 'say', speaker: 'OTHO GRIST', text: "The Stone Gleam. Four constellations relit — and the southern and eastern crowns both yours now. The mountain remembers a steady light." },
+    { op: 'say', speaker: 'OTHO GRIST', text: "Galehigh's up the deep galleries and out the far side. Cold wind, high ledges — a different kind of dark. You'll do. Mind the lamp." },
+  ],
+
+  // The vigil-fire rest (the town's full heal — the standing per-region kit).
+  'script.cinderhead_rest': [
+    { op: 'say', speaker: 'VIGIL COOK', text: "Sit by the vigil-fire, Wayfarer. We keep it low — but we keep it. Warm your kin and your hands both." },
+    { op: 'fade', dir: 'out' },
+    { op: 'wait', ms: 700 },
+    { op: 'heal' },
+    { op: 'fade', dir: 'in' },
+    { op: 'say', speaker: 'VIGIL COOK', text: "There. Rested and ready. The dark's long — but the fire's longer." },
+  ],
+
+  // Cinderhead's one-time shop kit + the open counter (the standing pattern).
+  'script.shop_kit_cinderhead': [
+    { op: 'say', speaker: 'PIT-PROVISIONER', text: "Fronting up to Otho, are you? Here — the pit-kit. Custom for every Wayfarer who does. No charge; you'll need it more than my shelf does." },
+    { op: 'giveItem', item: 'warm_balm', count: 2 },
+    { op: 'giveItem', item: 'glow_charge', count: 2 },
+    { op: 'say', speaker: 'PIT-PROVISIONER', text: "Two warm balms and a pair of charges. Otho's kin hit like a roof-fall — stock balms, not bravado." },
+    { op: 'setFlag', flag: 'flag:cinderhead_kit' },
+  ],
+  'script.shop_cinderhead': [
+    { op: 'dialogue', ref: 'npc.cinderhead_provisioner' },
+    { op: 'shop', shop: 'cinderhead_provisioner' },
+  ],
+
+  // E3 "The Foreman's Ledger" — the lone miner by the deep mouth (giver); the
+  // ledger is recovered a gallery down (script.pickup_ledger), returned for pay.
+  'script.ledger_quest': [
+    { op: 'say', speaker: 'LONE MINER', text: "You're going down anyway, by the look of your lamp. Do an old hand a turn?" },
+    { op: 'say', speaker: 'LONE MINER', text: "The foreman's ledger — every seam and shoring the crew ever cut — got left in a side gallery when the dark came up. I can't face the deep no more. You can." },
+    { op: 'say', speaker: 'LONE MINER', text: "Bring it home and the crew's whole history's yours to thank. Good crystal down there too, mind — honest pay for honest dark." },
+    { op: 'setFlag', flag: 'flag:q_east_ledger' },
+  ],
+  'script.pickup_ledger': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'say', text: 'A water-swollen ledger in cracked leather, wedged in a dry niche. Recovered the FOREMAN\'S LEDGER!' },
+    { op: 'say', text: 'The last legible page lists galleries "past the lamp\'s reach" — names you can\'t make out in this light. Something for a brighter lamp, another day.' },
+    { op: 'setFlag', flag: 'flag:q_east_ledger_found' },
+  ],
+  'script.ledger_reward': [
+    { op: 'say', speaker: 'LONE MINER', text: "The ledger! After all these years — I'd given it up to the wet. Bless your lamp, Wayfarer." },
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'giveItem', item: 'starglass_shard', count: 1 },
+    { op: 'say', text: 'He presses a STARGLASS SHARD into your hand — "deep-cut crystal, the good stuff. Sell it well."' },
+    { op: 'giveMoney', amount: 300 },
+    { op: 'say', text: "And a foreman's thank-you: 300 WICKS!" },
+    { op: 'setFlag', flag: 'flag:q_east_ledger_done' },
+  ],
+
+  // The sealed mine door, opened from the inside — the hub re-link. The trigger
+  // sets flag:shortcut_mine; this is the cutscene that sells it (spine §0 rule 3).
+  'script.open_mine_shortcut': [
+    { op: 'narrate', text: 'A sealed door, timbered shut from the far side a generation ago. From in here the bar lifts easily — it was only ever meant to keep the dark from wandering UP.' },
+    { op: 'sfx', key: 'world-door' },
+    { op: 'narrate', text: 'It swings onto a cart-track you half recognise: the old hoist-line, running straight back to the Vesper Crossroads. The east just got a great deal smaller.' },
+  ],
+
+  // Cinderhead caches (variety rule: a gallery crystal valuable, loose wicks, a
+  // balm in the mine; a deep MOTH-AMBER a choke off the lane, the §4 grind reward).
+  'script.pickup_cinderhead_crystal': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'starglass_shard', count: 1 },
+    { op: 'say', text: 'A fist of raw crystal still in its matrix, catching your lamp. Found a STARGLASS SHARD!' },
+    { op: 'setFlag', flag: 'flag:picked_cinderhead_crystal' },
+  ],
+  'script.pickup_cinderhead_wicks': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 160 },
+    { op: 'say', text: 'A pay-tin in a niche, forgotten when the shift ran out. Found 160 WICKS!' },
+    { op: 'setFlag', flag: 'flag:picked_cinderhead_wicks' },
+  ],
+  'script.pickup_cinderhead_balm': [
+    { op: 'giveItem', item: 'warm_balm', count: 2 },
+    { op: 'say', text: "A miner's belt-pouch, balms still sealed. Found 2 WARM BALMS!" },
+    { op: 'setFlag', flag: 'flag:picked_cinderhead_balm' },
+  ],
+  'script.pickup_deepcrystal': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'moth_amber', count: 1 },
+    { op: 'say', text: 'Wedged in a deep seam, a knot of MOTH-AMBER — a collector would pay dearly for it. Found it!' },
+    { op: 'setFlag', flag: 'flag:picked_deepcrystal' },
+  ],
+
+  // The two vigil-miner SIGHT trainers holding the Descent Vigil leg (keeper class).
+  'script.gallery_miner_a': [
+    { op: 'say', speaker: 'DRUSE', text: "Hold up. Nobody walks my gallery toward the vigil-lamp without weighing their wick against mine. Crew rule, old as the seam." },
+    { op: 'battle', trainer: 'gallery_miner_a' },
+    { op: 'say', speaker: 'DRUSE', text: "Steady light. Go on — the lamp's two chambers down, still burning if I know my crew." },
+    { op: 'setFlag', flag: 'flag:gallery_miner_a_beaten' },
+  ],
+  'script.gallery_miner_b': [
+    { op: 'say', speaker: 'HOBB', text: "The last lamp before the vigil-lamp's mine to keep. Druse softens them, I finish them — that's the crew way, down here." },
+    { op: 'battle', trainer: 'gallery_miner_b' },
+    { op: 'say', speaker: 'HOBB', text: "Finished proper. Carry it up gentle, Wayfarer — a flame that crossed the dark deserves a steady hand." },
+    { op: 'setFlag', flag: 'flag:gallery_miner_b_beaten' },
+  ],
 };
 
 export function getScript(ref: string): import('./types').CutsceneStep[] | undefined {

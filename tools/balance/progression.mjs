@@ -348,6 +348,9 @@ const BUILT_PAYOUTS = {
   lampwarden_pearlmoor: ['warden', 16, 960],
   glowmoss_keeper_a: ['keeper', 20, 400],
   glowmoss_keeper_b: ['keeper', 21, 420],
+  gallery_miner_a: ['keeper', 25, 500],
+  gallery_miner_b: ['keeper', 26, 520],
+  lampwarden_cinderhead: ['warden', 28, 1680],
 };
 const failures = [];
 for (const [id, [klass, ace, authored]] of Object.entries(BUILT_PAYOUTS)) {

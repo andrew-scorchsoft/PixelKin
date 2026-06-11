@@ -61,6 +61,23 @@ export const SHOPS: ShopRegistry = {
       'chart_lifedrain',
     ],
   },
+
+  // Cinderhead Pit-Provisioner — the mine-mouth counter (East tier, before the
+  // Stone wall): both balm tiers and charges to weather Otho, plus the utility
+  // charts a careful deep-diver wants (Plain Focus Mind + the Storm Gust Up —
+  // Sparkrat's element runs the galleries). No Stone chart is minted yet.
+  cinderhead_provisioner: {
+    id: 'cinderhead_provisioner',
+    name: 'CINDERHEAD PIT-PROVISIONER',
+    stock: [
+      'tallow_balm',
+      'warm_balm',
+      'glow_charge',
+      { item: 'beacon_charge', requires_flag: 'gleam:ember' },
+      'chart_focus_mind',
+      'chart_gust_up',
+    ],
+  },
 };
 
 export function getShop(id: string): ShopDef | undefined {
