@@ -70,15 +70,7 @@
     "weight_kg": 9.4,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 6,
-     "max": 9
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "(existing art)",
@@ -152,15 +144,7 @@
     "weight_kg": 26.5,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Upright fox silhouette, deep ember-red coat, cream underbelly, mane erupting upward in a spike-crown of orange-to-white flames; regal and fast at 64px.",
@@ -238,18 +222,46 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 6,
-     "max": 9
-    },
-    {
      "area": "pearlmoor_quay",
      "terrain": "water",
      "rarity": "uncommon",
      "min": 10,
      "max": 12
+    },
+    {
+     "area": "dimglass_coast",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 4,
+     "max": 6
+    },
+    {
+     "area": "dimglass_coast_ii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 9,
+     "max": 11
+    },
+    {
+     "area": "dimglass_coast",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 55,
+     "max": 62
+    },
+    {
+     "area": "dimglass_coast_ii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 56,
+     "max": 63
+    },
+    {
+     "area": "pearlmoor_quay",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 57,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -325,15 +337,7 @@
     "weight_kg": 98,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Tall, broad-shouldered, slate-blue shell plating crested with sea-glass spurs in translucent teal. Wide stance, deep chest, a calm but commanding gaze behind a brow-ridge. Dual water-crystal shoulder guards.",
@@ -412,11 +416,25 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
+     "area": "tinderwick",
      "terrain": "tall_grass",
      "rarity": "common",
+     "min": 56,
+     "max": 60
+    },
+    {
+     "area": "tinderwick",
+     "terrain": "tall_grass",
+     "rarity": "rare",
      "min": 3,
-     "max": 6
+     "max": 4
+    },
+    {
+     "area": "pearlmoor_quay",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 9,
+     "max": 11
     }
    ],
    "scripted": false,
@@ -495,15 +513,7 @@
     "weight_kg": 3.1,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 9,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Slender humanoid of ivory wax, three flames now crowning its head like a candelabra; half-melted wax drapes off shoulders like a cape; cheerful smiling face; rounded candle-base feet; reads clearly at 32px.",
@@ -584,11 +594,18 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
+     "area": "vigil_hearthfall",
      "terrain": "tall_grass",
      "rarity": "rare",
-     "min": 10,
-     "max": 12
+     "min": 59,
+     "max": 60
+    },
+    {
+     "area": "dawnstead",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 60,
+     "max": 65
     }
    ],
    "scripted": false,
@@ -666,9 +683,23 @@
     {
      "area": "dimglass_coast",
      "terrain": "tall_grass",
-     "rarity": "common",
+     "rarity": "uncommon",
      "min": 3,
      "max": 6
+    },
+    {
+     "area": "tinderwick",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 62
+    },
+    {
+     "area": "dimglass_coast",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -746,11 +777,11 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
+     "area": "dawnstead",
      "terrain": "tall_grass",
      "rarity": "uncommon",
-     "min": 10,
-     "max": 12
+     "min": 56,
+     "max": 60
     }
    ],
    "scripted": false,
@@ -830,11 +861,25 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
+     "area": "dawnstead",
      "terrain": "tall_grass",
      "rarity": "common",
-     "min": 3,
-     "max": 6
+     "min": 55,
+     "max": 58
+    },
+    {
+     "area": "tinderwick",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 2,
+     "max": 3
+    },
+    {
+     "area": "tinderwick",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 55,
+     "max": 58
     }
    ],
    "scripted": false,
@@ -916,15 +961,7 @@
     "weight_kg": 14.5,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Robust tawny dog silhouette, wax-drip markings down the haunches, a starburst of five pastel-hued candle-flames crowning the head; distinct and bold at 48px.",
@@ -1005,11 +1042,18 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
+     "area": "vigil_hearthfall",
      "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 60
+    },
+    {
+     "area": "dawnstead",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -1085,11 +1129,18 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
+     "area": "tinderwick",
      "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 3,
-     "max": 6
+     "rarity": "uncommon",
+     "min": 2,
+     "max": 4
+    },
+    {
+     "area": "tinderwick",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -1167,15 +1218,7 @@
     "weight_kg": 2.1,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Hovering humanoid silhouette ringed by a spinning debris-halo of cinders, orange core glowing at the heart, long wispy arms; dynamic at 48px.",
@@ -1254,15 +1297,7 @@
     "weight_kg": 8.0,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Tall ghostly pillar silhouette: smoke-black upper body fading into blazing fire-orange lower half, spectral arms, hollow bright eyes; striking contrast at 64px.",
@@ -1340,11 +1375,25 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
+     "area": "dawnstead",
      "terrain": "tall_grass",
      "rarity": "common",
-     "min": 3,
-     "max": 6
+     "min": 55,
+     "max": 60
+    },
+    {
+     "area": "tinderwick",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 2,
+     "max": 4
+    },
+    {
+     "area": "tinderwick",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 55,
+     "max": 60
     }
    ],
    "scripted": false,
@@ -1426,11 +1475,11 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
+     "area": "vigil_hearthfall",
      "terrain": "tall_grass",
      "rarity": "uncommon",
-     "min": 10,
-     "max": 12
+     "min": 58,
+     "max": 60
     }
    ],
    "scripted": false,
@@ -1510,11 +1559,11 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
+     "area": "dawnstead",
      "terrain": "tall_grass",
      "rarity": "uncommon",
-     "min": 3,
-     "max": 6
+     "min": 56,
+     "max": 60
     }
    ],
    "scripted": false,
@@ -1599,15 +1648,7 @@
     "weight_kg": 19.0,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Elegant long-bodied cat silhouette, warm gold-and-cream coat, a soft luminous aura halo, ember-tip tail; graceful and glowing at 64px.",
@@ -1687,10 +1728,31 @@
    "encounters": [
     {
      "area": "dimglass_coast",
-     "terrain": "tall_grass",
+     "terrain": "water",
      "rarity": "common",
-     "min": 3,
+     "min": 4,
      "max": 6
+    },
+    {
+     "area": "dimglass_coast",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 55,
+     "max": 62
+    },
+    {
+     "area": "pearlmoor_quay",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 10,
+     "max": 12
+    },
+    {
+     "area": "pearlmoor_quay",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -1775,11 +1837,11 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 10,
-     "max": 12
+     "area": "sunkbell_shallows",
+     "terrain": "water",
+     "rarity": "rare",
+     "min": 18,
+     "max": 20
     }
    ],
    "scripted": false,
@@ -1860,15 +1922,7 @@
     "weight_kg": 8,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Tall, translucent humanoid sprite of flowing water and moonlight \u2014 silver-white with luminous aqua veins, streaming ribbon-limbs, a face of pure calm radiance, and a cascading tail of moon-foam.",
@@ -1947,11 +2001,32 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
+     "area": "dimglass_coast_ii",
+     "terrain": "water",
      "rarity": "common",
-     "min": 3,
-     "max": 6
+     "min": 9,
+     "max": 11
+    },
+    {
+     "area": "dimglass_coast_ii",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 63
+    },
+    {
+     "area": "gullcry_rock",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 11,
+     "max": 13
+    },
+    {
+     "area": "gullcry_rock",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -2036,13 +2111,6 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 10,
-     "max": 12
-    },
-    {
      "area": "pearlmoor_quay",
      "terrain": "water",
      "rarity": "rare",
@@ -2069,6 +2137,34 @@
      "rarity": "common",
      "min": 21,
      "max": 24
+    },
+    {
+     "area": "dimglass_coast",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 56,
+     "max": 63
+    },
+    {
+     "area": "dimglass_coast_ii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 57,
+     "max": 64
+    },
+    {
+     "area": "pearlmoor_quay",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 58,
+     "max": 64
+    },
+    {
+     "area": "sunkbell_shallows",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 57,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -2151,11 +2247,11 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
+     "area": "vigil_hearthfall",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 60
     }
    ],
    "scripted": false,
@@ -2231,13 +2327,6 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 3,
-     "max": 6
-    },
-    {
      "area": "pearlmoor_quay",
      "terrain": "tall_grass",
      "rarity": "common",
@@ -2250,6 +2339,41 @@
      "rarity": "common",
      "min": 20,
      "max": 22
+    },
+    {
+     "area": "dimglass_coast",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 3,
+     "max": 6
+    },
+    {
+     "area": "dimglass_coast_ii",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 8,
+     "max": 11
+    },
+    {
+     "area": "dimglass_coast",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 55,
+     "max": 60
+    },
+    {
+     "area": "dimglass_coast_ii",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 61
+    },
+    {
+     "area": "pearlmoor_quay",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -2329,13 +2453,6 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 10,
-     "max": 12
-    },
-    {
      "area": "pearlmoor_quay",
      "terrain": "water",
      "rarity": "uncommon",
@@ -2348,13 +2465,6 @@
      "rarity": "uncommon",
      "min": 16,
      "max": 18
-    },
-    {
-     "area": "saltreach_fen_ii",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 17,
-     "max": 19
     },
     {
      "area": "sunkbell_shallows",
@@ -2376,6 +2486,62 @@
      "rarity": "common",
      "min": 21,
      "max": 24
+    },
+    {
+     "area": "dimglass_coast_ii",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 9,
+     "max": 11
+    },
+    {
+     "area": "gullcry_rock",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 11,
+     "max": 13
+    },
+    {
+     "area": "saltreach_fen_ii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 17,
+     "max": 19
+    },
+    {
+     "area": "dimglass_coast_ii",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 63
+    },
+    {
+     "area": "pearlmoor_quay",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 57,
+     "max": 64
+    },
+    {
+     "area": "gullcry_rock",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 58,
+     "max": 64
+    },
+    {
+     "area": "saltreach_fen_i",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 55,
+     "max": 61
+    },
+    {
+     "area": "sunkbell_shallows",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 56,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -2451,15 +2617,7 @@
     "weight_kg": 52,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Streamlined low-slung body, swept-back shell ridges like breaking waves, twin luminous teal eye-stalks, long trailing fin-limbs. Seafoam-blue and deep indigo palette, white crest markings.",
@@ -2538,18 +2696,25 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 6,
-     "max": 9
-    },
-    {
      "area": "tideglass_cavern",
      "terrain": "water",
      "rarity": "uncommon",
      "min": 22,
      "max": 24
+    },
+    {
+     "area": "gullcry_rock",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 11,
+     "max": 13
+    },
+    {
+     "area": "gullcry_rock",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 58,
+     "max": 65
     }
    ],
    "scripted": false,
@@ -2638,13 +2803,6 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    },
-    {
      "area": "tideglass_cavern",
      "terrain": "water",
      "rarity": "very_rare",
@@ -2730,25 +2888,11 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 6,
-     "max": 9
-    },
-    {
      "area": "pearlmoor_quay",
      "terrain": "tall_grass",
      "rarity": "common",
      "min": 9,
      "max": 11
-    },
-    {
-     "area": "saltreach_fen_i",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 16,
-     "max": 18
     },
     {
      "area": "saltreach_fen_ii",
@@ -2758,11 +2902,74 @@
      "max": 19
     },
     {
-     "area": "tideglass_cavern",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 20,
-     "max": 23
+     "area": "dimglass_coast",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 3,
+     "max": 6
+    },
+    {
+     "area": "dimglass_coast_ii",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 8,
+     "max": 11
+    },
+    {
+     "area": "gullcry_rock",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 10,
+     "max": 12
+    },
+    {
+     "area": "sunkbell_shallows",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 17,
+     "max": 19
+    },
+    {
+     "area": "dimglass_coast",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 55,
+     "max": 62
+    },
+    {
+     "area": "dimglass_coast_ii",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 63
+    },
+    {
+     "area": "pearlmoor_quay",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 63
+    },
+    {
+     "area": "gullcry_rock",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 57,
+     "max": 64
+    },
+    {
+     "area": "saltreach_fen_ii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 56,
+     "max": 63
+    },
+    {
+     "area": "sunkbell_shallows",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 56,
+     "max": 63
     }
    ],
    "scripted": false,
@@ -2843,15 +3050,7 @@
     "weight_kg": 28,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Wide flat disc-shell patterned with concentric gold-and-aqua rings, textured like hammered moonstone. The creature beneath is plump and soft-looking with a single large circular eye at the shell's centre aperture.",
@@ -2938,7 +3137,15 @@
     "weight_kg": 52,
     "habitat": "south"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_hearthfall",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 60,
+     "max": 60
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "Sleek, long-limbed fox with enormous flame-and-star-ray tail plumes that trail behind it like a comet's tail. The body is amber-to-white radiant, as though lit from inside. The plume-tails shift between ember-orange at the base and cool diamond-cyan at the feathered tips \u2014 the gradient between fire and starlight. The ears are long and spark-tipped. The 64px sprite will look like a running star.",
@@ -3025,7 +3232,15 @@
     "weight_kg": 4200,
     "habitat": "south"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_hearthfall",
+     "terrain": "water",
+     "rarity": "very_rare",
+     "min": 60,
+     "max": 60
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "Enormous translucent whale-like form, body almost entirely composed of moon-on-water refraction \u2014 shifting aqua, silver, and pale gold layers visible within. No hard edges, no single colour \u2014 a living sea-mirror. Two vast luminous crescent eyes and trailing aurora-thread fins.",
@@ -3104,11 +3319,32 @@
    },
    "encounters": [
     {
-     "area": "lowleaf_hollow",
+     "area": "cinderhead_mine",
      "terrain": "cave",
      "rarity": "uncommon",
-     "min": 12,
-     "max": 15
+     "min": 22,
+     "max": 24
+    },
+    {
+     "area": "cinderhead_deep",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 24,
+     "max": 26
+    },
+    {
+     "area": "cinderhead_deep_b1f",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 25,
+     "max": 27
+    },
+    {
+     "area": "cinderhead_deep_b2f",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 26,
+     "max": 27
     }
    ],
    "scripted": false,
@@ -3191,15 +3427,7 @@
     "weight_kg": 90,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "rare",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Elegant deer-like kin with a white-grey crystal body; antlers are an elaborate branching structure of cyan-diamond crystal that glow continuously; eyes are large and clear as water; hooves are polished white stone; beautiful and otherworldly.",
@@ -3366,10 +3594,17 @@
    "encounters": [
     {
      "area": "lowleaf_hollow",
-     "terrain": "cave",
+     "terrain": "tall_grass",
      "rarity": "common",
-     "min": 12,
-     "max": 15
+     "min": 18,
+     "max": 20
+    },
+    {
+     "area": "lowleaf_hollow",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 63
     }
    ],
    "scripted": false,
@@ -3452,15 +3687,7 @@
     "weight_kg": 14,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Short bipedal figure draped in a thick cape of glowing green moss-fronds; a wooden face-plate with amber eyes showing through the moss hood; stubby arms ending in leaf-fans; a round body hidden under the living mantle; warm and eerie at 32px.",
@@ -3543,15 +3770,7 @@
     "weight_kg": 180,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "rare",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Huge bipedal form entirely cloaked in thick layered glowing moss-panels; a great antler-rack of twisted branches sprouting glowing spore-bulbs; a solemn carved-wood face deep within a moss-arch; radiates green-amber light in gentle pulses; awe-inspiring at 48px.",
@@ -3625,11 +3844,18 @@
    },
    "encounters": [
     {
-     "area": "lowleaf_hollow",
+     "area": "cinderhead_mine",
      "terrain": "cave",
      "rarity": "common",
-     "min": 12,
-     "max": 15
+     "min": 22,
+     "max": 24
+    },
+    {
+     "area": "cinderhead_deep",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 24,
+     "max": 26
     }
    ],
    "scripted": false,
@@ -3709,11 +3935,11 @@
    },
    "encounters": [
     {
-     "area": "lowleaf_hollow",
+     "area": "cinderhead_deep_b2f",
      "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 22,
-     "max": 24
+     "rarity": "rare",
+     "min": 26,
+     "max": 27
     }
    ],
    "scripted": false,
@@ -3794,15 +4020,7 @@
     "weight_kg": 320.0,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "rare",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Tall imposing angular silhouette, jet obsidian faceted body, a glowing diamond-orange core blazing through a transparent chest section, jutting shoulder-spurs; monolithic at 64px.",
@@ -3881,11 +4099,18 @@
    },
    "encounters": [
     {
-     "area": "lowleaf_hollow",
+     "area": "cinderhead_mine",
      "terrain": "cave",
-     "rarity": "common",
-     "min": 12,
-     "max": 15
+     "rarity": "uncommon",
+     "min": 22,
+     "max": 24
+    },
+    {
+     "area": "cinderhead_deep_b1f",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 25,
+     "max": 27
     }
    ],
    "scripted": false,
@@ -3970,13 +4195,6 @@
    },
    "encounters": [
     {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 22,
-     "max": 24
-    },
-    {
      "area": "windward_stair_i",
      "terrain": "tall_grass",
      "rarity": "uncommon",
@@ -3989,6 +4207,48 @@
      "rarity": "uncommon",
      "min": 34,
      "max": 36
+    },
+    {
+     "area": "windward_stair_i",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 62
+    },
+    {
+     "area": "windward_stair_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
+    },
+    {
+     "area": "cinderhead_mine",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 22,
+     "max": 24
+    },
+    {
+     "area": "cinderhead_deep",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 24,
+     "max": 26
+    },
+    {
+     "area": "cinderhead_deep_b1f",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 25,
+     "max": 27
+    },
+    {
+     "area": "cinderhead_deep_b2f",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 26,
+     "max": 27
     }
    ],
    "scripted": false,
@@ -4069,15 +4329,7 @@
     "weight_kg": 220,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "rare",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Bear-sized quadruped; charcoal-black stone-dense hide with bright amber charge-lines tracing the mineral veins; mane of stiff iron-ore bristles along the neck; tail a coiled ore-spring that arcs sparks when lashing.",
@@ -4155,11 +4407,32 @@
    },
    "encounters": [
     {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
+     "area": "dimglass_coast",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 3,
+     "max": 6
+    },
+    {
+     "area": "dimglass_coast_ii",
+     "terrain": "tall_grass",
      "rarity": "common",
-     "min": 12,
-     "max": 15
+     "min": 8,
+     "max": 11
+    },
+    {
+     "area": "saltreach_fen_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 16,
+     "max": 18
+    },
+    {
+     "area": "saltreach_fen_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 17,
+     "max": 19
     }
    ],
    "scripted": false,
@@ -4241,15 +4514,7 @@
     "weight_kg": 48,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Squat, wide-shouldered stone body with visible grey-white mineral veins along arms; amber eyes now set in a craggy brow ridge; four sturdy legs planted firmly.",
@@ -4329,11 +4594,39 @@
    },
    "encounters": [
     {
-     "area": "lowleaf_hollow",
+     "area": "vigil_grovefall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 60,
+     "max": 62
+    },
+    {
+     "area": "cinderhead_mine",
      "terrain": "cave",
-     "rarity": "rare",
+     "rarity": "common",
      "min": 22,
      "max": 24
+    },
+    {
+     "area": "cinderhead_deep",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 24,
+     "max": 26
+    },
+    {
+     "area": "cinderhead_deep_b1f",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 25,
+     "max": 27
+    },
+    {
+     "area": "cinderhead_deep_b2f",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 26,
+     "max": 27
     }
    ],
    "scripted": false,
@@ -4413,11 +4706,11 @@
    },
    "encounters": [
     {
-     "area": "lowleaf_hollow",
+     "area": "tideglass_cavern",
      "terrain": "cave",
      "rarity": "common",
-     "min": 12,
-     "max": 15
+     "min": 20,
+     "max": 23
     }
    ],
    "scripted": false,
@@ -4501,11 +4794,11 @@
    },
    "encounters": [
     {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 22,
-     "max": 24
+     "area": "hushfrost_pass_i",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 40,
+     "max": 41
     }
    ],
    "scripted": false,
@@ -4585,15 +4878,7 @@
     "weight_kg": 650,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "rare",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Large quadruped; thick ridged stone-white carapace with deep limestone-cream and grey layering; broad low head with two faintly glowing amber eyes; heavy armoured tail; primordial and formidable.",
@@ -4671,11 +4956,18 @@
    },
    "encounters": [
     {
-     "area": "lowleaf_hollow",
+     "area": "cinderhead_deep",
      "terrain": "cave",
-     "rarity": "common",
-     "min": 12,
-     "max": 15
+     "rarity": "uncommon",
+     "min": 24,
+     "max": 26
+    },
+    {
+     "area": "cinderhead_deep_b2f",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 26,
+     "max": 27
     }
    ],
    "scripted": false,
@@ -4757,15 +5049,7 @@
     "weight_kg": 95,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Short biped with a barrel chest; iron-ore growth on both fists and elbows like natural knuckledusters; shoulder ore-knobs; dark grey skin with metallic flecks; small determined face.",
@@ -4843,15 +5127,7 @@
     "weight_kg": 1100,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "rare",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Imposing wide-shouldered biped; entire body studded with iron-ore protrusions and plates; massive stone fists each larger than a human torso; slow-burning orange eyes set deep in a craggy face; silhouette is pure power.",
@@ -4926,10 +5202,24 @@
    "encounters": [
     {
      "area": "lowleaf_hollow",
-     "terrain": "cave",
+     "terrain": "tall_grass",
      "rarity": "common",
-     "min": 12,
-     "max": 15
+     "min": 18,
+     "max": 20
+    },
+    {
+     "area": "lowleaf_hollow",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 62
+    },
+    {
+     "area": "spore_grotto",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 21,
+     "max": 23
     }
    ],
    "scripted": false,
@@ -5009,11 +5299,11 @@
    },
    "encounters": [
     {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 22,
-     "max": 24
+     "area": "spore_grotto",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 21,
+     "max": 23
     }
    ],
    "scripted": false,
@@ -5096,11 +5386,18 @@
    },
    "encounters": [
     {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
+     "area": "vigil_grovefall",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 61,
+     "max": 62
+    },
+    {
+     "area": "spore_grotto",
+     "terrain": "tall_grass",
      "rarity": "rare",
      "min": 22,
-     "max": 24
+     "max": 23
     }
    ],
    "scripted": false,
@@ -5181,13 +5478,6 @@
    },
    "encounters": [
     {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "common",
-     "min": 12,
-     "max": 15
-    },
-    {
      "area": "saltreach_fen_i",
      "terrain": "tall_grass",
      "rarity": "common",
@@ -5200,6 +5490,20 @@
      "rarity": "common",
      "min": 17,
      "max": 19
+    },
+    {
+     "area": "saltreach_fen_i",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 55,
+     "max": 61
+    },
+    {
+     "area": "saltreach_fen_ii",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -5284,13 +5588,6 @@
    },
    "encounters": [
     {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 22,
-     "max": 24
-    },
-    {
      "area": "saltreach_fen_i",
      "terrain": "tall_grass",
      "rarity": "rare",
@@ -5303,6 +5600,34 @@
      "rarity": "rare",
      "min": 18,
      "max": 19
+    },
+    {
+     "area": "saltreach_fen_ii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 18,
+     "max": 19
+    },
+    {
+     "area": "saltreach_fen_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
+    },
+    {
+     "area": "saltreach_fen_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 63
+    },
+    {
+     "area": "saltreach_fen_ii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 57,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -5385,18 +5710,18 @@
    },
    "encounters": [
     {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "rare",
-     "min": 22,
-     "max": 24
-    },
-    {
      "area": "sunkbell_shallows",
      "terrain": "water",
      "rarity": "very_rare",
      "min": 19,
      "max": 20
+    },
+    {
+     "area": "sunkbell_shallows",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 65
     }
    ],
    "scripted": false,
@@ -5482,10 +5807,17 @@
    "encounters": [
     {
      "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "common",
-     "min": 12,
-     "max": 15
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 18,
+     "max": 20
+    },
+    {
+     "area": "lowleaf_hollow",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -5572,15 +5904,7 @@
     "weight_kg": 185,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Stocky upright tortoise-golem, concentric mineral-bark rings clearly visible on shell, mossy patches on flat back, two large stone-knuckled fists, calm half-lidded eyes.",
@@ -5665,11 +5989,11 @@
    },
    "encounters": [
     {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "rare",
-     "min": 22,
-     "max": 24
+     "area": "vigil_grovefall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 60,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -5751,10 +6075,24 @@
    "encounters": [
     {
      "area": "lowleaf_hollow",
-     "terrain": "cave",
+     "terrain": "tall_grass",
      "rarity": "uncommon",
-     "min": 15,
-     "max": 18
+     "min": 18,
+     "max": 20
+    },
+    {
+     "area": "lowleaf_hollow",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 63
+    },
+    {
+     "area": "spore_grotto",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 21,
+     "max": 23
     }
    ],
    "scripted": false,
@@ -5838,10 +6176,10 @@
    "encounters": [
     {
      "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 22,
-     "max": 24
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 58,
+     "max": 65
     }
    ],
    "scripted": false,
@@ -5923,10 +6261,38 @@
    "encounters": [
     {
      "area": "lowleaf_hollow",
-     "terrain": "cave",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 18,
+     "max": 20
+    },
+    {
+     "area": "saltreach_fen_i",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 57,
+     "max": 63
+    },
+    {
+     "area": "saltreach_fen_ii",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 57,
+     "max": 64
+    },
+    {
+     "area": "lowleaf_hollow",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 63
+    },
+    {
+     "area": "spore_grotto",
+     "terrain": "tall_grass",
      "rarity": "uncommon",
-     "min": 15,
-     "max": 18
+     "min": 22,
+     "max": 23
     }
    ],
    "scripted": false,
@@ -6009,11 +6375,11 @@
    },
    "encounters": [
     {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "rare",
-     "min": 22,
-     "max": 24
+     "area": "vigil_grovefall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 60,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -6087,11 +6453,18 @@
    },
    "encounters": [
     {
-     "area": "lowleaf_hollow",
+     "area": "cinderhead_deep_b1f",
      "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 19,
-     "max": 22
+     "rarity": "rare",
+     "min": 25,
+     "max": 27
+    },
+    {
+     "area": "cinderhead_deep_b2f",
+     "terrain": "cave",
+     "rarity": "rare",
+     "min": 26,
+     "max": 27
     }
    ],
    "scripted": false,
@@ -6180,7 +6553,15 @@
     "weight_kg": 2200,
     "habitat": "east"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_grovefall",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 62,
+     "max": 62
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "An enormous mushroom-capped behemoth walking on six thick stone-threaded root-legs. The cap is deep earth-brown with bioluminescent Verdant spots in diamond-cyan and pale green. Beneath the cap hangs a fringe of glowing sporecurtain. The legs are stone-grey with thick mycelial cords wrapped around them like rope around pillars. The face is a flat, calm disc with two dim-glow eyes. At 64px it reads as a cave and a creature simultaneously.",
@@ -6263,6 +6644,13 @@
      "rarity": "uncommon",
      "min": 36,
      "max": 38
+    },
+    {
+     "area": "pale_vault_glacier",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -6372,6 +6760,20 @@
      "rarity": "uncommon",
      "min": 44,
      "max": 46
+    },
+    {
+     "area": "pale_vault_glacier",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 63
+    },
+    {
+     "area": "pale_vault_glacier",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 58,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -6467,6 +6869,13 @@
      "rarity": "very_rare",
      "min": 42,
      "max": 42
+    },
+    {
+     "area": "aurora_hollow",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 62,
+     "max": 65
     }
    ],
    "scripted": true,
@@ -6556,6 +6965,13 @@
      "rarity": "rare",
      "min": 34,
      "max": 36
+    },
+    {
+     "area": "windward_stair_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -6649,6 +7065,13 @@
      "rarity": "uncommon",
      "min": 40,
      "max": 41
+    },
+    {
+     "area": "hushfrost_pass_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -6816,6 +7239,13 @@
      "rarity": "rare",
      "min": 34,
      "max": 35
+    },
+    {
+     "area": "windward_stair_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 61
     }
    ],
    "scripted": false,
@@ -6918,6 +7348,27 @@
      "rarity": "common",
      "min": 40,
      "max": 42
+    },
+    {
+     "area": "hushfrost_pass_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 63
+    },
+    {
+     "area": "hushfrost_pass_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 63
+    },
+    {
+     "area": "aurora_hollow",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 63
     }
    ],
    "scripted": false,
@@ -7009,6 +7460,20 @@
      "rarity": "rare",
      "min": 41,
      "max": 42
+    },
+    {
+     "area": "vigil_stormfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 62,
+     "max": 64
+    },
+    {
+     "area": "hushfrost_pass_ii",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 58,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -7089,6 +7554,13 @@
      "rarity": "uncommon",
      "min": 36,
      "max": 38
+    },
+    {
+     "area": "pale_vault_glacier",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -7187,6 +7659,27 @@
      "rarity": "uncommon",
      "min": 40,
      "max": 42
+    },
+    {
+     "area": "pale_vault_glacier",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 63
+    },
+    {
+     "area": "hushfrost_pass_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
+    },
+    {
+     "area": "hushfrost_pass_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 63
     }
    ],
    "scripted": false,
@@ -7278,6 +7771,13 @@
      "rarity": "rare",
      "min": 41,
      "max": 42
+    },
+    {
+     "area": "hushfrost_pass_i",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 58,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -7463,6 +7963,27 @@
      "rarity": "uncommon",
      "min": 40,
      "max": 42
+    },
+    {
+     "area": "hushfrost_pass_i",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 62
+    },
+    {
+     "area": "hushfrost_pass_ii",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 63
+    },
+    {
+     "area": "aurora_hollow",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 57,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -7571,6 +8092,20 @@
      "rarity": "common",
      "min": 44,
      "max": 48
+    },
+    {
+     "area": "pale_vault_glacier",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 58,
+     "max": 64
+    },
+    {
+     "area": "hushfrost_pass_ii",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -7681,6 +8216,34 @@
      "rarity": "common",
      "min": 40,
      "max": 42
+    },
+    {
+     "area": "pale_vault_glacier",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 63
+    },
+    {
+     "area": "hushfrost_pass_i",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 63
+    },
+    {
+     "area": "hushfrost_pass_ii",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 64
+    },
+    {
+     "area": "aurora_hollow",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 63
     }
    ],
    "scripted": false,
@@ -7793,6 +8356,27 @@
      "rarity": "uncommon",
      "min": 44,
      "max": 47
+    },
+    {
+     "area": "pale_vault_glacier",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 59,
+     "max": 65
+    },
+    {
+     "area": "pale_vault_glacier",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 59,
+     "max": 65
+    },
+    {
+     "area": "aurora_hollow",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 58,
+     "max": 65
     }
    ],
    "scripted": false,
@@ -7877,6 +8461,13 @@
      "rarity": "common",
      "min": 28,
      "max": 30
+    },
+    {
+     "area": "galehigh_terraces",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 55,
+     "max": 60
     }
    ],
    "scripted": false,
@@ -7979,6 +8570,27 @@
      "rarity": "common",
      "min": 34,
      "max": 36
+    },
+    {
+     "area": "windward_stair_i",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 62
+    },
+    {
+     "area": "windward_stair_ii",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 62
+    },
+    {
+     "area": "thunderroost",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 63
     }
    ],
    "scripted": false,
@@ -8065,6 +8677,20 @@
      "rarity": "rare",
      "min": 36,
      "max": 37
+    },
+    {
+     "area": "vigil_stormfall",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 63,
+     "max": 64
+    },
+    {
+     "area": "thunderroost",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 60,
+     "max": 65
     }
    ],
    "scripted": false,
@@ -8154,6 +8780,27 @@
      "rarity": "uncommon",
      "min": 28,
      "max": 30
+    },
+    {
+     "area": "galehigh_terraces",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 62
+    },
+    {
+     "area": "windward_stair_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 63
+    },
+    {
+     "area": "windward_stair_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -8330,6 +8977,20 @@
      "rarity": "rare",
      "min": 36,
      "max": 36
+    },
+    {
+     "area": "wind_eye",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 60,
+     "max": 65
+    },
+    {
+     "area": "thunderroost",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 60,
+     "max": 65
     }
    ],
    "scripted": false,
@@ -8415,6 +9076,13 @@
      "rarity": "common",
      "min": 34,
      "max": 36
+    },
+    {
+     "area": "wind_eye",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 63
     }
    ],
    "scripted": false,
@@ -8534,11 +9202,32 @@
      "max": 40
     },
     {
-     "area": "hushfrost_pass_i",
+     "area": "windward_stair_i",
      "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 40,
-     "max": 41
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 63
+    },
+    {
+     "area": "windward_stair_ii",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 63
+    },
+    {
+     "area": "wind_eye",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 58,
+     "max": 64
+    },
+    {
+     "area": "thunderroost",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 58,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -8626,6 +9315,13 @@
      "rarity": "rare",
      "min": 41,
      "max": 42
+    },
+    {
+     "area": "hushfrost_pass_ii",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 58,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -8706,6 +9402,13 @@
      "rarity": "common",
      "min": 28,
      "max": 30
+    },
+    {
+     "area": "galehigh_terraces",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 55,
+     "max": 61
     }
    ],
    "scripted": false,
@@ -8797,6 +9500,20 @@
      "rarity": "uncommon",
      "min": 35,
      "max": 36
+    },
+    {
+     "area": "windward_stair_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 61
+    },
+    {
+     "area": "windward_stair_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -8872,7 +9589,15 @@
     "weight_kg": 48.0,
     "habitat": "north"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_stormfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 62,
+     "max": 64
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Upright digitigrade silhouette, dark storm-grey coat, a full spine-ridge of spinning vane-blades each trailing a spark arc, crackling eye-markings that pulse in sync with the vanes; imposing at 64px.",
@@ -8955,6 +9680,13 @@
      "rarity": "uncommon",
      "min": 28,
      "max": 30
+    },
+    {
+     "area": "galehigh_terraces",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 55,
+     "max": 61
     }
    ],
    "scripted": false,
@@ -9114,7 +9846,15 @@
     "weight_kg": 40.0,
     "habitat": "north"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_stormfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 62,
+     "max": 64
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Elegant large fox silhouette, white-silver fur with storm-blue markings, a spiralling tornado-tail that crackles with visible charge, twin ear-fins swept back; the apex of aerodynamic at 64px.",
@@ -9209,6 +9949,13 @@
      "rarity": "uncommon",
      "min": 46,
      "max": 47
+    },
+    {
+     "area": "sunvault_climb_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -9334,6 +10081,20 @@
      "rarity": "common",
      "min": 48,
      "max": 50
+    },
+    {
+     "area": "sunvault_climb_i",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 58,
+     "max": 64
+    },
+    {
+     "area": "sunvault_climb_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -9868,6 +10629,13 @@
      "rarity": "rare",
      "min": 45,
      "max": 46
+    },
+    {
+     "area": "vigil_sunfall",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 64,
+     "max": 66
     }
    ],
    "scripted": false,
@@ -10219,16 +10987,23 @@
     {
      "area": "sunken_solarium",
      "terrain": "tall_grass",
-     "rarity": "uncommon",
+     "rarity": "common",
      "min": 42,
      "max": 45
     },
     {
      "area": "sunvault_climb_i",
      "terrain": "tall_grass",
-     "rarity": "uncommon",
+     "rarity": "common",
      "min": 46,
      "max": 47
+    },
+    {
+     "area": "sunvault_climb_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -10333,7 +11108,7 @@
     {
      "area": "sunvault_climb_ii",
      "terrain": "tall_grass",
-     "rarity": "uncommon",
+     "rarity": "common",
      "min": 47,
      "max": 48
     },
@@ -10350,6 +11125,20 @@
      "rarity": "common",
      "min": 48,
      "max": 49
+    },
+    {
+     "area": "sunvault_climb_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 63
+    },
+    {
+     "area": "sunvault_climb_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 63
     }
    ],
    "scripted": false,
@@ -10458,6 +11247,20 @@
      "rarity": "uncommon",
      "min": 48,
      "max": 49
+    },
+    {
+     "area": "sunvault_climb_i",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 58,
+     "max": 64
+    },
+    {
+     "area": "sunvault_climb_ii",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 58,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -10559,6 +11362,20 @@
      "rarity": "common",
      "min": 47,
      "max": 48
+    },
+    {
+     "area": "sunvault_climb_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
+    },
+    {
+     "area": "sunvault_climb_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 63
     }
    ],
    "scripted": false,
@@ -10654,7 +11471,7 @@
     {
      "area": "sunvault_climb_ii",
      "terrain": "tall_grass",
-     "rarity": "uncommon",
+     "rarity": "common",
      "min": 47,
      "max": 48
     },
@@ -10671,6 +11488,20 @@
      "rarity": "common",
      "min": 48,
      "max": 50
+    },
+    {
+     "area": "sunvault_climb_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 63
+    },
+    {
+     "area": "sunvault_climb_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 63
     }
    ],
    "scripted": false,
@@ -10750,7 +11581,15 @@
     "weight_kg": 48.0,
     "habitat": "west"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_sunfall",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 66,
+     "max": 66
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "Central blazing amber sphere orbited by eight angled spike-shards like a sun diagram; the whole assembly rotates slowly; corona of golden light bleeds outward; unmistakable, awe-defining at 64px.",
@@ -10848,6 +11687,20 @@
      "rarity": "uncommon",
      "min": 47,
      "max": 48
+    },
+    {
+     "area": "sunvault_climb_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 63
+    },
+    {
+     "area": "sunvault_climb_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -10960,6 +11813,27 @@
      "rarity": "uncommon",
      "min": 48,
      "max": 49
+    },
+    {
+     "area": "vigil_sunfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
+    },
+    {
+     "area": "sunvault_climb_i",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 59,
+     "max": 65
+    },
+    {
+     "area": "sunvault_climb_ii",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 59,
+     "max": 65
     }
    ],
    "scripted": false,
@@ -11122,6 +11996,13 @@
      "rarity": "rare",
      "min": 45,
      "max": 46
+    },
+    {
+     "area": "vigil_sunfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
     }
    ],
    "scripted": false,
@@ -11301,6 +12182,13 @@
      "rarity": "rare",
      "min": 44,
      "max": 46
+    },
+    {
+     "area": "vigil_sunfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
     }
    ],
    "scripted": false,
@@ -11400,6 +12288,13 @@
      "rarity": "uncommon",
      "min": 48,
      "max": 51
+    },
+    {
+     "area": "sunvault_climb_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -11501,6 +12396,13 @@
      "rarity": "rare",
      "min": 50,
      "max": 52
+    },
+    {
+     "area": "sunvault_climb_ii",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 60,
+     "max": 65
     }
    ],
    "scripted": false,
@@ -11584,7 +12486,15 @@
     "weight_kg": 85,
     "habitat": "west"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_murkfall",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 67,
+     "max": 67
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "Tall, elegant heron-phoenix with long sweeping tail feathers that trail behind like a train. Plumage in warm gold and honey-amber, edged with faint diamond-cyan light. The chest and neck are pale as bone-white parchment. One wing is slightly shorter \u2014 an old wound that never quite healed. Eyes are deep amber, warm and patient. The silhouette is all grace and faded glory.",
@@ -11674,6 +12584,13 @@
      "rarity": "very_rare",
      "min": 51,
      "max": 52
+    },
+    {
+     "area": "vigil_sunfall",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 65,
+     "max": 65
     }
    ],
    "scripted": true,
@@ -11839,7 +12756,15 @@
     "weight_kg": 88.0,
     "habitat": "west"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "dawnstead",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 60,
+     "max": 62
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "Spherical amber core roughly lion-headed, with three glowing golden rings orbiting at different angles (like an armillary sphere); each ring is studded with small radiant nodes; the whole structure rotates; breathtaking at 64px.",
@@ -12005,6 +12930,20 @@
      "rarity": "common",
      "min": 46,
      "max": 48
+    },
+    {
+     "area": "coldfog_marches_i",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 55,
+     "max": 62
+    },
+    {
+     "area": "coldfog_marches_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 63
     }
    ],
    "scripted": false,
@@ -12108,6 +13047,20 @@
      "rarity": "common",
      "min": 48,
      "max": 50
+    },
+    {
+     "area": "coldfog_marches_i",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 63
+    },
+    {
+     "area": "coldfog_marches_ii",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -12275,6 +13228,13 @@
      "rarity": "common",
      "min": 46,
      "max": 48
+    },
+    {
+     "area": "coldfog_marches_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 55,
+     "max": 61
     }
    ],
    "scripted": false,
@@ -12380,6 +13340,20 @@
      "rarity": "common",
      "min": 48,
      "max": 50
+    },
+    {
+     "area": "coldfog_marches_i",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 56,
+     "max": 62
+    },
+    {
+     "area": "coldfog_marches_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 63
     }
    ],
    "scripted": false,
@@ -12469,6 +13443,13 @@
      "rarity": "common",
      "min": 49,
      "max": 50
+    },
+    {
+     "area": "vigil_murkfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 66,
+     "max": 68
     }
    ],
    "scripted": false,
@@ -12561,6 +13542,20 @@
      "rarity": "common",
      "min": 48,
      "max": 50
+    },
+    {
+     "area": "coldfog_marches_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 63
+    },
+    {
+     "area": "coldfog_marches_ii",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -12647,6 +13642,27 @@
      "rarity": "rare",
      "min": 47,
      "max": 48
+    },
+    {
+     "area": "vigil_murkfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 66,
+     "max": 68
+    },
+    {
+     "area": "coldfog_marches_i",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 58,
+     "max": 65
+    },
+    {
+     "area": "coldfog_marches_ii",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 60,
+     "max": 65
     }
    ],
    "scripted": false,
@@ -12750,6 +13766,20 @@
      "rarity": "uncommon",
      "min": 48,
      "max": 50
+    },
+    {
+     "area": "hushfrost_pass_ii",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 57,
+     "max": 63
+    },
+    {
+     "area": "coldfog_marches_ii",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 57,
+     "max": 63
     }
    ],
    "scripted": false,
@@ -12848,6 +13878,20 @@
      "rarity": "common",
      "min": 49,
      "max": 50
+    },
+    {
+     "area": "vigil_murkfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 66,
+     "max": 68
+    },
+    {
+     "area": "coldfog_marches_ii",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 58,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -13019,7 +14063,15 @@
     "weight_kg": 240,
     "habitat": "outer"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_stormfall",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 64,
+     "max": 64
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "A thunderhead-bull silhouette rendered in absolute void: the body outline is a deep storm-shape filled with dark non-light, negative-space body, but from it leak erratic arcs of dead-current in a sickly violet-grey that never quite reaches the warmth of true storm-blue. The eyes are empty null-lantern apertures \u2014 circular, glass-cold, unlit. The horns still crackle with charge. Reads as something that was majestic and is now entirely hollow.",
@@ -13097,7 +14149,15 @@
     "weight_kg": 45000,
     "habitat": "outer"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_murkfall",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 67,
+     "max": 67
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "Enormous cetacean silhouette, deep void-black with faint silver constellation-marks still visible along its flanks (the ghost of what it was); fins trail null-mist; a crescent of anti-light glows where its blowhole was; awe-tier size.",
@@ -13175,7 +14235,15 @@
     "weight_kg": 4800,
     "habitat": "outer"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_murkfall",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 68,
+     "max": 68
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "Vast tortoise-like creature, entirely hidden beneath an shell of snuffed lanterns, dead reeds, and null-stone; only the deep void-dark eyes and four pillar-legs betray it as alive; its back looks like a section of blighted marsh terrain.",
@@ -13248,6 +14316,13 @@
      "rarity": "uncommon",
      "min": 58,
      "max": 61
+    },
+    {
+     "area": "umbral_spire_f2",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 52,
+     "max": 55
     }
    ],
    "scripted": false,
@@ -13646,15 +14721,7 @@
     "weight_kg": 6.5,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 6,
-     "max": 9
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Small leaf-fox sprout cub; a four-leaf clover sprouts from the top of its head, large pointed leaf-ears, lime-green face and cream underbelly, big friendly dark eyes, soft leafy tufts; faint seed-sparkles drift around it. Passes the black-blob test at 32px. Brand greens (#7bdc6b) with cream (#f5f0e1) and an ink (#1a1430) outline, ~12 colours.",
@@ -13732,15 +14799,7 @@
     "weight_kg": 98,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Tall, sturdy clover-crowned forest stag; broad antlers blooming with four-leaf clovers and moss, deep-green coat, cream chest, a mossy mane, planted hooves; calm guardian gaze. Bold readable silhouette at 64px. Deep verdant greens with gold-green clover accents and an ink outline.",
@@ -13816,15 +14875,7 @@
     "weight_kg": 19.5,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Lean adolescent fox, deep ember-red coat with cream underbelly and chest blaze; mane risen into a low crest of orange flame tongues tipped white; longer legs and brush tail with a glowing ember core; alert amber eyes. Clearly between Vulpyre's round kit and Blazethorn's spike-crowned regal fox at 64px.",
@@ -13900,15 +14951,7 @@
     "weight_kg": 42,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Mid-sized crested water-kin, slate-blue shell plating starting to crest with small translucent teal sea-glass spurs; seafoam underside, sturdy fin-limbs, calm deep eyes; visibly grown from Brinix's compact crested body toward Brinarch's broad-shouldered bulk at 64px.",
@@ -13988,15 +15031,7 @@
     "weight_kg": 34,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Young leaf-deer, lime-and-deep-green coat with cream chest; slender budding antlers as curling green sprigs tipped with folded clovers; the head-clover from its kit days now worn like a small crown sprout; long legs, big dark earnest eyes. Between Cloverkit's sprout-cub and Cloverhart's broad clover-crowned stag at 64px.",

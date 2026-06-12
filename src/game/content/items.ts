@@ -68,6 +68,17 @@ export const ITEMS: ItemRegistry = {
     heal: 999,
     price: 1200,
   },
+  // A chandler's lamp with a sliding tin hood: shade it and wild kin let you pass.
+  // A toggleable key item (ITEMS → use) — while hooded it halves the wild
+  // encounter rate (the backtracker's friend; sets `flag:lamp_hooded`). Sold at
+  // the Pearlmoor chandlery once the Tide Gleam stands (docs/mechanics/10-economy.md).
+  hooded_lamp: {
+    id: 'hooded_lamp',
+    name: 'Hooded Lamp',
+    desc: 'A second lamp under a sliding tin hood. Shade it and you walk the old roads quieter — wild kin let a dimmed light pass. Use to draw the hood open or closed.',
+    category: 'key',
+    price: 600,
+  },
   fenn_satchel: {
     id: 'fenn_satchel',
     name: "Fenn's Satchel",
@@ -530,6 +541,88 @@ export const ITEMS: ItemRegistry = {
     category: 'chart',
     teach_move: 'sunburst_nova',
     price: 4000,
+  },
+  // ---- The Starfall Vigils (06-postgame, R3): the endgame chain's rewards.
+  // The Starfall Shard — a key item granted ×1 per kept vigil (stacks ×5); never
+  // consumed (the summit script SEATS the five narratively, not by spending them).
+  starfall_shard: {
+    id: 'starfall_shard',
+    name: 'Starfall Shard',
+    desc: 'A shard the woken sky shed as its constellations settled into their seats — gold, weightless, faintly warm. Five fell. You are gathering them home.',
+    category: 'key',
+  },
+  // Esra's pressed charm (Hearthfall): a one-per-game conditional charge — ×3.0
+  // toward a kin afflicted by ANY status (the apex-band "afflict, then ask"
+  // catching lesson). Burns plain on an unafflicted heart. Never sold.
+  radiant_charm: {
+    id: 'radiant_charm',
+    name: 'Radiant Charm',
+    desc: 'A wick pressed by a candlemaker for whoever finally climbed the bluff. Raised toward a kin the battle has already shaken — dozed, chilled, any affliction at all — its throw burns threefold bright; toward a steady heart it is only a lamp.',
+    category: 'charge',
+    catch_bonus: 3.0,
+    condition: { kind: 'any_status' },
+  },
+  // Mer's gift (Murkfall): a one-per-game conditional charge — ×3.0 on the
+  // encounter's FIRST turn (the gamble throw, "before the dark notices"). Burns
+  // plain on any later turn. Never sold.
+  morrow_charm: {
+    id: 'morrow_charm',
+    name: 'Morrow Charm',
+    desc: 'A marsh-wick from the warden who carried a null-lantern here once. Thrown on the very first turn of an encounter its light blazes threefold — the gamble made before the dark notices; a beat later it is only a lamp.',
+    category: 'charge',
+    catch_bonus: 3.0,
+    condition: { kind: 'first_turn' },
+  },
+  // Bramm's prize (Grovefall): the Stone nuke chart never minted — found-first,
+  // chart_end tier (4,000w) per 10-economy §6. (Sunburst Nova already lives in
+  // the Helia Vault block above; the Vigil hands a second copy via the script's
+  // giveItem — a chart is consumed on study, so two finds is fine.)
+  chart_tremor_quake: {
+    id: 'chart_tremor_quake',
+    name: 'Star-chart: Tremor Quake',
+    desc: 'A chart of the Stone\'s whole deep shudder, the figure the mining towns never pressed. The sky did it for them. Teaches a willing kin TREMOR QUAKE (Stone). One study burns it out.',
+    category: 'chart',
+    teach_move: 'tremor_quake',
+    price: 4000,
+  },
+  // Fenn's keepsake (the Last Lesson): the Star-tender's own field-glass, given
+  // with the title at the summit. A key item — the chain's final keepsake.
+  fenns_glass: {
+    id: 'fenns_glass',
+    name: "Fenn's Field-Glass",
+    desc: 'Star-tender Fenn\'s own field-glass, worn smooth at the focus by forty years of looking up in the dark. He gave it the morning he gave you the title — "you\'ll see further than I did."',
+    category: 'key',
+  },
+
+  // ---- Post-game (06-postgame, R2 Dawnstead): the first-dawn quest keepsakes.
+  // P1 "First-Dawn Letters" — the Waykeeper's bundle, carried out along the
+  // spokes to Wren, Fenn and the eight wardens' towns.
+  dawn_letters: {
+    id: 'dawn_letters',
+    name: 'First-Dawn Letters',
+    desc: 'An oilcloth bundle of the Waykeeper\'s first-dawn letters, one for every door the long night kept shut. They smell of fresh ink and morning.',
+    category: 'key',
+  },
+  // P1 — the quadrant-seat wardens stamp their replies (one per quadrant).
+  dawn_stamp: {
+    id: 'dawn_stamp',
+    name: 'Keepsake Stamp',
+    desc: 'A warden\'s wax stamp pressed on a first-dawn reply — a quadrant\'s thanks, kept. The Waykeeper says the pay is the answered smiles.',
+    category: 'key',
+  },
+  // P2 "A Wick for Còr" — drawn from the Tinderwick Beacon's lantern room.
+  dawn_wick: {
+    id: 'dawn_wick',
+    name: 'First-Dawn Wick',
+    desc: 'A fresh wick dipped in the Beacon\'s lantern room on the first true morning. It is for a lamp that has earned it.',
+    category: 'key',
+  },
+  // P3 "The Day-form Survey" — Fenn's thanks: the page he kept for this page.
+  fenn_journal_page: {
+    id: 'fenn_journal_page',
+    name: 'Fenn\'s Journal Page',
+    desc: 'A field-journal page in Fenn\'s careful hand: three day-forms, inked in morning light, and a note — "brighter lamps will show us more."',
+    category: 'key',
   },
 };
 

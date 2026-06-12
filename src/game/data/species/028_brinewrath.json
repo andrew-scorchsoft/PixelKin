@@ -63,15 +63,7 @@
     "weight_kg": 52,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "rare",
-      "min": 10,
-      "max": 12
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Streamlined low-slung body, swept-back shell ridges like breaking waves, twin luminous teal eye-stalks, long trailing fin-limbs. Seafoam-blue and deep indigo palette, white crest markings.",

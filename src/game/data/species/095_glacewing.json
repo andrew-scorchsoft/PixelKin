@@ -107,11 +107,32 @@
       "max": 40
     },
     {
-      "area": "hushfrost_pass_i",
+      "area": "windward_stair_i",
       "terrain": "tall_grass",
-      "rarity": "rare",
-      "min": 40,
-      "max": 41
+      "rarity": "uncommon",
+      "min": 57,
+      "max": 63
+    },
+    {
+      "area": "windward_stair_ii",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 57,
+      "max": 63
+    },
+    {
+      "area": "wind_eye",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 58,
+      "max": 64
+    },
+    {
+      "area": "thunderroost",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 58,
+      "max": 64
     }
   ],
   "scripted": false,

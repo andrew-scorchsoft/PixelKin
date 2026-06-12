@@ -68,15 +68,7 @@
     "weight_kg": 8.0,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "rare",
-      "min": 10,
-      "max": 12
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Tall ghostly pillar silhouette: smoke-black upper body fading into blazing fire-orange lower half, spectral arms, hollow bright eyes; striking contrast at 64px.",

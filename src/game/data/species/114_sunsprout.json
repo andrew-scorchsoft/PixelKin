@@ -74,16 +74,23 @@
     {
       "area": "sunken_solarium",
       "terrain": "tall_grass",
-      "rarity": "uncommon",
+      "rarity": "common",
       "min": 42,
       "max": 45
     },
     {
       "area": "sunvault_climb_i",
       "terrain": "tall_grass",
-      "rarity": "uncommon",
+      "rarity": "common",
       "min": 46,
       "max": 47
+    },
+    {
+      "area": "sunvault_climb_i",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 62
     }
   ],
   "scripted": false,

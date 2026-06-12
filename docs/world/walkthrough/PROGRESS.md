@@ -21,12 +21,15 @@ Legend — **Gleam** = the region's constellation reward; **Gift** = the Lantern
 | **South** (01) | 1 Ember · 2 Tide | ✅ **complete** | — |
 | **East** (02) | 3 Verdant · 4 Stone | ✅ **complete** | — (Cinderhead built 2026-06) |
 | **North** (03) | 5 Storm · 6 Frost | ✅ **complete** (built 2026-06) | — |
-| **West** (04) | 7 Solar · 8 Lunar | ✅ **complete** (W1–W4 maps + W5 content wiring, 2026-06) | EXTRA_ENCOUNTERS mirrors (deferred to the species-lane pass) |
+| **West** (04) | 7 Solar · 8 Lunar | ✅ **complete** (W1–W4 maps + W5 content wiring, 2026-06; encounter mirrors verified in the R5 S/E sync) | — |
 | **Central/Endgame** (05) | — | ✅ **complete** (C1 maps + C2 Spire + C3 wiring, 2026-06; panel SHIP-READY; C6 polish landed c15217d) | — |
 | **The Three Hours** (07) | — | ✅ **complete** (sites + wiring + encounters + the hour-bell music, 2026-06) | — |
-| **Post-game** (06) | — | 📋 **documented, not built** (see "Remaining work" below) | Dawnstead · Starfall Vigils · day-forms · A6 |
+| **Post-game** (06) | — | ✅ **complete** (R2 Dawnstead + R3 Vigils + R4 day-forms, 2026-06) | — |
 
-**Playable runway today: the game is COMPLETABLE — cold open → dawn.** A continuous
+**Playable runway today: the game is CONTENT-COMPLETE — cold open → dawn → post-game.**
+The post-game shipped 2026-06: Dawnstead (R2), the Starfall Vigils chain to the Last
+Lesson and the Star-tender naming (R3), and the day-form pass across the relit world
+(R4). The main journey beneath it is unchanged: a continuous
 main-path journey from the prologue through all eight Gleams and all four crowns,
 across the parted Penumbra (Starreach), up the Umbral Spire's four floors, through
 Warden Còr's final asking (out-remembered, not defeated), the Keylumen relight
@@ -161,16 +164,16 @@ Expert panel verdict (2026-06): **SHIP-READY**, no blockers — full review at
 Spire → out-remembering → Keystar → dawn → credits → Continue) is built, audited
 (0 warnings world-wide) and verified persist-safe.
 
-## The Three Hours — legendary trio (07) 🔶 sites built, wiring in flight
+## The Three Hours — legendary trio (07) ✅ (sites + wiring, 2026-06)
 
 Species #160 Gloamber / #161 Tollhart / #162 Erstmorn are in the roster with full art
 (162/162 packed). The `legendaryBattle` engine (battles-won cooldowns, `{remaining}`
 hint token) is live. All four site maps are built + committed (2026-06): `tideglass_cavern`
 + `tideglass_gallery` (the Lampwright's Relay lens puzzle), `pale_vault_hourfold` (the
 Unstruck Toll brazier puzzle), `unrisen_stair` (the First-Light bloom ascent). The content
-wiring (site scripts/dialogue, the three giver chains, encounter mirrors, battle-hours
-music, LORE entries) was in flight at the 2026-06 checkpoint — each builder's docstring
-prints its complete owed-refs ledger if it needs re-running. Spec: [`07-the-three.md`](./07-the-three.md).
+wiring (site scripts/dialogue, the three giver chains, encounter mirrors, the
+`battle-hours`/`sting-hour` music, LORE entries) landed in c5f36a9 (2026-06).
+Spec: [`07-the-three.md`](./07-the-three.md).
 
 ---
 
@@ -200,7 +203,7 @@ Both fixes landed (commit c15217d): Wren keeps the gatehouse fire on Spire f1
 (`script.spire_wren_camp`, the inn-rest kit), and a new `ensureItem` cutscene op
 re-offers the Starlamp at the dais if it was spent. `npm run build` verified green.
 
-### R2 — Dawnstead (the epilogue town; one Fable map package + wiring)
+### R2 — Dawnstead ✅ DONE (2026-06)
 Spec: [`06-postgame.md`](./06-postgame.md) §Dawnstead. The C2 builder's contract (in
 `build_umbral_spire.py`'s docstring): summit `to_dawn`/`to_dawn_e` warp from (16,20)/(17,20)
 → dawnstead (15,28)/(16,28) facing up; the return pair must land ON those summit coords.
@@ -209,7 +212,17 @@ Tinderwick-silhouette layout; A6 Wren rematch (lv 55–65, `wren_resolved` portr
 tending a lamp (`at_peace`); the first-dawn festival; quests P1–P3. Backdrop `dawnstead-01`
 and the town music loop are already rendered. Graph node exists (`unlocked_by_flag flag:dawn`).
 
-### R3 — The Starfall Vigils (postgame challenge chain; 2–3 packages)
+**Delivered (2026-06):** `build_dawnstead.py` → `dawnstead.json` (C2 summit handshake honoured;
+all audits 0 failures), A6 Wren talk + re-runnable rematch (`wren_rematch`, ace 62, rival
+24×ace), `cutscene.cor_resolution` (un-walk-aroundable band, sets only `flag:cor_greeted`),
+first-dawn festival, the sunlit-verge day-form table (55–65, Ember/Light), P1 First-Dawn
+Letters (giver + all ten recipients incl. one NPC per warden town; quadrant stamps at the
+four seats), P2 A Wick for Còr (beacon-top cache → lamp deco swap), P3 Day-form Survey
+(boolean-chain fallback — no party-check op). **Owed:** the Waykeeper's "all ten delivered"
+thanks (needs the quest-counter extension); `wren_rematch`/dawnstead mirrors into
+`progression.mjs` + `EXTRA_ENCOUNTERS` (lands with R3's economy/species pass).
+
+### R3 — The Starfall Vigils ✅ DONE (2026-06)
 Full spec: [`06-postgame.md`](./06-postgame.md) §Starfall Vigils (written 2026-06, panel-grade):
 5 escalating trial sites (lv 58→70, first full 6-kin smart-AI battles) opened by riddle
 star-readings from the Nightreach junior watcher (Oriel), one-per-game rewards, and the
@@ -217,21 +230,52 @@ ultimate gauntlet at the Spire summit — Fenn at full strength (ace ~70, payout
 Build as region-style packages: V-maps (annex sites, Fable builders) → V-wiring (content) →
 encounter/economy mirror → panel review. 6 new items specced in 06.
 
-### R4 — Day-form pass (LAST and ALONE; species + map lanes together)
+**Delivered (2026-06), both lanes:** the five annex maps (`build_vigil_*.py`; one-shape stamp —
+trial band on every mouth tile, three flag-disjoint keeper placements, cache, no rest; code-drawn
+`vigil_star_shard/scar` objects, no image-gen spend) + host warps/graph (audit_warps handshake
+table in the builders); the full content chain (Oriel's eight terrace placements, the five trial
++ `_again` scripts, `script.starfall_round` → Dawnbrael (`legendaryBattle` lv 70, re-approachable)
+→ `cutscene.startender_named`); nine smart six-kin trainers (Fenn ace 70 at `cor` class, on
+`battle-boss-eclipse`); items (note: `chart_sunburst_nova` reused — Sunfall grants a second copy);
+the `vigilant` 80w class in all three economy homes + the POSTGAME progression leg (incl. the R2
+`wren_rematch` mirror); annex + dawnstead encounter mirrors (cross-checked table-for-table vs the
+built maps). All gates green: typecheck, validate 0/0, chart_check, progression, simulate,
+audit_region 0/0, audit_warps 0 failures. Owed to a panel pass: copy-editing review of the
+readings/keeper dialogue (spine §10 tone gate).
+
+### R4 — Day-form pass ✅ DONE (2026-06)
 Post-`flag:dawn` world changes: day-form encounter zone pairs (`requires_flag:'flag:dawn'`
 rows beside the night tables — engine already supports this), Light-kin re-bloom in Coldfog,
 the Hushfrost numbed-kin awake swap (pre-wired `_awake` twins exist), drained-zone deco swaps.
-Re-runs EVERY region builder — that's why it must run last, alone, after all other map edits,
-then one `build_species.py` regen + the 4 gates.
+
+**Delivered (2026-06):** 77 day zones across 22 relit outdoor maps (band 55–65, element-matched;
+night zones `hidden_when_flag:'flag:dawn'`, day twins `requires_flag` — the permanent swap, no
+clock). The Coldfog Light re-bloom (Wisprestored blooms, Voidmantle withdraws from Coldfog II's
+day table) + relit lantern-row deco pairs; Hushfrost caretaker `_awake` swap verified. All edits
+were SURGICAL JSON (re-running builders would have regressed the R3 host warps — see the
+CLAUDE.md gotcha), proven by round-trip + semantic diff. Mirrors: `R4_DAYFORM_ENCOUNTERS` +
+night gap-fills; CURATED_AREAS += tinderwick/gullcry_rock/pearlmoor_quay/saltreach_fen_i+ii/
+sunkbell_shallows (0 rows lost on regen). All gates + all three map audits PASS unmodified.
+Still unmirrored (works on generated defaults): `spore_grotto`, `glowmoss_deep(_b1f)`,
+`cinderhead_mine`, `cinderhead_deep(_b1f/_b2f)`.
 
 ### R5 — Release ladder (verification, mostly cheap)
-- `npm run build` (typecheck + prod build) — should already be green.
-- `npm run build:dist` needs **ffmpeg** (not installed in the managed env) — install or add
-  a CI job for the shrunk-audio bundle.
-- Reconcile the ~71 stale S/E generated encounter rows (dimglass_coast 37, lowleaf_hollow 34)
-  into `CURATED_AREAS` + `EXTRA_ENCOUNTERS` (the N5 convention; cosmetic, tables already play).
-- Full-game expert panel playing the dev build; golden-thread playtest (cold open → dawn →
-  save export/import); README outside-in rewrite.
+- ✅ `npm run build` verified green (2026-06).
+- ✅ `npm run build:dist` verified green (2026-06): 195 mp3 → 64k mono, 68→27 MB audio,
+  48 MB bundle. ffmpeg was apt-installed ad hoc in the session container — the managed
+  env/CI still lacks it; add it to the environment setup or a CI job for repeatability.
+- ~~Reconcile the ~71 stale S/E generated encounter rows~~ ✅ DONE (2026-06): `dimglass_coast`,
+  `dimglass_coast_ii`, `lowleaf_hollow` curated + mirrored; West/Hours mirrors verified in
+  the same pass. Still on the generic generated-default path (works, but unmirrored):
+  `tinderwick`, `gullcry_rock`, `spore_grotto`, `glowmoss_deep(_b1f)`, `cinderhead_mine`,
+  `cinderhead_deep(_b1f/_b2f)` — sync when convenient.
+- ✅ Post-game expert panel (2026-06): **SHIP-READY** — `docs/reviews/postgame-panel.md`.
+  MAJ-1 (Vigilant lines displaying twice: script + identical trainer refs) FIXED — the nine
+  vigil trainers now carry distinct short battle frames, the Còr convention; MIN-1 (no LORE
+  trace for the day-forms/Dawnbrael) FIXED — two flag-keyed glossary entries. MIN-2 (Wren's
+  "loser buys the lanterns" vs the rematch payout) accepted as-is.
+- ✅ README outside-in rewrite (2026-06) — status sections now describe the content-complete build.
+- Golden-thread human playtest (cold open → dawn → save export/import) still owed.
 - **Human-only:** first-timer playtest (G8), touch QA on real hardware (F8).
 
 ---
@@ -241,10 +285,12 @@ then one `build_species.py` regen + the 4 gates.
 - **Status conditions** — ✅ live (BattleEngine Part B, 2026-06).
 - **Move-learn prompt / kindling** — ✅ live.
 - **Wick economy / shops / Star-charts** — ✅ live.
-- **Lamplight (vesperlamp brightness tiers, dark-map reveal mask)** — ⚠️ **designed, not built**
-  (spine §5/§8). Region files author optional `[LATER: Lamplight ≥ …]` reveals toward it; the
-  render feature is still on the engine roadmap. Cinderhead's far-gallery reveals are tagged
-  for it, not gated on it.
+- **Lamplight (vesperlamp brightness tiers, dark-map reveal mask)** — ✅ **BUILT (2026-06)**:
+  `systems/world/lamplight.ts` (spine §5 tiers verbatim, Ember-glow→Radiant from Gleam count)
+  + `LamplightMask` (stepped radial dark on maps flagged `dark: true` in `world/maps.ts`,
+  alpha-capped — never blocking) + derived `flag:lamplight_*` tier flags (FlagStore.derive(),
+  validate-guarded) gating four reveal caches (Tideglass/Glowmoss/Cinderhead Deep/Hushfrost).
 - **Sunsketch light-puzzle (timed bloom)** — ⚠️ proposed (West). Sequential/redirect work now.
-- **Quest counters (N-of-M)** — ⚠️ small `FlagStore` extension; all current quests use the
-  boolean-chain fallback.
+- **Quest counters (N-of-M)** — ✅ **BUILT (2026-06)**: `FlagStore.countHeld(prefix)` + the
+  derived-flag pattern (P1's `flag:q_post_letters_all` is the worked example); the quest
+  JOURNAL (pause menu) reads stage progress from it.

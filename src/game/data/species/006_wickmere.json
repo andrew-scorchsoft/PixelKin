@@ -66,15 +66,7 @@
     "weight_kg": 3.1,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 9,
-      "max": 12
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Slender humanoid of ivory wax, three flames now crowning its head like a candelabra; half-melted wax drapes off shoulders like a cape; cheerful smiling face; rounded candle-base feet; reads clearly at 32px.",

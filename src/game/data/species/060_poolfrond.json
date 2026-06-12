@@ -72,13 +72,6 @@
   },
   "encounters": [
     {
-      "area": "lowleaf_hollow",
-      "terrain": "cave",
-      "rarity": "uncommon",
-      "min": 22,
-      "max": 24
-    },
-    {
       "area": "saltreach_fen_i",
       "terrain": "tall_grass",
       "rarity": "rare",
@@ -91,6 +84,34 @@
       "rarity": "rare",
       "min": 18,
       "max": 19
+    },
+    {
+      "area": "saltreach_fen_ii",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 18,
+      "max": 19
+    },
+    {
+      "area": "saltreach_fen_i",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 62
+    },
+    {
+      "area": "saltreach_fen_ii",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 57,
+      "max": 63
+    },
+    {
+      "area": "saltreach_fen_ii",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 57,
+      "max": 64
     }
   ],
   "scripted": false,

@@ -86,6 +86,27 @@
       "rarity": "uncommon",
       "min": 40,
       "max": 42
+    },
+    {
+      "area": "pale_vault_glacier",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 57,
+      "max": 63
+    },
+    {
+      "area": "hushfrost_pass_i",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 62
+    },
+    {
+      "area": "hushfrost_pass_ii",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 57,
+      "max": 63
     }
   ],
   "scripted": false,

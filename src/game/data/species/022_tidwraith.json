@@ -68,15 +68,7 @@
     "weight_kg": 8,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "rare",
-      "min": 10,
-      "max": 12
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Tall, translucent humanoid sprite of flowing water and moonlight \u2014 silver-white with luminous aqua veins, streaming ribbon-limbs, a face of pure calm radiance, and a cascading tail of moon-foam.",

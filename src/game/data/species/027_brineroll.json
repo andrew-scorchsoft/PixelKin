@@ -67,13 +67,6 @@
   },
   "encounters": [
     {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 10,
-      "max": 12
-    },
-    {
       "area": "pearlmoor_quay",
       "terrain": "water",
       "rarity": "uncommon",
@@ -86,13 +79,6 @@
       "rarity": "uncommon",
       "min": 16,
       "max": 18
-    },
-    {
-      "area": "saltreach_fen_ii",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 17,
-      "max": 19
     },
     {
       "area": "sunkbell_shallows",
@@ -114,6 +100,62 @@
       "rarity": "common",
       "min": 21,
       "max": 24
+    },
+    {
+      "area": "dimglass_coast_ii",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 9,
+      "max": 11
+    },
+    {
+      "area": "gullcry_rock",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 11,
+      "max": 13
+    },
+    {
+      "area": "saltreach_fen_ii",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 17,
+      "max": 19
+    },
+    {
+      "area": "dimglass_coast_ii",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 57,
+      "max": 63
+    },
+    {
+      "area": "pearlmoor_quay",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 57,
+      "max": 64
+    },
+    {
+      "area": "gullcry_rock",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 58,
+      "max": 64
+    },
+    {
+      "area": "saltreach_fen_i",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 55,
+      "max": 61
+    },
+    {
+      "area": "sunkbell_shallows",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 56,
+      "max": 62
     }
   ],
   "scripted": false,

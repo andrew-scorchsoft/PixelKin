@@ -42,6 +42,18 @@
       "overhang": 3,
       "solid": false,
       "walk_under": true
+    },
+    {
+      "id": "vigil_scar_stormfall",
+      "sprite": "vigil_star_scar",
+      "at": {
+        "tx": 5,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "flag:dawn"
     }
   ],
   "warps": [
@@ -58,6 +70,23 @@
         "ty": 9
       },
       "facing": "left",
+      "transition": "fade"
+    },
+    {
+      "id": "to_vigil_storm",
+      "at": {
+        "tx": 5,
+        "ty": 2
+      },
+      "trigger": "step_on",
+      "to_map": "vigil_stormfall",
+      "to": {
+        "tx": 11,
+        "ty": 16
+      },
+      "facing": "up",
+      "requires_flag": "flag:vigil_reading_3",
+      "blocked_ref": "npc.vigil_scar_sealed",
       "transition": "fade"
     }
   ],
@@ -92,7 +121,46 @@
           "min_level": 35,
           "max_level": 36
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "roost_a_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 4,
+        "ty": 4,
+        "w": 7,
+        "h": 4
+      },
+      "encounter_rate": 0.12,
+      "table": [
+        {
+          "kin_id": 90,
+          "weight": 20,
+          "min_level": 60,
+          "max_level": 65
+        },
+        {
+          "kin_id": 89,
+          "weight": 40,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 95,
+          "weight": 30,
+          "min_level": 58,
+          "max_level": 64
+        },
+        {
+          "kin_id": 93,
+          "weight": 10,
+          "min_level": 60,
+          "max_level": 65
+        }
+      ],
+      "requires_flag": "flag:dawn"
     }
   ],
   "npcs": [

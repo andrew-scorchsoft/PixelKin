@@ -68,11 +68,32 @@
   },
   "encounters": [
     {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
+      "area": "dimglass_coast_ii",
+      "terrain": "water",
       "rarity": "common",
-      "min": 3,
-      "max": 6
+      "min": 9,
+      "max": 11
+    },
+    {
+      "area": "dimglass_coast_ii",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 63
+    },
+    {
+      "area": "gullcry_rock",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 11,
+      "max": 13
+    },
+    {
+      "area": "gullcry_rock",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 58,
+      "max": 64
     }
   ],
   "scripted": false,

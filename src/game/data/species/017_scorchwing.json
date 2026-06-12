@@ -69,11 +69,11 @@
   },
   "encounters": [
     {
-      "area": "dimglass_coast",
+      "area": "vigil_hearthfall",
       "terrain": "tall_grass",
       "rarity": "uncommon",
-      "min": 10,
-      "max": 12
+      "min": 58,
+      "max": 60
     }
   ],
   "scripted": false,

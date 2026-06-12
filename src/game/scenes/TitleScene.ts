@@ -13,6 +13,7 @@ import { SettingsMenu } from '@game/ui/SettingsMenu';
 import { Sfx } from '@game/systems/audio/Sfx';
 import { MusicDirector } from '@game/systems/audio/MusicDirector';
 import { SaveManager } from '@game/systems/save/SaveManager';
+import { SlotMenu } from '@game/ui/SlotMenu';
 import { VESPERHOLM_GRAPH } from '@game/data/world/graph';
 import type { WorldSceneData } from './WorldScene';
 import type { SaveGame } from '@game/systems/save/types';
@@ -35,6 +36,12 @@ export class TitleScene extends Phaser.Scene {
   private sfx!: Sfx;
   private music!: MusicDirector;
   private idle?: Phaser.Time.TimerEvent;
+  /**
+   * The active slot's decoded save, surfaced to SETTINGS for export (and updated
+   * on import). Defaults to slot 1's save so a player who opens Settings straight
+   * from the title can still export their existing journey.
+   */
+  private activeSave: SaveGame | null = null;
 
   constructor() {
     super('Title');
@@ -66,16 +73,27 @@ export class TitleScene extends Phaser.Scene {
     });
 
     this.cameras.main.fadeIn(theme.transition.fadeMs, 0, 0, 0);
+    // Reset to the default slot on (re)entering the title, and seed the active
+    // save so SETTINGS export works straight from a cold title.
+    SaveManager.setActiveSlot(0);
+    void SaveManager.loadSlot(0).then((s) => {
+      // Only seed if the player hasn't already picked a slot (which sets it).
+      if (SaveManager.activeSlot === 0 && this.activeSave === null) this.activeSave = s;
+    });
     void this.showMenu();
   }
 
   private async showMenu(): Promise<void> {
-    const save = await SaveManager.load();
+    // Decode every slot once so CONTINUE knows how many journeys exist and the
+    // pickers can show per-slot summaries without re-reading storage per row.
+    const slots = await SaveManager.loadAllSlots();
+    const occupied = slots.filter((s) => s !== null).length;
+
     const menu = new Menu(
       this,
       [
         { label: 'NEW GAME', value: 'new' },
-        { label: 'CONTINUE', value: 'continue', enabled: save !== null },
+        { label: 'CONTINUE', value: 'continue', enabled: occupied > 0 },
         { label: 'SETTINGS', value: 'settings' },
       ],
       { x: GAME_WIDTH / 2 - 44, y: MENU_Y, width: 88, cancellable: false, sfx: this.sfx },
@@ -83,30 +101,82 @@ export class TitleScene extends Phaser.Scene {
 
     const choice = await menu.run();
     if (choice === 'new') {
-      if (save && !(await this.confirmOverwrite())) {
-        void this.showMenu();
-        return;
-      }
-      // A new game opens on the cold-open prologue (the Long Dusk), which then
-      // hands off to the world at the canon spawn. Continue skips straight in.
-      this.startCinematic('coldopen_south', { mapId: VESPERHOLM_GRAPH.start_map });
-    } else if (choice === 'continue' && save) this.start(this.continueData(save));
-    else if (choice === 'settings') {
+      await this.handleNewGame(slots);
+    } else if (choice === 'continue' && occupied > 0) {
+      await this.handleContinue(slots);
+    } else if (choice === 'settings') {
       await new SettingsMenu(this, {
-        getSave: () => save,
+        // Export/import operate on the ACTIVE slot via SaveManager (unchanged
+        // SettingsMenu — out of this lane). Active slot is whatever was last
+        // picked, defaulting to slot 1 (slot index 0).
+        getSave: () => this.activeSave,
         onImport: async (imported) => {
           await SaveManager.save(imported);
+          this.activeSave = imported;
         },
         sfx: this.sfx,
       }).run();
       void this.showMenu(); // re-show the title menu after settings
+    } else {
+      void this.showMenu();
     }
   }
 
-  /** Guard a destructive New Game when a save exists. */
+  /**
+   * NEW GAME: choose a slot (any slot is fair game), confirm before clobbering an
+   * occupied one, then point SaveManager at it and roll the cold open.
+   */
+  private async handleNewGame(slots: (SaveGame | null)[]): Promise<void> {
+    const slot = await new SlotMenu(this, { slots, mode: 'new', sfx: this.sfx }).run();
+    if (slot === null) {
+      void this.showMenu();
+      return;
+    }
+    if (slots[slot] && !(await this.confirmOverwrite())) {
+      void this.showMenu();
+      return;
+    }
+    SaveManager.setActiveSlot(slot);
+    this.activeSave = null; // a fresh journey: nothing to export until it saves
+    // A new game opens on the cold-open prologue (the Long Dusk), which then
+    // hands off to the world at the canon spawn. Continue skips straight in.
+    this.startCinematic('coldopen_south', { mapId: VESPERHOLM_GRAPH.start_map });
+  }
+
+  /**
+   * CONTINUE: with one journey, drop straight in (no friction for the common
+   * case); with several, show the slot picker.
+   */
+  private async handleContinue(slots: (SaveGame | null)[]): Promise<void> {
+    const occupiedIdx = slots
+      .map((s, i) => (s !== null ? i : -1))
+      .filter((i) => i >= 0);
+
+    let slot: number;
+    if (occupiedIdx.length === 1) {
+      slot = occupiedIdx[0]!;
+    } else {
+      const picked = await new SlotMenu(this, { slots, mode: 'continue', sfx: this.sfx }).run();
+      if (picked === null) {
+        void this.showMenu();
+        return;
+      }
+      slot = picked;
+    }
+    SaveManager.setActiveSlot(slot);
+    const save = slots[slot];
+    if (!save) {
+      void this.showMenu();
+      return;
+    }
+    this.activeSave = save;
+    this.start(this.continueData(save));
+  }
+
+  /** Guard a destructive New Game when the chosen slot is occupied. */
   private async confirmOverwrite(): Promise<boolean> {
     const box = new DialogueBox(this, this.sfx);
-    await box.run([{ text: 'Starting anew will overwrite your saved journey.' }]);
+    await box.run([{ text: 'Starting anew will overwrite the journey in this slot.' }]);
     const choice = await new Menu(
       this,
       [

@@ -72,11 +72,11 @@
   },
   "encounters": [
     {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 10,
-      "max": 12
+      "area": "sunkbell_shallows",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 18,
+      "max": 20
     }
   ],
   "scripted": false,

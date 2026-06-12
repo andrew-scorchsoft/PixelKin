@@ -1332,6 +1332,15 @@ export const DIALOGUE: DialogueRegistry = {
   'npc.starwell_after': [
     { text: 'The well holds only starlight now — and holds it gladly. The water is warm.' },
   ],
+  // THE NULL-WORKS POOL — Nullmajor #150, the great dark made kin (post-dawn
+  // set-piece on umbral_spire_f2; the Còr-mercy register: woken gently, never
+  // destroyed). Cooldown + after lines for script.nullworks_nullmajor.
+  'npc.nullworks_still': [
+    { text: 'The pool of gathered dark lies still. What sank back into it is resting — the old null will not rise again for {remaining} more battles yet.' },
+  ],
+  'npc.nullworks_after': [
+    { text: 'The null-pool is only water now, holding the morning upside down. Somewhere in your lamp, the dark Còr made is finally being kept instead of feared.' },
+  ],
 
   // --- The Umbral Spire — Wren at your side (A5→A6), one line per floor.
   // f1's beat (the ONE sanctioned wry-warm one) moved into script.spire_wren_camp,
@@ -1496,6 +1505,124 @@ export const DIALOGUE: DialogueRegistry = {
   // Lucan, once the phial is given (consumes flag:three_dawn_phial).
   'npc.lucan_phial_after': [
     { speaker: 'LUCAN PYRE', portrait: 'lucan', expr: 'bittersweet', text: 'Forty years I kept that phial against a day worth spending it on, and the moment I hand it over the theatre feels LIGHTER. Pour it true, apprentice. First light is an entrance no one gets to make twice.' },
+  ],
+  // ===========================================================================
+  // DAWNSTEAD — the post-game epilogue town (06-postgame, R2). Bittersweet-
+  // warm; Còr never gloated over; the lamp a keepsake now, not a necessity.
+  // ===========================================================================
+  // Còr's standing lines at his lamp (pre-wick, and after it comes home).
+  'npc.cor_lamp': [
+    { speaker: 'WARDEN CÒR', portrait: 'cor', expr: 'at_peace', text: 'The star-tenders offered me a place again. I asked for a lamp instead — one lamp, kept properly, is a whole creed. Mind the wind for me; it is the only argument we have left, the wind and I.' },
+  ],
+  'npc.cor_lamp_after': [
+    { speaker: 'WARDEN CÒR', portrait: 'cor', expr: 'at_peace', text: 'The wick draws well. Daylight in the braid of it — it will hold the first night of the new dark, when that comes. And it will come. ...Good. A lamp should have work ahead of it.' },
+  ],
+  // Fenn, the survey done — the mentor at rest.
+  'npc.fenn_dawnstead_after': [
+    { speaker: 'FENN', portrait: 'fenn', expr: 'peace', text: 'No errands left, apprentice. None. I have checked twice, and the second check was for the pleasure of it. ...The sky\'s yours now. I\'m only out here watching how well it\'s kept.' },
+  ],
+  // Latched doors — everyone\'s out in the sun (no silent doors).
+  'door.dawnstead_store': [
+    { text: 'The store is latched, lightly — a chalked note on the shutter reads: "OUT. LOOK UP." Everyone\'s out in the sun.' },
+  ],
+  'door.dawnstead_cottage': [
+    { text: 'The door is on the latch, the hearth inside cold for the first kind reason in years. Everyone\'s out in the sun.' },
+  ],
+  'door.dawnstead_home': [
+    { text: 'The latch lifts a half-inch and stops — the same stiff latch as home, the same worn step. Nobody\'s in. On a morning like this, why would they be?' },
+  ],
+  // Signs.
+  'sign.dawnstead_town': [
+    { text: 'DAWNSTEAD — Tinderwick, by morning light. The lamps are resting. Let them.' },
+  ],
+  'sign.dawnstead_verge': [
+    { text: 'The moths came out gold this morning. Nobody\'s seen the like. Catch one — they won\'t keep; nothing does. That\'s why you catch it.' },
+  ],
+  // The survey marks before Fenn asks for them (the blocked_ref tease).
+  'sign.dawnstead_blooms': [
+    { text: 'Dawn-blooms, wide open to the sky. Something has been feeding here — something with gold dust on its wings.' },
+  ],
+  // The first-dawn festival folk (Arc E capstone — belonging, not conquest).
+  'npc.dawnstead_piper': [
+    { speaker: 'PIPER', text: 'I know eight festival tunes and every one of them leans on the dark somewhere. So this morning I\'m writing the ninth. It keeps coming out in major. I\'ve stopped fighting it.' },
+  ],
+  'npc.dawnstead_baker': [
+    { speaker: 'BAKER', text: 'First batch proved by SUNLIGHT on the sill. Tastes the same, mind. Tastes completely different. Both true — have a heel of it, everyone else has.' },
+  ],
+  'npc.dawnstead_kid': [
+    { speaker: 'KID', text: 'My gran says you carry a lamp EVERYWHERE. Why? The sky does it for free now... oh. OH. Were you the one who—? GRAN! GRAN, COME AND SEE WHO IT IS!' },
+  ],
+
+  // --- The Starfall Vigils (06-postgame · R3) ---------------------------------
+  // The Dawnstead witness — points the player to Nightreach when the first
+  // shard falls (requires flag:dawn, hidden once flag:starfall_begun).
+  'npc.starfall_witness': [
+    { speaker: 'WITNESS', text: 'Did you SEE it? Not a star going out — we\'ve all watched plenty of those. This one came DOWN. Shed itself, trailing gold, away off east.' },
+    { speaker: 'WITNESS', text: 'Nightreach is beside itself. Watcher Oriel had the great eyepiece on it before it landed. Go up and ask her — she reads the sky for a living, and she\'s never read anything like THIS.' },
+  ],
+  // The blocked_ref on every Vigil-site host warp, until its reading is held —
+  // the scar of starlight is visible post-dawn, sealed until read (the watchers' voice).
+  'npc.vigil_scar_sealed': [
+    { text: 'A seam of starlight, shut tight. Whatever fell here is waiting to be read first.' },
+  ],
+  // The kept placements — each Vigilant's plain line after their vigil is kept
+  // (requires flag:vigil_<n>_kept, hidden once flag:starfall_crown swaps in the
+  // re-runnable bout). Each points the player on along the chain.
+  'npc.vigil_hearthfall_kept': [
+    { speaker: 'WICK-MOTHER ESRA', text: 'Off you go, dear — the second fell east, under the hill where the moss has opinions. I\'ll sit with the morning a while. Seventy years of dusk; I\'ve earned a sunrise or two.' },
+  ],
+  'npc.vigil_grovefall_kept': [
+    { speaker: 'OLD FOREMAN BRAMM', text: 'Third one went north — the wind\'s spare pocket, the watcher says. Mind the roost. ...And tell Otho he still exaggerates.' },
+  ],
+  'npc.vigil_stormfall_kept': [
+    { speaker: 'ONDRA VAEL', text: 'The fourth fell west, where they kept the summer safe. Dress lighter than you did for me — and give Dame Solenne a proper bow; she taught everyone the bowing.' },
+  ],
+  'npc.vigil_sunfall_kept': [
+    { speaker: 'DAME SOLENNE', text: 'The last rests in the marshes, where the water is learning to speak again. Go gently — and carry my regards to the warden who waits there. She has more than earned them.' },
+  ],
+  'npc.vigil_murkfall_kept': [
+    { speaker: 'WARDEN MER', text: 'Carry the five up the mountain, Wayfarer. The old man has waited a long time to be allowed his best. The marsh and I will keep, until you have kept the last.' },
+  ],
+  // Dawnbrael's cooldownRef — the static catch withdrew with the next dark; it
+  // returns with the next sunrise (no re-fighting the Round). cooldownBattles is
+  // 0, so {remaining} never reads — the line is the re-approach hint only.
+  'npc.dawnbrael_resting': [
+    { text: 'The Ninth Lantern stands quiet, the five shards still seated in its collar. Dawnbrael drew back into the morning when you faltered — raise the lamp again, and it will answer with the next light.' },
+  ],
+  // Oriel's terrace re-reads — the chain's noticeboard. Lost the thread? She
+  // repeats the current reading, verbatim, slightly wearily. Flag-disjoint
+  // placements (the Fenn-waystone pattern) carry exactly the held reading.
+  'npc.oriel_read_1': [
+    { speaker: 'WATCHER ORIEL', text: '...The first one again? Very well. The first came down in the south — where the first lamp learned its name. Climb past the lantern that taught the sky to answer; it fell on the bluff above, where even the gulls go quiet.' },
+  ],
+  'npc.oriel_read_2': [
+    { speaker: 'WATCHER ORIEL', text: 'The second, then. It went to earth in the east — under the hill, where the wood keeps its own weather and the moss has opinions. Bring a light. Bring patience. The grotto has both, and shares neither.' },
+  ],
+  'npc.oriel_read_3': [
+    { speaker: 'WATCHER ORIEL', text: 'The third went north, into the wind\'s spare pocket — the roost where storms go when they\'re off duty. Take the kite. Take a coat. Retrieve your own hat; I shan\'t fetch it.' },
+  ],
+  'npc.oriel_read_4': [
+    { speaker: 'WATCHER ORIEL', text: 'The fourth fell where summer was put away for safekeeping — the high terraces that remembered daylight before the rest of us believed in it again.' },
+  ],
+  'npc.oriel_read_5': [
+    { speaker: 'WATCHER ORIEL', text: 'The last fell where the water forgot how to speak. It is learning again — go gently into the murk; some of what you\'ll meet is still waking. And one of them has waited a long time to greet you.' },
+  ],
+  'npc.oriel_carry': [
+    { speaker: 'WATCHER ORIEL', text: 'Five shards, five vigils kept. The sixth never fell — it\'s been waiting where the night ended, at the top of the mountain. Carry the five up, the warden of the marshes said, and ask the old man what he sees. ...So go on. Ask him.' },
+  ],
+  'npc.oriel_epilogue': [
+    { speaker: 'WATCHER ORIEL', text: 'Star-tender, is it now. I read the falls; you kept them. ...The sky has all its pieces back, and a name to call you by. Not a bad night\'s watching, between us.' },
+  ],
+  // The three Vigilants who climbed ahead, waiting at the Ninth Lantern before
+  // the Round (requires flag:vigil_5_kept, hidden once flag:starfall_lesson).
+  'npc.vigil_ondra_summit': [
+    { speaker: 'ONDRA VAEL', text: 'We came up to watch the old man\'s lesson. The watching turned into a queue. Raise the lamp at the lantern when you\'re ready — and don\'t keep us waiting; it\'s cold up here.' },
+  ],
+  'npc.vigil_solenne_summit': [
+    { speaker: 'DAME SOLENNE', text: 'The finest house I have ever played, and the best lit. Three of us, then the old man — back to back, no interval. Touch the lantern and the curtain rises.' },
+  ],
+  'npc.vigil_mer_summit': [
+    { speaker: 'WARDEN MER', text: 'He has waited forty years for this lesson. So have I, in a way. When your lamp is steady, ask the lantern — we\'ll be right behind you, every step.' },
   ],
 };
 

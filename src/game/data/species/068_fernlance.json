@@ -70,11 +70,11 @@
   },
   "encounters": [
     {
-      "area": "lowleaf_hollow",
-      "terrain": "cave",
-      "rarity": "rare",
-      "min": 22,
-      "max": 24
+      "area": "vigil_grovefall",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 60,
+      "max": 62
     }
   ],
   "scripted": false,

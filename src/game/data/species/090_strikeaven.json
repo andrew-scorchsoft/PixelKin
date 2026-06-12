@@ -74,6 +74,20 @@
       "rarity": "rare",
       "min": 36,
       "max": 37
+    },
+    {
+      "area": "vigil_stormfall",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 63,
+      "max": 64
+    },
+    {
+      "area": "thunderroost",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 60,
+      "max": 65
     }
   ],
   "scripted": false,

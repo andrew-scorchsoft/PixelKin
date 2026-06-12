@@ -76,7 +76,15 @@
     "weight_kg": 52,
     "habitat": "south"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "vigil_hearthfall",
+      "terrain": "tall_grass",
+      "rarity": "very_rare",
+      "min": 60,
+      "max": 60
+    }
+  ],
   "scripted": true,
   "art": {
     "silhouette": "Sleek, long-limbed fox with enormous flame-and-star-ray tail plumes that trail behind it like a comet's tail. The body is amber-to-white radiant, as though lit from inside. The plume-tails shift between ember-orange at the base and cool diamond-cyan at the feathered tips \u2014 the gradient between fire and starlight. The ears are long and spark-tipped. The 64px sprite will look like a running star.",

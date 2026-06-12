@@ -1254,6 +1254,19 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_lowleaf_charge",
       "hidden_when_flag": "flag:picked_lowleaf_charge"
+    },
+    {
+      "id": "letter_sable",
+      "at": {
+        "tx": 14,
+        "ty": 15
+      },
+      "facing": "down",
+      "sprite": "npc_lampwarden",
+      "movement": "static",
+      "dialogue_ref": "script.post_letter_lowleaf",
+      "requires_flag": "flag:q_post_letters",
+      "hidden_when_flag": "flag:q_post_letter_lowleaf"
     }
   ],
   "gates": [],
@@ -1292,8 +1305,65 @@
           "weight": 15,
           "min_level": 18,
           "max_level": 20
+        },
+        {
+          "kin_id": 65,
+          "weight": 15,
+          "min_level": 18,
+          "max_level": 20
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "fringe_a_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 17,
+        "ty": 3,
+        "w": 11,
+        "h": 7
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 56,
+          "weight": 28,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 67,
+          "weight": 28,
+          "min_level": 56,
+          "max_level": 63
+        },
+        {
+          "kin_id": 38,
+          "weight": 22,
+          "min_level": 56,
+          "max_level": 63
+        },
+        {
+          "kin_id": 62,
+          "weight": 14,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 66,
+          "weight": 8,
+          "min_level": 58,
+          "max_level": 65
+        },
+        {
+          "kin_id": 65,
+          "weight": 12,
+          "min_level": 56,
+          "max_level": 63
+        }
+      ],
+      "requires_flag": "flag:dawn"
     }
   ],
   "music": "assets/audio/music/lowleaf-hollow-a.mp3",

@@ -100,6 +100,27 @@
       "rarity": "uncommon",
       "min": 48,
       "max": 49
+    },
+    {
+      "area": "vigil_sunfall",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 64,
+      "max": 66
+    },
+    {
+      "area": "sunvault_climb_i",
+      "terrain": "tall_grass",
+      "rarity": "very_rare",
+      "min": 59,
+      "max": 65
+    },
+    {
+      "area": "sunvault_climb_ii",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 59,
+      "max": 65
     }
   ],
   "scripted": false,

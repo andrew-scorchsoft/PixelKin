@@ -56,6 +56,7 @@ Prices live on `ItemDef.price` (`content/items.ts`); one price everywhere.
 | Glow Charge | one throw, catch ×1.5 | 200w | Tinderwick |
 | Beacon Charge | one throw, catch ×2.5 | 600w | everywhere, once `gleam:ember` is held (flag-gated stock) |
 | Star-charts | teach a move | 800–4,000w by tier (§6) | everywhere |
+| Hooded Lamp | key item; toggle — wild encounter rate ×0.5 while hooded | 600w | Pearlmoor chandlery, once `gleam:tide` is held (flag-gated stock) |
 
 **Catching reframed (2026-06):** the vesperlamp is a **key item** — one device,
 plain throws free — and the purchasable line is **charges** (one boosted throw
@@ -81,11 +82,21 @@ level** (the model's drift check recomputes built trainers):
 | keeper | 20w | wick-tenders, miners, acolytes — dungeon/loop posts |
 | rival | 24w | Wren |
 | warden | 60w | the eight Lampwardens |
-| cor | 120w | Warden Còr |
+| vigilant | 80w | the Starfall Vigils' full-six smart-AI trials (post-game) |
+| cor | 120w | Warden Còr; Star-tender Fenn's Last Lesson (cor 120 × 70 = 8,400w) |
 
 So Brisa pays 600w, Reyl 960w, Lucan Pyre 2,760w and Nessa Cole 3,120w —
 and a beaten region roughly funds its own shop tier plus one chart — the
 model verifies exactly that.
+
+**Post-game — the `vigilant` class (06-postgame · R3).** A full-six smart-AI
+Starfall Vigil trial sits above a warden and below Còr: **vigilant = 80w × ace**
+(the ladder extends warden 60 → vigilant 80 → cor 120; §9's "payout classes
+don't grow past `cor`" invariant holds). The five sites pay 4,800 / 4,960 /
+5,120 / 5,280 / 5,440w (aces 60–68); the summit Round's three rematched
+Vigilants pay 5,520w each (ace 69); the Last Lesson is `cor` class — Fenn at
+8,400w (ace 70). Post-crown re-runnable bouts are **optional income outside the
+solvency legs** (modelled as one-time in `progression.mjs`'s POSTGAME leg).
 
 ## 5. Shops — how they look and work
 
@@ -213,6 +224,7 @@ The JOURNEY table in `progression.mjs` is the contract; summarised:
 | North | 13 — 6 route, 4 keeper, 1 rival (A4), 2 warden | ~21 | 1,600w + finds | Moth-amber ×2 |
 | West *(built)* | 12 — 7 route, 2 keeper, 1 rival (A5), 2 warden | ~21 | 1,100w + finds | Starglass ×4 + Moth-amber ×3 (Coldfog's Embergloss/Murk Pearl ride the optional detour) |
 | Central *(built)* | 6 — 5 keeper (acolytes), Còr | ~10 (set-piece catches + spoke top-ups; no wild zones past the hub) | 0w quests + 1,400w finds (the quest pay is item-shaped: Radiant Lamp ×3.5, Way-lamp, the Lampling) | Starglass ×2 + Moth-amber |
+| Post-game · Starfall Vigils *(built · R3)* | 9 — 8 vigilant (5 sites + the summit Round's 3), Fenn (cor) | ~14 (the five annex apex beds 58–68 + Dawnstead day-forms; one-time clears only — re-runnable bouts excluded from solvency) | first-clear ~50,500w payouts (25,600w sites + 24,960w Round) + the 5,000w storm-tithe; the two find-first nuke charts (Tremor Quake, Sunburst Nova) pay 0w | Starglass ×~6 (one cache/site bar Stormfall's ×2 tithe half) |
 
 Rules for region authors:
 

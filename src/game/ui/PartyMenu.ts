@@ -287,6 +287,13 @@ export class PartyMenu {
     ability.setWordWrapWidth(100);
     card.add(ability);
 
+    // Bond read-out: a canon tier word + a small pip meter on one line (the
+    // bond-kindling threshold lives at 160 — KINDRED — so the player can read
+    // progress toward it). Sits in the stats column, clear of the moves block.
+    const tier = bondTier(kin.bond);
+    card.add(makeText(scene, 120, 82, `BOND ${tier.word}`, theme.text.accent));
+    bondPips(scene, card, 120, 94, kin.bond);
+
     // Stats column (monospace pixel font → padEnd lines up the values).
     const stats: Array<[string, number | string]> = [
       ['HP', `${Math.max(0, kin.hp)}/${kin.maxHp}`],
@@ -336,5 +343,39 @@ export class PartyMenu {
     this.cursor.destroy();
     this.panel.destroy();
     this.dim.destroy();
+  }
+}
+
+/** The bond tiers (canon-voiced) over the 0..255 friendship range. 160 is the
+ *  bond-kindling threshold (KINDRED), so it sits on a tier boundary deliberately. */
+const BOND_TIERS: Array<{ word: string; min: number }> = [
+  { word: 'KINDRED', min: 160 },
+  { word: 'CLOSE', min: 100 },
+  { word: 'WARM', min: 40 },
+  { word: 'NEW', min: 0 },
+];
+
+function bondTier(bond: number): { word: string; min: number } {
+  return BOND_TIERS.find((t) => bond >= t.min) ?? BOND_TIERS[BOND_TIERS.length - 1];
+}
+
+/** A small 8-pip meter for bond (0..255), filled lamp-warm to the kin's value. */
+function bondPips(
+  scene: Phaser.Scene,
+  card: Panel,
+  x: number,
+  y: number,
+  bond: number,
+): void {
+  const PIPS = 8;
+  const filled = Math.round((Math.max(0, Math.min(255, bond)) / 255) * PIPS);
+  for (let i = 0; i < PIPS; i++) {
+    const lit = i < filled;
+    card.add(
+      scene.add
+        .rectangle(x + i * 7, y, 5, 5, hex(lit ? theme.color.selected : theme.color.panelShadow))
+        .setOrigin(0, 0)
+        .setStrokeStyle(1, hex(theme.color.panelEdge)),
+    );
   }
 }

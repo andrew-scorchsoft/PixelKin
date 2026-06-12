@@ -67,15 +67,7 @@
     "weight_kg": 1100,
     "habitat": "east"
   },
-  "encounters": [
-    {
-      "area": "lowleaf_hollow",
-      "terrain": "cave",
-      "rarity": "rare",
-      "min": 22,
-      "max": 24
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Imposing wide-shouldered biped; entire body studded with iron-ore protrusions and plates; massive stone fists each larger than a human torso; slow-burning orange eyes set deep in a craggy face; silhouette is pure power.",

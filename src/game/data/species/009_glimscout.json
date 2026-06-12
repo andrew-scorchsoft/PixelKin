@@ -65,11 +65,11 @@
   },
   "encounters": [
     {
-      "area": "dimglass_coast",
+      "area": "dawnstead",
       "terrain": "tall_grass",
       "rarity": "uncommon",
-      "min": 10,
-      "max": 12
+      "min": 56,
+      "max": 60
     }
   ],
   "scripted": false,

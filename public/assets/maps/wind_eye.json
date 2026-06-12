@@ -141,7 +141,8 @@
           "min_level": 35,
           "max_level": 36
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "ring_b",
@@ -172,7 +173,8 @@
           "min_level": 35,
           "max_level": 36
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "bed_a",
@@ -203,7 +205,104 @@
           "min_level": 35,
           "max_level": 36
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "ring_a_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 12,
+        "ty": 4,
+        "w": 3,
+        "h": 3
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 93,
+          "weight": 25,
+          "min_level": 60,
+          "max_level": 65
+        },
+        {
+          "kin_id": 94,
+          "weight": 40,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 95,
+          "weight": 35,
+          "min_level": 58,
+          "max_level": 64
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "ring_b_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 5,
+        "ty": 9,
+        "w": 3,
+        "h": 2
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 93,
+          "weight": 25,
+          "min_level": 60,
+          "max_level": 65
+        },
+        {
+          "kin_id": 94,
+          "weight": 40,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 95,
+          "weight": 35,
+          "min_level": 58,
+          "max_level": 64
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "bed_a_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 10,
+        "ty": 2,
+        "w": 5,
+        "h": 2
+      },
+      "encounter_rate": 0.13,
+      "table": [
+        {
+          "kin_id": 93,
+          "weight": 25,
+          "min_level": 60,
+          "max_level": 65
+        },
+        {
+          "kin_id": 94,
+          "weight": 40,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 95,
+          "weight": 35,
+          "min_level": 58,
+          "max_level": 64
+        }
+      ],
+      "requires_flag": "flag:dawn"
     }
   ],
   "npcs": [

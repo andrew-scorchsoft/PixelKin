@@ -714,6 +714,28 @@ export const TRAINERS: TrainerRegistry = {
     ai: 'smart',
   },
 
+  // A6 — Wren at peace in Dawnstead (walkthrough 06-postgame): the OPTIONAL,
+  // re-runnable post-game rematch, offered never forced ("loser buys the
+  // lanterns"). Friendly capstone at the lv55-65 rematch band — his arc team
+  // grown, plus the sun-bright Wickmoth he caught in the verge this morning.
+  // No reward flags, no progression gate; script.wren_rematch re-runs forever.
+  wren_rematch: {
+    id: 'wren_rematch',
+    name: 'WREN',
+    title: 'Wayfarer',
+    party: [
+      { species_id: 9, level: 58 }, // Glimscout — Light (his first, kept out of love)
+      { species_id: 16, level: 59 }, // Wickmoth — Ember (the day-form catch, sun-bright)
+      { species_id: 96, level: 60 }, // Frigalance — Storm/Frost (the North line, kindled)
+      { species_id: 28, level: 62 }, // Brinewrath — Tide (the ace, as ever)
+    ],
+    intro_ref: 'trainer.wren_rematch.intro',
+    defeat_ref: 'trainer.wren_rematch.defeat',
+    payout: 1488, // rival 24 × ace 62
+    music: 'battle-veil',
+    ai: 'smart',
+  },
+
   // Eighth Lumenary: Nessa Cole, Lampwarden of Nightreach Observatory (Lunar)
   // — the quiet insomniac astronomer, the most powerful and most haunted
   // Warden. A contemplative dreamlight team built around doze pressure (lull
@@ -828,6 +850,192 @@ export const TRAINERS: TrainerRegistry = {
     intro_ref: 'trainer.warden_cor.intro',
     defeat_ref: 'trainer.warden_cor.defeat',
     payout: 6720, // Còr 120 × ace 56
+    music: 'battle-boss-eclipse',
+    ai: 'smart',
+  },
+
+  // ===========================================================================
+  // THE STARFALL VIGILS (06-postgame · R3) — the endgame challenge chain. The
+  // Vigilants are the generation of keepers who tended the lamps BEFORE the Long
+  // Dusk, out of retirement to stand vigil over the fallen star-shards. Each is
+  // the game's first FULL-SIX, smart-AI trial — the new `vigilant` payout class
+  // (80w × ace; the ladder route 16 → keeper 20 → rival 24 → warden 60 →
+  // vigilant 80 → cor 120). Their aces double as their site's bed catch (the
+  // trial proves you can face what you came to catch). Parties/levels/payouts
+  // are VERBATIM from the 06-postgame "chain master list" trainer table.
+  // Vigilants on `battle-nightfall`; Fenn on the Spire boss cue (`battle-boss-eclipse`,
+  // the Còr final's bed) — the only boss cue shipped — sincere throughout.
+  // ===========================================================================
+  vigilant_esra: {
+    id: 'vigilant_esra',
+    name: 'WICK-MOTHER ESRA',
+    title: 'Vigilant',
+    party: [
+      { species_id: 7, level: 58 }, // Wicklord — Ember
+      { species_id: 12, level: 58 }, // Chandrek — Ember
+      { species_id: 19, level: 59 }, // Warmantis — Ember
+      { species_id: 43, level: 59 }, // Pyrolith — Ember/Stone
+      { species_id: 17, level: 59 }, // Scorchwing — Ember
+      { species_id: 33, level: 60 }, // Embralux — Ember/Light (ace)
+    ],
+    intro_ref: 'trainer.vigilant_esra.intro',
+    defeat_ref: 'trainer.vigilant_esra.defeat',
+    payout: 4800, // vigilant 80 × ace 60
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
+  vigilant_bramm: {
+    id: 'vigilant_bramm',
+    name: 'OLD FOREMAN BRAMM',
+    title: 'Vigilant',
+    party: [
+      { species_id: 40, level: 60 }, // Lumenmoss — Verdant/Light
+      { species_id: 64, level: 60 }, // Rootwarden — Verdant
+      { species_id: 58, level: 61 }, // Mycelarch — Verdant
+      { species_id: 52, level: 61 }, // Lithonyx — Stone
+      { species_id: 55, level: 61 }, // Ferrolith — Stone
+      { species_id: 70, level: 62 }, // Mycovast — Verdant/Stone (ace)
+    ],
+    intro_ref: 'trainer.vigilant_bramm.intro',
+    defeat_ref: 'trainer.vigilant_bramm.defeat',
+    payout: 4960, // vigilant 80 × ace 62
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
+  vigilant_ondra: {
+    id: 'vigilant_ondra',
+    name: 'ONDRA VAEL',
+    title: 'Vigilant',
+    party: [
+      { species_id: 102, level: 62 }, // Tempestail — Storm
+      { species_id: 79, level: 62 }, // Glacitern — Frost
+      { species_id: 96, level: 63 }, // Frigalance — Storm/Frost
+      { species_id: 93, level: 63 }, // Cumulance — Storm
+      { species_id: 82, level: 63 }, // Vortexlope — Frost/Storm
+      { species_id: 144, level: 64 }, // Nullhusk — Storm/Dark (ace)
+    ],
+    intro_ref: 'trainer.vigilant_ondra.intro',
+    defeat_ref: 'trainer.vigilant_ondra.defeat',
+    payout: 5120, // vigilant 80 × ace 64
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
+  vigilant_solenne: {
+    id: 'vigilant_solenne',
+    name: 'DAME SOLENNE',
+    title: 'Vigilant',
+    party: [
+      { species_id: 121, level: 64 }, // Sunstag — Solar/Verdant
+      { species_id: 110, level: 64 }, // Lunaquell — Lunar
+      { species_id: 123, level: 65 }, // Solreach — Solar
+      { species_id: 127, level: 65 }, // Lunvane — Light/Lunar
+      { species_id: 128, level: 65 }, // Solarmourn — Solar
+      { species_id: 119, level: 66 }, // Helithorn — Solar (ace)
+    ],
+    intro_ref: 'trainer.vigilant_solenne.intro',
+    defeat_ref: 'trainer.vigilant_solenne.defeat',
+    payout: 5280, // vigilant 80 × ace 66
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
+  vigilant_mer: {
+    id: 'vigilant_mer',
+    name: 'WARDEN MER',
+    title: 'Vigilant',
+    party: [
+      { species_id: 135, level: 66 }, // Liminalux — Dark/Light
+      { species_id: 138, level: 66 }, // Voidmantle — Dark
+      { species_id: 85, level: 67 }, // Stillwarden — Frost/Dark
+      { species_id: 140, level: 67 }, // Wisprestored — Light
+      { species_id: 145, level: 67 }, // Cindervast — Dark
+      { species_id: 146, level: 68 }, // Bogvast — Dark (ace)
+    ],
+    intro_ref: 'trainer.vigilant_mer.intro',
+    defeat_ref: 'trainer.vigilant_mer.defeat',
+    payout: 5440, // vigilant 80 × ace 68
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
+
+  // The summit Round — the three Vigilants who "climbed ahead" (Ondra → Solenne
+  // → Mer), back-to-back inside `script.starfall_round`, a band higher than their
+  // home sites (67–69). Each pays the flat post-crown re-runnable rate (5,520 =
+  // vigilant 80 × ace 69) — optional income outside the solvency legs.
+  vigilant_ondra_summit: {
+    id: 'vigilant_ondra_summit',
+    name: 'ONDRA VAEL',
+    title: 'Vigilant',
+    party: [
+      { species_id: 102, level: 67 }, // Tempestail — Storm
+      { species_id: 79, level: 67 }, // Glacitern — Frost
+      { species_id: 96, level: 68 }, // Frigalance — Storm/Frost
+      { species_id: 93, level: 68 }, // Cumulance — Storm
+      { species_id: 82, level: 68 }, // Vortexlope — Frost/Storm
+      { species_id: 144, level: 69 }, // Nullhusk — Storm/Dark (ace)
+    ],
+    intro_ref: 'trainer.vigilant_ondra_summit.intro',
+    defeat_ref: 'trainer.vigilant_ondra_summit.defeat',
+    payout: 5520, // vigilant 80 × ace 69
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
+  vigilant_solenne_summit: {
+    id: 'vigilant_solenne_summit',
+    name: 'DAME SOLENNE',
+    title: 'Vigilant',
+    party: [
+      { species_id: 121, level: 67 }, // Sunstag — Solar/Verdant
+      { species_id: 110, level: 67 }, // Lunaquell — Lunar
+      { species_id: 123, level: 68 }, // Solreach — Solar
+      { species_id: 127, level: 68 }, // Lunvane — Light/Lunar
+      { species_id: 128, level: 68 }, // Solarmourn — Solar
+      { species_id: 119, level: 69 }, // Helithorn — Solar (ace)
+    ],
+    intro_ref: 'trainer.vigilant_solenne_summit.intro',
+    defeat_ref: 'trainer.vigilant_solenne_summit.defeat',
+    payout: 5520, // vigilant 80 × ace 69
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
+  vigilant_mer_summit: {
+    id: 'vigilant_mer_summit',
+    name: 'WARDEN MER',
+    title: 'Vigilant',
+    party: [
+      { species_id: 135, level: 68 }, // Liminalux — Dark/Light
+      { species_id: 138, level: 68 }, // Voidmantle — Dark
+      { species_id: 85, level: 68 }, // Stillwarden — Frost/Dark
+      { species_id: 140, level: 69 }, // Wisprestored — Light
+      { species_id: 145, level: 69 }, // Cindervast — Dark
+      { species_id: 146, level: 69 }, // Bogvast — Dark (ace)
+    ],
+    intro_ref: 'trainer.vigilant_mer_summit.intro',
+    defeat_ref: 'trainer.vigilant_mer_summit.defeat',
+    payout: 5520, // vigilant 80 × ace 69
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
+
+  // THE LAST LESSON — Star-tender Fenn at full strength, the hardest fight in the
+  // game. His six, read in order, are the game's arc: the small light first
+  // (Glimscout), then the moons (Lunarbel, Crystalune), the light that holds
+  // (Prismantus), the sun's spiral (Helixia), and the one he named as a hope:
+  // Dawnwatcher, ace 70. `cor` class, 120 × 70 = 8,400w. Sincere throughout.
+  startender_fenn: {
+    id: 'startender_fenn',
+    name: 'STAR-TENDER FENN',
+    title: 'Star-tender',
+    party: [
+      { species_id: 9, level: 68 }, // Glimscout — Light (the small light first)
+      { species_id: 107, level: 68 }, // Lunarbel — Lunar/Light
+      { species_id: 125, level: 68 }, // Crystalune — Lunar/Frost
+      { species_id: 87, level: 69 }, // Prismantus — Light/Frost (the light that holds)
+      { species_id: 131, level: 69 }, // Helixia — Solar (the sun's spiral)
+      { species_id: 129, level: 70 }, // Dawnwatcher — Lunar/Light (the one he named, ace)
+    ],
+    intro_ref: 'trainer.startender_fenn.intro',
+    defeat_ref: 'trainer.startender_fenn.defeat',
+    payout: 8400, // cor 120 × ace 70
     music: 'battle-boss-eclipse',
     ai: 'smart',
   },
@@ -1067,6 +1275,12 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   'trainer.wren_nightreach.defeat': [
     { speaker: 'WREN', text: 'Ha — there it is. THAT\'s the thing the quiet doesn\'t have. Come on.' },
   ],
+  'trainer.wren_rematch.intro': [
+    { speaker: 'WREN', text: 'Friendly rules. Morning rules. Best light we\'ve ever had for it.' },
+  ],
+  'trainer.wren_rematch.defeat': [
+    { speaker: 'WREN', text: 'Still you. Good. Some things should survive a sunrise.' },
+  ],
   'trainer.nessa_cole.intro': [
     { speaker: 'NESSA COLE', text: 'Seven watch-fires, lit in the order they came home. I watched every one from this eyepiece. You walk the way a careful light burns.' },
     { speaker: 'NESSA COLE', text: 'One star left, and it is mine to vouch for. My kin keep the dream-hours with me — the soft dark, the kind that lets you sleep. Stay awake through it, Wayfarer... and the eighth will answer you.' },
@@ -1084,6 +1298,71 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   ],
   'trainer.warden_cor.defeat': [
     { speaker: 'WARDEN CÒR', text: '...Still lit. Every one of them, still lit.' },
+  ],
+
+  // --- The Starfall Vigils (06-postgame). The spec-verbatim keeper lines live
+  // in the script.vigil_* cutscenes; these refs are ONLY the battle's own short
+  // frame (the warden_cor convention — postgame-panel MAJ-1: identical strings
+  // here displayed every line twice). Glint stays with Esra/Bramm/Ondra/Solenne;
+  // Mer and the summit are SINCERE throughout.
+  'trainer.vigilant_esra.intro': [
+    { speaker: 'WICK-MOTHER ESRA', text: 'Show me a steady flame, dear.' },
+  ],
+  'trainer.vigilant_esra.defeat': [
+    { speaker: 'WICK-MOTHER ESRA', text: 'Bright. Properly bright.' },
+  ],
+  'trainer.vigilant_bramm.intro': [
+    { speaker: 'OLD FOREMAN BRAMM', text: 'The deep way, then. Walk it.' },
+  ],
+  'trainer.vigilant_bramm.defeat': [
+    { speaker: 'OLD FOREMAN BRAMM', text: 'Hah! Up you come.' },
+  ],
+  'trainer.vigilant_ondra.intro': [
+    { speaker: 'ONDRA VAEL', text: 'Stand into the wind!' },
+  ],
+  'trainer.vigilant_ondra.defeat': [
+    { speaker: 'ONDRA VAEL', text: 'HA! Well flown!' },
+  ],
+  'trainer.vigilant_solenne.intro': [
+    { speaker: 'DAME SOLENNE', text: 'Full light, my dear. Begin.' },
+  ],
+  'trainer.vigilant_solenne.defeat': [
+    { speaker: 'DAME SOLENNE', text: 'And... bow.' },
+  ],
+  'trainer.vigilant_mer.intro': [
+    { speaker: 'WARDEN MER', text: 'Steady, now. Show me steady.' },
+  ],
+  'trainer.vigilant_mer.defeat': [
+    { speaker: 'WARDEN MER', text: 'Handed on, then. Gladly.' },
+  ],
+
+  // The summit Round — the three who climbed ahead.
+  'trainer.vigilant_ondra_summit.intro': [
+    { speaker: 'ONDRA VAEL', text: 'Mine\'s the front of the queue — warm up on me.' },
+  ],
+  'trainer.vigilant_ondra_summit.defeat': [
+    { speaker: 'ONDRA VAEL', text: 'Same as the aerie. Sharper. Go on — Solenne\'s next, and she rehearsed.' },
+  ],
+  'trainer.vigilant_solenne_summit.intro': [
+    { speaker: 'DAME SOLENNE', text: 'Encore of the encore. The summit makes a tremendous house — and the lighting, my dear, is finally perfect.' },
+  ],
+  'trainer.vigilant_solenne_summit.defeat': [
+    { speaker: 'DAME SOLENNE', text: 'Bravo, again. Mer keeps the last gate before the old man. Go gently — she always means it.' },
+  ],
+  'trainer.vigilant_mer_summit.intro': [
+    { speaker: 'WARDEN MER', text: 'One more steadiness, before he asks you for all of it. I hand the light on gladly now. Show me once more why.' },
+  ],
+  'trainer.vigilant_mer_summit.defeat': [
+    { speaker: 'WARDEN MER', text: 'It holds, to the last gate. He\'s waiting at the lantern. ...Be everything you\'ve become.' },
+  ],
+
+  // The Last Lesson — sincere throughout (the humour stopped at the marshes).
+  // The full speech lives in script.starfall_round; this is the battle's frame.
+  'trainer.startender_fenn.intro': [
+    { speaker: 'STAR-TENDER FENN', text: 'The last lesson, apprentice. Begin.' },
+  ],
+  'trainer.startender_fenn.defeat': [
+    { speaker: 'STAR-TENDER FENN', text: 'Kept. Every lamp of it, kept.' },
   ],
 };
 

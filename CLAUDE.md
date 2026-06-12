@@ -384,9 +384,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `dimglass-coast-a`) already follow this; full recipe in the generate-midi score
   bible §3.3. Bare 4-voice `gbc` is still right for the sparsest cues (deep caves,
   the Hollowing's drained zones).
-- **Crown/hub flags DERIVE — never hand-set.** `flag:crown_*` (from each quadrant's two
-  `gleam:*`) and `flag:hub_unlocked` (from all four crowns) are computed inside
-  `FlagStore.deriveCrowns()` on every flag write and on load (old saves self-heal). Content
+- **Crown/hub/lamplight/letters flags DERIVE — never hand-set.** `flag:crown_*` (from each
+  quadrant's two `gleam:*`), `flag:hub_unlocked` (from all four crowns),
+  `flag:lamplight_warmlight/brightlight/starlight/radiant` (from the Gleam count — the
+  Lamplight tiers; dark maps opt into the reveal mask via `dark: true` in `world/maps.ts`)
+  and `flag:q_post_letters_all` (all ten P1 letters) are computed inside
+  `FlagStore.derive()` on every flag write and on load (old saves self-heal). Content
   must never list them in `sets_flags`/`reward_flags` (the W7 panel caught the game being
   uncompletable: the docs promised engine derivation that didn't exist, and South's hand-set
   `'crown_south'` was the wrong string — consumers want the `flag:` prefix).
@@ -410,7 +413,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   you add one. Multi-phase screens (PartyMenu/ItemsMenu/HearthMenu) **don't** keep one
   long-lived loop: each phase (`pickX`) attaches its own tick + input and tears both
   down before opening a sub-`Menu`, so presses are never double-read.
-- **Pause menu = RESUME / KIN / REGISTER / HEARTH / ITEMS / LORE / CHARTS / SAVE / SETTINGS** (`WorldScene.openPauseMenu`).
+- **Pause menu = RESUME / KIN / REGISTER / JOURNAL / HEARTH / ITEMS / LORE / CHARTS / [TRAVEL] / SAVE / SETTINGS**
+  (`WorldScene.openPauseMenu`; TRAVEL appears only once `flag:hub_unlocked`). JOURNAL→`JournalMenu`
+  (the quest log: `content/quests.ts` registry, flags mined from the build — add new named quests
+  there), TRAVEL→`TravelMenu` (waystone fast travel: `content/waystones.ts`, destinations gated on
+  their `chart:*` discovery flags, arrival via the executeWarp path).
   KIN→`PartyMenu`, REGISTER→`RegisterMenu` (the dex: seen/caught from `SaveGame.dex`, lazy kin
   icons, silhouettes until caught), HEARTH→`HearthMenu` (kin storage), ITEMS→`ItemsMenu` (view + use a
   medicine to heal), LORE→`GlossaryMenu` (read-only codex of canon vocabulary), CHARTS→`ChartsMenu`
@@ -785,6 +792,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   the same trainer twice (the "fights you twice" bug — hit every sight/script trainer: beacon
   keepers, Wren, route beats). The enclosing handler (`engageTrainer`/`handleTrigger`/`interact`)
   clears `modal` once the whole scene finishes.
+- **Shipped map JSONs carry post-build surgical additions their builders DON'T (2026-06):**
+  the R3 vigil host warps (tinderwick/spore_grotto/thunderroost/sunvault_climb_ii/
+  coldfog_marches_ii), the R4 day-form zone pairs (22 maps) and hand-added NPCs/triggers
+  (P1 letter recipients, Oriel's terrace set, the summit re-dress). Re-running an old
+  builder REGRESSES them — diff the rebuilt JSON against git HEAD and re-apply, or edit
+  the shipped JSON surgically instead.
 - **Map audits grant ALL Gifts for reachability — so a foot-only dead-end is invisible to them.**
   `audit_flow`/`audit_region`'s reach pass BFS with every Lantern Gift, which hid a real progression
   blocker: in `dimglass_coast` a one-way return ledge + a canopy tree's solid trunk footprint

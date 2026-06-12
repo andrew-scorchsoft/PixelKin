@@ -85,7 +85,7 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
   {
     id: 'lamplight',
     term: 'Lamplight',
-    desc: 'Your young lamp reaches only a small circle in the dark. Each Gleam you relight widens it, until you all but carry the dawn in hand.',
+    desc: 'Your young lamp reaches only a small circle in the dark. Each Gleam you relight widens it: Ember-glow first, then Warmlight at two Gleams, Brightlight at four, Starlight at six — and at all eight, Radiant, when you all but carry the dawn in hand. The brighter the lamp, the more the old dark gives up; nothing the road needs ever hides from a dim one.',
     unlock_flag: 'gleam:ember',
   },
   {
@@ -243,6 +243,43 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     term: 'the First True Dawn',
     desc: 'The morning the long night broke: the Keystar relit, the Crown blazing whole, and the sun over Vesperholm for the first time in years. Dusk will come again — and that is exactly the point.',
     unlock_flag: 'flag:dawn',
+  },
+
+  // --- The Starfall Vigils (06-postgame · R3) — the endgame chain. Gated on the
+  // chain's own flags: the first fall teaches the word, the first kept vigil the
+  // keepers, and the title beat names the Star-tender at last.
+  {
+    id: 'the_starfall',
+    term: 'the Starfall',
+    desc: 'The first starfall in living memory: star-shards shaken loose as the woken constellations settled into their seats. The old watchers called them star-shards. The very old watchers called them invitations.',
+    unlock_flag: 'flag:starfall_begun',
+  },
+  {
+    id: 'the_vigilants',
+    term: 'the Vigilants',
+    desc: 'The generation of keepers who tended the lamps before the Long Dusk. Where a shard rests, one of them comes out of retirement to stand vigil over it — and tries, gladly, the hand that came to keep it. They are a celebration, not a gate.',
+    unlock_flag: 'flag:vigil_1_kept',
+  },
+  {
+    id: 'star_tender',
+    term: 'Star-tender',
+    desc: 'The keeper of the whole turning sky, not one constellation of it — the title Fenn carried, and the one he steps aside to give. The apprentice who began with a satchel errand ends a Star-tender, named by the man who sent them out.',
+    unlock_flag: 'flag:starfall_crown',
+  },
+  // The post-game's collecting spine + its capstone kin (postgame-panel MIN-1:
+  // the one hook with no re-readable trace). Both ride flags the journey
+  // already sets — no new wiring.
+  {
+    id: 'day_forms',
+    term: 'day-forms',
+    desc: 'Kin woken bright by the relit sky — the same early kin of the valleys, sun-changed, walking a daylight the Long Dusk never let them have. The moths came out gold the first morning. Catch one — they won\'t keep; nothing does. That\'s why you catch it.',
+    unlock_flag: 'flag:dawn',
+  },
+  {
+    id: 'dawnbrael',
+    term: 'Dawnbrael',
+    desc: 'The first-morning kin. The sixth shard never fell, because it was never a shard — it is the morning itself, and it answers the Ninth Lantern when the five are seated. The watchers\' oldest books drew it, and apologised for the drawing.',
+    unlock_flag: 'flag:starfall_lesson',
   },
 ];
 

@@ -68,15 +68,7 @@
     "weight_kg": 28,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 10,
-      "max": 12
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Wide flat disc-shell patterned with concentric gold-and-aqua rings, textured like hammered moonstone. The creature beneath is plump and soft-looking with a single large circular eye at the shell's centre aperture.",

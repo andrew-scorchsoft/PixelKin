@@ -68,11 +68,18 @@
   },
   "encounters": [
     {
-      "area": "lowleaf_hollow",
+      "area": "cinderhead_mine",
       "terrain": "cave",
-      "rarity": "common",
-      "min": 12,
-      "max": 15
+      "rarity": "uncommon",
+      "min": 22,
+      "max": 24
+    },
+    {
+      "area": "cinderhead_deep_b1f",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 25,
+      "max": 27
     }
   ],
   "scripted": false,

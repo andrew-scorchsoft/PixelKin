@@ -78,6 +78,24 @@
           "weight": 25,
           "min_level": 26,
           "max_level": 27
+        },
+        {
+          "kin_id": 53,
+          "weight": 20,
+          "min_level": 26,
+          "max_level": 27
+        },
+        {
+          "kin_id": 69,
+          "weight": 12,
+          "min_level": 26,
+          "max_level": 27
+        },
+        {
+          "kin_id": 42,
+          "weight": 8,
+          "min_level": 26,
+          "max_level": 27
         }
       ]
     }
@@ -107,6 +125,19 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_deepcrystal",
       "hidden_when_flag": "flag:picked_deepcrystal"
+    },
+    {
+      "id": "cache_cinderhead_alcove",
+      "at": {
+        "tx": 19,
+        "ty": 11
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_cinderhead_alcove",
+      "hidden_when_flag": "flag:picked_cinderhead_alcove",
+      "requires_flag": "flag:lamplight_starlight"
     }
   ],
   "gates": [],

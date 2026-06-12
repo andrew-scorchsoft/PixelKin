@@ -65,15 +65,7 @@
     "weight_kg": 19.5,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "rare",
-      "min": 10,
-      "max": 12
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Lean adolescent fox, deep ember-red coat with cream underbelly and chest blaze; mane risen into a low crest of orange flame tongues tipped white; longer legs and brush tail with a glowing ember core; alert amber eyes. Clearly between Vulpyre's round kit and Blazethorn's spike-crowned regal fox at 64px.",

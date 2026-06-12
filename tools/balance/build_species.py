@@ -187,7 +187,13 @@ def encounters(region, rarity, tier, stage, scripted):
 # map work (e.g. Pearlmoor's harbour tables) adds entries HERE so a rebuild
 # never erases them. slug -> extra EncounterZone-source rows.
 EXTRA_ENCOUNTERS = {
-    "brinix":    [{"area": "pearlmoor_quay", "terrain": "water", "rarity": "uncommon", "min": 10, "max": 12}],
+    "brinix":    [{"area": "pearlmoor_quay", "terrain": "water", "rarity": "uncommon", "min": 10, "max": 12},
+                  # South coast surf (R5 S/E encounters-sync, 2026-06): mirrors of
+                  # the BUILT dimglass_coast/_ii in-map tables (the truth; weights
+                  # -> rarity). These two maps were the south REGION_AREA default,
+                  # so they carried ~37 stale generated rows — now curated.
+                  {"area": "dimglass_coast", "terrain": "water", "rarity": "common", "min": 4, "max": 6},
+                  {"area": "dimglass_coast_ii", "terrain": "water", "rarity": "common", "min": 9, "max": 11}],
     # Tideglass Cavern rows below (the Hours wiring, 2026-06): mirrors of the
     # BUILT in-map zone tables (tideglass_cavern.json — the truth; weights ->
     # rarity). The cave bed is the South's lv 20-24 backtrack; the Tidecall
@@ -199,17 +205,24 @@ EXTRA_ENCOUNTERS = {
                   {"area": "tideglass_cavern", "terrain": "cave", "rarity": "uncommon", "min": 21, "max": 24},
                   {"area": "tideglass_cavern", "terrain": "water", "rarity": "common", "min": 21, "max": 24}],
     "brinelet":  [{"area": "pearlmoor_quay", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 11},
-                  {"area": "tideglass_cavern", "terrain": "cave", "rarity": "common", "min": 20, "max": 22}],
+                  {"area": "tideglass_cavern", "terrain": "cave", "rarity": "common", "min": 20, "max": 22},
+                  {"area": "dimglass_coast", "terrain": "tall_grass", "rarity": "common", "min": 3, "max": 6},
+                  {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 11}],
     "brineroll": [{"area": "pearlmoor_quay", "terrain": "water", "rarity": "uncommon", "min": 10, "max": 12},
                   {"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 16, "max": 18},
-                  {"area": "saltreach_fen_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 17, "max": 19},
+                  # fen II reeds: thinned (D1 dex-spread, 2026-06) — Pebbit takes
+                  # the slot; Brineroll keeps the fen channels via fen_i + water rows
                   {"area": "sunkbell_shallows", "terrain": "water", "rarity": "common", "min": 17, "max": 19},
                   {"area": "tideglass_cavern", "terrain": "cave", "rarity": "uncommon", "min": 21, "max": 24},
-                  {"area": "tideglass_cavern", "terrain": "water", "rarity": "common", "min": 21, "max": 24}],
+                  {"area": "tideglass_cavern", "terrain": "water", "rarity": "common", "min": 21, "max": 24},
+                  {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 9, "max": 11}],
     "lumpin":    [{"area": "pearlmoor_quay", "terrain": "tall_grass", "rarity": "common", "min": 9, "max": 11},
-                  {"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 16, "max": 18},
+                  # saltreach reeds + tideglass cave: thinned (D1 dex-spread,
+                  # 2026-06) — Pebbit/Fossik take the slots; Lumpin keeps the
+                  # fen channels (water) and its South home maps
                   {"area": "saltreach_fen_ii", "terrain": "water", "rarity": "uncommon", "min": 17, "max": 19},
-                  {"area": "tideglass_cavern", "terrain": "cave", "rarity": "uncommon", "min": 20, "max": 23}],
+                  {"area": "dimglass_coast", "terrain": "tall_grass", "rarity": "common", "min": 3, "max": 6},
+                  {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 11}],
     # the Glostern line's middle form is the cavern pool's signature rare —
     # it seeds Pharolux's living-lighthouse legend two doors from where the
     # players caught Glostern (07-the-three §4).
@@ -222,6 +235,15 @@ EXTRA_ENCOUNTERS = {
     "poolfrond": [{"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "rare", "min": 17, "max": 18},
                   {"area": "saltreach_fen_ii", "terrain": "tall_grass", "rarity": "rare", "min": 18, "max": 19}],
     "tidalarch": [{"area": "sunkbell_shallows", "terrain": "water", "rarity": "very_rare", "min": 19, "max": 20}],
+    # the dimglass coast verge's uncommon flit (R5 S/E sync) — its one South row
+    "glimflit":  [{"area": "dimglass_coast", "terrain": "tall_grass", "rarity": "uncommon", "min": 3, "max": 6}],
+    # ---- the East fringe (R5 S/E encounters-sync, 2026-06): mirror of the BUILT
+    # lowleaf_hollow in-map table (the truth). lowleaf_hollow was the east
+    # REGION_AREA default, so it carried ~34 stale generated rows — now curated.
+    "mossglow":  [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "common", "min": 18, "max": 20}],
+    "sporeling": [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "common", "min": 18, "max": 20}],
+    "barkhelm":  [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "uncommon", "min": 18, "max": 20}],
+    "fennlight": [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "common", "min": 18, "max": 20}],
     # ---- the North (N5 encounters-sync, 2026-06): mirrors of the BUILT in-map
     # zone tables (public/assets/maps/*.json — the truth; weights -> rarity).
     # The deep-ice fold + undercroft rows are the Emberward/Lamp-Line ground.
@@ -244,8 +266,9 @@ EXTRA_ENCOUNTERS = {
                     {"area": "windward_stair_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 35, "max": 36},
                     {"area": "wind_eye", "terrain": "tall_grass", "rarity": "common", "min": 35, "max": 36},
                     {"area": "thunderroost", "terrain": "tall_grass", "rarity": "common", "min": 35, "max": 36},
-                    {"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "rare", "min": 37, "max": 40},
-                    {"area": "hushfrost_pass_i", "terrain": "tall_grass", "rarity": "rare", "min": 40, "max": 41}],
+                    # hushfrost I: thinned (D1 dex-spread, 2026-06) — Crevasser
+                    # takes the West-leg rock slot; Glacewing stays a North kin
+                    {"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "rare", "min": 37, "max": 40}],
     "hailwhirr":   [{"area": "wind_eye", "terrain": "tall_grass", "rarity": "common", "min": 34, "max": 36}],
     "cumulance":   [{"area": "wind_eye", "terrain": "tall_grass", "rarity": "rare", "min": 36, "max": 36}],
     "strikeaven":  [{"area": "thunderroost", "terrain": "tall_grass", "rarity": "rare", "min": 36, "max": 37}],
@@ -302,8 +325,10 @@ EXTRA_ENCOUNTERS = {
                     {"area": "nightreach_observatory", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 50}],
     "spirlet":     [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "uncommon", "min": 42, "max": 44},
                     {"area": "nightreach_observatory", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 50}],
-    "sunsprout":   [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "uncommon", "min": 42, "max": 45},
-                    {"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 47}],
+    # D1 dex-spread (2026-06): sunsprout promoted to the West night COMMON
+    # (the tables had no >=20-share rung) — weights w28/w24 in the maps
+    "sunsprout":   [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "common", "min": 42, "max": 45},
+                    {"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 47}],
     "gilpaw":      [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "uncommon", "min": 42, "max": 44},
                     {"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 47}],
     "helibud":     [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "uncommon", "min": 42, "max": 46},
@@ -320,12 +345,14 @@ EXTRA_ENCOUNTERS = {
                     {"area": "nightreach_observatory", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 51}],
     "solvyne":     [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "rare", "min": 44, "max": 46},
                     {"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 48},
-                    {"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 48},
+                    # sunvault II night common (D1 dex-spread, w26)
+                    {"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "common", "min": 47, "max": 48},
                     {"area": "helia_vault", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 49},
                     {"area": "helia_vault", "terrain": "cave", "rarity": "common", "min": 48, "max": 49}],
     "helicore":    [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "rare", "min": 44, "max": 46},
                     {"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 48},
-                    {"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 48},
+                    # sunvault II night common (D1 dex-spread, w24)
+                    {"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "common", "min": 47, "max": 48},
                     {"area": "helia_vault", "terrain": "tall_grass", "rarity": "common", "min": 47, "max": 49},
                     {"area": "helia_vault", "terrain": "cave", "rarity": "common", "min": 48, "max": 50}],
     "goldmane":    [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "rare", "min": 45, "max": 46},
@@ -390,6 +417,289 @@ EXTRA_ENCOUNTERS = {
     "whorlix":     [{"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "uncommon", "min": 50, "max": 51}],
 }
 
+# ---------------------------------------------------------------------------
+# The Starfall Vigils (06-postgame · R3, 2026-06) — the five annex beds + the
+# Dawnstead post-dawn DAY-FORM table + Helixia's post-crown verge entry. Kept in
+# a separate dict and MERGED into EXTRA_ENCOUNTERS below (many of these species
+# already carry rows there, and a duplicate literal key would silently clobber
+# them). Tables are VERBATIM from each site's Hooks block (the map-build lane
+# bakes the same spec tables — the spec is the shared truth). Each annex's apex
+# Vigilant doubles as the bed's very-rare catch (the register ledger).
+VIGIL_ENCOUNTERS = {
+    # Vigil I — Hearthfall (`vigil_hearthfall`, off tinderwick) — Ember & Tide, 58–60.
+    "scorchwing":  [{"area": "vigil_hearthfall", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 60}],
+    "chandrek":    [{"area": "vigil_hearthfall", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 60},
+                    {"area": "dawnstead", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 62}],
+    "wicklord":    [{"area": "vigil_hearthfall", "terrain": "tall_grass", "rarity": "rare", "min": 59, "max": 60},
+                    {"area": "dawnstead", "terrain": "tall_grass", "rarity": "rare", "min": 60, "max": 65}],
+    "embralux":    [{"area": "vigil_hearthfall", "terrain": "tall_grass", "rarity": "very_rare", "min": 60, "max": 60}],
+    "prismare":    [{"area": "vigil_hearthfall", "terrain": "water", "rarity": "uncommon", "min": 58, "max": 60}],
+    "tideveil":    [{"area": "vigil_hearthfall", "terrain": "water", "rarity": "very_rare", "min": 60, "max": 60}],
+    # Vigil II — Grovefall (`vigil_grovefall`, off spore_grotto, kind cave/glowmoss) — Verdant & Stone, 60–62.
+    "fernlance":   [{"area": "vigil_grovefall", "terrain": "tall_grass", "rarity": "uncommon", "min": 60, "max": 62}],
+    "rootwarden":  [{"area": "vigil_grovefall", "terrain": "tall_grass", "rarity": "uncommon", "min": 60, "max": 62}],
+    "gravelo":     [{"area": "vigil_grovefall", "terrain": "tall_grass", "rarity": "uncommon", "min": 60, "max": 62}],
+    "mycelarch":   [{"area": "vigil_grovefall", "terrain": "tall_grass", "rarity": "rare", "min": 61, "max": 62}],
+    "mycovast":    [{"area": "vigil_grovefall", "terrain": "tall_grass", "rarity": "very_rare", "min": 62, "max": 62}],
+    # Vigil III — Stormfall (`vigil_stormfall`, off thunderroost) — Storm & Frost, 62–64.
+    "tempestail":  [{"area": "vigil_stormfall", "terrain": "tall_grass", "rarity": "uncommon", "min": 62, "max": 64}],
+    "vortavane":   [{"area": "vigil_stormfall", "terrain": "tall_grass", "rarity": "uncommon", "min": 62, "max": 64}],
+    "glacitern":   [{"area": "vigil_stormfall", "terrain": "tall_grass", "rarity": "uncommon", "min": 62, "max": 64}],
+    "strikeaven":  [{"area": "vigil_stormfall", "terrain": "tall_grass", "rarity": "rare", "min": 63, "max": 64}],
+    "nullhusk":    [{"area": "vigil_stormfall", "terrain": "tall_grass", "rarity": "very_rare", "min": 64, "max": 64}],
+    # Vigil IV — Sunfall (`vigil_sunfall`, off sunvault_climb_ii) — Solar & Lunar, 64–66.
+    "sunstag":     [{"area": "vigil_sunfall", "terrain": "tall_grass", "rarity": "uncommon", "min": 64, "max": 66}],
+    "solreach":    [{"area": "vigil_sunfall", "terrain": "tall_grass", "rarity": "uncommon", "min": 64, "max": 66}],
+    "crystalune":  [{"area": "vigil_sunfall", "terrain": "tall_grass", "rarity": "uncommon", "min": 64, "max": 66}],
+    "lunaquell":   [{"area": "vigil_sunfall", "terrain": "tall_grass", "rarity": "rare", "min": 64, "max": 66}],
+    "dawnwatcher": [{"area": "vigil_sunfall", "terrain": "tall_grass", "rarity": "very_rare", "min": 65, "max": 65}],
+    "helithorn":   [{"area": "vigil_sunfall", "terrain": "tall_grass", "rarity": "very_rare", "min": 66, "max": 66}],
+    # Vigil V — Murkfall (`vigil_murkfall`, off coldfog_marches_ii) — Light & Dark, 66–68.
+    "embergone":   [{"area": "vigil_murkfall", "terrain": "tall_grass", "rarity": "uncommon", "min": 66, "max": 68}],
+    "voidmantle":  [{"area": "vigil_murkfall", "terrain": "tall_grass", "rarity": "uncommon", "min": 66, "max": 68}],
+    "wisprestored":[{"area": "vigil_murkfall", "terrain": "tall_grass", "rarity": "uncommon", "min": 66, "max": 68}],
+    "solarmourn":  [{"area": "vigil_murkfall", "terrain": "tall_grass", "rarity": "very_rare", "min": 67, "max": 67}],
+    "cindervast":  [{"area": "vigil_murkfall", "terrain": "tall_grass", "rarity": "very_rare", "min": 67, "max": 67}],
+    "bogvast":     [{"area": "vigil_murkfall", "terrain": "tall_grass", "rarity": "very_rare", "min": 68, "max": 68}],
+    # Dawnstead — the post-dawn DAY-FORM table (built in dawnstead.json; weights
+    # -> rarity: w30 common, w20 common, w15 uncommon, w12 uncommon, w8 rare).
+    "wickmoth":    [{"area": "dawnstead", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 60}],
+    "tallowpup":   [{"area": "dawnstead", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 58}],
+    "hearthkit":   [{"area": "dawnstead", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 60}],
+    "glimscout":   [{"area": "dawnstead", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 60}],
+    # Helixia — the day-form table's CAPSTONE: a very-rare verge entry that only
+    # rolls post-crown (`requires flag:starfall_crown` in the live zone; the dex
+    # row is flat — the register ledger's final placement).
+    "helixia":     [{"area": "dawnstead", "terrain": "tall_grass", "rarity": "very_rare", "min": 60, "max": 62}],
+}
+# Merge VIGIL rows into EXTRA_ENCOUNTERS (append where a slug already has rows).
+for _slug, _rows in VIGIL_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows)
+
+# ---------------------------------------------------------------------------
+# The day-form pass (06-postgame · R4, 2026-06) — mirrors of the BUILT
+# `flag:dawn`-gated day EncounterZones on the relit outdoor maps (the maps'
+# `*_day` zone twins are the truth; the dex side is flag-blind, so each map
+# now carries TWO rows per species/terrain where bands differ: the journey
+# band + the 55-65 post-dawn band). Same weight->rarity rule as W6; per-map
+# same-terrain zones merged per species. Coldfog I/II are the Light RE-BLOOM
+# (atlas §4 inverted): Wisprestored + the wane-line's Light halves bloom,
+# Mothdim/Nullmoth thin, Voidmantle withdraws from the day tables entirely.
+# Includes the NIGHT gap-fill rows for the maps first curated here
+# (tinderwick, gullcry_rock, the fen_ii channels, the sunkbell shallows).
+R4_DAYFORM_ENCOUNTERS = {
+    # ---- night gap-fills (newly curated areas' pre-dawn tables) ----
+    "wickmoth":   [{"area": "tinderwick", "terrain": "tall_grass", "rarity": "common", "min": 2, "max": 4},
+                   {"area": "tinderwick", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 60}],
+    "tallowpup":  [{"area": "tinderwick", "terrain": "tall_grass", "rarity": "common", "min": 2, "max": 3},
+                   {"area": "tinderwick", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 58}],
+    "glostern":   [{"area": "gullcry_rock", "terrain": "water", "rarity": "common", "min": 11, "max": 13},
+                   {"area": "gullcry_rock", "terrain": "water", "rarity": "common", "min": 58, "max": 65}],
+    # ---- South day rows ----
+    "wicklit":    [{"area": "tinderwick", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 60}],
+    "glimflit":   [{"area": "tinderwick", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 62},
+                   {"area": "dimglass_coast", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 62}],
+    "brinelet":   [{"area": "dimglass_coast", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 60},
+                   {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 61},
+                   {"area": "pearlmoor_quay", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 62}],
+    "lumpin":     [{"area": "gullcry_rock", "terrain": "water", "rarity": "common", "min": 10, "max": 12},
+                   {"area": "sunkbell_shallows", "terrain": "water", "rarity": "common", "min": 17, "max": 19},
+                   {"area": "dimglass_coast", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 62},
+                   {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 63},
+                   {"area": "pearlmoor_quay", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 63},
+                   {"area": "gullcry_rock", "terrain": "water", "rarity": "common", "min": 57, "max": 64},
+                   {"area": "saltreach_fen_ii", "terrain": "water", "rarity": "common", "min": 56, "max": 63},
+                   {"area": "sunkbell_shallows", "terrain": "water", "rarity": "common", "min": 56, "max": 63}],
+    "brineroll":  [{"area": "gullcry_rock", "terrain": "water", "rarity": "common", "min": 11, "max": 13},
+                   {"area": "saltreach_fen_ii", "terrain": "water", "rarity": "common", "min": 17, "max": 19},
+                   {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 63},
+                   {"area": "pearlmoor_quay", "terrain": "water", "rarity": "common", "min": 57, "max": 64},
+                   {"area": "gullcry_rock", "terrain": "water", "rarity": "common", "min": 58, "max": 64},
+                   {"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 61},
+                   {"area": "sunkbell_shallows", "terrain": "water", "rarity": "common", "min": 56, "max": 62}],
+    "brinix":     [{"area": "dimglass_coast", "terrain": "water", "rarity": "common", "min": 55, "max": 62},
+                   {"area": "dimglass_coast_ii", "terrain": "water", "rarity": "common", "min": 56, "max": 63},
+                   {"area": "pearlmoor_quay", "terrain": "water", "rarity": "common", "min": 57, "max": 64}],
+    "shimmral":   [{"area": "dimglass_coast", "terrain": "water", "rarity": "common", "min": 56, "max": 63},
+                   {"area": "dimglass_coast_ii", "terrain": "water", "rarity": "common", "min": 57, "max": 64},
+                   {"area": "pearlmoor_quay", "terrain": "water", "rarity": "common", "min": 58, "max": 64},
+                   {"area": "sunkbell_shallows", "terrain": "water", "rarity": "common", "min": 57, "max": 64}],
+    # ---- East day rows ----
+    "dewling":    [{"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 61},
+                   {"area": "saltreach_fen_ii", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 62}],
+    "poolfrond":  [{"area": "saltreach_fen_ii", "terrain": "water", "rarity": "common", "min": 18, "max": 19},
+                   {"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62},
+                   {"area": "saltreach_fen_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63},
+                   {"area": "saltreach_fen_ii", "terrain": "water", "rarity": "common", "min": 57, "max": 64}],
+    "fennlight":  [{"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "rare", "min": 57, "max": 63},
+                   {"area": "saltreach_fen_ii", "terrain": "tall_grass", "rarity": "rare", "min": 57, "max": 64},
+                   {"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 63}],
+    "sporeling":  [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 62}],
+    "mossglow":   [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 63}],
+    "barkhelm":   [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62}],
+    "lumournis":  [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 65}],
+    "tidalarch":  [{"area": "sunkbell_shallows", "terrain": "water", "rarity": "uncommon", "min": 58, "max": 65}],
+    # ---- North day rows ----
+    "sparrowcaw": [{"area": "galehigh_terraces", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 60}],
+    "thrumvane":  [{"area": "galehigh_terraces", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 61}],
+    "cirruff":    [{"area": "galehigh_terraces", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 62},
+                   {"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63},
+                   {"area": "windward_stair_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 64}],
+    "squallox":   [{"area": "galehigh_terraces", "terrain": "tall_grass", "rarity": "uncommon", "min": 55, "max": 61}],
+    "flintbeak":  [{"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 62},
+                   {"area": "windward_stair_ii", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 62},
+                   {"area": "thunderroost", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 63}],
+    "sparkrat":   [{"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 62},
+                   {"area": "windward_stair_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62}],
+    "thrumble":   [{"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 61},
+                   {"area": "windward_stair_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 62}],
+    "glacewing":  [{"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63},
+                   {"area": "windward_stair_ii", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 63},
+                   {"area": "wind_eye", "terrain": "tall_grass", "rarity": "common", "min": 58, "max": 64},
+                   {"area": "thunderroost", "terrain": "tall_grass", "rarity": "common", "min": 58, "max": 64}],
+    "chillpip":   [{"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 61}],
+    "geolace":    [{"area": "windward_stair_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62}],
+    "hailwhirr":  [{"area": "wind_eye", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 63}],
+    "cumulance":  [{"area": "wind_eye", "terrain": "tall_grass", "rarity": "common", "min": 60, "max": 65},
+                   {"area": "thunderroost", "terrain": "tall_grass", "rarity": "uncommon", "min": 60, "max": 65}],
+    "strikeaven": [{"area": "thunderroost", "terrain": "tall_grass", "rarity": "common", "min": 60, "max": 65}],
+    "glaceling":  [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63},
+                   {"area": "pale_vault_glacier", "terrain": "cave", "rarity": "common", "min": 58, "max": 64}],
+    "blizzrhare": [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63},
+                   {"area": "hushfrost_pass_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62},
+                   {"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63}],
+    "iceling":    [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62}],
+    "snowcune":   [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62}],
+    "prismcub":   [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 63},
+                   {"area": "hushfrost_pass_i", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 63},
+                   {"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 64},
+                   {"area": "aurora_hollow", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 63}],
+    "prismantus": [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "uncommon", "min": 59, "max": 65},
+                   {"area": "pale_vault_glacier", "terrain": "cave", "rarity": "common", "min": 59, "max": 65},
+                   {"area": "aurora_hollow", "terrain": "tall_grass", "rarity": "common", "min": 58, "max": 65}],
+    "stillwarden":[{"area": "pale_vault_glacier", "terrain": "cave", "rarity": "common", "min": 58, "max": 64},
+                   {"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 64}],
+    # ---- West day rows ----
+    "hushbore":   [{"area": "hushfrost_pass_i", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 62},
+                   {"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 63},
+                   {"area": "aurora_hollow", "terrain": "tall_grass", "rarity": "rare", "min": 57, "max": 62}],
+    "crystarn":   [{"area": "hushfrost_pass_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 63},
+                   {"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63},
+                   {"area": "aurora_hollow", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 63}],
+    "geodrake":   [{"area": "hushfrost_pass_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62}],
+    "vortexlope": [{"area": "hushfrost_pass_i", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64}],
+    "frigalance": [{"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64}],
+    "glacitern":  [{"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64}],
+    # day numbed-pocket cap: pocket-only species stay rare (the W6 rule)
+    "cindersob":  [{"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "rare", "min": 57, "max": 63},
+                   {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "rare", "min": 57, "max": 63}],
+    "frostholm":  [{"area": "aurora_hollow", "terrain": "tall_grass", "rarity": "very_rare", "min": 62, "max": 65}],
+    "sunsprout":  [{"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62}],
+    "helibud":    [{"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62},
+                   {"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63}],
+    "dawnfawn":   [{"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 63},
+                   {"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 64}],
+    "solvyne":    [{"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 63},
+                   {"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63}],
+    "helicore":   [{"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 63},
+                   {"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63}],
+    "gilpaw":     [{"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62}],
+    "goldmane":   [{"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64},
+                   {"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 64}],
+    "auravane":   [{"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64},
+                   {"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64}],
+    "sunstag":    [{"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "very_rare", "min": 59, "max": 65},
+                   {"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "rare", "min": 59, "max": 65}],
+    "lunveil":    [{"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 64}],
+    "lunvane":    [{"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "rare", "min": 60, "max": 65}],
+    # ---- the Coldfog Light RE-BLOOM (the day tables change character) ----
+    "wisprestored":[{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "common", "min": 58, "max": 65},
+                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "common", "min": 60, "max": 65}],
+    "flutterwane": [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 62},
+                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 63}],
+    "wispwane":    [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 63},
+                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 64}],
+    "wispwanenull":[{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 63},
+                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 64}],
+    "mothdim":     [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 55, "max": 61}],
+    "nullmoth":    [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "rare", "min": 56, "max": 62},
+                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63}],
+    "embergone":   [{"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64}],
+}
+for _slug, _rows in R4_DAYFORM_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows)
+
+# ---------------------------------------------------------------------------
+# The dex-obtainability + encounter-spread pass (D1, 2026-06) — mirrors of the
+# BUILT in-map zone edits that placed the 22 unobtainable straggler lines into
+# wild tables (every base now has a home; mids/finals ride kindling) and gave
+# the South its rare tier. Same W6 weight->rarity rule; day-twin rows only
+# where the kin is element-fitting (Light/Ember/Verdant by day).
+# Also the FIRST mirrors of the cinderhead_mine/deep(+B1F/B2F) and spore_grotto
+# tables (built maps that predated the mirror convention — now CURATED, so the
+# full tables live here) and the Skyweavelet bed on umbral_spire_f2 (the one
+# new zone rect; band 52-55 to match the Spire floors).
+D1_OBTAINABILITY_ENCOUNTERS = {
+    # ---- Ember A-line bases ----
+    "ashlette":   [{"area": "tinderwick", "terrain": "tall_grass", "rarity": "uncommon", "min": 2, "max": 4},
+                   {"area": "tinderwick", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62}],
+    "scorchite":  [{"area": "cinderhead_mine", "terrain": "cave", "rarity": "common", "min": 22, "max": 24},
+                   {"area": "cinderhead_deep", "terrain": "cave", "rarity": "uncommon", "min": 24, "max": 26}],
+    # the b2f coal-seam rare — the mid-stage's genre-correct deep-band slot
+    "coalump":    [{"area": "cinderhead_deep_b2f", "terrain": "cave", "rarity": "rare", "min": 26, "max": 27}],
+    # ---- Tide/Light bases ----
+    "tidmote":    [{"area": "dimglass_coast", "terrain": "water", "rarity": "common", "min": 4, "max": 6},
+                   {"area": "dimglass_coast", "terrain": "water", "rarity": "uncommon", "min": 55, "max": 62},
+                   {"area": "pearlmoor_quay", "terrain": "water", "rarity": "uncommon", "min": 10, "max": 12},
+                   {"area": "pearlmoor_quay", "terrain": "water", "rarity": "uncommon", "min": 57, "max": 64}],
+    "tidmaren":   [{"area": "sunkbell_shallows", "terrain": "water", "rarity": "rare", "min": 18, "max": 20}],
+    "glintfin":   [{"area": "dimglass_coast_ii", "terrain": "water", "rarity": "common", "min": 9, "max": 11},
+                   {"area": "dimglass_coast_ii", "terrain": "water", "rarity": "uncommon", "min": 56, "max": 63},
+                   {"area": "gullcry_rock", "terrain": "water", "rarity": "uncommon", "min": 11, "max": 13},
+                   {"area": "gullcry_rock", "terrain": "water", "rarity": "uncommon", "min": 58, "max": 64}],
+    # ---- Stone bases (the early game's first Stone basics) ----
+    "pebbit":     [{"area": "dimglass_coast", "terrain": "tall_grass", "rarity": "rare", "min": 3, "max": 6},
+                   {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 11},
+                   {"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 16, "max": 18},
+                   {"area": "saltreach_fen_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 17, "max": 19}],
+    "flickore":   [{"area": "cinderhead_mine", "terrain": "cave", "rarity": "uncommon", "min": 22, "max": 24},
+                   {"area": "cinderhead_deep_b1f", "terrain": "cave", "rarity": "uncommon", "min": 25, "max": 27}],
+    "fossik":     [{"area": "tideglass_cavern", "terrain": "cave", "rarity": "common", "min": 20, "max": 23}],
+    "oreling":    [{"area": "cinderhead_deep", "terrain": "cave", "rarity": "uncommon", "min": 24, "max": 26},
+                   {"area": "cinderhead_deep_b2f", "terrain": "cave", "rarity": "uncommon", "min": 26, "max": 27}],
+    # the Fossik mid's West-leg rock rare (takes Glacewing's thinned slot)
+    "crevasser":  [{"area": "hushfrost_pass_i", "terrain": "tall_grass", "rarity": "rare", "min": 40, "max": 41}],
+    # ---- the standalone Stone riddler + the Light strays ----
+    "riddlestone": [{"area": "cinderhead_deep_b1f", "terrain": "cave", "rarity": "rare", "min": 25, "max": 27},
+                    {"area": "cinderhead_deep_b2f", "terrain": "cave", "rarity": "rare", "min": 26, "max": 27}],
+    "glowsip":    [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "uncommon", "min": 18, "max": 20},
+                   {"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 63},
+                   {"area": "spore_grotto", "terrain": "tall_grass", "rarity": "uncommon", "min": 21, "max": 23}],
+    "skyweavelet": [{"area": "umbral_spire_f2", "terrain": "cave", "rarity": "common", "min": 52, "max": 55}],
+    # ---- the South rare tier (D1 spread fix) ----
+    "wicklit":    [{"area": "tinderwick", "terrain": "tall_grass", "rarity": "rare", "min": 3, "max": 4},
+                   {"area": "pearlmoor_quay", "terrain": "tall_grass", "rarity": "rare", "min": 9, "max": 11}],
+    # ---- first mirrors of the pre-existing cinderhead/spore in-map tables ----
+    "gravelo":    [{"area": "cinderhead_mine", "terrain": "cave", "rarity": "common", "min": 22, "max": 24},
+                   {"area": "cinderhead_deep", "terrain": "cave", "rarity": "common", "min": 24, "max": 26},
+                   {"area": "cinderhead_deep_b1f", "terrain": "cave", "rarity": "common", "min": 25, "max": 27},
+                   {"area": "cinderhead_deep_b2f", "terrain": "cave", "rarity": "common", "min": 26, "max": 27}],
+    "sparkrat":   [{"area": "cinderhead_mine", "terrain": "cave", "rarity": "common", "min": 22, "max": 24},
+                   {"area": "cinderhead_deep", "terrain": "cave", "rarity": "common", "min": 24, "max": 26},
+                   {"area": "cinderhead_deep_b1f", "terrain": "cave", "rarity": "common", "min": 25, "max": 27},
+                   {"area": "cinderhead_deep_b2f", "terrain": "cave", "rarity": "common", "min": 26, "max": 27}],
+    "crystink":   [{"area": "cinderhead_mine", "terrain": "cave", "rarity": "uncommon", "min": 22, "max": 24},
+                   {"area": "cinderhead_deep", "terrain": "cave", "rarity": "uncommon", "min": 24, "max": 26},
+                   {"area": "cinderhead_deep_b1f", "terrain": "cave", "rarity": "uncommon", "min": 25, "max": 27},
+                   {"area": "cinderhead_deep_b2f", "terrain": "cave", "rarity": "uncommon", "min": 26, "max": 27}],
+    "sporemid":   [{"area": "spore_grotto", "terrain": "tall_grass", "rarity": "common", "min": 21, "max": 23}],
+    "sporeling":  [{"area": "spore_grotto", "terrain": "tall_grass", "rarity": "common", "min": 21, "max": 23}],
+    "fennlight":  [{"area": "spore_grotto", "terrain": "tall_grass", "rarity": "uncommon", "min": 22, "max": 23}],
+    "mycelarch":  [{"area": "spore_grotto", "terrain": "tall_grass", "rarity": "rare", "min": 22, "max": 23}],
+}
+for _slug, _rows in D1_OBTAINABILITY_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows)
+
 # Areas whose encounter tables are BUILT into the map JSONs (the in-map zones
 # are the truth, mirrored above). Generated region defaults — and stale rows
 # carried in the previous per-species files — must not claim these areas:
@@ -409,6 +719,26 @@ CURATED_AREAS = {
     # built in-map tables (mirrored above); the gallery is encounter-free by
     # design and listed so no generated row can ever claim the Hour's room.
     "tideglass_cavern", "tideglass_gallery", "pale_vault_hourfold",
+    # the South/East REGION_AREA defaults (R5 S/E encounters-sync, 2026-06): these
+    # two maps' built in-map tables are the truth (mirrored above), so the ~71
+    # stale generated rows that named them (dimglass_coast ~37 + lowleaf_hollow
+    # ~34) are dropped on rebuild; the _ii coast map joins them.
+    "dimglass_coast", "dimglass_coast_ii", "lowleaf_hollow",
+    # the Starfall Vigils (06-postgame · R3, 2026-06): the five annex sites carry
+    # built in-map tables (mirrored below); Dawnstead carries the post-dawn
+    # DAY-FORM table (built in dawnstead.json) + the Helixia post-crown verge
+    # entry, both mirrored below. The map-build lane bakes the same spec tables.
+    "vigil_hearthfall", "vigil_grovefall", "vigil_stormfall",
+    "vigil_sunfall", "vigil_murkfall", "dawnstead",
+    # the day-form pass (R4, 2026-06): the remaining relit outdoor maps with
+    # built in-map tables, first fully mirrored above (night + day rows).
+    "tinderwick", "gullcry_rock", "pearlmoor_quay",
+    "saltreach_fen_i", "saltreach_fen_ii", "sunkbell_shallows",
+    # the dex-obtainability pass (D1, 2026-06): the cinderhead chain + the
+    # grotto carried built tables that predated the mirror convention (now
+    # mirrored above), and the Spire's F2 gained the Skyweavelet bed.
+    "spore_grotto", "cinderhead_mine", "cinderhead_deep",
+    "cinderhead_deep_b1f", "cinderhead_deep_b2f", "umbral_spire_f2",
 }
 
 # Kin that are FIXED quest catches (a legendaryBattle set-piece), even though

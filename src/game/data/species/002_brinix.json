@@ -67,18 +67,46 @@
   },
   "encounters": [
     {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 6,
-      "max": 9
-    },
-    {
       "area": "pearlmoor_quay",
       "terrain": "water",
       "rarity": "uncommon",
       "min": 10,
       "max": 12
+    },
+    {
+      "area": "dimglass_coast",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 4,
+      "max": 6
+    },
+    {
+      "area": "dimglass_coast_ii",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 9,
+      "max": 11
+    },
+    {
+      "area": "dimglass_coast",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 55,
+      "max": 62
+    },
+    {
+      "area": "dimglass_coast_ii",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 56,
+      "max": 63
+    },
+    {
+      "area": "pearlmoor_quay",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 57,
+      "max": 64
     }
   ],
   "scripted": false,

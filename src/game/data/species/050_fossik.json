@@ -67,11 +67,11 @@
   },
   "encounters": [
     {
-      "area": "lowleaf_hollow",
+      "area": "tideglass_cavern",
       "terrain": "cave",
       "rarity": "common",
-      "min": 12,
-      "max": 15
+      "min": 20,
+      "max": 23
     }
   ],
   "scripted": false,

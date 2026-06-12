@@ -559,6 +559,16 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', text: "A miner's drop-purse, stitched shut against the damp. Found 200 WICKS!" },
     { op: 'setFlag', flag: 'flag:picked_glowmoss_wicks' },
   ],
+  // Lamplight reveal (spine §5, Brightlight+): the glow-shadowed side-cell off
+  // the main run — its cache only resolves out of the dark once the lamp can
+  // reach it (flag:lamplight_brightlight derives in FlagStore, never hand-set).
+  'script.pickup_glowmoss_sidecell': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'bright_balm', count: 1 },
+    { op: 'say', text: 'A side-cell the glowmoss never reached — your own lamp had to. On a dry ledge, a chandler\'s tin sealed in gold wax. Found a BRIGHT BALM!' },
+    { op: 'say', text: 'You\'d have walked past this pocket of dark a dozen times, once. The lamp is brighter than it was.' },
+    { op: 'setFlag', flag: 'flag:picked_glowmoss_sidecell' },
+  ],
   // B1F dead-end A: the maze pays in kind — a Star-chart, dry in its tube.
   'script.pickup_b1f_chart': [
     { op: 'sfx', key: 'world-pickup' },
@@ -1044,6 +1054,16 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'giveItem', item: 'glow_charge', count: 1 },
     { op: 'say', text: 'A vigil-relief cache by the down-ladder — balms and a charge for the long climb back. Took them!' },
     { op: 'setFlag', flag: 'flag:picked_cinderhead_balm_deep' },
+  ],
+  // Lamplight reveal (spine §5, Starlight+): the third gallery's late alcove —
+  // the cramped early visit kept it hidden; a far-reaching lamp does not
+  // (flag:lamplight_starlight derives in FlagStore, never hand-set).
+  'script.pickup_cinderhead_alcove': [
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'giveItem', item: 'moth_amber', count: 2 },
+    { op: 'say', text: 'An alcove off the third gallery, past where any crew-lamp bothered to reach. Two beads of MOTH-AMBER sit in the seam like the mine kept them for you. Found them!' },
+    { op: 'say', text: 'On the Descent Vigil you walked within ten paces of this dark and never knew. The lamp knows now.' },
+    { op: 'setFlag', flag: 'flag:picked_cinderhead_alcove' },
   ],
 
   // The two vigil-miner SIGHT trainers holding the Descent Vigil leg (keeper class).
@@ -1748,6 +1768,16 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'giveItem', item: 'moth_amber', count: 1 },
     { op: 'say', text: 'In the lee of a blighted finger, untouched by the grey: a MOTH-AMBER, its little caught shimmer still turning. Found it!' },
     { op: 'setFlag', flag: 'flag:picked_hushfrost_amber' },
+  ],
+  // Lamplight reveal (spine §5, Radiant): a snow-hollow along the canyon wall,
+  // visible only to a lamp that all but carries the dawn
+  // (flag:lamplight_radiant derives in FlagStore, never hand-set).
+  'script.pickup_hushfrost_hollow': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'bright_balm', count: 2 },
+    { op: 'say', text: 'A snow-hollow in the canyon wall, white-on-white — no lamp short of Radiant would ever pick it out. Inside, a wayfarer\'s last cache, wax-sealed: 2 BRIGHT BALMS!' },
+    { op: 'say', text: 'You didn\'t beat the dark out of this pass. You out-shone it.' },
+    { op: 'setFlag', flag: 'flag:picked_hushfrost_hollow' },
   ],
 
   // --- Aurora Hollow — the Emberward spur (X1's oil + the detour's own pay) --
@@ -2591,6 +2621,20 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'narrate', text: 'The well\'s light eases, as if it has been holding something carefully for years and may finally set it down. The water keeps shining anyway. Some places simply do.' },
   ],
+  // --- THE NULL-WORKS — Nullmajor (#150), the great dark made kin. Post-dawn
+  // only (the trigger carries requires_flag:'flag:dawn'); the SILENCE register,
+  // Arc B's very last echo: Cor's null, woken gently — never destroyed.
+  'script.nullworks_nullmajor': [
+    { op: 'musicFade', ms: 900 },
+    { op: 'silence', ms: 1600 },
+    { op: 'narrate', text: 'The null-pool does not reflect your lamp. It never has. But this morning, for the first time, something under the surface reflects it back.' },
+    { op: 'narrate', text: 'The gathered dark rises — vast, slow, courteous as its maker learned to be — and stands above the pool wearing the shape of a kin: the Nullmajor, the night C\u00f2r built, looking for a steady hand to be kept by.' },
+    { op: 'legendaryBattle', name: 'nullmajor', kin: 150, level: 60, caughtFlag: 'flag:nullmajor_caught', cooldownBattles: 12, cooldownRef: 'npc.nullworks_still' },
+    { op: 'narrate', text: 'The dark folds into your lamp without a sound — not extinguished, KEPT. The lamp is for the dark. It always was.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'narrate', text: 'The pool settles into plain water, and the null-works stand quiet at last — a machine with nothing left to hold.' },
+  ],
+
   'script.pickup_starwell_amber': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'moth_amber', count: 1 },
@@ -3079,6 +3123,443 @@ export const SCRIPTS: ScriptRegistry = {
   'script.fenn_counsel_after': [
     { op: 'dialogue', ref: 'npc.fenn_counsel_after' },
     { op: 'say', if_flag: 'flag:three_dawn_met', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'So you found the third watch. Still facing east, was it? ...Then it has never stopped believing the wheel can turn. Neither have I. Go and prove the pair of us right.' },
+  ],
+  // ===========================================================================
+  // DAWNSTEAD — the post-game epilogue town (walkthrough 06-postgame, R2).
+  // The quiet exhale after the climax: almost no spectacle, all warmth and
+  // faces. Canon tone: bittersweet-warm — the cycle has resumed, dusk will
+  // come again, and that is exactly the point.
+  // ===========================================================================
+
+  // THE ARRIVAL — the first scripted beat is simply the sky. Let the player
+  // stand in it; the map's own music IS the lullaby returned in major.
+  'script.dawnstead_arrival': [
+    { op: 'wait', ms: 500 },
+    { op: 'narrate', text: 'Morning. Not lamplight, not moonrise, not the kind hour of a festival — morning, blue and gold, lying over everything at once.' },
+    { op: 'tint', color: '#ffd98a', alpha: 0.18, ms: 1200 },
+    { op: 'narrate', text: 'Warm shadows. Open sky. Somewhere up the green, the old lullaby — the one every lamp-tender hums — and for the first time in years it is not asking the dark for anything.' },
+    { op: 'tint', color: '#ffd98a', alpha: 0, ms: 1400 },
+    { op: 'narrate', text: 'The rooflines are Tinderwick\'s. The dock is Tinderwick\'s. It is home, and it is not — because the dark has lifted, and nothing that woke this morning is quite what it was.' },
+  ],
+
+  // THE FIRST-DAWN FESTIVAL (Arc E capstone) — the whole town out in the sun:
+  // the thesis of "belonging, not conquest," now in daylight. Ambient colour,
+  // a small warm swell that hands straight back to the town loop.
+  'cutscene.dawnstead_first_dawn': [
+    { op: 'musicCrossfade', key: 'gleam-emotional', ms: 900 },
+    { op: 'narrate', text: 'The square is full. Nobody organised it; the sun came up and Vesperholm walked outside to be underneath it — the first-dawn festival, the one no calendar ever dared to print.' },
+    { op: 'say', text: '"No lanterns tonight!" someone calls, and laughs, and then has to sit down on the well-step about it.' },
+    { op: 'narrate', text: 'Eight festivals taught the valleys how to gather in the dark. This is what all that practice was for.' },
+    { op: 'musicCrossfade', key: 'dawnstead-a', ms: 1400 },
+  ],
+
+  // FENN ON THE FRONT — the mentor's arc settles into peace (Arc D payoff,
+  // spec lines verbatim), then the post-game slate: P2 "A Wick for Còr" and
+  // P3 "The Day-form Survey" (boolean-chain fallback, spine §8).
+  'script.fenn_dawnstead': [
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'peace', text: 'First true morning in years. Don\'t waste it asking whether it\'ll last — it won\'t. That\'s the bargain. Dusk for dawn, dawn for dusk. We tend the turning, that\'s all.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'You did well, apprentice. Go and look at your sky.' },
+    { op: 'wait', ms: 350 },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'smile', text: '...Still here? Then I\'ll be a teacher one minute longer. Two errands, neither urgent — nothing is urgent any more; I keep saying it to feel it said.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'The first: Còr keeps a lamp on the west strand, past the old tree. Climb the Tinderwick Beacon and draw him a fresh wick from the lantern room. A lamp burns as its wick is given — and his was given in the dark. Let it be given again in daylight.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'The second: the relit sky is WAKING things. Sun-bright moths in the verge grass — day-forms, the old journals called them. Walk the sunlit verge and find me three signs of them. One at a time, mind; surveys are patience wearing boots.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'Start by the verge\'s north corner — the dawn-blooms there have been fed on. Something gold did the feeding.' },
+    // P2's assignment flag gates the Beacon wick-case (QA MIN-1: without it the
+    // wick could be drawn before Fenn frames the errand — a narrative skip).
+    { op: 'setFlag', flag: 'flag:q_post_wick_asked' },
+    { op: 'setFlag', flag: 'flag:q_post_survey' },
+  ],
+  // P3, the waiting stage — Fenn names ONE mark at a time (the chained finds
+  // order the if_flag lines: the latest held flag reads last and truest).
+  'script.fenn_survey_wait': [
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'The survey, apprentice. The verge\'s north corner first — the fed-on dawn-blooms. Look close and bring me what the morning left.' },
+    { op: 'say', if_flag: 'flag:q_post_survey_1', speaker: 'FENN', portrait: 'fenn', expr: 'smile', text: 'A wing-scale, gold as a struck match — the moth\'s page is inked. Next: the verge\'s south skirt, by the shore side. Something shed its dusk coat there and did not look back.' },
+    { op: 'say', if_flag: 'flag:q_post_survey_2', speaker: 'FENN', portrait: 'fenn', expr: 'smile', text: 'A whole moult, dusk-grey, empty as an outgrown word. One sign left: the blooms by the garden mouth — there\'s a warm burrow under them, and its keeper came home at sunrise.' },
+  ],
+  'script.fenn_survey_done': [
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'smile', text: 'Scale, moult, and a warm doorstep. Three signs, three day-forms — the sky relit, and the small lives answered it first. That is the whole of star-tending in one verge.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'Take the page — I have been keeping it for exactly this. And mark the note at the bottom: your vesperlamp is at its brightest now, Radiant as it will ever be. The dark places you crept through at a candle\'s reach... walk them again. They have been holding things for you.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'fenn_journal_page', count: 1 },
+    { op: 'say', text: 'Received FENN\'S JOURNAL PAGE!' },
+    { op: 'setFlag', flag: 'flag:q_post_survey_done' },
+  ],
+  // The three survey-mark finds (interact, chained 1 -> 2 -> 3).
+  'script.survey_find_1': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'narrate', text: 'Under the fed-on dawn-blooms: a single wing-scale, gold as a struck match and warm to the touch. The moths came out bright this morning.' },
+    { op: 'setFlag', flag: 'flag:q_post_survey_1' },
+  ],
+  'script.survey_find_2': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'narrate', text: 'In the grass by the shore skirt: a shed moult, dusk-grey and paper-light — the whole night-coat, stepped out of and left where it fell. Whatever wore it is wearing morning now.' },
+    { op: 'setFlag', flag: 'flag:q_post_survey_2' },
+  ],
+  'script.survey_find_3': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'narrate', text: 'Beneath the blooms at the garden mouth, a burrow — lined, lived-in, and warm as a banked hearth. Its keeper came home with the sunrise and is sleeping off the dark.' },
+    { op: 'setFlag', flag: 'flag:q_post_survey_3' },
+  ],
+
+  // WREN BY THE WATER — A6, the rival-friend arc's warm coda (spec lines
+  // verbatim). Talk first; the rematch is offered, not forced — it waits on
+  // the next placement, re-runnable forever.
+  'script.wren_dawnstead': [
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'resolved', text: 'I spent the whole Wayfaring asking if the Hollowing had a point. Turns out they did — and so did the dawn. Both true. Funny how that works.' },
+    { op: 'wait', ms: 600 },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'eager', text: 'One more battle? For old times. Loser buys the lanterns.' },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'resolved', text: 'Whenever you like. I\'m not going anywhere — that\'s rather the point of here.' },
+    { op: 'setFlag', flag: 'flag:wren_a6' },
+  ],
+  'script.wren_rematch': [
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'eager', text: 'Lanterns on the line, then. Friendly rules — the morning\'s watching.' },
+    { op: 'battle', trainer: 'wren_rematch' },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'resolved', text: 'Worth it every single time. Same shore tomorrow, if the sun keeps its word — and I\'m told it does, now.' },
+  ],
+
+  // CÒR TENDING A LAMP — the resolution payoff (Arc B close; spec lines
+  // verbatim). The toolkit's gentlest beat: low music, a touch of warm tint,
+  // never gloating, never punished. Sets no progression flag — the band's own
+  // hide flag is its only bookkeeping.
+  'cutscene.cor_resolution': [
+    { op: 'musicFade', ms: 900 },
+    { op: 'narrate', text: 'Off to one side of the morning, where the strand narrows past the old tree, a man in faded warden\'s grey kneels at a single lamp — trimming it, steadying it, the way you tend a thing you mean to keep.' },
+    { op: 'say', speaker: 'WARDEN CÒR', portrait: 'cor', expr: 'at_peace', text: 'I wanted to spare everyone the dusk. I had forgotten that the lamp is for the dark — not against it.' },
+    { op: 'tint', color: '#ffd98a', alpha: 0.14, ms: 1100 },
+    { op: 'narrate', text: 'He tends the flame.' },
+    { op: 'say', speaker: 'WARDEN CÒR', portrait: 'cor', expr: 'at_peace', text: 'It will fall again, you know. The night. I find I no longer mind. I\'ll be here to light it.' },
+    { op: 'tint', color: '#ffd98a', alpha: 0, ms: 1300 },
+    { op: 'musicCrossfade', key: 'dawnstead-a', ms: 1600 },
+  ],
+  // P2 — the wick comes home (hand-in). His lamp burns a shade warmer
+  // thereafter (the deco swap pair rides flag:q_post_wick_given).
+  'script.cor_wick_given': [
+    { op: 'say', speaker: 'WARDEN CÒR', portrait: 'cor', expr: 'gentle', text: 'From the Beacon\'s own lantern room. Fenn\'s doing — he always did teach by errand.' },
+    { op: 'narrate', text: 'Còr takes the First-Dawn Wick in both hands, the way the Hearthkeeper takes a tired kin, and sets it to the flame.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#ffd98a', alpha: 0.2, ms: 900 },
+    { op: 'say', speaker: 'WARDEN CÒR', portrait: 'cor', expr: 'at_peace', text: 'There. A wick dipped in daylight, burning toward the next dark. That is the whole prayer, apprentice — I simply used to say it backwards.' },
+    { op: 'tint', color: '#ffd98a', alpha: 0, ms: 1100 },
+    { op: 'setFlag', flag: 'flag:q_post_wick_given' },
+  ],
+  // P2 — the wick itself, drawn in the Beacon's lantern room (tinderwick_
+  // beacon_top; cache appears post-dawn, vanishes once drawn).
+  'script.pickup_post_wick': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'narrate', text: 'The lantern room keeps a case of fresh-dipped wicks, as it always has. You draw one — dipped this very morning, the first wick in years to be made by daylight.' },
+    { op: 'giveItem', item: 'dawn_wick', count: 1 },
+    { op: 'say', text: 'Took the FIRST-DAWN WICK! Còr keeps his lamp on Dawnstead\'s west strand.' },
+    { op: 'setFlag', flag: 'flag:q_post_wick' },
+  ],
+
+  // P1 "FIRST-DAWN LETTERS" — the Waykeeper's daylight round (giver: the
+  // post-bag at the Vesper Crossroads waystone). Deliverable in any order;
+  // the quadrant-seat wardens stamp their replies (the keepsake reward).
+  'script.post_letters_give': [
+    { op: 'say', speaker: 'WAYKEEPER', text: 'Ah — the feet themselves. The dawn came up and half of Vesperholm wrote to the other half about it; my round\'s never been so heavy or so happy.' },
+    { op: 'say', speaker: 'WAYKEEPER', text: 'Take the bundle? Wren and old Fenn are down in Dawnstead, and there\'s a letter for every Lampwarden\'s town besides — eight of them, any order you please. The roads are awake again; somebody should walk all of them at once.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'dawn_letters', count: 1 },
+    { op: 'say', text: 'Received the FIRST-DAWN LETTERS!' },
+    { op: 'say', speaker: 'WAYKEEPER', text: 'No hurry, mind. First post in years that nobody\'s waiting on in the dark.' },
+    { op: 'setFlag', flag: 'flag:q_post_letters' },
+  ],
+  'script.post_letter_wren': [
+    { op: 'narrate', text: 'A letter for Wren, in the Waykeeper\'s careful hand.' },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'eager', text: 'For ME? ...It\'s from the kite-makers at Galehigh. They want the ribbon back for the museum wall. HA! Tell them to come and take it.' },
+    { op: 'setFlag', flag: 'flag:q_post_letter_wren' },
+  ],
+  'script.post_letter_fenn': [
+    { op: 'narrate', text: 'A letter for Star-tender Fenn.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'smile', text: 'Post, at my age, in this light. ...It\'s from the Waykeeper himself. One word. "WELL?" — and do you know, for once I haven\'t a correction to make.' },
+    { op: 'setFlag', flag: 'flag:q_post_letter_fenn' },
+  ],
+  'script.post_letter_tinderwick': [
+    { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'warm', text: 'First-dawn post! Look at it — somebody wrote the word "morning" and didn\'t put a candle-count after it. Frame-worthy, that.' },
+    { op: 'setFlag', flag: 'flag:q_post_letter_tinderwick' },
+  ],
+  'script.post_letter_pearlmoor': [
+    { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'weathered', text: 'A letter that crossed no dark water to get here. Longest I\'ve waited for any post in my life.' },
+    { op: 'narrate', text: 'Reyl presses his wax stamp to the reply — the southern quadrant\'s thanks, kept.' },
+    { op: 'giveItem', item: 'dawn_stamp', count: 1 },
+    { op: 'setFlag', flag: 'flag:q_post_letter_pearlmoor' },
+  ],
+  'script.post_letter_lowleaf': [
+    { op: 'say', speaker: 'SABLE QUILL', portrait: 'sable', expr: 'warm', text: 'Oh — post. In the sun. The Elder Bed greened before any of us were up, you know. It always was the better botanist.' },
+    { op: 'setFlag', flag: 'flag:q_post_letter_lowleaf' },
+  ],
+  'script.post_letter_cinderhead': [
+    { op: 'say', speaker: 'OTHO GRIST', text: 'Mail, up from the morning. The deep way\'s the same as ever — but the walk OUT ends in daylight now, and the crews keep finding reasons to make it.' },
+    { op: 'narrate', text: 'Otho stamps the reply with the pit-seal — the eastern quadrant\'s thanks, kept.' },
+    { op: 'giveItem', item: 'dawn_stamp', count: 1 },
+    { op: 'setFlag', flag: 'flag:q_post_letter_cinderhead' },
+  ],
+  'script.post_letter_galehigh': [
+    { op: 'say', speaker: 'MIRA VAEL', portrait: 'mira', expr: 'bright', text: 'A letter! Carried on FOOT? In THIS wind? We\'d have flown it for you — oh, but then we\'d have missed you. Fair trade!' },
+    { op: 'setFlag', flag: 'flag:q_post_letter_galehigh' },
+  ],
+  'script.post_letter_pale_vault': [
+    { op: 'say', speaker: 'YSOLDE', portrait: 'ysolde', expr: 'serene', text: 'The glacier took the sunrise like a held breath let go. Your letter arrives second, and is welcome anyway.' },
+    { op: 'narrate', text: 'Ysolde sets her frost-seal to the reply — the northern quadrant\'s thanks, kept.' },
+    { op: 'giveItem', item: 'dawn_stamp', count: 1 },
+    { op: 'setFlag', flag: 'flag:q_post_letter_pale_vault' },
+  ],
+  'script.post_letter_solarium': [
+    { op: 'say', speaker: 'LUCAN PYRE', portrait: 'lucan', expr: 'grand', text: 'Post! Delivered into an ENCORE — the sun is doing my whole repertoire for free, and I find I could not be happier about the competition.' },
+    { op: 'setFlag', flag: 'flag:q_post_letter_solarium' },
+  ],
+  'script.post_letter_nightreach': [
+    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'reverent', text: 'A first-dawn letter. I watched the whole sky come back, and still — ink on paper, carried by hand. That is the light I trust most.' },
+    { op: 'narrate', text: 'Nessa presses the observatory\'s star-seal to the reply — the western quadrant\'s thanks, kept.' },
+    { op: 'giveItem', item: 'dawn_stamp', count: 1 },
+    { op: 'setFlag', flag: 'flag:q_post_letter_nightreach' },
+  ],
+
+  // P1 PAYOFF — the Waykeeper's "all ten delivered" thanks. Its NPC at the
+  // crossroads is gated on the DERIVED flag:q_post_letters_all (FlagStore raises it
+  // once all ten flag:q_post_letter_* are held — the journal's counter, expressed as
+  // a single gateable flag so a plain requires_flag NPC can wait on "all 10"). Sets
+  // flag:q_post_letters_done, which closes P1 in the journal and hides this NPC.
+  'script.post_letters_done': [
+    { op: 'say', speaker: 'WAYKEEPER', text: 'Every last one, then — Wren, old Fenn, and all eight towns besides. The whole rim has read the same word in the same morning, carried on the same two feet.' },
+    { op: 'say', speaker: 'WAYKEEPER', text: 'A round like that earns its wage and then some. Here — for the roads, and for walking them all at once.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 500 },
+    { op: 'say', text: 'The Waykeeper presses 500 WICKS into your hand.' },
+    { op: 'say', speaker: 'WAYKEEPER', text: 'First post in years that ended in the light. Thank you, Wayfarer. Truly.' },
+    { op: 'setFlag', flag: 'flag:q_post_letters_done' },
+  ],
+
+  // The strand cache (the variety rule: loose wicks off the lane).
+  'script.pickup_dawnstead_cache': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'narrate', text: 'Tucked in the lee of the knoll, oilcloth-dry: a pouch of wicks, hidden before the dark came down and never needed after all.' },
+    { op: 'giveMoney', amount: 400 },
+    { op: 'say', text: 'Found 400 WICKS!' },
+    { op: 'setFlag', flag: 'flag:picked_dawnstead_cache' },
+  ],
+
+  // ===========================================================================
+  // THE STARFALL VIGILS (06-postgame · R3) — the endgame challenge chain. All
+  // data: flags + warps + NPC/object swaps + EventTriggers + the trainer/item
+  // entries above. The trials are sequential battle ops; a LOSS aborts the
+  // script (engine convention), so EVERY grant/setFlag is authored AFTER the
+  // battle — a blackout re-runs the trial from its trigger, never half-granting.
+  // Keeper lines + readings are VERBATIM from the 06-postgame site sections.
+  // Tone: post-dawn wonder; the dry glint holds ~1 in 6; Mer + the summit are
+  // sincere throughout.
+  // ===========================================================================
+
+  // The opening — Watcher Oriel reads the first fall (Nightreach terrace).
+  // Interact, requires flag:dawn, once:true. Sets flag:starfall_begun +
+  // flag:vigil_reading_1 and speaks reading 1. Small and warm — wonder, not dread.
+  'cutscene.starfall_begins': [
+    // sfx, not musicSting: world-lantern-light is an SFX key — a sting would
+    // resolve a music URL that doesn't exist and play silence (QA MINOR-1).
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'flashColor', color: '#ffe9a8', ms: 320 },
+    { op: 'say', speaker: 'WATCHER ORIEL', text: 'All those years we watched the sky lose lights. Last night it GAVE one back — shed it, like a tree sheds a leaf it\'s finished with. The old watchers used to call them star-shards. The very old watchers used to call them invitations.' },
+    { op: 'say', speaker: 'WATCHER ORIEL', text: 'I read where it fell. I\'d fetch it myself, but somebody promoted me, and now I\'m not allowed anywhere with weather.' },
+    { op: 'setFlag', flag: 'flag:starfall_begun' },
+    { op: 'setFlag', flag: 'flag:vigil_reading_1' },
+    // Reading 1 — Hearthfall (south).
+    { op: 'say', speaker: 'WATCHER ORIEL', text: 'The first came down in the south — where the first lamp learned its name. Climb past the lantern that taught the sky to answer; it fell on the bluff above, where even the gulls go quiet.' },
+  ],
+
+  // --- Vigil I — Hearthfall -------------------------------------------------
+  // intro -> battle -> defeat -> grants (Starfall Shard + Radiant Charm) ->
+  // flags (vigil_1_kept + vigil_reading_2). Esra reads reading 2 in the glint.
+  'script.vigil_hearthfall': [
+    { op: 'say', speaker: 'WICK-MOTHER ESRA', text: 'I dipped Brisa\'s first wick when she came up to my elbow, dear. She vouches for you. Wicks don\'t lie — but let\'s check.' },
+    { op: 'battle', trainer: 'vigilant_esra' },
+    { op: 'say', speaker: 'WICK-MOTHER ESRA', text: 'Steady as her best. Take the shard — and the charm; I pressed it for whoever finally came.' },
+    { op: 'giveItem', item: 'starfall_shard' },
+    { op: 'giveItem', item: 'radiant_charm' },
+    { op: 'setFlag', flag: 'flag:vigil_1_kept' },
+    { op: 'setFlag', flag: 'flag:vigil_reading_2' },
+    // Reading 2 — Grovefall (east).
+    { op: 'say', speaker: 'WICK-MOTHER ESRA', text: 'There — see how it glints? It\'s already reading us the next. The second went to earth in the east — under the hill, where the wood keeps its own weather and the moss has opinions. Bring a light. Bring patience. The grotto has both, and shares neither.' },
+  ],
+  'script.vigil_hearthfall_again': [
+    { op: 'say', speaker: 'WICK-MOTHER ESRA', text: 'Back for another, are we? Good. A flame wants checking now and then. Up you come.' },
+    { op: 'battle', trainer: 'vigilant_esra' },
+    { op: 'say', speaker: 'WICK-MOTHER ESRA', text: 'Steady as ever. Off you go, dear — and mind the gulls.' },
+  ],
+
+  // --- Vigil II — Grovefall (cave) ------------------------------------------
+  'script.vigil_grovefall': [
+    { op: 'say', speaker: 'OLD FOREMAN BRAMM', text: 'Otho says you out-lasted him. Otho exaggerates. ...Show me he doesn\'t.' },
+    { op: 'battle', trainer: 'vigilant_bramm' },
+    { op: 'say', speaker: 'OLD FOREMAN BRAMM', text: 'Hah. He doesn\'t. The deep way, walked all the way up. Take the chart — we never minted a Stone figure; turns out the sky did it for us.' },
+    { op: 'giveItem', item: 'starfall_shard' },
+    { op: 'giveItem', item: 'chart_tremor_quake' },
+    { op: 'setFlag', flag: 'flag:vigil_2_kept' },
+    { op: 'setFlag', flag: 'flag:vigil_reading_3' },
+    // Reading 3 — Stormfall (north).
+    { op: 'say', speaker: 'OLD FOREMAN BRAMM', text: 'The shard\'s already telling the next. The third went north, into the wind\'s spare pocket — the roost where storms go when they\'re off duty. Take the kite. Take a coat. Retrieve your own hat; I shan\'t fetch it.' },
+  ],
+  'script.vigil_grovefall_again': [
+    { op: 'say', speaker: 'OLD FOREMAN BRAMM', text: 'The grotto\'s grown another season since. Come and walk the deep way again — it keeps you honest.' },
+    { op: 'battle', trainer: 'vigilant_bramm' },
+    { op: 'say', speaker: 'OLD FOREMAN BRAMM', text: 'Still lasting. The moss approves, and the moss is never wrong. Go on.' },
+  ],
+
+  // --- Vigil III — Stormfall ------------------------------------------------
+  // The storm-tithe is the wick jackpot (giveMoney 5000); the cache by the nest
+  // is the Starglass ×2 (the tithe's second half — placed in the map JSON).
+  'script.vigil_stormfall': [
+    { op: 'say', speaker: 'ONDRA VAEL', text: 'Mira flies in what I called a light breeze at her age. Stand up straight — the sky\'s sent us a present, and I open my own post.' },
+    { op: 'battle', trainer: 'vigilant_ondra' },
+    { op: 'say', speaker: 'ONDRA VAEL', text: 'HA! You\'d have made a kite-flier. The aerie\'s tithed every storm since the dawn broke — take it; I can\'t spend wind.' },
+    { op: 'giveItem', item: 'starfall_shard' },
+    { op: 'giveMoney', amount: 5000 },
+    { op: 'setFlag', flag: 'flag:vigil_3_kept' },
+    { op: 'setFlag', flag: 'flag:vigil_reading_4' },
+    // Reading 4 — Sunfall (west).
+    { op: 'say', speaker: 'ONDRA VAEL', text: 'The shard\'s pointing already — west, it says. The fourth fell where summer was put away for safekeeping — the high terraces that remembered daylight before the rest of us believed in it again.' },
+  ],
+  'script.vigil_stormfall_again': [
+    { op: 'say', speaker: 'ONDRA VAEL', text: 'Weather\'s up. Good weather for it. Stand up straight, then — same as before.' },
+    { op: 'battle', trainer: 'vigilant_ondra' },
+    { op: 'say', speaker: 'ONDRA VAEL', text: 'HA! Still a kite-flier in you. Off the ledge, mind your footing.' },
+  ],
+
+  // --- Vigil IV — Sunfall ---------------------------------------------------
+  'script.vigil_sunfall': [
+    { op: 'say', speaker: 'DAME SOLENNE', text: 'I kept the last warm day for forty years, and now the mornings come free. Indulge an old keeper — one encore, full light.' },
+    { op: 'battle', trainer: 'vigilant_solenne' },
+    { op: 'say', speaker: 'DAME SOLENNE', text: 'Curtain. ...Do you know, I don\'t mourn the last warm day any more. There will be others. Take the figure — it\'s the sun\'s whole bow.' },
+    { op: 'giveItem', item: 'starfall_shard' },
+    { op: 'giveItem', item: 'chart_sunburst_nova' },
+    { op: 'setFlag', flag: 'flag:vigil_4_kept' },
+    { op: 'setFlag', flag: 'flag:vigil_reading_5' },
+    // Reading 5 — Murkfall (the outer marches, the mirror axis).
+    { op: 'say', speaker: 'DAME SOLENNE', text: 'One last reading in the glint, my dear, and it is a sad and lovely one. The last fell where the water forgot how to speak. It is learning again — go gently into the murk; some of what you\'ll meet is still waking. And one of them has waited a long time to greet you.' },
+  ],
+  'script.vigil_sunfall_again': [
+    { op: 'say', speaker: 'DAME SOLENNE', text: 'An encore of the encore? You spoil an old keeper. Places, then — full light.' },
+    { op: 'battle', trainer: 'vigilant_solenne' },
+    { op: 'say', speaker: 'DAME SOLENNE', text: 'Curtain, again. The sun bows lower for you every time. Go on.' },
+  ],
+
+  // --- Vigil V — Murkfall ---------------------------------------------------
+  // No reading 6 — Mer's pointer + Oriel's flag:vigil_5_kept placement carry the
+  // player to the summit. Sincere throughout (no glint at the marshes).
+  'script.vigil_murkfall': [
+    { op: 'say', speaker: 'WARDEN MER', text: 'I carried a null-lantern through this marsh once. I carry this now. Before I hand the light back, I will know the hand I hand it to is steady.' },
+    { op: 'battle', trainer: 'vigilant_mer' },
+    { op: 'say', speaker: 'WARDEN MER', text: 'It holds. Brighter hands than mine ever were. ...The marsh thanks you. Both of us do — both of me, perhaps.' },
+    { op: 'giveItem', item: 'starfall_shard' },
+    { op: 'giveItem', item: 'morrow_charm' },
+    { op: 'setFlag', flag: 'flag:vigil_5_kept' },
+    { op: 'say', speaker: 'WARDEN MER', text: 'The sixth never fell, you know. It\'s been waiting where the night ended. Carry the five up the mountain — and ask the old man what he sees.' },
+  ],
+  'script.vigil_murkfall_again': [
+    { op: 'say', speaker: 'WARDEN MER', text: 'The marsh is brighter every time you come. I find I am too. One more steadiness, then?' },
+    { op: 'battle', trainer: 'vigilant_mer' },
+    { op: 'say', speaker: 'WARDEN MER', text: 'It holds. It always holds, with you. Go gently back.' },
+  ],
+
+  // --- The Vigil-site caches (one per annex; Stormfall's is the tithe's
+  // second half — its site prize is the wick jackpot, not a chart) ----------
+  'script.pickup_vigil_hearth_glass': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'starglass_shard', count: 1 },
+    { op: 'say', text: 'Wedged in the bluff grass where the fall scattered it — a STARGLASS SHARD, still warm with morning.' },
+    { op: 'setFlag', flag: 'flag:picked_vigil_hearth_glass' },
+  ],
+  'script.pickup_vigil_grove_glass': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'starglass_shard', count: 1 },
+    { op: 'say', text: 'The moss has grown a careful cradle around it in a single season — a STARGLASS SHARD!' },
+    { op: 'setFlag', flag: 'flag:picked_vigil_grove_glass' },
+  ],
+  'script.pickup_vigil_storm_tithe': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'starglass_shard', count: 2 },
+    { op: 'say', text: 'The aerie\'s tithe, lashed down against the wind — 2 STARGLASS SHARDS, fulgurite-bright!' },
+    { op: 'setFlag', flag: 'flag:picked_vigil_storm_tithe' },
+  ],
+  'script.pickup_vigil_sun_glass': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'starglass_shard', count: 1 },
+    { op: 'say', text: 'Caught in a cracked sun-basin, drinking the daylight — a STARGLASS SHARD!' },
+    { op: 'setFlag', flag: 'flag:picked_vigil_sun_glass' },
+  ],
+  'script.pickup_vigil_murk_glass': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'starglass_shard', count: 1 },
+    { op: 'say', text: 'Glowing softly in the shallow black water — a STARGLASS SHARD. The murk gives it up without a fight.' },
+    { op: 'setFlag', flag: 'flag:picked_vigil_murk_glass' },
+  ],
+
+  // --- The Last Lesson — the summit Round (requires flag:vigil_5_kept) -------
+  // Three Vigilants back-to-back -> heal (Fenn's diegetic line) -> Fenn at full
+  // strength. A loss anywhere aborts before the flag, so the whole Round re-runs
+  // from its trigger (the intended shape of the ultimate). On the win: the apex
+  // gleam cadence seats the five shards and sets flag:starfall_lesson.
+  'script.starfall_round': [
+    { op: 'narrate', text: 'At the foot of the empty Ninth Lantern — five sockets, five shards in your satchel — three figures wait, lamps lit, who have no business being this high and every right to be.' },
+    { op: 'say', speaker: 'ONDRA VAEL', text: 'We came to watch the old man\'s lesson. The watching turned into a queue.' },
+    { op: 'battle', trainer: 'vigilant_ondra_summit' },
+    { op: 'battle', trainer: 'vigilant_solenne_summit' },
+    { op: 'battle', trainer: 'vigilant_mer_summit' },
+    { op: 'heal' },
+    { op: 'say', speaker: 'STAR-TENDER FENN', text: 'I\'ll want you at your best. I have waited a very long time to be allowed mine.' },
+    { op: 'say', speaker: 'STAR-TENDER FENN', text: 'No satchel this time. No errand. One lesson left, and it\'s the one I never could teach you — what you do when the teacher steps aside. Everything I have, apprentice. Show me everything you\'ve become.' },
+    { op: 'battle', trainer: 'startender_fenn' },
+    // WIN — everything below is post-battle (a loss aborted the script already).
+    { op: 'say', speaker: 'STAR-TENDER FENN', text: '...There it is. The whole sky in one steady lamp.' },
+    // The shards seated — the apex gleam cadence (the Keystar relight's quieter sibling).
+    { op: 'letterbox', on: true, ms: 420 },
+    { op: 'musicFade', ms: 800 },
+    { op: 'silence', ms: 2200 },
+    { op: 'narrate', text: 'You lift the five shards to the Ninth Lantern\'s empty collar, one to each cold socket. They settle as if they were always going to — gold finding gold, the sky remembering one more of its own pieces.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#ffd089', alpha: 0.28, ms: 1200 },
+    { op: 'gleam', element: 'solar' },
+    { op: 'setFlag', flag: 'flag:starfall_lesson' },
+    { op: 'narrate', text: 'The collar takes the light and holds it — and far below the rim of the world, where the night ended, the sixth shard answers. It never fell. It could not. It is the morning itself.' },
+    { op: 'musicCrossfade', key: 'gleam-emotional', ms: 1200 },
+    { op: 'tint', color: '#ffd089', alpha: 0, ms: 1100 },
+    { op: 'letterbox', on: false, ms: 420 },
+    { op: 'say', speaker: 'STAR-TENDER FENN', text: 'There. Five seated, and the sixth come of its own accord. ...Go to the lantern, apprentice. Something is waking that has waited longer than any of us.' },
+  ],
+  // Post-crown re-runnable Last Lesson (the bout only, full payout).
+  'script.last_lesson_again': [
+    { op: 'say', speaker: 'STAR-TENDER FENN', text: 'One more, apprentice? The old man will always have one more. Everything I have — again.' },
+    { op: 'battle', trainer: 'startender_fenn' },
+    { op: 'say', speaker: 'STAR-TENDER FENN', text: '...Still the whole sky in one steady lamp. Go on, Star-tender. I\'ll be here.' },
+  ],
+
+  // --- Dawnbrael wakes — the first-morning kin (the static catch) ------------
+  // requires flag:starfall_lesson (so a fled/KO\'d Dawnbrael is re-approachable
+  // WITHOUT re-fighting the Round); cooldownBattles 0 so the climax never
+  // strands (raise the lamp and ask again). The trigger also carries
+  // hidden_when_flag:flag:dawnbrael_caught so a caught Dawnbrael never re-stages.
+  'cutscene.dawnbrael_wakes': [
+    { op: 'letterbox', on: true, ms: 420 },
+    { op: 'narrate', text: 'The relit Ninth Lantern pours its new light down the shaft — and in the heart of it, the morning takes a shape. DAWNBRAEL: the first-morning kin, Solar and Light, regarding your lamp the way the sunrise regards a window.' },
+    { op: 'flashColor', color: '#fff3c9', ms: 280 },
+    { op: 'letterbox', on: false, ms: 300 },
+    { op: 'legendaryBattle', name: 'dawnbrael', kin: 151, level: 70, caughtFlag: 'flag:dawnbrael_caught', cooldownBattles: 0, cooldownRef: 'npc.dawnbrael_resting' },
+    { op: 'silence', ms: 1600 },
+    { op: 'narrate', text: 'Dawnbrael settles into your lamp — and the lamp, for the first time, is warmer than the morning around it.' },
+  ],
+
+  // --- The title beat — Fenn names the Star-tender (once:true) ---------------
+  // After the Dawnbrael catch. Grants Fenn\'s Field-Glass, sets flag:starfall_crown.
+  // Staging rhymes with the satchel ceremony — the game\'s first gift and its last.
+  'cutscene.startender_named': [
+    { op: 'silence', ms: 1400 },
+    { op: 'say', speaker: 'STAR-TENDER FENN', text: 'I have nothing left to teach. Stand up straight, Star-tender — the title was always going to be yours. I\'m only the one saying it out loud.' },
+    { op: 'tint', color: '#ffe9a8', alpha: 0.18, ms: 900 },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'giveItem', item: 'fenns_glass' },
+    { op: 'say', speaker: 'STAR-TENDER FENN', text: 'Take the field-glass. Forty years it showed me the sky. You\'ll see further than I did — that\'s the whole of the job, in the end: hand it on to someone who sees further.' },
+    { op: 'setFlag', flag: 'flag:starfall_crown' },
+    { op: 'narrate', text: 'The apprentice who began with a satchel errand at a waystone ends a Star-tender, named by the man who sent them out — under an open summit sky, with the morning on every lamp.' },
+    { op: 'tint', color: '#ffe9a8', alpha: 0, ms: 1100 },
   ],
 };
 

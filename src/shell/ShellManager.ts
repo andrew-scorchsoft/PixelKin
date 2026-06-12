@@ -21,7 +21,13 @@
 import './shells.css';
 import { SaveManager } from '@game/systems/save/SaveManager';
 import type { ShellMode, Settings } from '@game/systems/save/SaveManager';
-import { setAlwaysRun, setTextSpeed } from '@game/ui/preferences';
+import {
+  setAlwaysRun,
+  setTextSpeed,
+  setBattlePace,
+  setMusicVolume,
+  setSfxVolume,
+} from '@game/ui/preferences';
 
 /** The abstract directional/button actions the on-screen controls emit. */
 export type ShellAction = 'up' | 'down' | 'left' | 'right' | 'confirm' | 'cancel' | 'menu';
@@ -71,6 +77,9 @@ class ShellManagerImpl {
     // Push the gameplay preferences into their live, per-frame home.
     setAlwaysRun(this.settings.alwaysRun ?? false);
     setTextSpeed(this.settings.textSpeed ?? 'cosy');
+    setBattlePace(this.settings.battlePace ?? 'cosy');
+    setMusicVolume(this.settings.musicVolume ?? 'full');
+    setSfxVolume(this.settings.sfxVolume ?? 'full');
     this.render();
   }
 

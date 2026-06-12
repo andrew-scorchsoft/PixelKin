@@ -11,11 +11,13 @@ import { theme } from '@game/ui/theme';
 import { makeText } from '@game/ui/Text';
 import { Panel } from '@game/ui/Panel';
 import { InputController, InputAction } from '@game/systems/input/InputController';
+import { battlePaceFactor } from '@game/ui/preferences';
 
 const MARGIN = 4;
 const HEIGHT = 34;
 const PAD = theme.space.lg;
-/** How long an auto-advancing line lingers before resolving (ms). */
+/** How long an auto-advancing line lingers before resolving (ms) at cosy pace;
+ *  scaled by the Settings battle-pace factor (×0.5 on Swift). */
 const HOLD_MS = 650;
 
 export class BattleMessage {
@@ -58,7 +60,7 @@ export class BattleMessage {
         }
         if (wait) {
           elapsed += this.scene.game.loop.delta;
-          if (elapsed >= HOLD_MS) finish();
+          if (elapsed >= HOLD_MS * battlePaceFactor()) finish();
         } else if (elapsed++ > 0) {
           finish();
         }

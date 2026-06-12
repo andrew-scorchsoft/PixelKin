@@ -68,18 +68,25 @@
   },
   "encounters": [
     {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 6,
-      "max": 9
-    },
-    {
       "area": "tideglass_cavern",
       "terrain": "water",
       "rarity": "uncommon",
       "min": 22,
       "max": 24
+    },
+    {
+      "area": "gullcry_rock",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 11,
+      "max": 13
+    },
+    {
+      "area": "gullcry_rock",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 58,
+      "max": 65
     }
   ],
   "scripted": false,

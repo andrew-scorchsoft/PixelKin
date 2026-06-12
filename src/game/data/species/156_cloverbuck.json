@@ -69,15 +69,7 @@
     "weight_kg": 34,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "rare",
-      "min": 10,
-      "max": 12
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Young leaf-deer, lime-and-deep-green coat with cream chest; slender budding antlers as curling green sprigs tipped with folded clovers; the head-clover from its kit days now worn like a small crown sprout; long legs, big dark earnest eyes. Between Cloverkit's sprout-cub and Cloverhart's broad clover-crowned stag at 64px.",

@@ -246,6 +246,46 @@ export interface GlossaryEntry {
   unlock_flag?: WorldFlag;
 }
 
+// ---- Quests (the journal) ---------------------------------------------------
+
+/**
+ * One named quest in the Wayfarer's journal (pause menu -> JOURNAL). Data only:
+ * the quest's flags are MINED from the built content (scripts.ts/maps) — a QuestDef
+ * never invents a flag, it just surfaces the journey the game already runs.
+ *
+ * Visibility/progress all ride flags:
+ *  - the quest appears in the journal only once `start_flag` is held (no spoilers);
+ *  - it sits under UNDERWAY until `done_flag` is held, then moves to KEPT;
+ *  - `stage_flags` (optional, ORDERED) drive the "n/m" progress readout — n = how
+ *    many are held. For a counted quest (P1's ten letters) set `count_prefix`
+ *    instead: the journal counts held flags matching the prefix (FlagStore.countHeld)
+ *    against `count_total`, so a no-schema boolean fan-out reads as "n/10".
+ */
+export interface QuestDef {
+  /** Stable id (also the journal's within-region display order = array order). */
+  id: string;
+  /** Title as it reads in the walkthrough, e.g. 'The Last Buoy Out'. */
+  name: string;
+  /** Which corner of Vesperholm it belongs to (journal grouping). */
+  region: Region;
+  /** Who gives it, for the detail pane (e.g. 'the netmender'). */
+  giver: string;
+  /** 1-2 sentences, canon voice — what the player is doing and why. */
+  blurb: string;
+  /** Quest enters the journal once this is held. */
+  start_flag: WorldFlag;
+  /** Quest moves to KEPT once this is held. */
+  done_flag: WorldFlag;
+  /** Optional ordered milestone flags — progress shown as held/total. */
+  stage_flags?: WorldFlag[];
+  /** Optional counted progress: held flags matching this prefix / count_total. */
+  count_prefix?: string;
+  /** Denominator for count_prefix progress (e.g. 10 letters). */
+  count_total?: number;
+}
+
+export type QuestRegistry = readonly QuestDef[];
+
 // ---- Charts (concept-art discovery) -----------------------------------------
 
 /**

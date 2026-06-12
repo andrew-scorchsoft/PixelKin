@@ -71,11 +71,11 @@
   },
   "encounters": [
     {
-      "area": "lowleaf_hollow",
-      "terrain": "cave",
-      "rarity": "uncommon",
-      "min": 22,
-      "max": 24
+      "area": "hushfrost_pass_i",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 40,
+      "max": 41
     }
   ],
   "scripted": false,

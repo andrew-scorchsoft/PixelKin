@@ -65,15 +65,7 @@
     "weight_kg": 2.1,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 10,
-      "max": 12
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Hovering humanoid silhouette ringed by a spinning debris-halo of cinders, orange core glowing at the heart, long wispy arms; dynamic at 48px.",

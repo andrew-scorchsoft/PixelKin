@@ -266,7 +266,8 @@
           "min_level": 32,
           "max_level": 34
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "ledge_a",
@@ -309,7 +310,8 @@
           "min_level": 34,
           "max_level": 35
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "ledge_b",
@@ -352,7 +354,8 @@
           "min_level": 34,
           "max_level": 35
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "crossing_a",
@@ -395,7 +398,8 @@
           "min_level": 34,
           "max_level": 35
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "crossing_b",
@@ -438,7 +442,258 @@
           "min_level": 34,
           "max_level": 35
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "verge_a_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 18,
+        "ty": 35,
+        "w": 3,
+        "h": 2
+      },
+      "encounter_rate": 0.11,
+      "table": [
+        {
+          "kin_id": 89,
+          "weight": 30,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 45,
+          "weight": 20,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 98,
+          "weight": 15,
+          "min_level": 56,
+          "max_level": 61
+        },
+        {
+          "kin_id": 95,
+          "weight": 10,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 77,
+          "weight": 10,
+          "min_level": 56,
+          "max_level": 61
+        },
+        {
+          "kin_id": 91,
+          "weight": 15,
+          "min_level": 57,
+          "max_level": 63
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "ledge_a_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 8,
+        "ty": 16,
+        "w": 5,
+        "h": 2
+      },
+      "encounter_rate": 0.11,
+      "table": [
+        {
+          "kin_id": 89,
+          "weight": 30,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 45,
+          "weight": 20,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 98,
+          "weight": 15,
+          "min_level": 56,
+          "max_level": 61
+        },
+        {
+          "kin_id": 95,
+          "weight": 10,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 77,
+          "weight": 10,
+          "min_level": 56,
+          "max_level": 61
+        },
+        {
+          "kin_id": 91,
+          "weight": 15,
+          "min_level": 57,
+          "max_level": 63
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "ledge_b_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 8,
+        "ty": 29,
+        "w": 6,
+        "h": 3
+      },
+      "encounter_rate": 0.11,
+      "table": [
+        {
+          "kin_id": 89,
+          "weight": 30,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 45,
+          "weight": 20,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 98,
+          "weight": 15,
+          "min_level": 56,
+          "max_level": 61
+        },
+        {
+          "kin_id": 95,
+          "weight": 10,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 77,
+          "weight": 10,
+          "min_level": 56,
+          "max_level": 61
+        },
+        {
+          "kin_id": 91,
+          "weight": 15,
+          "min_level": 57,
+          "max_level": 63
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "crossing_a_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 2,
+        "ty": 10,
+        "w": 20,
+        "h": 2
+      },
+      "encounter_rate": 0.05,
+      "table": [
+        {
+          "kin_id": 89,
+          "weight": 30,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 45,
+          "weight": 20,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 98,
+          "weight": 15,
+          "min_level": 56,
+          "max_level": 61
+        },
+        {
+          "kin_id": 95,
+          "weight": 10,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 77,
+          "weight": 10,
+          "min_level": 56,
+          "max_level": 61
+        },
+        {
+          "kin_id": 91,
+          "weight": 15,
+          "min_level": 57,
+          "max_level": 63
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "crossing_b_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 2,
+        "ty": 23,
+        "w": 20,
+        "h": 2
+      },
+      "encounter_rate": 0.05,
+      "table": [
+        {
+          "kin_id": 89,
+          "weight": 30,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 45,
+          "weight": 20,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 98,
+          "weight": 15,
+          "min_level": 56,
+          "max_level": 61
+        },
+        {
+          "kin_id": 95,
+          "weight": 10,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 77,
+          "weight": 10,
+          "min_level": 56,
+          "max_level": 61
+        },
+        {
+          "kin_id": 91,
+          "weight": 15,
+          "min_level": 57,
+          "max_level": 63
+        }
+      ],
+      "requires_flag": "flag:dawn"
     }
   ],
   "npcs": [

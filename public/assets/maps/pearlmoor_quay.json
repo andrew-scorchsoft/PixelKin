@@ -2655,8 +2655,15 @@
           "weight": 40,
           "min_level": 9,
           "max_level": 11
+        },
+        {
+          "kin_id": 5,
+          "weight": 10,
+          "min_level": 9,
+          "max_level": 11
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "harbour_water_w",
@@ -2687,8 +2694,15 @@
           "weight": 20,
           "min_level": 11,
           "max_level": 12
+        },
+        {
+          "kin_id": 20,
+          "weight": 20,
+          "min_level": 10,
+          "max_level": 12
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "harbour_water_e",
@@ -2719,8 +2733,119 @@
           "weight": 20,
           "min_level": 11,
           "max_level": 12
+        },
+        {
+          "kin_id": 20,
+          "weight": 20,
+          "min_level": 10,
+          "max_level": 12
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "fringe_grass_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 2,
+        "ty": 4,
+        "w": 4,
+        "h": 4
+      },
+      "encounter_rate": 0.08,
+      "table": [
+        {
+          "kin_id": 26,
+          "weight": 55,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 31,
+          "weight": 45,
+          "min_level": 56,
+          "max_level": 63
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "harbour_water_w_day",
+      "terrain": "water",
+      "rect": {
+        "tx": 3,
+        "ty": 19,
+        "w": 9,
+        "h": 4
+      },
+      "encounter_rate": 0.07,
+      "table": [
+        {
+          "kin_id": 2,
+          "weight": 40,
+          "min_level": 57,
+          "max_level": 64
+        },
+        {
+          "kin_id": 27,
+          "weight": 30,
+          "min_level": 57,
+          "max_level": 64
+        },
+        {
+          "kin_id": 24,
+          "weight": 30,
+          "min_level": 58,
+          "max_level": 64
+        },
+        {
+          "kin_id": 20,
+          "weight": 15,
+          "min_level": 57,
+          "max_level": 64
+        }
+      ],
+      "requires_ability": "tidecall",
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "harbour_water_e_day",
+      "terrain": "water",
+      "rect": {
+        "tx": 16,
+        "ty": 19,
+        "w": 8,
+        "h": 4
+      },
+      "encounter_rate": 0.07,
+      "table": [
+        {
+          "kin_id": 2,
+          "weight": 40,
+          "min_level": 57,
+          "max_level": 64
+        },
+        {
+          "kin_id": 27,
+          "weight": 30,
+          "min_level": 57,
+          "max_level": 64
+        },
+        {
+          "kin_id": 24,
+          "weight": 30,
+          "min_level": 58,
+          "max_level": 64
+        },
+        {
+          "kin_id": 20,
+          "weight": 15,
+          "min_level": 57,
+          "max_level": 64
+        }
+      ],
+      "requires_ability": "tidecall",
+      "requires_flag": "flag:dawn"
     }
   ],
   "npcs": [
@@ -2911,6 +3036,19 @@
       "movement": "static",
       "dialogue_ref": "npc.blessing_singer",
       "requires_flag": "flag:q_token_south"
+    },
+    {
+      "id": "letter_reyl",
+      "at": {
+        "tx": 13,
+        "ty": 13
+      },
+      "facing": "down",
+      "sprite": "npc_lampwarden",
+      "movement": "static",
+      "dialogue_ref": "script.post_letter_pearlmoor",
+      "requires_flag": "flag:q_post_letters",
+      "hidden_when_flag": "flag:q_post_letter_pearlmoor"
     }
   ],
   "gates": [

@@ -76,7 +76,15 @@
     "weight_kg": 2200,
     "habitat": "east"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "vigil_grovefall",
+      "terrain": "tall_grass",
+      "rarity": "very_rare",
+      "min": 62,
+      "max": 62
+    }
+  ],
   "scripted": true,
   "art": {
     "silhouette": "An enormous mushroom-capped behemoth walking on six thick stone-threaded root-legs. The cap is deep earth-brown with bioluminescent Verdant spots in diamond-cyan and pale green. Beneath the cap hangs a fringe of glowing sporecurtain. The legs are stone-grey with thick mycelial cords wrapped around them like rope around pillars. The face is a flat, calm disc with two dim-glow eyes. At 64px it reads as a cave and a creature simultaneously.",

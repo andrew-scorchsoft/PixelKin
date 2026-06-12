@@ -9,6 +9,7 @@ import { COLORS } from '@game/config';
 import { theme, hex } from '@game/ui/theme';
 import { makeText } from '@game/ui/Text';
 import { Panel } from '@game/ui/Panel';
+import { battlePaceFactor } from '@game/ui/preferences';
 import type { KinInstance } from '@game/systems/party/KinInstance';
 
 const BAR_W = 48;
@@ -110,7 +111,7 @@ export class HpPanel {
       this.scene.tweens.add({
         targets: this.bar,
         width: target,
-        duration: 360,
+        duration: 360 * battlePaceFactor(),
         ease: 'Quad.out',
         onUpdate: () => {
           // recolour mid-drain

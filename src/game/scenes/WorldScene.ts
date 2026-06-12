@@ -20,6 +20,8 @@ import { SettingsMenu } from '@game/ui/SettingsMenu';
 import { GlossaryMenu } from '@game/ui/GlossaryMenu';
 import { RegisterMenu } from '@game/ui/RegisterMenu';
 import { ChartsMenu } from '@game/ui/ChartsMenu';
+import { JournalMenu } from '@game/ui/JournalMenu';
+import { TravelMenu } from '@game/ui/TravelMenu';
 import { ChartView } from '@game/ui/ChartView';
 import { fadeIn, fadeOut } from '@game/ui/Transitions';
 import { KinInstance } from '@game/systems/party/KinInstance';
@@ -43,6 +45,8 @@ import { getShop } from '@game/content/shops';
 import { chartForMap, chartFlag } from '@game/content/charts';
 import type { ChartEntry } from '@game/content/types';
 import { STARTING_WICKS, faintTithe } from '@game/content/economy';
+import { WAYSTONE_NETWORK_FLAG } from '@game/content/waystones';
+import type { Waystone } from '@game/content/waystones';
 import { ShopMenu } from '@game/ui/ShopMenu';
 import { makeStarterKin } from '@game/content/starters';
 import { runCutscene } from '@game/systems/cutscene/CutsceneRunner';
@@ -53,6 +57,7 @@ import { SAVE_SCHEMA_VERSION } from '@game/systems/save/types';
 import { SaveManager } from '@game/systems/save/SaveManager';
 import type { WorldSnapshot } from '@game/data/world/types';
 import { MAP_REGISTRY } from '@game/data/world/maps';
+import { LamplightMask } from '@game/systems/world/LamplightMask';
 import { VESPERHOLM_GRAPH } from '@game/data/world/graph';
 import type { AbilityId, Facing, Warp, EventTrigger, NpcPlacement, MapObject, EncounterTerrain } from '@game/data/world/types';
 
@@ -94,6 +99,8 @@ export class WorldScene extends Phaser.Scene {
   private render?: MapRenderResult;
   private player!: Player;
   private npcs: Npc[] = [];
+  /** The spine §5 reveal mask — present only on maps flagged `dark`. */
+  private lamplight?: LamplightMask;
 
   private party: KinInstanceData[] = [];
   /** Kin kept at the Hearth (storage); overflow from a full lamp lands here. */
@@ -182,6 +189,12 @@ export class WorldScene extends Phaser.Scene {
 
       this.spawnNpcs();
       this.refreshObjects();
+      // Dark terrain (spine §5): partial dusk beyond the vesperlamp's circle.
+      // Additive only — the main lane is lit and the dusk is never opaque.
+      if (MAP_REGISTRY[mapId]?.dark) {
+        this.lamplight = new LamplightMask(this, this.flags.countHeld('gleam:'));
+        this.lamplight.follow(this.player.sprite.x, this.player.sprite.y);
+      }
       this.playMapMusic();
       this.warmEncounterSprites();
 
@@ -277,6 +290,8 @@ export class WorldScene extends Phaser.Scene {
 
   private teardownMap(): void {
     this.cameras.main.stopFollow();
+    this.lamplight?.destroy();
+    this.lamplight = undefined;
     this.player?.destroy();
     for (const npc of this.npcs) npc.destroy();
     this.npcs = [];
@@ -345,6 +360,8 @@ export class WorldScene extends Phaser.Scene {
     // never rebuild NPCs into a scene that is already shutting down.
     if (!this.scene.isActive()) return;
     this.refreshObjects();
+    // A Gleam may have just landed — widen the lit circle on dark maps.
+    this.lamplight?.setBrightness(this.flags.countHeld('gleam:'));
     this.npcs = this.npcs.filter((npc) => {
       if (this.npcVisible(npc.placement)) return true;
       npc.destroy();
@@ -525,6 +542,7 @@ export class WorldScene extends Phaser.Scene {
           party: this.party,
           box: this.box,
           inventory: this.inventory,
+          dex_caught: [...this.dexCaught],
         });
         if (result.outcome !== 'win') {
           await this.blackout();
@@ -542,6 +560,7 @@ export class WorldScene extends Phaser.Scene {
           party: this.party,
           box: this.box,
           inventory: this.inventory,
+          dex_caught: [...this.dexCaught],
         });
         // Map the wild outcome to the runner's set-piece vocabulary. A wild kin
         // never flees on its own, so 'fled' is always the PLAYER bailing.
@@ -708,6 +727,7 @@ export class WorldScene extends Phaser.Scene {
           party: this.party,
           box: this.box,
           inventory: this.inventory,
+          dex_caught: [...this.dexCaught],
         }).then((result) => {
           if (result.outcome === 'lose') void this.blackout();
         });
@@ -850,6 +870,21 @@ export class WorldScene extends Phaser.Scene {
     this.modal = false;
   }
 
+  /**
+   * Step the lit road to a waystone (pause menu → TRAVEL). Reuses the engine's
+   * map-entry path exactly like a warp does: a fade out, `enterMap` to the
+   * destination's anchor (which itself autosaves + spirals to a safe tile), then a
+   * fade in. `modal` is already true (we're called from the open pause menu), and
+   * the caller has closed that menu, so movement stays paused across the trip.
+   */
+  private async travelTo(stone: Waystone): Promise<void> {
+    if (!MAP_REGISTRY[stone.map]) return; // tolerant: skip an unauthored destination
+    void this.sfx.play('world-warp');
+    await fadeOut(this, theme.transition.fadeMs);
+    await this.enterMap(stone.map, { tx: stone.tx, ty: stone.ty }, stone.facing, false);
+    await fadeIn(this, theme.transition.fadeMs);
+  }
+
   // --- Loop ----------------------------------------------------------------
 
   update(time: number, delta: number): void {
@@ -885,6 +920,7 @@ export class WorldScene extends Phaser.Scene {
 
     this.player.syncDepth(ACTOR_DEPTH);
     for (const npc of this.npcs) npc.syncDepth(ACTOR_DEPTH);
+    this.lamplight?.follow(this.player.sprite.x, this.player.sprite.y);
 
     this.debug.set([
       `map: ${this.map.def.id}`,
@@ -1023,7 +1059,10 @@ export class WorldScene extends Phaser.Scene {
       ]);
       return;
     }
-    const result = await new ItemsMenu(this, this.inventory, this.party, this.sfx, this.money).run();
+    const result = await new ItemsMenu(this, this.inventory, this.party, this.sfx, this.money, {
+      get: (f) => this.flags.get(f),
+      set: (f, v) => this.flags.set(f, v),
+    }).run();
     this.party = result.party;
     this.inventory = result.inventory;
     void this.persist();
@@ -1048,26 +1087,45 @@ export class WorldScene extends Phaser.Scene {
     const pending: { load: SaveGame | null } = { load: null };
     let open = true;
     while (open) {
-      const choice = await new Menu(
-        this,
-        [
-          { label: 'RESUME', value: 'resume' },
-          { label: 'KIN', value: 'kin' },
-          { label: 'REGISTER', value: 'register' },
-          { label: 'HEARTH', value: 'hearth' },
-          { label: 'ITEMS', value: 'items' },
-          { label: 'LORE', value: 'lore' },
-          { label: 'CHARTS', value: 'charts' },
-          { label: 'SAVE', value: 'save' },
-          { label: 'SETTINGS', value: 'settings' },
-        ],
-        { x: 8, y: 8, sfx: this.sfx },
-      ).run();
+      // The TRAVEL option (waystone fast-travel) appears only once the four-way
+      // hub is lit — before that the Lanternway isn't connected, so it's absent.
+      const entries = [
+        { label: 'RESUME', value: 'resume' },
+        { label: 'KIN', value: 'kin' },
+        { label: 'REGISTER', value: 'register' },
+        { label: 'JOURNAL', value: 'journal' },
+        ...(this.flags.get(WAYSTONE_NETWORK_FLAG) ? [{ label: 'TRAVEL', value: 'travel' }] : []),
+        { label: 'HEARTH', value: 'hearth' },
+        { label: 'ITEMS', value: 'items' },
+        { label: 'LORE', value: 'lore' },
+        { label: 'CHARTS', value: 'charts' },
+        { label: 'SAVE', value: 'save' },
+        { label: 'SETTINGS', value: 'settings' },
+      ];
+      const choice = await new Menu(this, entries, { x: 8, y: 8, sfx: this.sfx }).run();
 
-      if (choice === 'kin') {
+      if (choice === 'travel') {
+        const dest = await new TravelMenu(
+          this,
+          this.map.def.id,
+          (flag) => this.flags.get(flag),
+          this.sfx,
+        ).run();
+        if (dest) {
+          open = false; // close the pause menu, then ride the lit road
+          await this.travelTo(dest);
+        }
+      } else if (choice === 'kin') {
         await this.openPartyMenu();
       } else if (choice === 'register') {
         await new RegisterMenu(this, { seen: [...this.dexSeen], caught: [...this.dexCaught] }, this.sfx).run();
+      } else if (choice === 'journal') {
+        await new JournalMenu(
+          this,
+          (prefix) => this.flags.countHeld(prefix),
+          (flag) => this.flags.get(flag),
+          this.sfx,
+        ).run();
       } else if (choice === 'hearth') {
         await this.openHearthMenu();
       } else if (choice === 'items') {

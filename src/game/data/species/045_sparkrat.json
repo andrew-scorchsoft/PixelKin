@@ -72,13 +72,6 @@
   },
   "encounters": [
     {
-      "area": "lowleaf_hollow",
-      "terrain": "cave",
-      "rarity": "uncommon",
-      "min": 22,
-      "max": 24
-    },
-    {
       "area": "windward_stair_i",
       "terrain": "tall_grass",
       "rarity": "uncommon",
@@ -91,6 +84,48 @@
       "rarity": "uncommon",
       "min": 34,
       "max": 36
+    },
+    {
+      "area": "windward_stair_i",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 56,
+      "max": 62
+    },
+    {
+      "area": "windward_stair_ii",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 62
+    },
+    {
+      "area": "cinderhead_mine",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 22,
+      "max": 24
+    },
+    {
+      "area": "cinderhead_deep",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 24,
+      "max": 26
+    },
+    {
+      "area": "cinderhead_deep_b1f",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 25,
+      "max": 27
+    },
+    {
+      "area": "cinderhead_deep_b2f",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 26,
+      "max": 27
     }
   ],
   "scripted": false,

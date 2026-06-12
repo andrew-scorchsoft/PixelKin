@@ -11,6 +11,7 @@
  */
 import Phaser from 'phaser';
 import { loadAudio } from './loadAudio';
+import { sfxMasterGain } from '@game/ui/preferences';
 import sfxManifest from '../../../../public/assets/audio/sfx/sfx.manifest.json';
 
 const SFX_DIR = 'assets/audio/sfx/';
@@ -52,11 +53,13 @@ export class Sfx {
 
   /** Play a single named effect (base key, no extension). Picks a variant if needed. */
   async play(key: string): Promise<void> {
+    const gain = sfxMasterGain();
+    if (gain <= 0) return; // OFF: true silence, skip the one-shot entirely
     const stem = this.resolveStem(key);
     if (!stem) return; // not a rendered effect — stay silent rather than 404
     const ok = await loadAudio(this.scene, stem, `${SFX_DIR}${stem}.mp3`);
     if (!ok) return;
-    this.scene.sound.play(stem, { volume: this.volume });
+    this.scene.sound.play(stem, { volume: this.volume * gain });
   }
 
   /**

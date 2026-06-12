@@ -420,7 +420,9 @@ drained dark stays oppressive regardless of tier (Arc D rule: it doesn't brighte
 progress), so its reveals lean on Emberward/Glimmerstep, not brightness. (2) **Engine cost:**
 one contained render feature — a radial light/dark mask on maps flagged "dark," radius bound to
 a brightness value derived from Gleam count, plus optional `reveal_at_tier` markers on hidden
-content. Designed here; not built by this blueprint (see §8).
+content. **BUILT (2026-06):** `systems/world/lamplight.ts` + `LamplightMask`; the markers
+shipped as derived `flag:lamplight_<tier>` `requires_flag` gates (no new engine field) — the
+tiers derive in `FlagStore.derive()` and content must never hand-set them.
 
 ### Sunsketch as an optional light-puzzle — depth on one Gift
 

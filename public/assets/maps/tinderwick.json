@@ -2244,6 +2244,18 @@
       "h": 3,
       "overhang": 2,
       "walk_under": true
+    },
+    {
+      "id": "vigil_scar_hearthfall",
+      "sprite": "vigil_star_scar",
+      "at": {
+        "tx": 25,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "flag:dawn"
     }
   ],
   "warps": [
@@ -2357,6 +2369,23 @@
       "requires_flag": "flag:has_beacon_wick",
       "transition": "door",
       "blocked_ref": "door.locked_beacon"
+    },
+    {
+      "id": "to_vigil_hearth",
+      "at": {
+        "tx": 25,
+        "ty": 7
+      },
+      "trigger": "step_on",
+      "to_map": "vigil_hearthfall",
+      "to": {
+        "tx": 11,
+        "ty": 16
+      },
+      "facing": "up",
+      "requires_flag": "flag:vigil_reading_1",
+      "blocked_ref": "npc.vigil_scar_sealed",
+      "transition": "fade"
     }
   ],
   "triggers": [
@@ -2455,8 +2484,65 @@
           "weight": 40,
           "min_level": 2,
           "max_level": 3
+        },
+        {
+          "kin_id": 13,
+          "weight": 20,
+          "min_level": 2,
+          "max_level": 4
+        },
+        {
+          "kin_id": 5,
+          "weight": 12,
+          "min_level": 3,
+          "max_level": 4
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "verge_grass_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 10,
+        "ty": 2,
+        "w": 6,
+        "h": 3
+      },
+      "encounter_rate": 0.07,
+      "table": [
+        {
+          "kin_id": 16,
+          "weight": 35,
+          "min_level": 55,
+          "max_level": 60
+        },
+        {
+          "kin_id": 10,
+          "weight": 25,
+          "min_level": 55,
+          "max_level": 58
+        },
+        {
+          "kin_id": 5,
+          "weight": 20,
+          "min_level": 56,
+          "max_level": 60
+        },
+        {
+          "kin_id": 8,
+          "weight": 20,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 13,
+          "weight": 15,
+          "min_level": 56,
+          "max_level": 62
+        }
+      ],
+      "requires_flag": "flag:dawn"
     }
   ],
   "npcs": [
@@ -2531,6 +2617,19 @@
       "movement": "wander",
       "dialogue_ref": "npc.fair_kid",
       "requires_flag": "gleam:ember"
+    },
+    {
+      "id": "letter_brisa",
+      "at": {
+        "tx": 12,
+        "ty": 9
+      },
+      "facing": "down",
+      "sprite": "npc_lampwarden",
+      "movement": "static",
+      "dialogue_ref": "script.post_letter_tinderwick",
+      "requires_flag": "flag:q_post_letters",
+      "hidden_when_flag": "flag:q_post_letter_tinderwick"
     }
   ],
   "gates": [],

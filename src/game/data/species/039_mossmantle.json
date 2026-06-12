@@ -70,15 +70,7 @@
     "weight_kg": 14,
     "habitat": "east"
   },
-  "encounters": [
-    {
-      "area": "lowleaf_hollow",
-      "terrain": "cave",
-      "rarity": "uncommon",
-      "min": 22,
-      "max": 24
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Short bipedal figure draped in a thick cape of glowing green moss-fronds; a wooden face-plate with amber eyes showing through the moss hood; stubby arms ending in leaf-fans; a round body hidden under the living mantle; warm and eerie at 32px.",

@@ -50,11 +50,14 @@ const expYield = (bst, level) => Math.max(1, Math.floor((bst * level) / YIELD_DI
 // ---------------------------------------------------------------------------
 const STARTING_WICKS = 250;
 /** payout-per-ace-level by trainer class (10-economy.md §4). */
-const PAYOUT_RATE = { route: 16, keeper: 20, rival: 24, warden: 60, cor: 120 };
+const PAYOUT_RATE = { route: 16, keeper: 20, rival: 24, warden: 60, vigilant: 80, cor: 120 };
 const PRICES = {
   tallow_balm: 120, warm_balm: 500, bright_balm: 1200,
   glow_charge: 200, beacon_charge: 600,
   chart_early: 800, chart_mid: 1400, chart_late: 2400, chart_end: 4000,
+  // one-time optional QoL key item (Pearlmoor, gleam:tide stock) — outside the
+  // modelled region budgets; listed for the three-home price mirror.
+  hooded_lamp: 600,
 };
 
 // ---------------------------------------------------------------------------
@@ -355,6 +358,39 @@ const JOURNEY = [
     spend: { bright_balm: 3, chart_end: 1 },
     checkpoint: { name: 'Warden Còr (climax)', rec: 54, ace: 56 },
   },
+
+  // ---- POST-GAME · THE STARFALL VIGILS (06-postgame · R3, BUILT 2026-06).
+  // The endgame challenge chain: five trial sites (climbing 58–68) + the summit
+  // Round (Ondra → Solenne → Mer → Fenn), all ONE-TIME clears (the post-crown
+  // re-runnable bouts are optional income, excluded from solvency). The apex-band
+  // annex wilds are the designed grind bed; catches pay like knock-outs.
+  // Income (spec note): ~50,500w trainer payouts (25,600w across the five sites
+  // + 24,960w for the Round) lands as `quests` here (the chain's one-time
+  // payouts), + the 5,000w storm-tithe (finds) + ~9,000w in Starglass valuables.
+  // The sink is end-tier charts (Tremor Quake / Sunburst Nova are find-first, so
+  // no wick cost) and Dawnbrael's charges (quest-only) — model a light buy.
+  {
+    name: 'The Starfall Vigils → the Last Lesson',
+    leadShare: 1.00,
+    wild: {
+      areas: ['vigil_hearthfall', 'vigil_grovefall', 'vigil_stormfall', 'vigil_sunfall', 'vigil_murkfall', 'dawnstead'],
+      band: [58, 70], fights: { rusher: 8, mainline: 14, explorer: 20 },
+    },
+    trainers: [
+      T('Wick-Mother Esra', 'vigilant', [K(58, 7), K(58, 12), K(59, 19), K(59, 43), K(59, 17), K(60, 33)]),
+      T('Old Foreman Bramm', 'vigilant', [K(60, 40), K(60, 64), K(61, 58), K(61, 52), K(61, 55), K(62, 70)]),
+      T('Ondra Vael', 'vigilant', [K(62, 102), K(62, 79), K(63, 96), K(63, 93), K(63, 82), K(64, 144)]),
+      T('Dame Solenne', 'vigilant', [K(64, 121), K(64, 110), K(65, 123), K(65, 127), K(65, 128), K(66, 119)]),
+      T('Warden Mer', 'vigilant', [K(66, 135), K(66, 138), K(67, 85), K(67, 140), K(67, 145), K(68, 146)]),
+      T('Ondra Vael (Round)', 'vigilant', [K(67, 102), K(67, 79), K(68, 96), K(68, 93), K(68, 82), K(69, 144)]),
+      T('Dame Solenne (Round)', 'vigilant', [K(67, 121), K(67, 110), K(68, 123), K(68, 127), K(68, 128), K(69, 119)]),
+      T('Warden Mer (Round)', 'vigilant', [K(68, 135), K(68, 138), K(68, 85), K(69, 140), K(69, 145), K(69, 146)]),
+      T('Star-tender Fenn', 'cor', [K(68, 9), K(68, 107), K(68, 125), K(69, 87), K(69, 131), K(70, 129)]),
+    ],
+    income: { quests: 0, valuables: 9000, finds: 5000 }, // Starglass caches + the storm-tithe; payouts come from the trainer loop
+    spend: { bright_balm: 4 },
+    checkpoint: { name: 'The Last Lesson (Fenn)', rec: 67, ace: 70 },
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -412,6 +448,17 @@ const BUILT_PAYOUTS = {
   hollowing_acolyte_d: ['keeper', 55, 1100],
   hollowing_acolyte_e: ['keeper', 55, 1100],
   warden_cor: ['cor', 56, 6720],
+  // The Starfall Vigils (06-postgame · R3) — the new `vigilant` 80w class; Fenn
+  // at `cor`. The five site clears + the summit Round's three + Fenn.
+  vigilant_esra: ['vigilant', 60, 4800],
+  vigilant_bramm: ['vigilant', 62, 4960],
+  vigilant_ondra: ['vigilant', 64, 5120],
+  vigilant_solenne: ['vigilant', 66, 5280],
+  vigilant_mer: ['vigilant', 68, 5440],
+  vigilant_ondra_summit: ['vigilant', 69, 5520],
+  vigilant_solenne_summit: ['vigilant', 69, 5520],
+  vigilant_mer_summit: ['vigilant', 69, 5520],
+  startender_fenn: ['cor', 70, 8400],
 };
 const failures = [];
 for (const [id, [klass, ace, authored]] of Object.entries(BUILT_PAYOUTS)) {
@@ -426,7 +473,7 @@ if (!(PRICES.chart_early < PRICES.chart_mid && PRICES.chart_mid < PRICES.chart_l
 // Move-id sanity for the shipped charts (mirror items.ts teach_move values).
 for (const id of ['cinder_spit', 'mist_spray', 'gust_up', 'focus_mind', 'wave_crash', 'hearth_pulse',
   'spore_puff', 'root_strike', 'lifedrain', 'thunder_kick', 'volt_arc', 'gale_slam', 'swift_step', 'tempest',
-  'sunburst_nova']) {
+  'sunburst_nova', 'tremor_quake']) {
   if (!MOVES.moves.some((m) => m.id === id)) failures.push(`chart teaches unknown move '${id}'`);
 }
 

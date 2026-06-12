@@ -63,11 +63,18 @@
   },
   "encounters": [
     {
-      "area": "dimglass_coast",
+      "area": "tinderwick",
       "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 3,
-      "max": 6
+      "rarity": "uncommon",
+      "min": 2,
+      "max": 4
+    },
+    {
+      "area": "tinderwick",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 62
     }
   ],
   "scripted": false,

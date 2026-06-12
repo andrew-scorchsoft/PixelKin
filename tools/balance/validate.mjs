@@ -69,10 +69,13 @@ for (const s of roster) {
 
 // ---- derived-flag guard (W7 BLK-1 / W8 MIN-1) --------------------------------------
 // crown_south/east/north/west + hub_unlocked are ENGINE-DERIVED in
-// FlagStore.deriveCrowns() (crowns from Gleam pairs, hub from all four crowns).
+// FlagStore.derive() (crowns from Gleam pairs, hub from all four crowns).
 // Content must NEVER hand-set them — a hand-set re-introduces the "game cannot
 // be completed" class of bug the W7 panel caught (and the unprefixed-string trap).
-const DERIVED_FLAG = /(?:flag:)?(?:crown_(?:south|east|north|west)\b|hub_unlocked\b)/;
+// Lamplight tier flags (spine §5) derive the same way: FlagStore raises
+// flag:lamplight_{warmlight,brightlight,starlight,radiant} from the Gleam count.
+// Content gates reveals on them with requires_flag — it never sets them.
+const DERIVED_FLAG = /(?:flag:)?(?:crown_(?:south|east|north|west)\b|hub_unlocked\b|lamplight_(?:warmlight|brightlight|starlight|radiant)\b)/;
 let guardScanned = 0;
 // (a) content sources: any reward_flags/sets_flags array listing a derived flag
 const contentDir = join(ROOT, "src/game/content");
@@ -80,7 +83,11 @@ for (const f of readdirSync(contentDir).filter((n) => n.endsWith(".ts"))) {
   guardScanned++;
   const src = readFileSync(join(contentDir, f), "utf8");
   for (const hit of src.matchAll(/(reward_flags|sets_flags)\s*:\s*\[([^\]]*)\]/g)) {
-    if (DERIVED_FLAG.test(hit[2])) errors.push(`content/${f}: ${hit[1]} hand-sets a derived flag ([${hit[2].trim()}]) — crowns/hub derive in FlagStore.deriveCrowns(), never in content`);
+    if (DERIVED_FLAG.test(hit[2])) errors.push(`content/${f}: ${hit[1]} hand-sets a derived flag ([${hit[2].trim()}]) — crowns/hub derive in FlagStore.derive(), never in content`);
+  }
+  // cutscene setFlag ops are the other content write path
+  for (const hit of src.matchAll(/op:\s*'setFlag'\s*,\s*flag:\s*'([^']*)'/g)) {
+    if (DERIVED_FLAG.test(hit[1])) errors.push(`content/${f}: a setFlag op hand-sets a derived flag ('${hit[1]}') — crowns/hub/lamplight derive in FlagStore.derive(), never in content`);
   }
 }
 // (b) map JSON: every sets_flags/reward_flags array anywhere in the file
@@ -93,7 +100,7 @@ for (const f of readdirSync(mapsDir).filter((n) => n.endsWith(".json"))) {
     for (const [k, v] of Object.entries(node)) {
       if ((k === "sets_flags" || k === "reward_flags") && Array.isArray(v)
           && v.some((s) => typeof s === "string" && DERIVED_FLAG.test(s)))
-        errors.push(`maps/${f}: ${k} hand-sets a derived flag ([${v.join(", ")}]) — crowns/hub derive in FlagStore.deriveCrowns(), never in map data`);
+        errors.push(`maps/${f}: ${k} hand-sets a derived flag ([${v.join(", ")}]) — crowns/hub derive in FlagStore.derive(), never in map data`);
       walk(v);
     }
   };
@@ -101,8 +108,11 @@ for (const f of readdirSync(mapsDir).filter((n) => n.endsWith(".json"))) {
 }
 // (c) tripwire: the derivation itself must still exist
 const flagStoreSrc = readFileSync(join(ROOT, "src/game/systems/flags/FlagStore.ts"), "utf8");
-if (!flagStoreSrc.includes("deriveCrowns")) errors.push("FlagStore.ts: deriveCrowns() is GONE — the crown/hub derivation (the W7 BLK-1 fix) has been removed; the game cannot be completed without it");
-console.log(`=== derived-flag guard: ${guardScanned} content/map sources scanned, deriveCrowns ${flagStoreSrc.includes("deriveCrowns") ? "present" : "MISSING"} ===`);
+const hasDerive = flagStoreSrc.includes("deriveCrowns") || (flagStoreSrc.includes("derive()") && flagStoreSrc.includes("crown_"));
+if (!hasDerive) errors.push("FlagStore.ts: the crown/hub derivation (the W7 BLK-1 fix, deriveCrowns/derive) is GONE; the game cannot be completed without it");
+const hasLamplightDerive = flagStoreSrc.includes("LAMPLIGHT_FLAGS");
+if (!hasLamplightDerive) errors.push("FlagStore.ts: the Lamplight tier derivation (LAMPLIGHT_FLAGS in derive()) is GONE; tier-gated reveals would never appear");
+console.log(`=== derived-flag guard: ${guardScanned} content/map sources scanned, crown derivation ${hasDerive ? "present" : "MISSING"} ===`);
 
 // EPS within-tier spread
 const byTier = {};

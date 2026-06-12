@@ -63,15 +63,7 @@
     "weight_kg": 26.5,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 10,
-      "max": 12
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Upright fox silhouette, deep ember-red coat, cream underbelly, mane erupting upward in a spike-crown of orange-to-white flames; regal and fast at 64px.",

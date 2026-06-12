@@ -72,15 +72,7 @@
     "weight_kg": 19.0,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "rare",
-      "min": 10,
-      "max": 12
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Elegant long-bodied cat silhouette, warm gold-and-cream coat, a soft luminous aura halo, ember-tip tail; graceful and glowing at 64px.",

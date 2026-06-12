@@ -23,6 +23,17 @@ export interface MapRegistryEntry {
    * back to the plain night fill. See docs/art-style.md ("Battle backdrops").
    */
   battle_backdrops?: string[];
+  /**
+   * Dark terrain (walkthrough spine §5, Lamplight): WorldScene draws the reveal
+   * mask here — partial dusk beyond the vesperlamp's lit circle, whose radius
+   * grows with Gleams held. ADDITIVE ONLY: the main lane stays diegetically lit
+   * and the dusk is never opaque, so nothing required ever depends on
+   * brightness. Canon exclusions: Coldfog resists Lamplight (its drained dark
+   * never brightens), the Umbral Spire keeps the climax's own lighting, and
+   * towns/routes stay unmasked (Cinderhead Mine is a settlement, so the mask
+   * starts at Cinderhead Deep).
+   */
+  dark?: boolean;
 }
 
 export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
@@ -157,6 +168,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/tideglass_cavern.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
+    dark: true,
     music: 'assets/audio/music/dimglass-coast-c.mp3',
     battle_backdrops: ['assets/backgrounds/battle/tideglass-gallery-a.webp'],
   },
@@ -164,6 +176,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/tideglass_gallery.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
+    dark: true,
     music: 'assets/audio/music/dimglass-coast-c.mp3',
     battle_backdrops: ['assets/backgrounds/battle/tideglass-gallery-a.webp'],
   },
@@ -191,6 +204,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/glowmoss_deep.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
+    dark: true,
     music: 'assets/audio/music/lowleaf-hollow-c.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/glowmoss-deep-a.webp',
@@ -203,6 +217,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/glowmoss_deep_b1f.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
+    dark: true,
     music: 'assets/audio/music/lowleaf-hollow-c.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/glowmoss-deep-a.webp',
@@ -214,6 +229,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/spore_grotto.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
+    dark: true,
     music: 'assets/audio/music/lowleaf-hollow-c.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/glowmoss-deep-a.webp',
@@ -314,6 +330,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/cinderhead_deep.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
+    dark: true,
     music: 'assets/audio/music/cinderhead-mine-c.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/cinderhead-mine-a.webp',
@@ -324,6 +341,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/cinderhead_deep_b1f.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
+    dark: true,
     music: 'assets/audio/music/cinderhead-mine-c.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/cinderhead-mine-a.webp',
@@ -334,6 +352,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/cinderhead_deep_b2f.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
+    dark: true,
     music: 'assets/audio/music/cinderhead-mine-c.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/cinderhead-mine-a.webp',
@@ -453,6 +472,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/pale_vault_undercroft.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
+    dark: true,
     // the trial reuses the parent loop's sparsest variant + backdrops
     music: 'assets/audio/music/pale-vault-glacier-c.mp3',
     battle_backdrops: [
@@ -765,6 +785,78 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/umbral-spire-b.webp',
     ],
   },
+  // R2 — DAWNSTEAD (walkthrough 06-postgame): the epilogue town, Tinderwick's
+  // silhouette in the first true daylight. Post-game only (the graph node is
+  // unlocked_by_flag flag:dawn; entry rides the summit's to_dawn pair). The
+  // town loop is the lullaby returned in triumphant major (dawnstead-a).
+  dawnstead: {
+    json: 'assets/maps/dawnstead.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'town',
+    music: 'assets/audio/music/dawnstead-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/dawnstead-a.webp',
+      'assets/backgrounds/battle/dawnstead-b.webp',
+    ],
+  },
+  // R3 — THE STARFALL VIGILS (walkthrough 06-postgame §STARFALL VIGILS): five
+  // single-screen annexes off shipped hosts, one per quadrant + the outer
+  // marches, sealed behind the star-readings (`flag:vigil_reading_<n>` on the
+  // host warp). The one-shape reuse rule: each annex plays its HOST's loop +
+  // backdrops. No rest points anywhere in the chain.
+  vigil_hearthfall: {
+    json: 'assets/maps/vigil_hearthfall.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/tinderwick-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/tinderwick-a.webp',
+      'assets/backgrounds/battle/tinderwick-b.webp',
+    ],
+  },
+  vigil_grovefall: {
+    json: 'assets/maps/vigil_grovefall.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/lowleaf-hollow-c.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/glowmoss-deep-a.webp',
+      'assets/backgrounds/battle/glowmoss-deep-b.webp',
+    ],
+  },
+  vigil_stormfall: {
+    json: 'assets/maps/vigil_stormfall.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/windward-stair-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/windward-stair-a.webp',
+      'assets/backgrounds/battle/windward-stair-b.webp',
+    ],
+  },
+  vigil_sunfall: {
+    json: 'assets/maps/vigil_sunfall.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/sunvault-climb-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/sunvault-climb-a.webp',
+      'assets/backgrounds/battle/sunvault-climb-b.webp',
+    ],
+  },
+  vigil_murkfall: {
+    json: 'assets/maps/vigil_murkfall.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      coldfog_set: 'assets/tilesets/coldfog_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/coldfog-marches-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/coldfog-marches-a.webp',
+      'assets/backgrounds/battle/coldfog-marches-b.webp',
+    ],
+  },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
   // Their battle backdrops are already rendered — see UPCOMING_BATTLE_BACKDROPS below.
@@ -783,10 +875,6 @@ export const UPCOMING_BATTLE_BACKDROPS: Record<string, string[]> = {
   vesper_crossroads: [
     'assets/backgrounds/battle/vesper-crossroads-a.webp',
     'assets/backgrounds/battle/vesper-crossroads-b.webp',
-  ],
-  dawnstead: [
-    'assets/backgrounds/battle/dawnstead-a.webp',
-    'assets/backgrounds/battle/dawnstead-b.webp',
   ],
 };
 

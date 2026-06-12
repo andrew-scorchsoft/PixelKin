@@ -149,6 +149,13 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'umbral_spire_f3', region: 'central' }, // the high gallery; home of the shaft compressor
     { map_id: 'umbral_spire_summit', region: 'central' }, // the Great Null; sets keystar_relit -> dawn
     { map_id: 'dawnstead', region: 'south', unlocked_by_flag: 'flag:dawn' },
+    // ---- The Starfall Vigils (walkthrough 06-postgame): one annex per quadrant + the
+    // outer marches, sealed behind the star-readings (the host warps carry the flags).
+    { map_id: 'vigil_hearthfall', region: 'south', optional: true, reward: 'Vigil I: EMBRALUX #33 + TIDEVEIL #34 register beds (58-60) + the Radiant Charm' },
+    { map_id: 'vigil_grovefall', region: 'east', optional: true, reward: 'Vigil II: MYCOVAST #70 register bed (60-62) + Star-chart: Tremor Quake' },
+    { map_id: 'vigil_stormfall', region: 'north', optional: true, reward: 'Vigil III: NULLHUSK #144 register bed (62-64) + the storm-tithe' },
+    { map_id: 'vigil_sunfall', region: 'west', optional: true, reward: 'Vigil IV: DAWNWATCHER #129 + HELITHORN #119 register beds (64-66) + Star-chart: Sunburst Nova' },
+    { map_id: 'vigil_murkfall', region: 'outer', optional: true, reward: 'Vigil V: SOLARMOURN #128 / CINDERVAST #145 / BOGVAST #146 register beds (66-68) + the Morrow Charm' },
   ],
   edges: [
     // ---- Tinderwick interiors (door warps, both ways) --------------------------------
@@ -280,6 +287,13 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // The dawn road leaves from the SUMMIT (where flag:dawn is set) — the
     // post-game hand-off; dawnstead is the post-game writer's map.
     { from_map: 'umbral_spire_summit', to_map: 'dawnstead', via_warp: 'to_dawn', requires_flag: 'flag:dawn', bidirectional: true },
+
+    // ---- The Starfall Vigils: each reading opens ONE host scar (06-postgame master list)
+    { from_map: 'tinderwick', to_map: 'vigil_hearthfall', via_warp: 'to_vigil_hearth', requires_flag: 'flag:vigil_reading_1', bidirectional: true },
+    { from_map: 'spore_grotto', to_map: 'vigil_grovefall', via_warp: 'to_vigil_grove', requires_flag: 'flag:vigil_reading_2', bidirectional: true },
+    { from_map: 'thunderroost', to_map: 'vigil_stormfall', via_warp: 'to_vigil_storm', requires_flag: 'flag:vigil_reading_3', bidirectional: true },
+    { from_map: 'sunvault_climb_ii', to_map: 'vigil_sunfall', via_warp: 'to_vigil_sun', requires_flag: 'flag:vigil_reading_4', bidirectional: true },
+    { from_map: 'coldfog_marches_ii', to_map: 'vigil_murkfall', via_warp: 'to_vigil_murk', requires_flag: 'flag:vigil_reading_5', bidirectional: true },
   ],
   hub: {
     map_id: 'vesper_crossroads',

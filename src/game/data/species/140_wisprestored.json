@@ -74,6 +74,27 @@
       "rarity": "rare",
       "min": 47,
       "max": 48
+    },
+    {
+      "area": "vigil_murkfall",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 66,
+      "max": 68
+    },
+    {
+      "area": "coldfog_marches_i",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 58,
+      "max": 65
+    },
+    {
+      "area": "coldfog_marches_ii",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 60,
+      "max": 65
     }
   ],
   "scripted": false,

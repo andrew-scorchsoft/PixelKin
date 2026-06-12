@@ -21,7 +21,11 @@ import { REGION_LABELS } from '@game/content/charts';
 import type { ChartEntry } from '@game/content/types';
 
 const PAD = theme.space.lg;
-const CAPTION_H = 38;
+/** Minimum caption-band height; the band grows to fit the wrapped mood line
+ *  (a fixed slot clipped 3+-line subtitles off the 160px screen). */
+const CAPTION_MIN_H = 30;
+const CAPTION_PAD_Y = 4;
+const CAPTION_GAP = 2;
 const BANNER_H = 13;
 // Sits above the panel band so it covers the gallery list beneath it.
 const BASE_DEPTH = theme.depth.toast;
@@ -67,21 +71,24 @@ export class ChartView {
       .setVisible(false);
 
     this.captionBg = fixed(
-      scene.add.rectangle(0, GAME_HEIGHT - CAPTION_H, GAME_WIDTH, CAPTION_H, hex(theme.color.panelShadow), 0.74)
+      scene.add.rectangle(0, GAME_HEIGHT - CAPTION_MIN_H, GAME_WIDTH, CAPTION_MIN_H, hex(theme.color.panelShadow), 0.74)
         .setOrigin(0, 0),
     ).setDepth(BASE_DEPTH + 2);
 
-    this.title = fixed(makeText(scene, PAD, GAME_HEIGHT - CAPTION_H + 5, '', theme.text.accent))
+    this.title = fixed(makeText(scene, PAD, 0, '', theme.text.accent))
       .setDepth(BASE_DEPTH + 3);
-    this.subtitle = fixed(makeText(scene, PAD, GAME_HEIGHT - CAPTION_H + 17, '', theme.text.narrate))
+    this.subtitle = fixed(makeText(scene, PAD, 0, '', theme.text.narrate))
       .setDepth(BASE_DEPTH + 3);
     this.subtitle.setWordWrapWidth(GAME_WIDTH - PAD * 2);
 
+    // The hint shares the title row (right-aligned) so a wrapped mood line can
+    // never run underneath it; layoutCaption() positions both.
     this.hint = fixed(
-      makeText(scene, GAME_WIDTH - PAD, GAME_HEIGHT - PAD, opts.mode === 'reveal' ? 'PRESS A' : 'B BACK', theme.text.dim),
+      makeText(scene, GAME_WIDTH - PAD, 0, opts.mode === 'reveal' ? 'PRESS A' : 'B BACK', theme.text.dim),
     )
-      .setOrigin(1, 1)
+      .setOrigin(1, 0)
       .setDepth(BASE_DEPTH + 3);
+    this.layoutCaption();
 
     if (opts.mode === 'reveal') {
       this.bannerBg = fixed(
@@ -105,6 +112,7 @@ export class ChartView {
   async setChart(chart: ChartEntry, arrows?: { left: boolean; right: boolean }): Promise<void> {
     this.title.setText(chart.name.toUpperCase());
     this.subtitle.setText(chart.subtitle);
+    this.layoutCaption();
     this.banner?.setText(`A NEW CHART  -  ${REGION_LABELS[chart.region]}`);
     this.arrowLeft?.setVisible(arrows?.left ?? false);
     this.arrowRight?.setVisible(arrows?.right ?? false);
@@ -119,6 +127,22 @@ export class ChartView {
       this.img.setVisible(false);
       this.fallback.setText(chart.name.toUpperCase()).setVisible(true);
     }
+  }
+
+  /** Bottom-anchor the caption band, sized to the wrapped subtitle (measured
+   *  after setText), so long mood lines grow the band upward instead of
+   *  clipping off the bottom of the 160px screen. */
+  private layoutCaption(): void {
+    const rowH = Math.max(this.title.height, this.hint.height);
+    const h = Math.max(
+      CAPTION_MIN_H,
+      CAPTION_PAD_Y + rowH + CAPTION_GAP + this.subtitle.height + CAPTION_PAD_Y,
+    );
+    const top = GAME_HEIGHT - h;
+    this.captionBg.setPosition(0, top).setSize(GAME_WIDTH, h);
+    this.title.setPosition(PAD, top + CAPTION_PAD_Y);
+    this.hint.setPosition(GAME_WIDTH - PAD, top + CAPTION_PAD_Y);
+    this.subtitle.setPosition(PAD, top + CAPTION_PAD_Y + rowH + CAPTION_GAP);
   }
 
   /** Fade the whole view in (used by the reveal for a gentle bloom). */
