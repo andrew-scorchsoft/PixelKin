@@ -1207,7 +1207,33 @@
       "sprite": "lucan_pyre",
       "movement": "static",
       "dialogue_ref": "npc.lucan_after",
-      "requires_flag": "gleam:solar"
+      "requires_flag": "gleam:solar",
+      "hidden_when_flag": "flag:three_dawn_rumour"
+    },
+    {
+      "id": "lucan_phial",
+      "at": {
+        "tx": 14,
+        "ty": 16
+      },
+      "facing": "down",
+      "sprite": "lucan_pyre",
+      "movement": "static",
+      "dialogue_ref": "script.lucan_phial",
+      "requires_flag": "flag:three_dawn_rumour",
+      "hidden_when_flag": "flag:three_dawn_phial"
+    },
+    {
+      "id": "lucan_phial_after",
+      "at": {
+        "tx": 14,
+        "ty": 16
+      },
+      "facing": "down",
+      "sprite": "lucan_pyre",
+      "movement": "static",
+      "dialogue_ref": "npc.lucan_phial_after",
+      "requires_flag": "flag:three_dawn_phial"
     },
     {
       "id": "troupe_player",

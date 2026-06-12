@@ -90,6 +90,13 @@
       "rarity": "uncommon",
       "min": 37,
       "max": 40
+    },
+    {
+      "area": "pale_vault_hourfold",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 44,
+      "max": 46
     }
   ],
   "scripted": false,

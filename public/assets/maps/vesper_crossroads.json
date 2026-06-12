@@ -1838,7 +1838,7 @@
       "facing": "up",
       "sprite": "npc_mentor",
       "movement": "static",
-      "dialogue_ref": "npc.fenn_counsel_after",
+      "dialogue_ref": "script.fenn_counsel_after",
       "requires_flag": "flag:fenn_counsel_given"
     },
     {

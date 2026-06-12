@@ -533,6 +533,31 @@
       "hidden_when_flag": "gleam:frost"
     },
     {
+      "id": "ysolde_snuffer",
+      "at": {
+        "tx": 4,
+        "ty": 12
+      },
+      "facing": "down",
+      "sprite": "ysolde_frost",
+      "movement": "static",
+      "dialogue_ref": "script.ysolde_snuffer",
+      "requires_flag": "flag:three_mid_rumour",
+      "hidden_when_flag": "flag:three_mid_snuffer"
+    },
+    {
+      "id": "ysolde_snuffer_after",
+      "at": {
+        "tx": 4,
+        "ty": 12
+      },
+      "facing": "down",
+      "sprite": "ysolde_frost",
+      "movement": "static",
+      "dialogue_ref": "npc.ysolde_snuffer_after",
+      "requires_flag": "flag:three_mid_snuffer"
+    },
+    {
       "id": "cache_undercroft_amber",
       "at": {
         "tx": 17,

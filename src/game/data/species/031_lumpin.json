@@ -94,6 +94,13 @@
       "rarity": "uncommon",
       "min": 17,
       "max": 19
+    },
+    {
+      "area": "tideglass_cavern",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 20,
+      "max": 23
     }
   ],
   "scripted": false,

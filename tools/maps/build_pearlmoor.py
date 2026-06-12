@@ -413,10 +413,20 @@ m = {
          "dialogue_ref": "script.netmender_drift",
          "requires_flag": "flag:q_south_buoys_lit",
          "hidden_when_flag": "flag:q_south_buoys_done"},
+        # SYNC 2026-06 (Three Hours wiring, 07-the-three §4): the terminal S1
+        # stage carries H1's rumour via script (its if_flag gleam:verdant gate
+        # avoids a tenth co-spawnable placement), then swaps on the rumour flag.
+        # Mirrored into the shipped pearlmoor_quay.json by hand — do not re-run
+        # this builder without reconciling the shipped NPC list first.
         {"id": "netmender_done", "at": {"tx": 23, "ty": 17}, "facing": "down",
          "sprite": "npc_old_woman", "movement": "static",
-         "dialogue_ref": "npc.netmender_done",
-         "requires_flag": "flag:q_south_buoys_done"},
+         "dialogue_ref": "script.netmender_hours",
+         "requires_flag": "flag:q_south_buoys_done",
+         "hidden_when_flag": "flag:three_dusk_rumour"},
+        {"id": "netmender_hours_after", "at": {"tx": 23, "ty": 17}, "facing": "down",
+         "sprite": "npc_old_woman", "movement": "static",
+         "dialogue_ref": "npc.netmender_hours_after",
+         "requires_flag": "flag:three_dusk_rumour"},
         # The Tide-blessing festival (Arc E): once 'gleam:tide' stands, the quay
         # fills — the second "Gleam = belonging" payoff, pure data.
         {"id": "blessing_elder", "at": {"tx": 10, "ty": 13}, "facing": "down",

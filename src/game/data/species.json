@@ -2055,6 +2055,20 @@
      "rarity": "rare",
      "min": 18,
      "max": 20
+    },
+    {
+     "area": "tideglass_cavern",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 21,
+     "max": 24
+    },
+    {
+     "area": "tideglass_cavern",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 21,
+     "max": 24
     }
    ],
    "scripted": false,
@@ -2229,6 +2243,13 @@
      "rarity": "common",
      "min": 8,
      "max": 11
+    },
+    {
+     "area": "tideglass_cavern",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 20,
+     "max": 22
     }
    ],
    "scripted": false,
@@ -2341,6 +2362,20 @@
      "rarity": "common",
      "min": 17,
      "max": 19
+    },
+    {
+     "area": "tideglass_cavern",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 21,
+     "max": 24
+    },
+    {
+     "area": "tideglass_cavern",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 21,
+     "max": 24
     }
    ],
    "scripted": false,
@@ -2508,6 +2543,13 @@
      "rarity": "uncommon",
      "min": 6,
      "max": 9
+    },
+    {
+     "area": "tideglass_cavern",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 22,
+     "max": 24
     }
    ],
    "scripted": false,
@@ -2601,6 +2643,13 @@
      "rarity": "rare",
      "min": 10,
      "max": 12
+    },
+    {
+     "area": "tideglass_cavern",
+     "terrain": "water",
+     "rarity": "very_rare",
+     "min": 22,
+     "max": 24
     }
    ],
    "scripted": false,
@@ -2707,6 +2756,13 @@
      "rarity": "uncommon",
      "min": 17,
      "max": 19
+    },
+    {
+     "area": "tideglass_cavern",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 20,
+     "max": 23
     }
    ],
    "scripted": false,
@@ -6309,6 +6365,13 @@
      "rarity": "uncommon",
      "min": 37,
      "max": 40
+    },
+    {
+     "area": "pale_vault_hourfold",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 44,
+     "max": 46
     }
    ],
    "scripted": false,
@@ -7501,6 +7564,13 @@
      "rarity": "uncommon",
      "min": 41,
      "max": 42
+    },
+    {
+     "area": "pale_vault_hourfold",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 44,
+     "max": 48
     }
    ],
    "scripted": false,
@@ -7716,6 +7786,13 @@
      "rarity": "uncommon",
      "min": 41,
      "max": 42
+    },
+    {
+     "area": "pale_vault_hourfold",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 44,
+     "max": 47
     }
    ],
    "scripted": false,
@@ -13242,16 +13319,8 @@
     "weight_kg": 3.8,
     "habitat": "central"
    },
-   "encounters": [
-    {
-     "area": "umbral_spire",
-     "terrain": "cave",
-     "rarity": "rare",
-     "min": 60,
-     "max": 62
-    }
-   ],
-   "scripted": false,
+   "encounters": [],
+   "scripted": true,
    "art": {
     "silhouette": "Squat, teardrop-shaped body of burnished brass, a round glass-chimney belly filled with warm amber glow; two small mitten-like hands grip the base; tiny curled feet; a brass hood sits slightly askew like a jaunty cap; warm cream light pools at its base; instantly iconic at 32px \u2014 fat oval + hat silhouette.",
     "palette": "Squat, teardrop-shaped body of burnished brass, a round glass-chimney belly filled with warm amber glow; two small mitten-like hands grip the base; tiny curled feet; a brass hood sits slightly askew like a jaunty cap; warm cream light pools at its base; instantly iconic at 32px \u2014 fat oval + hat silhouette.",

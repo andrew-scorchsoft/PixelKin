@@ -1396,6 +1396,109 @@ export const DIALOGUE: DialogueRegistry = {
   'npc.keylumen_waits': [
     { text: 'The white-gold light folds back into the dais — not gone, not refused. Waiting. Raise your lamp and ask again; the Keystar has waited years, and will not begrudge you a breath.' },
   ],
+
+  // ===========================================================================
+  // THE THREE HOURS (walkthrough/07-the-three) — the legendary triad's sites.
+  // Reverent-melancholy register, BINDING: zero humour at the Hours, their
+  // verses, or their battles; each chain's one dry line rides its rumour-giver
+  // script. The three resting lines are §7 VERBATIM ({remaining} is replaced
+  // by the engine with the victories still owed — a cost, never a timer).
+  // ===========================================================================
+
+  // --- Site I: Tideglass Cavern (South) — the Dusk Hour below the glass ------
+  'sign.tideglass_mouth': [
+    { text: 'TIDEGLASS CAVERN. The sea smoothed it; lamp-light finishes it. Mind the black water — the tide under the glass keeps its own hours.' },
+  ],
+  'sign.tideglass_nook': [
+    { text: 'A lampwright\'s waymark, cut small and sure into the glass: "THE GLASS REMEMBERS EVERY LIGHT IT IS SHOWN. SHOW IT GOOD ONES."' },
+  ],
+  // The wreck-lamp before the old fisher's tale is heard (S3's gate).
+  'npc.tideglass_wrecklamp_cold': [
+    { text: 'An old boat lies broken in the rocks, her stern-lamp wedged where she split — guttered, with years of salt on the glass. It is somebody\'s tended story, and you do not know it yet.', style: 'narrate' },
+  ],
+  'npc.tideglass_wrecklamp_lit': [
+    { text: 'The wreck-lamp burns steady in its glass throat, the way it burned three days for a drowning man forty years ago. The debt is paid. The light never counted it.', style: 'narrate' },
+  ],
+  // The verse plaque's inert twin (before the wreck-lamp burns).
+  'sign.tideglass_verse': [
+    { text: 'A glass hood over a cold stern-lamp, etched line on line — lampwright\'s marks, worn soft by salt. In the dark they refuse to be read.' },
+  ],
+  // The relay's wrong-order/cold line (shared by all three lenses).
+  'npc.tideglass_lens_cold': [
+    { text: 'A standing lens of sea-glass, taller than you, cold to the lamp. Your light slides off it and goes nowhere. The verse named an order, and this is not its turn.', style: 'narrate' },
+  ],
+  // The stair seam, sealed until lens C rings (warp blocked_ref).
+  'npc.tideglass_stair_sealed': [
+    { text: 'A seam in the glass breathes cold air. It is not open.', style: 'narrate' },
+  ],
+  // The Dusk Hour's withdrawal (cooldownRef — §7 verbatim).
+  'npc.three_dusk_resting': [
+    { text: 'The lenses hold your own lamp-light and nothing else. The Dusk Hour has folded itself back into the seam between the days — win {remaining} more battles, and the glass may warm to you again.' },
+  ],
+  // The netmender, once her rumour is told (consumes flag:three_dusk_rumour).
+  'npc.netmender_hours_after': [
+    { speaker: 'NETMENDER', text: 'Still singing of an evening, that cliff — low, like a lamp being hummed to. You went and listened, didn\'t you. I can tell. You stand like somebody who has been NEAR something.' },
+  ],
+
+  // --- Site II: the Hourfold (North) — Midnight in the deep ice --------------
+  // The sealed fold (host warp blocked_ref — §5 verbatim).
+  'npc.hourfold_sealed': [
+    { text: 'The fold is shut fast with ice that has opinions about visitors. Something in there is not ready to be looked at.', style: 'narrate' },
+  ],
+  // The aurora names the snuffing order (§5: east, the water-ice, west).
+  'sign.hourfold_aurora': [
+    { text: 'A watcher\'s waymark, cut into the blue ice and glazed by forty winters: "READ THE SKY BEFORE THE SHELF. The ribbon kneels east, then over the water-ice, then west."' },
+  ],
+  // The Unstruck Toll's wrong-order refusal (shared by all three braziers).
+  'npc.hourfold_flame_leans': [
+    { text: 'The vigil-brazier burns blue-white and certain. As the snuffer rises, the flame leans away from it — not this one, not yet. The aurora named an order.', style: 'narrate' },
+  ],
+  // The Still Hour's withdrawal (cooldownRef — §7 verbatim).
+  'npc.three_midnight_resting': [
+    { text: 'The fold is only ice and aurora tonight. Midnight has kept its watch longer than anyone alive; it can outlast you without noticing — {remaining} battles won, and it may consent to be witnessed again.' },
+  ],
+  // The aurora-watcher, once her rumour is told (consumes flag:three_mid_rumour).
+  'npc.aurorawatcher_after': [
+    { speaker: 'WATCHER', text: 'The fold still queues the sky, and now you know why. Stand a moment before you go down to it. That is all the watch has ever asked of anyone — that the dark be WITNESSED, not braved.' },
+  ],
+  // Ysolde, once the snuffer is handed over (consumes flag:three_mid_snuffer).
+  'npc.ysolde_snuffer_after': [
+    { speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'serene', text: 'You carry the snuffer the way a tender should — like a lamp, not a tool. Put the vigil out gently, wanderer. The Still Hour has watched the putting-out of better flames than ours.' },
+  ],
+
+  // --- Site III: the Unrisen Stair (West) — the Dawn that waited -------------
+  // The sealed stair (host warp blocked_ref — §6 verbatim).
+  'npc.unrisen_sealed': [
+    { text: 'A stair behind the seal, climbing toward nothing the sky currently offers. The basin before it is dry.', style: 'narrate' },
+  ],
+  // The basin before Lucan's phial is carried (trigger blocked_ref).
+  'npc.three_dawn_basin_dry': [
+    { text: 'A sun-basin of pale stone, bone-dry, set where a first light was meant to land. It is not waiting for water. It is waiting for morning — and it has the patience of masonry.', style: 'narrate' },
+  ],
+  // The sun-mirror flower before vine A blooms (trigger blocked_ref).
+  'npc.unrisen_mirror_waits': [
+    { text: 'A great flower of bronze and glass, petals shut, turned to face a sunrise that is not there. Nothing you carry is morning enough to open it — not yet.', style: 'narrate' },
+  ],
+  // The far vine's lock, narrated on every early attempt (band blocked_ref).
+  'npc.unrisen_far_vine': [
+    { text: 'The far sun-vine sleeps across the black water, shut tight. The basin\'s cupful of daylight pools where it was poured — it must be BENT here, the way the old gardeners bent it, before the far bank will believe in morning.', style: 'narrate' },
+  ],
+  // The east flight opens (the bloom_b band's ref).
+  'npc.unrisen_stair_wakes': [
+    { text: 'The bent daylight crosses the water ahead of you, and the far vine takes it: blooms, climbs, and lays itself open up the east flight like a road remembering it is one. Above, at the head of the stair, something stands facing east.', style: 'narrate' },
+  ],
+  // The Lost Hour's withdrawal (cooldownRef — §7 verbatim).
+  'npc.three_dawn_resting': [
+    { text: 'The basin stands dry and the stair unrisen. The Hour that has waited years for its morning can wait a little longer than you — {remaining} more battles won, and it may risk believing again.' },
+  ],
+  // Nessa, once her reading is shared (consumes flag:three_dawn_rumour).
+  'npc.nessa_hours_after': [
+    { speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: 'The bell that hasn\'t rung is still there, due west, under everything. I hear it most on clear nights. ...Go gently, Wayfarer. Whatever has waited that long for a morning deserves not to be startled.' },
+  ],
+  // Lucan, once the phial is given (consumes flag:three_dawn_phial).
+  'npc.lucan_phial_after': [
+    { speaker: 'LUCAN PYRE', portrait: 'lucan', expr: 'bittersweet', text: 'Forty years I kept that phial against a day worth spending it on, and the moment I hand it over the theatre feels LIGHTER. Pour it true, apprentice. First light is an entrance no one gets to make twice.' },
+  ],
 };
 
 const FALLBACK: DialogueLine[] = [{ text: '...' }];

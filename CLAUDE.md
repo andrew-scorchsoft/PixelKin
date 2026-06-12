@@ -156,9 +156,10 @@ go digging on every task.
   (later ids never renumber the original 1–151): the third starter line (#152–#153),
   the three starter middle stages (#154–#156), the apex kindlings #157 **Pharolux**
   (Glostern line) and #158 **Corolion** → #159 **Dawnregent**, and the **Three Hours**
-  legendary trio #160 **Gloamber** / #161 **Tollhart** / #162 **Erstmorn** (optional
+  legendary trio #160 **Gloamber** / #161 **Noctilune** / #162 **Erstmorn** (optional
   set-piece catches with failure cooldowns; sites + spec in
-  `docs/world/walkthrough/07-the-three.md`). Moves: **≤4 per kin**
+  `docs/world/walkthrough/07-the-three.md` — sites, unlock chains, scripts and the
+  `battle-hours`/`sting-hour` audio are BUILT, 2026-06). Moves: **≤4 per kin**
   from a **125-move** shared pool (wave 2: full phys/spec ladders per type + 13 signature
   moves) + 28 abilities. (`docs/mechanics/dex.md` for the readable dex)
 - **Starters:** the founding trio is **complete** and every starter is a **three-stage

@@ -179,6 +179,22 @@ m["npcs"].append(
      "sprite": "ysolde_frost", "movement": "static",
      "dialogue_ref": "npc.ysolde_vault",
      "hidden_when_flag": "gleam:frost"})
+# SYNC 2026-06 (Three Hours wiring, 07-the-three §5): Ysolde returns to the
+# heart for H2's Vigil Snuffer hand-over (requires the rumour — itself gated
+# on gleam:frost, so this never co-spawns with ysolde_vault above). Mirrored
+# into the shipped pale_vault_undercroft.json by hand — reconcile before
+# re-running.
+m["npcs"].append(
+    {"id": "ysolde_snuffer", "at": {"tx": 4, "ty": 12}, "facing": "down",
+     "sprite": "ysolde_frost", "movement": "static",
+     "dialogue_ref": "script.ysolde_snuffer",
+     "requires_flag": "flag:three_mid_rumour",
+     "hidden_when_flag": "flag:three_mid_snuffer"})
+m["npcs"].append(
+    {"id": "ysolde_snuffer_after", "at": {"tx": 4, "ty": 12}, "facing": "down",
+     "sprite": "ysolde_frost", "movement": "static",
+     "dialogue_ref": "npc.ysolde_snuffer_after",
+     "requires_flag": "flag:three_mid_snuffer"})
 owed += ["npc.ysolde_vault (her waiting line at the heart; placement swaps to "
          "the Lumenary hall once gleam:frost is held)"]
 

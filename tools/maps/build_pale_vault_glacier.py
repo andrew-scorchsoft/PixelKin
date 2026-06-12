@@ -474,9 +474,23 @@ m["npcs"] += [
      "sprite": "npc_old_man", "movement": "static",
      "dialogue_ref": "npc.vigil_keeper_after",
      "requires_flag": "flag:aurora_watch_seen"},
+    # SYNC 2026-06 (Three Hours wiring, 07-the-three §5): watcher A becomes
+    # H2's rumour-giver once gleam:frost stands (plain -> hours -> after, a
+    # three-stage swap on the same tile). Mirrored into the shipped
+    # pale_vault_glacier.json by hand — reconcile before re-running.
     {"id": "aurora_watcher_a", "at": {"tx": 25, "ty": 12}, "facing": "up",
      "sprite": "npc_woman", "movement": "static",
-     "dialogue_ref": "npc.aurora_watcher_a"},
+     "dialogue_ref": "npc.aurora_watcher_a",
+     "hidden_when_flag": "gleam:frost"},
+    {"id": "aurora_watcher_hours", "at": {"tx": 25, "ty": 12}, "facing": "up",
+     "sprite": "npc_woman", "movement": "static",
+     "dialogue_ref": "script.aurorawatcher_hours",
+     "requires_flag": "gleam:frost",
+     "hidden_when_flag": "flag:three_mid_rumour"},
+    {"id": "aurora_watcher_hours_after", "at": {"tx": 25, "ty": 12}, "facing": "up",
+     "sprite": "npc_woman", "movement": "static",
+     "dialogue_ref": "npc.aurorawatcher_after",
+     "requires_flag": "flag:three_mid_rumour"},
     {"id": "aurora_watcher_b", "at": {"tx": 26, "ty": 14}, "facing": "up",
      "sprite": "npc_man", "movement": "static",
      "dialogue_ref": "npc.aurora_watcher_b"},

@@ -383,10 +383,24 @@ m["npcs"] += [
      "dialogue_ref": "script.lumenary_solarium",
      "requires_flag": "flag:q_west_stage_lit",
      "hidden_when_flag": "gleam:solar"},
+    # SYNC 2026-06 (Three Hours wiring, 07-the-three §6): Lucan's after-stage
+    # now hides once Nessa's rumour stands, and the First-Light Phial stages
+    # take the tile (after -> phial -> phial_after). Mirrored into the shipped
+    # sunken_solarium.json by hand — reconcile before re-running.
     {"id": "lucan_after", "at": {"tx": 14, "ty": 16}, "facing": "down",
      "sprite": "lucan_pyre", "movement": "static",
      "dialogue_ref": "npc.lucan_after",
-     "requires_flag": "gleam:solar"},
+     "requires_flag": "gleam:solar",
+     "hidden_when_flag": "flag:three_dawn_rumour"},
+    {"id": "lucan_phial", "at": {"tx": 14, "ty": 16}, "facing": "down",
+     "sprite": "lucan_pyre", "movement": "static",
+     "dialogue_ref": "script.lucan_phial",
+     "requires_flag": "flag:three_dawn_rumour",
+     "hidden_when_flag": "flag:three_dawn_phial"},
+    {"id": "lucan_phial_after", "at": {"tx": 14, "ty": 16}, "facing": "down",
+     "sprite": "lucan_pyre", "movement": "static",
+     "dialogue_ref": "npc.lucan_phial_after",
+     "requires_flag": "flag:three_dawn_phial"},
 ]
 owed += ["script.lucan_quest (the hook, his voice: 'A bond that remembers the "
          "sun! Then prove the memory...' — sets flag:q_west_stage)",

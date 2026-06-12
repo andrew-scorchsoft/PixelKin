@@ -197,6 +197,22 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     unlock_flag: 'flag:great_null_known',
   },
 
+  // --- The Three Hours (walkthrough/07-the-three) — gated on the triad's own
+  // chain flags: the netmender's rumour teaches the word; the first catch
+  // teaches what a withdrawal costs.
+  {
+    id: 'three_hours',
+    term: 'the Three Hours',
+    desc: 'The Skyweave holds the places of the sky; the Hours are its turning — dusk, midnight, and dawn, the three watch-spirits of the wheel itself. When the Long Dusk fell the wheel jammed, and each Hour went to ground with its watch unrelieved. They are said to wait at the ends of earned roads, for tenders who understand them.',
+    unlock_flag: 'flag:three_dusk_rumour',
+  },
+  {
+    id: 'hours_withdrawal',
+    term: "the Hours' Withdrawal",
+    desc: 'An Hour meets you once, as a chance — never a gift. Falter, and it folds itself away to keep its watch alone again; only victories, earned out in the world, persuade it that your lamp is worth a second look. The cost is real. The Hours have nothing else to spend.',
+    unlock_flag: 'flag:three_dusk_caught',
+  },
+
   // --- The endgame (Central) — gated on flags the climax already raises ------
   {
     id: 'keystar',

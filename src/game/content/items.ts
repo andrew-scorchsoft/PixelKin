@@ -297,6 +297,24 @@ export const ITEMS: ItemRegistry = {
     category: 'key',
   },
 
+  // --- The Three Hours (walkthrough/07-the-three) ------------------------------
+  // H2: Ysolde's snuffer — the key to the Hourfold's warp gate, and the one
+  // tool in the game made for putting a light OUT, on purpose.
+  vigil_snuffer: {
+    id: 'vigil_snuffer',
+    name: 'Vigil Snuffer',
+    desc: 'A long-handled cap of cold iron from the Pale Vault undercroft, worn smooth by careful hands. For the half of tending that nobody sings about.',
+    category: 'key',
+  },
+  // H3: Lucan's hoarded morning — poured into the Solarium's dry sun-basin to
+  // wake the Unrisen Stair's first vine.
+  first_light_phial: {
+    id: 'first_light_phial',
+    name: 'First-Light Phial',
+    desc: 'One cupful of daylight, drawn the morning before the Long Dusk fell and kept forty years against a day worth spending it on. It beats faintly through the glass.',
+    category: 'key',
+  },
+
   // --- The Central endgame (walkthrough/05-central-endgame) -------------------
   // C2 "The Inn's Empty Lamps" — one lamp-token from each quadrant's festival,
   // carried home to the crossroads inn. Key items; the chain is the quest.

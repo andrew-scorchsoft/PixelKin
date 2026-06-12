@@ -2405,6 +2405,9 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'grave', text: 'You know it all already. You cannot out-fight Còr; he is not your enemy, and beating him proves nothing he has not already grieved his way past. Go up there to remember louder than he can grieve. That is the whole of my counsel, and you have carried it for half the sky.' },
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'grave', text: 'One thing more. The Keystar keeps a living heart — the old books call it the Keylumen — and it will want asking, not winning. I have sent something up the inward road with a friend of yours, for exactly that asking. Spend it nowhere else.' },
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'peace', text: 'I will be here, watching the centre of the sky. When it changes — and it is going to change, child — I should like to be standing where your road began.' },
+    // The Three Hours' foreshadow payoff (07-the-three §6) — optional colour,
+    // played only if the player has already stood before the Lost Hour.
+    { op: 'say', if_flag: 'flag:three_dawn_met', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'So you found the third watch. Still facing east, was it? ...Then it has never stopped believing the wheel can turn. Neither have I. Go and prove the pair of us right.' },
     { op: 'narrate', text: 'He presses your shoulder once, the way he did at the very start, a whole Wayfaring ago. He does not say goodbye. Lamp-tenders never do.' },
     { op: 'setFlag', flag: 'flag:fenn_counsel_given' },
   ],
@@ -2784,6 +2787,279 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', if_flag: 'flag:wren_joined', speaker: 'WREN', portrait: 'wren', expr: 'eager', text: 'Same road, different lamps — all the way to the end of the sky. ...And now we get to see where it goes in daylight. Come on, Wayfarer. Walk me home.' },
     { op: 'narrate', text: 'The long night breaks. Not into a victory — into a morning. Dusk will come again; that is the whole of it. The dawn is worth the dark precisely because it can be lost.' },
     { op: 'cinematic', id: 'ending_credits' },
+  ],
+
+  // ===========================================================================
+  // THE THREE HOURS (walkthrough/07-the-three) — the legendary triad: Gloamber
+  // (#160, Tideglass Gallery), Noctilune (#161, the Hourfold), Erstmorn (#162,
+  // the Unrisen Stair). Awe-and-ache register, BINDING: zero humour at the
+  // sites; each chain's ONE dry line lives on its rumour-giver below. The
+  // three legendaryBattle ops are the spec's VERBATIM shapes. Catch tails
+  // follow the §3 cadence: a held quiet, then the area bed returns warmer.
+  // ===========================================================================
+
+  // --- H1 "The Hour Below" — the unlock chain (Pearlmoor → Tideglass) --------
+  // The netmender's terminal S1 stage now carries the rumour: her done-line
+  // always plays; the rumour rides if_flag gleam:verdant (Glimmerstep held —
+  // the cavern is reachable) and banks flag:three_dusk_rumour, swapping her
+  // placement to npc.netmender_hours_after. Intentional data conditional:
+  // optional-content unlock, not progression.
+  'script.netmender_hours': [
+    { op: 'dialogue', ref: 'npc.netmender_done' },
+    { op: 'say', if_flag: 'gleam:verdant', speaker: 'NETMENDER', text: 'And since you keep turning up wherever a lamp wants tending — a thing I would tell nobody sensible.' },
+    { op: 'say', if_flag: 'gleam:verdant', speaker: 'NETMENDER', text: 'There\'s a low singing in the cliff at lamp-lighting time. Could be the tide. Tide\'s never once kept a tune before, mind.' },
+    { op: 'say', if_flag: 'gleam:verdant', speaker: 'NETMENDER', text: 'It comes up out of Tideglass — the glass cavern under the coast, where the old fisher\'s wreck went down. Deep-walkers\' ground now, with that glimmer-step of yours. If something under the glass sings the evening in... somebody who LIGHTS things ought to go and hear it.' },
+    { op: 'setFlag', if_flag: 'gleam:verdant', flag: 'flag:three_dusk_rumour' },
+  ],
+
+  // --- Tideglass Cavern: the wreck-lamp (S3 "The Cavern Keeps a Light" pays).
+  // Interact gated on flag:q_south_wrecklamp (the fisher's tale); the trigger
+  // banks flag:q_south_wrecklamp_lit — consumed by the inn's thanks stage AND
+  // the verse plaque's live twin.
+  'script.tideglass_wrecklamp': [
+    { op: 'narrate', text: 'The wreck at last — her ribs glass-smooth, her stern-lamp wedged where she broke, exactly as a drowning man has remembered it for forty years.' },
+    { op: 'narrate', text: 'The wick is salt-stiff and patient. You trim it the way you were taught, and lend it your flame.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#ffd089', alpha: 0.2, ms: 700 },
+    { op: 'narrate', text: 'It takes. Light walks out across the smoothed glass in every direction — the walls, the black water, the veined teal deep of it — and the cavern that kept one light burning for three days is a lit place again.' },
+    { op: 'tint', color: '#ffd089', alpha: 0, ms: 900 },
+    { op: 'narrate', text: 'An old man at a quayside inn is owed the telling. And under your boots, faint as a held note, something low sings the evening in.' },
+  ],
+
+  // The verse on the wreck-lamp's glass hood. ONE requires_flag rides the
+  // trigger (the lamp burning); the rumour gate lives HERE — without the
+  // netmender's word the etching stays craft, never directions, and the flag
+  // is only banked once both are held (the spec's wiring-pass note).
+  'script.three_dusk_verse': [
+    { op: 'narrate', text: 'With the wreck-lamp burning, its glass hood comes alive: etched lines catch the flame and stand out silver — verse-marks, in an old lampwright\'s hand, sure and small.' },
+    { op: 'narrate', if_flag: 'flag:three_dusk_rumour', text: '"LAST LIGHT FIRST; THE LOW LIGHT AFTER; THE DEEP LIGHT ONCE THE OTHERS HOLD."' },
+    { op: 'narrate', if_flag: 'flag:three_dusk_rumour', text: 'Three standing lenses wait in the cavern\'s dark — the west shelf, the mid-pool, the stair seam. The low singing under the floor has not stopped. It is, you realise, keeping time.' },
+    { op: 'setFlag', if_flag: 'flag:three_dusk_rumour', flag: 'flag:three_dusk_verse' },
+  ],
+
+  // The Lampwright's Relay — three lenses lit in verse order (the triggers
+  // chain the flags; cold twins swap on the same flags; wrong order answers
+  // with npc.tideglass_lens_cold).
+  'script.three_dusk_lens_a': [
+    { op: 'narrate', text: 'The amber lens, on the west shelf — last light: the colour of an evening\'s end. You raise the vesperlamp to it.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'narrate', text: 'The glass warms from cold to honey, and the wreck-lamp\'s far beam leans INTO it, gathered and carried one span deeper into the dark. Somewhere below, the low singing turns toward you.' },
+  ],
+  'script.three_dusk_lens_b': [
+    { op: 'narrate', text: 'The low lens, out on the mid-pool islet, barely above the black water.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'narrate', text: 'It takes the amber beam and bends it low across the pool — light skating the still water the way dusk lies down along a valley floor. One span deeper. The singing is very close now.' },
+  ],
+  'script.three_dusk_lens_c': [
+    { op: 'narrate', text: 'The deep lens, by the stair seam — and behind you the other two hold, exactly as the verse asked.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#4fb4ff', alpha: 0.2, ms: 700 },
+    { op: 'narrate', text: 'The relayed beam pours through it and DOWN, into the seam — and the glass rings: one low note through the floor, through your boots, through the water. The whole cavern is the bell.' },
+    { op: 'tint', color: '#4fb4ff', alpha: 0, ms: 900 },
+    { op: 'narrate', text: 'The stair seam breathes open. Below, in a chamber you cannot see, the pooled light is being waited on.' },
+  ],
+
+  // The Dusk Hour (Tideglass Gallery) — the game's first legendaryBattle.
+  // Spec-verbatim staging + op; the catch tail returns the area bed warmer.
+  'script.three_dusk_battle': [
+    { op: 'letterbox', on: true },
+    { op: 'silence', ms: 900 },
+    { op: 'narrate', text: 'The glass warms. Something that has carried the evening a long time lifts its head.' },
+    { op: 'letterbox', on: false },
+    { op: 'musicSting', key: 'sting-hour' },
+    { op: 'music', key: 'battle-hours' },
+    { op: 'legendaryBattle',
+      name: 'three_dusk', kin: 160, level: 38,
+      caughtFlag: 'flag:three_dusk_caught',
+      cooldownBattles: 10,
+      cooldownRef: 'npc.three_dusk_resting',
+      terrain: 'cave' },
+    { op: 'silence', ms: 1200 },
+    { op: 'narrate', text: 'The Dusk Hour folds itself into your lamp the way evening folds into a valley — heavily, gratefully, an old weight set down at last. Among your kin, its chest-coal settles to a banked and steady glow.' },
+    { op: 'musicCrossfade', key: 'dimglass-coast-c', ms: 1600 },
+  ],
+
+  // Tideglass caches (the standing region kit; the nook is the spine §5
+  // Starlight reveal — its placement is gated on flag:lamplight_starlight).
+  'script.pickup_tideglass_starshard': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'starglass_shard', count: 1 },
+    { op: 'say', text: 'In the cavern\'s deepest fold, where only a Starlight lamp reaches: a STARGLASS SHARD, dusk-coloured to its heart — the old fisher\'s deeper page, kept by the glass. Found it!' },
+    { op: 'setFlag', flag: 'flag:picked_tideglass_starshard' },
+  ],
+  'script.pickup_tideglass_balm': [
+    { op: 'giveItem', item: 'warm_balm', count: 2 },
+    { op: 'say', text: 'A deep-walker\'s tin, wedged dry above the waterline on the west shelf. Found 2 WARM BALMS!' },
+    { op: 'setFlag', flag: 'flag:picked_tideglass_balm' },
+  ],
+  'script.pickup_tideglass_wicks': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 250 },
+    { op: 'say', text: 'The wrecked boat\'s strongbox, holding exactly what a small fisher\'s boat would hold. Found 250 WICKS — forty years too late for her keeper, and right on time for her lamp.' },
+    { op: 'setFlag', flag: 'flag:picked_tideglass_wicks' },
+  ],
+
+  // --- H2 "The Longest Watch" — the unlock chain (Pale Vault → the Hourfold).
+  // The aurora-watcher's post-Frost stage carries the rumour (her dry line is
+  // the chain's one sanctioned humour beat), then Ysolde's snuffer arms the
+  // fold's warp gate.
+  'script.aurorawatcher_hours': [
+    { op: 'say', speaker: 'WATCHER', text: 'You again, with the warded flame. Good. Stand with me a moment and look where I am looking — past the blue fold, into the deep ice.' },
+    { op: 'say', speaker: 'WATCHER', text: 'The aurora bends round that fold like it\'s queuing. Forty years I\'ve watched the sky. It has never once queued for me.' },
+    { op: 'say', speaker: 'WATCHER', text: 'Whatever it waits on, it is a watcher\'s matter, and the ice has sealed it shut. Ysolde keeps the undercroft below the vault. She will know what a vigil that old asks of a visitor — ask her before you go prying at the fold.' },
+    { op: 'setFlag', flag: 'flag:three_mid_rumour' },
+  ],
+  'script.ysolde_snuffer': [
+    { op: 'say', speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'neutral', text: 'The watcher sent you. I wondered which winter would finally ask. ...Yes. Something keeps the deep ice, wanderer — has kept it since before this vault had brackets to light. The Still Hour. Midnight itself, standing a watch with no relief.' },
+    { op: 'say', speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'serene', text: 'Three vigil-braziers burn at the bottom of the fold. Ours — kept lit by generations of watchers, so the Hour would not stand unwitnessed. But it will not be SEEN by their light. To meet midnight, you must bring it the dark: kept, and deliberate.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'vigil_snuffer', count: 1 },
+    { op: 'say', text: 'Received the VIGIL SNUFFER — a long-handled cap of cold iron, worn smooth by careful hands.' },
+    { op: 'say', speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'serene', text: 'You have spent the whole road lighting things. The Still Hour will want to see that you understand the other half of tending.' },
+    { op: 'say', speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'neutral', text: 'The aurora will name the order — read the sky before the shelf. And wanderer: what you put out down there, you put out ON PURPOSE. That is the entire difference between a tender and the Hollowing.' },
+    { op: 'setFlag', flag: 'flag:three_mid_snuffer' },
+  ],
+
+  // The Unstruck Toll — three braziers SNUFFED in aurora order (east →
+  // water-ice → west). The one inverted light verb in the game; the dark made
+  // here is kept, not surrendered. Triggers chain the flags; lit→snuffed
+  // object swaps ride the same flags; wrong order answers with
+  // npc.hourfold_flame_leans. Nothing resets — the cooldown is the cost.
+  'script.three_mid_brazier_a': [
+    { op: 'narrate', text: 'The east brazier first, under the kneeling ribbon. You raise the Vigil Snuffer the way Ysolde would — slowly, and on purpose — and cap the blue-white flame like a door held open for someone leaving.' },
+    { op: 'sfx', key: 'world-star-gutter' },
+    { op: 'narrate', text: 'The flame goes, gently. The dark that takes its place is not the Hollowing\'s — it is yours, chosen and kept. One. Overhead, the aurora pours a shade brighter.' },
+  ],
+  'script.three_mid_brazier_b': [
+    { op: 'narrate', text: 'The centre brazier, out on the water-ice. Your own lamp seems very loud here.' },
+    { op: 'sfx', key: 'world-star-gutter' },
+    { op: 'narrate', text: 'Two. The shelf is more aurora than firelight now, and the silence has changed its quality — from an empty room to an occupied one.' },
+  ],
+  'script.three_mid_brazier_c': [
+    { op: 'narrate', text: 'The west brazier, last. The snuffer is steady. Your hands, less so.' },
+    { op: 'sfx', key: 'world-star-gutter' },
+    { op: 'letterbox', on: true, ms: 320 },
+    { op: 'musicFade', ms: 700 },
+    { op: 'silence', ms: 1200 },
+    { op: 'narrate', text: 'The dark does not deepen. It straightens, as if relieved of a stoop.' },
+    { op: 'narrate', text: 'On the far shelf, what you took for a dome of black ice unrolls — pane over pane of midnight glass, one star kept in each — and stands. A sentinel, hooded in the whole night sky, regarding your small kept dark.' },
+    { op: 'letterbox', on: false, ms: 320 },
+  ],
+
+  // The Still Hour (the Hourfold's bottom shelf) — spec-verbatim op.
+  'script.three_midnight_battle': [
+    { op: 'letterbox', on: true },
+    { op: 'silence', ms: 1200 },
+    { op: 'narrate', text: 'It does not move as you approach. It has been still long enough to grow stars. Only the thin silver crescents of its eyes turn — and the unstruck bell at its throat holds its silence like a kept vow.' },
+    { op: 'letterbox', on: false },
+    { op: 'musicSting', key: 'sting-hour' },
+    { op: 'music', key: 'battle-hours' },
+    { op: 'legendaryBattle',
+      name: 'three_midnight', kin: 161, level: 48,
+      caughtFlag: 'flag:three_mid_caught',
+      cooldownBattles: 14,
+      cooldownRef: 'npc.three_midnight_resting',
+      terrain: 'cave' },
+    { op: 'silence', ms: 1200 },
+    { op: 'narrate', text: 'The Still Hour folds into your lamp pane by pane — the midnight sky kneeling down small, the watch handed over at last. Somewhere in the lamp-light, for the first time in years, midnight is relieved.' },
+    { op: 'musicCrossfade', key: 'pale-vault-glacier-c', ms: 1600 },
+  ],
+
+  // The fold's one [MISSABLE] cache, behind the false ledge-line (mundane
+  // periphery — the one sanctioned dry note at this site lives on a tin).
+  'script.pickup_hourfold_amber': [
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'giveItem', item: 'moth_amber', count: 1 },
+    { op: 'say', text: 'Wedged in the pocket where every wrong ledge-drop lands: a MOTH-AMBER, glowing patiently. Found it! Whoever dropped it took the false line too, and decided against climbing back for it.' },
+    { op: 'setFlag', flag: 'flag:picked_hourfold_amber' },
+  ],
+
+  // --- H3 "The Unrisen Stair" — the unlock chain (Nightreach → the Solarium).
+  // Nessa is sincere — she is the haunted one; Lucan carries the chain's one
+  // dry line with the First-Light Phial.
+  'script.nessa_hours': [
+    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: 'Wayfarer. Come up to the eyepiece — no, you needn\'t look. Listening is the trouble, tonight.' },
+    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: 'Every chart says the morning bell should hang due west of here. There is no morning bell. There has been no morning. And yet three nights running I have heard a bell that hasn\'t rung — WAITING makes a sound, you know, if it goes on long enough.' },
+    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'reverent', text: 'Due west is the Solarium\'s drowned garden — and off its deepest fold, the old processional stair no one has climbed since the sky kept hours. If something waits there for a morning... it has been waiting longest of anything alive.' },
+    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'neutral', text: 'Lucan kept the last warm day. Ask him whether anyone thought to keep the last MORNING. If anyone would know, it is the man who hoards daylight.' },
+    { op: 'setFlag', flag: 'flag:three_dawn_rumour' },
+  ],
+  'script.lucan_phial': [
+    { op: 'say', speaker: 'LUCAN PYRE', portrait: 'lucan', expr: 'grand', text: 'The last MORNING? ...Nessa heard her bell again, didn\'t she. Then it is time — and I have been holding this cue for forty years.' },
+    { op: 'say', speaker: 'LUCAN PYRE', portrait: 'lucan', expr: 'bittersweet', text: 'I kept the last warm day for forty years. Apparently somebody kept the last morning and never thought to mention it. Theatrical of them. I approve.' },
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'giveItem', item: 'first_light_phial', count: 1 },
+    { op: 'say', text: 'Received the FIRST-LIGHT PHIAL — one cupful of daylight, drawn the morning before the Long Dusk fell. Through the glass it beats faintly, like something with a pulse.' },
+    { op: 'say', speaker: 'LUCAN PYRE', portrait: 'lucan', expr: 'bittersweet', text: 'The dry sun-basin at the garden\'s deepest fold, before the sealed stair. Pour it there — all of it, mind. No saving some for later. First light is an entrance; you do not make half of one.' },
+    { op: 'setFlag', flag: 'flag:three_dawn_phial' },
+  ],
+
+  // The basin pour (host trigger on sunken_solarium banks flag:three_dawn_poured
+  // — the warp gate's key and bloom A's requires).
+  'script.three_dawn_basin': [
+    { op: 'narrate', text: 'The sun-basin waits where a first light was meant to land. You unstop the First-Light Phial — and for one moment the smell of MORNING, bread-warm and years gone, stands in the dark garden like a person.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#fff3c9', alpha: 0.14, ms: 900 },
+    { op: 'narrate', text: 'You pour. One cupful of daylight fills the basin to its brim and HOLDS, lying there like the first coin of a sunrise. Beyond the seal, on the stair no one has climbed, the lowest sun-vine stirs in its sleep.' },
+    { op: 'tint', color: '#fff3c9', alpha: 0, ms: 1100 },
+  ],
+
+  // The Bloom Ascent — sequential + redirect (the Sunsketch dimension in
+  // full). Bloom A rides the step_on bands; the mirror is the redirect; the
+  // far vine's bands answer npc.unrisen_far_vine until the daylight is bent.
+  'script.three_dawn_bloom_a': [
+    { op: 'narrate', text: 'The basin\'s pocket of morning climbs the stair with you — and the first sun-vine takes it: blooms, swells, and lays itself across the black water, a bridge that believes you about the daylight.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'narrate', text: 'Across the second water, the far vine sleeps on, untouched. And on the east spur, something of bronze and glass turns very slightly, the way a sleeper turns toward a window.' },
+  ],
+  'script.three_dawn_mirror': [
+    { op: 'narrate', text: 'The sun-mirror flower, shut these long years, feels the cupful of morning arrive and turns its face to it.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#fff3c9', alpha: 0.12, ms: 800 },
+    { op: 'narrate', text: 'It opens — bronze petal by glass petal — and BENDS the pocket of daylight out across the water in one long bright line, to the far bank, where the last vine sleeps. The old gardeners\' redirect, working one more time.' },
+    { op: 'tint', color: '#fff3c9', alpha: 0, ms: 900 },
+  ],
+
+  // The flight-two cache ([MISSABLE], a fallen capital).
+  'script.pickup_unrisen_shard': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'starglass_shard', count: 1 },
+    { op: 'say', text: 'In a fallen capital off the second flight, set down by some procession that never came back: a STARGLASS SHARD, keeping its light face-down against the years. Found it!' },
+    { op: 'setFlag', flag: 'flag:picked_unrisen_shard' },
+  ],
+
+  // The Lost Hour (the head terrace) — the climax foreshadow. Sets
+  // flag:three_dawn_met BEFORE the op, win or withdraw (Fenn's Crossroads
+  // line consumes it); the false-dawn tint deliberately rhymes with the
+  // Keystar relight (#fff3c9 — same family, a fraction of the strength). The
+  // op is spec-verbatim: NO terrain — the last Hour offers no shortcuts.
+  'script.three_dawn_battle': [
+    { op: 'letterbox', on: true },
+    { op: 'silence', ms: 1200 },
+    { op: 'setFlag', flag: 'flag:three_dawn_met' },
+    { op: 'tint', color: '#fff3c9', alpha: 0.12, ms: 1400 },
+    { op: 'narrate', text: 'For one held breath, the stair remembers what it was for.' },
+    { op: 'tint', color: '#fff3c9', alpha: 0, ms: 1100 },
+    { op: 'narrate', text: 'Where the first light was meant to land, something half-finished stands facing east. It has been facing east for years. It does not turn — but its sketched ear tilts, very slightly, toward your lamp.' },
+    { op: 'letterbox', on: false },
+    { op: 'musicSting', key: 'sting-hour' },
+    { op: 'music', key: 'battle-hours' },
+    { op: 'legendaryBattle',
+      name: 'three_dawn', kin: 162, level: 55,
+      caughtFlag: 'flag:three_dawn_caught',
+      cooldownBattles: 18,
+      cooldownRef: 'npc.three_dawn_resting' },
+    { op: 'silence', ms: 1400 },
+    { op: 'narrate', text: 'The Lost Hour steps into your lamp mid-stride, the way it has stood for years — and does not quite finish arriving, because part of it is still waiting where every morning waits. It will go with you. It was never going to stop facing east.' },
+    { op: 'musicCrossfade', key: 'sunken-solarium-c', ms: 1600 },
+  ],
+
+  // Fenn's counsel-after stage (Vesper Crossroads) — wraps the standing line
+  // and adds the §6 payoff once flag:three_dawn_met is held (the flag's one
+  // consumer alongside the counsel script's guarded step).
+  'script.fenn_counsel_after': [
+    { op: 'dialogue', ref: 'npc.fenn_counsel_after' },
+    { op: 'say', if_flag: 'flag:three_dawn_met', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'So you found the third watch. Still facing east, was it? ...Then it has never stopped believing the wheel can turn. Neither have I. Go and prove the pair of us right.' },
   ],
 };
 

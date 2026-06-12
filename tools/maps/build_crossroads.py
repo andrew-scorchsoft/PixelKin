@@ -408,9 +408,13 @@ m = {
          "dialogue_ref": "script.fenn_crossroads_counsel",
          "requires_flag": "flag:hub_unlocked",
          "hidden_when_flag": "flag:fenn_counsel_given"},
+        # SYNC 2026-06 (Three Hours wiring, 07-the-three §6): the after-stage
+        # is now a script — it wraps npc.fenn_counsel_after and adds Fenn's
+        # third-watch payoff on flag:three_dawn_met. Mirrored into the shipped
+        # vesper_crossroads.json by hand — reconcile before re-running.
         {"id": "fenn_counsel_after", "at": {"tx": CX + 1, "ty": CY + 1}, "facing": "up",
          "sprite": "npc_mentor", "movement": "static",
-         "dialogue_ref": "npc.fenn_counsel_after",
+         "dialogue_ref": "script.fenn_counsel_after",
          "requires_flag": "flag:fenn_counsel_given"},
         # A5 — Wren at the inward road (the band below is the guarantee; the
         # NPC is the face of it, interactable for players who walk up first).

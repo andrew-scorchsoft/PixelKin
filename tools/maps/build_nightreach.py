@@ -406,6 +406,20 @@ m["npcs"] += [
      "dialogue_ref": "npc.nessa_at_seven",
      "requires_flag": "flag:q_west_lamp_6",
      "hidden_when_flag": "flag:q_west_lamp_7"},
+    # SYNC 2026-06 (Three Hours wiring, 07-the-three §6): after her Gleam,
+    # Nessa keeps hearing the unrung morning bell — H3's rumour stages at the
+    # same eyepiece (gleam:lunar postdates lamp 7, so the windows are
+    # disjoint). Mirrored into the shipped nightreach_observatory.json by
+    # hand — reconcile before re-running.
+    {"id": "nessa_hours", "at": {"tx": 22, "ty": 9}, "facing": "left",
+     "sprite": "nessa_cole", "movement": "static",
+     "dialogue_ref": "script.nessa_hours",
+     "requires_flag": "gleam:lunar",
+     "hidden_when_flag": "flag:three_dawn_rumour"},
+    {"id": "nessa_hours_after", "at": {"tx": 22, "ty": 9}, "facing": "left",
+     "sprite": "nessa_cole", "movement": "static",
+     "dialogue_ref": "npc.nessa_hours_after",
+     "requires_flag": "flag:three_dawn_rumour"},
 ]
 owed += ["npc.fenn_waits (under lamp 5, before the counsel)",
          "npc.fenn_after (he stays under the densest stars)",

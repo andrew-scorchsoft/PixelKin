@@ -188,17 +188,33 @@ def encounters(region, rarity, tier, stage, scripted):
 # never erases them. slug -> extra EncounterZone-source rows.
 EXTRA_ENCOUNTERS = {
     "brinix":    [{"area": "pearlmoor_quay", "terrain": "water", "rarity": "uncommon", "min": 10, "max": 12}],
+    # Tideglass Cavern rows below (the Hours wiring, 2026-06): mirrors of the
+    # BUILT in-map zone tables (tideglass_cavern.json — the truth; weights ->
+    # rarity). The cave bed is the South's lv 20-24 backtrack; the Tidecall
+    # side-pool carries the atlas-promised signature rare (#30 Glostrael w5).
+    # tideglass_gallery has NO encounter zones by design (the Hour's room).
     "shimmral":  [{"area": "pearlmoor_quay", "terrain": "water", "rarity": "rare", "min": 11, "max": 12},
                   # the drowned shrine's rare circler (the Saltreach spur)
-                  {"area": "sunkbell_shallows", "terrain": "water", "rarity": "rare", "min": 18, "max": 20}],
-    "brinelet":  [{"area": "pearlmoor_quay", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 11}],
+                  {"area": "sunkbell_shallows", "terrain": "water", "rarity": "rare", "min": 18, "max": 20},
+                  {"area": "tideglass_cavern", "terrain": "cave", "rarity": "uncommon", "min": 21, "max": 24},
+                  {"area": "tideglass_cavern", "terrain": "water", "rarity": "common", "min": 21, "max": 24}],
+    "brinelet":  [{"area": "pearlmoor_quay", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 11},
+                  {"area": "tideglass_cavern", "terrain": "cave", "rarity": "common", "min": 20, "max": 22}],
     "brineroll": [{"area": "pearlmoor_quay", "terrain": "water", "rarity": "uncommon", "min": 10, "max": 12},
                   {"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 16, "max": 18},
                   {"area": "saltreach_fen_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 17, "max": 19},
-                  {"area": "sunkbell_shallows", "terrain": "water", "rarity": "common", "min": 17, "max": 19}],
+                  {"area": "sunkbell_shallows", "terrain": "water", "rarity": "common", "min": 17, "max": 19},
+                  {"area": "tideglass_cavern", "terrain": "cave", "rarity": "uncommon", "min": 21, "max": 24},
+                  {"area": "tideglass_cavern", "terrain": "water", "rarity": "common", "min": 21, "max": 24}],
     "lumpin":    [{"area": "pearlmoor_quay", "terrain": "tall_grass", "rarity": "common", "min": 9, "max": 11},
                   {"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 16, "max": 18},
-                  {"area": "saltreach_fen_ii", "terrain": "water", "rarity": "uncommon", "min": 17, "max": 19}],
+                  {"area": "saltreach_fen_ii", "terrain": "water", "rarity": "uncommon", "min": 17, "max": 19},
+                  {"area": "tideglass_cavern", "terrain": "cave", "rarity": "uncommon", "min": 20, "max": 23}],
+    # the Glostern line's middle form is the cavern pool's signature rare —
+    # it seeds Pharolux's living-lighthouse legend two doors from where the
+    # players caught Glostern (07-the-three §4).
+    "glostern":  [{"area": "tideglass_cavern", "terrain": "water", "rarity": "uncommon", "min": 22, "max": 24}],
+    "glostrael": [{"area": "tideglass_cavern", "terrain": "water", "rarity": "very_rare", "min": 22, "max": 24}],
     # the Saltreach marsh chain (fen I/II + the Sunkbell spur) — the maps'
     # authored tables, mirrored here as the dex's flavour rows
     "dewling":   [{"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "common", "min": 16, "max": 18},
@@ -235,7 +251,11 @@ EXTRA_ENCOUNTERS = {
     "strikeaven":  [{"area": "thunderroost", "terrain": "tall_grass", "rarity": "rare", "min": 36, "max": 37}],
     "glaceling":   [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "uncommon", "min": 36, "max": 39},
                     {"area": "pale_vault_glacier", "terrain": "cave", "rarity": "rare", "min": 38, "max": 40},
-                    {"area": "pale_vault_undercroft", "terrain": "cave", "rarity": "uncommon", "min": 37, "max": 40}],
+                    {"area": "pale_vault_undercroft", "terrain": "cave", "rarity": "uncommon", "min": 37, "max": 40},
+                    # the Hourfold (Hours wiring 2026-06): mirror of the BUILT
+                    # in-map bed (pale_vault_hourfold.json — sparse cave 44-48,
+                    # a band above the North curve by design)
+                    {"area": "pale_vault_hourfold", "terrain": "cave", "rarity": "uncommon", "min": 44, "max": 46}],
     "iceling":     [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "uncommon", "min": 36, "max": 38}],
     "snowcune":    [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "uncommon", "min": 36, "max": 38}],
     "prismcub":    [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "uncommon", "min": 36, "max": 38},
@@ -244,11 +264,13 @@ EXTRA_ENCOUNTERS = {
                     {"area": "aurora_hollow", "terrain": "tall_grass", "rarity": "common", "min": 40, "max": 42}],
     "prismantus":  [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "very_rare", "min": 38, "max": 40},
                     {"area": "pale_vault_glacier", "terrain": "cave", "rarity": "rare", "min": 38, "max": 40},
-                    {"area": "aurora_hollow", "terrain": "tall_grass", "rarity": "uncommon", "min": 41, "max": 42}],
+                    {"area": "aurora_hollow", "terrain": "tall_grass", "rarity": "uncommon", "min": 41, "max": 42},
+                    {"area": "pale_vault_hourfold", "terrain": "cave", "rarity": "uncommon", "min": 44, "max": 47}],
     "stillwarden": [{"area": "pale_vault_glacier", "terrain": "cave", "rarity": "rare", "min": 38, "max": 40},
                     {"area": "pale_vault_undercroft", "terrain": "cave", "rarity": "rare", "min": 38, "max": 40},
                     # hushfrost II: main bed w12 + the "numbed" pockets where it runs w45
-                    {"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 41, "max": 42}],
+                    {"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 41, "max": 42},
+                    {"area": "pale_vault_hourfold", "terrain": "cave", "rarity": "common", "min": 44, "max": 48}],
     "hushbore":    [{"area": "pale_vault_undercroft", "terrain": "cave", "rarity": "common", "min": 37, "max": 40},
                     {"area": "hushfrost_pass_i", "terrain": "tall_grass", "rarity": "common", "min": 40, "max": 42},
                     {"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "common", "min": 40, "max": 42},
@@ -383,7 +405,17 @@ CURATED_AREAS = {
     "sunken_solarium", "sunvault_climb_i", "sunvault_climb_ii", "helia_vault",
     "coldfog_marches", "coldfog_marches_i", "coldfog_marches_ii",
     "drownlight_beacon", "hollowfen_stillworks", "nightreach_observatory",
+    # the Three Hours sites (Hours wiring 2026-06): the cavern + the fold carry
+    # built in-map tables (mirrored above); the gallery is encounter-free by
+    # design and listed so no generated row can ever claim the Hour's room.
+    "tideglass_cavern", "tideglass_gallery", "pale_vault_hourfold",
 }
+
+# Kin that are FIXED quest catches (a legendaryBattle set-piece), even though
+# tier/rarity alone wouldn't mark them scripted. #148 Lampling is C1
+# "Lampling's Trail" at the Vesper Crossroads — its old umbral_spire row was a
+# stale open-table teaser from before the trail was built, dropped here.
+SCRIPTED_KIN = {"lampling"}
 
 # Wave-2 signature moves (gen_moves.py): one per elemental apex line. Inserted
 # into the owner's learnset late (the awe-curve payoff); excluded from the
@@ -545,7 +577,9 @@ def main():
             ok = (o.get("line") or {}).get("kindles_into")
             if ok == e["concept_id"]:
                 frm = o["dex_id"]; break
-        scripted = e.get("rarity") in ("legendary",) or (tier in ("E","F") and e.get("rarity") == "very_rare")
+        scripted = (e.get("rarity") in ("legendary",)
+                    or (tier in ("E", "F") and e.get("rarity") == "very_rare")
+                    or slugify(name) in SCRIPTED_KIN)
         ab, hab = pick_ability(e["types"], role, tier)
         kindling = None
         if into:
