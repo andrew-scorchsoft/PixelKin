@@ -65,15 +65,7 @@
     "weight_kg": 2.2,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 3,
-      "max": 6
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Round-bodied kitten, deep apricot coat with cream markings, curled ember-glow tail, closed-eyed happy expression; warm and cosy silhouette at 32px.",

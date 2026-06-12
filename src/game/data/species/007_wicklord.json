@@ -68,15 +68,7 @@
     "weight_kg": 42,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "rare",
-      "min": 10,
-      "max": 12
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Tall, dignified humanoid; torso is a layered tiered candelabra of poured wax, seven distinct flames each a different warm hue from amber to rose; long draping arms of flowing wax; a composed, kind face half-shadowed by a wax-brim hat; strikes a warm silhouette at 48px.",

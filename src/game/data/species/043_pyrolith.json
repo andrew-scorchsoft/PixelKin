@@ -68,15 +68,7 @@
     "weight_kg": 320.0,
     "habitat": "east"
   },
-  "encounters": [
-    {
-      "area": "lowleaf_hollow",
-      "terrain": "cave",
-      "rarity": "rare",
-      "min": 22,
-      "max": 24
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Tall imposing angular silhouette, jet obsidian faceted body, a glowing diamond-orange core blazing through a transparent chest section, jutting shoulder-spurs; monolithic at 64px.",

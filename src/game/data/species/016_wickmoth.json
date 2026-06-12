@@ -65,15 +65,7 @@
     "weight_kg": 0.8,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 3,
-      "max": 6
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Tiny round fuzzy moth body in ash-grey, wings tipped in orange-to-yellow ember gradients, two long antennae with spark-dot tips; reads as a fluttering silhouette at 32px.",

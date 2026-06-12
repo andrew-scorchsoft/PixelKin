@@ -65,15 +65,7 @@
     "weight_kg": 9.4,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 6,
-      "max": 9
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "(existing art)",

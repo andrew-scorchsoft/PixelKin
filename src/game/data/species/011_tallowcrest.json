@@ -69,15 +69,7 @@
     "weight_kg": 14.5,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 10,
-      "max": 12
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Robust tawny dog silhouette, wax-drip markings down the haunches, a starburst of five pastel-hued candle-flames crowning the head; distinct and bold at 48px.",

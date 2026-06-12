@@ -68,15 +68,7 @@
     "weight_kg": 48,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "rare",
-      "min": 10,
-      "max": 12
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Majestic, long-bodied fish with translucent crystalline fins that refract all light into dazzling arcs, pale blue-white body with thin crystalline armour plates, twin feeler-fins curled like antennae, piercing white eyes.",

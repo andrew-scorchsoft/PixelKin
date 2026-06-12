@@ -66,15 +66,7 @@
     "weight_kg": 2.5,
     "habitat": "east"
   },
-  "encounters": [
-    {
-      "area": "lowleaf_hollow",
-      "terrain": "cave",
-      "rarity": "uncommon",
-      "min": 15,
-      "max": 18
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Pale cream grub-body, faintly luminous belly like a nightlight, two feathery cyan antennae, soft compound eyes; round and huggable.",

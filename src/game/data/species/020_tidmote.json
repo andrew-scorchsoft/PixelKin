@@ -66,15 +66,7 @@
     "weight_kg": 0.1,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 3,
-      "max": 6
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Tiny sprite, blue-white water droplet shape with trailing wisps, two pinpoint bright eyes, a single glowing ribbon-tail. Appears as a moving sparkle on water surfaces.",

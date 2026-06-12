@@ -65,7 +65,7 @@
     {
       "area": "dimglass_coast",
       "terrain": "tall_grass",
-      "rarity": "common",
+      "rarity": "uncommon",
       "min": 3,
       "max": 6
     }

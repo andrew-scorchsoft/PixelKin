@@ -72,13 +72,6 @@
   },
   "encounters": [
     {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 10,
-      "max": 12
-    },
-    {
       "area": "pearlmoor_quay",
       "terrain": "water",
       "rarity": "rare",

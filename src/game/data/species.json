@@ -70,15 +70,7 @@
     "weight_kg": 9.4,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 6,
-     "max": 9
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "(existing art)",
@@ -152,15 +144,7 @@
     "weight_kg": 26.5,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Upright fox silhouette, deep ember-red coat, cream underbelly, mane erupting upward in a spike-crown of orange-to-white flames; regal and fast at 64px.",
@@ -238,18 +222,25 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 6,
-     "max": 9
-    },
-    {
      "area": "pearlmoor_quay",
      "terrain": "water",
      "rarity": "uncommon",
      "min": 10,
      "max": 12
+    },
+    {
+     "area": "dimglass_coast",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 4,
+     "max": 6
+    },
+    {
+     "area": "dimglass_coast_ii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 9,
+     "max": 11
     }
    ],
    "scripted": false,
@@ -325,15 +316,7 @@
     "weight_kg": 98,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Tall, broad-shouldered, slate-blue shell plating crested with sea-glass spurs in translucent teal. Wide stance, deep chest, a calm but commanding gaze behind a brow-ridge. Dual water-crystal shoulder guards.",
@@ -410,15 +393,7 @@
     "weight_kg": 0.04,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 3,
-     "max": 6
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Thin matchstick body of pale cream wax, a spherical amber head topped by a single tiny flame-tuft; two twig-thin arms; big worried eyes; small enough to balance on a coin at 16px.",
@@ -495,15 +470,7 @@
     "weight_kg": 3.1,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 9,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Slender humanoid of ivory wax, three flames now crowning its head like a candelabra; half-melted wax drapes off shoulders like a cape; cheerful smiling face; rounded candle-base feet; reads clearly at 32px.",
@@ -582,15 +549,7 @@
     "weight_kg": 42,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Tall, dignified humanoid; torso is a layered tiered candelabra of poured wax, seven distinct flames each a different warm hue from amber to rose; long draping arms of flowing wax; a composed, kind face half-shadowed by a wax-brim hat; strikes a warm silhouette at 48px.",
@@ -666,7 +625,7 @@
     {
      "area": "dimglass_coast",
      "terrain": "tall_grass",
-     "rarity": "common",
+     "rarity": "uncommon",
      "min": 3,
      "max": 6
     }
@@ -744,15 +703,7 @@
     "weight_kg": 1.2,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Elongated, dragonfly-like frame; four layered wings edged with cyan; abdomen striped amber and cream, tip blazing a permanent steady beacon; big compound eyes catching every glint; reads as a streak of light at 32px.",
@@ -828,15 +779,7 @@
     "weight_kg": 4.2,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 3,
-     "max": 6
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Chunky cream-and-butter-yellow puppy body, ink nose, a single pale candle-flame tail with a soft wax drip; big round eyes; reads as one warm blob at 32px.",
@@ -916,15 +859,7 @@
     "weight_kg": 14.5,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Robust tawny dog silhouette, wax-drip markings down the haunches, a starburst of five pastel-hued candle-flames crowning the head; distinct and bold at 48px.",
@@ -1003,15 +938,7 @@
     "weight_kg": 48.0,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Large, dignified canine silhouette; back and mane bristle with tall tapers in cream, gold, and amber; pooling light halos the outline; dramatic yet soft at 64px.",
@@ -1083,15 +1010,7 @@
     "weight_kg": 0.3,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 3,
-     "max": 6
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Near-translucent teardrop fairy body in pale smoke-grey with a tiny ember core, gossamer ash-wings, two stub arms; minimal but charming at 32px.",
@@ -1167,15 +1086,7 @@
     "weight_kg": 2.1,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Hovering humanoid silhouette ringed by a spinning debris-halo of cinders, orange core glowing at the heart, long wispy arms; dynamic at 48px.",
@@ -1254,15 +1165,7 @@
     "weight_kg": 8.0,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Tall ghostly pillar silhouette: smoke-black upper body fading into blazing fire-orange lower half, spectral arms, hollow bright eyes; striking contrast at 64px.",
@@ -1338,15 +1241,7 @@
     "weight_kg": 0.8,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 3,
-     "max": 6
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Tiny round fuzzy moth body in ash-grey, wings tipped in orange-to-yellow ember gradients, two long antennae with spark-dot tips; reads as a fluttering silhouette at 32px.",
@@ -1424,15 +1319,7 @@
     "weight_kg": 5.2,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Wide, spread-wing moth silhouette; upper wings are deep charcoal laced with bright ember veins, lower wings trail glowing filaments; menacing and beautiful at 64px.",
@@ -1508,15 +1395,7 @@
     "weight_kg": 2.2,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 3,
-     "max": 6
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Round-bodied kitten, deep apricot coat with cream markings, curled ember-glow tail, closed-eyed happy expression; warm and cosy silhouette at 32px.",
@@ -1599,15 +1478,7 @@
     "weight_kg": 19.0,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Elegant long-bodied cat silhouette, warm gold-and-cream coat, a soft luminous aura halo, ember-tip tail; graceful and glowing at 64px.",
@@ -1684,15 +1555,7 @@
     "weight_kg": 0.1,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 3,
-     "max": 6
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Tiny sprite, blue-white water droplet shape with trailing wisps, two pinpoint bright eyes, a single glowing ribbon-tail. Appears as a moving sparkle on water surfaces.",
@@ -1773,15 +1636,7 @@
     "weight_kg": 3.2,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Slim, elegant aquatic sprite \u2014 silver with pale moonlight-blue highlights, long streaming water-veil wings, a crescent-shaped luminous head-marking, twin ribbon tails.",
@@ -1860,15 +1715,7 @@
     "weight_kg": 8,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Tall, translucent humanoid sprite of flowing water and moonlight \u2014 silver-white with luminous aqua veins, streaming ribbon-limbs, a face of pure calm radiance, and a cascading tail of moon-foam.",
@@ -1945,15 +1792,7 @@
     "weight_kg": 0.3,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 3,
-     "max": 6
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Tiny silvery fish with oversized prism-scale fin fanning out like a tail-fan, blue-teal body, big friendly eye, subtle light-refracting markings.",
@@ -2035,13 +1874,6 @@
     "habitat": "south"
    },
    "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 10,
-     "max": 12
-    },
     {
      "area": "pearlmoor_quay",
      "terrain": "water",
@@ -2149,15 +1981,7 @@
     "weight_kg": 48,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Majestic, long-bodied fish with translucent crystalline fins that refract all light into dazzling arcs, pale blue-white body with thin crystalline armour plates, twin feeler-fins curled like antennae, piercing white eyes.",
@@ -2231,13 +2055,6 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 3,
-     "max": 6
-    },
-    {
      "area": "pearlmoor_quay",
      "terrain": "tall_grass",
      "rarity": "common",
@@ -2250,6 +2067,20 @@
      "rarity": "common",
      "min": 20,
      "max": 22
+    },
+    {
+     "area": "dimglass_coast",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 3,
+     "max": 6
+    },
+    {
+     "area": "dimglass_coast_ii",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 8,
+     "max": 11
     }
    ],
    "scripted": false,
@@ -2329,13 +2160,6 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 10,
-     "max": 12
-    },
-    {
      "area": "pearlmoor_quay",
      "terrain": "water",
      "rarity": "uncommon",
@@ -2376,6 +2200,13 @@
      "rarity": "common",
      "min": 21,
      "max": 24
+    },
+    {
+     "area": "dimglass_coast_ii",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 9,
+     "max": 11
     }
    ],
    "scripted": false,
@@ -2451,15 +2282,7 @@
     "weight_kg": 52,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Streamlined low-slung body, swept-back shell ridges like breaking waves, twin luminous teal eye-stalks, long trailing fin-limbs. Seafoam-blue and deep indigo palette, white crest markings.",
@@ -2537,13 +2360,6 @@
     "habitat": "south"
    },
    "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 6,
-     "max": 9
-    },
     {
      "area": "tideglass_cavern",
      "terrain": "water",
@@ -2638,13 +2454,6 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    },
-    {
      "area": "tideglass_cavern",
      "terrain": "water",
      "rarity": "very_rare",
@@ -2730,13 +2539,6 @@
    },
    "encounters": [
     {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 6,
-     "max": 9
-    },
-    {
      "area": "pearlmoor_quay",
      "terrain": "tall_grass",
      "rarity": "common",
@@ -2763,6 +2565,20 @@
      "rarity": "uncommon",
      "min": 20,
      "max": 23
+    },
+    {
+     "area": "dimglass_coast",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 3,
+     "max": 6
+    },
+    {
+     "area": "dimglass_coast_ii",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 8,
+     "max": 11
     }
    ],
    "scripted": false,
@@ -2843,15 +2659,7 @@
     "weight_kg": 28,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Wide flat disc-shell patterned with concentric gold-and-aqua rings, textured like hammered moonstone. The creature beneath is plump and soft-looking with a single large circular eye at the shell's centre aperture.",
@@ -3102,15 +2910,7 @@
     "weight_kg": 0.3,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 12,
-     "max": 15
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Beetle-form about the size of a thumb; transparent faceted wing-cases filled with cyan-white crystal shards that catch light; six iridescent legs; eyes are tiny perfect gem-spheres in deep blue.",
@@ -3191,15 +2991,7 @@
     "weight_kg": 90,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "rare",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Elegant deer-like kin with a white-grey crystal body; antlers are an elaborate branching structure of cyan-diamond crystal that glow continuously; eyes are large and clear as water; hooves are polished white stone; beautiful and otherworldly.",
@@ -3366,10 +3158,10 @@
    "encounters": [
     {
      "area": "lowleaf_hollow",
-     "terrain": "cave",
+     "terrain": "tall_grass",
      "rarity": "common",
-     "min": 12,
-     "max": 15
+     "min": 18,
+     "max": 20
     }
    ],
    "scripted": false,
@@ -3452,15 +3244,7 @@
     "weight_kg": 14,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Short bipedal figure draped in a thick cape of glowing green moss-fronds; a wooden face-plate with amber eyes showing through the moss hood; stubby arms ending in leaf-fans; a round body hidden under the living mantle; warm and eerie at 32px.",
@@ -3543,15 +3327,7 @@
     "weight_kg": 180,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "rare",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Huge bipedal form entirely cloaked in thick layered glowing moss-panels; a great antler-rack of twisted branches sprouting glowing spore-bulbs; a solemn carved-wood face deep within a moss-arch; radiates green-amber light in gentle pulses; awe-inspiring at 48px.",
@@ -3623,15 +3399,7 @@
     "weight_kg": 0.9,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "common",
-     "min": 12,
-     "max": 15
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Near-perfect sphere, dull black coal texture with a single amber-glow eye, two tiny round feet; the simplest possible round silhouette at 32px.",
@@ -3707,15 +3475,7 @@
     "weight_kg": 18.0,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Lumpy rounded torso, short sturdy limbs, two glowing eyes, body covered in expanding crack-pattern glow lines; reads as power building at 48px.",
@@ -3794,15 +3554,7 @@
     "weight_kg": 320.0,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "rare",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Tall imposing angular silhouette, jet obsidian faceted body, a glowing diamond-orange core blazing through a transparent chest section, jutting shoulder-spurs; monolithic at 64px.",
@@ -3879,15 +3631,7 @@
     "weight_kg": 0.9,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "common",
-     "min": 12,
-     "max": 15
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Rat-sized, wiry body covered in dark iron-grey fur with tiny amber sparks visible along the spine; prominent rounded ears; long thin tail tipped with an ore nugget.",
@@ -3969,13 +3713,6 @@
     "habitat": "east"
    },
    "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 22,
-     "max": 24
-    },
     {
      "area": "windward_stair_i",
      "terrain": "tall_grass",
@@ -4069,15 +3806,7 @@
     "weight_kg": 220,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "rare",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Bear-sized quadruped; charcoal-black stone-dense hide with bright amber charge-lines tracing the mineral veins; mane of stiff iron-ore bristles along the neck; tail a coiled ore-spring that arcs sparks when lashing.",
@@ -4153,15 +3882,7 @@
     "weight_kg": 1.8,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "common",
-     "min": 12,
-     "max": 15
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Almost perfectly spherical grey-brown body with two stub legs and wide amber eyes; tiny chip-marks on its shell like natural wear marks; silhouette reads as a rolling ball at 16px.",
@@ -4241,15 +3962,7 @@
     "weight_kg": 48,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Squat, wide-shouldered stone body with visible grey-white mineral veins along arms; amber eyes now set in a craggy brow ridge; four sturdy legs planted firmly.",
@@ -4327,15 +4040,7 @@
     "weight_kg": 310,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "rare",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Massive hexagonal-plated shell studded with diamond-crystal spires; four column-thick legs; small blunt head with half-lidded stone-grey eyes; walks with serene deliberateness; silhouette unmistakable at any size.",
@@ -4411,15 +4116,7 @@
     "weight_kg": 0.4,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "common",
-     "min": 12,
-     "max": 15
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Trilobite-like segmented body in pale bone-white chalk; two long swept-back antennae; multiple small legs; small eyes set in a wide flat head; delicate and prehistoric in feel.",
@@ -4499,15 +4196,7 @@
     "weight_kg": 55,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Larger segmented crustacean; thick ridged carapace in layered grey-cream; heavy claws useful for gripping rock; wide eyes set at the edge of its head-plate; moves with a side-to-side deliberate walk.",
@@ -4585,15 +4274,7 @@
     "weight_kg": 650,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "rare",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Large quadruped; thick ridged stone-white carapace with deep limestone-cream and grey layering; broad low head with two faintly glowing amber eyes; heavy armoured tail; primordial and formidable.",
@@ -4669,15 +4350,7 @@
     "weight_kg": 3,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "common",
-     "min": 12,
-     "max": 15
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Chubby grub-like body wrapped around a dark iron-ore lump; tiny arms, vestigial; rounded head with a wide flat mouth for scraping ore; small black eyes; warm grey-brown colouring.",
@@ -4757,15 +4430,7 @@
     "weight_kg": 95,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Short biped with a barrel chest; iron-ore growth on both fists and elbows like natural knuckledusters; shoulder ore-knobs; dark grey skin with metallic flecks; small determined face.",
@@ -4843,15 +4508,7 @@
     "weight_kg": 1100,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "rare",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Imposing wide-shouldered biped; entire body studded with iron-ore protrusions and plates; massive stone fists each larger than a human torso; slow-burning orange eyes set deep in a craggy face; silhouette is pure power.",
@@ -4926,10 +4583,10 @@
    "encounters": [
     {
      "area": "lowleaf_hollow",
-     "terrain": "cave",
+     "terrain": "tall_grass",
      "rarity": "common",
-     "min": 12,
-     "max": 15
+     "min": 18,
+     "max": 20
     }
    ],
    "scripted": false,
@@ -5007,15 +4664,7 @@
     "weight_kg": 28,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Human-height mushroom form, broader cap with bioluminescent gill-lines underneath, satellite caps on its shoulders, dusty mauve-green coloured; stance is wide and assured.",
@@ -5094,15 +4743,7 @@
     "weight_kg": 580,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "rare",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Massive pillar-like mushroom body with many layered caps in deep indigo and midnight-green; trailing root-tendrils like a cloak; eyes gleam with dim amber light in shadow.",
@@ -5180,13 +4821,6 @@
     "habitat": "east"
    },
    "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "common",
-     "min": 12,
-     "max": 15
-    },
     {
      "area": "saltreach_fen_i",
      "terrain": "tall_grass",
@@ -5284,13 +4918,6 @@
    },
    "encounters": [
     {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 22,
-     "max": 24
-    },
-    {
      "area": "saltreach_fen_i",
      "terrain": "tall_grass",
      "rarity": "rare",
@@ -5385,13 +5012,6 @@
    },
    "encounters": [
     {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "rare",
-     "min": 22,
-     "max": 24
-    },
-    {
      "area": "sunkbell_shallows",
      "terrain": "water",
      "rarity": "very_rare",
@@ -5482,10 +5102,10 @@
    "encounters": [
     {
      "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "common",
-     "min": 12,
-     "max": 15
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 18,
+     "max": 20
     }
    ],
    "scripted": false,
@@ -5572,15 +5192,7 @@
     "weight_kg": 185,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Stocky upright tortoise-golem, concentric mineral-bark rings clearly visible on shell, mossy patches on flat back, two large stone-knuckled fists, calm half-lidded eyes.",
@@ -5663,15 +5275,7 @@
     "weight_kg": 1800,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "rare",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Massive standing golem of layered stone-bark, a living forest growing from its shoulders (small ferns, mosses, a small sapling), deep carved-wood face half-hidden by roots, feet rooted into the ground.",
@@ -5748,15 +5352,7 @@
     "weight_kg": 2.5,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 15,
-     "max": 18
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Pale cream grub-body, faintly luminous belly like a nightlight, two feathery cyan antennae, soft compound eyes; round and huggable.",
@@ -5835,15 +5431,7 @@
     "weight_kg": 18,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Large moth form; four broad wings each shaped like a glowing leaf, veined in cyan and gold; soft downy body, feathered antennae, six slender legs; the whole silhouette looks like a living stained-glass window.",
@@ -5923,10 +5511,10 @@
    "encounters": [
     {
      "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 15,
-     "max": 18
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 18,
+     "max": 20
     }
    ],
    "scripted": false,
@@ -6007,15 +5595,7 @@
     "weight_kg": 95,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "rare",
-     "min": 22,
-     "max": 24
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Long undulating serpent, densely fringed with fern-fronds that blaze gold and cyan along their edges; head-crown has expanded into a full luminous halo; tail tapers to a glowing spike.",
@@ -6085,15 +5665,7 @@
     "weight_kg": 240,
     "habitat": "east"
    },
-   "encounters": [
-    {
-     "area": "lowleaf_hollow",
-     "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 19,
-     "max": 22
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Recumbent cat-lion shape carved entirely from layered sandstone bands in amber, cream, and grey; face is stylised and smooth like worn sculpture; heavy paws; eyes are two oval pieces of polished amber.",
@@ -13646,15 +13218,7 @@
     "weight_kg": 6.5,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 6,
-     "max": 9
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Small leaf-fox sprout cub; a four-leaf clover sprouts from the top of its head, large pointed leaf-ears, lime-green face and cream underbelly, big friendly dark eyes, soft leafy tufts; faint seed-sparkles drift around it. Passes the black-blob test at 32px. Brand greens (#7bdc6b) with cream (#f5f0e1) and an ink (#1a1430) outline, ~12 colours.",
@@ -13732,15 +13296,7 @@
     "weight_kg": 98,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Tall, sturdy clover-crowned forest stag; broad antlers blooming with four-leaf clovers and moss, deep-green coat, cream chest, a mossy mane, planted hooves; calm guardian gaze. Bold readable silhouette at 64px. Deep verdant greens with gold-green clover accents and an ink outline.",
@@ -13816,15 +13372,7 @@
     "weight_kg": 19.5,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Lean adolescent fox, deep ember-red coat with cream underbelly and chest blaze; mane risen into a low crest of orange flame tongues tipped white; longer legs and brush tail with a glowing ember core; alert amber eyes. Clearly between Vulpyre's round kit and Blazethorn's spike-crowned regal fox at 64px.",
@@ -13900,15 +13448,7 @@
     "weight_kg": 42,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Mid-sized crested water-kin, slate-blue shell plating starting to crest with small translucent teal sea-glass spurs; seafoam underside, sturdy fin-limbs, calm deep eyes; visibly grown from Brinix's compact crested body toward Brinarch's broad-shouldered bulk at 64px.",
@@ -13988,15 +13528,7 @@
     "weight_kg": 34,
     "habitat": "south"
    },
-   "encounters": [
-    {
-     "area": "dimglass_coast",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 10,
-     "max": 12
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Young leaf-deer, lime-and-deep-green coat with cream chest; slender budding antlers as curling green sprigs tipped with folded clovers; the head-clover from its kit days now worn like a small crown sprout; long legs, big dark earnest eyes. Between Cloverkit's sprout-cub and Cloverhart's broad clover-crowned stag at 64px.",

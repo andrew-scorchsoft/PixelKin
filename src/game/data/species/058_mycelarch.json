@@ -68,15 +68,7 @@
     "weight_kg": 580,
     "habitat": "east"
   },
-  "encounters": [
-    {
-      "area": "lowleaf_hollow",
-      "terrain": "cave",
-      "rarity": "rare",
-      "min": 22,
-      "max": 24
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Massive pillar-like mushroom body with many layered caps in deep indigo and midnight-green; trailing root-tendrils like a cloak; eyes gleam with dim amber light in shadow.",

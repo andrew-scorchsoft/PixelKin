@@ -65,15 +65,7 @@
     "weight_kg": 6.5,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 6,
-      "max": 9
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Small leaf-fox sprout cub; a four-leaf clover sprouts from the top of its head, large pointed leaf-ears, lime-green face and cream underbelly, big friendly dark eyes, soft leafy tufts; faint seed-sparkles drift around it. Passes the black-blob test at 32px. Brand greens (#7bdc6b) with cream (#f5f0e1) and an ink (#1a1430) outline, ~12 colours.",

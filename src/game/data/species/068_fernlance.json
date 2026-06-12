@@ -68,15 +68,7 @@
     "weight_kg": 95,
     "habitat": "east"
   },
-  "encounters": [
-    {
-      "area": "lowleaf_hollow",
-      "terrain": "cave",
-      "rarity": "rare",
-      "min": 22,
-      "max": 24
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Long undulating serpent, densely fringed with fern-fronds that blaze gold and cyan along their edges; head-crown has expanded into a full luminous halo; tail tapers to a glowing spike.",

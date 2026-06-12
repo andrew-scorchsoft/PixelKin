@@ -66,15 +66,7 @@
     "weight_kg": 0.04,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 3,
-      "max": 6
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Thin matchstick body of pale cream wax, a spherical amber head topped by a single tiny flame-tuft; two twig-thin arms; big worried eyes; small enough to balance on a coin at 16px.",

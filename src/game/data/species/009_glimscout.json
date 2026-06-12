@@ -63,15 +63,7 @@
     "weight_kg": 1.2,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 10,
-      "max": 12
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Elongated, dragonfly-like frame; four layered wings edged with cyan; abdomen striped amber and cream, tip blazing a permanent steady beacon; big compound eyes catching every glint; reads as a streak of light at 32px.",

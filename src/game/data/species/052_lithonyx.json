@@ -67,15 +67,7 @@
     "weight_kg": 650,
     "habitat": "east"
   },
-  "encounters": [
-    {
-      "area": "lowleaf_hollow",
-      "terrain": "cave",
-      "rarity": "rare",
-      "min": 22,
-      "max": 24
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Large quadruped; thick ridged stone-white carapace with deep limestone-cream and grey layering; broad low head with two faintly glowing amber eyes; heavy armoured tail; primordial and formidable.",

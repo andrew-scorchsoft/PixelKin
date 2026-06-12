@@ -64,10 +64,10 @@
   "encounters": [
     {
       "area": "lowleaf_hollow",
-      "terrain": "cave",
+      "terrain": "tall_grass",
       "rarity": "common",
-      "min": 12,
-      "max": 15
+      "min": 18,
+      "max": 20
     }
   ],
   "scripted": false,

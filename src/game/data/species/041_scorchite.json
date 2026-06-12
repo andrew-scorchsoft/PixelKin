@@ -61,15 +61,7 @@
     "weight_kg": 0.9,
     "habitat": "east"
   },
-  "encounters": [
-    {
-      "area": "lowleaf_hollow",
-      "terrain": "cave",
-      "rarity": "common",
-      "min": 12,
-      "max": 15
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Near-perfect sphere, dull black coal texture with a single amber-glow eye, two tiny round feet; the simplest possible round silhouette at 32px.",

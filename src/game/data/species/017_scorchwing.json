@@ -67,15 +67,7 @@
     "weight_kg": 5.2,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 10,
-      "max": 12
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Wide, spread-wing moth silhouette; upper wings are deep charcoal laced with bright ember veins, lower wings trail glowing filaments; menacing and beautiful at 64px.",

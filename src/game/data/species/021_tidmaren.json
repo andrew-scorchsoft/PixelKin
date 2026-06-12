@@ -70,15 +70,7 @@
     "weight_kg": 3.2,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 10,
-      "max": 12
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Slim, elegant aquatic sprite \u2014 silver with pale moonlight-blue highlights, long streaming water-veil wings, a crescent-shaped luminous head-marking, twin ribbon tails.",

@@ -187,7 +187,13 @@ def encounters(region, rarity, tier, stage, scripted):
 # map work (e.g. Pearlmoor's harbour tables) adds entries HERE so a rebuild
 # never erases them. slug -> extra EncounterZone-source rows.
 EXTRA_ENCOUNTERS = {
-    "brinix":    [{"area": "pearlmoor_quay", "terrain": "water", "rarity": "uncommon", "min": 10, "max": 12}],
+    "brinix":    [{"area": "pearlmoor_quay", "terrain": "water", "rarity": "uncommon", "min": 10, "max": 12},
+                  # South coast surf (R5 S/E encounters-sync, 2026-06): mirrors of
+                  # the BUILT dimglass_coast/_ii in-map tables (the truth; weights
+                  # -> rarity). These two maps were the south REGION_AREA default,
+                  # so they carried ~37 stale generated rows — now curated.
+                  {"area": "dimglass_coast", "terrain": "water", "rarity": "common", "min": 4, "max": 6},
+                  {"area": "dimglass_coast_ii", "terrain": "water", "rarity": "common", "min": 9, "max": 11}],
     # Tideglass Cavern rows below (the Hours wiring, 2026-06): mirrors of the
     # BUILT in-map zone tables (tideglass_cavern.json — the truth; weights ->
     # rarity). The cave bed is the South's lv 20-24 backtrack; the Tidecall
@@ -199,17 +205,22 @@ EXTRA_ENCOUNTERS = {
                   {"area": "tideglass_cavern", "terrain": "cave", "rarity": "uncommon", "min": 21, "max": 24},
                   {"area": "tideglass_cavern", "terrain": "water", "rarity": "common", "min": 21, "max": 24}],
     "brinelet":  [{"area": "pearlmoor_quay", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 11},
-                  {"area": "tideglass_cavern", "terrain": "cave", "rarity": "common", "min": 20, "max": 22}],
+                  {"area": "tideglass_cavern", "terrain": "cave", "rarity": "common", "min": 20, "max": 22},
+                  {"area": "dimglass_coast", "terrain": "tall_grass", "rarity": "common", "min": 3, "max": 6},
+                  {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 11}],
     "brineroll": [{"area": "pearlmoor_quay", "terrain": "water", "rarity": "uncommon", "min": 10, "max": 12},
                   {"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 16, "max": 18},
                   {"area": "saltreach_fen_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 17, "max": 19},
                   {"area": "sunkbell_shallows", "terrain": "water", "rarity": "common", "min": 17, "max": 19},
                   {"area": "tideglass_cavern", "terrain": "cave", "rarity": "uncommon", "min": 21, "max": 24},
-                  {"area": "tideglass_cavern", "terrain": "water", "rarity": "common", "min": 21, "max": 24}],
+                  {"area": "tideglass_cavern", "terrain": "water", "rarity": "common", "min": 21, "max": 24},
+                  {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 9, "max": 11}],
     "lumpin":    [{"area": "pearlmoor_quay", "terrain": "tall_grass", "rarity": "common", "min": 9, "max": 11},
                   {"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 16, "max": 18},
                   {"area": "saltreach_fen_ii", "terrain": "water", "rarity": "uncommon", "min": 17, "max": 19},
-                  {"area": "tideglass_cavern", "terrain": "cave", "rarity": "uncommon", "min": 20, "max": 23}],
+                  {"area": "tideglass_cavern", "terrain": "cave", "rarity": "uncommon", "min": 20, "max": 23},
+                  {"area": "dimglass_coast", "terrain": "tall_grass", "rarity": "common", "min": 3, "max": 6},
+                  {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 11}],
     # the Glostern line's middle form is the cavern pool's signature rare —
     # it seeds Pharolux's living-lighthouse legend two doors from where the
     # players caught Glostern (07-the-three §4).
@@ -222,6 +233,15 @@ EXTRA_ENCOUNTERS = {
     "poolfrond": [{"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "rare", "min": 17, "max": 18},
                   {"area": "saltreach_fen_ii", "terrain": "tall_grass", "rarity": "rare", "min": 18, "max": 19}],
     "tidalarch": [{"area": "sunkbell_shallows", "terrain": "water", "rarity": "very_rare", "min": 19, "max": 20}],
+    # the dimglass coast verge's uncommon flit (R5 S/E sync) — its one South row
+    "glimflit":  [{"area": "dimglass_coast", "terrain": "tall_grass", "rarity": "uncommon", "min": 3, "max": 6}],
+    # ---- the East fringe (R5 S/E encounters-sync, 2026-06): mirror of the BUILT
+    # lowleaf_hollow in-map table (the truth). lowleaf_hollow was the east
+    # REGION_AREA default, so it carried ~34 stale generated rows — now curated.
+    "mossglow":  [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "common", "min": 18, "max": 20}],
+    "sporeling": [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "common", "min": 18, "max": 20}],
+    "barkhelm":  [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "uncommon", "min": 18, "max": 20}],
+    "fennlight": [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "common", "min": 18, "max": 20}],
     # ---- the North (N5 encounters-sync, 2026-06): mirrors of the BUILT in-map
     # zone tables (public/assets/maps/*.json — the truth; weights -> rarity).
     # The deep-ice fold + undercroft rows are the Emberward/Lamp-Line ground.
@@ -409,6 +429,11 @@ CURATED_AREAS = {
     # built in-map tables (mirrored above); the gallery is encounter-free by
     # design and listed so no generated row can ever claim the Hour's room.
     "tideglass_cavern", "tideglass_gallery", "pale_vault_hourfold",
+    # the South/East REGION_AREA defaults (R5 S/E encounters-sync, 2026-06): these
+    # two maps' built in-map tables are the truth (mirrored above), so the ~71
+    # stale generated rows that named them (dimglass_coast ~37 + lowleaf_hollow
+    # ~34) are dropped on rebuild; the _ii coast map joins them.
+    "dimglass_coast", "dimglass_coast_ii", "lowleaf_hollow",
 }
 
 # Kin that are FIXED quest catches (a legendaryBattle set-piece), even though

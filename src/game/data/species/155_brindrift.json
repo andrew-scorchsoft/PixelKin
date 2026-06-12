@@ -65,15 +65,7 @@
     "weight_kg": 42,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "rare",
-      "min": 10,
-      "max": 12
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Mid-sized crested water-kin, slate-blue shell plating starting to crest with small translucent teal sea-glass spurs; seafoam underside, sturdy fin-limbs, calm deep eyes; visibly grown from Brinix's compact crested body toward Brinarch's broad-shouldered bulk at 64px.",

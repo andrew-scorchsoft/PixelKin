@@ -66,15 +66,7 @@
     "weight_kg": 0.9,
     "habitat": "east"
   },
-  "encounters": [
-    {
-      "area": "lowleaf_hollow",
-      "terrain": "cave",
-      "rarity": "common",
-      "min": 12,
-      "max": 15
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Rat-sized, wiry body covered in dark iron-grey fur with tiny amber sparks visible along the spine; prominent rounded ears; long thin tail tipped with an ore nugget.",

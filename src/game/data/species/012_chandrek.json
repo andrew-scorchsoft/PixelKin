@@ -68,15 +68,7 @@
     "weight_kg": 48.0,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "rare",
-      "min": 10,
-      "max": 12
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Large, dignified canine silhouette; back and mane bristle with tall tapers in cream, gold, and amber; pooling light halos the outline; dramatic yet soft at 64px.",

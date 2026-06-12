@@ -67,15 +67,7 @@
     "weight_kg": 98,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "rare",
-      "min": 10,
-      "max": 12
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Tall, sturdy clover-crowned forest stag; broad antlers blooming with four-leaf clovers and moss, deep-green coat, cream chest, a mossy mane, planted hooves; calm guardian gaze. Bold readable silhouette at 64px. Deep verdant greens with gold-green clover accents and an ink outline.",

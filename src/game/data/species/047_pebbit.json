@@ -65,15 +65,7 @@
     "weight_kg": 1.8,
     "habitat": "east"
   },
-  "encounters": [
-    {
-      "area": "lowleaf_hollow",
-      "terrain": "cave",
-      "rarity": "common",
-      "min": 12,
-      "max": 15
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Almost perfectly spherical grey-brown body with two stub legs and wide amber eyes; tiny chip-marks on its shell like natural wear marks; silhouette reads as a rolling ball at 16px.",

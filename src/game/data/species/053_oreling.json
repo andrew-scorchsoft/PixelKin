@@ -65,15 +65,7 @@
     "weight_kg": 3,
     "habitat": "east"
   },
-  "encounters": [
-    {
-      "area": "lowleaf_hollow",
-      "terrain": "cave",
-      "rarity": "common",
-      "min": 12,
-      "max": 15
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Chubby grub-like body wrapped around a dark iron-ore lump; tiny arms, vestigial; rounded head with a wide flat mouth for scraping ore; small black eyes; warm grey-brown colouring.",

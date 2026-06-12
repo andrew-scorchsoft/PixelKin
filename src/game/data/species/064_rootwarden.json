@@ -72,15 +72,7 @@
     "weight_kg": 1800,
     "habitat": "east"
   },
-  "encounters": [
-    {
-      "area": "lowleaf_hollow",
-      "terrain": "cave",
-      "rarity": "rare",
-      "min": 22,
-      "max": 24
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Massive standing golem of layered stone-bark, a living forest growing from its shoulders (small ferns, mosses, a small sapling), deep carved-wood face half-hidden by roots, feet rooted into the ground.",

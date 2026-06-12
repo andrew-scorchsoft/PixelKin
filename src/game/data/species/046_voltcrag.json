@@ -68,15 +68,7 @@
     "weight_kg": 220,
     "habitat": "east"
   },
-  "encounters": [
-    {
-      "area": "lowleaf_hollow",
-      "terrain": "cave",
-      "rarity": "rare",
-      "min": 22,
-      "max": 24
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Bear-sized quadruped; charcoal-black stone-dense hide with bright amber charge-lines tracing the mineral veins; mane of stiff iron-ore bristles along the neck; tail a coiled ore-spring that arcs sparks when lashing.",

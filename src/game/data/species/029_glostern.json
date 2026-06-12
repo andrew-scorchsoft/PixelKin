@@ -68,13 +68,6 @@
   },
   "encounters": [
     {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 6,
-      "max": 9
-    },
-    {
       "area": "tideglass_cavern",
       "terrain": "water",
       "rarity": "uncommon",

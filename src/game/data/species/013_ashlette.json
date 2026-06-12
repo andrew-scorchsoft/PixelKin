@@ -61,15 +61,7 @@
     "weight_kg": 0.3,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 3,
-      "max": 6
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Near-translucent teardrop fairy body in pale smoke-grey with a tiny ember core, gossamer ash-wings, two stub arms; minimal but charming at 32px.",

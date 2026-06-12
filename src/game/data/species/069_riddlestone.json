@@ -59,15 +59,7 @@
     "weight_kg": 240,
     "habitat": "east"
   },
-  "encounters": [
-    {
-      "area": "lowleaf_hollow",
-      "terrain": "cave",
-      "rarity": "uncommon",
-      "min": 19,
-      "max": 22
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Recumbent cat-lion shape carved entirely from layered sandstone bands in amber, cream, and grey; face is stylised and smooth like worn sculpture; heavy paws; eyes are two oval pieces of polished amber.",

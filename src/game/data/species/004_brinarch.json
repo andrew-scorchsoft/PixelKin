@@ -63,15 +63,7 @@
     "weight_kg": 98,
     "habitat": "south"
   },
-  "encounters": [
-    {
-      "area": "dimglass_coast",
-      "terrain": "tall_grass",
-      "rarity": "rare",
-      "min": 10,
-      "max": 12
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Tall, broad-shouldered, slate-blue shell plating crested with sea-glass spurs in translucent teal. Wide stance, deep chest, a calm but commanding gaze behind a brow-ridge. Dual water-crystal shoulder guards.",

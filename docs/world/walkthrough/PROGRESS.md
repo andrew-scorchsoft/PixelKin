@@ -21,7 +21,7 @@ Legend — **Gleam** = the region's constellation reward; **Gift** = the Lantern
 | **South** (01) | 1 Ember · 2 Tide | ✅ **complete** | — |
 | **East** (02) | 3 Verdant · 4 Stone | ✅ **complete** | — (Cinderhead built 2026-06) |
 | **North** (03) | 5 Storm · 6 Frost | ✅ **complete** (built 2026-06) | — |
-| **West** (04) | 7 Solar · 8 Lunar | ✅ **complete** (W1–W4 maps + W5 content wiring, 2026-06) | EXTRA_ENCOUNTERS mirrors (deferred to the species-lane pass) |
+| **West** (04) | 7 Solar · 8 Lunar | ✅ **complete** (W1–W4 maps + W5 content wiring, 2026-06; encounter mirrors verified in the R5 S/E sync) | — |
 | **Central/Endgame** (05) | — | ✅ **complete** (C1 maps + C2 Spire + C3 wiring, 2026-06; panel SHIP-READY; C6 polish landed c15217d) | — |
 | **The Three Hours** (07) | — | ✅ **complete** (sites + wiring + encounters + the hour-bell music, 2026-06) | — |
 | **Post-game** (06) | — | 📋 **documented, not built** (see "Remaining work" below) | Dawnstead · Starfall Vigils · day-forms · A6 |
@@ -161,16 +161,16 @@ Expert panel verdict (2026-06): **SHIP-READY**, no blockers — full review at
 Spire → out-remembering → Keystar → dawn → credits → Continue) is built, audited
 (0 warnings world-wide) and verified persist-safe.
 
-## The Three Hours — legendary trio (07) 🔶 sites built, wiring in flight
+## The Three Hours — legendary trio (07) ✅ (sites + wiring, 2026-06)
 
 Species #160 Gloamber / #161 Tollhart / #162 Erstmorn are in the roster with full art
 (162/162 packed). The `legendaryBattle` engine (battles-won cooldowns, `{remaining}`
 hint token) is live. All four site maps are built + committed (2026-06): `tideglass_cavern`
 + `tideglass_gallery` (the Lampwright's Relay lens puzzle), `pale_vault_hourfold` (the
 Unstruck Toll brazier puzzle), `unrisen_stair` (the First-Light bloom ascent). The content
-wiring (site scripts/dialogue, the three giver chains, encounter mirrors, battle-hours
-music, LORE entries) was in flight at the 2026-06 checkpoint — each builder's docstring
-prints its complete owed-refs ledger if it needs re-running. Spec: [`07-the-three.md`](./07-the-three.md).
+wiring (site scripts/dialogue, the three giver chains, encounter mirrors, the
+`battle-hours`/`sting-hour` music, LORE entries) landed in c5f36a9 (2026-06).
+Spec: [`07-the-three.md`](./07-the-three.md).
 
 ---
 
@@ -228,8 +228,11 @@ then one `build_species.py` regen + the 4 gates.
 - `npm run build` (typecheck + prod build) — should already be green.
 - `npm run build:dist` needs **ffmpeg** (not installed in the managed env) — install or add
   a CI job for the shrunk-audio bundle.
-- Reconcile the ~71 stale S/E generated encounter rows (dimglass_coast 37, lowleaf_hollow 34)
-  into `CURATED_AREAS` + `EXTRA_ENCOUNTERS` (the N5 convention; cosmetic, tables already play).
+- ~~Reconcile the ~71 stale S/E generated encounter rows~~ ✅ DONE (2026-06): `dimglass_coast`,
+  `dimglass_coast_ii`, `lowleaf_hollow` curated + mirrored; West/Hours mirrors verified in
+  the same pass. Still on the generic generated-default path (works, but unmirrored):
+  `tinderwick`, `gullcry_rock`, `spore_grotto`, `glowmoss_deep(_b1f)`, `cinderhead_mine`,
+  `cinderhead_deep(_b1f/_b2f)` — sync when convenient.
 - Full-game expert panel playing the dev build; golden-thread playtest (cold open → dawn →
   save export/import); README outside-in rewrite.
 - **Human-only:** first-timer playtest (G8), touch QA on real hardware (F8).

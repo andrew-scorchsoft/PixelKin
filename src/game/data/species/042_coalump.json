@@ -65,15 +65,7 @@
     "weight_kg": 18.0,
     "habitat": "east"
   },
-  "encounters": [
-    {
-      "area": "lowleaf_hollow",
-      "terrain": "cave",
-      "rarity": "uncommon",
-      "min": 22,
-      "max": 24
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Lumpy rounded torso, short sturdy limbs, two glowing eyes, body covered in expanding crack-pattern glow lines; reads as power building at 48px.",

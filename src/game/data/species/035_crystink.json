@@ -66,15 +66,7 @@
     "weight_kg": 0.3,
     "habitat": "east"
   },
-  "encounters": [
-    {
-      "area": "lowleaf_hollow",
-      "terrain": "cave",
-      "rarity": "uncommon",
-      "min": 12,
-      "max": 15
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Beetle-form about the size of a thumb; transparent faceted wing-cases filled with cyan-white crystal shards that catch light; six iridescent legs; eyes are tiny perfect gem-spheres in deep blue.",

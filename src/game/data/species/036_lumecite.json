@@ -70,15 +70,7 @@
     "weight_kg": 90,
     "habitat": "east"
   },
-  "encounters": [
-    {
-      "area": "lowleaf_hollow",
-      "terrain": "cave",
-      "rarity": "rare",
-      "min": 22,
-      "max": 24
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Elegant deer-like kin with a white-grey crystal body; antlers are an elaborate branching structure of cyan-diamond crystal that glow continuously; eyes are large and clear as water; hooves are polished white stone; beautiful and otherworldly.",
