@@ -27,7 +27,7 @@ import { SaveManager } from '@game/systems/save/SaveManager';
 import type { Settings } from '@game/systems/save/SaveManager';
 import { SaveCodec } from '@game/systems/save/SaveCodec';
 import { ShellManager } from '../../shell/ShellManager';
-import type { ShellMode } from '@game/systems/save/SaveManager';
+import type { ShellMode, ControlSize } from '@game/systems/save/SaveManager';
 import {
   setAlwaysRun,
   setTextSpeed,
@@ -108,7 +108,12 @@ export class SettingsMenu {
     return [
       { label: `Shell: ${SHELL_LABEL[this.settings.shell]}`, value: 'shell' },
       {
-        label: `Controls: ${this.settings.controlsVisible ? 'Shown' : 'Hidden'}`,
+        // One control for the touch buttons: their size, plus Hidden as the last
+        // step. Folded into a single row so the settings list stays within the
+        // 160px height budget (no room for a separate size row).
+        label: `Controls: ${
+          this.settings.controlsVisible ? `Size ${this.settings.controlSize ?? 2}` : 'Hidden'
+        }`,
         value: 'controls',
         enabled: this.settings.shell !== 'plain',
       },
@@ -159,9 +164,24 @@ export class SettingsMenu {
         return true;
       }
       case 'controls': {
-        const visible = !this.settings.controlsVisible;
-        await ShellManager.setControlsVisible(visible);
-        this.settings = { ...this.settings, controlsVisible: visible };
+        // Cycle Size 1 → 2 → 3 → Hidden → Size 1. A size step shows the controls
+        // at that scale; the fourth step hides them.
+        const hidden = !this.settings.controlsVisible;
+        const size = this.settings.controlSize ?? 2;
+        if (hidden) {
+          // Hidden → Size 1 (re-show small).
+          await ShellManager.setControlsVisible(true);
+          await ShellManager.setControlSize(1);
+          this.settings = { ...this.settings, controlsVisible: true, controlSize: 1 };
+        } else if (size < 3) {
+          const next = (size + 1) as ControlSize;
+          await ShellManager.setControlSize(next);
+          this.settings = { ...this.settings, controlSize: next };
+        } else {
+          // Size 3 → Hidden.
+          await ShellManager.setControlsVisible(false);
+          this.settings = { ...this.settings, controlsVisible: false };
+        }
         void this.deps.sfx?.play('ui-toggle');
         return true;
       }

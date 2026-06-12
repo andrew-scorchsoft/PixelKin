@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <meta name="theme-color" content="#0b1026" />
     <title>PixelKin</title>
+
+    <!-- Installable / chrome-free launch. "Add to Home Screen" opens with no
+         browser address bar — the only way to reclaim that space on iOS Safari,
+         which has no Fullscreen API for non-video elements. -->
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="PixelKin" />
+    <link rel="apple-touch-icon" href="./assets/ui/icon-192.png" />
+
     <link rel="icon" type="image/png" href="./assets/ui/logo.png" />
     <link rel="stylesheet" href="./src/styles/global.css" />
   </head>

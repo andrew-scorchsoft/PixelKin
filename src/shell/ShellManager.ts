@@ -20,7 +20,7 @@
  */
 import './shells.css';
 import { SaveManager } from '@game/systems/save/SaveManager';
-import type { ShellMode, Settings } from '@game/systems/save/SaveManager';
+import type { ShellMode, ControlSize, Settings } from '@game/systems/save/SaveManager';
 import {
   setAlwaysRun,
   setTextSpeed,
@@ -64,11 +64,25 @@ const SHELL_CLASSES: Record<ShellMode, string> = {
   plain: 'pk-shell-plain',
 };
 
+/**
+ * Touch-control scale per size step. The whole cluster (d-pad cross, A·B, Start)
+ * derives every dimension from this one factor (see `--pk-cs` in shells.css), so
+ * the buttons grow as a single, internally-aligned unit — no per-element drift.
+ * Size 1 is the original compact geometry (1.0); 2 (default) and 3 step up.
+ */
+const CONTROL_SIZE_SCALE: Record<ControlSize, number> = {
+  1: 1,
+  2: 1.22,
+  3: 1.45,
+};
+
 class ShellManagerImpl {
   private settings: Settings = { shell: 'device', controlsVisible: true };
   private frameEl: HTMLDivElement | null = null;
   private controlsEl: HTMLDivElement | null = null;
   private rotateHintEl: HTMLDivElement | null = null;
+  private fsToggleEl: HTMLDivElement | null = null;
+  private autoFsTried = false;
   private readonly listeners = new Set<ActionListener>();
   private readonly held = new Set<ShellAction>();
 
@@ -81,6 +95,7 @@ class ShellManagerImpl {
     setBattlePace(this.settings.battlePace ?? 'cosy');
     setMusicVolume(this.settings.musicVolume ?? 'full');
     setSfxVolume(this.settings.sfxVolume ?? 'full');
+    this.applyControlSize();
     this.render();
   }
 
@@ -92,6 +107,11 @@ class ShellManagerImpl {
   /** Whether on-screen controls are currently shown. */
   get controlsVisible(): boolean {
     return this.settings.controlsVisible;
+  }
+
+  /** Current on-screen control size (1 small … 3 large; default 2). */
+  get controlSize(): ControlSize {
+    return this.settings.controlSize ?? 2;
   }
 
   /** Switch shell live and persist. */
@@ -110,6 +130,20 @@ class ShellManagerImpl {
     await SaveManager.saveSettings(this.settings);
   }
 
+  /** Set the on-screen control size live (1–3) and persist. */
+  async setControlSize(size: ControlSize): Promise<void> {
+    if (this.controlSize === size) return;
+    this.settings = { ...this.settings, controlSize: size };
+    this.applyControlSize();
+    await SaveManager.saveSettings(this.settings);
+  }
+
+  /** Push the chosen size into the `--pk-cs` scale the control CSS multiplies by. */
+  private applyControlSize(): void {
+    const scale = CONTROL_SIZE_SCALE[this.controlSize] ?? 1;
+    document.documentElement.style.setProperty('--pk-cs', String(scale));
+  }
+
   /** Subscribe to control actions. Returns an unsubscribe function. */
   onAction(cb: ActionListener): () => void {
     this.listeners.add(cb);
@@ -126,7 +160,89 @@ class ShellManagerImpl {
     this.ensureFrame();
     this.ensureControls();
     this.ensureRotateHint();
+    this.ensureFullscreenToggle();
     this.applyControlsVisibility();
+  }
+
+  // ----------------------------------------------------------- fullscreen --
+
+  /** True where the browser exposes the element Fullscreen API (Android Chrome/
+   *  Firefox, desktop). iOS Safari returns false — there it's "Add to Home
+   *  Screen" (the manifest) that hides the chrome instead. */
+  private fullscreenSupported(): boolean {
+    return typeof document.documentElement.requestFullscreen === 'function';
+  }
+
+  private isFullscreen(): boolean {
+    return document.fullscreenElement != null;
+  }
+
+  /** Begin a fullscreen request. Must be called from within a user gesture; the
+   *  `requestFullscreen()` call is issued synchronously so the gesture still
+   *  counts even though we await its promise. Silently degrades if blocked. */
+  private async enterFullscreen(): Promise<void> {
+    if (!this.fullscreenSupported() || this.isFullscreen()) return;
+    try {
+      await document.documentElement.requestFullscreen();
+    } catch {
+      /* User declined or unsupported — leave the page as-is. */
+    }
+  }
+
+  private async exitFullscreen(): Promise<void> {
+    if (!this.isFullscreen()) return;
+    try {
+      await document.exitFullscreen();
+    } catch {
+      /* no-op */
+    }
+  }
+
+  /**
+   * A small fullscreen toggle pinned to a free corner. Built once, only when the
+   * Fullscreen API exists (so iOS — where tapping would do nothing — never shows a
+   * dead button). CSS limits it to touch devices on the device/overlay shells.
+   */
+  private ensureFullscreenToggle(): void {
+    if (!this.fullscreenSupported()) return;
+    if (this.fsToggleEl) return;
+    const btn = document.createElement('div');
+    btn.className = 'pk-fs-toggle';
+    btn.setAttribute('role', 'button');
+    btn.setAttribute('aria-label', 'Toggle fullscreen');
+    btn.title = 'Toggle fullscreen';
+
+    const sync = (): void => {
+      const on = this.isFullscreen();
+      btn.textContent = on ? '✕' : '⛶'; // ✕ to exit / ⛶ to enter
+      btn.classList.toggle('pk-fs-on', on);
+    };
+    sync();
+
+    btn.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      void (this.isFullscreen() ? this.exitFullscreen() : this.enterFullscreen());
+    });
+    document.addEventListener('fullscreenchange', sync);
+
+    document.body.appendChild(btn);
+    this.fsToggleEl = btn;
+  }
+
+  /**
+   * Best-effort auto-fullscreen on the player's FIRST control press in landscape
+   * (Android in-browser): the gesture lets us claim the screen as soon as they
+   * start playing. Tried once per session so it never fights a manual exit.
+   */
+  private maybeAutoFullscreen(): void {
+    if (this.autoFsTried) return;
+    if (!this.fullscreenSupported() || this.isFullscreen()) return;
+    if (this.settings.shell === 'plain') return;
+    const coarse = window.matchMedia?.('(pointer: coarse)').matches ?? false;
+    const landscape = window.matchMedia?.('(orientation: landscape)').matches ?? false;
+    if (!coarse || !landscape) return;
+    this.autoFsTried = true;
+    void this.enterFullscreen();
   }
 
   /**
@@ -170,11 +286,9 @@ class ShellManagerImpl {
    * and the player simply rotates the device (the hint stays up until they do).
    */
   private async requestLandscape(): Promise<void> {
+    this.autoFsTried = true; // an explicit request supersedes the auto attempt
+    await this.enterFullscreen();
     try {
-      const root = document.documentElement;
-      if (!document.fullscreenElement && root.requestFullscreen) {
-        await root.requestFullscreen();
-      }
       const orientation = (screen as unknown as {
         orientation?: { lock?: (o: string) => Promise<void> };
       }).orientation;
@@ -284,6 +398,8 @@ class ShellManagerImpl {
     if (isDown) {
       if (this.held.has(action)) return;
       this.held.add(action);
+      // The first landscape press is a user gesture — claim the screen with it.
+      this.maybeAutoFullscreen();
     } else {
       if (!this.held.has(action)) return;
       this.held.delete(action);
