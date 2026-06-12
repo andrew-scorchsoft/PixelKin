@@ -188,17 +188,33 @@ def encounters(region, rarity, tier, stage, scripted):
 # never erases them. slug -> extra EncounterZone-source rows.
 EXTRA_ENCOUNTERS = {
     "brinix":    [{"area": "pearlmoor_quay", "terrain": "water", "rarity": "uncommon", "min": 10, "max": 12}],
+    # Tideglass Cavern rows below (the Hours wiring, 2026-06): mirrors of the
+    # BUILT in-map zone tables (tideglass_cavern.json — the truth; weights ->
+    # rarity). The cave bed is the South's lv 20-24 backtrack; the Tidecall
+    # side-pool carries the atlas-promised signature rare (#30 Glostrael w5).
+    # tideglass_gallery has NO encounter zones by design (the Hour's room).
     "shimmral":  [{"area": "pearlmoor_quay", "terrain": "water", "rarity": "rare", "min": 11, "max": 12},
                   # the drowned shrine's rare circler (the Saltreach spur)
-                  {"area": "sunkbell_shallows", "terrain": "water", "rarity": "rare", "min": 18, "max": 20}],
-    "brinelet":  [{"area": "pearlmoor_quay", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 11}],
+                  {"area": "sunkbell_shallows", "terrain": "water", "rarity": "rare", "min": 18, "max": 20},
+                  {"area": "tideglass_cavern", "terrain": "cave", "rarity": "uncommon", "min": 21, "max": 24},
+                  {"area": "tideglass_cavern", "terrain": "water", "rarity": "common", "min": 21, "max": 24}],
+    "brinelet":  [{"area": "pearlmoor_quay", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 11},
+                  {"area": "tideglass_cavern", "terrain": "cave", "rarity": "common", "min": 20, "max": 22}],
     "brineroll": [{"area": "pearlmoor_quay", "terrain": "water", "rarity": "uncommon", "min": 10, "max": 12},
                   {"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 16, "max": 18},
                   {"area": "saltreach_fen_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 17, "max": 19},
-                  {"area": "sunkbell_shallows", "terrain": "water", "rarity": "common", "min": 17, "max": 19}],
+                  {"area": "sunkbell_shallows", "terrain": "water", "rarity": "common", "min": 17, "max": 19},
+                  {"area": "tideglass_cavern", "terrain": "cave", "rarity": "uncommon", "min": 21, "max": 24},
+                  {"area": "tideglass_cavern", "terrain": "water", "rarity": "common", "min": 21, "max": 24}],
     "lumpin":    [{"area": "pearlmoor_quay", "terrain": "tall_grass", "rarity": "common", "min": 9, "max": 11},
                   {"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 16, "max": 18},
-                  {"area": "saltreach_fen_ii", "terrain": "water", "rarity": "uncommon", "min": 17, "max": 19}],
+                  {"area": "saltreach_fen_ii", "terrain": "water", "rarity": "uncommon", "min": 17, "max": 19},
+                  {"area": "tideglass_cavern", "terrain": "cave", "rarity": "uncommon", "min": 20, "max": 23}],
+    # the Glostern line's middle form is the cavern pool's signature rare —
+    # it seeds Pharolux's living-lighthouse legend two doors from where the
+    # players caught Glostern (07-the-three §4).
+    "glostern":  [{"area": "tideglass_cavern", "terrain": "water", "rarity": "uncommon", "min": 22, "max": 24}],
+    "glostrael": [{"area": "tideglass_cavern", "terrain": "water", "rarity": "very_rare", "min": 22, "max": 24}],
     # the Saltreach marsh chain (fen I/II + the Sunkbell spur) — the maps'
     # authored tables, mirrored here as the dex's flavour rows
     "dewling":   [{"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "common", "min": 16, "max": 18},
@@ -206,7 +222,200 @@ EXTRA_ENCOUNTERS = {
     "poolfrond": [{"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "rare", "min": 17, "max": 18},
                   {"area": "saltreach_fen_ii", "terrain": "tall_grass", "rarity": "rare", "min": 18, "max": 19}],
     "tidalarch": [{"area": "sunkbell_shallows", "terrain": "water", "rarity": "very_rare", "min": 19, "max": 20}],
+    # ---- the North (N5 encounters-sync, 2026-06): mirrors of the BUILT in-map
+    # zone tables (public/assets/maps/*.json — the truth; weights -> rarity).
+    # The deep-ice fold + undercroft rows are the Emberward/Lamp-Line ground.
+    "sparrowcaw":  [{"area": "galehigh_terraces", "terrain": "tall_grass", "rarity": "common", "min": 28, "max": 30}],
+    "thrumvane":   [{"area": "galehigh_terraces", "terrain": "tall_grass", "rarity": "common", "min": 28, "max": 30}],
+    "cirruff":     [{"area": "galehigh_terraces", "terrain": "tall_grass", "rarity": "uncommon", "min": 28, "max": 30}],
+    "squallox":    [{"area": "galehigh_terraces", "terrain": "tall_grass", "rarity": "uncommon", "min": 28, "max": 30}],
+    # Windward I min 32: the SE foot verge rolls its own gentler 32-34 band
+    # (N6 MIN-3 — the three common Storm lines only); upper ledges stay 34-36.
+    "flintbeak":   [{"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "common", "min": 32, "max": 36},
+                    {"area": "windward_stair_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 34, "max": 36},
+                    {"area": "thunderroost", "terrain": "tall_grass", "rarity": "common", "min": 34, "max": 36}],
+    "sparkrat":    [{"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 32, "max": 36},
+                    {"area": "windward_stair_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 34, "max": 36}],
+    "thrumble":    [{"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 32, "max": 35},
+                    {"area": "windward_stair_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 35, "max": 36}],
+    "chillpip":    [{"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "rare", "min": 34, "max": 35}],
+    "geolace":     [{"area": "windward_stair_ii", "terrain": "tall_grass", "rarity": "rare", "min": 34, "max": 36}],
+    "glacewing":   [{"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "rare", "min": 35, "max": 36},
+                    {"area": "windward_stair_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 35, "max": 36},
+                    {"area": "wind_eye", "terrain": "tall_grass", "rarity": "common", "min": 35, "max": 36},
+                    {"area": "thunderroost", "terrain": "tall_grass", "rarity": "common", "min": 35, "max": 36},
+                    {"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "rare", "min": 37, "max": 40},
+                    {"area": "hushfrost_pass_i", "terrain": "tall_grass", "rarity": "rare", "min": 40, "max": 41}],
+    "hailwhirr":   [{"area": "wind_eye", "terrain": "tall_grass", "rarity": "common", "min": 34, "max": 36}],
+    "cumulance":   [{"area": "wind_eye", "terrain": "tall_grass", "rarity": "rare", "min": 36, "max": 36}],
+    "strikeaven":  [{"area": "thunderroost", "terrain": "tall_grass", "rarity": "rare", "min": 36, "max": 37}],
+    "glaceling":   [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "uncommon", "min": 36, "max": 39},
+                    {"area": "pale_vault_glacier", "terrain": "cave", "rarity": "rare", "min": 38, "max": 40},
+                    {"area": "pale_vault_undercroft", "terrain": "cave", "rarity": "uncommon", "min": 37, "max": 40},
+                    # the Hourfold (Hours wiring 2026-06): mirror of the BUILT
+                    # in-map bed (pale_vault_hourfold.json — sparse cave 44-48,
+                    # a band above the North curve by design)
+                    {"area": "pale_vault_hourfold", "terrain": "cave", "rarity": "uncommon", "min": 44, "max": 46}],
+    "iceling":     [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "uncommon", "min": 36, "max": 38}],
+    "snowcune":    [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "uncommon", "min": 36, "max": 38}],
+    "prismcub":    [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "uncommon", "min": 36, "max": 38},
+                    {"area": "hushfrost_pass_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41},
+                    {"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 42},
+                    {"area": "aurora_hollow", "terrain": "tall_grass", "rarity": "common", "min": 40, "max": 42}],
+    "prismantus":  [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "very_rare", "min": 38, "max": 40},
+                    {"area": "pale_vault_glacier", "terrain": "cave", "rarity": "rare", "min": 38, "max": 40},
+                    {"area": "aurora_hollow", "terrain": "tall_grass", "rarity": "uncommon", "min": 41, "max": 42},
+                    {"area": "pale_vault_hourfold", "terrain": "cave", "rarity": "uncommon", "min": 44, "max": 47}],
+    "stillwarden": [{"area": "pale_vault_glacier", "terrain": "cave", "rarity": "rare", "min": 38, "max": 40},
+                    {"area": "pale_vault_undercroft", "terrain": "cave", "rarity": "rare", "min": 38, "max": 40},
+                    # hushfrost II: main bed w12 + the "numbed" pockets where it runs w45
+                    {"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 41, "max": 42},
+                    {"area": "pale_vault_hourfold", "terrain": "cave", "rarity": "common", "min": 44, "max": 48}],
+    "hushbore":    [{"area": "pale_vault_undercroft", "terrain": "cave", "rarity": "common", "min": 37, "max": 40},
+                    {"area": "hushfrost_pass_i", "terrain": "tall_grass", "rarity": "common", "min": 40, "max": 42},
+                    {"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "common", "min": 40, "max": 42},
+                    {"area": "aurora_hollow", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 42}],
+    "hushvole":    [{"area": "pale_vault_undercroft", "terrain": "cave", "rarity": "uncommon", "min": 37, "max": 39}],
+    "blizzrhare":  [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "uncommon", "min": 36, "max": 39},
+                    {"area": "hushfrost_pass_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41},
+                    {"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 42}],
+    # ---- the West (W6 encounters-sync, 2026-06): mirrors of the BUILT in-map
+    # zone tables (public/assets/maps/*.json — the truth). Rarity from weight
+    # share (tables total ~100): >=20 common, 10-19 uncommon, 5-9 rare, <=4
+    # very_rare; apex teasers cap at very_rare, pocket-only species at rare;
+    # per-species levels/weights merged across a map's same-terrain zones.
+    # Frost-line rows for the hushfrost/aurora leg ride the North keys above.
+    "crystarn":    [{"area": "hushfrost_pass_i", "terrain": "tall_grass", "rarity": "common", "min": 40, "max": 42},
+                    {"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "common", "min": 41, "max": 42},
+                    {"area": "aurora_hollow", "terrain": "tall_grass", "rarity": "common", "min": 40, "max": 42}],
+    "geodrake":    [{"area": "hushfrost_pass_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41}],
+    "vortexlope":  [{"area": "hushfrost_pass_i", "terrain": "tall_grass", "rarity": "rare", "min": 41, "max": 42}],
+    "frigalance":  [{"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "rare", "min": 41, "max": 42}],
+    "glacitern":   [{"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "rare", "min": 41, "max": 42}],
+    # the aurora bed's w6 lv42 Frost-Light apex teaser (scripted kin; this is
+    # its one wild window)
+    "frostholm":   [{"area": "aurora_hollow", "terrain": "tall_grass", "rarity": "very_rare", "min": 42, "max": 42}],
+    # Sunken Solarium — the BUILT split wins: dry-outer 42-44 (crossings) +
+    # dry-inner 43-46 (garden beds) merge per species; water halls 43-46 are
+    # Tidecall-gated zones (gate lives in the map, not mirrored here).
+    "snoozlet":    [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "uncommon", "min": 42, "max": 44},
+                    {"area": "nightreach_observatory", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 50}],
+    "spirlet":     [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "uncommon", "min": 42, "max": 44},
+                    {"area": "nightreach_observatory", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 50}],
+    "sunsprout":   [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "uncommon", "min": 42, "max": 45},
+                    {"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 47}],
+    "gilpaw":      [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "uncommon", "min": 42, "max": 44},
+                    {"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 47}],
+    "helibud":     [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "uncommon", "min": 42, "max": 46},
+                    {"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 47},
+                    {"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 48},
+                    {"area": "helia_vault", "terrain": "tall_grass", "rarity": "common", "min": 47, "max": 48}],
+    "dawnfawn":    [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "uncommon", "min": 43, "max": 46},
+                    {"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 47},
+                    {"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 48}],
+    "petalune":    [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "uncommon", "min": 43, "max": 46},
+                    {"area": "nightreach_observatory", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 50}],
+    "lunveil":     [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "uncommon", "min": 43, "max": 46},
+                    {"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 48},
+                    {"area": "nightreach_observatory", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 51}],
+    "solvyne":     [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "rare", "min": 44, "max": 46},
+                    {"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 48},
+                    {"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 48},
+                    {"area": "helia_vault", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 49},
+                    {"area": "helia_vault", "terrain": "cave", "rarity": "common", "min": 48, "max": 49}],
+    "helicore":    [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "rare", "min": 44, "max": 46},
+                    {"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 48},
+                    {"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 48},
+                    {"area": "helia_vault", "terrain": "tall_grass", "rarity": "common", "min": 47, "max": 49},
+                    {"area": "helia_vault", "terrain": "cave", "rarity": "common", "min": 48, "max": 50}],
+    "goldmane":    [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "rare", "min": 45, "max": 46},
+                    {"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "rare", "min": 47, "max": 48},
+                    {"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 48},
+                    {"area": "helia_vault", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 49},
+                    {"area": "helia_vault", "terrain": "cave", "rarity": "common", "min": 48, "max": 50}],
+    "crystalune":  [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "rare", "min": 44, "max": 46}],
+    "drowshorn":   [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "very_rare", "min": 44, "max": 46},
+                    {"area": "nightreach_observatory", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 51}],
+    "auravane":    [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "very_rare", "min": 45, "max": 46},
+                    {"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "rare", "min": 47, "max": 48},
+                    {"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "rare", "min": 47, "max": 48},
+                    {"area": "helia_vault", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 49}],
+    "sunstag":     [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "very_rare", "min": 44, "max": 46},
+                    {"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "very_rare", "min": 47, "max": 48},
+                    {"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "rare", "min": 47, "max": 48},
+                    {"area": "helia_vault", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 49}],
+    "lunvane":     [{"area": "sunken_solarium", "terrain": "tall_grass", "rarity": "very_rare", "min": 45, "max": 46},
+                    {"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "very_rare", "min": 48, "max": 48},
+                    {"area": "nightreach_observatory", "terrain": "tall_grass", "rarity": "rare", "min": 50, "max": 52}],
+    "solunet":     [{"area": "sunken_solarium", "terrain": "water", "rarity": "common", "min": 43, "max": 45}],
+    "solray":      [{"area": "sunken_solarium", "terrain": "water", "rarity": "common", "min": 43, "max": 46}],
+    "tidalune":    [{"area": "sunken_solarium", "terrain": "water", "rarity": "uncommon", "min": 44, "max": 46}],
+    "nightwraith": [{"area": "sunken_solarium", "terrain": "water", "rarity": "uncommon", "min": 44, "max": 46},
+                    {"area": "nightreach_observatory", "terrain": "tall_grass", "rarity": "uncommon", "min": 49, "max": 51}],
+    "lunaquell":   [{"area": "sunken_solarium", "terrain": "water", "rarity": "rare", "min": 45, "max": 46}],
+    "omenire":     [{"area": "sunken_solarium", "terrain": "water", "rarity": "rare", "min": 45, "max": 46}],
+    "lunarbel":    [{"area": "sunken_solarium", "terrain": "water", "rarity": "rare", "min": 45, "max": 46}],
+    "solreach":    [{"area": "sunken_solarium", "terrain": "water", "rarity": "rare", "min": 45, "max": 46}],
+    # the reliquary bed (helia_vault cave zone) is gated flag:helia_far_bloomed
+    # in the map JSON — the Solar apex's one wild window (scripted kin); apex
+    # caps at rare despite the w12 share
+    "heliovast":   [{"area": "helia_vault", "terrain": "cave", "rarity": "rare", "min": 49, "max": 50}],
+    # nightreach verge w3 Lunar-Light apex teaser (scripted kin)
+    "dawnwatcher": [{"area": "nightreach_observatory", "terrain": "tall_grass", "rarity": "very_rare", "min": 51, "max": 52}],
+    # Coldfog — the maps split the designed coldfog_marches rows into I/II
+    "mothdim":     [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 48}],
+    "flutterwane": [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 48}],
+    "nullmoth":    [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 48},
+                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50},
+                    {"area": "drownlight_beacon", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 49},
+                    {"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50}],
+    "wispwane":    [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 48},
+                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 49, "max": 50},
+                    {"area": "drownlight_beacon", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50}],
+    "cindersob":   [# hushfrost II's "numbed" pockets only (w30 there) — rare cap
+                    {"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "rare", "min": 40, "max": 42},
+                    {"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 48},
+                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 50}],
+    # the gold bed (coldfog I's 1-tile gold_a pocket, w5) — the lone Light
+    # exception in the Dark marches
+    "wisprestored": [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "rare", "min": 47, "max": 48}],
+    "wispwanenull": [{"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50},
+                     {"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50}],
+    "embergone":   [{"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 49, "max": 50},
+                    {"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "common", "min": 49, "max": 50}],
+    "voidmantle":  [{"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "rare", "min": 49, "max": 50},
+                    {"area": "drownlight_beacon", "terrain": "tall_grass", "rarity": "common", "min": 49, "max": 50}],
+    "liminalux":   [{"area": "drownlight_beacon", "terrain": "tall_grass", "rarity": "rare", "min": 49, "max": 50}],
+    # the husk-cradle (w55 pocket) + the works bed (w12)
+    "whorlix":     [{"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "uncommon", "min": 50, "max": 51}],
 }
+
+# Areas whose encounter tables are BUILT into the map JSONs (the in-map zones
+# are the truth, mirrored above). Generated region defaults — and stale rows
+# carried in the previous per-species files — must not claim these areas:
+# only EXTRA_ENCOUNTERS rows may. (North is the first fully-built region; its
+# default "galehigh_terraces" band rows predated the maps.)
+CURATED_AREAS = {
+    "galehigh_terraces", "windward_stair_i", "windward_stair_ii", "wind_eye",
+    "thunderroost", "pale_vault_glacier", "pale_vault_undercroft",
+    # the West (W6): the 12 built encounter-bearing maps. "coldfog_marches"
+    # (no suffix) is the pre-build design area — the maps split it into I/II,
+    # so the unsuffixed design rows are dropped, never resurrected.
+    "hushfrost_pass_i", "hushfrost_pass_ii", "aurora_hollow",
+    "sunken_solarium", "sunvault_climb_i", "sunvault_climb_ii", "helia_vault",
+    "coldfog_marches", "coldfog_marches_i", "coldfog_marches_ii",
+    "drownlight_beacon", "hollowfen_stillworks", "nightreach_observatory",
+    # the Three Hours sites (Hours wiring 2026-06): the cavern + the fold carry
+    # built in-map tables (mirrored above); the gallery is encounter-free by
+    # design and listed so no generated row can ever claim the Hour's room.
+    "tideglass_cavern", "tideglass_gallery", "pale_vault_hourfold",
+}
+
+# Kin that are FIXED quest catches (a legendaryBattle set-piece), even though
+# tier/rarity alone wouldn't mark them scripted. #148 Lampling is C1
+# "Lampling's Trail" at the Vesper Crossroads — its old umbral_spire row was a
+# stale open-table teaser from before the trail was built, dropped here.
+SCRIPTED_KIN = {"lampling"}
 
 # Wave-2 signature moves (gen_moves.py): one per elemental apex line. Inserted
 # into the owner's learnset late (the awe-curve payoff); excluded from the
@@ -273,6 +482,50 @@ CANON = {
         "entry": "Cloverkit's kindled form: a great clover-crowned stag whose antlers bloom with year-round green even beneath the dark sky. It plants its hooves and shields the grove, taking blows that would fell lesser kin. The cub you raised became the forest's gentle guardian.",
         "category": "Grove-Guardian Kin",
     },
+    # The Three Hours (#160-162) — docs/world/walkthrough/07-the-three.md §2.
+    # Stats are NOT pinned: make_stats(role, 558, name) reproduces the dossier
+    # lines deterministically (verified). 'levelup' pins the as-met kits from
+    # the existing 125-move pool; 'art' carries the dossier's distinct
+    # silhouette/palette/direction so gen_creature.py gets a real palette line.
+    "gloamber": {
+        # the generator's Ember-E default is daybringer, wrong for a dusk kin
+        "ability": "nightfall", "hidden_ability": "emberheart",
+        "entry": "The First Hour — the keeper of dusk, grown heavy with an evening it has never been allowed to put down. Lamp-tenders say every wick in Vesperholm is lit from the one coal it carries, at one remove or another.",
+        "category": "Dusk Hour Kin",
+        "levelup": [(1, "cinder_spit"), (9, "scorch_veil"), (13, "hearth_pulse"),
+                    (24, "mend"), (31, "gloomswell"), (44, "sunflare_burst"), (52, "voidburst")],
+        "art": {
+            "silhouette": "A long, low lynx-like beast, heavy-lidded and patient, built close to the ground like something settling in for the night. A banked mane of small, steady flame-tongues runs low along the neck and shoulders — embers, not fire. At its chest, a locket of teal sea-glass holds one bright coal. The tail ends in a slow curl of pale smoke. Reads at 64px as a dark animal carrying one precious light.",
+            "palette": "Charcoal-violet fur deepening to ink (#1a1430) along the spine like a sky losing its light; ember amber (#ff8a3d) and rose for the banked mane; diamond-teal sea-glass locket; a faint dusk-rose gradient on the brow and flanks.",
+            "direction": "The moment of lamp-lighting as an animal. Heavy, warm at the core, unhurried — the dusk as a keeper, not a threat. The single chest-coal must read as the brightest pixel on the sprite.",
+        },
+    },
+    "noctilune": {
+        # the Lunar-E default nightfall is already Gloamber's curtain —
+        # Midnight doesn't bring the night, it IS the night
+        "ability": "mirrorlight", "hidden_ability": "nightsight",
+        "entry": "The Still Hour — the keeper of midnight, standing the same unrelieved watch since the night stopped turning. The Hollowing call it proof that the dark can be gentle; Noctilune, for its part, has never once answered them.",
+        "category": "Midnight Hour Kin",
+        "levelup": [(1, "moon_nip"), (13, "moonshard"), (24, "lull"), (30, "bulwark"),
+                    (38, "nightfall_veil"), (46, "shadow_rend"), (54, "eclipse_wave")],
+        "art": {
+            "silhouette": "A huge pangolin-like sentinel, its overlapping scales panes of midnight-blue glass, each pane holding exactly one star-speck. Standing, it reads as a hooded watchman; curled, as a dark moonless disc. A small unstruck bell of dark ice hangs at its throat. Eyes are two thin silver crescents. At 64px it should read like a piece of the midnight sky knelt down to wait.",
+            "palette": "Night (#0b1026) and deepBlue (#13205a) scale-panes; diamond (#9fe7ff) star-specks, one per scale; pale moon-grey underbelly and claws; the throat-bell a darker, colder blue than everything around it.",
+            "direction": "The deep of night as armour. Utterly still until it isn't. No menace — endurance. The unstruck bell is the motif: midnight is the hour no bell marks.",
+        },
+    },
+    "erstmorn": {
+        # abilities match the Solar-E generator defaults (daybringer/sunsoak)
+        "entry": "The Lost Hour — the keeper of a dawn that has not come, waiting half-finished where the morning was meant to land. Those who meet it say the worst part is its patience: it does not doubt the sunrise, and it will not be told the years.",
+        "category": "Dawn Hour Kin",
+        "levelup": [(1, "sun_jab"), (13, "glint_ray"), (22, "daybeam"), (28, "dazzle_flash"),
+                    (36, "sun_nap"), (44, "light_pulse"), (52, "sunburst_nova")],
+        "art": {
+            "silhouette": "A tall, slender hare of pale gold light, mid-stride even when standing. Long ears trail behind it like horizon ribbons. Parts of its outline are UNFINISHED — one hindquarter and the tip of one ear fade into faint sketch-lines of light, as if the painter stopped at the moment the dawn did. The missing parts must read as waiting, not wounded.",
+            "palette": "Bone (#f5f0e1) and pale gold body; a sunrise gradient of rose and amber along the spine and ear-ribbons; the unfinished edges in faint diamond-cyan (#9fe7ff) sketch-lines over transparency.",
+            "direction": "An unfinished sunrise as a creature — fast, gentle, heartbreaking. The emotional apex of the triad: in the Long Dusk it is incomplete by definition, and the sprite should make the player want to fix that.",
+        },
+    },
 }
 
 def slugify(name):
@@ -324,7 +577,9 @@ def main():
             ok = (o.get("line") or {}).get("kindles_into")
             if ok == e["concept_id"]:
                 frm = o["dex_id"]; break
-        scripted = e.get("rarity") in ("legendary",) or (tier in ("E","F") and e.get("rarity") == "very_rare")
+        scripted = (e.get("rarity") in ("legendary",)
+                    or (tier in ("E", "F") and e.get("rarity") == "very_rare")
+                    or slugify(name) in SCRIPTED_KIN)
         ab, hab = pick_ability(e["types"], role, tier)
         kindling = None
         if into:
@@ -364,32 +619,54 @@ def main():
         # clamp catchRate into band
         lo, hi = {"A":(190,235),"B":(150,200),"C":(90,150),"D":(45,90),"E":(20,45),"F":(3,10)}[tier]
         rec["catchRate"] = max(lo, min(hi, rec["catchRate"]))
+        # Built-map areas are hand-curated: drop any generated default row that
+        # claims one (the EXTRA_ENCOUNTERS mirror is the only allowed source),
+        # then merge the hand-curated placements so they survive a rebuild.
+        rec["encounters"] = [x for x in rec["encounters"] if x["area"] not in CURATED_AREAS]
+        rec["encounters"].extend(EXTRA_ENCOUNTERS.get(rec["slug"], []))
         # Preserve hand-added encounter rows from the existing per-species file.
         # Map-content work appends area tables the generator doesn't know about
-        # (e.g. pearlmoor_quay); regenerating must not clobber them.
+        # (e.g. pearlmoor_quay); regenerating must not clobber them. Keys are
+        # taken AFTER the EXTRA_ENCOUNTERS merge and preserved rows are deduped,
+        # so a rebuild never re-appends the extras (the old duplicate-row bug),
+        # and stale rows naming a CURATED area are dropped, not resurrected.
         if not scripted:
             prev_path = os.path.join(OUTDIR, f"{e['dex_id']:03d}_{rec['slug']}.json")
             if os.path.exists(prev_path):
                 try:
                     prev = json.load(open(prev_path))
-                    gen_keys = {json.dumps(x, sort_keys=True) for x in rec["encounters"]}
+                    seen_keys = {json.dumps(x, sort_keys=True) for x in rec["encounters"]}
                     for enc in prev.get("encounters", []):
-                        if json.dumps(enc, sort_keys=True) not in gen_keys:
-                            rec["encounters"].append(enc)
+                        key = json.dumps(enc, sort_keys=True)
+                        if key in seen_keys or enc.get("area") in CURATED_AREAS:
+                            continue
+                        seen_keys.add(key)
+                        rec["encounters"].append(enc)
                 except Exception:
                     pass
-        # apply canonical overrides for the two existing starters
+        # apply canonical overrides (starters + appended canon kin). Every key
+        # is optional: pin only what the dossier locks (e.g. the Three Hours
+        # pin abilities/dex/kits/art but trust make_stats for their lines).
         canon = CANON.get(rec["slug"])
         if canon:
-            rec["stats"] = canon["stats"]; rec["bst"] = sum(canon["stats"].values())
-            rec["ability"] = canon["ability"]; rec["hidden_ability"] = canon["hidden_ability"]
-            rec["dex"]["entry"] = canon["entry"]; rec["dex"]["category"] = canon["category"]
-            rec["dex"]["size_cm"] = canon["size_cm"]; rec["dex"]["weight_kg"] = canon["weight_kg"]
-            sig = canon["signature"]
-            if sig in MOVE_IDS and not any(e["move"] == sig for e in rec["learnset"]["levelup"]):
+            if "stats" in canon:
+                rec["stats"] = canon["stats"]; rec["bst"] = sum(canon["stats"].values())
+            if "ability" in canon: rec["ability"] = canon["ability"]
+            if "hidden_ability" in canon: rec["hidden_ability"] = canon["hidden_ability"]
+            if "entry" in canon: rec["dex"]["entry"] = canon["entry"]
+            if "category" in canon: rec["dex"]["category"] = canon["category"]
+            if "size_cm" in canon: rec["dex"]["size_cm"] = canon["size_cm"]
+            if "weight_kg" in canon: rec["dex"]["weight_kg"] = canon["weight_kg"]
+            if "art" in canon: rec["art"].update(canon["art"])
+            if "levelup" in canon:  # pinned full ladder (validated, level-sorted)
+                rec["learnset"]["levelup"] = [
+                    {"level": lvl, "move": mv}
+                    for lvl, mv in sorted(canon["levelup"], key=lambda r: r[0])
+                    if mv in MOVE_IDS
+                ]
+            sig = canon.get("signature")
+            if sig and sig in MOVE_IDS and not any(e["move"] == sig for e in rec["learnset"]["levelup"]):
                 rec["learnset"]["levelup"].insert(0, {"level": 1, "move": sig})
-        # hand-curated map placements survive a rebuild
-        rec["encounters"].extend(EXTRA_ENCOUNTERS.get(rec["slug"], []))
         # apex signature moves (late learnset payoff)
         sigrow = SIGNATURE_MOVES.get(rec["slug"])
         if sigrow:

@@ -69,11 +69,11 @@
   },
   "encounters": [
     {
-      "area": "galehigh_terraces",
+      "area": "thunderroost",
       "terrain": "tall_grass",
       "rarity": "rare",
-      "min": 38,
-      "max": 40
+      "min": 36,
+      "max": 37
     }
   ],
   "scripted": false,

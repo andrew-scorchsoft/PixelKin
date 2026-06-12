@@ -4499,5 +4499,80 @@
   "hook": "Raise one line far enough and it answers the Long Dusk in person \u2014 a walking sunrise.",
   "dex_id": 159,
   "line_primary_type": "Solar"
+ },
+ {
+  "concept_id": "X-GLOAMBER",
+  "name": "Gloamber",
+  "types": [
+   "Ember",
+   "Dark"
+  ],
+  "role": "Special Tank",
+  "tier": "E",
+  "region": "south",
+  "rarity": "very_rare",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "concept": "The First Hour \u2014 the keeper of dusk, grown heavy with an evening it has never been allowed to put down. Lamp-tenders say every wick in Vesperholm is lit from the one coal it carries, at one remove or another.",
+  "visual": "A long, low lynx-like beast, heavy-lidded and patient, built close to the ground like something settling in for the night. A banked mane of small, steady flame-tongues runs low along the neck and shoulders \u2014 embers, not fire. At its chest, a locket of teal sea-glass holds one bright coal. The tail ends in a slow curl of pale smoke. Reads at 64px as a dark animal carrying one precious light.",
+  "size_cm": 170,
+  "weight_kg": 88,
+  "hook": "The moment of lamp-lighting as an animal. Heavy, warm at the core, unhurried \u2014 the dusk as a keeper, not a threat. The single chest-coal must read as the brightest pixel on the sprite.",
+  "dex_id": 160,
+  "line_primary_type": "Ember"
+ },
+ {
+  "concept_id": "X-NOCTILUNE",
+  "name": "Noctilune",
+  "types": [
+   "Lunar",
+   "Dark"
+  ],
+  "role": "Physical Wall",
+  "tier": "E",
+  "region": "north",
+  "rarity": "very_rare",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "concept": "The Still Hour \u2014 the keeper of midnight, standing the same unrelieved watch since the night stopped turning. The Hollowing call it proof that the dark can be gentle; Noctilune, for its part, has never once answered them.",
+  "visual": "A huge pangolin-like sentinel, its overlapping scales panes of midnight-blue glass, each pane holding exactly one star-speck. Standing, it reads as a hooded watchman; curled, as a dark moonless disc. A small unstruck bell of dark ice hangs at its throat. Eyes are two thin silver crescents. At 64px it should read like a piece of the midnight sky knelt down to wait.",
+  "size_cm": 260,
+  "weight_kg": 420,
+  "hook": "The deep of night as armour. Utterly still until it isn't. No menace \u2014 endurance. The unstruck bell is the motif: midnight is the hour no bell marks.",
+  "dex_id": 161,
+  "line_primary_type": "Lunar"
+ },
+ {
+  "concept_id": "X-ERSTMORN",
+  "name": "Erstmorn",
+  "types": [
+   "Solar",
+   "Light"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "E",
+  "region": "west",
+  "rarity": "very_rare",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "concept": "The Lost Hour \u2014 the keeper of a dawn that has not come, waiting half-finished where the morning was meant to land. Those who meet it say the worst part is its patience: it does not doubt the sunrise, and it will not be told the years.",
+  "visual": "A tall, slender hare of pale gold light, mid-stride even when standing. Long ears trail behind it like horizon ribbons. Parts of its outline are UNFINISHED \u2014 one hindquarter and the tip of one ear fade into faint sketch-lines of light, as if the painter stopped at the moment the dawn did. The missing parts must read as waiting, not wounded.",
+  "size_cm": 200,
+  "weight_kg": 64,
+  "hook": "An unfinished sunrise as a creature \u2014 fast, gentle, heartbreaking. The emotional apex of the triad: in the Long Dusk it is incomplete by definition, and the sprite should make the player want to fix that.",
+  "dex_id": 162,
+  "line_primary_type": "Solar"
  }
 ]

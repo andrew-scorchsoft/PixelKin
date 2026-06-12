@@ -683,6 +683,820 @@ export const DIALOGUE: DialogueRegistry = {
   'sign.crossroads_mineshortcut': [
     { text: 'CINDERHEAD CART-HOIST.\nThe deep-mine line. The cars run when the sealed gallery door is opened from the far side — not before.' },
   ],
+
+  // ===========================================================================
+  // THE NORTH — Galehigh Terraces (walkthrough/03-north). Voice: the last warm
+  // colour before the cold leg; the Kite-rising is the game's humour-warmest
+  // beat (the winch notice is the town's ONE wry sign).
+  // ===========================================================================
+  'sign.galehigh_welcome': [
+    { text: 'GALEHIGH TERRACES\nThe last fire before the climb. Mind the gusts.' },
+  ],
+  'sign.galehigh_winch': [
+    { text: 'THE KITE-RISING WINCH\nRiders ascend at their own joy. The Festival Committee asks that you wave back — the children keep count.' },
+  ],
+  'sign.galehigh_high_ledges': [
+    { text: 'The high terraces open only to a kin that rides the thermals. The wind takes nobody it has not been introduced to.' },
+  ],
+  'sign.galehigh_windeye': [
+    { text: 'THE WIND-EYE\nOn a clear dusk the updraft column sings. The grotto keeps what the wind keeps — climbers say a sky-kin nests at the eye itself.' },
+  ],
+  'sign.galehigh_lanternway': [
+    { text: 'SOUTH: THE LANTERNWAY\nThe lit road to the Vesper Crossroads, where every way in Vesperholm meets.' },
+  ],
+  'sign.crossroads_galehigh': [
+    { text: 'NORTH-WEST: GALEHIGH TERRACES\nThe mountain spoke. Its lamps wake with the Storm constellation — high road, high wind.' },
+  ],
+  'npc.waykeeper_galehigh_gate': [
+    { speaker: 'WAYKEEPER', text: 'The Galehigh spoke sleeps yet, Wayfarer — its lamps answer the Storm, and the Storm is still dark.' },
+    { speaker: 'WAYKEEPER', text: 'The road north runs the long way for now: east through the fen, up through Cinderhead\'s deep, and out the mountain\'s far side. Relight the Storm and this spoke will carry you home after.' },
+  ],
+  'npc.waystone_kid_kite': [
+    { speaker: 'WAYSTONE KID', text: 'LOOK at it go! The kite-maker put little LAMPS on the tail — Gran says if I\'m not careful I\'ll have the whole Lanternway lit. GOOD.' },
+    { speaker: 'WAYSTONE KID', text: 'The string hand is everything, you know. A Wayfarer told me that. It was you. I\'m telling everyone.' },
+  ],
+  // The festival, pre-Gleam (warm, communal, a little daft — the build-up).
+  'npc.galehigh_festival_piper': [
+    { speaker: 'FESTIVAL PIPER', text: 'A reel for the Rising! I play to the kites, you understand — the dancers just happen to benefit.' },
+    { speaker: 'FESTIVAL PIPER', text: 'Mira\'s up at the launch ledge already. She says the wind practises all year for tonight. She talks about the wind the way other folk talk about a sister.' },
+  ],
+  'npc.galehigh_festival_kid': [
+    { speaker: 'FESTIVAL KID', text: 'My kite\'s got NINE lamps on the tail. Talo\'s only has six. It\'s not a contest, Gran says. Gran counted them for me though.' },
+  ],
+  'npc.galehigh_festival_goer': [
+    { speaker: 'FESTIVAL-GOER', text: 'We fly the kites so the stars have something to climb back up. Daft, maybe. But the night\'s a little less long when the whole hill\'s lit.' },
+  ],
+  'npc.galehigh_quest_witness': [
+    { speaker: 'TERRACE AUNTIE', text: 'Mira shouted the whole asking down from the ledge, didn\'t she. She does that. We\'ve given up sending letters up the winch — she answers them off the cliff at volume.' },
+    { speaker: 'TERRACE AUNTIE', text: 'The kite-maker\'s your next call, love — lower terrace, the stall with the orange silk. Her best kite blew to bits in the squall and she\'s been too proud to ask for legs.' },
+  ],
+  // Arc A foreshadow — Wren at the festival, bright on top, quieter underneath.
+  // (A4 lands at Pale Vault; this only plants the doubt.)
+  'npc.wren_galehigh': [
+    { speaker: 'WREN', portrait: 'wren', expr: 'eager', text: 'This festival is RIDICULOUS. I\'ve flown three kites, eaten something called a gust-cake, and been adopted by at least one grandmother.' },
+    { speaker: 'WREN', portrait: 'wren', expr: 'unsure', text: '...Heard a trader on the stair, though. Said the towns the Hollowing\'s quieted sound peaceful. Quiet towns. No more lamps guttering, no more goodbyes. ...Doesn\'t sound like the worst thing, does it?' },
+    { speaker: 'WREN', portrait: 'wren', expr: 'neutral', text: 'Forget I said it. Race you up the Stair — when the wind lets you.' },
+  ],
+  // The winch-keeper's three stages + the winch warp's "not yet".
+  'npc.winch_keeper_wait': [
+    { speaker: 'WINCH-KEEPER', text: 'She hauls riders to the launch ledge, this old drum — but only at the Rising, and only for a kite the town has flown. Festival law, older than me, and I am EXTREMELY old.' },
+    { speaker: 'WINCH-KEEPER', text: 'Want up to Mira? Then get yourself a kite worth blessing. The kite-maker\'s on the lower terrace, and between us — she needs the errand more than you need the ledge.' },
+  ],
+  'npc.winch_not_ready': [
+    { speaker: 'WINCH-KEEPER', text: 'Easy there! The drum turns for blessed kites and nothing else — raise one with the town first. Kite-maker\'s stall, then the Rising. THEN the sky.' },
+  ],
+  'npc.winch_keeper_after': [
+    { speaker: 'WINCH-KEEPER', text: 'Up you go, any time — the drum knows you now. And you waved back on the first ride. The children noted it down. You\'re in the GOOD ledger.' },
+  ],
+  // The kite-maker's stages (lost → built → festival → the Round leg).
+  'npc.kite_maker_lost': [
+    { speaker: 'KITE-MAKER', text: 'Spar, sail and tail — my best kite, in three pieces, somewhere down the lower terraces. One squall. ONE. Thirty years of knots and the sky just... helped itself.' },
+    { speaker: 'KITE-MAKER', text: 'If your road takes you across the lower terraces anyway — and it will, all roads here do — keep an eye down. Lantern-orange silk. You can\'t miss it. I miss it terribly.' },
+  ],
+  'npc.kite_maker_after': [
+    { speaker: 'KITE-MAKER', text: 'She flies TRUE — I watched the trim from here. Get to the winch terrace before the Rising peaks, Wayfarer. A town-built kite wants a town watching.' },
+  ],
+  'npc.kite_maker_round_after': [
+    { speaker: 'KITE-MAKER', text: 'Mind the cross-wind where the spoke meets the Crossroads — and tell the waystone kid what I told you. The string hand is everything. The kite already knows the rest.' },
+  ],
+  // Mira's town stages (post-Gleam callouts → the N3 ribbon-giver swap).
+  'npc.mira_galehigh_after': [
+    { speaker: 'MIRA VAEL', portrait: 'mira', expr: 'bright', text: 'Still here! Good — the wind kept three places for you and I promised it I\'d nag: the WIND-EYE, off our own high terrace. THUNDERROOST, off the second stair. And the drop-ledge home from the crags, once you\'ve stood on them.' },
+    { speaker: 'MIRA VAEL', portrait: 'mira', expr: 'soft', text: 'And mind the Storm\'s manners now you carry its Gleam — a numbed kin is a kite with a fouled string. Carry balms. Ask the wind. Thank it after.' },
+  ],
+  'npc.mira_ribbon_after': [
+    { speaker: 'MIRA VAEL', portrait: 'mira', expr: 'soft', text: 'The quiet ledge, west of the second stair, behind the crag. No note, no waiting. The wind will mind it better than words would.' },
+  ],
+  'npc.mira_skyloft': [
+    { speaker: 'MIRA VAEL', portrait: 'mira', expr: 'soft', text: 'You don\'t fight the wind, apprentice. You ask it to lift you — and you thank it when it does. Step up to the ledge when your kin are ready.' },
+  ],
+  'npc.mira_skyloft_after': [
+    { speaker: 'MIRA VAEL', portrait: 'mira', expr: 'bright', text: 'Off the ledge and glide LONG — that\'s the whole trick of the Updraft Kite. And the Wind-Eye first, before the Stair takes you north. Promise me the Wind-Eye. The wind sings there, and it so rarely gets an audience.' },
+  ],
+  'npc.mira_not_ready': [
+    { speaker: 'MIRA VAEL', portrait: 'mira', expr: 'neutral', text: 'Not yet, apprentice — the town flies FIRST. That\'s the whole shape of the thing. Down you go: raise a kite with them, fly it at the Rising, and the winch will bring you back to me.' },
+  ],
+  // Ambient town + interiors.
+  'npc.galehigh_farmer': [
+    { speaker: 'TERRACE FARMER', text: 'Everything on these terraces grows bent — crops, fences, farmers. You learn to read it: the bend SHOWS you the wind. Straight things up here are just things that haven\'t listened yet.' },
+  ],
+  'npc.galehigh_gleam_kid': [
+    { speaker: 'TERRACE KID', text: 'The STORM one! Right overhead! It came back the same night the kites went up — Gran says the kites showed it the way and I believe Gran over everyone.' },
+  ],
+  'npc.galehigh_gleam_farmer': [
+    { speaker: 'TERRACE FARMER', text: 'Five constellations standing, and ours among them. The crops won\'t grow any straighter for it — but I find I stand a bit straighter, and that\'ll do.' },
+  ],
+  'npc.galehigh_hall_keeper': [
+    { speaker: 'HALL-KEEPER', text: 'Looking for Mira? The Lampwarden is not in her hall, dear — the Lampwarden is in the SKY. The hall is where the sky\'s business gets written down after.' },
+    { speaker: 'HALL-KEEPER', text: 'The Storm Gleam is met at the launch ledge, up the great winch. And the winch answers the festival, not the wind — fly a kite with the town first.' },
+  ],
+  'npc.galehigh_hall_festival': [
+    { speaker: 'HALL WARDEN', text: 'The Storm stands, and the hall\'s banners haven\'t hung still since. Three hundred years this hall kept the Storm\'s ledger — tonight we wrote the good line in it.' },
+  ],
+  'npc.galehigh_inn_guest': [
+    { speaker: 'INN GUEST', text: 'I asked the keeper for the room out of the wind. She laughed for quite some time. There is no room out of the wind. It is, I am told, part of the charm.' },
+  ],
+  'npc.galehigh_home_elder': [
+    { speaker: 'TERRACE ELDER', text: 'I flew my first Rising off that same launch ledge, seventy years gone. The wind hasn\'t changed. That\'s the comfort of living up here — the wind is the one thing the dusk never managed to quiet.' },
+  ],
+  'npc.galehigh_home_kid': [
+    { speaker: 'TERRACE KID', text: 'When I\'m big I\'m going to ride the winch AND the thermals AND a storm-bird. Da says one impossible thing a year. Da is slow.' },
+  ],
+  'npc.galehigh_shopkeeper': [
+    { speaker: 'KITE-KEEPER', text: 'Storm charts off the last cart — Thunder Kick, Volt Arc, and the big Gale Slam for them as can read it. And stock your balms HERE, Wayfarer: Pale Vault keeps no counter. Lovely town. Terrible shopping.' },
+  ],
+  // Sight-trainer after-states.
+  'npc.galehigh_kitehand_after': [
+    { speaker: 'PERRIN', text: 'The wind still approves of you — it mentions it most gusts. Fly at the Rising if you haven\'t. The third gust bites, but it means well.' },
+  ],
+  'npc.galehigh_terracer_after': [
+    { speaker: 'SORREL', text: 'The cabbages have agreed to forget the bout if I have. Upward and onward, Wayfarer — and if you meet the wind-gap, give it my regards from a safe distance.' },
+  ],
+  'npc.skyloft_ward_a_after': [
+    { speaker: 'TAMSIN', text: 'The ledge is yours to stand. Mind the rail on the west side — the wind uses it as a doorway, and it doesn\'t knock.' },
+  ],
+  'npc.skyloft_ward_b_after': [
+    { speaker: 'BRAN', text: 'The wind said yes to you — I heard it plain. It doesn\'t say it twice, so walk like you remember the once.' },
+  ],
+
+  // ===========================================================================
+  // THE NORTH — Windward Stair I → II. Quiet transit, Arc D pacing: the warmth
+  // handed over to the high blue. The distance-marker is the cluster's one wry
+  // line; everything past the wind-gap runs sincere.
+  // ===========================================================================
+  'sign.windward_marker': [
+    { text: 'WINDWARD STAIR\nGalehigh: 412 steps down. Pale Vault: a good deal more up.' },
+    { text: 'The stair-warden counted once, in better weather, and asks that you not make him do it again.' },
+  ],
+  'sign.windward_windgap': [
+    { text: 'THE WIND-GAP\nThe stair ends here; the wind goes on. Only a kin that rides the thermals crosses the gap.' },
+  ],
+  'sign.windward_roost': [
+    { text: 'THUNDERROOST — across the lip.\nThe storm-birds keep it. Mind the nest, and the weather it dreams.' },
+  ],
+  'npc.windward_pilgrim': [
+    { speaker: 'PILGRIM', text: 'I walk up every year for the Aurora-watch. You stand on the ice, you hold your lamp, and nobody speaks for an hour. It is the only crowd I have ever been able to bear.' },
+    { speaker: 'PILGRIM', text: 'The glacier folk say the sky comes nearer up there. I think it\'s the other way about. I think Pale Vault is where the ground stops insisting.' },
+  ],
+  // The crag-tender — N1's keeper (post-kettle on Stair I) and the shortcut
+  // ledge's rounds (Stair II); one ref serves both placements by design.
+  'npc.windward_crag_tender': [
+    { speaker: 'CRAG-TENDER', text: 'The kettle\'s on, child — it is always on, that\'s the whole ministry. Sip from the flask when the glacier finds your bones; it\'s the same brew, and it remembers you fetched the herb for it.' },
+    { speaker: 'CRAG-TENDER', text: 'Cold up here, isn\'t it. If your lamp gutters, just step off that ledge — it\'s a short glide home to Galehigh\'s fires. Knowing the way back is half of going on.' },
+  ],
+  'npc.windward_craghand_after': [
+    { speaker: 'EDDA', text: 'Rest at the bends, climb between them — that\'s the stair\'s whole wisdom. The crag-tender\'s camp is two switchbacks up, and her kettle is better company than I am.' },
+  ],
+  'npc.windward_galewatch_after': [
+    { speaker: 'ROWAN', text: 'The wind-gap\'s ahead — the stair just stops, like the mason lost his nerve. It wants a thermal-rider. You have the look of one now.' },
+  ],
+  'npc.windward_cragwatch_after': [
+    { speaker: 'MERLE', text: 'Thunderroost\'s across the east lip, if your kite-kin fancies meeting the storm-birds at home. And the glacier\'s down the far slope. Walk in quiet — Pale Vault hears everything and answers almost none of it.' },
+  ],
+
+  // ===========================================================================
+  // THE NORTH — Pale Vault Glacier + the Undercroft. The lonely aurora; the
+  // B3/C3/A4 cluster lands here. ZERO humour past the inn (the one permitted
+  // dry line below); the Aurora-watch is a silent vigil.
+  // ===========================================================================
+  'sign.pale_vault_welcome': [
+    { text: 'PALE VAULT GLACIER\nThe vault keeps its quiet. Walk softly, and keep your lamp close.' },
+  ],
+  'sign.pale_vault_undercroft': [
+    { text: 'THE LUMENARY UNDERCROFT\nThrough the blue ice, seven dark brackets descend into the glacier. The door answers aurora-oil, and nothing else.' },
+  ],
+  'sign.pale_vault_pass': [
+    { text: 'WEST: HUSHFROST PASS\nColdfog holds the far throat. Only a warded flame walks through.' },
+  ],
+  'sign.pale_vault_deepice': [
+    { text: 'THE DEEP ICE\nThe glacier closes this fold to any flame that cannot ward itself. What sleeps past the blue does not wake for plain light.' },
+  ],
+  // Ysolde's stages + the Lamp-Line's blocked lines (all in her voice or the
+  // vault's).
+  'npc.ysolde_waiting': [
+    { speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'serene', text: 'The oil first, wanderer. The tallow-keeper renders it in the approach hollows — though her hearth wants waking before her pans do. Storm-felled wood lies up toward the crags; the mountain is generous to the patient.' },
+    { speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'neutral', text: 'There is no hurry. The brackets have been dark for years; they can be dark one evening more. But not, I think, two.' },
+  ],
+  'npc.ysolde_door_unlit': [
+    { speaker: 'YSOLDE FROST', text: 'The vault answers oil, wanderer, not eagerness. Come back with aurora-oil in hand, and the door will know you.' },
+  ],
+  'npc.ysolde_vault': [
+    { speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'serene', text: 'Walk the line slowly, if you like. The cold has waited years; it can wait an evening. It is the meaning that must not be hurried, not the flame.' },
+  ],
+  'npc.ysolde_not_ready': [
+    { speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'neutral', text: 'Brackets behind you still hold their dark, wanderer. The line is not lit — and I test no bond under an unfinished vault. Walk back, and finish what the first flame promised.' },
+  ],
+  'npc.ysolde_hall_after': [
+    { speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'warm', text: 'The vault is a lit place, and the northern crown stands. I find I keep going down just to look at the brackets. Do not tell the town; they believe me serene.' },
+    { speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'serene', text: 'Your Emberward opens the Hushfrost throat, west — and our own deep ice, past the blue fold. Sweep the fold before you go; the glacier keeps rare hearts where only a warded flame walks. Then the pass, and the long road to the Solarium.' },
+  ],
+  'npc.undercroft_bracket_cold': [
+    { text: 'The bracket is cold, and means to stay so. A line lights in order — the flame nearer the door has not yet been asked.', style: 'narrate' },
+  ],
+  'npc.undercroft_ward_a_after': [
+    { speaker: 'SELA', text: 'The line remembers every hand that lights it. Yours it will remember kindly — walk on, and keep your order.' },
+  ],
+  'npc.undercroft_ward_b_after': [
+    { speaker: 'ORRIN', text: 'Ysolde waits at the heart. She has waited years for a flame like yours, and will deny having waited at all.' },
+  ],
+  // The tallow-keeper's stages around script.render_oil.
+  'npc.tallow_keeper_doused': [
+    { speaker: 'TALLOW-KEEPER', text: 'Mind the camp, child — there\'s nothing on. The storm put my hearth out and the cold got into the stones, and a doused hearth renders nothing. Years of keeping the vault\'s oil, and now the vault waits on ME.' },
+    { speaker: 'TALLOW-KEEPER', text: 'Storm-felled wood would wake it — dry-hearted, the kind the gales stack along the upper hollows. My carrying days are done. Perhaps yours are just starting.' },
+  ],
+  'npc.tallow_keeper_after': [
+    { speaker: 'TALLOW-KEEPER', text: 'The kettle sings, the pans run pale and bright, and the vault has its oil again. Seven brackets, child — in ORDER. A line is a promise kept one lamp at a time.' },
+  ],
+  // B3's quiet cast: the figure before the scene, the witness after.
+  'npc.cor_quiet': [
+    { text: 'The figure on the shelf does not turn. The cold coming off the quieted valley below is not weather.', style: 'narrate' },
+    { text: 'It waits — courteously, patiently — as if it were you who asked to speak.', style: 'narrate' },
+  ],
+  'npc.pale_vault_witness': [
+    { speaker: 'GLACIER WIDOW', text: 'You spoke with him. We all have, once. He buried two of ours the winter the dusk fell — dug the ground himself, said the words kindly, and wept where he thought nobody watched. That is the trouble with Còr. He MEANS it.' },
+    { speaker: 'GLACIER WIDOW', text: 'Nobody in this town joined him. But nobody here laughs at the ones who did, either. Now you know why.' },
+  ],
+  // The Aurora-watch's keepers and watchers.
+  'npc.vigil_keeper_after': [
+    { speaker: 'VIGIL-KEEPER', text: 'You stood well. The watch is older than the dusk, you know — we were keeping it when the sky was full, and we will keep it when the sky is full again. The standing IS the keeping.' },
+  ],
+  'npc.aurora_watcher_a': [
+    { speaker: 'WATCHER', text: 'No singing here, no dancing. We stand, and we hold our lamps, and the sky walks over us. Other towns find it cold. We find the other towns loud.' },
+  ],
+  'npc.aurora_watcher_b': [
+    { speaker: 'WATCHER', text: 'My mother stood this ice, and hers. The aurora is the one light the dusk never took — we hold our lamps up so it knows we noticed.' },
+  ],
+  'npc.pale_vault_townsfolk': [
+    { speaker: 'GLACIER-DWELLER', text: 'We do not shout in Pale Vault. The glacier carries a whisper further than a yell, and it keeps everything you give it. Speak as if the ice were listening. It is.' },
+  ],
+  'npc.pale_vault_inn_guest': [
+    { speaker: 'INN GUEST', text: 'Quietest inn in Vesperholm. The ice creaks once a night, around third bell. We all look forward to it enormously.' },
+  ],
+  'npc.pale_vault_home_elder': [
+    { speaker: 'GLACIER ELDER', text: 'Folk ask how we bear the loneliness. Child, the aurora has crossed my window every night of my life. I have never once been alone up here. Cold, yes. Alone, never.' },
+  ],
+  'npc.pale_vault_home_kid': [
+    { speaker: 'GLACIER KID', text: 'I can hear the undercroft through the floor when I press my ear down. It used to hum nothing. Lately it hums SOMETHING. I check every morning.' },
+  ],
+  'npc.pale_vault_hall_keeper': [
+    { speaker: 'HALL-KEEPER', text: 'Ysolde keeps the hall, but the hall does not keep Ysolde — she is at the undercroft door more nights than not, looking at seven dark brackets through the ice. Begin there, Wayfarer. She will already know you are coming.' },
+  ],
+  'npc.pale_vault_hall_festival': [
+    { speaker: 'OIL-WARDEN', text: 'The Frost stands, the brackets burn, and the hall smells of aurora-oil for the first time in years. Ysolde has read the same ledger page four times tonight. We pretend not to see.' },
+  ],
+  'npc.pale_vault_gleam_watcher': [
+    { speaker: 'YOUNG WATCHER', text: 'Storm and Frost together — the whole northern crown, closed over our ice. At the watch tonight nobody spoke, same as ever. But every lamp on the line was lit. EVERY one. That has not happened in my lifetime.' },
+  ],
+  'npc.pale_vault_gleam_kid': [
+    { speaker: 'GLACIER KID', text: 'The undercroft hums a CHORD now. I checked this morning. The ice is happy. I am telling everyone the ice is happy and no one is arguing.' },
+  ],
+  // N2's giver between viewpoints, and after.
+  'npc.sketcher_working': [
+    { speaker: 'SKETCHER', text: 'The crag above the wind-gap, the glacier shore, the festival ice from the far braziers — in that order, and LOOK properly. Long enough to be cold. I will know if you skimmed.' },
+  ],
+  'npc.sketcher_after': [
+    { speaker: 'SKETCHER', text: 'Forty years of failing to catch that sky, and what I was missing was somebody to hold still instead of it. The sketch is done. When the passes take you west, look up for me — they say the sky out there is nearly dawn-coloured.' },
+  ],
+
+  // ===========================================================================
+  // THE WEST (walkthrough/04-west) — Hushfrost, the Solarium, the Sunvault
+  // Climb, the Coldfog detour (ZERO humour) and Nightreach. Voice: cold ache →
+  // golden bittersweet → drained dread → reverent vastness. Sanctioned wry
+  // lines: the W1 marker sign, the three troupe lines, the Nightreach inn
+  // guest, and trainer defeats — nothing else.
+  // ===========================================================================
+
+  // --- Hushfrost Pass I -------------------------------------------------------
+  // The cluster's ONE dry sign (bathos-in-officialdom; everything else sincere).
+  'sign.hushfrost_marker': [
+    { text: 'HUSHFROST PASS. The quietest road in Vesperholm. The Pass Committee thanks you for not testing this.' },
+  ],
+  'sign.hushfrost_coldfog': [
+    { text: 'WEST — THE COLDFOG THROAT. The canyon\'s far mouth is choked with a fog no ordinary flame survives. A warded ember walks through where every torch has failed.' },
+  ],
+  'npc.hushfrost_pass_tender': [
+    { speaker: 'PASS-TENDER', text: 'It creeps further up the canyon every year now. My lamp won\'t hold against it — but yours might, traveller. Warm it through, and mind the kin on the far side. They\'ve gone... quiet.' },
+  ],
+  'npc.hushfrost_lampman_after': [
+    { speaker: 'DUNSTAN', text: 'My lamp holds an inch better just from watching yours work. Warm the throat through, Wayfarer — and do not stop to listen to the fog.' },
+  ],
+  'npc.hushfrost_survivor_after': [
+    { speaker: 'HESPER', text: 'You will do. Past the throat the fog THINS, mind — it does not END. Keep your flame fed and your kin close, and you will come out the gold side.' },
+  ],
+
+  // --- Hushfrost Pass II (X1 — grief register, zero humour) -------------------
+  // The hook line, VERBATIM from the walkthrough — her waiting stage.
+  'npc.numbed_kin_caretaker': [
+    { speaker: 'CARETAKER', text: 'It used to glow like a hearth. Now it just sleeps. They tell us that\'s mercy. I light a lamp by it anyway.' },
+    { speaker: 'CARETAKER', text: 'The aurora-oil pools under the old ice in the hollow north of here. Your flame is warded — mine never was. I\'ll be here. I\'m always here.' },
+  ],
+  'npc.caretaker_after': [
+    { speaker: 'CARETAKER', text: 'She sleeps easier in the light — I can tell by the set of her, the way you can with someone you\'ve sat beside long enough.' },
+    { speaker: 'CARETAKER', text: 'I don\'t ask the lamp to wake her any more. I only ask it to be there if she does. That\'s what a lamp is FOR, whatever else they tell you these days.' },
+  ],
+  // The numbed Hearthkit (interact reads; the flag:dawn swap is postgame's).
+  'npc.numbed_kin_sleeping': [
+    { text: 'A Hearthkit lies curled in the blankets, grey as banked ash. It is breathing — slow, and even, and far away. No warmth comes off it at all.' },
+  ],
+  'npc.numbed_kin_awake': [
+    { text: 'The Hearthkit is sitting up in the blankets, blinking at the daylight — and glowing, hearth-warm, the way it must have glowed all along underneath.' },
+    { speaker: 'CARETAKER', text: 'She woke with the dawn. Of course she did. She was only ever waiting for something worth waking FOR.' },
+  ],
+  'npc.hushfrost_thawtender_after': [
+    { speaker: 'TILDA', text: 'Straight on for the gold, Wayfarer. Tell the warm I swept the road for it.' },
+  ],
+  'sign.hushfrost_aurora': [
+    { text: 'AURORA HOLLOW. The lights pool under the ice here. A warded flame may walk in and look up.' },
+  ],
+  'sign.hushfrost_gold': [
+    { text: 'WEST — THE SUNKEN SOLARIUM. That gold on the fog is stored daylight. Walk toward the warmth.' },
+  ],
+
+  // --- Sunken Solarium ---------------------------------------------------------
+  'sign.solarium_welcome': [
+    { text: 'THE SUNKEN SOLARIUM. The sun drowned here, they say. Listen close: it\'s only sleeping.' },
+  ],
+  'sign.solarium_halls': [
+    { text: 'THE FLOODED HALLS. The moon-tide parts for a called tide — what drowned here waits for you.' },
+  ],
+  'sign.solarium_backfold': [
+    { text: 'Night-flowers seal this fold of the garden. A pocket of daylight would wake them.' },
+  ],
+  'sign.solarium_climb': [
+    { text: 'WEST — THE SUNVAULT CLIMB. The garden-roads rise toward the stars from here.' },
+  ],
+  'npc.solarium_brazier_dead': [
+    { text: 'The brazier is dead — and not merely out. The bowl is full of drowned daylight, cold as the deep water it sank in. It wants its own light back: a sunmote, fetched up from the halls.' },
+  ],
+  'npc.lucan_not_ready': [
+    { speaker: 'LUCAN PYRE', text: 'Eager! I admire it. But no, apprentice — nobody tests a bond on a DARK stage. The daylight\'s drowned and the braziers know it. Fetch it up, spark by spark, and then the boards are yours.' },
+  ],
+  'npc.lucan_waiting': [
+    { speaker: 'LUCAN PYRE', text: 'The phials glint in the flooded halls — stored daylight always shines for somebody coming to fetch it. Spark by spark, apprentice. The troupe is in costume and the year is not getting any warmer.' },
+  ],
+  'npc.lucan_after': [
+    { speaker: 'LUCAN PYRE', text: 'Seven Gleams over the garden and my stage lit under all of them. Go on up the Climb, Wayfarer — the eighth act is Nessa\'s, and she has been rehearsing it at that eyepiece her whole life.' },
+    { speaker: 'LUCAN PYRE', text: 'And when the sky is whole and the histories are written — tell them the sun came back THROUGH HERE first. A theatre keeps its notices.' },
+  ],
+  'npc.troupe_waiting': [
+    { speaker: 'TROUPE PLAYER', text: 'In costume since noon, and the stage dark as the bottom of the flood. We don\'t mind. Forty years of waiting teaches you how to wait BEAUTIFULLY.' },
+  ],
+  // HUMOUR slot 1 — the stilts (builder-sanctioned copy).
+  'npc.troupe_stilts': [
+    { speaker: 'STILT-WALKER', text: 'Forty years we\'ve staged "The Sun Returns". One night soon I\'d like the title to stop being the ambitious part.' },
+  ],
+  'npc.troupe_mask_waiting': [
+    { speaker: 'TROUPE PLAYER', text: 'The side room off the flooded halls — the water took the mask the winter it rose, and none of us swim like a called tide. Tonight of all nights, the scene should wear its own gold.' },
+  ],
+  // HUMOUR slot 2 — the mask, after (builder-sanctioned copy).
+  'npc.troupe_mask_after': [
+    { speaker: 'TROUPE PLAYER', text: 'You dredged my face out of a drowned cellar and I\'ve never looked better. That\'s theatre.' },
+  ],
+  'npc.solarium_witness': [
+    { speaker: 'OLD STAGEHAND', text: 'I rigged that stage as a boy, before the water came. Tonight I watched it light spark by spark, and I am not ashamed to say I sat down on a prop crate and stayed there.' },
+  ],
+  // The walkthrough's signature festival-goer line, verbatim.
+  'npc.solarium_festival_goer': [
+    { speaker: 'FESTIVAL-GOER', text: 'Last warm day of the year, they call it. Been calling it that for as long as the night\'s been long. We just keep spending warm days until one of them sticks.' },
+  ],
+  'npc.solarium_bread': [
+    { speaker: 'BREAD-SHARER', text: 'Warm bread, no charge — today least of all. Stored daylight in the oven and forty years of practice in the crumb. Eat it while it\'s warm. That\'s the WHOLE custom.' },
+  ],
+  'npc.solarium_kid': [
+    { speaker: 'FESTIVAL KID', text: 'I put my hand in the water where the gold shines up and it\'s WARM. The drowned sun is warm! Nobody believes me except everybody, because they\'ve all done it too.' },
+  ],
+  'npc.solarium_gleam_watcher': [
+    { speaker: 'FESTIVAL-GOER', text: 'Seven stars. SEVEN. I watched the sun\'s own constellation stand up over the garden it drowned in. Whatever this year asks of me now, it has already paid in advance.' },
+  ],
+  'npc.solarium_gleam_elder': [
+    { speaker: 'FESTIVAL ELDER', text: 'A hundred warm days I\'ve spent on this terrace, child, and tonight is the first one that felt like a down payment instead of a goodbye. THAT is what a Gleam is. Spend it well.' },
+  ],
+  'npc.troupe_player_a_after': [
+    { speaker: 'CALLA', text: 'The understudies have talked of nothing else since. You\'ve set the company back a WEEK.' },
+  ],
+  'npc.troupe_player_b_after': [
+    { speaker: 'ORSINO', text: 'I\'ve worked your bout into my act two. With permission. Or — well. With enthusiasm, certainly.' },
+  ],
+
+  // --- Solarium Lumenary (the green room — the region's rest point) -----------
+  // HUMOUR slot 3 — the prompter (builder-sanctioned copy).
+  'npc.solarium_prompter': [
+    { speaker: 'PROMPTER', text: 'Everyone\'s a critic. The dark heckled us for forty years, and tonight it\'s losing its seat.' },
+  ],
+  'npc.solarium_hall_keeper': [
+    { speaker: 'SUN-LEDGER KEEPER', text: 'The Heliarium\'s ledger — every Last-Warm-Day ever kept, who lit what and who wept where. Forty years of entries that end "and the stage stayed dark." Tonight\'s entry is going to need a WIDER page.' },
+  ],
+  'npc.solarium_hall_festival': [
+    { speaker: 'TROUPE PLAYER', text: 'A toast — to the relit Solar, to the lit stage, and to the apprentice who fetched the sun up out of a flood spark by spark. The company drinks to you FIRST tonight. House rule, as of tonight.' },
+  ],
+
+  // --- Sunvault Climb ----------------------------------------------------------
+  'sign.sunvault_welcome': [
+    { text: 'THE SUNVAULT CLIMB. The old garden-roads rise toward the stars. Mind the overgrowth — it minds you back.' },
+  ],
+  'sign.sunvault_vines': [
+    { text: 'The bridge of sun-vines died with the long night. Shut flowers, forty years. A pocket of daylight would wake them.' },
+  ],
+  'npc.sunvault_terracer_after': [
+    { speaker: 'BEL', text: 'The beds grow toward the boundary vines now, did you notice? The garden knows what\'s coming up the road. Gardens always do.' },
+  ],
+  'npc.sunvault_wayfarer': [
+    { speaker: 'RESTING WAYFARER', text: 'I\'ve walked every lit road in Vesperholm, and this stretch is the kindest of the lot — gold underfoot, stars ahead, and the climb gentle enough to think on. Rest a while. The eighth Lumenary keeps; it has kept for years.' },
+  ],
+  // The walkthrough's vine-tender line, verbatim.
+  'npc.sunvault_vine_tender': [
+    { speaker: 'VINE-TENDER', text: 'Forty years shut, and your little pocket of daylight woke them like they\'d only dozed. ...Maybe nothing\'s gone for good. Maybe it\'s all just waiting for the right lamp.' },
+  ],
+  'npc.sunvault_skywatcher_after': [
+    { speaker: 'TAM', text: 'The dome\'s ahead, the densest sky in Vesperholm above it. Walk in soft — the whole town is listening to the stars come home.' },
+  ],
+  'sign.sunvault_helia': [
+    { text: 'HELIA VAULT. A reliquary sealed by night-flowers. What the Solarium drowned, this door kept dry.' },
+  ],
+  'sign.sunvault_observatory': [
+    { text: 'NORTH — NIGHTREACH OBSERVATORY. The watchers keep seven lamps for seven stars. Walk toward the brightest sky in Vesperholm.' },
+  ],
+
+  // --- Helia Vault ---------------------------------------------------------------
+  'sign.helia_entry': [
+    { text: 'The Helia Vault. What the Solarium could not keep dry, the keepers sealed here — and the seals are flowers.' },
+  ],
+  'npc.helia_far_vine': [
+    { text: 'The great vine sleeps beyond your pocket of daylight — a chasm too wide for any light you can carry. Something here must bend the light.' },
+  ],
+
+  // --- The Coldfog detour (ZERO humour — every line elegiac) -------------------
+  'sign.coldfog_marches': [
+    { text: 'COLDFOG MARCHES. The lamps here have been put to sleep. Travellers are asked to let them rest.' },
+  ],
+  'sign.coldfog_boundary': [
+    { text: 'Deep coldfog past this stone. No ordinary flame keeps. A warded ember walks where the fog is thickest.' },
+  ],
+  // The hooks' marsh-hermit line, VERBATIM.
+  'npc.coldfog_marsh_hermit': [
+    { speaker: 'MARSH-HERMIT', text: 'They didn\'t burn it. They didn\'t break it. They just... turned the light down, lantern by lantern, until the whole fen forgot it was ever lit. Kindest thing, they said. Kindest thing.' },
+  ],
+  // Posted by the Hollowing — courteous, awful.
+  'sign.coldfog_works': [
+    { text: 'HOLLOWFEN STILLWORKS. Every lamp within is resting. The Wardens of the Quiet ask that you not wake them.' },
+  ],
+  'sign.coldfog_beacon': [
+    { text: 'WEST — DROWNLIGHT BEACON. The light that kept the fen-road drowned in its own keeping. No keeper answers.' },
+  ],
+  'sign.coldfog_backdoor': [
+    { text: 'NORTH-WEST — NIGHTREACH, BY THE FOG ROAD. Short, dark, and wrong. The stars go the long way round.' },
+  ],
+  'npc.coldfog_quiet_camp': [
+    { text: 'Two bedrolls, rolled square. The fire-ring is swept. A lantern stands where a hand left it, wick cold. Nobody hurried. That is somehow the worst of it.' },
+  ],
+  'npc.hollowfen_door': [
+    { text: 'The seam of the door holds no handle. A thin grey light breathes under it — a gap only a glimmer-step could thread.' },
+  ],
+  // The hooks' husk-keeper line, VERBATIM — the sexton among graves.
+  'npc.hollowfen_husk_keeper': [
+    { speaker: 'HUSK-KEEPER', text: 'Every lamp in here is sleeping, not dead. That\'s the horror of it — and the mercy he believes in. One day the whole sky\'s meant to look like this room.' },
+    { speaker: 'HUSK-KEEPER', text: 'I dust the collars. Somebody should. Whatever you think of the work... they were LAMPS, once. They are owed a keeper.' },
+  ],
+  'npc.hollowfen_engine': [
+    { text: 'The null-engine: a bell of held dark on cradle-pipes, polished like a font. The gauge on the casing rests at zero, brass-rimmed and lovingly kept — a font, not a weapon, by every line of its making. That is the part that follows you out.' },
+  ],
+  'npc.drownlight_door': [
+    { text: 'The door has swollen shut against its frame. Salt and years hold it better than any lock. High above, the lamp room keeps its dark.' },
+  ],
+
+  // --- Nightreach Observatory ----------------------------------------------------
+  'sign.nightreach_welcome': [
+    { text: 'NIGHTREACH OBSERVATORY. The sky is closest here. Walk softly — the watchers are counting.' },
+  ],
+  'sign.nightreach_walk': [
+    { text: 'THE ASTRAL WALK. Seven watch-lamps for seven stars. Lit in the order they came home: ember-light first, sun-light last.' },
+  ],
+  'sign.nightreach_fogroad': [
+    { text: 'EAST — THE FOG ROAD. Short, dark, and wrong. Only a warded flame holds the coldfog off.' },
+  ],
+  'sign.nightreach_lanternway': [
+    { text: 'SOUTH — THE LANTERNWAY. Every lit road in Vesperholm meets at the Waystone.' },
+  ],
+  'npc.watch_lamp_unstruck': [
+    { text: 'The first watch-lamp waits, polished and cold. Its wick wants the old watcher\'s striker — the one lost on the Sunvault road.' },
+  ],
+  'npc.watch_lamp_cold': [
+    { text: 'This lamp keeps its place in the order. An earlier watch-fire is still dark.' },
+  ],
+  // C4 — Fenn's placements around lamp 5.
+  'npc.fenn_waits': [
+    { speaker: 'FENN', text: 'Go on with your lamps, child — I\'ll keep the frost-lamp\'s place till you reach it. Some things are better lit together.' },
+  ],
+  'npc.fenn_after': [
+    { speaker: 'FENN', text: 'I\'ll watch from here, under the best sky in Vesperholm. When the eighth lights... look south a moment, would you? An old man would like to think you knew he saw it.' },
+  ],
+  // A5 — Wren's placements around lamp 6.
+  'npc.wren_waits': [
+    { speaker: 'WREN', text: 'I\'m not lighting it without you, so you may as well hurry up with lamp five.' },
+  ],
+  'npc.wren_nightreach_after': [
+    { speaker: 'WREN', text: 'One lamp left, one star left, one of us still pretending they\'re not nervous. Go on — Nessa\'s waiting at the seventh with that telescope of hers, and I don\'t think it\'s pointed at the sky.' },
+  ],
+  // B4's threshold — Nessa at the seventh lamp, before the naming.
+  'npc.nessa_at_seven': [
+    { speaker: 'NESSA COLE', text: 'The seventh lamp is yours to light, Wayfarer. And then... there is something I have been watching grow on the mountain, and the time for watching it alone is over.' },
+  ],
+  'npc.junior_watcher_b_after': [
+    { speaker: 'OS', text: 'Lira\'s charting the sky as it comes back, you know. First watcher in forty years with something NEW to write. Don\'t tell her I said it was brilliant. She logs compliments.' },
+  ],
+  'npc.junior_watcher_working': [
+    { speaker: 'LIRA', text: 'The Sunvault terrace, our roof past the scree — and the Coldfog cairn only if your nerve runs that deep; the chart finishes without it. Look PROPERLY. Long enough to be cold. I\'ll know if you skimmed.' },
+  ],
+  'npc.junior_watcher_after': [
+    { speaker: 'LIRA', text: 'The chart\'s away to the Waystone and my name\'s on the pressing. ...The senior watchers asked for a COPY. I have written that down in the ledger nobody reads, twice, in capitals.' },
+  ],
+  // The Star-vigil's keeper, after the watch is stood.
+  'npc.star_vigil_warden_after': [
+    { speaker: 'VIGIL WARDEN', text: 'Seven lamps burning on the steps, and the eighth row waiting. The town has watched half its life for this night, Wayfarer. We can watch a little longer — that is what watching IS.' },
+  ],
+  'npc.nightreach_watcher_steps_a': [
+    { speaker: 'OLD WATCHER', text: 'I held the Storm-watcher\'s lamp for thirty years before it lit. People ask was it worth the holding. They have never once had to ask anyone whose lamp is LIT.' },
+  ],
+  'npc.nightreach_watcher_steps_b': [
+    { speaker: 'WATCH KID', text: 'I\'m the eighth row\'s runner. When the last star comes home I run the steps ringing the little bell, fast as anything. I\'ve practised the route nine hundred times. Tonight could be the night. It could ALWAYS be the night.' },
+  ],
+  'npc.nightreach_festival_a': [
+    { speaker: 'WATCHER', text: 'Eight lamps on the steps. Eight stars in the sky. I keep counting them over, the way you count children home — and they keep all being there.' },
+  ],
+  'npc.nightreach_festival_b': [
+    { speaker: 'WATCHER', text: 'The Crown is closed. My grandmother kept this vigil, and hers, and not one of them saw the sky finished. I shall be UNBEARABLE about having been here. I have earned it.' },
+  ],
+  // The naming lands on a person (requires flag:great_null_known).
+  'npc.nightreach_witness': [
+    { speaker: 'TOWNSWOMAN', text: 'Nessa swung the great telescope at the MOUNTAIN. In thirty years she has never once pointed it below the sky. I didn\'t hear what she told you... and I find I keep standing nearer the lamps anyway.' },
+  ],
+
+  // --- Nightreach Lumenary --------------------------------------------------------
+  'npc.nessa_not_ready': [
+    { speaker: 'NESSA COLE', text: 'Not yet, Wayfarer. Seven watch-fires for seven stars — the walk is lit in the order they came home, and the eighth is not asked for over dark lamps. I will be here. I am always here.' },
+  ],
+  'npc.nessa_keeping': [
+    { speaker: 'NESSA COLE', text: 'The walk is yours; the order keeps itself if you let it. Ember-light first, sun-light last. ...I will know each one the moment it takes. I always do.' },
+  ],
+  'npc.nessa_cole': [
+    { speaker: 'NESSA COLE', text: 'Seven lamps. You know what I showed you on the terrace, and you came down the walk steady anyway. Good. Steadiness is most of what the dream-hours respect.' },
+    { speaker: 'NESSA COLE', text: 'When you are ready, step to the dais. The eighth star has waited longest of all — and after tonight, I would not make it wait politely much longer.' },
+  ],
+  'npc.nessa_after': [
+    { speaker: 'NESSA COLE', text: 'The Crown is whole, and the Penumbra is parting — my charts have never once shown me THAT. The Crossroads\' four inward roads will carry you to the Spire when you are ready.' },
+    { speaker: 'NESSA COLE', text: 'Remember harder than he has forgotten, Wayfarer. And when it is done... come back one clear night. I will show you eight constellations from this chair, and we will not say anything at all.' },
+  ],
+  'npc.nightreach_hall_keeper': [
+    { speaker: 'NIGHT-CLERK', text: 'The star-ledger: every watch ever kept under this dome, every star lost and every star come home. The "lost" column has had forty years of custom. I have ruled a fresh page for tonight, just in case. ...I rule one every night. Just in case.' },
+  ],
+  'npc.nightreach_hall_festival': [
+    { speaker: 'WATCHER', text: 'The eighth watch-lamp lit ITSELF. I was here. I saw the wick take with no hand near it — the sky reached down and kept its own vigil. I shall be telling this for the rest of my life, and it will never once need improving.' },
+  ],
+
+  // --- Nightreach inn ("The Long Watch") + home ------------------------------------
+  // The cluster's ONE permitted dry line (builder-sanctioned copy).
+  'npc.nightreach_inn_guest': [
+    { speaker: 'TIRED GUEST', text: 'Eight years I\'ve kept the quietest watch in Vesperholm, and the sky saves all its history for the week I booked off. Wake me if the dawn comes in.' },
+  ],
+  'npc.nightreach_inn_watcher': [
+    { speaker: 'OFF-SHIFT WATCHER', text: 'Dawn-watch is the kind one — nothing ever happens at dawn-watch. That used to be a sad joke. The way things are going up there, it is about to become a SCHEDULING problem, and I could not be happier about it.' },
+  ],
+  'npc.nightreach_home_elder': [
+    { speaker: 'LENS-GRINDER', text: 'I ground the dome\'s first lens, child — a year of my hands in that glass. They tell me what it sees these days, lamp by lamp coming home, and I polish my spectacles like it\'s the same work. It IS the same work.' },
+  ],
+  'npc.nightreach_home_kid': [
+    { speaker: 'WATCHER KID', text: 'I keep my own chart — paper, under my pillow. Seven stars inked in and one space saved. The space is the IMPORTANT part. Everyone says so. I said it first.' },
+  ],
+
+  // --- The Crossroads' Nightreach spoke (W4's gate pair) + R5's hung chart ---------
+  'sign.crossroads_nightreach': [
+    { text: 'NORTH-WEST — THE NIGHTREACH SPOKE. Dark until the Lunar Gleam stands: the last spoke lights when the last lamp does.' },
+  ],
+  'npc.waykeeper_nightreach_gate': [
+    { speaker: 'WAYKEEPER', text: 'The north-west spoke sleeps yet, friend — its lamps answer the Lunar, and the Lunar has not come home. When the watchers\' star stands up, this road will light itself the same hour. Last spoke of my Round. I keep its wicks trimmed anyway.' },
+  ],
+  'npc.waykeeper_chart_hung': [
+    { speaker: 'WAYKEEPER', text: 'Forty years of guesswork charts, and now the true sky hangs on the Waystone where every road can see it. Travellers stop and look UP now, before they pick a direction. That is the whole Lanternway, working.' },
+  ],
+
+  // ===========================================================================
+  // CENTRAL / ENDGAME (05-central-endgame). The threshold register holds from
+  // the Penumbra inward: sincere, elegiac, ZERO humour — the hub's warmth is
+  // the one bright counterweight (and Wren's f1 line is the ONE wry-warm beat).
+  // ===========================================================================
+
+  // --- Vesper Crossroads — the endgame hub stages ------------------------------
+  'sign.crossroads_spire_open': [
+    { text: 'THE INWARD ROAD — NOW OPEN. Eight braziers stand LIT around the fog-gate, one for each constellation. Beyond: the Penumbra Ring, and the Umbral Spire. Rest first. There is no bed past this stone.' },
+  ],
+  'npc.fenn_counsel_after': [
+    { speaker: 'FENN', text: 'I am exactly where I mean to be, child: at the centre of every road you ever walked, watching the centre of the sky. Go well. Remember loudly.' },
+  ],
+  'npc.waystone_kid_trail': [
+    { speaker: 'WAYSTONE KID', text: 'Did you see it?! It does the lamps in ORDER — north-west first, then across, then down. Like rounds! Like it\'s TENDING them! Follow the flickers round the ring!' },
+  ],
+  'npc.waystone_kid_trail_done': [
+    { speaker: 'WAYSTONE KID', text: 'You FOUND it! The little lamp-kin! The Waykeeper says they used to follow the lamp-tenders\' rounds in the lit years — and now one follows YOU. That\'s the best thing that has ever happened at this crossroads. I\'m counting.' },
+  ],
+  'npc.dusk_lamp_quiet': [
+    { text: 'A waystation dusk-lamp, brass-capped and patient. Its flame burns small and steady — exactly as a well-kept flame should.' },
+  ],
+  'npc.lampling_shy': [
+    { text: 'The dusk-lamp burns plain and a little lonely. Whatever warmed its glass has tucked itself deep into the wick-light to sulk — it will not show itself again until you have won {remaining} more battles, and it has decided you meant no harm.' },
+  ],
+  'npc.lampling_after': [
+    { text: 'The dusk-lamp burns bright and easy now. Whatever it was hosting has found a better lamp to live in — yours.' },
+  ],
+  'npc.waykeeper_round_done': [
+    { speaker: 'WAYKEEPER', text: 'The chart on the stone, four festivals over the inn hearth, and my old Way-lamp in a Wayfarer\'s satchel. The Round is kept, child — better kept than I ever managed it. Walk far. The roads will tell me how you\'re doing.' },
+  ],
+
+  // --- The Penumbra Ring (the threshold register: awe and held breath) --------
+  'sign.penumbra_ascent': [
+    { text: 'THE NINTH LANTERN. The road up is starlight or nothing. Lamps out of respect; hearts lit out of spite.' },
+  ],
+  'sign.penumbra_starwell': [
+    { text: 'EAST — THE STARWELL. Where a star fell and did not go out. Step soft on the dark.' },
+  ],
+  'npc.penumbra_tended_row': [
+    { text: 'Two null-lanterns, tended and swept, holding no light with great care. Someone still walks this row.' },
+  ],
+  'npc.penumbra_snuffed_shrine': [
+    { text: 'A wayshrine of the old inward road. Its lamp was not broken — it was put out, gently, the way you would close a sleeping kin\'s door.' },
+  ],
+
+  // --- Starwell (the SILENCE register) -----------------------------------------
+  'npc.starwell_still': [
+    { text: 'The pool lies flat and shining. Whatever rose from it has sunk deep again; the starlight will not give it up for {remaining} more battles yet.' },
+  ],
+  'npc.starwell_after': [
+    { text: 'The well holds only starlight now — and holds it gladly. The water is warm.' },
+  ],
+
+  // --- The Umbral Spire — Wren at your side (A5→A6), one line per floor.
+  // f1's beat (the ONE sanctioned wry-warm one) moved into script.spire_wren_camp,
+  // the gatehouse heal anchor; f3 and the summit stay sincere.
+  'npc.wren_spire_f2': [
+    { speaker: 'WREN', text: 'They tuck them in. Look — they SWEEP in here. Sad, isn\'t it. ...Doesn\'t make them right. Keep climbing.' },
+  ],
+  'npc.wren_spire_f3': [
+    { speaker: 'WREN', text: 'Listen. Wind, this deep in the mountain. The sky is just up there — and it\'s FULL of your lamps.' },
+  ],
+  'npc.wren_spire_summit': [
+    { speaker: 'WREN', text: 'I\'m right here. Whatever he says — and he\'ll say it kindly — you remember louder. Go on.' },
+  ],
+
+  // The acolytes, beaten — softer now, still believing (grief doesn't argue).
+  'npc.hollowing_acolyte_a_after': [
+    { speaker: 'MERRIN', text: 'Thirty years of wicks, and yours are the first I\'ve seen that made the watching look worth it. ...I still think the dark is kinder. I\'m just less sure it\'s KINDEST.' },
+  ],
+  'npc.hollowing_acolyte_b_after': [
+    { speaker: 'TACE', text: 'The alcoves are warm, whatever you think of us. We were never cruel — only tired. ...Dock gently at the top, traveller. He is the tiredest of us all.' },
+  ],
+  'npc.hollowing_acolyte_c_after': [
+    { speaker: 'IVORWEN', text: 'Go on up, dear — and take the stair slowly, it\'s steeper than it looks. ...Four winters. I would have kept a fifth. Fancy me forgetting that, of all things.' },
+  ],
+  'npc.hollowing_acolyte_d_after': [
+    { speaker: 'HARL', text: 'The gallery is yours; I\'ll not test a flame twice. ...Eight lamps on eight doorposts, and I never once knocked. If the sky changes, maybe I will.' },
+  ],
+  'npc.hollowing_acolyte_e_after': [
+    { speaker: 'SEFA', text: 'The wind\'s picked up. She always said that meant the sky was paying attention. ...The north roads, Wayfarer. First. You promised the beaten half of me.' },
+  ],
+
+  // The alcove sleepers (read triggers; the dawn flips them).
+  'npc.spire_sleeper': [
+    { text: 'A drained kin sleeps in the alcove, tucked under a worked cloth, its light banked to the faintest ember. Someone has set a cushion under its head. Someone visits.' },
+  ],
+  'npc.spire_sleeper_awake': [
+    { text: 'The alcove is empty — blanket folded, cushion squared away. Small bright footprints lead out toward the morning, in no particular hurry, the way you walk when you know the way home.' },
+  ],
+  'sign.spire_lantern': [
+    { text: 'THE NINTH LANTERN — HIGH GALLERY. In the lit years, the keepers rested here and read the sky before the last stair. The sky is back. Rest. Read it.' },
+  ],
+  'npc.spire_shaft_dark': [
+    { text: 'The spire\'s open core falls away into the dark. An old hoist-lamp hangs at the lip, unlit — the starlight will not bear you down until someone above kindles the line.' },
+  ],
+  'npc.dawn_road_waits': [
+    { text: 'A road descends the summit\'s east shoulder, kept and cobbled, vanishing into the dark below. The old keepers called it the dawn road. It is waiting for the name to be true again.' },
+  ],
+
+  // Còr at the summit — the belt-and-braces interact (the band fires first) and
+  // the man after: undone, not destroyed; remembering.
+  'npc.cor_summit': [
+    { speaker: 'CÒR', text: 'A moment more, apprentice. The sky is very fine tonight — your doing — and I have learnt to take the fine moments slowly. We will speak when you are ready. We have all the dark there is.' },
+  ],
+  'npc.cor_after': [
+    { speaker: 'CÒR', text: 'I find I keep listing them — the fair, the bell, the kites, the bread. Twenty years of careful forgetting, undone in one evening by somebody else\'s lamp. ...Thank you. I am told that is the customary thing to say to a light, and I am out of practice.' },
+  ],
+
+  // The Keylumen's withdraw line (cooldown 0 — it cannot strand; kept for the
+  // op's contract and the one frame where a miss needs answering).
+  'npc.keylumen_waits': [
+    { text: 'The white-gold light folds back into the dais — not gone, not refused. Waiting. Raise your lamp and ask again; the Keystar has waited years, and will not begrudge you a breath.' },
+  ],
+
+  // ===========================================================================
+  // THE THREE HOURS (walkthrough/07-the-three) — the legendary triad's sites.
+  // Reverent-melancholy register, BINDING: zero humour at the Hours, their
+  // verses, or their battles; each chain's one dry line rides its rumour-giver
+  // script. The three resting lines are §7 VERBATIM ({remaining} is replaced
+  // by the engine with the victories still owed — a cost, never a timer).
+  // ===========================================================================
+
+  // --- Site I: Tideglass Cavern (South) — the Dusk Hour below the glass ------
+  'sign.tideglass_mouth': [
+    { text: 'TIDEGLASS CAVERN. The sea smoothed it; lamp-light finishes it. Mind the black water — the tide under the glass keeps its own hours.' },
+  ],
+  'sign.tideglass_nook': [
+    { text: 'A lampwright\'s waymark, cut small and sure into the glass: "THE GLASS REMEMBERS EVERY LIGHT IT IS SHOWN. SHOW IT GOOD ONES."' },
+  ],
+  // The wreck-lamp before the old fisher's tale is heard (S3's gate).
+  'npc.tideglass_wrecklamp_cold': [
+    { text: 'An old boat lies broken in the rocks, her stern-lamp wedged where she split — guttered, with years of salt on the glass. It is somebody\'s tended story, and you do not know it yet.', style: 'narrate' },
+  ],
+  'npc.tideglass_wrecklamp_lit': [
+    { text: 'The wreck-lamp burns steady in its glass throat, the way it burned three days for a drowning man forty years ago. The debt is paid. The light never counted it.', style: 'narrate' },
+  ],
+  // The verse plaque's inert twin (before the wreck-lamp burns).
+  'sign.tideglass_verse': [
+    { text: 'A glass hood over a cold stern-lamp, etched line on line — lampwright\'s marks, worn soft by salt. In the dark they refuse to be read.' },
+  ],
+  // The relay's wrong-order/cold line (shared by all three lenses).
+  'npc.tideglass_lens_cold': [
+    { text: 'A standing lens of sea-glass, taller than you, cold to the lamp. Your light slides off it and goes nowhere. The verse named an order, and this is not its turn.', style: 'narrate' },
+  ],
+  // The stair seam, sealed until lens C rings (warp blocked_ref).
+  'npc.tideglass_stair_sealed': [
+    { text: 'A seam in the glass breathes cold air. It is not open.', style: 'narrate' },
+  ],
+  // The Dusk Hour's withdrawal (cooldownRef — §7 verbatim).
+  'npc.three_dusk_resting': [
+    { text: 'The lenses hold your own lamp-light and nothing else. The Dusk Hour has folded itself back into the seam between the days — win {remaining} more battles, and the glass may warm to you again.' },
+  ],
+  // The netmender, once her rumour is told (consumes flag:three_dusk_rumour).
+  'npc.netmender_hours_after': [
+    { speaker: 'NETMENDER', text: 'Still singing of an evening, that cliff — low, like a lamp being hummed to. You went and listened, didn\'t you. I can tell. You stand like somebody who has been NEAR something.' },
+  ],
+
+  // --- Site II: the Hourfold (North) — Midnight in the deep ice --------------
+  // The sealed fold (host warp blocked_ref — §5 verbatim).
+  'npc.hourfold_sealed': [
+    { text: 'The fold is shut fast with ice that has opinions about visitors. Something in there is not ready to be looked at.', style: 'narrate' },
+  ],
+  // The aurora names the snuffing order (§5: east, the water-ice, west).
+  'sign.hourfold_aurora': [
+    { text: 'A watcher\'s waymark, cut into the blue ice and glazed by forty winters: "READ THE SKY BEFORE THE SHELF. The ribbon kneels east, then over the water-ice, then west."' },
+  ],
+  // The Unstruck Toll's wrong-order refusal (shared by all three braziers).
+  'npc.hourfold_flame_leans': [
+    { text: 'The vigil-brazier burns blue-white and certain. As the snuffer rises, the flame leans away from it — not this one, not yet. The aurora named an order.', style: 'narrate' },
+  ],
+  // The Still Hour's withdrawal (cooldownRef — §7 verbatim).
+  'npc.three_midnight_resting': [
+    { text: 'The fold is only ice and aurora tonight. Midnight has kept its watch longer than anyone alive; it can outlast you without noticing — {remaining} battles won, and it may consent to be witnessed again.' },
+  ],
+  // The aurora-watcher, once her rumour is told (consumes flag:three_mid_rumour).
+  'npc.aurorawatcher_after': [
+    { speaker: 'WATCHER', text: 'The fold still queues the sky, and now you know why. Stand a moment before you go down to it. That is all the watch has ever asked of anyone — that the dark be WITNESSED, not braved.' },
+  ],
+  // Ysolde, once the snuffer is handed over (consumes flag:three_mid_snuffer).
+  'npc.ysolde_snuffer_after': [
+    { speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'serene', text: 'You carry the snuffer the way a tender should — like a lamp, not a tool. Put the vigil out gently, wanderer. The Still Hour has watched the putting-out of better flames than ours.' },
+  ],
+
+  // --- Site III: the Unrisen Stair (West) — the Dawn that waited -------------
+  // The sealed stair (host warp blocked_ref — §6 verbatim).
+  'npc.unrisen_sealed': [
+    { text: 'A stair behind the seal, climbing toward nothing the sky currently offers. The basin before it is dry.', style: 'narrate' },
+  ],
+  // The basin before Lucan's phial is carried (trigger blocked_ref).
+  'npc.three_dawn_basin_dry': [
+    { text: 'A sun-basin of pale stone, bone-dry, set where a first light was meant to land. It is not waiting for water. It is waiting for morning — and it has the patience of masonry.', style: 'narrate' },
+  ],
+  // The sun-mirror flower before vine A blooms (trigger blocked_ref).
+  'npc.unrisen_mirror_waits': [
+    { text: 'A great flower of bronze and glass, petals shut, turned to face a sunrise that is not there. Nothing you carry is morning enough to open it — not yet.', style: 'narrate' },
+  ],
+  // The far vine's lock, narrated on every early attempt (band blocked_ref).
+  'npc.unrisen_far_vine': [
+    { text: 'The far sun-vine sleeps across the black water, shut tight. The basin\'s cupful of daylight pools where it was poured — it must be BENT here, the way the old gardeners bent it, before the far bank will believe in morning.', style: 'narrate' },
+  ],
+  // The east flight opens (the bloom_b band's ref).
+  'npc.unrisen_stair_wakes': [
+    { text: 'The bent daylight crosses the water ahead of you, and the far vine takes it: blooms, climbs, and lays itself open up the east flight like a road remembering it is one. Above, at the head of the stair, something stands facing east.', style: 'narrate' },
+  ],
+  // The Lost Hour's withdrawal (cooldownRef — §7 verbatim).
+  'npc.three_dawn_resting': [
+    { text: 'The basin stands dry and the stair unrisen. The Hour that has waited years for its morning can wait a little longer than you — {remaining} more battles won, and it may risk believing again.' },
+  ],
+  // Nessa, once her reading is shared (consumes flag:three_dawn_rumour).
+  'npc.nessa_hours_after': [
+    { speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: 'The bell that hasn\'t rung is still there, due west, under everything. I hear it most on clear nights. ...Go gently, Wayfarer. Whatever has waited that long for a morning deserves not to be startled.' },
+  ],
+  // Lucan, once the phial is given (consumes flag:three_dawn_phial).
+  'npc.lucan_phial_after': [
+    { speaker: 'LUCAN PYRE', portrait: 'lucan', expr: 'bittersweet', text: 'Forty years I kept that phial against a day worth spending it on, and the moment I hand it over the theatre feels LIGHTER. Pour it true, apprentice. First light is an entrance no one gets to make twice.' },
+  ],
 };
 
 const FALLBACK: DialogueLine[] = [{ text: '...' }];

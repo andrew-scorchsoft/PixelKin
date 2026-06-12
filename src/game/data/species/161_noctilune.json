@@ -1,0 +1,75 @@
+{
+  "id": 161,
+  "slug": "noctilune",
+  "name": "Noctilune",
+  "types": [
+    "Lunar",
+    "Dark"
+  ],
+  "role": "Physical Wall",
+  "tier": "E",
+  "stats": {
+    "hp": 106,
+    "atk": 78,
+    "def": 136,
+    "spa": 48,
+    "spd": 95,
+    "spe": 95
+  },
+  "bst": 558,
+  "ability": "mirrorlight",
+  "hidden_ability": "nightsight",
+  "catchRate": 24,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "moon_nip"
+      },
+      {
+        "level": 13,
+        "move": "moonshard"
+      },
+      {
+        "level": 24,
+        "move": "lull"
+      },
+      {
+        "level": 30,
+        "move": "bulwark"
+      },
+      {
+        "level": 38,
+        "move": "nightfall_veil"
+      },
+      {
+        "level": 46,
+        "move": "shadow_rend"
+      },
+      {
+        "level": 54,
+        "move": "eclipse_wave"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The Still Hour \u2014 the keeper of midnight, standing the same unrelieved watch since the night stopped turning. The Hollowing call it proof that the dark can be gentle; Noctilune, for its part, has never once answered them.",
+    "category": "Midnight Hour Kin",
+    "size_cm": 260,
+    "weight_kg": 420,
+    "habitat": "north"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "A huge pangolin-like sentinel, its overlapping scales panes of midnight-blue glass, each pane holding exactly one star-speck. Standing, it reads as a hooded watchman; curled, as a dark moonless disc. A small unstruck bell of dark ice hangs at its throat. Eyes are two thin silver crescents. At 64px it should read like a piece of the midnight sky knelt down to wait.",
+    "palette": "Night (#0b1026) and deepBlue (#13205a) scale-panes; diamond (#9fe7ff) star-specks, one per scale; pale moon-grey underbelly and claws; the throat-bell a darker, colder blue than everything around it.",
+    "direction": "The deep of night as armour. Utterly still until it isn't. No menace \u2014 endurance. The unstruck bell is the motif: midnight is the hour no bell marks."
+  },
+  "provenance_concept_id": "X-NOCTILUNE"
+}

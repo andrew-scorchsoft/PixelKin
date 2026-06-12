@@ -89,6 +89,12 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     unlock_flag: 'gleam:ember',
   },
   {
+    id: 'lantern_fair',
+    term: 'the Lantern-fair',
+    desc: "Tinderwick's festival, the first most Wayfarers stand inside: the whole town out under strung lanterns, a Gleam given like a welcome home. A small flame's no lesser thing — that is the fair's whole sermon.",
+    unlock_flag: 'gleam:ember',
+  },
+  {
     id: 'hollowing',
     term: 'the Hollowing',
     desc: "Not villains — frightened folk who'd let the long night come gently and stay. They put luminous kin to sleep and carry their light away.",
@@ -105,6 +111,138 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     term: 'Lantern Gift',
     desc: 'A knack a Lampwarden teaches with their Gleam — Tidecall crosses night-water; more come later. Each reopens places you once walked past.',
     unlock_flag: 'gleam:tide',
+  },
+  {
+    id: 'tide_blessing',
+    term: 'the Tide-blessing',
+    desc: "Pearlmoor's festival: when the Moor-bell rings, the quay's boats put out lantern-lit to bless the night-water that feeds the town. The sea keeps no lamps of its own — so once a season, the quay lends it theirs.",
+    unlock_flag: 'gleam:tide',
+  },
+  {
+    id: 'lanternway',
+    term: 'the Lanternway',
+    desc: 'The lit road that rings Vesperholm, spoke to far-off spoke, meeting at the Vesper Crossroads. Its lamps wake region by region as the Gleams return.',
+    unlock_flag: 'flag:fenn_errand',
+  },
+  {
+    id: 'skyweave_crown',
+    term: 'the Skyweave Crown',
+    desc: 'The ring the eight constellations make when all stand lit — closed one quadrant at a time, two Gleams to a quarter. A whole Crown, the old charts say, can part the Penumbra itself.',
+    unlock_flag: 'flag:crown_south',
+  },
+  {
+    id: 'glowmoss_bloom',
+    term: 'the Glowmoss Bloom',
+    desc: "Lowleaf's festival, when the hollow's glowmoss flowers all at once: lantern-strings in the trunks, the wood outshining them. The shy folk let the moss do their speaking — once a year, it has plenty to say.",
+    unlock_flag: 'gleam:verdant',
+  },
+  {
+    id: 'lampdown_vigil',
+    term: 'the Lamp-down Vigil',
+    desc: "Cinderhead's solemn festival: the miners dim their lamps together, honouring the dark they work in. It is not surrender — every lamp is relit before the vigil ends. The town keeps the dark, and keeps its light.",
+    unlock_flag: 'gleam:stone',
+  },
+  {
+    id: 'kite_rising',
+    term: 'the Kite-rising',
+    desc: 'Galehigh\'s festival: on the windiest dusk of the year the whole town flies lit kites, "so the relit constellations have something to answer." Warm, communal, a little daft — and no one is allowed to merely watch.',
+    unlock_flag: 'gleam:storm',
+  },
+  {
+    id: 'aurora_watch',
+    term: 'the Aurora-watch',
+    desc: "Pale Vault's festival, kept in silence: the town gathers on the open ice, each with one lit lamp, watching the aurora till it fades. Calm as any quieted valley — except every flame is lit, and someone chose to hold it.",
+    unlock_flag: 'gleam:frost',
+  },
+  {
+    id: 'warden_cor',
+    term: 'Warden Còr',
+    desc: 'The Hollowing\'s keeper: a star-tender once, courteous and sad, who lost something to the turning of the cycles and decided no one should have to again. He does not fight. He asks — and that is the danger of him.',
+    unlock_flag: 'flag:met_cor',
+  },
+  {
+    id: 'coldfog',
+    term: 'Coldfog',
+    desc: 'The Hollowing\'s creeping mist — a damp dark that snuffs ordinary flame and closes whole passes. Only an Emberward\'s tended ember pushes through it.',
+    unlock_flag: 'gleam:frost',
+  },
+  {
+    id: 'last_warm_day',
+    term: 'the Last-Warm-Day',
+    desc: "The Sunken Solarium's festival: once a year the town gathers in the drowned sun-garden to spend the last warm day before the dark — stored-daylight lanterns, warm bread shared freely, a troupe on the old stage. Warmth, spent on purpose, knowing it fades. That is the point.",
+    unlock_flag: 'gleam:solar',
+  },
+  {
+    id: 'sunsketch',
+    term: 'Sunsketch',
+    desc: 'The Solar Lantern Gift: a pocket of stored daylight, released from the lamp. Shut night-flowers bloom into living bridges at its touch — the drowned garden\'s roads, reopened one bloom at a time.',
+    unlock_flag: 'gleam:solar',
+  },
+  {
+    id: 'star_vigil',
+    term: 'the Star-vigil',
+    desc: "Nightreach's festival, the grandest and most silent: the town keeps a night-long watch at the telescopes as the Crown nears its closing, each watcher lighting one lamp when their star comes home. Belonging as witness — somebody watching when the sky remembers.",
+    unlock_flag: 'gleam:lunar',
+  },
+  {
+    id: 'starreach',
+    term: 'Starreach',
+    desc: 'The Lunar Lantern Gift, last of the six: starlight drawn down to stand on, a stride across short voids of pure dark. The Penumbra\'s final crossings hold under it — the road to the Spire itself.',
+    unlock_flag: 'gleam:lunar',
+  },
+  {
+    id: 'great_null',
+    term: 'the Great Null',
+    desc: 'A lantern built to hold no light, raised on the Umbral Spire and aimed at the Keystar — the one star the whole sky rekindles from. Còr means it kindly. That is the most frightening thing about it.',
+    unlock_flag: 'flag:great_null_known',
+  },
+
+  // --- The Three Hours (walkthrough/07-the-three) — gated on the triad's own
+  // chain flags: the netmender's rumour teaches the word; the first catch
+  // teaches what a withdrawal costs.
+  {
+    id: 'three_hours',
+    term: 'the Three Hours',
+    desc: 'The Skyweave holds the places of the sky; the Hours are its turning — dusk, midnight, and dawn, the three watch-spirits of the wheel itself. When the Long Dusk fell the wheel jammed, and each Hour went to ground with its watch unrelieved. They are said to wait at the ends of earned roads, for tenders who understand them.',
+    unlock_flag: 'flag:three_dusk_rumour',
+  },
+  {
+    id: 'hours_withdrawal',
+    term: "the Hours' Withdrawal",
+    desc: 'An Hour meets you once, as a chance — never a gift. Falter, and it folds itself away to keep its watch alone again; only victories, earned out in the world, persuade it that your lamp is worth a second look. The cost is real. The Hours have nothing else to spend.',
+    unlock_flag: 'flag:three_dusk_caught',
+  },
+
+  // --- The endgame (Central) — gated on flags the climax already raises ------
+  {
+    id: 'keystar',
+    term: 'the Keystar',
+    desc: 'The last anchoring star: the one light the whole Skyweave remembers itself by. Every constellation you relit, relit because the Keystar held — snuff it, and no star could ever rekindle again.',
+    unlock_flag: 'flag:great_null_known',
+  },
+  {
+    id: 'penumbra',
+    term: 'the Penumbra',
+    desc: 'The band of unnatural dark that sealed the centre of Vesperholm, fed by the darkened constellations. Each relit Gleam burned back a wedge; a whole Crown parts it entirely — leaving only the final crossings, walked on starlight.',
+    unlock_flag: 'flag:hub_unlocked',
+  },
+  {
+    id: 'ninth_lantern',
+    term: 'the Ninth Lantern',
+    desc: 'The long-dead Lumenary at the peak of the Umbral Spire, oldest of them all, keeper of the Keystar itself. Eight halls tend the rim of the sky. The Ninth tended its heart — and waited, dark, for someone to climb back up.',
+    unlock_flag: 'flag:hub_unlocked',
+  },
+  {
+    id: 'keylumen',
+    term: 'Keylumen',
+    desc: 'The Keystar\'s living heart — a radiant kin that slept in the Ninth Lantern through the whole long night, waiting for a sky worth anchoring. It was never caught. It was asked, and it answered.',
+    unlock_flag: 'flag:keystar_relit',
+  },
+  {
+    id: 'first_dawn',
+    term: 'the First True Dawn',
+    desc: 'The morning the long night broke: the Keystar relit, the Crown blazing whole, and the sun over Vesperholm for the first time in years. Dusk will come again — and that is exactly the point.',
+    unlock_flag: 'flag:dawn',
   },
 ];
 

@@ -21,6 +21,104 @@
       "tw": 2,
       "th": 2
     },
+    "coldfog_lighthouse": {
+      "path": "assets/sprites/objects/coldfog_lighthouse.webp",
+      "width": 64,
+      "height": 112,
+      "tw": 4,
+      "th": 7
+    },
+    "coldfog_null_engine": {
+      "path": "assets/sprites/objects/coldfog_null_engine.webp",
+      "width": 96,
+      "height": 80,
+      "tw": 6,
+      "th": 5
+    },
+    "coldfog_null_rack": {
+      "path": "assets/sprites/objects/coldfog_null_rack.webp",
+      "width": 64,
+      "height": 32,
+      "tw": 4,
+      "th": 2
+    },
+    "coldfog_quiet_camp": {
+      "path": "assets/sprites/objects/coldfog_quiet_camp.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "coldfog_works_front": {
+      "path": "assets/sprites/objects/coldfog_works_front.webp",
+      "width": 96,
+      "height": 80,
+      "tw": 6,
+      "th": 5
+    },
+    "galehigh_cottage": {
+      "path": "assets/sprites/objects/galehigh_cottage.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "galehigh_crop_rows": {
+      "path": "assets/sprites/objects/galehigh_crop_rows.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "galehigh_inn": {
+      "path": "assets/sprites/objects/galehigh_inn.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "galehigh_kite_pole_a": {
+      "path": "assets/sprites/objects/galehigh_kite_pole_a.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "galehigh_kite_pole_b": {
+      "path": "assets/sprites/objects/galehigh_kite_pole_b.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "galehigh_lumenary": {
+      "path": "assets/sprites/objects/galehigh_lumenary.webp",
+      "width": 96,
+      "height": 96,
+      "tw": 6,
+      "th": 6
+    },
+    "galehigh_pulley_basket": {
+      "path": "assets/sprites/objects/galehigh_pulley_basket.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "galehigh_shop": {
+      "path": "assets/sprites/objects/galehigh_shop.webp",
+      "width": 80,
+      "height": 64,
+      "tw": 5,
+      "th": 4
+    },
+    "galehigh_winch": {
+      "path": "assets/sprites/objects/galehigh_winch.webp",
+      "width": 64,
+      "height": 80,
+      "tw": 4,
+      "th": 5
+    },
     "glowmoss_deep_glowshrooms_ember": {
       "path": "assets/sprites/objects/glowmoss_deep_glowshrooms_ember.webp",
       "width": 32,
@@ -49,12 +147,82 @@
       "tw": 2,
       "th": 3
     },
+    "hourfold_brazier_lit": {
+      "path": "assets/sprites/objects/hourfold_brazier_lit.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "hourfold_brazier_snuffed": {
+      "path": "assets/sprites/objects/hourfold_brazier_snuffed.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "hushfrost_aurora_glint_a": {
+      "path": "assets/sprites/objects/hushfrost_aurora_glint_a.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_aurora_glint_b": {
+      "path": "assets/sprites/objects/hushfrost_aurora_glint_b.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_aurora_veil": {
+      "path": "assets/sprites/objects/hushfrost_aurora_veil.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "hushfrost_numbed_kin": {
+      "path": "assets/sprites/objects/hushfrost_numbed_kin.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "hushfrost_numbed_kin_awake": {
+      "path": "assets/sprites/objects/hushfrost_numbed_kin_awake.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "hushfrost_shelter": {
+      "path": "assets/sprites/objects/hushfrost_shelter.webp",
+      "width": 64,
+      "height": 64,
+      "tw": 4,
+      "th": 4
+    },
     "interior_altar": {
       "path": "assets/sprites/objects/interior_altar.webp",
       "width": 48,
       "height": 48,
       "tw": 3,
       "th": 3
+    },
+    "interior_banner_ice": {
+      "path": "assets/sprites/objects/interior_banner_ice.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "interior_banner_warm": {
+      "path": "assets/sprites/objects/interior_banner_warm.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
     },
     "interior_barrels": {
       "path": "assets/sprites/objects/interior_barrels.webp",
@@ -118,6 +286,13 @@
       "height": 48,
       "tw": 3,
       "th": 3
+    },
+    "interior_kite_hung": {
+      "path": "assets/sprites/objects/interior_kite_hung.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
     },
     "interior_lamp_rack": {
       "path": "assets/sprites/objects/interior_lamp_rack.webp",
@@ -245,6 +420,132 @@
       "tw": 2,
       "th": 2
     },
+    "nightreach_eyepiece": {
+      "path": "assets/sprites/objects/nightreach_eyepiece.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "nightreach_lumenary": {
+      "path": "assets/sprites/objects/nightreach_lumenary.webp",
+      "width": 96,
+      "height": 128,
+      "tw": 6,
+      "th": 8
+    },
+    "nightreach_star_banner": {
+      "path": "assets/sprites/objects/nightreach_star_banner.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "nightreach_starglint_a": {
+      "path": "assets/sprites/objects/nightreach_starglint_a.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "nightreach_starglint_b": {
+      "path": "assets/sprites/objects/nightreach_starglint_b.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "nightreach_vigil_lamp": {
+      "path": "assets/sprites/objects/nightreach_vigil_lamp.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "nightreach_watch_lamp_dark": {
+      "path": "assets/sprites/objects/nightreach_watch_lamp_dark.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "nightreach_watch_lamp_lit": {
+      "path": "assets/sprites/objects/nightreach_watch_lamp_lit.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "pale_vault_bracket_dark": {
+      "path": "assets/sprites/objects/pale_vault_bracket_dark.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "pale_vault_bracket_lit": {
+      "path": "assets/sprites/objects/pale_vault_bracket_lit.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "pale_vault_brazier": {
+      "path": "assets/sprites/objects/pale_vault_brazier.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "pale_vault_camp_doused": {
+      "path": "assets/sprites/objects/pale_vault_camp_doused.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "pale_vault_camp_lit": {
+      "path": "assets/sprites/objects/pale_vault_camp_lit.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "pale_vault_home": {
+      "path": "assets/sprites/objects/pale_vault_home.webp",
+      "width": 64,
+      "height": 64,
+      "tw": 4,
+      "th": 4
+    },
+    "pale_vault_ice_spire": {
+      "path": "assets/sprites/objects/pale_vault_ice_spire.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "pale_vault_inn": {
+      "path": "assets/sprites/objects/pale_vault_inn.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "pale_vault_lumenary": {
+      "path": "assets/sprites/objects/pale_vault_lumenary.webp",
+      "width": 96,
+      "height": 96,
+      "tw": 6,
+      "th": 6
+    },
+    "pale_vault_undercroft_arch": {
+      "path": "assets/sprites/objects/pale_vault_undercroft_arch.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
     "pearlmoor_boat": {
       "path": "assets/sprites/objects/pearlmoor_boat.webp",
       "width": 32,
@@ -280,6 +581,41 @@
       "tw": 5,
       "th": 4
     },
+    "penumbra_spire_silhouette": {
+      "path": "assets/sprites/objects/penumbra_spire_silhouette.webp",
+      "width": 160,
+      "height": 96,
+      "tw": 10,
+      "th": 6
+    },
+    "penumbra_starglint_bright_a": {
+      "path": "assets/sprites/objects/penumbra_starglint_bright_a.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "penumbra_starglint_bright_b": {
+      "path": "assets/sprites/objects/penumbra_starglint_bright_b.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "penumbra_starwell_basin": {
+      "path": "assets/sprites/objects/penumbra_starwell_basin.webp",
+      "width": 64,
+      "height": 64,
+      "tw": 4,
+      "th": 4
+    },
+    "penumbra_way_lamp": {
+      "path": "assets/sprites/objects/penumbra_way_lamp.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    },
     "saltreach_reed_lantern_dark": {
       "path": "assets/sprites/objects/saltreach_reed_lantern_dark.webp",
       "width": 16,
@@ -294,12 +630,278 @@
       "tw": 1,
       "th": 2
     },
+    "solarium_brazier_dead": {
+      "path": "assets/sprites/objects/solarium_brazier_dead.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "solarium_brazier_lit": {
+      "path": "assets/sprites/objects/solarium_brazier_lit.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "solarium_column": {
+      "path": "assets/sprites/objects/solarium_column.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    },
+    "solarium_column_fallen": {
+      "path": "assets/sprites/objects/solarium_column_fallen.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "solarium_costume_rack": {
+      "path": "assets/sprites/objects/solarium_costume_rack.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "solarium_lumenary": {
+      "path": "assets/sprites/objects/solarium_lumenary.webp",
+      "width": 96,
+      "height": 96,
+      "tw": 6,
+      "th": 6
+    },
+    "solarium_nightflowers_bloomed": {
+      "path": "assets/sprites/objects/solarium_nightflowers_bloomed.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "solarium_nightflowers_closed": {
+      "path": "assets/sprites/objects/solarium_nightflowers_closed.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "solarium_stage_arch": {
+      "path": "assets/sprites/objects/solarium_stage_arch.webp",
+      "width": 80,
+      "height": 48,
+      "tw": 5,
+      "th": 3
+    },
+    "solarium_sun_mask": {
+      "path": "assets/sprites/objects/solarium_sun_mask.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "solarium_troupe_cart": {
+      "path": "assets/sprites/objects/solarium_troupe_cart.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "spire_crownshaft": {
+      "path": "assets/sprites/objects/spire_crownshaft.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "spire_great_null": {
+      "path": "assets/sprites/objects/spire_great_null.webp",
+      "width": 128,
+      "height": 96,
+      "tw": 8,
+      "th": 6
+    },
+    "spire_keystar_dais": {
+      "path": "assets/sprites/objects/spire_keystar_dais.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "spire_null_pool": {
+      "path": "assets/sprites/objects/spire_null_pool.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "spire_sleeper_cindersob": {
+      "path": "assets/sprites/objects/spire_sleeper_cindersob.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "spire_sleeper_cindersob_awake": {
+      "path": "assets/sprites/objects/spire_sleeper_cindersob_awake.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "spire_sleeper_nullmoth": {
+      "path": "assets/sprites/objects/spire_sleeper_nullmoth.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "spire_sleeper_nullmoth_awake": {
+      "path": "assets/sprites/objects/spire_sleeper_nullmoth_awake.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "spire_sleeper_voidmantle": {
+      "path": "assets/sprites/objects/spire_sleeper_voidmantle.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "spire_sleeper_voidmantle_awake": {
+      "path": "assets/sprites/objects/spire_sleeper_voidmantle_awake.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "sunkbell_shrine": {
       "path": "assets/sprites/objects/sunkbell_shrine.webp",
       "width": 48,
       "height": 48,
       "tw": 3,
       "th": 3
+    },
+    "sunvault_mirror_alight": {
+      "path": "assets/sprites/objects/sunvault_mirror_alight.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "sunvault_mirror_dim": {
+      "path": "assets/sprites/objects/sunvault_mirror_dim.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "sunvault_reliquary": {
+      "path": "assets/sprites/objects/sunvault_reliquary.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "sunvault_vine_far_bloomed": {
+      "path": "assets/sprites/objects/sunvault_vine_far_bloomed.webp",
+      "width": 16,
+      "height": 64,
+      "tw": 1,
+      "th": 4
+    },
+    "sunvault_vine_far_withered": {
+      "path": "assets/sprites/objects/sunvault_vine_far_withered.webp",
+      "width": 16,
+      "height": 64,
+      "tw": 1,
+      "th": 4
+    },
+    "sunvault_vine_gate_bloomed": {
+      "path": "assets/sprites/objects/sunvault_vine_gate_bloomed.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "sunvault_vine_gate_withered": {
+      "path": "assets/sprites/objects/sunvault_vine_gate_withered.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "sunvault_vine_h_bloomed": {
+      "path": "assets/sprites/objects/sunvault_vine_h_bloomed.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "sunvault_vine_h_withered": {
+      "path": "assets/sprites/objects/sunvault_vine_h_withered.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "sunvault_vine_v_bloomed": {
+      "path": "assets/sprites/objects/sunvault_vine_v_bloomed.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    },
+    "sunvault_vine_v_withered": {
+      "path": "assets/sprites/objects/sunvault_vine_v_withered.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    },
+    "tideglass_glass_spire": {
+      "path": "assets/sprites/objects/tideglass_glass_spire.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "tideglass_lens_cold": {
+      "path": "assets/sprites/objects/tideglass_lens_cold.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "tideglass_lens_lit": {
+      "path": "assets/sprites/objects/tideglass_lens_lit.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "tideglass_wreck": {
+      "path": "assets/sprites/objects/tideglass_wreck.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "tideglass_wrecklamp_dark": {
+      "path": "assets/sprites/objects/tideglass_wrecklamp_dark.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "tideglass_wrecklamp_lit": {
+      "path": "assets/sprites/objects/tideglass_wrecklamp_lit.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
     },
     "tinderwick_beacon": {
       "path": "assets/sprites/objects/tinderwick_beacon.webp",
@@ -342,6 +944,62 @@
       "height": 64,
       "tw": 3,
       "th": 4
+    },
+    "unrisen_basin_dry": {
+      "path": "assets/sprites/objects/unrisen_basin_dry.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "unrisen_basin_filled": {
+      "path": "assets/sprites/objects/unrisen_basin_filled.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "windward_aerie": {
+      "path": "assets/sprites/objects/windward_aerie.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "windward_cairn": {
+      "path": "assets/sprites/objects/windward_cairn.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "windward_kite_wreck": {
+      "path": "assets/sprites/objects/windward_kite_wreck.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "windward_starglint_a": {
+      "path": "assets/sprites/objects/windward_starglint_a.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "windward_starglint_b": {
+      "path": "assets/sprites/objects/windward_starglint_b.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "windward_updraft": {
+      "path": "assets/sprites/objects/windward_updraft.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
     }
   }
 }

@@ -70,8 +70,15 @@
       "area": "sunken_solarium",
       "terrain": "water",
       "rarity": "uncommon",
-      "min": 48,
-      "max": 50
+      "min": 44,
+      "max": 46
+    },
+    {
+      "area": "nightreach_observatory",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 49,
+      "max": 51
     }
   ],
   "scripted": false,

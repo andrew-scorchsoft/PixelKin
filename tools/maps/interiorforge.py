@@ -25,6 +25,12 @@ furniture and architecture share one register. Deterministic; re-run freely.
 Run:  ./venv/bin/python tools/maps/interiorforge.py     # write all masters
       (then .claude/skills/generate-sprite-sheet/scripts/pack_objects.py)
 
+WARNING — running this REWRITES EVERY master in assets/tilesets/interior/
+objects/, including pieces that gen_interior_object.py later re-rendered via
+image-gen into the same paths (the shipped hero pieces). After adding a new
+piece, `git checkout` any master you didn't mean to regenerate before packing
+(N7 got bitten: a full re-run clobbered 19 image-gen masters with raw draws).
+
 Writes assets/tilesets/interior/objects/<stem>.png (16px multiples) — packed
 to `interior_<stem>` object keys.
 """
@@ -582,6 +588,89 @@ def pew() -> Image.Image:
     return img(a)
 
 
+# =============================================================================
+#  WALL-HUNG pieces — pure front elevation hung ON the wall (no floor contact).
+#  Mount with roomkit.wall_mount(..., solid=False); the banners hang from the
+#  cornice over the FACE row (face_row=1, the lamp_rack pattern), the kite hangs
+#  HIGH over the cap band (face_row=0) so it clears a 3x3 altar beneath it.
+# =============================================================================
+ICE = [hx("#16304a"), hx("#2c5a86"), hx("#5e9cc8"), hx("#bfe6f6")]
+
+
+def _banner(body, trim, emblem) -> Image.Image:
+    """1x2 hung wall banner: rod under the cornice, swallowtail cloth, emblem."""
+    a = canvas(1, 2)
+    W = 16
+    # the rod
+    fill(a, 1, 2, W - 2, 4, WOOD[1])
+    a[2, 1:W - 1] = WOOD[3]
+    a[4, 1:W - 1] = INK
+    # the cloth: straight drop, then a swallowtail notch
+    fill(a, 3, 5, 12, 21, body[1])
+    a[5:22, 3] = body[2]                         # lit selvedge
+    a[5:22, 12] = body[0]
+    for i, y in enumerate(range(22, 27)):        # the two tails
+        fill(a, 3, y, 6 - i if 6 - i >= 3 else 3, y, body[1])
+        fill(a, 9 + i if 9 + i <= 12 else 12, y, 12, y, body[1])
+    a[6, 4:12] = trim                            # trim band under the rod
+    a[20, 4:12] = body[0]
+    # the emblem: a small lozenge
+    for (dx, dy) in ((0, -3), (0, 3), (-2, 0), (2, 0), (-1, -1), (1, -1),
+                     (-1, 1), (1, 1), (0, -2), (0, 2), (-1, 0), (0, 0), (1, 0),
+                     (0, -1), (0, 1)):
+        a[13 + dy, 7 + dx] = trim
+    a[13, 7] = emblem
+    a[12, 7] = emblem
+    _wall_top_shadow(a, W)
+    return img(a)
+
+
+def banner_warm() -> Image.Image:
+    """1x2 warm festival banner (kite-silk wine + brass) — the Storm hall."""
+    return _banner(CLOTH_WINE, BRASS[3], FIRE[3])
+
+
+def banner_ice() -> Image.Image:
+    """1x2 pale glacier banner (aurora blues) — the Frost hall."""
+    return _banner(ICE, ICE[3], BONE[3])
+
+
+def kite_hung() -> Image.Image:
+    """3x2 ceremonial diamond kite hung flat on the wall — the Kite-rising's
+    spare flown sail, kept over the Storm altar between festivals."""
+    a = canvas(3, 2)
+    W, H = 48, 32
+    cx, cy, rx, ry = 24, 16, 17, 12
+    gold, gold_d = BRASS[3], BRASS[2]
+    ember, ember_d = FIRE[2], FIRE[1]
+    for y in range(H):
+        for x in range(W):
+            if abs(x - cx) / rx + abs(y - cy) / ry <= 1.0:
+                if (x < cx) == (y < cy):
+                    a[y, x] = gold if (x + y) % 7 else gold_d
+                else:
+                    a[y, x] = ember if (x + y) % 7 else ember_d
+    # ink rim + crossed spars
+    for y in range(H):
+        for x in range(W):
+            if a[y, x, 3] and (abs(x - cx) / rx + abs(y - cy) / ry > 0.88):
+                a[y, x] = INK
+    a[cy, cx - rx + 1:cx + rx] = WOOD[0]
+    a[cy - ry + 1:cy + ry, cx] = WOOD[0]
+    # centre boss + hanging cords up to the cornice
+    fill(a, cx - 1, cy - 1, cx + 1, cy + 1, DIAMOND)
+    a[cy, cx] = BONE[3]
+    for x0 in (cx - 10, cx + 10):
+        a[0:5, x0] = WOOD[0]
+    # ribbon tails off the side vertices
+    for (tx0, step) in ((cx - rx, -1), (cx + rx - 1, 1)):
+        for i in range(4):
+            yy = cy + 2 + i
+            a[yy, tx0 + step * (i // 2)] = FIRE[3] if i % 2 else CLOTH_WINE[2]
+    _wall_top_shadow(a, W)
+    return img(a)
+
+
 def oil_jars() -> Image.Image:
     """2x1 chandlery oil jars (the wick-trade wares)."""
     a = canvas(2, 1)
@@ -607,10 +696,14 @@ PIECES = {
     "stool": stool, "counter": counter, "rug": rug, "rug_runner": rug_runner,
     "crates": crates, "barrels": barrels, "sacks": sacks, "plant": plant,
     "altar": altar, "brazier": brazier, "pew": pew, "oil_jars": oil_jars,
+    # wall-hung (wall_mount with solid=False; the kite mounts at face_row=0)
+    "banner_warm": banner_warm, "banner_ice": banner_ice, "kite_hung": kite_hung,
 }
 
-# which stems are wall-mounted (roomkit reads this)
-WALL_MOUNTED = {"hearth", "bookcase", "shelf", "dresser", "stove", "lamp_rack"}
+# which stems are wall-mounted (roomkit reads this); the last three are
+# wall-HUNG — no floor contact, always solid=False
+WALL_MOUNTED = {"hearth", "bookcase", "shelf", "dresser", "stove", "lamp_rack",
+                "banner_warm", "banner_ice", "kite_hung"}
 
 
 def main() -> None:

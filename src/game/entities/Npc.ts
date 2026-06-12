@@ -17,6 +17,17 @@ const SPRITE_SHEETS: Record<string, string> = {
   wren: 'wren',
   npc_shopkeeper: 'npc_shopkeeper',
   npc_lampwarden: 'npc_lampwarden',
+  // The remaining-cast Lampwardens + the Hollowing's leader (bespoke walk sheets).
+  mira_vael: 'mira_vael',
+  mira: 'mira_vael',
+  ysolde_frost: 'ysolde_frost',
+  ysolde: 'ysolde_frost',
+  lucan_pyre: 'lucan_pyre',
+  lucan: 'lucan_pyre',
+  nessa_cole: 'nessa_cole',
+  nessa: 'nessa_cole',
+  warden_cor: 'warden_cor',
+  cor: 'warden_cor',
   // Generic, reusable townsfolk archetypes — drop these on any NpcPlacement.sprite.
   npc_man: 'npc_man',
   npc_woman: 'npc_woman',
@@ -41,6 +52,11 @@ const SPRITE_COLORS: Record<string, string> = {
   wren: COLORS.diamond,
   npc_shopkeeper: COLORS.fire,
   npc_lampwarden: COLORS.deepBlue,
+  mira_vael: COLORS.diamond,
+  ysolde_frost: COLORS.bone,
+  lucan_pyre: COLORS.fire,
+  nessa_cole: COLORS.deepBlue,
+  warden_cor: COLORS.ink,
 };
 
 /**

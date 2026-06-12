@@ -72,15 +72,7 @@
     "weight_kg": 680,
     "habitat": "north"
   },
-  "encounters": [
-    {
-      "area": "galehigh_terraces",
-      "terrain": "tall_grass",
-      "rarity": "rare",
-      "min": 38,
-      "max": 40
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Large, powerful crustacean body; the carapace is now a massive dome of geode and ice-crystal formations, towering above the body; huge armoured claws; a walking glacier-cave silhouette \u2014 dramatic and distinctive at 48px, dominated by the crystal dome above.",

@@ -14,7 +14,7 @@
       "tile_height": 16,
       "first_gid": 1,
       "columns": 12,
-      "tile_count": 196
+      "tile_count": 386
     }
   ],
   "layers": [
@@ -2847,8 +2847,21 @@
       "facing": "down",
       "sprite": "npc_old_woman",
       "movement": "static",
-      "dialogue_ref": "npc.netmender_done",
-      "requires_flag": "flag:q_south_buoys_done"
+      "dialogue_ref": "script.netmender_hours",
+      "requires_flag": "flag:q_south_buoys_done",
+      "hidden_when_flag": "flag:three_dusk_rumour"
+    },
+    {
+      "id": "netmender_hours_after",
+      "at": {
+        "tx": 23,
+        "ty": 17
+      },
+      "facing": "down",
+      "sprite": "npc_old_woman",
+      "movement": "static",
+      "dialogue_ref": "npc.netmender_hours_after",
+      "requires_flag": "flag:three_dusk_rumour"
     },
     {
       "id": "blessing_elder",
@@ -2883,8 +2896,21 @@
       "facing": "right",
       "sprite": "npc_woman",
       "movement": "static",
+      "dialogue_ref": "script.token_south",
+      "requires_flag": "gleam:tide",
+      "hidden_when_flag": "flag:q_token_south"
+    },
+    {
+      "id": "blessing_singer_after",
+      "at": {
+        "tx": 12,
+        "ty": 16
+      },
+      "facing": "right",
+      "sprite": "npc_woman",
+      "movement": "static",
       "dialogue_ref": "npc.blessing_singer",
-      "requires_flag": "gleam:tide"
+      "requires_flag": "flag:q_token_south"
     }
   ],
   "gates": [

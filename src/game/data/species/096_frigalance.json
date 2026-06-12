@@ -70,11 +70,11 @@
   },
   "encounters": [
     {
-      "area": "galehigh_terraces",
+      "area": "hushfrost_pass_ii",
       "terrain": "tall_grass",
       "rarity": "rare",
-      "min": 38,
-      "max": 40
+      "min": 41,
+      "max": 42
     }
   ],
   "scripted": false,

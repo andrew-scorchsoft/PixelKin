@@ -1,0 +1,51 @@
+{
+  "title": "PixelKin - The Three Hours (set-piece battle bed)",
+  "_note": "The shared legendary-triad battle bed (walkthrough/07-the-three §3.6: boss register, but AWED, not heroic — you are fighting a keeper of the sky's turning, and it is letting you). Devices: 3/4 like a GREAT CLOCK under the music at 76 BPM; a low tri_bass PENDULUM swinging root-fifth-root every bar (the jammed wheel, still rocking); sparse BELL hour-marks (one toll every two bars — midnight is the hour no bell marks, so the bell never completes a peal); a PATIENT minor lead built on the Vesper rising-leap contour (E4→A4→B4 lift-overshoot, then the stepwise settle) over three 8-bar strophes whose cadences RESOLVE ONE CHORD FURTHER EACH TIME — strophe 1 hangs on the minor v (Em), strophe 2 falls deceptively to bVI (F), strophe 3 finally reaches the harmonic-minor dominant (E, G# leading tone) and the loop seam hands it home to Am: the wheel turns one notch per strophe and never quite completes, because completing it is the player's job. Strings carry the chords in the o3 pad register (snes band convention); drums are a soft clock (tom tick on 1, hat on 2-3), never a battle kit. A minor, 24 bars of 3/4 (~57s loop), peak 7 voices. era snes, rendered on the chip engine for cohesion. Original melody throughout (VISION.md).",
+  "era": "snes",
+  "tempo": 76,
+  "time_signature": [3, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "A minor (harmonic-minor dominant at the seam)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.9,
+      "_note": "Patient, long-breathed, chord-anchored — the Vesper lift-overshoot-settle contour opens each strophe a little higher and lands a little further. Strophe 1 (bars 1-8) hangs unresolved on B (the v). Strophe 2 (9-16) reaches higher and falls to A over the deceptive F. Strophe 3 (17-24) crests at E5, touches the G# leading tone, and leaves B4 hanging into the seam, where the bass lands Am.",
+      "notes": "E4q A4q B4q | C5h. | B4q A4q F4q | G4h. | A4q B4q C5q | D5h C5q | C5q B4q G4q | B4h. | E4q A4q B4q | C5h E5q | F5h. | E5q D5q B4q | D5h A4q | C5h A4q | B4h G4q | A4h. | E4q A4q B4q | C5h A4q | E5h. | D5q B4q G4q | F4q A4q D5q | C5h A4q | B4h G#4q | B4h."
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.95,
+      "_note": "THE PENDULUM — root-fifth-root quarter notes, one swing per bar, never syncopated, never resting: the great clock under the music. Chords: Am Am F G Am Dm Em Em | Am C F G Dm F G F | Am F C G Dm Am E E.",
+      "notes": "A2q E2q A2q | A2q E2q A2q | F2q C3q F2q | G2q D3q G2q | A2q E2q A2q | D2q A2q D2q | E2q B2q E2q | E2q B2q E2q | A2q E2q A2q | C2q G2q C2q | F2q C3q F2q | G2q D3q G2q | D2q A2q D2q | F2q C3q F2q | G2q D3q G2q | F2q C3q F2q | A2q E2q A2q | F2q C3q F2q | C2q G2q C2q | G2q D3q G2q | D2q A2q D2q | A2q E2q A2q | E2q B2q E2q | E2q B2q E2q"
+    },
+    {
+      "name": "hourmarks",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.5,
+      "_note": "Sparse hour-marks: ONE toll every two bars, on the downbeat, ringing the bar out — an unfinished peal (A E A B / A C B A / E C D E... never a scale, never a tune; the hours being counted, not sung). Silence is the other half of the part.",
+      "notes": "A5h. | rh. | E5h. | rh. | A5h. | rh. | B4h. | rh. | A5h. | rh. | C5h. | rh. | B4h. | rh. | A4h. | rh. | E5h. | rh. | C5h. | rh. | D5h. | rh. | E5h. | rh."
+    },
+    {
+      "name": "strings",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.55,
+      "_note": "The vastness — one smooth-voiced triad per bar in the o3 pad register, full-bar dotted halves, voice-led so the top line barely moves (a sky, not a riff). Same progression as the bass pendulum.",
+      "notes": "A3+C4+E4h. | A3+C4+E4h. | F3+A3+C4h. | G3+B3+D4h. | A3+C4+E4h. | A3+D4+F4h. | G3+B3+E4h. | G3+B3+E4h. | A3+C4+E4h. | G3+C4+E4h. | F3+A3+C4h. | G3+B3+D4h. | A3+D4+F4h. | F3+A3+C4h. | G3+B3+D4h. | F3+A3+C4h. | A3+C4+E4h. | F3+A3+C4h. | G3+C4+E4h. | G3+B3+D4h. | A3+D4+F4h. | A3+C4+E4h. | G#3+B3+E4h. | G#3+B3+E4h."
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.4,
+      "_note": "The clock, not a kit: a low tom tick on beat 1, soft hats on 2 and 3, every bar identical — time passing under the fight. A single crash marks each strophe's first bar (the hour changing).",
+      "notes": "q tom+crash hat hat | tom hat hat | tom hat hat | tom hat hat | tom hat hat | tom hat hat | tom hat hat | tom hat hat | tom+crash hat hat | tom hat hat | tom hat hat | tom hat hat | tom hat hat | tom hat hat | tom hat hat | tom hat hat | tom+crash hat hat | tom hat hat | tom hat hat | tom hat hat | tom hat hat | tom hat hat | tom hat hat | tom hat hat"
+    }
+  ]
+}

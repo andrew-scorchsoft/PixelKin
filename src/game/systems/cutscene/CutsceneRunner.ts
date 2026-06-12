@@ -8,7 +8,7 @@
 import Phaser from 'phaser';
 import type { CutsceneStep, ActorRef } from '@game/content/types';
 import type { Actor } from '@game/entities/Actor';
-import type { Facing } from '@game/data/world/types';
+import type { Facing, EncounterTerrain } from '@game/data/world/types';
 import { DialogueBox } from '@game/ui/DialogueBox';
 import { StarterSelect } from '@game/ui/StarterSelect';
 import { fadeIn, fadeOut, flash, flashColor, shake, tint, letterbox } from '@game/ui/Transitions';
@@ -27,8 +27,25 @@ export interface CutsceneContext {
   canEnter(tx: number, ty: number): boolean;
   onGiveStarter(speciesId: number): void;
   onGiveItem(item: string, count: number): void;
+  /** Whether the player currently holds at least one of `item` (ensureItem's gate). */
+  hasItem?(item: string): boolean;
   /** Run a trainer battle; resolves true if the player won (false aborts the scene). */
   startTrainerBattle?(trainer: string): Promise<boolean>;
+  /**
+   * Where a battle-counted cooldown stands for a named one-off encounter.
+   *  - 'caught'   : `caughtFlag` is held — the encounter is done forever.
+   *  - 'cooldown' : it withdrew after a recent failure; `remaining` battles to go.
+   *  - 'ready'    : fightable now.
+   */
+  legendaryState?(name: string, caughtFlag: string): { phase: 'caught' | 'cooldown' | 'ready'; remaining: number };
+  /**
+   * Run a SET-PIECE wild battle (the kin can't flee; the player can). Resolves the
+   * raw outcome so the runner can branch: a catch sets the caughtFlag, a KO/flee
+   * stamps the cooldown.
+   */
+  startSetPieceBattle?(kin: number, level: number, terrain?: EncounterTerrain): Promise<'caught' | 'koed' | 'fled' | 'lost'>;
+  /** Stamp a `cooldownBattles`-long (in WON battles) withdrawal under `name`. */
+  setLegendaryCooldown?(name: string, cooldownBattles: number): void;
   /** Fully restore the party (the inn-rest / hearthside-heal op). */
   onHealParty?(): void;
   /** Hand the player wicks (quest rewards, found purses). */
@@ -39,6 +56,12 @@ export interface CutsceneContext {
   cameraFocusTile?(tx: number, ty: number, ms: number, zoom?: number): Promise<void>;
   /** Re-follow the player and restore zoom after a focus. */
   cameraReset?(ms: number): Promise<void>;
+  /**
+   * Persist the save, then hand the whole screen to a CinematicScript
+   * (CinematicScene). The world scene ends here — the runner aborts the
+   * remaining steps, so the op belongs at the very end of a script.
+   */
+  startCinematic?(id: string): Promise<void>;
 }
 
 const MUSIC_URL = (key: string): string => `assets/audio/music/${key}.mp3`;
@@ -126,6 +149,15 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       ctx.onGiveItem(step.item, step.count ?? 1);
       void ctx.sfx.play('world-pickup');
       return true;
+    case 'ensureItem': {
+      // Safety net for must-have set-piece items: grant only when the player
+      // holds none (a spent Starlamp must not strand the Keylumen asking).
+      if (ctx.hasItem?.(step.item)) return true;
+      ctx.onGiveItem(step.item, step.count ?? 1);
+      void ctx.sfx.play('world-pickup');
+      if (step.text) await new DialogueBox(scene, ctx.sfx).run([{ text: step.text, style: 'narrate' }]);
+      return true;
+    }
     case 'sfx':
       void ctx.sfx.play(step.key);
       return true;
@@ -182,6 +214,33 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       // A lost trainer battle aborts the scene (so a defeat never narrates a win).
       if (ctx.startTrainerBattle) return ctx.startTrainerBattle(step.trainer);
       return true;
+    case 'legendaryBattle': {
+      // A static one-off catch with a battles-won failure cooldown. The host owns
+      // the bookkeeping (battles_won / cooldowns); the runner just orchestrates the
+      // diegetic flow. Missing host hooks degrade to a silent no-op.
+      if (!ctx.legendaryState || !ctx.startSetPieceBattle) return true;
+      const state = ctx.legendaryState(step.name, step.caughtFlag);
+      if (state.phase === 'caught') return true; // already ours — fall through quietly
+      if (state.phase === 'cooldown') {
+        // It withdrew after a recent miss — play the hint, substituting {remaining}.
+        const lines = getDialogue(step.cooldownRef).map((l) => ({
+          ...l,
+          text: l.text.replace(/\{remaining\}/g, String(state.remaining)),
+        }));
+        await new DialogueBox(scene, ctx.sfx).run(lines);
+        return false; // end the scene here — the encounter isn't available yet
+      }
+      // Ready: run the set-piece. The kin can't flee; the player can.
+      const outcome = await ctx.startSetPieceBattle(step.kin, step.level, step.terrain);
+      if (outcome === 'caught') {
+        ctx.flags.set(step.caughtFlag, true);
+        return true; // let the script narrate the catch
+      }
+      if (outcome === 'lost') return false; // party wiped — the host's blackout takes over
+      // KO'd or the player fled: the kin withdraws for a spell.
+      ctx.setLegendaryCooldown?.(step.name, step.cooldownBattles);
+      return false; // a failed catch doesn't narrate a triumphant tail
+    }
     case 'heal':
       ctx.onHealParty?.();
       void ctx.sfx.playVariant('world-heal', ['a', 'b']);
@@ -200,12 +259,21 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       await flash(scene, 220);
       return true;
     }
+    case 'cinematic':
+      // The hand-over: the host persists, then starts CinematicScene. The world
+      // scene is being replaced, so end the cutscene here (nothing after plays;
+      // any progression flags must have been set by earlier steps).
+      await ctx.startCinematic?.(step.id);
+      return false;
   }
 }
 
 /** Play a scene's steps in order. Returns true if it ran to completion (not aborted). */
 export async function runCutscene(ctx: CutsceneContext, steps: CutsceneStep[]): Promise<boolean> {
   for (const step of steps) {
+    // Per-step guard: an `if_flag` step plays only while that flag is held —
+    // the data-level conditional for optional colour (never progression).
+    if (step.if_flag && !ctx.flags.get(step.if_flag)) continue;
     const carryOn = await runStep(ctx, step);
     if (!carryOn) return false;
   }

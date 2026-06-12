@@ -17,12 +17,18 @@ import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT, COLORS } from '@game/config';
 import { theme, hex } from '@game/ui/theme';
 import { DialogueBox } from '@game/ui/DialogueBox';
+import { makeText, type TextStyleToken } from '@game/ui/Text';
 import { flash, shake } from '@game/ui/Transitions';
 import { MusicDirector } from '@game/systems/audio/MusicDirector';
 import { Sfx } from '@game/systems/audio/Sfx';
 import { loadImage } from '@game/systems/sprites/loadImage';
 import { InputController, InputAction } from '@game/systems/input/InputController';
-import { getCinematic, type CinematicBeat, type CinematicScript } from '@game/content/cinematics';
+import {
+  getCinematic,
+  type CinematicBeat,
+  type CinematicScript,
+  type CreditsSection,
+} from '@game/content/cinematics';
 
 interface CinematicSceneData {
   scriptId: string;
@@ -40,6 +46,7 @@ export class CinematicScene extends Phaser.Scene {
   private finished = false;
   private activeBox?: DialogueBox;
   private currentPanel?: Phaser.GameObjects.Image;
+  private creditsRoll?: Phaser.GameObjects.Container;
   private next: { scene: string; data?: unknown } = { scene: 'World' };
 
   constructor() {
@@ -84,7 +91,9 @@ export class CinematicScene extends Phaser.Scene {
       if (this.skipped) return;
       await this.enterBeat(beat);
       if (this.skipped) return;
-      if (beat.lines?.length) {
+      if (beat.credits?.length) {
+        await this.runCredits(beat.credits, beat.creditsTitle);
+      } else if (beat.lines?.length) {
         const box = new DialogueBox(this, this.sfx);
         this.activeBox = box;
         await box.run(beat.lines.map((text) => ({ text, style: 'narrate' as const })));
@@ -94,6 +103,71 @@ export class CinematicScene extends Phaser.Scene {
       }
     }
     if (!this.skipped) this.finish();
+  }
+
+  /**
+   * A slow upward credits scroll over the held panel. Each section is a bright
+   * role heading with its names beneath; the whole column starts just below the
+   * screen and tweens up until it clears the top. Skippable: Cancel sets
+   * `this.skipped` (watched in update → finish), and this resolves on the next
+   * frame so the loop unwinds. All text rides makeText + theme tokens.
+   */
+  private async runCredits(sections: CreditsSection[], title?: string): Promise<void> {
+    const col = this.add.container(0, 0).setDepth(theme.depth.tint + 1).setScrollFactor(0);
+    this.creditsRoll = col;
+
+    const centre = GAME_WIDTH / 2;
+    const lineH = 11;
+    const sectionGap = 8;
+    let y = 0;
+    const add = (text: string, style: TextStyleToken): void => {
+      const t = makeText(this, centre, y, text, style).setOrigin(0.5, 0);
+      col.add(t);
+      y += lineH;
+    };
+
+    if (title) {
+      add(title, theme.text.title);
+      y += sectionGap;
+    }
+    for (const section of sections) {
+      add(section.role, theme.text.accent);
+      for (const name of section.names) add(name, theme.text.narrate);
+      y += sectionGap;
+    }
+
+    const totalHeight = y;
+    col.y = GAME_HEIGHT; // start fully below the screen
+    // Slow, steady rise: ~22px/sec, so the roll has weight without dragging.
+    const distance = GAME_HEIGHT + totalHeight + 8;
+    const duration = Math.max(4000, (distance / 22) * 1000);
+
+    await new Promise<void>((resolve) => {
+      let done = false;
+      const finishOnce = (): void => {
+        if (done) return;
+        done = true;
+        resolve();
+      };
+      const tween = this.tweens.add({
+        targets: col,
+        y: -totalHeight - 8,
+        duration,
+        ease: 'Linear',
+        onComplete: finishOnce,
+      });
+      // Resolve promptly on skip so the script loop can unwind to finish().
+      const watch = (): void => {
+        if (this.skipped) {
+          tween.stop();
+          this.events.off(Phaser.Scenes.Events.UPDATE, watch);
+          finishOnce();
+        } else if (done) {
+          this.events.off(Phaser.Scenes.Events.UPDATE, watch);
+        }
+      };
+      this.events.on(Phaser.Scenes.Events.UPDATE, watch);
+    });
   }
 
   /** Cross-dissolve to the beat's panel, swap the music bed, fire any punctuation. */
@@ -164,6 +238,8 @@ export class CinematicScene extends Phaser.Scene {
     this.skipInput = undefined;
     this.activeBox?.destroy(); // tear down a mid-page narration box on skip
     this.activeBox = undefined;
+    this.creditsRoll?.destroy(); // tear down an in-flight credits scroll on skip
+    this.creditsRoll = undefined;
     void this.music.fadeToSilence(theme.transition.fadeMs);
     this.cameras.main.fadeOut(theme.transition.fadeMs, 0, 0, 0);
     this.cameras.main.once('camerafadeoutcomplete', () => {

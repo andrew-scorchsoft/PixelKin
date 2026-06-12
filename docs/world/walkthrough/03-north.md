@@ -274,7 +274,9 @@ kind route · region north · **enter** from `galehigh_terraces` **→ exit** to
 - **Trigger `sets_flags`:** on first reaching the Windward II crags → **`flag:shortcut_windward`**
   (`EventTrigger` kind `script`, `once: true`).
 - **Encounter zones:** `tall_grass` (sheltered ledges) — crag-climber ram (Stone/Storm),
-  slate-wing moth (Stone/Flying), gust-finch (Storm); level band 34–36.
+  slate-wing moth (Stone/Flying), gust-finch (Storm); level band 34–36, except Stair I's
+  **SE foot verge**, which rolls 32–34 on the common Storm lines only (softens the
+  Galehigh 28–30 border step to +2 for a player who skips the skyloft wards).
 - **NPC:** crag-tender near the shortcut ledge; dialogue ref `npc.windward_crag_tender`.
 
 ---
@@ -314,7 +316,8 @@ deep-ice spurs), **NOT** the town or Lumenary · **Gleam:** Frost (Ysolde Frost,
    Sets **`flag:met_cor`**. (Detail in §2.)
 5. **C3 — Fenn and the shared past.** On Còr's heels, **Star-tender Fenn** finds you and
    reveals the canon-locked truth: **Fenn and Còr were once fellow star-tenders** — two
-   answers to the same loss.
+   answers to the same loss. (Sets `flag:fenn_c3` so the beat can't re-fire; nothing
+   gates on it.)
 6. **A4 — Wren's wobble — at the undercroft door.** Wren stands where you are about to
    prove a light can hold, and **nearly joins the Hollowing**. The **hard rival battle**
    (Wren's toughest yet), and afterward they walk off **unsure**. *(The staging is the
@@ -422,9 +425,11 @@ deep-ice spurs), **NOT** the town or Lumenary · **Gleam:** Frost (Ysolde Frost,
   With `gleam:storm` already held, the engine sets **`flag:crown_north`** (do not hand-set it,
   but the section depends on it).
 - **Story triggers `sets_flags`:** Còr-in-person cutscene → **`flag:met_cor`** (`script`,
-  `once: true`, staged on the oil leg); Fenn C3 cutscene (narrative only, no flag required);
-  Wren A4 trainer battle **at the undercroft door** (`reward_flags` for the rival-battle
-  bookkeeping — Arc A4, no progression gate).
+  `once: true`, staged on the oil leg); Fenn C3 cutscene → **`flag:fenn_c3`** (`once: true`,
+  `requires_flag: flag:met_cor` — narrative-only in early drafts, but the build sets the
+  flag so the beat can't re-fire; nothing gates on it); Wren A4 trainer battle **at the
+  undercroft door** (`reward_flags` for the rival-battle bookkeeping — Arc A4, no
+  progression gate).
 - **The Lamp-Line chain (rule 3):** `script.ysolde_quest` sets `flag:q_north_lampline`;
   kindling cache `flag:picked_stormwood`; `script.render_oil` sets
   `flag:q_north_aurora_oil`; the undercroft door warp `requires_flag:flag:q_north_aurora_oil`

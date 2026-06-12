@@ -4,6 +4,21 @@
   "cols": 4,
   "rows": 4,
   "trainers": {
+    "lucan_pyre": {
+      "path": "assets/sprites/trainers/lucan_pyre.webp",
+      "width": 128,
+      "height": 128
+    },
+    "mira_vael": {
+      "path": "assets/sprites/trainers/mira_vael.webp",
+      "width": 128,
+      "height": 128
+    },
+    "nessa_cole": {
+      "path": "assets/sprites/trainers/nessa_cole.webp",
+      "width": 128,
+      "height": 128
+    },
     "npc_boy": {
       "path": "assets/sprites/trainers/npc_boy.webp",
       "width": 128,
@@ -61,8 +76,18 @@
       "width": 128,
       "height": 128
     },
+    "warden_cor": {
+      "path": "assets/sprites/trainers/warden_cor.webp",
+      "width": 128,
+      "height": 128
+    },
     "wren": {
       "path": "assets/sprites/trainers/wren.webp",
+      "width": 128,
+      "height": 128
+    },
+    "ysolde_frost": {
+      "path": "assets/sprites/trainers/ysolde_frost.webp",
       "width": 128,
       "height": 128
     }

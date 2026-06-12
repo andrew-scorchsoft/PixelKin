@@ -33,8 +33,73 @@ export type DialogueRegistry = Record<string, DialogueLine[]>;
 /** An actor in a cutscene: the player, or an NPC by its placement id on the map. */
 export type ActorRef = 'player' | string;
 
-/** A single cutscene instruction. The CutsceneRunner interprets these in order. */
-export type CutsceneStep =
+/**
+ * A LEGENDARY (or other one-off) set-piece catch with a battles-won failure
+ * cooldown. The kin is a fixed wild battle that the kin itself cannot flee
+ * (player flee is still allowed); the encounter is a CHANCE, not a gift, so a
+ * miss has a cost.
+ *
+ *  - Already caught (`caughtFlag` held): the op falls through silently. Normal
+ *    practice is to also `hidden_when_flag: caughtFlag` the trigger/NPC that runs
+ *    the script, so a caught legendary never re-stages; the op's own check is the
+ *    belt-and-braces.
+ *  - On cooldown (it withdrew after a recent failure): the op plays `cooldownRef`
+ *    — an ordinary dialogue ref (content/dialogue.ts), the diegetic hint — and
+ *    ends the encounter. The line may include the token `{remaining}`, replaced
+ *    with the number of battles the player must still WIN before it returns.
+ *  - Ready: runs the set-piece wild battle. Outcomes:
+ *      · caught  -> sets `caughtFlag` (the kin joins via the normal catch path:
+ *                   party/Hearth + dex), encounter over for good.
+ *      · KO'd / player fled -> the kin withdraws: a cooldown of `cooldownBattles`
+ *                   WON battles is stamped under `name`. It cannot be re-fought
+ *                   until that many victories have passed.
+ *
+ * Worked inline example (a content script in content/scripts.ts):
+ *   'script.tide_sovereign': [
+ *     { op: 'narrate', text: 'The water draws back, and something vast and patient lifts its head.' },
+ *     { op: 'music', key: 'battle-legendary-tide' },
+ *     { op: 'legendaryBattle',
+ *       name: 'tide_sovereign',          // cooldown key (any stable string)
+ *       kin: 137, level: 45,             // species id + level of the set-piece kin
+ *       caughtFlag: 'flag:tide_sovereign_caught',
+ *       cooldownBattles: 12,             // withdraws for 12 WON battles on a miss
+ *       cooldownRef: 'npc.tide_sovereign_resting', // hint line, may use {remaining}
+ *       terrain: 'water' },              // optional: lets conditional charges apply
+ *   ],
+ * with the hint line in content/dialogue.ts:
+ *   'npc.tide_sovereign_resting': [
+ *     { text: 'The tide lies flat and sullen. The Sovereign sank deep when you faltered; the water will not give it up for {remaining} more battles yet.' },
+ *   ],
+ * and the trigger that fires it carrying `hidden_when_flag: 'flag:tide_sovereign_caught'`.
+ */
+export interface LegendaryBattleStep {
+  op: 'legendaryBattle';
+  /** Stable cooldown key (also the `cooldowns` record key). */
+  name: string;
+  /** Species id of the set-piece kin. */
+  kin: number;
+  /** Level it appears at. */
+  level: number;
+  /** Flag set when the kin is caught — gate the staging trigger on this too. */
+  caughtFlag: WorldFlag;
+  /** Battles the player must WIN after a failed catch before it returns. */
+  cooldownBattles: number;
+  /** Dialogue ref for the diegetic "it withdrew" hint; may contain `{remaining}`. */
+  cooldownRef: string;
+  /** Encounter terrain (optional) — lets conditional charges (e.g. a water charm) apply. */
+  terrain?: EncounterTerrain;
+}
+
+/**
+ * A single cutscene instruction. The CutsceneRunner interprets these in order.
+ * Any step may carry `if_flag`: the step plays only while that flag is held and
+ * is silently skipped otherwise — the data-level conditional for small payoffs
+ * (e.g. Wren's ribbon line at Nightreach fires only on `flag:q_north_ribbon_placed`).
+ * Keep guarded steps OPTIONAL colour, never progression (a skipped setFlag is a bug).
+ */
+export type CutsceneStep = CutsceneStepBase & { if_flag?: WorldFlag };
+
+type CutsceneStepBase =
   | { op: 'say'; speaker?: string; text: string; portrait?: string; expr?: string; style?: 'speech' | 'narrate' }
   | { op: 'narrate'; text: string } // un-attributed, full-width prose (a say with style:'narrate')
   | { op: 'dialogue'; ref: string }
@@ -47,6 +112,11 @@ export type CutsceneStep =
   | { op: 'setFlag'; flag: WorldFlag; value?: boolean }
   | { op: 'giveStarter' } // run StarterSelect, add chosen kin to the party
   | { op: 'giveItem'; item: string; count?: number }
+  // Grant `item` ONLY if the player holds none, narrating `text` when it grants
+  // (a quiet no-op otherwise). The safety-net op for must-have set-piece items —
+  // the Keylumen dais re-offers the Starlamp with it, so the ending can never
+  // dangle on a spent key item.
+  | { op: 'ensureItem'; item: string; count?: number; text?: string }
   | { op: 'sfx'; key: string }
   | { op: 'music'; key: string | null } // swap the bed (crossfades when one is playing)
   | { op: 'musicCrossfade'; key: string; ms?: number } // explicit crossfade to a new bed
@@ -60,10 +130,20 @@ export type CutsceneStep =
   | { op: 'cameraFocus'; actor?: ActorRef; to?: TileCoord; ms?: number; zoom?: number } // pan/zoom onto a subject
   | { op: 'cameraReset'; ms?: number } // re-follow the player, restore zoom
   | { op: 'battle'; trainer: string } // start a trainer battle by id
+  | LegendaryBattleStep // a static one-off catch with a battles-won failure cooldown
   | { op: 'heal' } // fully restore the party (inn rest, hearthside kindness)
   | { op: 'gleam'; element: string } // diegetic Gleam cue (relight the sky)
   | { op: 'giveMoney'; amount: number } // hand the player wicks (quest rewards, finds)
-  | { op: 'shop'; shop: string }; // open a shop's buy/sell counter (content/shops.ts)
+  | { op: 'shop'; shop: string } // open a shop's buy/sell counter (content/shops.ts)
+  /**
+   * Hand the world over to a full-screen CinematicScript (content/cinematics.ts)
+   * — the endgame's dawn panels + credits roll. The host PERSISTS first (so a
+   * Continue after the roll resumes exactly here, flags included), then starts
+   * CinematicScene; nothing after this step plays, so make it the script's LAST
+   * step and set any progression flags (e.g. flag:dawn) BEFORE it.
+   */
+  | { op: 'cinematic'; id: string };
+// (per-step `if_flag` guard rides the CutsceneStep intersection above)
 
 /** ref -> a cutscene's steps. */
 export type ScriptRegistry = Record<string, CutsceneStep[]>;

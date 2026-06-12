@@ -74,11 +74,32 @@
   },
   "encounters": [
     {
-      "area": "galehigh_terraces",
+      "area": "pale_vault_glacier",
       "terrain": "tall_grass",
       "rarity": "very_rare",
       "min": 38,
       "max": 40
+    },
+    {
+      "area": "pale_vault_glacier",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 38,
+      "max": 40
+    },
+    {
+      "area": "aurora_hollow",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 41,
+      "max": 42
+    },
+    {
+      "area": "pale_vault_hourfold",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 44,
+      "max": 47
     }
   ],
   "scripted": false,

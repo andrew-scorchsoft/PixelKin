@@ -237,90 +237,121 @@ const JOURNEY = [
     checkpoint: { name: 'Stone Gleam (Otho)', rec: 26, ace: 28 },
   },
 
-  // ---- NORTH ---------------------------------------------------------------
+  // ---- NORTH (BUILT — N4 wiring 2026-06; trainers mirror trainers.ts) -------
   {
-    name: 'Windward Stair I → Galehigh',
-    leadShare: 0.60,
+    name: 'Galehigh Terraces + skyloft',
+    // North onward the core team is set (see shareFor's design note) — the
+    // built roster's species-true XP runs leaner than the old placeholder
+    // budget, and the lead's share carries the difference.
+    leadShare: 0.70,
+    // BUILT (the Kite-Rising Winch loop): two terrace route trainers, the two
+    // skyloft wind-wards, Mira. quests = the R4 Round-leg carriage fee (300);
+    // finds = the festival takings-tin (200); valuables = the terrace
+    // Moth-amber (600).
     wild: { areas: ['galehigh_terraces'], band: [27, 31], fights: { rusher: 5, mainline: 10, explorer: 16 } },
     trainers: [
-      T('Stair runner', 'route', [K(29), K(29)]),
-      T('Kite-string seller', 'route', [K(30)]),
-      T('Terrace shepherd', 'route', [K(30), K(31)]),
-      T('Winch-hand', 'keeper', [K(32), K(32)]),
-      T('Kite-rising marshal', 'keeper', [K(33), K(33)]),
-      T('Mira Vael', 'warden', [K(30), K(31), K(32), K(34)]),
+      T('Perrin (kite-hand)', 'route', [K(28, 88), K(29, 97)]),
+      T('Sorrel (terrace-farmer)', 'route', [K(29, 91), K(30, 45)]),
+      T('Tamsin (wind-ward)', 'keeper', [K(29, 97), K(30, 98)]),
+      T('Bran (wind-ward)', 'keeper', [K(30, 91), K(31, 89)]),
+      T('Mira Vael', 'warden', [K(30, 98), K(31, 95), K(32, 89), K(34, 90)]),
     ],
-    income: { quests: 700, valuables: 600, finds: 200 },
+    income: { quests: 300, valuables: 600, finds: 200 },
     spend: { warm_balm: 3, beacon_charge: 2, chart_late: 1 },
     checkpoint: { name: 'Storm Gleam (Mira)', rec: 28, ace: 34 },
   },
   {
     name: 'Windward II → Pale Vault (+ Wren A4)',
     leadShare: 0.70,
+    // BUILT (the Stair + the Lamp-Line + A4): three stair route trainers,
+    // Wren at the undercroft door (at/above the player — by design), the two
+    // frost-wards, Ysolde. quests = the rendering-fee (200) + the sketcher's
+    // colour-fund (400); finds = the two wicks caches (250 + 300); valuables =
+    // the stair/wind-eye/glacier Starglass Shards (3 × 1,500) + the crag and
+    // undercroft Moth-ambers (2 × 600) — the cold leg pays its explorers.
+    // (Stair I's 3-tile SE foot verge rolls 32-34 — N6 MIN-3 border softener;
+    // an optional entry pocket, too small to move the leg's grind band.)
     wild: { band: [34, 38], fights: { rusher: 6, mainline: 11, explorer: 17 } },
     trainers: [
-      T('Crag percher', 'route', [K(35), K(35)]),
-      T('Snowline courier', 'route', [K(36)]),
-      T('Ice-lamp warden', 'route', [K(36), K(36)]),
-      T('Wren (A4 — the wobble)', 'rival', [K(37), K(38), K(38)]),
-      T('Undercroft tender A', 'keeper', [K(38), K(38)]),
-      T('Undercroft tender B', 'keeper', [K(39), K(39)]),
-      T('Ysolde Frost', 'warden', [K(36), K(37), K(38), K(38), K(40)]),
+      T('Edda (crag-hand)', 'route', [K(34, 45), K(35, 89)]),
+      T('Rowan (gale-watch)', 'route', [K(34, 98), K(35, 95)]),
+      T('Merle (crag-watch)', 'route', [K(35, 89), K(36, 94)]),
+      T('Wren (A4 — the wobble)', 'rival', [K(39, 9), K(39, 95), K(41, 28)]),
+      T('Sela (frost-ward)', 'keeper', [K(37, 72), K(38, 84)]),
+      T('Orrin (frost-ward)', 'keeper', [K(38, 81), K(39, 84)]),
+      T('Ysolde Frost', 'warden', [K(36, 72), K(37, 81), K(38, 84), K(38, 95), K(40, 87)]),
     ],
-    income: { quests: 900, valuables: 600, finds: 200 }, // lamp-line quest + aurora-oil thanks
+    income: { quests: 600, valuables: 5700, finds: 550 },
     spend: { warm_balm: 2, bright_balm: 1, chart_late: 1 },
     checkpoint: { name: 'Frost Gleam (Ysolde)', rec: 36, ace: 40 },
   },
 
-  // ---- WEST ----------------------------------------------------------------
+  // ---- WEST (BUILT — W5 wiring 2026-06; trainers mirror trainers.ts) --------
   {
     name: 'Hushfrost Pass I→II → Solarium',
     leadShare: 0.80,
+    // BUILT (X1 caretaker + the Lit Stage): three Hushfrost route trainers,
+    // the two troupe-player sight trainers on the flooded lanes, Lucan.
+    // quests = X2's troupe takings (300); finds = the Hushfrost + Solarium
+    // wicks caches (300 + 250); valuables = 3 Starglass Shards (Hushfrost
+    // wall-hollow, Aurora Hollow, the flooded halls) + 2 Moth-ambers.
     wild: { areas: ['sunken_solarium'], band: [40, 44], fights: { rusher: 5, mainline: 10, explorer: 15 } },
     trainers: [
-      T('Coldfog lampman', 'route', [K(41), K(41)]),
-      T('Pass survivor', 'route', [K(42)]),
-      T('Thaw-tender', 'route', [K(42), K(42)]),
-      T('Sunmote diver A', 'keeper', [K(43), K(43)]),
-      T('Sunmote diver B', 'keeper', [K(44), K(44)]),
-      T('Lucan Pyre', 'warden', [K(42), K(43), K(44), K(44), K(46)]),
+      T('Dunstan (coldfog lampman)', 'route', [K(41, 84), K(41, 78)]),
+      T('Hesper (pass survivor)', 'route', [K(42, 82)]),
+      T('Tilda (thaw-tender)', 'route', [K(42, 75), K(42, 87)]),
+      T('Calla (troupe player)', 'route', [K(43, 114), K(44, 117)]),
+      T('Orsino (troupe player)', 'route', [K(44, 115), K(45, 120)]),
+      T('Lucan Pyre', 'warden', [K(42, 117), K(43, 115), K(44, 104), K(44, 121), K(46, 123)]),
     ],
-    income: { quests: 1100, valuables: 1500, finds: 300 }, // stage-lighting chain + starglass
+    income: { quests: 300, valuables: 5700, finds: 550 },
     spend: { bright_balm: 2, beacon_charge: 2, chart_late: 1 },
     checkpoint: { name: 'Solar Gleam (Lucan)', rec: 42, ace: 46 },
   },
   {
     name: 'Sunvault Climb → Nightreach',
     leadShare: 0.90,
+    // BUILT (the Vigil of the Seven + X3 + R5): two Sunvault route trainers,
+    // the two junior-watcher keepers on the Astral Walk, Wren's A5 friendly
+    // (in the lamp-6 scene — everyone fights it), Nessa. quests = X3's
+    // chart-fund (400) + R5's Round rates (400); finds = the Sunvault +
+    // Nightreach wicks caches (250 + 300); valuables = the Sunvault
+    // Moth-amber + the roof-terrace Starglass Shard.
     wild: { band: [45, 50], fights: { rusher: 6, mainline: 11, explorer: 16 } },
     trainers: [
-      T('Vault climber', 'route', [K(46), K(46)]),
-      T('Sun-vine gardener', 'route', [K(47)]),
-      T('Heliographer', 'route', [K(47), K(48)]),
-      T('Observatory aide', 'route', [K(48), K(48)]),
-      T('Vigil-walk keeper A', 'keeper', [K(49), K(49)]),
-      T('Vigil-walk keeper B', 'keeper', [K(50), K(50)]),
-      T('Nessa Cole', 'warden', [K(48), K(49), K(50), K(50), K(52)]),
+      T('Bel (terrace-tender)', 'route', [K(46, 115), K(47, 121)]),
+      T('Tam (sky-watcher)', 'route', [K(47, 126), K(48, 118)]),
+      T('Lira (junior watcher)', 'keeper', [K(49, 106), K(50, 127)]),
+      T('Os (junior watcher)', 'keeper', [K(50, 112), K(51, 125)]),
+      T('Wren (A5 — resolved)', 'rival', [K(49, 9), K(49, 96), K(50, 28)]),
+      T('Nessa Cole', 'warden', [K(48, 106), K(49, 112), K(50, 125), K(50, 127), K(52, 107)]),
     ],
-    income: { quests: 1300, valuables: 1500, finds: 300 },
+    income: { quests: 800, valuables: 2100, finds: 550 },
     spend: { bright_balm: 2, chart_end: 1 },
     checkpoint: { name: 'Lunar Gleam (Nessa)', rec: 48, ace: 52 },
   },
 
-  // ---- CENTRAL / ENDGAME ----------------------------------------------------
+  // ---- CENTRAL / ENDGAME (BUILT — C3 wiring 2026-06; trainers mirror
+  // trainers.ts exactly). No wild zones live past the hub (the Ring and Spire
+  // are scripted-only), so the wild band models the set-piece catches +
+  // retries (Lampling/Lunaveil/Keylumen) and pre-climb spoke top-ups.
+  // Income is item-shaped by design (Radiant Lamp, Way-lamp, the Lampling) —
+  // quests pay 0 wicks; finds = the Penumbra satchel (600) + the gallery
+  // toll-box (800); valuables = the Penumbra islet Starglass (1,500) + the
+  // [MISSABLE] spire-landing Starglass (1,500) + the Starwell Moth-amber (600).
   {
     name: 'Penumbra Ring → Umbral Spire',
     leadShare: 1.00,
     wild: { areas: ['umbral_spire', 'coldfog_marches'], band: [52, 56], fights: { rusher: 6, mainline: 10, explorer: 14 } },
     trainers: [
-      T('Hollowing acolyte A', 'keeper', [K(52), K(52)]),
-      T('Hollowing acolyte B', 'keeper', [K(53), K(53)]),
-      T('Hollowing acolyte C', 'keeper', [K(54), K(54)]),
-      T('Hollowing warden-aide A', 'keeper', [K(54), K(55)]),
-      T('Hollowing warden-aide B', 'keeper', [K(55), K(55)]),
-      T('Warden Còr', 'cor', [K(53), K(54), K(55), K(55), K(56)]),
+      T('Merrin (Hollowing acolyte A)', 'keeper', [K(52, 136), K(53, 137)]),
+      T('Tace (Hollowing acolyte B)', 'keeper', [K(52, 134), K(52, 133), K(53, 137)]),
+      T('Ivorwen (Hollowing acolyte C)', 'keeper', [K(53, 141), K(54, 142)]),
+      T('Harl (Hollowing acolyte D)', 'keeper', [K(54, 143), K(55, 138)]),
+      T('Sefa (Hollowing acolyte E)', 'keeper', [K(54, 135), K(55, 139)]),
+      T('Warden Còr', 'cor', [K(53, 113), K(54, 85), K(54, 135), K(55, 138), K(55, 142), K(56, 150)]),
     ],
-    income: { quests: 1500, valuables: 1500, finds: 0 }, // the Long Round closes
+    income: { quests: 0, valuables: 3600, finds: 1400 },
     spend: { bright_balm: 3, chart_end: 1 },
     checkpoint: { name: 'Warden Còr (climax)', rec: 54, ace: 56 },
   },
@@ -351,6 +382,36 @@ const BUILT_PAYOUTS = {
   gallery_miner_a: ['keeper', 25, 500],
   gallery_miner_b: ['keeper', 26, 520],
   lampwarden_cinderhead: ['warden', 28, 1680],
+  galehigh_kitehand: ['route', 29, 464],
+  galehigh_terracer: ['route', 30, 480],
+  skyloft_ward_a: ['keeper', 30, 600],
+  skyloft_ward_b: ['keeper', 31, 620],
+  mira_vael: ['warden', 34, 2040],
+  windward_craghand: ['route', 35, 560],
+  windward_galewatch: ['route', 35, 560],
+  windward_cragwatch: ['route', 36, 576],
+  wren_pale_vault: ['rival', 41, 984],
+  undercroft_ward_a: ['keeper', 38, 760],
+  undercroft_ward_b: ['keeper', 39, 780],
+  ysolde_frost: ['warden', 40, 2400],
+  hushfrost_lampman: ['route', 41, 656],
+  hushfrost_survivor: ['route', 42, 672],
+  hushfrost_thawtender: ['route', 42, 672],
+  troupe_player_a: ['route', 44, 704],
+  troupe_player_b: ['route', 45, 720],
+  lucan_pyre: ['warden', 46, 2760],
+  sunvault_terracer: ['route', 47, 752],
+  sunvault_skywatcher: ['route', 48, 768],
+  junior_watcher_a: ['keeper', 50, 1000],
+  junior_watcher_b: ['keeper', 51, 1020],
+  wren_nightreach: ['rival', 50, 1200],
+  nessa_cole: ['warden', 52, 3120],
+  hollowing_acolyte_a: ['keeper', 53, 1060],
+  hollowing_acolyte_b: ['keeper', 53, 1060],
+  hollowing_acolyte_c: ['keeper', 54, 1080],
+  hollowing_acolyte_d: ['keeper', 55, 1100],
+  hollowing_acolyte_e: ['keeper', 55, 1100],
+  warden_cor: ['cor', 56, 6720],
 };
 const failures = [];
 for (const [id, [klass, ace, authored]] of Object.entries(BUILT_PAYOUTS)) {
@@ -363,7 +424,9 @@ if (!(PRICES.chart_early < PRICES.chart_mid && PRICES.chart_mid < PRICES.chart_l
   failures.push('chart price tiers must ascend');
 }
 // Move-id sanity for the shipped charts (mirror items.ts teach_move values).
-for (const id of ['cinder_spit', 'mist_spray', 'gust_up', 'focus_mind', 'wave_crash', 'hearth_pulse']) {
+for (const id of ['cinder_spit', 'mist_spray', 'gust_up', 'focus_mind', 'wave_crash', 'hearth_pulse',
+  'spore_puff', 'root_strike', 'lifedrain', 'thunder_kick', 'volt_arc', 'gale_slam', 'swift_step', 'tempest',
+  'sunburst_nova']) {
   if (!MOVES.moves.some((m) => m.id === id)) failures.push(`chart teaches unknown move '${id}'`);
 }
 

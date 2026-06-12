@@ -78,6 +78,43 @@ export const SHOPS: ShopRegistry = {
       'chart_gust_up',
     ],
   },
+
+  // Galehigh kite-stall — the North tier, and the whole cold leg's counter
+  // (Pale Vault deliberately keeps no shop; resupply rides the drop-shortcut
+  // loop back here). Bright Balms join the shelf once the Storm Gleam stands
+  // (the Pale-Vault-tier stock, flag-gated like Beacon Charges were).
+  galehigh: {
+    id: 'galehigh',
+    name: 'GALEHIGH KITE-STALL',
+    stock: [
+      'tallow_balm',
+      'warm_balm',
+      { item: 'bright_balm', requires_flag: 'gleam:storm' },
+      'glow_charge',
+      { item: 'beacon_charge', requires_flag: 'gleam:ember' },
+      'chart_thunder_kick',
+      'chart_volt_arc',
+      'chart_gale_slam',
+      'chart_swift_step',
+    ],
+  },
+
+  // The crossroads inn's counter — the last till before the mountain (there is
+  // no shop past the hub, by design). Every tier the journey has earned, in one
+  // place: the endgame staging-ground stock for the Spire run.
+  crossroads_inn: {
+    id: 'crossroads_inn',
+    name: 'THE WAYSTATION INN',
+    stock: [
+      'tallow_balm',
+      'warm_balm',
+      { item: 'bright_balm', requires_flag: 'gleam:storm' },
+      'glow_charge',
+      { item: 'beacon_charge', requires_flag: 'gleam:ember' },
+      'chart_focus_mind',
+      'chart_swift_step',
+    ],
+  },
 };
 
 export function getShop(id: string): ShopDef | undefined {

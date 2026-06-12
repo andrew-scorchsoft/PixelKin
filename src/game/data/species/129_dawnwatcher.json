@@ -72,7 +72,15 @@
     "weight_kg": 95.0,
     "habitat": "west"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "nightreach_observatory",
+      "terrain": "tall_grass",
+      "rarity": "very_rare",
+      "min": 51,
+      "max": 52
+    }
+  ],
   "scripted": true,
   "art": {
     "silhouette": "Tall elegant heron silhouette, body formed of layered plates of translucent crystalline moonlight, long neck and crest trailing silver-white starfire, vast wings spanning full starfield patterns, a single blazing star-eye; monumentally graceful at 64px.",

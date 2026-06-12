@@ -457,6 +457,7 @@ area). Each can still carry the **Vesper motif** so the whole score stays kin:
 - **Hollowing encounter** — `boss`, detuned/uneasy, the antagonist cue (sibling to Coldfog/Penumbra).
 - **Victory fanfare** — `victory`, one-shot (`loop:false`), 2–6 s, hard tonic resolution; states the Vesper motif's *settle home* triumphantly.
 - **Stings** — level-up, item/Gleam-get, evolution (`loop:false` jingles per `style-guide.md`).
+- **The Three Hours set-piece** (BUILT 2026-06) — `battle-hours`: the legendary triad's shared bed (07-the-three §3.6): A minor, **3/4 at 76 BPM like a great clock**, tri-bass pendulum + sparse bell hour-marks + a patient lead whose three strophes each resolve one chord further (the jammed wheel turning one notch). Plus `sting-hour`: one deep bell-toll with a long shimmer tail (the threshold cue). Specs in `assets/audio/midi/specs/`.
 
 ### Story/cinematic cues (the cold open & the Gleam payoff — BUILT for South)
 

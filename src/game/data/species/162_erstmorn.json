@@ -1,0 +1,75 @@
+{
+  "id": 162,
+  "slug": "erstmorn",
+  "name": "Erstmorn",
+  "types": [
+    "Solar",
+    "Light"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "E",
+  "stats": {
+    "hp": 79,
+    "atk": 84,
+    "def": 84,
+    "spa": 84,
+    "spd": 84,
+    "spe": 143
+  },
+  "bst": 558,
+  "ability": "daybringer",
+  "hidden_ability": "sunsoak",
+  "catchRate": 24,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "sun_jab"
+      },
+      {
+        "level": 13,
+        "move": "glint_ray"
+      },
+      {
+        "level": 22,
+        "move": "daybeam"
+      },
+      {
+        "level": 28,
+        "move": "dazzle_flash"
+      },
+      {
+        "level": 36,
+        "move": "sun_nap"
+      },
+      {
+        "level": 44,
+        "move": "light_pulse"
+      },
+      {
+        "level": 52,
+        "move": "sunburst_nova"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The Lost Hour \u2014 the keeper of a dawn that has not come, waiting half-finished where the morning was meant to land. Those who meet it say the worst part is its patience: it does not doubt the sunrise, and it will not be told the years.",
+    "category": "Dawn Hour Kin",
+    "size_cm": 200,
+    "weight_kg": 64,
+    "habitat": "west"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "A tall, slender hare of pale gold light, mid-stride even when standing. Long ears trail behind it like horizon ribbons. Parts of its outline are UNFINISHED \u2014 one hindquarter and the tip of one ear fade into faint sketch-lines of light, as if the painter stopped at the moment the dawn did. The missing parts must read as waiting, not wounded.",
+    "palette": "Bone (#f5f0e1) and pale gold body; a sunrise gradient of rose and amber along the spine and ear-ribbons; the unfinished edges in faint diamond-cyan (#9fe7ff) sketch-lines over transparency.",
+    "direction": "An unfinished sunrise as a creature \u2014 fast, gentle, heartbreaking. The emotional apex of the triad: in the Long Dusk it is incomplete by definition, and the sprite should make the player want to fix that."
+  },
+  "provenance_concept_id": "X-ERSTMORN"
+}

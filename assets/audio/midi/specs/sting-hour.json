@@ -1,0 +1,36 @@
+{
+  "title": "PixelKin - Hour Toll (sting)",
+  "_note": "The Three Hours' threshold sting (walkthrough/07-the-three §3.6): a SINGLE deep bell-toll with a long shimmer tail — the hour an Hour is met. One low A toll (octave-doubled bell + a sub tri_bass swell under it), then a quiet high shimmer (E6/A6 bell motes, off the beat, fading) — the same A-minor world as battle-hours, so the sting hands straight into the bed. One-shot, ~3s + tail; render with --tail 3 for the shimmer to ring out. Original (VISION.md).",
+  "era": "snes",
+  "tempo": 80,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": false,
+  "key": "A minor",
+  "tracks": [
+    {
+      "name": "toll",
+      "voice": "bell",
+      "octave": 3,
+      "gain": 1.0,
+      "_note": "The deep toll itself — one strike, octave-doubled, left to ring the whole bar.",
+      "notes": "A2+A3w"
+    },
+    {
+      "name": "sub",
+      "voice": "tri_bass",
+      "octave": 1,
+      "gain": 0.7,
+      "_note": "A soft sub swell under the strike — the toll felt through the floor.",
+      "notes": "A1h rh"
+    },
+    {
+      "name": "shimmer",
+      "voice": "bell",
+      "octave": 6,
+      "gain": 0.32,
+      "_note": "The shimmer tail: three quiet high motes drifting off the strike, ever softer — the sound of the air remembering the bell.",
+      "notes": "re E6q@52 A6q@40 E6h@28"
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "name": "coldfog_set",
+  "image": "assets/tilesets/coldfog_set.webp",
+  "tile_width": 16,
+  "tile_height": 16,
+  "columns": 6,
+  "tile_count": 16,
+  "tiles": [
+    {
+      "index": 0,
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "corner_nw",
+      "collides": true
+    },
+    {
+      "index": 1,
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "edge_n",
+      "collides": true
+    },
+    {
+      "index": 2,
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "corner_ne",
+      "collides": true
+    },
+    {
+      "index": 3,
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "edge_w",
+      "collides": true
+    },
+    {
+      "index": 4,
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "index": 5,
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "edge_e",
+      "collides": true
+    },
+    {
+      "index": 6,
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "corner_sw",
+      "collides": true
+    },
+    {
+      "index": 7,
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "edge_s",
+      "collides": true
+    },
+    {
+      "index": 8,
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "corner_se",
+      "collides": true
+    },
+    {
+      "index": 9,
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "inner_nw",
+      "collides": true
+    },
+    {
+      "index": 10,
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "inner_ne",
+      "collides": true
+    },
+    {
+      "index": 11,
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "inner_sw",
+      "collides": true
+    },
+    {
+      "index": 12,
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "inner_se",
+      "collides": true
+    },
+    {
+      "index": 13,
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "index": 14,
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "index": 15,
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "edge_s",
+      "collides": true
+    }
+  ]
+}

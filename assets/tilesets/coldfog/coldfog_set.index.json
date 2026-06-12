@@ -1,0 +1,18 @@
+{
+  "fogcrag_corner_nw": 0,
+  "fogcrag_edge_n": 1,
+  "fogcrag_corner_ne": 2,
+  "fogcrag_edge_w": 3,
+  "fogcrag_fill": 4,
+  "fogcrag_edge_e": 5,
+  "fogcrag_corner_sw": 6,
+  "fogcrag_edge_s": 7,
+  "fogcrag_corner_se": 8,
+  "fogcrag_inner_nw": 9,
+  "fogcrag_inner_ne": 10,
+  "fogcrag_inner_sw": 11,
+  "fogcrag_inner_se": 12,
+  "fogcrag_fill_v1": 13,
+  "fogcrag_fill_v2": 14,
+  "fogcrag_edge_s_v1": 15
+}

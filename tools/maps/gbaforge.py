@@ -822,6 +822,483 @@ def cave_ladder_up() -> Image.Image:
     return img(a)
 
 
+# ==============================================================================
+# TILEFORGE 2026-06 — the remaining regions' terrain families (North / West /
+# Central / Dawnstead), appended in the ONE serialized freeze pass. Same drawn
+# discipline as everything above: flat dusk-palette bases (Dawnstead is the one
+# DAYLIT exception — warm shadows, no blue cast) + deliberate repeated motifs;
+# variants are alternative motif LAYOUTS, never jitter noise. Every transition
+# family is CONTEXT-CORRECT (it composes over the ground it will actually sit
+# on — level-design §11 rule 8).
+# ==============================================================================
+
+# ---- palette anchors (new regions; dusk canon except DAWN*) -------------------
+SNOW = (172, 186, 212)      # bone snow under the deepBlue night (North fields)
+ICE = (104, 138, 182)       # frozen ponds / glacier blue ice (Pale Vault)
+SCREE = (96, 102, 118)      # mountain stone ground (Windward Stair crags)
+GOLD = (148, 128, 62)       # sun-garden gold grass (the West's remembered light)
+RUIN = (164, 152, 124)      # bone paving of the drowned Solarium
+BLIGHT = (90, 96, 92)       # Coldfog's drained, desaturated ground
+MURK = (52, 64, 72)         # the Marches' dead-still shallows (no foam, no light)
+BASALT = (46, 44, 54)       # Umbral Spire black basalt
+VOIDC = (14, 12, 22)        # the Penumbra's pure dark
+DAWN = (96, 154, 74)        # Dawnstead daylight grass — the one true-daylight base
+DAWNPATH = (158, 128, 84)   # sunlit dirt lane
+
+
+# ---- NORTH: snowfield --------------------------------------------------------
+# Motifs: wind-pressed drift dashes ('s') + frost-sparkle dots ('d').
+SNOW_LAYOUTS = [
+    [(4, 4, "s"), (11, 7, "d"), (6, 12, "s"), (13, 13, "d")],
+    [(3, 9, "s"), (9, 3, "d"), (12, 11, "s"), (6, 14, "d"), (13, 5, "d")],
+    [(5, 6, "d"), (12, 4, "s"), (3, 12, "s"), (10, 12, "d")],
+    [(8, 5, "s"), (3, 4, "d"), (12, 9, "s"), (6, 13, "d"), (2, 7, "d")],
+]
+
+
+def snow_fill(v: int = 0) -> Image.Image:
+    """Snowfield ground: flat bone-blue snow + drift dashes and sparkle dots."""
+    a = flat(SNOW)
+    drift = sh(SNOW, 0.88)
+    spark = sh(SNOW, 1.16, 14)
+    for (x, y, kind) in SNOW_LAYOUTS[v % len(SNOW_LAYOUTS)]:
+        if kind == "s":
+            put(a, [(x, y), (x + 1, y), (x + 2, y)], drift)
+        else:
+            put(a, [(x, y)], spark)
+    return img(a)
+
+
+def snowpatch_tile(role: str, v: int = 0) -> Image.Image:
+    """Snow⇄GRASS transition (Galehigh/Windward fringes, where the snowline
+    starts): snow patch composed over the real grass fill."""
+    if role == "fill":
+        return snow_fill(v)
+    return overlay_tile(role, snow_fill(v), grass_fill(v),
+                        sh(SNOW, 0.48), shade_rgb=sh(SNOW, 0.88))
+
+
+def snowlane_fill(v: int = 0) -> Image.Image:
+    """Trodden-snow lane: compacted, slightly darker, boot-pressed marks."""
+    a = flat(sh(SNOW, 0.82))
+    dark = sh(SNOW, 0.68)
+    light = sh(SNOW, 0.95)
+    for i, (x, y) in enumerate(PATH_LAYOUTS[v % len(PATH_LAYOUTS)]):
+        put(a, [(x, y), (x + 1, y)], dark if i % 2 == 0 else light)
+    return img(a)
+
+
+def snowtrail_tile(role: str, v: int = 0) -> Image.Image:
+    """The walked lane over SNOW (Pale Vault lanes, Hushfrost's canyon road) —
+    the `trail` precedent: a path family context-correct for snow ground."""
+    if role == "fill":
+        return snowlane_fill(v)
+    return overlay_tile(role, snowlane_fill(v), snow_fill(v),
+                        sh(SNOW, 0.55), shade_rgb=sh(SNOW, 0.74))
+
+
+# ---- NORTH: ice (frozen ponds / glacier sheets) --------------------------------
+ICE_LAYOUTS = [
+    [(3, 5), (10, 9)],
+    [(8, 3), (4, 11)],
+    [(11, 5), (5, 8)],
+]
+
+
+def ice_fill(v: int = 0) -> Image.Image:
+    """Frozen-water surface: flat blue ice + short diagonal crack glints.
+    Walkable (the frozen pond you cross); deep-ice spurs are gated by the map's
+    AbilityGates, not the tile."""
+    a = flat(ICE)
+    crack = sh(ICE, 1.32, 16)
+    deep = sh(ICE, 0.80)
+    for (x, y) in ICE_LAYOUTS[v % len(ICE_LAYOUTS)]:
+        put(a, [(x, y), (x + 1, y + 1), (x + 2, y + 1), (x + 3, y + 2)], crack)
+        put(a, [(x + 1, y + 2)], deep)
+    return img(a)
+
+
+def ice_tile(role: str, v: int = 0) -> Image.Image:
+    """Ice⇄SNOW transition: the frozen sheet set into the snowfield, dark seam
+    + a lit inner lip (the raised rim of the ice)."""
+    if role == "fill":
+        return ice_fill(v)
+    return overlay_tile(role, ice_fill(v), snow_fill(v),
+                        sh(ICE, 0.55), shade_rgb=sh(ICE, 1.22, 10))
+
+
+# ---- shared wall-face machinery (the cliff convention, parametric) -------------
+def _wall_face_tile(role: str, top_im: Image.Image, ground_im: Image.Image,
+                    lip_rgb, face_rgb, streak_rgb, bed_rgb, contact_rgb,
+                    side_rgb, v: int = 0) -> Image.Image:
+    """edge_s / corner_s*: lit lip -> streaked vertical FACE -> contact shadow ->
+    ground below (the cliff/interior-wall convention; mirrors cliff_face_tile)."""
+    g = np.asarray(ground_im.convert("RGBA")).astype(np.int16)
+    a = np.asarray(top_im.convert("RGBA")).astype(np.int16).copy()
+    LIP, FACE_END = 4, 12
+    a[LIP, :, :3] = lip_rgb
+    for y in range(LIP + 1, FACE_END + 1):
+        a[y, :, :3] = face_rgb
+    x1, x2 = (3 + 3 * v) % 14 + 1, (10 + 3 * v) % 14 + 1
+    for y in range(LIP + 1, 9):
+        a[y, x1, :3] = streak_rgb
+    for y in range(9, FACE_END + 1):
+        a[y, x2, :3] = streak_rgb
+    a[9, :, :3] = bed_rgb
+    a[FACE_END + 1, :, :3] = contact_rgb
+    a[FACE_END + 2:, :] = g[FACE_END + 2:, :]
+    if role == "corner_sw":
+        a[:, :2] = g[:, :2]
+        a[:, 2, :3] = side_rgb
+    if role == "corner_se":
+        a[:, 14:] = g[:, 14:]
+        a[:, 13, :3] = side_rgb
+    return img(a)
+
+
+# ---- NORTH: glacier wall (cliff convention, vs snow) ----------------------------
+def glacier_top(v: int = 0) -> Image.Image:
+    """The glacier plateau surface: blue ice-rock top + sparse crack marks."""
+    a = flat(sh(ICE, 0.92))
+    dark = sh(ICE, 0.74)
+    lit = sh(ICE, 1.30, 16)
+    for i, (x, y) in enumerate(CLIFF_TOP_LAYOUTS[v % len(CLIFF_TOP_LAYOUTS)]):
+        put(a, [(x, y), (x + 1, y), (x + 2, y + 1)], dark)
+        if i == 0:
+            put(a, [(x + 3, y - 1)], lit)
+    return img(a)
+
+
+def glacierwall_tile(role: str, v: int = 0) -> Image.Image:
+    """13-slice glacier cliff: fill = plateau TOP, S edges = the lit ice FACE,
+    N/W/E = rim transitions against SNOW (level-design §11 rule 8)."""
+    if role == "fill":
+        return glacier_top(v)
+    if role in ("edge_s", "corner_sw", "corner_se"):
+        return _wall_face_tile(role, glacier_top(v), snow_fill(v),
+                               lip_rgb=sh(ICE, 1.48, 28), face_rgb=sh(ICE, 1.06, 8),
+                               streak_rgb=sh(ICE, 0.78), bed_rgb=sh(ICE, 0.66),
+                               contact_rgb=sh(ICE, 0.36), side_rgb=sh(ICE, 0.46), v=v)
+    return overlay_tile(role, glacier_top(v), snow_fill(v),
+                        sh(ICE, 0.50), shade_rgb=sh(ICE, 0.84))
+
+
+# ---- NORTH: scree (mountain stone ground) --------------------------------------
+def scree_fill(v: int = 0) -> Image.Image:
+    """Windward Stair's stone ground: flat grey scree + pebble clusters/chips
+    (the cavefloor motif grammar in the mountain register)."""
+    a = flat(SCREE)
+    dark = sh(SCREE, 0.80)
+    light = sh(SCREE, 1.20, 8)
+    for (x, y, kind) in CAVEFLOOR_LAYOUTS[v % len(CAVEFLOOR_LAYOUTS)]:
+        if kind == "p":
+            put(a, [(x, y), (x + 2, y + 1), (x + 1, y + 2)], dark)
+        else:
+            put(a, [(x, y)], light)
+    return img(a)
+
+
+# ---- NORTH: frosttuft (the snow-register encounter tile) ------------------------
+def frosttuft_fill(v: int = 0) -> Image.Image:
+    """The North's encounter tile: stiff pale frost-stalks over a darkened snow
+    bed — hard-edged fill-only, the tallgrass/dunegrass/glowmoss convention."""
+    a = flat(sh(SNOW, 0.74))
+    mid = sh(ICE, 1.18, 20)
+    light = (236, 244, 252)
+    dark = sh(ICE, 0.60)
+    for (cx, cy) in TG_LAYOUTS[v % len(TG_LAYOUTS)]:
+        _fan(a, cx, cy, mid, light, dark)
+    return img(a)
+
+
+# ---- shared ledge machinery (parametric, mirrors grass/sand_ledge_s) -------------
+def _ledge_s(top_rgb, top_dk, lip_rgb, face_rgb, face_dk, shadow_rgb,
+             v: int = 0) -> Image.Image:
+    """A south-facing one-way LEDGE in any ground register: walk-on top, nicked
+    lit lip, short face, contact shadow (`ledge:'down'` meta carries the hop)."""
+    a = np.zeros((16, 16, 4), dtype=np.int16)
+    for y in range(0, 7):
+        for x in range(16):
+            a[y, x] = [*top_rgb, 255]
+    for (x, y) in ([(3, 2), (9, 4), (13, 1)] if v % 2 == 0 else [(5, 1), (11, 3), (2, 5)]):
+        a[y, x] = [*top_dk, 255]
+    nicks = {4, 11} if v % 2 == 0 else {7, 13}
+    for x in range(16):
+        a[7, x] = [*(top_dk if x in nicks else lip_rgb), 255]
+    for y in range(8, 13):
+        for x in range(16):
+            a[y, x] = [*(face_rgb if y < 11 else face_dk), 255]
+    for (x, y) in ([(2, 9), (8, 10), (13, 9)] if v % 2 == 0 else [(5, 9), (10, 10)]):
+        a[y, x] = [*face_dk, 255]
+    for y in range(13, 16):
+        for x in range(16):
+            a[y, x] = [*(shadow_rgb if y == 13 else top_dk if y == 14 else top_rgb), 255]
+    return img(a)
+
+
+def snow_ledge_s(v: int = 0) -> Image.Image:
+    """The snow-context one-way ledge (drifted bank with an icy face)."""
+    return _ledge_s(SNOW, sh(SNOW, 0.88), sh(SNOW, 1.18, 16),
+                    sh(ICE, 0.92), sh(ICE, 0.66), sh(SNOW, 0.62), v)
+
+
+def scree_ledge_s(v: int = 0) -> Image.Image:
+    """The stone-context one-way ledge (Windward's switchback drops)."""
+    return _ledge_s(SCREE, sh(SCREE, 0.82), sh(SCREE, 1.30, 12),
+                    sh(SCREE, 0.74), sh(SCREE, 0.54), sh(SCREE, 0.55), v)
+
+
+# ---- WEST: gold grass (Sunvault / Solarium terraces) -----------------------------
+def goldgrass_fill(v: int = 0) -> Image.Image:
+    """Sun-garden gold grass: the grass tick grammar in the warm gold register."""
+    a = flat(GOLD)
+    dark = sh(GOLD, 0.80)
+    light = sh(GOLD, 1.18, 10)
+    for (x, y, kind) in GRASS_LAYOUTS[v % len(GRASS_LAYOUTS)]:
+        if kind == "t":
+            put(a, [(x + dx, y + dy) for (dx, dy) in TICK], dark)
+        else:
+            put(a, [(x, y)], light)
+    return img(a)
+
+
+def goldtuft_fill(v: int = 0) -> Image.Image:
+    """The West's gold encounter tile: tall sun-grass fans over a darkened gold
+    bed — hard-edged fill-only."""
+    a = flat(sh(GOLD, 0.70))
+    mid = sh(GOLD, 1.14, 6)
+    light = sh(GOLD, 1.50, 26)
+    dark = sh(GOLD, 0.48)
+    for (cx, cy) in TG_LAYOUTS[v % len(TG_LAYOUTS)]:
+        _fan(a, cx, cy, mid, light, dark)
+    return img(a)
+
+
+# ---- WEST: ruin floor (the drowned Solarium's bone paving) -----------------------
+RUIN_LAYOUTS = [  # (x, y, kind): 'j' paving joint (L-crack), 'm' moss tuft, 'c' chip
+    [(3, 4, "j"), (10, 9, "m"), (12, 3, "c"), (5, 12, "m")],
+    [(8, 5, "j"), (3, 10, "m"), (12, 12, "c"), (13, 7, "m")],
+    [(5, 8, "j"), (11, 4, "m"), (3, 13, "c"), (9, 13, "m")],
+]
+
+
+def ruinfloor_fill(v: int = 0) -> Image.Image:
+    """Overgrown ruin paving: dimmed bone stone, deliberate joint-cracks, gold
+    overgrowth tufting through the seams."""
+    a = flat(RUIN)
+    crack = sh(RUIN, 0.70)
+    moss = sh(GOLD, 0.85)
+    light = sh(RUIN, 1.10, 6)
+    for (x, y, kind) in RUIN_LAYOUTS[v % len(RUIN_LAYOUTS)]:
+        if kind == "j":      # L-shaped paving joint
+            put(a, [(x, y), (x + 1, y), (x + 2, y), (x + 2, y + 1), (x + 2, y + 2)], crack)
+        elif kind == "m":    # overgrowth tuft in a seam
+            put(a, [(x, y), (x + 1, y), (x, y - 1)], moss)
+        else:
+            put(a, [(x, y)], light)
+    return img(a)
+
+
+def ruinfloor_tile(role: str, v: int = 0) -> Image.Image:
+    """Ruin paving ⇄ GOLDGRASS transition: the old garden-roads dissolving into
+    the overgrowth (Sunvault Climb's context)."""
+    if role == "fill":
+        return ruinfloor_fill(v)
+    return overlay_tile(role, ruinfloor_fill(v), goldgrass_fill(v),
+                        sh(RUIN, 0.55), shade_rgb=sh(RUIN, 0.85))
+
+
+# ---- WEST: blight (Coldfog Marches' drained ground) -------------------------------
+def blight_fill(v: int = 0) -> Image.Image:
+    """The one drained palette: desaturated grey-green ground, limp tick marks,
+    pale ash dots — colour swallowed, structure kept."""
+    a = flat(BLIGHT)
+    dark = sh(BLIGHT, 0.82)
+    pale = sh(BLIGHT, 1.14, 6)
+    for (x, y, kind) in GRASS_LAYOUTS[v % len(GRASS_LAYOUTS)]:
+        if kind == "t":
+            put(a, [(x + dx, y + dy) for (dx, dy) in TICK], dark)
+        else:
+            put(a, [(x, y)], pale)
+    return img(a)
+
+
+def blighttuft_fill(v: int = 0) -> Image.Image:
+    """The Marches' muted encounter tile: limp grey reed-fans over a darker
+    blighted bed — hard-edged fill-only, deliberately drab."""
+    a = flat(sh(BLIGHT, 0.68))
+    mid = sh(BLIGHT, 1.18, 6)
+    light = sh(BLIGHT, 1.42, 14)
+    dark = sh(BLIGHT, 0.50)
+    for (cx, cy) in TG_LAYOUTS[v % len(TG_LAYOUTS)]:
+        _fan(a, cx, cy, mid, light, dark)
+    return img(a)
+
+
+# ---- WEST: murk (dead-still marsh shallows over blight) ----------------------------
+def murk_fill(v: int = 0) -> Image.Image:
+    """Still marsh water: near-flat, lightless — three dull gleams, no drift
+    animation (the Marches' water is dead by design)."""
+    a = flat(MURK)
+    gleam = sh(MURK, 1.24, 8)
+    for (x, y) in [(4, 4), (11, 8), (6, 13)] if v % 2 == 0 else [(9, 5), (3, 9), (12, 12)]:
+        put(a, [(x, y), (x + 1, y)], gleam)
+    return img(a)
+
+
+def murk_edge(role: str, t: int = 3, r: int = 3) -> Image.Image:
+    """Murk shoreline against BLIGHT ground: a broken grey scum line instead of
+    foam, a faintly paler shallow ring, darkened wet ground — no white, no light."""
+    m = overlay_mask(role, t, r)
+    a = np.asarray(murk_fill(0).convert("RGBA")).astype(np.int16).copy()
+    o = np.asarray(blight_fill(0).convert("RGBA")).astype(np.int16)
+    a[m] = o[m]
+    scum = _border_of(m)             # water px touching land
+    shallow = _border_of(m | scum)   # next ring in
+    wet = _border_of(~m)             # land px touching water
+    a[shallow & ~m & ~scum, :3] = sh(MURK, 1.32, 10)
+    sy, sx = np.where(scum)
+    for (y, x) in zip(sy, sx):
+        if (x + y) % 4 == 3:
+            a[y, x, :3] = sh(MURK, 1.10, 4)         # the line breaks, listless
+        else:
+            a[y, x, :3] = (118, 126, 120)            # grey-green scum, not foam
+    wm = wet & m
+    a[wm, :3] = (np.clip(a[wm, :3] * 0.82, 0, 255)).astype(np.int16)
+    return img(a)
+
+
+# ---- CENTRAL: basalt (the Umbral Spire) --------------------------------------------
+def basalt_fill(v: int = 0) -> Image.Image:
+    """Black basalt ground: near-dark stone, crack motifs, one faint starlit
+    glint per layout (the Skyweave overhead through the open shafts)."""
+    a = flat(BASALT)
+    dark = sh(BASALT, 0.72)
+    glint = (122, 126, 152)
+    for i, (x, y, kind) in enumerate(CAVEFLOOR_LAYOUTS[v % len(CAVEFLOOR_LAYOUTS)]):
+        if kind == "p":
+            put(a, [(x, y), (x + 2, y + 1), (x + 1, y + 2)], dark)
+        elif i == 1:
+            put(a, [(x, y)], glint)
+        else:
+            put(a, [(x, y)], sh(BASALT, 1.18, 8))
+    return img(a)
+
+
+def basaltwall_top(v: int = 0) -> Image.Image:
+    """The basalt wall-mass surface: a register below the walkable floor (the
+    cavewall convention) so the Spire's rooms read as carved lamp-light."""
+    a = flat(sh(BASALT, 0.62))
+    dark = sh(BASALT, 0.46)
+    lit = sh(BASALT, 0.96, 4)
+    for i, (x, y) in enumerate(CLIFF_TOP_LAYOUTS[v % len(CLIFF_TOP_LAYOUTS)]):
+        put(a, [(x, y), (x + 1, y), (x + 2, y + 1)], dark)
+        if i == 0:
+            put(a, [(x + 3, y - 1)], lit)
+    return img(a)
+
+
+def basaltwall_tile(role: str, v: int = 0) -> Image.Image:
+    """13-slice basalt wall (the cliff convention, indoors-dark): fill = wall
+    TOP, S edges = the lamp-caught FACE, N/W/E = rim transitions vs basalt floor."""
+    if role == "fill":
+        return basaltwall_top(v)
+    if role in ("edge_s", "corner_sw", "corner_se"):
+        return _wall_face_tile(role, basaltwall_top(v), basalt_fill(v),
+                               lip_rgb=sh(BASALT, 1.55, 18), face_rgb=sh(BASALT, 1.04, 8),
+                               streak_rgb=sh(BASALT, 0.72), bed_rgb=sh(BASALT, 0.80),
+                               contact_rgb=sh(BASALT, 0.30), side_rgb=sh(BASALT, 0.38), v=v)
+    return overlay_tile(role, basaltwall_top(v), basalt_fill(v),
+                        sh(BASALT, 0.34), shade_rgb=sh(BASALT, 0.48))
+
+
+# ---- CENTRAL: the void (the Penumbra's floorless dark) -------------------------------
+# Drawn family (not deco objects): it must tile area fills, gate traversal via
+# `requires_ability: starreach` (the water/tidecall pattern), and read at the
+# GBA register — a 16px family with a light-dies-at-the-rim falloff does all
+# three; props can't.
+VOID_WISPS = [(3, 4), (12, 7), (6, 11), (13, 14)]
+
+
+def void_fill(frame: int = 0) -> Image.Image:
+    """Pure dark + faint violet anti-light wisps; 3 frames drift them slowly
+    (the water animation grammar, inverted into the Penumbra's register)."""
+    a = flat(VOIDC)
+    wisp = (44, 36, 66)
+    faint = (30, 24, 46)
+    for i, (x, y) in enumerate(VOID_WISPS):
+        ph = (i + frame) % 3
+        if ph == 0:
+            put(a, [(x, y), (x + 1, y)], wisp)
+        elif ph == 1:
+            put(a, [(x + 1, y), (x + 2, y)], faint)
+    return img(a)
+
+
+def void_tile(role: str, t: int = 3, r: int = 3) -> Image.Image:
+    """Void edge against BASALT: no lit border — the basalt rim DIMS, then two
+    darkening rings fall away into nothing (light dies at the edge)."""
+    if role == "fill":
+        return void_fill(0)
+    m = overlay_mask(role, t, r)
+    a = np.asarray(void_fill(0).convert("RGBA")).astype(np.int16).copy()
+    o = np.asarray(basalt_fill(0).convert("RGBA")).astype(np.int16)
+    a[m] = o[m]
+    b1 = _border_of(m)              # void px touching basalt
+    b2 = _border_of(m | b1)         # next ring into the dark
+    a[b1, :3] = (26, 23, 36)
+    a[b2 & ~m & ~b1, :3] = (20, 17, 29)
+    rim = _border_of(~m) & m        # basalt px touching void: the dark drinks it
+    a[rim, :3] = (np.clip(a[rim, :3] * 0.74, 0, 255)).astype(np.int16)
+    return img(a)
+
+
+# ---- DAWNSTEAD: the one daylit palette -----------------------------------------------
+def dawngrass_fill(v: int = 0) -> Image.Image:
+    """True-daylight grass: warm green base, WARM shadows (no blue cast), bright
+    sun ticks — the visual payoff of the whole journey."""
+    a = flat(DAWN)
+    dark = (74, 118, 52)         # warm shadow, hand-picked (not a blue-shaded sh())
+    light = (152, 206, 106)
+    for (x, y, kind) in GRASS_LAYOUTS[v % len(GRASS_LAYOUTS)]:
+        if kind == "t":
+            put(a, [(x + dx, y + dy) for (dx, dy) in TICK], dark)
+        else:
+            put(a, [(x, y)], light)
+    return img(a)
+
+
+def dawnpath_fill(v: int = 0) -> Image.Image:
+    """Sunlit dirt lane: warm tan base + light-struck specks."""
+    a = flat(DAWNPATH)
+    dark = (126, 100, 64)        # warm shadow
+    light = (186, 156, 108)
+    for i, (x, y) in enumerate(PATH_LAYOUTS[v % len(PATH_LAYOUTS)]):
+        put(a, [(x, y), (x + 1, y)], dark if i % 2 == 0 else light)
+    return img(a)
+
+
+def dawnpath_tile(role: str, v: int = 0) -> Image.Image:
+    """Dawn lane ⇄ DAWNGRASS transition — the path family re-grounded for the
+    one daylit map (the dusk `path` family would ring it with dusk green)."""
+    if role == "fill":
+        return dawnpath_fill(v)
+    return overlay_tile(role, dawnpath_fill(v), dawngrass_fill(v),
+                        (108, 86, 54), shade_rgb=(140, 112, 72))
+
+
+def dawntuft_fill(v: int = 0) -> Image.Image:
+    """The sunlit verge encounter tile (the day-form table lives here): bright
+    green-gold fans over a warm dark bed — hard-edged fill-only."""
+    a = flat((70, 112, 50))
+    mid = (118, 178, 84)
+    light = (178, 226, 120)
+    dark = (52, 86, 40)
+    for (cx, cy) in TG_LAYOUTS[v % len(TG_LAYOUTS)]:
+        _fan(a, cx, cy, mid, light, dark)
+    return img(a)
+
+
 # ---- preview ------------------------------------------------------------------
 def _preview(out_path: str) -> None:
     rows = [
@@ -838,6 +1315,26 @@ def _preview(out_path: str) -> None:
         [glowmoss_fill(i) for i in range(4)],
         [cavewall_tile(r) for r in ("edge_n", "fill", "edge_s", "corner_sw")],
         [glowshroom(0), glowshroom(1), greymoss(0), null_lantern()],
+        # TILEFORGE 2026-06 families
+        [snow_fill(i) for i in range(4)],
+        [snowpatch_tile(r) for r in ("corner_nw", "edge_n", "fill", "inner_se")],
+        [snowtrail_tile(r) for r in ("edge_w", "fill", "strip_v")] + [snowlane_fill(1)],
+        [ice_tile(r) for r in ("corner_nw", "edge_n", "fill", "inner_se")],
+        [glacierwall_tile(r) for r in ("edge_n", "fill", "edge_s", "corner_sw")],
+        [scree_fill(i) for i in range(3)] + [scree_ledge_s(0)],
+        [frosttuft_fill(i) for i in range(3)] + [snow_ledge_s(0)],
+        [goldgrass_fill(i) for i in range(4)],
+        [goldtuft_fill(i) for i in range(3)] + [goldgrass_fill(0)],
+        [ruinfloor_tile(r) for r in ("corner_nw", "edge_n", "fill", "inner_se")],
+        [blight_fill(i) for i in range(4)],
+        [blighttuft_fill(i) for i in range(3)] + [murk_fill(0)],
+        [murk_edge(r) for r in ("corner_nw", "edge_n", "edge_s")] + [murk_fill(1)],
+        [basalt_fill(i) for i in range(3)] + [void_fill(0)],
+        [basaltwall_tile(r) for r in ("edge_n", "fill", "edge_s", "corner_sw")],
+        [void_tile(r) for r in ("corner_nw", "edge_n", "fill", "strip_v")],
+        [dawngrass_fill(i) for i in range(4)],
+        [dawnpath_tile(r) for r in ("corner_nw", "edge_n", "fill", "inner_se")],
+        [dawntuft_fill(i) for i in range(3)] + [dawngrass_fill(0)],
     ]
     S = 6
     W = max(len(r) for r in rows)

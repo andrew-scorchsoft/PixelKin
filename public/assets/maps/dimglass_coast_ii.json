@@ -14,7 +14,7 @@
       "tile_height": 16,
       "first_gid": 1,
       "columns": 12,
-      "tile_count": 196
+      "tile_count": 386
     }
   ],
   "layers": [
@@ -1949,7 +1949,7 @@
         "tx": 4,
         "ty": 8
       },
-      "facing": "left",
+      "facing": "right",
       "requires_ability": "glimmerstep",
       "transition": "door",
       "blocked_ref": "door.locked_glimmerstep"

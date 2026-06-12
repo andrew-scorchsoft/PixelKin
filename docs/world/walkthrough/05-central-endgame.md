@@ -123,7 +123,10 @@ none · **rec. level ~52** (transit; no battles in the hub itself).
   beating him proves nothing. You can only out-remember him.* Fenn names the stakes one last time
   (the Great Null aimed at the Keystar; if the Keystar is snuffed, no constellation can ever
   rekindle) and hands over a final key item / the best Lamp for the Keylumen set-piece. Warm,
-  steady, a little afraid — Fenn has lost to this grief once already.
+  steady, a little afraid — Fenn has lost to this grief once already. *(As built: the counsel is
+  the optional waystone beat `script.fenn_crossroads_counsel`; the **Starlamp** itself travels via
+  **Wren's un-missable join band** — Fenn "sent it up with a friend of yours" — so the Keylumen's
+  asking-gift can never be walked past even by a player who skips the talk.)*
 - **A5 — Wren returns.** Not the doubting Wren of Pale Vault. Wren has walked the argument all the
   way round and come back: *the Hollowing aren't wrong that the cycle hurts — they're wrong that
   the answer is to stop it.* Wren chooses to climb with you. This is the **A5→A6 transition** — a
@@ -188,7 +191,12 @@ for the Waykeeper (west; the Round comes home). Tag every leg `[wakes with spoke
   maps: the four festival towns + `vesper_crossroads` · `[MISSABLE]`. *Counter note
   (spine §8): wants a "4 of 4" check — until quest counters exist, use the boolean chain:
   the innkeeper acknowledges tokens in fixed quadrant order (south→east→north→west), each
-  token's giver appearing once the previous token's flag is set.*
+  token's giver appearing once the previous token's flag is set. (As built, the equivalent
+  robust encoding: each giver is the quadrant's festival NPC — the Tide-blessing singer,
+  a Lamp-down vigil miner, the Aurora-watch watcher, a Star-vigil watcher — visible with
+  their own gleam as before, who HANDS OVER only once the previous token's flag is held
+  (per-step `if_flag` chain); until then they stay plain festival colour. Same fixed order,
+  no early-appearance edge in unvisited towns.)*
 - **C3 "The Long Round"** — giver: the **Waykeeper**, once R1–R5 are all done (boolean
   chain: each leg's giver only appears when the previous leg's flag is set, so R5 done ⇒
   all done — no counter needed) · steps: one last walk of the plaza lamps with him ·

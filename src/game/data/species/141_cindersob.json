@@ -72,11 +72,25 @@
   },
   "encounters": [
     {
-      "area": "coldfog_marches",
+      "area": "hushfrost_pass_ii",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 40,
+      "max": 42
+    },
+    {
+      "area": "coldfog_marches_i",
       "terrain": "tall_grass",
       "rarity": "uncommon",
-      "min": 49,
-      "max": 52
+      "min": 46,
+      "max": 48
+    },
+    {
+      "area": "coldfog_marches_ii",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 48,
+      "max": 50
     }
   ],
   "scripted": false,

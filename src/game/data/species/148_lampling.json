@@ -59,16 +59,8 @@
     "weight_kg": 3.8,
     "habitat": "central"
   },
-  "encounters": [
-    {
-      "area": "umbral_spire",
-      "terrain": "cave",
-      "rarity": "rare",
-      "min": 60,
-      "max": 62
-    }
-  ],
-  "scripted": false,
+  "encounters": [],
+  "scripted": true,
   "art": {
     "silhouette": "Squat, teardrop-shaped body of burnished brass, a round glass-chimney belly filled with warm amber glow; two small mitten-like hands grip the base; tiny curled feet; a brass hood sits slightly askew like a jaunty cap; warm cream light pools at its base; instantly iconic at 32px \u2014 fat oval + hat silhouette.",
     "palette": "Squat, teardrop-shaped body of burnished brass, a round glass-chimney belly filled with warm amber glow; two small mitten-like hands grip the base; tiny curled feet; a brass hood sits slightly askew like a jaunty cap; warm cream light pools at its base; instantly iconic at 32px \u2014 fat oval + hat silhouette.",

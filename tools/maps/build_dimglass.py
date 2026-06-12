@@ -219,8 +219,12 @@ m = {
         # The cavern mouth's LOWER tile: (2,10) had no standable neighbour (the
         # cliff edging seals that row — audit_flow caught it), so the door sits
         # at (2,11), interacted from the open grass at (3,11) facing left.
+        # Door-convention warp into the Tideglass Cavern (the Hours' launch-era
+        # tease, BUILT): step_on + blocked_ref. facing is 'right' — the cavern
+        # interior opens EAST of the pinned (5,8) landing, so arrival faces into
+        # the cave (the Hours pass corrected this from 'left').
         {"id": "to_tideglass", "at": {"tx": 2, "ty": 11}, "trigger": "step_on",
-         "to_map": "tideglass_cavern", "to": {"tx": 5, "ty": 8}, "facing": "left",
+         "to_map": "tideglass_cavern", "to": {"tx": 5, "ty": 8}, "facing": "right",
          "requires_ability": "glimmerstep", "transition": "door",
          "blocked_ref": "door.locked_glimmerstep"},
     ],

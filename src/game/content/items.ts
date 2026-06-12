@@ -168,6 +168,197 @@ export const ITEMS: ItemRegistry = {
     catch_bonus: 2.5,
   },
 
+  // --- The North (walkthrough/03-north) --------------------------------------
+  // The Kite-Rising Winch chain (Galehigh, spine §5 shape #5): the kite-maker's
+  // three storm-scattered pieces, found in order across the lower terraces.
+  kite_spar: {
+    id: 'kite_spar',
+    name: 'Kite Spar',
+    desc: 'A wind-tempered spar of mountain ash, light as a held breath. The bones of the kite-maker\'s best kite.',
+    category: 'key',
+  },
+  kite_sail: {
+    id: 'kite_sail',
+    name: 'Kite Sail',
+    desc: 'Oiled festival silk, lantern-orange, hemmed against the gusts. It tugs at your hands like something impatient to be sky again.',
+    category: 'key',
+  },
+  kite_tail: {
+    id: 'kite_tail',
+    name: 'Kite Tail',
+    desc: 'A long plaited tail strung with tiny wick-lamps. At the Kite-rising, every tail is lit — so the stars have something to answer.',
+    category: 'key',
+  },
+  // R4 "A Kite for the Waystone Kid" — the Waykeeper's commissioned kite.
+  round_kite: {
+    id: 'round_kite',
+    name: 'Waystone Kite',
+    desc: 'A small, sturdy kite in Lanternway colours, commissioned by the Waykeeper for the kid at the Crossroads. Built to survive an owner of eight.',
+    category: 'key',
+  },
+  // N1 "The Crag-tender's Kettle" — the herb and the flask it earns.
+  ledge_herb: {
+    id: 'ledge_herb',
+    name: 'Ledge-herb',
+    desc: 'A wind-burnt sprig from Galehigh\'s highest terrace, sharp and warm to the nose. The crag-tender swears by it for her kettle.',
+    category: 'key',
+  },
+  warm_flask: {
+    id: 'warm_flask',
+    name: 'Warm Flask',
+    desc: 'The crag-tender\'s own brew in a felt-wrapped flask, warm through the worst of the chill. Restores a good deal of health.',
+    category: 'medicine',
+    heal: 80,
+  },
+  // The Lamp-Line (Pale Vault, spine §5 shape #6): the doused hearth's kindling
+  // and the oil the seven brackets burn.
+  stormwood: {
+    id: 'stormwood',
+    name: 'Storm-kindling',
+    desc: 'An armful of storm-felled wood off the Windward heights, dry under the snow-crust and eager to catch. A doused hearth\'s best friend.',
+    category: 'key',
+  },
+  aurora_oil: {
+    id: 'aurora_oil',
+    name: 'Aurora-oil',
+    desc: 'A stoppered jar of the tallow-keeper\'s pale rendering. It holds a faint moving light, like the sky above the glacier got in somehow.',
+    category: 'key',
+  },
+  // N3 "Wren's Ribbon" — Mira's quiet errand after the wobble. No reward; the
+  // payoff is one extra Wren line at Nightreach (the West writer's beat).
+  wren_ribbon: {
+    id: 'wren_ribbon',
+    name: "Wren's Ribbon",
+    desc: 'A kite-ribbon in Wren\'s colours, dropped at the Kite-rising. It still smells faintly of festival smoke.',
+    category: 'key',
+  },
+  // N2 "The Aurora Sketcher" — the painter's thanks: an aurora-dipped charm
+  // (a conditional charge, the Drift Charm pattern: blazes toward Frost-lit
+  // hearts, burns plain toward everything else).
+  aurora_charm: {
+    id: 'aurora_charm',
+    name: 'Aurora Charm',
+    desc: 'A lamp-charm dipped in aurora-oil under a watching sky. Raised toward a Frost-hearted kin its throw burns brilliantly; toward any other it is only a lamp.',
+    category: 'charge',
+    catch_bonus: 2.5,
+    condition: { kind: 'defender_type', types: ['Frost'] },
+  },
+
+  // --- The West (walkthrough/04-west) -----------------------------------------
+  // X1 "The Caretaker's Lamp" (Hushfrost II): her thanks once the aurora-oil
+  // fills her lamp. NOTE: the id is `caretaker_lamp`, never `bright_lamp` —
+  // SaveCodec migrates that legacy id to glow_charge (the rename trap).
+  caretaker_lamp: {
+    id: 'caretaker_lamp',
+    name: 'Bright Lamp',
+    desc: "The caretaker's own lamp-cell, filled with aurora-oil and given away warm. One throw burns steady and sure — the way a lamp burns when somebody sits with it.",
+    category: 'charge',
+    catch_bonus: 2.5,
+  },
+  // The Lit Stage chain (Sunken Solarium, spine §5 shape #7): three phials of
+  // stored daylight fetched up out of the flooded halls, one brazier at a time.
+  sunmote_phial: {
+    id: 'sunmote_phial',
+    name: 'Sunmote Phial',
+    desc: 'A stoppered phial of stored daylight, fetched up from the drowned halls. It is warm through the glass, like a hand held forty years.',
+    category: 'key',
+  },
+  // X2 "The Troupe's Sun-mask": the gilt mask dived out of the flooded side room.
+  sun_mask: {
+    id: 'sun_mask',
+    name: 'Gilt Sun-mask',
+    desc: "The troupe's gilt sun-mask, silt-scoured and smiling. Forty years of 'The Sun Returns' have worn the inside soft.",
+    category: 'key',
+  },
+  // X2's reward — a conditional charge (the Aurora Charm pattern, gold edition):
+  // blazes toward Solar-hearted kin, burns plain toward everything else.
+  sun_charm: {
+    id: 'sun_charm',
+    name: 'Sun Charm',
+    desc: 'A lamp-charm pressed from the sun-mask\'s gilt. Raised toward a Solar-hearted kin its throw burns like a remembered noon; toward any other it is only a lamp.',
+    category: 'charge',
+    catch_bonus: 2.5,
+    condition: { kind: 'defender_type', types: ['Solar'] },
+  },
+  // The Vigil of the Seven (Nightreach): the old watcher's striker, lost on the
+  // Sunvault road — lamp 1 of the Astral Walk wants it.
+  watch_striker: {
+    id: 'watch_striker',
+    name: "Watcher's Striker",
+    desc: 'An old flint striker on a worn cord, lost on the Sunvault road. Seven watch-lamps on the Astral Walk have waited years for its spark.',
+    category: 'key',
+  },
+  // R5 "A Chart for the Waykeeper" — the Round's last leg: the junior watcher's
+  // fresh star-chart, carried home to the Waystone.
+  round_chart: {
+    id: 'round_chart',
+    name: 'Fresh Star-chart',
+    desc: 'A new-pressed chart of the relit sky, rolled and sealed for the Waykeeper at the Vesper Crossroads. The ink still smells of lamp-smoke.',
+    category: 'key',
+  },
+
+  // --- The Three Hours (walkthrough/07-the-three) ------------------------------
+  // H2: Ysolde's snuffer — the key to the Hourfold's warp gate, and the one
+  // tool in the game made for putting a light OUT, on purpose.
+  vigil_snuffer: {
+    id: 'vigil_snuffer',
+    name: 'Vigil Snuffer',
+    desc: 'A long-handled cap of cold iron from the Pale Vault undercroft, worn smooth by careful hands. For the half of tending that nobody sings about.',
+    category: 'key',
+  },
+  // H3: Lucan's hoarded morning — poured into the Solarium's dry sun-basin to
+  // wake the Unrisen Stair's first vine.
+  first_light_phial: {
+    id: 'first_light_phial',
+    name: 'First-Light Phial',
+    desc: 'One cupful of daylight, drawn the morning before the Long Dusk fell and kept forty years against a day worth spending it on. It beats faintly through the glass.',
+    category: 'key',
+  },
+
+  // --- The Central endgame (walkthrough/05-central-endgame) -------------------
+  // C2 "The Inn's Empty Lamps" — one lamp-token from each quadrant's festival,
+  // carried home to the crossroads inn. Key items; the chain is the quest.
+  lamp_token_south: {
+    id: 'lamp_token_south',
+    name: 'Lamp-token (South)',
+    desc: "A small wax token stamped at the Tide-blessing: a bell over water. The quay's festival, pressed small enough to carry home.",
+    category: 'key',
+  },
+  lamp_token_east: {
+    id: 'lamp_token_east',
+    name: 'Lamp-token (East)',
+    desc: 'A small wax token stamped at the Lamp-down vigil: a lamp dimmed, then relit. The mountain keeps its dark, and keeps its light.',
+    category: 'key',
+  },
+  lamp_token_north: {
+    id: 'lamp_token_north',
+    name: 'Lamp-token (North)',
+    desc: 'A small wax token stamped at the Aurora-watch: one held flame under a moving sky. Pressed in silence, given warm.',
+    category: 'key',
+  },
+  lamp_token_west: {
+    id: 'lamp_token_west',
+    name: 'Lamp-token (West)',
+    desc: 'A small wax token stamped at the Star-vigil: a watcher\'s lamp, lit the moment its star came home. The last of the four.',
+    category: 'key',
+  },
+  // C2's reward — the best charge in the game short of the Starlamp itself:
+  // four festivals' wax, one wick. Quest-only, never sold.
+  radiant_lamp: {
+    id: 'radiant_lamp',
+    name: 'Radiant Lamp',
+    desc: 'A charge cell pressed from four festivals\' token-wax around one inn-trimmed wick. One throw burns with a whole year\'s belonging.',
+    category: 'charge',
+    catch_bonus: 3.5,
+  },
+  // C3 "The Long Round" — the Waykeeper's keepsake for walking every leg of it.
+  way_lamp: {
+    id: 'way_lamp',
+    name: 'Way-lamp',
+    desc: "The Waykeeper's own hand-lamp, retired the year the Round was kept again. A lamp that has walked every road burns a little farther.",
+    category: 'key',
+  },
+
   // --- Valuables (found, never bought; exist to be sold for wicks) ----------
   wax_cake: {
     id: 'wax_cake',
@@ -187,6 +378,21 @@ export const ITEMS: ItemRegistry = {
     id: 'starglass_shard',
     name: 'Starglass Shard',
     desc: 'A sliver of sky-fallen glass that remembers a constellation. Collectors pay handsomely.',
+    category: 'valuable',
+    sell: 1500,
+  },
+  // Coldfog finds — what the drained fen still holds (West outer detour).
+  embergloss: {
+    id: 'embergloss',
+    name: 'Embergloss',
+    desc: 'A lacquered knot of old hearth-resin from a snuffed wayshrine, still faintly warm at the heart. Chandlers prize it for the finest wicks.',
+    category: 'valuable',
+    sell: 600,
+  },
+  murk_pearl: {
+    id: 'murk_pearl',
+    name: 'Murk Pearl',
+    desc: 'A pearl grown in water that stopped saying anything. Lightless, flawless, and heavier than it should be. Collectors pay dearly — and keep it in a drawer.',
     category: 'valuable',
     sell: 1500,
   },
@@ -269,6 +475,61 @@ export const ITEMS: ItemRegistry = {
     category: 'chart',
     teach_move: 'lifedrain',
     price: 1200,
+  },
+  // The Galehigh kite-stall's slate (10-economy.md §5: the Storm pair + the
+  // late Heavy + a Plain utility — the North's tier; Pale Vault keeps no
+  // counter, so the kite-stall carries the whole cold leg's stock).
+  chart_thunder_kick: {
+    id: 'chart_thunder_kick',
+    name: 'Star-chart: Thunder Kick',
+    desc: 'A pressed chart of the Storm\'s striding-figure. Teaches a willing kin THUNDER KICK (Storm). One study burns it out.',
+    category: 'chart',
+    teach_move: 'thunder_kick',
+    price: 1400,
+  },
+  chart_volt_arc: {
+    id: 'chart_volt_arc',
+    name: 'Star-chart: Volt Arc',
+    desc: 'A pressed chart of the Storm\'s leaping-figure. Teaches a willing kin VOLT ARC (Storm). One study burns it out.',
+    category: 'chart',
+    teach_move: 'volt_arc',
+    price: 1400,
+  },
+  chart_gale_slam: {
+    id: 'chart_gale_slam',
+    name: 'Star-chart: Gale Slam',
+    desc: 'A pressed chart of the Storm\'s great wheel-figure, heavy with held weather. Teaches a willing kin GALE SLAM (Storm). One study burns it out.',
+    category: 'chart',
+    teach_move: 'gale_slam',
+    price: 2400,
+  },
+  chart_swift_step: {
+    id: 'chart_swift_step',
+    name: 'Star-chart: Swift Step',
+    desc: 'A plain-figure chart any kin can read, quick as a kite-string paying out. Teaches SWIFT STEP (Plain). One study burns it out.',
+    category: 'chart',
+    teach_move: 'swift_step',
+    price: 1400,
+  },
+  // Thunderroost's prize — a nuke chart, find-first per 10-economy §6 (the
+  // storm-birds' aerie is the only place this figure was ever pressed).
+  chart_tempest: {
+    id: 'chart_tempest',
+    name: 'Star-chart: Tempest',
+    desc: 'A chart of the Storm\'s whole turning sky, pressed at the aerie itself. Teaches a willing kin TEMPEST (Storm). One study burns it out.',
+    category: 'chart',
+    teach_move: 'tempest',
+    price: 4000,
+  },
+  // The Helia Vault's reliquary prize — find-first per 10-economy §6 (the
+  // keepers sealed this figure away with the rest of the stored daylight).
+  chart_sunburst_nova: {
+    id: 'chart_sunburst_nova',
+    name: 'Star-chart: Sunburst Nova',
+    desc: 'A chart of the sun\'s own remembered blaze, sealed dry in the Helia Vault. Teaches a willing kin SUNBURST NOVA (Solar). One study burns it out.',
+    category: 'chart',
+    teach_move: 'sunburst_nova',
+    price: 4000,
   },
 };
 

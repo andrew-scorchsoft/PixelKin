@@ -67,7 +67,15 @@
     "weight_kg": 280,
     "habitat": "west"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "helia_vault",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 49,
+      "max": 50
+    }
+  ],
   "scripted": true,
   "art": {
     "silhouette": "A great disc-bodied ray with an enormous central solar-eye at the front face, surrounded by radiating fin-rays like a living sun diagram. The body is deep gold with white-hot veins. The fin-rays are translucent amber, trailing fading light halos at their tips. The eye is an intense white-core disc. Even at idle, the battle background behind it yellows. The silhouette at 64px is a sun \u2014 because it is one.",

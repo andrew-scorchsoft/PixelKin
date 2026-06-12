@@ -151,11 +151,15 @@ go digging on every task.
 - **Stats — the genre's six:** hp/atk/def/spa/spd/spe. Power is costed against a
   shared budget (EPS) and **empirically balanced** by a Monte Carlo sim — all
   types land 46.7–53.3% win-rate. (`docs/mechanics/02-stats-and-balance.md`)
-- **Roster:** **159 kin** — the **151** curated from ~463 concepts via a panel-scored
+- **Roster:** **162 kin** — the **151** curated from ~463 concepts via a panel-scored
   pipeline (the ~312 cuts are archived as an idea bank), **plus appended additions**
   (later ids never renumber the original 1–151): the third starter line (#152–#153),
-  the three starter middle stages (#154–#156), and the apex kindlings #157 **Pharolux**
-  (Glostern line) and #158 **Corolion** → #159 **Dawnregent**. Moves: **≤4 per kin**
+  the three starter middle stages (#154–#156), the apex kindlings #157 **Pharolux**
+  (Glostern line) and #158 **Corolion** → #159 **Dawnregent**, and the **Three Hours**
+  legendary trio #160 **Gloamber** / #161 **Noctilune** / #162 **Erstmorn** (optional
+  set-piece catches with failure cooldowns; sites + spec in
+  `docs/world/walkthrough/07-the-three.md` — sites, unlock chains, scripts and the
+  `battle-hours`/`sting-hour` audio are BUILT, 2026-06). Moves: **≤4 per kin**
   from a **125-move** shared pool (wave 2: full phys/spec ladders per type + 13 signature
   moves) + 28 abilities. (`docs/mechanics/dex.md` for the readable dex)
 - **Starters:** the founding trio is **complete** and every starter is a **three-stage
@@ -206,7 +210,11 @@ go digging on every task.
   (gates/chip/stat hooks — exact constants atop `BattleEngine.ts`, mirrored in
   `03-moves.md`), as do drain/recoil/flinch/heal/cure/screens/caltrops/pivot/selfDoze/
   highCrit. **Kindling is live**: level-trigger checks in `gainExp` → `ui/KindlePrompt`
-  (declining re-offers next level); Hearthkit's bond trigger awaits a bond system.
+  (declining re-offers next level). **Bond is live too (2026-06):** +2 per standing
+  participant on a battle win (`BattleScene.warmParticipantsBond`), +1 per medicine heal
+  (`ItemsMenu`), capped 0–255; bond-trigger kindlings (Hearthkit min 160) offer via the
+  same `KindlePrompt`, declining re-offers on the next bond gain. Bond never touches
+  battle maths.
   `TrainerDef.ai:'smart'` = warden/boss AI tier. Re-run `simulate.mjs` after status/move
   changes — it now exit-codes (one waived utility-kit outlier list lives in the script).
 - **Maps are our own JSON** (not Tiled), snake_case keyed, parsed into
@@ -221,6 +229,7 @@ go digging on every task.
 | Story, cast, antagonist, lore | `docs/world/story-bible.md` |
 | World map, areas, routes, gating | `docs/world/atlas.md` |
 | Canonical user-journey / walkthrough | `docs/world/walkthrough/` (spine + per-region) |
+| **Build status + remaining-work roadmap (START HERE to resume)** | `docs/world/walkthrough/PROGRESS.md` (packages R2–R5: Dawnstead, Starfall Vigils, day-forms, release ladder) |
 | Map & level-design rules (binding) | `docs/world/level-design.md` |
 | Retro map/route-design research (the §2b/§3a evidence base) | `docs/world/retro-map-design-research.md` |
 | Interior design rules (binding, SNES-style) | `docs/world/interiors.md` |
@@ -348,6 +357,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   invariant if you touch either.
 - **Re-run the validators after roster/move edits** (`node tools/balance/validate.mjs`,
   then `simulate.mjs`); the roster's selling point is that it's *empirically* balanced.
+- **Built maps' encounter areas are `CURATED_AREAS` in `build_species.py`** (the North's
+  7 maps so far): the in-map zone tables are the truth, mirrored slug-by-slug in
+  `EXTRA_ENCOUNTERS`; generated region-default rows naming a curated area are dropped on
+  rebuild. When a region's maps get built (West/Central next), reconcile the same way —
+  mirror the final tables into `EXTRA_ENCOUNTERS` AND add the map ids to `CURATED_AREAS`.
 - **The economy's numbers live in THREE mirrored places — keep them in sync.** Prices/payouts:
   `content/items.ts`+`trainers.ts`+`economy.ts` ↔ `PRICES`/`PAYOUT_RATE`/`BUILT_PAYOUTS` in
   `tools/balance/progression.mjs` ↔ the tables in `docs/mechanics/10-economy.md`. XP formulas:
@@ -370,6 +384,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `dimglass-coast-a`) already follow this; full recipe in the generate-midi score
   bible §3.3. Bare 4-voice `gbc` is still right for the sparsest cues (deep caves,
   the Hollowing's drained zones).
+- **Crown/hub flags DERIVE — never hand-set.** `flag:crown_*` (from each quadrant's two
+  `gleam:*`) and `flag:hub_unlocked` (from all four crowns) are computed inside
+  `FlagStore.deriveCrowns()` on every flag write and on load (old saves self-heal). Content
+  must never list them in `sets_flags`/`reward_flags` (the W7 panel caught the game being
+  uncompletable: the docs promised engine derivation that didn't exist, and South's hand-set
+  `'crown_south'` was the wrong string — consumers want the `flag:` prefix).
 - **Use the canon vocabulary** (kin, Lumenary, Gleam, Lantern Gift, kindling,
   vesperlamp) in code, data, dialogue, and commits — not generic "monster/gym/badge,"
   and never another franchise's terms (even in prompts and commit messages).
@@ -440,7 +460,7 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   separate creature path — `systems/sprites/CreatureSprites.ts` — is now wired into
   `StarterSelect`, `Battler` (battle), `PartyMenu`, and `AttractScene`: each lazy-loads a packed
   sprite keyed `kin_<id>_<view>` and falls back to the type-tinted placeholder **only** when a kin
-  isn't packed. **All 159 kin are packed** under `public/assets/sprites/creatures/NNN_slug/` —
+  isn't packed. **All 162 kin are packed** under `public/assets/sprites/creatures/NNN_slug/` —
   5 views each (battle_front/back, icon, overworld, portrait) listed in `creatures.manifest.json`.
   Regenerate any kin's full view set from its species `art` block with
   `./venv/bin/python tools/assets/gen_creature.py <id>` (supports `--provider openai` when Google
@@ -521,6 +541,14 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   stripped, so they can't be re-expanded) run **`tools/maps/apply_tree_nubs.py`**
   (reclassifies the baked tree grid, swaps in nub gids only where a cell is now a
   nub — idempotent, no churn).
+- **The shared overworld set is FROZEN at 386 tiles (TILEFORGE 2026-06).** Every remaining
+  region's terrain family is appended (North snow/snowpatch/snowtrail/ice/glacierwall/scree/
+  frosttuft, West goldgrass/goldtuft/ruinfloor/blight/blighttuft/murk/sunpool, Central
+  basalt/basaltwall/void [Starreach-gated, the water/tidecall pattern], Dawnstead's daylit
+  dawngrass/dawnpath/dawntuft — names in `vesper_overworld.index.json`). Don't append more;
+  new needs = accent sets or objects. If the set ever DOES grow, run
+  **`tools/maps/repin_tile_count.py`** (the general tile_count re-pin, generalised from
+  apply_tree_nubs). Set builds are now deterministic (crc32 seeds, not salted `hash()`).
 - **New area? Use the `build-map` skill** — compose with `tools/maps/patterns.py` stamps on
   mapkit (`build_saltreach_fen_i.py` is the pattern showcase: paint-derived encounter zones,
   trainer-beat/cache/sign stamps, a LEDGED terrace bank). Engine supports one-way **ledges**
@@ -618,6 +646,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `roomkit.aisle_runner` (stacked drawn `interior_rug_runner` objects), NEVER `runner()` —
   the DOORMAT tile repeated vertically reads as a ladder (hard black cell borders), the
   "dodgy path" look. All three Lumenaries use `aisle_runner`.**
+- **Re-running `interiorforge.py` CLOBBERS the image-gen hero masters.** It rewrites every
+  PNG in `assets/tilesets/interior/objects/` — including pieces `gen_interior_object.py`
+  re-rendered into the same paths. After adding a new piece, `git checkout` the masters you
+  didn't mean to regenerate BEFORE `pack_objects.py` (N7 got bitten). Lumenary identity:
+  the halls are re-skinned per warden (wall-HUNG `kite_hung`/`banner_*` pieces +
+  region outdoor objects like `pale_vault_brazier` — interiors.md mount-class table).
 - **A free-standing cavewall/cliff mass mid-floor reads as a dodgy black slab** (level-design
   §11 r8). Cave-town/dungeon outcrops are boulder + `cinderhead_ore_cart`/`cinderhead_crystal_cluster`
   CLUSTERS (deco + objects), never a carved wall island. Cinderhead has its own object set
@@ -725,12 +759,24 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   quiet), so author scripts before the art lands. The **South first hour is the built worked
   example**; the binding standard is `docs/world/cinematics.md` (and §0.4 of the walkthrough
   spine). When staging a later beat, copy a South script.
+- **Cutscene steps take an optional `if_flag` guard** (content/types.ts + CutsceneRunner,
+  2026-06): the step plays only while that flag is held, silently skipped otherwise — the
+  data conditional for OPTIONAL colour (Wren's ribbon payoff at Nightreach lamp 6 is the
+  worked example). Never guard progression steps (a skipped setFlag/battle/giveItem is a bug).
 - **The Gleam cadence is minor→major.** A relit constellation is the emotional payoff: hold a
   `silence`, bloom a warm/cool `tint` + the lamp sfx, fire `gleam`, then crossfade to the
   festival swell (`gleam-emotional`). A Gleam is *belonging*, not a trophy — don't hand it over
   flat. "A light fails" beats (the dusk omen, drained sites) get the opposite: `letterbox` +
   `silence` + the `world-star-gutter` sting. Seed the Hollowing as quiet dread early (a distant
   figure, a pinned letter, a grave aside) — never cartoonish.
+- **THE ENDING IS WIRED (C3, 2026-06): the game completes cold open → dawn.** The summit chain
+  (`umbral_spire_summit`): `script.great_null` → `script.warden_cor_final` (Còr is OUT-REMEMBERED,
+  never "defeated") → `script.keystar_relight` (Keylumen #149 via `legendaryBattle`, cooldown 0 —
+  the climax never strands; Fenn's Starlamp rides Wren's un-missable crossroads join band) →
+  `script.dawn_breaks` (sets `flag:dawn` ITSELF, then the **`cinematic` op** — the runner hook
+  persists FIRST, stops world music, and hands to CinematicScene; nothing after the op plays, so
+  it must be a script's LAST step). `ENDING_CREDITS` (dawnbreak panels + credits) routes → Title;
+  Continue resumes at the summit with `flag:dawn` held — the post-game's door.
 - **A cutscene-launched battle must NOT clear `modal` itself.** `WorldScene.startBattle` runs for
   both wild encounters (fired from a free step, `modal` false) AND trainer battles (one step
   INSIDE a cutscene, `modal` already true). It now RESTORES the prior `modal` on completion, not a

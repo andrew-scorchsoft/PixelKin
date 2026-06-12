@@ -82,6 +82,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'dimglass_coast_ii', region: 'south' }, // route: tidal flats
     { map_id: 'gullcry_rock', region: 'south', optional: true, reward: 'rare sea-bird kin + a Tide charm' },
     { map_id: 'tideglass_cavern', region: 'south', optional: true, reward: 'landmark micro-dungeon; a signature rare water kin' },
+    { map_id: 'tideglass_gallery', region: 'south', optional: true, reward: 'B1F: the Dusk Hour (Gloamber #160, the legendaryBattle set-piece)' },
     { map_id: 'pearlmoor_quay', region: 'south' },
     { map_id: 'pearlmoor_breakwater', region: 'south' }, // the Causeway Bell's foot causeway (Moor-bell shrine)
     { map_id: 'pearlmoor_lumenary', region: 'south' }, // interior: the Tide Lumenary (Reyl Wash)
@@ -105,20 +106,35 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'crystoll_vault', region: 'east', optional: true, reward: 'late backtrack (Starreach): rare Stone/Light kin' },
     // ---- North: Galehigh -> Windward Stair (2 segments) -> Pale Vault ---------------
     { map_id: 'galehigh_terraces', region: 'north' },
+    { map_id: 'galehigh_skyloft', region: 'north' }, // the winch-festival top terrace: Mira's launch-ledge bond-test (Lumenary 5's venue)
+    { map_id: 'galehigh_lumenary', region: 'north' }, // interior: the Storm hall (festival home — the battle is at the skyloft)
+    { map_id: 'galehigh_inn', region: 'north' }, // interior: the terrace inn (rest point)
+    { map_id: 'galehigh_home', region: 'north' }, // interior: a wind-break cottage
+    { map_id: 'galehigh_kitemaker', region: 'north' }, // interior: the kite-maker's workshop (shop)
     { map_id: 'windward_stair_i', region: 'north' }, // route: lower switchbacks
     { map_id: 'windward_stair_ii', region: 'north' }, // route: high crags
     { map_id: 'thunderroost', region: 'north', optional: true, reward: 'rare Storm/Flying kin + item' },
     { map_id: 'wind_eye', region: 'north', optional: true, reward: 'landmark sky-grotto; a unique Storm kin' },
     { map_id: 'pale_vault_glacier', region: 'north' },
+    { map_id: 'pale_vault_undercroft', region: 'north' }, // the Lamp-Line trial: Ysolde's bond-test at its heart (Lumenary 6's venue)
+    { map_id: 'pale_vault_lumenary', region: 'north' }, // interior: the Frost hall (the Aurora-watch's home — the battle is in the undercroft)
+    { map_id: 'pale_vault_inn', region: 'north' }, // interior: the glacier inn (rest point)
+    { map_id: 'pale_vault_home', region: 'north' }, // interior: an ice-block cottage
+    { map_id: 'pale_vault_hourfold', region: 'north', optional: true, reward: 'the Still Hour (Noctilune #161) past the Unstruck Toll' },
     // ---- West: Hushfrost Pass (2 seg) -> Solarium -> Sunvault Climb (2 seg) -> Nightreach
     { map_id: 'hushfrost_pass_i', region: 'west' }, // route: snow canyon
     { map_id: 'hushfrost_pass_ii', region: 'west' }, // route: coldfog throat
     { map_id: 'aurora_hollow', region: 'west', optional: true, reward: 'rare Frost/Light kin + item' },
     { map_id: 'sunken_solarium', region: 'west' },
+    { map_id: 'sunken_solarium_lumenary', region: 'west' }, // interior: the Solar hall (the troupe's green-room + the rest point — the battle is on the lit stage outdoors)
+    { map_id: 'unrisen_stair', region: 'west', optional: true, reward: 'the Lost Hour (Erstmorn #162) atop the Sunsketch bloom ascent' },
     { map_id: 'sunvault_climb_i', region: 'west' }, // route: overgrown terraces
     { map_id: 'sunvault_climb_ii', region: 'west' }, // route: sun-vine bridges
     { map_id: 'helia_vault', region: 'west', optional: true, reward: 'rare Solar kin + item in a sealed reliquary' },
     { map_id: 'nightreach_observatory', region: 'west' },
+    { map_id: 'nightreach_lumenary', region: 'west' }, // interior: the star-temple sanctum — Nessa's bond-test under the great eyepiece (the eighth Gleam; engine derives crown_west + hub_unlocked)
+    { map_id: 'nightreach_inn', region: 'west' }, // interior: The Long Watch inn (rest point)
+    { map_id: 'nightreach_home', region: 'west' }, // interior: a watcher's cottage
     // ---- Outer: Coldfog Marches (2 segments) + the hub ------------------------------
     { map_id: 'coldfog_marches_i', region: 'outer' }, // route: blighted marsh
     { map_id: 'coldfog_marches_ii', region: 'outer' }, // route: deep coldfog
@@ -129,6 +145,9 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'penumbra_ring', region: 'central' },
     { map_id: 'starwell', region: 'central', optional: true, reward: 'post-Crown landmark (Starreach): a near-legendary kin' },
     { map_id: 'umbral_spire', region: 'central', unlocked_by_flag: 'flag:hub_unlocked' },
+    { map_id: 'umbral_spire_f2', region: 'central' }, // the null-works maze floor (ladder pair)
+    { map_id: 'umbral_spire_f3', region: 'central' }, // the high gallery; home of the shaft compressor
+    { map_id: 'umbral_spire_summit', region: 'central' }, // the Great Null; sets keystar_relit -> dawn
     { map_id: 'dawnstead', region: 'south', unlocked_by_flag: 'flag:dawn' },
   ],
   edges: [
@@ -169,15 +188,36 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'cinderhead_mine', to_map: 'cinderhead_lumenary', via_warp: 'to_lumenary', bidirectional: true },
     { from_map: 'cinderhead_mine', to_map: 'cinderhead_deep', via_warp: 'to_deep', requires_ability: 'glimmerstep', bidirectional: true },
     { from_map: 'cinderhead_deep', to_map: 'galehigh_terraces', via_warp: 'to_terraces', bidirectional: true },
+    // Galehigh interiors (door warps, both ways) + the Kite-Rising Winch: the
+    // skyloft is gated by the FESTIVAL flag (the earned loop, spine §5 shape #5)
+    // — never by Updraft Kite (§0 rule 1; Updraft is Mira's reward).
+    { from_map: 'galehigh_terraces', to_map: 'galehigh_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
+    { from_map: 'galehigh_terraces', to_map: 'galehigh_inn', via_warp: 'to_inn', bidirectional: true },
+    { from_map: 'galehigh_terraces', to_map: 'galehigh_home', via_warp: 'to_home', bidirectional: true },
+    { from_map: 'galehigh_terraces', to_map: 'galehigh_kitemaker', via_warp: 'to_shop', bidirectional: true },
+    { from_map: 'galehigh_terraces', to_map: 'galehigh_skyloft', via_warp: 'to_skyloft', requires_flag: 'flag:q_north_kite_blessed', bidirectional: true },
     { from_map: 'galehigh_terraces', to_map: 'windward_stair_i', via_warp: 'to_stair', bidirectional: true },
     { from_map: 'windward_stair_i', to_map: 'windward_stair_ii', via_warp: 'to_stair_ii', requires_ability: 'updraft_kite', bidirectional: true },
     { from_map: 'windward_stair_ii', to_map: 'pale_vault_glacier', via_warp: 'to_glacier', bidirectional: true },
+    // Pale Vault interiors (door warps, both ways) + the Lamp-Line: the
+    // undercroft door takes the aurora-oil (the earned loop, spine §5 shape
+    // #6) — NEVER an ability gate (§0 rule 1: Ysolde is reachable on foot).
+    { from_map: 'pale_vault_glacier', to_map: 'pale_vault_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
+    { from_map: 'pale_vault_glacier', to_map: 'pale_vault_inn', via_warp: 'to_inn', bidirectional: true },
+    { from_map: 'pale_vault_glacier', to_map: 'pale_vault_home', via_warp: 'to_home', bidirectional: true },
+    { from_map: 'pale_vault_glacier', to_map: 'pale_vault_undercroft', via_warp: 'to_undercroft', requires_flag: 'flag:q_north_aurora_oil', bidirectional: true },
     { from_map: 'pale_vault_glacier', to_map: 'hushfrost_pass_i', via_warp: 'to_pass', bidirectional: true },
     { from_map: 'hushfrost_pass_i', to_map: 'hushfrost_pass_ii', via_warp: 'to_pass_ii', requires_ability: 'emberward', bidirectional: true },
     { from_map: 'hushfrost_pass_ii', to_map: 'sunken_solarium', via_warp: 'to_solarium', bidirectional: true },
+    // The Solar hall is starter-gated like every Lumenary door (NEVER Sunsketch — §0 rule 1).
+    { from_map: 'sunken_solarium', to_map: 'sunken_solarium_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
     { from_map: 'sunken_solarium', to_map: 'sunvault_climb_i', via_warp: 'to_climb', bidirectional: true },
     { from_map: 'sunvault_climb_i', to_map: 'sunvault_climb_ii', via_warp: 'to_climb_ii', requires_ability: 'sunsketch', bidirectional: true },
     { from_map: 'sunvault_climb_ii', to_map: 'nightreach_observatory', via_warp: 'to_observatory', bidirectional: true },
+    // The Lunar hall is starter-gated like every Lumenary door (NEVER Emberward/Starreach — §0 rule 1).
+    { from_map: 'nightreach_observatory', to_map: 'nightreach_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
+    { from_map: 'nightreach_observatory', to_map: 'nightreach_inn', via_warp: 'to_inn', bidirectional: true },
+    { from_map: 'nightreach_observatory', to_map: 'nightreach_home', via_warp: 'to_home', bidirectional: true },
     // Coldfog detour (off the hub), then onward to Nightreach from its blighted side.
     { from_map: 'coldfog_marches_i', to_map: 'coldfog_marches_ii', via_warp: 'to_marsh_ii', requires_ability: 'emberward', bidirectional: true },
     { from_map: 'coldfog_marches_ii', to_map: 'nightreach_observatory', via_warp: 'to_observatory_fog', requires_ability: 'emberward', bidirectional: true },
@@ -185,6 +225,19 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // ---- Optional spurs (dead-ends with rewards; several need a later gift) ----------
     { from_map: 'dimglass_coast_ii', to_map: 'gullcry_rock', via_warp: 'to_gullcry', requires_ability: 'tidecall', bidirectional: true },
     { from_map: 'dimglass_coast_ii', to_map: 'tideglass_cavern', via_warp: 'to_tideglass', requires_ability: 'glimmerstep', bidirectional: true },
+    // Dimglass I's launch-era cliff-mouth tease is a real second door into the
+    // cavern (the shipped warp, now declared); the segments meet at the mouth.
+    { from_map: 'dimglass_coast', to_map: 'tideglass_cavern', via_warp: 'to_tideglass', requires_ability: 'glimmerstep', bidirectional: true },
+    // ---- The Three Hours (walkthrough/07-the-three): one annex per quadrant ----------
+    // Site I: the Gallery under Tideglass — the stair seam opens when the
+    // Lampwright's Relay completes (lens C).
+    { from_map: 'tideglass_cavern', to_map: 'tideglass_gallery', via_warp: 'stair_down', requires_flag: 'flag:three_dusk_lens_c', bidirectional: true },
+    // Site II: the Hourfold off the glacier's Emberward deep-ice fold —
+    // sealed until Ysolde hands over the Vigil Snuffer.
+    { from_map: 'pale_vault_glacier', to_map: 'pale_vault_hourfold', via_warp: 'to_hourfold', requires_ability: 'emberward', requires_flag: 'flag:three_mid_snuffer', bidirectional: true },
+    // Site III: the Unrisen Stair off the Solarium's deepest fold — sealed
+    // until the First-Light Phial is poured into the basin.
+    { from_map: 'sunken_solarium', to_map: 'unrisen_stair', via_warp: 'to_unrisen', requires_ability: 'sunsketch', requires_flag: 'flag:three_dawn_poured', bidirectional: true },
     { from_map: 'saltreach_fen_ii', to_map: 'sunkbell_shallows', via_warp: 'to_sunkbell', requires_ability: 'tidecall', bidirectional: true },
     { from_map: 'glowmoss_deep', to_map: 'glowmoss_deep_b1f', via_warp: 'ladder_down', bidirectional: true },
     { from_map: 'glowmoss_deep_b1f', to_map: 'spore_grotto', via_warp: 'to_grotto', requires_ability: 'glimmerstep', bidirectional: true },
@@ -215,7 +268,18 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // ---- Hub -> centre, gated by the progressive crown flags -------------------------
     { from_map: 'vesper_crossroads', to_map: 'penumbra_ring', via_warp: 'to_penumbra', requires_flag: 'flag:hub_unlocked', bidirectional: true },
     { from_map: 'penumbra_ring', to_map: 'umbral_spire', via_warp: 'to_spire', requires_ability: 'starreach', bidirectional: true },
-    { from_map: 'umbral_spire', to_map: 'dawnstead', via_warp: 'to_dawn', requires_flag: 'flag:dawn', bidirectional: true },
+    // The Spire is a 4-floor ascent (§2a Spire tier): gatehouse -> null-works ->
+    // high gallery -> summit, joined by mutual ladder pairs. The high gallery's
+    // rest-ledge kindles the open core's hoist (flag:spire_shaft, set by the
+    // mandatory breather band) — the f3 <-> gatehouse shaft pair is the climb's
+    // return compressor and closes the central region's loop.
+    { from_map: 'umbral_spire', to_map: 'umbral_spire_f2', via_warp: 'ladder_up', bidirectional: true },
+    { from_map: 'umbral_spire_f2', to_map: 'umbral_spire_f3', via_warp: 'ladder_up', bidirectional: true },
+    { from_map: 'umbral_spire_f3', to_map: 'umbral_spire_summit', via_warp: 'ladder_up', bidirectional: true },
+    { from_map: 'umbral_spire_f3', to_map: 'umbral_spire', via_warp: 'shaft_down', requires_flag: 'flag:spire_shaft', bidirectional: true },
+    // The dawn road leaves from the SUMMIT (where flag:dawn is set) — the
+    // post-game hand-off; dawnstead is the post-game writer's map.
+    { from_map: 'umbral_spire_summit', to_map: 'dawnstead', via_warp: 'to_dawn', requires_flag: 'flag:dawn', bidirectional: true },
   ],
   hub: {
     map_id: 'vesper_crossroads',

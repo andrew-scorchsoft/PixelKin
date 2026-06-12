@@ -69,11 +69,11 @@
   },
   "encounters": [
     {
-      "area": "coldfog_marches",
+      "area": "coldfog_marches_i",
       "terrain": "tall_grass",
       "rarity": "rare",
-      "min": 52,
-      "max": 54
+      "min": 47,
+      "max": 48
     }
   ],
   "scripted": false,

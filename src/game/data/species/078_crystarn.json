@@ -71,11 +71,25 @@
   },
   "encounters": [
     {
-      "area": "galehigh_terraces",
+      "area": "hushfrost_pass_i",
       "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 36,
-      "max": 39
+      "rarity": "common",
+      "min": 40,
+      "max": 42
+    },
+    {
+      "area": "hushfrost_pass_ii",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 41,
+      "max": 42
+    },
+    {
+      "area": "aurora_hollow",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 40,
+      "max": 42
     }
   ],
   "scripted": false,

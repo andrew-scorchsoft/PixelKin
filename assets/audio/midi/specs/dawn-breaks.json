@@ -1,0 +1,59 @@
+{
+  "title": "Dawn Breaks - The Long Night Ends",
+  "_note": "The moment the Long Dusk ends - the Keystar caught, the Skyweave Crown complete, first light walking across Vesperholm. A one-statement arc the engine can hold under the dawn cinematic (loops, but built to be faded by the scene). SNES register per the area-music standard (strings/pad real chords, pluck harp, sparse bell, tri_bass o2 / pad o3 / lead o4 / bell o5, <=7 peak voices, era snes, render --engine chip). QUOTES, not new themes: bars 1-8 state the Vesper motif in A MINOR exactly as gleam-emotional's wistful half states it (lift E4->A4->B4, settle C5-natural->B4->A4 - the long dusk remembered, first fragmented/hushed, then complete); bars 9-12 are the TURN (the gleam-emotional minor->major pivot contour, here pivoting to the RELATIVE major so the dawn lands in C - the Tinderwick lullaby's home key); bars 13-20 reprise the Tinderwick 'Lantern Lullaby' / Vesper motif NOTE-FOR-NOTE in full C major (the dawnstead-a major reading: G3->C4->D4 lift ... E4->D4->C4 settle, the lift reaching G4), over Tinderwick's own music-box arp re-voiced as pluck harp; bars 21-24 coda - the lift finally reaching the sky (E4->G4->C5 ... up to E5), bell crowning C6, held radiant C major. Structure: HUSH (1-4, drone + motif fragment, near-silence) -> THE LAST DARK (5-8, the minor statement complete, harmonic-minor E dominant) -> THE TURN (9-12, brightening, first bell glint) -> THE BLOOM (13-20, the lullaby whole in daylight, full band + heartbeat drums) -> CODA (21-24, ringing home). 84 BPM, 4/4, A minor -> C major, 24 bars (~68s). Render --loops 1.",
+  "era": "snes",
+  "tempo": 84,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "A minor -> C major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "Bars 1-4: the Vesper lift FRAGMENT, hushed, answered by silence (the settle withheld - the night holding its breath). Bars 5-8: the full minor statement (gleam-emotional's wistful half, quoted). Bars 9-12: the turn - the line climbs and lands on the dominant with a G3 pickup. Bars 13-20: the Tinderwick lullaby reprised whole in C major (dawnstead-a bars 1-8, note-for-note). Bars 21-24: coda - the lift finally reaching the sky.",
+      "notes": "E4q A4q B4h | rw | E4q A4q B4q C5q | B4h A4h | E4q A4q B4h | C5q B4q A4h | E4q A4q B4q C5q | B4h A4h | A4q B4q C5q D5q | E5h D5q C5q | B4q C5q D5q B4q | G4h. G3q | G3q C4q D4h | E4q D4q C4h | G3q C4q D4q E4q | G4h. E4q | G3q C4q D4h | E4q D4q C4h | C4q E4q G4q E4q | C4h. rq | E4q G4q C5h | D5q C5q G4h | E4q G4q C5q E5q | C5h. rq"
+    },
+    {
+      "name": "pad",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.28,
+      "_note": "The harmonic floor. Silent bar 1; a bare A-E open fifth creeps in (the dark, hollow), fills to Am; the minor half walks Am-F-Am-E(harmonic-minor dominant, the gleam-emotional colour); the turn brightens F-C-G-G; the bloom carries Tinderwick's real chords (C, C/G turnarounds, the Am leaning bar) and holds radiant C at the close.",
+      "notes": "rw | A2+E3w | A2+E3w | A2+C3+E3w | A2+C3+E3w | F2+A2+C3w | A2+C3+E3w | E3+G#3+B3w | F2+A2+C3w | C3+E3+G3w | G2+B2+D3w | G2+B2+D3w | C3+E3+G3w | C3+E3+G3w | C3+E3+G3h G3+B3+D4h | C3+E3+G3w | C3+E3+G3w | A3+C4+E4w | C3+E3+G3w | C3+E3+G3w | C3+E3+G3w | G3+B3+D4w | C3+E3+G3w | C3+E3+G3w"
+    },
+    {
+      "name": "harmony",
+      "voice": "pluck",
+      "octave": 4,
+      "gain": 0.48,
+      "_note": "Pluck harp - SILENT through the dark (bars 1-10), wakes as the light catches (11-12, a rising broken dominant), then plays Tinderwick's own music-box arpeggio (C-E-G-E eighths; A-C-E under the leaning bar; G-B-D under cadences) through the bloom. Rests on beat 4 of the bell bars so the glints ring clear (<=7 voices).",
+      "notes": "rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rh G3e B3e D4e G4e | G3e B3e D4e G4e B4e D5e rq | C4e E4e G4e E4e C4e E4e G4e E4e | C4e E4e G4e E4e C4e E4e G4e E4e | C4e E4e G4e E4e G3e B3e D4e B3e | C4e E4e G4e E4e C4e E4e rq | C4e E4e G4e E4e C4e E4e G4e E4e | A3e C4e E4e C4e A3e C4e E4e C4e | C4e E4e G4e E4e C4e E4e G4e E4e | C4e E4e G4e E4e C4e E4e rq | C4e E4e G4e E4e C4e E4e G4e E4e | G3e B3e D4e B3e G3e B3e D4e B3e | C4e E4e G4e E4e C4e E4e G4e E4e | C4e E4e G4e E4e C4e E4e rq"
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.4,
+      "_note": "The Light signature - the first star catching at the turn (bar 12), then Tinderwick's phrase-end glints through the bloom (16, 20), and the crowning C6 at the close: the sky lit.",
+      "notes": "rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rh rq G5e B5e | rw | rw | rw | rh rq G5e C6e | rw | rw | rw | rh rq E5e G5e | rw | rw | rw | rh G5q C6q"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.9,
+      "_note": "A held low A drone through the hush (the night's weight), then gleam-emotional's minor root walk (A-F-A-E), the turn's F-C-G cadence, and Tinderwick's warm root-fifth hearth pulse through the bloom. Final bar a held tonic - contented, the dawn holding.",
+      "notes": "A2w | A2w | A2w | A2w | A2h E2h | F2h A2h | A2h E2h | E2h E2h | F2h A2h | C2h G2h | G2h G2h | G2h G2h | C2h G2h | C2h G2h | C2h G2h | C2h G2h | C2h G2h | A2h E2h | C2h G2h | C2h G2h | C2h G2h | G2h G2h | C2h G2h | C2w"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.45,
+      "_note": "Nothing at all until the bloom - the dark is unmeasured. From bar 13 the Tinderwick heartbeat (soft kick + brushy hat), gentle and present, like the world's pulse returning. No crash; the dawn arrives, it doesn't crash in.",
+      "notes": "rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | kickq hatq rq hatq | kickq hatq rq hatq | kickq hatq rq hatq | kickq hatq rq hatq | kickq hatq rq hatq | kickq hatq rq hatq | kickq hatq rq hatq | kickq hatq rq hatq | kickq hatq rq hatq | kickq hatq rq hatq | kickq hatq rq hatq | kickq hatq rh"
+    }
+  ]
+}

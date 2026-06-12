@@ -69,10 +69,24 @@
   "encounters": [
     {
       "area": "sunken_solarium",
-      "terrain": "water",
+      "terrain": "tall_grass",
       "rarity": "uncommon",
-      "min": 41,
-      "max": 44
+      "min": 43,
+      "max": 46
+    },
+    {
+      "area": "sunvault_climb_i",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 46,
+      "max": 47
+    },
+    {
+      "area": "sunvault_climb_ii",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 47,
+      "max": 48
     }
   ],
   "scripted": false,

@@ -56,14 +56,32 @@ GRANTS: dict[str, list[str]] = {
     "lowleaf_hollow": ["glimmerstep", "gleam:verdant"],
     "cinderhead_mine": ["gleam:stone", "flag:crown_east"],
     "cinderhead_deep": ["flag:shortcut_mine"],
-    "galehigh_terraces": ["updraft_kite", "gleam:storm"],
+    # The Kite-Rising Winch loop: the kite chain + festival blessing happen in
+    # town; Mira's bond-test at the skyloft then grants the Gleam + the Gift.
+    "galehigh_terraces": ["flag:q_north_kite_blessed"],
+    "galehigh_skyloft": ["updraft_kite", "gleam:storm"],
     "windward_stair_ii": ["flag:shortcut_windward"],
-    "pale_vault_glacier": ["emberward", "gleam:frost", "flag:crown_north"],
+    # The Lamp-Line loop: the oil errand happens in town/the hollows; Ysolde's
+    # bond-test at the undercroft's heart then grants the Gleam + the Gift.
+    "pale_vault_glacier": ["flag:q_north_lampline", "flag:q_north_aurora_oil"],
+    "pale_vault_undercroft": ["flag:q_north_lamps_held", "emberward",
+                              "gleam:frost", "flag:crown_north"],
     "sunken_solarium": ["sunsketch", "gleam:solar"],
     "nightreach_observatory": ["starreach", "gleam:lunar", "flag:crown_west",
                                "flag:hub_unlocked"],
     "umbral_spire": ["flag:dawn"],
+    # H1 (the Three Hours): the Lampwright's Relay completes inside the cavern
+    # (the rumour itself comes from the Pearlmoor netmender — wiring pass).
+    "tideglass_cavern": ["flag:q_south_wrecklamp_lit", "flag:three_dusk_lens_c"],
 }
+# ---- The Three Hours (walkthrough/07-the-three) — the unlock chains' keys
+# ride the existing grant points (rumours in the host towns; Ysolde's Vigil
+# Snuffer below the vault; Lucan's phial + the basin pour at the Solarium).
+GRANTS["pearlmoor_quay"].append("flag:three_dusk_rumour")
+GRANTS["pale_vault_glacier"].append("flag:three_mid_rumour")
+GRANTS["pale_vault_undercroft"].append("flag:three_mid_snuffer")
+GRANTS["nightreach_observatory"].append("flag:three_dawn_rumour")
+GRANTS["sunken_solarium"] += ["flag:three_dawn_phial", "flag:three_dawn_poured"]
 POSTGAME_FLAGS = {"flag:dawn"}
 
 
@@ -261,6 +279,70 @@ def main() -> int:
     for n in graph["nodes"]:
         if n["map_id"] not in interiors:
             by_region[n["region"]].add(n["map_id"])
+
+    # An edge is BACKED once every AUTHORED side carries its warp (unauthored
+    # maps get the graph-sync benefit of the doubt). Used by the ring fallback
+    # below so a region's circuit only counts when it is actually walkable —
+    # e.g. the West's ring closed the day W4 landed the Nightreach hub spoke.
+    def edge_backed(e) -> bool:
+        src = world.get(e["from_map"])
+        if src is not None:
+            w = next((w for w in src.get("warps", []) if w["id"] == e["via_warp"]), None)
+            if w is None or w["to_map"] != e["to_map"]:
+                return False
+        if e["bidirectional"] and e["to_map"] in world:
+            if not any(w["to_map"] == e["from_map"]
+                       for w in world[e["to_map"]].get("warps", [])):
+                return False
+        return True
+
+    # bridges of the warp-backed overworld graph (an edge NOT on any cycle);
+    # a member with a non-bridge edge sits on a real cross-region circuit.
+    ring_adj = defaultdict(set)
+    for e in edges:
+        a, b = e["from_map"], e["to_map"]
+        if a in interiors or b in interiors or not edge_backed(e):
+            continue
+        ring_adj[a].add(b)
+        ring_adj[b].add(a)
+    disc: dict[str, int] = {}
+    low: dict[str, int] = {}
+    bridges: set[frozenset] = set()
+    counter = [0]
+
+    def find_bridges(root: str) -> None:
+        stack = [(root, None, iter(sorted(ring_adj[root])))]
+        disc[root] = low[root] = counter[0]
+        counter[0] += 1
+        while stack:
+            node, parent, it = stack[-1]
+            advanced = False
+            for nxt in it:
+                if nxt == parent:
+                    continue
+                if nxt in disc:
+                    low[node] = min(low[node], disc[nxt])
+                    continue
+                disc[nxt] = low[nxt] = counter[0]
+                counter[0] += 1
+                stack.append((nxt, node, iter(sorted(ring_adj[nxt]))))
+                advanced = True
+                break
+            if not advanced:
+                stack.pop()
+                if stack:
+                    pnode = stack[-1][0]
+                    low[pnode] = min(low[pnode], low[node])
+                    if low[node] > disc[pnode]:
+                        bridges.add(frozenset((pnode, node)))
+
+    for root in sorted(ring_adj):
+        if root not in disc:
+            find_bridges(root)
+
+    def on_ring(member: str) -> bool:
+        return any(frozenset((member, nb)) not in bridges for nb in ring_adj[member])
+
     for region, members in sorted(by_region.items()):
         if len(members) < 3:
             continue
@@ -301,9 +383,20 @@ def main() -> int:
             add("topology", "PASS",
                 f"region '{region}': {len(members)} nodes, {cycles} loop(s)")
         else:
-            add("topology", "WARN",
-                f"region '{region}' is a pure corridor ({len(members)} nodes, no "
-                f"loop) — plan a late shortcut/spur re-link (§3a rule 1 at scene scale)")
+            # the ring fallback: no internal loop, but a member may sit on a
+            # WARP-BACKED circuit that closes beyond the region's border (the
+            # Lanternway ring — e.g. nightreach -> crossroads -> coldfog I/II
+            # -> nightreach). That is §2b r1's "close through the hub" shape;
+            # it only counts once every authored side has its warp.
+            riders = sorted(mname for mname in members if on_ring(mname))
+            if riders:
+                add("topology", "PASS",
+                    f"region '{region}': {len(members)} nodes, circuit closes "
+                    f"through the outer ring via {', '.join(riders)}")
+            else:
+                add("topology", "WARN",
+                    f"region '{region}' is a pure corridor ({len(members)} nodes, no "
+                    f"loop) — plan a late shortcut/spur re-link (§3a rule 1 at scene scale)")
 
     # ---- TRAVEL: door-to-door length of each authored route ----------------------
     lengths = []

@@ -20,6 +20,7 @@ This file is the **spine**. The region files carry the beat-by-beat walkthrough:
 - [`04-west.md`](./04-west.md) — Hushfrost Pass · Sunken Solarium · Sunvault Climb · Nightreach (+ spurs)
 - [`05-central-endgame.md`](./05-central-endgame.md) — Vesper Crossroads · Penumbra Ring · Umbral Spire
 - [`06-postgame.md`](./06-postgame.md) — Dawnstead · day-forms · Còr's resolution
+- [`07-the-three.md`](./07-the-three.md) — the Three Hours · legendary triad offshoots (Tideglass Cavern · the Hourfold · the Unrisen Stair)
 
 ---
 

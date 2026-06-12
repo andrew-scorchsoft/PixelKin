@@ -77,18 +77,11 @@
       "max": 11
     },
     {
-      "area": "pearlmoor_quay",
-      "terrain": "tall_grass",
+      "area": "tideglass_cavern",
+      "terrain": "cave",
       "rarity": "common",
-      "min": 8,
-      "max": 11
-    },
-    {
-      "area": "pearlmoor_quay",
-      "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 8,
-      "max": 11
+      "min": 20,
+      "max": 22
     }
   ],
   "scripted": false,

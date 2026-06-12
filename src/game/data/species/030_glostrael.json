@@ -81,6 +81,13 @@
       "rarity": "rare",
       "min": 10,
       "max": 12
+    },
+    {
+      "area": "tideglass_cavern",
+      "terrain": "water",
+      "rarity": "very_rare",
+      "min": 22,
+      "max": 24
     }
   ],
   "scripted": false,

@@ -148,6 +148,25 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/dimglass-coast-a.mp3',
   },
+  // Tideglass Cavern — the South's long-teased glass sea-cave landmark
+  // (Glimmerstep spur off Dimglass II; the Lampwright's Relay + S3's
+  // wreck-lamp), and its B1F gallery where the Dusk Hour waits (the Three
+  // Hours, walkthrough/07-the-three). Spur maps reuse the parent coast
+  // loop's sparsest variant; both share the new gallery backdrop.
+  tideglass_cavern: {
+    json: 'assets/maps/tideglass_cavern.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/dimglass-coast-c.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/tideglass-gallery-a.webp'],
+  },
+  tideglass_gallery: {
+    json: 'assets/maps/tideglass_gallery.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/dimglass-coast-c.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/tideglass-gallery-a.webp'],
+  },
   gullcry_rock: {
     json: 'assets/maps/gullcry_rock.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
@@ -321,6 +340,431 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/cinderhead-mine-b.webp',
     ],
   },
+  // Galehigh Terraces — the North's cliff-farm town (Lumenary 5, Storm: Mira
+  // Vael) under the Kite-rising; the Kite-Rising Winch earned loop hauls the
+  // player up to the skyloft for the bond-test at the launch ledge.
+  galehigh_terraces: {
+    json: 'assets/maps/galehigh_terraces.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'town',
+    music: 'assets/audio/music/galehigh-terraces-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/galehigh-terraces-a.webp',
+      'assets/backgrounds/battle/galehigh-terraces-b.webp',
+    ],
+  },
+  galehigh_skyloft: {
+    json: 'assets/maps/galehigh_skyloft.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    // spur maps reuse the parent loop + backdrops (the Phase-0 reuse table)
+    music: 'assets/audio/music/galehigh-terraces-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/galehigh-terraces-a.webp',
+      'assets/backgrounds/battle/galehigh-terraces-b.webp',
+    ],
+  },
+  galehigh_lumenary: {
+    json: 'assets/maps/galehigh_lumenary.json',
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/galehigh-terraces-b.mp3',
+  },
+  galehigh_inn: {
+    json: 'assets/maps/galehigh_inn.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/galehigh-terraces-b.mp3',
+  },
+  galehigh_home: {
+    json: 'assets/maps/galehigh_home.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/galehigh-terraces-b.mp3',
+  },
+  galehigh_kitemaker: {
+    json: 'assets/maps/galehigh_kitemaker.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/galehigh-terraces-b.mp3',
+  },
+  // Windward Stair I → II — the North's great switchback climb (band 34-36);
+  // the I→II wind-gap is the Updraft Kite boundary, and reaching the II crags
+  // sets flag:shortcut_windward (the drop home to Galehigh).
+  windward_stair_i: {
+    json: 'assets/maps/windward_stair_i.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/windward-stair-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/windward-stair-a.webp',
+      'assets/backgrounds/battle/windward-stair-b.webp',
+    ],
+  },
+  windward_stair_ii: {
+    json: 'assets/maps/windward_stair_ii.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/windward-stair-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/windward-stair-a.webp',
+      'assets/backgrounds/battle/windward-stair-b.webp',
+    ],
+  },
+  // The wind country's Updraft spurs reuse the stair loop + backdrops (the
+  // Phase-0 reuse table): the Wind-Eye sky-grotto (unique Storm kin) off
+  // Galehigh, and Thunderroost (the storm-birds' aerie) off Windward II.
+  wind_eye: {
+    json: 'assets/maps/wind_eye.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/windward-stair-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/windward-stair-a.webp',
+      'assets/backgrounds/battle/windward-stair-b.webp',
+    ],
+  },
+  thunderroost: {
+    json: 'assets/maps/thunderroost.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/windward-stair-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/windward-stair-a.webp',
+      'assets/backgrounds/battle/windward-stair-b.webp',
+    ],
+  },
+  // Pale Vault Glacier — the North's aurora-lit ice town (Lumenary 6, Frost:
+  // Ysolde Frost) under the Aurora-watch; the Lamp-Line earned loop sends the
+  // player down the undercroft to light seven brackets before the bond-test
+  // at the vault's heart. B3 (Còr in person), C3 (Fenn's confession) and A4
+  // (Wren's wobble) all land on this ice.
+  pale_vault_glacier: {
+    json: 'assets/maps/pale_vault_glacier.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'town',
+    music: 'assets/audio/music/pale-vault-glacier-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/pale-vault-glacier-a.webp',
+      'assets/backgrounds/battle/pale-vault-glacier-b.webp',
+    ],
+  },
+  pale_vault_undercroft: {
+    json: 'assets/maps/pale_vault_undercroft.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    // the trial reuses the parent loop's sparsest variant + backdrops
+    music: 'assets/audio/music/pale-vault-glacier-c.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/pale-vault-glacier-a.webp',
+      'assets/backgrounds/battle/pale-vault-glacier-b.webp',
+    ],
+  },
+  pale_vault_lumenary: {
+    json: 'assets/maps/pale_vault_lumenary.json',
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/pale-vault-glacier-b.mp3',
+  },
+  pale_vault_inn: {
+    json: 'assets/maps/pale_vault_inn.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/pale-vault-glacier-b.mp3',
+  },
+  pale_vault_home: {
+    json: 'assets/maps/pale_vault_home.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/pale-vault-glacier-b.mp3',
+  },
+  // The Hourfold — Midnight's fold in the glacier's Emberward deep ice (the
+  // Three Hours, Site II): the ledge descent + the Unstruck Toll. Reuses the
+  // glacier loop's sparsest variant (the undercroft's cue).
+  pale_vault_hourfold: {
+    json: 'assets/maps/pale_vault_hourfold.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/pale-vault-glacier-c.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/hourfold-a.webp'],
+  },
+  // Hushfrost Pass — the West's frozen opening leg (walkthrough 04-west):
+  // a snow canyon (I) burning through the Emberward coldfog throat into the
+  // thinning fog (II), where the X1 caretaker sits with her numbed kin and
+  // the far mouth glows Solarium-gold. The loneliest road in the game.
+  hushfrost_pass_i: {
+    json: 'assets/maps/hushfrost_pass_i.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/hushfrost-pass-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/hushfrost-pass-a.webp',
+      'assets/backgrounds/battle/hushfrost-pass-b.webp',
+    ],
+  },
+  hushfrost_pass_ii: {
+    json: 'assets/maps/hushfrost_pass_ii.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/hushfrost-pass-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/hushfrost-pass-a.webp',
+      'assets/backgrounds/battle/hushfrost-pass-b.webp',
+    ],
+  },
+  // Aurora Hollow — the Emberward spur grotto off Hushfrost II (rare
+  // Frost/Light kin + the X1 aurora-oil). Spur maps reuse the parent loop
+  // + backdrops (the aurora is baked into both hushfrost variants).
+  aurora_hollow: {
+    json: 'assets/maps/aurora_hollow.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/hushfrost-pass-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/hushfrost-pass-a.webp',
+      'assets/backgrounds/battle/hushfrost-pass-b.webp',
+    ],
+  },
+  // Sunken Solarium — the drowned sun-garden (Lumenary 7, Solar: Lucan Pyre)
+  // and the West's Arc D pivot from cold to warmth. The Lit Stage earned loop
+  // sends the player into the Tidecall-flooded halls for three sunmote phials
+  // before the bond-test on the relit Heliarium stage; the Last-Warm-Day
+  // festival fills the terrace under the gen'd Solar hall.
+  sunken_solarium: {
+    json: 'assets/maps/sunken_solarium.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/sunken-solarium-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/sunken-solarium-a.webp',
+      'assets/backgrounds/battle/sunken-solarium-b.webp',
+    ],
+  },
+  sunken_solarium_lumenary: {
+    json: 'assets/maps/sunken_solarium_lumenary.json',
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/sunken-solarium-b.mp3',
+  },
+  // The Unrisen Stair — the Dawn-that-waited's processional ruin off the
+  // Solarium's deepest fold (the Three Hours, Site III): the First-Light
+  // pour + the Sunsketch bloom ascent. Reuses the Solarium loop's sparsest
+  // variant; its backdrop is the warmest in the main game (a half-shade
+  // short of Dawnstead's).
+  unrisen_stair: {
+    json: 'assets/maps/unrisen_stair.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/sunken-solarium-c.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/unrisen-stair-a.webp'],
+  },
+  // Sunvault Climb — the golden terraces rising from the drowned garden to
+  // Nightreach's rim; the I→II boundary is the dead sun-vine bridge
+  // (Sunsketch's first required crossing), and the Helia Vault puzzle
+  // reliquary opens off segment II.
+  sunvault_climb_i: {
+    json: 'assets/maps/sunvault_climb_i.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/sunvault-climb-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/sunvault-climb-a.webp',
+      'assets/backgrounds/battle/sunvault-climb-b.webp',
+    ],
+  },
+  sunvault_climb_ii: {
+    json: 'assets/maps/sunvault_climb_ii.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/sunvault-climb-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/sunvault-climb-a.webp',
+      'assets/backgrounds/battle/sunvault-climb-b.webp',
+    ],
+  },
+  // Helia Vault — the Sunsketch puzzle micro-dungeon (sequential blooms + the
+  // sun-mirror redirect; Heliovast's sealed reliquary). Spur maps reuse the
+  // parent loop's sparsest variant + backdrops.
+  helia_vault: {
+    json: 'assets/maps/helia_vault.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/sunvault-climb-c.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/sunvault-climb-a.webp',
+      'assets/backgrounds/battle/sunvault-climb-b.webp',
+    ],
+  },
+  // W3 — the COLDFOG cluster (Arc B4's shown half: the drained land, the cost
+  // made plain). OPTIONAL late detour off the hub — never the road to
+  // Nightreach (spine §0 rule 2). The whole cluster shares one uneasy loop
+  // ('coldfog-marches-a') and the marches backdrops (beacon + stillworks sit
+  // inside the same drained weather — the reuse-table pattern of the spurs).
+  // The marches + beacon stack the `coldfog_set` ACCENT tileset (fogcrag: the
+  // cliff family with blight-context rims — build_coldfog_set.py).
+  coldfog_marches_i: {
+    json: 'assets/maps/coldfog_marches_i.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      coldfog_set: 'assets/tilesets/coldfog_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/coldfog-marches-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/coldfog-marches-a.webp',
+      'assets/backgrounds/battle/coldfog-marches-b.webp',
+    ],
+  },
+  coldfog_marches_ii: {
+    json: 'assets/maps/coldfog_marches_ii.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      coldfog_set: 'assets/tilesets/coldfog_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/coldfog-marches-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/coldfog-marches-a.webp',
+      'assets/backgrounds/battle/coldfog-marches-b.webp',
+    ],
+  },
+  drownlight_beacon: {
+    json: 'assets/maps/drownlight_beacon.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      coldfog_set: 'assets/tilesets/coldfog_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/coldfog-marches-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/coldfog-marches-a.webp',
+      'assets/backgrounds/battle/coldfog-marches-b.webp',
+    ],
+  },
+  hollowfen_stillworks: {
+    json: 'assets/maps/hollowfen_stillworks.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/coldfog-marches-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/coldfog-marches-a.webp',
+      'assets/backgrounds/battle/coldfog-marches-b.webp',
+    ],
+  },
+  // W4 — Nightreach Observatory (Lumenary 8, Lunar: Nessa Cole) — the
+  // hilltop star-temple where the Crown completes. The Vigil of the Seven
+  // (the shape-#8 ceremony walk) climbs the Astral Walk to the dome; the
+  // bond-test waits under the great eyepiece inside; with gleam:solar held
+  // the engine derives crown_west + hub_unlocked on the win. The Coldfog
+  // back-door enters on the east edge (Emberward); the Lanternway spoke
+  // (gleam:lunar) leaves south-west for the crossroads.
+  nightreach_observatory: {
+    json: 'assets/maps/nightreach_observatory.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'town',
+    music: 'assets/audio/music/nightreach-observatory-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/nightreach-observatory-a.webp',
+      'assets/backgrounds/battle/nightreach-observatory-b.webp',
+    ],
+  },
+  nightreach_lumenary: {
+    json: 'assets/maps/nightreach_lumenary.json',
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/nightreach-observatory-b.mp3',
+  },
+  nightreach_inn: {
+    json: 'assets/maps/nightreach_inn.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/nightreach-observatory-b.mp3',
+  },
+  nightreach_home: {
+    json: 'assets/maps/nightreach_home.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/nightreach-observatory-b.mp3',
+  },
+  // C1 — the CENTRAL threshold (walkthrough 05): the innermost band of the
+  // great dark, mostly receded by the time `flag:hub_unlocked` lets you in.
+  // Pure traversal — NO encounters (kin refuse the dark); the void family
+  // self-gates on Starreach via tileset metadata. The Spire silhouette at the
+  // north rim carries the to_spire doors (placeholder landing until C2
+  // authors umbral_spire — the engine no-ops them safely).
+  penumbra_ring: {
+    json: 'assets/maps/penumbra_ring.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/penumbra-ring-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/penumbra-ring-a.webp',
+      'assets/backgrounds/battle/penumbra-ring-b.webp',
+    ],
+  },
+  // Starwell — the well of fallen starlight off the Ring (Starreach landmark,
+  // optional): the Lunaveil #132 set-piece catch (a fixed EventTrigger via
+  // the legendaryBattle op — never a wild table; species is scripted:true).
+  // The landmark shares the Ring's loop + backdrops (the spur reuse table).
+  starwell: {
+    json: 'assets/maps/starwell.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/penumbra-ring-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/penumbra-ring-a.webp',
+      'assets/backgrounds/battle/penumbra-ring-b.webp',
+    ],
+  },
+  // C2 — the UMBRAL SPIRE (walkthrough 05): the climax dungeon, four floors
+  // (gatehouse -> null-works -> high gallery -> summit), §2a Spire tier. NO
+  // wild encounters anywhere (atlas card 13: scripted only — the Hollowing
+  // acolyte keepers are the encounters). The ascent floors run the unresolved
+  // "Black Ascent" loop; the summit runs the structured "Crown of Null" climax
+  // piece (intro -> loop -> minor->major resolve at the Keystar relight);
+  // umbral-spire-c is the relight cue for the cutscene `music` op, not a map
+  // track. flag:keystar_relit then flag:dawn are set HERE (summit bands) and
+  // nowhere else; to_dawn hands off to the post-game at dawnstead.
+  umbral_spire: {
+    json: 'assets/maps/umbral_spire.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/umbral-spire-b.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/umbral-spire-a.webp',
+      'assets/backgrounds/battle/umbral-spire-b.webp',
+    ],
+  },
+  umbral_spire_f2: {
+    json: 'assets/maps/umbral_spire_f2.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/umbral-spire-b.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/umbral-spire-a.webp',
+      'assets/backgrounds/battle/umbral-spire-b.webp',
+    ],
+  },
+  umbral_spire_f3: {
+    json: 'assets/maps/umbral_spire_f3.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/umbral-spire-b.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/umbral-spire-a.webp',
+      'assets/backgrounds/battle/umbral-spire-b.webp',
+    ],
+  },
+  umbral_spire_summit: {
+    json: 'assets/maps/umbral_spire_summit.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/umbral-spire-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/umbral-spire-a.webp',
+      'assets/backgrounds/battle/umbral-spire-b.webp',
+    ],
+  },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
   // Their battle backdrops are already rendered — see UPCOMING_BATTLE_BACKDROPS below.
@@ -336,37 +780,9 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
  * its backdrops set, drop its key here to avoid drift.
  */
 export const UPCOMING_BATTLE_BACKDROPS: Record<string, string[]> = {
-  galehigh_terraces: [
-    'assets/backgrounds/battle/galehigh-terraces-a.webp',
-    'assets/backgrounds/battle/galehigh-terraces-b.webp',
-  ],
-  pale_vault_glacier: [
-    'assets/backgrounds/battle/pale-vault-glacier-a.webp',
-    'assets/backgrounds/battle/pale-vault-glacier-b.webp',
-  ],
-  sunken_solarium: [
-    'assets/backgrounds/battle/sunken-solarium-a.webp',
-    'assets/backgrounds/battle/sunken-solarium-b.webp',
-  ],
-  nightreach_observatory: [
-    'assets/backgrounds/battle/nightreach-observatory-a.webp',
-    'assets/backgrounds/battle/nightreach-observatory-b.webp',
-  ],
-  coldfog_marches: [
-    'assets/backgrounds/battle/coldfog-marches-a.webp',
-    'assets/backgrounds/battle/coldfog-marches-b.webp',
-  ],
   vesper_crossroads: [
     'assets/backgrounds/battle/vesper-crossroads-a.webp',
     'assets/backgrounds/battle/vesper-crossroads-b.webp',
-  ],
-  penumbra_ring: [
-    'assets/backgrounds/battle/penumbra-ring-a.webp',
-    'assets/backgrounds/battle/penumbra-ring-b.webp',
-  ],
-  umbral_spire: [
-    'assets/backgrounds/battle/umbral-spire-a.webp',
-    'assets/backgrounds/battle/umbral-spire-b.webp',
   ],
   dawnstead: [
     'assets/backgrounds/battle/dawnstead-a.webp',
