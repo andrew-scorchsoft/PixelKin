@@ -14,6 +14,11 @@
       "width": 128,
       "height": 128
     },
+    "lifter_andrew": {
+      "path": "assets/sprites/trainers/lifter_andrew.webp",
+      "width": 128,
+      "height": 128
+    },
     "lifter_andy": {
       "path": "assets/sprites/trainers/lifter_andy.webp",
       "width": 128,
@@ -66,6 +71,11 @@
     },
     "npc_old_woman": {
       "path": "assets/sprites/trainers/npc_old_woman.webp",
+      "width": 128,
+      "height": 128
+    },
+    "npc_parent": {
+      "path": "assets/sprites/trainers/npc_parent.webp",
       "width": 128,
       "height": 128
     },
