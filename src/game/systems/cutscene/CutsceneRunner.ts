@@ -86,15 +86,19 @@ async function walkTo(
   canEnter: (tx: number, ty: number) => boolean,
 ): Promise<void> {
   for (let guard = 0; guard < 64; guard++) {
-    if (actor.tx === tx && actor.ty === ty) return;
+    if (actor.tx === tx && actor.ty === ty) break;
     let facing: Facing;
     if (actor.tx < tx) facing = 'right';
     else if (actor.tx > tx) facing = 'left';
     else if (actor.ty < ty) facing = 'down';
     else facing = 'up';
     const ok = await stepAsync(actor, facing, canEnter);
-    if (!ok) return;
+    if (!ok) break;
   }
+  // Settle the walk cycle onto the idle pose. The continuous-run loop relies on the
+  // per-frame `stopWalking()` in the world update, which is gated off while a scene
+  // runs — so without this the actor jogs in place until the world loop resumes.
+  actor.stopWalking();
 }
 
 /** Run one step. Returns false to ABORT the rest of the scene (a lost battle). */
