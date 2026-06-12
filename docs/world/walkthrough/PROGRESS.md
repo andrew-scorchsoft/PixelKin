@@ -22,7 +22,7 @@ Legend — **Gleam** = the region's constellation reward; **Gift** = the Lantern
 | **East** (02) | 3 Verdant · 4 Stone | ✅ **complete** | — (Cinderhead built 2026-06) |
 | **North** (03) | 5 Storm · 6 Frost | ✅ **complete** (built 2026-06) | — |
 | **West** (04) | 7 Solar · 8 Lunar | ✅ **complete** (W1–W4 maps + W5 content wiring, 2026-06) | EXTRA_ENCOUNTERS mirrors (deferred to the species-lane pass) |
-| **Central/Endgame** (05) | — | ✅ **complete** (C1 maps + C2 Spire + C3 wiring, 2026-06; panel SHIP-READY) | C6 polish: in-Spire heal point + Keylumen fallback hardening |
+| **Central/Endgame** (05) | — | ✅ **complete** (C1 maps + C2 Spire + C3 wiring, 2026-06; panel SHIP-READY; C6 polish landed c15217d) | — |
 | **The Three Hours** (07) | — | ✅ **complete** (sites + wiring + encounters + the hour-bell music, 2026-06) | — |
 | **Post-game** (06) | — | 📋 **documented, not built** (see "Remaining work" below) | Dawnstead · Starfall Vigils · day-forms · A6 |
 
