@@ -625,8 +625,8 @@
         125,
         0,
         0,
-        7,
         0,
+        7,
         0,
         0,
         0,
@@ -642,18 +642,22 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         6,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0,
         0,
@@ -695,10 +699,6 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        6,
         0,
         0,
         0,
@@ -1512,7 +1512,19 @@
         "ty": 12
       },
       "activation": "interact",
-      "ref": "sign.crossroads_spire"
+      "ref": "sign.crossroads_spire",
+      "hidden_when_flag": "flag:hub_unlocked"
+    },
+    {
+      "id": "sign_spire_open",
+      "kind": "sign",
+      "at": {
+        "tx": 8,
+        "ty": 12
+      },
+      "activation": "interact",
+      "ref": "sign.crossroads_spire_open",
+      "requires_flag": "flag:hub_unlocked"
     },
     {
       "id": "sign_lowleaf",
@@ -1553,6 +1565,126 @@
       },
       "activation": "interact",
       "ref": "sign.crossroads_mineshortcut"
+    },
+    {
+      "id": "wren_joins_w",
+      "kind": "cutscene",
+      "at": {
+        "tx": 8,
+        "ty": 16
+      },
+      "activation": "step_on",
+      "ref": "script.wren_joins",
+      "once": true,
+      "requires_flag": "flag:hub_unlocked",
+      "hidden_when_flag": "flag:wren_joined",
+      "sets_flags": [
+        "flag:wren_joined"
+      ]
+    },
+    {
+      "id": "wren_joins",
+      "kind": "cutscene",
+      "at": {
+        "tx": 9,
+        "ty": 16
+      },
+      "activation": "step_on",
+      "ref": "script.wren_joins",
+      "once": true,
+      "requires_flag": "flag:hub_unlocked",
+      "hidden_when_flag": "flag:wren_joined",
+      "sets_flags": [
+        "flag:wren_joined"
+      ]
+    },
+    {
+      "id": "wren_joins_e",
+      "kind": "cutscene",
+      "at": {
+        "tx": 10,
+        "ty": 16
+      },
+      "activation": "step_on",
+      "ref": "script.wren_joins",
+      "once": true,
+      "requires_flag": "flag:hub_unlocked",
+      "hidden_when_flag": "flag:wren_joined",
+      "sets_flags": [
+        "flag:wren_joined"
+      ]
+    },
+    {
+      "id": "trail_lamp_1",
+      "kind": "cutscene",
+      "at": {
+        "tx": 6,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "script.trail_lamp_1",
+      "requires_flag": "flag:q_central_trail",
+      "hidden_when_flag": "flag:q_central_trail_lamp1",
+      "sets_flags": [
+        "flag:q_central_trail_lamp1"
+      ],
+      "blocked_ref": "npc.dusk_lamp_quiet"
+    },
+    {
+      "id": "trail_lamp_2",
+      "kind": "cutscene",
+      "at": {
+        "tx": 13,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "script.trail_lamp_2",
+      "requires_flag": "flag:q_central_trail_lamp1",
+      "hidden_when_flag": "flag:q_central_trail_lamp2",
+      "sets_flags": [
+        "flag:q_central_trail_lamp2"
+      ],
+      "blocked_ref": "npc.dusk_lamp_quiet"
+    },
+    {
+      "id": "trail_lamp_3",
+      "kind": "cutscene",
+      "at": {
+        "tx": 6,
+        "ty": 12
+      },
+      "activation": "interact",
+      "ref": "script.trail_lamp_3",
+      "requires_flag": "flag:q_central_trail_lamp2",
+      "hidden_when_flag": "flag:q_central_trail_lamp3",
+      "sets_flags": [
+        "flag:q_central_trail_lamp3"
+      ],
+      "blocked_ref": "npc.dusk_lamp_quiet"
+    },
+    {
+      "id": "lampling_catch",
+      "kind": "cutscene",
+      "at": {
+        "tx": 13,
+        "ty": 12
+      },
+      "activation": "interact",
+      "ref": "script.lampling_catch",
+      "requires_flag": "flag:q_central_trail_lamp3",
+      "hidden_when_flag": "flag:lampling_caught",
+      "blocked_ref": "npc.dusk_lamp_quiet"
+    },
+    {
+      "id": "lampling_after",
+      "kind": "dialogue",
+      "at": {
+        "tx": 13,
+        "ty": 12
+      },
+      "activation": "interact",
+      "ref": "npc.lampling_after",
+      "requires_flag": "flag:q_central_trail_done"
     }
   ],
   "encounters": [],
@@ -1591,8 +1723,21 @@
       "facing": "down",
       "sprite": "npc_lampwarden",
       "movement": "look_around",
-      "dialogue_ref": "npc.waykeeper_chart_hung",
-      "requires_flag": "flag:q_round_chart"
+      "dialogue_ref": "script.long_round",
+      "requires_flag": "flag:q_round_chart",
+      "hidden_when_flag": "flag:q_central_round_done"
+    },
+    {
+      "id": "waykeeper_round_done",
+      "at": {
+        "tx": 8,
+        "ty": 8
+      },
+      "facing": "down",
+      "sprite": "npc_lampwarden",
+      "movement": "look_around",
+      "dialogue_ref": "npc.waykeeper_round_done",
+      "requires_flag": "flag:q_central_round_done"
     },
     {
       "id": "fenn_pre",
@@ -1668,7 +1813,135 @@
       "sprite": "npc_boy",
       "movement": "wander",
       "dialogue_ref": "npc.waystone_kid_kite",
-      "requires_flag": "flag:q_round_kite"
+      "requires_flag": "flag:q_round_kite",
+      "hidden_when_flag": "flag:hub_unlocked"
+    },
+    {
+      "id": "fenn_counsel",
+      "at": {
+        "tx": 10,
+        "ty": 10
+      },
+      "facing": "up",
+      "sprite": "npc_mentor",
+      "movement": "static",
+      "dialogue_ref": "script.fenn_crossroads_counsel",
+      "requires_flag": "flag:hub_unlocked",
+      "hidden_when_flag": "flag:fenn_counsel_given"
+    },
+    {
+      "id": "fenn_counsel_after",
+      "at": {
+        "tx": 10,
+        "ty": 10
+      },
+      "facing": "up",
+      "sprite": "npc_mentor",
+      "movement": "static",
+      "dialogue_ref": "npc.fenn_counsel_after",
+      "requires_flag": "flag:fenn_counsel_given"
+    },
+    {
+      "id": "wren_inward",
+      "at": {
+        "tx": 11,
+        "ty": 14
+      },
+      "facing": "left",
+      "sprite": "wren",
+      "movement": "static",
+      "dialogue_ref": "script.wren_joins",
+      "requires_flag": "flag:hub_unlocked",
+      "hidden_when_flag": "flag:wren_joined"
+    },
+    {
+      "id": "kid_trail",
+      "at": {
+        "tx": 5,
+        "ty": 7
+      },
+      "facing": "right",
+      "sprite": "npc_boy",
+      "movement": "static",
+      "dialogue_ref": "script.lampling_trail_start",
+      "requires_flag": "flag:hub_unlocked",
+      "hidden_when_flag": "flag:q_central_trail"
+    },
+    {
+      "id": "kid_trail_during",
+      "at": {
+        "tx": 5,
+        "ty": 7
+      },
+      "facing": "right",
+      "sprite": "npc_boy",
+      "movement": "static",
+      "dialogue_ref": "npc.waystone_kid_trail",
+      "requires_flag": "flag:q_central_trail",
+      "hidden_when_flag": "flag:q_central_trail_done"
+    },
+    {
+      "id": "kid_trail_done",
+      "at": {
+        "tx": 5,
+        "ty": 7
+      },
+      "facing": "right",
+      "sprite": "npc_boy",
+      "movement": "wander",
+      "dialogue_ref": "npc.waystone_kid_trail_done",
+      "requires_flag": "flag:q_central_trail_done"
+    },
+    {
+      "id": "innkeeper_ask",
+      "at": {
+        "tx": 11,
+        "ty": 12
+      },
+      "facing": "left",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "dialogue_ref": "script.inn_empty_lamps",
+      "requires_flag": "gleam:tide",
+      "hidden_when_flag": "flag:q_central_tokens"
+    },
+    {
+      "id": "innkeeper_waiting",
+      "at": {
+        "tx": 11,
+        "ty": 12
+      },
+      "facing": "left",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "dialogue_ref": "script.inn_rest_waiting",
+      "requires_flag": "flag:q_central_tokens",
+      "hidden_when_flag": "flag:q_token_west"
+    },
+    {
+      "id": "innkeeper_hang",
+      "at": {
+        "tx": 11,
+        "ty": 12
+      },
+      "facing": "left",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "dialogue_ref": "script.inn_lamps_hang",
+      "requires_flag": "flag:q_token_west",
+      "hidden_when_flag": "flag:q_central_tokens_done"
+    },
+    {
+      "id": "innkeeper_done",
+      "at": {
+        "tx": 11,
+        "ty": 12
+      },
+      "facing": "left",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "dialogue_ref": "script.inn_rest_crossroads",
+      "requires_flag": "flag:q_central_tokens_done"
     }
   ],
   "gates": [],

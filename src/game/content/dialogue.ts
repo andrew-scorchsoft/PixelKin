@@ -1278,6 +1278,124 @@ export const DIALOGUE: DialogueRegistry = {
   'npc.waykeeper_chart_hung': [
     { speaker: 'WAYKEEPER', text: 'Forty years of guesswork charts, and now the true sky hangs on the Waystone where every road can see it. Travellers stop and look UP now, before they pick a direction. That is the whole Lanternway, working.' },
   ],
+
+  // ===========================================================================
+  // CENTRAL / ENDGAME (05-central-endgame). The threshold register holds from
+  // the Penumbra inward: sincere, elegiac, ZERO humour — the hub's warmth is
+  // the one bright counterweight (and Wren's f1 line is the ONE wry-warm beat).
+  // ===========================================================================
+
+  // --- Vesper Crossroads — the endgame hub stages ------------------------------
+  'sign.crossroads_spire_open': [
+    { text: 'THE INWARD ROAD — NOW OPEN. Eight braziers stand LIT around the fog-gate, one for each constellation. Beyond: the Penumbra Ring, and the Umbral Spire. Rest first. There is no bed past this stone.' },
+  ],
+  'npc.fenn_counsel_after': [
+    { speaker: 'FENN', text: 'I am exactly where I mean to be, child: at the centre of every road you ever walked, watching the centre of the sky. Go well. Remember loudly.' },
+  ],
+  'npc.waystone_kid_trail': [
+    { speaker: 'WAYSTONE KID', text: 'Did you see it?! It does the lamps in ORDER — north-west first, then across, then down. Like rounds! Like it\'s TENDING them! Follow the flickers round the ring!' },
+  ],
+  'npc.waystone_kid_trail_done': [
+    { speaker: 'WAYSTONE KID', text: 'You FOUND it! The little lamp-kin! The Waykeeper says they used to follow the lamp-tenders\' rounds in the lit years — and now one follows YOU. That\'s the best thing that has ever happened at this crossroads. I\'m counting.' },
+  ],
+  'npc.dusk_lamp_quiet': [
+    { text: 'A waystation dusk-lamp, brass-capped and patient. Its flame burns small and steady — exactly as a well-kept flame should.' },
+  ],
+  'npc.lampling_shy': [
+    { text: 'The dusk-lamp burns plain and a little lonely. Whatever warmed its glass has tucked itself deep into the wick-light to sulk — it will not show itself again until you have won {remaining} more battles, and it has decided you meant no harm.' },
+  ],
+  'npc.lampling_after': [
+    { text: 'The dusk-lamp burns bright and easy now. Whatever it was hosting has found a better lamp to live in — yours.' },
+  ],
+  'npc.waykeeper_round_done': [
+    { speaker: 'WAYKEEPER', text: 'The chart on the stone, four festivals over the inn hearth, and my old Way-lamp in a Wayfarer\'s satchel. The Round is kept, child — better kept than I ever managed it. Walk far. The roads will tell me how you\'re doing.' },
+  ],
+
+  // --- The Penumbra Ring (the threshold register: awe and held breath) --------
+  'sign.penumbra_ascent': [
+    { text: 'THE NINTH LANTERN. The road up is starlight or nothing. Lamps out of respect; hearts lit out of spite.' },
+  ],
+  'sign.penumbra_starwell': [
+    { text: 'EAST — THE STARWELL. Where a star fell and did not go out. Step soft on the dark.' },
+  ],
+  'npc.penumbra_tended_row': [
+    { text: 'Two null-lanterns, tended and swept, holding no light with great care. Someone still walks this row.' },
+  ],
+  'npc.penumbra_snuffed_shrine': [
+    { text: 'A wayshrine of the old inward road. Its lamp was not broken — it was put out, gently, the way you would close a sleeping kin\'s door.' },
+  ],
+
+  // --- Starwell (the SILENCE register) -----------------------------------------
+  'npc.starwell_still': [
+    { text: 'The pool lies flat and shining. Whatever rose from it has sunk deep again; the starlight will not give it up for {remaining} more battles yet.' },
+  ],
+  'npc.starwell_after': [
+    { text: 'The well holds only starlight now — and holds it gladly. The water is warm.' },
+  ],
+
+  // --- The Umbral Spire — Wren at your side (A5→A6), one line per floor.
+  // f1 carries the ONE sanctioned wry-warm beat; f3 and the summit stay sincere.
+  'npc.wren_spire_f1': [
+    { speaker: 'WREN', text: 'So this is where the dusk lives. ...It\'s tidier than I expected. Stay close — I didn\'t climb all this way to lose you in the dark.' },
+  ],
+  'npc.wren_spire_f2': [
+    { speaker: 'WREN', text: 'They tuck them in. Look — they SWEEP in here. Sad, isn\'t it. ...Doesn\'t make them right. Keep climbing.' },
+  ],
+  'npc.wren_spire_f3': [
+    { speaker: 'WREN', text: 'Listen. Wind, this deep in the mountain. The sky is just up there — and it\'s FULL of your lamps.' },
+  ],
+  'npc.wren_spire_summit': [
+    { speaker: 'WREN', text: 'I\'m right here. Whatever he says — and he\'ll say it kindly — you remember louder. Go on.' },
+  ],
+
+  // The acolytes, beaten — softer now, still believing (grief doesn't argue).
+  'npc.hollowing_acolyte_a_after': [
+    { speaker: 'MERRIN', text: 'Thirty years of wicks, and yours are the first I\'ve seen that made the watching look worth it. ...I still think the dark is kinder. I\'m just less sure it\'s KINDEST.' },
+  ],
+  'npc.hollowing_acolyte_b_after': [
+    { speaker: 'TACE', text: 'The alcoves are warm, whatever you think of us. We were never cruel — only tired. ...Dock gently at the top, traveller. He is the tiredest of us all.' },
+  ],
+  'npc.hollowing_acolyte_c_after': [
+    { speaker: 'IVORWEN', text: 'Go on up, dear — and take the stair slowly, it\'s steeper than it looks. ...Four winters. I would have kept a fifth. Fancy me forgetting that, of all things.' },
+  ],
+  'npc.hollowing_acolyte_d_after': [
+    { speaker: 'HARL', text: 'The gallery is yours; I\'ll not test a flame twice. ...Eight lamps on eight doorposts, and I never once knocked. If the sky changes, maybe I will.' },
+  ],
+  'npc.hollowing_acolyte_e_after': [
+    { speaker: 'SEFA', text: 'The wind\'s picked up. She always said that meant the sky was paying attention. ...The north roads, Wayfarer. First. You promised the beaten half of me.' },
+  ],
+
+  // The alcove sleepers (read triggers; the dawn flips them).
+  'npc.spire_sleeper': [
+    { text: 'A drained kin sleeps in the alcove, tucked under a worked cloth, its light banked to the faintest ember. Someone has set a cushion under its head. Someone visits.' },
+  ],
+  'npc.spire_sleeper_awake': [
+    { text: 'The alcove is empty — blanket folded, cushion squared away. Small bright footprints lead out toward the morning, in no particular hurry, the way you walk when you know the way home.' },
+  ],
+  'sign.spire_lantern': [
+    { text: 'THE NINTH LANTERN — HIGH GALLERY. In the lit years, the keepers rested here and read the sky before the last stair. The sky is back. Rest. Read it.' },
+  ],
+  'npc.spire_shaft_dark': [
+    { text: 'The spire\'s open core falls away into the dark. An old hoist-lamp hangs at the lip, unlit — the starlight will not bear you down until someone above kindles the line.' },
+  ],
+  'npc.dawn_road_waits': [
+    { text: 'A road descends the summit\'s east shoulder, kept and cobbled, vanishing into the dark below. The old keepers called it the dawn road. It is waiting for the name to be true again.' },
+  ],
+
+  // Còr at the summit — the belt-and-braces interact (the band fires first) and
+  // the man after: undone, not destroyed; remembering.
+  'npc.cor_summit': [
+    { speaker: 'CÒR', text: 'A moment more, apprentice. The sky is very fine tonight — your doing — and I have learnt to take the fine moments slowly. We will speak when you are ready. We have all the dark there is.' },
+  ],
+  'npc.cor_after': [
+    { speaker: 'CÒR', text: 'I find I keep listing them — the fair, the bell, the kites, the bread. Twenty years of careful forgetting, undone in one evening by somebody else\'s lamp. ...Thank you. I am told that is the customary thing to say to a light, and I am out of practice.' },
+  ],
+
+  // The Keylumen's withdraw line (cooldown 0 — it cannot strand; kept for the
+  // op's contract and the one frame where a miss needs answering).
+  'npc.keylumen_waits': [
+    { text: 'The white-gold light folds back into the dais — not gone, not refused. Waiting. Raise your lamp and ask again; the Keystar has waited years, and will not begrudge you a breath.' },
+  ],
 };
 
 const FALLBACK: DialogueLine[] = [{ text: '...' }];

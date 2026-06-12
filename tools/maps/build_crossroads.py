@@ -17,6 +17,21 @@ Live spokes: WEST -> Tinderwick, EAST -> Pearlmoor Quay. The NORTH road (Coldfog
 Marches) and SOUTH inward road (the Spire approach / penumbra_ring) are signed,
 visible, inert teases — the engine no-ops warps to unregistered maps.
 
+THE ENDGAME ALSO HAPPENS HERE (C3 wiring, walkthrough/05): C4 Fenn's counsel +
+A5 Wren-joins (the inward road's full-cut band at y=16 carries Fenn's Starlamp
+up — the Keylumen's asking-gift, un-missable), C1 "Lampling's Trail" (the kid +
+three guttering dusk-lamp interacts + the gentle set-piece catch on the lamp
+ring), C2 "The Inn's Empty Lamps" (the four-stage waystation innkeeper — rest +
+the crossroads_inn counter at every stage), and C3 "The Long Round" (the
+Waykeeper's close-out, riding his chart-hung stage).
+
+audit_flow WAIVER — `choke` WARN on script.wren_joins accepted (the fenn_wave
+precedent): the only band-avoiding paths the model finds start at the penumbra
+return landing (reachable only by crossing the band once, going in) or idle on
+the gated mine-shortcut warp tile (8,17), which the engine whisks away from
+(or, unheld, can only be reached THROUGH the band). The Starlamp delivery is
+safe by mechanics.
+
 Run:  python3 tools/maps/build_crossroads.py
 """
 from __future__ import annotations
@@ -118,6 +133,10 @@ building_cells = {(x, y) for o in objects
 covered = {(x, y) for y in range(H) for x in range(W)
            if any(gr[y * W + x] for gr in (tree, pond, path))}
 avoid = covered | building_cells
+# C3 ENDGAME placements stand on these grass tiles — keep scatter decor off them
+# (the trail kid, the waystation innkeeper, Wren at the inward road).
+ENDGAME_NPC_TILES = {(5, 7), (11, 12), (11, 14)}
+avoid |= ENDGAME_NPC_TILES
 
 # ---- deco: the Waystone, signs, flowerbeds, scatter -------------------------------
 deco = mk.make_grid(W, H)
@@ -236,9 +255,17 @@ m = {
         {"id": "sign_waystone", "kind": "sign",
          "at": {"tx": sign_tiles["sign_waystone"][0], "ty": sign_tiles["sign_waystone"][1]},
          "activation": "interact", "ref": "sign.crossroads"},
+        # The inward-road sign swaps on the full Crown: cold braziers -> the
+        # "now accessible" callout (05 §1.3). Hidden trigger is GONE at lookup,
+        # so the open twin (requires hub_unlocked, listed second) takes over.
         {"id": "sign_spire", "kind": "sign",
          "at": {"tx": sign_tiles["sign_spire"][0], "ty": sign_tiles["sign_spire"][1]},
-         "activation": "interact", "ref": "sign.crossroads_spire"},
+         "activation": "interact", "ref": "sign.crossroads_spire",
+         "hidden_when_flag": "flag:hub_unlocked"},
+        {"id": "sign_spire_open", "kind": "sign",
+         "at": {"tx": sign_tiles["sign_spire"][0], "ty": sign_tiles["sign_spire"][1]},
+         "activation": "interact", "ref": "sign.crossroads_spire_open",
+         "requires_flag": "flag:hub_unlocked"},
         {"id": "sign_lowleaf", "kind": "sign",
          "at": {"tx": sign_tiles["sign_lowleaf"][0], "ty": sign_tiles["sign_lowleaf"][1]},
          "activation": "interact", "ref": "sign.crossroads_lowleaf"},
@@ -251,6 +278,55 @@ m = {
         {"id": "sign_mineshortcut", "kind": "sign",
          "at": {"tx": sign_tiles["sign_mineshortcut"][0], "ty": sign_tiles["sign_mineshortcut"][1]},
          "activation": "interact", "ref": "sign.crossroads_mineshortcut"},
+        # --- C3 ENDGAME (walkthrough/05) ------------------------------------
+        # A5 — Wren joins for the climb: a FULL-CUT band on the inward road's
+        # only walkable row (cols 8-10 at y=16; everything else is tree), so
+        # the Starlamp it carries can never be walked past. Silent pre-hub
+        # (requires unmet + no blocked_ref = no-op, the dawn_breaks pattern).
+        {"id": "wren_joins_w", "kind": "cutscene", "at": {"tx": CX - 1, "ty": 16},
+         "activation": "step_on", "ref": "script.wren_joins", "once": True,
+         "requires_flag": "flag:hub_unlocked",
+         "hidden_when_flag": "flag:wren_joined", "sets_flags": ["flag:wren_joined"]},
+        {"id": "wren_joins", "kind": "cutscene", "at": {"tx": CX, "ty": 16},
+         "activation": "step_on", "ref": "script.wren_joins", "once": True,
+         "requires_flag": "flag:hub_unlocked",
+         "hidden_when_flag": "flag:wren_joined", "sets_flags": ["flag:wren_joined"]},
+        {"id": "wren_joins_e", "kind": "cutscene", "at": {"tx": CX + 1, "ty": 16},
+         "activation": "step_on", "ref": "script.wren_joins", "once": True,
+         "requires_flag": "flag:hub_unlocked",
+         "hidden_when_flag": "flag:wren_joined", "sets_flags": ["flag:wren_joined"]},
+        # C1 "Lampling's Trail" — three guttering dusk-lamps (the plaza lamp
+        # posts' solid base tiles, the sign-trigger pattern), in the kid's
+        # order nw -> ne -> sw, then the catch at the se lamp. Pre-quest the
+        # lamps answer with their quiet read (blocked_ref).
+        {"id": "trail_lamp_1", "kind": "cutscene", "at": {"tx": CX - 3, "ty": CY - 2},
+         "activation": "interact", "ref": "script.trail_lamp_1",
+         "requires_flag": "flag:q_central_trail",
+         "hidden_when_flag": "flag:q_central_trail_lamp1",
+         "sets_flags": ["flag:q_central_trail_lamp1"],
+         "blocked_ref": "npc.dusk_lamp_quiet"},
+        {"id": "trail_lamp_2", "kind": "cutscene", "at": {"tx": CX + 4, "ty": CY - 2},
+         "activation": "interact", "ref": "script.trail_lamp_2",
+         "requires_flag": "flag:q_central_trail_lamp1",
+         "hidden_when_flag": "flag:q_central_trail_lamp2",
+         "sets_flags": ["flag:q_central_trail_lamp2"],
+         "blocked_ref": "npc.dusk_lamp_quiet"},
+        {"id": "trail_lamp_3", "kind": "cutscene", "at": {"tx": CX - 3, "ty": CY + 3},
+         "activation": "interact", "ref": "script.trail_lamp_3",
+         "requires_flag": "flag:q_central_trail_lamp2",
+         "hidden_when_flag": "flag:q_central_trail_lamp3",
+         "sets_flags": ["flag:q_central_trail_lamp3"],
+         "blocked_ref": "npc.dusk_lamp_quiet"},
+        # The trail's end: the Lampling, surfaced as a gentle set-piece catch
+        # (legendaryBattle, cooldown 3 — the caughtFlag hides the trigger).
+        {"id": "lampling_catch", "kind": "cutscene", "at": {"tx": CX + 4, "ty": CY + 3},
+         "activation": "interact", "ref": "script.lampling_catch",
+         "requires_flag": "flag:q_central_trail_lamp3",
+         "hidden_when_flag": "flag:lampling_caught",
+         "blocked_ref": "npc.dusk_lamp_quiet"},
+        {"id": "lampling_after", "kind": "dialogue", "at": {"tx": CX + 4, "ty": CY + 3},
+         "activation": "interact", "ref": "npc.lampling_after",
+         "requires_flag": "flag:q_central_trail_done"},
     ],
     "encounters": [],   # the hub is safe ground — a breath between roads
     "npcs": [
@@ -270,10 +346,19 @@ m = {
          "dialogue_ref": "script.round_chart_deliver",
          "requires_flag": "flag:q_round_chart_taken",
          "hidden_when_flag": "flag:q_round_chart"},
+        # C3 "The Long Round": once the chart hangs (q_round_chart = the Round's
+        # last leg, so ALL legs — the boolean chain), the Waykeeper offers one
+        # last walk of the plaza lamps (script.long_round -> the Way-lamp
+        # keepsake + flag:q_central_round_done), then settles into his done line.
         {"id": "waykeeper_hung", "at": {"tx": CX - 1, "ty": CY - 1}, "facing": "down",
          "sprite": "npc_lampwarden", "movement": "look_around",
-         "dialogue_ref": "npc.waykeeper_chart_hung",
-         "requires_flag": "flag:q_round_chart"},
+         "dialogue_ref": "script.long_round",
+         "requires_flag": "flag:q_round_chart",
+         "hidden_when_flag": "flag:q_central_round_done"},
+        {"id": "waykeeper_round_done", "at": {"tx": CX - 1, "ty": CY - 1}, "facing": "down",
+         "sprite": "npc_lampwarden", "movement": "look_around",
+         "dialogue_ref": "npc.waykeeper_round_done",
+         "requires_flag": "flag:q_central_round_done"},
         # Star-tender Fenn at the waystone — the opening's anchor, in four
         # flag-disjoint stages on one tile (south of the Waystone, facing it):
         #   pre   (t0)               -> the satchel ask (script.fenn_crossroads)
@@ -306,10 +391,73 @@ m = {
          "dialogue_ref": "script.round_kite_deliver",
          "requires_flag": "flag:q_round_kite_taken",
          "hidden_when_flag": "flag:q_round_kite"},
+        # At endgame the kid trades the kite for the lamp-flickers (C1 below) —
+        # hidden once the hub opens so the trail chain owns the cast slot.
         {"id": "waystone_kid_kite", "at": {"tx": CX - 2, "ty": CY + 2}, "facing": "up",
          "sprite": "npc_boy", "movement": "wander",
          "dialogue_ref": "npc.waystone_kid_kite",
-         "requires_flag": "flag:q_round_kite"},
+         "requires_flag": "flag:q_round_kite",
+         "hidden_when_flag": "flag:hub_unlocked"},
+
+        # --- C3 ENDGAME placements (walkthrough/05 §1-§2, quests C1/C2/C4/A5) --
+        # C4 — Fenn's counsel before the Spire: back at his waystone tile once
+        # the Crown completes (flag-disjoint with the opening chain, which the
+        # long-held flag:dusk_begins has retired).
+        {"id": "fenn_counsel", "at": {"tx": CX + 1, "ty": CY + 1}, "facing": "up",
+         "sprite": "npc_mentor", "movement": "static",
+         "dialogue_ref": "script.fenn_crossroads_counsel",
+         "requires_flag": "flag:hub_unlocked",
+         "hidden_when_flag": "flag:fenn_counsel_given"},
+        {"id": "fenn_counsel_after", "at": {"tx": CX + 1, "ty": CY + 1}, "facing": "up",
+         "sprite": "npc_mentor", "movement": "static",
+         "dialogue_ref": "npc.fenn_counsel_after",
+         "requires_flag": "flag:fenn_counsel_given"},
+        # A5 — Wren at the inward road (the band below is the guarantee; the
+        # NPC is the face of it, interactable for players who walk up first).
+        {"id": "wren_inward", "at": {"tx": CX + 2, "ty": 14}, "facing": "left",
+         "sprite": "wren", "movement": "static",
+         "dialogue_ref": "script.wren_joins",
+         "requires_flag": "flag:hub_unlocked",
+         "hidden_when_flag": "flag:wren_joined"},
+        # C1 — the Waystone kid's trail (giver -> mid-quest hint -> done), by
+        # the NW lamp where she saw the flickers first.
+        {"id": "kid_trail", "at": {"tx": CX - 4, "ty": CY - 2}, "facing": "right",
+         "sprite": "npc_boy", "movement": "static",
+         "dialogue_ref": "script.lampling_trail_start",
+         "requires_flag": "flag:hub_unlocked",
+         "hidden_when_flag": "flag:q_central_trail"},
+        {"id": "kid_trail_during", "at": {"tx": CX - 4, "ty": CY - 2}, "facing": "right",
+         "sprite": "npc_boy", "movement": "static",
+         "dialogue_ref": "npc.waystone_kid_trail",
+         "requires_flag": "flag:q_central_trail",
+         "hidden_when_flag": "flag:q_central_trail_done"},
+        {"id": "kid_trail_done", "at": {"tx": CX - 4, "ty": CY - 2}, "facing": "right",
+         "sprite": "npc_boy", "movement": "wander",
+         "dialogue_ref": "npc.waystone_kid_trail_done",
+         "requires_flag": "flag:q_central_trail_done"},
+        # C2 — the waystation innkeeper (rest + counter at EVERY stage; the
+        # four-token chain rides the strictly-ordered flags q_central_tokens ->
+        # q_token_west -> q_central_tokens_done). Appears with the Tide Gleam
+        # (the south festival pair complete — the first token's festival).
+        {"id": "innkeeper_ask", "at": {"tx": CX + 2, "ty": CY + 3}, "facing": "left",
+         "sprite": "npc_woman", "movement": "static",
+         "dialogue_ref": "script.inn_empty_lamps",
+         "requires_flag": "gleam:tide",
+         "hidden_when_flag": "flag:q_central_tokens"},
+        {"id": "innkeeper_waiting", "at": {"tx": CX + 2, "ty": CY + 3}, "facing": "left",
+         "sprite": "npc_woman", "movement": "static",
+         "dialogue_ref": "script.inn_rest_waiting",
+         "requires_flag": "flag:q_central_tokens",
+         "hidden_when_flag": "flag:q_token_west"},
+        {"id": "innkeeper_hang", "at": {"tx": CX + 2, "ty": CY + 3}, "facing": "left",
+         "sprite": "npc_woman", "movement": "static",
+         "dialogue_ref": "script.inn_lamps_hang",
+         "requires_flag": "flag:q_token_west",
+         "hidden_when_flag": "flag:q_central_tokens_done"},
+        {"id": "innkeeper_done", "at": {"tx": CX + 2, "ty": CY + 3}, "facing": "left",
+         "sprite": "npc_woman", "movement": "static",
+         "dialogue_ref": "script.inn_rest_crossroads",
+         "requires_flag": "flag:q_central_tokens_done"},
     ],
     "gates": [],
     "music": "assets/audio/music/tinderwick-a.mp3",

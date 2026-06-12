@@ -129,7 +129,15 @@ type CutsceneStepBase =
   | { op: 'heal' } // fully restore the party (inn rest, hearthside kindness)
   | { op: 'gleam'; element: string } // diegetic Gleam cue (relight the sky)
   | { op: 'giveMoney'; amount: number } // hand the player wicks (quest rewards, finds)
-  | { op: 'shop'; shop: string }; // open a shop's buy/sell counter (content/shops.ts)
+  | { op: 'shop'; shop: string } // open a shop's buy/sell counter (content/shops.ts)
+  /**
+   * Hand the world over to a full-screen CinematicScript (content/cinematics.ts)
+   * — the endgame's dawn panels + credits roll. The host PERSISTS first (so a
+   * Continue after the roll resumes exactly here, flags included), then starts
+   * CinematicScene; nothing after this step plays, so make it the script's LAST
+   * step and set any progression flags (e.g. flag:dawn) BEFORE it.
+   */
+  | { op: 'cinematic'; id: string };
 // (per-step `if_flag` guard rides the CutsceneStep intersection above)
 
 /** ref -> a cutscene's steps. */

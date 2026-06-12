@@ -297,6 +297,50 @@ export const ITEMS: ItemRegistry = {
     category: 'key',
   },
 
+  // --- The Central endgame (walkthrough/05-central-endgame) -------------------
+  // C2 "The Inn's Empty Lamps" — one lamp-token from each quadrant's festival,
+  // carried home to the crossroads inn. Key items; the chain is the quest.
+  lamp_token_south: {
+    id: 'lamp_token_south',
+    name: 'Lamp-token (South)',
+    desc: "A small wax token stamped at the Tide-blessing: a bell over water. The quay's festival, pressed small enough to carry home.",
+    category: 'key',
+  },
+  lamp_token_east: {
+    id: 'lamp_token_east',
+    name: 'Lamp-token (East)',
+    desc: 'A small wax token stamped at the Lamp-down vigil: a lamp dimmed, then relit. The mountain keeps its dark, and keeps its light.',
+    category: 'key',
+  },
+  lamp_token_north: {
+    id: 'lamp_token_north',
+    name: 'Lamp-token (North)',
+    desc: 'A small wax token stamped at the Aurora-watch: one held flame under a moving sky. Pressed in silence, given warm.',
+    category: 'key',
+  },
+  lamp_token_west: {
+    id: 'lamp_token_west',
+    name: 'Lamp-token (West)',
+    desc: 'A small wax token stamped at the Star-vigil: a watcher\'s lamp, lit the moment its star came home. The last of the four.',
+    category: 'key',
+  },
+  // C2's reward — the best charge in the game short of the Starlamp itself:
+  // four festivals' wax, one wick. Quest-only, never sold.
+  radiant_lamp: {
+    id: 'radiant_lamp',
+    name: 'Radiant Lamp',
+    desc: 'A charge cell pressed from four festivals\' token-wax around one inn-trimmed wick. One throw burns with a whole year\'s belonging.',
+    category: 'charge',
+    catch_bonus: 3.5,
+  },
+  // C3 "The Long Round" — the Waykeeper's keepsake for walking every leg of it.
+  way_lamp: {
+    id: 'way_lamp',
+    name: 'Way-lamp',
+    desc: "The Waykeeper's own hand-lamp, retired the year the Round was kept again. A lamp that has walked every road burns a little farther.",
+    category: 'key',
+  },
+
   // --- Valuables (found, never bought; exist to be sold for wicks) ----------
   wax_cake: {
     id: 'wax_cake',

@@ -196,6 +196,38 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'A lantern built to hold no light, raised on the Umbral Spire and aimed at the Keystar — the one star the whole sky rekindles from. Còr means it kindly. That is the most frightening thing about it.',
     unlock_flag: 'flag:great_null_known',
   },
+
+  // --- The endgame (Central) — gated on flags the climax already raises ------
+  {
+    id: 'keystar',
+    term: 'the Keystar',
+    desc: 'The last anchoring star: the one light the whole Skyweave remembers itself by. Every constellation you relit, relit because the Keystar held — snuff it, and no star could ever rekindle again.',
+    unlock_flag: 'flag:great_null_known',
+  },
+  {
+    id: 'penumbra',
+    term: 'the Penumbra',
+    desc: 'The band of unnatural dark that sealed the centre of Vesperholm, fed by the darkened constellations. Each relit Gleam burned back a wedge; a whole Crown parts it entirely — leaving only the final crossings, walked on starlight.',
+    unlock_flag: 'flag:hub_unlocked',
+  },
+  {
+    id: 'ninth_lantern',
+    term: 'the Ninth Lantern',
+    desc: 'The long-dead Lumenary at the peak of the Umbral Spire, oldest of them all, keeper of the Keystar itself. Eight halls tend the rim of the sky. The Ninth tended its heart — and waited, dark, for someone to climb back up.',
+    unlock_flag: 'flag:hub_unlocked',
+  },
+  {
+    id: 'keylumen',
+    term: 'Keylumen',
+    desc: 'The Keystar\'s living heart — a radiant kin that slept in the Ninth Lantern through the whole long night, waiting for a sky worth anchoring. It was never caught. It was asked, and it answered.',
+    unlock_flag: 'flag:keystar_relit',
+  },
+  {
+    id: 'first_dawn',
+    term: 'the First True Dawn',
+    desc: 'The morning the long night broke: the Keystar relit, the Crown blazing whole, and the sun over Vesperholm for the first time in years. Dusk will come again — and that is exactly the point.',
+    unlock_flag: 'flag:dawn',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */

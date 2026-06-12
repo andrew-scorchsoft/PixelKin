@@ -425,9 +425,17 @@ m = {
         {"id": "blessing_kid", "at": {"tx": 18, "ty": 13}, "facing": "down",
          "sprite": "npc_child", "movement": "wander",
          "dialogue_ref": "npc.blessing_kid", "requires_flag": "gleam:tide"},
+        # C2 "The Inn's Empty Lamps" (Central wiring): the singer is the SOUTH
+        # token giver — her script replays the festival line, then hands the
+        # lamp-token once the crossroads quest has reached her (if_flag chain).
         {"id": "blessing_singer", "at": {"tx": 12, "ty": 16}, "facing": "right",
          "sprite": "npc_woman", "movement": "static",
-         "dialogue_ref": "npc.blessing_singer", "requires_flag": "gleam:tide"},
+         "dialogue_ref": "script.token_south", "requires_flag": "gleam:tide",
+         "hidden_when_flag": "flag:q_token_south"},
+        {"id": "blessing_singer_after", "at": {"tx": 12, "ty": 16}, "facing": "right",
+         "sprite": "npc_woman", "movement": "static",
+         "dialogue_ref": "npc.blessing_singer",
+         "requires_flag": "flag:q_token_south"},
     ],
     # AbilityGate (Tidecall, make_passable) over the open harbour water — split W/E of the
     # central arrival jetty (cols 13-14) so the always-walkable jetty is never gated.

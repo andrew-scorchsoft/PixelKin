@@ -331,20 +331,27 @@ const JOURNEY = [
     checkpoint: { name: 'Lunar Gleam (Nessa)', rec: 48, ace: 52 },
   },
 
-  // ---- CENTRAL / ENDGAME ----------------------------------------------------
+  // ---- CENTRAL / ENDGAME (BUILT — C3 wiring 2026-06; trainers mirror
+  // trainers.ts exactly). No wild zones live past the hub (the Ring and Spire
+  // are scripted-only), so the wild band models the set-piece catches +
+  // retries (Lampling/Lunaveil/Keylumen) and pre-climb spoke top-ups.
+  // Income is item-shaped by design (Radiant Lamp, Way-lamp, the Lampling) —
+  // quests pay 0 wicks; finds = the Penumbra satchel (600) + the gallery
+  // toll-box (800); valuables = the Penumbra islet Starglass (1,500) + the
+  // [MISSABLE] spire-landing Starglass (1,500) + the Starwell Moth-amber (600).
   {
     name: 'Penumbra Ring → Umbral Spire',
     leadShare: 1.00,
     wild: { areas: ['umbral_spire', 'coldfog_marches'], band: [52, 56], fights: { rusher: 6, mainline: 10, explorer: 14 } },
     trainers: [
-      T('Hollowing acolyte A', 'keeper', [K(52), K(52)]),
-      T('Hollowing acolyte B', 'keeper', [K(53), K(53)]),
-      T('Hollowing acolyte C', 'keeper', [K(54), K(54)]),
-      T('Hollowing warden-aide A', 'keeper', [K(54), K(55)]),
-      T('Hollowing warden-aide B', 'keeper', [K(55), K(55)]),
-      T('Warden Còr', 'cor', [K(53), K(54), K(55), K(55), K(56)]),
+      T('Merrin (Hollowing acolyte A)', 'keeper', [K(52, 136), K(53, 137)]),
+      T('Tace (Hollowing acolyte B)', 'keeper', [K(52, 134), K(52, 133), K(53, 137)]),
+      T('Ivorwen (Hollowing acolyte C)', 'keeper', [K(53, 141), K(54, 142)]),
+      T('Harl (Hollowing acolyte D)', 'keeper', [K(54, 143), K(55, 138)]),
+      T('Sefa (Hollowing acolyte E)', 'keeper', [K(54, 135), K(55, 139)]),
+      T('Warden Còr', 'cor', [K(53, 113), K(54, 85), K(54, 135), K(55, 138), K(55, 142), K(56, 150)]),
     ],
-    income: { quests: 1500, valuables: 1500, finds: 0 }, // the Long Round closes
+    income: { quests: 0, valuables: 3600, finds: 1400 },
     spend: { bright_balm: 3, chart_end: 1 },
     checkpoint: { name: 'Warden Còr (climax)', rec: 54, ace: 56 },
   },
@@ -399,6 +406,12 @@ const BUILT_PAYOUTS = {
   junior_watcher_b: ['keeper', 51, 1020],
   wren_nightreach: ['rival', 50, 1200],
   nessa_cole: ['warden', 52, 3120],
+  hollowing_acolyte_a: ['keeper', 53, 1060],
+  hollowing_acolyte_b: ['keeper', 53, 1060],
+  hollowing_acolyte_c: ['keeper', 54, 1080],
+  hollowing_acolyte_d: ['keeper', 55, 1100],
+  hollowing_acolyte_e: ['keeper', 55, 1100],
+  warden_cor: ['cor', 56, 6720],
 };
 const failures = [];
 for (const [id, [klass, ace, authored]] of Object.entries(BUILT_PAYOUTS)) {

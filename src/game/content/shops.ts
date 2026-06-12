@@ -98,6 +98,23 @@ export const SHOPS: ShopRegistry = {
       'chart_swift_step',
     ],
   },
+
+  // The crossroads inn's counter — the last till before the mountain (there is
+  // no shop past the hub, by design). Every tier the journey has earned, in one
+  // place: the endgame staging-ground stock for the Spire run.
+  crossroads_inn: {
+    id: 'crossroads_inn',
+    name: 'THE WAYSTATION INN',
+    stock: [
+      'tallow_balm',
+      'warm_balm',
+      { item: 'bright_balm', requires_flag: 'gleam:storm' },
+      'glow_charge',
+      { item: 'beacon_charge', requires_flag: 'gleam:ember' },
+      'chart_focus_mind',
+      'chart_swift_step',
+    ],
+  },
 };
 
 export function getShop(id: string): ShopDef | undefined {

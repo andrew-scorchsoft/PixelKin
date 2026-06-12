@@ -764,3 +764,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   flat. "A light fails" beats (the dusk omen, drained sites) get the opposite: `letterbox` +
   `silence` + the `world-star-gutter` sting. Seed the Hollowing as quiet dread early (a distant
   figure, a pinned letter, a grave aside) — never cartoonish.
+- **THE ENDING IS WIRED (C3, 2026-06): the game completes cold open → dawn.** The summit chain
+  (`umbral_spire_summit`): `script.great_null` → `script.warden_cor_final` (Còr is OUT-REMEMBERED,
+  never "defeated") → `script.keystar_relight` (Keylumen #149 via `legendaryBattle`, cooldown 0 —
+  the climax never strands; Fenn's Starlamp rides Wren's un-missable crossroads join band) →
+  `script.dawn_breaks` (sets `flag:dawn` ITSELF, then the **`cinematic` op** — the runner hook
+  persists FIRST, stops world music, and hands to CinematicScene; nothing after the op plays, so
+  it must be a script's LAST step). `ENDING_CREDITS` (dawnbreak panels + credits) routes → Title;
+  Continue resumes at the summit with `flag:dawn` held — the post-game's door.

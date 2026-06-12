@@ -2388,6 +2388,403 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', text: 'Tucked in the fog-gate\'s lee, against the worst of the east road: a BRIGHT BALM. Found it!' },
     { op: 'setFlag', flag: 'flag:picked_nightreach_balm' },
   ],
+
+  // ===========================================================================
+  // CENTRAL / ENDGAME (walkthrough/05-central-endgame) — the Crossroads' last
+  // quiet hour, the Penumbra crossed on starlight, and the ascent of the Ninth
+  // Lantern. ZERO humour past the hub (the one sanctioned warm send-off lives
+  // in the inn's done-stage; Wren's one wry-warm beat lives in npc.wren_spire_f1).
+  // ===========================================================================
+
+  // --- C4 — Fenn's counsel before the Spire (the crossroads waystone). Short by
+  // design: the lamp-5 counsel at Pale Vault did the heavy lifting; this sends
+  // the player up CLEAR-EYED. His "best Lamp for the Keylumen" travels with
+  // Wren (script.wren_joins — the un-missable band), so the gift cannot be lost.
+  'script.fenn_crossroads_counsel': [
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'Child. Of course I am here — I watched the eighth star come home from this very stone, and my feet refused every other road.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'grave', text: 'You know it all already. You cannot out-fight Còr; he is not your enemy, and beating him proves nothing he has not already grieved his way past. Go up there to remember louder than he can grieve. That is the whole of my counsel, and you have carried it for half the sky.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'grave', text: 'One thing more. The Keystar keeps a living heart — the old books call it the Keylumen — and it will want asking, not winning. I have sent something up the inward road with a friend of yours, for exactly that asking. Spend it nowhere else.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'peace', text: 'I will be here, watching the centre of the sky. When it changes — and it is going to change, child — I should like to be standing where your road began.' },
+    { op: 'narrate', text: 'He presses your shoulder once, the way he did at the very start, a whole Wayfaring ago. He does not say goodbye. Lamp-tenders never do.' },
+    { op: 'setFlag', flag: 'flag:fenn_counsel_given' },
+  ],
+
+  // --- A5→A6 — Wren joins for the climb (the inward road's full-cut band; also
+  // the Wren NPC standing at the roadside). Carries Fenn's Starlamp up with
+  // them, so the Keylumen's asking-gift is banked on the only road in.
+  'script.wren_joins': [
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'resolved', text: 'There you are. I watched the fog go down like a curtain and thought — right, that road, that walk, any minute now.' },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'resolved', text: 'I went all the way round it, you know. The Hollowing. They\'re right that it hurts. ...I just don\'t think "never again" is worth "never at all."' },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'eager', text: 'So. Come on — I\'m not letting you climb that thing alone. Same road, different lamps. All the way up, this time.' },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'neutral', text: 'Oh — and the old man sent this up for you. Wouldn\'t say what it was. Held it like it was somebody\'s heart, so I didn\'t ask twice.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'starlamp', count: 1 },
+    { op: 'say', text: 'Received the STARLAMP! A cell of caught starlight — Fenn has kept it forty years for one particular asking, at the top of the sky.' },
+    { op: 'setFlag', flag: 'flag:wren_joined' },
+  ],
+
+  // --- C1 "Lampling's Trail" — the Waystone kid's lamp-flickers (three
+  // guttering dusk-lamps around the plaza, then the trail's end at the fourth).
+  'script.lampling_trail_start': [
+    { op: 'say', speaker: 'WAYSTONE KID', text: 'Psst! Wayfarer! The plaza lamps keep GUTTERING — one at a time, round and round, like something\'s going lamp to lamp tasting them.' },
+    { op: 'say', speaker: 'WAYSTONE KID', text: 'The Waykeeper says his wicks are sound, and his wicks are ALWAYS sound. So it\'s something little, and quick, and it likes lamplight better than anything in the world. Follow the flickers! Start at the north-west lamp — that\'s where I saw it first!' },
+    { op: 'setFlag', flag: 'flag:q_central_trail' },
+  ],
+  'script.trail_lamp_1': [
+    { op: 'narrate', text: 'As you reach the lamp, its flame dips and dances — and a curl of warm light no bigger than a teacup whisks out of the lantern-glass and away across the plaza, leaving the wick burning none the worse.' },
+    { op: 'narrate', text: 'It was not a draught. Draughts do not look back at you. The next flicker is already starting, away at the north-east lamp.' },
+  ],
+  'script.trail_lamp_2': [
+    { op: 'narrate', text: 'The flame here is still wobbling, delighted with itself. From inside the lantern-glass comes the faintest sound — like a kettle humming to itself about something it remembers fondly.' },
+    { op: 'narrate', text: 'The little light spills out, circles the lamp-post once — twice — and streaks off low across the plaza, toward the south-west lamp.' },
+  ],
+  'script.trail_lamp_3': [
+    { op: 'narrate', text: 'You arrive in time to see it plainly at last: a tiny lantern-shaped kin sitting INSIDE the lamp, warming its hands at the wick like a traveller at an inn fire.' },
+    { op: 'narrate', text: 'It startles, blushes a deep gold, and pours itself away toward the last lamp of the ring — where it waits. Visibly. Politely. The way you wait when you have decided to be found.' },
+  ],
+  'script.lampling_catch': [
+    { op: 'narrate', text: 'The little kin is sitting on top of the dusk-lamp with its glow turned up bright, exactly where you can see it. The trail was never a chase. It was an introduction.' },
+    { op: 'legendaryBattle', name: 'lampling', kin: 148, level: 30, caughtFlag: 'flag:lampling_caught', cooldownBattles: 3, cooldownRef: 'npc.lampling_shy' },
+    { op: 'narrate', text: 'The Lampling settles into your lamp like a wick into wax — home at once, and warm. Around the plaza, all four dusk-lamps burn a shade brighter than their oil should allow.' },
+    { op: 'setFlag', flag: 'flag:q_central_trail_done' },
+  ],
+
+  // --- C2 "The Inn's Empty Lamps" — the waystation innkeeper's four festival
+  // lamps (one lamp-token per quadrant's festival, hung in fixed order
+  // south→east→north→west via the boolean chain). Every stage rest-heals and
+  // opens the counter: the hub is the last shop and bed before the mountain.
+  'script.inn_empty_lamps': [
+    { op: 'say', speaker: 'INNKEEP', text: 'In you come, Wayfarer — the kettle\'s on and the bunks are warm. This inn has fed every road in Vesperholm at one time or another; the least it can do is feed you.' },
+    { op: 'fade', dir: 'out' },
+    { op: 'wait', ms: 700 },
+    { op: 'heal' },
+    { op: 'fade', dir: 'in' },
+    { op: 'say', speaker: 'INNKEEP', text: 'There. Rested, the lot of you. ...And since you\'re the sort who finishes things — look up a moment. Four lamp-brackets over my hearth, and all four empty since the night fell.' },
+    { op: 'say', speaker: 'INNKEEP', text: 'One for each quadrant\'s festival, they were. The festivals are BACK now — thanks to somebody — and each one presses little wax lamp-tokens for its own. Bring me one from each: south first, the old order. Tide-blessing, Lamp-down, Aurora-watch, Star-vigil. Fill my brackets and I\'ll fill your hand, fair\'s fair.' },
+    { op: 'setFlag', flag: 'flag:q_central_tokens' },
+    { op: 'say', speaker: 'INNKEEP', text: 'Meanwhile the counter\'s open. No shop past this door, mind — the mountain doesn\'t keep a till.' },
+    { op: 'shop', shop: 'crossroads_inn' },
+  ],
+  'script.inn_rest_waiting': [
+    { op: 'say', speaker: 'INNKEEP', text: 'Back again! Bunks are yours, same as ever.' },
+    { op: 'fade', dir: 'out' },
+    { op: 'wait', ms: 700 },
+    { op: 'heal' },
+    { op: 'fade', dir: 'in' },
+    { op: 'say', speaker: 'INNKEEP', text: 'There. Rested, and your kin with you. ...The brackets are still counting, when you\'ve a festival road to walk: south, east, north, west — the old order. The festivals know their own; just ask at the lamp-lit end of each.' },
+    { op: 'shop', shop: 'crossroads_inn' },
+  ],
+  'script.inn_lamps_hang': [
+    { op: 'say', speaker: 'INNKEEP', text: 'All FOUR. Hand them here — no, stay, you should see this done properly.' },
+    { op: 'narrate', text: 'She melts each token gently into a bracket-lamp\'s wax — bell, vigil-mark, held flame, watcher\'s star — and lights them in the order the Gleams came home. South. East. North. West.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#ffd089', alpha: 0.22, ms: 900 },
+    { op: 'narrate', text: 'Four festivals burn over one hearth, at the place where every road meets. Travellers at the long table go quiet — the good kind of quiet, the kind people save for things they thought they would not see again.' },
+    { op: 'tint', color: '#ffd089', alpha: 0, ms: 900 },
+    { op: 'say', speaker: 'INNKEEP', text: 'And fair\'s fair, as promised. I pressed the spare token-wax round one of my own trimmed wicks all season. There\'s a whole year\'s belonging in that cell — throw it at a heart worth keeping.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'radiant_lamp', count: 1 },
+    { op: 'say', text: 'Received the RADIANT LAMP!' },
+    { op: 'setFlag', flag: 'flag:q_central_tokens_done' },
+    { op: 'heal' },
+    { op: 'say', speaker: 'INNKEEP', text: 'Bunks and counter are yours whenever, Wayfarer. This hearth doesn\'t forget its lamp-fillers.' },
+    { op: 'shop', shop: 'crossroads_inn' },
+  ],
+  // The done stage — the inn at full warmth. Carries the region's ONE sanctioned
+  // warm send-off line (humour-sheet: innkeeper's patter; a smile, not a laugh).
+  'script.inn_rest_crossroads': [
+    { op: 'say', speaker: 'INNKEEP', text: 'In you come — four festivals over the hearth and the kettle never off. Bunks first, talk after.' },
+    { op: 'fade', dir: 'out' },
+    { op: 'wait', ms: 700 },
+    { op: 'heal' },
+    { op: 'fade', dir: 'in' },
+    { op: 'say', speaker: 'INNKEEP', text: 'There. Rested, and your kin with you. Off up the mountain, is it? Then mind you come back down — I\'ve started keeping your usual bunk free, and an empty bed is TERRIBLE for business.' },
+    { op: 'shop', shop: 'crossroads_inn' },
+  ],
+
+  // --- C3 "The Long Round" — the Waykeeper, once the Round's last leg is kept
+  // (flag:q_round_chart ⇒ all five legs, the boolean chain). One last walk of
+  // the plaza lamps; the keepsake; the Lamplight tease.
+  'script.long_round': [
+    { op: 'say', speaker: 'WAYKEEPER', text: 'Kite, moss, letters, lamps, and the sky itself — the whole Round, walked in one pair of boots. Indulge an old keeper, then: one last walk of my plaza lamps, before you take the inward road. It is how a Round was always closed, in the lit years.' },
+    { op: 'narrate', text: 'You walk the ring of dusk-lamps with him, sunwise, the way the Round runs. At each lamp he stops, trims nothing — they are all burning perfectly — and touches the post once, like a man counting his children home.' },
+    { op: 'say', speaker: 'WAYKEEPER', text: 'Forty years I kept this Round alone, on roads that mostly slept. Now every spoke is lit and the fresh chart hangs on the stone — and the Round is KEPT, properly kept, for the first time since the night fell.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'way_lamp', count: 1 },
+    { op: 'say', text: 'Received the WAY-LAMP — the Waykeeper\'s own hand-lamp, retired this very hour.' },
+    { op: 'say', speaker: 'WAYKEEPER', text: 'Keep it by you when the dark leans close. A lamp that has walked every road burns a little farther — and yours, Wayfarer, has walked them ALL. You\'ll find the night shows you more than it used to. It can hardly help itself now.' },
+    { op: 'setFlag', flag: 'flag:q_central_round_done' },
+  ],
+
+  // --- C2's four token givers — riding the festival NPCs' post-gleam stages in
+  // their towns. Each replays the festival line, then hands the token only once
+  // the chain has reached it (the per-step if_flag carries the south→east→
+  // north→west order; until then the stage is plain festival colour and stays).
+  'script.token_south': [
+    { op: 'dialogue', ref: 'npc.blessing_singer' },
+    { op: 'say', if_flag: 'flag:q_central_tokens', speaker: 'BLESSING SINGER', text: 'The crossroads inn is filling its festival brackets again? Oh, the quay would LOVE that — the going-out song was always sung for travellers as much as boats.' },
+    { op: 'sfx', if_flag: 'flag:q_central_tokens', key: 'world-pickup' },
+    { op: 'giveItem', if_flag: 'flag:q_central_tokens', item: 'lamp_token_south' },
+    { op: 'say', if_flag: 'flag:q_central_tokens', text: 'She presses a wax token into your palm — a bell over water, still warm from the stamp. Received the LAMP-TOKEN (SOUTH)!' },
+    { op: 'setFlag', if_flag: 'flag:q_central_tokens', flag: 'flag:q_token_south' },
+  ],
+  'script.token_east': [
+    { op: 'dialogue', ref: 'npc.vigil_raised_a' },
+    { op: 'say', if_flag: 'flag:q_token_south', speaker: 'VIGIL MINER', text: 'A bracket at the crossroads, for the Lamp-down? Then take the vigil with you, friend — dimmed and relit, same as we keep it down here. The inn road was cut from this mountain\'s stone, you know.' },
+    { op: 'sfx', if_flag: 'flag:q_token_south', key: 'world-pickup' },
+    { op: 'giveItem', if_flag: 'flag:q_token_south', item: 'lamp_token_east' },
+    { op: 'say', if_flag: 'flag:q_token_south', text: 'He stamps a token against his own lamp\'s warmth — a flame dimmed, then relit. Received the LAMP-TOKEN (EAST)!' },
+    { op: 'setFlag', if_flag: 'flag:q_token_south', flag: 'flag:q_token_east' },
+  ],
+  'script.token_north': [
+    { op: 'dialogue', ref: 'npc.pale_vault_gleam_watcher' },
+    { op: 'say', if_flag: 'flag:q_token_east', speaker: 'AURORA WATCHER', text: 'The waystation hearth, hanging the four festivals together? ...The watch would be honoured. We have always known the lamps are one lamp, really. It is good that an inn knows it too.' },
+    { op: 'sfx', if_flag: 'flag:q_token_east', key: 'world-pickup' },
+    { op: 'giveItem', if_flag: 'flag:q_token_east', item: 'lamp_token_north' },
+    { op: 'say', if_flag: 'flag:q_token_east', text: 'She presses the token in silence, the watch\'s way — one held flame under a moving sky. Received the LAMP-TOKEN (NORTH)!' },
+    { op: 'setFlag', if_flag: 'flag:q_token_east', flag: 'flag:q_token_north' },
+  ],
+  'script.token_west': [
+    { op: 'dialogue', ref: 'npc.nightreach_festival_a' },
+    { op: 'say', if_flag: 'flag:q_token_north', speaker: 'STAR-VIGIL WATCHER', text: 'The last bracket? Then the Star-vigil closes the ring, as it closed the Crown. Carry it carefully, Wayfarer — this one was pressed the night the eighth star came home.' },
+    { op: 'sfx', if_flag: 'flag:q_token_north', key: 'world-pickup' },
+    { op: 'giveItem', if_flag: 'flag:q_token_north', item: 'lamp_token_west' },
+    { op: 'say', if_flag: 'flag:q_token_north', text: 'A watcher\'s lamp, lit at last, stamped small in wax. Received the LAMP-TOKEN (WEST)! The inn\'s four brackets wait.' },
+    { op: 'setFlag', if_flag: 'flag:q_token_north', flag: 'flag:q_token_west' },
+  ],
+
+  // --- THE PENUMBRA RING — the threshold register: the held breath, not a beat.
+  // No progression flag (the trigger banks the presentational once-only).
+  'script.penumbra_threshold': [
+    { op: 'musicFade', ms: 900 },
+    { op: 'silence', ms: 2000 },
+    { op: 'narrate', text: 'The dark here has edges. It has drawn back from the roads you lit — and what is left of it does not want you.' },
+    { op: 'narrate', text: 'Your lamp-glow is the only colour in the world. Ahead, off the north rim, something vast holds the sky out of the sky: the Umbral Spire, wearing the last of the night.' },
+    { op: 'say', if_flag: 'flag:wren_joined', speaker: 'WREN', portrait: 'wren', expr: 'neutral', text: '...Keep your lamp up. Almost there. A year ago this was a wall nobody could pass.' },
+    { op: 'musicCrossfade', key: 'penumbra-ring-a', ms: 1600 },
+  ],
+  'script.pickup_penumbra_shard': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'starglass_shard', count: 1 },
+    { op: 'say', text: 'On the islet in the void-field, where only starlight can carry you: a STARGLASS SHARD — starlight made stone, bright to its heart. Found it!' },
+    { op: 'setFlag', flag: 'flag:picked_penumbra_shard' },
+  ],
+  'script.pickup_penumbra_wicks': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 600 },
+    { op: 'say', text: "A courier's satchel, dropped at the old fog-line and sealed in by the dark for years. Found 600 WICKS — carried home at last." },
+    { op: 'setFlag', flag: 'flag:picked_penumbra_wicks' },
+  ],
+
+  // --- STARWELL — the well of fallen starlight, and Lunaveil (the SILENCE
+  // register: the quietest set-piece in the game; a chance, not a gift).
+  'script.starwell_lunaveil': [
+    { op: 'musicFade', ms: 900 },
+    { op: 'silence', ms: 1600 },
+    { op: 'narrate', text: 'The pool stirs. Not with wind — there is no wind here — but the way a sleeper stirs when a lamp is carried into the room.' },
+    { op: 'narrate', text: 'A vast wing crosses the starlight, soundless, trailing veils of pale dusk — and the Lunaveil settles on the basin rim, regarding your small warm light with eyes like the moment before moonrise.' },
+    { op: 'legendaryBattle', name: 'lunaveil', kin: 132, level: 54, caughtFlag: 'flag:lunaveil_caught', cooldownBattles: 12, cooldownRef: 'npc.starwell_still' },
+    { op: 'narrate', text: 'The Lunaveil folds itself into your lamp like dusk folding into a valley — vast, then gone, then quietly THERE, the way the moon is there behind a thin cloud.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'narrate', text: 'The well\'s light eases, as if it has been holding something carefully for years and may finally set it down. The water keeps shining anyway. Some places simply do.' },
+  ],
+  'script.pickup_starwell_amber': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'moth_amber', count: 1 },
+    { op: 'say', text: 'At the frozen pool\'s edge, set down like an offering: a MOTH-AMBER, its caught shimmer answering the well\'s. Found it!' },
+    { op: 'setFlag', flag: 'flag:picked_starwell_amber' },
+  ],
+
+  // --- THE UMBRAL SPIRE — the ascent of the Ninth Lantern. The acolytes are
+  // small griefs: each a PERSON doing a careful, terrible kindness. Gentle asks,
+  // sad-not-bitter defeats, no mook energy, zero humour.
+  'script.hollowing_acolyte_a': [
+    { op: 'say', speaker: 'MERRIN', text: 'You shouldn\'t be up here, apprentice. ...I dipped wicks in a coast-town chandlery for thirty years. I know good lamp-work when it walks in carrying it.' },
+    { op: 'say', speaker: 'MERRIN', text: 'That is WHY I am here. Every wick I ever dipped burned down while somebody watched. We\'re not cruel — your kin will only sleep. No more guttering, no more loss. ...Won\'t you let us be kind to it?' },
+    { op: 'battle', trainer: 'hollowing_acolyte_a' },
+    { op: 'say', speaker: 'MERRIN', text: '...Still burning. All of yours, still burning. Go on, then — the gate was never locked. We always rather hoped no one would notice that.' },
+    { op: 'setFlag', flag: 'flag:hollowing_acolyte_a_beaten' },
+  ],
+  'script.hollowing_acolyte_b': [
+    { op: 'say', speaker: 'TACE', text: 'Mind the alcoves, please — they\'re sleeping. ...I kept a ferry once, south of here. Twenty years of carrying people home to lamps that had gone out by the time we docked.' },
+    { op: 'say', speaker: 'TACE', text: 'The Warden was the first person who didn\'t tell me it gets easier. He said it could STOP. Put your kin down gently, traveller, and it stops tonight — for you, for them, for everyone.' },
+    { op: 'battle', trainer: 'hollowing_acolyte_b' },
+    { op: 'say', speaker: 'TACE', text: '...No. Of course not. You\'re the sort who docks at the dark jetty and lights it anyway. ...The ferry could have used you, all those years.' },
+    { op: 'setFlag', flag: 'flag:hollowing_acolyte_b_beaten' },
+  ],
+  'script.hollowing_acolyte_c': [
+    { op: 'say', speaker: 'IVORWEN', text: 'Hush, dear — softly through here. I tuck them in myself, every one. Warm where I can manage it. ...I nursed my husband\'s lamp four winters at the end. I know exactly how heavy watching is.' },
+    { op: 'say', speaker: 'IVORWEN', text: 'Nobody up here is angry at the light, child. We just couldn\'t hold it any more. Let me take yours a while — you\'ve carried it so terribly far.' },
+    { op: 'battle', trainer: 'hollowing_acolyte_c' },
+    { op: 'say', speaker: 'IVORWEN', text: '...Four winters, and I would have kept a fifth if I could. There. That\'s the thing I wasn\'t letting myself remember. ...Go up, dear. Mind the draught on the gallery stair.' },
+    { op: 'setFlag', flag: 'flag:hollowing_acolyte_c_beaten' },
+  ],
+  'script.hollowing_acolyte_d': [
+    { op: 'say', speaker: 'HARL', text: 'Far enough, Wayfarer. ...I was a Cinderhead man, deep-galleries. Carried my crew\'s lamps home the bad year — all eight of them, and none of the hands that hung them by their doors.' },
+    { op: 'say', speaker: 'HARL', text: 'The mountain taught me to outlast. The Warden taught me what for. This gallery is the last kindness before the summit — and I keep it like I kept the deep: nothing passes that the dark could hurt.' },
+    { op: 'battle', trainer: 'hollowing_acolyte_d' },
+    { op: 'say', speaker: 'HARL', text: '...You out-lasted me. The deep way. ...Eight lamps, Wayfarer. If you can keep yours lit where I couldn\'t — keep theirs lit too. Somebody should.' },
+    { op: 'setFlag', flag: 'flag:hollowing_acolyte_d_beaten' },
+  ],
+  'script.hollowing_acolyte_e': [
+    { op: 'say', speaker: 'SEFA', text: 'You can hear the wind from here. The Warden says it is the sky breathing on the glass. ...My wife lit the north roads, lamp by lamp, every dusk for eleven years. One dusk the fog put them out faster than she could walk.' },
+    { op: 'say', speaker: 'SEFA', text: 'I am not here because I stopped loving lamplight, apprentice. I am here because I couldn\'t watch it lose again. Please — be tired. Be sensible. Be SPARED.' },
+    { op: 'battle', trainer: 'hollowing_acolyte_e' },
+    { op: 'say', speaker: 'SEFA', text: '...She would have liked you. She was exactly this stubborn about exactly this. ...Go on up. And if the sky takes the trouble to change — light the north roads first. For me.' },
+    { op: 'setFlag', flag: 'flag:hollowing_acolyte_e_beaten' },
+  ],
+
+  // The look-up bands: the Skyweave Crown through the open shafts (atmosphere
+  // only — the darkest place in the game, under the greatest light).
+  'script.spire_crown_1': [
+    { op: 'narrate', text: 'Through the gatehouse\'s broken shaft, far overhead, the night is FULL: eight constellations standing lit at once, the Skyweave Crown complete, its light falling down the black throat of the mountain like rain into a well.' },
+    { op: 'tint', color: '#9fd4ff', alpha: 0.16, ms: 900 },
+    { op: 'narrate', text: 'The darkest place in Vesperholm — directly beneath the greatest light it has ever raised. Every lamp you lit is up there, looking back down the climb with you.' },
+    { op: 'tint', color: '#9fd4ff', alpha: 0, ms: 900 },
+  ],
+  'script.spire_crown_2': [
+    { op: 'narrate', text: 'Another open shaft; another column of Crown-light standing in the dark like a pillar holding the room up. The null-works hum somewhere below the floor — and the starlight comes down anyway. It always came down. It was only ever waiting to be answered.' },
+  ],
+  // The high-gallery breather: the wind above the world + the shaft hoist
+  // (sets flag:spire_shaft via the trigger — the sanctioned re-climb compressor).
+  'script.spire_wind': [
+    { op: 'narrate', text: 'The gallery opens to the night, and there is WIND — true wind, the sky\'s own breath, this deep in the mountain. Every constellation you have relit hangs in the column of air above the shaft, near enough to read by.' },
+    { op: 'narrate', text: 'An old hoist-lamp waits at the shaft\'s lip, wick sound, oil long set. You warm it with your own flame until it remembers its work.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'narrate', text: 'Far below, a thread of starlight steadies down the spire\'s open core — the old hoist-line, lit end to end. The climb keeps a road home now.' },
+  ],
+  'script.pickup_spire_gatehouse': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'bright_balm', count: 2 },
+    { op: 'say', text: 'A dead Lumenary\'s vestry chest, dry and sound: two BRIGHT BALMS, laid in against a long vigil that never came. Found them!' },
+    { op: 'setFlag', flag: 'flag:picked_spire_gatehouse' },
+  ],
+  'script.pickup_spire_landing': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'starglass_shard', count: 1 },
+    { op: 'giveItem', item: 'bright_balm', count: 1 },
+    { op: 'say', text: 'On the hidden side-landing, where the Ninth Lantern\'s keepers once watched the sky: a STARGLASS SHARD and a BRIGHT BALM, kept forty years by the dark and the dry. Found them!' },
+    { op: 'setFlag', flag: 'flag:picked_spire_landing' },
+  ],
+  'script.pickup_spire_gallery': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 800 },
+    { op: 'say', text: "A toll-box from the lit years, its lock long since surrendered: 800 WICKS that never made it down the mountain. Found them!" },
+    { op: 'setFlag', flag: 'flag:picked_spire_gallery' },
+  ],
+
+  // --- THE SUMMIT CHAIN ------------------------------------------------------
+  // 1. The Great Null, SEEN (B5's reveal — the player has known its name since
+  // Nightreach; no re-explaining, just the scale of it and the swept floor).
+  'script.great_null': [
+    { op: 'letterbox', on: true, ms: 420 },
+    { op: 'musicFade', ms: 900 },
+    { op: 'silence', ms: 2200 },
+    { op: 'narrate', text: 'It fills the summit the way held breath fills a room: a bell of patient dark, vast as a Lumenary\'s dome, aimed with terrible courtesy at the one star that lets the others rekindle.' },
+    { op: 'narrate', text: 'The Great Null. You have carried its name up half a world. Nothing about the name prepared you for how QUIET it is.' },
+    { op: 'narrate', text: 'At its foot, a single gauge rests at zero. The floor around it has been swept — recently, carefully, by someone who still believes tidiness is a kindness you can do for the dark.' },
+    { op: 'letterbox', on: false, ms: 420 },
+  ],
+
+  // 2. THE SCENE — Warden Còr's case at full strength, the battle as form, and
+  // the resolution: he is NOT defeated. Winning earns the right to answer; the
+  // answer is the out-remembering — every relit constellation named back at him
+  // in one rising passage (the lamp-remembrance voice). His certainty breaks
+  // INTO remembering. (Trigger banks flag:cor_answered; a loss aborts, retry-safe.)
+  'script.warden_cor_final': [
+    { op: 'letterbox', on: true, ms: 420 },
+    { op: 'musicFade', ms: 900 },
+    { op: 'silence', ms: 2000 },
+    { op: 'narrate', text: 'He is standing with his back to you, hands folded, watching the Keystar the way other people watch a hearth. He knows you are there. He has known for eight constellations.' },
+    { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'grave', text: 'You climbed kindly. My people sleep unhurt below, every one — I notice these things, apprentice. I have watched your lamps come up my dark like a slow sunrise, and I find I am glad of the company. Especially tonight.' },
+    { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'gentle', text: 'I had hoped you\'d be tired enough to agree with me. You\'ve seen the quieted towns — you\'ve seen how peaceful it is. I am not cruel, apprentice. I only want the grieving to stop.' },
+    { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'gentle', text: 'One lamp. This one — the last anchoring light — left gently unlit, and the long night settles soft and permanent over every valley that is tired of losing things. No more guttering. No more goodbyes. No more standing at a window with a wick in your hand, counting its hours and calling it hope.' },
+    { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'sorrowful', text: 'You could simply stop. That is all I have ever asked of anyone. Set the lamp down, apprentice — and be the first soul in Vesperholm the dark never takes anything from again.' },
+    { op: 'say', if_flag: 'flag:wren_joined', speaker: 'WREN', portrait: 'wren', expr: 'resolved', text: '...Don\'t argue with him. You can\'t. Remember louder. Go on — I\'m right here.' },
+    { op: 'narrate', text: 'You raise the vesperlamp. It is the only answer you have ever had — and tonight, at last, it is bright enough to be one.' },
+    { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'grave', text: '...So be it. I will not pretend I hoped otherwise. And I will not pretend that some old, unhelpful corner of me is not proud of you.' },
+    { op: 'letterbox', on: false, ms: 300 },
+    { op: 'battle', trainer: 'warden_cor' },
+    { op: 'letterbox', on: true, ms: 420 },
+    { op: 'musicFade', ms: 700 },
+    { op: 'silence', ms: 2200 },
+    { op: 'narrate', text: 'His kin sleep where they fell — unhurt, every one; he is gentle even in losing. He gathers them in with a murmur each, like a man banking a fire for the night. He is not beaten. Nothing about him is beaten.' },
+    { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'grave', text: 'Well kept, apprentice. ...But you understand by now that the battle proves nothing. I have lost arguments before. Grief always loses the argument — and then it stays anyway, and keeps the house.' },
+    { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'grave', text: 'So. Say your piece. I have heard every argument in Vesperholm; I made most of them myself, alone, in this very dark. Say something I have not already grieved my way past.' },
+    { op: 'narrate', text: 'You do not argue. You lift the vesperlamp between you — and let it remember.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#ffd089', alpha: 0.1, ms: 800 },
+    { op: 'narrate', text: 'EMBER — a coast-town fair under strung lanterns, a whole harbour told that a small flame is no lesser thing. TIDE — a moor-bell rolling out over lantern-lit boats, a quay lending the sea its lamps because the sea keeps none of its own.' },
+    { op: 'narrate', text: 'VERDANT — a hollow where the moss flowered all at once and outshone its own lantern-strings. STONE — a mining town dimming every lamp on purpose, honouring its dark, and lighting every single one again.' },
+    { op: 'tint', color: '#ffd089', alpha: 0.2, ms: 800 },
+    { op: 'narrate', text: 'STORM — a hundred small flames climbing the night on kite-tails, so the stars had something to answer. FROST — a town out on black ice in perfect silence, every flame held in a bare hand, every flame CHOSEN.' },
+    { op: 'narrate', text: 'SOLAR — the last warm day, spent gladly, in front of the watching dark, knowing it fades; that being the point. LUNAR — a town that watches all night, every night, so that the sky is never once alone.' },
+    { op: 'flashColor', color: '#ffd089', ms: 260 },
+    { op: 'tint', color: '#ffd089', alpha: 0.3, ms: 900 },
+    { op: 'narrate', text: 'And the kin. The small bright lives that chose your road and walked it — light caught, light kindled, light carried in a lamp and carried back OUT of it, freely, over and over, all the way up this mountain. Every one of them a goodbye waiting to happen. Every one of them worth it. Every one.' },
+    { op: 'silence', ms: 1800 },
+    { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'sorrowful', text: '...You\'re not arguing with me. You\'re REMEMBERING at me. All of it — every lamp, every name, every small goodbye you\'d have me erase.' },
+    { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'sorrowful', text: 'I remember the ache, apprentice. I built every stone of this against the ache. But the fair, the bell, the kites on the dark, the bread going round while the braziers held... I had forgotten it was worth the ache.' },
+    { op: 'narrate', text: 'His certainty does not shatter. It goes the way ice goes at the first thaw — quietly, from underneath, into something that moves again.' },
+    { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'at_peace', text: 'The gauge stands at zero. It has always stood at zero. Two years I told myself I was waiting to be certain — and certainty never came, because some mercies cannot survive being looked at by a lit lamp.' },
+    { op: 'narrate', text: 'Warden Còr folds his hands, and steps aside from his own great work — undone by no force in Vesperholm except everything he had made himself forget.' },
+    { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'at_peace', text: 'Go and wake the Keystar, apprentice. It has been listening to you far longer than I have.' },
+    { op: 'tint', color: '#ffd089', alpha: 0, ms: 1100 },
+    { op: 'letterbox', on: false, ms: 420 },
+  ],
+
+  // 3. The Keylumen — the climax catch/relight (interact at the dais, requires
+  // flag:cor_answered). A set-piece battle, not a wild roll: the kin cannot
+  // flee, a miss withdraws for ZERO won battles (raise the lamp and ask again —
+  // the climax never strands), and Fenn's Starlamp is the intended asking.
+  // The apex Gleam cadence: the game's longest silence, then minor→major on
+  // umbral-spire-c ("First True Dawn"). Trigger banks flag:keystar_relit.
+  'script.keystar_relight': [
+    { op: 'letterbox', on: true, ms: 420 },
+    { op: 'narrate', text: 'Above the Great Null\'s silenced mouth the Keystar hangs small and patient, the one light the whole sky remembers itself by. And in the dais under your hands, something stirs toward your lamp-glow.' },
+    { op: 'narrate', text: 'A curl of white-gold light unfolds from the old lantern-housing: the KEYLUMEN, the Keystar\'s living heart, asleep in the Ninth Lantern since the night fell — awake now, and regarding your lamp the way a kin regards a door held open.' },
+    { op: 'narrate', if_flag: 'flag:wren_joined', text: 'Behind you, Wren says nothing at all — just lifts their lamp, the way you both learnt on the coast road. The asking is yours.' },
+    { op: 'narrate', if_flag: 'flag:fenn_counsel_given', text: 'In your satchel, Fenn\'s starlamp is warm as a held hand. Forty years he kept it — for exactly this asking.' },
+    { op: 'letterbox', on: false, ms: 300 },
+    { op: 'legendaryBattle', name: 'keylumen', kin: 149, level: 55, caughtFlag: 'flag:keylumen_caught', cooldownBattles: 0, cooldownRef: 'npc.keylumen_waits' },
+    { op: 'letterbox', on: true, ms: 420 },
+    { op: 'musicFade', ms: 700 },
+    { op: 'silence', ms: 2600 },
+    { op: 'narrate', text: 'The Keylumen settles into your lamp — and then rises THROUGH it, up the open shaft of the mountain, up past the Crown, a thread of white-gold paying out from your hands into the highest dark.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#fff3c9', alpha: 0.35, ms: 1400 },
+    { op: 'gleam', element: 'light' },
+    { op: 'musicCrossfade', key: 'umbral-spire-c', ms: 1400 },
+    { op: 'narrate', text: 'The Keystar CATCHES. Light pours back along the Skyweave like a tide remembering its shore — eight constellations flaring in answer, the Crown blazing whole, the night over Vesperholm turning legible from rim to rim.' },
+    { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'at_peace', text: '...There it is. The view from the top of the ladder. I named half those stars, apprentice — and tonight is the first time in twenty years I have let myself look at them.' },
+    { op: 'flashColor', color: '#fff3c9', ms: 300 },
+    { op: 'tint', color: '#fff3c9', alpha: 0, ms: 1600 },
+    { op: 'narrate', text: 'The Keystar holds. The sky remembers itself. And somewhere below the mountain, in valley after valley, lamps are going up in windows to answer it.' },
+    { op: 'letterbox', on: false, ms: 420 },
+  ],
+
+  // 4. DAWN BREAKS — fired as you turn from the dais and walk back into the
+  // world (requires flag:keystar_relit). Sets flag:dawn ITSELF (the cinematic
+  // hand-over never returns, so the trigger's banking can't be relied on), then
+  // Fenn's offer to Còr — mercy answered with mercy — and the hand-over to the
+  // dawn panels + credits (the dawn-breaks track belongs to the cinematic).
+  'script.dawn_breaks': [
+    { op: 'letterbox', on: true, ms: 420 },
+    { op: 'silence', ms: 1800 },
+    { op: 'narrate', text: 'You turn from the dais — and the light comes with you. Over the rim of the world, for the first time in years, the east goes grey. Then silver. Then, unbelievably, GOLD.' },
+    { op: 'setFlag', flag: 'flag:dawn' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#ffd089', alpha: 0.25, ms: 1600 },
+    { op: 'narrate', text: 'A lamp is climbing the dawn road below — small, steady, unhurried. Star-tender Fenn, who would not climb in the dark, climbing in the light.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'I watched it begin from the waystone, child. Then I looked down and found my legs had already started walking.' },
+    { op: 'narrate', text: 'He passes you with one press of your shoulder — and goes to the rail, where Còr stands with the morning on his face like a man rereading an old letter.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'peace', text: 'You read the same sky I did, old friend. There\'s still a lamp lit for you. ...Come down and tend it with me.' },
+    { op: 'silence', ms: 1600 },
+    { op: 'narrate', text: 'Còr does not answer in words. He picks up his cold hand-lamp, turns it over once — and follows his friend down toward the morning, leaving the Great Null to the swallows and the rust.' },
+    { op: 'say', if_flag: 'flag:wren_joined', speaker: 'WREN', portrait: 'wren', expr: 'eager', text: 'Same road, different lamps — all the way to the end of the sky. ...And now we get to see where it goes in daylight. Come on, Wayfarer. Walk me home.' },
+    { op: 'narrate', text: 'The long night breaks. Not into a victory — into a morning. Dusk will come again; that is the whole of it. The dawn is worth the dark precisely because it can be lost.' },
+    { op: 'cinematic', id: 'ending_credits' },
+  ],
 };
 
 export function getScript(ref: string): import('./types').CutsceneStep[] | undefined {

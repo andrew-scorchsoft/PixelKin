@@ -341,6 +341,9 @@ export class WorldScene extends Phaser.Scene {
   /** Re-evaluate flag-conditional NPCs after flags change (a picked-up item
    *  cache vanishes immediately; a festival crowd appears without a re-entry). */
   private refreshNpcs(): void {
+    // A cutscene's `cinematic` op replaces this scene mid-await (the ending);
+    // never rebuild NPCs into a scene that is already shutting down.
+    if (!this.scene.isActive()) return;
     this.refreshObjects();
     this.npcs = this.npcs.filter((npc) => {
       if (this.npcVisible(npc.placement)) return true;
@@ -560,6 +563,14 @@ export class WorldScene extends Phaser.Scene {
       },
       cameraFocusTile: (tx, ty, ms, zoom) => this.cameraFocusTile(tx, ty, ms, zoom),
       cameraReset: (ms) => this.cameraResetToPlayer(ms),
+      startCinematic: async (id: string) => {
+        // Bank everything FIRST (flags the script just set included) so a
+        // Continue after the roll resumes exactly here — then hand the screen
+        // to the cinematic. Its `next` routes onward (the ending goes to Title).
+        await this.persist();
+        this.music.stop();
+        this.scene.start('Cinematic', { scriptId: id });
+      },
     };
   }
 

@@ -212,7 +212,7 @@ The JOURNEY table in `progression.mjs` is the contract; summarised:
 | East *(fen + Lowleaf built)* | 12 — 3 route, 7 keeper, 2 warden | ~36 | 1,550w | Moth-amber ×2 |
 | North | 13 — 6 route, 4 keeper, 1 rival (A4), 2 warden | ~21 | 1,600w + finds | Moth-amber ×2 |
 | West *(built)* | 12 — 7 route, 2 keeper, 1 rival (A5), 2 warden | ~21 | 1,100w + finds | Starglass ×4 + Moth-amber ×3 (Coldfog's Embergloss/Murk Pearl ride the optional detour) |
-| Central | 6 — 5 keeper (acolytes), Còr | ~10 | 1,500w | Starglass |
+| Central *(built)* | 6 — 5 keeper (acolytes), Còr | ~10 (set-piece catches + spoke top-ups; no wild zones past the hub) | 0w quests + 1,400w finds (the quest pay is item-shaped: Radiant Lamp ×3.5, Way-lamp, the Lampling) | Starglass ×2 + Moth-amber |
 
 Rules for region authors:
 

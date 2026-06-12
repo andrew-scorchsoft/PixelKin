@@ -490,10 +490,17 @@ m["npcs"] += [
      "sprite": "npc_boy", "movement": "static",
      "dialogue_ref": "npc.nightreach_watcher_steps_b"},
     # Arc E payoff: the town answers the eighth Gleam (standing kit)
+    # C2 "The Inn's Empty Lamps" (Central wiring): the WEST token giver —
+    # the Star-vigil line first, the last lamp-token once the chain reaches her.
     {"id": "festival_lunar_a", "at": {"tx": 17, "ty": 14}, "facing": "up",
      "sprite": "npc_girl", "movement": "wander",
+     "dialogue_ref": "script.token_west",
+     "requires_flag": "gleam:lunar",
+     "hidden_when_flag": "flag:q_token_west"},
+    {"id": "festival_lunar_a_after", "at": {"tx": 17, "ty": 14}, "facing": "up",
+     "sprite": "npc_girl", "movement": "wander",
      "dialogue_ref": "npc.nightreach_festival_a",
-     "requires_flag": "gleam:lunar"},
+     "requires_flag": "flag:q_token_west"},
     {"id": "festival_lunar_b", "at": {"tx": 14, "ty": 17}, "facing": "up",
      "sprite": "npc_man", "movement": "static",
      "dialogue_ref": "npc.nightreach_festival_b",

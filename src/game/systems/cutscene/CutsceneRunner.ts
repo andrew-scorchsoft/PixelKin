@@ -54,6 +54,12 @@ export interface CutsceneContext {
   cameraFocusTile?(tx: number, ty: number, ms: number, zoom?: number): Promise<void>;
   /** Re-follow the player and restore zoom after a focus. */
   cameraReset?(ms: number): Promise<void>;
+  /**
+   * Persist the save, then hand the whole screen to a CinematicScript
+   * (CinematicScene). The world scene ends here — the runner aborts the
+   * remaining steps, so the op belongs at the very end of a script.
+   */
+  startCinematic?(id: string): Promise<void>;
 }
 
 const MUSIC_URL = (key: string): string => `assets/audio/music/${key}.mp3`;
@@ -242,6 +248,12 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       await flash(scene, 220);
       return true;
     }
+    case 'cinematic':
+      // The hand-over: the host persists, then starts CinematicScene. The world
+      // scene is being replaced, so end the cutscene here (nothing after plays;
+      // any progression flags must have been set by earlier steps).
+      await ctx.startCinematic?.(step.id);
+      return false;
   }
 }
 

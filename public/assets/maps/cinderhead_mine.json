@@ -358,8 +358,21 @@
       "facing": "left",
       "sprite": "npc_old_man",
       "movement": "look_around",
+      "dialogue_ref": "script.token_east",
+      "requires_flag": "gleam:stone",
+      "hidden_when_flag": "flag:q_token_east"
+    },
+    {
+      "id": "vigil_raised_a_after",
+      "at": {
+        "tx": 15,
+        "ty": 13
+      },
+      "facing": "left",
+      "sprite": "npc_old_man",
+      "movement": "look_around",
       "dialogue_ref": "npc.vigil_raised_a",
-      "requires_flag": "gleam:stone"
+      "requires_flag": "flag:q_token_east"
     },
     {
       "id": "vigil_raised_b",

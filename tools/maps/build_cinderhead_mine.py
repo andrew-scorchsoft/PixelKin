@@ -183,10 +183,17 @@ m: dict = {
          "sprite": "npc_shopkeeper", "movement": "static",
          "dialogue_ref": "script.cinderhead_rest"},
         # --- post-Gleam festival payoff (Arc E: the town visibly answers the win) -
+        # C2 "The Inn's Empty Lamps" (Central wiring): the EAST token giver —
+        # festival line first, the lamp-token once the chain reaches him.
         {"id": "vigil_raised_a", "at": {"tx": 15, "ty": 13}, "facing": "left",
          "sprite": "npc_old_man", "movement": "look_around",
+         "dialogue_ref": "script.token_east",
+         "requires_flag": "gleam:stone",
+         "hidden_when_flag": "flag:q_token_east"},
+        {"id": "vigil_raised_a_after", "at": {"tx": 15, "ty": 13}, "facing": "left",
+         "sprite": "npc_old_man", "movement": "look_around",
          "dialogue_ref": "npc.vigil_raised_a",
-         "requires_flag": "gleam:stone"},
+         "requires_flag": "flag:q_token_east"},
         {"id": "vigil_raised_b", "at": {"tx": 11, "ty": 12}, "facing": "right",
          "sprite": "npc_child", "movement": "wander",
          "dialogue_ref": "npc.vigil_raised_b",

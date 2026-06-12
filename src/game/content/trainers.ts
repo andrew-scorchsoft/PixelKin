@@ -740,6 +740,97 @@ export const TRAINERS: TrainerRegistry = {
     music: 'battle-nightfall',
     ai: 'smart',
   },
+
+  // --- The Umbral Spire (05-central-endgame) — the endgame difficulty ramp. ---
+  // The Hollowing's acolytes tend the null-works with drained Dark kin: each is
+  // a PERSON doing a careful, terrible kindness (story-bible §7), keeper class,
+  // 'smart' AI (the spine's "hardest sustained run"). Their asks/defeats live in
+  // their scripts (the sight-keeper pattern); no in-battle dialogue needed.
+  hollowing_acolyte_a: {
+    id: 'hollowing_acolyte_a',
+    name: 'MERRIN',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 136, level: 52 }, // Mothdim — Dark
+      { species_id: 137, level: 53 }, // Nullmoth — Dark (ace)
+    ],
+    payout: 1060, // keeper 20 × ace 53
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
+  hollowing_acolyte_b: {
+    id: 'hollowing_acolyte_b',
+    name: 'TACE',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 134, level: 52 }, // Wispwane — Dark/Light
+      { species_id: 133, level: 52 }, // Flutterwane — Dark/Light
+      { species_id: 137, level: 53 }, // Nullmoth — Dark (ace)
+    ],
+    payout: 1060, // keeper 20 × ace 53
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
+  hollowing_acolyte_c: {
+    id: 'hollowing_acolyte_c',
+    name: 'IVORWEN',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 141, level: 53 }, // Cindersob — Dark/Ember
+      { species_id: 142, level: 54 }, // Embergone — Dark/Ember (ace)
+    ],
+    payout: 1080, // keeper 20 × ace 54
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
+  hollowing_acolyte_d: {
+    id: 'hollowing_acolyte_d',
+    name: 'HARL',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 143, level: 54 }, // Whorlix — Storm/Dark
+      { species_id: 138, level: 55 }, // Voidmantle — Dark (ace)
+    ],
+    payout: 1100, // keeper 20 × ace 55
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
+  hollowing_acolyte_e: {
+    id: 'hollowing_acolyte_e',
+    name: 'SEFA',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 135, level: 54 }, // Liminalux — Dark/Light
+      { species_id: 139, level: 55 }, // Wispwane Null — Dark/Light (ace)
+    ],
+    payout: 1100, // keeper 20 × ace 55
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
+
+  // THE FINAL BATTLE — Warden Còr at the Great Null (ace ~56). Dark/Lunar
+  // pressure with Omenire's lull (doze) as the signature threat; Nullmajor —
+  // his alone, never catchable — closes on the Hollowing Hymn. Winning does
+  // not defeat him: it earns the right to ANSWER him (the resolution rides
+  // script.warden_cor_final; reward flags stay on the trigger's sets_flags).
+  warden_cor: {
+    id: 'warden_cor',
+    name: 'WARDEN CÒR',
+    title: 'Keeper of the Hollowing',
+    party: [
+      { species_id: 113, level: 53 }, // Omenire — Lunar/Dark (lull: the doze threat)
+      { species_id: 85, level: 54 }, // Stillwarden — Frost/Dark
+      { species_id: 135, level: 54 }, // Liminalux — Dark/Light
+      { species_id: 138, level: 55 }, // Voidmantle — Dark
+      { species_id: 142, level: 55 }, // Embergone — Dark/Ember
+      { species_id: 150, level: 56 }, // Nullmajor — Dark (the ace; the Hollowing Hymn)
+    ],
+    intro_ref: 'trainer.warden_cor.intro',
+    defeat_ref: 'trainer.warden_cor.defeat',
+    payout: 6720, // Còr 120 × ace 56
+    music: 'battle-boss-eclipse',
+    ai: 'smart',
+  },
 };
 
 /** Intro/defeat dialogue for trainers, kept beside the roster they belong to. */
@@ -983,6 +1074,16 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   'trainer.nessa_cole.defeat': [
     { speaker: 'NESSA COLE', text: '...Awake at the end of it. All my long watches, and I have never been so glad to lose an argument with the dark.' },
     { speaker: 'NESSA COLE', text: 'Stand by the lamp, Wayfarer. The eighth star has been waiting longest of all — and I would like to watch it remember.' },
+  ],
+
+  // --- The summit. Còr's case lives in script.warden_cor_final (portraits, the
+  // full cadence); these are only the battle's own frame — courteous to the last.
+  'trainer.warden_cor.intro': [
+    { speaker: 'WARDEN CÒR', text: 'Very well. Let the lamps make the argument, then — yours as they are, mine as I have made them.' },
+    { speaker: 'WARDEN CÒR', text: 'I will be gentle. I am always gentle. That was never the part anyone disagreed with.' },
+  ],
+  'trainer.warden_cor.defeat': [
+    { speaker: 'WARDEN CÒR', text: '...Still lit. Every one of them, still lit.' },
   ],
 };
 

@@ -106,36 +106,64 @@ export const COLDOPEN_SOUTH: CinematicScript = {
 };
 
 /**
- * The endgame send-off + credits roll. PLACEHOLDER COPY — a later content agent
- * replaces the prose and finalises the credited names; this exists so the
- * capability is real and routable (World → Cinematic('ending_credits') → Title).
- *
- * Shape worth keeping: a short held epilogue beat, then a `credits` scroll. The
- * `ending-credits` music key may not be rendered yet — MusicDirector loads it
- * tolerantly (missing → silence), so the roll plays regardless.
+ * THE ENDING — the dawn-break epilogue + credits roll, fired by the summit's
+ * `script.dawn_breaks` via the `cinematic` op (the host persists FIRST, so a
+ * Continue after the roll resumes at the summit with `flag:dawn` held — the
+ * post-game's door). Bookends the cold open: that sequence watched the lights
+ * go out; this one watches Vesperholm wake. The remembrance voice, in PAST
+ * tense — the journey, already become a story. Routed → Title when done.
  */
 export const ENDING_CREDITS: CinematicScript = {
   id: 'ending_credits',
   beats: [
     {
-      panel: PANEL('ending-01'),
-      music: 'ending-credits',
+      panel: PANEL('dawnbreak-01'),
+      music: 'dawn-breaks',
+      dwellMs: 1400,
       lines: [
-        '[PLACEHOLDER] The last constellation catches, and dawn climbs the eastern ridge over Vesperholm.',
-        '[PLACEHOLDER] The Long Dusk lifts. The lamps you lit will keep — and the road home is warm.',
+        'The Keystar caught — and the sky remembered itself.',
+        'Light ran the Skyweave like flame along a wick: eight constellations blazing whole, and beneath them, for the first time in years, an east with a colour in it.',
+      ],
+    },
+    {
+      panel: PANEL('dawnbreak-02'),
+      lines: [
+        'The morning came down the mountain the long way, the way you had gone up: by every road, to every door.',
+        'In Tinderwick they rang the fair-bell at sunrise, for no reason anyone would write down. In Pearlmoor the boats put out unlit, and nobody minded.',
+        'Lowleaf\'s moss bloomed out of season, embarrassed and glorious. In Cinderhead the miners came up squinting, and dimmed not one lamp all day.',
+      ],
+    },
+    {
+      panel: PANEL('dawnbreak-03'),
+      lines: [
+        'Galehigh flew every kite it owned with no flame on a single tail — daylight carried them instead. On the Pale Vault ice, the silent watch finally talked, all of them at once, about nothing.',
+        'The Solarium\'s drowned garden steamed gold in the sun, forty years of stored warmth giving way to the real thing. And at Nightreach the watchers slept — actually slept — under a sky that could mind itself for one morning.',
+      ],
+    },
+    {
+      panel: PANEL('dawnbreak-04'),
+      sfx: 'world-lantern-light',
+      lines: [
+        'Two old star-tenders walked down a mountain together, one ladder\'s width apart, the way they had always worked.',
+        'A rival lit out for the coast road, to see a particular harbour in daylight. A Waykeeper trimmed lamps that, for the first time in forty years, did not strictly need him. He did it anyway. That is what tending is.',
+        'And the long night ended the only way it ever could: not in a victory — in a morning. Dusk will come again. The lamps are ready. So are you.',
       ],
     },
     {
       // The roll holds the dawn panel and scrolls the credits up over it.
+      music: 'ending-credits',
       creditsTitle: 'PixelKin',
       credits: [
+        { role: 'A game by', names: ['Andrew Ward Studios'] },
         { role: 'Story & World', names: ['Andrew Ward Studios'] },
-        { role: 'Game Design', names: ['Andrew Ward Studios'] },
+        { role: 'Game & Battle Design', names: ['Andrew Ward Studios'] },
         { role: 'Code & Engine', names: ['Andrew Ward Studios'] },
         { role: 'Art & Sprites', names: ['Andrew Ward Studios'] },
         { role: 'Music & Sound', names: ['Andrew Ward Studios'] },
+        { role: 'The 162 kin of Vesperholm', names: ['Themselves'] },
         { role: 'Built with', names: ['TypeScript', 'Phaser 3', 'Vite'] },
-        { role: 'For', names: ['Every lamp-tender on their Wayfaring'] },
+        { role: 'And for', names: ['Every lamp-tender who kept a light', 'through a long dark'] },
+        { role: '', names: ['The dawn is worth the dusk.', 'Thank you for walking it.'] },
       ],
     },
   ],

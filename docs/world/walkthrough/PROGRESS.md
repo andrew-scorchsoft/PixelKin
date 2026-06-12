@@ -22,15 +22,17 @@ Legend — **Gleam** = the region's constellation reward; **Gift** = the Lantern
 | **East** (02) | 3 Verdant · 4 Stone | ✅ **complete** | — (Cinderhead built 2026-06) |
 | **North** (03) | 5 Storm · 6 Frost | ✅ **complete** (built 2026-06) | — |
 | **West** (04) | 7 Solar · 8 Lunar | ✅ **complete** (W1–W4 maps + W5 content wiring, 2026-06) | EXTRA_ENCOUNTERS mirrors (deferred to the species-lane pass) |
-| **Central/Endgame** (05) | — | ⬜ not started | Penumbra Ring · Umbral Spire (`hub_unlocked` roads) |
-| **Post-game** (06) | — | ⬜ not started | Dawnstead · day-forms · Còr's resolution |
+| **Central/Endgame** (05) | — | ✅ **complete** (C1 maps + C2 Spire + C3 wiring, 2026-06) | — |
+| **Post-game** (06) | — | ⬜ not started | Dawnstead · day-forms · Còr's settled resolution · A6 |
 
-**Playable runway today:** a continuous main-path journey from the cold open through
-**all eight Gleams** (Ember → Tide → Verdant → Stone → Storm → Frost → **Solar → Lunar**)
-and all four quadrant crowns — ending as the Crown completes at Nightreach,
-`flag:hub_unlocked` fires, and the four inward roads wait on Central (not started).
-(The in-map West encounter tables are live; the EXTRA_ENCOUNTERS dex-side mirrors
-are the species lane's remaining bookkeeping.)
+**Playable runway today: the game is COMPLETABLE — cold open → dawn.** A continuous
+main-path journey from the prologue through all eight Gleams and all four crowns,
+across the parted Penumbra (Starreach), up the Umbral Spire's four floors, through
+Warden Còr's final asking (out-remembered, not defeated), the Keylumen relight
+(`flag:keystar_relit`), and the dawn (`flag:dawn`) — into the dawn-break panels +
+credits roll, with the save persisted first so Continue resumes at the summit for
+the post-game. (The in-map West encounter tables are live; the EXTRA_ENCOUNTERS
+dex-side mirrors are the species lane's remaining bookkeeping.)
 
 ---
 
@@ -132,8 +134,28 @@ counts only once every authored side carries its warp). W4's done-stage requires
 only; the X3 chart NAMES STARWELL; R5's DELIVERY half (the crossroads Waykeeper's flag-staggered
 trio, `flag:q_round_chart_taken` → `flag:q_round_chart`) landed with the W5 wiring above.
 
-See [`05-central-endgame.md`](./05-central-endgame.md), [`06-postgame.md`](./06-postgame.md)
-for Central/Post-game. Not started.
+## Central / Endgame — the climax (no Gleams; convergence) ✅ (built 2026-06)
+
+| Area | map id(s) | Status | Builder |
+|------|-----------|--------|---------|
+| Vesper Crossroads — endgame stages (C4 Fenn counsel · A5 Wren-joins band w/ the Starlamp · C1 Lampling's Trail · C2 inn + `crossroads_inn` counter · C3 Long Round · "now accessible" sign swap) | `vesper_crossroads` | ✅ | `build_crossroads.py` |
+| Penumbra Ring (the last dark, Starreach crossings; threshold band, two reads, two priced pockets) | `penumbra_ring` | ✅ | `build_penumbra_ring.py` |
+| Starwell (landmark — **Lunaveil #132** lv 54 `legendaryBattle`, cooldown 12) | `starwell` | ✅ | `build_starwell.py` |
+| Umbral Spire (4 floors: gatehouse → null-works → high gallery → summit; 5 acolyte keepers lv52–55 · Wren per-floor · the shaft compressor) | `umbral_spire` + `_f2`/`_f3`/`_summit` | ✅ | `build_umbral_spire.py` |
+
+**C3 WIRING ✅ (2026-06):** every ref the Central maps place resolves — the summit chain
+(`script.great_null` → **`script.warden_cor_final`** (ace 56, 6,720w, out-remembered not
+defeated) → **`script.keystar_relight`** (Keylumen #149 lv 55, `legendaryBattle` cooldown 0,
+Fenn's Starlamp the intended asking) → **`script.dawn_breaks`** (sets `flag:dawn`, persists,
+then the new `cinematic` op hands to the dawnbreak panels + real credits roll → Title;
+Continue resumes at the summit). Quests C1/C2/C3 live (Lampling #148 set-piece, the
+four-festival lamp-token chain riding the festival NPCs in Pearlmoor/Cinderhead/Pale
+Vault/Nightreach, the Way-lamp); items `radiant_lamp`/`way_lamp`/`lamp_token_*`; glossary
++5 (Keystar, Penumbra, Ninth Lantern, Keylumen, First True Dawn); economy mirrored
+(BUILT_PAYOUTS + the built Central leg — progression PASS).
+
+See [`05-central-endgame.md`](./05-central-endgame.md) for the region spec;
+[`06-postgame.md`](./06-postgame.md) (Dawnstead, day-forms, A6, Còr settled) is not started.
 
 ---
 

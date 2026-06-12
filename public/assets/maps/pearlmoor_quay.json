@@ -2883,8 +2883,21 @@
       "facing": "right",
       "sprite": "npc_woman",
       "movement": "static",
+      "dialogue_ref": "script.token_south",
+      "requires_flag": "gleam:tide",
+      "hidden_when_flag": "flag:q_token_south"
+    },
+    {
+      "id": "blessing_singer_after",
+      "at": {
+        "tx": 12,
+        "ty": 16
+      },
+      "facing": "right",
+      "sprite": "npc_woman",
+      "movement": "static",
       "dialogue_ref": "npc.blessing_singer",
-      "requires_flag": "gleam:tide"
+      "requires_flag": "flag:q_token_south"
     }
   ],
   "gates": [
