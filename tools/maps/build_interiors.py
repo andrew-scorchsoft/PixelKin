@@ -274,6 +274,11 @@ def build_lifting_house():
     abdul_at = {"tx": 8, "ty": 4}    # north of bench_b
     sid_at = {"tx": 11, "ty": 6}     # at the stone-store bay's mouth
     npcs = [
+        # Andrew — the OTHER bench guy (not Andy; two separate lifters). Mid-set
+        # at bench_c, permanently; one flavour stage, no quest stack.
+        {"id": "andrew", "at": {"tx": 4, "ty": 8}, "facing": "up",
+         "sprite": "lifter_andrew", "movement": "static",
+         "dialogue_ref": "npc.booji_andrew"},
         {"id": "andy_hook", "at": dict(andy_at), "facing": "down",
          "sprite": "lifter_andy", "movement": "look_around",
          "dialogue_ref": "script.booji_andy",

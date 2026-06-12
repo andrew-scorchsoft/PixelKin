@@ -360,6 +360,18 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'PAUL', text: 'Still here. Still not telling. The cup of something stands exactly as promised — some night.' },
     { speaker: 'PAUL', text: 'Keep the folio somewhere it doesn\'t belong. Things like that go stale on a proper shelf.' },
   ],
+  // Andrew — the OTHER bench guy (two separate lifters; Andy talks, Andrew lifts).
+  'npc.booji_andrew': [
+    { speaker: 'ANDREW', text: 'Can\'t talk long. Mid-set. The bench waits for no man.' },
+    { speaker: 'ANDREW', text: 'Paul? He spotted me once. Didn\'t say a word the whole set — just stood there. Best lifting I\'ve ever done. Make of that what you will.' },
+  ],
+  // The Chickenpig at Paul's dark lamp (post-S4 set-piece catch).
+  'npc.chickenpig_shy': [
+    { text: 'The chicken-pig tucks its head under its one red wing and is immediately, profoundly asleep. Even heralds nap. It will hear you out again once you have won {remaining} more battles.' },
+  ],
+  'npc.chickenpig_after': [
+    { text: 'Only the dark lamp now, and the old man\'s company. Somewhere in your lamp, a rooster-pig is practising being right about the morning.' },
+  ],
 
   // --- Dimglass Coast: the witness (appears after flag:dusk_begins, B1) -------
   'npc.dimglass_witness': [

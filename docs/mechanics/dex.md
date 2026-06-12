@@ -1,9 +1,9 @@
-# PixelKin — The Dex (162)
+# PixelKin — The Dex (163)
 
 > Generated from `src/game/data/species.json` by `tools/balance/gen_docs.py`. Every entry is original (VISION.md). Lines show kindling chains (→).
 
-- **Total:** 162  |  **Tiers:** A:33 B:20 C:38 D:48 E:19 F:4
-- **Primary types:** Ember:18  Tide:18  Verdant:20  Stone:16  Storm:17  Frost:15  Solar:16  Lunar:14  Light:16  Dark:12
+- **Total:** 163  |  **Tiers:** A:33 B:20 C:39 D:48 E:19 F:4
+- **Primary types:** Ember:18  Tide:18  Verdant:20  Stone:16  Storm:17  Frost:15  Solar:17  Lunar:14  Light:16  Dark:12
 
 
 ## South — Tinderwick / coast (Ember, Tide)
@@ -51,6 +51,7 @@
 | <img src="../../public/assets/sprites/creatures/156_cloverbuck/battle_front.webp" width="48" alt="Cloverbuck"> | 156 | **Cloverbuck** | Verdant | C | Physical Bruiser | 418 | → Cloverhart (L36) | 112 | 105cm/34kg | Cloverkit's kindled middle form — a young grove buck whose first antlers have budded as … |
 | <img src="../../public/assets/sprites/creatures/157_pharolux/battle_front.webp" width="48" alt="Pharolux"> | 157 | **Pharolux** | Tide/Light | E | Special Sweeper | 558 | (from Glostrael) | 24 | 380cm/210kg | Glostrael's rare apex kindling — a vast lantern-bell leviathan the old quay-folk call th… |
 | <img src="../../public/assets/sprites/creatures/160_gloamber/battle_front.webp" width="48" alt="Gloamber"> | 160 | **Gloamber** | Ember/Dark | E | Special Tank | 558 |  | 24 | 170cm/88kg | The First Hour — the keeper of dusk, grown heavy with an evening it has never been allow… |
+|  | 163 | **Chickenpig** | Solar | C | Physical Bruiser | 418 |  | 112 | 70cm/28kg | A barrel-round piglet with a rooster's comb, one proud red wing and a spray of green tai… |
 
 ## East — Lowleaf & Cinderhead (Verdant, Stone)
 

@@ -479,6 +479,11 @@ netmender's keeping.
      `pearlmoor_breakwater` · `[LATER-gated only by the moor-gate]` (Paul's stage waits
      on the bell loop's `flag:q_south_has_rope` path being open). Tone note: mystery and
      non-conformance, never the Hollowing — the Registry story is NEVER confirmed.
+     **Epilogue catch:** post-`q_south_booji_done`, the dark lamp's foot wakes a
+     set-piece catch — **#163 Chickenpig** (Solar C, lv 16; the only rooster in
+     Vesperholm that still believes in morning), the Lampling pattern
+     (`script.booji_chickenpig`, `legendaryBattle` cooldown 2 →
+     `flag:chickenpig_caught`).
    - **R1 "Wicks for the Lamplighter"** — the Waykeeper's Round, leg 1 (live now): parcel
      from the **Waykeeper** (`vesper_crossroads`) → the **old lamplighter** (Dimglass I) ·
      flags: `flag:q_round_lamplighter` · reward: bright-lamp kit · `[wakes with spoke]`

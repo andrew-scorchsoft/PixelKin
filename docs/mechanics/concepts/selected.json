@@ -4574,5 +4574,29 @@
   "hook": "An unfinished sunrise as a creature \u2014 fast, gentle, heartbreaking. The emotional apex of the triad: in the Long Dusk it is incomplete by definition, and the sprite should make the player want to fix that.",
   "dex_id": 162,
   "line_primary_type": "Solar"
+ },
+ {
+  "concept_id": "X-CHICKENPIG",
+  "name": "Chickenpig",
+  "types": [
+   "Solar"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "C",
+  "region": "south",
+  "rarity": "rare",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "concept": "The dawn-herald of Pearlmoor's breakwater \u2014 a barrel-round piglet wearing a rooster's comb, one proud red wing and a spray of green tail-sickles. Every waking it climbs somewhere high and crows at the dark, on the principle that something ought to. It has never once doubted the morning.",
+  "visual": "A stout, cheerful piglet standing four-square: big upright pig ears, round cream body, short trotters. A bright red rooster's comb crests its head; a single red-feathered wing folds over its shoulder; brown flight feathers tuck beneath a great backswept spray of teal-and-green sickle tail-feathers. Smiling snout, kind olive eyes. At 64px the silhouette is pig-with-rooster-tail, unmistakable.",
+  "size_cm": 70,
+  "weight_kg": 28,
+  "hook": "Half farm-pig, half dawn-rooster, wholly convinced. Sturdy and funny but dignified \u2014 a creature that has decided morning is coming and is simply early. Kept company at the one lamp the Booji-Wooji Man leaves dark.",
+  "dex_id": 163,
+  "line_primary_type": "Solar"
  }
 ]

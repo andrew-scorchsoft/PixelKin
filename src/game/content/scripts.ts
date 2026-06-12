@@ -335,6 +335,20 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'You are fairly sure there will never be a cup. You are fairly sure that is the point.' },
     { op: 'setFlag', flag: 'flag:q_south_booji_met' },
   ],
+  // The S4 epilogue: the Chickenpig (#163) — the only rooster in Vesperholm
+  // that still believes in morning, asleep at the foot of the one lamp Paul
+  // keeps dark. The Lampling set-piece pattern: interact trigger on the
+  // breakwater (post-q_south_booji_done), legendaryBattle with a short
+  // cooldown, if_flag colour after the catch. Paul's story IS the link: he
+  // keeps the dark company, it keeps the dawn's — they get on.
+  'script.booji_chickenpig': [
+    { op: 'narrate', text: 'Something stout is curled at the dark lamp\'s foot — a cream-coloured pig with a rooster\'s red comb, one red-feathered wing, and a great backswept spray of green tail-sickles. It is, impossibly, both.' },
+    { op: 'say', speaker: 'PAUL', text: 'Ah. The other reason I come out here. Only rooster in Vesperholm that still believes in morning — crows at my dark lamp every waking, on the principle that SOMETHING ought to.' },
+    { op: 'say', speaker: 'PAUL', text: 'It won\'t follow me; I asked. I think it\'s been waiting for somebody who hasn\'t decided who they are yet. Go on — wake it gently.' },
+    { op: 'legendaryBattle', name: 'chickenpig', kin: 163, level: 16, caughtFlag: 'flag:chickenpig_caught', cooldownBattles: 2, cooldownRef: 'npc.chickenpig_shy' },
+    { op: 'say', if_flag: 'flag:chickenpig_caught', speaker: 'PAUL', text: 'Ha! There it goes. When the dawn does come, that one gets to say it told us so. Keep it somewhere it can see the sky.' },
+    { op: 'narrate', if_flag: 'flag:chickenpig_caught', text: 'From inside your lamp, very softly, comes a sound that is half crow and half contented oink. Paul looks more pleased than he will ever admit.' },
+  ],
   'script.booji_andy_done': [
     { op: 'say', speaker: 'ANDY', text: 'You FOUND him? You fought— he gave you the— show me. No! Don\'t show me. If I see it I\'ll want the story, and he\'d never forgive me for getting it second-hand.' },
     { op: 'say', speaker: 'ANDY', text: 'Did you ask about the Registry? ...You asked, and he answered with a question. Of course. Of course he did.' },

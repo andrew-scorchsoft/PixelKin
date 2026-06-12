@@ -1227,6 +1227,29 @@
         "flag:q_south_bell_rung"
       ],
       "hidden_when_flag": "flag:q_south_bell_rung"
+    },
+    {
+      "id": "chickenpig_catch",
+      "kind": "cutscene",
+      "at": {
+        "tx": 8,
+        "ty": 26
+      },
+      "activation": "interact",
+      "ref": "script.booji_chickenpig",
+      "requires_flag": "flag:q_south_booji_done",
+      "hidden_when_flag": "flag:chickenpig_caught"
+    },
+    {
+      "id": "chickenpig_after",
+      "kind": "dialogue",
+      "at": {
+        "tx": 8,
+        "ty": 26
+      },
+      "activation": "interact",
+      "ref": "npc.chickenpig_after",
+      "requires_flag": "flag:chickenpig_caught"
     }
   ],
   "encounters": [],

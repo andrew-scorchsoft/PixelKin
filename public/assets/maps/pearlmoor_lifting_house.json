@@ -455,6 +455,17 @@
   "encounters": [],
   "npcs": [
     {
+      "id": "andrew",
+      "at": {
+        "tx": 4,
+        "ty": 8
+      },
+      "facing": "up",
+      "sprite": "lifter_andrew",
+      "movement": "static",
+      "dialogue_ref": "npc.booji_andrew"
+    },
+    {
       "id": "andy_hook",
       "at": {
         "tx": 3,
