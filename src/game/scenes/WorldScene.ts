@@ -21,6 +21,7 @@ import { GlossaryMenu } from '@game/ui/GlossaryMenu';
 import { RegisterMenu } from '@game/ui/RegisterMenu';
 import { ChartsMenu } from '@game/ui/ChartsMenu';
 import { JournalMenu } from '@game/ui/JournalMenu';
+import { TravelMenu } from '@game/ui/TravelMenu';
 import { ChartView } from '@game/ui/ChartView';
 import { fadeIn, fadeOut } from '@game/ui/Transitions';
 import { KinInstance } from '@game/systems/party/KinInstance';
@@ -44,6 +45,8 @@ import { getShop } from '@game/content/shops';
 import { chartForMap, chartFlag } from '@game/content/charts';
 import type { ChartEntry } from '@game/content/types';
 import { STARTING_WICKS, faintTithe } from '@game/content/economy';
+import { WAYSTONE_NETWORK_FLAG } from '@game/content/waystones';
+import type { Waystone } from '@game/content/waystones';
 import { ShopMenu } from '@game/ui/ShopMenu';
 import { makeStarterKin } from '@game/content/starters';
 import { runCutscene } from '@game/systems/cutscene/CutsceneRunner';
@@ -854,6 +857,21 @@ export class WorldScene extends Phaser.Scene {
     this.modal = false;
   }
 
+  /**
+   * Step the lit road to a waystone (pause menu → TRAVEL). Reuses the engine's
+   * map-entry path exactly like a warp does: a fade out, `enterMap` to the
+   * destination's anchor (which itself autosaves + spirals to a safe tile), then a
+   * fade in. `modal` is already true (we're called from the open pause menu), and
+   * the caller has closed that menu, so movement stays paused across the trip.
+   */
+  private async travelTo(stone: Waystone): Promise<void> {
+    if (!MAP_REGISTRY[stone.map]) return; // tolerant: skip an unauthored destination
+    void this.sfx.play('world-warp');
+    await fadeOut(this, theme.transition.fadeMs);
+    await this.enterMap(stone.map, { tx: stone.tx, ty: stone.ty }, stone.facing, false);
+    await fadeIn(this, theme.transition.fadeMs);
+  }
+
   // --- Loop ----------------------------------------------------------------
 
   update(time: number, delta: number): void {
@@ -1055,24 +1073,35 @@ export class WorldScene extends Phaser.Scene {
     const pending: { load: SaveGame | null } = { load: null };
     let open = true;
     while (open) {
-      const choice = await new Menu(
-        this,
-        [
-          { label: 'RESUME', value: 'resume' },
-          { label: 'KIN', value: 'kin' },
-          { label: 'REGISTER', value: 'register' },
-          { label: 'JOURNAL', value: 'journal' },
-          { label: 'HEARTH', value: 'hearth' },
-          { label: 'ITEMS', value: 'items' },
-          { label: 'LORE', value: 'lore' },
-          { label: 'CHARTS', value: 'charts' },
-          { label: 'SAVE', value: 'save' },
-          { label: 'SETTINGS', value: 'settings' },
-        ],
-        { x: 8, y: 8, sfx: this.sfx },
-      ).run();
+      // The TRAVEL option (waystone fast-travel) appears only once the four-way
+      // hub is lit — before that the Lanternway isn't connected, so it's absent.
+      const entries = [
+        { label: 'RESUME', value: 'resume' },
+        { label: 'KIN', value: 'kin' },
+        { label: 'REGISTER', value: 'register' },
+        { label: 'JOURNAL', value: 'journal' },
+        ...(this.flags.get(WAYSTONE_NETWORK_FLAG) ? [{ label: 'TRAVEL', value: 'travel' }] : []),
+        { label: 'HEARTH', value: 'hearth' },
+        { label: 'ITEMS', value: 'items' },
+        { label: 'LORE', value: 'lore' },
+        { label: 'CHARTS', value: 'charts' },
+        { label: 'SAVE', value: 'save' },
+        { label: 'SETTINGS', value: 'settings' },
+      ];
+      const choice = await new Menu(this, entries, { x: 8, y: 8, sfx: this.sfx }).run();
 
-      if (choice === 'kin') {
+      if (choice === 'travel') {
+        const dest = await new TravelMenu(
+          this,
+          this.map.def.id,
+          (flag) => this.flags.get(flag),
+          this.sfx,
+        ).run();
+        if (dest) {
+          open = false; // close the pause menu, then ride the lit road
+          await this.travelTo(dest);
+        }
+      } else if (choice === 'kin') {
         await this.openPartyMenu();
       } else if (choice === 'register') {
         await new RegisterMenu(this, { seen: [...this.dexSeen], caught: [...this.dexCaught] }, this.sfx).run();
