@@ -44,10 +44,15 @@ const SETTINGS_KEY = 'settings';
 /** Which DOM chrome wraps the canvas (see ShellManager). */
 export type ShellMode = 'device' | 'overlay' | 'plain';
 
+/** On-screen touch-control scale: 1 = compact, 2 = default, 3 = large. */
+export type ControlSize = 1 | 2 | 3;
+
 /** Player-facing preferences, persisted separately from the game save. */
 export interface Settings {
   shell: ShellMode;
   controlsVisible: boolean;
+  /** Size of the on-screen d-pad / A·B / Start cluster (1 small … 3 large). */
+  controlSize?: ControlSize;
   muted?: boolean;
   /** Walk speed: true = always run (no need to hold B). */
   alwaysRun?: boolean;
@@ -65,6 +70,7 @@ export interface Settings {
 export const DEFAULT_SETTINGS: Settings = {
   shell: 'device',
   controlsVisible: true,
+  controlSize: 2,
   muted: false,
   alwaysRun: false,
   textSpeed: 'cosy',

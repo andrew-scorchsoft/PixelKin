@@ -638,6 +638,21 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   touch-only `.pk-rotate-hint` nudges players to turn sideways (tap → best-effort
   fullscreen + `screen.orientation.lock('landscape')`, a no-op on iOS). The `plain`/`overlay`
   shells are intentionally full-bleed and still letterbox.
+- **Reclaiming the browser address bar is two-pronged (the only ways that exist on mobile web).**
+  (1) **Fullscreen API** — `.pk-fs-toggle` (landscape + coarse-pointer only, built only where
+  `requestFullscreen` exists so iOS never shows a dead button) AND an auto-request on the first
+  landscape control press (`ShellManager.maybeAutoFullscreen`, once per session); works on
+  Android, **unsupported on iOS Safari** (non-video). (2) **Installable PWA** —
+  `public/manifest.webmanifest` + the `apple-mobile-web-app-*` meta in `index.html` make
+  "Add to Home Screen" launch chrome-free; this is the ONLY address-bar fix on iOS. Icons are
+  square `public/assets/ui/icon-{192,512}.png` (logo padded on `#0b1026`).
+- **Touch controls scale off ONE `--pk-cs` unit; size is a setting.** The d-pad cross, A·B and
+  START all derive every dimension from `--pk-cell`/`--pk-face-btn` (= base × `--pk-cs`) so the
+  cluster stays internally aligned at any size/viewport (and the controls are `box-sizing:border-box`
+  so a 1px border can't bump a cell off its grid). `Settings.controlSize` (1/2/3, **default 2**)
+  maps to a scale via `ShellManager.CONTROL_SIZE_SCALE`/`applyControlSize` (sets `--pk-cs`); the
+  SettingsMenu **Controls** row cycles `Size 1→2→3→Hidden` (folded into one row — the list is at
+  its 160px height budget, no room for a separate size row).
 - **Crisp text rides on `RENDER_SCALE`.** Game logic is still 240×160, but the canvas is
   rendered into a higher-res framebuffer via `scale.zoom: RENDER_SCALE` (`config.ts` →
   `main.ts`) so the pixel font isn't a 240×160 bitmap blown up by nearest-neighbour. World
