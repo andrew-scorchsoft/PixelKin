@@ -1263,6 +1263,7 @@
       },
       "facing": "right",
       "requires_flag": "flag:has_starter",
+      "blocked_ref": "crossroads.no_kin_yet",
       "transition": "fade"
     },
     {
@@ -1279,6 +1280,7 @@
       },
       "facing": "right",
       "requires_flag": "flag:has_starter",
+      "blocked_ref": "crossroads.no_kin_yet",
       "transition": "fade"
     },
     {
@@ -1396,6 +1398,8 @@
         "ty": 28
       },
       "facing": "up",
+      "requires_flag": "flag:has_starter",
+      "blocked_ref": "crossroads.no_kin_yet",
       "transition": "fade"
     },
     {
@@ -1411,6 +1415,8 @@
         "ty": 28
       },
       "facing": "up",
+      "requires_flag": "flag:has_starter",
+      "blocked_ref": "crossroads.no_kin_yet",
       "transition": "fade"
     },
     {
@@ -1427,6 +1433,7 @@
       },
       "facing": "up",
       "requires_flag": "flag:hub_unlocked",
+      "blocked_ref": "crossroads.spire_not_yet",
       "transition": "fade"
     },
     {
@@ -1443,6 +1450,7 @@
       },
       "facing": "up",
       "requires_flag": "flag:hub_unlocked",
+      "blocked_ref": "crossroads.spire_not_yet",
       "transition": "fade"
     },
     {
@@ -1504,6 +1512,7 @@
       "activation": "step_on",
       "ref": "script.crossroads_marsh_warn",
       "once": true,
+      "requires_flag": "flag:has_starter",
       "hidden_when_flag": "flag:warned_marsh_road",
       "sets_flags": [
         "flag:warned_marsh_road"
@@ -1519,6 +1528,7 @@
       "activation": "step_on",
       "ref": "script.crossroads_marsh_warn",
       "once": true,
+      "requires_flag": "flag:has_starter",
       "hidden_when_flag": "flag:warned_marsh_road",
       "sets_flags": [
         "flag:warned_marsh_road"
