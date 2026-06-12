@@ -311,6 +311,46 @@
       "kind": "landmark",
       "region": "outer",
       "name": "Hollowfen Stillworks"
+    },
+    {
+      "id": "lanternway_tinderwick",
+      "x": 95,
+      "y": 106,
+      "kind": "route",
+      "region": "outer",
+      "name": "Lanternway \u00b7 Tinderwick Spoke"
+    },
+    {
+      "id": "lanternway_pearlmoor",
+      "x": 128,
+      "y": 104,
+      "kind": "route",
+      "region": "outer",
+      "name": "Lanternway \u00b7 Pearlmoor Spoke"
+    },
+    {
+      "id": "lanternway_lowleaf",
+      "x": 144,
+      "y": 79,
+      "kind": "route",
+      "region": "outer",
+      "name": "Lanternway \u00b7 Lowleaf Spoke"
+    },
+    {
+      "id": "lanternway_galehigh",
+      "x": 124,
+      "y": 54,
+      "kind": "route",
+      "region": "outer",
+      "name": "Lanternway \u00b7 Galehigh Spoke"
+    },
+    {
+      "id": "lanternway_nightreach",
+      "x": 80,
+      "y": 76,
+      "kind": "route",
+      "region": "outer",
+      "name": "Lanternway \u00b7 Nightreach Spoke"
     }
   ],
   "roads": [
@@ -501,26 +541,51 @@
     },
     {
       "a": "tinderwick",
+      "b": "lanternway_tinderwick",
+      "kind": "lane"
+    },
+    {
+      "a": "lanternway_tinderwick",
       "b": "vesper_crossroads",
       "kind": "lane"
     },
     {
       "a": "pearlmoor_quay",
+      "b": "lanternway_pearlmoor",
+      "kind": "lane"
+    },
+    {
+      "a": "lanternway_pearlmoor",
       "b": "vesper_crossroads",
       "kind": "lane"
     },
     {
       "a": "lowleaf_hollow",
+      "b": "lanternway_lowleaf",
+      "kind": "lane"
+    },
+    {
+      "a": "lanternway_lowleaf",
       "b": "vesper_crossroads",
       "kind": "lane"
     },
     {
       "a": "galehigh_terraces",
+      "b": "lanternway_galehigh",
+      "kind": "lane"
+    },
+    {
+      "a": "lanternway_galehigh",
       "b": "vesper_crossroads",
       "kind": "lane"
     },
     {
       "a": "nightreach_observatory",
+      "b": "lanternway_nightreach",
+      "kind": "lane"
+    },
+    {
+      "a": "lanternway_nightreach",
       "b": "vesper_crossroads",
       "kind": "lane"
     },
@@ -585,36 +650,41 @@
     "coldfog_marches_i": "coldfog_marches_i",
     "drownlight_beacon": "drownlight_beacon",
     "hollowfen_stillworks": "hollowfen_stillworks",
-    "umbral_spire_f2": "umbral_spire",
+    "lanternway_tinderwick": "lanternway_tinderwick",
+    "lanternway_pearlmoor": "lanternway_pearlmoor",
+    "lanternway_lowleaf": "lanternway_lowleaf",
+    "lanternway_galehigh": "lanternway_galehigh",
+    "lanternway_nightreach": "lanternway_nightreach",
     "umbral_spire_f3": "umbral_spire",
+    "umbral_spire_f2": "umbral_spire",
     "umbral_spire_summit": "dawnstead",
-    "vigil_hearthfall": "tinderwick",
-    "tinderwick_lumenary": "tinderwick",
     "tinderwick_house": "tinderwick",
+    "tinderwick_lumenary": "tinderwick",
     "tinderwick_shop": "tinderwick",
     "tinderwick_beacon_i": "tinderwick",
+    "vigil_hearthfall": "tinderwick",
     "tideglass_gallery": "tideglass_cavern",
-    "pearlmoor_lumenary": "pearlmoor_quay",
+    "pearlmoor_shop": "pearlmoor_quay",
     "pearlmoor_lifting_house": "pearlmoor_quay",
     "pearlmoor_inn": "pearlmoor_quay",
-    "pearlmoor_shop": "pearlmoor_quay",
-    "lowleaf_lumenary": "lowleaf_hollow",
+    "pearlmoor_lumenary": "pearlmoor_quay",
     "lowleaf_bower": "lowleaf_hollow",
+    "lowleaf_lumenary": "lowleaf_hollow",
     "glowmoss_deep_b1f": "glowmoss_deep",
     "vigil_grovefall": "spore_grotto",
     "cinderhead_lumenary": "cinderhead_mine",
     "cinderhead_deep_b1f": "cinderhead_deep",
-    "galehigh_skyloft": "galehigh_terraces",
-    "galehigh_inn": "galehigh_terraces",
-    "galehigh_kitemaker": "galehigh_terraces",
     "galehigh_lumenary": "galehigh_terraces",
+    "galehigh_inn": "galehigh_terraces",
     "galehigh_home": "galehigh_terraces",
+    "galehigh_skyloft": "galehigh_terraces",
+    "galehigh_kitemaker": "galehigh_terraces",
     "vigil_stormfall": "thunderroost",
-    "pale_vault_inn": "pale_vault_glacier",
     "pale_vault_hourfold": "pale_vault_glacier",
-    "pale_vault_undercroft": "pale_vault_glacier",
-    "pale_vault_home": "pale_vault_glacier",
     "pale_vault_lumenary": "pale_vault_glacier",
+    "pale_vault_inn": "pale_vault_glacier",
+    "pale_vault_home": "pale_vault_glacier",
+    "pale_vault_undercroft": "pale_vault_glacier",
     "sunken_solarium_lumenary": "sunken_solarium",
     "vigil_sunfall": "sunvault_climb_ii",
     "nightreach_home": "nightreach_observatory",

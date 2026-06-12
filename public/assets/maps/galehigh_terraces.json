@@ -409,12 +409,12 @@
         "ty": 31
       },
       "trigger": "step_on",
-      "to_map": "vesper_crossroads",
+      "to_map": "lanternway_galehigh",
       "to": {
-        "tx": 1,
-        "ty": 3
+        "tx": 6,
+        "ty": 0
       },
-      "facing": "right",
+      "facing": "down",
       "transition": "fade"
     },
     {
@@ -424,12 +424,12 @@
         "ty": 31
       },
       "trigger": "step_on",
-      "to_map": "vesper_crossroads",
+      "to_map": "lanternway_galehigh",
       "to": {
-        "tx": 1,
-        "ty": 4
+        "tx": 7,
+        "ty": 0
       },
-      "facing": "right",
+      "facing": "down",
       "transition": "fade"
     },
     {

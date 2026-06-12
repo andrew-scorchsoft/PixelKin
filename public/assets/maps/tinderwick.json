@@ -2345,10 +2345,10 @@
         "ty": 16
       },
       "trigger": "step_on",
-      "to_map": "vesper_crossroads",
+      "to_map": "lanternway_tinderwick",
       "to": {
         "tx": 0,
-        "ty": 9
+        "ty": 12
       },
       "facing": "right",
       "transition": "fade"

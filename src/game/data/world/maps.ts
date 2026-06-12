@@ -204,6 +204,41 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'hub',
     music: 'assets/audio/music/tinderwick-a.mp3',
   },
+  // The Lanternway spokes — the five hub lanes are REAL maps (2026-06 topology
+  // fix): short bending country lanes between each rim town and the crossroads,
+  // safe lit ground (no encounters/trainers — "keep to the lamps"). Each bends
+  // visibly inside itself so every transition stays compass-true; the hub-side
+  // warp carries the spoke's Gleam gate. Built by tools/maps/build_lanternway.py.
+  lanternway_tinderwick: {
+    json: 'assets/maps/lanternway_tinderwick.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/tinderwick-a.mp3',
+  },
+  lanternway_pearlmoor: {
+    json: 'assets/maps/lanternway_pearlmoor.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/tinderwick-a.mp3',
+  },
+  lanternway_lowleaf: {
+    json: 'assets/maps/lanternway_lowleaf.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/tinderwick-a.mp3',
+  },
+  lanternway_galehigh: {
+    json: 'assets/maps/lanternway_galehigh.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/tinderwick-a.mp3',
+  },
+  lanternway_nightreach: {
+    json: 'assets/maps/lanternway_nightreach.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/tinderwick-a.mp3',
+  },
   // East: the first true cave dungeon — the hollow's dark interior past Lowleaf
   // (Glimmerstep-gated on Lowleaf's `to_deepwood` warp; B2 first Hollowing contact).
   // The track is "Deep Glimmer", the Lowleaf brief's deep-interior variant.

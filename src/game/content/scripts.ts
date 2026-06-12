@@ -555,6 +555,38 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', text: "A dropped courier's purse, half-buried in the sand. Found 80 WICKS!" },
     { op: 'setFlag', flag: 'flag:picked_flats_wicks' },
   ],
+  // The Lanternway lane caches (one per spoke lane, the variety rule across
+  // the set: balm / charge / loose wicks / a found-to-sell cake / balms).
+  'script.pickup_lane_tinderwick': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'tallow_balm', count: 1 },
+    { op: 'say', text: 'Left on the pond stone where any wayfarer would look. Found a TALLOW BALM!' },
+    { op: 'setFlag', flag: 'flag:picked_lane_tinderwick' },
+  ],
+  'script.pickup_lane_pearlmoor': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'glow_charge', count: 1 },
+    { op: 'say', text: "A courier's tin, tucked dry under the hedge. Found a GLOW CHARGE!" },
+    { op: 'setFlag', flag: 'flag:picked_lane_pearlmoor' },
+  ],
+  'script.pickup_lane_lowleaf': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 90 },
+    { op: 'say', text: 'A toll-box the green lane no longer asks for. Found 90 WICKS!' },
+    { op: 'setFlag', flag: 'flag:picked_lane_lowleaf' },
+  ],
+  'script.pickup_lane_galehigh': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'wax_cake', count: 1 },
+    { op: 'say', text: 'Wedged behind the outcrop, out of the wind — a pressed WAX CAKE! Any keeper will trade well for it.' },
+    { op: 'setFlag', flag: 'flag:picked_lane_galehigh' },
+  ],
+  'script.pickup_lane_nightreach': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'tallow_balm', count: 2 },
+    { op: 'say', text: "A watcher's drop-cache beneath the last lamp but one. Found 2 TALLOW BALMS!" },
+    { op: 'setFlag', flag: 'flag:picked_lane_nightreach' },
+  ],
   // The netmender's storm-drifted net-floats (the Causeway Bell's collinear
   // errand leg — appears on the flats once Reyl sets the quest).
   'script.pickup_net_floats': [

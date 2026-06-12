@@ -674,10 +674,10 @@
         "ty": 29
       },
       "trigger": "step_on",
-      "to_map": "vesper_crossroads",
+      "to_map": "lanternway_nightreach",
       "to": {
-        "tx": 3,
-        "ty": 1
+        "tx": 4,
+        "ty": 0
       },
       "facing": "down",
       "transition": "fade"
@@ -689,10 +689,10 @@
         "ty": 29
       },
       "trigger": "step_on",
-      "to_map": "vesper_crossroads",
+      "to_map": "lanternway_nightreach",
       "to": {
-        "tx": 4,
-        "ty": 1
+        "tx": 5,
+        "ty": 0
       },
       "facing": "down",
       "transition": "fade"
@@ -1632,7 +1632,10 @@
     },
     {
       "id": "oriel_begin",
-      "at": { "tx": 19, "ty": 4 },
+      "at": {
+        "tx": 19,
+        "ty": 4
+      },
       "facing": "up",
       "sprite": "npc_woman",
       "movement": "static",
@@ -1642,7 +1645,10 @@
     },
     {
       "id": "oriel_read_1",
-      "at": { "tx": 19, "ty": 4 },
+      "at": {
+        "tx": 19,
+        "ty": 4
+      },
       "facing": "up",
       "sprite": "npc_woman",
       "movement": "static",
@@ -1652,7 +1658,10 @@
     },
     {
       "id": "oriel_read_2",
-      "at": { "tx": 19, "ty": 4 },
+      "at": {
+        "tx": 19,
+        "ty": 4
+      },
       "facing": "up",
       "sprite": "npc_woman",
       "movement": "static",
@@ -1662,7 +1671,10 @@
     },
     {
       "id": "oriel_read_3",
-      "at": { "tx": 19, "ty": 4 },
+      "at": {
+        "tx": 19,
+        "ty": 4
+      },
       "facing": "up",
       "sprite": "npc_woman",
       "movement": "static",
@@ -1672,7 +1684,10 @@
     },
     {
       "id": "oriel_read_4",
-      "at": { "tx": 19, "ty": 4 },
+      "at": {
+        "tx": 19,
+        "ty": 4
+      },
       "facing": "up",
       "sprite": "npc_woman",
       "movement": "static",
@@ -1682,7 +1697,10 @@
     },
     {
       "id": "oriel_read_5",
-      "at": { "tx": 19, "ty": 4 },
+      "at": {
+        "tx": 19,
+        "ty": 4
+      },
       "facing": "up",
       "sprite": "npc_woman",
       "movement": "static",
@@ -1692,7 +1710,10 @@
     },
     {
       "id": "oriel_carry",
-      "at": { "tx": 19, "ty": 4 },
+      "at": {
+        "tx": 19,
+        "ty": 4
+      },
       "facing": "up",
       "sprite": "npc_woman",
       "movement": "static",
@@ -1702,7 +1723,10 @@
     },
     {
       "id": "oriel_epilogue",
-      "at": { "tx": 19, "ty": 4 },
+      "at": {
+        "tx": 19,
+        "ty": 4
+      },
       "facing": "up",
       "sprite": "npc_woman",
       "movement": "static",

@@ -95,6 +95,12 @@ NODES: dict[str, tuple[int, int, str]] = {
     "coldfog_marches_i": (64, 102, "route"),
     "drownlight_beacon": (46, 92, "landmark"),
     "hollowfen_stillworks": (68, 68, "landmark"),
+    # --- the Lanternway spoke lanes (real maps, build_lanternway.py) ----------
+    "lanternway_tinderwick": (95, 106, "route"),
+    "lanternway_pearlmoor": (128, 104, "route"),
+    "lanternway_lowleaf": (144, 79, "route"),
+    "lanternway_galehigh": (124, 54, "route"),
+    "lanternway_nightreach": (80, 76, "route"),
 }
 
 # Roads drawn between nodes. kind: 'road' (walked route), 'lane' (Lanternway
@@ -143,12 +149,18 @@ ROADS: list[tuple[str, str, str]] = [
     ("coldfog_marches_i", "vesper_crossroads", "road"),
     ("coldfog_marches_ii", "drownlight_beacon", "gate"),
     ("coldfog_marches_ii", "hollowfen_stillworks", "gate"),
-    # the Lanternway spokes (the hub-and-wheel)
-    ("tinderwick", "vesper_crossroads", "lane"),
-    ("pearlmoor_quay", "vesper_crossroads", "lane"),
-    ("lowleaf_hollow", "vesper_crossroads", "lane"),
-    ("galehigh_terraces", "vesper_crossroads", "lane"),
-    ("nightreach_observatory", "vesper_crossroads", "lane"),
+    # the Lanternway spokes (the hub-and-wheel) — each spoke is two hops
+    # through its real lane map (build_lanternway.py)
+    ("tinderwick", "lanternway_tinderwick", "lane"),
+    ("lanternway_tinderwick", "vesper_crossroads", "lane"),
+    ("pearlmoor_quay", "lanternway_pearlmoor", "lane"),
+    ("lanternway_pearlmoor", "vesper_crossroads", "lane"),
+    ("lowleaf_hollow", "lanternway_lowleaf", "lane"),
+    ("lanternway_lowleaf", "vesper_crossroads", "lane"),
+    ("galehigh_terraces", "lanternway_galehigh", "lane"),
+    ("lanternway_galehigh", "vesper_crossroads", "lane"),
+    ("nightreach_observatory", "lanternway_nightreach", "lane"),
+    ("lanternway_nightreach", "vesper_crossroads", "lane"),
     ("cinderhead_deep", "vesper_crossroads", "gate"),  # late mine shortcut
     # the centre
     ("vesper_crossroads", "penumbra_ring", "gate"),

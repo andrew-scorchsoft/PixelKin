@@ -1226,10 +1226,10 @@
         "ty": 9
       },
       "trigger": "step_on",
-      "to_map": "tinderwick",
+      "to_map": "lanternway_tinderwick",
       "to": {
-        "tx": 26,
-        "ty": 16
+        "tx": 23,
+        "ty": 6
       },
       "facing": "left",
       "transition": "fade"
@@ -1241,10 +1241,10 @@
         "ty": 8
       },
       "trigger": "step_on",
-      "to_map": "tinderwick",
+      "to_map": "lanternway_tinderwick",
       "to": {
-        "tx": 26,
-        "ty": 16
+        "tx": 23,
+        "ty": 5
       },
       "facing": "left",
       "transition": "fade"
@@ -1256,10 +1256,10 @@
         "ty": 9
       },
       "trigger": "step_on",
-      "to_map": "pearlmoor_quay",
+      "to_map": "lanternway_pearlmoor",
       "to": {
-        "tx": 1,
-        "ty": 12
+        "tx": 0,
+        "ty": 6
       },
       "facing": "right",
       "requires_flag": "gleam:tide",
@@ -1273,10 +1273,10 @@
         "ty": 8
       },
       "trigger": "step_on",
-      "to_map": "pearlmoor_quay",
+      "to_map": "lanternway_pearlmoor",
       "to": {
-        "tx": 1,
-        "ty": 12
+        "tx": 0,
+        "ty": 5
       },
       "facing": "right",
       "requires_flag": "gleam:tide",
@@ -1290,10 +1290,10 @@
         "ty": 3
       },
       "trigger": "step_on",
-      "to_map": "lowleaf_hollow",
+      "to_map": "lanternway_lowleaf",
       "to": {
-        "tx": 1,
-        "ty": 14
+        "tx": 0,
+        "ty": 12
       },
       "facing": "right",
       "requires_flag": "gleam:verdant",
@@ -1307,10 +1307,10 @@
         "ty": 4
       },
       "trigger": "step_on",
-      "to_map": "lowleaf_hollow",
+      "to_map": "lanternway_lowleaf",
       "to": {
-        "tx": 1,
-        "ty": 15
+        "tx": 0,
+        "ty": 13
       },
       "facing": "right",
       "requires_flag": "gleam:verdant",
@@ -1318,33 +1318,50 @@
       "transition": "fade"
     },
     {
-      "id": "to_galehigh",
+      "id": "to_nightreach",
       "at": {
         "tx": 0,
         "ty": 3
       },
       "trigger": "step_on",
-      "to_map": "galehigh_terraces",
+      "to_map": "lanternway_nightreach",
       "to": {
-        "tx": 15,
-        "ty": 30
+        "tx": 23,
+        "ty": 12
       },
-      "facing": "up",
-      "requires_flag": "gleam:storm",
-      "blocked_ref": "npc.waykeeper_galehigh_gate",
+      "facing": "left",
+      "requires_flag": "gleam:lunar",
+      "blocked_ref": "npc.waykeeper_nightreach_gate",
       "transition": "fade"
     },
     {
-      "id": "to_galehigh_s",
+      "id": "to_nightreach_s",
       "at": {
         "tx": 0,
         "ty": 4
       },
       "trigger": "step_on",
-      "to_map": "galehigh_terraces",
+      "to_map": "lanternway_nightreach",
       "to": {
-        "tx": 16,
-        "ty": 30
+        "tx": 23,
+        "ty": 13
+      },
+      "facing": "left",
+      "requires_flag": "gleam:lunar",
+      "blocked_ref": "npc.waykeeper_nightreach_gate",
+      "transition": "fade"
+    },
+    {
+      "id": "to_galehigh",
+      "at": {
+        "tx": 3,
+        "ty": 0
+      },
+      "trigger": "step_on",
+      "to_map": "lanternway_galehigh",
+      "to": {
+        "tx": 6,
+        "ty": 23
       },
       "facing": "up",
       "requires_flag": "gleam:storm",
@@ -1352,37 +1369,20 @@
       "transition": "fade"
     },
     {
-      "id": "to_nightreach",
-      "at": {
-        "tx": 3,
-        "ty": 0
-      },
-      "trigger": "step_on",
-      "to_map": "nightreach_observatory",
-      "to": {
-        "tx": 4,
-        "ty": 28
-      },
-      "facing": "up",
-      "requires_flag": "gleam:lunar",
-      "blocked_ref": "npc.waykeeper_nightreach_gate",
-      "transition": "fade"
-    },
-    {
-      "id": "to_nightreach_e",
+      "id": "to_galehigh_e",
       "at": {
         "tx": 4,
         "ty": 0
       },
       "trigger": "step_on",
-      "to_map": "nightreach_observatory",
+      "to_map": "lanternway_galehigh",
       "to": {
-        "tx": 5,
-        "ty": 28
+        "tx": 7,
+        "ty": 23
       },
       "facing": "up",
-      "requires_flag": "gleam:lunar",
-      "blocked_ref": "npc.waykeeper_nightreach_gate",
+      "requires_flag": "gleam:storm",
+      "blocked_ref": "npc.waykeeper_galehigh_gate",
       "transition": "fade"
     },
     {
@@ -1577,24 +1577,24 @@
       "ref": "sign.crossroads_lowleaf"
     },
     {
-      "id": "sign_galehigh",
+      "id": "sign_nightreach",
       "kind": "sign",
       "at": {
         "tx": 5,
         "ty": 5
       },
       "activation": "interact",
-      "ref": "sign.crossroads_galehigh"
+      "ref": "sign.crossroads_nightreach"
     },
     {
-      "id": "sign_nightreach",
+      "id": "sign_galehigh",
       "kind": "sign",
       "at": {
         "tx": 2,
         "ty": 5
       },
       "activation": "interact",
-      "ref": "sign.crossroads_nightreach"
+      "ref": "sign.crossroads_galehigh"
     },
     {
       "id": "sign_mineshortcut",

@@ -636,6 +636,23 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'WAYKEEPER', text: 'The Lowleaf spoke sleeps yet, Wayfarer — its lamps answer the Verdant, and the Verdant is still dark.' },
     { speaker: 'WAYKEEPER', text: 'The long way round is the fen-road east of Pearlmoor. Roads wake to Gleams; relight the green one and this one will carry you home after.' },
   ],
+  // --- The Lanternway lane milestones (one sign per spoke lane map; the
+  // bend's marker stone — each names both ends so the turn never disorients).
+  'sign.lanternway_tinderwick': [
+    { text: 'THE LANTERNWAY — TINDERWICK SPOKE\nWest and down for Tinderwick. East and up for the Vesper Crossroads. Keep to the lamps.' },
+  ],
+  'sign.lanternway_pearlmoor': [
+    { text: 'THE LANTERNWAY — PEARLMOOR SPOKE\nWest and up for the Crossroads. East and down for the quay — you will smell the salt before you see the lamps.' },
+  ],
+  'sign.lanternway_lowleaf': [
+    { text: 'THE LANTERNWAY — LOWLEAF SPOKE\nThe lane climbs east and north into the Bloom. Green road, green light.' },
+  ],
+  'sign.lanternway_galehigh': [
+    { text: 'THE LANTERNWAY — GALEHIGH SPOKE\nA straight climb north. The wind combs these hedges long before you see the terraces.' },
+  ],
+  'sign.lanternway_nightreach': [
+    { text: "THE LANTERNWAY — NIGHTREACH SPOKE\nThe watchers' road: north for the observatory hill, east for the Crossroads. The last lamps lit, and the proudest." },
+  ],
   // The Pearlmoor spoke — sleeping until the Tide Gleam wakes it (the same
   // earned return-compressor as every other town spoke): the first journey to
   // the quay is the coast road, the lane home is the reward for relighting it.
@@ -768,7 +785,7 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'SOUTH: THE LANTERNWAY\nThe lit road to the Vesper Crossroads, where every way in Vesperholm meets.' },
   ],
   'sign.crossroads_galehigh': [
-    { text: 'NORTH-WEST: GALEHIGH TERRACES\nThe mountain spoke. Its lamps wake with the Storm constellation — high road, high wind.' },
+    { text: 'NORTH: GALEHIGH TERRACES\nThe mountain spoke. Its lamps wake with the Storm constellation — high road, high wind.' },
   ],
   'npc.waykeeper_galehigh_gate': [
     { speaker: 'WAYKEEPER', text: 'The Galehigh spoke sleeps yet, Wayfarer — its lamps answer the Storm, and the Storm is still dark.' },
@@ -1333,10 +1350,10 @@ export const DIALOGUE: DialogueRegistry = {
 
   // --- The Crossroads' Nightreach spoke (W4's gate pair) + R5's hung chart ---------
   'sign.crossroads_nightreach': [
-    { text: 'NORTH-WEST — THE NIGHTREACH SPOKE. Dark until the Lunar Gleam stands: the last spoke lights when the last lamp does.' },
+    { text: 'WEST — THE NIGHTREACH SPOKE. Dark until the Lunar Gleam stands: the last spoke lights when the last lamp does.' },
   ],
   'npc.waykeeper_nightreach_gate': [
-    { speaker: 'WAYKEEPER', text: 'The north-west spoke sleeps yet, friend — its lamps answer the Lunar, and the Lunar has not come home. When the watchers\' star stands up, this road will light itself the same hour. Last spoke of my Round. I keep its wicks trimmed anyway.' },
+    { speaker: 'WAYKEEPER', text: 'The west spoke sleeps yet, friend — its lamps answer the Lunar, and the Lunar has not come home. When the watchers\' star stands up, this road will light itself the same hour. Last spoke of my Round. I keep its wicks trimmed anyway.' },
   ],
   'npc.waykeeper_chart_hung': [
     { speaker: 'WAYKEEPER', text: 'Forty years of guesswork charts, and now the true sky hangs on the Waystone where every road can see it. Travellers stop and look UP now, before they pick a direction. That is the whole Lanternway, working.' },
