@@ -22,8 +22,9 @@ Legend — **Gleam** = the region's constellation reward; **Gift** = the Lantern
 | **East** (02) | 3 Verdant · 4 Stone | ✅ **complete** | — (Cinderhead built 2026-06) |
 | **North** (03) | 5 Storm · 6 Frost | ✅ **complete** (built 2026-06) | — |
 | **West** (04) | 7 Solar · 8 Lunar | ✅ **complete** (W1–W4 maps + W5 content wiring, 2026-06) | EXTRA_ENCOUNTERS mirrors (deferred to the species-lane pass) |
-| **Central/Endgame** (05) | — | ✅ **complete** (C1 maps + C2 Spire + C3 wiring, 2026-06) | — |
-| **Post-game** (06) | — | ⬜ not started | Dawnstead · day-forms · Còr's settled resolution · A6 |
+| **Central/Endgame** (05) | — | ✅ **complete** (C1 maps + C2 Spire + C3 wiring, 2026-06; panel SHIP-READY) | C6 polish: in-Spire heal point + Keylumen fallback hardening |
+| **The Three Hours** (07) | — | 🔶 **sites built** (4 maps + puzzles + cooldown engine, 2026-06) | content wiring (in flight 2026-06) |
+| **Post-game** (06) | — | 📋 **documented, not built** (see "Remaining work" below) | Dawnstead · Starfall Vigils · day-forms · A6 |
 
 **Playable runway today: the game is COMPLETABLE — cold open → dawn.** A continuous
 main-path journey from the prologue through all eight Gleams and all four crowns,
@@ -154,8 +155,80 @@ Vault/Nightreach, the Way-lamp); items `radiant_lamp`/`way_lamp`/`lamp_token_*`;
 +5 (Keystar, Penumbra, Ninth Lantern, Keylumen, First True Dawn); economy mirrored
 (BUILT_PAYOUTS + the built Central leg — progression PASS).
 
-See [`05-central-endgame.md`](./05-central-endgame.md) for the region spec;
-[`06-postgame.md`](./06-postgame.md) (Dawnstead, day-forms, A6, Còr settled) is not started.
+See [`05-central-endgame.md`](./05-central-endgame.md) for the region spec.
+Expert panel verdict (2026-06): **SHIP-READY**, no blockers — full review at
+`docs/reviews/central-endgame-panel.md`. The whole main journey (cold open → 8 Gleams →
+Spire → out-remembering → Keystar → dawn → credits → Continue) is built, audited
+(0 warnings world-wide) and verified persist-safe.
+
+## The Three Hours — legendary trio (07) 🔶 sites built, wiring in flight
+
+Species #160 Gloamber / #161 Tollhart / #162 Erstmorn are in the roster with full art
+(162/162 packed). The `legendaryBattle` engine (battles-won cooldowns, `{remaining}`
+hint token) is live. All four site maps are built + committed (2026-06): `tideglass_cavern`
++ `tideglass_gallery` (the Lampwright's Relay lens puzzle), `pale_vault_hourfold` (the
+Unstruck Toll brazier puzzle), `unrisen_stair` (the First-Light bloom ascent). The content
+wiring (site scripts/dialogue, the three giver chains, encounter mirrors, battle-hours
+music, LORE entries) was in flight at the 2026-06 checkpoint — each builder's docstring
+prints its complete owed-refs ledger if it needs re-running. Spec: [`07-the-three.md`](./07-the-three.md).
+
+---
+
+## Remaining work — DOCUMENTED, NOT BUILT (the handoff roadmap)
+
+> 2026-06 decision: build effort stops at the main game + the Three Hours; everything
+> below is **specified, ready to execute, and deliberately deferred** (API budget).
+> Ordering matters — packages are listed in execution order with their lane constraints.
+
+### R1 — C6 endgame polish (small; do first; content + one map JSON)
+From the Central panel's ledger (`docs/reviews/central-endgame-panel.md`):
+1. **MAJOR: in-Spire heal point.** A blackout at the climax respawns at Tinderwick — the
+   harshest re-traverse in the game. Fix: a rest trigger at the Spire gatehouse (floor 1),
+   the `script.*` + `heal` op pattern (`script.solarium_rest` is the worked example), staged
+   diegetically (an acolyte who "still keeps the kettle", post-`cor_answered` swap optional).
+   One trigger in `umbral_spire.json` + one script + audit_warps/audit_flow re-run.
+2. **MINOR: Keylumen fallback hardening.** If the Starlamp was spent (e.g. on Lunaveil),
+   the ending catch falls back to catchRate-6 throws (~23%/throw best case; free retries,
+   never strands, but RNG at the most loaded moment). Preferred fix: in
+   `script.keystar_relight`, before the `legendaryBattle` op, an `if_flag`-style guard that
+   re-grants `starlamp` ×1 when the player holds none (Fenn "sent a second wick by the
+   waykeeper" — one `giveItem` step gated on a has-item check; needs a small `unless_item`
+   step guard in the runner, or an interact NPC at the dais doing the same in content only).
+3. Re-run: typecheck + the 4 balance gates + audit_region.
+
+### R2 — Dawnstead (the epilogue town; one Fable map package + wiring)
+Spec: [`06-postgame.md`](./06-postgame.md) §Dawnstead. The C2 builder's contract (in
+`build_umbral_spire.py`'s docstring): summit `to_dawn`/`to_dawn_e` warp from (16,20)/(17,20)
+→ dawnstead (15,28)/(16,28) facing up; the return pair must land ON those summit coords.
+Daylit register (the frozen set's `dawngrass/dawnpath/dawntuft` families are already drawn);
+Tinderwick-silhouette layout; A6 Wren rematch (lv 55–65, `wren_resolved` portrait); Còr
+tending a lamp (`at_peace`); the first-dawn festival; quests P1–P3. Backdrop `dawnstead-01`
+and the town music loop are already rendered. Graph node exists (`unlocked_by_flag flag:dawn`).
+
+### R3 — The Starfall Vigils (postgame challenge chain; 2–3 packages)
+Full spec: [`06-postgame.md`](./06-postgame.md) §Starfall Vigils (written 2026-06, panel-grade):
+5 escalating trial sites (lv 58→70, first full 6-kin smart-AI battles) opened by riddle
+star-readings from the Nightreach junior watcher (Oriel), one-per-game rewards, and the
+ultimate gauntlet at the Spire summit — Fenn at full strength (ace ~70, payout class 80×ace).
+Build as region-style packages: V-maps (annex sites, Fable builders) → V-wiring (content) →
+encounter/economy mirror → panel review. 6 new items specced in 06.
+
+### R4 — Day-form pass (LAST and ALONE; species + map lanes together)
+Post-`flag:dawn` world changes: day-form encounter zone pairs (`requires_flag:'flag:dawn'`
+rows beside the night tables — engine already supports this), Light-kin re-bloom in Coldfog,
+the Hushfrost numbed-kin awake swap (pre-wired `_awake` twins exist), drained-zone deco swaps.
+Re-runs EVERY region builder — that's why it must run last, alone, after all other map edits,
+then one `build_species.py` regen + the 4 gates.
+
+### R5 — Release ladder (verification, mostly cheap)
+- `npm run build` (typecheck + prod build) — should already be green.
+- `npm run build:dist` needs **ffmpeg** (not installed in the managed env) — install or add
+  a CI job for the shrunk-audio bundle.
+- Reconcile the ~71 stale S/E generated encounter rows (dimglass_coast 37, lowleaf_hollow 34)
+  into `CURATED_AREAS` + `EXTRA_ENCOUNTERS` (the N5 convention; cosmetic, tables already play).
+- Full-game expert panel playing the dev build; golden-thread playtest (cold open → dawn →
+  save export/import); README outside-in rewrite.
+- **Human-only:** first-timer playtest (G8), touch QA on real hardware (F8).
 
 ---
 
