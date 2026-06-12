@@ -1262,8 +1262,8 @@
         "ty": 12
       },
       "facing": "right",
-      "requires_flag": "flag:has_starter",
-      "blocked_ref": "crossroads.no_kin_yet",
+      "requires_flag": "gleam:tide",
+      "blocked_ref": "npc.waykeeper_pearlmoor_gate",
       "transition": "fade"
     },
     {
@@ -1279,8 +1279,8 @@
         "ty": 12
       },
       "facing": "right",
-      "requires_flag": "flag:has_starter",
-      "blocked_ref": "crossroads.no_kin_yet",
+      "requires_flag": "gleam:tide",
+      "blocked_ref": "npc.waykeeper_pearlmoor_gate",
       "transition": "fade"
     },
     {

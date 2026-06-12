@@ -246,6 +246,7 @@ go digging on every task.
 | Authoritative game data | `src/game/data/` (chart, moves, species, world) |
 | Typed access to that data | `src/game/data/dex.ts` |
 | Map/world schema (TS) | `src/game/data/world/types.ts` |
+| World-map screen layout (generated) + spatial-embedding audit | `src/game/data/world/worldmap.json` ← `tools/maps/world_layout.py` |
 | Balance/roster tooling | `tools/balance/` |
 | Visual standards (binding) | `docs/art-style.md` |
 | Asset masters (source) | `assets/` (`assets/README.md`) |
@@ -416,11 +417,15 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   you add one. Multi-phase screens (PartyMenu/ItemsMenu/HearthMenu) **don't** keep one
   long-lived loop: each phase (`pickX`) attaches its own tick + input and tears both
   down before opening a sub-`Menu`, so presses are never double-read.
-- **Pause menu = RESUME / KIN / REGISTER / JOURNAL / HEARTH / ITEMS / LORE / CHARTS / [TRAVEL] / SAVE / SETTINGS**
-  (`WorldScene.openPauseMenu`; TRAVEL appears only once `flag:hub_unlocked`). JOURNAL→`JournalMenu`
+- **Pause menu = RESUME / KIN / REGISTER / JOURNAL / MAP / [TRAVEL] / HEARTH / ITEMS / LORE / CHARTS / SAVE / SETTINGS**
+  (`WorldScene.openPauseMenu`; TRAVEL appears only once `flag:hub_unlocked`; with 12 entries the
+  panel y is computed so the last row never clips the 160px screen). JOURNAL→`JournalMenu`
   (the quest log: `content/quests.ts` registry, flags mined from the build — add new named quests
-  there), TRAVEL→`TravelMenu` (waystone fast travel: `content/waystones.ts`, destinations gated on
-  their `chart:*` discovery flags, arrival via the executeWarp path).
+  there), MAP→`WorldMapMenu` (the classic region map: schematic ring of Vesperholm, blinking
+  you-are-here marker, d-pad hops between places — drawn from `data/world/worldmap.json`, which is
+  GENERATED + geometry-verified by `tools/maps/world_layout.py`; edit its NODES/ROADS tables and
+  re-run, never the JSON), TRAVEL→`TravelMenu` (waystone fast travel: `content/waystones.ts`,
+  destinations gated on their `chart:*` discovery flags, arrival via the executeWarp path).
   KIN→`PartyMenu`, REGISTER→`RegisterMenu` (the dex: seen/caught from `SaveGame.dex`, lazy kin
   icons, silhouettes until caught), HEARTH→`HearthMenu` (kin storage), ITEMS→`ItemsMenu` (view + use a
   medicine to heal), LORE→`GlossaryMenu` (read-only codex of canon vocabulary), CHARTS→`ChartsMenu`
@@ -758,7 +763,13 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `hidden_when_flag`), **festival NPCs** (`requires_flag:'gleam:*'`), and the **catch-first
   gate** (every catch sets `flag:caught_first_kin`). South's optional payoffs are BUILT:
   `gullcry_rock` (Tidecall spur — rare Glostern surf + the **Tide Charm**, catch ×2.0) and
-  `vesper_crossroads` (the Lanternway hub; live Tinderwick/Pearlmoor spokes, signed sleeping roads).
+  `vesper_crossroads` (the Lanternway hub; live Tinderwick spoke, signed sleeping roads).
+- **Every town spoke at the crossroads wakes on ITS OWN Gleam (2026-06, now uniform).** The
+  crossroads-side warp gates on the town's Gleam with a `npc.waykeeper_*_gate` blocked line
+  (Pearlmoor→`gleam:tide`, Lowleaf→`gleam:verdant`, Galehigh→`gleam:storm`, Nightreach→`gleam:lunar`);
+  the town-side warp stays OPEN (one-way return compression). First travel to a town is always
+  the long route — the spoke is the earned shortcut home, never a sequence-break (Pearlmoor was
+  the outlier, `has_starter`-only, letting players skip the whole Dimglass Coast: playtest-caught).
 - **Routes play like routes: sight trainers + mandatory crossings + the earned landmark.**
   Trainers carry `sight_range`/`defeated_flag` on their NpcPlacement (alert → march up → run
   their `script.*`; WorldScene.npcSeesPlayer/engageTrainer; beaten = flag-pair NPC swap; a

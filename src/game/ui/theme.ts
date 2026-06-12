@@ -50,6 +50,23 @@ export const theme = {
     Dark: '#6b6480',
   } as Record<KinType, string>,
 
+  /** The world-map screen's swatches (pause menu -> MAP). Node fills by kind,
+   *  road strokes by link kind, plus the blinking you-are-here marker. */
+  worldmap: {
+    node: {
+      town: '#f4d06e',
+      route: '#7bdc6b',
+      dungeon: '#b4a0e6',
+      hub: '#ff8a3d',
+      landmark: '#9fe7ff',
+    } as Record<string, string>,
+    road: '#c8c3d7',
+    lane: '#ffc378', // the Lanternway spokes (abstracted country lanes)
+    gate: '#6e788f', // Gift/flag-gated passages
+    pass: '#aa96dc', // through-cave passages
+    marker: '#ff8a3d',
+  },
+
   /** Spacing scale in source pixels — keep layouts on this grid. */
   space: { xs: 1, sm: 2, md: 4, lg: 6, xl: 8, xxl: 12 },
 

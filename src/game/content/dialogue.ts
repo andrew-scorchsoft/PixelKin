@@ -617,7 +617,7 @@ export const DIALOGUE: DialogueRegistry = {
 
   // --- Vesper Crossroads (the Lanternway hub) ---------------------------------
   'sign.crossroads': [
-    { text: 'VESPER CROSSROADS\nAll the Lanternway meets here. SOUTH-WEST: Tinderwick. SOUTH-EAST: Pearlmoor Quay. The other roads sleep, unlit.' },
+    { text: 'VESPER CROSSROADS\nAll the Lanternway meets here. SOUTH-WEST: Tinderwick. SOUTH-EAST: Pearlmoor Quay — its lamps wake with the Tide. The other roads sleep, unlit.' },
   ],
   'sign.crossroads_spire': [
     { text: 'The inward road. Eight braziers stand cold around its gate — one for each constellation. The mountain waits.' },
@@ -636,10 +636,17 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'WAYKEEPER', text: 'The Lowleaf spoke sleeps yet, Wayfarer — its lamps answer the Verdant, and the Verdant is still dark.' },
     { speaker: 'WAYKEEPER', text: 'The long way round is the fen-road east of Pearlmoor. Roads wake to Gleams; relight the green one and this one will carry you home after.' },
   ],
+  // The Pearlmoor spoke — sleeping until the Tide Gleam wakes it (the same
+  // earned return-compressor as every other town spoke): the first journey to
+  // the quay is the coast road, the lane home is the reward for relighting it.
+  'npc.waykeeper_pearlmoor_gate': [
+    { speaker: 'WAYKEEPER', text: 'The Pearlmoor spoke sleeps yet, Wayfarer — its lamps answer the Tide, and the Tide is still dark.' },
+    { speaker: 'WAYKEEPER', text: 'The long way round is the coast road north of Tinderwick. Roads wake to Gleams; relight the Tide at the quay and this spoke will carry you home after.' },
+  ],
 
   // The onward roads are shut to a Wayfarer with no kin yet — the opening's
   // soft wall, pointing a brand-new player back to Fenn at the Waystone (the
-  // East/North warps gate on flag:has_starter, so this only ever fires pre-kin).
+  // north marsh road gates on flag:has_starter, so this only ever fires pre-kin).
   'crossroads.no_kin_yet': [
     { text: 'No kin walks at your side yet, and the roads beyond the crossroads are no place to wander alone. Star-tender Fenn waits at the Waystone — see him, and take up your first lamp, before you set out.' },
   ],

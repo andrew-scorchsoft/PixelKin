@@ -22,6 +22,7 @@ import { RegisterMenu } from '@game/ui/RegisterMenu';
 import { ChartsMenu } from '@game/ui/ChartsMenu';
 import { JournalMenu } from '@game/ui/JournalMenu';
 import { TravelMenu } from '@game/ui/TravelMenu';
+import { WorldMapMenu } from '@game/ui/WorldMapMenu';
 import { ChartView } from '@game/ui/ChartView';
 import { fadeIn, fadeOut } from '@game/ui/Transitions';
 import { KinInstance } from '@game/systems/party/KinInstance';
@@ -1111,6 +1112,7 @@ export class WorldScene extends Phaser.Scene {
         { label: 'KIN', value: 'kin' },
         { label: 'REGISTER', value: 'register' },
         { label: 'JOURNAL', value: 'journal' },
+        { label: 'MAP', value: 'map' },
         ...(this.flags.get(WAYSTONE_NETWORK_FLAG) ? [{ label: 'TRAVEL', value: 'travel' }] : []),
         { label: 'HEARTH', value: 'hearth' },
         { label: 'ITEMS', value: 'items' },
@@ -1119,9 +1121,15 @@ export class WorldScene extends Phaser.Scene {
         { label: 'SAVE', value: 'save' },
         { label: 'SETTINGS', value: 'settings' },
       ];
-      const choice = await new Menu(this, entries, { x: 8, y: 8, sfx: this.sfx }).run();
+      // With MAP (and late-game TRAVEL) the list can outgrow y=8 on the 160px
+      // screen — slide the panel up just enough so the last row never clips.
+      const menuH = theme.space.lg * 2 + entries.length * 12;
+      const menuY = Math.min(8, this.cameras.main.height - menuH - 2);
+      const choice = await new Menu(this, entries, { x: 8, y: menuY, sfx: this.sfx }).run();
 
-      if (choice === 'travel') {
+      if (choice === 'map') {
+        await new WorldMapMenu(this, this.map.def.id, this.sfx).run();
+      } else if (choice === 'travel') {
         const dest = await new TravelMenu(
           this,
           this.map.def.id,
