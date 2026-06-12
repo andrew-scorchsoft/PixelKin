@@ -2244,6 +2244,18 @@
       "h": 3,
       "overhang": 2,
       "walk_under": true
+    },
+    {
+      "id": "vigil_scar_hearthfall",
+      "sprite": "vigil_star_scar",
+      "at": {
+        "tx": 25,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "flag:dawn"
     }
   ],
   "warps": [
@@ -2357,6 +2369,23 @@
       "requires_flag": "flag:has_beacon_wick",
       "transition": "door",
       "blocked_ref": "door.locked_beacon"
+    },
+    {
+      "id": "to_vigil_hearth",
+      "at": {
+        "tx": 25,
+        "ty": 7
+      },
+      "trigger": "step_on",
+      "to_map": "vigil_hearthfall",
+      "to": {
+        "tx": 11,
+        "ty": 16
+      },
+      "facing": "up",
+      "requires_flag": "flag:vigil_reading_1",
+      "blocked_ref": "npc.vigil_scar_sealed",
+      "transition": "fade"
     }
   ],
   "triggers": [

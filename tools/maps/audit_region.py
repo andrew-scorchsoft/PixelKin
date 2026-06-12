@@ -82,6 +82,16 @@ GRANTS["pale_vault_glacier"].append("flag:three_mid_rumour")
 GRANTS["pale_vault_undercroft"].append("flag:three_mid_snuffer")
 GRANTS["nightreach_observatory"].append("flag:three_dawn_rumour")
 GRANTS["sunken_solarium"] += ["flag:three_dawn_phial", "flag:three_dawn_poured"]
+# ---- The Starfall Vigils (walkthrough/06-postgame) — the reading chain:
+# Oriel reads fall 1 at Nightreach (requires flag:dawn — post-game by
+# construction); each kept vigil's script reads the next fall in the shard's
+# glint. The boolean chain is strict (reading N+1 only issues from kept N).
+GRANTS["nightreach_observatory"] += ["flag:starfall_begun", "flag:vigil_reading_1"]
+GRANTS["vigil_hearthfall"] = ["flag:vigil_1_kept", "flag:vigil_reading_2"]
+GRANTS["vigil_grovefall"] = ["flag:vigil_2_kept", "flag:vigil_reading_3"]
+GRANTS["vigil_stormfall"] = ["flag:vigil_3_kept", "flag:vigil_reading_4"]
+GRANTS["vigil_sunfall"] = ["flag:vigil_4_kept", "flag:vigil_reading_5"]
+GRANTS["vigil_murkfall"] = ["flag:vigil_5_kept"]
 POSTGAME_FLAGS = {"flag:dawn"}
 
 

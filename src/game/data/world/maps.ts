@@ -779,6 +779,64 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/dawnstead-b.webp',
     ],
   },
+  // R3 — THE STARFALL VIGILS (walkthrough 06-postgame §STARFALL VIGILS): five
+  // single-screen annexes off shipped hosts, one per quadrant + the outer
+  // marches, sealed behind the star-readings (`flag:vigil_reading_<n>` on the
+  // host warp). The one-shape reuse rule: each annex plays its HOST's loop +
+  // backdrops. No rest points anywhere in the chain.
+  vigil_hearthfall: {
+    json: 'assets/maps/vigil_hearthfall.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/tinderwick-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/tinderwick-a.webp',
+      'assets/backgrounds/battle/tinderwick-b.webp',
+    ],
+  },
+  vigil_grovefall: {
+    json: 'assets/maps/vigil_grovefall.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/lowleaf-hollow-c.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/glowmoss-deep-a.webp',
+      'assets/backgrounds/battle/glowmoss-deep-b.webp',
+    ],
+  },
+  vigil_stormfall: {
+    json: 'assets/maps/vigil_stormfall.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/windward-stair-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/windward-stair-a.webp',
+      'assets/backgrounds/battle/windward-stair-b.webp',
+    ],
+  },
+  vigil_sunfall: {
+    json: 'assets/maps/vigil_sunfall.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/sunvault-climb-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/sunvault-climb-a.webp',
+      'assets/backgrounds/battle/sunvault-climb-b.webp',
+    ],
+  },
+  vigil_murkfall: {
+    json: 'assets/maps/vigil_murkfall.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      coldfog_set: 'assets/tilesets/coldfog_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/coldfog-marches-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/coldfog-marches-a.webp',
+      'assets/backgrounds/battle/coldfog-marches-b.webp',
+    ],
+  },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
   // Their battle backdrops are already rendered — see UPCOMING_BATTLE_BACKDROPS below.

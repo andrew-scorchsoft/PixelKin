@@ -959,6 +959,20 @@
       "tw": 2,
       "th": 1
     },
+    "vigil_star_scar": {
+      "path": "assets/sprites/objects/vigil_star_scar.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "vigil_star_shard": {
+      "path": "assets/sprites/objects/vigil_star_shard.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "windward_aerie": {
       "path": "assets/sprites/objects/windward_aerie.webp",
       "width": 48,

@@ -3396,6 +3396,39 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'WARDEN MER', text: 'It holds. It always holds, with you. Go gently back.' },
   ],
 
+  // --- The Vigil-site caches (one per annex; Stormfall's is the tithe's
+  // second half — its site prize is the wick jackpot, not a chart) ----------
+  'script.pickup_vigil_hearth_glass': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'starglass_shard', count: 1 },
+    { op: 'say', text: 'Wedged in the bluff grass where the fall scattered it — a STARGLASS SHARD, still warm with morning.' },
+    { op: 'setFlag', flag: 'flag:picked_vigil_hearth_glass' },
+  ],
+  'script.pickup_vigil_grove_glass': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'starglass_shard', count: 1 },
+    { op: 'say', text: 'The moss has grown a careful cradle around it in a single season — a STARGLASS SHARD!' },
+    { op: 'setFlag', flag: 'flag:picked_vigil_grove_glass' },
+  ],
+  'script.pickup_vigil_storm_tithe': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'starglass_shard', count: 2 },
+    { op: 'say', text: 'The aerie\'s tithe, lashed down against the wind — 2 STARGLASS SHARDS, fulgurite-bright!' },
+    { op: 'setFlag', flag: 'flag:picked_vigil_storm_tithe' },
+  ],
+  'script.pickup_vigil_sun_glass': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'starglass_shard', count: 1 },
+    { op: 'say', text: 'Caught in a cracked sun-basin, drinking the daylight — a STARGLASS SHARD!' },
+    { op: 'setFlag', flag: 'flag:picked_vigil_sun_glass' },
+  ],
+  'script.pickup_vigil_murk_glass': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'starglass_shard', count: 1 },
+    { op: 'say', text: 'Glowing softly in the shallow black water — a STARGLASS SHARD. The murk gives it up without a fight.' },
+    { op: 'setFlag', flag: 'flag:picked_vigil_murk_glass' },
+  ],
+
   // --- The Last Lesson — the summit Round (requires flag:vigil_5_kept) -------
   // Three Vigilants back-to-back -> heal (Fenn's diegetic line) -> Fenn at full
   // strength. A loss anywhere aborts before the flag, so the whole Round re-runs

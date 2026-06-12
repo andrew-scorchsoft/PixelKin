@@ -32,6 +32,23 @@
       },
       "facing": "up",
       "transition": "door"
+    },
+    {
+      "id": "to_vigil_grove",
+      "at": {
+        "tx": 15,
+        "ty": 9
+      },
+      "trigger": "step_on",
+      "to_map": "vigil_grovefall",
+      "to": {
+        "tx": 11,
+        "ty": 16
+      },
+      "facing": "up",
+      "requires_flag": "flag:vigil_reading_2",
+      "blocked_ref": "npc.vigil_scar_sealed",
+      "transition": "fade"
     }
   ],
   "npcs": [
@@ -112,6 +129,18 @@
       "h": 2,
       "overhang": 1,
       "walk_under": true
+    },
+    {
+      "id": "vigil_scar_grovefall",
+      "sprite": "vigil_star_scar",
+      "at": {
+        "tx": 15,
+        "ty": 10
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "flag:dawn"
     }
   ],
   "music": "assets/audio/music/lowleaf-hollow-c.mp3",

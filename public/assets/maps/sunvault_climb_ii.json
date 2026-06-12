@@ -291,6 +291,18 @@
       },
       "w": 3,
       "h": 1
+    },
+    {
+      "id": "vigil_scar_sunfall",
+      "sprite": "vigil_star_scar",
+      "at": {
+        "tx": 27,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "flag:dawn"
     }
   ],
   "warps": [
@@ -391,6 +403,23 @@
       "requires_ability": "sunsketch",
       "blocked_ref": "sign.sunvault_helia",
       "transition": "door"
+    },
+    {
+      "id": "to_vigil_sun",
+      "at": {
+        "tx": 27,
+        "ty": 2
+      },
+      "trigger": "step_on",
+      "to_map": "vigil_sunfall",
+      "to": {
+        "tx": 11,
+        "ty": 16
+      },
+      "facing": "up",
+      "requires_flag": "flag:vigil_reading_4",
+      "blocked_ref": "npc.vigil_scar_sealed",
+      "transition": "fade"
     }
   ],
   "triggers": [

@@ -1556,6 +1556,24 @@ export const DIALOGUE: DialogueRegistry = {
   'npc.vigil_scar_sealed': [
     { text: 'A seam of starlight, shut tight. Whatever fell here is waiting to be read first.' },
   ],
+  // The kept placements — each Vigilant's plain line after their vigil is kept
+  // (requires flag:vigil_<n>_kept, hidden once flag:starfall_crown swaps in the
+  // re-runnable bout). Each points the player on along the chain.
+  'npc.vigil_hearthfall_kept': [
+    { speaker: 'WICK-MOTHER ESRA', text: 'Off you go, dear — the second fell east, under the hill where the moss has opinions. I\'ll sit with the morning a while. Seventy years of dusk; I\'ve earned a sunrise or two.' },
+  ],
+  'npc.vigil_grovefall_kept': [
+    { speaker: 'OLD FOREMAN BRAMM', text: 'Third one went north — the wind\'s spare pocket, the watcher says. Mind the roost. ...And tell Otho he still exaggerates.' },
+  ],
+  'npc.vigil_stormfall_kept': [
+    { speaker: 'ONDRA VAEL', text: 'The fourth fell west, where they kept the summer safe. Dress lighter than you did for me — and give Dame Solenne a proper bow; she taught everyone the bowing.' },
+  ],
+  'npc.vigil_sunfall_kept': [
+    { speaker: 'DAME SOLENNE', text: 'The last rests in the marshes, where the water is learning to speak again. Go gently — and carry my regards to the warden who waits there. She has more than earned them.' },
+  ],
+  'npc.vigil_murkfall_kept': [
+    { speaker: 'WARDEN MER', text: 'Carry the five up the mountain, Wayfarer. The old man has waited a long time to be allowed his best. The marsh and I will keep, until you have kept the last.' },
+  ],
   // Dawnbrael's cooldownRef — the static catch withdrew with the next dark; it
   // returns with the next sunrise (no re-fighting the Round). cooldownBattles is
   // 0, so {remaining} never reads — the line is the re-approach hint only.

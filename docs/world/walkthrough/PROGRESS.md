@@ -24,7 +24,7 @@ Legend — **Gleam** = the region's constellation reward; **Gift** = the Lantern
 | **West** (04) | 7 Solar · 8 Lunar | ✅ **complete** (W1–W4 maps + W5 content wiring, 2026-06; encounter mirrors verified in the R5 S/E sync) | — |
 | **Central/Endgame** (05) | — | ✅ **complete** (C1 maps + C2 Spire + C3 wiring, 2026-06; panel SHIP-READY; C6 polish landed c15217d) | — |
 | **The Three Hours** (07) | — | ✅ **complete** (sites + wiring + encounters + the hour-bell music, 2026-06) | — |
-| **Post-game** (06) | — | 🟡 **Dawnstead built** (R2, 2026-06); Vigils/day-forms next | Starfall Vigils · day-forms |
+| **Post-game** (06) | — | 🟡 **Dawnstead + Starfall Vigils built** (R2+R3, 2026-06) | day-form pass (R4) |
 
 **Playable runway today: the game is COMPLETABLE — cold open → dawn.** A continuous
 main-path journey from the prologue through all eight Gleams and all four crowns,
@@ -219,13 +219,26 @@ four seats), P2 A Wick for Còr (beacon-top cache → lamp deco swap), P3 Day-fo
 thanks (needs the quest-counter extension); `wren_rematch`/dawnstead mirrors into
 `progression.mjs` + `EXTRA_ENCOUNTERS` (lands with R3's economy/species pass).
 
-### R3 — The Starfall Vigils (postgame challenge chain; 2–3 packages)
+### R3 — The Starfall Vigils ✅ DONE (2026-06)
 Full spec: [`06-postgame.md`](./06-postgame.md) §Starfall Vigils (written 2026-06, panel-grade):
 5 escalating trial sites (lv 58→70, first full 6-kin smart-AI battles) opened by riddle
 star-readings from the Nightreach junior watcher (Oriel), one-per-game rewards, and the
 ultimate gauntlet at the Spire summit — Fenn at full strength (ace ~70, payout class 80×ace).
 Build as region-style packages: V-maps (annex sites, Fable builders) → V-wiring (content) →
 encounter/economy mirror → panel review. 6 new items specced in 06.
+
+**Delivered (2026-06), both lanes:** the five annex maps (`build_vigil_*.py`; one-shape stamp —
+trial band on every mouth tile, three flag-disjoint keeper placements, cache, no rest; code-drawn
+`vigil_star_shard/scar` objects, no image-gen spend) + host warps/graph (audit_warps handshake
+table in the builders); the full content chain (Oriel's eight terrace placements, the five trial
++ `_again` scripts, `script.starfall_round` → Dawnbrael (`legendaryBattle` lv 70, re-approachable)
+→ `cutscene.startender_named`); nine smart six-kin trainers (Fenn ace 70 at `cor` class, on
+`battle-boss-eclipse`); items (note: `chart_sunburst_nova` reused — Sunfall grants a second copy);
+the `vigilant` 80w class in all three economy homes + the POSTGAME progression leg (incl. the R2
+`wren_rematch` mirror); annex + dawnstead encounter mirrors (cross-checked table-for-table vs the
+built maps). All gates green: typecheck, validate 0/0, chart_check, progression, simulate,
+audit_region 0/0, audit_warps 0 failures. Owed to a panel pass: copy-editing review of the
+readings/keeper dialogue (spine §10 tone gate).
 
 ### R4 — Day-form pass (LAST and ALONE; species + map lanes together)
 Post-`flag:dawn` world changes: day-form encounter zone pairs (`requires_flag:'flag:dawn'`
