@@ -54,7 +54,7 @@ import { SaveManager } from '@game/systems/save/SaveManager';
 import type { WorldSnapshot } from '@game/data/world/types';
 import { MAP_REGISTRY } from '@game/data/world/maps';
 import { VESPERHOLM_GRAPH } from '@game/data/world/graph';
-import type { AbilityId, Facing, Warp, EventTrigger, NpcPlacement, MapObject } from '@game/data/world/types';
+import type { AbilityId, Facing, Warp, EventTrigger, NpcPlacement, MapObject, EncounterTerrain } from '@game/data/world/types';
 
 export interface WorldSceneData {
   mapId: string;
@@ -69,6 +69,10 @@ export interface WorldSceneData {
   money?: number;
   /** Collection progress (the vesperlamp's register). */
   dex?: DexProgress;
+  /** Battles won so far — the clock for battle-counted cooldowns. */
+  battles_won?: number;
+  /** Named cooldowns -> the battles_won value at which each expires. */
+  cooldowns?: Record<string, number>;
 }
 
 /** Depth band for actors: above deco (5), below the 'above' layer (20). */
@@ -100,6 +104,10 @@ export class WorldScene extends Phaser.Scene {
   /** The vesperlamp's register: species seen/caught (REGISTER screen). */
   private dexSeen = new Set<number>();
   private dexCaught = new Set<number>();
+  /** Total battles won — the game's clock for battle-counted cooldowns. */
+  private battlesWon = 0;
+  /** Named cooldowns -> the `battlesWon` value at which each expires (legendary withdrawals). */
+  private cooldowns: Record<string, number> = {};
   /** A newly-discovered chart awaiting its full-screen reveal (fires when idle). */
   private pendingReveal?: ChartEntry;
 
@@ -120,6 +128,8 @@ export class WorldScene extends Phaser.Scene {
     this.money = data.money ?? STARTING_WICKS;
     this.dexSeen = new Set(data.dex?.seen ?? []);
     this.dexCaught = new Set(data.dex?.caught ?? []);
+    this.battlesWon = data.battles_won ?? 0;
+    this.cooldowns = { ...(data.cooldowns ?? {}) };
     // Whatever walks with you is certainly on the register.
     for (const k of [...this.party, ...this.box]) {
       this.dexSeen.add(k.species_id);
@@ -231,6 +241,8 @@ export class WorldScene extends Phaser.Scene {
       inventory: this.inventory,
       money: this.money,
       dex: { seen: [...this.dexSeen], caught: [...this.dexCaught] },
+      battles_won: this.battlesWon,
+      cooldowns: this.cooldowns,
     };
   }
 
@@ -516,6 +528,36 @@ export class WorldScene extends Phaser.Scene {
         }
         return true;
       },
+      legendaryState: (name, caughtFlag) => this.legendaryState(name, caughtFlag),
+      startSetPieceBattle: async (kin: number, level: number, terrain?: EncounterTerrain) => {
+        const result = await this.startBattle({
+          kind: 'wild',
+          species_id: kin,
+          level,
+          terrain,
+          party: this.party,
+          box: this.box,
+          inventory: this.inventory,
+        });
+        // Map the wild outcome to the runner's set-piece vocabulary. A wild kin
+        // never flees on its own, so 'fled' is always the PLAYER bailing.
+        switch (result.outcome) {
+          case 'caught':
+            return 'caught';
+          case 'win':
+            return 'koed';
+          case 'fled':
+            return 'fled';
+          default:
+            await this.blackout(); // party wiped — recover, same as any lost wild fight
+            return 'lost';
+        }
+      },
+      setLegendaryCooldown: (name, cooldownBattles) => {
+        // Expires once the player has WON `cooldownBattles` more battles.
+        this.cooldowns[name] = this.battlesWon + cooldownBattles;
+        void this.persist();
+      },
       cameraFocusTile: (tx, ty, ms, zoom) => this.cameraFocusTile(tx, ty, ms, zoom),
       cameraReset: (ms) => this.cameraResetToPlayer(ms),
     };
@@ -688,6 +730,11 @@ export class WorldScene extends Phaser.Scene {
     this.party = result.party;
     this.box = result.box;
     this.inventory = result.inventory;
+    // The progression clock: any victorious battle ticks it once — a trainer/wild
+    // knock-out ('win') or a wild catch ('caught'). This is the single place all
+    // outcomes resolve, so battle-counted cooldowns (legendary withdrawals) stay
+    // honest. A loss/flee never advances it.
+    if (result.outcome === 'win' || result.outcome === 'caught') this.battlesWon++;
     if (result.money_earned) this.money += result.money_earned;
     if (result.set_flags) this.flags.setMany(result.set_flags);
     for (const id of result.dex_seen ?? []) this.dexSeen.add(id);
@@ -706,6 +753,22 @@ export class WorldScene extends Phaser.Scene {
       for (const a of result.grant_abilities) this.abilities.add(a);
     }
     void this.persist();
+  }
+
+  /**
+   * Where a battle-counted cooldown stands for a one-off (legendary) encounter.
+   * Caught wins outright; otherwise it's gated until `battlesWon` reaches the
+   * stamped expiry value. `remaining` is the count the hint line reports.
+   */
+  private legendaryState(
+    name: string,
+    caughtFlag: string,
+  ): { phase: 'caught' | 'cooldown' | 'ready'; remaining: number } {
+    if (this.flags.get(caughtFlag)) return { phase: 'caught', remaining: 0 };
+    const expiresAt = this.cooldowns[name] ?? 0;
+    const remaining = expiresAt - this.battlesWon;
+    if (remaining > 0) return { phase: 'cooldown', remaining };
+    return { phase: 'ready', remaining: 0 };
   }
 
   /** Defeat recovery: revive the party and wake back at the start town. */
@@ -1021,6 +1084,8 @@ export class WorldScene extends Phaser.Scene {
         inventory: loaded.inventory,
         money: loaded.money,
         dex: loaded.dex,
+        battles_won: loaded.battles_won,
+        cooldowns: loaded.cooldowns,
       });
     }
   }

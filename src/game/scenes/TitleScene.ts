@@ -129,6 +129,8 @@ export class TitleScene extends Phaser.Scene {
       inventory: save.inventory,
       money: save.money,
       dex: save.dex,
+      battles_won: save.battles_won,
+      cooldowns: save.cooldowns,
     };
   }
 

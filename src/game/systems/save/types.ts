@@ -69,4 +69,20 @@ export interface SaveGame {
   money: number;
   /** Collection progress (seen/caught) — the REGISTER screen reads this. */
   dex: DexProgress;
+  /**
+   * Total battles WON (trainer + wild) — the game's only progression clock, since
+   * Vesperholm keeps no real-time calendar by design. Used as the unit for
+   * battle-counted cooldowns (see `cooldowns`). Optional + defaults to 0, so old
+   * saves load clean (the bond precedent — additive field, no migration).
+   */
+  battles_won?: number;
+  /**
+   * Named cooldowns, each storing the `battles_won` value at which it EXPIRES.
+   * A cooldown is active while `battles_won < cooldowns[name]`. Drives the
+   * legendary "withdraws and won't be re-fought for a while" rule: a failed
+   * capture writes `battles_won + cooldownBattles` here, and the diegetic hint
+   * line reports `cooldowns[name] - battles_won` battles remaining. Optional +
+   * defaults to {}, so old saves load clean.
+   */
+  cooldowns?: Record<string, number>;
 }

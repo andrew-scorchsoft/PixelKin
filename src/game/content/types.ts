@@ -33,6 +33,63 @@ export type DialogueRegistry = Record<string, DialogueLine[]>;
 /** An actor in a cutscene: the player, or an NPC by its placement id on the map. */
 export type ActorRef = 'player' | string;
 
+/**
+ * A LEGENDARY (or other one-off) set-piece catch with a battles-won failure
+ * cooldown. The kin is a fixed wild battle that the kin itself cannot flee
+ * (player flee is still allowed); the encounter is a CHANCE, not a gift, so a
+ * miss has a cost.
+ *
+ *  - Already caught (`caughtFlag` held): the op falls through silently. Normal
+ *    practice is to also `hidden_when_flag: caughtFlag` the trigger/NPC that runs
+ *    the script, so a caught legendary never re-stages; the op's own check is the
+ *    belt-and-braces.
+ *  - On cooldown (it withdrew after a recent failure): the op plays `cooldownRef`
+ *    — an ordinary dialogue ref (content/dialogue.ts), the diegetic hint — and
+ *    ends the encounter. The line may include the token `{remaining}`, replaced
+ *    with the number of battles the player must still WIN before it returns.
+ *  - Ready: runs the set-piece wild battle. Outcomes:
+ *      · caught  -> sets `caughtFlag` (the kin joins via the normal catch path:
+ *                   party/Hearth + dex), encounter over for good.
+ *      · KO'd / player fled -> the kin withdraws: a cooldown of `cooldownBattles`
+ *                   WON battles is stamped under `name`. It cannot be re-fought
+ *                   until that many victories have passed.
+ *
+ * Worked inline example (a content script in content/scripts.ts):
+ *   'script.tide_sovereign': [
+ *     { op: 'narrate', text: 'The water draws back, and something vast and patient lifts its head.' },
+ *     { op: 'music', key: 'battle-legendary-tide' },
+ *     { op: 'legendaryBattle',
+ *       name: 'tide_sovereign',          // cooldown key (any stable string)
+ *       kin: 137, level: 45,             // species id + level of the set-piece kin
+ *       caughtFlag: 'flag:tide_sovereign_caught',
+ *       cooldownBattles: 12,             // withdraws for 12 WON battles on a miss
+ *       cooldownRef: 'npc.tide_sovereign_resting', // hint line, may use {remaining}
+ *       terrain: 'water' },              // optional: lets conditional charges apply
+ *   ],
+ * with the hint line in content/dialogue.ts:
+ *   'npc.tide_sovereign_resting': [
+ *     { text: 'The tide lies flat and sullen. The Sovereign sank deep when you faltered; the water will not give it up for {remaining} more battles yet.' },
+ *   ],
+ * and the trigger that fires it carrying `hidden_when_flag: 'flag:tide_sovereign_caught'`.
+ */
+export interface LegendaryBattleStep {
+  op: 'legendaryBattle';
+  /** Stable cooldown key (also the `cooldowns` record key). */
+  name: string;
+  /** Species id of the set-piece kin. */
+  kin: number;
+  /** Level it appears at. */
+  level: number;
+  /** Flag set when the kin is caught — gate the staging trigger on this too. */
+  caughtFlag: WorldFlag;
+  /** Battles the player must WIN after a failed catch before it returns. */
+  cooldownBattles: number;
+  /** Dialogue ref for the diegetic "it withdrew" hint; may contain `{remaining}`. */
+  cooldownRef: string;
+  /** Encounter terrain (optional) — lets conditional charges (e.g. a water charm) apply. */
+  terrain?: EncounterTerrain;
+}
+
 /** A single cutscene instruction. The CutsceneRunner interprets these in order. */
 export type CutsceneStep =
   | { op: 'say'; speaker?: string; text: string; portrait?: string; expr?: string; style?: 'speech' | 'narrate' }
@@ -60,6 +117,7 @@ export type CutsceneStep =
   | { op: 'cameraFocus'; actor?: ActorRef; to?: TileCoord; ms?: number; zoom?: number } // pan/zoom onto a subject
   | { op: 'cameraReset'; ms?: number } // re-follow the player, restore zoom
   | { op: 'battle'; trainer: string } // start a trainer battle by id
+  | LegendaryBattleStep // a static one-off catch with a battles-won failure cooldown
   | { op: 'heal' } // fully restore the party (inn rest, hearthside kindness)
   | { op: 'gleam'; element: string } // diegetic Gleam cue (relight the sky)
   | { op: 'giveMoney'; amount: number } // hand the player wicks (quest rewards, finds)
