@@ -798,3 +798,8 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   (no feet/tail), and at 64px the flat cut is invisible without zooming. Say "the references are
   cropped; draw head-to-toe with margin below the feet" in the brief, then verify with a 6× nearest
   upscale + the alpha bbox before packing (this bit Brinix's battle_front, twice).
+- **Sprite gens OVERWRITE the master in place — never re-roll over an approved one.** Once the user
+  approves (or even likes) a roll, copy it aside immediately; iterate further rolls to a `--output`
+  temp path and only copy over the master after approval. A re-roll is a gacha, not a refinement —
+  "fixing" an approved sprite by regenerating lost it entirely (Brinix battle_front had to be
+  recovered pixel-by-pixel from a comparison montage).
