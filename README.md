@@ -185,6 +185,7 @@ python3 -m venv venv && ./venv/bin/pip install -r requirements.txt   # one-time
 | Vision & copyright rules | [`VISION.md`](VISION.md) |
 | Story, cast, lore | [`docs/world/story-bible.md`](docs/world/story-bible.md) |
 | World map (14 areas, routes, gating) | [`docs/world/atlas.md`](docs/world/atlas.md) |
+| **Map renders (all 71 maps, story order)** | [`docs/maps/MAP_RENDERS.md`](docs/maps/MAP_RENDERS.md) |
 | Area concept art (mood-pieces) | [`assets/concept-art/`](assets/concept-art/README.md) |
 | Full walkthrough / user journey | [`docs/world/walkthrough/`](docs/world/walkthrough/README.md) |
 | Soundtrack plan | [`docs/world/music-direction.md`](docs/world/music-direction.md) |
