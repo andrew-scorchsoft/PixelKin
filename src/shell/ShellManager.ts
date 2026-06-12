@@ -142,6 +142,8 @@ class ShellManagerImpl {
   private applyControlSize(): void {
     const scale = CONTROL_SIZE_SCALE[this.controlSize] ?? 1;
     document.documentElement.style.setProperty('--pk-cs', String(scale));
+    const toggle = this.controlsEl?.querySelector<HTMLElement>('.pk-size-toggle');
+    if (toggle) toggle.textContent = String(this.controlSize);
   }
 
   /** Subscribe to control actions. Returns an unsubscribe function. */
@@ -360,8 +362,43 @@ class ShellManagerImpl {
     // Start
     root.appendChild(this.button('pk-start', 'menu', 'START'));
 
+    // In-game control-size cycler (top-left). Not an input action — it resizes
+    // the controls, so it's wired by hand and steps the same ControlSize the
+    // Settings menu uses.
+    root.appendChild(this.buildSizeToggle());
+
     document.body.appendChild(root);
     return root;
+  }
+
+  /** The top-left "resize controls" cycler. Tapping steps the size 1 → 2 → 3. */
+  private buildSizeToggle(): HTMLDivElement {
+    const el = document.createElement('div');
+    el.className = 'pk-size-toggle';
+    el.setAttribute('role', 'button');
+    el.setAttribute('aria-label', 'Resize the on-screen controls');
+    el.title = 'Controls size (tap to resize)';
+    el.textContent = String(this.controlSize);
+
+    el.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      el.classList.add('pk-active');
+    });
+    el.addEventListener('pointerup', (e) => {
+      e.preventDefault();
+      el.classList.remove('pk-active');
+      void this.cycleControlSize();
+    });
+    el.addEventListener('pointercancel', () => el.classList.remove('pk-active'));
+    el.addEventListener('pointerleave', () => el.classList.remove('pk-active'));
+    el.addEventListener('contextmenu', (e) => e.preventDefault());
+    return el;
+  }
+
+  /** Step the control size 1 → 2 → 3 → 1 (reuses setControlSize: applies + persists). */
+  private async cycleControlSize(): Promise<void> {
+    const next = ((this.controlSize % 3) + 1) as ControlSize;
+    await this.setControlSize(next);
   }
 
   /** Make a control element wired to press/release of an action. */

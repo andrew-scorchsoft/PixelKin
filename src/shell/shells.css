@@ -283,33 +283,36 @@ body.pk-shell-overlay .pk-controls {
    edges) so the dead space becomes the control rails, and float them slightly so
    any overlap on a narrow phone reads gently. START tucks into the bottom centre. */
 @media (orientation: landscape) {
+  /* Stretch the control layer to the FULL viewport height (top:0 + bottom:0 +
+     height:auto). NOT height:auto + bottom:auto, which collapses to a 0-height
+     box and flings the buttons (whose offsets are % of that box) off-screen. */
   body.pk-shell-device .pk-controls,
   body.pk-shell-overlay .pk-controls {
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     height: auto;
-    bottom: auto;
     opacity: 0.86;
   }
   body.pk-shell-device .pk-grille { display: none; }
 
-  .pk-dpad {
-    top: 50%;
-    bottom: auto;
-    transform: translateY(-50%);
-  }
+  /* Bottom-anchored to the natural two-handed thumb zone (raised off the very
+     edge), out in the side margins beside the centred screen — not vertically
+     centred (thumbs rest low, not mid-screen). */
+  .pk-dpad,
   .pk-face {
-    top: 50%;
-    bottom: auto;
-    transform: translateY(-50%);
+    top: auto;
+    bottom: clamp(20px, 12vh, 72px);
+    transform: none;
   }
-  /* Tuck START into the left rail beneath the d-pad so it never covers the
-     screen's bottom edge (where dialogue lives). Anchored off the d-pad's own
-     (scaled) half-height + a gap, so it stays clear at any control size. */
+  /* START is infrequent — park it top-right, just left of the fullscreen toggle
+     (which owns the top-right corner), out of the thumbs' way. */
   .pk-start {
-    left: max(env(safe-area-inset-left), 26px);
-    right: auto;
+    left: auto;
+    right: calc(max(env(safe-area-inset-right), 6px) + 42px);
+    top: max(env(safe-area-inset-top), 8px);
     bottom: auto;
-    top: calc(50% + var(--pk-cell) * 1.5 + 14px);
     transform: none;
   }
 }
@@ -404,6 +407,45 @@ body.pk-shell-overlay .pk-controls {
 @media (orientation: landscape) and (pointer: coarse) {
   body.pk-shell-device .pk-fs-toggle,
   body.pk-shell-overlay .pk-fs-toggle {
+    display: block;
+  }
+}
+
+/* In-game control-size cycler — the matched twin of the fullscreen toggle, but in
+   the free TOP-LEFT corner. Tapping steps the d-pad/A·B/Start size 1→2→3. Shown
+   only on touch devices in landscape (same as the fullscreen toggle). */
+.pk-size-toggle {
+  display: none;
+  position: fixed;
+  top: max(env(safe-area-inset-top), 6px);
+  left: max(env(safe-area-inset-left), 6px);
+  z-index: 6;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 6px;
+  background: rgba(11, 16, 38, 0.82);
+  border: 1px solid var(--shell-accent);
+  color: var(--shell-accent);
+  font-family: 'PixelKin', monospace;
+  font-size: 12px;
+  pointer-events: auto;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none;
+  opacity: 0.78;
+}
+.pk-size-toggle.pk-active {
+  opacity: 1;
+  background: var(--shell-button-press);
+  color: #000;
+}
+@media (orientation: landscape) and (pointer: coarse) {
+  body.pk-shell-device .pk-size-toggle,
+  body.pk-shell-overlay .pk-size-toggle {
     display: block;
   }
 }
