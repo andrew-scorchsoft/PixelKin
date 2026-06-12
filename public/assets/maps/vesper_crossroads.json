@@ -1495,6 +1495,36 @@
       ]
     },
     {
+      "id": "marsh_warn",
+      "kind": "cutscene",
+      "at": {
+        "tx": 9,
+        "ty": 5
+      },
+      "activation": "step_on",
+      "ref": "script.crossroads_marsh_warn",
+      "once": true,
+      "hidden_when_flag": "flag:warned_marsh_road",
+      "sets_flags": [
+        "flag:warned_marsh_road"
+      ]
+    },
+    {
+      "id": "marsh_warn_e",
+      "kind": "cutscene",
+      "at": {
+        "tx": 10,
+        "ty": 5
+      },
+      "activation": "step_on",
+      "ref": "script.crossroads_marsh_warn",
+      "once": true,
+      "hidden_when_flag": "flag:warned_marsh_road",
+      "sets_flags": [
+        "flag:warned_marsh_road"
+      ]
+    },
+    {
       "id": "sign_waystone",
       "kind": "sign",
       "at": {

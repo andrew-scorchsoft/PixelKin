@@ -38,6 +38,25 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'cameraReset', ms: 500 },
   ],
 
+  // Heading up the north (marsh) road: the one ungated road out of the Crossroads
+  // that climbs into far-higher country (the Coldfog Marches, North region). The
+  // Waykeeper steps up off her post to warn a young Wayfarer off — but she keeps the
+  // lamps, not the gate, so the warning is a NUDGE, never a wall: she says her piece
+  // and stands aside. Fires once (band hidden_when 'flag:warned_marsh_road'); if she's
+  // off her post (the Round chart swap), the actor ops no-op and the lines still play.
+  'script.crossroads_marsh_warn': [
+    { op: 'emote', actor: 'waykeeper', emote: 'alert' },
+    { op: 'move', actor: 'waykeeper', to: { tx: 9, ty: 6 } },
+    { op: 'face', actor: 'waykeeper', facing: 'up' },
+    { op: 'face', actor: 'player', facing: 'down' },
+    { op: 'say', speaker: 'WAYKEEPER', text: 'Hold a moment, young Wayfarer. That north road climbs to the Coldfog Marches — and the cold up there bites deeper than any lamp you carry yet.' },
+    { op: 'say', speaker: 'WAYKEEPER', text: 'The kin that haunt the marsh are hardened things, a long way from any hearth. It is no road for a new flame. Your Wayfaring runs the LIT ways — WEST to Tinderwick, EAST to Pearlmoor.' },
+    { op: 'say', speaker: 'WAYKEEPER', text: 'But I keep the lamps, not the gate. If you are set on a look, I will not bar your way — only tread careful, and turn back the moment the dark leans in.' },
+    { op: 'move', actor: 'waykeeper', to: { tx: 9, ty: 8 } },
+    { op: 'move', actor: 'waykeeper', to: { tx: 8, ty: 8 } },
+    { op: 'face', actor: 'waykeeper', facing: 'down' },
+  ],
+
   // Fenn at the waystone: delight, then the small ask — his satchel, forgotten on
   // the Tinderwick store counter, with the whole Wayfaring packed inside it.
   'script.fenn_crossroads': [

@@ -252,6 +252,18 @@ m = {
         {"id": "fenn_wave_s", "kind": "cutscene", "at": {"tx": CX - 2, "ty": CY},
          "activation": "step_on", "ref": "script.fenn_wave", "once": True,
          "hidden_when_flag": "flag:fenn_waved", "sets_flags": ["flag:fenn_waved"]},
+        # The north (marsh) road is the one UNGATED road that climbs into far-higher
+        # country (coldfog_marches_i, North). The Waykeeper steps up off her post to
+        # warn a young Wayfarer off — a nudge, never a wall (she keeps the lamps, not
+        # the gate). Both road columns covered; fires once. audit_flow WAIVER — `choke`
+        # WARN accepted: a cosmetic warning, never a story gate; nothing is lost by
+        # skirting it, and the road stays freely walkable.
+        {"id": "marsh_warn", "kind": "cutscene", "at": {"tx": CX, "ty": 5},
+         "activation": "step_on", "ref": "script.crossroads_marsh_warn", "once": True,
+         "hidden_when_flag": "flag:warned_marsh_road", "sets_flags": ["flag:warned_marsh_road"]},
+        {"id": "marsh_warn_e", "kind": "cutscene", "at": {"tx": CX + 1, "ty": 5},
+         "activation": "step_on", "ref": "script.crossroads_marsh_warn", "once": True,
+         "hidden_when_flag": "flag:warned_marsh_road", "sets_flags": ["flag:warned_marsh_road"]},
         {"id": "sign_waystone", "kind": "sign",
          "at": {"tx": sign_tiles["sign_waystone"][0], "ty": sign_tiles["sign_waystone"][1]},
          "activation": "interact", "ref": "sign.crossroads"},
