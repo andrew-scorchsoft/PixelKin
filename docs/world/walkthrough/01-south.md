@@ -466,6 +466,19 @@ netmender's keeping.
      `tideglass_cavern` · `[LATER: Glimmerstep]` — **the wreck-lamp trigger itself ships
      with `tideglass_cavern`** (it must set `flag:q_south_wrecklamp_lit`); a deeper page
      beyond the lamp's reach `[LATER: Lamplight ≥ Starlight]`.
+   - **S4 "The Booji-Wooji Man"** — **[BUILT]** giver: **Andy** at the **Lifting House**
+     (`pearlmoor_lifting_house`, the quayside gym tucked behind the inn — door on the
+     quay's NE bluff; Andy talks, Abdul and Sid bench) · steps: Andy's tale of the old
+     strongman the quay calls the Booji-Wooji Man (`script.booji_andy`) → Abdul's clue
+     (`script.booji_abdul`) → Sid's three words (`script.booji_sid`) → find **Paul** at
+     the dark lamp past the moor-bell, take his question and his one-time route-class
+     bout (`script.booji_paul`, `breakwater_paul`, 240w) → back to Andy
+     (`script.booji_andy_done`) · flags: `flag:q_south_booji` → `_abdul` → `_sid` →
+     `_met` (→ `flag:q_south_booji_done`) · reward: the **Booji Folio** (key item — the
+     gift inside the gift) + 2 Tallow Balms · maps: `pearlmoor_lifting_house`,
+     `pearlmoor_breakwater` · `[LATER-gated only by the moor-gate]` (Paul's stage waits
+     on the bell loop's `flag:q_south_has_rope` path being open). Tone note: mystery and
+     non-conformance, never the Hollowing — the Registry story is NEVER confirmed.
    - **R1 "Wicks for the Lamplighter"** — the Waykeeper's Round, leg 1 (live now): parcel
      from the **Waykeeper** (`vesper_crossroads`) → the **old lamplighter** (Dimglass I) ·
      flags: `flag:q_round_lamplighter` · reward: bright-lamp kit · `[wakes with spoke]`

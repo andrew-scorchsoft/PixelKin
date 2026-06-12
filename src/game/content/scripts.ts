@@ -285,6 +285,67 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:q_south_wrecklamp_done' },
   ],
 
+  // S4 "The Booji-Wooji Man" — the Lifting House quest line. The quay's gym crew
+  // each hold one piece of the old man; none of the pieces agree, and that is the
+  // point. Mystery and non-conformance, never the Hollowing: Paul keeps one lamp
+  // dark for company, not for a cause. Closure is a question, not an answer.
+  'script.booji_andy': [
+    { op: 'say', speaker: 'ANDY', text: 'Oh — a Wayfarer! Come in, come in. Mind the bench. I bench, you know. Every dusk. Well — every OTHER dusk. The knee, you see.' },
+    { op: 'say', speaker: 'ANDY', text: 'You\'ll be here about the old man. Everyone comes in about the old man eventually. PAUL. Though that\'s not what the quay calls him.' },
+    { op: 'say', speaker: 'ANDY', text: 'They call him the BOOJI-WOOJI MAN. Don\'t ask me what it means. I asked HIM once, and he asked me what I thought it meant, and I\'ve been thinking about it for two years now.' },
+    { op: 'say', speaker: 'ANDY', text: 'He\'s seventy-something. Eighty-something? Numbers don\'t stick to him — he wears them the way some men wear collars, for other people\'s comfort. And he can still press the big harbour stone overhead. The one SID can\'t budge. Don\'t tell Sid I said that.' },
+    { op: 'say', speaker: 'ANDY', text: 'Word is the Wardens\' Registry wanted him once. WANTED him, ink and seal. For what? He says he\'ll tell me over a cup of something, some night. There\'s never a cup. There\'s never a night.' },
+    { op: 'say', speaker: 'ANDY', text: 'Talk to ABDUL — he\'s seen where the old man goes. Then SID. Then come back and tell me everything, because nobody ever tells me everything.' },
+    { op: 'setFlag', flag: 'flag:q_south_booji' },
+  ],
+  'script.booji_abdul': [
+    { op: 'say', speaker: 'ABDUL', text: '...You\'re after Paul, then.' },
+    { op: 'narrate', text: 'He sets the stone down with more care than most people give their own names.' },
+    { op: 'say', speaker: 'ABDUL', text: 'I bench beside that man three dusks a week. In two years he has told me four stories about himself. All of them were different. All of them were true. I can\'t explain that.' },
+    { op: 'say', speaker: 'ABDUL', text: 'Once he asked me: do you carry your lamp, or does your lamp carry you? I laughed. Then I didn\'t sleep.' },
+    { op: 'say', speaker: 'ABDUL', text: 'He walks the breakwater after the bell goes quiet. Past the shrine, right out where the boards run out. Sid saw him out there. Sid won\'t say what he saw. Ask him anyway.' },
+    { op: 'setFlag', flag: 'flag:q_south_booji_abdul' },
+  ],
+  'script.booji_sid': [
+    { op: 'say', speaker: 'SID', text: '...' },
+    { op: 'say', speaker: 'SID', text: '...Saw him at the breakwater\'s end. Standing at a lamp that\'s gone dark. Not lighting it.' },
+    { op: 'say', speaker: 'SID', text: 'A lamp-tender\'s country, and he just... let it sit dark. Said the dark needs somewhere to sit too, or it gets ideas.' },
+    { op: 'say', speaker: 'SID', text: '...Then he pressed the mooring-stone. The BIG one. Set it down soft as a loaf. Go see him. I\'m not going back out there.' },
+    { op: 'setFlag', flag: 'flag:q_south_booji_sid' },
+  ],
+  // The meeting, out on the dark boards. Paul is OPTIONAL strength (route-class
+  // bout, payout authored to 10-economy §4) and the reward is the folio — the
+  // gift inside the gift. The Registry story is never confirmed. Ever.
+  'script.booji_paul': [
+    { op: 'narrate', text: 'At the breakwater\'s end, past the bell, one lamp stands dark. An old man leans against it the way you\'d lean on an old friend\'s shoulder.' },
+    { op: 'say', speaker: 'PAUL', text: 'Evening. Or it would be, if evenings still happened. You\'ve been asking my gym about me. Did they tell you anything good?' },
+    { op: 'say', speaker: 'PAUL', text: 'Don\'t believe the Registry story. ...Don\'t disbelieve it either. A story you can check is just paperwork.' },
+    { op: 'say', speaker: 'PAUL', text: 'And before you ask — no, not the Hollowing. They want the dark to WIN. I just think it should get a chair at the table. Different thing entirely.' },
+    { op: 'say', speaker: 'PAUL', text: 'Here\'s my question, lamp-tender\'s apprentice. All these folk out relighting things: do you think they have reasons — or memberships?' },
+    { op: 'narrate', text: 'You open your mouth. You close it again. The question settles in somewhere behind your eyes and starts moving the furniture around.' },
+    { op: 'say', speaker: 'PAUL', text: 'Ha. There it goes. Right — you came all this way, so custom says you get a bout. Fair warning: I\'m old. Everything I still do, I do on purpose.' },
+    { op: 'battle', trainer: 'breakwater_paul' },
+    { op: 'say', speaker: 'PAUL', text: 'Good. GOOD. You fight like someone who hasn\'t decided who they are yet. Don\'t fix that too quickly.' },
+    { op: 'say', speaker: 'PAUL', text: 'Now. A man my age gets to clearing things out — and I don\'t give things to whoever wants them. I give them to whoever will GET them.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'booji_folio', count: 1 },
+    { op: 'say', text: 'He puts a battered, hand-inked folio in your hands — crowded with impossible grinning figures and letters that argue with one another, cheerfully. Received the BOOJI FOLIO!' },
+    { op: 'say', speaker: 'PAUL', text: 'Made before the Dusk, by folk who knew the world\'s too odd to draw honestly — so they drew it odder. The polished stuff hangs in Lumenaries. The ALIVE stuff hides in folios like this. Seemed like yours.' },
+    { op: 'say', speaker: 'PAUL', text: 'The Registry business? We\'ll talk about it over a cup of something. Some night.' },
+    { op: 'narrate', text: 'You are fairly sure there will never be a cup. You are fairly sure that is the point.' },
+    { op: 'setFlag', flag: 'flag:q_south_booji_met' },
+  ],
+  'script.booji_andy_done': [
+    { op: 'say', speaker: 'ANDY', text: 'You FOUND him? You fought— he gave you the— show me. No! Don\'t show me. If I see it I\'ll want the story, and he\'d never forgive me for getting it second-hand.' },
+    { op: 'say', speaker: 'ANDY', text: 'Did you ask about the Registry? ...You asked, and he answered with a question. Of course. Of course he did.' },
+    { op: 'say', speaker: 'ANDY', text: 'Well, that\'s the most anyone\'s got out of the Booji-Wooji Man in years. Some people leave explanations, friend. That one leaves atmospheres.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'tallow_balm', count: 2 },
+    { op: 'say', text: 'Received 2 TALLOW BALMS!' },
+    { op: 'say', speaker: 'ANDY', text: 'For your trouble — I was saving them for the knee. The knee\'s a lost cause.' },
+    { op: 'setFlag', flag: 'flag:q_south_booji_done' },
+  ],
+
   // A2 (Dimglass Coast I): Wren's first FRIENDLY trainer battle. Wren is a SIGHT
   // trainer — spots the player on the lane, runs up (the engine plays the alert +
   // approach), and this script carries the words + battle. Low-stakes by design.

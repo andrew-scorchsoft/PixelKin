@@ -28,6 +28,11 @@ const SPRITE_SHEETS: Record<string, string> = {
   nessa: 'nessa_cole',
   warden_cor: 'warden_cor',
   cor: 'warden_cor',
+  // The Lifting House crew + the Booji-Wooji Man (S4, Pearlmoor — bespoke sheets).
+  booji_paul: 'booji_paul',
+  lifter_andy: 'lifter_andy',
+  lifter_abdul: 'lifter_abdul',
+  lifter_sid: 'lifter_sid',
   // Generic, reusable townsfolk archetypes — drop these on any NpcPlacement.sprite.
   npc_man: 'npc_man',
   npc_woman: 'npc_woman',
@@ -57,6 +62,10 @@ const SPRITE_COLORS: Record<string, string> = {
   lucan_pyre: COLORS.fire,
   nessa_cole: COLORS.deepBlue,
   warden_cor: COLORS.ink,
+  booji_paul: COLORS.bone,
+  lifter_andy: COLORS.deepBlue,
+  lifter_abdul: COLORS.grass,
+  lifter_sid: COLORS.fire,
 };
 
 /**

@@ -103,6 +103,12 @@ export const ITEMS: ItemRegistry = {
     desc: 'The netmender\'s bell-rope, salt-stiff and sound, spliced for the silent shrine at the breakwater\'s end.',
     category: 'key',
   },
+  booji_folio: {
+    id: 'booji_folio',
+    name: 'Booji Folio',
+    desc: 'A hand-inked folio of impossible grinning figures, drawn before the Dusk by folk who drew the world odder to tell it true. Paul chose it for you. It does not explain itself.',
+    category: 'key',
+  },
   fenn_letter: {
     id: 'fenn_letter',
     name: "Gran's Letter",
