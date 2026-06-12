@@ -21,7 +21,7 @@ Legend — **Gleam** = the region's constellation reward; **Gift** = the Lantern
 | **South** (01) | 1 Ember · 2 Tide | ✅ **complete** | — |
 | **East** (02) | 3 Verdant · 4 Stone | ✅ **complete** | — (Cinderhead built 2026-06) |
 | **North** (03) | 5 Storm · 6 Frost | ✅ **complete** (built 2026-06) | — |
-| **West** (04) | 7 Solar · 8 Lunar | 🟡 W1+W2 built (Hushfrost + Solarium/Sunvault/Helia clusters, 2026-06) | Nightreach · Coldfog (+ spurs); W1+W2 content refs (wiring) |
+| **West** (04) | 7 Solar · 8 Lunar | 🟡 W1+W2+W3 built (Hushfrost + Solarium/Sunvault/Helia + Coldfog/Drownlight/Stillworks clusters, 2026-06) | Nightreach (W4); W1–W3 content refs (wiring) |
 | **Central/Endgame** (05) | — | ⬜ not started | Penumbra Ring · Umbral Spire (`hub_unlocked` roads) |
 | **Post-game** (06) | — | ⬜ not started | Dawnstead · day-forms · Còr's resolution |
 
@@ -94,16 +94,22 @@ Expert panel: **SHIP-READY** (`docs/reviews/north-region-panel.md`); all minors 
 | Sunken Solarium (Solar · Lucan · Sunsketch; the Lit Stage loop #7 + Last-Warm-Day + X2 sun-mask; 24 designed encounter rows reconciled dry/flooded) | `sunken_solarium` + `sunken_solarium_lumenary` | ✅ 2026-06 | `build_sunken_solarium.py`, `build_solarium_interiors.py` |
 | Sunvault Climb I→II (Sunsketch boundary; X3 viewpoint leg 1 + the Vigil Striker cache on II) | `sunvault_climb_i/ii` | ✅ 2026-06 | `build_sunvault_climb_*.py` |
 | Helia Vault (Sunsketch PUZZLE micro-dungeon: 3 sequential blooms + the sun-mirror redirect; Heliovast's first wild bed) | `helia_vault` | ✅ 2026-06 | `build_helia_vault.py` |
-| Coldfog Marches + Drownlight + Stillworks (B4) | — | ⬜ | W3 |
+| Coldfog Marches I→II + Drownlight Beacon + Hollowfen Stillworks (B4 shown half: the drained land; X3 leg 3 cairn; the charged-husk Whorlix cradle; first ACCENT tileset `coldfog_set`/fogcrag; NO trainers/rest by design) | `coldfog_marches_i/ii`, `drownlight_beacon`, `hollowfen_stillworks` | ✅ 2026-06 | `build_coldfog_*.py`, `build_drownlight_beacon.py`, `build_hollowfen_stillworks.py` (objects: `draw_coldfog_objects.py`) |
 | Nightreach Observatory (Lunar · Nessa · Starreach) | — | ⬜ | W4 |
 
-W1+W2 content refs (scripts/dialogue/trainers/items/EXTRA_ENCOUNTERS mirror) are owed to the
+W1+W2+W3 content refs (scripts/dialogue/trainers/items/EXTRA_ENCOUNTERS mirror) are owed to the
 wiring pass — each builder prints its ledger. X1 reward item id must NOT be `bright_lamp`
 (SaveCodec legacy rename) — use `caretaker_lamp`, display name "Bright Lamp".
 W2 contracts for W4 (in `build_sunvault_climb_ii.py`'s docstring): `to_observatory` lands
 nightreach (15,28)/(16,28) — W4's return pair must land at climb II's (22,1)/(23,1);
 X3's giver sets `flag:q_west_chart` (the Sunvault viewpoint then sets `_1`). The region
 audit's "west is a pure corridor" WARN clears when W4 lands the Nightreach hub spoke.
+W3 contracts for W4 (in `build_coldfog_marches_ii.py`'s docstring): the back-door
+`to_observatory_fog` lands nightreach (28,14)/(28,15) facing left (map ≥29 wide, east-edge
+entry walkable, Emberward-gated both sides) — W4's return pair must land at Coldfog II's
+(1,3)/(1,4). Coldfog's X3 cairn sets `flag:q_west_chart_3` (the OPTIONAL bravest leg —
+W4's done-stage must not hard-require `_3`). Stillworks' band sets only `flag:seen_stillworks`;
+`flag:great_null_known` stays Nessa's at Nightreach.
 
 See [`05-central-endgame.md`](./05-central-endgame.md), [`06-postgame.md`](./06-postgame.md)
 for Central/Post-game. Not started.

@@ -21,6 +21,41 @@
       "tw": 2,
       "th": 2
     },
+    "coldfog_lighthouse": {
+      "path": "assets/sprites/objects/coldfog_lighthouse.webp",
+      "width": 64,
+      "height": 112,
+      "tw": 4,
+      "th": 7
+    },
+    "coldfog_null_engine": {
+      "path": "assets/sprites/objects/coldfog_null_engine.webp",
+      "width": 96,
+      "height": 80,
+      "tw": 6,
+      "th": 5
+    },
+    "coldfog_null_rack": {
+      "path": "assets/sprites/objects/coldfog_null_rack.webp",
+      "width": 64,
+      "height": 32,
+      "tw": 4,
+      "th": 2
+    },
+    "coldfog_quiet_camp": {
+      "path": "assets/sprites/objects/coldfog_quiet_camp.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "coldfog_works_front": {
+      "path": "assets/sprites/objects/coldfog_works_front.webp",
+      "width": 96,
+      "height": 80,
+      "tw": 6,
+      "th": 5
+    },
     "galehigh_cottage": {
       "path": "assets/sprites/objects/galehigh_cottage.webp",
       "width": 80,

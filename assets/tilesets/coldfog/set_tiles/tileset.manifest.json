@@ -1,0 +1,118 @@
+{
+  "name": "coldfog_set",
+  "columns": 6,
+  "tiles": [
+    {
+      "file": "000_fogcrag_corner_nw.png",
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "corner_nw",
+      "collides": true
+    },
+    {
+      "file": "001_fogcrag_edge_n.png",
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "edge_n",
+      "collides": true
+    },
+    {
+      "file": "002_fogcrag_corner_ne.png",
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "corner_ne",
+      "collides": true
+    },
+    {
+      "file": "003_fogcrag_edge_w.png",
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "edge_w",
+      "collides": true
+    },
+    {
+      "file": "004_fogcrag_fill.png",
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "file": "005_fogcrag_edge_e.png",
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "edge_e",
+      "collides": true
+    },
+    {
+      "file": "006_fogcrag_corner_sw.png",
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "corner_sw",
+      "collides": true
+    },
+    {
+      "file": "007_fogcrag_edge_s.png",
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "edge_s",
+      "collides": true
+    },
+    {
+      "file": "008_fogcrag_corner_se.png",
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "corner_se",
+      "collides": true
+    },
+    {
+      "file": "009_fogcrag_inner_nw.png",
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "inner_nw",
+      "collides": true
+    },
+    {
+      "file": "010_fogcrag_inner_ne.png",
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "inner_ne",
+      "collides": true
+    },
+    {
+      "file": "011_fogcrag_inner_sw.png",
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "inner_sw",
+      "collides": true
+    },
+    {
+      "file": "012_fogcrag_inner_se.png",
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "inner_se",
+      "collides": true
+    },
+    {
+      "file": "013_fogcrag_fill_v1.png",
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "file": "014_fogcrag_fill_v2.png",
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "file": "015_fogcrag_edge_s_v1.png",
+      "role": "cliff",
+      "terrain": "fogcrag",
+      "autotile": "edge_s",
+      "collides": true
+    }
+  ]
+}

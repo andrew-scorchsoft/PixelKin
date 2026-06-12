@@ -554,6 +554,62 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/sunvault-climb-b.webp',
     ],
   },
+  // W3 — the COLDFOG cluster (Arc B4's shown half: the drained land, the cost
+  // made plain). OPTIONAL late detour off the hub — never the road to
+  // Nightreach (spine §0 rule 2). The whole cluster shares one uneasy loop
+  // ('coldfog-marches-a') and the marches backdrops (beacon + stillworks sit
+  // inside the same drained weather — the reuse-table pattern of the spurs).
+  // The marches + beacon stack the `coldfog_set` ACCENT tileset (fogcrag: the
+  // cliff family with blight-context rims — build_coldfog_set.py).
+  coldfog_marches_i: {
+    json: 'assets/maps/coldfog_marches_i.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      coldfog_set: 'assets/tilesets/coldfog_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/coldfog-marches-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/coldfog-marches-a.webp',
+      'assets/backgrounds/battle/coldfog-marches-b.webp',
+    ],
+  },
+  coldfog_marches_ii: {
+    json: 'assets/maps/coldfog_marches_ii.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      coldfog_set: 'assets/tilesets/coldfog_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/coldfog-marches-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/coldfog-marches-a.webp',
+      'assets/backgrounds/battle/coldfog-marches-b.webp',
+    ],
+  },
+  drownlight_beacon: {
+    json: 'assets/maps/drownlight_beacon.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      coldfog_set: 'assets/tilesets/coldfog_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/coldfog-marches-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/coldfog-marches-a.webp',
+      'assets/backgrounds/battle/coldfog-marches-b.webp',
+    ],
+  },
+  hollowfen_stillworks: {
+    json: 'assets/maps/hollowfen_stillworks.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/coldfog-marches-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/coldfog-marches-a.webp',
+      'assets/backgrounds/battle/coldfog-marches-b.webp',
+    ],
+  },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
   // Their battle backdrops are already rendered — see UPCOMING_BATTLE_BACKDROPS below.
@@ -572,10 +628,6 @@ export const UPCOMING_BATTLE_BACKDROPS: Record<string, string[]> = {
   nightreach_observatory: [
     'assets/backgrounds/battle/nightreach-observatory-a.webp',
     'assets/backgrounds/battle/nightreach-observatory-b.webp',
-  ],
-  coldfog_marches: [
-    'assets/backgrounds/battle/coldfog-marches-a.webp',
-    'assets/backgrounds/battle/coldfog-marches-b.webp',
   ],
   vesper_crossroads: [
     'assets/backgrounds/battle/vesper-crossroads-a.webp',
