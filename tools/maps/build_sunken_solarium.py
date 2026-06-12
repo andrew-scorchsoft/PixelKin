@@ -471,8 +471,11 @@ m["npcs"].append({
 owed += ["script.pickup_sun_mask (the gilt mask out of the silt; sets "
          "flag:picked_sun_mask)"]
 m["objects"] += [
+    # the glint vanishes once the mask is taken (W8 MIN-3 — a picked-up
+    # treasure must not keep glinting; MapObjects take hidden_when_flag)
     {"id": "mask_glint", "sprite": "solarium_sun_mask",
-     "at": {"tx": 26, "ty": 30}, "w": 1, "h": 1, "solid": False},
+     "at": {"tx": 26, "ty": 30}, "w": 1, "h": 1, "solid": False,
+     "hidden_when_flag": "flag:picked_sun_mask"},
     {"id": "chamber_column", "sprite": "solarium_column",
      "at": {"tx": 23, "ty": 28}, "w": 1, "h": 3, "overhang": 1, "walk_under": True},
 ]
@@ -683,6 +686,40 @@ for y in range(H):
 for (x, y) in [(18, 4), (2, 11), (22, 15), (10, 31), (20, 30), (3, 20)]:
     if (x, y) not in avoid and deco[y * W + x] == 0:
         deco[y * W + x] = gid("boulder")
+
+# ---- THE UNRISEN STAIR annex (the Three Hours, walkthrough/07-the-three §6) ---------
+# The deepest fold — the far-shore pour pocket past Pool B — gains the
+# FIRST-LIGHT BASIN and the sealed processional stair. HOST DIFF IS DELIBERATELY
+# MINIMAL: one warp + one trigger + one drawn basin swap pair; no terrain, no
+# NPCs (Nessa's rumour / Lucan's phial giver stages = the trio wiring pass).
+m["objects"] += [
+    {"id": "unrisen_basin_filled", "sprite": "unrisen_basin_filled",
+     "at": {"tx": 14, "ty": 29}, "w": 2, "h": 1,
+     "requires_flag": "flag:three_dawn_poured"},
+    {"id": "unrisen_basin_dry", "sprite": "unrisen_basin_dry",
+     "at": {"tx": 14, "ty": 29}, "w": 2, "h": 1,
+     "hidden_when_flag": "flag:three_dawn_poured"},
+]
+m["triggers"].append({
+    "id": "three_dawn_basin", "kind": "script", "at": {"tx": 14, "ty": 29},
+    "activation": "interact", "ref": "script.three_dawn_basin", "once": True,
+    "requires_flag": "flag:three_dawn_phial",
+    "blocked_ref": "npc.three_dawn_basin_dry",
+    "sets_flags": ["flag:three_dawn_poured"],
+    "hidden_when_flag": "flag:three_dawn_poured"})
+m["warps"].append({
+    "id": "to_unrisen", "at": {"tx": 18, "ty": 29}, "trigger": "step_on",
+    "to_map": "unrisen_stair", "to": {"tx": 10, "ty": 24}, "facing": "up",
+    "requires_ability": "sunsketch",
+    "requires_flag": "flag:three_dawn_poured",
+    "blocked_ref": "npc.unrisen_sealed", "transition": "door"})
+owed += ["script.three_dawn_basin (pour the First-Light Phial; one cupful of "
+         "morning; the first sun-vine on the stair stirs — requires "
+         "flag:three_dawn_phial, sets flag:three_dawn_poured)",
+         "npc.three_dawn_basin_dry (blocked: the basin stands dry)",
+         "npc.unrisen_sealed ('A stair behind the seal, climbing toward "
+         "nothing the sky currently offers. The basin before it is dry.' — "
+         "hooks verbatim)"]
 
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},

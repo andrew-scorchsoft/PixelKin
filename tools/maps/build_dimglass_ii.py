@@ -193,8 +193,12 @@ m = {
         {"id": "to_gullcry", "at": {"tx": 15, "ty": 12}, "trigger": "step_on",
          "to_map": "gullcry_rock", "to": {"tx": 4, "ty": 8}, "facing": "up",
          "requires_ability": "tidecall", "transition": "fade"},
+        # NOTE (Hours pass, 2026-06): the shipped JSON has drifted AHEAD of this
+        # builder (door-convention pass: step_on + blocked_ref) — reconcile
+        # before any re-run. facing is 'right': tideglass_cavern is BUILT and
+        # its interior opens EAST of the pinned (4,8) landing.
         {"id": "to_tideglass", "at": {"tx": 2, "ty": 13}, "trigger": "interact",
-         "to_map": "tideglass_cavern", "to": {"tx": 4, "ty": 8}, "facing": "left",
+         "to_map": "tideglass_cavern", "to": {"tx": 4, "ty": 8}, "facing": "right",
          "requires_ability": "glimmerstep", "transition": "door"},
     ],
     "triggers": [

@@ -364,6 +364,28 @@
       "h": 3,
       "overhang": 2,
       "walk_under": true
+    },
+    {
+      "id": "unrisen_basin_filled",
+      "sprite": "unrisen_basin_filled",
+      "at": {
+        "tx": 14,
+        "ty": 29
+      },
+      "w": 2,
+      "h": 1,
+      "requires_flag": "flag:three_dawn_poured"
+    },
+    {
+      "id": "unrisen_basin_dry",
+      "sprite": "unrisen_basin_dry",
+      "at": {
+        "tx": 14,
+        "ty": 29
+      },
+      "w": 2,
+      "h": 1,
+      "hidden_when_flag": "flag:three_dawn_poured"
     }
   ],
   "warps": [
@@ -460,6 +482,24 @@
       },
       "facing": "left",
       "transition": "fade"
+    },
+    {
+      "id": "to_unrisen",
+      "at": {
+        "tx": 18,
+        "ty": 29
+      },
+      "trigger": "step_on",
+      "to_map": "unrisen_stair",
+      "to": {
+        "tx": 10,
+        "ty": 24
+      },
+      "facing": "up",
+      "requires_ability": "sunsketch",
+      "requires_flag": "flag:three_dawn_poured",
+      "blocked_ref": "npc.unrisen_sealed",
+      "transition": "door"
     }
   ],
   "triggers": [
@@ -657,6 +697,23 @@
       },
       "activation": "interact",
       "ref": "sign.solarium_climb"
+    },
+    {
+      "id": "three_dawn_basin",
+      "kind": "script",
+      "at": {
+        "tx": 14,
+        "ty": 29
+      },
+      "activation": "interact",
+      "ref": "script.three_dawn_basin",
+      "once": true,
+      "requires_flag": "flag:three_dawn_phial",
+      "blocked_ref": "npc.three_dawn_basin_dry",
+      "sets_flags": [
+        "flag:three_dawn_poured"
+      ],
+      "hidden_when_flag": "flag:three_dawn_poured"
     }
   ],
   "encounters": [

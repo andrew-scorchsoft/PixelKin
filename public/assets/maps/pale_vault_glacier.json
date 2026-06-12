@@ -331,6 +331,24 @@
       },
       "facing": "left",
       "transition": "fade"
+    },
+    {
+      "id": "to_hourfold",
+      "at": {
+        "tx": 26,
+        "ty": 27
+      },
+      "trigger": "step_on",
+      "to_map": "pale_vault_hourfold",
+      "to": {
+        "tx": 17,
+        "ty": 2
+      },
+      "facing": "down",
+      "requires_ability": "emberward",
+      "requires_flag": "flag:three_mid_snuffer",
+      "blocked_ref": "npc.hourfold_sealed",
+      "transition": "door"
     }
   ],
   "triggers": [
@@ -1010,8 +1028,21 @@
       "facing": "up",
       "sprite": "npc_girl",
       "movement": "static",
+      "dialogue_ref": "script.token_north",
+      "requires_flag": "gleam:frost",
+      "hidden_when_flag": "flag:q_token_north"
+    },
+    {
+      "id": "gleam_watcher_after",
+      "at": {
+        "tx": 24,
+        "ty": 14
+      },
+      "facing": "up",
+      "sprite": "npc_girl",
+      "movement": "static",
       "dialogue_ref": "npc.pale_vault_gleam_watcher",
-      "requires_flag": "gleam:frost"
+      "requires_flag": "flag:q_token_north"
     },
     {
       "id": "gleam_kid",

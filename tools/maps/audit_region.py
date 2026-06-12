@@ -70,7 +70,18 @@ GRANTS: dict[str, list[str]] = {
     "nightreach_observatory": ["starreach", "gleam:lunar", "flag:crown_west",
                                "flag:hub_unlocked"],
     "umbral_spire": ["flag:dawn"],
+    # H1 (the Three Hours): the Lampwright's Relay completes inside the cavern
+    # (the rumour itself comes from the Pearlmoor netmender — wiring pass).
+    "tideglass_cavern": ["flag:q_south_wrecklamp_lit", "flag:three_dusk_lens_c"],
 }
+# ---- The Three Hours (walkthrough/07-the-three) — the unlock chains' keys
+# ride the existing grant points (rumours in the host towns; Ysolde's Vigil
+# Snuffer below the vault; Lucan's phial + the basin pour at the Solarium).
+GRANTS["pearlmoor_quay"].append("flag:three_dusk_rumour")
+GRANTS["pale_vault_glacier"].append("flag:three_mid_rumour")
+GRANTS["pale_vault_undercroft"].append("flag:three_mid_snuffer")
+GRANTS["nightreach_observatory"].append("flag:three_dawn_rumour")
+GRANTS["sunken_solarium"] += ["flag:three_dawn_phial", "flag:three_dawn_poured"]
 POSTGAME_FLAGS = {"flag:dawn"}
 
 

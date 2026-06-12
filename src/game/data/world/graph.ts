@@ -82,6 +82,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'dimglass_coast_ii', region: 'south' }, // route: tidal flats
     { map_id: 'gullcry_rock', region: 'south', optional: true, reward: 'rare sea-bird kin + a Tide charm' },
     { map_id: 'tideglass_cavern', region: 'south', optional: true, reward: 'landmark micro-dungeon; a signature rare water kin' },
+    { map_id: 'tideglass_gallery', region: 'south', optional: true, reward: 'B1F: the Dusk Hour (Gloamber #160, the legendaryBattle set-piece)' },
     { map_id: 'pearlmoor_quay', region: 'south' },
     { map_id: 'pearlmoor_breakwater', region: 'south' }, // the Causeway Bell's foot causeway (Moor-bell shrine)
     { map_id: 'pearlmoor_lumenary', region: 'south' }, // interior: the Tide Lumenary (Reyl Wash)
@@ -119,12 +120,14 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'pale_vault_lumenary', region: 'north' }, // interior: the Frost hall (the Aurora-watch's home — the battle is in the undercroft)
     { map_id: 'pale_vault_inn', region: 'north' }, // interior: the glacier inn (rest point)
     { map_id: 'pale_vault_home', region: 'north' }, // interior: an ice-block cottage
+    { map_id: 'pale_vault_hourfold', region: 'north', optional: true, reward: 'the Still Hour (Noctilune #161) past the Unstruck Toll' },
     // ---- West: Hushfrost Pass (2 seg) -> Solarium -> Sunvault Climb (2 seg) -> Nightreach
     { map_id: 'hushfrost_pass_i', region: 'west' }, // route: snow canyon
     { map_id: 'hushfrost_pass_ii', region: 'west' }, // route: coldfog throat
     { map_id: 'aurora_hollow', region: 'west', optional: true, reward: 'rare Frost/Light kin + item' },
     { map_id: 'sunken_solarium', region: 'west' },
     { map_id: 'sunken_solarium_lumenary', region: 'west' }, // interior: the Solar hall (the troupe's green-room + the rest point — the battle is on the lit stage outdoors)
+    { map_id: 'unrisen_stair', region: 'west', optional: true, reward: 'the Lost Hour (Erstmorn #162) atop the Sunsketch bloom ascent' },
     { map_id: 'sunvault_climb_i', region: 'west' }, // route: overgrown terraces
     { map_id: 'sunvault_climb_ii', region: 'west' }, // route: sun-vine bridges
     { map_id: 'helia_vault', region: 'west', optional: true, reward: 'rare Solar kin + item in a sealed reliquary' },
@@ -222,6 +225,19 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // ---- Optional spurs (dead-ends with rewards; several need a later gift) ----------
     { from_map: 'dimglass_coast_ii', to_map: 'gullcry_rock', via_warp: 'to_gullcry', requires_ability: 'tidecall', bidirectional: true },
     { from_map: 'dimglass_coast_ii', to_map: 'tideglass_cavern', via_warp: 'to_tideglass', requires_ability: 'glimmerstep', bidirectional: true },
+    // Dimglass I's launch-era cliff-mouth tease is a real second door into the
+    // cavern (the shipped warp, now declared); the segments meet at the mouth.
+    { from_map: 'dimglass_coast', to_map: 'tideglass_cavern', via_warp: 'to_tideglass', requires_ability: 'glimmerstep', bidirectional: true },
+    // ---- The Three Hours (walkthrough/07-the-three): one annex per quadrant ----------
+    // Site I: the Gallery under Tideglass — the stair seam opens when the
+    // Lampwright's Relay completes (lens C).
+    { from_map: 'tideglass_cavern', to_map: 'tideglass_gallery', via_warp: 'stair_down', requires_flag: 'flag:three_dusk_lens_c', bidirectional: true },
+    // Site II: the Hourfold off the glacier's Emberward deep-ice fold —
+    // sealed until Ysolde hands over the Vigil Snuffer.
+    { from_map: 'pale_vault_glacier', to_map: 'pale_vault_hourfold', via_warp: 'to_hourfold', requires_ability: 'emberward', requires_flag: 'flag:three_mid_snuffer', bidirectional: true },
+    // Site III: the Unrisen Stair off the Solarium's deepest fold — sealed
+    // until the First-Light Phial is poured into the basin.
+    { from_map: 'sunken_solarium', to_map: 'unrisen_stair', via_warp: 'to_unrisen', requires_ability: 'sunsketch', requires_flag: 'flag:three_dawn_poured', bidirectional: true },
     { from_map: 'saltreach_fen_ii', to_map: 'sunkbell_shallows', via_warp: 'to_sunkbell', requires_ability: 'tidecall', bidirectional: true },
     { from_map: 'glowmoss_deep', to_map: 'glowmoss_deep_b1f', via_warp: 'ladder_down', bidirectional: true },
     { from_map: 'glowmoss_deep_b1f', to_map: 'spore_grotto', via_warp: 'to_grotto', requires_ability: 'glimmerstep', bidirectional: true },

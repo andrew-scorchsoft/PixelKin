@@ -212,8 +212,13 @@ m = {
         # The cavern mouth's LOWER tile: (2,10) had no standable neighbour (the
         # cliff edging seals that row — audit_flow caught it), so the door sits
         # at (2,11), interacted from the open grass at (3,11) facing left.
+        # NOTE (Hours pass, 2026-06): the shipped JSON has drifted AHEAD of this
+        # builder (the door-convention pass made this warp step_on with
+        # blocked_ref 'door.locked_glimmerstep') — reconcile before any re-run.
+        # facing is 'right': tideglass_cavern is BUILT and its interior opens
+        # EAST of the pinned (5,8) landing.
         {"id": "to_tideglass", "at": {"tx": 2, "ty": 11}, "trigger": "interact",
-         "to_map": "tideglass_cavern", "to": {"tx": 5, "ty": 8}, "facing": "left",
+         "to_map": "tideglass_cavern", "to": {"tx": 5, "ty": 8}, "facing": "right",
          "requires_ability": "glimmerstep", "transition": "door"},
     ],
     "triggers": [

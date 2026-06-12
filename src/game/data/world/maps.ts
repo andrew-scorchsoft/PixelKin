@@ -148,6 +148,25 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/dimglass-coast-a.mp3',
   },
+  // Tideglass Cavern — the South's long-teased glass sea-cave landmark
+  // (Glimmerstep spur off Dimglass II; the Lampwright's Relay + S3's
+  // wreck-lamp), and its B1F gallery where the Dusk Hour waits (the Three
+  // Hours, walkthrough/07-the-three). Spur maps reuse the parent coast
+  // loop's sparsest variant; both share the new gallery backdrop.
+  tideglass_cavern: {
+    json: 'assets/maps/tideglass_cavern.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/dimglass-coast-c.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/tideglass-gallery-a.webp'],
+  },
+  tideglass_gallery: {
+    json: 'assets/maps/tideglass_gallery.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/dimglass-coast-c.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/tideglass-gallery-a.webp'],
+  },
   gullcry_rock: {
     json: 'assets/maps/gullcry_rock.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
@@ -459,6 +478,16 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/pale-vault-glacier-b.mp3',
   },
+  // The Hourfold — Midnight's fold in the glacier's Emberward deep ice (the
+  // Three Hours, Site II): the ledge descent + the Unstruck Toll. Reuses the
+  // glacier loop's sparsest variant (the undercroft's cue).
+  pale_vault_hourfold: {
+    json: 'assets/maps/pale_vault_hourfold.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/pale-vault-glacier-c.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/hourfold-a.webp'],
+  },
   // Hushfrost Pass — the West's frozen opening leg (walkthrough 04-west):
   // a snow canyon (I) burning through the Emberward coldfog throat into the
   // thinning fog (II), where the X1 caretaker sits with her numbed kin and
@@ -516,6 +545,18 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/sunken-solarium-b.mp3',
+  },
+  // The Unrisen Stair — the Dawn-that-waited's processional ruin off the
+  // Solarium's deepest fold (the Three Hours, Site III): the First-Light
+  // pour + the Sunsketch bloom ascent. Reuses the Solarium loop's sparsest
+  // variant; its backdrop is the warmest in the main game (a half-shade
+  // short of Dawnstead's).
+  unrisen_stair: {
+    json: 'assets/maps/unrisen_stair.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/sunken-solarium-c.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/unrisen-stair-a.webp'],
   },
   // Sunvault Climb — the golden terraces rising from the drowned garden to
   // Nightreach's rim; the I→II boundary is the dead sun-vine bridge

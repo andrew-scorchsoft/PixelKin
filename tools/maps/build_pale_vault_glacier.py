@@ -315,6 +315,16 @@ m["warps"] += [
     {"id": "to_pass_s", "at": {"tx": 0, "ty": 11}, "trigger": "step_on",
      "to_map": "hushfrost_pass_i", "to": {"tx": 30, "ty": 11}, "facing": "left",
      "transition": "fade"},
+    # THE HOURFOLD annex (the Three Hours, walkthrough/07-the-three §5) — the
+    # ONE host edit: a sealed seam in the deep-ice fold's SW corner. Stays a
+    # diegetic "not yet" until Ysolde's Vigil Snuffer (flag:three_mid_snuffer,
+    # trio wiring pass places her giver stage in the undercroft). HOST DIFF IS
+    # THE WARP ONLY — no terrain/object/NPC change (Hours-pass lane).
+    {"id": "to_hourfold", "at": {"tx": 26, "ty": 27}, "trigger": "step_on",
+     "to_map": "pale_vault_hourfold", "to": {"tx": 17, "ty": 2}, "facing": "down",
+     "requires_ability": "emberward",
+     "requires_flag": "flag:three_mid_snuffer",
+     "blocked_ref": "npc.hourfold_sealed", "transition": "door"},
 ]
 
 # ---- story bands (compute the cut from the grids — band ONLY walkable cells) -------
@@ -498,10 +508,17 @@ m["npcs"] += [
     {"id": "townsfolk_inn", "at": {"tx": 8, "ty": 10}, "facing": "down",
      "sprite": "npc_man", "movement": "look_around",
      "dialogue_ref": "npc.pale_vault_townsfolk"},
+    # C2 "The Inn's Empty Lamps" (Central wiring): the NORTH token giver —
+    # the Aurora-watch line first, the lamp-token once the chain reaches her.
     {"id": "gleam_watcher", "at": {"tx": 24, "ty": 14}, "facing": "up",
      "sprite": "npc_girl", "movement": "static",
+     "dialogue_ref": "script.token_north",
+     "requires_flag": "gleam:frost",
+     "hidden_when_flag": "flag:q_token_north"},
+    {"id": "gleam_watcher_after", "at": {"tx": 24, "ty": 14}, "facing": "up",
+     "sprite": "npc_girl", "movement": "static",
      "dialogue_ref": "npc.pale_vault_gleam_watcher",
-     "requires_flag": "gleam:frost"},
+     "requires_flag": "flag:q_token_north"},
     {"id": "gleam_kid", "at": {"tx": 16, "ty": 11}, "facing": "up",
      "sprite": "npc_child", "movement": "wander",
      "dialogue_ref": "npc.pale_vault_gleam_kid",

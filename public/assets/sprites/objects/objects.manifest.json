@@ -147,6 +147,20 @@
       "tw": 2,
       "th": 3
     },
+    "hourfold_brazier_lit": {
+      "path": "assets/sprites/objects/hourfold_brazier_lit.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "hourfold_brazier_snuffed": {
+      "path": "assets/sprites/objects/hourfold_brazier_snuffed.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
     "hushfrost_aurora_glint_a": {
       "path": "assets/sprites/objects/hushfrost_aurora_glint_a.webp",
       "width": 16,
@@ -847,6 +861,48 @@
       "tw": 1,
       "th": 3
     },
+    "tideglass_glass_spire": {
+      "path": "assets/sprites/objects/tideglass_glass_spire.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "tideglass_lens_cold": {
+      "path": "assets/sprites/objects/tideglass_lens_cold.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "tideglass_lens_lit": {
+      "path": "assets/sprites/objects/tideglass_lens_lit.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "tideglass_wreck": {
+      "path": "assets/sprites/objects/tideglass_wreck.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "tideglass_wrecklamp_dark": {
+      "path": "assets/sprites/objects/tideglass_wrecklamp_dark.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "tideglass_wrecklamp_lit": {
+      "path": "assets/sprites/objects/tideglass_wrecklamp_lit.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
     "tinderwick_beacon": {
       "path": "assets/sprites/objects/tinderwick_beacon.webp",
       "width": 64,
@@ -888,6 +944,20 @@
       "height": 64,
       "tw": 3,
       "th": 4
+    },
+    "unrisen_basin_dry": {
+      "path": "assets/sprites/objects/unrisen_basin_dry.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "unrisen_basin_filled": {
+      "path": "assets/sprites/objects/unrisen_basin_filled.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
     },
     "windward_aerie": {
       "path": "assets/sprites/objects/windward_aerie.webp",

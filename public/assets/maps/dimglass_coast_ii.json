@@ -1949,7 +1949,7 @@
         "tx": 4,
         "ty": 8
       },
-      "facing": "left",
+      "facing": "right",
       "requires_ability": "glimmerstep",
       "transition": "door",
       "blocked_ref": "door.locked_glimmerstep"
