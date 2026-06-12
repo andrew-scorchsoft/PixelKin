@@ -68,7 +68,15 @@
     "weight_kg": 9.0,
     "habitat": "north"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "hushfrost_pass_ii",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 41,
+      "max": 42
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Long aerodynamic wasp silhouette, pale near-white with deep azure markings, a pair of blade-like crystal wings, four foreleg-lances each tipped with frozen lightning; cold elegance at 64px.",

@@ -72,7 +72,15 @@
     "weight_kg": 28,
     "habitat": "north"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "hushfrost_pass_ii",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 41,
+      "max": 42
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Large seabird-inspired form; sharply swept wings with serrated trailing-edge icicle spurs; elongated blade-like bill crackling with frost and static; body sleek from head to forked tail; blue-grey body, white underside, lightning-blue wing tips; fierce predator silhouette at 48px.",

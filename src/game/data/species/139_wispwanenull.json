@@ -68,11 +68,18 @@
   },
   "encounters": [
     {
-      "area": "coldfog_marches",
+      "area": "coldfog_marches_ii",
       "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 49,
-      "max": 52
+      "rarity": "common",
+      "min": 48,
+      "max": 50
+    },
+    {
+      "area": "hollowfen_stillworks",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 48,
+      "max": 50
     }
   ],
   "scripted": false,

@@ -69,7 +69,29 @@
     "weight_kg": 6.5,
     "habitat": "north"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "hushfrost_pass_i",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 40,
+      "max": 42
+    },
+    {
+      "area": "hushfrost_pass_ii",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 41,
+      "max": 42
+    },
+    {
+      "area": "aurora_hollow",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 40,
+      "max": 42
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Medium bird form; streamlined body with swept-back tail feathers tipped in crystal points; feathers shaded blue-white to silver; wing edges fringed with tiny icicle spurs; alert amber eye with a diamond highlight; clean aerodynamic silhouette at 40px.",

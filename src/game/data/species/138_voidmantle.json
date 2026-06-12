@@ -65,11 +65,18 @@
   },
   "encounters": [
     {
-      "area": "coldfog_marches",
+      "area": "coldfog_marches_ii",
       "terrain": "tall_grass",
       "rarity": "rare",
-      "min": 52,
-      "max": 54
+      "min": 49,
+      "max": 50
+    },
+    {
+      "area": "drownlight_beacon",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 49,
+      "max": 50
     }
   ],
   "scripted": false,

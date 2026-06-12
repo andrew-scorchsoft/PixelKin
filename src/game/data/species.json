@@ -6397,7 +6397,15 @@
     "weight_kg": 14000,
     "habitat": "north"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "aurora_hollow",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 42,
+     "max": 42
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "Towering, broad-shouldered golem form sculpted from ancient blue-white glacial ice; its surface etched with centuries of swirling aurora-pattern carvings; the face is serene, simple, and impossibly old; aurora-light leaks from the carved lines across its body; at 48px it fills the frame completely, a walking glacier-face.",
@@ -6571,7 +6579,15 @@
     "weight_kg": 48,
     "habitat": "north"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "hushfrost_pass_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 40,
+     "max": 41
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Wider, heavier crustacean form; carapace now densely covered in faceted crystal protrusions in purple-to-ice-blue; thicker claws tipped with drill-point crystal spires; mid-form still crablike but clearly larger and more weaponised at 40px.",
@@ -6818,7 +6834,29 @@
     "weight_kg": 6.5,
     "habitat": "north"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "hushfrost_pass_i",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 40,
+     "max": 42
+    },
+    {
+     "area": "hushfrost_pass_ii",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 41,
+     "max": 42
+    },
+    {
+     "area": "aurora_hollow",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 40,
+     "max": 42
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Medium bird form; streamlined body with swept-back tail feathers tipped in crystal points; feathers shaded blue-white to silver; wing edges fringed with tiny icicle spurs; alert amber eye with a diamond highlight; clean aerodynamic silhouette at 40px.",
@@ -6901,7 +6939,15 @@
     "weight_kg": 28,
     "habitat": "north"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "hushfrost_pass_ii",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 41,
+     "max": 42
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Large seabird-inspired form; sharply swept wings with serrated trailing-edge icicle spurs; elongated blade-like bill crackling with frost and static; body sleek from head to forked tail; blue-grey body, white underside, lightning-blue wing tips; fierce predator silhouette at 48px.",
@@ -7064,6 +7110,20 @@
      "rarity": "uncommon",
      "min": 36,
      "max": 39
+    },
+    {
+     "area": "hushfrost_pass_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 40,
+     "max": 41
+    },
+    {
+     "area": "hushfrost_pass_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 40,
+     "max": 42
     }
    ],
    "scripted": false,
@@ -7148,7 +7208,15 @@
     "weight_kg": 32,
     "habitat": "north"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "hushfrost_pass_i",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 41,
+     "max": 42
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Tall, long-limbed, powerful hare; fur has crystallised into blade-like ridge-plates along the entire back and limbs; swept-back ears now rigid and tapered like antennae; a trailing blizzard-halo always swirls behind it; dynamic forward-leaning pose at 48px.",
@@ -7311,6 +7379,27 @@
      "rarity": "common",
      "min": 37,
      "max": 40
+    },
+    {
+     "area": "hushfrost_pass_i",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 40,
+     "max": 42
+    },
+    {
+     "area": "hushfrost_pass_ii",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 40,
+     "max": 42
+    },
+    {
+     "area": "aurora_hollow",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 40,
+     "max": 42
     }
    ],
    "scripted": false,
@@ -7405,6 +7494,13 @@
      "rarity": "rare",
      "min": 38,
      "max": 40
+    },
+    {
+     "area": "hushfrost_pass_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 41,
+     "max": 42
     }
    ],
    "scripted": false,
@@ -7494,6 +7590,27 @@
      "rarity": "uncommon",
      "min": 36,
      "max": 38
+    },
+    {
+     "area": "hushfrost_pass_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 40,
+     "max": 41
+    },
+    {
+     "area": "hushfrost_pass_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 40,
+     "max": 42
+    },
+    {
+     "area": "aurora_hollow",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 40,
+     "max": 42
     }
    ],
    "scripted": false,
@@ -7592,6 +7709,13 @@
      "rarity": "rare",
      "min": 38,
      "max": 40
+    },
+    {
+     "area": "aurora_hollow",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 41,
+     "max": 42
     }
    ],
    "scripted": false,
@@ -8331,6 +8455,13 @@
      "rarity": "rare",
      "min": 37,
      "max": 40
+    },
+    {
+     "area": "hushfrost_pass_i",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 40,
+     "max": 41
     }
    ],
    "scripted": false,
@@ -8411,7 +8542,15 @@
     "weight_kg": 9.0,
     "habitat": "north"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "hushfrost_pass_ii",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 41,
+     "max": 42
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Long aerodynamic wasp silhouette, pale near-white with deep azure markings, a pair of blade-like crystal wings, four foreleg-lances each tipped with frozen lightning; cold elegance at 64px.",
@@ -8982,10 +9121,17 @@
    "encounters": [
     {
      "area": "sunken_solarium",
-     "terrain": "water",
+     "terrain": "tall_grass",
      "rarity": "uncommon",
-     "min": 38,
-     "max": 41
+     "min": 42,
+     "max": 44
+    },
+    {
+     "area": "sunvault_climb_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 46,
+     "max": 47
     }
    ],
    "scripted": false,
@@ -9079,8 +9225,36 @@
    "encounters": [
     {
      "area": "sunken_solarium",
-     "terrain": "water",
+     "terrain": "tall_grass",
      "rarity": "rare",
+     "min": 45,
+     "max": 46
+    },
+    {
+     "area": "sunvault_climb_i",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 47,
+     "max": 48
+    },
+    {
+     "area": "sunvault_climb_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 47,
+     "max": 48
+    },
+    {
+     "area": "helia_vault",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 48,
+     "max": 49
+    },
+    {
+     "area": "helia_vault",
+     "terrain": "cave",
+     "rarity": "common",
      "min": 48,
      "max": 50
     }
@@ -9163,10 +9337,17 @@
    "encounters": [
     {
      "area": "sunken_solarium",
-     "terrain": "water",
-     "rarity": "common",
-     "min": 38,
-     "max": 41
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 42,
+     "max": 44
+    },
+    {
+     "area": "nightreach_observatory",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 48,
+     "max": 50
     }
    ],
    "scripted": false,
@@ -9251,10 +9432,17 @@
    "encounters": [
     {
      "area": "sunken_solarium",
-     "terrain": "water",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 44,
+     "max": 46
+    },
+    {
+     "area": "nightreach_observatory",
+     "terrain": "tall_grass",
      "rarity": "uncommon",
      "min": 48,
-     "max": 50
+     "max": 51
     }
    ],
    "scripted": false,
@@ -9340,8 +9528,8 @@
      "area": "sunken_solarium",
      "terrain": "water",
      "rarity": "rare",
-     "min": 48,
-     "max": 50
+     "min": 45,
+     "max": 46
     }
    ],
    "scripted": false,
@@ -9425,8 +9613,8 @@
      "area": "sunken_solarium",
      "terrain": "water",
      "rarity": "common",
-     "min": 38,
-     "max": 41
+     "min": 43,
+     "max": 45
     }
    ],
    "scripted": false,
@@ -9514,8 +9702,8 @@
      "area": "sunken_solarium",
      "terrain": "water",
      "rarity": "uncommon",
-     "min": 48,
-     "max": 50
+     "min": 44,
+     "max": 46
     }
    ],
    "scripted": false,
@@ -9601,8 +9789,8 @@
      "area": "sunken_solarium",
      "terrain": "water",
      "rarity": "rare",
-     "min": 48,
-     "max": 50
+     "min": 45,
+     "max": 46
     }
    ],
    "scripted": false,
@@ -9679,10 +9867,17 @@
    "encounters": [
     {
      "area": "sunken_solarium",
-     "terrain": "water",
-     "rarity": "common",
-     "min": 38,
-     "max": 41
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 42,
+     "max": 44
+    },
+    {
+     "area": "nightreach_observatory",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 48,
+     "max": 50
     }
    ],
    "scripted": false,
@@ -9765,8 +9960,15 @@
      "area": "sunken_solarium",
      "terrain": "water",
      "rarity": "uncommon",
-     "min": 48,
-     "max": 50
+     "min": 44,
+     "max": 46
+    },
+    {
+     "area": "nightreach_observatory",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 49,
+     "max": 51
     }
    ],
    "scripted": false,
@@ -9852,8 +10054,8 @@
      "area": "sunken_solarium",
      "terrain": "water",
      "rarity": "rare",
-     "min": 48,
-     "max": 50
+     "min": 45,
+     "max": 46
     }
    ],
    "scripted": false,
@@ -9939,10 +10141,17 @@
    "encounters": [
     {
      "area": "sunken_solarium",
-     "terrain": "water",
+     "terrain": "tall_grass",
      "rarity": "uncommon",
-     "min": 38,
-     "max": 41
+     "min": 42,
+     "max": 45
+    },
+    {
+     "area": "sunvault_climb_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 46,
+     "max": 47
     }
    ],
    "scripted": false,
@@ -10032,10 +10241,38 @@
    "encounters": [
     {
      "area": "sunken_solarium",
-     "terrain": "water",
+     "terrain": "tall_grass",
      "rarity": "rare",
+     "min": 44,
+     "max": 46
+    },
+    {
+     "area": "sunvault_climb_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 46,
+     "max": 48
+    },
+    {
+     "area": "sunvault_climb_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 47,
+     "max": 48
+    },
+    {
+     "area": "helia_vault",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 47,
+     "max": 49
+    },
+    {
+     "area": "helia_vault",
+     "terrain": "cave",
+     "rarity": "common",
      "min": 48,
-     "max": 50
+     "max": 49
     }
    ],
    "scripted": false,
@@ -10119,10 +10356,31 @@
    "encounters": [
     {
      "area": "sunken_solarium",
-     "terrain": "water",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 45,
+     "max": 46
+    },
+    {
+     "area": "sunvault_climb_i",
+     "terrain": "tall_grass",
      "rarity": "rare",
+     "min": 47,
+     "max": 48
+    },
+    {
+     "area": "sunvault_climb_ii",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 47,
+     "max": 48
+    },
+    {
+     "area": "helia_vault",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
      "min": 48,
-     "max": 50
+     "max": 49
     }
    ],
    "scripted": false,
@@ -10199,10 +10457,31 @@
    "encounters": [
     {
      "area": "sunken_solarium",
-     "terrain": "water",
+     "terrain": "tall_grass",
      "rarity": "uncommon",
-     "min": 41,
-     "max": 44
+     "min": 42,
+     "max": 46
+    },
+    {
+     "area": "sunvault_climb_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 46,
+     "max": 47
+    },
+    {
+     "area": "sunvault_climb_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 47,
+     "max": 48
+    },
+    {
+     "area": "helia_vault",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 47,
+     "max": 48
     }
    ],
    "scripted": false,
@@ -10283,8 +10562,36 @@
    "encounters": [
     {
      "area": "sunken_solarium",
-     "terrain": "water",
+     "terrain": "tall_grass",
      "rarity": "rare",
+     "min": 44,
+     "max": 46
+    },
+    {
+     "area": "sunvault_climb_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 46,
+     "max": 48
+    },
+    {
+     "area": "sunvault_climb_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 47,
+     "max": 48
+    },
+    {
+     "area": "helia_vault",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 47,
+     "max": 49
+    },
+    {
+     "area": "helia_vault",
+     "terrain": "cave",
+     "rarity": "common",
      "min": 48,
      "max": 50
     }
@@ -10446,10 +10753,24 @@
    "encounters": [
     {
      "area": "sunken_solarium",
-     "terrain": "water",
+     "terrain": "tall_grass",
      "rarity": "uncommon",
-     "min": 41,
-     "max": 44
+     "min": 43,
+     "max": 46
+    },
+    {
+     "area": "sunvault_climb_i",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 46,
+     "max": 47
+    },
+    {
+     "area": "sunvault_climb_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 47,
+     "max": 48
     }
    ],
    "scripted": false,
@@ -10537,10 +10858,31 @@
    "encounters": [
     {
      "area": "sunken_solarium",
-     "terrain": "water",
+     "terrain": "tall_grass",
      "rarity": "very_rare",
+     "min": 44,
+     "max": 46
+    },
+    {
+     "area": "sunvault_climb_i",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 47,
+     "max": 48
+    },
+    {
+     "area": "sunvault_climb_ii",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 47,
+     "max": 48
+    },
+    {
+     "area": "helia_vault",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
      "min": 48,
-     "max": 50
+     "max": 49
     }
    ],
    "scripted": false,
@@ -10618,9 +10960,9 @@
     {
      "area": "sunken_solarium",
      "terrain": "water",
-     "rarity": "uncommon",
-     "min": 41,
-     "max": 44
+     "rarity": "common",
+     "min": 43,
+     "max": 46
     }
    ],
    "scripted": false,
@@ -10700,9 +11042,9 @@
     {
      "area": "sunken_solarium",
      "terrain": "water",
-     "rarity": "very_rare",
-     "min": 48,
-     "max": 50
+     "rarity": "rare",
+     "min": 45,
+     "max": 46
     }
    ],
    "scripted": false,
@@ -10784,10 +11126,17 @@
    "encounters": [
     {
      "area": "sunken_solarium",
-     "terrain": "water",
+     "terrain": "tall_grass",
      "rarity": "uncommon",
-     "min": 41,
-     "max": 44
+     "min": 43,
+     "max": 46
+    },
+    {
+     "area": "nightreach_observatory",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 48,
+     "max": 50
     }
    ],
    "scripted": false,
@@ -10871,10 +11220,10 @@
    "encounters": [
     {
      "area": "sunken_solarium",
-     "terrain": "water",
+     "terrain": "tall_grass",
      "rarity": "rare",
-     "min": 48,
-     "max": 50
+     "min": 44,
+     "max": 46
     }
    ],
    "scripted": false,
@@ -10956,10 +11305,24 @@
    "encounters": [
     {
      "area": "sunken_solarium",
-     "terrain": "water",
+     "terrain": "tall_grass",
      "rarity": "uncommon",
-     "min": 41,
-     "max": 44
+     "min": 43,
+     "max": 46
+    },
+    {
+     "area": "sunvault_climb_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 47,
+     "max": 48
+    },
+    {
+     "area": "nightreach_observatory",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 48,
+     "max": 51
     }
    ],
    "scripted": false,
@@ -11043,10 +11406,24 @@
    "encounters": [
     {
      "area": "sunken_solarium",
-     "terrain": "water",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 45,
+     "max": 46
+    },
+    {
+     "area": "sunvault_climb_ii",
+     "terrain": "tall_grass",
      "rarity": "very_rare",
      "min": 48,
-     "max": 50
+     "max": 48
+    },
+    {
+     "area": "nightreach_observatory",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 50,
+     "max": 52
     }
    ],
    "scripted": false,
@@ -11213,7 +11590,15 @@
     "weight_kg": 95.0,
     "habitat": "west"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "nightreach_observatory",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 51,
+     "max": 52
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "Tall elegant heron silhouette, body formed of layered plates of translucent crystalline moonlight, long neck and crest trailing silver-white starfire, vast wings spanning full starfield patterns, a single blazing star-eye; monumentally graceful at 64px.",
@@ -11291,7 +11676,15 @@
     "weight_kg": 280,
     "habitat": "west"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "helia_vault",
+     "terrain": "cave",
+     "rarity": "rare",
+     "min": 49,
+     "max": 50
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "A great disc-bodied ray with an enormous central solar-eye at the front face, surrounded by radiating fin-rays like a living sun diagram. The body is deep gold with white-hot veins. The fin-rays are translucent amber, trailing fading light halos at their tips. The eye is an intense white-core disc. Even at idle, the battle background behind it yellows. The silhouette at 64px is a sun \u2014 because it is one.",
@@ -11530,11 +11923,11 @@
    },
    "encounters": [
     {
-     "area": "coldfog_marches",
+     "area": "coldfog_marches_i",
      "terrain": "tall_grass",
-     "rarity": "uncommon",
+     "rarity": "common",
      "min": 46,
-     "max": 49
+     "max": 48
     }
    ],
    "scripted": false,
@@ -11619,11 +12012,25 @@
    },
    "encounters": [
     {
-     "area": "coldfog_marches",
+     "area": "coldfog_marches_i",
      "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 52,
-     "max": 54
+     "rarity": "uncommon",
+     "min": 47,
+     "max": 48
+    },
+    {
+     "area": "coldfog_marches_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 49,
+     "max": 50
+    },
+    {
+     "area": "drownlight_beacon",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 48,
+     "max": 50
     }
    ],
    "scripted": false,
@@ -11706,11 +12113,11 @@
    },
    "encounters": [
     {
-     "area": "coldfog_marches",
+     "area": "drownlight_beacon",
      "terrain": "tall_grass",
-     "rarity": "very_rare",
-     "min": 52,
-     "max": 54
+     "rarity": "rare",
+     "min": 49,
+     "max": 50
     }
    ],
    "scripted": false,
@@ -11786,11 +12193,11 @@
    },
    "encounters": [
     {
-     "area": "coldfog_marches",
+     "area": "coldfog_marches_i",
      "terrain": "tall_grass",
      "rarity": "common",
      "min": 46,
-     "max": 49
+     "max": 48
     }
    ],
    "scripted": false,
@@ -11870,11 +12277,32 @@
    },
    "encounters": [
     {
-     "area": "coldfog_marches",
+     "area": "coldfog_marches_i",
      "terrain": "tall_grass",
      "rarity": "uncommon",
-     "min": 52,
-     "max": 54
+     "min": 47,
+     "max": 48
+    },
+    {
+     "area": "coldfog_marches_ii",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 48,
+     "max": 50
+    },
+    {
+     "area": "drownlight_beacon",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 48,
+     "max": 49
+    },
+    {
+     "area": "hollowfen_stillworks",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 48,
+     "max": 50
     }
    ],
    "scripted": false,
@@ -11952,11 +12380,18 @@
    },
    "encounters": [
     {
-     "area": "coldfog_marches",
+     "area": "coldfog_marches_ii",
      "terrain": "tall_grass",
      "rarity": "rare",
-     "min": 52,
-     "max": 54
+     "min": 49,
+     "max": 50
+    },
+    {
+     "area": "drownlight_beacon",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 49,
+     "max": 50
     }
    ],
    "scripted": false,
@@ -12037,11 +12472,18 @@
    },
    "encounters": [
     {
-     "area": "coldfog_marches",
+     "area": "coldfog_marches_ii",
      "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 49,
-     "max": 52
+     "rarity": "common",
+     "min": 48,
+     "max": 50
+    },
+    {
+     "area": "hollowfen_stillworks",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 48,
+     "max": 50
     }
    ],
    "scripted": false,
@@ -12123,11 +12565,11 @@
    },
    "encounters": [
     {
-     "area": "coldfog_marches",
+     "area": "coldfog_marches_i",
      "terrain": "tall_grass",
      "rarity": "rare",
-     "min": 52,
-     "max": 54
+     "min": 47,
+     "max": 48
     }
    ],
    "scripted": false,
@@ -12212,11 +12654,25 @@
    },
    "encounters": [
     {
-     "area": "coldfog_marches",
+     "area": "hushfrost_pass_ii",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 40,
+     "max": 42
+    },
+    {
+     "area": "coldfog_marches_i",
      "terrain": "tall_grass",
      "rarity": "uncommon",
-     "min": 49,
-     "max": 52
+     "min": 46,
+     "max": 48
+    },
+    {
+     "area": "coldfog_marches_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 48,
+     "max": 50
     }
    ],
    "scripted": false,
@@ -12303,11 +12759,18 @@
    },
    "encounters": [
     {
-     "area": "coldfog_marches",
+     "area": "coldfog_marches_ii",
      "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 52,
-     "max": 54
+     "rarity": "uncommon",
+     "min": 49,
+     "max": 50
+    },
+    {
+     "area": "hollowfen_stillworks",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 49,
+     "max": 50
     }
    ],
    "scripted": false,
@@ -12386,11 +12849,11 @@
    },
    "encounters": [
     {
-     "area": "coldfog_marches",
+     "area": "hollowfen_stillworks",
      "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 52,
-     "max": 54
+     "rarity": "uncommon",
+     "min": 50,
+     "max": 51
     }
    ],
    "scripted": false,

@@ -77,10 +77,38 @@
   "encounters": [
     {
       "area": "sunken_solarium",
-      "terrain": "water",
+      "terrain": "tall_grass",
       "rarity": "rare",
+      "min": 44,
+      "max": 46
+    },
+    {
+      "area": "sunvault_climb_i",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 46,
+      "max": 48
+    },
+    {
+      "area": "sunvault_climb_ii",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 47,
+      "max": 48
+    },
+    {
+      "area": "helia_vault",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 47,
+      "max": 49
+    },
+    {
+      "area": "helia_vault",
+      "terrain": "cave",
+      "rarity": "common",
       "min": 48,
-      "max": 50
+      "max": 49
     }
   ],
   "scripted": false,

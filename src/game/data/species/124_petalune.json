@@ -69,10 +69,17 @@
   "encounters": [
     {
       "area": "sunken_solarium",
-      "terrain": "water",
+      "terrain": "tall_grass",
       "rarity": "uncommon",
-      "min": 41,
-      "max": 44
+      "min": 43,
+      "max": 46
+    },
+    {
+      "area": "nightreach_observatory",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 48,
+      "max": 50
     }
   ],
   "scripted": false,

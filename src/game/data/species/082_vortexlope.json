@@ -72,7 +72,15 @@
     "weight_kg": 32,
     "habitat": "north"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "hushfrost_pass_i",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 41,
+      "max": 42
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Tall, long-limbed, powerful hare; fur has crystallised into blade-like ridge-plates along the entire back and limbs; swept-back ears now rigid and tapered like antennae; a trailing blizzard-halo always swirls behind it; dynamic forward-leaning pose at 48px.",

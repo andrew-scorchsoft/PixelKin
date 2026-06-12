@@ -76,7 +76,15 @@
     "weight_kg": 14000,
     "habitat": "north"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "aurora_hollow",
+      "terrain": "tall_grass",
+      "rarity": "very_rare",
+      "min": 42,
+      "max": 42
+    }
+  ],
   "scripted": true,
   "art": {
     "silhouette": "Towering, broad-shouldered golem form sculpted from ancient blue-white glacial ice; its surface etched with centuries of swirling aurora-pattern carvings; the face is serene, simple, and impossibly old; aurora-light leaks from the carved lines across its body; at 48px it fills the frame completely, a walking glacier-face.",

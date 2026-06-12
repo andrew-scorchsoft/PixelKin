@@ -71,10 +71,10 @@
   "encounters": [
     {
       "area": "sunken_solarium",
-      "terrain": "water",
+      "terrain": "tall_grass",
       "rarity": "rare",
-      "min": 48,
-      "max": 50
+      "min": 44,
+      "max": 46
     }
   ],
   "scripted": false,

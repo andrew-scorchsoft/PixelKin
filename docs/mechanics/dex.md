@@ -46,11 +46,11 @@
 | <img src="../../public/assets/sprites/creatures/034_tideveil/battle_front.webp" width="48" alt="Tideveil"> | 34 | **Tideveil** | Tide/Light | E | Special Wall | 558 |  | 24 | 1800cm/4200kg | The Tide Constellation Warden — a vast, semi-transparent sea-spirit that dwells in the T… |
 | <img src="../../public/assets/sprites/creatures/152_cloverkit/battle_front.webp" width="48" alt="Cloverkit"> | 152 | **Cloverkit** | Verdant | B | Physical Bruiser | 356 | → Cloverbuck (L18) | 175 | 45cm/6.5kg | A sprout-cub that wears a four-leaf clover like a tiny lantern-leaf; in the Long Dusk th… |
 | <img src="../../public/assets/sprites/creatures/153_cloverhart/battle_front.webp" width="48" alt="Cloverhart"> | 153 | **Cloverhart** | Verdant | D | Physical Bruiser | 498 | (from Cloverbuck) | 57 | 165cm/98kg | Cloverkit's kindled form: a great clover-crowned stag whose antlers bloom with year-roun… |
-|  | 154 | **Vulcinder** | Ember | C | Special Sweeper | 418 | → Blazethorn (L34) | 112 | 95cm/19.5kg | Vulpyre's kindled middle form — a lean adolescent ember-fox caught between kit and crown… |
-|  | 155 | **Brindrift** | Tide | C | Special Wall | 418 | → Brinarch (L35) | 112 | 110cm/42kg | Brinix's kindled middle form — a broader, current-riding shell-back that has learned to … |
-|  | 156 | **Cloverbuck** | Verdant | C | Physical Bruiser | 418 | → Cloverhart (L36) | 112 | 105cm/34kg | Cloverkit's kindled middle form — a young grove buck whose first antlers have budded as … |
-|  | 157 | **Pharolux** | Tide/Light | E | Special Sweeper | 558 | (from Glostrael) | 24 | 380cm/210kg | Glostrael's rare apex kindling — a vast lantern-bell leviathan the old quay-folk call th… |
-|  | 160 | **Gloamber** | Ember/Dark | E | Special Tank | 558 |  | 24 | 170cm/88kg | The First Hour — the keeper of dusk, grown heavy with an evening it has never been allow… |
+| <img src="../../public/assets/sprites/creatures/154_vulcinder/battle_front.webp" width="48" alt="Vulcinder"> | 154 | **Vulcinder** | Ember | C | Special Sweeper | 418 | → Blazethorn (L34) | 112 | 95cm/19.5kg | Vulpyre's kindled middle form — a lean adolescent ember-fox caught between kit and crown… |
+| <img src="../../public/assets/sprites/creatures/155_brindrift/battle_front.webp" width="48" alt="Brindrift"> | 155 | **Brindrift** | Tide | C | Special Wall | 418 | → Brinarch (L35) | 112 | 110cm/42kg | Brinix's kindled middle form — a broader, current-riding shell-back that has learned to … |
+| <img src="../../public/assets/sprites/creatures/156_cloverbuck/battle_front.webp" width="48" alt="Cloverbuck"> | 156 | **Cloverbuck** | Verdant | C | Physical Bruiser | 418 | → Cloverhart (L36) | 112 | 105cm/34kg | Cloverkit's kindled middle form — a young grove buck whose first antlers have budded as … |
+| <img src="../../public/assets/sprites/creatures/157_pharolux/battle_front.webp" width="48" alt="Pharolux"> | 157 | **Pharolux** | Tide/Light | E | Special Sweeper | 558 | (from Glostrael) | 24 | 380cm/210kg | Glostrael's rare apex kindling — a vast lantern-bell leviathan the old quay-folk call th… |
+| <img src="../../public/assets/sprites/creatures/160_gloamber/battle_front.webp" width="48" alt="Gloamber"> | 160 | **Gloamber** | Ember/Dark | E | Special Tank | 558 |  | 24 | 170cm/88kg | The First Hour — the keeper of dusk, grown heavy with an evening it has never been allow… |
 
 ## East — Lowleaf & Cinderhead (Verdant, Stone)
 
@@ -129,7 +129,7 @@
 | <img src="../../public/assets/sprites/creatures/100_squallox/battle_front.webp" width="48" alt="Squallox"> | 100 | **Squallox** | Storm | B | Physical Sweeper | 350 | → Galefox (L25) | 175 | 32cm/3.8kg | A gust-fox kit born on the exposed upper terraces, its tail a perpetual blurred blur of … |
 | <img src="../../public/assets/sprites/creatures/101_galefox/battle_front.webp" width="48" alt="Galefox"> | 101 | **Galefox** | Storm | C | Physical Sweeper | 418 | → Tempestail (L35) | 120 | 80cm/14.5kg | A sleek mid-stage gust-fox who now runs so fast it creates a visible bow-wave of compres… |
 | <img src="../../public/assets/sprites/creatures/102_tempestail/battle_front.webp" width="48" alt="Tempestail"> | 102 | **Tempestail** | Storm | D | Physical Sweeper | 498 | (from Galefox) | 57 | 145cm/40.0kg | The apex gust-fox — a lithe, white-silver predator whose tail is now a visible thunderst… |
-|  | 161 | **Noctilune** | Lunar/Dark | E | Physical Wall | 558 |  | 24 | 260cm/420kg | The Still Hour — the keeper of midnight, standing the same unrelieved watch since the ni… |
+| <img src="../../public/assets/sprites/creatures/161_noctilune/battle_front.webp" width="48" alt="Noctilune"> | 161 | **Noctilune** | Lunar/Dark | E | Physical Wall | 558 |  | 24 | 260cm/420kg | The Still Hour — the keeper of midnight, standing the same unrelieved watch since the ni… |
 
 ## West — Solarium & Nightreach (Solar, Lunar)
 
@@ -165,9 +165,9 @@
 | <img src="../../public/assets/sprites/creatures/130_heliovast/battle_front.webp" width="48" alt="Heliovast"> | 130 | **Heliovast** | Solar | E | Special Sweeper | 558 |  | 24 | 250cm/280kg | Sealed inside the Helia Vault — a reliquary off Sunvault Climb whose door can only be un… |
 | <img src="../../public/assets/sprites/creatures/131_helixia/battle_front.webp" width="48" alt="Helixia"> | 131 | **Helixia** | Solar | E | Special Sweeper | 558 |  | 24 | 150cm/88.0kg | The Helia Vault's guardian: a great solar apex kin shaped like a living orrery, its body… |
 | <img src="../../public/assets/sprites/creatures/132_lunaveil/battle_front.webp" width="48" alt="Lunaveil"> | 132 | **Lunaveil** | Lunar | E | Utility / Speedster | 558 |  | 24 | 320cm/140kg | The luminous anchor of the Lunar Constellation, a silken serpent-moth of impossible size… |
-|  | 158 | **Corolion** | Solar/Stone | E | Physical Bruiser | 558 | → Dawnregent (L56) | 24 | 240cm/410kg | Goldmane's apex kindling — a crowned sun-lion whose stone mane has fused into a full cor… |
-|  | 159 | **Dawnregent** | Solar/Light | F | Physical Bruiser | 642 | (from Corolion) | 6 | 320cm/180kg | The fourth and final kindling of the Gilpaw line, reached only by a Corolion raised far … |
-|  | 162 | **Erstmorn** | Solar/Light | E | Utility / Speedster | 558 |  | 24 | 200cm/64kg | The Lost Hour — the keeper of a dawn that has not come, waiting half-finished where the … |
+| <img src="../../public/assets/sprites/creatures/158_corolion/battle_front.webp" width="48" alt="Corolion"> | 158 | **Corolion** | Solar/Stone | E | Physical Bruiser | 558 | → Dawnregent (L56) | 24 | 240cm/410kg | Goldmane's apex kindling — a crowned sun-lion whose stone mane has fused into a full cor… |
+| <img src="../../public/assets/sprites/creatures/159_dawnregent/battle_front.webp" width="48" alt="Dawnregent"> | 159 | **Dawnregent** | Solar/Light | F | Physical Bruiser | 642 | (from Corolion) | 6 | 320cm/180kg | The fourth and final kindling of the Gilpaw line, reached only by a Corolion raised far … |
+| <img src="../../public/assets/sprites/creatures/162_erstmorn/battle_front.webp" width="48" alt="Erstmorn"> | 162 | **Erstmorn** | Solar/Light | E | Utility / Speedster | 558 |  | 24 | 200cm/64kg | The Lost Hour — the keeper of a dawn that has not come, waiting half-finished where the … |
 
 ## Outer — Coldfog Marches (Dark)
 

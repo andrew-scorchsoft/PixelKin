@@ -74,7 +74,15 @@
     "weight_kg": 48,
     "habitat": "north"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "hushfrost_pass_i",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 40,
+      "max": 41
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Wider, heavier crustacean form; carapace now densely covered in faceted crystal protrusions in purple-to-ice-blue; thicker claws tipped with drill-point crystal spires; mid-form still crablike but clearly larger and more weaponised at 40px.",

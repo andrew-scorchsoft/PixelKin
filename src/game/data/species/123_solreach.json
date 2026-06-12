@@ -67,9 +67,9 @@
     {
       "area": "sunken_solarium",
       "terrain": "water",
-      "rarity": "very_rare",
-      "min": 48,
-      "max": 50
+      "rarity": "rare",
+      "min": 45,
+      "max": 46
     }
   ],
   "scripted": false,
