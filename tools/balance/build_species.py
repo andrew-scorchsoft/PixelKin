@@ -745,7 +745,7 @@ CURATED_AREAS = {
 # tier/rarity alone wouldn't mark them scripted. #148 Lampling is C1
 # "Lampling's Trail" at the Vesper Crossroads — its old umbral_spire row was a
 # stale open-table teaser from before the trail was built, dropped here.
-SCRIPTED_KIN = {"lampling"}
+SCRIPTED_KIN = {"lampling", "chickenpig"}
 
 # Wave-2 signature moves (gen_moves.py): one per elemental apex line. Inserted
 # into the owner's learnset late (the awe-curve payoff); excluded from the
@@ -854,6 +854,19 @@ CANON = {
             "silhouette": "A tall, slender hare of pale gold light, mid-stride even when standing. Long ears trail behind it like horizon ribbons. Parts of its outline are UNFINISHED — one hindquarter and the tip of one ear fade into faint sketch-lines of light, as if the painter stopped at the moment the dawn did. The missing parts must read as waiting, not wounded.",
             "palette": "Bone (#f5f0e1) and pale gold body; a sunrise gradient of rose and amber along the spine and ear-ribbons; the unfinished edges in faint diamond-cyan (#9fe7ff) sketch-lines over transparency.",
             "direction": "An unfinished sunrise as a creature — fast, gentle, heartbreaking. The emotional apex of the triad: in the Long Dusk it is incomplete by definition, and the sprite should make the player want to fix that.",
+        },
+    },
+    # #163 Chickenpig — the S4 "Booji-Wooji Man" epilogue catch (scripted at the
+    # breakwater's dark lamp; SCRIPTED_KIN, no open-table rows). Stats are NOT
+    # pinned (make_stats C-tier bruiser); creative fields + art are.
+    "chickenpig": {
+        "entry": "A barrel-round piglet with a rooster's comb, one proud red wing and a spray of green tail-sickles. Every waking it climbs somewhere high and crows at the dark, on the principle that something ought to. It has never once doubted the morning.",
+        "category": "Dawn-Herald Kin",
+        "size_cm": 70, "weight_kg": 28,
+        "art": {
+            "silhouette": "A stout, cheerful piglet standing four-square: big upright pig ears, round cream body, short trotters. A bright red rooster's comb crests its head; a single red-feathered wing folds over its shoulder; brown flight feathers tuck beneath a great backswept spray of teal-and-green sickle tail-feathers. Smiling snout, kind olive eyes. At 64px the silhouette is pig-with-rooster-tail, unmistakable.",
+            "palette": "Warm cream hide; bright comb-red crest and rust-red wing patch; the tail a layered fan of deep teal, sea-green and one brown under-feather; pale bone snout; soft ink (#1a1430) outlines.",
+            "direction": "Half farm-pig, half dawn-rooster, wholly convinced. Sturdy and funny but DIGNIFIED — it is not a joke to itself. The comb and tail-fan read proud, the smile patient: a creature that has decided morning is coming and is simply early.",
         },
     },
 }

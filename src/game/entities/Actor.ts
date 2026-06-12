@@ -30,6 +30,11 @@ export const PLACEHOLDER_FRAMES: ActorFrames = {
   idle: { down: 0, left: 1, right: 2, up: 3 },
 };
 
+/** Single-image texture (e.g. a kin's packed overworld sprite): one frame for every facing. */
+export const STATIC_FRAMES: ActorFrames = {
+  idle: { down: 0, left: 0, right: 0, up: 0 },
+};
+
 /**
  * The 4×4 human walk-sheet layout (docs/art-style.md §5A): rows =
  * down/left/right/up, columns = idle / contact-L / passing / contact-R. The walk
@@ -118,8 +123,8 @@ export class Actor {
     tx: number,
     ty: number,
     facing: Facing,
-    private readonly textureKey: string,
-    private readonly frames: ActorFrames = PLACEHOLDER_FRAMES,
+    private textureKey: string,
+    private frames: ActorFrames = PLACEHOLDER_FRAMES,
     /** Optional layer-3 action texture key (e.g. `player_indi_actions`); enables `playAction`. */
     private readonly actionsKey?: string,
   ) {
@@ -148,6 +153,18 @@ export class Actor {
         repeat: -1,
       });
     });
+  }
+
+  /**
+   * Swap this actor onto a single-frame texture (a kin's packed overworld
+   * sprite, lazy-loaded after spawn). Stops any walk animation; the one frame
+   * serves every facing and walk phase.
+   */
+  protected setStaticTexture(key: string): void {
+    this.sprite.anims.stop();
+    this.textureKey = key;
+    this.frames = STATIC_FRAMES;
+    this.sprite.setTexture(key, 0);
   }
 
   /** Bottom-centre world position of a tile (origin 0.5,1 sits the feet on the tile). */

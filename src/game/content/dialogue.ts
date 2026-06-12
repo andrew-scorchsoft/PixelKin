@@ -330,6 +330,49 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'COB', text: 'A week of mending, lost to a bell I could hear from my own bunk. Worth it. WORTH IT.' },
   ],
 
+  // --- The Lifting House (S4 "The Booji-Wooji Man") — the quayside gym --------
+  'sign.lifting_house_rules': [
+    { text: 'HOUSE RULES\n1. Put the stones back.\n2. Spot whoever asks.\n3. If PAUL offers you advice, take it. If he offers you a story, count your pockets after.' },
+  ],
+  'npc.booji_andy_wait': [
+    { speaker: 'ANDY', text: 'Abdul first — he\'s seen where the old man goes. Then Sid, if you can get three words out of him. That\'s two more than usual.' },
+    { speaker: 'ANDY', text: 'And if you find Paul — ask him about the Registry. For me. For all of us. Mostly for me.' },
+  ],
+  'npc.booji_andy_after': [
+    { speaker: 'ANDY', text: 'Every dusk he doesn\'t come in, I tell a new lifter about him. Every dusk he DOES come in, I pretend I never talk about him at all.' },
+    { speaker: 'ANDY', text: 'Anyway. As I was saying. The bench. The knee. Have I told you about the knee?' },
+  ],
+  'npc.booji_abdul_pre': [
+    { speaker: 'ABDUL', text: 'Stones don\'t lift themselves. ...That\'s it. That\'s the whole wisdom.' },
+  ],
+  'npc.booji_abdul_after': [
+    { speaker: 'ABDUL', text: 'Do I carry my lamp, or does my lamp carry me... Three dusks that\'s kept me up now. Tell the old man thanks for nothing.' },
+  ],
+  'npc.booji_sid_pre': [
+    { speaker: 'SID', text: '...' },
+    { text: 'He nods at the stones. For Sid, this counts as a conversation.' },
+  ],
+  'npc.booji_sid_after': [
+    { speaker: 'SID', text: '...Did he do the thing where he answers with a question?' },
+    { speaker: 'SID', text: '...Yeah. He does the thing.' },
+  ],
+  'npc.booji_paul_after': [
+    { speaker: 'PAUL', text: 'Still here. Still not telling. The cup of something stands exactly as promised — some night.' },
+    { speaker: 'PAUL', text: 'Keep the folio somewhere it doesn\'t belong. Things like that go stale on a proper shelf.' },
+  ],
+  // Andrew — the OTHER bench guy (two separate lifters; Andy talks, Andrew lifts).
+  'npc.booji_andrew': [
+    { speaker: 'ANDREW', text: 'Can\'t talk long. Mid-set. The bench waits for no man.' },
+    { speaker: 'ANDREW', text: 'Paul? He spotted me once. Didn\'t say a word the whole set — just stood there. Best lifting I\'ve ever done. Make of that what you will.' },
+  ],
+  // The Chickenpig at Paul's dark lamp (post-S4 set-piece catch).
+  'npc.chickenpig_shy': [
+    { text: 'The chicken-pig tucks its head under its one red wing and is immediately, profoundly asleep. Even heralds nap. It will hear you out again once you have won {remaining} more battles.' },
+  ],
+  'npc.chickenpig_after': [
+    { text: 'Only the dark lamp now, and the old man\'s company. Somewhere in your lamp, a rooster-pig is practising being right about the morning.' },
+  ],
+
   // --- Dimglass Coast: the witness (appears after flag:dusk_begins, B1) -------
   'npc.dimglass_witness': [
     { speaker: 'OLD LAMPLIGHTER', text: 'You stood under it too, did you. One breath it was there — the next, a hole in the sky shaped like a star.' },

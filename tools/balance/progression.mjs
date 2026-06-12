@@ -412,6 +412,8 @@ const BUILT_PAYOUTS = {
   flats_wayfarer_b: ['route', 11, 176],
   net_hand_a: ['route', 12, 192],
   net_hand_b: ['route', 14, 224],
+  breakwater_paul: ['route', 15, 240], // S4 optional side-quest bout (the Lifting House)
+
   lampwarden_pearlmoor: ['warden', 16, 960],
   glowmoss_keeper_a: ['keeper', 20, 400],
   glowmoss_keeper_b: ['keeper', 21, 420],

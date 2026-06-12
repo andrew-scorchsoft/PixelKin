@@ -232,6 +232,23 @@ export const TRAINERS: TrainerRegistry = {
     music: 'battle-emberfall',
   },
 
+  // S4 "The Booji-Wooji Man" — Paul, the Lifting House's mystery, fought ONCE at
+  // the breakwater's end (script.booji_paul; OPTIONAL side-quest bout, route
+  // class). An old strongman's party: stone, patience, and one open question.
+  breakwater_paul: {
+    id: 'breakwater_paul',
+    name: 'PAUL',
+    title: 'The Booji-Wooji Man',
+    party: [
+      { species_id: 53, level: 13 }, // Oreling — Stone
+      { species_id: 69, level: 15 }, // Riddlestone — Stone (ace; a stone that asks questions)
+    ],
+    intro_ref: 'trainer.breakwater_paul.intro',
+    defeat_ref: 'trainer.breakwater_paul.defeat',
+    payout: 240, // route 16 × ace 15
+    music: 'battle-emberfall',
+  },
+
   // Second Lumenary: Reyl Wash, the Lampwarden of Pearlmoor Quay (Tide) — an old
   // ferryman. Beating him relights the Tide constellation: the player earns the Tide
   // Gleam AND the Tidecall Lantern Gift (granted via reward_abilities). 'crown_south'
@@ -1086,6 +1103,12 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   ],
   'trainer.net_hand_b.defeat': [
     { speaker: 'COB', text: 'Hah! Well hauled. The shrine\'s at the causeway\'s end — ring it LOUD, so the whole quay hears it come back.' },
+  ],
+  'trainer.breakwater_paul.intro': [
+    { speaker: 'PAUL', text: 'On purpose. Remember that part.' },
+  ],
+  'trainer.breakwater_paul.defeat': [
+    { speaker: 'PAUL', text: '...Set down soft as a loaf. Sid will be unbearable.' },
   ],
   'trainer.lampwarden_pearlmoor.intro': [
     { speaker: 'REYL WASH', text: 'Apprentice, is it. I have ferried a hundred Wayfarers across this harbour. Few read the water right.' },

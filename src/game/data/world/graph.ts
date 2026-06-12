@@ -88,6 +88,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'pearlmoor_lumenary', region: 'south' }, // interior: the Tide Lumenary (Reyl Wash)
     { map_id: 'pearlmoor_shop', region: 'south' }, // interior: the port chandlery
     { map_id: 'pearlmoor_inn', region: 'south' }, // interior: the quayside inn
+    { map_id: 'pearlmoor_lifting_house', region: 'south', optional: true, reward: 'the Lifting House — the Booji-Wooji Man side quest' },
     // ---- East: Saltreach Fen (2 segments) -> Lowleaf forest -> Cinderhead cave -------
     { map_id: 'saltreach_fen_i', region: 'east' }, // route: open marsh
     { map_id: 'saltreach_fen_ii', region: 'east' }, // route: deep channels
@@ -172,6 +173,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // ---- Pearlmoor Quay interiors (door warps, both ways) ----------------------------
     { from_map: 'pearlmoor_quay', to_map: 'pearlmoor_shop', via_warp: 'to_shop', bidirectional: true },
     { from_map: 'pearlmoor_quay', to_map: 'pearlmoor_inn', via_warp: 'to_inn', bidirectional: true },
+    { from_map: 'pearlmoor_quay', to_map: 'pearlmoor_lifting_house', via_warp: 'to_lifting_house', bidirectional: true },
     { from_map: 'pearlmoor_quay', to_map: 'pearlmoor_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
     // The Causeway Bell: the moor-gate opens with the netmender's rope (the
     // earned second-Gleam loop; Reyl's bond-test waits on flag:q_south_bell_rung).

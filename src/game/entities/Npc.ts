@@ -5,11 +5,35 @@
  * flags (handled by WorldScene when it instantiates them).
  */
 import Phaser from 'phaser';
-import { Actor, type ActorFrames, ensurePlaceholderCharacter, HUMAN_WALK_FRAMES } from './Actor';
+import {
+  Actor,
+  type ActorFrames,
+  ensurePlaceholderCharacter,
+  HUMAN_WALK_FRAMES,
+  STATIC_FRAMES,
+} from './Actor';
 import type { NpcPlacement, Facing } from '@game/data/world/types';
 import { COLORS } from '@game/config';
+import { creatureTextureKey, loadCreatureSprite } from '@game/systems/sprites/CreatureSprites';
 
 const FACINGS: Facing[] = ['down', 'left', 'right', 'up'];
+
+/**
+ * Creature NPCs: a placement whose `sprite` is `kin_<id>_overworld` (the Three
+ * Hours at their sites) — or a named alias below — renders the kin's packed
+ * overworld sprite instead of a human walk sheet. The view is lazy-loaded:
+ * the NPC spawns on the placeholder swatch and swaps when the texture lands.
+ */
+const CREATURE_SPRITE_ALIASES: Record<string, number> = {
+  fennlight_dim: 67, // the Glowmoss Deep sleeper — a drained Fennlight
+};
+
+/** The kin id behind a creature-NPC sprite key, or null for human sprites. */
+function creatureKinId(sprite: string): number | null {
+  if (sprite in CREATURE_SPRITE_ALIASES) return CREATURE_SPRITE_ALIASES[sprite];
+  const m = /^kin_(\d+)_overworld$/.exec(sprite);
+  return m ? Number(m[1]) : null;
+}
 
 /** Map NPC sprite keys → a served walk-sheet texture where real art exists. */
 const SPRITE_SHEETS: Record<string, string> = {
@@ -28,11 +52,19 @@ const SPRITE_SHEETS: Record<string, string> = {
   nessa: 'nessa_cole',
   warden_cor: 'warden_cor',
   cor: 'warden_cor',
+  // The Lifting House crew + the Booji-Wooji Man (S4, Pearlmoor — bespoke sheets).
+  booji_paul: 'booji_paul',
+  lifter_andy: 'lifter_andy',
+  lifter_andrew: 'lifter_andrew',
+  lifter_abdul: 'lifter_abdul',
+  lifter_sid: 'lifter_sid',
   // Generic, reusable townsfolk archetypes — drop these on any NpcPlacement.sprite.
   npc_man: 'npc_man',
   npc_woman: 'npc_woman',
   npc_old_man: 'npc_old_man',
   npc_old_woman: 'npc_old_woman',
+  // Gran (tinderwick_house) — her own sheet, not the generic old-woman.
+  npc_parent: 'npc_parent',
   npc_boy: 'npc_boy',
   npc_girl: 'npc_girl',
   // 'npc_child' is the long-standing generic-kid key; point it at the boy sheet.
@@ -57,6 +89,11 @@ const SPRITE_COLORS: Record<string, string> = {
   lucan_pyre: COLORS.fire,
   nessa_cole: COLORS.deepBlue,
   warden_cor: COLORS.ink,
+  booji_paul: COLORS.bone,
+  lifter_andy: COLORS.deepBlue,
+  lifter_andrew: COLORS.diamond,
+  lifter_abdul: COLORS.grass,
+  lifter_sid: COLORS.fire,
 };
 
 /**
@@ -100,6 +137,14 @@ export class Npc extends Actor {
     readonly placement: NpcPlacement,
   ) {
     super(scene, placement.at.tx, placement.at.ty, placement.facing, ...Npc.resolveSheet(scene, placement));
+    // Creature NPC whose packed view hasn't loaded yet: fetch it and swap off
+    // the placeholder. Safe if the NPC is destroyed first (sprite.active check).
+    const kinId = creatureKinId(placement.sprite);
+    if (kinId !== null && !scene.textures.exists(creatureTextureKey(kinId, 'overworld'))) {
+      void loadCreatureSprite(scene, kinId, 'overworld').then((key) => {
+        if (key && this.sprite.active) this.setStaticTexture(key);
+      });
+    }
   }
 
   /**
@@ -113,6 +158,13 @@ export class Npc extends Actor {
     if (placement.sprite === 'item_cache') {
       ensureItemCacheSprite(scene, 'npc_item_cache');
       return ['npc_item_cache'];
+    }
+    const kinId = creatureKinId(placement.sprite);
+    if (kinId !== null) {
+      const key = creatureTextureKey(kinId, 'overworld');
+      // Already loaded (e.g. a map revisit) → use it now; else fall through to
+      // the placeholder and let the constructor's lazy load swap it in.
+      if (scene.textures.exists(key)) return [key, STATIC_FRAMES];
     }
     const sheet = SPRITE_SHEETS[placement.sprite];
     if (sheet && scene.textures.exists(sheet)) return [sheet, HUMAN_WALK_FRAMES];

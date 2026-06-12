@@ -153,15 +153,16 @@ go digging on every task.
 - **Stats — the genre's six:** hp/atk/def/spa/spd/spe. Power is costed against a
   shared budget (EPS) and **empirically balanced** by a Monte Carlo sim — all
   types land 46.7–53.3% win-rate. (`docs/mechanics/02-stats-and-balance.md`)
-- **Roster:** **162 kin** — the **151** curated from ~463 concepts via a panel-scored
+- **Roster:** **163 kin** — the **151** curated from ~463 concepts via a panel-scored
   pipeline (the ~312 cuts are archived as an idea bank), **plus appended additions**
   (later ids never renumber the original 1–151): the third starter line (#152–#153),
   the three starter middle stages (#154–#156), the apex kindlings #157 **Pharolux**
-  (Glostern line) and #158 **Corolion** → #159 **Dawnregent**, and the **Three Hours**
+  (Glostern line) and #158 **Corolion** → #159 **Dawnregent**, the **Three Hours**
   legendary trio #160 **Gloamber** / #161 **Noctilune** / #162 **Erstmorn** (optional
   set-piece catches with failure cooldowns; sites + spec in
   `docs/world/walkthrough/07-the-three.md` — sites, unlock chains, scripts and the
-  `battle-hours`/`sting-hour` audio are BUILT, 2026-06). Moves: **≤4 per kin**
+  `battle-hours`/`sting-hour` audio are BUILT, 2026-06), and #163 **Chickenpig**
+  (S4's scripted epilogue catch at the Pearlmoor breakwater). Moves: **≤4 per kin**
   from a **125-move** shared pool (wave 2: full phys/spec ladders per type + 13 signature
   moves) + 28 abilities. (`docs/mechanics/dex.md` for the readable dex)
 - **Starters:** the founding trio is **complete** and every starter is a **three-stage

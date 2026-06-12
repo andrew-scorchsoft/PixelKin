@@ -159,6 +159,13 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/dimglass-coast-a.mp3',
   },
+  // The Lifting House — the quayside gym (the Booji-Wooji Man side quest).
+  pearlmoor_lifting_house: {
+    json: 'assets/maps/pearlmoor_lifting_house.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/dimglass-coast-a.mp3',
+  },
   // Tideglass Cavern — the South's long-teased glass sea-cave landmark
   // (Glimmerstep spur off Dimglass II; the Lampwright's Relay + S3's
   // wreck-lamp), and its B1F gallery where the Dusk Hour waits (the Three

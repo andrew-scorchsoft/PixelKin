@@ -219,7 +219,7 @@ The JOURNEY table in `progression.mjs` is the contract; summarised:
 
 | Region | Trainer battles (class mix) | Wild fights (mainline) | Quest wicks | Valuables |
 |---|---|--:|--:|---|
-| South *(built + breakwater pair)* | 9 — 4 route, 3 keeper, 1 rival, 2 warden | ~29 | 750w | Wax Cake |
+| South *(built + breakwater pair)* | 9 — 4 route, 3 keeper, 1 rival, 2 warden (+1 optional route: Paul, S4's one-time bout, 240w) | ~29 | 750w | Wax Cake |
 | East *(fen + Lowleaf built)* | 12 — 3 route, 7 keeper, 2 warden | ~36 | 1,550w | Moth-amber ×2 |
 | North | 13 — 6 route, 4 keeper, 1 rival (A4), 2 warden | ~21 | 1,600w + finds | Moth-amber ×2 |
 | West *(built)* | 12 — 7 route, 2 keeper, 1 rival (A5), 2 warden | ~21 | 1,100w + finds | Starglass ×4 + Moth-amber ×3 (Coldfog's Embergloss/Murk Pearl ride the optional detour) |

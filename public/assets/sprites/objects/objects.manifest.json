@@ -560,6 +560,13 @@
       "tw": 5,
       "th": 5
     },
+    "pearlmoor_lifting_house": {
+      "path": "assets/sprites/objects/pearlmoor_lifting_house.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
     "pearlmoor_lumenary": {
       "path": "assets/sprites/objects/pearlmoor_lumenary.webp",
       "width": 96,
