@@ -69,9 +69,12 @@ for (y0, y1) in CROSSINGS:
 
 # the lit path spine — interrupted at each crossing (the grass spans the road)
 # and at the ledge BANK (the one-way return shortcut, §3a rule 1): a grass bank
-# at row 21 spans cols 3-11, so the walk NORTH detours east over the beach
-# around it while the walk SOUTH hops it — the route's earned return.
-LEDGE_ROW, LEDGE_X0, LEDGE_X1 = 21, 3, 11
+# at row 21 spans cols 4-10, leaving col 11 as the open WALK-AROUND lane at the
+# bank's east end — the walk NORTH goes straight up col 11 past the bank while
+# the walk SOUTH hops the ledge anywhere across it (the route's earned return).
+# (The bank must NOT seal the corridor: cliff walls the west, water/Tidecall the
+#  east, so the one northbound foot lane lives in the col-11 gap — keep it clear.)
+LEDGE_ROW, LEDGE_X0, LEDGE_X1 = 21, 3, 10
 path = mk.make_grid(W, H)
 spine = [6, 6, 6, 7, 7, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 8, 8, 7, 7, 6]
 
@@ -115,7 +118,10 @@ objects = [
     {"id": "tree_a", "sprite": "tinderwick_tree", "at": {"tx": 10, "ty": 6}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "tree_b", "sprite": "tinderwick_tree", "at": {"tx": 3, "ty": 23}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "tree_c", "sprite": "tinderwick_tree", "at": {"tx": 2, "ty": 11}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
-    {"id": "tree_d", "sprite": "tinderwick_tree", "at": {"tx": 11, "ty": 18}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+    # tree_d sits on the WEST verge: its old (11,18) spot dropped a solid trunk row
+    # onto row 21 cols 11-13 — exactly the col-11 northbound walk-around lane past the
+    # return bank — sealing the only on-foot route north. Moved clear of that lane.
+    {"id": "tree_d", "sprite": "tinderwick_tree", "at": {"tx": 3, "ty": 16}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     # Lamp breadcrumbs are the 1x3 lamp-post OBJECT (art-style 14b: a one-tile lamp is
     # wrong) — trunks stand just BESIDE the lit lane, never on it.
     {"id": "lamp_a", "sprite": "tinderwick_lamp_post", "at": {"tx": 7, "ty": 6}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
@@ -147,9 +153,10 @@ for (x, y) in [(12, 4), (13, 11), (12, 22), (3, 15), (10, 11), (9, 28)]:
     deco[y * W + x] = gid("boulder")
 
 # THE RETURN BANK (§3a rule 1 — loops, not corridors): a one-way grass ledge
-# across rows-21 cols 4-11. Northbound the lane detours EAST over the beach
-# (cols 12-13, past the boulder); southbound (heading home) the player hops
-# the bank and skips the fold. The cliff bulge at (2,21) seals the west end.
+# across row 21 cols 4-10. Northbound the lane walks straight up the OPEN col-11
+# gap at the bank's east end; southbound (heading home) the player hops the bank
+# anywhere across it and skips the fold. The cliff bulge at (2,21) seals the west
+# end, so col 11 is the sole northbound foot lane — it must stay clear of objects.
 pt.ledge_run(deco, W, H, LEDGE_ROW, LEDGE_X0 + 1, LEDGE_X1, rng)
 
 def beside_spine(ty, side=-1):
@@ -212,14 +219,14 @@ m = {
         # The cavern mouth's LOWER tile: (2,10) had no standable neighbour (the
         # cliff edging seals that row — audit_flow caught it), so the door sits
         # at (2,11), interacted from the open grass at (3,11) facing left.
-        # NOTE (Hours pass, 2026-06): the shipped JSON has drifted AHEAD of this
-        # builder (the door-convention pass made this warp step_on with
-        # blocked_ref 'door.locked_glimmerstep') — reconcile before any re-run.
-        # facing is 'right': tideglass_cavern is BUILT and its interior opens
-        # EAST of the pinned (5,8) landing.
-        {"id": "to_tideglass", "at": {"tx": 2, "ty": 11}, "trigger": "interact",
+        # Door-convention warp into the Tideglass Cavern (the Hours' launch-era
+        # tease, BUILT): step_on + blocked_ref. facing is 'right' — the cavern
+        # interior opens EAST of the pinned (5,8) landing, so arrival faces into
+        # the cave (the Hours pass corrected this from 'left').
+        {"id": "to_tideglass", "at": {"tx": 2, "ty": 11}, "trigger": "step_on",
          "to_map": "tideglass_cavern", "to": {"tx": 5, "ty": 8}, "facing": "right",
-         "requires_ability": "glimmerstep", "transition": "door"},
+         "requires_ability": "glimmerstep", "transition": "door",
+         "blocked_ref": "door.locked_glimmerstep"},
     ],
     "triggers": [
         {"id": "sign_buoys", "kind": "sign", "at": {"tx": sign_xy["sign_buoys"][0], "ty": sign_xy["sign_buoys"][1]},
