@@ -1955,6 +1955,19 @@
       "dialogue_ref": "script.post_letters_give",
       "requires_flag": "flag:dawn",
       "hidden_when_flag": "flag:q_post_letters"
+    },
+    {
+      "id": "waykeeper_postbag_done",
+      "at": {
+        "tx": 8,
+        "ty": 7
+      },
+      "facing": "down",
+      "sprite": "npc_lampwarden",
+      "movement": "look_around",
+      "dialogue_ref": "script.post_letters_done",
+      "requires_flag": "flag:q_post_letters_all",
+      "hidden_when_flag": "flag:q_post_letters_done"
     }
   ],
   "gates": [],

@@ -3271,6 +3271,21 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:q_post_letter_nightreach' },
   ],
 
+  // P1 PAYOFF — the Waykeeper's "all ten delivered" thanks. Its NPC at the
+  // crossroads is gated on the DERIVED flag:q_post_letters_all (FlagStore raises it
+  // once all ten flag:q_post_letter_* are held — the journal's counter, expressed as
+  // a single gateable flag so a plain requires_flag NPC can wait on "all 10"). Sets
+  // flag:q_post_letters_done, which closes P1 in the journal and hides this NPC.
+  'script.post_letters_done': [
+    { op: 'say', speaker: 'WAYKEEPER', text: 'Every last one, then — Wren, old Fenn, and all eight towns besides. The whole rim has read the same word in the same morning, carried on the same two feet.' },
+    { op: 'say', speaker: 'WAYKEEPER', text: 'A round like that earns its wage and then some. Here — for the roads, and for walking them all at once.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 500 },
+    { op: 'say', text: 'The Waykeeper presses 500 WICKS into your hand.' },
+    { op: 'say', speaker: 'WAYKEEPER', text: 'First post in years that ended in the light. Thank you, Wayfarer. Truly.' },
+    { op: 'setFlag', flag: 'flag:q_post_letters_done' },
+  ],
+
   // The strand cache (the variety rule: loose wicks off the lane).
   'script.pickup_dawnstead_cache': [
     { op: 'sfx', key: 'world-pickup' },

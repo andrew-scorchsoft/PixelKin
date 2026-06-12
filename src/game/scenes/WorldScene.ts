@@ -20,6 +20,7 @@ import { SettingsMenu } from '@game/ui/SettingsMenu';
 import { GlossaryMenu } from '@game/ui/GlossaryMenu';
 import { RegisterMenu } from '@game/ui/RegisterMenu';
 import { ChartsMenu } from '@game/ui/ChartsMenu';
+import { JournalMenu } from '@game/ui/JournalMenu';
 import { ChartView } from '@game/ui/ChartView';
 import { fadeIn, fadeOut } from '@game/ui/Transitions';
 import { KinInstance } from '@game/systems/party/KinInstance';
@@ -525,6 +526,7 @@ export class WorldScene extends Phaser.Scene {
           party: this.party,
           box: this.box,
           inventory: this.inventory,
+          dex_caught: [...this.dexCaught],
         });
         if (result.outcome !== 'win') {
           await this.blackout();
@@ -542,6 +544,7 @@ export class WorldScene extends Phaser.Scene {
           party: this.party,
           box: this.box,
           inventory: this.inventory,
+          dex_caught: [...this.dexCaught],
         });
         // Map the wild outcome to the runner's set-piece vocabulary. A wild kin
         // never flees on its own, so 'fled' is always the PLAYER bailing.
@@ -708,6 +711,7 @@ export class WorldScene extends Phaser.Scene {
           party: this.party,
           box: this.box,
           inventory: this.inventory,
+          dex_caught: [...this.dexCaught],
         }).then((result) => {
           if (result.outcome === 'lose') void this.blackout();
         });
@@ -1023,7 +1027,10 @@ export class WorldScene extends Phaser.Scene {
       ]);
       return;
     }
-    const result = await new ItemsMenu(this, this.inventory, this.party, this.sfx, this.money).run();
+    const result = await new ItemsMenu(this, this.inventory, this.party, this.sfx, this.money, {
+      get: (f) => this.flags.get(f),
+      set: (f, v) => this.flags.set(f, v),
+    }).run();
     this.party = result.party;
     this.inventory = result.inventory;
     void this.persist();
@@ -1054,6 +1061,7 @@ export class WorldScene extends Phaser.Scene {
           { label: 'RESUME', value: 'resume' },
           { label: 'KIN', value: 'kin' },
           { label: 'REGISTER', value: 'register' },
+          { label: 'JOURNAL', value: 'journal' },
           { label: 'HEARTH', value: 'hearth' },
           { label: 'ITEMS', value: 'items' },
           { label: 'LORE', value: 'lore' },
@@ -1068,6 +1076,13 @@ export class WorldScene extends Phaser.Scene {
         await this.openPartyMenu();
       } else if (choice === 'register') {
         await new RegisterMenu(this, { seen: [...this.dexSeen], caught: [...this.dexCaught] }, this.sfx).run();
+      } else if (choice === 'journal') {
+        await new JournalMenu(
+          this,
+          (prefix) => this.flags.countHeld(prefix),
+          (flag) => this.flags.get(flag),
+          this.sfx,
+        ).run();
       } else if (choice === 'hearth') {
         await this.openHearthMenu();
       } else if (choice === 'items') {
