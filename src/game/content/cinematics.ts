@@ -155,6 +155,7 @@ export const ENDING_CREDITS: CinematicScript = {
       creditsTitle: 'PixelKin',
       credits: [
         { role: 'A game by', names: ['Andrew Ward Studios'] },
+        { role: 'Published by', names: ['Scorchsoft'] },
         { role: 'Story & World', names: ['Andrew Ward Studios'] },
         { role: 'Game & Battle Design', names: ['Andrew Ward Studios'] },
         { role: 'Code & Engine', names: ['Andrew Ward Studios'] },

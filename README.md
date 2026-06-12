@@ -160,6 +160,25 @@ npm run build        # typecheck + production build to dist/
 npm run build:dist   # the upload-ready bundle (shrunk audio; needs ffmpeg)
 ```
 
+## Marketing site (`web/`) & deploying to pixelk.in
+
+A small, self-contained PHP + HTML landing site lives in [`web/`](web/README.md)
+— on-brand with the game (same palette and pixel font), separate from the game
+build. The live host (**pixelk.in**, WHM/cPanel over FTP) serves the site at the
+root and the game from `/play/`.
+
+```bash
+npm run site            # preview the site at http://localhost:8000 (PHP built-in server)
+
+npm run release         # build the game + assemble release/ (site at /, game at /play/)
+npm run release:site    # site only — refresh pages without rebuilding the game
+npm run release:game    # rebuild the game + refresh only release/play/
+```
+
+`release/` (gitignored) is the upload bundle: FTP its **contents** into
+`public_html/`. The game uses Vite `base: './'`, so it runs from `/play/`
+unchanged. Full notes: [`web/README.md`](web/README.md).
+
 ## Asset generation skills
 
 Original art and music are generated via repo skills in `.claude/skills/`

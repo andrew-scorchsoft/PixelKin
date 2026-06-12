@@ -9,7 +9,12 @@
     "build": "tsc --noEmit && vite build",
     "build:dist": "npm run build && node tools/audio/compress_dist_audio.mjs && node tools/build/strip_sourcemaps.mjs",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "site": "php -S localhost:8000 -t web tools/dev/site-router.php",
+    "preview:release": "npm run release && php -S localhost:8000 -t release",
+    "release:site": "node tools/build/assemble_release.mjs --site",
+    "release:game": "npm run build:dist && node tools/build/assemble_release.mjs --game",
+    "release": "npm run build:dist && node tools/build/assemble_release.mjs"
   },
   "dependencies": {
     "phaser": "^3.90.0"

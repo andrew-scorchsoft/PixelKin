@@ -5,6 +5,9 @@ node_modules/
 dist/
 *.tsbuildinfo
 
+# Assembled deploy bundle (site + game) — produced by tools/build/assemble_release.mjs
+release/
+
 # Scratch / throwaway asset previews (e.g. raw generate-image output before downscale)
 tmp/
 

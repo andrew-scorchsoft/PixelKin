@@ -1,0 +1,430 @@
+[
+    {
+        "id": 1,
+        "name": "Vulpyre",
+        "types": [
+            "Ember"
+        ],
+        "cat": "Hearth-Fox Kin"
+    },
+    {
+        "id": 2,
+        "name": "Brinix",
+        "types": [
+            "Tide"
+        ],
+        "cat": "Tide-Hum Kin"
+    },
+    {
+        "id": 3,
+        "name": "Blazethorn",
+        "types": [
+            "Ember"
+        ],
+        "cat": "Ember Caster Kin"
+    },
+    {
+        "id": 4,
+        "name": "Brinarch",
+        "types": [
+            "Tide"
+        ],
+        "cat": "Tide Warden Kin"
+    },
+    {
+        "id": 5,
+        "name": "Wicklit",
+        "types": [
+            "Light",
+            "Ember"
+        ],
+        "cat": "Light Trickster Kin"
+    },
+    {
+        "id": 6,
+        "name": "Wickmere",
+        "types": [
+            "Light",
+            "Ember"
+        ],
+        "cat": "Light Trickster Kin"
+    },
+    {
+        "id": 7,
+        "name": "Wicklord",
+        "types": [
+            "Light",
+            "Ember"
+        ],
+        "cat": "Light Channeler Kin"
+    },
+    {
+        "id": 8,
+        "name": "Glimflit",
+        "types": [
+            "Light"
+        ],
+        "cat": "Light Courier Kin"
+    },
+    {
+        "id": 9,
+        "name": "Glimscout",
+        "types": [
+            "Light"
+        ],
+        "cat": "Light Courier Kin"
+    },
+    {
+        "id": 10,
+        "name": "Tallowpup",
+        "types": [
+            "Ember"
+        ],
+        "cat": "Ember Wanderer Kin"
+    },
+    {
+        "id": 11,
+        "name": "Tallowcrest",
+        "types": [
+            "Ember"
+        ],
+        "cat": "Ember Wanderer Kin"
+    },
+    {
+        "id": 12,
+        "name": "Chandrek",
+        "types": [
+            "Ember",
+            "Light"
+        ],
+        "cat": "Ember Channeler Kin"
+    },
+    {
+        "id": 13,
+        "name": "Ashlette",
+        "types": [
+            "Ember"
+        ],
+        "cat": "Ember Caster Kin"
+    },
+    {
+        "id": 14,
+        "name": "Embrift",
+        "types": [
+            "Ember"
+        ],
+        "cat": "Ember Caster Kin"
+    },
+    {
+        "id": 15,
+        "name": "Pyriven",
+        "types": [
+            "Ember",
+            "Dark"
+        ],
+        "cat": "Ember Caster Kin"
+    },
+    {
+        "id": 16,
+        "name": "Wickmoth",
+        "types": [
+            "Ember"
+        ],
+        "cat": "Ember Fragile Kin"
+    },
+    {
+        "id": 17,
+        "name": "Scorchwing",
+        "types": [
+            "Ember"
+        ],
+        "cat": "Ember Fragile Kin"
+    },
+    {
+        "id": 18,
+        "name": "Hearthkit",
+        "types": [
+            "Ember"
+        ],
+        "cat": "Ember Wanderer Kin"
+    },
+    {
+        "id": 19,
+        "name": "Warmantis",
+        "types": [
+            "Ember",
+            "Light"
+        ],
+        "cat": "Ember Wanderer Kin"
+    },
+    {
+        "id": 20,
+        "name": "Tidmote",
+        "types": [
+            "Tide",
+            "Light"
+        ],
+        "cat": "Tide Courier Kin"
+    },
+    {
+        "id": 21,
+        "name": "Tidmaren",
+        "types": [
+            "Tide",
+            "Light"
+        ],
+        "cat": "Tide Courier Kin"
+    },
+    {
+        "id": 22,
+        "name": "Tidwraith",
+        "types": [
+            "Tide",
+            "Light"
+        ],
+        "cat": "Tide Courier Kin"
+    },
+    {
+        "id": 23,
+        "name": "Glintfin",
+        "types": [
+            "Tide",
+            "Light"
+        ],
+        "cat": "Tide Caster Kin"
+    },
+    {
+        "id": 24,
+        "name": "Shimmral",
+        "types": [
+            "Tide",
+            "Light"
+        ],
+        "cat": "Tide Caster Kin"
+    },
+    {
+        "id": 25,
+        "name": "Prismare",
+        "types": [
+            "Tide",
+            "Light"
+        ],
+        "cat": "Tide Caster Kin"
+    },
+    {
+        "id": 26,
+        "name": "Brinelet",
+        "types": [
+            "Tide"
+        ],
+        "cat": "Tide Courier Kin"
+    },
+    {
+        "id": 27,
+        "name": "Brineroll",
+        "types": [
+            "Tide"
+        ],
+        "cat": "Tide Courier Kin"
+    },
+    {
+        "id": 28,
+        "name": "Brinewrath",
+        "types": [
+            "Tide"
+        ],
+        "cat": "Tide Courier Kin"
+    },
+    {
+        "id": 29,
+        "name": "Glostern",
+        "types": [
+            "Tide",
+            "Light"
+        ],
+        "cat": "Tide Caster Kin"
+    },
+    {
+        "id": 30,
+        "name": "Glostrael",
+        "types": [
+            "Tide",
+            "Light"
+        ],
+        "cat": "Tide Caster Kin"
+    },
+    {
+        "id": 31,
+        "name": "Lumpin",
+        "types": [
+            "Tide",
+            "Light"
+        ],
+        "cat": "Tide Warden Kin"
+    },
+    {
+        "id": 32,
+        "name": "Lumplass",
+        "types": [
+            "Tide",
+            "Light"
+        ],
+        "cat": "Tide Warden Kin"
+    },
+    {
+        "id": 33,
+        "name": "Embralux",
+        "types": [
+            "Ember",
+            "Light"
+        ],
+        "cat": "Ember Caster Kin"
+    },
+    {
+        "id": 34,
+        "name": "Tideveil",
+        "types": [
+            "Tide",
+            "Light"
+        ],
+        "cat": "Tide Warden Kin"
+    },
+    {
+        "id": 35,
+        "name": "Crystink",
+        "types": [
+            "Stone",
+            "Light"
+        ],
+        "cat": "Stone Caster Kin"
+    },
+    {
+        "id": 36,
+        "name": "Lumecite",
+        "types": [
+            "Stone",
+            "Light"
+        ],
+        "cat": "Stone Caster Kin"
+    },
+    {
+        "id": 37,
+        "name": "Prismara",
+        "types": [
+            "Stone",
+            "Light"
+        ],
+        "cat": "Stone Caster Kin"
+    },
+    {
+        "id": 38,
+        "name": "Mossglow",
+        "types": [
+            "Light",
+            "Verdant"
+        ],
+        "cat": "Light Trickster Kin"
+    },
+    {
+        "id": 39,
+        "name": "Mossmantle",
+        "types": [
+            "Light",
+            "Verdant"
+        ],
+        "cat": "Light Trickster Kin"
+    },
+    {
+        "id": 40,
+        "name": "Lumenmoss",
+        "types": [
+            "Light",
+            "Verdant"
+        ],
+        "cat": "Light Bulwark Kin"
+    },
+    {
+        "id": 41,
+        "name": "Scorchite",
+        "types": [
+            "Ember"
+        ],
+        "cat": "Ember Caster Kin"
+    },
+    {
+        "id": 42,
+        "name": "Coalump",
+        "types": [
+            "Ember"
+        ],
+        "cat": "Ember Caster Kin"
+    },
+    {
+        "id": 43,
+        "name": "Pyrolith",
+        "types": [
+            "Ember",
+            "Stone"
+        ],
+        "cat": "Ember Caster Kin"
+    },
+    {
+        "id": 44,
+        "name": "Flickore",
+        "types": [
+            "Stone",
+            "Storm"
+        ],
+        "cat": "Stone Caster Kin"
+    },
+    {
+        "id": 45,
+        "name": "Sparkrat",
+        "types": [
+            "Stone",
+            "Storm"
+        ],
+        "cat": "Stone Caster Kin"
+    },
+    {
+        "id": 46,
+        "name": "Voltcrag",
+        "types": [
+            "Stone",
+            "Storm"
+        ],
+        "cat": "Stone Caster Kin"
+    },
+    {
+        "id": 47,
+        "name": "Pebbit",
+        "types": [
+            "Stone"
+        ],
+        "cat": "Stone Wanderer Kin"
+    },
+    {
+        "id": 48,
+        "name": "Rubbol",
+        "types": [
+            "Stone"
+        ],
+        "cat": "Stone Wanderer Kin"
+    },
+    {
+        "id": 49,
+        "name": "Gravelo",
+        "types": [
+            "Stone"
+        ],
+        "cat": "Stone Bulwark Kin"
+    },
+    {
+        "id": 50,
+        "name": "Fossik",
+        "types": [
+            "Stone"
+        ],
+        "cat": "Stone Wanderer Kin"
+    }
+]

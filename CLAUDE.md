@@ -108,6 +108,8 @@ docs/
   mechanics/                # types, stats, moves, capture, kindling, selection, schema, sim
   world/                    # story bible, atlas (14 areas), music direction
 tools/balance/              # the roster/balance engine (.py pipeline + .mjs validators)
+web/                        # marketing site for pixelk.in (PHP+HTML, separate from the game)
+                            #   flat .php pages + includes/ partials + own assets/ (web/README.md)
 .claude/skills/             # repo skills (see below)
 VISION.md                   # the game's vision + copyright rules
 ```
@@ -816,3 +818,24 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   temp path and only copy over the master after approval. A re-roll is a gacha, not a refinement —
   "fixing" an approved sprite by regenerating lost it entirely (Brinix battle_front had to be
   recovered pixel-by-pixel from a comparison montage).
+- **The marketing site (`web/`) and the game are two builds stapled at deploy.** `web/` is a small
+  self-contained PHP+HTML site (flat `.php` pages + `includes/` partials + own `assets/`, palette
+  and pixel font mirrored from the game) — preview with `npm run site` (PHP built-in server, port
+  8000). `npm run release` builds the game and assembles `release/` (gitignored): site at the root,
+  game's `dist/` dropped into `release/play/`. FTP the **contents** of `release/` into `public_html/`
+  on pixelk.in → site serves at `/`, game at `/play/` (works because Vite `base: './'`). `release:site`
+  refreshes pages without touching a staged `release/play/`; `release:game` rebuilds only the game.
+  Brand facts in `web/includes/config.php` (starter trio, world/Lumenary galleries, palette, `STUDIO_*`)
+  mirror the game — keep them in sync. Per-page SEO/social meta comes from `page_head($title,$page,$desc)`;
+  the studio is **Scorchsoft** (attribution in the footer; `license.php` routes licensing enquiries to the
+  Scorchsoft contact form; `privacy.php`/`terms.php` are the as-is/no-warranty/may-be-taken-offline legals,
+  footer-linked). Interactivity is vanilla JS in `web/assets/js/main.js` (degrades without it): the **hero**
+  (pixel-art Tinderwick concept scene `web/assets/img/hero/scene.webp` under a tuned vignette, slow pan +
+  pointer-reactive parallax, with a translucent nav over it that firms up on scroll) and a shared **lightbox**
+  (any `data-lb` element, grouped by `data-lb-group`; used by the world gallery, Lumenaries, and the
+  **first-50 kin grid** on `creatures.php`, whose modal shows each kin's battle sprite). A dev-only router
+  (`tools/dev/site-router.php`, wired into `npm run site`) serves a placeholder at `/play/` since the game
+  only lands there after `npm run release`; `npm run preview:release` serves the assembled bundle so both
+  `/` and `/play/` work locally. Site imagery is copied from `assets/concept-art/` + `public/assets/` into
+  `web/assets/img/`, and the kin grid reads a generated `web/assets/data/kin.json` (first 50 from
+  `species.json`) so the site deploys standalone — refresh recipes are in `web/README.md`.

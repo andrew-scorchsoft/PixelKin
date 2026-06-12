@@ -109,6 +109,12 @@ export class SplashScene extends Phaser.Scene {
       .setAlpha(0);
     this.tweens.add({ targets: studios, alpha: 1, delay: 1500, duration: 600, ease: 'Linear' });
 
+    // Publisher attribution — Andrew Ward Studios is a Scorchsoft venture.
+    const publisher = makeText(this, cx, titleY + 28, 'a Scorchsoft game', theme.text.dim)
+      .setOrigin(0.5)
+      .setAlpha(0);
+    this.tweens.add({ targets: publisher, alpha: 0.7, delay: 1900, duration: 600, ease: 'Linear' });
+
     // 3) A single light sweep across the name, like a lantern passing.
     const sweep = this.add
       .rectangle(0, titleY - 4, 10, 26, hex(COLORS.bone), 0.5)
