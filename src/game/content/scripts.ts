@@ -2591,6 +2591,20 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'narrate', text: 'The well\'s light eases, as if it has been holding something carefully for years and may finally set it down. The water keeps shining anyway. Some places simply do.' },
   ],
+  // --- THE NULL-WORKS — Nullmajor (#150), the great dark made kin. Post-dawn
+  // only (the trigger carries requires_flag:'flag:dawn'); the SILENCE register,
+  // Arc B's very last echo: Cor's null, woken gently — never destroyed.
+  'script.nullworks_nullmajor': [
+    { op: 'musicFade', ms: 900 },
+    { op: 'silence', ms: 1600 },
+    { op: 'narrate', text: 'The null-pool does not reflect your lamp. It never has. But this morning, for the first time, something under the surface reflects it back.' },
+    { op: 'narrate', text: 'The gathered dark rises — vast, slow, courteous as its maker learned to be — and stands above the pool wearing the shape of a kin: the Nullmajor, the night C\u00f2r built, looking for a steady hand to be kept by.' },
+    { op: 'legendaryBattle', name: 'nullmajor', kin: 150, level: 60, caughtFlag: 'flag:nullmajor_caught', cooldownBattles: 12, cooldownRef: 'npc.nullworks_still' },
+    { op: 'narrate', text: 'The dark folds into your lamp without a sound — not extinguished, KEPT. The lamp is for the dark. It always was.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'narrate', text: 'The pool settles into plain water, and the null-works stand quiet at last — a machine with nothing left to hold.' },
+  ],
+
   'script.pickup_starwell_amber': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'moth_amber', count: 1 },

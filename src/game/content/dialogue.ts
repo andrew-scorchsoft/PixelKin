@@ -1332,6 +1332,15 @@ export const DIALOGUE: DialogueRegistry = {
   'npc.starwell_after': [
     { text: 'The well holds only starlight now — and holds it gladly. The water is warm.' },
   ],
+  // THE NULL-WORKS POOL — Nullmajor #150, the great dark made kin (post-dawn
+  // set-piece on umbral_spire_f2; the Còr-mercy register: woken gently, never
+  // destroyed). Cooldown + after lines for script.nullworks_nullmajor.
+  'npc.nullworks_still': [
+    { text: 'The pool of gathered dark lies still. What sank back into it is resting — the old null will not rise again for {remaining} more battles yet.' },
+  ],
+  'npc.nullworks_after': [
+    { text: 'The null-pool is only water now, holding the morning upside down. Somewhere in your lamp, the dark Còr made is finally being kept instead of feared.' },
+  ],
 
   // --- The Umbral Spire — Wren at your side (A5→A6), one line per floor.
   // f1's beat (the ONE sanctioned wry-warm one) moved into script.spire_wren_camp,

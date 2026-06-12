@@ -410,6 +410,52 @@
       "activation": "interact",
       "ref": "npc.spire_sleeper_awake",
       "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "nullworks_kin_0",
+      "kind": "script",
+      "at": {
+        "tx": 8,
+        "ty": 9
+      },
+      "activation": "interact",
+      "ref": "script.nullworks_nullmajor",
+      "requires_flag": "flag:dawn",
+      "hidden_when_flag": "flag:nullmajor_caught"
+    },
+    {
+      "id": "nullworks_after_0",
+      "kind": "dialogue",
+      "at": {
+        "tx": 8,
+        "ty": 9
+      },
+      "activation": "interact",
+      "ref": "npc.nullworks_after",
+      "requires_flag": "flag:nullmajor_caught"
+    },
+    {
+      "id": "nullworks_kin_1",
+      "kind": "script",
+      "at": {
+        "tx": 9,
+        "ty": 9
+      },
+      "activation": "interact",
+      "ref": "script.nullworks_nullmajor",
+      "requires_flag": "flag:dawn",
+      "hidden_when_flag": "flag:nullmajor_caught"
+    },
+    {
+      "id": "nullworks_after_1",
+      "kind": "dialogue",
+      "at": {
+        "tx": 9,
+        "ty": 9
+      },
+      "activation": "interact",
+      "ref": "npc.nullworks_after",
+      "requires_flag": "flag:nullmajor_caught"
     }
   ],
   "encounters": [
