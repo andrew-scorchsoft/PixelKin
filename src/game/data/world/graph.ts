@@ -124,6 +124,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'hushfrost_pass_ii', region: 'west' }, // route: coldfog throat
     { map_id: 'aurora_hollow', region: 'west', optional: true, reward: 'rare Frost/Light kin + item' },
     { map_id: 'sunken_solarium', region: 'west' },
+    { map_id: 'sunken_solarium_lumenary', region: 'west' }, // interior: the Solar hall (the troupe's green-room + the rest point — the battle is on the lit stage outdoors)
     { map_id: 'sunvault_climb_i', region: 'west' }, // route: overgrown terraces
     { map_id: 'sunvault_climb_ii', region: 'west' }, // route: sun-vine bridges
     { map_id: 'helia_vault', region: 'west', optional: true, reward: 'rare Solar kin + item in a sealed reliquary' },
@@ -199,6 +200,8 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'pale_vault_glacier', to_map: 'hushfrost_pass_i', via_warp: 'to_pass', bidirectional: true },
     { from_map: 'hushfrost_pass_i', to_map: 'hushfrost_pass_ii', via_warp: 'to_pass_ii', requires_ability: 'emberward', bidirectional: true },
     { from_map: 'hushfrost_pass_ii', to_map: 'sunken_solarium', via_warp: 'to_solarium', bidirectional: true },
+    // The Solar hall is starter-gated like every Lumenary door (NEVER Sunsketch — §0 rule 1).
+    { from_map: 'sunken_solarium', to_map: 'sunken_solarium_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
     { from_map: 'sunken_solarium', to_map: 'sunvault_climb_i', via_warp: 'to_climb', bidirectional: true },
     { from_map: 'sunvault_climb_i', to_map: 'sunvault_climb_ii', via_warp: 'to_climb_ii', requires_ability: 'sunsketch', bidirectional: true },
     { from_map: 'sunvault_climb_ii', to_map: 'nightreach_observatory', via_warp: 'to_observatory', bidirectional: true },

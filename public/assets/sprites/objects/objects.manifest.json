@@ -490,11 +490,165 @@
       "tw": 1,
       "th": 2
     },
+    "solarium_brazier_dead": {
+      "path": "assets/sprites/objects/solarium_brazier_dead.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "solarium_brazier_lit": {
+      "path": "assets/sprites/objects/solarium_brazier_lit.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "solarium_column": {
+      "path": "assets/sprites/objects/solarium_column.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    },
+    "solarium_column_fallen": {
+      "path": "assets/sprites/objects/solarium_column_fallen.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "solarium_costume_rack": {
+      "path": "assets/sprites/objects/solarium_costume_rack.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "solarium_lumenary": {
+      "path": "assets/sprites/objects/solarium_lumenary.webp",
+      "width": 96,
+      "height": 96,
+      "tw": 6,
+      "th": 6
+    },
+    "solarium_nightflowers_bloomed": {
+      "path": "assets/sprites/objects/solarium_nightflowers_bloomed.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "solarium_nightflowers_closed": {
+      "path": "assets/sprites/objects/solarium_nightflowers_closed.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "solarium_stage_arch": {
+      "path": "assets/sprites/objects/solarium_stage_arch.webp",
+      "width": 80,
+      "height": 48,
+      "tw": 5,
+      "th": 3
+    },
+    "solarium_sun_mask": {
+      "path": "assets/sprites/objects/solarium_sun_mask.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "solarium_troupe_cart": {
+      "path": "assets/sprites/objects/solarium_troupe_cart.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
     "sunkbell_shrine": {
       "path": "assets/sprites/objects/sunkbell_shrine.webp",
       "width": 48,
       "height": 48,
       "tw": 3,
+      "th": 3
+    },
+    "sunvault_mirror_alight": {
+      "path": "assets/sprites/objects/sunvault_mirror_alight.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "sunvault_mirror_dim": {
+      "path": "assets/sprites/objects/sunvault_mirror_dim.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "sunvault_reliquary": {
+      "path": "assets/sprites/objects/sunvault_reliquary.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "sunvault_vine_far_bloomed": {
+      "path": "assets/sprites/objects/sunvault_vine_far_bloomed.webp",
+      "width": 16,
+      "height": 64,
+      "tw": 1,
+      "th": 4
+    },
+    "sunvault_vine_far_withered": {
+      "path": "assets/sprites/objects/sunvault_vine_far_withered.webp",
+      "width": 16,
+      "height": 64,
+      "tw": 1,
+      "th": 4
+    },
+    "sunvault_vine_gate_bloomed": {
+      "path": "assets/sprites/objects/sunvault_vine_gate_bloomed.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "sunvault_vine_gate_withered": {
+      "path": "assets/sprites/objects/sunvault_vine_gate_withered.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "sunvault_vine_h_bloomed": {
+      "path": "assets/sprites/objects/sunvault_vine_h_bloomed.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "sunvault_vine_h_withered": {
+      "path": "assets/sprites/objects/sunvault_vine_h_withered.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "sunvault_vine_v_bloomed": {
+      "path": "assets/sprites/objects/sunvault_vine_v_bloomed.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    },
+    "sunvault_vine_v_withered": {
+      "path": "assets/sprites/objects/sunvault_vine_v_withered.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
       "th": 3
     },
     "tinderwick_beacon": {

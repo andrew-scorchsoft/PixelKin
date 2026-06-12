@@ -496,6 +496,64 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/hushfrost-pass-b.webp',
     ],
   },
+  // Sunken Solarium — the drowned sun-garden (Lumenary 7, Solar: Lucan Pyre)
+  // and the West's Arc D pivot from cold to warmth. The Lit Stage earned loop
+  // sends the player into the Tidecall-flooded halls for three sunmote phials
+  // before the bond-test on the relit Heliarium stage; the Last-Warm-Day
+  // festival fills the terrace under the gen'd Solar hall.
+  sunken_solarium: {
+    json: 'assets/maps/sunken_solarium.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/sunken-solarium-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/sunken-solarium-a.webp',
+      'assets/backgrounds/battle/sunken-solarium-b.webp',
+    ],
+  },
+  sunken_solarium_lumenary: {
+    json: 'assets/maps/sunken_solarium_lumenary.json',
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/sunken-solarium-b.mp3',
+  },
+  // Sunvault Climb — the golden terraces rising from the drowned garden to
+  // Nightreach's rim; the I→II boundary is the dead sun-vine bridge
+  // (Sunsketch's first required crossing), and the Helia Vault puzzle
+  // reliquary opens off segment II.
+  sunvault_climb_i: {
+    json: 'assets/maps/sunvault_climb_i.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/sunvault-climb-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/sunvault-climb-a.webp',
+      'assets/backgrounds/battle/sunvault-climb-b.webp',
+    ],
+  },
+  sunvault_climb_ii: {
+    json: 'assets/maps/sunvault_climb_ii.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/sunvault-climb-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/sunvault-climb-a.webp',
+      'assets/backgrounds/battle/sunvault-climb-b.webp',
+    ],
+  },
+  // Helia Vault — the Sunsketch puzzle micro-dungeon (sequential blooms + the
+  // sun-mirror redirect; Heliovast's sealed reliquary). Spur maps reuse the
+  // parent loop's sparsest variant + backdrops.
+  helia_vault: {
+    json: 'assets/maps/helia_vault.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/sunvault-climb-c.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/sunvault-climb-a.webp',
+      'assets/backgrounds/battle/sunvault-climb-b.webp',
+    ],
+  },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
   // Their battle backdrops are already rendered — see UPCOMING_BATTLE_BACKDROPS below.
@@ -511,10 +569,6 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
  * its backdrops set, drop its key here to avoid drift.
  */
 export const UPCOMING_BATTLE_BACKDROPS: Record<string, string[]> = {
-  sunken_solarium: [
-    'assets/backgrounds/battle/sunken-solarium-a.webp',
-    'assets/backgrounds/battle/sunken-solarium-b.webp',
-  ],
   nightreach_observatory: [
     'assets/backgrounds/battle/nightreach-observatory-a.webp',
     'assets/backgrounds/battle/nightreach-observatory-b.webp',
