@@ -973,7 +973,7 @@
       "movement": "static",
       "dialogue_ref": "script.round_kite",
       "requires_flag": "gleam:storm",
-      "hidden_when_flag": "flag:q_round_kite"
+      "hidden_when_flag": "flag:q_round_kite_taken"
     },
     {
       "id": "kite_maker_round_after",
@@ -985,7 +985,7 @@
       "sprite": "npc_woman",
       "movement": "static",
       "dialogue_ref": "npc.kite_maker_round_after",
-      "requires_flag": "flag:q_round_kite"
+      "requires_flag": "flag:q_round_kite_taken"
     },
     {
       "id": "mira_after",

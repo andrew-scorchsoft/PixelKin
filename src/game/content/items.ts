@@ -168,6 +168,82 @@ export const ITEMS: ItemRegistry = {
     catch_bonus: 2.5,
   },
 
+  // --- The North (walkthrough/03-north) --------------------------------------
+  // The Kite-Rising Winch chain (Galehigh, spine §5 shape #5): the kite-maker's
+  // three storm-scattered pieces, found in order across the lower terraces.
+  kite_spar: {
+    id: 'kite_spar',
+    name: 'Kite Spar',
+    desc: 'A wind-tempered spar of mountain ash, light as a held breath. The bones of the kite-maker\'s best kite.',
+    category: 'key',
+  },
+  kite_sail: {
+    id: 'kite_sail',
+    name: 'Kite Sail',
+    desc: 'Oiled festival silk, lantern-orange, hemmed against the gusts. It tugs at your hands like something impatient to be sky again.',
+    category: 'key',
+  },
+  kite_tail: {
+    id: 'kite_tail',
+    name: 'Kite Tail',
+    desc: 'A long plaited tail strung with tiny wick-lamps. At the Kite-rising, every tail is lit — so the stars have something to answer.',
+    category: 'key',
+  },
+  // R4 "A Kite for the Waystone Kid" — the Waykeeper's commissioned kite.
+  round_kite: {
+    id: 'round_kite',
+    name: 'Waystone Kite',
+    desc: 'A small, sturdy kite in Lanternway colours, commissioned by the Waykeeper for the kid at the Crossroads. Built to survive an owner of eight.',
+    category: 'key',
+  },
+  // N1 "The Crag-tender's Kettle" — the herb and the flask it earns.
+  ledge_herb: {
+    id: 'ledge_herb',
+    name: 'Ledge-herb',
+    desc: 'A wind-burnt sprig from Galehigh\'s highest terrace, sharp and warm to the nose. The crag-tender swears by it for her kettle.',
+    category: 'key',
+  },
+  warm_flask: {
+    id: 'warm_flask',
+    name: 'Warm Flask',
+    desc: 'The crag-tender\'s own brew in a felt-wrapped flask, warm through the worst of the chill. Restores a good deal of health.',
+    category: 'medicine',
+    heal: 80,
+  },
+  // The Lamp-Line (Pale Vault, spine §5 shape #6): the doused hearth's kindling
+  // and the oil the seven brackets burn.
+  stormwood: {
+    id: 'stormwood',
+    name: 'Storm-kindling',
+    desc: 'An armful of storm-felled wood off the Windward heights, dry under the snow-crust and eager to catch. A doused hearth\'s best friend.',
+    category: 'key',
+  },
+  aurora_oil: {
+    id: 'aurora_oil',
+    name: 'Aurora-oil',
+    desc: 'A stoppered jar of the tallow-keeper\'s pale rendering. It holds a faint moving light, like the sky above the glacier got in somehow.',
+    category: 'key',
+  },
+  // N3 "Wren's Ribbon" — Mira's quiet errand after the wobble. No reward; the
+  // payoff is one extra Wren line at Nightreach (the West writer's beat).
+  wren_ribbon: {
+    id: 'wren_ribbon',
+    name: "Wren's Ribbon",
+    desc: 'A kite-ribbon in Wren\'s colours, dropped at the Kite-rising. It still smells faintly of festival smoke.',
+    category: 'key',
+  },
+  // N2 "The Aurora Sketcher" — the painter's thanks: an aurora-dipped charm
+  // (a conditional charge, the Drift Charm pattern: blazes toward Frost-lit
+  // hearts, burns plain toward everything else).
+  aurora_charm: {
+    id: 'aurora_charm',
+    name: 'Aurora Charm',
+    desc: 'A lamp-charm dipped in aurora-oil under a watching sky. Raised toward a Frost-hearted kin its throw burns brilliantly; toward any other it is only a lamp.',
+    category: 'charge',
+    catch_bonus: 2.5,
+    condition: { kind: 'defender_type', types: ['Frost'] },
+  },
+
   // --- Valuables (found, never bought; exist to be sold for wicks) ----------
   wax_cake: {
     id: 'wax_cake',
@@ -269,6 +345,51 @@ export const ITEMS: ItemRegistry = {
     category: 'chart',
     teach_move: 'lifedrain',
     price: 1200,
+  },
+  // The Galehigh kite-stall's slate (10-economy.md §5: the Storm pair + the
+  // late Heavy + a Plain utility — the North's tier; Pale Vault keeps no
+  // counter, so the kite-stall carries the whole cold leg's stock).
+  chart_thunder_kick: {
+    id: 'chart_thunder_kick',
+    name: 'Star-chart: Thunder Kick',
+    desc: 'A pressed chart of the Storm\'s striding-figure. Teaches a willing kin THUNDER KICK (Storm). One study burns it out.',
+    category: 'chart',
+    teach_move: 'thunder_kick',
+    price: 1400,
+  },
+  chart_volt_arc: {
+    id: 'chart_volt_arc',
+    name: 'Star-chart: Volt Arc',
+    desc: 'A pressed chart of the Storm\'s leaping-figure. Teaches a willing kin VOLT ARC (Storm). One study burns it out.',
+    category: 'chart',
+    teach_move: 'volt_arc',
+    price: 1400,
+  },
+  chart_gale_slam: {
+    id: 'chart_gale_slam',
+    name: 'Star-chart: Gale Slam',
+    desc: 'A pressed chart of the Storm\'s great wheel-figure, heavy with held weather. Teaches a willing kin GALE SLAM (Storm). One study burns it out.',
+    category: 'chart',
+    teach_move: 'gale_slam',
+    price: 2400,
+  },
+  chart_swift_step: {
+    id: 'chart_swift_step',
+    name: 'Star-chart: Swift Step',
+    desc: 'A plain-figure chart any kin can read, quick as a kite-string paying out. Teaches SWIFT STEP (Plain). One study burns it out.',
+    category: 'chart',
+    teach_move: 'swift_step',
+    price: 1400,
+  },
+  // Thunderroost's prize — a nuke chart, find-first per 10-economy §6 (the
+  // storm-birds' aerie is the only place this figure was ever pressed).
+  chart_tempest: {
+    id: 'chart_tempest',
+    name: 'Star-chart: Tempest',
+    desc: 'A chart of the Storm\'s whole turning sky, pressed at the aerie itself. Teaches a willing kin TEMPEST (Storm). One study burns it out.',
+    category: 'chart',
+    teach_move: 'tempest',
+    price: 4000,
   },
 };
 

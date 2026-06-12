@@ -106,6 +106,30 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'A knack a Lampwarden teaches with their Gleam — Tidecall crosses night-water; more come later. Each reopens places you once walked past.',
     unlock_flag: 'gleam:tide',
   },
+  {
+    id: 'lanternway',
+    term: 'the Lanternway',
+    desc: 'The lit road that rings Vesperholm, spoke to far-off spoke, meeting at the Vesper Crossroads. Its lamps wake region by region as the Gleams return.',
+    unlock_flag: 'flag:fenn_errand',
+  },
+  {
+    id: 'skyweave_crown',
+    term: 'the Skyweave Crown',
+    desc: 'The ring the eight constellations make when all stand lit — closed one quadrant at a time, two Gleams to a quarter. A whole Crown, the old charts say, can part the Penumbra itself.',
+    unlock_flag: 'flag:crown_south',
+  },
+  {
+    id: 'warden_cor',
+    term: 'Warden Còr',
+    desc: 'The Hollowing\'s keeper: a star-tender once, courteous and sad, who lost something to the turning of the cycles and decided no one should have to again. He does not fight. He asks — and that is the danger of him.',
+    unlock_flag: 'flag:met_cor',
+  },
+  {
+    id: 'coldfog',
+    term: 'Coldfog',
+    desc: 'The Hollowing\'s creeping mist — a damp dark that snuffs ordinary flame and closes whole passes. Only an Emberward\'s tended ember pushes through it.',
+    unlock_flag: 'gleam:frost',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */

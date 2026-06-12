@@ -333,6 +333,208 @@ export const TRAINERS: TrainerRegistry = {
     payout: 520, // keeper 20 × ace 26
     music: 'battle-emberfall',
   },
+
+  // ===========================================================================
+  // THE NORTH (walkthrough/03-north) — Galehigh's terraces and skyloft, the
+  // Windward Stair, Pale Vault's undercroft, the A4 rival battle, and the two
+  // cold-leg Lampwardens. Bands per the spine §4: Galehigh 28–31, Windward
+  // 34–36, undercroft 37–39; aces Mira ~34, Ysolde ~40, Wren A4 at/above the
+  // player (~41 — the ONE rival fight that breaks "Wren ~2 under you").
+  // ===========================================================================
+
+  // Galehigh's terrace lane — two route sight trainers (28–30).
+  galehigh_kitehand: {
+    id: 'galehigh_kitehand',
+    name: 'PERRIN',
+    title: 'Kite-hand',
+    party: [
+      { species_id: 88, level: 28 }, // Sparrowcaw — Storm
+      { species_id: 97, level: 29 }, // Thrumvane — Storm (ace)
+    ],
+    intro_ref: 'trainer.galehigh_kitehand.intro',
+    defeat_ref: 'trainer.galehigh_kitehand.defeat',
+    payout: 464, // route 16 × ace 29
+    music: 'battle-emberfall',
+  },
+  galehigh_terracer: {
+    id: 'galehigh_terracer',
+    name: 'SORREL',
+    title: 'Terrace-farmer',
+    party: [
+      { species_id: 91, level: 29 }, // Cirruff — Storm/Light
+      { species_id: 45, level: 30 }, // Sparkrat — Stone/Storm (ace)
+    ],
+    intro_ref: 'trainer.galehigh_terracer.intro',
+    defeat_ref: 'trainer.galehigh_terracer.defeat',
+    payout: 480, // route 16 × ace 30
+    music: 'battle-emberfall',
+  },
+
+  // The skyloft's two wind-ward SIGHT keepers (the Kite-Rising loop's posts,
+  // keeper class, 29–31 — the on-ramp to Mira's 34).
+  skyloft_ward_a: {
+    id: 'skyloft_ward_a',
+    name: 'TAMSIN',
+    title: 'Wind-ward',
+    party: [
+      { species_id: 97, level: 29 }, // Thrumvane — Storm
+      { species_id: 98, level: 30 }, // Thrumble — Storm (ace)
+    ],
+    intro_ref: 'trainer.skyloft_ward_a.intro',
+    defeat_ref: 'trainer.skyloft_ward_a.defeat',
+    payout: 600, // keeper 20 × ace 30
+    music: 'battle-emberfall',
+  },
+  skyloft_ward_b: {
+    id: 'skyloft_ward_b',
+    name: 'BRAN',
+    title: 'Wind-ward',
+    party: [
+      { species_id: 91, level: 30 }, // Cirruff — Storm/Light
+      { species_id: 89, level: 31 }, // Flintbeak — Storm (ace)
+    ],
+    intro_ref: 'trainer.skyloft_ward_b.intro',
+    defeat_ref: 'trainer.skyloft_ward_b.defeat',
+    payout: 620, // keeper 20 × ace 31
+    music: 'battle-emberfall',
+  },
+
+  // Fifth Lumenary: Mira Vael, Lampwarden of Galehigh Terraces (Storm) — the
+  // breathless kite-flier; a fast, adrenaline-keyed team met at ~30–31. Win
+  // relights the Storm constellation AND grants the Updraft Kite (the warden
+  // reward pattern). crown_north waits on Ysolde — never hand-set here.
+  mira_vael: {
+    id: 'mira_vael',
+    name: 'MIRA VAEL',
+    title: 'Lampwarden',
+    party: [
+      { species_id: 98, level: 30 }, // Thrumble — Storm
+      { species_id: 95, level: 31 }, // Glacewing — Storm/Frost
+      { species_id: 89, level: 32 }, // Flintbeak — Storm
+      { species_id: 90, level: 34 }, // Strikeaven — Storm (ace, THE storm-bird)
+    ],
+    intro_ref: 'trainer.mira_vael.intro',
+    defeat_ref: 'trainer.mira_vael.defeat',
+    reward_flags: ['gleam:storm'],
+    reward_abilities: ['updraft_kite'],
+    payout: 2040, // Lampwarden 60 × ace 34
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
+
+  // The Windward Stair's three route sight trainers (34–36).
+  windward_craghand: {
+    id: 'windward_craghand',
+    name: 'EDDA',
+    title: 'Crag-hand',
+    party: [
+      { species_id: 45, level: 34 }, // Sparkrat — Stone/Storm
+      { species_id: 89, level: 35 }, // Flintbeak — Storm (ace)
+    ],
+    intro_ref: 'trainer.windward_craghand.intro',
+    defeat_ref: 'trainer.windward_craghand.defeat',
+    payout: 560, // route 16 × ace 35
+    music: 'battle-emberfall',
+  },
+  windward_galewatch: {
+    id: 'windward_galewatch',
+    name: 'ROWAN',
+    title: 'Gale-watch',
+    party: [
+      { species_id: 98, level: 34 }, // Thrumble — Storm
+      { species_id: 95, level: 35 }, // Glacewing — Storm/Frost (ace)
+    ],
+    intro_ref: 'trainer.windward_galewatch.intro',
+    defeat_ref: 'trainer.windward_galewatch.defeat',
+    payout: 560, // route 16 × ace 35
+    music: 'battle-emberfall',
+  },
+  windward_cragwatch: {
+    id: 'windward_cragwatch',
+    name: 'MERLE',
+    title: 'Crag-watch',
+    party: [
+      { species_id: 89, level: 35 }, // Flintbeak — Storm
+      { species_id: 94, level: 36 }, // Hailwhirr — Storm/Frost (ace)
+    ],
+    intro_ref: 'trainer.windward_cragwatch.intro',
+    defeat_ref: 'trainer.windward_cragwatch.defeat',
+    payout: 576, // route 16 × ace 36
+    music: 'battle-emberfall',
+  },
+
+  // A4 — Wren's wobble at the undercroft door: the HARD rival battle, at/above
+  // the player's level by design (the one beat that breaks "Wren ~2 under you"
+  // — do not "correct" it). Kindled line + a North catch; no reward flags
+  // beyond the route trigger's bookkeeping (the script sets the battled flag).
+  wren_pale_vault: {
+    id: 'wren_pale_vault',
+    name: 'WREN',
+    title: 'Wayfarer',
+    party: [
+      { species_id: 9, level: 39 }, // Glimscout — Light (Glimflit, kindled)
+      { species_id: 95, level: 39 }, // Glacewing — Storm/Frost (a North catch)
+      { species_id: 28, level: 41 }, // Brinewrath — Tide (Brinelet's apex, the ace)
+    ],
+    intro_ref: 'trainer.wren_pale_vault.intro',
+    defeat_ref: 'trainer.wren_pale_vault.defeat',
+    payout: 984, // rival 24 × ace 41
+    music: 'battle-veil',
+    ai: 'smart',
+  },
+
+  // The undercroft's two frost-ward SIGHT keepers (the Lamp-Line's posts,
+  // keeper class, 37–39 — the on-ramp to Ysolde's 40).
+  undercroft_ward_a: {
+    id: 'undercroft_ward_a',
+    name: 'SELA',
+    title: 'Frost-ward',
+    party: [
+      { species_id: 72, level: 37 }, // Glaceling — Frost
+      { species_id: 84, level: 38 }, // Hushbore — Frost (ace)
+    ],
+    intro_ref: 'trainer.undercroft_ward_a.intro',
+    defeat_ref: 'trainer.undercroft_ward_a.defeat',
+    payout: 760, // keeper 20 × ace 38
+    music: 'battle-emberfall',
+  },
+  undercroft_ward_b: {
+    id: 'undercroft_ward_b',
+    name: 'ORRIN',
+    title: 'Frost-ward',
+    party: [
+      { species_id: 81, level: 38 }, // Blizzrhare — Frost
+      { species_id: 84, level: 39 }, // Hushbore — Frost (ace)
+    ],
+    intro_ref: 'trainer.undercroft_ward_b.intro',
+    defeat_ref: 'trainer.undercroft_ward_b.defeat',
+    payout: 780, // keeper 20 × ace 39
+    music: 'battle-emberfall',
+  },
+
+  // Sixth Lumenary: Ysolde Frost, Lampwarden of Pale Vault Glacier (Frost) —
+  // the serene glaciologist; a patient chill-keyed team met at ~38–39. Win
+  // relights the Frost constellation AND grants Emberward; with gleam:storm
+  // already held the ENGINE derives flag:crown_north (never hand-set).
+  ysolde_frost: {
+    id: 'ysolde_frost',
+    name: 'YSOLDE FROST',
+    title: 'Lampwarden',
+    party: [
+      { species_id: 72, level: 36 }, // Glaceling — Frost
+      { species_id: 81, level: 37 }, // Blizzrhare — Frost
+      { species_id: 84, level: 38 }, // Hushbore — Frost
+      { species_id: 95, level: 38 }, // Glacewing — Storm/Frost
+      { species_id: 87, level: 40 }, // Prismantus — Light/Frost (ace — the light that holds)
+    ],
+    intro_ref: 'trainer.ysolde_frost.intro',
+    defeat_ref: 'trainer.ysolde_frost.defeat',
+    reward_flags: ['gleam:frost'],
+    reward_abilities: ['emberward'],
+    payout: 2400, // Lampwarden 60 × ace 40
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
 };
 
 /** Intro/defeat dialogue for trainers, kept beside the roster they belong to. */
@@ -416,6 +618,86 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   ],
   'trainer.gallery_miner_b.defeat': [
     { speaker: 'HOBB', text: 'Well held. Lift the vigil-lamp gentle, now — it has waited a long dark for a steady hand.' },
+  ],
+
+  // --- The North. Defeat lines are the sanctioned humour home in Galehigh /
+  // Windward (good-loser energy, never mockery); the Pale Vault cluster stays
+  // sincere throughout, and Wren's A4 lines stay unresolved by design.
+  'trainer.galehigh_kitehand.intro': [
+    { speaker: 'PERRIN', text: 'The wind\'s representative requests a bout! It would ask itself, but it\'s busy with the kites.' },
+  ],
+  'trainer.galehigh_kitehand.defeat': [
+    { speaker: 'PERRIN', text: 'Down I come. The wind keeps no favourites — it just enjoys the view.' },
+  ],
+  'trainer.galehigh_terracer.intro': [
+    { speaker: 'SORREL', text: 'Thirty years I\'ve farmed sideways on this cliff. A bout holds no fears for me whatsoever.' },
+  ],
+  'trainer.galehigh_terracer.defeat': [
+    { speaker: 'SORREL', text: 'Well grown, that bond of yours. Better soil than mine, clearly. It would have to be.' },
+  ],
+  'trainer.skyloft_ward_a.intro': [
+    { speaker: 'TAMSIN', text: 'The ledge admits no flame the wind hasn\'t weighed — and up here, the wind weighs HONESTLY.' },
+  ],
+  'trainer.skyloft_ward_a.defeat': [
+    { speaker: 'TAMSIN', text: 'Well flown! And I\'d trained that gust personally. It clearly liked you better.' },
+  ],
+  'trainer.skyloft_ward_b.intro': [
+    { speaker: 'BRAN', text: 'Last ward before the launch ledge. Let\'s hear the wind say yes to you.' },
+  ],
+  'trainer.skyloft_ward_b.defeat': [
+    { speaker: 'BRAN', text: 'It said yes. The ledge is yours to stand, Wayfarer.' },
+  ],
+  'trainer.mira_vael.intro': [
+    { speaker: 'MIRA VAEL', text: 'Five hundred feet of open air under the ledge and a storm overhead that LIKES you. There is no better arena in Vesperholm — let\'s give the wind a show!' },
+    { speaker: 'MIRA VAEL', text: 'My kin ride the gusts the way your kite did. Match them in the air, Wayfarer — the Storm Gleam watches!' },
+  ],
+  'trainer.mira_vael.defeat': [
+    { speaker: 'MIRA VAEL', text: 'HA! Did you feel the wind change sides halfway through? It does that for the ones it means to keep.' },
+    { speaker: 'MIRA VAEL', text: 'The Storm Gleam is yours, Wayfarer — and the wind with it. Come to the ledge; the sky wants relighting.' },
+  ],
+  'trainer.windward_craghand.intro': [
+    { speaker: 'EDDA', text: 'Stair custom at every bend — the climb tests your legs, the crag-hands test the rest.' },
+  ],
+  'trainer.windward_craghand.defeat': [
+    { speaker: 'EDDA', text: 'Four hundred and twelve steps a day, and the lesson walks UP to me. Well fought.' },
+  ],
+  'trainer.windward_galewatch.intro': [
+    { speaker: 'ROWAN', text: 'The gale-watch greets every flame that climbs this far. The greeting is a bout. It keeps us both warm.' },
+  ],
+  'trainer.windward_galewatch.defeat': [
+    { speaker: 'ROWAN', text: 'Warm enough! The high blue suits you better than it suits most.' },
+  ],
+  'trainer.windward_cragwatch.intro': [
+    { speaker: 'MERLE', text: 'The glacier ahead doesn\'t practise mercy, Wayfarer. Consider this your last rehearsal.' },
+  ],
+  'trainer.windward_cragwatch.defeat': [
+    { speaker: 'MERLE', text: 'Rehearsal passed. The cold will find you ready, and it will be very disappointed about it.' },
+  ],
+  'trainer.wren_pale_vault.intro': [
+    { speaker: 'WREN', text: 'No friendly rules this time. Everything you have — make me FEEL it.' },
+  ],
+  'trainer.wren_pale_vault.defeat': [
+    { speaker: 'WREN', text: '...Yeah. Okay. ...Yeah.' },
+  ],
+  'trainer.undercroft_ward_a.intro': [
+    { speaker: 'SELA', text: 'The vault admits no flame the wards haven\'t weighed. The brackets deserve that much care.' },
+  ],
+  'trainer.undercroft_ward_a.defeat': [
+    { speaker: 'SELA', text: 'Weighed, and worthy of the line. Walk on, lamplighter.' },
+  ],
+  'trainer.undercroft_ward_b.intro': [
+    { speaker: 'ORRIN', text: 'I send Ysolde nothing the cold could blow out on the way. Show me yours holds.' },
+  ],
+  'trainer.undercroft_ward_b.defeat': [
+    { speaker: 'ORRIN', text: 'It holds. Finish the line — the vault has waited years to be bright.' },
+  ],
+  'trainer.ysolde_frost.intro': [
+    { speaker: 'YSOLDE FROST', text: 'Cold does not hate the flame, wanderer. It only waits to see if the flame means it.' },
+    { speaker: 'YSOLDE FROST', text: 'Seven brackets say yours does. Now warm your kin — and let me see the light hold.' },
+  ],
+  'trainer.ysolde_frost.defeat': [
+    { speaker: 'YSOLDE FROST', text: '...It held. Through everything my vault could ask of it, it held.' },
+    { speaker: 'YSOLDE FROST', text: 'The Frost Gleam is yours, wanderer — and the northern crown closes with it. Stand still a moment. This is worth standing still for.' },
   ],
 };
 

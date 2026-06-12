@@ -52,7 +52,7 @@ Prices live on `ItemDef.price` (`content/items.ts`); one price everywhere.
 |---|---|---:|---|
 | Tallow Balm | heal 20 | 120w | Tinderwick |
 | Warm Balm | heal 60 | 500w | Pearlmoor |
-| Bright Balm | full heal | 1,200w | Pale Vault |
+| Bright Balm | full heal | 1,200w | Galehigh, once `gleam:storm` is held (Pale Vault keeps no counter) |
 | Glow Charge | one throw, catch ×1.5 | 200w | Tinderwick |
 | Beacon Charge | one throw, catch ×2.5 | 600w | everywhere, once `gleam:ember` is held (flag-gated stock) |
 | Star-charts | teach a move | 800–4,000w by tier (§6) | everywhere |
@@ -110,10 +110,10 @@ the region's element pair + one Plain utility. Planned counters:
 |---|---|
 | Tinderwick General *(built)* | Tallow Balm, Glow Charge (+ Beacon Charge once `gleam:ember`), charts: Cinder Spit, Mist Spray |
 | Pearlmoor Chandlery *(built)* | Warm Balm, Glow + Beacon Charges, charts: Wave Crash, Hearth Pulse, Gust Up, Focus Mind |
-| Lowleaf provisioner | charts: Spore Puff, Root Strike, Lifedrain |
-| Cinderhead pit-stores | charts: Rock Hurl, Crystal Beam, Guard Up |
-| Galehigh kite-stall | charts: Thunder Kick, Volt Arc, Swift Step |
-| Pale Vault warm-house | Bright Balm; charts: Ice Fang, Glacier Beam, Veil Up |
+| Lowleaf provisioner *(built)* | charts: Spore Puff, Root Strike, Lifedrain |
+| Cinderhead pit-stores *(built)* | charts: Focus Mind, Gust Up (no Stone chart minted yet) |
+| Galehigh kite-stall *(built)* | Bright Balm (once `gleam:storm`), charts: Thunder Kick, Volt Arc, Gale Slam, Swift Step — **the whole cold leg's counter: Pale Vault deliberately keeps no shop** (resupply rides the Windward drop-shortcut); the find-first Tempest nuke chart is Thunderroost's prize |
+| ~~Pale Vault warm-house~~ | — (no counter; see Galehigh row) |
 | Solarium dig-counter | charts: Solar Lash, Daybeam, Bask |
 | Nightreach last-counter | charts: Lunar Claw, Moonbeam, Radiant Strike, Hone |
 

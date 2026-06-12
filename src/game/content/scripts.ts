@@ -1059,6 +1059,607 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'HOBB', text: "Finished proper. Carry it up gentle, Wayfarer — a flame that crossed the dark deserves a steady hand." },
     { op: 'setFlag', flag: 'flag:gallery_miner_b_beaten' },
   ],
+
+  // ===========================================================================
+  // THE NORTH (walkthrough/03-north) — Galehigh Terraces (Lumenary 5: Mira
+  // Vael, Storm + the Kite-rising), Windward Stair I→II, Pale Vault Glacier
+  // (Lumenary 6: Ysolde Frost + the Aurora-watch), and the B3/C3/A4 cluster —
+  // the character-drama peak of the midgame. Staging per cinematics.md:
+  // portraits + silence over spectacle.
+  // ===========================================================================
+
+  // --- Galehigh: the Kite-Rising Winch (spine §5 shape #5) -------------------
+  // Mira's hook, shouted down from the launch ledge as the player first crosses
+  // the festival terrace (trigger band sets flag:q_north_kite).
+  'script.mira_quest': [
+    { op: 'narrate', text: 'High above the festival terrace, kite-strings climb all the way to a launch ledge in the last of the sunset — and something up there is FLYING, looping the updrafts like it was hatched in them.' },
+    { op: 'say', speaker: 'MIRA VAEL', portrait: 'mira', expr: 'bright', text: 'HOY! Down there — the new lamp out of the mine! Yes, YOU, with the four Gleams and the indoor shoulders!' },
+    { op: 'say', speaker: 'MIRA VAEL', portrait: 'mira', expr: 'bright', text: 'You want the Storm Gleam? Then FLY! Nobody meets the wind from the ground — that is not me being poetic, that is a RULE.' },
+    { op: 'say', speaker: 'MIRA VAEL', portrait: 'mira', expr: 'soft', text: 'Raise a kite with the town — the kite-maker on the lower terrace will see you right — and fly it at the Rising. Do that, and the winch will bring you up to me and the wind both.' },
+    { op: 'narrate', text: 'She peels away into a gust, whooping. Far below, the festival cheers her without looking up — they know the sound by heart.' },
+  ],
+
+  // The kite-maker's three storm-scattered pieces — chained caches on the lower
+  // terraces (each pick reveals the next; the flags drive the map's chain).
+  'script.pickup_kite_a': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'kite_spar', count: 1 },
+    { op: 'say', text: 'Wedged in the wind-break hedge, whole and sound: a wind-tempered KITE SPAR! The sail can\'t have blown much further.' },
+    { op: 'setFlag', flag: 'flag:picked_kite_a' },
+  ],
+  'script.pickup_kite_b': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'kite_sail', count: 1 },
+    { op: 'say', text: 'Snagged on a terrace post, tugging to be off again: the lantern-orange KITE SAIL! Now — where would a tail land...' },
+    { op: 'setFlag', flag: 'flag:picked_kite_b' },
+  ],
+  'script.pickup_kite_c': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'kite_tail', count: 1 },
+    { op: 'say', text: 'Coiled neat as a sleeping cat in the dry grass: the KITE TAIL, every little wick-lamp unbroken. Spar, sail and tail — back to the kite-maker!' },
+    { op: 'setFlag', flag: 'flag:picked_kite_c' },
+  ],
+
+  // The kite-maker builds the town's kite back out of your three finds.
+  'script.kite_built': [
+    { op: 'say', speaker: 'KITE-MAKER', text: 'The spar! The sail! The — oh, the TAIL, with the lamps still in it! You walked half the terraces for a stranger\'s kite.' },
+    { op: 'narrate', text: 'She works without another word — spar sleeved into sail, tail bent on, every knot tested twice against her wrist. It takes her minutes. It would have taken you a season.' },
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'say', speaker: 'KITE-MAKER', text: 'There. My best kite, twice-built — once by me, once by you. That makes it the TOWN\'S kite now; that\'s how the custom works.' },
+    { op: 'say', speaker: 'KITE-MAKER', text: 'Take it to the winch-keeper on the festival terrace and fly it at the Rising. And mind the tail-lamps — the stars are watching for them.' },
+    { op: 'setFlag', flag: 'flag:q_north_kite_ready' },
+  ],
+
+  // Arc E — the Kite-rising itself: warm, communal, a little daft. The crest is
+  // sincere (humour lives in the build-up, never the crest).
+  'script.galehigh_kite_rising': [
+    { op: 'say', speaker: 'WINCH-KEEPER', text: 'A town-built kite and a wind from the south-east — Wayfarer, your timing is a festival in itself. PLACES, everyone! The Rising rises!' },
+    { op: 'letterbox', on: true, ms: 320 },
+    { op: 'musicCrossfade', key: 'galehigh-terraces-b', ms: 900 },
+    { op: 'narrate', text: 'The whole terrace pays out string at once. Kites stagger up into the gusts — patched ones, proud ones, one shaped alarmingly like the winch-keeper — every tail strung with tiny lit wick-lamps.' },
+    { op: 'say', speaker: 'FESTIVAL KID', text: 'Yours next! Don\'t let it dip past the third gust, the third gust is a BITER—' },
+    { op: 'narrate', text: 'You let the wind take the town\'s kite. It dips past the third gust — which bites — staggers, steadies... and CLIMBS, lamp-tail writing a wobbly line of light all the way up the dark.' },
+    { op: 'tint', color: '#ff8a3d', alpha: 0.22, ms: 800 },
+    { op: 'silence', ms: 900 },
+    { op: 'narrate', text: 'And for one held breath the whole hill goes quiet, necks craned, a hundred small flames swaying overhead — so the stars have something to climb back up. Daft, maybe. But the night is a little less long for it.' },
+    { op: 'tint', color: '#ff8a3d', alpha: 0, ms: 900 },
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'say', speaker: 'WINCH-KEEPER', text: 'FLOWN AND BLESSED! Wayfarer — Mira watched every yard of that. The drum turns for you now. Up you go, and wave back on the way!' },
+    { op: 'musicCrossfade', key: 'galehigh-terraces-a', ms: 900 },
+    { op: 'letterbox', on: false, ms: 320 },
+    { op: 'setFlag', flag: 'flag:q_north_kite_blessed' },
+  ],
+
+  // Galehigh's sight trainers (route class) + the skyloft's wind-wards (keeper).
+  'script.galehigh_kitehand': [
+    { op: 'say', speaker: 'PERRIN', text: 'Hold the lane, Wayfarer! Festival rule — every lamp that crosses the terraces gets weighed against the wind. I AM the wind\'s representative.' },
+    { op: 'battle', trainer: 'galehigh_kitehand' },
+    { op: 'say', speaker: 'PERRIN', text: 'Weighed, and the wind approves. The kite-maker\'s stall is down the steps — tell her Perrin still owes her a spar.' },
+    { op: 'setFlag', flag: 'flag:galehigh_kitehand_beaten' },
+  ],
+  'script.galehigh_terracer': [
+    { op: 'say', speaker: 'SORREL', text: 'Off my beds, off my beds — round the LANE, like a— oh, you\'re a Wayfarer. Well then. Terrace custom: the crops watch a bout before you pass.' },
+    { op: 'battle', trainer: 'galehigh_terracer' },
+    { op: 'say', speaker: 'SORREL', text: 'Beaten on my own terrace. The cabbages saw everything. We shall never speak of it.' },
+    { op: 'setFlag', flag: 'flag:galehigh_terracer_beaten' },
+  ],
+  'script.skyloft_ward_a': [
+    { op: 'say', speaker: 'TAMSIN', text: 'A rider off the winch! Then the town blessed your kite — but the LEDGE answers to the wind-wards. Show us your flame stands up here, where the gusts mean it.' },
+    { op: 'battle', trainer: 'skyloft_ward_a' },
+    { op: 'say', speaker: 'TAMSIN', text: 'Well flown. And I\'d trained that gust personally. Go on — Bran holds the last stretch.' },
+    { op: 'setFlag', flag: 'flag:skyloft_ward_a_beaten' },
+  ],
+  'script.skyloft_ward_b': [
+    { op: 'say', speaker: 'BRAN', text: 'Last ward before the launch ledge. Mira asks one thing of everyone who stands there: that the wind has already said yes. Let\'s hear it say so.' },
+    { op: 'battle', trainer: 'skyloft_ward_b' },
+    { op: 'say', speaker: 'BRAN', text: 'It said yes. Loudly. The ledge is ahead, Wayfarer — she\'ll be the one mid-air.' },
+    { op: 'setFlag', flag: 'flag:skyloft_ward_b_beaten' },
+  ],
+
+  // Lumenary 5 — Mira Vael at the launch ledge. Win → gleam:storm + Updraft
+  // Kite (TRAINERS['mira_vael'] carries the grants). The ceremony is the
+  // BINDING Gleam cadence: silence → warm tint → lamp sfx → gleam → swell.
+  'script.lumenary_galehigh': [
+    { op: 'face', actor: 'player', facing: 'up' },
+    { op: 'face', actor: 'mira_vael', facing: 'down' },
+    { op: 'say', speaker: 'MIRA VAEL', portrait: 'mira', expr: 'bright', text: 'There you are! I watched your kite take the third gust and KEEP CLIMBING. The wind talked about it all the way up the winch — it does go on, the wind.' },
+    { op: 'say', speaker: 'MIRA VAEL', portrait: 'mira', expr: 'soft', text: 'You don\'t fight the wind, apprentice. You ask it to lift you — and you thank it when it does. Same as a kin. Same as a town.' },
+    { op: 'say', speaker: 'MIRA VAEL', portrait: 'mira', expr: 'bright', text: 'So! Last asking, and the sky\'s watching: show me a bond the storm itself would carry!' },
+    { op: 'battle', trainer: 'mira_vael' },
+    { op: 'musicFade', ms: 500 },
+    { op: 'silence', ms: 1000 },
+    { op: 'tint', color: '#ffd089', alpha: 0.38, ms: 700 },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'narrate', text: 'Mira raises her lamp off the launch ledge, and every kite-tail over Galehigh lifts its little flames with it — a hill of held light, offered up. And overhead, the STORM takes it.' },
+    { op: 'gleam', element: 'storm' },
+    { op: 'musicCrossfade', key: 'gleam-emotional', ms: 900 },
+    { op: 'tint', color: '#ffd089', alpha: 0, ms: 900 },
+    { op: 'say', speaker: 'MIRA VAEL', portrait: 'mira', expr: 'bright', text: 'The Storm Gleam stands! Five relit — listen to the town! That cheer is YOURS, and so is this:' },
+    { op: 'say', speaker: 'MIRA VAEL', portrait: 'mira', expr: 'soft', text: 'The Updraft Kite. A storm-kin\'s gift: warm thermals to lift you up the high ledges, and a long glide where the ground runs out. The wind says yes to you now. It told me.' },
+    { op: 'say', speaker: 'MIRA VAEL', portrait: 'mira', expr: 'bright', text: 'And the first taste is the best one — step off the ledge, Wayfarer. GLIDE down to your festival. I\'ll race you!' },
+  ],
+
+  // Rest, kit and counter (the standing per-region kit).
+  'script.galehigh_inn_rest': [
+    { op: 'say', speaker: 'INNKEEP', text: 'In out of the gusts, Wayfarer. The fire\'s banked high and the shutters only rattle in a friendly way.' },
+    { op: 'fade', dir: 'out' },
+    { op: 'wait', ms: 700 },
+    { op: 'heal' },
+    { op: 'fade', dir: 'in' },
+    { op: 'say', speaker: 'INNKEEP', text: 'There. Kin bright-eyed and boots warm. The mountain will still be there in the morning — it\'s very reliable that way.' },
+  ],
+  'script.shop_kit_galehigh': [
+    { op: 'say', speaker: 'KITE-KEEPER', text: 'In off the mine road! Then the climb-kit\'s yours — terrace custom, and no arguing with custom at festival.' },
+    { op: 'giveItem', item: 'glow_charge', count: 2 },
+    { op: 'giveItem', item: 'warm_balm', count: 2 },
+    { op: 'say', speaker: 'KITE-KEEPER', text: 'Two charges and two warm balms. The Stair above us is long and the glacier past it is longer — and Pale Vault keeps no counter, so stock HERE or go without.' },
+    { op: 'setFlag', flag: 'flag:galehigh_kit' },
+  ],
+  'script.shop_galehigh': [
+    { op: 'dialogue', ref: 'npc.galehigh_shopkeeper' },
+    { op: 'shop', shop: 'galehigh' },
+  ],
+
+  // Galehigh caches (the standing variety: wicks, a valuable, the Updraft-gated
+  // hidden find, the skyloft drop-box, and N1's ledge-herb).
+  'script.pickup_galehigh_wicks': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 200 },
+    { op: 'say', text: "A festival takings-tin, lidded against the gusts. Found 200 WICKS!" },
+    { op: 'setFlag', flag: 'flag:picked_galehigh_wicks' },
+  ],
+  'script.pickup_galehigh_amber': [
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'giveItem', item: 'moth_amber', count: 1 },
+    { op: 'say', text: 'Tucked under a terrace stone where the wind can\'t pry: a MOTH-AMBER, warm with old light!' },
+    { op: 'setFlag', flag: 'flag:picked_galehigh_amber' },
+  ],
+  'script.pickup_galehigh_high': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'bright_balm', count: 1 },
+    { op: 'say', text: 'Only the thermals reach this ledge — and whoever left a BRIGHT BALM up here for the next flier. Found it!' },
+    { op: 'setFlag', flag: 'flag:picked_galehigh_high' },
+  ],
+  'script.pickup_skyloft_charge': [
+    { op: 'giveItem', item: 'beacon_charge', count: 1 },
+    { op: 'say', text: 'A wind-ward\'s drop-box, lashed to the railing. Found a BEACON CHARGE!' },
+    { op: 'setFlag', flag: 'flag:picked_skyloft_charge' },
+  ],
+  'script.pickup_ledge_herb': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'ledge_herb', count: 1 },
+    { op: 'say', text: 'Growing wind-burnt and stubborn in the highest crack of the terrace: the LEDGE-HERB! Sharp and warm to the nose — the crag-tender on the Stair swears by it.' },
+    { op: 'setFlag', flag: 'flag:picked_ledge_herb' },
+  ],
+
+  // N3 "Wren's Ribbon" — Mira, quietly, after the wobble (requires met_cor).
+  'script.ribbon_quest': [
+    { op: 'say', speaker: 'MIRA VAEL', portrait: 'mira', expr: 'soft', text: 'Wayfarer. No shouting today — come here a moment.' },
+    { op: 'say', speaker: 'MIRA VAEL', portrait: 'mira', expr: 'soft', text: 'Found this on the festival terrace after the Rising. It\'s Wren\'s — off their kite. They flew with us all evening and laughed in all the right places, and then I heard what the ice road did to them, up your way.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'wren_ribbon', count: 1 },
+    { op: 'say', text: 'She presses a kite-ribbon into your hand, festival-smoke still in the weave. Received WREN\'S RIBBON!' },
+    { op: 'say', speaker: 'MIRA VAEL', portrait: 'mira', expr: 'neutral', text: 'There\'s a quiet ledge on the second stair — west side, behind the crag. Wren sat there an hour on the way up, flying nothing. Leave it there for them.' },
+    { op: 'say', speaker: 'MIRA VAEL', portrait: 'mira', expr: 'soft', text: 'Don\'t write anything. Don\'t wait. Some things you just leave where a friend will pass — the wind minds the rest.' },
+    { op: 'setFlag', flag: 'flag:q_north_ribbon' },
+  ],
+
+  // R4 — the Waykeeper's Round, leg 4: the commissioned kite, kite-maker →
+  // waystone kid. (The giver sets q_round_kite_taken; delivery sets q_round_kite.)
+  'script.round_kite': [
+    { op: 'say', speaker: 'KITE-MAKER', text: 'Ah — the kite-finder! Then you\'re the hands I\'ve been waiting on. The Waykeeper at the Crossroads commissioned this in the spring: one kite, sturdy, for the waystone kid.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'round_kite', count: 1 },
+    { op: 'say', text: 'A small kite in Lanternway colours, wrapped against the road. Received the WAYSTONE KITE!' },
+    { op: 'say', speaker: 'KITE-MAKER', text: 'Built to survive an owner of eight, which is the hardest weather there is. Down the spoke to the Crossroads with it — and tell the kid: the string hand is everything. The kite already knows the rest.' },
+    { op: 'setFlag', flag: 'flag:q_round_kite_taken' },
+  ],
+  'script.round_kite_deliver': [
+    { op: 'say', speaker: 'WAYSTONE KID', text: 'Is that— it IS. It\'s MINE. The Waykeeper said it was coming with the next good Wayfarer and that I would know them by the walk and I DO—' },
+    { op: 'narrate', text: 'The kid takes the kite the way some folk take a lamp at their naming. The Waykeeper, watching from the waystone, counts out your carriage-fee with great ceremony.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 300 },
+    { op: 'giveItem', item: 'warm_balm', count: 2 },
+    { op: 'say', text: 'Received 300 WICKS and 2 WARM BALMS — "Round rates, plus the weather."' },
+    { op: 'say', speaker: 'WAYSTONE KID', text: 'The string hand is everything. I KNOW. Watch. ...Well, watch TOMORROW, when the wind\'s back. But then — watch!' },
+    { op: 'setFlag', flag: 'flag:q_round_kite' },
+  ],
+
+  // --- Windward Stair: the climb, the kettle, the crags ----------------------
+  'script.windward_craghand': [
+    { op: 'say', speaker: 'EDDA', text: 'Hold at the bend, Wayfarer! Stair custom — the climb tests your legs, and the crag-hands test the rest.' },
+    { op: 'battle', trainer: 'windward_craghand' },
+    { op: 'say', speaker: 'EDDA', text: 'Four hundred and twelve steps I climb a day, and today the lesson walked UP to me. Well fought — the wind-gap\'s above, and it is exactly as rude as it sounds.' },
+    { op: 'setFlag', flag: 'flag:windward_craghand_beaten' },
+  ],
+  'script.windward_galewatch': [
+    { op: 'say', speaker: 'ROWAN', text: 'A lamp on the high leg! Good. The gale-watch greets every flame that climbs this far — and the greeting is a bout. Keeps us both warm.' },
+    { op: 'battle', trainer: 'windward_galewatch' },
+    { op: 'say', speaker: 'ROWAN', text: 'Warm enough. Mind the crag-tender\'s camp on the upper switchback — her kettle has saved more climbers than the rope has.' },
+    { op: 'setFlag', flag: 'flag:windward_galewatch_beaten' },
+  ],
+  'script.windward_cragwatch': [
+    { op: 'say', speaker: 'MERLE', text: 'Off the wind-gap with your boots still on — then you\'re worth a crag-watch\'s while. One bout, Wayfarer; the glacier ahead doesn\'t practise mercy and neither should you.' },
+    { op: 'battle', trainer: 'windward_cragwatch' },
+    { op: 'say', speaker: 'MERLE', text: 'That\'ll do. Pale Vault\'s down the far slope — walk in QUIET, mind. The whole town keeps a watch, and it isn\'t the kind with shouting.' },
+    { op: 'setFlag', flag: 'flag:windward_cragwatch_beaten' },
+  ],
+
+  // N1 "The Crag-tender's Kettle" — the giver camps on the upper switchbacks.
+  'script.kettle_quest': [
+    { op: 'say', speaker: 'CRAG-TENDER', text: 'Sit a moment, child — everyone sits at this bend, it\'s where the legs find out what they\'ve agreed to. The kettle\'s on. The kettle is ALWAYS on.' },
+    { op: 'say', speaker: 'CRAG-TENDER', text: 'Though it\'s a thin brew tonight, I\'ll own it. The proper one wants LEDGE-HERB — wind-burnt, sharp, grows in the high cracks of Galehigh\'s top terraces. My ledge days are forty years behind me.' },
+    { op: 'say', speaker: 'CRAG-TENDER', text: 'But a Wayfarer with the Storm\'s own gift could ride the thermals up and pick a sprig before their tea cooled. If you ever do... my kettle would remember it.' },
+    { op: 'setFlag', flag: 'flag:q_north_kettle' },
+  ],
+  'script.kettle_done': [
+    { op: 'say', speaker: 'CRAG-TENDER', text: 'Ledge-herb! Look at it — burnt on the windward side, exactly right. You RODE for this.' },
+    { op: 'narrate', text: 'She brews it slow, the way things are done at this height: melt-water, three pinches, patience. The steam off the kettle smells like a kinder season.' },
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'giveItem', item: 'warm_flask', count: 1 },
+    { op: 'say', text: 'She fills her own felt-wrapped flask and folds your hands around it. Received the WARM FLASK!' },
+    { op: 'say', speaker: 'CRAG-TENDER', text: 'For the glacier, child. When the chill gets into your kin past what a fire mends — that\'s the brew, and that\'s the flask, and now they\'re yours.' },
+    { op: 'setFlag', flag: 'flag:q_north_kettle' },
+    { op: 'setFlag', flag: 'flag:q_north_kettle_done' },
+  ],
+
+  // The crags band — flag:shortcut_windward is set by the trigger; this is the
+  // "now accessible" callout that sells the drop home (spine §0 rule 3).
+  'script.windward_crags': [
+    { op: 'narrate', text: 'The stair tops out onto the high crags — bare, bright, the warm colours all spent somewhere below. Snow lies in the lee of every stone.' },
+    { op: 'narrate', text: 'And off the south-west shelf, far down through clean air, Galehigh\'s terraces glow like banked coals. A glide-ledge drops straight toward them — the long climb home, repaid in one held breath.' },
+    { op: 'say', text: 'The Windward shortcut stands open: a one-glide drop from the crags back to Galehigh\'s fires.' },
+  ],
+
+  // N3's payoff — wordless by design: ONE narration line, nothing else.
+  'script.place_ribbon': [
+    { op: 'narrate', text: 'You tuck Wren\'s ribbon under a stone at the quiet ledge\'s lip, where a friend who sat here once would see it — and the wind, for a wonder, lets it lie.' },
+  ],
+
+  // N2 viewpoint one — the Windward crag vista (the sketcher's first asking).
+  'script.sketch_crag': [
+    { op: 'narrate', text: 'The sketcher\'s first viewpoint. You stand at the crag\'s lip and look, properly, the way she asked: the whole North laid out under the aurora — the Stair falling away, Galehigh\'s small warm fires, the glacier ahead like a held wave.' },
+    { op: 'silence', ms: 900 },
+    { op: 'narrate', text: 'You stay until the cold finds your collar, fixing it all somewhere a sketch can be made from. One of three.' },
+  ],
+
+  // Windward caches (stair I: balm / wicks / valuable; stair II: amber + kit).
+  'script.pickup_windward_balm': [
+    { op: 'giveItem', item: 'warm_balm', count: 1 },
+    { op: 'say', text: 'A climber\'s cache in the lee of the cairn, wax seal sound. Found a WARM BALM!' },
+    { op: 'setFlag', flag: 'flag:picked_windward_balm' },
+  ],
+  'script.pickup_windward_wicks': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 250 },
+    { op: 'say', text: "A courier's purse, dropped on the switchback and wedged two bends down. Found 250 WICKS!" },
+    { op: 'setFlag', flag: 'flag:picked_windward_wicks' },
+  ],
+  'script.pickup_windward_shard': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'starglass_shard', count: 1 },
+    { op: 'say', text: 'Glinting in the scree where no lamp should reach: a STARGLASS SHARD, fallen from a sky this stair climbs toward!' },
+    { op: 'setFlag', flag: 'flag:picked_windward_shard' },
+  ],
+  'script.pickup_windward_amber': [
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'giveItem', item: 'moth_amber', count: 1 },
+    { op: 'say', text: 'In a crack of the crag, out of the weather: a MOTH-AMBER, its caught shimmer still turning. Found it!' },
+    { op: 'setFlag', flag: 'flag:picked_windward_amber' },
+  ],
+  'script.pickup_windward_kit': [
+    { op: 'giveItem', item: 'warm_balm', count: 1 },
+    { op: 'giveItem', item: 'glow_charge', count: 1 },
+    { op: 'say', text: 'A crag-watch relief cache — a balm and a charge for whoever the mountain is hardest on today. Took them!' },
+    { op: 'setFlag', flag: 'flag:picked_windward_kit' },
+  ],
+
+  // Wind-Eye + Thunderroost — the Updraft spurs pay (10-economy cache variety).
+  'script.pickup_windeye_charge': [
+    { op: 'giveItem', item: 'beacon_charge', count: 2 },
+    { op: 'say', text: 'A flier\'s offering-box in the alcove, dry as the day it was lashed shut. Found 2 BEACON CHARGES — left, perhaps, for exactly the kin that nest in the Eye.' },
+    { op: 'setFlag', flag: 'flag:picked_windeye_charge' },
+  ],
+  'script.pickup_windeye_glass': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'starglass_shard', count: 1 },
+    { op: 'say', text: 'At the oculus\'s rim, where the wind sets down what it loves best: a STARGLASS SHARD, singing very faintly in the updraft!' },
+    { op: 'setFlag', flag: 'flag:picked_windeye_glass' },
+  ],
+  'script.pickup_roost_prize': [
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'giveItem', item: 'chart_tempest', count: 1 },
+    { op: 'say', text: 'Wedged behind the boulder choke, in a bone-dry chart-tube older than the dusk: a STAR-CHART: TEMPEST — pressed at the aerie itself, the only one of its figure!' },
+    { op: 'say', text: 'Above you, the storm-birds shift on the nest and permit it. Apparently.' },
+    { op: 'setFlag', flag: 'flag:picked_roost_prize' },
+  ],
+
+  // --- Pale Vault: the Lamp-Line (spine §5 shape #6) -------------------------
+  // Ysolde's hook at the undercroft door (sets flag:q_north_lampline).
+  'script.ysolde_quest': [
+    { op: 'say', speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'serene', text: 'You walked in off the crags. Good. The light should be free to all who seek it — no Gift, no gate, only the cold, and the cold is honest.' },
+    { op: 'say', speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'neutral', text: 'Look through the blue ice, there, beside the door. Seven brackets, descending. Dark a long time now. They are my vault\'s whole liturgy, and I have not had a flame worth walking them.' },
+    { op: 'say', speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'serene', text: 'Cold does not hate the flame, wanderer. It only waits to see if the flame means it. Walk my vault. Light the seven brackets, in order, none hurried — and let me see the light hold.' },
+    { op: 'say', speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'neutral', text: 'They burn aurora-oil, and only that. The tallow-keeper in the approach hollows renders it — though I hear her hearth went out in the storm, and an unlit hearth renders nothing. Begin there.' },
+    { op: 'setFlag', flag: 'flag:q_north_lampline' },
+  ],
+
+  'script.pickup_stormwood': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'stormwood', count: 1 },
+    { op: 'say', text: 'Storm-felled wood off the Windward heights, stacked by the wind itself and dry under the snow-crust. Took an armful of STORM-KINDLING!' },
+    { op: 'setFlag', flag: 'flag:picked_stormwood' },
+  ],
+
+  // The tallow-keeper's hearth relit + the oil rendered (her camp's doused→lit
+  // MapObject pair swaps on flag:q_north_aurora_oil).
+  'script.render_oil': [
+    { op: 'say', speaker: 'TALLOW-KEEPER', text: 'Storm-kindling! Dry to the heart — the mountain does love a Wayfarer. Give it here, and stand out of the smoke\'s way.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#ff8a3d', alpha: 0.24, ms: 600 },
+    { op: 'narrate', text: 'The hearth takes the wood like an apology accepted. Warmth crawls back into the stones, and the kettle, and — visibly, by degrees — the keeper.' },
+    { op: 'tint', color: '#ff8a3d', alpha: 0, ms: 700 },
+    { op: 'narrate', text: 'She renders the tallow slow and pale, tilting the pan toward the sky now and then — "so it remembers" — until the oil holds a faint moving light that is not the fire\'s.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'aurora_oil', count: 1 },
+    { op: 'say', text: 'Received the AURORA-OIL!' },
+    { op: 'giveMoney', amount: 200 },
+    { op: 'say', text: 'And the rendering-fee, pressed on you over your objections: 200 WICKS. "The vault pays its lamplighters. It always has."' },
+    { op: 'say', speaker: 'TALLOW-KEEPER', text: 'Seven brackets, child, and they light in ORDER — a line is a promise kept one lamp at a time. Ysolde will tell you the same, with longer pauses.' },
+    { op: 'setFlag', flag: 'flag:q_north_aurora_oil' },
+  ],
+
+  // B3 — CÒR APPEARS (the midgame's emotional spine; cinematics.md binding:
+  // letterbox, the aurora bed to near-silence, long portrait holds, the cool
+  // tint on the quieted vista, NO battle). The trigger sets flag:met_cor.
+  // He is courteous, sad, REASONABLE — grief dressed as mercy. The player
+  // should walk away half-agreeing, and hating that they do.
+  'script.cor_appears': [
+    { op: 'letterbox', on: true, ms: 420 },
+    { op: 'musicFade', ms: 800 },
+    { op: 'silence', ms: 1600 },
+    { op: 'narrate', text: 'The wind stops. On open ice that should mean nothing. It does not feel like nothing.' },
+    { op: 'narrate', text: 'A figure stands on the drained shelf below the lane — cowled, unhurried, hands folded. As if he has been waiting exactly as long as was polite.' },
+    { op: 'cameraFocus', actor: 'cor_figure', ms: 1000 },
+    { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'grave', text: 'Good evening, apprentice. Forgive the theatre of meeting you out here — I find towns flinch at me, and I have grown careful of other people\'s evenings.' },
+    { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'grave', text: 'I am Còr. The gentle ones you met in the grey wood — the lanterns built to hold nothing — they are mine. You have been undoing my work, kindly and well, for some weeks. I thought you were owed a face.' },
+    { op: 'narrate', text: 'He turns, and his hand moves over the valley below the shelf — grey moss, still ice, a quiet with no edges to it.' },
+    { op: 'tint', color: '#2a3550', alpha: 0.38, ms: 1000 },
+    { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'gentle', text: 'Look at it. Truly look, before anyone tells you what to see. No lamp gutters here. No wick burns down while somebody watches, helpless, pretending to mend nets. Nothing in this valley will ever be lost again — because nothing in it is still spending itself.' },
+    { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'gentle', text: 'You keep lamps. Then you already know the cruellest thing about them: a lamp asks to be WATCHED. Every light you have relit on your road, you have volunteered someone to grieve.' },
+    { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'sorrowful', text: 'I am not your enemy, apprentice. I am only tired of grief — and I think, if you are honest with the hour, so is everyone you have ever lit a lamp for.' },
+    { op: 'narrate', text: 'It would be easier if he were wrong in some plain, loud way. Standing here, with the valley so still — it is not loud, and it is not plain.' },
+    { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'sorrowful', text: 'Fenn will come — he always comes, after me, like the apology after the truth. Ask him whether the sky was worth what it cost him. He will say yes. Watch his face while he says it.' },
+    { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'gentle', text: 'No — I will not fight you. The Hollowing takes nothing from the unwilling, whatever the wardens tell their halls. Keep your Gleams. Light your seven brackets. I only leave you a question, since you are collecting things:' },
+    { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'grave', text: 'When the last light you love fails — and it will, that is what loving a light means — would you rather have watched it burn... or been spared the dark after? Take your time. I did.' },
+    { op: 'tint', color: '#2a3550', alpha: 0, ms: 1000 },
+    { op: 'narrate', text: 'He bows — courteous, unhurried — and walks into the dark between the ice-spires, and the dark does not trouble him at all.' },
+    { op: 'sfx', key: 'world-star-gutter' },
+    { op: 'narrate', text: 'The wind remembers itself. The aurora overhead seems thinner than it did, and you cannot decide whether it truly is.' },
+    { op: 'cameraReset', ms: 700 },
+    { op: 'musicCrossfade', key: 'pale-vault-glacier-a', ms: 1400 },
+    { op: 'letterbox', on: false, ms: 420 },
+  ],
+
+  // C3 — Fenn and the shared past. On Còr's heels: two faces and the quiet.
+  // No swell, no sting; the trigger sets flag:fenn_c3.
+  'script.fenn_shared_past': [
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'grave', text: 'Child. I came as fast as these legs agree to come, and still — he was already here. I can feel the quiet he leaves. Like a room where a clock has stopped.' },
+    { op: 'narrate', text: 'Fenn looks at the drained shelf for a long time. He does not ask what Còr said. He seems to know it by heart.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'grave', text: 'We read the same sky once, he and I. Two star-tenders, one ladder, forty years of cold mornings. I steadied the ladder. He named the stars as they came loose.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'grave', text: 'And then we lost the same thing, in the same season. I will not tell you what — it is half his grief, and I do not lend out what is half another man\'s.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'neutral', text: 'He chose to stop the cycle, so it could never hurt anyone again. I chose to keep lighting lamps, knowing every one of them will someday want lighting again. Two answers, child. One question. You have now heard it asked in his voice.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'grave', text: '...I still believe I was right. And I have never once stopped understanding him. Both of those are true, and carrying both is the whole weight of being his friend.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'So do not hate him — hating him misses the point of him entirely. OUT-REMEMBER him. Every lamp you relight is a thing he has made himself forget the feel of. It is the only argument I have ever seen him flinch at.' },
+    { op: 'narrate', text: 'He presses your shoulder once, and goes, slower than he came. The quiet stays a while after him.' },
+  ],
+
+  // A4 — WREN'S WOBBLE at the undercroft door: the hard rival battle, at the
+  // exact threshold of the light-holding trial. Opens on 'unsure'; afterward
+  // silence and an unresolved exit — Wren is NOT consoled (that is A5's work).
+  'script.wren_pale_vault': [
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'unsure', text: 'Oh. It\'s you. ...Of course it\'s you.' },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'unsure', text: 'I talked to him. Còr. Out on the ice, same as you, I\'d wager. Everyone says you don\'t talk to the Hollowing — nobody warns you that he\'s KIND. That\'s the unfair part.' },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'unsure', text: 'I keep doing the sums and they keep coming out his way. No more guttering. No more goodbyes. Every town he\'s quieted, nothing in it got HURT. Tell me what\'s wrong with that. Go on. Because I\'ve been standing at this door an hour and I can\'t find it.' },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'unsure', text: 'You\'re about to walk down there and prove a light can hold. And I\'m up here wondering if I even want it to.' },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'neutral', text: 'So show me. Properly. No friendly-battle rules, no two-levels-kinder — everything you have. Because if YOUR light can\'t make me feel it... then maybe there\'s nothing to feel.' },
+    { op: 'battle', trainer: 'wren_pale_vault' },
+    { op: 'silence', ms: 1600 },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'unsure', text: 'You fight like you\'ve got something the dark can\'t take. I don\'t know if I\'ve got that.' },
+    { op: 'narrate', text: 'Wren looks at the undercroft door for a long moment. Then away from it.' },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'unsure', text: '...I need to walk a while. Don\'t follow me. Please.' },
+    { op: 'narrate', text: 'They go — not toward town, not toward anywhere in particular. The wind takes their footprints almost as fast as they leave them.' },
+    { op: 'setFlag', flag: 'flag:wren_pale_vault_battled' },
+  ],
+
+  // The undercroft's two frost-ward sight keepers (dungeon keeper class).
+  'script.undercroft_ward_a': [
+    { op: 'say', speaker: 'SELA', text: 'Hold, lamplighter. The second gallery is mine to keep — and the vault admits no flame the wards haven\'t weighed. The brackets deserve that much care.' },
+    { op: 'battle', trainer: 'undercroft_ward_a' },
+    { op: 'say', speaker: 'SELA', text: 'Weighed and worthy. Walk on — and keep your order. The line knows when it\'s been skipped.' },
+    { op: 'setFlag', flag: 'flag:undercroft_ward_a_beaten' },
+  ],
+  'script.undercroft_ward_b': [
+    { op: 'say', speaker: 'ORRIN', text: 'The third gallery, and the last ward. Ysolde waits at the heart, and I send her nothing the cold could blow out on the way.' },
+    { op: 'battle', trainer: 'undercroft_ward_b' },
+    { op: 'say', speaker: 'ORRIN', text: 'Steady to the last. Finish the line, Wayfarer — the vault has waited years to be bright.' },
+    { op: 'setFlag', flag: 'flag:undercroft_ward_b_beaten' },
+  ],
+
+  // The seven brackets — lit in line, mounting quiet wonder. (Each trigger
+  // chains on the previous flag; the lit/dark bracket objects swap on them.)
+  'script.light_lamp_1': [
+    { op: 'narrate', text: 'The first bracket. You tip the aurora-oil into the old iron well and touch your vesperlamp to the wick.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#a8f0d0', alpha: 0.18, ms: 500 },
+    { op: 'narrate', text: 'It takes — pale and cool, a flame the colour of the sky outside. The aurora, come indoors. One.' },
+    { op: 'tint', color: '#a8f0d0', alpha: 0, ms: 600 },
+  ],
+  'script.light_lamp_2': [
+    { op: 'narrate', text: 'The second bracket takes the flame — and the ICE takes the light. It runs into the blue wall like water into a vein, glowing faintly a full arm-span deep.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#a8f0d0', alpha: 0.2, ms: 500 },
+    { op: 'narrate', text: 'Two. Behind you, the first lamp burns on. You had not realised you were checking.' },
+    { op: 'tint', color: '#a8f0d0', alpha: 0, ms: 600 },
+  ],
+  'script.light_lamp_3': [
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'narrate', text: 'Three. As the wick catches, the light finds something IN the wall: a lamplighter\'s mark, scratched beside the bracket by some cold-stiff hand, years and years of dark ago.' },
+    { op: 'narrate', text: 'Someone walked this line before you. The vault kept their soot. It has been waiting, the whole time, to be a lit place again.' },
+  ],
+  'script.light_lamp_4': [
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#a8f0d0', alpha: 0.22, ms: 600 },
+    { op: 'narrate', text: 'Four — past the halfway. You look back up the gallery and the line LOOKS BACK: four pale flames hung in blue ice, and your own shadow walking beside you like a second lamplighter.' },
+    { op: 'tint', color: '#a8f0d0', alpha: 0, ms: 700 },
+  ],
+  'script.light_lamp_5': [
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'narrate', text: 'Five. And the vault begins, very quietly, to HUM — the ice carrying some held note from bracket to bracket, the way a glass sings under a wet finger.' },
+    { op: 'narrate', text: 'It is not a cold sound. You would not have believed that, an hour ago.' },
+  ],
+  'script.light_lamp_6': [
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#a8f0d0', alpha: 0.24, ms: 700 },
+    { op: 'narrate', text: 'Six. Above the sixth bracket the ice ceiling thins, and through it — blurred, green, moving — the aurora itself, bending along its slow road. The flame below it leans the same way.' },
+    { op: 'narrate', text: 'Sky above, sky within. One bracket left.' },
+    { op: 'tint', color: '#a8f0d0', alpha: 0, ms: 700 },
+  ],
+  'script.light_lamp_7': [
+    { op: 'letterbox', on: true, ms: 320 },
+    { op: 'silence', ms: 1300 },
+    { op: 'narrate', text: 'The seventh bracket. You pour the last of the aurora-oil, steady your hand against the cold iron, and ask your flame to cross one more time.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#a8f0d0', alpha: 0.34, ms: 900 },
+    { op: 'narrate', text: 'Seven. The whole line stands lit behind you, door to heart — and the vault ANSWERS: every wall waking blue-green at once, the hum settling into something like a chord, the dark walked all the way down.' },
+    { op: 'narrate', text: 'The light holds.' },
+    { op: 'tint', color: '#a8f0d0', alpha: 0, ms: 1100 },
+    { op: 'say', speaker: 'YSOLDE FROST', text: '...So. It holds.' },
+    { op: 'letterbox', on: false, ms: 320 },
+  ],
+
+  // Lumenary 6 — Ysolde Frost at the vault's heart. Win → gleam:frost +
+  // Emberward; with Storm already held the ENGINE closes flag:crown_north.
+  // Cool minor→major: the cold mirror of Galehigh's warm ceremony.
+  'script.lumenary_pale_vault': [
+    { op: 'face', actor: 'player', facing: 'up' },
+    { op: 'face', actor: 'ysolde_vault', facing: 'down' },
+    { op: 'say', speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'serene', text: 'Seven flames, walked in order, none hurried. I watched the light arrive ahead of you, wanderer. It spoke well of its keeper.' },
+    { op: 'say', speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'neutral', text: 'One asking remains, and it is the same one. Cold does not hate the flame — it only waits to see if the flame means it. Warm your kin... and let me see the light hold.' },
+    { op: 'battle', trainer: 'ysolde_frost' },
+    { op: 'musicFade', ms: 600 },
+    { op: 'silence', ms: 1200 },
+    { op: 'tint', color: '#9fd4ff', alpha: 0.36, ms: 800 },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'narrate', text: 'Ysolde lifts her lamp, and the seven brackets rise with it — their light climbing the blue ice, floor through ceiling, out into the night above. And high over the glacier, the FROST remembers how to shine.' },
+    { op: 'gleam', element: 'frost' },
+    { op: 'musicCrossfade', key: 'gleam-emotional', ms: 1000 },
+    { op: 'tint', color: '#9fd4ff', alpha: 0, ms: 1000 },
+    { op: 'narrate', text: 'And it does not stop there. Storm and Frost stand together now — and between them the whole northern quadrant of the Skyweave Crown closes overhead, quiet as snowfall. Out on the festival ice, one by one, the watchers lift their lamps.' },
+    { op: 'say', speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'warm', text: 'The Frost Gleam, and the northern crown with it. You have made my vault a lit place, wanderer. I do not have the words for what that is — so I will give you something better than words.' },
+    { op: 'say', speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'serene', text: 'The Emberward. A tended ember the coldfog cannot snuff — the Hollowing\'s mist parts before it. The pass west of town has been shut to every flame in this valley for years. Yours, now, it will not shut out.' },
+    { op: 'say', speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'warm', text: 'Go and stand the Aurora-watch before you walk on. You have earned the right to hold a lamp among us — and that is the whole ceremony, and it is enough.' },
+  ],
+
+  // Arc E — the Aurora-watch: the SILENT VIGIL. Stage as silence + slow light;
+  // it rhymes with Còr's calm — and refutes it (the lamps are LIT). No humour.
+  'script.pale_vault_aurora_watch': [
+    { op: 'letterbox', on: true, ms: 420 },
+    { op: 'musicFade', ms: 800 },
+    { op: 'silence', ms: 1600 },
+    { op: 'narrate', text: 'The town stands out on the festival ice, spaced wide as standing stones, every face turned up. Nobody speaks. The vigil-keeper raises one hand.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#a8f0d0', alpha: 0.14, ms: 900 },
+    { op: 'narrate', text: 'A single lamp lights at the line\'s end.' },
+    { op: 'tint', color: '#a8f0d0', alpha: 0, ms: 700 },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#a8f0d0', alpha: 0.2, ms: 900 },
+    { op: 'narrate', text: 'Then the next. Then the next — lamp answering lamp down the whole standing line, unhurried as the aurora walking its slow green road overhead.' },
+    { op: 'tint', color: '#a8f0d0', alpha: 0, ms: 700 },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#a8f0d0', alpha: 0.26, ms: 1100 },
+    { op: 'narrate', text: 'A lamp is put into your hands. You light it from your vesperlamp and hold it, and stand, and look up, and that is all that is asked.' },
+    { op: 'tint', color: '#a8f0d0', alpha: 0, ms: 900 },
+    { op: 'silence', ms: 1400 },
+    { op: 'narrate', text: 'It is very calm, out on the ice. As calm as any quieted valley. But nothing here has been surrendered to the dark — every point of stillness is a kept flame, watched by someone who chose to watch. The lamps burn. That is the whole of the Aurora-watch.' },
+    { op: 'say', speaker: 'VIGIL-KEEPER', text: 'It is enough to stand. It is enough to burn. Keep the watch as long as you wish, Wayfarer — the sky knows you are here.' },
+    { op: 'musicCrossfade', key: 'pale-vault-glacier-a', ms: 1400 },
+    { op: 'letterbox', on: false, ms: 420 },
+    { op: 'setFlag', flag: 'flag:aurora_watch_seen' },
+  ],
+
+  // N2 "The Aurora Sketcher" — the painter at the festival ice; pure stillness.
+  'script.sketch_quest': [
+    { op: 'say', speaker: 'SKETCHER', text: 'Mind the easel, please — forty years I have tried to put that sky on paper, and it has never once held still for me. We have an understanding. I keep failing; it keeps being worth it.' },
+    { op: 'say', speaker: 'SKETCHER', text: 'There are three views I need and my knees no longer agree to: the Windward crag above the wind-gap, the glacier shore west of town, and this festival ice from the far brazier line.' },
+    { op: 'say', speaker: 'SKETCHER', text: 'Go and STAND in them, Wayfarer. Look properly — long enough to be cold — then come back able to tell me what the light DID. Lend me your eyes, and I\'ll finish the sketch I started forty years ago.' },
+    { op: 'setFlag', flag: 'flag:q_north_sketch' },
+  ],
+  'script.sketch_shore': [
+    { op: 'narrate', text: 'The glacier shore. The ice stands off the water like a wave that was asked to wait — and the aurora lies doubled in the black shallows, two slow green roads, one above and one below.' },
+    { op: 'silence', ms: 900 },
+    { op: 'narrate', text: 'You stand until you can keep it. Two of three.' },
+  ],
+  'script.sketch_festival': [
+    { op: 'narrate', text: 'The far brazier line. From here the festival ice is people-shaped lamplight — the whole town small under the sky, each holding their single flame, none of them hurrying it.' },
+    { op: 'silence', ms: 900 },
+    { op: 'narrate', text: 'The sky does its slow work overhead, and the town simply keeps it company. Three of three. The sketcher will want to hear about this one slowly.' },
+  ],
+  'script.sketch_done': [
+    { op: 'say', speaker: 'SKETCHER', text: 'Sit. Talk. Slowly — the crag first.' },
+    { op: 'narrate', text: 'You tell her. The North laid out under the aurora; the wave that waits; the town keeping the sky company. She works the whole time, charcoal first, then the pale washes, glancing up at you instead of the sky.' },
+    { op: 'say', speaker: 'SKETCHER', text: '...There. Forty years, and what I was missing was somebody to hold still INSTEAD of the sky. Look at it. We made that, you and I and three cold views.' },
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'giveItem', item: 'aurora_charm', count: 1 },
+    { op: 'say', text: 'She unclips a charm from her easel — dipped in aurora-oil, faintly aglow — and gives it over. Received the AURORA CHARM!' },
+    { op: 'giveMoney', amount: 400 },
+    { op: 'say', text: 'And her colour-fund, folded into your hand without negotiation: 400 WICKS.' },
+    { op: 'say', speaker: 'SKETCHER', text: 'Raise it toward a Frost-hearted kin and your lamp burns the way the sky does tonight. Toward anything else it is only a lamp — the aurora keeps its own, same as the sea.' },
+    { op: 'setFlag', flag: 'flag:q_north_sketch_done' },
+  ],
+
+  // Pale Vault rest + caches (no shop here — the town is deliberately sparse).
+  'script.pale_vault_inn_rest': [
+    { op: 'say', speaker: 'INNKEEP', text: 'Come in quiet, Wayfarer. The hearth is low but it is LIT, and that is the house\'s whole boast.' },
+    { op: 'fade', dir: 'out' },
+    { op: 'wait', ms: 700 },
+    { op: 'heal' },
+    { op: 'fade', dir: 'in' },
+    { op: 'say', speaker: 'INNKEEP', text: 'Rested, and your kin with you. The watch keeps the night; you needn\'t.' },
+  ],
+  'script.pickup_pale_vault_balm': [
+    { op: 'giveItem', item: 'warm_balm', count: 2 },
+    { op: 'say', text: 'A watcher\'s cache in the lee of the hollow, felt-wrapped against the frost. Found 2 WARM BALMS!' },
+    { op: 'setFlag', flag: 'flag:picked_pale_vault_balm' },
+  ],
+  'script.pickup_pale_vault_wicks': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 300 },
+    { op: 'say', text: "A trader's purse, frozen into a drift and chipped patiently free. Found 300 WICKS!" },
+    { op: 'setFlag', flag: 'flag:picked_pale_vault_wicks' },
+  ],
+  'script.pickup_pale_vault_shard': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'starglass_shard', count: 1 },
+    { op: 'say', text: 'Deep in the blue ice, where only a warded flame walks: a STARGLASS SHARD, holding its constellation like a breath. Found it!' },
+    { op: 'setFlag', flag: 'flag:picked_pale_vault_shard' },
+  ],
+  'script.pickup_pale_vault_charge': [
+    { op: 'giveItem', item: 'beacon_charge', count: 1 },
+    { op: 'say', text: 'An offering left at the brazier line, wax seal sound. Found a BEACON CHARGE!' },
+    { op: 'setFlag', flag: 'flag:picked_pale_vault_charge' },
+  ],
+  'script.pickup_undercroft_amber': [
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'giveItem', item: 'moth_amber', count: 1 },
+    { op: 'say', text: 'In a niche behind the second gallery, dry these hundred years: a MOTH-AMBER, its little light untroubled by all that ice. Found it!' },
+    { op: 'setFlag', flag: 'flag:picked_undercroft_amber' },
+  ],
+  'script.pickup_undercroft_balm': [
+    { op: 'giveItem', item: 'bright_balm', count: 1 },
+    { op: 'say', text: 'A lamplighter\'s reserve, cached a choke off the line for the worst night: a BRIGHT BALM. Found it!' },
+    { op: 'setFlag', flag: 'flag:picked_undercroft_balm' },
+  ],
 };
 
 export function getScript(ref: string): import('./types').CutsceneStep[] | undefined {

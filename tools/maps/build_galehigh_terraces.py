@@ -461,11 +461,11 @@ m["npcs"] += [
      "sprite": "npc_woman", "movement": "static",
      "dialogue_ref": "script.round_kite",
      "requires_flag": "gleam:storm",
-     "hidden_when_flag": "flag:q_round_kite"},
+     "hidden_when_flag": "flag:q_round_kite_taken"},
     {"id": "kite_maker_round_after", "at": {"tx": 17, "ty": 25}, "facing": "left",
      "sprite": "npc_woman", "movement": "static",
      "dialogue_ref": "npc.kite_maker_round_after",
-     "requires_flag": "flag:q_round_kite"},
+     "requires_flag": "flag:q_round_kite_taken"},
     # --- Mira in town after the Gleam (then the N3 ribbon giver after met_cor) ------
     {"id": "mira_after", "at": {"tx": 15, "ty": 16}, "facing": "down",
      "sprite": "npc_lampwarden", "movement": "look_around",

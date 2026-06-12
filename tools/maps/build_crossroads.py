@@ -255,10 +255,13 @@ m = {
          "requires_flag": "flag:has_starter", "hidden_when_flag": "flag:dusk_begins"},
         # the Waystone kid — R4 "A Kite for the Waystone Kid"'s delivery anchor
         # (the kite-maker's leg of the Waykeeper's Round; walkthrough 03-north).
-        # Delivery sets flag:q_round_kite; the kid flies the kite thereafter.
+        # The kid waits for the kite (flag:q_round_kite_taken — set when the
+        # kite-maker hands it over); delivery sets flag:q_round_kite and the
+        # kid flies the kite thereafter.
         {"id": "waystone_kid", "at": {"tx": CX - 2, "ty": CY + 2}, "facing": "up",
          "sprite": "npc_boy", "movement": "static",
          "dialogue_ref": "script.round_kite_deliver",
+         "requires_flag": "flag:q_round_kite_taken",
          "hidden_when_flag": "flag:q_round_kite"},
         {"id": "waystone_kid_kite", "at": {"tx": CX - 2, "ty": CY + 2}, "facing": "up",
          "sprite": "npc_boy", "movement": "wander",

@@ -1585,6 +1585,7 @@
       "sprite": "npc_boy",
       "movement": "static",
       "dialogue_ref": "script.round_kite_deliver",
+      "requires_flag": "flag:q_round_kite_taken",
       "hidden_when_flag": "flag:q_round_kite"
     },
     {
