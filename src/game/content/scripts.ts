@@ -3120,6 +3120,9 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'The first: Còr keeps a lamp on the west strand, past the old tree. Climb the Tinderwick Beacon and draw him a fresh wick from the lantern room. A lamp burns as its wick is given — and his was given in the dark. Let it be given again in daylight.' },
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'The second: the relit sky is WAKING things. Sun-bright moths in the verge grass — day-forms, the old journals called them. Walk the sunlit verge and find me three signs of them. One at a time, mind; surveys are patience wearing boots.' },
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'Start by the verge\'s north corner — the dawn-blooms there have been fed on. Something gold did the feeding.' },
+    // P2's assignment flag gates the Beacon wick-case (QA MIN-1: without it the
+    // wick could be drawn before Fenn frames the errand — a narrative skip).
+    { op: 'setFlag', flag: 'flag:q_post_wick_asked' },
     { op: 'setFlag', flag: 'flag:q_post_survey' },
   ],
   // P3, the waiting stage — Fenn names ONE mark at a time (the chained finds

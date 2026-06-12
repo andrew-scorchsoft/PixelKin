@@ -362,7 +362,7 @@
       "sprite": "item_cache",
       "movement": "static",
       "dialogue_ref": "script.pickup_post_wick",
-      "requires_flag": "flag:dawn",
+      "requires_flag": "flag:q_post_wick_asked",
       "hidden_when_flag": "flag:q_post_wick"
     }
   ],
