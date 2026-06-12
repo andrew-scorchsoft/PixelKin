@@ -12,15 +12,15 @@ late-'90s handheld gaming, for the millennials who grew up on it.
 originality/copyright rules every contributor (human or AI) must follow.
 For working in the repo, see **[`CLAUDE.md`](CLAUDE.md)**.
 
-> ⚠️ **This is an experiment, not a finished game.** PixelKin was built by
+> ⚠️ **This is an experiment, not a commercial release.** PixelKin was built by
 > [Scorchsoft](https://www.scorchsoft.com) as a **capability experiment** — to
 > see how far an AI-assisted workflow could take a game from a blank repo. The
-> result is a **working but early-stage slice**: a real, playable engine and a
-> fully designed world, story, and roster, but only the *first* sliver of that
-> world is actually built out (a couple of areas, the first battle, placeholder
-> creature art). It is **not** a final release, a complete game, or a polished
-> product. See **[Project status](#project-status)** below for exactly what is and
-> isn't done.
+> answer turned out to be: **the whole game.** The full journey is built and
+> playable — cold open → all eight Gleams across four regions → the Umbral Spire
+> climax → the dawn and credits — plus a post-game (an epilogue town, a
+> legendary trio, day-form collecting, and an endgame trial chain). It has not
+> yet had human playtesting or device QA, so treat it as a complete *dev build*,
+> not a polished product. See **[Project status](#project-status)** for detail.
 >
 > 📄 **Licence:** source-available, **all rights reserved** — © Scorchsoft Ltd.
 > This is *not* open source. Want to build on it? **[Talk to us first](#licence).**
@@ -36,37 +36,31 @@ For working in the repo, see **[`CLAUDE.md`](CLAUDE.md)**.
 
 ## The game so far
 
-The design is data-locked **and the engine to play it now exists** — the first
-hour is playable end-to-end: attract demo → title (New Game / Continue / Settings)
-→ an **illustrated cold-open prologue** (the Long Dusk, a star winking out, the
-calling — foreboding but aspirational) → story intro where you're given a vesperlamp
-and **choose a starter** → explore
-**Tinderwick**, talk to townsfolk, read signs, step into its homes, shop and
-Lumenary hall → catch a kin, take Brisa's errand, and walk north onto
-**Dimglass Coast** — wild encounters in mandatory grass crossings, your rival
-Wren *spotting you* from beside the lane for the first friendly battle, the
-night the dusk deepens, and the old lamplighter's **beacon wick-key** → back to
-town to climb the **Beacon tower** (wick-tender trainers on the spiral stairs)
-and earn the first **Gleam** from Lampwarden Brisa Tallow at the lantern → across
-the **Dimglass tidal flats** and its boardwalk channel crossing
-(sight trainers and rising wild kin bridge the levels) → on to **Pearlmoor Quay**, the
-moonlit Tide port, where Lampwarden Reyl Wash grants the **Tide Gleam** and the
-**Tidecall** Lantern Gift — which opens the harbour's gated water, the **Gullcry
-Rock** backtrack (a rare kin + the Tide Charm), and the **Vesper Crossroads**
-Lanternway hub. The **second hour** continues east: Tidecall carries you across
-the **Saltreach Fen** deep channels (lantern-reeds, a drowned-shrine spur, a
-quest whose third reed *will not light*) into **Lowleaf Hollow** mid-festival —
-warm the grey Elder Bed, earn the **Verdant Gleam** and **Glimmerstep** from shy
-Lampwarden Sable Quill, and walk straight into the dark of **Glowmoss Deep**,
-where the Hollowing is waiting to apologise. Along the way: catch-gated Lumenary etiquette (Brisa won't battle
-until you've befriended a wild kin), inn and hearth **rest-heals**, free shop
-kits — and a working **wick economy**: trainers pay out wicks, town keepers run
-real **buy/sell counters**, and single-use **Star-charts** teach kin new moves
-(tuned end-to-end by a journey model, `tools/balance/progression.mjs`) — plus
-item caches on the routes, and festival crowds that fill each town after
-its Gleam is relit. Progress autosaves (with JSON
-export/import), and the screen can show as a handheld-device frame, fullscreen with
-translucent touch controls, or plain. Run it with `npm install && npm run dev`.
+The design is data-locked **and the whole journey is built**: attract demo →
+title → an **illustrated cold-open prologue** (the Long Dusk, a star winking
+out, the calling) → the satchel errand, the vesperlamp, and your **starter
+choice** — then the full Wayfaring across **Vesperholm's four regions and ~77
+maps**. South: Tinderwick's earned Beacon Gleam and Pearlmoor Quay's Tide port.
+East: the Saltreach Fen channels, Lowleaf Hollow mid-festival, the Hollowing
+waiting to apologise in Glowmoss Deep, and Cinderhead Mine's lamp-down vigil.
+North: Galehigh's kite-rising, the Wind-Eye, and the Pale Vault glacier's
+Lamp-Line trial. West: the Sunken Solarium's lit stage, the drained Coldfog
+Marches (the antagonist's case, *shown*), and Nightreach Observatory's Vigil of
+the Seven. Then the convergence: the parted Penumbra, the **Umbral Spire**, a
+final asking that is out-remembered rather than defeated, the Keystar relight,
+**the dawn** — credits — and a Continue that resumes at the summit for the
+post-game: the daylit epilogue town of **Dawnstead**, Wren and Còr's gentle
+resolutions, **day-form collecting** across the relit valleys, the **Three
+Hours** legendary trio, and the **Starfall Vigils** endgame trial chain ending
+in the hardest fight in the game. Along the way: eight earned Gleams (never
+handed over flat), six traversal-gating **Lantern Gifts**, a working **wick
+economy** (shops, Star-charts, trainer payouts — tuned end-to-end by a journey
+model), seven battle statuses, Kindling and bond, the Hearth for kin storage,
+inn rest-heals, item caches, sight trainers, festivals that fill each town
+after its Gleam, a LORE codex and a collectible concept-art gallery. Progress
+autosaves (with JSON export/import), and the screen can show as a
+handheld-device frame, fullscreen with translucent touch controls, or plain.
+Run it with `npm install && npm run dev`.
 
 What's already in the repo:
 
@@ -110,41 +104,46 @@ copy of nothing. See the copyright rules in [`VISION.md`](VISION.md).
 
 ## Project status
 
-PixelKin is an **early-stage capability experiment**, not a shippable game.
-Treat the design docs as the *finished blueprint* and the code as a *first
-vertical slice* that proves the engine works — most of the world described in
-those docs has not been built yet.
+PixelKin is a **content-complete dev build** of the capability experiment: the
+whole designed journey — main game, ending, and post-game — is built, wired,
+and audited. What it has *not* had is human hands: no playtests, no device QA.
 
 **Done / works today:**
 
-- A real, playable **engine** (Phaser 3 + TypeScript): tile maps, grid movement,
-  NPCs/signs/warps, data-driven cutscenes, a turn-based **battle system**, the
-  pause menu (party, the Hearth, items), and the save/flag layer.
-- A **cinematic storytelling toolkit** (data-driven): an illustrated cold-open
-  scene, character **portraits** in dialogue, music-as-drama (crossfade / fade /
-  sting / dramatic silence) and screen FX (letterbox, camera focus, tint, shake) —
-  the South first hour is the worked example; standard in `docs/world/cinematics.md`.
-- A complete, **data-locked design**: full story and world bible (14 areas), the
-  162-kin roster with empirically balanced battle maths, the type chart, moves,
-  and abilities — all authored and validated.
-- A **playable opening slice**: attract demo → title → **cold-open prologue** →
-  intro and starter choice → explore **Tinderwick** → first **Gleam** battle (a
-  minor→major payoff) → north onto **Dimglass Coast** with its staged dusk omen.
-- An **original soundtrack** (area + battle loops) and the art/sprite pipeline.
+- The **complete main journey**: cold open → starter → all **8 Gleams** across
+  the four regions (each *earned* via its own loop, never handed over) → the
+  four crowns → the **Umbral Spire** climax → Còr out-remembered → the Keystar
+  relight → **the dawn**, credits, and a post-game Continue. ~77 maps, all
+  walkable, with the full audit stack (reachability, warps, flow, region
+  topology, foot-path) green in CI.
+- The **post-game**: Dawnstead (the daylit epilogue town; Wren and Còr's
+  resolutions; quests), **day-form collecting** across 22 relit maps, the
+  **Three Hours** legendary trio, the two Starreach landmarks, and the
+  **Starfall Vigils** — five trial sites + the Last Lesson at the summit, the
+  game's first full six-kin smart-AI fights.
+- A real, playable **engine** (Phaser 3 + TypeScript): tile maps, grid
+  movement, data-driven cutscenes with portraits and screen FX, a turn-based
+  **battle system** (statuses, Kindling, bond, smart trainer AI), the wick
+  **economy** (shops, Star-charts, payouts), the pause-menu suite (party,
+  Hearth, register/dex, items, LORE codex, concept-art gallery), and the
+  save/flag layer behind the platform seam.
+- **All 162 kin with real packed sprite art** (5 views each), the full
+  **original soundtrack** (~195 area/battle/jingle tracks + SFX), per-map
+  battle backdrops, and the empirically balanced battle maths (Monte Carlo
+  win-rates, a journey-long XP/economy model — all gated in CI).
 
-**Not built yet / known gaps:**
+**Not done / known gaps:**
 
-- Only the **first ~2 of 14 areas** are actually built and walkable; the other
-  regions, Lumenaries, and the late-game exist on paper (in `docs/`) only.
-- **Creature sprites are still placeholder squares** in the title/starter/battle
-  screens — the art pipeline exists but the in-game creature art isn't wired in.
-- Only the **first Gleam / Lampwarden** is implemented; the rest of the gym/badge
-  progression, Lantern-Gift gating, and the central hub are not.
-- No mobile build yet (Capacitor is planned, not present), and many systems are
-  first-pass rather than balanced-for-feel or content-complete.
+- **No human playtesting yet** — the golden-thread run exists as audits and an
+  expert-panel review (`docs/reviews/`), not as real first-timer sessions.
+- **No touch QA on real hardware**; no mobile build yet (Capacitor is planned,
+  not present — the web bundle is built mobile-ready).
+- A few designed-but-deferred systems: the **Lamplight** brightness-reveal
+  render feature, N-of-M quest counters, and true day/night cycling
+  (deliberately out of scope — the post-dawn world is a permanent swap).
 
-In short: the **bones are real and the plan is complete**, but this is a demo of
-*what the workflow can do*, not a finished product.
+In short: **the plan was complete, and now the build is too** — what remains is
+the human part: playtesting, feel, and polish.
 
 ## Tech
 
@@ -155,9 +154,10 @@ with [Capacitor](https://capacitorjs.com) planned for the eventual mobile build
 ## Quick start
 
 ```bash
-npm install      # install dependencies
-npm run dev      # dev server at http://localhost:5173
-npm run build    # typecheck + production build to dist/
+npm install          # install dependencies
+npm run dev          # dev server at http://localhost:5173
+npm run build        # typecheck + production build to dist/
+npm run build:dist   # the upload-ready bundle (shrunk audio; needs ffmpeg)
 ```
 
 ## Asset generation skills

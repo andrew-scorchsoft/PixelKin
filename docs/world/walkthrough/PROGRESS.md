@@ -26,7 +26,10 @@ Legend — **Gleam** = the region's constellation reward; **Gift** = the Lantern
 | **The Three Hours** (07) | — | ✅ **complete** (sites + wiring + encounters + the hour-bell music, 2026-06) | — |
 | **Post-game** (06) | — | ✅ **complete** (R2 Dawnstead + R3 Vigils + R4 day-forms, 2026-06) | — |
 
-**Playable runway today: the game is COMPLETABLE — cold open → dawn.** A continuous
+**Playable runway today: the game is CONTENT-COMPLETE — cold open → dawn → post-game.**
+The post-game shipped 2026-06: Dawnstead (R2), the Starfall Vigils chain to the Last
+Lesson and the Star-tender naming (R3), and the day-form pass across the relit world
+(R4). The main journey beneath it is unchanged: a continuous
 main-path journey from the prologue through all eight Gleams and all four crowns,
 across the parted Penumbra (Starreach), up the Umbral Spire's four floors, through
 Warden Còr's final asking (out-remembered, not defeated), the Keylumen relight
@@ -257,9 +260,10 @@ Still unmirrored (works on generated defaults): `spore_grotto`, `glowmoss_deep(_
 `cinderhead_mine`, `cinderhead_deep(_b1f/_b2f)`.
 
 ### R5 — Release ladder (verification, mostly cheap)
-- `npm run build` (typecheck + prod build) — should already be green.
-- `npm run build:dist` needs **ffmpeg** (not installed in the managed env) — install or add
-  a CI job for the shrunk-audio bundle.
+- ✅ `npm run build` verified green (2026-06).
+- ✅ `npm run build:dist` verified green (2026-06): 195 mp3 → 64k mono, 68→27 MB audio,
+  48 MB bundle. ffmpeg was apt-installed ad hoc in the session container — the managed
+  env/CI still lacks it; add it to the environment setup or a CI job for repeatability.
 - ~~Reconcile the ~71 stale S/E generated encounter rows~~ ✅ DONE (2026-06): `dimglass_coast`,
   `dimglass_coast_ii`, `lowleaf_hollow` curated + mirrored; West/Hours mirrors verified in
   the same pass. Still on the generic generated-default path (works, but unmirrored):
