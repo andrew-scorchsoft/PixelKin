@@ -147,6 +147,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'lanternway_tinderwick', region: 'outer' },
     { map_id: 'lanternway_pearlmoor', region: 'outer' },
     { map_id: 'lanternway_lowleaf', region: 'outer' },
+    { map_id: 'lanternway_undercut', region: 'outer' }, // the cave beneath the Lowleaf spoke (its two mouths)
     { map_id: 'lanternway_galehigh', region: 'outer' },
     { map_id: 'lanternway_nightreach', region: 'outer' },
     // ---- Central: Penumbra Ring -> Umbral Spire (+ a late landmark) -> Dawnstead -----
@@ -279,6 +280,10 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'lanternway_pearlmoor', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
     { from_map: 'lowleaf_hollow', to_map: 'lanternway_lowleaf', via_warp: 'to_crossroads', bidirectional: true },
     { from_map: 'lanternway_lowleaf', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
+    // the Under-Lane's two mouths: lower road in, upper shelf out (the
+    // interleave — the only way UP the spoke's bank; the ledge hops back down)
+    { from_map: 'lanternway_lowleaf', to_map: 'lanternway_undercut', via_warp: 'to_undercut', bidirectional: true },
+    { from_map: 'lanternway_lowleaf', to_map: 'lanternway_undercut', via_warp: 'to_undercut_high', bidirectional: true },
     { from_map: 'galehigh_terraces', to_map: 'lanternway_galehigh', via_warp: 'to_crossroads', bidirectional: true },
     { from_map: 'lanternway_galehigh', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
     { from_map: 'nightreach_observatory', to_map: 'lanternway_nightreach', via_warp: 'to_crossroads', bidirectional: true },

@@ -215,6 +215,164 @@ def build_v_lane(*, map_id, display, seed, n_cols, s_cols, n_warps, s_warps,
     return m
 
 
+def build_lowleaf_spoke(owed):
+    """The Lowleaf spoke as a stacked switchback (26x30): LOWER ground (hub
+    gate W at y24/25, road east then north up the east side) and an UPPER
+    shelf (road to the Lowleaf gate E at y4/5), separated by a one-way south
+    ledge at y12 — the only way UP is the Under-Lane cave, whose two mouths
+    are carved into cliff knobs on each level. Going out: right, L up, left
+    underneath your own lane, up and right again. Coming home: hop the ledge."""
+    W, H = 26, 30
+    rng = random.Random(63)
+
+    tree = mk.make_grid(W, H)
+    mk.organic_border(tree, W, H, top=1, left=1, right=1, depth=2,
+                      bumps=[(6, 1, 1), (15, 1, 2), (21, 1, 1),
+                             (3, H - 2, 2), (12, H - 2, 1), (20, H - 2, 2)])
+    mk.rect(tree, W, H, 0, H - 2, W - 1, H - 1)
+    mk.blob(tree, W, H, 3, 3.5, 2.2, 1.8)  # close the shelf's NW corner pocket
+
+    cliff = mk.make_grid(W, H)
+    # the LOWER mouth's bank: the east end of the split thickens into a real
+    # cliff mass (y12-14) the cave pierces; the mouth is the carved dark pair.
+    mk.rect(cliff, W, H, 17, 12, 23, 14)
+    # the UPPER mouth's knob on the shelf
+    mk.rect(cliff, W, H, 3, 6, 6, 8)
+    LOW_MOUTH = ((20, 14), (21, 14))
+    HIGH_MOUTH = ((4, 8), (5, 8))
+    for (x, y) in LOW_MOUTH + HIGH_MOUTH:
+        cliff[y * W + x] = 0
+
+    path = mk.make_grid(W, H)
+    # lower road: in from the hub, east, then the L up to the mouth
+    mk.hline(path, W, H, 24, 0, 20); mk.hline(path, W, H, 25, 0, 21)
+    mk.vline(path, W, H, 20, 16, 24); mk.vline(path, W, H, 21, 16, 25)
+    mk.rect(path, W, H, 20, 15, 21, 15)  # the mouth's doorstep
+    # upper road: from the knob's doorstep, east a step, north, then east out
+    mk.rect(path, W, H, 4, 9, 9, 9)
+    mk.vline(path, W, H, 8, 4, 9); mk.vline(path, W, H, 9, 4, 9)
+    mk.hline(path, W, H, 4, 8, W - 1); mk.hline(path, W, H, 5, 8, W - 1)
+    # punch the borders at the two gates
+    punch(tree, W, H, [(x, y) for y in (24, 25) for x in (0, 1)])
+    punch(tree, W, H, [(x, y) for y in (4, 5) for x in (W - 1, W - 2)])
+
+    deco = mk.make_grid(W, H)
+    # the shelf's one-way lip: hop down anywhere along the open run
+    pt.ledge_run(deco, W, H, 12, 2, 16, rng)
+
+    for i in range(W * H):
+        if path[i]:
+            tree[i] = 0
+            cliff[i] = 0
+
+    base = base_grid(W, H, rng)
+    objects = [lamp("lamp_low", 4, 22), lamp("lamp_turn", 18, 21),
+               lamp("lamp_mouth", 23, 16), lamp("lamp_shelf", 11, 2),
+               tree_obj("crown_low", 9, 18), tree_obj("crown_shelf", 17, 7)]
+
+    m = {
+        "id": "lanternway_lowleaf", "display_name": "Lanternway · Lowleaf Spoke",
+        "width": W, "height": H,
+        "tile_width": 16, "tile_height": 16, "kind": "route",
+        "tilesets": [mk.shared_tileset_ref()],
+        "layers": [{"name": "base", "role": "base", "depth": 0, "data": base},
+                   {"name": "t_tree", "role": "terrain", "terrain": "tree",
+                    "set": "vesper_overworld_set", "depth": 0, "data": tree},
+                   {"name": "t_cliff", "role": "terrain", "terrain": "cliff",
+                    "set": "vesper_overworld_set", "depth": 0, "data": cliff},
+                   {"name": "t_path", "role": "terrain", "terrain": "path",
+                    "set": "vesper_overworld_set", "depth": 0, "data": path},
+                   {"name": "deco", "role": "deco", "depth": 5, "data": deco},
+                   {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)}],
+        "objects": objects,
+        "warps": [
+            # hub side (lower west)
+            W_("to_crossroads", 0, 24, "vesper_crossroads", (19, 3), "left"),
+            W_("to_crossroads_s", 0, 25, "vesper_crossroads", (19, 4), "left"),
+            # the LOWER mouth into the Under-Lane (warps sit ON the dark cells)
+            W_("to_undercut", 20, 14, "lanternway_undercut", (19, 6), "left"),
+            W_("to_undercut_e", 21, 14, "lanternway_undercut", (19, 7), "left"),
+            # the UPPER mouth back out of the Under-Lane's west end
+            W_("to_undercut_high", 4, 8, "lanternway_undercut", (2, 7), "right"),
+            W_("to_undercut_high_e", 5, 8, "lanternway_undercut", (2, 8), "right"),
+            # town side (upper east)
+            W_("to_lowleaf", 25, 4, "lowleaf_hollow", (1, 14), "right"),
+            W_("to_lowleaf_s", 25, 5, "lowleaf_hollow", (1, 15), "right"),
+        ],
+        "triggers": [], "encounters": [], "npcs": [], "gates": [],
+        "music": "assets/audio/music/tinderwick-a.mp3",
+    }
+    owed += pt.sign(m, deco, W, sid="lanternway_lowleaf", at=(18, 17))
+    # the shelf apron's drop-cache — pays the hop-off band before the ledge
+    owed += pt.cache(m, cid="lane_lowleaf", at=(15, 10))
+
+    covered = {(x, y) for y in range(H) for x in range(W)
+               if tree[y * W + x] or cliff[y * W + x] or path[y * W + x] or deco[y * W + x]}
+    mk.scatter_decor(deco, base, W, H, rng, density=0.12,
+                     avoid=covered | object_cells(objects) | {(15, 10)})
+    return m
+
+
+def build_undercut(owed):
+    """The Under-Lane (22x12, cave, dark): the lamped passage beneath the
+    Lowleaf spoke's bank — east mouth from the lower road, a dipping S-curve
+    west (the 'beneath your own lane' read), a side chamber with the cache,
+    and the west mouth up to the shelf."""
+    W, H = 22, 12
+    rng = random.Random(66)
+
+    wall = mk.make_grid(W, H)
+    mk.rect(wall, W, H, 0, 0, W - 1, H - 1)          # solid rock...
+    floor = mk.make_grid(W, H)
+    mk.rect(floor, W, H, 14, 5, 20, 7)               # ...east gallery
+    mk.rect(floor, W, H, 8, 4, 15, 6)                # mid rise
+    mk.rect(floor, W, H, 1, 6, 9, 8)                 # west dip
+    mk.rect(floor, W, H, 9, 6, 12, 9)                # the side chamber
+    for i in range(W * H):
+        if floor[i]:
+            wall[i] = 0
+
+    cf = [gid("cavefloor0"), gid("cavefloor1"), gid("cavefloor2"), gid("cavefloor3")]
+    base = [rng.choice(cf) for _ in range(W * H)]
+
+    deco = mk.make_grid(W, H)
+    for (x, y, n) in [(15, 6, "glowshroom_a"), (5, 7, "glowshroom_b"),
+                      (10, 5, "greymoss_a"), (18, 5, "greymoss_b"), (3, 8, "greymoss_a")]:
+        deco[y * W + x] = gid(n)
+
+    m = {
+        "id": "lanternway_undercut", "display_name": "The Under-Lane",
+        "width": W, "height": H,
+        "tile_width": 16, "tile_height": 16, "kind": "cave",
+        "tilesets": [mk.shared_tileset_ref()],
+        "layers": [{"name": "base", "role": "base", "depth": 0, "data": base},
+                   {"name": "t_cavewall", "role": "terrain", "terrain": "cavewall",
+                    "set": "vesper_overworld_set", "depth": 0, "data": wall},
+                   {"name": "deco", "role": "deco", "depth": 5, "data": deco},
+                   {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)}],
+        "objects": [
+            # a lamped under-lane: the Waykeepers' shrooms double as lamps
+            {"id": "shrooms_mid", "sprite": "glowmoss_deep_glowshrooms_teal",
+             "at": {"tx": 12, "ty": 4}, "w": 2, "h": 2, "overhang": 1, "walk_under": True},
+        ],
+        "warps": [
+            # east mouth — back out to the lower road's doorstep
+            W_("to_spoke_low", 20, 5, "lanternway_lowleaf", (20, 15), "down"),
+            W_("to_spoke_low_m", 20, 6, "lanternway_lowleaf", (20, 15), "down"),
+            W_("to_spoke_low_s", 20, 7, "lanternway_lowleaf", (21, 15), "down"),
+            # west mouth — up and out onto the shelf
+            W_("to_spoke_high", 1, 6, "lanternway_lowleaf", (4, 9), "down"),
+            W_("to_spoke_high_m", 1, 7, "lanternway_lowleaf", (4, 9), "down"),
+            W_("to_spoke_high_s", 1, 8, "lanternway_lowleaf", (5, 9), "down"),
+        ],
+        "triggers": [], "encounters": [], "npcs": [], "gates": [],
+        "music": "assets/audio/music/dimglass-coast-c.mp3",
+    }
+    owed += pt.sign(m, deco, W, sid="lanternway_undercut", at=(17, 6))
+    owed += pt.cache(m, cid="undercut", at=(11, 9))
+    return m
+
+
 def W_(wid, tx, ty, to_map, to, facing, **kw):
     w = {"id": wid, "at": {"tx": tx, "ty": ty}, "trigger": "step_on",
          "to_map": to_map, "to": {"tx": to[0], "ty": to[1]}, "facing": facing,
@@ -255,19 +413,13 @@ def main() -> int:
         accent="pond", lamps=[(4, 3), (12, 8), (20, 10)], trees=[(15, 1), (4, 13)],
         owed=owed))
 
-    # 3 · Lowleaf spoke — leaves the hub east, climbs NORTH-EAST to the Bloom:
-    # enter low on the W edge, leave high on the E.
-    maps.append(build_h_lane(
-        map_id="lanternway_lowleaf", display="Lanternway · Lowleaf Spoke",
-        seed=63, w_rows=(12, 13), e_rows=(4, 5), bend_x=13,
-        w_warps=[W_("to_crossroads", 0, 12, "vesper_crossroads", (19, 3), "left"),
-                 W_("to_crossroads_s", 0, 13, "vesper_crossroads", (19, 4), "left")],
-        e_warps=[W_("to_lowleaf", 23, 4, "lowleaf_hollow", (1, 14), "right"),
-                 W_("to_lowleaf_s", 23, 5, "lowleaf_hollow", (1, 15), "right")],
-        sign_id="lanternway_lowleaf", cache_id="lane_lowleaf",
-        cache_at=(11, 9), pocket=(10, 8, 12, 10),
-        accent="outcrop", lamps=[(4, 10), (14, 7), (20, 2)], trees=[(8, 14), (18, 12)],
-        owed=owed))
+    # 3 · Lowleaf spoke — the INTERLEAVED leg (player-suggested, 2026-06): out
+    # of the hub east along the low ground, L UP the east side to a cliff
+    # mouth, WEST through the Under-Lane cave beneath the bank, then out on
+    # the upper shelf and east again to the Bloom. The shelf's south lip is a
+    # one-way LEDGE back down — the §3a loop, earned on the return trip.
+    maps.append(build_lowleaf_spoke(owed))
+    maps.append(build_undercut(owed))
 
     # 4 · Galehigh spoke — DUE NORTH out of the hub (the re-edged gate): a
     # straight lamplit climb, galehigh's cliff country closing in.

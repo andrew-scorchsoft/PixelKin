@@ -227,6 +227,16 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'route',
     music: 'assets/audio/music/tinderwick-a.mp3',
   },
+  // The Under-Lane — the lamped cave beneath the Lowleaf spoke's bank: the
+  // spoke L's up, ducks UNDER its own lane, and comes out on the upper shelf
+  // (the interleaved leg; the shelf's south ledge is the one-way hop home).
+  lanternway_undercut: {
+    json: 'assets/maps/lanternway_undercut.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/dimglass-coast-c.mp3',
+  },
   lanternway_galehigh: {
     json: 'assets/maps/lanternway_galehigh.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },

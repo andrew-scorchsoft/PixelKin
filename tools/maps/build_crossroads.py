@@ -194,11 +194,11 @@ m = {
         # pattern of gating stricter than the graph, with the Waykeeper's own
         # "not yet" — the long way round is the fen-road, always open).
         {"id": "to_lowleaf", "at": {"tx": W - 1, "ty": 3}, "trigger": "step_on",
-         "to_map": "lanternway_lowleaf", "to": {"tx": 0, "ty": 12}, "facing": "right",
+         "to_map": "lanternway_lowleaf", "to": {"tx": 0, "ty": 24}, "facing": "right",
          "requires_flag": "gleam:verdant", "blocked_ref": "npc.waykeeper_lowleaf_gate",
          "transition": "fade"},
         {"id": "to_lowleaf_s", "at": {"tx": W - 1, "ty": 4}, "trigger": "step_on",
-         "to_map": "lanternway_lowleaf", "to": {"tx": 0, "ty": 13}, "facing": "right",
+         "to_map": "lanternway_lowleaf", "to": {"tx": 0, "ty": 25}, "facing": "right",
          "requires_flag": "gleam:verdant", "blocked_ref": "npc.waykeeper_lowleaf_gate",
          "transition": "fade"},
         # the Nightreach spoke (due WEST — it took over the west road rows) —

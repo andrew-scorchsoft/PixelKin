@@ -575,6 +575,12 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', text: 'A toll-box the green lane no longer asks for. Found 90 WICKS!' },
     { op: 'setFlag', flag: 'flag:picked_lane_lowleaf' },
   ],
+  'script.pickup_undercut': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'glow_charge', count: 2 },
+    { op: 'say', text: "A Waykeeper's store-niche, dry under the bank. Found 2 GLOW CHARGES!" },
+    { op: 'setFlag', flag: 'flag:picked_undercut' },
+  ],
   'script.pickup_lane_galehigh': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'wax_cake', count: 1 },

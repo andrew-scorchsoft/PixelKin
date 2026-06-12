@@ -770,6 +770,15 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   the town-side warp stays OPEN (one-way return compression). First travel to a town is always
   the long route — the spoke is the earned shortcut home, never a sequence-break (Pearlmoor was
   the outlier, `has_starter`-only, letting players skip the whole Dimglass Coast: playtest-caught).
+- **The Lanternway spokes are REAL lane maps (2026-06 topology fix).** `lanternway_<town>` ×5
+  (`tools/maps/build_lanternway.py`): safe lit ground (no encounters/trainers — audit_flow
+  free-pass/loop waived by design), each bending visibly so every transition is compass-true,
+  and the crossroads' gates radiate by true bearing (the galehigh/nightreach destinations
+  SWAPPED roads — same paint). The Lowleaf spoke is the interleaved worked example: lower road
+  L's up to a cliff mouth → **the Under-Lane** (`lanternway_undercut`, cave) passes beneath the
+  bank → upper shelf east to the Bloom, one-way ledge back down. A map split by elevation and
+  crossed THROUGH a cave is legal: `audit_region`'s foot-path check unions portal groups that
+  share a target map (the target's own row proves the passage).
 - **Routes play like routes: sight trainers + mandatory crossings + the earned landmark.**
   Trainers carry `sight_range`/`defeated_flag` on their NpcPlacement (alert → march up → run
   their `script.*`; WorldScene.npcSeesPlayer/engageTrainer; beaten = flag-pair NPC swap; a

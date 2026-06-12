@@ -153,13 +153,16 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
    - **Town signs (square / dock / Lumenary / mentor)** — `[MISSABLE]` the "interact" lessons;
      the dock sign teases the sea-shallows ("the buoys only answer a lit lamp").
    - **Lanternway spoke to Vesper Crossroads** — **[BUILT, and now on the main path]** the
-     `to_crossroads` lane leaves Tinderwick's east edge (and Pearlmoor's west); the hub
-     (`vesper_crossroads`) is live with the Waykeeper, the Waystone plaza, **Fenn's opening
-     stages at the waystone**, and signed sleeping roads. The Pearlmoor spoke sleeps until
-     `gleam:tide` (the standing per-town rule — `npc.waykeeper_pearlmoor_gate`; first trip
-     to the quay is always the coast road, the lane home is the Gleam's reward); the
-     inward Spire road needs `flag:hub_unlocked` (West/endgame) and the north marsh road
-     is an inert tease.
+     spokes are REAL lane maps (`lanternway_tinderwick` etc., build_lanternway.py): the
+     opening errand walks the Tinderwick lane — a short lamplit country lane that bends
+     visibly north-east up to the hub (`vesper_crossroads`), live with the Waykeeper, the
+     Waystone plaza, **Fenn's opening stages at the waystone**, and signed sleeping roads.
+     The Pearlmoor spoke sleeps until `gleam:tide` (the standing per-town rule —
+     `npc.waykeeper_pearlmoor_gate`; first trip to the quay is always the coast road, the
+     lane home is the Gleam's reward); the inward Spire road needs `flag:hub_unlocked`
+     (West/endgame) and the north marsh road is an inert tease. The Lowleaf spoke (East's
+     return-compressor) is the interleaved leg: lower lane, the **Under-Lane** cave beneath
+     its own bank, the upper shelf to the Bloom, a one-way ledge home.
 
    **Named quests** (spine §5 kit):
    - **S2 "A Letter for Fenn"** — **[BUILT]** giver: the **house parent** (`tinderwick_house`;

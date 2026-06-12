@@ -211,6 +211,7 @@ export const CHARTS: readonly ChartEntry[] = [
       'lanternway_tinderwick',
       'lanternway_pearlmoor',
       'lanternway_lowleaf',
+      'lanternway_undercut',
       'lanternway_galehigh',
       'lanternway_nightreach',
     ],

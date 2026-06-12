@@ -1293,7 +1293,7 @@
       "to_map": "lanternway_lowleaf",
       "to": {
         "tx": 0,
-        "ty": 12
+        "ty": 24
       },
       "facing": "right",
       "requires_flag": "gleam:verdant",
@@ -1310,7 +1310,7 @@
       "to_map": "lanternway_lowleaf",
       "to": {
         "tx": 0,
-        "ty": 13
+        "ty": 25
       },
       "facing": "right",
       "requires_flag": "gleam:verdant",

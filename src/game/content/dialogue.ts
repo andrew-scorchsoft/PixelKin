@@ -645,7 +645,10 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'THE LANTERNWAY — PEARLMOOR SPOKE\nWest and up for the Crossroads. East and down for the quay — you will smell the salt before you see the lamps.' },
   ],
   'sign.lanternway_lowleaf': [
-    { text: 'THE LANTERNWAY — LOWLEAF SPOKE\nThe lane climbs east and north into the Bloom. Green road, green light.' },
+    { text: 'THE LANTERNWAY — LOWLEAF SPOKE\nThe lane ends at the bank ahead. Take the Under-Lane through the rock — the shelf above carries you east to the Bloom. Green road, green light.' },
+  ],
+  'sign.lanternway_undercut': [
+    { text: 'THE UNDER-LANE\nCut and lamped by the Waykeepers when the bank slipped. The lane you walked in on runs over your head.' },
   ],
   'sign.lanternway_galehigh': [
     { text: 'THE LANTERNWAY — GALEHIGH SPOKE\nA straight climb north. The wind combs these hedges long before you see the terraces.' },
