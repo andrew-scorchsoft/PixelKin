@@ -224,7 +224,8 @@
       },
       "w": 1,
       "h": 1,
-      "solid": false
+      "solid": false,
+      "hidden_when_flag": "flag:picked_sun_mask"
     },
     {
       "id": "chamber_column",

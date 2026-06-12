@@ -17,6 +17,11 @@ Three signature touches (§8):
      CONTRACT below).
   3. THE HELIA MOUTH — the sealed reliquary's door on the west wall
      (Sunsketch spur, §3a r8: signed, breadcrumbed, MISSABLE).
+  4. THE VINE-SHADE REST TERRACE (W8 MIN-2 — the §3a mid-leg relief beat,
+     the N6/N7 Windward rest-shelf precedent): a sun-vine arbor off the mid
+     road shades a fallen-column seat at the end of the y17 jog (~halfway up
+     the ~62-step climb, beside lamp_mid). Encounter-free open ground, NO
+     heal — pressure relief, not an anchor; the jog now PAYS (§3a r4).
 
 HANDSHAKE (W2-internal, built both sides): climb_i `to_climb_ii` at
 (6,0)/(7,0) lands HERE at (6,26)/(7,26); our return pair `to_climb_i` at
@@ -341,6 +346,17 @@ m["objects"] += [
      "at": {"tx": 12, "ty": 16}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "lamp_north", "sprite": "tinderwick_lamp_post",
      "at": {"tx": 21, "ty": 6}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    # THE VINE-SHADE REST TERRACE (W8 MIN-2): a living arbor — two ruin
+    # columns carrying a bloomed sun-vine over the jog's mouth — and the
+    # fallen column it shades, a seat at the climb's halfway breath.
+    {"id": "rest_arbor_col_w", "sprite": "solarium_column",
+     "at": {"tx": 13, "ty": 14}, "w": 1, "h": 3, "overhang": 1, "walk_under": True},
+    {"id": "rest_arbor_col_e", "sprite": "solarium_column",
+     "at": {"tx": 16, "ty": 14}, "w": 1, "h": 3, "overhang": 1, "walk_under": True},
+    {"id": "rest_arbor_vine", "sprite": "sunvault_vine_h_bloomed",
+     "at": {"tx": 14, "ty": 14}, "w": 3, "h": 1, "solid": False},
+    {"id": "rest_seat", "sprite": "solarium_column_fallen",
+     "at": {"tx": 13, "ty": 18}, "w": 3, "h": 1},
 ]
 covered = {(x, y) for y in range(H) for x in range(W)
            if any(g[y * W + x] for g in (cliff, ruin, goldtuft))}

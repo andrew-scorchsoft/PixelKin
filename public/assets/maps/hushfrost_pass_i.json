@@ -89,6 +89,42 @@
       "h": 3,
       "overhang": 2,
       "walk_under": true
+    },
+    {
+      "id": "spires_shelter_w",
+      "sprite": "pale_vault_ice_spire",
+      "at": {
+        "tx": 13,
+        "ty": 7
+      },
+      "w": 2,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "spires_shelter_e",
+      "sprite": "pale_vault_ice_spire",
+      "at": {
+        "tx": 16,
+        "ty": 7
+      },
+      "w": 2,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "lamp_shelter",
+      "sprite": "tinderwick_lamp_post",
+      "at": {
+        "tx": 15,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
     }
   ],
   "warps": [
@@ -1797,7 +1833,7 @@
         0,
         0,
         0,
-        124,
+        0,
         0,
         0,
         0,

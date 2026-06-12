@@ -271,22 +271,37 @@ def costume_rack():
 
 def sun_mask():
     """1x1 the troupe's gilt sun-mask, sunk in the flooded side room (X2's
-    dive-cache dressing — non-solid silt glint)."""
+    dive-cache dressing — non-solid silt glint). A TILTED OVAL half-buried
+    in a silt drift (W8 MIN-3: the old square face read as an unresolved
+    placeholder glyph at map scale — round silhouette, buried lower lip,
+    petal-glint rays say 'a dropped treasure', not 'a missing sprite')."""
     a = canvas(1, 1)
-    # the mask face, tilted in the silt
-    fill(a, 4, 5, 12, 12, BRASS[2])
-    a[5, 5:12] = BRASS[3]
-    outline(a, 4, 5, 12, 12, BRASS[0])
-    # eye holes + the quiet smile
-    a[7, 6] = INK
+    # the mask: a tilted gilt oval, brow lifted out of the silt
+    spans = {4: (7, 11), 5: (6, 12), 6: (5, 13), 7: (5, 13), 8: (5, 13),
+             9: (6, 12), 10: (7, 11)}
+    for y, (x0, x1) in spans.items():
+        a[y, x0:x1] = BRASS[2]
+    # rim light along the upper-left arc; shaded under-curve
+    a[4, 7:10] = BRASS[3]
+    a[5, 6] = BRASS[3]
+    a[6, 5] = BRASS[3]
+    a[9, 7:12] = BRASS[1]
+    a[10, 7:11] = BRASS[0]
+    # eye holes on the tilt + the quiet smile
+    a[6, 7] = INK
     a[7, 10] = INK
-    a[10, 7:10] = BRASS[0]
-    # ray stubs
-    a[4, 8] = BRASS[3]
-    a[8, 3] = BRASS[3]
-    a[8, 13] = BRASS[3]
-    a[13, 8] = BRASS[1]
-    halo(a, [(2, 4), (14, 4), (8, 1)])
+    a[8, 6:9] = BRASS[0]
+    # the silt drift swallowing the mask's lower lip (bone-paving register)
+    a[10, 4:13] = RUINS[2]
+    a[11, 3:14] = RUINS[1]
+    a[12, 5:12] = RUINS[1]
+    a[11, 5:9] = RUINS[2]
+    contact_shadow(a, 3, 13, 13)
+    # ray stubs catching the lamp — the glint that says LOOK
+    a[3, 6] = PETAL[1]
+    a[2, 10] = PETAL[2]
+    a[5, 13] = PETAL[1]
+    halo(a, [(4, 1), (12, 2), (14, 6), (2, 5)])
     return img(a)
 
 

@@ -19,6 +19,11 @@ register. Three signature touches (§8):
   3. THE WIND-BLOWN TERRACE — the mid-canyon snow shelf (the §11 r3
      elevation accent): climb in from the north, hop the south ledge back
      down (§3a r1 — the route's one-way earned return).
+  4. THE SHELTER NOOK (W8 MIN-2 — the §3a mid-leg relief beat, the N6/N7
+     Windward rest-shelf precedent): an ice-spire windbreak + a lamp tucked
+     against the mid chamber's east side, just past the mid crossing
+     (~halfway up the ~60-step leg). Encounter-free open snow, NO heal —
+     the lonely register holds; this is pressure relief, not an anchor.
 
 HANDSHAKE (N3, binding): pale_vault_glacier `to_pass` warps at (0,10)/(0,11)
 land HERE at (30,10)/(30,11) — both walkable; our return pair `to_glacier`
@@ -223,6 +228,15 @@ m["objects"] += [
      "w": 2, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "spires_entry", "sprite": "pale_vault_ice_spire", "at": {"tx": 28, "ty": 13},
      "w": 2, "h": 3, "overhang": 2, "walk_under": True},
+    # THE SHELTER NOOK (W8 MIN-2): an ice-spire windbreak on the wind side +
+    # the lamp at its back — a sheltered, encounter-free pause off the lane,
+    # just past the mid crossing. No heal; the lamp is the relief.
+    {"id": "spires_shelter_w", "sprite": "pale_vault_ice_spire",
+     "at": {"tx": 13, "ty": 7}, "w": 2, "h": 3, "overhang": 2, "walk_under": True},
+    {"id": "spires_shelter_e", "sprite": "pale_vault_ice_spire",
+     "at": {"tx": 16, "ty": 7}, "w": 2, "h": 3, "overhang": 2, "walk_under": True},
+    {"id": "lamp_shelter", "sprite": "tinderwick_lamp_post",
+     "at": {"tx": 15, "ty": 8}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
 ]
 
 # ---- signs -------------------------------------------------------------------------
