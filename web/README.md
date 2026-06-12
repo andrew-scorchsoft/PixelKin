@@ -42,6 +42,20 @@ web/
 Per-page SEO/social meta is driven by `page_head($title, $page, $desc)` — header.php
 turns it into `<title>`, `description`, and OpenGraph/Twitter tags. Studio
 attribution and the licensing-contact link are `STUDIO_*` constants in `config.php`.
+
+Each page also gets its own 1200×630 social-share card: header.php maps the page's
+stem to `assets/img/og/<stem>.jpg` (falling back to the logo if absent). They're
+JPG, not WebP — Facebook/LinkedIn still don't render WebP link previews reliably.
+The cards are a unique pixel-art background per page + the wordmark and page title
+composited on top; rebuild them (e.g. after a copy tweak) with:
+
+```bash
+../venv/bin/python tools/build_og_cards.py   # from web/ — reads assets/img/og/src/*.webp
+```
+
+Edit the `PAGES` titles/subtitles in `tools/build_og_cards.py` to retext; to
+re-art a card, regenerate its background master into `assets/img/og/src/<stem>.webp`
+with the generate-image skill (dusk pixel-art brief, hero scene as palette ref).
 The kin grid reads the generated `assets/data/kin.json` (so the site stays
 standalone — it doesn't read `src/` at runtime).
 

@@ -6,6 +6,10 @@ $desc  = $GLOBALS['__desc']  ?? SITE_DESC;
 $ogTitle = $title === 'Home'
     ? SITE_NAME . ' — ' . SITE_TAGLINE
     : $title . ' · ' . SITE_NAME;
+// Per-page social card (1200x630). Falls back to the logo if a page has none.
+$ogStem  = basename($page, '.php');
+$ogCard  = is_file(__DIR__ . "/../assets/img/og/{$ogStem}.jpg");
+$ogImage = $ogCard ? "assets/img/og/{$ogStem}.jpg" : 'assets/img/logo.png';
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,11 +25,17 @@ $ogTitle = $title === 'Home'
     <meta property="og:title" content="<?= e($ogTitle) ?>">
     <meta property="og:description" content="<?= e($desc) ?>">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="assets/img/logo.png">
+    <meta property="og:image" content="<?= e($ogImage) ?>">
+<?php if ($ogCard): ?>
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+<?php endif; ?>
+    <meta property="og:image:alt" content="<?= e($ogTitle) ?>">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<?= e($ogTitle) ?>">
     <meta name="twitter:description" content="<?= e($desc) ?>">
-    <meta name="twitter:image" content="assets/img/logo.png">
+    <meta name="twitter:image" content="<?= e($ogImage) ?>">
     <link rel="icon" type="image/png" href="assets/img/logo.png">
     <link rel="preload" href="assets/fonts/PressStart2P-Regular.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="stylesheet" href="assets/css/style.css">
