@@ -531,6 +531,36 @@ export const ITEMS: ItemRegistry = {
     teach_move: 'sunburst_nova',
     price: 4000,
   },
+  // ---- Post-game (06-postgame, R2 Dawnstead): the first-dawn quest keepsakes.
+  // P1 "First-Dawn Letters" — the Waykeeper's bundle, carried out along the
+  // spokes to Wren, Fenn and the eight wardens' towns.
+  dawn_letters: {
+    id: 'dawn_letters',
+    name: 'First-Dawn Letters',
+    desc: 'An oilcloth bundle of the Waykeeper\'s first-dawn letters, one for every door the long night kept shut. They smell of fresh ink and morning.',
+    category: 'key',
+  },
+  // P1 — the quadrant-seat wardens stamp their replies (one per quadrant).
+  dawn_stamp: {
+    id: 'dawn_stamp',
+    name: 'Keepsake Stamp',
+    desc: 'A warden\'s wax stamp pressed on a first-dawn reply — a quadrant\'s thanks, kept. The Waykeeper says the pay is the answered smiles.',
+    category: 'key',
+  },
+  // P2 "A Wick for Còr" — drawn from the Tinderwick Beacon's lantern room.
+  dawn_wick: {
+    id: 'dawn_wick',
+    name: 'First-Dawn Wick',
+    desc: 'A fresh wick dipped in the Beacon\'s lantern room on the first true morning. It is for a lamp that has earned it.',
+    category: 'key',
+  },
+  // P3 "The Day-form Survey" — Fenn's thanks: the page he kept for this page.
+  fenn_journal_page: {
+    id: 'fenn_journal_page',
+    name: 'Fenn\'s Journal Page',
+    desc: 'A field-journal page in Fenn\'s careful hand: three day-forms, inked in morning light, and a note — "brighter lamps will show us more."',
+    category: 'key',
+  },
 };
 
 export function getItem(id: string): ItemDef | undefined {

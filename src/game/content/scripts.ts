@@ -3080,6 +3080,202 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'dialogue', ref: 'npc.fenn_counsel_after' },
     { op: 'say', if_flag: 'flag:three_dawn_met', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'So you found the third watch. Still facing east, was it? ...Then it has never stopped believing the wheel can turn. Neither have I. Go and prove the pair of us right.' },
   ],
+  // ===========================================================================
+  // DAWNSTEAD — the post-game epilogue town (walkthrough 06-postgame, R2).
+  // The quiet exhale after the climax: almost no spectacle, all warmth and
+  // faces. Canon tone: bittersweet-warm — the cycle has resumed, dusk will
+  // come again, and that is exactly the point.
+  // ===========================================================================
+
+  // THE ARRIVAL — the first scripted beat is simply the sky. Let the player
+  // stand in it; the map's own music IS the lullaby returned in major.
+  'script.dawnstead_arrival': [
+    { op: 'wait', ms: 500 },
+    { op: 'narrate', text: 'Morning. Not lamplight, not moonrise, not the kind hour of a festival — morning, blue and gold, lying over everything at once.' },
+    { op: 'tint', color: '#ffd98a', alpha: 0.18, ms: 1200 },
+    { op: 'narrate', text: 'Warm shadows. Open sky. Somewhere up the green, the old lullaby — the one every lamp-tender hums — and for the first time in years it is not asking the dark for anything.' },
+    { op: 'tint', color: '#ffd98a', alpha: 0, ms: 1400 },
+    { op: 'narrate', text: 'The rooflines are Tinderwick\'s. The dock is Tinderwick\'s. It is home, and it is not — because the dark has lifted, and nothing that woke this morning is quite what it was.' },
+  ],
+
+  // THE FIRST-DAWN FESTIVAL (Arc E capstone) — the whole town out in the sun:
+  // the thesis of "belonging, not conquest," now in daylight. Ambient colour,
+  // a small warm swell that hands straight back to the town loop.
+  'cutscene.dawnstead_first_dawn': [
+    { op: 'musicCrossfade', key: 'gleam-emotional', ms: 900 },
+    { op: 'narrate', text: 'The square is full. Nobody organised it; the sun came up and Vesperholm walked outside to be underneath it — the first-dawn festival, the one no calendar ever dared to print.' },
+    { op: 'say', text: '"No lanterns tonight!" someone calls, and laughs, and then has to sit down on the well-step about it.' },
+    { op: 'narrate', text: 'Eight festivals taught the valleys how to gather in the dark. This is what all that practice was for.' },
+    { op: 'musicCrossfade', key: 'dawnstead-a', ms: 1400 },
+  ],
+
+  // FENN ON THE FRONT — the mentor's arc settles into peace (Arc D payoff,
+  // spec lines verbatim), then the post-game slate: P2 "A Wick for Còr" and
+  // P3 "The Day-form Survey" (boolean-chain fallback, spine §8).
+  'script.fenn_dawnstead': [
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'peace', text: 'First true morning in years. Don\'t waste it asking whether it\'ll last — it won\'t. That\'s the bargain. Dusk for dawn, dawn for dusk. We tend the turning, that\'s all.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'You did well, apprentice. Go and look at your sky.' },
+    { op: 'wait', ms: 350 },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'smile', text: '...Still here? Then I\'ll be a teacher one minute longer. Two errands, neither urgent — nothing is urgent any more; I keep saying it to feel it said.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'The first: Còr keeps a lamp on the west strand, past the old tree. Climb the Tinderwick Beacon and draw him a fresh wick from the lantern room. A lamp burns as its wick is given — and his was given in the dark. Let it be given again in daylight.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'The second: the relit sky is WAKING things. Sun-bright moths in the verge grass — day-forms, the old journals called them. Walk the sunlit verge and find me three signs of them. One at a time, mind; surveys are patience wearing boots.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'Start by the verge\'s north corner — the dawn-blooms there have been fed on. Something gold did the feeding.' },
+    { op: 'setFlag', flag: 'flag:q_post_survey' },
+  ],
+  // P3, the waiting stage — Fenn names ONE mark at a time (the chained finds
+  // order the if_flag lines: the latest held flag reads last and truest).
+  'script.fenn_survey_wait': [
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'The survey, apprentice. The verge\'s north corner first — the fed-on dawn-blooms. Look close and bring me what the morning left.' },
+    { op: 'say', if_flag: 'flag:q_post_survey_1', speaker: 'FENN', portrait: 'fenn', expr: 'smile', text: 'A wing-scale, gold as a struck match — the moth\'s page is inked. Next: the verge\'s south skirt, by the shore side. Something shed its dusk coat there and did not look back.' },
+    { op: 'say', if_flag: 'flag:q_post_survey_2', speaker: 'FENN', portrait: 'fenn', expr: 'smile', text: 'A whole moult, dusk-grey, empty as an outgrown word. One sign left: the blooms by the garden mouth — there\'s a warm burrow under them, and its keeper came home at sunrise.' },
+  ],
+  'script.fenn_survey_done': [
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'smile', text: 'Scale, moult, and a warm doorstep. Three signs, three day-forms — the sky relit, and the small lives answered it first. That is the whole of star-tending in one verge.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'Take the page — I have been keeping it for exactly this. And mark the note at the bottom: your vesperlamp is at its brightest now, Radiant as it will ever be. The dark places you crept through at a candle\'s reach... walk them again. They have been holding things for you.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'fenn_journal_page', count: 1 },
+    { op: 'say', text: 'Received FENN\'S JOURNAL PAGE!' },
+    { op: 'setFlag', flag: 'flag:q_post_survey_done' },
+  ],
+  // The three survey-mark finds (interact, chained 1 -> 2 -> 3).
+  'script.survey_find_1': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'narrate', text: 'Under the fed-on dawn-blooms: a single wing-scale, gold as a struck match and warm to the touch. The moths came out bright this morning.' },
+    { op: 'setFlag', flag: 'flag:q_post_survey_1' },
+  ],
+  'script.survey_find_2': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'narrate', text: 'In the grass by the shore skirt: a shed moult, dusk-grey and paper-light — the whole night-coat, stepped out of and left where it fell. Whatever wore it is wearing morning now.' },
+    { op: 'setFlag', flag: 'flag:q_post_survey_2' },
+  ],
+  'script.survey_find_3': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'narrate', text: 'Beneath the blooms at the garden mouth, a burrow — lined, lived-in, and warm as a banked hearth. Its keeper came home with the sunrise and is sleeping off the dark.' },
+    { op: 'setFlag', flag: 'flag:q_post_survey_3' },
+  ],
+
+  // WREN BY THE WATER — A6, the rival-friend arc's warm coda (spec lines
+  // verbatim). Talk first; the rematch is offered, not forced — it waits on
+  // the next placement, re-runnable forever.
+  'script.wren_dawnstead': [
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'resolved', text: 'I spent the whole Wayfaring asking if the Hollowing had a point. Turns out they did — and so did the dawn. Both true. Funny how that works.' },
+    { op: 'wait', ms: 600 },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'eager', text: 'One more battle? For old times. Loser buys the lanterns.' },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'resolved', text: 'Whenever you like. I\'m not going anywhere — that\'s rather the point of here.' },
+    { op: 'setFlag', flag: 'flag:wren_a6' },
+  ],
+  'script.wren_rematch': [
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'eager', text: 'Lanterns on the line, then. Friendly rules — the morning\'s watching.' },
+    { op: 'battle', trainer: 'wren_rematch' },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'resolved', text: 'Worth it every single time. Same shore tomorrow, if the sun keeps its word — and I\'m told it does, now.' },
+  ],
+
+  // CÒR TENDING A LAMP — the resolution payoff (Arc B close; spec lines
+  // verbatim). The toolkit's gentlest beat: low music, a touch of warm tint,
+  // never gloating, never punished. Sets no progression flag — the band's own
+  // hide flag is its only bookkeeping.
+  'cutscene.cor_resolution': [
+    { op: 'musicFade', ms: 900 },
+    { op: 'narrate', text: 'Off to one side of the morning, where the strand narrows past the old tree, a man in faded warden\'s grey kneels at a single lamp — trimming it, steadying it, the way you tend a thing you mean to keep.' },
+    { op: 'say', speaker: 'WARDEN CÒR', portrait: 'cor', expr: 'at_peace', text: 'I wanted to spare everyone the dusk. I had forgotten that the lamp is for the dark — not against it.' },
+    { op: 'tint', color: '#ffd98a', alpha: 0.14, ms: 1100 },
+    { op: 'narrate', text: 'He tends the flame.' },
+    { op: 'say', speaker: 'WARDEN CÒR', portrait: 'cor', expr: 'at_peace', text: 'It will fall again, you know. The night. I find I no longer mind. I\'ll be here to light it.' },
+    { op: 'tint', color: '#ffd98a', alpha: 0, ms: 1300 },
+    { op: 'musicCrossfade', key: 'dawnstead-a', ms: 1600 },
+  ],
+  // P2 — the wick comes home (hand-in). His lamp burns a shade warmer
+  // thereafter (the deco swap pair rides flag:q_post_wick_given).
+  'script.cor_wick_given': [
+    { op: 'say', speaker: 'WARDEN CÒR', portrait: 'cor', expr: 'gentle', text: 'From the Beacon\'s own lantern room. Fenn\'s doing — he always did teach by errand.' },
+    { op: 'narrate', text: 'Còr takes the First-Dawn Wick in both hands, the way the Hearthkeeper takes a tired kin, and sets it to the flame.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#ffd98a', alpha: 0.2, ms: 900 },
+    { op: 'say', speaker: 'WARDEN CÒR', portrait: 'cor', expr: 'at_peace', text: 'There. A wick dipped in daylight, burning toward the next dark. That is the whole prayer, apprentice — I simply used to say it backwards.' },
+    { op: 'tint', color: '#ffd98a', alpha: 0, ms: 1100 },
+    { op: 'setFlag', flag: 'flag:q_post_wick_given' },
+  ],
+  // P2 — the wick itself, drawn in the Beacon's lantern room (tinderwick_
+  // beacon_top; cache appears post-dawn, vanishes once drawn).
+  'script.pickup_post_wick': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'narrate', text: 'The lantern room keeps a case of fresh-dipped wicks, as it always has. You draw one — dipped this very morning, the first wick in years to be made by daylight.' },
+    { op: 'giveItem', item: 'dawn_wick', count: 1 },
+    { op: 'say', text: 'Took the FIRST-DAWN WICK! Còr keeps his lamp on Dawnstead\'s west strand.' },
+    { op: 'setFlag', flag: 'flag:q_post_wick' },
+  ],
+
+  // P1 "FIRST-DAWN LETTERS" — the Waykeeper's daylight round (giver: the
+  // post-bag at the Vesper Crossroads waystone). Deliverable in any order;
+  // the quadrant-seat wardens stamp their replies (the keepsake reward).
+  'script.post_letters_give': [
+    { op: 'say', speaker: 'WAYKEEPER', text: 'Ah — the feet themselves. The dawn came up and half of Vesperholm wrote to the other half about it; my round\'s never been so heavy or so happy.' },
+    { op: 'say', speaker: 'WAYKEEPER', text: 'Take the bundle? Wren and old Fenn are down in Dawnstead, and there\'s a letter for every Lampwarden\'s town besides — eight of them, any order you please. The roads are awake again; somebody should walk all of them at once.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'dawn_letters', count: 1 },
+    { op: 'say', text: 'Received the FIRST-DAWN LETTERS!' },
+    { op: 'say', speaker: 'WAYKEEPER', text: 'No hurry, mind. First post in years that nobody\'s waiting on in the dark.' },
+    { op: 'setFlag', flag: 'flag:q_post_letters' },
+  ],
+  'script.post_letter_wren': [
+    { op: 'narrate', text: 'A letter for Wren, in the Waykeeper\'s careful hand.' },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'eager', text: 'For ME? ...It\'s from the kite-makers at Galehigh. They want the ribbon back for the museum wall. HA! Tell them to come and take it.' },
+    { op: 'setFlag', flag: 'flag:q_post_letter_wren' },
+  ],
+  'script.post_letter_fenn': [
+    { op: 'narrate', text: 'A letter for Star-tender Fenn.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'smile', text: 'Post, at my age, in this light. ...It\'s from the Waykeeper himself. One word. "WELL?" — and do you know, for once I haven\'t a correction to make.' },
+    { op: 'setFlag', flag: 'flag:q_post_letter_fenn' },
+  ],
+  'script.post_letter_tinderwick': [
+    { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'warm', text: 'First-dawn post! Look at it — somebody wrote the word "morning" and didn\'t put a candle-count after it. Frame-worthy, that.' },
+    { op: 'setFlag', flag: 'flag:q_post_letter_tinderwick' },
+  ],
+  'script.post_letter_pearlmoor': [
+    { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'weathered', text: 'A letter that crossed no dark water to get here. Longest I\'ve waited for any post in my life.' },
+    { op: 'narrate', text: 'Reyl presses his wax stamp to the reply — the southern quadrant\'s thanks, kept.' },
+    { op: 'giveItem', item: 'dawn_stamp', count: 1 },
+    { op: 'setFlag', flag: 'flag:q_post_letter_pearlmoor' },
+  ],
+  'script.post_letter_lowleaf': [
+    { op: 'say', speaker: 'SABLE QUILL', portrait: 'sable', expr: 'warm', text: 'Oh — post. In the sun. The Elder Bed greened before any of us were up, you know. It always was the better botanist.' },
+    { op: 'setFlag', flag: 'flag:q_post_letter_lowleaf' },
+  ],
+  'script.post_letter_cinderhead': [
+    { op: 'say', speaker: 'OTHO GRIST', text: 'Mail, up from the morning. The deep way\'s the same as ever — but the walk OUT ends in daylight now, and the crews keep finding reasons to make it.' },
+    { op: 'narrate', text: 'Otho stamps the reply with the pit-seal — the eastern quadrant\'s thanks, kept.' },
+    { op: 'giveItem', item: 'dawn_stamp', count: 1 },
+    { op: 'setFlag', flag: 'flag:q_post_letter_cinderhead' },
+  ],
+  'script.post_letter_galehigh': [
+    { op: 'say', speaker: 'MIRA VAEL', portrait: 'mira', expr: 'bright', text: 'A letter! Carried on FOOT? In THIS wind? We\'d have flown it for you — oh, but then we\'d have missed you. Fair trade!' },
+    { op: 'setFlag', flag: 'flag:q_post_letter_galehigh' },
+  ],
+  'script.post_letter_pale_vault': [
+    { op: 'say', speaker: 'YSOLDE', portrait: 'ysolde', expr: 'serene', text: 'The glacier took the sunrise like a held breath let go. Your letter arrives second, and is welcome anyway.' },
+    { op: 'narrate', text: 'Ysolde sets her frost-seal to the reply — the northern quadrant\'s thanks, kept.' },
+    { op: 'giveItem', item: 'dawn_stamp', count: 1 },
+    { op: 'setFlag', flag: 'flag:q_post_letter_pale_vault' },
+  ],
+  'script.post_letter_solarium': [
+    { op: 'say', speaker: 'LUCAN PYRE', portrait: 'lucan', expr: 'grand', text: 'Post! Delivered into an ENCORE — the sun is doing my whole repertoire for free, and I find I could not be happier about the competition.' },
+    { op: 'setFlag', flag: 'flag:q_post_letter_solarium' },
+  ],
+  'script.post_letter_nightreach': [
+    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'reverent', text: 'A first-dawn letter. I watched the whole sky come back, and still — ink on paper, carried by hand. That is the light I trust most.' },
+    { op: 'narrate', text: 'Nessa presses the observatory\'s star-seal to the reply — the western quadrant\'s thanks, kept.' },
+    { op: 'giveItem', item: 'dawn_stamp', count: 1 },
+    { op: 'setFlag', flag: 'flag:q_post_letter_nightreach' },
+  ],
+
+  // The strand cache (the variety rule: loose wicks off the lane).
+  'script.pickup_dawnstead_cache': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'narrate', text: 'Tucked in the lee of the knoll, oilcloth-dry: a pouch of wicks, hidden before the dark came down and never needed after all.' },
+    { op: 'giveMoney', amount: 400 },
+    { op: 'say', text: 'Found 400 WICKS!' },
+    { op: 'setFlag', flag: 'flag:picked_dawnstead_cache' },
+  ],
 };
 
 export function getScript(ref: string): import('./types').CutsceneStep[] | undefined {

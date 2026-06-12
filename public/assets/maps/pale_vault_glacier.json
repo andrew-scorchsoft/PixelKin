@@ -1081,6 +1081,19 @@
       "movement": "wander",
       "dialogue_ref": "npc.pale_vault_gleam_kid",
       "requires_flag": "gleam:frost"
+    },
+    {
+      "id": "letter_ysolde",
+      "at": {
+        "tx": 17,
+        "ty": 10
+      },
+      "facing": "down",
+      "sprite": "ysolde",
+      "movement": "static",
+      "dialogue_ref": "script.post_letter_pale_vault",
+      "requires_flag": "flag:q_post_letters",
+      "hidden_when_flag": "flag:q_post_letter_pale_vault"
     }
   ],
   "gates": [

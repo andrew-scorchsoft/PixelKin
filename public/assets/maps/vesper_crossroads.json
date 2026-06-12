@@ -1942,6 +1942,19 @@
       "movement": "static",
       "dialogue_ref": "script.inn_rest_crossroads",
       "requires_flag": "flag:q_central_tokens_done"
+    },
+    {
+      "id": "waykeeper_postbag",
+      "at": {
+        "tx": 8,
+        "ty": 7
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.post_letters_give",
+      "requires_flag": "flag:dawn",
+      "hidden_when_flag": "flag:q_post_letters"
     }
   ],
   "gates": [],

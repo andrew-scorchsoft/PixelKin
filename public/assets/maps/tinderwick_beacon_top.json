@@ -351,6 +351,19 @@
       "movement": "static",
       "dialogue_ref": "npc.brisa_tallow",
       "hidden_when_flag": "gleam:ember"
+    },
+    {
+      "id": "post_wick_case",
+      "at": {
+        "tx": 4,
+        "ty": 4
+      },
+      "facing": "up",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_post_wick",
+      "requires_flag": "flag:dawn",
+      "hidden_when_flag": "flag:q_post_wick"
     }
   ],
   "gates": [],

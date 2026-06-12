@@ -1542,6 +1542,19 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_solarium_charge",
       "hidden_when_flag": "flag:picked_solarium_charge"
+    },
+    {
+      "id": "letter_lucan",
+      "at": {
+        "tx": 11,
+        "ty": 16
+      },
+      "facing": "down",
+      "sprite": "lucan",
+      "movement": "static",
+      "dialogue_ref": "script.post_letter_solarium",
+      "requires_flag": "flag:q_post_letters",
+      "hidden_when_flag": "flag:q_post_letter_solarium"
     }
   ],
   "gates": [

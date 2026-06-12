@@ -1616,6 +1616,19 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_nightreach_balm",
       "hidden_when_flag": "flag:picked_nightreach_balm"
+    },
+    {
+      "id": "letter_nessa",
+      "at": {
+        "tx": 24,
+        "ty": 9
+      },
+      "facing": "down",
+      "sprite": "nessa",
+      "movement": "static",
+      "dialogue_ref": "script.post_letter_nightreach",
+      "requires_flag": "flag:q_post_letters",
+      "hidden_when_flag": "flag:q_post_letter_nightreach"
     }
   ],
   "gates": [],

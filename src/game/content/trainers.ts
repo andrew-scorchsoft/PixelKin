@@ -714,6 +714,28 @@ export const TRAINERS: TrainerRegistry = {
     ai: 'smart',
   },
 
+  // A6 — Wren at peace in Dawnstead (walkthrough 06-postgame): the OPTIONAL,
+  // re-runnable post-game rematch, offered never forced ("loser buys the
+  // lanterns"). Friendly capstone at the lv55-65 rematch band — his arc team
+  // grown, plus the sun-bright Wickmoth he caught in the verge this morning.
+  // No reward flags, no progression gate; script.wren_rematch re-runs forever.
+  wren_rematch: {
+    id: 'wren_rematch',
+    name: 'WREN',
+    title: 'Wayfarer',
+    party: [
+      { species_id: 9, level: 58 }, // Glimscout — Light (his first, kept out of love)
+      { species_id: 16, level: 59 }, // Wickmoth — Ember (the day-form catch, sun-bright)
+      { species_id: 96, level: 60 }, // Frigalance — Storm/Frost (the North line, kindled)
+      { species_id: 28, level: 62 }, // Brinewrath — Tide (the ace, as ever)
+    ],
+    intro_ref: 'trainer.wren_rematch.intro',
+    defeat_ref: 'trainer.wren_rematch.defeat',
+    payout: 1488, // rival 24 × ace 62
+    music: 'battle-veil',
+    ai: 'smart',
+  },
+
   // Eighth Lumenary: Nessa Cole, Lampwarden of Nightreach Observatory (Lunar)
   // — the quiet insomniac astronomer, the most powerful and most haunted
   // Warden. A contemplative dreamlight team built around doze pressure (lull
@@ -1066,6 +1088,12 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   ],
   'trainer.wren_nightreach.defeat': [
     { speaker: 'WREN', text: 'Ha — there it is. THAT\'s the thing the quiet doesn\'t have. Come on.' },
+  ],
+  'trainer.wren_rematch.intro': [
+    { speaker: 'WREN', text: 'Friendly rules. Morning rules. Best light we\'ve ever had for it.' },
+  ],
+  'trainer.wren_rematch.defeat': [
+    { speaker: 'WREN', text: 'Still you. Good. Some things should survive a sunrise.' },
   ],
   'trainer.nessa_cole.intro': [
     { speaker: 'NESSA COLE', text: 'Seven watch-fires, lit in the order they came home. I watched every one from this eyepiece. You walk the way a careful light burns.' },

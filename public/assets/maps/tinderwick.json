@@ -2531,6 +2531,19 @@
       "movement": "wander",
       "dialogue_ref": "npc.fair_kid",
       "requires_flag": "gleam:ember"
+    },
+    {
+      "id": "letter_brisa",
+      "at": {
+        "tx": 12,
+        "ty": 9
+      },
+      "facing": "down",
+      "sprite": "npc_lampwarden",
+      "movement": "static",
+      "dialogue_ref": "script.post_letter_tinderwick",
+      "requires_flag": "flag:q_post_letters",
+      "hidden_when_flag": "flag:q_post_letter_tinderwick"
     }
   ],
   "gates": [],

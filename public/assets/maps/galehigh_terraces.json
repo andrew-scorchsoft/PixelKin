@@ -1083,6 +1083,19 @@
       "movement": "look_around",
       "dialogue_ref": "npc.galehigh_gleam_farmer",
       "requires_flag": "gleam:storm"
+    },
+    {
+      "id": "letter_mira",
+      "at": {
+        "tx": 14,
+        "ty": 16
+      },
+      "facing": "down",
+      "sprite": "mira",
+      "movement": "static",
+      "dialogue_ref": "script.post_letter_galehigh",
+      "requires_flag": "flag:q_post_letters",
+      "hidden_when_flag": "flag:q_post_letter_galehigh"
     }
   ],
   "gates": [

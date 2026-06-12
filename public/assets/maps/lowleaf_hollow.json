@@ -1254,6 +1254,19 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_lowleaf_charge",
       "hidden_when_flag": "flag:picked_lowleaf_charge"
+    },
+    {
+      "id": "letter_sable",
+      "at": {
+        "tx": 14,
+        "ty": 15
+      },
+      "facing": "down",
+      "sprite": "npc_lampwarden",
+      "movement": "static",
+      "dialogue_ref": "script.post_letter_lowleaf",
+      "requires_flag": "flag:q_post_letters",
+      "hidden_when_flag": "flag:q_post_letter_lowleaf"
     }
   ],
   "gates": [],

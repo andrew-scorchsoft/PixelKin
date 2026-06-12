@@ -1497,6 +1497,52 @@ export const DIALOGUE: DialogueRegistry = {
   'npc.lucan_phial_after': [
     { speaker: 'LUCAN PYRE', portrait: 'lucan', expr: 'bittersweet', text: 'Forty years I kept that phial against a day worth spending it on, and the moment I hand it over the theatre feels LIGHTER. Pour it true, apprentice. First light is an entrance no one gets to make twice.' },
   ],
+  // ===========================================================================
+  // DAWNSTEAD — the post-game epilogue town (06-postgame, R2). Bittersweet-
+  // warm; Còr never gloated over; the lamp a keepsake now, not a necessity.
+  // ===========================================================================
+  // Còr's standing lines at his lamp (pre-wick, and after it comes home).
+  'npc.cor_lamp': [
+    { speaker: 'WARDEN CÒR', portrait: 'cor', expr: 'at_peace', text: 'The star-tenders offered me a place again. I asked for a lamp instead — one lamp, kept properly, is a whole creed. Mind the wind for me; it is the only argument we have left, the wind and I.' },
+  ],
+  'npc.cor_lamp_after': [
+    { speaker: 'WARDEN CÒR', portrait: 'cor', expr: 'at_peace', text: 'The wick draws well. Daylight in the braid of it — it will hold the first night of the new dark, when that comes. And it will come. ...Good. A lamp should have work ahead of it.' },
+  ],
+  // Fenn, the survey done — the mentor at rest.
+  'npc.fenn_dawnstead_after': [
+    { speaker: 'FENN', portrait: 'fenn', expr: 'peace', text: 'No errands left, apprentice. None. I have checked twice, and the second check was for the pleasure of it. ...The sky\'s yours now. I\'m only out here watching how well it\'s kept.' },
+  ],
+  // Latched doors — everyone\'s out in the sun (no silent doors).
+  'door.dawnstead_store': [
+    { text: 'The store is latched, lightly — a chalked note on the shutter reads: "OUT. LOOK UP." Everyone\'s out in the sun.' },
+  ],
+  'door.dawnstead_cottage': [
+    { text: 'The door is on the latch, the hearth inside cold for the first kind reason in years. Everyone\'s out in the sun.' },
+  ],
+  'door.dawnstead_home': [
+    { text: 'The latch lifts a half-inch and stops — the same stiff latch as home, the same worn step. Nobody\'s in. On a morning like this, why would they be?' },
+  ],
+  // Signs.
+  'sign.dawnstead_town': [
+    { text: 'DAWNSTEAD — Tinderwick, by morning light. The lamps are resting. Let them.' },
+  ],
+  'sign.dawnstead_verge': [
+    { text: 'The moths came out gold this morning. Nobody\'s seen the like. Catch one — they won\'t keep; nothing does. That\'s why you catch it.' },
+  ],
+  // The survey marks before Fenn asks for them (the blocked_ref tease).
+  'sign.dawnstead_blooms': [
+    { text: 'Dawn-blooms, wide open to the sky. Something has been feeding here — something with gold dust on its wings.' },
+  ],
+  // The first-dawn festival folk (Arc E capstone — belonging, not conquest).
+  'npc.dawnstead_piper': [
+    { speaker: 'PIPER', text: 'I know eight festival tunes and every one of them leans on the dark somewhere. So this morning I\'m writing the ninth. It keeps coming out in major. I\'ve stopped fighting it.' },
+  ],
+  'npc.dawnstead_baker': [
+    { speaker: 'BAKER', text: 'First batch proved by SUNLIGHT on the sill. Tastes the same, mind. Tastes completely different. Both true — have a heel of it, everyone else has.' },
+  ],
+  'npc.dawnstead_kid': [
+    { speaker: 'KID', text: 'My gran says you carry a lamp EVERYWHERE. Why? The sky does it for free now... oh. OH. Were you the one who—? GRAN! GRAN, COME AND SEE WHO IT IS!' },
+  ],
 };
 
 const FALLBACK: DialogueLine[] = [{ text: '...' }];

@@ -24,7 +24,7 @@ Legend — **Gleam** = the region's constellation reward; **Gift** = the Lantern
 | **West** (04) | 7 Solar · 8 Lunar | ✅ **complete** (W1–W4 maps + W5 content wiring, 2026-06; encounter mirrors verified in the R5 S/E sync) | — |
 | **Central/Endgame** (05) | — | ✅ **complete** (C1 maps + C2 Spire + C3 wiring, 2026-06; panel SHIP-READY; C6 polish landed c15217d) | — |
 | **The Three Hours** (07) | — | ✅ **complete** (sites + wiring + encounters + the hour-bell music, 2026-06) | — |
-| **Post-game** (06) | — | 📋 **documented, not built** (see "Remaining work" below) | Dawnstead · Starfall Vigils · day-forms · A6 |
+| **Post-game** (06) | — | 🟡 **Dawnstead built** (R2, 2026-06); Vigils/day-forms next | Starfall Vigils · day-forms |
 
 **Playable runway today: the game is COMPLETABLE — cold open → dawn.** A continuous
 main-path journey from the prologue through all eight Gleams and all four crowns,
@@ -200,7 +200,7 @@ Both fixes landed (commit c15217d): Wren keeps the gatehouse fire on Spire f1
 (`script.spire_wren_camp`, the inn-rest kit), and a new `ensureItem` cutscene op
 re-offers the Starlamp at the dais if it was spent. `npm run build` verified green.
 
-### R2 — Dawnstead (the epilogue town; one Fable map package + wiring)
+### R2 — Dawnstead ✅ DONE (2026-06)
 Spec: [`06-postgame.md`](./06-postgame.md) §Dawnstead. The C2 builder's contract (in
 `build_umbral_spire.py`'s docstring): summit `to_dawn`/`to_dawn_e` warp from (16,20)/(17,20)
 → dawnstead (15,28)/(16,28) facing up; the return pair must land ON those summit coords.
@@ -208,6 +208,16 @@ Daylit register (the frozen set's `dawngrass/dawnpath/dawntuft` families are alr
 Tinderwick-silhouette layout; A6 Wren rematch (lv 55–65, `wren_resolved` portrait); Còr
 tending a lamp (`at_peace`); the first-dawn festival; quests P1–P3. Backdrop `dawnstead-01`
 and the town music loop are already rendered. Graph node exists (`unlocked_by_flag flag:dawn`).
+
+**Delivered (2026-06):** `build_dawnstead.py` → `dawnstead.json` (C2 summit handshake honoured;
+all audits 0 failures), A6 Wren talk + re-runnable rematch (`wren_rematch`, ace 62, rival
+24×ace), `cutscene.cor_resolution` (un-walk-aroundable band, sets only `flag:cor_greeted`),
+first-dawn festival, the sunlit-verge day-form table (55–65, Ember/Light), P1 First-Dawn
+Letters (giver + all ten recipients incl. one NPC per warden town; quadrant stamps at the
+four seats), P2 A Wick for Còr (beacon-top cache → lamp deco swap), P3 Day-form Survey
+(boolean-chain fallback — no party-check op). **Owed:** the Waykeeper's "all ten delivered"
+thanks (needs the quest-counter extension); `wren_rematch`/dawnstead mirrors into
+`progression.mjs` + `EXTRA_ENCOUNTERS` (lands with R3's economy/species pass).
 
 ### R3 — The Starfall Vigils (postgame challenge chain; 2–3 packages)
 Full spec: [`06-postgame.md`](./06-postgame.md) §Starfall Vigils (written 2026-06, panel-grade):

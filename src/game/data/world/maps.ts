@@ -765,6 +765,20 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/umbral-spire-b.webp',
     ],
   },
+  // R2 — DAWNSTEAD (walkthrough 06-postgame): the epilogue town, Tinderwick's
+  // silhouette in the first true daylight. Post-game only (the graph node is
+  // unlocked_by_flag flag:dawn; entry rides the summit's to_dawn pair). The
+  // town loop is the lullaby returned in triumphant major (dawnstead-a).
+  dawnstead: {
+    json: 'assets/maps/dawnstead.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'town',
+    music: 'assets/audio/music/dawnstead-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/dawnstead-a.webp',
+      'assets/backgrounds/battle/dawnstead-b.webp',
+    ],
+  },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
   // Their battle backdrops are already rendered — see UPCOMING_BATTLE_BACKDROPS below.
@@ -783,10 +797,6 @@ export const UPCOMING_BATTLE_BACKDROPS: Record<string, string[]> = {
   vesper_crossroads: [
     'assets/backgrounds/battle/vesper-crossroads-a.webp',
     'assets/backgrounds/battle/vesper-crossroads-b.webp',
-  ],
-  dawnstead: [
-    'assets/backgrounds/battle/dawnstead-a.webp',
-    'assets/backgrounds/battle/dawnstead-b.webp',
   ],
 };
 
