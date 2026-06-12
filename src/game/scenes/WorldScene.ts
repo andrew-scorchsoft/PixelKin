@@ -85,7 +85,7 @@ const ACTOR_DEPTH = 10;
 
 export class WorldScene extends Phaser.Scene {
   private ready = false;
-  private modal = false;
+  private _modal = false;
   private controller!: InputController;
   private flags!: FlagStore;
   private abilities!: Set<AbilityId>;
@@ -120,6 +120,23 @@ export class WorldScene extends Phaser.Scene {
 
   constructor() {
     super('World');
+  }
+
+  /**
+   * Movement gate for dialogues / cutscenes / battles. Reading is plain; *opening*
+   * a modal (false→true) settles the player to idle — the per-frame `stopWalking()`
+   * that normally ends a walk-cycle is skipped while modal, so a dialogue opened on
+   * the step that triggered it would otherwise leave the player jogging in place
+   * (at the running rate if you arrived running). Cutscene `move`/`face` ops re-pose
+   * the player afterwards, so settling here is safe.
+   */
+  private get modal(): boolean {
+    return this._modal;
+  }
+
+  private set modal(value: boolean) {
+    if (value && !this._modal) this.player?.stopWalking();
+    this._modal = value;
   }
 
   create(data: WorldSceneData): void {
