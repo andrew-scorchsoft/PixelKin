@@ -2185,16 +2185,15 @@
       "walk_under": true
     },
     {
-      "id": "tree_g",
-      "sprite": "tinderwick_tree",
+      "id": "lifting_house",
+      "sprite": "pearlmoor_lifting_house",
       "at": {
-        "tx": 23,
-        "ty": 1
+        "tx": 19,
+        "ty": 0
       },
-      "w": 3,
-      "h": 4,
-      "overhang": 3,
-      "walk_under": true
+      "w": 5,
+      "h": 5,
+      "overhang": 3
     },
     {
       "id": "lamp_a",
@@ -2331,6 +2330,36 @@
       "to": {
         "tx": 8,
         "ty": 10
+      },
+      "facing": "down",
+      "transition": "door"
+    },
+    {
+      "id": "to_lifting_house",
+      "at": {
+        "tx": 21,
+        "ty": 4
+      },
+      "trigger": "step_on",
+      "to_map": "pearlmoor_lifting_house",
+      "to": {
+        "tx": 7,
+        "ty": 8
+      },
+      "facing": "down",
+      "transition": "door"
+    },
+    {
+      "id": "to_lifting_house_e",
+      "at": {
+        "tx": 22,
+        "ty": 4
+      },
+      "trigger": "step_on",
+      "to_map": "pearlmoor_lifting_house",
+      "to": {
+        "tx": 7,
+        "ty": 8
       },
       "facing": "down",
       "transition": "door"

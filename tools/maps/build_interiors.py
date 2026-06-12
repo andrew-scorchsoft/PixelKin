@@ -229,6 +229,102 @@ def build_inn():
 
 
 # =============================================================================
+#  GYM (warm) — pearlmoor_lifting_house: 14x10 lifting hall + a stone-store bay
+# =============================================================================
+def build_lifting_house():
+    W, H = 14, 10
+    door_x = W // 2  # tx 7
+    base, over = faced_room(W, H, door_x)
+    windows(over, W, [4, 11])
+    # the stone-store: an eastern bay behind an internal wall, open at the
+    # south — the lifting stones and sand-sacks stacked where lifters can SEE
+    # the next weight up (the shop-storeroom pattern)
+    partition_v(over, W, 10, 1, 4, lip="w")
+
+    objects: list = []
+    # the hearth is the focal wall piece top-centre (the warm-up fire);
+    # the chalk-and-tackle shelf west of it, hanging lamps over the floor
+    wall_mount(objects, "hearth", 5)
+    wall_mount(objects, "shelf", 2, oid="tackle")
+    wall_mount(objects, "lamp_rack", 8, solid=False)
+    # the stone-store's stock: crated lifting stones + the barrel weights
+    place(objects, "crates", 11, 2, oid="stones")
+    place(objects, "barrels", 11, 4, oid="weights")
+    # sand-sacks by the west wall (the soft landing pile)
+    place(objects, "sacks", 1, 7, oid="sandsacks")
+    # lifting benches (pews pressed into service) mid-floor, on and off the rug
+    place(objects, "rug", 5, 5, solid=False)
+    place(objects, "pew", 2, 5, oid="bench_a")
+    place(objects, "pew", 8, 5, oid="bench_b")
+    place(objects, "pew", 4, 7, oid="bench_c")
+
+    warps = [
+        {"id": "to_town", "at": {"tx": door_x, "ty": H - 1}, "trigger": "step_on",
+         "to_map": "pearlmoor_quay", "to": {"tx": 21, "ty": 5}, "facing": "down", "transition": "door"},
+    ]
+    triggers = [
+        # the house rules chalked on the tackle shelf's lower row
+        {"id": "sign_rules", "kind": "sign", "at": {"tx": 2, "ty": 3}, "activation": "interact",
+         "ref": "sign.lifting_house_rules"},
+    ]
+    # The Booji-Wooji Man side quest (S-line) — three lifters, each a stack of
+    # flag-disjoint stages on one tile: Andy hooks the quest, Abdul and Sid
+    # pass the clue along, Paul waits out on the breakwater.
+    andy_at = {"tx": 3, "ty": 4}     # north of bench_a
+    abdul_at = {"tx": 8, "ty": 4}    # north of bench_b
+    sid_at = {"tx": 11, "ty": 6}     # at the stone-store bay's mouth
+    npcs = [
+        {"id": "andy_hook", "at": dict(andy_at), "facing": "down",
+         "sprite": "lifter_andy", "movement": "look_around",
+         "dialogue_ref": "script.booji_andy",
+         "hidden_when_flag": "flag:q_south_booji"},
+        {"id": "andy_wait", "at": dict(andy_at), "facing": "down",
+         "sprite": "lifter_andy", "movement": "look_around",
+         "dialogue_ref": "npc.booji_andy_wait",
+         "requires_flag": "flag:q_south_booji",
+         "hidden_when_flag": "flag:q_south_booji_met"},
+        {"id": "andy_done", "at": dict(andy_at), "facing": "down",
+         "sprite": "lifter_andy", "movement": "look_around",
+         "dialogue_ref": "script.booji_andy_done",
+         "requires_flag": "flag:q_south_booji_met",
+         "hidden_when_flag": "flag:q_south_booji_done"},
+        {"id": "andy_after", "at": dict(andy_at), "facing": "down",
+         "sprite": "lifter_andy", "movement": "look_around",
+         "dialogue_ref": "npc.booji_andy_after",
+         "requires_flag": "flag:q_south_booji_done"},
+        {"id": "abdul_pre", "at": dict(abdul_at), "facing": "down",
+         "sprite": "lifter_abdul", "movement": "static",
+         "dialogue_ref": "npc.booji_abdul_pre",
+         "hidden_when_flag": "flag:q_south_booji"},
+        {"id": "abdul_clue", "at": dict(abdul_at), "facing": "down",
+         "sprite": "lifter_abdul", "movement": "static",
+         "dialogue_ref": "script.booji_abdul",
+         "requires_flag": "flag:q_south_booji",
+         "hidden_when_flag": "flag:q_south_booji_abdul"},
+        {"id": "abdul_after", "at": dict(abdul_at), "facing": "down",
+         "sprite": "lifter_abdul", "movement": "static",
+         "dialogue_ref": "npc.booji_abdul_after",
+         "requires_flag": "flag:q_south_booji_abdul"},
+        {"id": "sid_pre", "at": dict(sid_at), "facing": "left",
+         "sprite": "lifter_sid", "movement": "static",
+         "dialogue_ref": "npc.booji_sid_pre",
+         "hidden_when_flag": "flag:q_south_booji_abdul"},
+        {"id": "sid_clue", "at": dict(sid_at), "facing": "left",
+         "sprite": "lifter_sid", "movement": "static",
+         "dialogue_ref": "script.booji_sid",
+         "requires_flag": "flag:q_south_booji_abdul",
+         "hidden_when_flag": "flag:q_south_booji_sid"},
+        {"id": "sid_after", "at": dict(sid_at), "facing": "left",
+         "sprite": "lifter_sid", "movement": "static",
+         "dialogue_ref": "npc.booji_sid_after",
+         "requires_flag": "flag:q_south_booji_sid"},
+    ]
+    return mapdef("pearlmoor_lifting_house", "The Lifting House", W, H, WARM_SET,
+                  base, over, objects, warps, triggers, npcs,
+                  "assets/audio/music/dimglass-coast-a.mp3")
+
+
+# =============================================================================
 #  HOME (warm cosy) — tinderwick_house: 14x11 hearth-room + bed nook + kitchen
 # =============================================================================
 def build_house():
@@ -406,6 +502,7 @@ def all_maps():
                    kit_script="script.shop_kit_pearlmoor", kit_flag="flag:pearlmoor_kit",
                    chandlery=True),
         build_inn(),
+        build_lifting_house(),
     ]
 
 

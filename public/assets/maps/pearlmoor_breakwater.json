@@ -1306,6 +1306,31 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_breakwater_charge",
       "hidden_when_flag": "flag:picked_breakwater_charge"
+    },
+    {
+      "id": "paul_meet",
+      "at": {
+        "tx": 9,
+        "ty": 25
+      },
+      "facing": "down",
+      "sprite": "booji_paul",
+      "movement": "static",
+      "dialogue_ref": "script.booji_paul",
+      "requires_flag": "flag:q_south_booji_sid",
+      "hidden_when_flag": "flag:q_south_booji_met"
+    },
+    {
+      "id": "paul_after",
+      "at": {
+        "tx": 9,
+        "ty": 25
+      },
+      "facing": "down",
+      "sprite": "booji_paul",
+      "movement": "static",
+      "dialogue_ref": "npc.booji_paul_after",
+      "requires_flag": "flag:q_south_booji_met"
     }
   ],
   "gates": [],
