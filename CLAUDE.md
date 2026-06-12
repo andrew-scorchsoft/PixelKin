@@ -793,3 +793,8 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   map with only the Gifts held when it unlocks and FAILs a main-path split (an ungated exit
   unreachable from another). The three map audits (`audit_region`/`audit_flow`/`audit_warps`) are now
   in CI (`.github/workflows/checks.yml`). Watch object trunk footprints near ledges/chokes.
+- **Regenerating a creature view? Bust-cropped references propagate their crop.** The logo crop and
+  `portrait.png` are busts — passed as `--reference` they make the model cut the gen off at the belly
+  (no feet/tail), and at 64px the flat cut is invisible without zooming. Say "the references are
+  cropped; draw head-to-toe with margin below the feet" in the brief, then verify with a 6× nearest
+  upscale + the alpha bbox before packing (this bit Brinix's battle_front, twice).
