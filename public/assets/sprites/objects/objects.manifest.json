@@ -693,6 +693,76 @@
       "tw": 3,
       "th": 2
     },
+    "spire_crownshaft": {
+      "path": "assets/sprites/objects/spire_crownshaft.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "spire_great_null": {
+      "path": "assets/sprites/objects/spire_great_null.webp",
+      "width": 128,
+      "height": 96,
+      "tw": 8,
+      "th": 6
+    },
+    "spire_keystar_dais": {
+      "path": "assets/sprites/objects/spire_keystar_dais.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "spire_null_pool": {
+      "path": "assets/sprites/objects/spire_null_pool.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "spire_sleeper_cindersob": {
+      "path": "assets/sprites/objects/spire_sleeper_cindersob.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "spire_sleeper_cindersob_awake": {
+      "path": "assets/sprites/objects/spire_sleeper_cindersob_awake.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "spire_sleeper_nullmoth": {
+      "path": "assets/sprites/objects/spire_sleeper_nullmoth.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "spire_sleeper_nullmoth_awake": {
+      "path": "assets/sprites/objects/spire_sleeper_nullmoth_awake.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "spire_sleeper_voidmantle": {
+      "path": "assets/sprites/objects/spire_sleeper_voidmantle.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "spire_sleeper_voidmantle_awake": {
+      "path": "assets/sprites/objects/spire_sleeper_voidmantle_awake.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "sunkbell_shrine": {
       "path": "assets/sprites/objects/sunkbell_shrine.webp",
       "width": 48,

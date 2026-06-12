@@ -675,6 +675,55 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/penumbra-ring-b.webp',
     ],
   },
+  // C2 — the UMBRAL SPIRE (walkthrough 05): the climax dungeon, four floors
+  // (gatehouse -> null-works -> high gallery -> summit), §2a Spire tier. NO
+  // wild encounters anywhere (atlas card 13: scripted only — the Hollowing
+  // acolyte keepers are the encounters). The ascent floors run the unresolved
+  // "Black Ascent" loop; the summit runs the structured "Crown of Null" climax
+  // piece (intro -> loop -> minor->major resolve at the Keystar relight);
+  // umbral-spire-c is the relight cue for the cutscene `music` op, not a map
+  // track. flag:keystar_relit then flag:dawn are set HERE (summit bands) and
+  // nowhere else; to_dawn hands off to the post-game at dawnstead.
+  umbral_spire: {
+    json: 'assets/maps/umbral_spire.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/umbral-spire-b.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/umbral-spire-a.webp',
+      'assets/backgrounds/battle/umbral-spire-b.webp',
+    ],
+  },
+  umbral_spire_f2: {
+    json: 'assets/maps/umbral_spire_f2.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/umbral-spire-b.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/umbral-spire-a.webp',
+      'assets/backgrounds/battle/umbral-spire-b.webp',
+    ],
+  },
+  umbral_spire_f3: {
+    json: 'assets/maps/umbral_spire_f3.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/umbral-spire-b.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/umbral-spire-a.webp',
+      'assets/backgrounds/battle/umbral-spire-b.webp',
+    ],
+  },
+  umbral_spire_summit: {
+    json: 'assets/maps/umbral_spire_summit.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/umbral-spire-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/umbral-spire-a.webp',
+      'assets/backgrounds/battle/umbral-spire-b.webp',
+    ],
+  },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
   // Their battle backdrops are already rendered — see UPCOMING_BATTLE_BACKDROPS below.
@@ -693,10 +742,6 @@ export const UPCOMING_BATTLE_BACKDROPS: Record<string, string[]> = {
   vesper_crossroads: [
     'assets/backgrounds/battle/vesper-crossroads-a.webp',
     'assets/backgrounds/battle/vesper-crossroads-b.webp',
-  ],
-  umbral_spire: [
-    'assets/backgrounds/battle/umbral-spire-a.webp',
-    'assets/backgrounds/battle/umbral-spire-b.webp',
   ],
   dawnstead: [
     'assets/backgrounds/battle/dawnstead-a.webp',

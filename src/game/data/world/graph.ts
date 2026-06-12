@@ -142,6 +142,9 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'penumbra_ring', region: 'central' },
     { map_id: 'starwell', region: 'central', optional: true, reward: 'post-Crown landmark (Starreach): a near-legendary kin' },
     { map_id: 'umbral_spire', region: 'central', unlocked_by_flag: 'flag:hub_unlocked' },
+    { map_id: 'umbral_spire_f2', region: 'central' }, // the null-works maze floor (ladder pair)
+    { map_id: 'umbral_spire_f3', region: 'central' }, // the high gallery; home of the shaft compressor
+    { map_id: 'umbral_spire_summit', region: 'central' }, // the Great Null; sets keystar_relit -> dawn
     { map_id: 'dawnstead', region: 'south', unlocked_by_flag: 'flag:dawn' },
   ],
   edges: [
@@ -249,7 +252,18 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // ---- Hub -> centre, gated by the progressive crown flags -------------------------
     { from_map: 'vesper_crossroads', to_map: 'penumbra_ring', via_warp: 'to_penumbra', requires_flag: 'flag:hub_unlocked', bidirectional: true },
     { from_map: 'penumbra_ring', to_map: 'umbral_spire', via_warp: 'to_spire', requires_ability: 'starreach', bidirectional: true },
-    { from_map: 'umbral_spire', to_map: 'dawnstead', via_warp: 'to_dawn', requires_flag: 'flag:dawn', bidirectional: true },
+    // The Spire is a 4-floor ascent (§2a Spire tier): gatehouse -> null-works ->
+    // high gallery -> summit, joined by mutual ladder pairs. The high gallery's
+    // rest-ledge kindles the open core's hoist (flag:spire_shaft, set by the
+    // mandatory breather band) — the f3 <-> gatehouse shaft pair is the climb's
+    // return compressor and closes the central region's loop.
+    { from_map: 'umbral_spire', to_map: 'umbral_spire_f2', via_warp: 'ladder_up', bidirectional: true },
+    { from_map: 'umbral_spire_f2', to_map: 'umbral_spire_f3', via_warp: 'ladder_up', bidirectional: true },
+    { from_map: 'umbral_spire_f3', to_map: 'umbral_spire_summit', via_warp: 'ladder_up', bidirectional: true },
+    { from_map: 'umbral_spire_f3', to_map: 'umbral_spire', via_warp: 'shaft_down', requires_flag: 'flag:spire_shaft', bidirectional: true },
+    // The dawn road leaves from the SUMMIT (where flag:dawn is set) — the
+    // post-game hand-off; dawnstead is the post-game writer's map.
+    { from_map: 'umbral_spire_summit', to_map: 'dawnstead', via_warp: 'to_dawn', requires_flag: 'flag:dawn', bidirectional: true },
   ],
   hub: {
     map_id: 'vesper_crossroads',
