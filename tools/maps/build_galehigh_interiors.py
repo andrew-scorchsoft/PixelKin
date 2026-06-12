@@ -3,11 +3,13 @@
 Galehigh Terraces interiors (docs/world/interiors.md, on roomkit):
 
   * galehigh_lumenary  — Mira Vael's Storm hall: cool stone register with a
-    WIND/KITE identity — banner insets on the face, the Storm altar on its
-    dais, a kite-loft nook west (the festival's spare sails + line), a
-    star-ledger niche east. NO bond-test here: Mira fights at the SKYLOFT
-    launch ledge (walkthrough 03-north beat 6); the hall is the festival's
-    home and the Gleam's witness room.
+    WIND/KITE identity — a ceremonial kite HUNG over the altar (the N6 MIN-1
+    re-skin: the halls must carry their warden's element), warm kite-silk
+    banners on the face, the Storm altar on its dais, a kite-loft nook west
+    (the festival's spare sails + line), a star-ledger niche east. NO
+    bond-test here: Mira fights at the SKYLOFT launch ledge (walkthrough
+    03-north beat 6); the hall is the festival's home and the Gleam's
+    witness room.
   * galehigh_inn       — the terrace inn (the town's rest point): hearth,
     bunk room behind a partition, keeper's full rest-heal
     (script.galehigh_inn_rest — the standing kit).
@@ -22,7 +24,7 @@ Run:  ./venv/bin/python tools/maps/build_galehigh_interiors.py
 """
 from __future__ import annotations
 
-from roomkit import (WARM_SET, COOL_SET, BANNER, faced_room, windows, partition_v,
+from roomkit import (WARM_SET, COOL_SET, faced_room, windows, partition_v,
                      place, wall_mount, aisle_runner, mapdef, finish)
 
 OWED = [
@@ -41,11 +43,16 @@ def build_lumenary():
     # the kite-loft nook west + the star-ledger niche east
     partition_v(over, W, 4, 1, 4, lip="e")
     partition_v(over, W, 12, 1, 4, lip="w")
-    windows(over, W, [6, 10], tile=BANNER)
 
     objects: list = []
     # the carpet aisle (drawn runner objects — never the doormat tile)
     aisle_runner(objects, door_x, 5, H - 2)
+    # THE STORM IDENTITY: the festival's ceremonial kite hung HIGH over the
+    # altar (face_row=0 — over the cap band, clear of the altar's lantern),
+    # warm kite-silk banners flanking it on the face
+    wall_mount(objects, "kite_hung", door_x - 1, face_row=0, solid=False)
+    wall_mount(objects, "banner_warm", 5, oid="banner_l", solid=False)
+    wall_mount(objects, "banner_warm", 11, oid="banner_r", solid=False)
     # the Storm altar on its dais, braziers flanking (the festival's hearth)
     place(objects, "altar", door_x - 1, 2)
     place(objects, "brazier", 5, 3, oid="brazier_l")
@@ -61,7 +68,6 @@ def build_lumenary():
     # pews where the town gathers before the rising
     place(objects, "pew", 5, 8, oid="pew_l")
     place(objects, "pew", 10, 8, oid="pew_r")
-    wall_mount(objects, "lamp_rack", 6, solid=False)
 
     warps = [
         {"id": "to_town", "at": {"tx": door_x, "ty": H - 1}, "trigger": "step_on",

@@ -119,6 +119,20 @@
       "tw": 3,
       "th": 3
     },
+    "interior_banner_ice": {
+      "path": "assets/sprites/objects/interior_banner_ice.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "interior_banner_warm": {
+      "path": "assets/sprites/objects/interior_banner_warm.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
     "interior_barrels": {
       "path": "assets/sprites/objects/interior_barrels.webp",
       "width": 32,
@@ -181,6 +195,13 @@
       "height": 48,
       "tw": 3,
       "th": 3
+    },
+    "interior_kite_hung": {
+      "path": "assets/sprites/objects/interior_kite_hung.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
     },
     "interior_lamp_rack": {
       "path": "assets/sprites/objects/interior_lamp_rack.webp",
@@ -496,6 +517,20 @@
       "height": 32,
       "tw": 2,
       "th": 2
+    },
+    "windward_starglint_a": {
+      "path": "assets/sprites/objects/windward_starglint_a.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "windward_starglint_b": {
+      "path": "assets/sprites/objects/windward_starglint_b.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
     },
     "windward_updraft": {
       "path": "assets/sprites/objects/windward_updraft.webp",

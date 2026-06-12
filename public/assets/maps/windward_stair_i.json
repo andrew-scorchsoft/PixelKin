@@ -92,6 +92,26 @@
       "walk_under": true
     },
     {
+      "id": "kettle_camp",
+      "sprite": "pale_vault_camp_lit",
+      "at": {
+        "tx": 8,
+        "ty": 21
+      },
+      "w": 3,
+      "h": 2
+    },
+    {
+      "id": "kettle_kite_wreck",
+      "sprite": "windward_kite_wreck",
+      "at": {
+        "tx": 13,
+        "ty": 21
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
       "id": "lamp_foot",
       "sprite": "tinderwick_lamp_post",
       "at": {
@@ -107,7 +127,7 @@
       "id": "lamp_kettle",
       "sprite": "tinderwick_lamp_post",
       "at": {
-        "tx": 14,
+        "tx": 11,
         "ty": 20
       },
       "w": 1,
@@ -218,6 +238,37 @@
   ],
   "encounters": [
     {
+      "id": "verge_a",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 18,
+        "ty": 35,
+        "w": 3,
+        "h": 2
+      },
+      "encounter_rate": 0.11,
+      "table": [
+        {
+          "kin_id": 89,
+          "weight": 40,
+          "min_level": 32,
+          "max_level": 34
+        },
+        {
+          "kin_id": 45,
+          "weight": 35,
+          "min_level": 32,
+          "max_level": 34
+        },
+        {
+          "kin_id": 98,
+          "weight": 25,
+          "min_level": 32,
+          "max_level": 34
+        }
+      ]
+    },
+    {
       "id": "ledge_a",
       "terrain": "tall_grass",
       "rect": {
@@ -268,49 +319,6 @@
         "ty": 29,
         "w": 6,
         "h": 3
-      },
-      "encounter_rate": 0.11,
-      "table": [
-        {
-          "kin_id": 89,
-          "weight": 35,
-          "min_level": 34,
-          "max_level": 36
-        },
-        {
-          "kin_id": 45,
-          "weight": 25,
-          "min_level": 34,
-          "max_level": 36
-        },
-        {
-          "kin_id": 98,
-          "weight": 20,
-          "min_level": 34,
-          "max_level": 35
-        },
-        {
-          "kin_id": 95,
-          "weight": 10,
-          "min_level": 35,
-          "max_level": 36
-        },
-        {
-          "kin_id": 77,
-          "weight": 10,
-          "min_level": 34,
-          "max_level": 35
-        }
-      ]
-    },
-    {
-      "id": "ledge_c",
-      "terrain": "tall_grass",
-      "rect": {
-        "tx": 18,
-        "ty": 35,
-        "w": 3,
-        "h": 2
       },
       "encounter_rate": 0.11,
       "table": [

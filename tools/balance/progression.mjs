@@ -269,6 +269,8 @@ const JOURNEY = [
     // colour-fund (400); finds = the two wicks caches (250 + 300); valuables =
     // the stair/wind-eye/glacier Starglass Shards (3 × 1,500) + the crag and
     // undercroft Moth-ambers (2 × 600) — the cold leg pays its explorers.
+    // (Stair I's 3-tile SE foot verge rolls 32-34 — N6 MIN-3 border softener;
+    // an optional entry pocket, too small to move the leg's grind band.)
     wild: { band: [34, 38], fights: { rusher: 6, mainline: 11, explorer: 17 } },
     trainers: [
       T('Edda (crag-hand)', 'route', [K(34, 45), K(35, 89)]),

@@ -3,11 +3,14 @@
 Pale Vault Glacier interiors (docs/world/interiors.md, on roomkit):
 
   * pale_vault_lumenary — Ysolde's Frost hall: cool stone register, a quiet
-    GLACIER identity — the Frost altar on its dais, an aurora-oil store west
-    (the Lamp-Line's fuel: oil jars + barrels), a star-ledger niche east. NO
-    bond-test here: Ysolde fights at the UNDERCROFT's heart (walkthrough
-    03-north beat 8); the hall is the Aurora-watch's home and where she
-    returns once gleam:frost is held.
+    GLACIER identity (the N6 MIN-1 re-skin: the halls must carry their
+    warden's element) — the pale aurora-flame braziers from the glacier
+    outside flank the aisle, ice-spires stand in both niches, glacier-blue
+    banners on the face; the Frost altar on its dais, an aurora-oil store
+    west (the Lamp-Line's fuel), a star-ledger niche east. NO bond-test
+    here: Ysolde fights at the UNDERCROFT's heart (walkthrough 03-north
+    beat 8); the hall is the Aurora-watch's home and where she returns once
+    gleam:frost is held.
   * pale_vault_inn      — the glacier inn (the town's rest point): hearth,
     bunk room behind a partition, keeper's full rest-heal
     (script.pale_vault_inn_rest — the standing kit). The inn guest carries
@@ -23,7 +26,7 @@ Run:  ./venv/bin/python tools/maps/build_pale_vault_interiors.py
 """
 from __future__ import annotations
 
-from roomkit import (WARM_SET, COOL_SET, BANNER, faced_room, windows, partition_v,
+from roomkit import (WARM_SET, COOL_SET, faced_room, windows, partition_v,
                      place, wall_mount, aisle_runner, mapdef, finish)
 
 OWED = [
@@ -43,19 +46,33 @@ def build_lumenary():
     # the aurora-oil store west + the star-ledger niche east
     partition_v(over, W, 4, 1, 4, lip="e")
     partition_v(over, W, 12, 1, 4, lip="w")
-    windows(over, W, [6, 10], tile=BANNER)
 
     objects: list = []
     # the carpet aisle (drawn runner objects — never the doormat tile)
     aisle_runner(objects, door_x, 5, H - 2)
-    # the Frost altar on its dais, braziers flanking (the vigil's lamps)
+    # THE FROST IDENTITY: glacier-blue banners on the face; the aisle is
+    # flanked by the pale aurora-flame braziers from the glacier outside
+    # (pale_vault_brazier, 2x3 — the vigil's cold lamps, not hearth-fire)
+    wall_mount(objects, "banner_ice", 5, oid="banner_l", solid=False)
+    wall_mount(objects, "banner_ice", 11, oid="banner_r", solid=False)
+    wall_mount(objects, "lamp_rack", 6, solid=False)
+    # the Frost altar on its dais
     place(objects, "altar", door_x - 1, 2)
-    place(objects, "brazier", 5, 3, oid="brazier_l")
-    place(objects, "brazier", 11, 3, oid="brazier_r")
-    # west: the aurora-oil store — the Lamp-Line's fuel kept against the wall
+    objects += [
+        {"id": "brazier_l", "sprite": "pale_vault_brazier",
+         "at": {"tx": 5, "ty": 3}, "w": 2, "h": 3},
+        {"id": "brazier_r", "sprite": "pale_vault_brazier",
+         "at": {"tx": 10, "ty": 3}, "w": 2, "h": 3},
+    ]
+    # west: the aurora-oil store — the Lamp-Line's fuel, kept by an ice-spire
     wall_mount(objects, "shelf", 1, oid="oil_shelf")
     place(objects, "oil_jars", 1, 7, oid="aurora_oil")
-    place(objects, "barrels", 2, 4, oid="tallow_casks")
+    objects += [
+        {"id": "ice_spire_w", "sprite": "pale_vault_ice_spire",
+         "at": {"tx": 2, "ty": 4}, "w": 2, "h": 3},
+        {"id": "ice_spire_e", "sprite": "pale_vault_ice_spire",
+         "at": {"tx": 13, "ty": 4}, "w": 2, "h": 3},
+    ]
     # east: the star-ledger niche
     wall_mount(objects, "bookcase", 13, oid="star_ledger")
     place(objects, "table", 13, 7, oid="ledger_table")
@@ -63,7 +80,6 @@ def build_lumenary():
     # pews where the town keeps the watch
     place(objects, "pew", 5, 8, oid="pew_l")
     place(objects, "pew", 10, 8, oid="pew_r")
-    wall_mount(objects, "lamp_rack", 6, solid=False)
 
     warps = [
         {"id": "to_town", "at": {"tx": door_x, "ty": H - 1}, "trigger": "step_on",

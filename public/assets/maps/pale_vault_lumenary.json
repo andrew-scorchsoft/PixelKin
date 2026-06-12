@@ -244,11 +244,11 @@
         4,
         8,
         4,
-        5,
         4,
         4,
         4,
-        5,
+        4,
+        4,
         4,
         9,
         4,
@@ -441,6 +441,45 @@
       "solid": false
     },
     {
+      "id": "banner_l",
+      "sprite": "interior_banner_ice",
+      "at": {
+        "tx": 5,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "solid": false
+    },
+    {
+      "id": "banner_r",
+      "sprite": "interior_banner_ice",
+      "at": {
+        "tx": 11,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "solid": false
+    },
+    {
+      "id": "lamp_rack",
+      "sprite": "interior_lamp_rack",
+      "at": {
+        "tx": 6,
+        "ty": 1
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "solid": false
+    },
+    {
       "id": "altar",
       "sprite": "interior_altar",
       "at": {
@@ -452,23 +491,23 @@
     },
     {
       "id": "brazier_l",
-      "sprite": "interior_brazier",
+      "sprite": "pale_vault_brazier",
       "at": {
         "tx": 5,
         "ty": 3
       },
-      "w": 1,
-      "h": 2
+      "w": 2,
+      "h": 3
     },
     {
       "id": "brazier_r",
-      "sprite": "interior_brazier",
+      "sprite": "pale_vault_brazier",
       "at": {
-        "tx": 11,
+        "tx": 10,
         "ty": 3
       },
-      "w": 1,
-      "h": 2
+      "w": 2,
+      "h": 3
     },
     {
       "id": "oil_shelf",
@@ -493,14 +532,24 @@
       "h": 1
     },
     {
-      "id": "tallow_casks",
-      "sprite": "interior_barrels",
+      "id": "ice_spire_w",
+      "sprite": "pale_vault_ice_spire",
       "at": {
         "tx": 2,
         "ty": 4
       },
       "w": 2,
-      "h": 1
+      "h": 3
+    },
+    {
+      "id": "ice_spire_e",
+      "sprite": "pale_vault_ice_spire",
+      "at": {
+        "tx": 13,
+        "ty": 4
+      },
+      "w": 2,
+      "h": 3
     },
     {
       "id": "star_ledger",
@@ -553,19 +602,6 @@
       },
       "w": 3,
       "h": 1
-    },
-    {
-      "id": "lamp_rack",
-      "sprite": "interior_lamp_rack",
-      "at": {
-        "tx": 6,
-        "ty": 1
-      },
-      "w": 2,
-      "h": 2,
-      "overhang": 1,
-      "walk_under": true,
-      "solid": false
     }
   ],
   "warps": [

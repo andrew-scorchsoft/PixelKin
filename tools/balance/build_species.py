@@ -213,12 +213,14 @@ EXTRA_ENCOUNTERS = {
     "thrumvane":   [{"area": "galehigh_terraces", "terrain": "tall_grass", "rarity": "common", "min": 28, "max": 30}],
     "cirruff":     [{"area": "galehigh_terraces", "terrain": "tall_grass", "rarity": "uncommon", "min": 28, "max": 30}],
     "squallox":    [{"area": "galehigh_terraces", "terrain": "tall_grass", "rarity": "uncommon", "min": 28, "max": 30}],
-    "flintbeak":   [{"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "common", "min": 34, "max": 36},
+    # Windward I min 32: the SE foot verge rolls its own gentler 32-34 band
+    # (N6 MIN-3 — the three common Storm lines only); upper ledges stay 34-36.
+    "flintbeak":   [{"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "common", "min": 32, "max": 36},
                     {"area": "windward_stair_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 34, "max": 36},
                     {"area": "thunderroost", "terrain": "tall_grass", "rarity": "common", "min": 34, "max": 36}],
-    "sparkrat":    [{"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 34, "max": 36},
+    "sparkrat":    [{"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 32, "max": 36},
                     {"area": "windward_stair_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 34, "max": 36}],
-    "thrumble":    [{"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 34, "max": 35},
+    "thrumble":    [{"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 32, "max": 35},
                     {"area": "windward_stair_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 35, "max": 36}],
     "chillpip":    [{"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "rare", "min": 34, "max": 35}],
     "geolace":     [{"area": "windward_stair_ii", "terrain": "tall_grass", "rarity": "rare", "min": 34, "max": 36}],

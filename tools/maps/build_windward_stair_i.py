@@ -9,7 +9,10 @@ top band seam-for-seam), bare scree through the middle switchbacks, full snow
 on the high leg. Three signature touches (§8):
   1. THE S-BEND CLIMB — four cliff/glacier banks fold the path 4 times
      (§3a rule 11), each bend a beat: a frosttuft crossing, a trainer's line,
-     the kettle camp, the wind-gap;
+     the kettle camp, the wind-gap. The kettle camp on leg 3 is the §2b
+     MID-CLIMB REST SHELF (N6 MIN-2): the crag-tender's lit camp + kettle,
+     a wrecked kite, the lamp-post and the wind-cairn clustered under bank C
+     — a sheltered, encounter-free beat at the ~halfway mark of the climb;
   2. WIND-CAIRNS — the bespoke lamp-topped waymarkers marking each bend
      (assets/tilesets/windward/objects);
   3. THE WIND-GAP — the climb ends at a void chasm with a 2-tile promontory:
@@ -29,10 +32,13 @@ N1 "The Crag-tender's Kettle" — the giver camps on the upper switchbacks
 (leg 3): script.kettle_quest sets flag:q_north_kettle; the wind-burnt
 ledge-herb cache lives on Galehigh's high terrace (N1's builder, post-Updraft,
 flag:picked_ledge_herb); script.kettle_done (requires the herb via the
-placement) gives the Warm Flask + sets flag:q_north_kettle_done. The kite-maker
-flag-pair pattern keeps the states mutually exclusive. Her standing line ref
-npc.windward_crag_tender (the walkthrough hook, verbatim) is her after-state
-here and her shortcut-ledge rounds placement on Stair II.
+placement) gives the Warm Flask + sets flag:q_north_kettle_done only (N7
+POL-2: it no longer re-sets flag:q_north_kettle — nothing consumes it, and
+the NPC states key on picked_ledge_herb / q_north_kettle_done, so both orders
+hold: herb-first skips straight to kettle_done, quest-first runs the chain).
+The kite-maker flag-pair pattern keeps the states mutually exclusive. Her
+standing line ref npc.windward_crag_tender (the walkthrough hook, verbatim) is
+her after-state here and her shortcut-ledge rounds placement on Stair II.
 
 Encounter picks (no pre-designed rows — N5 mirrors into EXTRA_ENCOUNTERS):
 walkthrough's "crag-climber ram / slate-wing moth / gust-finch" mapped to real
@@ -41,6 +47,11 @@ continues Galehigh's Sparrowcaw verges), #45 Sparkrat (Stone/Storm — the only
 Stone/Storm line, the crag-climber), #98 Thrumble (Storm, Thrumvane's mid
 stage), #95 Glacewing (Storm/Frost, low weight — the slate-wing flier and the
 glacier foreshadow). Bands roll at 0.05 (mandatory), pockets at 0.11 (§3a r12).
+The SE FOOT VERGE rolls its own gentler band 32-34 (N6 MIN-3: softens the
+literal Galehigh 28-30 border step to +2 for a player who skips the skyloft
+wards) on the three common Storm-country lines only — the Frost edge
+(Glacewing/Chillpip) still starts on the cold upper ledges. Mirrored into
+EXTRA_ENCOUNTERS as min 32 for flintbeak/sparkrat/thrumble.
 
 Suggested sign copy (the wiring agent writes dialogue.ts; humour sheet — the
 distance-marker is the cluster's ONE wry line, politely exhausted):
@@ -253,10 +264,17 @@ m["objects"] += [
     # the updraft column rising out of the chasm beside the tongue
     {"id": "windgap_updraft", "sprite": "windward_updraft", "at": {"tx": 10, "ty": 1},
      "w": 2, "h": 3, "overhang": 3, "solid": False, "walk_under": True},
+    # THE REST SHELF (leg 3, ~halfway): the crag-tender's lit kettle camp,
+    # a wrecked kite beside it, the lamp-post tucked against bank C — with
+    # the wind-cairn west, a sheltered clearing the climb pauses in
+    {"id": "kettle_camp", "sprite": "pale_vault_camp_lit", "at": {"tx": 8, "ty": 21},
+     "w": 3, "h": 2},
+    {"id": "kettle_kite_wreck", "sprite": "windward_kite_wreck",
+     "at": {"tx": 13, "ty": 21}, "w": 2, "h": 2},
     # lamp posts beside (never on) the lane
     {"id": "lamp_foot", "sprite": "tinderwick_lamp_post", "at": {"tx": 12, "ty": 32},
      "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_kettle", "sprite": "tinderwick_lamp_post", "at": {"tx": 14, "ty": 20},
+    {"id": "lamp_kettle", "sprite": "tinderwick_lamp_post", "at": {"tx": 11, "ty": 20},
      "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "lamp_head", "sprite": "tinderwick_lamp_post", "at": {"tx": 13, "ty": 5},
      "w": 1, "h": 3, "overhang": 2, "walk_under": True},
@@ -294,8 +312,8 @@ m["npcs"] += [
      "dialogue_ref": "npc.windward_pilgrim"},
 ]
 owed += ["script.kettle_quest (sets flag:q_north_kettle)",
-         "script.kettle_done (gives the Warm Flask; sets flag:q_north_kettle "
-         "+ flag:q_north_kettle_done)",
+         "script.kettle_done (gives the Warm Flask; sets "
+         "flag:q_north_kettle_done)",
          "npc.windward_crag_tender", "npc.windward_pilgrim"]
 
 # ---- caches (variety rule: consumable + loose wicks + a valuable) ------------------
@@ -303,7 +321,7 @@ owed += pt.cache(m, cid="windward_balm", at=(20, 31))    # consumable, leg-2 poc
 owed += pt.cache(m, cid="windward_wicks", at=(3, 37))    # loose wicks, foot corner
 owed += pt.cache(m, cid="windward_shard", at=(4, 9))     # valuable, behind the high band
 
-# ---- encounters (band 34-36; see module docstring for the species rationale) -------
+# ---- encounters (band 34-36; the foot verge 32-34 — see module docstring) ----------
 TABLE = [{"kin_id": 89, "weight": 35, "min_level": 34, "max_level": 36},
          {"kin_id": 45, "weight": 25, "min_level": 34, "max_level": 36},
          {"kin_id": 98, "weight": 20, "min_level": 34, "max_level": 35},
@@ -312,11 +330,25 @@ TABLE = [{"kin_id": 89, "weight": 35, "min_level": 34, "max_level": 36},
          # -> glacitern line had no wild placement; the first cold ledges are
          # where the Frost edge starts (pairs with Glacewing's low weight)
          {"kin_id": 77, "weight": 10, "min_level": 34, "max_level": 35}]
+# the SE foot verge (the FIRST grass off the Galehigh gap): one band gentler,
+# the common Storm-country lines only — no Frost foreshadows down here
+TABLE_VERGE = [{"kin_id": 89, "weight": 40, "min_level": 32, "max_level": 34},
+               {"kin_id": 45, "weight": 35, "min_level": 32, "max_level": 34},
+               {"kin_id": 98, "weight": 25, "min_level": 32, "max_level": 34}]
 band_grid = mk.make_grid(W, H)
 patch_grid = mk.make_grid(W, H)
+verge_grid = mk.make_grid(W, H)
 for i in range(W * H):
     if frosttuft[i]:
-        (band_grid if (i // W) in (23, 24, 10, 11) else patch_grid)[i] = 1
+        y = i // W
+        if y in (23, 24, 10, 11):
+            band_grid[i] = 1
+        elif y >= 34:                     # the foot verge rows (grass context)
+            verge_grid[i] = 1
+        else:
+            patch_grid[i] = 1
+m["encounters"] += pt.zones_from_grid(verge_grid, W, H, terrain="tall_grass",
+                                      rate=0.11, table=TABLE_VERGE, id_prefix="verge")
 m["encounters"] += pt.zones_from_grid(patch_grid, W, H, terrain="tall_grass",
                                       rate=0.11, table=TABLE, id_prefix="ledge")
 m["encounters"] += pt.zones_from_grid(band_grid, W, H, terrain="tall_grass",

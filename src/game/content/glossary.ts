@@ -89,6 +89,12 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     unlock_flag: 'gleam:ember',
   },
   {
+    id: 'lantern_fair',
+    term: 'the Lantern-fair',
+    desc: "Tinderwick's festival, the first most Wayfarers stand inside: the whole town out under strung lanterns, a Gleam given like a welcome home. A small flame's no lesser thing — that is the fair's whole sermon.",
+    unlock_flag: 'gleam:ember',
+  },
+  {
     id: 'hollowing',
     term: 'the Hollowing',
     desc: "Not villains — frightened folk who'd let the long night come gently and stay. They put luminous kin to sleep and carry their light away.",
@@ -107,6 +113,12 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     unlock_flag: 'gleam:tide',
   },
   {
+    id: 'tide_blessing',
+    term: 'the Tide-blessing',
+    desc: "Pearlmoor's festival: when the Moor-bell rings, the quay's boats put out lantern-lit to bless the night-water that feeds the town. The sea keeps no lamps of its own — so once a season, the quay lends it theirs.",
+    unlock_flag: 'gleam:tide',
+  },
+  {
     id: 'lanternway',
     term: 'the Lanternway',
     desc: 'The lit road that rings Vesperholm, spoke to far-off spoke, meeting at the Vesper Crossroads. Its lamps wake region by region as the Gleams return.',
@@ -117,6 +129,30 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     term: 'the Skyweave Crown',
     desc: 'The ring the eight constellations make when all stand lit — closed one quadrant at a time, two Gleams to a quarter. A whole Crown, the old charts say, can part the Penumbra itself.',
     unlock_flag: 'flag:crown_south',
+  },
+  {
+    id: 'glowmoss_bloom',
+    term: 'the Glowmoss Bloom',
+    desc: "Lowleaf's festival, when the hollow's glowmoss flowers all at once: lantern-strings in the trunks, the wood outshining them. The shy folk let the moss do their speaking — once a year, it has plenty to say.",
+    unlock_flag: 'gleam:verdant',
+  },
+  {
+    id: 'lampdown_vigil',
+    term: 'the Lamp-down Vigil',
+    desc: "Cinderhead's solemn festival: the miners dim their lamps together, honouring the dark they work in. It is not surrender — every lamp is relit before the vigil ends. The town keeps the dark, and keeps its light.",
+    unlock_flag: 'gleam:stone',
+  },
+  {
+    id: 'kite_rising',
+    term: 'the Kite-rising',
+    desc: 'Galehigh\'s festival: on the windiest dusk of the year the whole town flies lit kites, "so the relit constellations have something to answer." Warm, communal, a little daft — and no one is allowed to merely watch.',
+    unlock_flag: 'gleam:storm',
+  },
+  {
+    id: 'aurora_watch',
+    term: 'the Aurora-watch',
+    desc: "Pale Vault's festival, kept in silence: the town gathers on the open ice, each with one lit lamp, watching the aurora till it fades. Calm as any quieted valley — except every flame is lit, and someone chose to hold it.",
+    unlock_flag: 'gleam:frost',
   },
   {
     id: 'warden_cor',

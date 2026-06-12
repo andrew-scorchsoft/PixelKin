@@ -1299,7 +1299,10 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'giveItem', item: 'warm_flask', count: 1 },
     { op: 'say', text: 'She fills her own felt-wrapped flask and folds your hands around it. Received the WARM FLASK!' },
     { op: 'say', speaker: 'CRAG-TENDER', text: 'For the glacier, child. When the chill gets into your kin past what a fire mends — that\'s the brew, and that\'s the flask, and now they\'re yours.' },
-    { op: 'setFlag', flag: 'flag:q_north_kettle' },
+    // Only the done-flag here: her three placements key on picked_ledge_herb /
+    // q_north_kettle_done, so both orders hold (herb-first skips kettle_quest
+    // entirely; quest-first already set q_north_kettle there) — and nothing
+    // consumes q_north_kettle, so it is not re-set.
     { op: 'setFlag', flag: 'flag:q_north_kettle_done' },
   ],
 

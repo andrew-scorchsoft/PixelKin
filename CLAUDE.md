@@ -635,6 +635,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `roomkit.aisle_runner` (stacked drawn `interior_rug_runner` objects), NEVER `runner()` —
   the DOORMAT tile repeated vertically reads as a ladder (hard black cell borders), the
   "dodgy path" look. All three Lumenaries use `aisle_runner`.**
+- **Re-running `interiorforge.py` CLOBBERS the image-gen hero masters.** It rewrites every
+  PNG in `assets/tilesets/interior/objects/` — including pieces `gen_interior_object.py`
+  re-rendered into the same paths. After adding a new piece, `git checkout` the masters you
+  didn't mean to regenerate BEFORE `pack_objects.py` (N7 got bitten). Lumenary identity:
+  the halls are re-skinned per warden (wall-HUNG `kite_hung`/`banner_*` pieces +
+  region outdoor objects like `pale_vault_brazier` — interiors.md mount-class table).
 - **A free-standing cavewall/cliff mass mid-floor reads as a dodgy black slab** (level-design
   §11 r8). Cave-town/dungeon outcrops are boulder + `cinderhead_ore_cart`/`cinderhead_crystal_cluster`
   CLUSTERS (deco + objects), never a carved wall island. Cinderhead has its own object set

@@ -3924,7 +3924,7 @@
      "area": "windward_stair_i",
      "terrain": "tall_grass",
      "rarity": "uncommon",
-     "min": 34,
+     "min": 32,
      "max": 36
     },
     {
@@ -7762,7 +7762,7 @@
      "area": "windward_stair_i",
      "terrain": "tall_grass",
      "rarity": "common",
-     "min": 34,
+     "min": 32,
      "max": 36
     },
     {
@@ -8572,7 +8572,7 @@
      "area": "windward_stair_i",
      "terrain": "tall_grass",
      "rarity": "uncommon",
-     "min": 34,
+     "min": 32,
      "max": 35
     },
     {

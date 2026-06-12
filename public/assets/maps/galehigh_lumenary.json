@@ -244,11 +244,11 @@
         4,
         8,
         4,
-        5,
         4,
         4,
         4,
-        5,
+        4,
+        4,
         4,
         9,
         4,
@@ -441,6 +441,45 @@
       "solid": false
     },
     {
+      "id": "kite_hung",
+      "sprite": "interior_kite_hung",
+      "at": {
+        "tx": 7,
+        "ty": 0
+      },
+      "w": 3,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "solid": false
+    },
+    {
+      "id": "banner_l",
+      "sprite": "interior_banner_warm",
+      "at": {
+        "tx": 5,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "solid": false
+    },
+    {
+      "id": "banner_r",
+      "sprite": "interior_banner_warm",
+      "at": {
+        "tx": 11,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "solid": false
+    },
+    {
       "id": "altar",
       "sprite": "interior_altar",
       "at": {
@@ -553,19 +592,6 @@
       },
       "w": 3,
       "h": 1
-    },
-    {
-      "id": "lamp_rack",
-      "sprite": "interior_lamp_rack",
-      "at": {
-        "tx": 6,
-        "ty": 1
-      },
-      "w": 2,
-      "h": 2,
-      "overhang": 1,
-      "walk_under": true,
-      "solid": false
     }
   ],
   "warps": [

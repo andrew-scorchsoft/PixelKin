@@ -20,15 +20,15 @@ Legend — **Gleam** = the region's constellation reward; **Gift** = the Lantern
 |--------|--------|--------|-------------|
 | **South** (01) | 1 Ember · 2 Tide | ✅ **complete** | — |
 | **East** (02) | 3 Verdant · 4 Stone | ✅ **complete** | — (Cinderhead built 2026-06) |
-| **North** (03) | 5 Storm · 6 Frost | ⬜ not started | Galehigh · Windward Stair · Pale Vault (+ spurs) |
+| **North** (03) | 5 Storm · 6 Frost | ✅ **complete** (built 2026-06) | — |
 | **West** (04) | 7 Solar · 8 Lunar | ⬜ not started | Hushfrost · Sunken Solarium · Sunvault · Nightreach (+ spurs) |
 | **Central/Endgame** (05) | — | ⬜ not started | Penumbra Ring · Umbral Spire (`hub_unlocked` roads) |
 | **Post-game** (06) | — | ⬜ not started | Dawnstead · day-forms · Còr's resolution |
 
 **Playable runway today:** a continuous main-path journey from the cold open through the
-**first four Gleams** (Ember → Tide → Verdant → **Stone**) and `flag:crown_south` +
-`flag:crown_east` — roughly the first two-and-a-half hours, ending as the player walks the
-Cinderhead Deep gallery on toward Galehigh (the North boundary, intentionally ungated).
+**first six Gleams** (Ember → Tide → Verdant → Stone → **Storm → Frost**) and
+`crown_south` + `crown_east` + `crown_north` — ending as the player leaves Pale Vault
+west into Hushfrost Pass (the West boundary, intentionally ungated; Emberward in hand).
 
 ---
 
@@ -63,13 +63,26 @@ Festivals: Glowmoss Bloom, **Lamp-down vigil**. Arcs delivered: A3 (Wren shaken)
 Vigil (#4)**. Quests: E1 Quiet Reeds, E2 Spores for the Stall, **E3 The Foreman's Ledger**,
 R3 Moss for the Quay. Crystoll Vault left as a `[LATER]` Starreach tease (void-gap signed).
 
-## North — Gleams 5–6 (`crown_north`) ⬜
+## North — Gleams 5–6 (`crown_north`) ✅ (built 2026-06)
 
-Galehigh Terraces (Storm · Mira · Updraft Kite) · Windward Stair I→II · Pale Vault Glacier
-(Frost · Ysolde · Emberward) + spurs (Wind-Eye, Thunderroost, Aurora Hollow). Arc B3 (Còr in
-person, `met_cor`), Arc A4 (Wren's wobble), Arc C3 (Fenn–Còr shared past). **The East→North
-boundary edge `cinderhead_deep → galehigh_terraces` is already in `graph.ts` and ungated** —
-the first thing the North build inherits.
+| Area | map id(s) | Status | Builder |
+|------|-----------|--------|---------|
+| Galehigh Terraces (Storm · Mira · Updraft Kite) | `galehigh_terraces` + lumenary/inn/home/kitemaker | ✅ | `build_galehigh_*.py` |
+| Galehigh Skyloft (earned Gleam loop venue) | `galehigh_skyloft` | ✅ | `build_galehigh_skyloft.py` |
+| Windward Stair I→II (`shortcut_windward`) | `windward_stair_i/ii` | ✅ | `build_windward_stair_*.py` |
+| Wind-Eye (Updraft landmark · Cumulance) | `wind_eye` | ✅ | `build_wind_eye.py` |
+| Thunderroost (Updraft spur · Strikeaven) | `thunderroost` | ✅ | `build_thunderroost.py` |
+| Pale Vault Glacier (Frost · Ysolde · Emberward) | `pale_vault_glacier` + lumenary/inn/home | ✅ | `build_pale_vault_*.py` |
+| Pale Vault Undercroft (the Lamp-Line trial) | `pale_vault_undercroft` | ✅ | `build_pale_vault_undercroft.py` |
+
+Festivals: Kite-rising, Aurora-watch (all 8 festivals now have LORE codex entries).
+Arcs delivered: B3 (Còr in person, `met_cor` — un-walk-aroundable on the oil leg),
+A4 (Wren's wobble, ace 41, unresolved exit), C3 (Fenn–Còr shared past, `fenn_c3`).
+Earned loops: the Kite-Rising Winch (#5), the Lamp-Line (#6). Quests: N1 Kettle,
+N2 Aurora Sketcher (Aurora Charm = conditional charge ×2.5 on Frost-met kin),
+N3 Wren's Ribbon (pays off at Nightreach lamp 6 — West owes the line), R4 Waystone Kite.
+Expert panel: **SHIP-READY** (`docs/reviews/north-region-panel.md`); all minors fixed
+(Lumenary re-skins, Windward rest shelf, 32–34 entry verge, Wind-Eye starglints).
 
 ## West · Central · Post-game ⬜
 

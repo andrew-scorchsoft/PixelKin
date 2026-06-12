@@ -55,6 +55,42 @@
       "h": 3,
       "overhang": 2,
       "walk_under": false
+    },
+    {
+      "id": "starglint_8_6",
+      "sprite": "windward_starglint_a",
+      "at": {
+        "tx": 8,
+        "ty": 6
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "walk_under": true
+    },
+    {
+      "id": "starglint_12_7",
+      "sprite": "windward_starglint_b",
+      "at": {
+        "tx": 12,
+        "ty": 7
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "walk_under": true
+    },
+    {
+      "id": "starglint_9_9",
+      "sprite": "windward_starglint_a",
+      "at": {
+        "tx": 9,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "walk_under": true
     }
   ],
   "warps": [

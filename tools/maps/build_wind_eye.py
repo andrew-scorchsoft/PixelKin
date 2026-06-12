@@ -134,6 +134,17 @@ m: dict = {
 
 deco = mk.make_grid(W, H)
 
+# ---- star-glints over the oculus (N6 POL-1) -----------------------------------------
+# The eye is SKY through the mountain, not absence: three faint star-twinkle
+# decals scattered on the void (non-solid — the void gates itself; under
+# starreach the pocket stays crossable), placed clear of the updraft columns.
+for (gx, gy, variant) in ((8, 6, "a"), (12, 7, "b"), (9, 9, "a")):
+    assert void[gy * W + gx], f"starglint ({gx},{gy}) must sit on a void cell"
+    m["objects"].append(
+        {"id": f"starglint_{gx}_{gy}", "sprite": f"windward_starglint_{variant}",
+         "at": {"tx": gx, "ty": gy}, "w": 1, "h": 1, "solid": False,
+         "walk_under": True})
+
 # ---- the paid dead-ends -------------------------------------------------------------
 owed += pt.cache(m, cid="windeye_charge", at=(2, 7))     # Beacon charge, W alcove
 owed += pt.cache(m, cid="windeye_glass", at=(17, 5))     # Starglass valuable, E alcove
