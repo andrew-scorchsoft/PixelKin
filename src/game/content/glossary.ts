@@ -266,6 +266,21 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'The keeper of the whole turning sky, not one constellation of it — the title Fenn carried, and the one he steps aside to give. The apprentice who began with a satchel errand ends a Star-tender, named by the man who sent them out.',
     unlock_flag: 'flag:starfall_crown',
   },
+  // The post-game's collecting spine + its capstone kin (postgame-panel MIN-1:
+  // the one hook with no re-readable trace). Both ride flags the journey
+  // already sets — no new wiring.
+  {
+    id: 'day_forms',
+    term: 'day-forms',
+    desc: 'Kin woken bright by the relit sky — the same early kin of the valleys, sun-changed, walking a daylight the Long Dusk never let them have. The moths came out gold the first morning. Catch one — they won\'t keep; nothing does. That\'s why you catch it.',
+    unlock_flag: 'flag:dawn',
+  },
+  {
+    id: 'dawnbrael',
+    term: 'Dawnbrael',
+    desc: 'The first-morning kin. The sixth shard never fell, because it was never a shard — it is the morning itself, and it answers the Ninth Lantern when the five are seated. The watchers\' oldest books drew it, and apologised for the drawing.',
+    unlock_flag: 'flag:starfall_lesson',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */

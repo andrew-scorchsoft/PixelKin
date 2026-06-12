@@ -1300,45 +1300,45 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
     { speaker: 'WARDEN CÒR', text: '...Still lit. Every one of them, still lit.' },
   ],
 
-  // --- The Starfall Vigils (06-postgame). Keeper lines VERBATIM from each site
-  // section; the glint ratio holds (~1 in 6) — Esra/Bramm/Ondra/Solenne carry
-  // the dry note, Mer and the summit are SINCERE throughout. The summit-variant
-  // lines are the Round's own frame ("we came to watch; the watching turned into
-  // a queue").
+  // --- The Starfall Vigils (06-postgame). The spec-verbatim keeper lines live
+  // in the script.vigil_* cutscenes; these refs are ONLY the battle's own short
+  // frame (the warden_cor convention — postgame-panel MAJ-1: identical strings
+  // here displayed every line twice). Glint stays with Esra/Bramm/Ondra/Solenne;
+  // Mer and the summit are SINCERE throughout.
   'trainer.vigilant_esra.intro': [
-    { speaker: 'WICK-MOTHER ESRA', text: 'I dipped Brisa\'s first wick when she came up to my elbow, dear. She vouches for you. Wicks don\'t lie — but let\'s check.' },
+    { speaker: 'WICK-MOTHER ESRA', text: 'Show me a steady flame, dear.' },
   ],
   'trainer.vigilant_esra.defeat': [
-    { speaker: 'WICK-MOTHER ESRA', text: 'Steady as her best. Take the shard — and the charm; I pressed it for whoever finally came.' },
+    { speaker: 'WICK-MOTHER ESRA', text: 'Bright. Properly bright.' },
   ],
   'trainer.vigilant_bramm.intro': [
-    { speaker: 'OLD FOREMAN BRAMM', text: 'Otho says you out-lasted him. Otho exaggerates. ...Show me he doesn\'t.' },
+    { speaker: 'OLD FOREMAN BRAMM', text: 'The deep way, then. Walk it.' },
   ],
   'trainer.vigilant_bramm.defeat': [
-    { speaker: 'OLD FOREMAN BRAMM', text: 'Hah. He doesn\'t. The deep way, walked all the way up. Take the chart — we never minted a Stone figure; turns out the sky did it for us.' },
+    { speaker: 'OLD FOREMAN BRAMM', text: 'Hah! Up you come.' },
   ],
   'trainer.vigilant_ondra.intro': [
-    { speaker: 'ONDRA VAEL', text: 'Mira flies in what I called a light breeze at her age. Stand up straight — the sky\'s sent us a present, and I open my own post.' },
+    { speaker: 'ONDRA VAEL', text: 'Stand into the wind!' },
   ],
   'trainer.vigilant_ondra.defeat': [
-    { speaker: 'ONDRA VAEL', text: 'HA! You\'d have made a kite-flier. The aerie\'s tithed every storm since the dawn broke — take it; I can\'t spend wind.' },
+    { speaker: 'ONDRA VAEL', text: 'HA! Well flown!' },
   ],
   'trainer.vigilant_solenne.intro': [
-    { speaker: 'DAME SOLENNE', text: 'I kept the last warm day for forty years, and now the mornings come free. Indulge an old keeper — one encore, full light.' },
+    { speaker: 'DAME SOLENNE', text: 'Full light, my dear. Begin.' },
   ],
   'trainer.vigilant_solenne.defeat': [
-    { speaker: 'DAME SOLENNE', text: 'Curtain. ...Do you know, I don\'t mourn the last warm day any more. There will be others. Take the figure — it\'s the sun\'s whole bow.' },
+    { speaker: 'DAME SOLENNE', text: 'And... bow.' },
   ],
   'trainer.vigilant_mer.intro': [
-    { speaker: 'WARDEN MER', text: 'I carried a null-lantern through this marsh once. I carry this now. Before I hand the light back, I will know the hand I hand it to is steady.' },
+    { speaker: 'WARDEN MER', text: 'Steady, now. Show me steady.' },
   ],
   'trainer.vigilant_mer.defeat': [
-    { speaker: 'WARDEN MER', text: 'It holds. Brighter hands than mine ever were. ...The marsh thanks you. Both of us do — both of me, perhaps.' },
+    { speaker: 'WARDEN MER', text: 'Handed on, then. Gladly.' },
   ],
 
   // The summit Round — the three who climbed ahead.
   'trainer.vigilant_ondra_summit.intro': [
-    { speaker: 'ONDRA VAEL', text: 'We came up to watch the old man\'s lesson. The watching turned into a queue. Mine\'s the front of it — warm up on me.' },
+    { speaker: 'ONDRA VAEL', text: 'Mine\'s the front of the queue — warm up on me.' },
   ],
   'trainer.vigilant_ondra_summit.defeat': [
     { speaker: 'ONDRA VAEL', text: 'Same as the aerie. Sharper. Go on — Solenne\'s next, and she rehearsed.' },
@@ -1357,11 +1357,12 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   ],
 
   // The Last Lesson — sincere throughout (the humour stopped at the marshes).
+  // The full speech lives in script.starfall_round; this is the battle's frame.
   'trainer.startender_fenn.intro': [
-    { speaker: 'STAR-TENDER FENN', text: 'No satchel this time. No errand. One lesson left, and it\'s the one I never could teach you — what you do when the teacher steps aside. Everything I have, apprentice. Show me everything you\'ve become.' },
+    { speaker: 'STAR-TENDER FENN', text: 'The last lesson, apprentice. Begin.' },
   ],
   'trainer.startender_fenn.defeat': [
-    { speaker: 'STAR-TENDER FENN', text: '...There it is. The whole sky in one steady lamp.' },
+    { speaker: 'STAR-TENDER FENN', text: 'Kept. Every lamp of it, kept.' },
   ],
 };
 

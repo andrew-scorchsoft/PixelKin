@@ -269,8 +269,13 @@ Still unmirrored (works on generated defaults): `spore_grotto`, `glowmoss_deep(_
   the same pass. Still on the generic generated-default path (works, but unmirrored):
   `tinderwick`, `gullcry_rock`, `spore_grotto`, `glowmoss_deep(_b1f)`, `cinderhead_mine`,
   `cinderhead_deep(_b1f/_b2f)` — sync when convenient.
-- Full-game expert panel playing the dev build; golden-thread playtest (cold open → dawn →
-  save export/import); README outside-in rewrite.
+- ✅ Post-game expert panel (2026-06): **SHIP-READY** — `docs/reviews/postgame-panel.md`.
+  MAJ-1 (Vigilant lines displaying twice: script + identical trainer refs) FIXED — the nine
+  vigil trainers now carry distinct short battle frames, the Còr convention; MIN-1 (no LORE
+  trace for the day-forms/Dawnbrael) FIXED — two flag-keyed glossary entries. MIN-2 (Wren's
+  "loser buys the lanterns" vs the rematch payout) accepted as-is.
+- ✅ README outside-in rewrite (2026-06) — status sections now describe the content-complete build.
+- Golden-thread human playtest (cold open → dawn → save export/import) still owed.
 - **Human-only:** first-timer playtest (G8), touch QA on real hardware (F8).
 
 ---
