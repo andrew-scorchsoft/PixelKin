@@ -3295,7 +3295,9 @@ export const SCRIPTS: ScriptRegistry = {
   // Interact, requires flag:dawn, once:true. Sets flag:starfall_begun +
   // flag:vigil_reading_1 and speaks reading 1. Small and warm — wonder, not dread.
   'cutscene.starfall_begins': [
-    { op: 'musicSting', key: 'world-lantern-light' },
+    // sfx, not musicSting: world-lantern-light is an SFX key — a sting would
+    // resolve a music URL that doesn't exist and play silence (QA MINOR-1).
+    { op: 'sfx', key: 'world-lantern-light' },
     { op: 'flashColor', color: '#ffe9a8', ms: 320 },
     { op: 'say', speaker: 'WATCHER ORIEL', text: 'All those years we watched the sky lose lights. Last night it GAVE one back — shed it, like a tree sheds a leaf it\'s finished with. The old watchers used to call them star-shards. The very old watchers used to call them invitations.' },
     { op: 'say', speaker: 'WATCHER ORIEL', text: 'I read where it fell. I\'d fetch it myself, but somebody promoted me, and now I\'m not allowed anywhere with weather.' },
