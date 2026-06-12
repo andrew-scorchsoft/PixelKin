@@ -23,7 +23,7 @@ Legend — **Gleam** = the region's constellation reward; **Gift** = the Lantern
 | **North** (03) | 5 Storm · 6 Frost | ✅ **complete** (built 2026-06) | — |
 | **West** (04) | 7 Solar · 8 Lunar | ✅ **complete** (W1–W4 maps + W5 content wiring, 2026-06) | EXTRA_ENCOUNTERS mirrors (deferred to the species-lane pass) |
 | **Central/Endgame** (05) | — | ✅ **complete** (C1 maps + C2 Spire + C3 wiring, 2026-06; panel SHIP-READY) | C6 polish: in-Spire heal point + Keylumen fallback hardening |
-| **The Three Hours** (07) | — | 🔶 **sites built** (4 maps + puzzles + cooldown engine, 2026-06) | content wiring (in flight 2026-06) |
+| **The Three Hours** (07) | — | ✅ **complete** (sites + wiring + encounters + the hour-bell music, 2026-06) | — |
 | **Post-game** (06) | — | 📋 **documented, not built** (see "Remaining work" below) | Dawnstead · Starfall Vigils · day-forms · A6 |
 
 **Playable runway today: the game is COMPLETABLE — cold open → dawn.** A continuous
@@ -180,7 +180,7 @@ prints its complete owed-refs ledger if it needs re-running. Spec: [`07-the-thre
 > below is **specified, ready to execute, and deliberately deferred** (API budget).
 > Ordering matters — packages are listed in execution order with their lane constraints.
 
-### R1 — C6 endgame polish (small; do first; content + one map JSON)
+### R1 — C6 endgame polish ✅ DONE (2026-06)
 From the Central panel's ledger (`docs/reviews/central-endgame-panel.md`):
 1. **MAJOR: in-Spire heal point.** A blackout at the climax respawns at Tinderwick — the
    harshest re-traverse in the game. Fix: a rest trigger at the Spire gatehouse (floor 1),
@@ -195,6 +195,10 @@ From the Central panel's ledger (`docs/reviews/central-endgame-panel.md`):
    waykeeper" — one `giveItem` step gated on a has-item check; needs a small `unless_item`
    step guard in the runner, or an interact NPC at the dais doing the same in content only).
 3. Re-run: typecheck + the 4 balance gates + audit_region.
+
+Both fixes landed (commit c15217d): Wren keeps the gatehouse fire on Spire f1
+(`script.spire_wren_camp`, the inn-rest kit), and a new `ensureItem` cutscene op
+re-offers the Starlamp at the dais if it was spent. `npm run build` verified green.
 
 ### R2 — Dawnstead (the epilogue town; one Fable map package + wiring)
 Spec: [`06-postgame.md`](./06-postgame.md) §Dawnstead. The C2 builder's contract (in
