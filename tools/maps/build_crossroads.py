@@ -203,12 +203,15 @@ m = {
          "to_map": "coldfog_marches_i", "to": {"tx": 8, "ty": 28}, "facing": "up", "transition": "fade"},
         {"id": "to_marsh_e", "at": {"tx": CX + 1, "ty": 0}, "trigger": "step_on",
          "to_map": "coldfog_marches_i", "to": {"tx": 8, "ty": 28}, "facing": "up", "transition": "fade"},
-        # the inward Spire road — gated on the full crown (endgame), and inert besides
+        # the inward Spire road — gated on the full crown (endgame). The fade is
+        # a step THROUGH the fog-wall: it lands on the Ring's SOUTH entry (ON
+        # its return pair, facing up toward the Spire silhouette at the north
+        # rim — the C1 look-up moment; see build_penumbra_ring.py HANDSHAKE).
         {"id": "to_penumbra", "at": {"tx": CX, "ty": H - 1}, "trigger": "step_on",
-         "to_map": "penumbra_ring", "to": {"tx": 10, "ty": 2}, "facing": "down",
+         "to_map": "penumbra_ring", "to": {"tx": 13, "ty": 33}, "facing": "up",
          "requires_flag": "flag:hub_unlocked", "transition": "fade"},
         {"id": "to_penumbra_e", "at": {"tx": CX + 1, "ty": H - 1}, "trigger": "step_on",
-         "to_map": "penumbra_ring", "to": {"tx": 10, "ty": 2}, "facing": "down",
+         "to_map": "penumbra_ring", "to": {"tx": 14, "ty": 33}, "facing": "up",
          "requires_flag": "flag:hub_unlocked", "transition": "fade"},
         # the Cinderhead Deep mine-cart shortcut (graph.ts `shortcut_crossroads`
         # return half) — wakes with flag:shortcut_mine, set on opening the sealed

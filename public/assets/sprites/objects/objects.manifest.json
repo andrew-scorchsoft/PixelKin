@@ -406,6 +406,62 @@
       "tw": 2,
       "th": 2
     },
+    "nightreach_eyepiece": {
+      "path": "assets/sprites/objects/nightreach_eyepiece.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "nightreach_lumenary": {
+      "path": "assets/sprites/objects/nightreach_lumenary.webp",
+      "width": 96,
+      "height": 128,
+      "tw": 6,
+      "th": 8
+    },
+    "nightreach_star_banner": {
+      "path": "assets/sprites/objects/nightreach_star_banner.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "nightreach_starglint_a": {
+      "path": "assets/sprites/objects/nightreach_starglint_a.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "nightreach_starglint_b": {
+      "path": "assets/sprites/objects/nightreach_starglint_b.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "nightreach_vigil_lamp": {
+      "path": "assets/sprites/objects/nightreach_vigil_lamp.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "nightreach_watch_lamp_dark": {
+      "path": "assets/sprites/objects/nightreach_watch_lamp_dark.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "nightreach_watch_lamp_lit": {
+      "path": "assets/sprites/objects/nightreach_watch_lamp_lit.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
     "pale_vault_bracket_dark": {
       "path": "assets/sprites/objects/pale_vault_bracket_dark.webp",
       "width": 16,
@@ -510,6 +566,41 @@
       "height": 64,
       "tw": 5,
       "th": 4
+    },
+    "penumbra_spire_silhouette": {
+      "path": "assets/sprites/objects/penumbra_spire_silhouette.webp",
+      "width": 160,
+      "height": 96,
+      "tw": 10,
+      "th": 6
+    },
+    "penumbra_starglint_bright_a": {
+      "path": "assets/sprites/objects/penumbra_starglint_bright_a.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "penumbra_starglint_bright_b": {
+      "path": "assets/sprites/objects/penumbra_starglint_bright_b.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "penumbra_starwell_basin": {
+      "path": "assets/sprites/objects/penumbra_starwell_basin.webp",
+      "width": 64,
+      "height": 64,
+      "tw": 4,
+      "th": 4
+    },
+    "penumbra_way_lamp": {
+      "path": "assets/sprites/objects/penumbra_way_lamp.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
     },
     "saltreach_reed_lantern_dark": {
       "path": "assets/sprites/objects/saltreach_reed_lantern_dark.webp",

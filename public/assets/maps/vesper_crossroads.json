@@ -1422,10 +1422,10 @@
       "trigger": "step_on",
       "to_map": "penumbra_ring",
       "to": {
-        "tx": 10,
-        "ty": 2
+        "tx": 13,
+        "ty": 33
       },
-      "facing": "down",
+      "facing": "up",
       "requires_flag": "flag:hub_unlocked",
       "transition": "fade"
     },
@@ -1438,10 +1438,10 @@
       "trigger": "step_on",
       "to_map": "penumbra_ring",
       "to": {
-        "tx": 10,
-        "ty": 2
+        "tx": 14,
+        "ty": 33
       },
-      "facing": "down",
+      "facing": "up",
       "requires_flag": "flag:hub_unlocked",
       "transition": "fade"
     },

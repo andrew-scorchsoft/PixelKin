@@ -645,6 +645,36 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/nightreach-observatory-b.mp3',
   },
+  // C1 — the CENTRAL threshold (walkthrough 05): the innermost band of the
+  // great dark, mostly receded by the time `flag:hub_unlocked` lets you in.
+  // Pure traversal — NO encounters (kin refuse the dark); the void family
+  // self-gates on Starreach via tileset metadata. The Spire silhouette at the
+  // north rim carries the to_spire doors (placeholder landing until C2
+  // authors umbral_spire — the engine no-ops them safely).
+  penumbra_ring: {
+    json: 'assets/maps/penumbra_ring.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/penumbra-ring-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/penumbra-ring-a.webp',
+      'assets/backgrounds/battle/penumbra-ring-b.webp',
+    ],
+  },
+  // Starwell — the well of fallen starlight off the Ring (Starreach landmark,
+  // optional): the Lunaveil #132 set-piece catch (a fixed EventTrigger via
+  // the legendaryBattle op — never a wild table; species is scripted:true).
+  // The landmark shares the Ring's loop + backdrops (the spur reuse table).
+  starwell: {
+    json: 'assets/maps/starwell.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/penumbra-ring-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/penumbra-ring-a.webp',
+      'assets/backgrounds/battle/penumbra-ring-b.webp',
+    ],
+  },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
   // Their battle backdrops are already rendered — see UPCOMING_BATTLE_BACKDROPS below.
@@ -663,10 +693,6 @@ export const UPCOMING_BATTLE_BACKDROPS: Record<string, string[]> = {
   vesper_crossroads: [
     'assets/backgrounds/battle/vesper-crossroads-a.webp',
     'assets/backgrounds/battle/vesper-crossroads-b.webp',
-  ],
-  penumbra_ring: [
-    'assets/backgrounds/battle/penumbra-ring-a.webp',
-    'assets/backgrounds/battle/penumbra-ring-b.webp',
   ],
   umbral_spire: [
     'assets/backgrounds/battle/umbral-spire-a.webp',
