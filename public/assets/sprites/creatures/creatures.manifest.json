@@ -4283,6 +4283,258 @@
         "width": 96,
         "height": 96
       }
+    },
+    "154": {
+      "slug": "vulcinder",
+      "front": {
+        "path": "assets/sprites/creatures/154_vulcinder/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/154_vulcinder/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/154_vulcinder/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/154_vulcinder/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/154_vulcinder/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "155": {
+      "slug": "brindrift",
+      "front": {
+        "path": "assets/sprites/creatures/155_brindrift/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/155_brindrift/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/155_brindrift/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/155_brindrift/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/155_brindrift/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "156": {
+      "slug": "cloverbuck",
+      "front": {
+        "path": "assets/sprites/creatures/156_cloverbuck/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/156_cloverbuck/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/156_cloverbuck/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/156_cloverbuck/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/156_cloverbuck/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "157": {
+      "slug": "pharolux",
+      "front": {
+        "path": "assets/sprites/creatures/157_pharolux/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/157_pharolux/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/157_pharolux/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/157_pharolux/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/157_pharolux/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "158": {
+      "slug": "corolion",
+      "front": {
+        "path": "assets/sprites/creatures/158_corolion/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/158_corolion/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/158_corolion/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/158_corolion/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/158_corolion/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "159": {
+      "slug": "dawnregent",
+      "front": {
+        "path": "assets/sprites/creatures/159_dawnregent/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/159_dawnregent/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/159_dawnregent/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/159_dawnregent/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/159_dawnregent/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "160": {
+      "slug": "gloamber",
+      "front": {
+        "path": "assets/sprites/creatures/160_gloamber/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/160_gloamber/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/160_gloamber/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/160_gloamber/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/160_gloamber/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "161": {
+      "slug": "noctilune",
+      "front": {
+        "path": "assets/sprites/creatures/161_noctilune/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/161_noctilune/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/161_noctilune/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/161_noctilune/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/161_noctilune/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "162": {
+      "slug": "erstmorn",
+      "front": {
+        "path": "assets/sprites/creatures/162_erstmorn/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/162_erstmorn/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/162_erstmorn/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/162_erstmorn/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/162_erstmorn/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
     }
   }
 }

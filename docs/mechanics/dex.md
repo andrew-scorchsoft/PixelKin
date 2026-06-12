@@ -1,9 +1,9 @@
-# PixelKin — The Dex (159)
+# PixelKin — The Dex (162)
 
 > Generated from `src/game/data/species.json` by `tools/balance/gen_docs.py`. Every entry is original (VISION.md). Lines show kindling chains (→).
 
-- **Total:** 159  |  **Tiers:** A:33 B:20 C:38 D:48 E:16 F:4
-- **Primary types:** Ember:17  Tide:18  Verdant:20  Stone:16  Storm:17  Frost:15  Solar:15  Lunar:13  Light:16  Dark:12
+- **Total:** 162  |  **Tiers:** A:33 B:20 C:38 D:48 E:19 F:4
+- **Primary types:** Ember:18  Tide:18  Verdant:20  Stone:16  Storm:17  Frost:15  Solar:16  Lunar:14  Light:16  Dark:12
 
 
 ## South — Tinderwick / coast (Ember, Tide)
@@ -50,6 +50,7 @@
 |  | 155 | **Brindrift** | Tide | C | Special Wall | 418 | → Brinarch (L35) | 112 | 110cm/42kg | Brinix's kindled middle form — a broader, current-riding shell-back that has learned to … |
 |  | 156 | **Cloverbuck** | Verdant | C | Physical Bruiser | 418 | → Cloverhart (L36) | 112 | 105cm/34kg | Cloverkit's kindled middle form — a young grove buck whose first antlers have budded as … |
 |  | 157 | **Pharolux** | Tide/Light | E | Special Sweeper | 558 | (from Glostrael) | 24 | 380cm/210kg | Glostrael's rare apex kindling — a vast lantern-bell leviathan the old quay-folk call th… |
+|  | 160 | **Gloamber** | Ember/Dark | E | Special Tank | 558 |  | 24 | 170cm/88kg | The First Hour — the keeper of dusk, grown heavy with an evening it has never been allow… |
 
 ## East — Lowleaf & Cinderhead (Verdant, Stone)
 
@@ -128,6 +129,7 @@
 | <img src="../../public/assets/sprites/creatures/100_squallox/battle_front.webp" width="48" alt="Squallox"> | 100 | **Squallox** | Storm | B | Physical Sweeper | 350 | → Galefox (L25) | 175 | 32cm/3.8kg | A gust-fox kit born on the exposed upper terraces, its tail a perpetual blurred blur of … |
 | <img src="../../public/assets/sprites/creatures/101_galefox/battle_front.webp" width="48" alt="Galefox"> | 101 | **Galefox** | Storm | C | Physical Sweeper | 418 | → Tempestail (L35) | 120 | 80cm/14.5kg | A sleek mid-stage gust-fox who now runs so fast it creates a visible bow-wave of compres… |
 | <img src="../../public/assets/sprites/creatures/102_tempestail/battle_front.webp" width="48" alt="Tempestail"> | 102 | **Tempestail** | Storm | D | Physical Sweeper | 498 | (from Galefox) | 57 | 145cm/40.0kg | The apex gust-fox — a lithe, white-silver predator whose tail is now a visible thunderst… |
+|  | 161 | **Noctilune** | Lunar/Dark | E | Physical Wall | 558 |  | 24 | 260cm/420kg | The Still Hour — the keeper of midnight, standing the same unrelieved watch since the ni… |
 
 ## West — Solarium & Nightreach (Solar, Lunar)
 
@@ -165,6 +167,7 @@
 | <img src="../../public/assets/sprites/creatures/132_lunaveil/battle_front.webp" width="48" alt="Lunaveil"> | 132 | **Lunaveil** | Lunar | E | Utility / Speedster | 558 |  | 24 | 320cm/140kg | The luminous anchor of the Lunar Constellation, a silken serpent-moth of impossible size… |
 |  | 158 | **Corolion** | Solar/Stone | E | Physical Bruiser | 558 | → Dawnregent (L56) | 24 | 240cm/410kg | Goldmane's apex kindling — a crowned sun-lion whose stone mane has fused into a full cor… |
 |  | 159 | **Dawnregent** | Solar/Light | F | Physical Bruiser | 642 | (from Corolion) | 6 | 320cm/180kg | The fourth and final kindling of the Gilpaw line, reached only by a Corolion raised far … |
+|  | 162 | **Erstmorn** | Solar/Light | E | Utility / Speedster | 558 |  | 24 | 200cm/64kg | The Lost Hour — the keeper of a dawn that has not come, waiting half-finished where the … |
 
 ## Outer — Coldfog Marches (Dark)
 

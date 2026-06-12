@@ -322,6 +322,50 @@ CANON = {
         "entry": "Cloverkit's kindled form: a great clover-crowned stag whose antlers bloom with year-round green even beneath the dark sky. It plants its hooves and shields the grove, taking blows that would fell lesser kin. The cub you raised became the forest's gentle guardian.",
         "category": "Grove-Guardian Kin",
     },
+    # The Three Hours (#160-162) — docs/world/walkthrough/07-the-three.md §2.
+    # Stats are NOT pinned: make_stats(role, 558, name) reproduces the dossier
+    # lines deterministically (verified). 'levelup' pins the as-met kits from
+    # the existing 125-move pool; 'art' carries the dossier's distinct
+    # silhouette/palette/direction so gen_creature.py gets a real palette line.
+    "gloamber": {
+        # the generator's Ember-E default is daybringer, wrong for a dusk kin
+        "ability": "nightfall", "hidden_ability": "emberheart",
+        "entry": "The First Hour — the keeper of dusk, grown heavy with an evening it has never been allowed to put down. Lamp-tenders say every wick in Vesperholm is lit from the one coal it carries, at one remove or another.",
+        "category": "Dusk Hour Kin",
+        "levelup": [(1, "cinder_spit"), (9, "scorch_veil"), (13, "hearth_pulse"),
+                    (24, "mend"), (31, "gloomswell"), (44, "sunflare_burst"), (52, "voidburst")],
+        "art": {
+            "silhouette": "A long, low lynx-like beast, heavy-lidded and patient, built close to the ground like something settling in for the night. A banked mane of small, steady flame-tongues runs low along the neck and shoulders — embers, not fire. At its chest, a locket of teal sea-glass holds one bright coal. The tail ends in a slow curl of pale smoke. Reads at 64px as a dark animal carrying one precious light.",
+            "palette": "Charcoal-violet fur deepening to ink (#1a1430) along the spine like a sky losing its light; ember amber (#ff8a3d) and rose for the banked mane; diamond-teal sea-glass locket; a faint dusk-rose gradient on the brow and flanks.",
+            "direction": "The moment of lamp-lighting as an animal. Heavy, warm at the core, unhurried — the dusk as a keeper, not a threat. The single chest-coal must read as the brightest pixel on the sprite.",
+        },
+    },
+    "noctilune": {
+        # the Lunar-E default nightfall is already Gloamber's curtain —
+        # Midnight doesn't bring the night, it IS the night
+        "ability": "mirrorlight", "hidden_ability": "nightsight",
+        "entry": "The Still Hour — the keeper of midnight, standing the same unrelieved watch since the night stopped turning. The Hollowing call it proof that the dark can be gentle; Noctilune, for its part, has never once answered them.",
+        "category": "Midnight Hour Kin",
+        "levelup": [(1, "moon_nip"), (13, "moonshard"), (24, "lull"), (30, "bulwark"),
+                    (38, "nightfall_veil"), (46, "shadow_rend"), (54, "eclipse_wave")],
+        "art": {
+            "silhouette": "A huge pangolin-like sentinel, its overlapping scales panes of midnight-blue glass, each pane holding exactly one star-speck. Standing, it reads as a hooded watchman; curled, as a dark moonless disc. A small unstruck bell of dark ice hangs at its throat. Eyes are two thin silver crescents. At 64px it should read like a piece of the midnight sky knelt down to wait.",
+            "palette": "Night (#0b1026) and deepBlue (#13205a) scale-panes; diamond (#9fe7ff) star-specks, one per scale; pale moon-grey underbelly and claws; the throat-bell a darker, colder blue than everything around it.",
+            "direction": "The deep of night as armour. Utterly still until it isn't. No menace — endurance. The unstruck bell is the motif: midnight is the hour no bell marks.",
+        },
+    },
+    "erstmorn": {
+        # abilities match the Solar-E generator defaults (daybringer/sunsoak)
+        "entry": "The Lost Hour — the keeper of a dawn that has not come, waiting half-finished where the morning was meant to land. Those who meet it say the worst part is its patience: it does not doubt the sunrise, and it will not be told the years.",
+        "category": "Dawn Hour Kin",
+        "levelup": [(1, "sun_jab"), (13, "glint_ray"), (22, "daybeam"), (28, "dazzle_flash"),
+                    (36, "sun_nap"), (44, "light_pulse"), (52, "sunburst_nova")],
+        "art": {
+            "silhouette": "A tall, slender hare of pale gold light, mid-stride even when standing. Long ears trail behind it like horizon ribbons. Parts of its outline are UNFINISHED — one hindquarter and the tip of one ear fade into faint sketch-lines of light, as if the painter stopped at the moment the dawn did. The missing parts must read as waiting, not wounded.",
+            "palette": "Bone (#f5f0e1) and pale gold body; a sunrise gradient of rose and amber along the spine and ear-ribbons; the unfinished edges in faint diamond-cyan (#9fe7ff) sketch-lines over transparency.",
+            "direction": "An unfinished sunrise as a creature — fast, gentle, heartbreaking. The emotional apex of the triad: in the Long Dusk it is incomplete by definition, and the sprite should make the player want to fix that.",
+        },
+    },
 }
 
 def slugify(name):
@@ -438,15 +482,28 @@ def main():
                         rec["encounters"].append(enc)
                 except Exception:
                     pass
-        # apply canonical overrides for the two existing starters
+        # apply canonical overrides (starters + appended canon kin). Every key
+        # is optional: pin only what the dossier locks (e.g. the Three Hours
+        # pin abilities/dex/kits/art but trust make_stats for their lines).
         canon = CANON.get(rec["slug"])
         if canon:
-            rec["stats"] = canon["stats"]; rec["bst"] = sum(canon["stats"].values())
-            rec["ability"] = canon["ability"]; rec["hidden_ability"] = canon["hidden_ability"]
-            rec["dex"]["entry"] = canon["entry"]; rec["dex"]["category"] = canon["category"]
-            rec["dex"]["size_cm"] = canon["size_cm"]; rec["dex"]["weight_kg"] = canon["weight_kg"]
-            sig = canon["signature"]
-            if sig in MOVE_IDS and not any(e["move"] == sig for e in rec["learnset"]["levelup"]):
+            if "stats" in canon:
+                rec["stats"] = canon["stats"]; rec["bst"] = sum(canon["stats"].values())
+            if "ability" in canon: rec["ability"] = canon["ability"]
+            if "hidden_ability" in canon: rec["hidden_ability"] = canon["hidden_ability"]
+            if "entry" in canon: rec["dex"]["entry"] = canon["entry"]
+            if "category" in canon: rec["dex"]["category"] = canon["category"]
+            if "size_cm" in canon: rec["dex"]["size_cm"] = canon["size_cm"]
+            if "weight_kg" in canon: rec["dex"]["weight_kg"] = canon["weight_kg"]
+            if "art" in canon: rec["art"].update(canon["art"])
+            if "levelup" in canon:  # pinned full ladder (validated, level-sorted)
+                rec["learnset"]["levelup"] = [
+                    {"level": lvl, "move": mv}
+                    for lvl, mv in sorted(canon["levelup"], key=lambda r: r[0])
+                    if mv in MOVE_IDS
+                ]
+            sig = canon.get("signature")
+            if sig and sig in MOVE_IDS and not any(e["move"] == sig for e in rec["learnset"]["levelup"]):
                 rec["learnset"]["levelup"].insert(0, {"level": 1, "move": sig})
         # apex signature moves (late learnset payoff)
         sigrow = SIGNATURE_MOVES.get(rec["slug"])

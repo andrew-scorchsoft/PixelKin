@@ -1,0 +1,75 @@
+{
+  "id": 160,
+  "slug": "gloamber",
+  "name": "Gloamber",
+  "types": [
+    "Ember",
+    "Dark"
+  ],
+  "role": "Special Tank",
+  "tier": "E",
+  "stats": {
+    "hp": 112,
+    "atk": 50,
+    "def": 78,
+    "spa": 123,
+    "spd": 100,
+    "spe": 95
+  },
+  "bst": 558,
+  "ability": "nightfall",
+  "hidden_ability": "emberheart",
+  "catchRate": 24,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "cinder_spit"
+      },
+      {
+        "level": 9,
+        "move": "scorch_veil"
+      },
+      {
+        "level": 13,
+        "move": "hearth_pulse"
+      },
+      {
+        "level": 24,
+        "move": "mend"
+      },
+      {
+        "level": 31,
+        "move": "gloomswell"
+      },
+      {
+        "level": 44,
+        "move": "sunflare_burst"
+      },
+      {
+        "level": 52,
+        "move": "voidburst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The First Hour \u2014 the keeper of dusk, grown heavy with an evening it has never been allowed to put down. Lamp-tenders say every wick in Vesperholm is lit from the one coal it carries, at one remove or another.",
+    "category": "Dusk Hour Kin",
+    "size_cm": 170,
+    "weight_kg": 88,
+    "habitat": "south"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "A long, low lynx-like beast, heavy-lidded and patient, built close to the ground like something settling in for the night. A banked mane of small, steady flame-tongues runs low along the neck and shoulders \u2014 embers, not fire. At its chest, a locket of teal sea-glass holds one bright coal. The tail ends in a slow curl of pale smoke. Reads at 64px as a dark animal carrying one precious light.",
+    "palette": "Charcoal-violet fur deepening to ink (#1a1430) along the spine like a sky losing its light; ember amber (#ff8a3d) and rose for the banked mane; diamond-teal sea-glass locket; a faint dusk-rose gradient on the brow and flanks.",
+    "direction": "The moment of lamp-lighting as an animal. Heavy, warm at the core, unhurried \u2014 the dusk as a keeper, not a threat. The single chest-coal must read as the brightest pixel on the sprite."
+  },
+  "provenance_concept_id": "X-GLOAMBER"
+}
