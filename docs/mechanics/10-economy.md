@@ -56,6 +56,7 @@ Prices live on `ItemDef.price` (`content/items.ts`); one price everywhere.
 | Glow Charge | one throw, catch ×1.5 | 200w | Tinderwick |
 | Beacon Charge | one throw, catch ×2.5 | 600w | everywhere, once `gleam:ember` is held (flag-gated stock) |
 | Star-charts | teach a move | 800–4,000w by tier (§6) | everywhere |
+| Hooded Lamp | key item; toggle — wild encounter rate ×0.5 while hooded | 600w | Pearlmoor chandlery, once `gleam:tide` is held (flag-gated stock) |
 
 **Catching reframed (2026-06):** the vesperlamp is a **key item** — one device,
 plain throws free — and the purchasable line is **charges** (one boosted throw

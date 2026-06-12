@@ -55,6 +55,9 @@ const PRICES = {
   tallow_balm: 120, warm_balm: 500, bright_balm: 1200,
   glow_charge: 200, beacon_charge: 600,
   chart_early: 800, chart_mid: 1400, chart_late: 2400, chart_end: 4000,
+  // one-time optional QoL key item (Pearlmoor, gleam:tide stock) — outside the
+  // modelled region budgets; listed for the three-home price mirror.
+  hooded_lamp: 600,
 };
 
 // ---------------------------------------------------------------------------

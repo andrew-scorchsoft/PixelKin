@@ -11,6 +11,7 @@
 import Phaser from 'phaser';
 import { theme, hex } from '@game/ui/theme';
 import { makeText } from '@game/ui/Text';
+import { battlePaceFactor } from '@game/ui/preferences';
 import type { Species, KinType } from '@game/data/dex';
 import {
   hasCreatureSprite,
@@ -127,7 +128,7 @@ export class Battler {
         targets: this.container,
         y: this.container.y + 16,
         alpha: 0,
-        duration: 320,
+        duration: 320 * battlePaceFactor(),
         ease: 'Quad.in',
         onComplete: () => resolve(),
       });

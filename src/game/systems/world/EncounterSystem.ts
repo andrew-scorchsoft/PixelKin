@@ -21,6 +21,13 @@ export interface EncounterIntent {
  *  is encounter ground, like the classics. */
 const TILE_BOUND = new Set<EncounterTerrain>(['tall_grass', 'water']);
 
+/** World flag set while the Hooded Lamp is shaded (ITEMS → toggle): the lamp's
+ *  dimmed hood lets wild kin pass — the backtracker's friend. While held, every
+ *  zone's effective encounter rate is halved (see `HOODED_RATE_FACTOR`). */
+export const HOODED_LAMP_FLAG = 'flag:lamp_hooded' as WorldFlag;
+/** How much the Hooded Lamp dampens the per-step encounter chance (×0.5). */
+const HOODED_RATE_FACTOR = 0.5;
+
 export class EncounterSystem {
   constructor(private readonly map: RuntimeMap) {}
 
@@ -38,6 +45,8 @@ export class EncounterSystem {
     abilities: ReadonlySet<AbilityId>,
     hasFlag: (flag: WorldFlag) => boolean = () => false,
   ): EncounterIntent | null {
+    // The Hooded Lamp halves every zone's effective rate while shaded.
+    const rateFactor = hasFlag(HOODED_LAMP_FLAG) ? HOODED_RATE_FACTOR : 1;
     for (const zone of this.map.def.encounters) {
       if (zone.requires_ability && !abilities.has(zone.requires_ability)) continue;
       // Flag-staggered zones: a restored site's encounters bloom in (requires_flag)
@@ -50,7 +59,7 @@ export class EncounterSystem {
       // rect can be a loose bounding box around an ORGANIC patch (the paint is
       // the truth — see tools/maps/patterns.py zones_from_grid).
       if (TILE_BOUND.has(zone.terrain) && !this.tileHasTerrain(tx, ty, zone.terrain)) continue;
-      if (Math.random() >= zone.encounter_rate) continue;
+      if (Math.random() >= zone.encounter_rate * rateFactor) continue;
       if (zone.table.length === 0) continue;
 
       const total = zone.table.reduce((sum, e) => sum + e.weight, 0);

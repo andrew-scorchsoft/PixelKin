@@ -39,6 +39,7 @@ import { BattleMessage } from '@game/ui/battle/BattleMessage';
 import { MoveLearnPrompt } from '@game/ui/MoveLearnPrompt';
 import { KindlePrompt } from '@game/ui/KindlePrompt';
 import { getTrainer, getTrainerLines } from '@game/content/trainers';
+import { typeEffectiveness } from '@game/data/dex';
 import { getItem } from '@game/content/items';
 import { trainerPayout } from '@game/content/economy';
 import { resolveBattleBackdrop } from '@game/data/world/maps';
@@ -60,8 +61,21 @@ export type BattleRequest =
       party: KinInstanceData[];
       box: KinInstanceData[];
       inventory: InventoryData;
+      /** Species ids the player has CAUGHT (SaveGame.dex.caught). When the foe's
+       *  species is in here, the fight menu annotates each damaging move with its
+       *  effectiveness vs the foe — knowledge earned by having caught one before.
+       *  Optional + degrades to "no hints" when absent (threaded like `box`). */
+      dex_caught?: number[];
     }
-  | { kind: 'trainer'; trainer: string; party: KinInstanceData[]; box: KinInstanceData[]; inventory: InventoryData };
+  | {
+      kind: 'trainer';
+      trainer: string;
+      party: KinInstanceData[];
+      box: KinInstanceData[];
+      inventory: InventoryData;
+      /** See the wild variant — foes the player has caught get move hints. */
+      dex_caught?: number[];
+    };
 
 /** What the scene hands back via onComplete. */
 export interface BattleResult {
@@ -113,6 +127,8 @@ export class BattleScene extends Phaser.Scene {
   private grantAbilities: AbilityId[] = [];
   private moneyEarned = 0;
   private dexSeen = new Set<number>();
+  /** Species the player has caught — gates the fight menu's effectiveness hints. */
+  private dexCaught = new Set<number>();
   private finished = false;
   /** Turns already resolved — 0 while choosing the encounter's FIRST action
    *  (conditional charges with `first_turn` check this at throw time). */
@@ -132,6 +148,7 @@ export class BattleScene extends Phaser.Scene {
     this.grantAbilities = [];
     this.moneyEarned = 0;
     this.dexSeen = new Set();
+    this.dexCaught = new Set(data.dex_caught ?? []);
     this.turnsResolved = 0;
     this.participants = new Set();
     this.cameras.main.setBackgroundColor(COLORS.night);
@@ -361,8 +378,13 @@ export class BattleScene extends Phaser.Scene {
   /** Returns engine events for the chosen move, or null if the player backed out. */
   private async fightMenu(): Promise<BattleEvent[] | null> {
     const moves = this.engine.player.moves;
+    // Effectiveness hints are EARNED: only shown for a foe whose species the
+    // player has already caught (you've studied one up close).
+    const showHints = this.dexCaught.has(this.engine.foe.species.id);
     const opts: MenuOption[] = moves.map((k, i) => ({
-      label: `${k.move.name}  ${k.charges}/${k.move.charges}`,
+      label: `${k.move.name}  ${k.charges}/${k.move.charges}${
+        showHints ? this.effectivenessGlyph(k.move) : ''
+      }`,
       value: String(i),
       enabled: k.charges > 0,
     }));
@@ -373,6 +395,24 @@ export class BattleScene extends Phaser.Scene {
     const choice = await new Menu(this, opts, { x: 6, y: this.menuY(opts.length), sfx: this.sfx }).run();
     if (choice === null) return null;
     return this.engine.takeTurn({ kind: 'move', moveIndex: Number(choice) });
+  }
+
+  /**
+   * The effectiveness suffix glyph for a move vs the current foe, shown only when
+   * the foe's species is already in the player's register (caught). Status moves
+   * (no power) get no marker — the hint is about *damage*. The glyphs read cleanly
+   * at the 8px pixel font: ' >>' super, ' >' normal, ' <' resisted, ' x' immune.
+   */
+  private effectivenessGlyph(move: { category: string; type: string; power: number }): string {
+    if (move.category === 'status' || move.power <= 0) return '';
+    const mult = typeEffectiveness(
+      move.type as Parameters<typeof typeEffectiveness>[0],
+      this.engine.foe.species.types,
+    );
+    if (mult === 0) return ' x';
+    if (mult > 1) return ' >>';
+    if (mult < 1) return ' <';
+    return ' >';
   }
 
   /**

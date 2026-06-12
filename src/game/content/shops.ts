@@ -39,6 +39,7 @@ export const SHOPS: ShopRegistry = {
       'warm_balm',
       'glow_charge',
       { item: 'beacon_charge', requires_flag: 'gleam:ember' },
+      { item: 'hooded_lamp', requires_flag: 'gleam:tide' },
       'chart_wave_crash',
       'chart_hearth_pulse',
       'chart_gust_up',

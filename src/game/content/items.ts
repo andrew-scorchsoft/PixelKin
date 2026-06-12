@@ -68,6 +68,17 @@ export const ITEMS: ItemRegistry = {
     heal: 999,
     price: 1200,
   },
+  // A chandler's lamp with a sliding tin hood: shade it and wild kin let you pass.
+  // A toggleable key item (ITEMS → use) — while hooded it halves the wild
+  // encounter rate (the backtracker's friend; sets `flag:lamp_hooded`). Sold at
+  // the Pearlmoor chandlery once the Tide Gleam stands (docs/mechanics/10-economy.md).
+  hooded_lamp: {
+    id: 'hooded_lamp',
+    name: 'Hooded Lamp',
+    desc: 'A second lamp under a sliding tin hood. Shade it and you walk the old roads quieter — wild kin let a dimmed light pass. Use to draw the hood open or closed.',
+    category: 'key',
+    price: 600,
+  },
   fenn_satchel: {
     id: 'fenn_satchel',
     name: "Fenn's Satchel",
