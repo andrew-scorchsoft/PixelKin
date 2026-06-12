@@ -583,6 +583,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   engine-faithful movement model + graph.ts parser). On first run flow caught 4 shipped
   bugs (sealed cache, sign sealing Pearlmoor's west spoke, unapproachable Tideglass door,
   walk-aroundable `dusk_begins`/`glowmoss_drained`) — trust the audit over a mental walk.
+  **`tools/maps/audit_spatial.py` judges the GEOMETRY** (every overworld edge link lands on
+  a neighbouring edge, facing inward, mirrored both ways, no lateral teleports; the bent
+  Galehigh spoke and the penumbra-ring same-edge U-turn are encoded as deliberate notes) —
+  run it after moving any overworld edge warp. Facing convention it enforces: `facing`
+  points INWARD from the LANDING edge, not "continue the exit direction".
 - **A story step_on band must cover the WHOLE cut — but only its WALKABLE tiles.** One
   trigger tile on a wide corridor is walk-aroundable (this bit `dusk_begins`); but a band
   tile on a solid/sealed cell now FAILS `audit_flow` as unreachable content (this bit the
