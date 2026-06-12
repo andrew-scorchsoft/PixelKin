@@ -2825,7 +2825,7 @@ export const SCRIPTS: ScriptRegistry = {
   // optional-content unlock, not progression.
   'script.netmender_hours': [
     { op: 'dialogue', ref: 'npc.netmender_done' },
-    { op: 'say', if_flag: 'gleam:verdant', speaker: 'NETMENDER', text: 'And since you keep turning up wherever a lamp wants tending — a thing I would tell nobody sensible.' },
+    { op: 'say', if_flag: 'gleam:verdant', speaker: 'NETMENDER', text: 'And since you keep turning up wherever a lamp wants tending — here\'s a thing I would tell nobody sensible.' },
     { op: 'say', if_flag: 'gleam:verdant', speaker: 'NETMENDER', text: 'There\'s a low singing in the cliff at lamp-lighting time. Could be the tide. Tide\'s never once kept a tune before, mind.' },
     { op: 'say', if_flag: 'gleam:verdant', speaker: 'NETMENDER', text: 'It comes up out of Tideglass — the glass cavern under the coast, where the old fisher\'s wreck went down. Deep-walkers\' ground now, with that glimmer-step of yours. If something under the glass sings the evening in... somebody who LIGHTS things ought to go and hear it.' },
     { op: 'setFlag', if_flag: 'gleam:verdant', flag: 'flag:three_dusk_rumour' },
