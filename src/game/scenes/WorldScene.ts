@@ -57,6 +57,7 @@ import { SAVE_SCHEMA_VERSION } from '@game/systems/save/types';
 import { SaveManager } from '@game/systems/save/SaveManager';
 import type { WorldSnapshot } from '@game/data/world/types';
 import { MAP_REGISTRY } from '@game/data/world/maps';
+import { LamplightMask } from '@game/systems/world/LamplightMask';
 import { VESPERHOLM_GRAPH } from '@game/data/world/graph';
 import type { AbilityId, Facing, Warp, EventTrigger, NpcPlacement, MapObject, EncounterTerrain } from '@game/data/world/types';
 
@@ -98,6 +99,8 @@ export class WorldScene extends Phaser.Scene {
   private render?: MapRenderResult;
   private player!: Player;
   private npcs: Npc[] = [];
+  /** The spine §5 reveal mask — present only on maps flagged `dark`. */
+  private lamplight?: LamplightMask;
 
   private party: KinInstanceData[] = [];
   /** Kin kept at the Hearth (storage); overflow from a full lamp lands here. */
@@ -186,6 +189,12 @@ export class WorldScene extends Phaser.Scene {
 
       this.spawnNpcs();
       this.refreshObjects();
+      // Dark terrain (spine §5): partial dusk beyond the vesperlamp's circle.
+      // Additive only — the main lane is lit and the dusk is never opaque.
+      if (MAP_REGISTRY[mapId]?.dark) {
+        this.lamplight = new LamplightMask(this, this.flags.countHeld('gleam:'));
+        this.lamplight.follow(this.player.sprite.x, this.player.sprite.y);
+      }
       this.playMapMusic();
       this.warmEncounterSprites();
 
@@ -281,6 +290,8 @@ export class WorldScene extends Phaser.Scene {
 
   private teardownMap(): void {
     this.cameras.main.stopFollow();
+    this.lamplight?.destroy();
+    this.lamplight = undefined;
     this.player?.destroy();
     for (const npc of this.npcs) npc.destroy();
     this.npcs = [];
@@ -349,6 +360,8 @@ export class WorldScene extends Phaser.Scene {
     // never rebuild NPCs into a scene that is already shutting down.
     if (!this.scene.isActive()) return;
     this.refreshObjects();
+    // A Gleam may have just landed — widen the lit circle on dark maps.
+    this.lamplight?.setBrightness(this.flags.countHeld('gleam:'));
     this.npcs = this.npcs.filter((npc) => {
       if (this.npcVisible(npc.placement)) return true;
       npc.destroy();
@@ -907,6 +920,7 @@ export class WorldScene extends Phaser.Scene {
 
     this.player.syncDepth(ACTOR_DEPTH);
     for (const npc of this.npcs) npc.syncDepth(ACTOR_DEPTH);
+    this.lamplight?.follow(this.player.sprite.x, this.player.sprite.y);
 
     this.debug.set([
       `map: ${this.map.def.id}`,

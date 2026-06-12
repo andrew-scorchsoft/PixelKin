@@ -101,6 +101,9 @@ export const theme = {
    *  so the dialogue box still reads over the lower bar. */
   depth: {
     world: 0,
+    /** The Lamplight reveal mask on dark maps — above the world and actors,
+     *  below every UI/cinematic band (it's diegetic darkness, not chrome). */
+    lamplight: 800,
     tint: 905,
     overlayDim: 900,
     letterbox: 950,

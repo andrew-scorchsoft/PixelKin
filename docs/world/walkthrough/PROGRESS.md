@@ -285,10 +285,12 @@ Still unmirrored (works on generated defaults): `spore_grotto`, `glowmoss_deep(_
 - **Status conditions** — ✅ live (BattleEngine Part B, 2026-06).
 - **Move-learn prompt / kindling** — ✅ live.
 - **Wick economy / shops / Star-charts** — ✅ live.
-- **Lamplight (vesperlamp brightness tiers, dark-map reveal mask)** — ⚠️ **designed, not built**
-  (spine §5/§8). Region files author optional `[LATER: Lamplight ≥ …]` reveals toward it; the
-  render feature is still on the engine roadmap. Cinderhead's far-gallery reveals are tagged
-  for it, not gated on it.
+- **Lamplight (vesperlamp brightness tiers, dark-map reveal mask)** — ✅ **BUILT (2026-06)**:
+  `systems/world/lamplight.ts` (spine §5 tiers verbatim, Ember-glow→Radiant from Gleam count)
+  + `LamplightMask` (stepped radial dark on maps flagged `dark: true` in `world/maps.ts`,
+  alpha-capped — never blocking) + derived `flag:lamplight_*` tier flags (FlagStore.derive(),
+  validate-guarded) gating four reveal caches (Tideglass/Glowmoss/Cinderhead Deep/Hushfrost).
 - **Sunsketch light-puzzle (timed bloom)** — ⚠️ proposed (West). Sequential/redirect work now.
-- **Quest counters (N-of-M)** — ⚠️ small `FlagStore` extension; all current quests use the
-  boolean-chain fallback.
+- **Quest counters (N-of-M)** — ✅ **BUILT (2026-06)**: `FlagStore.countHeld(prefix)` + the
+  derived-flag pattern (P1's `flag:q_post_letters_all` is the worked example); the quest
+  JOURNAL (pause menu) reads stage progress from it.

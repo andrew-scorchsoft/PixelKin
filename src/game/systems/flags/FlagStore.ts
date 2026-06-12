@@ -8,6 +8,7 @@
  * that lives in WorldSnapshot, so saving is just handing this map over.
  */
 import type { WorldFlag } from '@game/data/world/types';
+import { LAMPLIGHT_FLAGS } from '@game/systems/world/lamplight';
 
 /**
  * The Skyweave Crown's derived flags. A quadrant's crown is HELD, never set by
@@ -93,6 +94,13 @@ export class FlagStore {
     }
     if (POST_LETTER_FLAGS.every((f) => this.flags[f] === true)) {
       this.flags[POST_LETTERS_ALL] = true;
+    }
+    // Lamplight tier flags follow the Gleam count (spine §5): each relit
+    // constellation feeds the lamp. Derived like the crowns — content gates
+    // reveals on these with requires_flag, never hand-sets them.
+    const gleams = this.countHeld('gleam:');
+    for (const { flag, minGleams } of LAMPLIGHT_FLAGS) {
+      if (gleams >= minGleams) this.flags[flag] = true;
     }
   }
 

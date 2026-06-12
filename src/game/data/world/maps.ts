@@ -23,6 +23,17 @@ export interface MapRegistryEntry {
    * back to the plain night fill. See docs/art-style.md ("Battle backdrops").
    */
   battle_backdrops?: string[];
+  /**
+   * Dark terrain (walkthrough spine §5, Lamplight): WorldScene draws the reveal
+   * mask here — partial dusk beyond the vesperlamp's lit circle, whose radius
+   * grows with Gleams held. ADDITIVE ONLY: the main lane stays diegetically lit
+   * and the dusk is never opaque, so nothing required ever depends on
+   * brightness. Canon exclusions: Coldfog resists Lamplight (its drained dark
+   * never brightens), the Umbral Spire keeps the climax's own lighting, and
+   * towns/routes stay unmasked (Cinderhead Mine is a settlement, so the mask
+   * starts at Cinderhead Deep).
+   */
+  dark?: boolean;
 }
 
 export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
@@ -157,6 +168,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/tideglass_cavern.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
+    dark: true,
     music: 'assets/audio/music/dimglass-coast-c.mp3',
     battle_backdrops: ['assets/backgrounds/battle/tideglass-gallery-a.webp'],
   },
@@ -164,6 +176,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/tideglass_gallery.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
+    dark: true,
     music: 'assets/audio/music/dimglass-coast-c.mp3',
     battle_backdrops: ['assets/backgrounds/battle/tideglass-gallery-a.webp'],
   },
@@ -191,6 +204,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/glowmoss_deep.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
+    dark: true,
     music: 'assets/audio/music/lowleaf-hollow-c.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/glowmoss-deep-a.webp',
@@ -203,6 +217,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/glowmoss_deep_b1f.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
+    dark: true,
     music: 'assets/audio/music/lowleaf-hollow-c.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/glowmoss-deep-a.webp',
@@ -214,6 +229,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/spore_grotto.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
+    dark: true,
     music: 'assets/audio/music/lowleaf-hollow-c.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/glowmoss-deep-a.webp',
@@ -314,6 +330,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/cinderhead_deep.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
+    dark: true,
     music: 'assets/audio/music/cinderhead-mine-c.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/cinderhead-mine-a.webp',
@@ -324,6 +341,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/cinderhead_deep_b1f.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
+    dark: true,
     music: 'assets/audio/music/cinderhead-mine-c.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/cinderhead-mine-a.webp',
@@ -334,6 +352,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/cinderhead_deep_b2f.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
+    dark: true,
     music: 'assets/audio/music/cinderhead-mine-c.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/cinderhead-mine-a.webp',
@@ -453,6 +472,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/pale_vault_undercroft.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
+    dark: true,
     // the trial reuses the parent loop's sparsest variant + backdrops
     music: 'assets/audio/music/pale-vault-glacier-c.mp3',
     battle_backdrops: [

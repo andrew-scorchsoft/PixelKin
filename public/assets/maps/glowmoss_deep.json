@@ -3094,6 +3094,19 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_glowmoss_wicks",
       "hidden_when_flag": "flag:picked_glowmoss_wicks"
+    },
+    {
+      "id": "cache_glowmoss_sidecell",
+      "at": {
+        "tx": 12,
+        "ty": 23
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_glowmoss_sidecell",
+      "hidden_when_flag": "flag:picked_glowmoss_sidecell",
+      "requires_flag": "flag:lamplight_brightlight"
     }
   ],
   "gates": [],

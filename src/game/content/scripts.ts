@@ -559,6 +559,16 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', text: "A miner's drop-purse, stitched shut against the damp. Found 200 WICKS!" },
     { op: 'setFlag', flag: 'flag:picked_glowmoss_wicks' },
   ],
+  // Lamplight reveal (spine §5, Brightlight+): the glow-shadowed side-cell off
+  // the main run — its cache only resolves out of the dark once the lamp can
+  // reach it (flag:lamplight_brightlight derives in FlagStore, never hand-set).
+  'script.pickup_glowmoss_sidecell': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'bright_balm', count: 1 },
+    { op: 'say', text: 'A side-cell the glowmoss never reached — your own lamp had to. On a dry ledge, a chandler\'s tin sealed in gold wax. Found a BRIGHT BALM!' },
+    { op: 'say', text: 'You\'d have walked past this pocket of dark a dozen times, once. The lamp is brighter than it was.' },
+    { op: 'setFlag', flag: 'flag:picked_glowmoss_sidecell' },
+  ],
   // B1F dead-end A: the maze pays in kind — a Star-chart, dry in its tube.
   'script.pickup_b1f_chart': [
     { op: 'sfx', key: 'world-pickup' },
@@ -1044,6 +1054,16 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'giveItem', item: 'glow_charge', count: 1 },
     { op: 'say', text: 'A vigil-relief cache by the down-ladder — balms and a charge for the long climb back. Took them!' },
     { op: 'setFlag', flag: 'flag:picked_cinderhead_balm_deep' },
+  ],
+  // Lamplight reveal (spine §5, Starlight+): the third gallery's late alcove —
+  // the cramped early visit kept it hidden; a far-reaching lamp does not
+  // (flag:lamplight_starlight derives in FlagStore, never hand-set).
+  'script.pickup_cinderhead_alcove': [
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'giveItem', item: 'moth_amber', count: 2 },
+    { op: 'say', text: 'An alcove off the third gallery, past where any crew-lamp bothered to reach. Two beads of MOTH-AMBER sit in the seam like the mine kept them for you. Found them!' },
+    { op: 'say', text: 'On the Descent Vigil you walked within ten paces of this dark and never knew. The lamp knows now.' },
+    { op: 'setFlag', flag: 'flag:picked_cinderhead_alcove' },
   ],
 
   // The two vigil-miner SIGHT trainers holding the Descent Vigil leg (keeper class).
@@ -1748,6 +1768,16 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'giveItem', item: 'moth_amber', count: 1 },
     { op: 'say', text: 'In the lee of a blighted finger, untouched by the grey: a MOTH-AMBER, its little caught shimmer still turning. Found it!' },
     { op: 'setFlag', flag: 'flag:picked_hushfrost_amber' },
+  ],
+  // Lamplight reveal (spine §5, Radiant): a snow-hollow along the canyon wall,
+  // visible only to a lamp that all but carries the dawn
+  // (flag:lamplight_radiant derives in FlagStore, never hand-set).
+  'script.pickup_hushfrost_hollow': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'bright_balm', count: 2 },
+    { op: 'say', text: 'A snow-hollow in the canyon wall, white-on-white — no lamp short of Radiant would ever pick it out. Inside, a wayfarer\'s last cache, wax-sealed: 2 BRIGHT BALMS!' },
+    { op: 'say', text: 'You didn\'t beat the dark out of this pass. You out-shone it.' },
+    { op: 'setFlag', flag: 'flag:picked_hushfrost_hollow' },
   ],
 
   // --- Aurora Hollow — the Emberward spur (X1's oil + the detour's own pay) --

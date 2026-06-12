@@ -952,6 +952,19 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_hushfrost_shard",
       "hidden_when_flag": "flag:picked_hushfrost_shard"
+    },
+    {
+      "id": "cache_hushfrost_hollow",
+      "at": {
+        "tx": 7,
+        "ty": 8
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_hushfrost_hollow",
+      "hidden_when_flag": "flag:picked_hushfrost_hollow",
+      "requires_flag": "flag:lamplight_radiant"
     }
   ],
   "gates": [],

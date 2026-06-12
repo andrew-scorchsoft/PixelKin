@@ -275,7 +275,9 @@ bottlenecked behind the two Starreach spurs.
    enough but headlined here as the completionist's post-credits sweep.
 2. **Mechanic** — **Lamplight (Radiant)**, the continuous axis from spine §5. *Additive, never
    blocking* — every one of these reveals is optional; nothing required was ever hidden.
-3. **Where to return (each a `[LATER: Lamplight ≥ tier]` reveal, all `[MISSABLE]`):**
+3. **Where to return (each a Lamplight reveal, all `[MISSABLE]` — ALL FOUR BUILT 2026-06 as
+   `flag:lamplight_<tier>`-gated caches: Tideglass (4,2) Starlight · Glowmoss Deep (12,23)
+   Brightlight · Cinderhead Deep B2F (19,11) Starlight · Hushfrost I (7,8) Radiant):**
    - **Tideglass Cavern** (South) — first seen at Warmlight; at **Starlight+** a deeper nook and
      a hidden item resolve out of the dark.
    - **Glowmoss Deep / Spore Grotto** (East) — **Brightlight+** reveals glow-shadowed side-cells

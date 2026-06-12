@@ -85,7 +85,7 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
   {
     id: 'lamplight',
     term: 'Lamplight',
-    desc: 'Your young lamp reaches only a small circle in the dark. Each Gleam you relight widens it, until you all but carry the dawn in hand.',
+    desc: 'Your young lamp reaches only a small circle in the dark. Each Gleam you relight widens it: Ember-glow first, then Warmlight at two Gleams, Brightlight at four, Starlight at six — and at all eight, Radiant, when you all but carry the dawn in hand. The brighter the lamp, the more the old dark gives up; nothing the road needs ever hides from a dim one.',
     unlock_flag: 'gleam:ember',
   },
   {
