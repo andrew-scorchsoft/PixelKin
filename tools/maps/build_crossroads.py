@@ -13,9 +13,12 @@ vesperlamp + starter ceremony (script.intro_mentor) is held AT the waystone.
 Fenn is four flag-disjoint placements on one tile; the Pearlmoor spoke is
 has_starter-gated so the opening can't wander past the ceremony.
 
-Live spokes: WEST -> Tinderwick, EAST -> Pearlmoor Quay. The NORTH road (Coldfog
-Marches) and SOUTH inward road (the Spire approach / penumbra_ring) are signed,
-visible, inert teases — the engine no-ops warps to unregistered maps.
+Live spokes: WEST -> Tinderwick, EAST -> Pearlmoor Quay (has_starter-gated). The
+NORTH road (Coldfog Marches) opens with the starter too but climbs into far-higher
+country (the Waykeeper's marsh_warn nudge greets it); the SOUTH inward road (the
+Spire approach / penumbra_ring) stays shut till the full Crown (hub_unlocked). Every
+onward road is shut to a kin-less newcomer and answers a walk-in with a "see Fenn
+first" / "not the way yet" hint (blocked_ref) — no road is a silent dead-end.
 
 THE ENDGAME ALSO HAPPENS HERE (C3 wiring, walkthrough/05): C4 Fenn's counsel +
 A5 Wren-joins (the inward road's full-cut band at y=16 carries Fenn's Starlamp
@@ -177,10 +180,10 @@ m = {
         # the east road wakes the moment the ceremony ends.
         {"id": "to_pearlmoor", "at": {"tx": W - 1, "ty": CY}, "trigger": "step_on",
          "to_map": "pearlmoor_quay", "to": {"tx": 1, "ty": 12}, "facing": "right",
-         "requires_flag": "flag:has_starter", "transition": "fade"},
+         "requires_flag": "flag:has_starter", "blocked_ref": "crossroads.no_kin_yet", "transition": "fade"},
         {"id": "to_pearlmoor_n", "at": {"tx": W - 1, "ty": CY - 1}, "trigger": "step_on",
          "to_map": "pearlmoor_quay", "to": {"tx": 1, "ty": 12}, "facing": "right",
-         "requires_flag": "flag:has_starter", "transition": "fade"},
+         "requires_flag": "flag:has_starter", "blocked_ref": "crossroads.no_kin_yet", "transition": "fade"},
         # the Lowleaf spoke (east-north) — wakes with the Verdant Gleam
         # (graph.ts declares it ungated; the warp-level flag mirrors the South
         # pattern of gating stricter than the graph, with the Waykeeper's own
@@ -217,21 +220,25 @@ m = {
          "to_map": "nightreach_observatory", "to": {"tx": 5, "ty": 28}, "facing": "up",
          "requires_flag": "gleam:lunar", "blocked_ref": "npc.waykeeper_nightreach_gate",
          "transition": "fade"},
-        # sleeping roads (inert teases until their maps are authored)
+        # the north (marsh) road climbs to high country — but it stays shut to a
+        # Wayfarer with no kin yet (the opening's soft wall; the Waykeeper's
+        # marsh_warn cutscene greets the road once has_starter opens it).
         {"id": "to_marsh", "at": {"tx": CX, "ty": 0}, "trigger": "step_on",
-         "to_map": "coldfog_marches_i", "to": {"tx": 8, "ty": 28}, "facing": "up", "transition": "fade"},
+         "to_map": "coldfog_marches_i", "to": {"tx": 8, "ty": 28}, "facing": "up",
+         "requires_flag": "flag:has_starter", "blocked_ref": "crossroads.no_kin_yet", "transition": "fade"},
         {"id": "to_marsh_e", "at": {"tx": CX + 1, "ty": 0}, "trigger": "step_on",
-         "to_map": "coldfog_marches_i", "to": {"tx": 8, "ty": 28}, "facing": "up", "transition": "fade"},
+         "to_map": "coldfog_marches_i", "to": {"tx": 8, "ty": 28}, "facing": "up",
+         "requires_flag": "flag:has_starter", "blocked_ref": "crossroads.no_kin_yet", "transition": "fade"},
         # the inward Spire road — gated on the full crown (endgame). The fade is
         # a step THROUGH the fog-wall: it lands on the Ring's SOUTH entry (ON
         # its return pair, facing up toward the Spire silhouette at the north
         # rim — the C1 look-up moment; see build_penumbra_ring.py HANDSHAKE).
         {"id": "to_penumbra", "at": {"tx": CX, "ty": H - 1}, "trigger": "step_on",
          "to_map": "penumbra_ring", "to": {"tx": 13, "ty": 33}, "facing": "up",
-         "requires_flag": "flag:hub_unlocked", "transition": "fade"},
+         "requires_flag": "flag:hub_unlocked", "blocked_ref": "crossroads.spire_not_yet", "transition": "fade"},
         {"id": "to_penumbra_e", "at": {"tx": CX + 1, "ty": H - 1}, "trigger": "step_on",
          "to_map": "penumbra_ring", "to": {"tx": 14, "ty": 33}, "facing": "up",
-         "requires_flag": "flag:hub_unlocked", "transition": "fade"},
+         "requires_flag": "flag:hub_unlocked", "blocked_ref": "crossroads.spire_not_yet", "transition": "fade"},
         # the Cinderhead Deep mine-cart shortcut (graph.ts `shortcut_crossroads`
         # return half) — wakes with flag:shortcut_mine, set on opening the sealed
         # door from the deep. Lands beside the deep's far-side return warp.
@@ -252,17 +259,20 @@ m = {
         {"id": "fenn_wave_s", "kind": "cutscene", "at": {"tx": CX - 2, "ty": CY},
          "activation": "step_on", "ref": "script.fenn_wave", "once": True,
          "hidden_when_flag": "flag:fenn_waved", "sets_flags": ["flag:fenn_waved"]},
-        # The north (marsh) road is the one UNGATED road that climbs into far-higher
-        # country (coldfog_marches_i, North). The Waykeeper steps up off her post to
-        # warn a young Wayfarer off — a nudge, never a wall (she keeps the lamps, not
-        # the gate). Both road columns covered; fires once. audit_flow WAIVER — `choke`
-        # WARN accepted: a cosmetic warning, never a story gate; nothing is lost by
-        # skirting it, and the road stays freely walkable.
+        # The north (marsh) road climbs into far-higher country (coldfog_marches_i,
+        # North). It opens with the starter (the warp gates on flag:has_starter — no
+        # kin, no roads), and once open the Waykeeper steps up off her post to warn a
+        # young Wayfarer off — a nudge, never a wall (she keeps the lamps, not the
+        # gate). Gated to match the road so the warning isn't spent pre-starter; both
+        # road columns covered; fires once. audit_flow WAIVER — `choke` WARN accepted:
+        # a cosmetic warning, never a story gate; the road stays freely walkable.
         {"id": "marsh_warn", "kind": "cutscene", "at": {"tx": CX, "ty": 5},
          "activation": "step_on", "ref": "script.crossroads_marsh_warn", "once": True,
+         "requires_flag": "flag:has_starter",
          "hidden_when_flag": "flag:warned_marsh_road", "sets_flags": ["flag:warned_marsh_road"]},
         {"id": "marsh_warn_e", "kind": "cutscene", "at": {"tx": CX + 1, "ty": 5},
          "activation": "step_on", "ref": "script.crossroads_marsh_warn", "once": True,
+         "requires_flag": "flag:has_starter",
          "hidden_when_flag": "flag:warned_marsh_road", "sets_flags": ["flag:warned_marsh_road"]},
         {"id": "sign_waystone", "kind": "sign",
          "at": {"tx": sign_tiles["sign_waystone"][0], "ty": sign_tiles["sign_waystone"][1]},

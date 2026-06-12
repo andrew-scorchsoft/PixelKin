@@ -637,6 +637,19 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'WAYKEEPER', text: 'The long way round is the fen-road east of Pearlmoor. Roads wake to Gleams; relight the green one and this one will carry you home after.' },
   ],
 
+  // The onward roads are shut to a Wayfarer with no kin yet — the opening's
+  // soft wall, pointing a brand-new player back to Fenn at the Waystone (the
+  // East/North warps gate on flag:has_starter, so this only ever fires pre-kin).
+  'crossroads.no_kin_yet': [
+    { text: 'No kin walks at your side yet, and the roads beyond the crossroads are no place to wander alone. Star-tender Fenn waits at the Waystone — see him, and take up your first lamp, before you set out.' },
+  ],
+  // The inward (Spire) road's "not yet" — fires until all eight Gleams stand
+  // (flag:hub_unlocked). Echoes sign.crossroads_spire so a new player learns it
+  // is the endgame road, never the way out of the opening.
+  'crossroads.spire_not_yet': [
+    { text: 'The inward road runs to the dark mountain itself, and its gate stays shut till all eight Gleams stand lit in the sky. No road for a Wayfarer just setting out — the lit ways are yours first.' },
+  ],
+
   // --- Locked-door lines (a gated door warp's blocked_ref) ---
   // Doors are walk-onto: stepping into a locked one (or pressing Confirm at it)
   // plays these instead of barring the way in silence. Keep the canon voice.
