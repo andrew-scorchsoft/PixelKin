@@ -75,8 +75,8 @@
       "area": "galehigh_terraces",
       "terrain": "tall_grass",
       "rarity": "uncommon",
-      "min": 29,
-      "max": 32
+      "min": 28,
+      "max": 30
     }
   ],
   "scripted": false,

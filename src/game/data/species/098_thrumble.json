@@ -67,11 +67,18 @@
   },
   "encounters": [
     {
-      "area": "galehigh_terraces",
+      "area": "windward_stair_i",
       "terrain": "tall_grass",
       "rarity": "uncommon",
-      "min": 36,
-      "max": 39
+      "min": 34,
+      "max": 35
+    },
+    {
+      "area": "windward_stair_ii",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 35,
+      "max": 36
     }
   ],
   "scripted": false,

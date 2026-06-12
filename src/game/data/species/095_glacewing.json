@@ -72,11 +72,39 @@
   },
   "encounters": [
     {
-      "area": "galehigh_terraces",
+      "area": "windward_stair_i",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 35,
+      "max": 36
+    },
+    {
+      "area": "windward_stair_ii",
       "terrain": "tall_grass",
       "rarity": "uncommon",
-      "min": 36,
-      "max": 39
+      "min": 35,
+      "max": 36
+    },
+    {
+      "area": "wind_eye",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 35,
+      "max": 36
+    },
+    {
+      "area": "thunderroost",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 35,
+      "max": 36
+    },
+    {
+      "area": "pale_vault_glacier",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 37,
+      "max": 40
     }
   ],
   "scripted": false,

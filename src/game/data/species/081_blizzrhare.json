@@ -67,7 +67,7 @@
   },
   "encounters": [
     {
-      "area": "galehigh_terraces",
+      "area": "pale_vault_glacier",
       "terrain": "tall_grass",
       "rarity": "uncommon",
       "min": 36,

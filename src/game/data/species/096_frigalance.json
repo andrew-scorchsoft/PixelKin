@@ -68,15 +68,7 @@
     "weight_kg": 9.0,
     "habitat": "north"
   },
-  "encounters": [
-    {
-      "area": "galehigh_terraces",
-      "terrain": "tall_grass",
-      "rarity": "rare",
-      "min": 38,
-      "max": 40
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Long aerodynamic wasp silhouette, pale near-white with deep azure markings, a pair of blade-like crystal wings, four foreleg-lances each tipped with frozen lightning; cold elegance at 64px.",

@@ -381,11 +381,16 @@ owed += pt.cache(m, cid="pale_vault_charge", at=(9, 3))  # a charge, the back st
                                                          # behind the buildings)
 
 # ---- encounters (band 36-40, continuous with Windward 34-36 / Hushfrost ~40) -------
-TABLE = [{"kin_id": 72, "weight": 28, "min_level": 36, "max_level": 39},
-         {"kin_id": 81, "weight": 24, "min_level": 36, "max_level": 39},
-         {"kin_id": 86, "weight": 20, "min_level": 36, "max_level": 38},
-         {"kin_id": 95, "weight": 18, "min_level": 37, "max_level": 40},
-         {"kin_id": 87, "weight": 10, "min_level": 38, "max_level": 40}]
+TABLE = [{"kin_id": 72, "weight": 20, "min_level": 36, "max_level": 39},
+         {"kin_id": 81, "weight": 16, "min_level": 36, "max_level": 39},
+         # N5 reconcile: Iceling (#71) + Snowcune (#80), the Frost bases of the
+         # wild Glaceling/Blizzrhare above — without them the bases were
+         # uncatchable (kindling only goes forward); low end of the band
+         {"kin_id": 71, "weight": 16, "min_level": 36, "max_level": 38},
+         {"kin_id": 86, "weight": 14, "min_level": 36, "max_level": 38},
+         {"kin_id": 80, "weight": 14, "min_level": 36, "max_level": 38},
+         {"kin_id": 95, "weight": 12, "min_level": 37, "max_level": 40},
+         {"kin_id": 87, "weight": 8, "min_level": 38, "max_level": 40}]
 band_grid = mk.make_grid(W, H)
 patch_grid = mk.make_grid(W, H)
 for i in range(W * H):

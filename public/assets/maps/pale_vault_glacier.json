@@ -533,31 +533,43 @@
       "table": [
         {
           "kin_id": 72,
-          "weight": 28,
+          "weight": 20,
           "min_level": 36,
           "max_level": 39
         },
         {
           "kin_id": 81,
-          "weight": 24,
+          "weight": 16,
           "min_level": 36,
           "max_level": 39
         },
         {
+          "kin_id": 71,
+          "weight": 16,
+          "min_level": 36,
+          "max_level": 38
+        },
+        {
           "kin_id": 86,
-          "weight": 20,
+          "weight": 14,
+          "min_level": 36,
+          "max_level": 38
+        },
+        {
+          "kin_id": 80,
+          "weight": 14,
           "min_level": 36,
           "max_level": 38
         },
         {
           "kin_id": 95,
-          "weight": 18,
+          "weight": 12,
           "min_level": 37,
           "max_level": 40
         },
         {
           "kin_id": 87,
-          "weight": 10,
+          "weight": 8,
           "min_level": 38,
           "max_level": 40
         }
@@ -576,31 +588,43 @@
       "table": [
         {
           "kin_id": 72,
-          "weight": 28,
+          "weight": 20,
           "min_level": 36,
           "max_level": 39
         },
         {
           "kin_id": 81,
-          "weight": 24,
+          "weight": 16,
           "min_level": 36,
           "max_level": 39
         },
         {
+          "kin_id": 71,
+          "weight": 16,
+          "min_level": 36,
+          "max_level": 38
+        },
+        {
           "kin_id": 86,
-          "weight": 20,
+          "weight": 14,
+          "min_level": 36,
+          "max_level": 38
+        },
+        {
+          "kin_id": 80,
+          "weight": 14,
           "min_level": 36,
           "max_level": 38
         },
         {
           "kin_id": 95,
-          "weight": 18,
+          "weight": 12,
           "min_level": 37,
           "max_level": 40
         },
         {
           "kin_id": 87,
-          "weight": 10,
+          "weight": 8,
           "min_level": 38,
           "max_level": 40
         }
@@ -619,31 +643,43 @@
       "table": [
         {
           "kin_id": 72,
-          "weight": 28,
+          "weight": 20,
           "min_level": 36,
           "max_level": 39
         },
         {
           "kin_id": 81,
-          "weight": 24,
+          "weight": 16,
           "min_level": 36,
           "max_level": 39
         },
         {
+          "kin_id": 71,
+          "weight": 16,
+          "min_level": 36,
+          "max_level": 38
+        },
+        {
           "kin_id": 86,
-          "weight": 20,
+          "weight": 14,
+          "min_level": 36,
+          "max_level": 38
+        },
+        {
+          "kin_id": 80,
+          "weight": 14,
           "min_level": 36,
           "max_level": 38
         },
         {
           "kin_id": 95,
-          "weight": 18,
+          "weight": 12,
           "min_level": 37,
           "max_level": 40
         },
         {
           "kin_id": 87,
-          "weight": 10,
+          "weight": 8,
           "min_level": 38,
           "max_level": 40
         }

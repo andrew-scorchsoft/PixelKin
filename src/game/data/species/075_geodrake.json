@@ -74,15 +74,7 @@
     "weight_kg": 48,
     "habitat": "north"
   },
-  "encounters": [
-    {
-      "area": "galehigh_terraces",
-      "terrain": "tall_grass",
-      "rarity": "rare",
-      "min": 36,
-      "max": 39
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Wider, heavier crustacean form; carapace now densely covered in faceted crystal protrusions in purple-to-ice-blue; thicker claws tipped with drill-point crystal spires; mid-form still crablike but clearly larger and more weaponised at 40px.",

@@ -305,9 +305,13 @@ owed += pt.cache(m, cid="windward_shard", at=(4, 9))     # valuable, behind the 
 
 # ---- encounters (band 34-36; see module docstring for the species rationale) -------
 TABLE = [{"kin_id": 89, "weight": 35, "min_level": 34, "max_level": 36},
-         {"kin_id": 45, "weight": 30, "min_level": 34, "max_level": 36},
-         {"kin_id": 98, "weight": 25, "min_level": 34, "max_level": 35},
-         {"kin_id": 95, "weight": 10, "min_level": 35, "max_level": 36}]
+         {"kin_id": 45, "weight": 25, "min_level": 34, "max_level": 36},
+         {"kin_id": 98, "weight": 20, "min_level": 34, "max_level": 35},
+         {"kin_id": 95, "weight": 10, "min_level": 35, "max_level": 36},
+         # N5 reconcile: Chillpip (#77, Frost base) — the chillpip -> crystarn
+         # -> glacitern line had no wild placement; the first cold ledges are
+         # where the Frost edge starts (pairs with Glacewing's low weight)
+         {"kin_id": 77, "weight": 10, "min_level": 34, "max_level": 35}]
 band_grid = mk.make_grid(W, H)
 patch_grid = mk.make_grid(W, H)
 for i in range(W * H):

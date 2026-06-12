@@ -74,15 +74,7 @@
     "weight_kg": 12.0,
     "habitat": "north"
   },
-  "encounters": [
-    {
-      "area": "galehigh_terraces",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 36,
-      "max": 39
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Larger barrel-chested dog, dense grey-and-white thundercloud fur, a visible inner-glow pulsing electric-gold, long windswept ears, silver underbelly; bold presence at 48px.",

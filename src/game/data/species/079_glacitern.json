@@ -72,15 +72,7 @@
     "weight_kg": 28,
     "habitat": "north"
   },
-  "encounters": [
-    {
-      "area": "galehigh_terraces",
-      "terrain": "tall_grass",
-      "rarity": "rare",
-      "min": 38,
-      "max": 40
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Large seabird-inspired form; sharply swept wings with serrated trailing-edge icicle spurs; elongated blade-like bill crackling with frost and static; body sleek from head to forked tail; blue-grey body, white underside, lightning-blue wing tips; fierce predator silhouette at 48px.",

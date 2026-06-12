@@ -70,8 +70,15 @@
   },
   "encounters": [
     {
-      "area": "galehigh_terraces",
-      "terrain": "tall_grass",
+      "area": "pale_vault_glacier",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 38,
+      "max": 40
+    },
+    {
+      "area": "pale_vault_undercroft",
+      "terrain": "cave",
       "rarity": "rare",
       "min": 38,
       "max": 40

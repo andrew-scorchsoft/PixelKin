@@ -67,11 +67,11 @@
   },
   "encounters": [
     {
-      "area": "galehigh_terraces",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 36,
-      "max": 39
+      "area": "pale_vault_undercroft",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 37,
+      "max": 40
     }
   ],
   "scripted": false,

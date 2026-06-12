@@ -393,9 +393,13 @@ owed += pt.cache(m, cid="galehigh_high", at=(29, 8))     # the hidden high valua
 # ---- encounters (band 28-30, continuous with Cinderhead Deep's 24-27) --------------
 # walkthrough kin: "Kiteling" (the paper-glider bird -> #88 Sparrowcaw, Storm),
 # Thrumvane (#97, Storm), Cirruff (#91, Storm/Light)
-TABLE = [{"kin_id": 88, "weight": 40, "min_level": 28, "max_level": 30},
-         {"kin_id": 97, "weight": 35, "min_level": 28, "max_level": 30},
-         {"kin_id": 91, "weight": 25, "min_level": 28, "max_level": 30}]
+TABLE = [{"kin_id": 88, "weight": 35, "min_level": 28, "max_level": 30},
+         {"kin_id": 97, "weight": 30, "min_level": 28, "max_level": 30},
+         {"kin_id": 91, "weight": 20, "min_level": 28, "max_level": 30},
+         # N5 reconcile: Squallox (#100, Storm base) — its whole designed line
+         # (squallox -> galefox -> tempestail) had no wild placement; the Storm
+         # town's verges are its band (kindles at 25, so it's ready to grow)
+         {"kin_id": 100, "weight": 15, "min_level": 28, "max_level": 30}]
 band_grid = mk.make_grid(W, H)
 patch_grid = mk.make_grid(W, H)
 for i in range(W * H):

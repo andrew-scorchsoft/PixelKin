@@ -352,6 +352,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   invariant if you touch either.
 - **Re-run the validators after roster/move edits** (`node tools/balance/validate.mjs`,
   then `simulate.mjs`); the roster's selling point is that it's *empirically* balanced.
+- **Built maps' encounter areas are `CURATED_AREAS` in `build_species.py`** (the North's
+  7 maps so far): the in-map zone tables are the truth, mirrored slug-by-slug in
+  `EXTRA_ENCOUNTERS`; generated region-default rows naming a curated area are dropped on
+  rebuild. When a region's maps get built (West/Central next), reconcile the same way —
+  mirror the final tables into `EXTRA_ENCOUNTERS` AND add the map ids to `CURATED_AREAS`.
 - **The economy's numbers live in THREE mirrored places — keep them in sync.** Prices/payouts:
   `content/items.ts`+`trainers.ts`+`economy.ts` ↔ `PRICES`/`PAYOUT_RATE`/`BUILT_PAYOUTS` in
   `tools/balance/progression.mjs` ↔ the tables in `docs/mechanics/10-economy.md`. XP formulas:

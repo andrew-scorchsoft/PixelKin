@@ -270,10 +270,14 @@ owed += pt.cache(m, cid="windward_amber", at=(25, 3))    # Moth-amber, NE vista
 owed += pt.cache(m, cid="windward_kit", at=(2, 16))      # consumable, SW pocket
 
 # ---- encounters (band 34-36, Frost-edge weighted up — see docstring) ---------------
-TABLE = [{"kin_id": 95, "weight": 30, "min_level": 35, "max_level": 36},
-         {"kin_id": 89, "weight": 30, "min_level": 34, "max_level": 36},
+TABLE = [{"kin_id": 95, "weight": 25, "min_level": 35, "max_level": 36},
+         {"kin_id": 89, "weight": 25, "min_level": 34, "max_level": 36},
          {"kin_id": 45, "weight": 20, "min_level": 34, "max_level": 36},
-         {"kin_id": 98, "weight": 20, "min_level": 35, "max_level": 36}]
+         {"kin_id": 98, "weight": 20, "min_level": 35, "max_level": 36},
+         # N5 reconcile: Geolace (#74, Frost/Stone base) — the walkthrough's
+         # "crag-climber" Stone note, and the geolace -> geodrake -> vaultclaw
+         # line's only wild placement; rare on the high crags
+         {"kin_id": 74, "weight": 10, "min_level": 34, "max_level": 36}]
 band_grid = mk.make_grid(W, H)
 patch_grid = mk.make_grid(W, H)
 for i in range(W * H):

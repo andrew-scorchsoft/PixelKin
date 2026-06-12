@@ -206,6 +206,53 @@ EXTRA_ENCOUNTERS = {
     "poolfrond": [{"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "rare", "min": 17, "max": 18},
                   {"area": "saltreach_fen_ii", "terrain": "tall_grass", "rarity": "rare", "min": 18, "max": 19}],
     "tidalarch": [{"area": "sunkbell_shallows", "terrain": "water", "rarity": "very_rare", "min": 19, "max": 20}],
+    # ---- the North (N5 encounters-sync, 2026-06): mirrors of the BUILT in-map
+    # zone tables (public/assets/maps/*.json — the truth; weights -> rarity).
+    # The deep-ice fold + undercroft rows are the Emberward/Lamp-Line ground.
+    "sparrowcaw":  [{"area": "galehigh_terraces", "terrain": "tall_grass", "rarity": "common", "min": 28, "max": 30}],
+    "thrumvane":   [{"area": "galehigh_terraces", "terrain": "tall_grass", "rarity": "common", "min": 28, "max": 30}],
+    "cirruff":     [{"area": "galehigh_terraces", "terrain": "tall_grass", "rarity": "uncommon", "min": 28, "max": 30}],
+    "squallox":    [{"area": "galehigh_terraces", "terrain": "tall_grass", "rarity": "uncommon", "min": 28, "max": 30}],
+    "flintbeak":   [{"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "common", "min": 34, "max": 36},
+                    {"area": "windward_stair_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 34, "max": 36},
+                    {"area": "thunderroost", "terrain": "tall_grass", "rarity": "common", "min": 34, "max": 36}],
+    "sparkrat":    [{"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 34, "max": 36},
+                    {"area": "windward_stair_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 34, "max": 36}],
+    "thrumble":    [{"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 34, "max": 35},
+                    {"area": "windward_stair_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 35, "max": 36}],
+    "chillpip":    [{"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "rare", "min": 34, "max": 35}],
+    "geolace":     [{"area": "windward_stair_ii", "terrain": "tall_grass", "rarity": "rare", "min": 34, "max": 36}],
+    "glacewing":   [{"area": "windward_stair_i", "terrain": "tall_grass", "rarity": "rare", "min": 35, "max": 36},
+                    {"area": "windward_stair_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 35, "max": 36},
+                    {"area": "wind_eye", "terrain": "tall_grass", "rarity": "common", "min": 35, "max": 36},
+                    {"area": "thunderroost", "terrain": "tall_grass", "rarity": "common", "min": 35, "max": 36},
+                    {"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "rare", "min": 37, "max": 40}],
+    "hailwhirr":   [{"area": "wind_eye", "terrain": "tall_grass", "rarity": "common", "min": 34, "max": 36}],
+    "cumulance":   [{"area": "wind_eye", "terrain": "tall_grass", "rarity": "rare", "min": 36, "max": 36}],
+    "strikeaven":  [{"area": "thunderroost", "terrain": "tall_grass", "rarity": "rare", "min": 36, "max": 37}],
+    "glaceling":   [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "uncommon", "min": 36, "max": 39},
+                    {"area": "pale_vault_glacier", "terrain": "cave", "rarity": "rare", "min": 38, "max": 40},
+                    {"area": "pale_vault_undercroft", "terrain": "cave", "rarity": "uncommon", "min": 37, "max": 40}],
+    "blizzrhare":  [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "uncommon", "min": 36, "max": 39}],
+    "iceling":     [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "uncommon", "min": 36, "max": 38}],
+    "snowcune":    [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "uncommon", "min": 36, "max": 38}],
+    "prismcub":    [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "uncommon", "min": 36, "max": 38}],
+    "prismantus":  [{"area": "pale_vault_glacier", "terrain": "tall_grass", "rarity": "very_rare", "min": 38, "max": 40},
+                    {"area": "pale_vault_glacier", "terrain": "cave", "rarity": "rare", "min": 38, "max": 40}],
+    "stillwarden": [{"area": "pale_vault_glacier", "terrain": "cave", "rarity": "rare", "min": 38, "max": 40},
+                    {"area": "pale_vault_undercroft", "terrain": "cave", "rarity": "rare", "min": 38, "max": 40}],
+    "hushbore":    [{"area": "pale_vault_undercroft", "terrain": "cave", "rarity": "common", "min": 37, "max": 40}],
+    "hushvole":    [{"area": "pale_vault_undercroft", "terrain": "cave", "rarity": "uncommon", "min": 37, "max": 39}],
+}
+
+# Areas whose encounter tables are BUILT into the map JSONs (the in-map zones
+# are the truth, mirrored above). Generated region defaults — and stale rows
+# carried in the previous per-species files — must not claim these areas:
+# only EXTRA_ENCOUNTERS rows may. (North is the first fully-built region; its
+# default "galehigh_terraces" band rows predated the maps.)
+CURATED_AREAS = {
+    "galehigh_terraces", "windward_stair_i", "windward_stair_ii", "wind_eye",
+    "thunderroost", "pale_vault_glacier", "pale_vault_undercroft",
 }
 
 # Wave-2 signature moves (gen_moves.py): one per elemental apex line. Inserted
@@ -364,18 +411,29 @@ def main():
         # clamp catchRate into band
         lo, hi = {"A":(190,235),"B":(150,200),"C":(90,150),"D":(45,90),"E":(20,45),"F":(3,10)}[tier]
         rec["catchRate"] = max(lo, min(hi, rec["catchRate"]))
+        # Built-map areas are hand-curated: drop any generated default row that
+        # claims one (the EXTRA_ENCOUNTERS mirror is the only allowed source),
+        # then merge the hand-curated placements so they survive a rebuild.
+        rec["encounters"] = [x for x in rec["encounters"] if x["area"] not in CURATED_AREAS]
+        rec["encounters"].extend(EXTRA_ENCOUNTERS.get(rec["slug"], []))
         # Preserve hand-added encounter rows from the existing per-species file.
         # Map-content work appends area tables the generator doesn't know about
-        # (e.g. pearlmoor_quay); regenerating must not clobber them.
+        # (e.g. pearlmoor_quay); regenerating must not clobber them. Keys are
+        # taken AFTER the EXTRA_ENCOUNTERS merge and preserved rows are deduped,
+        # so a rebuild never re-appends the extras (the old duplicate-row bug),
+        # and stale rows naming a CURATED area are dropped, not resurrected.
         if not scripted:
             prev_path = os.path.join(OUTDIR, f"{e['dex_id']:03d}_{rec['slug']}.json")
             if os.path.exists(prev_path):
                 try:
                     prev = json.load(open(prev_path))
-                    gen_keys = {json.dumps(x, sort_keys=True) for x in rec["encounters"]}
+                    seen_keys = {json.dumps(x, sort_keys=True) for x in rec["encounters"]}
                     for enc in prev.get("encounters", []):
-                        if json.dumps(enc, sort_keys=True) not in gen_keys:
-                            rec["encounters"].append(enc)
+                        key = json.dumps(enc, sort_keys=True)
+                        if key in seen_keys or enc.get("area") in CURATED_AREAS:
+                            continue
+                        seen_keys.add(key)
+                        rec["encounters"].append(enc)
                 except Exception:
                     pass
         # apply canonical overrides for the two existing starters
@@ -388,8 +446,6 @@ def main():
             sig = canon["signature"]
             if sig in MOVE_IDS and not any(e["move"] == sig for e in rec["learnset"]["levelup"]):
                 rec["learnset"]["levelup"].insert(0, {"level": 1, "move": sig})
-        # hand-curated map placements survive a rebuild
-        rec["encounters"].extend(EXTRA_ENCOUNTERS.get(rec["slug"], []))
         # apex signature moves (late learnset payoff)
         sigrow = SIGNATURE_MOVES.get(rec["slug"])
         if sigrow:

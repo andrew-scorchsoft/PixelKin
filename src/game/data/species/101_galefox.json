@@ -69,15 +69,7 @@
     "weight_kg": 14.5,
     "habitat": "north"
   },
-  "encounters": [
-    {
-      "area": "galehigh_terraces",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 36,
-      "max": 39
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Lithe medium fox silhouette, deep storm-blue body fading to pale silver at the throat and belly, a single bold tail crackling at the tip, wind-distortion ripples around the paws; pure velocity at 48px.",
