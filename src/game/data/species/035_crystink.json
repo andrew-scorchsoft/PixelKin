@@ -66,7 +66,36 @@
     "weight_kg": 0.3,
     "habitat": "east"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "cinderhead_mine",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 22,
+      "max": 24
+    },
+    {
+      "area": "cinderhead_deep",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 24,
+      "max": 26
+    },
+    {
+      "area": "cinderhead_deep_b1f",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 25,
+      "max": 27
+    },
+    {
+      "area": "cinderhead_deep_b2f",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 26,
+      "max": 27
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Beetle-form about the size of a thumb; transparent faceted wing-cases filled with cyan-white crystal shards that catch light; six iridescent legs; eyes are tiny perfect gem-spheres in deep blue.",

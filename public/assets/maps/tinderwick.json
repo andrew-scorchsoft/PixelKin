@@ -2484,6 +2484,18 @@
           "weight": 40,
           "min_level": 2,
           "max_level": 3
+        },
+        {
+          "kin_id": 13,
+          "weight": 20,
+          "min_level": 2,
+          "max_level": 4
+        },
+        {
+          "kin_id": 5,
+          "weight": 12,
+          "min_level": 3,
+          "max_level": 4
         }
       ],
       "hidden_when_flag": "flag:dawn"
@@ -2520,6 +2532,12 @@
         {
           "kin_id": 8,
           "weight": 20,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 13,
+          "weight": 15,
           "min_level": 56,
           "max_level": 62
         }

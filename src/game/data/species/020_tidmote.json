@@ -66,7 +66,36 @@
     "weight_kg": 0.1,
     "habitat": "south"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 4,
+      "max": 6
+    },
+    {
+      "area": "dimglass_coast",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 55,
+      "max": 62
+    },
+    {
+      "area": "pearlmoor_quay",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 10,
+      "max": 12
+    },
+    {
+      "area": "pearlmoor_quay",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 57,
+      "max": 64
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Tiny sprite, blue-white water droplet shape with trailing wisps, two pinpoint bright eyes, a single glowing ribbon-tail. Appears as a moving sparkle on water surfaces.",

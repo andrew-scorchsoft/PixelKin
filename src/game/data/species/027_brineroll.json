@@ -81,13 +81,6 @@
       "max": 18
     },
     {
-      "area": "saltreach_fen_ii",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 17,
-      "max": 19
-    },
-    {
       "area": "sunkbell_shallows",
       "terrain": "water",
       "rarity": "common",
@@ -156,13 +149,6 @@
       "rarity": "common",
       "min": 55,
       "max": 61
-    },
-    {
-      "area": "saltreach_fen_ii",
-      "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 56,
-      "max": 62
     },
     {
       "area": "sunkbell_shallows",

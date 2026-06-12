@@ -65,7 +65,15 @@
     "weight_kg": 0.4,
     "habitat": "east"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "tideglass_cavern",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 20,
+      "max": 23
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Trilobite-like segmented body in pale bone-white chalk; two long swept-back antennae; multiple small legs; small eyes set in a wide flat head; delicate and prehistoric in feel.",

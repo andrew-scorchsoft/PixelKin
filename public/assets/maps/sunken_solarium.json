@@ -730,7 +730,7 @@
       "table": [
         {
           "kin_id": 114,
-          "weight": 16,
+          "weight": 28,
           "min_level": 43,
           "max_level": 45
         },
@@ -815,7 +815,7 @@
       "table": [
         {
           "kin_id": 114,
-          "weight": 16,
+          "weight": 28,
           "min_level": 43,
           "max_level": 45
         },
@@ -918,7 +918,7 @@
         },
         {
           "kin_id": 114,
-          "weight": 14,
+          "weight": 24,
           "min_level": 42,
           "max_level": 44
         },
@@ -991,7 +991,7 @@
         },
         {
           "kin_id": 114,
-          "weight": 14,
+          "weight": 24,
           "min_level": 42,
           "max_level": 44
         },

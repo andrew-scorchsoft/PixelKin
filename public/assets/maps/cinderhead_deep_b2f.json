@@ -78,6 +78,24 @@
           "weight": 25,
           "min_level": 26,
           "max_level": 27
+        },
+        {
+          "kin_id": 53,
+          "weight": 20,
+          "min_level": 26,
+          "max_level": 27
+        },
+        {
+          "kin_id": 69,
+          "weight": 12,
+          "min_level": 26,
+          "max_level": 27
+        },
+        {
+          "kin_id": 42,
+          "weight": 8,
+          "min_level": 26,
+          "max_level": 27
         }
       ]
     }

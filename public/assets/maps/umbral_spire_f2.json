@@ -412,7 +412,27 @@
       "requires_flag": "flag:dawn"
     }
   ],
-  "encounters": [],
+  "encounters": [
+    {
+      "id": "weave_bed",
+      "terrain": "cave",
+      "rect": {
+        "tx": 12,
+        "ty": 22,
+        "w": 5,
+        "h": 2
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 147,
+          "weight": 100,
+          "min_level": 52,
+          "max_level": 55
+        }
+      ]
+    }
+  ],
   "npcs": [
     {
       "id": "hollowing_acolyte_b",

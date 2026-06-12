@@ -780,12 +780,6 @@
           "max_level": 62
         },
         {
-          "kin_id": 95,
-          "weight": 10,
-          "min_level": 57,
-          "max_level": 64
-        },
-        {
           "kin_id": 87,
           "weight": 16,
           "min_level": 59,
@@ -836,12 +830,6 @@
           "max_level": 62
         },
         {
-          "kin_id": 95,
-          "weight": 10,
-          "min_level": 57,
-          "max_level": 64
-        },
-        {
           "kin_id": 87,
           "weight": 16,
           "min_level": 59,
@@ -890,12 +878,6 @@
           "weight": 12,
           "min_level": 56,
           "max_level": 62
-        },
-        {
-          "kin_id": 95,
-          "weight": 10,
-          "min_level": 57,
-          "max_level": 64
         },
         {
           "kin_id": 87,

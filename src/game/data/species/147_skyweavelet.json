@@ -62,6 +62,13 @@
       "rarity": "uncommon",
       "min": 58,
       "max": 61
+    },
+    {
+      "area": "umbral_spire_f2",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 52,
+      "max": 55
     }
   ],
   "scripted": false,

@@ -65,7 +65,15 @@
     "weight_kg": 28,
     "habitat": "east"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "spore_grotto",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 21,
+      "max": 23
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Human-height mushroom form, broader cap with bioluminescent gill-lines underneath, satellite caps on its shoulders, dusty mauve-green coloured; stance is wide and assured.",

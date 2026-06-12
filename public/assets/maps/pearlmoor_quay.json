@@ -2655,6 +2655,12 @@
           "weight": 40,
           "min_level": 9,
           "max_level": 11
+        },
+        {
+          "kin_id": 5,
+          "weight": 10,
+          "min_level": 9,
+          "max_level": 11
         }
       ],
       "hidden_when_flag": "flag:dawn"
@@ -2688,6 +2694,12 @@
           "weight": 20,
           "min_level": 11,
           "max_level": 12
+        },
+        {
+          "kin_id": 20,
+          "weight": 20,
+          "min_level": 10,
+          "max_level": 12
         }
       ],
       "hidden_when_flag": "flag:dawn"
@@ -2720,6 +2732,12 @@
           "kin_id": 24,
           "weight": 20,
           "min_level": 11,
+          "max_level": 12
+        },
+        {
+          "kin_id": 20,
+          "weight": 20,
+          "min_level": 10,
           "max_level": 12
         }
       ],
@@ -2779,6 +2797,12 @@
           "weight": 30,
           "min_level": 58,
           "max_level": 64
+        },
+        {
+          "kin_id": 20,
+          "weight": 15,
+          "min_level": 57,
+          "max_level": 64
         }
       ],
       "requires_ability": "tidecall",
@@ -2811,6 +2835,12 @@
           "kin_id": 24,
           "weight": 30,
           "min_level": 58,
+          "max_level": 64
+        },
+        {
+          "kin_id": 20,
+          "weight": 15,
+          "min_level": 57,
           "max_level": 64
         }
       ],

@@ -300,6 +300,18 @@
           "weight": 20,
           "min_level": 22,
           "max_level": 24
+        },
+        {
+          "kin_id": 41,
+          "weight": 30,
+          "min_level": 22,
+          "max_level": 24
+        },
+        {
+          "kin_id": 44,
+          "weight": 15,
+          "min_level": 22,
+          "max_level": 24
         }
       ]
     }

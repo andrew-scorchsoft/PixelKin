@@ -70,7 +70,15 @@
     "weight_kg": 3.2,
     "habitat": "south"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "sunkbell_shallows",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 18,
+      "max": 20
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Slim, elegant aquatic sprite \u2014 silver with pale moonlight-blue highlights, long streaming water-veil wings, a crescent-shaped luminous head-marking, twin ribbon tails.",

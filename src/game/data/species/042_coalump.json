@@ -65,7 +65,15 @@
     "weight_kg": 18.0,
     "habitat": "east"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "cinderhead_deep_b2f",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 26,
+      "max": 27
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Lumpy rounded torso, short sturdy limbs, two glowing eyes, body covered in expanding crack-pattern glow lines; reads as power building at 48px.",

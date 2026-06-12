@@ -65,7 +65,36 @@
     "weight_kg": 1.8,
     "habitat": "east"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "dimglass_coast",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 3,
+      "max": 6
+    },
+    {
+      "area": "dimglass_coast_ii",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 8,
+      "max": 11
+    },
+    {
+      "area": "saltreach_fen_i",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 16,
+      "max": 18
+    },
+    {
+      "area": "saltreach_fen_ii",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 17,
+      "max": 19
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Almost perfectly spherical grey-brown body with two stub legs and wide amber eyes; tiny chip-marks on its shell like natural wear marks; silhouette reads as a rolling ball at 16px.",

@@ -75,6 +75,13 @@
       "rarity": "common",
       "min": 56,
       "max": 62
+    },
+    {
+      "area": "spore_grotto",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 21,
+      "max": 23
     }
   ],
   "scripted": false,

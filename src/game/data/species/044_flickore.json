@@ -66,7 +66,22 @@
     "weight_kg": 0.9,
     "habitat": "east"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "cinderhead_mine",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 22,
+      "max": 24
+    },
+    {
+      "area": "cinderhead_deep_b1f",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 25,
+      "max": 27
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Rat-sized, wiry body covered in dark iron-grey fur with tiny amber sparks visible along the spine; prominent rounded ears; long thin tail tipped with an ore nugget.",

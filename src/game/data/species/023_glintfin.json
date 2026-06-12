@@ -66,7 +66,36 @@
     "weight_kg": 0.3,
     "habitat": "south"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "dimglass_coast_ii",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 9,
+      "max": 11
+    },
+    {
+      "area": "dimglass_coast_ii",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 63
+    },
+    {
+      "area": "gullcry_rock",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 11,
+      "max": 13
+    },
+    {
+      "area": "gullcry_rock",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 58,
+      "max": 64
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Tiny silvery fish with oversized prism-scale fin fanning out like a tail-fan, blue-teal body, big friendly eye, subtle light-refracting markings.",

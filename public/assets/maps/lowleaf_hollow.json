@@ -1305,6 +1305,12 @@
           "weight": 15,
           "min_level": 18,
           "max_level": 20
+        },
+        {
+          "kin_id": 65,
+          "weight": 15,
+          "min_level": 18,
+          "max_level": 20
         }
       ],
       "hidden_when_flag": "flag:dawn"
@@ -1349,6 +1355,12 @@
           "weight": 8,
           "min_level": 58,
           "max_level": 65
+        },
+        {
+          "kin_id": 65,
+          "weight": 12,
+          "min_level": 56,
+          "max_level": 63
         }
       ],
       "requires_flag": "flag:dawn"

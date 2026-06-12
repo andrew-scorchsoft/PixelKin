@@ -61,7 +61,22 @@
     "weight_kg": 0.9,
     "habitat": "east"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "cinderhead_mine",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 22,
+      "max": 24
+    },
+    {
+      "area": "cinderhead_deep",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 24,
+      "max": 26
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Near-perfect sphere, dull black coal texture with a single amber-glow eye, two tiny round feet; the simplest possible round silhouette at 32px.",

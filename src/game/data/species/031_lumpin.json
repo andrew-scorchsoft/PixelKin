@@ -75,25 +75,11 @@
       "max": 11
     },
     {
-      "area": "saltreach_fen_i",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 16,
-      "max": 18
-    },
-    {
       "area": "saltreach_fen_ii",
       "terrain": "water",
       "rarity": "uncommon",
       "min": 17,
       "max": 19
-    },
-    {
-      "area": "tideglass_cavern",
-      "terrain": "cave",
-      "rarity": "uncommon",
-      "min": 20,
-      "max": 23
     },
     {
       "area": "dimglass_coast",
@@ -150,20 +136,6 @@
       "rarity": "common",
       "min": 57,
       "max": 64
-    },
-    {
-      "area": "saltreach_fen_i",
-      "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 55,
-      "max": 62
-    },
-    {
-      "area": "saltreach_fen_ii",
-      "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 56,
-      "max": 63
     },
     {
       "area": "saltreach_fen_ii",

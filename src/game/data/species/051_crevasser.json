@@ -69,7 +69,15 @@
     "weight_kg": 55,
     "habitat": "east"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "hushfrost_pass_i",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 40,
+      "max": 41
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Larger segmented crustacean; thick ridged carapace in layered grey-cream; heavy claws useful for gripping rock; wide eyes set at the edge of its head-plate; moves with a side-to-side deliberate walk.",
