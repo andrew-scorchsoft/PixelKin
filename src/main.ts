@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT, COLORS, RENDER_SCALE } from '@game/config';
+import { GAME_VERSION_LABEL } from '@game/version';
 import { BootScene } from '@game/scenes/BootScene';
 import { PreloadScene } from '@game/scenes/PreloadScene';
 import { SplashScene } from '@game/scenes/SplashScene';
@@ -46,6 +47,10 @@ const config: Phaser.Types.Core.GameConfig = {
   },
   scene: [BootScene, PreloadScene, SplashScene, AttractScene, TitleScene, CinematicScene, WorldScene, BattleScene],
 };
+
+// Stamp the version into the browser tab title (the static <title> is just
+// "PixelKin"); version.ts is the single source of truth.
+document.title = `PixelKin ${GAME_VERSION_LABEL}`;
 
 const game = new Phaser.Game(config);
 

@@ -5,8 +5,10 @@
  * The world plugs in from here.
  */
 import Phaser from 'phaser';
-import { GAME_WIDTH } from '@game/config';
+import { GAME_WIDTH, GAME_HEIGHT } from '@game/config';
+import { GAME_VERSION_LABEL } from '@game/version';
 import { theme } from '@game/ui/theme';
+import { makeText } from '@game/ui/Text';
 import { Menu } from '@game/ui/Menu';
 import { DialogueBox } from '@game/ui/DialogueBox';
 import { SettingsMenu } from '@game/ui/SettingsMenu';
@@ -73,6 +75,12 @@ export class TitleScene extends Phaser.Scene {
     });
 
     this.cameras.main.fadeIn(theme.transition.fadeMs, 0, 0, 0);
+
+    // Version stamp, tucked in the bottom-right corner so it's visible at a
+    // glance without crowding the logo or menu. Source: version.ts.
+    makeText(this, GAME_WIDTH - 3, GAME_HEIGHT - 2, GAME_VERSION_LABEL, theme.text.dim)
+      .setOrigin(1, 1)
+      .setDepth(theme.depth.text);
     // Reset to the default slot on (re)entering the title, and seed the active
     // save so SETTINGS export works straight from a cold title.
     SaveManager.setActiveSlot(0);
