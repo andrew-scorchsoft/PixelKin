@@ -229,6 +229,7 @@ go digging on every task.
 | Story, cast, antagonist, lore | `docs/world/story-bible.md` |
 | World map, areas, routes, gating | `docs/world/atlas.md` |
 | Canonical user-journey / walkthrough | `docs/world/walkthrough/` (spine + per-region) |
+| **Build status + remaining-work roadmap (START HERE to resume)** | `docs/world/walkthrough/PROGRESS.md` (packages R2–R5: Dawnstead, Starfall Vigils, day-forms, release ladder) |
 | Map & level-design rules (binding) | `docs/world/level-design.md` |
 | Retro map/route-design research (the §2b/§3a evidence base) | `docs/world/retro-map-design-research.md` |
 | Interior design rules (binding, SNES-style) | `docs/world/interiors.md` |
