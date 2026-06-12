@@ -21,14 +21,16 @@ Legend — **Gleam** = the region's constellation reward; **Gift** = the Lantern
 | **South** (01) | 1 Ember · 2 Tide | ✅ **complete** | — |
 | **East** (02) | 3 Verdant · 4 Stone | ✅ **complete** | — (Cinderhead built 2026-06) |
 | **North** (03) | 5 Storm · 6 Frost | ✅ **complete** (built 2026-06) | — |
-| **West** (04) | 7 Solar · 8 Lunar | 🟡 W1+W2+W3 built (Hushfrost + Solarium/Sunvault/Helia + Coldfog/Drownlight/Stillworks clusters, 2026-06) | Nightreach (W4); W1–W3 content refs (wiring) |
+| **West** (04) | 7 Solar · 8 Lunar | ✅ **complete** (W1–W4 maps + W5 content wiring, 2026-06) | EXTRA_ENCOUNTERS mirrors (deferred to the species-lane pass) |
 | **Central/Endgame** (05) | — | ⬜ not started | Penumbra Ring · Umbral Spire (`hub_unlocked` roads) |
 | **Post-game** (06) | — | ⬜ not started | Dawnstead · day-forms · Còr's resolution |
 
-**Playable runway today:** a continuous main-path journey from the cold open through the
-**first six Gleams** (Ember → Tide → Verdant → Stone → **Storm → Frost**) and
-`crown_south` + `crown_east` + `crown_north` — ending as the player leaves Pale Vault
-west into Hushfrost Pass (the West boundary, intentionally ungated; Emberward in hand).
+**Playable runway today:** a continuous main-path journey from the cold open through
+**all eight Gleams** (Ember → Tide → Verdant → Stone → Storm → Frost → **Solar → Lunar**)
+and all four quadrant crowns — ending as the Crown completes at Nightreach,
+`flag:hub_unlocked` fires, and the four inward roads wait on Central (not started).
+(The in-map West encounter tables are live; the EXTRA_ENCOUNTERS dex-side mirrors
+are the species lane's remaining bookkeeping.)
 
 ---
 
@@ -97,9 +99,19 @@ Expert panel: **SHIP-READY** (`docs/reviews/north-region-panel.md`); all minors 
 | Coldfog Marches I→II + Drownlight Beacon + Hollowfen Stillworks (B4 shown half: the drained land; X3 leg 3 cairn; the charged-husk Whorlix cradle; first ACCENT tileset `coldfog_set`/fogcrag; NO trainers/rest by design) | `coldfog_marches_i/ii`, `drownlight_beacon`, `hollowfen_stillworks` | ✅ 2026-06 | `build_coldfog_*.py`, `build_drownlight_beacon.py`, `build_hollowfen_stillworks.py` (objects: `draw_coldfog_objects.py`) |
 | Nightreach Observatory (Lunar · Nessa · Starreach; the Vigil of the Seven loop #8 — seven watch-lamps `flag:q_west_lamp_1..7` carrying C4 Fenn / A5 Wren / B4 the Great Null at lamps 5/6/7; Star-vigil; X3 giver + roof viewpoint; R5 giver; the Lanternway spoke landed at the crossroads, gleam:lunar-gated) | `nightreach_observatory` + `nightreach_lumenary`/`_inn`/`_home` | ✅ 2026-06 | `build_nightreach.py`, `build_nightreach_interiors.py` (objects: `draw_nightreach_objects.py` + the image-gen dome) |
 
-W1+W2+W3+W4 content refs (scripts/dialogue/trainers/items/EXTRA_ENCOUNTERS mirror) are owed to
-the wiring pass — each builder prints its ledger. X1 reward item id must NOT be `bright_lamp`
-(SaveCodec legacy rename) — use `caretaker_lamp`, display name "Bright Lamp".
+**W5 WIRING ✅ (2026-06):** every script./npc./sign./trainer. ref the sixteen West maps (and
+the crossroads spoke) place now resolves — scripts (the Lit Stage chain, the Vigil of the
+Seven with C4/A5/B4 at lamps 5/6/7, the B4 Stillworks band, both Gleam ceremonies, the
+Last-Warm-Day + Star-vigil festivals), dialogue, 12 trainers (`lucan_pyre` 2760w /
+`nessa_cole` 3120w + the sight roster), items (`caretaker_lamp` "Bright Lamp" — the SaveCodec
+rename trap dodged — Sun Charm ×2.5 Solar-met, Sunburst Nova chart, Embergloss/Murk Pearl),
+glossary (Last-Warm-Day, Star-vigil, Sunsketch, Starreach, the Great Null), and the
+progression model's West legs + BUILT_PAYOUTS (PASS). R5's delivery half is BUILT: the
+crossroads Waykeeper is now a three-stage flag-disjoint trio (`script.round_chart_deliver`
+→ `flag:q_round_chart`). The cutscene runner gained a per-step **`if_flag` guard**
+(optional colour only — Wren's ribbon line + the Stillworks-witness line in B4 ride it).
+**Still owed: the EXTRA_ENCOUNTERS mirrors** (tools/balance/build_species.py is another
+lane's file — see each builder's encounter notes for the exact rows).
 W2 contracts for W4 (in `build_sunvault_climb_ii.py`'s docstring): `to_observatory` lands
 nightreach (15,28)/(16,28) — W4's return pair must land at climb II's (22,1)/(23,1);
 X3's giver sets `flag:q_west_chart` (the Sunvault viewpoint then sets `_1`). The region
@@ -118,7 +130,7 @@ clears: `audit_region`'s topology check gained a warp-backed RING fallback (a re
 may close through the outer ring — nightreach → crossroads → coldfog I/II → nightreach — and
 counts only once every authored side carries its warp). W4's done-stage requires `_1`+`_2`
 only; the X3 chart NAMES STARWELL; R5's DELIVERY half (the crossroads Waykeeper's flag-staggered
-pair, `flag:q_round_chart_taken` → `flag:q_round_chart`) is owed to the wiring pass, NOT built.
+trio, `flag:q_round_chart_taken` → `flag:q_round_chart`) landed with the W5 wiring above.
 
 See [`05-central-endgame.md`](./05-central-endgame.md), [`06-postgame.md`](./06-postgame.md)
 for Central/Post-game. Not started.

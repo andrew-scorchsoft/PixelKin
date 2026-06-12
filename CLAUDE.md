@@ -748,6 +748,10 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   quiet), so author scripts before the art lands. The **South first hour is the built worked
   example**; the binding standard is `docs/world/cinematics.md` (and §0.4 of the walkthrough
   spine). When staging a later beat, copy a South script.
+- **Cutscene steps take an optional `if_flag` guard** (content/types.ts + CutsceneRunner,
+  2026-06): the step plays only while that flag is held, silently skipped otherwise — the
+  data conditional for OPTIONAL colour (Wren's ribbon payoff at Nightreach lamp 6 is the
+  worked example). Never guard progression steps (a skipped setFlag/battle/giveItem is a bug).
 - **The Gleam cadence is minor→major.** A relit constellation is the emotional payoff: hold a
   `silence`, bloom a warm/cool `tint` + the lamp sfx, fire `gleam`, then crossfade to the
   festival swell (`gleam-emotional`). A Gleam is *belonging*, not a trophy — don't hand it over

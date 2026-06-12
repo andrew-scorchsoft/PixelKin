@@ -34,7 +34,7 @@ custom (and took its name from it). Diegetic, humble, and ours.
 |---|---|---|
 | **Trainer payouts** | class rate × ace level (§4) | the backbone; wild battles pay **nothing** |
 | **Named side quests** | per-region purse (§5 budget) | each region's 3+ quests; scaled to local prices |
-| **Valuables** | Wax Cake 250w · Moth-amber 600w · Starglass Shard 1,500w | found in caches/Lamplight nooks, sold at any counter |
+| **Valuables** | Wax Cake 250w · Moth-amber 600w · Embergloss 600w · Starglass Shard 1,500w · Murk Pearl 1,500w | found in caches/Lamplight nooks, sold at any counter (Embergloss/Murk Pearl are Coldfog's drained-fen finds) |
 | **Loose finds** | small `giveMoney` drops | a purse in a cache, festival thanks |
 | **Selling items** | half price (`SELL_RATE 0.5`) | keepers buy anything priced; never key items |
 
@@ -63,8 +63,10 @@ each; `04-capture.md`). The old Vesperlamp/Bright/Radiant Lamp consumable rung
 is retired; saves migrate (v3) old lamps into charges.
 
 Quest charms (Tide Charm, Drift Charm, Wrecklight Charm, the Marsh Lamp —
-E1's ×2.0 deep-growth conditional — the Starlamp, and the festival Glow Salve)
-have **no price** — unbuyable, unsellable, earned only. Now that status conditions run (Part B, BUILT), add
+E1's ×2.0 deep-growth conditional — the Aurora Charm and Sun Charm — N2's and
+X2's ×2.5 conditionals on Frost-met / Solar-met kin — the caretaker's **Bright
+Lamp** (X1, item id `caretaker_lamp`, an unconditional ×2.5), the Starlamp, and
+the festival Glow Salve) have **no price** — unbuyable, unsellable, earned only. Now that status conditions run (Part B, BUILT), add
 next: **Soothing Tea** (cure any status, ~200w) and **Rekindle Drop** (wake a
 fainted kin at half health, ~900w) — add to this table + items.ts together.
 
@@ -81,8 +83,9 @@ level** (the model's drift check recomputes built trainers):
 | warden | 60w | the eight Lampwardens |
 | cor | 120w | Warden Còr |
 
-So Brisa pays 600w, Reyl 960w, and a beaten region roughly funds its own
-shop tier plus one chart — the model verifies exactly that.
+So Brisa pays 600w, Reyl 960w, Lucan Pyre 2,760w and Nessa Cole 3,120w —
+and a beaten region roughly funds its own shop tier plus one chart — the
+model verifies exactly that.
 
 ## 5. Shops — how they look and work
 
@@ -114,8 +117,8 @@ the region's element pair + one Plain utility. Planned counters:
 | Cinderhead pit-stores *(built)* | charts: Focus Mind, Gust Up (no Stone chart minted yet) |
 | Galehigh kite-stall *(built)* | Bright Balm (once `gleam:storm`), charts: Thunder Kick, Volt Arc, Gale Slam, Swift Step — **the whole cold leg's counter: Pale Vault deliberately keeps no shop** (resupply rides the Windward drop-shortcut); the find-first Tempest nuke chart is Thunderroost's prize |
 | ~~Pale Vault warm-house~~ | — (no counter; see Galehigh row) |
-| Solarium dig-counter | charts: Solar Lash, Daybeam, Bask |
-| Nightreach last-counter | charts: Lunar Claw, Moonbeam, Radiant Strike, Hone |
+| ~~Solarium dig-counter~~ | — **dropped (2026-06, built):** the Solarium is a ruin — the festival trades in bread and stories; the Lumenary green room is the rest point, no counter (the Pale Vault precedent) |
+| ~~Nightreach last-counter~~ | — **dropped (2026-06, built):** the star-temple keeps a vigil, not a till; **the West ships no counter** — the Galehigh kite-stall (one hub-spoke away) remains the late counter, and the West's aspirational chart (Sunburst Nova, 4,000w tier) is the Helia Vault's find-first prize. The planned West charts may land on a Central/postgame counter instead |
 
 ## 6. Star-charts — the taught-move system
 
@@ -208,7 +211,7 @@ The JOURNEY table in `progression.mjs` is the contract; summarised:
 | South *(built + breakwater pair)* | 9 — 4 route, 3 keeper, 1 rival, 2 warden | ~29 | 750w | Wax Cake |
 | East *(fen + Lowleaf built)* | 12 — 3 route, 7 keeper, 2 warden | ~36 | 1,550w | Moth-amber ×2 |
 | North | 13 — 6 route, 4 keeper, 1 rival (A4), 2 warden | ~21 | 1,600w + finds | Moth-amber ×2 |
-| West | 13 — 7 route, 4 keeper, 2 warden | ~21 | 2,400w + finds | Starglass ×2 |
+| West *(built)* | 12 — 7 route, 2 keeper, 1 rival (A5), 2 warden | ~21 | 1,100w + finds | Starglass ×4 + Moth-amber ×3 (Coldfog's Embergloss/Murk Pearl ride the optional detour) |
 | Central | 6 — 5 keeper (acolytes), Còr | ~10 | 1,500w | Starglass |
 
 Rules for region authors:

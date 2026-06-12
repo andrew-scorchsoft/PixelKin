@@ -166,6 +166,36 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'The Hollowing\'s creeping mist — a damp dark that snuffs ordinary flame and closes whole passes. Only an Emberward\'s tended ember pushes through it.',
     unlock_flag: 'gleam:frost',
   },
+  {
+    id: 'last_warm_day',
+    term: 'the Last-Warm-Day',
+    desc: "The Sunken Solarium's festival: once a year the town gathers in the drowned sun-garden to spend the last warm day before the dark — stored-daylight lanterns, warm bread shared freely, a troupe on the old stage. Warmth, spent on purpose, knowing it fades. That is the point.",
+    unlock_flag: 'gleam:solar',
+  },
+  {
+    id: 'sunsketch',
+    term: 'Sunsketch',
+    desc: 'The Solar Lantern Gift: a pocket of stored daylight, released from the lamp. Shut night-flowers bloom into living bridges at its touch — the drowned garden\'s roads, reopened one bloom at a time.',
+    unlock_flag: 'gleam:solar',
+  },
+  {
+    id: 'star_vigil',
+    term: 'the Star-vigil',
+    desc: "Nightreach's festival, the grandest and most silent: the town keeps a night-long watch at the telescopes as the Crown nears its closing, each watcher lighting one lamp when their star comes home. Belonging as witness — somebody watching when the sky remembers.",
+    unlock_flag: 'gleam:lunar',
+  },
+  {
+    id: 'starreach',
+    term: 'Starreach',
+    desc: 'The Lunar Lantern Gift, last of the six: starlight drawn down to stand on, a stride across short voids of pure dark. The Penumbra\'s final crossings hold under it — the road to the Spire itself.',
+    unlock_flag: 'gleam:lunar',
+  },
+  {
+    id: 'great_null',
+    term: 'the Great Null',
+    desc: 'A lantern built to hold no light, raised on the Umbral Spire and aimed at the Keystar — the one star the whole sky rekindles from. Còr means it kindly. That is the most frightening thing about it.',
+    unlock_flag: 'flag:great_null_known',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */

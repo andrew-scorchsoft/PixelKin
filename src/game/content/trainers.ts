@@ -535,6 +535,211 @@ export const TRAINERS: TrainerRegistry = {
     music: 'battle-nightfall',
     ai: 'smart',
   },
+
+  // ===========================================================================
+  // THE WEST (walkthrough/04-west) — Hushfrost Pass, the Sunken Solarium's Lit
+  // Stage, the Sunvault Climb, and Nightreach's Vigil of the Seven. Bands per
+  // the spine §4: Hushfrost 40–42, Solarium 42–46 (Lucan ace 46), Sunvault
+  // 46–48, Nightreach 48–52 (Nessa ace 52). Coldfog keeps NO trainers by
+  // design — nobody posts a road through a drained land.
+  // ===========================================================================
+
+  // Hushfrost Pass — three route sight trainers on the cold leg (40–42).
+  hushfrost_lampman: {
+    id: 'hushfrost_lampman',
+    name: 'DUNSTAN',
+    title: 'Coldfog Lampman',
+    party: [
+      { species_id: 84, level: 41 }, // Hushbore — Frost
+      { species_id: 78, level: 41 }, // Crystarn — Frost (ace)
+    ],
+    intro_ref: 'trainer.hushfrost_lampman.intro',
+    defeat_ref: 'trainer.hushfrost_lampman.defeat',
+    payout: 656, // route 16 × ace 41
+    music: 'battle-emberfall',
+  },
+  hushfrost_survivor: {
+    id: 'hushfrost_survivor',
+    name: 'HESPER',
+    title: 'Pass Survivor',
+    party: [
+      { species_id: 82, level: 42 }, // Vortexlope — Frost/Storm (ace)
+    ],
+    intro_ref: 'trainer.hushfrost_survivor.intro',
+    defeat_ref: 'trainer.hushfrost_survivor.defeat',
+    payout: 672, // route 16 × ace 42
+    music: 'battle-emberfall',
+  },
+  hushfrost_thawtender: {
+    id: 'hushfrost_thawtender',
+    name: 'TILDA',
+    title: 'Thaw-tender',
+    party: [
+      { species_id: 75, level: 42 }, // Geodrake — Frost/Stone
+      { species_id: 87, level: 42 }, // Prismantus — Light/Frost (ace)
+    ],
+    intro_ref: 'trainer.hushfrost_thawtender.intro',
+    defeat_ref: 'trainer.hushfrost_thawtender.defeat',
+    payout: 672, // route 16 × ace 42
+    music: 'battle-emberfall',
+  },
+
+  // The Solarium's two troupe-player SIGHT trainers working the flooded lanes
+  // (route class — festival players, not dungeon posts; 43–45).
+  troupe_player_a: {
+    id: 'troupe_player_a',
+    name: 'CALLA',
+    title: 'Troupe Player',
+    party: [
+      { species_id: 114, level: 43 }, // Sunsprout — Verdant/Solar
+      { species_id: 117, level: 44 }, // Helibud — Solar (ace)
+    ],
+    intro_ref: 'trainer.troupe_player_a.intro',
+    defeat_ref: 'trainer.troupe_player_a.defeat',
+    payout: 704, // route 16 × ace 44
+    music: 'battle-emberfall',
+  },
+  troupe_player_b: {
+    id: 'troupe_player_b',
+    name: 'ORSINO',
+    title: 'Troupe Player',
+    party: [
+      { species_id: 115, level: 44 }, // Solvyne — Verdant/Solar
+      { species_id: 120, level: 45 }, // Dawnfawn — Solar/Verdant (ace)
+    ],
+    intro_ref: 'trainer.troupe_player_b.intro',
+    defeat_ref: 'trainer.troupe_player_b.defeat',
+    payout: 720, // route 16 × ace 45
+    music: 'battle-emberfall',
+  },
+
+  // Seventh Lumenary: Lucan Pyre, Lampwarden of the Sunken Solarium (Solar) —
+  // the Last-Warm-Day's theatrical ringleader; warm, grandiose, deeply kind.
+  // Fought ON the relit Heliarium stage (the bond-test trigger requires
+  // flag:q_west_stage_lit). Win relights the Solar constellation AND grants
+  // Sunsketch. crown_west waits on Nessa — never hand-set here.
+  lucan_pyre: {
+    id: 'lucan_pyre',
+    name: 'LUCAN PYRE',
+    title: 'Lampwarden',
+    party: [
+      { species_id: 117, level: 42 }, // Helibud — Solar
+      { species_id: 115, level: 43 }, // Solvyne — Verdant/Solar
+      { species_id: 104, level: 44 }, // Goldmane — Solar/Stone
+      { species_id: 121, level: 44 }, // Sunstag — Solar/Verdant
+      { species_id: 123, level: 46 }, // Solreach — Solar (ace — the stage lead)
+    ],
+    intro_ref: 'trainer.lucan_pyre.intro',
+    defeat_ref: 'trainer.lucan_pyre.defeat',
+    reward_flags: ['gleam:solar'],
+    reward_abilities: ['sunsketch'],
+    payout: 2760, // Lampwarden 60 × ace 46
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
+
+  // The Sunvault Climb's two route sight trainers (46–48).
+  sunvault_terracer: {
+    id: 'sunvault_terracer',
+    name: 'BEL',
+    title: 'Terrace-tender',
+    party: [
+      { species_id: 115, level: 46 }, // Solvyne — Verdant/Solar
+      { species_id: 121, level: 47 }, // Sunstag — Solar/Verdant (ace)
+    ],
+    intro_ref: 'trainer.sunvault_terracer.intro',
+    defeat_ref: 'trainer.sunvault_terracer.defeat',
+    payout: 752, // route 16 × ace 47
+    music: 'battle-emberfall',
+  },
+  sunvault_skywatcher: {
+    id: 'sunvault_skywatcher',
+    name: 'TAM',
+    title: 'Sky-watcher',
+    party: [
+      { species_id: 126, level: 47 }, // Lunveil — Light/Lunar
+      { species_id: 118, level: 48 }, // Helicore — Solar (ace)
+    ],
+    intro_ref: 'trainer.sunvault_skywatcher.intro',
+    defeat_ref: 'trainer.sunvault_skywatcher.defeat',
+    payout: 768, // route 16 × ace 48
+    music: 'battle-emberfall',
+  },
+
+  // Nightreach's two junior-watcher SIGHT keepers on the Astral Walk
+  // (keeper class, 49–51 — the on-ramp to Nessa's 52).
+  junior_watcher_a: {
+    id: 'junior_watcher_a',
+    name: 'LIRA',
+    title: 'Junior Watcher',
+    party: [
+      { species_id: 106, level: 49 }, // Drowshorn — Lunar
+      { species_id: 127, level: 50 }, // Lunvane — Light/Lunar (ace)
+    ],
+    intro_ref: 'trainer.junior_watcher_a.intro',
+    defeat_ref: 'trainer.junior_watcher_a.defeat',
+    payout: 1000, // keeper 20 × ace 50
+    music: 'battle-emberfall',
+  },
+  junior_watcher_b: {
+    id: 'junior_watcher_b',
+    name: 'OS',
+    title: 'Junior Watcher',
+    party: [
+      { species_id: 112, level: 50 }, // Nightwraith — Lunar
+      { species_id: 125, level: 51 }, // Crystalune — Lunar/Frost (ace)
+    ],
+    intro_ref: 'trainer.junior_watcher_b.intro',
+    defeat_ref: 'trainer.junior_watcher_b.defeat',
+    payout: 1020, // keeper 20 × ace 51
+    music: 'battle-emberfall',
+  },
+
+  // A5 — Wren returns RESOLVED at lamp 6 of the Astral Walk: the warm mirror
+  // of A4. Easy again, ~2 under the player by design (the A2 register back,
+  // tempered) — one friendly bout for the road's sake before the last lamp.
+  wren_nightreach: {
+    id: 'wren_nightreach',
+    name: 'WREN',
+    title: 'Wayfarer',
+    party: [
+      { species_id: 9, level: 49 }, // Glimscout — Light
+      { species_id: 96, level: 49 }, // Frigalance — Storm/Frost (the North catch, kindled)
+      { species_id: 28, level: 50 }, // Brinewrath — Tide (the ace, as ever)
+    ],
+    intro_ref: 'trainer.wren_nightreach.intro',
+    defeat_ref: 'trainer.wren_nightreach.defeat',
+    payout: 1200, // rival 24 × ace 50
+    music: 'battle-veil',
+    ai: 'smart',
+  },
+
+  // Eighth Lumenary: Nessa Cole, Lampwarden of Nightreach Observatory (Lunar)
+  // — the quiet insomniac astronomer, the most powerful and most haunted
+  // Warden. A contemplative dreamlight team built around doze pressure (lull
+  // + patient walls); met at ~50–51 after the Vigil of the Seven. Win relights
+  // the Lunar constellation AND grants Starreach; with gleam:solar already
+  // held the ENGINE derives flag:crown_west AND flag:hub_unlocked (the last
+  // quadrant) — never hand-set.
+  nessa_cole: {
+    id: 'nessa_cole',
+    name: 'NESSA COLE',
+    title: 'Lampwarden',
+    party: [
+      { species_id: 106, level: 48 }, // Drowshorn — Lunar
+      { species_id: 112, level: 49 }, // Nightwraith — Lunar
+      { species_id: 125, level: 50 }, // Crystalune — Lunar/Frost
+      { species_id: 127, level: 50 }, // Lunvane — Light/Lunar
+      { species_id: 107, level: 52 }, // Lunarbel — Lunar/Light (ace — the dreamlight bell)
+    ],
+    intro_ref: 'trainer.nessa_cole.intro',
+    defeat_ref: 'trainer.nessa_cole.defeat',
+    reward_flags: ['gleam:lunar'],
+    reward_abilities: ['starreach'],
+    payout: 3120, // Lampwarden 60 × ace 52
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
 };
 
 /** Intro/defeat dialogue for trainers, kept beside the roster they belong to. */
@@ -698,6 +903,86 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   'trainer.ysolde_frost.defeat': [
     { speaker: 'YSOLDE FROST', text: '...It held. Through everything my vault could ask of it, it held.' },
     { speaker: 'YSOLDE FROST', text: 'The Frost Gleam is yours, wanderer — and the northern crown closes with it. Stand still a moment. This is worth standing still for.' },
+  ],
+
+  // --- The West. Hushfrost runs sincere (the caretaker owns the register);
+  // the Solarium/Sunvault defeat lines carry the sanctioned good-loser warmth;
+  // Nightreach stays reverent; Coldfog has no trainers at all, by design.
+  'trainer.hushfrost_lampman.intro': [
+    { speaker: 'DUNSTAN', text: 'Hold there, Wayfarer. My lamp is losing to that fog an inch a season — so before you pass, show me a flame the cold has not argued down.' },
+  ],
+  'trainer.hushfrost_lampman.defeat': [
+    { speaker: 'DUNSTAN', text: 'There it is. That is the burn I have been rationing all winter. Go on — and warm the throat for the rest of us.' },
+  ],
+  'trainer.hushfrost_survivor.intro': [
+    { speaker: 'HESPER', text: 'I walked out of the deep fog once, on one lamp and no luck to spare. Every flame that passes me gets tested now. I owe the road that much.' },
+  ],
+  'trainer.hushfrost_survivor.defeat': [
+    { speaker: 'HESPER', text: 'Steady right through. ...Good. If the fog takes anyone else this year, it will not be for want of my checking.' },
+  ],
+  'trainer.hushfrost_thawtender.intro': [
+    { speaker: 'TILDA', text: 'Mind the lane — I have just swept the rime off it. Terrace rule from back home: a clear road is paid for with a bout.' },
+  ],
+  'trainer.hushfrost_thawtender.defeat': [
+    { speaker: 'TILDA', text: 'Well fought! And see — the gold on the fog ahead is real. Stored daylight, a whole gardenful. First warm thing I have said all week that the weather agreed with.' },
+  ],
+  'trainer.troupe_player_a.intro': [
+    { speaker: 'CALLA', text: 'A walker in the wings! House rule, friend: nobody crosses the flooded lanes during rehearsal without giving the understudies a scene.' },
+  ],
+  'trainer.troupe_player_a.defeat': [
+    { speaker: 'CALLA', text: 'Upstaged in my own water. Forty years of stagecraft and the audience walks in off a glacier with better timing.' },
+  ],
+  'trainer.troupe_player_b.intro': [
+    { speaker: 'ORSINO', text: 'Stop! That is — forgive me, the boards say STOP, in the play. One bout, traveller, for the company. The drowned halls make a tremendous house.' },
+  ],
+  'trainer.troupe_player_b.defeat': [
+    { speaker: 'ORSINO', text: 'Bravo. No, truly — I have died on stage a hundred times and that was the most convincing of them.' },
+  ],
+  'trainer.lucan_pyre.intro': [
+    { speaker: 'LUCAN PYRE', text: 'PLACES! The stage is lit, the house is full, and the last warm day has found its closing scene. You fetched our daylight up spark by spark, apprentice — now act the part it paid for.' },
+    { speaker: 'LUCAN PYRE', text: 'Show me a bond that remembers the sun! Not the heat, mind — anyone can burn. The PROMISE of it. The coming back.' },
+  ],
+  'trainer.lucan_pyre.defeat': [
+    { speaker: 'LUCAN PYRE', text: '...Hold. Hold the lights just there. Do you hear the house? That is not applause for ME, and I have never been gladder to be upstaged.' },
+    { speaker: 'LUCAN PYRE', text: 'The Solar Gleam is yours, Wayfarer. The sun only went to sleep — and tonight, between us, I think we woke the understudy.' },
+  ],
+  'trainer.sunvault_terracer.intro': [
+    { speaker: 'BEL', text: 'Mind the beds! These terraces fed a garden by sunlight once — now they make do with mine. Every lamp that climbs through gets weighed against the gold. Custom.' },
+  ],
+  'trainer.sunvault_terracer.defeat': [
+    { speaker: 'BEL', text: 'Weighed, and the garden approves. The overgrowth leaned toward you the whole bout — it has never once done that for me, and I prune it.' },
+  ],
+  'trainer.sunvault_skywatcher.intro': [
+    { speaker: 'TAM', text: 'You are walking into the brightest sky in Vesperholm, friend. The watchers send nothing up the rim they have not tested — consider me the test.' },
+  ],
+  'trainer.sunvault_skywatcher.defeat': [
+    { speaker: 'TAM', text: 'Passed, and then some. Go on up — and when the dome takes your breath, that is not the climb. That is the sky.' },
+  ],
+  'trainer.junior_watcher_a.intro': [
+    { speaker: 'LIRA', text: 'Hold the walk, please. Seven lamps, seven stars, and a junior watcher to keep the order of it — nobody crosses my stretch unweighed. Even the senior watchers. ESPECIALLY the senior watchers.' },
+  ],
+  'trainer.junior_watcher_a.defeat': [
+    { speaker: 'LIRA', text: 'Weighed and recorded. ...In my own ledger, which nobody reads. The walk is yours, Wayfarer — keep the order.' },
+  ],
+  'trainer.junior_watcher_b.intro': [
+    { speaker: 'OS', text: 'A lamp on the high terrace. Good — the vigil likes a tested flame. I keep the last stretch before the seventh lamp; show me yours keeps too.' },
+  ],
+  'trainer.junior_watcher_b.defeat': [
+    { speaker: 'OS', text: 'It keeps. Walk on — and walk soft. Nessa has been at the eyepiece three nights straight, waiting on whatever it is you are carrying.' },
+  ],
+  'trainer.wren_nightreach.intro': [
+    { speaker: 'WREN', text: "Friendly rules. Like the coast. I want to remember what it's FOR before we light the last one." },
+  ],
+  'trainer.wren_nightreach.defeat': [
+    { speaker: 'WREN', text: 'Ha — there it is. THAT\'s the thing the quiet doesn\'t have. Come on.' },
+  ],
+  'trainer.nessa_cole.intro': [
+    { speaker: 'NESSA COLE', text: 'Seven watch-fires, lit in the order they came home. I watched every one from this eyepiece. You walk the way a careful light burns.' },
+    { speaker: 'NESSA COLE', text: 'One star left, and it is mine to vouch for. My kin keep the dream-hours with me — the soft dark, the kind that lets you sleep. Stay awake through it, Wayfarer... and the eighth will answer you.' },
+  ],
+  'trainer.nessa_cole.defeat': [
+    { speaker: 'NESSA COLE', text: '...Awake at the end of it. All my long watches, and I have never been so glad to lose an argument with the dark.' },
+    { speaker: 'NESSA COLE', text: 'Stand by the lamp, Wayfarer. The eighth star has been waiting longest of all — and I would like to watch it remember.' },
   ],
 };
 

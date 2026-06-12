@@ -90,8 +90,16 @@ export interface LegendaryBattleStep {
   terrain?: EncounterTerrain;
 }
 
-/** A single cutscene instruction. The CutsceneRunner interprets these in order. */
-export type CutsceneStep =
+/**
+ * A single cutscene instruction. The CutsceneRunner interprets these in order.
+ * Any step may carry `if_flag`: the step plays only while that flag is held and
+ * is silently skipped otherwise — the data-level conditional for small payoffs
+ * (e.g. Wren's ribbon line at Nightreach fires only on `flag:q_north_ribbon_placed`).
+ * Keep guarded steps OPTIONAL colour, never progression (a skipped setFlag is a bug).
+ */
+export type CutsceneStep = CutsceneStepBase & { if_flag?: WorldFlag };
+
+type CutsceneStepBase =
   | { op: 'say'; speaker?: string; text: string; portrait?: string; expr?: string; style?: 'speech' | 'narrate' }
   | { op: 'narrate'; text: string } // un-attributed, full-width prose (a say with style:'narrate')
   | { op: 'dialogue'; ref: string }
@@ -122,6 +130,7 @@ export type CutsceneStep =
   | { op: 'gleam'; element: string } // diegetic Gleam cue (relight the sky)
   | { op: 'giveMoney'; amount: number } // hand the player wicks (quest rewards, finds)
   | { op: 'shop'; shop: string }; // open a shop's buy/sell counter (content/shops.ts)
+// (per-step `if_flag` guard rides the CutsceneStep intersection above)
 
 /** ref -> a cutscene's steps. */
 export type ScriptRegistry = Record<string, CutsceneStep[]>;

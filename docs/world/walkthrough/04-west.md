@@ -432,8 +432,11 @@ Central) · **gate ability:** Emberward (the Coldfog back-door only — **not** 
    - **Lamp 5 (Frost) — C4, Fenn's counsel.** Fenn waits there and lights it with you:
      the Crown is nearly whole; the Keystar must be *out-remembered*, not destroyed.
    - **Lamp 6 (Storm) — A5, Wren returns, resolved.** Wren is sitting under it, easy
-     again; a warm reunion (optionally a friendly battle), and they light it with you.
-     *(If `flag:q_north_ribbon_placed` is set, Wren mentions the ribbon — N3's payoff.)*
+     again; a warm reunion **with one friendly bout folded into the scene** (BUILT: the
+     A2 register returned — `TRAINERS['wren_nightreach']`, ace ~50, ~2 under the player;
+     a loss simply replays the scene, so it gates nothing), and they light it with you.
+     *(If `flag:q_north_ribbon_placed` is set, Wren mentions the ribbon — N3's payoff,
+     delivered via the cutscene runner's per-step `if_flag` guard.)*
    - **Lamp 7 (Solar) — B4, the Great Null named.** At the great telescope Nessa names
      what Còr is building — the **Great Null** aimed at the **Keystar** — setting
      **`flag:great_null_known`**.
@@ -513,9 +516,11 @@ Central) · **gate ability:** Emberward (the Coldfog back-door only — **not** 
 - **X3 "Charting the Dark"** — giver: the **junior watcher** (post-walk, her swap NPC) ·
   steps: take star-readings at three high points — a Sunvault II terrace, the observatory
   roof, and (optional, bravest) the Coldfog Marches edge · flags: `flag:q_west_chart_1..3`
-  → `flag:q_west_chart_done` · reward: her finished chart — which **names Starwell** (the
-  tease-closer for the Penumbra landmark) · maps: `sunvault_climb_ii`,
-  `nightreach_observatory`, (`coldfog_marches_i` optional) · `[MISSABLE]`.
+  → `flag:q_west_chart_done` (BUILT: the done-stage requires legs **1+2 only** — the
+  Coldfog leg stays truly optional) · reward: her finished chart — which **names Starwell**
+  (the tease-closer for the Penumbra landmark) — plus her 400w chart-fund · maps:
+  `sunvault_climb_ii`, `nightreach_observatory`, (`coldfog_marches_i` optional) ·
+  `[MISSABLE]`.
 - *(X1 is listed under Hushfrost Pass; X2 under the Solarium; R5 under the Solarium's
   slate block. West's slate: X1 · X2 · X3 · R5.)*
 
@@ -544,8 +549,9 @@ Central) · **gate ability:** Emberward (the Coldfog back-door only — **not** 
   quadrant) **`flag:hub_unlocked`** — do not hand-set, but every "Spire opens" beat depends on them.
 - **Story triggers `sets_flags`:** B4 naming cutscene (Nessa at lamp 7, optionally reinforced
   by the Coldfog/Stillworks set-piece) → **`flag:great_null_known`** (`script`, `once: true`);
-  C4 Fenn counsel (lamp 5, narrative only); A5 Wren return (lamp 6; `reward_flags` for the
-  rival bookkeeping; optional friendly battle, no progression gate).
+  C4 Fenn counsel (lamp 5, narrative only); A5 Wren return (lamp 6; the friendly bout is
+  IN the scene — `flag:wren_nightreach_battled` is the rival ledger, consumed by a guarded
+  Wren cameo in the Lunar ceremony; a lost bout replays the scene, no progression gate).
 - **The Vigil of the Seven chain (rule 3):** `script.nessa_quest` sets `flag:q_west_vigil`;
   the striker cache on `sunvault_climb_ii` (`flag:picked_striker`) unlocks lamp 1; lamp
   scripts chain `flag:q_west_lamp_1..7` (each `requires_flag` its `gleam:*` + the previous

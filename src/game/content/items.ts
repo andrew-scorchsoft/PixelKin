@@ -244,6 +244,59 @@ export const ITEMS: ItemRegistry = {
     condition: { kind: 'defender_type', types: ['Frost'] },
   },
 
+  // --- The West (walkthrough/04-west) -----------------------------------------
+  // X1 "The Caretaker's Lamp" (Hushfrost II): her thanks once the aurora-oil
+  // fills her lamp. NOTE: the id is `caretaker_lamp`, never `bright_lamp` —
+  // SaveCodec migrates that legacy id to glow_charge (the rename trap).
+  caretaker_lamp: {
+    id: 'caretaker_lamp',
+    name: 'Bright Lamp',
+    desc: "The caretaker's own lamp-cell, filled with aurora-oil and given away warm. One throw burns steady and sure — the way a lamp burns when somebody sits with it.",
+    category: 'charge',
+    catch_bonus: 2.5,
+  },
+  // The Lit Stage chain (Sunken Solarium, spine §5 shape #7): three phials of
+  // stored daylight fetched up out of the flooded halls, one brazier at a time.
+  sunmote_phial: {
+    id: 'sunmote_phial',
+    name: 'Sunmote Phial',
+    desc: 'A stoppered phial of stored daylight, fetched up from the drowned halls. It is warm through the glass, like a hand held forty years.',
+    category: 'key',
+  },
+  // X2 "The Troupe's Sun-mask": the gilt mask dived out of the flooded side room.
+  sun_mask: {
+    id: 'sun_mask',
+    name: 'Gilt Sun-mask',
+    desc: "The troupe's gilt sun-mask, silt-scoured and smiling. Forty years of 'The Sun Returns' have worn the inside soft.",
+    category: 'key',
+  },
+  // X2's reward — a conditional charge (the Aurora Charm pattern, gold edition):
+  // blazes toward Solar-hearted kin, burns plain toward everything else.
+  sun_charm: {
+    id: 'sun_charm',
+    name: 'Sun Charm',
+    desc: 'A lamp-charm pressed from the sun-mask\'s gilt. Raised toward a Solar-hearted kin its throw burns like a remembered noon; toward any other it is only a lamp.',
+    category: 'charge',
+    catch_bonus: 2.5,
+    condition: { kind: 'defender_type', types: ['Solar'] },
+  },
+  // The Vigil of the Seven (Nightreach): the old watcher's striker, lost on the
+  // Sunvault road — lamp 1 of the Astral Walk wants it.
+  watch_striker: {
+    id: 'watch_striker',
+    name: "Watcher's Striker",
+    desc: 'An old flint striker on a worn cord, lost on the Sunvault road. Seven watch-lamps on the Astral Walk have waited years for its spark.',
+    category: 'key',
+  },
+  // R5 "A Chart for the Waykeeper" — the Round's last leg: the junior watcher's
+  // fresh star-chart, carried home to the Waystone.
+  round_chart: {
+    id: 'round_chart',
+    name: 'Fresh Star-chart',
+    desc: 'A new-pressed chart of the relit sky, rolled and sealed for the Waykeeper at the Vesper Crossroads. The ink still smells of lamp-smoke.',
+    category: 'key',
+  },
+
   // --- Valuables (found, never bought; exist to be sold for wicks) ----------
   wax_cake: {
     id: 'wax_cake',
@@ -263,6 +316,21 @@ export const ITEMS: ItemRegistry = {
     id: 'starglass_shard',
     name: 'Starglass Shard',
     desc: 'A sliver of sky-fallen glass that remembers a constellation. Collectors pay handsomely.',
+    category: 'valuable',
+    sell: 1500,
+  },
+  // Coldfog finds — what the drained fen still holds (West outer detour).
+  embergloss: {
+    id: 'embergloss',
+    name: 'Embergloss',
+    desc: 'A lacquered knot of old hearth-resin from a snuffed wayshrine, still faintly warm at the heart. Chandlers prize it for the finest wicks.',
+    category: 'valuable',
+    sell: 600,
+  },
+  murk_pearl: {
+    id: 'murk_pearl',
+    name: 'Murk Pearl',
+    desc: 'A pearl grown in water that stopped saying anything. Lightless, flawless, and heavier than it should be. Collectors pay dearly — and keep it in a drawer.',
     category: 'valuable',
     sell: 1500,
   },
@@ -389,6 +457,16 @@ export const ITEMS: ItemRegistry = {
     desc: 'A chart of the Storm\'s whole turning sky, pressed at the aerie itself. Teaches a willing kin TEMPEST (Storm). One study burns it out.',
     category: 'chart',
     teach_move: 'tempest',
+    price: 4000,
+  },
+  // The Helia Vault's reliquary prize — find-first per 10-economy §6 (the
+  // keepers sealed this figure away with the rest of the stored daylight).
+  chart_sunburst_nova: {
+    id: 'chart_sunburst_nova',
+    name: 'Star-chart: Sunburst Nova',
+    desc: 'A chart of the sun\'s own remembered blaze, sealed dry in the Helia Vault. Teaches a willing kin SUNBURST NOVA (Solar). One study burns it out.',
+    category: 'chart',
+    teach_move: 'sunburst_nova',
     price: 4000,
   },
 };

@@ -254,10 +254,26 @@ m = {
     ],
     "encounters": [],   # the hub is safe ground — a breath between roads
     "npcs": [
-        # the Waykeeper tends the plaza lamps; stands just off the Waystone
+        # the Waykeeper tends the plaza lamps; stands just off the Waystone.
+        # R5 "A Chart for the Waykeeper" (the Round's LAST leg; walkthrough
+        # 04-west) stages him in three flag-disjoint placements on one tile
+        # (the Fenn waystone pattern): base -> delivery (the Nightreach junior
+        # watcher's fresh star-chart, flag:q_round_chart_taken ->
+        # script.round_chart_deliver -> flag:q_round_chart) -> the chart hung
+        # on the Waystone (his after line carries the deco beat).
         {"id": "waykeeper", "at": {"tx": CX - 1, "ty": CY - 1}, "facing": "down",
          "sprite": "npc_lampwarden", "movement": "look_around",
-         "dialogue_ref": "npc.lanternway_keeper"},
+         "dialogue_ref": "npc.lanternway_keeper",
+         "hidden_when_flag": "flag:q_round_chart_taken"},
+        {"id": "waykeeper_chart", "at": {"tx": CX - 1, "ty": CY - 1}, "facing": "down",
+         "sprite": "npc_lampwarden", "movement": "static",
+         "dialogue_ref": "script.round_chart_deliver",
+         "requires_flag": "flag:q_round_chart_taken",
+         "hidden_when_flag": "flag:q_round_chart"},
+        {"id": "waykeeper_hung", "at": {"tx": CX - 1, "ty": CY - 1}, "facing": "down",
+         "sprite": "npc_lampwarden", "movement": "look_around",
+         "dialogue_ref": "npc.waykeeper_chart_hung",
+         "requires_flag": "flag:q_round_chart"},
         # Star-tender Fenn at the waystone — the opening's anchor, in four
         # flag-disjoint stages on one tile (south of the Waystone, facing it):
         #   pre   (t0)               -> the satchel ask (script.fenn_crossroads)

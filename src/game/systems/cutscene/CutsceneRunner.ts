@@ -248,6 +248,9 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
 /** Play a scene's steps in order. Returns true if it ran to completion (not aborted). */
 export async function runCutscene(ctx: CutsceneContext, steps: CutsceneStep[]): Promise<boolean> {
   for (const step of steps) {
+    // Per-step guard: an `if_flag` step plays only while that flag is held —
+    // the data-level conditional for optional colour (never progression).
+    if (step.if_flag && !ctx.flags.get(step.if_flag)) continue;
     const carryOn = await runStep(ctx, step);
     if (!carryOn) return false;
   }

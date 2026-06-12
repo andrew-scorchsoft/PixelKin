@@ -1566,7 +1566,33 @@
       "facing": "down",
       "sprite": "npc_lampwarden",
       "movement": "look_around",
-      "dialogue_ref": "npc.lanternway_keeper"
+      "dialogue_ref": "npc.lanternway_keeper",
+      "hidden_when_flag": "flag:q_round_chart_taken"
+    },
+    {
+      "id": "waykeeper_chart",
+      "at": {
+        "tx": 8,
+        "ty": 8
+      },
+      "facing": "down",
+      "sprite": "npc_lampwarden",
+      "movement": "static",
+      "dialogue_ref": "script.round_chart_deliver",
+      "requires_flag": "flag:q_round_chart_taken",
+      "hidden_when_flag": "flag:q_round_chart"
+    },
+    {
+      "id": "waykeeper_hung",
+      "at": {
+        "tx": 8,
+        "ty": 8
+      },
+      "facing": "down",
+      "sprite": "npc_lampwarden",
+      "movement": "look_around",
+      "dialogue_ref": "npc.waykeeper_chart_hung",
+      "requires_flag": "flag:q_round_chart"
     },
     {
       "id": "fenn_pre",
