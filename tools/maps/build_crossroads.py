@@ -60,6 +60,11 @@ mk.hline(path, W, H, 3, CX, W - 1); mk.hline(path, W, H, 4, CX, W - 1)
 # the GALEHIGH spoke: west-north out of the clearing (wakes with the Storm
 # Gleam — same pattern; walkthrough R4 "[wakes with spoke]")
 mk.hline(path, W, H, 3, 0, CX); mk.hline(path, W, H, 4, 0, CX)
+# the NIGHTREACH spoke: out of the clearing's NW corner, joining the Galehigh
+# road rows (wakes with the Lunar Gleam — the warp below carries the gate; the
+# LAST Lanternway spoke, walkthrough 04-west "exit via the Lanternway". With it
+# the Round's anchor faces all five lit roads.)
+mk.vline(path, W, H, 3, 0, 4); mk.vline(path, W, H, 4, 0, 4)
 # the MINE-CART HOIST spur (SW, by the south road): the Cinderhead Deep
 # shortcut's hub end — a cart-lift that only runs once the sealed door is
 # opened from the deep (graph.ts `shortcut_crossroads`, wakes with
@@ -75,6 +80,9 @@ for x in (CX, CX + 1):
 for y in (3, 4):
     tree[y * W + (W - 1)] = 0; tree[y * W + (W - 2)] = 0
     tree[y * W + 0] = 0; tree[y * W + 1] = 0
+# punch the Nightreach spoke opening (NW, cols 3-4)
+for x in (3, 4):
+    tree[0 * W + x] = 0; tree[1 * W + x] = 0
 # punch the mine-cart hoist opening (SW edge, col CX-1)
 for y in (16, 17):
     tree[y * W + (CX - 1)] = 0
@@ -124,6 +132,7 @@ sign_tiles = {
     "sign_spire": (CX - 1, CY + 3),      # beside the south (inward) road
     "sign_lowleaf": (CX + 3, 5),         # beside the east-north (Lowleaf) spoke
     "sign_galehigh": (CX - 4, 5),        # beside the west-north (Galehigh) spoke
+    "sign_nightreach": (2, 5),           # beside the NW (Nightreach) spoke
     "sign_mineshortcut": (CX - 2, 16),   # beside the mine-cart hoist (SW stub)
 }
 for (x, y) in sign_tiles.values():
@@ -177,6 +186,18 @@ m = {
          "to_map": "galehigh_terraces", "to": {"tx": 16, "ty": 30}, "facing": "up",
          "requires_flag": "gleam:storm", "blocked_ref": "npc.waykeeper_galehigh_gate",
          "transition": "fade"},
+        # the Nightreach spoke (NW) — wakes with the Lunar Gleam (the
+        # Lowleaf/Galehigh pattern verbatim: graph.ts declares it ungated,
+        # the warp gates stricter with the Waykeeper's own "not yet"; the
+        # long way round is the rim road, always open).
+        {"id": "to_nightreach", "at": {"tx": 3, "ty": 0}, "trigger": "step_on",
+         "to_map": "nightreach_observatory", "to": {"tx": 4, "ty": 28}, "facing": "up",
+         "requires_flag": "gleam:lunar", "blocked_ref": "npc.waykeeper_nightreach_gate",
+         "transition": "fade"},
+        {"id": "to_nightreach_e", "at": {"tx": 4, "ty": 0}, "trigger": "step_on",
+         "to_map": "nightreach_observatory", "to": {"tx": 5, "ty": 28}, "facing": "up",
+         "requires_flag": "gleam:lunar", "blocked_ref": "npc.waykeeper_nightreach_gate",
+         "transition": "fade"},
         # sleeping roads (inert teases until their maps are authored)
         {"id": "to_marsh", "at": {"tx": CX, "ty": 0}, "trigger": "step_on",
          "to_map": "coldfog_marches_i", "to": {"tx": 8, "ty": 28}, "facing": "up", "transition": "fade"},
@@ -221,6 +242,9 @@ m = {
         {"id": "sign_galehigh", "kind": "sign",
          "at": {"tx": sign_tiles["sign_galehigh"][0], "ty": sign_tiles["sign_galehigh"][1]},
          "activation": "interact", "ref": "sign.crossroads_galehigh"},
+        {"id": "sign_nightreach", "kind": "sign",
+         "at": {"tx": sign_tiles["sign_nightreach"][0], "ty": sign_tiles["sign_nightreach"][1]},
+         "activation": "interact", "ref": "sign.crossroads_nightreach"},
         {"id": "sign_mineshortcut", "kind": "sign",
          "at": {"tx": sign_tiles["sign_mineshortcut"][0], "ty": sign_tiles["sign_mineshortcut"][1]},
          "activation": "interact", "ref": "sign.crossroads_mineshortcut"},

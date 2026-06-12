@@ -129,6 +129,9 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'sunvault_climb_ii', region: 'west' }, // route: sun-vine bridges
     { map_id: 'helia_vault', region: 'west', optional: true, reward: 'rare Solar kin + item in a sealed reliquary' },
     { map_id: 'nightreach_observatory', region: 'west' },
+    { map_id: 'nightreach_lumenary', region: 'west' }, // interior: the star-temple sanctum — Nessa's bond-test under the great eyepiece (the eighth Gleam; engine derives crown_west + hub_unlocked)
+    { map_id: 'nightreach_inn', region: 'west' }, // interior: The Long Watch inn (rest point)
+    { map_id: 'nightreach_home', region: 'west' }, // interior: a watcher's cottage
     // ---- Outer: Coldfog Marches (2 segments) + the hub ------------------------------
     { map_id: 'coldfog_marches_i', region: 'outer' }, // route: blighted marsh
     { map_id: 'coldfog_marches_ii', region: 'outer' }, // route: deep coldfog
@@ -205,6 +208,10 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'sunken_solarium', to_map: 'sunvault_climb_i', via_warp: 'to_climb', bidirectional: true },
     { from_map: 'sunvault_climb_i', to_map: 'sunvault_climb_ii', via_warp: 'to_climb_ii', requires_ability: 'sunsketch', bidirectional: true },
     { from_map: 'sunvault_climb_ii', to_map: 'nightreach_observatory', via_warp: 'to_observatory', bidirectional: true },
+    // The Lunar hall is starter-gated like every Lumenary door (NEVER Emberward/Starreach — §0 rule 1).
+    { from_map: 'nightreach_observatory', to_map: 'nightreach_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
+    { from_map: 'nightreach_observatory', to_map: 'nightreach_inn', via_warp: 'to_inn', bidirectional: true },
+    { from_map: 'nightreach_observatory', to_map: 'nightreach_home', via_warp: 'to_home', bidirectional: true },
     // Coldfog detour (off the hub), then onward to Nightreach from its blighted side.
     { from_map: 'coldfog_marches_i', to_map: 'coldfog_marches_ii', via_warp: 'to_marsh_ii', requires_ability: 'emberward', bidirectional: true },
     { from_map: 'coldfog_marches_ii', to_map: 'nightreach_observatory', via_warp: 'to_observatory_fog', requires_ability: 'emberward', bidirectional: true },

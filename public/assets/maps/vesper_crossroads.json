@@ -25,10 +25,10 @@
       "data": [
         51,
         52,
-        52,
-        51,
-        51,
-        50,
+        53,
+        13,
+        18,
+        48,
         51,
         51,
         53,
@@ -45,10 +45,10 @@
         50,
         52,
         111,
-        57,
-        57,
-        56,
-        56,
+        58,
+        14,
+        18,
+        55,
         56,
         110,
         54,
@@ -66,8 +66,8 @@
         56,
         58,
         3,
-        1,
-        1,
+        13,
+        19,
         4,
         3,
         55,
@@ -86,8 +86,8 @@
         11,
         10,
         10,
-        10,
-        11,
+        100,
+        101,
         11,
         10,
         11,
@@ -492,7 +492,7 @@
         0,
         0,
         0,
-        0,
+        117,
         0,
         0,
         117,
@@ -1350,6 +1350,40 @@
       "transition": "fade"
     },
     {
+      "id": "to_nightreach",
+      "at": {
+        "tx": 3,
+        "ty": 0
+      },
+      "trigger": "step_on",
+      "to_map": "nightreach_observatory",
+      "to": {
+        "tx": 4,
+        "ty": 28
+      },
+      "facing": "up",
+      "requires_flag": "gleam:lunar",
+      "blocked_ref": "npc.waykeeper_nightreach_gate",
+      "transition": "fade"
+    },
+    {
+      "id": "to_nightreach_e",
+      "at": {
+        "tx": 4,
+        "ty": 0
+      },
+      "trigger": "step_on",
+      "to_map": "nightreach_observatory",
+      "to": {
+        "tx": 5,
+        "ty": 28
+      },
+      "facing": "up",
+      "requires_flag": "gleam:lunar",
+      "blocked_ref": "npc.waykeeper_nightreach_gate",
+      "transition": "fade"
+    },
+    {
       "id": "to_marsh",
       "at": {
         "tx": 9,
@@ -1499,6 +1533,16 @@
       },
       "activation": "interact",
       "ref": "sign.crossroads_galehigh"
+    },
+    {
+      "id": "sign_nightreach",
+      "kind": "sign",
+      "at": {
+        "tx": 2,
+        "ty": 5
+      },
+      "activation": "interact",
+      "ref": "sign.crossroads_nightreach"
     },
     {
       "id": "sign_mineshortcut",

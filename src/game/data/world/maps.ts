@@ -610,6 +610,41 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/coldfog-marches-b.webp',
     ],
   },
+  // W4 — Nightreach Observatory (Lumenary 8, Lunar: Nessa Cole) — the
+  // hilltop star-temple where the Crown completes. The Vigil of the Seven
+  // (the shape-#8 ceremony walk) climbs the Astral Walk to the dome; the
+  // bond-test waits under the great eyepiece inside; with gleam:solar held
+  // the engine derives crown_west + hub_unlocked on the win. The Coldfog
+  // back-door enters on the east edge (Emberward); the Lanternway spoke
+  // (gleam:lunar) leaves south-west for the crossroads.
+  nightreach_observatory: {
+    json: 'assets/maps/nightreach_observatory.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'town',
+    music: 'assets/audio/music/nightreach-observatory-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/nightreach-observatory-a.webp',
+      'assets/backgrounds/battle/nightreach-observatory-b.webp',
+    ],
+  },
+  nightreach_lumenary: {
+    json: 'assets/maps/nightreach_lumenary.json',
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/nightreach-observatory-b.mp3',
+  },
+  nightreach_inn: {
+    json: 'assets/maps/nightreach_inn.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/nightreach-observatory-b.mp3',
+  },
+  nightreach_home: {
+    json: 'assets/maps/nightreach_home.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/nightreach-observatory-b.mp3',
+  },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
   // Their battle backdrops are already rendered — see UPCOMING_BATTLE_BACKDROPS below.
@@ -625,10 +660,6 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
  * its backdrops set, drop its key here to avoid drift.
  */
 export const UPCOMING_BATTLE_BACKDROPS: Record<string, string[]> = {
-  nightreach_observatory: [
-    'assets/backgrounds/battle/nightreach-observatory-a.webp',
-    'assets/backgrounds/battle/nightreach-observatory-b.webp',
-  ],
   vesper_crossroads: [
     'assets/backgrounds/battle/vesper-crossroads-a.webp',
     'assets/backgrounds/battle/vesper-crossroads-b.webp',
