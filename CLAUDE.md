@@ -379,6 +379,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `dimglass-coast-a`) already follow this; full recipe in the generate-midi score
   bible §3.3. Bare 4-voice `gbc` is still right for the sparsest cues (deep caves,
   the Hollowing's drained zones).
+- **Crown/hub flags DERIVE — never hand-set.** `flag:crown_*` (from each quadrant's two
+  `gleam:*`) and `flag:hub_unlocked` (from all four crowns) are computed inside
+  `FlagStore.deriveCrowns()` on every flag write and on load (old saves self-heal). Content
+  must never list them in `sets_flags`/`reward_flags` (the W7 panel caught the game being
+  uncompletable: the docs promised engine derivation that didn't exist, and South's hand-set
+  `'crown_south'` was the wrong string — consumers want the `flag:` prefix).
 - **Use the canon vocabulary** (kin, Lumenary, Gleam, Lantern Gift, kindling,
   vesperlamp) in code, data, dialogue, and commits — not generic "monster/gym/badge,"
   and never another franchise's terms (even in prompts and commit messages).

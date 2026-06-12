@@ -22,7 +22,7 @@ export const TRAINERS: TrainerRegistry = {
     ],
     intro_ref: 'trainer.lampwarden_tinderwick.intro',
     defeat_ref: 'trainer.lampwarden_tinderwick.defeat',
-    reward_flags: ['gleam:ember', 'crown_south'],
+    reward_flags: ['gleam:ember'], // crown_south now DERIVES in FlagStore — never hand-set
     payout: 600, // Lampwarden 60 × ace 10
     music: 'battle-emberfall',
     ai: 'smart', // Lampwardens play the matchup, not just the biggest number
@@ -249,7 +249,7 @@ export const TRAINERS: TrainerRegistry = {
     ],
     intro_ref: 'trainer.lampwarden_pearlmoor.intro',
     defeat_ref: 'trainer.lampwarden_pearlmoor.defeat',
-    reward_flags: ['gleam:tide', 'crown_south'],
+    reward_flags: ['gleam:tide'], // crown_south now DERIVES in FlagStore — never hand-set
     reward_abilities: ['tidecall'],
     payout: 960, // Lampwarden 60 × ace 16
     music: 'battle-emberfall',
