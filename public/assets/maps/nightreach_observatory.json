@@ -1629,6 +1629,85 @@
       "dialogue_ref": "script.post_letter_nightreach",
       "requires_flag": "flag:q_post_letters",
       "hidden_when_flag": "flag:q_post_letter_nightreach"
+    },
+    {
+      "id": "oriel_begin",
+      "at": { "tx": 19, "ty": 4 },
+      "facing": "up",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "dialogue_ref": "cutscene.starfall_begins",
+      "requires_flag": "flag:dawn",
+      "hidden_when_flag": "flag:starfall_begun"
+    },
+    {
+      "id": "oriel_read_1",
+      "at": { "tx": 19, "ty": 4 },
+      "facing": "up",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "dialogue_ref": "npc.oriel_read_1",
+      "requires_flag": "flag:vigil_reading_1",
+      "hidden_when_flag": "flag:vigil_reading_2"
+    },
+    {
+      "id": "oriel_read_2",
+      "at": { "tx": 19, "ty": 4 },
+      "facing": "up",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "dialogue_ref": "npc.oriel_read_2",
+      "requires_flag": "flag:vigil_reading_2",
+      "hidden_when_flag": "flag:vigil_reading_3"
+    },
+    {
+      "id": "oriel_read_3",
+      "at": { "tx": 19, "ty": 4 },
+      "facing": "up",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "dialogue_ref": "npc.oriel_read_3",
+      "requires_flag": "flag:vigil_reading_3",
+      "hidden_when_flag": "flag:vigil_reading_4"
+    },
+    {
+      "id": "oriel_read_4",
+      "at": { "tx": 19, "ty": 4 },
+      "facing": "up",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "dialogue_ref": "npc.oriel_read_4",
+      "requires_flag": "flag:vigil_reading_4",
+      "hidden_when_flag": "flag:vigil_reading_5"
+    },
+    {
+      "id": "oriel_read_5",
+      "at": { "tx": 19, "ty": 4 },
+      "facing": "up",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "dialogue_ref": "npc.oriel_read_5",
+      "requires_flag": "flag:vigil_reading_5",
+      "hidden_when_flag": "flag:vigil_5_kept"
+    },
+    {
+      "id": "oriel_carry",
+      "at": { "tx": 19, "ty": 4 },
+      "facing": "up",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "dialogue_ref": "npc.oriel_carry",
+      "requires_flag": "flag:vigil_5_kept",
+      "hidden_when_flag": "flag:starfall_crown"
+    },
+    {
+      "id": "oriel_epilogue",
+      "at": { "tx": 19, "ty": 4 },
+      "facing": "up",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "dialogue_ref": "npc.oriel_epilogue",
+      "requires_flag": "flag:starfall_crown"
     }
   ],
   "gates": [],

@@ -67,7 +67,15 @@
     "weight_kg": 48.0,
     "habitat": "west"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "vigil_sunfall",
+      "terrain": "tall_grass",
+      "rarity": "very_rare",
+      "min": 66,
+      "max": 66
+    }
+  ],
   "scripted": true,
   "art": {
     "silhouette": "Central blazing amber sphere orbited by eight angled spike-shards like a sun diagram; the whole assembly rotates slowly; corona of golden light bleeds outward; unmistakable, awe-defining at 64px.",

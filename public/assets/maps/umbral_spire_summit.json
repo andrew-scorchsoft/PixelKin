@@ -419,6 +419,117 @@
         "flag:dawn"
       ],
       "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "starfall_round_0",
+      "kind": "cutscene",
+      "at": {
+        "tx": 10,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "script.starfall_round",
+      "requires_flag": "flag:vigil_5_kept",
+      "hidden_when_flag": "flag:starfall_lesson"
+    },
+    {
+      "id": "starfall_round_1",
+      "kind": "cutscene",
+      "at": {
+        "tx": 11,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "script.starfall_round",
+      "requires_flag": "flag:vigil_5_kept",
+      "hidden_when_flag": "flag:starfall_lesson"
+    },
+    {
+      "id": "starfall_round_2",
+      "kind": "cutscene",
+      "at": {
+        "tx": 12,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "script.starfall_round",
+      "requires_flag": "flag:vigil_5_kept",
+      "hidden_when_flag": "flag:starfall_lesson"
+    },
+    {
+      "id": "dawnbrael_wakes_0",
+      "kind": "cutscene",
+      "at": {
+        "tx": 10,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "cutscene.dawnbrael_wakes",
+      "requires_flag": "flag:starfall_lesson",
+      "hidden_when_flag": "flag:dawnbrael_caught"
+    },
+    {
+      "id": "dawnbrael_wakes_1",
+      "kind": "cutscene",
+      "at": {
+        "tx": 11,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "cutscene.dawnbrael_wakes",
+      "requires_flag": "flag:starfall_lesson",
+      "hidden_when_flag": "flag:dawnbrael_caught"
+    },
+    {
+      "id": "dawnbrael_wakes_2",
+      "kind": "cutscene",
+      "at": {
+        "tx": 12,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "cutscene.dawnbrael_wakes",
+      "requires_flag": "flag:starfall_lesson",
+      "hidden_when_flag": "flag:dawnbrael_caught"
+    },
+    {
+      "id": "startender_named_0",
+      "kind": "cutscene",
+      "at": {
+        "tx": 10,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "cutscene.startender_named",
+      "once": true,
+      "requires_flag": "flag:dawnbrael_caught",
+      "hidden_when_flag": "flag:starfall_crown"
+    },
+    {
+      "id": "startender_named_1",
+      "kind": "cutscene",
+      "at": {
+        "tx": 11,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "cutscene.startender_named",
+      "once": true,
+      "requires_flag": "flag:dawnbrael_caught",
+      "hidden_when_flag": "flag:starfall_crown"
+    },
+    {
+      "id": "startender_named_2",
+      "kind": "cutscene",
+      "at": {
+        "tx": 12,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "cutscene.startender_named",
+      "once": true,
+      "requires_flag": "flag:dawnbrael_caught",
+      "hidden_when_flag": "flag:starfall_crown"
     }
   ],
   "encounters": [],
@@ -457,6 +568,57 @@
       "sprite": "wren",
       "movement": "static",
       "dialogue_ref": "npc.wren_spire_summit"
+    },
+    {
+      "id": "vigil_ondra_summit",
+      "at": {
+        "tx": 10,
+        "ty": 10
+      },
+      "facing": "right",
+      "sprite": "npc_old_woman",
+      "movement": "static",
+      "dialogue_ref": "npc.vigil_ondra_summit",
+      "requires_flag": "flag:vigil_5_kept",
+      "hidden_when_flag": "flag:starfall_lesson"
+    },
+    {
+      "id": "vigil_solenne_summit",
+      "at": {
+        "tx": 12,
+        "ty": 10
+      },
+      "facing": "right",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "dialogue_ref": "npc.vigil_solenne_summit",
+      "requires_flag": "flag:vigil_5_kept",
+      "hidden_when_flag": "flag:starfall_lesson"
+    },
+    {
+      "id": "vigil_mer_summit",
+      "at": {
+        "tx": 15,
+        "ty": 9
+      },
+      "facing": "left",
+      "sprite": "npc_lampwarden",
+      "movement": "static",
+      "dialogue_ref": "npc.vigil_mer_summit",
+      "requires_flag": "flag:vigil_5_kept",
+      "hidden_when_flag": "flag:starfall_lesson"
+    },
+    {
+      "id": "fenn_last_lesson",
+      "at": {
+        "tx": 11,
+        "ty": 8
+      },
+      "facing": "down",
+      "sprite": "npc_mentor",
+      "movement": "static",
+      "dialogue_ref": "script.last_lesson_again",
+      "requires_flag": "flag:starfall_crown"
     }
   ],
   "gates": [],

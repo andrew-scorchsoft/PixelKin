@@ -67,7 +67,15 @@
     "weight_kg": 45000,
     "habitat": "outer"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "vigil_murkfall",
+      "terrain": "tall_grass",
+      "rarity": "very_rare",
+      "min": 67,
+      "max": 67
+    }
+  ],
   "scripted": true,
   "art": {
     "silhouette": "Enormous cetacean silhouette, deep void-black with faint silver constellation-marks still visible along its flanks (the ghost of what it was); fins trail null-mist; a crescent of anti-light glows where its blowhole was; awe-tier size.",

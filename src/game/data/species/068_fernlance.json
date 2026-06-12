@@ -68,7 +68,15 @@
     "weight_kg": 95,
     "habitat": "east"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "vigil_grovefall",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 60,
+      "max": 62
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Long undulating serpent, densely fringed with fern-fronds that blaze gold and cyan along their edges; head-crown has expanded into a full luminous halo; tail tapers to a glowing spike.",

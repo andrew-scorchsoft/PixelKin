@@ -76,7 +76,15 @@
     "weight_kg": 240,
     "habitat": "outer"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "vigil_stormfall",
+      "terrain": "tall_grass",
+      "rarity": "very_rare",
+      "min": 64,
+      "max": 64
+    }
+  ],
   "scripted": true,
   "art": {
     "silhouette": "A thunderhead-bull silhouette rendered in absolute void: the body outline is a deep storm-shape filled with dark non-light, negative-space body, but from it leak erratic arcs of dead-current in a sickly violet-grey that never quite reaches the warmth of true storm-blue. The eyes are empty null-lantern apertures \u2014 circular, glass-cold, unlit. The horns still crackle with charge. Reads as something that was majestic and is now entirely hollow.",

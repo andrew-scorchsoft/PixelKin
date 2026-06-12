@@ -67,7 +67,15 @@
     "weight_kg": 4800,
     "habitat": "outer"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "vigil_murkfall",
+      "terrain": "tall_grass",
+      "rarity": "very_rare",
+      "min": 68,
+      "max": 68
+    }
+  ],
   "scripted": true,
   "art": {
     "silhouette": "Vast tortoise-like creature, entirely hidden beneath an shell of snuffed lanterns, dead reeds, and null-stone; only the deep void-dark eyes and four pillar-legs betray it as alive; its back looks like a section of blighted marsh terrain.",

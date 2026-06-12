@@ -63,7 +63,15 @@
     "weight_kg": 48.0,
     "habitat": "north"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "vigil_stormfall",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 62,
+      "max": 64
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Upright digitigrade silhouette, dark storm-grey coat, a full spine-ridge of spinning vane-blades each trailing a spark arc, crackling eye-markings that pulse in sync with the vanes; imposing at 64px.",

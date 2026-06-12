@@ -3081,6 +3081,26 @@
   ],
   "encounters": [
     {
+      "id": "sunlit_verge_helixia",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 20,
+        "ty": 13,
+        "w": 6,
+        "h": 6
+      },
+      "encounter_rate": 0.01,
+      "requires_flag": "flag:starfall_crown",
+      "table": [
+        {
+          "kin_id": 131,
+          "weight": 1,
+          "min_level": 60,
+          "max_level": 62
+        }
+      ]
+    },
+    {
       "id": "sunlit_verge",
       "terrain": "tall_grass",
       "rect": {
@@ -3290,6 +3310,19 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_dawnstead_cache",
       "hidden_when_flag": "flag:picked_dawnstead_cache"
+    },
+    {
+      "id": "starfall_witness",
+      "at": {
+        "tx": 13,
+        "ty": 11
+      },
+      "facing": "down",
+      "sprite": "npc_woman",
+      "movement": "look_around",
+      "dialogue_ref": "npc.starfall_witness",
+      "requires_flag": "flag:dawn",
+      "hidden_when_flag": "flag:starfall_begun"
     }
   ],
   "gates": [],

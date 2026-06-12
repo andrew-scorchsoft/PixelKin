@@ -67,7 +67,15 @@
     "weight_kg": 88.0,
     "habitat": "west"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "dawnstead",
+      "terrain": "tall_grass",
+      "rarity": "very_rare",
+      "min": 60,
+      "max": 62
+    }
+  ],
   "scripted": true,
   "art": {
     "silhouette": "Spherical amber core roughly lion-headed, with three glowing golden rings orbiting at different angles (like an armillary sphere); each ring is studded with small radiant nodes; the whole structure rotates; breathtaking at 64px.",

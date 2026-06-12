@@ -65,7 +65,15 @@
     "weight_kg": 4.2,
     "habitat": "south"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "dawnstead",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 55,
+      "max": 58
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Chunky cream-and-butter-yellow puppy body, ink nose, a single pale candle-flame tail with a soft wax drip; big round eyes; reads as one warm blob at 32px.",

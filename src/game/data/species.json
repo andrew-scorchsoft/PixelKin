@@ -549,7 +549,22 @@
     "weight_kg": 42,
     "habitat": "south"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_hearthfall",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 59,
+     "max": 60
+    },
+    {
+     "area": "dawnstead",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 60,
+     "max": 65
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Tall, dignified humanoid; torso is a layered tiered candelabra of poured wax, seven distinct flames each a different warm hue from amber to rose; long draping arms of flowing wax; a composed, kind face half-shadowed by a wax-brim hat; strikes a warm silhouette at 48px.",
@@ -703,7 +718,15 @@
     "weight_kg": 1.2,
     "habitat": "south"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "dawnstead",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 60
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Elongated, dragonfly-like frame; four layered wings edged with cyan; abdomen striped amber and cream, tip blazing a permanent steady beacon; big compound eyes catching every glint; reads as a streak of light at 32px.",
@@ -779,7 +802,15 @@
     "weight_kg": 4.2,
     "habitat": "south"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "dawnstead",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 55,
+     "max": 58
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Chunky cream-and-butter-yellow puppy body, ink nose, a single pale candle-flame tail with a soft wax drip; big round eyes; reads as one warm blob at 32px.",
@@ -938,7 +969,22 @@
     "weight_kg": 48.0,
     "habitat": "south"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_hearthfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 60
+    },
+    {
+     "area": "dawnstead",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 62
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Large, dignified canine silhouette; back and mane bristle with tall tapers in cream, gold, and amber; pooling light halos the outline; dramatic yet soft at 64px.",
@@ -1241,7 +1287,15 @@
     "weight_kg": 0.8,
     "habitat": "south"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "dawnstead",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 55,
+     "max": 60
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Tiny round fuzzy moth body in ash-grey, wings tipped in orange-to-yellow ember gradients, two long antennae with spark-dot tips; reads as a fluttering silhouette at 32px.",
@@ -1319,7 +1373,15 @@
     "weight_kg": 5.2,
     "habitat": "south"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_hearthfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 60
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Wide, spread-wing moth silhouette; upper wings are deep charcoal laced with bright ember veins, lower wings trail glowing filaments; menacing and beautiful at 64px.",
@@ -1395,7 +1457,15 @@
     "weight_kg": 2.2,
     "habitat": "south"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "dawnstead",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 60
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Round-bodied kitten, deep apricot coat with cream markings, curled ember-glow tail, closed-eyed happy expression; warm and cosy silhouette at 32px.",
@@ -1981,7 +2051,15 @@
     "weight_kg": 48,
     "habitat": "south"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_hearthfall",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 60
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Majestic, long-bodied fish with translucent crystalline fins that refract all light into dazzling arcs, pale blue-white body with thin crystalline armour plates, twin feeler-fins curled like antennae, piercing white eyes.",
@@ -2746,7 +2824,15 @@
     "weight_kg": 52,
     "habitat": "south"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_hearthfall",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 60,
+     "max": 60
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "Sleek, long-limbed fox with enormous flame-and-star-ray tail plumes that trail behind it like a comet's tail. The body is amber-to-white radiant, as though lit from inside. The plume-tails shift between ember-orange at the base and cool diamond-cyan at the feathered tips \u2014 the gradient between fire and starlight. The ears are long and spark-tipped. The 64px sprite will look like a running star.",
@@ -2833,7 +2919,15 @@
     "weight_kg": 4200,
     "habitat": "south"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_hearthfall",
+     "terrain": "water",
+     "rarity": "very_rare",
+     "min": 60,
+     "max": 60
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "Enormous translucent whale-like form, body almost entirely composed of moon-on-water refraction \u2014 shifting aqua, silver, and pale gold layers visible within. No hard edges, no single colour \u2014 a living sea-mirror. Two vast luminous crescent eyes and trailing aurora-thread fins.",
@@ -4040,7 +4134,15 @@
     "weight_kg": 310,
     "habitat": "east"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_grovefall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 60,
+     "max": 62
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Massive hexagonal-plated shell studded with diamond-crystal spires; four column-thick legs; small blunt head with half-lidded stone-grey eyes; walks with serene deliberateness; silhouette unmistakable at any size.",
@@ -4743,7 +4845,15 @@
     "weight_kg": 580,
     "habitat": "east"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_grovefall",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 61,
+     "max": 62
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Massive pillar-like mushroom body with many layered caps in deep indigo and midnight-green; trailing root-tendrils like a cloak; eyes gleam with dim amber light in shadow.",
@@ -5275,7 +5385,15 @@
     "weight_kg": 1800,
     "habitat": "east"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_grovefall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 60,
+     "max": 62
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Massive standing golem of layered stone-bark, a living forest growing from its shoulders (small ferns, mosses, a small sapling), deep carved-wood face half-hidden by roots, feet rooted into the ground.",
@@ -5595,7 +5713,15 @@
     "weight_kg": 95,
     "habitat": "east"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_grovefall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 60,
+     "max": 62
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Long undulating serpent, densely fringed with fern-fronds that blaze gold and cyan along their edges; head-crown has expanded into a full luminous halo; tail tapers to a glowing spike.",
@@ -5752,7 +5878,15 @@
     "weight_kg": 2200,
     "habitat": "east"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_grovefall",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 62,
+     "max": 62
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "An enormous mushroom-capped behemoth walking on six thick stone-threaded root-legs. The cap is deep earth-brown with bioluminescent Verdant spots in diamond-cyan and pale green. Beneath the cap hangs a fringe of glowing sporecurtain. The legs are stone-grey with thick mycelial cords wrapped around them like rope around pillars. The face is a flat, calm disc with two dim-glow eyes. At 64px it reads as a cave and a creature simultaneously.",
@@ -6581,6 +6715,13 @@
      "rarity": "rare",
      "min": 41,
      "max": 42
+    },
+    {
+     "area": "vigil_stormfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 62,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -7637,6 +7778,13 @@
      "rarity": "rare",
      "min": 36,
      "max": 37
+    },
+    {
+     "area": "vigil_stormfall",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 63,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -8444,7 +8592,15 @@
     "weight_kg": 48.0,
     "habitat": "north"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_stormfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 62,
+     "max": 64
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Upright digitigrade silhouette, dark storm-grey coat, a full spine-ridge of spinning vane-blades each trailing a spark arc, crackling eye-markings that pulse in sync with the vanes; imposing at 64px.",
@@ -8686,7 +8842,15 @@
     "weight_kg": 40.0,
     "habitat": "north"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_stormfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 62,
+     "max": 64
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Elegant large fox silhouette, white-silver fur with storm-blue markings, a spiralling tornado-tail that crackles with visible charge, twin ear-fins swept back; the apex of aerodynamic at 64px.",
@@ -9440,6 +9604,13 @@
      "rarity": "rare",
      "min": 45,
      "max": 46
+    },
+    {
+     "area": "vigil_sunfall",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 64,
+     "max": 66
     }
    ],
    "scripted": false,
@@ -10322,7 +10493,15 @@
     "weight_kg": 48.0,
     "habitat": "west"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_sunfall",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 66,
+     "max": 66
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "Central blazing amber sphere orbited by eight angled spike-shards like a sun diagram; the whole assembly rotates slowly; corona of golden light bleeds outward; unmistakable, awe-defining at 64px.",
@@ -10532,6 +10711,13 @@
      "rarity": "uncommon",
      "min": 48,
      "max": 49
+    },
+    {
+     "area": "vigil_sunfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
     }
    ],
    "scripted": false,
@@ -10694,6 +10880,13 @@
      "rarity": "rare",
      "min": 45,
      "max": 46
+    },
+    {
+     "area": "vigil_sunfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
     }
    ],
    "scripted": false,
@@ -10873,6 +11066,13 @@
      "rarity": "rare",
      "min": 44,
      "max": 46
+    },
+    {
+     "area": "vigil_sunfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
     }
    ],
    "scripted": false,
@@ -11156,7 +11356,15 @@
     "weight_kg": 85,
     "habitat": "west"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_murkfall",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 67,
+     "max": 67
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "Tall, elegant heron-phoenix with long sweeping tail feathers that trail behind like a train. Plumage in warm gold and honey-amber, edged with faint diamond-cyan light. The chest and neck are pale as bone-white parchment. One wing is slightly shorter \u2014 an old wound that never quite healed. Eyes are deep amber, warm and patient. The silhouette is all grace and faded glory.",
@@ -11246,6 +11454,13 @@
      "rarity": "very_rare",
      "min": 51,
      "max": 52
+    },
+    {
+     "area": "vigil_sunfall",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 65,
+     "max": 65
     }
    ],
    "scripted": true,
@@ -11411,7 +11626,15 @@
     "weight_kg": 88.0,
     "habitat": "west"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "dawnstead",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 60,
+     "max": 62
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "Spherical amber core roughly lion-headed, with three glowing golden rings orbiting at different angles (like an armillary sphere); each ring is studded with small radiant nodes; the whole structure rotates; breathtaking at 64px.",
@@ -12041,6 +12264,13 @@
      "rarity": "common",
      "min": 49,
      "max": 50
+    },
+    {
+     "area": "vigil_murkfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 66,
+     "max": 68
     }
    ],
    "scripted": false,
@@ -12219,6 +12449,13 @@
      "rarity": "rare",
      "min": 47,
      "max": 48
+    },
+    {
+     "area": "vigil_murkfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 66,
+     "max": 68
     }
    ],
    "scripted": false,
@@ -12420,6 +12657,13 @@
      "rarity": "common",
      "min": 49,
      "max": 50
+    },
+    {
+     "area": "vigil_murkfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 66,
+     "max": 68
     }
    ],
    "scripted": false,
@@ -12591,7 +12835,15 @@
     "weight_kg": 240,
     "habitat": "outer"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_stormfall",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 64,
+     "max": 64
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "A thunderhead-bull silhouette rendered in absolute void: the body outline is a deep storm-shape filled with dark non-light, negative-space body, but from it leak erratic arcs of dead-current in a sickly violet-grey that never quite reaches the warmth of true storm-blue. The eyes are empty null-lantern apertures \u2014 circular, glass-cold, unlit. The horns still crackle with charge. Reads as something that was majestic and is now entirely hollow.",
@@ -12669,7 +12921,15 @@
     "weight_kg": 45000,
     "habitat": "outer"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_murkfall",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 67,
+     "max": 67
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "Enormous cetacean silhouette, deep void-black with faint silver constellation-marks still visible along its flanks (the ghost of what it was); fins trail null-mist; a crescent of anti-light glows where its blowhole was; awe-tier size.",
@@ -12747,7 +13007,15 @@
     "weight_kg": 4800,
     "habitat": "outer"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "vigil_murkfall",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 68,
+     "max": 68
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "Vast tortoise-like creature, entirely hidden beneath an shell of snuffed lanterns, dead reeds, and null-stone; only the deep void-dark eyes and four pillar-legs betray it as alive; its back looks like a section of blighted marsh terrain.",

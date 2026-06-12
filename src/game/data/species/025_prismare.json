@@ -68,7 +68,15 @@
     "weight_kg": 48,
     "habitat": "south"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "vigil_hearthfall",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 58,
+      "max": 60
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Majestic, long-bodied fish with translucent crystalline fins that refract all light into dazzling arcs, pale blue-white body with thin crystalline armour plates, twin feeler-fins curled like antennae, piercing white eyes.",

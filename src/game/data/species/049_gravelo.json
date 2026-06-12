@@ -67,7 +67,15 @@
     "weight_kg": 310,
     "habitat": "east"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "vigil_grovefall",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 60,
+      "max": 62
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Massive hexagonal-plated shell studded with diamond-crystal spires; four column-thick legs; small blunt head with half-lidded stone-grey eyes; walks with serene deliberateness; silhouette unmistakable at any size.",

@@ -3276,6 +3276,194 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', text: 'Found 400 WICKS!' },
     { op: 'setFlag', flag: 'flag:picked_dawnstead_cache' },
   ],
+
+  // ===========================================================================
+  // THE STARFALL VIGILS (06-postgame · R3) — the endgame challenge chain. All
+  // data: flags + warps + NPC/object swaps + EventTriggers + the trainer/item
+  // entries above. The trials are sequential battle ops; a LOSS aborts the
+  // script (engine convention), so EVERY grant/setFlag is authored AFTER the
+  // battle — a blackout re-runs the trial from its trigger, never half-granting.
+  // Keeper lines + readings are VERBATIM from the 06-postgame site sections.
+  // Tone: post-dawn wonder; the dry glint holds ~1 in 6; Mer + the summit are
+  // sincere throughout.
+  // ===========================================================================
+
+  // The opening — Watcher Oriel reads the first fall (Nightreach terrace).
+  // Interact, requires flag:dawn, once:true. Sets flag:starfall_begun +
+  // flag:vigil_reading_1 and speaks reading 1. Small and warm — wonder, not dread.
+  'cutscene.starfall_begins': [
+    { op: 'musicSting', key: 'world-lantern-light' },
+    { op: 'flashColor', color: '#ffe9a8', ms: 320 },
+    { op: 'say', speaker: 'WATCHER ORIEL', text: 'All those years we watched the sky lose lights. Last night it GAVE one back — shed it, like a tree sheds a leaf it\'s finished with. The old watchers used to call them star-shards. The very old watchers used to call them invitations.' },
+    { op: 'say', speaker: 'WATCHER ORIEL', text: 'I read where it fell. I\'d fetch it myself, but somebody promoted me, and now I\'m not allowed anywhere with weather.' },
+    { op: 'setFlag', flag: 'flag:starfall_begun' },
+    { op: 'setFlag', flag: 'flag:vigil_reading_1' },
+    // Reading 1 — Hearthfall (south).
+    { op: 'say', speaker: 'WATCHER ORIEL', text: 'The first came down in the south — where the first lamp learned its name. Climb past the lantern that taught the sky to answer; it fell on the bluff above, where even the gulls go quiet.' },
+  ],
+
+  // --- Vigil I — Hearthfall -------------------------------------------------
+  // intro -> battle -> defeat -> grants (Starfall Shard + Radiant Charm) ->
+  // flags (vigil_1_kept + vigil_reading_2). Esra reads reading 2 in the glint.
+  'script.vigil_hearthfall': [
+    { op: 'say', speaker: 'WICK-MOTHER ESRA', text: 'I dipped Brisa\'s first wick when she came up to my elbow, dear. She vouches for you. Wicks don\'t lie — but let\'s check.' },
+    { op: 'battle', trainer: 'vigilant_esra' },
+    { op: 'say', speaker: 'WICK-MOTHER ESRA', text: 'Steady as her best. Take the shard — and the charm; I pressed it for whoever finally came.' },
+    { op: 'giveItem', item: 'starfall_shard' },
+    { op: 'giveItem', item: 'radiant_charm' },
+    { op: 'setFlag', flag: 'flag:vigil_1_kept' },
+    { op: 'setFlag', flag: 'flag:vigil_reading_2' },
+    // Reading 2 — Grovefall (east).
+    { op: 'say', speaker: 'WICK-MOTHER ESRA', text: 'There — see how it glints? It\'s already reading us the next. The second went to earth in the east — under the hill, where the wood keeps its own weather and the moss has opinions. Bring a light. Bring patience. The grotto has both, and shares neither.' },
+  ],
+  'script.vigil_hearthfall_again': [
+    { op: 'say', speaker: 'WICK-MOTHER ESRA', text: 'Back for another, are we? Good. A flame wants checking now and then. Up you come.' },
+    { op: 'battle', trainer: 'vigilant_esra' },
+    { op: 'say', speaker: 'WICK-MOTHER ESRA', text: 'Steady as ever. Off you go, dear — and mind the gulls.' },
+  ],
+
+  // --- Vigil II — Grovefall (cave) ------------------------------------------
+  'script.vigil_grovefall': [
+    { op: 'say', speaker: 'OLD FOREMAN BRAMM', text: 'Otho says you out-lasted him. Otho exaggerates. ...Show me he doesn\'t.' },
+    { op: 'battle', trainer: 'vigilant_bramm' },
+    { op: 'say', speaker: 'OLD FOREMAN BRAMM', text: 'Hah. He doesn\'t. The deep way, walked all the way up. Take the chart — we never minted a Stone figure; turns out the sky did it for us.' },
+    { op: 'giveItem', item: 'starfall_shard' },
+    { op: 'giveItem', item: 'chart_tremor_quake' },
+    { op: 'setFlag', flag: 'flag:vigil_2_kept' },
+    { op: 'setFlag', flag: 'flag:vigil_reading_3' },
+    // Reading 3 — Stormfall (north).
+    { op: 'say', speaker: 'OLD FOREMAN BRAMM', text: 'The shard\'s already telling the next. The third went north, into the wind\'s spare pocket — the roost where storms go when they\'re off duty. Take the kite. Take a coat. Retrieve your own hat; I shan\'t fetch it.' },
+  ],
+  'script.vigil_grovefall_again': [
+    { op: 'say', speaker: 'OLD FOREMAN BRAMM', text: 'The grotto\'s grown another season since. Come and walk the deep way again — it keeps you honest.' },
+    { op: 'battle', trainer: 'vigilant_bramm' },
+    { op: 'say', speaker: 'OLD FOREMAN BRAMM', text: 'Still lasting. The moss approves, and the moss is never wrong. Go on.' },
+  ],
+
+  // --- Vigil III — Stormfall ------------------------------------------------
+  // The storm-tithe is the wick jackpot (giveMoney 5000); the cache by the nest
+  // is the Starglass ×2 (the tithe's second half — placed in the map JSON).
+  'script.vigil_stormfall': [
+    { op: 'say', speaker: 'ONDRA VAEL', text: 'Mira flies in what I called a light breeze at her age. Stand up straight — the sky\'s sent us a present, and I open my own post.' },
+    { op: 'battle', trainer: 'vigilant_ondra' },
+    { op: 'say', speaker: 'ONDRA VAEL', text: 'HA! You\'d have made a kite-flier. The aerie\'s tithed every storm since the dawn broke — take it; I can\'t spend wind.' },
+    { op: 'giveItem', item: 'starfall_shard' },
+    { op: 'giveMoney', amount: 5000 },
+    { op: 'setFlag', flag: 'flag:vigil_3_kept' },
+    { op: 'setFlag', flag: 'flag:vigil_reading_4' },
+    // Reading 4 — Sunfall (west).
+    { op: 'say', speaker: 'ONDRA VAEL', text: 'The shard\'s pointing already — west, it says. The fourth fell where summer was put away for safekeeping — the high terraces that remembered daylight before the rest of us believed in it again.' },
+  ],
+  'script.vigil_stormfall_again': [
+    { op: 'say', speaker: 'ONDRA VAEL', text: 'Weather\'s up. Good weather for it. Stand up straight, then — same as before.' },
+    { op: 'battle', trainer: 'vigilant_ondra' },
+    { op: 'say', speaker: 'ONDRA VAEL', text: 'HA! Still a kite-flier in you. Off the ledge, mind your footing.' },
+  ],
+
+  // --- Vigil IV — Sunfall ---------------------------------------------------
+  'script.vigil_sunfall': [
+    { op: 'say', speaker: 'DAME SOLENNE', text: 'I kept the last warm day for forty years, and now the mornings come free. Indulge an old keeper — one encore, full light.' },
+    { op: 'battle', trainer: 'vigilant_solenne' },
+    { op: 'say', speaker: 'DAME SOLENNE', text: 'Curtain. ...Do you know, I don\'t mourn the last warm day any more. There will be others. Take the figure — it\'s the sun\'s whole bow.' },
+    { op: 'giveItem', item: 'starfall_shard' },
+    { op: 'giveItem', item: 'chart_sunburst_nova' },
+    { op: 'setFlag', flag: 'flag:vigil_4_kept' },
+    { op: 'setFlag', flag: 'flag:vigil_reading_5' },
+    // Reading 5 — Murkfall (the outer marches, the mirror axis).
+    { op: 'say', speaker: 'DAME SOLENNE', text: 'One last reading in the glint, my dear, and it is a sad and lovely one. The last fell where the water forgot how to speak. It is learning again — go gently into the murk; some of what you\'ll meet is still waking. And one of them has waited a long time to greet you.' },
+  ],
+  'script.vigil_sunfall_again': [
+    { op: 'say', speaker: 'DAME SOLENNE', text: 'An encore of the encore? You spoil an old keeper. Places, then — full light.' },
+    { op: 'battle', trainer: 'vigilant_solenne' },
+    { op: 'say', speaker: 'DAME SOLENNE', text: 'Curtain, again. The sun bows lower for you every time. Go on.' },
+  ],
+
+  // --- Vigil V — Murkfall ---------------------------------------------------
+  // No reading 6 — Mer's pointer + Oriel's flag:vigil_5_kept placement carry the
+  // player to the summit. Sincere throughout (no glint at the marshes).
+  'script.vigil_murkfall': [
+    { op: 'say', speaker: 'WARDEN MER', text: 'I carried a null-lantern through this marsh once. I carry this now. Before I hand the light back, I will know the hand I hand it to is steady.' },
+    { op: 'battle', trainer: 'vigilant_mer' },
+    { op: 'say', speaker: 'WARDEN MER', text: 'It holds. Brighter hands than mine ever were. ...The marsh thanks you. Both of us do — both of me, perhaps.' },
+    { op: 'giveItem', item: 'starfall_shard' },
+    { op: 'giveItem', item: 'morrow_charm' },
+    { op: 'setFlag', flag: 'flag:vigil_5_kept' },
+    { op: 'say', speaker: 'WARDEN MER', text: 'The sixth never fell, you know. It\'s been waiting where the night ended. Carry the five up the mountain — and ask the old man what he sees.' },
+  ],
+  'script.vigil_murkfall_again': [
+    { op: 'say', speaker: 'WARDEN MER', text: 'The marsh is brighter every time you come. I find I am too. One more steadiness, then?' },
+    { op: 'battle', trainer: 'vigilant_mer' },
+    { op: 'say', speaker: 'WARDEN MER', text: 'It holds. It always holds, with you. Go gently back.' },
+  ],
+
+  // --- The Last Lesson — the summit Round (requires flag:vigil_5_kept) -------
+  // Three Vigilants back-to-back -> heal (Fenn's diegetic line) -> Fenn at full
+  // strength. A loss anywhere aborts before the flag, so the whole Round re-runs
+  // from its trigger (the intended shape of the ultimate). On the win: the apex
+  // gleam cadence seats the five shards and sets flag:starfall_lesson.
+  'script.starfall_round': [
+    { op: 'narrate', text: 'At the foot of the empty Ninth Lantern — five sockets, five shards in your satchel — three figures wait, lamps lit, who have no business being this high and every right to be.' },
+    { op: 'say', speaker: 'ONDRA VAEL', text: 'We came to watch the old man\'s lesson. The watching turned into a queue.' },
+    { op: 'battle', trainer: 'vigilant_ondra_summit' },
+    { op: 'battle', trainer: 'vigilant_solenne_summit' },
+    { op: 'battle', trainer: 'vigilant_mer_summit' },
+    { op: 'heal' },
+    { op: 'say', speaker: 'STAR-TENDER FENN', text: 'I\'ll want you at your best. I have waited a very long time to be allowed mine.' },
+    { op: 'say', speaker: 'STAR-TENDER FENN', text: 'No satchel this time. No errand. One lesson left, and it\'s the one I never could teach you — what you do when the teacher steps aside. Everything I have, apprentice. Show me everything you\'ve become.' },
+    { op: 'battle', trainer: 'startender_fenn' },
+    // WIN — everything below is post-battle (a loss aborted the script already).
+    { op: 'say', speaker: 'STAR-TENDER FENN', text: '...There it is. The whole sky in one steady lamp.' },
+    // The shards seated — the apex gleam cadence (the Keystar relight's quieter sibling).
+    { op: 'letterbox', on: true, ms: 420 },
+    { op: 'musicFade', ms: 800 },
+    { op: 'silence', ms: 2200 },
+    { op: 'narrate', text: 'You lift the five shards to the Ninth Lantern\'s empty collar, one to each cold socket. They settle as if they were always going to — gold finding gold, the sky remembering one more of its own pieces.' },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'tint', color: '#ffd089', alpha: 0.28, ms: 1200 },
+    { op: 'gleam', element: 'solar' },
+    { op: 'setFlag', flag: 'flag:starfall_lesson' },
+    { op: 'narrate', text: 'The collar takes the light and holds it — and far below the rim of the world, where the night ended, the sixth shard answers. It never fell. It could not. It is the morning itself.' },
+    { op: 'musicCrossfade', key: 'gleam-emotional', ms: 1200 },
+    { op: 'tint', color: '#ffd089', alpha: 0, ms: 1100 },
+    { op: 'letterbox', on: false, ms: 420 },
+    { op: 'say', speaker: 'STAR-TENDER FENN', text: 'There. Five seated, and the sixth come of its own accord. ...Go to the lantern, apprentice. Something is waking that has waited longer than any of us.' },
+  ],
+  // Post-crown re-runnable Last Lesson (the bout only, full payout).
+  'script.last_lesson_again': [
+    { op: 'say', speaker: 'STAR-TENDER FENN', text: 'One more, apprentice? The old man will always have one more. Everything I have — again.' },
+    { op: 'battle', trainer: 'startender_fenn' },
+    { op: 'say', speaker: 'STAR-TENDER FENN', text: '...Still the whole sky in one steady lamp. Go on, Star-tender. I\'ll be here.' },
+  ],
+
+  // --- Dawnbrael wakes — the first-morning kin (the static catch) ------------
+  // requires flag:starfall_lesson (so a fled/KO\'d Dawnbrael is re-approachable
+  // WITHOUT re-fighting the Round); cooldownBattles 0 so the climax never
+  // strands (raise the lamp and ask again). The trigger also carries
+  // hidden_when_flag:flag:dawnbrael_caught so a caught Dawnbrael never re-stages.
+  'cutscene.dawnbrael_wakes': [
+    { op: 'letterbox', on: true, ms: 420 },
+    { op: 'narrate', text: 'The relit Ninth Lantern pours its new light down the shaft — and in the heart of it, the morning takes a shape. DAWNBRAEL: the first-morning kin, Solar and Light, regarding your lamp the way the sunrise regards a window.' },
+    { op: 'flashColor', color: '#fff3c9', ms: 280 },
+    { op: 'letterbox', on: false, ms: 300 },
+    { op: 'legendaryBattle', name: 'dawnbrael', kin: 151, level: 70, caughtFlag: 'flag:dawnbrael_caught', cooldownBattles: 0, cooldownRef: 'npc.dawnbrael_resting' },
+    { op: 'silence', ms: 1600 },
+    { op: 'narrate', text: 'Dawnbrael settles into your lamp — and the lamp, for the first time, is warmer than the morning around it.' },
+  ],
+
+  // --- The title beat — Fenn names the Star-tender (once:true) ---------------
+  // After the Dawnbrael catch. Grants Fenn\'s Field-Glass, sets flag:starfall_crown.
+  // Staging rhymes with the satchel ceremony — the game\'s first gift and its last.
+  'cutscene.startender_named': [
+    { op: 'silence', ms: 1400 },
+    { op: 'say', speaker: 'STAR-TENDER FENN', text: 'I have nothing left to teach. Stand up straight, Star-tender — the title was always going to be yours. I\'m only the one saying it out loud.' },
+    { op: 'tint', color: '#ffe9a8', alpha: 0.18, ms: 900 },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'giveItem', item: 'fenns_glass' },
+    { op: 'say', speaker: 'STAR-TENDER FENN', text: 'Take the field-glass. Forty years it showed me the sky. You\'ll see further than I did — that\'s the whole of the job, in the end: hand it on to someone who sees further.' },
+    { op: 'setFlag', flag: 'flag:starfall_crown' },
+    { op: 'narrate', text: 'The apprentice who began with a satchel errand at a waystone ends a Star-tender, named by the man who sent them out — under an open summit sky, with the morning on every lamp.' },
+    { op: 'tint', color: '#ffe9a8', alpha: 0, ms: 1100 },
+  ],
 };
 
 export function getScript(ref: string): import('./types').CutsceneStep[] | undefined {

@@ -76,7 +76,15 @@
     "weight_kg": 4200,
     "habitat": "south"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "vigil_hearthfall",
+      "terrain": "water",
+      "rarity": "very_rare",
+      "min": 60,
+      "max": 60
+    }
+  ],
   "scripted": true,
   "art": {
     "silhouette": "Enormous translucent whale-like form, body almost entirely composed of moon-on-water refraction \u2014 shifting aqua, silver, and pale gold layers visible within. No hard edges, no single colour \u2014 a living sea-mirror. Two vast luminous crescent eyes and trailing aurora-thread fins.",

@@ -71,7 +71,15 @@
     "weight_kg": 85,
     "habitat": "west"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "vigil_murkfall",
+      "terrain": "tall_grass",
+      "rarity": "very_rare",
+      "min": 67,
+      "max": 67
+    }
+  ],
   "scripted": true,
   "art": {
     "silhouette": "Tall, elegant heron-phoenix with long sweeping tail feathers that trail behind like a train. Plumage in warm gold and honey-amber, edged with faint diamond-cyan light. The chest and neck are pale as bone-white parchment. One wing is slightly shorter \u2014 an old wound that never quite healed. Eyes are deep amber, warm and patient. The silhouette is all grace and faded glory.",

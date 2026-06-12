@@ -67,7 +67,15 @@
     "weight_kg": 40.0,
     "habitat": "north"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "vigil_stormfall",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 62,
+      "max": 64
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Elegant large fox silhouette, white-silver fur with storm-blue markings, a spiralling tornado-tail that crackles with visible charge, twin ear-fins swept back; the apex of aerodynamic at 64px.",

@@ -68,7 +68,22 @@
     "weight_kg": 48.0,
     "habitat": "south"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "vigil_hearthfall",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 58,
+      "max": 60
+    },
+    {
+      "area": "dawnstead",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 58,
+      "max": 62
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Large, dignified canine silhouette; back and mane bristle with tall tapers in cream, gold, and amber; pooling light halos the outline; dramatic yet soft at 64px.",

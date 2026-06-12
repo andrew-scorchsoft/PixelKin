@@ -79,6 +79,13 @@
       "rarity": "very_rare",
       "min": 51,
       "max": 52
+    },
+    {
+      "area": "vigil_sunfall",
+      "terrain": "tall_grass",
+      "rarity": "very_rare",
+      "min": 65,
+      "max": 65
     }
   ],
   "scripted": true,

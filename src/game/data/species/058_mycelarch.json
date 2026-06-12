@@ -68,7 +68,15 @@
     "weight_kg": 580,
     "habitat": "east"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "vigil_grovefall",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 61,
+      "max": 62
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Massive pillar-like mushroom body with many layered caps in deep indigo and midnight-green; trailing root-tendrils like a cloak; eyes gleam with dim amber light in shadow.",

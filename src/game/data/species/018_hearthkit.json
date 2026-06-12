@@ -65,7 +65,15 @@
     "weight_kg": 2.2,
     "habitat": "south"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "dawnstead",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 60
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Round-bodied kitten, deep apricot coat with cream markings, curled ember-glow tail, closed-eyed happy expression; warm and cosy silhouette at 32px.",

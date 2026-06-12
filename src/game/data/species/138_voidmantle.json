@@ -77,6 +77,13 @@
       "rarity": "common",
       "min": 49,
       "max": 50
+    },
+    {
+      "area": "vigil_murkfall",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 66,
+      "max": 68
     }
   ],
   "scripted": false,

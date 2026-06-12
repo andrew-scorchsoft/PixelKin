@@ -1543,6 +1543,60 @@ export const DIALOGUE: DialogueRegistry = {
   'npc.dawnstead_kid': [
     { speaker: 'KID', text: 'My gran says you carry a lamp EVERYWHERE. Why? The sky does it for free now... oh. OH. Were you the one who—? GRAN! GRAN, COME AND SEE WHO IT IS!' },
   ],
+
+  // --- The Starfall Vigils (06-postgame · R3) ---------------------------------
+  // The Dawnstead witness — points the player to Nightreach when the first
+  // shard falls (requires flag:dawn, hidden once flag:starfall_begun).
+  'npc.starfall_witness': [
+    { speaker: 'WITNESS', text: 'Did you SEE it? Not a star going out — we\'ve all watched plenty of those. This one came DOWN. Shed itself, trailing gold, away off east.' },
+    { speaker: 'WITNESS', text: 'Nightreach is beside itself. Watcher Oriel had the great eyepiece on it before it landed. Go up and ask her — she reads the sky for a living, and she\'s never read anything like THIS.' },
+  ],
+  // The blocked_ref on every Vigil-site host warp, until its reading is held —
+  // the scar of starlight is visible post-dawn, sealed until read (the watchers' voice).
+  'npc.vigil_scar_sealed': [
+    { text: 'A seam of starlight, shut tight. Whatever fell here is waiting to be read first.' },
+  ],
+  // Dawnbrael's cooldownRef — the static catch withdrew with the next dark; it
+  // returns with the next sunrise (no re-fighting the Round). cooldownBattles is
+  // 0, so {remaining} never reads — the line is the re-approach hint only.
+  'npc.dawnbrael_resting': [
+    { text: 'The Ninth Lantern stands quiet, the five shards still seated in its collar. Dawnbrael drew back into the morning when you faltered — raise the lamp again, and it will answer with the next light.' },
+  ],
+  // Oriel's terrace re-reads — the chain's noticeboard. Lost the thread? She
+  // repeats the current reading, verbatim, slightly wearily. Flag-disjoint
+  // placements (the Fenn-waystone pattern) carry exactly the held reading.
+  'npc.oriel_read_1': [
+    { speaker: 'WATCHER ORIEL', text: '...The first one again? Very well. The first came down in the south — where the first lamp learned its name. Climb past the lantern that taught the sky to answer; it fell on the bluff above, where even the gulls go quiet.' },
+  ],
+  'npc.oriel_read_2': [
+    { speaker: 'WATCHER ORIEL', text: 'The second, then. It went to earth in the east — under the hill, where the wood keeps its own weather and the moss has opinions. Bring a light. Bring patience. The grotto has both, and shares neither.' },
+  ],
+  'npc.oriel_read_3': [
+    { speaker: 'WATCHER ORIEL', text: 'The third went north, into the wind\'s spare pocket — the roost where storms go when they\'re off duty. Take the kite. Take a coat. Retrieve your own hat; I shan\'t fetch it.' },
+  ],
+  'npc.oriel_read_4': [
+    { speaker: 'WATCHER ORIEL', text: 'The fourth fell where summer was put away for safekeeping — the high terraces that remembered daylight before the rest of us believed in it again.' },
+  ],
+  'npc.oriel_read_5': [
+    { speaker: 'WATCHER ORIEL', text: 'The last fell where the water forgot how to speak. It is learning again — go gently into the murk; some of what you\'ll meet is still waking. And one of them has waited a long time to greet you.' },
+  ],
+  'npc.oriel_carry': [
+    { speaker: 'WATCHER ORIEL', text: 'Five shards, five vigils kept. The sixth never fell — it\'s been waiting where the night ended, at the top of the mountain. Carry the five up, the warden of the marshes said, and ask the old man what he sees. ...So go on. Ask him.' },
+  ],
+  'npc.oriel_epilogue': [
+    { speaker: 'WATCHER ORIEL', text: 'Star-tender, is it now. I read the falls; you kept them. ...The sky has all its pieces back, and a name to call you by. Not a bad night\'s watching, between us.' },
+  ],
+  // The three Vigilants who climbed ahead, waiting at the Ninth Lantern before
+  // the Round (requires flag:vigil_5_kept, hidden once flag:starfall_lesson).
+  'npc.vigil_ondra_summit': [
+    { speaker: 'ONDRA VAEL', text: 'We came up to watch the old man\'s lesson. The watching turned into a queue. Raise the lamp at the lantern when you\'re ready — and don\'t keep us waiting; it\'s cold up here.' },
+  ],
+  'npc.vigil_solenne_summit': [
+    { speaker: 'DAME SOLENNE', text: 'The finest house I have ever played, and the best lit. Three of us, then the old man — back to back, no interval. Touch the lantern and the curtain rises.' },
+  ],
+  'npc.vigil_mer_summit': [
+    { speaker: 'WARDEN MER', text: 'He has waited forty years for this lesson. So have I, in a way. When your lamp is steady, ask the lantern — we\'ll be right behind you, every step.' },
+  ],
 };
 
 const FALLBACK: DialogueLine[] = [{ text: '...' }];

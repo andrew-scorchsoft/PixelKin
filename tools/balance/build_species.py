@@ -410,6 +410,65 @@ EXTRA_ENCOUNTERS = {
     "whorlix":     [{"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "uncommon", "min": 50, "max": 51}],
 }
 
+# ---------------------------------------------------------------------------
+# The Starfall Vigils (06-postgame · R3, 2026-06) — the five annex beds + the
+# Dawnstead post-dawn DAY-FORM table + Helixia's post-crown verge entry. Kept in
+# a separate dict and MERGED into EXTRA_ENCOUNTERS below (many of these species
+# already carry rows there, and a duplicate literal key would silently clobber
+# them). Tables are VERBATIM from each site's Hooks block (the map-build lane
+# bakes the same spec tables — the spec is the shared truth). Each annex's apex
+# Vigilant doubles as the bed's very-rare catch (the register ledger).
+VIGIL_ENCOUNTERS = {
+    # Vigil I — Hearthfall (`vigil_hearthfall`, off tinderwick) — Ember & Tide, 58–60.
+    "scorchwing":  [{"area": "vigil_hearthfall", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 60}],
+    "chandrek":    [{"area": "vigil_hearthfall", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 60},
+                    {"area": "dawnstead", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 62}],
+    "wicklord":    [{"area": "vigil_hearthfall", "terrain": "tall_grass", "rarity": "rare", "min": 59, "max": 60},
+                    {"area": "dawnstead", "terrain": "tall_grass", "rarity": "rare", "min": 60, "max": 65}],
+    "embralux":    [{"area": "vigil_hearthfall", "terrain": "tall_grass", "rarity": "very_rare", "min": 60, "max": 60}],
+    "prismare":    [{"area": "vigil_hearthfall", "terrain": "water", "rarity": "uncommon", "min": 58, "max": 60}],
+    "tideveil":    [{"area": "vigil_hearthfall", "terrain": "water", "rarity": "very_rare", "min": 60, "max": 60}],
+    # Vigil II — Grovefall (`vigil_grovefall`, off spore_grotto, kind cave/glowmoss) — Verdant & Stone, 60–62.
+    "fernlance":   [{"area": "vigil_grovefall", "terrain": "tall_grass", "rarity": "uncommon", "min": 60, "max": 62}],
+    "rootwarden":  [{"area": "vigil_grovefall", "terrain": "tall_grass", "rarity": "uncommon", "min": 60, "max": 62}],
+    "gravelo":     [{"area": "vigil_grovefall", "terrain": "tall_grass", "rarity": "uncommon", "min": 60, "max": 62}],
+    "mycelarch":   [{"area": "vigil_grovefall", "terrain": "tall_grass", "rarity": "rare", "min": 61, "max": 62}],
+    "mycovast":    [{"area": "vigil_grovefall", "terrain": "tall_grass", "rarity": "very_rare", "min": 62, "max": 62}],
+    # Vigil III — Stormfall (`vigil_stormfall`, off thunderroost) — Storm & Frost, 62–64.
+    "tempestail":  [{"area": "vigil_stormfall", "terrain": "tall_grass", "rarity": "uncommon", "min": 62, "max": 64}],
+    "vortavane":   [{"area": "vigil_stormfall", "terrain": "tall_grass", "rarity": "uncommon", "min": 62, "max": 64}],
+    "glacitern":   [{"area": "vigil_stormfall", "terrain": "tall_grass", "rarity": "uncommon", "min": 62, "max": 64}],
+    "strikeaven":  [{"area": "vigil_stormfall", "terrain": "tall_grass", "rarity": "rare", "min": 63, "max": 64}],
+    "nullhusk":    [{"area": "vigil_stormfall", "terrain": "tall_grass", "rarity": "very_rare", "min": 64, "max": 64}],
+    # Vigil IV — Sunfall (`vigil_sunfall`, off sunvault_climb_ii) — Solar & Lunar, 64–66.
+    "sunstag":     [{"area": "vigil_sunfall", "terrain": "tall_grass", "rarity": "uncommon", "min": 64, "max": 66}],
+    "solreach":    [{"area": "vigil_sunfall", "terrain": "tall_grass", "rarity": "uncommon", "min": 64, "max": 66}],
+    "crystalune":  [{"area": "vigil_sunfall", "terrain": "tall_grass", "rarity": "uncommon", "min": 64, "max": 66}],
+    "lunaquell":   [{"area": "vigil_sunfall", "terrain": "tall_grass", "rarity": "rare", "min": 64, "max": 66}],
+    "dawnwatcher": [{"area": "vigil_sunfall", "terrain": "tall_grass", "rarity": "very_rare", "min": 65, "max": 65}],
+    "helithorn":   [{"area": "vigil_sunfall", "terrain": "tall_grass", "rarity": "very_rare", "min": 66, "max": 66}],
+    # Vigil V — Murkfall (`vigil_murkfall`, off coldfog_marches_ii) — Light & Dark, 66–68.
+    "embergone":   [{"area": "vigil_murkfall", "terrain": "tall_grass", "rarity": "uncommon", "min": 66, "max": 68}],
+    "voidmantle":  [{"area": "vigil_murkfall", "terrain": "tall_grass", "rarity": "uncommon", "min": 66, "max": 68}],
+    "wisprestored":[{"area": "vigil_murkfall", "terrain": "tall_grass", "rarity": "uncommon", "min": 66, "max": 68}],
+    "solarmourn":  [{"area": "vigil_murkfall", "terrain": "tall_grass", "rarity": "very_rare", "min": 67, "max": 67}],
+    "cindervast":  [{"area": "vigil_murkfall", "terrain": "tall_grass", "rarity": "very_rare", "min": 67, "max": 67}],
+    "bogvast":     [{"area": "vigil_murkfall", "terrain": "tall_grass", "rarity": "very_rare", "min": 68, "max": 68}],
+    # Dawnstead — the post-dawn DAY-FORM table (built in dawnstead.json; weights
+    # -> rarity: w30 common, w20 common, w15 uncommon, w12 uncommon, w8 rare).
+    "wickmoth":    [{"area": "dawnstead", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 60}],
+    "tallowpup":   [{"area": "dawnstead", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 58}],
+    "hearthkit":   [{"area": "dawnstead", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 60}],
+    "glimscout":   [{"area": "dawnstead", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 60}],
+    # Helixia — the day-form table's CAPSTONE: a very-rare verge entry that only
+    # rolls post-crown (`requires flag:starfall_crown` in the live zone; the dex
+    # row is flat — the register ledger's final placement).
+    "helixia":     [{"area": "dawnstead", "terrain": "tall_grass", "rarity": "very_rare", "min": 60, "max": 62}],
+}
+# Merge VIGIL rows into EXTRA_ENCOUNTERS (append where a slug already has rows).
+for _slug, _rows in VIGIL_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows)
+
 # Areas whose encounter tables are BUILT into the map JSONs (the in-map zones
 # are the truth, mirrored above). Generated region defaults — and stale rows
 # carried in the previous per-species files — must not claim these areas:
@@ -434,6 +493,12 @@ CURATED_AREAS = {
     # stale generated rows that named them (dimglass_coast ~37 + lowleaf_hollow
     # ~34) are dropped on rebuild; the _ii coast map joins them.
     "dimglass_coast", "dimglass_coast_ii", "lowleaf_hollow",
+    # the Starfall Vigils (06-postgame · R3, 2026-06): the five annex sites carry
+    # built in-map tables (mirrored below); Dawnstead carries the post-dawn
+    # DAY-FORM table (built in dawnstead.json) + the Helixia post-crown verge
+    # entry, both mirrored below. The map-build lane bakes the same spec tables.
+    "vigil_hearthfall", "vigil_grovefall", "vigil_stormfall",
+    "vigil_sunfall", "vigil_murkfall", "dawnstead",
 }
 
 # Kin that are FIXED quest catches (a legendaryBattle set-piece), even though
