@@ -34,38 +34,57 @@
 
 /* ===================================================================== device
    A decorative handheld casing. #game-root becomes the cut-out "screen"; the
-   casing sits behind it via a fixed full-bleed frame, with original controls. */
-body.pk-shell-device #game-root {
-  /* The room left for the screen once casing margins + the control deck at the
-     bottom + safe areas are reserved. */
-  --pk-side: clamp(16px, 6vw, 96px);
-  --pk-top: max(env(safe-area-inset-top), 16px);
-  --pk-bottom: clamp(72px, 22vh, 180px);
-  --pk-avail-w: calc(100vw - 2 * var(--pk-side));
-  --pk-avail-h: calc(100dvh - var(--pk-top) - var(--pk-bottom));
+   casing sits behind it via a fixed full-bleed frame, with original controls.
 
-  /* Inset the screen so the casing reads as a border around the canvas. */
+   The screen is always locked to the canvas's 3:2 (so Scale.FIT never pillarboxes),
+   but HOW it's sized differs by orientation:
+     • Portrait  — span the full viewport width, edge to edge (no side casing),
+                   control deck in the freed space below. Maximum screen real estate.
+     • Landscape — centre the largest 3:2 in (almost) the whole viewport; the
+                   controls float in the side margins, reclaiming the dead space. */
+body.pk-shell-device #game-root {
   padding: 0;
   box-sizing: border-box;
+  background: #000;
   border: 2px solid var(--shell-accent);
   border-radius: 6px;
-  background: #000;
   box-shadow:
     0 0 0 10px var(--shell-casing),
     0 0 0 12px var(--shell-casing-edge),
     0 8px 24px rgba(0, 0, 0, 0.5);
-
-  /* Lock the screen cut-out to the canvas's 3:2 — the largest 3:2 box that fits
-     the available room — so the casing hugs the canvas and Scale.FIT never has
-     to pillarbox (no black bars beside the game). Centred horizontally, pinned
-     to the top of the available band with the control deck below. */
   inset: auto;
   left: 50%;
-  top: var(--pk-top);
   transform: translateX(-50%);
-  width: min(var(--pk-avail-w), var(--pk-avail-h) * 3 / 2);
   height: auto;
   aspect-ratio: 3 / 2;
+}
+
+/* Portrait: full width, edge to edge — drop the left/right casing so the canvas
+   truly reaches both screen edges, and pin it to the top with the control deck
+   below. (Cap by height too so it can never push the controls off-screen.) */
+@media (orientation: portrait) {
+  body.pk-shell-device #game-root {
+    --pk-top: max(env(safe-area-inset-top), 8px);
+    --pk-bottom: clamp(132px, 32vh, 300px); /* room reserved for the control deck */
+    top: var(--pk-top);
+    width: min(100vw, calc(100dvh - var(--pk-top) - var(--pk-bottom)) * 3 / 2);
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Landscape: maximise the screen. Centre the largest 3:2 that fits the full
+   viewport height (minus safe areas) — taller AND wider than the old top-pinned
+   layout — and let the controls flank it in the side margins (see below). */
+@media (orientation: landscape) {
+  body.pk-shell-device #game-root {
+    --pk-ins: max(env(safe-area-inset-top), env(safe-area-inset-bottom), 8px);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(calc(100vw - 12px), calc(100dvh - 2 * var(--pk-ins)) * 3 / 2);
+  }
 }
 
 /* Full-bleed casing backdrop behind everything. */
@@ -234,4 +253,95 @@ body.pk-shell-overlay .pk-controls {
 .pk-start.pk-active {
   background: var(--shell-button-press);
   color: #000;
+}
+
+/* ----------------------------------------------- landscape control placement --
+   In landscape the screen is centred and tall, leaving margins on the sides. Move
+   the d-pad and face buttons into those margins (vertically centred at the screen
+   edges) so the dead space becomes the control rails, and float them slightly so
+   any overlap on a narrow phone reads gently. START tucks into the bottom centre. */
+@media (orientation: landscape) {
+  body.pk-shell-device .pk-controls,
+  body.pk-shell-overlay .pk-controls {
+    inset: 0;
+    height: auto;
+    bottom: auto;
+    opacity: 0.86;
+  }
+  body.pk-shell-device .pk-grille { display: none; }
+
+  .pk-dpad {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+  }
+  .pk-face {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+  }
+  /* Tuck START into the left rail beneath the d-pad so it never covers the
+     screen's bottom edge (where dialogue lives). */
+  .pk-start {
+    left: max(env(safe-area-inset-left), 26px);
+    right: auto;
+    bottom: auto;
+    top: calc(50% + 66px);
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------- rotate-to-landscape nudge --
+   Shown only on touch devices held in portrait (the game plays best wide). Tapping
+   it asks for fullscreen + a landscape lock where the browser allows it (Android);
+   elsewhere it's a friendly "turn your device" prompt. Dismissable with the ×. */
+.pk-rotate-hint {
+  display: none;
+  position: fixed;
+  left: 50%;
+  bottom: clamp(150px, 30vh, 320px);
+  transform: translateX(-50%);
+  z-index: 6;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 10px 9px 13px;
+  max-width: calc(100vw - 24px);
+  background: rgba(11, 16, 38, 0.92);
+  border: 1px solid var(--shell-accent);
+  border-radius: 999px;
+  color: var(--shell-accent);
+  font-family: 'PixelKin', monospace;
+  font-size: 8px;
+  line-height: 1.6;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+  cursor: pointer;
+}
+.pk-rotate-ico {
+  font-size: 13px;
+  display: inline-block;
+  animation: pk-rotate-wob 2.4s ease-in-out infinite;
+}
+@keyframes pk-rotate-wob {
+  0%, 100% { transform: rotate(-14deg); }
+  50% { transform: rotate(14deg); }
+}
+.pk-rotate-x {
+  margin-left: 2px;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  border-radius: 50%;
+  background: rgba(159, 231, 255, 0.14);
+  font-size: 11px;
+}
+@media (orientation: portrait) and (pointer: coarse) {
+  body.pk-shell-device .pk-rotate-hint:not(.pk-dismissed),
+  body.pk-shell-overlay .pk-rotate-hint:not(.pk-dismissed) {
+    display: inline-flex;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pk-rotate-ico { animation: none; }
 }

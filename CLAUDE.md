@@ -625,9 +625,14 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   its line — `executeWarp` falls back to a generic "it's locked" if a door has none, so
   a gated door is never silent. `patterns.building` stamps step_on; `audit_warps` FAILs
   any door left on `interact`. Worked: `door.locked_*` lines + the 8 gated doors.
-- **The device shell screen is locked to 3:2.** `shells.css` sizes `#game-root` to the
-  largest 3:2 box that fits, so `Scale.FIT` never pillarboxes (no black side bars). The
-  `plain`/`overlay` shells are intentionally full-bleed and still letterbox.
+- **The device shell screen is locked to 3:2, but sized per-orientation** (`shells.css`,
+  via `@media (orientation: …)`). Always the largest 3:2 that fits (so `Scale.FIT` never
+  pillarboxes), but **portrait** spans the FULL viewport width edge-to-edge (no side casing,
+  control deck below) while **landscape** centres the largest 3:2 in the whole viewport
+  (taller + wider) and moves the d-pad/face buttons into the side margins. A portrait-only,
+  touch-only `.pk-rotate-hint` nudges players to turn sideways (tap → best-effort
+  fullscreen + `screen.orientation.lock('landscape')`, a no-op on iOS). The `plain`/`overlay`
+  shells are intentionally full-bleed and still letterbox.
 - **Crisp text rides on `RENDER_SCALE`.** Game logic is still 240×160, but the canvas is
   rendered into a higher-res framebuffer via `scale.zoom: RENDER_SCALE` (`config.ts` →
   `main.ts`) so the pixel font isn't a 240×160 bitmap blown up by nearest-neighbour. World

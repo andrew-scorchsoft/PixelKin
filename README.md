@@ -158,7 +158,15 @@ npm install          # install dependencies
 npm run dev          # dev server at http://localhost:5173
 npm run build        # typecheck + production build to dist/
 npm run build:dist   # the upload-ready bundle (shrunk audio; needs ffmpeg)
+npm run preview      # serve the production build to check it before shipping
 ```
+
+`npm run build:dist` is the one to ship: it typechecks, builds, then compresses
+audio and strips sourcemaps into a self-contained **`dist/`**. Vite is configured
+with `base: './'`, so it runs from any origin (a subfolder, or a file:// webview)
+— to host the game on its own, upload the **contents of `dist/`** to your web
+server. For the full pixelk.in site-plus-game bundle, use `npm run release`
+(below) instead.
 
 ## Marketing site (`web/`) & deploying to pixelk.in
 
@@ -173,11 +181,22 @@ npm run site            # preview the site at http://localhost:8000 (PHP built-i
 npm run release         # build the game + assemble release/ (site at /, game at /play/)
 npm run release:site    # site only — refresh pages without rebuilding the game
 npm run release:game    # rebuild the game + refresh only release/play/
+
+npm run preview:release # rebuild + assemble, then serve release/ → / and /play/ both work
 ```
 
 `release/` (gitignored) is the upload bundle: FTP its **contents** into
 `public_html/`. The game uses Vite `base: './'`, so it runs from `/play/`
-unchanged. Full notes: [`web/README.md`](web/README.md).
+unchanged.
+
+To play an **already-built** `release/` locally without rebuilding, serve that
+folder directly:
+
+```bash
+php -S localhost:8000 -t release   # → site at /, game at /play/
+```
+
+Full notes: [`web/README.md`](web/README.md).
 
 ## Asset generation skills
 

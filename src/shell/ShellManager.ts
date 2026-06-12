@@ -68,6 +68,7 @@ class ShellManagerImpl {
   private settings: Settings = { shell: 'device', controlsVisible: true };
   private frameEl: HTMLDivElement | null = null;
   private controlsEl: HTMLDivElement | null = null;
+  private rotateHintEl: HTMLDivElement | null = null;
   private readonly listeners = new Set<ActionListener>();
   private readonly held = new Set<ShellAction>();
 
@@ -124,7 +125,63 @@ class ShellManagerImpl {
 
     this.ensureFrame();
     this.ensureControls();
+    this.ensureRotateHint();
     this.applyControlsVisibility();
+  }
+
+  /**
+   * The portrait "rotate to landscape" nudge. It's always in the DOM (built once);
+   * CSS shows it only on a touch device held in portrait, for the device/overlay
+   * shells. Tapping it asks for fullscreen + a landscape lock where supported.
+   */
+  private ensureRotateHint(): void {
+    if (this.rotateHintEl) return;
+    const hint = document.createElement('div');
+    hint.className = 'pk-rotate-hint';
+    hint.setAttribute('role', 'button');
+    hint.setAttribute('aria-label', 'Rotate your device to landscape for the best view');
+
+    const ico = document.createElement('span');
+    ico.className = 'pk-rotate-ico';
+    ico.textContent = '↻'; // ↻
+    const label = document.createElement('span');
+    label.textContent = 'Turn sideways for the best view';
+    const close = document.createElement('span');
+    close.className = 'pk-rotate-x';
+    close.setAttribute('aria-label', 'Dismiss');
+    close.textContent = '×'; // ×
+
+    hint.append(ico, label, close);
+    hint.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement)?.classList.contains('pk-rotate-x')) {
+        hint.classList.add('pk-dismissed');
+        return;
+      }
+      void this.requestLandscape();
+    });
+
+    document.body.appendChild(hint);
+    this.rotateHintEl = hint;
+  }
+
+  /**
+   * Best-effort "go landscape": request fullscreen, then lock orientation. Android
+   * Chrome honours both; iOS Safari supports neither, so this degrades to a no-op
+   * and the player simply rotates the device (the hint stays up until they do).
+   */
+  private async requestLandscape(): Promise<void> {
+    try {
+      const root = document.documentElement;
+      if (!document.fullscreenElement && root.requestFullscreen) {
+        await root.requestFullscreen();
+      }
+      const orientation = (screen as unknown as {
+        orientation?: { lock?: (o: string) => Promise<void> };
+      }).orientation;
+      if (orientation?.lock) await orientation.lock('landscape');
+    } catch {
+      /* Unsupported (e.g. iOS) — the hint already tells them to turn the device. */
+    }
   }
 
   /** The decorative casing backdrop — only meaningful for the device shell. */

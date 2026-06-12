@@ -104,6 +104,13 @@ the server:
 npm run preview:release   # assembles release/ then serves it → / and /play/ both work
 ```
 
+`preview:release` rebuilds first. If you've **already** assembled `release/` and
+just want to play it locally without rebuilding, serve the folder directly:
+
+```bash
+php -S localhost:8000 -t release   # → site at /, game at /play/
+```
+
 To work on the game itself, use `npm run dev` (Vite).
 
 ## Deploying to pixelk.in (WHM/cPanel via FTP)
