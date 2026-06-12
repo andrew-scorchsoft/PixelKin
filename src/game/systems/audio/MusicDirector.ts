@@ -13,15 +13,37 @@
  */
 import Phaser from 'phaser';
 import { loadAudio } from './loadAudio';
+import { musicMasterGain, onMusicVolumeChange } from '@game/ui/preferences';
 
 export class MusicDirector {
   private current?: Phaser.Sound.BaseSound;
   private currentKey?: string;
+  private readonly unsubscribe: () => void;
 
   constructor(
     private readonly scene: Phaser.Scene,
-    private readonly volume = 0.45,
-  ) {}
+    /** Per-scene base level; the live master volume scales this. */
+    private readonly baseVolume = 0.45,
+  ) {
+    // Re-apply the master volume to whatever is playing when the player changes it.
+    this.unsubscribe = onMusicVolumeChange(() => this.applyMasterVolume());
+    // Tear the subscription down with the scene so we don't leak across restarts.
+    this.scene.events.once(Phaser.Scenes.Events.SHUTDOWN, () => this.unsubscribe());
+    this.scene.events.once(Phaser.Scenes.Events.DESTROY, () => this.unsubscribe());
+  }
+
+  /** Current effective target volume: per-scene base scaled by the master gain. */
+  private get volume(): number {
+    return this.baseVolume * musicMasterGain();
+  }
+
+  /** Snap the playing bed to the current effective volume (live master change). */
+  private applyMasterVolume(): void {
+    const s = this.current as
+      | (Phaser.Sound.BaseSound & { setVolume?: (v: number) => void })
+      | undefined;
+    s?.setVolume?.(this.volume);
+  }
 
   get playingKey(): string | undefined {
     return this.current?.isPlaying ? this.currentKey : undefined;
@@ -83,8 +105,10 @@ export class MusicDirector {
 
   /** Fire a one-shot cue over the current bed (e.g. the Gleam fanfare). */
   playSting(key: string, url: string, volume = 0.6): void {
+    const gain = musicMasterGain();
+    if (gain <= 0) return; // OFF: true silence, skip the cue entirely
     void loadAudio(this.scene, key, url).then((ok) => {
-      if (ok) this.scene.sound.play(key, { volume });
+      if (ok) this.scene.sound.play(key, { volume: volume * gain });
     });
   }
 
@@ -106,6 +130,12 @@ export class MusicDirector {
   private tweenVolume(sound: Phaser.Sound.BaseSound, to: number, ms: number, onDone?: () => void): Promise<void> {
     const s = sound as Phaser.Sound.BaseSound & { volume?: number; setVolume?: (v: number) => void };
     if (typeof s.setVolume !== 'function') {
+      onDone?.();
+      return Promise.resolve();
+    }
+    if (ms <= 0) {
+      // Zero-duration: snap straight to target (no tween, no div-by-zero in ease).
+      s.setVolume?.(to);
       onDone?.();
       return Promise.resolve();
     }
