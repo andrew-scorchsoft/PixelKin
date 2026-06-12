@@ -27,6 +27,8 @@ export interface CutsceneContext {
   canEnter(tx: number, ty: number): boolean;
   onGiveStarter(speciesId: number): void;
   onGiveItem(item: string, count: number): void;
+  /** Whether the player currently holds at least one of `item` (ensureItem's gate). */
+  hasItem?(item: string): boolean;
   /** Run a trainer battle; resolves true if the player won (false aborts the scene). */
   startTrainerBattle?(trainer: string): Promise<boolean>;
   /**
@@ -147,6 +149,15 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       ctx.onGiveItem(step.item, step.count ?? 1);
       void ctx.sfx.play('world-pickup');
       return true;
+    case 'ensureItem': {
+      // Safety net for must-have set-piece items: grant only when the player
+      // holds none (a spent Starlamp must not strand the Keylumen asking).
+      if (ctx.hasItem?.(step.item)) return true;
+      ctx.onGiveItem(step.item, step.count ?? 1);
+      void ctx.sfx.play('world-pickup');
+      if (step.text) await new DialogueBox(scene, ctx.sfx).run([{ text: step.text, style: 'narrate' }]);
+      return true;
+    }
     case 'sfx':
       void ctx.sfx.play(step.key);
       return true;

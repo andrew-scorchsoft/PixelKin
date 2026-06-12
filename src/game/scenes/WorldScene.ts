@@ -498,6 +498,7 @@ export class WorldScene extends Phaser.Scene {
       onGiveItem: (item, count) => {
         this.inventory.items[item] = (this.inventory.items[item] ?? 0) + count;
       },
+      hasItem: (item) => (this.inventory.items[item] ?? 0) > 0,
       onGiveMoney: (amount) => {
         this.money = Math.max(0, this.money + Math.floor(amount));
       },

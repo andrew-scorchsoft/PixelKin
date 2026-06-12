@@ -1334,10 +1334,8 @@ export const DIALOGUE: DialogueRegistry = {
   ],
 
   // --- The Umbral Spire — Wren at your side (A5→A6), one line per floor.
-  // f1 carries the ONE sanctioned wry-warm beat; f3 and the summit stay sincere.
-  'npc.wren_spire_f1': [
-    { speaker: 'WREN', text: 'So this is where the dusk lives. ...It\'s tidier than I expected. Stay close — I didn\'t climb all this way to lose you in the dark.' },
-  ],
+  // f1's beat (the ONE sanctioned wry-warm one) moved into script.spire_wren_camp,
+  // the gatehouse heal anchor; f3 and the summit stay sincere.
   'npc.wren_spire_f2': [
     { speaker: 'WREN', text: 'They tuck them in. Look — they SWEEP in here. Sad, isn\'t it. ...Doesn\'t make them right. Keep climbing.' },
   ],

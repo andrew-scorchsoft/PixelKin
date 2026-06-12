@@ -112,6 +112,11 @@ type CutsceneStepBase =
   | { op: 'setFlag'; flag: WorldFlag; value?: boolean }
   | { op: 'giveStarter' } // run StarterSelect, add chosen kin to the party
   | { op: 'giveItem'; item: string; count?: number }
+  // Grant `item` ONLY if the player holds none, narrating `text` when it grants
+  // (a quiet no-op otherwise). The safety-net op for must-have set-piece items —
+  // the Keylumen dais re-offers the Starlamp with it, so the ending can never
+  // dangle on a spent key item.
+  | { op: 'ensureItem'; item: string; count?: number; text?: string }
   | { op: 'sfx'; key: string }
   | { op: 'music'; key: string | null } // swap the bed (crossfades when one is playing)
   | { op: 'musicCrossfade'; key: string; ms?: number } // explicit crossfade to a new bed

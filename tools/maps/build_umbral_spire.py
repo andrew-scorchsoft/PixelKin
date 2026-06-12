@@ -375,8 +375,8 @@ def build_f1() -> dict:
     m["npcs"].append(
         {"id": "wren_f1", "at": {"tx": 17, "ty": 20}, "facing": "left",
          "sprite": "wren", "movement": "static",
-         "dialogue_ref": "npc.wren_spire_f1"})
-    owed.append("npc.wren_spire_f1 (the one [wry-warm] beat lives here)")
+         "dialogue_ref": "script.spire_wren_camp"})
+    owed.append("script.spire_wren_camp (the wry-warm beat + the gatehouse REST — SYNC: shipped JSON re-pointed 2026-06, C5 MAJOR fix)")
 
     # ---- the gatehouse cache (west alcove; no shop on the mountain) -------------
     owed.extend(pt.cache(m, cid="spire_gatehouse", at=(3, 18)))

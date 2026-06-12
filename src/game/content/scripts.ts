@@ -2637,6 +2637,21 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:hollowing_acolyte_e_beaten' },
   ],
 
+  // The Spire gatehouse camp — the climb's heal anchor (the C5 panel's MAJOR:
+  // a blackout on the mountain respawned at Tinderwick with no rest closer than
+  // the crossroads inn). Wren holds the gatehouse fire while you climb — the
+  // standing inn-rest kit, staged as the A5 side-by-side promise kept. The f3
+  // shaft compressor makes the descent-to-rest two rooms, not four floors.
+  'script.spire_wren_camp': [
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'resolved', text: 'So this is where the dusk lives. ...It\'s tidier than I expected. Stay close — I didn\'t climb all this way to lose you in the dark.' },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'eager', text: 'I\'ve got the gatehouse brazier going — wick-tender\'s privilege, don\'t tell the management. Sit down a minute. Lamps and kin first; heroics keep.' },
+    { op: 'fade', dir: 'out' },
+    { op: 'wait', ms: 700 },
+    { op: 'heal' },
+    { op: 'fade', dir: 'in' },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'resolved', text: 'There. Whatever\'s waiting up there gets both of us at our best. Same road, different lamps — go on. I\'ll keep the fire.' },
+  ],
+
   // The look-up bands: the Skyweave Crown through the open shafts (atmosphere
   // only — the darkest place in the game, under the greatest light).
   'script.spire_crown_1': [
@@ -2748,6 +2763,10 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'A curl of white-gold light unfolds from the old lantern-housing: the KEYLUMEN, the Keystar\'s living heart, asleep in the Ninth Lantern since the night fell — awake now, and regarding your lamp the way a kin regards a door held open.' },
     { op: 'narrate', if_flag: 'flag:wren_joined', text: 'Behind you, Wren says nothing at all — just lifts their lamp, the way you both learnt on the coast road. The asking is yours.' },
     { op: 'narrate', if_flag: 'flag:fenn_counsel_given', text: 'In your satchel, Fenn\'s starlamp is warm as a held hand. Forty years he kept it — for exactly this asking.' },
+    // The asking must never dangle on a spent key item: if the Starlamp went to
+    // some other wonder on the road, the dais holds a second (Fenn never trusted
+    // a single road) — granted only when the satchel is empty of one.
+    { op: 'ensureItem', item: 'starlamp', count: 1, text: 'Set into the dais\'s old lantern-housing, wrapped against the dust: a STARLAMP. A star-tender\'s hand placed it here long ago — Fenn never did trust a single road to carry anything that mattered.' },
     { op: 'letterbox', on: false, ms: 300 },
     { op: 'legendaryBattle', name: 'keylumen', kin: 149, level: 55, caughtFlag: 'flag:keylumen_caught', cooldownBattles: 0, cooldownRef: 'npc.keylumen_waits' },
     { op: 'letterbox', on: true, ms: 420 },

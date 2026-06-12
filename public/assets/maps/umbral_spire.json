@@ -277,7 +277,7 @@
       "facing": "left",
       "sprite": "wren",
       "movement": "static",
-      "dialogue_ref": "npc.wren_spire_f1"
+      "dialogue_ref": "script.spire_wren_camp"
     },
     {
       "id": "cache_spire_gatehouse",
