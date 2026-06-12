@@ -77,6 +77,13 @@
       "rarity": "rare",
       "min": 34,
       "max": 36
+    },
+    {
+      "area": "windward_stair_ii",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 62
     }
   ],
   "scripted": false,

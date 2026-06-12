@@ -2485,7 +2485,46 @@
           "min_level": 2,
           "max_level": 3
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "verge_grass_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 10,
+        "ty": 2,
+        "w": 6,
+        "h": 3
+      },
+      "encounter_rate": 0.07,
+      "table": [
+        {
+          "kin_id": 16,
+          "weight": 35,
+          "min_level": 55,
+          "max_level": 60
+        },
+        {
+          "kin_id": 10,
+          "weight": 25,
+          "min_level": 55,
+          "max_level": 58
+        },
+        {
+          "kin_id": 5,
+          "weight": 20,
+          "min_level": 56,
+          "max_level": 60
+        },
+        {
+          "kin_id": 8,
+          "weight": 20,
+          "min_level": 56,
+          "max_level": 62
+        }
+      ],
+      "requires_flag": "flag:dawn"
     }
   ],
   "npcs": [

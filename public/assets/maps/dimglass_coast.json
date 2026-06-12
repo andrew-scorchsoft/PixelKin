@@ -2320,7 +2320,8 @@
           "min_level": 3,
           "max_level": 5
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "grass_b",
@@ -2351,7 +2352,8 @@
           "min_level": 3,
           "max_level": 5
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "grass_c",
@@ -2382,7 +2384,8 @@
           "min_level": 4,
           "max_level": 6
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "grass_d",
@@ -2413,7 +2416,8 @@
           "min_level": 4,
           "max_level": 6
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "bank_hollow",
@@ -2444,7 +2448,8 @@
           "min_level": 5,
           "max_level": 6
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "crossing_a",
@@ -2475,7 +2480,8 @@
           "min_level": 3,
           "max_level": 5
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "crossing_b",
@@ -2506,7 +2512,8 @@
           "min_level": 4,
           "max_level": 6
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "tide_shallows",
@@ -2526,7 +2533,259 @@
           "min_level": 4,
           "max_level": 6
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "grass_a_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 2,
+        "ty": 4,
+        "w": 5,
+        "h": 5
+      },
+      "encounter_rate": 0.09,
+      "table": [
+        {
+          "kin_id": 26,
+          "weight": 45,
+          "min_level": 55,
+          "max_level": 60
+        },
+        {
+          "kin_id": 31,
+          "weight": 30,
+          "min_level": 55,
+          "max_level": 62
+        },
+        {
+          "kin_id": 8,
+          "weight": 25,
+          "min_level": 56,
+          "max_level": 62
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "grass_b_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 7,
+        "ty": 11,
+        "w": 5,
+        "h": 5
+      },
+      "encounter_rate": 0.09,
+      "table": [
+        {
+          "kin_id": 26,
+          "weight": 45,
+          "min_level": 55,
+          "max_level": 60
+        },
+        {
+          "kin_id": 31,
+          "weight": 30,
+          "min_level": 55,
+          "max_level": 62
+        },
+        {
+          "kin_id": 8,
+          "weight": 25,
+          "min_level": 56,
+          "max_level": 62
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "grass_c_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 3,
+        "ty": 16,
+        "w": 5,
+        "h": 5
+      },
+      "encounter_rate": 0.09,
+      "table": [
+        {
+          "kin_id": 26,
+          "weight": 45,
+          "min_level": 55,
+          "max_level": 60
+        },
+        {
+          "kin_id": 31,
+          "weight": 30,
+          "min_level": 55,
+          "max_level": 62
+        },
+        {
+          "kin_id": 8,
+          "weight": 25,
+          "min_level": 56,
+          "max_level": 62
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "grass_d_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 7,
+        "ty": 21,
+        "w": 5,
+        "h": 5
+      },
+      "encounter_rate": 0.09,
+      "table": [
+        {
+          "kin_id": 26,
+          "weight": 45,
+          "min_level": 55,
+          "max_level": 60
+        },
+        {
+          "kin_id": 31,
+          "weight": 30,
+          "min_level": 55,
+          "max_level": 62
+        },
+        {
+          "kin_id": 8,
+          "weight": 25,
+          "min_level": 56,
+          "max_level": 62
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "bank_hollow_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 2,
+        "ty": 22,
+        "w": 4,
+        "h": 4
+      },
+      "encounter_rate": 0.09,
+      "table": [
+        {
+          "kin_id": 26,
+          "weight": 45,
+          "min_level": 55,
+          "max_level": 60
+        },
+        {
+          "kin_id": 31,
+          "weight": 30,
+          "min_level": 55,
+          "max_level": 62
+        },
+        {
+          "kin_id": 8,
+          "weight": 25,
+          "min_level": 56,
+          "max_level": 62
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "crossing_a_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 3,
+        "ty": 9,
+        "w": 11,
+        "h": 2
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 26,
+          "weight": 45,
+          "min_level": 55,
+          "max_level": 60
+        },
+        {
+          "kin_id": 31,
+          "weight": 30,
+          "min_level": 55,
+          "max_level": 62
+        },
+        {
+          "kin_id": 8,
+          "weight": 25,
+          "min_level": 56,
+          "max_level": 62
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "crossing_b_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 3,
+        "ty": 26,
+        "w": 11,
+        "h": 2
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 26,
+          "weight": 45,
+          "min_level": 55,
+          "max_level": 60
+        },
+        {
+          "kin_id": 31,
+          "weight": 30,
+          "min_level": 55,
+          "max_level": 62
+        },
+        {
+          "kin_id": 8,
+          "weight": 25,
+          "min_level": 56,
+          "max_level": 62
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "tide_shallows_day",
+      "terrain": "water",
+      "rect": {
+        "tx": 14,
+        "ty": 5,
+        "w": 2,
+        "h": 4
+      },
+      "encounter_rate": 0.06,
+      "table": [
+        {
+          "kin_id": 2,
+          "weight": 70,
+          "min_level": 55,
+          "max_level": 62
+        },
+        {
+          "kin_id": 24,
+          "weight": 30,
+          "min_level": 56,
+          "max_level": 63
+        }
+      ],
+      "requires_ability": "tidecall",
+      "requires_flag": "flag:dawn"
     }
   ],
   "npcs": [

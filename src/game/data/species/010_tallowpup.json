@@ -72,6 +72,20 @@
       "rarity": "common",
       "min": 55,
       "max": 58
+    },
+    {
+      "area": "tinderwick",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 2,
+      "max": 3
+    },
+    {
+      "area": "tinderwick",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 55,
+      "max": 58
     }
   ],
   "scripted": false,

@@ -148,7 +148,47 @@
           "min_level": 19,
           "max_level": 20
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "shallows_day",
+      "terrain": "water",
+      "rect": {
+        "tx": 2,
+        "ty": 3,
+        "w": 16,
+        "h": 11
+      },
+      "encounter_rate": 0.08,
+      "table": [
+        {
+          "kin_id": 27,
+          "weight": 30,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 31,
+          "weight": 28,
+          "min_level": 56,
+          "max_level": 63
+        },
+        {
+          "kin_id": 24,
+          "weight": 27,
+          "min_level": 57,
+          "max_level": 64
+        },
+        {
+          "kin_id": 61,
+          "weight": 15,
+          "min_level": 58,
+          "max_level": 65
+        }
+      ],
+      "requires_ability": "tidecall",
+      "requires_flag": "flag:dawn"
     }
   ],
   "music": "assets/audio/music/saltreach-fen-c.mp3",

@@ -103,7 +103,8 @@
       "w": 1,
       "h": 2,
       "overhang": 1,
-      "walk_under": true
+      "walk_under": true,
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "dead_lantern_1",
@@ -115,7 +116,8 @@
       "w": 1,
       "h": 2,
       "overhang": 1,
-      "walk_under": true
+      "walk_under": true,
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "dead_lantern_2",
@@ -127,7 +129,8 @@
       "w": 1,
       "h": 2,
       "overhang": 1,
-      "walk_under": true
+      "walk_under": true,
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "dead_lantern_3",
@@ -139,7 +142,8 @@
       "w": 1,
       "h": 2,
       "overhang": 1,
-      "walk_under": true
+      "walk_under": true,
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "quiet_camp",
@@ -161,6 +165,58 @@
       "w": 1,
       "h": 1,
       "solid": false,
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "relit_lantern_0",
+      "sprite": "saltreach_reed_lantern_lit",
+      "at": {
+        "tx": 22,
+        "ty": 19
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "relit_lantern_1",
+      "sprite": "saltreach_reed_lantern_lit",
+      "at": {
+        "tx": 18,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "relit_lantern_2",
+      "sprite": "saltreach_reed_lantern_lit",
+      "at": {
+        "tx": 4,
+        "ty": 11
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "relit_lantern_3",
+      "sprite": "saltreach_reed_lantern_lit",
+      "at": {
+        "tx": 21,
+        "ty": 12
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
       "requires_flag": "flag:dawn"
     }
   ],
@@ -429,7 +485,8 @@
           "min_level": 49,
           "max_level": 50
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "bed_a",
@@ -478,7 +535,8 @@
           "min_level": 49,
           "max_level": 50
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "bed_b",
@@ -527,7 +585,8 @@
           "min_level": 49,
           "max_level": 50
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "bed_c",
@@ -576,7 +635,8 @@
           "min_level": 49,
           "max_level": 50
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "bed_d",
@@ -625,7 +685,288 @@
           "min_level": 49,
           "max_level": 50
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "crossing_a_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 2,
+        "ty": 21,
+        "w": 26,
+        "h": 2
+      },
+      "encounter_rate": 0.05,
+      "table": [
+        {
+          "kin_id": 140,
+          "weight": 20,
+          "min_level": 60,
+          "max_level": 65
+        },
+        {
+          "kin_id": 139,
+          "weight": 22,
+          "min_level": 57,
+          "max_level": 64
+        },
+        {
+          "kin_id": 134,
+          "weight": 20,
+          "min_level": 57,
+          "max_level": 64
+        },
+        {
+          "kin_id": 133,
+          "weight": 12,
+          "min_level": 56,
+          "max_level": 63
+        },
+        {
+          "kin_id": 137,
+          "weight": 10,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 142,
+          "weight": 8,
+          "min_level": 58,
+          "max_level": 64
+        },
+        {
+          "kin_id": 141,
+          "weight": 8,
+          "min_level": 57,
+          "max_level": 63
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "bed_a_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 4,
+        "ty": 4,
+        "w": 4,
+        "h": 3
+      },
+      "encounter_rate": 0.11,
+      "table": [
+        {
+          "kin_id": 140,
+          "weight": 20,
+          "min_level": 60,
+          "max_level": 65
+        },
+        {
+          "kin_id": 139,
+          "weight": 22,
+          "min_level": 57,
+          "max_level": 64
+        },
+        {
+          "kin_id": 134,
+          "weight": 20,
+          "min_level": 57,
+          "max_level": 64
+        },
+        {
+          "kin_id": 133,
+          "weight": 12,
+          "min_level": 56,
+          "max_level": 63
+        },
+        {
+          "kin_id": 137,
+          "weight": 10,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 142,
+          "weight": 8,
+          "min_level": 58,
+          "max_level": 64
+        },
+        {
+          "kin_id": 141,
+          "weight": 8,
+          "min_level": 57,
+          "max_level": 63
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "bed_b_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 21,
+        "ty": 4,
+        "w": 5,
+        "h": 3
+      },
+      "encounter_rate": 0.11,
+      "table": [
+        {
+          "kin_id": 140,
+          "weight": 20,
+          "min_level": 60,
+          "max_level": 65
+        },
+        {
+          "kin_id": 139,
+          "weight": 22,
+          "min_level": 57,
+          "max_level": 64
+        },
+        {
+          "kin_id": 134,
+          "weight": 20,
+          "min_level": 57,
+          "max_level": 64
+        },
+        {
+          "kin_id": 133,
+          "weight": 12,
+          "min_level": 56,
+          "max_level": 63
+        },
+        {
+          "kin_id": 137,
+          "weight": 10,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 142,
+          "weight": 8,
+          "min_level": 58,
+          "max_level": 64
+        },
+        {
+          "kin_id": 141,
+          "weight": 8,
+          "min_level": 57,
+          "max_level": 63
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "bed_c_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 11,
+        "ty": 10,
+        "w": 4,
+        "h": 3
+      },
+      "encounter_rate": 0.11,
+      "table": [
+        {
+          "kin_id": 140,
+          "weight": 20,
+          "min_level": 60,
+          "max_level": 65
+        },
+        {
+          "kin_id": 139,
+          "weight": 22,
+          "min_level": 57,
+          "max_level": 64
+        },
+        {
+          "kin_id": 134,
+          "weight": 20,
+          "min_level": 57,
+          "max_level": 64
+        },
+        {
+          "kin_id": 133,
+          "weight": 12,
+          "min_level": 56,
+          "max_level": 63
+        },
+        {
+          "kin_id": 137,
+          "weight": 10,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 142,
+          "weight": 8,
+          "min_level": 58,
+          "max_level": 64
+        },
+        {
+          "kin_id": 141,
+          "weight": 8,
+          "min_level": 57,
+          "max_level": 63
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "bed_d_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 16,
+        "ty": 12,
+        "w": 3,
+        "h": 3
+      },
+      "encounter_rate": 0.11,
+      "table": [
+        {
+          "kin_id": 140,
+          "weight": 20,
+          "min_level": 60,
+          "max_level": 65
+        },
+        {
+          "kin_id": 139,
+          "weight": 22,
+          "min_level": 57,
+          "max_level": 64
+        },
+        {
+          "kin_id": 134,
+          "weight": 20,
+          "min_level": 57,
+          "max_level": 64
+        },
+        {
+          "kin_id": 133,
+          "weight": 12,
+          "min_level": 56,
+          "max_level": 63
+        },
+        {
+          "kin_id": 137,
+          "weight": 10,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 142,
+          "weight": 8,
+          "min_level": 58,
+          "max_level": 64
+        },
+        {
+          "kin_id": 141,
+          "weight": 8,
+          "min_level": 57,
+          "max_level": 63
+        }
+      ],
+      "requires_flag": "flag:dawn"
     }
   ],
   "npcs": [

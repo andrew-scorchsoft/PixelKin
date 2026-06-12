@@ -90,6 +90,27 @@
       "rarity": "common",
       "min": 34,
       "max": 36
+    },
+    {
+      "area": "windward_stair_i",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 56,
+      "max": 62
+    },
+    {
+      "area": "windward_stair_ii",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 56,
+      "max": 62
+    },
+    {
+      "area": "thunderroost",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 57,
+      "max": 63
     }
   ],
   "scripted": false,

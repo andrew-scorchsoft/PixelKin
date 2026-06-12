@@ -68,7 +68,15 @@
     "weight_kg": 18,
     "habitat": "east"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 58,
+      "max": 65
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Large moth form; four broad wings each shaped like a glowing leaf, veined in cyan and gold; soft downy body, feathered antennae, six slender legs; the whole silhouette looks like a living stained-glass window.",

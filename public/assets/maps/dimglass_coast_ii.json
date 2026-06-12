@@ -2068,7 +2068,8 @@
           "min_level": 9,
           "max_level": 10
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "dune_b",
@@ -2099,7 +2100,8 @@
           "min_level": 9,
           "max_level": 10
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "dune_c",
@@ -2130,7 +2132,8 @@
           "min_level": 9,
           "max_level": 11
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "dune_crossing",
@@ -2161,7 +2164,8 @@
           "min_level": 9,
           "max_level": 11
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "gullcry_shallows",
@@ -2181,7 +2185,163 @@
           "min_level": 9,
           "max_level": 11
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "dune_a_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 2,
+        "ty": 3,
+        "w": 5,
+        "h": 5
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 26,
+          "weight": 40,
+          "min_level": 56,
+          "max_level": 61
+        },
+        {
+          "kin_id": 31,
+          "weight": 30,
+          "min_level": 56,
+          "max_level": 63
+        },
+        {
+          "kin_id": 27,
+          "weight": 30,
+          "min_level": 57,
+          "max_level": 63
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "dune_b_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 2,
+        "ty": 11,
+        "w": 4,
+        "h": 5
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 26,
+          "weight": 40,
+          "min_level": 56,
+          "max_level": 61
+        },
+        {
+          "kin_id": 31,
+          "weight": 30,
+          "min_level": 56,
+          "max_level": 63
+        },
+        {
+          "kin_id": 27,
+          "weight": 30,
+          "min_level": 57,
+          "max_level": 63
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "dune_c_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 2,
+        "ty": 20,
+        "w": 5,
+        "h": 5
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 26,
+          "weight": 40,
+          "min_level": 56,
+          "max_level": 61
+        },
+        {
+          "kin_id": 31,
+          "weight": 30,
+          "min_level": 56,
+          "max_level": 63
+        },
+        {
+          "kin_id": 27,
+          "weight": 30,
+          "min_level": 57,
+          "max_level": 63
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "dune_crossing_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 5,
+        "ty": 16,
+        "w": 9,
+        "h": 2
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 26,
+          "weight": 40,
+          "min_level": 56,
+          "max_level": 61
+        },
+        {
+          "kin_id": 31,
+          "weight": 30,
+          "min_level": 56,
+          "max_level": 63
+        },
+        {
+          "kin_id": 27,
+          "weight": 30,
+          "min_level": 57,
+          "max_level": 63
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "gullcry_shallows_day",
+      "terrain": "water",
+      "rect": {
+        "tx": 14,
+        "ty": 11,
+        "w": 2,
+        "h": 4
+      },
+      "encounter_rate": 0.06,
+      "table": [
+        {
+          "kin_id": 2,
+          "weight": 70,
+          "min_level": 56,
+          "max_level": 63
+        },
+        {
+          "kin_id": 24,
+          "weight": 30,
+          "min_level": 57,
+          "max_level": 64
+        }
+      ],
+      "requires_ability": "tidecall",
+      "requires_flag": "flag:dawn"
     }
   ],
   "npcs": [

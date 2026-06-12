@@ -98,6 +98,34 @@
       "rarity": "common",
       "min": 21,
       "max": 24
+    },
+    {
+      "area": "dimglass_coast",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 56,
+      "max": 63
+    },
+    {
+      "area": "dimglass_coast_ii",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 57,
+      "max": 64
+    },
+    {
+      "area": "pearlmoor_quay",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 58,
+      "max": 64
+    },
+    {
+      "area": "sunkbell_shallows",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 57,
+      "max": 64
     }
   ],
   "scripted": false,

@@ -66,7 +66,15 @@
     "weight_kg": 0.04,
     "habitat": "south"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "tinderwick",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 56,
+      "max": 60
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Thin matchstick body of pale cream wax, a spherical amber head topped by a single tiny flame-tuft; two twig-thin arms; big worried eyes; small enough to balance on a coin at 16px.",

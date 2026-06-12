@@ -24,7 +24,7 @@ Legend — **Gleam** = the region's constellation reward; **Gift** = the Lantern
 | **West** (04) | 7 Solar · 8 Lunar | ✅ **complete** (W1–W4 maps + W5 content wiring, 2026-06; encounter mirrors verified in the R5 S/E sync) | — |
 | **Central/Endgame** (05) | — | ✅ **complete** (C1 maps + C2 Spire + C3 wiring, 2026-06; panel SHIP-READY; C6 polish landed c15217d) | — |
 | **The Three Hours** (07) | — | ✅ **complete** (sites + wiring + encounters + the hour-bell music, 2026-06) | — |
-| **Post-game** (06) | — | 🟡 **Dawnstead + Starfall Vigils built** (R2+R3, 2026-06) | day-form pass (R4) |
+| **Post-game** (06) | — | ✅ **complete** (R2 Dawnstead + R3 Vigils + R4 day-forms, 2026-06) | — |
 
 **Playable runway today: the game is COMPLETABLE — cold open → dawn.** A continuous
 main-path journey from the prologue through all eight Gleams and all four crowns,
@@ -240,12 +240,21 @@ built maps). All gates green: typecheck, validate 0/0, chart_check, progression,
 audit_region 0/0, audit_warps 0 failures. Owed to a panel pass: copy-editing review of the
 readings/keeper dialogue (spine §10 tone gate).
 
-### R4 — Day-form pass (LAST and ALONE; species + map lanes together)
+### R4 — Day-form pass ✅ DONE (2026-06)
 Post-`flag:dawn` world changes: day-form encounter zone pairs (`requires_flag:'flag:dawn'`
 rows beside the night tables — engine already supports this), Light-kin re-bloom in Coldfog,
 the Hushfrost numbed-kin awake swap (pre-wired `_awake` twins exist), drained-zone deco swaps.
-Re-runs EVERY region builder — that's why it must run last, alone, after all other map edits,
-then one `build_species.py` regen + the 4 gates.
+
+**Delivered (2026-06):** 77 day zones across 22 relit outdoor maps (band 55–65, element-matched;
+night zones `hidden_when_flag:'flag:dawn'`, day twins `requires_flag` — the permanent swap, no
+clock). The Coldfog Light re-bloom (Wisprestored blooms, Voidmantle withdraws from Coldfog II's
+day table) + relit lantern-row deco pairs; Hushfrost caretaker `_awake` swap verified. All edits
+were SURGICAL JSON (re-running builders would have regressed the R3 host warps — see the
+CLAUDE.md gotcha), proven by round-trip + semantic diff. Mirrors: `R4_DAYFORM_ENCOUNTERS` +
+night gap-fills; CURATED_AREAS += tinderwick/gullcry_rock/pearlmoor_quay/saltreach_fen_i+ii/
+sunkbell_shallows (0 rows lost on regen). All gates + all three map audits PASS unmodified.
+Still unmirrored (works on generated defaults): `spore_grotto`, `glowmoss_deep(_b1f)`,
+`cinderhead_mine`, `cinderhead_deep(_b1f/_b2f)`.
 
 ### R5 — Release ladder (verification, mostly cheap)
 - `npm run build` (typecheck + prod build) — should already be green.

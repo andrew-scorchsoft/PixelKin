@@ -591,7 +591,8 @@
           "min_level": 38,
           "max_level": 40
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "hollow_b",
@@ -646,7 +647,8 @@
           "min_level": 38,
           "max_level": 40
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "crossing_a",
@@ -701,7 +703,8 @@
           "min_level": 38,
           "max_level": 40
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "deepice",
@@ -732,7 +735,208 @@
           "min_level": 38,
           "max_level": 40
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "hollow_a_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 4,
+        "ty": 24,
+        "w": 7,
+        "h": 4
+      },
+      "encounter_rate": 0.11,
+      "table": [
+        {
+          "kin_id": 72,
+          "weight": 16,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 81,
+          "weight": 14,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 71,
+          "weight": 12,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 86,
+          "weight": 20,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 80,
+          "weight": 12,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 95,
+          "weight": 10,
+          "min_level": 57,
+          "max_level": 64
+        },
+        {
+          "kin_id": 87,
+          "weight": 16,
+          "min_level": 59,
+          "max_level": 65
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "hollow_b_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 17,
+        "ty": 24,
+        "w": 7,
+        "h": 4
+      },
+      "encounter_rate": 0.11,
+      "table": [
+        {
+          "kin_id": 72,
+          "weight": 16,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 81,
+          "weight": 14,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 71,
+          "weight": 12,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 86,
+          "weight": 20,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 80,
+          "weight": 12,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 95,
+          "weight": 10,
+          "min_level": 57,
+          "max_level": 64
+        },
+        {
+          "kin_id": 87,
+          "weight": 16,
+          "min_level": 59,
+          "max_level": 65
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "crossing_a_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 3,
+        "ty": 22,
+        "w": 22,
+        "h": 2
+      },
+      "encounter_rate": 0.05,
+      "table": [
+        {
+          "kin_id": 72,
+          "weight": 16,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 81,
+          "weight": 14,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 71,
+          "weight": 12,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 86,
+          "weight": 20,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 80,
+          "weight": 12,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 95,
+          "weight": 10,
+          "min_level": 57,
+          "max_level": 64
+        },
+        {
+          "kin_id": 87,
+          "weight": 16,
+          "min_level": 59,
+          "max_level": 65
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "deepice_day",
+      "terrain": "cave",
+      "rect": {
+        "tx": 26,
+        "ty": 24,
+        "w": 4,
+        "h": 4
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 85,
+          "weight": 25,
+          "min_level": 58,
+          "max_level": 64
+        },
+        {
+          "kin_id": 87,
+          "weight": 45,
+          "min_level": 59,
+          "max_level": 65
+        },
+        {
+          "kin_id": 72,
+          "weight": 30,
+          "min_level": 58,
+          "max_level": 64
+        }
+      ],
+      "requires_flag": "flag:dawn"
     }
   ],
   "npcs": [

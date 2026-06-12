@@ -262,7 +262,8 @@
           "min_level": 18,
           "max_level": 19
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "reed_b",
@@ -299,7 +300,8 @@
           "min_level": 18,
           "max_level": 19
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "reed_c",
@@ -336,7 +338,8 @@
           "min_level": 18,
           "max_level": 19
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "reed_d",
@@ -373,7 +376,8 @@
           "min_level": 18,
           "max_level": 19
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "channels",
@@ -405,7 +409,217 @@
           "min_level": 18,
           "max_level": 19
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "reed_a_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 3,
+        "ty": 4,
+        "w": 26,
+        "h": 2
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 59,
+          "weight": 35,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 31,
+          "weight": 25,
+          "min_level": 56,
+          "max_level": 63
+        },
+        {
+          "kin_id": 27,
+          "weight": 20,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 60,
+          "weight": 12,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 67,
+          "weight": 8,
+          "min_level": 57,
+          "max_level": 64
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "reed_b_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 12,
+        "ty": 13,
+        "w": 4,
+        "h": 3
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 59,
+          "weight": 35,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 31,
+          "weight": 25,
+          "min_level": 56,
+          "max_level": 63
+        },
+        {
+          "kin_id": 27,
+          "weight": 20,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 60,
+          "weight": 12,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 67,
+          "weight": 8,
+          "min_level": 57,
+          "max_level": 64
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "reed_c_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 4,
+        "ty": 24,
+        "w": 9,
+        "h": 5
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 59,
+          "weight": 35,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 31,
+          "weight": 25,
+          "min_level": 56,
+          "max_level": 63
+        },
+        {
+          "kin_id": 27,
+          "weight": 20,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 60,
+          "weight": 12,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 67,
+          "weight": 8,
+          "min_level": 57,
+          "max_level": 64
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "reed_d_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 8,
+        "ty": 33,
+        "w": 4,
+        "h": 3
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 59,
+          "weight": 35,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 31,
+          "weight": 25,
+          "min_level": 56,
+          "max_level": 63
+        },
+        {
+          "kin_id": 27,
+          "weight": 20,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 60,
+          "weight": 12,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 67,
+          "weight": 8,
+          "min_level": 57,
+          "max_level": 64
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "channels_day",
+      "terrain": "water",
+      "rect": {
+        "tx": 1,
+        "ty": 8,
+        "w": 30,
+        "h": 31
+      },
+      "encounter_rate": 0.06,
+      "table": [
+        {
+          "kin_id": 31,
+          "weight": 40,
+          "min_level": 56,
+          "max_level": 63
+        },
+        {
+          "kin_id": 27,
+          "weight": 30,
+          "min_level": 56,
+          "max_level": 63
+        },
+        {
+          "kin_id": 60,
+          "weight": 30,
+          "min_level": 57,
+          "max_level": 64
+        }
+      ],
+      "requires_ability": "tidecall",
+      "requires_flag": "flag:dawn"
     }
   ],
   "triggers": [

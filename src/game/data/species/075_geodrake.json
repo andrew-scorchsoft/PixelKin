@@ -81,6 +81,13 @@
       "rarity": "uncommon",
       "min": 40,
       "max": 41
+    },
+    {
+      "area": "hushfrost_pass_i",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 62
     }
   ],
   "scripted": false,

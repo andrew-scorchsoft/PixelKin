@@ -217,7 +217,8 @@
           "min_level": 17,
           "max_level": 18
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "reed_b",
@@ -254,7 +255,8 @@
           "min_level": 17,
           "max_level": 18
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "reed_c",
@@ -291,7 +293,8 @@
           "min_level": 17,
           "max_level": 18
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "reed_d",
@@ -328,7 +331,184 @@
           "min_level": 17,
           "max_level": 18
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "reed_a_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 2,
+        "ty": 7,
+        "w": 9,
+        "h": 9
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 59,
+          "weight": 35,
+          "min_level": 55,
+          "max_level": 61
+        },
+        {
+          "kin_id": 27,
+          "weight": 20,
+          "min_level": 55,
+          "max_level": 61
+        },
+        {
+          "kin_id": 31,
+          "weight": 25,
+          "min_level": 55,
+          "max_level": 62
+        },
+        {
+          "kin_id": 60,
+          "weight": 12,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 67,
+          "weight": 8,
+          "min_level": 57,
+          "max_level": 63
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "reed_b_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 9,
+        "ty": 20,
+        "w": 9,
+        "h": 5
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 59,
+          "weight": 35,
+          "min_level": 55,
+          "max_level": 61
+        },
+        {
+          "kin_id": 27,
+          "weight": 20,
+          "min_level": 55,
+          "max_level": 61
+        },
+        {
+          "kin_id": 31,
+          "weight": 25,
+          "min_level": 55,
+          "max_level": 62
+        },
+        {
+          "kin_id": 60,
+          "weight": 12,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 67,
+          "weight": 8,
+          "min_level": 57,
+          "max_level": 63
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "reed_c_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 5,
+        "ty": 32,
+        "w": 5,
+        "h": 3
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 59,
+          "weight": 35,
+          "min_level": 55,
+          "max_level": 61
+        },
+        {
+          "kin_id": 27,
+          "weight": 20,
+          "min_level": 55,
+          "max_level": 61
+        },
+        {
+          "kin_id": 31,
+          "weight": 25,
+          "min_level": 55,
+          "max_level": 62
+        },
+        {
+          "kin_id": 60,
+          "weight": 12,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 67,
+          "weight": 8,
+          "min_level": 57,
+          "max_level": 63
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "reed_d_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 16,
+        "ty": 39,
+        "w": 5,
+        "h": 3
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 59,
+          "weight": 35,
+          "min_level": 55,
+          "max_level": 61
+        },
+        {
+          "kin_id": 27,
+          "weight": 20,
+          "min_level": 55,
+          "max_level": 61
+        },
+        {
+          "kin_id": 31,
+          "weight": 25,
+          "min_level": 55,
+          "max_level": 62
+        },
+        {
+          "kin_id": 60,
+          "weight": 12,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 67,
+          "weight": 8,
+          "min_level": 57,
+          "max_level": 63
+        }
+      ],
+      "requires_flag": "flag:dawn"
     }
   ],
   "triggers": [

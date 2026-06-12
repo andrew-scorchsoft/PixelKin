@@ -725,7 +725,41 @@
           "min_level": 10,
           "max_level": 12
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "gullcry_surf_day",
+      "terrain": "water",
+      "rect": {
+        "tx": 0,
+        "ty": 0,
+        "w": 16,
+        "h": 13
+      },
+      "encounter_rate": 0.09,
+      "table": [
+        {
+          "kin_id": 29,
+          "weight": 50,
+          "min_level": 58,
+          "max_level": 65
+        },
+        {
+          "kin_id": 27,
+          "weight": 25,
+          "min_level": 58,
+          "max_level": 64
+        },
+        {
+          "kin_id": 31,
+          "weight": 25,
+          "min_level": 57,
+          "max_level": 64
+        }
+      ],
+      "requires_ability": "tidecall",
+      "requires_flag": "flag:dawn"
     }
   ],
   "npcs": [

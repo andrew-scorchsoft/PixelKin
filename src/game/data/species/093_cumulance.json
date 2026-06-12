@@ -79,6 +79,20 @@
       "rarity": "rare",
       "min": 36,
       "max": 36
+    },
+    {
+      "area": "wind_eye",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 60,
+      "max": 65
+    },
+    {
+      "area": "thunderroost",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 60,
+      "max": 65
     }
   ],
   "scripted": false,

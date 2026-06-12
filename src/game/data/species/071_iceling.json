@@ -72,6 +72,13 @@
       "rarity": "uncommon",
       "min": 36,
       "max": 38
+    },
+    {
+      "area": "pale_vault_glacier",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 62
     }
   ],
   "scripted": false,

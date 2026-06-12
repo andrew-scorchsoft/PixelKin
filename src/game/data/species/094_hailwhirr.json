@@ -73,6 +73,13 @@
       "rarity": "common",
       "min": 34,
       "max": 36
+    },
+    {
+      "area": "wind_eye",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 57,
+      "max": 63
     }
   ],
   "scripted": false,

@@ -785,6 +785,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   the same trainer twice (the "fights you twice" bug — hit every sight/script trainer: beacon
   keepers, Wren, route beats). The enclosing handler (`engageTrainer`/`handleTrigger`/`interact`)
   clears `modal` once the whole scene finishes.
+- **Shipped map JSONs carry post-build surgical additions their builders DON'T (2026-06):**
+  the R3 vigil host warps (tinderwick/spore_grotto/thunderroost/sunvault_climb_ii/
+  coldfog_marches_ii), the R4 day-form zone pairs (22 maps) and hand-added NPCs/triggers
+  (P1 letter recipients, Oriel's terrace set, the summit re-dress). Re-running an old
+  builder REGRESSES them — diff the rebuilt JSON against git HEAD and re-apply, or edit
+  the shipped JSON surgically instead.
 - **Map audits grant ALL Gifts for reachability — so a foot-only dead-end is invisible to them.**
   `audit_flow`/`audit_region`'s reach pass BFS with every Lantern Gift, which hid a real progression
   blocker: in `dimglass_coast` a one-way return ledge + a canopy tree's solid trunk footprint

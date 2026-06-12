@@ -83,6 +83,13 @@
       "rarity": "very_rare",
       "min": 42,
       "max": 42
+    },
+    {
+      "area": "aurora_hollow",
+      "terrain": "tall_grass",
+      "rarity": "very_rare",
+      "min": 62,
+      "max": 65
     }
   ],
   "scripted": true,
