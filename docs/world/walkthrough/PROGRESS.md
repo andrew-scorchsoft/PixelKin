@@ -21,7 +21,7 @@ Legend — **Gleam** = the region's constellation reward; **Gift** = the Lantern
 | **South** (01) | 1 Ember · 2 Tide | ✅ **complete** | — |
 | **East** (02) | 3 Verdant · 4 Stone | ✅ **complete** | — (Cinderhead built 2026-06) |
 | **North** (03) | 5 Storm · 6 Frost | ✅ **complete** (built 2026-06) | — |
-| **West** (04) | 7 Solar · 8 Lunar | ⬜ not started | Hushfrost · Sunken Solarium · Sunvault · Nightreach (+ spurs) |
+| **West** (04) | 7 Solar · 8 Lunar | 🟡 W1 built (Hushfrost cluster, 2026-06) | Sunken Solarium · Sunvault · Nightreach · Coldfog (+ spurs); W1 content refs (wiring) |
 | **Central/Endgame** (05) | — | ⬜ not started | Penumbra Ring · Umbral Spire (`hub_unlocked` roads) |
 | **Post-game** (06) | — | ⬜ not started | Dawnstead · day-forms · Còr's resolution |
 
@@ -84,10 +84,24 @@ N3 Wren's Ribbon (pays off at Nightreach lamp 6 — West owes the line), R4 Ways
 Expert panel: **SHIP-READY** (`docs/reviews/north-region-panel.md`); all minors fixed
 (Lumenary re-skins, Windward rest shelf, 32–34 entry verge, Wind-Eye starglints).
 
-## West · Central · Post-game ⬜
+## West — Gleams 7–8 (`crown_west`) 🟡
 
-See [`04-west.md`](./04-west.md), [`05-central-endgame.md`](./05-central-endgame.md),
-[`06-postgame.md`](./06-postgame.md). Not started.
+| Area | map id(s) | Status | Builder |
+|------|-----------|--------|---------|
+| Hushfrost Pass I (snow canyon; coldfog throat = first REQUIRED Emberward) | `hushfrost_pass_i` | ✅ 2026-06 | `build_hushfrost_pass_i.py` |
+| Hushfrost Pass II (X1 caretaker's shelter + numbed Hearthkit w/ `flag:dawn` swap; first blight fingers; gold-mouth sight-line) | `hushfrost_pass_ii` | ✅ 2026-06 | `build_hushfrost_pass_ii.py` |
+| Aurora Hollow (Emberward spur; X1 aurora-oil; Frostholm's only wild bed) | `aurora_hollow` | ✅ 2026-06 | `build_aurora_hollow.py` |
+| Sunken Solarium (Solar · Lucan · Sunsketch) | `sunken_solarium` | ⬜ | W2 |
+| Sunvault Climb I→II + Helia Vault | — | ⬜ | W2 |
+| Coldfog Marches + Drownlight + Stillworks (B4) | — | ⬜ | W3 |
+| Nightreach Observatory (Lunar · Nessa · Starreach) | — | ⬜ | W4 |
+
+W1 content refs (scripts/dialogue/trainers/items/EXTRA_ENCOUNTERS mirror) are owed to the
+wiring pass — each builder prints its ledger. X1 reward item id must NOT be `bright_lamp`
+(SaveCodec legacy rename) — use `caretaker_lamp`, display name "Bright Lamp".
+
+See [`05-central-endgame.md`](./05-central-endgame.md), [`06-postgame.md`](./06-postgame.md)
+for Central/Post-game. Not started.
 
 ---
 

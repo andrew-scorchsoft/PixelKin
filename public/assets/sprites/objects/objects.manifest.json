@@ -112,6 +112,48 @@
       "tw": 2,
       "th": 3
     },
+    "hushfrost_aurora_glint_a": {
+      "path": "assets/sprites/objects/hushfrost_aurora_glint_a.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_aurora_glint_b": {
+      "path": "assets/sprites/objects/hushfrost_aurora_glint_b.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_aurora_veil": {
+      "path": "assets/sprites/objects/hushfrost_aurora_veil.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "hushfrost_numbed_kin": {
+      "path": "assets/sprites/objects/hushfrost_numbed_kin.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "hushfrost_numbed_kin_awake": {
+      "path": "assets/sprites/objects/hushfrost_numbed_kin_awake.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "hushfrost_shelter": {
+      "path": "assets/sprites/objects/hushfrost_shelter.webp",
+      "width": 64,
+      "height": 64,
+      "tw": 4,
+      "th": 4
+    },
     "interior_altar": {
       "path": "assets/sprites/objects/interior_altar.webp",
       "width": 48,

@@ -459,6 +459,43 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/pale-vault-glacier-b.mp3',
   },
+  // Hushfrost Pass — the West's frozen opening leg (walkthrough 04-west):
+  // a snow canyon (I) burning through the Emberward coldfog throat into the
+  // thinning fog (II), where the X1 caretaker sits with her numbed kin and
+  // the far mouth glows Solarium-gold. The loneliest road in the game.
+  hushfrost_pass_i: {
+    json: 'assets/maps/hushfrost_pass_i.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/hushfrost-pass-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/hushfrost-pass-a.webp',
+      'assets/backgrounds/battle/hushfrost-pass-b.webp',
+    ],
+  },
+  hushfrost_pass_ii: {
+    json: 'assets/maps/hushfrost_pass_ii.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/hushfrost-pass-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/hushfrost-pass-a.webp',
+      'assets/backgrounds/battle/hushfrost-pass-b.webp',
+    ],
+  },
+  // Aurora Hollow — the Emberward spur grotto off Hushfrost II (rare
+  // Frost/Light kin + the X1 aurora-oil). Spur maps reuse the parent loop
+  // + backdrops (the aurora is baked into both hushfrost variants).
+  aurora_hollow: {
+    json: 'assets/maps/aurora_hollow.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/hushfrost-pass-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/hushfrost-pass-a.webp',
+      'assets/backgrounds/battle/hushfrost-pass-b.webp',
+    ],
+  },
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
   // Their battle backdrops are already rendered — see UPCOMING_BATTLE_BACKDROPS below.
