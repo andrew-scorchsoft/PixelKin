@@ -28,7 +28,18 @@ export const HOODED_LAMP_FLAG = 'flag:lamp_hooded' as WorldFlag;
 /** How much the Hooded Lamp dampens the per-step encounter chance (×0.5). */
 const HOODED_RATE_FACTOR = 0.5;
 
+/** Guaranteed encounter-free steps after a wild encounter fires. The per-step
+ *  roll is memoryless, so without this the very next tile has the full ~11%
+ *  chance to fire again — back-to-back battles that read as "too frequent".
+ *  A short grace breaks that adjacency without changing the overall density
+ *  (the genre's quiet-steps-after-a-battle convention). Counted in
+ *  encounterable steps; a fresh map resets it (a new EncounterSystem). */
+const POST_ENCOUNTER_GRACE = 3;
+
 export class EncounterSystem {
+  /** Encounterable steps still owed as a post-battle grace (see the constant). */
+  private graceRemaining = 0;
+
   constructor(private readonly map: RuntimeMap) {}
 
   /** True if any tile stacked at (tx,ty) is tagged as this encounter terrain. */
@@ -45,6 +56,12 @@ export class EncounterSystem {
     abilities: ReadonlySet<AbilityId>,
     hasFlag: (flag: WorldFlag) => boolean = () => false,
   ): EncounterIntent | null {
+    // Hold a short quiet spell after a wild battle so two encounters can't land
+    // on adjacent tiles (the per-step roll below is otherwise memoryless).
+    if (this.graceRemaining > 0) {
+      this.graceRemaining -= 1;
+      return null;
+    }
     // The Hooded Lamp halves every zone's effective rate while shaded.
     const rateFactor = hasFlag(HOODED_LAMP_FLAG) ? HOODED_RATE_FACTOR : 1;
     for (const zone of this.map.def.encounters) {
@@ -69,6 +86,7 @@ export class EncounterSystem {
         if (pick <= 0) {
           const level =
             entry.min_level + Math.floor(Math.random() * (entry.max_level - entry.min_level + 1));
+          this.graceRemaining = POST_ENCOUNTER_GRACE; // quiet steps before the next roll
           return { species_id: entry.kin_id, level, terrain: zone.terrain };
         }
       }
