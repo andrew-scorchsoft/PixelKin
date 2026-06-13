@@ -1255,10 +1255,10 @@
         "ty": 9
       },
       "trigger": "step_on",
-      "to_map": "lanternway_pearlmoor",
+      "to_map": "lanternfall_road",
       "to": {
-        "tx": 0,
-        "ty": 6
+        "tx": 1,
+        "ty": 23
       },
       "facing": "right",
       "requires_flag": "gleam:tide",
@@ -1272,10 +1272,10 @@
         "ty": 8
       },
       "trigger": "step_on",
-      "to_map": "lanternway_pearlmoor",
+      "to_map": "lanternfall_road",
       "to": {
-        "tx": 0,
-        "ty": 5
+        "tx": 1,
+        "ty": 22
       },
       "facing": "right",
       "requires_flag": "gleam:tide",

@@ -189,6 +189,28 @@ export const DIALOGUE: DialogueRegistry = {
   'sign.dimglass_to_pearlmoor': [
     { text: 'NORTH: PEARLMOOR QUAY\nThe tidal flats lie ahead, where the lamps stand in the water.' },
   ],
+  // --- New Pearlmoor <-> Crossroads route: signs + beaten-trainer lines ---
+  'sign.wrackline_view': [
+    { text: 'WRACKLINE PATH\nThe sea gnaws the cliff to the west; the road home to the crossroads runs down and into the dark of the Sounding Cave.' },
+  ],
+  'sign.wrackline_cave': [
+    { text: 'THE SOUNDING CAVE — mind your lamp.\nThe sea hollowed it out and never left. They say it answers if you call. They say don\'t.' },
+  ],
+  'sign.sounding_mouth': [
+    { text: 'Cut into the wet rock: "Be lit. The dark in here is only dark — but it is a great deal of it."' },
+  ],
+  'sign.lanternfall_view': [
+    { text: 'LANTERNFALL ROAD\nOut of the cave and down the lit steps. Every lamp below is one the Waykeeper trims; follow them to the crossroads.' },
+  ],
+  'sign.lanternfall_hub': [
+    { text: 'VESPER CROSSROADS — just below.\nWhere all the lit roads meet. The kettle\'s on at the Waystation Inn, more often than not.' },
+  ],
+  'npc.wrackline_drifter_after': [
+    { speaker: 'DRIFTER OSK', text: 'Go on, then — the cave\'s waiting. I\'ll be here, drifting. It\'s in the name.' },
+  ],
+  'npc.lanternfall_warden_after': [
+    { speaker: 'LAMP-KEEPER NELL', text: 'Lit and tested both. The crossroads is just down the steps — mind the grass, it\'s lively this dusk.' },
+  ],
   // The coast NPC is the rival Wren again (A2): canon has Wren's first friendly battle here.
   // Until the trainer-battle cutscene is wired, this lands the beat as a clear dialogue tease.
   'npc.dimglass_wayfarer': [

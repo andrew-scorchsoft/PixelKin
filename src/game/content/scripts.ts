@@ -443,6 +443,37 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:q_south_booji_done' },
   ],
 
+  // --- New Pearlmoor <-> Crossroads route (Wrackline Path / Sounding Cave /
+  //     Lanternfall Road): sight-trainer beats + item caches ---
+  'script.wrackline_drifter': [
+    { op: 'say', speaker: 'DRIFTER OSK', text: 'Oi — down the wrackline! Hold up. Nobody crosses my stretch unbloodied.' },
+    { op: 'battle', trainer: 'wrackline_drifter' },
+    { op: 'setFlag', flag: 'flag:wrackline_drifter_beaten' },
+  ],
+  'script.lanternfall_warden': [
+    { op: 'say', speaker: 'LAMP-KEEPER NELL', text: 'Hoi, traveller! You\'ll not walk my lit road untested. Lamps up — and lanterns on the line.' },
+    { op: 'battle', trainer: 'lanternfall_warden' },
+    { op: 'setFlag', flag: 'flag:lanternfall_warden_beaten' },
+  ],
+  'script.pickup_wrackline_balm': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'tallow_balm', count: 2 },
+    { op: 'say', text: 'A traveller\'s cache, snug in the verge. Received 2 TALLOW BALMS!' },
+    { op: 'setFlag', flag: 'flag:picked_wrackline_balm' },
+  ],
+  'script.pickup_sounding_amber': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'moth_amber', count: 1 },
+    { op: 'say', text: 'A bead of old resin glows faintly in the alcove. Received MOTH-AMBER! (Worth a fair purse.)' },
+    { op: 'setFlag', flag: 'flag:picked_sounding_amber' },
+  ],
+  'script.pickup_lanternfall_charge': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'glow_charge', count: 1 },
+    { op: 'say', text: 'A waxed cell left trimmed and ready by a lampwright. Received a GLOW CHARGE!' },
+    { op: 'setFlag', flag: 'flag:picked_lanternfall_charge' },
+  ],
+
   // A2 (Dimglass Coast I): Wren's first FRIENDLY trainer battle. Wren is a SIGHT
   // trainer — spots the player on the lane, runs up (the engine plays the alert +
   // approach), and this script carries the words + battle. Low-stakes by design.

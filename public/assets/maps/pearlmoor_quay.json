@@ -2422,10 +2422,10 @@
         "ty": 12
       },
       "trigger": "step_on",
-      "to_map": "lanternway_pearlmoor",
+      "to_map": "wrackline_path",
       "to": {
-        "tx": 23,
-        "ty": 12
+        "tx": 14,
+        "ty": 5
       },
       "facing": "left",
       "transition": "fade"

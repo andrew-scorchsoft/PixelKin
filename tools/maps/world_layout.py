@@ -97,7 +97,10 @@ NODES: dict[str, tuple[int, int, str]] = {
     "hollowfen_stillworks": (68, 68, "landmark"),
     # --- the Lanternway spoke lanes (real maps, build_lanternway.py) ----------
     "lanternway_tinderwick": (95, 106, "route"),
-    "lanternway_pearlmoor": (128, 104, "route"),
+    # The Pearlmoor <-> Crossroads route (replaced the lanternway_pearlmoor lane):
+    "wrackline_path": (138, 115, "route"),
+    "sounding_cave": (128, 104, "route"),
+    "lanternfall_road": (118, 95, "route"),
     "lanternway_lowleaf": (144, 79, "route"),
     "lanternway_galehigh": (124, 54, "route"),
     "lanternway_nightreach": (80, 76, "route"),
@@ -153,8 +156,10 @@ ROADS: list[tuple[str, str, str]] = [
     # through its real lane map (build_lanternway.py)
     ("tinderwick", "lanternway_tinderwick", "lane"),
     ("lanternway_tinderwick", "vesper_crossroads", "lane"),
-    ("pearlmoor_quay", "lanternway_pearlmoor", "lane"),
-    ("lanternway_pearlmoor", "vesper_crossroads", "lane"),
+    ("pearlmoor_quay", "wrackline_path", "lane"),
+    ("wrackline_path", "sounding_cave", "lane"),
+    ("sounding_cave", "lanternfall_road", "lane"),
+    ("lanternfall_road", "vesper_crossroads", "lane"),
     ("lowleaf_hollow", "lanternway_lowleaf", "lane"),
     ("lanternway_lowleaf", "vesper_crossroads", "lane"),
     ("galehigh_terraces", "lanternway_galehigh", "lane"),

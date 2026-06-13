@@ -413,6 +413,8 @@ const BUILT_PAYOUTS = {
   net_hand_a: ['route', 12, 192],
   net_hand_b: ['route', 14, 224],
   breakwater_paul: ['route', 15, 240], // S4 optional side-quest bout (the Lifting House)
+  wrackline_drifter: ['route', 18, 288], // Pearlmoor<->Crossroads route (Wrackline Path)
+  lanternfall_warden: ['route', 20, 320], // Pearlmoor<->Crossroads route (Lanternfall Road)
 
   lampwarden_pearlmoor: ['warden', 16, 960],
   glowmoss_keeper_a: ['keeper', 20, 400],

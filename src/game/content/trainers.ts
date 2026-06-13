@@ -287,6 +287,35 @@ export const TRAINERS: TrainerRegistry = {
     music: 'battle-emberfall',
   },
 
+  // Route trainers on the new Pearlmoor <-> Crossroads route (Wrackline Path /
+  // Lanternfall Road) — sight beats in the corridor chokes, route class.
+  wrackline_drifter: {
+    id: 'wrackline_drifter',
+    name: 'DRIFTER OSK',
+    title: 'Wayfarer',
+    party: [
+      { species_id: 26, level: 17 }, // Brinelet — Tide
+      { species_id: 31, level: 18 }, // Lumpin — Tide/Light (ace)
+    ],
+    intro_ref: 'trainer.wrackline_drifter.intro',
+    defeat_ref: 'trainer.wrackline_drifter.defeat',
+    payout: 288, // route 16 × ace 18
+    music: 'battle-emberfall',
+  },
+  lanternfall_warden: {
+    id: 'lanternfall_warden',
+    name: 'LAMP-KEEPER NELL',
+    title: 'Lampwright',
+    party: [
+      { species_id: 31, level: 19 }, // Lumpin — Tide/Light
+      { species_id: 53, level: 20 }, // Oreling — Stone (ace)
+    ],
+    intro_ref: 'trainer.lanternfall_warden.intro',
+    defeat_ref: 'trainer.lanternfall_warden.defeat',
+    payout: 320, // route 16 × ace 20
+    music: 'battle-emberfall',
+  },
+
   // Second Lumenary: Reyl Wash, the Lampwarden of Pearlmoor Quay (Tide) — an old
   // ferryman. Beating him relights the Tide constellation: the player earns the Tide
   // Gleam AND the Tidecall Lantern Gift (granted via reward_abilities). 'crown_south'
@@ -1175,6 +1204,18 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   ],
   'trainer.breakwater_paul_rematch.defeat': [
     { speaker: 'PAUL', text: 'Ha. Still here, still on purpose. Come find me again — the dark lamp keeps regular hours.' },
+  ],
+  'trainer.wrackline_drifter.intro': [
+    { speaker: 'DRIFTER OSK', text: 'Down the wrackline, are you? Long way round to the crossroads. Tide-things in this grass have teeth — let me see if YOU do.' },
+  ],
+  'trainer.wrackline_drifter.defeat': [
+    { speaker: 'DRIFTER OSK', text: 'Hah — teeth and then some. The cave mouth\'s on past the bend. Mind the dark; the sea talks to itself in there.' },
+  ],
+  'trainer.lanternfall_warden.intro': [
+    { speaker: 'LAMP-KEEPER NELL', text: 'I keep the lamps down to the hub. You\'ll not pass an unlit stretch on my watch — nor an untested Wayfarer. Up they go.' },
+  ],
+  'trainer.lanternfall_warden.defeat': [
+    { speaker: 'LAMP-KEEPER NELL', text: 'Brightly done. The crossroads is just below, where all the lit roads meet. Tell the Waykeeper Nell\'s lamps are trimmed.' },
   ],
   'trainer.lampwarden_pearlmoor.intro': [
     { speaker: 'REYL WASH', text: 'Apprentice, is it. I have ferried a hundred Wayfarers across this harbour. Few read the water right.' },

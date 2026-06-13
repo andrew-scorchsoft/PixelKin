@@ -209,7 +209,7 @@ export const CHARTS: readonly ChartEntry[] = [
     // banks the chart (the Tinderwick spoke on the opening errand, usually).
     maps: [
       'lanternway_tinderwick',
-      'lanternway_pearlmoor',
+      'lanternfall_road',
       'lanternway_lowleaf',
       'lanternway_undercut',
       'lanternway_galehigh',

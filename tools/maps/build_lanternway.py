@@ -449,19 +449,10 @@ def main() -> int:
         "dialogue_ref": "npc.lane_fenn_hint",
         "hidden_when_flag": "flag:has_starter"})
 
-    # 2 · Pearlmoor spoke — leaves the hub east, bends SOUTH-EAST down to the
-    # quay: enter high on the W edge, leave low on the E.
-    maps.append(build_h_lane(
-        map_id="lanternway_pearlmoor", display="Lanternway · Pearlmoor Spoke",
-        seed=62, w_rows=(5, 6), e_rows=(12, 13), bend_x=9,
-        w_warps=[W_("to_crossroads", 0, 5, "vesper_crossroads", (19, 8), "left"),
-                 W_("to_crossroads_s", 0, 6, "vesper_crossroads", (19, 9), "left")],
-        e_warps=[W_("to_pearlmoor", 23, 12, "pearlmoor_quay", (1, 12), "right"),
-                 W_("to_pearlmoor_s", 23, 13, "pearlmoor_quay", (1, 12), "right")],
-        sign_id="lanternway_pearlmoor", cache_id="lane_pearlmoor",
-        cache_at=(19, 4), pocket=(17, 3, 20, 5),
-        accent="pond", lamps=[(4, 3), (12, 8), (20, 10)], trees=[(15, 1), (4, 13)],
-        owed=owed))
+    # 2 · (RETIRED) The Pearlmoor spoke was replaced by the Wrackline Path ->
+    # Sounding Cave -> Lanternfall Road route (build_wrackline_path.py /
+    # build_sounding_cave.py / build_lanternfall_road.py). The crossroads east
+    # road now warps to lanternfall_road (gleam:tide-gated, same as the spoke was).
 
     # 3 · Lowleaf spoke — the INTERLEAVED leg (player-suggested, 2026-06): out
     # of the hub east along the low ground, L UP the east side to a cliff

@@ -124,6 +124,26 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/pearlmoor-quay-b.webp',
     ],
   },
+  // The Pearlmoor <-> Crossroads route (replaces the bare lanternway_pearlmoor
+  // lane): Wrackline Path -> the Sounding Cave -> Lanternfall Road.
+  wrackline_path: {
+    json: 'assets/maps/wrackline_path.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/dimglass-coast-a.mp3',
+  },
+  sounding_cave: {
+    json: 'assets/maps/sounding_cave.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/lowleaf-hollow-c.mp3',
+  },
+  lanternfall_road: {
+    json: 'assets/maps/lanternfall_road.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/dimglass-coast-a.mp3',
+  },
   // The Causeway Bell's walk: the foot causeway out to the Moor-bell shrine
   // (gated on the netmender's rope; reuses Pearlmoor's music + backdrops).
   pearlmoor_breakwater: {
@@ -219,12 +239,6 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   // warp carries the spoke's Gleam gate. Built by tools/maps/build_lanternway.py.
   lanternway_tinderwick: {
     json: 'assets/maps/lanternway_tinderwick.json',
-    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
-    kind: 'route',
-    music: 'assets/audio/music/tinderwick-a.mp3',
-  },
-  lanternway_pearlmoor: {
-    json: 'assets/maps/lanternway_pearlmoor.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'route',
     music: 'assets/audio/music/tinderwick-a.mp3',

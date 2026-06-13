@@ -148,7 +148,10 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // The Lanternway spokes — real lane maps (2026-06 topology fix): each spoke
     // is a short bending country lane, so the hub's roads radiate compass-true.
     { map_id: 'lanternway_tinderwick', region: 'outer' },
-    { map_id: 'lanternway_pearlmoor', region: 'outer' },
+    // The Pearlmoor <-> Crossroads route (replaced the lanternway_pearlmoor lane).
+    { map_id: 'wrackline_path', region: 'south' },
+    { map_id: 'sounding_cave', region: 'south' },
+    { map_id: 'lanternfall_road', region: 'south' },
     { map_id: 'lanternway_lowleaf', region: 'outer' },
     { map_id: 'lanternway_undercut', region: 'outer' }, // the cave beneath the Lowleaf spoke (its two mouths)
     { map_id: 'lanternway_galehigh', region: 'outer' },
@@ -282,8 +285,10 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // standing Lowleaf pattern); the town side stays open (return compression).
     { from_map: 'tinderwick', to_map: 'lanternway_tinderwick', via_warp: 'to_crossroads', bidirectional: true },
     { from_map: 'lanternway_tinderwick', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
-    { from_map: 'pearlmoor_quay', to_map: 'lanternway_pearlmoor', via_warp: 'to_crossroads', bidirectional: true },
-    { from_map: 'lanternway_pearlmoor', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
+    { from_map: 'pearlmoor_quay', to_map: 'wrackline_path', via_warp: 'to_crossroads', bidirectional: true },
+    { from_map: 'wrackline_path', to_map: 'sounding_cave', via_warp: 'to_cave', bidirectional: true },
+    { from_map: 'sounding_cave', to_map: 'lanternfall_road', via_warp: 'to_lanternfall', bidirectional: true },
+    { from_map: 'lanternfall_road', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
     { from_map: 'lowleaf_hollow', to_map: 'lanternway_lowleaf', via_warp: 'to_crossroads', bidirectional: true },
     { from_map: 'lanternway_lowleaf', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
     // the Under-Lane's two mouths: lower road in, upper shelf out (the

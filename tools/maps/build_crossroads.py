@@ -196,13 +196,15 @@ m = {
          "to_map": "lanternway_tinderwick", "to": {"tx": 23, "ty": 6}, "facing": "left", "transition": "fade"},
         {"id": "to_tinderwick_n", "at": {"tx": 0, "ty": CY - 1}, "trigger": "step_on",
          "to_map": "lanternway_tinderwick", "to": {"tx": 23, "ty": 5}, "facing": "left", "transition": "fade"},
-        # gleam:tide-gated (the per-town spoke rule): the quay is first reached
-        # by the coast road; the lane home is the Tide Gleam's reward.
+        # gleam:tide-gated (the per-town spoke rule): the quay is first reached by
+        # the coast road; the route home (Lanternfall Road -> Sounding Cave ->
+        # Wrackline Path -> Pearlmoor) is the Tide Gleam's reward. (Land 1 tile IN
+        # from Lanternfall's west-edge return warp.)
         {"id": "to_pearlmoor", "at": {"tx": W - 1, "ty": CY}, "trigger": "step_on",
-         "to_map": "lanternway_pearlmoor", "to": {"tx": 0, "ty": 6}, "facing": "right",
+         "to_map": "lanternfall_road", "to": {"tx": 1, "ty": 23}, "facing": "right",
          "requires_flag": "gleam:tide", "blocked_ref": "npc.waykeeper_pearlmoor_gate", "transition": "fade"},
         {"id": "to_pearlmoor_n", "at": {"tx": W - 1, "ty": CY - 1}, "trigger": "step_on",
-         "to_map": "lanternway_pearlmoor", "to": {"tx": 0, "ty": 5}, "facing": "right",
+         "to_map": "lanternfall_road", "to": {"tx": 1, "ty": 22}, "facing": "right",
          "requires_flag": "gleam:tide", "blocked_ref": "npc.waykeeper_pearlmoor_gate", "transition": "fade"},
         # the Lowleaf spoke (east-north) — wakes with the Verdant Gleam
         # (graph.ts declares it ungated; the warp-level flag mirrors the South

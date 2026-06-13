@@ -318,9 +318,13 @@ m = {
          "to_map": "pearlmoor_breakwater", "to": {"tx": 6, "ty": 0}, "facing": "down",
          "requires_flag": "flag:q_south_has_rope", "blocked_ref": "npc.netmender_gate",
          "transition": "fade"},
-        # The Lanternway west to Vesper Crossroads (the hub; graph.ts spoke).
+        # The Lanternway west spoke -> lanternway_pearlmoor -> Vesper Crossroads
+        # (topology fix, mirrored from the shipped JSON). Land one tile IN from the
+        # lane's east-edge return warp (23,12) so a player who turns straight back
+        # RIGHT steps onto it and re-enters town — landing ON the edge warp left
+        # "press right to go home" blocked by the map edge (the re-entry bug).
         {"id": "to_crossroads", "at": {"tx": 0, "ty": 12}, "trigger": "step_on",
-         "to_map": "vesper_crossroads", "to": {"tx": 19, "ty": 9}, "facing": "left",
+         "to_map": "lanternway_pearlmoor", "to": {"tx": 22, "ty": 12}, "facing": "left",
          "transition": "fade"},
         # East road to Saltreach Fen (East region) — inert tease until authored.
         {"id": "to_fen", "at": {"tx": W - 1, "ty": 12}, "trigger": "step_on",
