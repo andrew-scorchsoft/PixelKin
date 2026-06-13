@@ -111,6 +111,10 @@ type CutsceneStepBase =
   | { op: 'fade'; dir: 'out' | 'in'; ms?: number }
   | { op: 'setFlag'; flag: WorldFlag; value?: boolean }
   | { op: 'giveStarter' } // run StarterSelect, add chosen kin to the party
+  // Hand the player a SPECIFIC kin at a set level (a gift kin — e.g. Georgina's
+  // dragon-cat kitten). Joins the party, or overflows to the Hearth when it's
+  // full, and registers in the dex. Unlike giveStarter there is no chooser.
+  | { op: 'giveKin'; kin: number; level: number }
   | { op: 'giveItem'; item: string; count?: number }
   // Grant `item` ONLY if the player holds none, narrating `text` when it grants
   // (a quiet no-op otherwise). The safety-net op for must-have set-piece items —

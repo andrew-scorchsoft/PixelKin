@@ -745,7 +745,7 @@ CURATED_AREAS = {
 # tier/rarity alone wouldn't mark them scripted. #148 Lampling is C1
 # "Lampling's Trail" at the Vesper Crossroads — its old umbral_spire row was a
 # stale open-table teaser from before the trail was built, dropped here.
-SCRIPTED_KIN = {"lampling", "chickenpig"}
+SCRIPTED_KIN = {"lampling", "chickenpig", "gloampurr"}
 
 # Wave-2 signature moves (gen_moves.py): one per elemental apex line. Inserted
 # into the owner's learnset late (the awe-curve payoff); excluded from the
@@ -867,6 +867,25 @@ CANON = {
             "silhouette": "A stout, cheerful piglet standing four-square: big upright pig ears, round cream body, short trotters. A bright red rooster's comb crests its head; a single red-feathered wing folds over its shoulder; brown flight feathers tuck beneath a great backswept spray of teal-and-green sickle tail-feathers. Smiling snout, kind olive eyes. At 64px the silhouette is pig-with-rooster-tail, unmistakable.",
             "palette": "Warm cream hide; bright comb-red crest and rust-red wing patch; the tail a layered fan of deep teal, sea-green and one brown under-feather; pale bone snout; soft ink (#1a1430) outlines.",
             "direction": "Half farm-pig, half dawn-rooster, wholly convinced. Sturdy and funny but DIGNIFIED — it is not a joke to itself. The comb and tail-fan read proud, the smile patient: a creature that has decided morning is coming and is simply early.",
+        },
+    },
+    # #164 Gloampurr — the Lunar/Solar dragon-cat of the optional East side quest
+    # "The Sunniest House in the Dark" (Georgina's ace + the kitten she gifts).
+    # SCRIPTED_KIN (no open-table rows). Stats PINNED (a fragile mirror-axis glass
+    # cannon — high spa/spe, low bulk); ability/dex/art/learnset pinned too.
+    "gloampurr": {
+        "stats": {"hp": 60, "atk": 50, "def": 55, "spa": 110, "spd": 55, "spe": 88},
+        "ability": "daybringer", "hidden_ability": "nightsight",
+        "entry": "A small winged cat the colour of a violet dusk, with a coal of warm gold burning low in its chest. It does not fear the dark — it curls up in the deepest of it and purrs until the gloom glows back, carrying its own little sunrise wherever the night is thickest.",
+        "category": "Dusklight Cat Kin",
+        "size_cm": 42, "weight_kg": 9,
+        "levelup": [(1, "quick_jab"), (1, "dream_wisp"), (5, "glint_ray"),
+                    (9, "swift_step"), (13, "moonbeam"), (18, "daybeam"),
+                    (24, "bask"), (30, "eclipse_wave"), (36, "sunburst_nova")],
+        "art": {
+            "silhouette": "A small, lithe winged cat sitting upright on its haunches, dragon-touched: pointed feline ears, a slim cat's muzzle, large round eyes, four neat paws and a long tail that ends in a soft tuft. From its shoulders rise a pair of small membranous dragon wings, half-folded like a cloak; faint ridge-scales run the spine and tail. At 64px the silhouette reads cat-first, dragon-second — a kitten that grew wings.",
+            "palette": "Deep violet-and-plum fur shading to near-black at the wingtips and tail; a warm gold star-glow on the chest, the inner wings and the eyes, like a held-back sunrise; pale lilac muzzle and paw-tips; soft ink (#1a1430) outlines. Purple is the body, gold is the light it carries.",
+            "direction": "Sunshine in goth clothing. The pose is content and unbothered — a happy little creature wholly at home in the dark, head up, eyes warm, a small proud arch to the wings. Gothic-cosy, never spooky: it LIKES the night, and it brought a light.",
         },
     },
 }

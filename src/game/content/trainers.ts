@@ -1056,6 +1056,28 @@ export const TRAINERS: TrainerRegistry = {
     music: 'battle-boss-eclipse',
     ai: 'smart',
   },
+
+  // GEORGINA, the Cat-keeper — the optional East side-quest boss (gloamwood_dell,
+  // post-Verdant). A bubbly sunshine-goth who battles with cats and one dragon-cat;
+  // pitched a touch above Sable's Lowleaf band (ace 27). Her ace Gloampurr is the
+  // kitten she then gifts the player. No reward flags — her script handles the gift
+  // and quest closure; payout at the rival rate for a named optional bout.
+  trainer_georgina: {
+    id: 'trainer_georgina',
+    name: 'GEORGINA',
+    title: 'the Cat-keeper',
+    sprite: 'georgina',
+    party: [
+      { species_id: 18, level: 24 }, // Hearthkit — Ember (a hearth-cat)
+      { species_id: 19, level: 25 }, // Warmantis — Ember/Light (the grown fire-cat)
+      { species_id: 164, level: 27 }, // Gloampurr — Lunar/Solar dragon-cat (ace)
+    ],
+    intro_ref: 'trainer.georgina.intro',
+    defeat_ref: 'trainer.georgina.defeat',
+    payout: 648, // rival 24 × ace 27
+    music: 'battle-emberfall',
+    ai: 'smart',
+  },
 };
 
 /** Intro/defeat dialogue for trainers, kept beside the roster they belong to. */
@@ -1117,6 +1139,13 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   'trainer.lampwarden_pearlmoor.defeat': [
     { speaker: 'REYL WASH', text: 'Well rowed, Wayfarer. The Tide constellation answers you — see it shiver awake over the masts.' },
     { speaker: 'REYL WASH', text: 'The Tide Gleam is yours, and with it the Tidecall. Step to the shallows now; the moon-water will part where it would not before.' },
+  ],
+  'trainer.georgina.intro': [
+    { speaker: 'GEORGINA', portrait: 'georgina', expr: 'delighted', text: "Oh, you brought my Pim home — and you've kin of your OWN, look at them! Right. There's only one proper way to say thank you to a fellow keeper." },
+    { speaker: 'GEORGINA', portrait: 'georgina', expr: 'sunny', text: "A friendly bout! No stakes, all cuddles after. My babies have been moping in the dark all week and a good fuss is EXACTLY what they need. Mittens — wakey-wakey, sweetheart!" },
+  ],
+  'trainer.georgina.defeat': [
+    { speaker: 'GEORGINA', portrait: 'georgina', expr: 'delighted', text: "EEE! Did you SEE them?! Lost AND adorable — best of both, that's my motto. You're a natural, you know. Come inside, I've got something for you." },
   ],
   'trainer.lampwarden_lowleaf.intro': [
     { speaker: 'SABLE QUILL', text: 'I\'m better at this part than the talking part. My moss thinks so too.' },

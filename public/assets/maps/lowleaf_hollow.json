@@ -358,6 +358,23 @@
       },
       "facing": "down",
       "transition": "door"
+    },
+    {
+      "id": "to_gloamwood",
+      "at": {
+        "tx": 26,
+        "ty": 2
+      },
+      "trigger": "step_on",
+      "to_map": "gloamwood_dell",
+      "to": {
+        "tx": 9,
+        "ty": 12
+      },
+      "facing": "up",
+      "requires_flag": "flag:q_east_georgina",
+      "blocked_ref": "sign.lowleaf_gloamwood",
+      "transition": "fade"
     }
   ],
   "triggers": [
@@ -1267,6 +1284,19 @@
       "dialogue_ref": "script.post_letter_lowleaf",
       "requires_flag": "flag:q_post_letters",
       "hidden_when_flag": "flag:q_post_letter_lowleaf"
+    },
+    {
+      "id": "georgina_hook",
+      "at": {
+        "tx": 12,
+        "ty": 16
+      },
+      "facing": "down",
+      "sprite": "npc_old_woman",
+      "movement": "look_around",
+      "dialogue_ref": "script.georgina_hook",
+      "requires_flag": "gleam:verdant",
+      "hidden_when_flag": "flag:q_east_georgina"
     }
   ],
   "gates": [],

@@ -229,7 +229,7 @@ python3 -m venv venv && ./venv/bin/pip install -r requirements.txt   # one-time
 | Full walkthrough / user journey | [`docs/world/walkthrough/`](docs/world/walkthrough/README.md) |
 | Soundtrack plan | [`docs/world/music-direction.md`](docs/world/music-direction.md) |
 | Mechanics & balance (start here) | [`docs/mechanics/00-overview.md`](docs/mechanics/00-overview.md) |
-| The full dex (all 162 kin) | [`docs/mechanics/dex.md`](docs/mechanics/dex.md) |
+| The full dex (all 164 kin) | [`docs/mechanics/dex.md`](docs/mechanics/dex.md) |
 | Art & sprite standards | [`docs/art-style.md`](docs/art-style.md) |
 
 ## Project layout

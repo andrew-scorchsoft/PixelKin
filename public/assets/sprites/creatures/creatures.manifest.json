@@ -4563,6 +4563,34 @@
         "width": 96,
         "height": 96
       }
+    },
+    "164": {
+      "slug": "gloampurr",
+      "front": {
+        "path": "assets/sprites/creatures/164_gloampurr/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/164_gloampurr/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/164_gloampurr/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/164_gloampurr/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/164_gloampurr/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
     }
   }
 }

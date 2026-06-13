@@ -153,7 +153,7 @@ go digging on every task.
 - **Stats — the genre's six:** hp/atk/def/spa/spd/spe. Power is costed against a
   shared budget (EPS) and **empirically balanced** by a Monte Carlo sim — all
   types land 46.7–53.3% win-rate. (`docs/mechanics/02-stats-and-balance.md`)
-- **Roster:** **163 kin** — the **151** curated from ~463 concepts via a panel-scored
+- **Roster:** **164 kin** — the **151** curated from ~463 concepts via a panel-scored
   pipeline (the ~312 cuts are archived as an idea bank), **plus appended additions**
   (later ids never renumber the original 1–151): the third starter line (#152–#153),
   the three starter middle stages (#154–#156), the apex kindlings #157 **Pharolux**
@@ -161,8 +161,10 @@ go digging on every task.
   legendary trio #160 **Gloamber** / #161 **Noctilune** / #162 **Erstmorn** (optional
   set-piece catches with failure cooldowns; sites + spec in
   `docs/world/walkthrough/07-the-three.md` — sites, unlock chains, scripts and the
-  `battle-hours`/`sting-hour` audio are BUILT, 2026-06), and #163 **Chickenpig**
-  (S4's scripted epilogue catch at the Pearlmoor breakwater). Moves: **≤4 per kin**
+  `battle-hours`/`sting-hour` audio are BUILT, 2026-06), #163 **Chickenpig**
+  (S4's scripted epilogue catch at the Pearlmoor breakwater), and #164 **Gloampurr**
+  (the Lunar/Solar "sunshine-goth" dragon-cat of the optional East side quest "The
+  Sunniest House in the Dark"; Georgina's ace + the kitten she gifts you). Moves: **≤4 per kin**
   from a **125-move** shared pool (wave 2: full phys/spec ladders per type + 13 signature
   moves) + 28 abilities. (`docs/mechanics/dex.md` for the readable dex)
 - **Starters:** the founding trio is **complete** and every starter is a **three-stage
@@ -520,7 +522,15 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   bit `player_indi`). The `human-overworld` template in `sprite-specs.json` now spells out each
   viewpoint (down=full face, left=left profile, right=mirror, **up=back of head in EVERY column
   incl. walk frames, no face**). After regenerating a walk sheet, eyeball the 4×4 grid and
-  confirm the up row shows the back of the head in all 4 cells before repacking.
+  confirm the up row shows the back of the head in all 4 cells before repacking. **The
+  generator now ENFORCES the side mirror**: `generate_sprite.py` replaces the RIGHT row with the
+  exact horizontal mirror of the LEFT row (image gen rarely draws true mirror profiles, which
+  made the side walk face the wrong way — the "georgina faces you walking sideways" bug); pass
+  `--keep-side-rows` to opt out for a hand-drawn opposite-profile sheet. `validate_sprites.py`
+  verifies walk sheets (marked by `viewpoint_rows` in the spec): it ERRORs on near-duplicate rows
+  and WARNs when the right row isn't the left's mirror. (Whether a side row is a true profile vs a
+  front view can't be told apart by pixels across characters — the deterministic mirror is the
+  guarantee, the check is the verification.)
 - **Fills tile into a grid unless vignette-flattened.** `deborder` fixes only the outer
   ring; the cure is `flatten_vignette` (fills) + `flatten_axis` (edges, along the tiling
   axis), edge variants by flip (never roll), edges value-matched to their fill. Interior
@@ -877,6 +887,16 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   2026-06): the step plays only while that flag is held, silently skipped otherwise — the
   data conditional for OPTIONAL colour (Wren's ribbon payoff at Nightreach lamp 6 is the
   worked example). Never guard progression steps (a skipped setFlag/battle/giveItem is a bug).
+- **`giveKin {kin, level}` gifts a SPECIFIC kin (no chooser)** — the gift-kin op (2026-06,
+  `WorldScene.onGiveKin`): joins the party at `level`, or overflows to the Hearth (`box`) when
+  the party is full, and registers in the dex. Distinct from `giveStarter` (opens StarterSelect)
+  and `legendaryBattle` (a catchable set-piece). Worked example: Georgina gifts the Gloampurr
+  kitten in `script.georgina_battle`. The optional East side quest "The Sunniest House in the
+  Dark" (E4) lives in `gloamwood_dell` + `georgina_cottage` (off lowleaf_hollow's NE path-mouth,
+  gated `flag:q_east_georgina`, set by the hollow-neighbour hook post-Verdant); its builders are
+  `tools/maps/build_gloamwood_dell.py` / `build_georgina_cottage.py`. Georgina's sprite/portrait
+  fall back to placeholders until packed (purple boxes); the dragon-cat #164 falls back to its
+  type-tinted creature placeholder.
 - **The Gleam cadence is minor→major.** A relit constellation is the emotional payoff: hold a
   `silence`, bloom a warm/cool `tint` + the lamp sfx, fire `gleam`, then crossfade to the
   festival swell (`gleam-emotional`). A Gleam is *belonging*, not a trophy — don't hand it over
