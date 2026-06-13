@@ -237,6 +237,21 @@
       },
       "facing": "down",
       "transition": "door"
+    },
+    {
+      "id": "to_lumenary_e",
+      "at": {
+        "tx": 11,
+        "ty": 8
+      },
+      "trigger": "step_on",
+      "to_map": "cinderhead_lumenary",
+      "to": {
+        "tx": 8,
+        "ty": 10
+      },
+      "facing": "down",
+      "transition": "door"
     }
   ],
   "triggers": [

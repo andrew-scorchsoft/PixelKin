@@ -2339,6 +2339,23 @@
       "blocked_ref": "door.locked_lumenary"
     },
     {
+      "id": "to_lumenary_e",
+      "at": {
+        "tx": 20,
+        "ty": 7
+      },
+      "trigger": "step_on",
+      "to_map": "tinderwick_lumenary",
+      "to": {
+        "tx": 8,
+        "ty": 10
+      },
+      "facing": "down",
+      "requires_flag": "flag:has_starter",
+      "transition": "door",
+      "blocked_ref": "door.locked_lumenary"
+    },
+    {
       "id": "to_crossroads",
       "at": {
         "tx": 27,

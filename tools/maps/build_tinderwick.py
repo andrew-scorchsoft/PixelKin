@@ -230,9 +230,13 @@ m = {
         # Shop door — interact on the shop's door-art tile (col 2).
         {"id": "to_shop", "at": {"tx": shop_door[0], "ty": shop_door[1]}, "trigger": "interact",
          "to_map": "tinderwick_shop", "to": {"tx": 7, "ty": 8}, "facing": "down", "transition": "door"},
-        # Lumenary door — interact on the arch door-art tile (col 2); col 3 is the twin
-        # walkable approach tile. Requires the player to hold a starter (soft gate).
+        # Lumenary GRAND DOUBLE DOOR — the arch straddles cols 2-3, so BOTH art tiles
+        # warp in. One warp alone leaves the other half of the arch a solid wall (the
+        # "leftmost tile only lets you in" bug). Soft-gated on holding a starter.
         {"id": "to_lumenary", "at": {"tx": lum_door[0], "ty": lum_door[1]}, "trigger": "interact",
+         "to_map": "tinderwick_lumenary", "to": {"tx": 8, "ty": 10}, "facing": "down",
+         "requires_flag": "flag:has_starter", "transition": "door"},
+        {"id": "to_lumenary_e", "at": {"tx": lum_door_r[0], "ty": lum_door_r[1]}, "trigger": "interact",
          "to_map": "tinderwick_lumenary", "to": {"tx": 8, "ty": 10}, "facing": "down",
          "requires_flag": "flag:has_starter", "transition": "door"},
         # The Lanternway east to Vesper Crossroads (the hub; graph.ts spoke).

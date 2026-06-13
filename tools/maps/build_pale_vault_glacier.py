@@ -239,6 +239,13 @@ pt.building(m, path_for_aprons, W, H, oid="lumenary", sprite="pale_vault_lumenar
             to_map="pale_vault_lumenary", to=(8, 11))
 m["warps"][-1].update({"id": "to_lumenary", "requires_flag": "flag:has_starter",
                        "blocked_ref": "door.locked_lumenary"})
+# GRAND DOUBLE DOOR: the arch straddles cols 2-3, so the twin art tile (col 2)
+# warps in too — without it that half of the arch reads as a door but is solid wall.
+m["warps"].append({"id": "to_lumenary_e", "at": {"tx": 13, "ty": 8},
+                   "trigger": "step_on", "to_map": "pale_vault_lumenary",
+                   "to": {"tx": 8, "ty": 11}, "facing": "up",
+                   "requires_flag": "flag:has_starter",
+                   "blocked_ref": "door.locked_lumenary", "transition": "door"})
 # the inn (rest point) west, a home east
 pt.building(m, path_for_aprons, W, H, oid="inn", sprite="pale_vault_inn",
             at=(3, 4), overhang=2, door_col=2,
