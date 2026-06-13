@@ -474,7 +474,7 @@
       "facing": "down",
       "sprite": "lifter_rod",
       "movement": "static",
-      "dialogue_ref": "npc.booji_rod"
+      "dialogue_ref": "script.booji_rod"
     },
     {
       "id": "andy_hook",
@@ -527,18 +527,6 @@
       "requires_flag": "flag:q_south_booji_done"
     },
     {
-      "id": "abdul_pre",
-      "at": {
-        "tx": 8,
-        "ty": 4
-      },
-      "facing": "down",
-      "sprite": "lifter_abdul",
-      "movement": "static",
-      "dialogue_ref": "npc.booji_abdul_pre",
-      "hidden_when_flag": "flag:q_south_booji"
-    },
-    {
       "id": "abdul_clue",
       "at": {
         "tx": 8,
@@ -548,7 +536,6 @@
       "sprite": "lifter_abdul",
       "movement": "static",
       "dialogue_ref": "script.booji_abdul",
-      "requires_flag": "flag:q_south_booji",
       "hidden_when_flag": "flag:q_south_booji_abdul"
     },
     {
@@ -564,18 +551,6 @@
       "requires_flag": "flag:q_south_booji_abdul"
     },
     {
-      "id": "sid_pre",
-      "at": {
-        "tx": 11,
-        "ty": 6
-      },
-      "facing": "left",
-      "sprite": "lifter_sid",
-      "movement": "static",
-      "dialogue_ref": "npc.booji_sid_pre",
-      "hidden_when_flag": "flag:q_south_booji_abdul"
-    },
-    {
       "id": "sid_clue",
       "at": {
         "tx": 11,
@@ -585,7 +560,6 @@
       "sprite": "lifter_sid",
       "movement": "static",
       "dialogue_ref": "script.booji_sid",
-      "requires_flag": "flag:q_south_booji_abdul",
       "hidden_when_flag": "flag:q_south_booji_sid"
     },
     {

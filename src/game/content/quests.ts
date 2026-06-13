@@ -63,10 +63,10 @@ export const QUESTS: QuestRegistry = [
     id: 's4_booji_wooji',
     name: 'The Booji-Wooji Man',
     region: 'south',
-    giver: 'Andy at the Lifting House',
-    blurb: 'The quay\'s old strongman has a name nobody explains and a story nobody can check. Follow what the Lifting House knows out to the dark end of the breakwater.',
+    giver: 'The Lifting House crew (Pearlmoor quay)',
+    blurb: 'The quay\'s old strongman has a name nobody explains and a story nobody can check. Any of the Lifting House lifters will set you on him — then walk to the dark end of the breakwater, past the bell.',
     start_flag: 'flag:q_south_booji',
-    stage_flags: ['flag:q_south_booji_abdul', 'flag:q_south_booji_sid', 'flag:q_south_booji_met'],
+    stage_flags: ['flag:q_south_booji_met'],
     done_flag: 'flag:q_south_booji_done',
   },
 

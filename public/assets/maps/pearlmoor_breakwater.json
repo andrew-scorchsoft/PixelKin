@@ -1249,7 +1249,8 @@
       "activation": "interact",
       "ref": "script.booji_chickenpig",
       "requires_flag": "flag:q_south_booji_done",
-      "hidden_when_flag": "flag:chickenpig_caught"
+      "hidden_when_flag": "flag:chickenpig_caught",
+      "blocked_ref": "npc.dark_lamp_cold"
     },
     {
       "id": "chickenpig_after",
@@ -1351,7 +1352,7 @@
       "sprite": "booji_paul",
       "movement": "static",
       "dialogue_ref": "script.booji_paul",
-      "requires_flag": "flag:q_south_booji_sid",
+      "requires_flag": "flag:q_south_booji",
       "hidden_when_flag": "flag:q_south_booji_met"
     },
     {

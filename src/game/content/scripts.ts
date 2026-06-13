@@ -323,6 +323,8 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'ABDUL', text: 'I bench beside that man three dusks a week. In two years he has told me four stories about himself. All of them were different. All of them were true. I can\'t explain that.' },
     { op: 'say', speaker: 'ABDUL', text: 'Once he asked me: do you carry your lamp, or does your lamp carry you? I laughed. Then I didn\'t sleep.' },
     { op: 'say', speaker: 'ABDUL', text: 'He walks the breakwater after the bell goes quiet. Past the shrine, right out where the boards run out. Sid saw him out there. Sid won\'t say what he saw. Ask him anyway.' },
+    // Any lifter can start you on Paul now (q_south_booji), so the order is free.
+    { op: 'setFlag', flag: 'flag:q_south_booji' },
     { op: 'setFlag', flag: 'flag:q_south_booji_abdul' },
   ],
   'script.booji_sid': [
@@ -330,6 +332,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'SID', text: '...Saw him at the breakwater\'s end. Standing at a lamp that\'s gone dark. Not lighting it.' },
     { op: 'say', speaker: 'SID', text: 'A lamp-tender\'s country, and he just... let it sit dark. Said the dark needs somewhere to sit too, or it gets ideas.' },
     { op: 'say', speaker: 'SID', text: '...Then he pressed the mooring-stone. The BIG one. Set it down soft as a loaf. Go see him. I\'m not going back out there.' },
+    { op: 'setFlag', flag: 'flag:q_south_booji' },
     { op: 'setFlag', flag: 'flag:q_south_booji_sid' },
   ],
   // The meeting, out on the dark boards. Paul is OPTIONAL strength (route-class
@@ -367,6 +370,18 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'legendaryBattle', name: 'chickenpig', kin: 163, level: 16, caughtFlag: 'flag:chickenpig_caught', cooldownBattles: 2, cooldownRef: 'npc.chickenpig_shy' },
     { op: 'say', if_flag: 'flag:chickenpig_caught', speaker: 'PAUL', text: 'Ha! There it goes. When the dawn does come, that one gets to say it told us so. Keep it somewhere it can see the sky.' },
     { op: 'narrate', if_flag: 'flag:chickenpig_caught', text: 'From inside your lamp, very softly, comes a sound that is half crow and half contented oink. Paul looks more pleased than he will ever admit.' },
+  ],
+  // Rod is a quest STARTER too (any of Andy/Abdul/Sid/Rod opens Paul). His spiel
+  // already points to Paul and seeds the Chickenpig, so talking to him sets the
+  // quest-active flag. Single stage — he keeps his patter every visit.
+  'script.booji_rod': [
+    { op: 'say', speaker: 'ROD', text: 'YEAH! There it goes — clean, and over the head. A hundred and twenty kilos of harbour-stone, friend, and I am SEVENTY-TWO summers old. Nothing but a peanut.' },
+    { op: 'say', speaker: 'ROD', text: 'Don\'t gawp. I keep an allotment up the hill — marrows, leeks, a turnip that ought to pay rent. You haul wet earth from one dusk to the next, the stones come up like loaves.' },
+    { op: 'say', speaker: 'ROD', text: 'My Anth says I love that allotment more than I love her. I tell her there is NO contest. ...I am careful never to say which way. That\'s a joke, mind — don\'t you go telling Anth.' },
+    { op: 'say', speaker: 'ROD', text: 'One thing out there I cannot beat: the squirrels. Thieving little stone-heads. I can press a mooring-block overhead and I cannot keep ONE off my marrows. There\'s a lesson in that. Seventy-two years and I have not found it.' },
+    { op: 'say', speaker: 'ROD', text: 'You\'ll be after the old man. PAUL. He\'s not in the house, lad — he\'s out past the bell, the very end of the breakwater, where the boards give out. Stood at a lamp he won\'t light. Go and find him. He\'s worth the walk.' },
+    { op: 'say', speaker: 'ROD', text: 'And keep your lamp up out there. Paul\'s got... company at that dark lamp. Something I\'ve no name for — and I have named every kin on this coast. Crows at the black like the morning\'s already its idea. Daft little thing. ...You bring it home, if it\'ll have you.' },
+    { op: 'setFlag', flag: 'flag:q_south_booji' },
   ],
   'script.booji_andy_done': [
     { op: 'say', speaker: 'ANDY', text: 'You FOUND him? You fought— he gave you the— show me. No! Don\'t show me. If I see it I\'ll want the story, and he\'d never forgive me for getting it second-hand.' },
