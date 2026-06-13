@@ -226,6 +226,23 @@
       "blocked_ref": "door.locked_lumenary"
     },
     {
+      "id": "to_lumenary_e",
+      "at": {
+        "tx": 13,
+        "ty": 8
+      },
+      "trigger": "step_on",
+      "to_map": "pale_vault_lumenary",
+      "to": {
+        "tx": 8,
+        "ty": 11
+      },
+      "facing": "up",
+      "transition": "door",
+      "requires_flag": "flag:has_starter",
+      "blocked_ref": "door.locked_lumenary"
+    },
+    {
       "id": "to_inn",
       "at": {
         "tx": 5,

@@ -61,7 +61,7 @@ import type { WorldSnapshot } from '@game/data/world/types';
 import { MAP_REGISTRY } from '@game/data/world/maps';
 import { LamplightMask } from '@game/systems/world/LamplightMask';
 import { VESPERHOLM_GRAPH } from '@game/data/world/graph';
-import type { AbilityId, Facing, Warp, EventTrigger, NpcPlacement, MapObject, EncounterTerrain } from '@game/data/world/types';
+import type { AbilityId, Facing, Warp, EventTrigger, NpcPlacement, MapObject, EncounterTerrain, WorldFlag } from '@game/data/world/types';
 
 export interface WorldSceneData {
   mapId: string;
@@ -125,6 +125,8 @@ export class WorldScene extends Phaser.Scene {
   private respawn?: { map: string; tx: number; ty: number; facing: Facing };
   /** Glowing rest-lanterns hung over heal-entrance doors (cleared on teardown). */
   private healMarkers: Phaser.GameObjects.GameObject[] = [];
+  /** Constellation crests hung over Lumenary doors (cleared on teardown). */
+  private crestMarkers: Phaser.GameObjects.GameObject[] = [];
 
   constructor() {
     super('World');
@@ -216,6 +218,7 @@ export class WorldScene extends Phaser.Scene {
       this.spawnNpcs();
       this.refreshObjects();
       this.markHealEntrances();
+      this.markLumenaryCrests();
       // Dark terrain (spine §5): partial dusk beyond the vesperlamp's circle.
       // Additive only — the main lane is lit and the dusk is never opaque.
       if (MAP_REGISTRY[mapId]?.dark) {
@@ -359,10 +362,68 @@ export class WorldScene extends Phaser.Scene {
     return c;
   }
 
+  /**
+   * Every Lumenary wears a constellation crest over its door — our answer to the
+   * genre's labelled gyms, drawn the same way region to region so the building
+   * reads as a Lumenary at a glance. Keyed by the building object's sprite, since
+   * each region's hall art is unique: an element-coloured roundel (its warden's
+   * type) holding a four-point star, centred on that hall's door (the doors are
+   * not all centred — Lowleaf's is drawn in 3/4 view, Cinderhead's off to one
+   * side). The crest glows warm once the valley's constellation is relit and sits
+   * dim until then, so the sky-map doubles as a "Gleam still waiting here" cue.
+   */
+  private static readonly LUMENARY_CRESTS: Record<
+    string,
+    { element: string; gleam: WorldFlag; doorCol: number; off: number }
+  > = {
+    tinderwick_lumenary: { element: 'Ember', gleam: 'gleam:ember', doorCol: 3, off: 1.5 },
+    pearlmoor_lumenary: { element: 'Tide', gleam: 'gleam:tide', doorCol: 3, off: 1.6 },
+    lowleaf_lumenary: { element: 'Verdant', gleam: 'gleam:verdant', doorCol: 2, off: 1.4 },
+    cinderhead_lumenary: { element: 'Stone', gleam: 'gleam:stone', doorCol: 4, off: 1.4 },
+    galehigh_lumenary: { element: 'Storm', gleam: 'gleam:storm', doorCol: 3, off: 1.5 },
+    pale_vault_lumenary: { element: 'Frost', gleam: 'gleam:frost', doorCol: 3, off: 1.5 },
+    solarium_lumenary: { element: 'Solar', gleam: 'gleam:solar', doorCol: 3, off: 2.3 },
+    nightreach_lumenary: { element: 'Lunar', gleam: 'gleam:lunar', doorCol: 3, off: 2.7 },
+  };
+
+  /** Hang the constellation crest over every Lumenary building on the current map. */
+  private markLumenaryCrests(): void {
+    for (const obj of this.map.def.objects ?? []) {
+      const cfg = WorldScene.LUMENARY_CRESTS[obj.sprite];
+      if (!cfg) continue;
+      const x = (obj.at.tx + cfg.doorCol) * TILE_SIZE;
+      const y = (obj.at.ty + obj.h - cfg.off) * TILE_SIZE;
+      this.crestMarkers.push(this.makeLumenaryCrest(x, y, cfg.element, this.flags.get(cfg.gleam)));
+    }
+  }
+
+  /** An element-tinted roundel + four-point star — the Lumenary's "this is it" sign. */
+  private makeLumenaryCrest(x: number, y: number, element: string, relit: boolean): Phaser.GameObjects.Container {
+    const tint = Phaser.Display.Color.HexStringToColor(
+      (theme.typeColor as Record<string, string>)[element] ?? '#fff3c0',
+    ).color;
+    const alpha = relit ? 1 : 0.4;
+    const starCol = relit ? 0xfff5e0 : 0x9aa6c0;
+    const halo = this.add.circle(0, 0, 8, tint, 0.18 * (relit ? 1 : 0.6));
+    const plaque = this.add.circle(0, 0, 6, 0x16182f, 0.94);
+    const rim = this.add.circle(0, 0, 6, tint, 0).setStrokeStyle(1.3, tint, alpha);
+    const star = this.add.star(0, 0, 4, 1.6, 4.6, starCol).setAlpha(alpha);
+    const core = this.add.circle(0, 0, 1, 0xfffaf0, alpha);
+    // Depth 22: above the building overhang band (21), like the heal-lantern landmark.
+    const c = this.add.container(x, y, [halo, plaque, rim, star, core]).setDepth(22);
+    // A relit Lumenary's crest breathes a slow glow so it reads as lit and tended.
+    if (relit) {
+      this.tweens.add({ targets: halo, alpha: 0.34, scale: 1.3, duration: 1300, yoyo: true, repeat: -1, ease: 'Sine.inOut' });
+    }
+    return c;
+  }
+
   private teardownMap(): void {
     this.cameras.main.stopFollow();
     for (const m of this.healMarkers) m.destroy();
     this.healMarkers = [];
+    for (const m of this.crestMarkers) m.destroy();
+    this.crestMarkers = [];
     this.lamplight?.destroy();
     this.lamplight = undefined;
     this.player?.destroy();

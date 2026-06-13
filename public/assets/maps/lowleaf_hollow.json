@@ -330,7 +330,7 @@
     {
       "id": "to_lumenary_e",
       "at": {
-        "tx": 11,
+        "tx": 9,
         "ty": 8
       },
       "trigger": "step_on",

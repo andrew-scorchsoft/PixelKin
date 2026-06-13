@@ -2305,6 +2305,23 @@
       "blocked_ref": "door.locked_lumenary"
     },
     {
+      "id": "to_lumenary_e",
+      "at": {
+        "tx": 14,
+        "ty": 6
+      },
+      "trigger": "step_on",
+      "to_map": "pearlmoor_lumenary",
+      "to": {
+        "tx": 8,
+        "ty": 10
+      },
+      "facing": "down",
+      "requires_flag": "flag:has_starter",
+      "transition": "door",
+      "blocked_ref": "door.locked_lumenary"
+    },
+    {
       "id": "to_shop",
       "at": {
         "tx": 5,

@@ -280,10 +280,13 @@ m = {
          "to_map": "dimglass_coast_ii", "to": {"tx": 7, "ty": 0}, "facing": "down", "transition": "fade"},
         {"id": "to_dimglass_e", "at": {"tx": 14, "ty": 21}, "trigger": "step_on",
          "to_map": "dimglass_coast_ii", "to": {"tx": 8, "ty": 0}, "facing": "down", "transition": "fade"},
-        # Lumenary door — interact on the arch door-art tile (col 2); col 3 is the twin
-        # walkable approach. Reachable WITHOUT Tidecall (spine §0 rule 1); soft-gated on
-        # holding a starter, like Tinderwick's.
+        # Lumenary GRAND DOUBLE DOOR — the arch straddles cols 2-3, so BOTH art tiles
+        # warp in (one warp alone strands players on the solid half of the arch).
+        # Reachable WITHOUT Tidecall (spine §0 rule 1); soft-gated on holding a starter.
         {"id": "to_lumenary", "at": {"tx": lum_door[0], "ty": lum_door[1]}, "trigger": "interact",
+         "to_map": "pearlmoor_lumenary", "to": {"tx": 8, "ty": 10}, "facing": "down",
+         "requires_flag": "flag:has_starter", "transition": "door"},
+        {"id": "to_lumenary_e", "at": {"tx": lum_door_r[0], "ty": lum_door_r[1]}, "trigger": "interact",
          "to_map": "pearlmoor_lumenary", "to": {"tx": 8, "ty": 10}, "facing": "down",
          "requires_flag": "flag:has_starter", "transition": "door"},
         # Shop door — interact on the chandlery's door-art tile (col 2).

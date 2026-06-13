@@ -191,11 +191,14 @@ m: dict = {
         {"id": "to_crossroads_s", "at": {"tx": 0, "ty": 15}, "trigger": "step_on",
          "to_map": "vesper_crossroads", "to": {"tx": 19, "ty": 4}, "facing": "left",
          "transition": "fade"},
-        # the Lumenary's arched double door (both art tiles interact)
+        # The Lumenary's double door. This cottage is drawn in 3/4 view, so the door
+        # art sits LEFT of centre (cols 1-2 = tiles (9,8)/(10,8)); both art tiles warp
+        # in. (Earlier the twin sat at (11,8) — a wall tile right of the door, a
+        # phantom entry — while the door's own left half (9,8) stayed solid.)
         {"id": "to_lumenary", "at": {"tx": 10, "ty": 8}, "trigger": "interact",
          "to_map": "lowleaf_lumenary", "to": {"tx": 8, "ty": 10}, "facing": "down",
          "requires_flag": "flag:has_starter", "transition": "door"},
-        {"id": "to_lumenary_e", "at": {"tx": 11, "ty": 8}, "trigger": "interact",
+        {"id": "to_lumenary_e", "at": {"tx": 9, "ty": 8}, "trigger": "interact",
          "to_map": "lowleaf_lumenary", "to": {"tx": 8, "ty": 10}, "facing": "down",
          "requires_flag": "flag:has_starter", "transition": "door"},
         # the guest-bower (the town's rest point)
