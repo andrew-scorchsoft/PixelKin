@@ -209,6 +209,7 @@ export class TitleScene extends Phaser.Scene {
       dex: save.dex,
       battles_won: save.battles_won,
       cooldowns: save.cooldowns,
+      respawn: save.world.respawn,
     };
   }
 

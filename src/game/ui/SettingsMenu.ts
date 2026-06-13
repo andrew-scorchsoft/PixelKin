@@ -19,6 +19,7 @@
 import Phaser from 'phaser';
 import { theme } from './theme';
 import { makeText } from './Text';
+import { Panel } from './Panel';
 import { Menu } from './Menu';
 import type { MenuOption } from './Menu';
 import type { Sfx } from '@game/systems/audio/Sfx';
@@ -38,7 +39,7 @@ import {
   type BattlePace,
   type VolumeLevel,
 } from './preferences';
-import { GAME_WIDTH } from '@game/config';
+import { GAME_WIDTH, GAME_HEIGHT } from '@game/config';
 
 export interface SettingsMenuDeps {
   /** Current save to export (null if none exists yet). */
@@ -104,7 +105,6 @@ export class SettingsMenu {
   }
 
   private buildOptions(): MenuOption[] {
-    const hasSave = this.deps.getSave() !== null;
     return [
       { label: `Shell: ${SHELL_LABEL[this.settings.shell]}`, value: 'shell' },
       {
@@ -123,8 +123,7 @@ export class SettingsMenu {
       { label: `Battle: ${BATTLE_PACE_LABEL[this.settings.battlePace ?? 'cosy']}`, value: 'battle' },
       { label: `Music: ${VOLUME_LABEL[this.settings.musicVolume ?? 'full']}`, value: 'music' },
       { label: `Sfx: ${VOLUME_LABEL[this.settings.sfxVolume ?? 'full']}`, value: 'sfx' },
-      { label: 'Export save', value: 'export', enabled: hasSave },
-      { label: 'Import save', value: 'import' },
+      { label: 'Backup / restore', value: 'backup' },
       { label: 'Back', value: 'back' },
     ];
   }
@@ -138,8 +137,8 @@ export class SettingsMenu {
 
     const menu = new Menu(this.scene, this.buildOptions(), {
       x: 24,
-      // 11 rows now fill the height: PAD*2 + 11*ROW_H = 144, so start high enough
-      // (16) that the panel's bottom lands at 160 — the height-aware budget lesson.
+      // The list is height-budgeted (one row per setting + Backup/restore + Back);
+      // starting at 16 keeps the panel's bottom inside the 160px screen.
       y: 16,
       width: GAME_WIDTH - 48,
       sfx: this.deps.sfx,
@@ -151,6 +150,59 @@ export class SettingsMenu {
       title.destroy();
       return value;
     });
+  }
+
+  /**
+   * Backup / restore sub-screen. Carries the standing note that progress lives in
+   * this browser (so a cleared cache / new device can lose it) and that Export
+   * keeps a copy you can carry — the guidance a player must not miss. Export saves
+   * a JSON file; Import loads one back.
+   */
+  private async openBackup(): Promise<void> {
+    const w = GAME_WIDTH - 16;
+    const note = new Panel(this.scene, 8, 8, w, 74).fixedToCamera().setDepth(theme.depth.panel);
+    // Panel children are panel-local (origin at the panel's top-left).
+    note.add(makeText(this.scene, w / 2, 4, 'BACKUP / RESTORE', theme.text.accent).setOrigin(0.5, 0));
+    const body = makeText(
+      this.scene,
+      6,
+      16,
+      'Your journey is kept in this browser. Clear its data, or move to a new device, and it can be lost. EXPORT keeps a copy of your whole journey as a file you can store anywhere; IMPORT carries it back.',
+      theme.text.dim,
+    );
+    body.setWordWrapWidth(w - 12);
+    note.add(body);
+
+    let open = true;
+    while (open) {
+      const hasSave = this.deps.getSave() !== null;
+      const choice = await new Menu(
+        this.scene,
+        [
+          { label: 'Export a copy', value: 'export', enabled: hasSave },
+          { label: 'Import a copy', value: 'import' },
+          { label: 'Back', value: 'back' },
+        ],
+        { x: 24, y: GAME_HEIGHT - 56, width: GAME_WIDTH - 48, sfx: this.deps.sfx, cancellable: true, fixed: true },
+      ).run();
+
+      if (choice === 'export') {
+        const save = this.deps.getSave();
+        if (save) {
+          SaveCodec.exportToFile(save);
+          void this.deps.sfx?.play('ui-save');
+        }
+      } else if (choice === 'import') {
+        const imported = await SaveCodec.importFromFile();
+        if (imported) {
+          await this.deps.onImport(imported);
+          void this.deps.sfx?.play('ui-save');
+        }
+      } else {
+        open = false;
+      }
+    }
+    note.destroy();
   }
 
   /** Apply a chosen action. Returns whether the menu should stay open. */
@@ -238,20 +290,8 @@ export class SettingsMenu {
         void this.deps.sfx?.play('ui-toggle');
         return true;
       }
-      case 'export': {
-        const save = this.deps.getSave();
-        if (save) {
-          SaveCodec.exportToFile(save);
-          void this.deps.sfx?.play('ui-save');
-        }
-        return true;
-      }
-      case 'import': {
-        const imported = await SaveCodec.importFromFile();
-        if (imported) {
-          await this.deps.onImport(imported);
-          void this.deps.sfx?.play('ui-save');
-        }
+      case 'backup': {
+        await this.openBackup();
         return true;
       }
       case 'back':

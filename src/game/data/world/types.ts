@@ -238,6 +238,14 @@ export interface MapDefinition {
 export interface WorldSnapshot {
   current_map: string;
   player: { tx: number; ty: number; facing: Facing };
+  /**
+   * Where a blackout (all kin fainted) wakes you: the last inn / home / camp you
+   * rested at. Recorded by the `heal` cutscene op (every rest point heals), so a
+   * defeat carries you back to the nearest warm hearth instead of all the way to
+   * the start. Optional + falls back to the world start if you've never rested —
+   * an additive field, no schema bump (the bond / battles_won precedent).
+   */
+  respawn?: { map: string; tx: number; ty: number; facing: Facing };
   abilities: AbilityId[];
   /** Unlocked warps/areas/honours and fired triggers. */
   flags: Record<WorldFlag, boolean>;

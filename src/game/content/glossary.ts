@@ -62,6 +62,11 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     term: 'Wicks',
     desc: "Vesperholm's coin: waxed, brass-capped lamp-wicks, bundled and traded. In a land without dawn, everyone always needs one more.",
   },
+  {
+    id: 'keeping',
+    term: 'Keeping your Journey',
+    desc: "All you have walked is kept in your lamp, here in this one place — and one place can be lost (a cleared browser, a new device). From SETTINGS, 'Backup / restore' presses a copy of your whole journey to keep elsewhere, and carries it back when you need it. Tend it now and then; the road behind you is worth keeping.",
+  },
 
   // --- Learned on the road (staggered off flags the journey already raises) ---
   {
