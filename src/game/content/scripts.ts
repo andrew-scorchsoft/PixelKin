@@ -376,6 +376,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'giveItem', item: 'tallow_balm', count: 2 },
     { op: 'say', text: 'Received 2 TALLOW BALMS!' },
     { op: 'say', speaker: 'ANDY', text: 'For your trouble — I was saving them for the knee. The knee\'s a lost cause.' },
+    { op: 'say', speaker: 'ANDY', text: 'And go back out to him sometime, eh? A man like that doesn\'t say everything in one sitting — and he keeps queer company out at that dark lamp. Go and SEE. He left you something else out there, or I\'m no judge of old men.' },
     { op: 'setFlag', flag: 'flag:q_south_booji_done' },
   ],
 

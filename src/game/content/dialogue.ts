@@ -366,6 +366,17 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'ANDREW', text: 'Can\'t talk long. Mid-set. The bench waits for no man.' },
     { speaker: 'ANDREW', text: 'Paul? He spotted me once. Didn\'t say a word the whole set — just stood there. Best lifting I\'ve ever done. Make of that what you will.' },
   ],
+  // Rod — the house's strongest, and its oldest. An allotment-keeper of seventy-two
+  // who presses the big harbour-stone clean overhead. Points the player on to Paul
+  // (out at the breakwater), and seeds the Chickenpig WITHOUT naming it.
+  'npc.booji_rod': [
+    { speaker: 'ROD', text: 'YEAH! There it goes — clean, and over the head. A hundred and twenty kilos of harbour-stone, friend, and I am SEVENTY-TWO summers old. Nothing but a peanut.' },
+    { speaker: 'ROD', text: 'Don\'t gawp. I keep an allotment up the hill — marrows, leeks, a turnip that ought to pay rent. You haul wet earth from one dusk to the next, the stones come up like loaves.' },
+    { speaker: 'ROD', text: 'My Anth says I love that allotment more than I love her. I tell her there is NO contest. ...I am careful never to say which way. That\'s a joke, mind — don\'t you go telling Anth.' },
+    { speaker: 'ROD', text: 'One thing out there I cannot beat: the squirrels. Thieving little stone-heads. I can press a mooring-block overhead and I cannot keep ONE off my marrows. There\'s a lesson in that. Seventy-two years and I have not found it.' },
+    { speaker: 'ROD', text: 'You\'ll be after the old man. PAUL. He\'s not in the house, lad — he\'s out past the bell, the very end of the breakwater, where the boards give out. Stood at a lamp he won\'t light. Go and find him. He\'s worth the walk.' },
+    { speaker: 'ROD', text: 'And keep your lamp up out there. Paul\'s got... company at that dark lamp. Something I\'ve no name for — and I have named every kin on this coast. Crows at the black like the morning\'s already its idea. Daft little thing. ...You bring it home, if it\'ll have you.' },
+  ],
   // The Chickenpig at Paul's dark lamp (post-S4 set-piece catch).
   'npc.chickenpig_shy': [
     { text: 'The chicken-pig tucks its head under its one red wing and is immediately, profoundly asleep. Even heralds nap. It will hear you out again once you have won {remaining} more battles.' },

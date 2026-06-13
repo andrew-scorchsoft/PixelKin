@@ -345,6 +345,12 @@ def build_lifting_house():
         {"id": "andrew", "at": {"tx": 4, "ty": 8}, "facing": "up",
          "sprite": "lifter_andrew", "movement": "static",
          "dialogue_ref": "npc.booji_andrew"},
+        # Rod — the house's strongest AND oldest (an allotment-keeper of 72 who
+        # presses the big harbour-stone overhead). One flavour stage, no quest
+        # stack; he points on to Paul and seeds the Chickenpig (never naming it).
+        {"id": "rod", "at": {"tx": 9, "ty": 7}, "facing": "down",
+         "sprite": "lifter_rod", "movement": "static",
+         "dialogue_ref": "npc.booji_rod"},
         {"id": "andy_hook", "at": dict(andy_at), "facing": "down",
          "sprite": "lifter_andy", "movement": "look_around",
          "dialogue_ref": "script.booji_andy",
