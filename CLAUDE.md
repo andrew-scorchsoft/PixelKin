@@ -199,7 +199,8 @@ go digging on every task.
   (`content/shops.ts` + the `shop` cutscene op — Tinderwick & Pearlmoor counters live;
   a stock line may carry `requires_flag` for tier unlocks); trainer wins pay `payout`
   = class rate × ace (route 16 / keeper 20 / rival 24 /
-  warden 60 / Còr 120); blackout keeps a 10% wick tithe; XP yield is `bst·level/20`,
+  warden 60 / Còr 120); blackout keeps a 10% wick tithe and wakes you at your **last rest point**
+  (not the start — see the respawn gotcha); XP yield is `bst·level/20`,
   ×1.5 vs trainers, **catches pay like knock-outs**. Design + per-region battle/earnings
   budget: `docs/mechanics/10-economy.md`; executable model: `tools/balance/progression.mjs`.
 - **Catching = one vesperlamp + charges (2026-06, BUILT):** the vesperlamp is a key
@@ -418,9 +419,15 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   you add one. Multi-phase screens (PartyMenu/ItemsMenu/HearthMenu) **don't** keep one
   long-lived loop: each phase (`pickX`) attaches its own tick + input and tears both
   down before opening a sub-`Menu`, so presses are never double-read.
-- **Pause menu = RESUME / KIN / REGISTER / JOURNAL / MAP / [TRAVEL] / HEARTH / ITEMS / LORE / CHARTS / SAVE / SETTINGS**
-  (`WorldScene.openPauseMenu`; TRAVEL appears only once `flag:hub_unlocked`; with 12 entries the
-  panel y is computed so the last row never clips the 160px screen). JOURNAL→`JournalMenu`
+- **Pause menu = RESUME / KIN / REGISTER / [GLEAMS] / JOURNAL / MAP / [TRAVEL] / HEARTH / ITEMS / LORE / CHARTS / SAVE / SETTINGS**
+  (`WorldScene.openPauseMenu`; GLEAMS appears only once the first constellation is relit,
+  `countHeld('gleam:') > 0`; TRAVEL only once `flag:hub_unlocked`; the panel y is computed from the entry
+  count so the last row never clips the 160px screen). GLEAMS→`GleamsMenu` (the Skyweave Crown / badge
+  case: the 8 Gleams as 4 quadrant columns from the `content/gleams.ts` registry — earned ones show their
+  element-coloured constellation emblem `public/assets/ui/gleams/<id>.webp` [drawn-roundel fallback if the
+  art's missing], unrelit ones a dim silhouette under their region + warden/town, so it doubles as a map of
+  where the remaining light waits; `gleams.ts` is the single source for the badge case AND `SlotMenu`'s
+  tally — add a region's two Gleams there in journey order). JOURNAL→`JournalMenu`
   (the quest log: `content/quests.ts` registry, flags mined from the build — add new named quests
   there), MAP→`WorldMapMenu` (the classic region map: schematic ring of Vesperholm, blinking
   you-are-here marker, d-pad hops between places — drawn from `data/world/worldmap.json`, which is
@@ -434,6 +441,24 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   mutated data; the caller assigns it back and `persist()`s. Shell A/B buttons carry a `title`
   keyboard-hint via `KEY_HINTS` in `ShellManager.ts` — keep it in sync with the InputController
   bindings.
+- **Blackout wakes you at your LAST REST POINT, not the start.** `WorldScene.respawn`
+  (persisted as `WorldSnapshot.respawn`, an additive optional field — no schema bump, the
+  bond/battles_won precedent) is banked by the `heal` cutscene op every time you rest, then
+  `blackout()` warps there (falls back to `VESPERHOLM_GRAPH.start` if you've never rested). A
+  `heal` op is a rest point unless tagged `{ op:'heal', rest:false }` — set `rest:false` for a
+  mid-story forced heal you don't want to wake at. Thread `respawn` through any new save-load path
+  (`WorldSceneData` → `create()`; it's already in `continueData`/import-reload/`buildSnapshot`).
+- **Heal entrances wear a rest-lantern (the iconic "heal here" landmark).** `WorldScene.markHealEntrances`
+  hangs a code-drawn glowing lantern (depth 22, above the building overhang) over every door whose
+  `to_map` is in `HEAL_ENTRANCE_MAPS` (the door-entered healing interiors — inns, the apprentice's home,
+  the Solarium). Add a new inn's interior id to that set and the marker appears with no per-map art or
+  JSON edit. NPC-/hub-only rests (Cinderhead vigil-fire, Crossroads inn) heal in dialogue and carry none.
+- **Save-backup guidance is wired in three places (don't drop one).** Saves already export/import as
+  JSON via `SaveCodec` (Settings → **Backup / restore** sub-screen, which carries the standing note that
+  progress lives in the browser). Players are pointed at it by: a one-time tip on the first manual SAVE
+  (`WorldScene.maybeBackupTip`, `flag:tip_backup_seen`), the post-starter gate-warden line
+  (`npc.gatewarden_after`), and the LORE 'Keeping your Journey' glossary entry. Keep the phrasing
+  diegetic-but-actionable (it names SETTINGS / Backup-restore plainly).
 - **The Wayfarer's Charts surface the concept art in-game.** The `assets/concept-art/` mood pieces
   are now a collectible gallery: first time the player sets foot in any map listed in a chart's
   `maps[]` (`content/charts.ts`), `WorldScene.noteChartDiscovery` banks a `chart:<slug>` flag (in

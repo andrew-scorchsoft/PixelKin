@@ -28,6 +28,7 @@ export const DIALOGUE: DialogueRegistry = {
   'npc.gatewarden_after': [
     { speaker: 'GATE-WARDEN', text: 'A lamp and a friend — NOW you look like a Wayfarer. The road north is yours.' },
     { speaker: 'GATE-WARDEN', text: 'Mind the verge grass as you go. Restless, but generous — a careful apprentice walks out of it with a second friend.' },
+    { speaker: 'GATE-WARDEN', text: "One more kindness for the road: your whole journey is kept in your lamp's memory — and a memory can be lost. In SETTINGS you can press a copy of it to keep somewhere safe. Do that now and then, and a cleared shelf can never take the road behind you." },
   ],
   // The rival Wren — a fellow young Wayfarer in the plaza (A1). Warm and competitive;
   // by canon Wren takes the starter that beats yours along Ember->Verdant->Tide->Ember.

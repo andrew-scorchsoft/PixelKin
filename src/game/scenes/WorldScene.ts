@@ -19,6 +19,7 @@ import { HearthMenu } from '@game/ui/HearthMenu';
 import { SettingsMenu } from '@game/ui/SettingsMenu';
 import { GlossaryMenu } from '@game/ui/GlossaryMenu';
 import { RegisterMenu } from '@game/ui/RegisterMenu';
+import { GleamsMenu } from '@game/ui/GleamsMenu';
 import { ChartsMenu } from '@game/ui/ChartsMenu';
 import { JournalMenu } from '@game/ui/JournalMenu';
 import { TravelMenu } from '@game/ui/TravelMenu';
@@ -79,6 +80,8 @@ export interface WorldSceneData {
   battles_won?: number;
   /** Named cooldowns -> the battles_won value at which each expires. */
   cooldowns?: Record<string, number>;
+  /** The last rest point — where a blackout wakes the player (see WorldSnapshot). */
+  respawn?: { map: string; tx: number; ty: number; facing: Facing };
 }
 
 /** Depth band for actors: above deco (5), below the 'above' layer (20). */
@@ -118,6 +121,10 @@ export class WorldScene extends Phaser.Scene {
   private cooldowns: Record<string, number> = {};
   /** A newly-discovered chart awaiting its full-screen reveal (fires when idle). */
   private pendingReveal?: ChartEntry;
+  /** The last rest point (inn / home / camp) — where a blackout wakes you. */
+  private respawn?: { map: string; tx: number; ty: number; facing: Facing };
+  /** Glowing rest-lanterns hung over heal-entrance doors (cleared on teardown). */
+  private healMarkers: Phaser.GameObjects.GameObject[] = [];
 
   constructor() {
     super('World');
@@ -155,6 +162,7 @@ export class WorldScene extends Phaser.Scene {
     this.dexCaught = new Set(data.dex?.caught ?? []);
     this.battlesWon = data.battles_won ?? 0;
     this.cooldowns = { ...(data.cooldowns ?? {}) };
+    this.respawn = data.respawn;
     // Whatever walks with you is certainly on the register.
     for (const k of [...this.party, ...this.box]) {
       this.dexSeen.add(k.species_id);
@@ -207,6 +215,7 @@ export class WorldScene extends Phaser.Scene {
 
       this.spawnNpcs();
       this.refreshObjects();
+      this.markHealEntrances();
       // Dark terrain (spine §5): partial dusk beyond the vesperlamp's circle.
       // Additive only — the main lane is lit and the dusk is never opaque.
       if (MAP_REGISTRY[mapId]?.dark) {
@@ -254,6 +263,7 @@ export class WorldScene extends Phaser.Scene {
     return {
       current_map: this.map.def.id,
       player: { tx: this.player.tx, ty: this.player.ty, facing: this.player.facing },
+      respawn: this.respawn,
       abilities: [...this.abilities],
       flags: this.flags.snapshot(),
       schema_version: SAVE_SCHEMA_VERSION,
@@ -306,8 +316,53 @@ export class WorldScene extends Phaser.Scene {
     });
   }
 
+  /**
+   * Door-entered interiors where your kin are mended (inns, the apprentice's home,
+   * the Solarium's hearth). A gently-glowing rest-lantern is hung over every door
+   * that leads to one of these — the game's "you can heal here" landmark, drawn
+   * identically town to town so a player learns the sign at a glance (our answer
+   * to the genre's iconic healing-house roof). NPC-/hub-only rests (the Cinderhead
+   * vigil-fire, the Crossroads inn-keep) heal in dialogue and carry no door marker.
+   */
+  private static readonly HEAL_ENTRANCE_MAPS = new Set<string>([
+    'tinderwick_house',
+    'pearlmoor_inn',
+    'lowleaf_bower',
+    'galehigh_inn',
+    'pale_vault_inn',
+    'nightreach_inn',
+    'sunken_solarium_lumenary',
+  ]);
+
+  /** Hang the rest-lantern over every heal-entrance door on the current map. */
+  private markHealEntrances(): void {
+    for (const warp of this.map.def.warps) {
+      if (!WorldScene.HEAL_ENTRANCE_MAPS.has(warp.to_map)) continue;
+      const x = warp.at.tx * TILE_SIZE + TILE_SIZE / 2;
+      const y = warp.at.ty * TILE_SIZE - 5; // float just above the doorway
+      this.healMarkers.push(this.makeHealLantern(x, y));
+    }
+  }
+
+  /** A small warm lantern glyph that bobs and pulses — the heal-here landmark. */
+  private makeHealLantern(x: number, y: number): Phaser.GameObjects.Container {
+    const amber = 0xffd089;
+    const halo = this.add.circle(0, 1, 6, amber, 0.18);
+    const flame = this.add.circle(0, 0, 3, amber, 0.95);
+    const core = this.add.circle(0, 0, 1.5, 0xfff3c0, 1);
+    const cap = this.add.rectangle(0, -5, 4, 2, 0xc9a86a, 1); // the lamp's brass cap
+    // Depth 22: just above the building overhang/rooftop band (21) so it's always seen.
+    const c = this.add.container(x, y, [halo, flame, core, cap]).setDepth(22);
+    // A gentle breathing glow + bob so the sign reads as "lit and tended", not a sprite.
+    this.tweens.add({ targets: halo, alpha: 0.32, scale: 1.25, duration: 1100, yoyo: true, repeat: -1, ease: 'Sine.inOut' });
+    this.tweens.add({ targets: c, y: y - 2, duration: 1600, yoyo: true, repeat: -1, ease: 'Sine.inOut' });
+    return c;
+  }
+
   private teardownMap(): void {
     this.cameras.main.stopFollow();
+    for (const m of this.healMarkers) m.destroy();
+    this.healMarkers = [];
     this.lamplight?.destroy();
     this.lamplight = undefined;
     this.player?.destroy();
@@ -550,8 +605,11 @@ export class WorldScene extends Phaser.Scene {
         this.money = result.money;
         void this.persist();
       },
-      onHealParty: () => {
+      onHealParty: (rest) => {
         this.healParty();
+        // A rest point (inn / home / camp) doubles as the blackout wake-point, so
+        // a defeat carries you back to the nearest warm hearth, not to square one.
+        if (rest) this.recordRespawn();
       },
       startTrainerBattle: async (trainer: string): Promise<boolean> => {
         const result = await this.startBattle({
@@ -833,7 +891,19 @@ export class WorldScene extends Phaser.Scene {
     return { phase: 'ready', remaining: 0 };
   }
 
-  /** Defeat recovery: revive the party and wake back at the start town. */
+  /** Bank the current spot as the blackout wake-point (called by a rest heal). */
+  private recordRespawn(): void {
+    if (!this.player || !this.map) return;
+    this.respawn = {
+      map: this.map.def.id,
+      tx: this.player.tx,
+      ty: this.player.ty,
+      facing: this.player.facing,
+    };
+  }
+
+  /** Defeat recovery: revive the party and wake at the last hearth you rested
+   *  by — the nearest inn / home / camp — or the start town if you never have. */
   private async blackout(): Promise<void> {
     this.modal = true;
     this.healParty();
@@ -842,11 +912,17 @@ export class WorldScene extends Phaser.Scene {
     this.money -= tithe;
     void this.sfx.playVariant('world-heal', ['a', 'b']);
     await new DialogueBox(this, this.sfx).run([
-      { text: 'Your lamp guttered low... but a kind light carried you home.' },
+      { text: 'Your lamp guttered low... but a kind light carried you to the last hearth you rested by.' },
       ...(tithe > 0 ? [{ text: `You left ${tithe} wicks in thanks, as the custom asks.` }] : []),
     ]);
+    const home = this.respawn ?? {
+      map: VESPERHOLM_GRAPH.start_map,
+      tx: VESPERHOLM_GRAPH.start_at.tx,
+      ty: VESPERHOLM_GRAPH.start_at.ty,
+      facing: 'down' as Facing,
+    };
     await fadeOut(this);
-    await this.enterMap(VESPERHOLM_GRAPH.start_map, VESPERHOLM_GRAPH.start_at, 'down', false);
+    await this.enterMap(home.map, { tx: home.tx, ty: home.ty }, home.facing, false);
     await fadeIn(this);
     this.modal = false;
   }
@@ -1098,6 +1174,19 @@ export class WorldScene extends Phaser.Scene {
     void this.persist();
   }
 
+  /** One-time nudge (on the first manual SAVE) that progress lives in the browser
+   *  and can be backed up from SETTINGS — so a cleared cache never costs a journey. */
+  private async maybeBackupTip(): Promise<void> {
+    if (this.flags.get('flag:tip_backup_seen')) return;
+    this.flags.set('flag:tip_backup_seen');
+    await new DialogueBox(this, this.sfx).run([
+      {
+        text: 'Your journey is kept safe in this browser. To guard against a cleared cache or a new device, open SETTINGS and choose "Backup / restore" — it keeps a copy of your whole journey you can carry anywhere.',
+      },
+    ]);
+    void this.persist();
+  }
+
   /** In-game pause menu (Start/Esc): Resume / Kin / Hearth / Items / Save / Settings. */
   private async openPauseMenu(): Promise<void> {
     this.modal = true;
@@ -1111,6 +1200,8 @@ export class WorldScene extends Phaser.Scene {
         { label: 'RESUME', value: 'resume' },
         { label: 'KIN', value: 'kin' },
         { label: 'REGISTER', value: 'register' },
+        // The Crown / badge case appears once the first constellation is relit.
+        ...(this.flags.countHeld('gleam:') > 0 ? [{ label: 'GLEAMS', value: 'gleams' }] : []),
         { label: 'JOURNAL', value: 'journal' },
         { label: 'MAP', value: 'map' },
         ...(this.flags.get(WAYSTONE_NETWORK_FLAG) ? [{ label: 'TRAVEL', value: 'travel' }] : []),
@@ -1144,6 +1235,8 @@ export class WorldScene extends Phaser.Scene {
         await this.openPartyMenu();
       } else if (choice === 'register') {
         await new RegisterMenu(this, { seen: [...this.dexSeen], caught: [...this.dexCaught] }, this.sfx).run();
+      } else if (choice === 'gleams') {
+        await new GleamsMenu(this, (flag) => this.flags.get(flag), this.sfx).run();
       } else if (choice === 'journal') {
         await new JournalMenu(
           this,
@@ -1162,6 +1255,7 @@ export class WorldScene extends Phaser.Scene {
       } else if (choice === 'save') {
         await this.persist();
         void this.sfx.playVariant('ui-save', ['a', 'b']);
+        await this.maybeBackupTip();
       } else if (choice === 'settings') {
         await new SettingsMenu(this, {
           getSave: () => this.buildSaveGame(),
@@ -1193,6 +1287,7 @@ export class WorldScene extends Phaser.Scene {
         dex: loaded.dex,
         battles_won: loaded.battles_won,
         cooldowns: loaded.cooldowns,
+        respawn: loaded.world.respawn,
       });
     }
   }

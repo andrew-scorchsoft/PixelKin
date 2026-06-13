@@ -131,7 +131,10 @@ type CutsceneStepBase =
   | { op: 'cameraReset'; ms?: number } // re-follow the player, restore zoom
   | { op: 'battle'; trainer: string } // start a trainer battle by id
   | LegendaryBattleStep // a static one-off catch with a battles-won failure cooldown
-  | { op: 'heal' } // fully restore the party (inn rest, hearthside kindness)
+  // Fully restore the party (inn rest, hearthside kindness). Unless `rest:false`,
+  // it also banks this spot as your blackout wake-point — every rest point in the
+  // game is somewhere you'd want to come round (set rest:false for a mid-story heal).
+  | { op: 'heal'; rest?: boolean }
   | { op: 'gleam'; element: string } // diegetic Gleam cue (relight the sky)
   | { op: 'giveMoney'; amount: number } // hand the player wicks (quest rewards, finds)
   | { op: 'shop'; shop: string } // open a shop's buy/sell counter (content/shops.ts)
