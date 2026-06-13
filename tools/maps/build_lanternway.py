@@ -66,10 +66,17 @@ def object_cells(objects):
 
 def build_h_lane(*, map_id, display, seed, w_rows, e_rows, bend_x,
                  w_warps, e_warps, sign_id, cache_id, cache_at, pocket,
-                 accent, lamps, trees, owed):
+                 accent, lamps, trees, owed, grass=None):
     """A horizontal lane: enters on the W edge rows `w_rows`, runs east, turns
     at `bend_x` and leaves on the E edge rows `e_rows` — the visible bend that
-    absorbs the spoke's compass turn."""
+    absorbs the spoke's compass turn.
+
+    `grass` (optional): an OFF-lane tall-grass verge for a safe low-level grind
+    spot — `{"rect": (x0,y0,x1,y1), "clip": [(x,y),...], "table": [...]}`. The
+    main lane always stays clear (path wins over grass), so a player who wants
+    no fights just keeps to the lamps; stepping into the verge rolls the table.
+    Only the home (Tinderwick) spoke uses it — the canon 'safe lit ground' rule
+    still holds for the lane itself."""
     W, H = 24, 18
     rng = random.Random(seed)
 
@@ -108,10 +115,26 @@ def build_h_lane(*, map_id, display, seed, w_rows, e_rows, bend_x,
     elif accent == "outcrop":
         pass  # boulders go on deco below
 
+    # the optional grind-verge: a hard-edged tall-grass patch in the open middle,
+    # well off the lane (cleared of tree/pond so it reads as a real clearing).
+    tallgrass = mk.make_grid(W, H)
+    if grass:
+        gx0, gy0, gx1, gy1 = grass["rect"]
+        for y in range(gy0, gy1 + 1):
+            for x in range(gx0, gx1 + 1):
+                tallgrass[y * W + x] = 1
+        for (x, y) in grass.get("clip", ()):  # clipped corners -> organic patch
+            tallgrass[y * W + x] = 0
+        for i in range(W * H):
+            if tallgrass[i]:
+                tree[i] = 0
+                pond[i] = 0
+
     for i in range(W * H):  # the lane wins over everything
         if path[i]:
             tree[i] = 0
             pond[i] = 0
+            tallgrass[i] = 0
 
     base = base_grid(W, H, rng)
     objects = [lamp(f"lamp_{i}", x, y) for i, (x, y) in enumerate(lamps)]
@@ -130,6 +153,8 @@ def build_h_lane(*, map_id, display, seed, w_rows, e_rows, bend_x,
         "tile_width": 16, "tile_height": 16, "kind": "route",
         "tilesets": [mk.shared_tileset_ref()],
         "layers": [{"name": "base", "role": "base", "depth": 0, "data": base},
+                   {"name": "t_tallgrass", "role": "terrain", "terrain": "tallgrass",
+                    "set": "vesper_overworld_set", "depth": 0, "data": tallgrass},
                    {"name": "t_tree", "role": "terrain", "terrain": "tree",
                     "set": "vesper_overworld_set", "depth": 0, "data": tree},
                    {"name": "t_pond", "role": "terrain", "terrain": "pond",
@@ -140,14 +165,23 @@ def build_h_lane(*, map_id, display, seed, w_rows, e_rows, bend_x,
                    {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)}],
         "objects": objects,
         "warps": w_warps + e_warps,
-        "triggers": [], "encounters": [], "npcs": [], "gates": [],
+        "triggers": [],
+        "encounters": ([{
+            "id": "lane_verge", "terrain": "tall_grass",
+            "rect": {"tx": grass["rect"][0], "ty": grass["rect"][1],
+                     "w": grass["rect"][2] - grass["rect"][0] + 1,
+                     "h": grass["rect"][3] - grass["rect"][1] + 1},
+            "encounter_rate": 0.07, "table": grass["table"],
+        }] if grass else []),
+        "npcs": [], "gates": [],
         "music": "assets/audio/music/tinderwick-a.mp3",
     }
     owed += pt.sign(m, deco, W, sid=sign_id, at=(bend_x + 2, min(wy, ey) + 2 if wy != ey else wy + 2))
     owed += pt.cache(m, cid=cache_id, at=cache_at)
 
     covered = {(x, y) for y in range(H) for x in range(W)
-               if tree[y * W + x] or pond[y * W + x] or path[y * W + x] or deco[y * W + x]}
+               if tree[y * W + x] or pond[y * W + x] or path[y * W + x]
+               or tallgrass[y * W + x] or deco[y * W + x]}
     mk.scatter_decor(deco, base, W, H, rng, density=0.12,
                      avoid=covered | object_cells(objects) | {cache_at})
     return m
@@ -397,6 +431,14 @@ def main() -> int:
         sign_id="lanternway_tinderwick", cache_id="lane_tinderwick",
         cache_at=(20, 14), pocket=(18, 13, 21, 15),
         accent="pond", lamps=[(4, 10), (13, 8), (20, 3)], trees=[(5, 2), (17, 14)],
+        # the home spoke's optional grind-verge (player-suggested, 2026-06): a
+        # safe place to nudge an under-levelled lamp up a level or two. Sits in
+        # the open middle between the two lane runs — the lamplit road past it
+        # is always clear, so it's opt-in. Lowest band on the map (lv 2-3).
+        grass={"rect": (5, 8, 11, 10),
+               "clip": [(5, 8), (11, 8), (5, 10), (11, 10)],
+               "table": [{"kin_id": 16, "weight": 60, "min_level": 2, "max_level": 3},
+                         {"kin_id": 10, "weight": 40, "min_level": 2, "max_level": 3}]},
         owed=owed))
     # A fellow traveller on the home lane points the unstarted apprentice on to
     # Fenn at the waystone and reassures the road is safe (the opening's

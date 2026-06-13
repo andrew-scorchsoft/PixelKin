@@ -180,6 +180,45 @@ const WORLD_GALLERY = [
 ];
 
 /**
+ * Homepage "explore the rest of the site" teasers — a sign-posting band so a
+ * reader who only ever sees the homepage can find the deeper pages. label =>
+ * [href, icon, blurb]. Mirrors the NAV destinations (sans Home); keep blurbs in
+ * canon voice and in step with each page's own intro.
+ */
+const EXPLORE = [
+    [
+        'href'  => 'story.php',
+        'ico'   => '🌙',
+        'label' => 'The World',
+        'blurb' => 'Step into the Long Dusk — the tale of Vesperholm, the gentle Hollowing, and the night that forgot to lift.',
+    ],
+    [
+        'href'  => 'creatures.php',
+        'ico'   => '🦊',
+        'label' => 'Meet the Kin',
+        'blurb' => 'Browse the first fifty of over 150 original creatures — their elements, kindlings and matchups.',
+    ],
+    [
+        'href'  => 'faq.php',
+        'ico'   => '❓',
+        'label' => 'FAQ',
+        'blurb' => 'Is it free? Does it save? Works on mobile? The quick answers before you set out.',
+    ],
+    [
+        'href'  => 'about.php',
+        'ico'   => '✨',
+        'label' => 'About the game',
+        'blurb' => 'Why we made PixelKin — a love letter to handheld-era creature-collecting, and how it\'s built.',
+    ],
+    [
+        'href'  => 'license.php',
+        'ico'   => '📜',
+        'label' => 'Licensing',
+        'blurb' => 'Like the world, characters, music or art? Talk to us about licensing and partnerships.',
+    ],
+];
+
+/**
  * The eight Lumenaries — one per constellation element. Image masters copied
  * into assets/img/lumenary/. Tints mirror theme.ts typeColor.
  */

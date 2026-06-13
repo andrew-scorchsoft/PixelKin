@@ -41,6 +41,9 @@ const SPRITE_SHEETS: Record<string, string> = {
   wren: 'wren',
   npc_shopkeeper: 'npc_shopkeeper',
   npc_lampwarden: 'npc_lampwarden',
+  // Brisa Tallow (tinderwick_lumenary / beacon) — her own sheet, matching her
+  // portrait (was sharing the generic npc_lampwarden).
+  brisa: 'brisa',
   // The remaining-cast Lampwardens + the Hollowing's leader (bespoke walk sheets).
   mira_vael: 'mira_vael',
   mira: 'mira_vael',

@@ -345,6 +345,41 @@ a { color: var(--diamond); text-decoration: none; }
 .feature p { color: var(--dim); font-size: 0.95rem; }
 .feature strong { color: var(--diamond); font-weight: 600; }
 
+/* Explore-the-site sign-posts ----------------------------------------------- */
+.explore-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2rem;
+}
+.explore-card {
+    display: block;
+    background: var(--panel);
+    border: 1px solid var(--panel-edge);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    transition: transform 0.18s, border-color 0.18s;
+}
+.explore-card:hover { transform: translateY(-4px); border-color: var(--diamond); }
+.explore-ico { font-size: 1.9rem; display: block; margin-bottom: 0.6rem; }
+.explore-head { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.65rem; }
+.explore-label {
+    font-family: var(--pixel);
+    font-size: 11px;
+    color: var(--bone);
+    line-height: 1.55;
+}
+.explore-arrow {
+    margin-left: auto;
+    color: var(--diamond);
+    font-size: 1.2rem;
+    transition: transform 0.18s;
+}
+.explore-card:hover .explore-arrow { transform: translateX(3px); }
+.explore-blurb { display: block; color: var(--dim); font-size: 0.95rem; }
+
 /* Kin cards ----------------------------------------------------------------- */
 .kin-row {
     display: grid;

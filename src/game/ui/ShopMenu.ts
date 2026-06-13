@@ -31,10 +31,15 @@ import type { InventoryData } from '@game/systems/save/types';
 import type { Sfx } from '@game/systems/audio/Sfx';
 
 const PAD = theme.space.lg;
-const LIST_TOP = PAD + 14;
-const ROW_H = 14;
-const DETAIL_LINES = 3;
+const HEADER_Y = PAD - 2;
+const LIST_TOP = PAD + 12;
+const ROW_H = 13;
+const DETAIL_LINES = 4;
 const DETAIL_LINE_H = 9;
+const NAME_X = PAD + 10; // left edge of the name column (cursor sits at PAD)
+const COL_GAP = 5; // minimum gap between the name column and the price column
+const MARQUEE_TAIL = '   •   '; // separator looped into a scrolling clipped name
+const MARQUEE_EVERY = 6; // advance the marquee one glyph every N frames
 
 export interface ShopMenuResult {
   inventory: InventoryData;
@@ -61,12 +66,27 @@ export class ShopMenu {
   private readonly detail: Phaser.GameObjects.Text;
   private readonly width: number;
   private readonly detailTop: number;
+  /** How many rows fit between the header and the detail pane (the rest scroll). */
+  private readonly vis: number;
+  /** Approximate width of one glyph, measured from the bundled font at boot. */
+  private readonly charW: number;
+  private readonly scrollUp: Phaser.GameObjects.Triangle;
+  private readonly scrollDown: Phaser.GameObjects.Triangle;
   private money: number;
   private entries: CounterEntry[] = [];
   private rowObjects: Phaser.GameObjects.GameObject[] = [];
+  /** Per-visible-row name label, indexed by screen slot (0..vis-1). */
   private names: Phaser.GameObjects.Text[] = [];
   private index = 0;
+  /** Index of the first entry drawn (the scroll window's top). */
+  private scrollTop = 0;
   private mode: 'buy' | 'sell' = 'buy';
+  // Marquee state for the selected row's name when it's too long to fit.
+  private marqueeText = ''; // full name + tail, or '' when nothing scrolls
+  private marqueeChars = 0; // visible glyph budget for the name column
+  private marqueePos = 0;
+  private marqueeFrame = 0;
+  private marqueeLabel?: Phaser.GameObjects.Text;
 
   constructor(
     private readonly scene: Phaser.Scene,
@@ -88,11 +108,20 @@ export class ShopMenu {
     this.width = GAME_WIDTH - 8;
     const height = GAME_HEIGHT - 8;
     this.detailTop = height - PAD - DETAIL_LINES * DETAIL_LINE_H;
+    this.vis = Math.max(1, Math.floor((this.detailTop - 4 - LIST_TOP) / ROW_H));
     this.panel = new Panel(scene, 4, 4, this.width, height).fixedToCamera();
 
-    this.title = makeText(scene, PAD, PAD - 2, shop.name, theme.text.accent);
+    // Measure one glyph of the bundled font so the marquee can size its window
+    // in characters (the font is near-fixed-width, so an average is plenty).
+    const probe = makeText(scene, 0, 0, 'AAAAAAAAAA', theme.text.base);
+    this.charW = probe.width / 10;
+    probe.destroy();
+
+    this.title = makeText(scene, PAD, HEADER_Y, shop.name, theme.text.accent);
     this.panel.add(this.title);
-    this.wallet = makeText(scene, this.width - PAD, PAD - 2, '', theme.text.base).setOrigin(1, 0);
+    // Right header carries the mode + wallet on one line, right-aligned, so a long
+    // shop name and the balance never collide (the title is clipped to fit).
+    this.wallet = makeText(scene, this.width - PAD, HEADER_Y, '', theme.text.base).setOrigin(1, 0);
     this.panel.add(this.wallet);
 
     const sep = scene.add
@@ -104,9 +133,36 @@ export class ShopMenu {
     this.detail.setWordWrapWidth(this.width - PAD * 2);
     this.panel.add(this.detail);
 
+    // Scroll affordances: a small filled triangle at the top/bottom of the list
+    // when there are off-screen entries above/below.
+    const triColor = hex(theme.color.panelEdge);
+    const triX = this.width - PAD - 2;
+    this.scrollUp = scene.add
+      .triangle(triX, LIST_TOP - 3, 0, 4, 4, 4, 2, 0, triColor)
+      .setOrigin(0.5, 0.5)
+      .setVisible(false);
+    this.scrollDown = scene.add
+      .triangle(triX, this.detailTop - 6, 0, 0, 4, 0, 2, 4, triColor)
+      .setOrigin(0.5, 0.5)
+      .setVisible(false);
+    this.panel.add(this.scrollUp);
+    this.panel.add(this.scrollDown);
+
     this.cursor = new Cursor(scene).setScrollFactor0();
     this.panel.add(this.cursor.sprite);
     this.panel.container.setVisible(false);
+  }
+
+  /** Trim a string with an ellipsis so the rendered label fits `maxW` pixels. */
+  private clip(label: Phaser.GameObjects.Text, full: string, maxW: number): boolean {
+    label.setText(full);
+    if (label.width <= maxW) return false;
+    let s = full;
+    while (s.length > 1 && label.width > maxW) {
+      s = s.slice(0, -1);
+      label.setText(s.trimEnd() + '…');
+    }
+    return true;
   }
 
   // --- Entry collection ------------------------------------------------------
@@ -146,35 +202,61 @@ export class ShopMenu {
   // --- Rendering --------------------------------------------------------------
 
   private rebuild(): void {
+    this.entries = this.mode === 'buy' ? this.collectBuy() : this.collectSell();
+    this.index = Math.max(0, Math.min(this.index, this.entries.length - 1));
+    this.scrollTop = Math.min(this.scrollTop, Math.max(0, this.entries.length - this.vis));
+    this.ensureVisible();
+    this.renderList();
+    this.refresh();
+  }
+
+  /** Draw the visible scroll window of rows (entries[scrollTop .. +vis]). */
+  private renderList(): void {
     for (const o of this.rowObjects) o.destroy();
     this.rowObjects = [];
     this.names = [];
-    this.entries = this.mode === 'buy' ? this.collectBuy() : this.collectSell();
-    this.index = Math.max(0, Math.min(this.index, this.entries.length - 1));
-    this.title.setText(`${this.shop.name} — ${this.mode === 'buy' ? 'BUY' : 'SELL'}`);
+    this.marqueeLabel = undefined;
+    this.marqueeText = '';
 
     if (this.entries.length === 0) {
       const blank = this.mode === 'buy' ? 'Nothing on the shelves today.' : 'Nothing in your pack to sell.';
-      this.track(makeText(this.scene, PAD, LIST_TOP + 4, blank, theme.text.dim));
-    } else {
-      this.entries.forEach((entry, i) => {
-        const rowY = LIST_TOP + i * ROW_H;
-        const name = makeText(this.scene, PAD + 10, rowY + 3, entry.name, theme.text.base);
-        this.track(name);
-        this.names.push(name);
-        this.track(
-          makeText(
-            this.scene,
-            this.width - PAD,
-            rowY + 3,
-            `${formatWicks(entry.wicks)}  x${entry.held}`,
-            theme.text.base,
-          ).setOrigin(1, 0),
-        );
-      });
+      this.track(makeText(this.scene, NAME_X, LIST_TOP + 4, blank, theme.text.dim));
+      this.scrollUp.setVisible(false);
+      this.scrollDown.setVisible(false);
+      return;
     }
+
+    const end = Math.min(this.entries.length, this.scrollTop + this.vis);
+    for (let i = this.scrollTop; i < end; i++) {
+      const entry = this.entries[i];
+      const rowY = LIST_TOP + (i - this.scrollTop) * ROW_H;
+      // Price + held count, right-aligned. Drawn first so its left edge bounds the name.
+      const price = this.track(
+        makeText(
+          this.scene,
+          this.width - PAD,
+          rowY + 3,
+          `${formatWicks(entry.wicks)}  x${entry.held}`,
+          theme.text.base,
+        ).setOrigin(1, 0),
+      );
+      const maxNameW = this.width - PAD - price.width - COL_GAP - NAME_X;
+      const name = this.track(makeText(this.scene, NAME_X, rowY + 3, entry.name, theme.text.base));
+      const overflow = this.clip(name, entry.name, maxNameW);
+      this.names[i - this.scrollTop] = name;
+      // The selected row reveals a too-long name by scrolling it (a marquee).
+      if (i === this.index && overflow) {
+        this.marqueeLabel = name;
+        this.marqueeText = entry.name + MARQUEE_TAIL;
+        this.marqueeChars = Math.max(1, Math.floor(maxNameW / this.charW));
+        this.marqueePos = 0;
+        this.marqueeFrame = 0;
+        name.setText(this.marqueeText.slice(0, this.marqueeChars)); // clean start window
+      }
+    }
+    this.scrollUp.setVisible(this.scrollTop > 0);
+    this.scrollDown.setVisible(end < this.entries.length);
     this.panel.container.bringToTop(this.cursor.sprite);
-    this.refresh();
   }
 
   private track<T extends Phaser.GameObjects.GameObject>(obj: T): T {
@@ -184,22 +266,57 @@ export class ShopMenu {
   }
 
   private refresh(): void {
-    this.wallet.setText(formatWicks(this.money));
+    this.wallet.setText(`${this.mode === 'buy' ? 'BUY' : 'SELL'} ${formatWicks(this.money)}`);
+    // Clip the shop name to whatever room the mode + wallet leave it.
+    this.clip(this.title, this.shop.name, this.width - PAD - this.wallet.width - COL_GAP - PAD);
     if (this.entries.length === 0) {
       this.cursor.sprite.setVisible(false);
       this.detail.setText('');
       return;
     }
     this.cursor.sprite.setVisible(true);
-    this.cursor.moveTo(PAD, LIST_TOP + this.index * ROW_H + ROW_H / 2);
+    const slot = this.index - this.scrollTop;
+    this.cursor.moveTo(PAD, LIST_TOP + slot * ROW_H + ROW_H / 2);
     const affordable = (e: CounterEntry): boolean => this.mode === 'sell' || e.wicks <= this.money;
-    this.names.forEach((name, i) => {
-      const e = this.entries[i];
+    this.names.forEach((name, s) => {
+      const e = this.entries[this.scrollTop + s];
       name.setColor(
-        i === this.index ? theme.text.accent.color : affordable(e) ? theme.text.base.color : theme.text.dim.color,
+        this.scrollTop + s === this.index
+          ? theme.text.accent.color
+          : affordable(e)
+            ? theme.text.base.color
+            : theme.text.dim.color,
       );
     });
-    this.detail.setText(this.entries[this.index].desc);
+    this.setDetail(this.entries[this.index].desc);
+  }
+
+  /** Show a description, clamped to the detail box so it never runs off-screen. */
+  private setDetail(desc: string): void {
+    this.detail.setText(desc);
+    const lines = this.detail.getWrappedText(desc);
+    if (lines.length > DETAIL_LINES) {
+      const keep = lines.slice(0, DETAIL_LINES);
+      const trimmed = keep[keep.length - 1].replace(/\s+\S*$/, '');
+      keep[keep.length - 1] = (trimmed || keep[keep.length - 1]) + '…';
+      this.detail.setText(keep.join('\n'));
+    }
+  }
+
+  /** Move the scroll window so the current selection sits inside it. */
+  private ensureVisible(): void {
+    if (this.index < this.scrollTop) this.scrollTop = this.index;
+    else if (this.index >= this.scrollTop + this.vis) this.scrollTop = this.index - this.vis + 1;
+  }
+
+  /** Advance the selected row's name marquee (called each frame while trading). */
+  private tickMarquee(): void {
+    if (!this.marqueeLabel || !this.marqueeText) return;
+    if (++this.marqueeFrame < MARQUEE_EVERY) return;
+    this.marqueeFrame = 0;
+    this.marqueePos = (this.marqueePos + 1) % this.marqueeText.length;
+    const doubled = this.marqueeText + this.marqueeText;
+    this.marqueeLabel.setText(doubled.slice(this.marqueePos, this.marqueePos + this.marqueeChars));
   }
 
   private move(dir: number): void {
@@ -207,6 +324,8 @@ export class ShopMenu {
     const next = (this.index + dir + this.entries.length) % this.entries.length;
     if (next !== this.index) {
       this.index = next;
+      this.ensureVisible();
+      this.renderList();
       this.refresh();
       void this.sfx?.play(theme.cursor.moveSfx);
     }
@@ -255,6 +374,7 @@ export class ShopMenu {
       };
       const tick = (): void => {
         input.update();
+        this.tickMarquee();
         if (!armed) {
           if (!input.isDown(InputAction.Confirm) && !input.isDown(InputAction.Cancel)) armed = true;
           return;

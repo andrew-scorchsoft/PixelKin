@@ -9,6 +9,11 @@
       "width": 128,
       "height": 128
     },
+    "brisa": {
+      "path": "assets/sprites/trainers/brisa.webp",
+      "width": 128,
+      "height": 128
+    },
     "georgina": {
       "path": "assets/sprites/trainers/georgina.webp",
       "width": 128,

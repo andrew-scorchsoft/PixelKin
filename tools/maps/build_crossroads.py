@@ -52,7 +52,8 @@ mk.organic_border(tree, W, H, top=1, left=1, right=1, depth=2,
                   bumps=[(7, 1, 1), (13, 1, 1), (2, 12, 2), (17, 13, 2), (8, 1, 1)])
 mk.rect(tree, W, H, 0, H - 2, W - 1, H - 1)              # bottom border too
 mk.blob(tree, W, H, 5, 15, 2.0, 1.4)
-mk.blob(tree, W, H, 14, 15, 2.0, 1.4)
+# (the old bottom-east forest blob sat ON the inn's front apron — dropped; the
+#  inn's apron is carved out of the bottom border below, after the path is laid.)
 
 # the clearing's accent: a small still pool in the west, where wayfarers water
 # their kin. (It moved south-west when the Galehigh spoke woke through the old
@@ -88,6 +89,12 @@ mk.vline(path, W, H, 3, 0, 4); mk.vline(path, W, H, 4, 0, 4)
 # opened from the deep (graph.ts `shortcut_crossroads`, wakes with
 # flag:shortcut_mine; walkthrough/02-east §0 rule 3). A short stub to the edge.
 mk.rect(path, W, H, CX - 1, 16, CX, 16); mk.vline(path, W, H, CX - 1, 16, 17)
+# the waystation INN's apron (inn at cols 13-17, door at (15,14)): a 2-row town
+# apron in front of the door, joined LEFT to the south road so the inn sits in
+# the plaza, not on a lawn (level-design §11 rule 5). Painted into the terrain
+# layer so the autotiler draws its edges/corners — the old approach was carved
+# raw into the baked base layer and never autotiled (hard, disjoint strips).
+mk.rect(path, W, H, 11, 15, 17, 16)
 # punch the borders where the roads leave
 for y in (CY - 1, CY):
     tree[y * W + 0] = 0; tree[y * W + 1] = 0
@@ -104,6 +111,12 @@ for x in (3, 4):
 # punch the mine-cart hoist opening (SW edge, col CX-1)
 for y in (16, 17):
     tree[y * W + (CX - 1)] = 0
+# carve the inn's apron out of the forest (the bottom border + the dropped blob
+# covered the inn's front) — open ground at rows 15-16, cols 11-17. Row 17 stays
+# tree so the map's bottom edge is still sealed behind the inn.
+for y in (15, 16):
+    for x in range(11, 18):
+        tree[y * W + x] = 0
 
 # ---- base + layers --------------------------------------------------------------
 gg = [gid("grass0"), gid("grass1"), gid("grass2"), gid("grass3")]
@@ -152,7 +165,7 @@ for (x, y) in [(CX, CY - 1), (CX + 1, CY - 1)]:
 for (x, y) in [(CX - 2, CY - 2), (CX + 3, CY - 2), (CX - 2, CY + 2), (CX + 3, CY + 2)]:
     deco[y * W + x] = gid("flowerbed_a") if (x + y) % 2 else gid("flowerbed_b")
 sign_tiles = {
-    "sign_waystone": (CX + 2, CY),       # on the plaza, by the Waystone
+    "sign_waystone": (CX + 3, CY),       # off to the east of the Waystone, clear of the main lane
     "sign_spire": (CX - 1, CY + 3),      # beside the south (inward) road
     "sign_lowleaf": (CX + 3, 5),         # beside the east-north (Lowleaf) spoke
     "sign_galehigh": (CX - 4, 5),        # beside the west-north (Galehigh) spoke
@@ -469,6 +482,17 @@ m = {
          "sprite": "npc_boy", "movement": "wander",
          "dialogue_ref": "npc.waystone_kid_trail_done",
          "requires_flag": "flag:q_central_trail_done"},
+        # P1 post-game "Letters Home" line (the Waykeeper's postbag): a dawn-only
+        # pickup on the plaza, then the done-state keeper. Folded in from the
+        # shipped JSON's hand-added pair so a rebuild keeps them.
+        {"id": "waykeeper_postbag", "at": {"tx": 8, "ty": 7}, "facing": "down",
+         "sprite": "item_cache", "movement": "static",
+         "dialogue_ref": "script.post_letters_give",
+         "requires_flag": "flag:dawn", "hidden_when_flag": "flag:q_post_letters"},
+        {"id": "waykeeper_postbag_done", "at": {"tx": 8, "ty": 7}, "facing": "down",
+         "sprite": "npc_lampwarden", "movement": "look_around",
+         "dialogue_ref": "script.post_letters_done",
+         "requires_flag": "flag:q_post_letters_all", "hidden_when_flag": "flag:q_post_letters_done"},
     ],
     "gates": [],
     "music": "assets/audio/music/tinderwick-a.mp3",

@@ -581,7 +581,7 @@
         "ty": 5
       },
       "facing": "down",
-      "sprite": "npc_lampwarden",
+      "sprite": "brisa",
       "movement": "static",
       "dialogue_ref": "npc.brisa_not_ready",
       "hidden_when_flag": "flag:caught_first_kin"
@@ -593,7 +593,7 @@
         "ty": 5
       },
       "facing": "down",
-      "sprite": "npc_lampwarden",
+      "sprite": "brisa",
       "movement": "static",
       "dialogue_ref": "script.brisa_quest",
       "requires_flag": "flag:caught_first_kin",
@@ -606,7 +606,7 @@
         "ty": 5
       },
       "facing": "down",
-      "sprite": "npc_lampwarden",
+      "sprite": "brisa",
       "movement": "static",
       "dialogue_ref": "npc.brisa_meet_beacon",
       "requires_flag": "flag:has_beacon_wick",
@@ -619,7 +619,7 @@
         "ty": 5
       },
       "facing": "down",
-      "sprite": "npc_lampwarden",
+      "sprite": "brisa",
       "movement": "static",
       "dialogue_ref": "npc.brisa_after",
       "requires_flag": "gleam:ember"

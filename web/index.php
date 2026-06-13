@@ -167,6 +167,23 @@ page_head(
     </div>
 </section>
 
+<section class="band explore">
+    <h2 class="band-title">More to explore</h2>
+    <p class="band-sub">Just passing through the homepage? Here's the rest of Vesperholm's lamplight.</p>
+    <div class="explore-grid">
+        <?php foreach (EXPLORE as $x): ?>
+            <a class="explore-card" href="<?= e($x['href']) ?>">
+                <span class="explore-ico" aria-hidden="true"><?= $x['ico'] ?></span>
+                <span class="explore-head">
+                    <span class="explore-label"><?= e($x['label']) ?></span>
+                    <span class="explore-arrow" aria-hidden="true">›</span>
+                </span>
+                <span class="explore-blurb"><?= e($x['blurb']) ?></span>
+            </a>
+        <?php endforeach; ?>
+    </div>
+</section>
+
 <section class="band cta-band">
     <div class="cta-inner">
         <h2>The lamp is lit. The road is dark.</h2>

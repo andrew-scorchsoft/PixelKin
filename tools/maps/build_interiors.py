@@ -448,6 +448,13 @@ def build_house():
     # External-event ordering is safe: every pre-omen stage hides on
     # `flag:dusk_begins`; everything later is talk-gated, so no two coexist.
     npcs = [
+        # Gran's travelling satchel, left out on the floor for your Wayfaring —
+        # three balms to start you off (player-suggested, 2026-06). Always
+        # available; vanishes once taken.
+        {"id": "cache_gran_satchel", "at": {"tx": 8, "ty": 8}, "facing": "down",
+         "sprite": "item_cache", "movement": "static",
+         "dialogue_ref": "script.pickup_gran_satchel",
+         "hidden_when_flag": "flag:picked_gran_satchel"},
         {"id": "house_parent", "at": {"tx": 5, "ty": 5}, "facing": "down",
          "sprite": "npc_parent", "movement": "static", "dialogue_ref": "npc.house_parent",
          "hidden_when_flag": "flag:has_starter"},
@@ -525,21 +532,21 @@ def all_maps():
                        "brisa", "npc.brisa_tallow",
                        npcs_override=[
                            {"id": "brisa_pre", "at": "dais", "facing": "down",
-                            "sprite": "npc_lampwarden", "movement": "static",
+                            "sprite": "brisa", "movement": "static",
                             "dialogue_ref": "npc.brisa_not_ready",
                             "hidden_when_flag": "flag:caught_first_kin"},
                            {"id": "brisa_quest", "at": "dais", "facing": "down",
-                            "sprite": "npc_lampwarden", "movement": "static",
+                            "sprite": "brisa", "movement": "static",
                             "dialogue_ref": "script.brisa_quest",
                             "requires_flag": "flag:caught_first_kin",
                             "hidden_when_flag": "flag:has_beacon_wick"},
                            {"id": "brisa_ready", "at": "dais", "facing": "down",
-                            "sprite": "npc_lampwarden", "movement": "static",
+                            "sprite": "brisa", "movement": "static",
                             "dialogue_ref": "npc.brisa_meet_beacon",
                             "requires_flag": "flag:has_beacon_wick",
                             "hidden_when_flag": "gleam:ember"},
                            {"id": "brisa_fair", "at": "dais", "facing": "down",
-                            "sprite": "npc_lampwarden", "movement": "static",
+                            "sprite": "brisa", "movement": "static",
                             "dialogue_ref": "npc.brisa_after",
                             "requires_flag": "gleam:ember"},
                        ]),

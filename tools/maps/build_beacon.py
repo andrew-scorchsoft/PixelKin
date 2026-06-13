@@ -109,7 +109,7 @@ def lantern_room():
         # Brisa waits at the lantern until the Ember stands; then she keeps the
         # hall below (npc.brisa_after) and the fair takes the square.
         {"id": "brisa", "at": {"tx": door_x, "ty": 5}, "facing": "down",
-         "sprite": "npc_lampwarden", "movement": "static",
+         "sprite": "brisa", "movement": "static",
          "dialogue_ref": "npc.brisa_tallow", "hidden_when_flag": "gleam:ember"},
     ]
     return mapdef("tinderwick_beacon_top", "The Beacon — Lantern Room", W, H,

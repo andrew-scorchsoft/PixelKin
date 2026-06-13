@@ -556,6 +556,13 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', text: "A dropped courier's purse, half-buried in the sand. Found 80 WICKS!" },
     { op: 'setFlag', flag: 'flag:picked_flats_wicks' },
   ],
+  // Gran's send-off satchel on the home floor — three balms for the road.
+  'script.pickup_gran_satchel': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'tallow_balm', count: 3 },
+    { op: 'say', text: "Gran's old travelling satchel, packed and waiting by the door. Found 3 TALLOW BALMS!" },
+    { op: 'setFlag', flag: 'flag:picked_gran_satchel' },
+  ],
   // The Lanternway lane caches (one per spoke lane, the variety rule across
   // the set: balm / charge / loose wicks / a found-to-sell cake / balms).
   'script.pickup_lane_tinderwick': [

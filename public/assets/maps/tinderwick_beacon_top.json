@@ -1,6 +1,6 @@
 {
   "id": "tinderwick_beacon_top",
-  "display_name": "The Beacon \u2014 Lantern Room",
+  "display_name": "The Beacon — Lantern Room",
   "width": 12,
   "height": 9,
   "tile_width": 16,
@@ -347,7 +347,7 @@
         "ty": 5
       },
       "facing": "down",
-      "sprite": "npc_lampwarden",
+      "sprite": "brisa",
       "movement": "static",
       "dialogue_ref": "npc.brisa_tallow",
       "hidden_when_flag": "gleam:ember"

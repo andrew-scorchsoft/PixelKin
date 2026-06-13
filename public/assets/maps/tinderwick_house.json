@@ -512,6 +512,18 @@
   "encounters": [],
   "npcs": [
     {
+      "id": "cache_gran_satchel",
+      "at": {
+        "tx": 8,
+        "ty": 8
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_gran_satchel",
+      "hidden_when_flag": "flag:picked_gran_satchel"
+    },
+    {
       "id": "house_parent",
       "at": {
         "tx": 5,

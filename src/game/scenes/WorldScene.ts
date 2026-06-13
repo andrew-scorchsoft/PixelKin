@@ -207,6 +207,9 @@ export class WorldScene extends Phaser.Scene {
     try {
       const map = await loadMap(mapId);
       this.map = map;
+      // Reflect where we are in the browser tab — handy for referencing the
+      // current map while playtesting.
+      document.title = `PixelKin — ${map.def.display_name}`;
       this.collision = new CollisionGrid(map);
       this.encounters = new EncounterSystem(map);
       this.render = await renderMap(this, map);
@@ -231,6 +234,7 @@ export class WorldScene extends Phaser.Scene {
 
       if (initial) this.cameras.main.fadeIn(theme.transition.fadeMs, 0, 0, 0);
       this.ready = true;
+      this.flashLocationBanner(map.def.display_name);
       this.noteChartDiscovery(mapId);
       void this.persist(); // autosave on entering any map (so Continue always works)
     } catch (err) {
@@ -316,6 +320,34 @@ export class WorldScene extends Phaser.Scene {
       onComplete: () => {
         this.saveGlyph?.destroy();
         this.saveGlyph = undefined;
+      },
+    });
+  }
+
+  private locationBanner?: Phaser.GameObjects.Text;
+  private lastBanneredMap?: string;
+  /** Flash the area name in the bottom-left for a beat when we step into a new
+   *  map — opposite the SAVED corner glyph, so on a map-entry autosave the two
+   *  sit either side. Skipped when re-entering the same-named map. */
+  private flashLocationBanner(displayName: string): void {
+    if (!displayName || displayName === this.lastBanneredMap) return;
+    this.lastBanneredMap = displayName;
+    this.locationBanner?.destroy();
+    const { height } = this.cameras.main;
+    this.locationBanner = makeText(this, 4, height - 4, displayName, theme.text.accent)
+      .setOrigin(0, 1)
+      .setScrollFactor(0)
+      .setDepth(theme.depth.overlayDim + 1)
+      .setAlpha(0);
+    this.tweens.add({
+      targets: this.locationBanner,
+      alpha: 1,
+      duration: 250,
+      yoyo: true,
+      hold: 1100,
+      onComplete: () => {
+        this.locationBanner?.destroy();
+        this.locationBanner = undefined;
       },
     });
   }
