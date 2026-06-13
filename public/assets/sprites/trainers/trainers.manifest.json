@@ -9,6 +9,11 @@
       "width": 128,
       "height": 128
     },
+    "georgina": {
+      "path": "assets/sprites/trainers/georgina.webp",
+      "width": 128,
+      "height": 128
+    },
     "lifter_abdul": {
       "path": "assets/sprites/trainers/lifter_abdul.webp",
       "width": 128,
