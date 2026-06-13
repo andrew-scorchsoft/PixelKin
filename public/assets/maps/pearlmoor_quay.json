@@ -2405,10 +2405,10 @@
         "ty": 12
       },
       "trigger": "step_on",
-      "to_map": "vesper_crossroads",
+      "to_map": "lanternway_pearlmoor",
       "to": {
-        "tx": 19,
-        "ty": 9
+        "tx": 23,
+        "ty": 12
       },
       "facing": "left",
       "transition": "fade"

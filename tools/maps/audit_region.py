@@ -270,10 +270,36 @@ def main() -> int:
                 groups.append((tgt, stands))
         if len(groups) < 2:
             continue  # nothing to connect (single exit / dead-end spur)
-        anchor_tgt, anchor = groups[0]
-        reach = mm.bfs(anchor, abilities=abil)
-        for tgt, stands in groups[1:]:
-            if not any(t in reach for t in stands):
+        # Union-find over the portal groups: two groups join if mutually walkable —
+        # OR if they lead to the SAME neighbour (a pass-through map stitches its own
+        # mouths: that neighbour's foot-path row proves its insides connect, so a
+        # map legitimately split by elevation and crossed THROUGH a cave — the
+        # Lanternway Under-Lane pattern — is not a main-path split).
+        parent = list(range(len(groups)))
+
+        def find(i: int) -> int:
+            while parent[i] != i:
+                parent[i] = parent[parent[i]]
+                i = parent[i]
+            return i
+
+        def union(i: int, j: int) -> None:
+            parent[find(i)] = find(j)
+
+        reaches = [mm.bfs(stands, abilities=abil) for _, stands in groups]
+        for i in range(len(groups)):
+            for j in range(i + 1, len(groups)):
+                if any(t in reaches[i] for t in groups[j][1]):
+                    union(i, j)
+        by_tgt: dict[str, list[int]] = defaultdict(list)
+        for i, (tgt, _) in enumerate(groups):
+            by_tgt[tgt].append(i)
+        for idxs in by_tgt.values():
+            for j in idxs[1:]:
+                union(idxs[0], j)
+        anchor_tgt = groups[0][0]
+        for i, (tgt, _) in enumerate(groups[1:], start=1):
+            if find(i) != find(0):
                 keyring = "on foot" if not abil else "with " + "+".join(sorted(abil))
                 foot_fails.append(f"{mid}: exit to '{tgt}' is unreachable {keyring} "
                                   f"from exit to '{anchor_tgt}' (main-path split)")

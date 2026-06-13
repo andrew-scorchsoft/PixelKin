@@ -205,7 +205,16 @@ export const CHARTS: readonly ChartEntry[] = [
     region: 'outer',
     kind: 'route',
     art: AREA('lanternway'),
-    maps: [], // forward tease: no single map yet — add ids when authored
+    // The five spoke lanes (build_lanternway.py) — first step onto ANY of them
+    // banks the chart (the Tinderwick spoke on the opening errand, usually).
+    maps: [
+      'lanternway_tinderwick',
+      'lanternway_pearlmoor',
+      'lanternway_lowleaf',
+      'lanternway_undercut',
+      'lanternway_galehigh',
+      'lanternway_nightreach',
+    ],
   },
   {
     id: 'coldfog-marches',

@@ -616,9 +616,13 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'BLOOM CRIER', text: 'They say a Glimmerstep opens the deep wood north of town, the Spore Grotto under it — and old Tideglass Cavern, all the way back on the Dimglass flats! A whole dark map, gone friendly!' },
   ],
 
+  // The waystation inn (crossroads_inn interior) — the welcome shingle.
+  'sign.crossroads_inn': [
+    { text: 'THE WAYSTATION INN\nA warm bed and a warmer hearth for any Wayfarer the Lanternway brings in. Rooms by the night; the kettle is always on.' },
+  ],
   // --- Vesper Crossroads (the Lanternway hub) ---------------------------------
   'sign.crossroads': [
-    { text: 'VESPER CROSSROADS\nAll the Lanternway meets here. SOUTH-WEST: Tinderwick. SOUTH-EAST: Pearlmoor Quay. The other roads sleep, unlit.' },
+    { text: 'VESPER CROSSROADS\nAll the Lanternway meets here. SOUTH-WEST: Tinderwick. SOUTH-EAST: Pearlmoor Quay — its lamps wake with the Tide. The other roads sleep, unlit.' },
   ],
   'sign.crossroads_spire': [
     { text: 'The inward road. Eight braziers stand cold around its gate — one for each constellation. The mountain waits.' },
@@ -637,10 +641,48 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'WAYKEEPER', text: 'The Lowleaf spoke sleeps yet, Wayfarer — its lamps answer the Verdant, and the Verdant is still dark.' },
     { speaker: 'WAYKEEPER', text: 'The long way round is the fen-road east of Pearlmoor. Roads wake to Gleams; relight the green one and this one will carry you home after.' },
   ],
+  // --- The Lanternway lane milestones (one sign per spoke lane map; the
+  // bend's marker stone — each names both ends so the turn never disorients).
+  'sign.lanternway_tinderwick': [
+    { text: 'THE LANTERNWAY — TINDERWICK SPOKE\nWest and down for Tinderwick. East and up for the Vesper Crossroads — Star-tender Fenn waits at the waystone. Keep to the lamps: no wild kin troubles a lit road.' },
+  ],
+  // --- Opening wayfinding: gentle hints that Fenn is east at the crossroads
+  // and the Lanternway is safe, so the walk to the ceremony never confuses or
+  // frightens a brand-new player. Both gone once 'flag:has_starter' is set.
+  'npc.tinderwick_fenn_hint': [
+    { speaker: 'TOWNSWOMAN', text: "Off to find Star-tender Fenn, are you? He went east down the Lanternway, to the Vesper Crossroads — said he'd wait by the waystone for you." },
+    { speaker: 'TOWNSWOMAN', text: "Don't you fret about the walk, dear. The lamps keep the wild kin clear of that lane — it's the one safe road out of Tinderwick. Straight there and back, no trouble." },
+  ],
+  'npc.lane_fenn_hint': [
+    { speaker: 'WAYFARER', text: 'The waystone\'s just up ahead, friend. There\'s an old Star-tender there pacing a furrow in the road — waiting on someone, I\'d say. You, most like.' },
+    { speaker: 'WAYFARER', text: 'Easy lane, this one. The lamps see off anything with teeth, so you\'ll come to no harm walking it — there and back as many times as you please.' },
+  ],
+  'sign.lanternway_pearlmoor': [
+    { text: 'THE LANTERNWAY — PEARLMOOR SPOKE\nWest and up for the Crossroads. East and down for the quay — you will smell the salt before you see the lamps.' },
+  ],
+  'sign.lanternway_lowleaf': [
+    { text: 'THE LANTERNWAY — LOWLEAF SPOKE\nThe lane ends at the bank ahead. Take the Under-Lane through the rock — the shelf above carries you east to the Bloom. Green road, green light.' },
+  ],
+  'sign.lanternway_undercut': [
+    { text: 'THE UNDER-LANE\nCut and lamped by the Waykeepers when the bank slipped. The lane you walked in on runs over your head.' },
+  ],
+  'sign.lanternway_galehigh': [
+    { text: 'THE LANTERNWAY — GALEHIGH SPOKE\nA straight climb north. The wind combs these hedges long before you see the terraces.' },
+  ],
+  'sign.lanternway_nightreach': [
+    { text: "THE LANTERNWAY — NIGHTREACH SPOKE\nThe watchers' road: north for the observatory hill, east for the Crossroads. The last lamps lit, and the proudest." },
+  ],
+  // The Pearlmoor spoke — sleeping until the Tide Gleam wakes it (the same
+  // earned return-compressor as every other town spoke): the first journey to
+  // the quay is the coast road, the lane home is the reward for relighting it.
+  'npc.waykeeper_pearlmoor_gate': [
+    { speaker: 'WAYKEEPER', text: 'The Pearlmoor spoke sleeps yet, Wayfarer — its lamps answer the Tide, and the Tide is still dark.' },
+    { speaker: 'WAYKEEPER', text: 'The long way round is the coast road north of Tinderwick. Roads wake to Gleams; relight the Tide at the quay and this spoke will carry you home after.' },
+  ],
 
   // The onward roads are shut to a Wayfarer with no kin yet — the opening's
   // soft wall, pointing a brand-new player back to Fenn at the Waystone (the
-  // East/North warps gate on flag:has_starter, so this only ever fires pre-kin).
+  // north marsh road gates on flag:has_starter, so this only ever fires pre-kin).
   'crossroads.no_kin_yet': [
     { text: 'No kin walks at your side yet, and the roads beyond the crossroads are no place to wander alone. Star-tender Fenn waits at the Waystone — see him, and take up your first lamp, before you set out.' },
   ],
@@ -762,7 +804,7 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'SOUTH: THE LANTERNWAY\nThe lit road to the Vesper Crossroads, where every way in Vesperholm meets.' },
   ],
   'sign.crossroads_galehigh': [
-    { text: 'NORTH-WEST: GALEHIGH TERRACES\nThe mountain spoke. Its lamps wake with the Storm constellation — high road, high wind.' },
+    { text: 'NORTH: GALEHIGH TERRACES\nThe mountain spoke. Its lamps wake with the Storm constellation — high road, high wind.' },
   ],
   'npc.waykeeper_galehigh_gate': [
     { speaker: 'WAYKEEPER', text: 'The Galehigh spoke sleeps yet, Wayfarer — its lamps answer the Storm, and the Storm is still dark.' },
@@ -1327,10 +1369,10 @@ export const DIALOGUE: DialogueRegistry = {
 
   // --- The Crossroads' Nightreach spoke (W4's gate pair) + R5's hung chart ---------
   'sign.crossroads_nightreach': [
-    { text: 'NORTH-WEST — THE NIGHTREACH SPOKE. Dark until the Lunar Gleam stands: the last spoke lights when the last lamp does.' },
+    { text: 'WEST — THE NIGHTREACH SPOKE. Dark until the Lunar Gleam stands: the last spoke lights when the last lamp does.' },
   ],
   'npc.waykeeper_nightreach_gate': [
-    { speaker: 'WAYKEEPER', text: 'The north-west spoke sleeps yet, friend — its lamps answer the Lunar, and the Lunar has not come home. When the watchers\' star stands up, this road will light itself the same hour. Last spoke of my Round. I keep its wicks trimmed anyway.' },
+    { speaker: 'WAYKEEPER', text: 'The west spoke sleeps yet, friend — its lamps answer the Lunar, and the Lunar has not come home. When the watchers\' star stands up, this road will light itself the same hour. Last spoke of my Round. I keep its wicks trimmed anyway.' },
   ],
   'npc.waykeeper_chart_hung': [
     { speaker: 'WAYKEEPER', text: 'Forty years of guesswork charts, and now the true sky hangs on the Waystone where every road can see it. Travellers stop and look UP now, before they pick a direction. That is the whole Lanternway, working.' },

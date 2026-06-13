@@ -67,7 +67,8 @@ What's already in the repo:
 - **A playable game engine** (Phaser 3 + TypeScript). Tile maps from our own JSON
   schema, grid movement, NPCs/signs/warps/cutscenes, a data-driven turn-based battle
   system, a **pause menu** (a party screen to inspect a kin's stats/moves and reorder
-  who leads, **the Hearth** for kin storage, and an items screen to heal), and a
+  who leads, **the Hearth** for kin storage, an items screen to heal, and a classic
+  **region world map** with a you-are-here marker), and a
   flag/save layer behind the platform seam — all built on
   one in-canvas **UI design language** ([`src/game/ui/theme.ts`](src/game/ui/theme.ts))
   every screen shares. Engine code is in [`src/game/`](src/game/), the DOM

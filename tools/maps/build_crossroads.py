@@ -121,14 +121,16 @@ terrain_layers = [
 # ---- objects: crown trees + the plaza's four lamps -------------------------------
 objects = [
     {"id": "tree_a", "sprite": "tinderwick_tree", "at": {"tx": 2, "ty": 2}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
-    {"id": "tree_b", "sprite": "tinderwick_tree", "at": {"tx": 14, "ty": 12}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "tree_c", "sprite": "tinderwick_tree", "at": {"tx": 3, "ty": 12}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "tree_d", "sprite": "tinderwick_tree", "at": {"tx": 12, "ty": 1}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     # the plaza's lamp ring — the hub IS lamplight (no 1-tile lamps; 1x3 posts)
     {"id": "lamp_nw", "sprite": "tinderwick_lamp_post", "at": {"tx": CX - 3, "ty": CY - 4}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "lamp_ne", "sprite": "tinderwick_lamp_post", "at": {"tx": CX + 4, "ty": CY - 4}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "lamp_sw", "sprite": "tinderwick_lamp_post", "at": {"tx": CX - 3, "ty": CY + 1}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_se", "sprite": "tinderwick_lamp_post", "at": {"tx": CX + 4, "ty": CY + 1}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    # the concept art's centrepiece: the enterable waystation INN (SE, 5x5) and
+    # the multi-arm FINGERPOST landmark at the junction (walk-under prop).
+    {"id": "inn", "sprite": "vesper_crossroads_inn", "at": {"tx": 13, "ty": 10}, "w": 5, "h": 5, "overhang": 3},
+    {"id": "fingerpost", "sprite": "vesper_crossroads_fingerpost", "at": {"tx": 7, "ty": 9}, "w": 3, "h": 3, "overhang": 2, "walk_under": True},
 ]
 building_cells = {(x, y) for o in objects
                   for y in range(o["at"]["ty"], o["at"]["ty"] + o["h"])
@@ -171,54 +173,55 @@ m = {
                {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)}],
     "objects": objects,
     "warps": [
-        # live spokes (graph.ts): WEST <-> Tinderwick, EAST <-> Pearlmoor Quay
+        # THE SPOKES ARE LANE MAPS NOW (2026-06 topology fix, build_lanternway.py):
+        # every spoke warp targets its lanternway_* lane, and the hub's gates
+        # radiate by TRUE BEARING — the west road carries Tinderwick (SW) and
+        # Nightreach (W), the east road Pearlmoor (SE) and Lowleaf (NE), the NW
+        # vertical road is the due-north Galehigh climb. (The galehigh/nightreach
+        # destinations SWAPPED roads — same paint, compass-true gates.)
         {"id": "to_tinderwick", "at": {"tx": 0, "ty": CY}, "trigger": "step_on",
-         "to_map": "tinderwick", "to": {"tx": 26, "ty": 16}, "facing": "left", "transition": "fade"},
+         "to_map": "lanternway_tinderwick", "to": {"tx": 23, "ty": 6}, "facing": "left", "transition": "fade"},
         {"id": "to_tinderwick_n", "at": {"tx": 0, "ty": CY - 1}, "trigger": "step_on",
-         "to_map": "tinderwick", "to": {"tx": 26, "ty": 16}, "facing": "left", "transition": "fade"},
-        # has_starter-gated: the opening's errand loop happens at the waystone —
-        # the east road wakes the moment the ceremony ends.
+         "to_map": "lanternway_tinderwick", "to": {"tx": 23, "ty": 5}, "facing": "left", "transition": "fade"},
+        # gleam:tide-gated (the per-town spoke rule): the quay is first reached
+        # by the coast road; the lane home is the Tide Gleam's reward.
         {"id": "to_pearlmoor", "at": {"tx": W - 1, "ty": CY}, "trigger": "step_on",
-         "to_map": "pearlmoor_quay", "to": {"tx": 1, "ty": 12}, "facing": "right",
-         "requires_flag": "flag:has_starter", "blocked_ref": "crossroads.no_kin_yet", "transition": "fade"},
+         "to_map": "lanternway_pearlmoor", "to": {"tx": 0, "ty": 6}, "facing": "right",
+         "requires_flag": "gleam:tide", "blocked_ref": "npc.waykeeper_pearlmoor_gate", "transition": "fade"},
         {"id": "to_pearlmoor_n", "at": {"tx": W - 1, "ty": CY - 1}, "trigger": "step_on",
-         "to_map": "pearlmoor_quay", "to": {"tx": 1, "ty": 12}, "facing": "right",
-         "requires_flag": "flag:has_starter", "blocked_ref": "crossroads.no_kin_yet", "transition": "fade"},
+         "to_map": "lanternway_pearlmoor", "to": {"tx": 0, "ty": 5}, "facing": "right",
+         "requires_flag": "gleam:tide", "blocked_ref": "npc.waykeeper_pearlmoor_gate", "transition": "fade"},
         # the Lowleaf spoke (east-north) — wakes with the Verdant Gleam
         # (graph.ts declares it ungated; the warp-level flag mirrors the South
         # pattern of gating stricter than the graph, with the Waykeeper's own
         # "not yet" — the long way round is the fen-road, always open).
         {"id": "to_lowleaf", "at": {"tx": W - 1, "ty": 3}, "trigger": "step_on",
-         "to_map": "lowleaf_hollow", "to": {"tx": 1, "ty": 14}, "facing": "right",
+         "to_map": "lanternway_lowleaf", "to": {"tx": 0, "ty": 24}, "facing": "right",
          "requires_flag": "gleam:verdant", "blocked_ref": "npc.waykeeper_lowleaf_gate",
          "transition": "fade"},
         {"id": "to_lowleaf_s", "at": {"tx": W - 1, "ty": 4}, "trigger": "step_on",
-         "to_map": "lowleaf_hollow", "to": {"tx": 1, "ty": 15}, "facing": "right",
+         "to_map": "lanternway_lowleaf", "to": {"tx": 0, "ty": 25}, "facing": "right",
          "requires_flag": "gleam:verdant", "blocked_ref": "npc.waykeeper_lowleaf_gate",
          "transition": "fade"},
-        # the Galehigh spoke (west-north) — wakes with the Storm Gleam (the
-        # Lowleaf pattern verbatim: graph.ts declares it ungated, the warp
-        # gates stricter with the Waykeeper's own "not yet"; the long way
-        # round is Cinderhead Deep's gallery, always open).
-        {"id": "to_galehigh", "at": {"tx": 0, "ty": 3}, "trigger": "step_on",
-         "to_map": "galehigh_terraces", "to": {"tx": 15, "ty": 30}, "facing": "up",
-         "requires_flag": "gleam:storm", "blocked_ref": "npc.waykeeper_galehigh_gate",
-         "transition": "fade"},
-        {"id": "to_galehigh_s", "at": {"tx": 0, "ty": 4}, "trigger": "step_on",
-         "to_map": "galehigh_terraces", "to": {"tx": 16, "ty": 30}, "facing": "up",
-         "requires_flag": "gleam:storm", "blocked_ref": "npc.waykeeper_galehigh_gate",
-         "transition": "fade"},
-        # the Nightreach spoke (NW) — wakes with the Lunar Gleam (the
-        # Lowleaf/Galehigh pattern verbatim: graph.ts declares it ungated,
-        # the warp gates stricter with the Waykeeper's own "not yet"; the
-        # long way round is the rim road, always open).
-        {"id": "to_nightreach", "at": {"tx": 3, "ty": 0}, "trigger": "step_on",
-         "to_map": "nightreach_observatory", "to": {"tx": 4, "ty": 28}, "facing": "up",
+        # the Nightreach spoke (due WEST — it took over the west road rows) —
+        # wakes with the Lunar Gleam.
+        {"id": "to_nightreach", "at": {"tx": 0, "ty": 3}, "trigger": "step_on",
+         "to_map": "lanternway_nightreach", "to": {"tx": 23, "ty": 12}, "facing": "left",
          "requires_flag": "gleam:lunar", "blocked_ref": "npc.waykeeper_nightreach_gate",
          "transition": "fade"},
-        {"id": "to_nightreach_e", "at": {"tx": 4, "ty": 0}, "trigger": "step_on",
-         "to_map": "nightreach_observatory", "to": {"tx": 5, "ty": 28}, "facing": "up",
+        {"id": "to_nightreach_s", "at": {"tx": 0, "ty": 4}, "trigger": "step_on",
+         "to_map": "lanternway_nightreach", "to": {"tx": 23, "ty": 13}, "facing": "left",
          "requires_flag": "gleam:lunar", "blocked_ref": "npc.waykeeper_nightreach_gate",
+         "transition": "fade"},
+        # the Galehigh spoke (due NORTH — it took over the NW vertical road) —
+        # wakes with the Storm Gleam.
+        {"id": "to_galehigh", "at": {"tx": 3, "ty": 0}, "trigger": "step_on",
+         "to_map": "lanternway_galehigh", "to": {"tx": 6, "ty": 23}, "facing": "up",
+         "requires_flag": "gleam:storm", "blocked_ref": "npc.waykeeper_galehigh_gate",
+         "transition": "fade"},
+        {"id": "to_galehigh_e", "at": {"tx": 4, "ty": 0}, "trigger": "step_on",
+         "to_map": "lanternway_galehigh", "to": {"tx": 7, "ty": 23}, "facing": "up",
+         "requires_flag": "gleam:storm", "blocked_ref": "npc.waykeeper_galehigh_gate",
          "transition": "fade"},
         # the north (marsh) road climbs to high country — but it stays shut to a
         # Wayfarer with no kin yet (the opening's soft wall; the Waykeeper's
@@ -246,6 +249,9 @@ m = {
          "to_map": "cinderhead_deep", "to": {"tx": 21, "ty": 15}, "facing": "up",
          "requires_flag": "flag:shortcut_mine", "blocked_ref": "sign.crossroads_mineshortcut",
          "transition": "fade"},
+        # the waystation inn door (walk-onto) — the innkeeper lives inside now.
+        {"id": "enter_inn", "at": {"tx": 15, "ty": 14}, "trigger": "step_on",
+         "to_map": "crossroads_inn", "to": {"tx": 8, "ty": 10}, "facing": "up", "transition": "door"},
     ],
     "triggers": [
         # Fenn hails the player the first time they step into the plaza from the
@@ -291,12 +297,14 @@ m = {
         {"id": "sign_lowleaf", "kind": "sign",
          "at": {"tx": sign_tiles["sign_lowleaf"][0], "ty": sign_tiles["sign_lowleaf"][1]},
          "activation": "interact", "ref": "sign.crossroads_lowleaf"},
-        {"id": "sign_galehigh", "kind": "sign",
-         "at": {"tx": sign_tiles["sign_galehigh"][0], "ty": sign_tiles["sign_galehigh"][1]},
-         "activation": "interact", "ref": "sign.crossroads_galehigh"},
+        # the spoke signs follow the SWAPPED roads: the west-road sign is
+        # Nightreach's, the NW-vertical-road sign is Galehigh's.
         {"id": "sign_nightreach", "kind": "sign",
-         "at": {"tx": sign_tiles["sign_nightreach"][0], "ty": sign_tiles["sign_nightreach"][1]},
+         "at": {"tx": sign_tiles["sign_galehigh"][0], "ty": sign_tiles["sign_galehigh"][1]},
          "activation": "interact", "ref": "sign.crossroads_nightreach"},
+        {"id": "sign_galehigh", "kind": "sign",
+         "at": {"tx": sign_tiles["sign_nightreach"][0], "ty": sign_tiles["sign_nightreach"][1]},
+         "activation": "interact", "ref": "sign.crossroads_galehigh"},
         {"id": "sign_mineshortcut", "kind": "sign",
          "at": {"tx": sign_tiles["sign_mineshortcut"][0], "ty": sign_tiles["sign_mineshortcut"][1]},
          "activation": "interact", "ref": "sign.crossroads_mineshortcut"},
@@ -461,29 +469,6 @@ m = {
          "sprite": "npc_boy", "movement": "wander",
          "dialogue_ref": "npc.waystone_kid_trail_done",
          "requires_flag": "flag:q_central_trail_done"},
-        # C2 — the waystation innkeeper (rest + counter at EVERY stage; the
-        # four-token chain rides the strictly-ordered flags q_central_tokens ->
-        # q_token_west -> q_central_tokens_done). Appears with the Tide Gleam
-        # (the south festival pair complete — the first token's festival).
-        {"id": "innkeeper_ask", "at": {"tx": CX + 2, "ty": CY + 3}, "facing": "left",
-         "sprite": "npc_woman", "movement": "static",
-         "dialogue_ref": "script.inn_empty_lamps",
-         "requires_flag": "gleam:tide",
-         "hidden_when_flag": "flag:q_central_tokens"},
-        {"id": "innkeeper_waiting", "at": {"tx": CX + 2, "ty": CY + 3}, "facing": "left",
-         "sprite": "npc_woman", "movement": "static",
-         "dialogue_ref": "script.inn_rest_waiting",
-         "requires_flag": "flag:q_central_tokens",
-         "hidden_when_flag": "flag:q_token_west"},
-        {"id": "innkeeper_hang", "at": {"tx": CX + 2, "ty": CY + 3}, "facing": "left",
-         "sprite": "npc_woman", "movement": "static",
-         "dialogue_ref": "script.inn_lamps_hang",
-         "requires_flag": "flag:q_token_west",
-         "hidden_when_flag": "flag:q_central_tokens_done"},
-        {"id": "innkeeper_done", "at": {"tx": CX + 2, "ty": CY + 3}, "facing": "left",
-         "sprite": "npc_woman", "movement": "static",
-         "dialogue_ref": "script.inn_rest_crossroads",
-         "requires_flag": "flag:q_central_tokens_done"},
     ],
     "gates": [],
     "music": "assets/audio/music/tinderwick-a.mp3",

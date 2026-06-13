@@ -1,0 +1,699 @@
+{
+  "nodes": [
+    {
+      "id": "umbral_spire",
+      "x": 110,
+      "y": 50,
+      "kind": "dungeon",
+      "region": "central",
+      "name": "Umbral Spire"
+    },
+    {
+      "id": "penumbra_ring",
+      "x": 110,
+      "y": 68,
+      "kind": "route",
+      "region": "central",
+      "name": "Penumbra Ring"
+    },
+    {
+      "id": "starwell",
+      "x": 128,
+      "y": 60,
+      "kind": "landmark",
+      "region": "central",
+      "name": "Starwell"
+    },
+    {
+      "id": "vesper_crossroads",
+      "x": 110,
+      "y": 88,
+      "kind": "hub",
+      "region": "outer",
+      "name": "Vesper Crossroads"
+    },
+    {
+      "id": "dawnstead",
+      "x": 56,
+      "y": 128,
+      "kind": "town",
+      "region": "south",
+      "name": "Dawnstead"
+    },
+    {
+      "id": "tinderwick",
+      "x": 80,
+      "y": 122,
+      "kind": "town",
+      "region": "south",
+      "name": "Tinderwick"
+    },
+    {
+      "id": "dimglass_coast",
+      "x": 101,
+      "y": 127,
+      "kind": "route",
+      "region": "south",
+      "name": "Dimglass Coast"
+    },
+    {
+      "id": "dimglass_coast_ii",
+      "x": 122,
+      "y": 127,
+      "kind": "route",
+      "region": "south",
+      "name": "Dimglass Coast"
+    },
+    {
+      "id": "tideglass_cavern",
+      "x": 111,
+      "y": 137,
+      "kind": "landmark",
+      "region": "south",
+      "name": "Tideglass Cavern"
+    },
+    {
+      "id": "gullcry_rock",
+      "x": 133,
+      "y": 137,
+      "kind": "landmark",
+      "region": "south",
+      "name": "Gullcry Rock"
+    },
+    {
+      "id": "pearlmoor_quay",
+      "x": 144,
+      "y": 121,
+      "kind": "town",
+      "region": "south",
+      "name": "Pearlmoor Quay"
+    },
+    {
+      "id": "pearlmoor_breakwater",
+      "x": 152,
+      "y": 132,
+      "kind": "landmark",
+      "region": "south",
+      "name": "Pearlmoor Breakwater"
+    },
+    {
+      "id": "saltreach_fen_i",
+      "x": 166,
+      "y": 110,
+      "kind": "route",
+      "region": "east",
+      "name": "Saltreach Fen"
+    },
+    {
+      "id": "saltreach_fen_ii",
+      "x": 174,
+      "y": 92,
+      "kind": "route",
+      "region": "east",
+      "name": "Saltreach Deeps"
+    },
+    {
+      "id": "sunkbell_shallows",
+      "x": 190,
+      "y": 99,
+      "kind": "landmark",
+      "region": "east",
+      "name": "Sunkbell Shallows"
+    },
+    {
+      "id": "lowleaf_hollow",
+      "x": 175,
+      "y": 72,
+      "kind": "town",
+      "region": "east",
+      "name": "Lowleaf Hollow"
+    },
+    {
+      "id": "glowmoss_deep",
+      "x": 174,
+      "y": 53,
+      "kind": "dungeon",
+      "region": "east",
+      "name": "Glowmoss Deep"
+    },
+    {
+      "id": "spore_grotto",
+      "x": 191,
+      "y": 48,
+      "kind": "landmark",
+      "region": "east",
+      "name": "Spore Grotto"
+    },
+    {
+      "id": "cinderhead_mine",
+      "x": 166,
+      "y": 35,
+      "kind": "town",
+      "region": "east",
+      "name": "Cinderhead Mine"
+    },
+    {
+      "id": "cinderhead_deep",
+      "x": 148,
+      "y": 26,
+      "kind": "dungeon",
+      "region": "east",
+      "name": "Cinderhead Deep"
+    },
+    {
+      "id": "galehigh_terraces",
+      "x": 128,
+      "y": 20,
+      "kind": "town",
+      "region": "north",
+      "name": "Galehigh Terraces"
+    },
+    {
+      "id": "wind_eye",
+      "x": 139,
+      "y": 8,
+      "kind": "landmark",
+      "region": "north",
+      "name": "The Wind-Eye"
+    },
+    {
+      "id": "windward_stair_i",
+      "x": 107,
+      "y": 16,
+      "kind": "route",
+      "region": "north",
+      "name": "Windward Stair"
+    },
+    {
+      "id": "windward_stair_ii",
+      "x": 88,
+      "y": 13,
+      "kind": "route",
+      "region": "north",
+      "name": "Windward Stair"
+    },
+    {
+      "id": "thunderroost",
+      "x": 97,
+      "y": 4,
+      "kind": "landmark",
+      "region": "north",
+      "name": "Thunderroost"
+    },
+    {
+      "id": "pale_vault_glacier",
+      "x": 66,
+      "y": 17,
+      "kind": "town",
+      "region": "north",
+      "name": "Pale Vault Glacier"
+    },
+    {
+      "id": "hushfrost_pass_i",
+      "x": 46,
+      "y": 25,
+      "kind": "route",
+      "region": "west",
+      "name": "Hushfrost Pass"
+    },
+    {
+      "id": "hushfrost_pass_ii",
+      "x": 34,
+      "y": 41,
+      "kind": "route",
+      "region": "west",
+      "name": "Hushfrost Pass"
+    },
+    {
+      "id": "aurora_hollow",
+      "x": 18,
+      "y": 33,
+      "kind": "landmark",
+      "region": "west",
+      "name": "Aurora Hollow"
+    },
+    {
+      "id": "sunken_solarium",
+      "x": 28,
+      "y": 58,
+      "kind": "town",
+      "region": "west",
+      "name": "Sunken Solarium"
+    },
+    {
+      "id": "unrisen_stair",
+      "x": 12,
+      "y": 52,
+      "kind": "landmark",
+      "region": "west",
+      "name": "The Unrisen Stair"
+    },
+    {
+      "id": "sunvault_climb_i",
+      "x": 20,
+      "y": 110,
+      "kind": "route",
+      "region": "west",
+      "name": "Sunvault Climb"
+    },
+    {
+      "id": "sunvault_climb_ii",
+      "x": 28,
+      "y": 92,
+      "kind": "route",
+      "region": "west",
+      "name": "Sunvault Climb"
+    },
+    {
+      "id": "helia_vault",
+      "x": 12,
+      "y": 86,
+      "kind": "landmark",
+      "region": "west",
+      "name": "Helia Vault"
+    },
+    {
+      "id": "nightreach_observatory",
+      "x": 36,
+      "y": 74,
+      "kind": "town",
+      "region": "west",
+      "name": "Nightreach Observatory"
+    },
+    {
+      "id": "coldfog_marches_ii",
+      "x": 58,
+      "y": 82,
+      "kind": "route",
+      "region": "outer",
+      "name": "Coldfog Marches"
+    },
+    {
+      "id": "coldfog_marches_i",
+      "x": 64,
+      "y": 102,
+      "kind": "route",
+      "region": "outer",
+      "name": "Coldfog Marches"
+    },
+    {
+      "id": "drownlight_beacon",
+      "x": 46,
+      "y": 92,
+      "kind": "landmark",
+      "region": "outer",
+      "name": "Drownlight Beacon"
+    },
+    {
+      "id": "hollowfen_stillworks",
+      "x": 68,
+      "y": 68,
+      "kind": "landmark",
+      "region": "outer",
+      "name": "Hollowfen Stillworks"
+    },
+    {
+      "id": "lanternway_tinderwick",
+      "x": 95,
+      "y": 106,
+      "kind": "route",
+      "region": "outer",
+      "name": "Lanternway \u00b7 Tinderwick Spoke"
+    },
+    {
+      "id": "lanternway_pearlmoor",
+      "x": 128,
+      "y": 104,
+      "kind": "route",
+      "region": "outer",
+      "name": "Lanternway \u00b7 Pearlmoor Spoke"
+    },
+    {
+      "id": "lanternway_lowleaf",
+      "x": 144,
+      "y": 79,
+      "kind": "route",
+      "region": "outer",
+      "name": "Lanternway \u00b7 Lowleaf Spoke"
+    },
+    {
+      "id": "lanternway_galehigh",
+      "x": 124,
+      "y": 54,
+      "kind": "route",
+      "region": "outer",
+      "name": "Lanternway \u00b7 Galehigh Spoke"
+    },
+    {
+      "id": "lanternway_nightreach",
+      "x": 80,
+      "y": 76,
+      "kind": "route",
+      "region": "outer",
+      "name": "Lanternway \u00b7 Nightreach Spoke"
+    }
+  ],
+  "roads": [
+    {
+      "a": "tinderwick",
+      "b": "dimglass_coast",
+      "kind": "road"
+    },
+    {
+      "a": "dimglass_coast",
+      "b": "dimglass_coast_ii",
+      "kind": "road"
+    },
+    {
+      "a": "dimglass_coast_ii",
+      "b": "pearlmoor_quay",
+      "kind": "road"
+    },
+    {
+      "a": "dimglass_coast",
+      "b": "tideglass_cavern",
+      "kind": "gate"
+    },
+    {
+      "a": "dimglass_coast_ii",
+      "b": "tideglass_cavern",
+      "kind": "gate"
+    },
+    {
+      "a": "dimglass_coast_ii",
+      "b": "gullcry_rock",
+      "kind": "gate"
+    },
+    {
+      "a": "pearlmoor_quay",
+      "b": "pearlmoor_breakwater",
+      "kind": "gate"
+    },
+    {
+      "a": "umbral_spire",
+      "b": "dawnstead",
+      "kind": "gate"
+    },
+    {
+      "a": "pearlmoor_quay",
+      "b": "saltreach_fen_i",
+      "kind": "road"
+    },
+    {
+      "a": "saltreach_fen_i",
+      "b": "saltreach_fen_ii",
+      "kind": "gate"
+    },
+    {
+      "a": "saltreach_fen_ii",
+      "b": "sunkbell_shallows",
+      "kind": "gate"
+    },
+    {
+      "a": "saltreach_fen_ii",
+      "b": "lowleaf_hollow",
+      "kind": "road"
+    },
+    {
+      "a": "lowleaf_hollow",
+      "b": "glowmoss_deep",
+      "kind": "gate"
+    },
+    {
+      "a": "glowmoss_deep",
+      "b": "spore_grotto",
+      "kind": "gate"
+    },
+    {
+      "a": "glowmoss_deep",
+      "b": "cinderhead_mine",
+      "kind": "pass"
+    },
+    {
+      "a": "cinderhead_mine",
+      "b": "cinderhead_deep",
+      "kind": "gate"
+    },
+    {
+      "a": "cinderhead_deep",
+      "b": "galehigh_terraces",
+      "kind": "pass"
+    },
+    {
+      "a": "galehigh_terraces",
+      "b": "wind_eye",
+      "kind": "gate"
+    },
+    {
+      "a": "galehigh_terraces",
+      "b": "windward_stair_i",
+      "kind": "road"
+    },
+    {
+      "a": "windward_stair_i",
+      "b": "windward_stair_ii",
+      "kind": "gate"
+    },
+    {
+      "a": "windward_stair_ii",
+      "b": "thunderroost",
+      "kind": "gate"
+    },
+    {
+      "a": "windward_stair_ii",
+      "b": "pale_vault_glacier",
+      "kind": "road"
+    },
+    {
+      "a": "windward_stair_ii",
+      "b": "galehigh_terraces",
+      "kind": "gate"
+    },
+    {
+      "a": "pale_vault_glacier",
+      "b": "hushfrost_pass_i",
+      "kind": "road"
+    },
+    {
+      "a": "hushfrost_pass_i",
+      "b": "hushfrost_pass_ii",
+      "kind": "gate"
+    },
+    {
+      "a": "hushfrost_pass_ii",
+      "b": "aurora_hollow",
+      "kind": "gate"
+    },
+    {
+      "a": "hushfrost_pass_ii",
+      "b": "sunken_solarium",
+      "kind": "road"
+    },
+    {
+      "a": "sunken_solarium",
+      "b": "unrisen_stair",
+      "kind": "gate"
+    },
+    {
+      "a": "sunken_solarium",
+      "b": "sunvault_climb_i",
+      "kind": "road"
+    },
+    {
+      "a": "sunvault_climb_i",
+      "b": "sunvault_climb_ii",
+      "kind": "gate"
+    },
+    {
+      "a": "sunvault_climb_ii",
+      "b": "helia_vault",
+      "kind": "gate"
+    },
+    {
+      "a": "sunvault_climb_ii",
+      "b": "nightreach_observatory",
+      "kind": "road"
+    },
+    {
+      "a": "nightreach_observatory",
+      "b": "coldfog_marches_ii",
+      "kind": "gate"
+    },
+    {
+      "a": "coldfog_marches_ii",
+      "b": "coldfog_marches_i",
+      "kind": "gate"
+    },
+    {
+      "a": "coldfog_marches_i",
+      "b": "vesper_crossroads",
+      "kind": "road"
+    },
+    {
+      "a": "coldfog_marches_ii",
+      "b": "drownlight_beacon",
+      "kind": "gate"
+    },
+    {
+      "a": "coldfog_marches_ii",
+      "b": "hollowfen_stillworks",
+      "kind": "gate"
+    },
+    {
+      "a": "tinderwick",
+      "b": "lanternway_tinderwick",
+      "kind": "lane"
+    },
+    {
+      "a": "lanternway_tinderwick",
+      "b": "vesper_crossroads",
+      "kind": "lane"
+    },
+    {
+      "a": "pearlmoor_quay",
+      "b": "lanternway_pearlmoor",
+      "kind": "lane"
+    },
+    {
+      "a": "lanternway_pearlmoor",
+      "b": "vesper_crossroads",
+      "kind": "lane"
+    },
+    {
+      "a": "lowleaf_hollow",
+      "b": "lanternway_lowleaf",
+      "kind": "lane"
+    },
+    {
+      "a": "lanternway_lowleaf",
+      "b": "vesper_crossroads",
+      "kind": "lane"
+    },
+    {
+      "a": "galehigh_terraces",
+      "b": "lanternway_galehigh",
+      "kind": "lane"
+    },
+    {
+      "a": "lanternway_galehigh",
+      "b": "vesper_crossroads",
+      "kind": "lane"
+    },
+    {
+      "a": "nightreach_observatory",
+      "b": "lanternway_nightreach",
+      "kind": "lane"
+    },
+    {
+      "a": "lanternway_nightreach",
+      "b": "vesper_crossroads",
+      "kind": "lane"
+    },
+    {
+      "a": "cinderhead_deep",
+      "b": "vesper_crossroads",
+      "kind": "gate"
+    },
+    {
+      "a": "vesper_crossroads",
+      "b": "penumbra_ring",
+      "kind": "gate"
+    },
+    {
+      "a": "penumbra_ring",
+      "b": "starwell",
+      "kind": "gate"
+    },
+    {
+      "a": "penumbra_ring",
+      "b": "umbral_spire",
+      "kind": "gate"
+    }
+  ],
+  "members": {
+    "umbral_spire": "umbral_spire",
+    "penumbra_ring": "penumbra_ring",
+    "starwell": "starwell",
+    "vesper_crossroads": "vesper_crossroads",
+    "dawnstead": "dawnstead",
+    "tinderwick": "tinderwick",
+    "dimglass_coast": "dimglass_coast",
+    "dimglass_coast_ii": "dimglass_coast_ii",
+    "tideglass_cavern": "tideglass_cavern",
+    "gullcry_rock": "gullcry_rock",
+    "pearlmoor_quay": "pearlmoor_quay",
+    "pearlmoor_breakwater": "pearlmoor_breakwater",
+    "saltreach_fen_i": "saltreach_fen_i",
+    "saltreach_fen_ii": "saltreach_fen_ii",
+    "sunkbell_shallows": "sunkbell_shallows",
+    "lowleaf_hollow": "lowleaf_hollow",
+    "glowmoss_deep": "glowmoss_deep",
+    "spore_grotto": "spore_grotto",
+    "cinderhead_mine": "cinderhead_mine",
+    "cinderhead_deep": "cinderhead_deep",
+    "galehigh_terraces": "galehigh_terraces",
+    "wind_eye": "wind_eye",
+    "windward_stair_i": "windward_stair_i",
+    "windward_stair_ii": "windward_stair_ii",
+    "thunderroost": "thunderroost",
+    "pale_vault_glacier": "pale_vault_glacier",
+    "hushfrost_pass_i": "hushfrost_pass_i",
+    "hushfrost_pass_ii": "hushfrost_pass_ii",
+    "aurora_hollow": "aurora_hollow",
+    "sunken_solarium": "sunken_solarium",
+    "unrisen_stair": "unrisen_stair",
+    "sunvault_climb_i": "sunvault_climb_i",
+    "sunvault_climb_ii": "sunvault_climb_ii",
+    "helia_vault": "helia_vault",
+    "nightreach_observatory": "nightreach_observatory",
+    "coldfog_marches_ii": "coldfog_marches_ii",
+    "coldfog_marches_i": "coldfog_marches_i",
+    "drownlight_beacon": "drownlight_beacon",
+    "hollowfen_stillworks": "hollowfen_stillworks",
+    "lanternway_tinderwick": "lanternway_tinderwick",
+    "lanternway_pearlmoor": "lanternway_pearlmoor",
+    "lanternway_lowleaf": "lanternway_lowleaf",
+    "lanternway_galehigh": "lanternway_galehigh",
+    "lanternway_nightreach": "lanternway_nightreach",
+    "umbral_spire_f2": "umbral_spire",
+    "umbral_spire_f3": "umbral_spire",
+    "umbral_spire_summit": "dawnstead",
+    "vigil_hearthfall": "tinderwick",
+    "tinderwick_house": "tinderwick",
+    "tinderwick_beacon_i": "tinderwick",
+    "tinderwick_lumenary": "tinderwick",
+    "tinderwick_shop": "tinderwick",
+    "tideglass_gallery": "tideglass_cavern",
+    "pearlmoor_inn": "pearlmoor_quay",
+    "pearlmoor_lifting_house": "pearlmoor_quay",
+    "pearlmoor_shop": "pearlmoor_quay",
+    "pearlmoor_lumenary": "pearlmoor_quay",
+    "lowleaf_bower": "lowleaf_hollow",
+    "lowleaf_lumenary": "lowleaf_hollow",
+    "glowmoss_deep_b1f": "glowmoss_deep",
+    "vigil_grovefall": "spore_grotto",
+    "cinderhead_lumenary": "cinderhead_mine",
+    "cinderhead_deep_b1f": "cinderhead_deep",
+    "galehigh_skyloft": "galehigh_terraces",
+    "galehigh_kitemaker": "galehigh_terraces",
+    "galehigh_home": "galehigh_terraces",
+    "galehigh_inn": "galehigh_terraces",
+    "galehigh_lumenary": "galehigh_terraces",
+    "vigil_stormfall": "thunderroost",
+    "pale_vault_inn": "pale_vault_glacier",
+    "pale_vault_hourfold": "pale_vault_glacier",
+    "pale_vault_undercroft": "pale_vault_glacier",
+    "pale_vault_lumenary": "pale_vault_glacier",
+    "pale_vault_home": "pale_vault_glacier",
+    "sunken_solarium_lumenary": "sunken_solarium",
+    "vigil_sunfall": "sunvault_climb_ii",
+    "nightreach_home": "nightreach_observatory",
+    "nightreach_lumenary": "nightreach_observatory",
+    "nightreach_inn": "nightreach_observatory",
+    "vigil_murkfall": "coldfog_marches_ii",
+    "lanternway_undercut": "lanternway_lowleaf",
+    "tinderwick_beacon_ii": "tinderwick",
+    "cinderhead_deep_b2f": "cinderhead_deep",
+    "tinderwick_beacon_top": "tinderwick"
+  }
+}

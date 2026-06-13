@@ -142,6 +142,15 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'drownlight_beacon', region: 'outer', optional: true, reward: 'rare Dark kin in a snuffed lighthouse' },
     { map_id: 'hollowfen_stillworks', region: 'outer', optional: true, reward: "landmark micro-dungeon: a derelict Hollowing null-works; a powerful Storm/Dark 'charged husk' kin" },
     { map_id: 'vesper_crossroads', region: 'outer' },
+    { map_id: 'crossroads_inn', region: 'outer' }, // interior: the waystation inn (C2 innkeeper)
+    // The Lanternway spokes — real lane maps (2026-06 topology fix): each spoke
+    // is a short bending country lane, so the hub's roads radiate compass-true.
+    { map_id: 'lanternway_tinderwick', region: 'outer' },
+    { map_id: 'lanternway_pearlmoor', region: 'outer' },
+    { map_id: 'lanternway_lowleaf', region: 'outer' },
+    { map_id: 'lanternway_undercut', region: 'outer' }, // the cave beneath the Lowleaf spoke (its two mouths)
+    { map_id: 'lanternway_galehigh', region: 'outer' },
+    { map_id: 'lanternway_nightreach', region: 'outer' },
     // ---- Central: Penumbra Ring -> Umbral Spire (+ a late landmark) -> Dawnstead -----
     { map_id: 'penumbra_ring', region: 'central' },
     { map_id: 'starwell', region: 'central', optional: true, reward: 'post-Crown landmark (Starreach): a near-legendary kin' },
@@ -262,12 +271,25 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'coldfog_marches_ii', to_map: 'hollowfen_stillworks', via_warp: 'to_stillworks', requires_ability: 'glimmerstep', bidirectional: true },
     { from_map: 'penumbra_ring', to_map: 'starwell', via_warp: 'to_starwell', requires_ability: 'starreach', bidirectional: true },
 
-    // ---- Lanternway spokes: rim towns <-> the outer-ring hub --------------------------
-    { from_map: 'tinderwick', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
-    { from_map: 'pearlmoor_quay', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
-    { from_map: 'lowleaf_hollow', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
-    { from_map: 'galehigh_terraces', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
-    { from_map: 'nightreach_observatory', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
+    // ---- Lanternway spokes: rim towns <-> lane maps <-> the outer-ring hub -----------
+    // Each spoke is a real bending lane (build_lanternway.py). The hub-side warp
+    // gates on the town's own Gleam (warp-level, stricter than the graph — the
+    // standing Lowleaf pattern); the town side stays open (return compression).
+    { from_map: 'tinderwick', to_map: 'lanternway_tinderwick', via_warp: 'to_crossroads', bidirectional: true },
+    { from_map: 'lanternway_tinderwick', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
+    { from_map: 'pearlmoor_quay', to_map: 'lanternway_pearlmoor', via_warp: 'to_crossroads', bidirectional: true },
+    { from_map: 'lanternway_pearlmoor', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
+    { from_map: 'lowleaf_hollow', to_map: 'lanternway_lowleaf', via_warp: 'to_crossroads', bidirectional: true },
+    { from_map: 'lanternway_lowleaf', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
+    // the Under-Lane's two mouths: lower road in, upper shelf out (the
+    // interleave — the only way UP the spoke's bank; the ledge hops back down)
+    { from_map: 'lanternway_lowleaf', to_map: 'lanternway_undercut', via_warp: 'to_undercut', bidirectional: true },
+    { from_map: 'lanternway_lowleaf', to_map: 'lanternway_undercut', via_warp: 'to_undercut_high', bidirectional: true },
+    { from_map: 'galehigh_terraces', to_map: 'lanternway_galehigh', via_warp: 'to_crossroads', bidirectional: true },
+    { from_map: 'lanternway_galehigh', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
+    { from_map: 'nightreach_observatory', to_map: 'lanternway_nightreach', via_warp: 'to_crossroads', bidirectional: true },
+    { from_map: 'lanternway_nightreach', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
+    { from_map: 'vesper_crossroads', to_map: 'crossroads_inn', via_warp: 'enter_inn', bidirectional: true },
     { from_map: 'vesper_crossroads', to_map: 'coldfog_marches_i', via_warp: 'to_marsh', bidirectional: true },
 
     // ---- Late shortcuts: open from the far side, then permanently re-link to the hub --

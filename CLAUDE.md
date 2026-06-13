@@ -247,12 +247,14 @@ go digging on every task.
 | Authoritative game data | `src/game/data/` (chart, moves, species, world) |
 | Typed access to that data | `src/game/data/dex.ts` |
 | Map/world schema (TS) | `src/game/data/world/types.ts` |
+| World-map screen layout (generated) + spatial-embedding audit | `src/game/data/world/worldmap.json` ← `tools/maps/world_layout.py` |
 | Balance/roster tooling | `tools/balance/` |
 | Visual standards (binding) | `docs/art-style.md` |
 | Asset masters (source) | `assets/` (`assets/README.md`) |
 | Area mood pieces (concept art / tile refs) | `assets/concept-art/` (`assets/concept-art/README.md`) |
 | Concept-art discovery gallery (Charts) | `src/game/content/charts.ts`, `ui/ChartsMenu.ts`, `ui/ChartView.ts` |
 | Served/rendered assets | `public/assets/` (music, maps, battle backdrops, logo) |
+| Per-area object/building masters | `assets/tilesets/<area>/objects/*.png` → `pack_objects.py` → `public/assets/sprites/objects/` + manifest |
 
 ## Asset generation skills
 
@@ -417,17 +419,21 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   you add one. Multi-phase screens (PartyMenu/ItemsMenu/HearthMenu) **don't** keep one
   long-lived loop: each phase (`pickX`) attaches its own tick + input and tears both
   down before opening a sub-`Menu`, so presses are never double-read.
-- **Pause menu = RESUME / KIN / REGISTER / [GLEAMS] / JOURNAL / HEARTH / ITEMS / LORE / CHARTS / [TRAVEL] / SAVE / SETTINGS**
-  (`WorldScene.openPauseMenu`; TRAVEL appears only once `flag:hub_unlocked`; GLEAMS only once the first
-  constellation is relit, `countHeld('gleam:') > 0`). GLEAMS→`GleamsMenu` (the Skyweave Crown / badge
+- **Pause menu = RESUME / KIN / REGISTER / [GLEAMS] / JOURNAL / MAP / [TRAVEL] / HEARTH / ITEMS / LORE / CHARTS / SAVE / SETTINGS**
+  (`WorldScene.openPauseMenu`; GLEAMS appears only once the first constellation is relit,
+  `countHeld('gleam:') > 0`; TRAVEL only once `flag:hub_unlocked`; the panel y is computed from the entry
+  count so the last row never clips the 160px screen). GLEAMS→`GleamsMenu` (the Skyweave Crown / badge
   case: the 8 Gleams as 4 quadrant columns from the `content/gleams.ts` registry — earned ones show their
   element-coloured constellation emblem `public/assets/ui/gleams/<id>.webp` [drawn-roundel fallback if the
   art's missing], unrelit ones a dim silhouette under their region + warden/town, so it doubles as a map of
-  where the remaining light waits). `gleams.ts` is the single source for the badge case AND `SlotMenu`'s
-  tally — add a region's two Gleams there in journey order. JOURNAL→`JournalMenu`
+  where the remaining light waits; `gleams.ts` is the single source for the badge case AND `SlotMenu`'s
+  tally — add a region's two Gleams there in journey order). JOURNAL→`JournalMenu`
   (the quest log: `content/quests.ts` registry, flags mined from the build — add new named quests
-  there), TRAVEL→`TravelMenu` (waystone fast travel: `content/waystones.ts`, destinations gated on
-  their `chart:*` discovery flags, arrival via the executeWarp path).
+  there), MAP→`WorldMapMenu` (the classic region map: schematic ring of Vesperholm, blinking
+  you-are-here marker, d-pad hops between places — drawn from `data/world/worldmap.json`, which is
+  GENERATED + geometry-verified by `tools/maps/world_layout.py`; edit its NODES/ROADS tables and
+  re-run, never the JSON), TRAVEL→`TravelMenu` (waystone fast travel: `content/waystones.ts`,
+  destinations gated on their `chart:*` discovery flags, arrival via the executeWarp path).
   KIN→`PartyMenu`, REGISTER→`RegisterMenu` (the dex: seen/caught from `SaveGame.dex`, lazy kin
   icons, silhouettes until caught), HEARTH→`HearthMenu` (kin storage), ITEMS→`ItemsMenu` (view + use a
   medicine to heal), LORE→`GlossaryMenu` (read-only codex of canon vocabulary), CHARTS→`ChartsMenu`
@@ -783,7 +789,39 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `hidden_when_flag`), **festival NPCs** (`requires_flag:'gleam:*'`), and the **catch-first
   gate** (every catch sets `flag:caught_first_kin`). South's optional payoffs are BUILT:
   `gullcry_rock` (Tidecall spur — rare Glostern surf + the **Tide Charm**, catch ×2.0) and
-  `vesper_crossroads` (the Lanternway hub; live Tinderwick/Pearlmoor spokes, signed sleeping roads).
+  `vesper_crossroads` (the Lanternway hub; live Tinderwick spoke, signed sleeping roads).
+- **Every town spoke at the crossroads wakes on ITS OWN Gleam (2026-06, now uniform).** The
+  crossroads-side warp gates on the town's Gleam with a `npc.waykeeper_*_gate` blocked line
+  (Pearlmoor→`gleam:tide`, Lowleaf→`gleam:verdant`, Galehigh→`gleam:storm`, Nightreach→`gleam:lunar`);
+  the town-side warp stays OPEN (one-way return compression). First travel to a town is always
+  the long route — the spoke is the earned shortcut home, never a sequence-break (Pearlmoor was
+  the outlier, `has_starter`-only, letting players skip the whole Dimglass Coast: playtest-caught).
+  The crossroads' one DELIBERATELY un-progress-gated onward road is the **north marsh road**
+  (`to_marsh` → `coldfog_marches_i`, a lvl-46+ outer zone): `has_starter`-gated BY DESIGN as a
+  soft nudge — the Waykeeper's `script.crossroads_marsh_warn` warning + the `emberward` dead-end
+  at `coldfog_marches_i→ii` stop a too-early player short (peek-but-can't-sequence-break/softlock).
+  It is NOT a bug; don't "fix" it to a Gleam/Gift gate (confirmed design, 2026-06).
+- **Match the concept art's landmarks in the rendered maps.** Each area's `assets/concept-art/`
+  piece is the look to hit — when a map is missing a prominent landmark the concept shows, add it
+  (a missing landmark confuses players who've seen the art). The hub's concept centrepieces — a
+  two-storey **waystation inn** (`vesper_crossroads_inn` building → enterable `crossroads_inn`
+  interior, the C2 innkeeper lives inside) and a multi-arm **fingerpost** (`vesper_crossroads_fingerpost`,
+  a walk-under prop) — are BUILT (2026-06). Bespoke building/prop art is generated via
+  `generate-image` (front elevation, magenta chroma-key → transparent), snapped to an N×N master
+  under `assets/tilesets/<area>/objects/`, packed by `pack_objects.py`. A non-`walk_under` building
+  object collides on its WHOLE footprint (CollisionGrid), so its base can be grass — the
+  `transition:'door'` warp frees the door tile; the door's APPROACH tile must be walkable terrain
+  (clear any tree-blob baked into `base` + carve a path spur, since terrain layers are stripped into
+  `base` post-finalize). Sprite gens are a gacha — get the user's nod before wiring one in.
+- **The Lanternway spokes are REAL lane maps (2026-06 topology fix).** `lanternway_<town>` ×5
+  (`tools/maps/build_lanternway.py`): safe lit ground (no encounters/trainers — audit_flow
+  free-pass/loop waived by design), each bending visibly so every transition is compass-true,
+  and the crossroads' gates radiate by true bearing (the galehigh/nightreach destinations
+  SWAPPED roads — same paint). The Lowleaf spoke is the interleaved worked example: lower road
+  L's up to a cliff mouth → **the Under-Lane** (`lanternway_undercut`, cave) passes beneath the
+  bank → upper shelf east to the Bloom, one-way ledge back down. A map split by elevation and
+  crossed THROUGH a cave is legal: `audit_region`'s foot-path check unions portal groups that
+  share a target map (the target's own row proves the passage).
 - **Routes play like routes: sight trainers + mandatory crossings + the earned landmark.**
   Trainers carry `sight_range`/`defeated_flag` on their NpcPlacement (alert → march up → run
   their `script.*`; WorldScene.npcSeesPlayer/engageTrainer; beaten = flag-pair NPC swap; a

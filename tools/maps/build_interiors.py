@@ -228,6 +228,72 @@ def build_inn():
                   "assets/audio/music/dimglass-coast-a.mp3")
 
 
+def build_crossroads_inn():
+    """The Vesper Crossroads waystation inn — the cosy two-storey house from the
+    crossroads concept art, now enterable. The C2 'Inn's Empty Lamps' innkeeper
+    stages move here from the outdoor hub (an innkeeper belongs in an inn); a
+    pre-quest welcome+rest keeps the inn hosted before the token quest opens."""
+    W, H = 16, 12
+    door_x = W // 2  # tx 8
+    base, over = faced_room(W, H, door_x)
+    windows(over, W, [6, 14])
+    partition_v(over, W, 5, 1, 6, lip="e")  # the western bunk bay
+
+    objects: list = []
+    place(objects, "bed_inn", 1, 2, oid="bed1")
+    place(objects, "bed_inn", 3, 2, oid="bed2")
+    place(objects, "plant", 1, 6)
+    wall_mount(objects, "hearth", 8)
+    wall_mount(objects, "lamp_rack", 12, solid=False)
+    place(objects, "brazier", 14, 2, oid="brazier_e")
+    place(objects, "counter", 9, 3, oid="counter")  # the innkeeper's bar
+    place(objects, "table_long", 11, 6)
+    place(objects, "stool", 11, 8, oid="stool_a")
+    place(objects, "stool", 13, 8, oid="stool_b")
+    place(objects, "table", 2, 8, oid="table_round")
+    place(objects, "stool", 1, 8, oid="stool_c")
+    place(objects, "rug", 7, 8, solid=False)
+
+    warps = [
+        {"id": "to_town", "at": {"tx": door_x, "ty": H - 1}, "trigger": "step_on",
+         "to_map": "vesper_crossroads", "to": {"tx": 15, "ty": 15}, "facing": "down", "transition": "door"},
+    ]
+    triggers = [
+        {"id": "sign_welcome", "kind": "sign", "at": {"tx": 14, "ty": 4}, "activation": "interact",
+         "ref": "sign.crossroads_inn"},
+    ]
+    # The innkeeper (behind the counter): a pre-quest host, then the four C2
+    # stages (strictly-ordered token chain) exactly as they ran outdoors.
+    npcs = [
+        {"id": "innkeeper_pre", "at": {"tx": 8, "ty": 4}, "facing": "down",
+         "sprite": "npc_woman", "movement": "static",
+         "dialogue_ref": "script.inn_rest_crossroads",
+         "hidden_when_flag": "gleam:tide"},
+        {"id": "innkeeper_ask", "at": {"tx": 8, "ty": 4}, "facing": "down",
+         "sprite": "npc_woman", "movement": "static",
+         "dialogue_ref": "script.inn_empty_lamps",
+         "requires_flag": "gleam:tide",
+         "hidden_when_flag": "flag:q_central_tokens"},
+        {"id": "innkeeper_waiting", "at": {"tx": 8, "ty": 4}, "facing": "down",
+         "sprite": "npc_woman", "movement": "static",
+         "dialogue_ref": "script.inn_rest_waiting",
+         "requires_flag": "flag:q_central_tokens",
+         "hidden_when_flag": "flag:q_token_west"},
+        {"id": "innkeeper_hang", "at": {"tx": 8, "ty": 4}, "facing": "down",
+         "sprite": "npc_woman", "movement": "static",
+         "dialogue_ref": "script.inn_lamps_hang",
+         "requires_flag": "flag:q_token_west",
+         "hidden_when_flag": "flag:q_central_tokens_done"},
+        {"id": "innkeeper_done", "at": {"tx": 8, "ty": 4}, "facing": "down",
+         "sprite": "npc_woman", "movement": "static",
+         "dialogue_ref": "script.inn_rest_crossroads",
+         "requires_flag": "flag:q_central_tokens_done"},
+    ]
+    return mapdef("crossroads_inn", "Vesper Crossroads Inn", W, H, WARM_SET,
+                  base, over, objects, warps, triggers, npcs,
+                  "assets/audio/music/tinderwick-a.mp3")
+
+
 # =============================================================================
 #  GYM (warm) — pearlmoor_lifting_house: 14x10 lifting hall + a stone-store bay
 # =============================================================================

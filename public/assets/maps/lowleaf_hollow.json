@@ -287,10 +287,10 @@
         "ty": 14
       },
       "trigger": "step_on",
-      "to_map": "vesper_crossroads",
+      "to_map": "lanternway_lowleaf",
       "to": {
-        "tx": 19,
-        "ty": 3
+        "tx": 25,
+        "ty": 4
       },
       "facing": "left",
       "transition": "fade"
@@ -302,10 +302,10 @@
         "ty": 15
       },
       "trigger": "step_on",
-      "to_map": "vesper_crossroads",
+      "to_map": "lanternway_lowleaf",
       "to": {
-        "tx": 19,
-        "ty": 4
+        "tx": 25,
+        "ty": 5
       },
       "facing": "left",
       "transition": "fade"
