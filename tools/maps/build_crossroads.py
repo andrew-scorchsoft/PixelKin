@@ -121,14 +121,16 @@ terrain_layers = [
 # ---- objects: crown trees + the plaza's four lamps -------------------------------
 objects = [
     {"id": "tree_a", "sprite": "tinderwick_tree", "at": {"tx": 2, "ty": 2}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
-    {"id": "tree_b", "sprite": "tinderwick_tree", "at": {"tx": 14, "ty": 12}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "tree_c", "sprite": "tinderwick_tree", "at": {"tx": 3, "ty": 12}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "tree_d", "sprite": "tinderwick_tree", "at": {"tx": 12, "ty": 1}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     # the plaza's lamp ring — the hub IS lamplight (no 1-tile lamps; 1x3 posts)
     {"id": "lamp_nw", "sprite": "tinderwick_lamp_post", "at": {"tx": CX - 3, "ty": CY - 4}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "lamp_ne", "sprite": "tinderwick_lamp_post", "at": {"tx": CX + 4, "ty": CY - 4}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "lamp_sw", "sprite": "tinderwick_lamp_post", "at": {"tx": CX - 3, "ty": CY + 1}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_se", "sprite": "tinderwick_lamp_post", "at": {"tx": CX + 4, "ty": CY + 1}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    # the concept art's centrepiece: the enterable waystation INN (SE, 5x5) and
+    # the multi-arm FINGERPOST landmark at the junction (walk-under prop).
+    {"id": "inn", "sprite": "vesper_crossroads_inn", "at": {"tx": 13, "ty": 10}, "w": 5, "h": 5, "overhang": 3},
+    {"id": "fingerpost", "sprite": "vesper_crossroads_fingerpost", "at": {"tx": 7, "ty": 9}, "w": 3, "h": 3, "overhang": 2, "walk_under": True},
 ]
 building_cells = {(x, y) for o in objects
                   for y in range(o["at"]["ty"], o["at"]["ty"] + o["h"])
@@ -247,6 +249,9 @@ m = {
          "to_map": "cinderhead_deep", "to": {"tx": 21, "ty": 15}, "facing": "up",
          "requires_flag": "flag:shortcut_mine", "blocked_ref": "sign.crossroads_mineshortcut",
          "transition": "fade"},
+        # the waystation inn door (walk-onto) — the innkeeper lives inside now.
+        {"id": "enter_inn", "at": {"tx": 15, "ty": 14}, "trigger": "step_on",
+         "to_map": "crossroads_inn", "to": {"tx": 8, "ty": 10}, "facing": "up", "transition": "door"},
     ],
     "triggers": [
         # Fenn hails the player the first time they step into the plaza from the
@@ -464,29 +469,6 @@ m = {
          "sprite": "npc_boy", "movement": "wander",
          "dialogue_ref": "npc.waystone_kid_trail_done",
          "requires_flag": "flag:q_central_trail_done"},
-        # C2 — the waystation innkeeper (rest + counter at EVERY stage; the
-        # four-token chain rides the strictly-ordered flags q_central_tokens ->
-        # q_token_west -> q_central_tokens_done). Appears with the Tide Gleam
-        # (the south festival pair complete — the first token's festival).
-        {"id": "innkeeper_ask", "at": {"tx": CX + 2, "ty": CY + 3}, "facing": "left",
-         "sprite": "npc_woman", "movement": "static",
-         "dialogue_ref": "script.inn_empty_lamps",
-         "requires_flag": "gleam:tide",
-         "hidden_when_flag": "flag:q_central_tokens"},
-        {"id": "innkeeper_waiting", "at": {"tx": CX + 2, "ty": CY + 3}, "facing": "left",
-         "sprite": "npc_woman", "movement": "static",
-         "dialogue_ref": "script.inn_rest_waiting",
-         "requires_flag": "flag:q_central_tokens",
-         "hidden_when_flag": "flag:q_token_west"},
-        {"id": "innkeeper_hang", "at": {"tx": CX + 2, "ty": CY + 3}, "facing": "left",
-         "sprite": "npc_woman", "movement": "static",
-         "dialogue_ref": "script.inn_lamps_hang",
-         "requires_flag": "flag:q_token_west",
-         "hidden_when_flag": "flag:q_central_tokens_done"},
-        {"id": "innkeeper_done", "at": {"tx": CX + 2, "ty": CY + 3}, "facing": "left",
-         "sprite": "npc_woman", "movement": "static",
-         "dialogue_ref": "script.inn_rest_crossroads",
-         "requires_flag": "flag:q_central_tokens_done"},
     ],
     "gates": [],
     "music": "assets/audio/music/tinderwick-a.mp3",

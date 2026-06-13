@@ -253,6 +253,7 @@ go digging on every task.
 | Area mood pieces (concept art / tile refs) | `assets/concept-art/` (`assets/concept-art/README.md`) |
 | Concept-art discovery gallery (Charts) | `src/game/content/charts.ts`, `ui/ChartsMenu.ts`, `ui/ChartView.ts` |
 | Served/rendered assets | `public/assets/` (music, maps, battle backdrops, logo) |
+| Per-area object/building masters | `assets/tilesets/<area>/objects/*.png` → `pack_objects.py` → `public/assets/sprites/objects/` + manifest |
 
 ## Asset generation skills
 
@@ -770,6 +771,18 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   the town-side warp stays OPEN (one-way return compression). First travel to a town is always
   the long route — the spoke is the earned shortcut home, never a sequence-break (Pearlmoor was
   the outlier, `has_starter`-only, letting players skip the whole Dimglass Coast: playtest-caught).
+- **Match the concept art's landmarks in the rendered maps.** Each area's `assets/concept-art/`
+  piece is the look to hit — when a map is missing a prominent landmark the concept shows, add it
+  (a missing landmark confuses players who've seen the art). The hub's concept centrepieces — a
+  two-storey **waystation inn** (`vesper_crossroads_inn` building → enterable `crossroads_inn`
+  interior, the C2 innkeeper lives inside) and a multi-arm **fingerpost** (`vesper_crossroads_fingerpost`,
+  a walk-under prop) — are BUILT (2026-06). Bespoke building/prop art is generated via
+  `generate-image` (front elevation, magenta chroma-key → transparent), snapped to an N×N master
+  under `assets/tilesets/<area>/objects/`, packed by `pack_objects.py`. A non-`walk_under` building
+  object collides on its WHOLE footprint (CollisionGrid), so its base can be grass — the
+  `transition:'door'` warp frees the door tile; the door's APPROACH tile must be walkable terrain
+  (clear any tree-blob baked into `base` + carve a path spur, since terrain layers are stripped into
+  `base` post-finalize). Sprite gens are a gacha — get the user's nod before wiring one in.
 - **The Lanternway spokes are REAL lane maps (2026-06 topology fix).** `lanternway_<town>` ×5
   (`tools/maps/build_lanternway.py`): safe lit ground (no encounters/trainers — audit_flow
   free-pass/loop waived by design), each bending visibly so every transition is compass-true,

@@ -966,6 +966,20 @@
       "tw": 2,
       "th": 1
     },
+    "vesper_crossroads_fingerpost": {
+      "path": "assets/sprites/objects/vesper_crossroads_fingerpost.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "vesper_crossroads_inn": {
+      "path": "assets/sprites/objects/vesper_crossroads_inn.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
     "vigil_star_scar": {
       "path": "assets/sprites/objects/vigil_star_scar.webp",
       "width": 16,

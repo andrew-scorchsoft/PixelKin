@@ -615,6 +615,10 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'BLOOM CRIER', text: 'They say a Glimmerstep opens the deep wood north of town, the Spore Grotto under it — and old Tideglass Cavern, all the way back on the Dimglass flats! A whole dark map, gone friendly!' },
   ],
 
+  // The waystation inn (crossroads_inn interior) — the welcome shingle.
+  'sign.crossroads_inn': [
+    { text: 'THE WAYSTATION INN\nA warm bed and a warmer hearth for any Wayfarer the Lanternway brings in. Rooms by the night; the kettle is always on.' },
+  ],
   // --- Vesper Crossroads (the Lanternway hub) ---------------------------------
   'sign.crossroads': [
     { text: 'VESPER CROSSROADS\nAll the Lanternway meets here. SOUTH-WEST: Tinderwick. SOUTH-EAST: Pearlmoor Quay — its lamps wake with the Tide. The other roads sleep, unlit.' },

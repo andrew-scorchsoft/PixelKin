@@ -142,6 +142,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'drownlight_beacon', region: 'outer', optional: true, reward: 'rare Dark kin in a snuffed lighthouse' },
     { map_id: 'hollowfen_stillworks', region: 'outer', optional: true, reward: "landmark micro-dungeon: a derelict Hollowing null-works; a powerful Storm/Dark 'charged husk' kin" },
     { map_id: 'vesper_crossroads', region: 'outer' },
+    { map_id: 'crossroads_inn', region: 'outer' }, // interior: the waystation inn (C2 innkeeper)
     // The Lanternway spokes — real lane maps (2026-06 topology fix): each spoke
     // is a short bending country lane, so the hub's roads radiate compass-true.
     { map_id: 'lanternway_tinderwick', region: 'outer' },
@@ -288,6 +289,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'lanternway_galehigh', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
     { from_map: 'nightreach_observatory', to_map: 'lanternway_nightreach', via_warp: 'to_crossroads', bidirectional: true },
     { from_map: 'lanternway_nightreach', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
+    { from_map: 'vesper_crossroads', to_map: 'crossroads_inn', via_warp: 'enter_inn', bidirectional: true },
     { from_map: 'vesper_crossroads', to_map: 'coldfog_marches_i', via_warp: 'to_marsh', bidirectional: true },
 
     // ---- Late shortcuts: open from the far side, then permanently re-link to the hub --

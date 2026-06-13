@@ -204,6 +204,14 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'hub',
     music: 'assets/audio/music/tinderwick-a.mp3',
   },
+  // The Vesper Crossroads waystation inn — the concept art's central house, now
+  // enterable (the C2 'Inn's Empty Lamps' innkeeper lives inside).
+  crossroads_inn: {
+    json: 'assets/maps/crossroads_inn.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/tinderwick-a.mp3',
+  },
   // The Lanternway spokes — the five hub lanes are REAL maps (2026-06 topology
   // fix): short bending country lanes between each rim town and the crossroads,
   // safe lit ground (no encounters/trainers — "keep to the lamps"). Each bends
