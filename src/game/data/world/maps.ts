@@ -359,6 +359,21 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/lowleaf-hollow-b.mp3',
   },
+  // Gloamwood Dell + Georgina's Cottage — the optional East side quest "The
+  // Sunniest House in the Dark" (a tree-walled glade off lowleaf_hollow's NE
+  // path-mouth, and the cat-keeper's fairy-lit home within).
+  gloamwood_dell: {
+    json: 'assets/maps/gloamwood_dell.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/lowleaf-hollow-a.mp3',
+  },
+  georgina_cottage: {
+    json: 'assets/maps/georgina_cottage.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/lowleaf-hollow-b.mp3',
+  },
   // Cinderhead Mine — the gem-mine settlement (Lumenary 4, Stone: Otho Grist);
   // the Lamp-down vigil festival + the Descent Vigil earned loop (the §4 wall).
   cinderhead_mine: {

@@ -96,6 +96,8 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'lowleaf_hollow', region: 'east' }, // forest town + Lumenary
     { map_id: 'lowleaf_lumenary', region: 'east' }, // interior: the Verdant Lumenary (Sable Quill)
     { map_id: 'lowleaf_bower', region: 'east' }, // interior: the festival guest-bower (rest point)
+    { map_id: 'gloamwood_dell', region: 'east', optional: true }, // optional spur: Georgina's dell (E4)
+    { map_id: 'georgina_cottage', region: 'east', optional: true }, // interior: Georgina's cottage
     { map_id: 'glowmoss_deep', region: 'east' }, // forest interior (Glimmerstep)
     { map_id: 'glowmoss_deep_b1f', region: 'east' }, // the lower maze floor (ladder pair)
     { map_id: 'spore_grotto', region: 'east', optional: true, reward: 'rare Bug/Verdant kin + item' },
@@ -202,6 +204,9 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'lowleaf_hollow', to_map: 'lowleaf_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
     { from_map: 'lowleaf_hollow', to_map: 'lowleaf_bower', via_warp: 'to_bower', bidirectional: true },
     { from_map: 'lowleaf_hollow', to_map: 'glowmoss_deep', via_warp: 'to_deepwood', requires_ability: 'glimmerstep', bidirectional: true },
+    // E4 optional spur: the dell opens once the hollow neighbour points the way
+    { from_map: 'lowleaf_hollow', to_map: 'gloamwood_dell', via_warp: 'to_gloamwood', requires_flag: 'flag:q_east_georgina', bidirectional: true },
+    { from_map: 'gloamwood_dell', to_map: 'georgina_cottage', via_warp: 'enter_georgina_cottage', bidirectional: true },
     { from_map: 'glowmoss_deep', to_map: 'cinderhead_mine', via_warp: 'to_mine', bidirectional: true },
     { from_map: 'cinderhead_mine', to_map: 'cinderhead_lumenary', via_warp: 'to_lumenary', bidirectional: true },
     { from_map: 'cinderhead_mine', to_map: 'cinderhead_deep', via_warp: 'to_deep', requires_ability: 'glimmerstep', bidirectional: true },

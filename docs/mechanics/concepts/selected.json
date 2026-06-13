@@ -4598,5 +4598,30 @@
   "hook": "Half farm-pig, half dawn-rooster, wholly convinced. Sturdy and funny but dignified \u2014 a creature that has decided morning is coming and is simply early. Kept company at the one lamp the Booji-Wooji Man leaves dark.",
   "dex_id": 163,
   "line_primary_type": "Solar"
+ },
+ {
+  "concept_id": "X-GLOAMPURR",
+  "name": "Gloampurr",
+  "types": [
+   "Lunar",
+   "Solar"
+  ],
+  "role": "Special Sweeper",
+  "tier": "C",
+  "region": "east",
+  "rarity": "rare",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "concept": "A small winged cat the colour of a violet dusk, with a coal of warm gold burning low in its chest. It does not fear the dark; it curls up in the deepest of it and purrs until the gloom glows back, carrying its own little sunrise wherever the night is thickest.",
+  "visual": "A small, lithe winged cat sitting upright: pointed feline ears, a slim cat's muzzle, large round eyes, four neat paws and a long tufted tail. From its shoulders rise a pair of small membranous dragon wings, half-folded like a cloak; faint ridge-scales run the spine. At 64px it reads cat-first, dragon-second.",
+  "size_cm": 42,
+  "weight_kg": 9,
+  "hook": "Sunshine in goth clothing. Content and unbothered, wholly at home in the dark, head up and eyes warm. Gothic-cosy, never spooky: it LIKES the night, and it brought a light. Georgina the Cat-keeper's pride, and the kitten she gifts a kind Wayfarer.",
+  "dex_id": 164,
+  "line_primary_type": "Lunar"
  }
 ]

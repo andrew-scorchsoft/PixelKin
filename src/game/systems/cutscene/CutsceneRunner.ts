@@ -26,6 +26,8 @@ export interface CutsceneContext {
   getActor(ref: ActorRef): Actor | undefined;
   canEnter(tx: number, ty: number): boolean;
   onGiveStarter(speciesId: number): void;
+  /** Hand the player a specific kin at a level (a gift kin); joins party or Hearth. */
+  onGiveKin?(speciesId: number, level: number): void;
   onGiveItem(item: string, count: number): void;
   /** Whether the player currently holds at least one of `item` (ensureItem's gate). */
   hasItem?(item: string): boolean;
@@ -147,6 +149,11 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
     case 'giveStarter': {
       const speciesId = await new StarterSelect(scene, ctx.sfx).run();
       ctx.onGiveStarter(speciesId);
+      void ctx.sfx.play('dex-register');
+      return true;
+    }
+    case 'giveKin': {
+      ctx.onGiveKin?.(step.kin, step.level);
       void ctx.sfx.play('dex-register');
       return true;
     }

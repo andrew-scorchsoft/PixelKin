@@ -101,6 +101,16 @@ export const QUESTS: QuestRegistry = [
     stage_flags: ['flag:q_east_ledger_found'],
     done_flag: 'flag:q_east_ledger_done',
   },
+  {
+    id: 'e4_sunniest_house',
+    name: 'The Sunniest House in the Dark',
+    region: 'east',
+    giver: 'Georgina, the Cat-keeper',
+    blurb: 'Deep in the hollow lives a keeper who loves the dark and fills it with cats and fairy-lights. Find her cottage, fetch her bolted kitten, and she may share the secret of her dragon-cat.',
+    start_flag: 'flag:q_east_georgina',
+    stage_flags: ['flag:q_east_georgina_kitten', 'flag:georgina_beaten'],
+    done_flag: 'flag:q_east_georgina_done',
+  },
 
   // ===== NORTH ===============================================================
   {

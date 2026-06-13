@@ -53,7 +53,9 @@ GRANTS: dict[str, list[str]] = {
     "pearlmoor_quay": ["flag:q_south_has_rope"],
     "pearlmoor_breakwater": ["flag:q_south_bell_rung"],  # the Moor-bell rung
     "pearlmoor_lumenary": ["tidecall", "gleam:tide", "flag:crown_south"],
-    "lowleaf_hollow": ["glimmerstep", "gleam:verdant"],
+    # +flag:q_east_georgina: the hollow neighbour points the way to Georgina's
+    # dell (the optional E4 spur), post-Verdant — gates lowleaf_hollow->gloamwood_dell.
+    "lowleaf_hollow": ["glimmerstep", "gleam:verdant", "flag:q_east_georgina"],
     "cinderhead_mine": ["gleam:stone", "flag:crown_east"],
     "cinderhead_deep": ["flag:shortcut_mine"],
     # The Kite-Rising Winch loop: the kite chain + festival blessing happen in

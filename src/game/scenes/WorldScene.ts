@@ -27,6 +27,7 @@ import { WorldMapMenu } from '@game/ui/WorldMapMenu';
 import { ChartView } from '@game/ui/ChartView';
 import { fadeIn, fadeOut } from '@game/ui/Transitions';
 import { KinInstance } from '@game/systems/party/KinInstance';
+import { MAX_PARTY } from '@game/systems/party/Party';
 import { InputController, InputAction } from '@game/systems/input/InputController';
 import { loadMap, RuntimeMap } from '@game/systems/world/MapLoader';
 import { renderMap, tickAnimatedTiles } from '@game/systems/world/MapRenderer';
@@ -582,6 +583,15 @@ export class WorldScene extends Phaser.Scene {
       canEnter: (tx, ty) => this.playerCanEnter(tx, ty),
       onGiveStarter: (speciesId) => {
         this.party.push(makeStarterKin(speciesId));
+        this.dexSeen.add(speciesId);
+        this.dexCaught.add(speciesId);
+      },
+      onGiveKin: (speciesId, level) => {
+        // A gift kin (e.g. Georgina's dragon-cat kitten): join the lamp, or rest
+        // in the Hearth if the party is already full — never silently dropped.
+        const kin = makeStarterKin(speciesId, level);
+        if (this.party.length < MAX_PARTY) this.party.push(kin);
+        else this.box.push(kin);
         this.dexSeen.add(speciesId);
         this.dexCaught.add(speciesId);
       },

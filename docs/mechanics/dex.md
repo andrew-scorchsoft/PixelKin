@@ -1,9 +1,9 @@
-# PixelKin — The Dex (163)
+# PixelKin — The Dex (164)
 
 > Generated from `src/game/data/species.json` by `tools/balance/gen_docs.py`. Every entry is original (VISION.md). Lines show kindling chains (→).
 
-- **Total:** 163  |  **Tiers:** A:33 B:20 C:39 D:48 E:19 F:4
-- **Primary types:** Ember:18  Tide:18  Verdant:20  Stone:16  Storm:17  Frost:15  Solar:17  Lunar:14  Light:16  Dark:12
+- **Total:** 164  |  **Tiers:** A:33 B:20 C:40 D:48 E:19 F:4
+- **Primary types:** Ember:18  Tide:18  Verdant:20  Stone:16  Storm:17  Frost:15  Solar:17  Lunar:15  Light:16  Dark:12
 
 
 ## South — Tinderwick / coast (Ember, Tide)
@@ -51,7 +51,7 @@
 | <img src="../../public/assets/sprites/creatures/156_cloverbuck/battle_front.webp" width="48" alt="Cloverbuck"> | 156 | **Cloverbuck** | Verdant | C | Physical Bruiser | 418 | → Cloverhart (L36) | 112 | 105cm/34kg | Cloverkit's kindled middle form — a young grove buck whose first antlers have budded as … |
 | <img src="../../public/assets/sprites/creatures/157_pharolux/battle_front.webp" width="48" alt="Pharolux"> | 157 | **Pharolux** | Tide/Light | E | Special Sweeper | 558 | (from Glostrael) | 24 | 380cm/210kg | Glostrael's rare apex kindling — a vast lantern-bell leviathan the old quay-folk call th… |
 | <img src="../../public/assets/sprites/creatures/160_gloamber/battle_front.webp" width="48" alt="Gloamber"> | 160 | **Gloamber** | Ember/Dark | E | Special Tank | 558 |  | 24 | 170cm/88kg | The First Hour — the keeper of dusk, grown heavy with an evening it has never been allow… |
-|  | 163 | **Chickenpig** | Solar | C | Physical Bruiser | 418 |  | 112 | 70cm/28kg | A barrel-round piglet with a rooster's comb, one proud red wing and a spray of green tai… |
+| <img src="../../public/assets/sprites/creatures/163_chickenpig/battle_front.webp" width="48" alt="Chickenpig"> | 163 | **Chickenpig** | Solar | C | Physical Bruiser | 418 |  | 112 | 70cm/28kg | A barrel-round piglet with a rooster's comb, one proud red wing and a spray of green tai… |
 
 ## East — Lowleaf & Cinderhead (Verdant, Stone)
 
@@ -93,6 +93,7 @@
 | <img src="../../public/assets/sprites/creatures/068_fernlance/battle_front.webp" width="48" alt="Fernlance"> | 68 | **Fernlance** | Verdant/Light | D | Special Sweeper | 498 | (from Fennlight) | 57 | 380cm/95kg | A fully adult fern-serpent, now as long as a felled tree, wreathed in blazing biolumines… |
 | <img src="../../public/assets/sprites/creatures/069_riddlestone/battle_front.webp" width="48" alt="Riddlestone"> | 69 | **Riddlestone** | Stone | C | Special Wall | 418 |  | 120 | 120cm/240kg | A sphinx-like cave construct that has formed naturally from layered sedimentary stone; i… |
 | <img src="../../public/assets/sprites/creatures/070_mycovast/battle_front.webp" width="48" alt="Mycovast"> | 70 | **Mycovast** | Verdant/Stone | E | Special Tank | 558 |  | 24 | 300cm/2200kg | The apex kin of Spore Grotto — a vast, ancient fungal titan that has been growing throug… |
+|  | 164 | **Gloampurr** | Lunar/Solar | C | Special Sweeper | 418 |  | 112 | 42cm/9kg | A small winged cat the colour of a violet dusk, with a coal of warm gold burning low in … |
 
 ## North — Galehigh & Pale Vault (Storm, Frost)
 

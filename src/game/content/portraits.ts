@@ -59,6 +59,14 @@ export const PORTRAITS: Record<string, PortraitDef> = {
     path: 'assets/portraits/hearthkeeper.png',
     expressions: { neutral: 0, warm: 1 },
   },
+  // Georgina, the Cat-keeper — a bubbly sunshine-goth who keeps cats (and one
+  // dragon-cat) in a fairy-lit cottage deep in the dark wood. The anti-Hollowing:
+  // loves the dark, fills it with light. Optional East side quest.
+  georgina: {
+    id: 'portrait_georgina',
+    path: 'assets/portraits/georgina.png',
+    expressions: { neutral: 0, sunny: 1, delighted: 2, wink: 3 },
+  },
   // Sable Quill — the Verdant Lampwarden of Lowleaf Hollow; a shy botanist.
   sable: {
     id: 'portrait_sable',

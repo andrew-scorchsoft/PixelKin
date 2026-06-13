@@ -64,6 +64,8 @@ const SPRITE_SHEETS: Record<string, string> = {
   npc_woman: 'npc_woman',
   npc_old_man: 'npc_old_man',
   npc_old_woman: 'npc_old_woman',
+  // Georgina, the Cat-keeper (gloamwood_dell / georgina_cottage) — bespoke sheet.
+  georgina: 'georgina',
   // Gran (tinderwick_house) — her own sheet, not the generic old-woman.
   npc_parent: 'npc_parent',
   npc_boy: 'npc_boy',
@@ -90,6 +92,9 @@ const SPRITE_COLORS: Record<string, string> = {
   lucan_pyre: COLORS.fire,
   nessa_cole: COLORS.deepBlue,
   warden_cor: COLORS.ink,
+  georgina: '#a26bd6', // her favourite purple — placeholder until the sheet lands
+  lost_kitten: '#7a4fb0', // the bolted Gloampurr kitten (search target in the dell)
+  cottage_cat: '#5d4a7a', // ambient cats underfoot in Georgina's cottage
   booji_paul: COLORS.bone,
   lifter_andy: COLORS.deepBlue,
   lifter_andrew: COLORS.diamond,

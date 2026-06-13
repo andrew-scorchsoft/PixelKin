@@ -286,6 +286,18 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'The first-morning kin. The sixth shard never fell, because it was never a shard — it is the morning itself, and it answers the Ninth Lantern when the five are seated. The watchers\' oldest books drew it, and apologised for the drawing.',
     unlock_flag: 'flag:starfall_lesson',
   },
+  {
+    id: 'georgina',
+    term: 'Georgina, the Cat-keeper',
+    desc: 'A keeper who lives in the darkest dell of Lowleaf Hollow with too many cats and more fairy-lights. She loves the dark and the dusk — and answers them not with fear but with bunting. The Hollowing want an empty night; she wants a furnished one.',
+    unlock_flag: 'flag:q_east_georgina',
+  },
+  {
+    id: 'gloampurr',
+    term: 'Gloampurr (the dragon-cat)',
+    desc: 'A small winged dusk-cat that carries its own little sunrise — a coal of warm gold glowing in its chest. A night-cat loved without any fear of the dark is said to grow one. Georgina insists they are misunderstood: not creatures OF the gloom, but lights brought INTO it.',
+    unlock_flag: 'flag:q_east_georgina_done',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */

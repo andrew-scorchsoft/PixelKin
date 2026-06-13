@@ -8,6 +8,26 @@
 import type { DialogueLine, DialogueRegistry } from './types';
 
 export const DIALOGUE: DialogueRegistry = {
+  // --- Georgina's cottage (gloamwood_dell) — ambient cats + a hand-lettered sign ---
+  'npc.georgina_waiting': [
+    { speaker: 'GEORGINA', portrait: 'georgina', expr: 'sunny', text: "Any sign of my Pim? Darkest corner of the dell, that's where she'll be — she likes a good brood, the little optimist. Take your time, take your time! I'll put the kettle on. I always have the kettle on." },
+  ],
+  'npc.gloampurr_nook': [
+    { text: 'The house Gloampurr is curled in her cushion, glowing gently like a banked fire. She opens one warm gold eye, decides you are acceptable, and goes back to sleep.' },
+  ],
+  'npc.cottage_cat_a': [
+    { text: 'A round tabby is asleep in a patch of fairy-light, snoring like a tiny kettle. A hand-knitted blanket reads "MITTENS — DO NOT MOVE".' },
+  ],
+  'npc.cottage_cat_b': [
+    { text: 'A cat the colour of soot regards you with enormous calm, then very deliberately pushes a thimble off the shelf and watches it fall. Its work here is done.' },
+  ],
+  'sign.gloamwood_dell': [
+    { text: "GEORGINA'S — mind the cats!\nDarkest dell in the hollow. Brightest welcome. Wipe your boots, the Smudges are particular." },
+  ],
+  // The blocked east path before the quest starts (warp blocked_ref).
+  'sign.lowleaf_gloamwood': [
+    { text: 'The brambles east are pitch-dark and grown thick — no pushing through, not without a reason to. They say someone lives back there, mind.' },
+  ],
   'sign.tinderwick_dock': [
     { text: 'TINDERWICK DOCKS\nMind the lanterns — the tide comes in quiet since the Long Dusk.' },
   ],

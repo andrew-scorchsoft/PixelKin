@@ -1142,6 +1142,62 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:q_east_ledger_done' },
   ],
 
+  // E4 "The Sunniest House in the Dark" — Georgina, the Cat-keeper. An OPTIONAL
+  // post-Verdant spur (gloamwood_dell, off lowleaf_hollow). A bubbly sunshine-goth
+  // who loves the dark and FILLS it with light — the cheerful counter-argument to
+  // the Hollowing, played for warmth and laughs. Flow: a hollow neighbour points
+  // the way (hook) -> meet her in the cottage (she asks you to fetch her bolted
+  // kitten Pim) -> find Pim in the dell -> a friendly battle -> she gifts you a
+  // dragon-cat kitten of your own. All flags hand-set q_east_* (none derived).
+  'script.georgina_hook': [
+    { op: 'say', speaker: 'HOLLOW NEIGHBOUR', text: 'Now you can walk the glowmoss-dark, you ought to meet our Georgina. Lives out east past the ferns, in the deepest, blackest dell in the hollow.' },
+    { op: 'say', speaker: 'HOLLOW NEIGHBOUR', text: "Keeps a hundred cats and isn't a BIT afraid of the dusk — when the first star went out, the rest of us lit candles and fretted. She put bunting up. Said it was the perfect excuse." },
+    { op: 'say', speaker: 'HOLLOW NEIGHBOUR', text: "Daft as a brush and twice as cheerful. Go on — the path east is lit enough now. She'll be thrilled. She's always thrilled." },
+    { op: 'setFlag', flag: 'flag:q_east_georgina' },
+  ],
+  // Meet Georgina in the cottage. Establishes the character + the anti-Hollowing
+  // theme (with jokes), and sends the player to find her bolted kitten Pim.
+  'script.georgina_intro': [
+    { op: 'say', speaker: 'GEORGINA', portrait: 'georgina', expr: 'delighted', text: "Ooh, a VISITOR! In the dark! Mind the cats, mind the cats — that's Smudge, that's Other Smudge, that's a cushion. Welcome, welcome! Sit anywhere that isn't purring." },
+    { op: 'say', speaker: 'GEORGINA', portrait: 'georgina', expr: 'sunny', text: "You've got the look on you — the 'why is she so jolly when the sky's going out' look. I get it a lot. Folk think because I love the dark I must be ROOTING for the ones snuffing the lamps. Pfft!" },
+    { op: 'say', speaker: 'GEORGINA', portrait: 'georgina', expr: 'sunny', text: "That's like saying I love a nice cup of tea so I must want to drown in the sea. I love the dark for what you can put IN it, love. Candles. Cats. A really, REALLY good fairy-light. You don't mend a sad room by smashing the lamp. You hang up MORE." },
+    { op: 'say', speaker: 'GEORGINA', portrait: 'georgina', expr: 'neutral', text: "...Which IS the trouble. When that nasty quiet swept through last week — the Hollowing kind, the kind that makes a candle homesick — one of my babies took fright and bolted out into the dell. Little Pim. Smallest, bravest, daftest of the lot." },
+    { op: 'say', speaker: 'GEORGINA', portrait: 'georgina', expr: 'delighted', text: "Would you? You've a kind lamp on you, I can tell. Find my Pim and bring her home, and I'll show you something NObody else in Vesperholm has got. Off you pop! She likes the darkest corner — she's an optimist, like her mum." },
+  ],
+  // Pim, found in the darkest corner of the dell (the lost_kitten NPC).
+  'script.georgina_kitten_found': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'narrate', text: 'In the blackest hollow of the dell, a tiny violet kitten sits bolt upright on a stone, entirely unbothered, watching a single drifting glowmoss-spark as if it were a private sunrise. She head-butts your hand and climbs into your lamp-bag like she owns it.' },
+    { op: 'say', text: 'You scooped up PIM! She is purring loud enough to rattle the lamp.' },
+    { op: 'setFlag', flag: 'flag:q_east_georgina_kitten' },
+  ],
+  // Back at the cottage with Pim: the friendly battle, then the dragon-cat gift.
+  // The 'battle' op aborts the scene on a loss (the host blacks the player out),
+  // so everything after it only runs once the player has won — georgina_beaten and
+  // the gift are banked here, inside the winning branch.
+  'script.georgina_battle': [
+    { op: 'say', speaker: 'GEORGINA', portrait: 'georgina', expr: 'delighted', text: "PIM! Oh, my brave little optimist — and not a whisker out of place. Look at her, she had a lovely time. Some cats run TOWARDS the adventure, bless her cottony heart." },
+    { op: 'battle', trainer: 'trainer_georgina' },
+    { op: 'setFlag', flag: 'flag:georgina_beaten' },
+    { op: 'say', speaker: 'GEORGINA', portrait: 'georgina', expr: 'sunny', text: "Right! Promised you a secret, didn't I? Come and meet the pride of the house. Don't be alarmed — she's only got the wings for SHOW. Mostly." },
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'tint', color: '#a26bd6', alpha: 0.22, ms: 300 },
+    { op: 'narrate', text: 'From the nook at the back of the cottage uncurls a cat the colour of dusk, small dragon-wings folding back like a cloak, a coal of warm gold glowing low in her chest. She yawns, and for a moment the whole dark room is the warmer for it.' },
+    { op: 'say', speaker: 'GEORGINA', portrait: 'georgina', expr: 'delighted', text: "A Gloampurr! A dragon-cat, proper. Folk think they're a Hollowing thing — a creature of the dark. They've got it backwards, the daft loves. A Gloampurr carries her OWN little sunrise about with her. She isn't afraid of the night. She FURNISHES it." },
+    { op: 'tint', color: '#a26bd6', alpha: 0, ms: 400 },
+    { op: 'say', speaker: 'GEORGINA', portrait: 'georgina', expr: 'sunny', text: "And here's the secret, since you asked so nicely by finding my Pim: this clutch had a kitten spare. She's YOURS. Yes! Don't argue, you'll upset her, she's very sensitive." },
+    { op: 'giveKin', kin: 164, level: 5 },
+    { op: 'say', text: 'GEORGINA gave you a GLOAMPURR kitten!' },
+    { op: 'say', speaker: 'GEORGINA', portrait: 'georgina', expr: 'wink', text: "One rule, that's all. Raise her with SUNSHINE, hear? A dragon-cat grows from a night-cat that's been loved without one ounce of fear. Give her a dark to be brave in and a warm lap to come home to, and she'll light up the gloomiest road you ever walk." },
+    { op: 'say', speaker: 'GEORGINA', portrait: 'georgina', expr: 'delighted', text: "Now SHOO, the pair of you, before I cry on the cats. And listen — wherever those Hollowing folk have put a light out? You go and hang up TWO. From me. Tara, love!" },
+    { op: 'setFlag', flag: 'flag:q_east_georgina_done' },
+  ],
+  // Recurring, after the gift — Georgina is a permanent sunny fixture of the dell.
+  'script.georgina_after': [
+    { op: 'say', speaker: 'GEORGINA', portrait: 'georgina', expr: 'delighted', text: "There's my favourite Wayfarer! How's our girl? Eating? Brave? Knocking things off shelves she's no business near? GOOD. That's a happy dragon-cat, that is." },
+    { op: 'say', speaker: 'GEORGINA', portrait: 'georgina', expr: 'sunny', text: "Don't you let anyone tell you the dark's a sad place, now. It's only a room. And you, love, are very, VERY good at hanging up lights. Off you go. Mind the Smudges." },
+  ],
+
   // The sealed mine door, opened from the inside — the hub re-link. The trigger
   // sets flag:shortcut_mine; this is the cutscene that sells it (spine §0 rule 3).
   'script.open_mine_shortcut': [
