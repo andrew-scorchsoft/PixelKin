@@ -771,6 +771,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   the town-side warp stays OPEN (one-way return compression). First travel to a town is always
   the long route — the spoke is the earned shortcut home, never a sequence-break (Pearlmoor was
   the outlier, `has_starter`-only, letting players skip the whole Dimglass Coast: playtest-caught).
+  The crossroads' one DELIBERATELY un-progress-gated onward road is the **north marsh road**
+  (`to_marsh` → `coldfog_marches_i`, a lvl-46+ outer zone): `has_starter`-gated BY DESIGN as a
+  soft nudge — the Waykeeper's `script.crossroads_marsh_warn` warning + the `emberward` dead-end
+  at `coldfog_marches_i→ii` stop a too-early player short (peek-but-can't-sequence-break/softlock).
+  It is NOT a bug; don't "fix" it to a Gleam/Gift gate (confirmed design, 2026-06).
 - **Match the concept art's landmarks in the rendered maps.** Each area's `assets/concept-art/`
   piece is the look to hit — when a map is missing a prominent landmark the concept shows, add it
   (a missing landmark confuses players who've seen the art). The hub's concept centrepieces — a
