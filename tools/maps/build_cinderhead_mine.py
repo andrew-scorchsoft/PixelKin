@@ -149,13 +149,11 @@ m: dict = {
          "to_map": "cinderhead_deep", "to": {"tx": 14, "ty": 2}, "facing": "down",
          "requires_ability": "glimmerstep", "blocked_ref": "sign.cinderhead_deep_mouth",
          "transition": "fade"},
-        # Otho's hall — GRAND DOUBLE DOOR on the building's south face: the arch
-        # straddles cols 2-3, so BOTH art tiles warp in (one warp alone leaves the
-        # other half of the arch a solid wall).
+        # Otho's hall. The door art sits OFF-CENTRE (cols 3-4) on the south face;
+        # the Lumenary nameplate (sign_cinderhead_lumenary at (13,9)) stands in front
+        # of the right half, so the entrance is the single open left tile (12,8) —
+        # a deliberate sign-guided entrance, not a two-tile straddle.
         {"id": "to_lumenary", "at": {"tx": 12, "ty": 8}, "trigger": "step_on",
-         "to_map": "cinderhead_lumenary", "to": {"tx": 8, "ty": 10}, "facing": "down",
-         "transition": "door"},
-        {"id": "to_lumenary_e", "at": {"tx": 11, "ty": 8}, "trigger": "step_on",
          "to_map": "cinderhead_lumenary", "to": {"tx": 8, "ty": 10}, "facing": "down",
          "transition": "door"},
     ],

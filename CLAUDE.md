@@ -661,6 +661,22 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   its line — `executeWarp` falls back to a generic "it's locked" if a door has none, so
   a gated door is never silent. `patterns.building` stamps step_on; `audit_warps` FAILs
   any door left on `interact`. Worked: `door.locked_*` lines + the 8 gated doors.
+- **A 2-wide door needs a warp on BOTH art tiles, on the door's ACTUAL columns —
+  which aren't always centred.** The grand Lumenary arches span two tiles; one warp
+  alone leaves the other half a solid wall (the "only the leftmost tile lets you in"
+  bug). Door art is NOT uniformly at the building's centre cols: stylised/3-4-view halls
+  put it off to one side (Lowleaf's iso door = cols 1-2, Cinderhead's = cols 3-4). Read
+  the actual door columns off the sprite before placing/twinning a warp; verify each
+  door+approach tile is `standable` (`tools/maps/worldmodel.py`). Cinderhead is the one
+  deliberate single-entry Lumenary: its nameplate sign (13,9) fronts the door's right
+  half, so entry is the open left tile by design.
+- **Every Lumenary wears a code-drawn constellation crest over its door — the genre's
+  labelled-gym cue.** `WorldScene.markLumenaryCrests`/`makeLumenaryCrest` (mirrors the
+  `markHealEntrances` rest-lantern pattern, depth 22) hangs an element-tinted roundel +
+  four-point star centred on each hall's door, keyed by the building sprite in the
+  `LUMENARY_CRESTS` config (element/`gleam:*` flag/`doorCol`/vertical `off` per hall, since
+  each region's art + door position is unique). It glows warm once that valley's Gleam is
+  relit, dim until then. New Lumenary = add one `LUMENARY_CRESTS` row (no per-map art/JSON).
 - **The device shell screen is locked to 3:2, but sized per-orientation** (`shells.css`,
   via `@media (orientation: …)`). Always the largest 3:2 that fits (so `Scale.FIT` never
   pillarboxes), but **portrait** spans the FULL viewport width edge-to-edge (no side casing,
