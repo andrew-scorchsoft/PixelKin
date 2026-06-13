@@ -211,6 +211,96 @@ def _check_sheet(img, spec, rep) -> None:
         cspread = max(centres) - min(centres)
         if cspread > max(2, round(fw * 0.20)):
             rep.warn(f"frame horizontal centres vary by {cspread:.0f}px")
+    # Directional walk sheets (human-overworld): rows must be distinct
+    # down/left/right/up viewpoints, or the walk animation faces the wrong way.
+    if spec.get("viewpoint_rows") and rows == 4:
+        _check_walk_viewpoints(img, spec, rep)
+
+
+# --------------------------------------------------------------------------- #
+# Walk-sheet viewpoint compliance (the down/left/right/up rows)
+# --------------------------------------------------------------------------- #
+def _row_signature(img, fw, fh, cols, r):
+    """Average luma + union mask of a row's frames (left to right), taken AS DRAWN
+    — no per-frame re-centring, so a true left/right mirror pair compares as an
+    exact mirror (the snap step already bottom-centre-aligns the frames). Returns
+    (luma[H,W] float, mask[H,W] bool) or (None, None) if the row is empty."""
+    import numpy as np
+    lsum = msum = None
+    for c in range(cols):
+        cell = img.crop((c * fw, r * fh, (c + 1) * fw, (r + 1) * fh)).convert("RGBA")
+        arr = np.asarray(cell, dtype=np.float32)
+        m = arr[..., 3] > ALPHA_CONTENT
+        if m.sum() < 20:
+            continue
+        luma = 0.299 * arr[..., 0] + 0.587 * arr[..., 1] + 0.114 * arr[..., 2]
+        lm, mm = np.where(m, luma, 0.0), m.astype(np.float32)
+        lsum = lm if lsum is None else lsum + lm
+        msum = mm if msum is None else msum + mm
+    if msum is None:
+        return None, None
+    mask = msum >= 1
+    avg = np.zeros_like(lsum)
+    avg[mask] = lsum[mask] / msum[mask]
+    return avg, mask
+
+
+def _masked_mae(la, ma, lb, mb):
+    both = ma & mb
+    if both.sum() < 20:
+        return None
+    import numpy as np
+    return float(np.abs(la[both] - lb[both]).mean())
+
+
+def _check_walk_viewpoints(img, spec, rep) -> None:
+    """A 4×4 directional walk sheet should read as four distinct views — row 0
+    down (full face), row 1 LEFT, row 2 RIGHT, row 3 up (back of the head). This
+    guards the two ways the in-game walk animation breaks:
+
+      * ERROR — two rows are near-identical: a facing direction that shows the
+        wrong/duplicate pose. Reliable (no shipped sheet trips it).
+      * WARN — the RIGHT row isn't the horizontal mirror of the LEFT row. The
+        generator authors side walks as exact mirrors so left and right always
+        face opposite ways; a mismatch usually means that step was skipped (the
+        "georgina faces you while walking sideways" bug). Only a WARN because a
+        hand-drawn sheet may use two separately drawn opposite profiles
+        (npc_old_man, lifter_rod), which is also correct — eyeball, don't fail.
+
+    Whether a side row is a true left/right PROFILE or a front view can't be told
+    apart reliably by pixels across characters (size, detail and the walk cycle
+    confound every metric), so the generator's deterministic left→right mirror is
+    the real guarantee and this is the verification. Skips if numpy is missing."""
+    try:
+        import numpy as np  # noqa: F401
+    except Exception:
+        return
+    fw, fh, cols = spec["frame_width"], spec["frame_height"], spec["cols"]
+    names = spec.get("viewpoint_rows", ["down", "left", "right", "up"])
+    sigs = [_row_signature(img, fw, fh, cols, r) for r in range(4)]
+    if any(s[0] is None for s in sigs):
+        return  # empty frames already errored in _check_sheet
+    (_dl, _dm), (ll, lm), (rl, rm), (_ul, _um) = sigs
+    # ERROR: no two rows may be near-duplicates (a repeated pose kills a direction)
+    for i in range(4):
+        for j in range(i + 1, 4):
+            d = _masked_mae(sigs[i][0], sigs[i][1], sigs[j][0], sigs[j][1])
+            if d is not None and d < 4.0:
+                rep.err(
+                    f"walk sheet: the '{names[i]}' and '{names[j]}' rows are "
+                    f"near-identical (diff {d:.1f}px) — each facing direction "
+                    f"must be its own distinct viewpoint."
+                )
+    # WARN: the RIGHT row should be the horizontal mirror of the LEFT row.
+    flip = _masked_mae(ll, lm, rl[:, ::-1], rm[:, ::-1])
+    if flip is not None and flip > 6.0:
+        rep.warn(
+            f"walk sheet: the '{names[2]}' row is not the horizontal mirror of "
+            f"the '{names[1]}' row (off by {flip:.0f}px). Generated sheets mirror "
+            f"the right row from the left so the side walks face opposite ways — "
+            f"if this was generated, re-run/mirror it; if it's hand-drawn opposite "
+            f"profiles, ignore."
+        )
 
 
 # --------------------------------------------------------------------------- #

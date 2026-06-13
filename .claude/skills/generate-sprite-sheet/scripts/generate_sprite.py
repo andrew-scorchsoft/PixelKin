@@ -238,6 +238,24 @@ def snap_single(src: Image.Image, spec: dict, resample: str) -> Image.Image:
     return fit_to_frame(src, fw, fh, spec["anchor"], spec["fill"], resample)
 
 
+def mirror_side_rows(sheet: Image.Image, spec: dict) -> Image.Image:
+    """Make the RIGHT row the exact horizontal mirror of the LEFT row on a
+    directional walk sheet — the retro convention (every shipped sheet does it),
+    so a character that walks left and one that walks right face opposite ways.
+    Row indices come from the spec's `viewpoint_rows` order. No-op if either row
+    isn't present."""
+    fw, fh, cols = spec["frame_width"], spec["frame_height"], spec["cols"]
+    vps = spec.get("viewpoint_rows") or []
+    if "left" not in vps or "right" not in vps:
+        return sheet
+    li, ri = vps.index("left"), vps.index("right")
+    out = sheet.convert("RGBA").copy()
+    for c in range(cols):
+        left = out.crop((c * fw, li * fh, c * fw + fw, li * fh + fh)).transpose(Image.FLIP_LEFT_RIGHT)
+        out.paste(left, (c * fw, ri * fh))
+    return out
+
+
 def snap_sheet(src: Image.Image, spec: dict, resample: str, align: bool) -> Image.Image:
     """Snap a multi-frame sheet to its exact grid.
 
@@ -337,6 +355,12 @@ def main() -> int:
     p.add_argument("--from-image", help="Skip the API call and post-process this existing transparent PNG instead.")
     p.add_argument("--keep-temp", action="store_true", help="Keep the raw high-res generated PNG next to the output.")
     p.add_argument("--max-retries", type=int, default=2, help="API retry count passed to generate-image.")
+    p.add_argument("--keep-side-rows", action="store_true",
+                   help="For directional walk sheets (human-overworld), DON'T enforce the "
+                        "retro convention of mirroring the left row onto the right. By default "
+                        "the right row is replaced with the exact horizontal mirror of the left "
+                        "(image generation rarely draws them as true mirrors, which makes the "
+                        "side-facing walk face the wrong way); pass this to keep both as drawn.")
     p.add_argument("--list-types", action="store_true", help="List sprite types and exit.")
     args = p.parse_args()
 
@@ -384,7 +408,10 @@ def main() -> int:
     chroma_path = args.provider == "openai"
     transparency_method = "chroma_key" if chroma_path else "native"
 
+    walk_sheet = bool(spec.get("viewpoint_rows")) and spec["rows"] == 4
+
     with tempfile.TemporaryDirectory() as td:
+        gen_info = {}
         if args.from_image:
             src_path = Path(args.from_image).expanduser().resolve()
             if not src_path.is_file():
@@ -418,6 +445,16 @@ def main() -> int:
             result = snap_sheet(source, spec, args.resample, align=not args.no_align)
         else:
             result = snap_single(source, spec, args.resample)
+
+        # Directional walk sheets: image generation draws the left and right rows
+        # independently and almost never as true mirrors, so the side-facing walk
+        # ends up facing the wrong way (or left and right look identical). Enforce
+        # the authored retro convention — the RIGHT row is the exact horizontal
+        # mirror of the LEFT row — so every generated sheet is animation-correct by
+        # construction (the validator's walk-viewpoint check verifies this).
+        if walk_sheet and not args.keep_side_rows:
+            result = mirror_side_rows(result, spec)
+            gen_info["right_row_mirrored_from_left"] = True
 
         result.save(out_path, format="PNG", optimize=True)
 

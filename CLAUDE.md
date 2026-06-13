@@ -522,7 +522,15 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   bit `player_indi`). The `human-overworld` template in `sprite-specs.json` now spells out each
   viewpoint (down=full face, left=left profile, right=mirror, **up=back of head in EVERY column
   incl. walk frames, no face**). After regenerating a walk sheet, eyeball the 4×4 grid and
-  confirm the up row shows the back of the head in all 4 cells before repacking.
+  confirm the up row shows the back of the head in all 4 cells before repacking. **The
+  generator now ENFORCES the side mirror**: `generate_sprite.py` replaces the RIGHT row with the
+  exact horizontal mirror of the LEFT row (image gen rarely draws true mirror profiles, which
+  made the side walk face the wrong way — the "georgina faces you walking sideways" bug); pass
+  `--keep-side-rows` to opt out for a hand-drawn opposite-profile sheet. `validate_sprites.py`
+  verifies walk sheets (marked by `viewpoint_rows` in the spec): it ERRORs on near-duplicate rows
+  and WARNs when the right row isn't the left's mirror. (Whether a side row is a true profile vs a
+  front view can't be told apart by pixels across characters — the deterministic mirror is the
+  guarantee, the check is the verification.)
 - **Fills tile into a grid unless vignette-flattened.** `deborder` fixes only the outer
   ring; the cure is `flatten_vignette` (fills) + `flatten_axis` (edges, along the tiling
   axis), edge variants by flip (never roll), edges value-matched to their fill. Interior
