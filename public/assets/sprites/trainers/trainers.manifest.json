@@ -24,8 +24,8 @@
       "width": 128,
       "height": 128
     },
-    "lifter_rot": {
-      "path": "assets/sprites/trainers/lifter_rot.webp",
+    "lifter_rod": {
+      "path": "assets/sprites/trainers/lifter_rod.webp",
       "width": 128,
       "height": 128
     },

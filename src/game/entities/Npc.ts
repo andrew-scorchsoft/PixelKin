@@ -58,7 +58,7 @@ const SPRITE_SHEETS: Record<string, string> = {
   lifter_andrew: 'lifter_andrew',
   lifter_abdul: 'lifter_abdul',
   lifter_sid: 'lifter_sid',
-  lifter_rot: 'lifter_rot',
+  lifter_rod: 'lifter_rod',
   // Generic, reusable townsfolk archetypes — drop these on any NpcPlacement.sprite.
   npc_man: 'npc_man',
   npc_woman: 'npc_woman',
@@ -95,7 +95,7 @@ const SPRITE_COLORS: Record<string, string> = {
   lifter_andrew: COLORS.diamond,
   lifter_abdul: COLORS.grass,
   lifter_sid: COLORS.fire,
-  lifter_rot: COLORS.grass,
+  lifter_rod: COLORS.grass,
 };
 
 /**

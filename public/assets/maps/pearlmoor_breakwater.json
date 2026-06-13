@@ -1143,6 +1143,17 @@
       "h": 3,
       "overhang": 2,
       "walk_under": true
+    },
+    {
+      "id": "dark_lamp",
+      "sprite": "tideglass_wrecklamp_dark",
+      "at": {
+        "tx": 8,
+        "ty": 25
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1
     }
   ],
   "warps": [
@@ -1353,7 +1364,33 @@
       "sprite": "booji_paul",
       "movement": "static",
       "dialogue_ref": "npc.booji_paul_after",
-      "requires_flag": "flag:q_south_booji_met"
+      "requires_flag": "flag:q_south_booji_met",
+      "hidden_when_flag": "flag:q_south_booji_done"
+    },
+    {
+      "id": "paul_chickenpig",
+      "at": {
+        "tx": 9,
+        "ty": 25
+      },
+      "facing": "down",
+      "sprite": "booji_paul",
+      "movement": "static",
+      "dialogue_ref": "script.booji_chickenpig",
+      "requires_flag": "flag:q_south_booji_done",
+      "hidden_when_flag": "flag:chickenpig_caught"
+    },
+    {
+      "id": "paul_done",
+      "at": {
+        "tx": 9,
+        "ty": 25
+      },
+      "facing": "down",
+      "sprite": "booji_paul",
+      "movement": "static",
+      "dialogue_ref": "npc.booji_paul_after",
+      "requires_flag": "flag:chickenpig_caught"
     }
   ],
   "gates": [],

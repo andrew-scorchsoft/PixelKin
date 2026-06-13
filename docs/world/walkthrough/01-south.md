@@ -469,8 +469,8 @@ netmender's keeping.
    - **S4 "The Booji-Wooji Man"** — **[BUILT]** giver: **Andy** at the **Lifting House**
      (`pearlmoor_lifting_house`, the quayside gym tucked behind the inn — door on the
      quay's NE bluff; Andy talks, Abdul and Sid bench, and two flavour lifters —
-     **Andrew** mid-set and **Rot**, the house's strongest-and-oldest allotment-keeper
-     (`npc.booji_andrew`, `npc.booji_rot`) — each point on to Paul and seed the Chickenpig
+     **Andrew** mid-set and **Rod**, the house's strongest-and-oldest allotment-keeper
+     (`npc.booji_andrew`, `npc.booji_rod`) — each point on to Paul and seed the Chickenpig
      without naming it) · steps: Andy's tale of the old
      strongman the quay calls the Booji-Wooji Man (`script.booji_andy`) → Abdul's clue
      (`script.booji_abdul`) → Sid's three words (`script.booji_sid`) → find **Paul** at
@@ -486,7 +486,14 @@ netmender's keeping.
      set-piece catch — **#163 Chickenpig** (Solar C, lv 16; the only rooster in
      Vesperholm that still believes in morning), the Lampling pattern
      (`script.booji_chickenpig`, `legendaryBattle` cooldown 2 →
-     `flag:chickenpig_caught`).
+     `flag:chickenpig_caught`). **Made un-missable without a spoiler (2026-06):**
+     once the quest is reported done, **Paul himself offers it** — his post-quest NPC
+     stage runs `script.booji_chickenpig` (so talking to the old man you came back to
+     see launches the catch), backed by a visible **dark lamp landmark** at the
+     breakwater's end (`dark_lamp` = the `tideglass_wrecklamp_dark` master, base on the
+     `chickenpig_catch` tile (8,26)) and a return-nudge in `script.booji_andy_done`
+     ("go back out to him… he keeps queer company out at that dark lamp"). Rod/Andrew in
+     the Lifting House seed it earlier. The lamp Paul keeps dark stays dark — no flag swap.
    - **R1 "Wicks for the Lamplighter"** — the Waykeeper's Round, leg 1 (live now): parcel
      from the **Waykeeper** (`vesper_crossroads`) → the **old lamplighter** (Dimglass I) ·
      flags: `flag:q_round_lamplighter` · reward: bright-lamp kit · `[wakes with spoke]`
