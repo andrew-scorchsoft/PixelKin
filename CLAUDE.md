@@ -629,6 +629,23 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   Galehigh spoke and the penumbra-ring same-edge U-turn are encoded as deliberate notes) —
   run it after moving any overworld edge warp. Facing convention it enforces: `facing`
   points INWARD from the LANDING edge, not "continue the exit direction".
+- **`tools/maps/render_walkable.py` overlays the COLLISION model on the art — the blind
+  spot the other audits share.** `audit_flow`/`audit_region` grant ALL Gifts for the reach
+  pass and trust a flag-gated warp to "open later", so two bug classes slip through: an
+  ORPHAN (walkable holding every Gift yet cut off from every entrance) and a **SOFTLOCK**
+  (a warp gated by a FLAG with no `requires_ability` whose tile you can only reach by USING
+  a Gift — the quest opens the door but you physically need a Gift it never grants). This
+  tool floods reachability from the real inbound landings + world start and tints every tile
+  walk-on-foot / Gift-only / Gift-gated / ledge / solid / ORPHAN, with softlocked warps
+  outlined red (`docs/maps/walkable/<id>.webp`; `--report-only` for the text gate; reuses
+  `worldmodel.MapModel` so it mirrors the engine). It caught the shipped **Pearlmoor
+  breakwater softlock**: the Causeway Bell loop is walked ON FOOT with the netmender's rope
+  (before Tidecall — Tidecall is Reyl's reward for ringing that bell), but the causeway's
+  connector row (24-25,17) was left as water (the harbour blob splashed up; the carve started
+  a row too low), making the bell a Tidecall-only island = circular softlock. Fix: the
+  causeway/board carve must start at the quay/sea SEAM, not one row inside the sea. Most
+  orphan flags are tiny decorative gaps behind the border treeline (reported "minor"); a
+  cluster ≥4 is worth an eyeball.
 - **A story step_on band must cover the WHOLE cut — but only its WALKABLE tiles.** One
   trigger tile on a wide corridor is walk-aroundable (this bit `dusk_begins`); but a band
   tile on a solid/sealed cell now FAILS `audit_flow` as unreachable content (this bit the

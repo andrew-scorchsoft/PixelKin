@@ -523,8 +523,8 @@
         39,
         39,
         59,
-        62,
-        69,
+        31,
+        36,
         39,
         40,
         82,
@@ -1202,8 +1202,8 @@
         0,
         0,
         0,
-        0,
-        0,
+        121,
+        121,
         124,
         0,
         0,
@@ -2596,6 +2596,54 @@
       "kind": "cutscene",
       "at": {
         "tx": 16,
+        "ty": 10
+      },
+      "activation": "step_on",
+      "ref": "script.tide_blessing",
+      "once": true,
+      "requires_flag": "gleam:tide",
+      "sets_flags": [
+        "flag:tide_blessing_seen"
+      ],
+      "hidden_when_flag": "flag:tide_blessing_seen"
+    },
+    {
+      "id": "tide_blessing_17",
+      "kind": "cutscene",
+      "at": {
+        "tx": 17,
+        "ty": 10
+      },
+      "activation": "step_on",
+      "ref": "script.tide_blessing",
+      "once": true,
+      "requires_flag": "gleam:tide",
+      "sets_flags": [
+        "flag:tide_blessing_seen"
+      ],
+      "hidden_when_flag": "flag:tide_blessing_seen"
+    },
+    {
+      "id": "tide_blessing_18",
+      "kind": "cutscene",
+      "at": {
+        "tx": 18,
+        "ty": 10
+      },
+      "activation": "step_on",
+      "ref": "script.tide_blessing",
+      "once": true,
+      "requires_flag": "gleam:tide",
+      "sets_flags": [
+        "flag:tide_blessing_seen"
+      ],
+      "hidden_when_flag": "flag:tide_blessing_seen"
+    },
+    {
+      "id": "tide_blessing_19",
+      "kind": "cutscene",
+      "at": {
+        "tx": 19,
         "ty": 10
       },
       "activation": "step_on",

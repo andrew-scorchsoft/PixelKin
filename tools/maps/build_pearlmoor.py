@@ -76,9 +76,13 @@ mk.rect(water, W, H, 13, 18, 14, 21, 0)
 # board causeway noses south-east out of the quay toward the Moor-bell shrine
 # (its own map, pearlmoor_breakwater). Carved to SAND so it is walked ON FOOT —
 # never Tidecall-gated (spine §0 rule 1); the moor-gate warps at its seaward
-# end are flag-gated on the netmender's rope instead.
-mk.rect(sand, W, H, 24, 18, 25, 23, 1)
-mk.rect(water, W, H, 24, 18, 25, 23, 0)
+# end are flag-gated on the netmender's rope instead. The carve MUST start at
+# y17 (the quay/sea seam), not y18: the harbour blob at (24,18) splashes water
+# up into (24-25,17), and if that connector row is left as water the whole
+# causeway becomes a Tidecall-only island — a softlock, since the Tide Gift is
+# only earned by ringing the bell out ON it (caught by render_walkable.py).
+mk.rect(sand, W, H, 24, 17, 25, 23, 1)
+mk.rect(water, W, H, 24, 17, 25, 23, 0)
 
 # tall-grass fringe (grass-kin encounter patch) tucked top-left under the tree-line
 tallgrass = mk.make_grid(W, H)
@@ -227,8 +231,9 @@ mk.fence_run(deco, W, H, 17, 11, 19)
 # approach at (24-25,17) open — a boulder at (25,17) would seal the moor-gate)
 for (x, y) in [(2, 16), (26, 17), (10, 16), (26, 21)]:
     deco[y * W + x] = gid("boulder")
-# the breakwater root's worked boards (dock over SAND -> always walkable)
-for ty in (18, 19, 20, 21, 22):
+# the breakwater root's worked boards (dock over SAND -> always walkable). Runs
+# from y17 (the quay seam) so the planks reach the dry shore — see the carve note.
+for ty in (17, 18, 19, 20, 21, 22):
     deco[ty * W + 24] = gid("dock")
     deco[ty * W + 25] = gid("dock")
 
@@ -247,20 +252,26 @@ mk.scatter_decor(deco, base, W, H, rng, density=0.15, avoid=deco_avoid)
 
 # ---- the Tide-blessing band (Arc E) -------------------------------------------
 # Row 10 is the one horizontal cut between the Lumenary forecourt and the rest
-# of the quay: every post-Gleam walk back into town crosses it. Band only the
-# WALKABLE cells (tree border, shop/inn footprints and the fenced flowerbeds are
-# solid — a trigger there would audit as unreachable content); the tree_a canopy
-# cells are walk-under, so they ARE banded.
-# (audit_flow choke note: the band's job is to cut Lumenary<->town, which it
-# does completely; the audit's long-axis pair test paths west-gate -> east-gate
-# along row 12 — a route the band never needs to guard — so its "walked around"
-# WARN on script.tide_blessing is expected and justified.)
+# of the quay: every post-Gleam walk back into town crosses it. Band EVERY
+# walkable, reachable cell of the cut so the festival can't be slipped past
+# (docs gotcha: cover the whole cut, only its walkable tiles). The tree border,
+# shop/inn footprints are solid (a trigger there would audit as unreachable);
+# the tree_a canopy cells are walk-under, so they ARE banded. The fenced
+# flowerbed sits on row 11, NOT row 10 — so cols 17-19 of row 10 are an OPEN
+# lane and MUST be banded (leaving them out let a player descend the east side
+# and skip the blessing — render_walkable.py's softlock/choke pass caught it).
+# Col 25 is the lone exclusion: a sealed pocket (sign_fen at (25,11) closes it
+# from the lane), so its row-10 cell is unreachable and banding it would dangle.
+# (audit_flow choke note: this band fully cuts Lumenary<->town north-south, so the
+# festival is unskippable — verify with render_walkable.py / the north<->south
+# avoid test. audit_flow still WARNs "walked around" because its heuristic pairs
+# the long axis WEST-gate <-> EAST-gate and paths along row 12 — a route this
+# north-south band never needs to guard. The WARN is expected and not a failure.)
 BLESSING_ROW = 10
 blessing_cols = [x for x in range(W)
                  if not tree[BLESSING_ROW * W + x]
                  and not (SHOP["at"][0] <= x < SHOP["at"][0] + SHOP["w"])
                  and not (INN["at"][0] <= x < INN["at"][0] + INN["w"])
-                 and x not in (17, 18, 19)   # the fenced flowerbeds
                  and x != 25]                # col 25 is a sealed pocket (sign_fen
                                              # at (25,11) closes it from the lane)
 
