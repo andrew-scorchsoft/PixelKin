@@ -412,8 +412,11 @@ body.pk-shell-overlay .pk-controls {
 }
 
 /* In-game control-size cycler — the matched twin of the fullscreen toggle, but in
-   the free TOP-LEFT corner. Tapping steps the d-pad/A·B/Start size 1→2→3. Shown
-   only on touch devices in landscape (same as the fullscreen toggle). */
+   the free TOP-LEFT corner. Tapping steps the d-pad/A·B/Start size 1→2→3. Shown on
+   ANY landscape viewport (desktop mouse included — it resizes the on-screen
+   controls, which show on desktop too), unlike the fullscreen toggle which is
+   mobile-only. Hidden in portrait, where the edge-to-edge screen leaves no corner
+   (resize from Settings → Controls there). */
 .pk-size-toggle {
   display: none;
   position: fixed;
@@ -443,7 +446,7 @@ body.pk-shell-overlay .pk-controls {
   background: var(--shell-button-press);
   color: #000;
 }
-@media (orientation: landscape) and (pointer: coarse) {
+@media (orientation: landscape) {
   body.pk-shell-device .pk-size-toggle,
   body.pk-shell-overlay .pk-size-toggle {
     display: block;
