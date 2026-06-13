@@ -46,8 +46,9 @@ export interface CutsceneContext {
   startSetPieceBattle?(kin: number, level: number, terrain?: EncounterTerrain): Promise<'caught' | 'koed' | 'fled' | 'lost'>;
   /** Stamp a `cooldownBattles`-long (in WON battles) withdrawal under `name`. */
   setLegendaryCooldown?(name: string, cooldownBattles: number): void;
-  /** Fully restore the party (the inn-rest / hearthside-heal op). */
-  onHealParty?(): void;
+  /** Fully restore the party (the inn-rest / hearthside-heal op). `rest` (default
+   *  true) also banks the spot as the blackout wake-point. */
+  onHealParty?(rest: boolean): void;
   /** Hand the player wicks (quest rewards, found purses). */
   onGiveMoney?(amount: number): void;
   /** Open a shop counter by id (mutates inventory + wicks via the host). */
@@ -246,7 +247,7 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       return false; // a failed catch doesn't narrate a triumphant tail
     }
     case 'heal':
-      ctx.onHealParty?.();
+      ctx.onHealParty?.(step.rest !== false);
       void ctx.sfx.playVariant('world-heal', ['a', 'b']);
       return true;
     case 'giveMoney':
