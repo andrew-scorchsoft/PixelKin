@@ -468,7 +468,10 @@ netmender's keeping.
      beyond the lamp's reach `[LATER: Lamplight ≥ Starlight]`.
    - **S4 "The Booji-Wooji Man"** — **[BUILT]** giver: **Andy** at the **Lifting House**
      (`pearlmoor_lifting_house`, the quayside gym tucked behind the inn — door on the
-     quay's NE bluff; Andy talks, Abdul and Sid bench) · steps: Andy's tale of the old
+     quay's NE bluff; Andy talks, Abdul and Sid bench, and two flavour lifters —
+     **Andrew** mid-set and **Rot**, the house's strongest-and-oldest allotment-keeper
+     (`npc.booji_andrew`, `npc.booji_rot`) — each point on to Paul and seed the Chickenpig
+     without naming it) · steps: Andy's tale of the old
      strongman the quay calls the Booji-Wooji Man (`script.booji_andy`) → Abdul's clue
      (`script.booji_abdul`) → Sid's three words (`script.booji_sid`) → find **Paul** at
      the dark lamp past the moor-bell, take his question and his one-time route-class

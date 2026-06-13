@@ -466,6 +466,17 @@
       "dialogue_ref": "npc.booji_andrew"
     },
     {
+      "id": "rot",
+      "at": {
+        "tx": 9,
+        "ty": 7
+      },
+      "facing": "down",
+      "sprite": "lifter_rot",
+      "movement": "static",
+      "dialogue_ref": "npc.booji_rot"
+    },
+    {
       "id": "andy_hook",
       "at": {
         "tx": 3,
