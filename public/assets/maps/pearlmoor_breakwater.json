@@ -1240,17 +1240,28 @@
       "hidden_when_flag": "flag:q_south_bell_rung"
     },
     {
-      "id": "chickenpig_catch",
+      "id": "chickenpig_leash_w",
       "kind": "cutscene",
       "at": {
         "tx": 8,
-        "ty": 26
+        "ty": 24
       },
-      "activation": "interact",
+      "activation": "step_on",
       "ref": "script.booji_chickenpig",
-      "requires_flag": "flag:q_south_booji_done",
-      "hidden_when_flag": "flag:chickenpig_caught",
-      "blocked_ref": "npc.dark_lamp_cold"
+      "requires_flag": "flag:q_south_booji_met",
+      "hidden_when_flag": "flag:chickenpig_caught"
+    },
+    {
+      "id": "chickenpig_leash_n",
+      "kind": "cutscene",
+      "at": {
+        "tx": 9,
+        "ty": 23
+      },
+      "activation": "step_on",
+      "ref": "script.booji_chickenpig",
+      "requires_flag": "flag:q_south_booji_met",
+      "hidden_when_flag": "flag:chickenpig_caught"
     },
     {
       "id": "chickenpig_after",
@@ -1356,7 +1367,7 @@
       "hidden_when_flag": "flag:q_south_booji_met"
     },
     {
-      "id": "paul_after",
+      "id": "paul_lamp",
       "at": {
         "tx": 9,
         "ty": 25
@@ -1364,34 +1375,8 @@
       "facing": "down",
       "sprite": "booji_paul",
       "movement": "static",
-      "dialogue_ref": "npc.booji_paul_after",
-      "requires_flag": "flag:q_south_booji_met",
-      "hidden_when_flag": "flag:q_south_booji_done"
-    },
-    {
-      "id": "paul_chickenpig",
-      "at": {
-        "tx": 9,
-        "ty": 25
-      },
-      "facing": "down",
-      "sprite": "booji_paul",
-      "movement": "static",
-      "dialogue_ref": "script.booji_chickenpig",
-      "requires_flag": "flag:q_south_booji_done",
-      "hidden_when_flag": "flag:chickenpig_caught"
-    },
-    {
-      "id": "paul_done",
-      "at": {
-        "tx": 9,
-        "ty": 25
-      },
-      "facing": "down",
-      "sprite": "booji_paul",
-      "movement": "static",
-      "dialogue_ref": "npc.booji_paul_after",
-      "requires_flag": "flag:chickenpig_caught"
+      "dialogue_ref": "script.booji_paul_lamp",
+      "requires_flag": "flag:q_south_booji_met"
     }
   ],
   "gates": [],

@@ -348,6 +348,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'PAUL', text: 'Ha. There it goes. Right — you came all this way, so custom says you get a bout. Fair warning: I\'m old. Everything I still do, I do on purpose.' },
     { op: 'battle', trainer: 'breakwater_paul' },
     { op: 'say', speaker: 'PAUL', text: 'Good. GOOD. You fight like someone who hasn\'t decided who they are yet. Don\'t fix that too quickly.' },
+    { op: 'say', speaker: 'PAUL', text: 'And that bird-pig that waded in on my side — no, it isn\'t mine. It turns up, it scraps when the mood takes it, and it crows at a lamp I won\'t light. Tonight it fancied a look at YOU. ...Hm. It\'s still looking.' },
     { op: 'say', speaker: 'PAUL', text: 'Now. A man my age gets to clearing things out — and I don\'t give things to whoever wants them. I give them to whoever will GET them.' },
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'booji_folio', count: 1 },
@@ -356,6 +357,53 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'PAUL', text: 'The Registry business? We\'ll talk about it over a cup of something. Some night.' },
     { op: 'narrate', text: 'You are fairly sure there will never be a cup. You are fairly sure that is the point.' },
     { op: 'setFlag', flag: 'flag:q_south_booji_met' },
+  ],
+  // Paul's friendly REMATCH (the wren_rematch pattern): once you've met him,
+  // talking to Paul at the dark lamp re-runs this bout, forever, never forced.
+  // His real stones (no Chickenpig — that one fought the once). No flags, no gate.
+  'script.booji_paul_rematch': [
+    { op: 'say', speaker: 'PAUL', text: 'Still here. Still not telling. ...You\'ve the look of someone who came back for the bout, not the cup of something. Good — that one I can give.' },
+    { op: 'battle', trainer: 'breakwater_paul_rematch' },
+    { op: 'say', speaker: 'PAUL', text: 'Worth the walk, eh? Keep the folio somewhere it doesn\'t belong — and come back when the dark wants company. It usually does.' },
+  ],
+  // Rematch AFTER you've caught the Chickenpig — it walks with you now, so Paul
+  // fields only his stones (breakwater_paul_rematch_post). Still re-runnable.
+  'script.booji_paul_rematch_post': [
+    { op: 'say', speaker: 'PAUL', text: 'The bird-pig\'s yours now — I can tell, you walk like someone being quietly judged by poultry. Good. Just me and the stones today, then.' },
+    { op: 'battle', trainer: 'breakwater_paul_rematch_post' },
+    { op: 'say', speaker: 'PAUL', text: 'Still on purpose. Give that rooster my regards — it won\'t understand them, and it\'ll be right not to.' },
+  ],
+  // Paul at the dark lamp, every visit AFTER the first meeting — a MENU, never a
+  // forced fight. "Wake the bird-pig" runs the Chickenpig catch right here (no
+  // round-trip needed); "A bout" is the opt-in rematch (with the Chickenpig while
+  // it's still his, his stones once you've caught it); Cancel/"Step away" leaves.
+  'script.booji_paul_lamp': [
+    {
+      op: 'choice',
+      speaker: 'PAUL',
+      prompt: 'Back at my lamp. What\'ll it be?',
+      options: [
+        {
+          label: 'Wake the bird-pig',
+          unless_flag: 'flag:chickenpig_caught',
+          ops: [{ op: 'run', ref: 'script.booji_chickenpig' }],
+        },
+        {
+          label: 'A bout',
+          unless_flag: 'flag:chickenpig_caught',
+          ops: [{ op: 'run', ref: 'script.booji_paul_rematch' }],
+        },
+        {
+          label: 'A bout',
+          if_flag: 'flag:chickenpig_caught',
+          ops: [{ op: 'run', ref: 'script.booji_paul_rematch_post' }],
+        },
+        {
+          label: 'Step away',
+          ops: [{ op: 'say', speaker: 'PAUL', text: 'Aye. The dark keeps the bench warm. Mind how you go.' }],
+        },
+      ],
+    },
   ],
   // The S4 epilogue: the Chickenpig (#163) — the only rooster in Vesperholm
   // that still believes in morning, asleep at the foot of the one lamp Paul

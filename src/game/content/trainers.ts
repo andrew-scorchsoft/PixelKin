@@ -232,20 +232,58 @@ export const TRAINERS: TrainerRegistry = {
     music: 'battle-emberfall',
   },
 
-  // S4 "The Booji-Wooji Man" — Paul, the Lifting House's mystery, fought ONCE at
-  // the breakwater's end (script.booji_paul; OPTIONAL side-quest bout, route
-  // class). An old strongman's party: stone, patience, and one open question.
+  // S4 "The Booji-Wooji Man" — Paul, the Lifting House's mystery, fought at the
+  // breakwater's end (script.booji_paul; OPTIONAL side-quest bout, route class).
+  // The Chickenpig (#163) wades in on Paul's side as his SECOND — the only place
+  // you see it in battle before the epilogue catch. (Rematches drop it: it's not
+  // his, just odd company; breakwater_paul_rematch fields his real stones.)
   breakwater_paul: {
     id: 'breakwater_paul',
     name: 'PAUL',
     title: 'The Booji-Wooji Man',
     party: [
       { species_id: 53, level: 13 }, // Oreling — Stone
-      { species_id: 69, level: 15 }, // Riddlestone — Stone (ace; a stone that asks questions)
+      { species_id: 163, level: 15 }, // Chickenpig — Solar (the dark lamp's odd company, scrapping on Paul's side)
     ],
     intro_ref: 'trainer.breakwater_paul.intro',
     defeat_ref: 'trainer.breakwater_paul.defeat',
     payout: 240, // route 16 × ace 15
+    music: 'battle-emberfall',
+  },
+
+  // Paul's REMATCH — re-runnable, offered never forced (the wren_rematch pattern):
+  // once you've met him, talking to Paul at the dark lamp re-runs this friendly
+  // bout. While the Chickenpig is still HIS odd company (you haven't caught it),
+  // it scraps alongside him here too, with the question-stone restored for a
+  // meatier rematch. Not in the economy budget (BUILT_PAYOUTS), like wren_rematch.
+  breakwater_paul_rematch: {
+    id: 'breakwater_paul_rematch',
+    name: 'PAUL',
+    title: 'The Booji-Wooji Man',
+    party: [
+      { species_id: 53, level: 13 }, // Oreling — Stone
+      { species_id: 69, level: 15 }, // Riddlestone — Stone (a stone that asks questions)
+      { species_id: 163, level: 15 }, // Chickenpig — Solar (the dark lamp's company, still scrapping for Paul)
+    ],
+    intro_ref: 'trainer.breakwater_paul_rematch.intro',
+    defeat_ref: 'trainer.breakwater_paul_rematch.defeat',
+    payout: 240, // repeatable; like wren_rematch, off the budget
+    music: 'battle-emberfall',
+  },
+
+  // Paul's rematch AFTER you've caught the Chickenpig — it walks with you now, so
+  // it's gone from his line; he fields his genuine stones. (Same off-budget rule.)
+  breakwater_paul_rematch_post: {
+    id: 'breakwater_paul_rematch_post',
+    name: 'PAUL',
+    title: 'The Booji-Wooji Man',
+    party: [
+      { species_id: 53, level: 13 }, // Oreling — Stone
+      { species_id: 69, level: 15 }, // Riddlestone — Stone (ace; a stone that asks questions)
+    ],
+    intro_ref: 'trainer.breakwater_paul_rematch.intro',
+    defeat_ref: 'trainer.breakwater_paul_rematch.defeat',
+    payout: 240, // repeatable; off the budget
     music: 'battle-emberfall',
   },
 
@@ -1131,6 +1169,12 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   ],
   'trainer.breakwater_paul.defeat': [
     { speaker: 'PAUL', text: '...Set down soft as a loaf. Sid will be unbearable.' },
+  ],
+  'trainer.breakwater_paul_rematch.intro': [
+    { speaker: 'PAUL', text: 'Back for another? Good. A man my age needs reminding he can still lose interestingly.' },
+  ],
+  'trainer.breakwater_paul_rematch.defeat': [
+    { speaker: 'PAUL', text: 'Ha. Still here, still on purpose. Come find me again — the dark lamp keeps regular hours.' },
   ],
   'trainer.lampwarden_pearlmoor.intro': [
     { speaker: 'REYL WASH', text: 'Apprentice, is it. I have ferried a hundred Wayfarers across this harbour. Few read the water right.' },

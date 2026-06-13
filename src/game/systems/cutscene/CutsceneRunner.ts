@@ -11,9 +11,11 @@ import type { Actor } from '@game/entities/Actor';
 import type { Facing, EncounterTerrain } from '@game/data/world/types';
 import { DialogueBox } from '@game/ui/DialogueBox';
 import { StarterSelect } from '@game/ui/StarterSelect';
+import { Menu } from '@game/ui/Menu';
 import { fadeIn, fadeOut, flash, flashColor, shake, tint, letterbox } from '@game/ui/Transitions';
 import { hex } from '@game/ui/theme';
 import { getDialogue } from '@game/content/dialogue';
+import { getScript } from '@game/content/scripts';
 import type { FlagStore } from '@game/systems/flags/FlagStore';
 import type { Sfx } from '@game/systems/audio/Sfx';
 import type { MusicDirector } from '@game/systems/audio/MusicDirector';
@@ -271,6 +273,26 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       await flash(scene, 220);
       return true;
     }
+    case 'run': {
+      // Inline another named script (composition). Missing script = quiet no-op.
+      const steps = getScript(step.ref);
+      return steps ? runSteps(ctx, steps) : true;
+    }
+    case 'choice': {
+      // Present the eligible options as a menu; the implicit Cancel steps away.
+      const opts = step.options.filter(
+        (o) =>
+          (!o.if_flag || ctx.flags.get(o.if_flag)) && (!o.unless_flag || !ctx.flags.get(o.unless_flag)),
+      );
+      if (opts.length === 0) return true;
+      if (step.prompt) {
+        await new DialogueBox(scene, ctx.sfx).run([{ speaker: step.speaker, text: step.prompt }]);
+      }
+      const entries = opts.map((o, i) => ({ label: o.label, value: String(i) }));
+      const pick = await new Menu(scene, entries, { x: 8, y: 8, sfx: ctx.sfx }).run();
+      if (pick === null) return true; // cancelled — step away, scene continues
+      return runSteps(ctx, opts[Number(pick)].ops);
+    }
     case 'cinematic':
       // The hand-over: the host persists, then starts CinematicScene. The world
       // scene is being replaced, so end the cutscene here (nothing after plays;
@@ -280,14 +302,17 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
   }
 }
 
-/** Play a scene's steps in order. Returns true if it ran to completion (not aborted). */
-export async function runCutscene(ctx: CutsceneContext, steps: CutsceneStep[]): Promise<boolean> {
+/** Run a list of steps in order (honouring each step's `if_flag`); false aborts. */
+async function runSteps(ctx: CutsceneContext, steps: CutsceneStep[]): Promise<boolean> {
   for (const step of steps) {
-    // Per-step guard: an `if_flag` step plays only while that flag is held —
-    // the data-level conditional for optional colour (never progression).
     if (step.if_flag && !ctx.flags.get(step.if_flag)) continue;
-    const carryOn = await runStep(ctx, step);
-    if (!carryOn) return false;
+    if (!(await runStep(ctx, step))) return false;
   }
   return true;
+}
+
+/** Play a scene's steps in order. Returns true if it ran to completion (not aborted).
+ *  Per-step `if_flag` guards plus `run`/`choice` composition live in runSteps. */
+export async function runCutscene(ctx: CutsceneContext, steps: CutsceneStep[]): Promise<boolean> {
+  return runSteps(ctx, steps);
 }

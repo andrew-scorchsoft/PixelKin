@@ -12,6 +12,7 @@ import { MAP_REGISTRY } from '@game/data/world/maps';
 import type { MapDefinition, TilesetRef } from '@game/data/world/types';
 import type { PackedTileset, TileMeta } from './tileset';
 import { FALLBACK_TILE_META } from './fallbackTilesets';
+import { GAME_VERSION } from '@game/version';
 
 export interface ResolvedTileset {
   ref: TilesetRef;
@@ -77,7 +78,17 @@ async function fetchJson<T>(path: string): Promise<T | null> {
   try {
     // Paths are relative ('assets/...'); they resolve against the document base,
     // which works under both the dev server and the './'-based static build.
-    const res = await fetch(path);
+    //
+    // Cache-busting (maps + tileset sidecars are FETCHED, not bundled, so Vite's
+    // content-hash asset pipeline doesn't version them):
+    //  • Production — key the URL to the game version, so cutting a release busts
+    //    every player's stale cached map/tileset while staying cacheable within a
+    //    version. Bumping GAME_VERSION is the release's cache-bust.
+    //  • Dev — revalidate on every fetch, so editing a map/tileset JSON is picked
+    //    up the next time the map loads (re-enter the map) without a hard refresh.
+    const dev = import.meta.env.DEV;
+    const url = dev ? path : `${path}${path.includes('?') ? '&' : '?'}v=${encodeURIComponent(GAME_VERSION)}`;
+    const res = await fetch(url, dev ? { cache: 'no-cache' } : undefined);
     if (!res.ok) return null;
     return (await res.json()) as T;
   } catch {

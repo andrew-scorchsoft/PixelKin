@@ -124,6 +124,8 @@ export class WorldScene extends Phaser.Scene {
   private pendingReveal?: ChartEntry;
   /** The last rest point (inn / home / camp) — where a blackout wakes you. */
   private respawn?: { map: string; tx: number; ty: number; facing: Facing };
+  /** Timestamps of recent START taps — 10 fast ones reload the map (debug). */
+  private reloadTaps: number[] = [];
   /** Glowing rest-lanterns hung over heal-entrance doors (cleared on teardown). */
   private healMarkers: Phaser.GameObjects.GameObject[] = [];
   /** Constellation crests hung over Lumenary doors (cleared on teardown). */
@@ -267,6 +269,38 @@ export class WorldScene extends Phaser.Scene {
   }
 
   /** Snapshot the live world state into the canonical save shape. */
+  /** Count START taps; 10 within 2.5s reloads the current map in place. */
+  private trackReloadGesture(): void {
+    if (!this.controller.justPressed(InputAction.Menu)) return;
+    const now = this.time.now;
+    this.reloadTaps = this.reloadTaps.filter((t) => now - t < 2500);
+    this.reloadTaps.push(now);
+    if (this.reloadTaps.length >= 10) {
+      this.reloadTaps = [];
+      this.reloadMap();
+    }
+  }
+
+  /** Reload the current map (re-fetches its JSON) keeping the player where they
+   *  stand — a full scene restart, so any open menu/cutscene is torn down too. */
+  private reloadMap(): void {
+    void this.sfx?.play(theme.cursor.confirmSfx);
+    this.scene.restart({
+      mapId: this.map.def.id,
+      spawn: { tx: this.player.tx, ty: this.player.ty, facing: this.player.facing },
+      flags: this.flags.snapshot(),
+      abilities: [...this.abilities],
+      party: this.party,
+      box: this.box,
+      inventory: this.inventory,
+      money: this.money,
+      dex: { seen: [...this.dexSeen], caught: [...this.dexCaught] },
+      battles_won: this.battlesWon,
+      cooldowns: this.cooldowns,
+      respawn: this.respawn,
+    } satisfies WorldSceneData);
+  }
+
   private buildSnapshot(): WorldSnapshot {
     return {
       current_map: this.map.def.id,
@@ -1090,6 +1124,11 @@ export class WorldScene extends Phaser.Scene {
     // dialogue or menu is open (movement is what a modal pauses, not the scenery).
     if (this.render) tickAnimatedTiles(this.render.animatedTiles, time);
     this.controller.update();
+    // Debug refresh gesture: 10 fast START taps reload the current map in place
+    // (re-fetches the map JSON — handy for testing edits without a hard refresh).
+    // Counted here, before the modal guard, so the taps register even after the
+    // first one has popped the pause menu.
+    this.trackReloadGesture();
 
     if (!this.modal) {
       if (this.pendingReveal) {

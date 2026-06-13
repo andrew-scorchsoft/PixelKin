@@ -99,6 +99,15 @@ export interface LegendaryBattleStep {
  */
 export type CutsceneStep = CutsceneStepBase & { if_flag?: WorldFlag };
 
+/** One option in a `choice` op: a label, the branch it runs, and optional
+ *  flag conditions that show/hide it. */
+export interface CutsceneChoice {
+  label: string;
+  ops: CutsceneStep[];
+  if_flag?: WorldFlag; // shown only while this flag is held
+  unless_flag?: WorldFlag; // hidden once this flag is held
+}
+
 type CutsceneStepBase =
   | { op: 'say'; speaker?: string; text: string; portrait?: string; expr?: string; style?: 'speech' | 'narrate' }
   | { op: 'narrate'; text: string } // un-attributed, full-width prose (a say with style:'narrate')
@@ -142,6 +151,14 @@ type CutsceneStepBase =
   | { op: 'gleam'; element: string } // diegetic Gleam cue (relight the sky)
   | { op: 'giveMoney'; amount: number } // hand the player wicks (quest rewards, finds)
   | { op: 'shop'; shop: string } // open a shop's buy/sell counter (content/shops.ts)
+  // Run another named script's steps inline — composition, so a menu branch or a
+  // wrapper can reuse a script without duplicating its ops.
+  | { op: 'run'; ref: string }
+  // Offer the player a menu and run the chosen branch's ops. The implicit Cancel
+  // (B) steps away (no branch). Each option may carry `if_flag`/`unless_flag` to
+  // show/hide it by world state (e.g. hide "Wake the bird-pig" once it's caught),
+  // so one stage can present different choices as the story moves.
+  | { op: 'choice'; speaker?: string; prompt?: string; options: CutsceneChoice[] }
   /**
    * Hand the world over to a full-screen CinematicScript (content/cinematics.ts)
    * — the endgame's dawn panels + credits roll. The host PERSISTS first (so a
