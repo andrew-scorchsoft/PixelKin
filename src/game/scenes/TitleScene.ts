@@ -16,6 +16,7 @@ import { Sfx } from '@game/systems/audio/Sfx';
 import { MusicDirector } from '@game/systems/audio/MusicDirector';
 import { SaveManager } from '@game/systems/save/SaveManager';
 import { SlotMenu } from '@game/ui/SlotMenu';
+import { SHELL_INPUT_EVENT } from '@/shell/ShellManager';
 import { VESPERHOLM_GRAPH } from '@game/data/world/graph';
 import type { WorldSceneData } from './WorldScene';
 import type { SaveGame } from '@game/systems/save/types';
@@ -56,8 +57,18 @@ export class TitleScene extends Phaser.Scene {
 
     // Left idle, fall back to the attract demo (reset on any input).
     this.armIdle();
-    this.input.keyboard?.on('keydown', () => this.armIdle());
-    this.input.on('pointerdown', () => this.armIdle());
+    const resetIdle = (): void => this.armIdle();
+    this.input.keyboard?.on('keydown', resetIdle);
+    this.input.on('pointerdown', resetIdle);
+    // On-screen touch controls are DOM elements OUTSIDE the canvas: they dispatch
+    // through a window event, bypassing the keyboard/pointer handlers above. Without
+    // this, touch navigation of the title menus never resets the idle timer, so the
+    // attract demo could fire mid-decision (e.g. while reading the overwrite warning
+    // on a full slot) and bounce the player back to the start menu.
+    window.addEventListener(SHELL_INPUT_EVENT, resetIdle);
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () =>
+      window.removeEventListener(SHELL_INPUT_EVENT, resetIdle),
+    );
 
     const cx = GAME_WIDTH / 2;
 
@@ -92,6 +103,10 @@ export class TitleScene extends Phaser.Scene {
   }
 
   private async showMenu(): Promise<void> {
+    // The attract demo only kicks in from the idle title menu — re-arm it here on
+    // every return, and cancel it the moment the player commits to a sub-flow
+    // (below), so the slot picker / overwrite confirm can't time out mid-decision.
+    this.armIdle();
     // Decode every slot once so CONTINUE knows how many journeys exist and the
     // pickers can show per-slot summaries without re-reading storage per row.
     const slots = await SaveManager.loadAllSlots();
@@ -108,6 +123,9 @@ export class TitleScene extends Phaser.Scene {
     );
 
     const choice = await menu.run();
+    // Committed to a sub-flow — suspend the attract fallback until we're back on
+    // the bare title menu (which re-arms it at the top of showMenu).
+    this.idle?.remove();
     if (choice === 'new') {
       await this.handleNewGame(slots);
     } else if (choice === 'continue' && occupied > 0) {
