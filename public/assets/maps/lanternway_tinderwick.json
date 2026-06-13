@@ -1485,6 +1485,18 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_lane_tinderwick",
       "hidden_when_flag": "flag:picked_lane_tinderwick"
+    },
+    {
+      "id": "lane_traveler",
+      "at": {
+        "tx": 8,
+        "ty": 11
+      },
+      "facing": "down",
+      "sprite": "npc_man",
+      "movement": "look_around",
+      "dialogue_ref": "npc.lane_fenn_hint",
+      "hidden_when_flag": "flag:has_starter"
     }
   ],
   "gates": [],

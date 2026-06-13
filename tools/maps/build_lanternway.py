@@ -398,6 +398,14 @@ def main() -> int:
         cache_at=(20, 14), pocket=(18, 13, 21, 15),
         accent="pond", lamps=[(4, 10), (13, 8), (20, 3)], trees=[(5, 2), (17, 14)],
         owed=owed))
+    # A fellow traveller on the home lane points the unstarted apprentice on to
+    # Fenn at the waystone and reassures the road is safe (the opening's
+    # wayfinding; gone once the Wayfaring's begun). Beside the lower run, not on it.
+    maps[-1]["npcs"].append({
+        "id": "lane_traveler", "at": {"tx": 8, "ty": 11}, "facing": "down",
+        "sprite": "npc_man", "movement": "look_around",
+        "dialogue_ref": "npc.lane_fenn_hint",
+        "hidden_when_flag": "flag:has_starter"})
 
     # 2 · Pearlmoor spoke — leaves the hub east, bends SOUTH-EAST down to the
     # quay: enter high on the W edge, leave low on the E.

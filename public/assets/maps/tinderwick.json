@@ -2630,6 +2630,18 @@
       "dialogue_ref": "script.post_letter_tinderwick",
       "requires_flag": "flag:q_post_letters",
       "hidden_when_flag": "flag:q_post_letter_tinderwick"
+    },
+    {
+      "id": "townguide_fenn",
+      "at": {
+        "tx": 25,
+        "ty": 17
+      },
+      "facing": "left",
+      "sprite": "npc_woman",
+      "movement": "look_around",
+      "dialogue_ref": "npc.tinderwick_fenn_hint",
+      "hidden_when_flag": "flag:has_starter"
     }
   ],
   "gates": [],

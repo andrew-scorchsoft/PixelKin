@@ -639,7 +639,18 @@ export const DIALOGUE: DialogueRegistry = {
   // --- The Lanternway lane milestones (one sign per spoke lane map; the
   // bend's marker stone — each names both ends so the turn never disorients).
   'sign.lanternway_tinderwick': [
-    { text: 'THE LANTERNWAY — TINDERWICK SPOKE\nWest and down for Tinderwick. East and up for the Vesper Crossroads. Keep to the lamps.' },
+    { text: 'THE LANTERNWAY — TINDERWICK SPOKE\nWest and down for Tinderwick. East and up for the Vesper Crossroads — Star-tender Fenn waits at the waystone. Keep to the lamps: no wild kin troubles a lit road.' },
+  ],
+  // --- Opening wayfinding: gentle hints that Fenn is east at the crossroads
+  // and the Lanternway is safe, so the walk to the ceremony never confuses or
+  // frightens a brand-new player. Both gone once 'flag:has_starter' is set.
+  'npc.tinderwick_fenn_hint': [
+    { speaker: 'TOWNSWOMAN', text: "Off to find Star-tender Fenn, are you? He went east down the Lanternway, to the Vesper Crossroads — said he'd wait by the waystone for you." },
+    { speaker: 'TOWNSWOMAN', text: "Don't you fret about the walk, dear. The lamps keep the wild kin clear of that lane — it's the one safe road out of Tinderwick. Straight there and back, no trouble." },
+  ],
+  'npc.lane_fenn_hint': [
+    { speaker: 'WAYFARER', text: 'The waystone\'s just up ahead, friend. There\'s an old Star-tender there pacing a furrow in the road — waiting on someone, I\'d say. You, most like.' },
+    { speaker: 'WAYFARER', text: 'Easy lane, this one. The lamps see off anything with teeth, so you\'ll come to no harm walking it — there and back as many times as you please.' },
   ],
   'sign.lanternway_pearlmoor': [
     { text: 'THE LANTERNWAY — PEARLMOOR SPOKE\nWest and up for the Crossroads. East and down for the quay — you will smell the salt before you see the lamps.' },
