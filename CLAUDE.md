@@ -764,6 +764,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `public/manifest.webmanifest` + the `apple-mobile-web-app-*` meta in `index.html` make
   "Add to Home Screen" launch chrome-free; this is the ONLY address-bar fix on iOS. Icons are
   square `public/assets/ui/icon-{192,512}.png` (logo padded on `#0b1026`).
+- **Plain shell / Hidden controls can't trap a touch player — there's a rescue.** Both states
+  remove the on-screen cluster, so a touch player would have no START to open the pause menu and
+  reach Settings to undo it (a soft lock-out). `ShellManager` builds a once-only **"Show controls"**
+  button (`.pk-restore-controls`, body flag `pk-controls-unavailable`, `ShellManager.restoreControls()`)
+  shown ONLY on `pointer: coarse` while controls are unavailable; it leaves Plain for `overlay` and
+  re-shows the cluster. Keep `updateRestoreVisibility()` firing on every shell/controls change.
 - **Touch controls scale off ONE `--pk-cs` unit; size is a setting.** The d-pad cross, A·B and
   START all derive every dimension from `--pk-cell`/`--pk-face-btn` (= base × `--pk-cs`) so the
   cluster stays internally aligned at any size/viewport (and the controls are `box-sizing:border-box`

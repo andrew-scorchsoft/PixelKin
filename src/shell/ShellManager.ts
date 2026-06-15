@@ -82,6 +82,7 @@ class ShellManagerImpl {
   private controlsEl: HTMLDivElement | null = null;
   private rotateHintEl: HTMLDivElement | null = null;
   private fsToggleEl: HTMLDivElement | null = null;
+  private restoreEl: HTMLDivElement | null = null;
   private autoFsTried = false;
   private readonly listeners = new Set<ActionListener>();
   private readonly held = new Set<ShellAction>();
@@ -127,7 +128,21 @@ class ShellManagerImpl {
     if (this.settings.controlsVisible === visible) return;
     this.settings = { ...this.settings, controlsVisible: visible };
     this.applyControlsVisibility();
+    this.updateRestoreVisibility();
     await SaveManager.saveSettings(this.settings);
+  }
+
+  /**
+   * Bring the player back to a controllable state. Without on-screen controls a
+   * touch player has no START button to open the pause menu, so they can't reach
+   * Settings to undo a Plain-shell / Hidden-controls choice — a soft lock-out. The
+   * rescue button (built once, shown only on touch when controls are unavailable)
+   * calls this: it leaves Plain for a controllable shell and re-shows the cluster.
+   */
+  async restoreControls(): Promise<void> {
+    if (this.settings.shell === 'plain') await this.setShell('overlay');
+    if (!this.settings.controlsVisible) await this.setControlsVisible(true);
+    this.updateRestoreVisibility();
   }
 
   /** Set the on-screen control size live (1–3) and persist. */
@@ -163,7 +178,49 @@ class ShellManagerImpl {
     this.ensureControls();
     this.ensureRotateHint();
     this.ensureFullscreenToggle();
+    this.ensureRestoreButton();
     this.applyControlsVisibility();
+    this.updateRestoreVisibility();
+  }
+
+  // ---------------------------------------------------- restore-controls rescue --
+
+  /**
+   * A small "Show controls" button pinned to the bottom centre. Built once; CSS
+   * shows it ONLY on a touch device (`pointer: coarse`) while controls are
+   * unavailable (Plain shell, or controls Hidden) — i.e. exactly the soft lock-out
+   * where there's no other way back. Tapping it restores a controllable state.
+   */
+  private ensureRestoreButton(): void {
+    if (this.restoreEl) return;
+    const btn = document.createElement('div');
+    btn.className = 'pk-restore-controls';
+    btn.setAttribute('role', 'button');
+    btn.setAttribute('aria-label', 'Show the on-screen controls');
+    btn.title = 'Show the on-screen controls';
+    btn.textContent = '⌗ Show controls'; // ⌗ glyph + label
+
+    btn.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      btn.classList.add('pk-active');
+    });
+    btn.addEventListener('pointerup', (e) => {
+      e.preventDefault();
+      btn.classList.remove('pk-active');
+      void this.restoreControls();
+    });
+    btn.addEventListener('pointercancel', () => btn.classList.remove('pk-active'));
+    btn.addEventListener('pointerleave', () => btn.classList.remove('pk-active'));
+    btn.addEventListener('contextmenu', (e) => e.preventDefault());
+
+    document.body.appendChild(btn);
+    this.restoreEl = btn;
+  }
+
+  /** Toggle the body flag the rescue-button CSS keys on (controls unavailable). */
+  private updateRestoreVisibility(): void {
+    const unavailable = this.settings.shell === 'plain' || !this.settings.controlsVisible;
+    document.body.classList.toggle('pk-controls-unavailable', unavailable);
   }
 
   // ----------------------------------------------------------- fullscreen --
