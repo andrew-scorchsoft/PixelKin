@@ -100,6 +100,63 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:has_starter' },
   ],
 
+  // --- Onboarding: the optional "how it all works" tutorial --------------------
+  // Two beats, both OPTIONAL colour fired by WorldScene's ENTRY_TUTORIALS hook
+  // (the pendingReveal pattern), never on the progression path:
+  //   1. script.tutorial_offer — on the very first arrival in Tinderwick (new game,
+  //      pre-starter): a yes/no offer to explain the genre to a first-timer.
+  //   2. script.catch_tutorial — walking the Lanternway home with your first kin:
+  //      how the vesperlamp catches, leading into the lane's verge grass to try it.
+  // Un-attributed narration: at game start no mentor is in town (Fenn is east at
+  // the Crossroads), so the game speaks softly to a new Wayfarer.
+
+  'script.tutorial_offer': [
+    { op: 'narrate', text: 'A new Wayfaring begins. The town is quiet, the road untrodden, and the whole dark sky is waiting.' },
+    {
+      op: 'choice',
+      prompt: 'New to roads like this one? A few words on how it all works might help — or you can simply set off and learn as you go.',
+      options: [
+        {
+          label: 'Yes — explain it',
+          ops: [{ op: 'run', ref: 'script.tutorial_basics' }],
+        },
+        {
+          label: "No — I'll find my way",
+          ops: [
+            { op: 'narrate', text: 'Then off you go, and good fortune walk with you. If the basics ever slip you, your lamp will keep a little book of LORE once it is yours — open the pause menu and read.' },
+          ],
+        },
+      ],
+    },
+  ],
+
+  // The genre in plain words — exactly the things a first-timer trips on: what kin
+  // and battles ARE, that you grow stronger by battling weaker wild kin when you're
+  // stuck, that beds under the glowing lanterns mend your team for free, and that
+  // talking to folk is half the game.
+  'script.tutorial_basics': [
+    { op: 'narrate', text: 'Vesperholm has fallen into the Long Dusk — the stars have gone out one by one, and the sky waits to be relit. That is your work now: a Wayfaring, to carry the light home.' },
+    { op: 'narrate', text: 'As you travel, you will befriend the wild creatures you meet — your KIN. They walk beside you and stand with you when trouble finds the road.' },
+    { op: 'narrate', text: 'Battles are taken in turns: your kin and a wild one trade moves until one is too weary to go on. Win, and your kin gain experience — they grow stronger, and learn new moves as they go.' },
+    { op: 'narrate', text: 'The goal of it all is the eight GLEAMS — constellations kept by the LAMPWARDEN of each valley. Prove your bond in their lantern-halls, relight all eight, and the dawn returns.' },
+    { op: 'narrate', text: 'A word that will save you grief: if the road turns hard and you keep losing, do not batter on. Find a patch of tall grass you CAN win in and battle the wild kin there a while. A few levels of strength makes all the difference.' },
+    { op: 'narrate', text: 'And when your kin are weary, REST. A door beneath a glowing lantern is a place to sleep — a bed there mends your whole team, free of charge. Your own bed at home does the same. Rest often.' },
+    { op: 'narrate', text: 'Last of all: talk to everyone. The folk of every town will point you the right way, share what they know, and now and then press a gift into your hands.' },
+    { op: 'narrate', text: 'That is the whole of it. Star-tender Fenn is waiting for you EAST, along the Lanternway. Go to him — your Wayfaring truly begins there.' },
+  ],
+
+  // The lamp-catching lesson, fired as the player walks the Lanternway home with
+  // their first kin. The lane's verge grass (low-level wild kin) is right ahead,
+  // so the lesson lands a step before they can try it for real.
+  'script.catch_tutorial': [
+    { op: 'narrate', text: "Fenn's words come back to you on the quiet road: a Wayfarer is never meant to walk alone for long. Time to make your first catch." },
+    { op: 'narrate', text: 'When a wild kin appears, you cannot simply scoop it up. First you must tire it — wear its strength down in battle, but take care not to knock it clean out.' },
+    { op: 'narrate', text: 'A kin that is hurt — and better still, lulled with a status like DOZE or CHILL — is far easier to coax into your lamp than a fresh and frightened one.' },
+    { op: 'narrate', text: 'When it is weak enough, choose LAMP from the battle menu and throw. Your vesperlamp will wobble as the kin makes up its mind... three good shakes and a soft click mean it has chosen to walk with you.' },
+    { op: 'narrate', text: 'If it breaks free, do not lose heart — wear it down a touch more and try again. A waxed CHARGE, bought from a shop later on, makes the lamp surer still.' },
+    { op: 'narrate', text: 'The verge grass on this lane is full of gentle kin. Step into it, find one, and try your lamp — a second friend for the walk home.' },
+  ],
+
   // (The first Gleam moved from the Lumenary hall to the BEACON TOP —
   // script.beacon_battle below; the hall now stages Brisa's quest beats.)
 
