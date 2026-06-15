@@ -813,6 +813,17 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `EventTrigger` now supports `hidden_when_flag` (mirror of NpcPlacement; a hidden trigger is
   filtered at lookup so it can't swallow the step's warp/encounter). Pre-starter wandering is
   safe by construction: wild encounters never fire with an empty party (`hasHealthyKin`).
+- **Onboarding tutorials are first-entry hooks, not map triggers (`WorldScene.ENTRY_TUTORIALS`).**
+  The optional "how it all works" intro (`script.tutorial_offer` → a yes/no `choice` →
+  `script.tutorial_basics`) and the lamp-catching lesson (`script.catch_tutorial`) ride a small
+  WorldScene table that fires a script ONCE on the first qualifying entry to a map, deferred to
+  the next idle frame via `pendingTutorial` (the `pendingReveal` chart-reveal pattern). The intro
+  greets a new game in `tinderwick` (`unless_flag: has_starter`, so an old save wandering home
+  never re-fires); the catch lesson plays on the Lanternway home WITH the first kin
+  (`requires_flag: has_starter`) a step before `lanternway_tinderwick`'s verge grass. They're
+  OPTIONAL colour (never gating), which is why they live as an engine hook, not in the map JSON;
+  add a new one by appending an `EntryTutorial` row + a `script.*`. `runTutorial` banks the
+  `seen_flag` so it never repeats.
 - **The South level curve is data-locked to the walkthrough:** Brisa ace 10 → Dimglass I wilds
   3–6 (+ Wren's friendly battle A2 + the B1 `dusk_begins` beat) → Dimglass II wilds 8–10 + two
   route-trainer beats → Reyl 12–16. Route trainer beat = static NPC + `step_on` cutscene tile

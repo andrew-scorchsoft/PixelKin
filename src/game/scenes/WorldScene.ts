@@ -88,6 +88,27 @@ export interface WorldSceneData {
 /** Depth band for actors: above deco (5), below the 'above' layer (20). */
 const ACTOR_DEPTH = 10;
 
+/**
+ * A first-entry onboarding tutorial: the first time the player walks into `map`
+ * while the flag conditions hold, run `script` once and bank `seen_flag`. Fired by
+ * `maybeQueueTutorial` from `enterMap` and played on the next idle frame (so it
+ * lands after any warp/initial fade), the same deferral the chart reveal uses. The
+ * tutorials are OPTIONAL colour — never the progression path — so they live here as
+ * an engine hook, not in the map JSON.
+ */
+interface EntryTutorial {
+  /** Map id whose first qualifying entry triggers the tutorial. */
+  map: string;
+  /** Script ref (content/scripts.ts) run as a cutscene. */
+  script: string;
+  /** Set once the tutorial has played, so it never repeats. */
+  seen_flag: WorldFlag;
+  /** Play only while this flag is held (omit for "any state"). */
+  requires_flag?: WorldFlag;
+  /** Play only while this flag is NOT held (omit for "any state"). */
+  unless_flag?: WorldFlag;
+}
+
 export class WorldScene extends Phaser.Scene {
   private ready = false;
   private _modal = false;
@@ -122,6 +143,9 @@ export class WorldScene extends Phaser.Scene {
   private cooldowns: Record<string, number> = {};
   /** A newly-discovered chart awaiting its full-screen reveal (fires when idle). */
   private pendingReveal?: ChartEntry;
+  /** A first-entry onboarding tutorial awaiting its run (fires when idle, after
+   *  the map's fade settles — same deferral as a chart reveal). */
+  private pendingTutorial?: EntryTutorial;
   /** The last rest point (inn / home / camp) — where a blackout wakes you. */
   private respawn?: { map: string; tx: number; ty: number; facing: Facing };
   /** Timestamps of recent START taps — 10 fast ones reload the map (debug). */
@@ -156,6 +180,7 @@ export class WorldScene extends Phaser.Scene {
     this.ready = false;
     this.modal = false;
     this.pendingReveal = undefined;
+    this.pendingTutorial = undefined;
     this.controller = new InputController(this);
     this.flags = new FlagStore(data.flags);
     this.abilities = new Set(data.abilities ?? []);
@@ -238,6 +263,7 @@ export class WorldScene extends Phaser.Scene {
       this.ready = true;
       this.flashLocationBanner(map.def.display_name);
       this.noteChartDiscovery(mapId);
+      this.maybeQueueTutorial(mapId);
       void this.persist(); // autosave on entering any map (so Continue always works)
     } catch (err) {
       // A missing/malformed map must not freeze the game on a black screen.
@@ -403,6 +429,60 @@ export class WorldScene extends Phaser.Scene {
     'nightreach_inn',
     'sunken_solarium_lumenary',
   ]);
+
+  /**
+   * The first-entry onboarding tutorials (optional, never gating). Each fires once
+   * on the first qualifying entry to its map; see EntryTutorial and `maybeQueueTutorial`.
+   *   - The intro offer greets a brand-new game on arrival in Tinderwick (pre-starter,
+   *     so an old save deep in the journey that wanders home never re-fires it).
+   *   - The catch lesson plays as the player walks the Lanternway home WITH their first
+   *     kin (`has_starter`), a step before the lane's verge grass where they can try it.
+   */
+  private static readonly ENTRY_TUTORIALS: readonly EntryTutorial[] = [
+    {
+      map: VESPERHOLM_GRAPH.start_map, // 'tinderwick'
+      script: 'script.tutorial_offer',
+      seen_flag: 'flag:tutorial_offered',
+      unless_flag: 'flag:has_starter',
+    },
+    {
+      map: 'lanternway_tinderwick',
+      script: 'script.catch_tutorial',
+      seen_flag: 'flag:catch_tutorial_seen',
+      requires_flag: 'flag:has_starter',
+    },
+  ];
+
+  /** Queue the first-entry tutorial for `mapId`, if one is due (run on the next
+   *  idle frame by `update`, after the entry fade settles). */
+  private maybeQueueTutorial(mapId: string): void {
+    if (this.pendingTutorial) return;
+    for (const t of WorldScene.ENTRY_TUTORIALS) {
+      if (t.map !== mapId) continue;
+      if (this.flags.get(t.seen_flag)) continue;
+      if (t.requires_flag && !this.flags.get(t.requires_flag)) continue;
+      if (t.unless_flag && this.flags.get(t.unless_flag)) continue;
+      this.pendingTutorial = t;
+      return;
+    }
+  }
+
+  /** Play a queued onboarding tutorial as a cutscene, then bank its seen flag so
+   *  it never repeats. Mirrors `revealChart`'s modal bracketing. */
+  private async runTutorial(t: EntryTutorial): Promise<void> {
+    const steps = getScript(t.script);
+    if (!steps) {
+      this.flags.set(t.seen_flag); // tolerant: a missing script still "counts" as offered
+      return;
+    }
+    this.modal = true;
+    const completed = await runCutscene(this.cutsceneContext(), steps);
+    if (completed) {
+      this.flags.set(t.seen_flag);
+      void this.persist();
+    }
+    this.modal = false;
+  }
 
   /** Hang the rest-lantern over every heal-entrance door on the current map. */
   private markHealEntrances(): void {
@@ -1135,6 +1215,12 @@ export class WorldScene extends Phaser.Scene {
         const chart = this.pendingReveal;
         this.pendingReveal = undefined;
         void this.revealChart(chart);
+        return;
+      }
+      if (this.pendingTutorial) {
+        const tut = this.pendingTutorial;
+        this.pendingTutorial = undefined;
+        void this.runTutorial(tut);
         return;
       }
       if (this.controller.justPressed(InputAction.Menu)) {
