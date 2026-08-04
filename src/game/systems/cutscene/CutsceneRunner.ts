@@ -12,6 +12,7 @@ import type { Facing, EncounterTerrain } from '@game/data/world/types';
 import { DialogueBox } from '@game/ui/DialogueBox';
 import { StarterSelect } from '@game/ui/StarterSelect';
 import { Menu } from '@game/ui/Menu';
+import { NameEntry } from '@game/ui/NameEntry';
 import { fadeIn, fadeOut, flash, flashColor, shake, tint, letterbox } from '@game/ui/Transitions';
 import { hex } from '@game/ui/theme';
 import { getDialogue } from '@game/content/dialogue';
@@ -55,6 +56,11 @@ export interface CutsceneContext {
   onHealParty?(rest: boolean): void;
   /** Hand the player wicks (quest rewards, found purses). */
   onGiveMoney?(amount: number): void;
+  /** The player's chosen name, if they've been asked for one — substituted into
+   *  every line as `{name}`. Falls back to a neutral address when unset. */
+  playerName?(): string | undefined;
+  /** Remember a freshly-typed name on the save (the `askName` op). */
+  onSetPlayerName?(name: string): void;
   /** Open a shop counter by id (mutates inventory + wicks via the host). */
   openShop?(shopId: string): Promise<void>;
   /** Pan/zoom the camera onto a world tile (host supplies tile→pixel + freeze). */
@@ -106,21 +112,55 @@ async function walkTo(
   actor.stopWalking();
 }
 
+/**
+ * Substitute the player's name into a line. `{name}` is the only token, and it
+ * degrades to a neutral address when the player has never been asked — so a
+ * writer can use it anywhere without checking whether the naming beat has played.
+ */
+function fillTokens(ctx: CutsceneContext, text: string): string {
+  if (!text.includes('{name}')) return text;
+  return text.replace(/\{name\}/g, ctx.playerName?.() || 'Wayfarer');
+}
+
 /** Run one step. Returns false to ABORT the rest of the scene (a lost battle). */
 async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolean> {
   const { scene } = ctx;
   switch (step.op) {
     case 'say':
       await new DialogueBox(scene, ctx.sfx).run([
-        { speaker: step.speaker, text: step.text, portrait: step.portrait, expr: step.expr, style: step.style },
+        {
+          speaker: step.speaker,
+          text: fillTokens(ctx, step.text),
+          portrait: step.portrait,
+          expr: step.expr,
+          style: step.style,
+        },
       ]);
       return true;
     case 'narrate':
-      await new DialogueBox(scene, ctx.sfx).run([{ text: step.text, style: 'narrate' }]);
+      await new DialogueBox(scene, ctx.sfx).run([{ text: fillTokens(ctx, step.text), style: 'narrate' }]);
       return true;
     case 'dialogue':
-      await new DialogueBox(scene, ctx.sfx).run(getDialogue(step.ref));
+      await new DialogueBox(scene, ctx.sfx).run(
+        getDialogue(step.ref).map((l) => ({ ...l, text: fillTokens(ctx, l.text) })),
+      );
       return true;
+    case 'askName': {
+      const name = await new NameEntry(scene, {
+        title: step.title,
+        initial: ctx.playerName?.(),
+        fallback: step.fallback ?? 'Wayfarer',
+        sfx: ctx.sfx,
+      }).run();
+      ctx.onSetPlayerName?.(name);
+      // Branching is flag-shaped: a match sets its flag, and the script's later
+      // steps guard on it with the ordinary `if_flag`.
+      const typed = name.trim().toLowerCase();
+      for (const m of step.matches ?? []) {
+        if (typed === m.value.trim().toLowerCase()) ctx.flags.set(m.flag, true);
+      }
+      return true;
+    }
     case 'wait':
       await delay(scene, step.ms);
       return true;
@@ -286,7 +326,9 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       );
       if (opts.length === 0) return true;
       if (step.prompt) {
-        await new DialogueBox(scene, ctx.sfx).run([{ speaker: step.speaker, text: step.prompt }]);
+        await new DialogueBox(scene, ctx.sfx).run([
+          { speaker: step.speaker, text: fillTokens(ctx, step.prompt) },
+        ]);
       }
       const entries = opts.map((o, i) => ({ label: o.label, value: String(i) }));
       const pick = await new Menu(scene, entries, { x: 8, y: 8, sfx: ctx.sfx }).run();

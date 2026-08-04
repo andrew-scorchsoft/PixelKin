@@ -9,7 +9,7 @@
  * is fully testable without art. The map JSON is never hand-fed appearance — only gids.
  */
 import { MAP_REGISTRY } from '@game/data/world/maps';
-import type { MapDefinition, TilesetRef } from '@game/data/world/types';
+import type { MapDefinition, TilesetRef, EncounterTerrain } from '@game/data/world/types';
 import type { PackedTileset, TileMeta } from './tileset';
 import { FALLBACK_TILE_META } from './fallbackTilesets';
 import { GAME_VERSION } from '@game/version';
@@ -71,6 +71,20 @@ export class RuntimeMap {
       if (gid > 0) out.push(gid);
     }
     return out;
+  }
+
+  /**
+   * True if any tile stacked at (tx,ty) is tagged as this encounter terrain. The
+   * tileset sidecar is the authority on terrain (maps carry only gids), so this
+   * is how the engine asks "am I standing in water / tall grass?" — used by the
+   * EncounterSystem's tile-bound roll and by WorldScene to decide the player is
+   * swimming rather than walking.
+   */
+  hasTerrainAt(tx: number, ty: number, terrain: EncounterTerrain): boolean {
+    for (const gid of this.gidsAt(tx, ty)) {
+      if (this.lookupGid(gid)?.meta.encounter_terrain === terrain) return true;
+    }
+    return false;
   }
 }
 

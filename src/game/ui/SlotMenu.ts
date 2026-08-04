@@ -33,6 +33,9 @@ export interface SlotMenuConfig {
    * confirmed by the caller before committing).
    */
   mode: 'continue' | 'new';
+  /** Overrides the heading (e.g. LOAD FILE, which picks a slot like 'new' does
+   *  but isn't starting a new journey). */
+  heading?: string;
   sfx?: Sfx;
 }
 
@@ -86,7 +89,9 @@ export class SlotMenu {
     const height = PAD * 2 + titleH + count * ROW_H;
     this.panel = new Panel(scene, PANEL_X, PANEL_Y, PANEL_W, height);
 
-    const heading = config.mode === 'new' ? 'NEW GAME — CHOOSE A SLOT' : 'CONTINUE — CHOOSE A SLOT';
+    const heading =
+      config.heading ??
+      (config.mode === 'new' ? 'NEW GAME — CHOOSE A SLOT' : 'CONTINUE — CHOOSE A SLOT');
     const title = makeText(scene, PANEL_W / 2, PAD, heading, theme.text.accent).setOrigin(0.5, 0);
     this.panel.add(title);
 

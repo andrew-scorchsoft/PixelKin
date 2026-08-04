@@ -68,6 +68,18 @@ export const ITEMS: ItemRegistry = {
     heal: 999,
     price: 1200,
   },
+  // The level-up sweet (the genre's rare candy, ours): a bead of pressed lamp-honey
+  // that a kin eats in one gulp and comes out of a whole level older. Never sold —
+  // found, earned, or given, so the wick economy stays honest.
+  lumen_drop: {
+    id: 'lumen_drop',
+    name: 'Lumen Drop',
+    // Keep this to ~3 wrapped lines (~80 chars): the pack's detail pane is sized
+    // for that, and it does not scroll.
+    desc: 'Pressed lamp-honey from a relit constellation. Raises a kin one whole level.',
+    category: 'medicine',
+    level_up: true,
+  },
   // A chandler's lamp with a sliding tin hood: shade it and wild kin let you pass.
   // A toggleable key item (ITEMS → use) — while hooded it halves the wild
   // encounter rate (the backtracker's friend; sets `flag:lamp_hooded`). Sold at

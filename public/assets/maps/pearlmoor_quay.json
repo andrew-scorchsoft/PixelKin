@@ -3143,6 +3143,18 @@
       "dialogue_ref": "script.post_letter_pearlmoor",
       "requires_flag": "flag:q_post_letters",
       "hidden_when_flag": "flag:q_post_letter_pearlmoor"
+    },
+    {
+      "id": "cache_purse",
+      "at": {
+        "tx": 1,
+        "ty": 17
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_pearlmoor_purse",
+      "hidden_when_flag": "flag:picked_pearlmoor_purse"
     }
   ],
   "gates": [

@@ -124,6 +124,24 @@ type CutsceneStepBase =
   // dragon-cat kitten). Joins the party, or overflows to the Hearth when it's
   // full, and registers in the dex. Unlike giveStarter there is no chooser.
   | { op: 'giveKin'; kin: number; level: number }
+  /**
+   * Ask the player to type a name (ui/NameEntry) and remember it on the save.
+   * The typed name is available to every later line as the token `{name}`.
+   *
+   * Branching on WHAT was typed goes through `matches`: each entry sets its flag
+   * when the name matches (case-insensitively, trimmed), so the script that
+   * follows branches with the ordinary per-step `if_flag` guard rather than any
+   * new conditional machinery. A name that matches nothing simply sets nothing.
+   */
+  | {
+      op: 'askName';
+      /** Heading on the entry screen (default 'YOUR NAME'). */
+      title?: string;
+      /** Used when the player confirms an empty box, so a beat can't dead-end. */
+      fallback?: string;
+      /** Name → flag, set when the typed name matches. */
+      matches?: { value: string; flag: WorldFlag }[];
+    }
   | { op: 'giveItem'; item: string; count?: number }
   // Grant `item` ONLY if the player holds none, narrating `text` when it grants
   // (a quiet no-op otherwise). The safety-net op for must-have set-piece items —
@@ -212,6 +230,13 @@ export interface ItemDef {
   kindle_stone?: boolean;
   /** HP restored for 'medicine' items. */
   heal?: number;
+  /**
+   * A 'medicine' that raises a kin ONE whole level instead of healing it (the
+   * genre's level-up sweet — PixelKin's Lumen Drop). Used from the pack like any
+   * other medicine: pick a kin, it grows a level, and the normal move-learn /
+   * kindling prompts follow, so nothing is ever silently overwritten.
+   */
+  level_up?: boolean;
   /**
    * Shop price in wicks. An item with no price is never stocked or buyable
    * (key items, quest charms). Sell value defaults to half price — see

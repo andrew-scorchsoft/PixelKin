@@ -1971,6 +1971,17 @@
       "dialogue_ref": "script.post_letters_done",
       "requires_flag": "flag:q_post_letters_all",
       "hidden_when_flag": "flag:q_post_letters_done"
+    },
+    {
+      "id": "egg_teller",
+      "at": {
+        "tx": 13,
+        "ty": 9
+      },
+      "facing": "left",
+      "sprite": "npc_old_woman",
+      "movement": "look_around",
+      "dialogue_ref": "npc.egg_hint_crossroads"
     }
   ],
   "gates": [],

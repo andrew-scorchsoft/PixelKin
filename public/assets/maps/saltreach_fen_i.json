@@ -178,6 +178,18 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_fen_islet",
       "hidden_when_flag": "flag:picked_fen_islet"
+    },
+    {
+      "id": "cache_purse",
+      "at": {
+        "tx": 2,
+        "ty": 30
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_fen_purse",
+      "hidden_when_flag": "flag:picked_fen_purse"
     }
   ],
   "gates": [],

@@ -455,6 +455,43 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `to_map` is in `HEAL_ENTRANCE_MAPS` (the door-entered healing interiors — inns, the apprentice's home,
   the Solarium). Add a new inn's interior id to that set and the marker appears with no per-map art or
   JSON edit. NPC-/hub-only rests (Cinderhead vigil-fire, Crossroads inn) heal in dialogue and carry none.
+- **Saves round-trip through FILES, not just the browser (2026-08).** `SaveCodec`'s
+  export/import now has two first-class entry points beyond SETTINGS → Backup/restore:
+  **LOAD FILE** on the title menu (`TitleScene.handleLoadFile` — validate the file FIRST,
+  then pick a slot with `SlotMenu{mode:'new', heading}` + the overwrite confirm, then open
+  the world in it) and a **"keep a copy as a file?" offer after EVERY manual SAVE**
+  (`WorldScene.offerSaveFile`). Both reuse the existing codec — adding a save field means
+  threading it through `buildSaveGame` → `continueData`/`WorldSceneData` or a file-loaded
+  journey silently drops it (`player_name` is the worked example).
+- **The player has a NAME, and it's asked for in-world.** `SaveGame.player_name` (additive
+  optional, no schema bump) is set by the **`askName`** cutscene op → `ui/NameEntry.ts`, and
+  every `say`/`narrate`/`dialogue`/`choice` line can use the token **`{name}`** (falls back to
+  "Wayfarer"). Branching on WHAT was typed is flag-shaped — `askName.matches` sets a flag on a
+  case-insensitive match and the script guards the branch with the ordinary `if_flag`, so no
+  new conditional machinery. NameEntry deliberately does NOT run an InputController (it binds
+  W/A/S/D/Z/X/Space, which are letters): the physical keyboard types via a raw `keydown`
+  listener, the pointer taps the grid, and the device shell's pad drives the grid cursor. An
+  EMPTY box refuses to commit — players mash Confirm through dialogue and would otherwise
+  blow straight past the naming beat.
+- **The level-up sweet is the `lumen_drop`** (the genre's rare candy, ours): a `medicine`
+  carrying `level_up: true`, used from ITEMS (`ItemsMenu.feedLumenDrop`) — it grants exactly
+  the exp owed for the next level and then runs the battle path's own MoveLearn/Kindle
+  prompts. **Never give it a `price`** (a buyable level would wreck the wick economy); it is
+  found (Spore Grotto, Wind-Eye) or given. Item descriptions must fit ~80 chars / 3 wrapped
+  lines — the pack's detail pane is fixed at 3 and does not scroll.
+- **The player SWIMS on water.** `WorldScene.update` asks `map.hasTerrainAt(tx,ty,'water')`
+  every frame and calls `Player.setSwimming`, which swaps to the packed `player_indi_swim`
+  walk-sheet (same 4×4 layout) — or, with no such sheet, crops the sprite at the waterline and
+  floats a wake ellipse. Use `RuntimeMap.hasTerrainAt` for any "what am I standing in?"
+  question; the tileset sidecar is the authority (maps carry only gids).
+- **The easter-egg trail points at S4 "The Booji-Wooji Man."** Andrew at the Tinderwick fence
+  (`script.andrew_name`, sprite `andrew_ward` — NOT `lifter_andrew`, who is a different Andrew
+  in the Lifting House) names the thing; two Dimglass Coast walkers and the Crossroads
+  road-teller (`npc.egg_hint_*`) narrow it to the building at the TOP of Pearlmoor Quay (the
+  `pearlmoor_lifting_house` at (19,0)). Nobody ever says what it is — keep it that way.
+- **Wick-purse caches are the anti-broke safety net.** One found purse per area across the
+  first six (120→350w, `script.pickup_*_purse`). Found money is modelled as each leg's `finds`
+  income in `tools/balance/progression.mjs` — add a purse, mirror it there, re-run the model.
 - **Save-backup guidance is wired in three places (don't drop one).** Saves already export/import as
   JSON via `SaveCodec` (Settings → **Backup / restore** sub-screen, which carries the standing note that
   progress lives in the browser). Players are pointed at it by: a one-time tip on the first manual SAVE

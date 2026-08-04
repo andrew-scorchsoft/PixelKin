@@ -1297,6 +1297,18 @@
       "dialogue_ref": "script.georgina_hook",
       "requires_flag": "gleam:verdant",
       "hidden_when_flag": "flag:q_east_georgina"
+    },
+    {
+      "id": "cache_purse",
+      "at": {
+        "tx": 25,
+        "ty": 27
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_lowleaf_purse",
+      "hidden_when_flag": "flag:picked_lowleaf_purse"
     }
   ],
   "gates": [],

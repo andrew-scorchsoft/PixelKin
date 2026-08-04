@@ -167,6 +167,30 @@ export class Actor {
     this.sprite.setTexture(key, 0);
   }
 
+  /**
+   * Swap this actor onto a different WALK-sheet (same 4×4 layout) — e.g. the
+   * player changing from the walking sheet to the swimming one on water. Keeps
+   * facing and re-registers the sheet's walk animations; if the sheet is already
+   * current, or its texture never loaded, this is a no-op so callers can ask for
+   * it every frame without guarding.
+   */
+  protected setWalkSheet(key: string, frames: ActorFrames): void {
+    if (this.textureKey === key || !this.scene.textures.exists(key)) return;
+    if (frames.walk) Actor.ensureWalkAnims(this.scene, key, frames.walk);
+    const wasPlaying = this.sprite.anims.isPlaying;
+    this.sprite.anims.stop();
+    this.textureKey = key;
+    this.frames = frames;
+    this.sprite.setTexture(key, frames.idle[this.facing]);
+    // Carry a walk cycle across the swap so a mid-stride change doesn't stutter.
+    if (wasPlaying && frames.walk) this.sprite.play(`${key}__walk_${this.facing}`, true);
+  }
+
+  /** The texture key this actor is currently drawing from. */
+  protected get currentTextureKey(): string {
+    return this.textureKey;
+  }
+
   /** Bottom-centre world position of a tile (origin 0.5,1 sits the feet on the tile). */
   static tileToWorld(tx: number, ty: number): { x: number; y: number } {
     return { x: tx * TILE_SIZE + TILE_SIZE / 2, y: ty * TILE_SIZE + TILE_SIZE };

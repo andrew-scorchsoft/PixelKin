@@ -28,7 +28,7 @@ import { DialogueBox } from './DialogueBox';
 import { MoveLearnPrompt } from './MoveLearnPrompt';
 import { KindlePrompt } from './KindlePrompt';
 import { InputController, InputAction } from '@game/systems/input/InputController';
-import { KinInstance } from '@game/systems/party/KinInstance';
+import { KinInstance, MAX_LEVEL, expForLevel } from '@game/systems/party/KinInstance';
 import { MOVE_BY_ID } from '@game/data/dex';
 import { getItem } from '@game/content/items';
 import { formatWicks } from '@game/content/economy';
@@ -56,10 +56,12 @@ interface TabDef {
   label: string;
   cats: ItemCategory[];
 }
+/** Labels are abbreviated on purpose: five tabs share 220px, so ~44px each —
+ *  the full words ('MEDICINE') are ~60px and ran into their neighbours. */
 const TABS: TabDef[] = [
-  { label: 'MEDICINE', cats: ['medicine'] },
-  { label: 'CHARGES', cats: ['charge'] },
-  { label: 'CHARTS', cats: ['chart'] },
+  { label: 'MEDS', cats: ['medicine'] },
+  { label: 'CHRG', cats: ['charge'] },
+  { label: 'CHRT', cats: ['chart'] },
   { label: 'KEY', cats: ['key'] },
   { label: 'GOODS', cats: ['valuable', 'misc'] },
 ];
@@ -93,6 +95,8 @@ interface PackEntry {
   desc: string;
   category: ItemCategory;
   heal?: number;
+  /** A level-up sweet (the Lumen Drop) rather than a healing salve. */
+  level_up?: boolean;
   teach_move?: string;
   count: number;
 }
@@ -142,15 +146,26 @@ export class ItemsMenu {
     this.detailTop = height - PAD - DETAIL_LINES * DETAIL_LINE_H;
     this.panel = new Panel(scene, 4, 4, this.width, height).fixedToCamera();
 
-    const title = this.money !== undefined ? `ITEMS — ${formatWicks(this.money)}` : 'ITEMS';
-    this.panel.add(makeText(scene, PAD, PAD - 2, title, theme.text.accent));
+    // The title row is 220px wide and the wallet is variable-length, so it gets
+    // the right-hand end to itself; the old verbose key-hint ran straight through
+    // it. The A/B hints live on the shell buttons, and '<>' on the tab strip
+    // carries the only non-obvious control.
+    this.panel.add(makeText(scene, PAD, PAD - 2, 'ITEMS', theme.text.accent));
+    if (this.money !== undefined) {
+      this.panel.add(
+        makeText(scene, this.width - PAD, PAD - 2, formatWicks(this.money), theme.text.accent).setOrigin(1, 0),
+      );
+    }
     this.panel.add(
-      makeText(scene, this.width - PAD, PAD - 2, '<> TAB  A USE  B BACK', theme.text.dim).setOrigin(1, 0),
+      makeText(scene, this.width - PAD, TAB_ROW_Y, '<>', theme.text.dim).setOrigin(1, 0),
     );
 
     // Tab strip: one label per category tab, evenly spread across the panel.
+    // Spread across the row minus the '<>' hint's corner, so the last tab
+    // ('GOODS') can't run under it.
+    const tabSpan = this.width - PAD * 2 - 16;
     TABS.forEach((t, i) => {
-      const x = PAD + Math.round((i * (this.width - PAD * 2)) / TABS.length);
+      const x = PAD + Math.round((i * tabSpan) / TABS.length);
       const label = makeText(scene, x, TAB_ROW_Y, t.label, theme.text.dim);
       this.panel.add(label);
       this.tabLabels.push(label);
@@ -193,6 +208,7 @@ export class ItemsMenu {
         desc: def.desc,
         category: def.category,
         heal: def.heal,
+        level_up: def.level_up,
         teach_move: def.teach_move,
         count,
       });
@@ -351,6 +367,10 @@ export class ItemsMenu {
       await this.toggleHoodedLamp();
       return;
     }
+    if (entry.level_up) {
+      await this.feedLumenDrop(entry);
+      return;
+    }
     if (entry.category === 'chart' && entry.teach_move) {
       await this.studyChart(entry);
       return;
@@ -388,6 +408,56 @@ export class ItemsMenu {
     if (kindling) {
       this.setOverlayVisible(false);
       await new KindlePrompt(this.scene, kin, kindling, this.sfx).run();
+      this.setOverlayVisible(true);
+    }
+    this.rebuild();
+  }
+
+  /**
+   * Feed a level-up sweet (the Lumen Drop): pick a kin and grant exactly the exp
+   * it still owes for its next level. The follow-on beats are the battle path's,
+   * deliberately — new level-up moves are announced, a full move kit opens the
+   * MoveLearnPrompt so the player chooses what to set aside, and a crossed
+   * kindling threshold offers the witnessed KindlePrompt. A kin already at the
+   * ceiling can't be picked, so a Drop is never wasted.
+   */
+  private async feedLumenDrop(entry: PackEntry): Promise<void> {
+    if (this.members.length === 0) {
+      await new DialogueBox(this.scene, this.sfx).run([{ text: 'No kin walk with you to share it with.' }]);
+      return;
+    }
+    const target = await this.pickKin((k) => k.level < MAX_LEVEL);
+    if (target === null) return;
+    const kin = this.members[target];
+    if (kin.level >= MAX_LEVEL) {
+      await new DialogueBox(this.scene, this.sfx).run([
+        { text: `${kin.displayName} has grown as far as growing goes.` },
+      ]);
+      return;
+    }
+
+    // Exactly one level: the exp still owed to reach the next threshold.
+    const owed = Math.max(1, expForLevel(kin.level + 1) - kin.exp);
+    const { learned, pending, kindleReady } = kin.gainExp(owed);
+
+    // Spend it and refresh the list (this may have been the last one).
+    this.inventory.items[entry.id] = (this.inventory.items[entry.id] ?? 1) - 1;
+    if (this.inventory.items[entry.id] <= 0) delete this.inventory.items[entry.id];
+
+    void this.sfx?.playVariant('progress-levelup', ['a', 'b']);
+    await new DialogueBox(this.scene, this.sfx).run([
+      { text: `${kin.displayName} ate the ${entry.name} — and grew to Lv${kin.level}!` },
+      ...learned.map((m) => ({ text: `${kin.displayName} learned ${m.name}!` })),
+    ]);
+
+    for (const m of pending) {
+      this.setOverlayVisible(false);
+      await new MoveLearnPrompt(this.scene, kin, m, this.sfx).run();
+      this.setOverlayVisible(true);
+    }
+    if (kindleReady) {
+      this.setOverlayVisible(false);
+      await new KindlePrompt(this.scene, kin, kindleReady, this.sfx).run();
       this.setOverlayVisible(true);
     }
     this.rebuild();

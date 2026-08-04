@@ -135,7 +135,7 @@ const JOURNEY = [
     leadShare: 0.70,
     wild: { areas: ['dimglass_coast'], band: [2, 4], fights: { rusher: 3, mainline: 6, explorer: 10 } },
     trainers: [],
-    income: { quests: 0, valuables: 0, finds: 0 },
+    income: { quests: 0, valuables: 0, finds: 120 }, // + the Tinderwick wick-purse cache
     spend: { tallow_balm: 2 },
   },
   {
@@ -148,7 +148,7 @@ const JOURNEY = [
       T('Cole', 'keeper', [K(7, 10), K(8, 16)]),
       T('Brisa Tallow', 'warden', [K(7, 10), K(10, 18)]),
     ],
-    income: { quests: 150, valuables: 250, finds: 0 }, // beacon errand thanks + a wax cake cache
+    income: { quests: 150, valuables: 250, finds: 150 }, // beacon errand thanks + a wax cake cache + the coast wick-purse
     spend: { tallow_balm: 2, glow_charge: 2 },
     checkpoint: { name: 'Ember Gleam (Brisa)', rec: 10, ace: 10 },
   },
@@ -160,7 +160,7 @@ const JOURNEY = [
       T('Morrow', 'route', [K(9, 26), K(9, 31)]),
       T('Elspeth', 'route', [K(10, 27), K(11, 31)]),
     ],
-    income: { quests: 200, valuables: 0, finds: 100 },
+    income: { quests: 200, valuables: 0, finds: 300 }, // the flats wicks find (100) + the dune wick-purse (200)
     spend: { tallow_balm: 2 },
     checkpoint: { name: 'Pearlmoor arrival', rec: 12 },
   },
@@ -175,7 +175,7 @@ const JOURNEY = [
       T('Cob (net-hand)', 'route', [K(13, 31), K(14, 27)]),
       T('Reyl Wash', 'warden', [K(12, 26), K(13, 31), K(14, 27), K(16, 24)]),
     ],
-    income: { quests: 400, valuables: 250, finds: 0 }, // bell-rope quest + Round leg
+    income: { quests: 400, valuables: 250, finds: 250 }, // bell-rope quest + Round leg + the shore wick-purse
     spend: { warm_balm: 1, beacon_charge: 2, chart_mid: 1 },
     checkpoint: { name: 'Tide Gleam (Reyl)', rec: 12, ace: 16 },
   },
@@ -193,7 +193,7 @@ const JOURNEY = [
       T('Osprey (plank-courier)', 'route', [K(17, 31), K(18, 60)]),
       T('Tarn (reed-lamplighter)', 'route', [K(17, 31), K(18, 59)]),
     ],
-    income: { quests: 200, valuables: 600, finds: 300 },
+    income: { quests: 200, valuables: 600, finds: 600 }, // + the fen west-bank wick-purse (300)
     spend: { tallow_balm: 3 },
     checkpoint: { name: 'Lowleaf arrival', rec: 18 },
   },
@@ -209,7 +209,7 @@ const JOURNEY = [
       T('Fern (bloom-warden)', 'keeper', [K(20, 38), K(21, 67)]),
       T('Sable Quill', 'warden', [K(18, 56), K(19, 59), K(20, 65), K(22, 66)]),
     ],
-    income: { quests: 450, valuables: 600, finds: 120 },
+    income: { quests: 450, valuables: 600, finds: 470 }, // town wicks tin (120) + the grove wick-purse (350)
     spend: { warm_balm: 2, beacon_charge: 1, chart_mid: 1 },
     checkpoint: { name: 'Verdant Gleam (Sable)', rec: 18, ace: 22 },
   },
