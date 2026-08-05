@@ -192,6 +192,26 @@ npm run preview:release # rebuild + assemble, then serve release/ → / and /pla
 `public_html/`. The game uses Vite `base: './'`, so it runs from `/play/`
 unchanged.
 
+### Deploying
+
+The upload is scripted — you don't drag folders in FileZilla:
+
+```bash
+npm run version:bump minor   # 1.3.0 → 1.4.0 (package.json + the in-game version)
+npm run deploy:dry           # show the plan, send nothing
+npm run deploy               # build + assemble + sync site and game
+npm run deploy:site          # site only (leaves /play/ alone)
+npm run deploy:game          # game only
+```
+
+`tools/deploy/ftp_deploy.py` syncs rather than re-uploads: it keeps a sha1
+manifest on the server, so only changed files go up. `/public_html/play/` is
+mirrored (old content-hashed bundles are deleted); the web root only ever loses
+files this tool previously put there, so the account's other folders
+(`cgi-bin`, `.well-known`, …) are never touched. Credentials come from
+`FTP_HOST` / `FTP_USER` / `FTP_PASS` (see `.env.example`). Claude can drive the
+whole flow — ask it to deploy and it'll run the **`deploy-ftp`** skill.
+
 To play an **already-built** `release/` locally without rebuilding, serve that
 folder directly:
 

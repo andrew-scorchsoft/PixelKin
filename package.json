@@ -14,7 +14,12 @@
     "preview:release": "npm run release && php -S localhost:8000 -t release",
     "release:site": "node tools/build/assemble_release.mjs --site",
     "release:game": "npm run build:dist && node tools/build/assemble_release.mjs --game",
-    "release": "npm run build:dist && node tools/build/assemble_release.mjs"
+    "release": "npm run build:dist && node tools/build/assemble_release.mjs",
+    "version:bump": "node tools/build/bump_version.mjs",
+    "deploy": "npm run release && python3 tools/deploy/ftp_deploy.py --scope both",
+    "deploy:site": "npm run release:site && python3 tools/deploy/ftp_deploy.py --scope site",
+    "deploy:game": "npm run release:game && python3 tools/deploy/ftp_deploy.py --scope game",
+    "deploy:dry": "python3 tools/deploy/ftp_deploy.py --scope both --dry-run"
   },
   "dependencies": {
     "phaser": "^3.90.0"
