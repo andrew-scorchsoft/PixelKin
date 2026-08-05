@@ -108,6 +108,7 @@ docs/
   mechanics/                # types, stats, moves, capture, kindling, selection, schema, sim
   world/                    # story bible, atlas (14 areas), music direction
 tools/balance/              # the roster/balance engine (.py pipeline + .mjs validators)
+tools/deploy/ftp_deploy.py  # manifest-based FTP sync of release/ to pixelk.in (deploy-ftp skill)
 web/                        # marketing site for pixelk.in (PHP+HTML, separate from the game)
                             #   flat .php pages + includes/ partials + own assets/ (web/README.md)
 .claude/skills/             # repo skills (see below)
@@ -252,15 +253,21 @@ go digging on every task.
 | World-map screen layout (generated) + spatial-embedding audit | `src/game/data/world/worldmap.json` ← `tools/maps/world_layout.py` |
 | Balance/roster tooling | `tools/balance/` |
 | Visual standards (binding) | `docs/art-style.md` |
+| Deploying to pixelk.in (FTP) | `.claude/skills/deploy-ftp/SKILL.md` + `tools/deploy/ftp_deploy.py` |
 | Asset masters (source) | `assets/` (`assets/README.md`) |
 | Area mood pieces (concept art / tile refs) | `assets/concept-art/` (`assets/concept-art/README.md`) |
 | Concept-art discovery gallery (Charts) | `src/game/content/charts.ts`, `ui/ChartsMenu.ts`, `ui/ChartView.ts` |
 | Served/rendered assets | `public/assets/` (music, maps, battle backdrops, logo) |
 | Per-area object/building masters | `assets/tilesets/<area>/objects/*.png` → `pack_objects.py` → `public/assets/sprites/objects/` + manifest |
 
-## Asset generation skills
+## Skills
 
-Six skills live in `.claude/skills/`. Use them instead of hand-rolling:
+Seven skills live in `.claude/skills/`. Use them instead of hand-rolling:
+
+- **deploy-ftp** — publishing to the live host (pixelk.in over FTP): asks scope
+  (site / game / both) + version bump (minor default / major / none), then
+  bumps, builds, assembles `release/`, dry-runs and syncs. See the deploy entry
+  under "Gotchas & learned steers".
 
 - **build-map** — the map-composition skill: builds any area (town/route/cave/
   interior) from its atlas card + walkthrough hooks via `tools/maps/mapkit.py`
@@ -1015,6 +1022,17 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   game's `dist/` dropped into `release/play/`. FTP the **contents** of `release/` into `public_html/`
   on pixelk.in → site serves at `/`, game at `/play/` (works because Vite `base: './'`). `release:site`
   refreshes pages without touching a staged `release/play/`; `release:game` rebuilds only the game.
+  **The upload itself is scripted — use the `deploy-ftp` skill, never a hand-rolled FTP push.**
+  `tools/deploy/ftp_deploy.py` syncs `release/` to the host from a sha1 manifest it keeps ON the
+  server (`.pixelkin-deploy.json` per scope root), so only changed files go up. Pruning is
+  asymmetric on purpose: `--scope game` MIRRORS `/public_html/play` (clears the old content-hashed
+  `assets/index-<hash>.js` bundles), `--scope site` deletes only files it previously uploaded —
+  the web root holds folders that aren't ours (`cgi-bin`, `.well-known`, mail/logs/tmp), so never
+  switch the site to mirror. Version bumps go through `node tools/build/bump_version.mjs
+  major|minor|patch` (writes package.json AND `src/game/version.ts` GAME_VERSION together — the
+  two must not drift). Creds: `FTP_HOST`/`FTP_IP`, `FTP_USER`, `FTP_PASS`/`FTP_PASS_B64` (`.env.example`).
+  Port 21 is usually BLOCKED in remote/sandboxed sessions — a connect timeout is the network,
+  not the script; hand the user the command to run locally.
   Brand facts in `web/includes/config.php` (starter trio, world/Lumenary galleries, palette, `STUDIO_*`)
   mirror the game — keep them in sync. Per-page SEO/social meta comes from `page_head($title,$page,$desc)`;
   the studio is **Scorchsoft** (attribution in the footer; `license.php` routes licensing enquiries to the
