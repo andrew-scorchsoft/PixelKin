@@ -1264,21 +1264,7 @@
         0,
         0,
         0,
-         0,
         0,
-        0,
-        0,
-        0,
-        120,
-        0,
-        0,
-        0,
-        124,
-        0,
-        0,
-        0,
-        0,
-        120,
         0,
         0,
         0,
@@ -1292,7 +1278,21 @@
         0,
         0,
         0,
-         124,
+        120,
+        0,
+        0,
+        0,
+        0,
+        120,
+        0,
+        0,
+        0,
+        124,
+        0,
+        0,
+        0,
+        0,
+        124,
         0,
         0,
         0,
@@ -2659,6 +2659,42 @@
       "movement": "look_around",
       "dialogue_ref": "npc.tinderwick_fenn_hint",
       "hidden_when_flag": "flag:has_starter"
+    },
+    {
+      "id": "andrew_pre",
+      "at": {
+        "tx": 11,
+        "ty": 17
+      },
+      "facing": "left",
+      "sprite": "andrew_ward",
+      "movement": "look_around",
+      "dialogue_ref": "script.andrew_name",
+      "hidden_when_flag": "flag:met_andrew"
+    },
+    {
+      "id": "andrew_post",
+      "at": {
+        "tx": 11,
+        "ty": 17
+      },
+      "facing": "left",
+      "sprite": "andrew_ward",
+      "movement": "look_around",
+      "dialogue_ref": "script.andrew_after",
+      "requires_flag": "flag:met_andrew"
+    },
+    {
+      "id": "cache_purse",
+      "at": {
+        "tx": 20,
+        "ty": 20
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_tinderwick_purse",
+      "hidden_when_flag": "flag:picked_tinderwick_purse"
     }
   ],
   "gates": [],

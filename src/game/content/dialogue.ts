@@ -1776,6 +1776,29 @@ export const DIALOGUE: DialogueRegistry = {
   'npc.vigil_mer_summit': [
     { speaker: 'WARDEN MER', text: 'He has waited forty years for this lesson. So have I, in a way. When your lamp is steady, ask the lantern — we\'ll be right behind you, every step.' },
   ],
+  // ---------------------------------------------------------------------------
+  // The easter-egg breadcrumb trail.
+  //
+  // The egg itself is S4 "The Booji-Wooji Man" — the Lifting House at the TOP of
+  // Pearlmoor Quay, and Paul at the dark lamp out past the breakwater's end.
+  // These lines are the trail to it: Andrew names the thing back in Tinderwick,
+  // two walkers on the coast road repeat it as gossip, and the Waykeeper's
+  // road-teller at the Crossroads finally points at the building. Nobody ever
+  // says what it IS — the joke only lands if the player goes and finds out.
+  // ---------------------------------------------------------------------------
+  'npc.egg_hint_coast': [
+    { speaker: 'WALKER', text: 'Heading south? Good. Keep your lamp up and your wits about you — and keep your eyes open besides.' },
+    { speaker: 'WALKER', text: 'There\'s an easter egg hidden somewhere in Vesperholm. I\'ve never found it. My cousin swears blind she has, but my cousin also swears she once out-argued a Lampwarden.' },
+  ],
+  'npc.egg_hint_flats': [
+    { speaker: 'NET-MENDER', text: 'You\'ve the look of someone hunting for something that isn\'t on the road.' },
+    { speaker: 'NET-MENDER', text: 'The easter egg, is it? Everyone asks eventually. All I\'ll say is: it\'s in the quay town down the coast, and it\'s NOT at the water\'s edge. Look uphill.' },
+  ],
+  'npc.egg_hint_crossroads': [
+    { speaker: 'ROAD-TELLER', text: 'Waystone\'s a good place to sit. Every road in the valley eventually walks past you and tells you something.' },
+    { speaker: 'ROAD-TELLER', text: 'What they tell me lately is this: the easter egg\'s in Pearlmoor Quay, in the building right at the TOP of the town. Not the hall. Not the inn. The other one — the one with the noise coming out of it.' },
+    { speaker: 'ROAD-TELLER', text: 'Ask inside for the old man. That\'s all anyone will say about it, and they say it like they\'re enjoying themselves.' },
+  ],
 };
 
 const FALLBACK: DialogueLine[] = [{ text: '...' }];

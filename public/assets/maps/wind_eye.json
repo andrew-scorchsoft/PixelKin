@@ -329,6 +329,18 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_windeye_glass",
       "hidden_when_flag": "flag:picked_windeye_glass"
+    },
+    {
+      "id": "cache_drop",
+      "at": {
+        "tx": 8,
+        "ty": 15
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_windeye_drop",
+      "hidden_when_flag": "flag:picked_windeye_drop"
     }
   ],
   "gates": [],

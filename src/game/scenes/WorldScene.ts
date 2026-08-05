@@ -58,6 +58,7 @@ import type { ActorRef, CutsceneStep } from '@game/content/types';
 import type { KinInstanceData, InventoryData, SaveGame, DexProgress } from '@game/systems/save/types';
 import { SAVE_SCHEMA_VERSION } from '@game/systems/save/types';
 import { SaveManager } from '@game/systems/save/SaveManager';
+import { SaveCodec } from '@game/systems/save/SaveCodec';
 import type { WorldSnapshot } from '@game/data/world/types';
 import { MAP_REGISTRY } from '@game/data/world/maps';
 import { LamplightMask } from '@game/systems/world/LamplightMask';
@@ -83,6 +84,8 @@ export interface WorldSceneData {
   cooldowns?: Record<string, number>;
   /** The last rest point — where a blackout wakes the player (see WorldSnapshot). */
   respawn?: { map: string; tx: number; ty: number; facing: Facing };
+  /** What the player calls themselves, once they've been asked (`askName`). */
+  player_name?: string;
 }
 
 /** Depth band for actors: above deco (5), below the 'above' layer (20). */
@@ -148,6 +151,8 @@ export class WorldScene extends Phaser.Scene {
   private pendingTutorial?: EntryTutorial;
   /** The last rest point (inn / home / camp) — where a blackout wakes you. */
   private respawn?: { map: string; tx: number; ty: number; facing: Facing };
+  /** What the player calls themselves — set by the `askName` op, used as `{name}`. */
+  private playerName?: string;
   /** Timestamps of recent START taps — 10 fast ones reload the map (debug). */
   private reloadTaps: number[] = [];
   /** Glowing rest-lanterns hung over heal-entrance doors (cleared on teardown). */
@@ -193,6 +198,7 @@ export class WorldScene extends Phaser.Scene {
     this.battlesWon = data.battles_won ?? 0;
     this.cooldowns = { ...(data.cooldowns ?? {}) };
     this.respawn = data.respawn;
+    this.playerName = data.player_name;
     // Whatever walks with you is certainly on the register.
     for (const k of [...this.party, ...this.box]) {
       this.dexSeen.add(k.species_id);
@@ -324,6 +330,7 @@ export class WorldScene extends Phaser.Scene {
       battles_won: this.battlesWon,
       cooldowns: this.cooldowns,
       respawn: this.respawn,
+      player_name: this.playerName,
     } satisfies WorldSceneData);
   }
 
@@ -352,6 +359,7 @@ export class WorldScene extends Phaser.Scene {
       dex: { seen: [...this.dexSeen], caught: [...this.dexCaught] },
       battles_won: this.battlesWon,
       cooldowns: this.cooldowns,
+      player_name: this.playerName,
     };
   }
 
@@ -809,6 +817,10 @@ export class WorldScene extends Phaser.Scene {
       onGiveMoney: (amount) => {
         this.money = Math.max(0, this.money + Math.floor(amount));
       },
+      playerName: () => this.playerName,
+      onSetPlayerName: (name) => {
+        this.playerName = name;
+      },
       openShop: async (shopId) => {
         const shop = getShop(shopId);
         if (!shop) {
@@ -1240,6 +1252,11 @@ export class WorldScene extends Phaser.Scene {
       for (const npc of this.npcs) npc.update(delta, this.npcCanEnter);
     }
 
+    // Standing on water the vesperlamp carries you over: the player swims rather
+    // than walks (a swim sheet swap, with a procedural fallback — see Player).
+    // Checked every frame so it survives warps, blackouts and cutscene walks.
+    this.player.setSwimming(this.map.hasTerrainAt(this.player.tx, this.player.ty, 'water'));
+
     this.player.syncDepth(ACTOR_DEPTH);
     for (const npc of this.npcs) npc.syncDepth(ACTOR_DEPTH);
     this.lamplight?.follow(this.player.sprite.x, this.player.sprite.y);
@@ -1415,6 +1432,32 @@ export class WorldScene extends Phaser.Scene {
     void this.persist();
   }
 
+  /**
+   * Every manual SAVE also offers to keep a copy as a file. The in-browser save
+   * is the one the game reads; the download is the one that survives a cleared
+   * cache or a new device, so the offer stands on EVERY save rather than hiding
+   * in SETTINGS. Declining is one press and costs nothing.
+   */
+  private async offerSaveFile(): Promise<void> {
+    await new DialogueBox(this, this.sfx).run([
+      { text: 'Your journey is written. Keep a copy as a file too?' },
+    ]);
+    const choice = await new Menu(
+      this,
+      [
+        { label: 'NO, THANKS', value: 'no' },
+        { label: 'DOWNLOAD', value: 'yes' },
+      ],
+      { x: 8, y: 8, sfx: this.sfx, cancellable: true },
+    ).run();
+    if (choice !== 'yes') return;
+    SaveCodec.exportToFile(this.buildSaveGame());
+    void this.sfx.playVariant('ui-save', ['a', 'b']);
+    await new DialogueBox(this, this.sfx).run([
+      { text: 'A copy of your journey has been kept as a file. Store it somewhere safe — LOAD FILE on the title screen carries it back.' },
+    ]);
+  }
+
   /** In-game pause menu (Start/Esc): Resume / Kin / Hearth / Items / Save / Settings. */
   private async openPauseMenu(): Promise<void> {
     this.modal = true;
@@ -1484,6 +1527,7 @@ export class WorldScene extends Phaser.Scene {
         await this.persist();
         void this.sfx.playVariant('ui-save', ['a', 'b']);
         await this.maybeBackupTip();
+        await this.offerSaveFile();
       } else if (choice === 'settings') {
         await new SettingsMenu(this, {
           getSave: () => this.buildSaveGame(),
@@ -1516,6 +1560,7 @@ export class WorldScene extends Phaser.Scene {
         battles_won: loaded.battles_won,
         cooldowns: loaded.cooldowns,
         respawn: loaded.world.respawn,
+        player_name: loaded.player_name,
       });
     }
   }

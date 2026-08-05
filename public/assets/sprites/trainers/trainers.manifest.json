@@ -4,6 +4,11 @@
   "cols": 4,
   "rows": 4,
   "trainers": {
+    "andrew_ward": {
+      "path": "assets/sprites/trainers/andrew_ward.webp",
+      "width": 128,
+      "height": 128
+    },
     "booji_paul": {
       "path": "assets/sprites/trainers/booji_paul.webp",
       "width": 128,
@@ -115,6 +120,11 @@
         "cols": 4,
         "rows": 2
       }
+    },
+    "player_indi_swim": {
+      "path": "assets/sprites/trainers/player_indi_swim.webp",
+      "width": 128,
+      "height": 128
     },
     "professor_fenn": {
       "path": "assets/sprites/trainers/professor_fenn.webp",

@@ -707,6 +707,67 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', text: "A dropped courier's purse, half-buried in the sand. Found 80 WICKS!" },
     { op: 'setFlag', flag: 'flag:picked_flats_wicks' },
   ],
+  // ---- The wick-purse caches (the "don't go broke" safety net) ---------------
+  // A found purse in a quiet corner of each of the first six areas, scaled to the
+  // leg's prices (10-economy.md). They exist because a run of blackouts — each
+  // costing the 10% tithe — used to leave a player with no balms and no way to
+  // buy any; a small found purse per area breaks that spiral without touching a
+  // single payout. Mirrored in tools/balance/progression.mjs as each leg's
+  // `finds` income, so the journey model still PASSES.
+  'script.pickup_tinderwick_purse': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 120 },
+    { op: 'say', text: 'A knotted purse, half under the driftwood on Tinderwick\'s south shore, and long forgotten. Found 120 WICKS!' },
+    { op: 'setFlag', flag: 'flag:picked_tinderwick_purse' },
+  ],
+  'script.pickup_dimglass_purse': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 150 },
+    { op: 'say', text: 'Wedged under a stone at the head of the coast road — a lamplighter\'s pay-purse. Found 150 WICKS!' },
+    { op: 'setFlag', flag: 'flag:picked_dimglass_purse' },
+  ],
+  'script.pickup_flats_purse': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 200 },
+    { op: 'say', text: 'A salt-stiff pouch in the dune hollow, the drawstring still knotted. Found 200 WICKS!' },
+    { op: 'setFlag', flag: 'flag:picked_flats_purse' },
+  ],
+  'script.pickup_pearlmoor_purse': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 250 },
+    { op: 'say', text: 'Down between the shore stones, where the tide put it back — a netmender\'s purse. Found 250 WICKS!' },
+    { op: 'setFlag', flag: 'flag:picked_pearlmoor_purse' },
+  ],
+  'script.pickup_fen_purse': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 300 },
+    { op: 'say', text: 'A courier\'s purse, dry inside its oilcloth on the fen\'s west bank. Found 300 WICKS!' },
+    { op: 'setFlag', flag: 'flag:picked_fen_purse' },
+  ],
+  'script.pickup_lowleaf_purse': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 350 },
+    { op: 'say', text: 'Tucked in a hollow root at the grove\'s edge, wrapped in leaves against the damp. Found 350 WICKS!' },
+    { op: 'setFlag', flag: 'flag:picked_lowleaf_purse' },
+  ],
+
+  // ---- Lumen Drop finds ------------------------------------------------------
+  // The level-up sweet is never SOLD (it would distort the wick economy), so it
+  // has to be found: one at the back of the Glimmerstep spur, one in the Wind-Eye
+  // — both optional side-rooms, so the reward reads as "you went looking".
+  'script.pickup_grotto_drop': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'lumen_drop', count: 1 },
+    { op: 'say', text: 'Set in a niche where the bloom-light pools, a bead of pressed lamp-honey. Found a LUMEN DROP! A kin that eats one grows a whole level.' },
+    { op: 'setFlag', flag: 'flag:picked_grotto_drop' },
+  ],
+  'script.pickup_windeye_drop': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'lumen_drop', count: 1 },
+    { op: 'say', text: 'Wedged in the rock where the wind can\'t reach it — a LUMEN DROP, still faintly warm.' },
+    { op: 'setFlag', flag: 'flag:picked_windeye_drop' },
+  ],
+
   // Gran's send-off satchel on the home floor — three balms for the road.
   'script.pickup_gran_satchel': [
     { op: 'sfx', key: 'world-pickup' },
@@ -3907,6 +3968,100 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:starfall_crown' },
     { op: 'narrate', text: 'The apprentice who began with a satchel errand at a waystone ends a Star-tender, named by the man who sent them out — under an open summit sky, with the morning on every lamp.' },
     { op: 'tint', color: '#ffe9a8', alpha: 0, ms: 1100 },
+  ],
+
+  // ---------------------------------------------------------------------------
+  // ANDREW, at the Tinderwick fence — the game's naming beat, and the door to
+  // the S4 easter egg.
+  //
+  // He asks what you're called (`askName`), and every line afterwards can use
+  // `{name}`. The name ALSO branches the scene without any new machinery: the op
+  // sets `flag:name_is_paul` when the typed name matches, and the supply-drop
+  // steps below simply guard on it with the ordinary per-step `if_flag`. Anyone
+  // not called Paul gets the same warm welcome minus the parcel — and everyone
+  // gets the nudge toward the real easter egg (Paul, the Booji-Wooji Man, out at
+  // the end of the Pearlmoor breakwater; the Lifting House at the top of the
+  // quay town is the way in).
+  // ---------------------------------------------------------------------------
+  'script.andrew_name': [
+    // Actor refs are NPC PLACEMENT ids, not display names — this is the
+    // pre-naming placement (`andrew_post` is the one after).
+    { op: 'emote', actor: 'andrew_pre', emote: 'alert' },
+    { op: 'say', speaker: 'ANDREW', text: 'Morning! Or — well. You know. Whatever this is.' },
+    { op: 'say', speaker: 'ANDREW', text: 'You\'re the lamp-tender\'s apprentice, aren\'t you. The whole street\'s been saying so for a week.' },
+    { op: 'say', speaker: 'ANDREW', text: 'Right — manners. Before you go wandering off into all that dark: what do folk call you?' },
+    {
+      op: 'askName',
+      title: 'YOUR NAME',
+      fallback: 'Wayfarer',
+      matches: [{ value: 'Paul', flag: 'flag:name_is_paul' }],
+    },
+    { op: 'say', speaker: 'ANDREW', text: '{name}. Good name. It\'ll carry.' },
+
+    // --- The Paul branch: a friend, expected, and provisioned accordingly. ----
+    { op: 'emote', if_flag: 'flag:name_is_paul', actor: 'andrew_pre', emote: 'heart' },
+    { op: 'say', if_flag: 'flag:name_is_paul', speaker: 'ANDREW', text: '...PAUL. You\'re joking. PAUL.' },
+    { op: 'say', if_flag: 'flag:name_is_paul', speaker: 'ANDREW', text: 'Hang on — hang ON, don\'t move —' },
+    { op: 'sfx', if_flag: 'flag:name_is_paul', key: 'world-pickup' },
+    { op: 'giveItem', if_flag: 'flag:name_is_paul', item: 'lumen_drop', count: 20 },
+    { op: 'giveItem', if_flag: 'flag:name_is_paul', item: 'warm_balm', count: 5 },
+    { op: 'giveItem', if_flag: 'flag:name_is_paul', item: 'tallow_balm', count: 5 },
+    { op: 'giveMoney', if_flag: 'flag:name_is_paul', amount: 5000 },
+    {
+      op: 'narrate',
+      if_flag: 'flag:name_is_paul',
+      text: 'He hauls a packed satchel out from behind the fence post — a thing plainly put there some time ago, for exactly this. Received 20 LUMEN DROPS, 5 WARM BALMS, 5 TALLOW BALMS and 5,000 WICKS!',
+    },
+    {
+      op: 'say',
+      if_flag: 'flag:name_is_paul',
+      speaker: 'ANDREW',
+      text: 'Supplies. For the journey. Don\'t argue — I\'ve been carrying that about for ages waiting for a Paul to turn up, and my back\'s had enough.',
+    },
+
+    // --- Everyone: the nudge. -------------------------------------------------
+    { op: 'say', speaker: 'ANDREW', text: 'Right. Before you go. Have you found the easter egg yet?' },
+    { op: 'say', speaker: 'ANDREW', text: '...No? Fair enough. This isn\'t it, mind — I\'m just the fellow at the fence. But it IS out there. Keep looking.' },
+    { op: 'setFlag', flag: 'flag:met_andrew' },
+  ],
+
+  // Andrew after the naming — he remembers, and keeps pointing at the egg.
+  'script.andrew_after': [
+    {
+      op: 'choice',
+      speaker: 'ANDREW',
+      prompt: 'Still out here, {name}. Somebody has to hold the fence up. Anything I can do you for?',
+      options: [
+        {
+          label: 'THE EASTER EGG',
+          ops: [
+            { op: 'say', speaker: 'ANDREW', text: 'Still not me, still out there. Word on the coast road is it\'s south of here — past the flats, in the town on the water.' },
+            { op: 'say', speaker: 'ANDREW', text: 'Something about a building at the top of the quay. And an old man nobody will explain properly. That\'s all I\'ve got.' },
+          ],
+        },
+        {
+          label: 'CHANGE MY NAME',
+          ops: [
+            { op: 'say', speaker: 'ANDREW', text: 'Second thoughts? Happens. Go on then — what are we calling you?' },
+            {
+              op: 'askName',
+              title: 'YOUR NAME',
+              fallback: 'Wayfarer',
+              matches: [{ value: 'Paul', flag: 'flag:name_is_paul' }],
+            },
+            { op: 'say', speaker: 'ANDREW', text: '{name} it is. I\'ll tell the street.' },
+            // The parcel is the FIRST-meeting reward and can't be claimed twice
+            // (this scene only exists once `flag:met_andrew` is held), so a late
+            // Paul gets the recognition rather than a second satchel.
+            { op: 'say', if_flag: 'flag:name_is_paul', speaker: 'ANDREW', text: '...Paul. PAUL. Honestly, you could have led with that.' },
+          ],
+        },
+        {
+          label: 'NOTHING',
+          ops: [{ op: 'say', speaker: 'ANDREW', text: 'Right you are. Mind how you go — and mind the dark.' }],
+        },
+      ],
+    },
   ],
 };
 

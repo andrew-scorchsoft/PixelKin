@@ -58,7 +58,9 @@ economy** (shops, Star-charts, trainer payouts — tuned end-to-end by a journey
 model), seven battle statuses, Kindling and bond, the Hearth for kin storage,
 inn rest-heals, item caches, sight trainers, festivals that fill each town
 after its Gleam, a LORE codex and a collectible concept-art gallery. Progress
-autosaves (with JSON export/import), and the screen can show as a
+autosaves, every manual save offers a downloadable copy, and **LOAD FILE** on
+the title screen restores a journey from one — so a cleared cache or a new
+device costs you nothing. The screen can show as a
 handheld-device frame, fullscreen with translucent touch controls, or plain.
 Run it with `npm install && npm run dev`.
 

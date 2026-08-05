@@ -57,6 +57,9 @@ const SPRITE_SHEETS: Record<string, string> = {
   cor: 'warden_cor',
   // The Lifting House crew + the Booji-Wooji Man (S4, Pearlmoor — bespoke sheets).
   booji_paul: 'booji_paul',
+  // Andrew at the Tinderwick fence — the naming beat + the easter-egg nudge.
+  // Distinct from `lifter_andrew`, the bench-bound Andrew in the Lifting House.
+  andrew_ward: 'andrew_ward',
   lifter_andy: 'lifter_andy',
   lifter_andrew: 'lifter_andrew',
   lifter_abdul: 'lifter_abdul',
@@ -99,6 +102,7 @@ const SPRITE_COLORS: Record<string, string> = {
   lost_kitten: '#7a4fb0', // the bolted Gloampurr kitten (search target in the dell)
   cottage_cat: '#5d4a7a', // ambient cats underfoot in Georgina's cottage
   booji_paul: COLORS.bone,
+  andrew_ward: '#f2c14e', // his spiky blonde, until the sheet loads
   lifter_andy: COLORS.deepBlue,
   lifter_andrew: COLORS.diamond,
   lifter_abdul: COLORS.grass,

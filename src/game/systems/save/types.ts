@@ -85,4 +85,11 @@ export interface SaveGame {
    * defaults to {}, so old saves load clean.
    */
   cooldowns?: Record<string, number>;
+  /**
+   * What the player calls themselves, once anyone in Vesperholm has thought to
+   * ask (the `askName` cutscene op). Lines address them as `{name}`. Optional +
+   * defaults to undefined, so old saves load clean — the additive-field
+   * precedent set by `bond` / `battles_won`, no migration needed.
+   */
+  player_name?: string;
 }

@@ -15,6 +15,7 @@ import { SettingsMenu } from '@game/ui/SettingsMenu';
 import { Sfx } from '@game/systems/audio/Sfx';
 import { MusicDirector } from '@game/systems/audio/MusicDirector';
 import { SaveManager } from '@game/systems/save/SaveManager';
+import { SaveCodec } from '@game/systems/save/SaveCodec';
 import { SlotMenu } from '@game/ui/SlotMenu';
 import { SHELL_INPUT_EVENT } from '@/shell/ShellManager';
 import { VESPERHOLM_GRAPH } from '@game/data/world/graph';
@@ -117,6 +118,9 @@ export class TitleScene extends Phaser.Scene {
       [
         { label: 'NEW GAME', value: 'new' },
         { label: 'CONTINUE', value: 'continue', enabled: occupied > 0 },
+        // A journey can be resumed from a backup FILE as readily as from this
+        // browser — the answer to a cleared cache or a move to a new device.
+        { label: 'LOAD FILE', value: 'file' },
         { label: 'SETTINGS', value: 'settings' },
       ],
       { x: GAME_WIDTH / 2 - 44, y: MENU_Y, width: 88, cancellable: false, sfx: this.sfx },
@@ -130,6 +134,8 @@ export class TitleScene extends Phaser.Scene {
       await this.handleNewGame(slots);
     } else if (choice === 'continue' && occupied > 0) {
       await this.handleContinue(slots);
+    } else if (choice === 'file') {
+      await this.handleLoadFile(slots);
     } else if (choice === 'settings') {
       await new SettingsMenu(this, {
         // Export/import operate on the ACTIVE slot via SaveManager (unchanged
@@ -199,10 +205,54 @@ export class TitleScene extends Phaser.Scene {
     this.start(this.continueData(save));
   }
 
-  /** Guard a destructive New Game when the chosen slot is occupied. */
-  private async confirmOverwrite(): Promise<boolean> {
+  /**
+   * LOAD FILE: restore a journey from an exported backup. The file is read and
+   * validated first (so a bad file costs nothing), then it lands in a slot the
+   * player picks — an occupied one asks before it's clobbered, exactly like New
+   * Game — and the world opens straight into it.
+   */
+  private async handleLoadFile(slots: (SaveGame | null)[]): Promise<void> {
+    const imported = await SaveCodec.importFromFile();
+    if (!imported) {
+      // Cancelled, unreadable, or a save from a newer build — one honest line.
+      await new DialogueBox(this, this.sfx).run([
+        { text: "No journey was loaded. Choose a PixelKin save file exported from SETTINGS — Backup / restore." },
+      ]);
+      void this.showMenu();
+      return;
+    }
+
+    const slot = await new SlotMenu(this, {
+      slots,
+      mode: 'new',
+      heading: 'LOAD FILE — CHOOSE A SLOT',
+      sfx: this.sfx,
+    }).run();
+    if (slot === null) {
+      void this.showMenu();
+      return;
+    }
+    if (
+      slots[slot] &&
+      !(await this.confirmOverwrite('Loading this file will overwrite the journey in this slot.'))
+    ) {
+      void this.showMenu();
+      return;
+    }
+
+    SaveManager.setActiveSlot(slot);
+    await SaveManager.save(imported);
+    this.activeSave = imported;
+    void this.sfx.play('ui-save');
+    this.start(this.continueData(imported));
+  }
+
+  /** Guard a destructive New Game / file load when the chosen slot is occupied. */
+  private async confirmOverwrite(
+    message = 'Starting anew will overwrite the journey in this slot.',
+  ): Promise<boolean> {
     const box = new DialogueBox(this, this.sfx);
-    await box.run([{ text: 'Starting anew will overwrite the journey in this slot.' }]);
+    await box.run([{ text: message }]);
     const choice = await new Menu(
       this,
       [
@@ -228,6 +278,7 @@ export class TitleScene extends Phaser.Scene {
       battles_won: save.battles_won,
       cooldowns: save.cooldowns,
       respawn: save.world.respawn,
+      player_name: save.player_name,
     };
   }
 

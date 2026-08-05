@@ -2917,6 +2917,40 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_dimglass_lamps",
       "hidden_when_flag": "flag:picked_dimglass_lamps"
+    },
+    {
+      "id": "egg_walker",
+      "at": {
+        "tx": 11,
+        "ty": 3
+      },
+      "facing": "down",
+      "sprite": "npc_woman",
+      "movement": "look_around",
+      "dialogue_ref": "npc.egg_hint_coast"
+    },
+    {
+      "id": "egg_netmender",
+      "at": {
+        "tx": 4,
+        "ty": 30
+      },
+      "facing": "right",
+      "sprite": "npc_old_man",
+      "movement": "static",
+      "dialogue_ref": "npc.egg_hint_flats"
+    },
+    {
+      "id": "cache_purse",
+      "at": {
+        "tx": 2,
+        "ty": 2
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_dimglass_purse",
+      "hidden_when_flag": "flag:picked_dimglass_purse"
     }
   ],
   "gates": [

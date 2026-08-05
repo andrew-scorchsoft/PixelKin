@@ -44,10 +44,7 @@ export class EncounterSystem {
 
   /** True if any tile stacked at (tx,ty) is tagged as this encounter terrain. */
   private tileHasTerrain(tx: number, ty: number, terrain: EncounterTerrain): boolean {
-    for (const gid of this.map.gidsAt(tx, ty)) {
-      if (this.map.lookupGid(gid)?.meta.encounter_terrain === terrain) return true;
-    }
-    return false;
+    return this.map.hasTerrainAt(tx, ty, terrain);
   }
 
   roll(
