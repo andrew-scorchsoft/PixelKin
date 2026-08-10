@@ -83,6 +83,7 @@ class ShellManagerImpl {
   private rotateHintEl: HTMLDivElement | null = null;
   private fsToggleEl: HTMLDivElement | null = null;
   private restoreEl: HTMLDivElement | null = null;
+  private helpEl: HTMLDivElement | null = null;
   private autoFsTried = false;
   private readonly listeners = new Set<ActionListener>();
   private readonly held = new Set<ShellAction>();
@@ -179,8 +180,103 @@ class ShellManagerImpl {
     this.ensureRotateHint();
     this.ensureFullscreenToggle();
     this.ensureRestoreButton();
+    this.ensureControlsHelp();
     this.applyControlsVisibility();
     this.updateRestoreVisibility();
+  }
+
+  // ----------------------------------------------------------- controls help --
+
+  /**
+   * A small "Controls" link pinned at the bottom, with an overlay panel that
+   * explains the keyboard mapping (for desktop players) and the touch controls.
+   * Built once and always available — it lives in the dead casing space around the
+   * 240×160 screen, so it never overlaps the game. Mirrors `KEY_HINTS`.
+   */
+  private ensureControlsHelp(): void {
+    if (this.helpEl) return;
+    const link = document.createElement('div');
+    link.className = 'pk-controls-help';
+    link.setAttribute('role', 'button');
+    link.setAttribute('aria-label', 'How the controls work');
+    link.title = 'How the controls work';
+    link.textContent = '⌨ Controls';
+
+    const overlay = this.buildControlsHelpOverlay();
+    link.addEventListener('pointerup', (e) => {
+      e.preventDefault();
+      overlay.classList.add('pk-open');
+    });
+    link.addEventListener('contextmenu', (e) => e.preventDefault());
+
+    document.body.appendChild(link);
+    this.helpEl = link;
+  }
+
+  /** Build (hidden) the controls-help overlay: a dim backdrop + an explanatory panel. */
+  private buildControlsHelpOverlay(): HTMLDivElement {
+    const overlay = document.createElement('div');
+    overlay.className = 'pk-help-overlay';
+
+    const panel = document.createElement('div');
+    panel.className = 'pk-help-panel';
+
+    const title = document.createElement('div');
+    title.className = 'pk-help-title';
+    title.textContent = 'CONTROLS';
+    panel.appendChild(title);
+
+    const kbHead = document.createElement('div');
+    kbHead.className = 'pk-help-head';
+    kbHead.textContent = 'Keyboard';
+    panel.appendChild(kbHead);
+
+    // The keyboard mapping, mirroring InputController's bindings / KEY_HINTS.
+    const rows: Array<[string, string]> = [
+      ['Move', '↑ ↓ ← →  or  W A S D'],
+      ['Confirm  (A)', 'Z  /  Enter  /  Space'],
+      ['Back  (B)', 'X  /  Backspace'],
+      ['Menu  (Start)', 'Esc'],
+    ];
+    for (const [label, keys] of rows) {
+      const row = document.createElement('div');
+      row.className = 'pk-help-row';
+      const l = document.createElement('span');
+      l.className = 'pk-help-key-label';
+      l.textContent = label;
+      const k = document.createElement('span');
+      k.className = 'pk-help-key';
+      k.textContent = keys;
+      row.append(l, k);
+      panel.appendChild(row);
+    }
+
+    const touch = document.createElement('div');
+    touch.className = 'pk-help-note';
+    touch.textContent =
+      'On a touch device, use the on-screen D-pad and A / B buttons; START opens the menu.';
+    panel.appendChild(touch);
+
+    const close = document.createElement('div');
+    close.className = 'pk-help-close';
+    close.setAttribute('role', 'button');
+    close.setAttribute('aria-label', 'Close');
+    close.textContent = 'CLOSE';
+    panel.appendChild(close);
+
+    const dismiss = (e: Event): void => {
+      e.preventDefault();
+      overlay.classList.remove('pk-open');
+    };
+    close.addEventListener('pointerup', dismiss);
+    // Tapping the dim backdrop (outside the panel) closes too.
+    overlay.addEventListener('pointerup', (e) => {
+      if (e.target === overlay) dismiss(e);
+    });
+
+    overlay.appendChild(panel);
+    document.body.appendChild(overlay);
+    return overlay;
   }
 
   // ---------------------------------------------------- restore-controls rescue --

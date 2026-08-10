@@ -494,3 +494,125 @@ body.pk-shell-overlay .pk-controls {
     display: inline-flex;
   }
 }
+
+/* ------------------------------------------------------------- controls help --
+   A small "Controls" link pinned at the bottom centre (in the dead casing space
+   around the screen) that opens an overlay explaining the keyboard mapping — for
+   players who'd rather use a keyboard than the on-screen buttons. Always present;
+   small + translucent so it never competes with the game. */
+.pk-controls-help {
+  position: fixed;
+  left: 50%;
+  bottom: max(env(safe-area-inset-bottom), 8px);
+  transform: translateX(-50%);
+  z-index: 6;
+  padding: 5px 12px;
+  background: rgba(11, 16, 38, 0.82);
+  border: 1px solid var(--shell-accent);
+  border-radius: 999px;
+  color: var(--shell-accent);
+  font-family: 'PixelKin', monospace;
+  font-size: 8px;
+  line-height: 1.4;
+  pointer-events: auto;
+  cursor: pointer;
+  opacity: 0.72;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none;
+}
+.pk-controls-help:active,
+.pk-controls-help:hover {
+  opacity: 1;
+}
+/* Portrait device/overlay parks START at the bottom centre, and the rescue button
+   (when controls are unavailable) sits there too — lift the help link clear of both. */
+@media (orientation: portrait) {
+  body.pk-shell-device .pk-controls-help,
+  body.pk-shell-overlay .pk-controls-help {
+    bottom: calc(max(env(safe-area-inset-bottom), 8px) + 26px * var(--pk-cs));
+  }
+}
+body.pk-controls-unavailable .pk-controls-help {
+  bottom: calc(max(env(safe-area-inset-bottom), 14px) + 40px);
+}
+
+/* The explanatory overlay (hidden until .pk-open). Dim backdrop + centred panel. */
+.pk-help-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+  background: rgba(4, 6, 18, 0.82);
+  pointer-events: auto;
+  padding: 16px;
+}
+.pk-help-overlay.pk-open {
+  display: flex;
+}
+.pk-help-panel {
+  width: min(92vw, 340px);
+  box-sizing: border-box;
+  padding: 14px 16px 12px;
+  background: var(--shell-casing);
+  border: 1px solid var(--shell-accent);
+  border-radius: 8px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.6);
+  color: #e8eefc;
+  font-family: 'PixelKin', monospace;
+}
+.pk-help-title {
+  color: var(--shell-accent);
+  font-size: 13px;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.pk-help-head {
+  color: var(--shell-accent);
+  font-size: 9px;
+  opacity: 0.85;
+  margin: 4px 0 4px;
+}
+.pk-help-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 9px;
+  line-height: 1.8;
+}
+.pk-help-key-label {
+  color: #aab6d8;
+  white-space: nowrap;
+}
+.pk-help-key {
+  color: #e8eefc;
+  text-align: right;
+}
+.pk-help-note {
+  margin-top: 10px;
+  font-size: 8px;
+  line-height: 1.7;
+  color: #aab6d8;
+}
+.pk-help-close {
+  margin-top: 12px;
+  padding: 6px 0;
+  text-align: center;
+  background: var(--shell-button);
+  border: 1px solid var(--shell-accent);
+  border-radius: 6px;
+  color: var(--shell-accent);
+  font-size: 9px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none;
+}
+.pk-help-close:active {
+  background: var(--shell-button-press);
+  color: #000;
+}
