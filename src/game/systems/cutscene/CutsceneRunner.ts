@@ -344,10 +344,14 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
   }
 }
 
-/** Run a list of steps in order (honouring each step's `if_flag`); false aborts. */
+/** Run a list of steps in order (honouring each step's `if_flag`/`unless_flag`);
+ *  false aborts. The pair lets a script express "exactly one of these" — hold
+ *  this stage's flag, but not the next one's — which is how the wayfinding
+ *  hints name a single current objective. */
 async function runSteps(ctx: CutsceneContext, steps: CutsceneStep[]): Promise<boolean> {
   for (const step of steps) {
     if (step.if_flag && !ctx.flags.get(step.if_flag)) continue;
+    if (step.unless_flag && ctx.flags.get(step.unless_flag)) continue;
     if (!(await runStep(ctx, step))) return false;
   }
   return true;

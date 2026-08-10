@@ -1732,6 +1732,17 @@
       "movement": "static",
       "dialogue_ref": "npc.oriel_epilogue",
       "requires_flag": "flag:starfall_crown"
+    },
+    {
+      "id": "andrew_road",
+      "at": {
+        "tx": 15,
+        "ty": 26
+      },
+      "facing": "down",
+      "sprite": "andrew_ward",
+      "movement": "look_around",
+      "dialogue_ref": "script.andrew_road"
     }
   ],
   "gates": [],

@@ -204,6 +204,11 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   'sign.lanternfall_hub': [
     { text: 'VESPER CROSSROADS — just below.\nWhere all the lit roads meet. The kettle\'s on at the Waystation Inn, more often than not.' },
+    // The loop closes HERE for most first-timers: they left the hub southward,
+    // walked the whole coast, and arrive back at it from the far side. Name it as
+    // the design it is (level-design §2b rule 1) so it reads as a shortcut earned
+    // rather than a wrong turn walked.
+    { text: 'Aye — you have been here before. Every road in Vesperholm comes round.\nYou have not walked in a circle; you have opened the short way home.' },
   ],
   'npc.wrackline_drifter_after': [
     { speaker: 'DRIFTER OSK', text: 'Go on, then — the cave\'s waiting. I\'ll be here, drifting. It\'s in the name.' },
@@ -682,6 +687,8 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   'npc.lanternway_keeper': [
     { speaker: 'WAYKEEPER', text: 'Every road in Vesperholm touches this stone sooner or later. I keep the lamps lit on the ones that walk.' },
+    // The come-round framing, from the one person whose whole job is the roads.
+    { speaker: 'WAYKEEPER', text: 'You will walk a long way out and come back in at a gate you know. That is not you going wrong — the valleys sit in a crescent, and the way home is never the way you went out.' },
     { speaker: 'WAYKEEPER', text: 'When more Gleams stand up in the sky, more roads wake. That is how the Lanternway has always worked.' },
     { speaker: 'WAYKEEPER', text: 'The inward road? Eight Gleams, Wayfarer. Eight. Do not hurry the dark.' },
   ],

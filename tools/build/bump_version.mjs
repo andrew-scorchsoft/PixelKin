@@ -82,16 +82,16 @@ if (patched === pkgRaw) {
 writeFileSync(PKG, patched);
 
 // src/game/version.ts — the displayed major.minor.
+// A patch bump leaves major.minor alone, so an unchanged file is expected here —
+// only a regex that doesn't MATCH means the constant has gone missing.
 const vtsRaw = readFileSync(VERSION_TS, 'utf8');
-const vtsPatched = vtsRaw.replace(
-    /(export const GAME_VERSION\s*=\s*')[^']+(')/,
-    (_all, a, b) => `${a}${gameVersion}${b}`,
-);
-if (vtsPatched === vtsRaw) {
+const GAME_VERSION_RE = /(export const GAME_VERSION\s*=\s*')[^']+(')/;
+if (!GAME_VERSION_RE.test(vtsRaw)) {
     console.error('bump_version: could not find GAME_VERSION in src/game/version.ts.');
     process.exit(1);
 }
-writeFileSync(VERSION_TS, vtsPatched);
+const vtsPatched = vtsRaw.replace(GAME_VERSION_RE, (_all, a, b) => `${a}${gameVersion}${b}`);
+if (vtsPatched !== vtsRaw) writeFileSync(VERSION_TS, vtsPatched);
 
 console.log(`bump_version: ${current} -> ${next}`);
 console.log(`  · package.json          version      = ${next}`);

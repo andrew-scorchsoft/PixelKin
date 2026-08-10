@@ -1982,6 +1982,17 @@
       "sprite": "npc_old_woman",
       "movement": "look_around",
       "dialogue_ref": "npc.egg_hint_crossroads"
+    },
+    {
+      "id": "andrew_road",
+      "at": {
+        "tx": 3,
+        "ty": 8
+      },
+      "facing": "left",
+      "sprite": "andrew_ward",
+      "movement": "look_around",
+      "dialogue_ref": "script.andrew_road"
     }
   ],
   "gates": [],

@@ -95,9 +95,14 @@ export interface LegendaryBattleStep {
  * Any step may carry `if_flag`: the step plays only while that flag is held and
  * is silently skipped otherwise — the data-level conditional for small payoffs
  * (e.g. Wren's ribbon line at Nightreach fires only on `flag:q_north_ribbon_placed`).
+ * `unless_flag` is its mirror (skipped ONCE the flag is held), matching the pair
+ * NpcPlacement/EventTrigger already carry as `requires_flag`/`hidden_when_flag`.
+ * Together they express "exactly one of these lines": guard each stage on its own
+ * flag `unless` the next stage's — how `script.andrew_hint` names a single current
+ * objective out of the whole journey.
  * Keep guarded steps OPTIONAL colour, never progression (a skipped setFlag is a bug).
  */
-export type CutsceneStep = CutsceneStepBase & { if_flag?: WorldFlag };
+export type CutsceneStep = CutsceneStepBase & { if_flag?: WorldFlag; unless_flag?: WorldFlag };
 
 /** One option in a `choice` op: a label, the branch it runs, and optional
  *  flag conditions that show/hide it. */

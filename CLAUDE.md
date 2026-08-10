@@ -959,6 +959,25 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   2026-06): the step plays only while that flag is held, silently skipped otherwise — the
   data conditional for OPTIONAL colour (Wren's ribbon payoff at Nightreach lamp 6 is the
   worked example). Never guard progression steps (a skipped setFlag/battle/giveItem is a bug).
+  **`unless_flag` is its mirror** (2026-08, skipped ONCE the flag is held — the pair
+  NpcPlacement/EventTrigger already carry as `requires_flag`/`hidden_when_flag`). The pair
+  expresses "exactly one of these": guard each stage `if_flag: <this>` + `unless_flag: <next>`.
+- **Stuck players are answered in-world by ANDREW, on a fence in every rim town** (2026-08).
+  `script.andrew_hint` is the wayfinding chain — one `say` per journey stage, each guarded
+  `if_flag: <stage>` + `unless_flag: <next stage>`, so exactly one line plays and it names the
+  CURRENT objective (compass + landmark + who to ask for; never map ids). Adding a stage means
+  splicing a line with BOTH guards set — get the pair wrong and he says nothing or says two
+  things. He's placed as `andrew_road` (same id in all 10 maps, so the `emote` actor resolves)
+  running `script.andrew_road`; the Tinderwick fence placement offers the same options.
+  The JOURNAL's **`main_wayfaring`** entry ("The Wayfaring", 8 `gleam:*` stages) is the same
+  answer in menu form — the journal used to carry side quests ONLY.
+- **"Coming Round" is a FEATURE and the world must say so.** A region is a loop, not a
+  corridor (level-design §2b r1: arriving somewhere familiar from a new direction is the
+  era's strongest beat) — but a first-timer read her full circle back to the hub as being
+  lost. The framing now lands in four places: the `coming_round` + `lanternway` LORE entries,
+  `sign.lanternfall_hub` (where the loop actually closes), the Waykeeper, and Andrew's
+  THESE ROADS. Keep new connector signage in that voice — "not a wrong turn, a shortcut
+  you've earned" — never apologise for the loop.
 - **`giveKin {kin, level}` gifts a SPECIFIC kin (no chooser)** — the gift-kin op (2026-06,
   `WorldScene.onGiveKin`): joins the party at `level`, or overflows to the Hearth (`box`) when
   the party is full, and registers in the dex. Distinct from `giveStarter` (opens StarterSelect)

@@ -259,6 +259,31 @@ sunkbell_shallows (0 rows lost on regen). All gates + all three map audits PASS 
 Still unmirrored (works on generated defaults): `spore_grotto`, `glowmoss_deep(_b1f)`,
 `cinderhead_mine`, `cinderhead_deep(_b1f/_b2f)`.
 
+### R6 — Wayfinding & progression legibility ✅ DONE (2026-08)
+
+First-timer playtest finding: the player walked a full circle, arrived back at the Vesper
+Crossroads from the far side, and read the loop as being *lost*. Diagnosis: the topology is
+correct and deliberate (level-design §2b rule 1 — the region is a loop, and arriving somewhere
+familiar from a new direction is the beat we're buying), and the level curve and gating are
+sound (`audit_region`: 47 encounter borders step ≤4; all 90 nodes unlock across 6 waves;
+`progression.mjs` PASS). What was missing was never *structure* — it was the game **saying
+what it was doing**. Three gaps, all closed as pure content + one 2-line engine guard:
+
+1. **No in-game answer to "where do I go next?"** — `script.andrew_hint`: Andrew, the fence
+   fellow from the naming beat, now leans on a fence in all ten rim towns/hubs (`andrew_road`)
+   and names the current objective. 17 journey stages, verified to fire exactly one line in
+   every state. Needed the new `unless_flag` step guard (mirror of `if_flag`).
+2. **The journal carried side quests ONLY** — nothing stated the spine, so a player returning
+   after a week had no "you are 3 of 8 along this". Added `main_wayfaring` ("The Wayfaring"),
+   stages = the eight `gleam:*`, done on `flag:dawn`. Invents no flags.
+3. **The loop was never framed as a feature** — now named in the LORE codex (`coming_round`,
+   `lanternway`), on `sign.lanternfall_hub` at the exact tile the circle closes, by the
+   Waykeeper, and in Andrew's THESE ROADS branch.
+
+Checked and found already sound (no change needed): all 18 `blocked_ref`-less gated warps are
+either return-side (the player necessarily holds the key) or covered by an adjacent sign /
+intercept band — the Tinderwick coast gate has the warden band, Gullcry and Crystoll are signed.
+
 ### R5 — Release ladder (verification, mostly cheap)
 - ✅ `npm run build` verified green (2026-06).
 - ✅ `npm run build:dist` verified green (2026-06): 195 mp3 → 64k mono, 68→27 MB audio,

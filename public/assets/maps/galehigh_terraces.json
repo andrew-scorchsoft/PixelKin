@@ -1252,6 +1252,17 @@
       "dialogue_ref": "script.post_letter_galehigh",
       "requires_flag": "flag:q_post_letters",
       "hidden_when_flag": "flag:q_post_letter_galehigh"
+    },
+    {
+      "id": "andrew_road",
+      "at": {
+        "tx": 3,
+        "ty": 14
+      },
+      "facing": "left",
+      "sprite": "andrew_ward",
+      "movement": "look_around",
+      "dialogue_ref": "script.andrew_road"
     }
   ],
   "gates": [
