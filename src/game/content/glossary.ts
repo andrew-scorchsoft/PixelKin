@@ -52,6 +52,20 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     term: 'the Hearth',
     desc: 'The warm keep where your kin rest when not in your lamp. A full lamp just means the next friend waits for you by the fire.',
   },
+  // Wayfinding — known from the first step, because it is the shape of home.
+  // A first-timer walked a full circle, arrived somewhere familiar from a new
+  // direction, and read it as being lost; it is in fact the design (the region
+  // is a loop, not a corridor — level-design.md §2b). So the world names it.
+  {
+    id: 'lanternway',
+    term: 'the Lanternway',
+    desc: 'The lit road that threads all nine valleys and knots at the Vesper Crossroads. Its spokes wake one by one as constellations relight, so the map you can walk keeps growing without ever changing shape.',
+  },
+  {
+    id: 'coming_round',
+    term: 'Coming Round',
+    desc: "The wayfarer's word for what Vesperholm does to a journey: walk far enough any way and you arrive somewhere you know, from a side you have never seen it from. It is not a wrong turn — the valleys sit in a crescent and every road bends home. You never truly backtrack here; you come round, and the way back is never the way you went out.",
+  },
   {
     id: 'skyweave',
     term: 'the Skyweave',

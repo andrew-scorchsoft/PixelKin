@@ -1297,6 +1297,17 @@
       "dialogue_ref": "script.post_letter_pale_vault",
       "requires_flag": "flag:q_post_letters",
       "hidden_when_flag": "flag:q_post_letter_pale_vault"
+    },
+    {
+      "id": "andrew_road",
+      "at": {
+        "tx": 14,
+        "ty": 26
+      },
+      "facing": "down",
+      "sprite": "andrew_ward",
+      "movement": "look_around",
+      "dialogue_ref": "script.andrew_road"
     }
   ],
   "gates": [

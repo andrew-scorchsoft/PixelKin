@@ -3323,6 +3323,17 @@
       "dialogue_ref": "npc.starfall_witness",
       "requires_flag": "flag:dawn",
       "hidden_when_flag": "flag:starfall_begun"
+    },
+    {
+      "id": "andrew_road",
+      "at": {
+        "tx": 14,
+        "ty": 27
+      },
+      "facing": "down",
+      "sprite": "andrew_ward",
+      "movement": "look_around",
+      "dialogue_ref": "script.andrew_road"
     }
   ],
   "gates": [],

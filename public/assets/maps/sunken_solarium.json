@@ -1555,6 +1555,17 @@
       "dialogue_ref": "script.post_letter_solarium",
       "requires_flag": "flag:q_post_letters",
       "hidden_when_flag": "flag:q_post_letter_solarium"
+    },
+    {
+      "id": "andrew_road",
+      "at": {
+        "tx": 28,
+        "ty": 8
+      },
+      "facing": "right",
+      "sprite": "andrew_ward",
+      "movement": "look_around",
+      "dialogue_ref": "script.andrew_road"
     }
   ],
   "gates": [

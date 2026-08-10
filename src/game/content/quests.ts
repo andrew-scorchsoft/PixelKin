@@ -28,6 +28,34 @@
 import type { QuestDef, QuestRegistry } from './types';
 
 export const QUESTS: QuestRegistry = [
+  // ===== THE MAIN JOURNEY ====================================================
+  // The journal used to carry side quests ONLY, so a player who put the game down
+  // for a week had nothing in-game telling them what the JOURNEY was — the eight
+  // Gleams live in the sky and the GLEAMS case, but nothing said "this is the
+  // spine, and you are three of eight along it". This entry is that readout, and
+  // it invents nothing: `flag:has_starter`, the eight `gleam:*` and `flag:dawn`
+  // are all set by the built journey already. Region 'south' is where it is given
+  // (Fenn, at the waystone) and sorts it to the top of the journal.
+  {
+    id: 'main_wayfaring',
+    name: 'The Wayfaring',
+    region: 'south',
+    giver: 'Star-tender Fenn',
+    blurb: 'Relight the eight constellations, one Gleam at a time, until the Skyweave Crown stands whole — then take the inward road and give Vesperholm back its morning.',
+    start_flag: 'flag:has_starter',
+    stage_flags: [
+      'gleam:ember',
+      'gleam:tide',
+      'gleam:verdant',
+      'gleam:stone',
+      'gleam:storm',
+      'gleam:frost',
+      'gleam:solar',
+      'gleam:lunar',
+    ],
+    done_flag: 'flag:dawn',
+  },
+
   // ===== SOUTH ===============================================================
   {
     id: 's1_last_buoy',

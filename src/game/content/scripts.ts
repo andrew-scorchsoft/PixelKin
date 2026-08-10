@@ -4032,6 +4032,10 @@ export const SCRIPTS: ScriptRegistry = {
       speaker: 'ANDREW',
       prompt: 'Still out here, {name}. Somebody has to hold the fence up. Anything I can do you for?',
       options: [
+        // The wayfinding pair — same two Andrew offers on every road (see
+        // `script.andrew_road`), so the fence you met him at answers them too.
+        { label: 'WHERE NEXT?', ops: [{ op: 'run', ref: 'script.andrew_hint' }] },
+        { label: 'THESE ROADS', ops: [{ op: 'run', ref: 'script.andrew_roads' }] },
         {
           label: 'THE EASTER EGG',
           ops: [
@@ -4060,6 +4064,141 @@ export const SCRIPTS: ScriptRegistry = {
           label: 'NOTHING',
           ops: [{ op: 'say', speaker: 'ANDREW', text: 'Right you are. Mind how you go — and mind the dark.' }],
         },
+      ],
+    },
+  ],
+
+  // ---------------------------------------------------------------------------
+  // ANDREW ON THE ROAD — the wayfinding hint.
+  //
+  // He turns up leaning on a fence in every town on the rim, and answers the one
+  // question a stuck player actually has: *where am I supposed to go next?*
+  //
+  // `script.andrew_hint` is a single chain of `say` steps, each guarded
+  // `if_flag: <this stage>` + `unless_flag: <the next stage>`, so EXACTLY ONE of
+  // them plays — the one naming the objective the player is actually on. Adding a
+  // stage means splicing a line in with both guards set; get the pair wrong and
+  // he either says nothing or says two things, which is the whole test.
+  //
+  // Direction is given the way a person gives it — compass, landmark, and the
+  // name of who to ask for — never map ids or menu instructions.
+  // ---------------------------------------------------------------------------
+  'script.andrew_hint': [
+    // --- The opening errand (before the lamp and the first kin). --------------
+    {
+      op: 'say', unless_flag: 'flag:fenn_errand', speaker: 'ANDREW',
+      text: 'Star-tender Fenn. He\'s out at the Vesper Crossroads waystone — east up the Lanternway, past the north gate. Been stood there two days asking after you. Go and be asked after.',
+    },
+    {
+      op: 'say', if_flag: 'flag:fenn_errand', unless_flag: 'flag:has_satchel', speaker: 'ANDREW',
+      text: 'His satchel, wasn\'t it. It\'s still sat on the counter in our shop here in Tinderwick — has been all week. Ask the keeper; he\'ll not part with it quietly, mind.',
+    },
+    {
+      op: 'say', if_flag: 'flag:has_satchel', unless_flag: 'flag:has_starter', speaker: 'ANDREW',
+      text: 'You\'ve got it — so take it BACK to him at the waystone. That\'s where your lamp is waiting. And your first friend, if I know Fenn at all.',
+    },
+
+    // --- The Ember loop: catch → Brisa → the wick → the Beacon. ---------------
+    {
+      op: 'say', if_flag: 'flag:has_starter', unless_flag: 'flag:caught_first_kin', speaker: 'ANDREW',
+      text: 'Now you go and catch one. Any verge grass on the way out of town will do it. Brisa won\'t hold a bond-test for someone turning up with one kin and a hopeful expression.',
+    },
+    {
+      op: 'say', if_flag: 'flag:caught_first_kin', unless_flag: 'flag:beacon_quest', speaker: 'ANDREW',
+      text: 'Up to the Lumenary and see Brisa Tallow — she keeps the Ember. She\'ll have an errand for you first. She always has an errand first.',
+    },
+    {
+      op: 'say', if_flag: 'flag:beacon_quest', unless_flag: 'flag:has_beacon_wick', speaker: 'ANDREW',
+      text: 'The old Beacon wants its wick-key, and the lamplighter down on the Dimglass Coast has it. South out of town, follow the cliff path down. You can\'t miss her — she\'s the only lit thing on that road.',
+    },
+    {
+      op: 'say', if_flag: 'flag:has_beacon_wick', unless_flag: 'gleam:ember', speaker: 'ANDREW',
+      text: 'You\'ve the wick, so it\'s up the Beacon on the bluff — all the way to the lantern room at the top. The keepers on the stairs will each want a battle out of you on the way.',
+    },
+
+    // --- The eight Gleams, in journey order. ----------------------------------
+    {
+      op: 'say', if_flag: 'gleam:ember', unless_flag: 'gleam:tide', speaker: 'ANDREW',
+      text: 'South now. Down the coast, over the tidal flats, and keep going until the road runs out of land — that\'s Pearlmoor Quay. Reyl Wash keeps the Tide there.',
+    },
+    {
+      op: 'say', if_flag: 'gleam:tide', unless_flag: 'gleam:verdant', speaker: 'ANDREW',
+      text: 'East out of Pearlmoor on the fen road. Tidecall will walk you over the deep channels that stopped you before. Lowleaf Hollow\'s at the far end — ask for Sable Quill.',
+    },
+    {
+      op: 'say', if_flag: 'gleam:verdant', unless_flag: 'gleam:stone', speaker: 'ANDREW',
+      text: 'Into the deep wood behind Lowleaf — Glimmerstep opens that dark now — and out the far side at Cinderhead Mine. Otho Grist has the Stone. Honest word: he WILL flatten you. Go down into the deep galleries first and come back a few levels heavier.',
+    },
+    {
+      op: 'say', if_flag: 'gleam:stone', unless_flag: 'gleam:storm', speaker: 'ANDREW',
+      text: 'Back through the mine and out the deep\'s far door. It lets out under the Galehigh Terraces — all wind and washing-lines. Mira Vael has the Storm up there.',
+    },
+    {
+      op: 'say', if_flag: 'gleam:storm', unless_flag: 'gleam:frost', speaker: 'ANDREW',
+      text: 'Up the Windward Stair. The Kite gets you past the high crags now — and over the top of them is the Pale Vault Glacier. Ysolde Frost. Wrap up.',
+    },
+    {
+      op: 'say', if_flag: 'gleam:frost', unless_flag: 'gleam:solar', speaker: 'ANDREW',
+      text: 'West through Hushfrost Pass. There\'s a throat of coldfog in it that nothing gets through without Emberward — and you\'ve got Emberward. The Sunken Solarium\'s beyond it. Lucan Pyre.',
+    },
+    {
+      op: 'say', if_flag: 'gleam:solar', unless_flag: 'gleam:lunar', speaker: 'ANDREW',
+      text: 'Up the Sunvault Climb — Sunsketch blooms the vine bridges as you go. Nightreach Observatory sits at the top of it. Nessa Cole, the Lunar. That\'s your eighth, if you\'re counting. I\'m counting.',
+    },
+
+    // --- The Crown, the Spire, and after. -------------------------------------
+    {
+      op: 'say', if_flag: 'gleam:lunar', unless_flag: 'flag:keystar_relit', speaker: 'ANDREW',
+      text: 'Eight. The Crown\'s whole, and the Penumbra\'s parted for you. Back to the Vesper Crossroads and take the inward road. The Spire\'s been waiting the whole time, and it isn\'t a patient sort of waiting.',
+    },
+    {
+      op: 'say', if_flag: 'flag:keystar_relit', unless_flag: 'flag:dawn', speaker: 'ANDREW',
+      text: 'The Keystar\'s lit. Whatever\'s coming next is coming on its own — stand still and let it.',
+    },
+    {
+      op: 'say', if_flag: 'flag:dawn', speaker: 'ANDREW',
+      text: 'Next? Nothing. Nothing at all, {name}. Look UP. Then walk down to Dawnstead and see what the valley looks like with the morning on it — I\'ll be along presently, once I\'ve finished looking.',
+    },
+  ],
+
+  // Why the roads bring you back where you started — the shape of Vesperholm,
+  // told as a virtue instead of a wrong turn. (Playtest: a first-timer walked a
+  // full circle, arrived somewhere familiar from a new direction, and read it as
+  // being lost. It is in fact the design — level-design.md §2b rule 1 — so the
+  // world now says so out loud, here and in the LORE codex.)
+  'script.andrew_roads': [
+    { op: 'say', speaker: 'ANDREW', text: 'Ha! You\'ve noticed, then. Walk far enough in any direction here and you come out somewhere you\'ve already been.' },
+    { op: 'say', speaker: 'ANDREW', text: 'That\'s not you getting turned around. That\'s the shape of the place. The valleys sit in a crescent, and the Lanternway threads them like beads on a string — every road bends back to the Crossroads sooner or later.' },
+    { op: 'say', speaker: 'ANDREW', text: 'The old wayfarers made a virtue of it. You never really backtrack in Vesperholm — you come ROUND. And the way home from somewhere is never the way you went out to it.' },
+    { op: 'say', speaker: 'ANDREW', text: 'So when a road drops you at a gate you know: that\'s not a wrong turn, that\'s a shortcut you\'ve just earned. Take the win.' },
+  ],
+
+  // The road placements (id `andrew_road` in every map that carries one, so the
+  // emote resolves wherever he's standing).
+  'script.andrew_road': [
+    { op: 'emote', actor: 'andrew_road', emote: 'alert' },
+    {
+      op: 'say', unless_flag: 'flag:met_andrew', speaker: 'ANDREW',
+      text: 'Hullo! We\'ve not been introduced — Andrew. I hold fences up. There\'s one back in Tinderwick with my name on it, if you\'re ever passing and fancy telling me yours.',
+    },
+    {
+      op: 'say', if_flag: 'flag:met_andrew', speaker: 'ANDREW',
+      text: 'There you are, {name}. Don\'t look so surprised — somebody has to hold the fences up out here as well.',
+    },
+    {
+      op: 'choice',
+      speaker: 'ANDREW',
+      prompt: 'Anything I can do you for?',
+      options: [
+        { label: 'WHERE NEXT?', ops: [{ op: 'run', ref: 'script.andrew_hint' }] },
+        { label: 'THESE ROADS', ops: [{ op: 'run', ref: 'script.andrew_roads' }] },
+        {
+          label: 'THE EASTER EGG',
+          ops: [
+            { op: 'say', speaker: 'ANDREW', text: 'Still out there, still not me. South, is the word — past the flats, the town on the water. A building at the top of the quay, and an old man nobody will explain properly.' },
+          ],
+        },
+        { label: 'NOTHING', ops: [{ op: 'say', speaker: 'ANDREW', text: 'Right you are. Mind how you go — and mind the dark.' }] },
       ],
     },
   ],

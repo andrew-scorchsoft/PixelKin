@@ -322,6 +322,15 @@ borders, topology, leg lengths) — run it after ANY warp/table/graph change.
    the way it came in is a corridor at scene scale. The era's strongest beat
    is **arriving somewhere familiar from a new direction** — stage at least
    one per act (the Lanternway spokes exist for this).
+   **Say it, or it reads as being lost (2026-08, playtest-driven, binding).** A
+   first-timer walked the South loop, re-entered the hub from the far side, and
+   took the circle for a wrong turn. The beat only lands if the world *names*
+   it: wherever a loop visibly closes, carry a line in the "you have not walked
+   in a circle, you have opened the short way home" voice — a sign on the
+   closing tile, or the local road-keeper. Canon term: **Coming Round** (LORE
+   codex); `sign.lanternfall_hub` and Andrew's THESE ROADS branch are the
+   worked examples. Never apologise for the loop or signpost it as a detour —
+   it is the shortcut being earned.
 2. **Return compressors escalate in scale**: ledge hop (within a map) →
    flag-opened shortcut (within a region: the sealed door opened from the far
    side) → cross-region re-link (the late `shortcut_*` edges) → the Lanternway
