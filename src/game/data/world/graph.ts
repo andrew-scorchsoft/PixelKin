@@ -89,6 +89,8 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'pearlmoor_shop', region: 'south' }, // interior: the port chandlery
     { map_id: 'pearlmoor_inn', region: 'south' }, // interior: the quayside inn
     { map_id: 'pearlmoor_lifting_house', region: 'south', optional: true, reward: 'the Lifting House — the Booji-Wooji Man side quest' },
+    { map_id: 'pearlmoor_allotment', region: 'south', optional: true, reward: 'Rod & Anth\'s plot + the waystone (S5 Not All Who Wander)' },
+    { map_id: 'pearlmoor_wanderwood', region: 'south', optional: true, reward: 'S5: Paul\'s wood — the Chickenpig vs Omenire, and the cup' },
     // ---- East: Saltreach Fen (2 segments) -> Lowleaf forest -> Cinderhead cave -------
     { map_id: 'saltreach_fen_i', region: 'east' }, // route: open marsh
     { map_id: 'saltreach_fen_ii', region: 'east' }, // route: deep channels
@@ -192,6 +194,10 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // The Causeway Bell: the moor-gate opens with the netmender's rope (the
     // earned second-Gleam loop; Reyl's bond-test waits on flag:q_south_bell_rung).
     { from_map: 'pearlmoor_quay', to_map: 'pearlmoor_breakwater', via_warp: 'to_breakwater', requires_flag: 'flag:q_south_has_rope', bidirectional: true },
+    // S5: the hill path behind the quay (always open) -> the waystone, whose
+    // last word (typed) parts the trees into Paul's wood.
+    { from_map: 'pearlmoor_quay', to_map: 'pearlmoor_allotment', via_warp: 'to_allotment', bidirectional: true },
+    { from_map: 'pearlmoor_allotment', to_map: 'pearlmoor_wanderwood', via_warp: 'to_wood', requires_flag: 'flag:q_south_wander_word', bidirectional: true },
 
     // ---- Main rim, clockwise: town -> route segment -> ... -> town -------------------
     { from_map: 'tinderwick', to_map: 'dimglass_coast', via_warp: 'to_coast', bidirectional: true },

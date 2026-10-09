@@ -27,6 +27,7 @@ import {
   setBattlePace,
   setMusicVolume,
   setSfxVolume,
+  setCannotDie,
 } from '@game/ui/preferences';
 
 /** The abstract directional/button actions the on-screen controls emit. */
@@ -97,6 +98,7 @@ class ShellManagerImpl {
     setBattlePace(this.settings.battlePace ?? 'cosy');
     setMusicVolume(this.settings.musicVolume ?? 'full');
     setSfxVolume(this.settings.sfxVolume ?? 'full');
+    setCannotDie(this.settings.cannotDie ?? false);
     this.applyControlSize();
     this.render();
   }

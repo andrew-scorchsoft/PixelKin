@@ -125,3 +125,15 @@ export async function battleSwoosh(scene: Phaser.Scene, ms: number = theme.trans
   await flash(scene, Math.min(160, ms / 2));
   await fadeOut(scene, ms / 2);
 }
+
+/**
+ * Lift any lingering cinematic dressing (letterbox bars, colour wash). A scene
+ * that ENDS EARLY — a lost battle under cannot-die, a cooldown/missing-kin
+ * bail-out — never reaches its own `letterbox off`/`tint 0` steps, and with no
+ * map reload to sweep them away the world would stay barred and dimmed.
+ * No-op for effects that were never created.
+ */
+export function clearCinematicFx(scene: Phaser.Scene, ms = 250): void {
+  if (scene.data.get(LETTERBOX_KEY)) void letterbox(scene, false, ms);
+  if (scene.data.get(TINT_KEY)) void tint(scene, 0x000000, 0, ms);
+}

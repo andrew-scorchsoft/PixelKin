@@ -501,6 +501,41 @@ netmender's keeping.
      `chickenpig_catch` tile (8,26)) and a return-nudge in `script.booji_andy_done`
      ("go back out to him… he keeps queer company out at that dark lamp"). Rod/Andrew in
      the Lifting House seed it earlier. The lamp Paul keeps dark stays dark — no flag swap.
+     **First-meeting offer (2026-10):** `script.booji_paul` now ENDS by pointing at the
+     bird-pig with a plain *Wake it now / Later* choice ("Later" names the lamp as where it
+     waits). The catch is re-offered forever — Paul's lamp menu ("Wake the bird-pig") and
+     the lamp-foot step triggers — and a failed catch is only a 2-battle cooldown, so the
+     Chickenpig can never be missed. The lamp-foot step triggers wait for `flag:q_south_booji_done`
+     (Andy's report-back) so they never contradict a "Later" picked a moment before. It is NEVER gifted (not even to a player named Paul):
+     doing S4 is the only way to it, and S5 needs it.
+   - **S5 "Not All Who Wander"** — **[BUILT 2026-10]** Paul's second story, the S4 sequel.
+     **Gate:** only Paul's lamp menu opens it, so it needs S4's fight (`flag:q_south_booji_met`)
+     AND the Chickenpig caught (`flag:chickenpig_caught`; before the catch "Ever get lost?"
+     answers `script.wander_paul_not_yet` — "ask me again when that bird-pig's in your lamp").
+     **Steps:** Paul's lamp menu → **"Ever get lost?"** (`script.wander_paul_hint`: he starts
+     *"Not all those who wander are…"*, won't finish it, points up the hill past Rod's
+     allotment, and walks off; `flag:q_south_wander`; a "GONE WANDERING. NOT LOST. — P." note
+     hangs on the dark lamp meanwhile) → the north gap behind the quay (cols 17-18, between the
+     Lumenary and the Lifting House) → **`pearlmoor_allotment`** (Rod & Anth's plot; Anth's three
+     stages; a potting-bench cache; the lichened **waystone**) → the waystone asks for the last
+     word (`script.wander_stone`, `askName store:false`) — typing **LOST** sets
+     `flag:q_south_wander_word` and parts the trees (wrong words get a patient, retryable line) →
+     **`pearlmoor_wanderwood`** (two arms wind round a central mass to the glade — the
+     "Coming Round" theme as a map; four carved story trees = Abdul's "four stories, all true";
+     Wanderer Hob, who is NOT lost; a cache on the dead-end "short cut"; tall grass lv 14-17 — the
+     S4 band, a ≤4 step off Pearlmoor's 8-12 — with Spirlet the rare find) → the glade (`script.wander_glade`): the stillness-omen **Omenire
+     (#113, lv 17 — sim-tuned: a fresh lv-16 Chickenpig wins solo; Omenire's spe 103 makes each
+     level above that a cliff)** comes for Paul; the **Chickenpig is forced to lead** (`setLead`; a player
+     without it in the party is told to bring it, rested) and the fight can't be caught or fled
+     (`bossBattle`; your own lead order is restored after the fight) → the Chickenpig crows the glade lamp alight (`flag:q_south_wander_lamp`,
+     dark→lit object swap) → **the cup** at last ("That's the cup. The night? Still working on
+     that.") · reward: **Paul's Tin Cup** (key) + 3 Lumen Drops · done: `flag:q_south_wander_done`
+     (Paul returns to his lamp; Andy and Anth get after-lines; Andrew's easter-egg answer and Rod
+     both point up the hill while it's active). The Registry story stays unconfirmed. **The
+     waystone quotes Tolkien's line verbatim — the owner's deliberate call, the one sanctioned
+     exception to VISION.md's all-original rule; don't "fix" it.** Builders:
+     `tools/maps/build_pearlmoor_allotment.py`, `build_pearlmoor_wanderwood.py` (the quay's
+     north gap + the breakwater's note/Paul stages were applied surgically to the shipped JSON).
    - **R1 "Wicks for the Lamplighter"** — the Waykeeper's Round, leg 1 (live now): parcel
      from the **Waykeeper** (`vesper_crossroads`) → the **old lamplighter** (Dimglass I) ·
      flags: `flag:q_round_lamplighter` · reward: bright-lamp kit · `[wakes with spoke]`

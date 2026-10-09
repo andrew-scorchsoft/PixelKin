@@ -284,6 +284,17 @@ Checked and found already sound (no change needed): all 18 `blocked_ref`-less ga
 either return-side (the player necessarily holds the key) or covered by an adjacent sign /
 intercept band — the Tinderwick coast gate has the warden band, Gullcry and Crystoll are signed.
 
+### R7 — S5 "Not All Who Wander" + Cannot-die mode ✅ DONE (2026-10)
+
+Paul's second story (spec: `01-south.md` S5): the quay's north gap → `pearlmoor_allotment`
+(the waystone; type LOST) → `pearlmoor_wanderwood` (the looping wood, four story trees, the
+glade) → the Chickenpig leads against Omenire → the cup. Gated behind S4's fight AND the
+Chickenpig catch; S4's first meeting now ends on an explicit *Wake it now / Later* offer so the
+Chickenpig can't be missed. New reusable ops: `askName store:false`, `setLead`, `bossBattle`.
+Also: Settings → **Cannot die** (blackout heals in place). Verified by a scripted Chromium
+playtest of every path (hint → note → wrong word → LOST → wood → boss win / missing-kin /
+cannot-die loss → cup) + all map audits + the four balance gates.
+
 ### R5 — Release ladder (verification, mostly cheap)
 - ✅ `npm run build` verified green (2026-06).
 - ✅ `npm run build:dist` verified green (2026-06): 195 mp3 → 64k mono, 68→27 MB audio,

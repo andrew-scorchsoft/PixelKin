@@ -700,6 +700,25 @@ D1_OBTAINABILITY_ENCOUNTERS = {
 for _slug, _rows in D1_OBTAINABILITY_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows)
 
+# S5 "Not All Who Wander" (2026-10): the Wanderwood above Pearlmoor — mirrors
+# of the BUILT in-map tall-grass table (public/assets/maps/pearlmoor_wanderwood
+# .json; tools/maps/build_pearlmoor_wanderwood.py is the source): the night band
+# + its flag:dawn day twin. Spirlet (Omenire's line's first stage) is the rare find.
+WANDERWOOD_ENCOUNTERS = {
+    "sporeling": [{"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "common", "min": 14, "max": 16},
+                  {"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 58}],
+    "barkhelm":  [{"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "common", "min": 14, "max": 16},
+                  {"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 59}],
+    "mossglow":  [{"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "common", "min": 15, "max": 17},
+                  {"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 60}],
+    "snoozlet":  [{"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "uncommon", "min": 15, "max": 17},
+                  {"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 60}],
+    "spirlet":   [{"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "rare", "min": 15, "max": 17},
+                  {"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 61}],
+}
+for _slug, _rows in WANDERWOOD_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows)
+
 # Areas whose encounter tables are BUILT into the map JSONs (the in-map zones
 # are the truth, mirrored above). Generated region defaults — and stale rows
 # carried in the previous per-species files — must not claim these areas:
@@ -739,6 +758,8 @@ CURATED_AREAS = {
     # mirrored above), and the Spire's F2 gained the Skyweavelet bed.
     "spore_grotto", "cinderhead_mine", "cinderhead_deep",
     "cinderhead_deep_b1f", "cinderhead_deep_b2f", "umbral_spire_f2",
+    # S5 (2026-10): Paul's wood above Pearlmoor (mirrored above, WANDERWOOD).
+    "pearlmoor_wanderwood",
 }
 
 # Kin that are FIXED quest catches (a legendaryBattle set-piece), even though

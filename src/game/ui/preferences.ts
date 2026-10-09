@@ -16,6 +16,7 @@ let alwaysRun = false;
 let battlePace: BattlePace = 'cosy';
 let musicVolume: VolumeLevel = 'full';
 let sfxVolume: VolumeLevel = 'full';
+let cannotDie = false;
 
 /** OFF/LOW/MID/FULL -> 0/0.33/0.66/1. */
 const VOLUME_GAIN: Record<VolumeLevel, number> = {
@@ -55,6 +56,17 @@ export function setAlwaysRun(on: boolean): void {
 
 export function getAlwaysRun(): boolean {
   return alwaysRun;
+}
+
+// ---------------------------------------------------------------- cannot die --
+
+/** Cannot-die mode: WorldScene.blackout heals in place instead of sending you home. */
+export function setCannotDie(on: boolean): void {
+  cannotDie = on;
+}
+
+export function getCannotDie(): boolean {
+  return cannotDie;
 }
 
 // ----------------------------------------------------------------- battle pace --

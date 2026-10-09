@@ -414,6 +414,25 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'PAUL', text: 'The Registry business? We\'ll talk about it over a cup of something. Some night.' },
     { op: 'narrate', text: 'You are fairly sure there will never be a cup. You are fairly sure that is the point.' },
     { op: 'setFlag', flag: 'flag:q_south_booji_met' },
+    // The Chickenpig is the S4 payoff and must never be missed: the first meeting
+    // ends by pointing straight at it, with a plain now-or-later offer. "Later"
+    // says exactly where it waits (the lamp menu + the lamp's foot re-offer it
+    // forever; a failed catch is only a short battles-won cooldown).
+    { op: 'say', speaker: 'PAUL', text: 'Oh — and the bird-pig. It\'s at the lamp\'s foot, pretending to sleep. It isn\'t mine. I rather think it\'s waiting to be somebody\'s.' },
+    {
+      op: 'choice',
+      speaker: 'PAUL',
+      prompt: 'Want to try waking it?',
+      options: [
+        { label: 'Wake it now', ops: [{ op: 'run', ref: 'script.booji_chickenpig' }] },
+        {
+          label: 'Later',
+          ops: [
+            { op: 'say', speaker: 'PAUL', text: 'It\'ll keep. It\'s kept this long. Come and find me at this lamp whenever you\'re ready — it\'ll be here, and so will I.' },
+          ],
+        },
+      ],
+    },
   ],
   // Paul's friendly REMATCH (the wren_rematch pattern): once you've met him,
   // talking to Paul at the dark lamp re-runs this bout, forever, never forced.
@@ -455,12 +474,131 @@ export const SCRIPTS: ScriptRegistry = {
           if_flag: 'flag:chickenpig_caught',
           ops: [{ op: 'run', ref: 'script.booji_paul_rematch_post' }],
         },
+        // S5 "Not All Who Wander": only ever reachable from HERE, so the quest
+        // can't open before you've fought Paul — and it wants the bird-pig along.
+        {
+          label: 'Ever get lost?',
+          unless_flag: 'flag:chickenpig_caught',
+          ops: [{ op: 'run', ref: 'script.wander_paul_not_yet' }],
+        },
+        {
+          label: 'Ever get lost?',
+          if_flag: 'flag:chickenpig_caught',
+          unless_flag: 'flag:q_south_wander',
+          ops: [{ op: 'run', ref: 'script.wander_paul_hint' }],
+        },
         {
           label: 'Step away',
           ops: [{ op: 'say', speaker: 'PAUL', text: 'Aye. The dark keeps the bench warm. Mind how you go.' }],
         },
       ],
     },
+  ],
+
+  // ---------------------------------------------------------------------------
+  // S5 "Not All Who Wander" — Paul's second story (post-S4, needs the Chickenpig).
+  //
+  // Paul walks a wood up the hill behind the quay, past Rod's allotment. Its
+  // waystone carries a famous line with the last word worn away; typing it
+  // (askName store:false) parts the trees. In the glade the stillness-omen
+  // Omenire comes for the old man and the Chickenpig — the one kin that still
+  // believes in morning — leads the fight (setLead + bossBattle). The payoff is
+  // the long-promised CUP. The Registry story stays unconfirmed. Ever.
+  //
+  // NOTE: the waystone quotes J.R.R. Tolkien's "Not all those who wander are
+  // lost" VERBATIM. That is the owner's deliberate call (the reference IS the
+  // point); it is the one sanctioned exception to VISION.md's all-original-text
+  // rule. Don't "fix" it into an original line.
+  // ---------------------------------------------------------------------------
+  'script.wander_paul_not_yet': [
+    { op: 'say', speaker: 'PAUL', text: 'Lost? Never. Wandered? Constantly. There\'s a wood I walk, when the quay gets loud.' },
+    { op: 'say', speaker: 'PAUL', text: 'Ask me again when that bird-pig\'s in your lamp. Where I walk, it\'ll want to come. Don\'t ask me how I know. I just do.' },
+  ],
+  'script.wander_paul_hint': [
+    { op: 'say', speaker: 'PAUL', text: 'Lost? Never. Wandered? Every chance I get. Here — you\'ll know this one. Everyone does.' },
+    { op: 'say', speaker: 'PAUL', text: '"Not all those who wander are..."' },
+    { op: 'narrate', text: 'He stops. He waits. He very obviously isn\'t going to finish it.' },
+    { op: 'say', speaker: 'PAUL', text: 'Ha. No — don\'t tell ME. Tell the stone. Up the hill behind the quay, past Rod\'s allotment, there\'s an old wood with a waystone at its mouth. It\'s been waiting on that last word longer than I\'ve been old.' },
+    { op: 'say', speaker: 'PAUL', text: 'Say it right and the trees will let you by. Bring the bird-pig. I\'ll see you in the middle.' },
+    { op: 'sfx', key: 'world-door-open' },
+    { op: 'narrate', text: 'He tips an imaginary cap, steps round you, and is away up the boards at a pace no eighty-something has any business keeping.' },
+    { op: 'setFlag', flag: 'flag:q_south_wander' },
+  ],
+  // The waystone at the wood's mouth (pearlmoor_allotment). Readable any time —
+  // before the quest it's a tease; once Paul has sent you, it asks for the word.
+  'script.wander_stone': [
+    { op: 'narrate', text: 'An old waystone, furred with lichen. Words are cut deep into its face, as if somebody wanted them to outlast the person who cut them:' },
+    { op: 'narrate', text: 'NOT ALL THOSE WHO WANDER ARE ____' },
+    { op: 'narrate', unless_flag: 'flag:q_south_wander', text: 'The last word has been worn away by a great many hands. Behind the stone, the trees stand very close together, as if waiting.' },
+    { op: 'narrate', if_flag: 'flag:q_south_wander_open', text: 'The trees behind the stone stand apart now. The path through them is open.' },
+    { op: 'narrate', if_flag: 'flag:q_south_wander', unless_flag: 'flag:q_south_wander_word', text: 'The last word is worn smooth. Paul said to tell the stone. You put your hand to it.' },
+    {
+      op: 'askName',
+      if_flag: 'flag:q_south_wander',
+      unless_flag: 'flag:q_south_wander_word',
+      title: 'THE LAST WORD',
+      fallback: '...',
+      store: false,
+      matches: [{ value: 'LOST', flag: 'flag:q_south_wander_word' }],
+    },
+    // Wrong word: gentle, retryable forever (the step guards key off the flag the
+    // askName match would have set, so exactly one tail plays).
+    { op: 'narrate', if_flag: 'flag:q_south_wander', unless_flag: 'flag:q_south_wander_word', text: 'Nothing. The stone is patient. It has been patient for a very long time. (Paul started the line for you. How does it end?)' },
+    // Right word, first time: the trees part (once — re-reads take the
+    // "stand apart now" line above instead).
+    { op: 'run', if_flag: 'flag:q_south_wander_word', unless_flag: 'flag:q_south_wander_open', ref: 'script.wander_trees_part' },
+    { op: 'setFlag', if_flag: 'flag:q_south_wander_word', flag: 'flag:q_south_wander_open' },
+  ],
+  // The trees part — split out so it plays once, right after the right word.
+  'script.wander_trees_part': [
+    { op: 'sfx', key: 'world-door-open' },
+    { op: 'shake', ms: 400, intensity: 0.002 },
+    { op: 'narrate', text: '...LOST. The word settles into the stone like a key into a lock. Behind it, with a long, slow creak of old wood, the trees lean apart.' },
+  ],
+  // Paul in the glade: the duel and the cup. Re-runnable until won (a wipe is
+  // the ordinary blackout; Paul just waits). setLead comes FIRST, so a player
+  // who rested the Chickenpig in the Hearth is told before anything plays.
+  'script.wander_glade': [
+    { op: 'setLead', kin: 163, missingRef: 'npc.wander_chickenpig_missing' },
+    { op: 'narrate', text: 'At the heart of the wood the trees open on a ring of soft grass around one enormous old tree. An unlit lamp leans at its foot. Paul sits on a root as if it grew there for him.' },
+    { op: 'say', speaker: 'PAUL', text: '{name}. You found the last word, then. Most folk say it like an apology. It isn\'t one.' },
+    { op: 'say', speaker: 'PAUL', text: 'Not all those who wander are lost. Sixty-odd years I\'ve been coming up here to not be lost in. Read my trees on the way? All true. Don\'t ask me how.' },
+    { op: 'say', speaker: 'PAUL', text: 'Now. I\'ve brought the cup. Andy\'s been owed a cup of something for two years and I thought — ...Ah.' },
+    { op: 'musicFade', ms: 900 },
+    { op: 'silence', ms: 700 },
+    { op: 'letterbox', on: true, ms: 500 },
+    { op: 'tint', color: '#0b0820', alpha: 0.55, ms: 1200 },
+    { op: 'narrate', text: 'The glade goes still. Not quiet — STILL, the way a held breath is still. Above the old tree the stars go out one by one, swallowed by a slow black disc ringed in cold silver.' },
+    { op: 'say', speaker: 'PAUL', text: 'Omenire. The omen of everything going still. It comes up here when somebody finally stops wandering. ...I think it\'s come for me.' },
+    { op: 'say', speaker: 'PAUL', text: 'Doesn\'t want to hurt anyone. It just wants it all to STOP. Morning included. Forever, if it can manage.' },
+    { op: 'shake', ms: 500, intensity: 0.004 },
+    { op: 'narrate', text: 'From your lamp comes a furious, muffled crowing — and then the Chickenpig is OUT, wings flared, comb blazing, planted squarely between the old man and the dark.' },
+    { op: 'say', speaker: 'PAUL', text: 'HA! Of course you are. Go on then, rooster. Tell it what you think of stillness.' },
+    { op: 'letterbox', on: false, ms: 300 },
+    { op: 'bossBattle', kin: 113, level: 17 },
+    { op: 'tint', color: '#ffe9a8', alpha: 0.35, ms: 600 },
+    { op: 'narrate', text: 'The black disc shivers, thins, and comes apart into ordinary night. The Chickenpig throws back its head and CROWS.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'setFlag', flag: 'flag:q_south_wander_lamp' },
+    { op: 'narrate', text: 'At the old tree\'s foot, the lamp nobody has lit in living memory catches — all by itself — and burns a warm, ridiculous, morning-coloured gold.' },
+    { op: 'tint', color: '#ffe9a8', alpha: 0, ms: 1200 },
+    { op: 'music', key: 'gleam-emotional' },
+    { op: 'say', speaker: 'PAUL', text: 'Well. Would you look at that. I keep one lamp dark on the breakwater, for the dark\'s sake. Seems this one belongs to the bird. Fair\'s fair.' },
+    { op: 'say', speaker: 'PAUL', text: 'Right. Where was I. The cup.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'paul_cup', count: 1 },
+    { op: 'narrate', text: 'He presses a dented tin cup into your hands. It is still warm, and smells of woodsmoke and something sweet. Received PAUL\'S TIN CUP!' },
+    { op: 'say', speaker: 'PAUL', text: 'That\'s the cup. The night? ...Still working on that. Ask me about the Registry and I\'ll pour you another.' },
+    { op: 'giveItem', item: 'lumen_drop', count: 3 },
+    { op: 'say', text: 'Received 3 LUMEN DROPS!' },
+    { op: 'say', speaker: 'PAUL', text: 'For the bird. It fought like it\'s already seen the dawn and wasn\'t impressed. I\'ll be back at my lamp — somebody has to keep the dark company. Seems you\'ve got the morning covered.' },
+    { op: 'setFlag', flag: 'flag:q_south_wander_done' },
+  ],
+  // Andy, once the cup exists. (Wraps his standing after-line.)
+  'script.booji_andy_after': [
+    { op: 'dialogue', ref: 'npc.booji_andy_after', unless_flag: 'flag:q_south_wander_done' },
+    { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'ANDY', text: 'He came in tonight with a CUP. A cup! Poured me something hot and sweet and wouldn\'t say what it was.' },
+    { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'ANDY', text: 'I asked him about the Registry. He poured me another. ...Best night of my life, and I still know nothing.' },
   ],
   // The S4 epilogue: the Chickenpig (#163) — the only rooster in Vesperholm
   // that still believes in morning, asleep at the foot of the one lamp Paul
@@ -486,6 +624,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'ROD', text: 'One thing out there I cannot beat: the squirrels. Thieving little stone-heads. I can press a mooring-block overhead and I cannot keep ONE off my marrows. There\'s a lesson in that. Seventy-two years and I have not found it.' },
     { op: 'say', speaker: 'ROD', text: 'You\'ll be after the old man. PAUL. He\'s not in the house, lad — he\'s out past the bell, the very end of the breakwater, where the boards give out. Stood at a lamp he won\'t light. Go and find him. He\'s worth the walk.' },
     { op: 'say', speaker: 'ROD', text: 'And keep your lamp up out there. Paul\'s got... company at that dark lamp. Something I\'ve no name for — and I have named every kin on this coast. Crows at the black like the morning\'s already its idea. Daft little thing. ...You bring it home, if it\'ll have you.' },
+    { op: 'say', if_flag: 'flag:q_south_wander', unless_flag: 'flag:q_south_wander_done', speaker: 'ROD', text: 'Up the hill, is it? Through the gap behind the Lumenary. Past my plot, mind — and if my Anth hands you a hoe, you hoe. That\'s the toll.' },
     { op: 'setFlag', flag: 'flag:q_south_booji' },
   ],
   'script.booji_andy_done': [
@@ -826,6 +965,20 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'giveItem', item: 'warm_balm', count: 1 },
     { op: 'say', text: 'Lashed dry under a coil of old net, against the spray. Found a WARM BALM!' },
     { op: 'setFlag', flag: 'flag:picked_breakwater_balm' },
+  ],
+  // S5 caches — the allotment's potting-bench corner and the Wanderwood's
+  // central dead end (the "short cut" that isn't pays for the walk back).
+  'script.pickup_allotment_bench': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'warm_balm', count: 2 },
+    { op: 'say', text: 'Tucked under the potting bench, wrapped in a seed-sack: Received 2 WARM BALMS! (Anth\'s, probably. She\'d want you to have them. Probably.)' },
+    { op: 'setFlag', flag: 'flag:picked_allotment_bench' },
+  ],
+  'script.pickup_wanderwood_cache': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'beacon_charge', count: 1 },
+    { op: 'say', text: 'Wedged in a root-hollow where the path gives up: Found a BEACON CHARGE! Someone else came this way, thought it was a short cut, and left in a hurry.' },
+    { op: 'setFlag', flag: 'flag:picked_wanderwood_cache' },
   ],
   'script.pickup_breakwater_charge': [
     { op: 'giveItem', item: 'glow_charge', count: 1 },
@@ -1421,7 +1574,7 @@ export const SCRIPTS: ScriptRegistry = {
   // sets flag:shortcut_mine; this is the cutscene that sells it (spine §0 rule 3).
   'script.open_mine_shortcut': [
     { op: 'narrate', text: 'A sealed door, timbered shut from the far side a generation ago. From in here the bar lifts easily — it was only ever meant to keep the dark from wandering UP.' },
-    { op: 'sfx', key: 'world-door' },
+    { op: 'sfx', key: 'world-door-open' },
     { op: 'narrate', text: 'It swings onto a cart-track you half recognise: the old hoist-line, running straight back to the Vesper Crossroads. The east just got a great deal smaller.' },
   ],
 
@@ -4041,6 +4194,7 @@ export const SCRIPTS: ScriptRegistry = {
           ops: [
             { op: 'say', speaker: 'ANDREW', text: 'Still not me, still out there. Word on the coast road is it\'s south of here — past the flats, in the town on the water.' },
             { op: 'say', speaker: 'ANDREW', text: 'Something about a building at the top of the quay. And an old man nobody will explain properly. That\'s all I\'ve got.' },
+            { op: 'say', if_flag: 'flag:q_south_booji_done', unless_flag: 'flag:q_south_wander_done', speaker: 'ANDREW', text: 'Found the old man already? Then here\'s a funny thing: they say he goes walking. Up the hill behind the quay. Says he\'s never once been lost up there.' },
           ],
         },
         {
@@ -4196,6 +4350,7 @@ export const SCRIPTS: ScriptRegistry = {
           label: 'THE EASTER EGG',
           ops: [
             { op: 'say', speaker: 'ANDREW', text: 'Still out there, still not me. South, is the word — past the flats, the town on the water. A building at the top of the quay, and an old man nobody will explain properly.' },
+            { op: 'say', if_flag: 'flag:q_south_booji_done', unless_flag: 'flag:q_south_wander_done', speaker: 'ANDREW', text: 'Found the old man already? Then here\'s a funny thing: they say he goes walking. Up the hill behind the quay. Says he\'s never once been lost up there.' },
           ],
         },
         { label: 'NOTHING', ops: [{ op: 'say', speaker: 'ANDREW', text: 'Right you are. Mind how you go — and mind the dark.' }] },

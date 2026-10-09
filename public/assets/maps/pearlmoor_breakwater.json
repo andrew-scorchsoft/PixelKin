@@ -1248,7 +1248,7 @@
       },
       "activation": "step_on",
       "ref": "script.booji_chickenpig",
-      "requires_flag": "flag:q_south_booji_met",
+      "requires_flag": "flag:q_south_booji_done",
       "hidden_when_flag": "flag:chickenpig_caught"
     },
     {
@@ -1260,7 +1260,7 @@
       },
       "activation": "step_on",
       "ref": "script.booji_chickenpig",
-      "requires_flag": "flag:q_south_booji_met",
+      "requires_flag": "flag:q_south_booji_done",
       "hidden_when_flag": "flag:chickenpig_caught"
     },
     {
@@ -1273,6 +1273,18 @@
       "activation": "interact",
       "ref": "npc.chickenpig_after",
       "requires_flag": "flag:chickenpig_caught"
+    },
+    {
+      "id": "wander_note",
+      "kind": "dialogue",
+      "at": {
+        "tx": 8,
+        "ty": 25
+      },
+      "activation": "interact",
+      "ref": "npc.wander_note",
+      "requires_flag": "flag:q_south_wander",
+      "hidden_when_flag": "flag:q_south_wander_done"
     }
   ],
   "encounters": [],
@@ -1376,7 +1388,20 @@
       "sprite": "booji_paul",
       "movement": "static",
       "dialogue_ref": "script.booji_paul_lamp",
-      "requires_flag": "flag:q_south_booji_met"
+      "requires_flag": "flag:q_south_booji_met",
+      "hidden_when_flag": "flag:q_south_wander"
+    },
+    {
+      "id": "paul_lamp_back",
+      "at": {
+        "tx": 9,
+        "ty": 25
+      },
+      "facing": "down",
+      "sprite": "booji_paul",
+      "movement": "static",
+      "dialogue_ref": "script.booji_paul_lamp",
+      "requires_flag": "flag:q_south_wander_done"
     }
   ],
   "gates": [],

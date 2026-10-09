@@ -121,6 +121,12 @@ export const ITEMS: ItemRegistry = {
     desc: 'A hand-inked folio of impossible grinning figures, drawn before the Dusk by folk who drew the world odder to tell it true. Paul chose it for you. It does not explain itself.',
     category: 'key',
   },
+  paul_cup: {
+    id: 'paul_cup',
+    name: 'Paul\'s Tin Cup',
+    desc: 'A dented tin cup, still warm. The cup of something, at last. The night: pending.',
+    category: 'key',
+  },
   fenn_letter: {
     id: 'fenn_letter',
     name: "Gran's Letter",

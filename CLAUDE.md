@@ -165,7 +165,8 @@ go digging on every task.
   set-piece catches with failure cooldowns; sites + spec in
   `docs/world/walkthrough/07-the-three.md` — sites, unlock chains, scripts and the
   `battle-hours`/`sting-hour` audio are BUILT, 2026-06), #163 **Chickenpig**
-  (S4's scripted epilogue catch at the Pearlmoor breakwater), and #164 **Gloampurr**
+  (S4's scripted epilogue catch at the Pearlmoor breakwater — never gifted; it leads S5's
+  glade fight), and #164 **Gloampurr**
   (the Lunar/Solar "sunshine-goth" dragon-cat of the optional East side quest "The
   Sunniest House in the Dark"; Georgina's ace + the kitten she gifts you). Moves: **≤4 per kin**
   from a **125-move** shared pool (wave 2: full phys/spec ladders per type + 13 signature
@@ -971,6 +972,24 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   **`unless_flag` is its mirror** (2026-08, skipped ONCE the flag is held — the pair
   NpcPlacement/EventTrigger already carry as `requires_flag`/`hidden_when_flag`). The pair
   expresses "exactly one of these": guard each stage `if_flag: <this>` + `unless_flag: <next>`.
+- **S5 "Not All Who Wander" quotes Tolkien VERBATIM — deliberately.** The Wanderwood waystone
+  (`script.wander_stone`) asks for the last word of "Not all those who wander are lost" (typed:
+  LOST). The owner chose the real line on purpose; it's the ONE sanctioned exception to VISION.md's
+  all-original-text rule — never "fix" it to an original line. The quest also added three reusable
+  cutscene ops: **`askName {store:false}`** (a typed ANSWER — opens empty, never renames the
+  player; `matches` set flags), **`setLead {kin, missingRef}`** (puts the first healthy `kin` in
+  slot 0 or plays `missingRef` and ends the scene) and **`bossBattle {kin, level}`** (a wild
+  set-piece with no LAMP and no RUN — `BattleRequest.catchable/can_run:false`). A `setFlag` step
+  now refreshes flag-gated OBJECTS mid-scene (`ctx.onFlagSet`); an aborted scene lifts its own
+  letterbox/tint (`clearCinematicFx`) and snaps the camera back (`ctx.resetView`); `setLead`'s swap
+  is undone after the set-piece (`WorldScene.restoreLead`); answers (`store:false`) match ignoring
+  punctuation. The Chickenpig is NEVER gifted — S4 is the only way to it.
+- **Cannot-die mode (Settings → "Cannot die", 2026-10).** `Settings.cannotDie` → `preferences.
+  getCannotDie()`; `WorldScene.blackout` then heals the party and RE-ENTERS the current map at the
+  player's own tile (no rest-point warp, no wick tithe) — the re-entry is what resets actors a lost
+  scene walked off-post, a marched-up sight trainer, and a focused camera; don't shortcut it. A lost scripted battle still ends its scene, so the fight simply waits to be
+  retried. The settings list is now 11 rows from y 14 — at its 160px budget; a 12th row needs a
+  sub-screen.
 - **Stuck players are answered in-world by ANDREW, on a fence in every rim town** (2026-08).
   `script.andrew_hint` is the wayfinding chain — one `say` per journey stage, each guarded
   `if_flag: <stage>` + `unless_flag: <next stage>`, so exactly one line plays and it names the

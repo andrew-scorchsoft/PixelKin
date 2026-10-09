@@ -80,6 +80,20 @@
       "rarity": "common",
       "min": 56,
       "max": 63
+    },
+    {
+      "area": "pearlmoor_wanderwood",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 15,
+      "max": 17
+    },
+    {
+      "area": "pearlmoor_wanderwood",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 56,
+      "max": 60
     }
   ],
   "scripted": false,

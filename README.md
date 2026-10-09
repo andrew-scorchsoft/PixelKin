@@ -57,7 +57,10 @@ handed over flat), six traversal-gating **Lantern Gifts**, a working **wick
 economy** (shops, Star-charts, trainer payouts — tuned end-to-end by a journey
 model), seven battle statuses, Kindling and bond, the Hearth for kin storage,
 inn rest-heals, item caches, sight trainers, festivals that fill each town
-after its Gleam, a LORE codex and a collectible concept-art gallery. Progress
+after its Gleam, a LORE codex, a collectible concept-art gallery, and a
+quayside easter-egg chain (the Booji-Wooji Man, his bird-pig, and the wood he
+walks). A **Cannot die** setting turns a lost battle into a heal-in-place for
+players who'd rather not be sent back. Progress
 autosaves, every manual save offers a downloadable copy, and **LOAD FILE** on
 the title screen restores a journey from one — so a cleared cache or a new
 device costs you nothing. The screen can show as a
@@ -103,7 +106,9 @@ What's already in the repo:
   are binding in [`docs/art-style.md`](docs/art-style.md).
 
 Everything here is **original** — inspired by the monster-collecting genre, a
-copy of nothing. See the copyright rules in [`VISION.md`](VISION.md).
+copy of nothing. See the copyright rules in [`VISION.md`](VISION.md). (One
+deliberate exception, by the owner's choice: an optional side quest's waystone
+quotes a single famous line about wandering.)
 
 ## Project status
 

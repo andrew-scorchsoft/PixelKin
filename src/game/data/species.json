@@ -3605,6 +3605,20 @@
      "rarity": "common",
      "min": 56,
      "max": 63
+    },
+    {
+     "area": "pearlmoor_wanderwood",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 15,
+     "max": 17
+    },
+    {
+     "area": "pearlmoor_wanderwood",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 60
     }
    ],
    "scripted": false,
@@ -5220,6 +5234,20 @@
      "rarity": "common",
      "min": 21,
      "max": 23
+    },
+    {
+     "area": "pearlmoor_wanderwood",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 14,
+     "max": 16
+    },
+    {
+     "area": "pearlmoor_wanderwood",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 55,
+     "max": 58
     }
    ],
    "scripted": false,
@@ -5818,6 +5846,20 @@
      "rarity": "uncommon",
      "min": 56,
      "max": 62
+    },
+    {
+     "area": "pearlmoor_wanderwood",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 14,
+     "max": 16
+    },
+    {
+     "area": "pearlmoor_wanderwood",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 59
     }
    ],
    "scripted": false,
@@ -10186,6 +10228,20 @@
      "rarity": "uncommon",
      "min": 48,
      "max": 50
+    },
+    {
+     "area": "pearlmoor_wanderwood",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 15,
+     "max": 17
+    },
+    {
+     "area": "pearlmoor_wanderwood",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 60
     }
    ],
    "scripted": false,
@@ -10723,6 +10779,20 @@
      "rarity": "uncommon",
      "min": 48,
      "max": 50
+    },
+    {
+     "area": "pearlmoor_wanderwood",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 15,
+     "max": 17
+    },
+    {
+     "area": "pearlmoor_wanderwood",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 58,
+     "max": 61
     }
    ],
    "scripted": false,

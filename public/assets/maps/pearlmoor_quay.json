@@ -39,9 +39,9 @@
         51,
         51,
         50,
-        50,
-        52,
-        51,
+        53,
+        1,
+        1,
         50,
         52,
         52,
@@ -67,9 +67,9 @@
         56,
         56,
         56,
-        57,
-        57,
-        57,
+        58,
+        1,
+        1,
         57,
         56,
         57,
@@ -2443,6 +2443,36 @@
         "ty": 38
       },
       "facing": "right",
+      "transition": "fade"
+    },
+    {
+      "id": "to_allotment",
+      "at": {
+        "tx": 17,
+        "ty": 0
+      },
+      "trigger": "step_on",
+      "to_map": "pearlmoor_allotment",
+      "to": {
+        "tx": 9,
+        "ty": 14
+      },
+      "facing": "up",
+      "transition": "fade"
+    },
+    {
+      "id": "to_allotment_e",
+      "at": {
+        "tx": 18,
+        "ty": 0
+      },
+      "trigger": "step_on",
+      "to_map": "pearlmoor_allotment",
+      "to": {
+        "tx": 10,
+        "ty": 14
+      },
+      "facing": "up",
       "transition": "fade"
     }
   ],

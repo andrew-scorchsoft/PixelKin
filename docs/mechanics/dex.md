@@ -93,7 +93,7 @@
 | <img src="../../public/assets/sprites/creatures/068_fernlance/battle_front.webp" width="48" alt="Fernlance"> | 68 | **Fernlance** | Verdant/Light | D | Special Sweeper | 498 | (from Fennlight) | 57 | 380cm/95kg | A fully adult fern-serpent, now as long as a felled tree, wreathed in blazing biolumines… |
 | <img src="../../public/assets/sprites/creatures/069_riddlestone/battle_front.webp" width="48" alt="Riddlestone"> | 69 | **Riddlestone** | Stone | C | Special Wall | 418 |  | 120 | 120cm/240kg | A sphinx-like cave construct that has formed naturally from layered sedimentary stone; i… |
 | <img src="../../public/assets/sprites/creatures/070_mycovast/battle_front.webp" width="48" alt="Mycovast"> | 70 | **Mycovast** | Verdant/Stone | E | Special Tank | 558 |  | 24 | 300cm/2200kg | The apex kin of Spore Grotto — a vast, ancient fungal titan that has been growing throug… |
-|  | 164 | **Gloampurr** | Lunar/Solar | C | Special Sweeper | 418 |  | 112 | 42cm/9kg | A small winged cat the colour of a violet dusk, with a coal of warm gold burning low in … |
+| <img src="../../public/assets/sprites/creatures/164_gloampurr/battle_front.webp" width="48" alt="Gloampurr"> | 164 | **Gloampurr** | Lunar/Solar | C | Special Sweeper | 418 |  | 112 | 42cm/9kg | A small winged cat the colour of a violet dusk, with a coal of warm gold burning low in … |
 
 ## North — Galehigh & Pale Vault (Storm, Frost)
 

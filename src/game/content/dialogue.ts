@@ -428,6 +428,54 @@ export const DIALOGUE: DialogueRegistry = {
   'npc.chickenpig_shy': [
     { text: 'The chicken-pig tucks its head under its one red wing and is immediately, profoundly asleep. Even heralds nap. It will hear you out again once you have won {remaining} more battles.' },
   ],
+  // --- S5 "Not All Who Wander" (Paul's second story) --------------------------
+  'npc.wander_note': [
+    { text: 'A scrap of sailcloth is tied to the dark lamp. On it, in a big unhurried hand:\nGONE WANDERING. NOT LOST. — P.' },
+  ],
+  'npc.wander_chickenpig_missing': [
+    { speaker: 'PAUL', text: 'Ah — {name}. You found the last word. ...But you\'ve come without the bird-pig, or it\'s too worn out to stand.' },
+    { speaker: 'PAUL', text: 'Bring it here in your lamp, rested and ready. This next bit is ITS business more than yours. I\'ll wait. I\'m good at waiting.' },
+  ],
+  'sign.wander_gap': [
+    { text: 'The trees here stand shoulder to shoulder. Something about the way they lean suggests they are waiting to be told something. The waystone, perhaps, knows what.' },
+  ],
+  'sign.pearlmoor_allotment': [
+    { text: 'HILLSIDE ALLOTMENTS\nPlot 4: R. & A.\nSQUIRRELS WILL BE PROSECUTED.' },
+  ],
+  'npc.allotment_anth': [
+    { speaker: 'ANTH', text: 'You\'ll be one of Rod\'s lot from the Lifting House. You\'ve the look. Mind the marrows — he talks to them. They\'re the only ones that don\'t answer back.' },
+    { speaker: 'ANTH', text: 'Seventy-two and he presses harbour-stones. I married a man who can lift a mooring-block and can\'t lift a teapot. Go on, then. Mind the squirrels. They bite.' },
+  ],
+  'npc.allotment_anth_wander': [
+    { speaker: 'ANTH', text: 'After the old wood, are you? Paul went up that way not an hour since, whistling. That man\'s never been lost a day in his life. He just... goes.' },
+    { speaker: 'ANTH', text: 'The stone at the top wants a word. Don\'t look at me — I never could remember the end of it. Rod says it\'s the most important word in the world. Rod also says that about turnips.' },
+  ],
+  'npc.allotment_anth_done': [
+    { speaker: 'ANTH', text: 'Paul came down the hill with a rooster-pig\'s tail-feather in his hat, grinning like a boy. Wouldn\'t say why. Never does.' },
+    { speaker: 'ANTH', text: 'Forty years I\'ve known him, and that\'s the first time I\'ve seen him come DOWN that hill looking like he\'d found something rather than left something. Whatever you did — ta.' },
+  ],
+  'npc.wanderwood_hob': [
+    { speaker: 'WANDERER HOB', text: 'I am NOT lost. I know exactly where I am. I\'m HERE. It\'s everything else that keeps moving.' },
+    { speaker: 'WANDERER HOB', text: 'These paths go round on themselves, you know. You walk away from a thing and come back to it from the other side. Old Paul says that\'s the point. I say it\'s the THIRD TIME I\'ve passed this tree.' },
+  ],
+  'npc.wanderwood_hob_done': [
+    { speaker: 'WANDERER HOB', text: 'A lamp just lit itself in the middle of the wood. A LAMP. In THIS dark. ...Right. I\'m going home. Probably. Eventually. Which way is home?' },
+  ],
+  'sign.wander_story_1': [
+    { text: 'Carved into the bark, low down, in a child\'s careful hand:\nP. WALKED HERE AGED TEN LOOKING FOR A LOST GOAT. FOUND THE GOAT. KEPT WALKING.' },
+  ],
+  'sign.wander_story_2': [
+    { text: 'Carved deep, years later:\nP. CAME UP HERE WITH A BROKEN HEART AND LEFT IT UNDER THIS TREE. THE TREE SEEMS TO BE DOING ALL RIGHT.' },
+  ],
+  'sign.wander_story_3': [
+    { text: 'Carved in big proud letters:\nP. CARRIED A HARBOUR-STONE TO THE TOP OF THIS HILL FOR A BET WITH HIMSELF. WON. LOST. CALLED IT A DRAW.' },
+  ],
+  'sign.wander_story_4': [
+    { text: 'Carved small, and steady:\nP. SAT HERE THE NIGHT THE DUSK CAME DOWN AND DECIDED NOT TO BE AFRAID OF IT. TOOK A WHILE. WORTH IT.' },
+  ],
+  'sign.wander_glade_lamp': [
+    { text: 'The glade lamp burns a warm, faintly ridiculous morning-gold. Nobody lit it. Somebody crowed at it until it gave in.' },
+  ],
   'npc.chickenpig_after': [
     { text: 'Only the dark lamp now, and the old man\'s company. Somewhere in your lamp, a rooster-pig is practising being right about the morning.' },
   ],
