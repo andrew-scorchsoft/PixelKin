@@ -1,15 +1,21 @@
 ---
 name: deploy-ftp
-description: Deploy PixelKin to the live pixelk.in host over FTP — the marketing site at the web root, the playable game under /play/ — bumping the version, building, and syncing only what changed (pruning stale hashed bundles). Use whenever the user asks to deploy, publish, ship, release, upload to FTP, or "push it live".
+description: LEGACY FTP deploy of PixelKin (marketing site at the web root, game under /play/) — bumping the version, building, and syncing only what changed (pruning stale hashed bundles). pixelk.in now deploys via Cloudflare Workers Builds on push to main (wrangler.jsonc); use this skill only when the user explicitly asks to upload over FTP or to a non-Cloudflare static host.
 ---
 
-# Deploy to pixelk.in over FTP
+# Deploy to pixelk.in over FTP (legacy)
+
+> **pixelk.in is now served by a Cloudflare Worker.** A push to `main` deploys
+> automatically (Workers Builds: `npm run release` → `npx wrangler deploy`), and
+> `npm run deploy` does the same by hand. Use this FTP flow only when the user
+> explicitly wants an FTP/static-host upload. `release/` is plain static HTML now
+> (no PHP); `release/.htaccess` gives Apache the clean URLs + `.php` redirects.
 
 Ships what's in the working tree to the live cPanel host:
 
 ```
 release/  (assembled)              ->  remote
-  index.php, assets/, includes/    ->  /public_html/        = https://pixelk.in/
+  index.html, …, assets/           ->  /public_html/        = https://pixelk.in/
   play/                            ->  /public_html/play/   = https://pixelk.in/play/
 ```
 
@@ -55,7 +61,7 @@ Match the build to the scope so you don't rebuild the game for a copy tweak:
 |-------|---------|--------------|
 | Both | `npm run release` | typecheck + Vite build + audio shrink + strip sourcemaps, then site + `dist/` → `release/` |
 | Game only | `npm run release:game` | same build, drops `dist/` into `release/play/` only |
-| Site only | `npm run release:site` | copies `web/` → `release/` and **leaves `release/play/` alone** |
+| Site only | `npm run release:site` | renders `web/` → `release/` and **leaves `release/play/` alone** |
 
 If the build fails, stop and report it — never deploy a partial `release/`.
 
@@ -75,7 +81,7 @@ python3 tools/deploy/ftp_deploy.py --scope both --version 1.4.0
 ```
 
 `--scope` takes `both | site | game`. There are npm wrappers that do build +
-deploy in one (`npm run deploy`, `deploy:site`, `deploy:game`, `deploy:dry`) —
+deploy in one (`npm run deploy:ftp`, `deploy:ftp:site`, `deploy:ftp:game`, `deploy:ftp:dry`) —
 use the explicit commands above when you're bumping a version, since the
 wrappers don't pass `--version`.
 

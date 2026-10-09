@@ -1,8 +1,10 @@
 # PixelKin website (`web/`)
 
-The marketing/landing site for **pixelk.in** — a small, self-contained PHP +
-HTML site, on-brand with the game. No framework: a few flat `.php` pages share
-chrome through `includes/` partials.
+The marketing/landing site for **pixelk.in** — a small static HTML site,
+on-brand with the game. No framework and no server-side code: page bodies are
+plain HTML fragments, and `tools/build/build_site.mjs` (Node) wraps them in the
+shared chrome and writes static `.html` files. That's what lets the whole of
+pixelk.in serve from a **Cloudflare Worker's static assets** (`wrangler.jsonc`).
 
 This folder is the **source of truth**. The playable game is a *separate* build
 (Vite → `dist/`); a release step staples the two together for upload (see
@@ -12,17 +14,21 @@ This folder is the **source of truth**. The playable game is a *separate* build
 
 ```
 web/
-  index.php       # landing (parallax hero, world gallery, features, starter trio, CTA)
-  story.php       # The Long Dusk — world & story + the eight Lumenaries
-  creatures.php   # the starter trio + a clickable grid of the first 50 kin
-  faq.php         # player FAQ — getting started, controls, saving, gameplay basics (native <details> accordion)
-  license.php     # licensing & partnerships → Scorchsoft contact form
-  privacy.php     # privacy policy
-  terms.php       # terms of use (as-is, no warranties, may be taken offline)
-  includes/
-    config.php    # constants, starter/world/lumenary data, type colours, kin loader, page_head()
-    header.php    # <head> (per-page title + meta/OG/Twitter) + masthead/nav
-    footer.php    # footer (Scorchsoft attribution, licensing + legal nav) + shared lightbox markup
+  site.mjs        # constants, nav, PAGES (title/desc per page), starter/world/lumenary data,
+                  #   type chart + colours, kin loader, and BLOCKS (the data-driven sections)
+  layout.mjs      # header() — <head> (title + meta/OG/Twitter) + masthead; footer() + lightbox markup
+  pages/          # one body fragment per page → served at /<stem> (index → /)
+    index.html    #   landing (parallax hero, world gallery, features, starter trio, CTA)
+    story.html    #   The Long Dusk — world & story + the eight Lumenaries
+    creatures.html#   the starter trio + a clickable grid of the first 50 kin
+    faq.html      #   player FAQ (native <details> accordion)
+    license.html  #   licensing & partnerships → Scorchsoft contact form
+    privacy.html  #   privacy policy
+    terms.html    #   terms of use
+    404.html      #   "Lost in the Dusk" (served for any unknown path)
+  _redirects      # Cloudflare: 301s from the old *.php URLs to the clean ones
+  .htaccess       # Apache twin of the above + clean URLs (legacy FTP host only)
+  .assetsignore   # keeps .htaccess out of the Worker upload
   assets/
     css/style.css # brand styling (palette + pixel font from the game)
     js/main.js    # mobile nav, hero parallax, gallery lightbox (progressive enhancement)
@@ -30,6 +36,15 @@ web/
     fonts/        # Press Start 2P (same pixel font the game uses) + licence
     img/          # logo.png + logo-text.webp + logo-hero.webp, hero/, kin/, world/, lumenary/
 ```
+
+**Page bodies** use two placeholders, resolved at build time (an unknown one
+fails the build): `{{TOKEN}}` for a value from `tokens()` in `site.mjs`
+(`SITE_NAME`, `GAME_URL`, `STUDIO_NAME`, `YEAR`, `UPDATED`, … and
+`{{tint:Solar}}` for a type colour), and `<!-- block:name -->` for a
+data-driven section rendered by `BLOCKS[name]` (world gallery, starters, kin
+grid, matchups…). **Add a page** = a `pages/<stem>.html` body + a `PAGES` row
+(+ a `NAV` entry if it belongs in the menu). Links between pages use clean
+URLs (`href="faq"`, home is `href="./"`).
 
 **Interactivity (all vanilla JS in `main.js`, degrades without it):**
 - *Hero* — the pixel-art Tinderwick scene (`img/hero/scene.webp`) under a tuned
@@ -39,11 +54,11 @@ web/
   modal with prev/next, keyboard (Esc / ← / →) and chips. Used by the world
   gallery, the Lumenaries, and the kin grid (which shows each kin's battle sprite).
 
-Per-page SEO/social meta is driven by `page_head($title, $page, $desc)` — header.php
+Per-page SEO/social meta comes from each page's `PAGES` row — `layout.mjs`
 turns it into `<title>`, `description`, and OpenGraph/Twitter tags. Studio
-attribution and the licensing-contact link are `STUDIO_*` constants in `config.php`.
+attribution and the licensing-contact link are `STUDIO_*` constants in `site.mjs`.
 
-Each page also gets its own 1200×630 social-share card: header.php maps the page's
+Each page also gets its own 1200×630 social-share card: layout.mjs maps the page's
 stem to `assets/img/og/<stem>.jpg` (falling back to the logo if absent). They're
 JPG, not WebP — Facebook/LinkedIn still don't render WebP link previews reliably.
 The cards are a unique pixel-art background per page + the wordmark and page title
@@ -61,7 +76,7 @@ standalone — it doesn't read `src/` at runtime).
 
 Brand facts (the canon vocabulary, the founding trio, the palette) are sourced
 from the game — palette hexes mirror `src/game/config.ts`, the trio mirrors
-`src/game/content/starters.ts`. If those change, update `includes/config.php`.
+`src/game/content/starters.ts`. If those change, update `site.mjs`.
 
 ### Refreshing the copied art
 
@@ -89,64 +104,51 @@ The kin grid's data + the first-50 icons are generated from the game's
 `species.json` (re-run when the roster art changes):
 
 ```bash
-php -r '
-$d=json_decode(file_get_contents("src/game/data/species.json"),true)["species"];
-usort($d,fn($a,$b)=>$a["id"]<=>$b["id"]); $out=[];
-foreach($d as $k){ if($k["id"]>50) continue;
-  $i=str_pad((string)$k["id"],3,"0",STR_PAD_LEFT);
-  @copy("public/assets/sprites/creatures/{$i}_{$k["slug"]}/icon.webp","web/assets/img/kin/icons/$i.webp");
-  @copy("public/assets/sprites/creatures/{$i}_{$k["slug"]}/battle_front.webp","web/assets/img/kin/battle/$i.webp");
-  $out[]=["id"=>$k["id"],"name"=>$k["name"],"types"=>$k["types"],"cat"=>$k["dex"]["category"]??""]; }
-file_put_contents("web/assets/data/kin.json",json_encode($out,JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES)."\n");'
+node -e '
+const fs=require("fs");
+const d=JSON.parse(fs.readFileSync("src/game/data/species.json")).species.filter(k=>k.id<=50).sort((a,b)=>a.id-b.id);
+const out=d.map(k=>{const i=String(k.id).padStart(3,"0"),s=`public/assets/sprites/creatures/${i}_${k.slug}`;
+  for(const[v,dir]of[["icon","icons"],["battle_front","battle"]])try{fs.copyFileSync(`${s}/${v}.webp`,`web/assets/img/kin/${dir}/${i}.webp`)}catch{}
+  return{id:k.id,name:k.name,types:k.types,cat:k.dex?.category??""}});
+fs.writeFileSync("web/assets/data/kin.json",JSON.stringify(out,null,4)+"\n");'
 ```
 
 ## Running locally
 
-PHP's built-in server (no Apache/MAMP needed). From the repo root:
+From the repo root:
 
 ```bash
-npm run site        # → http://localhost:8000
+npm run release:site   # render the pages into release/ (keeps a staged release/play/)
+npm run site           # …then serve release/ with wrangler dev → http://localhost:8787
+npm run preview:release   # rebuild the game too, then serve → / and /play/ both work
 ```
 
-The **Play** link points at `/play/`, which only exists once you assemble a
-release (the game isn't served by the PHP dev server). Under `npm run site` a
-small dev placeholder explains this (a router, `tools/dev/site-router.php`,
-intercepts `/play/`). To preview the site **and** game together exactly as on
-the server:
+`wrangler dev` serves `release/` with exactly the production rules (clean URLs,
+`_redirects`, the 404 page). If the game hasn't been built, `/play/` shows a
+small "not built here" placeholder instead of 404ing. To work on the game
+itself, use `npm run dev` (Vite).
 
-```bash
-npm run preview:release   # assembles release/ then serves it → / and /play/ both work
-```
+## Deploying to pixelk.in (Cloudflare Workers)
 
-`preview:release` rebuilds first. If you've **already** assembled `release/` and
-just want to play it locally without rebuilding, serve the folder directly:
-
-```bash
-php -S localhost:8000 -t release   # → site at /, game at /play/
-```
-
-To work on the game itself, use `npm run dev` (Vite).
-
-## Deploying to pixelk.in (WHM/cPanel via FTP)
-
-The game uses Vite `base: './'`, so it runs from any subfolder unchanged. A
-release bundle is assembled into `release/` (gitignored), which you FTP into
-`public_html/`:
+`npm run release` builds the game (`build:dist`: shrunk audio via ffmpeg from
+PATH or the `ffmpeg-static` devDependency, sourcemaps stripped) and assembles:
 
 ```
-release/            ← upload the CONTENTS of this into public_html/
-  index.php …       → pixelk.in/
-  play/             → pixelk.in/play/
+release/
+  index.html, about.html, …, 404.html, _redirects, assets/   → pixelk.in/
+  play/                                                      → pixelk.in/play/
 ```
 
-Pick what to ship:
+`wrangler.jsonc` points the Worker's static assets at `release/`
+(`html_handling: auto-trailing-slash` → `/about` serves `about.html`;
+`not_found_handling: 404-page`). There's no Worker script.
 
-```bash
-npm run release         # build the game + assemble site AND game
-npm run release:site    # site only — refresh the pages without rebuilding the game
-npm run release:game    # rebuild the game + refresh only release/play/
-```
+**Workers Builds** (Cloudflare dashboard → the `pixelkin` Worker → Settings →
+Build) is connected to the GitHub repo: build command `npm run release`, deploy
+command `npx wrangler deploy`, preview command `npx wrangler versions upload`,
+build variable `NODE_VERSION=22`. A push to `main` goes live; other branches get
+preview URLs. By hand: `npm run deploy` (needs `wrangler login`).
 
-`release:site` leaves an already-staged `release/play/` untouched, so you can
-push a copy tweak without re-uploading the whole game. Then FTP the contents of
-`release/` into `public_html/`.
+The legacy FTP path (`npm run deploy:ftp`, the `deploy-ftp` skill) still works
+— `release/` is plain static files, and `web/.htaccess` gives Apache the same
+clean URLs and `.php` redirects.

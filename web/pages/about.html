@@ -1,12 +1,3 @@
-<?php
-require __DIR__ . '/includes/config.php';
-page_head(
-    'About',
-    'about.php',
-    'Why we made PixelKin: a love letter to handheld-era creature-collecting. The feeling we\'re selling — nostalgia, collecting, exploration, delight — and why every kin, sprite, and note is original.'
-);
-?>
-
 <section class="page-hero">
     <h1>Why we made PixelKin</h1>
     <p class="page-hero-sub">A love letter to handheld gaming — the kind you played hunched over a screen in the back of a car.</p>
@@ -111,25 +102,25 @@ page_head(
     <h2 class="band-title">Wander a little deeper</h2>
     <p class="band-sub">Everything above lives in the game. Here's where to read more.</p>
     <div class="feature-grid">
-        <a class="feature" href="story.php">
+        <a class="feature" href="story">
             <span class="feature-ico" data-ico="moon">🌙</span>
             <h3>The World →</h3>
             <p>Vesperholm, the Long Dusk, the Hollowing, and the words of the world — the story you step into.</p>
         </a>
-        <a class="feature" href="creatures.php">
+        <a class="feature" href="creatures">
             <span class="feature-ico" data-ico="kin">🦊</span>
             <h3>The Kin →</h3>
             <p>Over 150 original creatures across ten elements. Meet the founding trio and browse the first fifty.</p>
         </a>
-        <a class="feature" href="faq.php">
+        <a class="feature" href="faq">
             <span class="feature-ico" data-ico="map">🗺️</span>
             <h3>FAQ →</h3>
             <p>How it plays, what it costs, where it runs, and what's coming — the practical questions answered.</p>
         </a>
-        <a class="feature" href="license.php">
+        <a class="feature" href="license">
             <span class="feature-ico" data-ico="lantern">🏮</span>
             <h3>Licensing →</h3>
-            <p>Built by <?= e(STUDIO_NAME) ?>. Talk to us about licensing the game, the engine, or the studio's work.</p>
+            <p>Built by {{STUDIO_NAME}}. Talk to us about licensing the game, the engine, or the studio's work.</p>
         </a>
     </div>
 </section>
@@ -137,8 +128,6 @@ page_head(
 <section class="band cta-band">
     <div class="cta-inner">
         <h2>Come see what we mean.</h2>
-        <a class="btn btn-primary btn-lg" href="<?= e(GAME_URL) ?>">Play in your browser</a>
+        <a class="btn btn-primary btn-lg" href="{{GAME_URL}}">Play in your browser</a>
     </div>
 </section>
-
-<?php page_foot(); ?>

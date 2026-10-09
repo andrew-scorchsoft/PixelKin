@@ -1,12 +1,3 @@
-<?php
-require __DIR__ . '/includes/config.php';
-page_head(
-    'The World',
-    'story.php',
-    'The story of PixelKin: night fell over Vesperholm and won\'t lift. Play a lamp-tender\'s apprentice relighting the sky, befriend the kin, and meet the Hollowing — a cult that would let the dark stay.'
-);
-?>
-
 <section class="page-hero">
     <h1>The Long Dusk</h1>
     <p class="page-hero-sub">Night fell over Vesperholm and won't lift. Someone has to carry a light.</p>
@@ -73,18 +64,7 @@ page_head(
     <h2 class="band-title">Eight Lumenaries, eight Gleams</h2>
     <p class="band-sub">Each valley keeps a Lumenary — a warden's hall built around one constellation element. Best its Lampwarden and a Gleam blooms back into the sky.</p>
     <div class="lumen-grid">
-        <?php foreach (LUMENARIES as $l): ?>
-            <figure class="lumen" style="--tint: <?= e($l['tint']) ?>" tabindex="0" role="button"
-                    data-lb data-lb-group="lumen"
-                    data-lb-img="assets/img/lumenary/<?= e($l['img']) ?>.webp"
-                    data-lb-title="<?= e($l['type']) ?> Lumenary"
-                    data-lb-blurb="The <?= e($l['type']) ?> warden's hall — best its Lampwarden to earn the <?= e($l['type']) ?> Gleam."
-                    data-lb-chips="<?= e($l['type'] . ',' . $l['tint']) ?>">
-                <img src="assets/img/lumenary/<?= e($l['img']) ?>.webp" alt="<?= e($l['type']) ?> Lumenary" loading="lazy">
-                <figcaption class="type-chip"><?= e($l['type']) ?></figcaption>
-                <span class="shot-zoom" aria-hidden="true">⤢</span>
-            </figure>
-        <?php endforeach; ?>
+<!-- block:lumenaries -->
     </div>
     <p class="gallery-note">Tap a hall to look closer.</p>
 </section>
@@ -92,8 +72,6 @@ page_head(
 <section class="band cta-band">
     <div class="cta-inner">
         <h2>Ready to relight the sky?</h2>
-        <a class="btn btn-primary btn-lg" href="<?= e(GAME_URL) ?>">Play in your browser</a>
+        <a class="btn btn-primary btn-lg" href="{{GAME_URL}}">Play in your browser</a>
     </div>
 </section>
-
-<?php page_foot(); ?>

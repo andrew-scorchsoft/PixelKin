@@ -1,12 +1,3 @@
-<?php
-require __DIR__ . '/includes/config.php';
-page_head(
-    'FAQ',
-    'faq.php',
-    'Answers to common questions about playing PixelKin — how to start, the controls, saving your progress, catching and raising kin, and what makes this original creature-collecting adventure tick.'
-);
-?>
-
 <section class="page-hero">
     <h1>Questions &amp; Answers</h1>
     <p class="page-hero-sub">Everything you need to know before — and during — your Wayfaring.</p>
@@ -19,7 +10,7 @@ page_head(
             <summary>Is PixelKin free to play?</summary>
             <div class="faq-body">
                 <p>
-                    Yes. <?= e(SITE_NAME) ?> plays free in your browser — no purchase,
+                    Yes. {{SITE_NAME}} plays free in your browser — no purchase,
                     no subscription, no ads. Just open it and start your Wayfaring.
                 </p>
             </div>
@@ -30,7 +21,7 @@ page_head(
                 <p>
                     No. The whole game runs inside your web browser. There's nothing
                     to install and no account to create — head to
-                    <a href="<?= e(GAME_URL) ?>">Play</a> and you're in.
+                    <a href="{{GAME_URL}}">Play</a> and you're in.
                 </p>
             </div>
         </details>
@@ -38,7 +29,7 @@ page_head(
             <summary>What devices and browsers does it work on?</summary>
             <div class="faq-body">
                 <p>
-                    <?= e(SITE_NAME) ?> is built web-first and plays on desktop and
+                    {{SITE_NAME}} is built web-first and plays on desktop and
                     mobile alike — any reasonably modern browser (Chrome, Edge,
                     Firefox, Safari) will do. On a phone or tablet you get on-screen
                     touch controls; on a computer you play with the keyboard.
@@ -49,7 +40,7 @@ page_head(
             <summary>Is there a mobile app?</summary>
             <div class="faq-body">
                 <p>
-                    Not yet — for now <?= e(SITE_NAME) ?> is a browser game, and it's
+                    Not yet — for now {{SITE_NAME}} is a browser game, and it's
                     built to play beautifully on a phone or tablet straight from the web,
                     with on-screen touch controls. You can add it to your home screen
                     from your browser for a quick, app-like shortcut.
@@ -100,7 +91,7 @@ page_head(
             <summary>Does the game save automatically?</summary>
             <div class="faq-body">
                 <p>
-                    Yes. <?= e(SITE_NAME) ?> autosaves whenever you enter a new area,
+                    Yes. {{SITE_NAME}} autosaves whenever you enter a new area,
                     so <strong>Continue</strong> always picks up close to where you
                     left off. You can also save deliberately at any time:
                     open the menu and choose <strong>Save</strong>.
@@ -191,7 +182,7 @@ page_head(
                     Over 150 original kin, across ten elements — ember, tide, verdant,
                     stone, storm, frost, solar, lunar, light and dark. Every one is
                     original art and design. You can browse the first fifty on the
-                    <a href="creatures.php">Kin</a> page.
+                    <a href="creatures">Kin</a> page.
                 </p>
             </div>
         </details>
@@ -229,15 +220,15 @@ page_head(
                 </p>
                 <div class="mirror-axes">
                     <div class="axis-card">
-                        <span class="type-chip" style="--tint: <?= e(type_color('Solar')) ?>">Solar</span>
+                        <span class="type-chip" style="--tint: {{tint:Solar}}">Solar</span>
                         <span class="axis-arrow" aria-label="each hits the other for double damage">⇄ <small>×2</small></span>
-                        <span class="type-chip" style="--tint: <?= e(type_color('Lunar')) ?>">Lunar</span>
+                        <span class="type-chip" style="--tint: {{tint:Lunar}}">Lunar</span>
                         <p class="axis-note">Day against night.</p>
                     </div>
                     <div class="axis-card">
-                        <span class="type-chip" style="--tint: <?= e(type_color('Light')) ?>">Light</span>
+                        <span class="type-chip" style="--tint: {{tint:Light}}">Light</span>
                         <span class="axis-arrow" aria-label="each hits the other for double damage">⇄ <small>×2</small></span>
-                        <span class="type-chip" style="--tint: <?= e(type_color('Dark')) ?>">Dark</span>
+                        <span class="type-chip" style="--tint: {{tint:Dark}}">Dark</span>
                         <p class="axis-note">Radiance against the null — the endgame.</p>
                     </div>
                 </div>
@@ -261,7 +252,7 @@ page_head(
                     back into the night sky for real. Along the way you gain
                     <strong>Lantern Gifts</strong>: field powers that open new roads as
                     you travel. There's a fuller glossary on
-                    <a href="story.php">The World</a> page.
+                    <a href="story">The World</a> page.
                 </p>
             </div>
         </details>
@@ -286,7 +277,7 @@ page_head(
             <summary>Is this Pokémon?</summary>
             <div class="faq-body">
                 <p>
-                    No. <?= e(SITE_NAME) ?> is an original creature-collecting
+                    No. {{SITE_NAME}} is an original creature-collecting
                     adventure — inspired by the genre, a copy of nothing. Every
                     creature, name, sprite, piece of music and line of story is our own.
                     It shares the warm, nostalgic <em>feeling</em> of handheld-era
@@ -302,7 +293,7 @@ page_head(
                     and won't lift. You play a lamp-tender's apprentice setting out to
                     relight the sky, one constellation at a time, with the kin who walk
                     the dark beside you. It's a cosy, slightly melancholy tale — read
-                    more on <a href="story.php">The World</a> page.
+                    more on <a href="story">The World</a> page.
                 </p>
             </div>
         </details>
@@ -310,7 +301,7 @@ page_head(
             <summary>Is it finished? Will it keep getting updates?</summary>
             <div class="faq-body">
                 <p>
-                    <?= e(SITE_NAME) ?> is in active development. The world, story,
+                    {{SITE_NAME}} is in active development. The world, story,
                     creatures and soundtrack are designed and locked, and more of the
                     journey opens up over time. Because saves live in your browser, a
                     major update can occasionally reset progress — exporting a save
@@ -332,10 +323,10 @@ page_head(
             <summary>Who makes PixelKin? Can I license or partner on it?</summary>
             <div class="faq-body">
                 <p>
-                    <?= e(SITE_NAME) ?> is designed and built by
-                    <a href="<?= e(STUDIO_URL) ?>" target="_blank" rel="noopener"><?= e(STUDIO_NAME) ?></a>,
+                    {{SITE_NAME}} is designed and built by
+                    <a href="{{STUDIO_URL}}" target="_blank" rel="noopener">{{STUDIO_NAME}}</a>,
                     app, web and game developers. For licensing, partnership or press
-                    enquiries, see the <a href="license.php">Licensing</a> page.
+                    enquiries, see the <a href="license">Licensing</a> page.
                 </p>
             </div>
         </details>
@@ -346,8 +337,6 @@ page_head(
     <div class="cta-inner">
         <h2>Still curious? Go and wander.</h2>
         <p>The fastest way to your questions' answers is to light the lamp.</p>
-        <a class="btn btn-primary btn-lg" href="<?= e(GAME_URL) ?>">Play in your browser</a>
+        <a class="btn btn-primary btn-lg" href="{{GAME_URL}}">Play in your browser</a>
     </div>
 </section>
-
-<?php page_foot(); ?>

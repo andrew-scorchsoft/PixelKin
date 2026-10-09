@@ -6,7 +6,7 @@ Each page gets a unique 1200x630 JPG: a pixel-art Vesperholm background master
 (assets/img/og/src/<page>.webp) with the PixelKin wordmark + the page's title
 composited on top, so branding stays crisp and consistent while the art is
 unique per page. Output -> assets/img/og/<page>.jpg, picked up automatically by
-includes/header.php (it maps each page's stem to og/<stem>.jpg, logo fallback).
+web/layout.mjs (it maps each page's stem to og/<stem>.jpg, logo fallback).
 
 Format note: og:image is JPG, not WebP — Facebook/LinkedIn still don't render
 WebP link previews reliably (Twitter/X does). JPG is the safe cross-platform
@@ -32,7 +32,7 @@ W, H = 1200, 630
 AMBER = (255, 196, 120)
 CYAN = (160, 224, 255)
 
-# page stem (matches header.php's basename($page)) -> (TITLE, subtitle)
+# page stem (matches the page stem in web/site.mjs PAGES) -> (TITLE, subtitle)
 # A "\n" in the title forces a line break.
 PAGES = {
     "index":     ("LANTERNS IN\nTHE DARK", "Free retro creature-collecting, in your browser"),

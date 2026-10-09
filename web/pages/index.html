@@ -1,12 +1,3 @@
-<?php
-require __DIR__ . '/includes/config.php';
-page_head(
-    'Home',
-    'index.php',
-    'PixelKin is a retro, handheld-era creature-collecting adventure, free to play in your browser. Relight the constellations of Vesperholm, collect over 150 original kin, and wander fourteen lamplit valleys.'
-);
-?>
-
 <section class="hero" id="hero">
     <div class="hero-parallax" aria-hidden="true">
         <div class="plx plx-scene" data-depth="10"></div>
@@ -14,8 +5,8 @@ page_head(
     </div>
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="hero-inner">
-        <img src="assets/img/logo-hero.webp" alt="<?= e(SITE_NAME) ?>" class="hero-logo" width="1448" height="1086">
-        <p class="hero-tagline"><?= e(SITE_TAGLINE) ?></p>
+        <img src="assets/img/logo-hero.webp" alt="{{SITE_NAME}}" class="hero-logo" width="1448" height="1086">
+        <p class="hero-tagline">{{SITE_TAGLINE}}</p>
         <p class="hero-lede">
             <strong>PixelKin</strong> is a cosy, retro creature-collecting RPG —
             free to play in your browser. Explore a world where night fell and never
@@ -24,8 +15,8 @@ page_head(
             out to bring the daylight back.
         </p>
         <div class="hero-actions">
-            <a class="btn btn-primary" href="<?= e(GAME_URL) ?>">Play in your browser</a>
-            <a class="btn btn-ghost" href="story.php">Enter the Long Dusk</a>
+            <a class="btn btn-primary" href="{{GAME_URL}}">Play in your browser</a>
+            <a class="btn btn-ghost" href="story">Enter the Long Dusk</a>
         </div>
         <p class="hero-note">No install · plays on desktop &amp; mobile · free to play</p>
     </div>
@@ -111,7 +102,7 @@ page_head(
                 <div class="page-content">
                     <span class="page-ellipsis" aria-hidden="true">…</span>
                     <p class="page-flourish">The lamp is lit. The road is dark.<br>The rest is yours to write.</p>
-                    <a class="btn btn-primary btn-lg" href="<?= e(GAME_URL) ?>">Begin your Wayfaring</a>
+                    <a class="btn btn-primary btn-lg" href="{{GAME_URL}}">Begin your Wayfaring</a>
                 </div>
             </article>
         </div>
@@ -129,20 +120,7 @@ page_head(
     <h2 class="band-title">Wander fourteen lamplit valleys</h2>
     <p class="band-sub">From the harbour town where you start to the spire at the world's heart — a glimpse of Vesperholm in the Long Dusk.</p>
     <div class="gallery">
-        <?php foreach (WORLD_GALLERY as $w): ?>
-            <figure class="shot" tabindex="0" role="button"
-                    data-lb data-lb-group="world"
-                    data-lb-img="assets/img/world/<?= e($w['img']) ?>.webp"
-                    data-lb-title="<?= e($w['name']) ?>"
-                    data-lb-blurb="<?= e($w['blurb']) ?>">
-                <img src="assets/img/world/<?= e($w['img']) ?>.webp" alt="<?= e($w['name']) ?>" loading="lazy">
-                <figcaption>
-                    <span class="shot-name"><?= e($w['name']) ?></span>
-                    <span class="shot-blurb"><?= e($w['blurb']) ?></span>
-                </figcaption>
-                <span class="shot-zoom" aria-hidden="true">⤢</span>
-            </figure>
-        <?php endforeach; ?>
+<!-- block:world-gallery -->
     </div>
     <p class="gallery-note">Tap a valley to explore. Concept art — the look the game's pixel maps are built toward.</p>
 </section>
@@ -151,19 +129,10 @@ page_head(
     <h2 class="band-title">Choose your first companion</h2>
     <p class="band-sub">Like every adventure in the genre, you'll start by picking one of three creatures. Choose the one whose light you'll carry.</p>
     <div class="kin-row">
-        <?php foreach (STARTERS as $k): ?>
-            <article class="kin-card" style="--tint: <?= e($k['tint']) ?>">
-                <div class="kin-art">
-                    <img src="assets/img/kin/<?= e($k['img']) ?>_front.webp" alt="<?= e($k['name']) ?>" loading="lazy">
-                </div>
-                <h3 class="kin-name"><?= e($k['name']) ?></h3>
-                <span class="type-chip"><?= e($k['type']) ?></span>
-                <p class="kin-blurb"><?= e($k['blurb']) ?></p>
-            </article>
-        <?php endforeach; ?>
+<!-- block:starters -->
     </div>
     <div class="band-actions">
-        <a class="btn btn-ghost" href="creatures.php">Meet more kin</a>
+        <a class="btn btn-ghost" href="creatures">Meet more kin</a>
     </div>
 </section>
 
@@ -171,16 +140,7 @@ page_head(
     <h2 class="band-title">More to explore</h2>
     <p class="band-sub">Just passing through the homepage? Here's the rest of Vesperholm's lamplight.</p>
     <div class="explore-grid">
-        <?php foreach (EXPLORE as $x): ?>
-            <a class="explore-card" href="<?= e($x['href']) ?>">
-                <span class="explore-ico" aria-hidden="true"><?= $x['ico'] ?></span>
-                <span class="explore-head">
-                    <span class="explore-label"><?= e($x['label']) ?></span>
-                    <span class="explore-arrow" aria-hidden="true">›</span>
-                </span>
-                <span class="explore-blurb"><?= e($x['blurb']) ?></span>
-            </a>
-        <?php endforeach; ?>
+<!-- block:explore -->
     </div>
 </section>
 
@@ -188,8 +148,6 @@ page_head(
     <div class="cta-inner">
         <h2>The lamp is lit. The road is dark.</h2>
         <p>Take your first step into Vesperholm — right now, in your browser.</p>
-        <a class="btn btn-primary btn-lg" href="<?= e(GAME_URL) ?>">Begin your Wayfaring</a>
+        <a class="btn btn-primary btn-lg" href="{{GAME_URL}}">Begin your Wayfaring</a>
     </div>
 </section>
-
-<?php page_foot(); ?>

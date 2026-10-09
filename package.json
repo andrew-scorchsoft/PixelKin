@@ -10,22 +10,25 @@
     "build:dist": "npm run build && node tools/audio/compress_dist_audio.mjs && node tools/build/strip_sourcemaps.mjs",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "site": "php -S localhost:8000 -t web tools/dev/site-router.php",
-    "preview:release": "npm run release && php -S localhost:8000 -t release",
+    "site": "node tools/build/assemble_release.mjs --site && wrangler dev",
+    "preview:release": "npm run release && wrangler dev",
     "release:site": "node tools/build/assemble_release.mjs --site",
     "release:game": "npm run build:dist && node tools/build/assemble_release.mjs --game",
     "release": "npm run build:dist && node tools/build/assemble_release.mjs",
     "version:bump": "node tools/build/bump_version.mjs",
-    "deploy": "npm run release && python3 tools/deploy/ftp_deploy.py --scope both",
-    "deploy:site": "npm run release:site && python3 tools/deploy/ftp_deploy.py --scope site",
-    "deploy:game": "npm run release:game && python3 tools/deploy/ftp_deploy.py --scope game",
-    "deploy:dry": "python3 tools/deploy/ftp_deploy.py --scope both --dry-run"
+    "deploy": "npm run release && wrangler deploy",
+    "deploy:ftp:site": "npm run release:site && python3 tools/deploy/ftp_deploy.py --scope site",
+    "deploy:ftp:game": "npm run release:game && python3 tools/deploy/ftp_deploy.py --scope game",
+    "deploy:ftp:dry": "python3 tools/deploy/ftp_deploy.py --scope both --dry-run",
+    "deploy:ftp": "npm run release && python3 tools/deploy/ftp_deploy.py --scope both"
   },
   "dependencies": {
     "phaser": "^3.90.0"
   },
   "devDependencies": {
+    "ffmpeg-static": "^5.3.0",
     "typescript": "^5.6.0",
-    "vite": "^6.0.0"
+    "vite": "^6.0.0",
+    "wrangler": "^4.149.0"
   }
 }

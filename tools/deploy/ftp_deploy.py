@@ -3,7 +3,7 @@
 Deploy PixelKin to the pixelk.in FTP host — the marketing site at the web root,
 the game under /play/ — by syncing the assembled `release/` folder.
 
-    release/index.php, assets/, includes/  ->  /public_html/
+    release/index.html, about.html, …, assets/  ->  /public_html/
     release/play/                          ->  /public_html/play/
 
 Why a sync and not a blind re-upload: the remote root is a live cPanel account

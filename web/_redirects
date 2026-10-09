@@ -1,0 +1,9 @@
+# Old PHP-era URLs → the clean static pages (Cloudflare Workers static assets).
+/index.php      /           301
+/about.php      /about      301
+/story.php      /story      301
+/creatures.php  /creatures  301
+/faq.php        /faq        301
+/license.php    /license    301
+/privacy.php    /privacy    301
+/terms.php      /terms      301

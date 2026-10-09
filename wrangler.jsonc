@@ -1,0 +1,16 @@
+// Cloudflare Worker for pixelk.in — static assets only, no Worker script.
+// `npm run release` assembles release/ (site at /, game at /play/); Workers
+// Builds runs that, then `npx wrangler deploy` uploads release/.
+// Old *.php URLs are 301'd by release/_redirects (from web/_redirects).
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "pixelkin",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./release",
+    // /about → about.html, /play → /play/ (index.html)
+    "html_handling": "auto-trailing-slash",
+    // unknown paths get release/404.html with a 404 status
+    "not_found_handling": "404-page"
+  }
+}
