@@ -51,7 +51,9 @@ GRANTS: dict[str, list[str]] = {
     # The Causeway Bell loop: the netmender hands the bell-rope on the quay
     # (after the net-floats errand on Dimglass II — both reachable on foot).
     "pearlmoor_quay": ["flag:q_south_has_rope"],
-    "pearlmoor_breakwater": ["flag:q_south_bell_rung"],  # the Moor-bell rung
+    # +flag:q_south_wander_word: S5 — Paul (at the dark lamp, post-S4) sends you
+    # up the hill; the waystone's typed word parts the trees into the wood.
+    "pearlmoor_breakwater": ["flag:q_south_bell_rung", "flag:q_south_wander_word"],
     "pearlmoor_lumenary": ["tidecall", "gleam:tide", "flag:crown_south"],
     # +flag:q_east_georgina: the hollow neighbour points the way to Georgina's
     # dell (the optional E4 spur), post-Verdant — gates lowleaf_hollow->gloamwood_dell.

@@ -13,7 +13,7 @@ import { DialogueBox } from '@game/ui/DialogueBox';
 import { StarterSelect } from '@game/ui/StarterSelect';
 import { Menu } from '@game/ui/Menu';
 import { NameEntry } from '@game/ui/NameEntry';
-import { fadeIn, fadeOut, flash, flashColor, shake, tint, letterbox } from '@game/ui/Transitions';
+import { fadeIn, fadeOut, flash, flashColor, shake, tint, letterbox, clearCinematicFx } from '@game/ui/Transitions';
 import { hex } from '@game/ui/theme';
 import { getDialogue } from '@game/content/dialogue';
 import { getScript } from '@game/content/scripts';
@@ -48,7 +48,17 @@ export interface CutsceneContext {
    * raw outcome so the runner can branch: a catch sets the caughtFlag, a KO/flee
    * stamps the cooldown.
    */
-  startSetPieceBattle?(kin: number, level: number, terrain?: EncounterTerrain): Promise<'caught' | 'koed' | 'fled' | 'lost'>;
+  startSetPieceBattle?(
+    kin: number,
+    level: number,
+    terrain?: EncounterTerrain,
+    opts?: { catchable?: boolean; canRun?: boolean },
+  ): Promise<'caught' | 'koed' | 'fled' | 'lost'>;
+  /** A `setFlag` step just ran — re-evaluate flag-gated set-dressing NOW, so a
+   *  swap the script narrates (a lamp catching) shows mid-scene, not after it. */
+  onFlagSet?(): void;
+  /** Move the first healthy party kin of `speciesId` to slot 0; false if none. */
+  setLead?(speciesId: number): boolean;
   /** Stamp a `cooldownBattles`-long (in WON battles) withdrawal under `name`. */
   setLegendaryCooldown?(name: string, cooldownBattles: number): void;
   /** Fully restore the party (the inn-rest / hearthside-heal op). `rest` (default
@@ -146,13 +156,14 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       );
       return true;
     case 'askName': {
+      const store = step.store !== false;
       const name = await new NameEntry(scene, {
         title: step.title,
-        initial: ctx.playerName?.(),
+        initial: store ? ctx.playerName?.() : undefined,
         fallback: step.fallback ?? 'Wayfarer',
         sfx: ctx.sfx,
       }).run();
-      ctx.onSetPlayerName?.(name);
+      if (store) ctx.onSetPlayerName?.(name);
       // Branching is flag-shaped: a match sets its flag, and the script's later
       // steps guard on it with the ordinary `if_flag`.
       const typed = name.trim().toLowerCase();
@@ -187,6 +198,7 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       return true;
     case 'setFlag':
       ctx.flags.set(step.flag, step.value ?? true);
+      ctx.onFlagSet?.();
       return true;
     case 'giveStarter': {
       const speciesId = await new StarterSelect(scene, ctx.sfx).run();
@@ -295,6 +307,24 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       ctx.setLegendaryCooldown?.(step.name, step.cooldownBattles);
       return false; // a failed catch doesn't narrate a triumphant tail
     }
+    case 'setLead': {
+      if (!ctx.setLead) return true;
+      if (ctx.setLead(step.kin)) return true;
+      if (step.missingRef) {
+        await new DialogueBox(scene, ctx.sfx).run(
+          getDialogue(step.missingRef).map((l) => ({ ...l, text: fillTokens(ctx, l.text) })),
+        );
+      }
+      return false;
+    }
+    case 'bossBattle': {
+      if (!ctx.startSetPieceBattle) return true;
+      const outcome = await ctx.startSetPieceBattle(step.kin, step.level, step.terrain, {
+        catchable: false,
+        canRun: false,
+      });
+      return outcome === 'koed';
+    }
     case 'heal':
       ctx.onHealParty?.(step.rest !== false);
       void ctx.sfx.playVariant('world-heal', ['a', 'b']);
@@ -360,5 +390,9 @@ async function runSteps(ctx: CutsceneContext, steps: CutsceneStep[]): Promise<bo
 /** Play a scene's steps in order. Returns true if it ran to completion (not aborted).
  *  Per-step `if_flag` guards plus `run`/`choice` composition live in runSteps. */
 export async function runCutscene(ctx: CutsceneContext, steps: CutsceneStep[]): Promise<boolean> {
-  return runSteps(ctx, steps);
+  const completed = await runSteps(ctx, steps);
+  // An aborted scene skips its own closing steps — lift any bars/wash it left
+  // (skipped when the scene is gone, e.g. the `cinematic` op handed off).
+  if (!completed && ctx.scene.sys.isActive()) clearCinematicFx(ctx.scene);
+  return completed;
 }

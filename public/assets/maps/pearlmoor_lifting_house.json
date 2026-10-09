@@ -523,7 +523,7 @@
       "facing": "down",
       "sprite": "lifter_andy",
       "movement": "look_around",
-      "dialogue_ref": "npc.booji_andy_after",
+      "dialogue_ref": "script.booji_andy_after",
       "requires_flag": "flag:q_south_booji_done"
     },
     {

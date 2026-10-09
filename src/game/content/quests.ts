@@ -97,6 +97,16 @@ export const QUESTS: QuestRegistry = [
     stage_flags: ['flag:q_south_booji_met'],
     done_flag: 'flag:q_south_booji_done',
   },
+  {
+    id: 's5_not_all_who_wander',
+    name: 'Not All Who Wander',
+    region: 'south',
+    giver: 'Paul, at his dark lamp (after the Booji-Wooji Man)',
+    blurb: 'Paul walks an old wood up the hill behind the quay, past Rod\'s allotment. Its waystone wants the last word of a famous line. Bring the bird-pig.',
+    start_flag: 'flag:q_south_wander',
+    stage_flags: ['flag:q_south_wander_word', 'flag:q_south_wander_lamp'],
+    done_flag: 'flag:q_south_wander_done',
+  },
 
   // ===== EAST ================================================================
   {

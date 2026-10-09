@@ -156,6 +156,26 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/pearlmoor-quay-b.webp',
     ],
   },
+  // S5 "Not All Who Wander": up the hill behind the quay — Rod & Anth's plot
+  // and the waystone (always open; the stone gates the wood), then the old
+  // wood Paul walks (gated on flag:q_south_wander_word). Safe allotment; the
+  // wood carries a small tall-grass table (build_species WANDERWOOD rows).
+  pearlmoor_allotment: {
+    json: 'assets/maps/pearlmoor_allotment.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/pearlmoor-quay-b.mp3',
+  },
+  pearlmoor_wanderwood: {
+    json: 'assets/maps/pearlmoor_wanderwood.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/lowleaf-hollow-b.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/lowleaf-hollow-a.webp',
+      'assets/backgrounds/battle/lowleaf-hollow-b.webp',
+    ],
+  },
   pearlmoor_lumenary: {
     json: 'assets/maps/pearlmoor_lumenary.json',
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },

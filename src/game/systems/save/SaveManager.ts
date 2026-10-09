@@ -64,6 +64,9 @@ export interface Settings {
   musicVolume?: 'off' | 'low' | 'mid' | 'full';
   /** Stepped master volume for sound effects (OFF/LOW/MID/FULL). */
   sfxVolume?: 'off' | 'low' | 'mid' | 'full';
+  /** Cannot-die mode: a lost battle restores the party where you stand (no
+   *  warp to the last rest point, no wick tithe). */
+  cannotDie?: boolean;
 }
 
 /** The defaults a brand-new player gets before they touch the Settings menu. */
@@ -77,6 +80,7 @@ export const DEFAULT_SETTINGS: Settings = {
   battlePace: 'cosy',
   musicVolume: 'full',
   sfxVolume: 'full',
+  cannotDie: false,
 };
 
 export const SaveManager = {

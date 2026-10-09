@@ -35,6 +35,7 @@ import {
   setBattlePace,
   setMusicVolume,
   setSfxVolume,
+  setCannotDie,
   type TextSpeed,
   type BattlePace,
   type VolumeLevel,
@@ -123,6 +124,7 @@ export class SettingsMenu {
       { label: `Battle: ${BATTLE_PACE_LABEL[this.settings.battlePace ?? 'cosy']}`, value: 'battle' },
       { label: `Music: ${VOLUME_LABEL[this.settings.musicVolume ?? 'full']}`, value: 'music' },
       { label: `Sfx: ${VOLUME_LABEL[this.settings.sfxVolume ?? 'full']}`, value: 'sfx' },
+      { label: `Cannot die: ${this.settings.cannotDie ? 'On' : 'Off'}`, value: 'nodie' },
       { label: 'Backup / restore', value: 'backup' },
       { label: 'Back', value: 'back' },
     ];
@@ -137,9 +139,10 @@ export class SettingsMenu {
 
     const menu = new Menu(this.scene, this.buildOptions(), {
       x: 24,
-      // The list is height-budgeted (one row per setting + Backup/restore + Back);
-      // starting at 16 keeps the panel's bottom inside the 160px screen.
-      y: 16,
+      // The list is height-budgeted (one row per setting + Backup/restore + Back):
+      // 11 rows x 12px + padding from y 14 ends at 158 — inside the 160px screen,
+      // just under the title. A 12th row needs a sub-screen, not a smaller y.
+      y: 14,
       width: GAME_WIDTH - 48,
       sfx: this.deps.sfx,
       cancellable: true,
@@ -287,6 +290,14 @@ export class SettingsMenu {
         setSfxVolume(next);
         await SaveManager.saveSettings(this.settings);
         // Play AFTER the write so the player hears the level they just set (OFF = silent).
+        void this.deps.sfx?.play('ui-toggle');
+        return true;
+      }
+      case 'nodie': {
+        const cannotDie = !this.settings.cannotDie;
+        this.settings = { ...this.settings, cannotDie };
+        setCannotDie(cannotDie);
+        await SaveManager.saveSettings(this.settings);
         void this.deps.sfx?.play('ui-toggle');
         return true;
       }

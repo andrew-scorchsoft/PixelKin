@@ -66,6 +66,11 @@ export type BattleRequest =
        *  effectiveness vs the foe — knowledge earned by having caught one before.
        *  Optional + degrades to "no hints" when absent (threaded like `box`). */
       dex_caught?: number[];
+      /** `false` = a set-piece you must beat, not catch (the `bossBattle` op):
+       *  no LAMP, charges refused. Omitted = catchable, as every wild fight. */
+      catchable?: boolean;
+      /** `false` = no RUN entry (the `bossBattle` op). Omitted = can run. */
+      can_run?: boolean;
     }
   | {
       kind: 'trainer';
@@ -367,8 +372,8 @@ export class BattleScene extends Phaser.Scene {
       { label: 'KIN', value: 'switch' },
     ];
     if (this.request.kind === 'wild') {
-      opts.splice(1, 0, { label: 'LAMP', value: 'catch' });
-      opts.push({ label: 'RUN', value: 'run' });
+      if (this.request.catchable !== false) opts.splice(1, 0, { label: 'LAMP', value: 'catch' });
+      if (this.request.can_run !== false) opts.push({ label: 'RUN', value: 'run' });
     } else {
       opts.push({ label: 'RUN', value: 'run' });
     }
@@ -456,6 +461,10 @@ export class BattleScene extends Phaser.Scene {
         await this.msg.show("You can't catch another warden's kin!");
         return null;
       }
+      if (this.request.catchable === false) {
+        await this.msg.show("This one won't be caught. It has to be faced.");
+        return null;
+      }
       this.consumeItem(choice);
       return this.engine.catchWithBonus(choice, this.effectiveCatchBonus(def));
     }
@@ -481,7 +490,7 @@ export class BattleScene extends Phaser.Scene {
   private itemUsable(id: string): boolean {
     const def = getItem(id);
     if (!def) return false;
-    if (def.category === 'charge') return this.request.kind === 'wild';
+    if (def.category === 'charge') return this.request.kind === 'wild' && this.request.catchable !== false;
     if (def.category === 'medicine') return true;
     return false;
   }

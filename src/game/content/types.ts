@@ -146,6 +146,11 @@ type CutsceneStepBase =
       fallback?: string;
       /** Name → flag, set when the typed name matches. */
       matches?: { value: string; flag: WorldFlag }[];
+      /**
+       * `false` = a typed ANSWER, not a name (a riddle/password): the box opens
+       * empty and the player's name is left untouched — only `matches` act.
+       */
+      store?: boolean;
     }
   | { op: 'giveItem'; item: string; count?: number }
   // Grant `item` ONLY if the player holds none, narrating `text` when it grants
@@ -167,6 +172,12 @@ type CutsceneStepBase =
   | { op: 'cameraReset'; ms?: number } // re-follow the player, restore zoom
   | { op: 'battle'; trainer: string } // start a trainer battle by id
   | LegendaryBattleStep // a static one-off catch with a battles-won failure cooldown
+  // Put the first HEALTHY `kin` in the party at the front (slot 0 = battle lead).
+  // None in the party (or all fainted): play `missingRef` and end the scene.
+  | { op: 'setLead'; kin: number; missingRef?: string }
+  // A wild set-piece you must BEAT: no lamp, no running. A win continues the
+  // scene; a wipe is the ordinary blackout (and ends it), so it stays retryable.
+  | { op: 'bossBattle'; kin: number; level: number; terrain?: EncounterTerrain }
   // Fully restore the party (inn rest, hearthside kindness). Unless `rest:false`,
   // it also banks this spot as your blackout wake-point — every rest point in the
   // game is somewhere you'd want to come round (set rest:false for a mid-story heal).

@@ -26,6 +26,7 @@ import { TravelMenu } from '@game/ui/TravelMenu';
 import { WorldMapMenu } from '@game/ui/WorldMapMenu';
 import { ChartView } from '@game/ui/ChartView';
 import { fadeIn, fadeOut } from '@game/ui/Transitions';
+import { getCannotDie } from '@game/ui/preferences';
 import { KinInstance } from '@game/systems/party/KinInstance';
 import { MAX_PARTY } from '@game/systems/party/Party';
 import { InputController, InputAction } from '@game/systems/input/InputController';
@@ -856,12 +857,19 @@ export class WorldScene extends Phaser.Scene {
         return true;
       },
       legendaryState: (name, caughtFlag) => this.legendaryState(name, caughtFlag),
-      startSetPieceBattle: async (kin: number, level: number, terrain?: EncounterTerrain) => {
+      startSetPieceBattle: async (
+        kin: number,
+        level: number,
+        terrain?: EncounterTerrain,
+        opts?: { catchable?: boolean; canRun?: boolean },
+      ) => {
         const result = await this.startBattle({
           kind: 'wild',
           species_id: kin,
           level,
           terrain,
+          catchable: opts?.catchable,
+          can_run: opts?.canRun,
           party: this.party,
           box: this.box,
           inventory: this.inventory,
@@ -880,6 +888,19 @@ export class WorldScene extends Phaser.Scene {
             await this.blackout(); // party wiped — recover, same as any lost wild fight
             return 'lost';
         }
+      },
+      // Objects only: NPC placements stay put until the scene ends (a script may
+      // still be addressing an actor whose placement the flag would hide).
+      onFlagSet: () => this.refreshObjects(),
+      setLead: (speciesId) => {
+        // Slot 0 is the battle lead; only a kin that can actually fight qualifies.
+        const i = this.party.findIndex((k) => k.species_id === speciesId && k.hp > 0);
+        if (i < 0) return false;
+        if (i > 0) {
+          const [lead] = this.party.splice(i, 1);
+          this.party.unshift(lead);
+        }
+        return true;
       },
       setLegendaryCooldown: (name, cooldownBattles) => {
         // Expires once the player has WON `cooldownBattles` more battles.
@@ -1136,6 +1157,18 @@ export class WorldScene extends Phaser.Scene {
   private async blackout(): Promise<void> {
     this.modal = true;
     this.healParty();
+    // Cannot-die mode (Settings): the lamp flares back right here — no tithe,
+    // no trip home. A lost scripted battle still ends its scene (the runner
+    // aborts on 'lost'), so the fight is simply there to retry.
+    if (getCannotDie()) {
+      void this.sfx.playVariant('world-heal', ['a', 'b']);
+      await new DialogueBox(this, this.sfx).run([
+        { text: 'Your lamp guttered low... then flared back bright. Your kin shake themselves off, fully restored, right where you stand.' },
+      ]);
+      void this.persist();
+      this.modal = false;
+      return;
+    }
     // The kind light keeps a small tithe of wicks (10%) — losing costs, gently.
     const tithe = faintTithe(this.money);
     this.money -= tithe;
