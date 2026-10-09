@@ -705,15 +705,15 @@ for _slug, _rows in D1_OBTAINABILITY_ENCOUNTERS.items():
 # .json; tools/maps/build_pearlmoor_wanderwood.py is the source): the night band
 # + its flag:dawn day twin. Spirlet (Omenire's line's first stage) is the rare find.
 WANDERWOOD_ENCOUNTERS = {
-    "sporeling": [{"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "common", "min": 17, "max": 19},
+    "sporeling": [{"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "common", "min": 14, "max": 16},
                   {"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 58}],
-    "barkhelm":  [{"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "common", "min": 17, "max": 19},
+    "barkhelm":  [{"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "common", "min": 14, "max": 16},
                   {"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 59}],
-    "mossglow":  [{"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "common", "min": 18, "max": 20},
+    "mossglow":  [{"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "common", "min": 15, "max": 17},
                   {"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 60}],
-    "snoozlet":  [{"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "uncommon", "min": 18, "max": 20},
+    "snoozlet":  [{"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "uncommon", "min": 15, "max": 17},
                   {"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 60}],
-    "spirlet":   [{"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "rare", "min": 18, "max": 20},
+    "spirlet":   [{"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "rare", "min": 15, "max": 17},
                   {"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 61}],
 }
 for _slug, _rows in WANDERWOOD_ENCOUNTERS.items():

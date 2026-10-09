@@ -505,7 +505,8 @@ netmender's keeping.
      bird-pig with a plain *Wake it now / Later* choice ("Later" names the lamp as where it
      waits). The catch is re-offered forever — Paul's lamp menu ("Wake the bird-pig") and
      the lamp-foot step triggers — and a failed catch is only a 2-battle cooldown, so the
-     Chickenpig can never be missed. It is NEVER gifted (not even to a player named Paul):
+     Chickenpig can never be missed. The lamp-foot step triggers wait for `flag:q_south_booji_done`
+     (Andy's report-back) so they never contradict a "Later" picked a moment before. It is NEVER gifted (not even to a player named Paul):
      doing S4 is the only way to it, and S5 needs it.
    - **S5 "Not All Who Wander"** — **[BUILT 2026-10]** Paul's second story, the S4 sequel.
      **Gate:** only Paul's lamp menu opens it, so it needs S4's fight (`flag:q_south_booji_met`)
@@ -521,11 +522,12 @@ netmender's keeping.
      `flag:q_south_wander_word` and parts the trees (wrong words get a patient, retryable line) →
      **`pearlmoor_wanderwood`** (two arms wind round a central mass to the glade — the
      "Coming Round" theme as a map; four carved story trees = Abdul's "four stories, all true";
-     Wanderer Hob, who is NOT lost; a cache on the dead-end "short cut"; tall grass lv 17-20 with
-     Spirlet the rare find) → the glade (`script.wander_glade`): the stillness-omen **Omenire
-     (#113, lv 18)** comes for Paul; the **Chickenpig is forced to lead** (`setLead`; a player
+     Wanderer Hob, who is NOT lost; a cache on the dead-end "short cut"; tall grass lv 14-17 — the
+     S4 band, a ≤4 step off Pearlmoor's 8-12 — with Spirlet the rare find) → the glade (`script.wander_glade`): the stillness-omen **Omenire
+     (#113, lv 17 — sim-tuned: a fresh lv-16 Chickenpig wins solo; Omenire's spe 103 makes each
+     level above that a cliff)** comes for Paul; the **Chickenpig is forced to lead** (`setLead`; a player
      without it in the party is told to bring it, rested) and the fight can't be caught or fled
-     (`bossBattle`) → the Chickenpig crows the glade lamp alight (`flag:q_south_wander_lamp`,
+     (`bossBattle`; your own lead order is restored after the fight) → the Chickenpig crows the glade lamp alight (`flag:q_south_wander_lamp`,
      dark→lit object swap) → **the cup** at last ("That's the cup. The night? Still working on
      that.") · reward: **Paul's Tin Cup** (key) + 3 Lumen Drops · done: `flag:q_south_wander_done`
      (Paul returns to his lamp; Andy and Anth get after-lines; Andrew's easter-egg answer and Rod

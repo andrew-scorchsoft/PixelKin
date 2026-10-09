@@ -575,7 +575,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'From your lamp comes a furious, muffled crowing — and then the Chickenpig is OUT, wings flared, comb blazing, planted squarely between the old man and the dark.' },
     { op: 'say', speaker: 'PAUL', text: 'HA! Of course you are. Go on then, rooster. Tell it what you think of stillness.' },
     { op: 'letterbox', on: false, ms: 300 },
-    { op: 'bossBattle', kin: 113, level: 18 },
+    { op: 'bossBattle', kin: 113, level: 17 },
     { op: 'tint', color: '#ffe9a8', alpha: 0.35, ms: 600 },
     { op: 'narrate', text: 'The black disc shivers, thins, and comes apart into ordinary night. The Chickenpig throws back its head and CROWS.' },
     { op: 'sfx', key: 'world-pickup' },

@@ -980,11 +980,14 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   player; `matches` set flags), **`setLead {kin, missingRef}`** (puts the first healthy `kin` in
   slot 0 or plays `missingRef` and ends the scene) and **`bossBattle {kin, level}`** (a wild
   set-piece with no LAMP and no RUN — `BattleRequest.catchable/can_run:false`). A `setFlag` step
-  now refreshes flag-gated OBJECTS mid-scene (`ctx.onFlagSet`), and an aborted scene lifts its
-  own letterbox/tint (`clearCinematicFx`). The Chickenpig is NEVER gifted — S4 is the only way to it.
+  now refreshes flag-gated OBJECTS mid-scene (`ctx.onFlagSet`); an aborted scene lifts its own
+  letterbox/tint (`clearCinematicFx`) and snaps the camera back (`ctx.resetView`); `setLead`'s swap
+  is undone after the set-piece (`WorldScene.restoreLead`); answers (`store:false`) match ignoring
+  punctuation. The Chickenpig is NEVER gifted — S4 is the only way to it.
 - **Cannot-die mode (Settings → "Cannot die", 2026-10).** `Settings.cannotDie` → `preferences.
-  getCannotDie()`; `WorldScene.blackout` then heals the party IN PLACE (no warp to the rest point,
-  no wick tithe). A lost scripted battle still ends its scene, so the fight simply waits to be
+  getCannotDie()`; `WorldScene.blackout` then heals the party and RE-ENTERS the current map at the
+  player's own tile (no rest-point warp, no wick tithe) — the re-entry is what resets actors a lost
+  scene walked off-post, a marched-up sight trainer, and a focused camera; don't shortcut it. A lost scripted battle still ends its scene, so the fight simply waits to be
   retried. The settings list is now 11 rows from y 14 — at its 160px budget; a 12th row needs a
   sub-screen.
 - **Stuck players are answered in-world by ANDREW, on a fence in every rim town** (2026-08).

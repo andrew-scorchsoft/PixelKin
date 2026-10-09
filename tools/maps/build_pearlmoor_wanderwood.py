@@ -13,7 +13,8 @@ Content, all optional colour except the glade:
     four stories about himself, all different, all true.
   * WANDERER HOB on the east arm (not lost; everything else moved).
   * A cache on the central dead-end (`script.pickup_wanderwood_cache`).
-  * Tall grass on both arms — a small night table (17-20) + its dawn twin,
+  * Tall grass on both arms — a small night table (14-17 — the S4 band, Pearlmoor's 8-12 +≤4
+    steps; S5 opens right after the Chickenpig catch at 16) + its dawn twin,
     mirrored in build_species WANDERWOOD_ENCOUNTERS (CURATED_AREAS). Spirlet,
     the first stage of Omenire's line, is the rare find.
   * The GLADE: the mossheart tree, the glade lamp (dark -> lit swap on
@@ -189,11 +190,11 @@ for (x, y, nm) in [(3, 7, "glowshroom_a"), (9, 15, "glowshroom_b"), (16, 15, "gl
         deco[i] = gid(nm)
 
 # ---- encounters: night table + its dawn twin (R4 day-form convention) ---------------
-NIGHT = [{"kin_id": 56, "weight": 30, "min_level": 17, "max_level": 19},   # Sporeling
-         {"kin_id": 62, "weight": 25, "min_level": 17, "max_level": 19},   # Barkhelm
-         {"kin_id": 38, "weight": 20, "min_level": 18, "max_level": 20},   # Mossglow
-         {"kin_id": 105, "weight": 17, "min_level": 18, "max_level": 20},  # Snoozlet
-         {"kin_id": 111, "weight": 8, "min_level": 18, "max_level": 20}]   # Spirlet (rare)
+NIGHT = [{"kin_id": 56, "weight": 30, "min_level": 14, "max_level": 16},   # Sporeling
+         {"kin_id": 62, "weight": 25, "min_level": 14, "max_level": 16},   # Barkhelm
+         {"kin_id": 38, "weight": 20, "min_level": 15, "max_level": 17},   # Mossglow
+         {"kin_id": 105, "weight": 17, "min_level": 15, "max_level": 17},  # Snoozlet
+         {"kin_id": 111, "weight": 8, "min_level": 15, "max_level": 17}]   # Spirlet (rare)
 DAY = [{"kin_id": 56, "weight": 30, "min_level": 55, "max_level": 58},
        {"kin_id": 62, "weight": 25, "min_level": 56, "max_level": 59},
        {"kin_id": 38, "weight": 20, "min_level": 56, "max_level": 60},

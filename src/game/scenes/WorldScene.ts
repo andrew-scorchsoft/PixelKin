@@ -152,6 +152,8 @@ export class WorldScene extends Phaser.Scene {
   private pendingTutorial?: EntryTutorial;
   /** The last rest point (inn / home / camp) — where a blackout wakes you. */
   private respawn?: { map: string; tx: number; ty: number; facing: Facing };
+  /** A `setLead` swap to undo once the set-piece it was made for resolves. */
+  private leadRestore?: { speciesId: number; from: number };
   /** What the player calls themselves — set by the `askName` op, used as `{name}`. */
   private playerName?: string;
   /** Timestamps of recent START taps — 10 fast ones reload the map (debug). */
@@ -875,6 +877,7 @@ export class WorldScene extends Phaser.Scene {
           inventory: this.inventory,
           dex_caught: [...this.dexCaught],
         });
+        this.restoreLead();
         // Map the wild outcome to the runner's set-piece vocabulary. A wild kin
         // never flees on its own, so 'fled' is always the PLAYER bailing.
         switch (result.outcome) {
@@ -892,6 +895,13 @@ export class WorldScene extends Phaser.Scene {
       // Objects only: NPC placements stay put until the scene ends (a script may
       // still be addressing an actor whose placement the flag would hide).
       onFlagSet: () => this.refreshObjects(),
+      // An aborted scene skips its own cameraReset — snap back to the player.
+      resetView: () => {
+        if (!this.player) return;
+        const cam = this.cameras.main;
+        cam.setZoom(1);
+        cam.startFollow(this.player.sprite, true, 1, 1);
+      },
       setLead: (speciesId) => {
         // Slot 0 is the battle lead; only a kin that can actually fight qualifies.
         const i = this.party.findIndex((k) => k.species_id === speciesId && k.hp > 0);
@@ -899,6 +909,7 @@ export class WorldScene extends Phaser.Scene {
         if (i > 0) {
           const [lead] = this.party.splice(i, 1);
           this.party.unshift(lead);
+          this.leadRestore = { speciesId, from: i };
         }
         return true;
       },
@@ -1159,12 +1170,20 @@ export class WorldScene extends Phaser.Scene {
     this.healParty();
     // Cannot-die mode (Settings): the lamp flares back right here — no tithe,
     // no trip home. A lost scripted battle still ends its scene (the runner
-    // aborts on 'lost'), so the fight is simply there to retry.
+    // aborts on 'lost'), so the fight is simply there to retry. The map is
+    // RE-ENTERED at the player's own tile (the normal blackout's path, minus the
+    // trip): a scene that lost mid-way may have walked actors off their posts,
+    // marched a sight trainer up, or zoomed the camera — re-entry resets all of
+    // it, exactly as the warp home does.
     if (getCannotDie()) {
       void this.sfx.playVariant('world-heal', ['a', 'b']);
       await new DialogueBox(this, this.sfx).run([
         { text: 'Your lamp guttered low... then flared back bright. Your kin shake themselves off, fully restored, right where you stand.' },
       ]);
+      const here = { map: this.map.def.id, tx: this.player.tx, ty: this.player.ty, facing: this.player.facing };
+      await fadeOut(this);
+      await this.enterMap(here.map, { tx: here.tx, ty: here.ty }, here.facing, false);
+      await fadeIn(this);
       void this.persist();
       this.modal = false;
       return;
@@ -1187,6 +1206,16 @@ export class WorldScene extends Phaser.Scene {
     await this.enterMap(home.map, { tx: home.tx, ty: home.ty }, home.facing, false);
     await fadeIn(this);
     this.modal = false;
+  }
+
+  /** Undo a `setLead` swap once its set-piece is over — the fight opened with
+   *  that kin in front, but the player's own lead order comes back after. */
+  private restoreLead(): void {
+    const memo = this.leadRestore;
+    this.leadRestore = undefined;
+    if (!memo || this.party[0]?.species_id !== memo.speciesId) return;
+    const [kin] = this.party.splice(0, 1);
+    this.party.splice(Math.min(memo.from, this.party.length), 0, kin);
   }
 
   /** Fully restore every kin in the party (used by blackout recovery). */

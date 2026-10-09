@@ -1248,7 +1248,7 @@
       },
       "activation": "step_on",
       "ref": "script.booji_chickenpig",
-      "requires_flag": "flag:q_south_booji_met",
+      "requires_flag": "flag:q_south_booji_done",
       "hidden_when_flag": "flag:chickenpig_caught"
     },
     {
@@ -1260,7 +1260,7 @@
       },
       "activation": "step_on",
       "ref": "script.booji_chickenpig",
-      "requires_flag": "flag:q_south_booji_met",
+      "requires_flag": "flag:q_south_booji_done",
       "hidden_when_flag": "flag:chickenpig_caught"
     },
     {

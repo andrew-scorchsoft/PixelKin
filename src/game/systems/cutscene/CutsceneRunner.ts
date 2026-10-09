@@ -57,6 +57,9 @@ export interface CutsceneContext {
   /** A `setFlag` step just ran — re-evaluate flag-gated set-dressing NOW, so a
    *  swap the script narrates (a lamp catching) shows mid-scene, not after it. */
   onFlagSet?(): void;
+  /** Snap the camera back to the player at normal zoom (an aborted scene's
+   *  `cameraFocus` would otherwise stay put). */
+  resetView?(): void;
   /** Move the first healthy party kin of `speciesId` to slot 0; false if none. */
   setLead?(speciesId: number): boolean;
   /** Stamp a `cooldownBattles`-long (in WON battles) withdrawal under `name`. */
@@ -166,9 +169,15 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       if (store) ctx.onSetPlayerName?.(name);
       // Branching is flag-shaped: a match sets its flag, and the script's later
       // steps guard on it with the ordinary `if_flag`.
-      const typed = name.trim().toLowerCase();
+      // A typed ANSWER (store:false) ignores punctuation/spacing — "LOST." and
+      // "lost!" both count. Names match exactly (they can carry ' or -).
+      const norm = (v: string): string => {
+        const t = v.trim().toLowerCase();
+        return store ? t : t.replace(/[^a-z0-9]/g, '');
+      };
+      const typed = norm(name);
       for (const m of step.matches ?? []) {
-        if (typed === m.value.trim().toLowerCase()) ctx.flags.set(m.flag, true);
+        if (typed === norm(m.value)) ctx.flags.set(m.flag, true);
       }
       return true;
     }
@@ -393,6 +402,9 @@ export async function runCutscene(ctx: CutsceneContext, steps: CutsceneStep[]): 
   const completed = await runSteps(ctx, steps);
   // An aborted scene skips its own closing steps — lift any bars/wash it left
   // (skipped when the scene is gone, e.g. the `cinematic` op handed off).
-  if (!completed && ctx.scene.sys.isActive()) clearCinematicFx(ctx.scene);
+  if (!completed && ctx.scene.sys.isActive()) {
+    clearCinematicFx(ctx.scene);
+    ctx.resetView?.();
+  }
   return completed;
 }
