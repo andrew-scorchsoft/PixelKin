@@ -1,0 +1,2 @@
+# Files in release/ that must not be uploaded as Worker static assets.
+.htaccess

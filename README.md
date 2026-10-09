@@ -160,7 +160,7 @@ with [Capacitor](https://capacitorjs.com) planned for the eventual mobile build
 npm install          # install dependencies
 npm run dev          # dev server at http://localhost:5173
 npm run build        # typecheck + production build to dist/
-npm run build:dist   # the upload-ready bundle (shrunk audio; needs ffmpeg)
+npm run build:dist   # the upload-ready bundle (shrunk audio via ffmpeg — PATH or the bundled ffmpeg-static)
 npm run preview      # serve the production build to check it before shipping
 ```
 
@@ -173,51 +173,46 @@ server. For the full pixelk.in site-plus-game bundle, use `npm run release`
 
 ## Marketing site (`web/`) & deploying to pixelk.in
 
-A small, self-contained PHP + HTML landing site lives in [`web/`](web/README.md)
-— on-brand with the game (same palette and pixel font), separate from the game
-build. The live host (**pixelk.in**, WHM/cPanel over FTP) serves the site at the
-root and the game from `/play/`.
+A small static landing site lives in [`web/`](web/README.md) — on-brand with
+the game (same palette and pixel font), separate from the game build. A Node
+script renders it to plain HTML (no PHP, no server), and **pixelk.in is served
+by a Cloudflare Worker** (static assets only, `wrangler.jsonc`): the site at
+the root, the game at `/play/`.
 
 ```bash
-npm run site            # preview the site at http://localhost:8000 (PHP built-in server)
-
 npm run release         # build the game + assemble release/ (site at /, game at /play/)
-npm run release:site    # site only — refresh pages without rebuilding the game
+npm run release:site    # site only — re-render pages without rebuilding the game
 npm run release:game    # rebuild the game + refresh only release/play/
 
-npm run preview:release # rebuild + assemble, then serve release/ → / and /play/ both work
+npm run site            # render the site, then serve release/ locally (wrangler dev)
+npm run preview:release # rebuild everything, then serve release/ → / and /play/ both work
 ```
 
-`release/` (gitignored) is the upload bundle: FTP its **contents** into
-`public_html/`. The game uses Vite `base: './'`, so it runs from `/play/`
-unchanged.
+`release/` (gitignored) is the deploy bundle. The game uses Vite `base: './'`,
+so it runs from `/play/` unchanged.
 
-### Deploying
+### Deploying (Cloudflare Workers)
 
-The upload is scripted — you don't drag folders in FileZilla:
+Cloudflare **Workers Builds** is connected to the GitHub repo: every push to
+`main` deploys, and other branches get preview URLs. The dashboard settings are:
 
-```bash
-npm run version:bump minor   # 1.3.0 → 1.4.0 (package.json + the in-game version)
-npm run deploy:dry           # show the plan, send nothing
-npm run deploy               # build + assemble + sync site and game
-npm run deploy:site          # site only (leaves /play/ alone)
-npm run deploy:game          # game only
-```
+| Setting | Value |
+|---|---|
+| Build command | `npm run release` |
+| Deploy command | `npx wrangler deploy` |
+| Preview command | `npx wrangler versions upload` |
+| Variable | `NODE_VERSION` = `22` |
 
-`tools/deploy/ftp_deploy.py` syncs rather than re-uploads: it keeps a sha1
-manifest on the server, so only changed files go up. `/public_html/play/` is
-mirrored (old content-hashed bundles are deleted); the web root only ever loses
-files this tool previously put there, so the account's other folders
-(`cgi-bin`, `.well-known`, …) are never touched. Credentials come from
-`FTP_HOST` / `FTP_USER` / `FTP_PASS` (see `.env.example`). Claude can drive the
-whole flow — ask it to deploy and it'll run the **`deploy-ftp`** skill.
+To deploy by hand: `npm run version:bump minor` (optional), then
+`npm run deploy` (`release` + `wrangler deploy`; needs `wrangler login` or a
+`CLOUDFLARE_API_TOKEN`). Clean URLs (`/about` → `about.html`), the 404 page and
+301s from the old `*.php` URLs (`web/_redirects`) are all handled by
+Cloudflare's static-asset serving.
 
-To play an **already-built** `release/` locally without rebuilding, serve that
-folder directly:
-
-```bash
-php -S localhost:8000 -t release   # → site at /, game at /play/
-```
+The legacy FTP path still works for any static host:
+`npm run deploy:ftp` (`deploy:ftp:site`, `deploy:ftp:game`, `deploy:ftp:dry`)
+via `tools/deploy/ftp_deploy.py` / the **`deploy-ftp`** skill (`web/.htaccess`
+gives Apache the same clean URLs).
 
 Full notes: [`web/README.md`](web/README.md).
 

@@ -7,22 +7,37 @@
 // copies Vite has placed in dist/ down to a low bitrate that is transparent for
 // chiptune. Filenames are unchanged, so the tolerant audio loaders need no edit.
 //
-// Run after `vite build` (see the `build:dist` npm script). ffmpeg required.
+// Run after `vite build` (see the `build:dist` npm script). Uses ffmpeg from
+// PATH, else the `ffmpeg-static` devDependency (so CI / Cloudflare Workers
+// Builds, which ship no ffmpeg, still compress). With neither it warns and
+// leaves the full-fidelity audio in place rather than failing the build.
 
 import { execFileSync } from 'node:child_process';
+import { createRequire } from 'node:module';
 import { readdirSync, statSync, renameSync, rmSync } from 'node:fs';
 import { join, extname } from 'node:path';
 
 const DIST_AUDIO = 'dist/assets/audio';
 const BITRATE = '64k'; // mono; chiptune is a few square waves — 64k is plenty.
 
-function haveFfmpeg() {
+function works(bin) {
   try {
-    execFileSync('ffmpeg', ['-version'], { stdio: 'ignore' });
+    execFileSync(bin, ['-version'], { stdio: 'ignore' });
     return true;
   } catch {
     return false;
   }
+}
+
+function findFfmpeg() {
+  if (works('ffmpeg')) return 'ffmpeg';
+  try {
+    const bin = createRequire(import.meta.url)('ffmpeg-static');
+    if (bin && works(bin)) return bin;
+  } catch {
+    // ffmpeg-static not installed
+  }
+  return null;
 }
 
 function walk(dir) {
@@ -39,9 +54,10 @@ function mb(bytes) {
   return (bytes / 1048576).toFixed(2);
 }
 
-if (!haveFfmpeg()) {
-  console.error('compress_dist_audio: ffmpeg not found on PATH — skipping audio compression.');
-  process.exit(1);
+const FFMPEG = findFfmpeg();
+if (!FFMPEG) {
+  console.warn('compress_dist_audio: no ffmpeg (PATH or ffmpeg-static) — shipping full-fidelity audio uncompressed.');
+  process.exit(0);
 }
 
 let files;
@@ -57,7 +73,7 @@ let after = 0;
 for (const f of files) {
   before += statSync(f).size;
   const tmp = `${f}.tmp.mp3`;
-  execFileSync('ffmpeg', ['-y', '-i', f, '-ac', '1', '-b:a', BITRATE, '-loglevel', 'error', tmp]);
+  execFileSync(FFMPEG, ['-y', '-i', f, '-ac', '1', '-b:a', BITRATE, '-loglevel', 'error', tmp]);
   rmSync(f);
   renameSync(tmp, f);
   after += statSync(f).size;

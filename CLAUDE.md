@@ -35,7 +35,7 @@ live" sections below map them) so you're editing canon, not re-inventing it.
 npm install            # install JS deps (first time)
 npm run dev            # Vite dev server at http://localhost:5173
 npm run build          # typecheck + production build to dist/ (full-fidelity audio + sourcemap)
-npm run build:dist     # build, then shrink dist/ audio to 64k mono + drop sourcemaps — the upload-ready bundle (needs ffmpeg)
+npm run build:dist     # build, then shrink dist/ audio to 64k mono + drop sourcemaps — the upload-ready bundle (ffmpeg from PATH, else the ffmpeg-static devDep)
 npm run preview        # serve the production build
 npm run typecheck      # tsc --noEmit
 ```
@@ -108,9 +108,11 @@ docs/
   mechanics/                # types, stats, moves, capture, kindling, selection, schema, sim
   world/                    # story bible, atlas (14 areas), music direction
 tools/balance/              # the roster/balance engine (.py pipeline + .mjs validators)
-tools/deploy/ftp_deploy.py  # manifest-based FTP sync of release/ to pixelk.in (deploy-ftp skill)
-web/                        # marketing site for pixelk.in (PHP+HTML, separate from the game)
-                            #   flat .php pages + includes/ partials + own assets/ (web/README.md)
+wrangler.jsonc              # Cloudflare Worker (static assets only) serving release/ at pixelk.in
+tools/build/build_site.mjs  # renders web/ to static HTML (assemble_release.mjs calls it)
+tools/deploy/ftp_deploy.py  # LEGACY manifest-based FTP sync of release/ (deploy-ftp skill)
+web/                        # marketing site for pixelk.in (static HTML, separate from the game)
+                            #   site.mjs data+blocks, layout.mjs chrome, pages/*.html bodies (web/README.md)
 .claude/skills/             # repo skills (see below)
 VISION.md                   # the game's vision + copyright rules
 ```
@@ -253,7 +255,7 @@ go digging on every task.
 | World-map screen layout (generated) + spatial-embedding audit | `src/game/data/world/worldmap.json` ← `tools/maps/world_layout.py` |
 | Balance/roster tooling | `tools/balance/` |
 | Visual standards (binding) | `docs/art-style.md` |
-| Deploying to pixelk.in (FTP) | `.claude/skills/deploy-ftp/SKILL.md` + `tools/deploy/ftp_deploy.py` |
+| Deploying to pixelk.in (Cloudflare Workers; FTP legacy) | `wrangler.jsonc` + `web/README.md` (FTP: `.claude/skills/deploy-ftp/SKILL.md`) |
 | Asset masters (source) | `assets/` (`assets/README.md`) |
 | Area mood pieces (concept art / tile refs) | `assets/concept-art/` (`assets/concept-art/README.md`) |
 | Concept-art discovery gallery (Charts) | `src/game/content/charts.ts`, `ui/ChartsMenu.ts`, `ui/ChartView.ts` |
@@ -264,7 +266,8 @@ go digging on every task.
 
 Seven skills live in `.claude/skills/`. Use them instead of hand-rolling:
 
-- **deploy-ftp** — publishing to the live host (pixelk.in over FTP): asks scope
+- **deploy-ftp** — LEGACY: pixelk.in now deploys via Cloudflare Workers Builds on push to
+  `main` (see the marketing-site gotcha). The skill still syncs to an FTP host: asks scope
   (site / game / both) + version bump (minor default / major / none), then
   bumps, builds, assembles `release/`, dry-runs and syncs. See the deploy entry
   under "Gotchas & learned steers".
@@ -1040,35 +1043,25 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   temp path and only copy over the master after approval. A re-roll is a gacha, not a refinement —
   "fixing" an approved sprite by regenerating lost it entirely (Brinix battle_front had to be
   recovered pixel-by-pixel from a comparison montage).
-- **The marketing site (`web/`) and the game are two builds stapled at deploy.** `web/` is a small
-  self-contained PHP+HTML site (flat `.php` pages + `includes/` partials + own `assets/`, palette
-  and pixel font mirrored from the game) — preview with `npm run site` (PHP built-in server, port
-  8000). `npm run release` builds the game and assembles `release/` (gitignored): site at the root,
-  game's `dist/` dropped into `release/play/`. FTP the **contents** of `release/` into `public_html/`
-  on pixelk.in → site serves at `/`, game at `/play/` (works because Vite `base: './'`). `release:site`
-  refreshes pages without touching a staged `release/play/`; `release:game` rebuilds only the game.
-  **The upload itself is scripted — use the `deploy-ftp` skill, never a hand-rolled FTP push.**
-  `tools/deploy/ftp_deploy.py` syncs `release/` to the host from a sha1 manifest it keeps ON the
-  server (`.pixelkin-deploy.json` per scope root), so only changed files go up. Pruning is
-  asymmetric on purpose: `--scope game` MIRRORS `/public_html/play` (clears the old content-hashed
-  `assets/index-<hash>.js` bundles), `--scope site` deletes only files it previously uploaded —
-  the web root holds folders that aren't ours (`cgi-bin`, `.well-known`, mail/logs/tmp), so never
-  switch the site to mirror. Version bumps go through `node tools/build/bump_version.mjs
-  major|minor|patch` (writes package.json AND `src/game/version.ts` GAME_VERSION together — the
-  two must not drift). Creds: `FTP_HOST`/`FTP_IP`, `FTP_USER`, `FTP_PASS`/`FTP_PASS_B64` (`.env.example`).
-  Port 21 is usually BLOCKED in remote/sandboxed sessions — a connect timeout is the network,
-  not the script; hand the user the command to run locally.
-  Brand facts in `web/includes/config.php` (starter trio, world/Lumenary galleries, palette, `STUDIO_*`)
-  mirror the game — keep them in sync. Per-page SEO/social meta comes from `page_head($title,$page,$desc)`;
-  the studio is **Scorchsoft** (attribution in the footer; `license.php` routes licensing enquiries to the
-  Scorchsoft contact form; `privacy.php`/`terms.php` are the as-is/no-warranty/may-be-taken-offline legals,
-  footer-linked). Interactivity is vanilla JS in `web/assets/js/main.js` (degrades without it): the **hero**
-  (pixel-art Tinderwick concept scene `web/assets/img/hero/scene.webp` under a tuned vignette, slow pan +
-  pointer-reactive parallax, with a translucent nav over it that firms up on scroll) and a shared **lightbox**
-  (any `data-lb` element, grouped by `data-lb-group`; used by the world gallery, Lumenaries, and the
-  **first-50 kin grid** on `creatures.php`, whose modal shows each kin's battle sprite). A dev-only router
-  (`tools/dev/site-router.php`, wired into `npm run site`) serves a placeholder at `/play/` since the game
-  only lands there after `npm run release`; `npm run preview:release` serves the assembled bundle so both
-  `/` and `/play/` work locally. Site imagery is copied from `assets/concept-art/` + `public/assets/` into
-  `web/assets/img/`, and the kin grid reads a generated `web/assets/data/kin.json` (first 50 from
-  `species.json`) so the site deploys standalone — refresh recipes are in `web/README.md`.
+- **The marketing site (`web/`) and the game are two builds stapled at deploy — served by a Cloudflare
+  Worker (2026-10).** `web/` is STATIC (no PHP): `pages/<stem>.html` bodies with `{{TOKEN}}` /
+  `<!-- block:name -->` placeholders, `site.mjs` (constants, `PAGES` title/desc, data, `BLOCKS`),
+  `layout.mjs` (head/meta + footer). `tools/build/build_site.mjs` renders them; `npm run release` builds
+  the game (`build:dist`) and assembles `release/` (gitignored): site at the root, `dist/` in `release/play/`.
+  `wrangler.jsonc` serves `release/` as Worker static assets (`auto-trailing-slash` → `/about` =
+  `about.html`; `404-page`; `web/_redirects` 301s the old `*.php` URLs). **Deploy = push to `main`**:
+  Workers Builds runs `npm run release` then `npx wrangler deploy` (build var `NODE_VERSION=22`); other
+  branches get preview URLs. Cloudflare's build image has NO ffmpeg — `compress_dist_audio.mjs` falls
+  back to the `ffmpeg-static` devDep (and only warns if both are missing), so don't drop that dep.
+  Never reintroduce server-side code into `web/` (Workers can't run PHP) — a new page is a
+  `pages/*.html` + a `PAGES` row; links are clean (`href="faq"`, home `./`). Preview: `npm run site` /
+  `preview:release` (wrangler dev, production rules). The FTP path (`deploy-ftp` skill,
+  `npm run deploy:ftp*`, `web/.htaccess` for Apache clean URLs, kept out of the Worker by
+  `.assetsignore`) is legacy; port 21 is usually BLOCKED in remote sessions. Version bumps go through
+  `node tools/build/bump_version.mjs major|minor|patch` (package.json AND `src/game/version.ts` together).
+  Brand facts in `web/site.mjs` (starter trio, galleries, type chart/colours, `STUDIO_*`) mirror the game —
+  keep them in sync. The studio is **Scorchsoft** (footer attribution; `license` → Scorchsoft contact form;
+  `privacy`/`terms` are the as-is legals). `web/assets/js/main.js` = hero parallax + the shared `data-lb`
+  lightbox (world gallery, Lumenaries, the first-50 kin grid). Site imagery is copied into
+  `web/assets/img/` and the kin grid reads a generated `web/assets/data/kin.json` so the site deploys
+  standalone — refresh recipes are in `web/README.md`.

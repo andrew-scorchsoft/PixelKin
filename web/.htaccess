@@ -1,0 +1,13 @@
+# Apache equivalent of the Cloudflare Worker's static-asset rules, so the
+# legacy FTP host (tools/deploy/ftp_deploy.py) serves the same clean URLs.
+# Not uploaded to Cloudflare (release/.assetsignore).
+ErrorDocument 404 /404.html
+RewriteEngine On
+# Old PHP-era URLs → clean pages (mirrors _redirects).
+RewriteRule ^index\.php$ / [R=301,L]
+RewriteRule ^(about|story|creatures|faq|license|privacy|terms)\.php$ /$1 [R=301,L]
+# /about → about.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]

@@ -34,3 +34,6 @@ assets/audio/midi/soundfonts/
 # Future mobile (Capacitor) native projects are generated, not committed by default
 # /ios
 # /android
+
+# Wrangler local state (wrangler dev)
+.wrangler/
