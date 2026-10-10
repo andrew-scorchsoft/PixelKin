@@ -480,8 +480,8 @@
       "trigger": "step_on",
       "to_map": "tinderwick",
       "to": {
-        "tx": 6,
-        "ty": 17
+        "tx": 5,
+        "ty": 8
       },
       "facing": "down",
       "transition": "door"

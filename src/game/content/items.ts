@@ -94,7 +94,7 @@ export const ITEMS: ItemRegistry = {
   fenn_satchel: {
     id: 'fenn_satchel',
     name: "Fenn's Satchel",
-    desc: 'The Star-tender\'s worn field-satchel, left on the store counter. Heavier than it looks — a Wayfaring lives in it.',
+    desc: 'The Star-tender\'s worn field-satchel, home from a courier\'s cart. Heavier than it looks.',
     category: 'key',
   },
   beacon_wick: {

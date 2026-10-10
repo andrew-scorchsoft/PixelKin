@@ -63,6 +63,18 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/tinderwick-b.mp3',
   },
+  // R8 (2026-10): Tinderwick's old orchard, through the west hedge gap — the
+  // courier's cart (Fenn's satchel), Wren, Old Wendel and a lv 2-4 training meadow.
+  duskapple_orchard: {
+    json: 'assets/maps/duskapple_orchard.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/tinderwick-c.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/tinderwick-a.webp',
+      'assets/backgrounds/battle/tinderwick-b.webp',
+    ],
+  },
   tinderwick_lumenary: {
     json: 'assets/maps/tinderwick_lumenary.json',
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },

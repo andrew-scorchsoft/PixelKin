@@ -488,7 +488,7 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   carrying `level_up: true`, used from ITEMS (`ItemsMenu.feedLumenDrop`) — it grants exactly
   the exp owed for the next level and then runs the battle path's own MoveLearn/Kindle
   prompts. **Never give it a `price`** (a buyable level would wreck the wick economy); it is
-  found (Spore Grotto, Wind-Eye) or given. Item descriptions must fit ~80 chars / 3 wrapped
+  found (Spore Grotto, Wind-Eye, Duskapple Orchard) or given. Item descriptions must fit ~80 chars / 3 wrapped
   lines — the pack's detail pane is fixed at 3 and does not scroll.
 - **The player SWIMS on water.** `WorldScene.update` asks `map.hasTerrainAt(tx,ty,'water')`
   every frame and calls `Player.setSwimming`, which swaps to the packed `player_indi_swim`
@@ -859,11 +859,17 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `background=transparent`. Prefix the one transparent call:
   `OPENAI_IMAGE_MODEL=gpt-image-1 ./venv/bin/python …/generate.py --transparent …` (Google
   has no native alpha, so transparent always routes to OpenAI).
+- **Tinderwick was deliberately RE-SHUFFLED for returning players (R8, 2026-10)** — store ⇄
+  cottage swapped (door tiles too; spawn (5,8)), Wren + Fenn's satchel moved out to the new west
+  side area `duskapple_orchard`, a couple of signs removed on purpose. Don't "restore" the old
+  layout; `build_tinderwick.py` is now the full source of truth (it owns the old post-build
+  additions), so re-running it is safe.
 - **The opening is the SATCHEL ERRAND, not a tile-touch (2026-06).** Fenn is NOT in town: he
   waits at the `vesper_crossroads` waystone in four flag-disjoint placements (ask → waiting →
   ceremony `script.intro_mentor` → after), the Tinderwick north gate is held by a warden
   (intercept band `script.gate_warden` + `has_starter`-gated coast warps; Pearlmoor spoke
-  gated the same), and the satchel is an item_cache in `tinderwick_shop` (4-stage keeper).
+  gated the same), and the satchel is an item_cache on the courier's cart in `duskapple_orchard`
+  (R8 — the 4-stage keeper's errand line sends you WEST for it).
   `EventTrigger` now supports `hidden_when_flag` (mirror of NpcPlacement; a hidden trigger is
   filtered at lookup so it can't swallow the step's warp/encounter). Pre-starter wandering is
   safe by construction: wild encounters never fire with an empty party (`hasHealthyKin`).
