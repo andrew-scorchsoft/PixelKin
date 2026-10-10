@@ -500,6 +500,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   in the Lifting House) names the thing; two Dimglass Coast walkers and the Crossroads
   road-teller (`npc.egg_hint_*`) narrow it to the building at the TOP of Pearlmoor Quay (the
   `pearlmoor_lifting_house` at (19,0)). Nobody ever says what it is — keep it that way.
+  Every Andrew's **THE EASTER EGG** option runs ONE shared `script.andrew_egg` (2026-10): a
+  flag-staged single chain (the `andrew_hint` if/unless pattern) that first says whether the
+  egg is found yet, then one subtle next step. He names the Chickenpig only once it's caught,
+  then admits ONE more "for the bold" (S5); after the cup he says that's the lot. `andrew_wood`
+  in the Wanderwood (`script.andrew_wood`) confirms the wood is the last egg.
 - **Wick-purse caches are the anti-broke safety net.** One found purse per area across the
   first six (120→350w, `script.pickup_*_purse`). Found money is modelled as each leg's `finds`
   income in `tools/balance/progression.mjs` — add a purse, mirror it there, re-run the model.
