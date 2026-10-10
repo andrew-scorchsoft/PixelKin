@@ -435,6 +435,20 @@
      "rarity": "rare",
      "min": 9,
      "max": 11
+    },
+    {
+     "area": "duskapple_orchard",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 3,
+     "max": 4
+    },
+    {
+     "area": "duskapple_orchard",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 60
     }
    ],
    "scripted": false,
@@ -700,6 +714,20 @@
      "rarity": "common",
      "min": 56,
      "max": 62
+    },
+    {
+     "area": "duskapple_orchard",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 3,
+     "max": 4
+    },
+    {
+     "area": "duskapple_orchard",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -876,6 +904,20 @@
     },
     {
      "area": "tinderwick",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 55,
+     "max": 58
+    },
+    {
+     "area": "duskapple_orchard",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 2,
+     "max": 4
+    },
+    {
+     "area": "duskapple_orchard",
      "terrain": "tall_grass",
      "rarity": "common",
      "min": 55,
@@ -1390,6 +1432,20 @@
     },
     {
      "area": "tinderwick",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 55,
+     "max": 60
+    },
+    {
+     "area": "duskapple_orchard",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 2,
+     "max": 4
+    },
+    {
+     "area": "duskapple_orchard",
      "terrain": "tall_grass",
      "rarity": "common",
      "min": 55,
@@ -2352,7 +2408,7 @@
      "terrain": "tall_grass",
      "rarity": "common",
      "min": 8,
-     "max": 11
+     "max": 10
     },
     {
      "area": "dimglass_coast",
@@ -2492,7 +2548,7 @@
      "terrain": "tall_grass",
      "rarity": "common",
      "min": 9,
-     "max": 11
+     "max": 10
     },
     {
      "area": "gullcry_rock",
@@ -2913,7 +2969,7 @@
      "terrain": "tall_grass",
      "rarity": "common",
      "min": 8,
-     "max": 11
+     "max": 10
     },
     {
      "area": "gullcry_rock",
@@ -3615,6 +3671,20 @@
     },
     {
      "area": "pearlmoor_wanderwood",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 60
+    },
+    {
+     "area": "pearlmoor_wanderwood_far",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 15,
+     "max": 17
+    },
+    {
+     "area": "pearlmoor_wanderwood_far",
      "terrain": "tall_grass",
      "rarity": "common",
      "min": 56,
@@ -4432,7 +4502,7 @@
      "terrain": "tall_grass",
      "rarity": "common",
      "min": 8,
-     "max": 11
+     "max": 10
     },
     {
      "area": "saltreach_fen_i",
@@ -5248,6 +5318,20 @@
      "rarity": "common",
      "min": 55,
      "max": 58
+    },
+    {
+     "area": "pearlmoor_wanderwood_far",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 14,
+     "max": 16
+    },
+    {
+     "area": "pearlmoor_wanderwood_far",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 55,
+     "max": 58
     }
    ],
    "scripted": false,
@@ -5856,6 +5940,20 @@
     },
     {
      "area": "pearlmoor_wanderwood",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 59
+    },
+    {
+     "area": "pearlmoor_wanderwood_far",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 14,
+     "max": 16
+    },
+    {
+     "area": "pearlmoor_wanderwood_far",
      "terrain": "tall_grass",
      "rarity": "common",
      "min": 56,
@@ -10242,6 +10340,20 @@
      "rarity": "uncommon",
      "min": 57,
      "max": 60
+    },
+    {
+     "area": "pearlmoor_wanderwood_far",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 15,
+     "max": 17
+    },
+    {
+     "area": "pearlmoor_wanderwood_far",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 60
     }
    ],
    "scripted": false,
@@ -10789,6 +10901,20 @@
     },
     {
      "area": "pearlmoor_wanderwood",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 58,
+     "max": 61
+    },
+    {
+     "area": "pearlmoor_wanderwood_far",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 15,
+     "max": 17
+    },
+    {
+     "area": "pearlmoor_wanderwood_far",
      "terrain": "tall_grass",
      "rarity": "rare",
      "min": 58,

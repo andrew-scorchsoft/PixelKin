@@ -86,6 +86,20 @@
       "rarity": "common",
       "min": 55,
       "max": 58
+    },
+    {
+      "area": "duskapple_orchard",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 2,
+      "max": 4
+    },
+    {
+      "area": "duskapple_orchard",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 55,
+      "max": 58
     }
   ],
   "scripted": false,
