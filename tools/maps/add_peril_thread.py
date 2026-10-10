@@ -50,6 +50,11 @@ def obj(oid, sprite, at, w, h, **kw):
 # map id -> {"npcs": [...], "objects": [...], "objects_first": [...], "signs": [(id, at, ref)],
 #            "clear_deco": [(x0, y0, w, h)]}
 PLACEMENTS: dict[str, dict] = {
+    # S3 — the harbour notice on Pearlmoor Quay, beside the harbour sign by the
+    # south landing (the tide-lamps on the north shore failing).
+    "pearlmoor_quay": {
+        "signs": [("sign_peril_pearlmoor_board", (17, 16), "sign.peril_pearlmoor_board")],
+    },
     # E1 — the fen family leaving (Saltreach Fen I, by the landing). Bundles go
     # once the Verdant Gleam is relit: they unpacked. Non-solid, so the swap
     # can't leave an invisible wall.

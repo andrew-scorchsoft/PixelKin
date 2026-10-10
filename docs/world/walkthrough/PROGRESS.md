@@ -374,7 +374,7 @@ Winding Room (Reyl's log, the cut rope, Tam's card → `flag:q_south_jest_done` 
 net-floats, which LEFT the Dimglass II flats) → the netmender's rope (her one quay stage now
 branches on `q_south_jest_done`) → bell → Reyl, with `if_flag` payoffs on the bell, the
 bond-test, the Gleam narrate and the Tide-blessing. Old saves: floats-but-no-rope climbs the
-tower; rope-already saves are untouched (flag sweep verified). Content: `content/oldlight.ts`.
+tower; rope-already saves are untouched (flag sweep verified). Content: `content/oldlight.ts`. Joke rubric + every scored draft: [`../oldlight-jokes.md`](../oldlight-jokes.md) (all AI-written, ≥85/100 each).
 The Point also hosts `worry_nettie` and Reyl's post-Gleam `script.reyl_tin_rower` hook (the Tin
 Rower, Worry Club, Andrew's chain + JOURNAL rows are the sibling R9 packages).
 
