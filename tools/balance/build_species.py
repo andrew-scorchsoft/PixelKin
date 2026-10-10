@@ -716,6 +716,10 @@ WANDERWOOD_ENCOUNTERS = {
     "spirlet":   [{"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "rare", "min": 15, "max": 17},
                   {"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 61}],
 }
+# The Far Side (pearlmoor_wanderwood_far, the wood's optional loop) carries the
+# SAME table in its own grass (tools/maps/build_pearlmoor_wanderwood_far.py).
+for _slug, _rows in list(WANDERWOOD_ENCOUNTERS.items()):
+    WANDERWOOD_ENCOUNTERS[_slug] = _rows + [{**r, "area": "pearlmoor_wanderwood_far"} for r in _rows]
 for _slug, _rows in WANDERWOOD_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows)
 
@@ -759,7 +763,7 @@ CURATED_AREAS = {
     "spore_grotto", "cinderhead_mine", "cinderhead_deep",
     "cinderhead_deep_b1f", "cinderhead_deep_b2f", "umbral_spire_f2",
     # S5 (2026-10): Paul's wood above Pearlmoor (mirrored above, WANDERWOOD).
-    "pearlmoor_wanderwood",
+    "pearlmoor_wanderwood", "pearlmoor_wanderwood_far",
 }
 
 # Kin that are FIXED quest catches (a legendaryBattle set-piece), even though

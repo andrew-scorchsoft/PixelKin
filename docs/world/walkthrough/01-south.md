@@ -547,6 +547,27 @@ netmender's keeping.
      exception to VISION.md's all-original rule; don't "fix" it.** Builders:
      `tools/maps/build_pearlmoor_allotment.py`, `build_pearlmoor_wanderwood.py` (the quay's
      north gap + the breakwater's note/Paul stages were applied surgically to the shipped JSON).
+     **The Far Side (2026-10):** the wood's optional second ring, **`pearlmoor_wanderwood_far`**
+     (`build_pearlmoor_wanderwood_far.py`) — two roads off the Wanderwood's west edge, low
+     (`to_far`, rows 16-17, signed `sign.wander_far_post`) and high (`to_far_n`, rows 8-9, by
+     the glade): out one, round, back in the other. Pure discovery, never gating, still there
+     after the cup — every piece something Paul would recognise: the **laugh** that rolls
+     through the trees (one-time band, `sign.wander_far_laugh`); the **lifting bench** and its
+     harbour-stone cairn (80 / 140 / "the next sixty-three years", `sign.wander_far_bench`);
+     **Mags at her griddle** (`script.wander_mags` — a cheese-bun that heals the party without
+     becoming a rest point, the original *three clockwork lamplighters* joke Paul laughed too
+     hard to finish, and a word about the "bit of an anarchist" who returns his library books
+     early); the **glass steps** across a pond (flat slabs hold, round stones don't — "p. went
+     first", `sign.wander_glass_steps`) to an islet cache (**Lumen Drop** + p.'s note hinting the
+     wick-purses on the roads weren't all luck, `script.pickup_wander_far_steps`); the
+     **Answering Lamp** in the hollow (`script.wander_answering_lamp` — confident, often wrong:
+     dawn is "Tuesday", its "new" joke isn't, its picture of Vesperholm from above the stars is
+     solid black, and it has "no record" of any Registry) beside p.'s carving **REASSESS**
+     (`sign.wander_far_reassess`); the **sugar stump** (triangle swapped for the umbrella,
+     `sign.wander_far_stump`); and story trees **5** (the quiet helper at the Lantern Fair's long
+     game) and **6** (a friend's book read across two seas). Same grass table as the wood
+     (WANDERWOOD rows, `CURATED_AREAS`). **Andrew** waits at the wood's hub (`andrew_wood`,
+     (11,20), `script.andrew_wood`) — the last of his easter eggs.
    - **R1 "Wicks for the Lamplighter"** — the Waykeeper's Round, leg 1 (live now): parcel
      from the **Waykeeper** (`vesper_crossroads`) → the **old lamplighter** (Dimglass I) ·
      flags: `flag:q_round_lamplighter` · reward: bright-lamp kit · `[wakes with spoke]`
