@@ -177,6 +177,9 @@ const JOURNEY = [
     trainers: [
       // BUILT (the Causeway Bell loop): the breakwater's two net-hand sight
       // trainers — mirror src/game/content/trainers.ts exactly.
+      // R9 "The Old Light": Punchwheel's two jest-keepers (F2 / F4), required.
+      T('The Heckler (Old Light F2)', 'keeper', [K(11, 47), K(12, 8)]),
+      T('The Ringmaster (Old Light F4)', 'keeper', [K(12, 16), K(13, 69)]),
       T('Maren (net-hand)', 'route', [K(12, 26), K(12, 31)]),
       T('Cob (net-hand)', 'route', [K(13, 31), K(14, 27)]),
       T('Reyl Wash', 'warden', [K(12, 26), K(13, 31), K(14, 27), K(16, 24)]),
@@ -420,6 +423,8 @@ const BUILT_PAYOUTS = {
   flats_wayfarer_b: ['route', 10, 160],
   net_hand_a: ['route', 12, 192],
   net_hand_b: ['route', 14, 224],
+  oldlight_heckler: ['keeper', 12, 240], // R9 the Old Light F2
+  oldlight_ringmaster: ['keeper', 13, 260], // R9 the Old Light F4
   breakwater_paul: ['route', 15, 240], // S4 optional side-quest bout (the Lifting House)
   wrackline_drifter: ['route', 18, 288], // Pearlmoor<->Crossroads route (Wrackline Path)
   lanternfall_warden: ['route', 20, 320], // Pearlmoor<->Crossroads route (Lanternfall Road)

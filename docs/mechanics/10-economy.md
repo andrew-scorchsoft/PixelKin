@@ -201,19 +201,19 @@ Engine formulas (`KinInstance.ts`, `BattleScene.ts`):
   ~45–55% of XP), north onward the core team is set (70–100%). If we ever add
   an XP-share, re-tune the divisor down.
 
-**Model results (2026-06, all checks passing):**
+**Model results (2026-10 after R9's Old Light pair, all checks passing):**
 
 | Checkpoint | rec | ace | rusher | mainline | explorer |
 |---|--:|--:|--:|--:|--:|
 | Ember Gleam (Brisa) | 10 | 10 | L12 | L12 | L14 |
-| Tide Gleam (Reyl) | 14 | 16 | L17 | L17 | L19 |
-| Verdant Gleam (Sable) | 18 | 22 | L22 | L22 | L25 |
-| Stone Gleam (Otho) — *the wall* | 26* | 28 | L28 | L27 | L31 |
-| Storm Gleam (Mira) | 28 | 34 | L32 | L32 | L35 |
+| Tide Gleam (Reyl) | 14 | 16 | L18 | L17 | L20 |
+| Verdant Gleam (Sable) | 18 | 22 | L23 | L22 | L25 |
+| Stone Gleam (Otho) — *the wall* | 26* | 28 | L28 | L28 | L31 |
+| Storm Gleam (Mira) | 28 | 34 | L32 | L32 | L36 |
 | Frost Gleam (Ysolde) | 36 | 40 | L38 | L37 | L41 |
 | Solar Gleam (Lucan) | 42 | 46 | L43 | L42 | L46 |
-| Lunar Gleam (Nessa) | 48 | 52 | L48 | L48 | L52 |
-| Warden Còr (climax) | 54 | 56 | L52 | L53 | L57 |
+| Lunar Gleam (Nessa) | 48 | 52 | L48 | L47 | L52 |
+| Warden Còr (climax) | 54 | 56 | L53 | L53 | L58 |
 
 \* post-Descent-Vigil expectation; §4 entry rec is 22 (the wall by design).
 
@@ -230,7 +230,7 @@ The JOURNEY table in `progression.mjs` is the contract; summarised:
 
 | Region | Trainer battles (class mix) | Wild fights (mainline) | Quest wicks | Valuables |
 |---|---|--:|--:|---|
-| South *(built + breakwater pair)* | 9 — 4 route, 3 keeper, 1 rival, 2 warden (+1 optional route: Paul, S4's one-time bout, 240w) | ~29 | 750w | Wax Cake |
+| South *(built + breakwater pair + the Old Light)* | 11 — 4 route, 5 keeper (incl. R9's Old Light pair: the Heckler 11/12 → 240w, the Ringmaster 12/13 → 260w), 1 rival, 2 warden (+1 optional route: Paul, S4's one-time bout, 240w) | ~29 | 750w | Wax Cake |
 | East *(fen + Lowleaf built)* | 12 — 3 route, 7 keeper, 2 warden | ~36 | 1,550w | Moth-amber ×2 |
 | North | 13 — 6 route, 4 keeper, 1 rival (A4), 2 warden | ~21 | 1,600w + finds | Moth-amber ×2 |
 | West *(built)* | 12 — 7 route, 2 keeper, 1 rival (A5), 2 warden | ~21 | 1,100w + finds | Starglass ×4 + Moth-amber ×3 (Coldfog's Embergloss/Murk Pearl ride the optional detour) |

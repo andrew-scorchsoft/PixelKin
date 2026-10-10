@@ -211,6 +211,65 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/pearlmoor-lumenary-b.webp',
     ],
   },
+  // R9 "The Old Light": Lightkeeper's Point (off the quay's west beach) and the
+  // seven-floor joke-tower Reyl sends every Wayfarer up (build_pearlmoor_oldlight.py).
+  // Safe ground throughout — no wild encounters. F6 has no music key on purpose:
+  // F5's bed carries up and the One Joke band fades it out.
+  pearlmoor_point: {
+    json: 'assets/maps/pearlmoor_point.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/pearlmoor-quay-b.mp3',
+  },
+  pearlmoor_oldlight_1: {
+    json: 'assets/maps/pearlmoor_oldlight_1.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/sunken-solarium-a.mp3',
+  },
+  pearlmoor_oldlight_2: {
+    json: 'assets/maps/pearlmoor_oldlight_2.json',
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/sunken-solarium-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/pearlmoor-lumenary-a.webp',
+      'assets/backgrounds/battle/pearlmoor-lumenary-b.webp',
+    ],
+  },
+  pearlmoor_oldlight_3: {
+    json: 'assets/maps/pearlmoor_oldlight_3.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/sunken-solarium-a.mp3',
+  },
+  pearlmoor_oldlight_4: {
+    json: 'assets/maps/pearlmoor_oldlight_4.json',
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/sunken-solarium-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/pearlmoor-lumenary-a.webp',
+      'assets/backgrounds/battle/pearlmoor-lumenary-b.webp',
+    ],
+  },
+  pearlmoor_oldlight_5: {
+    json: 'assets/maps/pearlmoor_oldlight_5.json',
+    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/sunken-solarium-c.mp3',
+  },
+  pearlmoor_oldlight_6: {
+    json: 'assets/maps/pearlmoor_oldlight_6.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+  },
+  pearlmoor_oldlight_top: {
+    json: 'assets/maps/pearlmoor_oldlight_top.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/pearlmoor-quay-c.mp3',
+  },
   pearlmoor_shop: {
     json: 'assets/maps/pearlmoor_shop.json',
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },

@@ -4,6 +4,7 @@
  * CutsceneStep the CutsceneRunner interprets. Adding a scene is a data edit here.
  */
 import type { ScriptRegistry } from './types';
+import { OLDLIGHT_SCRIPTS } from './oldlight';
 
 export const SCRIPTS: ScriptRegistry = {
   // --- The opening: the satchel errand at the Vesper Crossroads -----------------
@@ -188,12 +189,16 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'face', actor: 'reyl', facing: 'down' },
     { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'weathered', text: 'Came on foot, did you — no need of the tides to reach my door. Good. The light should be free to all who seek it.' },
     { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'neutral', text: 'Now. Read the water with me, Wayfarer, and we shall see if the sea will listen to you.' },
+    { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'weathered', text: 'Eleven winters I\'ve only told jokes, Wayfarer. Let\'s see if I remember how to do the other thing.', if_flag: 'flag:q_south_jest_done' },
     { op: 'battle', trainer: 'lampwarden_pearlmoor' },
+    { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'proud', text: 'Well rowed. ...She\'d have heckled me rotten for that last switch.', if_flag: 'flag:q_south_jest_done' },
     // The second Gleam, wrapped in the Tide-blessing — same minor→major payoff, in a
     // cool moon-on-water key rather than Tinderwick's ember-warm one.
     { op: 'musicFade', ms: 500 },
     { op: 'tint', color: '#4fb4ff', alpha: 0.36, ms: 600 },
-    { op: 'narrate', text: 'Reyl rings the moor-bell. Out on the black water, buoy after buoy answers — and overhead, the Tide remembers how to shine.' },
+    { op: 'narrate', text: 'Reyl rings the moor-bell. Out on the black water, buoy after buoy answers — and overhead, the Tide remembers how to shine.', unless_flag: 'flag:q_south_jest_done' },
+    { op: 'narrate', text: 'Reyl walks out to the moor-bell for the first time in eleven winters. He doesn\'t hurry. He rings it anyway.', if_flag: 'flag:q_south_jest_done' },
+    { op: 'narrate', text: 'Out on the black water, buoy after buoy answers — and overhead, the Tide remembers how to shine.', if_flag: 'flag:q_south_jest_done' },
     { op: 'gleam', element: 'tide' },
     { op: 'musicCrossfade', key: 'gleam-emotional', ms: 900 },
     { op: 'tint', color: '#4fb4ff', alpha: 0, ms: 900 },
@@ -208,13 +213,41 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'weathered', text: 'So. The apprentice with the new Ember in their sky. I have ferried a hundred Wayfarers over this harbour, and I read a bond the way I read weather. Yours is nearly ripe for the testing.' },
     { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'neutral', text: 'Nearly. Tides go out so they can come back — but the blessing waits on the moor-bell, and the moor-bell waits on you.' },
     { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'grave', text: 'It has hung silent at the breakwater\'s end since the last storm carried its rope away. No bell, no Tide-blessing. No blessing, no bond-test. That is the order of things, and the sea keeps her orders.' },
-    { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'neutral', text: 'The NETMENDER on the quay splices the only rope fit to hang there. Ask her kindly — though I warn you, her temper went south with her floats in that same storm.' },
+    // R9: the Old Light slots in between the hook and the rope.
+    { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'proud', text: 'And a house rule of my own: nobody fights me till they\'ve LAUGHED. Out past the west beach, on the Point, there\'s an old lighthouse with a brass grin where its lamp should be.' },
+    { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'neutral', text: 'The quay calls it the Guffaw. Up the Old Light with you — all the way to the top. Tell it Reyl sent you. Then the NETMENDER will see you about the rope.' },
+    { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'weathered', text: '...I\'d come with you. I don\'t go up there.' },
     { op: 'setFlag', flag: 'flag:q_south_bell' },
   ],
 
+  // Reyl mid-quest (the hall stage between the hook and the bell) — one line per
+  // state of the R9 chain: the tower, then the netmender, then the moor-gate.
+  'script.reyl_waiting': [
+    { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'neutral', text: 'Been up the Old Light yet? West beach, out on the Point. You can hear it cackling at the gulls from here.', unless_flag: 'flag:q_south_jest_done' },
+    { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'weathered', text: 'No hurry, mind. Tides go out so they can come back. There\'s a tea-urn halfway up, if it still works.', unless_flag: 'flag:q_south_jest_done' },
+    { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'weathered', text: 'You went up. ...I heard it laugh, all the way down here. A different laugh. Go on — the netmender is expecting you.', if_flag: 'flag:q_south_jest_done', unless_flag: 'flag:q_south_has_rope' },
+    { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'neutral', text: 'Rope on your shoulder. Good. The moor-gate is at the south end of the quay. Ring it LOUD, Wayfarer.', if_flag: 'flag:q_south_has_rope' },
+  ],
+  // Reyl after the Gleam — his hall lines, then (once, with the toy) the Tin
+  // Rower recognition beat (script.reyl_tin_rower, authored with the Tin Rower).
+  'script.reyl_after': [
+    { op: 'dialogue', ref: 'npc.reyl_after' },
+    { op: 'run', ref: 'script.reyl_tin_rower' },
+  ],
+
+  // The netmender between Reyl's hook and the rope (one quay placement): before
+  // the Old Light she points up the tower; after it, the floats come home and
+  // the rope changes keeping.
+  'script.netmender_floats': [
+    { op: 'dialogue', ref: 'npc.netmender_floats', unless_flag: 'flag:q_south_jest_done' },
+    { op: 'run', ref: 'script.netmender_rope', if_flag: 'flag:q_south_jest_done' },
+  ],
   // The netmender, floats home: the rope changes keeping (her swap stage runs this).
+  // R9: her stage now waits on flag:q_south_jest_done (the Old Light's top) — an
+  // old save already holding the floats still climbs the tower first.
   'script.netmender_rope': [
-    { op: 'say', speaker: 'NETMENDER', text: 'My floats! Every one of them — salt-bleached, sand-scoured, and SOUND. You walked the flats for a stranger\'s nets.' },
+    { op: 'say', speaker: 'NETMENDER', text: 'My floats! Every one of them — salt-bleached and SOUND. Out of that brass magpie\'s gob, were they?' },
+    { op: 'say', speaker: 'NETMENDER', text: 'He sent you up the Old Light, didn\'t he. ...Good. About time somebody did.' },
     { op: 'say', speaker: 'NETMENDER', text: 'Then the rope is yours to carry. I spliced it the winter the bell first went quiet, and I have waited on a steady pair of hands since.' },
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'bell_rope', count: 1 },
@@ -252,6 +285,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'sfx', key: 'world-moorbell' },
     { op: 'narrate', text: 'And the harbour ANSWERS. Buoy by buoy, mast by mast, lanterns kindle along the quay behind you — and somewhere among the boats, somebody starts to sing the going-out song.' },
     { op: 'tint', color: '#4fb4ff', alpha: 0, ms: 900 },
+    { op: 'narrate', text: 'Far back on the quay, an old man takes off his hat.', if_flag: 'flag:q_south_jest_done' },
     { op: 'narrate', text: 'The Tide-blessing has begun. Reyl Wash will be waiting at his sea-altar.' },
     { op: 'musicCrossfade', key: 'dimglass-coast-a', ms: 900 },
     { op: 'letterbox', on: false, ms: 320 },
@@ -270,6 +304,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'musicCrossfade', key: 'pearlmoor-blessing', ms: 1200 },
     { op: 'narrate', text: 'The blessing-boats put out in a slow lantern-line, moon on the water and a light on every bow. The whole quay is singing the going-out song — soft, and sure, and not at all sad.' },
     { op: 'say', speaker: 'QUAY ELDER', text: 'Tides go out so they can come back. Sing it home, child. Tonight, YOU are the rhythm it kept.' },
+    { op: 'say', speaker: 'PUNCHWHEEL', text: '(faintly, down a speaking-tube from the Point) NEW MATERIAL. FINALLY.', if_flag: 'flag:q_south_jest_done' },
     { op: 'tint', color: '#4fb4ff', alpha: 0, ms: 1100 },
     { op: 'letterbox', on: false, ms: 320 },
   ],
@@ -1375,13 +1410,20 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', text: "A watcher's drop-cache beneath the last lamp but one. Found 2 TALLOW BALMS!" },
     { op: 'setFlag', flag: 'flag:picked_lane_nightreach' },
   ],
-  // The netmender's storm-drifted net-floats (the Causeway Bell's collinear
-  // errand leg — appears on the flats once Reyl sets the quest).
+  // The netmender's storm-drifted net-floats (R9: no longer on the flats —
+  // Punchwheel coughs them up at the top of the Old Light, script.oldlight_top).
   'script.pickup_net_floats': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'net_floats', count: 1 },
-    { op: 'say', text: 'A string of cork floats, storm-tangled in the dune grass — every one stamped with the Pearlmoor netmender\'s mark. Took the NET-FLOATS!' },
+    { op: 'say', text: 'A brass hatch in the drum coughs out a string of cork floats, every one stamped with the Pearlmoor netmender\'s mark. Took the NET-FLOATS!' },
     { op: 'setFlag', flag: 'flag:picked_net_floats' },
+  ],
+  // R9: Lightkeeper's Point — tucked in the rocks behind the Old Light.
+  'script.pickup_point_rocks': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'tallow_balm', count: 2 },
+    { op: 'say', text: 'Wedged in the rocks behind the lighthouse, wrapped in an old joke-card (no punchline): Found 2 TALLOW BALMS!' },
+    { op: 'setFlag', flag: 'flag:picked_point_rocks' },
   ],
   // Breakwater caches (off the lane, the standing kit).
   'script.pickup_breakwater_balm': [
@@ -5137,6 +5179,8 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', unless_flag: 'flag:dawn', speaker: 'MARSH-VILLAGER', text: "If you're going up there, we'll keep a lamp lit for you at the ring. It's what we've got left to give, and we'd like to give it." },
     { op: 'say', if_flag: 'flag:dawn', speaker: 'MARSH-VILLAGER', text: 'We kept the lamp lit, and you came down in the morning. We are going home now. First time in years I have wanted to.' },
   ],
+  // R9 "The Old Light" — Lightkeeper's Point + the joke-tower (content/oldlight.ts).
+  ...OLDLIGHT_SCRIPTS,
 };
 
 export function getScript(ref: string): import('./types').CutsceneStep[] | undefined {

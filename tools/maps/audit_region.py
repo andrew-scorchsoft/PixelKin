@@ -50,11 +50,21 @@ GRANTS: dict[str, list[str]] = {
     "tinderwick_beacon_top": ["gleam:ember"],           # the earned first Gleam
     # The Causeway Bell loop: the netmender hands the bell-rope on the quay
     # (after the net-floats errand on Dimglass II — both reachable on foot).
-    "pearlmoor_quay": ["flag:q_south_has_rope"],
+    # R9: Reyl's hook (hall) opens the Old Light; each floor's riddle opens the
+    # next stair; the top sets flag:q_south_jest_done (+ the floats), and only
+    # then does the netmender hand the rope over — so the rope is credited to
+    # the top floor (the quay itself is always reachable).
+    "pearlmoor_oldlight_1": ["flag:oldlight_1_solved"],
+    "pearlmoor_oldlight_2": ["flag:oldlight_2_solved"],
+    "pearlmoor_oldlight_3": ["flag:oldlight_3_solved"],
+    "pearlmoor_oldlight_4": ["flag:oldlight_4_solved"],
+    "pearlmoor_oldlight_5": ["flag:oldlight_5_solved"],
+    "pearlmoor_oldlight_top": ["flag:q_south_jest_done", "flag:q_south_has_rope"],
+    "pearlmoor_quay": [],
     # +flag:q_south_wander_word: S5 — Paul (at the dark lamp, post-S4) sends you
     # up the hill; the waystone's typed word parts the trees into the wood.
     "pearlmoor_breakwater": ["flag:q_south_bell_rung", "flag:q_south_wander_word"],
-    "pearlmoor_lumenary": ["tidecall", "gleam:tide", "flag:crown_south"],
+    "pearlmoor_lumenary": ["flag:q_south_bell", "tidecall", "gleam:tide", "flag:crown_south"],
     # +flag:q_east_georgina: the hollow neighbour points the way to Georgina's
     # dell (the optional E4 spur), post-Verdant — gates lowleaf_hollow->gloamwood_dell.
     "lowleaf_hollow": ["glimmerstep", "gleam:verdant", "flag:q_east_georgina"],

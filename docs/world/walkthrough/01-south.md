@@ -362,10 +362,9 @@ boundary is ungated; the *spurs* off it are gift-gated) · Gleam: — · rec. le
    can't yet open and learns to remember it.
 
 4. **Optional content**
-   - **The netmender's net-floats** — **[BUILT]** the cache at `{11,4}` on the flats
-     (`script.pickup_net_floats` → `flag:picked_net_floats`; appears once
-     `flag:q_south_bell` is set, band 8–10): the collinear errand leg of Pearlmoor's
-     **Causeway Bell** loop (see Pearlmoor §1).
+   - **The netmender's net-floats** — **moved (R9, 2026-10):** the old flats cache at
+     `{11,4}` is gone; the floats now come out of Mr. Punchwheel at the top of **the Old
+     Light** (Pearlmoor, below) — the coast backtrack became a forward climb in town.
    - **Gullcry Rock** (spur) — **[BUILT]** **Tidecall** (this region, at Pearlmoor): the rare
      harbour-light kin (#29 Glostern) + the Tide Charm. **Becomes accessible the moment you
      earn Tidecall — backtrack here.** (Post-Tidecall it also hosts S1's three dark buoys —
@@ -402,9 +401,8 @@ boundary is ungated; the *spurs* off it are gift-gated) · Gleam: — · rec. le
      blackout wake-point, so a loss on the flats no longer sends you back to Tinderwick.
    - **Signs/NPC:** a boundary sign sight-lining Pearlmoor; a route NPC reiterating the buoy/cave
      teases. Originality + canon-vocabulary pass per spine §9.
-   - **Quest hooks on this map (BUILT):** the **net-floats cache** `{11,4}`
-     (`requires_flag:flag:q_south_bell`, `script.pickup_net_floats` → `flag:picked_net_floats`);
-     **S1's three buoys** — interact `cutscene` triggers on the buoy line, lit **in order
+   - **Quest hooks on this map (BUILT):** (the net-floats cache moved to the Old Light's
+     top in R9); **S1's three buoys** — interact `cutscene` triggers on the buoy line, lit **in order
      quay-outward** (a boolean chain with the netmender's rule as each `blocked_ref`):
      `buoy_first {14,9}` (`requires_flag:flag:q_south_buoys` → `flag:q_south_buoy_a`) →
      `buoy_second {16,12}` (→ `flag:q_south_buoy_b`) → `buoy_last {16,20}` (→
@@ -650,10 +648,15 @@ netmender's keeping.
      **`requires_flag:flag:q_south_has_rope`** with **`blocked_ref:npc.netmender_gate`**
      (Warp.blocked_ref is engine-supported, step_on included) → `pearlmoor_breakwater {5–6,0}`,
      landing ON its return pair.
-   - **The bell quest chain (all data, BUILT):** `script.reyl_quest` (hall, Reyl's dais
-     stage) sets `flag:q_south_bell` → net-floats cache on `dimglass_coast_ii` `{11,4}`
-     (`flag:picked_net_floats`) → netmender swap `script.netmender_rope` gives the
-     MOOR-BELL ROPE (`flag:q_south_has_rope`) → breakwater walk (net-hand SIGHT trainers
+   - **The bell quest chain (all data, BUILT; R9 2026-10):** `script.reyl_quest` (hall,
+     Reyl's dais stage — "nobody fights me till they've laughed") sets `flag:q_south_bell` →
+     **the Old Light** on Lightkeeper's Point (below): seven floors, one riddle each
+     (`flag:oldlight_1..5_solved`), the top sets **`flag:picked_net_floats` +
+     `flag:q_south_jest_done`** → the netmender's ONE quay stage `netmender_floats`
+     (`requires q_south_bell`, `hidden_when q_south_has_rope`, `script.netmender_floats`:
+     points up the tower until `q_south_jest_done`, then runs `script.netmender_rope`) gives
+     the MOOR-BELL ROPE (`flag:q_south_has_rope`) — so an old save already holding the floats
+     still climbs, and a save already holding the rope is untouched → breakwater walk (net-hand SIGHT trainers
      **Maren** lv 12/12 + **Cob** lv 13/14 on one-tile boulder chokes, payouts 192/224 —
      route 16 × ace, mirrored in `progression.mjs BUILT_PAYOUTS`) → `script.ring_moorbell`
      at the shrine's bell (interact, both base tiles) sets `flag:q_south_bell_rung`.
@@ -663,7 +666,51 @@ netmender's keeping.
      and **grants ability `tidecall`**; the engine sets **`flag:crown_south`** once
      `gleam:ember`+`gleam:tide` are both held. Lampwarden **Reyl Wash** (Tide, ace ~16);
      his dais runs four flag-disjoint stages (`reyl_quest` → `reyl_waiting` → `reyl` →
-     `reyl_after`).
+     `reyl_after`). R9: `reyl_waiting` runs `script.reyl_waiting` (one line per chain state:
+     tower → netmender → moor-gate) and `reyl_after` runs `script.reyl_after` (his hall lines,
+     then `script.reyl_tin_rower` — the Tin Rower recognition + one Lumen Drop, once).
+     `if_flag:q_south_jest_done` payoffs: Reyl's pre/post bond-test lines, the "walks out to
+     the moor-bell for the first time in eleven winters" narrate, `ring_moorbell`'s old man
+     taking off his hat, Punchwheel's "NEW MATERIAL. FINALLY." in the Tide-blessing.
+   - **Lightkeeper's Point + the Old Light (R9, BUILT 2026-10)** — the spine of the chain is
+     Reyl's secret (eleven winters ago his wife **Tam** rowed out in the fog and didn't come
+     home; he cut the bell-rope himself and put Tam's clockwork joke-engine, **Mr.
+     Punchwheel**, where the Old Light's lamp had been). Every joke in the tower is the
+     machine's — the lobby plaque says so; the one human line is Tam's unfinished card at the
+     top, and the player finishes it with Reyl's catchphrase. Builders:
+     `tools/maps/build_pearlmoor_point.py`, `tools/maps/build_pearlmoor_oldlight.py`;
+     content `src/game/content/oldlight.ts` (final scored jokes, tagged per slot).
+     - **`pearlmoor_point`** · route 20×14, safe (no encounters/trainers). Off the quay's
+       WEST beach: quay `to_point_15/16/17` `{0,15–17}` ⇄ point `to_quay_7/8/9` `{19,7–9}`
+       (landings `{18,7–9}` / quay `{1,15–16}`). The Old Light (bespoke
+       `pearlmoor_oldlight_dark`, 5×8; `pearlmoor_oldlight_lit` swaps in on `gleam:tide`,
+       same footprint) — door `to_oldlight` `{3,7}` **`requires_flag:flag:q_south_bell`**,
+       `blocked_ref:door.oldlight_locked` (the brass nose) → `pearlmoor_oldlight_1 {7,9}`.
+       The shuttered Wash ferry-house (`sign.wash_ferryhouse` at its door, mailbox sign),
+       the sea-view bench, the jest-house sign, cache `pickup_point_rocks` `{1,2}`, the
+       Worry Club's **`worry_nettie`** `{13,10}` (`script.worry_nettie`), and the slide's
+       brass chute-mouth `up_chute` `{7,7}` (`requires q_south_jest_done`) beside the slide
+       landing `{7,8}`.
+     - **The tower** — seven `roomkit` interiors, stairs alternating NE/NW (Beacon spiral):
+       F1 Lobby of Groaners (warm; door `{7,10}`; the plaque; the Laugh Turnstile — every
+       answer works) · F2 The Late Laugh (cool; stage + pews + late audience; **the Heckler**
+       keeper lv 11/12, 240w, gates the riddle) · F3 Intermission (warm; **tea-urn `heal`
+       rest point** in the interval bar; the Hall of Mouths + three escaped punchlines) · F4
+       The Backwards Inn (cool, the lobby mirrored; **the Ringmaster** keeper lv 12/13, 260w,
+       poses the riddle; answer TIDE) · F5 Gallery of Confident Facts (cool; six captions;
+       the once-only knock-knock loop → the tower's one lowercase line; pick the TRUE caption)
+       · F6 The One Joke (12×9, no gate; no music key — the band fades F5's bed) · TOP the
+       Winding Room (Reyl's log, the cut rope, Tam's card → `q_south_jest_done` + the floats;
+       the SLIDE `{7,9}` → Point `{7,8}`).
+     - **Validation hooks:** up-stairs `up_stairs` **`requires_flag:flag:oldlight_N_solved`**
+       + `blocked_ref:sign.oldlight_stairgate`; the riddle runs on the ONE walkable approach
+       tile below each up-stair (`riddle_band`, step_on, `hidden_when` solved — the
+       speaking-tube object blocks the side approach) and on the tube (`tube`, interact);
+       F2/F4 bands carry `requires_flag:flag:oldlight_heckler_beaten`/`_ringmaster_beaten`.
+       Down-stairs always open. Riddles are `choice`s with layered retries (wrong → joke +
+       re-offer; second miss → Punchwheel blurts the answer and the gate opens anyway;
+       Cancel steps away and the band re-offers) and a `Wind the Tin Rower.` option
+       (`if_flag:flag:has_tin_rower`). No wild encounters anywhere in the tower.
    - **The Tide-blessing set-piece (Arc E, BUILT):** `script.tide_blessing` banded across
      every walkable tile of quay row 10 (the one cut between the Lumenary forecourt and
      town), `requires_flag:'gleam:tide'`, self-hiding via `flag:tide_blessing_seen`; its

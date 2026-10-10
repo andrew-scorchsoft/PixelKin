@@ -869,6 +869,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `tools/maps/add_peril_thread.py` — re-run it after rebuilding any map it touches, or the beat
   silently vanishes. Crater/cinder/charred-tree art = `draw_fallenstar_objects.py` (a strike is a
   drawn decal, never tile fills). Keep it optional colour, staged on existing flags, healing on Gleams.
+- **The Causeway Bell runs THROUGH the Old Light (R9, 2026-10).** `q_south_bell` → the tower on
+  `pearlmoor_point` (`flag:oldlight_N_solved` per floor; riddles are `choice`s built by
+  `riddle()` in `content/oldlight.ts` — every branch ends solved or cancelled) → the top sets
+  `picked_net_floats` + `q_south_jest_done` → the netmender's ONE stage (`script.netmender_floats`,
+  branches on `q_south_jest_done`). Never split her floats/rope back into two NPCs (an old
+  floats/rope save would show two netmenders on one tile); every tower joke is the machine's.
 - **Tinderwick was deliberately RE-SHUFFLED for returning players (R8, 2026-10)** — store ⇄
   cottage swapped (door tiles too; spawn (5,8)), Wren + Fenn's satchel moved out to the new west
   side area `duskapple_orchard`, a couple of signs removed on purpose. Don't "restore" the old

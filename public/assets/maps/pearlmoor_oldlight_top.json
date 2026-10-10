@@ -1,0 +1,643 @@
+{
+  "id": "pearlmoor_oldlight_top",
+  "display_name": "The Old Light \u2014 The Winding Room",
+  "width": 14,
+  "height": 11,
+  "tile_width": 16,
+  "tile_height": 16,
+  "kind": "interior",
+  "tilesets": [
+    {
+      "name": "interior_set",
+      "image": "assets/tilesets/interior_set.webp",
+      "tile_width": 16,
+      "tile_height": 16,
+      "first_gid": 1,
+      "columns": 8,
+      "tile_count": 13
+    }
+  ],
+  "layers": [
+    {
+      "name": "base",
+      "role": "base",
+      "depth": 0,
+      "data": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        3,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        3,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "walls",
+      "role": "deco",
+      "depth": 5,
+      "data": [
+        10,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        11,
+        8,
+        4,
+        4,
+        5,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        0,
+        0,
+        9,
+        12,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        13
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "punchwheel_drum",
+      "sprite": "galehigh_winch",
+      "at": {
+        "tx": 5,
+        "ty": 2
+      },
+      "w": 4,
+      "h": 5
+    },
+    {
+      "id": "punchwheel_face",
+      "sprite": "solarium_sun_mask",
+      "at": {
+        "tx": 9,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "log_table",
+      "sprite": "interior_table",
+      "at": {
+        "tx": 11,
+        "ty": 6
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "log_stool",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 11,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "lamp_rack",
+      "sprite": "interior_lamp_rack",
+      "at": {
+        "tx": 11,
+        "ty": 1
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "solid": false
+    },
+    {
+      "id": "brazier_w",
+      "sprite": "interior_brazier",
+      "at": {
+        "tx": 3,
+        "ty": 7
+      },
+      "w": 1,
+      "h": 2
+    },
+    {
+      "id": "jars",
+      "sprite": "interior_oil_jars",
+      "at": {
+        "tx": 1,
+        "ty": 9
+      },
+      "w": 2,
+      "h": 1
+    }
+  ],
+  "warps": [
+    {
+      "id": "down_stairs",
+      "at": {
+        "tx": 1,
+        "ty": 2
+      },
+      "trigger": "step_on",
+      "to_map": "pearlmoor_oldlight_6",
+      "to": {
+        "tx": 1,
+        "ty": 3
+      },
+      "facing": "down",
+      "transition": "fade"
+    },
+    {
+      "id": "slide",
+      "at": {
+        "tx": 7,
+        "ty": 9
+      },
+      "trigger": "step_on",
+      "to_map": "pearlmoor_point",
+      "to": {
+        "tx": 7,
+        "ty": 8
+      },
+      "facing": "down",
+      "transition": "fade",
+      "requires_flag": "flag:q_south_jest_done",
+      "blocked_ref": "sign.oldlight_slide_shut"
+    }
+  ],
+  "triggers": [
+    {
+      "id": "drum_5",
+      "kind": "cutscene",
+      "at": {
+        "tx": 5,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_top",
+      "hidden_when_flag": "flag:q_south_jest_done"
+    },
+    {
+      "id": "drum_6",
+      "kind": "cutscene",
+      "at": {
+        "tx": 6,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_top",
+      "hidden_when_flag": "flag:q_south_jest_done"
+    },
+    {
+      "id": "drum_7",
+      "kind": "cutscene",
+      "at": {
+        "tx": 7,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_top",
+      "hidden_when_flag": "flag:q_south_jest_done"
+    },
+    {
+      "id": "drum_8",
+      "kind": "cutscene",
+      "at": {
+        "tx": 8,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_top",
+      "hidden_when_flag": "flag:q_south_jest_done"
+    },
+    {
+      "id": "drum_9",
+      "kind": "cutscene",
+      "at": {
+        "tx": 9,
+        "ty": 2
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_top",
+      "hidden_when_flag": "flag:q_south_jest_done"
+    },
+    {
+      "id": "drum_after_5",
+      "kind": "dialogue",
+      "at": {
+        "tx": 5,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "npc.oldlight_punchwheel_after",
+      "requires_flag": "flag:q_south_jest_done"
+    },
+    {
+      "id": "drum_after_6",
+      "kind": "dialogue",
+      "at": {
+        "tx": 6,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "npc.oldlight_punchwheel_after",
+      "requires_flag": "flag:q_south_jest_done"
+    },
+    {
+      "id": "drum_after_7",
+      "kind": "dialogue",
+      "at": {
+        "tx": 7,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "npc.oldlight_punchwheel_after",
+      "requires_flag": "flag:q_south_jest_done"
+    },
+    {
+      "id": "drum_after_8",
+      "kind": "dialogue",
+      "at": {
+        "tx": 8,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "npc.oldlight_punchwheel_after",
+      "requires_flag": "flag:q_south_jest_done"
+    },
+    {
+      "id": "drum_after_9",
+      "kind": "dialogue",
+      "at": {
+        "tx": 9,
+        "ty": 2
+      },
+      "activation": "interact",
+      "ref": "npc.oldlight_punchwheel_after",
+      "requires_flag": "flag:q_south_jest_done"
+    },
+    {
+      "id": "reveal_5",
+      "kind": "cutscene",
+      "at": {
+        "tx": 5,
+        "ty": 7
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_top",
+      "hidden_when_flag": "flag:q_south_jest_done"
+    },
+    {
+      "id": "reveal_6",
+      "kind": "cutscene",
+      "at": {
+        "tx": 6,
+        "ty": 7
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_top",
+      "hidden_when_flag": "flag:q_south_jest_done"
+    },
+    {
+      "id": "reveal_7",
+      "kind": "cutscene",
+      "at": {
+        "tx": 7,
+        "ty": 7
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_top",
+      "hidden_when_flag": "flag:q_south_jest_done"
+    },
+    {
+      "id": "reveal_8",
+      "kind": "cutscene",
+      "at": {
+        "tx": 8,
+        "ty": 7
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_top",
+      "hidden_when_flag": "flag:q_south_jest_done"
+    },
+    {
+      "id": "rope_sill",
+      "kind": "sign",
+      "at": {
+        "tx": 3,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_rope"
+    },
+    {
+      "id": "log_11",
+      "kind": "cutscene",
+      "at": {
+        "tx": 11,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_log"
+    },
+    {
+      "id": "log_12",
+      "kind": "cutscene",
+      "at": {
+        "tx": 12,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_log"
+    }
+  ],
+  "encounters": [],
+  "npcs": [],
+  "gates": [],
+  "music": "assets/audio/music/pearlmoor-quay-c.mp3"
+}

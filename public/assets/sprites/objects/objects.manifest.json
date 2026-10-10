@@ -581,6 +581,13 @@
       "tw": 2,
       "th": 3
     },
+    "pearlmoor_ferryhouse": {
+      "path": "assets/sprites/objects/pearlmoor_ferryhouse.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
     "pearlmoor_inn": {
       "path": "assets/sprites/objects/pearlmoor_inn.webp",
       "width": 80,
@@ -608,6 +615,20 @@
       "height": 48,
       "tw": 2,
       "th": 3
+    },
+    "pearlmoor_oldlight_dark": {
+      "path": "assets/sprites/objects/pearlmoor_oldlight_dark.webp",
+      "width": 80,
+      "height": 128,
+      "tw": 5,
+      "th": 8
+    },
+    "pearlmoor_oldlight_lit": {
+      "path": "assets/sprites/objects/pearlmoor_oldlight_lit.webp",
+      "width": 80,
+      "height": 128,
+      "tw": 5,
+      "th": 8
     },
     "pearlmoor_shop": {
       "path": "assets/sprites/objects/pearlmoor_shop.webp",
