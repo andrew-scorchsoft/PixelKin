@@ -4189,14 +4189,7 @@ export const SCRIPTS: ScriptRegistry = {
         // `script.andrew_road`), so the fence you met him at answers them too.
         { label: 'WHERE NEXT?', ops: [{ op: 'run', ref: 'script.andrew_hint' }] },
         { label: 'THESE ROADS', ops: [{ op: 'run', ref: 'script.andrew_roads' }] },
-        {
-          label: 'THE EASTER EGG',
-          ops: [
-            { op: 'say', speaker: 'ANDREW', text: 'Still not me, still out there. Word on the coast road is it\'s south of here — past the flats, in the town on the water.' },
-            { op: 'say', speaker: 'ANDREW', text: 'Something about a building at the top of the quay. And an old man nobody will explain properly. That\'s all I\'ve got.' },
-            { op: 'say', if_flag: 'flag:q_south_booji_done', unless_flag: 'flag:q_south_wander_done', speaker: 'ANDREW', text: 'Found the old man already? Then here\'s a funny thing: they say he goes walking. Up the hill behind the quay. Says he\'s never once been lost up there.' },
-          ],
-        },
+        { label: 'THE EASTER EGG', ops: [{ op: 'run', ref: 'script.andrew_egg' }] },
         {
           label: 'CHANGE MY NAME',
           ops: [
@@ -4346,14 +4339,125 @@ export const SCRIPTS: ScriptRegistry = {
       options: [
         { label: 'WHERE NEXT?', ops: [{ op: 'run', ref: 'script.andrew_hint' }] },
         { label: 'THESE ROADS', ops: [{ op: 'run', ref: 'script.andrew_roads' }] },
+        { label: 'THE EASTER EGG', ops: [{ op: 'run', ref: 'script.andrew_egg' }] },
+        { label: 'NOTHING', ops: [{ op: 'say', speaker: 'ANDREW', text: 'Right you are. Mind how you go — and mind the dark.' }] },
+      ],
+    },
+  ],
+  // ---------------------------------------------------------------------------
+  // ANDREW'S EASTER EGGS — "have I found it yet?"
+  //
+  // Every Andrew answers THE EASTER EGG with the player's status, then one
+  // subtle nudge toward the next step. Same single-chain pattern as
+  // `script.andrew_hint`: each line is guarded `if_flag: <stage>` +
+  // `unless_flag: <next stage>`, so EXACTLY ONE plays.
+  //
+  // The egg is the Chickenpig (#163, S4 "The Booji-Wooji Man") — Andrew never
+  // names it until it's in your lamp. Once it is, he admits there's ONE more,
+  // for the bold: S5 "Not All Who Wander" (the Wanderwood). Once the cup is
+  // won he says, plainly, that's the lot. Stages:
+  //   A  nothing yet, can't reach the coast town   (unless gleam:ember)
+  //   B  can head south, quest not started         (gleam:ember → q_south_booji)
+  //   C  on the trail at the Lifting House         (q_south_booji → _met)
+  //   D  met the old man, egg not caught           (_met → chickenpig_caught)
+  //   E  FOUND IT — one more, if you're bold       (chickenpig_caught → q_south_wander)
+  //   F  on the last one                           (q_south_wander → _done)
+  //   G  found them all                            (q_south_wander_done)
+  // ---------------------------------------------------------------------------
+  'script.andrew_egg': [
+    // A
+    {
+      op: 'say', unless_flag: 'gleam:ember', speaker: 'ANDREW',
+      text: 'Found it yet? No — and that\'s no slight on you. You can\'t get to it from here. Not yet.',
+    },
+    {
+      op: 'say', unless_flag: 'gleam:ember', speaker: 'ANDREW',
+      text: 'All I\'ll say is: it\'s a long way south, where the land gives up and the town carries on regardless. Get your first Gleam and the road will take you most of the way.',
+    },
+    // B
+    {
+      op: 'say', if_flag: 'gleam:ember', unless_flag: 'flag:q_south_booji', speaker: 'ANDREW',
+      text: 'Found it yet? Not yet. You\'re warm, though — or you will be, once you\'re standing on Pearlmoor Quay.',
+    },
+    {
+      op: 'say', if_flag: 'gleam:ember', unless_flag: 'flag:q_south_booji', speaker: 'ANDREW',
+      text: 'Go to the very top of the quay. There\'s a house where folk lift heavy things and talk about an old man more than they lift. Ask them about him. Ask ALL of them.',
+    },
+    // C
+    {
+      op: 'say', if_flag: 'flag:q_south_booji', unless_flag: 'flag:q_south_booji_met', speaker: 'ANDREW',
+      text: 'Found it yet? Not quite — but you\'re on the trail, I can tell. You\'ve got that look the Lifting House gives people.',
+    },
+    {
+      op: 'say', if_flag: 'flag:q_south_booji', unless_flag: 'flag:q_south_booji_met', speaker: 'ANDREW',
+      text: 'He walks the breakwater, past the bell — right out where the boards give up. Ring the bell first if the gate won\'t let you by. Then go and meet him.',
+    },
+    // D
+    {
+      op: 'say', if_flag: 'flag:q_south_booji_met', unless_flag: 'flag:chickenpig_caught', speaker: 'ANDREW',
+      text: 'You MET him? Ha! Then you\'re standing right next to it. ...But no. You haven\'t found it. Not yet.',
+    },
+    {
+      op: 'say', if_flag: 'flag:q_south_booji_met', unless_flag: 'flag:chickenpig_caught', speaker: 'ANDREW',
+      text: 'The egg isn\'t the old man, exactly. Look at the foot of his dark lamp. Something sleeps there that thinks it\'s morning. Ask him to wake it.',
+    },
+    // E
+    {
+      op: 'say', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:q_south_wander', speaker: 'ANDREW',
+      text: 'Wait — is that a rooster-pig in your lamp? You FOUND it! That\'s the egg, {name}. That\'s the one. Well done. Genuinely.',
+    },
+    {
+      op: 'say', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:q_south_wander', speaker: 'ANDREW',
+      text: '...Mostly. There IS one more. Only one, and only for the bold. If you fancy it, go back to the old man at his lamp and ask him whether he ever gets lost.',
+    },
+    // F
+    {
+      op: 'say', if_flag: 'flag:q_south_wander', unless_flag: 'flag:q_south_wander_done', speaker: 'ANDREW',
+      text: 'Going after the last one, are you? Brave. One found, one to go.',
+    },
+    {
+      op: 'say', if_flag: 'flag:q_south_wander', unless_flag: 'flag:q_south_wander_done', speaker: 'ANDREW',
+      text: 'Up the hill behind the quay, past Rod\'s allotment. There\'s a stone there that wants the end of a famous line. Bring the bird. I\'ll see you in there.',
+    },
+    // G
+    {
+      op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'ANDREW',
+      text: 'Found them? Both of them. The rooster-pig AND the old wood. That\'s the lot, {name} — there aren\'t any more. Honest. I\'ve checked my pockets.',
+    },
+    {
+      op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'ANDREW',
+      text: 'Everything else out there is just the game being a game. Which, I\'d argue, is the best egg of all. Go on — the sky still wants relighting.',
+    },
+  ],
+
+  // Andrew in the Wanderwood (`andrew_wood`). The bold player's reward: he says
+  // out loud that THIS is the last of his easter eggs, so nobody spends the rest
+  // of the game hunting for a third.
+  'script.andrew_wood': [
+    { op: 'emote', actor: 'andrew_wood', emote: 'alert' },
+    {
+      op: 'say', unless_flag: 'flag:q_south_wander_done', speaker: 'ANDREW',
+      text: 'There you are, {name}. Told you I\'d see you in here. Somebody has to hold the trees up.',
+    },
+    {
+      op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'ANDREW',
+      text: 'Back again, {name}? Can\'t blame you. It\'s a good wood for not being lost in.',
+    },
+    {
+      op: 'choice',
+      speaker: 'ANDREW',
+      prompt: 'Anything I can do you for?',
+      options: [
         {
-          label: 'THE EASTER EGG',
+          label: 'IS THIS AN EGG?',
           ops: [
-            { op: 'say', speaker: 'ANDREW', text: 'Still out there, still not me. South, is the word — past the flats, the town on the water. A building at the top of the quay, and an old man nobody will explain properly.' },
-            { op: 'say', if_flag: 'flag:q_south_booji_done', unless_flag: 'flag:q_south_wander_done', speaker: 'ANDREW', text: 'Found the old man already? Then here\'s a funny thing: they say he goes walking. Up the hill behind the quay. Says he\'s never once been lost up there.' },
+            { op: 'say', speaker: 'ANDREW', text: 'It is. This wood is the LAST of them. The rooster-pig was the first; you\'re standing in the second. There isn\'t a third — I promise, and I don\'t promise lightly.' },
+            { op: 'say', unless_flag: 'flag:q_south_wander_done', speaker: 'ANDREW', text: 'The old man\'s waiting in the middle. Read his trees on the way — he\'d never say so, but he carved them for whoever came looking.' },
+            { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'ANDREW', text: 'And you\'ve done it — the bird, the glade, the cup. That\'s every egg I hid. From here on it\'s just you, the road, and the sky. Not a bad trade.' },
           ],
         },
-        { label: 'NOTHING', ops: [{ op: 'say', speaker: 'ANDREW', text: 'Right you are. Mind how you go — and mind the dark.' }] },
+        { label: 'WHERE NEXT?', ops: [{ op: 'run', ref: 'script.andrew_hint' }] },
+        { label: 'NOTHING', ops: [{ op: 'say', speaker: 'ANDREW', text: 'Right you are. Mind the roots — and mind the dark.' }] },
       ],
     },
   ],
