@@ -4908,7 +4908,7 @@ export const SCRIPTS: ScriptRegistry = {
   'script.andrew_hint_tide_tower': [
     {
       op: 'say', if_flag: 'flag:q_south_bell', speaker: 'ANDREW',
-      text: 'The Old Light — out on the Point past the quay, the one cackling at the gulls. Climb it. All the way up. There\'s tea halfway, if you\'re flagging.',
+      text: 'The Old Light — follow the beach path WEST off the quay, past the signpost, out to the Point. The one cackling at the gulls. Climb it. There\'s tea halfway up.',
     },
     {
       op: 'say', unless_flag: 'flag:q_south_bell', speaker: 'ANDREW',
@@ -5180,6 +5180,41 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', if_flag: 'flag:dawn', speaker: 'MARSH-VILLAGER', text: 'We kept the lamp lit, and you came down in the morning. We are going home now. First time in years I have wanted to.' },
   ],
   // R9 "The Old Light" — Lightkeeper's Point + the joke-tower (content/oldlight.ts).
+
+  // ===========================================================================
+  // R9 — THE OLD LIGHT, talked about. Three townsfolk who point the way to the
+  // laughing lighthouse on Lightkeeper's Point (west along Pearlmoor's beach
+  // path), each staged single-chain on the Causeway Bell flags: BEFORE Reyl
+  // sends you (q_south_bell) it's gossip; WHILE you owe the climb it's
+  // directions; AFTER (q_south_jest_done) it's relief. Their speech borrows the
+  // real Paul's habits: the lowercase "p." sign-off, the "!!!!!!", the unholy
+  // laughter, the Luddite / bit-of-an-anarchist self-description, REASSESS,
+  // "three robots walked into a bar" and "how are the cheese-buns?".
+  // ===========================================================================
+  // Fisher Agnes Pell — on Pearlmoor's beach by the path west (the junction).
+  'script.oldlight_hint_beach': [
+    { op: 'say', unless_flag: 'flag:q_south_bell', speaker: 'AGNES', text: 'Hear that? Out west, past the end of the beach. That\'s the Old Light. It LAUGHS. All night. Unholy laughter, my old dad would\'ve called it!!!!!!' },
+    { op: 'say', unless_flag: 'flag:q_south_bell', speaker: 'AGNES', text: 'Reyl won\'t talk about it. Ask him yourself, up at the Lumenary. Then come back down here and follow the beach path west. You\'ll know it when it laughs at you.' },
+    { op: 'say', if_flag: 'flag:q_south_bell', unless_flag: 'flag:q_south_jest_done', speaker: 'AGNES', text: 'He sent you up it, didn\'t he. Thought so. Follow this path WEST, all the way to the end of the beach — the Point\'s just round the corner.' },
+    { op: 'say', if_flag: 'flag:q_south_bell', unless_flag: 'flag:q_south_jest_done', speaker: 'AGNES', text: 'Seven floors of jokes, they say. Answer it however you like — it\'s not the answer it wants, love, it\'s the company. And there\'s tea halfway up.' },
+    { op: 'say', if_flag: 'flag:q_south_jest_done', speaker: 'AGNES', text: 'It\'s stopped laughing AT us. Started laughing WITH us. There\'s a difference, and the whole beach can hear it.' },
+  ],
+  // Old Ambrose — a self-declared Luddite on the Lumenary forecourt, reading
+  // a battered book with every margin filled in.
+  'script.oldlight_hint_luddite': [
+    { op: 'say', unless_flag: 'flag:q_south_jest_done', speaker: 'AMBROSE', text: 'Thinking machine in the Old Light, they say. Writes its OWN jokes. I\'m a bit of a Luddite, me — and a bit of an anarchist, on Tuesdays.' },
+    { op: 'say', unless_flag: 'flag:q_south_bell', speaker: 'AMBROSE', text: 'Still. A machine that laughs alone all night isn\'t a menace. It\'s lonely. Reyl knows why. Ask him. West along the beach path, when he lets you.' },
+    { op: 'say', if_flag: 'flag:q_south_bell', unless_flag: 'flag:q_south_jest_done', speaker: 'AMBROSE', text: 'Off up it, are you? Then here\'s my one rule for clever machines: whatever it tells you, REASSESS. Ask it again next year. — p. wrote that in my book. Good man.' },
+    { op: 'say', if_flag: 'flag:q_south_jest_done', speaker: 'AMBROSE', text: 'So it CAN tell a joke no one\'s ever told. Took two of you, mind. I\'ve written that in the margin. Next to "REASSESS". Next to "how are the cheese-buns?"' },
+  ],
+  // Tobias Quill — a traveller on Dimglass Coast II, just short of Pearlmoor.
+  'script.oldlight_hint_road': [
+    { op: 'say', unless_flag: 'flag:q_south_jest_done', speaker: 'TOBIAS', text: 'Three clockwork lamplighters walk into an inn— no, wait, don\'t go, I\'ve not got the end. Nobody has. That\'s the trouble.' },
+    { op: 'say', unless_flag: 'flag:q_south_jest_done', speaker: 'TOBIAS', text: 'Heard it from the lighthouse on the Point, past Pearlmoor\'s west beach. Laughing at its own jokes. I may be overestimating my theatrical skills, but I laughed too!!!!!!' },
+    { op: 'say', unless_flag: 'flag:q_south_bell', speaker: 'TOBIAS', text: 'The ferryman Reyl\'s the one to ask. Up at the Lumenary, top of the quay.' },
+    { op: 'say', if_flag: 'flag:q_south_jest_done', speaker: 'TOBIAS', text: 'Somebody finished it! The lighthouse joke! I came back down the coast just to tell you I don\'t know the ending — and I\'m DELIGHTED.' },
+  ],
+
   ...OLDLIGHT_SCRIPTS,
 };
 

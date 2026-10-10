@@ -353,6 +353,12 @@ free instead of re-deriving it.
 
 - Develop on the feature branch you were given; commit with clear messages;
   push to that branch. Don't open PRs unless asked.
+- **Bump the game version at the end of every round of changes** (before the final push):
+  `node tools/build/bump_version.mjs minor` (a patch for a tiny fix) — it updates `package.json`
+  AND `src/game/version.ts` (shown on the title screen + browser tab), then refresh the lock with
+  `npm install --package-lock-only`. Players check that number to know they're on the new build.
+- If the branch's PR has already been merged, restart the branch from `origin/main` and open a
+  NEW PR for the follow-up work (never stack onto the merged one).
 
 ## Gotchas & learned steers
 
