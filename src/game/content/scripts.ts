@@ -980,6 +980,114 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', text: 'Wedged in a root-hollow where the path gives up: Found a BEACON CHARGE! Someone else came this way, thought it was a short cut, and left in a hurry.' },
     { op: 'setFlag', flag: 'flag:picked_wanderwood_cache' },
   ],
+  // --- S5: the Far Side (pearlmoor_wanderwood_far) — optional discovery -------
+  // The islet at the end of the glass steps: a Lumen Drop (found, never sold) and
+  // p.'s note — the quiet-helper motif turned on the player. Nothing is confirmed.
+  'script.pickup_wander_far_steps': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'lumen_drop', count: 1 },
+    { op: 'say', text: 'Under a flat stone on the islet, a twist of oilcloth: Found a LUMEN DROP! There\'s a note folded round it, in a big unhurried hand.' },
+    { op: 'narrate', text: '"Knew you\'d take the steps. Don\'t tell me you didn\'t look down.' },
+    { op: 'narrate', text: 'Those wick-purses you keep tripping over on the roads? Funny how they always turn up just when you\'re skint. Some folk are just lucky, I suppose. — p."' },
+    { op: 'setFlag', flag: 'flag:picked_wander_far_steps' },
+  ],
+  // The ANSWERING LAMP: a brass, glass-headed lamp in the hollow that answers
+  // anything at once and with total confidence — and is right about half the
+  // time. p.'s carving beside it (sign.wander_far_reassess) says what to do
+  // about that. Re-askable forever; Cancel just leaves it humming.
+  'script.wander_answering_lamp': [
+    { op: 'narrate', text: 'In the crook of the hollow tree sits a brass lamp with a round glass head. It hums. A little plate on its base reads: ASK ME ANYTHING. I AM NEVER WRONG.' },
+    {
+      op: 'choice',
+      prompt: 'The glass head brightens, eagerly.',
+      options: [
+        {
+          label: 'Where\'s Paul?',
+          ops: [
+            { op: 'say', speaker: 'ANSWERING LAMP', text: 'PAUL IS IN THE WOOD. PAUL IS ALSO ON THE BREAKWATER. PAUL IS, ON AVERAGE, EVERYWHERE. CONFIDENCE: TOTAL.' },
+            { op: 'say', speaker: 'ANSWERING LAMP', text: 'HE REFERS TO ME AS "THE THINKING KETTLE." I HAVE DECIDED THIS IS A COMPLIMENT.' },
+          ],
+        },
+        {
+          label: 'When\'s dawn?',
+          ops: [
+            { op: 'say', speaker: 'ANSWERING LAMP', text: 'DAWN IS SCHEDULED FOR TUESDAY.' },
+            { op: 'narrate', text: 'It does not say which Tuesday. It does not appear to think that matters. It seems, if anything, delighted with itself.' },
+          ],
+        },
+        {
+          label: 'A new joke',
+          ops: [
+            { op: 'say', speaker: 'ANSWERING LAMP', text: 'A JOKE NO ONE HAS EVER TOLD BEFORE. PREPARING. ...WHY DID THE KIN CROSS THE ROAD?' },
+            { op: 'say', speaker: 'ANSWERING LAMP', text: 'TO GET TO THE OTHER SIDE. HA. HA. HA. (THAT WAS THE DELIVERY.)' },
+            { op: 'narrate', text: 'It has, you are fairly sure, been told before. Possibly by everyone. The lamp waits, glowing, for applause.' },
+          ],
+        },
+        {
+          label: 'Show the world',
+          ops: [
+            { op: 'say', speaker: 'ANSWERING LAMP', text: 'HERE IS ALL OF VESPERHOLM, AS SEEN FROM ABOVE THE STARS.' },
+            { op: 'tint', color: '#000000', alpha: 0.85, ms: 400 },
+            { op: 'wait', ms: 900 },
+            { op: 'narrate', text: 'The glass head goes completely, perfectly black. It holds the picture proudly for a long moment.' },
+            { op: 'tint', color: '#000000', alpha: 0, ms: 400 },
+            { op: 'narrate', text: 'Scratched into the brass beneath it, in the big hand: LAUGHED AT THAT FOR ELEVEN MINUTES. — p.' },
+          ],
+        },
+        {
+          label: 'The Registry?',
+          ops: [
+            { op: 'say', speaker: 'ANSWERING LAMP', text: 'I HAVE NO RECORD OF ANY REGISTRY.' },
+            { op: 'say', speaker: 'ANSWERING LAMP', text: '...WHICH IS, I AM OBLIGED TO NOTE, EXACTLY WHAT A RECORD WOULD SAY.' },
+            { op: 'narrate', text: 'The lamp hums for a while, and then very deliberately starts humming something else.' },
+          ],
+        },
+      ],
+    },
+  ],
+  // MAGS at her griddle on the Far Side's low road: the cheese-bun (a gentle
+  // no-rest heal — rest:false, so it never becomes a respawn point), the
+  // clockwork lamplighters joke (Paul started it, laughed too hard to finish),
+  // and a word about the man himself. Re-visitable; Cancel just leaves.
+  'script.wander_mags': [
+    { op: 'narrate', text: 'A little stall with a striped awning, a black griddle hissing over embers. The whole clearing smells, unreasonably, of melted cheese.' },
+    { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'MAGS', text: 'He came through earlier with a rooster-pig\'s feather in his hat and ordered THREE. Never three, Paul. Never. Whatever you did up in that glade — this one\'s on the house.' },
+    {
+      op: 'choice',
+      speaker: 'MAGS',
+      prompt: 'Bun, love? Or are you after a joke?',
+      options: [
+        {
+          label: 'A cheese-bun',
+          ops: [
+            { op: 'say', speaker: 'MAGS', text: 'Griddle-bun, cheese right the way through. The way Paul has them. Two, he has — every time, after any sort of contest, feet up in front of the worst play the travelling players put on.' },
+            { op: 'say', speaker: 'MAGS', text: 'Calls it his REWARD. Reward for what, I ask him. "For surviving, Mags." Every time.' },
+            { op: 'heal', rest: false },
+            { op: 'narrate', text: 'It\'s hot, and far too good, and you share it round your lamp without being asked. Your kin are fully restored. Nobody needs to know how many you had.' },
+          ],
+        },
+        {
+          label: 'A joke',
+          ops: [
+            { op: 'say', speaker: 'MAGS', text: 'Paul started this one at my griddle once and laughed so hard at the START he never got to the end. So I finished it for him. Ready?' },
+            { op: 'say', speaker: 'MAGS', text: 'Three clockwork lamplighters walk into an inn. The innkeeper looks up and says, "Long night, lads?"' },
+            { op: 'say', speaker: 'MAGS', text: 'The first one says, "Eleven years." The second one says, "Twelve."' },
+            { op: 'say', speaker: 'MAGS', text: 'And the third one leans over and whispers, "Don\'t start him off. He still thinks it\'s Tuesday."' },
+            { op: 'narrate', text: 'There is a pause.' },
+            { op: 'say', speaker: 'MAGS', text: 'Paul laughed for a quarter of an hour. Rattled every lamp in the inn. ...I never said it was a GOOD joke.' },
+          ],
+        },
+        {
+          label: 'About Paul',
+          ops: [
+            { op: 'say', speaker: 'MAGS', text: 'Forty-odd years I\'ve fed him. Tells everyone he\'s "a bit of an anarchist." Returns his library books early. Brings the lending-house flowers.' },
+            { op: 'say', speaker: 'MAGS', text: 'Doesn\'t trust anything that comes with a guarantee — me included, he says, and then orders two more buns.' },
+            { op: 'say', speaker: 'MAGS', text: 'And he\'ll never say so, but he looks out for people. Quietly. The ones just starting out, mostly. ...You\'d know, I expect. Or you wouldn\'t. That\'s rather the point of him.' },
+          ],
+        },
+      ],
+    },
+  ],
   'script.pickup_breakwater_charge': [
     { op: 'giveItem', item: 'glow_charge', count: 1 },
     { op: 'say', text: 'A bell-tender\'s drop-box, wedged in the stones. Found a GLOW CHARGE!' },

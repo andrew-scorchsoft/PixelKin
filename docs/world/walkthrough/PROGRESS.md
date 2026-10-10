@@ -295,6 +295,15 @@ Also: Settings → **Cannot die** (blackout heals in place). Verified by a scrip
 playtest of every path (hint → note → wrong word → LOST → wood → boss win / missing-kin /
 cannot-die loss → cup) + all map audits + the four balance gates.
 
+**The Far Side (2026-10, follow-up):** the Wanderwood grew an optional loop —
+`pearlmoor_wanderwood_far` (30×24, `build_pearlmoor_wanderwood_far.py`), two roads off the
+wood's west edge (low `to_far` / high `to_far_n`, by the glade). All discovery, no gating, still
+there after the cup: Mags's griddle (`script.wander_mags` — cheese-bun no-rest heal, the
+clockwork-lamplighters joke), the Answering Lamp (`script.wander_answering_lamp`) + p.'s
+REASSESS carving, the glass steps + islet Lumen Drop cache, the lifting bench, the sugar stump,
+the laugh, story trees 5–6. Andrew stands at the hub (`andrew_wood` → `script.andrew_wood`). Same
+grass table as the wood (mirrored in build_species, CURATED_AREAS).
+
 ### R5 — Release ladder (verification, mostly cheap)
 - ✅ `npm run build` verified green (2026-06).
 - ✅ `npm run build:dist` verified green (2026-06): 195 mp3 → 64k mono, 68→27 MB audio,

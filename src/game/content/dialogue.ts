@@ -479,6 +479,42 @@ export const DIALOGUE: DialogueRegistry = {
   'npc.chickenpig_after': [
     { text: 'Only the dark lamp now, and the old man\'s company. Somewhere in your lamp, a rooster-pig is practising being right about the morning.' },
   ],
+  // --- S5: the Far Side (pearlmoor_wanderwood_far) — the wood's optional loop ----
+  // All discovery, no gating: things Paul would recognise, in the wood's voice.
+  'sign.wander_far_post': [
+    { text: 'A finger of driftwood nailed to a trunk, pointing west into the trees:\nTHE FAR SIDE. LONGER WAY ROUND. BETTER WAY ROUND. — p.' },
+  ],
+  'sign.wander_far_laugh': [
+    { text: 'Somewhere off through the trees, somebody LAUGHS — a great, helpless, unholy bellow that goes on far longer than any joke could possibly deserve.' },
+    { text: 'It bounces from trunk to trunk, shakes a roost of sleepy kin out of the branches, stops... and starts again, worse. Then one last snort. Then quiet.' },
+    { text: 'You have the strong feeling that, wherever you were just then, you were meant to hear it.' },
+  ],
+  'sign.wander_far_bench': [
+    { text: 'A fallen stone column, worn flat on top into a bench. Beside it, a cairn of round harbour-stones, each one polished shiny where hands have gripped it.' },
+    { text: 'Scratched into the bench, in a big unhurried hand:\n80 IN THREE YEARS? — p.' },
+    { text: 'Underneath, in a younger, cheekier hand:\nWHY STOP THERE. 140.' },
+    { text: 'And underneath THAT, the big hand again, pressed so deep it nearly went through:\nGOOD. THAT\'S THE NEXT SIXTY-THREE YEARS SORTED. — p.' },
+  ],
+  'sign.wander_glass_steps': [
+    { text: 'THE GLASS STEPS\nSome hold. Some don\'t. The flat grey ones hold. The round ones roll, and you get wet, and everybody laughs.\n— p. went first.' },
+  ],
+  'sign.wander_far_reassess': [
+    { text: 'Cut into the hollow tree beside the brass lamp, in a big unhurried hand:\nIT ANSWERS EVERYTHING. IT IS SURE OF EVERYTHING.\nCHECK EVERYTHING.' },
+    { text: 'And below, smaller, like an afterthought that turned out to be the point:\nASK IT AGAIN NEXT YEAR. REASSESS. — p.' },
+  ],
+  'sign.wander_far_stump': [
+    { text: 'A great sawn-off stump, its top worn honey-smooth. Two shapes have been pressed into the rings with a hot nail: a TRIANGLE, neat and easy, and an UMBRELLA, all spokes and trouble.' },
+    { text: 'Beside them, in the big hand:\nLANTERN FAIR, THE SUGAR-CUT GAME. THE LAD DREW THE UMBRELLA. I SWAPPED HIM MY TRIANGLE.\nTIP: LICK THE EDGES FOR THE HARD ONES. — p.' },
+  ],
+  'sign.wander_story_5': [
+    { text: 'Another of the carved trees, the letters gone silver with age:\nP. PLAYED THE LANTERN FAIR\'S LONG GAME "FOR HIMSELF." LOST EVERY HAND HE COULD HAVE WON. STOOD IN FRONT OF A STRANGER WHEN THE SHOVING STARTED.' },
+    { text: 'SPENT HIS LAST WICK BUYING THE STRANGER A SAFER PLACE IN THE QUEUE. THE STRANGER WON. P. SAID HE\'D HAD HIS TURN — THEIRS WAS JUST STARTING.' },
+    { text: 'Squeezed in underneath, much smaller:\n(HE\'LL TELL YOU HE\'S NO ACTOR. HE\'LL BE LYING.)' },
+  ],
+  'sign.wander_story_6': [
+    { text: 'The last carved tree, down a little side path, as if it didn\'t want to make a fuss:\nP. CROSSED TWO SEAS WITH A FRIEND\'S BOOK IN HIS BAG. READ IT IN A SUNNY PORT WHERE NOBODY KNEW HIS NAME. WROTE IN EVERY MARGIN.' },
+    { text: 'SENT IT HOME. ALL THE NOTES WERE KIND. THE LONGEST ONE SAID: GOOD — NOW CHECK IT STILL WORKS NEXT YEAR. THE FRIEND ADDED A WHOLE NEW CHAPTER.' },
+  ],
 
   // --- Dimglass Coast: the witness (appears after flag:dusk_begins, B1) -------
   'npc.dimglass_witness': [
