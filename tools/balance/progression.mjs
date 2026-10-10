@@ -141,7 +141,7 @@ const JOURNEY = [
   {
     name: 'Dimglass Coast I + Beacon ascent',
     leadShare: 0.55,
-    wild: { areas: ['dimglass_coast'], band: [3, 6], fights: { rusher: 4, mainline: 9, explorer: 14 } },
+    wild: { areas: ['dimglass_coast'], band: [3, 5], fights: { rusher: 4, mainline: 9, explorer: 14 } },
     trainers: [
       T('Wren (A2)', 'rival', [K(5, 8), K(6, 26)]),
       T('Tansy', 'keeper', [K(7, 16)]),
@@ -158,7 +158,7 @@ const JOURNEY = [
     wild: { areas: ['dimglass_coast'], band: [8, 10], fights: { rusher: 4, mainline: 8, explorer: 13 } },
     trainers: [
       T('Morrow', 'route', [K(9, 26), K(9, 31)]),
-      T('Elspeth', 'route', [K(10, 27), K(11, 31)]),
+      T('Elspeth', 'route', [K(10, 27), K(10, 31)]),
     ],
     income: { quests: 200, valuables: 0, finds: 300 }, // the flats wicks find (100) + the dune wick-purse (200)
     spend: { tallow_balm: 2 },
@@ -409,7 +409,7 @@ const BUILT_PAYOUTS = {
   bloom_warden_a: ['keeper', 20, 400],
   bloom_warden_b: ['keeper', 21, 420],
   lampwarden_lowleaf: ['warden', 22, 1320],
-  flats_wayfarer_b: ['route', 11, 176],
+  flats_wayfarer_b: ['route', 10, 160],
   net_hand_a: ['route', 12, 192],
   net_hand_b: ['route', 14, 224],
   breakwater_paul: ['route', 15, 240], // S4 optional side-quest bout (the Lifting House)

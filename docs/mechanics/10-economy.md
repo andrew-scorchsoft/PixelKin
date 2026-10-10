@@ -237,7 +237,9 @@ Rules for region authors:
    model enforces solvency; if a region adds spending, add quest wicks or a
    valuable, not a payout-rate change.
 4. **1–2 mandatory grass crossings per route** (existing level-design rule)
-   supply the wild-fight floor the rusher column relies on.
+   supply the wild-fight floor the rusher column relies on. (South's Dimglass
+   I/II crossings carry a dry lane since 2026-10 — the model's South fight counts
+   are what a player choosing the grass gets; the checkpoints didn't move.)
 
 ## 9. Tuning rules — when the game changes (binding)
 

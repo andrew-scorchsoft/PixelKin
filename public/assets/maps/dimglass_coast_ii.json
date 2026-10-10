@@ -302,8 +302,8 @@
         35,
         35,
         35,
-        133,
-        135,
+        130,
+        132,
         33,
         34,
         36,
@@ -320,8 +320,8 @@
         154,
         154,
         153,
-        153,
-        154,
+        130,
+        132,
         153,
         154,
         153,
@@ -338,8 +338,8 @@
         154,
         155,
         153,
-        154,
-        155,
+        130,
+        132,
         154,
         154,
         155,
@@ -356,8 +356,8 @@
         34,
         33,
         34,
-        127,
-        129,
+        130,
+        132,
         35,
         33,
         36,
@@ -2048,31 +2048,31 @@
         "w": 5,
         "h": 5
       },
-      "encounter_rate": 0.1,
+      "encounter_rate": 0.09,
       "table": [
         {
           "kin_id": 26,
           "weight": 50,
           "min_level": 8,
-          "max_level": 10
+          "max_level": 9
         },
         {
           "kin_id": 31,
           "weight": 30,
           "min_level": 8,
-          "max_level": 10
+          "max_level": 9
         },
         {
           "kin_id": 27,
           "weight": 20,
           "min_level": 9,
-          "max_level": 10
+          "max_level": 9
         },
         {
           "kin_id": 47,
           "weight": 25,
           "min_level": 8,
-          "max_level": 10
+          "max_level": 9
         }
       ],
       "hidden_when_flag": "flag:dawn"
@@ -2086,31 +2086,31 @@
         "w": 4,
         "h": 5
       },
-      "encounter_rate": 0.1,
+      "encounter_rate": 0.09,
       "table": [
         {
           "kin_id": 26,
           "weight": 50,
           "min_level": 8,
-          "max_level": 10
+          "max_level": 9
         },
         {
           "kin_id": 31,
           "weight": 30,
           "min_level": 8,
-          "max_level": 10
+          "max_level": 9
         },
         {
           "kin_id": 27,
           "weight": 20,
           "min_level": 9,
-          "max_level": 10
+          "max_level": 9
         },
         {
           "kin_id": 47,
           "weight": 25,
           "min_level": 8,
-          "max_level": 10
+          "max_level": 9
         }
       ],
       "hidden_when_flag": "flag:dawn"
@@ -2124,31 +2124,31 @@
         "w": 5,
         "h": 5
       },
-      "encounter_rate": 0.1,
+      "encounter_rate": 0.09,
       "table": [
         {
           "kin_id": 26,
           "weight": 45,
           "min_level": 9,
-          "max_level": 10
+          "max_level": 9
         },
         {
           "kin_id": 31,
           "weight": 30,
           "min_level": 9,
-          "max_level": 10
+          "max_level": 9
         },
         {
           "kin_id": 27,
           "weight": 25,
           "min_level": 9,
-          "max_level": 11
+          "max_level": 10
         },
         {
           "kin_id": 47,
           "weight": 25,
           "min_level": 9,
-          "max_level": 11
+          "max_level": 10
         }
       ],
       "hidden_when_flag": "flag:dawn"
@@ -2162,31 +2162,31 @@
         "w": 9,
         "h": 2
       },
-      "encounter_rate": 0.1,
+      "encounter_rate": 0.09,
       "table": [
         {
           "kin_id": 26,
           "weight": 45,
           "min_level": 9,
-          "max_level": 11
+          "max_level": 10
         },
         {
           "kin_id": 31,
           "weight": 30,
           "min_level": 9,
-          "max_level": 11
+          "max_level": 10
         },
         {
           "kin_id": 27,
           "weight": 25,
           "min_level": 9,
-          "max_level": 11
+          "max_level": 10
         },
         {
           "kin_id": 47,
           "weight": 25,
           "min_level": 9,
-          "max_level": 11
+          "max_level": 10
         }
       ],
       "hidden_when_flag": "flag:dawn"
@@ -2227,7 +2227,7 @@
         "w": 5,
         "h": 5
       },
-      "encounter_rate": 0.1,
+      "encounter_rate": 0.09,
       "table": [
         {
           "kin_id": 26,
@@ -2259,7 +2259,7 @@
         "w": 4,
         "h": 5
       },
-      "encounter_rate": 0.1,
+      "encounter_rate": 0.09,
       "table": [
         {
           "kin_id": 26,
@@ -2291,7 +2291,7 @@
         "w": 5,
         "h": 5
       },
-      "encounter_rate": 0.1,
+      "encounter_rate": 0.09,
       "table": [
         {
           "kin_id": 26,
@@ -2323,7 +2323,7 @@
         "w": 9,
         "h": 2
       },
-      "encounter_rate": 0.1,
+      "encounter_rate": 0.09,
       "table": [
         {
           "kin_id": 26,
@@ -2531,6 +2531,17 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_flats_purse",
       "hidden_when_flag": "flag:picked_flats_purse"
+    },
+    {
+      "id": "cockler",
+      "at": {
+        "tx": 11,
+        "ty": 28
+      },
+      "facing": "down",
+      "sprite": "npc_old_woman",
+      "movement": "static",
+      "dialogue_ref": "script.flats_rest"
     }
   ],
   "gates": [

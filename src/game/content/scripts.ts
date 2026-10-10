@@ -779,6 +779,17 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'fade', dir: 'in' },
     { op: 'say', text: 'You wake warm. Your kin are rested and bright.' },
   ],
+  // The roadside rest on the tidal flats (Dimglass Coast II, just past the seam
+  // from Coast I): the South road's only heal between Tinderwick and Pearlmoor —
+  // a cockler's driftwood fire. Banks the respawn point like any rest.
+  'script.flats_rest': [
+    { op: 'say', speaker: 'COCKLER', text: 'Long road from Tinderwick, isn\'t it? Sit by the driftwood fire a while, dear. The tide won\'t turn without us.' },
+    { op: 'fade', dir: 'out' },
+    { op: 'wait', ms: 700 },
+    { op: 'heal' },
+    { op: 'fade', dir: 'in' },
+    { op: 'say', speaker: 'COCKLER', text: 'There — warm through, the lot of you. Keep to the dry trail if your lamp is low; the dune grass will wait for a brighter hour.' },
+  ],
 
   // --- Wayfarer's kits + the open counters ------------------------------------
   // Each town keeper hands a starter bundle ONCE (the kit NPC swaps for the

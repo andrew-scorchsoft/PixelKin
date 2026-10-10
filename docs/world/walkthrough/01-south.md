@@ -111,8 +111,8 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
       relit from the **beacon**, whose **wick-key was lost on the coast road**
       (`script.brisa_quest` → `flag:beacon_quest`). The wick-locked tower door + sign
       are visible from the square — the goal stands over the town the whole time.
-   8. **Walk Dimglass Coast I** — Wren's sight-challenge, the mandatory grass
-      crossings, the `dusk_begins` omen — and receive the **BEACON WICK-KEY** from the
+   8. **Walk Dimglass Coast I** — Wren's sight-challenge, the grass
+      crossings (each now carries a dry lane — 2026-10 ease), the `dusk_begins` omen — and receive the **BEACON WICK-KEY** from the
       **old lamplighter** near the north boundary (`script.give_wick` →
       `flag:has_beacon_wick`). The player returns at ~lv 7–8, not 5.
    9. **Climb the beacon.** The foot door answers the key; floors I–II are held by
@@ -290,11 +290,14 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
      **`requires_ability:glimmerstep`** → `tideglass_cavern {tx:4,ty:8}`, `door`.
    - **Gates:** `AbilityGate` `shallows_tide` (`ability:tidecall`, `effect:make_passable`) over
      shallows tiles `{14–15, 4–6}`.
-   - **Encounters:** four optional patches (`grass_a–d`, `tall_grass`, rate 0.09, band 3–6)
-     PLUS the two **[BUILT] mandatory crossings** — `crossing_a rect{3,9,11,2}` and
-     `crossing_b rect{3,26,11,2}`, rate 0.10 — full-corridor bands (tallgrass on the green,
-     **dunegrass** over the beach) with the lit lane carved out, so the road north passes
-     *through* encounter ground (level-design §11 rule 7). Gated water:
+   - **Encounters:** four optional patches (`grass_a–d`, `tall_grass`, rate 0.09, band 3–5;
+     the side pocket `bank_hollow` keeps 5–6) PLUS the two **[BUILT] crossings** —
+     `crossing_a rect{3,9,11,2}` (3–5) and `crossing_b rect{3,26,11,2}` (4–5), rate **0.08** —
+     full-corridor bands (tallgrass on the green, **dunegrass** over the beach) with the lit
+     lane carved out: since the **2026-10 ease** the dirt lane runs unbroken through
+     `crossing_a` (x8–9) and the two tufts at the ledge-gap choke `{10–11,22}` are mown, so
+     the road north has a grass-free line and the flanking grass is optional (the
+     `dusk_begins` band still makes the route carry gameplay). Gated water:
      `tide_shallows rect{14,5,2,4}` `water` **`requires_ability:tidecall`** (rare read).
    - **NPCs / signs:** **[BUILT] Wren is a SIGHT trainer** at `{5,11}` facing the lane
      (`sight_range:4`, `script.wren_dimglass`, swap to `npc.dimglass_wayfarer` once
@@ -363,7 +366,15 @@ boundary is ungated; the *spurs* off it are gift-gated) · Gleam: — · rec. le
      segment-I teases are the visible promise; the actual gated warps belong on II to match the
      graph.)
    - **Encounters:** `tall_grass` + gated `water` zones, Tide / Tide-Light kin (Brinelet, Lumpin,
-     Mooncatch-adjacent), **level band ~8–10** (§4, no cliff into Pearlmoor's 12).
+     Mooncatch-adjacent), **level band ~8–10** (§4, no cliff into Pearlmoor's 12): since the
+     **2026-10 ease** `dune_a/b` run 8–9 and `dune_c`/`dune_crossing` 9–10 (each top shaved
+     by one; nothing rolls 11), rate **0.09**, and the dark trail (x9–10) runs unbroken through
+     `dune_crossing`, so the dunegrass band is optional. Route trainers: **Morrow** lv 9/9
+     (144w) and **Elspeth** lv 10/10 (eased from 10/11; 160w).
+   - **Roadside rest [BUILT 2026-10]:** the **cockler** (`npc_old_woman`, `{11,28}`, just
+     past the seam from Coast I) runs `script.flats_rest` — a full `heal` at her driftwood
+     fire, the South road's only rest between Tinderwick and Pearlmoor; it banks the
+     blackout wake-point, so a loss on the flats no longer sends you back to Tinderwick.
    - **Signs/NPC:** a boundary sign sight-lining Pearlmoor; a route NPC reiterating the buoy/cave
      teases. Originality + canon-vocabulary pass per spine §9.
    - **Quest hooks on this map (BUILT):** the **net-floats cache** `{11,4}`
