@@ -2714,6 +2714,17 @@
       "dialogue_ref": "script.worry_hester"
     },
     {
+      "id": "peril_neighbour",
+      "at": {
+        "tx": 2,
+        "ty": 10
+      },
+      "facing": "up",
+      "sprite": "npc_old_woman",
+      "movement": "static",
+      "dialogue_ref": "script.peril_tinderwick_neighbour"
+    },
+    {
       "id": "cache_purse",
       "at": {
         "tx": 1,

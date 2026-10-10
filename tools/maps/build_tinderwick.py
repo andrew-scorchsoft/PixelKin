@@ -393,6 +393,10 @@ m = {
         # west of the main lane (off every path; Gilly on the flats is her sister).
         {"id": "worry_hester", "at": {"tx": 11, "ty": 11}, "facing": "down", "sprite": "npc_old_woman",
          "movement": "look_around", "dialogue_ref": "script.worry_hester"},
+        # R9 peril thread: a neighbour watching the west gap toward the fallen
+        # star in Duskapple Orchard (script stages itself on dusk_begins/gleam/dawn).
+        {"id": "peril_neighbour", "at": {"tx": 2, "ty": 10}, "facing": "up", "sprite": "npc_old_woman",
+         "movement": "static", "dialogue_ref": "script.peril_tinderwick_neighbour"},
         # The wick-purse safety net (one per early area) — now on the WEST strand.
         {"id": "cache_purse", "at": {"tx": 1, "ty": 20}, "facing": "down",
          "sprite": "item_cache", "movement": "static",
