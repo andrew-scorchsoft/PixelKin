@@ -56,6 +56,34 @@
       "tw": 6,
       "th": 5
     },
+    "fallenstar_cinder_star": {
+      "path": "assets/sprites/objects/fallenstar_cinder_star.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "fallenstar_crater": {
+      "path": "assets/sprites/objects/fallenstar_crater.webp",
+      "width": 96,
+      "height": 64,
+      "tw": 6,
+      "th": 4
+    },
+    "fallenstar_crater_snow": {
+      "path": "assets/sprites/objects/fallenstar_crater_snow.webp",
+      "width": 96,
+      "height": 64,
+      "tw": 6,
+      "th": 4
+    },
+    "fallenstar_tree_charred": {
+      "path": "assets/sprites/objects/fallenstar_tree_charred.webp",
+      "width": 48,
+      "height": 64,
+      "tw": 3,
+      "th": 4
+    },
     "galehigh_cottage": {
       "path": "assets/sprites/objects/galehigh_cottage.webp",
       "width": 80,

@@ -18,6 +18,17 @@ A small, SAFE-feeling side area that earns its walk:
     starter it's inert (wild encounters never fire with an empty party).
   * two caches: balms under the old tree (on the way), and a LUMEN DROP in
     the far SW corner past the meadow (off-lane: you went looking).
+  * THE FALLEN STAR (R9, the peril thread — docs/world/walkthrough/
+    08-the-peril-thread.md): three nights before the game opens a guttered
+    star's cinder struck the north rows. Where the middle tree stood there is
+    a scorched crater (`fallenstar_crater`, a drawn non-solid decal — the frozen
+    tile set can't draw one) round a cold `fallenstar_cinder_star`, flanked by two CHARRED trees
+    (`fallenstar_tree_charred`). A once-only step_on band at the mouth plays
+    `script.orchard_first_sight`; Wendel + his granddaughter Tamsin carry the
+    grief in flag-staged scripts. HEALING: `gleam:ember` -> shoots in the burn
+    (closed nightflowers); `flag:dawn` -> they bloom, the charred trees leaf
+    again (living-tree twins, same footprint), the cinder wakes into a star
+    shard (same 2x2 footprint + solidity — collision is flag-blind).
 
 Wiring: `to_tinderwick(_s)` (21, 8-9) -> tinderwick (0, 8-9) facing right;
 tinderwick's `to_orchard(_s)` (0, 8-9) lands ON (21, 8-9). Landings sit on the
@@ -98,8 +109,33 @@ m: dict = {
 
 # ---- the orchard rows: old fruit trees in a loose grid (walk-under crowns, solid
 # trunk row) — alleys between them are the orchard's own lanes -----------------------
-for i, at in enumerate([(3, 2), (7, 2), (11, 2), (17, 1), (11, 12)]):
+# apple_1 (7,2) was the tree the star struck — gone; the crater sits in its place.
+for i, at in [(3, (17, 1)), (4, (11, 12))]:
     pt.crown_tree(m, oid=f"apple_{i}", sprite="tinderwick_tree", at=at)
+# its two neighbours burned: CHARRED until the dawn, then leafed again (a swap
+# pair on the SAME footprint/overhang/walk_under — collision is flag-blind).
+for i, at in [(0, (3, 2)), (2, (11, 2))]:
+    pt.crown_tree(m, oid=f"apple_{i}_charred", sprite="fallenstar_tree_charred", at=at)
+    m["objects"][-1]["hidden_when_flag"] = "flag:dawn"
+    pt.crown_tree(m, oid=f"apple_{i}", sprite="tinderwick_tree", at=at)
+    m["objects"][-1]["requires_flag"] = "flag:dawn"
+
+# the fallen star itself, seated where the first tree stood (solid 2x2) -- and,
+# once the sky is whole, the same cinder woken into a star shard.
+STAR = (7, 4)   # seated in the crater decal's pit
+m["objects"].append({"id": "cinder_star", "sprite": "fallenstar_cinder_star",
+                     "at": {"tx": STAR[0], "ty": STAR[1]}, "w": 2, "h": 2, "overhang": 1,
+                     "hidden_when_flag": "flag:dawn"})
+m["objects"].append({"id": "cinder_star_woken", "sprite": "vigil_star_shard",
+                     "at": {"tx": STAR[0], "ty": STAR[1]}, "w": 2, "h": 2, "overhang": 1,
+                     "requires_flag": "flag:dawn"})
+# the shoots that come up in the burn once the Ember is relit, and their bloom
+# at dawn (a `solid: False` 3x1 pair on the crater's south lip — never collides).
+m["objects"].append({"id": "burn_shoots", "sprite": "solarium_nightflowers_closed",
+                     "at": {"tx": 6, "ty": 6}, "w": 3, "h": 1, "solid": False, "requires_flag": "gleam:ember",
+                     "hidden_when_flag": "flag:dawn"})
+m["objects"].append({"id": "burn_bloom", "sprite": "solarium_nightflowers_bloomed",
+                     "at": {"tx": 6, "ty": 6}, "w": 3, "h": 1, "solid": False, "requires_flag": "flag:dawn"})
 
 # Wendel's apple stall (north side of the ride, east) and the courier's cart
 # (south of the ride, at the end of its spur — it threw a wheel on the turn).
@@ -145,10 +181,24 @@ for nid, ref, req, hide in [
 # Old Wendel at his stall — and, once the sky is relit, his apples glow again.
 m["npcs"].append({"id": "wendel", "at": {"tx": 16, "ty": 6}, "facing": "left",
                   "sprite": "npc_old_man", "movement": "look_around",
-                  "dialogue_ref": "npc.orchard_wendel", "hidden_when_flag": "flag:dawn"})
+                  "dialogue_ref": "script.orchard_wendel", "hidden_when_flag": "flag:dawn"})
 m["npcs"].append({"id": "wendel_dawn", "at": {"tx": 16, "ty": 6}, "facing": "left",
                   "sprite": "npc_old_man", "movement": "look_around",
                   "dialogue_ref": "npc.orchard_wendel_dawn", "requires_flag": "flag:dawn"})
+
+# Tamsin, Wendel's granddaughter, at the crater's lip — one placement, a
+# flag-staged script (shock -> fear after dusk_begins -> shoots -> the dawn).
+m["npcs"].append({"id": "tamsin", "at": {"tx": 9, "ty": 6}, "facing": "left", "sprite": "npc_girl",
+                  "movement": "static", "dialogue_ref": "script.orchard_tamsin"})
+
+# FIRST SIGHT — a once-only band across the whole mouth (every walkable cell of
+# the cut, x=20 rows 8-9), so nobody walks round it. Pure colour: it never gates.
+for y in (8, 9):
+    m["triggers"].append({"id": f"first_sight_{y}", "kind": "cutscene",
+                          "at": {"tx": 20, "ty": y}, "activation": "step_on",
+                          "ref": "script.orchard_first_sight", "once": True,
+                          "sets_flags": ["flag:orchard_strike_seen"],
+                          "hidden_when_flag": "flag:orchard_strike_seen"})
 
 # Wren (A1) — the rival, "helping" with the cart until the Wayfaring begins.
 m["npcs"].append({"id": "wren", "at": {"tx": 9, "ty": 7}, "facing": "down", "sprite": "wren",
@@ -195,6 +245,42 @@ mk.scatter_decor(deco, base, W, H, rng, density=0.16,
 for (x, y) in ((2, 10), (19, 15), (13, 15)):
     if not (tree[y * W + x] or pond[y * W + x]):
         deco[y * W + x] = gid("boulder")
+
+# ---- THE CRATER: a guttered star's strike where apple_1 stood ----------------------
+# The strike is ONE drawn, non-solid ground decal (`fallenstar_crater`, 6x4: radial
+# scorch, ash-earth bowl, lit lip, charred pit, cold cracks — see
+# draw_fallenstar_objects.py); the frozen tile set's flat fills square off a blob
+# and read as a texture error, not a fall. Here we only clear the decor under it
+# and singe the grass round its rim (dead grey tufts + grit, no flowers), plus two
+# thrown-up stones. Its own rng, so the rest of the orchard is unchanged.
+crng = random.Random(9119)
+CRATER_AT, CRATER_W, CRATER_H = (5, 3), 6, 4
+under = {(x, y) for y in range(CRATER_AT[1], CRATER_AT[1] + CRATER_H)
+         for x in range(CRATER_AT[0], CRATER_AT[0] + CRATER_W)}
+for (x, y) in under:
+    deco[y * W + x] = 0
+ROCKS = ((5, 7), (11, 6))
+for y in range(CRATER_AT[1] - 1, CRATER_AT[1] + CRATER_H + 2):
+    for x in range(CRATER_AT[0] - 2, CRATER_AT[0] + CRATER_W + 2):
+        if not (0 <= x < W and 0 <= y < H) or (x, y) in under or (x, y) in ROCKS:
+            continue
+        i = y * W + x
+        if tree[i] or path[i]:
+            continue
+        r = crng.random()
+        if r < 0.30:
+            deco[i] = crng.choice([gid("greymoss_a"), gid("greymoss_b")])
+        elif r < 0.45:
+            deco[i] = gid("g_pebble")
+        else:
+            deco[i] = 0          # no flowers or daisies at the burn's edge
+for (x, y) in ROCKS:          # thrown-up stones on the rim (solid, off the walk)
+    deco[y * W + x] = gid("boulder")
+# the decal goes FIRST so every other object (the cinder, the charred trunks)
+# draws over it at the shared body depth
+m["objects"].insert(0, {"id": "star_crater", "sprite": "fallenstar_crater",
+                        "at": {"tx": CRATER_AT[0], "ty": CRATER_AT[1]},
+                        "w": CRATER_W, "h": CRATER_H, "solid": False})
 
 if __name__ == "__main__":
     ok = mk.finalize(m, scale=4)

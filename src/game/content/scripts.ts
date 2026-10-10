@@ -5027,6 +5027,116 @@ export const SCRIPTS: ScriptRegistry = {
       ],
     },
   ],
+
+  // ===========================================================================
+  // THE PERIL THREAD (R9) — the Long Dusk made visible, escalating across the
+  // journey and HEALING as the player relights the sky. Design + beat table:
+  // docs/world/walkthrough/08-the-peril-thread.md. All optional colour: no beat
+  // gates a road or sets a progression flag. Staging is the single-chain
+  // if_flag/unless_flag pattern (script.andrew_hint): exactly one stage line
+  // plays, keyed to flags the journey already sets. Placements: Duskapple's own
+  // builder + tools/maps/add_peril_thread.py (re-run after any map rebuild).
+  // ===========================================================================
+
+  // S1 — FIRST SIGHT of the fallen star (Duskapple Orchard, once, on the mouth
+  // band). Everyone sees it: the satchel errand brings every player here. The
+  // "a light fails" register, held short: letterbox + quiet + the gutter sting.
+  'script.orchard_first_sight': [
+    { op: 'letterbox', on: true, ms: 320 },
+    { op: 'musicFade', ms: 700 },
+    { op: 'cameraFocus', to: { tx: 8, ty: 4 }, ms: 1000 },
+    { op: 'silence', ms: 900 },
+    { op: 'narrate', text: 'Past the stall, the old rows end in a black wound in the earth.' },
+    { op: 'sfx', key: 'world-star-gutter' },
+    { op: 'narrate', text: 'The grass is scorched in a ring. Two trees stand burnt to the bone. And where a third tree stood, a dark stone sits in a bowl of ash, still faintly, coldly aglow.' },
+    { op: 'narrate', text: 'A star fell here. Or what was left of one.' },
+    { op: 'cameraReset', ms: 800 },
+    { op: 'musicCrossfade', key: 'tinderwick-c', ms: 900 },
+    { op: 'letterbox', on: false, ms: 320 },
+  ],
+
+  // Old Wendel: the grief first, then his standing orchard lines (the apples,
+  // the hedge wink, the meadow pointer — npc.orchard_wendel, unchanged).
+  'script.orchard_wendel': [
+    { op: 'say', unless_flag: 'gleam:ember', speaker: 'OLD WENDEL', text: 'Three nights back. I was up with my pipe, and one of the little stars over the hedge just... let go. Came down like a dropped lamp.' },
+    { op: 'say', unless_flag: 'gleam:ember', speaker: 'OLD WENDEL', text: "Forty years, that middle tree. The first I ever set. Gone in a breath, and its neighbours burnt to the bone. The village says it's a once-in-a-lifetime thing. I've had a lifetime. It isn't." },
+    { op: 'say', if_flag: 'gleam:ember', speaker: 'OLD WENDEL', text: "You've been up the old beacon, haven't you? I saw the Ember come back over the hedge. And this morning there were shoots in the burn. Stubborn things. Like me." },
+    { op: 'dialogue', ref: 'npc.orchard_wendel' },
+  ],
+
+  // Tamsin, Wendel's granddaughter, at the crater's lip — one line per stage:
+  // shock -> fear once a star dies in front of you (dusk_begins) -> the shoots
+  // (gleam:ember) -> the dawn.
+  'script.orchard_tamsin': [
+    { op: 'say', unless_flag: 'flag:dusk_begins', speaker: 'TAMSIN', text: "It didn't make a sound. That's the bit I keep thinking about. Just light, then the trees were burning, then it was dark again." },
+    { op: 'say', unless_flag: 'flag:dusk_begins', speaker: 'TAMSIN', text: "Grandad says stars don't fall. Grandad also says he isn't crying. Grandad says a lot of things." },
+    { op: 'say', if_flag: 'flag:dusk_begins', unless_flag: 'gleam:ember', speaker: 'TAMSIN', text: "Did you see it go? Out over the sea. Another one. Mum says we're keeping the lamps lit all night now, every night, just in case." },
+    { op: 'say', if_flag: 'gleam:ember', unless_flag: 'flag:dawn', speaker: 'TAMSIN', text: "There's shoots coming up in the burn! I'm not allowed to water them. I've been watering them." },
+    { op: 'say', if_flag: 'flag:dawn', speaker: 'TAMSIN', text: "The stone woke up! It's all bright now, like it remembered. Grandad says we're keeping it. I say we're keeping it AND naming it." },
+  ],
+
+  // S2 (deferred placement — Tinderwick, by the west hedge gap; see the doc):
+  // a neighbour who keeps a lamp in the window.
+  'script.peril_tinderwick_neighbour': [
+    { op: 'say', unless_flag: 'flag:dusk_begins', speaker: 'NEIGHBOUR', text: "The night the star came down on Wendel's trees — did you hear it? No. Nor did anyone. That's what's wrong with it." },
+    { op: 'say', unless_flag: 'flag:dusk_begins', speaker: 'NEIGHBOUR', text: "I've started leaving a lamp in the window all night. Can't tell you why. It just feels like manners." },
+    { op: 'say', if_flag: 'flag:dusk_begins', unless_flag: 'gleam:ember', speaker: 'NEIGHBOUR', text: 'Another went out over the sea, they say. The whole street keeps lamps in the windows now. We look like a festival that forgot to start.' },
+    { op: 'say', if_flag: 'gleam:ember', unless_flag: 'flag:dawn', speaker: 'NEIGHBOUR', text: 'The Ember, back over the beacon! I blew my window lamp out last night for the first time in a month. And I slept.' },
+    { op: 'say', if_flag: 'flag:dawn', speaker: 'NEIGHBOUR', text: "Daylight on the square. I keep looking up to check the sky's still there. It always is. I'll stop checking eventually." },
+  ],
+
+  // E1 — Saltreach Fen I: a fen family with their bundles at the landing.
+  'script.peril_fen_leaver': [
+    { op: 'say', unless_flag: 'gleam:verdant', speaker: 'FEN MOTHER', text: "We're off west to my sister's on the coast. She says Pearlmoor's lamps are holding." },
+    { op: 'say', unless_flag: 'gleam:verdant', speaker: 'FEN MOTHER', text: "Mother's lamp went out on the sill last week and wouldn't take a match. Not the wick. The lamp just... wouldn't. You don't stay, after a thing like that." },
+    { op: 'say', if_flag: 'gleam:verdant', unless_flag: 'flag:dawn', speaker: 'FEN MOTHER', text: "We unpacked. Lowleaf's Gleam came up over the reeds, and Mother's lamp took the first strike. Don't tell anyone I cried on the planks." },
+    { op: 'say', if_flag: 'flag:dawn', speaker: 'FEN MOTHER', text: 'The fen by daylight! Did you know the reeds are GOLD? Forty years on these planks and I never knew.' },
+  ],
+
+  // N1 — Galehigh Terraces: the weaver beside the Hollowing's notice.
+  'script.peril_notice_reader': [
+    { op: 'say', unless_flag: 'gleam:storm', speaker: 'TERRACE WEAVER', text: "Someone pins it up in the night. Twice I've torn it down. Twice it's been back by morning, straight as you like, on a fresh nail." },
+    { op: 'say', unless_flag: 'gleam:storm', speaker: 'TERRACE WEAVER', text: "The worst of it is how kind the hand is. You read it and you think: well. They're not wrong that I'm tired." },
+    { op: 'say', if_flag: 'gleam:storm', unless_flag: 'flag:met_cor', speaker: 'TERRACE WEAVER', text: "The Storm Gleam's back over the terraces, and still someone stopped to read it tonight. I left it up. Folk should get to choose." },
+    { op: 'say', if_flag: 'flag:met_cor', unless_flag: 'flag:dawn', speaker: 'TERRACE WEAVER', text: "The man who writes them came through. Courteous as you please. Took nothing. That's what frightens me: he doesn't have to take anything. People go to him." },
+    { op: 'say', if_flag: 'flag:dawn', speaker: 'TERRACE WEAVER', text: "Took the notice down this morning; nobody's read it in a week. Kept it, mind. It seemed rude to burn something that gentle." },
+  ],
+
+  // N2 — Hushfrost Pass: the SECOND FALL, and the pass-walker who counts them.
+  'script.peril_hushfrost_counter': [
+    { op: 'say', unless_flag: 'gleam:frost', speaker: 'PASS-WALKER', text: 'That came down four nights ago. I felt it through my boots before I saw the light.' },
+    { op: 'say', if_flag: 'flag:orchard_strike_seen', unless_flag: 'gleam:frost', speaker: 'PASS-WALKER', text: "You'll have seen the orchard one, south. Old Wendel's trees. That was the first anyone talked about." },
+    { op: 'say', unless_flag: 'gleam:frost', speaker: 'PASS-WALKER', text: "This is the fourth I know of. I've started marking them on a map. Every one has come down nearer the mountain." },
+    { op: 'say', if_flag: 'gleam:frost', unless_flag: 'flag:dawn', speaker: 'PASS-WALKER', text: "The Frost Gleam's up over the pass, and the cinder's stopped hissing in the drift. Just cold now. I'll take cold. Cold, I understand." },
+    { op: 'say', if_flag: 'flag:dawn', speaker: 'PASS-WALKER', text: 'It woke! Bright as a hearth in the snow. Folk walk up from the Vault just to warm their hands on it. I took the map down.' },
+  ],
+
+  // W1 — Sunvault Climb: the family who chose the quiet. Never villains: grief,
+  // and a decision the player is allowed to understand.
+  'script.peril_quiet_family': [
+    { op: 'say', unless_flag: 'gleam:solar', speaker: 'QUIET FATHER', text: "We put it out ourselves. The brazier. Don't look so stricken, love. It was our choice." },
+    { op: 'say', unless_flag: 'gleam:solar', speaker: 'QUIET FATHER', text: "We lost Grandad last winter, and my sister's village went quiet with the fog. The Quiet folk said: you'll never have to watch anything fade again. It sounded like mercy. Some nights it still does." },
+    { op: 'say', if_flag: 'gleam:solar', unless_flag: 'flag:dawn', speaker: 'QUIET FATHER', text: "My youngest lit it again while I slept. With the Solar Gleam warm over the climb, I hadn't the heart to put it out." },
+    { op: 'say', if_flag: 'gleam:solar', unless_flag: 'flag:dawn', speaker: 'QUIET FATHER', text: "I don't know what we believe now. But it's warm, and she's smiling. That'll do for tonight." },
+    { op: 'say', if_flag: 'flag:dawn', speaker: 'QUIET FATHER', text: "We're walking home tomorrow. In daylight. Fancy that. Fancy us." },
+  ],
+
+  // W2 — Nightreach: the Ledger of Lights, where the count only ever went up.
+  'script.peril_ledger': [
+    { op: 'say', unless_flag: 'flag:great_null_known', speaker: 'LEDGER-KEEPER', text: "Every light that's gone out since the Dusk began, I've written down. Two hundred and six. Somebody ought to remember them by name, and the sky's not doing it." },
+    { op: 'say', unless_flag: 'flag:great_null_known', speaker: 'LEDGER-KEEPER', text: 'Eleven years, one column. It only ever goes the one way.' },
+    { op: 'say', if_flag: 'flag:great_null_known', unless_flag: 'gleam:lunar', speaker: 'LEDGER-KEEPER', text: "Nessa says they mean to put out the Keystar. I've ruled a line at the bottom of the page for it. I can't make my hand write anything on it." },
+    { op: 'say', if_flag: 'gleam:lunar', unless_flag: 'flag:dawn', speaker: 'LEDGER-KEEPER', text: "Tonight I opened a second column. RELIT. I had to sit down to do it. Look at that: eight lines, all yours." },
+    { op: 'say', if_flag: 'flag:dawn', speaker: 'LEDGER-KEEPER', text: "I've stopped counting the dark ones. I'm counting mornings instead. So far: a few. Lovely number." },
+  ],
+
+  // C1 — the Penumbra Ring: folk from the valleys that went quiet, come to see
+  // whether the Spire is real.
+  'script.peril_gone_quiet': [
+    { op: 'say', unless_flag: 'flag:dawn', speaker: 'MARSH-VILLAGER', text: "We're from the marsh villages, the ones that went quiet. We walked in to see if the Spire was real. It is. I rather wish it weren't." },
+    { op: 'say', unless_flag: 'flag:dawn', speaker: 'MARSH-VILLAGER', text: "If you're going up there, we'll keep a lamp lit for you at the ring. It's what we've got left to give, and we'd like to give it." },
+    { op: 'say', if_flag: 'flag:dawn', speaker: 'MARSH-VILLAGER', text: 'We kept the lamp lit, and you came down in the morning. We are going home now. First time in years I have wanted to.' },
+  ],
 };
 
 export function getScript(ref: string): import('./types').CutsceneStep[] | undefined {

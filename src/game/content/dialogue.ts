@@ -206,6 +206,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   'npc.orchard_wendel_dawn': [
     { speaker: 'OLD WENDEL', text: "Look at them! Glowing on the bough again, every last one. I knew they'd remember how." },
+    { speaker: 'OLD WENDEL', text: "And the two in the burn leafed out overnight, black bark and all. The star's woken in its hollow, too. I've stopped asking the orchard to make sense. I just thank it." },
     { speaker: 'OLD WENDEL', text: "Take your pick, Wayfarer. Pick by their light." },
   ],
 
@@ -1934,6 +1935,28 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'ROAD-TELLER', text: 'Waystone\'s a good place to sit. Every road in the valley eventually walks past you and tells you something.' },
     { speaker: 'ROAD-TELLER', text: 'What they tell me lately is this: the easter egg\'s in Pearlmoor Quay, in the building right at the TOP of the town. Not the hall. Not the inn. The other one — the one with the noise coming out of it.' },
     { speaker: 'ROAD-TELLER', text: 'Ask inside for the old man. That\'s all anyone will say about it, and they say it like they\'re enjoying themselves.' },
+  ],
+
+  // ===========================================================================
+  // THE PERIL THREAD (R9) — static lines for the thread's signs + the bookend.
+  // Staged scripts live in scripts.ts (same banner); design in
+  // docs/world/walkthrough/08-the-peril-thread.md.
+  // ===========================================================================
+  // N1 — the Hollowing's notice on Galehigh's plaza. Grief dressed as mercy:
+  // courteous, unsigned, never a threat.
+  'sign.peril_quiet_notice': [
+    { text: 'A notice, neatly lettered:\nTO ANY WHO ARE TIRED. The dark does not take. It only keeps.' },
+    { text: 'Nothing you love need ever fade again: not a face, not a lamp, not a morning. When you are ready to rest, the Quiet will be waiting. No one will be cross with you.' },
+  ],
+  // S3 (deferred placement — Pearlmoor Quay harbour board; see the doc).
+  'sign.peril_pearlmoor_board': [
+    { text: 'HARBOUR NOTICE\nThe tide-lamps along the north shore have gone dark one by one and will not take a light.' },
+    { text: 'Boats are asked not to put in there after dusk. The villagers are reported well. And very quiet.' },
+  ],
+  // P1 — the bookend: Maudie in Dawnstead, sending the player home to look.
+  'npc.peril_maudie_dawn': [
+    { speaker: 'MAUDIE', text: "Parcel run to the Dawnstead green: duskapple whips from old Wendel, would you believe. Four wheels on the cart this time. I counted." },
+    { speaker: 'MAUDIE', text: "His crater's gone and flowered, love, and the star in it's woken bright. Folk walk out from Tinderwick just to look. Worth the walk, if you've not been home." },
   ],
 };
 

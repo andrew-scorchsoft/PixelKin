@@ -346,6 +346,21 @@ chain — exactly one plays for every combo of the five flags, old saves include
 entries (`main_causeway_bell`, `s6_tin_rower`). Price mirrored in `progression.mjs` PRICES +
 10-economy.md (one-time optional, outside the solvency legs).
 
+**The peril thread (R9, BUILT — [`08-the-peril-thread.md`](./08-the-peril-thread.md)).** The Long
+Dusk now visibly costs something, escalates with the journey, and heals as Gleams are relit.
+**S1:** a FALLEN STAR has struck `duskapple_orchard`: a drawn crater decal, a cold cinder, two
+charred trees, a once-only first-sight cutscene, and Wendel and Tamsin's flag-staged grief.
+Shoots come up at `gleam:ember`; at `flag:dawn` the trees leaf, the flowers bloom and the
+cinder wakes into a shard. Then a beat per region on existing flags: the fen family leaving
+(E1), the Hollowing's gentle notice at Galehigh (N1), a second fall in Hushfrost's snow (N2),
+the family who doused their own brazier (W1), Nightreach's Ledger of Lights (W2), the
+gone-quiet at the Penumbra Ring (C1), and Maudie in Dawnstead sending you home (P1). The new
+canon fact is *fallen stars* (the Dusk's cold cinders, the dark twin of the post-game
+Starfall shards), with a LORE entry. The art is `draw_fallenstar_objects.py`, and the
+placements are the orchard builder plus `add_peril_thread.py` (idempotent; re-run after any
+rebuild). **Owed:** two South placements in Tinderwick and Pearlmoor (words written; spec in
+08 §4).
+
 ### R5 — Release ladder (verification, mostly cheap)
 - ✅ `npm run build` verified green (2026-06).
 - ✅ `npm run build:dist` verified green (2026-06): 195 mp3 → 64k mono, 68→27 MB audio,

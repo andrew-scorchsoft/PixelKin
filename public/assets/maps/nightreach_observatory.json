@@ -1743,6 +1743,17 @@
       "sprite": "andrew_ward",
       "movement": "look_around",
       "dialogue_ref": "script.andrew_road"
+    },
+    {
+      "id": "peril_ledger_keeper",
+      "at": {
+        "tx": 9,
+        "ty": 23
+      },
+      "facing": "down",
+      "sprite": "npc_old_man",
+      "movement": "static",
+      "dialogue_ref": "script.peril_ledger"
     }
   ],
   "gates": [],

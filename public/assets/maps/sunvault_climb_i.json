@@ -121,6 +121,30 @@
       "h": 3,
       "overhang": 2,
       "walk_under": true
+    },
+    {
+      "id": "peril_quiet_brazier",
+      "sprite": "solarium_brazier_dead",
+      "at": {
+        "tx": 24,
+        "ty": 6
+      },
+      "w": 2,
+      "h": 3,
+      "overhang": 1,
+      "hidden_when_flag": "gleam:solar"
+    },
+    {
+      "id": "peril_quiet_brazier_lit",
+      "sprite": "solarium_brazier_lit",
+      "at": {
+        "tx": 24,
+        "ty": 6
+      },
+      "w": 2,
+      "h": 3,
+      "overhang": 1,
+      "requires_flag": "gleam:solar"
     }
   ],
   "warps": [
@@ -818,6 +842,17 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_sunvault_wicks",
       "hidden_when_flag": "flag:picked_sunvault_wicks"
+    },
+    {
+      "id": "peril_quiet_family",
+      "at": {
+        "tx": 26,
+        "ty": 8
+      },
+      "facing": "left",
+      "sprite": "npc_parent",
+      "movement": "static",
+      "dialogue_ref": "script.peril_quiet_family"
     }
   ],
   "gates": [],

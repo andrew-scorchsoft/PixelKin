@@ -864,6 +864,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `background=transparent`. Prefix the one transparent call:
   `OPENAI_IMAGE_MODEL=gpt-image-1 ./venv/bin/python …/generate.py --transparent …` (Google
   has no native alpha, so transparent always routes to OpenAI).
+- **The peril thread (R9) — the Long Dusk made visible — is `docs/world/walkthrough/08-the-peril-thread.md`.**
+  Duskapple's fallen-star crater lives in its builder; every later beat is an id-keyed upsert in
+  `tools/maps/add_peril_thread.py` — re-run it after rebuilding any map it touches, or the beat
+  silently vanishes. Crater/cinder/charred-tree art = `draw_fallenstar_objects.py` (a strike is a
+  drawn decal, never tile fills). Keep it optional colour, staged on existing flags, healing on Gleams.
 - **Tinderwick was deliberately RE-SHUFFLED for returning players (R8, 2026-10)** — store ⇄
   cottage swapped (door tiles too; spawn (5,8)), Wren + Fenn's satchel moved out to the new west
   side area `duskapple_orchard`, a couple of signs removed on purpose. Don't "restore" the old

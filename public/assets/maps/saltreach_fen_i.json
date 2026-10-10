@@ -190,6 +190,17 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_fen_purse",
       "hidden_when_flag": "flag:picked_fen_purse"
+    },
+    {
+      "id": "peril_fen_leaver",
+      "at": {
+        "tx": 5,
+        "ty": 41
+      },
+      "facing": "right",
+      "sprite": "npc_parent",
+      "movement": "static",
+      "dialogue_ref": "script.peril_fen_leaver"
     }
   ],
   "gates": [],
@@ -556,6 +567,18 @@
       "h": 4,
       "overhang": 3,
       "walk_under": true
+    },
+    {
+      "id": "peril_fen_bundles",
+      "sprite": "interior_sacks",
+      "at": {
+        "tx": 6,
+        "ty": 41
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false,
+      "hidden_when_flag": "gleam:verdant"
     }
   ],
   "layers": [

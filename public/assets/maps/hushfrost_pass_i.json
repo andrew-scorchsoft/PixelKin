@@ -19,6 +19,17 @@
   ],
   "objects": [
     {
+      "id": "peril_star_crater",
+      "sprite": "fallenstar_crater_snow",
+      "at": {
+        "tx": 15,
+        "ty": 22
+      },
+      "w": 6,
+      "h": 4,
+      "solid": false
+    },
+    {
       "id": "lamp_entry",
       "sprite": "tinderwick_lamp_post",
       "at": {
@@ -125,6 +136,30 @@
       "h": 3,
       "overhang": 2,
       "walk_under": true
+    },
+    {
+      "id": "peril_cinder_star",
+      "sprite": "fallenstar_cinder_star",
+      "at": {
+        "tx": 17,
+        "ty": 23
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1,
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "peril_cinder_star_woken",
+      "sprite": "vigil_star_shard",
+      "at": {
+        "tx": 17,
+        "ty": 23
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1,
+      "requires_flag": "flag:dawn"
     }
   ],
   "warps": [
@@ -965,6 +1000,17 @@
       "dialogue_ref": "script.pickup_hushfrost_hollow",
       "hidden_when_flag": "flag:picked_hushfrost_hollow",
       "requires_flag": "flag:lamplight_radiant"
+    },
+    {
+      "id": "peril_hushfrost_counter",
+      "at": {
+        "tx": 21,
+        "ty": 22
+      },
+      "facing": "left",
+      "sprite": "npc_old_woman",
+      "movement": "static",
+      "dialogue_ref": "script.peril_hushfrost_counter"
     }
   ],
   "gates": [],

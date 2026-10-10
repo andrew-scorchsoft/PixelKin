@@ -19,40 +19,15 @@
   ],
   "objects": [
     {
-      "id": "apple_0",
-      "sprite": "tinderwick_tree",
+      "id": "star_crater",
+      "sprite": "fallenstar_crater",
       "at": {
-        "tx": 3,
-        "ty": 2
+        "tx": 5,
+        "ty": 3
       },
-      "w": 3,
+      "w": 6,
       "h": 4,
-      "overhang": 3,
-      "walk_under": true
-    },
-    {
-      "id": "apple_1",
-      "sprite": "tinderwick_tree",
-      "at": {
-        "tx": 7,
-        "ty": 2
-      },
-      "w": 3,
-      "h": 4,
-      "overhang": 3,
-      "walk_under": true
-    },
-    {
-      "id": "apple_2",
-      "sprite": "tinderwick_tree",
-      "at": {
-        "tx": 11,
-        "ty": 2
-      },
-      "w": 3,
-      "h": 4,
-      "overhang": 3,
-      "walk_under": true
+      "solid": false
     },
     {
       "id": "apple_3",
@@ -77,6 +52,107 @@
       "h": 4,
       "overhang": 3,
       "walk_under": true
+    },
+    {
+      "id": "apple_0_charred",
+      "sprite": "fallenstar_tree_charred",
+      "at": {
+        "tx": 3,
+        "ty": 2
+      },
+      "w": 3,
+      "h": 4,
+      "overhang": 3,
+      "walk_under": true,
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "apple_0",
+      "sprite": "tinderwick_tree",
+      "at": {
+        "tx": 3,
+        "ty": 2
+      },
+      "w": 3,
+      "h": 4,
+      "overhang": 3,
+      "walk_under": true,
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "apple_2_charred",
+      "sprite": "fallenstar_tree_charred",
+      "at": {
+        "tx": 11,
+        "ty": 2
+      },
+      "w": 3,
+      "h": 4,
+      "overhang": 3,
+      "walk_under": true,
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "apple_2",
+      "sprite": "tinderwick_tree",
+      "at": {
+        "tx": 11,
+        "ty": 2
+      },
+      "w": 3,
+      "h": 4,
+      "overhang": 3,
+      "walk_under": true,
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "cinder_star",
+      "sprite": "fallenstar_cinder_star",
+      "at": {
+        "tx": 7,
+        "ty": 4
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1,
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "cinder_star_woken",
+      "sprite": "vigil_star_shard",
+      "at": {
+        "tx": 7,
+        "ty": 4
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1,
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "burn_shoots",
+      "sprite": "solarium_nightflowers_closed",
+      "at": {
+        "tx": 6,
+        "ty": 6
+      },
+      "w": 3,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "gleam:ember",
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "burn_bloom",
+      "sprite": "solarium_nightflowers_bloomed",
+      "at": {
+        "tx": 6,
+        "ty": 6
+      },
+      "w": 3,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "flag:dawn"
     },
     {
       "id": "apple_stall",
@@ -155,6 +231,36 @@
       },
       "activation": "interact",
       "ref": "sign.duskapple_orchard"
+    },
+    {
+      "id": "first_sight_8",
+      "kind": "cutscene",
+      "at": {
+        "tx": 20,
+        "ty": 8
+      },
+      "activation": "step_on",
+      "ref": "script.orchard_first_sight",
+      "once": true,
+      "sets_flags": [
+        "flag:orchard_strike_seen"
+      ],
+      "hidden_when_flag": "flag:orchard_strike_seen"
+    },
+    {
+      "id": "first_sight_9",
+      "kind": "cutscene",
+      "at": {
+        "tx": 20,
+        "ty": 9
+      },
+      "activation": "step_on",
+      "ref": "script.orchard_first_sight",
+      "once": true,
+      "sets_flags": [
+        "flag:orchard_strike_seen"
+      ],
+      "hidden_when_flag": "flag:orchard_strike_seen"
     }
   ],
   "encounters": [
@@ -319,7 +425,7 @@
       "facing": "left",
       "sprite": "npc_old_man",
       "movement": "look_around",
-      "dialogue_ref": "npc.orchard_wendel",
+      "dialogue_ref": "script.orchard_wendel",
       "hidden_when_flag": "flag:dawn"
     },
     {
@@ -333,6 +439,17 @@
       "movement": "look_around",
       "dialogue_ref": "npc.orchard_wendel_dawn",
       "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "tamsin",
+      "at": {
+        "tx": 9,
+        "ty": 6
+      },
+      "facing": "left",
+      "sprite": "npc_girl",
+      "movement": "static",
+      "dialogue_ref": "script.orchard_tamsin"
     },
     {
       "id": "wren",
@@ -810,13 +927,10 @@
         0,
         0,
         0,
+        5,
+        182,
         0,
-        0,
-        125,
-        0,
-        0,
-        0,
-        0,
+        182,
         0,
         0,
         0,
@@ -830,22 +944,7 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
+        182,
         0,
         0,
         0,
@@ -868,9 +967,14 @@
         0,
         0,
         0,
+        5,
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        181,
         0,
         0,
         0,
@@ -914,24 +1018,37 @@
         0,
         0,
         0,
+        124,
         0,
         0,
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        181,
+        0,
+        124,
+        5,
+        5,
+        182,
+        182,
         0,
         0,
         0,
         0,
         0,
         6,
-        0,
-        0,
-        0,
         0,
         0,
         117,
-        6,
+        0,
         0,
         0,
         0,
@@ -989,20 +1106,7 @@
         123,
         0,
         0,
-        0,
-        0,
-        0,
         5,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0,
         0,
@@ -1012,12 +1116,18 @@
         0,
         6,
         0,
+        0,
+        0,
+        0,
+        0,
         7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         125,
-        0,
-        0,
-        0,
-        0,
         0,
         8,
         0,
@@ -1096,7 +1206,14 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
         6,
+        0,
+        0,
+        0,
         0,
         0,
         0,
