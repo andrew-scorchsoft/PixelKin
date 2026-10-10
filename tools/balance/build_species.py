@@ -207,7 +207,7 @@ EXTRA_ENCOUNTERS = {
     "brinelet":  [{"area": "pearlmoor_quay", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 11},
                   {"area": "tideglass_cavern", "terrain": "cave", "rarity": "common", "min": 20, "max": 22},
                   {"area": "dimglass_coast", "terrain": "tall_grass", "rarity": "common", "min": 3, "max": 6},
-                  {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 11}],
+                  {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 10}],
     "brineroll": [{"area": "pearlmoor_quay", "terrain": "water", "rarity": "uncommon", "min": 10, "max": 12},
                   {"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 16, "max": 18},
                   # fen II reeds: thinned (D1 dex-spread, 2026-06) — Pebbit takes
@@ -215,14 +215,14 @@ EXTRA_ENCOUNTERS = {
                   {"area": "sunkbell_shallows", "terrain": "water", "rarity": "common", "min": 17, "max": 19},
                   {"area": "tideglass_cavern", "terrain": "cave", "rarity": "uncommon", "min": 21, "max": 24},
                   {"area": "tideglass_cavern", "terrain": "water", "rarity": "common", "min": 21, "max": 24},
-                  {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 9, "max": 11}],
+                  {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 9, "max": 10}],
     "lumpin":    [{"area": "pearlmoor_quay", "terrain": "tall_grass", "rarity": "common", "min": 9, "max": 11},
                   # saltreach reeds + tideglass cave: thinned (D1 dex-spread,
                   # 2026-06) — Pebbit/Fossik take the slots; Lumpin keeps the
                   # fen channels (water) and its South home maps
                   {"area": "saltreach_fen_ii", "terrain": "water", "rarity": "uncommon", "min": 17, "max": 19},
                   {"area": "dimglass_coast", "terrain": "tall_grass", "rarity": "common", "min": 3, "max": 6},
-                  {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 11}],
+                  {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 10}],
     # the Glostern line's middle form is the cavern pool's signature rare —
     # it seeds Pharolux's living-lighthouse legend two doors from where the
     # players caught Glostern (07-the-three §4).
@@ -659,7 +659,7 @@ D1_OBTAINABILITY_ENCOUNTERS = {
                    {"area": "gullcry_rock", "terrain": "water", "rarity": "uncommon", "min": 58, "max": 64}],
     # ---- Stone bases (the early game's first Stone basics) ----
     "pebbit":     [{"area": "dimglass_coast", "terrain": "tall_grass", "rarity": "rare", "min": 3, "max": 6},
-                   {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 11},
+                   {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 10},
                    {"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 16, "max": 18},
                    {"area": "saltreach_fen_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 17, "max": 19}],
     "flickore":   [{"area": "cinderhead_mine", "terrain": "cave", "rarity": "uncommon", "min": 22, "max": 24},

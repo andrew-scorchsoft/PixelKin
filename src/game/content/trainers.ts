@@ -91,11 +91,11 @@ export const TRAINERS: TrainerRegistry = {
     title: 'Lamp-courier',
     party: [
       { species_id: 27, level: 10 }, // Brineroll — Tide
-      { species_id: 31, level: 11 }, // Lumpin — Tide/Light
+      { species_id: 31, level: 10 }, // Lumpin — Tide/Light (eased 11→10, 2026-10)
     ],
     intro_ref: 'trainer.flats_wayfarer_b.intro',
     defeat_ref: 'trainer.flats_wayfarer_b.defeat',
-    payout: 176, // route 16 × ace 11
+    payout: 160, // route 16 × ace 10
     music: 'battle-emberfall',
   },
 

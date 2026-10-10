@@ -53,6 +53,14 @@ dex-side mirrors are the species lane's remaining bookkeeping.)
 
 Festivals: Lantern-fair, Tide-blessing. Arcs delivered: A1/A2 (Wren), B1 (`dusk_begins`), C1/C2 (Fenn).
 
+**2026-10 — the coast road eased** (a first-timer kept blacking out between Tinderwick and
+Pearlmoor): dry lanes carried unbroken through Dimglass I's `crossing_a` + the ledge-gap
+choke and Dimglass II's `dune_crossing` (grass now optional); wild tops shaved (I: 6→5 on the
+main-road patches, crossings 0.10→0.08; II: 11→10 / 10→9, rate 0.10→0.09); Elspeth 10/11→10/10
+(176→160w); a roadside rest on the flats (the cockler, `script.flats_rest`) — the South road's
+only heal between the towns. Mirrors: `build_species.py`, `progression.mjs` (PASS, checkpoints
+unchanged), `01-south.md`.
+
 ## East — Gleams 3–4 (`crown_east`) ✅
 
 | Area | map id(s) | Status | Builder |

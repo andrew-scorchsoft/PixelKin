@@ -879,9 +879,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   add a new one by appending an `EntryTutorial` row + a `script.*`. `runTutorial` banks the
   `seen_flag` so it never repeats.
 - **The South level curve is data-locked to the walkthrough:** Brisa ace 10 → Dimglass I wilds
-  3–6 (+ Wren's friendly battle A2 + the B1 `dusk_begins` beat) → Dimglass II wilds 8–10 + two
-  route-trainer beats → Reyl 12–16. Route trainer beat = static NPC + `step_on` cutscene tile
-  on a choked lane (`script.flats_trainer_*` pattern); next warden's ace ≈ previous +5–6.
+  3–5 (side pocket 5–6; + Wren's friendly battle A2 + the B1 `dusk_begins` beat) → Dimglass II
+  wilds 8–10 + two route-trainer beats (Morrow 9/9, Elspeth 10/10) → Reyl 12–16. Route trainer
+  beat = static NPC + `step_on` cutscene tile on a choked lane (`script.flats_trainer_*`
+  pattern); next warden's ace ≈ previous +5–6. **Eased 2026-10 (a first-timer kept dying on
+  the coast road):** both Dimglass crossings carry an unbroken dry lane, and the flats have a
+  roadside rest (`script.flats_rest`, the cockler) — don't re-seal the lanes or drop the rest.
 - **The East curve has the same data-lock (second hour, BUILT):** Fen I 16–18 → Fen II 17–19
   (Tidecall load-bearing; one route trainer) → Lowleaf fringe 18–20 + two keeper beats → Sable
   ace 22 (grants `gleam:verdant` + `glimmerstep`; `crown_east` waits on Otho — the crown rides
