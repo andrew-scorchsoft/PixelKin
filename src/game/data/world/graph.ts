@@ -68,7 +68,7 @@ export interface WorldGraph {
  */
 export const VESPERHOLM_GRAPH: WorldGraph = {
   start_map: 'tinderwick',
-  start_at: { tx: 6, ty: 17 }, // on the lane just outside the player's cottage door, facing up
+  start_at: { tx: 5, ty: 8 }, // on the square just outside the player's cottage door (R8: the cottage moved to the NW plaza)
   nodes: [
     // ---- South: Tinderwick -> Dimglass Coast (2 segments) -> Pearlmoor Quay ----------
     { map_id: 'tinderwick', region: 'south' },
@@ -78,6 +78,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'tinderwick_beacon_i', region: 'south' }, // interior: the old beacon, stair floor I (wick-key gated)
     { map_id: 'tinderwick_beacon_ii', region: 'south' }, // interior: the old beacon, stair floor II
     { map_id: 'tinderwick_beacon_top', region: 'south' }, // interior: the lantern room — the Ember bond-test
+    { map_id: 'duskapple_orchard', region: 'south' }, // R8: the old orchard off the square's west gap (satchel detour)
     { map_id: 'dimglass_coast', region: 'south' }, // route segment I: cliff path + shore (authored)
     { map_id: 'dimglass_coast_ii', region: 'south' }, // route: tidal flats
     { map_id: 'gullcry_rock', region: 'south', optional: true, reward: 'rare sea-bird kin + a Tide charm' },
@@ -180,6 +181,8 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'tinderwick', to_map: 'tinderwick_house', via_warp: 'to_house', bidirectional: true },
     { from_map: 'tinderwick', to_map: 'tinderwick_shop', via_warp: 'to_shop', bidirectional: true },
     { from_map: 'tinderwick', to_map: 'tinderwick_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
+    // R8: west through the hedge gap to Duskapple Orchard (ungated, safe side area).
+    { from_map: 'tinderwick', to_map: 'duskapple_orchard', via_warp: 'to_orchard', bidirectional: true },
     // The old beacon on the NE bluff — the earned first Gleam: door opens with the
     // wick-key from the Dimglass lamplighter, the floors carry wick-tender trainers,
     // and Brisa's bond-test waits in the lantern room at the top.

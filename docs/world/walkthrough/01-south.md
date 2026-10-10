@@ -16,8 +16,9 @@ first traversal Gift, **Tidecall**.
 
 - **Entry state:** brand-new game. NO kin and NO lamp yet — the opening is the **satchel
   errand** (below): the player spawns at the door of their house in Tinderwick, is turned
-  back at the warded north gate, finds **Fenn at the Vesper Crossroads waystone**, fetches
-  his satchel from the store, and receives the **vesperlamp** + level-5 **starter** at the
+  back at the warded north gate, finds **Fenn at the Vesper Crossroads waystone**, learns at
+  the store that a courier carted his satchel off to **Duskapple Orchard** (west of the
+  square), fetches it, and receives the **vesperlamp** + level-5 **starter** at the
   waystone ceremony. No Gleams, no flags.
 - **Exit state handed to East:** ~level 16, party of **2–3** bonded kin, holding
   **Tidecall**, `gleam:ember` + `gleam:tide` earned, **`flag:crown_south` set** (the engine
@@ -51,7 +52,8 @@ regions copy its scripts. What's wired (`src/game/content/scripts.ts` + `cinemat
   north **gate-warden intercepts** an unstarted player (`script.gate_warden` — emote, warning,
   walked back a step; the coast warps are `has_starter`-gated), every early voice points EAST,
   Fenn **hails the player across the plaza** (`script.fenn_wave`, camera focus) and asks for his
-  forgotten satchel (`script.fenn_crossroads` → `flag:fenn_errand`); the store counter holds it
+  forgotten satchel (`script.fenn_crossroads` → `flag:fenn_errand`); the store keeper sends you
+  WEST to the courier's cart in Duskapple Orchard, where it waits
   (`script.take_satchel` → `flag:has_satchel`); the ceremony (`script.intro_mentor`) then runs
   **at the waystone** — portraits (grave→warm→smile), a warm `tint` bloom on the vesperlamp
   gift, the cosy bed holding (dread only in Fenn's face on the lost-star line).
@@ -73,8 +75,9 @@ regions copy its scripts. What's wired (`src/game/content/scripts.ts` + `cinemat
 ### Tinderwick — *cosy coastal village at the blue hour; the Wayfaring begins*
 
 **At a glance** — `tinderwick` (+ interiors `tinderwick_house` · `tinderwick_lumenary` hall ·
-the **BEACON** `tinderwick_beacon_i/_ii/_top`) · town · south · entry: spawn at house door
-`{tx:8,ty:16}`, exit: north edge to `dimglass_coast`, east Lanternway to `vesper_crossroads` ·
+the **BEACON** `tinderwick_beacon_i/_ii/_top` · the west side area `duskapple_orchard`) · town ·
+south · entry: spawn outside the house door `{tx:5,ty:8}`, exit: north edge to `dimglass_coast`,
+east Lanternway to `vesper_crossroads`, west hedge gap to `duskapple_orchard` ·
 gate: the beacon's foot door needs **`flag:has_beacon_wick`** · **Gleam: Ember** (Brisa
 Tallow, ace ~10, at the **beacon top**) · rec. level: start 5, bond-test ~8–9.
 
@@ -91,17 +94,20 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
    2. **Try the north gate (most players will).** The **gate-warden** runs the intercept:
       it's dangerous out there without a lit lamp, and Star-tender Fenn went EAST to the
       Crossroads waystone, asking after you. (Band `gate_warden`, hidden once
-      `flag:has_starter`; both coast warps gated on the same flag.) **Wren** wanders by
-      the garden on the way east — A1's meet-the-rival beat.
+      `flag:has_starter`; both coast warps gated on the same flag.)
    3. **Walk the Lanternway to the waystone.** The lit east lane is safe (and pre-starter,
       wild encounters can't fire anyway). Fenn hails you into the plaza (`fenn_wave`),
-      then asks the favour: his **satchel**, forgotten on the Tinderwick store counter
-      (`script.fenn_crossroads` → `flag:fenn_errand`). The Pearlmoor spoke east is
+      then asks the favour: his **satchel**, forgotten (he thinks) on the Tinderwick store
+      counter (`script.fenn_crossroads` → `flag:fenn_errand`). The Pearlmoor spoke east is
       `gleam:tide`-gated (the standing "spoke wakes on its town's own Gleam" rule),
       so the errand can't be wandered past — and the quay can never be reached
       before the coast road.
-   4. **Fetch the satchel** (the store, beside the counter — an item_cache;
-      `flag:has_satchel`), and bring it back to the waystone.
+   4. **Fetch the satchel.** The store keeper (`npc.tinderwick_keeper_errand`) explains a
+      trade-cart courier swept it up with her parcels and went **WEST** — out the far end of
+      the square through the hedge gap to **Duskapple Orchard** (the R8 detour: one screen
+      away, signed at the gap). It rides on Maudie's three-wheeled cart, an item_cache
+      `fenn_satchel` a few steps off the orchard's central ride (`flag:has_satchel`). **Wren**
+      is out there "minding the cart" — A1's meet-the-rival beat. Bring it back to the waystone.
    5. **The ceremony (`script.intro_mentor`).** Out of the satchel: the **vesperlamp**,
       then the **starter** — chosen at the crossroads where every Wayfaring in
       Vesperholm begins. Fenn points you home: verge grass, the keeper's kit, Brisa.
@@ -186,23 +192,28 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
 6. **Validation hooks** (against built `tinderwick.json` + the beacon maps)
    - **Map id / kind:** `tinderwick` · town. Interiors: `tinderwick_house`,
      `tinderwick_lumenary` (the hall), `tinderwick_beacon_i/_ii/_top` (the tower).
-   - **Entry/exit:** spawn `start_at {tx:6,ty:17}`; north edge-warps `to_coast`/`to_coast_e`
+   - **Entry/exit:** spawn `start_at {tx:5,ty:8}` (R8: the cottage fronts the square — door
+     `to_house {5,7}`; the store door `to_shop {6,16}` is down the lower-left lane — the two
+     swapped places, door tiles and all); west hedge-gap warps `to_orchard`/`to_orchard_s`
+     `{0,8-9}` ↔ `duskapple_orchard {21,8-9}` (ungated); north edge-warps `to_coast`/`to_coast_e`
      → `dimglass_coast`, both **`requires_flag:flag:has_starter`**; east `to_crossroads
-     {tx:27,ty:16}` → `vesper_crossroads` (ungated — the opening's road); beacon foot door
-     `to_beacon` `interact {tx:24,ty:6}` **`requires_flag:flag:has_beacon_wick`**
+     {tx:27,ty:16}` → `lanternway_tinderwick` → `vesper_crossroads` (ungated — the opening's
+     road); beacon foot door `to_beacon` `step_on {tx:24,ty:6}` **`requires_flag:flag:has_beacon_wick`**
      → `tinderwick_beacon_i`.
    - **The opening errand chain (all data):** north gate band `gate_warden` `cutscene`
      `step_on {tx:13,ty:1}` `hidden_when_flag:flag:has_starter` (warden body at `{14,1}`
      blocks the twin column) → crossroads: `fenn_wave` once-band, `script.fenn_crossroads`
-     sets `flag:fenn_errand` → shop: item_cache `fenn_satchel` (`script.take_satchel` gives
-     `fenn_satchel`, sets `flag:has_satchel`) → waystone ceremony `script.intro_mentor` sets
+     sets `flag:fenn_errand` → shop: the keeper's errand stage points WEST → `duskapple_orchard`:
+     item_cache `fenn_satchel` `{16,10}` (`script.take_satchel` gives `fenn_satchel`, sets
+     `flag:has_satchel`) → waystone ceremony `script.intro_mentor` sets
      `flag:has_vesperlamp` + `flag:has_starter`.
    - **Fenn's waystone stages (flag-disjoint placements on one tile):** `fenn_pre`
      (`script.fenn_crossroads`) → `fenn_waiting` (`npc.fenn_waiting`) → `fenn_ready`
      (`script.intro_mentor`) → `fenn_after` (`npc.fenn_waystone_after`, until
      `flag:dusk_begins` moves him to the coast for C2).
    - **The shop counter stages:** `shopkeeper_early` (points east) → `shopkeeper_errand`
-     (the satchel) → `shopkeeper_kit` (`requires_flag:flag:has_starter` — the one-time kit)
+     (the courier took the satchel WEST to the orchard) → `shopkeeper_kit`
+     (`requires_flag:flag:has_starter` — the one-time kit)
      → `shopkeeper` (plain).
    - **The beacon quest chain (all data):** verge catch → `flag:caught_first_kin` (engine,
      any catch) → hall: `script.brisa_quest` sets `flag:beacon_quest` → Dimglass I:
@@ -214,12 +225,23 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
      `gleam:ember`** (+ `crown_south` half) via trainer `lampwarden_tinderwick`.
    - **Brisa's hall stages (flag-pair NPC swaps on the dais):** `npc.brisa_not_ready` →
      `script.brisa_quest` → `npc.brisa_meet_beacon` → `npc.brisa_after` (post-Gleam).
-   - **Encounters:** `verge_grass` · `tall_grass` · `encounter_rate 0.07` · kin **16**
-     (w60, lv2–4) + **10** (w40, lv2–3) — level band 2–4 (§4 start-5).
+   - **Encounters:** `verge_grass` `{11,2,6x3}` · `tall_grass` · `encounter_rate 0.07` · kin
+     **16** (w60, lv2–4) + **10** (w40, lv2–3) + 13 + rare 5 — level band 2–4 (§4 start-5).
+     `duskapple_orchard`'s meadow (`meadow_a`, rate 0.08): 16/10 lv2–4, 8 & rare 5 lv3–4 —
+     the same band, a safe training patch before the coast (+ `_day` twin).
    - **NPCs / festival:** gate-warden pair `gatewarden_pre`/`gatewarden_post` (swap on
-     `flag:has_starter`); **Wren** wanders near the garden until `flag:has_starter`
-     (`npc.wren_intro`); Lantern-fair NPCs (`fair_piper`, `fair_kid`)
-     `requires_flag:'gleam:ember'`. Fenn is at `vesper_crossroads`, not in town.
+     `flag:has_starter`); Lantern-fair NPCs (`fair_piper`, `fair_kid`)
+     `requires_flag:'gleam:ember'`. Fenn is at `vesper_crossroads`, not in town. **Wren**
+     wanders in `duskapple_orchard` until `flag:has_starter` (`npc.wren_intro`), beside
+     Maudie the courier (`npc.orchard_courier*`, three stages on `fenn_errand`/`has_satchel`)
+     and Old Wendel (`npc.orchard_wendel`, `_dawn` once `flag:dawn`). Orchard caches:
+     `orchard_windfall` (2 tallow balms) and `orchard_drop` (a Lumen Drop, SW corner).
+   - **R8 — "the town remembers it differently" (for returning players; invisible to a
+     first-timer).** Removed on purpose: the TINDERWICK SQUARE and DOCKS signs (a store
+     sign now stands by the store's new lane, a WEST fingerboard at the hedge gap), the
+     townswoman's reassurance line (the lane-walker on the Lanternway still says it), the
+     keeper's "in a hurry" aside. Old Wendel's "folk keep telling me there was never an
+     orchard here" is the one wink.
 
 ---
 

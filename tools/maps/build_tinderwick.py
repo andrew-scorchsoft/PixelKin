@@ -8,11 +8,19 @@ shorelines/tree-lines don't repeat), strips the terrain layers, renders and vali
 
 Redesigned to the level-design §7.1 target (28×24, blue-hour coastal village): an organic
 2-deep tree-line with a north exit, a lit path spine from the exit down to the shore, a
-plaza with the shop + Lumenary, the player's cottage lower-left, a small ornamental POND
+plaza with the player's cottage + Lumenary, the general store down the lower-left lane
+(R8, 2026-10: the two SWAPPED — see SHOP/COTTAGE below), a small ornamental POND
 inland, a fenced flower garden, a tall-grass verge by the exit, and a sand beach + sea to
 the south with lantern-buoys. Scatter decor breaks the field.
 
-DOOR ALIGNMENT (the core fix): every enterable building's interact-warp sits on the actual
+R8 also opened a WEST hedge gap off the square to Duskapple Orchard
+(build_duskapple_orchard.py — the courier's cart now holds Fenn's satchel; Wren waits
+there) and made this builder the FULL source of truth: the post-build additions that used
+to live only in the shipped JSON (vigil host warp + scar, the verge's day-form twin, the
+letter NPC, the townguide, Andrew, the wick purse, door blocked_refs) are authored here,
+so re-running it no longer regresses anything.
+
+DOOR ALIGNMENT (the core fix): every enterable building's door warp sits on the actual
 door-art tile, with the tile directly BELOW it walkable and on the path.
   * cottage  (5 wide): door art = col 2  -> door tile (tx0+2, ty_bottom)
   * shop     (5 wide): door art = col 2  -> door tile (tx0+2, ty_bottom)
@@ -24,7 +32,7 @@ STORY (walkthrough/01-south.md): the opening is the SATCHEL ERRAND — Star-tend
 waits at the Vesper Crossroads waystone (build_crossroads.py) and the lamp+starter ceremony
 happens THERE once his satchel comes home from the store. In town: the north gate-warden
 turns an unstarted player back (script.gate_warden + has_starter-gated coast warps), and
-everyone points east. The young NPC is the rival **Wren** (sprite key `wren`).
+everyone points east. The rival **Wren** (sprite key `wren`) is out in the orchard (R8).
 
 Run:  python3 tools/maps/build_tinderwick.py
 Prereq: python3 tools/maps/build_shared_overworld.py  (the shared set must exist).
@@ -39,16 +47,21 @@ rng = random.Random(7)
 
 # ---- building footprints (top-left anchor) + measured door columns -----------
 # door tile = (at.tx + door_col, at.ty + h - 1); approach tile = one row below that.
-SHOP = {"at": (3, 4), "w": 5, "h": 4, "door_col": 2}
+# R8 "the town remembers it differently" (2026-10): the shop and the apprentice's
+# cottage SWAPPED places — the cottage now fronts the square (NW) and the store
+# sits down the lower-left lane. The door TILES are exactly swapped too: (5,7) used
+# to be the store, (6,16) used to be home. A first-timer sees an ordinary village;
+# a returning player walks "home" into the shop.
+SHOP = {"at": (4, 13), "w": 5, "h": 4, "door_col": 2}
 LUMENARY = {"at": (17, 2), "w": 6, "h": 6, "door_col": 2}   # arch straddles cols 2-3
-COTTAGE = {"at": (4, 12), "w": 5, "h": 5, "door_col": 2}
+COTTAGE = {"at": (3, 3), "w": 5, "h": 5, "door_col": 2}
 
 def door_tile(b):
     return (b["at"][0] + b["door_col"], b["at"][1] + b["h"] - 1)
 
-shop_door = door_tile(SHOP)          # (5, 7)
+shop_door = door_tile(SHOP)          # (6, 16)
 lum_door = door_tile(LUMENARY)       # (19, 7)  -- col 3 == (20,7) is the twin door tile
-cottage_door = door_tile(COTTAGE)    # (6, 16)
+cottage_door = door_tile(COTTAGE)    # (5, 7)
 lum_door_r = (lum_door[0] + 1, lum_door[1])   # (20, 7) walkable twin (grand double entrance)
 
 # ---- terrain presence grids -------------------------------------------------
@@ -57,7 +70,7 @@ lum_door_r = (lum_door[0] + 1, lum_door[1])   # (20, 7) walkable twin (grand dou
 # terrace behind the Lumenary), and organic — not ruled — shores and patches.
 tree = mk.make_grid(W, H)
 mk.organic_border(tree, W, H, top=1, left=1, right=1, depth=2,
-                  bumps=[(5, 4, 2), (9, 2, 1), (3, 9, 2), (25, 11, 2), (3, 18, 2),
+                  bumps=[(9, 2, 1), (25, 11, 2), (3, 18, 2),
                          (26, 16, 1), (2, 13, 1)])
 for x in (13, 14):                       # punch the north exit gap
     tree[0 * W + x] = 0; tree[1 * W + x] = 0
@@ -67,6 +80,19 @@ mk.rect(tree, W, H, 0, 19, W - 1, H - 1, 0)   # clear the border below the shore
 # SEE but never reach is a broken promise — fill it with forest instead.
 for (x, y) in ((2, 11), (3, 12), (2, 15), (3, 15), (2, 16)):
     tree[y * W + x] = 1
+# R8: the WEST gap — the plaza street runs straight out through the hedge to
+# Duskapple Orchard (build_duskapple_orchard.py). (The old (3,9) border bump
+# that walled this side is gone.)
+for y in (8, 9):
+    for x in range(0, 5):
+        tree[y * W + x] = 0
+# ...and the cottage now backs onto the north treeline: fill the strip behind
+# and beside it with forest (render_walkable flagged the 10-tile orphan pocket
+# it left — seen-but-unreachable ground is a broken promise).
+for x in range(2, 8):
+    tree[2 * W + x] = 1
+for y in range(3, 7):
+    tree[y * W + 2] = 1
 
 # NE cliff terrace — the town's elevation accent, rising behind the Lumenary so the
 # landmark sits against rock, not empty field (the reference-map "terrace" read).
@@ -86,8 +112,9 @@ mk.rect(sand, W, H, 0, 19, W - 1, 21)                    # 3-row beach
 mk.blob(sand, W, H, 7, 18, 2.4, 1.2)                     # dunes lap up into the green
 mk.blob(sand, W, H, 22, 18, 2.0, 1.2)
 tallgrass = mk.make_grid(W, H)
-mk.rect(tallgrass, W, H, 10, 2, 15, 4)                   # verge straddling the exit lane
-for (x, y) in ((10, 2), (15, 2), (10, 4), (15, 4)):      # clipped corners -> organic patch
+# R8: the verge sits one column further east than it used to (11-16, not 10-15)
+mk.rect(tallgrass, W, H, 11, 2, 16, 4)                   # verge straddling the exit lane
+for (x, y) in ((11, 2), (16, 2), (11, 4), (16, 4)):      # clipped corners -> organic patch
     tallgrass[y * W + x] = 0
 
 # ---- the lit path spine + approach lanes to every door ----------------------
@@ -97,14 +124,16 @@ mk.hline(path, W, H, 8, 5, 21)                            # plaza street along t
 # the plaza street is TWO rows deep (8-9) — a square, not a footpath — so the
 # building fronts open onto a real town apron (the reference-town read).
 mk.rect(path, W, H, 5, 8, 21, 9)
-# shop approach: door (5,7) -> below (5,8) is on the street row (8). add the stub up to it.
-path[8 * W + shop_door[0]] = 1
+# R8: ...and on out WEST through the hedge gap to the orchard
+mk.rect(path, W, H, 0, 8, 4, 9)
+# cottage approach: door (5,7) -> below (5,8) is on the street row (8).
+path[8 * W + cottage_door[0]] = 1
 # lumenary approach: doors (19,7)/(20,7) -> below row 8 on the street.
 path[8 * W + lum_door[0]] = 1
 path[8 * W + lum_door_r[0]] = 1
-# cottage lane: door (6,16) -> down to the spine. carve a vertical lane.
-mk.vline(path, W, H, cottage_door[0], cottage_door[1] + 1, 18)   # (6, 17..18)
-mk.hline(path, W, H, 18, 6, 14)                                  # join cottage lane to the spine
+# store lane: door (6,16) -> down to the spine. carve a vertical lane.
+mk.vline(path, W, H, shop_door[0], shop_door[1] + 1, 18)   # (6, 17..18)
+mk.hline(path, W, H, 18, 6, 14)                            # join the store lane to the spine
 # the Lanternway: a lane east below the garden, out to Vesper Crossroads (graph.ts
 # tinderwick <-> vesper_crossroads). Runs under tree_d's crown (walk-under rows).
 mk.hline(path, W, H, 16, 14, W - 1)
@@ -150,21 +179,27 @@ objects = [
      "w": 4, "h": 7, "overhang": 3},
     # Object trees with REAL crowns are scattered along the tree-line and pond so the
     # forest reads as overlapping canopies, not one repeating hedge tile (§11).
-    {"id": "tree_a", "sprite": "tinderwick_tree", "at": {"tx": 9, "ty": 10}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+    {"id": "tree_a", "sprite": "tinderwick_tree", "at": {"tx": 9, "ty": 12}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "tree_b", "sprite": "tinderwick_tree", "at": {"tx": 24, "ty": 15}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
-    {"id": "tree_c", "sprite": "tinderwick_tree", "at": {"tx": 1, "ty": 5}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+    {"id": "tree_c", "sprite": "tinderwick_tree", "at": {"tx": 0, "ty": 4}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "tree_d", "sprite": "tinderwick_tree", "at": {"tx": 16, "ty": 14}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "tree_e", "sprite": "tinderwick_tree", "at": {"tx": 1, "ty": 11}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "tree_f", "sprite": "tinderwick_tree", "at": {"tx": 25, "ty": 7}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
-    {"id": "tree_g", "sprite": "tinderwick_tree", "at": {"tx": 4, "ty": 0}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+    {"id": "tree_g", "sprite": "tinderwick_tree", "at": {"tx": 8, "ty": 0}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "tree_h", "sprite": "tinderwick_tree", "at": {"tx": 1, "ty": 16}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
-    {"id": "lamp_a", "sprite": "tinderwick_lamp_post", "at": {"tx": 12, "ty": 5}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    {"id": "lamp_a", "sprite": "tinderwick_lamp_post", "at": {"tx": 9, "ty": 5}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "lamp_b", "sprite": "tinderwick_lamp_post", "at": {"tx": 15, "ty": 13}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_c", "sprite": "tinderwick_lamp_post", "at": {"tx": 12, "ty": 18}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    {"id": "lamp_c", "sprite": "tinderwick_lamp_post", "at": {"tx": 15, "ty": 18}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "lamp_d", "sprite": "tinderwick_lamp_post", "at": {"tx": 22, "ty": 8}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    # Vigil I host scar (06-postgame R3 — was a post-build surgical addition,
+    # now owned by the builder so a rebuild can't regress it).
+    {"id": "vigil_scar_hearthfall", "sprite": "vigil_star_scar", "at": {"tx": 25, "ty": 8},
+     "w": 1, "h": 1, "solid": False, "requires_flag": "flag:dawn"},
 ]
 building_cells = set()
 for o in objects:
+    if not o.get("solid", True):
+        continue
     for yy in range(o["at"]["ty"], o["at"]["ty"] + o["h"]):
         for xx in range(o["at"]["tx"], o["at"]["tx"] + o["w"]):
             building_cells.add((xx, yy))
@@ -186,11 +221,14 @@ for (x, y) in [(17, 11), (18, 11), (17, 12), (18, 12)]:
     deco[y * W + x] = gid("flowerbed_a") if (x + y) % 2 else gid("flowerbed_b")
 deco[11 * W + 19] = gid("flowers")
 # Signs sit immediately BESIDE the path the player walks, never mid-field:
+# R8: the old "TINDERWICK SQUARE" board (4,8) and the DOCKS sign (15,18) are
+# gone; the store wears its own sign down its new lane, and a fingerboard at
+# the west gap names the orchard.
 sign_tiles = {
-    "sign_shop": (4, 8),       # left of the shop door, on the plaza street
+    "sign_store": (7, 17),     # right of the store's door lane
+    "sign_orchard": (3, 10),   # under the west street, at the hedge gap
     "sign_lumenary": (21, 8),  # right of the Lumenary door, on the plaza street
-    "sign_mentor": (12, 11),   # on the spine, by Fenn
-    "sign_dock": (15, 18),     # by the shore-bound lane
+    "sign_mentor": (12, 11),   # on the spine
     "sign_lanternway": (21, 15),  # beside the east lane, pointing to the Crossroads
     "sign_beacon": (23, 7),       # at the beacon's foot, beside the door spur
 }
@@ -198,13 +236,18 @@ for (x, y) in sign_tiles.values():
     deco[y * W + x] = gid("sign")
 for (x, y) in [(7, 20), (16, 20), (21, 20)]:                     # lantern-buoys on the shore
     deco[y * W + x] = gid("buoy")
-for (x, y) in [(2, 20), (25, 20), (11, 20)]:                     # shore boulders
+for (x, y) in [(2, 21), (25, 20), (11, 20)]:                     # shore boulders
     deco[y * W + x] = gid("boulder")
 for (x, y) in [(23, 11), (26, 13)]:                              # pondside rocks
     deco[y * W + x] = gid("boulder")
 mk.scatter_decor(deco, base, W, H, rng, density=0.16, avoid=avoid)
 
 # ---- assemble ---------------------------------------------------------------
+# The verge's tables: the journey band, and its flag:dawn day-form twin (R4 —
+# both used to be post-build surgical additions; the builder now owns them and
+# build_species.py mirrors them under area "tinderwick").
+VERGE_RECT = {"tx": 11, "ty": 2, "w": 6, "h": 3}
+
 m = {
     "id": "tinderwick", "display_name": "Tinderwick", "width": W, "height": H,
     "tile_width": 16, "tile_height": 16, "kind": "town",
@@ -224,30 +267,44 @@ m = {
         {"id": "to_coast_e", "at": {"tx": 14, "ty": 0}, "trigger": "step_on",
          "to_map": "dimglass_coast", "to": {"tx": 7, "ty": 33}, "facing": "up",
          "requires_flag": "flag:has_starter", "transition": "fade"},
-        # House door — interact on the actual door-art tile (cottage col 2).
-        {"id": "to_house", "at": {"tx": cottage_door[0], "ty": cottage_door[1]}, "trigger": "interact",
+        # Doors are WALK-ONTO (step_on + transition:'door'), on the door-art tile.
+        # House door (cottage col 2) — now on the square, where the store used to be.
+        {"id": "to_house", "at": {"tx": cottage_door[0], "ty": cottage_door[1]}, "trigger": "step_on",
          "to_map": "tinderwick_house", "to": {"tx": 7, "ty": 9}, "facing": "down", "transition": "door"},
-        # Shop door — interact on the shop's door-art tile (col 2).
-        {"id": "to_shop", "at": {"tx": shop_door[0], "ty": shop_door[1]}, "trigger": "interact",
+        # Shop door (col 2) — down the lower-left lane, where home used to be.
+        {"id": "to_shop", "at": {"tx": shop_door[0], "ty": shop_door[1]}, "trigger": "step_on",
          "to_map": "tinderwick_shop", "to": {"tx": 7, "ty": 8}, "facing": "down", "transition": "door"},
         # Lumenary GRAND DOUBLE DOOR — the arch straddles cols 2-3, so BOTH art tiles
         # warp in. One warp alone leaves the other half of the arch a solid wall (the
         # "leftmost tile only lets you in" bug). Soft-gated on holding a starter.
-        {"id": "to_lumenary", "at": {"tx": lum_door[0], "ty": lum_door[1]}, "trigger": "interact",
+        {"id": "to_lumenary", "at": {"tx": lum_door[0], "ty": lum_door[1]}, "trigger": "step_on",
          "to_map": "tinderwick_lumenary", "to": {"tx": 8, "ty": 10}, "facing": "down",
-         "requires_flag": "flag:has_starter", "transition": "door"},
-        {"id": "to_lumenary_e", "at": {"tx": lum_door_r[0], "ty": lum_door_r[1]}, "trigger": "interact",
+         "requires_flag": "flag:has_starter", "transition": "door", "blocked_ref": "door.locked_lumenary"},
+        {"id": "to_lumenary_e", "at": {"tx": lum_door_r[0], "ty": lum_door_r[1]}, "trigger": "step_on",
          "to_map": "tinderwick_lumenary", "to": {"tx": 8, "ty": 10}, "facing": "down",
-         "requires_flag": "flag:has_starter", "transition": "door"},
-        # The Lanternway east to Vesper Crossroads (the hub; graph.ts spoke).
+         "requires_flag": "flag:has_starter", "transition": "door", "blocked_ref": "door.locked_lumenary"},
+        # The Lanternway east (the lane map lanternway_tinderwick -> Vesper Crossroads).
         {"id": "to_crossroads", "at": {"tx": W - 1, "ty": 16}, "trigger": "step_on",
-         "to_map": "vesper_crossroads", "to": {"tx": 0, "ty": 9}, "facing": "right",
+         "to_map": "lanternway_tinderwick", "to": {"tx": 0, "ty": 12}, "facing": "right",
          "transition": "fade"},
         # The Beacon foot door — wick-locked until the key comes home from the
         # coast road (the earned-first-Gleam quest; see graph.ts + build_beacon.py).
-        {"id": "to_beacon", "at": {"tx": 24, "ty": 6}, "trigger": "interact",
+        {"id": "to_beacon", "at": {"tx": 24, "ty": 6}, "trigger": "step_on",
          "to_map": "tinderwick_beacon_i", "to": {"tx": 6, "ty": 7}, "facing": "down",
-         "requires_flag": "flag:has_beacon_wick", "transition": "door"},
+         "requires_flag": "flag:has_beacon_wick", "transition": "door", "blocked_ref": "door.locked_beacon"},
+        # Vigil I host (06-postgame R3): the star-scar on the bluff.
+        {"id": "to_vigil_hearth", "at": {"tx": 25, "ty": 7}, "trigger": "step_on",
+         "to_map": "vigil_hearthfall", "to": {"tx": 11, "ty": 16}, "facing": "up",
+         "requires_flag": "flag:vigil_reading_1", "blocked_ref": "npc.vigil_scar_sealed",
+         "transition": "fade"},
+    ] + [
+        # R8: WEST through the hedge gap to Duskapple Orchard — ungated (safe,
+        # always open; it's where the courier's cart threw a wheel with Fenn's
+        # satchel aboard). Landing ON the orchard's return warps.
+        {"id": "to_orchard" + ("" if y == 8 else "_s"), "at": {"tx": 0, "ty": y}, "trigger": "step_on",
+         "to_map": "duskapple_orchard", "to": {"tx": 21, "ty": y}, "facing": "left",
+         "transition": "fade"}
+        for y in (8, 9)
     ],
     "triggers": [
         # The north-gate band: pre-starter, stepping into the open gate column runs
@@ -257,14 +314,14 @@ m = {
         {"id": "gate_warden", "kind": "cutscene", "at": {"tx": 13, "ty": 1},
          "activation": "step_on", "ref": "script.gate_warden",
          "hidden_when_flag": "flag:has_starter"},
-        {"id": "sign_shop", "kind": "sign", "at": {"tx": sign_tiles["sign_shop"][0], "ty": sign_tiles["sign_shop"][1]},
-         "activation": "interact", "ref": "sign.tinderwick_square"},
+        {"id": "sign_store", "kind": "sign", "at": {"tx": sign_tiles["sign_store"][0], "ty": sign_tiles["sign_store"][1]},
+         "activation": "interact", "ref": "sign.tinderwick_store"},
+        {"id": "sign_orchard", "kind": "sign", "at": {"tx": sign_tiles["sign_orchard"][0], "ty": sign_tiles["sign_orchard"][1]},
+         "activation": "interact", "ref": "sign.tinderwick_orchard"},
         {"id": "sign_lumenary", "kind": "sign", "at": {"tx": sign_tiles["sign_lumenary"][0], "ty": sign_tiles["sign_lumenary"][1]},
          "activation": "interact", "ref": "sign.tinderwick_lumenary"},
         {"id": "sign_mentor", "kind": "sign", "at": {"tx": sign_tiles["sign_mentor"][0], "ty": sign_tiles["sign_mentor"][1]},
          "activation": "interact", "ref": "sign.tinderwick_mentor"},
-        {"id": "sign_dock", "kind": "sign", "at": {"tx": sign_tiles["sign_dock"][0], "ty": sign_tiles["sign_dock"][1]},
-         "activation": "interact", "ref": "sign.tinderwick_dock"},
         {"id": "sign_lanternway", "kind": "sign",
          "at": {"tx": sign_tiles["sign_lanternway"][0], "ty": sign_tiles["sign_lanternway"][1]},
          "activation": "interact", "ref": "sign.tinderwick_lanternway"},
@@ -273,10 +330,21 @@ m = {
          "activation": "interact", "ref": "sign.beacon_door"},
     ],
     "encounters": [
-        {"id": "verge_grass", "terrain": "tall_grass", "rect": {"tx": 10, "ty": 2, "w": 6, "h": 3},
+        {"id": "verge_grass", "terrain": "tall_grass", "rect": dict(VERGE_RECT),
          "encounter_rate": 0.07,
          "table": [{"kin_id": 16, "weight": 60, "min_level": 2, "max_level": 4},
-                   {"kin_id": 10, "weight": 40, "min_level": 2, "max_level": 3}]}],
+                   {"kin_id": 10, "weight": 40, "min_level": 2, "max_level": 3},
+                   {"kin_id": 13, "weight": 20, "min_level": 2, "max_level": 4},
+                   {"kin_id": 5, "weight": 12, "min_level": 3, "max_level": 4}],
+         "hidden_when_flag": "flag:dawn"},
+        {"id": "verge_grass_day", "terrain": "tall_grass", "rect": dict(VERGE_RECT),
+         "encounter_rate": 0.07,
+         "table": [{"kin_id": 16, "weight": 35, "min_level": 55, "max_level": 60},
+                   {"kin_id": 10, "weight": 25, "min_level": 55, "max_level": 58},
+                   {"kin_id": 5, "weight": 20, "min_level": 56, "max_level": 60},
+                   {"kin_id": 8, "weight": 20, "min_level": 56, "max_level": 62},
+                   {"kin_id": 13, "weight": 15, "min_level": 56, "max_level": 62}],
+         "requires_flag": "flag:dawn"}],
     "npcs": [
         # The north gate-warden: posted IN the gate gap pre-starter (his body blocks
         # col 14; the script band guards col 13), swapped for a well-wisher stood
@@ -285,22 +353,17 @@ m = {
         {"id": "gatewarden_pre", "at": {"tx": 14, "ty": 1}, "facing": "down",
          "sprite": "npc_lampwarden", "movement": "static",
          "dialogue_ref": "script.gate_warden", "hidden_when_flag": "flag:has_starter"},
-        {"id": "gatewarden_post", "at": {"tx": 15, "ty": 2}, "facing": "left",
+        {"id": "gatewarden_post", "at": {"tx": 16, "ty": 2}, "facing": "left",
          "sprite": "npc_lampwarden", "movement": "static",
          "dialogue_ref": "npc.gatewarden_after", "requires_flag": "flag:has_starter"},
-        # A valuable cache tucked on the strand behind the cottage (the spine's
-        # cache-variety rule: each region carries a found-to-sell nugget off the
-        # lane). NOT in the SW tree pocket — (3,15) had no walkable approach
-        # (audit_flow caught the sealed pocket; those cells are now tree-filled).
-        {"id": "cache_waxcake", "at": {"tx": 1, "ty": 20}, "facing": "down",
+        # A valuable cache tucked on the EAST strand under the hedge (R8: it used to
+        # sit on the west strand, where the purse now lies).
+        {"id": "cache_waxcake", "at": {"tx": 26, "ty": 20}, "facing": "down",
          "sprite": "item_cache", "movement": "static",
          "dialogue_ref": "script.pickup_tinderwick_waxcake",
          "hidden_when_flag": "flag:picked_tinderwick_waxcake"},
-        # Wren — the rival, a fellow young Wayfarer milling by the garden until the
-        # Wayfaring begins (she's off up the coast — A2 — once you hold a starter).
-        {"id": "wren", "at": {"tx": 19, "ty": 15}, "facing": "left", "sprite": "wren",
-         "movement": "wander", "dialogue_ref": "npc.wren_intro",
-         "hidden_when_flag": "flag:has_starter"},
+        # (R8: Wren no longer mills by the garden — she's out in Duskapple Orchard,
+        # "helping" the courier, until the Wayfaring begins.)
         # The Lantern-fair (Arc E): festival folk fill the square once the Ember
         # Gleam stands — the "Gleam = belonging" payoff, pure data via requires_flag.
         {"id": "fair_piper", "at": {"tx": 16, "ty": 9}, "facing": "down", "sprite": "npc_shopkeeper",
@@ -308,7 +371,29 @@ m = {
          "requires_flag": "gleam:ember"},
         {"id": "fair_kid", "at": {"tx": 11, "ty": 9}, "facing": "up", "sprite": "npc_child",
          "movement": "wander", "dialogue_ref": "npc.fair_kid",
-         "requires_flag": "gleam:ember"}],
+         "requires_flag": "gleam:ember"},
+        # P1 — the post-letters round: Brisa takes her letter in the square.
+        {"id": "letter_brisa", "at": {"tx": 12, "ty": 9}, "facing": "down", "sprite": "npc_lampwarden",
+         "movement": "static", "dialogue_ref": "script.post_letter_tinderwick",
+         "requires_flag": "flag:q_post_letters", "hidden_when_flag": "flag:q_post_letter_tinderwick"},
+        # Opening wayfinding: a townswoman by the east lane points at Fenn.
+        {"id": "townguide_fenn", "at": {"tx": 20, "ty": 17}, "facing": "up", "sprite": "npc_woman",
+         "movement": "look_around", "dialogue_ref": "npc.tinderwick_fenn_hint",
+         "hidden_when_flag": "flag:has_starter"},
+        # Andrew — the easter-egg trail's first voice + the WHERE NEXT? hint. Both
+        # stage ids share ONE tile (the `emote` actor resolves by id). R8: he leans
+        # on the garden fence now, not the old cottage lane.
+        {"id": "andrew_pre", "at": {"tx": 15, "ty": 12}, "facing": "left", "sprite": "andrew_ward",
+         "movement": "look_around", "dialogue_ref": "script.andrew_name",
+         "hidden_when_flag": "flag:met_andrew"},
+        {"id": "andrew_post", "at": {"tx": 15, "ty": 12}, "facing": "left", "sprite": "andrew_ward",
+         "movement": "look_around", "dialogue_ref": "script.andrew_after",
+         "requires_flag": "flag:met_andrew"},
+        # The wick-purse safety net (one per early area) — now on the WEST strand.
+        {"id": "cache_purse", "at": {"tx": 1, "ty": 20}, "facing": "down",
+         "sprite": "item_cache", "movement": "static",
+         "dialogue_ref": "script.pickup_tinderwick_purse",
+         "hidden_when_flag": "flag:picked_tinderwick_purse"}],
     "gates": [], "music": "assets/audio/music/tinderwick-a.mp3",
     "_doors": {"shop": shop_door, "lumenary": lum_door, "lumenary_twin": lum_door_r,
                "house": cottage_door},

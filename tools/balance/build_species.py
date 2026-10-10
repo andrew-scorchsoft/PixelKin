@@ -723,6 +723,24 @@ for _slug, _rows in list(WANDERWOOD_ENCOUNTERS.items()):
 for _slug, _rows in WANDERWOOD_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows)
 
+# R8 (2026-10): Duskapple Orchard, the old orchard west of Tinderwick's square —
+# mirrors of the BUILT meadow table (public/assets/maps/duskapple_orchard.json;
+# tools/maps/build_duskapple_orchard.py is the source): the lv 2-4 training band
+# (the verge's own kin + a Glimflit) and its flag:dawn day twin. Weights ->
+# rarity by the W6 share rule (>=20 common, 10-19 uncommon, 5-9 rare).
+ORCHARD_ENCOUNTERS = {
+    "wickmoth":  [{"area": "duskapple_orchard", "terrain": "tall_grass", "rarity": "common", "min": 2, "max": 4},
+                  {"area": "duskapple_orchard", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 60}],
+    "tallowpup": [{"area": "duskapple_orchard", "terrain": "tall_grass", "rarity": "common", "min": 2, "max": 4},
+                  {"area": "duskapple_orchard", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 58}],
+    "glimflit":  [{"area": "duskapple_orchard", "terrain": "tall_grass", "rarity": "uncommon", "min": 3, "max": 4},
+                  {"area": "duskapple_orchard", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 62}],
+    "wicklit":   [{"area": "duskapple_orchard", "terrain": "tall_grass", "rarity": "rare", "min": 3, "max": 4},
+                  {"area": "duskapple_orchard", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 60}],
+}
+for _slug, _rows in ORCHARD_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows)
+
 # Areas whose encounter tables are BUILT into the map JSONs (the in-map zones
 # are the truth, mirrored above). Generated region defaults — and stale rows
 # carried in the previous per-species files — must not claim these areas:
@@ -764,6 +782,8 @@ CURATED_AREAS = {
     "cinderhead_deep_b1f", "cinderhead_deep_b2f", "umbral_spire_f2",
     # S5 (2026-10): Paul's wood above Pearlmoor (mirrored above, WANDERWOOD).
     "pearlmoor_wanderwood", "pearlmoor_wanderwood_far",
+    # R8 (2026-10): Tinderwick's west orchard (mirrored above, ORCHARD_ENCOUNTERS).
+    "duskapple_orchard",
 }
 
 # Kin that are FIXED quest catches (a legendaryBattle set-piece), even though

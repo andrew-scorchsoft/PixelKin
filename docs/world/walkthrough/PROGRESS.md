@@ -45,6 +45,7 @@ dex-side mirrors are the species lane's remaining bookkeeping.)
 | Area | map id(s) | Status | Builder |
 |------|-----------|--------|---------|
 | Tinderwick (Ember · Brisa) | `tinderwick` + house/shop/lumenary | ✅ | `build_tinderwick*.py` |
+| Duskapple Orchard (R8 side area — satchel detour, lv 2–4 meadow) | `duskapple_orchard` | ✅ | `build_duskapple_orchard.py` |
 | Tinderwick Beacon (earned Gleam loop) | `tinderwick_beacon_i/ii/top` | ✅ | `build_beacon.py` |
 | Dimglass Coast I→II | `dimglass_coast`, `dimglass_coast_ii` | ✅ | `build_dimglass*.py` |
 | Vesper Crossroads (Lanternway hub) | `vesper_crossroads` | ✅ | `build_crossroads.py` |
@@ -311,6 +312,23 @@ clockwork-lamplighters joke), the Answering Lamp (`script.wander_answering_lamp`
 REASSESS carving, the glass steps + islet Lumen Drop cache, the lifting bench, the sugar stump,
 the laugh, story trees 5–6. Andrew stands at the hub (`andrew_wood` → `script.andrew_wood`). Same
 grass table as the wood (mirrored in build_species, CURATED_AREAS).
+
+### R8 — "The town remembers it differently" (Tinderwick re-shuffle) ✅ DONE (2026-10)
+
+For a RETURNING player (Paul has played the opening) Tinderwick is subtly, strangely changed;
+for a first-timer it is simply the village. **Moved:** the store and the apprentice's cottage
+swapped places — exactly swapped door tiles (cottage door (5,7) on the square, store door (6,16)
+down the lower-left lane; spawn `start_at` → (5,8); interiors' `to_town` landings re-paired), the
+verge grass one column east (11–16), lamp posts/trees/caches/Andrew (now on the garden fence,
+(15,12)) re-placed. **Gone:** the TINDERWICK SQUARE and DOCKS signs, the townswoman's second
+line, the keeper's "in a hurry" aside, Wren from the town garden. **New:** a west hedge gap off
+the square into **`duskapple_orchard`** (Old Wendel's starlit orchard; Maudie the courier's
+three-wheeled cart; Wren; a lv 2–4 training meadow + day twin, mirrored in `build_species.py`;
+balms + a Lumen Drop). **The satchel moved there** (same `fenn_satchel` placement,
+`script.take_satchel`, `flag:has_satchel`): the keeper's errand line sends you WEST to the
+orchard by name and landmark, and Andrew's satchel stage says the same. `build_tinderwick.py`
+now owns the old post-build additions (vigil host, day zone, letter NPC, Andrew, purse) — a
+rebuild no longer regresses them.
 
 ### R5 — Release ladder (verification, mostly cheap)
 - ✅ `npm run build` verified green (2026-06).

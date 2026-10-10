@@ -28,13 +28,15 @@ export const DIALOGUE: DialogueRegistry = {
   'sign.lowleaf_gloamwood': [
     { text: 'The brambles east are pitch-dark and grown thick — no pushing through, not without a reason to. They say someone lives back there, mind.' },
   ],
+  // (R8: no longer posted in Tinderwick — the shore sign came down. Kept as the
+  // worked ref in data/world/examples.ts.)
   'sign.tinderwick_dock': [
     { text: 'TINDERWICK DOCKS\nMind the lanterns — the tide comes in quiet since the Long Dusk.' },
   ],
   // --- The opening errand (Fenn at the Crossroads waystone) ---
   // Fenn mid-errand: spoken to again before the satchel comes home.
   'npc.fenn_waiting': [
-    { speaker: 'FENN', text: 'The general store, dear apprentice — my satchel is on the counter, where I left it like a fool. The keeper will know it.' },
+    { speaker: 'FENN', text: 'The general store, dear apprentice — I left my satchel on the counter like a fool. If it has wandered off since, the keeper will know where.' },
     { speaker: 'FENN', text: 'I shall mind the waystone. It is good company, for a stone.' },
   ],
   // Fenn after the ceremony: the waystone send-off, until the story moves him on.
@@ -52,21 +54,28 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // The rival Wren — a fellow young Wayfarer in the plaza (A1). Warm and competitive;
   // by canon Wren takes the starter that beats yours along Ember->Verdant->Tide->Ember.
+  // R8: Wren mills about Duskapple Orchard now (not the town garden).
   'npc.wren_intro': [
+    { speaker: 'WREN', text: "Shh — I'm minding the courier's cart for her. Mostly by eating the windfalls." },
     { speaker: 'WREN', text: 'You as well? Ha — Fenn sends us all out the same week. Good.' },
     { speaker: 'WREN', text: "Whatever partner you pick, I'm taking the one that gives you trouble. Only fair." },
     { speaker: 'WREN', text: "Race you to fill the whole map with light, then. Loser carries the lamp oil." },
   ],
 
   // --- Tinderwick town signs ---
-  'sign.tinderwick_square': [
-    { text: 'TINDERWICK SQUARE\nWares and warm lamps within. Mind the step.' },
+  // R8: the store moved down the lower-left lane and wears its own board; the
+  // old TINDERWICK SQUARE sign by the square is gone.
+  'sign.tinderwick_store': [
+    { text: 'TINDERWICK GENERAL STORE\nWares and warm lamps within. Mind the step.' },
+  ],
+  'sign.tinderwick_orchard': [
+    { text: 'WEST: DUSKAPPLE ORCHARD\nThrough the gap in the hedge. Mind the windfalls.' },
   ],
   'sign.tinderwick_lumenary': [
     { text: 'TINDERWICK LUMENARY — the town\'s lantern-hall.\nLampwarden Brisa Tallow tends the Ember light. Bring a kin and a steady hand.' },
   ],
   'sign.tinderwick_mentor': [
-    { text: 'NORTH: the coast road, past the gate. EAST: the Lanternway, to the Star-tender\'s waystone. South, the sea sleeps under the Long Dusk.' },
+    { text: 'NORTH: the coast road, past the gate. EAST: the Lanternway, to the Star-tender\'s waystone. WEST: the old orchard.' },
   ],
   'sign.tinderwick_lanternway': [
     { text: 'EAST: THE LANTERNWAY\nEvery lit road in Vesperholm meets at the Vesper Crossroads. Keep to the lamps.' },
@@ -104,12 +113,15 @@ export const DIALOGUE: DialogueRegistry = {
   // The keeper before the Wayfaring begins — points the player east to Fenn.
   'npc.tinderwick_keeper_early': [
     { speaker: 'SHOPKEEPER', text: 'Looking for the Star-tender? You just missed him — went east along the Lanternway at first bell. Said the Crossroads waystone wanted tending.' },
-    { speaker: 'SHOPKEEPER', text: 'Seemed in a hurry to be waiting for someone, if you take my meaning.' },
   ],
-  // The keeper during the satchel errand (Fenn has asked; the satchel sits by the counter).
+  // The keeper during the satchel errand (Fenn has asked). R8: the satchel isn't
+  // on the counter any more — the trade-cart courier swept it up with her parcels
+  // and threw a wheel in Duskapple Orchard, west of the square. The keeper names
+  // the direction AND the landmark (the hedge gap, the cart) so nobody wanders.
   'npc.tinderwick_keeper_errand': [
-    { speaker: 'SHOPKEEPER', text: "His satchel? There by the counter, dear — he'd forget his own lamp if it weren't lit. Take it out to him." },
-    { speaker: 'SHOPKEEPER', text: 'And tell him the trade-cart is late again. He likes knowing things.' },
+    { speaker: 'SHOPKEEPER', text: "His satchel? It WAS on the counter, dear — but the trade-cart courier came through at first bell and swept it up with her parcels, sure as anything." },
+    { speaker: 'SHOPKEEPER', text: "She went WEST — up to the square and straight out the far end, through the gap in the hedge to Duskapple Orchard. Her cart's the one with three wheels. The satchel will be riding on it." },
+    { speaker: 'SHOPKEEPER', text: "Fetch it from her and take it out to him. He'd forget his own lamp if it weren't lit." },
   ],
   // The trading keeper — appears once the kit script has run (flag:tinderwick_kit);
   // their placement ref is script.shop_tinderwick (these lines, then the counter).
@@ -166,6 +178,35 @@ export const DIALOGUE: DialogueRegistry = {
   'npc.fair_kid': [
     { speaker: 'LANTERN KID', text: 'Look UP, look up! That one, the warm one — Gran says it went dark before I was even born!' },
     { speaker: 'LANTERN KID', text: 'When I get my vesperlamp, I am going to relight a WHOLE sky. Maybe two skies.' },
+  ],
+
+  // --- Duskapple Orchard (R8) — through the hedge gap west of the square ---
+  'sign.duskapple_orchard': [
+    { text: "DUSKAPPLE ORCHARD\nPlanted by starlight, picked by patience. Please don't shake the trees — they're resting." },
+  ],
+  // Maudie the trade-cart courier — three flag-disjoint stages on one tile.
+  'npc.orchard_courier': [
+    { speaker: 'MAUDIE', text: "Don't mind me, love. Just a courier with a cart, a heap of parcels and three wheels. It had four this morning." },
+    { speaker: 'MAUDIE', text: "The wheelwright's coming up from the coast when the road allows. Until then I'm an orchard ornament." },
+  ],
+  'npc.orchard_courier_errand': [
+    { speaker: 'MAUDIE', text: "Fenn's satchel? Oh, STARS — so that's whose it is! I swept it off the store counter with the trade parcels. Thought it was very heavy for a parcel of candles." },
+    { speaker: 'MAUDIE', text: "It's there on the tailboard, love — right in front of the cart. Take it to him, with my apologies and none of my candles." },
+  ],
+  'npc.orchard_courier_after': [
+    { speaker: 'MAUDIE', text: "Still three wheels. I've given the missing one a name. I shan't say what. It knows what it did." },
+  ],
+  // Old Wendel, the orchard-keeper. A gentle wink for anyone who remembers the
+  // village differently — and a plain pointer at the meadow for a tired Wayfarer.
+  'npc.orchard_wendel': [
+    { speaker: 'OLD WENDEL', text: "Duskapples, these. Planted by starlight. Once they glowed on the bough like little lamps, and you picked by their light." },
+    { speaker: 'OLD WENDEL', text: "Since the stars began going out they ripen small and dim. Still sweet, mind. Sweet's the last thing to go." },
+    { speaker: 'OLD WENDEL', text: "Funny — folk keep telling me there was never an orchard here. I set the first of these trees before their grandmothers were born. Memory's like a hedge, I find. Grows over things." },
+    { speaker: 'OLD WENDEL', text: "If your kin ever need toughening, the long grass past the fence is full of gentle wild ones. Safe as anywhere to grow strong before the coast road." },
+  ],
+  'npc.orchard_wendel_dawn': [
+    { speaker: 'OLD WENDEL', text: "Look at them! Glowing on the bough again, every last one. I knew they'd remember how." },
+    { speaker: 'OLD WENDEL', text: "Take your pick, Wayfarer. Pick by their light." },
   ],
 
   // --- Dimglass Coast route ---
@@ -795,7 +836,6 @@ export const DIALOGUE: DialogueRegistry = {
   // frightens a brand-new player. Both gone once 'flag:has_starter' is set.
   'npc.tinderwick_fenn_hint': [
     { speaker: 'TOWNSWOMAN', text: "Off to find Star-tender Fenn, are you? He went east down the Lanternway, to the Vesper Crossroads — said he'd wait by the waystone for you." },
-    { speaker: 'TOWNSWOMAN', text: "Don't you fret about the walk, dear. The lamps keep the wild kin clear of that lane — it's the one safe road out of Tinderwick. Straight there and back, no trouble." },
   ],
   'npc.lane_fenn_hint': [
     { speaker: 'WAYFARER', text: 'The waystone\'s just up ahead, friend. There\'s an old Star-tender there pacing a furrow in the road — waiting on someone, I\'d say. You, most like.' },

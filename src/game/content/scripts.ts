@@ -10,7 +10,9 @@ export const SCRIPTS: ScriptRegistry = {
   // C1 (walkthrough/01-south §2) is now a small LOOP, not a tile-touch: the north
   // gate-warden turns you back (it's dangerous out there), everyone points EAST to
   // Star-tender Fenn at the Crossroads waystone, Fenn has left his satchel on the
-  // Tinderwick store counter, and the lamp-and-starter ceremony happens at the
+  // Tinderwick store counter (R8: and a courier has since carted it off to
+  // Duskapple Orchard, west of the square — the keeper sends you on), and the
+  // lamp-and-starter ceremony happens at the
   // waystone once you bring it out to him. Warm, unhurried, never a "Professor".
 
   // The north gate, pre-starter: the warden (posted in the gap at (14,1)) spots the
@@ -68,8 +70,9 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:fenn_errand' },
   ],
 
-  // The satchel on the store counter (an item_cache placement in tinderwick_shop;
-  // appears once Fenn asks, vanishes once taken).
+  // The satchel on the courier's cart (an item_cache placement `fenn_satchel` in
+  // duskapple_orchard — R8; it used to sit by the store counter. Appears once
+  // Fenn asks, vanishes once taken).
   'script.take_satchel': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'fenn_satchel', count: 1 },
@@ -916,6 +919,21 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'giveItem', item: 'lumen_drop', count: 1 },
     { op: 'say', text: 'Wedged in the rock where the wind can\'t reach it — a LUMEN DROP, still faintly warm.' },
     { op: 'setFlag', flag: 'flag:picked_windeye_drop' },
+  ],
+
+  // Duskapple Orchard (R8): balms in the old tree's roots on the way in, and a
+  // Lumen Drop in the far SW corner past the meadow (off the lane — you looked).
+  'script.pickup_orchard_windfall': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'tallow_balm', count: 2 },
+    { op: 'say', text: 'Tucked in the roots of the oldest tree, a waxed twist of cloth among the windfalls. Found 2 TALLOW BALMS!' },
+    { op: 'setFlag', flag: 'flag:picked_orchard_windfall' },
+  ],
+  'script.pickup_orchard_drop': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'lumen_drop', count: 1 },
+    { op: 'say', text: 'In the far corner past the long grass, a bead of pressed duskapple-honey. Found a LUMEN DROP! A kin that eats one grows a whole level.' },
+    { op: 'setFlag', flag: 'flag:picked_orchard_drop' },
   ],
 
   // Gran's send-off satchel on the home floor — three balms for the road.
@@ -4357,7 +4375,7 @@ export const SCRIPTS: ScriptRegistry = {
     },
     {
       op: 'say', if_flag: 'flag:fenn_errand', unless_flag: 'flag:has_satchel', speaker: 'ANDREW',
-      text: 'His satchel, wasn\'t it. It\'s still sat on the counter in our shop here in Tinderwick — has been all week. Ask the keeper; he\'ll not part with it quietly, mind.',
+      text: 'His satchel, wasn\'t it. Not on the shop counter any more — the trade-cart courier carted it off with her parcels. WEST out of the square, through the gap in the hedge to Duskapple Orchard. It\'ll be riding on her cart.',
     },
     {
       op: 'say', if_flag: 'flag:has_satchel', unless_flag: 'flag:has_starter', speaker: 'ANDREW',
