@@ -443,13 +443,13 @@
         56,
         56,
         56,
-        1,
-        1,
-        1,
-        1,
-        2,
-        1,
-        1,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
         26,
         104,
         34,
@@ -1106,17 +1106,7 @@
         0,
         0,
         8,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        6,
+        117,
         0,
         0,
         0,
@@ -1127,6 +1117,16 @@
         0,
         0,
         6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -2809,6 +2809,16 @@
       },
       "activation": "interact",
       "ref": "sign.peril_pearlmoor_board"
+    },
+    {
+      "id": "sign_sign_point_way",
+      "kind": "sign",
+      "at": {
+        "tx": 12,
+        "ty": 14
+      },
+      "activation": "interact",
+      "ref": "sign.pearlmoor_point_way"
     }
   ],
   "encounters": [
@@ -3238,6 +3248,28 @@
       "sprite": "andrew_ward",
       "movement": "look_around",
       "dialogue_ref": "script.andrew_road"
+    },
+    {
+      "id": "oldlight_hint_beach",
+      "at": {
+        "tx": 9,
+        "ty": 14
+      },
+      "facing": "down",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "dialogue_ref": "script.oldlight_hint_beach"
+    },
+    {
+      "id": "oldlight_hint_luddite",
+      "at": {
+        "tx": 10,
+        "ty": 8
+      },
+      "facing": "down",
+      "sprite": "npc_old_man",
+      "movement": "static",
+      "dialogue_ref": "script.oldlight_hint_luddite"
     }
   ],
   "gates": [

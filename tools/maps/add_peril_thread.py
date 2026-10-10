@@ -50,10 +50,21 @@ def obj(oid, sprite, at, w, h, **kw):
 # map id -> {"npcs": [...], "objects": [...], "objects_first": [...], "signs": [(id, at, ref)],
 #            "clear_deco": [(x0, y0, w, h)]}
 PLACEMENTS: dict[str, dict] = {
+    # R9 Old Light hint-giver on the road into Pearlmoor (not peril; kept with the
+    # other surgical placements so a rebuild re-dresses it).
+    "dimglass_coast_ii": {
+        "npcs": [npc("oldlight_hint_road", (11, 3), "npc_man", "script.oldlight_hint_road", facing="down")],
+    },
     # S3 — the harbour notice on Pearlmoor Quay, beside the harbour sign by the
     # south landing (the tide-lamps on the north shore failing).
     "pearlmoor_quay": {
-        "signs": [("sign_peril_pearlmoor_board", (17, 16), "sign.peril_pearlmoor_board")],
+        "signs": [("sign_peril_pearlmoor_board", (17, 16), "sign.peril_pearlmoor_board"),
+                  # (not peril — the R9 waymark to Lightkeeper's Point, kept here so a
+                  # quay rebuild re-dresses it with the rest of the surgical signs)
+                  ("sign_point_way", (12, 14), "sign.pearlmoor_point_way")],
+        # (also not peril — R9 Old Light hint-givers, see script.oldlight_hint_*)
+        "npcs": [npc("oldlight_hint_beach", (9, 14), "npc_woman", "script.oldlight_hint_beach", facing="down"),
+                 npc("oldlight_hint_luddite", (10, 8), "npc_old_man", "script.oldlight_hint_luddite", facing="down")],
     },
     # E1 — the fen family leaving (Saltreach Fen I, by the landing). Bundles go
     # once the Verdant Gleam is relit: they unpacked. Non-solid, so the swap

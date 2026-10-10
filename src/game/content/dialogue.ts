@@ -307,6 +307,11 @@ export const DIALOGUE: DialogueRegistry = {
   'sign.pearlmoor_lumenary': [
     { text: 'THE TIDE LUMENARY\nLampwarden Reyl Wash tends the Tide constellation. The door is open to all — no lit shallows needed.' },
   ],
+  // R9 — the west-beach waymark to Lightkeeper's Point (the exit is just the beach's
+  // far-left edge, easy to miss; this points the way to the Old Light).
+  'sign.pearlmoor_point_way': [
+    { text: '<- WEST ALONG THE BEACH PATH: LIGHTKEEPER\'S POINT\nThe Old Light (the lighthouse that laughs). Follow the path to the far end of the beach.' },
+  ],
   'sign.pearlmoor_harbour': [
     { text: 'THE HARBOUR SHALLOWS\nThe moon-water will not part for the unlit. Earn the Tidecall, and the islets and sea-shrine open to you.' },
   ],

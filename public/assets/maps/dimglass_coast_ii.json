@@ -2540,6 +2540,17 @@
       "sprite": "npc_old_woman",
       "movement": "look_around",
       "dialogue_ref": "script.worry_gilly"
+    },
+    {
+      "id": "oldlight_hint_road",
+      "at": {
+        "tx": 11,
+        "ty": 3
+      },
+      "facing": "down",
+      "sprite": "npc_man",
+      "movement": "static",
+      "dialogue_ref": "script.oldlight_hint_road"
     }
   ],
   "gates": [
