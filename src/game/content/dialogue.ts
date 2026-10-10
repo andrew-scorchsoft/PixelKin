@@ -6,6 +6,7 @@
  * Lantern Gift, vesperlamp), never generic monster/gym/badge.
  */
 import type { DialogueLine, DialogueRegistry } from './types';
+import { OLDLIGHT_DIALOGUE } from './oldlight';
 
 export const DIALOGUE: DialogueRegistry = {
   // --- Georgina's cottage (gloamwood_dell) — ambient cats + a hand-lettered sign ---
@@ -327,7 +328,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // Reyl mid-quest: the hook is given, the bell still silent.
   'npc.reyl_waiting': [
-    { speaker: 'REYL WASH', text: 'Still quiet out there. The netmender keeps the rope; her floats went south down the flats — ground you have already walked, if your boots remember.' },
+    { speaker: 'REYL WASH', text: 'Still quiet out there. Up the Old Light first — out on the Point — then the netmender, then the bell.' },
     { speaker: 'REYL WASH', text: 'No hurry, mind. Tides go out so they can come back. But the blessing-boats are at their moorings, and the whole quay is listening for that bell.' },
   ],
   // Reyl post-Gleam, back in the hall while the blessing runs outside.
@@ -337,11 +338,13 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // --- The netmender (quay) — the Causeway Bell's keeper, then S1's giver ----
   'npc.netmender_pre': [
-    { speaker: 'NETMENDER', text: 'Mind the coils, Wayfarer. Nets to mend, floats gone south, and a bell-rope nobody\'s fit to carry. The sea took a whole storm out of MY year, I tell you.' },
+    { speaker: 'NETMENDER', text: 'Mind the coils, Wayfarer. Nets to mend, floats gone missing, and a bell-rope nobody\'s fit to carry. The sea took a whole storm out of MY year, I tell you.' },
   ],
+  // R9: the floats stage now points UP the Old Light (it shows until
+  // flag:q_south_jest_done — so an old save holding the floats climbs too).
   'npc.netmender_floats': [
-    { speaker: 'NETMENDER', text: 'Reyl sent you for the rope? Hmph. The rope is spliced and waiting — it is my FLOATS the sea owes me first.' },
-    { speaker: 'NETMENDER', text: 'The storm carried them south down the tidal flats — cork floats, a whole string, stamped with my mark. Bring them home and the rope is yours, and gladly.' },
+    { speaker: 'NETMENDER', text: 'Reyl sent you for the rope? Hmph. The rope is spliced and waiting — but my FLOATS went missing in that storm, and something up the Old Light has been "collecting".' },
+    { speaker: 'NETMENDER', text: 'Climb it, Wayfarer. All the way. Then come back to me and the rope is yours. ...I\'d like to know what you find up there. I\'ve wondered eleven winters.' },
   ],
   'npc.netmender_sent': [
     { speaker: 'NETMENDER', text: 'The moor-gate\'s unchained — south end of the quay, where the boards run out. Hang the rope true and ring it LOUD, Wayfarer.' },
@@ -1930,6 +1933,8 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'ROAD-TELLER', text: 'What they tell me lately is this: the easter egg\'s in Pearlmoor Quay, in the building right at the TOP of the town. Not the hall. Not the inn. The other one — the one with the noise coming out of it.' },
     { speaker: 'ROAD-TELLER', text: 'Ask inside for the old man. That\'s all anyone will say about it, and they say it like they\'re enjoying themselves.' },
   ],
+  // R9 "The Old Light" — Lightkeeper's Point + the joke-tower (content/oldlight.ts).
+  ...OLDLIGHT_DIALOGUE,
 };
 
 const FALLBACK: DialogueLine[] = [{ text: '...' }];

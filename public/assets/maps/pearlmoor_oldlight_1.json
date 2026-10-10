@@ -1,15 +1,15 @@
 {
-  "id": "pearlmoor_lumenary",
-  "display_name": "Pearlmoor Tide Lumenary",
-  "width": 16,
-  "height": 12,
+  "id": "pearlmoor_oldlight_1",
+  "display_name": "The Old Light \u2014 The Lobby of Groaners",
+  "width": 14,
+  "height": 11,
   "tile_width": 16,
   "tile_height": 16,
   "kind": "interior",
   "tilesets": [
     {
-      "name": "interior_stone_set",
-      "image": "assets/tilesets/interior_stone_set.webp",
+      "name": "interior_set",
+      "image": "assets/tilesets/interior_set.webp",
       "tile_width": 16,
       "tile_height": 16,
       "first_gid": 1,
@@ -53,10 +53,6 @@
         1,
         1,
         1,
-        1,
-        1,
-        1,
-        1,
         2,
         1,
         2,
@@ -67,44 +63,8 @@
         1,
         2,
         1,
-        2,
+        3,
         1,
-        2,
-        1,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        1,
-        1,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        1,
-        2,
         1,
         2,
         1,
@@ -133,10 +93,6 @@
         1,
         2,
         1,
-        2,
-        1,
-        1,
-        2,
         1,
         2,
         1,
@@ -165,10 +121,6 @@
         1,
         2,
         1,
-        2,
-        1,
-        1,
-        2,
         1,
         2,
         1,
@@ -186,6 +138,17 @@
         1,
         1,
         2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
         1,
         2,
         1,
@@ -213,7 +176,6 @@
         1,
         1,
         1,
-        1,
         1
       ]
     },
@@ -235,64 +197,26 @@
         6,
         6,
         6,
-        6,
-        6,
         11,
         8,
         4,
         4,
         4,
-        8,
+        4,
+        4,
+        4,
+        4,
+        4,
         4,
         5,
         4,
         4,
-        4,
-        5,
-        4,
-        9,
-        4,
-        4,
         9,
         8,
         0,
         0,
         0,
-        8,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         9,
-        0,
-        0,
-        9,
-        8,
-        0,
-        0,
-        0,
-        8,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        9,
-        0,
-        0,
-        9,
-        8,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0,
         0,
@@ -306,9 +230,7 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
+        9,
         0,
         0,
         0,
@@ -321,6 +243,32 @@
         8,
         0,
         0,
+        0,
+        9,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        9,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
         0,
         0,
         0,
@@ -347,8 +295,6 @@
         0,
         0,
         0,
-        0,
-        0,
         9,
         8,
         0,
@@ -363,28 +309,8 @@
         0,
         0,
         0,
-        0,
-        0,
         9,
         8,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        9,
-        8,
-        0,
-        0,
         0,
         0,
         0,
@@ -405,9 +331,7 @@
         7,
         7,
         7,
-        7,
         0,
-        7,
         7,
         7,
         7,
@@ -419,43 +343,119 @@
   ],
   "objects": [
     {
-      "id": "aisle_5",
-      "sprite": "interior_rug_runner",
+      "id": "coats",
+      "sprite": "solarium_costume_rack",
       "at": {
-        "tx": 8,
+        "tx": 1,
+        "ty": 2
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "cloak_plant",
+      "sprite": "interior_plant",
+      "at": {
+        "tx": 3,
         "ty": 5
       },
       "w": 1,
-      "h": 3,
+      "h": 1
+    },
+    {
+      "id": "cloak_stool",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 1,
+        "ty": 6
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "box_office",
+      "sprite": "interior_counter",
+      "at": {
+        "tx": 5,
+        "ty": 2
+      },
+      "w": 4,
+      "h": 2
+    },
+    {
+      "id": "banner_l",
+      "sprite": "interior_banner_warm",
+      "at": {
+        "tx": 5,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
       "solid": false
     },
     {
-      "id": "aisle_8",
-      "sprite": "interior_rug_runner",
+      "id": "banner_r",
+      "sprite": "interior_banner_warm",
       "at": {
         "tx": 8,
-        "ty": 8
+        "ty": 1
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "solid": false
+    },
+    {
+      "id": "aisle_4",
+      "sprite": "interior_rug_runner",
+      "at": {
+        "tx": 7,
+        "ty": 4
       },
       "w": 1,
       "h": 3,
       "solid": false
     },
     {
-      "id": "altar",
-      "sprite": "interior_altar",
+      "id": "aisle_7",
+      "sprite": "interior_rug_runner",
       "at": {
         "tx": 7,
-        "ty": 2
+        "ty": 7
+      },
+      "w": 1,
+      "h": 3,
+      "solid": false
+    },
+    {
+      "id": "bench_l",
+      "sprite": "interior_pew",
+      "at": {
+        "tx": 3,
+        "ty": 7
       },
       "w": 3,
-      "h": 3
+      "h": 1
+    },
+    {
+      "id": "bench_r",
+      "sprite": "interior_pew",
+      "at": {
+        "tx": 9,
+        "ty": 7
+      },
+      "w": 3,
+      "h": 1
     },
     {
       "id": "brazier_l",
       "sprite": "interior_brazier",
       "at": {
         "tx": 5,
-        "ty": 3
+        "ty": 8
       },
       "w": 1,
       "h": 2
@@ -464,180 +464,125 @@
       "id": "brazier_r",
       "sprite": "interior_brazier",
       "at": {
-        "tx": 11,
-        "ty": 3
+        "tx": 9,
+        "ty": 8
       },
       "w": 1,
       "h": 2
     },
     {
-      "id": "ledger",
-      "sprite": "interior_bookcase",
+      "id": "speaking_tube",
+      "sprite": "solarium_sun_mask",
       "at": {
-        "tx": 1,
-        "ty": 1
-      },
-      "w": 2,
-      "h": 3,
-      "overhang": 1,
-      "walk_under": true
-    },
-    {
-      "id": "offerings",
-      "sprite": "interior_barrels",
-      "at": {
-        "tx": 13,
+        "tx": 11,
         "ty": 2
       },
-      "w": 2,
-      "h": 1
-    },
-    {
-      "id": "brazier_e",
-      "sprite": "interior_brazier",
-      "at": {
-        "tx": 14,
-        "ty": 3
-      },
       "w": 1,
-      "h": 2
-    },
-    {
-      "id": "pew_l1",
-      "sprite": "interior_pew",
-      "at": {
-        "tx": 4,
-        "ty": 7
-      },
-      "w": 3,
-      "h": 1
-    },
-    {
-      "id": "pew_r1",
-      "sprite": "interior_pew",
-      "at": {
-        "tx": 10,
-        "ty": 7
-      },
-      "w": 3,
-      "h": 1
-    },
-    {
-      "id": "pew_l2",
-      "sprite": "interior_pew",
-      "at": {
-        "tx": 4,
-        "ty": 9
-      },
-      "w": 3,
-      "h": 1
-    },
-    {
-      "id": "pew_r2",
-      "sprite": "interior_pew",
-      "at": {
-        "tx": 10,
-        "ty": 9
-      },
-      "w": 3,
       "h": 1
     }
   ],
   "warps": [
     {
-      "id": "to_town",
+      "id": "to_point",
       "at": {
-        "tx": 8,
-        "ty": 11
+        "tx": 7,
+        "ty": 10
       },
       "trigger": "step_on",
-      "to_map": "pearlmoor_quay",
+      "to_map": "pearlmoor_point",
       "to": {
-        "tx": 14,
-        "ty": 7
+        "tx": 3,
+        "ty": 8
       },
       "facing": "down",
       "transition": "door"
+    },
+    {
+      "id": "up_stairs",
+      "at": {
+        "tx": 12,
+        "ty": 2
+      },
+      "trigger": "step_on",
+      "to_map": "pearlmoor_oldlight_2",
+      "to": {
+        "tx": 12,
+        "ty": 3
+      },
+      "facing": "down",
+      "transition": "fade",
+      "requires_flag": "flag:oldlight_1_solved",
+      "blocked_ref": "sign.oldlight_stairgate"
     }
   ],
   "triggers": [
     {
-      "id": "lumenary_battle",
-      "kind": "cutscene",
-      "at": {
-        "tx": 8,
-        "ty": 6
-      },
-      "activation": "step_on",
-      "ref": "script.lumenary_pearlmoor",
-      "once": true,
-      "requires_flag": "flag:q_south_bell_rung",
-      "blocked_ref": "npc.reyl_blocked"
-    },
-    {
-      "id": "sign_lumenary",
+      "id": "plaque",
       "kind": "sign",
       "at": {
-        "tx": 1,
+        "tx": 9,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_plaque"
+    },
+    {
+      "id": "box_office_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 6,
         "ty": 3
       },
       "activation": "interact",
-      "ref": "sign.pearlmoor_lumenary"
+      "ref": "sign.oldlight_box_office"
+    },
+    {
+      "id": "riddle_band",
+      "kind": "cutscene",
+      "at": {
+        "tx": 12,
+        "ty": 3
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_1",
+      "hidden_when_flag": "flag:oldlight_1_solved"
+    },
+    {
+      "id": "tube",
+      "kind": "cutscene",
+      "at": {
+        "tx": 11,
+        "ty": 2
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_1",
+      "hidden_when_flag": "flag:oldlight_1_solved"
+    },
+    {
+      "id": "tube_after",
+      "kind": "dialogue",
+      "at": {
+        "tx": 11,
+        "ty": 2
+      },
+      "activation": "interact",
+      "ref": "npc.oldlight_tube_1",
+      "requires_flag": "flag:oldlight_1_solved"
+    },
+    {
+      "id": "welcome",
+      "kind": "cutscene",
+      "at": {
+        "tx": 7,
+        "ty": 8
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_welcome",
+      "hidden_when_flag": "flag:oldlight_welcomed"
     }
   ],
   "encounters": [],
-  "npcs": [
-    {
-      "id": "reyl_quest",
-      "at": {
-        "tx": 8,
-        "ty": 5
-      },
-      "facing": "down",
-      "sprite": "npc_lampwarden",
-      "movement": "static",
-      "dialogue_ref": "script.reyl_quest",
-      "hidden_when_flag": "flag:q_south_bell"
-    },
-    {
-      "id": "reyl_waiting",
-      "at": {
-        "tx": 8,
-        "ty": 5
-      },
-      "facing": "down",
-      "sprite": "npc_lampwarden",
-      "movement": "static",
-      "dialogue_ref": "script.reyl_waiting",
-      "requires_flag": "flag:q_south_bell",
-      "hidden_when_flag": "flag:q_south_bell_rung"
-    },
-    {
-      "id": "reyl",
-      "at": {
-        "tx": 8,
-        "ty": 5
-      },
-      "facing": "down",
-      "sprite": "npc_lampwarden",
-      "movement": "static",
-      "dialogue_ref": "npc.reyl_wash",
-      "requires_flag": "flag:q_south_bell_rung",
-      "hidden_when_flag": "gleam:tide"
-    },
-    {
-      "id": "reyl_after",
-      "at": {
-        "tx": 8,
-        "ty": 5
-      },
-      "facing": "down",
-      "sprite": "npc_lampwarden",
-      "movement": "static",
-      "dialogue_ref": "script.reyl_after",
-      "requires_flag": "gleam:tide"
-    }
-  ],
+  "npcs": [],
   "gates": [],
-  "music": "assets/audio/music/dimglass-coast-a.mp3"
+  "music": "assets/audio/music/sunken-solarium-a.mp3"
 }

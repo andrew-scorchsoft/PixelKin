@@ -2472,19 +2472,6 @@
       "requires_flag": "flag:q_south_letter_given"
     },
     {
-      "id": "cache_net_floats",
-      "at": {
-        "tx": 11,
-        "ty": 4
-      },
-      "facing": "down",
-      "sprite": "item_cache",
-      "movement": "static",
-      "dialogue_ref": "script.pickup_net_floats",
-      "requires_flag": "flag:q_south_bell",
-      "hidden_when_flag": "flag:picked_net_floats"
-    },
-    {
       "id": "cache_balm",
       "at": {
         "tx": 11,

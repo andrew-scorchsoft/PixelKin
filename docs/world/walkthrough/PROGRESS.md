@@ -50,6 +50,7 @@ dex-side mirrors are the species lane's remaining bookkeeping.)
 | Dimglass Coast I→II | `dimglass_coast`, `dimglass_coast_ii` | ✅ | `build_dimglass*.py` |
 | Vesper Crossroads (Lanternway hub) | `vesper_crossroads` | ✅ | `build_crossroads.py` |
 | Pearlmoor Quay (Tide · Reyl · Tidecall) | `pearlmoor_quay` + inn/shop/lumenary/breakwater | ✅ | `build_pearlmoor*.py` |
+| Lightkeeper's Point + the Old Light (R9 — the Causeway Bell's middle leg) | `pearlmoor_point`, `pearlmoor_oldlight_1..6/_top` | ✅ | `build_pearlmoor_point.py`, `build_pearlmoor_oldlight.py` |
 | Gullcry Rock (Tidecall spur) | `gullcry_rock` | ✅ | `build_gullcry.py` |
 
 Festivals: Lantern-fair, Tide-blessing. Arcs delivered: A1/A2 (Wren), B1 (`dusk_begins`), C1/C2 (Fenn).
@@ -329,6 +330,23 @@ balms + a Lumen Drop). **The satchel moved there** (same `fenn_satchel` placemen
 orchard by name and landmark, and Andrew's satchel stage says the same. `build_tinderwick.py`
 now owns the old post-build additions (vigil host, day zone, letter NPC, Andrew, purse) — a
 rebuild no longer regresses them.
+
+### R9 — "The Old Light" (Pearlmoor's joke-tower) ✅ DONE (2026-10)
+
+The Causeway Bell now runs `script.reyl_quest` (`flag:q_south_bell`) → **the Old Light**
+on **Lightkeeper's Point** (`pearlmoor_point`, off the quay's west beach; bespoke lighthouse
+object with a grinning brass horn, lit variant after `gleam:tide`) → seven `roomkit` floors of
+increasingly strange jokes by **Mr. Punchwheel**, Tam Wash's clockwork joke-engine (the lobby
+plaque: every joke is the machine's) — one choice-riddle per floor with layered retries, the
+Heckler (F2) + Ringmaster (F4) keepers (240/260w, mirrored in `progression.mjs` + 10-economy;
+mainline L17 vs rec 14 at Reyl, PASS), the F3 tea-urn rest point, the One Joke, and the
+Winding Room (Reyl's log, the cut rope, Tam's card → `flag:q_south_jest_done` + the
+net-floats, which LEFT the Dimglass II flats) → the netmender's rope (her one quay stage now
+branches on `q_south_jest_done`) → bell → Reyl, with `if_flag` payoffs on the bell, the
+bond-test, the Gleam narrate and the Tide-blessing. Old saves: floats-but-no-rope climbs the
+tower; rope-already saves are untouched (flag sweep verified). Content: `content/oldlight.ts`.
+The Point also hosts `worry_nettie` and Reyl's post-Gleam `script.reyl_tin_rower` hook (the Tin
+Rower, Worry Club, Andrew's chain + JOURNAL rows are the sibling R9 packages).
 
 ### R5 — Release ladder (verification, mostly cheap)
 - ✅ `npm run build` verified green (2026-06).

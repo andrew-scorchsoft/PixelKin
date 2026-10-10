@@ -106,7 +106,7 @@ export const ITEMS: ItemRegistry = {
   net_floats: {
     id: 'net_floats',
     name: 'Net-floats',
-    desc: 'A string of cork floats stamped with the Pearlmoor netmender\'s mark, carried south by the storm and home by you.',
+    desc: 'Netmender-stamped cork floats. A brass joke-box kept them "for the act".',
     category: 'key',
   },
   bell_rope: {

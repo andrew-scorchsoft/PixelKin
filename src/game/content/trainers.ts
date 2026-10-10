@@ -232,6 +232,34 @@ export const TRAINERS: TrainerRegistry = {
     music: 'battle-emberfall',
   },
 
+  // R9 "The Old Light": Punchwheel's two keepers (talk-to, by the up-stairs;
+  // both required). They read cards the machine wrote. No Tide kin — Reyl's
+  // hall keeps that surprise. Pitched between the flats (~11) and Reyl's 16.
+  oldlight_heckler: {
+    id: 'oldlight_heckler',
+    name: 'THE HECKLER',
+    title: 'Jest-keeper',
+    party: [
+      { species_id: 47, level: 11 }, // Pebbit — Stone
+      { species_id: 8, level: 12 }, // Glimflit — Light (ace)
+    ],
+    defeat_ref: 'trainer.oldlight_heckler.defeat',
+    payout: 240, // keeper 20 × ace 12
+    music: 'battle-emberfall',
+  },
+  oldlight_ringmaster: {
+    id: 'oldlight_ringmaster',
+    name: 'THE RINGMASTER',
+    title: 'Jest-keeper',
+    party: [
+      { species_id: 16, level: 12 }, // Wickmoth — Ember
+      { species_id: 69, level: 13 }, // Riddlestone — Stone (ace)
+    ],
+    defeat_ref: 'trainer.oldlight_ringmaster.defeat',
+    payout: 260, // keeper 20 × ace 13
+    music: 'battle-emberfall',
+  },
+
   // S4 "The Booji-Wooji Man" — Paul, the Lifting House's mystery, fought at the
   // breakwater's end (script.booji_paul; OPTIONAL side-quest bout, route class).
   // The Chickenpig (#163) wades in on Paul's side as his SECOND — the only place
@@ -1216,6 +1244,15 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   ],
   'trainer.lanternfall_warden.defeat': [
     { speaker: 'LAMP-KEEPER NELL', text: 'Brightly done. The crossroads is just below, where all the lit roads meet. Tell the Waykeeper Nell\'s lamps are trimmed.' },
+  ],
+  // R9 — the Old Light's keepers (final lines: F2.HECKLER.DEFEAT / F4.RING.DEFEAT).
+  'trainer.oldlight_heckler.defeat': [
+    { speaker: 'HECKLER', text: "(flips to the last card) 'YOU WIN. THE HECKLER SITS DOWN QUIETLY.'" },
+    { speaker: 'HECKLER', text: '...He even wrote me losing. (sits down, loudly) Here. Your wicks. He wrote those too.' },
+  ],
+  'trainer.oldlight_ringmaster.defeat': [
+    { speaker: 'RINGMASTER', text: "HELLO! Welcome, welcome! Pull up a stool by the fire, you're going to LOVE it here!" },
+    { speaker: 'RINGMASTER', text: "...Ahem. Your riddle. The machine wrote it. He's never been surer of anything. Bad sign." },
   ],
   'trainer.lampwarden_pearlmoor.intro': [
     { speaker: 'REYL WASH', text: 'Apprentice, is it. I have ferried a hundred Wayfarers across this harbour. Few read the water right.' },
