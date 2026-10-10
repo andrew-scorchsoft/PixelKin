@@ -43,7 +43,9 @@ const levelForExp = (e) => Math.min(100, Math.floor(Math.cbrt(Math.max(1, e))));
  *  climax); /20 with the trainer bonus + catch XP lands every checkpoint. */
 const YIELD_DIVISOR = 20;
 const TRAINER_XP_MULT = 1.5; // the genre's trainer-battle bonus
-const expYield = (bst, level) => Math.max(1, Math.floor((bst * level) / YIELD_DIVISOR));
+// The first-hours XP boost — mirrors BattleScene.earlyExpBoost (keep in step).
+const earlyExpBoost = (level) => (level <= 8 ? 1.5 : level <= 12 ? 1.25 : 1);
+const expYield = (bst, level) => Math.max(1, Math.floor(((bst * level) / YIELD_DIVISOR) * earlyExpBoost(level)));
 
 // ---------------------------------------------------------------------------
 // Economy constants (mirror src/game/content/economy.ts + items.ts)
@@ -58,6 +60,10 @@ const PRICES = {
   // one-time optional QoL key item (Pearlmoor, gleam:tide stock) — outside the
   // modelled region budgets; listed for the three-home price mirror.
   hooded_lamp: 600,
+  // R9: Aldous Wink's Tin Rower — the cutscene `pay` op's 12,000w reserve (a
+  // one-time optional; the free path is a story, so it never enters a solvency
+  // leg). Mirrored in 10-economy.md and script.wink_buy.
+  tin_rower: 12000,
 };
 
 // ---------------------------------------------------------------------------
@@ -141,12 +147,12 @@ const JOURNEY = [
   {
     name: 'Dimglass Coast I + Beacon ascent',
     leadShare: 0.55,
-    wild: { areas: ['dimglass_coast'], band: [3, 6], fights: { rusher: 4, mainline: 9, explorer: 14 } },
+    wild: { areas: ['dimglass_coast'], band: [3, 5], fights: { rusher: 4, mainline: 9, explorer: 14 } },
     trainers: [
       T('Wren (A2)', 'rival', [K(5, 8), K(6, 26)]),
-      T('Tansy', 'keeper', [K(7, 16)]),
-      T('Cole', 'keeper', [K(7, 10), K(8, 16)]),
-      T('Brisa Tallow', 'warden', [K(7, 10), K(10, 18)]),
+      T('Tansy', 'keeper', [K(6, 16)]),
+      T('Cole', 'keeper', [K(6, 10), K(7, 16)]),
+      T('Brisa Tallow', 'warden', [K(6, 10), K(10, 18)]),
     ],
     income: { quests: 150, valuables: 250, finds: 150 }, // beacon errand thanks + a wax cake cache + the coast wick-purse
     spend: { tallow_balm: 2, glow_charge: 2 },
@@ -158,7 +164,7 @@ const JOURNEY = [
     wild: { areas: ['dimglass_coast'], band: [8, 10], fights: { rusher: 4, mainline: 8, explorer: 13 } },
     trainers: [
       T('Morrow', 'route', [K(9, 26), K(9, 31)]),
-      T('Elspeth', 'route', [K(10, 27), K(11, 31)]),
+      T('Elspeth', 'route', [K(10, 27), K(10, 31)]),
     ],
     income: { quests: 200, valuables: 0, finds: 300 }, // the flats wicks find (100) + the dune wick-purse (200)
     spend: { tallow_balm: 2 },
@@ -171,13 +177,18 @@ const JOURNEY = [
     trainers: [
       // BUILT (the Causeway Bell loop): the breakwater's two net-hand sight
       // trainers — mirror src/game/content/trainers.ts exactly.
+      // R9 "The Old Light": Punchwheel's two jest-keepers (F2 / F4), required.
+      T('The Heckler (Old Light F2)', 'keeper', [K(11, 47), K(12, 8)]),
+      T('The Ringmaster (Old Light F4)', 'keeper', [K(12, 16), K(13, 69)]),
       T('Maren (net-hand)', 'route', [K(12, 26), K(12, 31)]),
       T('Cob (net-hand)', 'route', [K(13, 31), K(14, 27)]),
       T('Reyl Wash', 'warden', [K(12, 26), K(13, 31), K(14, 27), K(16, 24)]),
     ],
     income: { quests: 400, valuables: 250, finds: 250 }, // bell-rope quest + Round leg + the shore wick-purse
     spend: { warm_balm: 1, beacon_charge: 2, chart_mid: 1 },
-    checkpoint: { name: 'Tide Gleam (Reyl)', rec: 12, ace: 16 },
+    // rec 14 (not the town's 12): the walkthrough's bond-test band is ~13–14, and the
+    // 2026-10 early-XP boost lifts the first hours onto it deliberately.
+    checkpoint: { name: 'Tide Gleam (Reyl)', rec: 14, ace: 16 },
   },
 
   // ---- EAST ----------------------------------------------------------------
@@ -399,8 +410,8 @@ const JOURNEY = [
 // ---------------------------------------------------------------------------
 const BUILT_PAYOUTS = {
   lampwarden_tinderwick: ['warden', 10, 600],
-  beacon_keeper_a: ['keeper', 7, 140],
-  beacon_keeper_b: ['keeper', 8, 160],
+  beacon_keeper_a: ['keeper', 6, 120],
+  beacon_keeper_b: ['keeper', 7, 140],
   wren_dimglass: ['rival', 6, 144],
   flats_wayfarer_a: ['route', 9, 144],
   fen_wader_a: ['route', 17, 272],
@@ -409,9 +420,11 @@ const BUILT_PAYOUTS = {
   bloom_warden_a: ['keeper', 20, 400],
   bloom_warden_b: ['keeper', 21, 420],
   lampwarden_lowleaf: ['warden', 22, 1320],
-  flats_wayfarer_b: ['route', 11, 176],
+  flats_wayfarer_b: ['route', 10, 160],
   net_hand_a: ['route', 12, 192],
   net_hand_b: ['route', 14, 224],
+  oldlight_heckler: ['keeper', 12, 240], // R9 the Old Light F2
+  oldlight_ringmaster: ['keeper', 13, 260], // R9 the Old Light F4
   breakwater_paul: ['route', 15, 240], // S4 optional side-quest bout (the Lifting House)
   wrackline_drifter: ['route', 18, 288], // Pearlmoor<->Crossroads route (Wrackline Path)
   lanternfall_warden: ['route', 20, 320], // Pearlmoor<->Crossroads route (Lanternfall Road)

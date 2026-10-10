@@ -563,6 +563,16 @@
       },
       "activation": "interact",
       "ref": "sign.galehigh_lanternway"
+    },
+    {
+      "id": "sign_peril_quiet_notice",
+      "kind": "sign",
+      "at": {
+        "tx": 8,
+        "ty": 20
+      },
+      "activation": "interact",
+      "ref": "sign.peril_quiet_notice"
     }
   ],
   "encounters": [
@@ -1263,6 +1273,17 @@
       "sprite": "andrew_ward",
       "movement": "look_around",
       "dialogue_ref": "script.andrew_road"
+    },
+    {
+      "id": "peril_notice_reader",
+      "at": {
+        "tx": 9,
+        "ty": 20
+      },
+      "facing": "left",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "dialogue_ref": "script.peril_notice_reader"
     }
   ],
   "gates": [
@@ -2968,7 +2989,7 @@
         0,
         0,
         124,
-        0,
+        117,
         0,
         0,
         5,

@@ -886,6 +886,10 @@ to them (the §8 checklist now includes this section by reference).
    context-correct family (`tallgrass` on green, `dunegrass` on sand), so the road
    itself rolls encounters — the flanking patches stay optional. A route the player
    can walk end-to-end without one encounter roll or one trainer's eye is a fail.
+   *(Deliberate waiver, 2026-10: `dimglass_coast_ii` — the first-hour flats keep a dry
+   trail through their crossing so a struggling first-timer can reach Pearlmoor; its two
+   route trainers + the optional dunegrass carry the gameplay. `audit_flow` WARNs free-pass
+   there by design, as on the Lanternway spokes.)*
 
 8. **Structure, not noise — terrain is DRAWN (the GBA-register standard, 2026-06).**
    Cartridge-era ground art is a flat base colour carrying a few deliberate, repeated

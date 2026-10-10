@@ -207,7 +207,7 @@ EXTRA_ENCOUNTERS = {
     "brinelet":  [{"area": "pearlmoor_quay", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 11},
                   {"area": "tideglass_cavern", "terrain": "cave", "rarity": "common", "min": 20, "max": 22},
                   {"area": "dimglass_coast", "terrain": "tall_grass", "rarity": "common", "min": 3, "max": 6},
-                  {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 11}],
+                  {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 10}],
     "brineroll": [{"area": "pearlmoor_quay", "terrain": "water", "rarity": "uncommon", "min": 10, "max": 12},
                   {"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 16, "max": 18},
                   # fen II reeds: thinned (D1 dex-spread, 2026-06) — Pebbit takes
@@ -215,14 +215,14 @@ EXTRA_ENCOUNTERS = {
                   {"area": "sunkbell_shallows", "terrain": "water", "rarity": "common", "min": 17, "max": 19},
                   {"area": "tideglass_cavern", "terrain": "cave", "rarity": "uncommon", "min": 21, "max": 24},
                   {"area": "tideglass_cavern", "terrain": "water", "rarity": "common", "min": 21, "max": 24},
-                  {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 9, "max": 11}],
+                  {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 9, "max": 10}],
     "lumpin":    [{"area": "pearlmoor_quay", "terrain": "tall_grass", "rarity": "common", "min": 9, "max": 11},
                   # saltreach reeds + tideglass cave: thinned (D1 dex-spread,
                   # 2026-06) — Pebbit/Fossik take the slots; Lumpin keeps the
                   # fen channels (water) and its South home maps
                   {"area": "saltreach_fen_ii", "terrain": "water", "rarity": "uncommon", "min": 17, "max": 19},
                   {"area": "dimglass_coast", "terrain": "tall_grass", "rarity": "common", "min": 3, "max": 6},
-                  {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 11}],
+                  {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 10}],
     # the Glostern line's middle form is the cavern pool's signature rare —
     # it seeds Pharolux's living-lighthouse legend two doors from where the
     # players caught Glostern (07-the-three §4).
@@ -659,7 +659,7 @@ D1_OBTAINABILITY_ENCOUNTERS = {
                    {"area": "gullcry_rock", "terrain": "water", "rarity": "uncommon", "min": 58, "max": 64}],
     # ---- Stone bases (the early game's first Stone basics) ----
     "pebbit":     [{"area": "dimglass_coast", "terrain": "tall_grass", "rarity": "rare", "min": 3, "max": 6},
-                   {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 11},
+                   {"area": "dimglass_coast_ii", "terrain": "tall_grass", "rarity": "common", "min": 8, "max": 10},
                    {"area": "saltreach_fen_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 16, "max": 18},
                    {"area": "saltreach_fen_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 17, "max": 19}],
     "flickore":   [{"area": "cinderhead_mine", "terrain": "cave", "rarity": "uncommon", "min": 22, "max": 24},
@@ -716,7 +716,29 @@ WANDERWOOD_ENCOUNTERS = {
     "spirlet":   [{"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "rare", "min": 15, "max": 17},
                   {"area": "pearlmoor_wanderwood", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 61}],
 }
+# The Far Side (pearlmoor_wanderwood_far, the wood's optional loop) carries the
+# SAME table in its own grass (tools/maps/build_pearlmoor_wanderwood_far.py).
+for _slug, _rows in list(WANDERWOOD_ENCOUNTERS.items()):
+    WANDERWOOD_ENCOUNTERS[_slug] = _rows + [{**r, "area": "pearlmoor_wanderwood_far"} for r in _rows]
 for _slug, _rows in WANDERWOOD_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows)
+
+# R8 (2026-10): Duskapple Orchard, the old orchard west of Tinderwick's square —
+# mirrors of the BUILT meadow table (public/assets/maps/duskapple_orchard.json;
+# tools/maps/build_duskapple_orchard.py is the source): the lv 2-4 training band
+# (the verge's own kin + a Glimflit) and its flag:dawn day twin. Weights ->
+# rarity by the W6 share rule (>=20 common, 10-19 uncommon, 5-9 rare).
+ORCHARD_ENCOUNTERS = {
+    "wickmoth":  [{"area": "duskapple_orchard", "terrain": "tall_grass", "rarity": "common", "min": 2, "max": 4},
+                  {"area": "duskapple_orchard", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 60}],
+    "tallowpup": [{"area": "duskapple_orchard", "terrain": "tall_grass", "rarity": "common", "min": 2, "max": 4},
+                  {"area": "duskapple_orchard", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 58}],
+    "glimflit":  [{"area": "duskapple_orchard", "terrain": "tall_grass", "rarity": "uncommon", "min": 3, "max": 4},
+                  {"area": "duskapple_orchard", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 62}],
+    "wicklit":   [{"area": "duskapple_orchard", "terrain": "tall_grass", "rarity": "rare", "min": 3, "max": 4},
+                  {"area": "duskapple_orchard", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 60}],
+}
+for _slug, _rows in ORCHARD_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows)
 
 # Areas whose encounter tables are BUILT into the map JSONs (the in-map zones
@@ -759,7 +781,9 @@ CURATED_AREAS = {
     "spore_grotto", "cinderhead_mine", "cinderhead_deep",
     "cinderhead_deep_b1f", "cinderhead_deep_b2f", "umbral_spire_f2",
     # S5 (2026-10): Paul's wood above Pearlmoor (mirrored above, WANDERWOOD).
-    "pearlmoor_wanderwood",
+    "pearlmoor_wanderwood", "pearlmoor_wanderwood_far",
+    # R8 (2026-10): Tinderwick's west orchard (mirrored above, ORCHARD_ENCOUNTERS).
+    "duskapple_orchard",
 }
 
 # Kin that are FIXED quest catches (a legendaryBattle set-piece), even though

@@ -855,7 +855,8 @@ export class BattleScene extends Phaser.Scene {
    * change it there first, then mirror it here.
    */
   private expYield(defeated: KinInstance): number {
-    return Math.max(1, Math.floor((defeated.species.bst * defeated.level) / 20));
+    const base = (defeated.species.bst * defeated.level) / 20;
+    return Math.max(1, Math.floor(base * earlyExpBoost(defeated.level)));
   }
 
   private complete(outcome: BattleResult['outcome']): void {
@@ -930,4 +931,18 @@ function statusBlocked(status: string): string {
     case 'drench': return 'is waterlogged and cannot move!';
     default: return 'cannot move!';
   }
+}
+
+/**
+ * The first-hours XP boost (2026-10): low-level foes teach more, so a struggling
+ * first-timer isn't stranded under the early curve (a playtester kept dying on the
+ * coast road). Keyed on the DEFEATED kin's level, so it fades out by itself before
+ * the East: ×1.5 up to lv 8 (Tinderwick, Coast I, the Beacon), ×1.25 to lv 12
+ * (the flats, Pearlmoor's first fights), then the plain yield. Mirrored in
+ * `tools/balance/progression.mjs` (`earlyExpBoost`) — keep the two in step.
+ */
+export function earlyExpBoost(level: number): number {
+  if (level <= 8) return 1.5;
+  if (level <= 12) return 1.25;
+  return 1;
 }

@@ -57,6 +57,12 @@ Prices live on `ItemDef.price` (`content/items.ts`); one price everywhere.
 | Beacon Charge | one throw, catch ×2.5 | 600w | everywhere, once `gleam:ember` is held (flag-gated stock) |
 | Star-charts | teach a move | 800–4,000w by tier (§6) | everywhere |
 | Hooded Lamp | key item; toggle — wild encounter rate ×0.5 while hooded | 600w | Pearlmoor chandlery, once `gleam:tide` is held (flag-gated stock) |
+| Tin Rower | key item; toggle — wild encounter rate ×0.5 while wound (the lowest active toggle factor applies; they never stack) | 12,000w **or a story** | Aldous Wink, Dimglass Coast I (R9, once `flag:has_starter`) — a one-time optional via the `pay` cutscene op, outside every solvency leg |
+
+Key items leave a shop's shelf once held (`ShopMenu`), so a toggle can't be bought
+twice. The Tin Rower's 12,000w reserve is set *not* to be met: the free path (Wink's
+story-builder) is the intended one, and the price exists so a well-funded player
+(the Paul supply-drop's +5,000w included) can't drain their safety money by accident.
 
 **Catching reframed (2026-06):** the vesperlamp is a **key item** — one device,
 plain throws free — and the purchasable line is **charges** (one boosted throw
@@ -183,6 +189,11 @@ Engine formulas (`KinInstance.ts`, `BattleScene.ts`):
   first-slice /60, which left the curve unreachable (−18 levels by the
   climax on any sane battle count)*.
 - **Trainer battles pay ×1.5 XP** (the genre's raised-kin bonus).
+- **First-hours boost (2026-10):** a defeated kin at **lv ≤ 8 yields ×1.5, lv 9–12 ×1.25**
+  (`BattleScene.earlyExpBoost` ↔ `earlyExpBoost` in `progression.mjs`). Keyed on the foe's
+  level, so it fades out by itself before the East. Added after a first-timer kept dying on
+  the coast road under-levelled; the Reyl checkpoint's rec moved 12 → 14 (the walkthrough's
+  bond-test band) to absorb it.
 - **A catch pays the same XP as a knock-out** — collecting is the game's
   heart and must keep you *on* the curve, not punish you off it.
 - XP goes to the **active battler only**. The model's `leadShare` schedule
@@ -190,19 +201,19 @@ Engine formulas (`KinInstance.ts`, `BattleScene.ts`):
   ~45–55% of XP), north onward the core team is set (70–100%). If we ever add
   an XP-share, re-tune the divisor down.
 
-**Model results (2026-06, all checks passing):**
+**Model results (2026-10 after R9's Old Light pair, all checks passing):**
 
 | Checkpoint | rec | ace | rusher | mainline | explorer |
 |---|--:|--:|--:|--:|--:|
-| Ember Gleam (Brisa) | 10 | 10 | L11 | L11 | L13 |
-| Tide Gleam (Reyl) | 12 | 16 | L16 | L16 | L18 |
-| Verdant Gleam (Sable) | 18 | 22 | L22 | L21 | L24 |
-| Stone Gleam (Otho) — *the wall* | 26* | 28 | L28 | L27 | L31 |
-| Storm Gleam (Mira) | 28 | 34 | L32 | L32 | L35 |
+| Ember Gleam (Brisa) | 10 | 10 | L12 | L12 | L14 |
+| Tide Gleam (Reyl) | 14 | 16 | L18 | L17 | L20 |
+| Verdant Gleam (Sable) | 18 | 22 | L23 | L22 | L25 |
+| Stone Gleam (Otho) — *the wall* | 26* | 28 | L28 | L28 | L31 |
+| Storm Gleam (Mira) | 28 | 34 | L32 | L32 | L36 |
 | Frost Gleam (Ysolde) | 36 | 40 | L38 | L37 | L41 |
 | Solar Gleam (Lucan) | 42 | 46 | L43 | L42 | L46 |
-| Lunar Gleam (Nessa) | 48 | 52 | L48 | L48 | L52 |
-| Warden Còr (climax) | 54 | 56 | L52 | L53 | L57 |
+| Lunar Gleam (Nessa) | 48 | 52 | L48 | L47 | L52 |
+| Warden Còr (climax) | 54 | 56 | L53 | L53 | L58 |
 
 \* post-Descent-Vigil expectation; §4 entry rec is 22 (the wall by design).
 
@@ -219,7 +230,7 @@ The JOURNEY table in `progression.mjs` is the contract; summarised:
 
 | Region | Trainer battles (class mix) | Wild fights (mainline) | Quest wicks | Valuables |
 |---|---|--:|--:|---|
-| South *(built + breakwater pair)* | 9 — 4 route, 3 keeper, 1 rival, 2 warden (+1 optional route: Paul, S4's one-time bout, 240w) | ~29 | 750w | Wax Cake |
+| South *(built + breakwater pair + the Old Light)* | 11 — 4 route, 5 keeper (incl. R9's Old Light pair: the Heckler 11/12 → 240w, the Ringmaster 12/13 → 260w), 1 rival, 2 warden (+1 optional route: Paul, S4's one-time bout, 240w) | ~29 | 750w | Wax Cake |
 | East *(fen + Lowleaf built)* | 12 — 3 route, 7 keeper, 2 warden | ~36 | 1,550w | Moth-amber ×2 |
 | North | 13 — 6 route, 4 keeper, 1 rival (A4), 2 warden | ~21 | 1,600w + finds | Moth-amber ×2 |
 | West *(built)* | 12 — 7 route, 2 keeper, 1 rival (A5), 2 warden | ~21 | 1,100w + finds | Starglass ×4 + Moth-amber ×3 (Coldfog's Embergloss/Murk Pearl ride the optional detour) |
@@ -237,7 +248,9 @@ Rules for region authors:
    model enforces solvency; if a region adds spending, add quest wicks or a
    valuable, not a payout-rate change.
 4. **1–2 mandatory grass crossings per route** (existing level-design rule)
-   supply the wild-fight floor the rusher column relies on.
+   supply the wild-fight floor the rusher column relies on. (South's Dimglass
+   I/II crossings carry a dry lane since 2026-10 — the model's South fight counts
+   are what a player choosing the grass gets; the checkpoints didn't move.)
 
 ## 9. Tuning rules — when the game changes (binding)
 

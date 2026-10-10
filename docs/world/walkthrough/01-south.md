@@ -16,8 +16,9 @@ first traversal Gift, **Tidecall**.
 
 - **Entry state:** brand-new game. NO kin and NO lamp yet — the opening is the **satchel
   errand** (below): the player spawns at the door of their house in Tinderwick, is turned
-  back at the warded north gate, finds **Fenn at the Vesper Crossroads waystone**, fetches
-  his satchel from the store, and receives the **vesperlamp** + level-5 **starter** at the
+  back at the warded north gate, finds **Fenn at the Vesper Crossroads waystone**, learns at
+  the store that a courier carted his satchel off to **Duskapple Orchard** (west of the
+  square), fetches it, and receives the **vesperlamp** + level-5 **starter** at the
   waystone ceremony. No Gleams, no flags.
 - **Exit state handed to East:** ~level 16, party of **2–3** bonded kin, holding
   **Tidecall**, `gleam:ember` + `gleam:tide` earned, **`flag:crown_south` set** (the engine
@@ -51,7 +52,8 @@ regions copy its scripts. What's wired (`src/game/content/scripts.ts` + `cinemat
   north **gate-warden intercepts** an unstarted player (`script.gate_warden` — emote, warning,
   walked back a step; the coast warps are `has_starter`-gated), every early voice points EAST,
   Fenn **hails the player across the plaza** (`script.fenn_wave`, camera focus) and asks for his
-  forgotten satchel (`script.fenn_crossroads` → `flag:fenn_errand`); the store counter holds it
+  forgotten satchel (`script.fenn_crossroads` → `flag:fenn_errand`); the store keeper sends you
+  WEST to the courier's cart in Duskapple Orchard, where it waits
   (`script.take_satchel` → `flag:has_satchel`); the ceremony (`script.intro_mentor`) then runs
   **at the waystone** — portraits (grave→warm→smile), a warm `tint` bloom on the vesperlamp
   gift, the cosy bed holding (dread only in Fenn's face on the lost-star line).
@@ -73,8 +75,9 @@ regions copy its scripts. What's wired (`src/game/content/scripts.ts` + `cinemat
 ### Tinderwick — *cosy coastal village at the blue hour; the Wayfaring begins*
 
 **At a glance** — `tinderwick` (+ interiors `tinderwick_house` · `tinderwick_lumenary` hall ·
-the **BEACON** `tinderwick_beacon_i/_ii/_top`) · town · south · entry: spawn at house door
-`{tx:8,ty:16}`, exit: north edge to `dimglass_coast`, east Lanternway to `vesper_crossroads` ·
+the **BEACON** `tinderwick_beacon_i/_ii/_top` · the west side area `duskapple_orchard`) · town ·
+south · entry: spawn outside the house door `{tx:5,ty:8}`, exit: north edge to `dimglass_coast`,
+east Lanternway to `vesper_crossroads`, west hedge gap to `duskapple_orchard` ·
 gate: the beacon's foot door needs **`flag:has_beacon_wick`** · **Gleam: Ember** (Brisa
 Tallow, ace ~10, at the **beacon top**) · rec. level: start 5, bond-test ~8–9.
 
@@ -91,17 +94,20 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
    2. **Try the north gate (most players will).** The **gate-warden** runs the intercept:
       it's dangerous out there without a lit lamp, and Star-tender Fenn went EAST to the
       Crossroads waystone, asking after you. (Band `gate_warden`, hidden once
-      `flag:has_starter`; both coast warps gated on the same flag.) **Wren** wanders by
-      the garden on the way east — A1's meet-the-rival beat.
+      `flag:has_starter`; both coast warps gated on the same flag.)
    3. **Walk the Lanternway to the waystone.** The lit east lane is safe (and pre-starter,
       wild encounters can't fire anyway). Fenn hails you into the plaza (`fenn_wave`),
-      then asks the favour: his **satchel**, forgotten on the Tinderwick store counter
-      (`script.fenn_crossroads` → `flag:fenn_errand`). The Pearlmoor spoke east is
+      then asks the favour: his **satchel**, forgotten (he thinks) on the Tinderwick store
+      counter (`script.fenn_crossroads` → `flag:fenn_errand`). The Pearlmoor spoke east is
       `gleam:tide`-gated (the standing "spoke wakes on its town's own Gleam" rule),
       so the errand can't be wandered past — and the quay can never be reached
       before the coast road.
-   4. **Fetch the satchel** (the store, beside the counter — an item_cache;
-      `flag:has_satchel`), and bring it back to the waystone.
+   4. **Fetch the satchel.** The store keeper (`npc.tinderwick_keeper_errand`) explains a
+      trade-cart courier swept it up with her parcels and went **WEST** — out the far end of
+      the square through the hedge gap to **Duskapple Orchard** (the R8 detour: one screen
+      away, signed at the gap). It rides on Maudie's three-wheeled cart, an item_cache
+      `fenn_satchel` a few steps off the orchard's central ride (`flag:has_satchel`). **Wren**
+      is out there "minding the cart" — A1's meet-the-rival beat. Bring it back to the waystone.
    5. **The ceremony (`script.intro_mentor`).** Out of the satchel: the **vesperlamp**,
       then the **starter** — chosen at the crossroads where every Wayfaring in
       Vesperholm begins. Fenn points you home: verge grass, the keeper's kit, Brisa.
@@ -111,12 +117,12 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
       relit from the **beacon**, whose **wick-key was lost on the coast road**
       (`script.brisa_quest` → `flag:beacon_quest`). The wick-locked tower door + sign
       are visible from the square — the goal stands over the town the whole time.
-   8. **Walk Dimglass Coast I** — Wren's sight-challenge, the mandatory grass
-      crossings, the `dusk_begins` omen — and receive the **BEACON WICK-KEY** from the
+   8. **Walk Dimglass Coast I** — Wren's sight-challenge, the grass
+      crossings (each now carries a dry lane — 2026-10 ease), the `dusk_begins` omen — and receive the **BEACON WICK-KEY** from the
       **old lamplighter** near the north boundary (`script.give_wick` →
       `flag:has_beacon_wick`). The player returns at ~lv 7–8, not 5.
    9. **Climb the beacon.** The foot door answers the key; floors I–II are held by
-      wick-tender **sight trainers** (Tansy lv7, Cole lv7/8); the spiral stairs land in
+      wick-tender **sight trainers** (Tansy lv6, Cole lv6/7 — eased 2026-10, with Brisa's opener 7→6); the spiral stairs land in
       the **lantern room**.
    10. **Earn the Ember Gleam at the lantern** — `script.beacon_battle`: Brisa's
        bond-test (ace 10, now a fair fight), then the great lamp blooms and the
@@ -186,23 +192,28 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
 6. **Validation hooks** (against built `tinderwick.json` + the beacon maps)
    - **Map id / kind:** `tinderwick` · town. Interiors: `tinderwick_house`,
      `tinderwick_lumenary` (the hall), `tinderwick_beacon_i/_ii/_top` (the tower).
-   - **Entry/exit:** spawn `start_at {tx:6,ty:17}`; north edge-warps `to_coast`/`to_coast_e`
+   - **Entry/exit:** spawn `start_at {tx:5,ty:8}` (R8: the cottage fronts the square — door
+     `to_house {5,7}`; the store door `to_shop {6,16}` is down the lower-left lane — the two
+     swapped places, door tiles and all); west hedge-gap warps `to_orchard`/`to_orchard_s`
+     `{0,8-9}` ↔ `duskapple_orchard {21,8-9}` (ungated); north edge-warps `to_coast`/`to_coast_e`
      → `dimglass_coast`, both **`requires_flag:flag:has_starter`**; east `to_crossroads
-     {tx:27,ty:16}` → `vesper_crossroads` (ungated — the opening's road); beacon foot door
-     `to_beacon` `interact {tx:24,ty:6}` **`requires_flag:flag:has_beacon_wick`**
+     {tx:27,ty:16}` → `lanternway_tinderwick` → `vesper_crossroads` (ungated — the opening's
+     road); beacon foot door `to_beacon` `step_on {tx:24,ty:6}` **`requires_flag:flag:has_beacon_wick`**
      → `tinderwick_beacon_i`.
    - **The opening errand chain (all data):** north gate band `gate_warden` `cutscene`
      `step_on {tx:13,ty:1}` `hidden_when_flag:flag:has_starter` (warden body at `{14,1}`
      blocks the twin column) → crossroads: `fenn_wave` once-band, `script.fenn_crossroads`
-     sets `flag:fenn_errand` → shop: item_cache `fenn_satchel` (`script.take_satchel` gives
-     `fenn_satchel`, sets `flag:has_satchel`) → waystone ceremony `script.intro_mentor` sets
+     sets `flag:fenn_errand` → shop: the keeper's errand stage points WEST → `duskapple_orchard`:
+     item_cache `fenn_satchel` `{16,10}` (`script.take_satchel` gives `fenn_satchel`, sets
+     `flag:has_satchel`) → waystone ceremony `script.intro_mentor` sets
      `flag:has_vesperlamp` + `flag:has_starter`.
    - **Fenn's waystone stages (flag-disjoint placements on one tile):** `fenn_pre`
      (`script.fenn_crossroads`) → `fenn_waiting` (`npc.fenn_waiting`) → `fenn_ready`
      (`script.intro_mentor`) → `fenn_after` (`npc.fenn_waystone_after`, until
      `flag:dusk_begins` moves him to the coast for C2).
    - **The shop counter stages:** `shopkeeper_early` (points east) → `shopkeeper_errand`
-     (the satchel) → `shopkeeper_kit` (`requires_flag:flag:has_starter` — the one-time kit)
+     (the courier took the satchel WEST to the orchard) → `shopkeeper_kit`
+     (`requires_flag:flag:has_starter` — the one-time kit)
      → `shopkeeper` (plain).
    - **The beacon quest chain (all data):** verge catch → `flag:caught_first_kin` (engine,
      any catch) → hall: `script.brisa_quest` sets `flag:beacon_quest` → Dimglass I:
@@ -214,12 +225,23 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
      `gleam:ember`** (+ `crown_south` half) via trainer `lampwarden_tinderwick`.
    - **Brisa's hall stages (flag-pair NPC swaps on the dais):** `npc.brisa_not_ready` →
      `script.brisa_quest` → `npc.brisa_meet_beacon` → `npc.brisa_after` (post-Gleam).
-   - **Encounters:** `verge_grass` · `tall_grass` · `encounter_rate 0.07` · kin **16**
-     (w60, lv2–4) + **10** (w40, lv2–3) — level band 2–4 (§4 start-5).
+   - **Encounters:** `verge_grass` `{11,2,6x3}` · `tall_grass` · `encounter_rate 0.07` · kin
+     **16** (w60, lv2–4) + **10** (w40, lv2–3) + 13 + rare 5 — level band 2–4 (§4 start-5).
+     `duskapple_orchard`'s meadow (`meadow_a`, rate 0.08): 16/10 lv2–4, 8 & rare 5 lv3–4 —
+     the same band, a safe training patch before the coast (+ `_day` twin).
    - **NPCs / festival:** gate-warden pair `gatewarden_pre`/`gatewarden_post` (swap on
-     `flag:has_starter`); **Wren** wanders near the garden until `flag:has_starter`
-     (`npc.wren_intro`); Lantern-fair NPCs (`fair_piper`, `fair_kid`)
-     `requires_flag:'gleam:ember'`. Fenn is at `vesper_crossroads`, not in town.
+     `flag:has_starter`); Lantern-fair NPCs (`fair_piper`, `fair_kid`)
+     `requires_flag:'gleam:ember'`. Fenn is at `vesper_crossroads`, not in town. **Wren**
+     wanders in `duskapple_orchard` until `flag:has_starter` (`npc.wren_intro`), beside
+     Maudie the courier (`npc.orchard_courier*`, three stages on `fenn_errand`/`has_satchel`)
+     and Old Wendel (`npc.orchard_wendel`, `_dawn` once `flag:dawn`). Orchard caches:
+     `orchard_windfall` (2 tallow balms) and `orchard_drop` (a Lumen Drop, SW corner).
+   - **R8 — "the town remembers it differently" (for returning players; invisible to a
+     first-timer).** Removed on purpose: the TINDERWICK SQUARE and DOCKS signs (a store
+     sign now stands by the store's new lane, a WEST fingerboard at the hedge gap), the
+     townswoman's reassurance line (the lane-walker on the Lanternway still says it), the
+     keeper's "in a hurry" aside. Old Wendel's "folk keep telling me there was never an
+     orchard here" is the one wink.
 
 ---
 
@@ -237,6 +259,9 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
    3. **The teases.** Offshore **lantern-buoys** glow over shallows leading to **Gullcry Rock**
       (Tidecall, not yet) and a dark **cavern mouth** in the cliff → **Tideglass Cavern**
       (Glimmerstep, not yet). Both are signed: the *why* and the *come back* are explicit.
+   - *(R9)* On the south sand, just off the lane, **Aldous Wink** minds his toy case and
+      auction board (S6 "The Tin Rower"); further up the strand **Pim Halloo** of the Worry Club
+      waves a map of contradicting arrows.
    4. **Meet Wren again (A2).** The travelling Wayfarer NPC anchors the route; Wren's first
       friendly battle teaches **trainer battles** (Wren ~2 levels under the player).
    5. **The inciting incident (B1).** On the first nightfall here, a far constellation **winks
@@ -290,11 +315,14 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
      **`requires_ability:glimmerstep`** → `tideglass_cavern {tx:4,ty:8}`, `door`.
    - **Gates:** `AbilityGate` `shallows_tide` (`ability:tidecall`, `effect:make_passable`) over
      shallows tiles `{14–15, 4–6}`.
-   - **Encounters:** four optional patches (`grass_a–d`, `tall_grass`, rate 0.09, band 3–6)
-     PLUS the two **[BUILT] mandatory crossings** — `crossing_a rect{3,9,11,2}` and
-     `crossing_b rect{3,26,11,2}`, rate 0.10 — full-corridor bands (tallgrass on the green,
-     **dunegrass** over the beach) with the lit lane carved out, so the road north passes
-     *through* encounter ground (level-design §11 rule 7). Gated water:
+   - **Encounters:** four optional patches (`grass_a–d`, `tall_grass`, rate 0.09, band 3–5;
+     the side pocket `bank_hollow` keeps 5–6) PLUS the two **[BUILT] crossings** —
+     `crossing_a rect{3,9,11,2}` (3–5) and `crossing_b rect{3,26,11,2}` (4–5), rate **0.08** —
+     full-corridor bands (tallgrass on the green, **dunegrass** over the beach) with the lit
+     lane carved out: since the **2026-10 ease** the dirt lane runs unbroken through
+     `crossing_a` (x8–9) and the two tufts at the ledge-gap choke `{10–11,22}` are mown, so
+     the road north has a grass-free line and the flanking grass is optional (the
+     `dusk_begins` band still makes the route carry gameplay). Gated water:
      `tide_shallows rect{14,5,2,4}` `water` **`requires_ability:tidecall`** (rare read).
    - **NPCs / signs:** **[BUILT] Wren is a SIGHT trainer** at `{5,11}` facing the lane
      (`sight_range:4`, `script.wren_dimglass`, swap to `npc.dimglass_wayfarer` once
@@ -334,10 +362,9 @@ boundary is ungated; the *spurs* off it are gift-gated) · Gleam: — · rec. le
    can't yet open and learns to remember it.
 
 4. **Optional content**
-   - **The netmender's net-floats** — **[BUILT]** the cache at `{11,4}` on the flats
-     (`script.pickup_net_floats` → `flag:picked_net_floats`; appears once
-     `flag:q_south_bell` is set, band 8–10): the collinear errand leg of Pearlmoor's
-     **Causeway Bell** loop (see Pearlmoor §1).
+   - **The netmender's net-floats** — **moved (R9, 2026-10):** the old flats cache at
+     `{11,4}` is gone; the floats now come out of Mr. Punchwheel at the top of **the Old
+     Light** (Pearlmoor, below) — the coast backtrack became a forward climb in town.
    - **Gullcry Rock** (spur) — **[BUILT]** **Tidecall** (this region, at Pearlmoor): the rare
      harbour-light kin (#29 Glostern) + the Tide Charm. **Becomes accessible the moment you
      earn Tidecall — backtrack here.** (Post-Tidecall it also hosts S1's three dark buoys —
@@ -363,12 +390,19 @@ boundary is ungated; the *spurs* off it are gift-gated) · Gleam: — · rec. le
      segment-I teases are the visible promise; the actual gated warps belong on II to match the
      graph.)
    - **Encounters:** `tall_grass` + gated `water` zones, Tide / Tide-Light kin (Brinelet, Lumpin,
-     Mooncatch-adjacent), **level band ~8–10** (§4, no cliff into Pearlmoor's 12).
+     Mooncatch-adjacent), **level band ~8–10** (§4, no cliff into Pearlmoor's 12): since the
+     **2026-10 ease** `dune_a/b` run 8–9 and `dune_c`/`dune_crossing` 9–10 (each top shaved
+     by one; nothing rolls 11), rate **0.09**, and the dark trail (x9–10) runs unbroken through
+     `dune_crossing`, so the dunegrass band is optional. Route trainers: **Morrow** lv 9/9
+     (144w) and **Elspeth** lv 10/10 (eased from 10/11; 160w).
+   - **Roadside rest [BUILT 2026-10]:** the **cockler** (`npc_old_woman`, `{11,28}`, just
+     past the seam from Coast I) runs `script.flats_rest` — a full `heal` at her driftwood
+     fire, the South road's only rest between Tinderwick and Pearlmoor; it banks the
+     blackout wake-point, so a loss on the flats no longer sends you back to Tinderwick.
    - **Signs/NPC:** a boundary sign sight-lining Pearlmoor; a route NPC reiterating the buoy/cave
      teases. Originality + canon-vocabulary pass per spine §9.
-   - **Quest hooks on this map (BUILT):** the **net-floats cache** `{11,4}`
-     (`requires_flag:flag:q_south_bell`, `script.pickup_net_floats` → `flag:picked_net_floats`);
-     **S1's three buoys** — interact `cutscene` triggers on the buoy line, lit **in order
+   - **Quest hooks on this map (BUILT):** (the net-floats cache moved to the Old Light's
+     top in R9); **S1's three buoys** — interact `cutscene` triggers on the buoy line, lit **in order
      quay-outward** (a boolean chain with the netmender's rule as each `blocked_ref`):
      `buoy_first {14,9}` (`requires_flag:flag:q_south_buoys` → `flag:q_south_buoy_a`) →
      `buoy_second {16,12}` (→ `flag:q_south_buoy_b`) → `buoy_last {16,20}` (→
@@ -536,6 +570,56 @@ netmender's keeping.
      exception to VISION.md's all-original rule; don't "fix" it.** Builders:
      `tools/maps/build_pearlmoor_allotment.py`, `build_pearlmoor_wanderwood.py` (the quay's
      north gap + the breakwater's note/Paul stages were applied surgically to the shipped JSON).
+     **The Far Side (2026-10):** the wood's optional second ring, **`pearlmoor_wanderwood_far`**
+     (`build_pearlmoor_wanderwood_far.py`) — two roads off the Wanderwood's west edge, low
+     (`to_far`, rows 16-17, signed `sign.wander_far_post`) and high (`to_far_n`, rows 8-9, by
+     the glade): out one, round, back in the other. Pure discovery, never gating, still there
+     after the cup — every piece something Paul would recognise: the **laugh** that rolls
+     through the trees (one-time band, `sign.wander_far_laugh`); the **lifting bench** and its
+     harbour-stone cairn (80 / 140 / "the next sixty-three years", `sign.wander_far_bench`);
+     **Mags at her griddle** (`script.wander_mags` — a cheese-bun that heals the party without
+     becoming a rest point, the original *three clockwork lamplighters* joke Paul laughed too
+     hard to finish, and a word about the "bit of an anarchist" who returns his library books
+     early); the **glass steps** across a pond (flat slabs hold, round stones don't — "p. went
+     first", `sign.wander_glass_steps`) to an islet cache (**Lumen Drop** + p.'s note hinting the
+     wick-purses on the roads weren't all luck, `script.pickup_wander_far_steps`); the
+     **Answering Lamp** in the hollow (`script.wander_answering_lamp` — confident, often wrong:
+     dawn is "Tuesday", its "new" joke isn't, its picture of Vesperholm from above the stars is
+     solid black, and it has "no record" of any Registry) beside p.'s carving **REASSESS**
+     (`sign.wander_far_reassess`); the **sugar stump** (triangle swapped for the umbrella,
+     `sign.wander_far_stump`); and story trees **5** (the quiet helper at the Lantern Fair's long
+     game) and **6** (a friend's book read across two seas). Same grass table as the wood
+     (WANDERWOOD rows, `CURATED_AREAS`). **Andrew** waits at the wood's hub (`andrew_wood`,
+     (11,20), `script.andrew_wood`) — the last of his easter eggs.
+   - **S6 "The Tin Rower"** — **[BUILT R9, 2026-10]** giver: **Aldous Wink** ("Wink's Wind-Ups
+     — toys, tales, trades"), `npc_old_man` on the **Dimglass Coast I** south sand strip at (12,30),
+     his auction board `sign.wink_auction` at (12,29) (`requires_flag: flag:has_starter`). Lot 1 is
+     a wind-up tin ferryman, painted *SAME TIDE TOMORROW*, stamped *MADE TO ORDER — T.* — Tam
+     Wash's unpaid order, "up for auction eleven winters", reserve set *specifically* not to be
+     met. `script.wink_trade` → menu TELL A STORY / BUY HIM / WHERE'S HE FROM? / JUST LOOKING.
+     **Story-builder** (`script.wink_story*`): opening / middle / ending picks, each a
+     `flag:tin_story_*` (cleared at the start) so Wink reads the whole story back; the glass-case
+     "auction ending" is turned down and only the three good endings are re-offered; a
+     Paul-only opening (`flag:name_is_paul`); the cheese-bun + "nothing for eleven years" + "came
+     home" combo gets its own reaction. **BUY** = the `pay` op (12,000w, confirm step; short purse
+     → "not that fair"). The hand-over (`script.wink_handover`, every step `unless_flag:
+     flag:has_tin_rower`) gives the **Tin Rower** already wound. Flags: `flag:tin_rower_offered`
+     (first talk — the journal entry), `flag:has_tin_rower` (done), `flag:tin_rower_wound`
+     (ITEMS toggle: WOUND/STILL, encounters ×0.5 like the Hooded Lamp). After the Old Light
+     (`flag:q_south_jest_done`) Wink says it once: *"Tam Wash. I think I knew. I just liked not
+     knowing."* `script.reyl_tin_rower` (Reyl recognising the T., +1 Lumen Drop, once) is ready to
+     `run` from Reyl's post-Tide talk.
+   - **The Worry Club** — **[BUILT R9]** five townsfolk frantic that {name} will never find the
+     easter egg, each ONE NPC + ONE staged script (`script.worry_*`, the andrew_egg if/unless
+     chain): PRE (before `flag:chickenpig_caught` — fretting + a real main-path tip; before
+     `gleam:ember` the tip names Brisa/Andrew, never the egg) → CAUGHT (relief) → AFTER
+     (`flag:q_south_wander_done` — "everything's right with the world"). A one-time item gift on
+     the catch (`flag:worry_<id>_gift`). **Hester Fretwell** (Tinderwick square (11,11), knitting;
+     2 Tallow Balms), **Pim Halloo** (Dimglass I sand (12,15), a map of contradicting arrows; Glow
+     Charge), **Gilly Fretwell** (Hester's sister, Dimglass II by the cockler (13,28), a tally;
+     Warm Balm), **Nettie Fret** (Lightkeeper's Point, `worry_nettie`; Warm Balm; her tip follows
+     the Old Light → bell → Reyl loop), **Constance Dither** (Vesper Crossroads (16,6), spyglass
+     the wrong way round; Tallow Balm).
    - **R1 "Wicks for the Lamplighter"** — the Waykeeper's Round, leg 1 (live now): parcel
      from the **Waykeeper** (`vesper_crossroads`) → the **old lamplighter** (Dimglass I) ·
      flags: `flag:q_round_lamplighter` · reward: bright-lamp kit · `[wakes with spoke]`
@@ -564,10 +648,15 @@ netmender's keeping.
      **`requires_flag:flag:q_south_has_rope`** with **`blocked_ref:npc.netmender_gate`**
      (Warp.blocked_ref is engine-supported, step_on included) → `pearlmoor_breakwater {5–6,0}`,
      landing ON its return pair.
-   - **The bell quest chain (all data, BUILT):** `script.reyl_quest` (hall, Reyl's dais
-     stage) sets `flag:q_south_bell` → net-floats cache on `dimglass_coast_ii` `{11,4}`
-     (`flag:picked_net_floats`) → netmender swap `script.netmender_rope` gives the
-     MOOR-BELL ROPE (`flag:q_south_has_rope`) → breakwater walk (net-hand SIGHT trainers
+   - **The bell quest chain (all data, BUILT; R9 2026-10):** `script.reyl_quest` (hall,
+     Reyl's dais stage — "nobody fights me till they've laughed") sets `flag:q_south_bell` →
+     **the Old Light** on Lightkeeper's Point (below): seven floors, one riddle each
+     (`flag:oldlight_1..5_solved`), the top sets **`flag:picked_net_floats` +
+     `flag:q_south_jest_done`** → the netmender's ONE quay stage `netmender_floats`
+     (`requires q_south_bell`, `hidden_when q_south_has_rope`, `script.netmender_floats`:
+     points up the tower until `q_south_jest_done`, then runs `script.netmender_rope`) gives
+     the MOOR-BELL ROPE (`flag:q_south_has_rope`) — so an old save already holding the floats
+     still climbs, and a save already holding the rope is untouched → breakwater walk (net-hand SIGHT trainers
      **Maren** lv 12/12 + **Cob** lv 13/14 on one-tile boulder chokes, payouts 192/224 —
      route 16 × ace, mirrored in `progression.mjs BUILT_PAYOUTS`) → `script.ring_moorbell`
      at the shrine's bell (interact, both base tiles) sets `flag:q_south_bell_rung`.
@@ -577,7 +666,51 @@ netmender's keeping.
      and **grants ability `tidecall`**; the engine sets **`flag:crown_south`** once
      `gleam:ember`+`gleam:tide` are both held. Lampwarden **Reyl Wash** (Tide, ace ~16);
      his dais runs four flag-disjoint stages (`reyl_quest` → `reyl_waiting` → `reyl` →
-     `reyl_after`).
+     `reyl_after`). R9: `reyl_waiting` runs `script.reyl_waiting` (one line per chain state:
+     tower → netmender → moor-gate) and `reyl_after` runs `script.reyl_after` (his hall lines,
+     then `script.reyl_tin_rower` — the Tin Rower recognition + one Lumen Drop, once).
+     `if_flag:q_south_jest_done` payoffs: Reyl's pre/post bond-test lines, the "walks out to
+     the moor-bell for the first time in eleven winters" narrate, `ring_moorbell`'s old man
+     taking off his hat, Punchwheel's "NEW MATERIAL. FINALLY." in the Tide-blessing.
+   - **Lightkeeper's Point + the Old Light (R9, BUILT 2026-10)** — the spine of the chain is
+     Reyl's secret (eleven winters ago his wife **Tam** rowed out in the fog and didn't come
+     home; he cut the bell-rope himself and put Tam's clockwork joke-engine, **Mr.
+     Punchwheel**, where the Old Light's lamp had been). Every joke in the tower is the
+     machine's — the lobby plaque says so; the one human line is Tam's unfinished card at the
+     top, and the player finishes it with Reyl's catchphrase. Builders:
+     `tools/maps/build_pearlmoor_point.py`, `tools/maps/build_pearlmoor_oldlight.py`;
+     content `src/game/content/oldlight.ts` (final scored jokes, tagged per slot).
+     - **`pearlmoor_point`** · route 20×14, safe (no encounters/trainers). Off the quay's
+       WEST beach: quay `to_point_15/16/17` `{0,15–17}` ⇄ point `to_quay_7/8/9` `{19,7–9}`
+       (landings `{18,7–9}` / quay `{1,15–16}`). The Old Light (bespoke
+       `pearlmoor_oldlight_dark`, 5×8; `pearlmoor_oldlight_lit` swaps in on `gleam:tide`,
+       same footprint) — door `to_oldlight` `{3,7}` **`requires_flag:flag:q_south_bell`**,
+       `blocked_ref:door.oldlight_locked` (the brass nose) → `pearlmoor_oldlight_1 {7,9}`.
+       The shuttered Wash ferry-house (`sign.wash_ferryhouse` at its door, mailbox sign),
+       the sea-view bench, the jest-house sign, cache `pickup_point_rocks` `{1,2}`, the
+       Worry Club's **`worry_nettie`** `{13,10}` (`script.worry_nettie`), and the slide's
+       brass chute-mouth `up_chute` `{7,7}` (`requires q_south_jest_done`) beside the slide
+       landing `{7,8}`.
+     - **The tower** — seven `roomkit` interiors, stairs alternating NE/NW (Beacon spiral):
+       F1 Lobby of Groaners (warm; door `{7,10}`; the plaque; the Laugh Turnstile — every
+       answer works) · F2 The Late Laugh (cool; stage + pews + late audience; **the Heckler**
+       keeper lv 11/12, 240w, gates the riddle) · F3 Intermission (warm; **tea-urn `heal`
+       rest point** in the interval bar; the Hall of Mouths + three escaped punchlines) · F4
+       The Backwards Inn (cool, the lobby mirrored; **the Ringmaster** keeper lv 12/13, 260w,
+       poses the riddle; answer TIDE) · F5 Gallery of Confident Facts (cool; six captions;
+       the once-only knock-knock loop → the tower's one lowercase line; pick the TRUE caption)
+       · F6 The One Joke (12×9, no gate; no music key — the band fades F5's bed) · TOP the
+       Winding Room (Reyl's log, the cut rope, Tam's card → `q_south_jest_done` + the floats;
+       the SLIDE `{7,9}` → Point `{7,8}`).
+     - **Validation hooks:** up-stairs `up_stairs` **`requires_flag:flag:oldlight_N_solved`**
+       + `blocked_ref:sign.oldlight_stairgate`; the riddle runs on the ONE walkable approach
+       tile below each up-stair (`riddle_band`, step_on, `hidden_when` solved — the
+       speaking-tube object blocks the side approach) and on the tube (`tube`, interact);
+       F2/F4 bands carry `requires_flag:flag:oldlight_heckler_beaten`/`_ringmaster_beaten`.
+       Down-stairs always open. Riddles are `choice`s with layered retries (wrong → joke +
+       re-offer; second miss → Punchwheel blurts the answer and the gate opens anyway;
+       Cancel steps away and the band re-offers) and a `Wind the Tin Rower.` option
+       (`if_flag:flag:has_tin_rower`). No wild encounters anywhere in the tower.
    - **The Tide-blessing set-piece (Arc E, BUILT):** `script.tide_blessing` banded across
      every walkable tile of quay row 10 (the one cut between the Lumenary forecourt and
      town), `requires_flag:'gleam:tide'`, self-hiding via `flag:tide_blessing_seen`; its

@@ -184,6 +184,10 @@ type CutsceneStepBase =
   | { op: 'heal'; rest?: boolean }
   | { op: 'gleam'; element: string } // diegetic Gleam cue (relight the sky)
   | { op: 'giveMoney'; amount: number } // hand the player wicks (quest rewards, finds)
+  // Take `amount` wicks IF the purse holds that many, and set `flag` to mark the
+  // sale; a short purse is a silent no-op. Scripts branch on the outcome with the
+  // ordinary per-step `if_flag`/`unless_flag` guards (no new conditional machinery).
+  | { op: 'pay'; amount: number; flag: WorldFlag }
   | { op: 'shop'; shop: string } // open a shop's buy/sell counter (content/shops.ts)
   // Run another named script's steps inline — composition, so a menu branch or a
   // wrapper can reuse a script without duplicating its ops.
@@ -263,6 +267,34 @@ export interface ItemDef {
   sell?: number;
   /** For 'chart' items (Star-charts): the move id this chart teaches. */
   teach_move?: string;
+  /**
+   * A TOGGLE key item (ITEMS → use flips it on/off): the world flag that holds
+   * its "on" state. The Hooded Lamp (`flag:lamp_hooded`) and the Tin Rower
+   * (`flag:tin_rower_wound`) are the worked examples. Pair with `toggle_text`.
+   */
+  toggle_flag?: WorldFlag;
+  /** The pack's words for a toggle item's two states (row label, detail note,
+   *  and the line played when it's switched on / off). */
+  toggle_text?: ToggleText;
+  /**
+   * While `toggle_flag` is held, scale every wild-encounter roll by this factor
+   * (EncounterSystem takes the LOWEST factor among toggles that are on, so two
+   * dampers never stack below the stronger one).
+   */
+  encounter_factor?: number;
+}
+
+/** Display words for a toggle key item's on/off states (see ItemDef.toggle_flag). */
+export interface ToggleText {
+  /** Short row labels, e.g. 'HOODED' / 'OPEN'. */
+  on: string;
+  off: string;
+  /** Appended to the detail pane, e.g. '(Hooded — wild kin pass quieter.)'. */
+  on_note: string;
+  off_note: string;
+  /** Played when the player switches it on / off. */
+  turn_on: string;
+  turn_off: string;
 }
 
 export type ItemRegistry = Record<string, ItemDef>;

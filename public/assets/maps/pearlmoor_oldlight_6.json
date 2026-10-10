@@ -1,0 +1,467 @@
+{
+  "id": "pearlmoor_oldlight_6",
+  "display_name": "The Old Light \u2014 The One Joke",
+  "width": 12,
+  "height": 9,
+  "tile_width": 16,
+  "tile_height": 16,
+  "kind": "interior",
+  "tilesets": [
+    {
+      "name": "interior_set",
+      "image": "assets/tilesets/interior_set.webp",
+      "tile_width": 16,
+      "tile_height": 16,
+      "first_gid": 1,
+      "columns": 8,
+      "tile_count": 13
+    }
+  ],
+  "layers": [
+    {
+      "name": "base",
+      "role": "base",
+      "depth": 0,
+      "data": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        3,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        3,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "walls",
+      "role": "deco",
+      "depth": 5,
+      "data": [
+        10,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        11,
+        8,
+        4,
+        4,
+        4,
+        4,
+        4,
+        5,
+        4,
+        4,
+        4,
+        4,
+        9,
+        8,
+        0,
+        0,
+        0,
+        9,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        9,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        9,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        12,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        13
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "coat_peg",
+      "sprite": "solarium_costume_rack",
+      "at": {
+        "tx": 2,
+        "ty": 4
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "two_cups",
+      "sprite": "interior_table",
+      "at": {
+        "tx": 6,
+        "ty": 4
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "stool_l",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 5,
+        "ty": 5
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "stool_r",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 8,
+        "ty": 5
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "speaking_tube",
+      "sprite": "solarium_sun_mask",
+      "at": {
+        "tx": 2,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 1
+    }
+  ],
+  "warps": [
+    {
+      "id": "down_stairs",
+      "at": {
+        "tx": 10,
+        "ty": 2
+      },
+      "trigger": "step_on",
+      "to_map": "pearlmoor_oldlight_5",
+      "to": {
+        "tx": 12,
+        "ty": 3
+      },
+      "facing": "down",
+      "transition": "fade"
+    },
+    {
+      "id": "up_stairs",
+      "at": {
+        "tx": 1,
+        "ty": 2
+      },
+      "trigger": "step_on",
+      "to_map": "pearlmoor_oldlight_top",
+      "to": {
+        "tx": 1,
+        "ty": 3
+      },
+      "facing": "down",
+      "transition": "fade"
+    }
+  ],
+  "triggers": [
+    {
+      "id": "coat",
+      "kind": "sign",
+      "at": {
+        "tx": 2,
+        "ty": 5
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_coat"
+    },
+    {
+      "id": "coat_b",
+      "kind": "sign",
+      "at": {
+        "tx": 3,
+        "ty": 5
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_coat"
+    },
+    {
+      "id": "cups",
+      "kind": "sign",
+      "at": {
+        "tx": 6,
+        "ty": 4
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_cups"
+    },
+    {
+      "id": "cups_b",
+      "kind": "sign",
+      "at": {
+        "tx": 7,
+        "ty": 4
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_cups"
+    },
+    {
+      "id": "window",
+      "kind": "sign",
+      "at": {
+        "tx": 6,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_window"
+    },
+    {
+      "id": "tube",
+      "kind": "cutscene",
+      "at": {
+        "tx": 2,
+        "ty": 2
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_6"
+    },
+    {
+      "id": "one_joke_2",
+      "kind": "cutscene",
+      "at": {
+        "tx": 9,
+        "ty": 2
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_one_joke",
+      "hidden_when_flag": "flag:oldlight_6_heard"
+    },
+    {
+      "id": "one_joke_3",
+      "kind": "cutscene",
+      "at": {
+        "tx": 9,
+        "ty": 3
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_one_joke",
+      "hidden_when_flag": "flag:oldlight_6_heard"
+    },
+    {
+      "id": "one_joke_4",
+      "kind": "cutscene",
+      "at": {
+        "tx": 9,
+        "ty": 4
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_one_joke",
+      "hidden_when_flag": "flag:oldlight_6_heard"
+    },
+    {
+      "id": "one_joke_5",
+      "kind": "cutscene",
+      "at": {
+        "tx": 9,
+        "ty": 5
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_one_joke",
+      "hidden_when_flag": "flag:oldlight_6_heard"
+    },
+    {
+      "id": "one_joke_6",
+      "kind": "cutscene",
+      "at": {
+        "tx": 9,
+        "ty": 6
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_one_joke",
+      "hidden_when_flag": "flag:oldlight_6_heard"
+    },
+    {
+      "id": "one_joke_7",
+      "kind": "cutscene",
+      "at": {
+        "tx": 9,
+        "ty": 7
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_one_joke",
+      "hidden_when_flag": "flag:oldlight_6_heard"
+    }
+  ],
+  "encounters": [],
+  "npcs": [],
+  "gates": []
+}

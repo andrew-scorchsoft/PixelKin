@@ -401,8 +401,8 @@
       "trigger": "step_on",
       "to_map": "tinderwick",
       "to": {
-        "tx": 5,
-        "ty": 8
+        "tx": 6,
+        "ty": 17
       },
       "facing": "down",
       "transition": "door"
@@ -471,19 +471,6 @@
       "movement": "static",
       "dialogue_ref": "script.shop_tinderwick",
       "requires_flag": "flag:tinderwick_kit"
-    },
-    {
-      "id": "fenn_satchel",
-      "at": {
-        "tx": 3,
-        "ty": 5
-      },
-      "facing": "down",
-      "sprite": "item_cache",
-      "movement": "static",
-      "dialogue_ref": "script.take_satchel",
-      "requires_flag": "flag:fenn_errand",
-      "hidden_when_flag": "flag:has_satchel"
     }
   ],
   "gates": [],

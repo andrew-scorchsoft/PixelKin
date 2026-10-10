@@ -326,6 +326,11 @@ m = {
         {"id": "to_crossroads", "at": {"tx": 0, "ty": 12}, "trigger": "step_on",
          "to_map": "lanternway_pearlmoor", "to": {"tx": 22, "ty": 12}, "facing": "left",
          "transition": "fade"},
+        # R9: the west beach runs on out to Lightkeeper's Point (the Old Light).
+        # (Shipped JSON carries these surgically too — see build_pearlmoor_point.py.)
+        *[{"id": f"to_point_{ty}", "at": {"tx": 0, "ty": ty}, "trigger": "step_on",
+           "to_map": "pearlmoor_point", "to": {"tx": 18, "ty": ty - 8}, "facing": "left",
+           "transition": "fade"} for ty in (15, 16, 17)],
         # East road to Saltreach Fen (East region) — inert tease until authored.
         {"id": "to_fen", "at": {"tx": W - 1, "ty": 12}, "trigger": "step_on",
          "to_map": "saltreach_fen_i", "to": {"tx": 1, "ty": 38}, "facing": "right",
@@ -389,22 +394,22 @@ m = {
         # THE NETMENDER — keeper of the bell-rope and giver of S1 "The Last Buoy
         # Out". One body, nine flag-disjoint stages by the moor-gate (the
         # standing kit's giver-swap pattern; the flag chain is strictly ordered:
-        # q_south_bell -> picked_net_floats -> q_south_has_rope ->
+        # q_south_bell -> q_south_jest_done (the Old Light's top; it also sets
+        # picked_net_floats) -> q_south_has_rope ->
         # q_south_bell_rung -> gleam:tide -> q_south_buoys -> q_south_buoys_lit
         # -> q_south_buoys_done, so no two stages can coexist).
         {"id": "netmender_pre", "at": {"tx": 23, "ty": 17}, "facing": "down",
          "sprite": "npc_old_woman", "movement": "static",
          "dialogue_ref": "npc.netmender_pre",
          "hidden_when_flag": "flag:q_south_bell"},
+        # R9: ONE stage spans q_south_bell..q_south_has_rope and branches
+        # inside script.netmender_floats on flag:q_south_jest_done (the Old
+        # Light) — so an old save holding the floats (or already the rope)
+        # can never show two netmenders on one tile.
         {"id": "netmender_floats", "at": {"tx": 23, "ty": 17}, "facing": "down",
          "sprite": "npc_old_woman", "movement": "static",
-         "dialogue_ref": "npc.netmender_floats",
+         "dialogue_ref": "script.netmender_floats",
          "requires_flag": "flag:q_south_bell",
-         "hidden_when_flag": "flag:picked_net_floats"},
-        {"id": "netmender_rope", "at": {"tx": 23, "ty": 17}, "facing": "down",
-         "sprite": "npc_old_woman", "movement": "static",
-         "dialogue_ref": "script.netmender_rope",
-         "requires_flag": "flag:picked_net_floats",
          "hidden_when_flag": "flag:q_south_has_rope"},
         {"id": "netmender_sent", "at": {"tx": 23, "ty": 17}, "facing": "down",
          "sprite": "npc_old_woman", "movement": "static",

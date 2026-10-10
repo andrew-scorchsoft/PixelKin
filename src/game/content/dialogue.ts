@@ -6,6 +6,7 @@
  * Lantern Gift, vesperlamp), never generic monster/gym/badge.
  */
 import type { DialogueLine, DialogueRegistry } from './types';
+import { OLDLIGHT_DIALOGUE } from './oldlight';
 
 export const DIALOGUE: DialogueRegistry = {
   // --- Georgina's cottage (gloamwood_dell) — ambient cats + a hand-lettered sign ---
@@ -28,13 +29,15 @@ export const DIALOGUE: DialogueRegistry = {
   'sign.lowleaf_gloamwood': [
     { text: 'The brambles east are pitch-dark and grown thick — no pushing through, not without a reason to. They say someone lives back there, mind.' },
   ],
+  // (R8: no longer posted in Tinderwick — the shore sign came down. Kept as the
+  // worked ref in data/world/examples.ts.)
   'sign.tinderwick_dock': [
     { text: 'TINDERWICK DOCKS\nMind the lanterns — the tide comes in quiet since the Long Dusk.' },
   ],
   // --- The opening errand (Fenn at the Crossroads waystone) ---
   // Fenn mid-errand: spoken to again before the satchel comes home.
   'npc.fenn_waiting': [
-    { speaker: 'FENN', text: 'The general store, dear apprentice — my satchel is on the counter, where I left it like a fool. The keeper will know it.' },
+    { speaker: 'FENN', text: 'The general store, dear apprentice — I left my satchel on the counter like a fool. If it has wandered off since, the keeper will know where.' },
     { speaker: 'FENN', text: 'I shall mind the waystone. It is good company, for a stone.' },
   ],
   // Fenn after the ceremony: the waystone send-off, until the story moves him on.
@@ -52,21 +55,28 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // The rival Wren — a fellow young Wayfarer in the plaza (A1). Warm and competitive;
   // by canon Wren takes the starter that beats yours along Ember->Verdant->Tide->Ember.
+  // R8: Wren mills about Duskapple Orchard now (not the town garden).
   'npc.wren_intro': [
+    { speaker: 'WREN', text: "Shh — I'm minding the courier's cart for her. Mostly by eating the windfalls." },
     { speaker: 'WREN', text: 'You as well? Ha — Fenn sends us all out the same week. Good.' },
     { speaker: 'WREN', text: "Whatever partner you pick, I'm taking the one that gives you trouble. Only fair." },
     { speaker: 'WREN', text: "Race you to fill the whole map with light, then. Loser carries the lamp oil." },
   ],
 
   // --- Tinderwick town signs ---
-  'sign.tinderwick_square': [
-    { text: 'TINDERWICK SQUARE\nWares and warm lamps within. Mind the step.' },
+  // R8: the store moved down the lower-left lane and wears its own board; the
+  // old TINDERWICK SQUARE sign by the square is gone.
+  'sign.tinderwick_store': [
+    { text: 'TINDERWICK GENERAL STORE\nWares and warm lamps within. Mind the step.' },
+  ],
+  'sign.tinderwick_orchard': [
+    { text: 'WEST: DUSKAPPLE ORCHARD\nThrough the gap in the hedge. Mind the windfalls.' },
   ],
   'sign.tinderwick_lumenary': [
     { text: 'TINDERWICK LUMENARY — the town\'s lantern-hall.\nLampwarden Brisa Tallow tends the Ember light. Bring a kin and a steady hand.' },
   ],
   'sign.tinderwick_mentor': [
-    { text: 'NORTH: the coast road, past the gate. EAST: the Lanternway, to the Star-tender\'s waystone. South, the sea sleeps under the Long Dusk.' },
+    { text: 'NORTH: the coast road, past the gate. EAST: the Lanternway, to the Star-tender\'s waystone. WEST: the old orchard.' },
   ],
   'sign.tinderwick_lanternway': [
     { text: 'EAST: THE LANTERNWAY\nEvery lit road in Vesperholm meets at the Vesper Crossroads. Keep to the lamps.' },
@@ -104,12 +114,15 @@ export const DIALOGUE: DialogueRegistry = {
   // The keeper before the Wayfaring begins — points the player east to Fenn.
   'npc.tinderwick_keeper_early': [
     { speaker: 'SHOPKEEPER', text: 'Looking for the Star-tender? You just missed him — went east along the Lanternway at first bell. Said the Crossroads waystone wanted tending.' },
-    { speaker: 'SHOPKEEPER', text: 'Seemed in a hurry to be waiting for someone, if you take my meaning.' },
   ],
-  // The keeper during the satchel errand (Fenn has asked; the satchel sits by the counter).
+  // The keeper during the satchel errand (Fenn has asked). R8: the satchel isn't
+  // on the counter any more — the trade-cart courier swept it up with her parcels
+  // and threw a wheel in Duskapple Orchard, west of the square. The keeper names
+  // the direction AND the landmark (the hedge gap, the cart) so nobody wanders.
   'npc.tinderwick_keeper_errand': [
-    { speaker: 'SHOPKEEPER', text: "His satchel? There by the counter, dear — he'd forget his own lamp if it weren't lit. Take it out to him." },
-    { speaker: 'SHOPKEEPER', text: 'And tell him the trade-cart is late again. He likes knowing things.' },
+    { speaker: 'SHOPKEEPER', text: "His satchel? It WAS on the counter, dear — but the trade-cart courier came through at first bell and swept it up with her parcels, sure as anything." },
+    { speaker: 'SHOPKEEPER', text: "She went WEST — up to the square and straight out the far end, through the gap in the hedge to Duskapple Orchard. Her cart's the one with three wheels. The satchel will be riding on it." },
+    { speaker: 'SHOPKEEPER', text: "Fetch it from her and take it out to him. He'd forget his own lamp if it weren't lit." },
   ],
   // The trading keeper — appears once the kit script has run (flag:tinderwick_kit);
   // their placement ref is script.shop_tinderwick (these lines, then the counter).
@@ -168,6 +181,36 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'LANTERN KID', text: 'When I get my vesperlamp, I am going to relight a WHOLE sky. Maybe two skies.' },
   ],
 
+  // --- Duskapple Orchard (R8) — through the hedge gap west of the square ---
+  'sign.duskapple_orchard': [
+    { text: "DUSKAPPLE ORCHARD\nPlanted by starlight, picked by patience. Please don't shake the trees — they're resting." },
+  ],
+  // Maudie the trade-cart courier — three flag-disjoint stages on one tile.
+  'npc.orchard_courier': [
+    { speaker: 'MAUDIE', text: "Don't mind me, love. Just a courier with a cart, a heap of parcels and three wheels. It had four this morning." },
+    { speaker: 'MAUDIE', text: "The wheelwright's coming up from the coast when the road allows. Until then I'm an orchard ornament." },
+  ],
+  'npc.orchard_courier_errand': [
+    { speaker: 'MAUDIE', text: "Fenn's satchel? Oh, STARS — so that's whose it is! I swept it off the store counter with the trade parcels. Thought it was very heavy for a parcel of candles." },
+    { speaker: 'MAUDIE', text: "It's there on the tailboard, love — right in front of the cart. Take it to him, with my apologies and none of my candles." },
+  ],
+  'npc.orchard_courier_after': [
+    { speaker: 'MAUDIE', text: "Still three wheels. I've given the missing one a name. I shan't say what. It knows what it did." },
+  ],
+  // Old Wendel, the orchard-keeper. A gentle wink for anyone who remembers the
+  // village differently — and a plain pointer at the meadow for a tired Wayfarer.
+  'npc.orchard_wendel': [
+    { speaker: 'OLD WENDEL', text: "Duskapples, these. Planted by starlight. Once they glowed on the bough like little lamps, and you picked by their light." },
+    { speaker: 'OLD WENDEL', text: "Since the stars began going out they ripen small and dim. Still sweet, mind. Sweet's the last thing to go." },
+    { speaker: 'OLD WENDEL', text: "Funny — folk keep telling me there was never an orchard here. I set the first of these trees before their grandmothers were born. Memory's like a hedge, I find. Grows over things." },
+    { speaker: 'OLD WENDEL', text: "If your kin ever need toughening, the long grass past the fence is full of gentle wild ones. Safe as anywhere to grow strong before the coast road." },
+  ],
+  'npc.orchard_wendel_dawn': [
+    { speaker: 'OLD WENDEL', text: "Look at them! Glowing on the bough again, every last one. I knew they'd remember how." },
+    { speaker: 'OLD WENDEL', text: "And the two in the burn leafed out overnight, black bark and all. The star's woken in its hollow, too. I've stopped asking the orchard to make sense. I just thank it." },
+    { speaker: 'OLD WENDEL', text: "Take your pick, Wayfarer. Pick by their light." },
+  ],
+
   // --- Dimglass Coast route ---
   'sign.dimglass_buoys': [
     { text: 'DIMGLASS COAST\nThe buoys offshore only answer a lit lamp. Gullcry Rock waits past the shallows.' },
@@ -188,6 +231,11 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   'sign.dimglass_to_pearlmoor': [
     { text: 'NORTH: PEARLMOOR QUAY\nThe tidal flats lie ahead, where the lamps stand in the water.' },
+  ],
+  // R9 — Aldous Wink's auction board, beside his toy case on the south sand.
+  'sign.wink_auction': [
+    { text: "WINK'S WIND-UPS — TOYS, TALES, TRADES\nLOT 1: ONE (1) WIND-UP FERRYMAN, TIN, WORKING." },
+    { text: 'BOUND FOR THE PEARLMOOR TIDE-AUCTION.\nRESERVE: 12,000 WICKS. STORIES CONSIDERED.' },
   ],
   // --- New Pearlmoor <-> Crossroads route: signs + beaten-trainer lines ---
   'sign.wrackline_view': [
@@ -286,7 +334,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // Reyl mid-quest: the hook is given, the bell still silent.
   'npc.reyl_waiting': [
-    { speaker: 'REYL WASH', text: 'Still quiet out there. The netmender keeps the rope; her floats went south down the flats — ground you have already walked, if your boots remember.' },
+    { speaker: 'REYL WASH', text: 'Still quiet out there. Up the Old Light first — out on the Point — then the netmender, then the bell.' },
     { speaker: 'REYL WASH', text: 'No hurry, mind. Tides go out so they can come back. But the blessing-boats are at their moorings, and the whole quay is listening for that bell.' },
   ],
   // Reyl post-Gleam, back in the hall while the blessing runs outside.
@@ -296,11 +344,13 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // --- The netmender (quay) — the Causeway Bell's keeper, then S1's giver ----
   'npc.netmender_pre': [
-    { speaker: 'NETMENDER', text: 'Mind the coils, Wayfarer. Nets to mend, floats gone south, and a bell-rope nobody\'s fit to carry. The sea took a whole storm out of MY year, I tell you.' },
+    { speaker: 'NETMENDER', text: 'Mind the coils, Wayfarer. Nets to mend, floats gone missing, and a bell-rope nobody\'s fit to carry. The sea took a whole storm out of MY year, I tell you.' },
   ],
+  // R9: the floats stage now points UP the Old Light (it shows until
+  // flag:q_south_jest_done — so an old save holding the floats climbs too).
   'npc.netmender_floats': [
-    { speaker: 'NETMENDER', text: 'Reyl sent you for the rope? Hmph. The rope is spliced and waiting — it is my FLOATS the sea owes me first.' },
-    { speaker: 'NETMENDER', text: 'The storm carried them south down the tidal flats — cork floats, a whole string, stamped with my mark. Bring them home and the rope is yours, and gladly.' },
+    { speaker: 'NETMENDER', text: 'Reyl sent you for the rope? Hmph. The rope is spliced and waiting — but my FLOATS went missing in that storm, and something up the Old Light has been "collecting".' },
+    { speaker: 'NETMENDER', text: 'Climb it, Wayfarer. All the way. Then come back to me and the rope is yours. ...I\'d like to know what you find up there. I\'ve wondered eleven winters.' },
   ],
   'npc.netmender_sent': [
     { speaker: 'NETMENDER', text: 'The moor-gate\'s unchained — south end of the quay, where the boards run out. Hang the rope true and ring it LOUD, Wayfarer.' },
@@ -478,6 +528,42 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   'npc.chickenpig_after': [
     { text: 'Only the dark lamp now, and the old man\'s company. Somewhere in your lamp, a rooster-pig is practising being right about the morning.' },
+  ],
+  // --- S5: the Far Side (pearlmoor_wanderwood_far) — the wood's optional loop ----
+  // All discovery, no gating: things Paul would recognise, in the wood's voice.
+  'sign.wander_far_post': [
+    { text: 'A finger of driftwood nailed to a trunk, pointing west into the trees:\nTHE FAR SIDE. LONGER WAY ROUND. BETTER WAY ROUND. — p.' },
+  ],
+  'sign.wander_far_laugh': [
+    { text: 'Somewhere off through the trees, somebody LAUGHS — a great, helpless, unholy bellow that goes on far longer than any joke could possibly deserve.' },
+    { text: 'It bounces from trunk to trunk, shakes a roost of sleepy kin out of the branches, stops... and starts again, worse. Then one last snort. Then quiet.' },
+    { text: 'You have the strong feeling that, wherever you were just then, you were meant to hear it.' },
+  ],
+  'sign.wander_far_bench': [
+    { text: 'A fallen stone column, worn flat on top into a bench. Beside it, a cairn of round harbour-stones, each one polished shiny where hands have gripped it.' },
+    { text: 'Scratched into the bench, in a big unhurried hand:\n80 IN THREE YEARS? — p.' },
+    { text: 'Underneath, in a younger, cheekier hand:\nWHY STOP THERE. 140.' },
+    { text: 'And underneath THAT, the big hand again, pressed so deep it nearly went through:\nGOOD. THAT\'S THE NEXT SIXTY-THREE YEARS SORTED. — p.' },
+  ],
+  'sign.wander_glass_steps': [
+    { text: 'THE GLASS STEPS\nSome hold. Some don\'t. The flat grey ones hold. The round ones roll, and you get wet, and everybody laughs.\n— p. went first.' },
+  ],
+  'sign.wander_far_reassess': [
+    { text: 'Cut into the hollow tree beside the brass lamp, in a big unhurried hand:\nIT ANSWERS EVERYTHING. IT IS SURE OF EVERYTHING.\nCHECK EVERYTHING.' },
+    { text: 'And below, smaller, like an afterthought that turned out to be the point:\nASK IT AGAIN NEXT YEAR. REASSESS. — p.' },
+  ],
+  'sign.wander_far_stump': [
+    { text: 'A great sawn-off stump, its top worn honey-smooth. Two shapes have been pressed into the rings with a hot nail: a TRIANGLE, neat and easy, and an UMBRELLA, all spokes and trouble.' },
+    { text: 'Beside them, in the big hand:\nLANTERN FAIR, THE SUGAR-CUT GAME. THE LAD DREW THE UMBRELLA. I SWAPPED HIM MY TRIANGLE.\nTIP: LICK THE EDGES FOR THE HARD ONES. — p.' },
+  ],
+  'sign.wander_story_5': [
+    { text: 'Another of the carved trees, the letters gone silver with age:\nP. PLAYED THE LANTERN FAIR\'S LONG GAME "FOR HIMSELF." LOST EVERY HAND HE COULD HAVE WON. STOOD IN FRONT OF A STRANGER WHEN THE SHOVING STARTED.' },
+    { text: 'SPENT HIS LAST WICK BUYING THE STRANGER A SAFER PLACE IN THE QUEUE. THE STRANGER WON. P. SAID HE\'D HAD HIS TURN — THEIRS WAS JUST STARTING.' },
+    { text: 'Squeezed in underneath, much smaller:\n(HE\'LL TELL YOU HE\'S NO ACTOR. HE\'LL BE LYING.)' },
+  ],
+  'sign.wander_story_6': [
+    { text: 'The last carved tree, down a little side path, as if it didn\'t want to make a fuss:\nP. CROSSED TWO SEAS WITH A FRIEND\'S BOOK IN HIS BAG. READ IT IN A SUNNY PORT WHERE NOBODY KNEW HIS NAME. WROTE IN EVERY MARGIN.' },
+    { text: 'SENT IT HOME. ALL THE NOTES WERE KIND. THE LONGEST ONE SAID: GOOD — NOW CHECK IT STILL WORKS NEXT YEAR. THE FRIEND ADDED A WHOLE NEW CHAPTER.' },
   ],
 
   // --- Dimglass Coast: the witness (appears after flag:dusk_begins, B1) -------
@@ -759,7 +845,6 @@ export const DIALOGUE: DialogueRegistry = {
   // frightens a brand-new player. Both gone once 'flag:has_starter' is set.
   'npc.tinderwick_fenn_hint': [
     { speaker: 'TOWNSWOMAN', text: "Off to find Star-tender Fenn, are you? He went east down the Lanternway, to the Vesper Crossroads — said he'd wait by the waystone for you." },
-    { speaker: 'TOWNSWOMAN', text: "Don't you fret about the walk, dear. The lamps keep the wild kin clear of that lane — it's the one safe road out of Tinderwick. Straight there and back, no trouble." },
   ],
   'npc.lane_fenn_hint': [
     { speaker: 'WAYFARER', text: 'The waystone\'s just up ahead, friend. There\'s an old Star-tender there pacing a furrow in the road — waiting on someone, I\'d say. You, most like.' },
@@ -1854,6 +1939,30 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'ROAD-TELLER', text: 'What they tell me lately is this: the easter egg\'s in Pearlmoor Quay, in the building right at the TOP of the town. Not the hall. Not the inn. The other one — the one with the noise coming out of it.' },
     { speaker: 'ROAD-TELLER', text: 'Ask inside for the old man. That\'s all anyone will say about it, and they say it like they\'re enjoying themselves.' },
   ],
+
+  // ===========================================================================
+  // THE PERIL THREAD (R9) — static lines for the thread's signs + the bookend.
+  // Staged scripts live in scripts.ts (same banner); design in
+  // docs/world/walkthrough/08-the-peril-thread.md.
+  // ===========================================================================
+  // N1 — the Hollowing's notice on Galehigh's plaza. Grief dressed as mercy:
+  // courteous, unsigned, never a threat.
+  'sign.peril_quiet_notice': [
+    { text: 'A notice, neatly lettered:\nTO ANY WHO ARE TIRED. The dark does not take. It only keeps.' },
+    { text: 'Nothing you love need ever fade again: not a face, not a lamp, not a morning. When you are ready to rest, the Quiet will be waiting. No one will be cross with you.' },
+  ],
+  // S3 (deferred placement — Pearlmoor Quay harbour board; see the doc).
+  'sign.peril_pearlmoor_board': [
+    { text: 'HARBOUR NOTICE\nThe tide-lamps along the north shore have gone dark one by one and will not take a light.' },
+    { text: 'Boats are asked not to put in there after dusk. The villagers are reported well. And very quiet.' },
+  ],
+  // P1 — the bookend: Maudie in Dawnstead, sending the player home to look.
+  'npc.peril_maudie_dawn': [
+    { speaker: 'MAUDIE', text: "Parcel run to the Dawnstead green: duskapple whips from old Wendel, would you believe. Four wheels on the cart this time. I counted." },
+    { speaker: 'MAUDIE', text: "His crater's gone and flowered, love, and the star in it's woken bright. Folk walk out from Tinderwick just to look. Worth the walk, if you've not been home." },
+  ],
+  // R9 "The Old Light" — Lightkeeper's Point + the joke-tower (content/oldlight.ts).
+  ...OLDLIGHT_DIALOGUE,
 };
 
 const FALLBACK: DialogueLine[] = [{ text: '...' }];

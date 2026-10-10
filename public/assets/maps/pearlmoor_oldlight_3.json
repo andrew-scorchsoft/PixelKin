@@ -1,0 +1,617 @@
+{
+  "id": "pearlmoor_oldlight_3",
+  "display_name": "The Old Light \u2014 Intermission",
+  "width": 14,
+  "height": 11,
+  "tile_width": 16,
+  "tile_height": 16,
+  "kind": "interior",
+  "tilesets": [
+    {
+      "name": "interior_set",
+      "image": "assets/tilesets/interior_set.webp",
+      "tile_width": 16,
+      "tile_height": 16,
+      "first_gid": 1,
+      "columns": 8,
+      "tile_count": 13
+    }
+  ],
+  "layers": [
+    {
+      "name": "base",
+      "role": "base",
+      "depth": 0,
+      "data": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        3,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        3,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "walls",
+      "role": "deco",
+      "depth": 5,
+      "data": [
+        10,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        11,
+        8,
+        4,
+        4,
+        4,
+        4,
+        5,
+        4,
+        4,
+        4,
+        4,
+        5,
+        4,
+        4,
+        9,
+        8,
+        0,
+        0,
+        0,
+        9,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        9,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        9,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        9,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        9,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        12,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        13
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "tea_urn",
+      "sprite": "tideglass_lens_lit",
+      "at": {
+        "tx": 1,
+        "ty": 5
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "bar_stool",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 3,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "stove",
+      "sprite": "interior_stove",
+      "at": {
+        "tx": 6,
+        "ty": 1
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "bookcase",
+      "sprite": "interior_bookcase",
+      "at": {
+        "tx": 8,
+        "ty": 1
+      },
+      "w": 2,
+      "h": 3,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "table",
+      "sprite": "interior_table",
+      "at": {
+        "tx": 6,
+        "ty": 6
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "stool_l",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 5,
+        "ty": 7
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "stool_r",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 8,
+        "ty": 7
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "sacks",
+      "sprite": "interior_sacks",
+      "at": {
+        "tx": 10,
+        "ty": 9
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "speaking_tube",
+      "sprite": "solarium_sun_mask",
+      "at": {
+        "tx": 11,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 1
+    }
+  ],
+  "warps": [
+    {
+      "id": "down_stairs",
+      "at": {
+        "tx": 1,
+        "ty": 2
+      },
+      "trigger": "step_on",
+      "to_map": "pearlmoor_oldlight_2",
+      "to": {
+        "tx": 1,
+        "ty": 3
+      },
+      "facing": "down",
+      "transition": "fade"
+    },
+    {
+      "id": "up_stairs",
+      "at": {
+        "tx": 12,
+        "ty": 2
+      },
+      "trigger": "step_on",
+      "to_map": "pearlmoor_oldlight_4",
+      "to": {
+        "tx": 12,
+        "ty": 3
+      },
+      "facing": "down",
+      "transition": "fade",
+      "requires_flag": "flag:oldlight_3_solved",
+      "blocked_ref": "sign.oldlight_stairgate"
+    }
+  ],
+  "triggers": [
+    {
+      "id": "urn_5",
+      "kind": "cutscene",
+      "at": {
+        "tx": 2,
+        "ty": 5
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_urn"
+    },
+    {
+      "id": "urn_6",
+      "kind": "cutscene",
+      "at": {
+        "tx": 2,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_urn"
+    },
+    {
+      "id": "stove",
+      "kind": "sign",
+      "at": {
+        "tx": 6,
+        "ty": 2
+      },
+      "activation": "interact",
+      "ref": "npc.oldlight_stove"
+    },
+    {
+      "id": "stove_b",
+      "kind": "sign",
+      "at": {
+        "tx": 7,
+        "ty": 2
+      },
+      "activation": "interact",
+      "ref": "npc.oldlight_stove"
+    },
+    {
+      "id": "bookcase",
+      "kind": "sign",
+      "at": {
+        "tx": 8,
+        "ty": 3
+      },
+      "activation": "interact",
+      "ref": "npc.oldlight_bookcase"
+    },
+    {
+      "id": "bookcase_b",
+      "kind": "sign",
+      "at": {
+        "tx": 9,
+        "ty": 3
+      },
+      "activation": "interact",
+      "ref": "npc.oldlight_bookcase"
+    },
+    {
+      "id": "p_note",
+      "kind": "sign",
+      "at": {
+        "tx": 6,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_p_note"
+    },
+    {
+      "id": "riddle_band",
+      "kind": "cutscene",
+      "at": {
+        "tx": 12,
+        "ty": 3
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_3",
+      "hidden_when_flag": "flag:oldlight_3_solved"
+    },
+    {
+      "id": "tube",
+      "kind": "cutscene",
+      "at": {
+        "tx": 11,
+        "ty": 2
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_3",
+      "hidden_when_flag": "flag:oldlight_3_solved"
+    },
+    {
+      "id": "tube_after",
+      "kind": "dialogue",
+      "at": {
+        "tx": 11,
+        "ty": 2
+      },
+      "activation": "interact",
+      "ref": "npc.oldlight_tube_3",
+      "requires_flag": "flag:oldlight_3_solved"
+    }
+  ],
+  "encounters": [],
+  "npcs": [
+    {
+      "id": "punch_tuesday",
+      "at": {
+        "tx": 10,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "npc_girl",
+      "movement": "look_around",
+      "dialogue_ref": "npc.oldlight_punch_tuesday"
+    },
+    {
+      "id": "punch_buns",
+      "at": {
+        "tx": 3,
+        "ty": 7
+      },
+      "facing": "down",
+      "sprite": "npc_child",
+      "movement": "look_around",
+      "dialogue_ref": "npc.oldlight_punch_buns"
+    },
+    {
+      "id": "punch_ladder",
+      "at": {
+        "tx": 9,
+        "ty": 8
+      },
+      "facing": "down",
+      "sprite": "npc_boy",
+      "movement": "look_around",
+      "dialogue_ref": "npc.oldlight_punch_ladder"
+    }
+  ],
+  "gates": [],
+  "music": "assets/audio/music/sunken-solarium-a.mp3"
+}

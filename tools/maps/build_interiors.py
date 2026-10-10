@@ -425,7 +425,8 @@ def build_house():
 
     warps = [
         {"id": "to_town", "at": {"tx": door_x, "ty": H - 1}, "trigger": "step_on",
-         "to_map": "tinderwick", "to": {"tx": 6, "ty": 17}, "facing": "down", "transition": "door"},
+         # R8: the cottage now fronts the square (door (5,7)) — land on its apron.
+         "to_map": "tinderwick", "to": {"tx": 5, "ty": 8}, "facing": "down", "transition": "door"},
     ]
     triggers = [
         {"id": "sign_shelf", "kind": "sign", "at": {"tx": 3, "ty": 3}, "activation": "interact",
@@ -482,13 +483,15 @@ def all_maps():
         # The Tinderwick keeper has FOUR flag-disjoint stages (the opening's satchel
         # errand runs through this counter before the kit/plain pair takes over):
         #   early  (t0)                      -> points the player east to Fenn
-        #   errand (Fenn asked)              -> "satchel's by the counter, dear"
+        #   errand (Fenn asked)              -> "the courier carted it WEST, dear"
         #   kit    (Wayfaring begun, no kit) -> the one-time Wayfarer's kit
         #   plain  (kit given)               -> flavour
-        # Plus Fenn's satchel itself: an item_cache beside the counter while the
-        # errand runs (script.take_satchel -> flag:has_satchel).
+        # R8: Fenn's satchel no longer sits by the counter — it rides the courier's
+        # cart out to Duskapple Orchard (build_duskapple_orchard.py; same placement
+        # id + script.take_satchel -> flag:has_satchel). The store moved too: its
+        # door is now (6,16) down the lower-left lane, so we land on (6,17).
         build_shop("tinderwick_shop", "Tinderwick General Store",
-                   "assets/audio/music/tinderwick-b.mp3", ("tinderwick", 5, 8),
+                   "assets/audio/music/tinderwick-b.mp3", ("tinderwick", 6, 17),
                    "sign.tinderwick_shop_wares", "shopkeeper", "npc.tinderwick_shopkeeper",
                    npcs_override=[
                        {"id": "shopkeeper_early", "at": "counter", "facing": "down",
@@ -509,11 +512,6 @@ def all_maps():
                         "sprite": "npc_shopkeeper", "movement": "static",
                         "dialogue_ref": "script.shop_tinderwick",
                         "requires_flag": "flag:tinderwick_kit"},
-                       {"id": "fenn_satchel", "at": {"tx": 3, "ty": 5}, "facing": "down",
-                        "sprite": "item_cache", "movement": "static",
-                        "dialogue_ref": "script.take_satchel",
-                        "requires_flag": "flag:fenn_errand",
-                        "hidden_when_flag": "flag:has_satchel"},
                    ]),
         # The Ember Lumenary HALL: no battle here any more — the bond-test waits
         # at the BEACON TOP (the earned first Gleam). Brisa stages the quest from
@@ -560,7 +558,7 @@ def all_maps():
                             "hidden_when_flag": "flag:q_south_bell"},
                            {"id": "reyl_waiting", "at": "dais", "facing": "down",
                             "sprite": "npc_lampwarden", "movement": "static",
-                            "dialogue_ref": "npc.reyl_waiting",
+                            "dialogue_ref": "script.reyl_waiting",
                             "requires_flag": "flag:q_south_bell",
                             "hidden_when_flag": "flag:q_south_bell_rung"},
                            {"id": "reyl", "at": "dais", "facing": "down",
@@ -570,7 +568,7 @@ def all_maps():
                             "hidden_when_flag": "gleam:tide"},
                            {"id": "reyl_after", "at": "dais", "facing": "down",
                             "sprite": "npc_lampwarden", "movement": "static",
-                            "dialogue_ref": "npc.reyl_after",
+                            "dialogue_ref": "script.reyl_after",
                             "requires_flag": "gleam:tide"},
                        ]),
         build_shop("pearlmoor_shop", "Pearlmoor Chandlery",

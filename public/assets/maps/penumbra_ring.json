@@ -422,6 +422,17 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_penumbra_wicks",
       "hidden_when_flag": "flag:picked_penumbra_wicks"
+    },
+    {
+      "id": "peril_gone_quiet",
+      "at": {
+        "tx": 21,
+        "ty": 19
+      },
+      "facing": "up",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "dialogue_ref": "script.peril_gone_quiet"
     }
   ],
   "gates": [],

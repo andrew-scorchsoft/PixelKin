@@ -21,8 +21,17 @@ Content, all optional colour except the glade:
     `flag:q_south_wander_lamp`), and Paul (`script.wander_glade`: the
     Chickenpig leads against Omenire, then the cup).
 
+  * THE FAR SIDE (2026-10): two roads off the west edge — `to_far(_b)` low
+    (rows 16-17, signed `sign.wander_far_post`) and `to_far_n(_b)` high (rows 8-9,
+    by the glade) — are the two ends of one optional loop through
+    `pearlmoor_wanderwood_far` (its own builder): Mags's griddle, the Answering
+    Lamp, the glass steps, story trees 5-6. Pure discovery; never gates the glade.
+  * ANDREW (`andrew_wood`, sprite andrew_ward) stands just off the hub lane at
+    (11,20), always present once the wood is open (`script.andrew_wood`).
+
 Wiring: the allotment's gated `to_wood(_e)` (9-10,0) lands HERE at (13-14,22);
-our `to_allotment(_e)` (13-14,23) lands on the allotment's (9-10,1).
+our `to_allotment(_e)` (13-14,23) lands on the allotment's (9-10,1). The far side
+mirrors rows: our (0,y) -> its (28,y); its (29,y) -> our (1,y).
 
 Run:  python3 tools/maps/build_pearlmoor_wanderwood.py
 """
@@ -98,6 +107,16 @@ for y in range(H):
     for x in range(W):
         if (x < 2 or x >= W - 2 or y < 2 or y >= H - 2) and not (x in (13, 14) and y >= 20):
             tree[y * W + x] = 1
+
+# the two roads out of the west edge to THE FAR SIDE (pearlmoor_wanderwood_far,
+# its own builder): a low one off the arm's foot (rows 16-17) and a high one by
+# the glade (rows 8-9) — the two ends of one optional loop round the far side.
+for rows, x1 in (((16, 17), 5), ((8, 9), 4)):
+    for y in rows:
+        for x in range(0, x1 + 1):
+            tree[y * W + x] = 0
+    for x in range(0, x1 + 1):
+        path[rows[1] * W + x] = 1
 
 # tall grass beside the arms (avoidable, tempting)
 for (cx, cy, rx, ry) in [(3.6, 12.5, 1.3, 2.4), (7.5, 18.4, 1.8, 1.0),
@@ -181,6 +200,16 @@ for nid, ref, req, hide in [
     m["npcs"].append(n)
 owed += pt.cache(m, cid="wanderwood_cache", at=(14, 11))
 
+# ---- the way to the Far Side (signed at the low road) + Andrew at the hub ---------
+tree[18 * W + 3] = 0
+grass[18 * W + 3] = 0
+owed += pt.sign(m, deco, W, sid="wander_far_post", at=(3, 18))
+# Andrew, the trail-giver of the easter-egg hunt, waits just off the hub's lane —
+# present always once the wood is open (script.andrew_wood is the coordinator's).
+m["npcs"].append({"id": "andrew_wood", "at": {"tx": 11, "ty": 20}, "facing": "up",
+                  "sprite": "andrew_ward", "movement": "static",
+                  "dialogue_ref": "script.andrew_wood"})
+
 # ---- glowshrooms strung through the dark (the deep-wood light) ----------------------
 for (x, y, nm) in [(3, 7, "glowshroom_a"), (9, 15, "glowshroom_b"), (16, 15, "glowshroom_a"),
                    (22, 7, "glowshroom_b"), (8, 4, "glowshroom_a"), (17, 4, "glowshroom_b"),
@@ -215,6 +244,11 @@ for x, sfx in ((13, ""), (14, "_e")):
                        "to_map": "pearlmoor_allotment", "to": {"tx": x - 4, "ty": 1},
                        "facing": "down", "transition": "fade"})
 
+for y, wid in ((16, "to_far"), (17, "to_far_b"), (8, "to_far_n"), (9, "to_far_n_b")):
+    m["warps"].append({"id": wid, "at": {"tx": 0, "ty": y}, "trigger": "step_on",
+                       "to_map": "pearlmoor_wanderwood_far", "to": {"tx": 28, "ty": y},
+                       "facing": "left", "transition": "fade"})
+
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},
     {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)},
@@ -229,6 +263,9 @@ mk.scatter_decor(deco, base, W, H, rng, density=0.10,
                                                 if path[y * W + x] or tree[y * W + x]
                                                 or grass[y * W + x]})
 
+# audit_flow `loop` WARN (since the far-side roads gave the map >1 portal),
+# accepted: there's no one-way ledge, but the wood is a ring (two arms round the
+# central mass) and the far side is a second, bigger ring off its west edge.
 if __name__ == "__main__":
     ok = mk.finalize(m, scale=4)
     pt.report(owed)

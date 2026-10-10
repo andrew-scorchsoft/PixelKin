@@ -9,6 +9,7 @@
  */
 import type { AbilityId, EncounterTerrain, WorldFlag } from '@game/data/world/types';
 import type { RuntimeMap } from './MapLoader';
+import { ITEMS } from '@game/content/items';
 
 export interface EncounterIntent {
   species_id: number;
@@ -21,12 +22,25 @@ export interface EncounterIntent {
  *  is encounter ground, like the classics. */
 const TILE_BOUND = new Set<EncounterTerrain>(['tall_grass', 'water']);
 
-/** World flag set while the Hooded Lamp is shaded (ITEMS → toggle): the lamp's
- *  dimmed hood lets wild kin pass — the backtracker's friend. While held, every
- *  zone's effective encounter rate is halved (see `HOODED_RATE_FACTOR`). */
+/** World flag set while the Hooded Lamp is shaded (ITEMS → toggle). Kept as a
+ *  named export for callers; the lamp's damping itself is now data — its ItemDef
+ *  carries `toggle_flag` + `encounter_factor`, like every other toggle item. */
 export const HOODED_LAMP_FLAG = 'flag:lamp_hooded' as WorldFlag;
-/** How much the Hooded Lamp dampens the per-step encounter chance (×0.5). */
-const HOODED_RATE_FACTOR = 0.5;
+
+/** Every toggle key item that dampens encounters, as [flag, factor] pairs —
+ *  resolved once from the item registry (the Hooded Lamp, the Tin Rower, …). */
+const ENCOUNTER_TOGGLES: ReadonlyArray<readonly [WorldFlag, number]> = Object.values(ITEMS)
+  .filter((d) => d.toggle_flag && typeof d.encounter_factor === 'number')
+  .map((d) => [d.toggle_flag as WorldFlag, d.encounter_factor as number] as const);
+
+/** The per-step rate multiplier from toggle items currently switched on: the
+ *  LOWEST factor among them (two dampers never stack past the stronger one);
+ *  1 when none is on. */
+export function encounterRateFactor(hasFlag: (flag: WorldFlag) => boolean): number {
+  let factor = 1;
+  for (const [flag, f] of ENCOUNTER_TOGGLES) if (hasFlag(flag) && f < factor) factor = f;
+  return factor;
+}
 
 /** Guaranteed encounter-free steps after a wild encounter fires. The per-step
  *  roll is memoryless, so without this the very next tile has the full ~11%
@@ -59,8 +73,8 @@ export class EncounterSystem {
       this.graceRemaining -= 1;
       return null;
     }
-    // The Hooded Lamp halves every zone's effective rate while shaded.
-    const rateFactor = hasFlag(HOODED_LAMP_FLAG) ? HOODED_RATE_FACTOR : 1;
+    // Toggle items (Hooded Lamp, wound Tin Rower) damp every zone's rate.
+    const rateFactor = encounterRateFactor(hasFlag);
     for (const zone of this.map.def.encounters) {
       if (zone.requires_ability && !abilities.has(zone.requires_ability)) continue;
       // Flag-staggered zones: a restored site's encounters bloom in (requires_flag)

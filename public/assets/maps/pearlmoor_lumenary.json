@@ -608,7 +608,7 @@
       "facing": "down",
       "sprite": "npc_lampwarden",
       "movement": "static",
-      "dialogue_ref": "npc.reyl_waiting",
+      "dialogue_ref": "script.reyl_waiting",
       "requires_flag": "flag:q_south_bell",
       "hidden_when_flag": "flag:q_south_bell_rung"
     },
@@ -634,7 +634,7 @@
       "facing": "down",
       "sprite": "npc_lampwarden",
       "movement": "static",
-      "dialogue_ref": "npc.reyl_after",
+      "dialogue_ref": "script.reyl_after",
       "requires_flag": "gleam:tide"
     }
   ],

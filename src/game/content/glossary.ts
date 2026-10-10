@@ -114,6 +114,13 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     unlock_flag: 'gleam:ember',
   },
   {
+    // R9 peril thread — unlocked by the Duskapple Orchard first-sight band.
+    id: 'fallen_stars',
+    term: 'Fallen Stars',
+    desc: "When a star gutters out, sometimes its last cinder falls: cold, dark, and still hot enough to burn an orchard on the way down. The old folk say it never used to happen. They're right. Every fall lands nearer the mountain.",
+    unlock_flag: 'flag:orchard_strike_seen',
+  },
+  {
     id: 'hollowing',
     term: 'the Hollowing',
     desc: "Not villains — frightened folk who'd let the long night come gently and stay. They put luminous kin to sleep and carry their light away.",

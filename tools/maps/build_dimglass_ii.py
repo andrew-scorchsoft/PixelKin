@@ -289,13 +289,8 @@ m = {
         {"id": "sky_watcher_after", "at": {"tx": 12, "ty": 18}, "facing": "up", "sprite": "npc_mentor",
          "movement": "look_around", "dialogue_ref": "npc.flats_sky_watcher_after",
          "requires_flag": "flag:q_south_letter_given"},
-        # The netmender's storm-drifted NET-FLOATS (the Causeway Bell's collinear
-        # errand leg) — appears on the flats once Reyl sets the quest.
-        {"id": "cache_net_floats", "at": {"tx": 11, "ty": 4}, "facing": "down",
-         "sprite": "item_cache", "movement": "static",
-         "dialogue_ref": "script.pickup_net_floats",
-         "requires_flag": "flag:q_south_bell",
-         "hidden_when_flag": "flag:picked_net_floats"},
+        # (R9: the netmender's NET-FLOATS cache that sat at (11,4) moved to the
+        # top of the Old Light — Punchwheel magpied them "for the act".)
         # Item caches on the flats (interact -> pickup script -> vanish by flag).
         {"id": "cache_balm", "at": {"tx": 11, "ty": 9}, "facing": "down",
          "sprite": "item_cache", "movement": "static",

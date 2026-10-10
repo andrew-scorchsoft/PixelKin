@@ -5,7 +5,7 @@
  * switched with Left/Right; each tab is the same list + detail pattern StarterSelect
  * uses (compact rows + one description pane below the selection), so a long blurb
  * never overlaps the list on the 240×160 screen. Pressing A on a usable item (a
- * medicine, a Star-chart, the Hooded Lamp toggle) acts on it; lamps/keys can't
+ * medicine, a Star-chart, a toggle like the Hooded Lamp) acts on it; lamps/keys can't
  * otherwise be used from the field. B backs out.
  *
  * Phase-based and self-contained like the rest of the kit (PartyMenu / Menu): each
@@ -13,9 +13,9 @@
  * the next, so sub-menus never double-read the same press. `run()` resolves with the
  * (possibly healed) party and (possibly decremented) inventory, ready for the save.
  *
- * World-flag toggles (the Hooded Lamp) ride optional get/set callbacks handed in by
- * the caller, so the menu can read/flip an engine-visible flag without owning the
- * FlagStore — degrades to an inert "OPEN" read-out when no callbacks are supplied.
+ * World-flag toggles (ItemDef.toggle_flag — the Hooded Lamp, the Tin Rower) ride
+ * optional get/set callbacks handed in by the caller, so the menu can read/flip an
+ * engine-visible flag without owning the FlagStore — degrades to an inert "off" read-out when no callbacks are supplied.
  */
 import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT } from '@game/config';
@@ -32,8 +32,7 @@ import { KinInstance, MAX_LEVEL, expForLevel } from '@game/systems/party/KinInst
 import { MOVE_BY_ID } from '@game/data/dex';
 import { getItem } from '@game/content/items';
 import { formatWicks } from '@game/content/economy';
-import { HOODED_LAMP_FLAG } from '@game/systems/world/EncounterSystem';
-import type { ItemCategory } from '@game/content/types';
+import type { ItemCategory, ToggleText } from '@game/content/types';
 import type { WorldFlag } from '@game/data/world/types';
 import type { KinInstanceData, InventoryData } from '@game/systems/save/types';
 import type { Sfx } from '@game/systems/audio/Sfx';
@@ -82,7 +81,7 @@ export interface ItemsMenuResult {
 }
 
 /** Optional hooks letting the menu read/flip an engine-visible world flag (the
- *  Hooded Lamp toggle). When omitted, the toggle reads OPEN and does nothing. */
+ *  toggle key items). When omitted, a toggle reads "off" and does nothing. */
 export interface ItemsMenuFlags {
   get(flag: WorldFlag): boolean;
   set(flag: WorldFlag, value: boolean): void;
@@ -98,6 +97,9 @@ interface PackEntry {
   /** A level-up sweet (the Lumen Drop) rather than a healing salve. */
   level_up?: boolean;
   teach_move?: string;
+  /** A toggle key item's on-state flag + words (Hooded Lamp, Tin Rower). */
+  toggle_flag?: WorldFlag;
+  toggle_text?: ToggleText;
   count: number;
 }
 
@@ -210,6 +212,8 @@ export class ItemsMenu {
         heal: def.heal,
         level_up: def.level_up,
         teach_move: def.teach_move,
+        toggle_flag: def.toggle_flag,
+        toggle_text: def.toggle_text,
         count,
       });
     }
@@ -250,7 +254,7 @@ export class ItemsMenu {
         const name = makeText(this.scene, PAD + 10, rowY + 3, entry.name, theme.text.base);
         this.track(name);
         this.names.push(name);
-        // Key items are unique — show their state (Hooded Lamp) rather than a count.
+        // Key items are unique — a toggle shows its state rather than a count.
         const right = this.rowRightLabel(entry);
         this.track(
           makeText(this.scene, this.width - PAD, rowY + 3, right, theme.text.base).setOrigin(1, 0),
@@ -264,13 +268,15 @@ export class ItemsMenu {
 
   /** The right-hand label for a row: a count, or a toggle item's state word. */
   private rowRightLabel(entry: PackEntry): string {
-    if (entry.id === 'hooded_lamp') return this.lampHooded() ? 'HOODED' : 'OPEN';
+    if (entry.toggle_flag && entry.toggle_text) {
+      return this.toggleOn(entry) ? entry.toggle_text.on : entry.toggle_text.off;
+    }
     return `x${entry.count}`;
   }
 
-  /** Whether the Hooded Lamp is currently shaded (reads the world flag). */
-  private lampHooded(): boolean {
-    return this.flags?.get(HOODED_LAMP_FLAG) ?? false;
+  /** Whether a toggle item is currently switched on (reads its world flag). */
+  private toggleOn(entry: PackEntry): boolean {
+    return entry.toggle_flag ? (this.flags?.get(entry.toggle_flag) ?? false) : false;
   }
 
   private track<T extends Phaser.GameObjects.GameObject>(obj: T): T {
@@ -293,10 +299,8 @@ export class ItemsMenu {
     );
     const entry = this.entries[this.index];
     let desc = entry.desc;
-    if (entry.id === 'hooded_lamp') {
-      desc += this.lampHooded()
-        ? '  (Hooded — wild kin pass quieter.)'
-        : '  (Open — wild kin stir as usual.)';
+    if (entry.toggle_flag && entry.toggle_text) {
+      desc += '  ' + (this.toggleOn(entry) ? entry.toggle_text.on_note : entry.toggle_text.off_note);
     }
     this.detail.setText(desc);
   }
@@ -363,8 +367,8 @@ export class ItemsMenu {
 
   /** Use one item: medicines heal a kin; Star-charts teach one; the rest stay packed. */
   private async useEntry(entry: PackEntry): Promise<void> {
-    if (entry.id === 'hooded_lamp') {
-      await this.toggleHoodedLamp();
+    if (entry.toggle_flag) {
+      await this.flipToggle(entry);
       return;
     }
     if (entry.level_up) {
@@ -463,25 +467,23 @@ export class ItemsMenu {
     this.rebuild();
   }
 
-  /** Draw the Hooded Lamp's hood open/closed: flips `flag:lamp_hooded` so the
-   *  EncounterSystem halves the wild rate while shaded. Inert (a flavour line)
-   *  when no flag hooks were supplied. */
-  private async toggleHoodedLamp(): Promise<void> {
-    if (!this.flags) {
+  /** Flip a toggle key item (the Hooded Lamp's hood, the Tin Rower's key): sets
+   *  or clears its `toggle_flag`, which the EncounterSystem reads to damp the wild
+   *  rate. Inert (a flavour line) when no flag hooks were supplied. */
+  private async flipToggle(entry: PackEntry): Promise<void> {
+    if (!this.flags || !entry.toggle_flag) {
       await new DialogueBox(this.scene, this.sfx).run([
-        { text: 'You turn the Hooded Lamp over in your hands.' },
+        { text: `You turn the ${entry.name} over in your hands.` },
       ]);
       return;
     }
-    const now = !this.lampHooded();
-    this.flags.set(HOODED_LAMP_FLAG, now);
+    const now = !this.toggleOn(entry);
+    this.flags.set(entry.toggle_flag, now);
     void this.sfx?.play(theme.cursor.confirmSfx);
+    const words = entry.toggle_text;
+    const fallback = now ? `You switch on the ${entry.name}.` : `You switch off the ${entry.name}.`;
     await new DialogueBox(this.scene, this.sfx).run([
-      {
-        text: now
-          ? 'You draw the hood across the lamp. Its light dims to a glow — the old roads will be quieter now.'
-          : 'You slide the hood back. The lamp brightens, and the wilds wake to it once more.',
-      },
+      { text: words ? (now ? words.turn_on : words.turn_off) : fallback },
     ]);
     this.rebuild();
   }

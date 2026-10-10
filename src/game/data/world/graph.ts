@@ -68,7 +68,7 @@ export interface WorldGraph {
  */
 export const VESPERHOLM_GRAPH: WorldGraph = {
   start_map: 'tinderwick',
-  start_at: { tx: 6, ty: 17 }, // on the lane just outside the player's cottage door, facing up
+  start_at: { tx: 5, ty: 8 }, // on the square just outside the player's cottage door (R8: the cottage moved to the NW plaza)
   nodes: [
     // ---- South: Tinderwick -> Dimglass Coast (2 segments) -> Pearlmoor Quay ----------
     { map_id: 'tinderwick', region: 'south' },
@@ -78,6 +78,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'tinderwick_beacon_i', region: 'south' }, // interior: the old beacon, stair floor I (wick-key gated)
     { map_id: 'tinderwick_beacon_ii', region: 'south' }, // interior: the old beacon, stair floor II
     { map_id: 'tinderwick_beacon_top', region: 'south' }, // interior: the lantern room — the Ember bond-test
+    { map_id: 'duskapple_orchard', region: 'south' }, // R8: the old orchard off the square's west gap (satchel detour)
     { map_id: 'dimglass_coast', region: 'south' }, // route segment I: cliff path + shore (authored)
     { map_id: 'dimglass_coast_ii', region: 'south' }, // route: tidal flats
     { map_id: 'gullcry_rock', region: 'south', optional: true, reward: 'rare sea-bird kin + a Tide charm' },
@@ -91,6 +92,15 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'pearlmoor_lifting_house', region: 'south', optional: true, reward: 'the Lifting House — the Booji-Wooji Man side quest' },
     { map_id: 'pearlmoor_allotment', region: 'south', optional: true, reward: 'Rod & Anth\'s plot + the waystone (S5 Not All Who Wander)' },
     { map_id: 'pearlmoor_wanderwood', region: 'south', optional: true, reward: 'S5: Paul\'s wood — the Chickenpig vs Omenire, and the cup' },
+    { map_id: 'pearlmoor_point', region: 'south' }, // R9: Lightkeeper's Point — the Old Light's headland off the west beach
+    { map_id: 'pearlmoor_oldlight_1', region: 'south' }, // interior: the Old Light F1 — the Lobby of Groaners (opens on flag:q_south_bell)
+    { map_id: 'pearlmoor_oldlight_2', region: 'south' }, // interior: F2 — the Late Laugh (the Heckler)
+    { map_id: 'pearlmoor_oldlight_3', region: 'south' }, // interior: F3 — Intermission (tea-urn rest point; the Hall of Mouths)
+    { map_id: 'pearlmoor_oldlight_4', region: 'south' }, // interior: F4 — the Backwards Inn (the Ringmaster)
+    { map_id: 'pearlmoor_oldlight_5', region: 'south' }, // interior: F5 — the Gallery of Confident Facts
+    { map_id: 'pearlmoor_oldlight_6', region: 'south' }, // interior: F6 — the One Joke
+    { map_id: 'pearlmoor_oldlight_top', region: 'south' }, // interior: the Winding Room — Tam's card, the net-floats (flag:q_south_jest_done)
+    { map_id: 'pearlmoor_wanderwood_far', region: 'south', optional: true, reward: 'S5: the Far Side — Mags\'s griddle, the Answering Lamp, the glass steps (all optional)' },
     // ---- East: Saltreach Fen (2 segments) -> Lowleaf forest -> Cinderhead cave -------
     { map_id: 'saltreach_fen_i', region: 'east' }, // route: open marsh
     { map_id: 'saltreach_fen_ii', region: 'east' }, // route: deep channels
@@ -179,6 +189,8 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'tinderwick', to_map: 'tinderwick_house', via_warp: 'to_house', bidirectional: true },
     { from_map: 'tinderwick', to_map: 'tinderwick_shop', via_warp: 'to_shop', bidirectional: true },
     { from_map: 'tinderwick', to_map: 'tinderwick_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
+    // R8: west through the hedge gap to Duskapple Orchard (ungated, safe side area).
+    { from_map: 'tinderwick', to_map: 'duskapple_orchard', via_warp: 'to_orchard', bidirectional: true },
     // The old beacon on the NE bluff — the earned first Gleam: door opens with the
     // wick-key from the Dimglass lamplighter, the floors carry wick-tender trainers,
     // and Brisa's bond-test waits in the lantern room at the top.
@@ -198,6 +210,22 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // last word (typed) parts the trees into Paul's wood.
     { from_map: 'pearlmoor_quay', to_map: 'pearlmoor_allotment', via_warp: 'to_allotment', bidirectional: true },
     { from_map: 'pearlmoor_allotment', to_map: 'pearlmoor_wanderwood', via_warp: 'to_wood', requires_flag: 'flag:q_south_wander_word', bidirectional: true },
+    // The Wanderwood's far side: one optional loop, two roads off its west edge
+    // (to_far low / to_far_n high) — out one, back in the other.
+    { from_map: 'pearlmoor_wanderwood', to_map: 'pearlmoor_wanderwood_far', via_warp: 'to_far', bidirectional: true },
+    // R9 "The Old Light": the west beach runs out to Lightkeeper's Point; Reyl's
+    // hook (flag:q_south_bell) opens the tower door; each floor's up-stair waits on
+    // its riddle (flag:oldlight_N_solved); the top's slide drops back to the Point
+    // (and its chute climbs back up once the act is done).
+    { from_map: 'pearlmoor_quay', to_map: 'pearlmoor_point', via_warp: 'to_point_16', bidirectional: true },
+    { from_map: 'pearlmoor_point', to_map: 'pearlmoor_oldlight_1', via_warp: 'to_oldlight', requires_flag: 'flag:q_south_bell', bidirectional: true },
+    { from_map: 'pearlmoor_oldlight_1', to_map: 'pearlmoor_oldlight_2', via_warp: 'up_stairs', requires_flag: 'flag:oldlight_1_solved', bidirectional: true },
+    { from_map: 'pearlmoor_oldlight_2', to_map: 'pearlmoor_oldlight_3', via_warp: 'up_stairs', requires_flag: 'flag:oldlight_2_solved', bidirectional: true },
+    { from_map: 'pearlmoor_oldlight_3', to_map: 'pearlmoor_oldlight_4', via_warp: 'up_stairs', requires_flag: 'flag:oldlight_3_solved', bidirectional: true },
+    { from_map: 'pearlmoor_oldlight_4', to_map: 'pearlmoor_oldlight_5', via_warp: 'up_stairs', requires_flag: 'flag:oldlight_4_solved', bidirectional: true },
+    { from_map: 'pearlmoor_oldlight_5', to_map: 'pearlmoor_oldlight_6', via_warp: 'up_stairs', requires_flag: 'flag:oldlight_5_solved', bidirectional: true },
+    { from_map: 'pearlmoor_oldlight_6', to_map: 'pearlmoor_oldlight_top', via_warp: 'up_stairs', bidirectional: true },
+    { from_map: 'pearlmoor_oldlight_top', to_map: 'pearlmoor_point', via_warp: 'slide', requires_flag: 'flag:q_south_jest_done', bidirectional: true },
 
     // ---- Main rim, clockwise: town -> route segment -> ... -> town -------------------
     { from_map: 'tinderwick', to_map: 'dimglass_coast', via_warp: 'to_coast', bidirectional: true },

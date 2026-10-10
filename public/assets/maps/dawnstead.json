@@ -3334,6 +3334,18 @@
       "sprite": "andrew_ward",
       "movement": "look_around",
       "dialogue_ref": "script.andrew_road"
+    },
+    {
+      "id": "peril_maudie_dawn",
+      "at": {
+        "tx": 11,
+        "ty": 15
+      },
+      "facing": "down",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "dialogue_ref": "npc.peril_maudie_dawn",
+      "requires_flag": "flag:dawn"
     }
   ],
   "gates": [],

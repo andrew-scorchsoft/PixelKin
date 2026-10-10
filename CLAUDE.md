@@ -207,7 +207,7 @@ go digging on every task.
   = class rate × ace (route 16 / keeper 20 / rival 24 /
   warden 60 / Còr 120); blackout keeps a 10% wick tithe and wakes you at your **last rest point**
   (not the start — see the respawn gotcha); XP yield is `bst·level/20`,
-  ×1.5 vs trainers, **catches pay like knock-outs**. Design + per-region battle/earnings
+  ×1.5 vs trainers, **catches pay like knock-outs**, and a **first-hours boost** (foe lv ≤8 ×1.5, 9–12 ×1.25 — `BattleScene.earlyExpBoost`, mirrored in the model). Design + per-region battle/earnings
   budget: `docs/mechanics/10-economy.md`; executable model: `tools/balance/progression.mjs`.
 - **Catching = one vesperlamp + charges (2026-06, BUILT):** the vesperlamp is a key
   item (plain throw free, ×1.0); **charges** (`category:'charge'`, `catch_bonus`) are
@@ -488,7 +488,7 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   carrying `level_up: true`, used from ITEMS (`ItemsMenu.feedLumenDrop`) — it grants exactly
   the exp owed for the next level and then runs the battle path's own MoveLearn/Kindle
   prompts. **Never give it a `price`** (a buyable level would wreck the wick economy); it is
-  found (Spore Grotto, Wind-Eye) or given. Item descriptions must fit ~80 chars / 3 wrapped
+  found (Spore Grotto, Wind-Eye, Duskapple Orchard) or given. Item descriptions must fit ~80 chars / 3 wrapped
   lines — the pack's detail pane is fixed at 3 and does not scroll.
 - **The player SWIMS on water.** `WorldScene.update` asks `map.hasTerrainAt(tx,ty,'water')`
   every frame and calls `Player.setSwimming`, which swaps to the packed `player_indi_swim`
@@ -500,6 +500,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   in the Lifting House) names the thing; two Dimglass Coast walkers and the Crossroads
   road-teller (`npc.egg_hint_*`) narrow it to the building at the TOP of Pearlmoor Quay (the
   `pearlmoor_lifting_house` at (19,0)). Nobody ever says what it is — keep it that way.
+  Every Andrew's **THE EASTER EGG** option runs ONE shared `script.andrew_egg` (2026-10): a
+  flag-staged single chain (the `andrew_hint` if/unless pattern) that first says whether the
+  egg is found yet, then one subtle next step. He names the Chickenpig only once it's caught,
+  then admits ONE more "for the bold" (S5); after the cup he says that's the lot. `andrew_wood`
+  in the Wanderwood (`script.andrew_wood`) confirms the wood is the last egg.
 - **Wick-purse caches are the anti-broke safety net.** One found purse per area across the
   first six (120→350w, `script.pickup_*_purse`). Found money is modelled as each leg's `finds`
   income in `tools/balance/progression.mjs` — add a purse, mirror it there, re-run the model.
@@ -859,11 +864,28 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `background=transparent`. Prefix the one transparent call:
   `OPENAI_IMAGE_MODEL=gpt-image-1 ./venv/bin/python …/generate.py --transparent …` (Google
   has no native alpha, so transparent always routes to OpenAI).
+- **The peril thread (R9) — the Long Dusk made visible — is `docs/world/walkthrough/08-the-peril-thread.md`.**
+  Duskapple's fallen-star crater lives in its builder; every later beat is an id-keyed upsert in
+  `tools/maps/add_peril_thread.py` — re-run it after rebuilding any map it touches, or the beat
+  silently vanishes. Crater/cinder/charred-tree art = `draw_fallenstar_objects.py` (a strike is a
+  drawn decal, never tile fills). Keep it optional colour, staged on existing flags, healing on Gleams.
+- **The Causeway Bell runs THROUGH the Old Light (R9, 2026-10).** `q_south_bell` → the tower on
+  `pearlmoor_point` (`flag:oldlight_N_solved` per floor; riddles are `choice`s built by
+  `riddle()` in `content/oldlight.ts` — every branch ends solved or cancelled) → the top sets
+  `picked_net_floats` + `q_south_jest_done` → the netmender's ONE stage (`script.netmender_floats`,
+  branches on `q_south_jest_done`). Never split her floats/rope back into two NPCs (an old
+  floats/rope save would show two netmenders on one tile); every tower joke is the machine's.
+- **Tinderwick was deliberately RE-SHUFFLED for returning players (R8, 2026-10)** — store ⇄
+  cottage swapped (door tiles too; spawn (5,8)), Wren + Fenn's satchel moved out to the new west
+  side area `duskapple_orchard`, a couple of signs removed on purpose. Don't "restore" the old
+  layout; `build_tinderwick.py` is now the full source of truth (it owns the old post-build
+  additions), so re-running it is safe.
 - **The opening is the SATCHEL ERRAND, not a tile-touch (2026-06).** Fenn is NOT in town: he
   waits at the `vesper_crossroads` waystone in four flag-disjoint placements (ask → waiting →
   ceremony `script.intro_mentor` → after), the Tinderwick north gate is held by a warden
   (intercept band `script.gate_warden` + `has_starter`-gated coast warps; Pearlmoor spoke
-  gated the same), and the satchel is an item_cache in `tinderwick_shop` (4-stage keeper).
+  gated the same), and the satchel is an item_cache on the courier's cart in `duskapple_orchard`
+  (R8 — the 4-stage keeper's errand line sends you WEST for it).
   `EventTrigger` now supports `hidden_when_flag` (mirror of NpcPlacement; a hidden trigger is
   filtered at lookup so it can't swallow the step's warp/encounter). Pre-starter wandering is
   safe by construction: wild encounters never fire with an empty party (`hasHealthyKin`).
@@ -879,9 +901,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   add a new one by appending an `EntryTutorial` row + a `script.*`. `runTutorial` banks the
   `seen_flag` so it never repeats.
 - **The South level curve is data-locked to the walkthrough:** Brisa ace 10 → Dimglass I wilds
-  3–6 (+ Wren's friendly battle A2 + the B1 `dusk_begins` beat) → Dimglass II wilds 8–10 + two
-  route-trainer beats → Reyl 12–16. Route trainer beat = static NPC + `step_on` cutscene tile
-  on a choked lane (`script.flats_trainer_*` pattern); next warden's ace ≈ previous +5–6.
+  3–5 (side pocket 5–6; + Wren's friendly battle A2 + the B1 `dusk_begins` beat) → Dimglass II
+  wilds 8–10 + two route-trainer beats (Morrow 9/9, Elspeth 10/10) → Reyl 12–16. Route trainer
+  beat = static NPC + `step_on` cutscene tile on a choked lane (`script.flats_trainer_*`
+  pattern); next warden's ace ≈ previous +5–6. **Eased 2026-10 (a first-timer kept dying on
+  the coast road):** both Dimglass crossings carry an unbroken dry lane, and the flats have a
+  roadside rest (`script.flats_rest`, the cockler) — don't re-seal the lanes or drop the rest.
 - **The East curve has the same data-lock (second hour, BUILT):** Fen I 16–18 → Fen II 17–19
   (Tidecall load-bearing; one route trainer) → Lowleaf fringe 18–20 + two keeper beats → Sable
   ace 22 (grants `gleam:verdant` + `glimmerstep`; `crown_east` waits on Otho — the crown rides
@@ -984,6 +1009,13 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   letterbox/tint (`clearCinematicFx`) and snaps the camera back (`ctx.resetView`); `setLead`'s swap
   is undone after the set-piece (`WorldScene.restoreLead`); answers (`store:false`) match ignoring
   punctuation. The Chickenpig is NEVER gifted — S4 is the only way to it.
+- **Paying and toggles are DATA (R9, 2026-10).** The `pay` op (`{op:'pay', amount, flag}`) takes
+  wicks only if the purse holds them and sets `flag` — branch with `if_flag`/`unless_flag`, never
+  assume it paid (Wink's 12,000w Tin Rower is the worked example; mirror any price in
+  `progression.mjs` PRICES). A toggle key item is `ItemDef.toggle_flag` + `toggle_text`
+  (+ `encounter_factor`): ITEMS flips it, EncounterSystem applies the LOWEST active factor (no
+  stacking) — never special-case an item id again (the old `hooded_lamp` branch is gone).
+  ShopMenu hides key items already held.
 - **Cannot-die mode (Settings → "Cannot die", 2026-10).** `Settings.cannotDie` → `preferences.
   getCannotDie()`; `WorldScene.blackout` then heals the party and RE-ENTERS the current map at the
   player's own tile (no rest-point warp, no wick tithe) — the re-entry is what resets actors a lost
@@ -995,7 +1027,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `if_flag: <stage>` + `unless_flag: <next stage>`, so exactly one line plays and it names the
   CURRENT objective (compass + landmark + who to ask for; never map ids). Adding a stage means
   splicing a line with BOTH guards set — get the pair wrong and he says nothing or says two
-  things. He's placed as `andrew_road` (same id in all 10 maps, so the `emote` actor resolves)
+  things. The Ember→Tide leg (R9's five Causeway-Bell stages) is instead a nested `run`
+  precedence chain (`script.andrew_hint_tide*`, latest stage first) so an old save holding a
+  later flag without an earlier one still hears exactly one line. He's placed as `andrew_road` (same id in all 10 maps, so the `emote` actor resolves)
   running `script.andrew_road`; the Tinderwick fence placement offers the same options.
   The JOURNAL's **`main_wayfaring`** entry ("The Wayfaring", 8 `gleam:*` stages) is the same
   answer in menu form — the journal used to carry side quests ONLY.

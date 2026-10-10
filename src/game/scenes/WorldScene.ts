@@ -820,6 +820,13 @@ export class WorldScene extends Phaser.Scene {
       onGiveMoney: (amount) => {
         this.money = Math.max(0, this.money + Math.floor(amount));
       },
+      onPay: (amount) => {
+        const cost = Math.max(0, Math.floor(amount));
+        if (this.money < cost) return false;
+        this.money -= cost;
+        void this.persist();
+        return true;
+      },
       playerName: () => this.playerName,
       onSetPlayerName: (name) => {
         this.playerName = name;

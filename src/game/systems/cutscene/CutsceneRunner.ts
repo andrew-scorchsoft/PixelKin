@@ -69,6 +69,8 @@ export interface CutsceneContext {
   onHealParty?(rest: boolean): void;
   /** Hand the player wicks (quest rewards, found purses). */
   onGiveMoney?(amount: number): void;
+  /** Take `amount` wicks if the purse holds them; true when paid (the `pay` op). */
+  onPay?(amount: number): boolean;
   /** The player's chosen name, if they've been asked for one — substituted into
    *  every line as `{name}`. Falls back to a neutral address when unset. */
   playerName?(): string | undefined;
@@ -341,6 +343,14 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
     case 'giveMoney':
       ctx.onGiveMoney?.(step.amount);
       void ctx.sfx.playVariant('world-pickup', ['a', 'b', 'c']);
+      return true;
+    case 'pay':
+      // Paid → set the flag the script branches on; short → nothing happens.
+      if (ctx.onPay?.(step.amount)) {
+        ctx.flags.set(step.flag, true);
+        ctx.onFlagSet?.();
+        void ctx.sfx.playVariant('world-pickup', ['a', 'b', 'c']);
+      }
       return true;
     case 'shop':
       await ctx.openShop?.(step.shop);

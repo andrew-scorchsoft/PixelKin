@@ -1167,7 +1167,7 @@
         0,
         117,
         0,
-        0,
+        117,
         0,
         0,
         0,
@@ -2431,6 +2431,51 @@
       "transition": "fade"
     },
     {
+      "id": "to_point_15",
+      "at": {
+        "tx": 0,
+        "ty": 15
+      },
+      "trigger": "step_on",
+      "to_map": "pearlmoor_point",
+      "to": {
+        "tx": 18,
+        "ty": 7
+      },
+      "facing": "left",
+      "transition": "fade"
+    },
+    {
+      "id": "to_point_16",
+      "at": {
+        "tx": 0,
+        "ty": 16
+      },
+      "trigger": "step_on",
+      "to_map": "pearlmoor_point",
+      "to": {
+        "tx": 18,
+        "ty": 8
+      },
+      "facing": "left",
+      "transition": "fade"
+    },
+    {
+      "id": "to_point_17",
+      "at": {
+        "tx": 0,
+        "ty": 17
+      },
+      "trigger": "step_on",
+      "to_map": "pearlmoor_point",
+      "to": {
+        "tx": 18,
+        "ty": 9
+      },
+      "facing": "left",
+      "transition": "fade"
+    },
+    {
       "id": "to_fen",
       "at": {
         "tx": 27,
@@ -2754,6 +2799,16 @@
       },
       "activation": "interact",
       "ref": "sign.pearlmoor_to_fen"
+    },
+    {
+      "id": "sign_sign_peril_pearlmoor_board",
+      "kind": "sign",
+      "at": {
+        "tx": 17,
+        "ty": 16
+      },
+      "activation": "interact",
+      "ref": "sign.peril_pearlmoor_board"
     }
   ],
   "encounters": [
@@ -3005,21 +3060,8 @@
       "facing": "down",
       "sprite": "npc_old_woman",
       "movement": "static",
-      "dialogue_ref": "npc.netmender_floats",
+      "dialogue_ref": "script.netmender_floats",
       "requires_flag": "flag:q_south_bell",
-      "hidden_when_flag": "flag:picked_net_floats"
-    },
-    {
-      "id": "netmender_rope",
-      "at": {
-        "tx": 23,
-        "ty": 17
-      },
-      "facing": "down",
-      "sprite": "npc_old_woman",
-      "movement": "static",
-      "dialogue_ref": "script.netmender_rope",
-      "requires_flag": "flag:picked_net_floats",
       "hidden_when_flag": "flag:q_south_has_rope"
     },
     {

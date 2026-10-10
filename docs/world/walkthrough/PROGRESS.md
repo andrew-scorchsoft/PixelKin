@@ -45,13 +45,23 @@ dex-side mirrors are the species lane's remaining bookkeeping.)
 | Area | map id(s) | Status | Builder |
 |------|-----------|--------|---------|
 | Tinderwick (Ember · Brisa) | `tinderwick` + house/shop/lumenary | ✅ | `build_tinderwick*.py` |
+| Duskapple Orchard (R8 side area — satchel detour, lv 2–4 meadow) | `duskapple_orchard` | ✅ | `build_duskapple_orchard.py` |
 | Tinderwick Beacon (earned Gleam loop) | `tinderwick_beacon_i/ii/top` | ✅ | `build_beacon.py` |
 | Dimglass Coast I→II | `dimglass_coast`, `dimglass_coast_ii` | ✅ | `build_dimglass*.py` |
 | Vesper Crossroads (Lanternway hub) | `vesper_crossroads` | ✅ | `build_crossroads.py` |
 | Pearlmoor Quay (Tide · Reyl · Tidecall) | `pearlmoor_quay` + inn/shop/lumenary/breakwater | ✅ | `build_pearlmoor*.py` |
+| Lightkeeper's Point + the Old Light (R9 — the Causeway Bell's middle leg) | `pearlmoor_point`, `pearlmoor_oldlight_1..6/_top` | ✅ | `build_pearlmoor_point.py`, `build_pearlmoor_oldlight.py` |
 | Gullcry Rock (Tidecall spur) | `gullcry_rock` | ✅ | `build_gullcry.py` |
 
 Festivals: Lantern-fair, Tide-blessing. Arcs delivered: A1/A2 (Wren), B1 (`dusk_begins`), C1/C2 (Fenn).
+
+**2026-10 — the coast road eased** (a first-timer kept blacking out between Tinderwick and
+Pearlmoor): dry lanes carried unbroken through Dimglass I's `crossing_a` + the ledge-gap
+choke and Dimglass II's `dune_crossing` (grass now optional); wild tops shaved (I: 6→5 on the
+main-road patches, crossings 0.10→0.08; II: 11→10 / 10→9, rate 0.10→0.09); Elspeth 10/11→10/10
+(176→160w); a roadside rest on the flats (the cockler, `script.flats_rest`) — the South road's
+only heal between the towns. Mirrors: `build_species.py`, `progression.mjs` (PASS, checkpoints
+unchanged), `01-south.md`.
 
 ## East — Gleams 3–4 (`crown_east`) ✅
 
@@ -294,6 +304,79 @@ Chickenpig can't be missed. New reusable ops: `askName store:false`, `setLead`, 
 Also: Settings → **Cannot die** (blackout heals in place). Verified by a scripted Chromium
 playtest of every path (hint → note → wrong word → LOST → wood → boss win / missing-kin /
 cannot-die loss → cup) + all map audits + the four balance gates.
+
+**The Far Side (2026-10, follow-up):** the Wanderwood grew an optional loop —
+`pearlmoor_wanderwood_far` (30×24, `build_pearlmoor_wanderwood_far.py`), two roads off the
+wood's west edge (low `to_far` / high `to_far_n`, by the glade). All discovery, no gating, still
+there after the cup: Mags's griddle (`script.wander_mags` — cheese-bun no-rest heal, the
+clockwork-lamplighters joke), the Answering Lamp (`script.wander_answering_lamp`) + p.'s
+REASSESS carving, the glass steps + islet Lumen Drop cache, the lifting bench, the sugar stump,
+the laugh, story trees 5–6. Andrew stands at the hub (`andrew_wood` → `script.andrew_wood`). Same
+grass table as the wood (mirrored in build_species, CURATED_AREAS).
+
+### R8 — "The town remembers it differently" (Tinderwick re-shuffle) ✅ DONE (2026-10)
+
+For a RETURNING player (Paul has played the opening) Tinderwick is subtly, strangely changed;
+for a first-timer it is simply the village. **Moved:** the store and the apprentice's cottage
+swapped places — exactly swapped door tiles (cottage door (5,7) on the square, store door (6,16)
+down the lower-left lane; spawn `start_at` → (5,8); interiors' `to_town` landings re-paired), the
+verge grass one column east (11–16), lamp posts/trees/caches/Andrew (now on the garden fence,
+(15,12)) re-placed. **Gone:** the TINDERWICK SQUARE and DOCKS signs, the townswoman's second
+line, the keeper's "in a hurry" aside, Wren from the town garden. **New:** a west hedge gap off
+the square into **`duskapple_orchard`** (Old Wendel's starlit orchard; Maudie the courier's
+three-wheeled cart; Wren; a lv 2–4 training meadow + day twin, mirrored in `build_species.py`;
+balms + a Lumen Drop). **The satchel moved there** (same `fenn_satchel` placement,
+`script.take_satchel`, `flag:has_satchel`): the keeper's errand line sends you WEST to the
+orchard by name and landmark, and Andrew's satchel stage says the same. `build_tinderwick.py`
+now owns the old post-build additions (vigil host, day zone, letter NPC, Andrew, purse) — a
+rebuild no longer regresses them.
+
+### R9 — "The Old Light": the Tin Rower, the Worry Club, wayfinding (2026-10)
+
+(The Lightkeeper's Point / Old Light tower / Reyl-chain half of R9 is logged with its build.)
+**Engine:** the `pay` cutscene op (`{op:'pay', amount, flag}` — pays + sets the flag, or is a
+silent no-op on a short purse; scripts branch on the flag) and generic **toggle key items**
+(`ItemDef.toggle_flag` + `toggle_text` + `encounter_factor`; ITEMS flips any of them;
+EncounterSystem takes the LOWEST active factor — the Hooded Lamp now rides the same data);
+ShopMenu hides key items already held. **Content:** S6 "The Tin Rower" (Aldous Wink, Dimglass
+Coast I (12,30) + `sign.wink_auction`; story-builder or 12,000w; the `tin_rower` toggle,
+WOUND/STILL ×0.5), the five-member **Worry Club** (`script.worry_*`; Hester in Tinderwick via
+`build_tinderwick.py`, Pim/Gilly/Constance surgical NPC adds, Nettie's script for the Point),
+`script.andrew_hint`'s Ember→Tide line split into five staged lines (a nested `run` precedence
+chain — exactly one plays for every combo of the five flags, old saves included), and two JOURNAL
+entries (`main_causeway_bell`, `s6_tin_rower`). Price mirrored in `progression.mjs` PRICES +
+10-economy.md (one-time optional, outside the solvency legs).
+
+**The peril thread (R9, BUILT — [`08-the-peril-thread.md`](./08-the-peril-thread.md)).** The Long
+Dusk now visibly costs something, escalates with the journey, and heals as Gleams are relit.
+**S1:** a FALLEN STAR has struck `duskapple_orchard`: a drawn crater decal, a cold cinder, two
+charred trees, a once-only first-sight cutscene, and Wendel and Tamsin's flag-staged grief.
+Shoots come up at `gleam:ember`; at `flag:dawn` the trees leaf, the flowers bloom and the
+cinder wakes into a shard. Then a beat per region on existing flags: the fen family leaving
+(E1), the Hollowing's gentle notice at Galehigh (N1), a second fall in Hushfrost's snow (N2),
+the family who doused their own brazier (W1), Nightreach's Ledger of Lights (W2), the
+gone-quiet at the Penumbra Ring (C1), and Maudie in Dawnstead sending you home (P1). The new
+canon fact is *fallen stars* (the Dusk's cold cinders, the dark twin of the post-game
+Starfall shards), with a LORE entry. The art is `draw_fallenstar_objects.py`, and the
+placements are the orchard builder plus `add_peril_thread.py` (idempotent; re-run after any
+rebuild). **Owed:** two South placements in Tinderwick and Pearlmoor (words written; spec in
+08 §4).
+### R9 — "The Old Light" (Pearlmoor's joke-tower) ✅ DONE (2026-10)
+
+The Causeway Bell now runs `script.reyl_quest` (`flag:q_south_bell`) → **the Old Light**
+on **Lightkeeper's Point** (`pearlmoor_point`, off the quay's west beach; bespoke lighthouse
+object with a grinning brass horn, lit variant after `gleam:tide`) → seven `roomkit` floors of
+increasingly strange jokes by **Mr. Punchwheel**, Tam Wash's clockwork joke-engine (the lobby
+plaque: every joke is the machine's) — one choice-riddle per floor with layered retries, the
+Heckler (F2) + Ringmaster (F4) keepers (240/260w, mirrored in `progression.mjs` + 10-economy;
+mainline L17 vs rec 14 at Reyl, PASS), the F3 tea-urn rest point, the One Joke, and the
+Winding Room (Reyl's log, the cut rope, Tam's card → `flag:q_south_jest_done` + the
+net-floats, which LEFT the Dimglass II flats) → the netmender's rope (her one quay stage now
+branches on `q_south_jest_done`) → bell → Reyl, with `if_flag` payoffs on the bell, the
+bond-test, the Gleam narrate and the Tide-blessing. Old saves: floats-but-no-rope climbs the
+tower; rope-already saves are untouched (flag sweep verified). Content: `content/oldlight.ts`. Joke rubric + every scored draft: [`../oldlight-jokes.md`](../oldlight-jokes.md) (all AI-written, ≥85/100 each).
+The Point also hosts `worry_nettie` and Reyl's post-Gleam `script.reyl_tin_rower` hook (the Tin
+Rower, Worry Club, Andrew's chain + JOURNAL rows are the sibling R9 packages).
 
 ### R5 — Release ladder (verification, mostly cheap)
 - ✅ `npm run build` verified green (2026-06).

@@ -55,6 +55,21 @@ export const QUESTS: QuestRegistry = [
     ],
     done_flag: 'flag:dawn',
   },
+  // The second Gleam's own loop (R9): Reyl won't hold a bond-test till you've
+  // climbed the Old Light, carried the floats home and rung the moor-bell. A
+  // main-path entry so the climb never reads as an optional detour. Flags: Reyl's
+  // hook (`script.reyl_quest`), the tower top, the netmender's rope, the bell
+  // (pearlmoor_breakwater sets_flags) and the Tide Gleam.
+  {
+    id: 'main_causeway_bell',
+    name: 'The Causeway Bell',
+    region: 'south',
+    giver: 'Reyl Wash',
+    blurb: 'Reyl won\'t test a bond till you\'ve laughed: climb the Old Light on the Point, carry the floats to the netmender, then ring the moor-bell at the breakwater\'s end.',
+    start_flag: 'flag:q_south_bell',
+    stage_flags: ['flag:q_south_jest_done', 'flag:q_south_has_rope', 'flag:q_south_bell_rung'],
+    done_flag: 'gleam:tide',
+  },
 
   // ===== SOUTH ===============================================================
   {
@@ -106,6 +121,15 @@ export const QUESTS: QuestRegistry = [
     start_flag: 'flag:q_south_wander',
     stage_flags: ['flag:q_south_wander_word', 'flag:q_south_wander_lamp'],
     done_flag: 'flag:q_south_wander_done',
+  },
+  {
+    id: 's6_tin_rower',
+    name: 'The Tin Rower',
+    region: 'south',
+    giver: 'Aldous Wink, on the Dimglass Coast',
+    blurb: 'Lot 1 on Wink\'s sign: a wind-up tin ferryman, reserve twelve thousand wicks. Stories considered. Tell him one in three goes — or pay, if you must.',
+    start_flag: 'flag:tin_rower_offered',
+    done_flag: 'flag:has_tin_rower',
   },
 
   // ===== EAST ================================================================

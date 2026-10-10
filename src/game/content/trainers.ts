@@ -17,7 +17,7 @@ export const TRAINERS: TrainerRegistry = {
     name: 'BRISA TALLOW',
     title: 'Lampwarden',
     party: [
-      { species_id: 10, level: 7 }, // Tallowpup — Ember
+      { species_id: 10, level: 6 }, // Tallowpup — Ember (eased 2026-10 from 7)
       { species_id: 18, level: 10 }, // Hearthkit — Ember (ace ~10 per walkthrough/01-south)
     ],
     intro_ref: 'trainer.lampwarden_tinderwick.intro',
@@ -36,9 +36,9 @@ export const TRAINERS: TrainerRegistry = {
     name: 'TANSY',
     title: 'Wick-tender',
     party: [
-      { species_id: 16, level: 7 }, // Wickmoth — Ember
+      { species_id: 16, level: 6 }, // Wickmoth — Ember
     ],
-    payout: 140, // keeper 20 × ace 7
+    payout: 120, // keeper 20 × ace 6
     music: 'battle-emberfall',
   },
   beacon_keeper_b: {
@@ -46,10 +46,10 @@ export const TRAINERS: TrainerRegistry = {
     name: 'COLE',
     title: 'Wick-tender',
     party: [
-      { species_id: 10, level: 7 }, // Tallowpup — Ember
-      { species_id: 16, level: 8 }, // Wickmoth — Ember
+      { species_id: 10, level: 6 }, // Tallowpup — Ember
+      { species_id: 16, level: 7 }, // Wickmoth — Ember
     ],
-    payout: 160, // keeper 20 × ace 8
+    payout: 140, // keeper 20 × ace 7
     music: 'battle-emberfall',
   },
 
@@ -91,11 +91,11 @@ export const TRAINERS: TrainerRegistry = {
     title: 'Lamp-courier',
     party: [
       { species_id: 27, level: 10 }, // Brineroll — Tide
-      { species_id: 31, level: 11 }, // Lumpin — Tide/Light
+      { species_id: 31, level: 10 }, // Lumpin — Tide/Light (eased 11→10, 2026-10)
     ],
     intro_ref: 'trainer.flats_wayfarer_b.intro',
     defeat_ref: 'trainer.flats_wayfarer_b.defeat',
-    payout: 176, // route 16 × ace 11
+    payout: 160, // route 16 × ace 10
     music: 'battle-emberfall',
   },
 
@@ -229,6 +229,34 @@ export const TRAINERS: TrainerRegistry = {
     intro_ref: 'trainer.net_hand_b.intro',
     defeat_ref: 'trainer.net_hand_b.defeat',
     payout: 224, // route 16 × ace 14
+    music: 'battle-emberfall',
+  },
+
+  // R9 "The Old Light": Punchwheel's two keepers (talk-to, by the up-stairs;
+  // both required). They read cards the machine wrote. No Tide kin — Reyl's
+  // hall keeps that surprise. Pitched between the flats (~11) and Reyl's 16.
+  oldlight_heckler: {
+    id: 'oldlight_heckler',
+    name: 'THE HECKLER',
+    title: 'Jest-keeper',
+    party: [
+      { species_id: 47, level: 11 }, // Pebbit — Stone
+      { species_id: 8, level: 12 }, // Glimflit — Light (ace)
+    ],
+    defeat_ref: 'trainer.oldlight_heckler.defeat',
+    payout: 240, // keeper 20 × ace 12
+    music: 'battle-emberfall',
+  },
+  oldlight_ringmaster: {
+    id: 'oldlight_ringmaster',
+    name: 'THE RINGMASTER',
+    title: 'Jest-keeper',
+    party: [
+      { species_id: 16, level: 12 }, // Wickmoth — Ember
+      { species_id: 69, level: 13 }, // Riddlestone — Stone (ace)
+    ],
+    defeat_ref: 'trainer.oldlight_ringmaster.defeat',
+    payout: 260, // keeper 20 × ace 13
     music: 'battle-emberfall',
   },
 
@@ -1216,6 +1244,15 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   ],
   'trainer.lanternfall_warden.defeat': [
     { speaker: 'LAMP-KEEPER NELL', text: 'Brightly done. The crossroads is just below, where all the lit roads meet. Tell the Waykeeper Nell\'s lamps are trimmed.' },
+  ],
+  // R9 — the Old Light's keepers (final lines: F2.HECKLER.DEFEAT / F4.RING.DEFEAT).
+  'trainer.oldlight_heckler.defeat': [
+    { speaker: 'HECKLER', text: "(flips to the last card) 'YOU WIN. THE HECKLER SITS DOWN QUIETLY.'" },
+    { speaker: 'HECKLER', text: '...He even wrote me losing. (sits down, loudly) Here. Your wicks. He wrote those too.' },
+  ],
+  'trainer.oldlight_ringmaster.defeat': [
+    { speaker: 'RINGMASTER', text: "HELLO! Welcome, welcome! Pull up a stool by the fire, you're going to LOVE it here!" },
+    { speaker: 'RINGMASTER', text: "...Ahem. Your riddle. The machine wrote it. He's never been surer of anything. Bad sign." },
   ],
   'trainer.lampwarden_pearlmoor.intro': [
     { speaker: 'REYL WASH', text: 'Apprentice, is it. I have ferried a hundred Wayfarers across this harbour. Few read the water right.' },

@@ -90,11 +90,42 @@ export const ITEMS: ItemRegistry = {
     desc: 'A second lamp under a sliding tin hood. Shade it and you walk the old roads quieter — wild kin let a dimmed light pass. Use to draw the hood open or closed.',
     category: 'key',
     price: 600,
+    toggle_flag: 'flag:lamp_hooded',
+    encounter_factor: 0.5,
+    toggle_text: {
+      on: 'HOODED',
+      off: 'OPEN',
+      on_note: '(Hooded — wild kin pass quieter.)',
+      off_note: '(Open — wild kin stir as usual.)',
+      turn_on: 'You draw the hood across the lamp. Its light dims to a glow — the old roads will be quieter now.',
+      turn_off: 'You slide the hood back. The lamp brightens, and the wilds wake to it once more.',
+    },
+  },
+  // R9 "The Tin Rower" — Aldous Wink's lot on Dimglass Coast I, traded for a
+  // story (or 12,000 wicks). A toggle key item like the Hooded Lamp: while WOUND
+  // the wild kin follow the clicking toy instead of you (encounter rate ×0.5).
+  // Handed over already wound. Also the Old Light tower's free riddle-hint.
+  tin_rower: {
+    id: 'tin_rower',
+    name: 'Tin Rower',
+    // ≤ ~80 chars — the pack's detail pane is three lines and does not scroll.
+    desc: 'A wind-up tin ferryman. Wind him and he rows a tidy circle, then nods.',
+    category: 'key',
+    toggle_flag: 'flag:tin_rower_wound',
+    encounter_factor: 0.5,
+    toggle_text: {
+      on: 'WOUND',
+      off: 'STILL',
+      on_note: '(Wound — wild kin follow his clicking.)',
+      off_note: '(Still — wild kin follow you.)',
+      turn_on: 'You wind the brass key. Click, click — he rows off in his circle, and the wild kin turn to watch HIM.',
+      turn_off: 'You hold the oars still. The ferryman stops, nods once, and waits. The wilds look your way again.',
+    },
   },
   fenn_satchel: {
     id: 'fenn_satchel',
     name: "Fenn's Satchel",
-    desc: 'The Star-tender\'s worn field-satchel, left on the store counter. Heavier than it looks — a Wayfaring lives in it.',
+    desc: 'The Star-tender\'s worn field-satchel, home from a courier\'s cart. Heavier than it looks.',
     category: 'key',
   },
   beacon_wick: {
@@ -106,7 +137,7 @@ export const ITEMS: ItemRegistry = {
   net_floats: {
     id: 'net_floats',
     name: 'Net-floats',
-    desc: 'A string of cork floats stamped with the Pearlmoor netmender\'s mark, carried south by the storm and home by you.',
+    desc: 'Netmender-stamped cork floats. A brass joke-box kept them "for the act".',
     category: 'key',
   },
   bell_rope: {

@@ -1993,6 +1993,17 @@
       "sprite": "andrew_ward",
       "movement": "look_around",
       "dialogue_ref": "script.andrew_road"
+    },
+    {
+      "id": "worry_constance",
+      "at": {
+        "tx": 16,
+        "ty": 6
+      },
+      "facing": "left",
+      "sprite": "npc_woman",
+      "movement": "look_around",
+      "dialogue_ref": "script.worry_constance"
     }
   ],
   "gates": [],
