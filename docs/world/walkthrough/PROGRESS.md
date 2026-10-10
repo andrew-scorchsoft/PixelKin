@@ -330,6 +330,22 @@ orchard by name and landmark, and Andrew's satchel stage says the same. `build_t
 now owns the old post-build additions (vigil host, day zone, letter NPC, Andrew, purse) — a
 rebuild no longer regresses them.
 
+### R9 — "The Old Light": the Tin Rower, the Worry Club, wayfinding (2026-10)
+
+(The Lightkeeper's Point / Old Light tower / Reyl-chain half of R9 is logged with its build.)
+**Engine:** the `pay` cutscene op (`{op:'pay', amount, flag}` — pays + sets the flag, or is a
+silent no-op on a short purse; scripts branch on the flag) and generic **toggle key items**
+(`ItemDef.toggle_flag` + `toggle_text` + `encounter_factor`; ITEMS flips any of them;
+EncounterSystem takes the LOWEST active factor — the Hooded Lamp now rides the same data);
+ShopMenu hides key items already held. **Content:** S6 "The Tin Rower" (Aldous Wink, Dimglass
+Coast I (12,30) + `sign.wink_auction`; story-builder or 12,000w; the `tin_rower` toggle,
+WOUND/STILL ×0.5), the five-member **Worry Club** (`script.worry_*`; Hester in Tinderwick via
+`build_tinderwick.py`, Pim/Gilly/Constance surgical NPC adds, Nettie's script for the Point),
+`script.andrew_hint`'s Ember→Tide line split into five staged lines (a nested `run` precedence
+chain — exactly one plays for every combo of the five flags, old saves included), and two JOURNAL
+entries (`main_causeway_bell`, `s6_tin_rower`). Price mirrored in `progression.mjs` PRICES +
+10-economy.md (one-time optional, outside the solvency legs).
+
 ### R5 — Release ladder (verification, mostly cheap)
 - ✅ `npm run build` verified green (2026-06).
 - ✅ `npm run build:dist` verified green (2026-06): 195 mp3 → 64k mono, 68→27 MB audio,

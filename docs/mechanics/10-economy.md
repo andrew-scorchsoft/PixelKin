@@ -57,6 +57,12 @@ Prices live on `ItemDef.price` (`content/items.ts`); one price everywhere.
 | Beacon Charge | one throw, catch ×2.5 | 600w | everywhere, once `gleam:ember` is held (flag-gated stock) |
 | Star-charts | teach a move | 800–4,000w by tier (§6) | everywhere |
 | Hooded Lamp | key item; toggle — wild encounter rate ×0.5 while hooded | 600w | Pearlmoor chandlery, once `gleam:tide` is held (flag-gated stock) |
+| Tin Rower | key item; toggle — wild encounter rate ×0.5 while wound (the lowest active toggle factor applies; they never stack) | 12,000w **or a story** | Aldous Wink, Dimglass Coast I (R9, once `flag:has_starter`) — a one-time optional via the `pay` cutscene op, outside every solvency leg |
+
+Key items leave a shop's shelf once held (`ShopMenu`), so a toggle can't be bought
+twice. The Tin Rower's 12,000w reserve is set *not* to be met: the free path (Wink's
+story-builder) is the intended one, and the price exists so a well-funded player
+(the Paul supply-drop's +5,000w included) can't drain their safety money by accident.
 
 **Catching reframed (2026-06):** the vesperlamp is a **key item** — one device,
 plain throws free — and the purchasable line is **charges** (one boosted throw

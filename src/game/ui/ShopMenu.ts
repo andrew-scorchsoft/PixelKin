@@ -171,7 +171,8 @@ export class ShopMenu {
     return this.inventory.items[id] ?? 0;
   }
 
-  /** The shop's stock, priced for buying (gated lines appear once their flag is held). */
+  /** The shop's stock, priced for buying (gated lines appear once their flag is held;
+   *  key items already in the pack are hidden). */
   private collectBuy(): CounterEntry[] {
     const out: CounterEntry[] = [];
     for (const entry of this.shop.stock) {
@@ -179,6 +180,9 @@ export class ShopMenu {
       const id = stockItemId(entry);
       const def = getItem(id);
       if (!def || def.price === undefined) continue;
+      // Key items are one-per-journey: once held, the line leaves the shelf (the
+      // Hooded Lamp could otherwise be bought twice for nothing).
+      if (def.category === 'key' && this.held(id) > 0) continue;
       out.push({ id, name: def.name, desc: def.desc, wicks: def.price, held: this.held(id) });
     }
     return out;

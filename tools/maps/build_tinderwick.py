@@ -389,6 +389,10 @@ m = {
         {"id": "andrew_post", "at": {"tx": 15, "ty": 12}, "facing": "left", "sprite": "andrew_ward",
          "movement": "look_around", "dialogue_ref": "script.andrew_after",
          "requires_flag": "flag:met_andrew"},
+        # R9 The Worry Club — Hester Fretwell, knitting furiously in the square
+        # west of the main lane (off every path; Gilly on the flats is her sister).
+        {"id": "worry_hester", "at": {"tx": 11, "ty": 11}, "facing": "down", "sprite": "npc_old_woman",
+         "movement": "look_around", "dialogue_ref": "script.worry_hester"},
         # The wick-purse safety net (one per early area) — now on the WEST strand.
         {"id": "cache_purse", "at": {"tx": 1, "ty": 20}, "facing": "down",
          "sprite": "item_cache", "movement": "static",

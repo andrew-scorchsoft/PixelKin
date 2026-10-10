@@ -1176,7 +1176,7 @@
         0,
         0,
         0,
-        0,
+        117,
         0,
         0,
         0,
@@ -2288,6 +2288,16 @@
         "flag:dusk_begins"
       ],
       "hidden_when_flag": "flag:dusk_begins"
+    },
+    {
+      "id": "sign_wink",
+      "kind": "sign",
+      "at": {
+        "tx": 12,
+        "ty": 29
+      },
+      "activation": "interact",
+      "ref": "sign.wink_auction"
     }
   ],
   "encounters": [
@@ -2962,6 +2972,29 @@
       "sprite": "andrew_ward",
       "movement": "look_around",
       "dialogue_ref": "script.andrew_road"
+    },
+    {
+      "id": "worry_pim",
+      "at": {
+        "tx": 12,
+        "ty": 15
+      },
+      "facing": "left",
+      "sprite": "npc_man",
+      "movement": "look_around",
+      "dialogue_ref": "script.worry_pim"
+    },
+    {
+      "id": "wink",
+      "at": {
+        "tx": 12,
+        "ty": 30
+      },
+      "facing": "left",
+      "sprite": "npc_old_man",
+      "movement": "look_around",
+      "dialogue_ref": "script.wink_trade",
+      "requires_flag": "flag:has_starter"
     }
   ],
   "gates": [

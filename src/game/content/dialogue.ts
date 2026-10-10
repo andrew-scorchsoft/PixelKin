@@ -230,6 +230,11 @@ export const DIALOGUE: DialogueRegistry = {
   'sign.dimglass_to_pearlmoor': [
     { text: 'NORTH: PEARLMOOR QUAY\nThe tidal flats lie ahead, where the lamps stand in the water.' },
   ],
+  // R9 — Aldous Wink's auction board, beside his toy case on the south sand.
+  'sign.wink_auction': [
+    { text: "WINK'S WIND-UPS — TOYS, TALES, TRADES\nLOT 1: ONE (1) WIND-UP FERRYMAN, TIN, WORKING." },
+    { text: 'BOUND FOR THE PEARLMOOR TIDE-AUCTION.\nRESERVE: 12,000 WICKS. STORIES CONSIDERED.' },
+  ],
   // --- New Pearlmoor <-> Crossroads route: signs + beaten-trainer lines ---
   'sign.wrackline_view': [
     { text: 'WRACKLINE PATH\nThe sea gnaws the cliff to the west; the road home to the crossroads runs down and into the dark of the Sounding Cave.' },

@@ -60,6 +60,10 @@ const PRICES = {
   // one-time optional QoL key item (Pearlmoor, gleam:tide stock) — outside the
   // modelled region budgets; listed for the three-home price mirror.
   hooded_lamp: 600,
+  // R9: Aldous Wink's Tin Rower — the cutscene `pay` op's 12,000w reserve (a
+  // one-time optional; the free path is a story, so it never enters a solvency
+  // leg). Mirrored in 10-economy.md and script.wink_buy.
+  tin_rower: 12000,
 };
 
 // ---------------------------------------------------------------------------

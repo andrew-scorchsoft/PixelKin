@@ -2542,6 +2542,17 @@
       "sprite": "npc_old_woman",
       "movement": "static",
       "dialogue_ref": "script.flats_rest"
+    },
+    {
+      "id": "worry_gilly",
+      "at": {
+        "tx": 13,
+        "ty": 28
+      },
+      "facing": "left",
+      "sprite": "npc_old_woman",
+      "movement": "look_around",
+      "dialogue_ref": "script.worry_gilly"
     }
   ],
   "gates": [

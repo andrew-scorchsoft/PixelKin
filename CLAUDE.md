@@ -998,6 +998,13 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   letterbox/tint (`clearCinematicFx`) and snaps the camera back (`ctx.resetView`); `setLead`'s swap
   is undone after the set-piece (`WorldScene.restoreLead`); answers (`store:false`) match ignoring
   punctuation. The Chickenpig is NEVER gifted — S4 is the only way to it.
+- **Paying and toggles are DATA (R9, 2026-10).** The `pay` op (`{op:'pay', amount, flag}`) takes
+  wicks only if the purse holds them and sets `flag` — branch with `if_flag`/`unless_flag`, never
+  assume it paid (Wink's 12,000w Tin Rower is the worked example; mirror any price in
+  `progression.mjs` PRICES). A toggle key item is `ItemDef.toggle_flag` + `toggle_text`
+  (+ `encounter_factor`): ITEMS flips it, EncounterSystem applies the LOWEST active factor (no
+  stacking) — never special-case an item id again (the old `hooded_lamp` branch is gone).
+  ShopMenu hides key items already held.
 - **Cannot-die mode (Settings → "Cannot die", 2026-10).** `Settings.cannotDie` → `preferences.
   getCannotDie()`; `WorldScene.blackout` then heals the party and RE-ENTERS the current map at the
   player's own tile (no rest-point warp, no wick tithe) — the re-entry is what resets actors a lost
@@ -1009,7 +1016,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `if_flag: <stage>` + `unless_flag: <next stage>`, so exactly one line plays and it names the
   CURRENT objective (compass + landmark + who to ask for; never map ids). Adding a stage means
   splicing a line with BOTH guards set — get the pair wrong and he says nothing or says two
-  things. He's placed as `andrew_road` (same id in all 10 maps, so the `emote` actor resolves)
+  things. The Ember→Tide leg (R9's five Causeway-Bell stages) is instead a nested `run`
+  precedence chain (`script.andrew_hint_tide*`, latest stage first) so an old save holding a
+  later flag without an earlier one still hears exactly one line. He's placed as `andrew_road` (same id in all 10 maps, so the `emote` actor resolves)
   running `script.andrew_road`; the Tinderwick fence placement offers the same options.
   The JOURNAL's **`main_wayfaring`** entry ("The Wayfaring", 8 `gleam:*` stages) is the same
   answer in menu form — the journal used to carry side quests ONLY.

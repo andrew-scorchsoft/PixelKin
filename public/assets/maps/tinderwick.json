@@ -2703,6 +2703,17 @@
       "requires_flag": "flag:met_andrew"
     },
     {
+      "id": "worry_hester",
+      "at": {
+        "tx": 11,
+        "ty": 11
+      },
+      "facing": "down",
+      "sprite": "npc_old_woman",
+      "movement": "look_around",
+      "dialogue_ref": "script.worry_hester"
+    },
+    {
       "id": "cache_purse",
       "at": {
         "tx": 1,

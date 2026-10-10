@@ -259,6 +259,9 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
    3. **The teases.** Offshore **lantern-buoys** glow over shallows leading to **Gullcry Rock**
       (Tidecall, not yet) and a dark **cavern mouth** in the cliff → **Tideglass Cavern**
       (Glimmerstep, not yet). Both are signed: the *why* and the *come back* are explicit.
+   - *(R9)* On the south sand, just off the lane, **Aldous Wink** minds his toy case and
+      auction board (S6 "The Tin Rower"); further up the strand **Pim Halloo** of the Worry Club
+      waves a map of contradicting arrows.
    4. **Meet Wren again (A2).** The travelling Wayfarer NPC anchors the route; Wren's first
       friendly battle teaches **trainer battles** (Wren ~2 levels under the player).
    5. **The inciting incident (B1).** On the first nightfall here, a far constellation **winks
@@ -590,6 +593,35 @@ netmender's keeping.
      game) and **6** (a friend's book read across two seas). Same grass table as the wood
      (WANDERWOOD rows, `CURATED_AREAS`). **Andrew** waits at the wood's hub (`andrew_wood`,
      (11,20), `script.andrew_wood`) — the last of his easter eggs.
+   - **S6 "The Tin Rower"** — **[BUILT R9, 2026-10]** giver: **Aldous Wink** ("Wink's Wind-Ups
+     — toys, tales, trades"), `npc_old_man` on the **Dimglass Coast I** south sand strip at (12,30),
+     his auction board `sign.wink_auction` at (12,29) (`requires_flag: flag:has_starter`). Lot 1 is
+     a wind-up tin ferryman, painted *SAME TIDE TOMORROW*, stamped *MADE TO ORDER — T.* — Tam
+     Wash's unpaid order, "up for auction eleven winters", reserve set *specifically* not to be
+     met. `script.wink_trade` → menu TELL A STORY / BUY HIM / WHERE'S HE FROM? / JUST LOOKING.
+     **Story-builder** (`script.wink_story*`): opening / middle / ending picks, each a
+     `flag:tin_story_*` (cleared at the start) so Wink reads the whole story back; the glass-case
+     "auction ending" is turned down and only the three good endings are re-offered; a
+     Paul-only opening (`flag:name_is_paul`); the cheese-bun + "nothing for eleven years" + "came
+     home" combo gets its own reaction. **BUY** = the `pay` op (12,000w, confirm step; short purse
+     → "not that fair"). The hand-over (`script.wink_handover`, every step `unless_flag:
+     flag:has_tin_rower`) gives the **Tin Rower** already wound. Flags: `flag:tin_rower_offered`
+     (first talk — the journal entry), `flag:has_tin_rower` (done), `flag:tin_rower_wound`
+     (ITEMS toggle: WOUND/STILL, encounters ×0.5 like the Hooded Lamp). After the Old Light
+     (`flag:q_south_jest_done`) Wink says it once: *"Tam Wash. I think I knew. I just liked not
+     knowing."* `script.reyl_tin_rower` (Reyl recognising the T., +1 Lumen Drop, once) is ready to
+     `run` from Reyl's post-Tide talk.
+   - **The Worry Club** — **[BUILT R9]** five townsfolk frantic that {name} will never find the
+     easter egg, each ONE NPC + ONE staged script (`script.worry_*`, the andrew_egg if/unless
+     chain): PRE (before `flag:chickenpig_caught` — fretting + a real main-path tip; before
+     `gleam:ember` the tip names Brisa/Andrew, never the egg) → CAUGHT (relief) → AFTER
+     (`flag:q_south_wander_done` — "everything's right with the world"). A one-time item gift on
+     the catch (`flag:worry_<id>_gift`). **Hester Fretwell** (Tinderwick square (11,11), knitting;
+     2 Tallow Balms), **Pim Halloo** (Dimglass I sand (12,15), a map of contradicting arrows; Glow
+     Charge), **Gilly Fretwell** (Hester's sister, Dimglass II by the cockler (13,28), a tally;
+     Warm Balm), **Nettie Fret** (Lightkeeper's Point, `worry_nettie`; Warm Balm; her tip follows
+     the Old Light → bell → Reyl loop), **Constance Dither** (Vesper Crossroads (16,6), spyglass
+     the wrong way round; Tallow Balm).
    - **R1 "Wicks for the Lamplighter"** — the Waykeeper's Round, leg 1 (live now): parcel
      from the **Waykeeper** (`vesper_crossroads`) → the **old lamplighter** (Dimglass I) ·
      flags: `flag:q_round_lamplighter` · reward: bright-lamp kit · `[wakes with spoke]`

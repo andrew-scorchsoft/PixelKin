@@ -794,6 +794,400 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'COCKLER', text: 'There — warm through, the lot of you. Keep to the dry trail if your lamp is low; the dune grass will wait for a brighter hour.' },
   ],
 
+  // ---------------------------------------------------------------------------
+  // R9 "THE TIN ROWER" — Aldous Wink's lot on Dimglass Coast I.
+  //
+  // A wind-up tin ferryman, made to order for Tam Wash and never collected. Wink
+  // set the auction reserve (12,000w) SPECIFICALLY not to be met — he'd rather
+  // trade him for a story. Two ways to him:
+  //   TELL A STORY — a three-pick story-builder (opening / middle / ending). Each
+  //     pick sets a `flag:tin_story_*` (all cleared at the start) so Wink can
+  //     read it back; the one "auction ending" (sealed in a glass case) is turned
+  //     down and only the good endings are re-offered.
+  //   BUY HIM — the `pay` op: a full purse pays and sets `flag:tin_rower_bought`;
+  //     a short one is a silent no-op and the script branches on the flag.
+  // Every give-step rides `script.wink_handover`, each guarded
+  // `unless_flag: flag:has_tin_rower` (set LAST), so he can't be handed over twice.
+  // The toy arrives already WOUND (flag:tin_rower_wound — ITEMS toggles it).
+  // ---------------------------------------------------------------------------
+  'script.wink_trade': [
+    { op: 'emote', actor: 'wink', emote: 'alert', unless_flag: 'flag:tin_rower_offered' },
+    { op: 'say', unless_flag: 'flag:tin_rower_offered', speaker: 'ALDOUS WINK', text: "Aldous Wink. Wink's Wind-Ups — toys, tales, trades. Mind the case; the case is older than me." },
+    { op: 'say', unless_flag: 'flag:tin_rower_offered', speaker: 'ALDOUS WINK', text: "That's Lot 1 on the sign. Up for auction eleven winters. Nobody's met the reserve. I set the reserve. I set it SPECIFICALLY not to be met." },
+    { op: 'setFlag', unless_flag: 'flag:tin_rower_offered', flag: 'flag:tin_rower_offered' },
+    // After the Old Light — he worked out whose order it was.
+    { op: 'emote', if_flag: 'flag:q_south_jest_done', unless_flag: 'flag:wink_tam_told', actor: 'wink', emote: 'ellipsis' },
+    { op: 'say', if_flag: 'flag:q_south_jest_done', unless_flag: 'flag:wink_tam_told', speaker: 'ALDOUS WINK', text: 'Tam Wash. I think I knew. I just liked not knowing.' },
+    { op: 'setFlag', if_flag: 'flag:q_south_jest_done', unless_flag: 'flag:wink_tam_told', flag: 'flag:wink_tam_told' },
+    // Already yours: a word about him, then off you go.
+    { op: 'say', if_flag: 'flag:has_tin_rower', speaker: 'ALDOUS WINK', text: "How's he rowing? Wind him twice before bed. He rows better when someone's watching." },
+    { op: 'run', ref: 'script.wink_menu', unless_flag: 'flag:has_tin_rower' },
+  ],
+  'script.wink_menu': [
+    {
+      op: 'choice',
+      speaker: 'ALDOUS WINK',
+      prompt: 'Lot 1. One tin ferryman, working. What will it be?',
+      options: [
+        { label: 'TELL A STORY', ops: [{ op: 'run', ref: 'script.wink_story' }] },
+        { label: 'BUY HIM (12,000W)', ops: [{ op: 'run', ref: 'script.wink_buy' }] },
+        {
+          label: "WHERE'S HE FROM?",
+          ops: [
+            { op: 'say', speaker: 'ALDOUS WINK', text: "Made to order. A lady off Pearlmoor Quay, laugh you could hear across the harbour. Paid half. Said she'd be back with the rest 'when the fog lifts.'" },
+            { op: 'say', speaker: 'ALDOUS WINK', text: '...Long fog.' },
+          ],
+        },
+        { label: 'JUST LOOKING', ops: [{ op: 'say', speaker: 'ALDOUS WINK', text: "Looking's free. Looking's the best bit, mostly. He doesn't mind being looked at — he's a ferryman, he's used to it." }] },
+      ],
+    },
+  ],
+  'script.wink_buy': [
+    { op: 'say', speaker: 'ALDOUS WINK', text: "Twelve thousand wicks. The reserve. You're sure? ...A story's free, and honestly? I'd rather." },
+    {
+      op: 'choice',
+      speaker: 'ALDOUS WINK',
+      options: [
+        {
+          label: 'PAY 12,000W',
+          ops: [
+            { op: 'pay', amount: 12000, flag: 'flag:tin_rower_bought', unless_flag: 'flag:has_tin_rower' },
+            { op: 'say', if_flag: 'flag:tin_rower_bought', unless_flag: 'flag:has_tin_rower', speaker: 'ALDOUS WINK', text: 'Sold. To the Wayfarer with more wicks than sense. ...No, I mean it kindly. Mostly.' },
+            { op: 'run', ref: 'script.wink_handover', if_flag: 'flag:tin_rower_bought' },
+            { op: 'say', unless_flag: 'flag:tin_rower_bought', speaker: 'ALDOUS WINK', text: "Twelve thousand. ...You've a fair purse, but not that fair. A story's free, and honestly? I'd rather." },
+          ],
+        },
+        { label: 'TELL A STORY', ops: [{ op: 'run', ref: 'script.wink_story' }] },
+        { label: 'NOT TODAY', ops: [{ op: 'say', speaker: 'ALDOUS WINK', text: "Wise. He'll keep. He's kept eleven winters." }] },
+      ],
+    },
+  ],
+
+  // The story-builder. Picks set flags; a Cancel at any step ends the telling
+  // (the next stage only runs once its `tin_story_has_*` marker is held).
+  'script.wink_story': [
+    { op: 'say', speaker: 'ALDOUS WINK', text: 'Toys are only stories somebody can hold. Tell me one in three goes: how it starts, what goes wrong, how it ends.' },
+    { op: 'setFlag', flag: 'flag:tin_story_open_ferry', value: false },
+    { op: 'setFlag', flag: 'flag:tin_story_open_rooster', value: false },
+    { op: 'setFlag', flag: 'flag:tin_story_open_bun', value: false },
+    { op: 'setFlag', flag: 'flag:tin_story_open_paul', value: false },
+    { op: 'setFlag', flag: 'flag:tin_story_mid_fog', value: false },
+    { op: 'setFlag', flag: 'flag:tin_story_mid_machine', value: false },
+    { op: 'setFlag', flag: 'flag:tin_story_mid_stranger', value: false },
+    { op: 'setFlag', flag: 'flag:tin_story_mid_nothing', value: false },
+    { op: 'setFlag', flag: 'flag:tin_story_end_home', value: false },
+    { op: 'setFlag', flag: 'flag:tin_story_end_light', value: false },
+    { op: 'setFlag', flag: 'flag:tin_story_end_wander', value: false },
+    { op: 'setFlag', flag: 'flag:tin_story_end_glass', value: false },
+    { op: 'setFlag', flag: 'flag:tin_story_has_open', value: false },
+    { op: 'setFlag', flag: 'flag:tin_story_has_mid', value: false },
+    { op: 'setFlag', flag: 'flag:tin_story_has_end', value: false },
+    { op: 'setFlag', flag: 'flag:tin_story_special', value: false },
+    {
+      op: 'choice',
+      speaker: 'ALDOUS WINK',
+      prompt: 'How does it START?',
+      options: [
+        {
+          label: 'A ferryman',
+          ops: [
+            { op: 'setFlag', flag: 'flag:tin_story_open_ferry' },
+            { op: 'say', speaker: 'ALDOUS WINK', text: '"A ferryman who could read the weather but not his own face." Ooh. Go on.' },
+          ],
+        },
+        {
+          label: 'A hopeful rooster',
+          ops: [
+            { op: 'setFlag', flag: 'flag:tin_story_open_rooster' },
+            { op: 'say', speaker: 'ALDOUS WINK', text: '"A rooster who believed in morning when nobody else did." Brave bird. Go on.' },
+          ],
+        },
+        {
+          label: 'A huge cheese-bun',
+          ops: [
+            { op: 'setFlag', flag: 'flag:tin_story_open_bun' },
+            { op: 'say', speaker: 'ALDOUS WINK', text: '"Once, there was an enormous cheese-bun..." ...I wasn\'t ready for that. Go on.' },
+          ],
+        },
+        {
+          label: 'Paul got lost',
+          if_flag: 'flag:name_is_paul',
+          ops: [
+            { op: 'setFlag', flag: 'flag:tin_story_open_paul' },
+            { op: 'say', speaker: 'ALDOUS WINK', text: '"{name} got lost. On purpose." Ha! The best way. Go on.' },
+          ],
+        },
+      ],
+    },
+    { op: 'setFlag', flag: 'flag:tin_story_has_open', if_flag: 'flag:tin_story_open_ferry' },
+    { op: 'setFlag', flag: 'flag:tin_story_has_open', if_flag: 'flag:tin_story_open_rooster' },
+    { op: 'setFlag', flag: 'flag:tin_story_has_open', if_flag: 'flag:tin_story_open_bun' },
+    { op: 'setFlag', flag: 'flag:tin_story_has_open', if_flag: 'flag:tin_story_open_paul' },
+    { op: 'run', ref: 'script.wink_story_mid', if_flag: 'flag:tin_story_has_open' },
+    { op: 'say', unless_flag: 'flag:tin_story_has_end', speaker: 'ALDOUS WINK', text: "Stories keep. Come back when it's got an end on it — he's not going anywhere. Not without someone to wind him." },
+  ],
+  'script.wink_story_mid': [
+    {
+      op: 'choice',
+      speaker: 'ALDOUS WINK',
+      prompt: 'And what goes WRONG?',
+      options: [
+        {
+          label: 'The fog came in',
+          ops: [
+            { op: 'setFlag', flag: 'flag:tin_story_mid_fog' },
+            { op: 'say', speaker: 'ALDOUS WINK', text: '"One night the fog came in and the bell went quiet." ...Hm. Yes. That does happen.' },
+          ],
+        },
+        {
+          label: 'A brass joke-machine',
+          ops: [
+            { op: 'setFlag', flag: 'flag:tin_story_mid_machine' },
+            { op: 'say', speaker: 'ALDOUS WINK', text: '"A brass machine told them a joke, and they laughed till the sea went out." Dangerous, that. Lovely, but dangerous.' },
+          ],
+        },
+        {
+          label: 'An old stranger',
+          ops: [
+            { op: 'setFlag', flag: 'flag:tin_story_mid_stranger' },
+            { op: 'say', speaker: 'ALDOUS WINK', text: '"An old stranger pretended not to help them — and helped them all the way." I know the type. Wears a hat, I expect.' },
+          ],
+        },
+        {
+          label: 'Nothing. For years.',
+          ops: [
+            { op: 'setFlag', flag: 'flag:tin_story_mid_nothing' },
+            { op: 'say', speaker: 'ALDOUS WINK', text: '"Nothing happened. For eleven years." ...Bold. True, too, for some of us.' },
+          ],
+        },
+      ],
+    },
+    { op: 'setFlag', flag: 'flag:tin_story_has_mid', if_flag: 'flag:tin_story_mid_fog' },
+    { op: 'setFlag', flag: 'flag:tin_story_has_mid', if_flag: 'flag:tin_story_mid_machine' },
+    { op: 'setFlag', flag: 'flag:tin_story_has_mid', if_flag: 'flag:tin_story_mid_stranger' },
+    { op: 'setFlag', flag: 'flag:tin_story_has_mid', if_flag: 'flag:tin_story_mid_nothing' },
+    { op: 'run', ref: 'script.wink_story_end', if_flag: 'flag:tin_story_has_mid' },
+  ],
+  'script.wink_story_end': [
+    {
+      op: 'choice',
+      speaker: 'ALDOUS WINK',
+      prompt: 'And how does it END?',
+      options: [
+        { label: 'They came home', ops: [{ op: 'run', ref: 'script.wink_end_home' }] },
+        { label: 'A light kept on', ops: [{ op: 'run', ref: 'script.wink_end_light' }] },
+        { label: 'Still wandering', ops: [{ op: 'run', ref: 'script.wink_end_wander' }] },
+        {
+          label: 'A glass case',
+          ops: [
+            { op: 'setFlag', flag: 'flag:tin_story_end_glass' },
+            { op: 'say', speaker: 'ALDOUS WINK', text: '"...and it was sealed in a glass case, mint, and never walked again."' },
+            { op: 'emote', actor: 'wink', emote: 'sweat' },
+            { op: 'say', speaker: 'ALDOUS WINK', text: "Ooh. That's the auction ending. That's the one I'm trying to spare him." },
+            { op: 'say', speaker: 'ALDOUS WINK', text: "Beginnings are the hard part, and you've done those. Try the end again?" },
+          ],
+        },
+      ],
+    },
+    // The glass case is turned down — re-offer ONLY the good endings.
+    { op: 'run', ref: 'script.wink_story_end_again', if_flag: 'flag:tin_story_end_glass', unless_flag: 'flag:tin_story_has_end' },
+    { op: 'run', ref: 'script.wink_story_finale', if_flag: 'flag:tin_story_has_end' },
+  ],
+  'script.wink_story_end_again': [
+    {
+      op: 'choice',
+      speaker: 'ALDOUS WINK',
+      prompt: 'How does it END? (A kind one, this time.)',
+      options: [
+        { label: 'They came home', ops: [{ op: 'run', ref: 'script.wink_end_home' }] },
+        { label: 'A light kept on', ops: [{ op: 'run', ref: 'script.wink_end_light' }] },
+        { label: 'Still wandering', ops: [{ op: 'run', ref: 'script.wink_end_wander' }] },
+      ],
+    },
+  ],
+  'script.wink_end_home': [
+    { op: 'setFlag', flag: 'flag:tin_story_end_home' },
+    { op: 'setFlag', flag: 'flag:tin_story_has_end' },
+    { op: 'say', speaker: 'ALDOUS WINK', text: '"...and they came home, a bit late, and nobody minded." Ahh. That\'s the one everybody wants.' },
+  ],
+  'script.wink_end_light': [
+    { op: 'setFlag', flag: 'flag:tin_story_end_light' },
+    { op: 'setFlag', flag: 'flag:tin_story_has_end' },
+    { op: 'say', speaker: 'ALDOUS WINK', text: '"...and they never came back, but somebody kept the light on anyway."' },
+    { op: 'say', speaker: 'ALDOUS WINK', text: "That's a true one. Those cost the most." },
+  ],
+  'script.wink_end_wander': [
+    { op: 'setFlag', flag: 'flag:tin_story_end_wander' },
+    { op: 'setFlag', flag: 'flag:tin_story_has_end' },
+    { op: 'say', speaker: 'ALDOUS WINK', text: '"...and they\'re still wandering. But they\'re never lost." A story that won\'t sit down. I like it.' },
+  ],
+  // Wink tells it back (so you know it was heard), reacts, and hands him over.
+  'script.wink_story_finale': [
+    { op: 'say', speaker: 'ALDOUS WINK', text: "Right. Let me tell it back to you, so you know it's been heard." },
+    { op: 'narrate', if_flag: 'flag:tin_story_open_ferry', text: 'There was a ferryman who could read the weather but not his own face.' },
+    { op: 'narrate', if_flag: 'flag:tin_story_open_rooster', text: 'There was a rooster who believed in morning when nobody else did.' },
+    { op: 'narrate', if_flag: 'flag:tin_story_open_bun', text: 'Once, there was an enormous cheese-bun.' },
+    { op: 'narrate', if_flag: 'flag:tin_story_open_paul', text: '{name} got lost. On purpose.' },
+    { op: 'narrate', if_flag: 'flag:tin_story_mid_fog', text: 'One night the fog came in, and the bell went quiet.' },
+    { op: 'narrate', if_flag: 'flag:tin_story_mid_machine', text: 'A brass machine told them a joke, and they laughed till the sea went out.' },
+    { op: 'narrate', if_flag: 'flag:tin_story_mid_stranger', text: 'An old stranger pretended not to help them — and helped them all the way.' },
+    { op: 'narrate', if_flag: 'flag:tin_story_mid_nothing', text: 'Nothing happened. For eleven years.' },
+    { op: 'narrate', if_flag: 'flag:tin_story_end_home', text: 'And they came home, a bit late, and nobody minded.' },
+    { op: 'narrate', if_flag: 'flag:tin_story_end_light', text: 'And they never came back — but somebody kept the light on anyway.' },
+    { op: 'narrate', if_flag: 'flag:tin_story_end_wander', text: "And they're still wandering. But they're never lost." },
+    // A bun that waits eleven years and comes home: the one he can't take.
+    { op: 'run', ref: 'script.wink_react_bun', if_flag: 'flag:tin_story_open_bun' },
+    { op: 'say', unless_flag: 'flag:tin_story_special', speaker: 'ALDOUS WINK', text: "Bit lumpy in the middle. All the best ones are. He's yours." },
+    { op: 'run', ref: 'script.wink_handover' },
+  ],
+  'script.wink_react_bun': [
+    { op: 'run', ref: 'script.wink_react_bun_years', if_flag: 'flag:tin_story_mid_nothing' },
+  ],
+  'script.wink_react_bun_years': [
+    { op: 'emote', if_flag: 'flag:tin_story_end_home', actor: 'wink', emote: 'ellipsis' },
+    { op: 'say', if_flag: 'flag:tin_story_end_home', speaker: 'ALDOUS WINK', text: "...A bun that waited eleven years to come home. That's the saddest thing I've ever heard. Take it. I need a minute." },
+    { op: 'setFlag', if_flag: 'flag:tin_story_end_home', flag: 'flag:tin_story_special' },
+  ],
+  // The hand-over (story or purse). Every step guarded on the toy not yet held;
+  // `flag:has_tin_rower` is set LAST so the whole beat plays exactly once.
+  'script.wink_handover': [
+    { op: 'narrate', unless_flag: 'flag:has_tin_rower', text: 'Wink lifts the ferryman out of his case: a hand-long tin boat with lithographed waves on the hull, a blue-coated rower, a glass-bead bow-lamp and a brass key in the stern.' },
+    { op: 'narrate', unless_flag: 'flag:has_tin_rower', text: 'Painted along the side: SAME TIDE TOMORROW. Stamped underneath, small: MADE TO ORDER — T.' },
+    { op: 'giveItem', unless_flag: 'flag:has_tin_rower', item: 'tin_rower' },
+    { op: 'setFlag', unless_flag: 'flag:has_tin_rower', flag: 'flag:tin_rower_wound' },
+    { op: 'say', unless_flag: 'flag:has_tin_rower', text: 'Received the TIN ROWER!' },
+    { op: 'say', unless_flag: 'flag:has_tin_rower', speaker: 'ALDOUS WINK', text: "I've given him a wind already — hear him clicking? While he rows, the wild kin follow HIM instead of you. Half as many bother you." },
+    { op: 'say', unless_flag: 'flag:has_tin_rower', speaker: 'ALDOUS WINK', text: 'Want them back? ITEMS, KEY pocket, and hold his oars still. Use him again to wind him up.' },
+    { op: 'say', unless_flag: 'flag:has_tin_rower', speaker: 'ALDOUS WINK', text: "Wind him twice before bed. He rows better when someone's watching." },
+    { op: 'setFlag', unless_flag: 'flag:has_tin_rower', flag: 'flag:has_tin_rower' },
+  ],
+
+  // After the Tide Gleam, Reyl recognises the T. on the hull (once; 1 Lumen Drop).
+  // Spliced into Reyl's post-Gleam talk with `{ op: 'run', ref: 'script.reyl_tin_rower' }`
+  // — every step self-guards, so it is a silent no-op without the toy.
+  'script.reyl_tin_rower': [
+    { op: 'run', ref: 'script.reyl_tin_rower_seen', if_flag: 'flag:has_tin_rower', unless_flag: 'flag:reyl_tin_rower_seen' },
+  ],
+  'script.reyl_tin_rower_seen': [
+    { op: 'narrate', text: 'Reyl\'s eye falls on the tin ferryman clicking in your pack. He goes very still. He turns it over, and reads the stamp underneath.' },
+    { op: 'say', speaker: 'REYL WASH', text: "MADE TO ORDER — T. ...She said she'd a surprise coming. 'After the fog,' she said." },
+    { op: 'say', speaker: 'REYL WASH', text: "...No — you keep it. It's a traveller. It'd hate my mantelpiece. Here — something for the road, from both of us." },
+    { op: 'giveItem', item: 'lumen_drop' },
+    { op: 'say', text: 'Received a LUMEN DROP!' },
+    { op: 'setFlag', flag: 'flag:reyl_tin_rower_seen' },
+  ],
+
+  // ---------------------------------------------------------------------------
+  // R9 THE WORRY CLUB — five townsfolk frantic that {name} will never find the
+  // easter egg. Each is ONE NPC + ONE script, staged as a single flag chain
+  // (the andrew_egg if/unless pattern):
+  //   PRE    unless flag:chickenpig_caught               (worry + a REAL main-path tip)
+  //   CAUGHT if chickenpig_caught, unless q_south_wander_done  (relief)
+  //   AFTER  if flag:q_south_wander_done                 (all's right with the world)
+  // The gift is one-time on its own flag and keyed to the catch (not the stage),
+  // so a player who first visits AFTER still gets it. Before the Ember Gleam every
+  // tip points at Brisa or Andrew — never at the egg as an objective.
+  // ---------------------------------------------------------------------------
+  'script.worry_hester': [
+    // PRE
+    { op: 'emote', unless_flag: 'flag:chickenpig_caught', actor: 'worry_hester', emote: 'sweat' },
+    { op: 'say', unless_flag: 'flag:chickenpig_caught', speaker: 'HESTER', text: "Have you FOUND it, {name}? No? Oh, my nerves. You keep WANDERING. I've dropped four stitches over you. FOUR." },
+    { op: 'say', unless_flag: 'flag:chickenpig_caught', speaker: 'HESTER', text: "Don't mind me. Here — something useful, before I unravel: Andrew at the garden fence knows where everything is. Ask him WHERE NEXT." },
+    // CAUGHT
+    { op: 'emote', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:q_south_wander_done', actor: 'worry_hester', emote: 'heart' },
+    { op: 'say', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:q_south_wander_done', speaker: 'HESTER', text: "You FOUND it! Oh, the world's back on its hinges. I've knitted it a cosy. It's a rooster? ...It's a cosy now." },
+    // AFTER
+    { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'HESTER', text: 'Not lost, they tell me. WANDERING. On purpose. I\'ve had to sit down.' },
+    { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'HESTER', text: "...Everything's right with the world, {name}. I've put the needles away. I've even started a crossword." },
+    { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'HESTER', text: "Seven across: 'a light kept on for somebody.' Seven letters. ...Don't tell me. I'll get it." },
+    // The gift (once, on the catch).
+    { op: 'giveItem', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:worry_hester_gift', item: 'tallow_balm', count: 2 },
+    { op: 'say', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:worry_hester_gift', text: 'Hester presses 2 TALLOW BALMS on you, each in its own tiny knitted cosy.' },
+    { op: 'setFlag', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:worry_hester_gift', flag: 'flag:worry_hester_gift' },
+  ],
+  'script.worry_pim': [
+    // PRE
+    { op: 'emote', unless_flag: 'flag:chickenpig_caught', actor: 'worry_pim', emote: 'question' },
+    { op: 'say', unless_flag: 'flag:chickenpig_caught', speaker: 'PIM', text: 'Have you seen {name}? Walks like they\'re late for something they invented? Out here THREE DAYS, not finding the thing.' },
+    { op: 'say', unless_flag: 'flag:chickenpig_caught', speaker: 'PIM', text: "I've drawn arrows. Look — arrows! Every one points somewhere different. And they follow them BACKWARDS." },
+    { op: 'say', if_flag: 'flag:name_is_paul', unless_flag: 'flag:chickenpig_caught', speaker: 'PIM', text: 'And now there are TWO Pauls wandering this coast, and NEITHER of them has found it.' },
+    { op: 'say', unless_flag: 'gleam:ember', speaker: 'PIM', text: "If you're the lost sort too: Brisa Tallow at the Tinderwick Lumenary is where everybody starts. Or ask Andrew at the town fence — he's got all the arrows I haven't." },
+    { op: 'say', if_flag: 'gleam:ember', unless_flag: 'flag:chickenpig_caught', speaker: 'PIM', text: 'Tip, from a professional: keep to the lit dirt lane. The grass is only if you WANT it.' },
+    // CAUGHT
+    { op: 'emote', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:q_south_wander_done', actor: 'worry_pim', emote: 'alert' },
+    { op: 'say', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:q_south_wander_done', speaker: 'PIM', text: "They found it?! The rooster-pig?! ...I'm going to have to throw away a LOT of arrows." },
+    // AFTER
+    { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'PIM', text: 'I put the map down. Turns out the coast was here all along.' },
+    { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'PIM', text: "Everything is right with the world, and I've got nowhere to be. Do you know I'd never once looked at the sea? It's very big. Somebody should draw an arrow to it." },
+    // The gift (once, on the catch).
+    { op: 'giveItem', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:worry_pim_gift', item: 'glow_charge' },
+    { op: 'say', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:worry_pim_gift', text: 'Pim hands you a GLOW CHARGE wrapped in a map with no arrows on it at all.' },
+    { op: 'setFlag', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:worry_pim_gift', flag: 'flag:worry_pim_gift' },
+  ],
+  'script.worry_gilly': [
+    // PRE
+    { op: 'emote', unless_flag: 'flag:chickenpig_caught', actor: 'worry_gilly', emote: 'anger' },
+    { op: 'say', unless_flag: 'flag:chickenpig_caught', speaker: 'GILLY', text: "Seventeen times {name}'s gone past this rock. Seventeen. I've a tally. And NOT ONCE with an egg." },
+    { op: 'say', unless_flag: 'flag:chickenpig_caught', speaker: 'GILLY', text: "My sister Hester's knitting about it up in Tinderwick. I'm counting about it. We each fret our own way." },
+    { op: 'say', unless_flag: 'gleam:ember', speaker: 'GILLY', text: 'Now listen. Your first lamp-test is Brisa Tallow, back in Tinderwick — and Andrew at the town fence will tell you the rest. Eighteen.' },
+    { op: 'say', if_flag: 'gleam:ember', unless_flag: 'flag:chickenpig_caught', speaker: 'GILLY', text: "Sit by the cockler's fire — it mends you, kin and all. And if there's a Lumen Drop in your pack, feed it to a kin. ITEMS. Eighteen." },
+    // CAUGHT
+    { op: 'emote', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:q_south_wander_done', actor: 'worry_gilly', emote: 'heart' },
+    { op: 'say', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:q_south_wander_done', speaker: 'GILLY', text: "I've thrown the tally in the sea. I feel twenty years younger. Sixteen, at least." },
+    // AFTER
+    { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'GILLY', text: 'Somebody says you went up the hill and came back with a CUP. A cup! Everything is right with the world.' },
+    { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'GILLY', text: "I've started a new tally. Times I've been happy today: four. ...Five." },
+    // The gift (once, on the catch).
+    { op: 'giveItem', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:worry_gilly_gift', item: 'warm_balm' },
+    { op: 'say', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:worry_gilly_gift', text: 'Gilly gives you a WARM BALM. The lid has a tally scratched on it, crossed out.' },
+    { op: 'setFlag', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:worry_gilly_gift', flag: 'flag:worry_gilly_gift' },
+  ],
+  // Nettie is placed on Lightkeeper's Point (pearlmoor_point, NPC id
+  // `worry_nettie`) by the Old Light build; her tip follows the Tide loop.
+  'script.worry_nettie': [
+    // PRE
+    { op: 'emote', unless_flag: 'flag:chickenpig_caught', actor: 'worry_nettie', emote: 'sweat' },
+    { op: 'say', unless_flag: 'flag:chickenpig_caught', speaker: 'NETTIE', text: '{name} went past the breakwater. Then past it AGAIN. Then — I SAW this — waved at the dark lamp and walked off whistling.' },
+    { op: 'say', unless_flag: 'flag:chickenpig_caught', speaker: 'NETTIE', text: "It's RIGHT THERE and they're WHISTLING! I've walked a groove in this headland." },
+    { op: 'say', unless_flag: 'gleam:ember', speaker: 'NETTIE', text: "And you're a long way out for somebody with no Gleam. Brisa Tallow, back in Tinderwick — she's first. Andrew at the fence there will set you straight." },
+    { op: 'run', ref: 'script.worry_nettie_tip', if_flag: 'gleam:ember', unless_flag: 'flag:chickenpig_caught' },
+    // CAUGHT
+    { op: 'emote', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:q_south_wander_done', actor: 'worry_nettie', emote: 'ellipsis' },
+    { op: 'say', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:q_south_wander_done', speaker: 'NETTIE', text: "I've stopped pacing. Look. Standing still. ...I don't know what to do with my feet." },
+    // AFTER
+    { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'NETTIE', text: 'Word is you came back through the wood singing. The old man gave me a feather on the strength of it. I\'m keeping it in a jar.' },
+    { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'NETTIE', text: "Everything's right with the world, love. Go on — go and be lost on purpose." },
+    // The gift (once, on the catch).
+    { op: 'giveItem', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:worry_nettie_gift', item: 'warm_balm' },
+    { op: 'say', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:worry_nettie_gift', text: 'Nettie gives you a WARM BALM, and finally sits down on the bench.' },
+    { op: 'setFlag', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:worry_nettie_gift', flag: 'flag:worry_nettie_gift' },
+  ],
+  // Nettie's tip, stage-aware along the Tide loop (one line plays).
+  'script.worry_nettie_tip': [
+    { op: 'say', unless_flag: 'flag:q_south_bell', speaker: 'NETTIE', text: "Useful thing, since you're here: Reyl Wash at the Lumenary first. He'll send you up that tower. He sends EVERYBODY up that tower." },
+    { op: 'say', if_flag: 'flag:q_south_bell', unless_flag: 'flag:q_south_jest_done', speaker: 'NETTIE', text: "That tower's got a tea-urn halfway up, if you're flagging. Don't let the stove tell you the one about the ladder." },
+    { op: 'say', if_flag: 'flag:q_south_jest_done', unless_flag: 'gleam:tide', speaker: 'NETTIE', text: 'Floats to the netmender, rope to the bell, then Reyl at his altar. Rest at the inn before that last one, love.' },
+    { op: 'say', if_flag: 'gleam:tide', speaker: 'NETTIE', text: "East out of Pearlmoor on the fen road, next. Your Tidecall walks the deep channels now." },
+  ],
+  'script.worry_constance': [
+    // PRE
+    { op: 'emote', unless_flag: 'flag:chickenpig_caught', actor: 'worry_constance', emote: 'question' },
+    { op: 'say', unless_flag: 'flag:chickenpig_caught', speaker: 'CONSTANCE', text: "I'm keeping watch for {name}. ...Through the wrong end, yes. They look very far away. Which is ACCURATE." },
+    { op: 'say', unless_flag: 'flag:chickenpig_caught', speaker: 'CONSTANCE', text: "Never found it. Never even LOOKED like finding it. I've had the glass up so long I've a ring round my eye." },
+    { op: 'say', unless_flag: 'gleam:ember', speaker: 'CONSTANCE', text: "If you're new on the road: Brisa Tallow at the Tinderwick Lumenary gives the first Gleam. Andrew on the Tinderwick fence answers WHERE NEXT for anybody." },
+    { op: 'say', if_flag: 'gleam:ember', unless_flag: 'flag:chickenpig_caught', speaker: 'CONSTANCE', text: "If you're turned around, the Waykeeper's fingerpost never lies. Read all its arms. I'd read it myself, but it's very small from here." },
+    // CAUGHT
+    { op: 'emote', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:q_south_wander_done', actor: 'worry_constance', emote: 'alert' },
+    { op: 'say', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:q_south_wander_done', speaker: 'CONSTANCE', text: "I turned the glass round! They're ENORMOUS! They're FINE!" },
+    // AFTER
+    { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'CONSTANCE', text: "Put the glass away. Some people you don't need to watch. You just need to leave the lamp on." },
+    { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'CONSTANCE', text: "...I've left one in my window. Not for anyone in particular. Habit. Everything's right with the world." },
+    // The gift (once, on the catch).
+    { op: 'giveItem', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:worry_constance_gift', item: 'tallow_balm' },
+    { op: 'say', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:worry_constance_gift', text: 'Constance hands you a TALLOW BALM — the right way round, this time.' },
+    { op: 'setFlag', if_flag: 'flag:chickenpig_caught', unless_flag: 'flag:worry_constance_gift', flag: 'flag:worry_constance_gift' },
+  ],
+
   // --- Wayfarer's kits + the open counters ------------------------------------
   // Each town keeper hands a starter bundle ONCE (the kit NPC swaps for the
   // trading keeper via flags), and thereafter keeps a live counter: the keeper's
@@ -4401,10 +4795,11 @@ export const SCRIPTS: ScriptRegistry = {
     },
 
     // --- The eight Gleams, in journey order. ----------------------------------
-    {
-      op: 'say', if_flag: 'gleam:ember', unless_flag: 'gleam:tide', speaker: 'ANDREW',
-      text: 'South now. Down the coast, over the tidal flats, and keep going until the road runs out of land — that\'s Pearlmoor Quay. Reyl Wash keeps the Tide there.',
-    },
+    // Ember → Tide is five steps (R9: Reyl's hook, the Old Light, the floats, the
+    // bell, the bond-test) — run as a nested precedence chain so EXACTLY one line
+    // plays even for an old save holding a later flag without an earlier one
+    // (e.g. the rope from before the tower existed).
+    { op: 'run', ref: 'script.andrew_hint_tide', if_flag: 'gleam:ember', unless_flag: 'gleam:tide' },
     {
       op: 'say', if_flag: 'gleam:tide', unless_flag: 'gleam:verdant', speaker: 'ANDREW',
       text: 'East out of Pearlmoor on the fen road. Tidecall will walk you over the deep channels that stopped you before. Lowleaf Hollow\'s at the far end — ask for Sable Quill.',
@@ -4442,6 +4837,40 @@ export const SCRIPTS: ScriptRegistry = {
     {
       op: 'say', if_flag: 'flag:dawn', speaker: 'ANDREW',
       text: 'Next? Nothing. Nothing at all, {name}. Look UP. Then walk down to Dawnstead and see what the valley looks like with the morning on it — I\'ll be along presently, once I\'ve finished looking.',
+    },
+  ],
+
+  // The Ember → Tide leg of `script.andrew_hint`, latest stage first: each
+  // `run` only fires while the stage above it isn't held, so one line plays.
+  'script.andrew_hint_tide': [
+    {
+      op: 'say', if_flag: 'flag:q_south_bell_rung', speaker: 'ANDREW',
+      text: 'Bell\'s rung — the whole quay heard it. Reyl\'s waiting at his altar in the Lumenary now. Rest at the inn first, and bring a Verdant kin if you\'ve one. The tide hates a green thing.',
+    },
+    { op: 'run', ref: 'script.andrew_hint_tide_rope', unless_flag: 'flag:q_south_bell_rung' },
+  ],
+  'script.andrew_hint_tide_rope': [
+    {
+      op: 'say', if_flag: 'flag:q_south_has_rope', speaker: 'ANDREW',
+      text: 'Rope in hand? Then out along the breakwater to the moor-bell, right to the end, and ring it. Loud as you like. It\'s been quiet long enough.',
+    },
+    { op: 'run', ref: 'script.andrew_hint_tide_floats', unless_flag: 'flag:q_south_has_rope' },
+  ],
+  'script.andrew_hint_tide_floats': [
+    {
+      op: 'say', if_flag: 'flag:q_south_jest_done', speaker: 'ANDREW',
+      text: 'Got the netmender\'s floats back off that daft machine? Take them to her on the quay. She\'s had a rope put by for years, waiting on a steady pair of hands.',
+    },
+    { op: 'run', ref: 'script.andrew_hint_tide_tower', unless_flag: 'flag:q_south_jest_done' },
+  ],
+  'script.andrew_hint_tide_tower': [
+    {
+      op: 'say', if_flag: 'flag:q_south_bell', speaker: 'ANDREW',
+      text: 'The Old Light — out on the Point past the quay, the one cackling at the gulls. Climb it. All the way up. There\'s tea halfway, if you\'re flagging.',
+    },
+    {
+      op: 'say', unless_flag: 'flag:q_south_bell', speaker: 'ANDREW',
+      text: 'South now. Down the coast, over the tidal flats, till the road runs out of land — that\'s Pearlmoor Quay. See Reyl Wash at the Lumenary first. He keeps the Tide, and he\'ll have a job for you.',
     },
   ],
 
