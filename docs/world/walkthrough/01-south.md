@@ -122,7 +122,7 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
       **old lamplighter** near the north boundary (`script.give_wick` →
       `flag:has_beacon_wick`). The player returns at ~lv 7–8, not 5.
    9. **Climb the beacon.** The foot door answers the key; floors I–II are held by
-      wick-tender **sight trainers** (Tansy lv7, Cole lv7/8); the spiral stairs land in
+      wick-tender **sight trainers** (Tansy lv6, Cole lv6/7 — eased 2026-10, with Brisa's opener 7→6); the spiral stairs land in
       the **lantern room**.
    10. **Earn the Ember Gleam at the lantern** — `script.beacon_battle`: Brisa's
        bond-test (ace 10, now a fair fight), then the great lamp blooms and the

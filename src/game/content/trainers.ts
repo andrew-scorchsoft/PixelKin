@@ -17,7 +17,7 @@ export const TRAINERS: TrainerRegistry = {
     name: 'BRISA TALLOW',
     title: 'Lampwarden',
     party: [
-      { species_id: 10, level: 7 }, // Tallowpup — Ember
+      { species_id: 10, level: 6 }, // Tallowpup — Ember (eased 2026-10 from 7)
       { species_id: 18, level: 10 }, // Hearthkit — Ember (ace ~10 per walkthrough/01-south)
     ],
     intro_ref: 'trainer.lampwarden_tinderwick.intro',
@@ -36,9 +36,9 @@ export const TRAINERS: TrainerRegistry = {
     name: 'TANSY',
     title: 'Wick-tender',
     party: [
-      { species_id: 16, level: 7 }, // Wickmoth — Ember
+      { species_id: 16, level: 6 }, // Wickmoth — Ember
     ],
-    payout: 140, // keeper 20 × ace 7
+    payout: 120, // keeper 20 × ace 6
     music: 'battle-emberfall',
   },
   beacon_keeper_b: {
@@ -46,10 +46,10 @@ export const TRAINERS: TrainerRegistry = {
     name: 'COLE',
     title: 'Wick-tender',
     party: [
-      { species_id: 10, level: 7 }, // Tallowpup — Ember
-      { species_id: 16, level: 8 }, // Wickmoth — Ember
+      { species_id: 10, level: 6 }, // Tallowpup — Ember
+      { species_id: 16, level: 7 }, // Wickmoth — Ember
     ],
-    payout: 160, // keeper 20 × ace 8
+    payout: 140, // keeper 20 × ace 7
     music: 'battle-emberfall',
   },
 

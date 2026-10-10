@@ -183,6 +183,11 @@ Engine formulas (`KinInstance.ts`, `BattleScene.ts`):
   first-slice /60, which left the curve unreachable (−18 levels by the
   climax on any sane battle count)*.
 - **Trainer battles pay ×1.5 XP** (the genre's raised-kin bonus).
+- **First-hours boost (2026-10):** a defeated kin at **lv ≤ 8 yields ×1.5, lv 9–12 ×1.25**
+  (`BattleScene.earlyExpBoost` ↔ `earlyExpBoost` in `progression.mjs`). Keyed on the foe's
+  level, so it fades out by itself before the East. Added after a first-timer kept dying on
+  the coast road under-levelled; the Reyl checkpoint's rec moved 12 → 14 (the walkthrough's
+  bond-test band) to absorb it.
 - **A catch pays the same XP as a knock-out** — collecting is the game's
   heart and must keep you *on* the curve, not punish you off it.
 - XP goes to the **active battler only**. The model's `leadShare` schedule
@@ -194,9 +199,9 @@ Engine formulas (`KinInstance.ts`, `BattleScene.ts`):
 
 | Checkpoint | rec | ace | rusher | mainline | explorer |
 |---|--:|--:|--:|--:|--:|
-| Ember Gleam (Brisa) | 10 | 10 | L11 | L11 | L13 |
-| Tide Gleam (Reyl) | 12 | 16 | L16 | L16 | L18 |
-| Verdant Gleam (Sable) | 18 | 22 | L22 | L21 | L24 |
+| Ember Gleam (Brisa) | 10 | 10 | L12 | L12 | L14 |
+| Tide Gleam (Reyl) | 14 | 16 | L17 | L17 | L19 |
+| Verdant Gleam (Sable) | 18 | 22 | L22 | L22 | L25 |
 | Stone Gleam (Otho) — *the wall* | 26* | 28 | L28 | L27 | L31 |
 | Storm Gleam (Mira) | 28 | 34 | L32 | L32 | L35 |
 | Frost Gleam (Ysolde) | 36 | 40 | L38 | L37 | L41 |

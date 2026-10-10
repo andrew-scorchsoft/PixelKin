@@ -43,7 +43,9 @@ const levelForExp = (e) => Math.min(100, Math.floor(Math.cbrt(Math.max(1, e))));
  *  climax); /20 with the trainer bonus + catch XP lands every checkpoint. */
 const YIELD_DIVISOR = 20;
 const TRAINER_XP_MULT = 1.5; // the genre's trainer-battle bonus
-const expYield = (bst, level) => Math.max(1, Math.floor((bst * level) / YIELD_DIVISOR));
+// The first-hours XP boost — mirrors BattleScene.earlyExpBoost (keep in step).
+const earlyExpBoost = (level) => (level <= 8 ? 1.5 : level <= 12 ? 1.25 : 1);
+const expYield = (bst, level) => Math.max(1, Math.floor(((bst * level) / YIELD_DIVISOR) * earlyExpBoost(level)));
 
 // ---------------------------------------------------------------------------
 // Economy constants (mirror src/game/content/economy.ts + items.ts)
@@ -144,9 +146,9 @@ const JOURNEY = [
     wild: { areas: ['dimglass_coast'], band: [3, 5], fights: { rusher: 4, mainline: 9, explorer: 14 } },
     trainers: [
       T('Wren (A2)', 'rival', [K(5, 8), K(6, 26)]),
-      T('Tansy', 'keeper', [K(7, 16)]),
-      T('Cole', 'keeper', [K(7, 10), K(8, 16)]),
-      T('Brisa Tallow', 'warden', [K(7, 10), K(10, 18)]),
+      T('Tansy', 'keeper', [K(6, 16)]),
+      T('Cole', 'keeper', [K(6, 10), K(7, 16)]),
+      T('Brisa Tallow', 'warden', [K(6, 10), K(10, 18)]),
     ],
     income: { quests: 150, valuables: 250, finds: 150 }, // beacon errand thanks + a wax cake cache + the coast wick-purse
     spend: { tallow_balm: 2, glow_charge: 2 },
@@ -177,7 +179,9 @@ const JOURNEY = [
     ],
     income: { quests: 400, valuables: 250, finds: 250 }, // bell-rope quest + Round leg + the shore wick-purse
     spend: { warm_balm: 1, beacon_charge: 2, chart_mid: 1 },
-    checkpoint: { name: 'Tide Gleam (Reyl)', rec: 12, ace: 16 },
+    // rec 14 (not the town's 12): the walkthrough's bond-test band is ~13–14, and the
+    // 2026-10 early-XP boost lifts the first hours onto it deliberately.
+    checkpoint: { name: 'Tide Gleam (Reyl)', rec: 14, ace: 16 },
   },
 
   // ---- EAST ----------------------------------------------------------------
@@ -399,8 +403,8 @@ const JOURNEY = [
 // ---------------------------------------------------------------------------
 const BUILT_PAYOUTS = {
   lampwarden_tinderwick: ['warden', 10, 600],
-  beacon_keeper_a: ['keeper', 7, 140],
-  beacon_keeper_b: ['keeper', 8, 160],
+  beacon_keeper_a: ['keeper', 6, 120],
+  beacon_keeper_b: ['keeper', 7, 140],
   wren_dimglass: ['rival', 6, 144],
   flats_wayfarer_a: ['route', 9, 144],
   fen_wader_a: ['route', 17, 272],

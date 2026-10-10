@@ -207,7 +207,7 @@ go digging on every task.
   = class rate × ace (route 16 / keeper 20 / rival 24 /
   warden 60 / Còr 120); blackout keeps a 10% wick tithe and wakes you at your **last rest point**
   (not the start — see the respawn gotcha); XP yield is `bst·level/20`,
-  ×1.5 vs trainers, **catches pay like knock-outs**. Design + per-region battle/earnings
+  ×1.5 vs trainers, **catches pay like knock-outs**, and a **first-hours boost** (foe lv ≤8 ×1.5, 9–12 ×1.25 — `BattleScene.earlyExpBoost`, mirrored in the model). Design + per-region battle/earnings
   budget: `docs/mechanics/10-economy.md`; executable model: `tools/balance/progression.mjs`.
 - **Catching = one vesperlamp + charges (2026-06, BUILT):** the vesperlamp is a key
   item (plain throw free, ×1.0); **charges** (`category:'charge'`, `catch_bonus`) are
