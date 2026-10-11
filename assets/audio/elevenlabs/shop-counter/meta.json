@@ -1,0 +1,14 @@
+{
+ "id": "shop-counter",
+ "kind": "loop",
+ "where": "Every shop \u2014 the Tinderwick General Store, the Pearlmoor Chandlery, the Galehigh Kite-Maker's and every counter after",
+ "mood": "The Counter Bell \u2014 a bouncy little shop tune with a doorbell for a hook; browse as long as you like.",
+ "duration": 74.762,
+ "loop_start": 4.458,
+ "seam": 0.098,
+ "bpm_est": 117.5,
+ "song_id": "gPiw0ZpHrUgLyUbRUIZ3",
+ "raw_ms": 70400,
+ "motif": null,
+ "lufs": -16.4
+}

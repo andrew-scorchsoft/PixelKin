@@ -1,0 +1,96 @@
+{
+ "id": "inn-rest",
+ "kind": "loop",
+ "where": "Every inn and rest point — the Vesper Crossroads Inn, the Pearlmoor Quayside Inn, the Lowleaf Guest-bower, Galehigh's Steady Gust, the Pale Vault's Held Flame and Nightreach's Long Watch",
+ "mood": "Rest a while — a fire's glow, a full kettle and a warm bed; the hometown tune settled into a contented waltz.",
+ "bpm": 90,
+ "beats_per_bar": 3,
+ "motif": {
+  "strength": "medium"
+ },
+ "_note": "Matches the classic: 90 BPM, 3/4, F major, AABA; the Vesper lift-and-settle on a low flute. Motif medium shares the hometown tune's DNA (and its ~90 BPM grid). Contrast tinderwick-b (6/8 A-minor homesick lullaby): this is major, settled, contented. Small room: harp, low strings, flute, music box.",
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "90 BPM",
+  "F major",
+  "gentle 3/4 waltz time",
+  "soft low flute singing a warm contented melody",
+  "gentle harp arpeggios",
+  "warm low string bed",
+  "a sleepy music-box glint at the phrase ends",
+  "soft round bass on the downbeats",
+  "cosy inn by the fire at night, safe and welcome, sleep sound, close and intimate with a short warm room reverb",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "fade out",
+  "ritardando",
+  "ending",
+  "drums",
+  "electric guitar",
+  "hall reverb",
+  "minor key",
+  "homesick",
+  "ambient drone",
+  "minimalist",
+  "upbeat"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 3,
+   "text": "{coming in from the road: a soft harp arpeggio rolls warmly, a music-box glint, and the low flute's first lifting notes settle straight into the theme}",
+   "styles": [
+    "warm welcoming opening",
+    "fireside"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the contented waltz on low flute in F major: a hopeful lift that rises a step past home, then settles gently back; harp and strings glowing underneath}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "contented"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the same melody again, the strings warmer and a soft harp counter-line weaving under the flute, like the kettle coming to the boil}",
+   "styles": [
+    "harp counter-melody",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a gentle rise into B-flat major, the flute higher and kinder, a moment of warm reminiscence by the fire, then it eases back home}",
+   "styles": [
+    "B-flat major",
+    "warm reminiscence",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the waltz returns in F major, calm and settled; the last bar sways straight back into the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

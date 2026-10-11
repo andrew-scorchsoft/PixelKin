@@ -1,0 +1,55 @@
+{
+  "title": "Inn - Rest a While",
+  "_note": "Game-wide INN / rest-point interior cue. snes register, small room: 5 voices, no drums. 90 BPM, 3/4, F major - settled and contented (contrast tinderwick-b's homesick 6/8 A-minor lullaby). The low FLUTE sings the Vesper contour as a slow waltz: C4-F4-G4 lift (overshoot) then A4-G4-F4 settle home in bars 1-2. Form AABA, 32 bars (64s): A home, A' turns to C7, B rises warmer through Bb and Am, A'' borrows one minor-iv sigh (Bbm) before the fire settles; last bar C7 leads back. Pluck = soft harp arpeggios; strings = warm low bed; bell = a sleepy music-box glint at phrase ends; tri_bass root then fifth.",
+  "era": "snes",
+  "tempo": 90,
+  "time_signature": [
+    3,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "F major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "flute",
+      "octave": 4,
+      "gain": 0.95,
+      "_note": "Low flute melody carrying the Vesper lift-and-settle.",
+      "notes": "C4q F4q G4q | A4h G4e F4e | D4q. F4e Bb4q | A4h G4q | C4q F4q G4q | A4q. Bb4e A4q | G4q F4q D4q | F4h.  | C4q F4q G4q | A4h G4e F4e | D4q. F4e Bb4q | A4h G4q | C4q F4q G4q | A4q. Bb4e A4q | Bb4q A4q G4q | E4h G4q | D5h C5q | C5h A4q | Bb4q A4q G4q | G4h.  | D5h C5q | C5q. Bb4e A4q | Bb4q A4q G4q | E4h C4q | C4q F4q G4q | A4h G4e F4e | D4q. F4e Bb4q | A4h G4q | C4q F4q G4q | Ab4q. Bb4e Ab4q | G4q F4q A4q | G4h. "
+    },
+    {
+      "name": "pad",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.27,
+      "_note": "Warm low strings, one chord per bar.",
+      "notes": "F3+A3+C4h. | D3+F3+A3h. | D3+F3+Bb3h. | E3+G3+C4h. | F3+A3+C4h. | D3+F3+A3h. | D3+F3+Bb3h. | F3+A3+C4h. | F3+A3+C4h. | D3+F3+A3h. | D3+F3+Bb3h. | E3+G3+C4h. | F3+A3+C4h. | D3+F3+A3h. | D3+G3+Bb3h. | E3+G3+Bb3h. | D3+F3+Bb3h. | F3+A3+C4h. | D3+G3+Bb3h. | E3+G3+C4h. | D3+F3+Bb3h. | E3+A3+C4h. | D3+G3+Bb3h. | E3+G3+Bb3h. | F3+A3+C4h. | D3+F3+A3h. | D3+F3+Bb3h. | E3+G3+C4h. | F3+A3+C4h. | Db3+F3+Bb3h. | F3+A3+C4h. | E3+G3+Bb3h."
+    },
+    {
+      "name": "harmony",
+      "voice": "pluck",
+      "octave": 4,
+      "gain": 0.45,
+      "_note": "Soft harp arpeggio, six eighths per bar.",
+      "notes": "F3e C4e F4e A4e F4e C4e | D3e A3e D4e F4e D4e A3e | Bb2e F3e Bb3e D4e Bb3e F3e | C3e G3e C4e E4e C4e G3e | F3e C4e F4e A4e F4e C4e | D3e A3e D4e F4e D4e A3e | Bb2e F3e Bb3e D4e Bb3e F3e | F3e C4e F4e A4e F4e C4e | F3e C4e F4e A4e F4e C4e | D3e A3e D4e F4e D4e A3e | Bb2e F3e Bb3e D4e Bb3e F3e | C3e G3e C4e E4e C4e G3e | F3e C4e F4e A4e F4e C4e | D3e A3e D4e F4e D4e A3e | G2e D3e G3e Bb3e G3e D3e | C3e G3e Bb3e E4e Bb3e G3e | Bb2e F3e Bb3e D4e Bb3e F3e | A2e F3e A3e C4e A3e F3e | G2e D3e G3e Bb3e G3e D3e | C3e G3e C4e E4e C4e G3e | Bb2e F3e Bb3e D4e Bb3e F3e | A2e E3e A3e C4e A3e E3e | G2e D3e G3e Bb3e G3e D3e | C3e G3e Bb3e E4e Bb3e G3e | F3e C4e F4e A4e F4e C4e | D3e A3e D4e F4e D4e A3e | Bb2e F3e Bb3e D4e Bb3e F3e | C3e G3e C4e E4e C4e G3e | F3e C4e F4e A4e F4e C4e | Bb2e F3e Bb3e Db4e Bb3e F3e | F3e C4e F4e A4e F4e C4e | C3e G3e Bb3e E4e Bb3e G3e"
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.3,
+      "_note": "Sleepy music-box glint at each 4-bar phrase end.",
+      "notes": "rh. | rh. | rh. | rh G5q | rh. | rh. | rh. | rq A5q F5q | rh. | rh. | rh. | rh G5q | rh. | rh. | rh. | rq A5q F5q | rh. | rh. | rh. | rh G5q | rh. | rh. | rh. | rq A5q F5q | rh. | rh. | rh. | rh G5q | rh. | rh. | rh. | rq E5q C5q"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.85,
+      "_note": "Waltz-gentle: root (half) then fifth (quarter).",
+      "notes": "F2h C3q | D2h A2q | Bb2h F2q | C3h G2q | F2h C3q | D2h A2q | Bb2h F2q | F2h C3q | F2h C3q | D2h A2q | Bb2h F2q | C3h G2q | F2h C3q | D2h A2q | G2h D3q | C3h G2q | Bb2h F2q | A2h C3q | G2h D3q | C3h G2q | Bb2h F2q | A2h E3q | G2h D3q | C3h G2q | F2h C3q | D2h A2q | Bb2h F2q | C3h G2q | F2h C3q | Bb2h F2q | F2h C3q | C3h G2q"
+    }
+  ]
+}

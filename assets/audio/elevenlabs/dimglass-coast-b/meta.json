@@ -1,0 +1,17 @@
+{
+ "id": "dimglass-coast-b",
+ "kind": "loop",
+ "where": "Wrackline Path and Lanternfall Road \u2014 the coastal road between Pearlmoor and the Vesper Crossroads, either side of the Sounding Cave",
+ "mood": "Salt wind, last light \u2014 the coast road's pensive sibling: a longer, lonelier walk at dusk with the sea going dark beside you.",
+ "duration": 72.609,
+ "loop_start": 0.0,
+ "seam": 0.224,
+ "bpm_est": 112.3,
+ "song_id": "ZbNVkF0a7LCjeja6UmtU",
+ "raw_ms": 77244,
+ "motif": null,
+ "lufs": -15.5,
+ "edits": [
+  "intro dropped: opens on the theme"
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "id": "inn-rest",
+ "kind": "loop",
+ "where": "Every inn and rest point \u2014 the Vesper Crossroads Inn, the Pearlmoor Quayside Inn, the Lowleaf Guest-bower, Galehigh's Steady Gust, the Pale Vault's Held Flame and Nightreach's Long Watch",
+ "mood": "Rest a while \u2014 a fire's glow, a full kettle and a warm bed; the hometown tune settled into a contented waltz.",
+ "duration": 71.941,
+ "loop_start": 8.382,
+ "seam": 0.173,
+ "bpm_est": 89.1,
+ "song_id": "fEKVNncO3mCAz3Z1VvKV",
+ "raw_ms": 65500,
+ "motif": "medium",
+ "lufs": -16.9
+}
