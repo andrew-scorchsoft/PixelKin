@@ -67,7 +67,7 @@ unchanged), `01-south.md`.
 
 | Area | map id(s) | Status | Builder |
 |------|-----------|--------|---------|
-| Saltreach Fen I | `saltreach_fen_i` | ✅ | `build_saltreach_fen_i.py` |
+| Saltreach Fen I | `saltreach_fen_i` | ✅ recomposed 2026-10 (stilt hut, Staithe line, eel-wife) | `build_saltreach_fen_i.py` |
 | Saltreach Fen II (+ E1 reeds) | `saltreach_fen_ii` | ✅ | `build_saltreach_fen_ii.py` |
 | Sunkbell Shallows (Tidecall spur) | `sunkbell_shallows` | ✅ | `build_sunkbell.py` |
 | Lowleaf Hollow (Verdant · Sable · Glimmerstep) | `lowleaf_hollow` + lumenary/bower | ✅ | `build_lowleaf*.py` |
@@ -80,6 +80,8 @@ Festivals: Glowmoss Bloom, **Lamp-down vigil**. Arcs delivered: A3 (Wren shaken)
 (`met_hollowing` + Còr foreshadow), E. Earned loops: The Tended Bed (#3), **The Descent
 Vigil (#4)**. Quests: E1 Quiet Reeds, E2 Spores for the Stall, **E3 The Foreman's Ledger**,
 R3 Moss for the Quay. Crystoll Vault left as a `[LATER]` Starreach tease (void-gap signed).
+**World-craft pass (2026-10):** ambience/cast/props on every East map (`worldcraft/east.py`), story
+panel E-1/E-2/E-3 + the East X-2 acting pass; see `02-east.md` § World-craft pass.
 
 ## North — Gleams 5–6 (`crown_north`) ✅ (built 2026-06)
 
