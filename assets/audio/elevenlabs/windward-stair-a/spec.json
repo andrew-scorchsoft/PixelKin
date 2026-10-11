@@ -1,0 +1,96 @@
+{
+ "id": "windward-stair-a",
+ "kind": "loop",
+ "where": "Windward Stair I & II (the switchback mountain route) + the Wind-Eye and Thunderroost spurs",
+ "mood": "The Long Climb — airy, building, breath-quickening; each phrase re-launches a step higher so the loop feels like ascent.",
+ "bpm": 132,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "medium"
+ },
+ "core_styles": [
+  "16-bit SNES-era RPG soundtrack",
+  "retro sampled-chip instruments",
+  "132 BPM",
+  "bright A major",
+  "high pulse-wave lead climbing in stepwise terraces",
+  "steady ascending arpeggio like footsteps on stone",
+  "firm even synth bass tread",
+  "steady marching kick and hi-hat",
+  "white-noise wind swell cresting every four bars",
+  "mountain climbing route theme, determined and airy, sunset thinning to cold blue",
+  "strong singable melody",
+  "great production quality",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "modern EDM drums",
+  "trap",
+  "dubstep",
+  "fade out",
+  "ritardando",
+  "ending",
+  "electric guitar",
+  "rock",
+  "orchestral film score",
+  "ambient drone",
+  "minimalist",
+  "sad",
+  "sluggish"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{a determined opening call: marching drums, then the lead strikes a rising climbing figure twice, a step higher each time, over a wind swell, landing on a held E chord}",
+   "styles": [
+    "bold opening call",
+    "setting off uphill"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the climbing melody: a rising leap that overshoots, then a stepwise settle, the phrase then re-launched a step higher; hummable and determined, footstep arpeggio under it}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "ascending sequence"
+   ]
+  },
+  {
+   "name": "Main Theme Higher",
+   "bars": 8,
+   "text": "{the theme sequenced one step higher, brighter and fuller, a bell counter-line glinting, the wind swell cresting at each switchback}",
+   "styles": [
+    "rising sequence",
+    "bell counter-melody",
+    "fuller arrangement",
+    "gaining altitude"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a breath on a ledge, F sharp minor and D major, longer notes looking out over the drop, the drums thinning to hat and kick, then a snare roll building back up}",
+   "styles": [
+    "F sharp minor",
+    "panoramic",
+    "breather",
+    "building back"
+   ]
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the climb resumes at full stride, the theme at its brightest; the last bar steps down to the E dominant and voice-leads straight back up into the theme, no ending}",
+   "styles": [
+    "main theme return",
+    "triumphant stride",
+    "seamless loop"
+   ]
+  }
+ ]
+}

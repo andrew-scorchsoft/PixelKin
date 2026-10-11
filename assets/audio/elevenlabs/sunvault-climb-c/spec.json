@@ -1,0 +1,91 @@
+{
+ "id": "sunvault-climb-c",
+ "kind": "loop",
+ "where": "Helia Vault (the Sunsketch puzzle reliquary off Sunvault Climb II)",
+ "mood": "First Light at the Top: Solar warmth meets the first true starlight - the climbing hook at its highest, doubled in bells, inside a sunlit reliquary of blooms and sun-mirrors.",
+ "bpm": 116,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "low"
+ },
+ "core_styles": [
+  "16-bit SNES-era RPG soundtrack",
+  "retro sampled-chip instruments",
+  "116 BPM",
+  "brilliant D major",
+  "pulse-wave lead doubled an octave higher by bright glassy bells",
+  "sparkling ascending bell arpeggios like sunlight caught in mirrors",
+  "harp arpeggios over a warm sustained pad",
+  "strong forward synth bass",
+  "bright steady drum kit",
+  "brilliant, wondering, puzzle-solving sun-temple theme",
+  "strong singable melody",
+  "great production quality",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "modern EDM drums",
+  "trap",
+  "dubstep",
+  "fade out",
+  "ritardando",
+  "electric guitar",
+  "ambient drone",
+  "minimalist",
+  "dark",
+  "horror",
+  "epic trailer"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{entering a sunlit reliquary: a cascade of glassy bells rising like light striking a mirror, a pad bloom and a short drum roll into the theme}",
+   "styles": [
+    "sparkling opening",
+    "sun mirrors"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the climbing hook at its highest: lead and bells in octaves, bright and curious, steady groove for thinking on your feet}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "octave-doubled lead"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the hook again with a harp counter-melody weaving between the bell phrases, pad fuller}",
+   "styles": [
+    "harp counter-melody",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a puzzle-pondering passage in B minor - plucked staccato figures, a ticking hi-hat, the lead asking questions in short phrases, then bells climbing back toward the answer}",
+   "styles": [
+    "B minor",
+    "curious, pondering",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the brilliant hook returns with bells blazing; the last bar leads straight back into the main theme, no ending}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

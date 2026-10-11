@@ -1,0 +1,96 @@
+{
+ "id": "pale-vault-glacier-a",
+ "kind": "loop",
+ "where": "Pale Vault Glacier (the aurora-lit ice town outdoors); returns after meeting Warden Còr and after the Aurora-watch vigil",
+ "mood": "Aurora Vault — glacial, shimmering, lonely-beautiful; the stillest, most tender place in the north, suspended and never quite resolving.",
+ "bpm": 72,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "low"
+ },
+ "core_styles": [
+  "16-bit SNES-era RPG soundtrack",
+  "retro sampled-chip instruments",
+  "72 BPM",
+  "suspended C major, sus2 and sus4 chords",
+  "slow glassy chime lead melody with long notes and space between",
+  "widely spaced crystal arpeggio drifting upward like cold light",
+  "very slow sustained low bass pedal",
+  "soft wide cymbal swell like an aurora swoosh every four bars instead of a beat",
+  "lonely, still, glacial, beautiful ice field under the aurora at night",
+  "strong slow singable melody",
+  "great production quality",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "modern EDM drums",
+  "trap",
+  "dubstep",
+  "fade out",
+  "ritardando",
+  "ending",
+  "electric guitar",
+  "modern drums",
+  "cheerful",
+  "upbeat",
+  "busy",
+  "dark horror",
+  "dissonant",
+  "orchestral film score"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{a quiet glittering entrance: a single soft aurora cymbal swell rises over a low pedal, a few crystal chimes fall like ice dust, opening onto stillness}",
+   "styles": [
+    "atmospheric entrance",
+    "aurora shimmer"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the slow glassy melody: a rising lift held long over two bars, then a gentle descent that hangs on the second degree and never lands firmly; arpeggio drifting high, bass barely moving}",
+   "styles": [
+    "main theme",
+    "memorable slow hook",
+    "suspended",
+    "glacial"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the melody again, a soft string pad blooming under it and a second chime voice echoing each phrase an octave up, still unresolved}",
+   "styles": [
+    "echoing counter-chime",
+    "soft string pad",
+    "luminous"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 4,
+   "text": "{contrast: A minor and F major, the only warmth, a tender lower line like breath in the cold, swelling once with the aurora}",
+   "styles": [
+    "A minor to F major",
+    "tender",
+    "aurora swell",
+    "contrast"
+   ]
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the glassy theme returns, sparser and still; the last bar holds a suspended D colour that rises straight back into the theme, no ending}",
+   "styles": [
+    "main theme return",
+    "suspended",
+    "seamless loop"
+   ]
+  }
+ ]
+}

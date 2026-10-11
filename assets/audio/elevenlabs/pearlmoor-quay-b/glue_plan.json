@@ -1,0 +1,47 @@
+{
+ "chunks": [
+  {
+   "song_id": "6e6Fi7np64ClGJTNPR0t",
+   "range": {
+    "start_ms": 50426,
+    "end_ms": 70426
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "92 BPM",
+    "D minor",
+    "3/4 waltz time",
+    "soft accordion-like pulse-wave lead with a lilting waltz melody",
+    "sparse bell-buoy chimes ringing into the gaps",
+    "warm low string pad",
+    "slow rocking waltz bass, root then gentle fifths",
+    "seaside town late at night, lanterns swaying between masts, wistful and lonely but cosy",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "6e6Fi7np64ClGJTNPR0t",
+   "range": {
+    "start_ms": 7826,
+    "end_ms": 17826
+   }
+  }
+ ]
+}

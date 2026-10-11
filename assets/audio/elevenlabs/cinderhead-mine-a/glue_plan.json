@@ -1,0 +1,48 @@
+{
+ "chunks": [
+  {
+   "song_id": "8BDZvR5FfX1OhxEjLIv6",
+   "range": {
+    "start_ms": 79030,
+    "end_ms": 99030
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "80 BPM",
+    "A natural minor",
+    "low warm horn and pulse-wave lead singing a slow solemn melody that moves by steps",
+    "sparse high crystal-chime glints of broken triads",
+    "deep sustained synth bass drone on the root",
+    "warm dark string pad",
+    "distant dry pick-tap percussion echoing in a cavern",
+    "melancholy lamplit mining town in the deep dark, faint warmth of fire-lamps",
+    "echoing cave reverb",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "8BDZvR5FfX1OhxEjLIv6",
+   "range": {
+    "start_ms": 9000,
+    "end_ms": 19000
+   }
+  }
+ ]
+}

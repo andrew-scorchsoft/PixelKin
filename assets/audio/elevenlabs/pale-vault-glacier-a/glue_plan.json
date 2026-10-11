@@ -1,0 +1,46 @@
+{
+ "chunks": [
+  {
+   "song_id": "6YDdiOTOakRYWeDavVMe",
+   "range": {
+    "start_ms": 80075,
+    "end_ms": 100075
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "72 BPM",
+    "suspended C major, sus2 and sus4 chords",
+    "slow glassy chime lead melody with long notes and space between",
+    "widely spaced crystal arpeggio drifting upward like cold light",
+    "very slow sustained low bass pedal",
+    "soft wide cymbal swell like an aurora swoosh every four bars instead of a beat",
+    "lonely, still, glacial, beautiful ice field under the aurora at night",
+    "strong slow singable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "6YDdiOTOakRYWeDavVMe",
+   "range": {
+    "start_ms": 6667,
+    "end_ms": 16667
+   }
+  }
+ ]
+}

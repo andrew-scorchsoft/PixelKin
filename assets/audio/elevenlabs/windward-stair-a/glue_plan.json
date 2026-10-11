@@ -1,0 +1,47 @@
+{
+ "chunks": [
+  {
+   "song_id": "pJcq9re6EfHBRcw4ucyG",
+   "range": {
+    "start_ms": 45567,
+    "end_ms": 65567
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "132 BPM",
+    "bright A major",
+    "high pulse-wave lead climbing in stepwise terraces",
+    "steady ascending arpeggio like footsteps on stone",
+    "firm even synth bass tread",
+    "steady marching kick and hi-hat",
+    "white-noise wind swell cresting every four bars",
+    "mountain climbing route theme, determined and airy, sunset thinning to cold blue",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "pJcq9re6EfHBRcw4ucyG",
+   "range": {
+    "start_ms": 7273,
+    "end_ms": 17273
+   }
+  }
+ ]
+}

@@ -1,0 +1,199 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{a gentle waltz call on the night air: a lone bell-buoy chime, then the accordion lead sways in with the first rising phrase of the waltz and leans onto the home chord, leading into the theme}",
+   "duration_ms": 7826,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "92 BPM",
+    "D minor",
+    "3/4 waltz time",
+    "soft accordion-like pulse-wave lead with a lilting waltz melody",
+    "sparse bell-buoy chimes ringing into the gaps",
+    "warm low string pad",
+    "slow rocking waltz bass, root then gentle fifths",
+    "seaside town late at night, lanterns swaying between masts, wistful and lonely but cosy",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "gentle waltz opening",
+    "night sea air"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "loud drums",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "upbeat",
+    "ending"
+   ],
+   "context_adherence": "high",
+   "conditioning_ref": {
+    "song_id": "TOREmIgiwF3GKpN7UkLA",
+    "range": {
+     "start_ms": 10668,
+     "end_ms": 40668
+    }
+   },
+   "condition_strength": "medium"
+  },
+  {
+   "text": "[Main Theme]\n{the waltz melody in D minor, bare and swaying, the rising lift landing on each downbeat and settling back over beats two and three; hummable and clear}",
+   "duration_ms": 15652,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "92 BPM",
+    "D minor",
+    "3/4 waltz time",
+    "soft accordion-like pulse-wave lead with a lilting waltz melody",
+    "sparse bell-buoy chimes ringing into the gaps",
+    "warm low string pad",
+    "slow rocking waltz bass, root then gentle fifths",
+    "seaside town late at night, lanterns swaying between masts, wistful and lonely but cosy",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme",
+    "memorable hook",
+    "lonely sway"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "loud drums",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "upbeat",
+    "ending"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme Reprise]\n{the same waltz again with a soft flute counter-line answering each phrase, strings a little fuller, the bells ringing into the gaps}",
+   "duration_ms": 15652,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "92 BPM",
+    "D minor",
+    "3/4 waltz time",
+    "soft accordion-like pulse-wave lead with a lilting waltz melody",
+    "sparse bell-buoy chimes ringing into the gaps",
+    "warm low string pad",
+    "slow rocking waltz bass, root then gentle fifths",
+    "seaside town late at night, lanterns swaying between masts, wistful and lonely but cosy",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "flute counter-melody",
+    "fuller arrangement"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "loud drums",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "upbeat",
+    "ending"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast: a warmer turn to F major, like a lit window up on the hill, the melody rising higher and kinder, then drifting back down toward the minor}",
+   "duration_ms": 15652,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "92 BPM",
+    "D minor",
+    "3/4 waltz time",
+    "soft accordion-like pulse-wave lead with a lilting waltz melody",
+    "sparse bell-buoy chimes ringing into the gaps",
+    "warm low string pad",
+    "slow rocking waltz bass, root then gentle fifths",
+    "seaside town late at night, lanterns swaying between masts, wistful and lonely but cosy",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "F major",
+    "warm glimmer",
+    "contrasting section"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "loud drums",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "upbeat",
+    "ending"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the waltz returns in D minor, calm and swaying; the last bar sways straight back into the theme, no ending}",
+   "duration_ms": 15652,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "92 BPM",
+    "D minor",
+    "3/4 waltz time",
+    "soft accordion-like pulse-wave lead with a lilting waltz melody",
+    "sparse bell-buoy chimes ringing into the gaps",
+    "warm low string pad",
+    "slow rocking waltz bass, root then gentle fifths",
+    "seaside town late at night, lanterns swaying between masts, wistful and lonely but cosy",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "loud drums",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "upbeat",
+    "ending"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}

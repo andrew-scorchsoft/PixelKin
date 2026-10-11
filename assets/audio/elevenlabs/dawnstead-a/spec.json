@@ -1,0 +1,91 @@
+{
+ "id": "dawnstead-a",
+ "kind": "loop",
+ "where": "Dawnstead — the epilogue town in the first true daylight (and the post-game festival/Còr scenes there)",
+ "mood": "The lullaby in full — the hometown theme finally meeting the sun, radiant, confident and a little teary.",
+ "bpm": 100,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "high"
+ },
+ "core_styles": [
+  "16-bit SNES-era RPG soundtrack",
+  "retro sampled-chip instruments",
+  "100 BPM",
+  "C major, radiant, no minor",
+  "bright warm pulse-wave lead singing the hometown lullaby with confidence",
+  "flowing ascending harp arpeggios",
+  "lush warm string pad",
+  "warm walking synth bass",
+  "gentle present groove with soft kick and brush",
+  "triumphant sunrise homecoming, joyful and warm with a tear in its eye",
+  "strong singable melody",
+  "great production quality",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "modern EDM drums",
+  "trap",
+  "dubstep",
+  "fade out",
+  "ritardando",
+  "guitar",
+  "ambient drone",
+  "minimalist",
+  "dark",
+  "melancholy minor",
+  "ending"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{a sunrise call: a rising harp sweep and a bright string chord as the sun clears the hills, the lead boldly announcing the hometown theme's first notes, into the theme}",
+   "styles": [
+    "radiant opening fanfare",
+    "sunrise"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the hometown lullaby melody stated whole and confident in bright C major, harp flowing, bass walking with a warm stride}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "triumphant warmth"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the same melody again with a soaring flute counter-melody weaving above and the strings fuller, like the whole town singing along}",
+   "styles": [
+    "flute counter-melody",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: the old wistful answer phrase reborn in F major, tender and grateful, softer groove, then a rising build of harp and strings back toward the theme}",
+   "styles": [
+    "F major",
+    "tender gratitude",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the lullaby returns in full radiant bloom with bells and counter-melody together; the last bar leads straight back into the theme, no ending}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

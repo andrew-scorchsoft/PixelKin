@@ -1,0 +1,92 @@
+{
+ "id": "cinderhead-mine-b",
+ "kind": "loop",
+ "where": "Cinderhead Lumenary (Otho Grist's hall at the mine mouth — the difficulty wall)",
+ "mood": "The mine under pressure — groaning timbers, charged air, a terse staccato motif over a driving low walk; held-breath tension before the wall.",
+ "bpm": 96,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "low"
+ },
+ "core_styles": [
+  "16-bit SNES-era RPG soundtrack",
+  "retro sampled-chip instruments",
+  "96 BPM",
+  "A harmonic minor with the raised seventh",
+  "terse staccato low pulse-wave and brass motif, recurring like a held breath",
+  "nervous fast bell arpeggio flickers in short bursts",
+  "driving low synth bass ostinato walking steadily",
+  "dark string pad stabs",
+  "dry pick-tap percussion and timpani, static noise swells",
+  "tense, claustrophobic, stern and determined stone hall deep in a mine",
+  "strong singable melody",
+  "great production quality",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "modern EDM drums",
+  "trap",
+  "dubstep",
+  "electric guitar",
+  "fade out",
+  "ritardando",
+  "cheerful",
+  "upbeat",
+  "ambient drone",
+  "minimalist",
+  "horror",
+  "lounge"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{the timbers groan: a low timpani roll and two heavy pick strikes, then the driving bass ostinato begins alone, a static swell rising over it}",
+   "styles": [
+    "tense opening",
+    "heavy stone hall"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the terse staccato motif: a clipped rising leap stabbed again and again over the walking bass, the raised seventh sharpening the unease, a stern memorable figure}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "held-breath pressure"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the motif again with nervous bell arpeggios flickering in short bursts between its stabs and string stabs on the offbeats, pressure building}",
+   "styles": [
+    "nervous arpeggio bursts",
+    "building tension"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: the rock leans in; shift to D minor, the bass slows to half-time, a longer stern brass melody rises over low strings, grim and resolute, then the ostinato resumes}",
+   "styles": [
+    "D minor",
+    "grim resolve",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the staccato motif returns over the driving bass; the last bar leads straight back into the main theme, no ending}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}
