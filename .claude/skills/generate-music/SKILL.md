@@ -30,7 +30,9 @@ cue feel iconic is **form + a shared motif + a seamless loop**, so:
    (format at the top of `tools/audio/remaster_track.py`; worked examples
    `tinderwick-a`, `dimglass-coast-a`). Sections in order: a **play-once intro**
    (2–4 bars; bold call for a town/route, quiet entrance for a cave, the percussive
-   "battle start" for a battle) → **Theme → Theme reprise (+counter-melody) →
+   "battle start" for a battle — battles, the title and fanfares must hit at FULL level
+   on beat one; write "full volume on beat one … no fade-in, no build-up" and add
+   fade in / slow intro / build-up to the section negatives) → **Theme → Theme reprise (+counter-melody) →
    contrasting Bridge (related mode) → Theme return** whose last bar leads back in.
    8–13 concrete `core_styles` (register first: "16-bit SNES-era RPG soundtrack",
    "retro sampled-chip instruments"; then BPM, key, metre, instruments + roles,
@@ -53,6 +55,10 @@ cue feel iconic is **form + a shared motif + a seamless loop**, so:
    0.06–0.17; one battle needed a fresh take at 0.82 — re-compose, don't ship a bad
    seam), then `level_remasters.py` sets -15 LUFS (sparse cues a little lower). Then `python3 tools/audio/build_remaster_manifest.py` and
    `node tools/build/build_music_data.mjs` (CI fails if either is stale).
+   **Check the opening** (the model still loves a swell): if a punchy cue's intro
+   builds or sags, `--new-intro` re-composes ONLY the intro over the kept body
+   (inpainting), and `tools/audio/trim_intro.py <id> --silence|--drop-intro` trims
+   lead-in silence or opens straight on the theme — no new generation.
 4. **Engine contract:** `MusicDirector` maps `music/<id>.mp3` → `music/remaster/<id>.mp3`
    when the style is remastered and the manifest lists it; the intro plays ONCE
    (two sounds on one buffer, the body scheduled `delay: loop_start` on the audio

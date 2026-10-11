@@ -1,12 +1,11 @@
 {
  "chunks": [
   {
-   "text": "[Battle Start]\n{a sharp percussive battle-start hit: a fast descending-then-rising chromatic run on the lead over a snare roll and brass stabs, slamming onto the downbeat of the main battle theme}",
-   "duration_ms": 6076,
+   "text": "[Battle Start]\n{full band on beat one: brass stab and crash, a fast chromatic lead run over driving drums, slamming into the battle theme}",
+   "duration_ms": 4557,
    "positive_styles": [
     "16-bit SNES-era RPG soundtrack",
     "retro sampled-chip instruments",
-    "158 BPM",
     "A minor with a heroic lift to C major",
     "4/4",
     "fast syncopated sawtooth lead melody with leaping hooks",
@@ -19,9 +18,11 @@
     "great production quality",
     "instrumental",
     "explosive battle intro",
+    "full volume from the first beat",
     "fast chromatic run",
-    "brass hits",
-    "snare roll"
+    "driving drums",
+    "same tempo, key and instruments as the theme that follows",
+    "starts instantly on beat one"
    ],
    "negative_styles": [
     "vocals",
@@ -39,186 +40,23 @@
     "ending",
     "slow",
     "calm",
-    "lullaby"
-   ],
-   "context_adherence": "high",
-   "conditioning_ref": {
-    "song_id": "TOREmIgiwF3GKpN7UkLA",
-    "range": {
-     "start_ms": 10668,
-     "end_ms": 40668
-    }
-   },
-   "condition_strength": "low"
-  },
-  {
-   "text": "[Battle Theme]\n{the main battle hook: a short leaping syncopated phrase on the sawtooth lead, then a bar of space that the brass stabs answer; the pumping bass never rests}",
-   "duration_ms": 12152,
-   "positive_styles": [
-    "16-bit SNES-era RPG soundtrack",
-    "retro sampled-chip instruments",
-    "158 BPM",
-    "A minor with a heroic lift to C major",
-    "4/4",
-    "fast syncopated sawtooth lead melody with leaping hooks",
-    "relentless pumping root-fifth eighth-note synth bass",
-    "punchy sampled battle drums with snare fills",
-    "stabbing sampled brass answering the lead",
-    "driving sixteenth-note pulse arpeggio",
-    "urgent exciting creature battle theme, thrilling but winnable, never scary",
-    "strong catchy hummable melody",
-    "great production quality",
-    "instrumental",
-    "main battle hook",
-    "call and response with brass",
-    "memorable riff"
-   ],
-   "negative_styles": [
-    "vocals",
-    "singing",
-    "choir",
-    "modern EDM drums",
-    "trap",
-    "dubstep",
-    "dubstep wobble",
-    "electric guitar distortion",
-    "rock guitar",
-    "orchestral film score",
-    "fade out",
-    "ritardando",
-    "ending",
-    "slow",
-    "calm",
-    "lullaby"
+    "lullaby",
+    "fade in",
+    "slow intro",
+    "quiet opening",
+    "build-up",
+    "swell",
+    "ambient intro",
+    "silence"
    ],
    "context_adherence": "high"
   },
   {
-   "text": "[Battle Theme Reprise]\n{the same hook again, sequenced higher, a twin lead a third below, the arpeggio busier, climbing tension on the harmonic-minor dominant}",
-   "duration_ms": 12152,
-   "positive_styles": [
-    "16-bit SNES-era RPG soundtrack",
-    "retro sampled-chip instruments",
-    "158 BPM",
-    "A minor with a heroic lift to C major",
-    "4/4",
-    "fast syncopated sawtooth lead melody with leaping hooks",
-    "relentless pumping root-fifth eighth-note synth bass",
-    "punchy sampled battle drums with snare fills",
-    "stabbing sampled brass answering the lead",
-    "driving sixteenth-note pulse arpeggio",
-    "urgent exciting creature battle theme, thrilling but winnable, never scary",
-    "strong catchy hummable melody",
-    "great production quality",
-    "instrumental",
-    "twin lead harmony",
-    "rising tension",
-    "fuller arrangement"
-   ],
-   "negative_styles": [
-    "vocals",
-    "singing",
-    "choir",
-    "modern EDM drums",
-    "trap",
-    "dubstep",
-    "dubstep wobble",
-    "electric guitar distortion",
-    "rock guitar",
-    "orchestral film score",
-    "fade out",
-    "ritardando",
-    "ending",
-    "slow",
-    "calm",
-    "lullaby"
-   ],
-   "context_adherence": "high"
-  },
-  {
-   "text": "[Heroic Lift]\n{contrast: the hook turns heroic in C major, sustained brass chords, four-on-the-floor kick with open hi-hats, the melody climbing to a high climax \u2014 courage, we can win this}",
-   "duration_ms": 12152,
-   "positive_styles": [
-    "16-bit SNES-era RPG soundtrack",
-    "retro sampled-chip instruments",
-    "158 BPM",
-    "A minor with a heroic lift to C major",
-    "4/4",
-    "fast syncopated sawtooth lead melody with leaping hooks",
-    "relentless pumping root-fifth eighth-note synth bass",
-    "punchy sampled battle drums with snare fills",
-    "stabbing sampled brass answering the lead",
-    "driving sixteenth-note pulse arpeggio",
-    "urgent exciting creature battle theme, thrilling but winnable, never scary",
-    "strong catchy hummable melody",
-    "great production quality",
-    "instrumental",
-    "C major",
-    "heroic triumphant lift",
-    "sustained brass",
-    "anthemic chord progression"
-   ],
-   "negative_styles": [
-    "vocals",
-    "singing",
-    "choir",
-    "modern EDM drums",
-    "trap",
-    "dubstep",
-    "dubstep wobble",
-    "electric guitar distortion",
-    "rock guitar",
-    "orchestral film score",
-    "fade out",
-    "ritardando",
-    "ending",
-    "slow",
-    "calm",
-    "lullaby"
-   ],
-   "context_adherence": "medium"
-  },
-  {
-   "text": "[Battle Theme Return]\n{back to A minor, the main battle hook in full force; a dominant cadence with a drum fill in the last bar slams straight back into the hook, no ending}",
-   "duration_ms": 12152,
-   "positive_styles": [
-    "16-bit SNES-era RPG soundtrack",
-    "retro sampled-chip instruments",
-    "158 BPM",
-    "A minor with a heroic lift to C major",
-    "4/4",
-    "fast syncopated sawtooth lead melody with leaping hooks",
-    "relentless pumping root-fifth eighth-note synth bass",
-    "punchy sampled battle drums with snare fills",
-    "stabbing sampled brass answering the lead",
-    "driving sixteenth-note pulse arpeggio",
-    "urgent exciting creature battle theme, thrilling but winnable, never scary",
-    "strong catchy hummable melody",
-    "great production quality",
-    "instrumental",
-    "main battle hook returns",
-    "drum fill",
-    "seamless loop back to the start of the theme"
-   ],
-   "negative_styles": [
-    "vocals",
-    "singing",
-    "choir",
-    "modern EDM drums",
-    "trap",
-    "dubstep",
-    "dubstep wobble",
-    "electric guitar distortion",
-    "rock guitar",
-    "orchestral film score",
-    "fade out",
-    "ritardando",
-    "ending",
-    "slow",
-    "calm",
-    "lullaby"
-   ],
-   "context_adherence": "high"
+   "song_id": "GA9oWbHrOr9xs05Tf3ob",
+   "range": {
+    "start_ms": 6076,
+    "end_ms": 54753
+   }
   }
  ]
 }

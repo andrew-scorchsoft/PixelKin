@@ -3,12 +3,15 @@
  "kind": "loop",
  "where": "Every wild kin battle (the default battle bed) and the attract-mode trailer duel",
  "mood": "The fight you hear a thousand times \u2014 urgent, catchy and winnable: a minor-key chase that bursts into a heroic major lift.",
- "duration": 58.54,
- "loop_start": 5.851,
- "seam": 0.104,
- "bpm_est": 60.1,
- "song_id": "GA9oWbHrOr9xs05Tf3ob",
- "raw_ms": 54753,
+ "duration": 52.64,
+ "loop_start": 0.0,
+ "seam": 0.084,
+ "bpm_est": 89.1,
+ "song_id": "MKniiuP6Sj6u2oJaeri2",
+ "raw_ms": 53238,
  "motif": "low",
- "lufs": -15.4
+ "lufs": -15.4,
+ "edits": [
+  "intro dropped: opens on the theme"
+ ]
 }

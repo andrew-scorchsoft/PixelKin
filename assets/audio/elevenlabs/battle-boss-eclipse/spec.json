@@ -46,13 +46,22 @@
  "sections": [
   {
    "name": "Eclipse",
-   "bars": 4,
-   "text": "{the final confrontation begins: a massive pipe organ chord, a timpani roll, then a fast descending organ run that crashes into the driving boss theme}",
+   "bars": 3,
+   "text": "{full force on beat one: a massive organ and brass chord with a crash, a fast descending organ run, crashing into the boss theme}",
    "styles": [
     "epic final boss intro",
-    "pipe organ hit",
-    "timpani roll",
-    "descending organ run"
+    "full force from the first beat",
+    "pipe organ and brass hit",
+    "driving drums"
+   ],
+   "negative": [
+    "fade in",
+    "slow intro",
+    "quiet opening",
+    "build-up",
+    "swell",
+    "ambient intro",
+    "silence"
    ],
    "adherence": "high"
   },

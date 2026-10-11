@@ -43,12 +43,24 @@
  ],
  "sections": [
   {
-   "name": "The Hour Arrives",
+   "name": "The Hour Strikes",
    "bars": 2,
-   "text": "{a deep bell toll and a low string swell, the pendulum bass beginning to swing in 3/4}",
+   "text": "{on beat one: a sharp orchestral hit with timpani, the pendulum bass and ticking percussion already in motion, straight into the theme}",
    "styles": [
-    "deep bell toll",
-    "awed opening"
+    "dramatic battle intro",
+    "full ensemble from the first beat",
+    "pendulum bass in motion",
+    "3/4 time"
+   ],
+   "negative": [
+    "fade in",
+    "slow intro",
+    "quiet opening",
+    "build-up",
+    "swell",
+    "ambient intro",
+    "silence",
+    "lone bell"
    ],
    "adherence": "high"
   },

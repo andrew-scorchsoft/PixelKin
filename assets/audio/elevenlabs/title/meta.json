@@ -3,12 +3,15 @@
  "kind": "loop",
  "where": "Title screen",
  "mood": "The calling card: a lone lantern-tune in the dark explodes into a heroic minor adventure anthem; the Long Dusk, and the journey rising against it.",
- "duration": 64.836,
- "loop_start": 9.613,
- "seam": 0.257,
+ "duration": 60.107,
+ "loop_start": 4.843,
+ "seam": 0.261,
  "bpm_est": 60.1,
- "song_id": "win7uFtOZiyJEKYZASCP",
- "raw_ms": 60839,
+ "song_id": "5xg5NDr2GYXigAt00VoV",
+ "raw_ms": 56033,
  "motif": "high",
- "lufs": -15.4
+ "lufs": -15.4,
+ "edits": [
+  "trimmed 0.242s of head"
+ ]
 }

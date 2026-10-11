@@ -45,12 +45,22 @@
  "sections": [
   {
    "name": "Rival Appears",
-   "bars": 4,
-   "text": "{a cocky entrance: a snappy brass stab, a quick show-off lead run up and down, a drum break that kicks straight into the rival theme}",
+   "bars": 3,
+   "text": "{on beat one: a snappy brass stab and crash, a quick show-off lead run, drums already driving, straight into the rival theme}",
    "styles": [
     "explosive battle intro",
+    "full volume from the first beat",
     "show-off lead run",
-    "drum break"
+    "driving drums"
+   ],
+   "negative": [
+    "fade in",
+    "slow intro",
+    "quiet opening",
+    "build-up",
+    "swell",
+    "ambient intro",
+    "silence"
    ],
    "adherence": "high"
   },

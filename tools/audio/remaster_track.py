@@ -230,6 +230,9 @@ def main() -> int:
     ap.add_argument("id")
     ap.add_argument("--check-spec", action="store_true")
     ap.add_argument("--reglue", action="store_true", help="reuse the stored take (meta.song_id), redo glue + cut")
+    ap.add_argument("--new-intro", action="store_true",
+                    help="keep the stored take's BODY (inpainting reference) and compose only a new intro from the "
+                         "spec's first section, then re-glue — for an intro that's too slow without losing the cue")
     ap.add_argument("--work", default=None, help="scratch dir for raw takes (default: system temp)")
     ap.add_argument("--glue-tries", type=int, default=2)
     a = ap.parse_args()
@@ -251,7 +254,31 @@ def main() -> int:
     out = SERVED / f"{a.id}.mp3"
     meta_path = d / "meta.json"
     meta = json.loads(meta_path.read_text()) if meta_path.exists() else {}
+    old_plan = json.loads((d / "plan.json").read_text()) if (d / "plan.json").exists() else None
     plan = build_plan(spec)
+    if a.new_intro:
+        if spec["kind"] != "loop" or not meta.get("song_id") or not old_plan:
+            raise SystemExit("--new-intro needs a finished loop (meta.song_id + plan.json)")
+        old_intro_ms = old_plan["chunks"][0]["duration_ms"]
+        intro = plan["chunks"][0]
+        # The body's tempo is whatever the take landed on (motif-conditioned takes sit on
+        # ~90/180 BPM), so the new intro must not dictate a BPM: drop tempo styles and
+        # any motif conditioning, and ask it to match what follows.
+        intro["positive_styles"] = [x for x in intro["positive_styles"] if "bpm" not in x.lower()] + [
+            "same tempo, key and instruments as the theme that follows", "starts instantly on beat one"]
+        intro.pop("conditioning_ref", None)
+        intro.pop("condition_strength", None)
+        intro["context_adherence"] = "high"
+        body = []
+        t = old_intro_ms
+        while t < meta["raw_ms"]:
+            e = min(meta["raw_ms"], t + 60000)
+            if e - t < 3000 and body:
+                body[-1]["range"]["end_ms"] = e
+            else:
+                body.append({"song_id": meta["song_id"], "range": {"start_ms": t, "end_ms": e}})
+            t = e
+        plan = {"chunks": [intro] + body}
     (d / "plan.json").write_text(json.dumps(plan, indent=1) + "\n")
     t0 = time.time()
 
@@ -263,7 +290,7 @@ def main() -> int:
                 "duration": round(duration(out), 3), "loop_start": None, "song_id": song_id}
     else:
         raw = work / "raw.mp3"
-        if a.reglue and meta.get("song_id"):
+        if a.reglue and meta.get("song_id") and not a.new_intro:
             if not raw.exists():
                 raise SystemExit(f"--reglue needs the original take at {raw} (it lives in the scratch dir only)")
             song_id = meta["song_id"]

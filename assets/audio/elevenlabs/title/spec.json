@@ -42,14 +42,27 @@
  ],
  "sections": [
   {
-   "name": "Intro",
-   "bars": 6,
-   "text": "{in the dark a lone music box plays the hometown theme's first rising notes like a single lantern, then a timpani roll explodes into a bold brass fanfare and the theme}",
+   "name": "Title Fanfare",
+   "bars": 3,
+   "text": "{at full volume on beat one: crash, timpani and a bold brass fanfare on the theme's rising first notes, then straight into the anthem}",
    "styles": [
-    "unforgettable opening",
-    "quiet then explosive",
-    "fanfare"
-   ]
+    "bold fanfare from the very first beat",
+    "full band at once",
+    "heroic",
+    "no fade in"
+   ],
+   "negative": [
+    "fade in",
+    "slow intro",
+    "quiet opening",
+    "build-up",
+    "swell",
+    "ambient intro",
+    "silence",
+    "music box",
+    "lone instrument"
+   ],
+   "adherence": "high"
   },
   {
    "name": "Main Theme",

@@ -1,12 +1,11 @@
 {
  "chunks": [
   {
-   "text": "[The Hour Arrives]\n{a deep bell toll and a low string swell, the pendulum bass beginning to swing in 3/4}",
+   "text": "[The Hour Strikes]\n{on beat one: a sharp orchestral hit with timpani, the pendulum bass and ticking percussion already in motion, straight into the theme}",
    "duration_ms": 4737,
    "positive_styles": [
     "16-bit SNES-era RPG soundtrack",
     "retro sampled-chip instruments",
-    "76 BPM",
     "A minor",
     "3/4 waltz time like a great clock",
     "low pendulum bass swinging root and fifth every bar",
@@ -18,8 +17,12 @@
     "strong memorable melody",
     "great production quality",
     "instrumental",
-    "deep bell toll",
-    "awed opening"
+    "dramatic battle intro",
+    "full ensemble from the first beat",
+    "pendulum bass in motion",
+    "3/4 time",
+    "same tempo, key and instruments as the theme that follows",
+    "starts instantly on beat one"
    ],
    "negative_styles": [
     "vocals",
@@ -38,182 +41,31 @@
     "fast tempo",
     "rock drum kit",
     "happy",
-    "4/4 time"
+    "4/4 time",
+    "fade in",
+    "slow intro",
+    "quiet opening",
+    "build-up",
+    "swell",
+    "ambient intro",
+    "silence",
+    "lone bell"
    ],
    "context_adherence": "high"
   },
   {
-   "text": "[First Strophe]\n{the patient minor melody rises in a lifting leap then settles stepwise, over the swinging pendulum bass and clock-tick percussion; the phrase hangs unresolved on the minor fifth chord}",
-   "duration_ms": 18947,
-   "positive_styles": [
-    "16-bit SNES-era RPG soundtrack",
-    "retro sampled-chip instruments",
-    "76 BPM",
-    "A minor",
-    "3/4 waltz time like a great clock",
-    "low pendulum bass swinging root and fifth every bar",
-    "deep tolling tower bell on the hour",
-    "patient majestic minor lead melody",
-    "warm sampled string chords",
-    "soft clock-tick percussion: woodblock and tom on the downbeat",
-    "awed mysterious legendary encounter, vast and ancient, solemn but tense",
-    "strong memorable melody",
-    "great production quality",
-    "instrumental",
-    "main theme",
-    "majestic",
-    "ticking clock pulse"
-   ],
-   "negative_styles": [
-    "vocals",
-    "singing",
-    "choir",
-    "modern EDM drums",
-    "trap",
-    "dubstep",
-    "dubstep wobble",
-    "electric guitar distortion",
-    "rock guitar",
-    "orchestral film score",
-    "fade out",
-    "ritardando",
-    "ending",
-    "fast tempo",
-    "rock drum kit",
-    "happy",
-    "4/4 time"
-   ],
-   "context_adherence": "high"
+   "song_id": "EUGEPD8JrFKD4Bdfla2O",
+   "range": {
+    "start_ms": 4737,
+    "end_ms": 64737
+   }
   },
   {
-   "text": "[Second Strophe]\n{the melody again an octave higher with strings fuller and a bell marking every second bar; the cadence falls deceptively to the sixth chord}",
-   "duration_ms": 18947,
-   "positive_styles": [
-    "16-bit SNES-era RPG soundtrack",
-    "retro sampled-chip instruments",
-    "76 BPM",
-    "A minor",
-    "3/4 waltz time like a great clock",
-    "low pendulum bass swinging root and fifth every bar",
-    "deep tolling tower bell on the hour",
-    "patient majestic minor lead melody",
-    "warm sampled string chords",
-    "soft clock-tick percussion: woodblock and tom on the downbeat",
-    "awed mysterious legendary encounter, vast and ancient, solemn but tense",
-    "strong memorable melody",
-    "great production quality",
-    "instrumental",
-    "fuller strings",
-    "bell hour-marks",
-    "rising awe"
-   ],
-   "negative_styles": [
-    "vocals",
-    "singing",
-    "choir",
-    "modern EDM drums",
-    "trap",
-    "dubstep",
-    "dubstep wobble",
-    "electric guitar distortion",
-    "rock guitar",
-    "orchestral film score",
-    "fade out",
-    "ritardando",
-    "ending",
-    "fast tempo",
-    "rock drum kit",
-    "happy",
-    "4/4 time"
-   ],
-   "context_adherence": "high"
-  },
-  {
-   "text": "[The Turning Wheel]\n{contrast: the music turns to F major and C major, the melody broader and more urgent, timpani rolls and a rising string line, the great wheel straining to turn}",
-   "duration_ms": 18947,
-   "positive_styles": [
-    "16-bit SNES-era RPG soundtrack",
-    "retro sampled-chip instruments",
-    "76 BPM",
-    "A minor",
-    "3/4 waltz time like a great clock",
-    "low pendulum bass swinging root and fifth every bar",
-    "deep tolling tower bell on the hour",
-    "patient majestic minor lead melody",
-    "warm sampled string chords",
-    "soft clock-tick percussion: woodblock and tom on the downbeat",
-    "awed mysterious legendary encounter, vast and ancient, solemn but tense",
-    "strong memorable melody",
-    "great production quality",
-    "instrumental",
-    "contrasting section",
-    "rising urgency",
-    "timpani rolls",
-    "straining toward resolution"
-   ],
-   "negative_styles": [
-    "vocals",
-    "singing",
-    "choir",
-    "modern EDM drums",
-    "trap",
-    "dubstep",
-    "dubstep wobble",
-    "electric guitar distortion",
-    "rock guitar",
-    "orchestral film score",
-    "fade out",
-    "ritardando",
-    "ending",
-    "fast tempo",
-    "rock drum kit",
-    "happy",
-    "4/4 time"
-   ],
-   "context_adherence": "medium"
-  },
-  {
-   "text": "[Third Strophe]\n{the patient minor melody returns in full; it finally reaches the major dominant chord with a strong leading tone, and the last bar leads straight back into the first strophe, no ending}",
-   "duration_ms": 18947,
-   "positive_styles": [
-    "16-bit SNES-era RPG soundtrack",
-    "retro sampled-chip instruments",
-    "76 BPM",
-    "A minor",
-    "3/4 waltz time like a great clock",
-    "low pendulum bass swinging root and fifth every bar",
-    "deep tolling tower bell on the hour",
-    "patient majestic minor lead melody",
-    "warm sampled string chords",
-    "soft clock-tick percussion: woodblock and tom on the downbeat",
-    "awed mysterious legendary encounter, vast and ancient, solemn but tense",
-    "strong memorable melody",
-    "great production quality",
-    "instrumental",
-    "main theme returns",
-    "harmonic minor dominant",
-    "seamless loop back to the start of the theme"
-   ],
-   "negative_styles": [
-    "vocals",
-    "singing",
-    "choir",
-    "modern EDM drums",
-    "trap",
-    "dubstep",
-    "dubstep wobble",
-    "electric guitar distortion",
-    "rock guitar",
-    "orchestral film score",
-    "fade out",
-    "ritardando",
-    "ending",
-    "fast tempo",
-    "rock drum kit",
-    "happy",
-    "4/4 time"
-   ],
-   "context_adherence": "high"
+   "song_id": "EUGEPD8JrFKD4Bdfla2O",
+   "range": {
+    "start_ms": 64737,
+    "end_ms": 80588
+   }
   }
  ]
 }

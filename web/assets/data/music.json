@@ -397,7 +397,7 @@
      "mood": "The last stand on the black mountain — grand, tragic and driving: a sorrowful antagonist who wants a gentle endless night, and the light that will not go out.",
      "classic": "play/assets/audio/music/battle-boss-eclipse.mp3",
      "remaster": "play/assets/audio/music/remaster/battle-boss-eclipse.mp3",
-     "loop_start": 8.638
+     "loop_start": 7.616
     },
     {
      "id": "battle-emberfall",
@@ -415,7 +415,7 @@
      "mood": "Fighting a keeper of the sky's turning — awed, patient and vast, like a great clock: a jammed wheel rocking toward the next hour.",
      "classic": "play/assets/audio/music/battle-hours.mp3",
      "remaster": "play/assets/audio/music/remaster/battle-hours.mp3",
-     "loop_start": 7.616
+     "loop_start": 7.709
     },
     {
      "id": "battle-main-dusk-duel",
@@ -424,7 +424,7 @@
      "mood": "The fight you hear a thousand times — urgent, catchy and winnable: a minor-key chase that bursts into a heroic major lift.",
      "classic": "play/assets/audio/music/battle-main-dusk-duel.mp3",
      "remaster": "play/assets/audio/music/remaster/battle-main-dusk-duel.mp3",
-     "loop_start": 5.851
+     "loop_start": 0
     },
     {
      "id": "battle-nightfall",
@@ -442,7 +442,7 @@
      "mood": "The rival who grew up beside you — cocky, quick, competitive and fond: a grin across the field, and the friendship under it.",
      "classic": "play/assets/audio/music/battle-veil.mp3",
      "remaster": "play/assets/audio/music/remaster/battle-veil.mp3",
-     "loop_start": 5.805
+     "loop_start": 0
     }
    ]
   },
@@ -456,7 +456,7 @@
      "mood": "The calling card: a lone lantern-tune in the dark explodes into a heroic minor adventure anthem; the Long Dusk, and the journey rising against it.",
      "classic": "play/assets/audio/music/title.mp3",
      "remaster": "play/assets/audio/music/remaster/title.mp3",
-     "loop_start": 9.613
+     "loop_start": 4.843
     },
     {
      "id": "coldopen-foreboding",

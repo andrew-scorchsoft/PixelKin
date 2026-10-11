@@ -2,8 +2,8 @@
  "_generated": "tools/audio/build_remaster_manifest.py — do not hand-edit",
  "tracks": {
   "battle-boss-eclipse": {
-   "loop_start": 8.638,
-   "duration": 79.308,
+   "loop_start": 7.616,
+   "duration": 78.263,
    "where": "The final battles: Warden Còr at the Umbral Spire summit, and Star-tender Fenn's post-game duel",
    "mood": "The last stand on the black mountain — grand, tragic and driving: a sorrowful antagonist who wants a gentle endless night, and the light that will not go out."
   },
@@ -14,14 +14,14 @@
    "mood": "The arena duel — proud, rousing and fair: a respected challenger in the lantern-light, the fight that earns a constellation."
   },
   "battle-hours": {
-   "loop_start": 7.616,
-   "duration": 87.484,
+   "loop_start": 7.709,
+   "duration": 87.589,
    "where": "The Three Hours set-piece battles (Gloamber, Noctilune, Erstmorn — the legendary trio)",
    "mood": "Fighting a keeper of the sky's turning — awed, patient and vast, like a great clock: a jammed wheel rocking toward the next hour."
   },
   "battle-main-dusk-duel": {
-   "loop_start": 5.851,
-   "duration": 58.54,
+   "loop_start": 0.0,
+   "duration": 52.64,
    "where": "Every wild kin battle (the default battle bed) and the attract-mode trailer duel",
    "mood": "The fight you hear a thousand times — urgent, catchy and winnable: a minor-key chase that bursts into a heroic major lift."
   },
@@ -32,8 +32,8 @@
    "mood": "The fight in the deepening dark — cold, uneasy and solemn: an enemy who believes in the gentle night, sorrow under the steel."
   },
   "battle-veil": {
-   "loop_start": 5.805,
-   "duration": 57.208,
+   "loop_start": 0.0,
+   "duration": 51.362,
    "where": "Rival battles with Wren (Pale Vault, Nightreach, and the post-game rematch)",
    "mood": "The rival who grew up beside you — cocky, quick, competitive and fond: a grin across the field, and the friendship under it."
   },
@@ -272,8 +272,8 @@
    "mood": "First light on the water — the hometown tune's rising half asked under orchard boughs, Lydian wonder with a thread of mystery."
   },
   "title": {
-   "loop_start": 9.613,
-   "duration": 64.836,
+   "loop_start": 4.843,
+   "duration": 60.107,
    "where": "Title screen",
    "mood": "The calling card: a lone lantern-tune in the dark explodes into a heroic minor adventure anthem; the Long Dusk, and the journey rising against it."
   },

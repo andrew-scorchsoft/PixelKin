@@ -45,13 +45,22 @@
  "sections": [
   {
    "name": "Battle Start",
-   "bars": 4,
-   "text": "{a sharp percussive battle-start hit: a fast descending-then-rising chromatic run on the lead over a snare roll and brass stabs, slamming onto the downbeat of the main battle theme}",
+   "bars": 3,
+   "text": "{full band on beat one: brass stab and crash, a fast chromatic lead run over driving drums, slamming into the battle theme}",
    "styles": [
     "explosive battle intro",
+    "full volume from the first beat",
     "fast chromatic run",
-    "brass hits",
-    "snare roll"
+    "driving drums"
+   ],
+   "negative": [
+    "fade in",
+    "slow intro",
+    "quiet opening",
+    "build-up",
+    "swell",
+    "ambient intro",
+    "silence"
    ],
    "adherence": "high"
   },
