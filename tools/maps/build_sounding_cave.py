@@ -3,9 +3,9 @@
 The Sounding Cave — the middle leg of the Pearlmoor <-> Vesper Crossroads route.
 A sea-cave you duck into off the Wrackline Path and come out the far side onto the
 Lanternfall descent. A single through-floor (a traversal cave, not a region
-dungeon): WEST mouth from Wrackline, EAST mouth out to Lanternfall, three chambers
+dungeon): NORTH mouth from Wrackline, SOUTH mouth out to Lanternfall, three chambers
 on the drawn glowmoss-cave families joined by 1-tile chokes. The only path crosses
-a glowmoss bed in the middle chamber, so the cave's kin can't be skirted; a north
+a glowmoss bed in the middle chamber, so the cave's kin can't be skirted; a west
 alcove off it hides the valuable cache. Band 16-19 (Stone dwellers).
 
 Chain:  wrackline_path -> sounding_cave -> lanternfall_road
@@ -18,31 +18,38 @@ import mapkit as mk
 import patterns as pt
 from mapkit import gid
 
-W, H = 20, 14
+W, H = 14, 20
 rng = random.Random(53)
+
+# 2026-10 geometry fix: the cave stands on end — a NORTH mouth (col 12) from
+# Wrackline Path and a SOUTH mouth (col 4) out onto Lanternfall Road, so the
+# loop home runs compass-true down the bay shore. Same three chambers, the same
+# unavoidable glowmoss bed and the same hidden alcove cache, turned on end.
 
 # ---- terrain: solid wall mass, rooms carved as rects + overlapping chokes -------
 wall = mk.make_grid(W, H)
 mk.rect(wall, W, H, 0, 0, W - 1, H - 1)                 # rock everywhere…
 
 floor = mk.make_grid(W, H)                              # …carved chambers + chokes
-mk.rect(floor, W, H, 1, 5, 6, 9)                        # WEST entry chamber
-mk.hline(floor, W, H, 7, 1, 2)                          # west throat to the mouth
-mk.hline(floor, W, H, 7, 6, 9)                          # choke entry -> mid (overlaps both)
-mk.rect(floor, W, H, 8, 4, 13, 10)                      # MID chamber (the glowmoss bed)
-mk.rect(floor, W, H, 9, 1, 12, 4)                       # NORTH alcove (the cache)
-mk.vline(floor, W, H, 10, 3, 5)                         # alcove throat (overlaps mid)
-mk.hline(floor, W, H, 7, 13, 16)                        # choke mid -> exit (overlaps both)
-mk.rect(floor, W, H, 15, 5, 18, 9)                      # EAST exit chamber
-mk.hline(floor, W, H, 7, 17, 18)                        # east throat to the mouth
+mk.vline(floor, W, H, 12, 0, 2)                         # north throat to the mouth
+mk.rect(floor, W, H, 8, 1, 12, 5)                       # NORTH entry chamber
+mk.vline(floor, W, H, 9, 5, 7)                          # choke entry -> mid (overlaps both)
+mk.rect(floor, W, H, 4, 7, 10, 12)                      # MID chamber (the glowmoss bed)
+mk.rect(floor, W, H, 1, 8, 2, 10)                       # WEST alcove (the cache)
+mk.hline(floor, W, H, 9, 2, 4)                          # alcove throat (overlaps mid)
+mk.vline(floor, W, H, 6, 12, 14)                        # choke mid -> exit (overlaps both)
+mk.rect(floor, W, H, 3, 14, 8, 17)                      # SOUTH exit chamber
+mk.vline(floor, W, H, 4, 17, H - 1)                     # south throat to the mouth
 
 for i in range(W * H):                                  # carve the rock
     if floor[i]:
         wall[i] = 0
 
-# glowmoss — across the ONLY path through the mid chamber (rows 6-8, cols 8-13):
+# glowmoss — a full band across the ONLY path through the mid chamber (rows 9-10)
+# plus an organic blob, so the bed can't be skirted:
 glow = mk.make_grid(W, H)
-mk.blob(glow, W, H, 10.5, 7.0, 3.2, 1.8)
+mk.blob(glow, W, H, 7.0, 9.5, 3.4, 1.9)
+mk.rect(glow, W, H, 4, 9, 10, 10)
 for i in range(W * H):                                  # moss only on open floor
     if glow[i] and not floor[i]:
         glow[i] = 0
@@ -59,13 +66,13 @@ terrain_layers = [
 
 # ---- deco: shroom breadcrumbs, boulders, pebbles -------------------------------
 deco = mk.make_grid(W, H)
-for (x, y, n) in [(3, 8, "glowshroom_a"), (5, 6, "glowshroom_b"), (9, 9, "glowshroom_a"),
-                  (12, 5, "glowshroom_b"), (16, 8, "glowshroom_a"), (17, 6, "glowshroom_b"),
-                  (10, 2, "glowshroom_a")]:
+for (x, y, n) in [(10, 2, "glowshroom_a"), (8, 4, "glowshroom_b"), (5, 8, "glowshroom_a"),
+                  (10, 11, "glowshroom_b"), (7, 16, "glowshroom_a"), (3, 15, "glowshroom_b"),
+                  (1, 8, "glowshroom_a")]:
     deco[y * W + x] = gid(n)
-for (x, y) in [(2, 6), (13, 9), (16, 6), (4, 9)]:       # boulders
+for (x, y) in [(11, 4), (4, 12), (8, 14), (3, 17)]:      # boulders
     deco[y * W + x] = gid("boulder")
-for (x, y) in [(5, 8), (11, 9), (15, 9), (11, 2)]:      # stray pebbles
+for (x, y) in [(9, 3), (5, 11), (6, 16), (2, 10)]:       # stray pebbles
     deco[y * W + x] = gid("g_pebble")
 
 # ---- assemble --------------------------------------------------------------------
@@ -78,14 +85,14 @@ m = {
                {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)}],
     "objects": [],
     "warps": [
-        # WEST mouth <-> Wrackline Path. Land one tile IN from Wrackline's east-edge
-        # return warp (so a turn-straight-back re-enters); the mouth is 1 throat row.
-        {"id": "to_wrackline", "at": {"tx": 0, "ty": 7}, "trigger": "step_on",
-         "to_map": "wrackline_path", "to": {"tx": 14, "ty": 21}, "facing": "left",
+        # NORTH mouth <-> Wrackline Path (its bottom gap). Lands one row IN from
+        # Wrackline's bottom-edge return warps.
+        {"id": "to_wrackline", "at": {"tx": 12, "ty": 0}, "trigger": "step_on",
+         "to_map": "wrackline_path", "to": {"tx": 13, "ty": 24}, "facing": "up",
          "transition": "door"},
-        # EAST mouth -> Lanternfall Road (unauthored yet — inert tease until paired).
-        {"id": "to_lanternfall", "at": {"tx": W - 1, "ty": 7}, "trigger": "step_on",
-         "to_map": "lanternfall_road", "to": {"tx": 1, "ty": 4}, "facing": "right",
+        # SOUTH mouth -> Lanternfall Road (its top gap).
+        {"id": "to_lanternfall", "at": {"tx": 4, "ty": H - 1}, "trigger": "step_on",
+         "to_map": "lanternfall_road", "to": {"tx": 2, "ty": 1}, "facing": "down",
          "transition": "door"},
     ],
     "triggers": [],
@@ -97,9 +104,9 @@ m = {
 
 # ---- stamps (signs, cache) ------------------------------------------------------
 owed: list[str] = []
-owed += pt.sign(m, deco, W, sid="sounding_mouth", at=(4, 6))
-# the valuable cache in the north alcove (the cave's reward — off the lane)
-owed += pt.cache(m, cid="sounding_amber", at=(11, 2))
+owed += pt.sign(m, deco, W, sid="sounding_mouth", at=(10, 1))
+# the valuable cache in the west alcove (the cave's reward — off the lane)
+owed += pt.cache(m, cid="sounding_amber", at=(1, 9))
 
 # encounter beds from the glowmoss (the unavoidable mid bed), 16-19 Stone dwellers
 m["encounters"] = pt.zones_from_grid(

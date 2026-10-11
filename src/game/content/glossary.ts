@@ -59,7 +59,13 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
   {
     id: 'lanternway',
     term: 'the Lanternway',
-    desc: 'The lit road that threads all nine valleys and knots at the Vesper Crossroads. Its spokes wake one by one as constellations relight, so the map you can walk keeps growing without ever changing shape.',
+    desc: 'The lit road that threads all nine valleys and knots at the Vesper Crossroads. The near roads you walk; the far valleys hang on the Lantern-car\'s cables, each line waking as its constellation relights — so the map you can cross keeps growing without ever changing shape.',
+  },
+  {
+    id: 'lantern_car',
+    term: 'the Lantern-car',
+    desc: 'The kite-wrights\' cable-car, strung from the Crossroads winch up the mountain\'s flanks to Lowleaf, Galehigh and Nightreach. Each line runs only while the lamp at its far end burns — so the cars wake one by one as their valleys\' Gleams are relit. The ride down always runs.',
+    unlock_flag: 'flag:crossroads_car_intro',
   },
   {
     id: 'coming_round',
@@ -147,7 +153,7 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
   {
     id: 'lanternway',
     term: 'the Lanternway',
-    desc: 'The lit road that rings Vesperholm, spoke to far-off spoke, meeting at the Vesper Crossroads. Its lamps wake region by region as the Gleams return.',
+    desc: 'The lit road that rings Vesperholm, meeting at the Vesper Crossroads — walked to the near valleys, ridden by Lantern-car to the far ones. Its lamps wake region by region as the Gleams return.',
     unlock_flag: 'flag:fenn_errand',
   },
   {

@@ -184,7 +184,27 @@ def place(world: dict, straight: list[dict], root: str):
     return pos, comp, parent, conflicts
 
 
+GIFTS = {"tidecall", "glimmerstep", "updraft_kite", "emberward", "sunsketch", "starreach"}
+_MODELS: dict = {}
+
+
+def _open_cells(world, mid):
+    """Cells a player can ever stand on (holding every Lantern Gift) — border
+    trees, cliffs, deep water and walls are not ground two maps can fight over."""
+    if mid not in _MODELS:
+        from worldmodel import MapModel
+        mm = MapModel(world[mid])
+        _MODELS[mid] = {(x, y) for y in range(mm.h) for x in range(mm.w)
+                        if mm.standable(x, y, abilities=GIFTS)}
+    return _MODELS[mid]
+
+
 def overlaps(world, pos, comp):
+    """Rectangles on top of each other. Two kinds are NOT contradictions:
+    a CAVE under a surface map (caves are underground — Glowmoss Deep under the
+    Gloamwood dell), and overlap made only of ground neither map lets you stand
+    on (shared border woods, shared open sea). Only cells walkable in BOTH maps
+    count."""
     ids = sorted(pos)
     out = []
     for i, a in enumerate(ids):
@@ -198,7 +218,15 @@ def overlaps(world, pos, comp):
             ix = min(ax + aw, bx + bw) - max(ax, bx)
             iy = min(ay + ah, by + bh) - max(ay, by)
             if ix > 0 and iy > 0:
-                out.append((a, b, ix * iy, min(aw * ah, bw * bh)))
+                ka, kb = world[a].get("kind"), world[b].get("kind")
+                if (ka == "cave") != (kb == "cave"):
+                    continue                      # underground: a cave under ground
+                oa, ob = _open_cells(world, a), _open_cells(world, b)
+                both = sum(1 for gy in range(max(ay, by), min(ay + ah, by + bh))
+                           for gx in range(max(ax, bx), min(ax + aw, bx + bw))
+                           if (gx - ax, gy - ay) in oa and (gx - bx, gy - by) in ob)
+                if both:
+                    out.append((a, b, both, min(len(oa), len(ob)) or 1))
     return out
 
 

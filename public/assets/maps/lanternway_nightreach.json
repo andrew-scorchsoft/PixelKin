@@ -24,38 +24,38 @@
       "depth": 0,
       "data": [
         51,
-        52,
-        52,
-        54,
-        13,
-        18,
-        48,
-        51,
-        51,
-        51,
-        51,
-        50,
-        52,
-        51,
-        51,
-        50,
-        50,
-        52,
-        51,
-        50,
-        52,
-        52,
-        50,
-        50,
-        52,
         111,
         57,
-        58,
-        13,
-        18,
+        56,
+        56,
+        57,
+        56,
+        57,
+        110,
+        51,
+        51,
+        50,
+        52,
+        51,
+        51,
+        50,
+        50,
+        52,
+        51,
+        50,
+        52,
+        52,
+        50,
+        50,
+        52,
+        53,
+        1,
+        1,
+        2,
+        1,
+        1,
+        4,
         55,
-        56,
-        56,
         56,
         57,
         110,
@@ -75,8 +75,8 @@
         53,
         2,
         1,
-        14,
-        18,
+        1,
+        1,
         1,
         3,
         1,
@@ -99,8 +99,8 @@
         53,
         1,
         3,
-        13,
-        19,
+        2,
+        1,
         1,
         3,
         2,
@@ -123,8 +123,8 @@
         54,
         1,
         2,
-        13,
-        19,
+        1,
+        1,
         3,
         1,
         4,
@@ -147,8 +147,8 @@
         53,
         1,
         1,
-        14,
-        18,
+        1,
+        2,
         1,
         1,
         1,
@@ -171,8 +171,8 @@
         53,
         1,
         1,
-        13,
-        19,
+        9,
+        12,
         3,
         1,
         1,
@@ -1396,65 +1396,47 @@
       "h": 4,
       "overhang": 3,
       "walk_under": true
+    },
+    {
+      "id": "car_winch",
+      "sprite": "galehigh_winch",
+      "at": {
+        "tx": 3,
+        "ty": 1
+      },
+      "w": 4,
+      "h": 5,
+      "overhang": 3,
+      "walk_under": true
     }
   ],
   "warps": [
     {
       "id": "to_nightreach",
       "at": {
-        "tx": 4,
-        "ty": 0
-      },
-      "trigger": "step_on",
-      "to_map": "nightreach_observatory",
-      "to": {
-        "tx": 4,
-        "ty": 28
-      },
-      "facing": "up",
-      "transition": "fade"
-    },
-    {
-      "id": "to_nightreach_e",
-      "at": {
-        "tx": 5,
-        "ty": 0
-      },
-      "trigger": "step_on",
-      "to_map": "nightreach_observatory",
-      "to": {
-        "tx": 5,
-        "ty": 28
-      },
-      "facing": "up",
-      "transition": "fade"
-    },
-    {
-      "id": "to_crossroads",
-      "at": {
         "tx": 23,
         "ty": 12
       },
       "trigger": "step_on",
-      "to_map": "vesper_crossroads",
+      "to_map": "nightreach_observatory",
       "to": {
         "tx": 1,
-        "ty": 3
+        "ty": 20
       },
       "facing": "right",
       "transition": "fade"
     },
     {
-      "id": "to_crossroads_s",
+      "id": "to_nightreach_s",
       "at": {
         "tx": 23,
         "ty": 13
       },
       "trigger": "step_on",
-      "to_map": "vesper_crossroads",
+      "to_map": "nightreach_observatory",
       "to": {
         "tx": 1,
-        "ty": 4
+        "ty": 21
       },
       "facing": "right",
       "transition": "fade"
@@ -1470,6 +1452,46 @@
       },
       "activation": "interact",
       "ref": "sign.lanternway_nightreach"
+    },
+    {
+      "id": "car_down_3",
+      "kind": "cutscene",
+      "at": {
+        "tx": 3,
+        "ty": 5
+      },
+      "activation": "interact",
+      "ref": "script.lantern_car_down_nightreach"
+    },
+    {
+      "id": "car_down_4",
+      "kind": "cutscene",
+      "at": {
+        "tx": 4,
+        "ty": 5
+      },
+      "activation": "interact",
+      "ref": "script.lantern_car_down_nightreach"
+    },
+    {
+      "id": "car_down_5",
+      "kind": "cutscene",
+      "at": {
+        "tx": 5,
+        "ty": 5
+      },
+      "activation": "interact",
+      "ref": "script.lantern_car_down_nightreach"
+    },
+    {
+      "id": "car_down_6",
+      "kind": "cutscene",
+      "at": {
+        "tx": 6,
+        "ty": 5
+      },
+      "activation": "interact",
+      "ref": "script.lantern_car_down_nightreach"
     }
   ],
   "encounters": [],

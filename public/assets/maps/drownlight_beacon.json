@@ -105,10 +105,10 @@
         "ty": 7
       },
       "trigger": "step_on",
-      "to_map": "coldfog_marches_ii",
+      "to_map": "coldfog_marches_i",
       "to": {
         "tx": 1,
-        "ty": 12
+        "ty": 4
       },
       "facing": "right",
       "requires_ability": "emberward",
@@ -122,10 +122,10 @@
         "ty": 8
       },
       "trigger": "step_on",
-      "to_map": "coldfog_marches_ii",
+      "to_map": "coldfog_marches_i",
       "to": {
         "tx": 1,
-        "ty": 13
+        "ty": 5
       },
       "facing": "right",
       "requires_ability": "emberward",

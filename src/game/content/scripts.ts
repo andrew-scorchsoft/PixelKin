@@ -65,24 +65,9 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'cameraReset', ms: 500 },
   ],
 
-  // Heading up the north (marsh) road: the one ungated road out of the Crossroads
-  // that climbs into far-higher country (the Coldfog Marches, North region). The
-  // Waykeeper steps up off her post to warn a young Wayfarer off — but she keeps the
-  // lamps, not the gate, so the warning is a NUDGE, never a wall: she says her piece
-  // and stands aside. Fires once (band hidden_when 'flag:warned_marsh_road'); if she's
-  // off her post (the Round chart swap), the actor ops no-op and the lines still play.
-  'script.crossroads_marsh_warn': [
-    { op: 'emote', actor: 'waykeeper', emote: 'alert' },
-    { op: 'move', actor: 'waykeeper', to: { tx: 9, ty: 6 } },
-    { op: 'face', actor: 'waykeeper', facing: 'up' },
-    { op: 'face', actor: 'player', facing: 'down' },
-    { op: 'say', speaker: 'WAYKEEPER', text: 'Hold a moment, young Wayfarer. That north road climbs to the Coldfog Marches — and the cold up there bites deeper than any lamp you carry yet.' },
-    { op: 'say', speaker: 'WAYKEEPER', text: 'The kin that haunt the marsh are hardened things, a long way from any hearth. It is no road for a new flame. Your Wayfaring runs the LIT ways — WEST to Tinderwick, EAST to Pearlmoor.' },
-    { op: 'say', speaker: 'WAYKEEPER', text: 'But I keep the lamps, not the gate. If you are set on a look, I will not bar your way — only tread careful, and turn back the moment the dark leans in.' },
-    { op: 'move', actor: 'waykeeper', to: { tx: 9, ty: 8 } },
-    { op: 'move', actor: 'waykeeper', to: { tx: 8, ty: 8 } },
-    { op: 'face', actor: 'waykeeper', facing: 'down' },
-  ],
+  // (The old north-marsh-road warning retired with the 2026-10 geometry fix — the
+  // Coldfog Marches hang off Nightreach now; the Waykeeper's first-visit nudge
+  // explains the Lantern-car instead: script.crossroads_car_intro, regions/south.ts.)
 
   // Fenn at the waystone: delight, then the small ask — his satchel, forgotten on
   // the Tinderwick store counter, with the whole Wayfaring packed inside it.
@@ -2495,7 +2480,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'round_kite', count: 1 },
     { op: 'say', text: 'A small kite in Lanternway colours, wrapped against the road. Received the WAYSTONE KITE!' },
-    { op: 'say', speaker: 'KITE-MAKER', text: 'Built to survive an owner of eight, which is the hardest weather there is. Down the spoke to the Crossroads with it — and tell the kid: the string hand is everything. The kite already knows the rest.' },
+    { op: 'say', speaker: 'KITE-MAKER', text: 'Built to survive an owner of eight, which is the hardest weather there is. Down the lane and the Lantern-car to the Crossroads with it — and tell the kid: the string hand is everything. The kite already knows the rest.' },
     { op: 'setFlag', flag: 'flag:q_round_kite_taken' },
   ],
   'script.round_kite_deliver': [
@@ -5124,7 +5109,7 @@ export const SCRIPTS: ScriptRegistry = {
     // --- The Crown, the Spire, and after. -------------------------------------
     {
       op: 'say', if_flag: 'gleam:lunar', unless_flag: 'flag:keystar_relit', speaker: 'ANDREW',
-      text: 'Eight. The Crown\'s whole, and the Penumbra\'s parted for you. Back to the Vesper Crossroads and take the inward road. The Spire\'s been waiting the whole time, and it isn\'t a patient sort of waiting.',
+      text: 'Eight. The Crown\'s whole, and the Penumbra\'s parted for you. Ride the Lantern-car down to the Vesper Crossroads and take the mountain road north. The Spire\'s been waiting the whole time, and it isn\'t a patient sort of waiting.',
     },
     {
       op: 'say', if_flag: 'flag:keystar_relit', unless_flag: 'flag:dawn', speaker: 'ANDREW',

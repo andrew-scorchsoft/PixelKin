@@ -136,11 +136,11 @@ m: dict = {
 # ---- warps (graph.ts `to_beacon` edge, both directions Emberward) -------------------
 m["warps"] += [
     {"id": "to_marches", "at": {"tx": 17, "ty": 7}, "trigger": "step_on",
-     "to_map": "coldfog_marches_ii", "to": {"tx": 1, "ty": 12}, "facing": "right",
+     "to_map": "coldfog_marches_i", "to": {"tx": 1, "ty": 4}, "facing": "right",
      "requires_ability": "emberward",
      "blocked_ref": "sign.coldfog_beacon", "transition": "fade"},
     {"id": "to_marches_s", "at": {"tx": 17, "ty": 8}, "trigger": "step_on",
-     "to_map": "coldfog_marches_ii", "to": {"tx": 1, "ty": 13}, "facing": "right",
+     "to_map": "coldfog_marches_i", "to": {"tx": 1, "ty": 5}, "facing": "right",
      "requires_ability": "emberward",
      "blocked_ref": "sign.coldfog_beacon", "transition": "fade"},
 ]

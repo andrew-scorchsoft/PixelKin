@@ -110,13 +110,12 @@ mk.organic_border(crag, W, H, depth=0,
                   bumps=[(6, 1, 2), (20, 1, 2), (1, 8, 2), (1, 19, 2),
                          (28, 7, 2), (28, 19, 2), (10, 24, 2), (18, 24, 2)],
                   rng=rng)
-# SOUTH gap — the boundary with Marches I (cols 24-25)
-for y in (23, 24, 25):
+# NORTH gap — the boundary with Marches I (cols 24-25). 2026-10 geometry fix:
+# the marshes hang off Nightreach (where they really are), so Marches I lies
+# NORTH of here, not south toward the Crossroads; the Drownlight Beacon hangs
+# off Marches I's west flank.
+for y in (0, 1):
     for x in (24, 25):
-        crag[y * W + x] = 0
-# WEST gap, low — the Drownlight Beacon spur (rows 12-13)
-for x in (0, 1):
-    for y in (12, 13):
         crag[y * W + x] = 0
 # WEST gap, high — the Nightreach back-door (rows 3-4)
 for x in (0, 1):
@@ -191,24 +190,15 @@ m: dict = {
 
 # ---- warps (graph.ts edge ids verbatim) ---------------------------------------------
 m["warps"] += [
-    # SOUTH <-> coldfog_marches_i (`to_marsh_ii` edge; Emberward both ways)
-    {"id": "to_marsh_i", "at": {"tx": 24, "ty": 25}, "trigger": "step_on",
-     "to_map": "coldfog_marches_i", "to": {"tx": 8, "ty": 1}, "facing": "down",
+    # NORTH <-> coldfog_marches_i (`to_marsh_ii` edge; Emberward both ways)
+    {"id": "to_marsh_i", "at": {"tx": 24, "ty": 0}, "trigger": "step_on",
+     "to_map": "coldfog_marches_i", "to": {"tx": 8, "ty": 28}, "facing": "up",
      "requires_ability": "emberward",
      "blocked_ref": "sign.coldfog_boundary", "transition": "fade"},
-    {"id": "to_marsh_i_e", "at": {"tx": 25, "ty": 25}, "trigger": "step_on",
-     "to_map": "coldfog_marches_i", "to": {"tx": 9, "ty": 1}, "facing": "down",
+    {"id": "to_marsh_i_e", "at": {"tx": 25, "ty": 0}, "trigger": "step_on",
+     "to_map": "coldfog_marches_i", "to": {"tx": 9, "ty": 28}, "facing": "up",
      "requires_ability": "emberward",
      "blocked_ref": "sign.coldfog_boundary", "transition": "fade"},
-    # WEST low <-> drownlight_beacon (`to_beacon`, Emberward — the Dark spur)
-    {"id": "to_beacon", "at": {"tx": 0, "ty": 12}, "trigger": "step_on",
-     "to_map": "drownlight_beacon", "to": {"tx": 16, "ty": 7}, "facing": "left",
-     "requires_ability": "emberward",
-     "blocked_ref": "sign.coldfog_beacon", "transition": "fade"},
-    {"id": "to_beacon_s", "at": {"tx": 0, "ty": 13}, "trigger": "step_on",
-     "to_map": "drownlight_beacon", "to": {"tx": 16, "ty": 8}, "facing": "left",
-     "requires_ability": "emberward",
-     "blocked_ref": "sign.coldfog_beacon", "transition": "fade"},
     # WEST high -> nightreach_observatory (`to_observatory_fog`, Emberward —
     # the OPTIONAL back-door; placeholder landing, W4 lands it; see HANDSHAKE)
     {"id": "to_observatory_fog", "at": {"tx": 0, "ty": 3}, "trigger": "step_on",

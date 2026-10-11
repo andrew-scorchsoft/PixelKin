@@ -351,13 +351,18 @@ const JOURNEY = [
   // retries (Lampling/Lunaveil/Keylumen) and pre-climb spoke top-ups.
   // Income is item-shaped by design (Radiant Lamp, Way-lamp, the Lampling) —
   // quests pay 0 wicks; finds = the Penumbra satchel (600) + the gallery
-  // toll-box (800); valuables = the Penumbra islet Starglass (1,500) + the
-  // [MISSABLE] spire-landing Starglass (1,500) + the Starwell Moth-amber (600).
+  // toll-box (800) + the Approach's wicks tin (500); valuables = the Penumbra
+  // islet Starglass (1,500) + the [MISSABLE] spire-landing Starglass (1,500) +
+  // the Starwell Moth-amber (600) + the Approach's Starglass (1,500). The
+  // Umbral Approach (2026-10) adds three keeper acolytes + its lv 50-53 beds.
   {
-    name: 'Penumbra Ring → Umbral Spire',
+    name: 'Umbral Approach → Penumbra Ring → Umbral Spire',
     leadShare: 1.00,
-    wild: { areas: ['umbral_spire', 'coldfog_marches'], band: [52, 56], fights: { rusher: 6, mainline: 10, explorer: 14 } },
+    wild: { areas: ['umbral_approach', 'umbral_spire', 'coldfog_marches'], band: [50, 56], fights: { rusher: 6, mainline: 10, explorer: 14 } },
     trainers: [
+      T('Orla (approach acolyte)', 'keeper', [K(50, 136), K(51, 112)]),
+      T('Brenn (approach acolyte)', 'keeper', [K(51, 141), K(52, 143)]),
+      T('Wynne (approach acolyte)', 'keeper', [K(52, 133), K(52, 134), K(53, 113)]),
       T('Merrin (Hollowing acolyte A)', 'keeper', [K(52, 136), K(53, 137)]),
       T('Tace (Hollowing acolyte B)', 'keeper', [K(52, 134), K(52, 133), K(53, 137)]),
       T('Ivorwen (Hollowing acolyte C)', 'keeper', [K(53, 141), K(54, 142)]),
@@ -365,7 +370,7 @@ const JOURNEY = [
       T('Sefa (Hollowing acolyte E)', 'keeper', [K(54, 135), K(55, 139)]),
       T('Warden Còr', 'cor', [K(53, 113), K(54, 85), K(54, 135), K(55, 138), K(55, 142), K(56, 150)]),
     ],
-    income: { quests: 0, valuables: 3600, finds: 1400 },
+    income: { quests: 0, valuables: 5100, finds: 1900 },
     spend: { bright_balm: 3, chart_end: 1 },
     checkpoint: { name: 'Warden Còr (climax)', rec: 54, ace: 56 },
   },
@@ -459,6 +464,9 @@ const BUILT_PAYOUTS = {
   junior_watcher_b: ['keeper', 51, 1020],
   wren_nightreach: ['rival', 50, 1200],
   nessa_cole: ['warden', 52, 3120],
+  approach_acolyte_a: ['keeper', 51, 1020], // the Umbral Approach (mountain road)
+  approach_acolyte_b: ['keeper', 52, 1040],
+  approach_acolyte_c: ['keeper', 53, 1060],
   hollowing_acolyte_a: ['keeper', 53, 1060],
   hollowing_acolyte_b: ['keeper', 53, 1060],
   hollowing_acolyte_c: ['keeper', 54, 1080],

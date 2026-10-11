@@ -327,12 +327,12 @@
         "ty": 33
       },
       "trigger": "step_on",
-      "to_map": "vesper_crossroads",
+      "to_map": "umbral_approach",
       "to": {
-        "tx": 9,
-        "ty": 17
+        "tx": 15,
+        "ty": 1
       },
-      "facing": "up",
+      "facing": "down",
       "transition": "fade"
     },
     {
@@ -342,12 +342,12 @@
         "ty": 33
       },
       "trigger": "step_on",
-      "to_map": "vesper_crossroads",
+      "to_map": "umbral_approach",
       "to": {
-        "tx": 10,
-        "ty": 17
+        "tx": 16,
+        "ty": 1
       },
-      "facing": "up",
+      "facing": "down",
       "transition": "fade"
     },
     {

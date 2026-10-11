@@ -126,13 +126,17 @@ mk.organic_border(cliff, W, H, depth=0,
 mk.rect(tree, W, H, 0, 27, W - 1, H - 1)
 mk.organic_border(tree, W, H, depth=0,
                   bumps=[(3, 27, 2), (15, 27, 2)], rng=rng)
-# SOUTH gap — the crossroads opening (exactly the warp pair, audit-tight)
+# SOUTH gap — down to Marches II (2026-10 geometry fix: the marshes hang off
+# Nightreach, so this green hollow — the one pocket the fog never reached — is
+# entered from the deep marsh BELOW it, not from the Crossroads)
 for (x, y) in [(8, 27), (9, 27), (8, 28), (9, 28), (8, 29), (9, 29)]:
     tree[y * W + x] = 0
-# NORTH gap — the deep-fog boundary to Marches II (cols 8-9)
-for y in (0, 1):
-    cliff[y * W + 8] = 0
-    cliff[y * W + 9] = 0
+# the old road NORTH is lost in the fog now (the north gap stays shut — the
+# dead reed-lanterns march up to the fog wall and stop); the Drownlight Beacon
+# spur opens off the WEST flank instead (rows 4-5)
+for y in (4, 5):
+    for x in (0, 1, 2, 3):
+        cliff[y * W + x] = 0
 
 # THE BLUFF (NE) — X3's bravest viewpoint: cliff rim, scree ledge lip, west climb
 BLUFF = pt.Area(11, 3, 17, 9)
@@ -245,23 +249,25 @@ m: dict = {
 
 # ---- warps (graph.ts edge ids verbatim) ---------------------------------------------
 m["warps"] += [
-    # SOUTH <-> vesper_crossroads (`to_marsh`, UNGATED — the hub spoke)
-    {"id": "to_crossroads", "at": {"tx": 8, "ty": 29}, "trigger": "step_on",
-     "to_map": "vesper_crossroads", "to": {"tx": 9, "ty": 1}, "facing": "down",
-     "transition": "fade"},
-    {"id": "to_crossroads_e", "at": {"tx": 9, "ty": 29}, "trigger": "step_on",
-     "to_map": "vesper_crossroads", "to": {"tx": 10, "ty": 1}, "facing": "down",
-     "transition": "fade"},
-    # NORTH <-> coldfog_marches_ii (`to_marsh_ii`, Emberward HELD both ways —
+    # SOUTH <-> coldfog_marches_ii (`to_marsh_ii`, Emberward HELD both ways —
     # the deep-fog boundary; the sign states the why, §3a r8)
-    {"id": "to_marsh_ii", "at": {"tx": 8, "ty": 0}, "trigger": "step_on",
-     "to_map": "coldfog_marches_ii", "to": {"tx": 24, "ty": 24}, "facing": "up",
+    {"id": "to_marsh_ii", "at": {"tx": 8, "ty": 29}, "trigger": "step_on",
+     "to_map": "coldfog_marches_ii", "to": {"tx": 24, "ty": 1}, "facing": "down",
      "requires_ability": "emberward",
      "blocked_ref": "sign.coldfog_boundary", "transition": "fade"},
-    {"id": "to_marsh_ii_e", "at": {"tx": 9, "ty": 0}, "trigger": "step_on",
-     "to_map": "coldfog_marches_ii", "to": {"tx": 25, "ty": 24}, "facing": "up",
+    {"id": "to_marsh_ii_e", "at": {"tx": 9, "ty": 29}, "trigger": "step_on",
+     "to_map": "coldfog_marches_ii", "to": {"tx": 25, "ty": 1}, "facing": "down",
      "requires_ability": "emberward",
      "blocked_ref": "sign.coldfog_boundary", "transition": "fade"},
+    # WEST high <-> drownlight_beacon (`to_beacon`, Emberward — the Dark spur)
+    {"id": "to_beacon", "at": {"tx": 0, "ty": 4}, "trigger": "step_on",
+     "to_map": "drownlight_beacon", "to": {"tx": 16, "ty": 7}, "facing": "left",
+     "requires_ability": "emberward",
+     "blocked_ref": "sign.coldfog_beacon", "transition": "fade"},
+    {"id": "to_beacon_s", "at": {"tx": 0, "ty": 5}, "trigger": "step_on",
+     "to_map": "drownlight_beacon", "to": {"tx": 16, "ty": 8}, "facing": "left",
+     "requires_ability": "emberward",
+     "blocked_ref": "sign.coldfog_beacon", "transition": "fade"},
 ]
 
 # ---- the road that forgets: dark reed-lanterns remember the lane --------------------
@@ -343,7 +349,7 @@ owed += ["npc.coldfog_marsh_hermit (hooks ref VERBATIM — the 'kindest thing' "
 
 # ---- signs --------------------------------------------------------------------------
 owed += pt.sign(m, deco, W, sid="coldfog_marches", at=(10, 24))   # the blight line
-owed += pt.sign(m, deco, W, sid="coldfog_boundary", at=(10, 2))   # the sincere gate
+owed += pt.sign(m, deco, W, sid="coldfog_boundary", at=(10, 25))  # the sincere gate (down to the deep marsh)
 # (sign.coldfog_boundary doubles as the to_marsh_ii warps' blocked_ref)
 
 # ---- caches (variety rule: one consumable off-lane, the valuable behind murk) -------

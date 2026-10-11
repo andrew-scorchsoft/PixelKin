@@ -13,12 +13,17 @@ vesperlamp + starter ceremony (script.intro_mentor) is held AT the waystone.
 Fenn is four flag-disjoint placements on one tile; the Pearlmoor spoke is
 has_starter-gated so the opening can't wander past the ceremony.
 
-Live spokes: WEST -> Tinderwick, EAST -> Pearlmoor Quay (has_starter-gated). The
-NORTH road (Coldfog Marches) opens with the starter too but climbs into far-higher
-country (the Waykeeper's marsh_warn nudge greets it); the SOUTH inward road (the
-Spire approach / penumbra_ring) stays shut till the full Crown (hub_unlocked). Every
-onward road is shut to a kin-less newcomer and answers a walk-in with a "see Fenn
-first" / "not the way yet" hint (blocked_ref) — no road is a silent dead-end.
+THE 2026-10 GEOMETRY FIX (honest north-up world): the hub keeps only roads that
+really touch it. WEST -> Tinderwick (the Lanternway lane). NORTH-WEST -> the bay
+road home (Lanternfall Road -> Sounding Cave -> Wrackline Path -> Saltreach Fen I;
+gleam:tide-gated from this side). NORTH -> the mountain road (umbral_approach ->
+Penumbra Ring -> the Spire; hub_unlocked). The far valleys (Lowleaf, Galehigh,
+Nightreach) sit up on the mountain's flanks, hundreds of strides away — they are
+reached from here by THE LANTERN-CAR (the lamp-winch on the east platform,
+script.lantern_car: each cable's car runs once its valley's Gleam is relit; the
+ride DOWN from a valley always runs). The Cinderhead cart-hoist (SW) is the deep
+mine line. The old marsh road is gone: the Coldfog Marches hang off Nightreach,
+where they really are; the Waykeeper's first-visit nudge now explains the cars.
 
 THE ENDGAME ALSO HAPPENS HERE (C3 wiring, walkthrough/05): C4 Fenn's counsel +
 A5 Wren-joins (the inward road's full-cut band at y=16 carries Fenn's Starlamp
@@ -70,25 +75,20 @@ path = mk.make_grid(W, H)
 CX, CY = 9, 9                                            # plaza centre-ish
 mk.rect(path, W, H, CX - 2, CY - 2, CX + 3, CY + 2)      # the plaza apron
 mk.hline(path, W, H, CY, 0, CX); mk.hline(path, W, H, CY - 1, 0, CX)   # west road
-mk.hline(path, W, H, CY, CX, W - 1); mk.hline(path, W, H, CY - 1, CX, W - 1)  # east road
+mk.hline(path, W, H, CY, CX, W - 2); mk.hline(path, W, H, CY - 1, CX, W - 2)  # east road (to the car platform)
 mk.vline(path, W, H, CX, 0, CY); mk.vline(path, W, H, CX + 1, 0, CY)   # north road
-mk.vline(path, W, H, CX, CY, H - 1); mk.vline(path, W, H, CX + 1, CY, H - 1)  # south road
-# the LOWLEAF spoke: east-north out of the clearing (wakes with the Verdant
-# Gleam — the warp below carries the gate; walkthrough R3 "wakes with spoke")
-mk.hline(path, W, H, 3, CX, W - 1); mk.hline(path, W, H, 4, CX, W - 1)
-# the GALEHIGH spoke: west-north out of the clearing (wakes with the Storm
-# Gleam — same pattern; walkthrough R4 "[wakes with spoke]")
-mk.hline(path, W, H, 3, 0, CX); mk.hline(path, W, H, 4, 0, CX)
-# the NIGHTREACH spoke: out of the clearing's NW corner, joining the Galehigh
-# road rows (wakes with the Lunar Gleam — the warp below carries the gate; the
-# LAST Lanternway spoke, walkthrough 04-west "exit via the Lanternway". With it
-# the Round's anchor faces all five lit roads.)
+mk.vline(path, W, H, CX, CY, H - 2); mk.vline(path, W, H, CX + 1, CY, H - 2)  # south lane (to the inn + hoist)
+# the BAY ROAD home: down from Lanternfall Road at the NW corner (cols 3-4),
+# then east along rows 3-4 to join the north road above the plaza (wakes from
+# this side with the Tide Gleam — the warp below carries the gate)
+mk.hline(path, W, H, 3, 3, CX); mk.hline(path, W, H, 4, 3, CX)
 mk.vline(path, W, H, 3, 0, 4); mk.vline(path, W, H, 4, 0, 4)
-# the MINE-CART HOIST spur (SW, by the south road): the Cinderhead Deep
+# the MINE-CART HOIST spur (SW, by the south lane): the Cinderhead Deep
 # shortcut's hub end — a cart-lift that only runs once the sealed door is
 # opened from the deep (graph.ts `shortcut_crossroads`, wakes with
-# flag:shortcut_mine; walkthrough/02-east §0 rule 3). A short stub to the edge.
-mk.rect(path, W, H, CX - 1, 16, CX, 16); mk.vline(path, W, H, CX - 1, 16, 17)
+# flag:shortcut_mine; walkthrough/02-east §0 rule 3). The hoist mouth is a
+# mid-map ride (row 16), not a road off the map's edge.
+mk.rect(path, W, H, CX - 1, 16, CX, 16)
 # the waystation INN's apron (inn at cols 13-17, door at (15,14)): a 2-row town
 # apron in front of the door, joined LEFT to the south road so the inn sits in
 # the plaza, not on a lawn (level-design §11 rule 5). Painted into the terrain
@@ -97,20 +97,16 @@ mk.rect(path, W, H, CX - 1, 16, CX, 16); mk.vline(path, W, H, CX - 1, 16, 17)
 mk.rect(path, W, H, 11, 15, 17, 16)
 # punch the borders where the roads leave
 for y in (CY - 1, CY):
-    tree[y * W + 0] = 0; tree[y * W + 1] = 0
-    tree[y * W + (W - 1)] = 0; tree[y * W + (W - 2)] = 0
+    tree[y * W + 0] = 0; tree[y * W + 1] = 0      # west road (Tinderwick)
+    tree[y * W + (W - 2)] = 0                     # the car platform (edge stays wooded)
 for x in (CX, CX + 1):
-    tree[0 * W + x] = 0; tree[1 * W + x] = 0
-    tree[(H - 1) * W + x] = 0; tree[(H - 2) * W + x] = 0
-for y in (3, 4):
-    tree[y * W + (W - 1)] = 0; tree[y * W + (W - 2)] = 0
-    tree[y * W + 0] = 0; tree[y * W + 1] = 0
-# punch the Nightreach spoke opening (NW, cols 3-4)
+    tree[0 * W + x] = 0; tree[1 * W + x] = 0      # north: the mountain road
+    tree[(H - 2) * W + x] = 0                     # south lane foot (row 17 stays wooded)
+# punch the bay road opening (NW, cols 3-4)
 for x in (3, 4):
     tree[0 * W + x] = 0; tree[1 * W + x] = 0
-# punch the mine-cart hoist opening (SW edge, col CX-1)
-for y in (16, 17):
-    tree[y * W + (CX - 1)] = 0
+# the mine-cart hoist mouth (SW, row 16 only — no edge road)
+tree[16 * W + (CX - 1)] = 0
 # carve the inn's apron out of the forest (the bottom border + the dropped blob
 # covered the inn's front) — open ground at rows 15-16, cols 11-17. Row 17 stays
 # tree so the map's bottom edge is still sealed behind the inn.
@@ -144,6 +140,10 @@ objects = [
     # the multi-arm FINGERPOST landmark at the junction (walk-under prop).
     {"id": "inn", "sprite": "vesper_crossroads_inn", "at": {"tx": 13, "ty": 10}, "w": 5, "h": 5, "overhang": 3},
     {"id": "fingerpost", "sprite": "vesper_crossroads_fingerpost", "at": {"tx": 7, "ty": 9}, "w": 3, "h": 3, "overhang": 2, "walk_under": True},
+    # THE LANTERN-CAR: the kite-wrights' great lamp-winch on the east platform,
+    # its cables strung up into the dark toward the mountain's shoulders (the
+    # Galehigh winch master — the same hands built both). Confirm at its base.
+    {"id": "car_winch", "sprite": "galehigh_winch", "at": {"tx": 15, "ty": 3}, "w": 4, "h": 5, "overhang": 3, "walk_under": True},
 ]
 building_cells = {(x, y) for o in objects
                   for y in range(o["at"]["ty"], o["at"]["ty"] + o["h"])
@@ -153,7 +153,7 @@ covered = {(x, y) for y in range(H) for x in range(W)
 avoid = covered | building_cells
 # C3 ENDGAME placements stand on these grass tiles — keep scatter decor off them
 # (the trail kid, the waystation innkeeper, Wren at the inward road).
-ENDGAME_NPC_TILES = {(5, 7), (11, 12), (11, 14)}
+ENDGAME_NPC_TILES = {(5, 7), (11, 12), (11, 2)}
 avoid |= ENDGAME_NPC_TILES
 
 # ---- deco: the Waystone, signs, flowerbeds, scatter -------------------------------
@@ -166,10 +166,9 @@ for (x, y) in [(CX - 2, CY - 2), (CX + 3, CY - 2), (CX - 2, CY + 2), (CX + 3, CY
     deco[y * W + x] = gid("flowerbed_a") if (x + y) % 2 else gid("flowerbed_b")
 sign_tiles = {
     "sign_waystone": (CX + 3, CY),       # off to the east of the Waystone, clear of the main lane
-    "sign_spire": (CX - 1, CY + 3),      # beside the south (inward) road
-    "sign_lowleaf": (CX + 3, 5),         # beside the east-north (Lowleaf) spoke
-    "sign_galehigh": (CX - 4, 5),        # beside the west-north (Galehigh) spoke
-    "sign_nightreach": (2, 5),           # beside the NW (Nightreach) spoke
+    "sign_spire": (CX + 2, 5),           # beside the north (mountain) road
+    "sign_car": (CX + 5, 7),             # beside the Lantern-car winch
+    "sign_bayroad": (CX - 4, 5),         # beside the NW bay road home
     "sign_mineshortcut": (CX - 2, 16),   # beside the mine-cart hoist (SW stub)
 }
 for (x, y) in sign_tiles.values():
@@ -186,81 +185,35 @@ m = {
                {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)}],
     "objects": objects,
     "warps": [
-        # THE SPOKES ARE LANE MAPS NOW (2026-06 topology fix, build_lanternway.py):
-        # every spoke warp targets its lanternway_* lane, and the hub's gates
-        # radiate by TRUE BEARING — the west road carries Tinderwick (SW) and
-        # Nightreach (W), the east road Pearlmoor (SE) and Lowleaf (NE), the NW
-        # vertical road is the due-north Galehigh climb. (The galehigh/nightreach
-        # destinations SWAPPED roads — same paint, compass-true gates.)
+        # 2026-10: only the roads that really touch the hub leave its edges —
+        # WEST (Tinderwick), NORTH-WEST (the bay road home), NORTH (the mountain
+        # road). The far valleys ride the Lantern-car (script.lantern_car).
         {"id": "to_tinderwick", "at": {"tx": 0, "ty": CY}, "trigger": "step_on",
          "to_map": "lanternway_tinderwick", "to": {"tx": 23, "ty": 6}, "facing": "left", "transition": "fade"},
         {"id": "to_tinderwick_n", "at": {"tx": 0, "ty": CY - 1}, "trigger": "step_on",
          "to_map": "lanternway_tinderwick", "to": {"tx": 23, "ty": 5}, "facing": "left", "transition": "fade"},
         # gleam:tide-gated (the per-town spoke rule): the quay is first reached by
-        # the coast road; the route home (Lanternfall Road -> Sounding Cave ->
-        # Wrackline Path -> Pearlmoor) is the Tide Gleam's reward. (Land 1 tile IN
-        # from Lanternfall's west-edge return warp.)
-        {"id": "to_pearlmoor", "at": {"tx": W - 1, "ty": CY}, "trigger": "step_on",
-         "to_map": "lanternfall_road", "to": {"tx": 1, "ty": 23}, "facing": "right",
+        # the coast road; the bay road home (Lanternfall Road -> Sounding Cave ->
+        # Wrackline Path -> Saltreach Fen I -> Pearlmoor) is the Tide Gleam's
+        # reward from this side. Lands one row IN from Lanternfall's bottom warps.
+        {"id": "to_pearlmoor", "at": {"tx": 3, "ty": 0}, "trigger": "step_on",
+         "to_map": "lanternfall_road", "to": {"tx": 12, "ty": 24}, "facing": "up",
          "requires_flag": "gleam:tide", "blocked_ref": "npc.waykeeper_pearlmoor_gate", "transition": "fade"},
-        {"id": "to_pearlmoor_n", "at": {"tx": W - 1, "ty": CY - 1}, "trigger": "step_on",
-         "to_map": "lanternfall_road", "to": {"tx": 1, "ty": 22}, "facing": "right",
+        {"id": "to_pearlmoor_e", "at": {"tx": 4, "ty": 0}, "trigger": "step_on",
+         "to_map": "lanternfall_road", "to": {"tx": 13, "ty": 24}, "facing": "up",
          "requires_flag": "gleam:tide", "blocked_ref": "npc.waykeeper_pearlmoor_gate", "transition": "fade"},
-        # the Lowleaf spoke (east-north) — wakes with the Verdant Gleam
-        # (graph.ts declares it ungated; the warp-level flag mirrors the South
-        # pattern of gating stricter than the graph, with the Waykeeper's own
-        # "not yet" — the long way round is the fen-road, always open).
-        {"id": "to_lowleaf", "at": {"tx": W - 1, "ty": 3}, "trigger": "step_on",
-         "to_map": "lanternway_lowleaf", "to": {"tx": 0, "ty": 24}, "facing": "right",
-         "requires_flag": "gleam:verdant", "blocked_ref": "npc.waykeeper_lowleaf_gate",
-         "transition": "fade"},
-        {"id": "to_lowleaf_s", "at": {"tx": W - 1, "ty": 4}, "trigger": "step_on",
-         "to_map": "lanternway_lowleaf", "to": {"tx": 0, "ty": 25}, "facing": "right",
-         "requires_flag": "gleam:verdant", "blocked_ref": "npc.waykeeper_lowleaf_gate",
-         "transition": "fade"},
-        # the Nightreach spoke (due WEST — it took over the west road rows) —
-        # wakes with the Lunar Gleam.
-        {"id": "to_nightreach", "at": {"tx": 0, "ty": 3}, "trigger": "step_on",
-         "to_map": "lanternway_nightreach", "to": {"tx": 23, "ty": 12}, "facing": "left",
-         "requires_flag": "gleam:lunar", "blocked_ref": "npc.waykeeper_nightreach_gate",
-         "transition": "fade"},
-        {"id": "to_nightreach_s", "at": {"tx": 0, "ty": 4}, "trigger": "step_on",
-         "to_map": "lanternway_nightreach", "to": {"tx": 23, "ty": 13}, "facing": "left",
-         "requires_flag": "gleam:lunar", "blocked_ref": "npc.waykeeper_nightreach_gate",
-         "transition": "fade"},
-        # the Galehigh spoke (due NORTH — it took over the NW vertical road) —
-        # wakes with the Storm Gleam.
-        {"id": "to_galehigh", "at": {"tx": 3, "ty": 0}, "trigger": "step_on",
-         "to_map": "lanternway_galehigh", "to": {"tx": 6, "ty": 23}, "facing": "up",
-         "requires_flag": "gleam:storm", "blocked_ref": "npc.waykeeper_galehigh_gate",
-         "transition": "fade"},
-        {"id": "to_galehigh_e", "at": {"tx": 4, "ty": 0}, "trigger": "step_on",
-         "to_map": "lanternway_galehigh", "to": {"tx": 7, "ty": 23}, "facing": "up",
-         "requires_flag": "gleam:storm", "blocked_ref": "npc.waykeeper_galehigh_gate",
-         "transition": "fade"},
-        # the north (marsh) road climbs to high country — but it stays shut to a
-        # Wayfarer with no kin yet (the opening's soft wall; the Waykeeper's
-        # marsh_warn cutscene greets the road once has_starter opens it).
-        {"id": "to_marsh", "at": {"tx": CX, "ty": 0}, "trigger": "step_on",
-         "to_map": "coldfog_marches_i", "to": {"tx": 8, "ty": 28}, "facing": "up",
-         "requires_flag": "flag:has_starter", "blocked_ref": "crossroads.no_kin_yet", "transition": "fade"},
-        {"id": "to_marsh_e", "at": {"tx": CX + 1, "ty": 0}, "trigger": "step_on",
-         "to_map": "coldfog_marches_i", "to": {"tx": 8, "ty": 28}, "facing": "up",
-         "requires_flag": "flag:has_starter", "blocked_ref": "crossroads.no_kin_yet", "transition": "fade"},
-        # the inward Spire road — gated on the full crown (endgame). The fade is
-        # a step THROUGH the fog-wall: it lands on the Ring's SOUTH entry (ON
-        # its return pair, facing up toward the Spire silhouette at the north
-        # rim — the C1 look-up moment; see build_penumbra_ring.py HANDSHAKE).
-        {"id": "to_penumbra", "at": {"tx": CX, "ty": H - 1}, "trigger": "step_on",
-         "to_map": "penumbra_ring", "to": {"tx": 13, "ty": 33}, "facing": "up",
+        # the mountain road — gated on the full crown (endgame). Up through the
+        # Umbral Approach to the Penumbra Ring's south entry.
+        {"id": "to_penumbra", "at": {"tx": CX, "ty": 0}, "trigger": "step_on",
+         "to_map": "umbral_approach", "to": {"tx": 2, "ty": 32}, "facing": "up",
          "requires_flag": "flag:hub_unlocked", "blocked_ref": "crossroads.spire_not_yet", "transition": "fade"},
-        {"id": "to_penumbra_e", "at": {"tx": CX + 1, "ty": H - 1}, "trigger": "step_on",
-         "to_map": "penumbra_ring", "to": {"tx": 14, "ty": 33}, "facing": "up",
+        {"id": "to_penumbra_e", "at": {"tx": CX + 1, "ty": 0}, "trigger": "step_on",
+         "to_map": "umbral_approach", "to": {"tx": 3, "ty": 32}, "facing": "up",
          "requires_flag": "flag:hub_unlocked", "blocked_ref": "crossroads.spire_not_yet", "transition": "fade"},
-        # the Cinderhead Deep mine-cart shortcut (graph.ts `shortcut_crossroads`
-        # return half) — wakes with flag:shortcut_mine, set on opening the sealed
-        # door from the deep. Lands beside the deep's far-side return warp.
-        {"id": "shortcut_cinderhead", "at": {"tx": CX - 1, "ty": H - 1}, "trigger": "step_on",
+        # the Cinderhead Deep cart-hoist (graph.ts `shortcut_crossroads` return
+        # half) — wakes with flag:shortcut_mine, set on opening the sealed door
+        # from the deep. A mid-map ride down the old ore-line, not an edge road.
+        {"id": "shortcut_cinderhead", "at": {"tx": CX - 1, "ty": 16}, "trigger": "step_on",
          "to_map": "cinderhead_deep", "to": {"tx": 21, "ty": 15}, "facing": "up",
          "requires_flag": "flag:shortcut_mine", "blocked_ref": "sign.crossroads_mineshortcut",
          "transition": "fade"},
@@ -280,21 +233,20 @@ m = {
         {"id": "fenn_wave_s", "kind": "cutscene", "at": {"tx": CX - 2, "ty": CY},
          "activation": "step_on", "ref": "script.fenn_wave", "once": True,
          "hidden_when_flag": "flag:fenn_waved", "sets_flags": ["flag:fenn_waved"]},
-        # The north (marsh) road climbs into far-higher country (coldfog_marches_i,
-        # North). It opens with the starter (the warp gates on flag:has_starter — no
-        # kin, no roads), and once open the Waykeeper steps up off her post to warn a
-        # young Wayfarer off — a nudge, never a wall (she keeps the lamps, not the
-        # gate). Gated to match the road so the warning isn't spent pre-starter; both
-        # road columns covered; fires once. audit_flow WAIVER — `choke` WARN accepted:
-        # a cosmetic warning, never a story gate; the road stays freely walkable.
-        {"id": "marsh_warn", "kind": "cutscene", "at": {"tx": CX, "ty": 5},
-         "activation": "step_on", "ref": "script.crossroads_marsh_warn", "once": True,
+        # THE LANTERN-CAR, first sight: the Waykeeper steps over and explains the
+        # cars to a Wayfarer with a kin at their side (the old marsh-road nudge's
+        # slot — a cosmetic intro, never a gate). Both east-road rows covered.
+        {"id": "car_intro", "kind": "cutscene", "at": {"tx": CX + 5, "ty": CY - 1},
+         "activation": "step_on", "ref": "script.crossroads_car_intro", "once": True,
          "requires_flag": "flag:has_starter",
-         "hidden_when_flag": "flag:warned_marsh_road", "sets_flags": ["flag:warned_marsh_road"]},
-        {"id": "marsh_warn_e", "kind": "cutscene", "at": {"tx": CX + 1, "ty": 5},
-         "activation": "step_on", "ref": "script.crossroads_marsh_warn", "once": True,
+         "hidden_when_flag": "flag:crossroads_car_intro", "sets_flags": ["flag:crossroads_car_intro"]},
+        {"id": "car_intro_s", "kind": "cutscene", "at": {"tx": CX + 5, "ty": CY},
+         "activation": "step_on", "ref": "script.crossroads_car_intro", "once": True,
          "requires_flag": "flag:has_starter",
-         "hidden_when_flag": "flag:warned_marsh_road", "sets_flags": ["flag:warned_marsh_road"]},
+         "hidden_when_flag": "flag:crossroads_car_intro", "sets_flags": ["flag:crossroads_car_intro"]},
+        # the car itself: Confirm at the winch's base (the platform's end)
+        *[{"id": f"lantern_car_{tx}", "kind": "cutscene", "at": {"tx": tx, "ty": 7},
+           "activation": "interact", "ref": "script.lantern_car"} for tx in (16, 17, 18)],
         {"id": "sign_waystone", "kind": "sign",
          "at": {"tx": sign_tiles["sign_waystone"][0], "ty": sign_tiles["sign_waystone"][1]},
          "activation": "interact", "ref": "sign.crossroads"},
@@ -309,34 +261,25 @@ m = {
          "at": {"tx": sign_tiles["sign_spire"][0], "ty": sign_tiles["sign_spire"][1]},
          "activation": "interact", "ref": "sign.crossroads_spire_open",
          "requires_flag": "flag:hub_unlocked"},
-        {"id": "sign_lowleaf", "kind": "sign",
-         "at": {"tx": sign_tiles["sign_lowleaf"][0], "ty": sign_tiles["sign_lowleaf"][1]},
-         "activation": "interact", "ref": "sign.crossroads_lowleaf"},
-        # the spoke signs follow the SWAPPED roads: the west-road sign is
-        # Nightreach's, the NW-vertical-road sign is Galehigh's.
-        {"id": "sign_nightreach", "kind": "sign",
-         "at": {"tx": sign_tiles["sign_galehigh"][0], "ty": sign_tiles["sign_galehigh"][1]},
-         "activation": "interact", "ref": "sign.crossroads_nightreach"},
-        {"id": "sign_galehigh", "kind": "sign",
-         "at": {"tx": sign_tiles["sign_nightreach"][0], "ty": sign_tiles["sign_nightreach"][1]},
-         "activation": "interact", "ref": "sign.crossroads_galehigh"},
+        {"id": "sign_car", "kind": "sign",
+         "at": {"tx": sign_tiles["sign_car"][0], "ty": sign_tiles["sign_car"][1]},
+         "activation": "interact", "ref": "sign.crossroads_lantern_car"},
+        {"id": "sign_bayroad", "kind": "sign",
+         "at": {"tx": sign_tiles["sign_bayroad"][0], "ty": sign_tiles["sign_bayroad"][1]},
+         "activation": "interact", "ref": "sign.crossroads_bay_road"},
         {"id": "sign_mineshortcut", "kind": "sign",
          "at": {"tx": sign_tiles["sign_mineshortcut"][0], "ty": sign_tiles["sign_mineshortcut"][1]},
          "activation": "interact", "ref": "sign.crossroads_mineshortcut"},
         # --- C3 ENDGAME (walkthrough/05) ------------------------------------
-        # A5 — Wren joins for the climb: a FULL-CUT band on the inward road's
-        # only walkable row (cols 8-10 at y=16; everything else is tree), so
+        # A5 — Wren joins for the climb: a FULL-CUT band on the mountain road's
+        # only walkable row (cols 9-10 at y=1; everything else is tree), so
         # the Starlamp it carries can never be walked past. Silent pre-hub
         # (requires unmet + no blocked_ref = no-op, the dawn_breaks pattern).
-        {"id": "wren_joins_w", "kind": "cutscene", "at": {"tx": CX - 1, "ty": 16},
+        {"id": "wren_joins", "kind": "cutscene", "at": {"tx": CX, "ty": 1},
          "activation": "step_on", "ref": "script.wren_joins", "once": True,
          "requires_flag": "flag:hub_unlocked",
          "hidden_when_flag": "flag:wren_joined", "sets_flags": ["flag:wren_joined"]},
-        {"id": "wren_joins", "kind": "cutscene", "at": {"tx": CX, "ty": 16},
-         "activation": "step_on", "ref": "script.wren_joins", "once": True,
-         "requires_flag": "flag:hub_unlocked",
-         "hidden_when_flag": "flag:wren_joined", "sets_flags": ["flag:wren_joined"]},
-        {"id": "wren_joins_e", "kind": "cutscene", "at": {"tx": CX + 1, "ty": 16},
+        {"id": "wren_joins_e", "kind": "cutscene", "at": {"tx": CX + 1, "ty": 1},
          "activation": "step_on", "ref": "script.wren_joins", "once": True,
          "requires_flag": "flag:hub_unlocked",
          "hidden_when_flag": "flag:wren_joined", "sets_flags": ["flag:wren_joined"]},
@@ -463,7 +406,7 @@ m = {
          "requires_flag": "flag:fenn_counsel_given"},
         # A5 — Wren at the inward road (the band below is the guarantee; the
         # NPC is the face of it, interactable for players who walk up first).
-        {"id": "wren_inward", "at": {"tx": CX + 2, "ty": 14}, "facing": "left",
+        {"id": "wren_inward", "at": {"tx": CX + 2, "ty": 2}, "facing": "left",
          "sprite": "wren", "movement": "static",
          "dialogue_ref": "script.wren_joins",
          "requires_flag": "flag:hub_unlocked",

@@ -18,6 +18,43 @@ const dawnPair = (speaker: string, before: string, after: string): CutsceneStep[
 ];
 
 export const CENTRAL_SCRIPTS: ScriptRegistry = {
+  // --- The Umbral Approach (2026-10): the mountain road up from the Crossroads.
+  // Three acolytes keep its turns. They do not threaten — they ask, and only
+  // fight because you won't turn round (the Hollowing: gentle, half-right).
+  'script.approach_acolyte_a': [
+    { op: 'say', speaker: 'ORLA', text: 'Ah — a lamp on the mountain road. We do not get many. Most folk see the dark ahead and decide, quite sensibly, that they have walked far enough.' },
+    { op: 'say', speaker: 'ORLA', text: 'I mended nets in Pearlmoor, once. Every net I ever mended, the sea took back. Up here nothing is taken. Turn round, love — or show me why not.' },
+    { op: 'battle', trainer: 'approach_acolyte_a' },
+    { op: 'say', speaker: 'ORLA', text: '...Well. That was why not. Go gently on the shelf above — the lamps give out there, and the ground forgets it was ever a road.' },
+    { op: 'setFlag', flag: 'flag:approach_acolyte_a_beaten' },
+  ],
+  'script.approach_acolyte_b': [
+    { op: 'say', speaker: 'BRENN', text: 'You came up past the last of the grass. Can you feel it? The quiet starts here. Nothing grows loud on this shelf; nothing grieves.' },
+    { op: 'say', speaker: 'BRENN', text: 'The Warden asks only that we keep the road soft for those who come to rest. You do not look like you came to rest.' },
+    { op: 'battle', trainer: 'approach_acolyte_b' },
+    { op: 'say', speaker: 'BRENN', text: 'No. Not resting. ...There is one more of us on the shoulder. She will ask you the same thing, kinder than I did.' },
+    { op: 'setFlag', flag: 'flag:approach_acolyte_b_beaten' },
+  ],
+  'script.approach_acolyte_c': [
+    { op: 'say', speaker: 'WYNNE', text: 'This is the last turn before the Ring, Wayfarer. Past it the kin will not follow you — they feel the old dark and lie down. Mine did, once. I stayed with them.' },
+    { op: 'say', speaker: 'WYNNE', text: 'I will not stop you. I only want you to have been asked, properly, by someone who means it: are you sure the light is worth what it costs?' },
+    { op: 'battle', trainer: 'approach_acolyte_c' },
+    { op: 'say', speaker: 'WYNNE', text: '...You are sure. Then go up. And if you do bring the morning back — let it come slowly, for those of us who forgot how.' },
+    { op: 'setFlag', flag: 'flag:approach_acolyte_c_beaten' },
+  ],
+  'script.pickup_approach_shard': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'starglass_shard', count: 1 },
+    { op: 'say', text: 'Half-buried at the foot of the mountain road, where the last grass grows: a STARGLASS SHARD, fallen a long way from home. Found it!' },
+    { op: 'setFlag', flag: 'flag:picked_approach_shard' },
+  ],
+  'script.pickup_approach_wicks': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveMoney', amount: 500 },
+    { op: 'say', text: 'A pilgrim\'s tin tucked under the shelf\'s lip — left for whoever needed it on the way up. Found 500 WICKS!' },
+    { op: 'setFlag', flag: 'flag:picked_approach_wicks' },
+  ],
+
   // NPCs only run `script.*` refs (WorldScene); Oriel's `cutscene.starfall_begins`
   // fell through to "..." and the whole Starfall Vigils chain was unreachable.
   'script.starfall_begins': [{ op: 'run', ref: 'cutscene.starfall_begins' }],
@@ -82,6 +119,32 @@ const memorial = (el: string, warden: string, town: string, lesson: string) => [
 ];
 
 export const CENTRAL_DIALOGUE: DialogueRegistry = {
+  // --- The Umbral Approach (2026-10) ---
+  'sign.umbral_approach': [
+    { text: 'THE UMBRAL APPROACH\nThe mountain road. Up through the drained shelf to the Penumbra Ring and the Spire\'s foot. Keep to the way-lamps where the road gives out.' },
+  ],
+  'sign.umbral_lookout': [
+    { text: 'From this shelf the whole crescent shows: the Crossroads\' lamps below, the bay\'s glint west of them, the fen-mist beyond — and every valley you relit, burning on the mountain\'s flanks like a ring of hearths.' },
+  ],
+  'npc.approach_snuffed_shrine': [
+    { text: 'A wayshrine on the old inward road. Its lamp was not smashed. It was put out with care, the wick trimmed short, the glass wiped clean — the way you\'d close a door on someone sleeping.' },
+  ],
+  'npc.approach_notice': [
+    { text: 'A Hollowing notice, neatly lettered: "REST HERE IF YOU ARE TIRED. NO ONE WILL WAKE YOU." Beneath it, in a smaller and less steady hand: "please".' },
+  ],
+  'npc.approach_vigil_camp': [
+    { text: 'A camp left tidy: bedrolls folded, a cold kettle, three cups set out upside down. Whoever kept vigil here went up the mountain and did not come back down.' },
+  ],
+  'npc.approach_acolyte_a_after': [
+    { speaker: 'ORLA', text: 'The sea took every net. And still I mended them. Funny thing to remember, up here.' },
+  ],
+  'npc.approach_acolyte_b_after': [
+    { speaker: 'BRENN', text: 'I keep listening for the quiet. It sounds less like peace since you came by.' },
+  ],
+  'npc.approach_acolyte_c_after': [
+    { speaker: 'WYNNE', text: 'Slowly, mind. The morning. For those of us who forgot how.' },
+  ],
+
   // --- the Cinder Hoard's reads (cold until the relight; woken after) --------
   'npc.hoard_shelf_w': [
     { text: 'A shelf of cinders on swept linen, each tagged in the same careful hand. DIMGLASS FLATS. SALTREACH, THE REED-BED, SPRING. LOWLEAF, BEHIND THE KILN.' },

@@ -294,19 +294,19 @@ PLACEMENTS: dict[str, dict] = {
         "objects": [
             prop("wc_crabpots", "pearlmoor_crab_pots", (6, 2), 1, 1),
             prop("wc_driftwood", "pearlmoor_driftwood", (2, 22), 2, 1),
-            prop("wc_nest", "pearlmoor_gull_nest", (13, 22), 1, 1),
+            prop("wc_nest", "pearlmoor_gull_nest", (11, 20), 1, 1),
         ],
         "triggers": [
             inspect("wc_wrack_pots", (6, 2), "npc.wrack_find_pots"),
             inspect("wc_wrack_drift", (2, 22), "npc.wrack_find_drift"),
-            inspect("wc_wrack_nest", (13, 22), "npc.wrack_find_nest"),
+            inspect("wc_wrack_nest", (11, 20), "npc.wrack_find_nest"),
         ],
         "npcs": [ambient_kin("amb_lumpin", (11, 3), 31, radius=2)],
     },
     "sounding_cave": {
         "ambience": {"particles": [particles("motes", 0.5)]},
-        "triggers": [inspect("wc_sounding_stone", (16, 6), "npc.sounding_stone")],
-        "npcs": [ambient_kin("amb_oreling", (3, 9), 53, radius=1)],
+        "triggers": [inspect("wc_sounding_stone", (7, 15), "npc.sounding_stone")],
+        "npcs": [ambient_kin("amb_oreling", (5, 16), 53, radius=1)],
     },
     "lanternfall_road": {
         "ambience": {

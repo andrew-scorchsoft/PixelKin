@@ -92,6 +92,8 @@ export interface CutsceneContext {
    * remaining steps, so the op belongs at the very end of a script.
    */
   startCinematic?(id: string): Promise<void>;
+  /** Carry the player to another map (the `travel` op): fade, enter, fade in. */
+  travel?(map: string, to: { tx: number; ty: number }, facing?: 'up' | 'down' | 'left' | 'right'): Promise<void>;
   /** Call a falling-star streak across the sky (Ambience.starfall); resolves when it burns out. */
   starfall?(opts: { from?: 'left' | 'right' }): Promise<void>;
 }
@@ -519,6 +521,9 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       if (pick === null) return true; // cancelled — step away, scene continues
       return runSteps(ctx, opts[Number(pick)].ops);
     }
+    case 'travel':
+      await ctx.travel?.(step.map, step.to, step.facing);
+      return true;
     case 'cinematic':
       // The hand-over: the host persists, then starts CinematicScene. The world
       // scene is being replaced, so end the cutscene here (nothing after plays;

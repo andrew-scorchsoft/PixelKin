@@ -1032,6 +1032,19 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/interior-study.mp3',
   },
+  // The mountain road (2026-10 geometry fix): up from the Crossroads' north
+  // edge to the Penumbra Ring — grass foot -> drained shelf -> basalt
+  // shoulder, three Hollowing acolytes, the last wild kin (lv 50-53).
+  umbral_approach: {
+    json: 'assets/maps/umbral_approach.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/penumbra-ring-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/penumbra-ring-a.webp',
+      'assets/backgrounds/battle/penumbra-ring-b.webp',
+    ],
+  },
   // C1 — the CENTRAL threshold (walkthrough 05): the innermost band of the
   // great dark, mostly receded by the time `flag:hub_unlocked` lets you in.
   // Pure traversal — NO encounters (kin refuse the dark); the void family

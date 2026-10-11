@@ -2,14 +2,15 @@
 """
 Build Lanternfall Road — the Crossroads-side leg of the new Pearlmoor <-> Vesper
 Crossroads route (REPLACES the bare lanternway_pearlmoor lane). You come out the
-Sounding Cave's east mouth onto this descent and follow the lit lane DOWN to the
-Crossroads at the bottom-left. WEST holds both warps (the cave mouth at the top,
-the Crossroads at the bottom); a tree-cliff wall to the EAST. Two mandatory
+Sounding Cave's south mouth onto this descent and follow the lit lane DOWN to the
+Crossroads. 2026-10 geometry fix: a true north->south leg — the cave mouth at the
+TOP (cols 2-3), the Crossroads' north road at the BOTTOM (cols 12-13); a
+tree-cliff wall to the EAST. Two mandatory
 tall-grass crossings + a sight trainer in a choke keep the band unavoidable.
 Level 18-20 (the route's top). The Crossroads->here direction stays gleam:tide-
 gated (the spoke is still the earned shortcut home); here->Crossroads is open.
 
-Chain:  ... sounding_cave -> lanternfall_road -> vesper_crossroads (east road)
+Chain:  ... sounding_cave -> lanternfall_road -> vesper_crossroads (north-west road)
 
 Run:  python3 tools/maps/build_lanternfall_road.py   (after build_shared_overworld.py)
 """
@@ -28,16 +29,19 @@ mk.organic_border(tree, W, H, top=1, left=1, depth=2,
                   bumps=[(2, 3, 1), (2, 12, 2), (3, 18, 1), (12, 1, 1)])
 mk.rect(tree, W, H, 0, H - 2, W - 1, H - 1)             # south border
 mk.rect(tree, W, H, W - 2, 0, W - 1, H - 1)             # east tree-cliff wall
-# punch the WEST-edge gaps: the cave mouth (rows 3-4) and the Crossroads (rows 22-23)
-for y in (3, 4):
-    tree[y * W + 0] = 0; tree[y * W + 1] = 0
-for y in (22, 23):
-    tree[y * W + 0] = 0; tree[y * W + 1] = 0
+# punch the TOP gap (cols 2-3: the cave mouth) and the BOTTOM gap (cols 12-13:
+# down to the Crossroads)
+for x in (2, 3):
+    for y in (0, 1):
+        tree[y * W + x] = 0
+for x in (12, 13):
+    for y in (H - 2, H - 1):
+        tree[y * W + x] = 0
 
 # the descending lit lane (spine) — winds as it drops from the cave to the hub
 path = mk.make_grid(W, H)
 spine = {4: 2, 5: 3, 6: 4, 7: 5, 8: 6, 9: 7, 10: 7, 11: 8, 12: 9, 13: 9,
-         14: 8, 15: 7, 16: 6, 17: 5, 18: 5, 19: 4, 20: 3, 21: 3, 22: 2}
+         14: 8, 15: 7, 16: 6, 17: 5, 18: 5, 19: 6, 20: 8, 21: 10, 22: 12}
 tallgrass = mk.make_grid(W, H)
 BANDS = [(10, 11), (17, 18)]
 for ty, cx in spine.items():
@@ -45,11 +49,11 @@ for ty, cx in spine.items():
         continue
     path[ty * W + cx] = 1
     path[ty * W + cx + 1] = 1
-# connect the lane into the two west gaps
-for y in (3, 4):
-    path[y * W + 1] = 1; path[y * W + 2] = 1
-for y in (22, 23):
-    path[y * W + 1] = 1; path[y * W + 2] = 1
+# connect the lane up into the top gap and down into the bottom gap
+for y in range(0, 4):
+    path[y * W + 2] = 1; path[y * W + 3] = 1
+for y in range(22, H):
+    path[y * W + 12] = 1; path[y * W + 13] = 1
 # mandatory bands span the WHOLE walkable corridor (cols 2-13, up to the east
 # wall) so there is no dodge lane — the brief: encounters are unavoidable.
 for (y0, y1) in BANDS:
@@ -73,10 +77,10 @@ terrain_layers = [
 objects = [
     {"id": "tree_a", "sprite": "tinderwick_tree", "at": {"tx": 8, "ty": 3}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "tree_b", "sprite": "tinderwick_tree", "at": {"tx": 10, "ty": 12}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
-    {"id": "tree_c", "sprite": "tinderwick_tree", "at": {"tx": 9, "ty": 21}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+    {"id": "tree_c", "sprite": "tinderwick_tree", "at": {"tx": 2, "ty": 21}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "lamp_a", "sprite": "tinderwick_lamp_post", "at": {"tx": 3, "ty": 6}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "lamp_b", "sprite": "tinderwick_lamp_post", "at": {"tx": 9, "ty": 14}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_c", "sprite": "tinderwick_lamp_post", "at": {"tx": 4, "ty": 20}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    {"id": "lamp_c", "sprite": "tinderwick_lamp_post", "at": {"tx": 12, "ty": 19}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
 ]
 building_cells = {(x, y) for o in objects
                   for y in range(o["at"]["ty"], o["at"]["ty"] + o["h"])
@@ -87,8 +91,6 @@ avoid = covered | building_cells
 
 # ---- deco: cave recess, boulders, scatter -----------------------------------
 deco = mk.make_grid(W, H)
-for (x, y) in [(0, 3), (1, 3)]:                          # dark cave recess at the mouth
-    deco[y * W + x] = gid("cliff_fill")
 for (x, y) in [(12, 7), (4, 16), (11, 19), (3, 11)]:     # verge boulders
     deco[y * W + x] = gid("boulder")
 
@@ -112,18 +114,19 @@ m = {
                {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)}],
     "objects": objects,
     "warps": [
-        # WEST top: the Sounding Cave's east mouth (door). Lands one tile IN from the
-        # cave's east-edge return warp.
-        {"id": "to_cave", "at": {"tx": 0, "ty": 4}, "trigger": "step_on",
-         "to_map": "sounding_cave", "to": {"tx": 18, "ty": 7}, "facing": "left", "transition": "door"},
-        {"id": "to_cave_n", "at": {"tx": 0, "ty": 3}, "trigger": "step_on",
-         "to_map": "sounding_cave", "to": {"tx": 18, "ty": 7}, "facing": "left", "transition": "door"},
-        # WEST bottom: out to the Vesper Crossroads east road (the hub). OPEN this way
-        # (the shortcut home); the Crossroads->here side carries the gleam:tide gate.
-        {"id": "to_crossroads", "at": {"tx": 0, "ty": 23}, "trigger": "step_on",
-         "to_map": "vesper_crossroads", "to": {"tx": 18, "ty": 9}, "facing": "left", "transition": "fade"},
-        {"id": "to_crossroads_n", "at": {"tx": 0, "ty": 22}, "trigger": "step_on",
-         "to_map": "vesper_crossroads", "to": {"tx": 18, "ty": 8}, "facing": "left", "transition": "fade"},
+        # TOP: the Sounding Cave's south mouth (door). Lands one row IN from the
+        # cave's bottom-edge return warp.
+        {"id": "to_cave", "at": {"tx": 2, "ty": 0}, "trigger": "step_on",
+         "to_map": "sounding_cave", "to": {"tx": 4, "ty": 18}, "facing": "up", "transition": "door"},
+        {"id": "to_cave_e", "at": {"tx": 3, "ty": 0}, "trigger": "step_on",
+         "to_map": "sounding_cave", "to": {"tx": 4, "ty": 18}, "facing": "up", "transition": "door"},
+        # BOTTOM: down onto the Vesper Crossroads' north-west road (the hub). OPEN
+        # this way (the shortcut home); the Crossroads->here side carries the
+        # gleam:tide gate.
+        {"id": "to_crossroads", "at": {"tx": 12, "ty": H - 1}, "trigger": "step_on",
+         "to_map": "vesper_crossroads", "to": {"tx": 3, "ty": 1}, "facing": "down", "transition": "fade"},
+        {"id": "to_crossroads_e", "at": {"tx": 13, "ty": H - 1}, "trigger": "step_on",
+         "to_map": "vesper_crossroads", "to": {"tx": 4, "ty": 1}, "facing": "down", "transition": "fade"},
     ],
     "triggers": [],
     "encounters": [],
@@ -135,7 +138,7 @@ m = {
 # ---- stamps (signs, cache, trainer) ----------------------------------------
 owed: list[str] = []
 owed += pt.sign(m, deco, W, sid="lanternfall_view", at=(3, 5))
-owed += pt.sign(m, deco, W, sid="lanternfall_hub", at=(3, 21))
+owed += pt.sign(m, deco, W, sid="lanternfall_hub", at=(11, 23))
 owed += pt.cache(m, cid="lanternfall_charge", at=(11, 6))
 owed += pt.trainer_beat(m, tid="lanternfall_warden", at=(9, 11), facing="up", sight=4,
                         sprite="npc_woman")

@@ -1360,6 +1360,13 @@ export class WorldScene extends Phaser.Scene {
       cameraFocusTile: (tx, ty, ms, zoom) => this.cameraFocusTile(tx, ty, ms, zoom),
       starfall: (opts) => this.ambience?.starfall(opts, true) ?? Promise.resolve(),
       cameraReset: (ms) => this.cameraResetToPlayer(ms),
+      travel: async (map, to, facing) => {
+        // A ride (the Lantern-car, the ore-lift): the travelTo path, mid-scene.
+        if (!MAP_REGISTRY[map]) return;
+        await fadeOut(this, theme.transition.fadeMs);
+        await this.enterMap(map, to, facing ?? 'down', false);
+        await fadeIn(this, theme.transition.fadeMs);
+      },
       startCinematic: async (id: string) => {
         // Bank everything FIRST (flags the script just set included) so a
         // Continue after the roll resumes exactly here — then hand the screen

@@ -18,6 +18,90 @@ const EMBER = 'gleam:ember';
 const TIDE = 'gleam:tide';
 
 export const SOUTH_SCRIPTS: ScriptRegistry = {
+  // --- THE LANTERN-CAR (2026-10 geometry fix). The far valleys sit high on the
+  // mountain's flanks, days from the Crossroads on foot; the kite-wrights'
+  // cable-car swings you there once that valley's lamp is relit (the old
+  // spoke rule: the ride UP waits on the town's own Gleam). The ride DOWN from
+  // a valley always runs — the car rolls home by its own weight.
+  'script.crossroads_car_intro': [
+    { op: 'emote', actor: 'waykeeper', emote: 'alert' },
+    { op: 'face', actor: 'waykeeper', facing: 'right' },
+    { op: 'face', actor: 'player', facing: 'left' },
+    { op: 'say', speaker: 'WAYKEEPER', text: 'Found the cars, have you? Mind the platform edge, young Wayfarer.' },
+    { op: 'say', speaker: 'WAYKEEPER', text: 'That winch is the LANTERN-CAR. The kite-wrights strung its cables up the mountain\'s flanks before the Dusk — to Lowleaf in the green, Galehigh in the wind, Nightreach under the stars. Days of walking, swung over in a breath.' },
+    { op: 'say', speaker: 'WAYKEEPER', text: 'But a car only runs while the lamp at its far end burns, and every one of those went out with the sky. Relight a valley\'s constellation and its line wakes — then the car will carry you there whenever you like.' },
+    { op: 'say', speaker: 'WAYKEEPER', text: 'Till then it\'s boots and the long way round. The roads were walked long before a cable was strung — and you\'ll find more on foot than any car could show you.' },
+    { op: 'face', actor: 'waykeeper', facing: 'down' },
+  ],
+  'script.lantern_car': [
+    { op: 'narrate', text: 'THE LANTERN-CAR. Three cables climb from the winch into the dark toward the mountain\'s shoulders. Each line keeps a little lamp on the platform rail.' },
+    { op: 'narrate', unless_flag: 'gleam:verdant', text: 'Every line-lamp is cold. No car will run until a valley\'s light is relit.' },
+    {
+      op: 'choice',
+      if_flag: 'gleam:verdant',
+      prompt: 'Which line? (A car runs once its valley\'s lamp is lit.)',
+      options: [
+        {
+          label: 'LOWLEAF',
+          if_flag: 'gleam:verdant',
+          ops: [
+            { op: 'sfx', key: 'world-lantern-light' },
+            { op: 'narrate', text: 'The green lamp catches. The car swings out over the bay and climbs, the Crossroads\' lights shrinking below, the fen-mist rolling past...' },
+            { op: 'travel', map: 'lanternway_lowleaf', to: { tx: 3, ty: 24 }, facing: 'right' },
+          ],
+        },
+        {
+          label: 'GALEHIGH',
+          if_flag: 'gleam:storm',
+          ops: [
+            { op: 'sfx', key: 'world-lantern-light' },
+            { op: 'narrate', text: 'The storm-lamp catches. The car climbs the mountain\'s eastern flank, rocking in the updraughts, kites wheeling below...' },
+            { op: 'travel', map: 'lanternway_galehigh', to: { tx: 6, ty: 16 }, facing: 'up' },
+          ],
+        },
+        {
+          label: 'NIGHTREACH',
+          if_flag: 'gleam:lunar',
+          ops: [
+            { op: 'sfx', key: 'world-lantern-light' },
+            { op: 'narrate', text: 'The silver lamp catches. The longest line of all: up over the dark shoulder of the mountain, the stars so close the car seems to ride among them...' },
+            { op: 'travel', map: 'lanternway_nightreach', to: { tx: 4, ty: 7 }, facing: 'down' },
+          ],
+        },
+      ],
+    },
+  ],
+  'script.lantern_car_down_lowleaf': [
+    {
+      op: 'choice',
+      prompt: 'The Lantern-car waits at the platform. Ride down to the Vesper Crossroads?',
+      options: [{ label: 'RIDE DOWN', ops: [
+        { op: 'narrate', text: 'The car rolls off the platform under its own weight and sinks toward the Crossroads\' lamps.' },
+        { op: 'travel', map: 'vesper_crossroads', to: { tx: 17, ty: 8 }, facing: 'down' },
+      ] }],
+    },
+  ],
+  'script.lantern_car_down_galehigh': [
+    {
+      op: 'choice',
+      prompt: 'The Lantern-car waits at the platform. Ride down to the Vesper Crossroads?',
+      options: [{ label: 'RIDE DOWN', ops: [
+        { op: 'narrate', text: 'The car drops off the shelf and runs down the long cable, the terraces folding away behind you.' },
+        { op: 'travel', map: 'vesper_crossroads', to: { tx: 17, ty: 8 }, facing: 'down' },
+      ] }],
+    },
+  ],
+  'script.lantern_car_down_nightreach': [
+    {
+      op: 'choice',
+      prompt: 'The Lantern-car waits at the platform. Ride down to the Vesper Crossroads?',
+      options: [{ label: 'RIDE DOWN', ops: [
+        { op: 'narrate', text: 'The car slips off the observatory\'s shoulder and glides down through the stars, a long way, to the Crossroads\' small warm lights.' },
+        { op: 'travel', map: 'vesper_crossroads', to: { tx: 17, ty: 8 }, facing: 'down' },
+      ] }],
+    },
+  ],
+
   // Tinderwick store: the open counter, fair-week edition.
   'script.shop_tinderwick_staged': [
     { op: 'dialogue', ref: 'npc.tinderwick_shopkeeper', unless_flag: EMBER },
@@ -74,6 +158,17 @@ export const SOUTH_SCRIPTS: ScriptRegistry = {
 };
 
 export const SOUTH_DIALOGUE: DialogueRegistry = {
+  // --- The 2026-10 geometry fix: the bay road + the Lantern-car signs ---
+  'sign.crossroads_lantern_car': [
+    { text: 'THE LANTERN-CAR\nLines to LOWLEAF (the green lamp), GALEHIGH (the storm-lamp) and NIGHTREACH (the silver lamp). A car runs once its valley\'s lamp is relit. The ride down runs any time.' },
+  ],
+  'sign.crossroads_bay_road': [
+    { text: 'NORTH-WEST: THE BAY ROAD\nLanternfall Road, the Sounding Cave and the Wrackline shore, round the bay to Saltreach Fen and Pearlmoor. Its lamps wake with the Tide.' },
+  ],
+  'sign.fen_drowned_road': [
+    { text: 'THE DROWNED ROAD (what the lagoon left of it)\nSOUTH along the bay shore: Wrackline Path, the Sounding Cave and Lanternfall Road, down to the Vesper Crossroads.' },
+  ],
+
   // --- AFTER-GLEAM · Tinderwick / the Lanternway / Dimglass (gleam:ember) -----
   'npc.gatewarden_after_lit': [
     { speaker: 'GATE-WARDEN', text: "From this post you can see the beacon on the bluff. All the dark years I stood watch under a cold one. Now I catch myself nodding to it, like a neighbour." },
@@ -143,8 +238,8 @@ export const SOUTH_DIALOGUE: DialogueRegistry = {
   ],
   // --- Sounding Cave (§4 #8): the sounding stone answers -------------------
   'npc.sounding_stone': [
-    { text: 'You knock on the stone. The cave knocks back — three times, then once, from somewhere above and to the north.' },
-    { text: 'Echoes don\'t usually point. This one does: up the narrow way, into the little high chamber.' },
+    { text: 'You knock on the stone. The cave knocks back — three times, then once, from somewhere above you and off to the west.' },
+    { text: 'Echoes don\'t usually point. This one does: back up through the moss, then west along the narrow way into the little side chamber.' },
   ],
   // --- The Wanderwood (S5): the wayfarers' board -------------------------------
   'npc.wanderwood_board': [
