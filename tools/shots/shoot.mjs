@@ -41,6 +41,11 @@ world options:
   --version-from <v>            write an older save last_version (e.g. 1.0, or ""
                                 for pre-tracking) to shoot the "world has changed"
                                 notice; default = current GAME_VERSION (no notice)
+  --no-idle                     don't wait for the world to go idle after CONTINUE:
+                                shoot --wait ms after the World starts (for a scene
+                                that plays on load, e.g. a crown interlude)
+  --confirms N                  with --no-idle: then tap Confirm N times (1.4s
+                                apart) to page through the scene's lines
   --no-defaults                 don't auto-add the quiet flags (chart reveals,
                                 tutorials seen, has_starter)
 common:
@@ -58,7 +63,7 @@ function parseArgs(argv) {
     const a = argv[i];
     if (!a.startsWith('--')) throw new Error(`unexpected argument: ${a}`);
     const key = a.slice(2);
-    if (['no-defaults', 'keep-hud', 'headed', 'verbose', 'help'].includes(key)) {
+    if (['no-defaults', 'no-idle', 'keep-hud', 'headed', 'verbose', 'help'].includes(key)) {
       o[key] = true;
       continue;
     }
@@ -96,6 +101,8 @@ function normaliseSpec(raw, index = 0) {
     battle: s.battle !== undefined ? String(s.battle) : undefined,
     noDefaults: Boolean(s['no-defaults'] ?? s.noDefaults),
     keepHud: Boolean(s['keep-hud'] ?? s.keepHud),
+    noIdle: Boolean(s['no-idle'] ?? s.noIdle),
+    confirms: Number(s.confirms ?? 0),
     versionFrom:
       s['version-from'] !== undefined || s.versionFrom !== undefined
         ? String(s['version-from'] ?? s.versionFrom)
@@ -266,6 +273,9 @@ async function seedSave(page, shot) {
       add('tutorial_offered');
       add('catch_tutorial_seen');
       add('tip_backup_seen');
+      // No crown interlude (content/interludes.ts) hijacking a crown-holding shot —
+      // unless --no-idle, which exists to shoot one.
+      if (!s.noIdle) for (const id of ['south', 'east', 'north', 'west']) add(`interlude_${id}_seen`);
       if (party.length) {
         add('has_starter');
         add('caught_first_kin');
@@ -370,14 +380,21 @@ async function shoot(page, url, shot) {
     await tap(page, 'ArrowDown');
     await tap(page, 'z');
     await waitFor(page, sceneActive(), 'World', { what: 'World scene (CONTINUE)' });
-    if (shot.versionFrom !== undefined) {
+    if (shot.noIdle) {
+      // A scene that plays on load (a crown interlude): shoot it as-is, mid-scene.
+      await page.waitForTimeout(shot.wait);
+      for (let i = 0; i < shot.confirms; i++) {
+        await tap(page, 'z');
+        await page.waitForTimeout(1400);
+      }
+    } else if (shot.versionFrom !== undefined) {
       // The "world has changed" narration holds the world modal: shoot it as-is.
       await page.waitForTimeout(1500);
     } else {
       await waitFor(page, worldIdle, undefined, { timeout: 30000, what: 'world idle' });
     }
 
-    const at = await page.evaluate(() => {
+    const at = shot.noIdle ? { map: shot.map } : await page.evaluate(() => {
       const w = window.__pixelkin.scene.getScene('World');
       return { map: w.map.def.id, tx: w.player.tx, ty: w.player.ty };
     });
@@ -403,12 +420,12 @@ async function shoot(page, url, shot) {
         { id: Number(id), lv: Number(lv ?? shot.level) },
       );
       await waitFor(page, sceneActive(), 'Battle', { what: 'Battle scene' });
-    } else if (!shot.keepHud && shot.versionFrom === undefined) {
+    } else if (!shot.keepHud && shot.versionFrom === undefined && !shot.noIdle) {
       await waitFor(page, worldIdleHudClear, undefined, { timeout: 15000, what: 'HUD banner to fade' }).catch((e) =>
         console.warn(`  ! ${e.message}`),
       );
     }
-    await page.waitForTimeout(shot.wait);
+    if (!shot.noIdle) await page.waitForTimeout(shot.wait);
   }
 
   await page.addStyleTag({ content: HIDE_CHROME_CSS });

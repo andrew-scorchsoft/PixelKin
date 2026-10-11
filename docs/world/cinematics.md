@@ -118,6 +118,29 @@ This is the FF7-style move: something is wrong, and watching, long before you un
 it. Balance every dark beat with an aspirational one nearby (Fenn's warmth, the
 Lantern-fair, the Gleam swell) — the game is melancholy, not bleak.
 
+## Crown interludes: "meanwhile, on the mountain" (X-4)
+
+When a quadrant's crown completes, the camera leaves the player for ~25 s to show
+what Còr is doing: four short vignettes escalating with the falling-star thread
+(South: a cinder fetched from a marsh field, man unnamed; East: the Cinder Hoard filling —
+"Because someone should."; North: a fall watched landing nearer from a high window; West:
+his hand on the Great Null's lever, not pulled). Data in `content/interludes.ts`
+(`CROWN_INTERLUDES` + `INTERLUDE_SCRIPTS`); the engine hook is
+`WorldScene.maybeRunCrownInterlude` → `runCrownInterlude`.
+
+- **Staged in-world, returned exactly.** Letterbox + bed out on the spot, fade, then the
+  interlude's REMOTE map is built in staging mode (only its `cast`, the player hidden, the
+  camera parked; no music/banner/chart/autosave — `persist()` is a no-op while staged), the
+  script plays, and the player is re-entered at the exact tile/facing they left. No
+  `cinematic` op (it never returns) and no panel art needed.
+- **One at a time, never a backlog.** Only the LATEST due entry plays; it banks every
+  earlier entry's seen flag. An old save holding several crowns sees just the current one;
+  once the Spire is entered (`INTERLUDES_CLOSED_BY`) they bank unplayed.
+- **Canon guards live in `requires`:** South waits for `flag:chickenpig_caught` (crown_south
+  can complete before it), East for `flag:met_hollowing`, North/West for `flag:met_cor` (his
+  portrait is the North's reveal). Scripts never `setFlag`, never `cameraReset`, keep each
+  line inside one dialogue page (~100 chars, ~85 with a portrait), and never say Senna.
+
 ## When you build a later region
 
 Each region's walkthrough file carries a **"Cinematic staging"** note per major beat

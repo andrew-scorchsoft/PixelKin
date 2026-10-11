@@ -33,7 +33,9 @@ import {
 } from '@game/systems/world/restPoints';
 import { WorldMapMenu } from '@game/ui/WorldMapMenu';
 import { ChartView } from '@game/ui/ChartView';
-import { fadeIn, fadeOut } from '@game/ui/Transitions';
+import { fadeIn, fadeOut, letterbox, clearCinematicFx } from '@game/ui/Transitions';
+import { CROWN_INTERLUDES, INTERLUDES_CLOSED_BY } from '@game/content/interludes';
+import type { CrownInterlude } from '@game/content/interludes';
 import { getCannotDie } from '@game/ui/preferences';
 import { KinInstance } from '@game/systems/party/KinInstance';
 import { MAX_PARTY } from '@game/systems/party/Party';
@@ -176,6 +178,9 @@ export class WorldScene extends Phaser.Scene {
   /** A first-entry onboarding tutorial awaiting its run (fires when idle, after
    *  the map's fade settles — same deferral as a chart reveal). */
   private pendingTutorial?: EntryTutorial;
+  /** Set while a crown interlude is STAGED on a remote map (X-4): enterMap builds
+   *  only its cast, plays no music, and nothing banners/charts/saves. */
+  private staging?: CrownInterlude['stage'];
   /** The last rest point (inn / home / camp) — where a blackout wakes you. */
   private respawn?: { map: string; tx: number; ty: number; facing: Facing };
   /** Every rest point rested at, oldest first (one per map; latest coords). */
@@ -301,7 +306,9 @@ export class WorldScene extends Phaser.Scene {
       this.player = new Player(this, safe.tx, safe.ty, facing ?? 'down');
       this.cameras.main.startFollow(this.player.sprite, true, 1, 1);
 
-      this.spawnNpcs();
+      const stage = this.staging;
+      if (stage) this.spawnCast(stage);
+      else this.spawnNpcs();
       this.refreshObjects();
       this.markHealEntrances();
       this.markLumenaryCrests();
@@ -311,6 +318,10 @@ export class WorldScene extends Phaser.Scene {
       if (MAP_REGISTRY[mapId]?.dark) {
         this.lamplight = new LamplightMask(this, this.flags.countHeld('gleam:'));
         this.lamplight.follow(this.player.sprite.x, this.player.sprite.y);
+      }
+      if (stage) {
+        this.ready = true;
+        return; // staged: the interlude drives music/camera; no banner, chart or save
       }
       this.playMapMusic();
       this.warmEncounterSprites();
@@ -366,6 +377,7 @@ export class WorldScene extends Phaser.Scene {
   /** Reload the current map (re-fetches its JSON) keeping the player where they
    *  stand — a full scene restart, so any open menu/cutscene is torn down too. */
   private reloadMap(): void {
+    if (this.staging) return; // mid-interlude: the stage isn't where the player is
     void this.sfx?.play(theme.cursor.confirmSfx);
     this.scene.restart({
       mapId: this.map.def.id,
@@ -421,6 +433,7 @@ export class WorldScene extends Phaser.Scene {
   /** Autosave through the storage seam (with a quiet corner glyph so the player
    *  knows the lamp is keeping their place). */
   async persist(): Promise<void> {
+    if (this.staging) return; // never bank a remote interlude stage as "where you are"
     await SaveManager.save(this.buildSaveGame());
     this.flashSaveGlyph();
   }
@@ -610,6 +623,75 @@ export class WorldScene extends Phaser.Scene {
       void this.persist();
     }
     this.modal = false;
+  }
+
+  // --- Crown interludes (story panel X-4; content/interludes.ts) -------------
+
+  /**
+   * On an idle frame, start the latest DUE crown interlude, if any: every
+   * `requires` flag held, its seen flag not. Only one ever plays; playing it (or
+   * finding the Spire already entered — INTERLUDES_CLOSED_BY) banks every earlier
+   * entry too, so none plays out of order and an old save gets no backlog.
+   * Waits out a running camera fade (so it never cuts across a warp's fade-in).
+   */
+  private maybeRunCrownInterlude(): boolean {
+    if (this.player.isMoving || this.cameras.main.fadeEffect.isRunning) return false;
+    let latest = -1;
+    CROWN_INTERLUDES.forEach((it, i) => {
+      if (!this.flags.get(it.seen_flag) && it.requires.every((f) => this.flags.get(f))) latest = i;
+    });
+    if (latest < 0) return false;
+    const bankThrough = (i: number): void => {
+      for (const it of CROWN_INTERLUDES.slice(0, i + 1)) this.flags.set(it.seen_flag);
+    };
+    if (INTERLUDES_CLOSED_BY.some((f) => this.flags.get(f)) || !MAP_REGISTRY[CROWN_INTERLUDES[latest].stage.map]) {
+      bankThrough(latest); // moot now: bank silently, persisted with the next save
+      return false;
+    }
+    void this.runCrownInterlude(CROWN_INTERLUDES[latest], () => bankThrough(latest));
+    return true;
+  }
+
+  /**
+   * Cut away to the interlude's remote stage and back: letterbox + bed out on the
+   * spot, fade, build the stage map with only its cast (player hidden, camera
+   * parked), run the script, fade, and re-enter the player's own map at the exact
+   * tile/facing they left. The seen flags are banked BEFORE the return so the
+   * re-entry's autosave carries them; a staged map is never saved (persist guard).
+   */
+  private async runCrownInterlude(it: CrownInterlude, bank: () => void): Promise<void> {
+    this.modal = true;
+    const home = { map: this.map.def.id, tx: this.player.tx, ty: this.player.ty, facing: this.player.facing };
+    const steps = getScript(it.script) ?? [];
+    try {
+      await Promise.all([letterbox(this, true, 420), this.music.fadeToSilence(700)]);
+      await fadeOut(this, 600);
+      this.staging = it.stage;
+      await this.enterMap(it.stage.map, it.stage.camera, 'down', false);
+      if (this.map.def.id === it.stage.map) {
+        this.player.sprite.setVisible(false);
+        this.ambience?.detach(this.player);
+        const cam = this.cameras.main;
+        cam.stopFollow();
+        cam.centerOn(it.stage.camera.tx * TILE_SIZE + TILE_SIZE / 2, it.stage.camera.ty * TILE_SIZE + TILE_SIZE / 2);
+        await fadeIn(this, 700);
+        await runCutscene(this.cutsceneContext(), steps);
+        await fadeOut(this, 700);
+      }
+    } finally {
+      bank();
+      this.staging = undefined;
+      this.cameras.main.setZoom(1);
+      await this.enterMap(home.map, { tx: home.tx, ty: home.ty }, home.facing, false);
+      await fadeIn(this, 600);
+      clearCinematicFx(this, 420);
+      this.modal = false;
+    }
+  }
+
+  /** The staged cast stands in for the map's own NPCs (who are left out). */
+  private spawnCast(stage: CrownInterlude['stage']): void {
+    for (const placement of stage.cast) this.npcs.push(new Npc(this, placement));
   }
 
   /** Hang the rest-lantern over every heal-entrance door on the current map. */
@@ -828,7 +910,7 @@ export class WorldScene extends Phaser.Scene {
   private refreshNpcs(): void {
     // A cutscene's `cinematic` op replaces this scene mid-await (the ending);
     // never rebuild NPCs into a scene that is already shutting down.
-    if (!this.scene.isActive()) return;
+    if (!this.scene.isActive() || this.staging) return;
     this.refreshObjects();
     // A Gleam may have just landed — widen the lit circle on dark maps.
     this.lamplight?.setBrightness(this.flags.countHeld('gleam:'));
@@ -1597,6 +1679,7 @@ export class WorldScene extends Phaser.Scene {
         void this.runTutorial(tut);
         return;
       }
+      if (this.maybeRunCrownInterlude()) return;
       // Any press cancels the player's idle glance (so Confirm faces where they meant).
       if (this.controller.heldDirection() !== null || this.controller.justPressed(InputAction.Confirm)) {
         this.ambience?.wake(this.player);

@@ -1112,6 +1112,13 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   persists FIRST, stops world music, and hands to CinematicScene; nothing after the op plays, so
   it must be a script's LAST step). `ENDING_CREDITS` (dawnbreak panels + credits) routes → Title;
   Continue resumes at the summit with `flag:dawn` held — the post-game's door.
+- **Crown interludes cut AWAY to Còr, then return (X-4, `content/interludes.ts`).** On the
+  first idle frame a crown's `requires` are held, `WorldScene.runCrownInterlude` stages the
+  script on a REMOTE map (`this.staging`: cast-only NPCs, hidden player, no music/banner/
+  chart/save — `persist()`/`reloadMap()`/`refreshNpcs()` no-op while staged) and re-enters the
+  player's exact tile. Only the LATEST due one plays and banks all earlier ones (no backlog
+  for old saves); entering the Spire banks them unplayed. Interlude scripts must never
+  `setFlag` or `cameraReset`. Shoot one with `shoot.mjs --no-idle --confirms N`.
 - **A cutscene-launched battle must NOT clear `modal` itself.** `WorldScene.startBattle` runs for
   both wild encounters (fired from a free step, `modal` false) AND trainer battles (one step
   INSIDE a cutscene, `modal` already true). It now RESTORES the prior `modal` on completion, not a
