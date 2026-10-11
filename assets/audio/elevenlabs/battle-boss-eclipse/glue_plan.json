@@ -1,0 +1,48 @@
+{
+ "chunks": [
+  {
+   "song_id": "TEtt81VqYQNsaBZW7uHt",
+   "range": {
+    "start_ms": 53326,
+    "end_ms": 73326
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "144 BPM",
+    "B minor with a hopeful lift to D major",
+    "4/4",
+    "grand sampled pipe organ",
+    "driving sixteenth-note synth bass ostinato",
+    "timpani rolls and heavy sampled battle drums",
+    "soaring sawtooth lead melody",
+    "powerful brass chords",
+    "final boss battle theme, epic, tragic and sorrowful, never cartoonish",
+    "strong memorable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "TEtt81VqYQNsaBZW7uHt",
+   "range": {
+    "start_ms": 6667,
+    "end_ms": 16667
+   }
+  }
+ ]
+}

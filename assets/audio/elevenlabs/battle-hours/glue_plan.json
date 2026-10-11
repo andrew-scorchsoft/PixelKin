@@ -1,0 +1,48 @@
+{
+ "chunks": [
+  {
+   "song_id": "EUGEPD8JrFKD4Bdfla2O",
+   "range": {
+    "start_ms": 60588,
+    "end_ms": 80588
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "76 BPM",
+    "A minor",
+    "3/4 waltz time like a great clock",
+    "low pendulum bass swinging root and fifth every bar",
+    "deep tolling tower bell on the hour",
+    "patient majestic minor lead melody",
+    "warm sampled string chords",
+    "soft clock-tick percussion: woodblock and tom on the downbeat",
+    "awed mysterious legendary encounter, vast and ancient, solemn but tense",
+    "strong memorable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "EUGEPD8JrFKD4Bdfla2O",
+   "range": {
+    "start_ms": 4737,
+    "end_ms": 14737
+   }
+  }
+ ]
+}
