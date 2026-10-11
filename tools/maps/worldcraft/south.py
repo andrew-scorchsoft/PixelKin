@@ -216,7 +216,7 @@ PLACEMENTS: dict[str, dict] = {
                  solid=False),  # strung overhead: you walk beneath the lanterns
         ],
         "npcs": [ambient_kin("amb_lumpin", (16, 17), 31, radius=2),
-                 ambient_kin("amb_brinelet", (25, 8), 26, radius=1)],
+                 ambient_kin("amb_brinelet", (23, 6), 26, radius=1)],
         "sprites": {
             "fisher": "fisher_man",
             "blessing_elder": "old_salt",

@@ -158,6 +158,23 @@ def analyse(world: dict[str, dict], model: MapModel, start: dict | None = None) 
     orphans = walkable_all - reach_all
     orphan_clusters = clusters(orphans)
     major_orphans = [c for c in orphan_clusters if len(c) >= MAJOR_ORPHAN]
+    # A pocket only STRANDS something if content lives in it: a non-ambient NPC,
+    # trigger/sign/cache or warp on (or beside) one of its tiles. An empty sealed
+    # pocket is a cosmetic gap (reported, never failing).
+    md = model.m
+    content = {(n["at"]["tx"], n["at"]["ty"]) for n in md.get("npcs", []) if not n.get("ambient")}
+    content |= {(t["at"]["tx"], t["at"]["ty"]) for t in md.get("triggers", [])}
+    content |= {(w["at"]["tx"], w["at"]["ty"]) for w in md.get("warps", [])}
+    nb = ((0, 0), (1, 0), (-1, 0), (0, 1), (0, -1))
+    def strands(c: set) -> bool:
+        # Content touching the pocket is only stranded if NO tile you could stand
+        # on to reach it (itself or a 4-neighbour) is reachable from an entrance.
+        for (cx, cy) in content:
+            touches = any((cx + dx, cy + dy) in c for dx, dy in nb)
+            if touches and not any((cx + dx, cy + dy) in reach_all for dx, dy in nb):
+                return True
+        return False
+    stranding_orphans = [c for c in major_orphans if strands(c)]
 
     # SOFTLOCKS: a warp gated by a flag (no ability) whose stand tile you can only
     # reach by USING a Gift. Opening the flag won't make the water/void walkable.
@@ -184,7 +201,7 @@ def analyse(world: dict[str, dict], model: MapModel, start: dict | None = None) 
         "components": len(comps), "main_size": len(main),
         "main": main, "reach_all": reach_all, "walkable_all": walkable_all,
         "orphans": orphans, "orphan_clusters": orphan_clusters,
-        "major_orphans": major_orphans, "softlocks": softlocks, "landings": landings,
+        "major_orphans": major_orphans, "stranding_orphans": stranding_orphans, "softlocks": softlocks, "landings": landings,
     }
 
 
@@ -279,7 +296,9 @@ def legend(img: Image.Image, scale: int) -> None:
 # Driver
 # --------------------------------------------------------------------------- #
 def is_offender(info: dict) -> bool:
-    return bool(info["softlocks"] or info["major_orphans"])
+    """FAIL-worthy: a softlock, or a sealed pocket that strands content (an NPC,
+    trigger, sign, cache or warp). An EMPTY sealed pocket is a cosmetic gap."""
+    return bool(info["softlocks"] or info["stranding_orphans"])
 
 
 def report_line(info: dict) -> str:
@@ -290,7 +309,8 @@ def report_line(info: dict) -> str:
                     f"flag {s['flag']} but {g}]")
     if info["major_orphans"]:
         for c in sorted(info["major_orphans"], key=len, reverse=True):
-            bits.append(f"ORPHAN x{len(c)} near {min(sorted(c))}")
+            tag = "ORPHAN" if c in info["stranding_orphans"] else "sealed pocket"
+            bits.append(f"{tag} x{len(c)} near {min(sorted(c))}")
     minor = [c for c in info["orphan_clusters"] if len(c) < MAJOR_ORPHAN]
     if minor:
         bits.append(f"(minor: {sum(len(c) for c in minor)} border-gap tiles)")

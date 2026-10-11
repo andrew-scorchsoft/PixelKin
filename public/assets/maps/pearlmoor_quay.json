@@ -3331,8 +3331,8 @@
     {
       "id": "amb_brinelet",
       "at": {
-        "tx": 25,
-        "ty": 8
+        "tx": 23,
+        "ty": 6
       },
       "facing": "down",
       "sprite": "kin_26_overworld",

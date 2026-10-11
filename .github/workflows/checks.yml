@@ -65,6 +65,10 @@ jobs:
           python3 tools/maps/add_world_craft.py --check
           python3 tools/maps/vary_trees.py --check
       - run: pip install "Pillow>=10" "numpy>=1.26"
+      # Walkability against the TRUE entrances: FAILs a softlock (a flag-gated warp you
+      # can only stand on by using a Gift) or a sealed pocket that strands content.
+      - name: Walkability (softlocks, stranded content)
+        run: python3 tools/maps/render_walkable.py --all --report-only
       - name: Sprite standards (canvas, alpha, anchors)
         run: python3 .claude/skills/generate-sprite-sheet/scripts/validate_sprites.py --all
       - name: Walk-cycle facing (no stray frame breaks the cycle)
