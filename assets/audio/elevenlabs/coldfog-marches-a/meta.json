@@ -3,12 +3,12 @@
  "kind": "loop",
  "where": "The Coldfog cluster \u2014 the drained marches, the snuffed beacon and the Hollowfen stillworks",
  "mood": "Snuffed \u2014 a drained marsh where the lanterns went out; a lone melody that keeps reaching for home and guttering before it gets there.",
- "duration": 92.604,
- "loop_start": 6.478,
- "seam": 0.109,
- "bpm_est": 117.5,
+ "duration": 86.204,
+ "loop_start": 7.221,
+ "seam": 0.12,
+ "bpm_est": 64.6,
  "song_id": "YnAuJABRxtJT7mems1fY",
- "raw_ms": 89130,
+ "raw_ms": 82000,
  "motif": "low",
- "lufs": -18.4
+ "lufs": -18.5
 }

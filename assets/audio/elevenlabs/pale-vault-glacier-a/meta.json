@@ -3,12 +3,15 @@
  "kind": "loop",
  "where": "Pale Vault Glacier (the aurora-lit ice town outdoors); returns after meeting Warden C\u00f2r and after the Aurora-watch vigil",
  "mood": "Aurora Vault \u2014 glacial, shimmering, lonely-beautiful; the stillest, most tender place in the north, suspended and never quite resolving.",
- "duration": 107.285,
- "loop_start": 9.892,
- "seam": 0.073,
- "bpm_est": 71.8,
- "song_id": "6YDdiOTOakRYWeDavVMe",
- "raw_ms": 100075,
+ "duration": 98.074,
+ "loop_start": 6.425,
+ "seam": 0.163,
+ "bpm_est": 89.1,
+ "song_id": "bHK5IyTgKG0pTEMpoHx4",
+ "raw_ms": 94500,
  "motif": "low",
- "lufs": -15.5
+ "edits": [
+  "trimmed 2.190s of head"
+ ],
+ "lufs": -15.4
 }

@@ -3,12 +3,15 @@
  "kind": "loop",
  "where": "Dimglass Coast (the first road out of town)",
  "mood": "The road that teaches you to wander \u2014 brisk, salt-aired, optimistic; the hometown tune breaking into a stride.",
- "duration": 79.856,
- "loop_start": 11.819,
- "seam": 0.06,
+ "duration": 71.85,
+ "loop_start": 8.854,
+ "seam": 0.156,
  "bpm_est": 89.1,
  "song_id": "QAU9yjsoXPIEko4FPGPQ",
- "raw_ms": 72046,
+ "raw_ms": 67000,
  "motif": "medium",
- "lufs": -15.4
+ "lufs": -15.4,
+ "edits": [
+  "trimmed 2.640s of head"
+ ]
 }

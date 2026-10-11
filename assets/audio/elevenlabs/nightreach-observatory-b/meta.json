@@ -3,12 +3,17 @@
  "kind": "loop",
  "where": "Nightreach Lumenary (Nessa Cole's haunted hall) + the Nightreach inn and homes",
  "mood": "The Haunted Lumenary: the loneliest room in Vesperholm - a minor lullaby that reaches up and never quite comes home, a clock running down; hope present but not yet earned.",
- "duration": 103.314,
- "loop_start": 9.242,
- "seam": 0.182,
+ "duration": 74.267,
+ "loop_start": 4.328,
+ "seam": 0.162,
  "bpm_est": 89.1,
  "song_id": "aUB3bg9dhwxhCKsREbQx",
- "raw_ms": 99030,
+ "raw_ms": 75000,
  "motif": "low",
- "lufs": -15.5
+ "warning": "dead air 4.0s in the loop body",
+ "lufs": -15.5,
+ "edits": [
+  "trimmed 2.640s of head",
+  "trimmed 2.250s of head"
+ ]
 }

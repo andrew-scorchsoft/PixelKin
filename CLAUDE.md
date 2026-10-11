@@ -413,6 +413,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   remaster spec run through `tools/audio/remaster_track.py` (generate-music SKILL.md "house
   method"); then rebuild the manifest + `build_music_data.mjs` (the website's music page) — CI
   fails if either is stale. Never hand-cut a remaster's loop: the glue pass is what makes it seamless.
+  A clean seam ≠ a good loop: `tools/audio/dead_air.py` (CI) catches the take-fades-out-mid-cue
+  failure (the boss went silent 25 s); and never condition a battle/driving cue on the motif —
+  it pins the tempo to the lullaby's ~90 BPM.
 - **Every served SFX must be listed in `public/assets/audio/sfx/sfx.manifest.json`** — `Sfx.has`/`play` and the
   ambience bed loader skip anything absent (silence, not a 404). Looping `amb-*` beds are NOT chip renders:
   re-render with `tools/audio/ambient_beds.py` (seamless-by-construction numpy synth; also rewrites the manifest).

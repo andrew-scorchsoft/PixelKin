@@ -3,12 +3,15 @@
  "kind": "loop",
  "where": "Penumbra Ring + Starwell (the last dark before the Umbral Spire)",
  "mood": "Wall of Ink: the last dark, crossed on starlight; a held breath, your heartbeat and one lonely lamp-note, hope leaking in at the edges.",
- "duration": 109.113,
- "loop_start": 9.056,
- "seam": 0.135,
+ "duration": 100.049,
+ "loop_start": 10.791,
+ "seam": 0.156,
  "bpm_est": 89.1,
  "song_id": "87aRt6MQJdXluw1qL09z",
- "raw_ms": 104046,
+ "raw_ms": 93500,
  "motif": "low",
- "lufs": -18.4
+ "lufs": -18.5,
+ "edits": [
+  "trimmed 1.190s of head"
+ ]
 }

@@ -54,6 +54,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / ".claude/skills/generate-music/scripts"))
 import generate_music as gm  # noqa: E402
+sys.path.insert(0, str(ROOT / "tools/audio"))
+import dead_air as da  # noqa: E402
 
 SPECS = ROOT / "assets/audio/elevenlabs"
 SERVED = ROOT / "public/assets/audio/music/remaster"
@@ -301,6 +303,12 @@ def main() -> int:
                 raise SystemExit("no song-id header returned; cannot glue")
             total_ms = int(round(duration(raw) * 1000))
         intro_ms = plan["chunks"][0]["duration_ms"]
+        # Takes FADE OUT at the end even when told not to; glue from where the music
+        # still plays at full level, or the fade ends up inside the loop (dead air).
+        music_ms = int(da.music_end(da.levels(raw), min_s=intro_ms / 1000 + 30) * 1000)
+        if music_ms < total_ms - 500:
+            print(f"  take fades from {music_ms / 1000:.1f}s (of {total_ms / 1000:.1f}s): gluing from there")
+            total_ms = music_ms
         body_s = (total_ms - intro_ms) / 1000
         best = None
         for k in range(a.glue_tries):
@@ -312,12 +320,16 @@ def main() -> int:
             splice(raw, graw, joined, total_ms)
             cand = work / f"cut{k}.mp3"
             rep = make_loop(joined, cand, intro_ms / 1000, body_s)
-            print(f"  glue try {k}: seam {rep['seam_distance']} loop {rep['loop_start']}->{rep['loop_end']}")
-            if best is None or rep["seam_distance"] < best[0]["seam_distance"]:
-                best = (rep, cand)
-            if rep["seam_distance"] <= SEAM_OK:
+            stall, at = da.longest_low(da.levels(cand), rep["loop_start"])
+            rep["stall"] = stall
+            print(f"  glue try {k}: seam {rep['seam_distance']} loop {rep['loop_start']}->{rep['loop_end']}"
+                  f" stall {stall:.1f}s")
+            score = rep["seam_distance"] + (10 if stall > da.MAX_STALL else 0)
+            if best is None or score < best[2]:
+                best = (rep, cand, score)
+            if rep["seam_distance"] <= SEAM_OK and stall <= da.MAX_STALL:
                 break
-        rep, cand = best
+        rep, cand, _ = best
         cand.replace(out)
         meta = {"id": a.id, "kind": "loop", "where": spec["where"], "mood": spec["mood"],
                 "duration": round(duration(out), 3), "loop_start": rep["loop_start"],
@@ -326,6 +338,8 @@ def main() -> int:
                 "motif": (spec.get("motif") or {}).get("strength")}
         if rep["seam_distance"] > SEAM_OK:
             meta["warning"] = f"seam {rep['seam_distance']} > {SEAM_OK}: listen to the join, consider --reglue"
+        if rep["stall"] > da.MAX_STALL:
+            meta["warning"] = (meta.get("warning", "") + f" dead air {rep['stall']:.1f}s in the loop body").strip()
     meta_path.write_text(json.dumps(meta, indent=1) + "\n")
     # Bring it to the house loudness (static gain + -1 dBFS safety limiter).
     subprocess.run([sys.executable, str(ROOT / "tools/audio/level_remasters.py"), a.id], check=True)

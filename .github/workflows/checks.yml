@@ -90,3 +90,10 @@ jobs:
         run: python3 .claude/skills/generate-sprite-sheet/scripts/validate_sprites.py --all
       - name: Walk-cycle facing (no stray frame breaks the cycle)
         run: python3 .claude/skills/generate-sprite-sheet/scripts/check_walk_facing.py $(ls assets/trainers/*.png | grep -v _actions)
+      # A generated take often fades out mid-cue; glued into a loop that became 10-30 s of
+      # near-silence (the boss battle went quiet for 25 s). FAILs any loop body with dead
+      # air or a cue with a silent lead-in.
+      - name: Remastered music has no dead air
+        run: |
+          command -v ffmpeg >/dev/null || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
+          python3 tools/audio/dead_air.py

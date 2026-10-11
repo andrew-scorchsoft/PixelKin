@@ -3,15 +3,12 @@
  "kind": "loop",
  "where": "The final battles: Warden C\u00f2r at the Umbral Spire summit, and Star-tender Fenn's post-game duel",
  "mood": "The last stand on the black mountain \u2014 grand, tragic and driving: a sorrowful antagonist who wants a gentle endless night, and the light that will not go out.",
- "duration": 78.873,
- "loop_start": 8.261,
- "seam": 0.394,
- "bpm_est": 143.6,
- "song_id": "CXXbfTljsVYvlDzUn1nV",
+ "duration": 77.793,
+ "loop_start": 6.943,
+ "seam": 0.27,
+ "bpm_est": 95.7,
+ "song_id": "5HEvC4VF1TQCheu57el8",
  "raw_ms": 73326,
  "motif": null,
- "lufs": -15.4,
- "edits": [
-  "trimmed 0.005s of head"
- ]
+ "lufs": -15.5
 }

@@ -3,11 +3,14 @@
  "kind": "loop",
  "where": "Saltreach Fen I (the open reed marsh east of Pearlmoor)",
  "mood": "A slow drift through reed shallows \u2014 a breathy woodwind wanders and the lapping water answers; melancholy, never sad.",
- "duration": 87.954,
- "loop_start": 9.985,
- "seam": 0.129,
+ "duration": 70.034286,
+ "loop_start": 0.65,
+ "seam": 0.396,
  "bpm_est": 89.1,
  "song_id": "pOHL13dVswZPte4ZqIvO",
  "raw_ms": 83200,
- "motif": "medium"
+ "motif": "medium",
+ "edits": [
+  "re-cut to end before the take's fade at 70.0s"
+ ]
 }

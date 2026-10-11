@@ -3,12 +3,12 @@
  "kind": "loop",
  "where": "Trainer battles: every Lampwarden duel for a Gleam (Brisa, Reyl, Sable, Otho), the Beacon and route trainers, and Wren's first friendly bout",
  "mood": "The arena duel \u2014 proud, rousing and fair: a respected challenger in the lantern-light, the fight that earns a constellation.",
- "duration": 56.764,
- "loop_start": 5.828,
- "seam": 0.373,
+ "duration": 55.51,
+ "loop_start": 9.799,
+ "seam": 0.367,
  "bpm_est": 161.5,
  "song_id": "0LJe3LLR7WBCLrPUmWi8",
- "raw_ms": 52767,
+ "raw_ms": 47500,
  "motif": null,
  "lufs": -15.3
 }

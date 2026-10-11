@@ -74,8 +74,21 @@ def main() -> int:
     elif a.to is not None:
         cut = int(round(a.to * SR))
     else:
-        loud = np.flatnonzero(np.abs(x).max(1) > 10 ** (-40 / 20))
-        cut = max(0, int(loud[0]) - int(0.01 * SR)) if len(loud) else 0
+        # near-silence = 30 dB under the cue's median level (the dead_air.py rule)
+        w = int(0.05 * SR)
+        m = len(x) // w
+        env = 20 * np.log10(np.sqrt((x[: m * w].mean(1).reshape(m, w) ** 2).mean(1)) + 1e-9)
+        first = int(np.argmax(env > np.median(env) - 30))
+        cut = max(0, first * w - int(0.01 * SR))
+        # agree with dead_air.py's coarser 0.5 s rule (the CI gate): never leave a
+        # lead it would still flag
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        import dead_air as da
+        db = da.levels(f)
+        k = 0
+        while k < len(db) and db[k] < np.median(db) - 30:
+            k += 1
+        cut = max(cut, int((k * da.WIN - 0.25) * SR)) if k * da.WIN > 1.0 else cut
     if cut <= 0:
         print(f"{a.id}: nothing to trim")
         return 0

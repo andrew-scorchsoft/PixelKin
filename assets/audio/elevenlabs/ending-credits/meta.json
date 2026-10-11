@@ -3,12 +3,12 @@
  "kind": "loop",
  "where": "The ending credits roll",
  "mood": "The Road Remembered: a warm medley walking back down the whole journey in memory, every road leading home to the hometown theme in daylight.",
- "duration": 106.867,
- "loop_start": 11.633,
- "seam": 0.207,
+ "duration": 104.516,
+ "loop_start": 13.584,
+ "seam": 0.199,
  "bpm_est": 89.1,
  "song_id": "GKF9BC19zagnw8dqu267",
- "raw_ms": 100833,
+ "raw_ms": 96500,
  "motif": "high",
- "lufs": -15.4
+ "lufs": -15.5
 }

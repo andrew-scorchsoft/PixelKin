@@ -3,11 +3,12 @@
  "kind": "loop",
  "where": "Helia Vault (the Sunsketch puzzle reliquary off Sunvault Climb II)",
  "mood": "First Light at the Top: Solar warmth meets the first true starlight - the climbing hook at its highest, doubled in bells, inside a sunlit reliquary of blooms and sun-mirrors.",
- "duration": 80.065,
- "loop_start": 9.799,
- "seam": 0.154,
+ "duration": 71.915,
+ "loop_start": 9.66,
+ "seam": 0.225,
  "bpm_est": 89.1,
  "song_id": "iXqxAPubIQySHPR7FIT4",
- "raw_ms": 74553,
- "motif": "low"
+ "raw_ms": 66500,
+ "motif": "low",
+ "lufs": -15.4
 }

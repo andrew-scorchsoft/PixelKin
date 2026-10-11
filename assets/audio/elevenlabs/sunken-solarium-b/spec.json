@@ -87,5 +87,7 @@
     "seamless loop back to the start of the theme"
    ]
   }
- ]
+ ],
+ "max_stall": 5.0,
+ "_stall_note": "deliberately sparse interior: one ~4 s hush is part of the cue (dead_air.py allows up to max_stall)"
 }

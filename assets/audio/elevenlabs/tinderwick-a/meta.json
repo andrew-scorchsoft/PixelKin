@@ -3,10 +3,13 @@
  "kind": "loop",
  "where": "Tinderwick (home town)",
  "mood": "The hometown lullaby \u2014 lanterns in the dark, cosy and a little homesick. The source of the Vesper motif.",
- "duration": 102.348,
- "loop_start": 13.0264,
+ "duration": 99.617,
+ "loop_start": 10.336,
  "seam": 0.165,
  "song_id": "TOREmIgiwF3GKpN7UkLA",
  "motif": "source",
- "lufs": -15.4
+ "lufs": -15.4,
+ "edits": [
+  "trimmed 2.690s of head"
+ ]
 }

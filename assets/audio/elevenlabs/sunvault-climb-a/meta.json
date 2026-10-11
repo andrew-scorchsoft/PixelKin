@@ -3,12 +3,15 @@
  "kind": "loop",
  "where": "Sunvault Climb I & II (golden vine terraces up to Nightreach) + the Sunfall vigil site",
  "mood": "Vines to the Sky: warm, ascending, hopeful - every phrase climbs like the terraces; the sunniest route in the West.",
- "duration": 85.133,
- "loop_start": 12.469,
- "seam": 0.081,
+ "duration": 74.861,
+ "loop_start": 5.433,
+ "seam": 0.092,
  "bpm_est": 89.1,
  "song_id": "rOnn2REhkRTa7qVTJOAm",
- "raw_ms": 77244,
+ "raw_ms": 74000,
  "motif": "medium",
- "lufs": -15.5
+ "lufs": -15.4,
+ "edits": [
+  "trimmed 2.740s of head"
+ ]
 }

@@ -75,6 +75,15 @@ cue feel iconic is **form + a shared motif + a seamless loop**, so:
    clock), re-entering a map never restarts it, and a missing remaster falls back
    to classic. Oneshots (`playSting`) never loop.
 
+**Dead air (the boss-battle bug, 2026-10):** takes FADE OUT at the end even when
+told not to, and the boss cue also faded mid-plan, losing two sections. The pipeline
+now glues from where the music still plays (`dead_air.music_end`) and rejects a cut
+with a stall; `tools/audio/dead_air.py` (CI) fails any loop body with > 3 s near-silent
+(a deliberately sparse cue may set `max_stall` in its spec) or a silent lead-in.
+Repair kit, cheapest first: `recut_loop.py` (free: end before the fade) →
+`remaster_track.py --reglue` (≈700 credits) → a fresh compose. Note the loop-seam
+score alone never sees this — always run dead_air.py.
+
 **Size:** repo masters are 128k stereo (the source; never re-encode them); the
 deploy (`compress_dist_audio.mjs`) ships remasters at **60k ABR joint stereo** (~0.75 MB per
 ~100 s cue, ~34 MB for the full score; owner's call, 2026-10) and the classic chip renders at 64k mono.

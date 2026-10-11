@@ -3,12 +3,12 @@
  "kind": "loop",
  "where": "Pearlmoor's outskirts \u2014 the allotment hill behind the quay and Pearlmoor Point (the Old Light headland)",
  "mood": "Low tide, lantern strings \u2014 the quay waltz late and quiet, a lonely-but-cosy sway on the edge of town.",
- "duration": 75.468,
- "loop_start": 8.87,
- "seam": 0.26,
+ "duration": 65.045,
+ "loop_start": 11.308,
+ "seam": 0.339,
  "bpm_est": 89.1,
  "song_id": "6e6Fi7np64ClGJTNPR0t",
- "raw_ms": 70426,
+ "raw_ms": 57500,
  "motif": "medium",
- "lufs": -15.4
+ "lufs": -15.5
 }

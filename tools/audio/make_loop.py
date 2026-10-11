@@ -82,6 +82,8 @@ def main() -> int:
     ap.add_argument("out", nargs="?")
     ap.add_argument("--min-len", type=float, default=40.0, help="shortest loop body, seconds")
     ap.add_argument("--min-start", type=float, default=0.0, help="earliest loop start, seconds")
+    ap.add_argument("--max-end", type=float, default=None,
+                    help="latest loop end, seconds (keep a take's fade-out / outro OUT of the loop)")
     ap.add_argument("--max-start", type=float, default=12.0, help="latest loop start, seconds")
     ap.add_argument("--window", type=float, default=4.0, help="seconds compared after each point")
     ap.add_argument("--bars-per", type=int, default=4, help="prefer loop lengths that are a multiple of N bars")
@@ -112,10 +114,11 @@ def main() -> int:
     e_lo = int(a.min_len * fps)
     # For each lag (= loop length), frame-wise distance F[t] vs F[t+lag], then a
     # windowed sum gives the seam distance for every start t at once.
+    e_cap = nfr - W if a.max_end is None else min(nfr - W, int(a.max_end * fps))
     for lag in range(e_lo, nfr - W):
         dd = ((F[:nfr - lag] - F[lag:]) ** 2).mean(1)
         cs = np.concatenate([[0.0], np.cumsum(dd)])
-        n = min(max_s + 1, len(dd) - W + 1)
+        n = min(max_s + 1, len(dd) - W + 1, e_cap - lag + 1)
         if n <= 0:
             continue
         win = (cs[W:W + n] - cs[:n]) / W
