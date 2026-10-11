@@ -1,0 +1,48 @@
+{
+ "chunks": [
+  {
+   "song_id": "gITt0QYIaOAEL9l97j78",
+   "range": {
+    "start_ms": 33316,
+    "end_ms": 53316
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "162 BPM",
+    "E minor with a warm turn to G major",
+    "4/4",
+    "cocky bouncy syncopated pulse-wave lead melody",
+    "funky slap-style synth bass with octave jumps",
+    "punchy sampled drums with snappy snare and offbeat hi-hats",
+    "bright brass stabs",
+    "quick twin-lead harmonies",
+    "competitive rival battle theme, spirited and playful with a heart of friendship",
+    "strong catchy hummable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "gITt0QYIaOAEL9l97j78",
+   "range": {
+    "start_ms": 5926,
+    "end_ms": 15926
+   }
+  }
+ ]
+}

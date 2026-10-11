@@ -1,0 +1,47 @@
+{
+ "chunks": [
+  {
+   "song_id": "GKF9BC19zagnw8dqu267",
+   "range": {
+    "start_ms": 80833,
+    "end_ms": 100833
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "100 BPM",
+    "G major moving to C major",
+    "warm nostalgic ending credits medley",
+    "bright pulse-wave lead",
+    "plucked harp arpeggios as the thread through every section",
+    "warm string chords",
+    "gentle walking drums",
+    "grateful, nostalgic, warm and a little teary",
+    "strong singable melodies",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "GKF9BC19zagnw8dqu267",
+   "range": {
+    "start_ms": 9600,
+    "end_ms": 19600
+   }
+  }
+ ]
+}

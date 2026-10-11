@@ -1,0 +1,49 @@
+{
+ "chunks": [
+  {
+   "song_id": "O5vK4kFUgIE60bFeUmm9",
+   "range": {
+    "start_ms": 37626,
+    "end_ms": 57626
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "150 BPM",
+    "C minor",
+    "4/4",
+    "ominous chromatic synth bass ostinato",
+    "solemn sampled pipe organ chords",
+    "cold minor-key sawtooth lead melody with tritone leaps",
+    "tight sampled drums with tom-heavy fills",
+    "low brass swells",
+    "icy bell accents",
+    "uneasy dark battle theme, solemn and sorrowful rather than evil",
+    "strong memorable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "O5vK4kFUgIE60bFeUmm9",
+   "range": {
+    "start_ms": 6400,
+    "end_ms": 16400
+   }
+  }
+ ]
+}

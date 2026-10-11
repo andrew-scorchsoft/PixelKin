@@ -1,0 +1,13 @@
+{
+ "id": "battle-hours",
+ "kind": "loop",
+ "where": "The Three Hours set-piece battles (Gloamber, Noctilune, Erstmorn \u2014 the legendary trio)",
+ "mood": "Fighting a keeper of the sky's turning \u2014 awed, patient and vast, like a great clock: a jammed wheel rocking toward the next hour.",
+ "duration": 87.484,
+ "loop_start": 7.616,
+ "seam": 0.181,
+ "bpm_est": 152.0,
+ "song_id": "EUGEPD8JrFKD4Bdfla2O",
+ "raw_ms": 80588,
+ "motif": null
+}
