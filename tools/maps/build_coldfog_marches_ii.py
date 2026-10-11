@@ -133,7 +133,11 @@ pt.ledge_run(deco, W, H, SHELF.y1, SHELF.x0 + 2, SHELF.x1 - 2, rng, family="scre
 
 # ---- dead water ---------------------------------------------------------------------
 mk.blob(murk, W, H, 20.0, 18.0, 2.6, 1.6)              # the east sheet (islet cache)
+mk.blob(murk, W, H, 22.4, 19.2, 1.1, 0.7)              #  (R10: ragged lobes, never a box)
+mk.blob(murk, W, H, 18.0, 16.7, 1.0, 0.6)
 mk.blob(murk, W, H, 6.5, 17.0, 3.0, 2.0)               # the west sheet
+mk.blob(murk, W, H, 3.9, 18.4, 1.2, 0.9)
+mk.blob(murk, W, H, 8.6, 15.4, 1.1, 0.7)
 mk.blob(murk, W, H, 19.5, 9.5, 2.0, 1.7)               # THE STILLED POND (touch #3)
 # the islet in the east sheet (dry ground under the wicks cache)
 for (x, y) in [(20, 18), (21, 18)]:
@@ -143,6 +147,8 @@ for (x, y) in [(20, 18), (21, 18)]:
 # the MANDATORY crossing (§11 r7): rows 21-22 wall to wall — every road north
 # from the boundary rolls it (no lane survives this deep to carve out)
 mk.rect(blighttuft, W, H, 2, 21, 27, 22)
+for (x, y) in [(2, 22), (7, 21), (12, 22), (16, 21), (21, 22), (27, 21)]:
+    blighttuft[y * W + x] = 0   # R10: notched, wind-cut edge (still wall to wall)
 # optional deeper beds
 mk.blob(blighttuft, W, H, 5.5, 5.0, 2.4, 1.6)          # NW, by the back-door
 mk.blob(blighttuft, W, H, 23.0, 5.0, 2.6, 1.9)         # NE, off the forecourt
@@ -265,6 +271,50 @@ for i, tx in enumerate((4, 5, 6)):
          "ref": "npc.coldfog_quiet_camp"})
 owed += ["npc.coldfog_quiet_camp (the camp read — see docstring; grief, no body, no joke)"]
 
+# ---- R10: DESOLATION, AUTHORED (world-craft panel §4 #5) -------------------------
+m["objects"] += [
+    # a boat dragged up out of the west sheet, its oar still shipped
+    {"id": "beached_boat", "sprite": "coldfog_beached_boat", "at": {"tx": 3, "ty": 13},
+     "w": 3, "h": 2},
+    # the willow at the east sheet's lip, forgotten what green was
+    {"id": "drained_willow", "sprite": "coldfog_dead_willow", "at": {"tx": 24, "ty": 16},
+     "w": 3, "h": 4, "overhang": 2, "walk_under": True},
+    # doused posts down the old fen-road (take a flame for a breath, gutter)
+    {"id": "doused_lamp_a", "sprite": "coldfog_doused_lamp", "at": {"tx": 11, "ty": 15},
+     "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    {"id": "doused_lamp_b", "sprite": "coldfog_doused_lamp", "at": {"tx": 17, "ty": 11},
+     "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    # the Hollowing's notice by the works' door — courteous, tidy, pinned square
+    {"id": "quiet_notice", "sprite": "coldfog_hollowing_notice", "at": {"tx": 11, "ty": 6},
+     "w": 1, "h": 2, "overhang": 1, "walk_under": True},
+    # W-4: the FALL nearest the mountain — a fresh crater in the drained marsh
+    {"id": "fall_crater", "sprite": "fallenstar_crater", "at": {"tx": 12, "ty": 17},
+     "w": 6, "h": 4, "solid": False},
+    {"id": "fall_cinder", "sprite": "fallenstar_cinder_star", "at": {"tx": 14, "ty": 18},
+     "w": 2, "h": 2, "overhang": 1, "hidden_when_flag": "flag:dawn"},
+    {"id": "fall_cinder_woken", "sprite": "vigil_star_shard", "at": {"tx": 14, "ty": 18},
+     "w": 2, "h": 2, "overhang": 1, "requires_flag": "flag:dawn"},
+]
+m["triggers"] += [
+    {"id": "boat_read", "kind": "script", "at": {"tx": 4, "ty": 14},
+     "activation": "interact", "ref": "script.coldfog_boat_ii"},
+    {"id": "doused_lamp_a_relight", "kind": "script", "at": {"tx": 11, "ty": 17},
+     "activation": "interact", "ref": "script.coldfog_relight"},
+    {"id": "doused_lamp_b_relight", "kind": "script", "at": {"tx": 17, "ty": 13},
+     "activation": "interact", "ref": "script.coldfog_relight"},
+    {"id": "quiet_notice_read", "kind": "script", "at": {"tx": 11, "ty": 7},
+     "activation": "interact", "ref": "script.coldfog_notice_works"},
+    {"id": "fall_cinder_read", "kind": "script", "at": {"tx": 14, "ty": 19},
+     "activation": "interact", "ref": "script.fall_mark_coldfog"},
+    {"id": "fall_cinder_read_b", "kind": "script", "at": {"tx": 15, "ty": 19},
+     "activation": "interact", "ref": "script.fall_mark_coldfog"},
+]
+# a Hollowing acolyte, gently dousing the road's last lamp (gone at dawn)
+m["npcs"].append(
+    {"id": "coldfog_acolyte", "at": {"tx": 10, "ty": 8}, "facing": "down",
+     "sprite": "hollowing_acolyte", "movement": "static",
+     "dialogue_ref": "script.coldfog_acolyte", "hidden_when_flag": "flag:dawn"})
+
 # ---- signs --------------------------------------------------------------------------
 owed += pt.sign(m, deco, W, sid="coldfog_works", at=(17, 8))      # the works' notice
 owed += pt.sign(m, deco, W, sid="coldfog_beacon", at=(3, 11))     # the spur's why
@@ -311,6 +361,21 @@ for (x, y) in [(10, 11), (17, 19), (26, 8), (5, 13), (13, 20), (22, 14), (8, 4),
 for (x, y) in [(9, 20), (3, 16), (27, 5), (19, 20), (7, 11), (24, 9)]:
     if deco[y * W + x] == 0:
         deco[y * W + x] = gid("boulder")
+
+# R10 LITTER: seeded scatter on the open ground (off every structure, object,
+# NPC, trigger and warp) so the ground reads weathered, not blank (audit_visual).
+_busy = {(x, y) for y in range(H) for x in range(W)
+         if any(g[y * W + x] for g in (crag,murk,blighttuft,))}
+_busy |= {(x, y) for o in m["objects"]
+          for y in range(o["at"]["ty"], o["at"]["ty"] + o["h"])
+          for x in range(o["at"]["tx"], o["at"]["tx"] + o["w"])}
+_busy |= {(p["at"]["tx"], p["at"]["ty"]) for p in m["npcs"] + m["triggers"] + m["warps"]}
+_busy |= {(p["to"]["tx"], p["to"]["ty"]) for p in m["warps"]}
+_litter = [gid("greymoss_a"), gid("greymoss_b"), gid("g_pebble")]
+for y in range(2, 25):
+    for x in range(2, 28):
+        if (x, y) not in _busy and deco[y * W + x] == 0 and rng.random() < 0.09:
+            deco[y * W + x] = rng.choice(_litter)
 
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},

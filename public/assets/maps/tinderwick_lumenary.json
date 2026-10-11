@@ -621,7 +621,7 @@
       "facing": "down",
       "sprite": "brisa",
       "movement": "static",
-      "dialogue_ref": "npc.brisa_after",
+      "dialogue_ref": "script.brisa_after_staged",
       "requires_flag": "gleam:ember"
     }
   ],

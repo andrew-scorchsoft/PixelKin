@@ -93,8 +93,12 @@ PLACEMENTS: dict[str, dict] = {
                     obj("peril_cinder_star_woken", "vigil_star_shard", (17, 23), 2, 2,
                         overhang=1, requires_flag="flag:dawn")],
         "clear_deco": [(15, 22, 6, 4)],
-        "npcs": [npc("peril_hushfrost_counter", (21, 22), "npc_old_woman",
-                     "script.peril_hushfrost_counter", facing="left")],
+        # (R10 West: she is the PASS-WALKER — her camp stands beside her; her
+        # script runs these peril lines, then opens W-4 "The Pass-walker's Map"
+        # and walks on ahead to Nightreach, where worldcraft/west.py places her)
+        "npcs": [npc("peril_hushfrost_counter", (21, 22), "pass_walker",
+                     "script.passwalker", facing="left",
+                     hidden="flag:q_west_passmap_left")],
     },
     # W1 — the family who chose the quiet (Sunvault Climb I, by the gorge mouth):
     # they put their own brazier out. It is lit again once the Solar Gleam is

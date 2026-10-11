@@ -201,6 +201,36 @@ m["objects"] += [
      "hidden_when_flag": "gleam:solar"},
 ]
 
+# ---- R10 RUIN: the climb remembers it was a garden of the sun (world-craft
+# panel §4 #4 — "the ruin promised by its name is barely present") --------------
+m["objects"] += [
+    # a toppled sun-dial on the upper terrace — read it (one line)
+    {"id": "sundial", "sprite": "sunvault_sundial_fallen", "at": {"tx": 3, "ty": 7},
+     "w": 3, "h": 2},
+    # a standing stretch of the old colonnade on the middle terrace
+    {"id": "colonnade", "sprite": "sunvault_colonnade", "at": {"tx": 6, "ty": 15},
+     "w": 3, "h": 3, "overhang": 2, "walk_under": True},
+    {"id": "masonry_mid", "sprite": "sunvault_masonry", "at": {"tx": 16, "ty": 15},
+     "w": 2, "h": 2},
+    {"id": "masonry_low", "sprite": "sunvault_masonry", "at": {"tx": 25, "ty": 22},
+     "w": 2, "h": 2},
+    # W-4: a scorch on the lower terrace — the fall nearest the Solarium
+    {"id": "fall_crater", "sprite": "fallenstar_crater", "at": {"tx": 4, "ty": 20},
+     "w": 6, "h": 4, "solid": False},
+    {"id": "fall_cinder", "sprite": "fallenstar_cinder_star", "at": {"tx": 6, "ty": 21},
+     "w": 2, "h": 2, "overhang": 1, "hidden_when_flag": "flag:dawn"},
+    {"id": "fall_cinder_woken", "sprite": "vigil_star_shard", "at": {"tx": 6, "ty": 21},
+     "w": 2, "h": 2, "overhang": 1, "requires_flag": "flag:dawn"},
+]
+m["triggers"] += [
+    {"id": "sundial_read", "kind": "script", "at": {"tx": 4, "ty": 8},
+     "activation": "interact", "ref": "script.sunvault_sundial"},
+    {"id": "fall_cinder_read", "kind": "script", "at": {"tx": 6, "ty": 22},
+     "activation": "interact", "ref": "script.fall_mark_sunvault"},
+    {"id": "fall_cinder_read_b", "kind": "script", "at": {"tx": 7, "ty": 22},
+     "activation": "interact", "ref": "script.fall_mark_sunvault"},
+]
+
 # ---- signs --------------------------------------------------------------------------
 owed += pt.sign(m, deco, W, sid="sunvault_welcome", at=(26, 13))
 owed += pt.sign(m, deco, W, sid="sunvault_vines", at=(8, 3))
@@ -278,6 +308,21 @@ for y in range(H):
 for (x, y) in [(4, 16), (26, 6), (13, 5), (5, 22), (27, 17)]:
     if (x, y) not in avoid and deco[y * W + x] == 0:
         deco[y * W + x] = gid("boulder")
+
+# R10 LITTER: seeded scatter on the open ground (off every structure, object,
+# NPC, trigger and warp) so the ground reads weathered, not blank (audit_visual).
+_busy = {(x, y) for y in range(H) for x in range(W)
+         if any(g[y * W + x] for g in (cliff,ruin,goldtuft,))}
+_busy |= {(x, y) for o in m["objects"]
+          for y in range(o["at"]["ty"], o["at"]["ty"] + o["h"])
+          for x in range(o["at"]["tx"], o["at"]["tx"] + o["w"])}
+_busy |= {(p["at"]["tx"], p["at"]["ty"]) for p in m["npcs"] + m["triggers"] + m["warps"]}
+_busy |= {(p["to"]["tx"], p["to"]["ty"]) for p in m["warps"]}
+_litter = [gid("g_tuft"), gid("g_pebble"), gid("g_daisy")]
+for y in range(2, 24):
+    for x in range(2, 28):
+        if (x, y) not in _busy and deco[y * W + x] == 0 and rng.random() < 0.2:
+            deco[y * W + x] = rng.choice(_litter)
 
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},

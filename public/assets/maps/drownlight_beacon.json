@@ -49,6 +49,52 @@
       "h": 2,
       "overhang": 1,
       "walk_under": true
+    },
+    {
+      "id": "beached_boat",
+      "sprite": "coldfog_beached_boat",
+      "at": {
+        "tx": 3,
+        "ty": 9
+      },
+      "w": 3,
+      "h": 2
+    },
+    {
+      "id": "doused_lamp",
+      "sprite": "coldfog_doused_lamp",
+      "at": {
+        "tx": 12,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "drained_willow",
+      "sprite": "coldfog_dead_willow",
+      "at": {
+        "tx": 13,
+        "ty": 2
+      },
+      "w": 3,
+      "h": 4,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "quiet_notice",
+      "sprite": "coldfog_hollowing_notice",
+      "at": {
+        "tx": 7,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true
     }
   ],
   "warps": [
@@ -107,6 +153,36 @@
       },
       "activation": "interact",
       "ref": "npc.drownlight_door"
+    },
+    {
+      "id": "boat_read",
+      "kind": "script",
+      "at": {
+        "tx": 4,
+        "ty": 10
+      },
+      "activation": "interact",
+      "ref": "script.drownlight_boat"
+    },
+    {
+      "id": "doused_lamp_relight",
+      "kind": "script",
+      "at": {
+        "tx": 12,
+        "ty": 3
+      },
+      "activation": "interact",
+      "ref": "script.coldfog_relight"
+    },
+    {
+      "id": "quiet_notice_read",
+      "kind": "script",
+      "at": {
+        "tx": 7,
+        "ty": 10
+      },
+      "activation": "interact",
+      "ref": "script.coldfog_notice"
     }
   ],
   "encounters": [
@@ -526,7 +602,7 @@
         0,
         0,
         0,
-        0,
+        182,
         0,
         0,
         0,
@@ -569,7 +645,7 @@
         0,
         0,
         182,
-        0,
+        5,
         5,
         0,
         0,
@@ -589,7 +665,7 @@
         0,
         0,
         124,
-        0,
+        181,
         0,
         0,
         181,
@@ -641,7 +717,7 @@
         0,
         0,
         0,
-        0,
+        5,
         0,
         0,
         0,
@@ -657,15 +733,15 @@
         0,
         0,
         0,
+        181,
         0,
         0,
         0,
         0,
         0,
         0,
-        0,
-        0,
-        0,
+        5,
+        182,
         0,
         0,
         0,
@@ -1091,5 +1167,26 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "motes",
+        "density": 0.9
+      }
+    ],
+    "mist": {
+      "color": "#c9ced6",
+      "alpha": 0.34,
+      "speed": 4
+    },
+    "tint": {
+      "color": "#7d8796",
+      "alpha": 0.16
+    },
+    "starfall": {
+      "min_s": 25,
+      "max_s": 50
+    }
+  }
 }

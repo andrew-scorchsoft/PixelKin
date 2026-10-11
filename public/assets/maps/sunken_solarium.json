@@ -1404,7 +1404,7 @@
         "ty": 8
       },
       "facing": "left",
-      "sprite": "npc_woman",
+      "sprite": "market_trader",
       "movement": "look_around",
       "dialogue_ref": "npc.solarium_bread"
     },
@@ -1415,7 +1415,7 @@
         "ty": 7
       },
       "facing": "down",
-      "sprite": "npc_child",
+      "sprite": "village_child",
       "movement": "wander",
       "dialogue_ref": "npc.solarium_kid"
     },
@@ -1438,7 +1438,7 @@
         "ty": 5
       },
       "facing": "down",
-      "sprite": "npc_old_woman",
+      "sprite": "sun_keeper",
       "movement": "static",
       "dialogue_ref": "npc.solarium_gleam_elder",
       "requires_flag": "gleam:solar"
@@ -4770,5 +4770,21 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "dust",
+        "density": 0.8
+      },
+      {
+        "kind": "glowmotes",
+        "density": 0.35
+      }
+    ],
+    "tint": {
+      "color": "#ffd089",
+      "alpha": 0.06
+    }
+  }
 }

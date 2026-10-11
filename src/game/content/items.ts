@@ -377,7 +377,7 @@ export const ITEMS: ItemRegistry = {
   first_light_phial: {
     id: 'first_light_phial',
     name: 'First-Light Phial',
-    desc: 'One cupful of daylight, drawn the morning before the Long Dusk fell and kept forty years against a day worth spending it on. It beats faintly through the glass.',
+    desc: 'One cupful of daylight, drawn the morning before the Solarium flooded and kept forty years against a day worth spending it on. It beats faintly through the glass.',
     category: 'key',
   },
 

@@ -377,6 +377,21 @@ for (x, y) in [(3, 10), (27, 18), (15, 25), (8, 5), (27, 25)]:
     if (x, y) not in avoid and deco[y * W + x] == 0:
         deco[y * W + x] = gid("boulder")
 
+# R10 LITTER: seeded scatter on the open ground (off every structure, object,
+# NPC, trigger and warp) so the ground reads weathered, not blank (audit_visual).
+_busy = {(x, y) for y in range(H) for x in range(W)
+         if any(g[y * W + x] for g in (cliff,ruin,goldtuft,))}
+_busy |= {(x, y) for o in m["objects"]
+          for y in range(o["at"]["ty"], o["at"]["ty"] + o["h"])
+          for x in range(o["at"]["tx"], o["at"]["tx"] + o["w"])}
+_busy |= {(p["at"]["tx"], p["at"]["ty"]) for p in m["npcs"] + m["triggers"] + m["warps"]}
+_busy |= {(p["to"]["tx"], p["to"]["ty"]) for p in m["warps"]}
+_litter = [gid("g_tuft"), gid("g_pebble"), gid("g_daisy")]
+for y in range(2, 26):
+    for x in range(2, 28):
+        if (x, y) not in _busy and deco[y * W + x] == 0 and rng.random() < 0.2:
+            deco[y * W + x] = rng.choice(_litter)
+
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},
     {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)},

@@ -69,9 +69,27 @@ allows AT MOST one dry line — it's the marker; the coldfog sign is sincere):
 audit_flow notes — the terrace ledge is the route's one-way return (§3a r1);
 the SE wall-hollow cache is a paid dead end by design (§3a r4).
 
+
+R10 RECOMPOSE (2026-10, the world-craft panel's "grey-slab maze" finding):
+the banks, lane and encounter beds keep their topology, warps, trainers,
+caches and contracts, but every ruled rectangle is gone. The two banks are
+wind-carved ridges of varying width (blob chains), the trodden lane meanders
+1-2 tiles wide, the frost-tuft hollows and both mandatory crossings have
+ragged organic outlines (area kept within +-15% of the shipped 80 tiles, same
+tables), the lane is gone (trackless snow: lamps, cairns and live footprints carry
+the way), an ice pool and drift props break the open snow, and every
+screen has a focal point from the West prop kit: the FROZEN FALLS (north),
+wind-carved outcrops, the ice-locked cart (SW), cairns at the turns and the
+PASS-WALKER'S CAMP beside the fallen-star crater. The crater, cinder and the
+pass-walker ride tools/maps/add_peril_thread.py (re-run it after this
+builder); the R4 day-form zones and the Radiant hollow cache are post-build
+additions re-applied from the shipped JSON after a rebuild (they live in the
+JSON, not here).
+
 Run:  ./venv/bin/python tools/maps/build_hushfrost_pass_i.py
 """
 from __future__ import annotations
+import math
 import random
 import mapkit as mk
 import patterns as pt
@@ -82,11 +100,27 @@ rng = random.Random(74)
 owed: list[str] = []
 
 # ---- terrain presence grids --------------------------------------------------------
-glacier = mk.make_grid(W, H)    # canyon walls + the two banks
-cliff = mk.make_grid(W, H)      # the wind-blown terrace rim (stone register)
-snowtrail = mk.make_grid(W, H)  # the trodden lane
+glacier = mk.make_grid(W, H)    # canyon walls + the two wind-carved banks
+cliff = mk.make_grid(W, H)      # (unused: the snow register keeps to glacier rims)
+snowtrail = mk.make_grid(W, H)  # the trodden lane (meandering, 1-2 wide)
 frosttuft = mk.make_grid(W, H)  # encounter hollows + the mandatory crossings
+snowpatch = mk.make_grid(W, H)  # wind-drifted snow (texture, no gameplay)
+ice = mk.make_grid(W, H)        # the frozen pool under the falls (walkable)
 deco = mk.make_grid(W, H)
+
+
+def stroke(g, pts, r, val=1):
+    """Stamp discs of radius r along a polyline (dense) — an organic lane/ridge."""
+    for (ax, ay), (bx, by) in zip(pts, pts[1:]):
+        n = max(1, int(math.hypot(bx - ax, by - ay) * 4))
+        for k in range(n + 1):
+            px, py = ax + (bx - ax) * k / n, ay + (by - ay) * k / n
+            for y in range(int(py - r) - 1, int(py + r) + 2):
+                for x in range(int(px - r) - 1, int(px + r) + 2):
+                    if 0 <= x < W and 0 <= y < H and \
+                            (x + 0.5 - px) ** 2 + (y + 0.5 - py) ** 2 <= r * r:
+                        g[y * W + x] = val
+
 
 # BORDERS: glacier crag all round, 2 deep, organic bumps (§11 r2)
 mk.rect(glacier, W, H, 0, 0, W - 1, 1)              # north
@@ -94,80 +128,97 @@ mk.rect(glacier, W, H, 0, 26, W - 1, H - 1)         # south
 mk.rect(glacier, W, H, 0, 0, 1, H - 1)              # west
 mk.rect(glacier, W, H, 30, 0, 31, H - 1)            # east
 mk.organic_border(glacier, W, H, depth=0,
-                  bumps=[(7, 1, 2), (18, 2, 2), (27, 1, 2), (1, 21, 2),
-                         (12, 27, 2), (23, 26, 2), (30, 22, 2), (1, 8, 2)],
+                  bumps=[(7, 1, 2), (27, 1, 2), (1, 21, 2), (12, 27, 2), (23, 26, 2),
+                         (30, 22, 2), (1, 8, 2), (30, 4, 1), (5, 26, 1)],
                   rng=rng)
+
+# THE TWO BANKS — wind-carved ridges, not slabs: blob chains of varying width
+# (S-bend rule §3a r11: the canyon still folds the path 4 times).
+BANK_A = {1: (20, 23), 2: (20, 24), 3: (20, 24), 4: (19, 23), 5: (20, 22), 6: (21, 22),
+          7: (20, 23), 8: (19, 23), 9: (18, 23), 10: (18, 22), 11: (19, 22), 12: (20, 23),
+          13: (21, 23), 14: (21, 24), 15: (20, 24), 16: (20, 23), 17: (20, 22), 18: (20, 23),
+          19: (21, 22)}                           # bank A — passage runs SOUTH of it
+BANK_B = {8: (8, 9), 9: (7, 9), 10: (8, 10), 11: (8, 10), 12: (7, 10), 13: (6, 9), 14: (7, 9),
+          15: (8, 10), 16: (8, 10), 17: (9, 10), 18: (8, 10), 19: (7, 9), 20: (6, 9),
+          21: (6, 8), 22: (7, 9), 23: (8, 10), 24: (8, 10), 25: (8, 10)}  # bank B — passage N of it
+for bank in (BANK_A, BANK_B):
+    for y, (x0, x1) in bank.items():
+        mk.hline(glacier, W, H, y, x0, x1)
+
+# sealed crag pockets (the audit_flow dead-end rule — paid nothing), now organic
+mk.blob(glacier, W, H, 4.5, 2.8, 3.2, 1.6)        # NW shelf above the high lane
+mk.blob(glacier, W, H, 12.0, 2.4, 4.6, 1.3)       # north strip over bank B's head
+mk.blob(glacier, W, H, 27.5, 25.0, 2.8, 1.4)      # SE strip under the wall-hollow
+
 # EAST gap from the glacier (rows 10-11; landings (30,10)/(30,11) walkable,
-# our return warps ON x31)
-for x in (30, 31):
-    for y in (10, 11):
-        glacier[y * W + x] = 0
-# WEST gap — the coldfog throat (rows 14-15)
-for x in (0, 1):
-    for y in (14, 15):
-        glacier[y * W + x] = 0
-
-# THE TWO BANKS (S-bend rule §3a r11: the canyon folds the path 4 times)
-mk.rect(glacier, W, H, 21, 2, 22, 19)   # bank A — passage runs SOUTH of it
-mk.rect(glacier, W, H, 8, 8, 9, 25)     # bank B — passage runs NORTH of it
-
-# seal the empty crag pockets the carve left (audit_flow dead-end rule: a
-# detour either PAYS or doesn't exist — these three paid nothing)
-mk.rect(glacier, W, H, 2, 2, 7, 4)      # NW shelf above the high lane
-mk.rect(glacier, W, H, 8, 2, 16, 3)     # north strip over bank B's head
-mk.rect(glacier, W, H, 24, 24, 29, 25)  # SE strip under the wall-hollow
+# our return warps ON x31) + WEST gap — the coldfog throat (rows 14-15)
+for (x, y) in [(30, 10), (31, 10), (30, 11), (31, 11), (0, 14), (1, 14), (0, 15), (1, 15)]:
+    glacier[y * W + x] = 0
 
 # ---- the wind-blown terrace (elevation accent + the one-way return, §11 r3) --------
-# Climb in from the NORTH gap, loot the shelf, hop the south ledge back down
-# onto the south corridor — returning travellers skip the climb. Hand-rolled
-# in the SNOW register (pt.terrace stamps the grass-context cliff + grass
-# ledge — wrong family here): glacier rim, snow_ledge_s lip.
 mk.hline(glacier, W, H, 16, 13, 19)     # north rim (gap carved below)
 mk.vline(glacier, W, H, 13, 16, 18)     # west rim
 mk.vline(glacier, W, H, 19, 16, 18)     # east rim
 for x in (15, 16):
     glacier[16 * W + x] = 0             # the climb-in gap
+for y in (17, 18):
+    for x in range(14, 19):
+        glacier[y * W + x] = 0          # keep the shelf itself open (bank A bulge)
 pt.ledge_run(deco, W, H, 19, 14, 18, rng, family="snow")  # the one-way hop down
 
-# ---- the lane (snowtrail on snow — context-correct) --------------------------------
-mk.hline(snowtrail, W, H, 10, 26, 29)               # entry shelf rows
-mk.hline(snowtrail, W, H, 11, 26, 29)
-mk.vline(snowtrail, W, H, 25, 10, 20)               # bend 1: south past bank A
-mk.vline(snowtrail, W, H, 26, 10, 20)
-mk.hline(snowtrail, W, H, 21, 12, 25)               # the south corridor (wind-blown)
-mk.hline(snowtrail, W, H, 22, 12, 25)
-mk.vline(snowtrail, W, H, 11, 6, 22)                # bend 2: north up the mid chamber
-mk.vline(snowtrail, W, H, 12, 6, 22)
-mk.hline(snowtrail, W, H, 5, 3, 11)                 # bend 3: west over bank B's head
-mk.hline(snowtrail, W, H, 6, 3, 11)
-mk.vline(snowtrail, W, H, 3, 6, 15)                 # bend 4: south down the west chamber
-mk.vline(snowtrail, W, H, 4, 6, 15)
-mk.hline(snowtrail, W, H, 14, 1, 4)                 # the throat approach
-mk.hline(snowtrail, W, H, 15, 1, 4)
+# ---- no trodden lane: the pass is trackless snow. The lamps, cairns and the
+# player's own footprints (ambience footprints:'all', worldcraft/west.py) carry
+# the way — the old 2-wide grey snowtrail read as ruled slabs.
 
-# ---- encounter terrain -------------------------------------------------------------
+# ---- encounter terrain (hard-edged fill, organic outline) --------------------------
 # sheltered snow-hollows (optional pockets, rate 0.11)
-mk.blob(frosttuft, W, H, 26.5, 5.0, 2.8, 1.6)       # NE hollow (off the entry)
-mk.blob(frosttuft, W, H, 26.5, 18.5, 2.6, 2.4)      # SE wall-hollow (the missable)
+mk.blob(frosttuft, W, H, 25.5, 4.6, 1.8, 1.1)       # NE hollow (off the entry)
+mk.blob(frosttuft, W, H, 27.8, 5.6, 1.6, 1.1)
+mk.blob(frosttuft, W, H, 27.0, 18.0, 1.8, 1.6)      # SE wall-hollow (the missable)
+mk.blob(frosttuft, W, H, 28.3, 19.9, 1.3, 1.1)
+mk.blob(frosttuft, W, H, 26.0, 20.0, 1.0, 0.7)
 mk.blob(frosttuft, W, H, 16.0, 17.8, 2.4, 1.2)      # ON the terrace (priced pocket)
-mk.blob(frosttuft, W, H, 5.0, 20.0, 2.2, 1.6)       # SW hollow under bank B
-# MANDATORY crossings (§11 r7): full-corridor bands, the lane paused through
-pt.mandatory_band(frosttuft, snowtrail, W, H, y0=13, y1=14, x0=10, x1=20)  # mid leg
-pt.mandatory_band(frosttuft, snowtrail, W, H, y0=10, y1=11, x0=2, x1=7)    # west leg
+mk.blob(frosttuft, W, H, 4.6, 19.6, 1.8, 1.1)       # SW hollow under bank B
+mk.blob(frosttuft, W, H, 5.6, 21.0, 1.6, 1.0)
+# MANDATORY crossings (§11 r7): every open cell of the corridor between the
+# banks, rows 13-14 (mid) / 10-11 (west), plus a ragged lip so the edge isn't ruled.
+band = mk.make_grid(W, H)
+TOP_UP = {9, 10, 14, 15, 19}          # columns whose band reaches a row higher
+BOT_DN = {11, 12, 16, 17}              # ...or a row lower (a ragged, wind-cut edge)
+for x in range(7, 23):
+    for y in range(13 - (x in TOP_UP), 15 + (x in BOT_DN)):
+        band[y * W + x] = 1
+for x in range(2, 9):
+    for y in range(10 - (x in {3, 4}), 12 + (x in {2, 7})):
+        band[y * W + x] = 1
+for i in range(W * H):
+    if band[i] and not glacier[i]:
+        frosttuft[i] = 1
+        snowtrail[i] = 0
 
-# ---- precedence (structure wins; lane wins over tufts) -----------------------------
+# ---- the frozen pool (texture: walkable floor, no gameplay) ------------------------
+# (the falls carry their own frozen plunge-pool in the art)
+
+# ---- precedence (structure wins; lane wins over tufts; texture loses to all) -------
 for i in range(W * H):
     if glacier[i] or cliff[i]:
-        snowtrail[i] = 0
-        frosttuft[i] = 0
+        snowtrail[i] = frosttuft[i] = snowpatch[i] = ice[i] = 0
     if snowtrail[i]:
         frosttuft[i] = 0
+    if snowtrail[i] or frosttuft[i] or ice[i]:
+        snowpatch[i] = 0
+    if snowtrail[i] or frosttuft[i]:
+        ice[i] = 0
 
 # ---- base: bone snow ---------------------------------------------------------------
 sn = [gid("snow0"), gid("snow1"), gid("snow2"), gid("snow3")]
 base = [rng.choice(sn) if rng.random() < 0.5 else sn[0] for _ in range(W * H)]
 
 terrain_layers = [
+    {"name": "t_snowpatch", "role": "terrain", "terrain": "snowpatch",
+     "set": "vesper_overworld_set", "depth": 0, "data": snowpatch},
+    {"name": "t_ice", "role": "terrain", "terrain": "ice",
+     "set": "vesper_overworld_set", "depth": 0, "data": ice},
     {"name": "t_snowtrail", "role": "terrain", "terrain": "snowtrail",
      "set": "vesper_overworld_set", "depth": 0, "data": snowtrail},
     {"name": "t_frosttuft", "role": "terrain", "terrain": "frosttuft",
@@ -193,15 +244,12 @@ m: dict = {
 
 # ---- warps (graph.ts edge ids verbatim) --------------------------------------------
 m["warps"] += [
-    # EAST <-> pale_vault_glacier (the N3 handshake — see module docstring)
     {"id": "to_glacier", "at": {"tx": 31, "ty": 10}, "trigger": "step_on",
      "to_map": "pale_vault_glacier", "to": {"tx": 1, "ty": 10}, "facing": "right",
      "transition": "fade"},
     {"id": "to_glacier_s", "at": {"tx": 31, "ty": 11}, "trigger": "step_on",
      "to_map": "pale_vault_glacier", "to": {"tx": 1, "ty": 11}, "facing": "right",
      "transition": "fade"},
-    # WEST — THE COLDFOG THROAT -> hushfrost_pass_ii (`to_pass_ii`,
-    # requires_ability emberward — the first place the Gift is REQUIRED)
     {"id": "to_pass_ii", "at": {"tx": 0, "ty": 14}, "trigger": "step_on",
      "to_map": "hushfrost_pass_ii", "to": {"tx": 28, "ty": 19}, "facing": "left",
      "requires_ability": "emberward",
@@ -212,36 +260,54 @@ m["warps"] += [
      "blocked_ref": "sign.hushfrost_coldfog", "transition": "fade"},
 ]
 
-# ---- objects: lamps beside the lane (the only warmth), the throat dressing ---------
+
+def obj(oid, sprite, x, y, w, h, **kw):
+    o = {"id": oid, "sprite": sprite, "at": {"tx": x, "ty": y}, "w": w, "h": h}
+    o.update(kw)
+    return o
+
+
+# ---- objects -----------------------------------------------------------------------
 m["objects"] += [
     # lamp posts beside (never on) the lit lane — sparse: the lonely register
-    {"id": "lamp_entry", "sprite": "tinderwick_lamp_post", "at": {"tx": 27, "ty": 8},
-     "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_corridor", "sprite": "tinderwick_lamp_post", "at": {"tx": 13, "ty": 19},
-     "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_north", "sprite": "tinderwick_lamp_post", "at": {"tx": 6, "ty": 3},
-     "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_throat", "sprite": "tinderwick_lamp_post", "at": {"tx": 5, "ty": 12},
-     "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    # ice spires flanking the coldfog throat (the Pale Vault register carried on)
-    {"id": "spires_throat", "sprite": "pale_vault_ice_spire", "at": {"tx": 1, "ty": 11},
-     "w": 2, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "spires_entry", "sprite": "pale_vault_ice_spire", "at": {"tx": 28, "ty": 13},
-     "w": 2, "h": 3, "overhang": 2, "walk_under": True},
-    # THE SHELTER NOOK (W8 MIN-2): an ice-spire windbreak on the wind side +
-    # the lamp at its back — a sheltered, encounter-free pause off the lane,
-    # just past the mid crossing. No heal; the lamp is the relief.
-    {"id": "spires_shelter_w", "sprite": "pale_vault_ice_spire",
-     "at": {"tx": 13, "ty": 7}, "w": 2, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "spires_shelter_e", "sprite": "pale_vault_ice_spire",
-     "at": {"tx": 16, "ty": 7}, "w": 2, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_shelter", "sprite": "tinderwick_lamp_post",
-     "at": {"tx": 15, "ty": 8}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    obj("lamp_entry", "tinderwick_lamp_post", 27, 8, 1, 3, overhang=2, walk_under=True),
+    obj("lamp_corridor", "tinderwick_lamp_post", 13, 19, 1, 3, overhang=2, walk_under=True),
+    obj("lamp_north", "tinderwick_lamp_post", 6, 3, 1, 3, overhang=2, walk_under=True),
+    obj("lamp_throat", "tinderwick_lamp_post", 5, 12, 1, 3, overhang=2, walk_under=True),
+    # ice spires flanking the coldfog throat + the entry (Pale Vault carried on)
+    obj("spires_throat", "pale_vault_ice_spire", 1, 11, 2, 3, overhang=2, walk_under=True),
+    obj("spires_entry", "pale_vault_ice_spire", 28, 13, 2, 3, overhang=2, walk_under=True),
+    # THE SHELTER NOOK (W8 MIN-2): ice-spire windbreak + its lamp, no heal
+    obj("spires_shelter_w", "pale_vault_ice_spire", 13, 7, 2, 3, overhang=2, walk_under=True),
+    obj("spires_shelter_e", "pale_vault_ice_spire", 16, 7, 2, 3, overhang=2, walk_under=True),
+    obj("lamp_shelter", "tinderwick_lamp_post", 15, 8, 1, 3, overhang=2, walk_under=True),
+    # R10 — the pass reads as a PLACE: one focal point per screen.
+    # The frozen falls pour out of the north crag into their ice pool (the
+    # mid chamber's landmark, seen from the whole north half).
+    obj("frozen_falls", "hushfrost_frozen_falls", 17, 1, 3, 4),
+    # wind-carved outcrops (boulder clusters, never cliff slabs — §11 r8)
+    obj("outcrop_north", "hushfrost_rock_outcrop_a", 13, 4, 3, 2),
+    obj("outcrop_ne", "hushfrost_rock_outcrop_b", 25, 2, 2, 2),
+    obj("outcrop_ne_b", "hushfrost_rock_outcrop_b", 28, 7, 2, 2),
+    obj("outcrop_south", "hushfrost_rock_outcrop_a", 11, 24, 3, 2),
+    # the ice-locked cart in the SW drift — somebody's load, left to the cold
+    obj("iced_cart", "hushfrost_iced_cart", 2, 24, 3, 2),
+    # drifts banked against the windward walls
+    obj("drift_mid", "hushfrost_snowdrift", 16, 11, 3, 2),
+    obj("drift_se", "hushfrost_snowdrift", 27, 22, 3, 2),
+    # cairns at the turns (the pass-walkers' waymarks)
+    obj("cairn_bend", "windward_cairn", 25, 12, 2, 3, overhang=2, walk_under=True),
+    obj("cairn_throat", "windward_cairn", 5, 7, 2, 3, overhang=2, walk_under=True),
+    # THE PASS-WALKER'S CAMP beside the fallen star (her peril NPC stands at (21,22))
+    obj("walker_camp", "hushfrost_walker_camp", 22, 23, 4, 3),
 ]
 
 # ---- signs -------------------------------------------------------------------------
 owed += pt.sign(m, deco, W, sid="hushfrost_marker", at=(27, 12))   # THE one dry line
 owed += pt.sign(m, deco, W, sid="hushfrost_coldfog", at=(2, 13))   # sincere gate
+# the falls nook pays (§3a r4): read the frozen falls, one quiet line
+m["triggers"].append({"id": "falls_read", "kind": "script", "at": {"tx": 18, "ty": 4},
+                      "activation": "interact", "ref": "script.hushfrost_falls"})
 
 # ---- trainer beats (sight trainers ARE geometry; wiring agent authors) -------------
 owed += pt.trainer_beat(m, tid="hushfrost_lampman", at=(3, 17), facing="up",
@@ -254,17 +320,13 @@ m["npcs"].append(
     {"id": "hushfrost_pass_tender", "at": {"tx": 2, "ty": 16}, "facing": "up",
      "sprite": "npc_old_man", "movement": "static",
      "dialogue_ref": "npc.hushfrost_pass_tender"})
-owed += ["npc.hushfrost_pass_tender (the hook line: the fog 'wasn't here last "
-         "winter'; mind the kin on the far side — they've gone quiet)"]
 
 # ---- caches (variety: loose wicks + consumable + the missable valuable) ------------
-owed += pt.cache(m, cid="hushfrost_wicks", at=(28, 5))    # loose wicks (~300), NE hollow
-owed += pt.cache(m, cid="hushfrost_balm", at=(17, 18))    # consumable, ON the terrace
-owed += pt.cache(m, cid="hushfrost_shard", at=(28, 19))   # Starglass Shard — the §4
-                                                          # [MISSABLE] SE wall-hollow
-                                                          # (a Lamplight-flavoured nook)
+owed += pt.cache(m, cid="hushfrost_wicks", at=(28, 5))
+owed += pt.cache(m, cid="hushfrost_balm", at=(17, 18))
+owed += pt.cache(m, cid="hushfrost_shard", at=(28, 19))
 
-# ---- encounters (band 40-42, continuous with Pale Vault 36-40 / pass II 40-42) -----
+# ---- encounters (band 40-42; tables are the shipped ones, re-applied post-build) ---
 TABLE = [{"kin_id": 84, "weight": 24, "min_level": 40, "max_level": 42},
          {"kin_id": 78, "weight": 20, "min_level": 40, "max_level": 42},
          {"kin_id": 75, "weight": 16, "min_level": 40, "max_level": 41},
@@ -276,32 +338,40 @@ band_grid = mk.make_grid(W, H)
 patch_grid = mk.make_grid(W, H)
 for i in range(W * H):
     if frosttuft[i]:
-        (band_grid if (i // W) in (13, 14, 10, 11) else patch_grid)[i] = 1
+        (band_grid if band[i] else patch_grid)[i] = 1
 m["encounters"] += pt.zones_from_grid(patch_grid, W, H, terrain="tall_grass",
                                       rate=0.11, table=TABLE, id_prefix="hollow")
 m["encounters"] += pt.zones_from_grid(band_grid, W, H, terrain="tall_grass",
                                       rate=0.05, table=TABLE, id_prefix="crossing")
+print("frosttuft tiles:", sum(frosttuft), "(shipped 80; keep 68-92)")
 
-# ---- throat dressing: grey moss where the fog gnaws (B-arc whisper, no props) ------
+# ---- throat dressing: grey moss where the fog gnaws (B-arc whisper) ----------------
 for (x, y, n) in [(1, 13, "greymoss_a"), (2, 17, "greymoss_b"), (1, 16, "greymoss_a"),
-                  (4, 16, "greymoss_b")]:
-    if deco[y * W + x] == 0:
+                  (4, 16, "greymoss_b"), (2, 18, "greymoss_a"), (1, 12, "greymoss_b")]:
+    if deco[y * W + x] == 0 and not glacier[y * W + x]:
         deco[y * W + x] = gid(n)
 
-# ---- scatter + boulders ------------------------------------------------------------
+# ---- scatter: loose stones on the open snow (never on lane/beds/objects) -----------
 covered = {(x, y) for y in range(H) for x in range(W)
-           if any(g[y * W + x] for g in (glacier, cliff, snowtrail, frosttuft))}
+           if any(g[y * W + x] for g in (glacier, cliff, snowtrail, frosttuft, ice))}
 object_cells = {(x, y) for o in m["objects"]
                 for y in range(o["at"]["ty"], o["at"]["ty"] + o["h"])
                 for x in range(o["at"]["tx"], o["at"]["tx"] + o["w"])}
 point_cells = {(p["at"]["tx"], p["at"]["ty"])
                for p in m["npcs"] + m["triggers"] + m["warps"]}
-avoid = covered | object_cells | point_cells
-mk.scatter_decor(deco, base, W, H, rng, density=0.15, avoid=avoid)
-for (x, y) in [(24, 4), (29, 7), (18, 4), (14, 8), (5, 8), (2, 21),
-               (13, 24), (24, 24), (28, 23), (19, 9), (6, 24)]:
+# keep clear: the crater (add_peril_thread), the pass-walker, the landings
+reserved = {(x, y) for x in range(15, 21) for y in range(22, 26)} | {(21, 22)} | \
+           {(30, 10), (30, 11), (1, 14), (1, 15), (24, 21), (25, 21)}
+avoid = covered | object_cells | point_cells | reserved
+for (x, y) in [(24, 4), (18, 4), (5, 9), (2, 21), (24, 24), (19, 9), (6, 24), (29, 16),
+               (23, 19), (16, 20), (6, 19), (10, 8), (26, 15), (20, 7)]:
     if (x, y) not in avoid and deco[y * W + x] == 0:
         deco[y * W + x] = gid("boulder")
+pebble = [gid("g_pebble")]
+for y in range(H):
+    for x in range(W):
+        if (x, y) not in avoid and deco[y * W + x] == 0 and rng.random() < 0.06:
+            deco[y * W + x] = rng.choice(pebble)
 
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},

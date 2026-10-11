@@ -712,7 +712,7 @@
         "ty": 6
       },
       "facing": "down",
-      "sprite": "npc_old_man",
+      "sprite": "lamplighter",
       "movement": "static",
       "dialogue_ref": "npc.nightreach_hall_keeper"
     },
@@ -730,5 +730,17 @@
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/nightreach-observatory-b.mp3"
+  "music": "assets/audio/music/nightreach-observatory-b.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "starglint",
+        "density": 0.5
+      },
+      {
+        "kind": "dust",
+        "density": 0.3
+      }
+    ]
+  }
 }

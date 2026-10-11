@@ -222,6 +222,12 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'A lantern built to hold no light, raised on the Umbral Spire and aimed at the Keystar — the one star the whole sky rekindles from. Còr means it kindly. That is the most frightening thing about it.',
     unlock_flag: 'flag:great_null_known',
   },
+  {
+    id: 'spiral_of_falls',
+    term: 'the Spiral of Falls',
+    desc: "Plot every fallen star on one map and they will not make a line. They make a spiral, closing on the Umbral Spire. A guttered star's last cinder goes home to the Keystar it was lit from — and the weaker the Keystar, the nearer home they fall.",
+    unlock_flag: 'flag:q_west_passmap_done',
+  },
 
   // --- The Three Hours (walkthrough/07-the-three) — gated on the triad's own
   // chain flags: the netmender's rumour teaches the word; the first catch

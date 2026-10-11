@@ -1377,7 +1377,7 @@
         "ty": 5
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "star_watcher",
       "movement": "static",
       "dialogue_ref": "script.junior_watcher_a",
       "sight_range": 4,
@@ -1391,7 +1391,7 @@
         "ty": 5
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "star_watcher",
       "movement": "look_around",
       "dialogue_ref": "script.chart_quest",
       "requires_flag": "flag:junior_watcher_a_beaten",
@@ -1430,7 +1430,7 @@
         "ty": 5
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "star_watcher",
       "movement": "static",
       "dialogue_ref": "npc.junior_watcher_working",
       "requires_flag": "flag:q_west_chart",
@@ -1443,7 +1443,7 @@
         "ty": 5
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "star_watcher",
       "movement": "static",
       "dialogue_ref": "script.chart_done",
       "requires_flag": "flag:q_west_chart_2",
@@ -1456,7 +1456,7 @@
         "ty": 5
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "star_watcher",
       "movement": "static",
       "dialogue_ref": "script.round_chart_take",
       "requires_flag": "flag:q_west_chart_done",
@@ -1469,7 +1469,7 @@
         "ty": 5
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "star_watcher",
       "movement": "look_around",
       "dialogue_ref": "npc.junior_watcher_after",
       "requires_flag": "flag:q_round_chart_taken"
@@ -1552,7 +1552,7 @@
         "ty": 17
       },
       "facing": "up",
-      "sprite": "npc_man",
+      "sprite": "lamplighter",
       "movement": "static",
       "dialogue_ref": "npc.nightreach_festival_b",
       "requires_flag": "gleam:lunar"
@@ -1754,6 +1754,18 @@
       "sprite": "npc_old_man",
       "movement": "static",
       "dialogue_ref": "script.peril_ledger"
+    },
+    {
+      "id": "passwalker_nightreach",
+      "at": {
+        "tx": 11,
+        "ty": 22
+      },
+      "facing": "down",
+      "sprite": "pass_walker",
+      "movement": "static",
+      "dialogue_ref": "script.passwalker_nightreach",
+      "requires_flag": "flag:q_west_passmap"
     }
   ],
   "gates": [],
@@ -4484,5 +4496,21 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "starglint",
+        "density": 1.0
+      }
+    ],
+    "tint": {
+      "color": "#9fb0e8",
+      "alpha": 0.04
+    },
+    "starfall": {
+      "min_s": 25,
+      "max_s": 55
+    }
+  }
 }

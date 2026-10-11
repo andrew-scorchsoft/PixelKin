@@ -252,7 +252,7 @@
         "ty": 13
       },
       "facing": "left",
-      "sprite": "npc_old_woman",
+      "sprite": "hollowing_elder",
       "movement": "static",
       "dialogue_ref": "npc.hollowfen_husk_keeper"
     },
@@ -267,6 +267,18 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_coldfog_works_store",
       "hidden_when_flag": "flag:picked_coldfog_works_store"
+    },
+    {
+      "id": "stillworks_cor",
+      "at": {
+        "tx": 18,
+        "ty": 4
+      },
+      "facing": "up",
+      "sprite": "warden_cor",
+      "movement": "static",
+      "dialogue_ref": "script.stillworks_cor_silent",
+      "hidden_when_flag": "flag:seen_stillworks"
     }
   ],
   "gates": [],
@@ -1881,5 +1893,17 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "dust",
+        "density": 0.35
+      }
+    ],
+    "tint": {
+      "color": "#202430",
+      "alpha": 0.12
+    }
+  }
 }

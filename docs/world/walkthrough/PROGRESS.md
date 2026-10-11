@@ -128,6 +128,11 @@ on 9 maps; regional cast; story items N-1–N-4 + the X-2 acting pass (`worldcra
 | Coldfog Marches I→II + Drownlight Beacon + Hollowfen Stillworks (B4 shown half: the drained land; X3 leg 3 cairn; the charged-husk Whorlix cradle; first ACCENT tileset `coldfog_set`/fogcrag; NO trainers/rest by design) | `coldfog_marches_i/ii`, `drownlight_beacon`, `hollowfen_stillworks` | ✅ 2026-06 | `build_coldfog_*.py`, `build_drownlight_beacon.py`, `build_hollowfen_stillworks.py` (objects: `draw_coldfog_objects.py`) |
 | Nightreach Observatory (Lunar · Nessa · Starreach; the Vigil of the Seven loop #8 — seven watch-lamps `flag:q_west_lamp_1..7` carrying C4 Fenn / A5 Wren / B4 the Great Null at lamps 5/6/7; Star-vigil; X3 giver + roof viewpoint; R5 giver; the Lanternway spoke landed at the crossroads, gleam:lunar-gated) | `nightreach_observatory` + `nightreach_lumenary`/`_inn`/`_home` | ✅ 2026-06 | `build_nightreach.py`, `build_nightreach_interiors.py` (objects: `draw_nightreach_objects.py` + the image-gen dome) |
 
+**R10 West depth pass ✅ (2026-10):** West prop kit (14 masters); Hushfrost I recomposed, II
+de-laned; Coldfog I/II, Drownlight, Sunvault I/II, Unrisen dressed (audit_visual: 0 FAIL/0 warn
+on every West map); worldcraft ambience + regional cast on all 18 West maps; W-1..W-4, X-2/X-5
+on the West scenes; timeline aligned to story-bible §12 (Dusk = 11 winters). See 04-west.md.
+
 **W5 WIRING ✅ (2026-06):** every script./npc./sign./trainer. ref the sixteen West maps (and
 the crossroads spoke) place now resolves — scripts (the Lit Stage chain, the Vigil of the
 Seven with C4/A5/B4 at lamps 5/6/7, the B4 Stillworks band, both Gleam ceremonies, the

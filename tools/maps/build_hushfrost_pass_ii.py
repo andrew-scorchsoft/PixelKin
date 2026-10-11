@@ -132,6 +132,13 @@ mk.rect(glacier, W, H, 7, 11, 29, 17)
 mk.blob(glacier, W, H, 10.0, 10.5, 1.8, 1.2)
 mk.blob(glacier, W, H, 19.0, 17.5, 1.8, 1.2)
 mk.blob(glacier, W, H, 14.0, 11.0, 1.6, 1.1)
+# R10: the band's long faces wind-carved — more bulges + bites so neither face
+# runs ruled for more than a few tiles (the panel's "slab" read)
+for (cx, cy, rx, ry) in [(7.6, 10.6, 1.0, 0.8), (18.0, 10.4, 1.3, 0.9), (22.2, 10.5, 1.0, 0.8),
+                         (9.0, 17.6, 1.3, 0.9), (13.5, 17.6, 1.0, 0.8), (22.5, 17.4, 1.2, 0.8)]:
+    mk.blob(glacier, W, H, cx, cy, rx, ry)
+for (x, y) in [(20, 11), (21, 11), (11, 17), (12, 17), (16, 17), (17, 17)]:
+    glacier[y * W + x] = 0
 # THE EAST SHELF (§3a r1/r2 — the one-way return): coming back from the gold
 # mouth, drop off the high road down a snow shelf to the low road by the fog
 # boundary, skipping the link + the crossing the outbound trip earned
@@ -147,20 +154,8 @@ for y in range(22, 25):
     for x in range(11, 21):
         glacier[y * W + x] = 0
 
-# ---- lanes (snowtrail on snow) -----------------------------------------------------
-mk.hline(snowtrail, W, H, 19, 4, 27)                # the low road (entry, fog-side)
-mk.hline(snowtrail, W, H, 20, 4, 27)
-mk.vline(snowtrail, W, H, 4, 10, 19)                # the west link (south->north)
-mk.vline(snowtrail, W, H, 5, 10, 19)
-mk.hline(snowtrail, W, H, 8, 1, 22)                 # the high road (to the gold mouth)
-mk.hline(snowtrail, W, H, 9, 1, 22)
-mk.vline(snowtrail, W, H, 14, 3, 8)                 # the grotto approach
-mk.vline(snowtrail, W, H, 15, 3, 8)
-# jogs so the long roads never run ruled (the glacier forecourt trick)
-mk.rect(snowtrail, W, H, 10, 18, 12, 18)
-mk.rect(snowtrail, W, H, 17, 21, 19, 21)
-mk.rect(snowtrail, W, H, 8, 10, 10, 10)
-mk.rect(snowtrail, W, H, 18, 7, 20, 7)
+# ---- R10: no ruled lanes — trackless snow (the old 2-wide grey snowtrail read
+# as slabs). Lamps, the gold mouth's warmth and live footprints carry the way.
 
 # ---- the coldfog fingers (blight — SPARING; the first cold fingers only) -----------
 mk.blob(blight, W, H, 25.0, 22.5, 2.8, 1.8)         # SE finger, by the fog boundary
@@ -353,6 +348,18 @@ m["objects"] += [
      "w": 2, "h": 3, "overhang": 2, "walk_under": True},
 ]
 
+# ---- R10 props: the pass keeps its landmarks (West prop kit) --------------------
+m["objects"] += [
+    {"id": "frozen_falls", "sprite": "hushfrost_frozen_falls", "at": {"tx": 16, "ty": 15},
+     "w": 3, "h": 4},
+    {"id": "outcrop_ne", "sprite": "hushfrost_rock_outcrop_a", "at": {"tx": 23, "ty": 5},
+     "w": 3, "h": 2},
+    {"id": "iced_cart", "sprite": "hushfrost_iced_cart", "at": {"tx": 9, "ty": 3},
+     "w": 3, "h": 2},
+    {"id": "drift_low", "sprite": "hushfrost_snowdrift", "at": {"tx": 3, "ty": 23},
+     "w": 3, "h": 2},
+]
+
 # ---- signs (ZERO humour on this map) -----------------------------------------------
 owed += pt.sign(m, deco, W, sid="hushfrost_aurora", at=(16, 4))
 owed += pt.sign(m, deco, W, sid="hushfrost_gold", at=(3, 7))
@@ -413,6 +420,21 @@ for (x, y) in [(7, 5), (20, 4), (24, 3), (8, 22), (22, 24), (3, 21),
                (10, 10), (19, 6), (6, 18)]:
     if (x, y) not in avoid and deco[y * W + x] == 0:
         deco[y * W + x] = gid("boulder")
+
+# R10 LITTER: seeded scatter on the open ground (off every structure, object,
+# NPC, trigger and warp) so the ground reads weathered, not blank (audit_visual).
+_busy = {(x, y) for y in range(H) for x in range(W)
+         if any(g[y * W + x] for g in (glacier,blighttuft,frosttuft,goldgrass,))}
+_busy |= {(x, y) for o in m["objects"]
+          for y in range(o["at"]["ty"], o["at"]["ty"] + o["h"])
+          for x in range(o["at"]["tx"], o["at"]["tx"] + o["w"])}
+_busy |= {(p["at"]["tx"], p["at"]["ty"]) for p in m["npcs"] + m["triggers"] + m["warps"]}
+_busy |= {(p["to"]["tx"], p["to"]["ty"]) for p in m["warps"]}
+_litter = [gid("g_pebble")]
+for y in range(2, 26):
+    for x in range(2, 28):
+        if (x, y) not in _busy and deco[y * W + x] == 0 and rng.random() < 0.3:
+            deco[y * W + x] = rng.choice(_litter)
 
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},

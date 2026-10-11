@@ -123,6 +123,12 @@ mk.rect(ruin, W, H, 7, 4, 14, 8)          # the head terrace floor
 for (x, y) in [(5, 20), (13, 21), (4, 14), (15, 15), (7, 14), (8, 6), (13, 7), (6, 21)]:
     gold[y * W + x] = 1
 
+# R10: the bands' south shores lap unevenly (still wall to wall; a ruled 14x3
+# rectangle of water read as a box pool — audit_visual). Lobes only where no
+# paving, vine root or walk needs the cell.
+for (x, y) in [(4, 12), (5, 12), (14, 12), (15, 12), (6, 19), (13, 19), (14, 19)]:
+    pool[y * W + x] = 1
+
 # ---- precedence ---------------------------------------------------------------------
 for i in range(W * H):
     if cliff[i]:
@@ -287,6 +293,21 @@ for y in range(H):
 for (x, y) in [(13, 20), (5, 13), (8, 7), (13, 6), (15, 22)]:
     if (x, y) not in avoid and deco[y * W + x] == 0:
         deco[y * W + x] = gid("boulder")
+
+# R10 LITTER: seeded scatter on the open ground (off every structure, object,
+# NPC, trigger and warp) so the ground reads weathered, not blank (audit_visual).
+_busy = {(x, y) for y in range(H) for x in range(W)
+         if any(g[y * W + x] for g in (cliff,ruin,pool,gold,))}
+_busy |= {(x, y) for o in m["objects"]
+          for y in range(o["at"]["ty"], o["at"]["ty"] + o["h"])
+          for x in range(o["at"]["tx"], o["at"]["tx"] + o["w"])}
+_busy |= {(p["at"]["tx"], p["at"]["ty"]) for p in m["npcs"] + m["triggers"] + m["warps"]}
+_busy |= {(p["to"]["tx"], p["to"]["ty"]) for p in m["warps"]}
+_litter = [gid("g_pebble"), gid("g_tuft"), gid("greymoss_b")]
+for y in range(2, 24):
+    for x in range(2, 18):
+        if (x, y) not in _busy and deco[y * W + x] == 0 and rng.random() < 0.34:
+            deco[y * W + x] = rng.choice(_litter)
 
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},
