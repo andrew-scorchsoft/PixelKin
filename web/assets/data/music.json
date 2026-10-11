@@ -269,8 +269,8 @@
     },
     {
      "id": "windward-stair-a",
-     "title": "Windward Stair",
-     "where": "Windward Stair · The Wind-Eye · Thunderroost · Stormfall",
+     "title": "Cinderwind Scarp",
+     "where": "Cinderwind Scarp · Windward Stair · The Wind-Eye · Thunderroost · Stormfall",
      "mood": "The Long Climb — airy, building, breath-quickening; each phrase re-launches a step higher so the loop feels like ascent.",
      "classic": "play/assets/audio/music/windward-stair-a.mp3",
      "classic_loop_start": null,
@@ -449,8 +449,8 @@
    "tracks": [
     {
      "id": "penumbra-ring-a",
-     "title": "Penumbra Ring",
-     "where": "Penumbra Ring · Starwell",
+     "title": "The Umbral Approach",
+     "where": "The Umbral Approach · Penumbra Ring · Starwell",
      "mood": "Wall of Ink: the last dark, crossed on starlight; a held breath, your heartbeat and one lonely lamp-note, hope leaking in at the edges.",
      "classic": "play/assets/audio/music/penumbra-ring-a.mp3",
      "classic_loop_start": null,

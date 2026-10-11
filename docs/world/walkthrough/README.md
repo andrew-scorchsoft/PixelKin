@@ -202,6 +202,12 @@ small, missable-but-don't-miss set-piece the region file stages around the Lumen
 
 ---
 
+> **2026-10 geometry fix (supersedes route details below where they differ):** the world is
+> honest north-up — the Pearlmoor road home leaves Saltreach Fen I's south edge (the drowned road)
+> round the bay; Cinderwind Scarp joins Cinderhead Deep to Galehigh; the Umbral Approach is the
+> mountain road from the Crossroads to the Penumbra; the far valleys ride the Lantern-car; the
+> Coldfog Marches hang off Nightreach; open sea is deep water. See [`../geometry.md`](../geometry.md).
+
 ## 4. Global pacing & level curve
 
 A ~+6-levels-per-Gleam curve. **Recommended party** = where a prepared player sits on entry;
@@ -216,6 +222,7 @@ keep this continuous across boundaries (no cliffs, no dead zones).
 | Saltreach Fen I→II | 16 → 18 | — | — |
 | Lowleaf Hollow | 18 | **Sable Quill** (Verdant) — ~22 | **Glimmerstep** |
 | Cinderhead Mine/Deep | 22 | **Otho Grist** (Stone) — ~28 | — |
+| Cinderwind Scarp (2026-10) | 28 → 30 | — (two route trainers, lv 28–31 beds) | — |
 | Galehigh Terraces | 28 | **Mira Vael** (Storm) — ~34 | **Updraft Kite** |
 | Windward Stair I→II | 34 → 36 | — | — |
 | Pale Vault Glacier | 36 | **Ysolde Frost** (Frost) — ~40 | **Emberward** |

@@ -176,7 +176,7 @@ PLACEMENTS: dict[str, dict] = {
             "sound_bed": SURF,
         },
         "objects": [
-            prop("wc_rowboat", "pearlmoor_rowboat", (12, 4), 2, 2),
+            prop("wc_rowboat", "pearlmoor_rowboat", (15, 4), 2, 2),   # moored out on the deep water
             prop("wc_driftwood", "pearlmoor_driftwood", (3, 19), 2, 1),
             prop("wc_netrack", "pearlmoor_net_rack", (9, 29), 2, 1),
             prop("wc_anchor", "pearlmoor_anchor", (2, 3), 2, 2, overhang=1),

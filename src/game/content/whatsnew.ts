@@ -8,6 +8,12 @@
  * Gleams, the Wayfaring, the vesperlamp) — it's read by the fire, not a patch log.
  */
 export const WHATS_NEW: Record<string, string[]> = {
+  '1.12': [
+    'The roads of Vesperholm have been walked again and set true: leave a place to the north and you arrive somewhere north. The MAP now draws the world exactly as you walk it, and scrolls.',
+    'From Pearlmoor, the road home runs round the bay — east into Saltreach Fen, then south down the old drowned road and the Wrackline shore.',
+    'Lowleaf, Galehigh and Nightreach sit far up the mountain. The Lantern-car at the Crossroads carries you there once each valley is relit. Two new roads as well: Cinderwind Scarp above the mines, and the Umbral Approach up to the Penumbra.',
+    'Past the shallows the open sea runs deep and dark. Tidecall carries you through the shallows, but not out to sea.',
+  ],
   '1.11': [
     'Rest at an inn or your own bed and the night really passes now: the lamps go out, a little lullaby plays, and you wake to the music you left.',
     'Every fight has somewhere to stand, from the Lanternway verge to the high Lumenary halls, and the battles sing their old chip songs again.',

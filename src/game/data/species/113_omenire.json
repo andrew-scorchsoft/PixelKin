@@ -75,6 +75,13 @@
       "rarity": "rare",
       "min": 45,
       "max": 46
+    },
+    {
+      "area": "umbral_approach",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 50,
+      "max": 53
     }
   ],
   "scripted": false,

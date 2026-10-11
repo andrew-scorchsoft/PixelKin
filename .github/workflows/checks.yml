@@ -64,6 +64,11 @@ jobs:
         run: python3 -m py_compile tools/maps/*.py tools/maps/worldcraft/*.py tools/assets/*.py .claude/skills/generate-sprite-sheet/scripts/*.py
       - name: Spatial audit (edge geometry)
         run: python3 tools/maps/audit_spatial.py
+      # The whole world laid out edge-to-edge at true tile size: every loop must
+      # close, no two maps may claim the same dry ground, and the MAP screen must
+      # draw every road the way it's walked (honest north-up, 2026-10).
+      - name: World geometry (the walked world closes; MAP matches it)
+        run: python3 tools/maps/world_geometry.py --no-png --check
       # The LOOK gate: the play audits pass on an empty green field with ruled
       # boxes; this FAILs flat voids and box pools (docs/reviews/world-craft-panel.md).
       - name: Look gate (flat voids, box pools)

@@ -1339,7 +1339,15 @@
     "weight_kg": 8.0,
     "habitat": "south"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "umbral_approach",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 51,
+     "max": 53
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Tall ghostly pillar silhouette: smoke-black upper body fading into blazing fire-orange lower half, spectral arms, hollow bright eyes; striking contrast at 64px.",
@@ -3483,7 +3491,15 @@
     "weight_kg": 90,
     "habitat": "east"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "cinderwind_scarp",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 29,
+     "max": 31
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Elegant deer-like kin with a white-grey crystal body; antlers are an elaborate branching structure of cyan-diamond crystal that glow continuously; eyes are large and clear as water; hooves are polished white stone; beautiful and otherworldly.",
@@ -4413,7 +4429,15 @@
     "weight_kg": 220,
     "habitat": "east"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "cinderwind_scarp",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 31,
+     "max": 31
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Bear-sized quadruped; charcoal-black stone-dense hide with bright amber charge-lines tracing the mineral veins; mane of stiff iron-ore bristles along the neck; tail a coiled ore-spring that arcs sparks when lashing.",
@@ -4598,7 +4622,15 @@
     "weight_kg": 48,
     "habitat": "east"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "cinderwind_scarp",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 28,
+     "max": 30
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Squat, wide-shouldered stone body with visible grey-white mineral veins along arms; amber eyes now set in a craggy brow ridge; four sturdy legs planted firmly.",
@@ -9027,7 +9059,15 @@
     "weight_kg": 12.0,
     "habitat": "north"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "cinderwind_scarp",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 30,
+     "max": 31
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Larger barrel-chested dog, dense grey-and-white thundercloud fur, a visible inner-glow pulsing electric-gold, long windswept ears, silver underbelly; bold presence at 48px.",
@@ -9654,6 +9694,13 @@
      "rarity": "uncommon",
      "min": 57,
      "max": 62
+    },
+    {
+     "area": "cinderwind_scarp",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 29,
+     "max": 31
     }
    ],
    "scripted": false,
@@ -9908,7 +9955,15 @@
     "weight_kg": 14.5,
     "habitat": "north"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "cinderwind_scarp",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 28,
+     "max": 31
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Lithe medium fox silhouette, deep storm-blue body fading to pale silver at the throat and belly, a single bold tail crackling at the tip, wind-distortion ripples around the paws; pure velocity at 48px.",
@@ -11010,6 +11065,13 @@
      "rarity": "uncommon",
      "min": 49,
      "max": 51
+    },
+    {
+     "area": "umbral_approach",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 50,
+     "max": 53
     }
    ],
    "scripted": false,
@@ -11097,6 +11159,13 @@
      "rarity": "rare",
      "min": 45,
      "max": 46
+    },
+    {
+     "area": "umbral_approach",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 50,
+     "max": 53
     }
    ],
    "scripted": false,
@@ -13344,6 +13413,13 @@
      "rarity": "rare",
      "min": 49,
      "max": 50
+    },
+    {
+     "area": "umbral_approach",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 51,
+     "max": 53
     }
    ],
    "scripted": false,
@@ -13646,6 +13722,13 @@
      "rarity": "uncommon",
      "min": 66,
      "max": 68
+    },
+    {
+     "area": "umbral_approach",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 50,
+     "max": 53
     }
    ],
    "scripted": false,
@@ -14171,6 +14254,13 @@
      "rarity": "uncommon",
      "min": 50,
      "max": 51
+    },
+    {
+     "area": "umbral_approach",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 50,
+     "max": 53
     }
    ],
    "scripted": false,

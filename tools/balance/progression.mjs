@@ -263,7 +263,9 @@ const JOURNEY = [
     // finds = the festival takings-tin (200); valuables = the terrace
     // Moth-amber (600). The Scarp (2026-10, the climb out of the Deep) adds
     // its two route trainers, its lv 28-31 beds and a Moth-amber (600).
-    wild: { areas: ['cinderwind_scarp', 'galehigh_terraces'], band: [27, 31], fights: { rusher: 5, mainline: 10, explorer: 16 } },
+    // (the Scarp's mandatory strips are part of this leg's walking, not extra to it:
+    // its two trainers' XP stands in for a couple of the old leg's wild fights)
+    wild: { areas: ['cinderwind_scarp', 'galehigh_terraces'], band: [27, 31], fights: { rusher: 4, mainline: 8, explorer: 14 } },
     trainers: [
       T('Hobb-Ree (ore-hauler)', 'route', [K(28, 53), K(30, 48)]),
       T('Rue (kite-runner)', 'route', [K(29, 100), K(29, 91), K(31, 101)]),

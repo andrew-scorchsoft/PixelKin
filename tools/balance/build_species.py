@@ -741,6 +741,31 @@ ORCHARD_ENCOUNTERS = {
 for _slug, _rows in ORCHARD_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows)
 
+# The 2026-10 geometry fix's two new routes — mirrors of their BUILT in-map
+# tables (tools/maps/build_cinderwind_scarp.py, build_umbral_approach.py).
+# Weights -> rarity by the W6 share rule (>=20 common, 10-19 uncommon, <10 rare).
+def _rows(area, lo_hi_rarity):
+    return [{"area": area, "terrain": "tall_grass", "rarity": r, "min": lo, "max": hi}
+            for (lo, hi, r) in lo_hi_rarity]
+GEOMETRY_ENCOUNTERS = {
+    # Cinderwind Scarp (lv 28-31): the climb from Cinderhead Deep to Galehigh
+    "rubbol":   _rows("cinderwind_scarp", [(28, 30, "common")]),
+    "galefox":  _rows("cinderwind_scarp", [(28, 31, "common")]),
+    "thrumble": _rows("cinderwind_scarp", [(29, 31, "common")]),
+    "lumecite": _rows("cinderwind_scarp", [(29, 31, "uncommon")]),
+    "nimbruff": _rows("cinderwind_scarp", [(30, 31, "rare")]),
+    "voltcrag": _rows("cinderwind_scarp", [(31, 31, "rare")]),
+    # The Umbral Approach (lv 50-53): the mountain road to the Penumbra
+    "voidmantle":  _rows("umbral_approach", [(50, 53, "common")]),
+    "omenire":     _rows("umbral_approach", [(50, 53, "common")]),
+    "nightwraith": _rows("umbral_approach", [(50, 53, "uncommon")]),
+    "whorlix":     _rows("umbral_approach", [(50, 53, "uncommon")]),
+    "pyriven":     _rows("umbral_approach", [(51, 53, "uncommon")]),
+    "liminalux":   _rows("umbral_approach", [(51, 53, "uncommon")]),
+}
+for _slug, _rows_ in GEOMETRY_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
+
 # Areas whose encounter tables are BUILT into the map JSONs (the in-map zones
 # are the truth, mirrored above). Generated region defaults — and stale rows
 # carried in the previous per-species files — must not claim these areas:
@@ -784,6 +809,8 @@ CURATED_AREAS = {
     "pearlmoor_wanderwood", "pearlmoor_wanderwood_far",
     # R8 (2026-10): Tinderwick's west orchard (mirrored above, ORCHARD_ENCOUNTERS).
     "duskapple_orchard",
+    # the 2026-10 geometry fix's new routes (mirrored above, GEOMETRY_ENCOUNTERS)
+    "cinderwind_scarp", "umbral_approach",
 }
 
 # Kin that are FIXED quest catches (a legendaryBattle set-piece), even though
