@@ -15,7 +15,9 @@ map id to a spec (keys in worldcraft/_kit.py):
 
 Guards (a violation is an ERROR and nothing is written):
   * unknown ambience keys / particle kinds (typos would silently do nothing);
-  * pre-Chickenpig maps take ONLY "ambience" + ambient NPCs (the hard rule);
+  * pre-Chickenpig maps take ONLY "ambience", ambient NPCs, "sprites" (cast swaps
+    on existing NPC ids) and "objects" that PROVE off-lane (prove_off_lane: no
+    lane/encounter/approach tile, reachability unchanged, no walk longer);
   * an ambient kin must stand on foot-walkable ground (no Gifts), never on a
     warp or trigger tile, inside the map.
 
@@ -57,6 +59,115 @@ def upsert(lst: list, item: dict) -> bool:
     return True
 
 
+LANE_TERRAINS = {"path", "trail", "dawnpath", "snowtrail"}
+ALL_GIFTS = {"tidecall", "glimmerstep", "emberward", "updraft_kite", "starreach", "sunsketch"}
+
+
+def _terrain_meta(m: dict) -> dict[int, dict]:
+    meta: dict[int, dict] = {}
+    for ts in m.get("tilesets", []):
+        side = MAPS.parent / "tilesets" / f"{ts['name']}.tileset.json"
+        if side.is_file():
+            for t in json.loads(side.read_text())["tiles"]:
+                meta[ts.get("first_gid", 1) + t["index"]] = t
+    return meta
+
+
+def overlaps(o: dict, others: list[dict]) -> str | None:
+    """Id of the first object in `others` whose whole drawn rect meets `o`'s."""
+    ax, ay = o["at"]["tx"], o["at"]["ty"]
+    for p in others:
+        if p["id"] == o["id"]:
+            continue
+        bx, by = p["at"]["tx"], p["at"]["ty"]
+        if ax < bx + p["w"] and bx < ax + o["w"] and ay < by + p["h"] and by < ay + o["h"]:
+            return p["id"]
+    return None
+
+
+def prove_off_lane(mid: str, m: dict, objects: list[dict]) -> list[str]:
+    """Pre-Chickenpig PROPS: prove an object set changes nothing about play.
+
+    Every footprint tile must avoid lanes (path/trail art), encounter tiles,
+    warps, triggers, NPC posts and the 4 tiles around anything you talk to;
+    and with the props in, (a) the foot- and all-Gift-reachable sets lose only
+    the footprint itself and (b) no warp-to-warp / warp-to-content walk gets a
+    single step longer. A violation is an ERROR (nothing is written)."""
+    errs: list[str] = []
+    W = m["width"]
+    meta = _terrain_meta(m)
+    base = next((l["data"] for l in m["layers"] if l.get("role") == "base"), [])
+    new_ids = {o["id"] for o in objects}
+    old = dict(m, objects=[o for o in m.get("objects", []) if o["id"] not in new_ids])
+    new = dict(old, objects=old["objects"] + list(objects))
+    before, after = MapModel(old), MapModel(new)
+    busy = {(w["at"]["tx"], w["at"]["ty"]) for w in m.get("warps", [])}
+    talk = {(t["at"]["tx"], t["at"]["ty"]) for t in m.get("triggers", [])}
+    talk |= {(n["at"]["tx"], n["at"]["ty"]) for n in m.get("npcs", []) if not n.get("ambient")}
+    near = {(x + dx, y + dy) for (x, y) in talk | busy for dx, dy in ((0, 0), (1, 0), (-1, 0), (0, 1), (0, -1))}
+    foot: set[tuple[int, int]] = set()
+    for o in objects:
+        if o.get("solid") is False:
+            continue
+        top = o["at"]["ty"] + (o.get("overhang", 0) if o.get("walk_under") else 0)
+        for ty in range(top, o["at"]["ty"] + o["h"]):
+            for tx in range(o["at"]["tx"], o["at"]["tx"] + o["w"]):
+                foot.add((tx, ty))
+    for o in objects:
+        clash = overlaps(o, old["objects"])
+        if clash:
+            errs.append(f"{mid}: prop '{o['id']}' overlaps existing object '{clash}'")
+    for (x, y) in sorted(foot):
+        if not before.in_bounds(x, y):
+            errs.append(f"{mid}: prop tile {(x, y)} out of bounds")
+            continue
+        i = y * W + x
+        if meta.get(base[i], {}).get("terrain") in LANE_TERRAINS:
+            errs.append(f"{mid}: prop tile {(x, y)} sits on a lane (path/trail)")
+        if before.encounter[i]:
+            errs.append(f"{mid}: prop tile {(x, y)} covers an encounter tile")
+        if (x, y) in near:
+            errs.append(f"{mid}: prop tile {(x, y)} on/next to a warp, trigger or NPC post")
+    if errs:
+        return errs
+    starts = sorted(busy)
+    goals = sorted(busy | talk)
+    # The DRY-LANE proof: the walk that dodges every encounter tile, sight line
+    # and step-on story band (the "unbroken dry lane" the easing promised) must
+    # survive too — no prop may push a player into grass or a trainer's eye.
+    hot = {(i % W, i // W) for i, e in enumerate(before.encounter) if e}
+    for tiles in before.sight_tiles().values():
+        hot |= tiles
+    hot |= {(t["at"]["tx"], t["at"]["ty"]) for t in m.get("triggers", [])
+            if t.get("activation") == "step_on"}
+    for s in starts:
+        db = before.bfs([s], abilities=set(), avoid=hot)
+        da = after.bfs([s], abilities=set(), avoid=hot)
+        for g in starts:
+            if g in db and (g not in da or da[g] > db[g]):
+                errs.append(f"{mid}: props close/lengthen the dry lane {s}->{g} ({db[g]} -> {da.get(g)})")
+                return errs
+    for gifts in (set(), ALL_GIFTS):
+        rb = before.bfs(starts, abilities=gifts)
+        ra = after.bfs(starts, abilities=gifts)
+        lost = set(rb) - set(ra) - foot
+        if lost:
+            errs.append(f"{mid}: props cut off {len(lost)} reachable tile(s), e.g. {sorted(lost)[:3]}")
+        for s in starts:
+            db = before.bfs([s], abilities=gifts)
+            da = after.bfs([s], abilities=gifts)
+            for g in goals:
+                # content tiles are often solid (an NPC body): measure to the nearest
+                # neighbour you'd stand on to talk/step.
+                cand = [g] + [(g[0] + dx, g[1] + dy) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))]
+                b = min((db[c] for c in cand if c in db), default=None)
+                a = min((da[c] for c in cand if c in da), default=None)
+                if b is not None and (a is None or a > b):
+                    errs.append(f"{mid}: props lengthen the walk {s}->{g} ({b} -> {a}) with gifts={sorted(gifts)}")
+                    return errs
+    return errs
+
+
 def lint(mid: str, m: dict, spec: dict) -> list[str]:
     errs: list[str] = []
     amb = spec.get("ambience")
@@ -67,16 +178,30 @@ def lint(mid: str, m: dict, spec: dict) -> list[str]:
         for p in amb.get("particles", []):
             if p.get("kind") not in PARTICLE_KINDS:
                 errs.append(f"{mid}: unknown particle kind '{p.get('kind')}'")
-    extra = set(spec) - {"ambience", "npcs", "objects", "triggers", "signs"}
+    extra = set(spec) - {"ambience", "npcs", "objects", "triggers", "signs", "sprites"}
     if extra:
         errs.append(f"{mid}: unknown spec keys {sorted(extra)}")
+    spec_ids = {o["id"] for o in spec.get("objects", [])}
+    shipped = [o for o in m.get("objects", []) if o["id"] not in spec_ids]
+    for o in spec.get("objects", []):
+        clash = overlaps(o, shipped + [p for p in spec["objects"] if p["id"] != o["id"]])
+        if clash:
+            errs.append(f"{mid}: object '{o['id']}' overlaps object '{clash}'")
+    ids = {n["id"] for n in m.get("npcs", [])}
+    for nid, sprite in spec.get("sprites", {}).items():
+        if nid not in ids:
+            errs.append(f"{mid}: sprite swap for unknown NPC '{nid}'")
+        if str(sprite).startswith("kin_") or sprite == "item_cache":
+            errs.append(f"{mid}: sprite swap '{nid}' -> '{sprite}' is not a person sheet")
     if mid in PRE_CHICKENPIG:
-        for key in ("objects", "triggers", "signs"):
+        for key in ("triggers", "signs"):
             if spec.get(key):
-                errs.append(f"{mid}: pre-Chickenpig map — '{key}' not allowed (ambience + ambient kin only)")
+                errs.append(f"{mid}: pre-Chickenpig map — '{key}' not allowed (ambience, cast swaps, off-lane props only)")
         for n in spec.get("npcs", []):
             if not n.get("ambient"):
                 errs.append(f"{mid}: pre-Chickenpig map — NPC '{n['id']}' must be ambient")
+        if spec.get("objects"):
+            errs += prove_off_lane(mid, m, spec["objects"])
     model = MapModel(m)
     busy = {(w["at"]["tx"], w["at"]["ty"]) for w in m.get("warps", [])}
     busy |= {(t["at"]["tx"], t["at"]["ty"]) for t in m.get("triggers", [])}
@@ -109,6 +234,11 @@ def apply(mid: str, spec: dict, write: bool) -> tuple[bool, list[str]]:
     for key in ("objects", "npcs", "triggers"):
         for item in spec.get(key, []):
             changed |= upsert(m.setdefault(key, []), item)
+    for n in m.get("npcs", []):
+        new = spec.get("sprites", {}).get(n["id"])
+        if new and n.get("sprite") != new:
+            n["sprite"] = new
+            changed = True
     if spec.get("signs"):
         W = m["width"]
         deco = next(l for l in m["layers"] if l.get("role") == "deco")["data"]

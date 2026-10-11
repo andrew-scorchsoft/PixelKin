@@ -379,5 +379,17 @@
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/tinderwick-a.mp3"
+  "music": "assets/audio/music/tinderwick-a.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "embers",
+        "density": 0.3
+      },
+      {
+        "kind": "dust",
+        "density": 0.35
+      }
+    ]
+  }
 }

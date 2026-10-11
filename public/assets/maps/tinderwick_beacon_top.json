@@ -1,6 +1,6 @@
 {
   "id": "tinderwick_beacon_top",
-  "display_name": "The Beacon — Lantern Room",
+  "display_name": "The Beacon \u2014 Lantern Room",
   "width": 12,
   "height": 9,
   "tile_width": 16,
@@ -367,5 +367,17 @@
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/tinderwick-a.mp3"
+  "music": "assets/audio/music/tinderwick-a.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "embers",
+        "density": 0.5
+      },
+      {
+        "kind": "starglint",
+        "density": 0.4
+      }
+    ]
+  }
 }

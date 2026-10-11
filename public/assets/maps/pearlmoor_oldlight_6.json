@@ -463,5 +463,13 @@
   ],
   "encounters": [],
   "npcs": [],
-  "gates": []
+  "gates": [],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "dust",
+        "density": 0.6
+      }
+    ]
+  }
 }

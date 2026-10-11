@@ -70,6 +70,10 @@ export const LIGHT_SOURCES: Record<string, { hx: number; hy: number; radius: num
   tideglass_wrecklamp_lit: { hx: 8, hy: 8, radius: 12, color: 0x9fe7ff },
   // east
   cinderhead_lamp_hooks: { hx: 40, hy: 24, radius: 22, color: 0xffb86b }, // Harl's seven lit hooks
+  // south
+  pearlmoor_lantern_string: { hx: 24, hy: 9, radius: 18, color: 0xffb35a },
+  pearlmoor_fish_stall: { hx: 4, hy: 14, radius: 12, color: 0xffc46b },
+  tinderwick_notice_board: { hx: 4, hy: 12, radius: 9, color: 0xffc46b },
 };
 
 /** Chimney tops keyed by building sprite (px offset of the stack's mouth). */

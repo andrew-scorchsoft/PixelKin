@@ -2092,5 +2092,13 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "motes",
+        "density": 0.6
+      }
+    ]
+  }
 }

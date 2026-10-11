@@ -1360,6 +1360,36 @@
       "h": 3,
       "overhang": 2,
       "walk_under": true
+    },
+    {
+      "id": "wc_crabpots",
+      "sprite": "pearlmoor_crab_pots",
+      "at": {
+        "tx": 6,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "wc_driftwood",
+      "sprite": "pearlmoor_driftwood",
+      "at": {
+        "tx": 2,
+        "ty": 22
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "wc_nest",
+      "sprite": "pearlmoor_gull_nest",
+      "at": {
+        "tx": 13,
+        "ty": 22
+      },
+      "w": 1,
+      "h": 1
     }
   ],
   "warps": [
@@ -1444,6 +1474,36 @@
       },
       "activation": "interact",
       "ref": "sign.wrackline_cave"
+    },
+    {
+      "id": "wc_wrack_pots",
+      "kind": "dialogue",
+      "at": {
+        "tx": 6,
+        "ty": 2
+      },
+      "activation": "interact",
+      "ref": "npc.wrack_find_pots"
+    },
+    {
+      "id": "wc_wrack_drift",
+      "kind": "dialogue",
+      "at": {
+        "tx": 2,
+        "ty": 22
+      },
+      "activation": "interact",
+      "ref": "npc.wrack_find_drift"
+    },
+    {
+      "id": "wc_wrack_nest",
+      "kind": "dialogue",
+      "at": {
+        "tx": 13,
+        "ty": 22
+      },
+      "activation": "interact",
+      "ref": "npc.wrack_find_nest"
     }
   ],
   "encounters": [
@@ -1548,8 +1608,39 @@
       "movement": "look_around",
       "dialogue_ref": "npc.wrackline_drifter_after",
       "requires_flag": "flag:wrackline_drifter_beaten"
+    },
+    {
+      "id": "amb_lumpin",
+      "at": {
+        "tx": 11,
+        "ty": 3
+      },
+      "facing": "down",
+      "sprite": "kin_31_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 2
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/dimglass-coast-a.mp3"
+  "music": "assets/audio/music/dimglass-coast-a.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "spray",
+        "density": 0.5
+      }
+    ],
+    "birds": {
+      "kind": "gull",
+      "flocks": [
+        {
+          "tx": 4,
+          "ty": 3
+        }
+      ],
+      "flyover": true
+    },
+    "sound_bed": "amb-surf"
+  }
 }

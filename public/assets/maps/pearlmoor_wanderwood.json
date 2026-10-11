@@ -418,6 +418,18 @@
       "sprite": "andrew_ward",
       "movement": "static",
       "dialogue_ref": "script.andrew_wood"
+    },
+    {
+      "id": "amb_sporeling",
+      "at": {
+        "tx": 20,
+        "ty": 13
+      },
+      "facing": "down",
+      "sprite": "kin_56_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
     }
   ],
   "gates": [],
@@ -2460,5 +2472,22 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "spores",
+        "density": 0.5
+      },
+      {
+        "kind": "glowmotes",
+        "density": 0.4
+      }
+    ],
+    "mist": {
+      "color": "#a8c8b0",
+      "alpha": 0.06,
+      "speed": 4
+    }
+  }
 }

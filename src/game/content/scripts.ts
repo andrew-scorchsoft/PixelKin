@@ -89,6 +89,8 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'smile', text: 'My satchel — and my apprentice. Both delivered by the same pair of feet. A tidy omen, that.' },
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'Now. Every Wayfarer leaves with two things, and they have been riding in this old bag all along.' },
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'The first — a lamp, to carry the light home. Take it. Your vesperlamp.' },
+    { op: 'action', actor: 'fenn_ready', action: 'gift' }, // X-2: he holds it out
+    { op: 'action', actor: 'player', action: 'raiseLamp' }, // the lamp made physical
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'tint', color: '#ff8a3d', alpha: 0.28, ms: 240 }, // a warm bloom as the lamp kindles
     { op: 'giveItem', item: 'vesperlamp', count: 1 },
@@ -96,6 +98,10 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'It does more than light the road. Raise it toward a weary wild kin, and it coaxes them in to rest — every friend you make rides safe inside its glow.' },
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'And the second — a friend, to share the walk through the dark. Go on. Choose.' },
     { op: 'giveStarter' },
+    // X-2 (story panel §6.1): the gesture, acted not told — a pause and Fenn's small
+    // nod over the new pair. No added page (the South rule: words, never count).
+    { op: 'wait', ms: 400 },
+    { op: 'action', actor: 'fenn_ready', action: 'bow' },
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'smile', text: 'Mind you tend them both, and they will tend you. And fitting, is it not — every Wayfaring in Vesperholm begins at a crossroads.' },
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'Back along the Lanternway with you now. Catch a second friend in the verge grass by the north gate — tire a wild kin in battle first, then raise your LAMP and ask kindly.' },
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'Stop in at the store as you pass — the keeper holds a Wayfarer\'s kit for you. Town custom.' },
@@ -196,6 +202,7 @@ export const SCRIPTS: ScriptRegistry = {
     // The second Gleam, wrapped in the Tide-blessing — same minor→major payoff, in a
     // cool moon-on-water key rather than Tinderwick's ember-warm one.
     { op: 'musicFade', ms: 500 },
+    { op: 'action', actor: 'player', action: 'raiseLamp' }, // X-2: every lighting, the lamp raised
     { op: 'tint', color: '#4fb4ff', alpha: 0.36, ms: 600 },
     { op: 'narrate', text: 'Reyl rings the moor-bell. Out on the black water, buoy after buoy answers — and overhead, the Tide remembers how to shine.', unless_flag: 'flag:q_south_jest_done' },
     { op: 'narrate', text: 'Reyl walks out to the moor-bell for the first time in eleven winters. He doesn\'t hurry. He rings it anyway.', if_flag: 'flag:q_south_jest_done' },
@@ -204,6 +211,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'musicCrossfade', key: 'gleam-emotional', ms: 900 },
     { op: 'tint', color: '#4fb4ff', alpha: 0, ms: 900 },
     { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'proud', text: 'The Tide Gleam stands up over Pearlmoor again. And the Tidecall is yours — go on, ask the shallows to part. The harbour keeps its secrets for those who can cross.' },
+    { op: 'action', actor: 'player', action: 'bow' },
   ],
 
   // --- The Causeway Bell (Pearlmoor's earned second Gleam; spine §5 shape #2) --
@@ -217,6 +225,7 @@ export const SCRIPTS: ScriptRegistry = {
     // R9: the Old Light slots in between the hook and the rope.
     { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'proud', text: 'And a house rule of my own: nobody fights me till they\'ve LAUGHED. Out past the west beach, on the Point, there\'s an old lighthouse with a brass grin where its lamp should be.' },
     { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'neutral', text: 'The quay calls it the Guffaw. Up the Old Light with you — all the way to the top. Tell it Reyl sent you. Then the NETMENDER will see you about the rope.' },
+    { op: 'wait', ms: 700 }, // X-2: honour the ellipsis
     { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'weathered', text: '...I\'d come with you. I don\'t go up there.' },
     { op: 'setFlag', flag: 'flag:q_south_bell' },
   ],
@@ -649,7 +658,9 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'Something stout is curled at the dark lamp\'s foot — a cream-coloured pig with a rooster\'s red comb, one red-feathered wing, and a great backswept spray of green tail-sickles. It is, impossibly, both.' },
     { op: 'say', speaker: 'PAUL', text: 'Ah. The other reason I come out here. Only rooster in Vesperholm that still believes in morning — crows at my dark lamp every waking, on the principle that SOMETHING ought to.' },
     { op: 'say', speaker: 'PAUL', text: 'It won\'t follow me; I asked. I think it\'s been waiting for somebody who hasn\'t decided who they are yet. Go on — wake it gently.' },
+    { op: 'action', actor: 'player', action: 'raiseLamp' }, // X-2: the lamp held out to it
     { op: 'legendaryBattle', name: 'chickenpig', kin: 163, level: 16, caughtFlag: 'flag:chickenpig_caught', cooldownBattles: 2, cooldownRef: 'npc.chickenpig_shy' },
+    { op: 'emote', if_flag: 'flag:chickenpig_caught', actor: 'player', emote: 'heart' },
     { op: 'say', if_flag: 'flag:chickenpig_caught', speaker: 'PAUL', text: 'Ha! There it goes. When the dawn does come, that one gets to say it told us so. Keep it somewhere it can see the sky.' },
     { op: 'narrate', if_flag: 'flag:chickenpig_caught', text: 'From inside your lamp, very softly, comes a sound that is half crow and half contented oink. Paul looks more pleased than he will ever admit.' },
   ],
@@ -716,7 +727,10 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'eager', text: 'There you are! I was starting to think the grass ate you.' },
     { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'eager', text: "Listen — every Wayfarer's first proper battle should be with a friend. So?" },
     { op: 'battle', trainer: 'wren_dimglass' },
+    // X-2: the laugh, then the wound — Wren turns away on "Mum" (no added page).
+    { op: 'action', actor: 'wren', action: 'laugh' },
     { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'neutral', text: 'Same road, different lamps. Mine runs on north — Mum\'s village is past Pearlmoor, and her letters have gone very short. See you up the coast!' },
+    { op: 'action', actor: 'wren', action: 'turnAway', holdMs: 700 },
     { op: 'setFlag', flag: 'flag:wren_dimglass_battled' },
   ],
 
@@ -727,6 +741,7 @@ export const SCRIPTS: ScriptRegistry = {
   // cinematic cadence is binding — see docs/world/cinematics.md).
   'script.dusk_begins': [
     { op: 'letterbox', on: true, ms: 320 },
+    { op: 'face', actor: 'player', facing: 'right' }, // X-2: you turn to the sea
     { op: 'silence', ms: 1200 }, // the held quiet before the light fails
     // The motif's debut: a cinder star streaks over the water as the line lands
     // (non-blocking colour — no added line or length; a no-op with motion off).
@@ -735,7 +750,9 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'sfx', key: 'world-star-gutter' },
     { op: 'tint', color: '#0b1026', alpha: 0.55, ms: 180 }, // the dark presses in
     { op: 'shake', ms: 320, intensity: 0.006 },
+    { op: 'action', actor: 'player', action: 'shock' }, // X-2: the flinch, shown
     { op: 'narrate', text: 'For a heartbeat, every lantern-buoy on the coast gutters, as if the sea itself flinched.' },
+    { op: 'action', actor: 'player', action: 'raiseLamp', holdMs: 700 }, // your own small light held up against it
     { op: 'tint', color: '#0b1026', alpha: 0, ms: 700 },
     { op: 'narrate', text: 'You think of the orchard — the scorched ring, the cold stone in the ash. This one did not fall. Not this time. The Long Dusk is deepening, and it is coming closer.' },
     { op: 'musicCrossfade', key: 'dimglass-coast-a', ms: 900 }, // the bed returns, a shade uneasier
@@ -793,13 +810,18 @@ export const SCRIPTS: ScriptRegistry = {
     // wash + the lamp sfx), the constellation answers (gleam sting + flash), then the
     // festival swell rises as the town below begins to dance (Arc E).
     { op: 'musicFade', ms: 500 },
+    { op: 'emote', actor: 'brisa', emote: 'ellipsis' }, // X-2: a held breath at the key
+    { op: 'action', actor: 'player', action: 'raiseLamp' }, // every lighting: the lamp raised
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'tint', color: '#ff8a3d', alpha: 0.4, ms: 600 },
     { op: 'narrate', text: 'Brisa turns the wick-key. The great lantern blooms — and far above, in the dark, a warm light answers.' },
+    { op: 'face', actor: 'player', facing: 'up' },
     { op: 'gleam', element: 'ember' },
     { op: 'musicCrossfade', key: 'gleam-emotional', ms: 900 },
     { op: 'tint', color: '#ff8a3d', alpha: 0, ms: 900 },
+    { op: 'emote', actor: 'brisa', emote: 'heart' },
     { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'proud', text: 'There — the Ember Gleam burns again in the southern sky. Go down to the square, dear. I believe the town wants to dance with you.' },
+    { op: 'action', actor: 'player', action: 'bow' },
   ],
 
   // --- Rest points (the genre's heal loop, diegetic) -------------------------

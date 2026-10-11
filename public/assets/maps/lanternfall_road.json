@@ -1561,7 +1561,7 @@
         "ty": 11
       },
       "facing": "up",
-      "sprite": "npc_woman",
+      "sprite": "lamplighter",
       "movement": "static",
       "dialogue_ref": "script.lanternfall_warden",
       "sight_range": 4,
@@ -1575,12 +1575,36 @@
         "ty": 11
       },
       "facing": "up",
-      "sprite": "npc_woman",
+      "sprite": "lamplighter",
       "movement": "look_around",
       "dialogue_ref": "npc.lanternfall_warden_after",
       "requires_flag": "flag:lanternfall_warden_beaten"
+    },
+    {
+      "id": "amb_oreling",
+      "at": {
+        "tx": 12,
+        "ty": 3
+      },
+      "facing": "down",
+      "sprite": "kin_53_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 2
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/dimglass-coast-a.mp3"
+  "music": "assets/audio/music/dimglass-coast-a.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "glowmotes",
+        "density": 0.4
+      }
+    ],
+    "starfall": {
+      "min_s": 25,
+      "max_s": 55
+    }
+  }
 }

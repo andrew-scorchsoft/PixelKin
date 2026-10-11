@@ -593,7 +593,7 @@
         "ty": 4
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "innkeeper",
       "movement": "static",
       "dialogue_ref": "script.inn_rest_crossroads",
       "hidden_when_flag": "gleam:tide"
@@ -605,7 +605,7 @@
         "ty": 4
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "innkeeper",
       "movement": "static",
       "dialogue_ref": "script.inn_empty_lamps",
       "requires_flag": "gleam:tide",
@@ -618,7 +618,7 @@
         "ty": 4
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "innkeeper",
       "movement": "static",
       "dialogue_ref": "script.inn_rest_waiting",
       "requires_flag": "flag:q_central_tokens",
@@ -631,7 +631,7 @@
         "ty": 4
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "innkeeper",
       "movement": "static",
       "dialogue_ref": "script.inn_lamps_hang",
       "requires_flag": "flag:q_token_west",
@@ -644,12 +644,24 @@
         "ty": 4
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "innkeeper",
       "movement": "static",
       "dialogue_ref": "script.inn_rest_crossroads",
       "requires_flag": "flag:q_central_tokens_done"
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/tinderwick-a.mp3"
+  "music": "assets/audio/music/tinderwick-a.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "dust",
+        "density": 0.3
+      },
+      {
+        "kind": "embers",
+        "density": 0.2
+      }
+    ]
+  }
 }

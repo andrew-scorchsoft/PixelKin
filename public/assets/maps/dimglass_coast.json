@@ -2886,7 +2886,7 @@
         "ty": 29
       },
       "facing": "up",
-      "sprite": "npc_shopkeeper",
+      "sprite": "lamplighter",
       "movement": "static",
       "dialogue_ref": "script.give_wick",
       "requires_flag": "flag:dusk_begins",
@@ -2899,7 +2899,7 @@
         "ty": 29
       },
       "facing": "up",
-      "sprite": "npc_shopkeeper",
+      "sprite": "lamplighter",
       "movement": "look_around",
       "dialogue_ref": "npc.dimglass_witness",
       "requires_flag": "flag:has_beacon_wick"
@@ -2935,7 +2935,7 @@
         "ty": 3
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "fisher_woman",
       "movement": "look_around",
       "dialogue_ref": "npc.egg_hint_coast"
     },
@@ -2946,7 +2946,7 @@
         "ty": 30
       },
       "facing": "right",
-      "sprite": "npc_old_man",
+      "sprite": "old_salt",
       "movement": "static",
       "dialogue_ref": "npc.egg_hint_flats"
     },
