@@ -66,8 +66,8 @@ SUN = {
 PLACEMENTS: dict[str, dict] = {
     # ---- Hushfrost Pass I — the recomposed pass (build_hushfrost_pass_i.py R10)
     "hushfrost_pass_i": {
-        "ambience": {**SNOW, "light_sources_extra": [
-            {"at": {"tx": 23, "ty": 25}, "radius": 14, "color": "#ffb060"}]},   # the camp fire
+        # the camp fire's pool rides LIGHT_SOURCES.hushfrost_walker_camp (Ambience.ts)
+        "ambience": dict(SNOW),
         "npcs": [ambient_kin("amb_blizzrhare", (26, 8), 81, radius=2),
                  *recast("hushfrost_pass_i", {
                      "hushfrost_lampman": "lamplighter", "hushfrost_lampman_after": "lamplighter",

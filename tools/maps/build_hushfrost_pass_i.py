@@ -94,6 +94,7 @@ import random
 import mapkit as mk
 import patterns as pt
 from mapkit import gid
+import hushfrost_craft as hc
 
 W, H = 32, 28
 rng = random.Random(74)
@@ -197,7 +198,11 @@ for i in range(W * H):
         snowtrail[i] = 0
 
 # ---- the frozen pool (texture: walkable floor, no gameplay) ------------------------
-# (the falls carry their own frozen plunge-pool in the art)
+# (the falls carry their own frozen plunge-pool in the art). R10 polish: two
+# wind-cleared ice sheets break the open snow — NW under the high lane, and E by
+# the cairn bend (walkable floor: the lane is unchanged).
+mk.blob(ice, W, H, 4.4, 6.6, 1.7, 0.9)
+mk.blob(ice, W, H, 26.8, 14.4, 1.3, 0.8)
 
 # ---- precedence (structure wins; lane wins over tufts; texture loses to all) -------
 for i in range(W * H):
@@ -363,7 +368,7 @@ point_cells = {(p["at"]["tx"], p["at"]["ty"])
 reserved = {(x, y) for x in range(15, 21) for y in range(22, 26)} | {(21, 22)} | \
            {(30, 10), (30, 11), (1, 14), (1, 15), (24, 21), (25, 21)}
 avoid = covered | object_cells | point_cells | reserved
-for (x, y) in [(24, 4), (18, 4), (5, 9), (2, 21), (24, 24), (19, 9), (6, 24), (29, 16),
+for (x, y) in [(24, 4), (18, 4), (5, 9), (2, 21), (24, 24), (19, 9), (29, 16),
                (23, 19), (16, 20), (6, 19), (10, 8), (26, 15), (20, 7)]:
     if (x, y) not in avoid and deco[y * W + x] == 0:
         deco[y * W + x] = gid("boulder")
@@ -372,6 +377,54 @@ for y in range(H):
     for x in range(W):
         if (x, y) not in avoid and deco[y * W + x] == 0 and rng.random() < 0.06:
             deco[y * W + x] = rng.choice(pebble)
+
+# ground decals (id, sprite, x, y, w, h): wind-sculpted drift ridges with their
+# blue lee shadows, rock + scree where the wind stripped the snow, the boot-prints
+# of earlier walkers along the way you'll go (all solid:false).
+GROUND = [
+    ("hf1_drift_nw", "drift_b", 8, 5, 4, 2), ("hf1_drift_mid", "drift_a", 11, 10, 3, 1),
+    ("hf1_drift_entry", "drift_b", 25, 9, 4, 2), ("hf1_drift_s", "drift_a", 12, 22, 3, 1),
+    ("hf1_drift_sw", "drift_c", 3, 22, 2, 1), ("hf1_drift_se", "drift_c", 25, 16, 2, 1),
+    ("hf1_drift_n", "drift_c", 3, 8, 2, 1),
+    ("hf1_scree_n", "scree_b", 12, 6, 3, 2), ("hf1_scree_c", "scree_a", 11, 17, 2, 2),
+    ("hf1_scree_sw", "scree_a", 5, 22, 2, 2),
+    ("hf1_tracks_entry", "tracks_h", 24, 11, 4, 1), ("hf1_tracks_s", "tracks_h", 17, 21, 4, 1),
+    ("hf1_tracks_c", "tracks_v", 12, 16, 1, 4), ("hf1_tracks_n", "tracks_h", 8, 7, 4, 1),
+]
+# low lee-mist strips that drift OVER the player (overhang = height)
+MIST = [("hf1_mist_n", "mist_a", 7, 4, 6, 1), ("hf1_mist_s", "mist_b", 10, 23, 4, 1),
+        ("hf1_mist_e", "mist_b", 24, 13, 4, 1)]
+# solid props — ONLY on ground that was already solid (bank tops, the borders) or
+# in dead corners off every lane; pines on the south border are FOREGROUND crowns
+# you walk under (trunk on the crag, crown over the snow).
+PROPS = [
+    hc.prop("hf1_pine_n1", "hushfrost_snow_pine_big", 8, 0, 3, 4, overhang=3),
+    hc.prop("hf1_pine_n2", "hushfrost_snow_pine", 2, 1, 2, 3, overhang=2),
+    hc.prop("hf1_pine_a1", "hushfrost_snow_pine", 21, 5, 2, 3, overhang=2),
+    hc.prop("hf1_pine_a2", "hushfrost_snow_pine_big", 21, 13, 3, 4, overhang=3),
+    hc.prop("hf1_pine_b1", "hushfrost_snow_pine", 7, 12, 2, 3, overhang=2),
+    hc.prop("hf1_pine_b2", "hushfrost_snow_pine", 7, 20, 2, 3, overhang=2),
+    hc.prop("hf1_pine_e1", "hushfrost_snow_pine", 30, 16, 2, 3, overhang=2),
+    hc.prop("hf1_pine_w1", "hushfrost_snow_pine", 0, 5, 2, 3, overhang=2),
+    hc.prop("hf1_pine_s1", "hushfrost_snow_pine_big", 5, 23, 3, 4, overhang=3),
+    hc.prop("hf1_deadtree", "hushfrost_dead_tree", 21, 17, 2, 3, overhang=2),
+    hc.prop("hf1_icicle_crag", "hushfrost_icicle_outcrop", 3, 3, 3, 2),
+    hc.prop("hf1_boulders_n", "hushfrost_snow_boulders", 10, 4, 2, 2, overhang=1),
+    hc.prop("hf1_shrub_nw", "hushfrost_frozen_shrub", 2, 5, 1, 1),
+    hc.prop("hf1_shrub_s", "hushfrost_frozen_shrub", 12, 23, 1, 1),
+    hc.prop("hf1_shrub_ne", "hushfrost_frozen_shrub", 24, 8, 1, 1),
+]
+
+# ---- R10 POLISH: the pass reads as a high mountain pass at night ------------------
+# (the owner's "still flat in places" verdict: uniform pale snow, grey tuft slabs,
+# flat blue bank stripes). Everything here is a drawn decal (solid:false — the
+# lanes, sight lines and reachability are untouched) or a prop on ground that was
+# already solid / off every lane (audit_flow + render_walkable prove it).
+m["objects"] = hc.surface_decals(W, H, glacier, frosttuft, prefix="hf1",
+                                 reserved=object_cells | point_cells | reserved) + \
+    [hc.decal(*d) for d in GROUND] + m["objects"] + PROPS + \
+    [hc.decal(*d, above=True) for d in MIST]
+hc.carry_over(m, keep_ids={"cache_hushfrost_hollow"}, keep_prefixes=("peril_", "amb_"))
 
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},

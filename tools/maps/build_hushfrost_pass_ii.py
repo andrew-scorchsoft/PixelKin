@@ -89,6 +89,7 @@ import random
 import mapkit as mk
 import patterns as pt
 from mapkit import gid
+import hushfrost_craft as hc
 
 W, H = 30, 28
 rng = random.Random(75)
@@ -435,6 +436,43 @@ for y in range(2, 26):
     for x in range(2, 28):
         if (x, y) not in _busy and deco[y * W + x] == 0 and rng.random() < 0.3:
             deco[y * W + x] = rng.choice(_litter)
+
+# ---- R10 POLISH (the Pass I treatment, lighter): drawn surface craft + pines -------
+# tuft beds on cold snow with ragged rims, frost-crust on the wall tops, icicles on
+# the faces, drift ridges / scree / old tracks on the open snow, lee mist that
+# drifts over you, and snow-laden pines ONLY on ground that was already solid
+# (the central wall band, the borders) — foreground crowns along the south crag.
+# Decals are solid:false; the lanes, sight lines and reachability are untouched.
+GROUND = [
+    ("hf2_drift_n", "drift_b", 18, 6, 4, 2), ("hf2_drift_nw", "drift_a", 9, 6, 3, 1),
+    ("hf2_drift_w", "drift_b", 3, 20, 4, 2), ("hf2_drift_s", "drift_a", 20, 23, 3, 1),
+    ("hf2_drift_e", "drift_c", 24, 13, 2, 1),
+    ("hf2_scree_n", "scree_a", 19, 3, 2, 2), ("hf2_scree_sw", "scree_b", 6, 23, 3, 2),
+    ("hf2_tracks_s", "tracks_h", 22, 20, 4, 1), ("hf2_tracks_w", "tracks_v", 4, 15, 1, 4),
+    ("hf2_tracks_n", "tracks_h", 8, 9, 4, 1),
+]
+MIST = [("hf2_mist_s", "mist_a", 7, 19, 6, 1), ("hf2_mist_w", "mist_b", 2, 11, 4, 1),
+        ("hf2_mist_n", "mist_a", 8, 7, 6, 1)]
+PROPS = [
+    hc.prop("hf2_pine_band1", "hushfrost_snow_pine_big", 8, 11, 3, 4, overhang=3),
+    hc.prop("hf2_pine_band2", "hushfrost_snow_pine_big", 20, 12, 3, 4, overhang=3),
+    hc.prop("hf2_pine_band3", "hushfrost_snow_pine", 12, 13, 2, 3, overhang=2),
+    hc.prop("hf2_deadtree", "hushfrost_dead_tree", 14, 11, 2, 3, overhang=2),
+    hc.prop("hf2_icicle_crag", "hushfrost_icicle_outcrop", 8, 16, 3, 2),
+    hc.prop("hf2_pine_n1", "hushfrost_snow_pine", 5, 0, 2, 3, overhang=2),
+    hc.prop("hf2_pine_n2", "hushfrost_snow_pine", 21, 0, 2, 3, overhang=2),
+    hc.prop("hf2_pine_e1", "hushfrost_snow_pine", 28, 10, 2, 3, overhang=2),
+    hc.prop("hf2_pine_e2", "hushfrost_snow_pine", 28, 22, 2, 3, overhang=2),
+    hc.prop("hf2_pine_w1", "hushfrost_snow_pine", 0, 15, 2, 3, overhang=2),
+    hc.prop("hf2_pine_s1", "hushfrost_snow_pine", 13, 24, 2, 3, overhang=2),
+    hc.prop("hf2_pine_s2", "hushfrost_snow_pine_big", 25, 23, 3, 4, overhang=3),
+    hc.prop("hf2_shrub_s", "hushfrost_frozen_shrub", 20, 24, 1, 1),
+    hc.prop("hf2_shrub_sw", "hushfrost_frozen_shrub", 6, 24, 1, 1),
+]
+m["objects"] = hc.surface_decals(W, H, glacier, frosttuft, prefix="hf2", reserved=avoid) + \
+    [hc.decal(*d) for d in GROUND] + m["objects"] + PROPS + \
+    [hc.decal(*d, above=True) for d in MIST]
+hc.carry_over(m, keep_ids=set(), keep_prefixes=("peril_", "amb_"))
 
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},

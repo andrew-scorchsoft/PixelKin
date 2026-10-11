@@ -350,6 +350,153 @@
       "tw": 3,
       "th": 3
     },
+    "hushfrost_crest_1": {
+      "path": "assets/sprites/objects/hushfrost_crest_1.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_10": {
+      "path": "assets/sprites/objects/hushfrost_crest_10.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_11": {
+      "path": "assets/sprites/objects/hushfrost_crest_11.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_12": {
+      "path": "assets/sprites/objects/hushfrost_crest_12.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_13": {
+      "path": "assets/sprites/objects/hushfrost_crest_13.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_14": {
+      "path": "assets/sprites/objects/hushfrost_crest_14.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_15": {
+      "path": "assets/sprites/objects/hushfrost_crest_15.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_15_v1": {
+      "path": "assets/sprites/objects/hushfrost_crest_15_v1.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_15_v2": {
+      "path": "assets/sprites/objects/hushfrost_crest_15_v2.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_2": {
+      "path": "assets/sprites/objects/hushfrost_crest_2.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_3": {
+      "path": "assets/sprites/objects/hushfrost_crest_3.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_4": {
+      "path": "assets/sprites/objects/hushfrost_crest_4.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_5": {
+      "path": "assets/sprites/objects/hushfrost_crest_5.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_6": {
+      "path": "assets/sprites/objects/hushfrost_crest_6.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_7": {
+      "path": "assets/sprites/objects/hushfrost_crest_7.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_8": {
+      "path": "assets/sprites/objects/hushfrost_crest_8.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_9": {
+      "path": "assets/sprites/objects/hushfrost_crest_9.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_dead_tree": {
+      "path": "assets/sprites/objects/hushfrost_dead_tree.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "hushfrost_drift_a": {
+      "path": "assets/sprites/objects/hushfrost_drift_a.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "hushfrost_drift_b": {
+      "path": "assets/sprites/objects/hushfrost_drift_b.webp",
+      "width": 64,
+      "height": 32,
+      "tw": 4,
+      "th": 2
+    },
+    "hushfrost_drift_c": {
+      "path": "assets/sprites/objects/hushfrost_drift_c.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
     "hushfrost_frozen_falls": {
       "path": "assets/sprites/objects/hushfrost_frozen_falls.webp",
       "width": 48,
@@ -357,12 +504,54 @@
       "tw": 3,
       "th": 4
     },
+    "hushfrost_frozen_shrub": {
+      "path": "assets/sprites/objects/hushfrost_frozen_shrub.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
     "hushfrost_iced_cart": {
       "path": "assets/sprites/objects/hushfrost_iced_cart.webp",
       "width": 48,
       "height": 32,
       "tw": 3,
       "th": 2
+    },
+    "hushfrost_icicle_outcrop": {
+      "path": "assets/sprites/objects/hushfrost_icicle_outcrop.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "hushfrost_icicles_a": {
+      "path": "assets/sprites/objects/hushfrost_icicles_a.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_icicles_b": {
+      "path": "assets/sprites/objects/hushfrost_icicles_b.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_mist_a": {
+      "path": "assets/sprites/objects/hushfrost_mist_a.webp",
+      "width": 96,
+      "height": 16,
+      "tw": 6,
+      "th": 1
+    },
+    "hushfrost_mist_b": {
+      "path": "assets/sprites/objects/hushfrost_mist_b.webp",
+      "width": 64,
+      "height": 16,
+      "tw": 4,
+      "th": 1
     },
     "hushfrost_numbed_kin": {
       "path": "assets/sprites/objects/hushfrost_numbed_kin.webp",
@@ -392,11 +581,46 @@
       "tw": 2,
       "th": 2
     },
+    "hushfrost_scree_a": {
+      "path": "assets/sprites/objects/hushfrost_scree_a.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "hushfrost_scree_b": {
+      "path": "assets/sprites/objects/hushfrost_scree_b.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
     "hushfrost_shelter": {
       "path": "assets/sprites/objects/hushfrost_shelter.webp",
       "width": 64,
       "height": 64,
       "tw": 4,
+      "th": 4
+    },
+    "hushfrost_snow_boulders": {
+      "path": "assets/sprites/objects/hushfrost_snow_boulders.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "hushfrost_snow_pine": {
+      "path": "assets/sprites/objects/hushfrost_snow_pine.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "hushfrost_snow_pine_big": {
+      "path": "assets/sprites/objects/hushfrost_snow_pine_big.webp",
+      "width": 48,
+      "height": 64,
+      "tw": 3,
       "th": 4
     },
     "hushfrost_snowdrift": {
@@ -405,6 +629,174 @@
       "height": 32,
       "tw": 3,
       "th": 2
+    },
+    "hushfrost_tracks_d": {
+      "path": "assets/sprites/objects/hushfrost_tracks_d.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "hushfrost_tracks_h": {
+      "path": "assets/sprites/objects/hushfrost_tracks_h.webp",
+      "width": 64,
+      "height": 16,
+      "tw": 4,
+      "th": 1
+    },
+    "hushfrost_tracks_v": {
+      "path": "assets/sprites/objects/hushfrost_tracks_v.webp",
+      "width": 16,
+      "height": 64,
+      "tw": 1,
+      "th": 4
+    },
+    "hushfrost_tuft_a": {
+      "path": "assets/sprites/objects/hushfrost_tuft_a.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuft_b": {
+      "path": "assets/sprites/objects/hushfrost_tuft_b.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuft_c": {
+      "path": "assets/sprites/objects/hushfrost_tuft_c.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_0": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_0.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_1": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_1.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_10": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_10.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_11": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_11.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_12": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_12.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_13": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_13.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_14": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_14.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_15": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_15.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_15_v1": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_15_v1.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_15_v2": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_15_v2.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_2": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_2.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_3": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_3.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_4": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_4.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_5": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_5.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_6": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_6.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_7": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_7.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_8": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_8.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_9": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_9.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
     },
     "hushfrost_walker_camp": {
       "path": "assets/sprites/objects/hushfrost_walker_camp.webp",
