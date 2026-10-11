@@ -73,11 +73,23 @@ def _terrain_meta(m: dict) -> dict[int, dict]:
     return meta
 
 
+def is_flag_swap(a: dict, b: dict) -> bool:
+    """A visibility swap pair (CLAUDE.md: same footprint + solidity, one shown by
+    `requires_flag`, the other hidden by the same flag) is meant to share tiles."""
+    fa = a.get("requires_flag") or a.get("hidden_when_flag")
+    flips = (a.get("requires_flag") and a.get("requires_flag") == b.get("hidden_when_flag")) or \
+            (a.get("hidden_when_flag") and a.get("hidden_when_flag") == b.get("requires_flag"))
+    same = (a["at"] == b["at"] and a.get("w") == b.get("w") and a.get("h") == b.get("h")
+            and bool(a.get("solid", True)) == bool(b.get("solid", True)))
+    return bool(fa and flips and same)
+
+
 def overlaps(o: dict, others: list[dict]) -> str | None:
-    """Id of the first object in `others` whose whole drawn rect meets `o`'s."""
+    """Id of the first object in `others` whose whole drawn rect meets `o`'s
+    (flag-swap twins excepted — they share a footprint by design)."""
     ax, ay = o["at"]["tx"], o["at"]["ty"]
     for p in others:
-        if p["id"] == o["id"]:
+        if p["id"] == o["id"] or is_flag_swap(o, p):
             continue
         bx, by = p["at"]["tx"], p["at"]["ty"]
         if ax < bx + p["w"] and bx < ax + o["w"] and ay < by + p["h"] and by < ay + o["h"]:
@@ -98,8 +110,10 @@ def prove_off_lane(mid: str, m: dict, objects: list[dict]) -> list[str]:
     meta = _terrain_meta(m)
     base = next((l["data"] for l in m["layers"] if l.get("role") == "base"), [])
     new_ids = {o["id"] for o in objects}
-    old = dict(m, objects=[o for o in m.get("objects", []) if o["id"] not in new_ids])
-    new = dict(old, objects=old["objects"] + list(objects))
+    # BEFORE is the shipped map exactly as it is — never with a replaced object
+    # removed (that let a spec "prove" a shrunk or de-solidified shop harmless).
+    old = m
+    new = dict(m, objects=[o for o in m.get("objects", []) if o["id"] not in new_ids] + list(objects))
     before, after = MapModel(old), MapModel(new)
     busy = {(w["at"]["tx"], w["at"]["ty"]) for w in m.get("warps", [])}
     talk = {(t["at"]["tx"], t["at"]["ty"]) for t in m.get("triggers", [])}
@@ -108,13 +122,18 @@ def prove_off_lane(mid: str, m: dict, objects: list[dict]) -> list[str]:
     foot: set[tuple[int, int]] = set()
     for o in objects:
         if o.get("solid") is False:
+            # Not collision — but a drawn prop over a warp/trigger hides it.
+            for ty in range(o["at"]["ty"], o["at"]["ty"] + o["h"]):
+                for tx in range(o["at"]["tx"], o["at"]["tx"] + o["w"]):
+                    if (tx, ty) in busy or (tx, ty) in talk:
+                        errs.append(f"{mid}: non-solid prop '{o['id']}' draws over a warp/trigger/NPC at {(tx, ty)}")
             continue
         top = o["at"]["ty"] + (o.get("overhang", 0) if o.get("walk_under") else 0)
         for ty in range(top, o["at"]["ty"] + o["h"]):
             for tx in range(o["at"]["tx"], o["at"]["tx"] + o["w"]):
                 foot.add((tx, ty))
     for o in objects:
-        clash = overlaps(o, old["objects"])
+        clash = overlaps(o, [p for p in old.get("objects", []) if p["id"] != o["id"]])
         if clash:
             errs.append(f"{mid}: prop '{o['id']}' overlaps existing object '{clash}'")
     for (x, y) in sorted(foot):
@@ -197,11 +216,30 @@ def lint(mid: str, m: dict, spec: dict) -> list[str]:
         for key in ("triggers", "signs"):
             if spec.get(key):
                 errs.append(f"{mid}: pre-Chickenpig map — '{key}' not allowed (ambience, cast swaps, off-lane props only)")
+        shipped_npcs = {n["id"]: n for n in m.get("npcs", [])}
         for n in spec.get("npcs", []):
             if not n.get("ambient"):
                 errs.append(f"{mid}: pre-Chickenpig map — NPC '{n['id']}' must be ambient")
-        if spec.get("objects"):
-            errs += prove_off_lane(mid, m, spec["objects"])
+            old_n = shipped_npcs.get(n["id"])
+            if old_n is not None and not old_n.get("ambient"):
+                errs.append(f"{mid}: pre-Chickenpig map — '{n['id']}' would REPLACE a story NPC "
+                            f"(use the `sprites` key for a cast swap)")
+        shipped_objs = {o["id"]: o for o in m.get("objects", [])}
+        to_prove = []
+        for o in spec.get("objects", []):
+            old_o = shipped_objs.get(o["id"])
+            if old_o is None:
+                to_prove.append(o)   # a NEW prop: must prove it changes nothing
+                continue
+            same_but_sprite = {k: v for k, v in old_o.items() if k != "sprite"} == \
+                              {k: v for k, v in o.items() if k != "sprite"}
+            if not same_but_sprite:
+                errs.append(f"{mid}: pre-Chickenpig map — shipped object '{o['id']}' may only change "
+                            f"its sprite (same footprint/solidity/flags)")
+        # A sprite-only re-skin of a shipped object changes no tile, so only NEW
+        # props need the off-lane proof (a shop has always covered its own door).
+        if to_prove:
+            errs += prove_off_lane(mid, m, to_prove)
     model = MapModel(m)
     busy = {(w["at"]["tx"], w["at"]["ty"]) for w in m.get("warps", [])}
     busy |= {(t["at"]["tx"], t["at"]["ty"]) for t in m.get("triggers", [])}

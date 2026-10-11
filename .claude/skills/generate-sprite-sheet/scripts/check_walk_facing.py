@@ -117,8 +117,21 @@ def skin_ratio(im):
 
 def check(path, fw=32, fh=32):
     sheet = Image.open(path).convert("RGBA")
-    fr = frames(sheet, fw, fh)
     errs, warns, detail = [], [], {}
+    # Shape gate first: a walk sheet is exactly 4 rows of >=2 frames on the grid.
+    if sheet.width % fw or sheet.height % fh:
+        errs.append(f"sheet {sheet.width}x{sheet.height} is not a multiple of the {fw}x{fh} frame")
+    if sheet.height // fh != 4 or sheet.width // fw < 2:
+        errs.append(f"expected 4 rows of >=2 frames, got {sheet.height // fh} rows x {sheet.width // fw} cols")
+    if errs:
+        return {"sheet": str(path), "ok": False, "errors": errs, "warnings": warns, "detail": detail}
+    fr = frames(sheet, fw, fh)
+    for ri, row in enumerate(fr):
+        for ci, f in enumerate(row):
+            if not f.split()[3].getbbox():
+                errs.append(f"{ROWS[ri]} row cell {ci}: EMPTY (no opaque pixels)")
+    if errs:
+        return {"sheet": str(path), "ok": False, "errors": errs, "warnings": warns, "detail": detail}
     for ri, name in enumerate(ROWS[: len(fr)]):
         row = fr[ri]
         if name in ("left", "right"):

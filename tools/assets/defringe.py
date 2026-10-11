@@ -32,6 +32,8 @@ def is_pink(r, g, b):
 
 
 def defringe(im: Image.Image):
+    if "A" not in im.getbands() and not (im.mode == "P" and "transparency" in im.info):
+        return im, 0, 0          # no alpha at all: nothing was ever chroma-keyed
     im = im.convert("RGBA")
     w, h = im.size
     px = im.load()
@@ -43,7 +45,9 @@ def defringe(im: Image.Image):
                 px[x, y] = (0, 0, 0, 0); partial += 1
             elif a >= CUT and a != 255:
                 px[x, y] = (r, g, b, 255)
-    solid = lambda x, y: 0 <= x < w and 0 <= y < h and px[x, y][3] == 255
+    # Off-canvas counts as SOLID, not transparent: an opaque image (a tile, a
+    # full-bleed backdrop) has no silhouette edge at the canvas border.
+    solid = lambda x, y: not (0 <= x < w and 0 <= y < h) or px[x, y][3] == 255
     # distance (in steps) from transparency, up to EDGE_DEPTH
     dist = {}
     frontier = [(x, y) for y in range(h) for x in range(w)

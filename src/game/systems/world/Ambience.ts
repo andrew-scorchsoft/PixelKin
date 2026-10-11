@@ -86,9 +86,17 @@ export const LIGHT_SOURCES: Record<string, { hx: number; hy: number; radius: num
   penumbra_memorial_solar: { hx: 8, hy: 7, radius: 12, color: 0xffd76b },
   penumbra_memorial_lunar: { hx: 8, hy: 7, radius: 12, color: 0x8aa0ff },
   penumbra_vigil_camp: { hx: 24, hy: 15, radius: 20, color: 0xffb05a },
+  // lit sprites that had no pool (review 2026-10): the Pale Vault camp + brackets,
+  // the Tideglass lenses, and the Old Light's lamp room
+  pale_vault_camp_lit: { hx: 24, hy: 15, radius: 20, color: 0xffb05a },
+  pale_vault_bracket_lit: { hx: 6, hy: 6, radius: 12, color: 0xcaf0ff },
+  tideglass_lens_lit: { hx: 16, hy: 8, radius: 14, color: 0x9fe7ff },
+  pearlmoor_oldlight_lit: { hx: 35, hy: 29, radius: 26, color: 0xfff096 },
   // north
   pale_vault_ice_lantern: { hx: 8, hy: 9, radius: 12, color: 0x9fe7ff },
   windward_wind_shrine: { hx: 16, hy: 18, radius: 9, color: 0xffc46b },
+  // west
+  hushfrost_walker_camp: { hx: 22, hy: 35, radius: 20, color: 0xffb05a }, // the pass-walker's fire
 };
 
 /** Chimney tops keyed by building sprite (px offset of the stack's mouth). */

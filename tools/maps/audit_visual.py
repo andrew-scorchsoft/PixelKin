@@ -145,7 +145,11 @@ def audit(map_id):
     fails, warns = [], []
     if sq >= BARE_WARN:
         warns.append(f"large bare square {sq}x{sq} (warn >= {BARE_WARN})")
-    ops = len(m.get("objects", [])) / max(1.0, (w * h) / 150.0)
+    # Count each footprint once: a flag-swap pair (cold/woken, dark/lit) is one
+    # prop on screen, never two.
+    seen_fp = {(o.get("at", {}).get("tx"), o.get("at", {}).get("ty"), o.get("w"), o.get("h"))
+               for o in m.get("objects", [])}
+    ops = len(seen_fp) / max(1.0, (w * h) / 150.0)
     if ops < OBJ_PER_SCREEN_FAIL:
         fails.append(f"flat void: {ops:.2f} objects per screen (the South bar is 2-5; fail < "
                      f"{OBJ_PER_SCREEN_FAIL}) — add landmarks, props, buildings, crown trees, boulder clusters")

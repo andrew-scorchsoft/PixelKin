@@ -93,7 +93,7 @@ m: dict = {
          "at": {"tx": SHARD_AT[0], "ty": SHARD_AT[1]}, "w": 2, "h": 2, "overhang": 1},
         # the old fliers' cairn on the shelf approach (the wind country's marker)
         {"id": "shelf_cairn", "sprite": "windward_cairn", "at": {"tx": 4, "ty": 9},
-         "w": 1, "h": 2},
+         "w": 2, "h": 3, "overhang": 1},   # the manifest's 2x3 (was 1x2: drawn != collided)
     ],
     "warps": [
         # the drop back to the roost — lands ON thunderroost's to_vigil_storm

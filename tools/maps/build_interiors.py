@@ -538,7 +538,7 @@ def all_maps():
                             "hidden_when_flag": "gleam:ember"},
                            {"id": "brisa_fair", "at": "dais", "facing": "down",
                             "sprite": "brisa", "movement": "static",
-                            "dialogue_ref": "script.brisa_after_staged"  # W-1 witness stage (content/regions/west.ts),
+                            "dialogue_ref": "script.brisa_after_staged",  # W-1 witness stage (content/regions/west.ts)
                             "requires_flag": "gleam:ember"},
                        ]),
         # The Tide Lumenary: the bond-test is EARNED (the Causeway Bell loop,
