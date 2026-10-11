@@ -289,11 +289,20 @@ export const BLOCKS = {
                         ${t.where && t.where !== t.title ? `<p class="music-where">${e(t.where)}</p>` : ''}
                         ${t.mood ? `<p class="music-mood">${e(t.mood)}</p>` : ''}
                     </div>
-                    <div class="music-buttons">
-                        <button class="music-btn" type="button" data-src="${e(t.classic)}" data-label="Classic">&#9654; Classic</button>
-                        ${t.remaster
-                            ? `<button class="music-btn music-btn-remaster" type="button" data-src="${e(t.remaster)}" data-loop-start="${e(String(t.loop_start ?? ''))}" data-label="Remastered">&#9654; Remastered</button>`
-                            : '<span class="music-soon">Remaster coming</span>'}
+                    <div class="music-modes">
+                        <div class="music-buttons">
+                            <span class="music-label">Classic</span>
+                            <button class="music-btn" type="button" data-src="${e(t.classic)}" data-mode="game" data-label="Play">&#9654; Play</button>
+                            <button class="music-btn music-btn-sm" type="button" data-src="${e(t.classic)}" data-mode="join" data-label="Loop point">&#8644; Loop point</button>
+                        </div>
+                        ${t.remaster ? `<div class="music-buttons">
+                            <span class="music-label music-label-remaster">Remastered</span>
+                            <button class="music-btn music-btn-remaster" type="button" data-src="${e(t.remaster)}" data-loop-start="${e(String(t.loop_start ?? ''))}" data-mode="game" data-label="Play">&#9654; Play</button>
+                            ${t.loop_start ? `<button class="music-btn music-btn-sm" type="button" data-src="${e(t.remaster)}" data-loop-start="${e(String(t.loop_start))}" data-mode="loop" data-label="Loop only">&#10227; Loop only</button>` : ''}
+                            ${t.loop_start !== null ? `<button class="music-btn music-btn-sm" type="button" data-src="${e(t.remaster)}" data-loop-start="${e(String(t.loop_start ?? 0))}" data-mode="join" data-label="Loop point">&#8644; Loop point</button>` : ''}
+                            <button class="music-btn music-btn-sm" type="button" data-src="${e(t.remaster)}" data-mode="once" data-label="Full once">&#8677; Full once</button>
+                        </div>` : '<span class="music-soon">Remaster coming</span>'}
+                    </div>
                     </div>
                 </li>`).join('')}
             </ul>

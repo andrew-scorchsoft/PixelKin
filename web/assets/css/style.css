@@ -1245,7 +1245,11 @@ body.lb-open { overflow: hidden; }
 .music-title { font-family: var(--pixel); font-size: 11px; line-height: 1.6; color: var(--bone); }
 .music-where { color: var(--dim); font-size: 0.85rem; margin-top: 0.25rem; }
 .music-mood { color: var(--bone); opacity: 0.85; font-size: 0.9rem; margin-top: 0.35rem; font-style: italic; }
-.music-buttons { display: flex; gap: 0.5rem; flex-shrink: 0; }
+.music-modes { display: flex; flex-direction: column; gap: 0.45rem; flex-shrink: 0; }
+.music-buttons { display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+.music-label { font-family: var(--pixel); font-size: 8px; color: var(--dim); min-width: 7.5em; text-align: right; }
+.music-label-remaster { color: var(--fire); }
+.music-btn-sm { font-size: 8px; padding: 0.5rem 0.6rem; opacity: 0.9; }
 .music-btn {
     font-family: var(--pixel); font-size: 9px; cursor: pointer; white-space: nowrap;
     color: var(--bone); background: var(--deepblue); border: 1px solid var(--panel-edge);
@@ -1257,5 +1261,6 @@ body.lb-open { overflow: hidden; }
 .music-soon { font-size: 0.8rem; color: var(--dim); align-self: center; }
 @media (max-width: 640px) {
     .music-track { flex-direction: column; align-items: stretch; }
-    .music-buttons { justify-content: flex-start; flex-wrap: wrap; }
+    .music-buttons { justify-content: flex-start; }
+    .music-label { text-align: left; min-width: 0; width: 100%; }
 }
