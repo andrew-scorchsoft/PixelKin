@@ -1163,3 +1163,25 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   lightbox (world gallery, Lumenaries, the first-50 kin grid). Site imagery is copied into
   `web/assets/img/` and the kin grid reads a generated `web/assets/data/kin.json` so the site deploys
   standalone — refresh recipes are in `web/README.md`.
+- **Maps must pass the LOOK gate, not just the play audits (2026-10).** `tools/maps/audit_visual.py
+  --all` FAILs a flat void (< 0.75 props/landmarks per 15×10 screen — the South bar is 2–5) and
+  box pools (water filling its bounding box, ≥16 tiles); it's at 0 FAIL / 0 warn across all 46
+  outdoor maps — keep it there. Plus an in-game shot review (`tools/shots/shoot.mjs`). Reviews
+  behind this pass: `docs/reviews/world-craft-panel.md`, `docs/reviews/story-depth-panel.md`.
+- **World-craft lives in per-region upsert modules — shipped maps are written by THREE runners.**
+  `tools/maps/worldcraft/<region>.py` (ambience, regional-cast `sprites` swaps, props, NPCs) via
+  `add_world_craft.py --region <r>`; the peril thread via `add_peril_thread.py`; builders. After
+  ANY map edit, both runners' `--check` must show 0 drift; if one would revert your change, the
+  change belongs in that runner's data (the Galehigh notice-reader precedent). New scripts go in
+  `content/regions/<region>.ts`. On pre-Chickenpig maps the runner only accepts ambience, sprite
+  swaps and props that pass `prove_off_lane` (no lane, no longer walks, no sealed dry lane).
+- **The regional cast** (21 keys: fisher_*, miner_*, kite_weaver, hollowing_acolyte, innkeeper…)
+  is registered in `Npc.ts` `SPRITE_SHEETS` with `REGIONAL_FALLBACK` to a generic sheet; no screen
+  should show the same sheet twice.
+- **Older sprites carried a magenta chroma-key halo; `tools/assets/defringe.py` fixes MASTERS
+  losslessly** (drops faint alpha, re-inks near-magenta edge px; design pinks with r>>b kept), then
+  re-pack. New gpt-image-2.5 art has native alpha — never run it on those (it eats real lavenders).
+- **The Senna thread is dosed; her NAME is post-dawn only.** North (Fenn: "three of us on that
+  ladder"), West (Nessa), the summit (Còr knows the Starlamp's brass) all leave her unnamed;
+  `cor_resolution`/the Last Lesson say it. The cinder law + timeline (the Long Dusk = 11 winters)
+  are canon in `docs/world/story-bible.md` §11–§12 — check new lines against them.
