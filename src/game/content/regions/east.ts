@@ -13,6 +13,12 @@
 import type { DialogueRegistry, ScriptRegistry } from '../types';
 
 export const EAST_SCRIPTS: ScriptRegistry = {
+  // Georgina's intro never set q_east_georgina_met, which the lost kitten and her
+  // waiting placement both require — the side quest could not be finished.
+  'script.georgina_meet': [
+    { op: 'run', ref: 'script.georgina_intro' },
+    { op: 'setFlag', flag: 'flag:q_east_georgina_met' },
+  ],
   // --- Saltreach Fen I: the fishing-stilt nook (world-craft §4 #1b) ----------
   // The reed-cutter's widow by the stilt hut. One fen story (the drowned
   // village) that points at the Staithe line, and the net-weights hook.

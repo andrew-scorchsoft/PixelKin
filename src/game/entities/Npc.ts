@@ -97,6 +97,8 @@ const SPRITE_SHEETS: Record<string, string> = {
   hollowing_acolyte: 'hollowing_acolyte',
   old_salt: 'old_salt',
   village_child: 'village_child',
+  // Georgina's cottage cats (Smudge, Other Smudge…) — ordinary house cats.
+  cottage_cat: 'cottage_cat',
   lamplighter: 'lamplighter',
   market_trader: 'market_trader',
   innkeeper: 'innkeeper',

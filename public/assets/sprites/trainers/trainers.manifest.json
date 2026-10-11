@@ -19,6 +19,11 @@
       "width": 128,
       "height": 128
     },
+    "cottage_cat": {
+      "path": "assets/sprites/trainers/cottage_cat.webp",
+      "width": 128,
+      "height": 128
+    },
     "fen_folk": {
       "path": "assets/sprites/trainers/fen_folk.webp",
       "width": 128,

@@ -119,7 +119,7 @@
         "ty": 9
       },
       "facing": "down",
-      "sprite": "lost_kitten",
+      "sprite": "kin_164_overworld",
       "movement": "look_around",
       "dialogue_ref": "script.georgina_kitten_found",
       "requires_flag": "flag:q_east_georgina_met",
