@@ -72,6 +72,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   'sign.tinderwick_orchard': [
     { text: 'WEST: DUSKAPPLE ORCHARD\nThrough the gap in the hedge. Mind the windfalls.' },
+    { text: 'BEYOND IT: WICKSTEAD GREEN & THE LAMP-SCHOOL\nNew to the road? The teachers there will show you the ropes.' },
   ],
   'sign.tinderwick_lumenary': [
     { text: 'TINDERWICK LUMENARY — the town\'s lantern-hall.\nLampwarden Brisa Tallow tends the Ember light. Bring a kin and a steady hand.' },
@@ -103,6 +104,7 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'GRAN', text: 'Your grandfather trimmed every lamp on that square for forty years. Out at first bell, rain or starfall, that old brass trimmer in his coat — and he\'d sing to the stubborn wicks. Swore they burned longer for it.' },
     { text: 'She takes the worn brass wick-trimmer down from the shelf, folds your fingers around it, and pats them shut.', style: 'narrate' },
     { speaker: 'GRAN', text: 'He\'d have walked you to the gate, love. Since he can\'t — carry his trimmer, and sing to the stubborn ones. Now: north past the gate, and home before the bread\'s stale.' },
+    { speaker: 'GRAN', text: 'And if the kin-business puzzles you, the lamp-school at Wickstead is past the orchard, west. The Hearthkeeper\'s visiting this week: ask her where your extra kin go when your lamp is full.' },
   ],
   'npc.house_parent_wait': [
     { speaker: 'GRAN', text: 'Found him yet? The tidal flats, love — up past the coast road, where the buoys are. He\'ll be the untidy one watching the sky.' },

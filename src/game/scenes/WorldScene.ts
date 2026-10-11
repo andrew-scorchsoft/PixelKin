@@ -602,6 +602,7 @@ export class WorldScene extends Phaser.Scene {
     'pale_vault_inn',
     'nightreach_inn',
     'sunken_solarium_lumenary',
+    'wickstead_school', // Master Mallow's lie-down in the lamp-school
   ]);
 
   /**
