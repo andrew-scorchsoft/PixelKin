@@ -807,7 +807,7 @@
     },
     {
       "id": "landing_tree",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_b",
       "at": {
         "tx": 19,
         "ty": 39

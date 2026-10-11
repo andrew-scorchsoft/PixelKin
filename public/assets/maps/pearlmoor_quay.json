@@ -2092,7 +2092,7 @@
     },
     {
       "id": "tree_a",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_b",
       "at": {
         "tx": 8,
         "ty": 9
@@ -2138,7 +2138,7 @@
     },
     {
       "id": "tree_c",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_c",
       "at": {
         "tx": 18,
         "ty": 3
@@ -2174,7 +2174,7 @@
     },
     {
       "id": "tree_f",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_c",
       "at": {
         "tx": 3,
         "ty": 2

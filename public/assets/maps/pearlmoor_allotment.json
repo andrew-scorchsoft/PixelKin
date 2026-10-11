@@ -109,7 +109,7 @@
     },
     {
       "id": "tree_a",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_c",
       "at": {
         "tx": 15,
         "ty": 2

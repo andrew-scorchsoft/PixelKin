@@ -2431,7 +2431,7 @@
     },
     {
       "id": "crown_low",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_c",
       "at": {
         "tx": 9,
         "ty": 18
@@ -2479,7 +2479,7 @@
     },
     {
       "id": "spoke_tree_a",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_b",
       "at": {
         "tx": 2,
         "ty": 13
@@ -2491,7 +2491,7 @@
     },
     {
       "id": "spoke_tree_b",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_b",
       "at": {
         "tx": 20,
         "ty": 22

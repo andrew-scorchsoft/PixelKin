@@ -662,7 +662,7 @@
     },
     {
       "id": "south_tree",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_b",
       "at": {
         "tx": 22,
         "ty": 23
@@ -674,7 +674,7 @@
     },
     {
       "id": "mere_tree",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_b",
       "at": {
         "tx": 18,
         "ty": 6

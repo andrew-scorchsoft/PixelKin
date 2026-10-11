@@ -161,8 +161,9 @@ PLACEMENTS: dict[str, dict] = {
         "objects": [
             obj("spoke_lamp_a", "tinderwick_lamp_post", (12, 8), 1, 3, overhang=2, walk_under=True),
             obj("spoke_lamp_b", "tinderwick_lamp_post", (8, 22), 1, 3, overhang=2, walk_under=True),
-            obj("spoke_tree_a", "tinderwick_tree", (2, 13), 3, 4, overhang=3, walk_under=True),
-            obj("spoke_tree_b", "tinderwick_tree", (20, 22), 3, 4, overhang=3, walk_under=True),
+            # tree sprites = vary_trees.tree_variant() for these tiles
+            obj("spoke_tree_a", "tinderwick_tree_b", (2, 13), 3, 4, overhang=3, walk_under=True),
+            obj("spoke_tree_b", "tinderwick_tree_b", (20, 22), 3, 4, overhang=3, walk_under=True),
             decor("spoke_reeds_a", "saltreach_cattails", (5, 15), 2, 2),
             decor("spoke_reeds_b", "saltreach_cattails", (15, 19), 2, 2),
             decor("spoke_stooks", "saltreach_reed_stooks", (10, 25), 2, 2),

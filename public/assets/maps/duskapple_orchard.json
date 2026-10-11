@@ -43,7 +43,7 @@
     },
     {
       "id": "apple_4",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_b",
       "at": {
         "tx": 11,
         "ty": 12

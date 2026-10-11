@@ -1387,7 +1387,7 @@
     },
     {
       "id": "crown_1",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_c",
       "at": {
         "tx": 15,
         "ty": 14

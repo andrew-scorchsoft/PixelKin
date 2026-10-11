@@ -2103,7 +2103,7 @@
     },
     {
       "id": "tree_a",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_b",
       "at": {
         "tx": 9,
         "ty": 12
@@ -2127,7 +2127,7 @@
     },
     {
       "id": "tree_c",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_b",
       "at": {
         "tx": 0,
         "ty": 4
@@ -2151,7 +2151,7 @@
     },
     {
       "id": "tree_e",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_c",
       "at": {
         "tx": 1,
         "ty": 11
@@ -2163,7 +2163,7 @@
     },
     {
       "id": "tree_f",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_b",
       "at": {
         "tx": 25,
         "ty": 7
@@ -2175,7 +2175,7 @@
     },
     {
       "id": "tree_g",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_c",
       "at": {
         "tx": 8,
         "ty": 0
