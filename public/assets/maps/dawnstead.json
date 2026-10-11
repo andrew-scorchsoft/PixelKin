@@ -2563,7 +2563,7 @@
   "objects": [
     {
       "id": "store",
-      "sprite": "tinderwick_shop",
+      "sprite": "dawnstead_shop",
       "at": {
         "tx": 3,
         "ty": 4
@@ -2574,7 +2574,7 @@
     },
     {
       "id": "cottage_e",
-      "sprite": "tinderwick_cottage",
+      "sprite": "dawnstead_cottage",
       "at": {
         "tx": 17,
         "ty": 3
@@ -2585,7 +2585,7 @@
     },
     {
       "id": "cottage_w",
-      "sprite": "tinderwick_cottage",
+      "sprite": "dawnstead_cottage",
       "at": {
         "tx": 4,
         "ty": 12

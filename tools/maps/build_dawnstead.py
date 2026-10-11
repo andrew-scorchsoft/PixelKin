@@ -141,11 +141,11 @@ terrain_layers = [
 
 # ---- objects: the Tinderwick rooflines, trees, lamps, Còr's lamp pair --------
 objects = [
-    {"id": "store", "sprite": "tinderwick_shop",
+    {"id": "store", "sprite": "dawnstead_shop",
      "at": {"tx": SHOP["at"][0], "ty": SHOP["at"][1]}, "w": 5, "h": 4, "overhang": 2},
-    {"id": "cottage_e", "sprite": "tinderwick_cottage",
+    {"id": "cottage_e", "sprite": "dawnstead_cottage",
      "at": {"tx": COTTAGE_E["at"][0], "ty": COTTAGE_E["at"][1]}, "w": 5, "h": 5, "overhang": 3},
-    {"id": "cottage_w", "sprite": "tinderwick_cottage",
+    {"id": "cottage_w", "sprite": "dawnstead_cottage",
      "at": {"tx": COTTAGE_W["at"][0], "ty": COTTAGE_W["at"][1]}, "w": 5, "h": 5, "overhang": 3},
     # Object trees break the border into overlapping canopies (§11). tree_d is
     # the NOOK WALL: its trunk row (19) closes Còr's strand nook from the north

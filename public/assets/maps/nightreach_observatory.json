@@ -31,7 +31,7 @@
     },
     {
       "id": "inn",
-      "sprite": "galehigh_inn",
+      "sprite": "nightreach_inn",
       "at": {
         "tx": 4,
         "ty": 15
@@ -42,7 +42,7 @@
     },
     {
       "id": "home",
-      "sprite": "galehigh_cottage",
+      "sprite": "nightreach_home",
       "at": {
         "tx": 22,
         "ty": 15

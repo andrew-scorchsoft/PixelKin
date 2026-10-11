@@ -105,6 +105,20 @@
       "tw": 6,
       "th": 5
     },
+    "dawnstead_cottage": {
+      "path": "assets/sprites/objects/dawnstead_cottage.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "dawnstead_shop": {
+      "path": "assets/sprites/objects/dawnstead_shop.webp",
+      "width": 80,
+      "height": 64,
+      "tw": 5,
+      "th": 4
+    },
     "fallenstar_cinder_star": {
       "path": "assets/sprites/objects/fallenstar_cinder_star.webp",
       "width": 32,
@@ -622,6 +636,20 @@
       "height": 48,
       "tw": 3,
       "th": 3
+    },
+    "nightreach_home": {
+      "path": "assets/sprites/objects/nightreach_home.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "nightreach_inn": {
+      "path": "assets/sprites/objects/nightreach_inn.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
     },
     "nightreach_lumenary": {
       "path": "assets/sprites/objects/nightreach_lumenary.webp",

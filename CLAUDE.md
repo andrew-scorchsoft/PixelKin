@@ -1185,3 +1185,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   ladder"), West (Nessa), the summit (Còr knows the Starlamp's brass) all leave her unnamed;
   `cor_resolution`/the Last Lesson say it. The cinder law + timeline (the Long Dusk = 11 winters)
   are canon in `docs/world/story-bible.md` §11–§12 — check new lines against them.
+- **Overworld trees come in three crowns; re-run `tools/maps/vary_trees.py` after placing any.**
+  `tinderwick_tree` / `_b` (round) / `_c` (tall, hung lantern, has a LIGHT_SOURCES row) share
+  the 48×64 canvas, overhang 3 and trunk row; the script picks the sprite by crc32 of
+  (map, tx, ty), touches only `sprite`, and `--check`s idempotence. A tree owned by
+  `worldcraft/*.py` must carry the same pick there (east.py's spoke trees do). Object masters
+  regenerated with gpt-image-2.5 use native alpha: `gen_interior_object.py --provider openai`.

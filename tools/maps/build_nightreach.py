@@ -276,11 +276,11 @@ m["warps"].append({"id": "to_lumenary_e", "at": {"tx": 16, "ty": 9},
 # Galehigh highland-stone masters are the register reuse (wind-braced stone
 # on a high hilltop; the brief's bespoke list is dome/lamps/eyepiece/
 # dressing — reuse everywhere else)
-pt.building(m, ruin, W, H, oid="inn", sprite="galehigh_inn",
+pt.building(m, ruin, W, H, oid="inn", sprite="nightreach_inn",
             at=(4, 15), overhang=2, door_col=2,
             to_map="nightreach_inn", to=(7, 10))
 m["warps"][-1]["id"] = "to_inn"
-pt.building(m, ruin, W, H, oid="home", sprite="galehigh_cottage",
+pt.building(m, ruin, W, H, oid="home", sprite="nightreach_home",
             at=(22, 15), overhang=2, door_col=2,
             to_map="nightreach_home", to=(6, 8))
 m["warps"][-1]["id"] = "to_home"

@@ -95,7 +95,9 @@ export const LIGHT_SOURCES: Record<string, { hx: number; hy: number; radius: num
 export const CHIMNEYS: Record<string, { x: number; y: number }> = {
   tinderwick_cottage: { x: 56, y: 2 },
   tinderwick_shop: { x: 61, y: 2 },
-  pearlmoor_inn: { x: 60, y: 2 },
+  pearlmoor_inn: { x: 64, y: 2 },
+  dawnstead_cottage: { x: 66, y: 8 },
+  dawnstead_shop: { x: 65, y: 17 },
   vesper_crossroads_inn: { x: 58, y: 6 },
   // east
   cinderhead_miner_cottage: { x: 66, y: 8 },
