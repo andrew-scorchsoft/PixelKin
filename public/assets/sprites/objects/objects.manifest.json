@@ -7,6 +7,13 @@
       "tw": 2,
       "th": 2
     },
+    "cinderhead_lamp_hooks": {
+      "path": "assets/sprites/objects/cinderhead_lamp_hooks.webp",
+      "width": 80,
+      "height": 32,
+      "tw": 5,
+      "th": 2
+    },
     "cinderhead_lumenary": {
       "path": "assets/sprites/objects/cinderhead_lumenary.webp",
       "width": 96,
@@ -672,6 +679,55 @@
       "tw": 1,
       "th": 3
     },
+    "saltreach_cattails": {
+      "path": "assets/sprites/objects/saltreach_cattails.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "saltreach_drowned_cottage": {
+      "path": "assets/sprites/objects/saltreach_drowned_cottage.webp",
+      "width": 64,
+      "height": 64,
+      "tw": 4,
+      "th": 4
+    },
+    "saltreach_eel_trap": {
+      "path": "assets/sprites/objects/saltreach_eel_trap.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "saltreach_lilypads": {
+      "path": "assets/sprites/objects/saltreach_lilypads.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "saltreach_mooring_posts": {
+      "path": "assets/sprites/objects/saltreach_mooring_posts.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "saltreach_net_rack": {
+      "path": "assets/sprites/objects/saltreach_net_rack.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "saltreach_punt": {
+      "path": "assets/sprites/objects/saltreach_punt.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
     "saltreach_reed_lantern_dark": {
       "path": "assets/sprites/objects/saltreach_reed_lantern_dark.webp",
       "width": 16,
@@ -685,6 +741,27 @@
       "height": 32,
       "tw": 1,
       "th": 2
+    },
+    "saltreach_reed_stooks": {
+      "path": "assets/sprites/objects/saltreach_reed_stooks.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "saltreach_reedcutter_hut": {
+      "path": "assets/sprites/objects/saltreach_reedcutter_hut.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "saltreach_sunken_lamp": {
+      "path": "assets/sprites/objects/saltreach_sunken_lamp.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
     },
     "solarium_brazier_dead": {
       "path": "assets/sprites/objects/solarium_brazier_dead.webp",
