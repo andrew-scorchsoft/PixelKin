@@ -132,7 +132,7 @@ m: dict = {
     "tilesets": [mk.shared_tileset_ref()],
     "objects": [], "warps": [], "triggers": [], "encounters": [], "npcs": [],
     "gates": [],
-    "music": "assets/audio/music/coldfog-marches-a.mp3",
+    "music": "assets/audio/music/interior-unease.mp3",
     "battle_backdrops": [
         "assets/backgrounds/battle/coldfog-marches-a.webp",
         "assets/backgrounds/battle/coldfog-marches-b.webp",

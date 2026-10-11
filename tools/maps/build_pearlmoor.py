@@ -502,7 +502,7 @@ m = {
         # gates every tile it covers, and cols 24-25 are now the breakwater root.)
         {"id": "harbour_gate_e", "ability": "tidecall", "effect": "make_passable",
          "rect": {"tx": 16, "ty": 18, "w": 8, "h": 5}}],
-    "music": "assets/audio/music/dimglass-coast-a.mp3",
+    "music": "assets/audio/music/pearlmoor-quay-a.mp3",
     "_doors": {"lumenary": lum_door, "lumenary_twin": lum_door_r,
                "shop": shop_door, "inn": inn_door},
 }

@@ -174,7 +174,7 @@ def build_h_lane(*, map_id, display, seed, w_rows, e_rows, bend_x,
             "encounter_rate": 0.07, "table": grass["table"],
         }] if grass else []),
         "npcs": [], "gates": [],
-        "music": "assets/audio/music/tinderwick-a.mp3",
+        "music": "assets/audio/music/lanternway-a.mp3",
     }
     owed += pt.sign(m, deco, W, sid=sign_id, at=(bend_x + 2, min(wy, ey) + 2 if wy != ey else wy + 2))
     owed += pt.cache(m, cid=cache_id, at=cache_at)
@@ -237,7 +237,7 @@ def build_v_lane(*, map_id, display, seed, n_cols, s_cols, n_warps, s_warps,
         "objects": objects,
         "warps": n_warps + s_warps,
         "triggers": [], "encounters": [], "npcs": [], "gates": [],
-        "music": "assets/audio/music/tinderwick-a.mp3",
+        "music": "assets/audio/music/lanternway-a.mp3",
     }
     owed += pt.sign(m, deco, W, sid=sign_id, at=(n_cols[1] + 2, 11))
     owed += pt.cache(m, cid=cache_id, at=cache_at)
@@ -334,7 +334,7 @@ def build_lowleaf_spoke(owed):
             W_("to_lowleaf_s", 25, 5, "lowleaf_hollow", (1, 15), "right"),
         ],
         "triggers": [], "encounters": [], "npcs": [], "gates": [],
-        "music": "assets/audio/music/tinderwick-a.mp3",
+        "music": "assets/audio/music/lanternway-a.mp3",
     }
     owed += pt.sign(m, deco, W, sid="lanternway_lowleaf", at=(18, 17))
     # the shelf apron's drop-cache — pays the hop-off band before the ledge

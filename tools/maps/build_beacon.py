@@ -20,7 +20,7 @@ from __future__ import annotations
 from build_interiors import (COOL_SET, FLOOR, DOORMAT, RUNNER, BANNER, CAP_N,
                              faced_room, windows, mapdef, obj, write_and_render)
 
-MUSIC = "assets/audio/music/tinderwick-a.mp3"
+MUSIC = "assets/audio/music/beacon-stair.mp3"
 
 
 def stair_floor(id_, name, *, keeper_id, keeper_script, keeper_after,

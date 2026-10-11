@@ -24,6 +24,23 @@ interface RemasterEntry {
 const REMASTERED = (REMASTER as { tracks: Record<string, RemasterEntry> }).tracks;
 const REMASTER_DIR = 'assets/audio/music/remaster/';
 
+/**
+ * Where each bed was when it was last left, for `{ resume: true }` plays. Module
+ * scope, so it survives the World scene handing music to a Battle and back. A
+ * bed left longer ago than RESUME_WINDOW_MS starts fresh (intro and all), like
+ * arriving somewhere new; inside the window it picks up where it stopped — the
+ * town theme carries on when you step back out of the shop.
+ */
+const RESUME_WINDOW_MS = 150_000;
+const RESUME_FADE_MS = 300;
+const lastHeard = new Map<string, { pos: number; at: number }>();
+
+/** Options for a bed change. */
+export interface PlayOptions {
+  /** Pick the track up where it was last left (if recently), instead of from its top. */
+  resume?: boolean;
+}
+
 /** What to actually load for a requested (classic) key + url. */
 interface Resolved {
   key: string;
@@ -37,26 +54,61 @@ interface Resolved {
  * marker [loop_start, end) looped, scheduled `delay: loop_start` later on the
  * same AudioContext clock, so the hand-off is sample-accurate and the intro
  * never replays (re-entering a map with the same bed is already a no-op).
+ *
+ * `from` starts the bed part-way through (a resume): inside the intro the intro
+ * plays from there and the body is scheduled for what's left of it; past the
+ * intro only the body plays, seeked to the same spot.
  */
 class Bed {
   private readonly parts: Phaser.Sound.BaseSound[] = [];
+  private intro?: Phaser.Sound.BaseSound;
+  private body?: Phaser.Sound.BaseSound;
   private vol: number;
+  private readonly total: number;
 
-  constructor(scene: Phaser.Scene, key: string, loopStart: number, volume: number) {
+  constructor(
+    scene: Phaser.Scene,
+    key: string,
+    private readonly loopStart: number,
+    volume: number,
+    from = 0,
+  ) {
     this.vol = volume;
     const body = scene.sound.add(key, { volume });
     const total = body.duration || body.totalDuration;
+    this.total = total;
+    this.body = body;
     if (loopStart > 0.05 && total > loopStart + 1) {
-      const intro = scene.sound.add(key, { volume });
-      intro.addMarker({ name: 'intro', start: 0, duration: loopStart });
       body.addMarker({ name: 'body', start: loopStart, duration: total - loopStart, config: { loop: true } });
-      intro.play('intro', { volume });
-      body.play('body', { volume, loop: true, delay: loopStart });
-      this.parts.push(intro, body);
+      if (from < loopStart) {
+        const intro = scene.sound.add(key, { volume });
+        intro.addMarker({ name: 'intro', start: 0, duration: loopStart });
+        intro.play('intro', { volume, seek: from });
+        this.intro = intro;
+        this.parts.push(intro);
+        body.play('body', { volume, loop: true, delay: loopStart - from });
+      } else {
+        body.play('body', { volume, loop: true, seek: (from - loopStart) % (total - loopStart) });
+      }
+      this.parts.push(body);
     } else {
-      body.play({ volume, loop: true });
+      body.play({ volume, loop: true, seek: total > 0 ? from % total : 0 });
       this.parts.push(body);
     }
+  }
+
+  /**
+   * Where in the FILE playback is now (seconds) — what a later resume seeks to.
+   * The body's `seek` is marker-relative and reads 0 while it's still scheduled
+   * behind the intro, so the intro answers until the body has taken over.
+   */
+  get position(): number {
+    const seekOf = (s?: Phaser.Sound.BaseSound): number =>
+      (s as (Phaser.Sound.BaseSound & { seek?: number }) | undefined)?.seek ?? 0;
+    if (this.intro?.isPlaying) return seekOf(this.intro);
+    if (!this.body?.isPlaying) return 0;
+    const split = this.loopStart > 0.05 && this.total > this.loopStart + 1;
+    return (split ? this.loopStart : 0) + seekOf(this.body);
   }
 
   get isPlaying(): boolean {
@@ -142,16 +194,19 @@ export class MusicDirector {
   }
 
   /** Play a loop by key (loading `url` if needed). No-op if already on this key. */
-  async play(key: string, url: string): Promise<void> {
+  async play(key: string, url: string, opts: PlayOptions = {}): Promise<void> {
     const want = this.resolve(key, url).key;
     if (this.currentKey === want && this.current?.isPlaying) return;
     this.requested = { key, url };
     const r = await this.load(key, url);
     if (!r) return;
     this.stop();
-    this.current = new Bed(this.scene, r.key, r.loopStart, this.volume);
+    const from = opts.resume ? this.resumePoint(r.key) : 0;
+    // A resume lands mid-phrase: ease it in rather than clicking on.
+    this.current = new Bed(this.scene, r.key, r.loopStart, from > 0 ? 0 : this.volume, from);
     this.currentKey = r.key;
     this.requested = { key, url };
+    if (from > 0) void this.tweenVolume(this.current, this.volume, RESUME_FADE_MS);
   }
 
   /**
@@ -159,7 +214,7 @@ export class MusicDirector {
    * one rises from 0 to target, then drop the old one. Falls back to a hard `play`
    * if there's nothing currently playing (or the new file is missing → silence).
    */
-  async crossfade(key: string, url: string, ms = 700): Promise<void> {
+  async crossfade(key: string, url: string, ms = 700, opts: PlayOptions = {}): Promise<void> {
     const want = this.resolve(key, url).key;
     if (this.currentKey === want && this.current?.isPlaying) return;
     this.requested = { key, url };
@@ -170,7 +225,9 @@ export class MusicDirector {
       return;
     }
     const outgoing = this.current;
-    const incoming = new Bed(this.scene, r.key, r.loopStart, 0);
+    if (outgoing && this.currentKey) this.remember(this.currentKey, outgoing);
+    const from = opts.resume ? this.resumePoint(r.key) : 0;
+    const incoming = new Bed(this.scene, r.key, r.loopStart, 0, from);
     this.current = incoming;
     this.currentKey = r.key;
     this.requested = { key, url };
@@ -183,6 +240,7 @@ export class MusicDirector {
   async fadeToSilence(ms = 700): Promise<void> {
     const sound = this.current;
     if (!sound) return;
+    if (this.currentKey) this.remember(this.currentKey, sound);
     this.current = undefined;
     this.currentKey = undefined;
     this.requested = undefined;
@@ -214,6 +272,7 @@ export class MusicDirector {
 
   stop(): void {
     if (this.current) {
+      if (this.currentKey) this.remember(this.currentKey, this.current);
       this.disposeOf(this.current);
       this.current = undefined;
       this.currentKey = undefined;
@@ -250,6 +309,19 @@ export class MusicDirector {
         },
       });
     });
+  }
+
+  /** Note where a bed was as it's left, for a later `{ resume: true }`. */
+  private remember(key: string, bed: Bed): void {
+    if (!bed.isPlaying) return;
+    lastHeard.set(key, { pos: bed.position, at: Date.now() });
+  }
+
+  /** Where to start `key` for a resume: its last spot if heard recently, else the top. */
+  private resumePoint(key: string): number {
+    const seen = lastHeard.get(key);
+    if (!seen || Date.now() - seen.at > RESUME_WINDOW_MS) return 0;
+    return seen.pos;
   }
 
   private disposeOf(sound: Bed): void {

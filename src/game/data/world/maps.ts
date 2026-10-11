@@ -14,8 +14,18 @@ export interface MapRegistryEntry {
   /** Tileset image keys -> atlas PNG paths under public/assets/tilesets/. */
   tilesets: Record<string, string>;
   kind: MapKind;
-  /** mp3 loop under public/assets/audio/music/ (optional). */
+  /** mp3 loop under public/assets/audio/music/ (optional). Mirrors the map JSON's
+   *  `music` (the builder writes both); the JSON is what the engine reads. */
   music?: string;
+  /**
+   * Story-state music (the soundtrack-variants pass, 2026-10): the FIRST rule whose
+   * flags match replaces `music` — the place sounds different once the world has
+   * changed (Duskapple's fallen-star dirge until the first Gleam; the apprentice's
+   * house hushed after the omen). Resolved on map entry and after a battle, never
+   * mid-scene, so a cutscene's own music ops are never overridden. No rule matches →
+   * the map's normal music. See `resolveMapMusic`.
+   */
+  music_when?: MusicRule[];
   /**
    * Battle-backdrop variants (240x160 WebP under public/assets/backgrounds/battle/).
    * One is picked at random when a battle starts on this map, so fights here have a
@@ -36,6 +46,16 @@ export interface MapRegistryEntry {
   dark?: boolean;
 }
 
+/** One story-state music override (see `MapRegistryEntry.music_when`). */
+export interface MusicRule {
+  /** Applies while this flag is held (omit for an `unless`-only rule). */
+  flag?: string;
+  /** ...and only until this flag is held. */
+  unless?: string;
+  /** The loop to play instead (public/assets/audio/music/<id>.mp3). */
+  music: string;
+}
+
 export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   tinderwick: {
     json: 'assets/maps/tinderwick.json',
@@ -52,6 +72,9 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/tinderwick-b.mp3',
+    // After the omen on the coast (Gran's letter) the house holds its breath until
+    // the first constellation is relit; then the lullaby comes home.
+    music_when: [{ flag: 'flag:dusk_begins', unless: 'gleam:ember', music: 'assets/audio/music/interior-hush.mp3' }],
     battle_backdrops: [
       'assets/backgrounds/battle/tinderwick-house-a.webp',
       'assets/backgrounds/battle/tinderwick-house-b.webp',
@@ -61,7 +84,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/tinderwick_shop.json',
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/tinderwick-b.mp3',
+    music: 'assets/audio/music/shop-counter.mp3',
   },
   // R8 (2026-10): Tinderwick's old orchard, through the west hedge gap — the
   // courier's cart (Fenn's satchel), Wren, Old Wendel and a lv 2-4 training meadow.
@@ -70,6 +93,9 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'route',
     music: 'assets/audio/music/tinderwick-c.mp3',
+    // The fallen star: the hometown tune gone cold over the crater, until the first
+    // Gleam brings the shoots up — then the orchard's own wonder (tinderwick-c).
+    music_when: [{ unless: 'gleam:ember', music: 'assets/audio/music/duskapple-orchard.mp3' }],
     battle_backdrops: [
       'assets/backgrounds/battle/tinderwick-a.webp',
       'assets/backgrounds/battle/tinderwick-b.webp',
@@ -79,7 +105,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/tinderwick_lumenary.json',
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/tinderwick-a.mp3',
+    music: 'assets/audio/music/lumenary-hall.mp3',
     // Lampwarden 1 (Ember) Gleam battle happens here — shrine-interior backdrop.
     battle_backdrops: [
       'assets/backgrounds/battle/tinderwick-lumenary-a.webp',
@@ -92,19 +118,19 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/tinderwick_beacon_i.json',
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/tinderwick-a.mp3',
+    music: 'assets/audio/music/beacon-stair.mp3',
   },
   tinderwick_beacon_ii: {
     json: 'assets/maps/tinderwick_beacon_ii.json',
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/tinderwick-a.mp3',
+    music: 'assets/audio/music/beacon-stair.mp3',
   },
   tinderwick_beacon_top: {
     json: 'assets/maps/tinderwick_beacon_top.json',
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/tinderwick-a.mp3',
+    music: 'assets/audio/music/beacon-stair.mp3',
   },
   dimglass_coast: {
     json: 'assets/maps/dimglass_coast.json',
@@ -130,7 +156,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/pearlmoor_quay.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'town',
-    music: 'assets/audio/music/dimglass-coast-a.mp3',
+    music: 'assets/audio/music/pearlmoor-quay-a.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/pearlmoor-quay-a.webp',
       'assets/backgrounds/battle/pearlmoor-quay-b.webp',
@@ -142,7 +168,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/wrackline_path.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'route',
-    music: 'assets/audio/music/dimglass-coast-a.mp3',
+    music: 'assets/audio/music/dimglass-coast-b.mp3',
   },
   sounding_cave: {
     json: 'assets/maps/sounding_cave.json',
@@ -154,7 +180,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/lanternfall_road.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'route',
-    music: 'assets/audio/music/dimglass-coast-a.mp3',
+    music: 'assets/audio/music/dimglass-coast-b.mp3',
   },
   // The Causeway Bell's walk: the foot causeway out to the Moor-bell shrine
   // (gated on the netmender's rope; reuses Pearlmoor's music + backdrops).
@@ -204,7 +230,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/pearlmoor_lumenary.json',
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/dimglass-coast-a.mp3',
+    music: 'assets/audio/music/lumenary-hall.mp3',
     // Lampwarden 2 (Tide) Gleam battle happens here — shrine-interior backdrop.
     battle_backdrops: [
       'assets/backgrounds/battle/pearlmoor-lumenary-a.webp',
@@ -274,20 +300,20 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/pearlmoor_shop.json',
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/dimglass-coast-a.mp3',
+    music: 'assets/audio/music/shop-counter.mp3',
   },
   pearlmoor_inn: {
     json: 'assets/maps/pearlmoor_inn.json',
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/dimglass-coast-a.mp3',
+    music: 'assets/audio/music/inn-rest.mp3',
   },
   // The Lifting House — the quayside gym (the Booji-Wooji Man side quest).
   pearlmoor_lifting_house: {
     json: 'assets/maps/pearlmoor_lifting_house.json',
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/dimglass-coast-a.mp3',
+    music: 'assets/audio/music/interior-sunny.mp3',
   },
   // Tideglass Cavern — the South's long-teased glass sea-cave landmark
   // (Glimmerstep spur off Dimglass II; the Lampwright's Relay + S3's
@@ -325,7 +351,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/vesper_crossroads.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'hub',
-    music: 'assets/audio/music/tinderwick-a.mp3',
+    music: 'assets/audio/music/vesper-crossroads-a.mp3',
   },
   // The Vesper Crossroads waystation inn — the concept art's central house, now
   // enterable (the C2 'Inn's Empty Lamps' innkeeper lives inside).
@@ -333,7 +359,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/crossroads_inn.json',
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/tinderwick-a.mp3',
+    music: 'assets/audio/music/inn-rest.mp3',
   },
   // The Lanternway spokes — the five hub lanes are REAL maps (2026-06 topology
   // fix): short bending country lanes between each rim town and the crossroads,
@@ -344,13 +370,13 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/lanternway_tinderwick.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'route',
-    music: 'assets/audio/music/tinderwick-a.mp3',
+    music: 'assets/audio/music/lanternway-a.mp3',
   },
   lanternway_lowleaf: {
     json: 'assets/maps/lanternway_lowleaf.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'route',
-    music: 'assets/audio/music/tinderwick-a.mp3',
+    music: 'assets/audio/music/lanternway-a.mp3',
   },
   // The Under-Lane — the lamped cave beneath the Lowleaf spoke's bank: the
   // spoke L's up, ducks UNDER its own lane, and comes out on the upper shelf
@@ -366,13 +392,13 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/lanternway_galehigh.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'route',
-    music: 'assets/audio/music/tinderwick-a.mp3',
+    music: 'assets/audio/music/lanternway-a.mp3',
   },
   lanternway_nightreach: {
     json: 'assets/maps/lanternway_nightreach.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'route',
-    music: 'assets/audio/music/tinderwick-a.mp3',
+    music: 'assets/audio/music/lanternway-a.mp3',
   },
   // East: the first true cave dungeon — the hollow's dark interior past Lowleaf
   // (Glimmerstep-gated on Lowleaf's `to_deepwood` warp; B2 first Hollowing contact).
@@ -474,7 +500,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/lowleaf_bower.json',
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/lowleaf-hollow-b.mp3',
+    music: 'assets/audio/music/inn-rest.mp3',
   },
   // Gloamwood Dell + Georgina's Cottage — the optional East side quest "The
   // Sunniest House in the Dark" (a tree-walled glade off lowleaf_hollow's NE
@@ -489,7 +515,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/georgina_cottage.json',
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/lowleaf-hollow-b.mp3',
+    music: 'assets/audio/music/interior-sunny.mp3',
   },
   // Cinderhead Mine — the gem-mine settlement (Lumenary 4, Stone: Otho Grist);
   // the Lamp-down vigil festival + the Descent Vigil earned loop (the §4 wall).
@@ -585,19 +611,19 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/galehigh_inn.json',
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/galehigh-terraces-b.mp3',
+    music: 'assets/audio/music/inn-rest.mp3',
   },
   galehigh_home: {
     json: 'assets/maps/galehigh_home.json',
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/galehigh-terraces-b.mp3',
+    music: 'assets/audio/music/interior-hearth.mp3',
   },
   galehigh_kitemaker: {
     json: 'assets/maps/galehigh_kitemaker.json',
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/galehigh-terraces-b.mp3',
+    music: 'assets/audio/music/shop-counter.mp3',
   },
   // Windward Stair I → II — the North's great switchback climb (band 34-36);
   // the I→II wind-gap is the Updraft Kite boundary, and reaching the II crags
@@ -682,13 +708,13 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/pale_vault_inn.json',
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/pale-vault-glacier-b.mp3',
+    music: 'assets/audio/music/inn-rest.mp3',
   },
   pale_vault_home: {
     json: 'assets/maps/pale_vault_home.json',
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/pale-vault-glacier-b.mp3',
+    music: 'assets/audio/music/interior-lamplit.mp3',
   },
   // The Hourfold — Midnight's fold in the glacier's Emberward deep ice (the
   // Three Hours, Site II): the ledge descent + the Unstruck Toll. Reuses the
@@ -857,7 +883,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/hollowfen_stillworks.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
-    music: 'assets/audio/music/coldfog-marches-a.mp3',
+    music: 'assets/audio/music/interior-unease.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/coldfog-marches-a.webp',
       'assets/backgrounds/battle/coldfog-marches-b.webp',
@@ -890,13 +916,13 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/nightreach_inn.json',
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/nightreach-observatory-b.mp3',
+    music: 'assets/audio/music/inn-rest.mp3',
   },
   nightreach_home: {
     json: 'assets/maps/nightreach_home.json',
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/nightreach-observatory-b.mp3',
+    music: 'assets/audio/music/interior-study.mp3',
   },
   // C1 — the CENTRAL threshold (walkthrough 05): the innermost band of the
   // great dark, mostly receded by the time `flag:hub_unlocked` lets you in.
@@ -1087,4 +1113,21 @@ export function resolveBattleBackdrop(mapId: string | undefined): string | null 
   const variants = (mapId && MAP_REGISTRY[mapId]?.battle_backdrops) || [];
   if (variants.length === 0) return null;
   return variants[Math.floor(Math.random() * variants.length)];
+}
+
+/**
+ * The music a map should play right now: its first matching `music_when` rule,
+ * else the map's own music (`fallback`, the JSON's `music`). `has` asks the flag store.
+ */
+export function resolveMapMusic(
+  mapId: string,
+  fallback: string | undefined,
+  has: (flag: string) => boolean,
+): string | undefined {
+  for (const rule of MAP_REGISTRY[mapId]?.music_when ?? []) {
+    if (rule.flag && !has(rule.flag)) continue;
+    if (rule.unless && has(rule.unless)) continue;
+    return rule.music;
+  }
+  return fallback;
 }

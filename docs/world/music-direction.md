@@ -486,3 +486,54 @@ both **Vesper-motif transforms**, scored once and reused everywhere:
 
 > Existing drafts of record (battle set above) are already in
 > `public/assets/audio/music/`; the area loops in this doc are the next pass.
+
+---
+
+## Indoors & story-state variants (the soundtrack-variants pass, 2026-10)
+
+Playtesting showed too many places sharing one loop — the Crossroads, every Lanternway
+spoke and the Beacon all played the Tinderwick theme, and Pearlmoor's town, shops, inn and
+hall all played the coast road. This pass gives places their own cues, using three
+techniques the cartridge-era scores rely on:
+
+1. **A stock indoor set, reused on purpose.** The genre's shop, inn and hall themes are
+   the *same* in every town, so the player learns the sound for "safe", "spend" and
+   "you're about to be tested". Homes get a small palette sorted by mood, so a house
+   is scored by what happens in it rather than which region it's in. All of them are
+   smaller-room arrangements: 3–5 instruments, close and soft, brushes and woodblock
+   at most, levelled **below** the outdoor house loudness (`level_remasters.py` QUIET:
+   −16 to −18 LUFS against −15), so walking through a door sounds like the room
+   shrinking around you.
+
+   | Cue | Mood | First placements |
+   |---|---|---|
+   | `shop-counter` — *The Counter Bell* | shop: bouncy, a doorbell hook | Tinderwick General Store, Pearlmoor Chandlery, the Kite-Maker's |
+   | `inn-rest` — *Rest a While* | inn/rest point: settled 3/4, motif DNA | every inn: Crossroads, Pearlmoor, Lowleaf bower, Galehigh, Pale Vault, Nightreach |
+   | `lumenary-hall` — *The Lamp Hall* | hall: reverent processional before a duel | Tinderwick + Pearlmoor Lumenaries (later halls keep their bespoke cues) |
+   | `interior-hearth` — *Kettle On* | happy A: a warm family home | Galehigh's Terrace Cottage |
+   | `interior-sunny` — *Sunny Rooms* | happy B: playful, a little comic | Georgina's Cottage, the Lifting House |
+   | `interior-lamplit` — *Lamplit Rooms* | neutral A: everyday, sits under dialogue | Pale Vault's Glacier Cottage |
+   | `interior-study` — *Charts and Lenses* | neutral B: curious workshop/study | Nightreach's Watcher's Cottage |
+   | `interior-hush` — *The Quiet After* | somber A: tender worry, the lullaby in minor | the apprentice's house after the omen (story state, below) |
+   | `interior-unease` — *Cold Hearth* | somber B: something is wrong, Hollowing-touched | Hollowfen Stillworks |
+
+   **New interior?** Pick the cue for what happens in the room: rest → inn, buy → shop,
+   test → hall, else happy / neutral / somber. A town's own `-b` cue still covers rooms
+   that should sound like *that* town (Tinderwick's house, the regional halls).
+2. **Sub-area themes.** A landmark inside an area gets its own cue so it reads as a
+   separate place: `beacon-stair` (the Beacon's three floors: a rising stair ostinato),
+   plus three cues whose classic versions were already composed but never wired in —
+   `vesper-crossroads-a` (the hub), `lanternway-a` (the safe lanes), `pearlmoor-quay-a`
+   (the town proper) — and `dimglass-coast-b` (the lonelier Wrackline / Lanternfall roads).
+3. **Story-state variants (`music_when`).** The same map sounds different once the world
+   has changed: a rule in `data/world/maps.ts` (`{ flag?, unless?, music }`, first match
+   wins) overrides the map's music. **Duskapple Orchard** plays `duskapple-orchard`, the
+   hometown tune gone cold over the fallen star, until `gleam:ember`; then its old
+   Lydian wonder (`tinderwick-c`) returns with the green shoots. **The apprentice's house**
+   plays `interior-hush` from `flag:dusk_begins` (Gran's letter) until `gleam:ember`.
+   Rules resolve on map entry and after a battle, never mid-cutscene.
+
+**Engine behaviour that goes with this:** map changes **crossfade** (650 ms) instead of
+cutting, and a bed heard in the last 150 s **resumes where it left off**
+(`MusicDirector` `{ resume: true }`), so stepping out of a shop or a battle doesn't replay
+the town's intro. Battles and cutscene cues always start from the top.

@@ -25,13 +25,14 @@ const OUT = join(ROOT, 'web/assets/data/music.json');
 
 /** Region groups, in journey order. First matching prefix wins. */
 const GROUPS = [
-    ['South — the blue-hour start', ['tinderwick', 'dimglass-coast', 'pearlmoor']],
+    ['South — the blue-hour start', ['tinderwick', 'duskapple', 'beacon', 'dimglass-coast', 'pearlmoor']],
     ['East — wonder & discovery', ['saltreach-fen', 'lowleaf-hollow', 'cinderhead-mine']],
     ['North — energy & cold beauty', ['galehigh-terraces', 'windward-stair', 'pale-vault-glacier']],
     ['West — reaching for dawn', ['hushfrost-pass', 'sunken-solarium', 'sunvault-climb', 'nightreach-observatory']],
     ['The outer ring', ['vesper-crossroads', 'coldfog-marches', 'lanternway']],
     ['Central — darkest, then the turn', ['penumbra-ring', 'umbral-spire']],
     ['Epilogue', ['dawnstead', 'dawn-breaks', 'ending-credits']],
+    ['Indoors — rooms, shops, inns & halls', ['interior-hearth', 'interior-sunny', 'interior-lamplit', 'interior-study', 'interior-hush', 'interior-unease', 'shop-', 'inn-', 'lumenary-']],
     ['Battles', ['battle-']],
     ['Story & fanfares', ['title', 'coldopen', 'gleam-', 'sting-']],
 ];
@@ -52,6 +53,17 @@ const CUE_NAMES = {
     'battle-boss-eclipse': 'Battle — the last stand',
     'battle-hours': 'Battle — the Three Hours',
     'pearlmoor-blessing': 'The Tide blessing',
+    'duskapple-orchard': 'Duskapple Orchard — the fallen star',
+    'beacon-stair': 'The Tinderwick Beacon',
+    'interior-hearth': 'Indoors — a warm home',
+    'interior-sunny': 'Indoors — sunny rooms',
+    'interior-lamplit': 'Indoors — lamplit rooms',
+    'interior-study': 'Indoors — charts & lenses',
+    'interior-hush': 'Indoors — the quiet after',
+    'interior-unease': 'Indoors — a cold hearth',
+    'shop-counter': 'Shops',
+    'inn-rest': 'Inns — rest a while',
+    'lumenary-hall': 'The Lumenary halls',
 };
 
 function walk(dir) {
@@ -74,15 +86,18 @@ const mapsTs = readFileSync(join(ROOT, 'src/game/data/world/maps.ts'), 'utf8');
 const placesByTrack = {};
 for (const m of mapsTs.matchAll(/^ {2}(\w+): \{([\s\S]*?)^ {2}\},?$/gm)) {
     const body = m[2];
-    const music = body.match(/music: '([^']+)'/)?.[1];
+    // Every cue the map can play: its own music AND any story-state `music_when` rule.
+    const musics = [...body.matchAll(/music: '([^']+)'/g)].map((x) => x[1]);
     const json = body.match(/json: '([^']+)'/)?.[1];
-    if (!music || !json) continue;
-    const id = music.split('/').pop().replace(/\.mp3$/, '');
+    if (!musics.length || !json) continue;
     let name = m[1];
     try {
         name = JSON.parse(readFileSync(join(ROOT, 'public', json), 'utf8')).display_name || name;
     } catch { /* keep the id */ }
-    (placesByTrack[id] ??= new Set()).add(name);
+    for (const music of musics) {
+        const id = music.split('/').pop().replace(/\.mp3$/, '');
+        (placesByTrack[id] ??= new Set()).add(name);
+    }
 }
 
 const remaster = JSON.parse(readFileSync(join(ROOT, 'src/game/data/music-remaster.json'), 'utf8')).tracks;

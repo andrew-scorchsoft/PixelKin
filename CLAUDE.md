@@ -416,6 +416,13 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   A clean seam ≠ a good loop: `tools/audio/dead_air.py` (CI) catches the take-fades-out-mid-cue
   failure (the boss went silent 25 s); and never condition a battle/driving cue on the motif —
   it pins the tempo to the lullaby's ~90 BPM.
+- **Indoor music is a STOCK set, and maps can change music with the story (2026-10).** Shops →
+  `shop-counter`, inns → `inn-rest`, generic Lumenaries → `lumenary-hall`, homes by mood →
+  `interior-hearth`/`-sunny` (happy), `-lamplit`/`-study` (neutral), `-hush`/`-unease` (somber); table +
+  rules in `docs/world/music-direction.md` "Indoors & story-state variants". A map's music lives in its
+  BUILDER (JSON) mirrored in `maps.ts`; a flag-driven override is `music_when` in `maps.ts` only
+  (`resolveMapMusic`, e.g. Duskapple's fallen-star cue until `gleam:ember`). Map changes crossfade and
+  a recently heard bed RESUMES (`MusicDirector` `{resume:true}`) — battle/cutscene cues never resume.
 - **Every served SFX must be listed in `public/assets/audio/sfx/sfx.manifest.json`** — `Sfx.has`/`play` and the
   ambience bed loader skip anything absent (silence, not a 404). Looping `amb-*` beds are NOT chip renders:
   re-render with `tools/audio/ambient_beds.py` (seamless-by-construction numpy synth; also rewrites the manifest).

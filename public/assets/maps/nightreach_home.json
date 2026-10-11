@@ -368,7 +368,7 @@
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/nightreach-observatory-b.mp3",
+  "music": "assets/audio/music/interior-study.mp3",
   "ambience": {
     "particles": [
       {
