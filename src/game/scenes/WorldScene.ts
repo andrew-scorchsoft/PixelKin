@@ -1362,9 +1362,19 @@ export class WorldScene extends Phaser.Scene {
       cameraReset: (ms) => this.cameraResetToPlayer(ms),
       travel: async (map, to, facing) => {
         // A ride (the Lantern-car, the ore-lift): the travelTo path, mid-scene.
-        if (!MAP_REGISTRY[map]) return;
+        if (!MAP_REGISTRY[map]) {
+          console.warn(`travel: map "${map}" is not registered — ride skipped`);
+          return;
+        }
+        if (this.staging) return; // never ride out of a cut-away interlude
+        const from = { map: this.map.def.id, tx: this.player.tx, ty: this.player.ty, facing: this.player.facing };
         await fadeOut(this, theme.transition.fadeMs);
+        this.cameras.main.setZoom(1); // an earlier cameraFocus zoom must not ride along
         await this.enterMap(map, to, facing ?? 'down', false);
+        // a destination that fails to load must not strand the player on a
+        // torn-down scene: go back to where the ride started
+        if (!this.ready) await this.enterMap(from.map, { tx: from.tx, ty: from.ty }, from.facing, false);
+        this.modal = true; // the cutscene still owns the scene (enterMap's catch clears it)
         await fadeIn(this, theme.transition.fadeMs);
       },
       startCinematic: async (id: string) => {
@@ -2047,7 +2057,7 @@ export class WorldScene extends Phaser.Scene {
     // Swimming the shallows into DEEP water: say why, once per map visit.
     const step: Record<Facing, [number, number]> = { down: [0, 1], up: [0, -1], left: [-1, 0], right: [1, 0] };
     const [dx, dy] = step[this.player.facing];
-    if (!this.modal && this.deepWarnedOn !== this.map.def.id
+    if (!this.modal && this.player.isSwimming && this.deepWarnedOn !== this.map.def.id
         && this.collision.gateAt(this.player.tx + dx, this.player.ty + dy) === 'deepdive'
         && !this.abilities.has('deepdive')) {
       this.deepWarnedOn = this.map.def.id;

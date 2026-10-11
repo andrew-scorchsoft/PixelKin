@@ -79,7 +79,7 @@ export class WorldMapMenu {
     this.viewH = height - this.viewY - STRIP_H - PAD;
     this.scale = this.viewW / WORLD_MAP_BOX.width;
     this.offX = this.viewX + (this.viewW - WORLD_MAP_BOX.width * this.scale) / 2;
-    this.maxScroll = Math.max(0, WORLD_MAP_BOX.height * this.scale - this.viewH);
+    this.maxScroll = Math.max(0, Math.round(WORLD_MAP_BOX.height * this.scale - this.viewH));
 
     this.g = scene.add.graphics();
     this.panel.add(this.g);
@@ -93,8 +93,9 @@ export class WorldMapMenu {
     // The selection outline, the scroll hints + the name strip.
     this.select = scene.add.rectangle(0, 0, 10, 10).setStrokeStyle(1, hex(theme.color.panelEdge));
     this.panel.add(this.select);
-    this.upHint = makeText(scene, width - PAD, this.viewY, '\u25b2', theme.text.dim).setOrigin(1, 0);
-    this.downHint = makeText(scene, width - PAD, this.viewY + this.viewH - 8, '\u25bc', theme.text.dim).setOrigin(1, 0);
+    // scroll hints ride the header row (never over a place on the chart)
+    this.upHint = makeText(scene, width / 2 - 2, PAD - 2, '\u25b2', theme.text.dim).setOrigin(1, 0);
+    this.downHint = makeText(scene, width / 2 + 2, PAD - 2, '\u25bc', theme.text.dim).setOrigin(0, 0);
     this.panel.add(this.upHint);
     this.panel.add(this.downHint);
     this.strip = makeText(scene, PAD, height - STRIP_H - 1, '', theme.text.base);
@@ -179,7 +180,9 @@ export class WorldMapMenu {
     if (this.marker && this.playerNode) {
       const [cx, cy] = this.toScreen(this.playerNode);
       this.marker.setPosition(Math.round(cx), Math.round(cy));
-      this.marker.setVisible(cy > top + 2 && cy < bottom - 2);
+      const [, mh] = NODE_SIZE[this.playerNode.kind] ?? NODE_SIZE.landmark;
+      // the same fit test as the swatches (the marker is 2px proud of it)
+      this.marker.setVisible(cy - mh / 2 - 2 >= top && cy + mh / 2 + 2 <= bottom);
     }
     this.upHint.setVisible(this.scrollY > 0);
     this.downHint.setVisible(this.scrollY < this.maxScroll);
