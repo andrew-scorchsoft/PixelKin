@@ -474,5 +474,13 @@
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/tinderwick-b.mp3"
+  "music": "assets/audio/music/tinderwick-b.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "dust",
+        "density": 0.35
+      }
+    ]
+  }
 }

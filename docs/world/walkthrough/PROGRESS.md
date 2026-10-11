@@ -63,6 +63,13 @@ main-road patches, crossings 0.10→0.08; II: 11→10 / 10→9, rate 0.10→0.09
 only heal between the towns. Mirrors: `build_species.py`, `progression.mjs` (PASS, checkpoints
 unchanged), `01-south.md`.
 
+**2026-10 — world-craft WP2 (look/feel only before the Chickenpig):** ambience on all 35 South
+maps (`tools/maps/worldcraft/south.py`), regional cast swaps, a 15-piece prop kit
+(`assets/tilesets/pearlmoor|tinderwick/objects/`) placed only where `add_world_craft.py`'s
+`prove_off_lane` proves no lane/encounter/approach tile, no lost reach and no longer walk (dry
+lane included); X-2 acting ops in the South's key scenes (no added pages); Gullcry Rock dressed
+(was 0 props) + optional inspect-only finds on Wrackline, Sounding Cave and the far Wanderwood.
+
 ## East — Gleams 3–4 (`crown_east`) ✅
 
 | Area | map id(s) | Status | Builder |
@@ -359,8 +366,8 @@ gone-quiet at the Penumbra Ring (C1), and Maudie in Dawnstead sending you home (
 canon fact is *fallen stars* (the Dusk's cold cinders, the dark twin of the post-game
 Starfall shards), with a LORE entry. The art is `draw_fallenstar_objects.py`, and the
 placements are the orchard builder plus `add_peril_thread.py` (idempotent; re-run after any
-rebuild). **Owed:** two South placements in Tinderwick and Pearlmoor (words written; spec in
-08 §4).
+rebuild). The two South placements (Tinderwick neighbour, Pearlmoor harbour notice) are
+placed (08 §4).
 ### R9 — "The Old Light" (Pearlmoor's joke-tower) ✅ DONE (2026-10)
 
 The Causeway Bell now runs `script.reyl_quest` (`flag:q_south_bell`) → **the Old Light**

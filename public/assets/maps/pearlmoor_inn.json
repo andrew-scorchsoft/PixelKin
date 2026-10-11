@@ -593,7 +593,7 @@
         "ty": 4
       },
       "facing": "down",
-      "sprite": "npc_shopkeeper",
+      "sprite": "innkeeper",
       "movement": "static",
       "dialogue_ref": "script.inn_rest"
     },
@@ -604,7 +604,7 @@
         "ty": 7
       },
       "facing": "left",
-      "sprite": "wren",
+      "sprite": "fisher_man",
       "movement": "static",
       "dialogue_ref": "npc.pearlmoor_fisher"
     },
@@ -615,7 +615,7 @@
         "ty": 8
       },
       "facing": "left",
-      "sprite": "npc_old_man",
+      "sprite": "old_salt",
       "movement": "static",
       "dialogue_ref": "npc.old_fisher_pre",
       "hidden_when_flag": "flag:q_south_bell_rung"
@@ -627,7 +627,7 @@
         "ty": 8
       },
       "facing": "left",
-      "sprite": "npc_old_man",
+      "sprite": "old_salt",
       "movement": "static",
       "dialogue_ref": "script.fisher_wrecklamp",
       "requires_flag": "flag:q_south_bell_rung",
@@ -640,7 +640,7 @@
         "ty": 8
       },
       "facing": "left",
-      "sprite": "npc_old_man",
+      "sprite": "old_salt",
       "movement": "static",
       "dialogue_ref": "npc.old_fisher_wait",
       "requires_flag": "flag:q_south_wrecklamp",
@@ -653,7 +653,7 @@
         "ty": 8
       },
       "facing": "left",
-      "sprite": "npc_old_man",
+      "sprite": "old_salt",
       "movement": "static",
       "dialogue_ref": "script.fisher_thanks",
       "requires_flag": "flag:q_south_wrecklamp_lit",
@@ -666,12 +666,24 @@
         "ty": 8
       },
       "facing": "left",
-      "sprite": "npc_old_man",
+      "sprite": "old_salt",
       "movement": "static",
       "dialogue_ref": "npc.old_fisher_after",
       "requires_flag": "flag:q_south_wrecklamp_done"
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/dimglass-coast-a.mp3"
+  "music": "assets/audio/music/dimglass-coast-a.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "dust",
+        "density": 0.3
+      },
+      {
+        "kind": "embers",
+        "density": 0.2
+      }
+    ]
+  }
 }

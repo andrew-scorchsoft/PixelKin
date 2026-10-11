@@ -96,6 +96,27 @@
       "h": 4,
       "overhang": 3,
       "walk_under": true
+    },
+    {
+      "id": "wc_board",
+      "sprite": "tinderwick_notice_board",
+      "at": {
+        "tx": 22,
+        "ty": 2
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "wc_woodpile",
+      "sprite": "tinderwick_woodpile",
+      "at": {
+        "tx": 13,
+        "ty": 18
+      },
+      "w": 2,
+      "h": 1
     }
   ],
   "warps": [
@@ -354,6 +375,16 @@
       },
       "activation": "interact",
       "ref": "sign.wander_story_6"
+    },
+    {
+      "id": "wc_read_board",
+      "kind": "dialogue",
+      "at": {
+        "tx": 22,
+        "ty": 3
+      },
+      "activation": "interact",
+      "ref": "npc.wanderwood_board"
     }
   ],
   "encounters": [
@@ -733,6 +764,18 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_wander_far_steps",
       "hidden_when_flag": "flag:picked_wander_far_steps"
+    },
+    {
+      "id": "amb_snoozlet",
+      "at": {
+        "tx": 17,
+        "ty": 4
+      },
+      "facing": "down",
+      "sprite": "kin_105_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
     }
   ],
   "gates": [],
@@ -2919,5 +2962,22 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "spores",
+        "density": 0.5
+      },
+      {
+        "kind": "glowmotes",
+        "density": 0.4
+      }
+    ],
+    "mist": {
+      "color": "#a8c8b0",
+      "alpha": 0.06,
+      "speed": 4
+    }
+  }
 }

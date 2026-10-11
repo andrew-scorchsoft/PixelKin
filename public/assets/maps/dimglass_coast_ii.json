@@ -1828,6 +1828,57 @@
       "h": 3,
       "overhang": 2,
       "walk_under": true
+    },
+    {
+      "id": "wc_rowboat",
+      "sprite": "pearlmoor_rowboat",
+      "at": {
+        "tx": 12,
+        "ty": 4
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "wc_driftwood",
+      "sprite": "pearlmoor_driftwood",
+      "at": {
+        "tx": 3,
+        "ty": 19
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "wc_netrack",
+      "sprite": "pearlmoor_net_rack",
+      "at": {
+        "tx": 9,
+        "ty": 29
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "wc_anchor",
+      "sprite": "pearlmoor_anchor",
+      "at": {
+        "tx": 2,
+        "ty": 3
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "wc_crabpots",
+      "sprite": "pearlmoor_crab_pots",
+      "at": {
+        "tx": 12,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1
     }
   ],
   "warps": [
@@ -2388,7 +2439,7 @@
         "ty": 11
       },
       "facing": "right",
-      "sprite": "npc_shopkeeper",
+      "sprite": "fisher_man",
       "movement": "static",
       "dialogue_ref": "script.flats_trainer_a",
       "sight_range": 4,
@@ -2402,7 +2453,7 @@
         "ty": 11
       },
       "facing": "right",
-      "sprite": "npc_shopkeeper",
+      "sprite": "fisher_man",
       "movement": "static",
       "dialogue_ref": "npc.flats_wayfarer_a",
       "requires_flag": "flag:flats_trainer_a_beaten"
@@ -2414,7 +2465,7 @@
         "ty": 22
       },
       "facing": "left",
-      "sprite": "npc_shopkeeper",
+      "sprite": "road_courier",
       "movement": "static",
       "dialogue_ref": "script.flats_trainer_b",
       "sight_range": 4,
@@ -2428,7 +2479,7 @@
         "ty": 22
       },
       "facing": "left",
-      "sprite": "npc_shopkeeper",
+      "sprite": "road_courier",
       "movement": "static",
       "dialogue_ref": "npc.flats_wayfarer_b",
       "requires_flag": "flag:flats_trainer_b_beaten"
@@ -2526,7 +2577,7 @@
         "ty": 28
       },
       "facing": "down",
-      "sprite": "npc_old_woman",
+      "sprite": "fisher_woman",
       "movement": "static",
       "dialogue_ref": "script.flats_rest"
     },
@@ -2551,6 +2602,30 @@
       "sprite": "npc_man",
       "movement": "static",
       "dialogue_ref": "script.oldlight_hint_road"
+    },
+    {
+      "id": "amb_pebbit",
+      "at": {
+        "tx": 4,
+        "ty": 25
+      },
+      "facing": "down",
+      "sprite": "kin_47_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
+    },
+    {
+      "id": "amb_brineroll",
+      "at": {
+        "tx": 12,
+        "ty": 16
+      },
+      "facing": "down",
+      "sprite": "kin_27_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
     }
   ],
   "gates": [
@@ -2566,5 +2641,47 @@
       }
     }
   ],
-  "music": "assets/audio/music/dimglass-coast-a.mp3"
+  "music": "assets/audio/music/dimglass-coast-a.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "spray",
+        "density": 0.6
+      },
+      {
+        "kind": "embers",
+        "density": 0.5,
+        "area": {
+          "tx": 11,
+          "ty": 28,
+          "w": 3,
+          "h": 2
+        }
+      }
+    ],
+    "birds": {
+      "kind": "gull",
+      "flocks": [
+        {
+          "tx": 12,
+          "ty": 9
+        }
+      ],
+      "flyover": true
+    },
+    "light_sources_extra": [
+      {
+        "at": {
+          "tx": 12,
+          "ty": 29
+        },
+        "radius": 15,
+        "color": "#ff9a4a"
+      }
+    ],
+    "bob_gids": [
+      120
+    ],
+    "sound_bed": "amb-surf"
+  }
 }

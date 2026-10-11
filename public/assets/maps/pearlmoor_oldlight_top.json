@@ -639,5 +639,13 @@
   "encounters": [],
   "npcs": [],
   "gates": [],
-  "music": "assets/audio/music/pearlmoor-quay-c.mp3"
+  "music": "assets/audio/music/pearlmoor-quay-c.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "dust",
+        "density": 0.6
+      }
+    ]
+  }
 }

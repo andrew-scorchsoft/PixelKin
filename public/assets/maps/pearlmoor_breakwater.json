@@ -1296,7 +1296,7 @@
         "ty": 10
       },
       "facing": "up",
-      "sprite": "npc_woman",
+      "sprite": "fisher_woman",
       "movement": "static",
       "dialogue_ref": "script.net_hand_a",
       "sight_range": 3,
@@ -1310,7 +1310,7 @@
         "ty": 10
       },
       "facing": "up",
-      "sprite": "npc_woman",
+      "sprite": "fisher_woman",
       "movement": "look_around",
       "dialogue_ref": "npc.net_hand_a_after",
       "requires_flag": "flag:net_hand_a_beaten"
@@ -1322,7 +1322,7 @@
         "ty": 15
       },
       "facing": "up",
-      "sprite": "npc_man",
+      "sprite": "fisher_man",
       "movement": "static",
       "dialogue_ref": "script.net_hand_b",
       "sight_range": 3,
@@ -1336,7 +1336,7 @@
         "ty": 15
       },
       "facing": "up",
-      "sprite": "npc_man",
+      "sprite": "fisher_man",
       "movement": "look_around",
       "dialogue_ref": "npc.net_hand_b_after",
       "requires_flag": "flag:net_hand_b_beaten"
@@ -1405,5 +1405,27 @@
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/dimglass-coast-a.mp3"
+  "music": "assets/audio/music/dimglass-coast-a.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "spray",
+        "density": 1.0
+      }
+    ],
+    "birds": {
+      "kind": "gull",
+      "flocks": [
+        {
+          "tx": 4,
+          "ty": 20
+        }
+      ],
+      "flyover": true
+    },
+    "bob_gids": [
+      120
+    ],
+    "sound_bed": "amb-surf"
+  }
 }

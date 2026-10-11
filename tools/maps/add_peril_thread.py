@@ -63,7 +63,7 @@ PLACEMENTS: dict[str, dict] = {
                   # quay rebuild re-dresses it with the rest of the surgical signs)
                   ("sign_point_way", (12, 14), "sign.pearlmoor_point_way")],
         # (also not peril — R9 Old Light hint-givers, see script.oldlight_hint_*)
-        "npcs": [npc("oldlight_hint_beach", (9, 14), "npc_woman", "script.oldlight_hint_beach", facing="down"),
+        "npcs": [npc("oldlight_hint_beach", (9, 14), "fisher_woman", "script.oldlight_hint_beach", facing="down"),
                  npc("oldlight_hint_luddite", (10, 8), "npc_old_man", "script.oldlight_hint_luddite", facing="down")],
     },
     # E1 — the fen family leaving (Saltreach Fen I, by the landing). Bundles go
