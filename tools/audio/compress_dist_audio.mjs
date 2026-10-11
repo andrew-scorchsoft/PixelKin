@@ -19,7 +19,7 @@ import { join, extname } from 'node:path';
 
 const DIST_AUDIO = 'dist/assets/audio';
 const BITRATE = '64k'; // mono; chiptune is a few square waves — 64k is plenty.
-const REMASTER_BITRATE = '96k'; // stereo, for music/remaster/ (the composed score)
+const REMASTER_BITRATE = '80k'; // joint stereo, music/remaster/ (the composed score): ~1 MB per ~100 s cue
 
 function works(bin) {
   try {

@@ -55,6 +55,12 @@ cue feel iconic is **form + a shared motif + a seamless loop**, so:
    clock), re-entering a map never restarts it, and a missing remaster falls back
    to classic. Oneshots (`playSting`) never loop.
 
+**Size:** repo masters are 128k stereo (the source; never re-encode them); the
+deploy (`compress_dist_audio.mjs`) ships remasters at **80k joint stereo** (~1 MB per
+~100 s cue, ~45 MB for the full score) and the classic chip renders at 64k mono.
+Cloudflare Workers assets cap a FILE at 25 MiB — nowhere near — and players
+download a cue only when they reach its place.
+
 **Cost + limits (checked 2026-10):** ~20 credits per generated second; a remaster
 is ≈ 80–100 s take + ≈ 34 s glue ≈ 2,300 credits. 2 concurrent requests per
 account — `generate_music.py` holds a machine-wide 2-slot lock, so any number of
