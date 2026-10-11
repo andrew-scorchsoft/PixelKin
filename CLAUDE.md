@@ -421,7 +421,8 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **Volume is three layers (2026-10):** overall `Settings.masterVolume` (0..1 → Phaser's global
   `game.sound.volume` in `main.ts`; the portrait device deck's top-left slider `.pk-volume` + Settings →
   Volume, both via `ShellManager.setMasterVolume`) over Music / Effects levels. One-shots are trimmed in
-  `Sfx` (0.3, was 0.6 — effects sat ~8 dB over the score). ShellManager saves only its OWN fields over
+  `Sfx` (0.3, was 0.6 — effects sat ~8 dB over the score); per-cue `CUE_TRIM`/`CUE_DEDUPE_MS` in
+  `Sfx.ts` tame rapid cues (the typewriter `ui-text-blip`: spaced 70 ms + ~-7 dB — it used to stack). ShellManager saves only its OWN fields over
   freshly loaded settings (`persist()`), so it never reverts what SettingsMenu wrote.
 - **Indoor music is a STOCK set, and maps can change music with the story (2026-10).** Shops →
   `shop-counter`, inns → `inn-rest`, generic Lumenaries → `lumenary-hall`, homes by mood →
@@ -1127,8 +1128,10 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **"The world has changed" notice + `SaveGame.last_version` (2026-10).** Every persist stamps
   GAME_VERSION; Continue / LOAD FILE / in-game import pass `version_from: save.last_version ?? ''`
   in `WorldSceneData` (undefined = new game/debug reload = no check). If older, a narrated notice
-  plays on the first idle frame (+ `content/whatsnew.ts` lines keyed by the CURRENT GAME_VERSION —
-  edit that entry when you bump), and only THEN is the new version stamped. The device-level
+  plays on the first idle frame (+ `content/whatsnew.ts` lines of every version AFTER the save's own
+  `last_version` — add an entry when you bump), and only THEN is the new version stamped. A save with
+  nothing new since its version gets NO notice (stamped silently); the rest-point hint shows once per
+  save (`flag:tip_restpoint_seen`) — the old notice replayed its boilerplate on every build. The device-level
   `last_seen_version` storage key drives the title's pulsing NEW beside the version label. Any
   crafted test save without `last_version` WILL show the notice (the world stays modal).
 - **Stuck players are answered in-world by ANDREW, on a fence in every rim town** (2026-08).
