@@ -1,0 +1,87 @@
+{
+ "id": "sunvault-climb-a",
+ "kind": "loop",
+ "where": "Sunvault Climb I & II (golden vine terraces up to Nightreach) + the Sunfall vigil site",
+ "mood": "Vines to the Sky: warm, ascending, hopeful - every phrase climbs like the terraces; the sunniest route in the West.",
+ "bpm": 112,
+ "beats_per_bar": 4,
+ "motif": null,
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "112 BPM",
+  "radiant D major",
+  "bright round brass-like pulse-wave lead playing an ascending broken-chord melody that steps higher each phrase",
+  "fast shimmering harp arpeggios rolling upward",
+  "warm string pad",
+  "purposeful walking plucked sampled bass",
+  "brushed sampled snare and tambourine walking pattern with timpani on each climb",
+  "warm, hopeful, climbing adventure route theme",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "drum and bass",
+  "heavy sub bass",
+  "electric guitar",
+  "fade out",
+  "dark",
+  "melancholy"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{a harp and pulse-wave arpeggio climbs from the lowest register to the highest, rung by rung, and lands on the theme}",
+   "styles": [
+    "rising arpeggio opening",
+    "sense of ascent"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the climbing melody: a springy arpeggiated launch repeated a step higher each phrase, hummable and confident, bass walking}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "upward momentum"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the melody again with a bell counter-line sparkling above and the strings fuller, climbing higher still}",
+   "styles": [
+    "bell counter-melody",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a breather on a sunny terrace - B minor and G major, a lyrical singing line over gentle harp, drums light, golden and wondering, then a rising drum fill back to the climb}",
+   "styles": [
+    "B minor",
+    "pastoral breather",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the climbing theme returns in full stride; the last bar leads straight back into the main theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ],
+ "_note": "2026-10 retro + tempo pass: motif dropped (it pinned the take to ~90 BPM); era-first anchor, retro kit/bass; opening shape chosen per scene. | 2026-10 EDM pass: 'kick on a brisk beat' gave a four-on-the-floor + pumping EDM feel (edm_check.py); percussion now retro (snare backbeat, toms, timpani, tambourine, brushes)."
+}

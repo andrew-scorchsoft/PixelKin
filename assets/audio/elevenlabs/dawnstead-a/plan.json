@@ -1,0 +1,199 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{a sunrise call: a rising harp sweep and a bright string chord as the sun clears the hills, the lead boldly announcing the hometown theme's first notes, into the theme}",
+   "duration_ms": 9600,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "100 BPM",
+    "C major, radiant, no minor",
+    "bright warm pulse-wave lead singing the hometown lullaby with confidence",
+    "flowing ascending harp arpeggios",
+    "lush warm string pad",
+    "warm walking synth bass",
+    "gentle present groove with soft kick and brush",
+    "triumphant sunrise homecoming, joyful and warm with a tear in its eye",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "radiant opening fanfare",
+    "sunrise"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "dark",
+    "melancholy minor",
+    "ending"
+   ],
+   "context_adherence": "high",
+   "conditioning_ref": {
+    "song_id": "TOREmIgiwF3GKpN7UkLA",
+    "range": {
+     "start_ms": 10668,
+     "end_ms": 40668
+    }
+   },
+   "condition_strength": "high"
+  },
+  {
+   "text": "[Main Theme]\n{the hometown lullaby melody stated whole and confident in bright C major, harp flowing, bass walking with a warm stride}",
+   "duration_ms": 19200,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "100 BPM",
+    "C major, radiant, no minor",
+    "bright warm pulse-wave lead singing the hometown lullaby with confidence",
+    "flowing ascending harp arpeggios",
+    "lush warm string pad",
+    "warm walking synth bass",
+    "gentle present groove with soft kick and brush",
+    "triumphant sunrise homecoming, joyful and warm with a tear in its eye",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme",
+    "memorable hook",
+    "triumphant warmth"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "dark",
+    "melancholy minor",
+    "ending"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme Reprise]\n{the same melody again with a soaring flute counter-melody weaving above and the strings fuller, like the whole town singing along}",
+   "duration_ms": 19200,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "100 BPM",
+    "C major, radiant, no minor",
+    "bright warm pulse-wave lead singing the hometown lullaby with confidence",
+    "flowing ascending harp arpeggios",
+    "lush warm string pad",
+    "warm walking synth bass",
+    "gentle present groove with soft kick and brush",
+    "triumphant sunrise homecoming, joyful and warm with a tear in its eye",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "flute counter-melody",
+    "fuller arrangement"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "dark",
+    "melancholy minor",
+    "ending"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast: the old wistful answer phrase reborn in F major, tender and grateful, softer groove, then a rising build of harp and strings back toward the theme}",
+   "duration_ms": 19200,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "100 BPM",
+    "C major, radiant, no minor",
+    "bright warm pulse-wave lead singing the hometown lullaby with confidence",
+    "flowing ascending harp arpeggios",
+    "lush warm string pad",
+    "warm walking synth bass",
+    "gentle present groove with soft kick and brush",
+    "triumphant sunrise homecoming, joyful and warm with a tear in its eye",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "F major",
+    "tender gratitude",
+    "contrasting section"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "dark",
+    "melancholy minor",
+    "ending"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the lullaby returns in full radiant bloom with bells and counter-melody together; the last bar leads straight back into the theme, no ending}",
+   "duration_ms": 19200,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "100 BPM",
+    "C major, radiant, no minor",
+    "bright warm pulse-wave lead singing the hometown lullaby with confidence",
+    "flowing ascending harp arpeggios",
+    "lush warm string pad",
+    "warm walking synth bass",
+    "gentle present groove with soft kick and brush",
+    "triumphant sunrise homecoming, joyful and warm with a tear in its eye",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "dark",
+    "melancholy minor",
+    "ending"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}

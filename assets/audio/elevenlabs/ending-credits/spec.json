@@ -1,0 +1,102 @@
+{
+ "id": "ending-credits",
+ "kind": "loop",
+ "where": "The ending credits roll",
+ "mood": "The Road Remembered: a warm medley walking back down the whole journey in memory, every road leading home to the hometown theme in daylight.",
+ "bpm": 100,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "high"
+ },
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "100 BPM",
+  "G major moving to C major",
+  "warm nostalgic ending credits medley",
+  "bright pulse-wave lead",
+  "plucked harp arpeggios as the thread through every section",
+  "warm string chords",
+  "gentle walking drums",
+  "grateful, nostalgic, warm and a little teary",
+  "strong singable melodies",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "singing",
+  "fade out",
+  "ritardando",
+  "dark",
+  "ominous",
+  "electric guitar",
+  "ambient drone",
+  "minimalist",
+  "bombastic"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{a warm music-box statement of the first notes of the hometown theme over a soft string chord, then a drum pickup steps out onto the road}",
+   "styles": [
+    "warm opening",
+    "looking back"
+   ]
+  },
+  {
+   "name": "The First Road",
+   "bars": 8,
+   "text": "{a springy walking melody in G major, bright and adventurous, the first road out of town remembered}",
+   "styles": [
+    "walking theme",
+    "memorable hook",
+    "onward stride"
+   ]
+  },
+  {
+   "name": "The Glowing Wood",
+   "bars": 8,
+   "text": "{a dreamy wondering melody in G Lydian with a raised fourth, glistening harp and bells, lighter drums, the glowing forest remembered}",
+   "styles": [
+    "Lydian wonder",
+    "dreamy"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "The Cold Miles",
+   "bars": 6,
+   "text": "{contrast: drums fall silent, a slow suspended melody in F minor on strings and soft lead, the long cold miles remembered, bittersweet}",
+   "styles": [
+    "F minor",
+    "hushed",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "The Turn",
+   "bars": 4,
+   "text": "{the harmony rises out of the minor through a G dominant, the harp climbing, drums returning, the dawn answering}",
+   "styles": [
+    "rising transition",
+    "hope"
+   ]
+  },
+  {
+   "name": "Home in Daylight",
+   "bars": 12,
+   "text": "{the hometown lullaby theme reprised whole in radiant C major, full warm band, bells crowning; the last bar settles on a half cadence that leads straight back into the walking theme}",
+   "styles": [
+    "main theme",
+    "homecoming",
+    "seamless loop back to the start of the walking theme"
+   ]
+  }
+ ]
+}

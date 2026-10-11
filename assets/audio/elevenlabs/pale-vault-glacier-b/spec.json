@@ -1,0 +1,96 @@
+{
+ "id": "pale-vault-glacier-b",
+ "kind": "loop",
+ "where": "Pale Vault interiors — the inn, a home, the Frost Lumenary hall",
+ "mood": "Snow-Hushed Town — a small warm song against the cold: people and lanterns indoors, melancholy and intimate, hope that is fragile.",
+ "bpm": 80,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "medium"
+ },
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "80 BPM",
+  "gentle A minor warming toward C major",
+  "tender soft pulse-wave lead melody, faint and hummable",
+  "soft music-box arpeggio, slow and rounded",
+  "warm string pad",
+  "slow steady synth bass half notes like a quiet heartbeat",
+  "a single muffled soft drum pulse on the downbeat",
+  "a distant faint aurora swell once per phrase",
+  "snowbound village interior, lanterns in the dark, fireside warmth framed by cold",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "singing",
+  "fade out",
+  "ritardando",
+  "ending",
+  "electric guitar",
+  "orchestral film score",
+  "busy drums",
+  "upbeat",
+  "ambient drone",
+  "minimalist",
+  "horror"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{a hushed warm entrance: a music-box figure turns over twice above a soft pad, like stamping snow off at a lit doorway, settling onto A minor}",
+   "styles": [
+    "hushed entrance",
+    "music-box"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the tender melody, sung softly and nearly complete: a hopeful rising leap from E up to A and B, then a stepwise settle C-B-A; small, warm and fragile, front and centre}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "tender minor"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the melody again, a soft celesta counter-line glinting between phrases and the string pad warmer underneath, the cadence brushing C major}",
+   "styles": [
+    "celesta counter-melody",
+    "fuller arrangement",
+    "warming"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 6,
+   "text": "{contrast: the warmth breaks through into C major and F major, a gentle lifting line like hands held to a hearth, then a faint aurora swell leads back toward E}",
+   "styles": [
+    "C major warmth",
+    "hopeful",
+    "fireside",
+    "contrast"
+   ]
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the tender theme returns in A minor; the last bar lands on the E chord leaning straight back into the theme}",
+   "styles": [
+    "main theme return",
+    "intimate",
+    "seamless loop"
+   ]
+  }
+ ]
+}

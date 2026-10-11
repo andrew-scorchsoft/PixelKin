@@ -1,0 +1,203 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{a hushed entrance into a flooded hall: low watery harp ripples, a single droplet tick, a cool pad opening, the lead's first long note hanging in the echo}",
+   "duration_ms": 8182,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "88 BPM",
+    "E minor relative to G major",
+    "spacious pulse-wave lead with long notes and rests, sinking phrases that do not always climb back",
+    "slow submerged low harp arpeggio rolling like deep water",
+    "cool string pad with a warm golden glow underneath",
+    "deep synth bass swelling like a slow tide",
+    "minimal percussion: soft low thud and occasional droplet-like tick",
+    "melancholy, bittersweet drowned-palace hall theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "quiet atmospheric intro",
+    "flooded hall echo"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "cheerful",
+    "upbeat",
+    "ambient drone",
+    "minimalist",
+    "horror",
+    "electric guitar",
+    "full drum kit"
+   ],
+   "context_adherence": "high",
+   "conditioning_ref": {
+    "song_id": "TOREmIgiwF3GKpN7UkLA",
+    "range": {
+     "start_ms": 10668,
+     "end_ms": 40668
+    }
+   },
+   "condition_strength": "low"
+  },
+  {
+   "text": "[Main Theme]\n{the drowned-halls melody in E minor: a rising leap that sinks back down a step short of home, long notes with air between them, slow tide in the bass}",
+   "duration_ms": 21818,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "88 BPM",
+    "E minor relative to G major",
+    "spacious pulse-wave lead with long notes and rests, sinking phrases that do not always climb back",
+    "slow submerged low harp arpeggio rolling like deep water",
+    "cool string pad with a warm golden glow underneath",
+    "deep synth bass swelling like a slow tide",
+    "minimal percussion: soft low thud and occasional droplet-like tick",
+    "melancholy, bittersweet drowned-palace hall theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme",
+    "memorable melancholy hook"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "cheerful",
+    "upbeat",
+    "ambient drone",
+    "minimalist",
+    "horror",
+    "electric guitar",
+    "full drum kit"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme Reprise]\n{the melody again, now answered by a soft music-box counter-line and a fuller warm pad, as if the stored daylight glows a little brighter under the water}",
+   "duration_ms": 21818,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "88 BPM",
+    "E minor relative to G major",
+    "spacious pulse-wave lead with long notes and rests, sinking phrases that do not always climb back",
+    "slow submerged low harp arpeggio rolling like deep water",
+    "cool string pad with a warm golden glow underneath",
+    "deep synth bass swelling like a slow tide",
+    "minimal percussion: soft low thud and occasional droplet-like tick",
+    "melancholy, bittersweet drowned-palace hall theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "music-box counter-melody",
+    "fuller arrangement"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "cheerful",
+    "upbeat",
+    "ambient drone",
+    "minimalist",
+    "horror",
+    "electric guitar",
+    "full drum kit"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast: the clouds part into G and C major - a bittersweet golden swell, warm and a little defiant, the lead singing higher like a last warm day, then dimming to minor}",
+   "duration_ms": 21818,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "88 BPM",
+    "E minor relative to G major",
+    "spacious pulse-wave lead with long notes and rests, sinking phrases that do not always climb back",
+    "slow submerged low harp arpeggio rolling like deep water",
+    "cool string pad with a warm golden glow underneath",
+    "deep synth bass swelling like a slow tide",
+    "minimal percussion: soft low thud and occasional droplet-like tick",
+    "melancholy, bittersweet drowned-palace hall theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "G major",
+    "bittersweet golden warmth",
+    "contrasting section"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "cheerful",
+    "upbeat",
+    "ambient drone",
+    "minimalist",
+    "horror",
+    "electric guitar",
+    "full drum kit"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the E minor melody returns, quiet and lonely; the last bar leads straight back into the main theme, no ending}",
+   "duration_ms": 21818,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "88 BPM",
+    "E minor relative to G major",
+    "spacious pulse-wave lead with long notes and rests, sinking phrases that do not always climb back",
+    "slow submerged low harp arpeggio rolling like deep water",
+    "cool string pad with a warm golden glow underneath",
+    "deep synth bass swelling like a slow tide",
+    "minimal percussion: soft low thud and occasional droplet-like tick",
+    "melancholy, bittersweet drowned-palace hall theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "cheerful",
+    "upbeat",
+    "ambient drone",
+    "minimalist",
+    "horror",
+    "electric guitar",
+    "full drum kit"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}

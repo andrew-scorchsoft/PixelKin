@@ -1,0 +1,91 @@
+{
+ "id": "tinderwick-a",
+ "kind": "loop",
+ "where": "Tinderwick (home town)",
+ "mood": "The hometown lullaby — lanterns in the dark, cosy and a little homesick. The source of the Vesper motif.",
+ "bpm": 90,
+ "beats_per_bar": 4,
+ "motif": null,
+ "_note": "The approved v3 take; its first chunk was conditioned on the original Take B upload (xhigh). This take IS the motif source (motif.json) so it carries no motif block itself.",
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "90 BPM",
+  "C major",
+  "warm music-box and soft pulse-wave lead",
+  "plucked harp arpeggios",
+  "warm string pad",
+  "round soft synth bass",
+  "sparse celesta bell glints",
+  "cosy nostalgic hometown theme",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "singing",
+  "guitar",
+  "ambient drone",
+  "minimalist",
+  "fade out",
+  "ritardando",
+  "ending"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{a short memorable 4-bar opening flourish: rising music-box arpeggio, then the lead boldly states the first notes of the main theme, landing on a held chord that leads straight into the theme}",
+   "styles": [
+    "bright opening flourish",
+    "announcing arrival"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the main melody, clear and front and centre, simple and hummable, played by the soft pulse-wave lead over harp arpeggios}",
+   "styles": [
+    "main theme",
+    "memorable hook"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the same melody again, now answered by a gentle flute counter-melody, strings a little fuller}",
+   "styles": [
+    "flute counter-melody",
+    "fuller arrangement"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a wistful turn to A minor, the melody moves lower and slower, homesick and tender, then lifts back toward home}",
+   "styles": [
+    "wistful",
+    "homesick",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the main melody returns in full, warm and complete; the last bar leads straight back into the main theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "adherence": "high"
+  }
+ ]
+}

@@ -1,0 +1,88 @@
+{
+ "id": "dimglass-coast-a",
+ "kind": "loop",
+ "where": "Dimglass Coast (the first road out of town)",
+ "mood": "The road that teaches you to wander — brisk, salt-aired, optimistic; the hometown tune breaking into a stride.",
+ "bpm": 120,
+ "beats_per_bar": 4,
+ "motif": null,
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "120 BPM",
+  "G major",
+  "bright pulse-wave lead melody",
+  "plucked harp arpeggios like chiming buoys",
+  "warm string pad",
+  "bouncy plucked sampled bass rocking root and fifth",
+  "light brushed snare on two and four with a soft tambourine shimmer",
+  "adventurous walking theme for the first route of a journey",
+  "melody built on the hometown tune's rising three-note lift, now springing forward",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "drum and bass",
+  "heavy sub bass",
+  "electric guitar",
+  "fade out",
+  "melancholy"
+ ],
+ "sections": [
+  {
+   "name": "Setting Out",
+   "bars": 4,
+   "text": "{the lead alone sings the rising three-note lift of the hometown tune, then bass, harp and drums join and the road theme strides off}",
+   "styles": [
+    "solo lead call then the band joins",
+    "sense of setting out"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the walking melody, hummable and springy, front and centre, steady stride in the bass}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "onward momentum"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the same melody again with a bell counter-line glinting on the offbeats, a little fuller}",
+   "styles": [
+    "bell counter-melody",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: the sea opens out, a wistful turn to E minor, longer notes reaching over the dark water, the drums thin to a brush, then a lift back toward the theme}",
+   "styles": [
+    "E minor",
+    "wistful",
+    "wide open sea",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the walking melody returns in full stride; the last bar leads straight back into the main theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ],
+ "_note": "2026-10 retro + tempo pass: motif dropped (it pinned the take to ~90 BPM); era-first anchor, retro kit/bass; opening shape chosen per scene. | 2026-10 EDM pass: 'kick on a brisk beat' gave a four-on-the-floor + pumping EDM feel (edm_check.py); percussion now retro (snare backbeat, toms, timpani, tambourine, brushes)."
+}

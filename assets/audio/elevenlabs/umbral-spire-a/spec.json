@@ -1,0 +1,89 @@
+{
+ "id": "umbral-spire-a",
+ "kind": "loop",
+ "where": "Umbral Spire summit (the Great Null, Warden Còr, the Keystar)",
+ "mood": "Crown of Null: the summit under the Keystar; grave, sorrowful grandeur and driving resolve, the hometown motif boomed in minor and promised its major.",
+ "bpm": 132,
+ "beats_per_bar": 4,
+ "motif": null,
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "132 BPM",
+  "A minor turning to A major",
+  "final climax theme",
+  "layered pulse-wave lead booming a noble minor melody",
+  "solemn pipe organ and warm reverbed string chords",
+  "deep plucked sampled bass driving in eighths",
+  "sampled 16-bit drum kit and timpani rolls on a steady driving beat, crash cymbals on accents",
+  "tragic, grave and courageous, sorrow and resolve",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "modern electronic dance production",
+  "drum and bass",
+  "breakbeat",
+  "heavy sub bass",
+  "electric guitar",
+  "fade out",
+  "cheerful",
+  "comedic"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 6,
+   "text": "{dread at the summit: a deep tolling bell and timpani roll, a vast organ swell, the lead slowly booms the theme's first notes in minor, then snaps into the drive}",
+   "styles": [
+    "grave opening",
+    "sense of standing before something vast"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the noble minor melody boomed on the layered lead over driving bass and drums, a rising leap then a sorrowful stepwise fall, grave and unforgettable}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "tragic grandeur"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the melody again with the second lead answering each phrase and organ chords filling out, drums pounding harder}",
+   "styles": [
+    "counter-melody",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: the clouds break, the harmony turns to radiant A major, the same melody rising triumphant with a bright harp sweep and crash cymbal, a promise of dawn, then darkening back toward the minor}",
+   "styles": [
+    "A major",
+    "triumphant promise",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the minor melody returns grave and driving; the last bar drives on the dominant straight back into the main theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ],
+ "_note": "motif dropped (2026-10): conditioning pulled the take onto the lullaby's ~90/180 BPM grid; driving cues keep their spec tempo unconditioned. | 2026-10 retro pass: era-first anchor, sampled 16-bit drum kit + plucked sampled bass (fast modern-described drums drifted to drum-and-bass), short exclusion tags."
+}

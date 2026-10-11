@@ -1,0 +1,14 @@
+{
+ "id": "saltreach-fen-c",
+ "kind": "loop",
+ "where": "Sunkbell Shallows (the flooded-shrine spur off Fen II, reached by Tidecall)",
+ "mood": "The fen relit \u2014 open water, a drowned shrine bell ringing under the ripples, a warmer lilting waltz you've earned.",
+ "duration": 70.4,
+ "loop_start": 10.031,
+ "seam": 0.243,
+ "bpm_est": 60.1,
+ "song_id": "f6AZgkgAEADRXWmrH5TR",
+ "raw_ms": 63000,
+ "motif": "medium",
+ "lufs": -15.4
+}

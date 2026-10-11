@@ -1,0 +1,48 @@
+{
+ "chunks": [
+  {
+   "song_id": "ynBnU8ChW2Ms43jJX9Mr",
+   "range": {
+    "start_ms": 76026,
+    "end_ms": 96026
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "80 BPM",
+    "gentle A minor warming toward C major",
+    "tender soft pulse-wave lead melody, faint and hummable",
+    "soft music-box arpeggio, slow and rounded",
+    "warm string pad",
+    "slow steady synth bass half notes like a quiet heartbeat",
+    "a single muffled soft drum pulse on the downbeat",
+    "a distant faint aurora swell once per phrase",
+    "snowbound village interior, lanterns in the dark, fireside warmth framed by cold",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "ynBnU8ChW2Ms43jJX9Mr",
+   "range": {
+    "start_ms": 6000,
+    "end_ms": 16000
+   }
+  }
+ ]
+}

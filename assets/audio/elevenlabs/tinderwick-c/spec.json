@@ -1,0 +1,91 @@
+{
+ "id": "tinderwick-c",
+ "kind": "loop",
+ "where": "Duskapple Orchard — Tinderwick's old orchard through the west hedge (the satchel errand, the fallen-star crater)",
+ "mood": "First light on the water — the hometown tune's rising half asked under orchard boughs, Lydian wonder with a thread of mystery.",
+ "bpm": 88,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "medium"
+ },
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "88 BPM",
+  "C Lydian, bright major with a raised fourth for wonder",
+  "soft pulse-wave lead with a rising questioning melody",
+  "bright bell and celesta sparkle figures climbing upward like lantern windows",
+  "plucked harp arpeggios",
+  "slow sustained string pad",
+  "slow warm synth bass",
+  "dreamy wandering orchard at blue hour, curious and wondering, a little mysterious",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "singing",
+  "fade out",
+  "ritardando",
+  "guitar",
+  "ambient drone",
+  "minimalist",
+  "dark horror",
+  "heavy percussion",
+  "ending"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 3,
+   "text": "{a curious opening: bell sparkles climb upward like fireflies, then the lead calls the rising three-note lift from the hometown tune and holds it, a question in the air, leading into the theme}",
+   "styles": [
+    "wondering opening call",
+    "sense of discovery"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the orchard melody: a hummable rising phrase with the bright raised fourth, answered by a bell echo each time, harp rolling underneath at a gentle walk}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "wonder"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the same melody again with a celesta counter-line glinting between phrases and a soft shaker walk, a little fuller}",
+   "styles": [
+    "bell counter-melody",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a hushed turn to A minor, the lead lower and slower, a faint mysterious shimmer like something fallen glowing among the trees, then the bells climb back toward the light}",
+   "styles": [
+    "A minor",
+    "hushed mystery",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the orchard melody returns bright and full; the last bar climbs straight back into the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

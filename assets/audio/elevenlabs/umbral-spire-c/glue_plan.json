@@ -1,0 +1,47 @@
+{
+ "chunks": [
+  {
+   "song_id": "RDlEwzqJw3ZidNtkUR9O",
+   "range": {
+    "start_ms": 47500,
+    "end_ms": 67500
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "120 BPM",
+    "A major",
+    "radiant triumphant finale theme",
+    "soaring warm pulse-wave lead singing the main theme in full",
+    "lush warm string chords and swelling pad",
+    "flowing harp arpeggios",
+    "big joyful drums with crash cymbals",
+    "overwhelming relief and wonder",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "RDlEwzqJw3ZidNtkUR9O",
+   "range": {
+    "start_ms": 8000,
+    "end_ms": 18000
+   }
+  }
+ ]
+}

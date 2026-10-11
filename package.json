@@ -1,6 +1,6 @@
 {
   "name": "pixelkin",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "private": true,
   "description": "PixelKin — a retro-styled creature-collecting adventure for the web (and, in time, mobile).",
   "type": "module",
@@ -10,6 +10,7 @@
     "build:dist": "npm run build && node tools/audio/compress_dist_audio.mjs && node tools/build/strip_sourcemaps.mjs",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
+    "check": "node tools/check_all.mjs",
     "site": "node tools/build/assemble_release.mjs --site && wrangler dev",
     "preview:release": "npm run release && wrangler dev",
     "release:site": "node tools/build/assemble_release.mjs --site",

@@ -19,6 +19,10 @@ import { join, extname } from 'node:path';
 
 const DIST_AUDIO = 'dist/assets/audio';
 const BITRATE = '64k'; // mono; chiptune is a few square waves — 64k is plenty.
+const CARTRIDGE_FILTER = 'highpass=f=40,lowpass=f=10500';
+const REMASTER_BITRATE = '60k'; // ABR joint stereo, music/remaster/ (the composed score): ~0.75 MB per ~100 s cue.
+// 60k is not a CBR MP3 rate (CBR would round to 56k), hence ABR. The repo keeps the
+// 128k masters in public/; only this deployed copy is shrunk — retune here, never regenerate.
 
 function works(bin) {
   try {
@@ -73,13 +77,23 @@ let after = 0;
 for (const f of files) {
   before += statSync(f).size;
   const tmp = `${f}.tmp.mp3`;
-  execFileSync(FFMPEG, ['-y', '-i', f, '-ac', '1', '-b:a', BITRATE, '-loglevel', 'error', tmp]);
+  // The remastered score is real stereo arrangement (not chip squares): keep it
+  // stereo at a higher rate; the classic chip renders stay 64k mono.
+  const remaster = /[\\/]remaster[\\/]/.test(f);
+  // Remasters also get the CARTRIDGE pass (owner-approved A/B, 2026-10): the 16-bit
+  // consoles' 32 kHz output rate, a softened top end and trimmed sub-bass — the generated
+  // score reads as a cartridge instead of a modern mix. Time-preserving, so meta loop
+  // points stay valid; the repo keeps the clean 128k masters.
+  const args = remaster
+    ? ['-af', CARTRIDGE_FILTER, '-ar', '32000', '-ac', '2', '-abr', '1', '-b:a', REMASTER_BITRATE]
+    : ['-ac', '1', '-b:a', BITRATE];
+  execFileSync(FFMPEG, ['-y', '-i', f, ...args, '-loglevel', 'error', tmp]);
   rmSync(f);
   renameSync(tmp, f);
   after += statSync(f).size;
 }
 
 console.log(
-  `compress_dist_audio: ${files.length} mp3 @ ${BITRATE} mono — ` +
+  `compress_dist_audio: ${files.length} mp3 @ ${BITRATE} mono (remaster ${REMASTER_BITRATE} stereo, 32 kHz cartridge pass) — ` +
     `${mb(before)} MB -> ${mb(after)} MB (saved ${mb(before - after)} MB)`,
 );

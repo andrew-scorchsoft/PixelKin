@@ -1,0 +1,47 @@
+{
+ "chunks": [
+  {
+   "song_id": "v07VrBHsGiR30txZR8vk",
+   "range": {
+    "start_ms": 66439,
+    "end_ms": 86439
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "100 BPM",
+    "C major, radiant, no minor",
+    "bright warm pulse-wave lead singing the hometown lullaby with confidence",
+    "flowing ascending harp arpeggios",
+    "lush warm string pad",
+    "warm walking synth bass",
+    "gentle present groove with soft kick and brush",
+    "triumphant sunrise homecoming, joyful and warm with a tear in its eye",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "v07VrBHsGiR30txZR8vk",
+   "range": {
+    "start_ms": 9600,
+    "end_ms": 19600
+   }
+  }
+ ]
+}

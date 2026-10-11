@@ -1,0 +1,94 @@
+{
+ "id": "nightreach-observatory-b",
+ "kind": "loop",
+ "where": "Nightreach Lumenary (Nessa Cole's haunted hall) + the Nightreach inn and homes",
+ "mood": "The Haunted Lumenary: the loneliest room in Vesperholm - a minor lullaby that reaches up and never quite comes home, a clock running down; hope present but not yet earned.",
+ "bpm": 80,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "low"
+ },
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "80 BPM",
+  "A minor, phrases ending on open unresolved suspensions",
+  "thin isolated pulse-wave lead with a lonely sad line trailing into long rests",
+  "slow minor music-box arpeggio with suspended chords",
+  "soft hollow string pad",
+  "low sparse synth bass with long silences",
+  "unsteady clockwork tick like a clock running down",
+  "haunted, melancholy, intimate night-temple interior theme",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "singing",
+  "fade out",
+  "ritardando",
+  "cheerful",
+  "upbeat",
+  "horror",
+  "jump scare",
+  "ambient drone",
+  "minimalist",
+  "full drum kit",
+  "electric guitar"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 3,
+   "text": "{a hushed interior: an uneven clock tick in an empty room, a slow minor music-box figure, a held suspended chord left hanging open}",
+   "styles": [
+    "quiet atmospheric intro",
+    "lonely room"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the haunted melody in A minor: it reaches up with a rising leap and settles on a suspension instead of home, then trails into rest; sparse bass}",
+   "styles": [
+    "main theme",
+    "memorable melancholy hook"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the melody again with a soft celesta echo a beat behind it, like the room remembering, pad a little fuller}",
+   "styles": [
+    "echoing counter-melody",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 6,
+   "text": "{contrast: a moment of warmth in F major and C major, as if a lamp is lit in the dark room, the lead singing gently, then slipping back to a dissonant suspension}",
+   "styles": [
+    "F major",
+    "fragile warmth",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the haunted melody returns, unresolved; the last bar hangs on a suspension that leads straight back into the main theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ],
+ "max_stall": 5.0,
+ "_stall_note": "deliberately sparse interior: one ~4 s hush is part of the cue (dead_air.py allows up to max_stall)"
+}

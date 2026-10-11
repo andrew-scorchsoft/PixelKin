@@ -1,0 +1,92 @@
+{
+ "id": "dimglass-coast-c",
+ "kind": "loop",
+ "where": "Tideglass Cavern & Gallery (the glowing sea-caves off the Dimglass Coast) and the Lanternway Under-Lane",
+ "mood": "Buoy-light drift — a becalmed, glittering sea-cave; the coast road's tune reduced to a glint over dripping water.",
+ "bpm": 104,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "low"
+ },
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "104 BPM",
+  "thin pulse-wave lead with a drifting melody in cavernous reverb",
+  "thin echoing pulse-wave lead with a drifting melody",
+  "bright bell and glass-chime figures like light glinting on cave water",
+  "slow plucked harp arpeggios",
+  "slow sustained synth bass roots",
+  "soft brush stroke once per bar like a wave washing in",
+  "calm glittering sea-cave, becalmed and wondering, quietly magical",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "singing",
+  "fade out",
+  "ritardando",
+  "guitar",
+  "horror",
+  "scary",
+  "ambient drone without melody",
+  "minimalist",
+  "loud drums",
+  "ending"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 3,
+   "text": "{a quiet entrance into the cave: a few water-drip bell notes echo in the dark, a low bass root swells in, then the lead floats the first notes of the theme into the space}",
+   "styles": [
+    "quiet atmospheric opening",
+    "echoing drips"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the drifting melody: a simple hummable rising phrase spaced wide apart, each phrase answered by glinting bell sparkle, harp turning slowly underneath}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "drifting"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the same melody again with a soft flute counter-line and the glass chimes a little busier, like the walls catching more light}",
+   "styles": [
+    "flute counter-melody",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: deeper into the cave, a turn to E minor, the lead held long and low over darker water, bells sparse and echoing, then the chimes rise back toward the theme}",
+   "styles": [
+    "E minor",
+    "deeper and darker",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the drifting melody returns, calm and glittering; the last bar flows straight back into the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

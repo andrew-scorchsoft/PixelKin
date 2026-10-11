@@ -1,0 +1,94 @@
+{
+ "id": "cinderhead-mine-a",
+ "kind": "loop",
+ "where": "Cinderhead Mine (the lamplit mine-mouth town of the Lamp-down vigil)",
+ "mood": "Ink-black galleries where crystal veins and lamp-fire are the only light — a slow miners' hymn, melancholy but faintly warm.",
+ "bpm": 80,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "low"
+ },
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "80 BPM",
+  "A natural minor",
+  "low warm horn and pulse-wave lead singing a slow solemn melody that moves by steps",
+  "sparse high crystal-chime glints of broken triads",
+  "deep sustained synth bass drone on the root",
+  "warm dark string pad",
+  "distant dry pick-tap percussion echoing in a cavern",
+  "melancholy lamplit mining town in the deep dark, faint warmth of fire-lamps",
+  "echoing cave reverb",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "singing",
+  "electric guitar",
+  "fade out",
+  "ritardando",
+  "cheerful",
+  "upbeat",
+  "busy drums",
+  "ambient drone without melody",
+  "horror",
+  "epic orchestral"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 3,
+   "text": "{a quiet atmospheric entrance: two distant pick-taps echo down the gallery, the low drone opens, and one bright crystal chime glints far above}",
+   "styles": [
+    "quiet atmospheric opening",
+    "echoing mine shaft"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the slow miners' melody on the low horn: a rising leap that climbs, then moves only a step or two, solemn, warm and unhurried; a pick-tap every bar}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "solemn miners' hymn"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the melody again with the crystal chime answering high above each phrase with a little falling three-note figure, a glint of hope, string pad warming beneath}",
+   "styles": [
+    "crystal chime answers",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 6,
+   "text": "{contrast: the vigil — lowered lamps, a hushed turn to C major, a tender hymn-like chord progression on strings and soft organ, the miners remembering, then sinking back toward A minor}",
+   "styles": [
+    "C major",
+    "tender vigil hymn",
+    "melancholy warmth",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the slow miners' melody returns over the drone and pick-taps; the last bar leads straight back into the main theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

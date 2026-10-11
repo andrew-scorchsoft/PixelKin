@@ -1,0 +1,94 @@
+{
+ "id": "lowleaf-hollow-b",
+ "kind": "loop",
+ "where": "Lowleaf's Lumenary hall, the Bower inn and Georgina's cottage; also the Pearlmoor Wanderwood and the Glowmoss Bloom arrival",
+ "mood": "The safe glow at the heart of the dark forest — a lantern-lit music-box lullaby in a gentle waltz; hearth over wonder.",
+ "bpm": 84,
+ "beats_per_bar": 3,
+ "motif": {
+  "strength": "medium"
+ },
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "84 BPM",
+  "3/4 waltz time",
+  "warm G major with a gentle minor turn",
+  "rounded music-box and soft pulse-wave lead singing a lullaby melody",
+  "soft even music-box arpeggios",
+  "gentle waltz synth bass falling root to fifth",
+  "warm string pad",
+  "soft brushes on beats two and three, a single chime per phrase",
+  "cosy lantern-lit village hearth, safe and homely",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "singing",
+  "electric guitar",
+  "fade out",
+  "ritardando",
+  "ambient drone",
+  "minimalist",
+  "dark",
+  "tense",
+  "epic orchestral",
+  "busy drums"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{a music-box winds up: a gentle rising arpeggio, one warm chime, and a soft held chord that eases into the waltz}",
+   "styles": [
+    "cosy opening",
+    "music-box"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 12,
+   "text": "{the lullaby melody in lilting 3/4: a hopeful rising leap that settles home rounded and even, tuneful and cosy, the bass rocking the waltz}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "lullaby waltz"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 12,
+   "text": "{the lullaby again with a soft flute harmony a third below and harp joining the arpeggio, warmer and fuller like a hearth fire}",
+   "styles": [
+    "flute harmony",
+    "fuller arrangement",
+    "hearth warmth"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a gentle turn to E minor, a wistful little phrase on the pulse lead, quieter, a breath of homesickness, then lifting back to G major}",
+   "styles": [
+    "E minor",
+    "wistful",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 12,
+   "text": "{the lullaby returns, settled and warm; the last bar leads straight back into the main theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

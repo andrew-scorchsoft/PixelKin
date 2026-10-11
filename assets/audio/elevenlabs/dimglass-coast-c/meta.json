@@ -1,0 +1,16 @@
+{
+ "id": "dimglass-coast-c",
+ "kind": "loop",
+ "where": "Tideglass Cavern & Gallery (the glowing sea-caves off the Dimglass Coast) and the Lanternway Under-Lane",
+ "mood": "Buoy-light drift \u2014 a becalmed, glittering sea-cave; the coast road's tune reduced to a glint over dripping water.",
+ "duration": 53.185306,
+ "loop_start": 10.472,
+ "seam": 0.435,
+ "bpm_est": 89.1,
+ "song_id": "5kyrzrB9OvaOrMsDbfgX",
+ "raw_ms": 80875,
+ "motif": "low",
+ "edits": [
+  "re-cut to end before the take's fade at 73.5s"
+ ]
+}

@@ -1,0 +1,171 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{a bright festive fanfare: a quick tambourine pickup and a flourish of grace-note runs on the lead, landing on a held chord that springs straight into the waltz}",
+   "duration_ms": 6207,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "116 BPM",
+    "F major",
+    "3/4 waltz time",
+    "lively accordion-like pulse-wave lead with quick grace-note runs",
+    "busy bell-buoy chimes and bright sparkle on phrase ends",
+    "bouncy oom-pah-pah waltz bass",
+    "tambourine and brushed snare on the waltz offbeats, a soft bass drum on each downbeat only",
+    "seaside festival dance, celebratory, playful and a little cheeky",
+    "strong singable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "festive opening flourish",
+    "celebratory"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "drum and bass",
+    "heavy sub bass",
+    "electric guitar",
+    "fade out",
+    "melancholy"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme]\n{the waltz melody bright and quick, ornamented with grace notes, swinging on every downbeat, hummable and joyful}",
+   "duration_ms": 18621,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "116 BPM",
+    "F major",
+    "3/4 waltz time",
+    "lively accordion-like pulse-wave lead with quick grace-note runs",
+    "busy bell-buoy chimes and bright sparkle on phrase ends",
+    "bouncy oom-pah-pah waltz bass",
+    "tambourine and brushed snare on the waltz offbeats, a soft bass drum on each downbeat only",
+    "seaside festival dance, celebratory, playful and a little cheeky",
+    "strong singable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "main theme",
+    "memorable hook",
+    "dancing"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "drum and bass",
+    "heavy sub bass",
+    "electric guitar",
+    "fade out",
+    "melancholy"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme Reprise]\n{the same waltz again with a pizzicato and bell counter-line hopping on the offbeats, a little cheeky, fuller}",
+   "duration_ms": 18621,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "116 BPM",
+    "F major",
+    "3/4 waltz time",
+    "lively accordion-like pulse-wave lead with quick grace-note runs",
+    "busy bell-buoy chimes and bright sparkle on phrase ends",
+    "bouncy oom-pah-pah waltz bass",
+    "tambourine and brushed snare on the waltz offbeats, a soft bass drum on each downbeat only",
+    "seaside festival dance, celebratory, playful and a little cheeky",
+    "strong singable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "playful counter-melody",
+    "fuller arrangement"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "drum and bass",
+    "heavy sub bass",
+    "electric guitar",
+    "fade out",
+    "melancholy"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast: a short comic tiptoe in D minor, staccato and sly like a joke being set up, then a rising run tumbles back into the theme}",
+   "duration_ms": 12414,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "116 BPM",
+    "F major",
+    "3/4 waltz time",
+    "lively accordion-like pulse-wave lead with quick grace-note runs",
+    "busy bell-buoy chimes and bright sparkle on phrase ends",
+    "bouncy oom-pah-pah waltz bass",
+    "tambourine and brushed snare on the waltz offbeats, a soft bass drum on each downbeat only",
+    "seaside festival dance, celebratory, playful and a little cheeky",
+    "strong singable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "D minor",
+    "playful staccato",
+    "contrasting section"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "drum and bass",
+    "heavy sub bass",
+    "electric guitar",
+    "fade out",
+    "melancholy"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the festive waltz returns in full swing; the last bar springs straight back into the theme}",
+   "duration_ms": 18621,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "116 BPM",
+    "F major",
+    "3/4 waltz time",
+    "lively accordion-like pulse-wave lead with quick grace-note runs",
+    "busy bell-buoy chimes and bright sparkle on phrase ends",
+    "bouncy oom-pah-pah waltz bass",
+    "tambourine and brushed snare on the waltz offbeats, a soft bass drum on each downbeat only",
+    "seaside festival dance, celebratory, playful and a little cheeky",
+    "strong singable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "drum and bass",
+    "heavy sub bass",
+    "electric guitar",
+    "fade out",
+    "melancholy"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}

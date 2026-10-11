@@ -1,0 +1,17 @@
+{
+ "id": "sunken-solarium-c",
+ "kind": "loop",
+ "where": "The Unrisen Stair (Three Hours site III, the Dawn-that-waited) + after its catch + the Old Light's 5th floor",
+ "mood": "Sunsketch Bloom: the relit reading - daylight surging back into the drowned garden, the motif sung twice and the second time brighter; the score reaching toward dawn.",
+ "duration": 81.993,
+ "loop_start": 8.595,
+ "seam": 0.223,
+ "bpm_est": 60.1,
+ "song_id": "2hSffaVyy9qh9vKUgM7F",
+ "raw_ms": 79000,
+ "motif": "high",
+ "lufs": -15.4,
+ "edits": [
+  "trimmed 1.390s of head"
+ ]
+}

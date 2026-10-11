@@ -1,0 +1,92 @@
+{
+ "id": "coldopen-foreboding",
+ "kind": "loop",
+ "where": "The cold-open cinematic (the Long Dusk falls; a star winks out)",
+ "mood": "The Long Dusk falling: hushed foreboding under a sky losing its lanterns, a fragile hopeful phrase that reaches up and is never answered.",
+ "bpm": 74,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "low"
+ },
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "74 BPM",
+  "A harmonic minor",
+  "cinematic prologue underscore",
+  "low dark string pad and soft drone",
+  "fragile high bell and soft pulse-wave lead fragment",
+  "thin sustained string thread",
+  "foreboding, hushed, a little sorrowful with a thin thread of hope",
+  "spacious and uncluttered, lots of rests",
+  "strong memorable melody fragment",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "singing",
+  "fade out",
+  "ritardando",
+  "upbeat",
+  "happy",
+  "full drum kit",
+  "busy",
+  "electric guitar",
+  "horror screeches",
+  "bombastic"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{a hushed low A drone fades up from silence and one high bell note sounds alone like the last lantern in the sky}",
+   "styles": [
+    "hushed opening",
+    "once upon a time"
+   ]
+  },
+  {
+   "name": "Theme",
+   "bars": 6,
+   "text": "{the fragile bell and soft lead play a hopeful rising leap that reaches past the tonic and is left hanging into rests, still searching for home; the low pad sighs beneath}",
+   "styles": [
+    "main theme",
+    "fragile hook",
+    "unresolved question"
+   ]
+  },
+  {
+   "name": "Theme Reprise",
+   "bars": 6,
+   "text": "{the rising phrase again, a thin sustained string thread now joining underneath, the harmony darkening through F and the raised G sharp pulling toward E}",
+   "styles": [
+    "string thread",
+    "foreboding"
+   ]
+  },
+  {
+   "name": "The Lights Go Out",
+   "bars": 6,
+   "text": "{contrast: the stars fall one by one, a slow descending line in low strings over D minor, soft distant timpani strokes, the bell falls silent}",
+   "styles": [
+    "descending line",
+    "dread",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Theme Return",
+   "bars": 6,
+   "text": "{the fragile rising phrase returns once more over the drone, still unanswered; the last bar rests on a low E that pulls straight back into the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

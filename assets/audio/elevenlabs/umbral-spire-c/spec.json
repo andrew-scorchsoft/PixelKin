@@ -1,0 +1,92 @@
+{
+ "id": "umbral-spire-c",
+ "kind": "loop",
+ "where": "Umbral Spire summit, the Keystar relight cutscene",
+ "mood": "First True Dawn: the Keystar catches and the whole sky lights; the hometown motif stated whole in radiant major, triumphant with a tear in it.",
+ "bpm": 120,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "high"
+ },
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "120 BPM",
+  "A major",
+  "radiant triumphant finale theme",
+  "soaring warm pulse-wave lead singing the main theme in full",
+  "lush warm string chords and swelling pad",
+  "flowing harp arpeggios",
+  "big joyful drums with crash cymbals",
+  "overwhelming relief and wonder",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "singing",
+  "fade out",
+  "ritardando",
+  "minor key",
+  "dark",
+  "ominous",
+  "electric guitar",
+  "heavy metal",
+  "ambient drone",
+  "minimalist"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{the light catches: a rising harp glissando and bell shimmer bloom out of a held note, a timpani swell and crash, and the lead rings out the first notes of the theme high and bright}",
+   "styles": [
+    "radiant opening",
+    "light pouring back"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the main melody whole in radiant A major, a rising lift then a warm settle home, soaring over harp arpeggios and full strings}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "triumphant"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the same melody with the second lead harmonising in thirds and bells sparkling, the arrangement fuller and higher}",
+   "styles": [
+    "harmonised melody",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: tender and grateful, a turn through F sharp minor and D major, drums drop to soft brushes, strings remember the long night, then swell back toward home}",
+   "styles": [
+    "tender",
+    "bittersweet",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the melody returns in full triumph with crash cymbals; the last bar lifts on E straight back into the main theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

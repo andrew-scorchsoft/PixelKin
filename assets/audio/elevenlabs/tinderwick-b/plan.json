@@ -1,0 +1,199 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{stepping in from the cold: a soft music-box arpeggio rolls down like a door easing shut, one celesta glint, then the lead's first sighing notes settle into the theme}",
+   "duration_ms": 6750,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "80 BPM",
+    "A minor resolving to C major",
+    "6/8 time, gentle rocking lullaby sway",
+    "soft pulse-wave lead with a sighing melody",
+    "rolling music-box arpeggios",
+    "warm low string pad",
+    "round soft synth bass breathing on the dotted pulse",
+    "intimate small-room cottage interior by a banked fire, warm and a little homesick",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "gentle welcoming opening",
+    "cosy hush"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "drums",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "upbeat",
+    "ending"
+   ],
+   "context_adherence": "high",
+   "conditioning_ref": {
+    "song_id": "TOREmIgiwF3GKpN7UkLA",
+    "range": {
+     "start_ms": 10668,
+     "end_ms": 40668
+    }
+   },
+   "condition_strength": "high"
+  },
+  {
+   "text": "[Main Theme]\n{the lullaby melody in A minor, rocking in 6/8 over the music-box; the hopeful rising lift undershoots and lingers, more sigh than leap; clear and hummable}",
+   "duration_ms": 18000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "80 BPM",
+    "A minor resolving to C major",
+    "6/8 time, gentle rocking lullaby sway",
+    "soft pulse-wave lead with a sighing melody",
+    "rolling music-box arpeggios",
+    "warm low string pad",
+    "round soft synth bass breathing on the dotted pulse",
+    "intimate small-room cottage interior by a banked fire, warm and a little homesick",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme",
+    "memorable hook",
+    "tender"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "drums",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "upbeat",
+    "ending"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme Reprise]\n{the same melody again, now with a soft flute counter-line woven under it and the strings a little warmer, like the fire catching again}",
+   "duration_ms": 18000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "80 BPM",
+    "A minor resolving to C major",
+    "6/8 time, gentle rocking lullaby sway",
+    "soft pulse-wave lead with a sighing melody",
+    "rolling music-box arpeggios",
+    "warm low string pad",
+    "round soft synth bass breathing on the dotted pulse",
+    "intimate small-room cottage interior by a banked fire, warm and a little homesick",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "flute counter-melody",
+    "fuller arrangement"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "drums",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "upbeat",
+    "ending"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast: the melody turns to warm C major and moves higher, a cosy memory of daytime, music-box and celesta brighter, then sways back down toward the minor}",
+   "duration_ms": 18000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "80 BPM",
+    "A minor resolving to C major",
+    "6/8 time, gentle rocking lullaby sway",
+    "soft pulse-wave lead with a sighing melody",
+    "rolling music-box arpeggios",
+    "warm low string pad",
+    "round soft synth bass breathing on the dotted pulse",
+    "intimate small-room cottage interior by a banked fire, warm and a little homesick",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "C major",
+    "warm reminiscence",
+    "contrasting section"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "drums",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "upbeat",
+    "ending"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the lullaby returns in A minor, fuller and calm; the last bar sways straight back into the theme, no ending}",
+   "duration_ms": 18000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "80 BPM",
+    "A minor resolving to C major",
+    "6/8 time, gentle rocking lullaby sway",
+    "soft pulse-wave lead with a sighing melody",
+    "rolling music-box arpeggios",
+    "warm low string pad",
+    "round soft synth bass breathing on the dotted pulse",
+    "intimate small-room cottage interior by a banked fire, warm and a little homesick",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "drums",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "upbeat",
+    "ending"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}

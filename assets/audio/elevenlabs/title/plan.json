@@ -1,0 +1,48 @@
+{
+ "chunks": [
+  {
+   "text": "[Welcome]\n{a warm welcome that builds: shimmering sampled strings swell over a rising timpani roll as a horn sings the bold rising three-note lift, growing for four bars into the crash that launches the anthem}",
+   "duration_ms": 6400,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "A minor",
+    "epic heroic title theme",
+    "cutting bright pulse-wave lead with wide leaping melody",
+    "punchy sampled brass stabs",
+    "galloping plucked sampled bass ostinato",
+    "sampled 16-bit drum kit and timpani on a galloping rock beat, tom fills and crash cymbals",
+    "heroic, adventurous, urgent and exciting",
+    "melody built on a bold rising three-note lift",
+    "strong singable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "warm building opening",
+    "rising anticipation",
+    "horn melody over swelling strings",
+    "same tempo, key and instruments as the theme that follows",
+    "starts instantly on beat one"
+   ],
+   "negative_styles": [
+    "vocals",
+    "modern electronic dance production",
+    "drum and bass",
+    "heavy sub bass",
+    "electric guitar",
+    "fade out",
+    "lullaby",
+    "slow tempo",
+    "silence",
+    "ambient drone"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "0tG6J1ijZUC6Weedlv0l",
+   "range": {
+    "start_ms": 4800,
+    "end_ms": 54500
+   }
+  }
+ ]
+}

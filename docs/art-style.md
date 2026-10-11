@@ -644,8 +644,24 @@ after), `birds` (`kind` gull/bird, perched `flocks` that lift within 3 tiles,
 rendered), `footprints` (`auto`/`all`/`none` — `all` for a snowfield whose base tiles
 carry no terrain tag) and `bob_gids` (tile gids lifted off the layer and bobbed —
 buoys). **Ambient kin** are `NpcPlacement.ambient: true` (+ `wander_radius`, default
-2): `kin_<id>_overworld` sprites that graze, never collide or talk, and hop away
-when the player is within 2 tiles; the map audits ignore them.
+2): `kin_<id>_overworld` sprites that graze, never collide, and hop away when the
+player lingers within 2 tiles; the map audits ignore them. **They can be greeted**:
+face one from the next tile (it holds still ~1.3 s for you) and press Confirm — it
+turns, does a beat (hop/shake/twirl), calls its **cry**, and the box reads
+`<NAME>: <line>` from `src/game/content/kinchatter.ts` (bespoke per placed species,
+else a per-type pool; once-per-save events; `flag:dawn` variants).
+
+**Kin cries** are procedural chip calls, one per species (all 164), rendered by
+`python3 tools/audio/kin_cries.py` (deterministic numpy synth) to
+`public/assets/audio/sfx/cry-NNN.mp3` + the sfx manifest. Primary type → voice
+(pulse duty / stepped triangle / saw + the type's trick: Ember crackle, Tide bubble
+blips, Stone grit, Storm zap, Frost shimmer, Solar octave brass, Lunar echo, Light
+bell sparkle, Dark growl); a second type adds a harmony voice; size/weight → pitch
+and length (0.4–0.9 s); kindling stage → lower, longer, richer, with the SAME
+contour family as the line's first stage (seeded from the root slug); slug hash →
+per-kin variation. Mastered to one loudness. Played via `systems/audio/cries.ts`
+(`playCry`): battle entries, catches, the REGISTER (Confirm on a caught kin) and
+ambient greetings. Re-render after adding a kin.
 
 Author blocks via `tools/maps/worldcraft/<region>.py` (helpers in `_kit.py`) and
 `python3 tools/maps/add_world_craft.py --region <r>`; Dimglass Coast I is the

@@ -1,0 +1,180 @@
+{
+ "chunks": [
+  {
+   "text": "[Rival Appears]\n{a cocky sampled drum fill on snare and toms with a plucked-bass pickup, then the rival theme kicks in on the downbeat}",
+   "duration_ms": 4444,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "162 BPM",
+    "E minor with a warm turn to G major",
+    "4/4",
+    "cocky bouncy syncopated pulse-wave lead melody",
+    "plucked sampled electric bass walking in octaves",
+    "sampled snare backbeat and tom fills over a light kick on beats one and three, crash cymbal on each phrase start",
+    "bright brass stabs",
+    "quick twin-lead harmonies",
+    "competitive rival battle theme, spirited and playful with a heart of friendship",
+    "strong catchy hummable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "16-bit drum fill intro",
+    "playful swagger"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "drum and bass",
+    "heavy sub bass",
+    "electric guitar",
+    "fade out",
+    "lullaby",
+    "fade in"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Rival Theme]\n{the rival hook: a cheeky, bouncy syncopated melody with attitude, answered by brass stabs, the octave bass strutting underneath}",
+   "duration_ms": 11852,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "162 BPM",
+    "E minor with a warm turn to G major",
+    "4/4",
+    "cocky bouncy syncopated pulse-wave lead melody",
+    "plucked sampled electric bass walking in octaves",
+    "sampled snare backbeat and tom fills over a light kick on beats one and three, crash cymbal on each phrase start",
+    "bright brass stabs",
+    "quick twin-lead harmonies",
+    "competitive rival battle theme, spirited and playful with a heart of friendship",
+    "strong catchy hummable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "main rival hook",
+    "cheeky attitude",
+    "memorable riff"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "drum and bass",
+    "heavy sub bass",
+    "electric guitar",
+    "fade out",
+    "lullaby"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Rival Theme Reprise]\n{the hook again with a second lead harmonising a third below, like two friends racing neck and neck, a little faster-feeling}",
+   "duration_ms": 11852,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "162 BPM",
+    "E minor with a warm turn to G major",
+    "4/4",
+    "cocky bouncy syncopated pulse-wave lead melody",
+    "plucked sampled electric bass walking in octaves",
+    "sampled snare backbeat and tom fills over a light kick on beats one and three, crash cymbal on each phrase start",
+    "bright brass stabs",
+    "quick twin-lead harmonies",
+    "competitive rival battle theme, spirited and playful with a heart of friendship",
+    "strong catchy hummable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "twin lead harmony",
+    "friendly competition",
+    "fuller arrangement"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "drum and bass",
+    "heavy sub bass",
+    "electric guitar",
+    "fade out",
+    "lullaby"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Friendship Bridge]\n{contrast: a warm turn to G major, a heartfelt broad melody over sustained strings and brass, two friends from the same hometown, then a quick drum fill revs back up}",
+   "duration_ms": 11852,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "162 BPM",
+    "E minor with a warm turn to G major",
+    "4/4",
+    "cocky bouncy syncopated pulse-wave lead melody",
+    "plucked sampled electric bass walking in octaves",
+    "sampled snare backbeat and tom fills over a light kick on beats one and three, crash cymbal on each phrase start",
+    "bright brass stabs",
+    "quick twin-lead harmonies",
+    "competitive rival battle theme, spirited and playful with a heart of friendship",
+    "strong catchy hummable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "G major",
+    "heartfelt warm bridge",
+    "nostalgic friendship",
+    "contrasting section"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "drum and bass",
+    "heavy sub bass",
+    "electric guitar",
+    "fade out",
+    "lullaby"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Rival Theme Return]\n{back to E minor, the cheeky rival hook at full speed; the last bar is a snappy drum fill leading straight back into the hook}",
+   "duration_ms": 11852,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "162 BPM",
+    "E minor with a warm turn to G major",
+    "4/4",
+    "cocky bouncy syncopated pulse-wave lead melody",
+    "plucked sampled electric bass walking in octaves",
+    "sampled snare backbeat and tom fills over a light kick on beats one and three, crash cymbal on each phrase start",
+    "bright brass stabs",
+    "quick twin-lead harmonies",
+    "competitive rival battle theme, spirited and playful with a heart of friendship",
+    "strong catchy hummable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "main rival hook returns",
+    "drum fill",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "drum and bass",
+    "heavy sub bass",
+    "electric guitar",
+    "fade out",
+    "lullaby"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}

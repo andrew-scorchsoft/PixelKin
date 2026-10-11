@@ -1,0 +1,49 @@
+{
+ "chunks": [
+  {
+   "song_id": "AmU76juK2ZQadiV7fLwP",
+   "range": {
+    "start_ms": 66000,
+    "end_ms": 86000
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "96 BPM",
+    "A minor resolving to A major",
+    "4/4",
+    "warm soft pulse-wave lead singing the hometown melody",
+    "swelling warm string pad chords",
+    "plucked harp arpeggios",
+    "bright celesta and bell melody sung out",
+    "round warm synth bass",
+    "gentle festive drums with soft snare",
+    "emotional swelling celebration, warm and triumphant but a touch bittersweet, lanterns relit in the night sky",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "AmU76juK2ZQadiV7fLwP",
+   "range": {
+    "start_ms": 10000,
+    "end_ms": 20000
+   }
+  }
+ ]
+}

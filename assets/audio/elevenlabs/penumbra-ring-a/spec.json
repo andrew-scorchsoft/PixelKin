@@ -1,0 +1,90 @@
+{
+ "id": "penumbra-ring-a",
+ "kind": "loop",
+ "where": "Penumbra Ring + Starwell (the last dark before the Umbral Spire)",
+ "mood": "Wall of Ink: the last dark, crossed on starlight; a held breath, your heartbeat and one lonely lamp-note, hope leaking in at the edges.",
+ "bpm": 60,
+ "beats_per_bar": 4,
+ "motif": null,
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "60 BPM",
+  "D minor",
+  "dark slow-shifting synth fog pad, slightly detuned",
+  "deep low pedal drone bass",
+  "a sparse soft heartbeat kick every two bars",
+  "one lonely low square-wave lead note swelling out of the dark",
+  "oppressive hush with a fragile thread of hope",
+  "haunting slow three-note rising figure as the hook",
+  "spacious and sparse but clearly composed",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "modern electronic dance production",
+  "drum and bass",
+  "heavy sub bass",
+  "electric guitar",
+  "fade out",
+  "bright major key",
+  "busy percussion",
+  "fast tempo"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{out of near-silence a low D drone breathes in, one soft heartbeat kick, and a single lonely pulse-wave note rises and hangs in the dark like a lamp held up}",
+   "styles": [
+    "dark opening",
+    "held breath"
+   ]
+  },
+  {
+   "name": "Wall of Ink",
+   "bars": 6,
+   "text": "{the fog pad shifts slowly over the pedal drone; the lone lead plays a slow, haunting three-note rising figure that reaches up and stops short, unanswered; heartbeat kick every two bars}",
+   "styles": [
+    "main theme",
+    "haunting hook",
+    "unresolved"
+   ]
+  },
+  {
+   "name": "Lamp in the Dark",
+   "bars": 6,
+   "text": "{the same rising figure again a step higher, now answered by a faint echoing bell tone far off, the pad darkening underneath, the heartbeat a little nearer}",
+   "styles": [
+    "echoing bell answer",
+    "deepening dread"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Hope at the Edges",
+   "bars": 6,
+   "text": "{contrast: the drone lifts to F, the pad warms and its detune briefly settles, a tentative brighter phrase creeps upward like the wall receding a wedge, then the dark closes back in}",
+   "styles": [
+    "F major glimmer",
+    "fragile hope",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Wall Returns",
+   "bars": 6,
+   "text": "{the dark D minor fog returns with the lonely rising figure; the last bar hangs on an unresolved A over the drone that leads straight back into the start of the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ],
+ "_note": "2026-10 retro + tempo pass: motif dropped (it pinned the take to ~90 BPM); era-first anchor, retro kit/bass; opening shape chosen per scene."
+}

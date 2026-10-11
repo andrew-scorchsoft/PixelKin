@@ -1,0 +1,15 @@
+{
+ "id": "battle-emberfall",
+ "kind": "loop",
+ "where": "Trainer battles: every Lampwarden duel for a Gleam (Brisa, Reyl, Sable, Otho), the Beacon and route trainers, and Wren's first friendly bout",
+ "mood": "The arena duel \u2014 proud, rousing and fair: a respected challenger in the lantern-light, the fight that earns a constellation.",
+ "duration": 56.738,
+ "loop_start": 5.735,
+ "seam": 0.514,
+ "bpm_est": 161.5,
+ "song_id": "kc2s3bBxcFeThIPfAVyr",
+ "raw_ms": 52767,
+ "motif": null,
+ "warning": "seam 0.514 > 0.45: listen to the join, consider --reglue",
+ "lufs": -15.3
+}

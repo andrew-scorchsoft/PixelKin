@@ -1,0 +1,93 @@
+{
+ "id": "windward-stair-a",
+ "kind": "loop",
+ "where": "Windward Stair I & II (the switchback mountain route) + the Wind-Eye and Thunderroost spurs",
+ "mood": "The Long Climb — airy, building, breath-quickening; each phrase re-launches a step higher so the loop feels like ascent.",
+ "bpm": 116,
+ "beats_per_bar": 4,
+ "motif": null,
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "116 BPM",
+  "bright A major",
+  "4/4",
+  "noble sampled French horn melody climbing in stepwise terraces",
+  "warm sampled string section carrying the harmony",
+  "plucked sampled bass stepping like footsteps on stone",
+  "sampled snare and timpani in a marching cadence, footsteps rather than a dance beat",
+  "soft wind swell cresting every four bars",
+  "mountain climbing route theme, determined, airy and adventurous, sunset thinning to cold blue",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "dance groove",
+  "disco",
+  "electronic dance beat",
+  "heavy sub bass",
+  "electric guitar",
+  "fade out",
+  "sad"
+ ],
+ "sections": [
+  {
+   "name": "Horn Call",
+   "bars": 3,
+   "text": "{a horn call rings out and echoes off the cliffs, the strings answer, and the march sets off on the next downbeat}",
+   "styles": [
+    "horn call opening",
+    "echo across the mountains"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the climbing melody on the horn: a rising leap that overshoots, then a stepwise settle, the phrase re-launched a step higher; snare and timpani march beneath}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "ascending sequence"
+   ]
+  },
+  {
+   "name": "Main Theme Higher",
+   "bars": 8,
+   "text": "{the theme sequenced one step higher, strings doubling the horn, a bell counter-line glinting, the wind swell cresting at each switchback}",
+   "styles": [
+    "rising sequence",
+    "bell counter-melody",
+    "fuller arrangement",
+    "gaining altitude"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a breath on a ledge in F sharp minor and D major, a flute sings long notes over held strings looking out over the drop, then a timpani roll builds back up}",
+   "styles": [
+    "F sharp minor",
+    "panoramic",
+    "breather",
+    "building back"
+   ]
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the climb resumes at full stride, horns and strings together at their brightest; the last bar steps down to the E dominant and leads straight back into the theme}",
+   "styles": [
+    "main theme return",
+    "triumphant stride",
+    "seamless loop"
+   ]
+  }
+ ],
+ "_note": "2026-10: owner found the 132 BPM kick-and-snare version 'too dancey' — now a 116 BPM orchestral march on foot (horns, strings, snare + timpani, no kick)."
+}

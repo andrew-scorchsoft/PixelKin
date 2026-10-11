@@ -54,6 +54,10 @@ jobs:
       # is itself reachable. FAILs a prop sealing a warden/band/cache, a beat that
       # needs a LATER Gift than canon, and any unreached map/content/warp. Uses
       # node + esbuild (from npm ci) to dump the content registries.
+      - name: Remastered-music manifest + music page data are current
+        run: |
+          python3 tools/audio/build_remaster_manifest.py --check
+          node tools/build/build_music_data.mjs --check
       - name: Journey audit (tile-level cold open -> dawn replay)
         run: python3 tools/maps/audit_journey.py
       - name: Python tools compile (builders, runners, asset tools)
@@ -86,3 +90,10 @@ jobs:
         run: python3 .claude/skills/generate-sprite-sheet/scripts/validate_sprites.py --all
       - name: Walk-cycle facing (no stray frame breaks the cycle)
         run: python3 .claude/skills/generate-sprite-sheet/scripts/check_walk_facing.py $(ls assets/trainers/*.png | grep -v _actions)
+      # A generated take often fades out mid-cue; glued into a loop that became 10-30 s of
+      # near-silence (the boss battle went quiet for 25 s). FAILs any loop body with dead
+      # air or a cue with a silent lead-in.
+      - name: Remastered music has no dead air
+        run: |
+          command -v ffmpeg >/dev/null || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
+          python3 tools/audio/dead_air.py

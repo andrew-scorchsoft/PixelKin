@@ -1,0 +1,92 @@
+{
+ "id": "sunken-solarium-c",
+ "kind": "loop",
+ "where": "The Unrisen Stair (Three Hours site III, the Dawn-that-waited) + after its catch + the Old Light's 5th floor",
+ "mood": "Sunsketch Bloom: the relit reading - daylight surging back into the drowned garden, the motif sung twice and the second time brighter; the score reaching toward dawn.",
+ "bpm": 100,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "high"
+ },
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "100 BPM",
+  "radiant G major",
+  "bright singing pulse-wave lead with lifting phrases",
+  "warm second lead answering the melody a bar later in call and response",
+  "quick shimmering harp arpeggios over a lush warm string pad bloom",
+  "warm walking synth bass",
+  "soft full drum kit with light shaker, gentle forward groove",
+  "radiant, hopeful, dawn-reaching sunrise theme",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "singing",
+  "fade out",
+  "ritardando",
+  "electric guitar",
+  "ambient drone",
+  "minimalist",
+  "dark",
+  "melancholy",
+  "bombastic orchestral"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{a sunrise opening: a rapid harp arpeggio sweeping upward, the pad blooming like light breaking the horizon, a bright held chord that springs into the theme}",
+   "styles": [
+    "sunrise opening",
+    "blooming"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the radiant hometown-derived melody, warm and lifting, harp shimmering, the bass walking forward}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "warmth returning"
+   ]
+  },
+  {
+   "name": "Answer",
+   "bars": 8,
+   "text": "{the melody sung again, now answered phrase by phrase by the warm second lead a bar later, brighter and fuller - call and response}",
+   "styles": [
+    "call and response",
+    "counter-melody",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a hush in E minor and C major, the drums drop out, long reaching notes like a figure facing east and waiting, then a rising build of harp toward the light}",
+   "styles": [
+    "E minor",
+    "expectant",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the radiant theme returns in full bloom, both leads together; the last bar leads straight back into the main theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

@@ -12,10 +12,11 @@ API: POST https://api.elevenlabs.io/v1/music
   - Body:    { prompt, music_length_ms, model_id, force_instrumental, seed }
   - Returns: binary audio (mp3 by default) on success.
 
-Model note: the public API currently exposes only `music_v1`. Music v2 exists
-but is early-access-only on the API as of mid-2026. The model is therefore
-overridable without a code change via ELEVENLABS_MUSIC_MODEL or --model, so the
-day v2 opens up you just flip the env var. See SKILL.md.
+Model note (API reference re-checked 2026-10): model_id is one of `music_v1`
+(the API default), `music_v2`, `music_v2_5`. We default to `music_v2_5`, the best
+for prompt adherence and audio quality. Overridable via ELEVENLABS_MUSIC_MODEL or
+--model. The account allows 2 concurrent requests; 429s are retried with backoff.
+For loops, cut the render with tools/audio/make_loop.py. See SKILL.md.
 
 The script does NOT judge the result. The calling agent (Claude) is expected to
 listen to / inspect the output and re-invoke with an adjusted --prompt if it
@@ -37,7 +38,7 @@ PRESETS_PATH = SCRIPT_DIR / "presets.json"
 
 MUSIC_ENDPOINT = "https://api.elevenlabs.io/v1/music"
 
-DEFAULT_MODEL = os.environ.get("ELEVENLABS_MUSIC_MODEL", "music_v1")
+DEFAULT_MODEL = os.environ.get("ELEVENLABS_MUSIC_MODEL", "music_v2_5")
 # Default output format. mp3_44100_128 is available on all tiers; 192kbps needs
 # Creator tier or above. Overridable via --output-format.
 DEFAULT_OUTPUT_FORMAT = os.environ.get("ELEVENLABS_MUSIC_OUTPUT_FORMAT", "mp3_44100_128")
@@ -114,25 +115,59 @@ def resolve_preset(preset: str | None, presets: dict) -> str:
     return presets[preset]["prompt_suffix"]
 
 
+import contextlib
+import fcntl
+import tempfile
+
+SLOT_DIR = Path(os.environ.get("ELEVENLABS_SLOT_DIR", Path(tempfile.gettempdir()) / "elevenlabs-music-slots"))
+MAX_CONCURRENT = int(os.environ.get("ELEVENLABS_MAX_CONCURRENT", "2"))
+
+
+@contextlib.contextmanager
+def api_slot():
+    """Machine-wide semaphore (flock on N slot files) so parallel agents/processes
+    never exceed the account's concurrent-request cap (2) and 429 each other."""
+    SLOT_DIR.mkdir(parents=True, exist_ok=True)
+    while True:
+        for i in range(MAX_CONCURRENT):
+            f = open(SLOT_DIR / f"slot{i}.lock", "w")
+            try:
+                fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError:
+                f.close()
+                continue
+            try:
+                yield
+            finally:
+                fcntl.flock(f, fcntl.LOCK_UN)
+                f.close()
+            return
+        time.sleep(1.0)
+
+
 def _backoff_seconds(attempt: int, retry_after_header: str | None) -> float:
     if retry_after_header:
         try:
             return max(0.0, min(60.0, float(retry_after_header.strip())))
         except ValueError:
             pass
-    return float(2 ** attempt)
+    return float(5 * (attempt + 1))  # a 429 here is usually the 2-concurrent cap
 
 
 def compose_music(
-    prompt: str,
+    prompt: str | None,
     *,
+    plan: dict | None = None,
+    store: bool = False,
     length_ms: int | None,
     model: str,
     output_format: str,
     force_instrumental: bool,
     seed: int | None,
     max_retries: int,
-) -> bytes:
+) -> tuple[bytes, str | None]:
+    """Returns (audio, song_id). song_id comes from the `song-id` response header
+    and is what a later composition plan's `conditioning_ref` points at."""
     api_key = os.environ.get("ELEVENLABS_API_KEY")
     if not api_key:
         raise SystemExit(
@@ -140,15 +175,22 @@ def compose_music(
             "file at the project root."
         )
 
-    body: dict = {
-        "prompt": prompt,
-        "model_id": model,
-        "force_instrumental": force_instrumental,
-    }
-    if length_ms is not None:
-        body["music_length_ms"] = length_ms
-    if seed is not None:
-        body["seed"] = seed
+    body: dict = {"model_id": model}
+    if plan is not None:
+        # composition_plan mode: no prompt/length/force_instrumental allowed;
+        # instrumental-ness rides the chunk styles (negative "vocals").
+        body["composition_plan"] = plan
+        if seed is not None:
+            body["seed"] = seed
+    else:
+        body["prompt"] = prompt
+        body["force_instrumental"] = force_instrumental
+        if length_ms is not None:
+            body["music_length_ms"] = length_ms
+        if seed is not None:
+            print("note: the API rejects seed with a prompt; ignoring --seed", file=sys.stderr)
+    if store:
+        body["store_for_inpainting"] = True
 
     headers = {"xi-api-key": api_key, "Content-Type": "application/json"}
     params = {"output_format": output_format}
@@ -156,13 +198,14 @@ def compose_music(
     last_err: Exception | None = None
     for attempt in range(max_retries + 1):
         try:
-            r = requests.post(
-                MUSIC_ENDPOINT,
-                headers=headers,
-                params=params,
-                json=body,
-                timeout=300,
-            )
+            with api_slot():
+                r = requests.post(
+                    MUSIC_ENDPOINT,
+                    headers=headers,
+                    params=params,
+                    json=body,
+                    timeout=600,
+                )
             if r.status_code >= 500 or r.status_code == 429:
                 last_err = RuntimeError(f"HTTP {r.status_code}: {r.text[:300]}")
                 if attempt < max_retries:
@@ -180,7 +223,7 @@ def compose_music(
                 raise SystemExit(
                     f"Expected audio but got JSON: {r.text[:500]}"
                 )
-            return r.content
+            return r.content, r.headers.get("song-id")
         except (requests.ConnectionError, requests.Timeout) as e:
             last_err = e
             if attempt < max_retries:
@@ -188,6 +231,25 @@ def compose_music(
                 continue
             raise
     raise RuntimeError(f"All retries exhausted: {last_err}")
+
+
+def upload_song(path: Path, model: str) -> dict:
+    """POST /v1/music/upload — store OUR OWN audio (e.g. an approved theme) so plans
+    can condition on it. Costs like a generation. Returns {song_id, composition_plan}."""
+    api_key = os.environ.get("ELEVENLABS_API_KEY")
+    if not api_key:
+        raise SystemExit("ELEVENLABS_API_KEY is not set.")
+    with path.open("rb") as f, api_slot():
+        r = requests.post(
+            MUSIC_ENDPOINT + "/upload",
+            headers={"xi-api-key": api_key},
+            data={"extract_composition_plan": model},
+            files={"file": (path.name, f, "audio/mpeg")},
+            timeout=600,
+        )
+    if not r.ok:
+        raise SystemExit(f"ElevenLabs upload error {r.status_code}: {r.text[:500]}")
+    return r.json()
 
 
 def main() -> int:
@@ -209,7 +271,10 @@ def main() -> int:
         help="Allow vocals. Default is instrumental, which is what game loops want.",
     )
     p.add_argument("--seed", type=int, default=None, help="Seed for reproducible output.")
-    p.add_argument("--max-retries", type=int, default=2, help="Retry count for API errors.")
+    p.add_argument("--max-retries", type=int, default=6, help="Retry count for API errors.")
+    p.add_argument("--plan", help="Composition-plan JSON file ({chunks:[...]} for v2/v2.5). Replaces --prompt.")
+    p.add_argument("--store", action="store_true", help="store_for_inpainting: keep the song referenceable by song_id.")
+    p.add_argument("--upload", metavar="AUDIO", help="Upload our own audio for conditioning/inpainting; prints song_id + extracted plan.")
     p.add_argument("--list-presets", action="store_true")
     args = p.parse_args()
 
@@ -220,9 +285,21 @@ def main() -> int:
             print(f"  use for: {meta['use_for']}")
         return 0
 
-    if not args.prompt or not args.output:
-        p.error("--prompt and --output are required (use --list-presets to inspect presets).")
-    if not args.prompt.strip():
+    if args.upload:
+        res = upload_song(Path(args.upload), args.model)
+        out = json.dumps(res, indent=2)
+        if args.output:
+            Path(args.output).write_text(out)
+        print(out)
+        return 0
+
+    plan = None
+    if args.plan:
+        plan = json.loads(Path(args.plan).read_text())
+        plan = plan.get("composition_plan", plan)
+    if (not args.prompt and plan is None) or not args.output:
+        p.error("--output and one of --prompt/--plan are required (use --list-presets to inspect presets).")
+    if args.prompt is not None and not args.prompt.strip():
         p.error("--prompt must not be empty or whitespace.")
 
     length_ms: int | None = None
@@ -245,10 +322,14 @@ def main() -> int:
         )
 
     preset_suffix = resolve_preset(args.preset, presets)
-    full_prompt = args.prompt if not preset_suffix else f"{args.prompt}. {preset_suffix}"
+    full_prompt = None
+    if plan is None:
+        full_prompt = args.prompt if not preset_suffix else f"{args.prompt}. {preset_suffix}"
 
-    audio = compose_music(
+    audio, song_id = compose_music(
         full_prompt,
+        plan=plan,
+        store=args.store,
         length_ms=length_ms,
         model=args.model,
         output_format=args.output_format,
@@ -269,7 +350,9 @@ def main() -> int:
         "length_seconds": args.length,
         "instrumental": not args.vocals,
         "seed": args.seed,
-        "prompt_chars": len(full_prompt),
+        "song_id": song_id,
+        "plan": args.plan,
+        "prompt_chars": len(full_prompt or ""),
     }
     print(json.dumps(info, indent=2))
     return 0

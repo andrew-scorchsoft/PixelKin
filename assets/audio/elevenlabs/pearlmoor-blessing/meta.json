@@ -1,0 +1,17 @@
+{
+ "id": "pearlmoor-blessing",
+ "kind": "loop",
+ "where": "The Tide-blessing festival on Pearlmoor Quay (the cutscene after the Tide Gleam is relit)",
+ "mood": "The going-out song \u2014 lantern boats on moonlit water; the quay waltz turned into a cool, glowing, sure ceremony.",
+ "duration": 66.272653,
+ "loop_start": 10.217,
+ "seam": 0.393,
+ "bpm_est": 89.1,
+ "song_id": "ZhTDnb0gasaVitBBF3NK",
+ "raw_ms": 96470,
+ "motif": "medium",
+ "lufs": -15.5,
+ "edits": [
+  "re-cut to end before the take's fade at 92.0s"
+ ]
+}

@@ -1,0 +1,97 @@
+{
+ "id": "battle-emberfall",
+ "kind": "loop",
+ "where": "Trainer battles: every Lampwarden duel for a Gleam (Brisa, Reyl, Sable, Otho), the Beacon and route trainers, and Wren's first friendly bout",
+ "mood": "The arena duel — proud, rousing and fair: a respected challenger in the lantern-light, the fight that earns a constellation.",
+ "bpm": 164,
+ "beats_per_bar": 4,
+ "motif": null,
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "164 BPM",
+  "D minor with a proud lift to F major",
+  "4/4",
+  "bold fanfare-like sampled brass melody",
+  "fast pulse-wave lead runs",
+  "galloping plucked sampled bass in octaves",
+  "sampled marching snare rolls and tom fills with timpani hits on the accents, crash cymbal on phrase starts",
+  "crash cymbal accents",
+  "proud rousing trainer duel theme",
+  "warm ember-glow fighting spirit",
+  "strong catchy melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "modern electronic dance production",
+  "drum and bass",
+  "breakbeat",
+  "heavy sub bass",
+  "electric guitar",
+  "fade out",
+  "lullaby"
+ ],
+ "sections": [
+  {
+   "name": "Challenge",
+   "bars": 4,
+   "text": "{a challenger steps forward: two bold brass hits, a snare roll, a fast rising pulse-wave run that lands on the downbeat of the duel theme}",
+   "styles": [
+    "explosive battle intro",
+    "brass fanfare hits",
+    "rising lead run"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Duel Theme",
+   "bars": 8,
+   "text": "{the duel melody: a proud, strutting brass hook with swagger, pulse-wave runs filling the gaps, galloping octave bass underneath}",
+   "styles": [
+    "main duel hook",
+    "confident swagger",
+    "memorable brass riff"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Duel Theme Reprise",
+   "bars": 8,
+   "text": "{the hook again, now on the pulse-wave lead with brass harmony underneath, the arpeggios busier, rising in intensity}",
+   "styles": [
+    "lead and brass in harmony",
+    "rising intensity"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Arena Bridge",
+   "bars": 8,
+   "text": "{contrast: a proud lift to F major, broad sustained brass chords like a cheering crowd under lantern-light, the lead soaring higher, tom fills building the tension back}",
+   "styles": [
+    "F major",
+    "anthemic heroic bridge",
+    "broad brass chords",
+    "building tom fills"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Duel Theme Return",
+   "bars": 8,
+   "text": "{back to D minor, the strutting duel hook at full power; the last bar is a snare fill on the dominant that leads straight back into the hook}",
+   "styles": [
+    "main duel hook returns",
+    "snare fill",
+    "seamless loop back to the start of the theme"
+   ],
+   "adherence": "high"
+  }
+ ],
+ "_note": "2026-10 retro pass: era-first anchor, sampled 16-bit drum kit + plucked sampled bass (fast modern-described drums drifted to drum-and-bass), short exclusion tags."
+}

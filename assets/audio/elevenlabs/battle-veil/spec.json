@@ -1,0 +1,97 @@
+{
+ "id": "battle-veil",
+ "kind": "loop",
+ "where": "Rival battles with Wren (Pale Vault, Nightreach, and the post-game rematch)",
+ "mood": "The rival who grew up beside you — cocky, quick, competitive and fond: a grin across the field, and the friendship under it.",
+ "bpm": 162,
+ "beats_per_bar": 4,
+ "motif": null,
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "162 BPM",
+  "E minor with a warm turn to G major",
+  "4/4",
+  "cocky bouncy syncopated pulse-wave lead melody",
+  "plucked sampled electric bass walking in octaves",
+  "sampled snare backbeat and tom fills over a light kick on beats one and three, crash cymbal on each phrase start",
+  "bright brass stabs",
+  "quick twin-lead harmonies",
+  "competitive rival battle theme, spirited and playful with a heart of friendship",
+  "strong catchy hummable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "drum and bass",
+  "heavy sub bass",
+  "electric guitar",
+  "fade out",
+  "lullaby"
+ ],
+ "sections": [
+  {
+   "name": "Rival Appears",
+   "bars": 3,
+   "text": "{a cocky sampled drum fill on snare and toms with a plucked-bass pickup, then the rival theme kicks in on the downbeat}",
+   "styles": [
+    "16-bit drum fill intro",
+    "playful swagger"
+   ],
+   "negative": [
+    "fade in"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Rival Theme",
+   "bars": 8,
+   "text": "{the rival hook: a cheeky, bouncy syncopated melody with attitude, answered by brass stabs, the octave bass strutting underneath}",
+   "styles": [
+    "main rival hook",
+    "cheeky attitude",
+    "memorable riff"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Rival Theme Reprise",
+   "bars": 8,
+   "text": "{the hook again with a second lead harmonising a third below, like two friends racing neck and neck, a little faster-feeling}",
+   "styles": [
+    "twin lead harmony",
+    "friendly competition",
+    "fuller arrangement"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Friendship Bridge",
+   "bars": 8,
+   "text": "{contrast: a warm turn to G major, a heartfelt broad melody over sustained strings and brass, two friends from the same hometown, then a quick drum fill revs back up}",
+   "styles": [
+    "G major",
+    "heartfelt warm bridge",
+    "nostalgic friendship",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Rival Theme Return",
+   "bars": 8,
+   "text": "{back to E minor, the cheeky rival hook at full speed; the last bar is a snappy drum fill leading straight back into the hook}",
+   "styles": [
+    "main rival hook returns",
+    "drum fill",
+    "seamless loop back to the start of the theme"
+   ],
+   "adherence": "high"
+  }
+ ],
+ "_note": "motif dropped (2026-10): conditioning on the lullaby pulled the take to ~90 BPM and a cosy palette — it played 'chill', not battle. Battles keep their spec tempo unconditioned. | 2026-10 retro pass: era-first anchor, sampled 16-bit drum kit + plucked sampled bass (fast modern-described drums drifted to drum-and-bass), short exclusion tags. | 2026-10 EDM pass: 'kick on a brisk beat' gave a four-on-the-floor + pumping EDM feel (edm_check.py); percussion now retro (snare backbeat, toms, timpani, tambourine, brushes)."
+}

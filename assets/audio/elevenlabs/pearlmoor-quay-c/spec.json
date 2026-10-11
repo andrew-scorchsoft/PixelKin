@@ -1,0 +1,86 @@
+{
+ "id": "pearlmoor-quay-c",
+ "kind": "loop",
+ "where": "The top of the Old Light on Pearlmoor Point — the joke-tower's punchline lantern room and its celebratory send-off",
+ "mood": "Festival of the floating lights — the quay waltz in its happiest dress, quick, ornamented and playful.",
+ "bpm": 116,
+ "beats_per_bar": 3,
+ "motif": null,
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "116 BPM",
+  "F major",
+  "3/4 waltz time",
+  "lively accordion-like pulse-wave lead with quick grace-note runs",
+  "busy bell-buoy chimes and bright sparkle on phrase ends",
+  "bouncy oom-pah-pah waltz bass",
+  "tambourine and brushed snare on the waltz offbeats, a soft bass drum on each downbeat only",
+  "seaside festival dance, celebratory, playful and a little cheeky",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "drum and bass",
+  "heavy sub bass",
+  "electric guitar",
+  "fade out",
+  "melancholy"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{a bright festive fanfare: a quick tambourine pickup and a flourish of grace-note runs on the lead, landing on a held chord that springs straight into the waltz}",
+   "styles": [
+    "festive opening flourish",
+    "celebratory"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 12,
+   "text": "{the waltz melody bright and quick, ornamented with grace notes, swinging on every downbeat, hummable and joyful}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "dancing"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 12,
+   "text": "{the same waltz again with a pizzicato and bell counter-line hopping on the offbeats, a little cheeky, fuller}",
+   "styles": [
+    "playful counter-melody",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a short comic tiptoe in D minor, staccato and sly like a joke being set up, then a rising run tumbles back into the theme}",
+   "styles": [
+    "D minor",
+    "playful staccato",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 12,
+   "text": "{the festive waltz returns in full swing; the last bar springs straight back into the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ],
+ "_note": "2026-10 retro + tempo pass: motif dropped (it pinned the take to ~90 BPM); era-first anchor, retro kit/bass; opening shape chosen per scene. | 2026-10 EDM pass: 'kick on a brisk beat' gave a four-on-the-floor + pumping EDM feel (edm_check.py); percussion now retro (snare backbeat, toms, timpani, tambourine, brushes)."
+}

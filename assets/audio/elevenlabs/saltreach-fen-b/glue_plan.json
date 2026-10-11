@@ -1,0 +1,48 @@
+{
+ "chunks": [
+  {
+   "song_id": "mGdPDVnooDBjHjXhpktv",
+   "range": {
+    "start_ms": 60500,
+    "end_ms": 80500
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "92 BPM",
+    "6/8 compound time with a slow rocking lilt",
+    "D Dorian mode",
+    "lonely breathy pulse-wave and flute lead, one drifting questioning phrase every two bars",
+    "faint bell-buoy chime arpeggios in triplet lilt",
+    "deep slow lilting synth bass rocking like a moored boat",
+    "soft misty string pad",
+    "almost no percussion, a soft noise wash swell like moving mist",
+    "haunting, lonely, misty night marsh, between places",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "mGdPDVnooDBjHjXhpktv",
+   "range": {
+    "start_ms": 5217,
+    "end_ms": 15217
+   }
+  }
+ ]
+}

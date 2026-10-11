@@ -1,0 +1,18 @@
+{
+ "id": "sunken-solarium-b",
+ "kind": "loop",
+ "where": "Sunken Solarium Lumenary (Lucan Pyre's flooded stage hall) + the Last-Warm-Day festival bed",
+ "mood": "Drowned Halls: the same sun-garden with the water winning - cooler, lonelier, a summer theme recoloured into its relative minor; bittersweet warmth spent knowing it fades.",
+ "duration": 95.043,
+ "loop_start": 8.363,
+ "seam": 0.088,
+ "bpm_est": 89.1,
+ "song_id": "AOSDwedeiuhvEPwuJl3j",
+ "raw_ms": 91000,
+ "motif": "low",
+ "warning": "dead air 4.0s in the loop body",
+ "lufs": -15.5,
+ "edits": [
+  "trimmed 2.690s of head"
+ ]
+}

@@ -1,0 +1,93 @@
+{
+ "id": "cinderhead-mine-c",
+ "kind": "loop",
+ "where": "Cinderhead Deep (the three descent galleries to the old crew's vigil-lamp)",
+ "mood": "The deep galleries where dense crystal turns the dark luminous — a sparkle-led descent, minor warming to its relative major.",
+ "bpm": 82,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "low"
+ },
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "82 BPM",
+  "A minor warming to C major",
+  "bright glassy bell lead singing an ascending sparkling melody",
+  "glassy ascending bell arpeggios catching light",
+  "low synth bass drone that rises stepwise and warms",
+  "dark warm string pad",
+  "soft distant pick-tap percussion, bright chime shimmer",
+  "deep crystal cavern dungeon, hopeful discovery in the dark",
+  "echoing cave reverb",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "singing",
+  "electric guitar",
+  "fade out",
+  "ritardando",
+  "cheerful",
+  "busy drums",
+  "ambient drone without melody",
+  "horror",
+  "epic orchestral"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 3,
+   "text": "{a quiet atmospheric entrance into the deep: a low drone, a distant pick-tap, then a slow upward sparkle of crystal bells as your lamp catches the veins}",
+   "styles": [
+    "quiet atmospheric opening",
+    "crystals catching lamplight"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the bell melody climbs: a rising leap in A minor reaching upward step by step, glinting arpeggios rising beneath it, steady and searching}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "searching descent"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the melody again with a second bell answering a third above and the pad warming, the bass beginning to climb}",
+   "styles": [
+    "bell harmony",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 6,
+   "text": "{contrast: the gallery gleams — a lift into C major, the melody finally lands bright and high over a rising bass, luminous and hopeful, a crystal chamber full of light, then shadow returns}",
+   "styles": [
+    "C major",
+    "luminous",
+    "hopeful discovery",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the climbing bell melody returns in A minor; the last bar leads straight back into the main theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

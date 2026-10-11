@@ -1,0 +1,98 @@
+{
+ "id": "pale-vault-glacier-c",
+ "kind": "loop",
+ "where": "The Pale Vault Undercroft + the Hourfold (the deep-ice site of the Still Hour); returns after Noctilune is caught",
+ "mood": "Glasslight — the glacier as a lush luminous reverie: ringing suspended chords, bell entries blooming and dissolving into echo; vast, sacred, still.",
+ "bpm": 66,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "low"
+ },
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "66 BPM",
+  "suspended C major with a Lydian F sharp glint",
+  "soft bell-pad lead with long shimmering tones",
+  "layered glassy chime arpeggios",
+  "lush sustained suspended string pad chords",
+  "deep warm still low string pad",
+  "a single soft reversed-cymbal swell every four bars, free-floating and beatless",
+  "warm reverb and echo",
+  "vast sacred ice cavern lit from within, awe and stillness",
+  "slow memorable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "singing",
+  "fade out",
+  "ritardando",
+  "ending",
+  "electric guitar",
+  "drum beat",
+  "upbeat",
+  "cheerful",
+  "horror",
+  "dissonant",
+  "modern cinematic trailer"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{a quiet luminous entrance: a reversed-cymbal swell breathes in, a high glass chime rings and echoes into the dark, a deep pad wakes beneath}",
+   "styles": [
+    "atmospheric entrance",
+    "deep ice",
+    "reverb"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{slow bell entries: a rising lift G, C, D blooming into a sustained suspended chord, then a descending settle that dissolves into echo; glassy arpeggios turning above}",
+   "styles": [
+    "main theme",
+    "memorable slow hook",
+    "luminous",
+    "suspended chords"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the bell melody again, doubled by a soft high string line, the chime arpeggio layering into a shimmering canopy, the Lydian F sharp glinting}",
+   "styles": [
+    "string doubling",
+    "shimmering canopy",
+    "Lydian glint"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 4,
+   "text": "{contrast: a hushed dip to A minor and F major, the bells fall silent and only the pad and a low solemn line remain, like midnight held in the ice, then a swell rises}",
+   "styles": [
+    "A minor",
+    "solemn",
+    "hushed",
+    "contrast"
+   ]
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the bells return luminous over the full suspended chords; the last bar holds a D suspended colour that dissolves straight back into the opening lift}",
+   "styles": [
+    "main theme return",
+    "luminous",
+    "seamless loop"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,112 @@
+{
+ "id": "battle-hours",
+ "kind": "loop",
+ "where": "The Three Hours set-piece battles (Gloamber, Noctilune, Erstmorn — the legendary trio)",
+ "mood": "Fighting a keeper of the sky's turning — awed, patient and vast, like a great clock: a jammed wheel rocking toward the next hour.",
+ "bpm": 76,
+ "beats_per_bar": 3,
+ "motif": null,
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "76 BPM",
+  "A minor",
+  "3/4 waltz time like a great clock",
+  "low pendulum bass swinging root and fifth every bar",
+  "deep tolling tower bell on the hour",
+  "patient majestic minor lead melody",
+  "warm sampled string chords",
+  "soft clock-tick percussion: woodblock and tom on the downbeat",
+  "awed mysterious legendary encounter, vast and ancient, solemn but tense",
+  "strong memorable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "singing",
+  "choir",
+  "electric guitar distortion",
+  "rock guitar",
+  "orchestral film score",
+  "fade out",
+  "ritardando",
+  "ending",
+  "fast tempo",
+  "rock drum kit",
+  "happy",
+  "4/4 time"
+ ],
+ "sections": [
+  {
+   "name": "The Hour Strikes",
+   "bars": 2,
+   "text": "{on beat one: a sharp orchestral hit with timpani, the pendulum bass and ticking percussion already in motion, straight into the theme}",
+   "styles": [
+    "dramatic battle intro",
+    "full ensemble from the first beat",
+    "pendulum bass in motion",
+    "3/4 time"
+   ],
+   "negative": [
+    "fade in",
+    "slow intro",
+    "quiet opening",
+    "build-up",
+    "swell",
+    "ambient intro",
+    "silence",
+    "lone bell"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "First Strophe",
+   "bars": 8,
+   "text": "{the patient minor melody rises in a lifting leap then settles stepwise, over the swinging pendulum bass and clock-tick percussion; the phrase hangs unresolved on the minor fifth chord}",
+   "styles": [
+    "main theme",
+    "majestic",
+    "ticking clock pulse"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Second Strophe",
+   "bars": 8,
+   "text": "{the melody again an octave higher with strings fuller and a bell marking every second bar; the cadence falls deceptively to the sixth chord}",
+   "styles": [
+    "fuller strings",
+    "bell hour-marks",
+    "rising awe"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "The Turning Wheel",
+   "bars": 8,
+   "text": "{contrast: the music turns to F major and C major, the melody broader and more urgent, timpani rolls and a rising string line, the great wheel straining to turn}",
+   "styles": [
+    "contrasting section",
+    "rising urgency",
+    "timpani rolls",
+    "straining toward resolution"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Third Strophe",
+   "bars": 8,
+   "text": "{the patient minor melody returns in full; it finally reaches the major dominant chord with a strong leading tone, and the last bar leads straight back into the first strophe}",
+   "styles": [
+    "main theme returns",
+    "harmonic minor dominant",
+    "seamless loop back to the start of the theme"
+   ],
+   "adherence": "high"
+  }
+ ]
+}

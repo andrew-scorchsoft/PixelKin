@@ -1,0 +1,51 @@
+{
+ "id": "sting-hour",
+ "kind": "oneshot",
+ "where": "The Three Hours' threshold — the moment an Hour is met, just before its set-piece battle",
+ "mood": "A single great bell tolls the hour: deep, awed, with a long shimmering tail.",
+ "bpm": 80,
+ "beats_per_bar": 4,
+ "motif": null,
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "80 BPM",
+  "A minor",
+  "single deep tower bell toll",
+  "low timpani swell under the bell",
+  "high shimmering celesta and bell motes",
+  "awed ancient mysterious sting",
+  "sparse and spacious with warm reverb",
+  "short complete sting with a ringing tail",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "singing",
+  "choir",
+  "electric guitar distortion",
+  "orchestral film score",
+  "drums",
+  "beat",
+  "melody",
+  "loop",
+  "happy"
+ ],
+ "sections": [
+  {
+   "name": "Toll",
+   "bars": 2,
+   "text": "{one deep low bell toll on A with a soft low timpani swell underneath, then a few quiet high shimmering bell motes drifting down as the toll rings out to silence}",
+   "styles": [
+    "single bell toll",
+    "shimmering tail",
+    "ring out to silence"
+   ],
+   "adherence": "high"
+  }
+ ]
+}

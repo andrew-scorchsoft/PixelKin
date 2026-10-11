@@ -64,6 +64,8 @@ export interface Settings {
   battlePace?: 'cosy' | 'swift';
   /** Stepped master volume for background music (OFF/LOW/MID/FULL). */
   musicVolume?: 'off' | 'low' | 'mid' | 'full';
+  /** Soundtrack style: the remastered score (default) or the classic chip renders. */
+  musicStyle?: 'remastered' | 'classic';
   /** Stepped master volume for sound effects (OFF/LOW/MID/FULL). */
   sfxVolume?: 'off' | 'low' | 'mid' | 'full';
   /** Cannot-die mode: a lost battle restores the party where you stand (no

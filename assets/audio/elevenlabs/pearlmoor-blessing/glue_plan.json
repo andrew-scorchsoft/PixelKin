@@ -1,0 +1,47 @@
+{
+ "chunks": [
+  {
+   "song_id": "ZhTDnb0gasaVitBBF3NK",
+   "range": {
+    "start_ms": 76470,
+    "end_ms": 96470
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "112 BPM",
+    "F major",
+    "3/4 waltz time",
+    "warm accordion-like pulse-wave lead singing a processional waltz melody",
+    "flowing harp arpeggios like lantern light on water over a lush string pad",
+    "deep tolling harbour bell on phrase starts",
+    "rocking waltz bass like a moored hull",
+    "moonlit lantern-boat festival, cool and glowing, celebratory but tender, a hymn-like communal song",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "ZhTDnb0gasaVitBBF3NK",
+   "range": {
+    "start_ms": 6429,
+    "end_ms": 16429
+   }
+  }
+ ]
+}

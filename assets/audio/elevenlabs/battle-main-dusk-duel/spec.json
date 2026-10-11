@@ -1,0 +1,98 @@
+{
+ "id": "battle-main-dusk-duel",
+ "kind": "loop",
+ "where": "Every wild kin battle (the default battle bed) and the attract-mode trailer duel",
+ "mood": "The fight you hear a thousand times — urgent, catchy and winnable: a minor-key chase that bursts into a heroic major lift.",
+ "bpm": 158,
+ "beats_per_bar": 4,
+ "motif": null,
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "158 BPM",
+  "A minor with a heroic lift to C major",
+  "4/4",
+  "fast syncopated sawtooth lead melody with leaping hooks",
+  "plucked sampled bass pumping root and fifth in eighth notes",
+  "sampled snare backbeat with tom fills and snare rolls into each phrase, a light kick on beats one and three, crash cymbal on phrase starts",
+  "stabbing sampled brass answering the lead",
+  "driving sixteenth-note pulse arpeggio",
+  "urgent exciting creature battle theme, thrilling, bright and winnable",
+  "strong catchy hummable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "modern electronic dance production",
+  "drum and bass",
+  "breakbeat",
+  "heavy sub bass",
+  "electric guitar",
+  "fade out",
+  "lullaby"
+ ],
+ "sections": [
+  {
+   "name": "Battle Start",
+   "bars": 2,
+   "text": "{a sampled snare roll and a brass stab pickup that land straight on the battle theme}",
+   "styles": [
+    "quick battle pickup"
+   ],
+   "negative": [
+    "fade in"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Battle Theme",
+   "bars": 8,
+   "text": "{the main battle hook: a short leaping syncopated phrase on the sawtooth lead, then a bar of space that the brass stabs answer; the pumping bass drives on unbroken}",
+   "styles": [
+    "main battle hook",
+    "call and response with brass",
+    "memorable riff"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Battle Theme Reprise",
+   "bars": 8,
+   "text": "{the same hook again, sequenced higher, a twin lead a third below, the arpeggio busier, climbing tension on the harmonic-minor dominant}",
+   "styles": [
+    "twin lead harmony",
+    "rising tension",
+    "fuller arrangement"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Heroic Lift",
+   "bars": 8,
+   "text": "{contrast: the hook turns heroic in C major, sustained brass chords, steady sampled march drums with crash cymbals, the melody climbing to a high climax — courage, we can win this}",
+   "styles": [
+    "C major",
+    "heroic triumphant lift",
+    "sustained brass",
+    "anthemic chord progression"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Battle Theme Return",
+   "bars": 8,
+   "text": "{back to A minor, the main battle hook in full force; a dominant cadence with a drum fill in the last bar slams straight back into the hook}",
+   "styles": [
+    "main battle hook returns",
+    "drum fill",
+    "seamless loop back to the start of the theme"
+   ],
+   "adherence": "high"
+  }
+ ],
+ "_note": "motif dropped (2026-10): conditioning pulled the take onto the lullaby's ~90/180 BPM grid; driving cues keep their spec tempo unconditioned. | 2026-10 retro pass: era-first anchor, sampled 16-bit drum kit + plucked sampled bass (fast modern-described drums drifted to drum-and-bass), short exclusion tags."
+}

@@ -1,0 +1,91 @@
+{
+ "id": "pearlmoor-quay-b",
+ "kind": "loop",
+ "where": "Pearlmoor's outskirts — the allotment hill behind the quay and Pearlmoor Point (the Old Light headland)",
+ "mood": "Low tide, lantern strings — the quay waltz late and quiet, a lonely-but-cosy sway on the edge of town.",
+ "bpm": 92,
+ "beats_per_bar": 3,
+ "motif": {
+  "strength": "medium"
+ },
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "92 BPM",
+  "D minor",
+  "3/4 waltz time",
+  "soft accordion-like pulse-wave lead with a lilting waltz melody",
+  "sparse bell-buoy chimes ringing into the gaps",
+  "warm low string pad",
+  "slow rocking waltz bass, root then gentle fifths",
+  "seaside town late at night, lanterns swaying between masts, wistful and lonely but cosy",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "singing",
+  "fade out",
+  "ritardando",
+  "loud drums",
+  "guitar",
+  "ambient drone",
+  "minimalist",
+  "upbeat",
+  "ending"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{a gentle waltz call on the night air: a lone bell-buoy chime, then the accordion lead sways in with the first rising phrase of the waltz and leans onto the home chord, leading into the theme}",
+   "styles": [
+    "gentle waltz opening",
+    "night sea air"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the waltz melody in D minor, bare and swaying, the rising lift landing on each downbeat and settling back over beats two and three; hummable and clear}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "lonely sway"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the same waltz again with a soft flute counter-line answering each phrase, strings a little fuller, the bells ringing into the gaps}",
+   "styles": [
+    "flute counter-melody",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a warmer turn to F major, like a lit window up on the hill, the melody rising higher and kinder, then drifting back down toward the minor}",
+   "styles": [
+    "F major",
+    "warm glimmer",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the waltz returns in D minor, calm and swaying; the last bar sways straight back into the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

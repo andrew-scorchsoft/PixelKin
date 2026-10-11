@@ -1,0 +1,118 @@
+{
+ "id": "battle-boss-eclipse",
+ "kind": "loop",
+ "where": "The final battles: Warden Còr at the Umbral Spire summit, and Star-tender Fenn's post-game duel",
+ "mood": "The last stand on the black mountain — grand, tragic and driving: a sorrowful antagonist who wants a gentle endless night, and the light that will not go out.",
+ "bpm": 144,
+ "beats_per_bar": 4,
+ "motif": null,
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "144 BPM",
+  "B minor with a hopeful lift to D major",
+  "4/4",
+  "grand sampled pipe organ",
+  "driving sixteenth-note synth bass ostinato",
+  "timpani rolls and heavy sampled battle drums",
+  "soaring sawtooth lead melody",
+  "powerful brass chords",
+  "final boss battle theme, epic, tragic, sorrowful and dignified",
+  "strong memorable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "singing",
+  "choir",
+  "electric guitar distortion",
+  "rock guitar",
+  "orchestral film score",
+  "fade out",
+  "ritardando",
+  "ending",
+  "comedic",
+  "cartoonish villain",
+  "horror ambience",
+  "metal"
+ ],
+ "sections": [
+  {
+   "name": "Eclipse",
+   "bars": 4,
+   "text": "{one colossal organ and brass chord, then it falls away to a lone low organ note and a heartbeat timpani for a held breath, then the boss theme crashes in}",
+   "styles": [
+    "huge opening hit that drops to a hush",
+    "held-breath pause",
+    "tragic grandeur"
+   ],
+   "negative": [
+    "fade in",
+    "slow build from silence",
+    "drum break"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Boss Theme",
+   "bars": 8,
+   "text": "{the boss theme: a grand, sorrowful minor melody on the soaring lead over a relentless sixteenth-note bass ostinato and organ chords, heavy and driving}",
+   "styles": [
+    "main boss hook",
+    "relentless ostinato",
+    "grand and tragic"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Boss Theme Reprise",
+   "bars": 8,
+   "text": "{the melody again, now doubled by powerful brass, the organ fuller, timpani hits on the accents, the stakes rising}",
+   "styles": [
+    "brass doubling",
+    "rising stakes",
+    "fuller arrangement"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "The Gentle Dark",
+   "bars": 8,
+   "text": "{contrast: the drums drop to a slow heartbeat, a quiet, tender, almost lullaby-like organ and bell melody — the seductive sorrow of an endless night — then a timpani crescendo}",
+   "styles": [
+    "haunting tender interlude",
+    "sorrowful lullaby",
+    "contrasting section",
+    "slow heartbeat drums"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "The Light Holds",
+   "bars": 8,
+   "text": "{a hopeful heroic lift to D major: the lead and brass sing the melody in major over driving drums — the light that refuses to go out}",
+   "styles": [
+    "D major",
+    "hopeful heroic climax",
+    "triumphant brass"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Boss Theme Return",
+   "bars": 8,
+   "text": "{back to B minor, the grand boss theme at full power; the last bar is a timpani and drum fill leading straight back into the theme}",
+   "styles": [
+    "main boss hook returns",
+    "timpani fill",
+    "seamless loop back to the start of the theme"
+   ],
+   "adherence": "high"
+  }
+ ],
+ "_note": "motif dropped (2026-10): conditioning on the lullaby pulled the take to ~90 BPM and a cosy palette — it played 'chill', not battle. Battles keep their spec tempo unconditioned."
+}

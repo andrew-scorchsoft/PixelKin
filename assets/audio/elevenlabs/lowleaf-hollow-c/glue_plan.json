@@ -1,0 +1,48 @@
+{
+ "chunks": [
+  {
+   "song_id": "SjX7fXPWg4WP5lKwOPXo",
+   "range": {
+    "start_ms": 76000,
+    "end_ms": 96000
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "90 BPM",
+    "G Lydian mode",
+    "glassy bell lead with a slow singing melody",
+    "faint counter-bell echoing the melody a bar later a fifth higher",
+    "shimmering bell arpeggios",
+    "breathy sustained pad with cathedral reverb",
+    "warm sustained low pad-bass",
+    "sparse soft taps and dew-shimmer swells",
+    "mysterious glowing dark deep-forest dungeon, quiet wonder with a thread of unease",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "SjX7fXPWg4WP5lKwOPXo",
+   "range": {
+    "start_ms": 10667,
+    "end_ms": 20667
+   }
+  }
+ ]
+}

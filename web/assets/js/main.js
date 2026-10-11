@@ -261,3 +261,82 @@
         }
     }
 })();
+
+/* ---------------------------------------------------------------------------
+   Music page: hear a cue the way the game plays it, or test it.
+     game  — intro once, then loop from data-loop-start (Web Audio loopStart: gapless)
+     loop  — the looping body only, from loop-start
+     join  — start a few seconds before the wrap, to hear the loop point
+     once  — the whole file once, to the end, no loop
+   One track at a time; click the playing button again to stop.
+   --------------------------------------------------------------------------- */
+(function () {
+    var list = document.querySelector('.music-list');
+    if (!list) return;
+    var Ctx = window.AudioContext || window.webkitAudioContext;
+    var ctx = null, source = null, activeBtn = null, buffers = {};
+    var JOIN_LEAD = 6;
+
+    function label(btn, glyph) { btn.innerHTML = glyph + ' ' + btn.getAttribute('data-label'); }
+    var GLYPH = { game: '&#9654;', loop: '&#10227;', join: '&#8644;', once: '&#8677;' };
+
+    function stop() {
+        if (source) { source.onended = null; try { source.stop(); } catch (e) { /* already stopped */ } source.disconnect(); source = null; }
+        if (activeBtn) {
+            activeBtn.classList.remove('is-active');
+            label(activeBtn, GLYPH[activeBtn.getAttribute('data-mode')] || '&#9654;');
+            activeBtn.closest('.music-track').classList.remove('is-playing');
+            activeBtn = null;
+        }
+    }
+
+    function load(src) {
+        if (buffers[src]) return buffers[src];
+        buffers[src] = fetch(src).then(function (r) {
+            if (!r.ok) throw new Error(r.status);
+            return r.arrayBuffer();
+        }).then(function (ab) {
+            return new Promise(function (res, rej) { ctx.decodeAudioData(ab, res, rej); });
+        });
+        buffers[src].catch(function () { delete buffers[src]; });
+        return buffers[src];
+    }
+
+    list.addEventListener('click', function (ev) {
+        var btn = ev.target.closest('.music-btn');
+        if (!btn) return;
+        if (btn === activeBtn) { stop(); return; }
+        stop();
+        if (!ctx) ctx = new Ctx();
+        if (ctx.state === 'suspended') ctx.resume();
+        activeBtn = btn;
+        btn.classList.add('is-active');
+        label(btn, '&#8230;');
+        btn.closest('.music-track').classList.add('is-playing');
+        var mine = btn;
+        var mode = btn.getAttribute('data-mode') || 'game';
+        load(btn.getAttribute('data-src')).then(function (buf) {
+            if (activeBtn !== mine) return;
+            var ls = parseFloat(mine.getAttribute('data-loop-start') || '0') || 0;
+            if (!(ls > 0 && ls < buf.duration - 1)) ls = 0;
+            source = ctx.createBufferSource();
+            source.buffer = buf;
+            source.connect(ctx.destination);
+            var offset = 0;
+            if (mode === 'once') {
+                source.loop = false;
+                source.onended = function () { if (activeBtn === mine) stop(); };
+            } else {
+                source.loop = true;
+                source.loopStart = ls;
+                source.loopEnd = buf.duration;
+                if (mode === 'loop') offset = ls;
+                if (mode === 'join') offset = Math.max(ls, buf.duration - JOIN_LEAD);
+            }
+            source.start(0, offset);
+            label(mine, '&#9632;');
+        }).catch(function () {
+            if (activeBtn === mine) { stop(); label(mine, '&#10007;'); }
+        });
+    });
+})();

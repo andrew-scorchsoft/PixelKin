@@ -1,0 +1,48 @@
+{
+ "chunks": [
+  {
+   "song_id": "Dty73U0xOZVKTwkvPEuh",
+   "range": {
+    "start_ms": 86500,
+    "end_ms": 106500
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "66 BPM",
+    "suspended C major with a Lydian F sharp glint",
+    "soft bell-pad lead with long shimmering tones",
+    "layered glassy chime arpeggios",
+    "lush sustained suspended string pad chords",
+    "deep warm still sub-bass pad",
+    "a single soft reversed-cymbal swell every four bars, no beat",
+    "warm reverb and echo",
+    "vast sacred ice cavern lit from within, awe and stillness",
+    "slow memorable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "Dty73U0xOZVKTwkvPEuh",
+   "range": {
+    "start_ms": 7273,
+    "end_ms": 17273
+   }
+  }
+ ]
+}

@@ -1,0 +1,91 @@
+{
+ "id": "dawn-breaks",
+ "kind": "loop",
+ "where": "The ending cinematic (dawn breaks over Vesperholm)",
+ "mood": "The long night ends: first light walking across every valley; the hometown lullaby finally meets the sun, radiant and tender.",
+ "bpm": 84,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "high"
+ },
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "84 BPM",
+  "C major",
+  "the hometown lullaby theme returned in full daylight",
+  "warm pulse-wave and music-box lead",
+  "flowing plucked harp arpeggios",
+  "warm lush string chords",
+  "gentle heartbeat drums with soft brushes",
+  "radiant, tender, tearful joy, sunrise",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "singing",
+  "fade out",
+  "ritardando",
+  "dark",
+  "ominous",
+  "electric guitar",
+  "ambient drone",
+  "minimalist",
+  "bombastic"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{the last dark: a hushed A minor chord, the lullaby's first notes on a lone music box, then the harmony turns and the sun breaks onto radiant C major with a harp sweep}",
+   "styles": [
+    "minor turning to major",
+    "sunrise opening"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the hometown lullaby melody whole in radiant C major, warm lead over flowing harp arpeggios and strings, a soft heartbeat groove}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "daylight"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the lullaby again, now with a flute counter-melody and bell glints, strings fuller and higher, the lift reaching the sky}",
+   "styles": [
+    "flute counter-melody",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 6,
+   "text": "{contrast: a tender remembering of the long night, a gentle turn to A minor and F, the melody lower and slower, then lifting through G back toward home}",
+   "styles": [
+    "bittersweet",
+    "remembering",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the lullaby returns radiant and complete; the last bar leads straight back into the main theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

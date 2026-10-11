@@ -1,0 +1,47 @@
+{
+ "chunks": [
+  {
+   "song_id": "5kyrzrB9OvaOrMsDbfgX",
+   "range": {
+    "start_ms": 60875,
+    "end_ms": 80875
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "104 BPM",
+    "thin pulse-wave lead with a drifting melody in cavernous reverb",
+    "thin echoing pulse-wave lead with a drifting melody",
+    "bright bell and glass-chime figures like light glinting on cave water",
+    "slow plucked harp arpeggios",
+    "slow sustained synth bass roots",
+    "soft brush stroke once per bar like a wave washing in",
+    "calm glittering sea-cave, becalmed and wondering, quietly magical",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "5kyrzrB9OvaOrMsDbfgX",
+   "range": {
+    "start_ms": 6923,
+    "end_ms": 16923
+   }
+  }
+ ]
+}

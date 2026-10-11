@@ -1,0 +1,195 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{the harbour bell tolls once, harp ripples outward like the boats pushing off, and the lead lifts the opening phrase of the waltz over a held chord that leads into the theme}",
+   "duration_ms": 6429,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "112 BPM",
+    "F major",
+    "3/4 waltz time",
+    "warm accordion-like pulse-wave lead singing a processional waltz melody",
+    "flowing harp arpeggios like lantern light on water over a lush string pad",
+    "deep tolling harbour bell on phrase starts",
+    "rocking waltz bass like a moored hull",
+    "moonlit lantern-boat festival, cool and glowing, celebratory but tender, a hymn-like communal song",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "ceremonial opening",
+    "bell toll"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "sad",
+    "ending"
+   ],
+   "context_adherence": "high",
+   "conditioning_ref": {
+    "song_id": "TOREmIgiwF3GKpN7UkLA",
+    "range": {
+     "start_ms": 10668,
+     "end_ms": 40668
+    }
+   },
+   "condition_strength": "medium"
+  },
+  {
+   "text": "[Main Theme]\n{the going-out song: a warm singable waltz melody, steady and sure, harp flowing beneath, the bell marking each phrase like a lantern set on the water}",
+   "duration_ms": 25714,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "112 BPM",
+    "F major",
+    "3/4 waltz time",
+    "warm accordion-like pulse-wave lead singing a processional waltz melody",
+    "flowing harp arpeggios like lantern light on water over a lush string pad",
+    "deep tolling harbour bell on phrase starts",
+    "rocking waltz bass like a moored hull",
+    "moonlit lantern-boat festival, cool and glowing, celebratory but tender, a hymn-like communal song",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme",
+    "memorable hook",
+    "processional"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "sad",
+    "ending"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme Reprise]\n{the same melody again with a high flute descant and fuller strings, as if the whole quay joins in}",
+   "duration_ms": 25714,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "112 BPM",
+    "F major",
+    "3/4 waltz time",
+    "warm accordion-like pulse-wave lead singing a processional waltz melody",
+    "flowing harp arpeggios like lantern light on water over a lush string pad",
+    "deep tolling harbour bell on phrase starts",
+    "rocking waltz bass like a moored hull",
+    "moonlit lantern-boat festival, cool and glowing, celebratory but tender, a hymn-like communal song",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "flute descant",
+    "fuller arrangement",
+    "communal swell"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "sad",
+    "ending"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast: a tender turn to D minor, the tide going out, the melody quiet and reflective over harp alone, then the strings swell back toward the major}",
+   "duration_ms": 12857,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "112 BPM",
+    "F major",
+    "3/4 waltz time",
+    "warm accordion-like pulse-wave lead singing a processional waltz melody",
+    "flowing harp arpeggios like lantern light on water over a lush string pad",
+    "deep tolling harbour bell on phrase starts",
+    "rocking waltz bass like a moored hull",
+    "moonlit lantern-boat festival, cool and glowing, celebratory but tender, a hymn-like communal song",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "D minor",
+    "reflective",
+    "contrasting section"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "sad",
+    "ending"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the going-out song returns full and glowing with the bell and descant together; the last bar flows straight back into the theme, no ending}",
+   "duration_ms": 25714,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "112 BPM",
+    "F major",
+    "3/4 waltz time",
+    "warm accordion-like pulse-wave lead singing a processional waltz melody",
+    "flowing harp arpeggios like lantern light on water over a lush string pad",
+    "deep tolling harbour bell on phrase starts",
+    "rocking waltz bass like a moored hull",
+    "moonlit lantern-boat festival, cool and glowing, celebratory but tender, a hymn-like communal song",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "sad",
+    "ending"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}

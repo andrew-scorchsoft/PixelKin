@@ -1,0 +1,93 @@
+{
+ "id": "saltreach-fen-a",
+ "kind": "loop",
+ "where": "Saltreach Fen I (the open reed marsh east of Pearlmoor)",
+ "mood": "A slow drift through reed shallows — a breathy woodwind wanders and the lapping water answers; melancholy, never sad.",
+ "bpm": 104,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "medium"
+ },
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "104 BPM",
+  "D natural minor",
+  "breathy wooden flute lead with long held notes and soft turns",
+  "slow rocking two-note harp figure like lapping water",
+  "soft reedy string pad",
+  "gentle rocking round synth bass on root and fifth",
+  "very sparse brushed hat on the offbeats and one soft low tap per bar",
+  "cosy-melancholy marsh wandering theme, lanterns floating on dark water",
+  "call and response between melody and water",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "singing",
+  "electric guitar",
+  "fade out",
+  "ritardando",
+  "ambient drone",
+  "minimalist",
+  "busy drums",
+  "triumphant",
+  "epic orchestral"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{the reeds part: the rocking water figure starts alone on harp, then the flute calls a rising three-note phrase over the mist and holds, inviting you into the marsh}",
+   "styles": [
+    "quiet but distinctive opening call",
+    "misty marsh at night"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the flute sings the wandering melody, long notes that rise hopefully then settle home a step too slowly; between phrases it leaves gaps and the harp water-figure answers}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "gentle walking sway"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the melody again with a soft bell counter-line answering in the rests, string pad a little fuller, the bass rocking gently}",
+   "styles": [
+    "bell counter-melody",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a warmer turn to F major, lanterns drifting on the water, the flute rises higher in longer arching phrases over sustained strings, then sinks back toward D minor}",
+   "styles": [
+    "F major",
+    "tender",
+    "glinting lantern light",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the wandering melody returns as at first; the last bar leads straight back into the main theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

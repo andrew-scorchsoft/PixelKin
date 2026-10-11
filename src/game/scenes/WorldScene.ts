@@ -66,7 +66,7 @@ import { ShopMenu } from '@game/ui/ShopMenu';
 import { makeStarterKin } from '@game/content/starters';
 import { runCutscene } from '@game/systems/cutscene/CutsceneRunner';
 import type { CutsceneContext } from '@game/systems/cutscene/CutsceneRunner';
-import type { ActorRef, CutsceneStep } from '@game/content/types';
+import type { ActorRef, CutsceneStep, DialogueLine } from '@game/content/types';
 import type { KinInstanceData, InventoryData, SaveGame, DexProgress } from '@game/systems/save/types';
 import { SAVE_SCHEMA_VERSION } from '@game/systems/save/types';
 import { SaveManager } from '@game/systems/save/SaveManager';
@@ -75,6 +75,10 @@ import type { WorldSnapshot } from '@game/data/world/types';
 import { MAP_REGISTRY } from '@game/data/world/maps';
 import { LamplightMask } from '@game/systems/world/LamplightMask';
 import { Ambience } from '@game/systems/world/Ambience';
+import type { AmbientKinHandle } from '@game/systems/world/Ambience';
+import { SPECIES_BY_ID } from '@game/data/dex';
+import { pickKinChatter } from '@game/content/kinchatter';
+import { playCry } from '@game/systems/audio/cries';
 import { VESPERHOLM_GRAPH } from '@game/data/world/graph';
 import type { Region } from '@game/data/world/graph';
 import type { AbilityId, Facing, Warp, EventTrigger, NpcPlacement, MapObject, EncounterTerrain, WorldFlag, RestPoint } from '@game/data/world/types';
@@ -985,6 +989,13 @@ export class WorldScene extends Phaser.Scene {
       return;
     }
 
+    // A grazing ambient kin on the faced tile: greet it (its cry + a line).
+    const kin = this.ambience?.kinAt(ahead.tx, ahead.ty);
+    if (kin) {
+      await this.greetAmbientKin(kin);
+      return;
+    }
+
     const trigger = this.map.def.triggers.find(
       (t) =>
         t.activation === 'interact' &&
@@ -1009,6 +1020,49 @@ export class WorldScene extends Phaser.Scene {
         (w.trigger === 'interact' || w.transition === 'door'),
     );
     if (warp) await this.executeWarp(warp);
+  }
+
+  /**
+   * Greet an ambient kin (content/kinchatter.ts): it stops and turns to you,
+   * does its little beat, calls its CRY, and the box reads `<NAME>: <line>`.
+   * A kin you've never met is noted SEEN in the REGISTER. Its once-per-save
+   * event (lore / a tiny find / tagging along) plays after the line. Then it is
+   * a wild thing again — it may well hop off.
+   */
+  private async greetAmbientKin(kin: AmbientKinHandle): Promise<void> {
+    const species = SPECIES_BY_ID.get(kin.speciesId);
+    if (!species) return;
+    this.modal = true;
+    let following = 0;
+    try {
+      const { line, event } = pickKinChatter(species.id, species.types[0], (f) => this.flags.get(f));
+      await kin.engage(this.player.tx, this.player.ty, line.react ?? 'turn');
+      playCry(this.sfx, species.id);
+      const name = species.name.toUpperCase();
+      const pages: DialogueLine[] = [{ speaker: name, text: line.text }];
+      const firstMeet = !this.dexSeen.has(species.id) && !this.dexCaught.has(species.id);
+      if (firstMeet) {
+        this.dexSeen.add(species.id);
+        pages.push({ text: `${species.name} was noted in your REGISTER.`, style: 'narrate' });
+      }
+      if (event?.follow_ms) pages.push({ text: `${species.name} falls in at your heels, for a few steps at least.`, style: 'narrate' });
+      await new DialogueBox(this, this.sfx).run(pages);
+      let banked = firstMeet;
+      if (event) {
+        const steps = event.script ? getScript(event.script) : undefined;
+        const completed = steps ? await runCutscene(this.cutsceneContext(), steps) : true;
+        if (completed) {
+          this.flags.set(event.flag);
+          following = event.follow_ms ?? 0;
+          banked = true;
+        }
+      }
+      if (banked) void this.persist();
+    } finally {
+      kin.release();
+      if (following > 0) kin.follow(following);
+      this.modal = false;
+    }
   }
 
   /** After a talk, a STATIC NPC still standing on its post turns back to the way

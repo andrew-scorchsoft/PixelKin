@@ -33,6 +33,7 @@ web/
     css/style.css # brand styling (palette + pixel font from the game)
     js/main.js    # mobile nav, hero parallax, gallery lightbox (progressive enhancement)
     data/kin.json # first-50 kin (id/name/types/category) generated from species.json
+    data/music.json # the soundtrack listing (music page) — node tools/build/build_music_data.mjs
     fonts/        # Press Start 2P (same pixel font the game uses) + licence
     img/          # logo.png + logo-text.webp + logo-hero.webp, hero/, kin/, world/, lumenary/
 ```

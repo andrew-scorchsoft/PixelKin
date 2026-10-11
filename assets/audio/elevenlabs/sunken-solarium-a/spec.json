@@ -1,0 +1,92 @@
+{
+ "id": "sunken-solarium-a",
+ "kind": "loop",
+ "where": "Sunken Solarium (the drowned sun-garden ruin, West) + the Old Light tower floors (Pearlmoor)",
+ "mood": "Remembered Summer: stored daylight glowing up through the water - warm, nostalgic, everything in the past tense; the first real warmth since the south.",
+ "bpm": 96,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "medium"
+ },
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "96 BPM",
+  "G major with a wistful borrowed minor chord",
+  "warm singing pulse-wave lead whose phrases rise then sigh down a step",
+  "rolling plucked harp arpeggios of broken major triads like sunlight rippling on water",
+  "soft warm string pad",
+  "slow round synth bass moving root to fifth",
+  "very soft brushed kick and faint hi-hat like water lapping",
+  "nostalgic, sun-warmed, bittersweet remembered-summer ruin theme",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "singing",
+  "fade out",
+  "ritardando",
+  "electric guitar",
+  "ambient drone",
+  "minimalist",
+  "dark",
+  "aggressive",
+  "epic orchestral"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{a glowing entrance: a shimmer of harp arpeggios rising like light through water, a soft pad swell, and the lead's first warm rising leap held over the chord, settling into the theme}",
+   "styles": [
+    "glowing opening",
+    "light through water"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the remembered-summer melody, hummable and tender: a radiant rising leap then a sighing step down, harp rolling underneath, brushed pulse}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "warm nostalgia"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the melody again with a soft bell counter-line glinting above it and the strings a little fuller}",
+   "styles": [
+    "bell counter-melody",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: the borrowed minor turn - E minor and C minor colours, longer held notes as if remembering a summer that ended, drums drop to a soft heartbeat, then a gentle lift back toward the theme}",
+   "styles": [
+    "E minor colour",
+    "wistful",
+    "past tense",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the warm melody returns in full, harp and pad glowing; the last bar leads straight back into the main theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "chunks": [
+  {
+   "song_id": "b4sy1vrx1ekoT4GFr9qb",
+   "range": {
+    "start_ms": 0,
+    "end_ms": 48000
+   }
+  },
+  {
+   "song_id": "b4sy1vrx1ekoT4GFr9qb",
+   "range": {
+    "start_ms": 48000,
+    "end_ms": 96000
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short one-bar turnaround that leads smoothly straight back into the main theme}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "warm music-box lead",
+    "plucked harp",
+    "warm string pad",
+    "seamless transition",
+    "instrumental"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "b4sy1vrx1ekoT4GFr9qb",
+   "range": {
+    "start_ms": 10668,
+    "end_ms": 20668
+   }
+  }
+ ]
+}

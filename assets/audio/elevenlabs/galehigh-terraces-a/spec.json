@@ -1,0 +1,93 @@
+{
+ "id": "galehigh-terraces-a",
+ "kind": "loop",
+ "where": "Galehigh Terraces (the kite-strung cliff town outdoors + the Skyloft; returns after the Kite-rising)",
+ "mood": "Updraft — giddy, wind-buffeted propulsion on the cliff-farms, kites snapping overhead in the last fire-light before the climb.",
+ "bpm": 138,
+ "beats_per_bar": 4,
+ "motif": null,
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "138 BPM",
+  "D major",
+  "energetic",
+  "bright staccato pulse-wave lead that springs up on the downbeat and skips back down",
+  "fast flickering broken-triad arpeggio shimmering above like a kite tail",
+  "plucked sampled bass walking in steady eighths",
+  "skipping sampled snare and tambourine with timpani accents on the gusts",
+  "white-noise wind gust swells that rise and cut every four bars",
+  "high-altitude cliff-town overworld theme, wind and kites at sunset",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "drum and bass",
+  "heavy sub bass",
+  "electric guitar",
+  "fade out",
+  "melancholy",
+  "slow"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{a wind gust swells and cuts, and the lead fires a quick hopping kite riff over a snare pickup, straight into the theme}",
+   "styles": [
+    "bold opening fanfare",
+    "gust of wind",
+    "high above the clouds"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the hook front-loaded in the first two bars: a staccato rising leap that overshoots and lands on a cheeky offbeat, then skips stepwise back home; bass driving, arpeggio flickering above}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "springy staccato melody",
+    "propulsive"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the same hook again, fuller: a bright bell counter-line answers each hop, a gust swell crests at the half and cuts on the downbeat}",
+   "styles": [
+    "bell counter-melody",
+    "fuller arrangement",
+    "wind gusts"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: half-time feel over B minor and G major, longer soaring lead notes leaning into the wind, the arpeggio climbing like a kite on its string, building back toward A}",
+   "styles": [
+    "soaring longer notes",
+    "B minor to G major",
+    "building lift",
+    "contrast"
+   ]
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the hook returns at full energy with drums driving; the last bar rides a snare fill up to A that springs straight back into the main theme}",
+   "styles": [
+    "main theme return",
+    "full energy",
+    "drum fill turnaround",
+    "seamless loop"
+   ]
+  }
+ ],
+ "_note": "2026-10 retro + tempo pass: motif dropped (it pinned the take to ~90 BPM); era-first anchor, retro kit/bass; opening shape chosen per scene. | 2026-10 EDM pass: 'kick on a brisk beat' gave a four-on-the-floor + pumping EDM feel (edm_check.py); percussion now retro (snare backbeat, toms, timpani, tambourine, brushes)."
+}

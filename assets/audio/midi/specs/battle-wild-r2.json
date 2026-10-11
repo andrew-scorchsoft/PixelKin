@@ -1,0 +1,62 @@
+{
+  "title": "PixelKin - Wild Battle (r2 remaster pilot)",
+  "_note": "R2 REMASTER PILOT (parallel to battle-main-dusk-duel; NOT wired into the game). Panel brief: docs/reviews/music-remaster-panel.md. 160 BPM, 4/4, E minor (moved off the title's A minor so the fight has its own colour) with a B7 harmonic-minor dominant, lifting to the relative G major. Form A(8) A'(8) B(8) = 24 bars, ~36 s. HOOK (bars 1-2): the Lantern Call turned fighter - B4-E5-F#5 (sol-do-re of E minor) launched on two eighths and a syncopated dotted hold, then a stabbing fall to B4 and a bar of SPACE that the brass answers (call-and-response). The hook sequences up a third (C) and to D, climbs to C6 over bVI, and cadences on a B7 leading tone. B: the leitmotif in heroic MAJOR (D5-G5-A5 over G) with a twin lead in thirds and sustained brass, climbing to D6, then a B7 run (D#) slams the loop back to E minor. Bass: octave-pumping eighth gallop with chromatic approach into every change. Arp: 16th pulse12 enters at bar 5 (dynamics by entry). Drums: backbeat with a pushed kick on the and-of-3; four-on-the-floor + open hat in B; fills on every 8-bar seam. Dry - battles keep the echo off so the hits punch. <=8 voices. Original melody throughout (VISION.md).",
+  "era": "snes",
+  "tempo": 160,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "E minor (harmonic-minor dominant) -> G major lift",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "saw",
+      "octave": 5,
+      "gain": 0.84,
+      "_note": "The hook: B4-E5-F#5 (Lantern lift) then the gap the brass fills. B section: the lift in MAJOR (D5-G5-A5).",
+      "notes": "B4e@106 E5e@96 F#5q.@96 G5e@96 F#5e@96 E5e@96 | D5e@102 E5e@92 B4h@92 rq | C5e@106 E5e@96 G5q.@96 F#5e@96 E5e@96 D5e@96 | D5e@102 F#5e@92 A5h@92 rq | B4e@110 E5e@100 F#5q.@100 G5e@100 A5e@100 B5e@100 | C6q.@114 B5e@104 A5e@109 G5e@104 F#5e@104 E5e@104 | A5q.@110 G5e@100 F#5e@105 E5e@100 C5e@100 E5e@100 | D#5q.@106 F#5e@96 B5h@101 | B4e@108 E5e@98 F#5q.@98 G5e@98 F#5e@98 E5e@98 | D5e@104 E5e@94 B4h@94 rq | C5e@108 E5e@98 G5q.@98 F#5e@98 E5e@98 D5e@98 | D5e@104 F#5e@94 A5h@94 rq | B4e@112 E5e@102 F#5q.@102 G5e@102 A5e@102 B5e@102 | C6q.@116 B5e@106 A5e@111 G5e@106 E5e@106 G5e@106 | A5e@114 G5e@104 F#5e@104 E5e@104 D#5e@109 E5e@104 F#5e@104 A5e@104 | B5h.@110 rq | D5q.@114 G5e@104 A5h@109 | B5q.@110 A5e@100 F#5h@105 | G5q.@114 F#5e@104 E5q@109 B5q@104 | G5h.@110 E5q@100 | D5q.@118 G5e@108 A5h@113 | B5q.@122 C6e@112 D6h@117 | C6q.@124 B5e@114 A5q@119 G5q@114 | F#5q.@114 A5e@104 B5e@109 A5e@104 F#5e@104 D#5e@104"
+    },
+    {
+      "name": "harm",
+      "voice": "pulse25",
+      "octave": 5,
+      "gain": 0.55,
+      "_note": "B only: a twin line a third/sixth below the lead - the heroic payoff.",
+      "notes": "rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | B4q.@84 E5e@78 D5h@81 | F#5q.@84 D5e@78 A4h@81 | E5q.@84 D5e@78 B4q@81 G5q@78 | E5h.@84 C5q@78 | B4q.@84 E5e@78 D5h@81 | F#5q.@84 A5e@78 B5h@81 | A5q.@84 G5e@78 E5q@81 D5q@78 | D#5q.@84 F#5e@78 F#5e@81 F#5e@78 D#5e@78 B4e@78"
+    },
+    {
+      "name": "brass",
+      "voice": "brass",
+      "octave": 3,
+      "gain": 0.6,
+      "_note": "A: alternating call (hit + syncopated push) and response (stabs in the lead's rests). B: sustained heroic chords.",
+      "notes": "G3+B3+E4q@92 re G3+B3+E4e@80 rh | rh G3+B3+E4e@88 G3+B3+E4e@76 re G3+B3+E4e@96 | G3+C4+E4q@92 re G3+C4+E4e@80 rh | rh F#3+A3+D4e@88 F#3+A3+D4e@76 re F#3+A3+D4e@96 | G3+B3+E4q@92 re G3+B3+E4e@80 rh | rh G3+C4+E4e@88 G3+C4+E4e@76 re G3+C4+E4e@96 | A3+C4+E4q@92 re A3+C4+E4e@80 rh | rh F#3+A3+D#4e@88 F#3+A3+D#4e@76 re F#3+A3+D#4e@96 | G3+B3+E4q@92 re G3+B3+E4e@80 rh | rh G3+B3+E4e@88 G3+B3+E4e@76 re G3+B3+E4e@96 | G3+C4+E4q@92 re G3+C4+E4e@80 rh | rh F#3+A3+D4e@88 F#3+A3+D4e@76 re F#3+A3+D4e@96 | G3+B3+E4q@92 re G3+B3+E4e@80 rh | rh G3+C4+E4e@88 G3+C4+E4e@76 re G3+C4+E4e@96 | A3+C4+E4q@92 re A3+C4+E4e@80 rh | rh F#3+A3+D#4e@88 F#3+A3+D#4e@76 re F#3+A3+D#4e@96 | G3+B3+D4w@70 | F#3+A3+D4w@70 | G3+B3+E4w@70 | G3+C4+E4w@70 | G3+B3+D4w@70 | F#3+A3+D4w@70 | G3+C4+E4w@70 | F#3+A3+D#4w@70"
+    },
+    {
+      "name": "arp",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.34,
+      "_note": "16th-note chip arpeggio from bar 5; wider sweep in B.",
+      "notes": "rw | rw | rw | rw | E4s@70 G4s@52 B4s@52 G4s@52 E4s@70 G4s@52 B4s@52 G4s@52 E4s@70 G4s@52 B4s@52 G4s@52 E4s@70 G4s@52 B4s@52 G4s@52 | C5s@70 E5s@52 G5s@52 E5s@52 C5s@70 E5s@52 G5s@52 E5s@52 C5s@70 E5s@52 G5s@52 E5s@52 C5s@70 E5s@52 G5s@52 E5s@52 | A4s@70 C5s@52 E5s@52 C5s@52 A4s@70 C5s@52 E5s@52 C5s@52 A4s@70 C5s@52 E5s@52 C5s@52 A4s@70 C5s@52 E5s@52 C5s@52 | B4s@70 Eb5s@52 F#5s@52 Eb5s@52 B4s@70 Eb5s@52 F#5s@52 Eb5s@52 B4s@70 Eb5s@52 F#5s@52 Eb5s@52 B4s@70 Eb5s@52 F#5s@52 Eb5s@52 | E4s@70 G4s@52 B4s@52 G4s@52 E4s@70 G4s@52 B4s@52 G4s@52 E4s@70 G4s@52 B4s@52 G4s@52 E4s@70 G4s@52 B4s@52 G4s@52 | E4s@70 G4s@52 B4s@52 G4s@52 E4s@70 G4s@52 B4s@52 G4s@52 E4s@70 G4s@52 B4s@52 G4s@52 E4s@70 G4s@52 B4s@52 G4s@52 | C5s@70 E5s@52 G5s@52 E5s@52 C5s@70 E5s@52 G5s@52 E5s@52 C5s@70 E5s@52 G5s@52 E5s@52 C5s@70 E5s@52 G5s@52 E5s@52 | D5s@70 F#5s@52 A5s@52 F#5s@52 D5s@70 F#5s@52 A5s@52 F#5s@52 D5s@70 F#5s@52 A5s@52 F#5s@52 D5s@70 F#5s@52 A5s@52 F#5s@52 | E4s@70 G4s@52 B4s@52 G4s@52 E4s@70 G4s@52 B4s@52 G4s@52 E4s@70 G4s@52 B4s@52 G4s@52 E4s@70 G4s@52 B4s@52 G4s@52 | C5s@70 E5s@52 G5s@52 E5s@52 C5s@70 E5s@52 G5s@52 E5s@52 C5s@70 E5s@52 G5s@52 E5s@52 C5s@70 E5s@52 G5s@52 E5s@52 | A4s@70 C5s@52 E5s@52 C5s@52 A4s@70 C5s@52 E5s@52 C5s@52 B4s@70 Eb5s@52 F#5s@52 Eb5s@52 B4s@70 Eb5s@52 F#5s@52 Eb5s@52 | B4s@70 Eb5s@52 F#5s@52 Eb5s@52 B4s@70 Eb5s@52 F#5s@52 Eb5s@52 B4s@70 Eb5s@52 F#5s@52 Eb5s@52 B4s@70 Eb5s@52 F#5s@52 Eb5s@52 | G4s@70 B4s@52 D5s@52 G5s@52 D5s@70 B4s@52 G4s@52 B4s@52 G4s@70 B4s@52 D5s@52 G5s@52 D5s@70 B4s@52 G4s@52 B4s@52 | D5s@70 F#5s@52 A5s@52 D6s@52 A5s@70 F#5s@52 D5s@52 F#5s@52 D5s@70 F#5s@52 A5s@52 D6s@52 A5s@70 F#5s@52 D5s@52 F#5s@52 | E4s@70 G4s@52 B4s@52 E5s@52 B4s@70 G4s@52 E4s@52 G4s@52 E4s@70 G4s@52 B4s@52 E5s@52 B4s@70 G4s@52 E4s@52 G4s@52 | C5s@70 E5s@52 G5s@52 C6s@52 G5s@70 E5s@52 C5s@52 E5s@52 C5s@70 E5s@52 G5s@52 C6s@52 G5s@70 E5s@52 C5s@52 E5s@52 | G4s@70 B4s@52 D5s@52 G5s@52 D5s@70 B4s@52 G4s@52 B4s@52 G4s@70 B4s@52 D5s@52 G5s@52 D5s@70 B4s@52 G4s@52 B4s@52 | D5s@70 F#5s@52 A5s@52 D6s@52 A5s@70 F#5s@52 D5s@52 F#5s@52 D5s@70 F#5s@52 A5s@52 D6s@52 A5s@70 F#5s@52 D5s@52 F#5s@52 | C5s@70 E5s@52 G5s@52 C6s@52 G5s@70 E5s@52 C5s@52 E5s@52 C5s@70 E5s@52 G5s@52 C6s@52 G5s@70 E5s@52 C5s@52 E5s@52 | B4s@70 Eb5s@52 F#5s@52 B5s@52 F#5s@70 Eb5s@52 B4s@52 Eb5s@52 B4s@70 Eb5s@52 F#5s@52 B5s@52 F#5s@70 Eb5s@52 B4s@52 Eb5s@52"
+    },
+    {
+      "name": "bass",
+      "voice": "bass",
+      "octave": 2,
+      "gain": 0.9,
+      "_note": "Octave-pumping gallop (R R R8 R R R8 5 approach) - the engine of the fight.",
+      "notes": "E2e@100 E2e@78 E3e@92 E2e@78 E2e@96 E3e@88 B2e@84 D3e@90 | E2e@100 E2e@78 E3e@92 E2e@78 E2e@96 E3e@88 B2e@84 B2e@90 | C3e@100 C3e@78 C4e@92 C3e@78 C3e@96 C4e@88 G3e@84 C#3e@90 | D3e@100 D3e@78 D4e@92 D3e@78 D3e@96 D4e@88 A3e@84 Eb2e@90 | E2e@100 E2e@78 E3e@92 E2e@78 E2e@96 E3e@88 B2e@84 B2e@90 | C3e@100 C3e@78 C4e@92 C3e@78 C3e@96 C4e@88 G3e@84 Ab2e@90 | A2e@100 A2e@78 A3e@92 A2e@78 A2e@96 A3e@88 E3e@84 Bb2e@90 | B2e@100 B2e@78 B3e@92 B2e@78 B2e@96 B3e@88 F#3e@84 Eb2e@90 | E2e@100 E2e@78 E3e@92 E2e@78 E2e@96 E3e@88 B2e@84 D3e@90 | E2e@100 E2e@78 E3e@92 E2e@78 E2e@96 E3e@88 B2e@84 B2e@90 | C3e@100 C3e@78 C4e@92 C3e@78 C3e@96 C4e@88 G3e@84 C#3e@90 | D3e@100 D3e@78 D4e@92 D3e@78 D3e@96 D4e@88 A3e@84 Eb2e@90 | E2e@100 E2e@78 E3e@92 E2e@78 E2e@96 E3e@88 B2e@84 B2e@90 | C3e@100 C3e@78 C4e@92 C3e@78 C3e@96 C4e@88 G3e@84 Ab2e@90 | A2e@100 A2e@78 A3e@92 A2e@78 B2e@96 B3e@88 B2e@84 F#3e@90 | B2e@100 B2e@78 B3e@92 B2e@78 B2e@96 B3e@88 F#3e@84 F#2e@90 | G2e@100 G2e@78 G3e@92 G2e@78 G2e@96 G3e@88 D3e@84 C#3e@90 | D3e@100 D3e@78 D4e@92 D3e@78 D3e@96 D4e@88 A3e@84 Eb2e@90 | E2e@100 E2e@78 E3e@92 E2e@78 E2e@96 E3e@88 B2e@84 B2e@90 | C3e@100 C3e@78 C4e@92 C3e@78 C3e@96 C4e@88 G3e@84 F#2e@90 | G2e@100 G2e@78 G3e@92 G2e@78 G2e@96 G3e@88 D3e@84 C#3e@90 | D3e@100 D3e@78 D4e@92 D3e@78 D3e@96 D4e@88 A3e@84 B2e@90 | C3e@100 C3e@78 C4e@92 C3e@78 C3e@96 C4e@88 G3e@84 Bb2e@90 | B2e@100 B2e@78 B3e@92 B2e@78 B2e@96 B3e@88 F#3e@84 Eb2e@90"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.62,
+      "_note": "A: backbeat + pushed kick; B: four-on-floor + open hat; tom/snare fills at 8, 16, 24.",
+      "notes": "e kick+crash@108 hat@50 snare+hat@92 hat@50 kick+hat@80 kick@84 snare+hat@92 hat@60 | e kick+hat@100 hat@50 snare+hat@92 hat@50 kick+hat@80 kick@84 snare+hat@92 hat@60 | e kick+hat@100 hat@50 snare+hat@92 hat@50 kick+hat@80 kick@84 snare+hat@92 hat@60 | e kick+hat@100 hat@50 snare+hat@92 hat@50 kick+hat@80 kick@84 snare+hat@92 hat@60 | e kick+hat@100 hat@50 snare+hat@92 hat@50 kick+hat@80 kick@84 snare+hat@92 hat@60 | e kick+hat@100 hat@50 snare+hat@92 hat@50 kick+hat@80 kick@84 snare+hat@92 hat@60 | e kick+hat@100 hat@50 snare+hat@92 hat@50 kick+hat@80 kick@84 snare+hat@92 hat@60 | e kick+hat@96 hat@50 snare+hat@90 hat@50 s tom@70 tom@76 tom@82 tom@88 snare@92 snare@96 snare@100 snare@106 | e kick+crash@108 hat@50 snare+hat@92 hat@50 kick+hat@80 kick@84 snare+hat@92 hat@60 | e kick+hat@100 hat@50 snare+hat@92 hat@50 kick+hat@80 kick@84 snare+hat@92 hat@60 | e kick+hat@100 hat@50 snare+hat@92 hat@50 kick+hat@80 kick@84 snare+hat@92 hat@60 | e kick+hat@100 hat@50 snare+hat@92 hat@50 kick+hat@80 kick@84 snare+hat@92 hat@60 | e kick+hat@100 hat@50 snare+hat@92 hat@50 kick+hat@80 kick@84 snare+hat@92 hat@60 | e kick+hat@100 hat@50 snare+hat@92 hat@50 kick+hat@80 kick@84 snare+hat@92 hat@60 | e kick+hat@100 hat@50 snare+hat@92 hat@50 kick+hat@80 kick@84 snare+hat@92 hat@60 | e kick+hat@96 hat@50 snare+hat@90 hat@50 kick@84 snare@90 s tom@84 tom@90 snare@96 snare@104 | e kick+crash@108 hat@54 kick+snare+hat@92 hat@54 kick+hat@90 hat@54 kick+snare+hat@96 ohat@66 | e kick+hat@100 hat@54 kick+snare+hat@92 hat@54 kick+hat@90 hat@54 kick+snare+hat@96 ohat@66 | e kick+hat@100 hat@54 kick+snare+hat@92 hat@54 kick+hat@90 hat@54 kick+snare+hat@96 ohat@66 | e kick+hat@100 hat@54 kick+snare+hat@92 hat@54 kick+hat@90 hat@54 kick+snare+hat@96 ohat@66 | e kick+hat@100 hat@54 kick+snare+hat@92 hat@54 kick+hat@90 hat@54 kick+snare+hat@96 ohat@66 | e kick+hat@100 hat@54 kick+snare+hat@92 hat@54 kick+hat@90 hat@54 kick+snare+hat@96 ohat@66 | e kick+hat@100 hat@54 kick+snare+hat@92 hat@54 kick+hat@90 hat@54 kick+snare+hat@96 ohat@66 | e kick+hat@100 hat@54 kick+snare+hat@92 hat@54 s snare@80 snare@84 tom@88 tom@92 snare@96 snare@100 tom@104 snare@110"
+    }
+  ]
+}

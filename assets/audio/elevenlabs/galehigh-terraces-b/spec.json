@@ -1,0 +1,98 @@
+{
+ "id": "galehigh-terraces-b",
+ "kind": "loop",
+ "where": "Galehigh interiors — the inn, a cliff-farm home, the kite-maker's workshop, the Storm Lumenary hall",
+ "mood": "Lanterns on the Wind — the windy cliff seen from inside the warm farmstead at dusk: cosy, a touch wistful, the wind a sigh at the shutters.",
+ "bpm": 112,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "medium"
+ },
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "112 BPM",
+  "warm D major with a wistful B minor turn",
+  "rounded lyrical pulse-wave lead with long held notes",
+  "gentle rolling harp arpeggio",
+  "warm string pad",
+  "relaxed round synth bass on quarter notes",
+  "soft brushed kick and hat, sparse",
+  "a distant soft wind swell once per phrase",
+  "cosy cliff-town indoor theme, lamplight and kites resting on the walls",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
+  "singing",
+  "fade out",
+  "ritardando",
+  "ending",
+  "electric guitar",
+  "orchestral film score",
+  "ambient drone",
+  "minimalist",
+  "dark",
+  "tense",
+  "heavy drums",
+  "busy"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{a warm welcoming two-bar entrance: a rolling harp arpeggio and a soft music-box chime, like a door closing on the wind, settling onto the tonic}",
+   "styles": [
+    "warm welcome",
+    "door shut against the wind"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the tender walking-pace melody: a hopeful rising leap that overshoots, then a gentle stepwise settle home; simple, hummable, front and centre over relaxed bass}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "tender",
+    "homely"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the melody again with a soft flute counter-line and a fuller string pad, the settle tinted by a B minor chord, wistful but warm}",
+   "styles": [
+    "flute counter-melody",
+    "fuller arrangement",
+    "wistful B minor colour"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: B minor and G major, the lead drops lower and sings longer notes, a quiet wind swell breathes past the window, then the harmony lifts through E minor to A}",
+   "styles": [
+    "B minor",
+    "reflective",
+    "quiet wind sigh",
+    "contrast"
+   ]
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the theme comes home warm and complete; the last bar lands on the A dominant chord, leaning straight back into the theme}",
+   "styles": [
+    "main theme return",
+    "warm resolution",
+    "seamless loop"
+   ]
+  }
+ ]
+}

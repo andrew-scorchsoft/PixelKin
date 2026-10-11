@@ -1,0 +1,71 @@
+{
+ "chunks": [
+  {
+   "text": "[The Hour Strikes]\n{on beat one: a sharp orchestral hit with timpani, the pendulum bass and ticking percussion already in motion, straight into the theme}",
+   "duration_ms": 4737,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "A minor",
+    "3/4 waltz time like a great clock",
+    "low pendulum bass swinging root and fifth every bar",
+    "deep tolling tower bell on the hour",
+    "patient majestic minor lead melody",
+    "warm sampled string chords",
+    "soft clock-tick percussion: woodblock and tom on the downbeat",
+    "awed mysterious legendary encounter, vast and ancient, solemn but tense",
+    "strong memorable melody",
+    "great production quality",
+    "instrumental",
+    "dramatic battle intro",
+    "full ensemble from the first beat",
+    "pendulum bass in motion",
+    "3/4 time",
+    "same tempo, key and instruments as the theme that follows",
+    "starts instantly on beat one"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "choir",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "dubstep wobble",
+    "electric guitar distortion",
+    "rock guitar",
+    "orchestral film score",
+    "fade out",
+    "ritardando",
+    "ending",
+    "fast tempo",
+    "rock drum kit",
+    "happy",
+    "4/4 time",
+    "fade in",
+    "slow intro",
+    "quiet opening",
+    "build-up",
+    "swell",
+    "ambient intro",
+    "silence",
+    "lone bell"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "EUGEPD8JrFKD4Bdfla2O",
+   "range": {
+    "start_ms": 4737,
+    "end_ms": 64737
+   }
+  },
+  {
+   "song_id": "EUGEPD8JrFKD4Bdfla2O",
+   "range": {
+    "start_ms": 64737,
+    "end_ms": 80588
+   }
+  }
+ ]
+}
