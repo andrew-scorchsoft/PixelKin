@@ -42,7 +42,7 @@
   {
    "name": "Intro",
    "bars": 4,
-   "text": "{the last dark: a hushed A minor chord and the first notes of the lullaby on a lone music box, then the harmony turns through G and the sun breaks onto a radiant C major chord with a harp sweep, leading into the theme}",
+   "text": "{the last dark: a hushed A minor chord, the lullaby's first notes on a lone music box, then the harmony turns and the sun breaks onto radiant C major with a harp sweep}",
    "styles": [
     "minor turning to major",
     "sunrise opening"
