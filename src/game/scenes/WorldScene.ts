@@ -148,6 +148,9 @@ const STAIR_WARP_ID = /^(?:(?:up|down)_stairs|stair_(?:up|down)|ladder_(?:up|dow
 /** Object sprites the player can talk ACROSS (see `WorldScene.npcAcrossDesk`). */
 const DESK_SPRITE = /(counter|desk|stall|altar|lectern)/;
 
+/** Banked once the version notice has shown the "Return to rest point" hint. */
+const REST_TIP_FLAG = 'flag:tip_restpoint_seen';
+
 export class WorldScene extends Phaser.Scene {
   private ready = false;
   private _modal = false;
@@ -1623,28 +1626,39 @@ export class WorldScene extends Phaser.Scene {
   }
 
   /**
-   * The one-time "the world has changed" notice for a journey last played on an
-   * older build: a warm narrated aside, this version's what's-new lines (if any,
-   * content/whatsnew.ts), and the rest-point escape hatch. Then the new version
-   * is stamped into the save so it never repeats.
+   * The "the world has changed" notice for a journey last played on an older build.
+   * It reads ONLY what's new since this save's own `last_version` (content/whatsnew.ts,
+   * every version after it up to this one) — a version with nothing to tell passes
+   * silently. The rest-point hint rides along once per save (`flag:tip_restpoint_seen`),
+   * not on every update. Then the new version is stamped into the save so none of it
+   * repeats (playtest: the boilerplate replayed on every build, reading as "the whole
+   * thing again").
    */
   private async showVersionNotice(from: string): Promise<void> {
+    const news = whatsNewSince(from, GAME_VERSION);
+    const tipDue = !this.flags.get(REST_TIP_FLAG);
+    if (news.length === 0) {
+      // Nothing new to tell this save: just bring it up to date, quietly.
+      this.lastVersion = GAME_VERSION;
+      void this.persist();
+      return;
+    }
     this.modal = true;
     // Let the opening fade-in finish first (an initial entry doesn't await it).
     await new Promise<void>((resolve) => this.time.delayedCall(theme.transition.fadeMs, resolve));
     const then = from ? `v${from}` : 'an older lamp-light';
     const lines = [
-      {
-        style: 'narrate' as const,
-        text: `While you rested, the world turned. Vesperholm has changed since you last walked it in ${then} - this is ${GAME_VERSION_LABEL}. Roads re-laid, new faces, and things to find where you've already been.`,
-      },
-      ...whatsNewSince(from, GAME_VERSION).map((text) => ({ style: 'narrate' as const, text })),
-      {
-        style: 'narrate' as const,
-        text: 'If a changed road ever leaves you stuck, open SETTINGS and choose "Return to rest point" - your vesperlamp remembers every hearth you have rested by.',
-      },
+      { style: 'narrate' as const, text: `While you rested, the world turned (${then} to ${GAME_VERSION_LABEL}).` },
+      ...news.map((text) => ({ style: 'narrate' as const, text })),
+      ...(tipDue
+        ? [{
+            style: 'narrate' as const,
+            text: 'If a changed road ever leaves you stuck, open SETTINGS and choose "Return to rest point" - your vesperlamp remembers every hearth you have rested by.',
+          }]
+        : []),
     ];
     await new DialogueBox(this, this.sfx).run(lines);
+    if (tipDue) this.flags.set(REST_TIP_FLAG);
     this.lastVersion = GAME_VERSION;
     void this.persist();
     this.modal = false;

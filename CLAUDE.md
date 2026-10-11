@@ -1128,8 +1128,10 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **"The world has changed" notice + `SaveGame.last_version` (2026-10).** Every persist stamps
   GAME_VERSION; Continue / LOAD FILE / in-game import pass `version_from: save.last_version ?? ''`
   in `WorldSceneData` (undefined = new game/debug reload = no check). If older, a narrated notice
-  plays on the first idle frame (+ `content/whatsnew.ts` lines keyed by the CURRENT GAME_VERSION —
-  edit that entry when you bump), and only THEN is the new version stamped. The device-level
+  plays on the first idle frame (+ `content/whatsnew.ts` lines of every version AFTER the save's own
+  `last_version` — add an entry when you bump), and only THEN is the new version stamped. A save with
+  nothing new since its version gets NO notice (stamped silently); the rest-point hint shows once per
+  save (`flag:tip_restpoint_seen`) — the old notice replayed its boilerplate on every build. The device-level
   `last_seen_version` storage key drives the title's pulsing NEW beside the version label. Any
   crafted test save without `last_version` WILL show the notice (the world stays modal).
 - **Stuck players are answered in-world by ANDREW, on a fence in every rim town** (2026-08).
