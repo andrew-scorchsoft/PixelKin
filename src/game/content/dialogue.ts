@@ -1023,7 +1023,7 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'FESTIVAL KID', text: 'My kite\'s got NINE lamps on the tail. Talo\'s only has six. It\'s not a contest, Gran says. Gran counted them for me though.' },
   ],
   'npc.galehigh_festival_goer': [
-    { speaker: 'FESTIVAL-GOER', text: 'We fly the kites so the stars have something to climb back up. Daft, maybe. But the night\'s a little less long when the whole hill\'s lit.' },
+    { speaker: 'FESTIVAL-GOER', text: 'Every tail carries a wick-lamp, see? My gran said the stars need a ladder of little lights to find their way back up. I just like how the hill looks with all of us on it.' },
   ],
   'npc.galehigh_quest_witness': [
     { speaker: 'TERRACE AUNTIE', text: 'Mira shouted the whole asking down from the ledge, didn\'t she. She does that. We\'ve given up sending letters up the winch — she answers them off the cliff at volume.' },

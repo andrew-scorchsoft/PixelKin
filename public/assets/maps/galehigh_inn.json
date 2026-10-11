@@ -486,7 +486,7 @@
         "ty": 4
       },
       "facing": "down",
-      "sprite": "npc_shopkeeper",
+      "sprite": "innkeeper",
       "movement": "static",
       "dialogue_ref": "script.galehigh_inn_rest"
     },
@@ -497,7 +497,7 @@
         "ty": 6
       },
       "facing": "right",
-      "sprite": "npc_man",
+      "sprite": "pass_walker",
       "movement": "static",
       "dialogue_ref": "npc.galehigh_inn_guest"
     }

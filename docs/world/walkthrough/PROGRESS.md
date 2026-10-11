@@ -101,6 +101,10 @@ N2 Aurora Sketcher (Aurora Charm = conditional charge ×2.5 on Frost-met kin),
 N3 Wren's Ribbon (pays off at Nightreach lamp 6 — West owes the line), R4 Waystone Kite.
 Expert panel: **SHIP-READY** (`docs/reviews/north-region-panel.md`); all minors fixed
 (Lumenary re-skins, Windward rest shelf, 32–34 entry verge, Wind-Eye starglints).
+World-craft + story depth (2026-10): Windward Stair I made a journey (cairn-count, shelter,
+shrines, prayer flags, spyglass fall) + 15-piece North prop kit; snow/gust/aurora/mist ambience
+on 9 maps; regional cast; story items N-1–N-4 + the X-2 acting pass (`worldcraft/north.py`,
+`content/regions/north.ts`).
 
 ## West — Gleams 7–8 (`crown_west`) ✅ (maps; wiring pass owed)
 

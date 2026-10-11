@@ -146,6 +146,226 @@
       "h": 3,
       "overhang": 2,
       "walk_under": true
+    },
+    {
+      "id": "ww_shrine_foot",
+      "sprite": "windward_wind_shrine",
+      "at": {
+        "tx": 6,
+        "ty": 32
+      },
+      "w": 2,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "ww_flags_foot",
+      "sprite": "windward_prayer_flags",
+      "at": {
+        "tx": 8,
+        "ty": 34
+      },
+      "w": 4,
+      "h": 2,
+      "overhang": 2,
+      "walk_under": true,
+      "solid": false
+    },
+    {
+      "id": "ww_pine_foot",
+      "sprite": "windward_bent_pine",
+      "at": {
+        "tx": 16,
+        "ty": 33
+      },
+      "w": 2,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "ww_wreck_foot",
+      "sprite": "windward_kite_wreck_b",
+      "at": {
+        "tx": 16,
+        "ty": 36
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "ww_shelter",
+      "sprite": "windward_rest_shelter",
+      "at": {
+        "tx": 4,
+        "ty": 29
+      },
+      "w": 4,
+      "h": 3,
+      "overhang": 1
+    },
+    {
+      "id": "ww_flags_mid",
+      "sprite": "windward_prayer_flags",
+      "at": {
+        "tx": 9,
+        "ty": 27
+      },
+      "w": 4,
+      "h": 2,
+      "overhang": 2,
+      "walk_under": true,
+      "solid": false
+    },
+    {
+      "id": "ww_flags_kettle",
+      "sprite": "windward_prayer_flags",
+      "at": {
+        "tx": 15,
+        "ty": 21
+      },
+      "w": 4,
+      "h": 2,
+      "overhang": 2,
+      "walk_under": true,
+      "solid": false
+    },
+    {
+      "id": "ww_drift_kettle_w",
+      "sprite": "windward_snow_drift",
+      "at": {
+        "tx": 2,
+        "ty": 25
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "ww_drift_kettle_e",
+      "sprite": "windward_snow_drift",
+      "at": {
+        "tx": 12,
+        "ty": 25
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "ww_shrine_ledge",
+      "sprite": "windward_wind_shrine",
+      "at": {
+        "tx": 2,
+        "ty": 14
+      },
+      "w": 2,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "ww_pine_ledge",
+      "sprite": "windward_bent_pine",
+      "at": {
+        "tx": 20,
+        "ty": 14
+      },
+      "w": 2,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "ww_wreck_ledge",
+      "sprite": "windward_kite_wreck_b",
+      "at": {
+        "tx": 2,
+        "ty": 17
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "ww_pine_head",
+      "sprite": "windward_bent_pine",
+      "at": {
+        "tx": 2,
+        "ty": 7
+      },
+      "w": 2,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "ww_shrine_head",
+      "sprite": "windward_wind_shrine",
+      "at": {
+        "tx": 2,
+        "ty": 4
+      },
+      "w": 2,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "ww_flags_head",
+      "sprite": "windward_prayer_flags",
+      "at": {
+        "tx": 14,
+        "ty": 6
+      },
+      "w": 4,
+      "h": 2,
+      "overhang": 2,
+      "walk_under": true,
+      "solid": false
+    },
+    {
+      "id": "ww_drift_head_a",
+      "sprite": "windward_snow_drift",
+      "at": {
+        "tx": 19,
+        "ty": 9
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "ww_drift_head_b",
+      "sprite": "windward_snow_drift",
+      "at": {
+        "tx": 3,
+        "ty": 12
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "ww_drift_head_c",
+      "sprite": "windward_snow_drift",
+      "at": {
+        "tx": 17,
+        "ty": 12
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "ww_spyglass",
+      "sprite": "windward_spyglass",
+      "at": {
+        "tx": 10,
+        "ty": 6
+      },
+      "w": 2,
+      "h": 2
     }
   ],
   "warps": [
@@ -234,6 +454,96 @@
       },
       "activation": "interact",
       "ref": "sign.windward_windgap"
+    },
+    {
+      "id": "ww_cairn_foot",
+      "kind": "script",
+      "at": {
+        "tx": 4,
+        "ty": 34
+      },
+      "activation": "interact",
+      "ref": "script.windward_cairn_foot"
+    },
+    {
+      "id": "ww_cairn_kettle",
+      "kind": "script",
+      "at": {
+        "tx": 5,
+        "ty": 22
+      },
+      "activation": "interact",
+      "ref": "script.windward_cairn_kettle"
+    },
+    {
+      "id": "ww_cairn_mid",
+      "kind": "script",
+      "at": {
+        "tx": 18,
+        "ty": 25
+      },
+      "activation": "interact",
+      "ref": "script.windward_cairn_mid"
+    },
+    {
+      "id": "ww_cairn_head",
+      "kind": "script",
+      "at": {
+        "tx": 6,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "script.windward_cairn_head"
+    },
+    {
+      "id": "ww_cairn_summit",
+      "kind": "script",
+      "at": {
+        "tx": 18,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "script.windward_cairn_summit"
+    },
+    {
+      "id": "ww_shelter_sit",
+      "kind": "script",
+      "at": {
+        "tx": 4,
+        "ty": 31
+      },
+      "activation": "interact",
+      "ref": "script.windward_shelter"
+    },
+    {
+      "id": "ww_shrine_foot_look",
+      "kind": "script",
+      "at": {
+        "tx": 6,
+        "ty": 34
+      },
+      "activation": "interact",
+      "ref": "script.windward_shrine"
+    },
+    {
+      "id": "ww_shrine_head_look",
+      "kind": "script",
+      "at": {
+        "tx": 3,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "script.windward_shrine"
+    },
+    {
+      "id": "ww_spyglass_look",
+      "kind": "script",
+      "at": {
+        "tx": 10,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "script.windward_spyglass"
     }
   ],
   "encounters": [
@@ -730,7 +1040,7 @@
         "ty": 17
       },
       "facing": "left",
-      "sprite": "npc_woman",
+      "sprite": "kite_weaver",
       "movement": "static",
       "dialogue_ref": "script.windward_galewatch",
       "sight_range": 4,
@@ -744,7 +1054,7 @@
         "ty": 17
       },
       "facing": "left",
-      "sprite": "npc_woman",
+      "sprite": "kite_weaver",
       "movement": "look_around",
       "dialogue_ref": "npc.windward_galewatch_after",
       "requires_flag": "flag:windward_galewatch_beaten"
@@ -793,7 +1103,7 @@
         "ty": 37
       },
       "facing": "right",
-      "sprite": "npc_man",
+      "sprite": "pass_walker",
       "movement": "look_around",
       "dialogue_ref": "npc.windward_pilgrim"
     },
@@ -832,6 +1142,30 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_windward_shard",
       "hidden_when_flag": "flag:picked_windward_shard"
+    },
+    {
+      "id": "amb_flintbeak",
+      "at": {
+        "tx": 20,
+        "ty": 34
+      },
+      "facing": "down",
+      "sprite": "kin_89_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
+    },
+    {
+      "id": "amb_chillpip",
+      "at": {
+        "tx": 5,
+        "ty": 11
+      },
+      "facing": "down",
+      "sprite": "kin_77_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 2
     }
   ],
   "gates": [],
@@ -3742,5 +4076,47 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "snow",
+        "density": 0.6
+      },
+      {
+        "kind": "motes",
+        "density": 0.9
+      }
+    ],
+    "mist": {
+      "color": "#e6eef8",
+      "alpha": 0.1,
+      "speed": 10
+    },
+    "starfall": {
+      "min_s": 30,
+      "max_s": 70
+    },
+    "birds": {
+      "kind": "bird",
+      "flocks": [
+        {
+          "tx": 20,
+          "ty": 36
+        }
+      ],
+      "flyover": true
+    },
+    "light_sources_extra": [
+      {
+        "at": {
+          "tx": 5,
+          "ty": 30
+        },
+        "radius": 12,
+        "color": "#ffc46b"
+      }
+    ],
+    "sound_bed": "amb-wind"
+  }
 }

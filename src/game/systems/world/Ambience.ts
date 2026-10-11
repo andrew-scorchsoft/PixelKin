@@ -68,6 +68,9 @@ export const LIGHT_SOURCES: Record<string, { hx: number; hy: number; radius: num
   nightreach_watch_lamp_lit: { hx: 16, hy: 8, radius: 17, color: 0xdfe6ff },
   nightreach_vigil_lamp: { hx: 8, hy: 6, radius: 12, color: 0xdfe6ff },
   tideglass_wrecklamp_lit: { hx: 8, hy: 8, radius: 12, color: 0x9fe7ff },
+  // north
+  pale_vault_ice_lantern: { hx: 8, hy: 9, radius: 12, color: 0x9fe7ff },
+  windward_wind_shrine: { hx: 16, hy: 18, radius: 9, color: 0xffc46b },
 };
 
 /** Chimney tops keyed by building sprite (px offset of the stack's mouth). */
@@ -76,6 +79,9 @@ export const CHIMNEYS: Record<string, { x: number; y: number }> = {
   tinderwick_shop: { x: 61, y: 2 },
   pearlmoor_inn: { x: 60, y: 2 },
   vesper_crossroads_inn: { x: 58, y: 6 },
+  // north
+  pale_vault_home: { x: 20, y: 14 },
+  galehigh_cottage: { x: 22, y: 34 },
 };
 
 /** Map kinds that are "under the sky" (the starfall default + bird fly-overs). */

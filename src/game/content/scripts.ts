@@ -2599,6 +2599,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'The wind stops. On open ice that should mean nothing. It does not feel like nothing.' },
     { op: 'narrate', text: 'A figure stands on the drained shelf below the lane — cowled, unhurried, hands folded. As if he has been waiting exactly as long as was polite.' },
     { op: 'cameraFocus', actor: 'cor_figure', ms: 1000 },
+    { op: 'face', actor: 'cor_acolyte', facing: 'down' },
     // X-2: his courtesy is VISIBLE — he greets you with a bow before a word.
     { op: 'face', actor: 'cor_figure', facing: 'right' },
     { op: 'action', actor: 'cor_figure', action: 'bow', holdMs: 500 },
