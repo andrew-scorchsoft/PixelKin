@@ -234,6 +234,16 @@ export interface MapDefinition {
   music?: string;
 }
 
+/** A remembered rest point (inn / home / camp fire) — see WorldSnapshot.rest_points. */
+export interface RestPoint {
+  map: string;
+  tx: number;
+  ty: number;
+  facing: Facing;
+  /** Friendly place name (the map's display_name when banked). */
+  label: string;
+}
+
 /** Persistent world progress, serialised through the platform storage seam (key 'world'). */
 export interface WorldSnapshot {
   current_map: string;
@@ -246,6 +256,13 @@ export interface WorldSnapshot {
    * an additive field, no schema bump (the bond / battles_won precedent).
    */
   respawn?: { map: string; tx: number; ty: number; facing: Facing };
+  /**
+   * Every rest point the player has EVER rested at (one per map, latest coords,
+   * oldest first) — the list SETTINGS → "Return to a rest point" travels to.
+   * Banked alongside `respawn` by every resting `heal`; old saves seed it from
+   * `respawn`. Additive + optional, no schema bump (the respawn precedent).
+   */
+  rest_points?: RestPoint[];
   abilities: AbilityId[];
   /** Unlocked warps/areas/honours and fired triggers. */
   flags: Record<WorldFlag, boolean>;

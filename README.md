@@ -60,7 +60,11 @@ inn rest-heals, item caches, sight trainers, festivals that fill each town
 after its Gleam, a LORE codex, a collectible concept-art gallery, and a
 quayside easter-egg chain (the Booji-Wooji Man, his bird-pig, and the wood he
 walks). A **Cannot die** setting turns a lost battle into a heal-in-place for
-players who'd rather not be sent back. Progress
+players who'd rather not be sent back, and SETTINGS → **Return to rest point**
+carries you back to any inn or home you've ever rested at (fast travel, and a
+way out if a changed road ever leaves you stuck). Load a journey from an older
+build and the world tells you, once, that it has changed since you last walked
+it. Progress
 autosaves, every manual save offers a downloadable copy, and **LOAD FILE** on
 the title screen restores a journey from one — so a cleared cache or a new
 device costs you nothing. The screen can show as a

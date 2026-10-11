@@ -1026,8 +1026,24 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   getCannotDie()`; `WorldScene.blackout` then heals the party and RE-ENTERS the current map at the
   player's own tile (no rest-point warp, no wick tithe) — the re-entry is what resets actors a lost
   scene walked off-post, a marched-up sight trainer, and a focused camera; don't shortcut it. A lost scripted battle still ends its scene, so the fight simply waits to be
-  retried. The settings list is now 11 rows from y 14 — at its 160px budget; a 12th row needs a
-  sub-screen.
+  retried. The settings list is now 12 rows, windowed to 11 visible (`Menu.maxVisible`).
+- **Every rest point is REMEMBERED: SETTINGS → "Return to rest point" (2026-10).** The `heal`
+  op's `recordRespawn` also banks `WorldSnapshot.rest_points` (additive optional; one per map,
+  latest coords, label = the map's `display_name`; old saves seed from `respawn` in
+  `systems/world/restPoints.ts`). The row is FIRST in Settings (world only — absent on the title),
+  never gated (it's the anti-softlock hatch) → `ui/RestPointMenu` (newest first + confirm) →
+  `WorldScene.travelToRestPoint` (persist, fade, `enterMap(..., footFirst)` which re-validates
+  stale coords to the nearest ON-FOOT, NPC-free tile). The settings list is now 12 rows, so it is
+  WINDOWED (`Menu.maxVisible: 11`, ▲/▼ hints, `initialIndex`) — reuse `maxVisible` for any long
+  list rather than another sub-screen. Thread `rest_points` like `respawn` on any new load path.
+  (Not in the pause menu: it's already at the 160px budget.)
+- **"The world has changed" notice + `SaveGame.last_version` (2026-10).** Every persist stamps
+  GAME_VERSION; Continue / LOAD FILE / in-game import pass `version_from: save.last_version ?? ''`
+  in `WorldSceneData` (undefined = new game/debug reload = no check). If older, a narrated notice
+  plays on the first idle frame (+ `content/whatsnew.ts` lines keyed by the CURRENT GAME_VERSION —
+  edit that entry when you bump), and only THEN is the new version stamped. The device-level
+  `last_seen_version` storage key drives the title's pulsing NEW beside the version label. Any
+  crafted test save without `last_version` WILL show the notice (the world stays modal).
 - **Stuck players are answered in-world by ANDREW, on a fence in every rim town** (2026-08).
   `script.andrew_hint` is the wayfinding chain — one `say` per journey stage, each guarded
   `if_flag: <stage>` + `unless_flag: <next stage>`, so exactly one line plays and it names the

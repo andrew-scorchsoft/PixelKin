@@ -40,6 +40,8 @@ function slotKey(slot: number): string {
 let activeSlot = 0;
 
 const SETTINGS_KEY = 'settings';
+/** The GAME_VERSION last opened on this device (any slot) — the title's NEW cue. */
+const LAST_SEEN_VERSION_KEY = 'last_seen_version';
 
 /** Which DOM chrome wraps the canvas (see ShellManager). */
 export type ShellMode = 'device' | 'overlay' | 'plain';
@@ -161,6 +163,16 @@ export const SaveManager = {
   /** Persist settings (whole object — callers read-modify-write). */
   async saveSettings(settings: Settings): Promise<void> {
     await storage.set(SETTINGS_KEY, JSON.stringify(settings));
+  },
+
+  /** The game version last played on this device (null = never recorded). */
+  async loadLastSeenVersion(): Promise<string | null> {
+    return storage.get(LAST_SEEN_VERSION_KEY);
+  },
+
+  /** Record the version now being played (called as the world opens). */
+  async saveLastSeenVersion(version: string): Promise<void> {
+    await storage.set(LAST_SEEN_VERSION_KEY, version);
   },
 
   /**

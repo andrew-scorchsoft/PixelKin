@@ -23,6 +23,13 @@ import { GleamsMenu } from '@game/ui/GleamsMenu';
 import { ChartsMenu } from '@game/ui/ChartsMenu';
 import { JournalMenu } from '@game/ui/JournalMenu';
 import { TravelMenu } from '@game/ui/TravelMenu';
+import { GAME_VERSION, GAME_VERSION_LABEL, compareVersions } from '@game/version';
+import { whatsNewFor } from '@game/content/whatsnew';
+import {
+  bankRestPoint,
+  normaliseRestPoints,
+  travellableRestPoints,
+} from '@game/systems/world/restPoints';
 import { WorldMapMenu } from '@game/ui/WorldMapMenu';
 import { ChartView } from '@game/ui/ChartView';
 import { fadeIn, fadeOut } from '@game/ui/Transitions';
@@ -64,7 +71,7 @@ import type { WorldSnapshot } from '@game/data/world/types';
 import { MAP_REGISTRY } from '@game/data/world/maps';
 import { LamplightMask } from '@game/systems/world/LamplightMask';
 import { VESPERHOLM_GRAPH } from '@game/data/world/graph';
-import type { AbilityId, Facing, Warp, EventTrigger, NpcPlacement, MapObject, EncounterTerrain, WorldFlag } from '@game/data/world/types';
+import type { AbilityId, Facing, Warp, EventTrigger, NpcPlacement, MapObject, EncounterTerrain, WorldFlag, RestPoint } from '@game/data/world/types';
 
 export interface WorldSceneData {
   mapId: string;
@@ -85,8 +92,18 @@ export interface WorldSceneData {
   cooldowns?: Record<string, number>;
   /** The last rest point — where a blackout wakes the player (see WorldSnapshot). */
   respawn?: { map: string; tx: number; ty: number; facing: Facing };
+  /** Every rest point ever rested at (SETTINGS → Return to rest point). Seeded
+   *  from `respawn` when absent (an old save). */
+  rest_points?: RestPoint[];
   /** What the player calls themselves, once they've been asked (`askName`). */
   player_name?: string;
+  /**
+   * Set ONLY when resuming a stored journey (Continue / LOAD FILE / an in-game
+   * import): the save's `last_version` ('' = from before version tracking). If
+   * older than GAME_VERSION, the "world has changed" notice plays once the world
+   * is up. Undefined (a new game, a debug reload) = no check.
+   */
+  version_from?: string;
 }
 
 /** Depth band for actors: above deco (5), below the 'above' layer (20). */
@@ -152,6 +169,13 @@ export class WorldScene extends Phaser.Scene {
   private pendingTutorial?: EntryTutorial;
   /** The last rest point (inn / home / camp) — where a blackout wakes you. */
   private respawn?: { map: string; tx: number; ty: number; facing: Facing };
+  /** Every rest point rested at, oldest first (one per map; latest coords). */
+  private restPoints: RestPoint[] = [];
+  /** The version stamped into saves. Held at the loaded save's value until the
+   *  "world has changed" notice has actually been shown, then GAME_VERSION. */
+  private lastVersion: string = GAME_VERSION;
+  /** The world-has-changed notice awaits an idle frame (from-version, '' = unknown). */
+  private pendingVersionNotice?: string;
   /** A `setLead` swap to undo once the set-piece it was made for resolves. */
   private leadRestore?: { speciesId: number; from: number };
   /** What the player calls themselves — set by the `askName` op, used as `{name}`. */
@@ -201,7 +225,16 @@ export class WorldScene extends Phaser.Scene {
     this.battlesWon = data.battles_won ?? 0;
     this.cooldowns = { ...(data.cooldowns ?? {}) };
     this.respawn = data.respawn;
+    this.restPoints = normaliseRestPoints(data.rest_points, data.respawn);
     this.playerName = data.player_name;
+    this.lastVersion = GAME_VERSION;
+    this.pendingVersionNotice = undefined;
+    if (data.version_from !== undefined && compareVersions(data.version_from, GAME_VERSION) < 0) {
+      this.lastVersion = data.version_from;
+      this.pendingVersionNotice = data.version_from;
+    }
+    // Device-level "last version opened" — the title's subtle NEW cue reads it.
+    void SaveManager.saveLastSeenVersion(GAME_VERSION);
     // Whatever walks with you is certainly on the register.
     for (const k of [...this.party, ...this.box]) {
       this.dexSeen.add(k.species_id);
@@ -236,6 +269,9 @@ export class WorldScene extends Phaser.Scene {
     spawn: { tx: number; ty: number },
     facing: Facing | undefined,
     initial: boolean,
+    /** Re-validate the spawn strictly (on-foot standable, no NPC post) — for
+     *  stored coords that may predate a map rebuild (rest-point travel). */
+    footFirst = false,
   ): Promise<void> {
     this.ready = false;
     this.teardownMap();
@@ -251,7 +287,8 @@ export class WorldScene extends Phaser.Scene {
       this.render = await renderMap(this, map);
       this.cameras.main.setBounds(0, 0, this.render.pixelWidth, this.render.pixelHeight);
 
-      const safe = this.findSafeTile(spawn.tx, spawn.ty);
+      const safe = (footFirst ? this.findFootTile(spawn.tx, spawn.ty) : undefined) ??
+        this.findSafeTile(spawn.tx, spawn.ty);
       this.player = new Player(this, safe.tx, safe.ty, facing ?? 'down');
       this.cameras.main.startFollow(this.player.sprite, true, 1, 1);
 
@@ -333,7 +370,9 @@ export class WorldScene extends Phaser.Scene {
       battles_won: this.battlesWon,
       cooldowns: this.cooldowns,
       respawn: this.respawn,
+      rest_points: this.restPoints,
       player_name: this.playerName,
+      version_from: this.pendingVersionNotice,
     } satisfies WorldSceneData);
   }
 
@@ -342,6 +381,7 @@ export class WorldScene extends Phaser.Scene {
       current_map: this.map.def.id,
       player: { tx: this.player.tx, ty: this.player.ty, facing: this.player.facing },
       respawn: this.respawn,
+      rest_points: this.restPoints,
       abilities: [...this.abilities],
       flags: this.flags.snapshot(),
       schema_version: SAVE_SCHEMA_VERSION,
@@ -363,6 +403,8 @@ export class WorldScene extends Phaser.Scene {
       battles_won: this.battlesWon,
       cooldowns: this.cooldowns,
       player_name: this.playerName,
+      // '' (a pre-tracking save whose notice hasn't played yet) stays absent.
+      last_version: this.lastVersion || undefined,
     };
   }
 
@@ -609,6 +651,33 @@ export class WorldScene extends Phaser.Scene {
       }
     }
     return { tx: cx, ty: cy };
+  }
+
+  /**
+   * The nearest tile to (tx,ty) that stands on FOOT (no Lantern Gift needed) and
+   * isn't a visible NPC's post — the strict landing for stored coords that may
+   * have gone stale (a rebuilt map). Undefined if none exists (then the lenient
+   * `findSafeTile` decides). Rings outward, so the old spot wins when it's fine.
+   */
+  private findFootTile(tx: number, ty: number): { tx: number; ty: number } | undefined {
+    const none = new Set<AbilityId>();
+    const posts = new Set(
+      this.map.def.npcs.filter((n) => this.npcVisible(n)).map((n) => `${n.at.tx},${n.at.ty}`),
+    );
+    const ok = (x: number, y: number): boolean =>
+      this.map.inBounds(x, y) && !this.collision.isBlocked(x, y, none) && !posts.has(`${x},${y}`);
+    const cx = Phaser.Math.Clamp(tx, 0, this.map.width - 1);
+    const cy = Phaser.Math.Clamp(ty, 0, this.map.height - 1);
+    if (ok(cx, cy)) return { tx: cx, ty: cy };
+    for (let r = 1; r < Math.max(this.map.width, this.map.height); r++) {
+      for (let dy = -r; dy <= r; dy++) {
+        for (let dx = -r; dx <= r; dx++) {
+          if (Math.max(Math.abs(dx), Math.abs(dy)) !== r) continue; // ring only
+          if (ok(cx + dx, cy + dy)) return { tx: cx + dx, ty: cy + dy };
+        }
+      }
+    }
+    return undefined;
   }
 
   private npcVisible(placement: NpcPlacement): boolean {
@@ -1168,6 +1237,57 @@ export class WorldScene extends Phaser.Scene {
       ty: this.player.ty,
       facing: this.player.facing,
     };
+    // Remembered for good: SETTINGS → Return to rest point can carry you back.
+    this.restPoints = bankRestPoint(this.restPoints, {
+      ...this.respawn,
+      label: this.map.def.display_name || this.map.def.id,
+    });
+  }
+
+  /**
+   * SETTINGS → "Return to rest point": write the journey, then ride the lamp
+   * home along the same map-entry path a warp uses (fade, `enterMap` — which
+   * rebuilds NPCs/objects/music and autosaves — fade in). Stored coords are
+   * re-validated on arrival: a rebuilt map that walled the old tile in lands you
+   * on the nearest foot-standable, NPC-free tile instead (`footFirst`). Called
+   * from the pause menu with `modal` already held; the caller releases it.
+   */
+  private async travelToRestPoint(point: RestPoint): Promise<void> {
+    if (!MAP_REGISTRY[point.map]) return; // a map that no longer exists can't be entered
+    await this.persist();
+    void this.sfx.play('world-warp');
+    await fadeOut(this, theme.transition.fadeMs);
+    await this.enterMap(point.map, { tx: point.tx, ty: point.ty }, point.facing, false, true);
+    await fadeIn(this, theme.transition.fadeMs);
+    void this.persist();
+  }
+
+  /**
+   * The one-time "the world has changed" notice for a journey last played on an
+   * older build: a warm narrated aside, this version's what's-new lines (if any,
+   * content/whatsnew.ts), and the rest-point escape hatch. Then the new version
+   * is stamped into the save so it never repeats.
+   */
+  private async showVersionNotice(from: string): Promise<void> {
+    this.modal = true;
+    // Let the opening fade-in finish first (an initial entry doesn't await it).
+    await new Promise<void>((resolve) => this.time.delayedCall(theme.transition.fadeMs, resolve));
+    const then = from ? `v${from}` : 'an older lamp-light';
+    const lines = [
+      {
+        style: 'narrate' as const,
+        text: `While you rested, the world turned. Vesperholm has changed since you last walked it in ${then} - this is ${GAME_VERSION_LABEL}. Roads re-laid, new faces, and things to find where you've already been.`,
+      },
+      ...whatsNewFor(GAME_VERSION).map((text) => ({ style: 'narrate' as const, text })),
+      {
+        style: 'narrate' as const,
+        text: 'If a changed road ever leaves you stuck, open SETTINGS and choose "Return to rest point" - your vesperlamp remembers every hearth you have rested by.',
+      },
+    ];
+    await new DialogueBox(this, this.sfx).run(lines);
+    this.lastVersion = GAME_VERSION;
+    void this.persist();
+    this.modal = false;
   }
 
   /** Defeat recovery: revive the party and wake at the last hearth you rested
@@ -1292,6 +1412,12 @@ export class WorldScene extends Phaser.Scene {
     this.trackReloadGesture();
 
     if (!this.modal) {
+      if (this.pendingVersionNotice !== undefined) {
+        const from = this.pendingVersionNotice;
+        this.pendingVersionNotice = undefined;
+        void this.showVersionNotice(from);
+        return;
+      }
       if (this.pendingReveal) {
         const chart = this.pendingReveal;
         this.pendingReveal = undefined;
@@ -1531,7 +1657,7 @@ export class WorldScene extends Phaser.Scene {
   private async openPauseMenu(): Promise<void> {
     this.modal = true;
     // A holder so the closure write in onImport survives TS flow analysis.
-    const pending: { load: SaveGame | null } = { load: null };
+    const pending: { load: SaveGame | null; rest: RestPoint | null } = { load: null, rest: null };
     let open = true;
     while (open) {
       // The TRAVEL option (waystone fast-travel) appears only once the four-way
@@ -1605,13 +1731,18 @@ export class WorldScene extends Phaser.Scene {
             pending.load = imported;
           },
           sfx: this.sfx,
+          restPoints: () => travellableRestPoints(this.restPoints),
+          onRestTravel: (point) => {
+            pending.rest = point;
+          },
         }).run();
-        if (pending.load) open = false;
+        if (pending.load || pending.rest) open = false;
       } else {
         open = false; // Resume or cancel
       }
     }
 
+    if (pending.rest && !pending.load) await this.travelToRestPoint(pending.rest);
     this.modal = false;
     const loaded = pending.load;
     if (loaded) {
@@ -1629,8 +1760,10 @@ export class WorldScene extends Phaser.Scene {
         battles_won: loaded.battles_won,
         cooldowns: loaded.cooldowns,
         respawn: loaded.world.respawn,
+        rest_points: loaded.world.rest_points,
         player_name: loaded.player_name,
-      });
+        version_from: loaded.last_version ?? '',
+      } satisfies WorldSceneData);
     }
   }
 }
