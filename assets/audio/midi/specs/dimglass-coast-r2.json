@@ -1,0 +1,803 @@
+{
+  "title": "Dimglass Coast - Lanterns Along the Tide (r2 remaster pilot)",
+  "_note": "R2 REMASTER PILOT (parallel to dimglass-coast-a; NOT wired into the game). Panel brief: docs/reviews/music-remaster-panel.md. The first open road. 126 BPM, 4/4, G major with a borrowed bVI-bVII (Ebmaj7-F) 'open sea' lift in the bridge. Form A(8) A'(8) B(8) A''(8) = 32 bars, ~61 s. The hook is the LANTERN CALL bounced: D5-G5-A5 (sol-do-re) on a syncopated 'q e q.' stride, settling B5-A5-G5; an A4-B4 pickup throws the loop back to the top. A: lead + skipping 'boom-ba' bass + bell-buoy harp chimes on the OFFBEATS (forward drive) + light kit. A': strings enter (guide tones); the cadence detours through B7 (V/vi) and A7 (V/V). B: modal-mixture bridge (Cmaj7-Bm7-Am7-D7-Ebmaj7-F-Am7-D7) - the lead calls in 2-bar spans and the flute answers in the gaps, the bass walks, the harp rolls in waves, the kit opens up (open hat, 'sea-spray'). A'': the tune returns doubled at the octave by the flute, bells on the phrase ends. ECHO = composed SNES echo (lead a dotted eighth late, wrapped across the seam). <=8 voices. Original melody throughout (VISION.md).",
+  "era": "snes",
+  "tempo": 126,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "G major (borrowed bVI/bVII bridge)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 5,
+      "gain": 0.88,
+      "_note": "Bounced Lantern Call hook (bars 1-2), sequenced up through Em7, the one leap to D6 in bar 6, ii-V home.",
+      "notes": "D5q@90 G5e@80 A5q.@80 G5e@80 E5e@80 | B5e@88 A5e@78 G5q.@78 E5e@78 D5q@78 | E5e@92 G5e@82 B5q@82 A5e@87 G5e@82 E5q@82 | F#5q.@86 E5e@76 D5h@81 | D5q@92 G5e@82 A5q.@82 G5e@82 E5e@82 | B5e@96 A5e@86 F#5q.@86 G#5e@86 B5e@86 D6e@86 | C6q.@98 B5e@88 A5e@93 G5e@88 F#5e@88 A5e@88 | G5h@90 rq A4e@80 B4e@80 | D5q@94 G5e@84 A5q.@84 G5e@84 E5e@84 | B5e@92 A5e@82 G5q.@82 E5e@82 D5q@82 | E5e@96 G5e@86 B5q@86 A5e@91 G5e@86 E5q@86 | F#5q.@90 E5e@80 D5h@85 | D5q@96 G5e@86 A5q.@86 G5e@86 E5e@86 | B5e@100 A5e@90 F#5q.@90 D#5e@90 F#5e@90 B5e@90 | G5q.@102 F#5e@92 E5e@97 C#5e@92 E5e@92 G5e@92 | E5h@98 D5e@93 E5e@88 F#5e@88 A5e@88 | E5q.@92 D5e@82 E5q@87 G5q@82 | F#5h@10 rh | E5q.@94 D5e@84 C5q@89 E5q@84 | F#5h@10 rh | G5q.@100 F5e@90 G5q@95 Bb5q@90 | A5h@10 rh | C6q.@106 B5e@96 A5q@101 E5q@96 | A5h@102 F#5h@97 | D5q@98 G5e@88 A5q.@88 G5e@88 E5e@88 | B5e@96 A5e@86 G5q.@86 E5e@86 D5q@86 | E5e@100 G5e@90 B5q@90 A5e@95 G5e@90 E5q@90 | F#5q.@94 E5e@84 D5h@89 | D5q@100 G5e@90 A5q.@90 G5e@90 E5e@90 | B5e@106 A5e@96 F#5q.@96 G#5e@96 B5e@96 D6e@96 | C6q.@110 B5e@100 A5e@105 G5e@100 F#5e@100 A5e@100 | G5h@98 rq A4e@88 B4e@88"
+    },
+    {
+      "name": "echo",
+      "voice": "pulse25",
+      "octave": 5,
+      "gain": 0.45,
+      "_note": "Composed SNES-echo (dotted-eighth delay, ~55% velocity, wrapped).",
+      "notes": [
+        {
+          "pitch": "r",
+          "beats": 0.25
+        },
+        {
+          "pitch": "B4",
+          "beats": 0.5,
+          "vel": 48
+        },
+        {
+          "pitch": "D5",
+          "beats": 1.0,
+          "vel": 49
+        },
+        {
+          "pitch": "G5",
+          "beats": 0.5,
+          "vel": 44
+        },
+        {
+          "pitch": "A5",
+          "beats": 1.5,
+          "vel": 44
+        },
+        {
+          "pitch": "G5",
+          "beats": 0.5,
+          "vel": 44
+        },
+        {
+          "pitch": "E5",
+          "beats": 0.5,
+          "vel": 44
+        },
+        {
+          "pitch": "B5",
+          "beats": 0.5,
+          "vel": 48
+        },
+        {
+          "pitch": "A5",
+          "beats": 0.5,
+          "vel": 42
+        },
+        {
+          "pitch": "G5",
+          "beats": 1.5,
+          "vel": 42
+        },
+        {
+          "pitch": "E5",
+          "beats": 0.5,
+          "vel": 42
+        },
+        {
+          "pitch": "D5",
+          "beats": 1.0,
+          "vel": 42
+        },
+        {
+          "pitch": "E5",
+          "beats": 0.5,
+          "vel": 50
+        },
+        {
+          "pitch": "G5",
+          "beats": 0.5,
+          "vel": 45
+        },
+        {
+          "pitch": "B5",
+          "beats": 1.0,
+          "vel": 45
+        },
+        {
+          "pitch": "A5",
+          "beats": 0.5,
+          "vel": 47
+        },
+        {
+          "pitch": "G5",
+          "beats": 0.5,
+          "vel": 45
+        },
+        {
+          "pitch": "E5",
+          "beats": 1.0,
+          "vel": 45
+        },
+        {
+          "pitch": "F#5",
+          "beats": 1.5,
+          "vel": 47
+        },
+        {
+          "pitch": "E5",
+          "beats": 0.5,
+          "vel": 41
+        },
+        {
+          "pitch": "D5",
+          "beats": 2.0,
+          "vel": 44
+        },
+        {
+          "pitch": "D5",
+          "beats": 1.0,
+          "vel": 50
+        },
+        {
+          "pitch": "G5",
+          "beats": 0.5,
+          "vel": 45
+        },
+        {
+          "pitch": "A5",
+          "beats": 1.5,
+          "vel": 45
+        },
+        {
+          "pitch": "G5",
+          "beats": 0.5,
+          "vel": 45
+        },
+        {
+          "pitch": "E5",
+          "beats": 0.5,
+          "vel": 45
+        },
+        {
+          "pitch": "B5",
+          "beats": 0.5,
+          "vel": 52
+        },
+        {
+          "pitch": "A5",
+          "beats": 0.5,
+          "vel": 47
+        },
+        {
+          "pitch": "F#5",
+          "beats": 1.5,
+          "vel": 47
+        },
+        {
+          "pitch": "G#5",
+          "beats": 0.5,
+          "vel": 47
+        },
+        {
+          "pitch": "B5",
+          "beats": 0.5,
+          "vel": 47
+        },
+        {
+          "pitch": "D6",
+          "beats": 0.5,
+          "vel": 47
+        },
+        {
+          "pitch": "C6",
+          "beats": 1.5,
+          "vel": 53
+        },
+        {
+          "pitch": "B5",
+          "beats": 0.5,
+          "vel": 48
+        },
+        {
+          "pitch": "A5",
+          "beats": 0.5,
+          "vel": 51
+        },
+        {
+          "pitch": "G5",
+          "beats": 0.5,
+          "vel": 48
+        },
+        {
+          "pitch": "F#5",
+          "beats": 0.5,
+          "vel": 48
+        },
+        {
+          "pitch": "A5",
+          "beats": 0.5,
+          "vel": 48
+        },
+        {
+          "pitch": "G5",
+          "beats": 2.0,
+          "vel": 49
+        },
+        {
+          "pitch": "r",
+          "beats": 1.0
+        },
+        {
+          "pitch": "A4",
+          "beats": 0.5,
+          "vel": 44
+        },
+        {
+          "pitch": "B4",
+          "beats": 0.5,
+          "vel": 44
+        },
+        {
+          "pitch": "D5",
+          "beats": 1.0,
+          "vel": 51
+        },
+        {
+          "pitch": "G5",
+          "beats": 0.5,
+          "vel": 46
+        },
+        {
+          "pitch": "A5",
+          "beats": 1.5,
+          "vel": 46
+        },
+        {
+          "pitch": "G5",
+          "beats": 0.5,
+          "vel": 46
+        },
+        {
+          "pitch": "E5",
+          "beats": 0.5,
+          "vel": 46
+        },
+        {
+          "pitch": "B5",
+          "beats": 0.5,
+          "vel": 50
+        },
+        {
+          "pitch": "A5",
+          "beats": 0.5,
+          "vel": 45
+        },
+        {
+          "pitch": "G5",
+          "beats": 1.5,
+          "vel": 45
+        },
+        {
+          "pitch": "E5",
+          "beats": 0.5,
+          "vel": 45
+        },
+        {
+          "pitch": "D5",
+          "beats": 1.0,
+          "vel": 45
+        },
+        {
+          "pitch": "E5",
+          "beats": 0.5,
+          "vel": 52
+        },
+        {
+          "pitch": "G5",
+          "beats": 0.5,
+          "vel": 47
+        },
+        {
+          "pitch": "B5",
+          "beats": 1.0,
+          "vel": 47
+        },
+        {
+          "pitch": "A5",
+          "beats": 0.5,
+          "vel": 50
+        },
+        {
+          "pitch": "G5",
+          "beats": 0.5,
+          "vel": 47
+        },
+        {
+          "pitch": "E5",
+          "beats": 1.0,
+          "vel": 47
+        },
+        {
+          "pitch": "F#5",
+          "beats": 1.5,
+          "vel": 49
+        },
+        {
+          "pitch": "E5",
+          "beats": 0.5,
+          "vel": 44
+        },
+        {
+          "pitch": "D5",
+          "beats": 2.0,
+          "vel": 46
+        },
+        {
+          "pitch": "D5",
+          "beats": 1.0,
+          "vel": 52
+        },
+        {
+          "pitch": "G5",
+          "beats": 0.5,
+          "vel": 47
+        },
+        {
+          "pitch": "A5",
+          "beats": 1.5,
+          "vel": 47
+        },
+        {
+          "pitch": "G5",
+          "beats": 0.5,
+          "vel": 47
+        },
+        {
+          "pitch": "E5",
+          "beats": 0.5,
+          "vel": 47
+        },
+        {
+          "pitch": "B5",
+          "beats": 0.5,
+          "vel": 55
+        },
+        {
+          "pitch": "A5",
+          "beats": 0.5,
+          "vel": 49
+        },
+        {
+          "pitch": "F#5",
+          "beats": 1.5,
+          "vel": 49
+        },
+        {
+          "pitch": "D#5",
+          "beats": 0.5,
+          "vel": 49
+        },
+        {
+          "pitch": "F#5",
+          "beats": 0.5,
+          "vel": 49
+        },
+        {
+          "pitch": "B5",
+          "beats": 0.5,
+          "vel": 49
+        },
+        {
+          "pitch": "G5",
+          "beats": 1.5,
+          "vel": 56
+        },
+        {
+          "pitch": "F#5",
+          "beats": 0.5,
+          "vel": 50
+        },
+        {
+          "pitch": "E5",
+          "beats": 0.5,
+          "vel": 53
+        },
+        {
+          "pitch": "C#5",
+          "beats": 0.5,
+          "vel": 50
+        },
+        {
+          "pitch": "E5",
+          "beats": 0.5,
+          "vel": 50
+        },
+        {
+          "pitch": "G5",
+          "beats": 0.5,
+          "vel": 50
+        },
+        {
+          "pitch": "E5",
+          "beats": 2.0,
+          "vel": 53
+        },
+        {
+          "pitch": "D5",
+          "beats": 0.5,
+          "vel": 51
+        },
+        {
+          "pitch": "E5",
+          "beats": 0.5,
+          "vel": 48
+        },
+        {
+          "pitch": "F#5",
+          "beats": 0.5,
+          "vel": 48
+        },
+        {
+          "pitch": "A5",
+          "beats": 0.5,
+          "vel": 48
+        },
+        {
+          "pitch": "E5",
+          "beats": 1.5,
+          "vel": 50
+        },
+        {
+          "pitch": "D5",
+          "beats": 0.5,
+          "vel": 45
+        },
+        {
+          "pitch": "E5",
+          "beats": 1.0,
+          "vel": 47
+        },
+        {
+          "pitch": "G5",
+          "beats": 1.0,
+          "vel": 45
+        },
+        {
+          "pitch": "F#5",
+          "beats": 2.0,
+          "vel": 5
+        },
+        {
+          "pitch": "r",
+          "beats": 2.0
+        },
+        {
+          "pitch": "E5",
+          "beats": 1.5,
+          "vel": 51
+        },
+        {
+          "pitch": "D5",
+          "beats": 0.5,
+          "vel": 46
+        },
+        {
+          "pitch": "C5",
+          "beats": 1.0,
+          "vel": 48
+        },
+        {
+          "pitch": "E5",
+          "beats": 1.0,
+          "vel": 46
+        },
+        {
+          "pitch": "F#5",
+          "beats": 2.0,
+          "vel": 5
+        },
+        {
+          "pitch": "r",
+          "beats": 2.0
+        },
+        {
+          "pitch": "G5",
+          "beats": 1.5,
+          "vel": 55
+        },
+        {
+          "pitch": "F5",
+          "beats": 0.5,
+          "vel": 49
+        },
+        {
+          "pitch": "G5",
+          "beats": 1.0,
+          "vel": 52
+        },
+        {
+          "pitch": "Bb5",
+          "beats": 1.0,
+          "vel": 49
+        },
+        {
+          "pitch": "A5",
+          "beats": 2.0,
+          "vel": 5
+        },
+        {
+          "pitch": "r",
+          "beats": 2.0
+        },
+        {
+          "pitch": "C6",
+          "beats": 1.5,
+          "vel": 58
+        },
+        {
+          "pitch": "B5",
+          "beats": 0.5,
+          "vel": 52
+        },
+        {
+          "pitch": "A5",
+          "beats": 1.0,
+          "vel": 55
+        },
+        {
+          "pitch": "E5",
+          "beats": 1.0,
+          "vel": 52
+        },
+        {
+          "pitch": "A5",
+          "beats": 2.0,
+          "vel": 56
+        },
+        {
+          "pitch": "F#5",
+          "beats": 2.0,
+          "vel": 53
+        },
+        {
+          "pitch": "D5",
+          "beats": 1.0,
+          "vel": 53
+        },
+        {
+          "pitch": "G5",
+          "beats": 0.5,
+          "vel": 48
+        },
+        {
+          "pitch": "A5",
+          "beats": 1.5,
+          "vel": 48
+        },
+        {
+          "pitch": "G5",
+          "beats": 0.5,
+          "vel": 48
+        },
+        {
+          "pitch": "E5",
+          "beats": 0.5,
+          "vel": 48
+        },
+        {
+          "pitch": "B5",
+          "beats": 0.5,
+          "vel": 52
+        },
+        {
+          "pitch": "A5",
+          "beats": 0.5,
+          "vel": 47
+        },
+        {
+          "pitch": "G5",
+          "beats": 1.5,
+          "vel": 47
+        },
+        {
+          "pitch": "E5",
+          "beats": 0.5,
+          "vel": 47
+        },
+        {
+          "pitch": "D5",
+          "beats": 1.0,
+          "vel": 47
+        },
+        {
+          "pitch": "E5",
+          "beats": 0.5,
+          "vel": 55
+        },
+        {
+          "pitch": "G5",
+          "beats": 0.5,
+          "vel": 49
+        },
+        {
+          "pitch": "B5",
+          "beats": 1.0,
+          "vel": 49
+        },
+        {
+          "pitch": "A5",
+          "beats": 0.5,
+          "vel": 52
+        },
+        {
+          "pitch": "G5",
+          "beats": 0.5,
+          "vel": 49
+        },
+        {
+          "pitch": "E5",
+          "beats": 1.0,
+          "vel": 49
+        },
+        {
+          "pitch": "F#5",
+          "beats": 1.5,
+          "vel": 51
+        },
+        {
+          "pitch": "E5",
+          "beats": 0.5,
+          "vel": 46
+        },
+        {
+          "pitch": "D5",
+          "beats": 2.0,
+          "vel": 48
+        },
+        {
+          "pitch": "D5",
+          "beats": 1.0,
+          "vel": 55
+        },
+        {
+          "pitch": "G5",
+          "beats": 0.5,
+          "vel": 49
+        },
+        {
+          "pitch": "A5",
+          "beats": 1.5,
+          "vel": 49
+        },
+        {
+          "pitch": "G5",
+          "beats": 0.5,
+          "vel": 49
+        },
+        {
+          "pitch": "E5",
+          "beats": 0.5,
+          "vel": 49
+        },
+        {
+          "pitch": "B5",
+          "beats": 0.5,
+          "vel": 58
+        },
+        {
+          "pitch": "A5",
+          "beats": 0.5,
+          "vel": 52
+        },
+        {
+          "pitch": "F#5",
+          "beats": 1.5,
+          "vel": 52
+        },
+        {
+          "pitch": "G#5",
+          "beats": 0.5,
+          "vel": 52
+        },
+        {
+          "pitch": "B5",
+          "beats": 0.5,
+          "vel": 52
+        },
+        {
+          "pitch": "D6",
+          "beats": 0.5,
+          "vel": 52
+        },
+        {
+          "pitch": "C6",
+          "beats": 1.5,
+          "vel": 60
+        },
+        {
+          "pitch": "B5",
+          "beats": 0.5,
+          "vel": 55
+        },
+        {
+          "pitch": "A5",
+          "beats": 0.5,
+          "vel": 57
+        },
+        {
+          "pitch": "G5",
+          "beats": 0.5,
+          "vel": 55
+        },
+        {
+          "pitch": "F#5",
+          "beats": 0.5,
+          "vel": 55
+        },
+        {
+          "pitch": "A5",
+          "beats": 0.5,
+          "vel": 55
+        },
+        {
+          "pitch": "G5",
+          "beats": 2.0,
+          "vel": 53
+        },
+        {
+          "pitch": "r",
+          "beats": 1.0
+        },
+        {
+          "pitch": "A4",
+          "beats": 0.25,
+          "vel": 48
+        }
+      ]
+    },
+    {
+      "name": "flute",
+      "voice": "flute",
+      "octave": 5,
+      "gain": 0.5,
+      "_note": "B: call-and-response answers in the lead's rests. A'': octave-below doubling of the tune (the 16-bit 'section' sound).",
+      "notes": "rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rh B4e@77 D5e@74 F#5e@74 A5e@74 | rw | rh A4e@77 C5e@74 D5e@74 F#5e@74 | rw | rh F5e@81 A5e@78 C6e@78 A5e@78 | rw | rh D5q@75 C5q@72 | D4q@72 G4e@66 A4q.@66 G4e@66 E4e@66 | B4e@72 A4e@66 G4q.@66 E4e@66 D4q@66 | E4e@72 G4e@66 B4q@66 A4e@69 G4e@66 E4q@66 | F#4q.@72 E4e@66 D4h@69 | D4q@72 G4e@66 A4q.@66 G4e@66 E4e@66 | B4e@72 A4e@66 F#4q.@66 G#4e@66 B4e@66 D5e@66 | C5q.@72 B4e@66 A4e@69 G4e@66 F#4e@66 A4e@66 | G4h.@72 rq"
+    },
+    {
+      "name": "pad",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.3,
+      "_note": "Enters at A' (dynamics by entry); two-note guide tones.",
+      "notes": "rw | rw | rw | rw | rw | rw | rw | rw | B3+D4w@56 | B3+E4w@56 | B3+D4w@56 | A3+D4h@56 A3+C4h@56 | B3+D4w@56 | A3+D#4w@56 | B3+D4h@56 G3+C#4h@56 | G3+C4h@56 A3+C4h@56 | B3+E4w@64 | A3+D4w@64 | G3+C4w@64 | A3+C4w@64 | G3+D4w@64 | A3+C4w@64 | G3+C4w@64 | A3+C4h@64 A3+C4h@64 | B3+D4w@58 | B3+E4w@58 | B3+D4w@58 | A3+D4h@58 A3+C4h@58 | B3+D4w@58 | A3+D4h@58 G#3+D4h@58 | G3+C4h@58 A3+C4h@58 | B3+D4w@58"
+    },
+    {
+      "name": "harp",
+      "voice": "pluck",
+      "octave": 4,
+      "gain": 0.5,
+      "_note": "A sections: chimes on the offbeats (bell-buoys). B: rising/falling harp waves.",
+      "notes": "re D4e@58 re B4e@50 re D4e@58 re G4e@50 | re E4e@58 re B4e@50 re E4e@58 re G4e@50 | re D4e@58 re G4e@50 re D4e@58 re E4e@50 | re D4e@58 re A4e@50 re D4e@58 re F#4e@50 | re D4e@58 re B4e@50 re D4e@58 re G4e@50 | re D4e@58 re A4e@50 re D4e@58 re E4e@50 | re E4e@58 re A4e@50 re D4e@58 re F#4e@50 | re D4e@58 re B4e@50 re D4e@58 re G4e@50 | re D4e@58 re B4e@50 re D4e@58 re G4e@50 | re E4e@58 re B4e@50 re E4e@58 re G4e@50 | re D4e@58 re G4e@50 re D4e@58 re E4e@50 | re D4e@58 re A4e@50 re D4e@58 re F#4e@50 | re D4e@58 re B4e@50 re D4e@58 re G4e@50 | re Eb4e@58 re A4e@50 re Eb4e@58 re F#4e@50 | re D4e@58 re G4e@50 re E4e@58 re G4e@50 | re E4e@58 re A4e@50 re D4e@58 re F#4e@50 | C4e@60 G4e@48 C5e@48 E5e@48 E5e@60 C5e@48 G4e@48 E4e@48 | B3e@60 F#4e@48 B4e@48 D5e@48 D5e@60 B4e@48 F#4e@48 D4e@48 | A3e@60 E4e@48 A4e@48 C5e@48 C5e@60 A4e@48 E4e@48 C4e@48 | D4e@60 A4e@48 D5e@48 F#5e@48 F#5e@60 D5e@48 A4e@48 F#4e@48 | Eb4e@60 Bb4e@48 Eb5e@48 G5e@48 G5e@60 Eb5e@48 Bb4e@48 G4e@48 | F3e@60 C4e@48 F4e@48 A4e@48 A4e@60 F4e@48 C4e@48 A3e@48 | A3e@60 E4e@48 A4e@48 C5e@48 C5e@60 A4e@48 E4e@48 C4e@48 | D4e@60 A4e@48 D5e@48 G5e@48 F#5e@60 D5e@48 A4e@48 F#4e@48 | re D4e@58 re B4e@50 re D4e@58 re G4e@50 | re E4e@58 re B4e@50 re E4e@58 re G4e@50 | re D4e@58 re G4e@50 re D4e@58 re E4e@50 | re D4e@58 re A4e@50 re D4e@58 re F#4e@50 | re D4e@58 re B4e@50 re D4e@58 re G4e@50 | re D4e@58 re A4e@50 re D4e@58 re E4e@50 | re E4e@58 re A4e@50 re D4e@58 re F#4e@50 | re D4e@58 re B4e@50 re D4e@58 re G4e@50"
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.4,
+      "_note": "Tide+Light buoys at phrase ends.",
+      "notes": "rw | rw | rw | rh. A5q@68 | rw | rw | rw | rh. D6q@68 | rw | rw | rw | rh. A5q@68 | rw | rw | rw | rh. F#5q@68 | rw | rw | rw | rw | rw | rw | rw | rh. D6q@68 | rw | rw | rw | rh. A5q@68 | rw | rw | rh. G5e@68 B5e@68 | rw"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.95,
+      "_note": "A: skipping root-root-fifth + chromatic approach into every chord change. B: four-to-the-bar walk.",
+      "notes": "G2q.@96 G2e@88 D3q@92 B2q@88 | C3q.@96 C3e@88 G3q@92 Eb2q@88 | E2q.@96 E2e@88 B2q@92 C#3q@88 | D3q.@96 D3e@88 D3q@92 F#2q@88 | G2q.@96 G2e@88 D3q@92 Bb2q@88 | B2q.@96 B2e@88 E2q@92 Ab2q@88 | A2q.@96 A2e@88 D3q@92 F#2q@88 | G2q.@96 G2e@88 D3q@92 F#2q@88 | G2q.@96 G2e@88 D3q@92 B2q@88 | C3q.@96 C3e@88 G3q@92 Eb2q@88 | E2q.@96 E2e@88 B2q@92 C#3q@88 | D3q.@96 D3e@88 D3q@92 F#2q@88 | G2q.@96 G2e@88 D3q@92 Bb2q@88 | B2q.@96 B2e@88 F#3q@92 Eb2q@88 | E2q.@96 E2e@88 A2q@92 Ab2q@88 | A2q.@96 A2e@88 D3q@92 A3q@88 | C3q@96 E3q@88 G3q@92 Bb2q@88 | B2q@96 D3q@88 F#3q@92 Ab2q@88 | A2q@96 C3q@88 E3q@92 C#3q@88 | D3q@96 F#3q@88 A3q@92 F3q@88 | Eb3q@96 G3q@88 Bb3q@92 E2q@88 | F2q@96 A2q@88 C3q@92 Ab2q@88 | A2q@96 C3q@88 E3q@92 C#3q@88 | D3q.@96 D3e@88 D3q@92 A3q@88 | G2q.@96 G2e@88 D3q@92 B2q@88 | C3q.@96 C3e@88 G3q@92 Eb2q@88 | E2q.@96 E2e@88 B2q@92 C#3q@88 | D3q.@96 D3e@88 D3q@92 F#2q@88 | G2q.@96 G2e@88 D3q@92 Bb2q@88 | B2q.@96 B2e@88 E2q@92 Ab2q@88 | A2q.@96 A2e@88 D3q@92 F#2q@88 | G2q.@96 G2e@88 D3q@92 F#2q@88"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.55,
+      "_note": "A light (no snare) -> A' full backbeat -> B open-hat 'sea-spray' -> A'' full; fills on every 8-bar seam.",
+      "notes": "e kick+hat@70 hat@36 hat@48 hat@36 kick+hat@60 hat@36 hat@48 hat@40 | e kick+hat@70 hat@36 hat@48 hat@36 kick+hat@60 hat@36 hat@48 hat@40 | e kick+hat@70 hat@36 hat@48 hat@36 kick+hat@60 hat@36 hat@48 hat@40 | e kick+hat@70 hat@36 hat@48 hat@36 kick+hat@60 hat@36 hat@48 hat@40 | e kick+hat@70 hat@36 hat@48 hat@36 kick+hat@60 hat@36 hat@48 hat@40 | e kick+hat@70 hat@36 hat@48 hat@36 kick+hat@60 hat@36 hat@48 hat@40 | e kick+hat@70 hat@36 hat@48 hat@36 kick+hat@60 hat@36 hat@48 hat@40 | e kick+hat@70 hat@36 hat@48 hat@36 kick+hat@60 tom@50 tom@58 tom@64 | e kick+crash@82 hat@38 snare+hat@64 hat@40 hat@44 kick+hat@62 snare+hat@64 hat@44 | e kick+hat@78 hat@38 snare+hat@64 hat@40 hat@44 kick+hat@62 snare+hat@64 hat@44 | e kick+hat@78 hat@38 snare+hat@64 hat@40 hat@44 kick+hat@62 snare+hat@64 hat@44 | e kick+hat@78 hat@38 snare+hat@64 hat@40 hat@44 kick+hat@62 snare+hat@64 hat@44 | e kick+hat@78 hat@38 snare+hat@64 hat@40 hat@44 kick+hat@62 snare+hat@64 hat@44 | e kick+hat@78 hat@38 snare+hat@64 hat@40 hat@44 kick+hat@62 snare+hat@64 hat@44 | e kick+hat@78 hat@38 snare+hat@64 hat@40 hat@44 kick+hat@62 snare+hat@64 hat@44 | e kick+hat@76 hat@38 snare+hat@62 hat@40 s snare@44 snare@48 snare@52 snare@56 snare@60 snare@64 snare@68 snare@74 | e kick+crash@80 hat@36 snare+hat@60 hat@38 kick+hat@56 kick@50 snare+hat@60 hat@40 | e kick+ohat@74 hat@36 snare+hat@60 hat@38 kick+hat@56 kick@50 snare+hat@60 hat@40 | e kick+ohat@74 hat@36 snare+hat@60 hat@38 kick+hat@56 kick@50 snare+hat@60 hat@40 | e kick+ohat@74 hat@36 snare+hat@60 hat@38 kick+hat@56 kick@50 snare+hat@60 hat@40 | e kick+ohat@74 hat@36 snare+hat@60 hat@38 kick+hat@56 kick@50 snare+hat@60 hat@40 | e kick+ohat@74 hat@36 snare+hat@60 hat@38 kick+hat@56 kick@50 snare+hat@60 hat@40 | e kick+ohat@74 hat@36 snare+hat@60 hat@38 kick+hat@56 kick@50 snare+hat@60 hat@40 | e kick+hat@74 hat@36 snare+hat@60 hat@38 tom@56 tom@60 snare@66 crash@60 | e kick+crash@82 hat@38 snare+hat@64 hat@40 hat@44 kick+hat@62 snare+hat@64 hat@44 | e kick+hat@78 hat@38 snare+hat@64 hat@40 hat@44 kick+hat@62 snare+hat@64 hat@44 | e kick+hat@78 hat@38 snare+hat@64 hat@40 hat@44 kick+hat@62 snare+hat@64 hat@44 | e kick+hat@78 hat@38 snare+hat@64 hat@40 hat@44 kick+hat@62 snare+hat@64 hat@44 | e kick+hat@78 hat@38 snare+hat@64 hat@40 hat@44 kick+hat@62 snare+hat@64 hat@44 | e kick+hat@78 hat@38 snare+hat@64 hat@40 hat@44 kick+hat@62 snare+hat@64 hat@44 | e kick+hat@78 hat@38 snare+hat@64 hat@40 hat@44 kick+hat@62 snare+hat@64 hat@44 | e kick+hat@76 hat@38 snare+hat@62 hat@40 kick@60 snare@58 tom@62 snare@70"
+    }
+  ]
+}
