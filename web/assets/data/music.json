@@ -7,7 +7,7 @@
     {
      "id": "tinderwick-a",
      "title": "Tinderwick",
-     "where": "Tinderwick · Tinderwick Lumenary · The Beacon — Floor I · The Beacon — Floor II · The Beacon — Lantern Room · Vesper Crossroads · Vesper Crossroads Inn · Lanternway · Tinderwick Spoke · Lanternway · Lowleaf Spoke · Lanternway · Galehigh Spoke · Lanternway · Nightreach Spoke · Hearthfall",
+     "where": "Tinderwick · Hearthfall",
      "mood": "The hometown lullaby — lanterns in the dark, cosy and a little homesick. The source of the Vesper motif.",
      "classic": "play/assets/audio/music/tinderwick-a.mp3",
      "remaster": "play/assets/audio/music/remaster/tinderwick-a.mp3",
@@ -16,7 +16,7 @@
     {
      "id": "tinderwick-b",
      "title": "Apprentice's House",
-     "where": "Apprentice's House · Tinderwick General Store",
+     "where": "Apprentice's House",
      "mood": "Embers banked low — the hometown lullaby gone indoors at night, a 6/8 sway by the coals, homesick and safe.",
      "classic": "play/assets/audio/music/tinderwick-b.mp3",
      "remaster": "play/assets/audio/music/remaster/tinderwick-b.mp3",
@@ -32,18 +32,45 @@
      "loop_start": 8.638
     },
     {
+     "id": "duskapple-orchard",
+     "title": "Duskapple Orchard — the fallen star",
+     "where": "Duskapple Orchard",
+     "mood": "The Fallen Star — the hometown lullaby gone cold in C minor, slowed to half time among charred boughs; a distant bell for the strike, and a cinder that still glows.",
+     "classic": "play/assets/audio/music/duskapple-orchard.mp3",
+     "remaster": "play/assets/audio/music/remaster/duskapple-orchard.mp3",
+     "loop_start": 6.989
+    },
+    {
+     "id": "beacon-stair",
+     "title": "The Tinderwick Beacon",
+     "where": "The Beacon — Floor I · The Beacon — Floor II · The Beacon — Lantern Room",
+     "mood": "The Beacon Stair — a bass that climbs a step every bar, a determined call, brass like banked embers and a bell glinting from the lamp far above.",
+     "classic": "play/assets/audio/music/beacon-stair.mp3",
+     "remaster": "play/assets/audio/music/remaster/beacon-stair.mp3",
+     "loop_start": 4.574
+    },
+    {
      "id": "dimglass-coast-a",
      "title": "Dimglass Coast",
-     "where": "Dimglass Coast · Pearlmoor Quay · Wrackline Path · Lanternfall Road · Pearlmoor Breakwater · Pearlmoor Tide Lumenary · Pearlmoor Chandlery · Pearlmoor Quayside Inn · The Lifting House · Gullcry Rock",
+     "where": "Dimglass Coast",
      "mood": "The road that teaches you to wander — brisk, salt-aired, optimistic; the hometown tune breaking into a stride.",
      "classic": "play/assets/audio/music/dimglass-coast-a.mp3",
      "remaster": "play/assets/audio/music/remaster/dimglass-coast-a.mp3",
      "loop_start": 9.218
     },
     {
+     "id": "dimglass-coast-b",
+     "title": "The coast road, last light",
+     "where": "Wrackline Path · Lanternfall Road · Gullcry Rock",
+     "mood": "Salt wind, last light — the coast road's pensive sibling: a longer, lonelier walk at dusk with the sea going dark beside you.",
+     "classic": "play/assets/audio/music/dimglass-coast-b.mp3",
+     "remaster": "play/assets/audio/music/remaster/dimglass-coast-b.mp3",
+     "loop_start": 0
+    },
+    {
      "id": "dimglass-coast-c",
-     "title": "Tideglass Cavern",
-     "where": "Tideglass Cavern · Tideglass Gallery · The Under-Lane",
+     "title": "The Sounding Cave",
+     "where": "The Sounding Cave · Tideglass Cavern · Tideglass Gallery · The Under-Lane",
      "mood": "Buoy-light drift — a becalmed, glittering sea-cave; the coast road's tune reduced to a glint over dripping water.",
      "classic": "play/assets/audio/music/dimglass-coast-c.mp3",
      "remaster": "play/assets/audio/music/remaster/dimglass-coast-c.mp3",
@@ -59,9 +86,18 @@
      "loop_start": 10.217
     },
     {
+     "id": "pearlmoor-quay-a",
+     "title": "Pearlmoor Quay",
+     "where": "Pearlmoor Quay",
+     "mood": "A waltz on wet boardwalks under a cyan moon — the lamplit harbour at night, nets mended, boats rocking, the whole quay humming along.",
+     "classic": "play/assets/audio/music/pearlmoor-quay-a.mp3",
+     "remaster": "play/assets/audio/music/remaster/pearlmoor-quay-a.mp3",
+     "loop_start": 7.198
+    },
+    {
      "id": "pearlmoor-quay-b",
-     "title": "Hillside Allotments",
-     "where": "Hillside Allotments · Lightkeeper's Point",
+     "title": "Pearlmoor Breakwater",
+     "where": "Pearlmoor Breakwater · Hillside Allotments · Lightkeeper's Point",
      "mood": "Low tide, lantern strings — the quay waltz late and quiet, a lonely-but-cosy sway on the edge of town.",
      "classic": "play/assets/audio/music/pearlmoor-quay-b.mp3",
      "remaster": "play/assets/audio/music/remaster/pearlmoor-quay-b.mp3",
@@ -120,7 +156,7 @@
     {
      "id": "lowleaf-hollow-b",
      "title": "The Wanderwood",
-     "where": "The Wanderwood · The Far Side · Lowleaf Verdant Lumenary · Lowleaf Guest-bower · Georgina's Cottage",
+     "where": "The Wanderwood · The Far Side · Lowleaf Verdant Lumenary",
      "mood": "The safe glow at the heart of the dark forest — a lantern-lit music-box lullaby in a gentle waltz; hearth over wonder.",
      "classic": "play/assets/audio/music/lowleaf-hollow-b.mp3",
      "remaster": "play/assets/audio/music/remaster/lowleaf-hollow-b.mp3",
@@ -128,8 +164,8 @@
     },
     {
      "id": "lowleaf-hollow-c",
-     "title": "The Sounding Cave",
-     "where": "The Sounding Cave · Glowmoss Deep · Glowmoss Deep B1F · Spore Grotto · Grovefall",
+     "title": "Glowmoss Deep",
+     "where": "Glowmoss Deep · Glowmoss Deep B1F · Spore Grotto · Grovefall",
      "mood": "The glowing-dark deep forest — a glassy bell melody whose echoes answer across the black, sparse and cathedral-like, with a drained grey shadow in it.",
      "classic": "play/assets/audio/music/lowleaf-hollow-c.mp3",
      "remaster": "play/assets/audio/music/remaster/lowleaf-hollow-c.mp3",
@@ -179,7 +215,7 @@
     {
      "id": "galehigh-terraces-b",
      "title": "Galehigh Storm Lumenary",
-     "where": "Galehigh Storm Lumenary · The Steady Gust Inn · Terrace Cottage · The Kite-Maker's",
+     "where": "Galehigh Storm Lumenary",
      "mood": "Lanterns on the Wind — the windy cliff seen from inside the warm farmstead at dusk: cosy, a touch wistful, the wind a sigh at the shutters.",
      "classic": "play/assets/audio/music/galehigh-terraces-b.mp3",
      "remaster": "play/assets/audio/music/remaster/galehigh-terraces-b.mp3",
@@ -206,7 +242,7 @@
     {
      "id": "pale-vault-glacier-b",
      "title": "Pale Vault Frost Lumenary",
-     "where": "Pale Vault Frost Lumenary · The Held Flame Inn · Glacier Cottage",
+     "where": "Pale Vault Frost Lumenary",
      "mood": "Snow-Hushed Town — a small warm song against the cold: people and lanterns indoors, melancholy and intimate, hope that is fragile.",
      "classic": "play/assets/audio/music/pale-vault-glacier-b.mp3",
      "remaster": "play/assets/audio/music/remaster/pale-vault-glacier-b.mp3",
@@ -292,7 +328,7 @@
     {
      "id": "nightreach-observatory-b",
      "title": "Lunar Lumenary",
-     "where": "Lunar Lumenary · The Long Watch Inn · Watcher's Cottage",
+     "where": "Lunar Lumenary",
      "mood": "The Haunted Lumenary: the loneliest room in Vesperholm - a minor lullaby that reaches up and never quite comes home, a clock running down; hope present but not yet earned.",
      "classic": "play/assets/audio/music/nightreach-observatory-b.mp3",
      "remaster": "play/assets/audio/music/remaster/nightreach-observatory-b.mp3",
@@ -304,13 +340,31 @@
    "title": "The outer ring",
    "tracks": [
     {
+     "id": "vesper-crossroads-a",
+     "title": "Vesper Crossroads",
+     "where": "Vesper Crossroads",
+     "mood": "The Signpost Tune — all roads meet here: a road-folk waystation band strikes up the home tune, lute, reed and tambourine on the front porch of the world.",
+     "classic": "play/assets/audio/music/vesper-crossroads-a.mp3",
+     "remaster": "play/assets/audio/music/remaster/vesper-crossroads-a.mp3",
+     "loop_start": 4.174
+    },
+    {
      "id": "coldfog-marches-a",
      "title": "Coldfog Marches",
-     "where": "Coldfog Marches · Drownlight Beacon · Hollowfen Stillworks · Murkfall",
+     "where": "Coldfog Marches · Drownlight Beacon · Murkfall",
      "mood": "Snuffed — a drained marsh where the lanterns went out; a lone melody that keeps reaching for home and guttering before it gets there.",
      "classic": "play/assets/audio/music/coldfog-marches-a.mp3",
      "remaster": "play/assets/audio/music/remaster/coldfog-marches-a.mp3",
      "loop_start": 7.221
+    },
+    {
+     "id": "lanternway-a",
+     "title": "The Lanternway",
+     "where": "Lanternway · Tinderwick Spoke · Lanternway · Lowleaf Spoke · Lanternway · Galehigh Spoke · Lanternway · Nightreach Spoke",
+     "mood": "The Walking Tune — the safe road home: a strolling shuffle of flute and reed, walking pizzicato and brushes, lamplight glinting on every post.",
+     "classic": "play/assets/audio/music/lanternway-a.mp3",
+     "remaster": "play/assets/audio/music/remaster/lanternway-a.mp3",
+     "loop_start": 4.389
     }
    ]
   },
@@ -384,6 +438,92 @@
      "classic": "play/assets/audio/music/ending-credits.mp3",
      "remaster": "play/assets/audio/music/remaster/ending-credits.mp3",
      "loop_start": 13.584
+    }
+   ]
+  },
+  {
+   "title": "Indoors — rooms, shops, inns & halls",
+   "tracks": [
+    {
+     "id": "interior-hearth",
+     "title": "Indoors — a warm home",
+     "where": "Terrace Cottage",
+     "mood": "Kettle on, a cat by the stove — a bright, bouncing little home tune for rooms where folk are glad you came.",
+     "classic": "play/assets/audio/music/interior-hearth.mp3",
+     "remaster": "play/assets/audio/music/remaster/interior-hearth.mp3",
+     "loop_start": 9.242
+    },
+    {
+     "id": "interior-sunny",
+     "title": "Indoors — sunny rooms",
+     "where": "The Lifting House · Georgina's Cottage",
+     "mood": "Sunny rooms with a wink — a sprightly, cheeky little ocarina tune that skips about the furniture.",
+     "classic": "play/assets/audio/music/interior-sunny.mp3",
+     "remaster": "play/assets/audio/music/remaster/interior-sunny.mp3",
+     "loop_start": 7.663
+    },
+    {
+     "id": "interior-lamplit",
+     "title": "Indoors — lamplit rooms",
+     "where": "Glacier Cottage",
+     "mood": "Lamplit rooms — an unhurried, conversational little tune that sits under a chat by the stove and never asks for attention.",
+     "classic": "play/assets/audio/music/interior-lamplit.mp3",
+     "remaster": "play/assets/audio/music/remaster/interior-lamplit.mp3",
+     "loop_start": 4.164
+    },
+    {
+     "id": "interior-study",
+     "title": "Indoors — charts & lenses",
+     "where": "Watcher's Cottage",
+     "mood": "Charts and Lenses — a ticking, curious little room of ground glass and inked stars, gently absorbed in its work.",
+     "classic": "play/assets/audio/music/interior-study.mp3",
+     "remaster": "play/assets/audio/music/remaster/interior-study.mp3",
+     "loop_start": 2.786
+    },
+    {
+     "id": "interior-hush",
+     "title": "Indoors — the quiet after",
+     "where": "Apprentice's House",
+     "mood": "The Quiet After — the hometown lullaby played softly in a frightened house; the fire still lit, a music box that keeps trying to rise.",
+     "classic": "play/assets/audio/music/interior-hush.mp3",
+     "remaster": "play/assets/audio/music/remaster/interior-hush.mp3",
+     "loop_start": 4.087
+    },
+    {
+     "id": "interior-unease",
+     "title": "Indoors — a cold hearth",
+     "where": "Hollowfen Stillworks",
+     "mood": "Cold Hearth — glass tones and a music box winding down in a room the warmth has left; eerie, beautiful, and strangely gentle.",
+     "classic": "play/assets/audio/music/interior-unease.mp3",
+     "remaster": "play/assets/audio/music/remaster/interior-unease.mp3",
+     "loop_start": 8.978
+    },
+    {
+     "id": "shop-counter",
+     "title": "Shops",
+     "where": "Tinderwick General Store · Pearlmoor Chandlery · The Kite-Maker's",
+     "mood": "The Counter Bell — a bouncy little shop tune with a doorbell for a hook; browse as long as you like.",
+     "classic": "play/assets/audio/music/shop-counter.mp3",
+     "remaster": "play/assets/audio/music/remaster/shop-counter.mp3",
+     "loop_start": 4.458
+    },
+    {
+     "id": "inn-rest",
+     "title": "Inns — rest a while",
+     "where": "Pearlmoor Quayside Inn · Vesper Crossroads Inn · Lowleaf Guest-bower · The Steady Gust Inn · The Held Flame Inn · The Long Watch Inn",
+     "mood": "Rest a while — a fire's glow, a full kettle and a warm bed; the hometown tune settled into a contented waltz.",
+     "classic": "play/assets/audio/music/inn-rest.mp3",
+     "remaster": "play/assets/audio/music/remaster/inn-rest.mp3",
+     "loop_start": 8.382
+    },
+    {
+     "id": "lumenary-hall",
+     "title": "The Lumenary halls",
+     "where": "Tinderwick Lumenary · Pearlmoor Tide Lumenary",
+     "mood": "The hush before the duel — a stately processional between lamp-lit pillars, organ and choir in cool stone, walking toward the warden who will test you.",
+     "classic": "play/assets/audio/music/lumenary-hall.mp3",
+     "remaster": "play/assets/audio/music/remaster/lumenary-hall.mp3",
+     "loop_start": 6.757
     }
    ]
   },

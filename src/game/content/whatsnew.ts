@@ -8,6 +8,12 @@
  * Gleams, the Wayfaring, the vesperlamp) — it's read by the fire, not a patch log.
  */
 export const WHATS_NEW: Record<string, string[]> = {
+  '1.9': [
+    'Step indoors and the music steps in with you — every inn, shop and hearth has its own tune now, and the Crossroads, the Lanternway and Pearlmoor sing their own songs.',
+    'Some places remember what happened there. Walk the old orchard again, and listen.',
+    'Turn the whole world up or down with the little slider under the screen, or in Settings. The bleeps and footsteps have been asked to speak a little softer.',
+    'Paul, Andrew and the strongmen of the Lifting House have had their portraits taken again, and stand a little taller for it.',
+  ],
   '1.8': [
     'Vesperholm has a new voice. Every town, road, cave and battle has been scored afresh around one melody from home — and if you miss the old tunes, Settings → Soundtrack brings them back.',
     'The kin in the grass will talk to you now. Walk up to a wandering one and press A — each has its own cry, and some have more to say than others.',

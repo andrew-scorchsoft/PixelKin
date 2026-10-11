@@ -111,7 +111,9 @@ What's already in the repo:
   shared hometown melody, each with a play-once intro and a seamless loop;
   `tools/audio/remaster_track.py`) and the **classic** chip renders; Settings →
   Soundtrack switches between them, and the website's
-  [music page](web/pages/music.html) plays both. The per-area plan is in
+  [music page](web/pages/music.html) plays and downloads both. Indoors has its own
+  stock set (shop, inn, Lumenary hall, and happy / neutral / somber homes), some
+  places change their music as the story moves on, and doors crossfade. The plan is in
   [`docs/world/music-direction.md`](docs/world/music-direction.md).
 - **A visual rulebook.** Canvas sizes, palette, anchors, and the sprite pipeline
   are binding in [`docs/art-style.md`](docs/art-style.md).

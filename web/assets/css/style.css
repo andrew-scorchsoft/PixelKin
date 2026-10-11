@@ -1258,6 +1258,13 @@ body.lb-open { overflow: hidden; }
 .music-btn:hover { border-color: var(--diamond); }
 .music-btn-remaster { border-color: rgba(255, 138, 61, 0.55); }
 .music-btn.is-active { background: var(--fire); color: var(--night); border-color: var(--fire); }
+/* Download: a plain link (not a .music-btn, so the player's click handler leaves it be). */
+.music-dl {
+    font-family: var(--pixel); font-size: 8px; white-space: nowrap; text-decoration: none;
+    color: var(--dim); border: 1px dashed var(--panel-edge); border-radius: 6px;
+    padding: 0.5rem 0.6rem;
+}
+.music-dl:hover { color: var(--bone); border-color: var(--diamond); }
 .music-soon { font-size: 0.8rem; color: var(--dim); align-self: center; }
 @media (max-width: 640px) {
     .music-track { flex-direction: column; align-items: stretch; }

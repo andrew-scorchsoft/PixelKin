@@ -37,6 +37,12 @@
    "where": "Rival battles with Wren (Pale Vault, Nightreach, and the post-game rematch)",
    "mood": "The rival who grew up beside you — cocky, quick, competitive and fond: a grin across the field, and the friendship under it."
   },
+  "beacon-stair": {
+   "loop_start": 4.574,
+   "duration": 81.998,
+   "where": "The Tinderwick Beacon — all three floors of the wick-key ascent to the lantern room",
+   "mood": "The Beacon Stair — a bass that climbs a step every bar, a determined call, brass like banked embers and a bell glinting from the lamp far above."
+  },
   "cinderhead-mine-a": {
    "loop_start": 12.492,
    "duration": 102.766,
@@ -58,7 +64,7 @@
   "coldfog-marches-a": {
    "loop_start": 7.221,
    "duration": 86.204,
-   "where": "The Coldfog cluster — the drained marches, the snuffed beacon and the Hollowfen stillworks",
+   "where": "The Coldfog cluster — the drained marches, the snuffed beacon and the Murkfall vigil site",
    "mood": "Snuffed — a drained marsh where the lanterns went out; a lone melody that keeps reaching for home and guttering before it gets there."
   },
   "coldopen-foreboding": {
@@ -82,14 +88,26 @@
   "dimglass-coast-a": {
    "loop_start": 9.218,
    "duration": 77.244,
-   "where": "Dimglass Coast (the first road out of town)",
+   "where": "Dimglass Coast (the first road out of town, both crossings)",
    "mood": "The road that teaches you to wander — brisk, salt-aired, optimistic; the hometown tune breaking into a stride."
+  },
+  "dimglass-coast-b": {
+   "loop_start": 0.0,
+   "duration": 72.609,
+   "where": "Wrackline Path and Lanternfall Road — the coastal road between Pearlmoor and the Vesper Crossroads, either side of the Sounding Cave",
+   "mood": "Salt wind, last light — the coast road's pensive sibling: a longer, lonelier walk at dusk with the sea going dark beside you."
   },
   "dimglass-coast-c": {
    "loop_start": 10.472,
    "duration": 53.185306,
-   "where": "Tideglass Cavern & Gallery (the glowing sea-caves off the Dimglass Coast) and the Lanternway Under-Lane",
+   "where": "Tideglass Cavern & Gallery, the Sounding Cave on the coast road, and the Lanternway Under-Lane",
    "mood": "Buoy-light drift — a becalmed, glittering sea-cave; the coast road's tune reduced to a glint over dripping water."
+  },
+  "duskapple-orchard": {
+   "loop_start": 6.989,
+   "duration": 96.34,
+   "where": "Duskapple Orchard — Tinderwick's old orchard through the west hedge, from the first visit until the first Gleam is relit (the fallen-star crater)",
+   "mood": "The Fallen Star — the hometown lullaby gone cold in C minor, slowed to half time among charred boughs; a distant bell for the strike, and a cinder that still glows."
   },
   "ending-credits": {
    "loop_start": 13.584,
@@ -106,7 +124,7 @@
   "galehigh-terraces-b": {
    "loop_start": 6.182,
    "duration": 59.518,
-   "where": "Galehigh interiors — the inn, a cliff-farm home, the kite-maker's workshop, the Storm Lumenary hall",
+   "where": "Galehigh's Storm Lumenary hall (and the Kite-rising beat on the terraces)",
    "mood": "Lanterns on the Wind — the windy cliff seen from inside the warm farmstead at dusk: cosy, a touch wistful, the wind a sigh at the shutters."
   },
   "gleam-emotional": {
@@ -127,6 +145,54 @@
    "where": "Hushfrost Pass I & II (the frozen canyon route west) + the Aurora Hollow spur",
    "mood": "Lamp in the Canyon — a lone lamp in a frozen canyon, the cold at your back: sparse and tender enough to keep walking, hope holding on."
   },
+  "inn-rest": {
+   "loop_start": 8.382,
+   "duration": 71.941,
+   "where": "Every inn and rest point — the Vesper Crossroads Inn, the Pearlmoor Quayside Inn, the Lowleaf Guest-bower, Galehigh's Steady Gust, the Pale Vault's Held Flame and Nightreach's Long Watch",
+   "mood": "Rest a while — a fire's glow, a full kettle and a warm bed; the hometown tune settled into a contented waltz."
+  },
+  "interior-hearth": {
+   "loop_start": 9.242,
+   "duration": 98.769,
+   "where": "Happy family homes — first Galehigh's Terrace Cottage; the stock warm-home interior",
+   "mood": "Kettle on, a cat by the stove — a bright, bouncing little home tune for rooms where folk are glad you came."
+  },
+  "interior-hush": {
+   "loop_start": 4.087,
+   "duration": 86.779,
+   "where": "Stock interior (tender worry and grief at home) — first heard in the apprentice's house in Tinderwick after the omen, before the first Gleam",
+   "mood": "The Quiet After — the hometown lullaby played softly in a frightened house; the fire still lit, a music box that keeps trying to rise."
+  },
+  "interior-lamplit": {
+   "loop_start": 4.164,
+   "duration": 90.821,
+   "where": "Everyday houses — first Pale Vault's Glacier Cottage; the stock neutral home interior",
+   "mood": "Lamplit rooms — an unhurried, conversational little tune that sits under a chat by the stove and never asks for attention."
+  },
+  "interior-study": {
+   "loop_start": 2.786,
+   "duration": 72.794,
+   "where": "Stock interior (thoughtful rooms: workshops, studies, star-chart cottages) — first heard in Nightreach's Watcher's Cottage",
+   "mood": "Charts and Lenses — a ticking, curious little room of ground glass and inked stars, gently absorbed in its work."
+  },
+  "interior-sunny": {
+   "loop_start": 7.663,
+   "duration": 72.699,
+   "where": "Playful houses — Georgina's cottage (the Sunniest House in the Dark) and the Lifting House on Pearlmoor Quay",
+   "mood": "Sunny rooms with a wink — a sprightly, cheeky little ocarina tune that skips about the furniture."
+  },
+  "interior-unease": {
+   "loop_start": 8.978,
+   "duration": 87.159,
+   "where": "Stock interior (rooms where something is wrong; Hollowing-touched places) — first heard in Hollowfen Stillworks, Coldfog Marches",
+   "mood": "Cold Hearth — glass tones and a music box winding down in a room the warmth has left; eerie, beautiful, and strangely gentle."
+  },
+  "lanternway-a": {
+   "loop_start": 4.389,
+   "duration": 72.229,
+   "where": "The Lanternway — the four lit country lanes between the rim towns and the Vesper Crossroads",
+   "mood": "The Walking Tune — the safe road home: a strolling shuffle of flute and reed, walking pizzicato and brushes, lamplight glinting on every post."
+  },
   "lowleaf-hollow-a": {
    "loop_start": 8.081,
    "duration": 93.962,
@@ -136,14 +202,20 @@
   "lowleaf-hollow-b": {
    "loop_start": 7.994,
    "duration": 71.989,
-   "where": "Lowleaf's Lumenary hall, the Bower inn and Georgina's cottage; also the Pearlmoor Wanderwood and the Glowmoss Bloom arrival",
+   "where": "Lowleaf's Verdant Lumenary hall; also the Pearlmoor Wanderwood and the Glowmoss bloom beats in Lowleaf Hollow",
    "mood": "The safe glow at the heart of the dark forest — a lantern-lit music-box lullaby in a gentle waltz; hearth over wonder."
   },
   "lowleaf-hollow-c": {
    "loop_start": 14.652,
    "duration": 103.967,
-   "where": "Glowmoss Deep (and its B1F), the Spore Grotto, the Sounding Cave and the Grovefall vigil site",
+   "where": "Glowmoss Deep (and its B1F), the Spore Grotto and the Grovefall vigil site",
    "mood": "The glowing-dark deep forest — a glassy bell melody whose echoes answer across the black, sparse and cathedral-like, with a drained grey shadow in it."
+  },
+  "lumenary-hall": {
+   "loop_start": 6.757,
+   "duration": 96.131,
+   "where": "Lumenary halls — the Tinderwick Lumenary (Brisa) and the Pearlmoor Lumenary (Reyl), and any later Lampwarden's hall without its own cue",
+   "mood": "The hush before the duel — a stately processional between lamp-lit pillars, organ and choir in cool stone, walking toward the warden who will test you."
   },
   "nightreach-observatory-a": {
    "loop_start": 8.684,
@@ -154,7 +226,7 @@
   "nightreach-observatory-b": {
    "loop_start": 4.328,
    "duration": 74.267,
-   "where": "Nightreach Lumenary (Nessa Cole's haunted hall) + the Nightreach inn and homes",
+   "where": "Nightreach Lumenary (Nessa Cole's haunted hall)",
    "mood": "The Haunted Lumenary: the loneliest room in Vesperholm - a minor lullaby that reaches up and never quite comes home, a clock running down; hope present but not yet earned."
   },
   "pale-vault-glacier-a": {
@@ -166,7 +238,7 @@
   "pale-vault-glacier-b": {
    "loop_start": 7.964,
    "duration": 101.982,
-   "where": "Pale Vault interiors — the inn, a home, the Frost Lumenary hall",
+   "where": "Pale Vault's Frost Lumenary hall",
    "mood": "Snow-Hushed Town — a small warm song against the cold: people and lanterns indoors, melancholy and intimate, hope that is fragile."
   },
   "pale-vault-glacier-c": {
@@ -181,10 +253,16 @@
    "where": "The Tide-blessing festival on Pearlmoor Quay (the cutscene after the Tide Gleam is relit)",
    "mood": "The going-out song — lantern boats on moonlit water; the quay waltz turned into a cool, glowing, sure ceremony."
   },
+  "pearlmoor-quay-a": {
+   "loop_start": 7.198,
+   "duration": 90.41,
+   "where": "Pearlmoor Quay — the harbour town itself, home of the Tide Lumenary",
+   "mood": "A waltz on wet boardwalks under a cyan moon — the lamplit harbour at night, nets mended, boats rocking, the whole quay humming along."
+  },
   "pearlmoor-quay-b": {
    "loop_start": 11.308,
    "duration": 65.045,
-   "where": "Pearlmoor's outskirts — the allotment hill behind the quay and Pearlmoor Point (the Old Light headland)",
+   "where": "Pearlmoor's outskirts — the breakwater (the Causeway Bell), the allotment hill and Pearlmoor Point",
    "mood": "Low tide, lantern strings — the quay waltz late and quiet, a lonely-but-cosy sway on the edge of town."
   },
   "pearlmoor-quay-c": {
@@ -216,6 +294,12 @@
    "duration": 70.4,
    "where": "Sunkbell Shallows (the flooded-shrine spur off Fen II, reached by Tidecall)",
    "mood": "The fen relit — open water, a drowned shrine bell ringing under the ripples, a warmer lilting waltz you've earned."
+  },
+  "shop-counter": {
+   "loop_start": 4.458,
+   "duration": 74.762,
+   "where": "Every shop — the Tinderwick General Store, the Pearlmoor Chandlery, the Galehigh Kite-Maker's and every counter after",
+   "mood": "The Counter Bell — a bouncy little shop tune with a doorbell for a hook; browse as long as you like."
   },
   "sting-hour": {
    "loop_start": null,
@@ -262,13 +346,13 @@
   "tinderwick-b": {
    "loop_start": 6.316,
    "duration": 78.968,
-   "where": "Tinderwick indoors — the apprentice's home and the village store",
+   "where": "The apprentice's house in Tinderwick (Gran's home, the hometown lullaby indoors)",
    "mood": "Embers banked low — the hometown lullaby gone indoors at night, a 6/8 sway by the coals, homesick and safe."
   },
   "tinderwick-c": {
    "loop_start": 8.638,
    "duration": 96.993,
-   "where": "Duskapple Orchard — Tinderwick's old orchard through the west hedge (the satchel errand, the fallen-star crater)",
+   "where": "Duskapple Orchard once the first Gleam is relit — the shoots come up in the burn",
    "mood": "First light on the water — the hometown tune's rising half asked under orchard boughs, Lydian wonder with a thread of mystery."
   },
   "title": {
@@ -294,6 +378,12 @@
    "duration": 73.796,
    "where": "Umbral Spire summit, the Keystar relight cutscene",
    "mood": "First True Dawn: the Keystar catches and the whole sky lights; the hometown motif stated whole in radiant major, triumphant with a tear in it."
+  },
+  "vesper-crossroads-a": {
+   "loop_start": 4.174,
+   "duration": 93.454,
+   "where": "Vesper Crossroads — the Lanternway hub where the five lit lanes meet (waystone, waystation inn, fingerpost)",
+   "mood": "The Signpost Tune — all roads meet here: a road-folk waystation band strikes up the home tune, lute, reed and tambourine on the front porch of the world."
   },
   "windward-stair-a": {
    "loop_start": 4.925,

@@ -64,6 +64,8 @@ const CUE_NAMES = {
     'shop-counter': 'Shops',
     'inn-rest': 'Inns — rest a while',
     'lumenary-hall': 'The Lumenary halls',
+    'lanternway-a': 'The Lanternway',
+    'dimglass-coast-b': 'The coast road, last light',
 };
 
 function walk(dir) {
