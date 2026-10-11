@@ -30,7 +30,12 @@ export type AbilityId =
   | 'emberward' // push through the Hollowing's coldfog
   | 'updraft_kite' // ride thermals up terraces / glide gaps
   | 'sunsketch' // bloom shut sun-vines into bridges
-  | 'starreach'; // step across short voids of pure dark (late game)
+  | 'starreach' // step across short voids of pure dark (late game)
+  // RESERVED (2026-10): DEEP water's gate. No Gift grants it yet — deep water
+  // (the darker open sea, the `deepwater_set` accent family) stays out of reach
+  // even with Tidecall, which swims the SHALLOWS. A future deep-swim mechanic
+  // is one `reward_abilities: ['deepdive']` away.
+  | 'deepdive';
 
 /** A stored world-state flag key, e.g. 'flag:hub_unlocked', 'warp:cave_b1_open'. */
 export type WorldFlag = string;

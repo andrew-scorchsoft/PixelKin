@@ -15,6 +15,15 @@
       "first_gid": 1,
       "columns": 12,
       "tile_count": 386
+    },
+    {
+      "name": "deepwater_set",
+      "image": "assets/tilesets/deepwater_set.webp",
+      "tile_width": 16,
+      "tile_height": 16,
+      "first_gid": 387,
+      "columns": 6,
+      "tile_count": 15
     }
   ],
   "layers": [
@@ -34,13 +43,13 @@
         37,
         65,
         67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
-        67,
+        393,
+        394,
+        394,
+        398,
+        391,
+        391,
+        391,
         91,
         95,
         64,
@@ -55,10 +64,10 @@
         67,
         67,
         67,
-        67,
-        67,
-        67,
-        67,
+        390,
+        391,
+        391,
+        391,
         93,
         94,
         71,
@@ -73,10 +82,10 @@
         72,
         83,
         73,
-        67,
-        67,
-        67,
-        67,
+        390,
+        391,
+        391,
+        391,
         91,
         95,
         4,
@@ -91,10 +100,10 @@
         28,
         28,
         30,
-        66,
-        67,
-        67,
-        67,
+        390,
+        391,
+        391,
+        391,
         91,
         94,
         2,
@@ -109,10 +118,10 @@
         34,
         35,
         36,
-        64,
-        67,
-        67,
-        67,
+        390,
+        391,
+        391,
+        391,
         93,
         113,
         88,
@@ -127,10 +136,10 @@
         34,
         34,
         37,
-        66,
-        67,
-        67,
-        67,
+        390,
+        391,
+        391,
+        391,
         91,
         92,
         113,
@@ -145,10 +154,10 @@
         35,
         35,
         59,
-        67,
-        67,
-        67,
-        67,
+        390,
+        391,
+        391,
+        391,
         93,
         115,
         99,
@@ -163,10 +172,10 @@
         35,
         33,
         64,
-        67,
-        67,
-        67,
-        67,
+        393,
+        394,
+        398,
+        391,
         93,
         95,
         1,
@@ -183,8 +192,8 @@
         71,
         67,
         67,
-        67,
-        67,
+        390,
+        391,
         91,
         95,
         2,
@@ -201,8 +210,8 @@
         37,
         66,
         67,
-        67,
-        67,
+        390,
+        391,
         91,
         94,
         1,
@@ -219,8 +228,8 @@
         37,
         64,
         67,
-        67,
-        67,
+        393,
+        394,
         91,
         95,
         1,
@@ -289,10 +298,10 @@
         34,
         33,
         36,
-        65,
-        67,
-        67,
-        67,
+        387,
+        388,
+        388,
+        388,
         92,
         113,
         88,
@@ -307,10 +316,10 @@
         33,
         34,
         36,
-        66,
-        67,
-        67,
-        67,
+        390,
+        391,
+        391,
+        391,
         91,
         91,
         113,
@@ -325,10 +334,10 @@
         153,
         154,
         153,
-        64,
-        67,
-        67,
-        67,
+        390,
+        391,
+        391,
+        391,
         91,
         92,
         92,
@@ -343,10 +352,10 @@
         154,
         154,
         155,
-        66,
-        67,
-        67,
-        67,
+        393,
+        394,
+        394,
+        394,
         93,
         93,
         115,
@@ -415,7 +424,7 @@
         34,
         35,
         66,
-        67,
+        388,
         67,
         67,
         67,
@@ -433,10 +442,10 @@
         35,
         34,
         71,
-        67,
-        67,
-        67,
-        67,
+        390,
+        388,
+        388,
+        388,
         91,
         94,
         2,
@@ -451,10 +460,10 @@
         35,
         34,
         36,
-        65,
-        67,
-        67,
-        67,
+        390,
+        391,
+        391,
+        391,
         92,
         95,
         4,
@@ -469,10 +478,10 @@
         33,
         34,
         36,
-        64,
-        67,
-        67,
-        67,
+        390,
+        391,
+        391,
+        391,
         93,
         113,
         88,
@@ -487,10 +496,10 @@
         63,
         33,
         36,
-        66,
-        67,
-        67,
-        67,
+        390,
+        391,
+        391,
+        391,
         91,
         93,
         113,
@@ -505,10 +514,10 @@
         75,
         35,
         37,
-        66,
-        67,
-        67,
-        67,
+        390,
+        391,
+        391,
+        391,
         91,
         115,
         99,
@@ -523,10 +532,10 @@
         34,
         34,
         37,
-        66,
-        67,
-        67,
-        67,
+        390,
+        391,
+        391,
+        391,
         92,
         94,
         1,
@@ -541,10 +550,10 @@
         34,
         34,
         37,
-        64,
-        67,
-        67,
-        67,
+        390,
+        391,
+        391,
+        391,
         93,
         94,
         1,
@@ -559,10 +568,10 @@
         39,
         39,
         42,
-        71,
-        74,
-        72,
-        83,
+        393,
+        394,
+        394,
+        394,
         92,
         113,
         86,
@@ -1828,57 +1837,6 @@
       "h": 3,
       "overhang": 2,
       "walk_under": true
-    },
-    {
-      "id": "wc_rowboat",
-      "sprite": "pearlmoor_rowboat",
-      "at": {
-        "tx": 12,
-        "ty": 4
-      },
-      "w": 2,
-      "h": 2
-    },
-    {
-      "id": "wc_driftwood",
-      "sprite": "pearlmoor_driftwood",
-      "at": {
-        "tx": 3,
-        "ty": 19
-      },
-      "w": 2,
-      "h": 1
-    },
-    {
-      "id": "wc_netrack",
-      "sprite": "pearlmoor_net_rack",
-      "at": {
-        "tx": 9,
-        "ty": 29
-      },
-      "w": 2,
-      "h": 1
-    },
-    {
-      "id": "wc_anchor",
-      "sprite": "pearlmoor_anchor",
-      "at": {
-        "tx": 2,
-        "ty": 3
-      },
-      "w": 2,
-      "h": 2,
-      "overhang": 1
-    },
-    {
-      "id": "wc_crabpots",
-      "sprite": "pearlmoor_crab_pots",
-      "at": {
-        "tx": 12,
-        "ty": 8
-      },
-      "w": 1,
-      "h": 1
     }
   ],
   "warps": [
@@ -2407,6 +2365,7 @@
         "h": 4
       },
       "encounter_rate": 0.06,
+      "requires_ability": "tidecall",
       "table": [
         {
           "kin_id": 2,
@@ -2427,7 +2386,6 @@
           "max_level": 63
         }
       ],
-      "requires_ability": "tidecall",
       "requires_flag": "flag:dawn"
     }
   ],
@@ -2439,7 +2397,7 @@
         "ty": 11
       },
       "facing": "right",
-      "sprite": "fisher_man",
+      "sprite": "npc_shopkeeper",
       "movement": "static",
       "dialogue_ref": "script.flats_trainer_a",
       "sight_range": 4,
@@ -2453,7 +2411,7 @@
         "ty": 11
       },
       "facing": "right",
-      "sprite": "fisher_man",
+      "sprite": "npc_shopkeeper",
       "movement": "static",
       "dialogue_ref": "npc.flats_wayfarer_a",
       "requires_flag": "flag:flats_trainer_a_beaten"
@@ -2465,7 +2423,7 @@
         "ty": 22
       },
       "facing": "left",
-      "sprite": "road_courier",
+      "sprite": "npc_shopkeeper",
       "movement": "static",
       "dialogue_ref": "script.flats_trainer_b",
       "sight_range": 4,
@@ -2479,9 +2437,9 @@
         "ty": 22
       },
       "facing": "left",
-      "sprite": "road_courier",
+      "sprite": "npc_shopkeeper",
       "movement": "static",
-      "dialogue_ref": "script.flats_wayfarer_b_staged",
+      "dialogue_ref": "npc.flats_wayfarer_b",
       "requires_flag": "flag:flats_trainer_b_beaten"
     },
     {
@@ -2519,7 +2477,7 @@
       "facing": "up",
       "sprite": "npc_mentor",
       "movement": "look_around",
-      "dialogue_ref": "script.flats_sky_watcher_staged",
+      "dialogue_ref": "npc.flats_sky_watcher_after",
       "requires_flag": "flag:q_south_letter_given"
     },
     {
@@ -2602,30 +2560,6 @@
       "sprite": "npc_man",
       "movement": "static",
       "dialogue_ref": "script.oldlight_hint_road"
-    },
-    {
-      "id": "amb_pebbit",
-      "at": {
-        "tx": 4,
-        "ty": 25
-      },
-      "facing": "down",
-      "sprite": "kin_47_overworld",
-      "movement": "wander",
-      "ambient": true,
-      "wander_radius": 1
-    },
-    {
-      "id": "amb_brineroll",
-      "at": {
-        "tx": 12,
-        "ty": 16
-      },
-      "facing": "down",
-      "sprite": "kin_27_overworld",
-      "movement": "wander",
-      "ambient": true,
-      "wander_radius": 1
     }
   ],
   "gates": [
@@ -2641,47 +2575,5 @@
       }
     }
   ],
-  "music": "assets/audio/music/dimglass-coast-a.mp3",
-  "ambience": {
-    "particles": [
-      {
-        "kind": "spray",
-        "density": 0.6
-      },
-      {
-        "kind": "embers",
-        "density": 0.5,
-        "area": {
-          "tx": 11,
-          "ty": 28,
-          "w": 3,
-          "h": 2
-        }
-      }
-    ],
-    "birds": {
-      "kind": "gull",
-      "flocks": [
-        {
-          "tx": 12,
-          "ty": 9
-        }
-      ],
-      "flyover": true
-    },
-    "light_sources_extra": [
-      {
-        "at": {
-          "tx": 12,
-          "ty": 29
-        },
-        "radius": 15,
-        "color": "#ff9a4a"
-      }
-    ],
-    "bob_gids": [
-      120
-    ],
-    "sound_bed": "amb-surf"
-  }
+  "music": "assets/audio/music/dimglass-coast-a.mp3"
 }

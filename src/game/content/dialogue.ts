@@ -889,6 +889,12 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'The inward road runs to the dark mountain itself, and its gate stays shut till all eight Gleams stand lit in the sky. No road for a Wayfarer just setting out — the lit ways are yours first.' },
   ],
 
+  // Swimming the shallows into DEEP water (the darker sea): Tidecall stills the
+  // shallows, not the deep. Played once per map visit (WorldScene.onBump).
+  'world.too_deep': [
+    { text: 'The water falls away beneath you here — dark, cold, and far too deep to swim. The current pulls toward open sea. Back to the shallows.' },
+  ],
+
   // --- Locked-door lines (a gated door warp's blocked_ref) ---
   // Doors are walk-onto: stepping into a locked one (or pressing Confirm at it)
   // plays these instead of barring the way in silence. Keep the canon voice.

@@ -100,6 +100,9 @@ export class CollisionGrid {
         for (const t of gateTiles(gate)) {
           if (!this.map.inBounds(t.tx, t.ty)) continue;
           const i = t.ty * this.w + t.tx;
+          // A Tidecall gate over a harbour never softens DEEP water under it —
+          // deep water keeps its own (reserved) gate (deepwater_set, 2026-10).
+          if (this.gated.get(i) === 'deepdive') continue;
           this.solid[i] = false;
           this.gated.set(i, gate.ability);
         }

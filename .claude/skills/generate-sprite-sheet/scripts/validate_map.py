@@ -146,6 +146,10 @@ def main() -> int:
                 if meta(g).get("encounter_terrain") == "tall_grass":
                     continue  # tall-grass is a flat encounter patch, not a bordered surface
                 neigh = [terr(x, y - 1), terr(x + 1, y), terr(x, y + 1), terr(x - 1, y)]
+                # shallows meeting DEEP water are one sea — the deep tiles draw
+                # that seam themselves (deepwater_set), so the shallow side stays fill
+                if t == "water":
+                    neigh = ["water" if nb == "deepwater" else nb for nb in neigh]
                 # off-map (__edge__) is continuation, not a boundary
                 if any(nb != t and nb != "__edge__" for nb in neigh):
                     boundary_total += 1

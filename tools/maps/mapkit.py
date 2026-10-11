@@ -173,6 +173,152 @@ def scatter_decor(deco, base, w, h, rng, *, density=0.10, avoid=None, flowers=0.
                 deco[i] = rng.choice(blooms) if rng.random() < flowers else rng.choice(props)
 
 
+# ---- deep water (2026-10) ----------------------------------------------------
+DEEPWATER_INDEX = REPO / "assets/tilesets/deepwater/deepwater_set.index.json"
+
+
+def deep_water(m: dict, *, shelf: int = 2, keep=(), keep_rects=(), deep_cols=None) -> int:
+    """Mark a sea map's OPEN water DEEP (the darker `deepwater_set` family, gated
+    on the reserved `deepdive` — Tidecall swims the shallows only).
+
+    The map's `water` terrain layers are read; every water cell more than
+    `shelf` tiles (Chebyshev) from dry ground becomes deep, EXCEPT:
+      * cells within 1 of a warp/trigger/NPC placed on water, plus a shallow
+        channel from the main shore to it (so nothing designed is cut off);
+      * a shallow channel from the main shore to every islet (dry ground not
+        connected to the main shore by land);
+      * `keep` cells / `keep_rects` (x0, y0, x1, y1) — designed swim lanes.
+    `deep_cols` (x0, x1): every water cell in these columns is deep regardless
+    of the shelf — for two maps whose seas share real ground (the bay between
+    Dimglass Coast II and the breakwater), so it's walkable in at most one.
+    The map edge is NOT dry ground — the sea runs on off-map. Adds a terrain
+    layer + the accent set ref; call before finalize(). Returns deep-cell count."""
+    from collections import deque
+    W, H = m["width"], m["height"]
+    water = [0] * (W * H)
+    for ly in m["layers"]:
+        if ly.get("role") == "terrain" and ly.get("terrain") == "water":
+            for i, v in enumerate(ly["data"]):
+                if v:
+                    water[i] = 1
+    for ly in m["layers"]:            # anything painted OVER water after it wins
+        if ly.get("role") == "terrain" and ly.get("terrain") not in ("water", "deepwater"):
+            seen_water = False
+            for l2 in m["layers"]:
+                if l2 is ly:
+                    break
+                if l2.get("terrain") == "water":
+                    seen_water = True
+            if seen_water:
+                for i, v in enumerate(ly["data"]):
+                    if v:
+                        water[i] = 0
+    INF = 10 ** 6
+    dist = [0 if not water[i] else INF for i in range(W * H)]
+    q = deque(i for i in range(W * H) if not water[i])
+    while q:
+        i = q.popleft()
+        x, y = i % W, i // W
+        for dx in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                nx, ny = x + dx, y + dy
+                if 0 <= nx < W and 0 <= ny < H:
+                    j = ny * W + nx
+                    if dist[j] > dist[i] + 1:
+                        dist[j] = dist[i] + 1
+                        q.append(j)
+    deep = [1 if water[i] and (dist[i] > shelf or
+                               (deep_cols and deep_cols[0] <= i % W <= deep_cols[1]))
+            else 0 for i in range(W * H)]
+    if not any(deep):
+        return 0
+
+    def clear(x, y, r=1):
+        for dy in range(-r, r + 1):
+            for dx in range(-r, r + 1):
+                if 0 <= x + dx < W and 0 <= y + dy < H:
+                    deep[(y + dy) * W + x + dx] = 0
+
+    # dry components: the main shore = the largest; the rest are islets
+    comp = [-1] * (W * H)
+    sizes = []
+    for i in range(W * H):
+        if water[i] or comp[i] >= 0:
+            continue
+        c = len(sizes)
+        comp[i] = c
+        stack, n = [i], 0
+        while stack:
+            k = stack.pop()
+            n += 1
+            kx, ky = k % W, k // W
+            for nx, ny in ((kx + 1, ky), (kx - 1, ky), (kx, ky + 1), (kx, ky - 1)):
+                if 0 <= nx < W and 0 <= ny < H:
+                    j = ny * W + nx
+                    if not water[j] and comp[j] < 0:
+                        comp[j] = c
+                        stack.append(j)
+        sizes.append(n)
+    main = max(range(len(sizes)), key=lambda c: sizes[c]) if sizes else -1
+
+    def channel_to(targets):
+        """Shallow BFS channel (through water) from the main shore to targets."""
+        tset = set(targets)
+        prev = {}
+        dq = deque()
+        for i in range(W * H):
+            if comp[i] == main:
+                dq.append(i)
+                prev[i] = None
+        hit = None
+        while dq:
+            i = dq.popleft()
+            if i in tset:
+                hit = i
+                break
+            x, y = i % W, i // W
+            for nx, ny in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+                if 0 <= nx < W and 0 <= ny < H:
+                    j = ny * W + nx
+                    if j not in prev and (water[j] or j in tset):
+                        prev[j] = i
+                        dq.append(j)
+        while hit is not None:
+            clear(hit % W, hit // W)
+            hit = prev[hit]
+
+    for c in range(len(sizes)):
+        if c != main:
+            channel_to([i for i in range(W * H) if comp[i] == c])
+    spots = [(w["at"]["tx"], w["at"]["ty"]) for w in m.get("warps", [])]
+    spots += [(t["at"]["tx"], t["at"]["ty"]) for t in m.get("triggers", [])]
+    spots += [(n["at"]["tx"], n["at"]["ty"]) for n in m.get("npcs", []) if not n.get("ambient")]
+    for (x, y) in spots:
+        if 0 <= x < W and 0 <= y < H and water[y * W + x]:
+            clear(x, y)
+            channel_to([y * W + x])
+    for (x, y) in keep:
+        clear(x, y, 0)
+    for (x0, y0, x1, y1) in keep_rects:
+        for y in range(y0, y1 + 1):
+            for x in range(x0, x1 + 1):
+                clear(x, y, 0)
+    if not any(deep):
+        return 0
+    if not any(ts.get("name") == "deepwater_set" for ts in m["tilesets"]):
+        m["tilesets"].append(register_tileset("deepwater_set", index=DEEPWATER_INDEX))
+    else:
+        register_tileset("deepwater_set", index=DEEPWATER_INDEX,
+                         first_gid=next(ts["first_gid"] for ts in m["tilesets"]
+                                        if ts.get("name") == "deepwater_set"))
+    layer = {"name": "t_deepwater", "role": "terrain", "terrain": "deepwater",
+             "set": "deepwater_set", "depth": 0, "data": deep}
+    # after every terrain layer, so it writes over the shallows it replaces
+    last = max(i for i, ly in enumerate(m["layers"]) if ly.get("role") in ("terrain", "base"))
+    m["layers"].insert(last + 1, layer)
+    return sum(deep)
+
+
 # ---- the standing build pipeline --------------------------------------------
 def finalize(m: dict, *, scale: int = 3, render: bool = True,
              pin_base: dict[tuple[int, int], str] | None = None) -> bool:

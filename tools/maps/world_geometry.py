@@ -189,13 +189,16 @@ _MODELS: dict = {}
 
 
 def _open_cells(world, mid):
-    """Cells a player can ever stand on (holding every Lantern Gift) — border
-    trees, cliffs, deep water and walls are not ground two maps can fight over."""
+    """DRY GROUND a player can stand on (every land Gift held) — border trees,
+    cliffs and walls are not ground two maps can fight over, and neither is
+    water: two maps showing the same bay (Dimglass II and the breakwater) are
+    one sea seen twice, not a contradiction."""
     if mid not in _MODELS:
         from worldmodel import MapModel
         mm = MapModel(world[mid])
+        land = GIFTS - {"tidecall", "starreach"}   # water + starlit void aren't ground
         _MODELS[mid] = {(x, y) for y in range(mm.h) for x in range(mm.w)
-                        if mm.standable(x, y, abilities=GIFTS)}
+                        if mm.standable(x, y, abilities=land)}
     return _MODELS[mid]
 
 

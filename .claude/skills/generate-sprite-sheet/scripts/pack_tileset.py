@@ -21,7 +21,7 @@ Output contract — MUST satisfy `PackedTileset` in src/game/systems/world/tiles
       role?: string;
       collides?: boolean;
       encounter_terrain?: 'tall_grass'|'water'|'cave'|'sand';
-      requires_ability?: 'glimmerstep'|'tidecall'|'emberward'|'updraft_kite'|'sunsketch'|'starreach';
+      requires_ability?: 'glimmerstep'|'tidecall'|'emberward'|'updraft_kite'|'sunsketch'|'starreach'|'deepdive';
       animation?: { frames: number[]; duration_ms: number };  // frames are LOCAL indices
     }
 
@@ -67,7 +67,8 @@ from PIL import Image
 # Canonical enum values from src/game/data/world/types.ts — validated so a typo in a
 # manifest fails here rather than silently producing a tile the engine ignores.
 ENCOUNTER_TERRAINS = {"tall_grass", "water", "cave", "sand"}
-ABILITIES = {"glimmerstep", "tidecall", "emberward", "updraft_kite", "sunsketch", "starreach"}
+ABILITIES = {"glimmerstep", "tidecall", "emberward", "updraft_kite", "sunsketch", "starreach",
+             "deepdive"}  # deepdive: RESERVED — deep water's gate; no Gift grants it yet
 
 
 def find_repo_root(start: Path) -> Path:

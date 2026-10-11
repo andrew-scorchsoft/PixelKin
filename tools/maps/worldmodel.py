@@ -114,6 +114,8 @@ class MapModel:
                     for tx in range(r["tx"], r["tx"] + r["w"]):
                         if 0 <= tx < self.w and 0 <= ty < self.h:
                             i = ty * self.w + tx
+                            if self.ability[i] == "deepdive":
+                                continue   # a gate never softens DEEP water (CollisionGrid)
                             self.solid[i] = False
                             self.ability[i] = g.get("ability")
 

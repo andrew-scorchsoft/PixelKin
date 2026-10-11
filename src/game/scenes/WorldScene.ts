@@ -2037,11 +2037,23 @@ export class WorldScene extends Phaser.Scene {
 
   /** Feedback when walking into a wall: a throttled bump sfx + a tiny squash. */
   private lastBumpAt = 0;
+  /** Map id where the "too deep" line last played (once per visit to a map). */
+  private deepWarnedOn = '';
   private onBump = (): void => {
     const now = this.time.now;
     if (now - this.lastBumpAt < 280) return;
     this.lastBumpAt = now;
     void this.sfx.playVariant('world-bump', ['a', 'b']);
+    // Swimming the shallows into DEEP water: say why, once per map visit.
+    const step: Record<Facing, [number, number]> = { down: [0, 1], up: [0, -1], left: [-1, 0], right: [1, 0] };
+    const [dx, dy] = step[this.player.facing];
+    if (!this.modal && this.deepWarnedOn !== this.map.def.id
+        && this.collision.gateAt(this.player.tx + dx, this.player.ty + dy) === 'deepdive'
+        && !this.abilities.has('deepdive')) {
+      this.deepWarnedOn = this.map.def.id;
+      this.modal = true;
+      void this.runDialogue('world.too_deep').then(() => { this.modal = false; });
+    }
     this.tweens.add({
       targets: this.player.sprite,
       scaleX: 0.9,

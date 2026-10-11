@@ -123,6 +123,9 @@ for y in range(H):
             x += 1
 
 if __name__ == "__main__":
+    # deep water (2026-10): the open sea past the shallow shelf — Tidecall
+    # swims the shallows only (mapkit.deep_water; the reserved `deepdive` gate)
+    mk.deep_water(m, shelf=3)
     ok = mk.finalize(m, scale=3)
     print("PASS" if ok else "FAIL")
     raise SystemExit(0 if ok else 1)

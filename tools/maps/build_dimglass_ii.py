@@ -324,6 +324,9 @@ m = {
 }
 
 if __name__ == "__main__":
+    # deep water (2026-10): the open sea past the shallow shelf — Tidecall
+    # swims the shallows only (mapkit.deep_water; the reserved `deepdive` gate)
+    mk.deep_water(m, deep_cols=(14, 17))   # the bay strip it shares with the breakwater
     ok = mk.finalize(m, scale=3)
     print("PASS" if ok else "FAIL")
     raise SystemExit(0 if ok else 1)
