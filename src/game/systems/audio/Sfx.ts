@@ -35,7 +35,10 @@ const VARIANTS = ((): Map<string, string[]> => {
 export class Sfx {
   constructor(
     private readonly scene: Phaser.Scene,
-    private readonly volume = 0.6,
+    /** One-shot level before the player's Effects setting. Was 0.6, which put chip
+     *  effects ~8 dB over the remastered score's loud passages (playtest, 2026-10);
+     *  0.3 (-6 dB) lands them just above the music, clear but not jumpy. */
+    private readonly volume = 0.3,
   ) {}
 
   /**

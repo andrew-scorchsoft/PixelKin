@@ -28,6 +28,7 @@ import {
   setMusicVolume,
   setMusicStyle,
   setSfxVolume,
+  setMasterVolume as applyMasterVolumePref,
   setCannotDie,
   setAmbientMotion,
   prefersReducedMotion,
@@ -88,6 +89,7 @@ class ShellManagerImpl {
   private fsToggleEl: HTMLDivElement | null = null;
   private restoreEl: HTMLDivElement | null = null;
   private helpEl: HTMLDivElement | null = null;
+  private volumeEl: HTMLDivElement | null = null;
   private autoFsTried = false;
   private readonly listeners = new Set<ActionListener>();
   private readonly held = new Set<ShellAction>();
@@ -102,6 +104,7 @@ class ShellManagerImpl {
     setMusicVolume(this.settings.musicVolume ?? 'full');
     setMusicStyle(this.settings.musicStyle ?? 'remastered');
     setSfxVolume(this.settings.sfxVolume ?? 'full');
+    applyMasterVolumePref(this.settings.masterVolume ?? 1);
     setCannotDie(this.settings.cannotDie ?? false);
     setAmbientMotion(this.settings.ambientMotion ?? !prefersReducedMotion());
     this.applyControlSize();
@@ -128,7 +131,7 @@ class ShellManagerImpl {
     if (this.settings.shell === mode) return;
     this.settings = { ...this.settings, shell: mode };
     this.render();
-    await SaveManager.saveSettings(this.settings);
+    await this.persist();
   }
 
   /** Show/hide the on-screen controls live and persist. */
@@ -137,7 +140,7 @@ class ShellManagerImpl {
     this.settings = { ...this.settings, controlsVisible: visible };
     this.applyControlsVisibility();
     this.updateRestoreVisibility();
-    await SaveManager.saveSettings(this.settings);
+    await this.persist();
   }
 
   /**
@@ -158,7 +161,7 @@ class ShellManagerImpl {
     if (this.controlSize === size) return;
     this.settings = { ...this.settings, controlSize: size };
     this.applyControlSize();
-    await SaveManager.saveSettings(this.settings);
+    await this.persist();
   }
 
   /** Push the chosen size into the `--pk-cs` scale the control CSS multiplies by. */
@@ -167,6 +170,36 @@ class ShellManagerImpl {
     document.documentElement.style.setProperty('--pk-cs', String(scale));
     const toggle = this.controlsEl?.querySelector<HTMLElement>('.pk-size-toggle');
     if (toggle) toggle.textContent = String(this.controlSize);
+  }
+
+  /**
+   * Save the shell's own fields over the FRESHLY stored settings: the Settings menu
+   * writes music/effects/pace/etc. through its own copy, so saving ours wholesale
+   * would put back whatever those were when the page loaded.
+   */
+  private async persist(): Promise<void> {
+    const stored = await SaveManager.loadSettings();
+    const { shell, controlsVisible, controlSize, masterVolume } = this.settings;
+    this.settings = { ...stored, shell, controlsVisible, controlSize, masterVolume };
+    await SaveManager.saveSettings(this.settings);
+  }
+
+  /** Overall volume 0..1 (unset = full). */
+  get masterVolume(): number {
+    return this.settings.masterVolume ?? 1;
+  }
+
+  /**
+   * Set the overall volume live (Phaser's global sound volume, via preferences) and
+   * persist. The deck slider and Settings → Volume both come through here, so the
+   * slider always shows what Settings set and vice versa.
+   */
+  async setMasterVolume(v: number, persist = true): Promise<void> {
+    const next = Math.min(1, Math.max(0, Math.round(v * 100) / 100));
+    this.settings = { ...this.settings, masterVolume: next };
+    applyMasterVolumePref(next);
+    this.syncVolumeSlider();
+    if (persist) await this.persist();
   }
 
   /** Subscribe to control actions. Returns an unsubscribe function. */
@@ -188,8 +221,60 @@ class ShellManagerImpl {
     this.ensureFullscreenToggle();
     this.ensureRestoreButton();
     this.ensureControlsHelp();
+    this.ensureVolumeSlider();
     this.applyControlsVisibility();
     this.updateRestoreVisibility();
+  }
+
+  // ----------------------------------------------------------- volume slider --
+
+  /**
+   * The overall-volume slider, parked at the TOP-LEFT of the portrait device deck —
+   * the mirror of the "Controls" link on the right, in the dead space just under the
+   * screen that no thumb reaches. CSS shows it only there (portrait + device shell);
+   * desktop/landscape players use Settings → Volume. A plain range input, so it is
+   * native touch + mouse + keyboard; it blurs after use so the arrow keys go back
+   * to the game rather than nudging the slider.
+   */
+  private ensureVolumeSlider(): void {
+    if (this.volumeEl) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'pk-volume';
+    wrap.title = 'Volume';
+
+    const icon = document.createElement('span');
+    icon.className = 'pk-volume-ico';
+    icon.setAttribute('aria-hidden', 'true');
+    wrap.appendChild(icon);
+
+    const input = document.createElement('input');
+    input.type = 'range';
+    input.min = '0';
+    input.max = '100';
+    input.step = '5';
+    input.setAttribute('aria-label', 'Volume');
+    input.addEventListener('input', () => void this.setMasterVolume(Number(input.value) / 100, false));
+    input.addEventListener('change', () => {
+      void this.setMasterVolume(Number(input.value) / 100);
+      input.blur();
+    });
+    input.addEventListener('pointerup', () => input.blur());
+    // Keys typed while it has focus belong to the slider, not the game.
+    input.addEventListener('keydown', (e) => e.stopPropagation());
+    wrap.appendChild(input);
+
+    document.body.appendChild(wrap);
+    this.volumeEl = wrap;
+    this.syncVolumeSlider();
+  }
+
+  private syncVolumeSlider(): void {
+    const input = this.volumeEl?.querySelector('input');
+    if (!input || !this.volumeEl) return;
+    const pct = Math.round(this.masterVolume * 100);
+    input.value = String(pct);
+    input.style.setProperty('--pk-vol', `${pct}%`);
+    this.volumeEl.classList.toggle('pk-volume-off', pct === 0);
   }
 
   // ----------------------------------------------------------- controls help --
