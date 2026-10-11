@@ -104,7 +104,7 @@ m = {
     # every tile its rect covers (the CLAUDE.md gotcha) — one big rect would let a
     # Tidecall-holder walk up the rock crown.
     "gates": [],
-    "music": "assets/audio/music/dimglass-coast-a.mp3",
+    "music": "assets/audio/music/dimglass-coast-b.mp3",
 }
 
 gi = 0

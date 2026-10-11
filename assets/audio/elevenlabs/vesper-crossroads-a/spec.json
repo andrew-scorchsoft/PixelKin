@@ -1,0 +1,94 @@
+{
+ "id": "vesper-crossroads-a",
+ "kind": "loop",
+ "where": "Vesper Crossroads — the Lanternway hub where the five lit lanes meet (waystone, waystation inn, fingerpost)",
+ "mood": "The Signpost Tune — all roads meet here: a road-folk waystation band strikes up the home tune, lute, reed and tambourine on the front porch of the world.",
+ "bpm": 90,
+ "beats_per_bar": 4,
+ "_note": "Classic twin: assets/audio/midi/specs/vesper-crossroads-a.json (108 BPM, 4/4, C major, plain Vesper statement in bars 1-2, I-vi-IV-V). Remaster written at 90 BPM because motif medium pins the take to the motif's 90 grid (the hub is the motif's cosy home base). Palette deliberately unlike tinderwick-a (music-box/harp/string pad): a road-folk band instead.",
+ "motif": {
+  "strength": "medium"
+ },
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "90 BPM with lively eighth-note strumming",
+  "C major",
+  "accordion-like sampled reed organ playing the melody",
+  "plucked sampled lute strumming the chords",
+  "hand-drum and tambourine walking beat",
+  "plucked sampled bass walking root and fifth",
+  "a sampled fiddle answering the tune",
+  "friendly road-folk waystation band at a crossroads inn, welcoming and a little busy",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "fade out",
+  "ritardando",
+  "ending",
+  "music box",
+  "lullaby",
+  "string pad",
+  "electric guitar",
+  "ambient drone",
+  "minimalist"
+ ],
+ "sections": [
+  {
+   "name": "Strike Up",
+   "bars": 2,
+   "text": "{the band strikes up: a tambourine shake and a lute strum pickup, the hand-drum starts walking, and the reed lead launches straight into the tune}",
+   "styles": [
+    "the band strikes up",
+    "welcoming"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the signpost tune on the reed: the hometown melody's hopeful rising lift and settle home, played friendly and folksy over strummed lute and a walking hand-drum}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "folksy"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the same tune again with the fiddle answering each phrase and the tambourine busier, like more travellers joining in at the inn}",
+   "styles": [
+    "fiddle counter-melody",
+    "fuller arrangement",
+    "bustling"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a warm turn to A minor and F major, the fiddle takes the lead for a wistful travelling phrase, the lute picks single notes, then the band lifts back home}",
+   "styles": [
+    "A minor",
+    "road-weary warmth",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the whole band plays the signpost tune together, warm and full; the last bar strums straight back into the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

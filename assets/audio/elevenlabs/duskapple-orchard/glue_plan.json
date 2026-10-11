@@ -1,0 +1,47 @@
+{
+ "chunks": [
+  {
+   "song_id": "eBlNw362xOiFPIwC36uF",
+   "range": {
+    "start_ms": 70645,
+    "end_ms": 90645
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM with a slow half-time feel",
+    "C minor, the hometown lullaby turned dark",
+    "muted low pulse-wave lead singing long sighing notes",
+    "cold glassy celesta and glass-harmonica figures",
+    "sparse low sampled strings",
+    "one distant low bell toll at the start of each phrase",
+    "slow sustained synth bass",
+    "a scorched orchard under a fallen star at night, melancholy, hushed and beautiful",
+    "strong singable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "eBlNw362xOiFPIwC36uF",
+   "range": {
+    "start_ms": 5333,
+    "end_ms": 15333
+   }
+  }
+ ]
+}

@@ -1,0 +1,50 @@
+{
+  "title": "Kettle On (stock happy home interior, SNES register)",
+  "_note": "Stock HAPPY-A home interior (first use: Galehigh's Terrace Cottage). 90 BPM 4/4, F major, 24 bars: A (8) -> A' (8, climbs to D5, cadences home) -> B (8, Bb/Gm/Dm, the warm middle, ends on C to lead back). Lead is a soft reed (pulse50, clarinet-ish) opening on a bounced Vesper contour C-F-G then A-G-F settle. Pluck = harp/pizzicato eighth arps, celesta (bell) answers at phrase ends, oom-pah triangle bass bounce, brushed hat backbeat only. Five voices: a small, warm room.",
+  "era": "snes",
+  "tempo": 90,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "F major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse50",
+      "octave": 4,
+      "gain": 0.8,
+      "notes": "C4q F4q G4h | A4q G4e F4e F4h | D4q F4q A4q. G4e | G4h. rq | C4q F4q G4h | A4q Bb4e A4e G4q F4q | E4q G4q C5q. Bb4e | A4h. rq | C5q A4q F4q A4q | Bb4q. A4e G4h | G4q Bb4q D5q. C5e | A4h. rq | C4q F4q G4h | A4q Bb4e A4e G4q E4q | F4q G4e A4e G4q E4q | F4h. C4q | D5q. C5e Bb4h | A4q Bb4q C5h | D5q. C5e Bb4q G4q | A4w | Bb4q A4q G4q F4q | E4q F4q G4h | A4q G4q F4q D4q | E4h G4h"
+    },
+    {
+      "name": "harp",
+      "voice": "pluck",
+      "octave": 3,
+      "gain": 0.42,
+      "notes": "F3e C4e A3e C4e F4e C4e A3e C4e | F3e C4e A3e C4e F4e C4e A3e C4e | D3e A3e F3e A3e D4e A3e F3e A3e | C3e G3e E3e G3e C4e G3e E3e G3e | F3e C4e A3e C4e F4e C4e A3e C4e | Bb3e F4e D4e F4e Bb4e F4e D4e F4e | C3e G3e E3e G3e C4e G3e E3e G3e | F3e C4e A3e C4e F4e C4e A3e C4e | F3e C4e A3e C4e F4e C4e A3e C4e | Bb3e F4e D4e F4e C3e G3e E3e G3e | G3e D4e Bb3e D4e G4e D4e Bb3e D4e | F3e C4e A3e C4e F4e C4e A3e C4e | F3e C4e A3e C4e F4e C4e A3e C4e | Bb3e F4e D4e F4e C3e G3e E3e G3e | F3e C4e A3e C4e C3e G3e E3e G3e | F3e C4e A3e C4e F4e C4e A3e C4e | Bb3e F4e D4e F4e Bb4e F4e D4e F4e | F3e C4e A3e C4e F4e C4e A3e C4e | G3e D4e Bb3e D4e G4e D4e Bb3e D4e | D3e A3e F3e A3e D4e A3e F3e A3e | Bb3e F4e D4e F4e Bb4e F4e D4e F4e | C3e G3e E3e G3e C4e G3e E3e G3e | D3e A3e F3e A3e D4e A3e F3e A3e | C3e G3e E3e G3e C4e G3e E3e G3e"
+    },
+    {
+      "name": "celesta",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.32,
+      "notes": "rw | rw | rw | rh G5e E5e C5q | rw | rw | rw | rh A5e F5e C5q | rw | rw | rw | rh A5e F5e C5q | rw | rw | rw | rw | rw | rw | rw | rh A5e F5e D5q | rw | rw | rw | rw"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.85,
+      "notes": "F2q C3q F2q C3q | F2q C3q F2q C3q | D2q A2q D2q A2q | C2q G2q C2q G2q | F2q C3q F2q C3q | Bb2q F3q Bb2q F3q | C2q G2q C2q G2q | F2q C3q F2q C3q | F2q C3q F2q C3q | Bb2q F3q C2q G2q | G2q D3q G2q D3q | F2q C3q F2q C3q | F2q C3q F2q C3q | Bb2q F3q C2q G2q | F2q C3q C2q G2q | F2q C3q F2q C3q | Bb2q F3q Bb2q F3q | F2q C3q F2q C3q | G2q D3q G2q D3q | D2q A2q D2q A2q | Bb2q F3q Bb2q F3q | C2q G2q C2q G2q | D2q A2q D2q A2q | C2q G2q C2q G2q"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.3,
+      "_note": "Brushes: soft hat on 2 and 4.",
+      "notes": "rq hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat"
+    }
+  ]
+}

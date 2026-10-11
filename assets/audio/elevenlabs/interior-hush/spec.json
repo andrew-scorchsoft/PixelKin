@@ -1,0 +1,94 @@
+{
+ "id": "interior-hush",
+ "kind": "loop",
+ "where": "Stock interior (tender worry and grief at home) — first heard in the apprentice's house in Tinderwick after the omen, before the first Gleam",
+ "mood": "The Quiet After — the hometown lullaby played softly in a frightened house; the fire still lit, a music box that keeps trying to rise.",
+ "bpm": 90,
+ "beats_per_bar": 3,
+ "_note": "Same cue as the classic spec (assets/audio/midi/specs/interior-hush.json): 3/4 at quarter = 90 (the motif's grid), D minor with a relative F major bridge, the Vesper motif quoted slowly. Opening shape: a lone instrument breathing in.",
+ "motif": {
+  "strength": "medium"
+ },
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "90 BPM",
+  "3/4 time, slow and tender",
+  "D minor turning to warm F major",
+  "soft sampled piano lead almost alone, long held notes",
+  "quiet warm string pad underneath",
+  "a single music-box line that keeps reaching upward",
+  "intimate small-room home interior at night, tender and worried, the fire still warm",
+  "short warm room reverb, close and quiet",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "fade out",
+  "ritardando",
+  "ending",
+  "drums",
+  "epic orchestral",
+  "cathedral reverb",
+  "horror",
+  "despair",
+  "upbeat",
+  "ambient drone"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 3,
+   "text": "{a lone soft piano breathes in: the lullaby's rising lift played slowly and plainly on its own, then the strings arrive quietly under it}",
+   "styles": [
+    "solo piano opening",
+    "intimate hush"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 12,
+   "text": "{the hometown lullaby in D minor on soft piano, slow 3/4, long notes: a rising lift that settles home, tender and worried, warm strings beneath}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "tender"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 12,
+   "text": "{the lullaby again; a music-box line above it keeps trying to rise, each phrase climbing a step higher before falling back, the piano steady}",
+   "styles": [
+    "music-box counter-line",
+    "hopeful ache"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: the melody turns to warm F major, calm and composed like a steady voice in a quiet room, the music box reaching highest here, then easing back toward D minor}",
+   "styles": [
+    "F major",
+    "warm composure",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 12,
+   "text": "{the lullaby returns in D minor on piano and strings, gentle and close; the last bar rests on the A chord and leads straight back into the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

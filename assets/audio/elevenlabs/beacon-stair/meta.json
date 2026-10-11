@@ -1,0 +1,14 @@
+{
+ "id": "beacon-stair",
+ "kind": "loop",
+ "where": "The Tinderwick Beacon \u2014 all three floors of the wick-key ascent to the lantern room",
+ "mood": "The Beacon Stair \u2014 a bass that climbs a step every bar, a determined call, brass like banked embers and a bell glinting from the lamp far above.",
+ "duration": 81.998,
+ "loop_start": 4.574,
+ "seam": 0.219,
+ "bpm_est": 103.4,
+ "song_id": "lI3dWCKSFQrUGpoLJqYP",
+ "raw_ms": 78000,
+ "motif": null,
+ "lufs": -15.4
+}

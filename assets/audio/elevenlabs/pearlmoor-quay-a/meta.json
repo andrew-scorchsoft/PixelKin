@@ -1,0 +1,15 @@
+{
+ "id": "pearlmoor-quay-a",
+ "kind": "loop",
+ "where": "Pearlmoor Quay \u2014 the harbour town itself, home of the Tide Lumenary",
+ "mood": "A waltz on wet boardwalks under a cyan moon \u2014 the lamplit harbour at night, nets mended, boats rocking, the whole quay humming along.",
+ "duration": 90.41,
+ "loop_start": 7.198,
+ "seam": 0.476,
+ "bpm_est": 66.3,
+ "song_id": "IasZuoB1L4FXgjiqz54g",
+ "raw_ms": 86439,
+ "motif": null,
+ "warning": "seam 0.476 > 0.45: listen to the join, consider --reglue",
+ "lufs": -15.4
+}

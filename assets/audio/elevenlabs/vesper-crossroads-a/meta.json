@@ -1,0 +1,16 @@
+{
+ "id": "vesper-crossroads-a",
+ "kind": "loop",
+ "where": "Vesper Crossroads \u2014 the Lanternway hub where the five lit lanes meet (waystone, waystation inn, fingerpost)",
+ "mood": "The Signpost Tune \u2014 all roads meet here: a road-folk waystation band strikes up the home tune, lute, reed and tambourine on the front porch of the world.",
+ "duration": 93.454,
+ "loop_start": 4.174,
+ "seam": 0.32,
+ "bpm_est": 71.8,
+ "song_id": "tdBtNEOd5Skz7IljDgwO",
+ "raw_ms": 90645,
+ "motif": "medium",
+ "edits": [
+  "trimmed 4.650s of head"
+ ]
+}

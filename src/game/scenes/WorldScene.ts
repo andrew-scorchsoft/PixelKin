@@ -72,7 +72,7 @@ import { SAVE_SCHEMA_VERSION } from '@game/systems/save/types';
 import { SaveManager } from '@game/systems/save/SaveManager';
 import { SaveCodec } from '@game/systems/save/SaveCodec';
 import type { WorldSnapshot } from '@game/data/world/types';
-import { MAP_REGISTRY } from '@game/data/world/maps';
+import { MAP_REGISTRY, resolveMapMusic } from '@game/data/world/maps';
 import { LamplightMask } from '@game/systems/world/LamplightMask';
 import { Ambience } from '@game/systems/world/Ambience';
 import type { AmbientKinHandle } from '@game/systems/world/Ambience';
@@ -362,12 +362,20 @@ export class WorldScene extends Phaser.Scene {
     for (const id of ids) void loadCreatureSprite(this, id, 'front');
   }
 
-  /** Play (or resume) the current map's music loop. */
+  /**
+   * Play (or resume) the current map's music loop — its story-state variant if one
+   * applies (`music_when`). Walking through a door CROSSFADES (the room changes
+   * around the tune rather than jump-cutting), and a bed heard moments ago picks up
+   * where it left off (`resume`) — stepping out of the shop or a battle doesn't
+   * replay the town's intro.
+   */
   private playMapMusic(): void {
-    const music = this.map?.def.music;
+    if (!this.map) return;
+    const music = resolveMapMusic(this.map.def.id, this.map.def.music, (f) => this.flags.get(f));
     if (!music) return;
     const key = music.split('/').pop()?.replace(/\.[a-z0-9]+$/i, '') ?? 'map-music';
-    void this.music.play(key, music);
+    if (this.music.playingKey) void this.music.crossfade(key, music, 650, { resume: true });
+    else void this.music.play(key, music, { resume: true });
   }
 
   /** Snapshot the live world state into the canonical save shape. */

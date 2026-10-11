@@ -143,7 +143,7 @@ def build_inn():
     ]
     return mapdef("pale_vault_inn", "The Held Flame Inn", W, H, WARM_SET,
                   base, over, objects, warps, [], npcs,
-                  "assets/audio/music/pale-vault-glacier-b.mp3")
+                  "assets/audio/music/inn-rest.mp3")
 
 
 def build_home():
@@ -178,7 +178,7 @@ def build_home():
     ]
     return mapdef("pale_vault_home", "Glacier Cottage", W, H, WARM_SET,
                   base, over, objects, warps, [], npcs,
-                  "assets/audio/music/pale-vault-glacier-b.mp3")
+                  "assets/audio/music/interior-lamplit.mp3")
 
 
 if __name__ == "__main__":

@@ -220,7 +220,7 @@ def build_inn():
     ]
     return mapdef("nightreach_inn", "The Long Watch Inn", W, H, WARM_SET,
                   base, over, objects, warps, [], npcs,
-                  "assets/audio/music/nightreach-observatory-b.mp3")
+                  "assets/audio/music/inn-rest.mp3")
 
 
 def build_home():
@@ -255,7 +255,7 @@ def build_home():
     ]
     return mapdef("nightreach_home", "Watcher's Cottage", W, H, WARM_SET,
                   base, over, objects, warps, [], npcs,
-                  "assets/audio/music/nightreach-observatory-b.mp3")
+                  "assets/audio/music/interior-study.mp3")
 
 
 if __name__ == "__main__":

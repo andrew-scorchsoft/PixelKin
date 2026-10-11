@@ -1,0 +1,47 @@
+{
+ "chunks": [
+  {
+   "song_id": "lI3dWCKSFQrUGpoLJqYP",
+   "range": {
+    "start_ms": 58000,
+    "end_ms": 78000
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "104 BPM",
+    "D Dorian",
+    "plucked sampled bass climbing stepwise up the scale, a step higher every bar",
+    "determined pulse-wave lead melody",
+    "warm sampled brass stabs on the downbeats",
+    "a high bell glint at the top of each phrase",
+    "sampled 16-bit march snare on two and four with tom fills",
+    "climbing a lighthouse tower stair, steady resolve with a thread of tension",
+    "strong singable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "lI3dWCKSFQrUGpoLJqYP",
+   "range": {
+    "start_ms": 4615,
+    "end_ms": 14615
+   }
+  }
+ ]
+}

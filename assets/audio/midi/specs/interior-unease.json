@@ -1,0 +1,66 @@
+{
+  "title": "Cold Hearth - stock interior, SOMBER B (SNES register, sparse)",
+  "_note": "Stock interior cue for rooms where something is wrong - eerie-beautiful, the Hollowing's gentle permanent dark, a hearth gone cold (first use: Hollowfen Stillworks, the derelict null-works of the drained Coldfog Marches). C# minor shot through with whole-tone colour (A-augmented, B-augmented, G-augmented, a D#-F-A cluster before the loop). Only the Vesper motif's rising LEAP survives (G#3-C#4-D#4), and the settle is withheld - the guttering Hollowing treatment from the score bible. pulse25 lead faltering into long rests; a FLUTE glass-harmonica holds long tones in the gaps; a BELL music box runs eighths at the top of each half and WINDS DOWN bar by bar; low two-note STRINGS; sparse tri_bass; a distant clock tick (hat) and mechanical clank (tom); a NOISE breath of air at each phrase end. 66 BPM 4/4, 16 bars.",
+  "era": "snes",
+  "tempo": 66,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "C# minor (whole-tone colour)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.75,
+      "notes": "G#3q C#4q D#4h | rw | F4h. E4q | C#4w | A3q C#4q F#4h | A4h. G#4q | E4w | G4h F4h | G#4h. E4q | rw | F#4q A4q C#5h | B4h A4h | G#3q C#4q D#4h | F4h E4h | rw | D#4h. rq"
+    },
+    {
+      "name": "glass",
+      "voice": "flute",
+      "octave": 5,
+      "gain": 0.38,
+      "notes": "rw | G#4w | rw | A4h G4h | rw | rw | rh B4h | B4w | rw | C#5h. B4q | rw | D#5w | rw | rh C#5h | A4h. G#4q | rw"
+    },
+    {
+      "name": "musicbox",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.28,
+      "_note": "winds down across each half",
+      "notes": "C#5e E5e G#5e E5e C#5e E5e G#5e E5e | C#5e E5e G#5e E5e C#5q. E5e | C#5q F5q A5q F5q | C#5h F5h | rh C#5h | rw | rw | rh G5q rq | A4e C#5e E5e G#5e A4e C#5e E5e G#5e | A4e C#5e E5e G#5e A4q. C#5e | F#4q A4q C#5q A4q | G4h B4h | rh C#5h | rw | rw | rh. D#5q"
+    },
+    {
+      "name": "strings",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.26,
+      "notes": "C#3+G#3w | C#3+G#3w | A2+F3w | A2+F3w | F#2+C#3w | D#3+A3w | C#3+G#3w | B2+G3w | A2+G#3w | A2+G#3w | F#2+C#3w | G2+D#3w | C#3+G#3w | A2+F3w | F#2+C#3w | D#3+A3w"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.75,
+      "notes": "C#2w | rw | A1w | rw | F#1w | D#2w | C#2w | B1w | A1w | rw | F#1w | G1w | C#2w | A1w | F#1w | D#2w"
+    },
+    {
+      "name": "clock",
+      "voice": "drums",
+      "gain": 0.26,
+      "_note": "a distant tick on 2 and 4; a far-off clank (tom) every 4 bars",
+      "notes": "rq hat rq hat | rq hat rq hat | rq hat rq hat | tom hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | tom hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | tom hat rq hat | rq hat rq hat | rq hat rq hat | rq hat rq hat | tom hat rq hat"
+    },
+    {
+      "name": "air",
+      "voice": "noise",
+      "octave": 4,
+      "gain": 0.12,
+      "_note": "a breath of air leading into each phrase",
+      "notes": "rw | rw | rw | rh C4~E5h | rw | rw | rw | rh C4~E5h | rw | rw | rw | rh C4~E5h | rw | rw | rw | rh C4~E5h"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+ "id": "interior-unease",
+ "kind": "loop",
+ "where": "Stock interior (rooms where something is wrong; Hollowing-touched places) \u2014 first heard in Hollowfen Stillworks, Coldfog Marches",
+ "mood": "Cold Hearth \u2014 glass tones and a music box winding down in a room the warmth has left; eerie, beautiful, and strangely gentle.",
+ "duration": 87.159,
+ "loop_start": 8.978,
+ "seam": 0.057,
+ "bpm_est": 66.3,
+ "song_id": "9sawDtlmgVduCZYlYf1U",
+ "raw_ms": 81500,
+ "motif": null,
+ "lufs": -18.4,
+ "edits": [
+  "trimmed 1.750s of head"
+ ]
+}

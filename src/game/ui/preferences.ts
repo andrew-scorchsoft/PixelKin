@@ -134,6 +134,31 @@ export function getMusicVolume(): VolumeLevel {
   return musicVolume;
 }
 
+/**
+ * Overall volume (0..1) — the device shell's slider and Settings → Volume. It sits
+ * ABOVE the music/sfx levels: main.ts applies it as Phaser's global sound volume,
+ * so music, one-shots and ambience beds all follow it live. Music and Effects stay
+ * the relative mix under it.
+ */
+let masterVolume = 1;
+const masterVolumeSubscribers = new Set<() => void>();
+
+export function onMasterVolumeChange(cb: () => void): () => void {
+  masterVolumeSubscribers.add(cb);
+  return () => masterVolumeSubscribers.delete(cb);
+}
+
+export function setMasterVolume(v: number): void {
+  const next = Math.min(1, Math.max(0, Number.isFinite(v) ? v : 1));
+  if (next === masterVolume) return;
+  masterVolume = next;
+  for (const cb of masterVolumeSubscribers) cb();
+}
+
+export function getMasterVolume(): number {
+  return masterVolume;
+}
+
 // ---------------------------------------------------------------- music style --
 
 /**

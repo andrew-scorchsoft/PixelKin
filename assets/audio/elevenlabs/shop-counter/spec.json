@@ -1,0 +1,97 @@
+{
+ "id": "shop-counter",
+ "kind": "loop",
+ "where": "Every shop — the Tinderwick General Store, the Pearlmoor Chandlery, the Galehigh Kite-Maker's and every counter after",
+ "mood": "The Counter Bell — a bouncy little shop tune with a doorbell for a hook; browse as long as you like.",
+ "bpm": 116,
+ "beats_per_bar": 4,
+ "motif": null,
+ "_note": "Matches the classic: 116 BPM, 4/4 with a light swing, B-flat major, AABA. The doorbell 'ding-ding' (a bright falling third) is the hook. Small room: four or five instruments, close and dry-ish, brushes only. | Re-roll 1: the first take obeyed 'a little gap the doorbell answers' as stop-time, near-silent for ~1.5 s every two bars; the briefs now keep the bass and pizzicato bouncing under the bell.",
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "116 BPM",
+  "B-flat major",
+  "4/4 with a light bouncy swing, a continuous friendly groove that keeps moving",
+  "cheerful marimba lead melody, a touch comic",
+  "pizzicato strings bouncing on the offbeats",
+  "music box and a bright doorbell ding-ding figure as the hook",
+  "bouncy plucked sampled bass hopping root and fifth",
+  "soft brushes and a little tambourine",
+  "small cosy village shop interior, close and intimate, short warm room reverb",
+  "strong singable melody, instantly hummable and pleasant on repeat",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "fade out",
+  "ritardando",
+  "ending",
+  "loud drums",
+  "drum kit",
+  "electric guitar",
+  "heavy sub bass",
+  "orchestral",
+  "hall reverb",
+  "melancholy",
+  "ambient drone",
+  "stop-time breaks",
+  "silence",
+  "sparse"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{the shop door opens: the doorbell rings its bright ding-ding over the bass and pizzicato already bouncing, and a quick marimba pickup hops straight into the tune}",
+   "styles": [
+    "doorbell opening",
+    "welcoming"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the bouncy shop tune on marimba in B-flat major, light swing over a steady bouncing bass; at each phrase end the doorbell rings ding-ding while the bass and pizzicato keep hopping}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "bouncy"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the same tune again with pizzicato strings answering and a music-box sparkle on top, the bass bouncing all the way through, still small and friendly}",
+   "styles": [
+    "pizzicato counter-melody",
+    "slightly fuller"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: browsing the shelves, a sly tiptoe in E-flat major with staccato pizzicato and a comic little run, the bell rings a question, then it hops home}",
+   "styles": [
+    "E-flat major",
+    "playful tiptoe",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the shop tune returns in B-flat major with its doorbell answers; the last bar hops straight back into the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

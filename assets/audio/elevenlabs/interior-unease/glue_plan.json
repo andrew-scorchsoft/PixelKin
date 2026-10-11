@@ -1,0 +1,48 @@
+{
+ "chunks": [
+  {
+   "song_id": "9sawDtlmgVduCZYlYf1U",
+   "range": {
+    "start_ms": 61500,
+    "end_ms": 81500
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "66 BPM",
+    "C# minor with whole-tone and augmented chord colour",
+    "glass harmonica tones holding long eerie notes",
+    "low sustained string chords",
+    "a music box slowly winding down",
+    "a distant mechanical tick and soft clank, like old machinery",
+    "a breath of air between phrases",
+    "an abandoned works where the hearth has gone cold, eerie and beautiful, sympathetic and gentle",
+    "short room reverb, close and quiet",
+    "a slow haunting melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "9sawDtlmgVduCZYlYf1U",
+   "range": {
+    "start_ms": 7273,
+    "end_ms": 17273
+   }
+  }
+ ]
+}

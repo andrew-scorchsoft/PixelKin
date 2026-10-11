@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT, COLORS, RENDER_SCALE } from '@game/config';
 import { GAME_VERSION_LABEL } from '@game/version';
+import { getMasterVolume, onMasterVolumeChange } from '@game/ui/preferences';
 import { BootScene } from '@game/scenes/BootScene';
 import { PreloadScene } from '@game/scenes/PreloadScene';
 import { SplashScene } from '@game/scenes/SplashScene';
@@ -53,6 +54,14 @@ const config: Phaser.Types.Core.GameConfig = {
 document.title = `PixelKin ${GAME_VERSION_LABEL}`;
 
 const game = new Phaser.Game(config);
+
+// Overall volume rides Phaser's global sound volume, so music, one-shots and
+// ambience beds all follow the shell slider / Settings → Volume live.
+const applyMasterVolume = (): void => {
+  game.sound.volume = getMasterVolume();
+};
+applyMasterVolume();
+onMasterVolumeChange(applyMasterVolume);
 
 // Dev-only handle so automated verification (and console poking) can read scene
 // state. Stripped from production builds (import.meta.env.DEV is compile-time).

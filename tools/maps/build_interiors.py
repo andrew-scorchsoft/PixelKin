@@ -225,7 +225,7 @@ def build_inn():
     ]
     return mapdef("pearlmoor_inn", "Pearlmoor Quayside Inn", W, H, WARM_SET,
                   base, over, objects, warps, triggers, npcs,
-                  "assets/audio/music/dimglass-coast-a.mp3")
+                  "assets/audio/music/inn-rest.mp3")
 
 
 def build_crossroads_inn():
@@ -291,7 +291,7 @@ def build_crossroads_inn():
     ]
     return mapdef("crossroads_inn", "Vesper Crossroads Inn", W, H, WARM_SET,
                   base, over, objects, warps, triggers, npcs,
-                  "assets/audio/music/tinderwick-a.mp3")
+                  "assets/audio/music/inn-rest.mp3")
 
 
 # =============================================================================
@@ -391,7 +391,7 @@ def build_lifting_house():
     ]
     return mapdef("pearlmoor_lifting_house", "The Lifting House", W, H, WARM_SET,
                   base, over, objects, warps, triggers, npcs,
-                  "assets/audio/music/dimglass-coast-a.mp3")
+                  "assets/audio/music/interior-sunny.mp3")
 
 
 # =============================================================================
@@ -491,7 +491,7 @@ def all_maps():
         # id + script.take_satchel -> flag:has_satchel). The store moved too: its
         # door is now (6,16) down the lower-left lane, so we land on (6,17).
         build_shop("tinderwick_shop", "Tinderwick General Store",
-                   "assets/audio/music/tinderwick-b.mp3", ("tinderwick", 6, 17),
+                   "assets/audio/music/shop-counter.mp3", ("tinderwick", 6, 17),
                    "sign.tinderwick_shop_wares", "shopkeeper", "npc.tinderwick_shopkeeper",
                    npcs_override=[
                        {"id": "shopkeeper_early", "at": "counter", "facing": "down",
@@ -518,7 +518,7 @@ def all_maps():
         # the dais: catch-first -> the wick-key errand -> "meet me at the lantern"
         # -> the post-Gleam festival line. Pure flag-pair NPC swaps.
         build_lumenary("tinderwick_lumenary", "Tinderwick Lumenary",
-                       "assets/audio/music/tinderwick-a.mp3", ("tinderwick", 19, 8),
+                       "assets/audio/music/lumenary-hall.mp3", ("tinderwick", 19, 8),
                        None, "sign.tinderwick_lumenary_inside",
                        "brisa", "npc.brisa_tallow",
                        npcs_override=[
@@ -546,7 +546,7 @@ def all_maps():
         # (`flag:q_south_bell_rung`, blocked in Reyl's own voice), and Reyl
         # stages the quest from the dais: hook -> waiting -> ready -> festival.
         build_lumenary("pearlmoor_lumenary", "Pearlmoor Tide Lumenary",
-                       "assets/audio/music/dimglass-coast-a.mp3", ("pearlmoor_quay", 14, 7),
+                       "assets/audio/music/lumenary-hall.mp3", ("pearlmoor_quay", 14, 7),
                        "script.lumenary_pearlmoor", "sign.pearlmoor_lumenary",
                        "reyl", "npc.reyl_wash",
                        gate_flag="flag:q_south_bell_rung",
@@ -572,7 +572,7 @@ def all_maps():
                             "requires_flag": "gleam:tide"},
                        ]),
         build_shop("pearlmoor_shop", "Pearlmoor Chandlery",
-                   "assets/audio/music/dimglass-coast-a.mp3", ("pearlmoor_quay", 5, 12),
+                   "assets/audio/music/shop-counter.mp3", ("pearlmoor_quay", 5, 12),
                    "sign.pearlmoor_shop", "chandler", "script.shop_pearlmoor",
                    kit_script="script.shop_kit_pearlmoor", kit_flag="flag:pearlmoor_kit",
                    chandlery=True),

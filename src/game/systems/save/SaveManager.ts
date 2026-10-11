@@ -62,6 +62,8 @@ export interface Settings {
   textSpeed?: 'cosy' | 'brisk' | 'instant';
   /** Battle wait/tween pace: 'cosy' = full, 'swift' = half-length. */
   battlePace?: 'cosy' | 'swift';
+  /** Overall volume 0..1 (the shell slider / Settings → Volume); unset = 1. */
+  masterVolume?: number;
   /** Stepped master volume for background music (OFF/LOW/MID/FULL). */
   musicVolume?: 'off' | 'low' | 'mid' | 'full';
   /** Soundtrack style: the remastered score (default) or the classic chip renders. */
@@ -85,6 +87,7 @@ export const DEFAULT_SETTINGS: Settings = {
   alwaysRun: false,
   textSpeed: 'cosy',
   battlePace: 'cosy',
+  masterVolume: 1,
   musicVolume: 'full',
   sfxVolume: 'full',
   cannotDie: false,

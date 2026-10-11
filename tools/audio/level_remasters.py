@@ -33,7 +33,12 @@ TARGET_LUFS = -15.0
 # Deliberately sparse cues (a lone drone, a held-breath cold open) would sound
 # pushed at the house level: they sit a little under it, still within reach of a
 # neighbouring cue so a crossfade never drops away.
-QUIET = {"coldopen-foreboding": -19.0, "penumbra-ring-a": -18.0, "coldfog-marches-a": -18.0}
+QUIET = {"coldopen-foreboding": -19.0, "penumbra-ring-a": -18.0, "coldfog-marches-a": -18.0,
+         # The stock indoor set: stepping through a door should feel like the room got
+         # smaller, so rooms sit under the outdoor house level (a crossfade, not a drop).
+         "interior-hearth": -16.5, "interior-sunny": -16.5, "interior-lamplit": -17.0,
+         "interior-study": -17.0, "interior-hush": -18.0, "interior-unease": -18.0,
+         "shop-counter": -16.0, "inn-rest": -16.5, "lumenary-hall": -16.0}
 TOLERANCE = 0.5
 CEILING = 0.89  # ~ -1 dBFS sample peak for the safety limiter
 

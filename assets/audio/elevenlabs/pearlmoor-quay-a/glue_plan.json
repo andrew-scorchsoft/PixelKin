@@ -1,0 +1,49 @@
+{
+ "chunks": [
+  {
+   "song_id": "1W1cJmYIMRB0JHWkkAhN",
+   "range": {
+    "start_ms": 66439,
+    "end_ms": 86439
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "100 BPM",
+    "F major",
+    "3/4 waltz time at a moderate 100 BPM, three steady beats in every bar",
+    "sampled accordion-like reed lead carrying a warm lilting waltz melody",
+    "mandolin-style tremolo strumming the waltz chords",
+    "glockenspiel buoy-bells ringing on phrase ends",
+    "rocking oom-pah-pah waltz bass like a moored boat",
+    "a playful woodwind figure crying like gulls between phrases",
+    "soft brushed snare on the downbeat, the creak of the boardwalk",
+    "lamplit seaside harbour town at night, cosy, salt-aired and gently bustling",
+    "strong singable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "1W1cJmYIMRB0JHWkkAhN",
+   "range": {
+    "start_ms": 7200,
+    "end_ms": 17200
+   }
+  }
+ ]
+}

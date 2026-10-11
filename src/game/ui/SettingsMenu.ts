@@ -144,12 +144,15 @@ export class SettingsMenu {
         enabled: this.settings.shell !== 'plain',
       },
       { label: `Sound: ${this.settings.muted ? 'Muted' : 'On'}`, value: 'mute' },
+      { label: `Volume: ${Math.round(ShellManager.masterVolume * 100)}%`, value: 'volume' },
       { label: `Pace: ${this.settings.alwaysRun ? 'Always run' : 'Walk'}`, value: 'run' },
       { label: `Text: ${TEXT_SPEED_LABEL[this.settings.textSpeed ?? 'cosy']}`, value: 'text' },
       { label: `Battle: ${BATTLE_PACE_LABEL[this.settings.battlePace ?? 'cosy']}`, value: 'battle' },
       { label: `Music: ${VOLUME_LABEL[this.settings.musicVolume ?? 'full']}`, value: 'music' },
       { label: `Soundtrack: ${getMusicStyle() === 'classic' ? 'Classic' : 'Remastered'}`, value: 'style' },
-      { label: `Sfx: ${VOLUME_LABEL[this.settings.sfxVolume ?? 'full']}`, value: 'sfx' },
+      // Effects relative to the music (both sit under Volume). Full is already
+      // mixed a little under the score's loud passages.
+      { label: `Effects: ${VOLUME_LABEL[this.settings.sfxVolume ?? 'full']}`, value: 'sfx' },
       { label: `Cannot die: ${this.settings.cannotDie ? 'On' : 'Off'}`, value: 'nodie' },
       { label: `Ambient motion: ${getAmbientMotion() ? 'On' : 'Off'}`, value: 'motion' },
       { label: 'Backup / restore', value: 'backup' },
@@ -302,6 +305,17 @@ export class SettingsMenu {
         this.settings = { ...this.settings, battlePace: next };
         setBattlePace(next);
         await SaveManager.saveSettings(this.settings);
+        void this.deps.sfx?.play('ui-toggle');
+        return true;
+      }
+      case 'volume': {
+        // 100 → 80 → … → 0 → 100. The deck slider (portrait) sets any value; this
+        // steps it for keyboard/landscape players. Via ShellManager so both agree.
+        const steps = [1, 0.8, 0.6, 0.4, 0.2, 0];
+        const cur = ShellManager.masterVolume;
+        const next = steps.find((s) => s < cur - 0.001) ?? 1;
+        await ShellManager.setMasterVolume(next);
+        this.settings = { ...this.settings, masterVolume: next };
         void this.deps.sfx?.play('ui-toggle');
         return true;
       }

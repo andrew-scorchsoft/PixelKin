@@ -1,0 +1,51 @@
+{
+  "title": "Tinderwick Beacon - The Beacon Stair (SNES register)",
+  "_note": "Tower-climb cue for all three floors of the Tinderwick Beacon (the wick-key ascent, wick-tender sight trainers on the stairs, Brisa's bond-test at the lantern). The STAIR is the bass: a four-note stepwise climb played twice per bar, each bar starting one step higher (D-E-F-G, then on), so the music literally ascends; the bridge climbs higher still (Bb-C-D) before an A-major landing pulls back to the next flight. Determined pulse25 lead calls from bar 1 beat 3 (a rising fourth). Warm Ember BRASS stabs on the downbeats, a BELL glint at each phrase top (the lamp far above), a march snare with tom fills at each landing. snes era. 104 BPM, 4/4, D Dorian (B natural is the colour; A major as the pull home). 16 bars. Steady resolve with a thread of tension.",
+  "era": "snes",
+  "tempo": 104,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "D Dorian",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 5,
+      "gain": 1.0,
+      "_note": "The call: A4->D5 rising fourth over the first step, answered by the Dorian B natural on the G landing. A' climbs higher; B peaks on A5 at bar 11; last bar B4->C#5 leans back into the call.",
+      "notes": "rh A4q D5q | E5h. D5q | C5q A4q F4q A4q | B4h G4h | rh A4q D5q | E5q F5q G5q E5q | F5h E5q C5q | E5h. C#5q | D5h F5h | E5h G5h | A5h. F5q | G5q F5q E5q C#5q | rh A4q D5q | E5h. D5q | C5q A4q F4q A4q | B4h C#5h"
+    },
+    {
+      "name": "brass",
+      "voice": "brass",
+      "octave": 3,
+      "gain": 0.42,
+      "_note": "Warm Ember brass stabs: one on each downbeat through the A sections, two per bar in the bridge (rising energy), a pushed pair at each landing bar.",
+      "notes": "D3+F3+A3e re rh rq | E3+G3+B3e re rh rq | F3+A3+C4e re rh rq | G3+B3+D4e re rq G3+B3+D4e re rq | D3+F3+A3e re rh rq | E3+G3+B3e re rh rq | F3+A3+C4e re rh rq | A3+C#4+E4e re rq A3+C#4+E4e re rq | Bb2+D3+F3e re rq Bb2+D3+F3e re rq | C3+E3+G3e re rq C3+E3+G3e re rq | D3+F3+A3e re rq D3+F3+A3e re rq | A3+C#4+E4e re rq A3+C#4+E4e re A3+C#4+E4e re | D3+F3+A3e re rh rq | E3+G3+B3e re rh rq | F3+A3+C4e re rh rq | G3+B3+D4e re rq A3+C#4+E4e re rq"
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 6,
+      "gain": 0.35,
+      "_note": "The lamp far above: a single high bell glint at each phrase top (bars 4, 8, 11, 16). Otherwise silent.",
+      "notes": "rw | rw | rw | rh rq D6q | rw | rw | rw | rh rq E6q | rw | rw | rq A6q rh | rw | rw | rw | rw | rh rq D6q"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.9,
+      "_note": "THE STAIR. Four rising steps, twice per bar, each bar one step higher: D, E, F, G | D, E, F, A(major) | Bb, C, D (the high flight), A | D, E, F, G->A. Last bar climbs G-A-B-C then A-B-C#-E, leaning back to the D downbeat.",
+      "notes": "D2e E2e F2e G2e D2e E2e F2e G2e | E2e F2e G2e A2e E2e F2e G2e A2e | F2e G2e A2e B2e F2e G2e A2e B2e | G2e A2e B2e C3e G2e A2e B2e C3e | D2e E2e F2e G2e D2e E2e F2e G2e | E2e F2e G2e A2e E2e F2e G2e A2e | F2e G2e A2e B2e F2e G2e A2e B2e | A2e B2e C#3e E3e A2e B2e C#3e E3e | Bb2e C3e D3e E3e Bb2e C3e D3e E3e | C3e D3e E3e F3e C3e D3e E3e F3e | D3e E3e F3e G3e D3e E3e F3e G3e | A2e B2e C#3e E3e A2e B2e C#3e E3e | D2e E2e F2e G2e D2e E2e F2e G2e | E2e F2e G2e A2e E2e F2e G2e A2e | F2e G2e A2e B2e F2e G2e A2e B2e | G2e A2e B2e C3e A2e B2e C#3e E3e"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.5,
+      "_note": "A steady march: kick on 1 and 3, snare on 2 and 4, hat eighths; a tom run up into each landing (bars 4, 8, 12) and a crash on the first step of the loop.",
+      "notes": "e kick+crash hat snare hat kick hat snare hat | kick hat snare hat kick hat snare hat | kick hat snare hat kick hat snare hat | kick hat snare hat kick tom tom tom | kick hat snare hat kick hat snare hat | kick hat snare hat kick hat snare hat | kick hat snare hat kick hat snare hat | kick hat snare hat kick tom tom tom | kick+crash hat snare hat kick hat snare hat | kick hat snare hat kick hat snare hat | kick hat snare hat kick hat snare hat | kick hat snare hat tom tom tom tom | kick hat snare hat kick hat snare hat | kick hat snare hat kick hat snare hat | kick hat snare hat kick hat snare hat | kick hat snare hat tom tom tom tom"
+    }
+  ]
+}

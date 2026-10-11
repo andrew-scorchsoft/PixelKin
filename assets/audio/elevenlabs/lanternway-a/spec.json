@@ -1,0 +1,93 @@
+{
+ "id": "lanternway-a",
+ "kind": "loop",
+ "where": "The Lanternway — the four lit country lanes between the rim towns and the Vesper Crossroads",
+ "mood": "The Walking Tune — the safe road home: a strolling shuffle of flute and reed, walking pizzicato and brushes, lamplight glinting on every post.",
+ "bpm": 114,
+ "beats_per_bar": 4,
+ "_note": "Classic twin: assets/audio/midi/specs/lanternway-a.json (120 BPM, 4/4, G major, 32-bar AABA, the Vesper motif in bouncing form). Unconditioned (tempo matters); 114 BPM and a swung stroll so it reads cosier than dimglass-coast-a (120 BPM straight-eighth road with harp and string pad).",
+ "motif": null,
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "114 BPM",
+  "G major",
+  "gentle swung shuffle, an unhurried strolling feel",
+  "sampled flute and soft reed lead playing the tune together",
+  "walking pizzicato string bass",
+  "soft brushes on the snare with tambourine on the offbeats",
+  "small bright bell glints like lamplight on each lamp-post",
+  "warm reed organ chords",
+  "cosy homely country lane at night between lit lamps, safe and contented",
+  "melody built on the hometown tune's rising lift, bouncing and skipping",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "fade out",
+  "ritardando",
+  "ending",
+  "drum and bass",
+  "heavy sub bass",
+  "electric guitar",
+  "epic orchestral",
+  "string pad",
+  "melancholy"
+ ],
+ "sections": [
+  {
+   "name": "Stepping Out",
+   "bars": 2,
+   "text": "{the walking pizzicato bass and brushes start the stroll at once, a bell glint, and the flute and reed begin the tune on the second bar}",
+   "styles": [
+    "stroll begins straight away",
+    "homely"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the walking tune: a bouncing, skipping melody on flute and reed, hummable and contented, over the swung walking bass}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "strolling"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the same melody again, the reed taking a harmony under the flute and bells glinting on the offbeats like passing lamps}",
+   "styles": [
+    "bell counter-melody",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a gentle turn through C major and E minor, the reed alone with a warm skipping phrase, the brushes lighter, then a hop back toward the tune}",
+   "styles": [
+    "C major and E minor",
+    "warm",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the walking tune returns, flute and reed together, warm and full; the last bar skips straight back into the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

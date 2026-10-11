@@ -1,0 +1,43 @@
+{
+  "title": "Lamplit Rooms (stock neutral home interior, SNES register)",
+  "_note": "Stock NEUTRAL-A everyday house (first use: Pale Vault's Glacier Cottage). 90 BPM 4/4, G major with an E-minor lean, 24 bars: A (8) -> A' (8) -> B (8, E minor / C / D, ends on D to lead home). A conversational bed that never pulls focus: the harp/EP lead (pluck) sings short phrases and leaves the 4th bar of each phrase empty for a sparse flute answer; light strings pad; walking plucked bass (root-third-fifth-approach). Four voices.",
+  "era": "snes",
+  "tempo": 90,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "G major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pluck",
+      "octave": 4,
+      "gain": 0.85,
+      "notes": "B4q. A4e G4h | E4q G4q A4h | B4q D5q C5q. B4e | A4h rh | B4q. A4e G4h | E4q D4q E4q G4q | A4q B4q A4q. G4e | G4h rh | D5q. C5e B4h | C5q B4q A4h | B4q A4q G4q. E4e | F#4h rh | G4q. A4e B4h | C5q B4q A4q G4q | E4q F#4q A4q. G4e | G4h rh | E4q G4q B4h | A4q. G4e F#4h | G4q. F#4e E4q D4q | E4h rh | C5q B4q A4q G4q | A4h B4h | G4q. F#4e E4q G4q | F#4h D4h"
+    },
+    {
+      "name": "pad",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.25,
+      "notes": "G3+B3+D4w | E3+G3+B3h C3+E3+G3h | G3+B3+D4h C3+E3+G3h | D3+F#3+A3w | G3+B3+D4w | E3+G3+B3h C3+E3+G3h | A3+C4+E4h D3+F#3+A3h | G3+B3+D4w | G3+B3+D4w | A3+C4+E4w | E3+G3+B3w | D3+F#3+A3w | G3+B3+D4w | C3+E3+G3w | E3+G3+B3h D3+F#3+A3h | G3+B3+D4w | E3+G3+B3w | D3+F#3+A3w | E3+G3+B3h B2+D3+F#3h | E3+G3+B3w | C3+E3+G3w | D3+F#3+A3w | E3+G3+B3h C3+E3+G3h | D3+F#3+A3w"
+    },
+    {
+      "name": "bass",
+      "voice": "bass",
+      "octave": 2,
+      "gain": 0.55,
+      "notes": "G2q B2q D3q F2q | E2q B2q C2q G2q | G2q D3q C2q G2q | D2q F#2q A2q Ab2q | G2q B2q D3q F2q | E2q B2q C2q G2q | A2q E3q D2q A2q | G2q B2q D3q E3q | G2q B2q D3q Bb2q | A2q C3q E3q F2q | E2q G2q B2q Eb2q | D2q F#2q A2q Ab2q | G2q B2q D3q C#2q | C2q E2q G2q F2q | E2q B2q D2q A2q | G2q B2q D3q F2q | E2q G2q B2q Eb2q | D2q F#2q A2q F2q | E2q B2q B2q F#3q | E2q G2q B2q C#2q | C2q E2q G2q Eb2q | D2q F#2q A2q F2q | E2q B2q C2q G2q | D2q F#2q A2q Ab2q"
+    },
+    {
+      "name": "flute",
+      "voice": "flute",
+      "octave": 5,
+      "gain": 0.45,
+      "notes": "rw | rw | rw | rh F#5e E5e D5q | rw | rw | rw | rh B4e D5e G5q | rw | rw | rw | rh A5e F#5e D5q | rw | rw | rw | rh G5e D5e B4q | rw | rw | rw | rh G5e F#5e E5q | rw | rw | rw | rw"
+    }
+  ]
+}

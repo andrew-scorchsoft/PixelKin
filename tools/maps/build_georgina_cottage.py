@@ -92,7 +92,7 @@ def build_cottage():
     ]
     return mapdef("georgina_cottage", "Georgina's Cottage", W, H, WARM_SET,
                   base, over, objects, warps, triggers, npcs,
-                  "assets/audio/music/lowleaf-hollow-b.mp3")
+                  "assets/audio/music/interior-sunny.mp3")
 
 
 if __name__ == "__main__":

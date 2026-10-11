@@ -497,7 +497,7 @@ m = {
          "requires_flag": "flag:q_post_letters_all", "hidden_when_flag": "flag:q_post_letters_done"},
     ],
     "gates": [],
-    "music": "assets/audio/music/tinderwick-a.mp3",
+    "music": "assets/audio/music/vesper-crossroads-a.mp3",
 }
 
 if __name__ == "__main__":

@@ -128,7 +128,7 @@ def build_inn():
     ]
     return mapdef("galehigh_inn", "The Steady Gust Inn", W, H, WARM_SET,
                   base, over, objects, warps, [], npcs,
-                  "assets/audio/music/galehigh-terraces-b.mp3")
+                  "assets/audio/music/inn-rest.mp3")
 
 
 def build_home():
@@ -163,7 +163,7 @@ def build_home():
     ]
     return mapdef("galehigh_home", "Terrace Cottage", W, H, WARM_SET,
                   base, over, objects, warps, [], npcs,
-                  "assets/audio/music/galehigh-terraces-b.mp3")
+                  "assets/audio/music/interior-hearth.mp3")
 
 
 def build_kitemaker():
@@ -205,7 +205,7 @@ def build_kitemaker():
     ]
     return mapdef("galehigh_kitemaker", "The Kite-Maker's", W, H, WARM_SET,
                   base, over, objects, warps, [], npcs,
-                  "assets/audio/music/galehigh-terraces-b.mp3")
+                  "assets/audio/music/shop-counter.mp3")
 
 
 if __name__ == "__main__":

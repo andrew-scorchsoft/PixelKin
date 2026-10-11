@@ -1,0 +1,90 @@
+{
+ "id": "beacon-stair",
+ "kind": "loop",
+ "where": "The Tinderwick Beacon — all three floors of the wick-key ascent to the lantern room",
+ "mood": "The Beacon Stair — a bass that climbs a step every bar, a determined call, brass like banked embers and a bell glinting from the lamp far above.",
+ "bpm": 104,
+ "beats_per_bar": 4,
+ "_note": "Classic twin: assets/audio/midi/specs/beacon-stair.json (104 BPM, 4/4, D Dorian, rising stair bass, 16 bars). Unconditioned: the tempo is the point.",
+ "motif": null,
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "104 BPM",
+  "D Dorian",
+  "plucked sampled bass climbing stepwise up the scale, a step higher every bar",
+  "determined pulse-wave lead melody",
+  "warm sampled brass stabs on the downbeats",
+  "a high bell glint at the top of each phrase",
+  "sampled 16-bit march snare on two and four with tom fills",
+  "climbing a lighthouse tower stair, steady resolve with a thread of tension",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "fade out",
+  "ritardando",
+  "ending",
+  "drum and bass",
+  "heavy sub bass",
+  "electric guitar",
+  "horror",
+  "lullaby"
+ ],
+ "sections": [
+  {
+   "name": "First Step",
+   "bars": 2,
+   "text": "{the climbing bass figure sets off at once with the march snare, one brass stab, and the lead's bold rising call arrives in the second bar}",
+   "styles": [
+    "the climb begins immediately",
+    "purposeful"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the stair theme: the bass climbs a step every bar under a determined, hummable pulse-wave melody, brass stabs on each downbeat}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "ascending momentum"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the same melody again with a bell counter-line glinting at the phrase tops and the brass answering the lead, a little fuller}",
+   "styles": [
+    "bell counter-melody",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: the higher flight, the harmony climbs through B-flat and C major, the lead reaches its highest notes, tension tightens toward an A major landing}",
+   "styles": [
+    "rising tension",
+    "higher register",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the stair theme returns in full stride; the last bar's climbing bass leads straight back into the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

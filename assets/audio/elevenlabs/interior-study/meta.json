@@ -1,0 +1,16 @@
+{
+ "id": "interior-study",
+ "kind": "loop",
+ "where": "Stock interior (thoughtful rooms: workshops, studies, star-chart cottages) \u2014 first heard in Nightreach's Watcher's Cottage",
+ "mood": "Charts and Lenses \u2014 a ticking, curious little room of ground glass and inked stars, gently absorbed in its work.",
+ "duration": 72.794,
+ "loop_start": 2.786,
+ "seam": 0.201,
+ "bpm_est": 95.7,
+ "song_id": "35KusWM7VTrzhXMdJyAR",
+ "raw_ms": 83000,
+ "motif": null,
+ "edits": [
+  "trimmed 6.200s of head"
+ ]
+}

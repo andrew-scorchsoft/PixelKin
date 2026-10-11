@@ -631,3 +631,110 @@ body.pk-controls-unavailable .pk-controls-help {
   background: var(--shell-button-press);
   color: #000;
 }
+
+/* --------------------------------------------------------------- volume slider --
+   Overall volume, at the TOP-LEFT of the portrait device deck — the mirror of the
+   "Controls" link at the top-right, in the dead space just under the screen that no
+   thumb reaches (same top maths). Portrait + device shell only: landscape has the
+   size toggle in that corner, overlay has no deck, and both use Settings → Volume. */
+.pk-volume {
+  display: none;
+  position: fixed;
+  z-index: 6;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px 3px 6px;
+  background: rgba(11, 16, 38, 0.82);
+  border: 1px solid var(--shell-accent);
+  border-radius: 999px;
+  opacity: 0.8;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+.pk-volume:active,
+.pk-volume:hover {
+  opacity: 1;
+}
+/* A little pixel speaker drawn in CSS (box + cone); dims to a crossed-out look at 0. */
+.pk-volume-ico {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  flex: none;
+}
+.pk-volume-ico::before {
+  content: '';
+  position: absolute;
+  left: 1px;
+  top: 4px;
+  width: 3px;
+  height: 4px;
+  background: var(--shell-accent);
+}
+.pk-volume-ico::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 1px;
+  border-style: solid;
+  border-width: 5px 5px 5px 0;
+  border-color: transparent var(--shell-accent) transparent transparent;
+}
+.pk-volume-off .pk-volume-ico {
+  opacity: 0.45;
+}
+.pk-volume input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 84px;
+  height: 20px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  touch-action: none;
+}
+.pk-volume input[type='range']:focus {
+  outline: none;
+}
+.pk-volume input[type='range']::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(to right, var(--shell-accent) var(--pk-vol, 100%), rgba(255, 255, 255, 0.18) var(--pk-vol, 100%));
+}
+.pk-volume input[type='range']::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.18);
+}
+.pk-volume input[type='range']::-moz-range-progress {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--shell-accent);
+}
+.pk-volume input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -5px;
+  border-radius: 3px;
+  background: var(--shell-button);
+  border: 1px solid var(--shell-accent);
+}
+.pk-volume input[type='range']::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  background: var(--shell-button);
+  border: 1px solid var(--shell-accent);
+}
+@media (orientation: portrait) {
+  body.pk-shell-device .pk-volume {
+    display: flex;
+    --pk-top: max(env(safe-area-inset-top), 8px);
+    --pk-bottom: clamp(calc(108px * var(--pk-cs) + 36px), 34vh, 320px);
+    /* Centred on the help link's row (it sits 30px under the screen and is ~19px
+       tall; this pill is ~28px, so lift it 4px to share the centre line). */
+    top: calc(var(--pk-top) + min(100vw, calc(100dvh - var(--pk-top) - var(--pk-bottom)) * 3 / 2) * 2 / 3 + 26px);
+    left: max(env(safe-area-inset-left), 12px);
+  }
+}

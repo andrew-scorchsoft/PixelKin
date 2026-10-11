@@ -1,0 +1,54 @@
+{
+  "title": "Shop Counter - The Counter Bell",
+  "_note": "Game-wide SHOP interior cue (every chandlery, general store and kite-maker's). snes register, small-room: 5 voices. 116 BPM, 4/4 with a light SWING written as quarter-triplet + eighth-triplet pairs, Bb major. Form AABA, 32 bars (~66s): A = the bouncy counter tune (F-G-Bb-D lift, Cm-F7 turn home); every 4-bar phrase ends in a gap the DOORBELL fills with its bright falling 'ding-ding' (F5-D5) - the hook. B = an Eb-major middle that wanders the shelves (D7 to Gm, C7 to F7) and rings the bell upward as a question. The last bar walks D4-E4 chromatically into the bar-1 F4. Pluck = pizzicato/marimba off-beat comp; tri_bass bouncy staccato root-fifth; brushes only.",
+  "era": "snes",
+  "tempo": 116,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "Bb major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "The counter tune: hummable, bouncy, small range F4-G5, swung.",
+      "notes": "F4qt G4et Bb4q D5q Bb4q | C5qt Bb4et G4q Bb4h | Eb5qt D5et C5q A4q F4q | Bb4q D4q rh | F4qt G4et Bb4q D5q F5q | G5qt F5et Eb5q Bb4q G4q | C5qt D5et Eb5q A4q C5q | Bb4h rh | F4qt G4et Bb4q D5q Bb4q | C5qt Bb4et G4q Bb4h | Eb5qt D5et C5q A4q F4q | Bb4q D4q rh | F4qt G4et Bb4q D5q F5q | G5qt F5et Eb5q Bb4q G4q | C5qt D5et Eb5q A4q C5q | Bb4q D5qt Eb5et F5q rq | G5q. F5e Eb5q Bb4q | F5q. Eb5e D5q Bb4q | Eb5qt D5et C5q G4q A4qt Bb4et | C5q F5q Eb5q A4q | G5q. F5e Eb5q C5q | F#5q D5q A4q C5q | Bb4q G4q E5q C5q | F5h rq Eb5q | F4qt G4et Bb4q D5q Bb4q | C5qt Bb4et G4q Bb4h | Eb5qt D5et C5q A4q F4q | Bb4q D4q rh | F4qt G4et Bb4q D5q F5q | G5qt F5et Eb5q Bb4q G4q | C5qt D5et Eb5q A4q C5q | Bb4q rq D4q E4q"
+    },
+    {
+      "name": "harmony",
+      "voice": "pluck",
+      "octave": 4,
+      "gain": 0.42,
+      "_note": "Pizzicato/marimba off-beat comp (chords on the 'and' of 1 and 3).",
+      "notes": "rq D4+F4+Bb4e re rq D4+F4+Bb4e re | rq D4+G4+Bb4e re rq D4+G4+Bb4e re | rq Eb4+G4+C5e re rq Eb4+F4+A4e re | rq D4+F4+Bb4e re rq Eb4+F4+A4e re | rq D4+F4+Bb4e re rq D4+F4+Bb4e re | rq Eb4+G4+Bb4e re rq Eb4+G4+Bb4e re | rq Eb4+G4+C5e re rq Eb4+F4+A4e re | rq D4+F4+Bb4e re rq D4+F4+Bb4e re | rq D4+F4+Bb4e re rq D4+F4+Bb4e re | rq D4+G4+Bb4e re rq D4+G4+Bb4e re | rq Eb4+G4+C5e re rq Eb4+F4+A4e re | rq D4+F4+Bb4e re rq Eb4+F4+A4e re | rq D4+F4+Bb4e re rq D4+F4+Bb4e re | rq Eb4+G4+Bb4e re rq Eb4+G4+Bb4e re | rq Eb4+G4+C5e re rq Eb4+F4+A4e re | rq D4+F4+Bb4e re rq Eb4+F4+A4e re | rq Eb4+G4+Bb4e re rq Eb4+G4+Bb4e re | rq D4+F4+Bb4e re rq D4+F4+Bb4e re | rq Eb4+G4+C5e re rq Eb4+G4+C5e re | rq Eb4+F4+A4e re rq Eb4+F4+A4e re | rq Eb4+G4+Bb4e re rq Eb4+G4+Bb4e re | rq D4+F#4+C5e re rq D4+F#4+C5e re | rq D4+G4+Bb4e re rq E4+G4+Bb4e re | rq Eb4+F4+A4e re rq Eb4+F4+A4e re | rq D4+F4+Bb4e re rq D4+F4+Bb4e re | rq D4+G4+Bb4e re rq D4+G4+Bb4e re | rq Eb4+G4+C5e re rq Eb4+F4+A4e re | rq D4+F4+Bb4e re rq Eb4+F4+A4e re | rq D4+F4+Bb4e re rq D4+F4+Bb4e re | rq Eb4+G4+Bb4e re rq Eb4+G4+Bb4e re | rq Eb4+G4+C5e re rq Eb4+F4+A4e re | rq D4+F4+Bb4e re rq D4+F4+Bb4e re"
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.4,
+      "_note": "The shop DOORBELL: ding-ding (F5-D5) in each phrase-end gap; the bridge rings A5-C6 upward.",
+      "notes": "rw | rw | rw | rh F5q D5q | rw | rw | rw | rh F5q D5q | rw | rw | rw | rh F5q D5q | rw | rw | rw | rh F5q D5q | rw | rw | rw | rh F5q D5q | rw | rw | rw | rh A5q C6q | rw | rw | rw | rh F5q D5q | rw | rw | rw | rh F5q D5q"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.85,
+      "_note": "Bouncy plucked staccato root-fifth on every beat.",
+      "notes": "Bb2e re F2e re Bb2e re F2e re | G2e re D3e re G2e re D3e re | C3e re G2e re F2e re C3e re | Bb2e re F2e re F2e re C3e re | Bb2e re F2e re Bb2e re F2e re | Eb2e re Bb2e re Eb2e re Bb2e re | C3e re G2e re F2e re C3e re | Bb2e re F2e re Bb2e re F2e re | Bb2e re F2e re Bb2e re F2e re | G2e re D3e re G2e re D3e re | C3e re G2e re F2e re C3e re | Bb2e re F2e re F2e re C3e re | Bb2e re F2e re Bb2e re F2e re | Eb2e re Bb2e re Eb2e re Bb2e re | C3e re G2e re F2e re C3e re | Bb2e re F2e re F2e re C3e re | Eb2e re Bb2e re Eb2e re Bb2e re | D3e re F2e re D3e re F2e re | C3e re G2e re C3e re G2e re | F2e re C3e re F2e re C3e re | Eb2e re Bb2e re Eb2e re Bb2e re | D3e re A2e re D3e re A2e re | G2e re D3e re C3e re G2e re | F2e re C3e re F2e re C3e re | Bb2e re F2e re Bb2e re F2e re | G2e re D3e re G2e re D3e re | C3e re G2e re F2e re C3e re | Bb2e re F2e re F2e re C3e re | Bb2e re F2e re Bb2e re F2e re | Eb2e re Bb2e re Eb2e re Bb2e re | C3e re G2e re F2e re C3e re | Bb2e re F2e re Bb2e re F2e re"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.32,
+      "_note": "Brushes: swung hat + soft snare tap on 2 and 4; bridge thins to hat only.",
+      "notes": "qt hat et hat qt snare et hat qt hat et hat qt snare et hat | qt hat et hat qt snare et hat qt hat et hat qt snare et hat | qt hat et hat qt snare et hat qt hat et hat qt snare et hat | qt hat et hat qt snare et hat qt hat et hat qt snare et hat | qt hat et hat qt snare et hat qt hat et hat qt snare et hat | qt hat et hat qt snare et hat qt hat et hat qt snare et hat | qt hat et hat qt snare et hat qt hat et hat qt snare et hat | q hat snare hat snare | qt hat et hat qt snare et hat qt hat et hat qt snare et hat | qt hat et hat qt snare et hat qt hat et hat qt snare et hat | qt hat et hat qt snare et hat qt hat et hat qt snare et hat | qt hat et hat qt snare et hat qt hat et hat qt snare et hat | qt hat et hat qt snare et hat qt hat et hat qt snare et hat | qt hat et hat qt snare et hat qt hat et hat qt snare et hat | qt hat et hat qt snare et hat qt hat et hat qt snare et hat | q hat snare hat snare | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | qt hat et hat qt snare et hat qt hat et hat qt snare et hat | qt hat et hat qt snare et hat qt hat et hat qt snare et hat | qt hat et hat qt snare et hat qt hat et hat qt snare et hat | qt hat et hat qt snare et hat qt hat et hat qt snare et hat | qt hat et hat qt snare et hat qt hat et hat qt snare et hat | qt hat et hat qt snare et hat qt hat et hat qt snare et hat | qt hat et hat qt snare et hat qt hat et hat qt snare et hat | q hat snare hat snare"
+    }
+  ]
+}

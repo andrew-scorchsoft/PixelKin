@@ -1,0 +1,94 @@
+{
+ "id": "duskapple-orchard",
+ "kind": "loop",
+ "where": "Duskapple Orchard — Tinderwick's old orchard through the west hedge, from the first visit until the first Gleam is relit (the fallen-star crater)",
+ "mood": "The Fallen Star — the hometown lullaby gone cold in C minor, slowed to half time among charred boughs; a distant bell for the strike, and a cinder that still glows.",
+ "bpm": 90,
+ "beats_per_bar": 4,
+ "_note": "Classic twin: assets/audio/midi/specs/duskapple-orchard.json (90 BPM, 4/4, C minor, half-time Vesper motif, 16 bars AABA, bridge glimmer in Ab/Eb). Motif medium pins ~90 BPM; the half-time feel rides on top.",
+ "motif": {
+  "strength": "medium"
+ },
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "90 BPM with a slow half-time feel",
+  "C minor, the hometown lullaby turned dark",
+  "muted low pulse-wave lead singing long sighing notes",
+  "cold glassy celesta and glass-harmonica figures",
+  "sparse low sampled strings",
+  "one distant low bell toll at the start of each phrase",
+  "slow sustained synth bass",
+  "a scorched orchard under a fallen star at night, melancholy, hushed and beautiful",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "fade out",
+  "ritardando",
+  "ending",
+  "horror",
+  "jump scare",
+  "heavy drums",
+  "upbeat",
+  "guitar",
+  "ambient drone"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{one distant low bell tolls and rings into the cold air, a glassy celesta answers with a slow falling figure, and the muted lead begins the darkened theme}",
+   "styles": [
+    "distant bell toll opening",
+    "hushed"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the hometown lullaby in C minor at half time: a slow rising lift that hangs, then a sighing minor settle home; long notes over cold celesta, clear and hummable}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "melancholy"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the same melody again, low strings drawn softly underneath, the bell tolling once at the phrase start, glass harmonica shimmering in the gaps}",
+   "styles": [
+    "low string bed",
+    "fuller arrangement",
+    "cold and still"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a faint warm glimmer, the harmony turns to A-flat and E-flat major, a soft plucked harp glows like an ember and the lead lifts to its highest note}",
+   "styles": [
+    "E-flat major warmth",
+    "fragile hope",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the glow sinks back into C minor and the darkened lullaby returns, calm and sad; the last bar leans on the dominant straight back into the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

@@ -294,6 +294,7 @@ export const BLOCKS = {
                             <span class="music-label">Classic</span>
                             <button class="music-btn" type="button" data-src="${e(t.classic)}" data-mode="game" data-label="Play">&#9654; Play</button>
                             <button class="music-btn music-btn-sm" type="button" data-src="${e(t.classic)}" data-mode="join" data-label="Loop point">&#8644; Loop point</button>
+                            <a class="music-dl" href="${e(t.classic)}" download="pixelkin-${e(t.id)}-classic.mp3" title="Download the classic render">&#10515; Download</a>
                         </div>
                         ${t.remaster ? `<div class="music-buttons">
                             <span class="music-label music-label-remaster">Remastered</span>
@@ -301,6 +302,7 @@ export const BLOCKS = {
                             ${t.loop_start ? `<button class="music-btn music-btn-sm" type="button" data-src="${e(t.remaster)}" data-loop-start="${e(String(t.loop_start))}" data-mode="loop" data-label="Loop only">&#10227; Loop only</button>` : ''}
                             ${t.loop_start !== null ? `<button class="music-btn music-btn-sm" type="button" data-src="${e(t.remaster)}" data-loop-start="${e(String(t.loop_start ?? 0))}" data-mode="join" data-label="Loop point">&#8644; Loop point</button>` : ''}
                             <button class="music-btn music-btn-sm" type="button" data-src="${e(t.remaster)}" data-mode="once" data-label="Full once">&#8677; Full once</button>
+                            <a class="music-dl" href="${e(t.remaster)}" download="pixelkin-${e(t.id)}-remastered.mp3" title="Download the remastered track">&#10515; Download</a>
                         </div>` : '<span class="music-soon">Remaster coming</span>'}
                     </div>
                     </div>

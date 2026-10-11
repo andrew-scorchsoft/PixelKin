@@ -147,7 +147,7 @@ m = {
     "encounters": [],
     "npcs": [],
     "gates": [],
-    "music": "assets/audio/music/dimglass-coast-a.mp3",
+    "music": "assets/audio/music/dimglass-coast-b.mp3",
 }
 
 # ---- stamps that need `m` (signs, cache, trainer) ---------------------------

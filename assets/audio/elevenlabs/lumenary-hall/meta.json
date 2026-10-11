@@ -1,0 +1,14 @@
+{
+ "id": "lumenary-hall",
+ "kind": "loop",
+ "where": "Lumenary halls \u2014 the Tinderwick Lumenary (Brisa) and the Pearlmoor Lumenary (Reyl), and any later Lampwarden's hall without its own cue",
+ "mood": "The hush before the duel \u2014 a stately processional between lamp-lit pillars, organ and choir in cool stone, walking toward the warden who will test you.",
+ "duration": 96.131,
+ "loop_start": 6.757,
+ "seam": 0.219,
+ "bpm_est": 60.1,
+ "song_id": "qCM3f2i2P27lxPWyCmGf",
+ "raw_ms": 90645,
+ "motif": "low",
+ "lufs": -16.4
+}

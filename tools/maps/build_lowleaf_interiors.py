@@ -137,7 +137,7 @@ def build_bower():
     ]
     return mapdef("lowleaf_bower", "Lowleaf Guest-bower", W, H, WARM_SET,
                   base, over, objects, warps, triggers, npcs,
-                  "assets/audio/music/lowleaf-hollow-b.mp3")
+                  "assets/audio/music/inn-rest.mp3")
 
 
 if __name__ == "__main__":
