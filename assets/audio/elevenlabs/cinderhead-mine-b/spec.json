@@ -9,8 +9,8 @@
   "strength": "low"
  },
  "core_styles": [
-  "16-bit SNES-era RPG soundtrack",
-  "retro sampled-chip instruments",
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
   "96 BPM",
   "A harmonic minor with the raised seventh",
   "terse staccato low pulse-wave and brass motif, recurring like a held breath",
@@ -20,15 +20,15 @@
   "dry pick-tap percussion and timpani, static noise swells",
   "tense, claustrophobic, stern and determined stone hall deep in a mine",
   "strong singable melody",
-  "great production quality",
+  "authentic 16-bit game music sound",
   "instrumental"
  ],
  "negative_styles": [
   "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
   "singing",
-  "modern EDM drums",
-  "trap",
-  "dubstep",
   "electric guitar",
   "fade out",
   "ritardando",

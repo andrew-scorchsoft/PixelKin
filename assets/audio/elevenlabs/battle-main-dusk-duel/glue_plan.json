@@ -1,7 +1,7 @@
 {
  "chunks": [
   {
-   "song_id": "cBWkYqAv7eKKJfyT64VQ",
+   "song_id": "LZxcYwN6KufnLkk9sKq6",
    "range": {
     "start_ms": 31722,
     "end_ms": 51722
@@ -18,7 +18,7 @@
     "4/4",
     "fast syncopated sawtooth lead melody with leaping hooks",
     "plucked sampled bass pumping root and fifth in eighth notes",
-    "sampled 16-bit drum kit: dry snare and kick on a driving rock beat, snare rolls into each phrase",
+    "sampled snare backbeat with tom fills and snare rolls into each phrase, a light kick on beats one and three, crash cymbal on phrase starts",
     "stabbing sampled brass answering the lead",
     "driving sixteenth-note pulse arpeggio",
     "urgent exciting creature battle theme, thrilling, bright and winnable",
@@ -38,7 +38,7 @@
    "context_adherence": "high"
   },
   {
-   "song_id": "cBWkYqAv7eKKJfyT64VQ",
+   "song_id": "LZxcYwN6KufnLkk9sKq6",
    "range": {
     "start_ms": 3038,
     "end_ms": 13038

@@ -1,7 +1,7 @@
 {
  "chunks": [
   {
-   "song_id": "CpiQQPJFZAH02EjLP69s",
+   "song_id": "kc2s3bBxcFeThIPfAVyr",
    "range": {
     "start_ms": 32767,
     "end_ms": 52767
@@ -19,7 +19,7 @@
     "bold fanfare-like sampled brass melody",
     "fast pulse-wave lead runs",
     "galloping plucked sampled bass in octaves",
-    "sampled 16-bit marching snare rolls and kick on a steady march beat",
+    "sampled marching snare rolls and tom fills with timpani hits on the accents, crash cymbal on phrase starts",
     "crash cymbal accents",
     "proud rousing trainer duel theme",
     "warm ember-glow fighting spirit",
@@ -39,7 +39,7 @@
    "context_adherence": "high"
   },
   {
-   "song_id": "CpiQQPJFZAH02EjLP69s",
+   "song_id": "kc2s3bBxcFeThIPfAVyr",
    "range": {
     "start_ms": 5854,
     "end_ms": 15854

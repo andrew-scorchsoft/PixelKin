@@ -9,8 +9,8 @@
   "strength": "low"
  },
  "core_styles": [
-  "16-bit SNES-era RPG soundtrack",
-  "retro sampled-chip instruments",
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
   "68 BPM",
   "F minor with suspended sus2 and sus4 chords",
   "lone bell-like pulse-wave lead melody with long held notes and rests, a call answered by silence",
@@ -19,15 +19,15 @@
   "muffled heartbeat drum, a soft kick on beat one and a faint pulse after beat three",
   "cold, sparse, lonely frozen canyon at night, a small warm lamp against the wind",
   "strong slow singable melody",
-  "great production quality",
+  "authentic 16-bit game music sound",
   "instrumental"
  ],
  "negative_styles": [
   "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
   "singing",
-  "modern EDM drums",
-  "trap",
-  "dubstep",
   "fade out",
   "ritardando",
   "ending",

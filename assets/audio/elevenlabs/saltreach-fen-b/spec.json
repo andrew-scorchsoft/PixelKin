@@ -9,8 +9,8 @@
   "strength": "low"
  },
  "core_styles": [
-  "16-bit SNES-era RPG soundtrack",
-  "retro sampled-chip instruments",
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
   "92 BPM",
   "6/8 compound time with a slow rocking lilt",
   "D Dorian mode",
@@ -21,15 +21,15 @@
   "percussion only a soft noise-wash swell like moving mist",
   "haunting, lonely, misty night marsh, between places",
   "strong singable melody",
-  "great production quality",
+  "authentic 16-bit game music sound",
   "instrumental"
  ],
  "negative_styles": [
   "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
   "singing",
-  "modern EDM drums",
-  "trap",
-  "dubstep",
   "electric guitar",
   "fade out",
   "ritardando",

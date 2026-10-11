@@ -278,7 +278,7 @@
      "mood": "First Light at the Top: Solar warmth meets the first true starlight - the climbing hook at its highest, doubled in bells, inside a sunlit reliquary of blooms and sun-mirrors.",
      "classic": "play/assets/audio/music/sunvault-climb-c.mp3",
      "remaster": "play/assets/audio/music/remaster/sunvault-climb-c.mp3",
-     "loop_start": 9.66
+     "loop_start": 9.358
     },
     {
      "id": "nightreach-observatory-a",
@@ -342,7 +342,7 @@
      "mood": "The Black Ascent: the climb through the dead Lumenary, null-lanterns leaking anti-light; relentless minor drive, all tension and no release.",
      "classic": "play/assets/audio/music/umbral-spire-b.mp3",
      "remaster": "play/assets/audio/music/remaster/umbral-spire-b.mp3",
-     "loop_start": 6.827
+     "loop_start": 10.844
     },
     {
      "id": "umbral-spire-c",
@@ -406,7 +406,7 @@
      "mood": "The arena duel — proud, rousing and fair: a respected challenger in the lantern-light, the fight that earns a constellation.",
      "classic": "play/assets/audio/music/battle-emberfall.mp3",
      "remaster": "play/assets/audio/music/remaster/battle-emberfall.mp3",
-     "loop_start": 9.288
+     "loop_start": 5.735
     },
     {
      "id": "battle-hours",
@@ -424,7 +424,7 @@
      "mood": "The fight you hear a thousand times — urgent, catchy and winnable: a minor-key chase that bursts into a heroic major lift.",
      "classic": "play/assets/audio/music/battle-main-dusk-duel.mp3",
      "remaster": "play/assets/audio/music/remaster/battle-main-dusk-duel.mp3",
-     "loop_start": 6.594
+     "loop_start": 6.896
     },
     {
      "id": "battle-nightfall",

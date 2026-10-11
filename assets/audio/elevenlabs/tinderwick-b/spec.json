@@ -10,8 +10,8 @@
   "strength": "high"
  },
  "core_styles": [
-  "16-bit SNES-era RPG soundtrack",
-  "retro sampled-chip instruments",
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
   "80 BPM",
   "A minor resolving to C major",
   "6/8 time, gentle rocking lullaby sway",
@@ -21,15 +21,15 @@
   "round soft synth bass breathing on the dotted pulse",
   "intimate small-room cottage interior by a banked fire, warm and a little homesick",
   "strong singable melody",
-  "great production quality",
+  "authentic 16-bit game music sound",
   "instrumental"
  ],
  "negative_styles": [
   "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
   "singing",
-  "modern EDM drums",
-  "trap",
-  "dubstep",
   "fade out",
   "ritardando",
   "drums",

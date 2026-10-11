@@ -9,8 +9,8 @@
   "strength": "low"
  },
  "core_styles": [
-  "16-bit SNES-era RPG soundtrack",
-  "retro sampled-chip instruments",
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
   "80 BPM",
   "A natural minor",
   "low warm horn and pulse-wave lead singing a slow solemn melody that moves by steps",
@@ -21,15 +21,15 @@
   "melancholy lamplit mining town in the deep dark, faint warmth of fire-lamps",
   "echoing cave reverb",
   "strong singable melody",
-  "great production quality",
+  "authentic 16-bit game music sound",
   "instrumental"
  ],
  "negative_styles": [
   "vocals",
+  "sidechain pumping",
+  "four-on-the-floor kick",
+  "EDM",
   "singing",
-  "modern EDM drums",
-  "trap",
-  "dubstep",
   "electric guitar",
   "fade out",
   "ritardando",
