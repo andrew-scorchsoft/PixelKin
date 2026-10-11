@@ -40,3 +40,4 @@ assets/audio/midi/soundfonts/
 
 # Agent worktrees (isolated scratch checkouts)
 .claude/worktrees/
+assets/trainers/_candidates/
