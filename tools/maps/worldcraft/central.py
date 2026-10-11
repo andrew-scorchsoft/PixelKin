@@ -14,6 +14,7 @@ and the summit's two staging NPCs for the climax scenes.
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 from ._kit import ambient_kin, gid, particles  # noqa: F401
@@ -25,8 +26,15 @@ def _swap(mid: str, nid: str, **changes) -> dict:
     """The shipped NPC placement `nid` on `mid`, with `changes` applied — so a
     sprite swap keeps every other field (ids/dialogue_refs/flags) byte-identical.
     Idempotent: re-reading an already-swapped map returns the same dict."""
-    m = json.loads((MAPS / f"{mid}.json").read_text())
-    npc = next(n for n in m["npcs"] if n["id"] == nid)
+    path = MAPS / f"{mid}.json"
+    npc = None
+    if path.is_file():
+        npc = next((n for n in json.loads(path.read_text()).get("npcs", []) if n["id"] == nid), None)
+    if npc is None:
+        # A rebuilt map can lack a post-build NPC until its own runner re-adds it:
+        # skip (the runner drops None) rather than crash the whole region at import.
+        print(f"worldcraft.central: {mid} has no NPC '{nid}' yet — swap skipped", file=sys.stderr)
+        return None  # type: ignore[return-value]
     return {**npc, **changes}
 
 

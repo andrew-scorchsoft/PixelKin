@@ -261,6 +261,8 @@ def apply(mid: str, spec: dict, write: bool) -> tuple[bool, list[str]]:
     if not path.is_file():
         return False, [f"{mid}: no shipped map JSON"]
     m = json.loads(path.read_text())
+    # Region helpers return None for an NPC a rebuilt map doesn't carry yet.
+    spec = {k: ([x for x in v if x is not None] if isinstance(v, list) else v) for k, v in spec.items()}
     errs = lint(mid, m, spec)
     if errs:
         return False, errs

@@ -19,6 +19,7 @@ builder; this module only layers on top of the shipped JSONs):
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 from ._kit import ambient_kin, gid, particles  # noqa: F401
@@ -29,7 +30,8 @@ _MAPS = Path(__file__).resolve().parents[3] / "public" / "assets" / "maps"
 def restyle(mid: str, changes: dict[str, dict]) -> list[dict]:
     """Copies of the shipped NPCs `changes` names, with the given fields
     replaced (a sprite swap / ref swap that keeps id, tile and flags)."""
-    m = json.loads((_MAPS / f"{mid}.json").read_text())
+    path = _MAPS / f"{mid}.json"
+    m = json.loads(path.read_text()) if path.is_file() else {}
     out = []
     for n in m.get("npcs", []):
         if n["id"] in changes:
@@ -38,7 +40,9 @@ def restyle(mid: str, changes: dict[str, dict]) -> list[dict]:
             out.append(c)
     missing = set(changes) - {n["id"] for n in out}
     if missing:
-        raise SystemExit(f"east.restyle: {mid} has no NPC(s) {sorted(missing)}")
+        # Warn, don't abort the region: a freshly rebuilt map may lack a post-build
+        # NPC until its own runner re-adds it (the add_world_craft lint still names it).
+        print(f"east.restyle: {mid} has no NPC(s) {sorted(missing)} — skipped", file=sys.stderr)
     return out
 
 

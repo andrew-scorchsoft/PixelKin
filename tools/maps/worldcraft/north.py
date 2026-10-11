@@ -20,6 +20,7 @@ Nothing here changes an encounter table, trainer, warp or the main lane.
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 from ._kit import ambient_kin, particles  # noqa: F401
@@ -55,7 +56,8 @@ def tall(oid, sprite, at, w=2, h=3):
 
 def recast(mid: str, **sprites: str) -> list[dict]:
     """Re-dress existing NPC placements with a regional-cast sheet (id/ref unchanged)."""
-    m = json.loads((MAPS / f"{mid}.json").read_text())
+    path = MAPS / f"{mid}.json"
+    m = json.loads(path.read_text()) if path.is_file() else {}
     out = []
     for n in m.get("npcs", []):
         if n["id"] in sprites:
@@ -64,7 +66,7 @@ def recast(mid: str, **sprites: str) -> list[dict]:
             out.append(n)
     missing = set(sprites) - {n["id"] for n in out}
     if missing:
-        raise SystemExit(f"recast {mid}: no NPC ids {sorted(missing)}")
+        print(f"north.recast {mid}: no NPC ids {sorted(missing)} — skipped", file=sys.stderr)
     return out
 
 
