@@ -175,6 +175,69 @@
       "tw": 2,
       "th": 3
     },
+    "hoard_broom": {
+      "path": "assets/sprites/objects/hoard_broom.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "hoard_cot": {
+      "path": "assets/sprites/objects/hoard_cot.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "hoard_lamp_unlit": {
+      "path": "assets/sprites/objects/hoard_lamp_unlit.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    },
+    "hoard_linen_cold": {
+      "path": "assets/sprites/objects/hoard_linen_cold.webp",
+      "width": 64,
+      "height": 32,
+      "tw": 4,
+      "th": 2
+    },
+    "hoard_linen_glow": {
+      "path": "assets/sprites/objects/hoard_linen_glow.webp",
+      "width": 64,
+      "height": 32,
+      "tw": 4,
+      "th": 2
+    },
+    "hoard_niche_cold": {
+      "path": "assets/sprites/objects/hoard_niche_cold.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "hoard_niche_glow": {
+      "path": "assets/sprites/objects/hoard_niche_glow.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "hoard_shelf_cold": {
+      "path": "assets/sprites/objects/hoard_shelf_cold.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "hoard_shelf_glow": {
+      "path": "assets/sprites/objects/hoard_shelf_glow.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
     "hourfold_brazier_lit": {
       "path": "assets/sprites/objects/hourfold_brazier_lit.webp",
       "width": 32,
@@ -637,6 +700,62 @@
       "tw": 5,
       "th": 4
     },
+    "penumbra_memorial_ember": {
+      "path": "assets/sprites/objects/penumbra_memorial_ember.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "penumbra_memorial_frost": {
+      "path": "assets/sprites/objects/penumbra_memorial_frost.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "penumbra_memorial_lunar": {
+      "path": "assets/sprites/objects/penumbra_memorial_lunar.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "penumbra_memorial_solar": {
+      "path": "assets/sprites/objects/penumbra_memorial_solar.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "penumbra_memorial_stone": {
+      "path": "assets/sprites/objects/penumbra_memorial_stone.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "penumbra_memorial_storm": {
+      "path": "assets/sprites/objects/penumbra_memorial_storm.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "penumbra_memorial_tide": {
+      "path": "assets/sprites/objects/penumbra_memorial_tide.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "penumbra_memorial_verdant": {
+      "path": "assets/sprites/objects/penumbra_memorial_verdant.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
     "penumbra_spire_silhouette": {
       "path": "assets/sprites/objects/penumbra_spire_silhouette.webp",
       "width": 160,
@@ -665,6 +784,13 @@
       "tw": 4,
       "th": 4
     },
+    "penumbra_vigil_camp": {
+      "path": "assets/sprites/objects/penumbra_vigil_camp.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
     "penumbra_way_lamp": {
       "path": "assets/sprites/objects/penumbra_way_lamp.webp",
       "width": 16,
@@ -685,6 +811,13 @@
       "height": 32,
       "tw": 1,
       "th": 2
+    },
+    "saltreach_reedcutter_hut": {
+      "path": "assets/sprites/objects/saltreach_reedcutter_hut.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
     },
     "solarium_brazier_dead": {
       "path": "assets/sprites/objects/solarium_brazier_dead.webp",

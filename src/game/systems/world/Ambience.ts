@@ -68,6 +68,17 @@ export const LIGHT_SOURCES: Record<string, { hx: number; hy: number; radius: num
   nightreach_watch_lamp_lit: { hx: 16, hy: 8, radius: 17, color: 0xdfe6ff },
   nightreach_vigil_lamp: { hx: 8, hy: 6, radius: 12, color: 0xdfe6ff },
   tideglass_wrecklamp_lit: { hx: 8, hy: 8, radius: 12, color: 0x9fe7ff },
+  // central — the Penumbra Ring's eight memorial lamps (each its element's flame)
+  // and the gone-quiet's camp; the Starfall Vigils' keeper camps reuse it.
+  penumbra_memorial_ember: { hx: 8, hy: 7, radius: 12, color: 0xff8a3d },
+  penumbra_memorial_tide: { hx: 8, hy: 7, radius: 12, color: 0x4fb4ff },
+  penumbra_memorial_verdant: { hx: 8, hy: 7, radius: 12, color: 0x7bdc6b },
+  penumbra_memorial_stone: { hx: 8, hy: 7, radius: 12, color: 0xc9a86a },
+  penumbra_memorial_storm: { hx: 8, hy: 7, radius: 12, color: 0xb9a6ff },
+  penumbra_memorial_frost: { hx: 8, hy: 7, radius: 12, color: 0xa9e8ff },
+  penumbra_memorial_solar: { hx: 8, hy: 7, radius: 12, color: 0xffd76b },
+  penumbra_memorial_lunar: { hx: 8, hy: 7, radius: 12, color: 0x8aa0ff },
+  penumbra_vigil_camp: { hx: 24, hy: 15, radius: 20, color: 0xffb05a },
 };
 
 /** Chimney tops keyed by building sprite (px offset of the stack's mouth). */
