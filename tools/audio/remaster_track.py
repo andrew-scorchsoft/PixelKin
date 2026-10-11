@@ -300,6 +300,9 @@ def main() -> int:
         if rep["seam_distance"] > SEAM_OK:
             meta["warning"] = f"seam {rep['seam_distance']} > {SEAM_OK}: listen to the join, consider --reglue"
     meta_path.write_text(json.dumps(meta, indent=1) + "\n")
+    # Bring it to the house loudness (static gain + -1 dBFS safety limiter).
+    subprocess.run([sys.executable, str(ROOT / "tools/audio/level_remasters.py"), a.id], check=True)
+    meta = json.loads(meta_path.read_text())
     print(json.dumps(meta, indent=1))
     print(f"done in {time.time() - t0:.0f}s -> {out.relative_to(ROOT)}")
     return 0

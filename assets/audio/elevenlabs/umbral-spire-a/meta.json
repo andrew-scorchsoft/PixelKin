@@ -9,5 +9,6 @@
  "bpm_est": 89.1,
  "song_id": "0PJMr1PWqnVc7vEIANBh",
  "raw_ms": 69198,
- "motif": "low"
+ "motif": "low",
+ "lufs": -15.4
 }

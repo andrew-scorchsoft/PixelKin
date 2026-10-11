@@ -39,7 +39,10 @@ cue feel iconic is **form + a shared motif + a seamless loop**, so:
    tempo/key/metre. Never a franchise/composer name (the checker rejects them).
 2. **The leitmotif.** `motif.json` points at the stored Tinderwick theme. A spec's
    `motif: {strength}` conditions its first chunk on it (API cap: 30 s reference),
-   so the whole score shares one tune. Conditioning carries PALETTE too: `high`
+   so the whole score shares one tune. **It also locks the TEMPO to the source's
+   ~90 BPM grid (or 180/45)** whatever the spec asks — measured on every conditioned
+   take; unconditioned takes hit their spec tempo exactly. So write motif cues at
+   90/180 BPM, or drop the motif where the tempo is the point. Conditioning carries PALETTE too: `high`
    for hometown/dawn/ending/title/Gleam, `medium` towns + routes, `low` caves and
    drained places, `low`/none battles.
 3. **Run** `./venv/bin/python tools/audio/remaster_track.py <id>` (`--check-spec`
@@ -47,7 +50,8 @@ cue feel iconic is **form + a shared motif + a seamless loop**, so:
    re-renders only the last 20 s + a generated 4 s `[Turnaround]` + the theme's
    opening, splices that back onto the take, and `make_loop.py --keep-intro` cuts
    the file to intro + body and records `loop_start` (seam ≤ 0.45; ours land
-   0.06–0.17). Then `python3 tools/audio/build_remaster_manifest.py` and
+   0.06–0.17; one battle needed a fresh take at 0.82 — re-compose, don't ship a bad
+   seam), then `level_remasters.py` sets -15 LUFS (sparse cues a little lower). Then `python3 tools/audio/build_remaster_manifest.py` and
    `node tools/build/build_music_data.mjs` (CI fails if either is stale).
 4. **Engine contract:** `MusicDirector` maps `music/<id>.mp3` → `music/remaster/<id>.mp3`
    when the style is remastered and the manifest lists it; the intro plays ONCE
