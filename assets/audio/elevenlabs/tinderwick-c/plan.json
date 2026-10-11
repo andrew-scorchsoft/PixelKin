@@ -1,0 +1,199 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{a curious opening: bell sparkles climb upward like fireflies, then the lead calls the rising three-note lift from the hometown tune and holds it, a question in the air, leading into the theme}",
+   "duration_ms": 8182,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "88 BPM",
+    "C Lydian, bright major with a raised fourth for wonder",
+    "soft pulse-wave lead with a rising questioning melody",
+    "bright bell and celesta sparkle figures climbing upward like lantern windows",
+    "plucked harp arpeggios",
+    "slow sustained string pad",
+    "slow warm synth bass",
+    "dreamy wandering orchard at blue hour, curious and wondering, a little mysterious",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "wondering opening call",
+    "sense of discovery"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "dark horror",
+    "heavy percussion",
+    "ending"
+   ],
+   "context_adherence": "high",
+   "conditioning_ref": {
+    "song_id": "TOREmIgiwF3GKpN7UkLA",
+    "range": {
+     "start_ms": 10668,
+     "end_ms": 40668
+    }
+   },
+   "condition_strength": "medium"
+  },
+  {
+   "text": "[Main Theme]\n{the orchard melody: a hummable rising phrase with the bright raised fourth, answered by a bell echo each time, harp rolling underneath at a gentle walk}",
+   "duration_ms": 21818,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "88 BPM",
+    "C Lydian, bright major with a raised fourth for wonder",
+    "soft pulse-wave lead with a rising questioning melody",
+    "bright bell and celesta sparkle figures climbing upward like lantern windows",
+    "plucked harp arpeggios",
+    "slow sustained string pad",
+    "slow warm synth bass",
+    "dreamy wandering orchard at blue hour, curious and wondering, a little mysterious",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme",
+    "memorable hook",
+    "wonder"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "dark horror",
+    "heavy percussion",
+    "ending"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme Reprise]\n{the same melody again with a celesta counter-line glinting between phrases and a soft shaker walk, a little fuller}",
+   "duration_ms": 21818,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "88 BPM",
+    "C Lydian, bright major with a raised fourth for wonder",
+    "soft pulse-wave lead with a rising questioning melody",
+    "bright bell and celesta sparkle figures climbing upward like lantern windows",
+    "plucked harp arpeggios",
+    "slow sustained string pad",
+    "slow warm synth bass",
+    "dreamy wandering orchard at blue hour, curious and wondering, a little mysterious",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "bell counter-melody",
+    "fuller arrangement"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "dark horror",
+    "heavy percussion",
+    "ending"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast: a hushed turn to A minor, the lead lower and slower, a faint mysterious shimmer like something fallen glowing among the trees, then the bells climb back toward the light}",
+   "duration_ms": 21818,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "88 BPM",
+    "C Lydian, bright major with a raised fourth for wonder",
+    "soft pulse-wave lead with a rising questioning melody",
+    "bright bell and celesta sparkle figures climbing upward like lantern windows",
+    "plucked harp arpeggios",
+    "slow sustained string pad",
+    "slow warm synth bass",
+    "dreamy wandering orchard at blue hour, curious and wondering, a little mysterious",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "A minor",
+    "hushed mystery",
+    "contrasting section"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "dark horror",
+    "heavy percussion",
+    "ending"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the orchard melody returns bright and full; the last bar climbs straight back into the theme, no ending}",
+   "duration_ms": 21818,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "88 BPM",
+    "C Lydian, bright major with a raised fourth for wonder",
+    "soft pulse-wave lead with a rising questioning melody",
+    "bright bell and celesta sparkle figures climbing upward like lantern windows",
+    "plucked harp arpeggios",
+    "slow sustained string pad",
+    "slow warm synth bass",
+    "dreamy wandering orchard at blue hour, curious and wondering, a little mysterious",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "dark horror",
+    "heavy percussion",
+    "ending"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}

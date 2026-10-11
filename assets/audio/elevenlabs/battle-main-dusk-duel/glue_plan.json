@@ -1,0 +1,48 @@
+{
+ "chunks": [
+  {
+   "song_id": "GA9oWbHrOr9xs05Tf3ob",
+   "range": {
+    "start_ms": 34753,
+    "end_ms": 54753
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "158 BPM",
+    "A minor with a heroic lift to C major",
+    "4/4",
+    "fast syncopated sawtooth lead melody with leaping hooks",
+    "relentless pumping root-fifth eighth-note synth bass",
+    "punchy sampled battle drums with snare fills",
+    "stabbing sampled brass answering the lead",
+    "driving sixteenth-note pulse arpeggio",
+    "urgent exciting creature battle theme, thrilling but winnable, never scary",
+    "strong catchy hummable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "GA9oWbHrOr9xs05Tf3ob",
+   "range": {
+    "start_ms": 6076,
+    "end_ms": 16076
+   }
+  }
+ ]
+}

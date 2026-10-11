@@ -1,0 +1,49 @@
+{
+ "chunks": [
+  {
+   "song_id": "0LJe3LLR7WBCLrPUmWi8",
+   "range": {
+    "start_ms": 32767,
+    "end_ms": 52767
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "164 BPM",
+    "D minor with a proud lift to F major",
+    "4/4",
+    "bold fanfare-like sampled brass melody",
+    "fast pulse-wave lead runs",
+    "galloping octave synth bass",
+    "marching snare rolls and punchy sampled kick",
+    "crash cymbal accents",
+    "proud rousing trainer duel theme",
+    "warm ember-glow fighting spirit",
+    "strong catchy melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "0LJe3LLR7WBCLrPUmWi8",
+   "range": {
+    "start_ms": 5854,
+    "end_ms": 15854
+   }
+  }
+ ]
+}

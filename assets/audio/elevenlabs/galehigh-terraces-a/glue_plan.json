@@ -1,0 +1,48 @@
+{
+ "chunks": [
+  {
+   "song_id": "Nw4BCpnCQwpPaRmjknT6",
+   "range": {
+    "start_ms": 42668,
+    "end_ms": 62668
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "138 BPM",
+    "D major",
+    "energetic",
+    "bright staccato pulse-wave lead that springs up on the downbeat and skips back down",
+    "fast flickering broken-triad arpeggio shimmering above like a kite tail",
+    "driving synth bass walking in steady eighths",
+    "brisk kick and snare with ticking hi-hat sixteenths",
+    "white-noise wind gust swells that rise and cut every four bars",
+    "high-altitude cliff-town overworld theme, wind and kites at sunset",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "Nw4BCpnCQwpPaRmjknT6",
+   "range": {
+    "start_ms": 6957,
+    "end_ms": 16957
+   }
+  }
+ ]
+}

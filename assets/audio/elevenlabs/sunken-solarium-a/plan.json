@@ -1,0 +1,200 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{a glowing entrance: a shimmer of harp arpeggios rising like light through water, a soft pad swell, and the lead's first warm rising leap held over the chord, settling into the theme}",
+   "duration_ms": 10000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "96 BPM",
+    "G major with a wistful borrowed minor chord",
+    "warm singing pulse-wave lead whose phrases rise then sigh down a step",
+    "rolling plucked harp arpeggios of broken major triads like sunlight rippling on water",
+    "soft warm string pad",
+    "slow round synth bass moving root to fifth",
+    "very soft brushed kick and faint hi-hat like water lapping",
+    "nostalgic, sun-warmed, bittersweet remembered-summer ruin theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "glowing opening",
+    "light through water"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "dark",
+    "aggressive",
+    "epic orchestral"
+   ],
+   "context_adherence": "high",
+   "conditioning_ref": {
+    "song_id": "TOREmIgiwF3GKpN7UkLA",
+    "range": {
+     "start_ms": 10668,
+     "end_ms": 40668
+    }
+   },
+   "condition_strength": "medium"
+  },
+  {
+   "text": "[Main Theme]\n{the remembered-summer melody, hummable and tender: a radiant rising leap then a sighing step down, harp rolling underneath, brushed pulse}",
+   "duration_ms": 20000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "96 BPM",
+    "G major with a wistful borrowed minor chord",
+    "warm singing pulse-wave lead whose phrases rise then sigh down a step",
+    "rolling plucked harp arpeggios of broken major triads like sunlight rippling on water",
+    "soft warm string pad",
+    "slow round synth bass moving root to fifth",
+    "very soft brushed kick and faint hi-hat like water lapping",
+    "nostalgic, sun-warmed, bittersweet remembered-summer ruin theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme",
+    "memorable hook",
+    "warm nostalgia"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "dark",
+    "aggressive",
+    "epic orchestral"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme Reprise]\n{the melody again with a soft bell counter-line glinting above it and the strings a little fuller}",
+   "duration_ms": 20000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "96 BPM",
+    "G major with a wistful borrowed minor chord",
+    "warm singing pulse-wave lead whose phrases rise then sigh down a step",
+    "rolling plucked harp arpeggios of broken major triads like sunlight rippling on water",
+    "soft warm string pad",
+    "slow round synth bass moving root to fifth",
+    "very soft brushed kick and faint hi-hat like water lapping",
+    "nostalgic, sun-warmed, bittersweet remembered-summer ruin theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "bell counter-melody",
+    "fuller arrangement"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "dark",
+    "aggressive",
+    "epic orchestral"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast: the borrowed minor turn - E minor and C minor colours, longer held notes as if remembering a summer that ended, drums drop to a soft heartbeat, then a gentle lift back toward the theme}",
+   "duration_ms": 20000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "96 BPM",
+    "G major with a wistful borrowed minor chord",
+    "warm singing pulse-wave lead whose phrases rise then sigh down a step",
+    "rolling plucked harp arpeggios of broken major triads like sunlight rippling on water",
+    "soft warm string pad",
+    "slow round synth bass moving root to fifth",
+    "very soft brushed kick and faint hi-hat like water lapping",
+    "nostalgic, sun-warmed, bittersweet remembered-summer ruin theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "E minor colour",
+    "wistful",
+    "past tense",
+    "contrasting section"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "dark",
+    "aggressive",
+    "epic orchestral"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the warm melody returns in full, harp and pad glowing; the last bar leads straight back into the main theme, no ending}",
+   "duration_ms": 20000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "96 BPM",
+    "G major with a wistful borrowed minor chord",
+    "warm singing pulse-wave lead whose phrases rise then sigh down a step",
+    "rolling plucked harp arpeggios of broken major triads like sunlight rippling on water",
+    "soft warm string pad",
+    "slow round synth bass moving root to fifth",
+    "very soft brushed kick and faint hi-hat like water lapping",
+    "nostalgic, sun-warmed, bittersweet remembered-summer ruin theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "dark",
+    "aggressive",
+    "epic orchestral"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}

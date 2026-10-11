@@ -1,0 +1,48 @@
+{
+ "chunks": [
+  {
+   "song_id": "pOHL13dVswZPte4ZqIvO",
+   "range": {
+    "start_ms": 63200,
+    "end_ms": 83200
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "104 BPM",
+    "D natural minor",
+    "breathy wooden flute lead with long held notes and soft turns",
+    "slow rocking two-note harp figure like lapping water",
+    "soft reedy string pad",
+    "gentle rocking round synth bass on root and fifth",
+    "very sparse brushed hat on the offbeats and one soft low tap per bar",
+    "cosy-melancholy marsh wandering theme, lanterns floating on dark water",
+    "call and response between melody and water",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "pOHL13dVswZPte4ZqIvO",
+   "range": {
+    "start_ms": 9231,
+    "end_ms": 19231
+   }
+  }
+ ]
+}

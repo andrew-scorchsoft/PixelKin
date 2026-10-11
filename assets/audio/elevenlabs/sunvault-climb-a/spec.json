@@ -1,0 +1,90 @@
+{
+ "id": "sunvault-climb-a",
+ "kind": "loop",
+ "where": "Sunvault Climb I & II (golden vine terraces up to Nightreach) + the Sunfall vigil site",
+ "mood": "Vines to the Sky: warm, ascending, hopeful - every phrase climbs like the terraces; the sunniest route in the West.",
+ "bpm": 112,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "medium"
+ },
+ "core_styles": [
+  "16-bit SNES-era RPG soundtrack",
+  "retro sampled-chip instruments",
+  "112 BPM",
+  "radiant D major",
+  "bright round brass-like pulse-wave lead playing an ascending broken-chord melody that steps higher each phrase",
+  "fast shimmering harp arpeggios rolling upward",
+  "warm string pad",
+  "purposeful walking synth bass",
+  "brisk steady kick, snare and hi-hat walking groove",
+  "warm, hopeful, climbing adventure route theme",
+  "strong singable melody",
+  "great production quality",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "modern EDM drums",
+  "trap",
+  "dubstep",
+  "fade out",
+  "ritardando",
+  "electric guitar",
+  "ambient drone",
+  "minimalist",
+  "dark",
+  "melancholy"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{a bold call to climb: a drum pickup and an upward arpeggiated fanfare launching from low to high, each rung a step higher, landing on a bright chord that drives into the theme}",
+   "styles": [
+    "bold opening fanfare",
+    "ascending"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the climbing melody: a springy arpeggiated launch repeated a step higher each phrase, hummable and confident, bass walking}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "upward momentum"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the melody again with a bell counter-line sparkling above and the strings fuller, climbing higher still}",
+   "styles": [
+    "bell counter-melody",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a breather on a sunny terrace - B minor and G major, a lyrical singing line over gentle harp, drums light, golden and wondering, then a rising drum fill back to the climb}",
+   "styles": [
+    "B minor",
+    "pastoral breather",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the climbing theme returns in full stride; the last bar leads straight back into the main theme, no ending}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,47 @@
+{
+ "chunks": [
+  {
+   "song_id": "rOnn2REhkRTa7qVTJOAm",
+   "range": {
+    "start_ms": 57244,
+    "end_ms": 77244
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "112 BPM",
+    "radiant D major",
+    "bright round brass-like pulse-wave lead playing an ascending broken-chord melody that steps higher each phrase",
+    "fast shimmering harp arpeggios rolling upward",
+    "warm string pad",
+    "purposeful walking synth bass",
+    "brisk steady kick, snare and hi-hat walking groove",
+    "warm, hopeful, climbing adventure route theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "rOnn2REhkRTa7qVTJOAm",
+   "range": {
+    "start_ms": 8571,
+    "end_ms": 18571
+   }
+  }
+ ]
+}

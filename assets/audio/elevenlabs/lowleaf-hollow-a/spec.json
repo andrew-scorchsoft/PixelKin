@@ -1,0 +1,93 @@
+{
+ "id": "lowleaf-hollow-a",
+ "kind": "loop",
+ "where": "Lowleaf Hollow (the glowmoss forest town) and Gloamwood Dell",
+ "mood": "A dim-green glowmoss forest where every dewdrop catches cyan light — Lydian wonder, enchanted and curious.",
+ "bpm": 88,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "medium"
+ },
+ "core_styles": [
+  "16-bit SNES-era RPG soundtrack",
+  "retro sampled-chip instruments",
+  "88 BPM",
+  "G Lydian mode with the raised fourth",
+  "glassy bell and celesta lead, slow wondering phrases that hang on the raised fourth",
+  "sparkling glassy bell arpeggios of slow broken chords",
+  "breathy soft pad and warm low synth bass with long notes",
+  "soft wooden flute counter-melody",
+  "barely-there percussion, a soft tap per bar and dewdrop ticks",
+  "enchanted bioluminescent forest town, dewy wonder, a hush full of soft glow",
+  "strong singable melody",
+  "great production quality",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "modern EDM drums",
+  "trap",
+  "dubstep",
+  "electric guitar",
+  "fade out",
+  "ritardando",
+  "ambient drone",
+  "minimalist",
+  "dark",
+  "horror",
+  "busy drums",
+  "epic orchestral"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 3,
+   "text": "{a shimmering rising sparkle on glassy bells climbs through the Lydian raised fourth and blooms into a held glowing chord, the forest lighting up as you enter}",
+   "styles": [
+    "enchanted opening sparkle",
+    "magical"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the wondering bell melody: it floats up, hangs on the raised fourth, then resolves home luminously; slow sparkling arpeggios underneath, very hummable}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "sense of wonder"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the melody again with a soft wooden flute counter-melody weaving beneath it, lanterns strung between the trunks, a little fuller and warmer}",
+   "styles": [
+    "flute counter-melody",
+    "fuller arrangement",
+    "gentle festival glow"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 6,
+   "text": "{contrast: a hushed turn to E minor for the grey, dimmed moss-bed at the hollow's heart, the arpeggios thin, a low flute sighs over the pad, then the bells climb back toward the light}",
+   "styles": [
+    "E minor",
+    "tender melancholy",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the glowing bell melody returns in full wonder; the last bar leads straight back into the main theme, no ending}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

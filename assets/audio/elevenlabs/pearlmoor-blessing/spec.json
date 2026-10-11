@@ -1,0 +1,91 @@
+{
+ "id": "pearlmoor-blessing",
+ "kind": "loop",
+ "where": "The Tide-blessing festival on Pearlmoor Quay (the cutscene after the Tide Gleam is relit)",
+ "mood": "The going-out song — lantern boats on moonlit water; the quay waltz turned into a cool, glowing, sure ceremony.",
+ "bpm": 112,
+ "beats_per_bar": 3,
+ "motif": {
+  "strength": "medium"
+ },
+ "core_styles": [
+  "16-bit SNES-era RPG soundtrack",
+  "retro sampled-chip instruments",
+  "112 BPM",
+  "F major",
+  "3/4 waltz time",
+  "warm accordion-like pulse-wave lead singing a processional waltz melody",
+  "flowing harp arpeggios like lantern light on water over a lush string pad",
+  "deep tolling harbour bell on phrase starts",
+  "rocking waltz bass like a moored hull",
+  "moonlit lantern-boat festival, cool and glowing, celebratory but tender, a hymn-like communal song",
+  "strong singable melody",
+  "great production quality",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "modern EDM drums",
+  "trap",
+  "dubstep",
+  "fade out",
+  "ritardando",
+  "guitar",
+  "ambient drone",
+  "minimalist",
+  "sad",
+  "ending"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{the harbour bell tolls once, harp ripples outward like the boats pushing off, and the lead lifts the opening phrase of the waltz over a held chord that leads into the theme}",
+   "styles": [
+    "ceremonial opening",
+    "bell toll"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 16,
+   "text": "{the going-out song: a warm singable waltz melody, steady and sure, harp flowing beneath, the bell marking each phrase like a lantern set on the water}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "processional"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 16,
+   "text": "{the same melody again with a high flute descant and fuller strings, as if the whole quay joins in}",
+   "styles": [
+    "flute descant",
+    "fuller arrangement",
+    "communal swell"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a tender turn to D minor, the tide going out, the melody quiet and reflective over harp alone, then the strings swell back toward the major}",
+   "styles": [
+    "D minor",
+    "reflective",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 16,
+   "text": "{the going-out song returns full and glowing with the bell and descant together; the last bar flows straight back into the theme, no ending}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

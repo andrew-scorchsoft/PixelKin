@@ -1,0 +1,47 @@
+{
+ "chunks": [
+  {
+   "song_id": "gSBM93IDBc7YUOSKiiJS",
+   "range": {
+    "start_ms": 75451,
+    "end_ms": 95451
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "88 BPM",
+    "C Lydian, bright major with a raised fourth for wonder",
+    "soft pulse-wave lead with a rising questioning melody",
+    "bright bell and celesta sparkle figures climbing upward like lantern windows",
+    "plucked harp arpeggios",
+    "slow sustained string pad",
+    "slow warm synth bass",
+    "dreamy wandering orchard at blue hour, curious and wondering, a little mysterious",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "gSBM93IDBc7YUOSKiiJS",
+   "range": {
+    "start_ms": 8182,
+    "end_ms": 18182
+   }
+  }
+ ]
+}

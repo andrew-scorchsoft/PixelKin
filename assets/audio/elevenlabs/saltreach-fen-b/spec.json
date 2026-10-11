@@ -1,0 +1,93 @@
+{
+ "id": "saltreach-fen-b",
+ "kind": "loop",
+ "where": "Saltreach Fen II (the deep channels and lantern-reeds, past the Tidecall boundary)",
+ "mood": "The same fen lonelier and further in — a boat-rocking 6/8 through bone-white mist, one questioning phrase at a time.",
+ "bpm": 92,
+ "beats_per_bar": 2,
+ "motif": {
+  "strength": "low"
+ },
+ "core_styles": [
+  "16-bit SNES-era RPG soundtrack",
+  "retro sampled-chip instruments",
+  "92 BPM",
+  "6/8 compound time with a slow rocking lilt",
+  "D Dorian mode",
+  "lonely breathy pulse-wave and flute lead, one drifting questioning phrase every two bars",
+  "faint bell-buoy chime arpeggios in triplet lilt",
+  "deep slow lilting synth bass rocking like a moored boat",
+  "soft misty string pad",
+  "almost no percussion, a soft noise wash swell like moving mist",
+  "haunting, lonely, misty night marsh, between places",
+  "strong singable melody",
+  "great production quality",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "modern EDM drums",
+  "trap",
+  "dubstep",
+  "electric guitar",
+  "fade out",
+  "ritardando",
+  "cheerful",
+  "upbeat",
+  "bright major key",
+  "busy drums",
+  "ambient drone without melody",
+  "horror"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{a quiet atmospheric entrance: a mist swell, a distant buoy bell chimes twice, the low bass begins its slow rocking}",
+   "styles": [
+    "quiet atmospheric opening",
+    "mist rolling over black water"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 16,
+   "text": "{the lonely melody drifts in: a rising leap that hangs unresolved, answered by a faint bell glint, then a second phrase that asks again; slow and haunting but clearly tuneful}",
+   "styles": [
+    "main theme",
+    "haunting memorable hook",
+    "rocking boat lilt"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 16,
+   "text": "{the melody again an octave lower on a softer woodwind, the bell-buoy chimes now answering each phrase like a call across the channel, pad a touch warmer with the bright Dorian sixth glinting}",
+   "styles": [
+    "bell-buoy answers",
+    "Dorian glint"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 12,
+   "text": "{contrast: the channels open into still deep water, a lantern-reed glow; the bass holds a low pedal while a high bell line climbs slowly through B minor and back, very spacious}",
+   "styles": [
+    "spacious",
+    "deep still water",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 16,
+   "text": "{the drifting melody returns, and this time its settle-home phrase finally falls to D; the last bar rocks straight back into the main theme, no ending}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

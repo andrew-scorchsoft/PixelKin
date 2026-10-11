@@ -1,0 +1,90 @@
+{
+ "id": "pearlmoor-quay-c",
+ "kind": "loop",
+ "where": "The top of the Old Light on Pearlmoor Point — the joke-tower's punchline lantern room and its celebratory send-off",
+ "mood": "Festival of the floating lights — the quay waltz in its happiest dress, quick, ornamented and playful.",
+ "bpm": 116,
+ "beats_per_bar": 3,
+ "motif": {
+  "strength": "medium"
+ },
+ "core_styles": [
+  "16-bit SNES-era RPG soundtrack",
+  "retro sampled-chip instruments",
+  "116 BPM",
+  "F major",
+  "3/4 waltz time",
+  "lively accordion-like pulse-wave lead with quick grace-note runs",
+  "busy bell-buoy chimes and bright sparkle on phrase ends",
+  "bouncy oom-pah-pah waltz bass",
+  "light tambourine on beats two and three, brush on the downbeat",
+  "seaside festival dance, celebratory, playful and a little cheeky",
+  "strong singable melody",
+  "great production quality",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "modern EDM drums",
+  "trap",
+  "dubstep",
+  "fade out",
+  "ritardando",
+  "guitar",
+  "ambient drone",
+  "minimalist",
+  "melancholy",
+  "ending"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{a bright festive fanfare: a quick tambourine pickup and a flourish of grace-note runs on the lead, landing on a held chord that springs straight into the waltz}",
+   "styles": [
+    "festive opening flourish",
+    "celebratory"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 16,
+   "text": "{the waltz melody bright and quick, ornamented with grace notes, swinging on every downbeat, hummable and joyful}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "dancing"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 16,
+   "text": "{the same waltz again with a pizzicato and bell counter-line hopping on the offbeats, a little cheeky, fuller}",
+   "styles": [
+    "playful counter-melody",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a short comic tiptoe in D minor, staccato and sly like a joke being set up, then a rising run tumbles back into the theme}",
+   "styles": [
+    "D minor",
+    "playful staccato",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 16,
+   "text": "{the festive waltz returns in full swing; the last bar springs straight back into the theme, no ending}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

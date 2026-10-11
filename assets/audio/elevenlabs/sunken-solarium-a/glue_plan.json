@@ -1,0 +1,47 @@
+{
+ "chunks": [
+  {
+   "song_id": "A03xDenHhmEchoVGh5wJ",
+   "range": {
+    "start_ms": 70044,
+    "end_ms": 90044
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "96 BPM",
+    "G major with a wistful borrowed minor chord",
+    "warm singing pulse-wave lead whose phrases rise then sigh down a step",
+    "rolling plucked harp arpeggios of broken major triads like sunlight rippling on water",
+    "soft warm string pad",
+    "slow round synth bass moving root to fifth",
+    "very soft brushed kick and faint hi-hat like water lapping",
+    "nostalgic, sun-warmed, bittersweet remembered-summer ruin theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "A03xDenHhmEchoVGh5wJ",
+   "range": {
+    "start_ms": 10000,
+    "end_ms": 20000
+   }
+  }
+ ]
+}

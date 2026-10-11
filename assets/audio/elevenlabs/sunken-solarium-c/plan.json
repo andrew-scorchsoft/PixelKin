@@ -1,0 +1,200 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{a sunrise opening: a rapid harp arpeggio sweeping upward, the pad blooming like light breaking the horizon, a bright held chord that springs into the theme}",
+   "duration_ms": 9600,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "100 BPM",
+    "radiant G major",
+    "bright singing pulse-wave lead with lifting phrases",
+    "warm second lead answering the melody a bar later in call and response",
+    "quick shimmering harp arpeggios over a lush warm string pad bloom",
+    "warm walking synth bass",
+    "soft full drum kit with light shaker, gentle forward groove",
+    "radiant, hopeful, dawn-reaching sunrise theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "sunrise opening",
+    "blooming"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "dark",
+    "melancholy",
+    "bombastic orchestral"
+   ],
+   "context_adherence": "high",
+   "conditioning_ref": {
+    "song_id": "TOREmIgiwF3GKpN7UkLA",
+    "range": {
+     "start_ms": 10668,
+     "end_ms": 40668
+    }
+   },
+   "condition_strength": "high"
+  },
+  {
+   "text": "[Main Theme]\n{the radiant hometown-derived melody, warm and lifting, harp shimmering, the bass walking forward}",
+   "duration_ms": 19200,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "100 BPM",
+    "radiant G major",
+    "bright singing pulse-wave lead with lifting phrases",
+    "warm second lead answering the melody a bar later in call and response",
+    "quick shimmering harp arpeggios over a lush warm string pad bloom",
+    "warm walking synth bass",
+    "soft full drum kit with light shaker, gentle forward groove",
+    "radiant, hopeful, dawn-reaching sunrise theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme",
+    "memorable hook",
+    "warmth returning"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "dark",
+    "melancholy",
+    "bombastic orchestral"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Answer]\n{the melody sung again, now answered phrase by phrase by the warm second lead a bar later, brighter and fuller - call and response}",
+   "duration_ms": 19200,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "100 BPM",
+    "radiant G major",
+    "bright singing pulse-wave lead with lifting phrases",
+    "warm second lead answering the melody a bar later in call and response",
+    "quick shimmering harp arpeggios over a lush warm string pad bloom",
+    "warm walking synth bass",
+    "soft full drum kit with light shaker, gentle forward groove",
+    "radiant, hopeful, dawn-reaching sunrise theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "call and response",
+    "counter-melody",
+    "fuller arrangement"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "dark",
+    "melancholy",
+    "bombastic orchestral"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast: a hush in E minor and C major, the drums drop out, long reaching notes like a figure facing east and waiting, then a rising build of harp toward the light}",
+   "duration_ms": 19200,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "100 BPM",
+    "radiant G major",
+    "bright singing pulse-wave lead with lifting phrases",
+    "warm second lead answering the melody a bar later in call and response",
+    "quick shimmering harp arpeggios over a lush warm string pad bloom",
+    "warm walking synth bass",
+    "soft full drum kit with light shaker, gentle forward groove",
+    "radiant, hopeful, dawn-reaching sunrise theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "E minor",
+    "expectant",
+    "contrasting section"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "dark",
+    "melancholy",
+    "bombastic orchestral"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the radiant theme returns in full bloom, both leads together; the last bar leads straight back into the main theme, no ending}",
+   "duration_ms": 19200,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "100 BPM",
+    "radiant G major",
+    "bright singing pulse-wave lead with lifting phrases",
+    "warm second lead answering the melody a bar later in call and response",
+    "quick shimmering harp arpeggios over a lush warm string pad bloom",
+    "warm walking synth bass",
+    "soft full drum kit with light shaker, gentle forward groove",
+    "radiant, hopeful, dawn-reaching sunrise theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "dark",
+    "melancholy",
+    "bombastic orchestral"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}

@@ -1,0 +1,94 @@
+{
+ "id": "lowleaf-hollow-c",
+ "kind": "loop",
+ "where": "Glowmoss Deep (and its B1F), the Spore Grotto, the Sounding Cave and the Grovefall vigil site",
+ "mood": "The glowing-dark deep forest — a glassy bell melody whose echoes answer across the black, sparse and cathedral-like, with a drained grey shadow in it.",
+ "bpm": 90,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "low"
+ },
+ "core_styles": [
+  "16-bit SNES-era RPG soundtrack",
+  "retro sampled-chip instruments",
+  "90 BPM",
+  "G Lydian mode",
+  "glassy bell lead with a slow singing melody",
+  "faint counter-bell echoing the melody a bar later a fifth higher",
+  "shimmering bell arpeggios",
+  "breathy sustained pad with cathedral reverb",
+  "warm sustained low pad-bass",
+  "sparse soft taps and dew-shimmer swells",
+  "mysterious glowing dark deep-forest dungeon, quiet wonder with a thread of unease",
+  "strong singable melody",
+  "great production quality",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "modern EDM drums",
+  "trap",
+  "dubstep",
+  "electric guitar",
+  "fade out",
+  "ritardando",
+  "cheerful",
+  "upbeat",
+  "busy drums",
+  "ambient drone without melody",
+  "horror",
+  "epic orchestral"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{a quiet atmospheric entrance: a pad breathes in, dew drips tick, a single glassy bell sounds the first notes of the theme and its echo answers from far away}",
+   "styles": [
+    "quiet atmospheric opening",
+    "deep glowing dark"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the slow bell melody rises through the Lydian raised fourth and hangs there, luminous; the counter-bell echoes each phrase a bar later, like glimmers answering across the dark}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "echoing glimmers"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the melody again, now with the arpeggios shimmering underneath and the pad swelling, deeper into the wood}",
+   "styles": [
+    "shimmering arpeggios",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: the drained grey ground, the glow gone out; E minor, the arpeggios stop, a low hollow bell line moves slowly over the bass pedal, uneasy and sorrowful, then one bright glint returns}",
+   "styles": [
+    "E minor",
+    "drained and grey",
+    "sorrowful unease",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the glassy bell melody returns with its echoes; the last bar leads straight back into the main theme, no ending}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

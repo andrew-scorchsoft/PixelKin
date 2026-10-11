@@ -1,0 +1,194 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{a bold call to climb: a drum pickup and an upward arpeggiated fanfare launching from low to high, each rung a step higher, landing on a bright chord that drives into the theme}",
+   "duration_ms": 8571,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "112 BPM",
+    "radiant D major",
+    "bright round brass-like pulse-wave lead playing an ascending broken-chord melody that steps higher each phrase",
+    "fast shimmering harp arpeggios rolling upward",
+    "warm string pad",
+    "purposeful walking synth bass",
+    "brisk steady kick, snare and hi-hat walking groove",
+    "warm, hopeful, climbing adventure route theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "bold opening fanfare",
+    "ascending"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "dark",
+    "melancholy"
+   ],
+   "context_adherence": "high",
+   "conditioning_ref": {
+    "song_id": "TOREmIgiwF3GKpN7UkLA",
+    "range": {
+     "start_ms": 10668,
+     "end_ms": 40668
+    }
+   },
+   "condition_strength": "medium"
+  },
+  {
+   "text": "[Main Theme]\n{the climbing melody: a springy arpeggiated launch repeated a step higher each phrase, hummable and confident, bass walking}",
+   "duration_ms": 17143,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "112 BPM",
+    "radiant D major",
+    "bright round brass-like pulse-wave lead playing an ascending broken-chord melody that steps higher each phrase",
+    "fast shimmering harp arpeggios rolling upward",
+    "warm string pad",
+    "purposeful walking synth bass",
+    "brisk steady kick, snare and hi-hat walking groove",
+    "warm, hopeful, climbing adventure route theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme",
+    "memorable hook",
+    "upward momentum"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "dark",
+    "melancholy"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme Reprise]\n{the melody again with a bell counter-line sparkling above and the strings fuller, climbing higher still}",
+   "duration_ms": 17143,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "112 BPM",
+    "radiant D major",
+    "bright round brass-like pulse-wave lead playing an ascending broken-chord melody that steps higher each phrase",
+    "fast shimmering harp arpeggios rolling upward",
+    "warm string pad",
+    "purposeful walking synth bass",
+    "brisk steady kick, snare and hi-hat walking groove",
+    "warm, hopeful, climbing adventure route theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "bell counter-melody",
+    "fuller arrangement"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "dark",
+    "melancholy"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast: a breather on a sunny terrace - B minor and G major, a lyrical singing line over gentle harp, drums light, golden and wondering, then a rising drum fill back to the climb}",
+   "duration_ms": 17143,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "112 BPM",
+    "radiant D major",
+    "bright round brass-like pulse-wave lead playing an ascending broken-chord melody that steps higher each phrase",
+    "fast shimmering harp arpeggios rolling upward",
+    "warm string pad",
+    "purposeful walking synth bass",
+    "brisk steady kick, snare and hi-hat walking groove",
+    "warm, hopeful, climbing adventure route theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "B minor",
+    "pastoral breather",
+    "contrasting section"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "dark",
+    "melancholy"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the climbing theme returns in full stride; the last bar leads straight back into the main theme, no ending}",
+   "duration_ms": 17143,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "112 BPM",
+    "radiant D major",
+    "bright round brass-like pulse-wave lead playing an ascending broken-chord melody that steps higher each phrase",
+    "fast shimmering harp arpeggios rolling upward",
+    "warm string pad",
+    "purposeful walking synth bass",
+    "brisk steady kick, snare and hi-hat walking groove",
+    "warm, hopeful, climbing adventure route theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "dark",
+    "melancholy"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}

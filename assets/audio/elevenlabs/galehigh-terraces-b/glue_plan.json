@@ -1,0 +1,48 @@
+{
+ "chunks": [
+  {
+   "song_id": "CWlq5ws1b4yzPFV64CTR",
+   "range": {
+    "start_ms": 52960,
+    "end_ms": 72960
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "112 BPM",
+    "warm D major with a wistful B minor turn",
+    "rounded lyrical pulse-wave lead with long held notes",
+    "gentle rolling harp arpeggio",
+    "warm string pad",
+    "relaxed round synth bass on quarter notes",
+    "soft brushed kick and hat, sparse",
+    "a distant soft wind swell once per phrase",
+    "cosy cliff-town indoor theme, lamplight and kites resting on the walls",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "CWlq5ws1b4yzPFV64CTR",
+   "range": {
+    "start_ms": 4286,
+    "end_ms": 14286
+   }
+  }
+ ]
+}

@@ -1,0 +1,199 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{stepping out under the whole sky: a soft clockwork tick begins, a slow glassy arpeggio unfolds upward like the dome opening, one high bell, then the lead enters}",
+   "duration_ms": 8571,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "84 BPM",
+    "A minor resolving to C major",
+    "lonely spacious pulse-wave lead with long notes and wide intervals",
+    "slow glassy arpeggiated pad of broken chords like turning starlight",
+    "soft sparse celesta bell glints",
+    "deep slow sustained synth bass",
+    "faint dry clockwork tick on a steady subdivision instead of a drum kit",
+    "vast, lonely, reverent, wondrous star-observatory town theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "reverent opening",
+    "vast night sky"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "full drum kit",
+    "upbeat",
+    "horror"
+   ],
+   "context_adherence": "high",
+   "conditioning_ref": {
+    "song_id": "TOREmIgiwF3GKpN7UkLA",
+    "range": {
+     "start_ms": 10668,
+     "end_ms": 40668
+    }
+   },
+   "condition_strength": "medium"
+  },
+  {
+   "text": "[Main Theme]\n{the lonely star melody in A minor: a slow wide rising leap that hangs in the air, unfolding over the slow arpeggio, clockwork ticking beneath}",
+   "duration_ms": 22857,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "84 BPM",
+    "A minor resolving to C major",
+    "lonely spacious pulse-wave lead with long notes and wide intervals",
+    "slow glassy arpeggiated pad of broken chords like turning starlight",
+    "soft sparse celesta bell glints",
+    "deep slow sustained synth bass",
+    "faint dry clockwork tick on a steady subdivision instead of a drum kit",
+    "vast, lonely, reverent, wondrous star-observatory town theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme",
+    "memorable hook",
+    "lonely and vast"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "full drum kit",
+    "upbeat",
+    "horror"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme Reprise]\n{the melody again, now answered by a soft second voice a phrase later across the dome, strings warming underneath}",
+   "duration_ms": 22857,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "84 BPM",
+    "A minor resolving to C major",
+    "lonely spacious pulse-wave lead with long notes and wide intervals",
+    "slow glassy arpeggiated pad of broken chords like turning starlight",
+    "soft sparse celesta bell glints",
+    "deep slow sustained synth bass",
+    "faint dry clockwork tick on a steady subdivision instead of a drum kit",
+    "vast, lonely, reverent, wondrous star-observatory town theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "answering counter-melody",
+    "fuller arrangement"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "full drum kit",
+    "upbeat",
+    "horror"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast: the lift to C major and F major - the melody opens into hope, bells brightening like constellations relighting one by one, a near-dawn glow, then easing back to A minor}",
+   "duration_ms": 22857,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "84 BPM",
+    "A minor resolving to C major",
+    "lonely spacious pulse-wave lead with long notes and wide intervals",
+    "slow glassy arpeggiated pad of broken chords like turning starlight",
+    "soft sparse celesta bell glints",
+    "deep slow sustained synth bass",
+    "faint dry clockwork tick on a steady subdivision instead of a drum kit",
+    "vast, lonely, reverent, wondrous star-observatory town theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "C major",
+    "hope dawning",
+    "contrasting section"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "full drum kit",
+    "upbeat",
+    "horror"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the lonely melody returns under the stars; the last bar leads straight back into the main theme, no ending}",
+   "duration_ms": 22857,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "84 BPM",
+    "A minor resolving to C major",
+    "lonely spacious pulse-wave lead with long notes and wide intervals",
+    "slow glassy arpeggiated pad of broken chords like turning starlight",
+    "soft sparse celesta bell glints",
+    "deep slow sustained synth bass",
+    "faint dry clockwork tick on a steady subdivision instead of a drum kit",
+    "vast, lonely, reverent, wondrous star-observatory town theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "full drum kit",
+    "upbeat",
+    "horror"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}
