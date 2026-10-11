@@ -1,0 +1,199 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{the last dark: a hushed A minor chord and the first notes of the lullaby on a lone music box, then the harmony turns through G and the sun breaks onto a radiant C major chord with a harp sweep, leading into the theme}",
+   "duration_ms": 11429,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "84 BPM",
+    "C major",
+    "the hometown lullaby theme returned in full daylight",
+    "warm pulse-wave and music-box lead",
+    "flowing plucked harp arpeggios",
+    "warm lush string chords",
+    "gentle heartbeat drums with soft brushes",
+    "radiant, tender, tearful joy, sunrise",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "minor turning to major",
+    "sunrise opening"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "dark",
+    "ominous",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "bombastic"
+   ],
+   "context_adherence": "high",
+   "conditioning_ref": {
+    "song_id": "TOREmIgiwF3GKpN7UkLA",
+    "range": {
+     "start_ms": 10668,
+     "end_ms": 40668
+    }
+   },
+   "condition_strength": "high"
+  },
+  {
+   "text": "[Main Theme]\n{the hometown lullaby melody whole in radiant C major, warm lead over flowing harp arpeggios and strings, a soft heartbeat groove}",
+   "duration_ms": 22857,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "84 BPM",
+    "C major",
+    "the hometown lullaby theme returned in full daylight",
+    "warm pulse-wave and music-box lead",
+    "flowing plucked harp arpeggios",
+    "warm lush string chords",
+    "gentle heartbeat drums with soft brushes",
+    "radiant, tender, tearful joy, sunrise",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme",
+    "memorable hook",
+    "daylight"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "dark",
+    "ominous",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "bombastic"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme Reprise]\n{the lullaby again, now with a flute counter-melody and bell glints, strings fuller and higher, the lift reaching the sky}",
+   "duration_ms": 22857,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "84 BPM",
+    "C major",
+    "the hometown lullaby theme returned in full daylight",
+    "warm pulse-wave and music-box lead",
+    "flowing plucked harp arpeggios",
+    "warm lush string chords",
+    "gentle heartbeat drums with soft brushes",
+    "radiant, tender, tearful joy, sunrise",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "flute counter-melody",
+    "fuller arrangement"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "dark",
+    "ominous",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "bombastic"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast: a tender remembering of the long night, a gentle turn to A minor and F, the melody lower and slower, then lifting through G back toward home}",
+   "duration_ms": 17143,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "84 BPM",
+    "C major",
+    "the hometown lullaby theme returned in full daylight",
+    "warm pulse-wave and music-box lead",
+    "flowing plucked harp arpeggios",
+    "warm lush string chords",
+    "gentle heartbeat drums with soft brushes",
+    "radiant, tender, tearful joy, sunrise",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "bittersweet",
+    "remembering",
+    "contrasting section"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "dark",
+    "ominous",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "bombastic"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the lullaby returns radiant and complete; the last bar leads straight back into the main theme, no ending}",
+   "duration_ms": 22857,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "84 BPM",
+    "C major",
+    "the hometown lullaby theme returned in full daylight",
+    "warm pulse-wave and music-box lead",
+    "flowing plucked harp arpeggios",
+    "warm lush string chords",
+    "gentle heartbeat drums with soft brushes",
+    "radiant, tender, tearful joy, sunrise",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "fade out",
+    "ritardando",
+    "dark",
+    "ominous",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "bombastic"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}
