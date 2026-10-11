@@ -5,6 +5,11 @@ art-style §I/§14b). Objects are whole multi-tile transparent sprites packed by
 
 generate-image (Google Nano) has no native alpha, so we render the brief on a flat MAGENTA
 chroma field (art-style §6), key the magenta out, autocrop, then snap onto an exact WxH
+tile canvas. `--provider openai` (gpt-image-2.5, the 2026-10 default) uses NATIVE alpha
+instead: no magenta in the brief, and the snap measures the bbox on alpha>=64 (2.5 leaves a
+faint haze), BOX-resamples to fit and hard-thresholds alpha at 96 (the reedcutter_hut recipe).
+`--input-image` passes style references through; `--raw-out` keeps the full-res gen.
+Snap onto an exact WxH
 tile-multiple canvas (bottom-centred, with `--top-pad` rows reserved on top for a roof/lamp
 overhang). Composites the result over a checkerboard at /tmp for a clean-transparency eyeball.
 
@@ -34,6 +39,9 @@ _BASE = ("Original 16-bit SNES-era RPG pixel-art furniture sprite, chunky pixels
 #             doll's-house wall): absolutely NO isometric or 3/4 angle, NO top
 #             surface visible, NO perspective — and the piece must fill the
 #             frame EDGE TO EDGE so it sits flush against the room's wall.
+_BASE_ALPHA = ("Original 16-bit SNES-era RPG pixel-art furniture sprite, chunky crisp pixels, "
+               "dark-ink outline, top-left light source, warm restrained palette, NO text. "
+               "TRANSPARENT background: just the object, no floor, no wall, no room. ")
 STYLE = {
     "topdown": _BASE + ("A single object drawn whole, viewed from the gentle top-down-with-"
                         "a-hint-of-front angle of a classic RPG room interior: most of the "
@@ -46,6 +54,28 @@ STYLE = {
                       "EDGE TO EDGE horizontally and reach the very bottom of the frame "
                       "(its feet/base at the bottom edge). "),
 }
+
+
+def alpha_snap(raw: Path, w_tiles: int, h_tiles: int, top_pad: int,
+               fill: bool = False) -> Image.Image:
+    """Native-alpha snap: bbox on alpha>=64, BOX resample, hard alpha at 96, bottom-anchored."""
+    im = Image.open(raw).convert("RGBA")
+    bbox = im.split()[3].point(lambda v: 255 if v >= 64 else 0).getbbox()
+    if bbox:
+        im = im.crop(bbox)
+    tw, th = w_tiles * 16, h_tiles * 16
+    body_h = th - top_pad * 16
+    if fill:
+        nw, nh = tw, body_h
+    else:
+        sc = min(tw / im.width, body_h / im.height)
+        nw, nh = max(1, round(im.width * sc)), max(1, round(im.height * sc))
+    im = im.resize((nw, nh), Image.BOX)
+    r, g, b, a = im.split()
+    im = Image.merge("RGBA", (r, g, b, a.point(lambda v: 255 if v >= 96 else 0)))
+    canvas = Image.new("RGBA", (tw, th), (0, 0, 0, 0))
+    canvas.alpha_composite(im, ((tw - nw) // 2, th - nh))
+    return canvas
 
 
 def key_and_snap(raw: Path, w_tiles: int, h_tiles: int, top_pad: int,
@@ -114,6 +144,9 @@ def main() -> int:
     ap.add_argument("--provider", default="google")
     ap.add_argument("--projection", choices=("topdown", "front"), default="topdown",
                     help="'front' = strict wall-elevation (wall-mounted pieces)")
+    ap.add_argument("--input-image", action="append", default=[],
+                    help="style reference(s) passed through to generate-image")
+    ap.add_argument("--raw-out", default=None, help="also keep the full-res gen here")
     ap.add_argument("--outdir", default=None,
                     help="write somewhere other than the live masters dir (A/B trials)")
     args = ap.parse_args()
@@ -122,14 +155,26 @@ def main() -> int:
     outdir.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as td:
         raw = Path(td) / "raw.png"
-        prompt = STYLE[args.projection] + args.subject
-        r = subprocess.run([PY, str(GEN), "--prompt", prompt, "--output", str(raw),
-                            "--provider", args.provider], capture_output=True, text=True)
+        alpha = args.provider == "openai"
+        style = STYLE[args.projection]
+        if alpha:
+            style = style.replace(_BASE, _BASE_ALPHA)
+        prompt = style + args.subject
+        cmd = [PY, str(GEN), "--prompt", prompt, "--output", str(raw),
+               "--provider", args.provider]
+        if alpha:
+            cmd.append("--transparent")
+        for ref in args.input_image:
+            cmd += ["--input-image", ref]
+        r = subprocess.run(cmd, capture_output=True, text=True)
         if not raw.exists():
             print(r.stdout[-2000:]); print(r.stderr[-2000:]); return 1
         out = outdir / f"{args.stem}.png"
-        snapped = key_and_snap(raw, args.w, args.h, args.top_pad,
-                               fill=(args.projection == "front"))
+        if args.raw_out:
+            Path(args.raw_out).write_bytes(raw.read_bytes())
+        snap = alpha_snap if alpha else key_and_snap
+        snapped = snap(raw, args.w, args.h, args.top_pad,
+                       fill=(args.projection == "front"))
         snapped.save(out)
         checker(snapped).save(f"/tmp/obj_{args.stem}.png")
         shown = out.relative_to(REPO) if out.is_relative_to(REPO) else out
