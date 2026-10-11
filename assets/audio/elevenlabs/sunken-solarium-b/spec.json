@@ -13,7 +13,7 @@
   "retro sampled-chip instruments",
   "88 BPM",
   "E minor relative to G major",
-  "spacious pulse-wave lead with long notes and rests, sinking phrases that do not always climb back",
+  "spacious pulse-wave lead with long notes and rests, sinking phrases that settle low",
   "slow submerged low harp arpeggio rolling like deep water",
   "cool string pad with a warm golden glow underneath",
   "deep synth bass swelling like a slow tide",
@@ -81,7 +81,7 @@
   {
    "name": "Main Theme Return",
    "bars": 8,
-   "text": "{the E minor melody returns, quiet and lonely; the last bar leads straight back into the main theme, no ending}",
+   "text": "{the E minor melody returns, quiet and lonely; the last bar leads straight back into the main theme}",
    "styles": [
     "main theme returns",
     "seamless loop back to the start of the theme"

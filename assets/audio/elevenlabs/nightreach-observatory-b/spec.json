@@ -12,7 +12,7 @@
   "16-bit SNES-era RPG soundtrack",
   "retro sampled-chip instruments",
   "80 BPM",
-  "A minor that never fully resolves",
+  "A minor, phrases ending on open unresolved suspensions",
   "thin isolated pulse-wave lead with a lonely sad line trailing into long rests",
   "slow minor music-box arpeggio with suspended chords",
   "soft hollow string pad",
@@ -44,7 +44,7 @@
   {
    "name": "Intro",
    "bars": 3,
-   "text": "{a hushed interior: an uneven clock tick in an empty room, a slow minor music-box figure, a held suspended chord that never lands}",
+   "text": "{a hushed interior: an uneven clock tick in an empty room, a slow minor music-box figure, a held suspended chord left hanging open}",
    "styles": [
     "quiet atmospheric intro",
     "lonely room"
@@ -82,7 +82,7 @@
   {
    "name": "Main Theme Return",
    "bars": 8,
-   "text": "{the haunted melody returns, unresolved; the last bar hangs on a suspension that leads straight back into the main theme, no ending}",
+   "text": "{the haunted melody returns, unresolved; the last bar hangs on a suspension that leads straight back into the main theme}",
    "styles": [
     "main theme returns",
     "seamless loop back to the start of the theme"

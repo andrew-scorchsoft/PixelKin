@@ -53,7 +53,7 @@
   {
    "name": "Main Theme",
    "bars": 8,
-   "text": "{the slow glassy melody: a rising lift held long over two bars, then a gentle descent that hangs on the second degree and never lands firmly; arpeggio drifting high, bass barely moving}",
+   "text": "{the slow glassy melody: a rising lift held long over two bars, then a gentle descent that hangs on the second degree, softly open; arpeggio drifting high, bass barely moving}",
    "styles": [
     "main theme",
     "memorable slow hook",
@@ -85,7 +85,7 @@
   {
    "name": "Main Theme Return",
    "bars": 8,
-   "text": "{the glassy theme returns, sparser and still; the last bar holds a suspended D colour that rises straight back into the theme, no ending}",
+   "text": "{the glassy theme returns, sparser and still; the last bar holds a suspended D colour that rises straight back into the theme}",
    "styles": [
     "main theme return",
     "suspended",

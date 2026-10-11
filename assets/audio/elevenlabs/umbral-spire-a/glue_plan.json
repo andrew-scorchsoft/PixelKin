@@ -1,7 +1,7 @@
 {
  "chunks": [
   {
-   "song_id": "dyuMpL5KF1KiB3aWu1N1",
+   "song_id": "JhyHuNZ9vJD9kbdXJKpv",
    "range": {
     "start_ms": 49198,
     "end_ms": 69198
@@ -11,18 +11,18 @@
    "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
    "duration_ms": 4000,
    "positive_styles": [
-    "16-bit SNES-era RPG soundtrack",
-    "retro sampled-chip instruments",
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
     "132 BPM",
     "A minor turning to A major",
     "final climax theme",
     "layered pulse-wave lead booming a noble minor melody",
     "solemn pipe organ and warm reverbed string chords",
-    "driving urgent synth bass",
-    "full driving drums with timpani rolls and crash cymbals",
+    "deep plucked sampled bass driving in eighths",
+    "sampled 16-bit drum kit and timpani rolls on a steady driving beat, crash cymbals on accents",
     "tragic, grave and courageous, sorrow and resolve",
     "strong singable melody",
-    "great production quality",
+    "authentic 16-bit game music sound",
     "instrumental",
     "seamless transition back to the theme"
    ],
@@ -37,7 +37,7 @@
    "context_adherence": "high"
   },
   {
-   "song_id": "dyuMpL5KF1KiB3aWu1N1",
+   "song_id": "JhyHuNZ9vJD9kbdXJKpv",
    "range": {
     "start_ms": 10909,
     "end_ms": 20909

@@ -3,12 +3,13 @@
  "kind": "loop",
  "where": "Umbral Spire ascent (gatehouse, null-works, high gallery)",
  "mood": "The Black Ascent: the climb through the dead Lumenary, null-lanterns leaking anti-light; relentless minor drive, all tension and no release.",
- "duration": 82.312,
- "loop_start": 9.66,
- "seam": 0.199,
+ "duration": 79.464,
+ "loop_start": 6.827,
+ "seam": 0.532,
  "bpm_est": 69.8,
- "song_id": "QO8FdxQZuTELXVyEJmc2",
+ "song_id": "ks4UeIS5M6OGjjg9v8GK",
  "raw_ms": 75468,
  "motif": null,
- "lufs": -15.5
+ "warning": "seam 0.532 > 0.45: listen to the join, consider --reglue",
+ "lufs": -15.4
 }

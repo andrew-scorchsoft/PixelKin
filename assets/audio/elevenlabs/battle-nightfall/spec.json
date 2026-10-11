@@ -46,7 +46,7 @@
   {
    "name": "The Lanterns Gutter",
    "bars": 4,
-   "text": "{starts low and close, not quiet: the creeping chromatic bass ostinato alone, a ticking hi-hat joins, organ stabs creep in, then the full band slams into the theme}",
+   "text": "{starts low and close at full presence: the creeping chromatic bass ostinato alone, a ticking hi-hat joins, organ stabs creep in, then the full band slams into the theme}",
    "styles": [
     "sinister creeping build",
     "tension rising bar by bar",
@@ -97,7 +97,7 @@
   {
    "name": "Nightfall Theme Return",
    "bars": 8,
-   "text": "{the cold minor hook returns at full intensity; the last bar is a tom fill on the dominant leading straight back into the theme, no ending}",
+   "text": "{the cold minor hook returns at full intensity; the last bar is a tom fill on the dominant leading straight back into the theme}",
    "styles": [
     "main battle hook returns",
     "tom fill",

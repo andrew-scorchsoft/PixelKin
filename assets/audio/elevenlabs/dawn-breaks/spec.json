@@ -81,7 +81,7 @@
   {
    "name": "Main Theme Return",
    "bars": 8,
-   "text": "{the lullaby returns radiant and complete; the last bar leads straight back into the main theme, no ending}",
+   "text": "{the lullaby returns radiant and complete; the last bar leads straight back into the main theme}",
    "styles": [
     "main theme returns",
     "seamless loop back to the start of the theme"

@@ -12,7 +12,7 @@
   "16-bit SNES-era RPG soundtrack",
   "retro sampled-chip instruments",
   "100 BPM",
-  "C major, radiant, no minor",
+  "C major, radiant and wholly bright",
   "bright warm pulse-wave lead singing the hometown lullaby with confidence",
   "flowing ascending harp arpeggios",
   "lush warm string pad",
@@ -81,7 +81,7 @@
   {
    "name": "Main Theme Return",
    "bars": 8,
-   "text": "{the lullaby returns in full radiant bloom with bells and counter-melody together; the last bar leads straight back into the theme, no ending}",
+   "text": "{the lullaby returns in full radiant bloom with bells and counter-melody together; the last bar leads straight back into the theme}",
    "styles": [
     "main theme returns",
     "seamless loop back to the start of the theme"

@@ -12,7 +12,7 @@
   "80 BPM",
   "A minor",
   "single deep tower bell toll",
-  "low sub-bass swell under the bell",
+  "low timpani swell under the bell",
   "high shimmering celesta and bell motes",
   "awed ancient mysterious sting",
   "sparse and spacious with warm reverb",
@@ -40,7 +40,7 @@
   {
    "name": "Toll",
    "bars": 2,
-   "text": "{one deep low bell toll on A with a soft sub-bass swell underneath, then a few quiet high shimmering bell motes drifting down as the toll rings out to silence}",
+   "text": "{one deep low bell toll on A with a soft low timpani swell underneath, then a few quiet high shimmering bell motes drifting down as the toll rings out to silence}",
    "styles": [
     "single bell toll",
     "shimmering tail",

@@ -17,7 +17,7 @@
   "timpani rolls and heavy sampled battle drums",
   "soaring sawtooth lead melody",
   "powerful brass chords",
-  "final boss battle theme, epic, tragic and sorrowful, never cartoonish",
+  "final boss battle theme, epic, tragic, sorrowful and dignified",
   "strong memorable melody",
   "great production quality",
   "instrumental"
@@ -83,7 +83,7 @@
   {
    "name": "The Gentle Dark",
    "bars": 8,
-   "text": "{contrast: the drums drop to a slow heartbeat, a quiet, tender, almost lullaby-like organ and bell melody — the seductive sorrow of a night that never ends — then a timpani crescendo}",
+   "text": "{contrast: the drums drop to a slow heartbeat, a quiet, tender, almost lullaby-like organ and bell melody — the seductive sorrow of an endless night — then a timpani crescendo}",
    "styles": [
     "haunting tender interlude",
     "sorrowful lullaby",
@@ -106,7 +106,7 @@
   {
    "name": "Boss Theme Return",
    "bars": 8,
-   "text": "{back to B minor, the grand boss theme at full power; the last bar is a timpani and drum fill leading straight back into the theme, no ending}",
+   "text": "{back to B minor, the grand boss theme at full power; the last bar is a timpani and drum fill leading straight back into the theme}",
    "styles": [
     "main boss hook returns",
     "timpani fill",

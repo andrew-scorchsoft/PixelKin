@@ -18,7 +18,7 @@
   "faint bell-buoy chime arpeggios in triplet lilt",
   "deep slow lilting synth bass rocking like a moored boat",
   "soft misty string pad",
-  "almost no percussion, a soft noise wash swell like moving mist",
+  "percussion only a soft noise-wash swell like moving mist",
   "haunting, lonely, misty night marsh, between places",
   "strong singable melody",
   "great production quality",
@@ -83,7 +83,7 @@
   {
    "name": "Main Theme Return",
    "bars": 16,
-   "text": "{the drifting melody returns, and this time its settle-home phrase finally falls to D; the last bar rocks straight back into the main theme, no ending}",
+   "text": "{the drifting melody returns, and this time its settle-home phrase finally falls to D; the last bar rocks straight back into the main theme}",
    "styles": [
     "main theme returns",
     "seamless loop back to the start of the theme"

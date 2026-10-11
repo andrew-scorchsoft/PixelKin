@@ -333,7 +333,7 @@
      "mood": "Crown of Null: the summit under the Keystar; grave, sorrowful grandeur and driving resolve, the hometown motif boomed in minor and promised its major.",
      "classic": "play/assets/audio/music/umbral-spire-a.mp3",
      "remaster": "play/assets/audio/music/remaster/umbral-spire-a.mp3",
-     "loop_start": 14.884
+     "loop_start": 12.353
     },
     {
      "id": "umbral-spire-b",
@@ -342,7 +342,7 @@
      "mood": "The Black Ascent: the climb through the dead Lumenary, null-lanterns leaking anti-light; relentless minor drive, all tension and no release.",
      "classic": "play/assets/audio/music/umbral-spire-b.mp3",
      "remaster": "play/assets/audio/music/remaster/umbral-spire-b.mp3",
-     "loop_start": 9.66
+     "loop_start": 6.827
     },
     {
      "id": "umbral-spire-c",
@@ -406,7 +406,7 @@
      "mood": "The arena duel — proud, rousing and fair: a respected challenger in the lantern-light, the fight that earns a constellation.",
      "classic": "play/assets/audio/music/battle-emberfall.mp3",
      "remaster": "play/assets/audio/music/remaster/battle-emberfall.mp3",
-     "loop_start": 9.799
+     "loop_start": 9.288
     },
     {
      "id": "battle-hours",
@@ -424,7 +424,7 @@
      "mood": "The fight you hear a thousand times — urgent, catchy and winnable: a minor-key chase that bursts into a heroic major lift.",
      "classic": "play/assets/audio/music/battle-main-dusk-duel.mp3",
      "remaster": "play/assets/audio/music/remaster/battle-main-dusk-duel.mp3",
-     "loop_start": 0.046
+     "loop_start": 6.594
     },
     {
      "id": "battle-nightfall",
@@ -442,7 +442,7 @@
      "mood": "The rival who grew up beside you — cocky, quick, competitive and fond: a grin across the field, and the friendship under it.",
      "classic": "play/assets/audio/music/battle-veil.mp3",
      "remaster": "play/assets/audio/music/remaster/battle-veil.mp3",
-     "loop_start": 8.354
+     "loop_start": 5.921
     }
    ]
   },

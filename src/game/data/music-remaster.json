@@ -8,8 +8,8 @@
    "mood": "The last stand on the black mountain — grand, tragic and driving: a sorrowful antagonist who wants a gentle endless night, and the light that will not go out."
   },
   "battle-emberfall": {
-   "loop_start": 9.799,
-   "duration": 55.51,
+   "loop_start": 9.288,
+   "duration": 60.264,
    "where": "Trainer battles: every Lampwarden duel for a Gleam (Brisa, Reyl, Sable, Otho), the Beacon and route trainers, and Wren's first friendly bout",
    "mood": "The arena duel — proud, rousing and fair: a respected challenger in the lantern-light, the fight that earns a constellation."
   },
@@ -20,8 +20,8 @@
    "mood": "Fighting a keeper of the sky's turning — awed, patient and vast, like a great clock: a jammed wheel rocking toward the next hour."
   },
   "battle-main-dusk-duel": {
-   "loop_start": 0.046,
-   "duration": 36.702041,
+   "loop_start": 6.594,
+   "duration": 59.298,
    "where": "Every wild kin battle (the default battle bed) and the attract-mode trailer duel",
    "mood": "The fight you hear a thousand times — urgent, catchy and winnable: a minor-key chase that bursts into a heroic major lift."
   },
@@ -32,8 +32,8 @@
    "mood": "The fight in the deepening dark — cold, uneasy and solemn: an enemy who believes in the gentle night, sorrow under the steel."
   },
   "battle-veil": {
-   "loop_start": 8.354,
-   "duration": 59.717,
+   "loop_start": 5.921,
+   "duration": 57.287,
    "where": "Rival battles with Wren (Pale Vault, Nightreach, and the post-game rematch)",
    "mood": "The rival who grew up beside you — cocky, quick, competitive and fond: a grin across the field, and the friendship under it."
   },
@@ -278,14 +278,14 @@
    "mood": "The calling card: a lone lantern-tune in the dark explodes into a heroic minor adventure anthem; the Long Dusk, and the journey rising against it."
   },
   "umbral-spire-a": {
-   "loop_start": 14.884,
-   "duration": 77.114,
+   "loop_start": 12.353,
+   "duration": 74.632,
    "where": "Umbral Spire summit (the Great Null, Warden Còr, the Keystar)",
    "mood": "Crown of Null: the summit under the Keystar; grave, sorrowful grandeur and driving resolve, the hometown motif boomed in minor and promised its major."
   },
   "umbral-spire-b": {
-   "loop_start": 9.66,
-   "duration": 82.312,
+   "loop_start": 6.827,
+   "duration": 79.464,
    "where": "Umbral Spire ascent (gatehouse, null-works, high gallery)",
    "mood": "The Black Ascent: the climb through the dead Lumenary, null-lanterns leaking anti-light; relentless minor drive, all tension and no release."
   },

@@ -53,7 +53,7 @@
   {
    "name": "Main Theme",
    "bars": 8,
-   "text": "{the slow miners' melody on the low horn: a rising leap that climbs, then moves only a step or two, solemn and warm, never hurried; a pick-tap every bar}",
+   "text": "{the slow miners' melody on the low horn: a rising leap that climbs, then moves only a step or two, solemn, warm and unhurried; a pick-tap every bar}",
    "styles": [
     "main theme",
     "memorable hook",
@@ -84,7 +84,7 @@
   {
    "name": "Main Theme Return",
    "bars": 8,
-   "text": "{the slow miners' melody returns over the drone and pick-taps; the last bar leads straight back into the main theme, no ending}",
+   "text": "{the slow miners' melody returns over the drone and pick-taps; the last bar leads straight back into the main theme}",
    "styles": [
     "main theme returns",
     "seamless loop back to the start of the theme"

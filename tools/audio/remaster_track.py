@@ -45,6 +45,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import subprocess
 import sys
 import tempfile
@@ -101,6 +102,26 @@ def check_spec(spec: dict) -> list[str]:
         errs.append("motif.strength low|medium|high|xhigh")
     if len(spec.get("core_styles", [])) < 6:
         errs.append("give at least 6 core_styles (the first chunk sets the whole cue)")
+    # ElevenLabs PROMPTING RULES (generate-music SKILL.md "Writing the brief"):
+    # describe what you WANT in the positive fields — a word named in a positive style or a
+    # {direction} pulls toward itself even inside "no X"; exclusions go ONLY in
+    # negative_styles as short tags. And keep the era anchored + name retro drums: fast
+    # drums described in modern terms drifted to drum-and-bass (the rival battle).
+    positives = list(spec.get("core_styles", [])) + [y for c in secs for y in c.get("styles", [])]
+    texts = [c.get("text", "") for c in secs]
+    neg_word = re.compile(r"\b(no|not|without|never|avoid|don't|nothing)\b", re.I)
+    for x in positives + texts:
+        if neg_word.search(x):
+            errs.append(f"negation in a positive field: {x[:80]!r} — say what you want; exclusions go in negative_styles")
+    modern = re.compile(r"\b(slap|breakbeat|four-on-the-floor|sidechain|808|sub[- ]bass|dubstep|trap|edm|"
+                        r"drum (and|&) bass|jungle|wobble)\b", re.I)
+    for x in positives + texts:
+        if modern.search(x):
+            errs.append(f"modern-genre cue word in {x[:60]!r} — describe the retro equivalent "
+                        "(e.g. 'sampled 16-bit snare and kick on a steady rock beat', 'plucked sampled bass')")
+    head = " ".join(spec.get("core_styles", [])[:3]).lower()
+    if not ("16-bit" in head and "sampled" in head):
+        errs.append("anchor the era in the first core_styles: '16-bit … RPG soundtrack' + 'retro sampled-chip instruments'")
     blob = json.dumps(spec).lower()
     for brand in ("pokemon", "pokémon", "nintendo", "zelda", "final fantasy", "uematsu", "masuda", "kondo",
                   "square", "capcom", "sega", "donkey kong", "mario", "chrono", "game freak"):

@@ -1,7 +1,7 @@
 {
  "chunks": [
   {
-   "song_id": "1XhbjusyGzzs5koXbKS6",
+   "song_id": "RW42iiTGCJfp91uOm8Su",
    "range": {
     "start_ms": 31827,
     "end_ms": 51827
@@ -11,19 +11,19 @@
    "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
    "duration_ms": 4000,
    "positive_styles": [
-    "16-bit SNES-era RPG soundtrack",
-    "retro sampled-chip instruments",
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
     "162 BPM",
     "E minor with a warm turn to G major",
     "4/4",
     "cocky bouncy syncopated pulse-wave lead melody",
-    "funky slap-style synth bass with octave jumps",
-    "punchy sampled drums with snappy snare and offbeat hi-hats",
+    "plucked sampled electric bass walking in octaves",
+    "sampled 16-bit drum kit: dry snare and kick on a bouncy rock beat, crash cymbals on the downbeats",
     "bright brass stabs",
     "quick twin-lead harmonies",
     "competitive rival battle theme, spirited and playful with a heart of friendship",
     "strong catchy hummable melody",
-    "great production quality",
+    "authentic 16-bit game music sound",
     "instrumental",
     "seamless transition back to the theme"
    ],
@@ -38,7 +38,7 @@
    "context_adherence": "high"
   },
   {
-   "song_id": "1XhbjusyGzzs5koXbKS6",
+   "song_id": "RW42iiTGCJfp91uOm8Su",
    "range": {
     "start_ms": 4444,
     "end_ms": 14444

@@ -7,65 +7,48 @@
  "beats_per_bar": 4,
  "motif": null,
  "core_styles": [
-  "16-bit SNES-era RPG soundtrack",
-  "retro sampled-chip instruments",
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
   "158 BPM",
   "A minor with a heroic lift to C major",
   "4/4",
   "fast syncopated sawtooth lead melody with leaping hooks",
-  "relentless pumping root-fifth eighth-note synth bass",
-  "punchy sampled battle drums with snare fills",
+  "plucked sampled bass pumping root and fifth in eighth notes",
+  "sampled 16-bit drum kit: dry snare and kick on a driving rock beat, snare rolls into each phrase",
   "stabbing sampled brass answering the lead",
   "driving sixteenth-note pulse arpeggio",
-  "urgent exciting creature battle theme, thrilling but winnable, never scary",
+  "urgent exciting creature battle theme, thrilling, bright and winnable",
   "strong catchy hummable melody",
-  "great production quality",
+  "authentic 16-bit game music sound",
   "instrumental"
  ],
  "negative_styles": [
   "vocals",
-  "singing",
-  "choir",
-  "modern EDM drums",
-  "trap",
-  "dubstep",
-  "dubstep wobble",
-  "electric guitar distortion",
-  "rock guitar",
-  "orchestral film score",
+  "modern electronic dance production",
+  "drum and bass",
+  "breakbeat",
+  "heavy sub bass",
+  "electric guitar",
   "fade out",
-  "ritardando",
-  "ending",
-  "slow",
-  "calm",
   "lullaby"
  ],
  "sections": [
   {
    "name": "Battle Start",
-   "bars": 3,
-   "text": "{full band on beat one: brass stab and crash, a fast chromatic lead run over driving drums, slamming into the battle theme}",
+   "bars": 2,
+   "text": "{a sampled snare roll and a brass stab pickup that land straight on the battle theme}",
    "styles": [
-    "explosive battle intro",
-    "full volume from the first beat",
-    "fast chromatic run",
-    "driving drums"
+    "quick battle pickup"
    ],
    "negative": [
-    "fade in",
-    "slow intro",
-    "quiet opening",
-    "build-up",
-    "swell",
-    "ambient intro",
-    "silence"
+    "fade in"
    ],
    "adherence": "high"
   },
   {
    "name": "Battle Theme",
    "bars": 8,
-   "text": "{the main battle hook: a short leaping syncopated phrase on the sawtooth lead, then a bar of space that the brass stabs answer; the pumping bass never rests}",
+   "text": "{the main battle hook: a short leaping syncopated phrase on the sawtooth lead, then a bar of space that the brass stabs answer; the pumping bass drives on unbroken}",
    "styles": [
     "main battle hook",
     "call and response with brass",
@@ -87,7 +70,7 @@
   {
    "name": "Heroic Lift",
    "bars": 8,
-   "text": "{contrast: the hook turns heroic in C major, sustained brass chords, four-on-the-floor kick with open hi-hats, the melody climbing to a high climax — courage, we can win this}",
+   "text": "{contrast: the hook turns heroic in C major, sustained brass chords, steady sampled march drums with crash cymbals, the melody climbing to a high climax — courage, we can win this}",
    "styles": [
     "C major",
     "heroic triumphant lift",
@@ -99,7 +82,7 @@
   {
    "name": "Battle Theme Return",
    "bars": 8,
-   "text": "{back to A minor, the main battle hook in full force; a dominant cadence with a drum fill in the last bar slams straight back into the hook, no ending}",
+   "text": "{back to A minor, the main battle hook in full force; a dominant cadence with a drum fill in the last bar slams straight back into the hook}",
    "styles": [
     "main battle hook returns",
     "drum fill",
@@ -108,5 +91,5 @@
    "adherence": "high"
   }
  ],
- "_note": "motif dropped (2026-10): conditioning pulled the take onto the lullaby's ~90/180 BPM grid; driving cues keep their spec tempo unconditioned."
+ "_note": "motif dropped (2026-10): conditioning pulled the take onto the lullaby's ~90/180 BPM grid; driving cues keep their spec tempo unconditioned. | 2026-10 retro pass: era-first anchor, sampled 16-bit drum kit + plucked sampled bass (fast modern-described drums drifted to drum-and-bass), short exclusion tags."
 }

@@ -7,37 +7,30 @@
  "beats_per_bar": 4,
  "motif": null,
  "core_styles": [
-  "16-bit SNES-era RPG soundtrack",
-  "retro sampled-chip instruments",
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
   "140 BPM",
   "A minor",
   "final dungeon theme",
   "driving pulse-wave lead with an urgent climbing minor melody",
-  "pounding eighth-note synth bass, no rest",
+  "pounding plucked sampled bass in unbroken eighths",
   "dark pipe-organ chords and tense string pad",
   "eerie detuned high shimmer like light draining away",
-  "relentless driving drums with ratcheting fills",
+  "sampled 16-bit drum kit on a relentless march beat with timpani and tom fills",
   "strong memorable melody",
-  "great production quality",
+  "authentic 16-bit game music sound",
   "instrumental"
  ],
  "negative_styles": [
   "vocals",
-  "singing",
-  "modern EDM drums",
-  "trap",
-  "dubstep",
-  "fade out",
-  "ritardando",
-  "major key resolution",
-  "triumphant",
-  "cheerful",
-  "cosy",
-  "ambient drone",
-  "minimalist",
+  "modern electronic dance production",
+  "drum and bass",
+  "breakbeat",
+  "heavy sub bass",
   "electric guitar",
-  "heavy metal",
-  "dubstep wobble"
+  "fade out",
+  "cheerful",
+  "triumphant"
  ],
  "sections": [
   {
@@ -52,7 +45,7 @@
   {
    "name": "Main Theme",
    "bars": 8,
-   "text": "{the climbing minor melody on the pulse lead, a bold rising leap that overshoots and never settles home, urgent and memorable over the pounding bass}",
+   "text": "{the climbing minor melody on the pulse lead, a bold rising leap that overshoots and keeps reaching, urgent and memorable over the pounding bass}",
    "styles": [
     "main theme",
     "memorable hook",
@@ -93,12 +86,12 @@
   {
    "name": "Main Theme Return",
    "bars": 8,
-   "text": "{the climbing minor melody returns at full force; the last bar drives on E straight back into the main theme, no release, no ending}",
+   "text": "{the climbing minor melody returns at full force; the last bar drives on E straight back into the main theme, tension held high}",
    "styles": [
     "main theme returns",
     "seamless loop back to the start of the theme"
    ]
   }
  ],
- "_note": "motif dropped (2026-10): conditioning pulled the take onto the lullaby's ~90/180 BPM grid; driving cues keep their spec tempo unconditioned."
+ "_note": "motif dropped (2026-10): conditioning pulled the take onto the lullaby's ~90/180 BPM grid; driving cues keep their spec tempo unconditioned. | 2026-10 retro pass: era-first anchor, sampled 16-bit drum kit + plucked sampled bass (fast modern-described drums drifted to drum-and-bass), short exclusion tags."
 }

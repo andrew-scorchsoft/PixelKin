@@ -48,8 +48,7 @@
    "styles": [
     "bold fanfare from the very first beat",
     "full band at once",
-    "heroic",
-    "no fade in"
+    "heroic"
    ],
    "negative": [
     "fade in",
@@ -97,7 +96,7 @@
   {
    "name": "Main Theme Return",
    "bars": 8,
-   "text": "{the heroic minor anthem returns; the last bar slams on the E major dominant straight back into the main theme, no ending}",
+   "text": "{the heroic minor anthem returns; the last bar slams on the E major dominant straight back into the main theme}",
    "styles": [
     "main theme returns",
     "seamless loop back to the start of the theme"

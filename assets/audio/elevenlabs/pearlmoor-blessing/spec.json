@@ -81,7 +81,7 @@
   {
    "name": "Main Theme Return",
    "bars": 16,
-   "text": "{the going-out song returns full and glowing with the bell and descant together; the last bar flows straight back into the theme, no ending}",
+   "text": "{the going-out song returns full and glowing with the bell and descant together; the last bar flows straight back into the theme}",
    "styles": [
     "main theme returns",
     "seamless loop back to the start of the theme"

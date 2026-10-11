@@ -82,7 +82,7 @@
   {
    "name": "Main Theme Return",
    "bars": 8,
-   "text": "{the lullaby returns in A minor, fuller and calm; the last bar sways straight back into the theme, no ending}",
+   "text": "{the lullaby returns in A minor, fuller and calm; the last bar sways straight back into the theme}",
    "styles": [
     "main theme returns",
     "seamless loop back to the start of the theme"

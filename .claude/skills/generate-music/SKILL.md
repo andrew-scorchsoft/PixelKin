@@ -98,6 +98,34 @@ agents can run the pipeline in parallel without 429s. Check the balance with
 Reference chunks are RE-SYNTHESISED, not sample-copied (tens-of-ms drift) — align
 by cross-correlation, never trust plan milliseconds for a splice.
 
+## Writing the brief for ElevenLabs (lessons that cost us credits)
+
+- **Say what you WANT; never write "no X" in a positive field.** A word named in a
+  positive style or `{direction}` pulls toward itself even inside "no fade in" /
+  "never scary" / "no ending". Rephrase positively ("full presence from the first
+  beat", "bright and winnable", "leads straight back into the theme"). Exclusions go
+  ONLY in `negative_styles`, as a handful of short tags (the API's exclude slot —
+  it works there). `--check-spec` rejects negations in positive fields.
+- **Anchor the ERA first, and keep it anchored.** "Production era is a dial" (their
+  docs) — the first core styles set the whole production character: "16-bit console
+  RPG soundtrack from the mid-1990s", "retro sampled-chip instruments with the warm
+  echo of a 16-bit sound chip", then "authentic 16-bit game music sound" near the
+  end. Leave out "great production quality" (it pulls toward modern polish).
+- **Describe drums and bass in RETRO terms — especially above ~120 BPM.** Fast drums
+  in modern words ("punchy drums, offbeat hi-hats, slap bass, drum break, four-on-
+  the-floor") drifted the rival battle into drum-and-bass. Write "sampled 16-bit
+  drum kit: dry snare and kick on a steady rock/march beat, crash cymbals on the
+  downbeats", "plucked sampled bass in octaves". `--check-spec` rejects modern-genre
+  cue words (slap, breakbeat, four-on-the-floor, sidechain, 808, sub-bass, trap…).
+- **Retro instruments that read as the era:** square/pulse-wave leads, sampled brass
+  stabs, sampled strings and choir pads, pipe organ, music box, celesta and glass
+  bells, harp arpeggios, timpani, plucked sampled bass, a dry sampled kit.
+- **The motif pins tempo AND palette** (below) — great for home cues, wrong for fights.
+- **Measure, don't assume** — after a render: `dead_air.py` (stalls/fades), the
+  per-second opening profile (punchy cues), tempo vs spec, and the retro proxies
+  (sub-bass < 60 Hz share, air > 12 kHz, high-band transient rate): the modern-drifted
+  battles stood out at 11–20 % sub-bass; the retro re-briefs land at 0–3 %.
+
 ## Prerequisites
 
 - `ELEVENLABS_API_KEY` must be set in the environment (or a `.env` at the repo

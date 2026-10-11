@@ -52,7 +52,7 @@
   {
    "name": "Theme",
    "bars": 6,
-   "text": "{the fragile bell and soft lead play a hopeful rising leap that reaches past the tonic and is left hanging into rests, never settling home; the low pad sighs beneath}",
+   "text": "{the fragile bell and soft lead play a hopeful rising leap that reaches past the tonic and is left hanging into rests, still searching for home; the low pad sighs beneath}",
    "styles": [
     "main theme",
     "fragile hook",
@@ -82,7 +82,7 @@
   {
    "name": "Theme Return",
    "bars": 6,
-   "text": "{the fragile rising phrase returns once more over the drone, still unanswered; the last bar rests on a low E that pulls straight back into the theme, no ending}",
+   "text": "{the fragile rising phrase returns once more over the drone, still unanswered; the last bar rests on a low E that pulls straight back into the theme}",
    "styles": [
     "main theme returns",
     "seamless loop back to the start of the theme"
