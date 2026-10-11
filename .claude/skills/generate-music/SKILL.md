@@ -84,8 +84,10 @@ Repair kit, cheapest first: `recut_loop.py` (free: end before the fade) →
 `remaster_track.py --reglue` (≈700 credits) → a fresh compose. Note the loop-seam
 score alone never sees this — always run dead_air.py.
 
-**Size:** repo masters are 128k stereo (the source; never re-encode them); the
-deploy (`compress_dist_audio.mjs`) ships remasters at **60k ABR joint stereo** (~0.75 MB per
+**Size + the cartridge pass:** repo masters are 128k stereo (the source; never re-encode
+them for the look of it); the deploy (`compress_dist_audio.mjs`) applies the owner-approved
+**cartridge pass** (32 kHz, `highpass=40,lowpass=10500` — the 16-bit consoles' output
+rate and dull top) and ships remasters at **60k ABR joint stereo** (~0.75 MB per
 ~100 s cue, ~34 MB for the full score; owner's call, 2026-10) and the classic chip renders at 64k mono.
 Cloudflare Workers assets cap a FILE at 25 MiB — nowhere near — and players
 download a cue only when they reach its place.
