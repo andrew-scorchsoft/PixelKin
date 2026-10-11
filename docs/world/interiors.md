@@ -78,7 +78,7 @@ Every interior has **one focal point at top-centre** and **one partition**:
   Partition: the **storeroom bay** (crates + stock the player sees but can't
   shop from). Dress: wares `shelf` flush, a `lamp_rack` hanging, rug, plant.
 - **Inn** — warm. Focal: the **hearth**. Partition: the **bunk room** (made
-  `bed_inn` pair). Dress: `table_long` + stools, the round corner table, lamps.
+  `bed_inn` pair). Dress: `table_long` + stools, the square corner table, lamps.
 - **Lumenary** — cool register; a shrine, never a cabin. Focal: the 3×3
   **altar** on the dais, runner aisle to the door. Partitions: **two side-niche
   stubs** (the star-ledger `bookcase` west, offerings east). Dress: braziers
