@@ -78,6 +78,47 @@ const SPRITE_SHEETS: Record<string, string> = {
   npc_girl: 'npc_girl',
   // 'npc_child' is the long-standing generic-kid key; point it at the boy sheet.
   npc_child: 'npc_boy',
+  // The REGIONAL CAST (2026-10): townsfolk dressed for where they live, so a
+  // miner reads as a miner and the Quay looks like a harbour. Each key falls
+  // back to a generic archetype (REGIONAL_FALLBACK) until its sheet is packed.
+  orchard_farmer: 'orchard_farmer',
+  fisher_man: 'fisher_man',
+  fisher_woman: 'fisher_woman',
+  fen_folk: 'fen_folk',
+  hollow_gardener: 'hollow_gardener',
+  miner_man: 'miner_man',
+  miner_woman: 'miner_woman',
+  kite_weaver: 'kite_weaver',
+  frost_herder: 'frost_herder',
+  pass_walker: 'pass_walker',
+  sun_keeper: 'sun_keeper',
+  star_watcher: 'star_watcher',
+  hollowing_acolyte: 'hollowing_acolyte',
+  old_salt: 'old_salt',
+  village_child: 'village_child',
+};
+
+/**
+ * A regional-cast key whose own sheet isn't packed yet borrows a generic
+ * archetype's sheet (never the coloured-box placeholder — a half-landed art
+ * pass must not put boxes in towns).
+ */
+const REGIONAL_FALLBACK: Record<string, string> = {
+  orchard_farmer: 'npc_old_man',
+  fisher_man: 'npc_man',
+  fisher_woman: 'npc_woman',
+  fen_folk: 'npc_woman',
+  hollow_gardener: 'npc_woman',
+  miner_man: 'npc_man',
+  miner_woman: 'npc_woman',
+  kite_weaver: 'npc_woman',
+  frost_herder: 'npc_man',
+  pass_walker: 'npc_woman',
+  sun_keeper: 'npc_man',
+  star_watcher: 'npc_woman',
+  hollowing_acolyte: 'npc_lampwarden',
+  old_salt: 'npc_old_man',
+  village_child: 'npc_girl',
 };
 
 /** Placeholder body colours so distinct NPCs read apart before real walk-sheets. */
@@ -182,6 +223,8 @@ export class Npc extends Actor {
     }
     const sheet = SPRITE_SHEETS[placement.sprite];
     if (sheet && scene.textures.exists(sheet)) return [sheet, HUMAN_WALK_FRAMES];
+    const fallback = REGIONAL_FALLBACK[placement.sprite];
+    if (fallback && scene.textures.exists(fallback)) return [fallback, HUMAN_WALK_FRAMES];
     const color = SPRITE_COLORS[placement.sprite] ?? COLORS.fire;
     const key = `npc_placeholder_${placement.sprite}`;
     ensurePlaceholderCharacter(scene, key, color);
