@@ -595,7 +595,7 @@
       "facing": "down",
       "sprite": "innkeeper",
       "movement": "static",
-      "dialogue_ref": "script.inn_rest_crossroads",
+      "dialogue_ref": "script.inn_rest_crossroads_early",
       "hidden_when_flag": "gleam:tide"
     },
     {

@@ -353,7 +353,20 @@
       "facing": "down",
       "sprite": "npc_old_man",
       "movement": "static",
-      "dialogue_ref": "npc.nightreach_home_elder"
+      "dialogue_ref": "npc.nightreach_home_elder",
+      "hidden_when_flag": "gleam:lunar"
+    },
+    {
+      "id": "home_elder_lit",
+      "at": {
+        "tx": 4,
+        "ty": 4
+      },
+      "facing": "down",
+      "sprite": "npc_old_man",
+      "movement": "static",
+      "dialogue_ref": "npc.nightreach_home_elder_lit",
+      "requires_flag": "gleam:lunar"
     },
     {
       "id": "home_kid",
@@ -364,7 +377,20 @@
       "facing": "left",
       "sprite": "npc_child",
       "movement": "wander",
-      "dialogue_ref": "npc.nightreach_home_kid"
+      "dialogue_ref": "npc.nightreach_home_kid",
+      "hidden_when_flag": "gleam:lunar"
+    },
+    {
+      "id": "home_kid_lit",
+      "at": {
+        "tx": 7,
+        "ty": 6
+      },
+      "facing": "left",
+      "sprite": "npc_child",
+      "movement": "wander",
+      "dialogue_ref": "npc.nightreach_home_kid_lit",
+      "requires_flag": "gleam:lunar"
     }
   ],
   "gates": [],

@@ -3092,7 +3092,20 @@
       "facing": "left",
       "sprite": "fisher_man",
       "movement": "look_around",
-      "dialogue_ref": "npc.pearlmoor_fisher"
+      "dialogue_ref": "npc.pearlmoor_fisher",
+      "hidden_when_flag": "gleam:tide"
+    },
+    {
+      "id": "fisher_lit",
+      "at": {
+        "tx": 16,
+        "ty": 13
+      },
+      "facing": "left",
+      "sprite": "fisher_man",
+      "movement": "look_around",
+      "dialogue_ref": "npc.pearlmoor_fisher_lit",
+      "requires_flag": "gleam:tide"
     },
     {
       "id": "netmender_pre",

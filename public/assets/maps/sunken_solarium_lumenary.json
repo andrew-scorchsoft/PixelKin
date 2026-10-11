@@ -623,7 +623,20 @@
       "facing": "right",
       "sprite": "innkeeper",
       "movement": "static",
-      "dialogue_ref": "script.solarium_rest"
+      "dialogue_ref": "script.solarium_rest",
+      "hidden_when_flag": "gleam:solar"
+    },
+    {
+      "id": "matron_lit",
+      "at": {
+        "tx": 6,
+        "ty": 6
+      },
+      "facing": "right",
+      "sprite": "innkeeper",
+      "movement": "static",
+      "dialogue_ref": "script.solarium_rest_lit",
+      "requires_flag": "gleam:solar"
     },
     {
       "id": "prompter",
@@ -634,7 +647,20 @@
       "facing": "down",
       "sprite": "npc_man",
       "movement": "look_around",
-      "dialogue_ref": "npc.solarium_prompter"
+      "dialogue_ref": "npc.solarium_prompter",
+      "hidden_when_flag": "gleam:solar"
+    },
+    {
+      "id": "prompter_lit",
+      "at": {
+        "tx": 2,
+        "ty": 7
+      },
+      "facing": "down",
+      "sprite": "npc_man",
+      "movement": "look_around",
+      "dialogue_ref": "npc.solarium_prompter_lit",
+      "requires_flag": "gleam:solar"
     },
     {
       "id": "hall_keeper",
@@ -645,7 +671,20 @@
       "facing": "down",
       "sprite": "npc_old_man",
       "movement": "static",
-      "dialogue_ref": "npc.solarium_hall_keeper"
+      "dialogue_ref": "npc.solarium_hall_keeper",
+      "hidden_when_flag": "gleam:solar"
+    },
+    {
+      "id": "hall_keeper_lit",
+      "at": {
+        "tx": 13,
+        "ty": 6
+      },
+      "facing": "down",
+      "sprite": "npc_old_man",
+      "movement": "static",
+      "dialogue_ref": "npc.solarium_hall_keeper_lit",
+      "requires_flag": "gleam:solar"
     },
     {
       "id": "hall_festival",

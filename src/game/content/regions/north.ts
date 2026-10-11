@@ -22,7 +22,109 @@ function cairnStone(flag: string, first: string, wind: string, after: string): S
   ];
 }
 
+// ---------------------------------------------------------------------------
+// AFTER-GLEAM (2026-10): Galehigh and Pale Vault answer their Gleams. Placements
+// ride tools/maps/worldcraft/north.py (`after` twins, `talk` re-points); the
+// pre-Gleam branch of every staged script is the original ref, untouched.
+// ---------------------------------------------------------------------------
+const STORM = 'gleam:storm';
+const FROST = 'gleam:frost';
+
+/** One NPC, two pages: the original ref until `gleam`, the lit one after. */
+function staged(orig: string, lit: string, gleam: string): ScriptRegistry[string] {
+  return [
+    { op: 'dialogue', ref: orig, unless_flag: gleam },
+    { op: 'dialogue', ref: lit, if_flag: gleam },
+  ];
+}
+
+const NORTH_AFTER_SCRIPTS: ScriptRegistry = {
+  // Galehigh's festival trio are actors in the Kite-rising, so they keep their ids.
+  'script.galehigh_piper_staged': staged('npc.galehigh_festival_piper', 'npc.galehigh_festival_piper_lit', STORM),
+  'script.galehigh_festival_kid_staged': staged('npc.galehigh_festival_kid', 'npc.galehigh_festival_kid_lit', STORM),
+  'script.galehigh_festival_goer_staged': staged('npc.galehigh_festival_goer', 'npc.galehigh_festival_goer_lit', STORM),
+  'script.shop_galehigh_staged': [
+    ...staged('npc.galehigh_shopkeeper', 'npc.galehigh_shopkeeper_lit', STORM),
+    { op: 'shop', shop: 'galehigh' },
+  ],
+  'script.galehigh_inn_rest_lit': [
+    { op: 'say', speaker: 'INNKEEP', text: "In out of the gusts, Wayfarer. Gentler gusts tonight, if you can believe it. Half my guests are up on the roof watching the Storm-star." },
+    { op: 'heal' },
+    { op: 'say', speaker: 'INNKEEP', text: "There. Kin bright-eyed and boots warm. I let the shutters rattle as much as they like now. It sounds like applause." },
+  ],
+  // Pale Vault: the watcher is an actor in the Aurora-watch; the tallow-keeper's
+  // last stage already hangs on her oil.
+  'script.aurora_watcher_b_staged': staged('npc.aurora_watcher_b', 'npc.aurora_watcher_b_lit', FROST),
+  'script.tallow_keeper_staged': staged('npc.tallow_keeper_after', 'npc.tallow_keeper_lit', FROST),
+  'script.pale_vault_inn_rest_lit': [
+    { op: 'say', speaker: 'INNKEEP', text: "Come in quiet, Wayfarer. The hearth is low, but the brackets are lit at last, and I've moved the good chair to the window." },
+    { op: 'heal' },
+    { op: 'say', speaker: 'INNKEEP', text: "Rested, and your kin with you. Sleep if you can. The sky is keeping its own watch tonight." },
+  ],
+};
+
+const NORTH_AFTER_DIALOGUE: DialogueRegistry = {
+  // --- Galehigh Terraces (gleam:storm) ----------------------------------------
+  'npc.galehigh_festival_piper_lit': [
+    { speaker: 'FESTIVAL PIPER', text: "Still playing! The kites came down hours ago, but the Storm's up there now, and somebody ought to keep it company." },
+    { speaker: 'FESTIVAL PIPER', text: "Mira flew the launch ledge twice after your bout: once for the Gleam, and once, she says, so the wind wouldn't feel left out." },
+  ],
+  'npc.galehigh_festival_kid_lit': [
+    { speaker: 'FESTIVAL KID', text: "Talo says his kite touched the Storm-star. It DIDN'T. But it looked like it did, so I'm letting him have it. Once." },
+  ],
+  'npc.galehigh_festival_goer_lit': [
+    { speaker: 'FESTIVAL-GOER', text: "My gran's ladder of little lights worked, then. Or the Storm was only waiting for an excuse. Either way, my tail-lamp stays lit till it gutters on its own." },
+  ],
+  'npc.galehigh_farmer_lit': [
+    { speaker: 'TERRACE FARMER', text: "Three nights since the Storm came back, and the wind's turned honest: steady off the north-west, no tricks. The cabbages don't know which way to lean. Neither do I." },
+  ],
+  'npc.galehigh_hall_keeper_lit': [
+    { speaker: 'HALL-KEEPER', text: "Looking for Mira? Off the launch ledge again, dear, teaching the Wind-Eye's name to anyone who'll hold a string." },
+    { speaker: 'HALL-KEEPER', text: "The hall is quiet. I've swept it twice and polished the ledger-case. A hall may be proud, so long as it doesn't say so out loud." },
+  ],
+  'npc.galehigh_inn_guest_lit': [
+    { speaker: 'INN GUEST', text: "I came up for the room out of the wind and stayed for the Rising. Now they tell me the best room is the ROOF, with a blanket, under the Storm. It is not out of the wind. I'm staying anyway." },
+  ],
+  'npc.galehigh_home_elder_lit': [
+    { speaker: 'TERRACE ELDER', text: "Seventy years I've flown the Rising, and last night I flew one more: a little kite off the doorstep, the Storm overhead and my knees objecting the whole way. Worth every objection." },
+  ],
+  'npc.galehigh_home_kid_lit': [
+    { speaker: 'TERRACE KID', text: "Da says this year's impossible thing is DONE. The Storm came back! So next year I get two. I've already picked them." },
+  ],
+  'npc.galehigh_shopkeeper_lit': [
+    { speaker: 'KITE-KEEPER', text: "The Rising cleared my shelf of string and filled my till with wicks. A fair trade, the wind would say. Storm charts still in: Thunder Kick, Volt Arc, Gale Slam." },
+    { speaker: 'KITE-KEEPER', text: "And stock your balms HERE, Wayfarer. Pale Vault keeps no counter, Gleam or no Gleam." },
+  ],
+  'npc.lanternway_galehigh_lamplighter_lit': [
+    { speaker: 'LAMPLIGHTER', text: "Since the Storm stood up, the posts on this road hold their flame in the gusts. I trimmed every one twice anyway, out of pure suspicion." },
+    { speaker: 'LAMPLIGHTER', text: "The road is only a road while you can see it. Tonight you can see it all the way to the top bend." },
+  ],
+  // --- Pale Vault Glacier (gleam:frost) ---------------------------------------
+  'npc.pale_vault_townsfolk_lit': [
+    { speaker: 'GLACIER-DWELLER', text: "We still do not shout in Pale Vault. But when the brackets lit, someone at the watch laughed, once, softly. The glacier is carrying it still. I hope it keeps that one." },
+  ],
+  'npc.aurora_watcher_b_lit': [
+    { speaker: 'WATCHER', text: "My mother stood this ice, and hers, and neither of them saw all seven brackets burn. Tonight I stood here and counted them for the three of us." },
+  ],
+  'npc.pale_vault_home_elder_lit': [
+    { speaker: 'GLACIER ELDER', text: "The aurora crossed my window as it always has. But tonight there was a second light under it, from the vault. I am old, child, and the sky can still surprise me with company." },
+  ],
+  'npc.pale_vault_home_kid_lit': [
+    { speaker: 'GLACIER KID', text: "I said the undercroft hums something. Now I know what: the brackets. Seven notes, low to high, in the order you lit them. I hummed them back. It didn't mind." },
+  ],
+  'npc.pale_vault_inn_guest_lit': [
+    { speaker: 'INN GUEST', text: "The ice creaked TWICE last night. Third bell, and again at fourth. We have talked of nothing else. We are all very excited, in our way." },
+  ],
+  'npc.pale_vault_hall_keeper_lit': [
+    { speaker: 'HALL-KEEPER', text: "Begin wherever you like now, Wayfarer. The undercroft door stands open and the brackets are burning. I sent the children down to look. They came back whispering, which in this town is a kind of cheering." },
+  ],
+  'npc.tallow_keeper_lit': [
+    { speaker: 'TALLOW-KEEPER', text: "Seven brackets burning, child, and every one of them smells of my pans. I've rendered the vault's oil all my life and never been this proud of a smell." },
+  ],
+};
+
 export const NORTH_SCRIPTS: ScriptRegistry = {
+  ...NORTH_AFTER_SCRIPTS,
   // --- Windward Stair I: the cairn-count (world-craft panel §4 #2) -----------
   // Every switchback keeps a cairn, and every climber adds a stone. Four on the
   // way up; the summit cairn notices whether you added all four.
@@ -116,6 +218,7 @@ export const NORTH_SCRIPTS: ScriptRegistry = {
 };
 
 export const NORTH_DIALOGUE: DialogueRegistry = {
+  ...NORTH_AFTER_DIALOGUE,
   // B3's silent company: one of Còr's people keeps the drained shelf with him.
   'npc.cor_acolyte': [
     { text: 'A cowled figure in Hollowing grey, a little behind the other one. It keeps its eyes on the valley and its hands folded round an unlit lantern.', style: 'narrate' },

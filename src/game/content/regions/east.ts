@@ -12,7 +12,82 @@
  */
 import type { DialogueRegistry, ScriptRegistry } from '../types';
 
+// ---------------------------------------------------------------------------
+// AFTER-GLEAM (2026-10): Lowleaf and Cinderhead answer their Gleams. Placements
+// ride tools/maps/worldcraft/east.py (`after` twins, `talk` re-points); the
+// pre-Gleam branch of every staged script is the original ref, untouched.
+// ---------------------------------------------------------------------------
+const VERDANT = 'gleam:verdant';
+const STONE = 'gleam:stone';
+
+const EAST_AFTER_SCRIPTS: ScriptRegistry = {
+  'script.shop_lowleaf_staged': [
+    { op: 'dialogue', ref: 'npc.lowleaf_provisioner', unless_flag: VERDANT },
+    { op: 'dialogue', ref: 'npc.lowleaf_provisioner_lit', if_flag: VERDANT },
+    { op: 'shop', shop: 'lowleaf_provisioner' },
+  ],
+  'script.lowleaf_rest_lit': [
+    { op: 'say', speaker: 'BOWER-KEEPER', text: "Every bunk's spoken for and three walkers are asleep in the hall, but there's always a bower for whoever woke the Elder Bed. In you go." },
+    { op: 'heal' },
+    { op: 'say', speaker: 'BOWER-KEEPER', text: "There. Kin bright-eyed, boots dry. The moss in the eaves glowed all night, first time since the cold spring. Not one guest complained about the light." },
+  ],
+  'script.shop_cinderhead_staged': [
+    { op: 'dialogue', ref: 'npc.cinderhead_provisioner', unless_flag: STONE },
+    { op: 'dialogue', ref: 'npc.cinderhead_provisioner_lit', if_flag: STONE },
+    { op: 'shop', shop: 'cinderhead_provisioner' },
+  ],
+  'script.cinderhead_rest_lit': [
+    { op: 'say', speaker: 'VIGIL COOK', text: "Sit by the vigil-fire, Wayfarer. We've let it burn high tonight, and nobody here can remember the last time we did. Warm your kin and your hands both." },
+    { op: 'heal' },
+    { op: 'say', speaker: 'VIGIL COOK', text: "There. Rested and ready. The dark's still long. Tonight, for once, the fire's ahead." },
+  ],
+};
+
+const EAST_AFTER_DIALOGUE: DialogueRegistry = {
+  // --- Lowleaf Hollow (gleam:verdant) ---------------------------------------
+  'npc.bloom_piper_lit': [
+    { speaker: 'BLOOM PIPER', text: "The ring's turning round a GREEN bed this year. I've played the crowning reel four times over and they won't let me stop. My fingers have gone to moss." },
+  ],
+  'npc.bloom_fencer_lit': [
+    { speaker: 'FESTIVAL AUNTIE', text: "Well. The Elder Bed's gone green as a frog and the whole hollow is looking at me. Beds have bad years, I said. I never said they couldn't have good ones." },
+    { speaker: 'FESTIVAL AUNTIE', text: "Have a moss-cake. I'm told I owe the town one apiece, and you're first in the queue." },
+  ],
+  'npc.bloom_kid_a_lit': [
+    { speaker: 'MOSS KID', text: "My glow-mote wish came true! Not the Fennlight one. The other one. I wished the big bed would wake up." },
+    { speaker: 'MOSS KID', text: "Don't tell the moss I wished twice. It might want one of them back." },
+  ],
+  'npc.bloom_kid_b_lit': [
+    { speaker: 'FERN KID', text: "You walked into the deep wood like it was our back garden. I watched the WHOLE time. Mum says I can't copy you till I've got a lamp of my own." },
+  ],
+  'npc.lowleaf_provisioner_lit': [
+    { speaker: 'PROVISIONER', text: "Spore-bread's back on the shelf! The deep wood's sending spores again now the bed's awake. I've baked until the oven sulked." },
+    { speaker: 'PROVISIONER', text: "And the counter's open, Verdant slate and all: Spore Puff, Root Strike, Lifedrain. Festival prices. Which are still regular prices." },
+  ],
+  'npc.bower_guest_lit': [
+    { speaker: 'BLOOM GUEST', text: "Twice a year I walk in from Pearlmoor, and this time I walked under two lit stars: the Tide at my back and the Verdant ahead. I've half a mind to stay till the next Bloom and spare my boots." },
+  ],
+  // --- Cinderhead Mine (gleam:stone) ----------------------------------------
+  'npc.vigil_elder_lit': [
+    { speaker: 'VIGIL ELDER', text: "We lowered the lamps and lit them again, same as ever. Only this year the second half felt like the point." },
+    { speaker: 'VIGIL ELDER', text: "The old crew's lamp stands at the shaft-head, still burning. Go up gentle, Wayfarer. A mine remembers who carried its light." },
+  ],
+  'npc.vigil_miner_a_lit': [
+    { speaker: 'MINER', text: "The cowled folk came back down the road after the Stone stood up. No talk this time. They stood at the shaft-head and looked at it." },
+    { speaker: 'MINER', text: "One asked could he stay for the next Lamp-down. We said yes. A miner keeps a light in the dark, and the dark is welcome to watch." },
+  ],
+  'npc.vigil_miner_b_lit': [
+    { speaker: 'MINER', text: "You out-lasted him. Otho's been telling the bout at the vigil-fire all night, in about five words. For Otho, that's a saga." },
+  ],
+  'npc.cinderhead_provisioner_lit': [
+    { speaker: 'PIT-PROVISIONER', text: "Every crew's re-trimming at once since the Stone came back. I'm down to my last crate of wicks and I've never sold any gladder. Balms, charges, a chart or two for the deep." },
+  ],
+  'npc.cinderhead_deep_warden_lit': [
+    { speaker: 'DEEP-WARDEN', text: "Your friend Wren came back up the shaft while you were with Otho. Stood under the Stone a long while, then walked on north without a word. Lighter, I thought. Not light. Lighter." },
+  ],
+};
+
 export const EAST_SCRIPTS: ScriptRegistry = {
+  ...EAST_AFTER_SCRIPTS,
   // Georgina's intro never set q_east_georgina_met, which the lost kitten and her
   // waiting placement both require — the side quest could not be finished.
   'script.georgina_meet': [
@@ -152,6 +227,7 @@ export const EAST_SCRIPTS: ScriptRegistry = {
 };
 
 export const EAST_DIALOGUE: DialogueRegistry = {
+  ...EAST_AFTER_DIALOGUE,
   'npc.fen_lostreed_wait': [
     { text: 'A dark lantern-reed. It leans toward the landing, as if waiting for the one before it.', style: 'narrate' },
   ],

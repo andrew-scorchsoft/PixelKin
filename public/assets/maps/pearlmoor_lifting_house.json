@@ -463,7 +463,20 @@
       "facing": "up",
       "sprite": "lifter_andrew",
       "movement": "static",
-      "dialogue_ref": "npc.booji_andrew"
+      "dialogue_ref": "npc.booji_andrew",
+      "hidden_when_flag": "gleam:tide"
+    },
+    {
+      "id": "andrew_lit",
+      "at": {
+        "tx": 4,
+        "ty": 8
+      },
+      "facing": "up",
+      "sprite": "lifter_andrew",
+      "movement": "static",
+      "dialogue_ref": "npc.booji_andrew_lit",
+      "requires_flag": "gleam:tide"
     },
     {
       "id": "rod",

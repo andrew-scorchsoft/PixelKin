@@ -26,7 +26,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from ._kit import ambient_kin, gid, particles  # noqa: F401
+from ._kit import add_words, ambient_kin, gid, lit, particles  # noqa: F401
 
 MAPS = Path(__file__).resolve().parents[3] / "public" / "assets" / "maps"
 
@@ -164,3 +164,35 @@ PLACEMENTS: dict[str, dict] = {
                      "starfall": {"min_s": 30, "max_s": 60}},
     },
 }
+
+
+# ------------------------------------------------------------- AFTER-GLEAM
+# The Solarium and Nightreach answer their Gleams (src/game/content/regions/west.ts).
+# Words only: `lit` twins share their original's tile, sheet and body; `talk`
+# re-points keep the id (the vigil warden's staged stage).
+SOLAR, LUNAR = "gleam:solar", "gleam:lunar"
+add_words(PLACEMENTS, {
+    "sunken_solarium": {
+        "after": [lit("festival_goer", SOLAR, "npc.solarium_festival_goer_lit"),
+                  lit("bread_sharer", SOLAR, "npc.solarium_bread_lit"),
+                  lit("festival_kid", SOLAR, "npc.solarium_kid_lit")],
+        # shares its tile with troupe_stilts' pre-stage placement: re-point, don't twin
+        "talk": {"solarium_witness": "script.solarium_witness_staged"},
+    },
+    "sunken_solarium_lumenary": {"after": [
+        lit("matron", SOLAR, "script.solarium_rest_lit"),
+        lit("prompter", SOLAR, "npc.solarium_prompter_lit"),
+        lit("hall_keeper", SOLAR, "npc.solarium_hall_keeper_lit"),
+    ]},
+    "nightreach_observatory": {
+        "after": [lit("watcher_steps_a", LUNAR, "npc.nightreach_watcher_steps_a_lit"),
+                  lit("watcher_steps_b", LUNAR, "npc.nightreach_watcher_steps_b_lit")],
+        "talk": {"star_vigil_warden_after": "script.star_vigil_warden_staged"},
+    },
+    "nightreach_home": {"after": [lit("home_elder", LUNAR, "npc.nightreach_home_elder_lit"),
+                                  lit("home_kid", LUNAR, "npc.nightreach_home_kid_lit")]},
+    "nightreach_inn": {"after": [lit("innkeeper", LUNAR, "script.nightreach_inn_rest_lit"),
+                                 lit("guest", LUNAR, "npc.nightreach_inn_guest_lit"),
+                                 lit("watcher_off_shift", LUNAR, "npc.nightreach_inn_watcher_lit")]},
+    "nightreach_lumenary": {"after": [lit("hall_keeper", LUNAR, "npc.nightreach_hall_keeper_lit")]},
+})

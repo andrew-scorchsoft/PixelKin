@@ -2481,7 +2481,7 @@
       "facing": "left",
       "sprite": "road_courier",
       "movement": "static",
-      "dialogue_ref": "npc.flats_wayfarer_b",
+      "dialogue_ref": "script.flats_wayfarer_b_staged",
       "requires_flag": "flag:flats_trainer_b_beaten"
     },
     {
@@ -2519,7 +2519,7 @@
       "facing": "up",
       "sprite": "npc_mentor",
       "movement": "look_around",
-      "dialogue_ref": "npc.flats_sky_watcher_after",
+      "dialogue_ref": "script.flats_sky_watcher_staged",
       "requires_flag": "flag:q_south_letter_given"
     },
     {

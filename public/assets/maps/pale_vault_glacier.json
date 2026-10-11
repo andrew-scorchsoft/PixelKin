@@ -1156,7 +1156,7 @@
       "facing": "down",
       "sprite": "npc_old_woman",
       "movement": "look_around",
-      "dialogue_ref": "npc.tallow_keeper_after",
+      "dialogue_ref": "script.tallow_keeper_staged",
       "requires_flag": "flag:q_north_aurora_oil"
     },
     {
@@ -1229,7 +1229,7 @@
       "facing": "up",
       "sprite": "star_watcher",
       "movement": "static",
-      "dialogue_ref": "npc.aurora_watcher_b"
+      "dialogue_ref": "script.aurora_watcher_b_staged"
     },
     {
       "id": "sketcher_quest",
@@ -1302,7 +1302,20 @@
       "facing": "down",
       "sprite": "frost_herder",
       "movement": "look_around",
-      "dialogue_ref": "npc.pale_vault_townsfolk"
+      "dialogue_ref": "npc.pale_vault_townsfolk",
+      "hidden_when_flag": "gleam:frost"
+    },
+    {
+      "id": "townsfolk_inn_lit",
+      "at": {
+        "tx": 8,
+        "ty": 10
+      },
+      "facing": "down",
+      "sprite": "frost_herder",
+      "movement": "look_around",
+      "dialogue_ref": "npc.pale_vault_townsfolk_lit",
+      "requires_flag": "gleam:frost"
     },
     {
       "id": "gleam_watcher",

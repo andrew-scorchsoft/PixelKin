@@ -11,7 +11,87 @@
  */
 import type { DialogueRegistry, ScriptRegistry } from '../types';
 
+// ---------------------------------------------------------------------------
+// AFTER-GLEAM (2026-10): the Sunken Solarium and Nightreach answer their Gleams.
+// Placements ride tools/maps/worldcraft/west.py (`after` twins, `talk`
+// re-points); the pre-Gleam branch of a staged script is the original ref.
+// ---------------------------------------------------------------------------
+const SOLAR = 'gleam:solar';
+const LUNAR = 'gleam:lunar';
+
+const WEST_AFTER_SCRIPTS: ScriptRegistry = {
+  'script.solarium_witness_staged': [
+    { op: 'dialogue', ref: 'npc.solarium_witness', unless_flag: SOLAR },
+    { op: 'dialogue', ref: 'npc.solarium_witness_lit', if_flag: SOLAR },
+  ],
+  'script.solarium_rest_lit': [
+    { op: 'say', speaker: 'MATRON', text: "In off the water, pilgrim. The green room's full of players weeping into their greasepaint. Happily, I'm assured. There's a warm corner left." },
+    { op: 'heal' },
+    { op: 'say', speaker: 'MATRON', text: "There. Kin warm, boots dry. The Last-Warm-Day has ended, and for the first time in forty years nobody is mourning it." },
+  ],
+  // The vigil warden's last stage already hangs on the Star-vigil having played.
+  'script.star_vigil_warden_staged': [
+    { op: 'dialogue', ref: 'npc.star_vigil_warden_after', unless_flag: LUNAR },
+    { op: 'dialogue', ref: 'npc.star_vigil_warden_lit', if_flag: LUNAR },
+  ],
+  'script.nightreach_inn_rest_lit': [
+    { op: 'say', speaker: 'INNKEEP', text: "Come in, and never mind the floorboards: nobody's sleeping tonight anyway. Eight stars, Wayfarer. Even my day-sleepers are out on the steps." },
+    { op: 'heal' },
+    { op: 'say', speaker: 'INNKEEP', text: "There. Rested, and your kin with you. Whatever waits on that mountain, the whole town is watching it with you now." },
+  ],
+};
+
+const WEST_AFTER_DIALOGUE: DialogueRegistry = {
+  // --- the Sunken Solarium (gleam:solar) --------------------------------------
+  'npc.solarium_festival_goer_lit': [
+    { speaker: 'FESTIVAL-GOER', text: "\"Spend warm days until one sticks,\" I always said. Well. This one stuck. I don't quite know what to do with my hands." },
+  ],
+  'npc.solarium_bread_lit': [
+    { speaker: 'BREAD-SHARER', text: "Warm bread, no charge. The stored daylight in my oven flared the moment the Solar stood up, and the crust came out gold as a stage-light." },
+    { speaker: 'BREAD-SHARER', text: "Eat it slowly. That's the new custom. I've just this minute made it up." },
+  ],
+  'npc.solarium_kid_lit': [
+    { speaker: 'FESTIVAL KID', text: "The gold in the water went BRIGHTER when the star came up. I put my whole arm in. My sleeve's ruined and I don't even care." },
+  ],
+  'npc.solarium_prompter_lit': [
+    { speaker: 'PROMPTER', text: "Forty years I fed lines from dark wings. Tonight the wings were LIT, and three players forgot theirs from sheer astonishment. Best night of my career." },
+  ],
+  'npc.solarium_hall_keeper_lit': [
+    { speaker: 'SUN-LEDGER KEEPER', text: "I did need a wider page. Tonight's entry ends \"and the stage was lit, and the sun's own star stood up over it.\" I've left the rest of the page blank. I don't think the ledger is finished with us." },
+  ],
+  'npc.solarium_witness_lit': [
+    { speaker: 'OLD STAGEHAND', text: "I rigged that stage as a boy, before the water came. Tomorrow I rig it again, for a lit house this time. My hands are shaking, and it isn't the cold." },
+  ],
+  // --- Nightreach Observatory (gleam:lunar) -----------------------------------
+  'npc.nightreach_watcher_steps_a_lit': [
+    { speaker: 'OLD WATCHER', text: "Eight lamps lit on the steps, and I'm still holding mine. Nobody said when to put them down. I don't think anybody is going to." },
+  ],
+  'npc.nightreach_watcher_steps_b_lit': [
+    { speaker: 'WATCH KID', text: "I RAN it! The whole route, ringing the bell, fast as anything. I tripped on the very last step and rang it lying down. Everyone says that was the best part." },
+  ],
+  'npc.star_vigil_warden_lit': [
+    { speaker: 'VIGIL WARDEN', text: "Eight lamps on the steps. When the last star came home, the eighth row stood up all at once. I have never seen a town move so fast to do nothing at all." },
+    { speaker: 'VIGIL WARDEN', text: "Go when you're ready, Wayfarer. We will keep watching. That is still what watching IS." },
+  ],
+  'npc.nightreach_home_elder_lit': [
+    { speaker: 'LENS-GRINDER', text: "They say the dome's lens held all eight last night. I polished my spectacles three times before I let myself believe it. Same work, child. It was always the same work." },
+  ],
+  'npc.nightreach_home_kid_lit': [
+    { speaker: 'WATCHER KID', text: "I inked the eighth star into the saved space! Now there's no space left. Nessa says a good chart always keeps room for something, so I drew the mountain at the bottom. With a lamp on top." },
+  ],
+  'npc.nightreach_inn_guest_lit': [
+    { speaker: 'TIRED GUEST', text: "I booked the week off and the sky finished itself without me. I was ASLEEP. I heard the bell-runner through the floor and thought I was dreaming it." },
+  ],
+  'npc.nightreach_inn_watcher_lit': [
+    { speaker: 'OFF-SHIFT WATCHER', text: "Dawn-watch tomorrow. Do you know what that means now? Nobody does! It used to be the sad joke of the rota. Tonight it's the shift everyone's arguing over." },
+  ],
+  'npc.nightreach_hall_keeper_lit': [
+    { speaker: 'NIGHT-CLERK', text: "The fresh page I rule every night, just in case? Last night it got used. One line: \"The eighth came home.\" I've ruled another since. Habit. ...And just in case." },
+  ],
+};
+
 export const WEST_SCRIPTS: ScriptRegistry = {
+  ...WEST_AFTER_SCRIPTS,
   // ===========================================================================
   // HUSHFROST PASS I — the frozen falls (the north nook's payoff)
   // ===========================================================================
@@ -194,4 +274,4 @@ export const WEST_SCRIPTS: ScriptRegistry = {
   ],
 };
 
-export const WEST_DIALOGUE: DialogueRegistry = {};
+export const WEST_DIALOGUE: DialogueRegistry = { ...WEST_AFTER_DIALOGUE };
