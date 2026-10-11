@@ -575,6 +575,16 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   / `Actor.showEmote()` drive layers 3/2; `pack_trainers.py` packs all three + the manifest.
   **Build an action sheet from single `human-pose` gens + `assemble_action_sheet.py`** — never
   one-shot the 8-cell grid (the model subdivides cells and repeats stances).
+- **Action sheets are 4×4 = 16 cells and NPCs can act (2026-10).** Cells 0–7 are the old
+  set (raiseLamp/toss/gift/sit/hurt), 8–15 the cutscene ACTING poses (`bow`/`laugh`/`shock`/
+  `sad`/`kneel`/`turnAway`, `HUMAN_ACTION_FRAMES`); `Npc` passes `<sheet>_actions` to the Actor
+  when packed, so `{op:'action', actor:'<npc id>', action:'bow'}` works on story NPCs. A legacy
+  8-cell sheet still loads — poses it lacks no-op. Scale poses off the STANDING height (a kneel
+  is shorter, never blown up to fill the cell). Cast standard: docs/art-style.md §A note.
+- **Walk sheets must PASS `check_walk_facing.py SHEET --gif out.gif` + a GIF eyeball before
+  packing** (a grid can look fine while one left-row cell faces right/forward and breaks the
+  cycle; the up row's back-of-head is eyeball-only). Fix a bad cell by re-generating, or for a
+  likeness sheet by reusing/flipping its own left cells and re-mirroring right (lifter_rod).
 - **Walk-sheet rows must be true DIFFERENT viewpoints, not one front pose ×4.** The engine maps
   rows down/left/right/up (`HUMAN_WALK_FRAMES`); if the art draws a forward-facing face in the
   left/right/up rows the character looks like it's "facing you" while walking sideways/up (this
@@ -865,11 +875,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   strip (downscale to 160 tall + append an h-flipped copy → guaranteed wrap). `TitleScene`
   caps the 4:3 logo by **height** (`LOGO_MAX_HEIGHT`), not just width — capping by width alone
   made it ~144px tall and overlapped the menu (logo gets the top band, menu the bottom).
-- **`--transparent` image gens need `OPENAI_IMAGE_MODEL=gpt-image-1`.** The managed env pins
-  `OPENAI_IMAGE_MODEL=gpt-image-2`, which the generate-image script honours but which rejects
-  `background=transparent`. Prefix the one transparent call:
-  `OPENAI_IMAGE_MODEL=gpt-image-1 ./venv/bin/python …/generate.py --transparent …` (Google
-  has no native alpha, so transparent always routes to OpenAI).
+- **OpenAI images default to `gpt-image-2.5-sunburst` (2026-10), which has NATIVE alpha** —
+  `--transparent` needs no model prefix and no chroma key (a pinned `gpt-image-2`, which rejects
+  `background=transparent`, is auto-upgraded). Human walk sheets: `--provider openai --resample
+  box`, fill 0.88, then `check_walk_facing.py` must PASS + a GIF eyeball (the generate-sprite-sheet
+  SKILL.md "human walk-sheet standard"). Google has no native alpha (magenta key).
 - **The peril thread (R9) — the Long Dusk made visible — is `docs/world/walkthrough/08-the-peril-thread.md`.**
   Duskapple's fallen-star crater lives in its builder; every later beat is an id-keyed upsert in
   `tools/maps/add_peril_thread.py` — re-run it after rebuilding any map it touches, or the beat

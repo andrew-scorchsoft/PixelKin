@@ -105,8 +105,8 @@ point.
 | Asset type          | Frame size | Sheet (cols×rows) | Anchor         | Subject fills |
 |---------------------|-----------:|:-----------------:|----------------|--------------:|
 | World tile          |      16×16 | 1×1               | top-left       | 100%          |
-| Human overworld     |      32×32 | 4×4               | bottom-centre  | ~20–24px wide |
-| Human action poses  |      32×32 | 4×2 (optional)    | bottom-centre  | ~20–24px wide |
+| Human overworld     |      32×32 | 4×4               | bottom-centre  | ~28px tall (fill 0.88) |
+| Human action poses  |      32×32 | 4×4 (optional)    | bottom-centre  | ~28px tall (fill 0.88) |
 | Overworld emote     |      32×32 | 4×2 (shared)      | centre         | per-bubble    |
 | Creature overworld  |      32×32 | 1×1 (opt. 4×4/4×1)| bottom-centre  | ~75%          |
 | Creature battle front |    64×64 | 1×1               | bottom-centre  | ~80% height   |
@@ -133,6 +133,19 @@ Every type has a defined pivot so a short creature and a tall creature still
 ## 5. Per-type specs
 
 ### A) Human / NPC overworld walking sheets
+
+> **The 2026-10 cast standard.** Human sheets are generated with
+> `--provider openai` (`gpt-image-2.5-sunburst`, **native alpha** — no magenta
+> key) + `--resample box`, at spec **fill 0.88** (a ~28px figure in the 32px cell,
+> ~1.75 tiles tall: the warm, rounded, big-headed 16-bit chibi read — not the old
+> ~22px thin figure). `snap_sheet` fits the whole sheet with **one shared scale**
+> (no frame-size pulsing as the cycle plays) and human sheets ship with **hard
+> 0/255 alpha** (`harden_alpha`). Pass the character's current master (and
+> dialogue portrait, if any) as `--reference`; brief 2–3 signature colours and
+> keep face/hair/clothes values well apart so nobody reads as a dark blob on the
+> night palette. **Gate:** every walk sheet must PASS
+> `scripts/check_walk_facing.py SHEET --gif out.gif` AND you must eyeball the GIF
+> (up row = back of head in all 4 cells) before it replaces a master.
 
 Walking around towns and routes. **A real walk cycle, not a two-frame shuffle** —
 this is what sells movement.
@@ -167,7 +180,7 @@ this is what sells movement.
 > |------:|-------|--------------|---------------|
 > | **1** | `human-overworld` (4×4, §A) | **every** character — required | idle + a real walk cycle per direction (and *running* for free: same frames, faster) |
 > | **2** | `emote` (4×2, §A3) | **one shared** sheet, reused by all | floating reaction bubbles popped above the head |
-> | **3** | `human-actions` (4×2, §A2) | **opt-in** (mainly the player) | bespoke event poses (raise-lamp, toss, gift-cast, sit, hurt) |
+> | **3** | `human-actions` (4×4, §A2) | **opt-in** (the player + story NPCs) | bespoke event poses (raise-lamp, toss, gift-cast, sit, hurt) + cutscene ACTING (bow, laugh, shock, sad, kneel, turn-away) |
 >
 > Keep each layer a **separate sheet** — never bolt extra rows onto the walk
 > sheet. The engine (`entities/Actor.ts`) keeps the walk sheet as the body and
@@ -178,32 +191,44 @@ this is what sells movement.
 ### A2) Human action / pose sheets (optional — layer 3)
 
 Bespoke, **event-triggered** poses for the moments a walk cycle can't sell — the
-constellation **relight**, tossing a **Lamp**, casting a **Lantern Gift**. Only
-generate this for characters that earn it (the **player** always; a story NPC
-when a cutscene needs it); a background NPC ships with layer 1 alone.
+constellation **relight**, tossing a **Lamp**, casting a **Lantern Gift** — and,
+since 2026-10, the **acting** poses cutscenes stage with (the 16-bit trick:
+characters bow, laugh, kneel, look away). Only generate this for characters that
+earn it (the **player** always; a story NPC when a cutscene needs it); a
+background NPC ships with layer 1 alone.
 
-- Sheet **4 columns × 2 rows**, 32×32 frames (128×64 total). Same body scale,
-  baseline, palette and proportions as that character's walk sheet — **generate
-  it with the walk sheet as `--reference`** so the body matches when the engine
-  swaps textures.
+- Sheet **4 columns × 4 rows** (16 cells), 32×32 frames (128×128 total). Same
+  body scale, baseline, palette and proportions as that character's walk sheet —
+  **generate with the walk sheet as `--reference`** so the body matches when the
+  engine swaps textures.
 - **All poses face the camera (down).** Cutscenes face the actor forward; bespoke
-  directional action art is out of scope (flip horizontally for left/right if
-  ever needed).
+  directional action art is out of scope.
 - Cells, in reading order (these map to `Actor.HUMAN_ACTION_FRAMES`):
-  1. **raise-lamp start** · 2. **raise-lamp hold** (lantern aloft, glowing — the
-  *relight* beat) · 3. **throw wind-up** · 4. **throw release** (Lamp toss /
-  catch) · 5. **gift raise** · 6. **gift cast** (Lantern Gift) · 7. **sit** ·
-  8. **hurt** (recoil).
-- The engine plays the two-frame ones as one-shots: `raiseLamp=[0,1]`,
-  `toss=[2,3]`, `gift=[4,5]`; `sit=[6]` and `hurt=[7]` are single holds.
+  1. **raise-lamp start** · 2. **raise-lamp hold** (lantern aloft — the *relight*
+  beat) · 3. **throw wind-up** · 4. **throw release** (Lamp toss / catch) ·
+  5. **gift raise** · 6. **gift cast** (Lantern Gift) · 7. **sit** · 8. **hurt** ·
+  9. **bow — small nod** · 10. **bow — deep** · 11. **laugh** (eyes shut,
+  shoulders up) · 12. **laugh — hand on belly** · 13. **shock** (hands up,
+  leaning back) · 14. **sad** (head bowed, looking down) · 15. **kneel** (one
+  knee) · 16. **turn-away** (shoulders turned, looking back over the shoulder).
+- Engine names: `raiseLamp=[0,1]`, `toss=[2,3]`, `gift=[4,5]`, `sit=[6]`,
+  `hurt=[7]`, `bow=[8,9]`, `laugh=[10,11]`, `shock=[12]`, `sad=[13]`,
+  `kneel=[14]`, `turnAway=[15]`. Two-frame ones play as one-shots, single ones
+  hold. A **legacy 4×2** sheet still packs and plays the first five; an acting
+  pose its sheet lacks is a safe no-op (the actor just holds idle).
+- **NPCs act too:** `Npc` hands its `<sheet>_actions` texture to the Actor when
+  packed, so `{ op:'action', actor:'<npc id>', action:'bow' }` works on any story
+  NPC whose walk sheet has a matching `_actions` master.
 - Pivot: **bottom-centre** (so a pose swaps in over the walk frame with the feet
-  in the same place).
+  in the same place). Keep body SCALE consistent across cells: a kneel/sit/bow is
+  shorter than standing, never blown up to fill the cell — scale every pose off the
+  walk sheet's standing height.
 - **Build it from single poses, don't one-shot the grid.** Image models are weak
   at multi-pose grids (they subdivide cells or repeat a stance). The robust path
   is the two-system rule: generate each pose as a `human-pose` sprite (single
   32×32, with the walk sheet as `--reference` so the body stays on-model), then
-  let code lay them out with `assemble_action_sheet.py`. Pack with
-  `pack_trainers.py` (it auto-detects `<stem>_actions.png`).
+  let code lay them out with `assemble_action_sheet.py` (16 poses → 4×4; 8 → the
+  legacy 4×2). Pack with `pack_trainers.py` (it auto-detects `<stem>_actions.png`).
 
 ### A3) Overworld emotes (shared — layer 2)
 
@@ -251,6 +276,27 @@ detail that vanishes at 32px. Centre-anchored. Reads instantly as "which kin."
 
 Profile/dex art. Richer than the battle sprite (more palette latitude toward the
 GBA register) but the **same character, palette, and personality**. Centre.
+
+### E2) Character dialogue portraits (32×32 frames, one strip per character)
+
+The busts in the DialogueBox/cutscenes (`src/game/content/portraits.ts`). Masters are
+1024px transparent head-and-shoulders busts in `assets/portraits/_masters/<char>_<expr>.png`
+(three-quarter view, head near the top, shoulders cut flat at the bottom, dark purple-navy
+outline, dusk palette + warm lamplight rim); `assets/portraits/build_strips.py` trims,
+scales and top-anchors each to a 32×32 frame and writes `public/assets/portraits/<char>.png`.
+- **New expression = ONE gen per call**, never a multi-face grid: `generate-image
+  --transparent --input-image <char>_neutral.png [+ one other mood]`, prompt "keep everything
+  identical, change ONLY the facial expression". The sunburst edit route keeps the silhouette
+  pixel-for-pixel, so the frame snaps to the same scale as its siblings.
+- **Harden the alpha before saving the master** (`a<128 → 0`, else 255): native-alpha gens
+  carry a faint full-canvas haze that inflates the trim bbox and shrinks the frame (the
+  first Wren `soft` roll snapped visibly smaller until hardened).
+- **APPEND** the expression to the character's `STRIPS` list and its `portraits.ts` map —
+  never reorder; scripts reference the indices. Re-running the builder is byte-stable for
+  untouched characters (Georgina's strip is hand-made and not in `STRIPS`).
+- New character (no master yet): pass two existing masters as **style-only** references and
+  brief the new identity, pick the best neutral, then derive moods from that neutral.
+- Accept a frame only after a 4× nearest side-by-side against the siblings on a dark ground.
 
 ### F) Battle effects (32×32 frame grid)
 

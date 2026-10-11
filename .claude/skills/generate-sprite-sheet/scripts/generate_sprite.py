@@ -213,6 +213,14 @@ def resize_rgba(src: Image.Image, size: tuple[int, int], resample: str) -> Image
     return Image.fromarray(res, "RGBA")
 
 
+def content_bbox(img: Image.Image, cut: int = 64):
+    """Bbox of the SOLID subject: alpha >= `cut`. Native-alpha gens (gpt-image-2.5)
+    leave a faint alpha haze (alpha 1-30) scattered across the canvas; a plain
+    getbbox() counts it, so every frame's box balloons to the cell edge and the
+    shared sheet scale shrank figures to ~21px instead of the ~28px fill target."""
+    return img.split()[3].point(lambda v: 255 if v >= cut else 0).getbbox()
+
+
 def fit_to_frame(src: Image.Image, fw: int, fh: int, anchor: str,
                  fill: float, resample: str, scale: float | None = None) -> Image.Image:
     """Trim transparent margins, scale to the fill fraction, composite at anchor.
@@ -222,7 +230,7 @@ def fit_to_frame(src: Image.Image, fw: int, fh: int, anchor: str,
     same size (per-frame fitting shrank wide stride/lantern frames, so the
     character pulsed as it walked)."""
     src = src.convert("RGBA")
-    bbox = src.split()[3].getbbox()  # bbox of non-transparent pixels
+    bbox = content_bbox(src)  # bbox of the solid (non-haze) subject
     if bbox:
         src = src.crop(bbox)
     cw, ch = src.size
@@ -308,7 +316,7 @@ def snap_sheet(src: Image.Image, spec: dict, resample: str, align: bool) -> Imag
               for c in range(cols)] for r in range(rows)]
     # One scale for the whole sheet, from the tallest/widest frame, so the
     # character never changes size between frames.
-    boxes = [cell.split()[3].getbbox() for row in cells for cell in row]
+    boxes = [content_bbox(cell) for row in cells for cell in row]
     boxes = [b for b in boxes if b]
     shared = None
     if boxes:

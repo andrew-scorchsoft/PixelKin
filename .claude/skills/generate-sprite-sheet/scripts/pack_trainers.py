@@ -8,7 +8,7 @@ pack_creatures.py / pack_tileset.py. Characters animate from up to three sheets,
 all on the same 32×32 grid (docs/art-style.md §A / §A2 / §A3):
 
   Layer 1 — walk sheet     assets/trainers/<stem>.png          4×4 (128×128)  REQUIRED per character
-  Layer 3 — action sheet   assets/trainers/<stem>_actions.png  4×2 (128×64)   OPTIONAL per character
+  Layer 3 — action sheet   assets/trainers/<stem>_actions.png  4×4 (128×128) OPTIONAL per character
   Layer 2 — emote sheet    assets/effects/emotes.png           4×2 (128×64)   ONE shared sheet, all characters
 
 This script packs each master into a served, lossless-WebP spritesheet plus one
@@ -36,7 +36,7 @@ describe the walk sheets (back-compat); action/emote sheets carry their own grid
       "player_indi": {
         "path": "assets/sprites/trainers/player_indi.webp", "width": 128, "height": 128,
         "actions": { "path": "assets/sprites/trainers/player_indi_actions.webp",
-                     "width": 128, "height": 64, "cols": 4, "rows": 2 }
+                     "width": 128, "height": 128, "cols": 4, "rows": 4 }
       },
       "professor_fenn": { "path": "...professor_fenn.webp", "width": 128, "height": 128 }
     },
@@ -59,12 +59,15 @@ from pathlib import Path
 
 from PIL import Image, ImageChops
 
-# Frame canvas (docs/art-style.md §4). Walk = 4×4, action/emote = 4×2.
+# Frame canvas (docs/art-style.md §4). Walk = 4×4, action = 4×4 (legacy 4×2), emote = 4×2.
 FRAME_W, FRAME_H = 32, 32
 WALK_COLS, WALK_ROWS = 4, 4
 WALK_W, WALK_H = FRAME_W * WALK_COLS, FRAME_H * WALK_ROWS   # 128×128
-ACTION_COLS, ACTION_ROWS = 4, 2
-ACTION_W, ACTION_H = FRAME_W * ACTION_COLS, FRAME_H * ACTION_ROWS  # 128×64
+# Action sheets are 4×4 (16 cells: the 8 originals + 8 acting poses, 2026-10);
+# a legacy 4×2 sheet still packs (the engine no-ops the poses it lacks).
+ACTION_COLS = 4
+ACTION_ROWS_OK = (4, 2)
+ACTION_W = FRAME_W * ACTION_COLS  # 128
 EMOTE_COLS, EMOTE_ROWS = 4, 2
 EMOTE_W, EMOTE_H = FRAME_W * EMOTE_COLS, FRAME_H * EMOTE_ROWS      # 128×64
 
@@ -124,8 +127,11 @@ def pack() -> None:
         # Optional layer-3 action sheet for this character.
         action_master = SRC_DIR / f"{stem}{ACTIONS_SUFFIX}.png"
         if action_master.exists():
-            a = pack_sheet(action_master, (ACTION_W, ACTION_H), "4x2 action sheet")
-            a.update(cols=ACTION_COLS, rows=ACTION_ROWS)
+            a_rows = Image.open(action_master).size[1] // FRAME_H
+            if a_rows not in ACTION_ROWS_OK:
+                a_rows = ACTION_ROWS_OK[0]  # let pack_sheet report the bad size
+            a = pack_sheet(action_master, (ACTION_W, FRAME_H * a_rows), f"4x{a_rows} action sheet")
+            a.update(cols=ACTION_COLS, rows=a_rows)
             entries[stem]["actions"] = a
             print(f"  packed {action_master.stem:22s} -> {(OUT_DIR / f'{action_master.stem}.webp').relative_to(REPO)}")
 

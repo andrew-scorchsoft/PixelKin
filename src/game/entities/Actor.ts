@@ -69,9 +69,12 @@ export const EMOTE_TEXTURE = 'emotes';
 export const actionTextureKey = (walkKey: string): string => `${walkKey}${ACTIONS_KEY_SUFFIX}`;
 
 /**
- * Event poses on a layer-3 action sheet (4×2, docs/art-style.md §A2), as frame
- * lists played as one-shots. Two-frame poses animate (start → hold); single-frame
- * poses are a held pose. Must match the sheet's cell order.
+ * Event poses on a layer-3 action sheet (4×4 = 16 cells, docs/art-style.md §A2),
+ * as frame lists played as one-shots. Two-frame poses animate (start → hold);
+ * single-frame poses are a held pose. Must match the sheet's cell order.
+ * Rows 1–2 are the original 4×2 sheet (old 8-cell sheets keep working for
+ * those); rows 3–4 are the ACTING poses cutscenes stage with (2026-10). A pose
+ * whose cells an actor's sheet doesn't have is a safe no-op (`playAction`).
  */
 export const HUMAN_ACTION_FRAMES = {
   raiseLamp: [0, 1],
@@ -79,6 +82,12 @@ export const HUMAN_ACTION_FRAMES = {
   gift: [4, 5],
   sit: [6],
   hurt: [7],
+  bow: [8, 9], // a small nod → the full bow, hands together
+  laugh: [10, 11], // shoulders up, eyes shut, mouth open → hand to the belly
+  shock: [12], // both hands up, leaning back
+  sad: [13], // head bowed, looking down at the ground
+  kneel: [14], // down on one knee
+  turnAway: [15], // shoulders turned, looking back over the shoulder
 } as const;
 export type ActionName = keyof typeof HUMAN_ACTION_FRAMES;
 
@@ -336,15 +345,20 @@ export class Actor {
   }
 
   /**
-   * Play a one-shot event pose (raise-lamp, toss, gift, sit, hurt) from the
-   * layer-3 action sheet, then settle back to idle. No-op (resolves immediately)
-   * for actors without an action sheet, so cutscene code can call it
+   * Play a one-shot event pose (raise-lamp, toss, gift, sit, hurt, bow, laugh,
+   * shock, sad, kneel, turnAway) from the layer-3 action sheet, then settle back
+   * to idle. No-op (resolves immediately) for actors without an action sheet, or
+   * whose sheet lacks that pose's cells, so cutscene code can call it
    * unconditionally. Movement is suspended for the duration. `holdMs` is how long
    * the final pose holds before returning to idle.
    */
   playAction(name: ActionName, holdMs = 600): Promise<void> {
     const key = this.actionsKey;
     if (!key || !this.scene.textures.exists(key) || this.acting) return Promise.resolve();
+    // An older 8-cell sheet has no acting rows: hold the idle rather than
+    // asking Phaser for frames that don't exist.
+    const need = Math.max(...HUMAN_ACTION_FRAMES[name]);
+    if (!this.scene.textures.get(key).has(String(need))) return Promise.resolve();
     this.acting = true;
     this.stopWalking();
     this.ensureActionAnim(key, name);

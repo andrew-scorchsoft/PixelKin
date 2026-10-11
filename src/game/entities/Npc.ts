@@ -7,6 +7,7 @@
 import Phaser from 'phaser';
 import {
   Actor,
+  actionTextureKey,
   type ActorFrames,
   ensurePlaceholderCharacter,
   HUMAN_WALK_FRAMES,
@@ -96,6 +97,12 @@ const SPRITE_SHEETS: Record<string, string> = {
   hollowing_acolyte: 'hollowing_acolyte',
   old_salt: 'old_salt',
   village_child: 'village_child',
+  lamplighter: 'lamplighter',
+  market_trader: 'market_trader',
+  innkeeper: 'innkeeper',
+  road_courier: 'road_courier',
+  hollowing_elder: 'hollowing_elder',
+  kite_child: 'kite_child',
 };
 
 /**
@@ -119,6 +126,12 @@ const REGIONAL_FALLBACK: Record<string, string> = {
   hollowing_acolyte: 'npc_lampwarden',
   old_salt: 'npc_old_man',
   village_child: 'npc_girl',
+  lamplighter: 'npc_man',
+  market_trader: 'npc_woman',
+  innkeeper: 'npc_shopkeeper',
+  road_courier: 'npc_man',
+  hollowing_elder: 'npc_old_man',
+  kite_child: 'npc_girl',
 };
 
 /** Placeholder body colours so distinct NPCs read apart before real walk-sheets. */
@@ -209,7 +222,7 @@ export class Npc extends Actor {
   private static resolveSheet(
     scene: Phaser.Scene,
     placement: NpcPlacement,
-  ): [string, ActorFrames?] {
+  ): [string, ActorFrames?, string?] {
     if (placement.sprite === 'item_cache') {
       ensureItemCacheSprite(scene, 'npc_item_cache');
       return ['npc_item_cache'];
@@ -222,13 +235,26 @@ export class Npc extends Actor {
       if (scene.textures.exists(key)) return [key, STATIC_FRAMES];
     }
     const sheet = SPRITE_SHEETS[placement.sprite];
-    if (sheet && scene.textures.exists(sheet)) return [sheet, HUMAN_WALK_FRAMES];
+    if (sheet && scene.textures.exists(sheet)) return [sheet, HUMAN_WALK_FRAMES, Npc.actionsFor(scene, sheet)];
     const fallback = REGIONAL_FALLBACK[placement.sprite];
-    if (fallback && scene.textures.exists(fallback)) return [fallback, HUMAN_WALK_FRAMES];
+    if (fallback && scene.textures.exists(fallback)) {
+      return [fallback, HUMAN_WALK_FRAMES, Npc.actionsFor(scene, fallback)];
+    }
     const color = SPRITE_COLORS[placement.sprite] ?? COLORS.fire;
     const key = `npc_placeholder_${placement.sprite}`;
     ensurePlaceholderCharacter(scene, key, color);
     return [key];
+  }
+
+  /**
+   * The layer-3 action texture (`<sheet>_actions`) for a walk sheet, when one was
+   * packed + loaded — so a cutscene's `{op:'action', actor:'<npc id>', …}` can
+   * make a story NPC bow, laugh or kneel (docs/art-style.md §A2). Undefined →
+   * `playAction` is a no-op for this NPC.
+   */
+  private static actionsFor(scene: Phaser.Scene, sheet: string): string | undefined {
+    const key = actionTextureKey(sheet);
+    return scene.textures.exists(key) ? key : undefined;
   }
 
   get id(): string {
