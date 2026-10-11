@@ -107,10 +107,10 @@
         "ty": 12
       },
       "trigger": "step_on",
-      "to_map": "galehigh_terraces",
+      "to_map": "cinderwind_scarp",
       "to": {
         "tx": 1,
-        "ty": 14
+        "ty": 20
       },
       "facing": "right",
       "transition": "fade"
@@ -122,10 +122,10 @@
         "ty": 13
       },
       "trigger": "step_on",
-      "to_map": "galehigh_terraces",
+      "to_map": "cinderwind_scarp",
       "to": {
         "tx": 1,
-        "ty": 15
+        "ty": 21
       },
       "facing": "right",
       "transition": "fade"

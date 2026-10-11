@@ -39,6 +39,32 @@ function staged(orig: string, lit: string, gleam: string): ScriptRegistry[string
 }
 
 const NORTH_AFTER_SCRIPTS: ScriptRegistry = {
+  // --- Cinderwind Scarp (2026-10): the climb out of Cinderhead Deep ---
+  'script.scarp_hauler': [
+    { op: 'say', speaker: 'HOBB-REE', text: 'Up out of the Deep, are you? Then you\'ve earned a breather — and I\'ve earned a bout. Thirty years hauling ore up this scarp. Let\'s see what YOUR lot can carry.' },
+    { op: 'battle', trainer: 'scarp_hauler' },
+    { op: 'say', speaker: 'HOBB-REE', text: 'Ha! Strong backs, the lot of them. Galehigh\'s at the top — follow the wind. If your hat leaves first, let it go.' },
+    { op: 'setFlag', flag: 'flag:scarp_hauler_beaten' },
+  ],
+  'script.scarp_kiterunner': [
+    { op: 'say', speaker: 'RUE', text: 'Oi, mine-dust! Nobody comes up onto MY ridge without a race. Kites up, kin out!' },
+    { op: 'battle', trainer: 'scarp_kiterunner' },
+    { op: 'say', speaker: 'RUE', text: 'Outflown. Fine. The terraces are just through the gate — tell the kite-maker Rue sent you, and she\'ll laugh at you.' },
+    { op: 'setFlag', flag: 'flag:scarp_kiterunner_beaten' },
+  ],
+  'script.pickup_scarp_amber': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'moth_amber', count: 1 },
+    { op: 'say', text: 'Wedged behind the crystal spoil, where the haulers never looked: a lump of MOTH-AMBER. Found it!' },
+    { op: 'setFlag', flag: 'flag:picked_scarp_amber' },
+  ],
+  'script.pickup_scarp_balm': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'warm_balm', count: 2 },
+    { op: 'say', text: 'A hauler\'s tin left on the ledge for whoever comes up next. Found 2 WARM BALMS!' },
+    { op: 'setFlag', flag: 'flag:picked_scarp_balm' },
+  ],
+
   // Galehigh's festival trio are actors in the Kite-rising, so they keep their ids.
   'script.galehigh_piper_staged': staged('npc.galehigh_festival_piper', 'npc.galehigh_festival_piper_lit', STORM),
   'script.galehigh_festival_kid_staged': staged('npc.galehigh_festival_kid', 'npc.galehigh_festival_kid_lit', STORM),
@@ -64,6 +90,20 @@ const NORTH_AFTER_SCRIPTS: ScriptRegistry = {
 };
 
 const NORTH_AFTER_DIALOGUE: DialogueRegistry = {
+  // --- Cinderwind Scarp (2026-10) ---
+  'sign.cinderwind_scarp': [
+    { text: 'CINDERWIND SCARP\nWEST: the Deep\'s mouth and the Cinderhead galleries. UP and EAST: Galehigh Terraces. Mind the gusts on the top tier.' },
+  ],
+  'npc.scarp_cairn': [
+    { text: 'A wind cairn, every stone wrapped in a faded kite-ribbon. Galehigh folk build one wherever they first feel the updraught. This is where the mountain starts to breathe.' },
+  ],
+  'npc.scarp_hauler_after': [
+    { speaker: 'HOBB-REE', text: 'The carts used to run right up to the terraces. Then the dark came, and the rail-lamps went, and now it\'s legs. Good legs, mind.' },
+  ],
+  'npc.scarp_kiterunner_after': [
+    { speaker: 'RUE', text: 'You can see the whole Deep\'s spoil-heap from up here. And the kites. Mostly the kites.' },
+  ],
+
   // --- Galehigh Terraces (gleam:storm) ----------------------------------------
   'npc.galehigh_festival_piper_lit': [
     { speaker: 'FESTIVAL PIPER', text: "Still playing! The kites came down hours ago, but the Storm's up there now, and somebody ought to keep it company." },

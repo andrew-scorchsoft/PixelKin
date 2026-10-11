@@ -122,6 +122,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'cinderhead_deep_b2f', region: 'east' }, // the third gallery: the vigil-lamp (deepest)
     { map_id: 'crystoll_vault', region: 'east', optional: true, reward: 'late backtrack (Starreach): rare Stone/Light kin' },
     // ---- North: Galehigh -> Windward Stair (2 segments) -> Pale Vault ---------------
+    { map_id: 'cinderwind_scarp', region: 'north' }, // route: the climb out of the mine (2026-10)
     { map_id: 'galehigh_terraces', region: 'north' },
     { map_id: 'galehigh_skyloft', region: 'north' }, // the winch-festival top terrace: Mira's launch-ledge bond-test (Lumenary 5's venue)
     { map_id: 'galehigh_lumenary', region: 'north' }, // interior: the Storm hall (festival home — the battle is at the skyloft)
@@ -254,7 +255,9 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'glowmoss_deep', to_map: 'cinderhead_mine', via_warp: 'to_mine', bidirectional: true },
     { from_map: 'cinderhead_mine', to_map: 'cinderhead_lumenary', via_warp: 'to_lumenary', bidirectional: true },
     { from_map: 'cinderhead_mine', to_map: 'cinderhead_deep', via_warp: 'to_deep', requires_ability: 'glimmerstep', bidirectional: true },
-    { from_map: 'cinderhead_deep', to_map: 'galehigh_terraces', via_warp: 'to_terraces', bidirectional: true },
+    // 2026-10: the Deep opens onto Cinderwind Scarp, the climb to the terraces
+    { from_map: 'cinderhead_deep', to_map: 'cinderwind_scarp', via_warp: 'to_terraces', bidirectional: true },
+    { from_map: 'cinderwind_scarp', to_map: 'galehigh_terraces', via_warp: 'to_terraces', bidirectional: true },
     // Galehigh interiors (door warps, both ways) + the Kite-Rising Winch: the
     // skyloft is gated by the FESTIVAL flag (the earned loop, spine §5 shape #5)
     // — never by Updraft Kite (§0 rule 1; Updraft is Mira's reward).

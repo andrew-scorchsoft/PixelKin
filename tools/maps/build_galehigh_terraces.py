@@ -302,13 +302,13 @@ pt.ledge_run(deco, W, H, 21, 18, 20, rng)           # festival -> lower town hop
 
 # ---- warps (graph.ts edge ids verbatim) --------------------------------------------
 m["warps"] += [
-    # WEST <-> cinderhead_deep (`to_terraces` lands {1,14}/{1,15}; we land one
-    # tile inside its warp pair at {27,12}/{27,13})
+    # WEST <-> cinderwind_scarp (2026-10: the climb out of the mine; its
+    # `to_terraces` lands {1,14}/{1,15}; we land one tile inside its gate)
     {"id": "to_cinderhead", "at": {"tx": 0, "ty": 14}, "trigger": "step_on",
-     "to_map": "cinderhead_deep", "to": {"tx": 26, "ty": 12}, "facing": "left",
+     "to_map": "cinderwind_scarp", "to": {"tx": 22, "ty": 4}, "facing": "left",
      "transition": "fade"},
     {"id": "to_cinderhead_s", "at": {"tx": 0, "ty": 15}, "trigger": "step_on",
-     "to_map": "cinderhead_deep", "to": {"tx": 26, "ty": 13}, "facing": "left",
+     "to_map": "cinderwind_scarp", "to": {"tx": 22, "ty": 5}, "facing": "left",
      "transition": "fade"},
     # NORTH -> windward_stair_i (graph `to_stair`, ungated; N2 authors the far
     # side — its return pair must land at our (14,1)/(15,1))

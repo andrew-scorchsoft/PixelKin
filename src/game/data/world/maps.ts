@@ -675,6 +675,18 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   // Galehigh Terraces — the North's cliff-farm town (Lumenary 5, Storm: Mira
   // Vael) under the Kite-rising; the Kite-Rising Winch earned loop hauls the
   // player up to the skyloft for the bond-test at the launch ledge.
+  // Cinderwind Scarp (2026-10 geometry fix): the climb out of Cinderhead Deep's
+  // east mouth to Galehigh's west gate — three ledged tiers, lv 28-31.
+  cinderwind_scarp: {
+    json: 'assets/maps/cinderwind_scarp.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/windward-stair-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/windward-stair-a.webp',
+      'assets/backgrounds/battle/windward-stair-b.webp',
+    ],
+  },
   galehigh_terraces: {
     json: 'assets/maps/galehigh_terraces.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },

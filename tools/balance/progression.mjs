@@ -253,7 +253,7 @@ const JOURNEY = [
 
   // ---- NORTH (BUILT — N4 wiring 2026-06; trainers mirror trainers.ts) -------
   {
-    name: 'Galehigh Terraces + skyloft',
+    name: 'Cinderwind Scarp → Galehigh Terraces + skyloft',
     // North onward the core team is set (see shareFor's design note) — the
     // built roster's species-true XP runs leaner than the old placeholder
     // budget, and the lead's share carries the difference.
@@ -261,16 +261,19 @@ const JOURNEY = [
     // BUILT (the Kite-Rising Winch loop): two terrace route trainers, the two
     // skyloft wind-wards, Mira. quests = the R4 Round-leg carriage fee (300);
     // finds = the festival takings-tin (200); valuables = the terrace
-    // Moth-amber (600).
-    wild: { areas: ['galehigh_terraces'], band: [27, 31], fights: { rusher: 5, mainline: 10, explorer: 16 } },
+    // Moth-amber (600). The Scarp (2026-10, the climb out of the Deep) adds
+    // its two route trainers, its lv 28-31 beds and a Moth-amber (600).
+    wild: { areas: ['cinderwind_scarp', 'galehigh_terraces'], band: [27, 31], fights: { rusher: 5, mainline: 10, explorer: 16 } },
     trainers: [
+      T('Hobb-Ree (ore-hauler)', 'route', [K(28, 53), K(30, 48)]),
+      T('Rue (kite-runner)', 'route', [K(29, 100), K(29, 91), K(31, 101)]),
       T('Perrin (kite-hand)', 'route', [K(28, 88), K(29, 97)]),
       T('Sorrel (terrace-farmer)', 'route', [K(29, 91), K(30, 45)]),
       T('Tamsin (wind-ward)', 'keeper', [K(29, 97), K(30, 98)]),
       T('Bran (wind-ward)', 'keeper', [K(30, 91), K(31, 89)]),
       T('Mira Vael', 'warden', [K(30, 98), K(31, 95), K(32, 89), K(34, 90)]),
     ],
-    income: { quests: 300, valuables: 600, finds: 200 },
+    income: { quests: 300, valuables: 1200, finds: 200 },
     spend: { warm_balm: 3, beacon_charge: 2, chart_late: 1 },
     checkpoint: { name: 'Storm Gleam (Mira)', rec: 28, ace: 34 },
   },
@@ -440,6 +443,8 @@ const BUILT_PAYOUTS = {
   gallery_miner_a: ['keeper', 25, 500],
   gallery_miner_b: ['keeper', 26, 520],
   lampwarden_cinderhead: ['warden', 28, 1680],
+  scarp_hauler: ['route', 30, 480], // Cinderwind Scarp (2026-10)
+  scarp_kiterunner: ['route', 31, 496],
   galehigh_kitehand: ['route', 29, 464],
   galehigh_terracer: ['route', 30, 480],
   skyloft_ward_a: ['keeper', 30, 600],

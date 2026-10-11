@@ -118,10 +118,10 @@ m: dict = {
         # OUT — the ungated gallery on to Galehigh (East->North handoff, graph.ts
         # `to_terraces`; galehigh unauthored — a safe inert tease for now)
         {"id": "to_terraces", "at": {"tx": 27, "ty": 12}, "trigger": "step_on",
-         "to_map": "galehigh_terraces", "to": {"tx": 1, "ty": 14}, "facing": "right",
+         "to_map": "cinderwind_scarp", "to": {"tx": 1, "ty": 20}, "facing": "right",
          "transition": "fade"},
         {"id": "to_terraces_s", "at": {"tx": 27, "ty": 13}, "trigger": "step_on",
-         "to_map": "galehigh_terraces", "to": {"tx": 1, "ty": 15}, "facing": "right",
+         "to_map": "cinderwind_scarp", "to": {"tx": 1, "ty": 21}, "facing": "right",
          "transition": "fade"},
         # SPUR — Crystoll Vault (graph.ts `to_crystoll`, Starreach — [LATER])
         {"id": "to_crystoll", "at": {"tx": 24, "ty": 5}, "trigger": "step_on",

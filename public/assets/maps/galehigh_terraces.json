@@ -371,10 +371,10 @@
         "ty": 14
       },
       "trigger": "step_on",
-      "to_map": "cinderhead_deep",
+      "to_map": "cinderwind_scarp",
       "to": {
-        "tx": 26,
-        "ty": 12
+        "tx": 22,
+        "ty": 4
       },
       "facing": "left",
       "transition": "fade"
@@ -386,10 +386,10 @@
         "ty": 15
       },
       "trigger": "step_on",
-      "to_map": "cinderhead_deep",
+      "to_map": "cinderwind_scarp",
       "to": {
-        "tx": 26,
-        "ty": 13
+        "tx": 22,
+        "ty": 5
       },
       "facing": "left",
       "transition": "fade"

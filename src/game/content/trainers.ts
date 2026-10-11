@@ -875,6 +875,30 @@ export const TRAINERS: TrainerRegistry = {
     ai: 'smart',
   },
 
+  // --- Cinderwind Scarp (2026-10 geometry fix) — the climb from Cinderhead
+  // Deep to Galehigh: two route trainers on the turns (route 16 × ace).
+  scarp_hauler: {
+    id: 'scarp_hauler',
+    name: 'HOBB-REE',
+    title: 'Ore-hauler',
+    party: [
+      { species_id: 53, level: 28 }, // Oreling — Stone
+      { species_id: 48, level: 30 }, // Rubbol — Stone (ace)
+    ],
+    payout: 480, // route 16 × ace 30
+  },
+  scarp_kiterunner: {
+    id: 'scarp_kiterunner',
+    name: 'RUE',
+    title: 'Kite-runner',
+    party: [
+      { species_id: 100, level: 29 }, // Squallox — Storm
+      { species_id: 91, level: 29 }, // Cirruff — Storm/Light
+      { species_id: 101, level: 31 }, // Galefox — Storm (ace)
+    ],
+    payout: 496, // route 16 × ace 31
+  },
+
   // --- The Umbral Approach (2026-10 geometry fix) — the mountain road up from
   // the Crossroads. Three Hollowing acolytes keep its turns: keeper class like
   // their Spire siblings, but plain AI (the climb warms you up; the Spire is
