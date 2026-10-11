@@ -1501,7 +1501,7 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'NESSA COLE', text: 'The seventh lamp is yours to light, Wayfarer. And then... there is something I have been watching grow on the mountain, and the time for watching it alone is over.' },
   ],
   'npc.junior_watcher_b_after': [
-    { speaker: 'OS', text: 'Lira\'s charting the sky as it comes back, you know. First watcher in forty years with something NEW to write. Don\'t tell her I said it was brilliant. She logs compliments.' },
+    { speaker: 'OS', text: 'Lira\'s charting the sky as it comes back, you know. First watcher in eleven years with something NEW to write. Don\'t tell her I said it was brilliant. She logs compliments.' },
   ],
   'npc.junior_watcher_working': [
     { speaker: 'LIRA', text: 'The Sunvault terrace, our roof past the scree — and the Coldfog cairn only if your nerve runs that deep; the chart finishes without it. Look PROPERLY. Long enough to be cold. I\'ll know if you skimmed.' },
@@ -1546,7 +1546,7 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'NESSA COLE', text: 'Remember harder than he has forgotten, Wayfarer. And when it is done... come back one clear night. I will show you eight constellations from this chair, and we will not say anything at all.' },
   ],
   'npc.nightreach_hall_keeper': [
-    { speaker: 'NIGHT-CLERK', text: 'The star-ledger: every watch ever kept under this dome, every star lost and every star come home. The "lost" column has had forty years of custom. I have ruled a fresh page for tonight, just in case. ...I rule one every night. Just in case.' },
+    { speaker: 'NIGHT-CLERK', text: 'The star-ledger: every watch ever kept under this dome, every star lost and every star come home. The "lost" column has had eleven years of custom. I have ruled a fresh page for tonight, just in case. ...I rule one every night. Just in case.' },
   ],
   'npc.nightreach_hall_festival': [
     { speaker: 'WATCHER', text: 'The eighth watch-lamp lit ITSELF. I was here. I saw the wick take with no hand near it — the sky reached down and kept its own vigil. I shall be telling this for the rest of my life, and it will never once need improving.' },

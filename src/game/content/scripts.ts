@@ -3050,7 +3050,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'gleam', element: 'solar' },
     { op: 'musicCrossfade', key: 'gleam-emotional', ms: 900 },
     { op: 'tint', color: '#ffd089', alpha: 0, ms: 900 },
-    { op: 'say', speaker: 'LUCAN PYRE', portrait: 'lucan', expr: 'grand', text: 'The Solar Gleam stands! Seven relit — listen to the HOUSE! Forty years we played "The Sun Returns" to a dark sky, and tonight the sky read the script!' },
+    { op: 'say', speaker: 'LUCAN PYRE', portrait: 'lucan', expr: 'grand', text: 'The Solar Gleam stands! Seven relit — listen to the HOUSE! Forty years we played "The Sun Returns" on a drowned stage — eleven of them under a dark sky — and tonight the sky read the script!' },
     { op: 'say', speaker: 'LUCAN PYRE', text: 'And no performer leaves my stage unpaid. The Sunsketch — a pocket of daylight, yours to release. Shut night-flowers bloom into bridges at its touch.' },
     { op: 'say', speaker: 'LUCAN PYRE', text: 'The sun-vine bridge on the Climb west of here has been shut since the night fell — it will open under your feet now. And the sealed Helia Vault off the high terraces... ah, but that would be telling. Some doors deserve their reveal.' },
     { op: 'wait', ms: 600 },
@@ -3192,7 +3192,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'You raise your lamp and release a pocket of daylight over the antechamber\'s shut vines.' },
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'tint', color: '#ffd089', alpha: 0.2, ms: 600 },
-    { op: 'narrate', text: 'The double vine unfurls underfoot, petal over petal, forty years of waiting undone in a breath. The way on climbs toward a ledge already gold with stored light.' },
+    { op: 'narrate', text: 'The double vine unfurls underfoot, petal over petal, eleven years of waiting undone in a breath. The way on climbs toward a ledge already gold with stored light.' },
     { op: 'tint', color: '#ffd089', alpha: 0, ms: 600 },
   ],
   'script.helia_bloom_2': [
@@ -3222,7 +3222,7 @@ export const SCRIPTS: ScriptRegistry = {
   'script.pickup_helia_relic': [
     { op: 'sfx', key: 'world-gleam-a' },
     { op: 'giveItem', item: 'chart_sunburst_nova', count: 1 },
-    { op: 'say', text: 'In the reliquary\'s heart, dry these forty years in a case of gold glass: a STAR-CHART: SUNBURST NOVA — the sun\'s own remembered blaze, pressed by the keepers before the night fell.' },
+    { op: 'say', text: 'In the reliquary\'s heart, dry these eleven years in a case of gold glass: a STAR-CHART: SUNBURST NOVA — the sun\'s own remembered blaze, pressed by the keepers before the night fell.' },
     { op: 'say', text: 'The vault\'s hush approves of your hands. Probably.' },
     { op: 'setFlag', flag: 'flag:picked_helia_relic' },
   ],
@@ -3516,7 +3516,7 @@ export const SCRIPTS: ScriptRegistry = {
   ],
   // R5 "A Chart for the Waykeeper" — the Round's last leg, the take side.
   'script.round_chart_take': [
-    { op: 'say', speaker: 'LIRA', text: 'One more thing — and this one\'s an honour, not an errand. The Waykeeper at the Crossroads has hung a fresh chart on the Waystone every year since before the night fell. He hasn\'t had a TRUE one to hang in forty.' },
+    { op: 'say', speaker: 'LIRA', text: 'One more thing — and this one\'s an honour, not an errand. The Waykeeper at the Crossroads has hung a fresh chart on the Waystone every year since before the night fell. He hasn\'t had a TRUE one to hang in eleven.' },
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'round_chart', count: 1 },
     { op: 'say', text: 'She rolls a fresh pressing of the relit sky, seals it, and lays it across your hands like a lamp at a naming. Received the FRESH STAR-CHART!' },
@@ -3525,7 +3525,7 @@ export const SCRIPTS: ScriptRegistry = {
   ],
   // R5, the delivery (the Crossroads Waykeeper) — the Round comes full circle.
   'script.round_chart_deliver': [
-    { op: 'say', speaker: 'WAYKEEPER', text: 'That seal... that\'s a Nightreach pressing. Hand it here, hand it here — careful — forty YEARS I\'ve hung guesswork on this stone and called it custom—' },
+    { op: 'say', speaker: 'WAYKEEPER', text: 'That seal... that\'s a Nightreach pressing. Hand it here, hand it here — careful — eleven YEARS I\'ve hung guesswork on this stone and called it custom—' },
     { op: 'narrate', text: 'He unrolls it against the Waystone, and goes still. Seven constellations, true as the night above him — and an eighth sketched faint, waiting. When he hangs it, he does it the way a Gleam is given: slowly, so the moment knows it is one.' },
     { op: 'sfx', key: 'world-gleam-a' },
     { op: 'narrate', text: 'The fresh chart hangs on the Waystone, lamp-lit at the centre of every road in Vesperholm. Travellers are already drifting over to look up and point.' },
