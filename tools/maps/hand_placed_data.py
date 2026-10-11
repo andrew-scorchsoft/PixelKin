@@ -63,7 +63,7 @@ PLACEMENTS: dict[str, dict] = {
         },
         "npcs": [
             # P1 postgame: a letter recipient (script.post_letter_*)
-            {"id": "letter_otho", "at": {"tx": 13, "ty": 12}, "facing": "down", "sprite": "npc_lampwarden", "movement": "static", "dialogue_ref": "script.post_letter_cinderhead", "requires_flag": "flag:q_post_letters", "hidden_when_flag": "flag:q_post_letter_cinderhead"},
+            {"id": "letter_otho", "at": {"tx": 14, "ty": 12}, "facing": "down", "sprite": "npc_lampwarden", "movement": "static", "dialogue_ref": "script.post_letter_cinderhead", "requires_flag": "flag:q_post_letters", "hidden_when_flag": "flag:q_post_letter_cinderhead"},
             # Andrew on his fence — wayfinding (script.andrew_road)
             {"id": "andrew_road", "at": {"tx": 3, "ty": 13}, "facing": "left", "sprite": "andrew_ward", "movement": "look_around", "dialogue_ref": "script.andrew_road"},
         ],
