@@ -45,6 +45,8 @@ import {
   setCannotDie,
   setAmbientMotion,
   getAmbientMotion,
+  setMusicStyle,
+  getMusicStyle,
   type TextSpeed,
   type BattlePace,
   type VolumeLevel,
@@ -146,6 +148,7 @@ export class SettingsMenu {
       { label: `Text: ${TEXT_SPEED_LABEL[this.settings.textSpeed ?? 'cosy']}`, value: 'text' },
       { label: `Battle: ${BATTLE_PACE_LABEL[this.settings.battlePace ?? 'cosy']}`, value: 'battle' },
       { label: `Music: ${VOLUME_LABEL[this.settings.musicVolume ?? 'full']}`, value: 'music' },
+      { label: `Soundtrack: ${getMusicStyle() === 'classic' ? 'Classic' : 'Remastered'}`, value: 'style' },
       { label: `Sfx: ${VOLUME_LABEL[this.settings.sfxVolume ?? 'full']}`, value: 'sfx' },
       { label: `Cannot die: ${this.settings.cannotDie ? 'On' : 'Off'}`, value: 'nodie' },
       { label: `Ambient motion: ${getAmbientMotion() ? 'On' : 'Off'}`, value: 'motion' },
@@ -317,6 +320,16 @@ export class SettingsMenu {
         setSfxVolume(next);
         await SaveManager.saveSettings(this.settings);
         // Play AFTER the write so the player hears the level they just set (OFF = silent).
+        void this.deps.sfx?.play('ui-toggle');
+        return true;
+      }
+      case 'style': {
+        // Remastered score <-> classic chip renders. Live: MusicDirector re-plays
+        // the current bed in the new style.
+        const musicStyle = getMusicStyle() === 'classic' ? 'remastered' : 'classic';
+        this.settings = { ...this.settings, musicStyle };
+        setMusicStyle(musicStyle);
+        await SaveManager.saveSettings(this.settings);
         void this.deps.sfx?.play('ui-toggle');
         return true;
       }

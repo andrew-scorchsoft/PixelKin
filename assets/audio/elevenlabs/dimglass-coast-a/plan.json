@@ -1,0 +1,185 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{a bold, bright opening call that announces the open road: a rising fanfare on the lead over a drum pickup, landing on a held chord that springs straight into the walking theme}",
+   "duration_ms": 8000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "120 BPM",
+    "G major",
+    "bright pulse-wave lead melody",
+    "plucked harp arpeggios like chiming buoys",
+    "warm string pad",
+    "bouncy synth bass rocking root and fifth",
+    "light brushy snare and soft kick like lapping foam",
+    "adventurous walking theme for the first route of a journey",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "bold opening fanfare",
+    "sense of setting out"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "fade out",
+    "ritardando"
+   ],
+   "context_adherence": "high",
+   "conditioning_ref": {
+    "song_id": "TOREmIgiwF3GKpN7UkLA",
+    "range": {
+     "start_ms": 10668,
+     "end_ms": 40668
+    }
+   },
+   "condition_strength": "medium"
+  },
+  {
+   "text": "[Main Theme]\n{the walking melody, hummable and springy, front and centre, steady stride in the bass}",
+   "duration_ms": 16000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "120 BPM",
+    "G major",
+    "bright pulse-wave lead melody",
+    "plucked harp arpeggios like chiming buoys",
+    "warm string pad",
+    "bouncy synth bass rocking root and fifth",
+    "light brushy snare and soft kick like lapping foam",
+    "adventurous walking theme for the first route of a journey",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme",
+    "memorable hook",
+    "onward momentum"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "fade out",
+    "ritardando"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme Reprise]\n{the same melody again with a bell counter-line glinting on the offbeats, a little fuller}",
+   "duration_ms": 16000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "120 BPM",
+    "G major",
+    "bright pulse-wave lead melody",
+    "plucked harp arpeggios like chiming buoys",
+    "warm string pad",
+    "bouncy synth bass rocking root and fifth",
+    "light brushy snare and soft kick like lapping foam",
+    "adventurous walking theme for the first route of a journey",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "bell counter-melody",
+    "fuller arrangement"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "fade out",
+    "ritardando"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast: the sea opens out, a wistful turn to E minor, longer notes reaching over the dark water, the drums thin to a brush, then a lift back toward the theme}",
+   "duration_ms": 16000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "120 BPM",
+    "G major",
+    "bright pulse-wave lead melody",
+    "plucked harp arpeggios like chiming buoys",
+    "warm string pad",
+    "bouncy synth bass rocking root and fifth",
+    "light brushy snare and soft kick like lapping foam",
+    "adventurous walking theme for the first route of a journey",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "E minor",
+    "wistful",
+    "wide open sea",
+    "contrasting section"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "fade out",
+    "ritardando"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the walking melody returns in full stride; the last bar leads straight back into the main theme, no ending}",
+   "duration_ms": 16000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "120 BPM",
+    "G major",
+    "bright pulse-wave lead melody",
+    "plucked harp arpeggios like chiming buoys",
+    "warm string pad",
+    "bouncy synth bass rocking root and fifth",
+    "light brushy snare and soft kick like lapping foam",
+    "adventurous walking theme for the first route of a journey",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "electric guitar",
+    "ambient drone",
+    "minimalist",
+    "fade out",
+    "ritardando"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}

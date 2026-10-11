@@ -1,0 +1,18 @@
+{
+ "id": "dimglass-coast-a",
+ "kind": "loop",
+ "where": "Dimglass Coast (the first road out of town)",
+ "mood": "The road that teaches you to wander — brisk, salt-aired, optimistic; the hometown tune breaking into a stride.",
+ "bpm": 120,
+ "beats_per_bar": 4,
+ "motif": {"strength": "medium"},
+ "core_styles": ["16-bit SNES-era RPG soundtrack", "retro sampled-chip instruments", "120 BPM", "G major", "bright pulse-wave lead melody", "plucked harp arpeggios like chiming buoys", "warm string pad", "bouncy synth bass rocking root and fifth", "light brushy snare and soft kick like lapping foam", "adventurous walking theme for the first route of a journey", "strong singable melody", "great production quality", "instrumental"],
+ "negative_styles": ["vocals", "singing", "modern EDM drums", "trap", "dubstep", "electric guitar", "ambient drone", "minimalist", "fade out", "ritardando"],
+ "sections": [
+  {"name": "Intro", "bars": 4, "text": "{a bold, bright opening call that announces the open road: a rising fanfare on the lead over a drum pickup, landing on a held chord that springs straight into the walking theme}", "styles": ["bold opening fanfare", "sense of setting out"]},
+  {"name": "Main Theme", "bars": 8, "text": "{the walking melody, hummable and springy, front and centre, steady stride in the bass}", "styles": ["main theme", "memorable hook", "onward momentum"]},
+  {"name": "Main Theme Reprise", "bars": 8, "text": "{the same melody again with a bell counter-line glinting on the offbeats, a little fuller}", "styles": ["bell counter-melody", "fuller arrangement"]},
+  {"name": "Bridge", "bars": 8, "text": "{contrast: the sea opens out, a wistful turn to E minor, longer notes reaching over the dark water, the drums thin to a brush, then a lift back toward the theme}", "styles": ["E minor", "wistful", "wide open sea", "contrasting section"], "adherence": "medium"},
+  {"name": "Main Theme Return", "bars": 8, "text": "{the walking melody returns in full stride; the last bar leads straight back into the main theme, no ending}", "styles": ["main theme returns", "seamless loop back to the start of the theme"]}
+ ]
+}

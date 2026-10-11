@@ -115,6 +115,36 @@ def resolve_preset(preset: str | None, presets: dict) -> str:
     return presets[preset]["prompt_suffix"]
 
 
+import contextlib
+import fcntl
+import tempfile
+
+SLOT_DIR = Path(os.environ.get("ELEVENLABS_SLOT_DIR", Path(tempfile.gettempdir()) / "elevenlabs-music-slots"))
+MAX_CONCURRENT = int(os.environ.get("ELEVENLABS_MAX_CONCURRENT", "2"))
+
+
+@contextlib.contextmanager
+def api_slot():
+    """Machine-wide semaphore (flock on N slot files) so parallel agents/processes
+    never exceed the account's concurrent-request cap (2) and 429 each other."""
+    SLOT_DIR.mkdir(parents=True, exist_ok=True)
+    while True:
+        for i in range(MAX_CONCURRENT):
+            f = open(SLOT_DIR / f"slot{i}.lock", "w")
+            try:
+                fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError:
+                f.close()
+                continue
+            try:
+                yield
+            finally:
+                fcntl.flock(f, fcntl.LOCK_UN)
+                f.close()
+            return
+        time.sleep(1.0)
+
+
 def _backoff_seconds(attempt: int, retry_after_header: str | None) -> float:
     if retry_after_header:
         try:
@@ -168,13 +198,14 @@ def compose_music(
     last_err: Exception | None = None
     for attempt in range(max_retries + 1):
         try:
-            r = requests.post(
-                MUSIC_ENDPOINT,
-                headers=headers,
-                params=params,
-                json=body,
-                timeout=300,
-            )
+            with api_slot():
+                r = requests.post(
+                    MUSIC_ENDPOINT,
+                    headers=headers,
+                    params=params,
+                    json=body,
+                    timeout=600,
+                )
             if r.status_code >= 500 or r.status_code == 429:
                 last_err = RuntimeError(f"HTTP {r.status_code}: {r.text[:300]}")
                 if attempt < max_retries:
@@ -208,7 +239,7 @@ def upload_song(path: Path, model: str) -> dict:
     api_key = os.environ.get("ELEVENLABS_API_KEY")
     if not api_key:
         raise SystemExit("ELEVENLABS_API_KEY is not set.")
-    with path.open("rb") as f:
+    with path.open("rb") as f, api_slot():
         r = requests.post(
             MUSIC_ENDPOINT + "/upload",
             headers={"xi-api-key": api_key},

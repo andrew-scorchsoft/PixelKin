@@ -1,0 +1,5 @@
+{
+ "song_id": "TOREmIgiwF3GKpN7UkLA",
+ "range": {"start_ms": 10668, "end_ms": 40668},
+ "note": "THE VESPER MOTIF SOURCE: the approved Tinderwick v3 (xhigh) take, stored for inpainting; range = its main theme's first 30 s (the API caps a conditioning ref at 30 s). Every remaster spec with a `motif` block conditions its first chunk on this, so the soundtrack shares one tune. If ElevenLabs ever drops the stored song, re-upload public/assets/audio/music/remaster/tinderwick-a.mp3 via generate_music.py --upload and update song_id/range (theme starts at its loop_start)."
+}

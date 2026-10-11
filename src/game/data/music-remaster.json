@@ -1,0 +1,17 @@
+{
+ "_generated": "tools/audio/build_remaster_manifest.py — do not hand-edit",
+ "tracks": {
+  "dimglass-coast-a": {
+   "loop_start": 11.819,
+   "duration": 79.856,
+   "where": "Dimglass Coast (the first road out of town)",
+   "mood": "The road that teaches you to wander — brisk, salt-aired, optimistic; the hometown tune breaking into a stride."
+  },
+  "tinderwick-a": {
+   "loop_start": 13.0264,
+   "duration": 102.348,
+   "where": "Tinderwick (home town)",
+   "mood": "The hometown lullaby — lanterns in the dark, cosy and a little homesick. The source of the Vesper motif."
+  }
+ }
+}

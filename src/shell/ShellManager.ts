@@ -26,6 +26,7 @@ import {
   setTextSpeed,
   setBattlePace,
   setMusicVolume,
+  setMusicStyle,
   setSfxVolume,
   setCannotDie,
   setAmbientMotion,
@@ -99,6 +100,7 @@ class ShellManagerImpl {
     setTextSpeed(this.settings.textSpeed ?? 'cosy');
     setBattlePace(this.settings.battlePace ?? 'cosy');
     setMusicVolume(this.settings.musicVolume ?? 'full');
+    setMusicStyle(this.settings.musicStyle ?? 'remastered');
     setSfxVolume(this.settings.sfxVolume ?? 'full');
     setCannotDie(this.settings.cannotDie ?? false);
     setAmbientMotion(this.settings.ambientMotion ?? !prefersReducedMotion());

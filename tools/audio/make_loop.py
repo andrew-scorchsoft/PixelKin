@@ -81,6 +81,7 @@ def main() -> int:
     ap.add_argument("inp")
     ap.add_argument("out", nargs="?")
     ap.add_argument("--min-len", type=float, default=40.0, help="shortest loop body, seconds")
+    ap.add_argument("--min-start", type=float, default=0.0, help="earliest loop start, seconds")
     ap.add_argument("--max-start", type=float, default=12.0, help="latest loop start, seconds")
     ap.add_argument("--window", type=float, default=4.0, help="seconds compared after each point")
     ap.add_argument("--bars-per", type=int, default=4, help="prefer loop lengths that are a multiple of N bars")
@@ -118,7 +119,8 @@ def main() -> int:
         if n <= 0:
             continue
         win = (cs[W:W + n] - cs[:n]) / W
-        s = int(np.argmin(win))
+        lo = min(int(a.min_start * fps), n - 1)
+        s = lo + int(np.argmin(win[lo:]))
         d = float(win[s])
         L = lag / fps
         bars = L / bar

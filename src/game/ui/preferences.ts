@@ -134,6 +134,33 @@ export function getMusicVolume(): VolumeLevel {
   return musicVolume;
 }
 
+// ---------------------------------------------------------------- music style --
+
+/**
+ * Soundtrack style (Settings → "Soundtrack"): 'remastered' = the composed
+ * ElevenLabs score (intro + seamless loop; the default), 'classic' = the original
+ * chip renders. MusicDirector resolves every track URL through this and re-plays
+ * the current bed live when it flips (subscribers below).
+ */
+export type MusicStyle = 'remastered' | 'classic';
+let musicStyle: MusicStyle = 'remastered';
+const musicStyleSubscribers = new Set<() => void>();
+
+export function onMusicStyleChange(cb: () => void): () => void {
+  musicStyleSubscribers.add(cb);
+  return () => musicStyleSubscribers.delete(cb);
+}
+
+export function setMusicStyle(style: MusicStyle): void {
+  if (style === musicStyle) return;
+  musicStyle = style;
+  for (const cb of musicStyleSubscribers) cb();
+}
+
+export function getMusicStyle(): MusicStyle {
+  return musicStyle;
+}
+
 /** Master gain (0..1) applied to all music playback. */
 export function musicMasterGain(): number {
   return VOLUME_GAIN[musicVolume];
