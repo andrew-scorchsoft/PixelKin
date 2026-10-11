@@ -291,8 +291,9 @@ export const DIALOGUE: DialogueRegistry = {
   // C2 — Fenn finds the player after `dusk_begins` and names the Skyweave
   // (walkthrough/01-south: this may land here at the head of II).
   'npc.flats_sky_watcher': [
-    { speaker: 'STAR-TENDER FENN', text: 'You saw it too, then. The sky and the ground hold hands here, child — snuff a kin\'s light and a star goes dark with it.' },
-    { speaker: 'STAR-TENDER FENN', text: 'That is what we walk against. Relight the constellations, one Gleam at a time. Pearlmoor keeps the second.' },
+    { speaker: 'STAR-TENDER FENN', portrait: 'fenn', expr: 'grave', text: 'You saw it go. Then hear the old law plainly, child, because nobody says it plainly any more: every star up there has a kin down here carrying its spark.' },
+    { speaker: 'STAR-TENDER FENN', portrait: 'fenn', expr: 'grave', text: 'Put that kin to sleep and its star goes hungry. Starve a star long enough and it gutters — and sometimes what\'s left of it falls. Wendel\'s orchard was one.' },
+    { speaker: 'STAR-TENDER FENN', portrait: 'fenn', expr: 'warm', text: 'So we walk the other way. Wake what sleeps; relight what gutters. Pearlmoor keeps the second Gleam.' },
   ],
   // Fenn on the flats once Gran's letter is delivered (S2 closed).
   'npc.flats_sky_watcher_after': [

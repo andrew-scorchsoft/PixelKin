@@ -715,7 +715,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'eager', text: 'There you are! I was starting to think the grass ate you.' },
     { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'eager', text: "Listen — every Wayfarer's first proper battle should be with a friend. So?" },
     { op: 'battle', trainer: 'wren_dimglass' },
-    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'neutral', text: 'Same road, different lamps. See you up the coast!' },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'neutral', text: 'Same road, different lamps. Mine runs on north — Mum\'s village is past Pearlmoor, and her letters have gone very short. See you up the coast!' },
     { op: 'setFlag', flag: 'flag:wren_dimglass_battled' },
   ],
 
@@ -733,7 +733,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'shake', ms: 320, intensity: 0.006 },
     { op: 'narrate', text: 'For a heartbeat, every lantern-buoy on the coast gutters, as if the sea itself flinched.' },
     { op: 'tint', color: '#0b1026', alpha: 0, ms: 700 },
-    { op: 'narrate', text: "That's the third star gone south of here this month. The Long Dusk is getting deeper — and it is getting closer." },
+    { op: 'narrate', text: 'You think of the orchard — the scorched ring, the cold stone in the ash. This one did not fall. Not this time. The Long Dusk is deepening, and it is coming closer.' },
     { op: 'musicCrossfade', key: 'dimglass-coast-a', ms: 900 }, // the bed returns, a shade uneasier
     { op: 'letterbox', on: false, ms: 320 },
   ],

@@ -77,7 +77,7 @@ export const COLDOPEN_SOUTH: CinematicScript = {
       fx: 'flash',
       music: null,
       lines: [
-        'Then, one by one, the lights began to go out.',
+        'Then, one by one, the lights began to go out. Some only dimmed. Some, going out, fell.',
         'They call it the Long Dusk: a night that fell, and will not lift.',
       ],
     },
