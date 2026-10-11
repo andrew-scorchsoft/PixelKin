@@ -97,25 +97,9 @@ def compute_nodes(world: dict[str, dict]) -> None:
     straight, _bent, portal = wg.collect(world)
     pos, comp, _parent, _conf = wg.place(world, straight, "tinderwick")
     main = comp["tinderwick"]
-    # Components joined to the main one only by a mid-map lift/mouth (the
-    # Windward kite flight, cave mouths) are hung off it: shift the whole
-    # component so its landing tile sits on the host's mouth tile.
-    for _ in range(8):
-        moved = False
-        for r in portal:
-            a, b = r["a"], r["b"]
-            if comp.get(a) != main or b not in pos or comp.get(b) == main:
-                continue
-            want = (pos[a][0] + r["at"][0] - r["to"][0], pos[a][1] + r["at"][1] - r["to"][1])
-            dx, dy = want[0] - pos[b][0], want[1] - pos[b][1]
-            old = comp[b]
-            for mid in list(pos):
-                if comp.get(mid) == old:
-                    pos[mid] = (pos[mid][0] + dx, pos[mid][1] + dy)
-                    comp[mid] = main
-            moved = True
-        if not moved:
-            break
+    # components joined only by a lift/mouth (the Windward kite flight, cave
+    # mouths) hang off it at their landing tile — never off a late shortcut
+    wg.hang_components(world, pos, comp, portal)
     centre: dict[str, tuple[float, float]] = {}
     for mid, (x, y) in pos.items():
         if comp.get(mid) == main:
@@ -435,11 +419,20 @@ def main() -> int:
         ],
         "roads": [{"a": a, "b": b, "kind": kind} for a, b, kind in ROADS
                   if a in world and b in world],
-        "members": member,
+        "members": dict(sorted(member.items())),
     }
-    OUT_JSON.write_text(json.dumps(layout, indent=2) + "\n")
-    print(f"  layout -> {OUT_JSON.relative_to(REPO)}")
-    render(world)
+    text = json.dumps(layout, indent=2) + "\n"
+    if "--check" in sys.argv:              # CI: fail if the shipped JSON is stale
+        if not OUT_JSON.exists() or OUT_JSON.read_text() != text:
+            fails.append(f"stale         {OUT_JSON.relative_to(REPO)} — re-run tools/maps/world_layout.py")
+        else:
+            print(f"  layout up to date: {OUT_JSON.relative_to(REPO)}")
+    else:
+        OUT_JSON.write_text(text)
+        print(f"  layout -> {OUT_JSON.relative_to(REPO)}")
+        render(world)
+    for f in fails[-1:] if fails and fails[-1].startswith("stale") else []:
+        print(f"  [F] {f}")
     print(f"{'FAIL' if fails else 'PASS'} — {len(fails)} failure(s), {len(bends)} bend note(s)")
     return 1 if fails else 0
 

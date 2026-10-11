@@ -623,7 +623,7 @@
       "id": "sign_fen_drowned_road",
       "kind": "sign",
       "at": {
-        "tx": 22,
+        "tx": 19,
         "ty": 41
       },
       "activation": "interact",
@@ -4065,10 +4065,10 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
         117,
+        0,
+        0,
+        0,
         0,
         0,
         0,

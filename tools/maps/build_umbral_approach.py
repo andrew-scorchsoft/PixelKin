@@ -25,7 +25,7 @@ fight only because you won't.
 
 Wild kin (lv 50-53, the last before the Spire): Dark/Lunar mountain-dwellers —
 Voidmantle, Omenire, Nightwraith, Whorlix, Pyriven (new to the wild) and the
-rare Liminalux. (Lunaveil stays the Starwell's scripted set-piece — never wild.)
+uncommon Liminalux. (Lunaveil stays the Starwell's scripted set-piece — never wild.)
 
 HANDSHAKE: crossroads `to_penumbra`/`_e` at (9,0)/(10,0) land here at
 (2,32)/(3,32); our `to_crossroads`/`_e` at (2,33)/(3,33) land at crossroads
@@ -274,7 +274,7 @@ TABLE_FOOT = [
     {"kin_id": 112, "weight": 18, "min_level": 50, "max_level": 52},   # Nightwraith
     {"kin_id": 143, "weight": 15, "min_level": 50, "max_level": 52},   # Whorlix
     {"kin_id": 15, "weight": 12, "min_level": 51, "max_level": 52},    # Pyriven
-    {"kin_id": 135, "weight": 10, "min_level": 51, "max_level": 52},   # Liminalux (rare)
+    {"kin_id": 135, "weight": 10, "min_level": 51, "max_level": 52},   # Liminalux (uncommon)
 ]
 TABLE_SHELF = [dict(e, min_level=e["min_level"] + 1, max_level=e["max_level"] + 1)
                for e in TABLE_FOOT]

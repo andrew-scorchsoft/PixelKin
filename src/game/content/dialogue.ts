@@ -327,7 +327,7 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'WEST: the beach path to Lightkeeper\'s Point.\nThe road to the Vesper Crossroads runs EAST through Saltreach Fen, then south along the bay on the old drowned road.' },
   ],
   'sign.pearlmoor_to_fen': [
-    { text: 'EAST: SALTREACH FEN\nThe fen-road sleeps unlit. When the southern crown stands whole, the east wakes.' },
+    { text: 'EAST: SALTREACH FEN\nReed-country, older than the coast. Its drowned road bends south and round the bay toward the Lanternfall, and home.' },
   ],
   'sign.pearlmoor_shop': [
     { text: 'PEARLMOOR CHANDLERY\nNets, oil, salve, and tide-charms for the crossing. Step in out of the spray.' },
@@ -1469,7 +1469,7 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'EAST — THE FOG ROAD. Short, dark, and wrong. Only a warded flame holds the coldfog off.' },
   ],
   'sign.nightreach_lanternway': [
-    { text: 'SOUTH — THE LANTERNWAY. Every lit road in Vesperholm meets at the Waystone.' },
+    { text: 'WEST — THE LANTERNWAY. Every lit road in Vesperholm meets at the Waystone.' },
   ],
   'npc.watch_lamp_unstruck': [
     { text: 'The first watch-lamp waits, polished and cold. Its wick wants the old watcher\'s striker — the one lost on the Sunvault road.' },

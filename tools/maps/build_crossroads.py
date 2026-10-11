@@ -246,7 +246,7 @@ m = {
          "hidden_when_flag": "flag:crossroads_car_intro", "sets_flags": ["flag:crossroads_car_intro"]},
         # the car itself: Confirm at the winch's base (the platform's end)
         *[{"id": f"lantern_car_{tx}", "kind": "cutscene", "at": {"tx": tx, "ty": 7},
-           "activation": "interact", "ref": "script.lantern_car"} for tx in (16, 17, 18)],
+           "activation": "interact", "ref": "script.lantern_car"} for tx in (15, 16, 17, 18)],
         {"id": "sign_waystone", "kind": "sign",
          "at": {"tx": sign_tiles["sign_waystone"][0], "ty": sign_tiles["sign_waystone"][1]},
          "activation": "interact", "ref": "sign.crossroads"},

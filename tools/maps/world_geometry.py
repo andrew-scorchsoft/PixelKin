@@ -202,7 +202,36 @@ def _open_cells(world, mid):
     return _MODELS[mid]
 
 
-def overlaps(world, pos, comp):
+def hang_components(world, pos, comp, portal, root="tinderwick"):
+    """Join components reached only through a mid-map lift or mouth (the
+    Windward kite flight, cave mouths) to the root's: shift the whole component
+    so its landing tile sits on the host's mouth tile. Late SHORTCUT warps
+    (`shortcut_*`) never place a component — they're return compressors, not
+    the way the land lies. Returns the (a, b) map pairs joined by a portal (a
+    lift's two ends may honestly overlap — the climb happens between them)."""
+    main = comp[root]
+    joins = sorted((r for r in portal if not r["id"].startswith("shortcut")),
+                   key=lambda r: (r["a"], r["id"]))
+    for _ in range(12):
+        moved = False
+        for r in joins:
+            a, b = r["a"], r["b"]
+            if comp.get(a) != main or b not in pos or comp.get(b) == main:
+                continue
+            want = (pos[a][0] + r["at"][0] - r["to"][0], pos[a][1] + r["at"][1] - r["to"][1])
+            dx, dy = want[0] - pos[b][0], want[1] - pos[b][1]
+            old = comp[b]
+            for mid in list(pos):
+                if comp.get(mid) == old:
+                    pos[mid] = (pos[mid][0] + dx, pos[mid][1] + dy)
+                    comp[mid] = main
+            moved = True
+        if not moved:
+            break
+    return {frozenset((r["a"], r["b"])) for r in portal}
+
+
+def overlaps(world, pos, comp, exempt=frozenset()):
     """Rectangles on top of each other. Two kinds are NOT contradictions:
     a CAVE under a surface map (caves are underground — Glowmoss Deep under the
     Gloamwood dell), and overlap made only of ground neither map lets you stand
@@ -214,7 +243,7 @@ def overlaps(world, pos, comp):
         ax, ay = pos[a]
         aw, ah = world[a]["width"], world[a]["height"]
         for b in ids[i + 1:]:
-            if comp[a] != comp[b]:
+            if comp[a] != comp[b] or frozenset((a, b)) in exempt:
                 continue
             bx, by = pos[b]
             bw, bh = world[b]["width"], world[b]["height"]
@@ -388,7 +417,11 @@ def main() -> int:
     reg = regions()
     straight, bent, portal = collect(world)
     pos, comp, parent, conflicts = place(world, straight, "tinderwick")
-    ovl = overlaps(world, pos, comp)
+    # overlaps are checked across the WHOLE world: components hung off their
+    # lifts/mouths first, so the far side is checked against the near side
+    hpos, hcomp = dict(pos), dict(comp)
+    lifted = hang_components(world, hpos, hcomp, portal)
+    ovl = overlaps(world, hpos, hcomp, exempt=lifted)
     clashes = map_screen_clashes(straight)
 
     main_c = comp.get("tinderwick")

@@ -754,7 +754,7 @@ GEOMETRY_ENCOUNTERS = {
     "thrumble": _rows("cinderwind_scarp", [(29, 31, "common")]),
     "lumecite": _rows("cinderwind_scarp", [(29, 31, "uncommon")]),
     "nimbruff": _rows("cinderwind_scarp", [(30, 31, "rare")]),
-    "voltcrag": _rows("cinderwind_scarp", [(31, 31, "rare")]),
+    "voltcrag": _rows("cinderwind_scarp", [(31, 31, "very_rare")]),
     # The Umbral Approach (lv 50-53): the mountain road to the Penumbra
     "voidmantle":  _rows("umbral_approach", [(50, 53, "common")]),
     "omenire":     _rows("umbral_approach", [(50, 53, "common")]),

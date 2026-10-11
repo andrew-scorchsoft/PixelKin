@@ -349,7 +349,8 @@ owed += ["npc.coldfog_marsh_hermit (hooks ref VERBATIM — the 'kindest thing' "
 
 # ---- signs --------------------------------------------------------------------------
 owed += pt.sign(m, deco, W, sid="coldfog_marches", at=(10, 24))   # the blight line
-owed += pt.sign(m, deco, W, sid="coldfog_boundary", at=(10, 25))  # the sincere gate (down to the deep marsh)
+owed += pt.sign(m, deco, W, sid="coldfog_boundary", at=(10, 25))
+owed += pt.sign(m, deco, W, sid="coldfog_beacon", at=(2, 3))      # the beacon spur's why (west gap)  # the sincere gate (down to the deep marsh)
 # (sign.coldfog_boundary doubles as the to_marsh_ii warps' blocked_ref)
 
 # ---- caches (variety rule: one consumable off-lane, the valuable behind murk) -------

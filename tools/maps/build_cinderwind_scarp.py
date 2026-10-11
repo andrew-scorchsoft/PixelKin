@@ -21,7 +21,7 @@ Two cliff bands separate the tiers; each carries a one-way ledge back DOWN
 (§3a r1 — the return is shorter than the climb).
 
 Wild kin (lv 28-31, closing the Deep->Galehigh gap): Rubbol, Galefox,
-Thrumble, Lumecite, Nimbruff, rare Voltcrag. Four of them (Rubbol, Galefox,
+Thrumble, Lumecite, Nimbruff, very rare Voltcrag. Four of them (Rubbol, Galefox,
 Lumecite, Nimbruff) were in no wild table before this road.
 
 HANDSHAKE: cinderhead_deep `to_terraces`/`_s` at (27,12)/(27,13) land here at
@@ -188,7 +188,7 @@ TABLE = [
     {"kin_id": 98, "weight": 20, "min_level": 29, "max_level": 31},    # Thrumble
     {"kin_id": 36, "weight": 15, "min_level": 29, "max_level": 31},    # Lumecite
     {"kin_id": 92, "weight": 8, "min_level": 30, "max_level": 31},     # Nimbruff
-    {"kin_id": 46, "weight": 2, "min_level": 31, "max_level": 31},     # Voltcrag (rare)
+    {"kin_id": 46, "weight": 2, "min_level": 31, "max_level": 31},     # Voltcrag (very rare)
 ]
 m["encounters"] = pt.zones_from_grid(tallgrass, W, H, terrain="tall_grass", rate=0.10,
                                      id_prefix="scarp", table=TABLE)

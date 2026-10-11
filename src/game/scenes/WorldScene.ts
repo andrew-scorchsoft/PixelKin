@@ -154,6 +154,12 @@ const OBJECT_REACH_TILES = 6;
 /** Banked once the version notice has shown the "Return to rest point" hint. */
 const REST_TIP_FLAG = 'flag:tip_restpoint_seen';
 
+/** Maps that can only be LEFT with a given Gift: a save there without it
+ *  (made before a road was retired) wakes at the last rest point on load. */
+const STRANDED_WITHOUT: Record<string, AbilityId> = {
+  coldfog_marches_i: 'emberward',
+};
+
 export class WorldScene extends Phaser.Scene {
   private ready = false;
   private _modal = false;
@@ -291,6 +297,21 @@ export class WorldScene extends Phaser.Scene {
       this.ambience = undefined;
       this.tweens.killAll();
     });
+
+    // A save made on a map whose every exit later became Gift-gated (the 1.12
+    // world-geometry pass retired the Crossroads' marsh road) would load into a
+    // sealed pocket — wake those players at their last rest point instead.
+    const strandedBy = STRANDED_WITHOUT[data.mapId];
+    if (strandedBy && !this.abilities.has(strandedBy)) {
+      const home = this.respawn ?? {
+        map: VESPERHOLM_GRAPH.start_map,
+        tx: VESPERHOLM_GRAPH.start_at.tx,
+        ty: VESPERHOLM_GRAPH.start_at.ty,
+        facing: 'down' as Facing,
+      };
+      void this.enterMap(home.map, { tx: home.tx, ty: home.ty }, home.facing, true);
+      return;
+    }
 
     const spawn = data.spawn ?? this.defaultSpawn(data.mapId);
     void this.enterMap(data.mapId, spawn, spawn.facing, true);

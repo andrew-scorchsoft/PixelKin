@@ -32,7 +32,7 @@ Crossroads** sits beside Tinderwick at the foot of the dark mountain, and the
 | Pearlmoor → home | Saltreach Fen I's *drowned road* (south edge) → Wrackline Path → Sounding Cave (upright) → Lanternfall Road → the Crossroads' north-west road | the loop round the bay (Pearlmoor's west road now runs to the Point beach) |
 | Cinderhead → Galehigh | Cinderhead Deep → **Cinderwind Scarp** → Galehigh | new route, lv 28–31; closes the level gap after the Deep |
 | Hub → Spire | the Crossroads' north road → **Umbral Approach** → Penumbra Ring → Spire | new route, lv 50–53; Wren's join band moves onto it |
-| Nightreach's marshes | Nightreach (east fog gate) → Coldfog Marches II → Marches I (north) → Drownlight Beacon (off Marches I's west flank) | the marsh road from the Crossroads is retired |
+| Nightreach's marshes | Nightreach (east fog gate) → Coldfog Marches II → Marches I (north) → Drownlight Beacon (off Marches I's west flank) | the marsh road from the Crossroads is retired; an old save stranded in Marches I without Emberward wakes at its rest point (`STRANDED_WITHOUT` in `WorldScene`) |
 
 ## The Lantern-car (rides, not roads)
 
@@ -63,12 +63,15 @@ sea is **deep**:
   keeps a shallow channel to every islet and to anything placed on the water.
   Marsh, fen, pond and sun-pool water stay shallow.
 - **Overrides:** a Tidecall `AbilityGate` never softens deep water under it.
-- **In play:** bumping into deep water explains itself once per map visit
-  (`world.too_deep`).
+- **In play:** bumping into deep water while swimming explains itself once per map
+  visit (`world.too_deep`).
+- **Designed swim lanes stay shallow:** pass a Tidecall gate's rect as `keep_rects`
+  (Pearlmoor's harbour gates are the worked example — its rarer Tide kin live there).
+  Gullcry and Hearthfall gate their whole sea row by row, so they don't keep theirs.
 
 ## The MAP screen
 
-`tools/maps/world_layout.py` places every node at its **real** centre, taken from
+`tools/maps/world_layout.py` (CI: `--check`, fails if `worldmap.json` is stale) places every node at its **real** centre, taken from
 the walked layout. Caves and landmarks sit at their mouth tile. Only node *kinds* are
 authored. The world is tall, so `ui/WorldMapMenu.ts` fits the width and scrolls with
 the cursor, with ▲/▼ hints shown when there's more above or below.

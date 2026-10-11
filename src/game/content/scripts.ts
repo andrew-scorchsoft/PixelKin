@@ -3708,7 +3708,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'flashColor', color: '#ffd089', ms: 300 },
     { op: 'musicCrossfade', key: 'gleam-emotional', ms: 1200 },
     { op: 'tint', color: '#9fd4ff', alpha: 0, ms: 1200 },
-    { op: 'narrate', text: 'Eight stars. The Skyweave Crown closes overhead, quiet as snowfall — and far away at the centre of the world, the Penumbra parts: the four cardinal roads opening inward at the Crossroads, toward the mountain, toward him.' },
+    { op: 'narrate', text: 'Eight stars. The Skyweave Crown closes overhead, quiet as snowfall — and far away at the centre of the world, the Penumbra parts: the mountain road north of the Crossroads opening at last, up toward the Spire, toward him.' },
     { op: 'narrate', if_flag: 'flag:wren_nightreach_battled', text: 'At the hall door, Wren is leaning on the frame with their lamp held up among all the others, grinning like the coast road. They do not come in. They do not need to. Same road, different lamps — all the way to the end of the sky.' },
     { op: 'face', actor: 'nessa_ready', facing: 'down' },
     { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'reverent', text: 'The Lunar Gleam, Wayfarer — and the whole Crown standing with it. I have watched this sky my entire life, and tonight is the first time it has ever watched back.' },
@@ -5091,7 +5091,7 @@ export const SCRIPTS: ScriptRegistry = {
     },
     {
       op: 'say', if_flag: 'gleam:stone', unless_flag: 'gleam:storm', speaker: 'ANDREW',
-      text: 'Back through the mine and out the deep\'s far door. It lets out under the Galehigh Terraces — all wind and washing-lines. Mira Vael has the Storm up there.',
+      text: 'Back through the mine, out the deep\'s far door, and up Cinderwind Scarp. It tops out on the Galehigh Terraces — all wind and washing-lines. Mira Vael has the Storm up there.',
     },
     {
       op: 'say', if_flag: 'gleam:storm', unless_flag: 'gleam:frost', speaker: 'ANDREW',
@@ -5109,7 +5109,7 @@ export const SCRIPTS: ScriptRegistry = {
     // --- The Crown, the Spire, and after. -------------------------------------
     {
       op: 'say', if_flag: 'gleam:lunar', unless_flag: 'flag:keystar_relit', speaker: 'ANDREW',
-      text: 'Eight. The Crown\'s whole, and the Penumbra\'s parted for you. Ride the Lantern-car down to the Vesper Crossroads and take the mountain road north. The Spire\'s been waiting the whole time, and it isn\'t a patient sort of waiting.',
+      text: 'Eight. The Crown\'s whole, and the Penumbra\'s parted for you. Get yourself to the Vesper Crossroads — car, waystone or boots — and take the mountain road north. The Spire\'s been waiting the whole time, and it isn\'t a patient sort of waiting.',
     },
     {
       op: 'say', if_flag: 'flag:keystar_relit', unless_flag: 'flag:dawn', speaker: 'ANDREW',

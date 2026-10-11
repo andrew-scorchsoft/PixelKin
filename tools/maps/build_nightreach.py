@@ -128,7 +128,7 @@ Suggested sign copy (wiring agent; sincere, reverent, zero humour):
                               ember-light first, sun-light last."
   sign.nightreach_fogroad    "EAST — THE FOG ROAD. Short, dark, and wrong.
                               Only a warded flame holds the coldfog off."
-  sign.nightreach_lanternway "SOUTH — THE LANTERNWAY. Every lit road in
+  sign.nightreach_lanternway "WEST — THE LANTERNWAY. Every lit road in
                               Vesperholm meets at the Waystone."
   npc.watch_lamp_unstruck    "The first watch-lamp waits, polished and cold.
                               Its wick wants the old watcher's striker — the
@@ -544,7 +544,7 @@ owed += [
 owed += pt.sign(m, deco, W, sid="nightreach_welcome", at=(17, 27))
 owed += pt.sign(m, deco, W, sid="nightreach_walk", at=(13, 13))
 owed += pt.sign(m, deco, W, sid="nightreach_fogroad", at=(26, 13))
-owed += pt.sign(m, deco, W, sid="nightreach_lanternway", at=(6, 27))
+owed += pt.sign(m, deco, W, sid="nightreach_lanternway", at=(4, 22))   # by the west gap
 # (sign.nightreach_fogroad doubles as the fog warps' blocked_ref)
 
 # ---- caches (variety: a valuable up top, loose wicks in the grass, a charge
@@ -598,8 +598,6 @@ m["objects"] += [
     # lamp posts beside (never on) the walked lanes
     {"id": "lamp_entry", "sprite": "tinderwick_lamp_post",
      "at": {"tx": 14, "ty": 25}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_spoke", "sprite": "tinderwick_lamp_post",
-     "at": {"tx": 3, "ty": 24}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "lamp_fog", "sprite": "tinderwick_lamp_post",
      "at": {"tx": 24, "ty": 12}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
 ]

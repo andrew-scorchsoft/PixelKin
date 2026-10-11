@@ -307,9 +307,9 @@ m["npcs"].append(
 
 # ---- signs --------------------------------------------------------------------------
 owed += pt.sign(m, deco, W, sid="coldfog_works", at=(17, 8))      # the works' notice
-owed += pt.sign(m, deco, W, sid="coldfog_beacon", at=(3, 11))     # the spur's why
 owed += pt.sign(m, deco, W, sid="coldfog_backdoor", at=(3, 5))    # the wrong road
-# (sign.coldfog_beacon / sign.coldfog_backdoor double as their warps' blocked_ref)
+# (sign.coldfog_backdoor doubles as its warps' blocked_ref; the beacon sign moved
+#  to Marches I with the beacon road, 2026-10)
 
 # ---- caches (variety: wicks on the dead islet, a consumable by the camp,
 #      a valuable on the bank — the better finds off the lane) ------------------------

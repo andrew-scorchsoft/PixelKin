@@ -1425,6 +1425,16 @@
       ]
     },
     {
+      "id": "lantern_car_15",
+      "kind": "cutscene",
+      "at": {
+        "tx": 15,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "script.lantern_car"
+    },
+    {
       "id": "lantern_car_16",
       "kind": "cutscene",
       "at": {

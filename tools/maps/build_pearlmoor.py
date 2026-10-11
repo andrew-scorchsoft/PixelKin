@@ -507,7 +507,12 @@ m = {
 if __name__ == "__main__":
     # deep water (2026-10): the open sea past the shallow shelf — Tidecall
     # swims the shallows only (mapkit.deep_water; the reserved `deepdive` gate)
-    mk.deep_water(m)
+    # The harbour's two Tidecall gates ARE the designed swim (the rarer Tide kin
+    # live there), so their rects stay shallow; only the sea beyond runs deep.
+    mk.deep_water(m, keep_rects=[(g["rect"]["tx"], g["rect"]["ty"],
+                                  g["rect"]["tx"] + g["rect"]["w"] - 1,
+                                  g["rect"]["ty"] + g["rect"]["h"] - 1)
+                                 for g in m["gates"] if g["ability"] == "tidecall"])
     ok = mk.finalize(m, scale=3, pin_base=QUAY_PINS)
     print("PASS" if ok else "FAIL")
     raise SystemExit(0 if ok else 1)

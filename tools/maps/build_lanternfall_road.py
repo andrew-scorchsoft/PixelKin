@@ -49,6 +49,10 @@ for ty, cx in spine.items():
         continue
     path[ty * W + cx] = 1
     path[ty * W + cx + 1] = 1
+    prev = spine.get(ty - 1)
+    if prev is not None and abs(cx - prev) > 1:     # a 2-col jump: bridge it so
+        for x in range(min(cx, prev) + 1, max(cx, prev) + 1):   # the lane stays
+            path[ty * W + x] = 1                    # orthogonally contiguous
 # connect the lane up into the top gap and down into the bottom gap
 for y in range(0, 4):
     path[y * W + 2] = 1; path[y * W + 3] = 1

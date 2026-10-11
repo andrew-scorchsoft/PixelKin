@@ -69,6 +69,8 @@ jobs:
       # draw every road the way it's walked (honest north-up, 2026-10).
       - name: World geometry (the walked world closes; MAP matches it)
         run: python3 tools/maps/world_geometry.py --no-png --check
+      - name: World map layout is fresh (worldmap.json)
+        run: python3 tools/maps/world_layout.py --check
       # The LOOK gate: the play audits pass on an empty green field with ruled
       # boxes; this FAILs flat voids and box pools (docs/reviews/world-craft-panel.md).
       - name: Look gate (flat voids, box pools)

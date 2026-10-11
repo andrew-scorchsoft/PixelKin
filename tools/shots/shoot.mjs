@@ -52,8 +52,10 @@ world options:
   --no-defaults                 don't auto-add the quiet flags (chart reveals,
                                 tutorials seen, has_starter)
 common:
-  --keys "Enter,ArrowDown,z"    after the world is idle, tap these keys in order
-                                (Playwright key names, ~300ms apart) — open menus
+  --keys "Escape,ArrowDown,z"   after the world is idle, tap these keys in order
+                                (Playwright key names, ~300ms apart) — open menus;
+                                runs AFTER --confirms. Escape opens the pause menu
+                                (Enter is Confirm and does not)
   --out path.png                output (default ./shot.png)
   --scale N                     output = 240N x 160N px (default 4)
   --wait ms                     extra settle time before the shot (default 700;
