@@ -64,7 +64,10 @@ export class AttractScene extends Phaser.Scene {
     this.cameras.main.fadeIn(theme.transition.fadeMs, 0, 0, 0);
     this.buildArena();
     this.music = new MusicDirector(this, 0.4);
-    void this.music.play('battle-main-dusk-duel', 'assets/audio/music/battle-main-dusk-duel.mp3');
+    // The trailer duel keeps the CLASSIC chip render even on the remastered score —
+    // the owner's call (2026-10): the chip take sells the retro duel better here. Wild
+    // battles still play the remaster of the same cue.
+    void this.music.play('battle-main-dusk-duel', 'assets/audio/music/battle-main-dusk-duel.mp3', { classic: true });
     const sfx = new Sfx(this);
 
     const foe = this.makeBattler(FOE_POS.x, FOE_POS.y, FOE_KIN.id, FOE_KIN.view, FOE_KIN.color);

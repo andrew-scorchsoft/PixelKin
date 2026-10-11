@@ -1,7 +1,7 @@
 {
  "id": "battle-main-dusk-duel",
  "kind": "loop",
- "where": "Every wild kin battle (the default battle bed) and the attract-mode trailer duel",
+ "where": "Every wild kin battle (the default battle bed); the attract-mode trailer duel keeps the classic chip render",
  "mood": "The fight you hear a thousand times \u2014 urgent, catchy and winnable: a minor-key chase that bursts into a heroic major lift.",
  "duration": 53.682,
  "loop_start": 6.896,
