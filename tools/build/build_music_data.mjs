@@ -33,7 +33,7 @@ const GROUPS = [
     ['Central — darkest, then the turn', ['penumbra-ring', 'umbral-spire']],
     ['Epilogue', ['dawnstead', 'dawn-breaks', 'ending-credits']],
     ['Indoors — rooms, shops, inns & halls', ['interior-hearth', 'interior-sunny', 'interior-lamplit', 'interior-study', 'interior-hush', 'interior-unease', 'shop-', 'inn-', 'lumenary-']],
-    ['Battles', ['battle-']],
+    ['Battles', ['trainer-', 'battle-']],
     ['Story & fanfares', ['title', 'coldopen', 'gleam-', 'sting-']],
 ];
 
@@ -46,6 +46,7 @@ const CUE_NAMES = {
     'sting-hour': 'The Hours (sting)',
     'dawn-breaks': 'Dawn breaks',
     'ending-credits': 'Ending credits',
+    'trainer-eyes': 'Battle — a trainer spots you',
     'battle-main-dusk-duel': 'Battle — wild kin & trainers',
     'battle-emberfall': 'Battle — route trainers & Lampwardens',
     'battle-nightfall': 'Battle — Vigilants & the Hollowing',
@@ -103,6 +104,9 @@ for (const m of mapsTs.matchAll(/^ {2}(\w+): \{([\s\S]*?)^ {2}\},?$/gm)) {
 }
 
 const remaster = JSON.parse(readFileSync(join(ROOT, 'src/game/data/music-remaster.json'), 'utf8')).tracks;
+// Classic cues with a play-once intro (tools/audio/stitch_intro_loop.py) — the page
+// loops their classic render from loop_start, like the game.
+const classicIntros = JSON.parse(readFileSync(join(ROOT, 'src/game/data/music-classic.json'), 'utf8')).tracks;
 
 const groups = GROUPS.map(([title]) => ({ title, tracks: [] }));
 for (const file of readdirSync(MUSIC).filter((f) => f.endsWith('.mp3')).sort()) {
@@ -119,11 +123,12 @@ for (const file of readdirSync(MUSIC).filter((f) => f.endsWith('.mp3')).sort()) 
         where: places.length ? places.join(' · ') : (r?.where ?? ''),
         mood: r?.mood ?? '',
         classic: `play/assets/audio/music/${id}.mp3`,
+        classic_loop_start: classicIntros[id]?.loop_start ?? null,
         remaster: r ? `play/assets/audio/music/remaster/${id}.mp3` : null,
         loop_start: r ? r.loop_start : null,
         // Battles keep the chip score on purpose (owner's call, 2026-10) — say so,
         // rather than promising a remaster that isn't coming.
-        note: !r && id.startsWith('battle-') ? 'Battles keep the original chip score' : null,
+        note: !r && /^(battle|trainer)-/.test(id) ? 'Battles keep the original chip score' : null,
     });
 }
 
