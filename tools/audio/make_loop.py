@@ -88,6 +88,9 @@ def main() -> int:
     ap.add_argument("--xfade", type=float, default=250.0, help="seam blend, ms")
     ap.add_argument("--bitrate", default="128k")
     ap.add_argument("--report", action="store_true", help="analyse only")
+    ap.add_argument("--keep-intro", action="store_true",
+                    help="keep audio[0:s] as a play-once intro: the file is audio[0:e] and the engine loops back to s (prints loop_start)")
+    ap.add_argument("--preview", metavar="OUT", help="also write an intro + loop + loop listening preview")
     a = ap.parse_args()
 
     x = decode(a.inp, SR, 1)
@@ -150,13 +153,22 @@ def main() -> int:
     if xf:
         ramp = np.linspace(0, 1, xf, dtype=np.float32)[:, None]
         body[:xf] = body[:xf] * np.sqrt(ramp) + tail * np.sqrt(1 - ramp)
-    pcm = np.clip(body, -1, 1).astype(np.float32).tobytes()
-    subprocess.run(
-        ["ffmpeg", "-v", "error", "-y", "-f", "f32le", "-ac", "2", "-ar", str(SR2), "-i", "-",
-         "-c:a", "libmp3lame", "-b:a", a.bitrate, a.out],
-        input=pcm, check=True,
-    )
-    print(f"wrote {a.out}  ({(i1 - i0) / SR2:.2f}s loop)")
+    intro = y[:i0] if a.keep_intro else y[:0]
+    # With an intro, the blend sits at the loop start (heard on every repeat AND on
+    # the first pass straight out of the intro, which is continuous anyway).
+    full = np.concatenate([intro, body])
+
+    def write(arr, path):
+        subprocess.run(
+            ["ffmpeg", "-v", "error", "-y", "-f", "f32le", "-ac", "2", "-ar", str(SR2), "-i", "-",
+             "-c:a", "libmp3lame", "-b:a", a.bitrate, path],
+            input=np.clip(arr, -1, 1).astype(np.float32).tobytes(), check=True,
+        )
+    write(full, a.out)
+    if a.preview:
+        write(np.concatenate([full, body, body[: SR2 * 8]]), a.preview)
+    print(f"wrote {a.out}  ({(i1 - i0) / SR2:.2f}s loop"
+          + (f", loop_start={len(intro) / SR2:.4f}s intro" if a.keep_intro else "") + ")")
     return 0
 
 

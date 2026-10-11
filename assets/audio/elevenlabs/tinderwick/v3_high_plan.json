@@ -1,0 +1,187 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{a short memorable 4-bar opening flourish: rising music-box arpeggio, then the lead boldly states the first notes of the main theme, landing on a held chord that leads straight into the theme}",
+   "duration_ms": 10668,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "90 BPM",
+    "C major",
+    "warm music-box and soft pulse-wave lead",
+    "plucked harp arpeggios",
+    "warm string pad",
+    "round soft synth bass",
+    "sparse celesta bell glints",
+    "cosy nostalgic hometown theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "bright opening flourish",
+    "announcing arrival"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "fade out",
+    "ritardando",
+    "ending"
+   ],
+   "conditioning_ref": {
+    "song_id": "LDWhGzDt5IwjtK9QD5oj_upload",
+    "range": {
+     "start_ms": 15000,
+     "end_ms": 45000
+    }
+   },
+   "condition_strength": "high"
+  },
+  {
+   "text": "[Main Theme]\n{the main melody, clear and front and centre, simple and hummable, played by the soft pulse-wave lead over harp arpeggios}",
+   "duration_ms": 21336,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "90 BPM",
+    "C major",
+    "warm music-box and soft pulse-wave lead",
+    "plucked harp arpeggios",
+    "warm string pad",
+    "round soft synth bass",
+    "sparse celesta bell glints",
+    "cosy nostalgic hometown theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme",
+    "memorable hook"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "fade out",
+    "ritardando",
+    "ending"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme Reprise]\n{the same melody again, now answered by a gentle flute counter-melody, strings a little fuller}",
+   "duration_ms": 21336,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "90 BPM",
+    "C major",
+    "warm music-box and soft pulse-wave lead",
+    "plucked harp arpeggios",
+    "warm string pad",
+    "round soft synth bass",
+    "sparse celesta bell glints",
+    "cosy nostalgic hometown theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "flute counter-melody",
+    "fuller arrangement"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "fade out",
+    "ritardando",
+    "ending"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast: a wistful turn to A minor, the melody moves lower and slower, homesick and tender, then lifts back toward home}",
+   "duration_ms": 21336,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "90 BPM",
+    "warm music-box and soft pulse-wave lead",
+    "plucked harp arpeggios",
+    "warm string pad",
+    "round soft synth bass",
+    "sparse celesta bell glints",
+    "cosy nostalgic hometown theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "A minor",
+    "wistful",
+    "homesick",
+    "contrasting section"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "fade out",
+    "ritardando",
+    "ending"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the main melody returns in full, warm and complete; the last bar leads straight back into the main theme, no ending}",
+   "duration_ms": 21336,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "90 BPM",
+    "C major",
+    "warm music-box and soft pulse-wave lead",
+    "plucked harp arpeggios",
+    "warm string pad",
+    "round soft synth bass",
+    "sparse celesta bell glints",
+    "cosy nostalgic hometown theme",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "modern EDM drums",
+    "trap",
+    "dubstep",
+    "guitar",
+    "ambient drone",
+    "minimalist",
+    "fade out",
+    "ritardando",
+    "ending"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}
