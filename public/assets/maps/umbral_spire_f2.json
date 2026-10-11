@@ -487,7 +487,7 @@
         "ty": 9
       },
       "facing": "down",
-      "sprite": "npc_man",
+      "sprite": "hollowing_acolyte",
       "movement": "static",
       "dialogue_ref": "script.hollowing_acolyte_b",
       "sight_range": 5,
@@ -501,7 +501,7 @@
         "ty": 9
       },
       "facing": "down",
-      "sprite": "npc_man",
+      "sprite": "hollowing_acolyte",
       "movement": "look_around",
       "dialogue_ref": "npc.hollowing_acolyte_b_after",
       "requires_flag": "flag:hollowing_acolyte_b_beaten"
@@ -513,7 +513,7 @@
         "ty": 8
       },
       "facing": "left",
-      "sprite": "npc_old_woman",
+      "sprite": "hollowing_elder",
       "movement": "static",
       "dialogue_ref": "script.hollowing_acolyte_c",
       "sight_range": 4,
@@ -527,7 +527,7 @@
         "ty": 8
       },
       "facing": "left",
-      "sprite": "npc_old_woman",
+      "sprite": "hollowing_elder",
       "movement": "look_around",
       "dialogue_ref": "npc.hollowing_acolyte_c_after",
       "requires_flag": "flag:hollowing_acolyte_c_beaten"
@@ -2924,5 +2924,26 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "glowmotes",
+        "density": 0.45
+      },
+      {
+        "kind": "dust",
+        "density": 0.3
+      }
+    ],
+    "mist": {
+      "color": "#0d0b1c",
+      "alpha": 0.22,
+      "speed": 3
+    },
+    "tint": {
+      "color": "#08061a",
+      "alpha": 0.16
+    }
+  }
 }

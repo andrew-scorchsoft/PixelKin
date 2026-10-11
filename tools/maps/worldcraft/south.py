@@ -190,7 +190,6 @@ PLACEMENTS: dict[str, dict] = {
             "cockler": "fisher_woman",
         },
     },
-    "tideglass_cavern": {"ambience": {"particles": [particles("motes", 0.6)]}},
 
     # ------------------------------------------------------------- Pearlmoor Quay
     # The harbour: a fish stall with a lantern under its awning, a string of

@@ -137,16 +137,16 @@ m: dict = {
     "npcs": [
         # WARDEN MER — trial -> kept -> post-crown re-runnable bout
         {"id": "mer_trial", "at": {"tx": KEEPER_AT[0], "ty": KEEPER_AT[1]},
-         "facing": "down", "sprite": "npc_woman", "movement": "static",
+         "facing": "down", "sprite": "hollowing_elder", "movement": "static",
          "dialogue_ref": "script.vigil_murkfall",
          "hidden_when_flag": "flag:vigil_5_kept"},
         {"id": "mer_kept", "at": {"tx": KEEPER_AT[0], "ty": KEEPER_AT[1]},
-         "facing": "down", "sprite": "npc_woman", "movement": "static",
+         "facing": "down", "sprite": "hollowing_elder", "movement": "static",
          "dialogue_ref": "npc.vigil_murkfall_kept",
          "requires_flag": "flag:vigil_5_kept",
          "hidden_when_flag": "flag:starfall_crown"},
         {"id": "mer_bout", "at": {"tx": KEEPER_AT[0], "ty": KEEPER_AT[1]},
-         "facing": "down", "sprite": "npc_woman", "movement": "static",
+         "facing": "down", "sprite": "hollowing_elder", "movement": "static",
          "dialogue_ref": "script.vigil_murkfall_again",
          "requires_flag": "flag:starfall_crown"},
     ],
@@ -190,6 +190,19 @@ for (x, y, name) in [(7, 8, "greymoss_a"), (16, 14, "greymoss_b"), (4, 15, "g_pe
     i = y * W + x
     if not (crag[i] or murk[i] or tuft[i]) and (x, y) not in avoid and deco[i] == 0:
         deco[i] = gid(name)
+
+# ---- WORLD-CRAFT dressing (2026-10; tools/maps/vigil_dress.py) -----------------------
+# Was 72% bare blight (audit_visual warn). The keeper's camp on the dry ground
+# by the east pool, one more relit reed-lantern at the cache lane's foot, two
+# warm-fall scars, and a drift of grey moss and grit over the blight. The lane
+# (cols 10-13) and the trial band stay clear.
+from vigil_dress import dress, prop, camp, scar  # noqa: E402
+dress(m, deco, W, H, rng, blocked=[crag, murk, tuft],
+      props=[camp("keeper_camp", (15, 14)),
+             prop("relit_lantern_d", "saltreach_reed_lantern_lit", (20, 6), 1, 2, overhang=1),
+             scar("warm_scar_a", (7, 7)), scar("warm_scar_b", (14, 12))],
+      drift=["greymoss_a", "greymoss_b", "g_pebble", "g_tuft"],
+      density=0.34, avoid=avoid | {(x, y) for x in range(10, 14) for y in range(7, 16)})
 
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},

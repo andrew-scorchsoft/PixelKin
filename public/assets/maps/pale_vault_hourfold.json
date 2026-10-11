@@ -1729,5 +1729,21 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "snow",
+        "density": 0.35
+      },
+      {
+        "kind": "starglint",
+        "density": 0.4
+      }
+    ],
+    "tint": {
+      "color": "#1a2a4a",
+      "alpha": 0.12
+    }
+  }
 }

@@ -114,13 +114,13 @@ PLACEMENTS: dict[str, dict] = {
     },
     # C1 — the gone-quiet, come to the ring to see the Spire for themselves.
     "penumbra_ring": {
-        "npcs": [npc("peril_gone_quiet", (21, 19), "npc_woman", "script.peril_gone_quiet",
+        "npcs": [npc("peril_gone_quiet", (21, 19), "fen_folk", "script.peril_gone_quiet",
                      facing="up")],
     },
     # P1 — the bookend: Maudie in Dawnstead, with the orchard's news (sends the
     # post-game player home to see the crater flower).
     "dawnstead": {
-        "npcs": [npc("peril_maudie_dawn", (11, 15), "npc_woman", "npc.peril_maudie_dawn",
+        "npcs": [npc("peril_maudie_dawn", (11, 15), "road_courier", "npc.peril_maudie_dawn",
                      facing="down", requires="flag:dawn")],
     },
 }

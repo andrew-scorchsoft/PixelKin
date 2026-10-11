@@ -113,16 +113,16 @@ m: dict = {
     "npcs": [
         # ONDRA VAEL — trial -> kept -> post-crown re-runnable bout
         {"id": "ondra_trial", "at": {"tx": KEEPER_AT[0], "ty": KEEPER_AT[1]},
-         "facing": "down", "sprite": "npc_old_woman", "movement": "static",
+         "facing": "down", "sprite": "kite_weaver", "movement": "static",
          "dialogue_ref": "script.vigil_stormfall",
          "hidden_when_flag": "flag:vigil_3_kept"},
         {"id": "ondra_kept", "at": {"tx": KEEPER_AT[0], "ty": KEEPER_AT[1]},
-         "facing": "down", "sprite": "npc_old_woman", "movement": "static",
+         "facing": "down", "sprite": "kite_weaver", "movement": "static",
          "dialogue_ref": "npc.vigil_stormfall_kept",
          "requires_flag": "flag:vigil_3_kept",
          "hidden_when_flag": "flag:starfall_crown"},
         {"id": "ondra_bout", "at": {"tx": KEEPER_AT[0], "ty": KEEPER_AT[1]},
-         "facing": "down", "sprite": "npc_old_woman", "movement": "static",
+         "facing": "down", "sprite": "kite_weaver", "movement": "static",
          "dialogue_ref": "script.vigil_stormfall_again",
          "requires_flag": "flag:starfall_crown"},
     ],
@@ -169,6 +169,22 @@ for (x, y, name) in [(7, 8, "greymoss_a"), (15, 13, "greymoss_b"), (3, 12, "g_pe
     i = y * W + x
     if not glacier[i] and not tuft[i] and (x, y) not in avoid and deco[i] == 0:
         deco[i] = gid(name)
+
+# ---- WORLD-CRAFT dressing (2026-10; tools/maps/vigil_dress.py) -----------------------
+# Was 0.69 props/screen (audit_visual FAIL). Galehigh's and the Windward Stair's
+# kit, reused: two kite-poles still flying ribbons for the fall, a second cairn,
+# a kite that came down with the storm, the keeper's camp in the lee of the crag,
+# and two warm-fall scars. The lane (cols 10-13) and the trial band stay clear.
+from vigil_dress import dress, prop, camp, scar  # noqa: E402
+dress(m, deco, W, H, rng, blocked=[glacier, tuft],
+      props=[prop("kite_pole_w", "galehigh_kite_pole_a", (2, 13), 2, 3, overhang=1),
+             prop("kite_pole_e", "galehigh_kite_pole_b", (20, 7), 2, 3, overhang=1),
+             prop("storm_cairn", "windward_cairn", (16, 13), 2, 3, overhang=1),
+             prop("kite_wreck", "windward_kite_wreck", (14, 14), 2, 2),
+             camp("keeper_camp", (4, 7)),
+             scar("warm_scar_a", (9, 8)), scar("warm_scar_b", (18, 12))],
+      drift=["g_pebble", "greymoss_a", "greymoss_b", "g_pebble"],
+      density=0.30, avoid=avoid | {(x, y) for x in range(10, 14) for y in range(7, 16)})
 
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},

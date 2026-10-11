@@ -213,7 +213,31 @@ for (x, y) in [(6, 14), (16, 4)]:
             and not ice[y * W + x]:
         deco[y * W + x] = gid("boulder")
 
-m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + \
+# WORLD-CRAFT (2026-10, the Central package): the basalt read as a bare slab
+# (75% bare, audit_visual warn). Watchers' vigil-lamps left at the pool's edge
+# by the few who found the well (Nightreach's lamp, reused), and a drift of
+# starlit grit and moss over the floor — never on the pool ice, the void, an
+# object, a trigger/NPC/warp tile, or the walked line from the mouth.
+m["objects"] += [
+    {"id": "watch_lamp_s", "sprite": "nightreach_vigil_lamp",
+     "at": {"tx": 8, "ty": 12}, "w": 1, "h": 2, "overhang": 1},
+    {"id": "watch_lamp_e", "sprite": "nightreach_vigil_lamp",
+     "at": {"tx": 13, "ty": 13}, "w": 1, "h": 2, "overhang": 1},
+]
+busy = {(o["at"]["tx"] + dx, o["at"]["ty"] + dy) for o in m["objects"]
+        for dx in range(o["w"]) for dy in range(o["h"])}
+busy |= {(p["at"]["tx"], p["at"]["ty"]) for p in m["npcs"] + m["triggers"] + m["warps"]}
+busy |= {(x, y) for x in range(0, 9) for y in (8, 9)}       # the mouth's walked line
+drift = [gid("greymoss_a"), gid("greymoss_b"), gid("g_pebble"), gid("glowshroom_b")]
+for y in range(H):
+    for x in range(W):
+        i = y * W + x
+        if wall[i] or void[i] or ice[i] or deco[i] or (x, y) in busy:
+            continue
+        if rng.random() < 0.36:
+            deco[i] = rng.choice(drift)
+
+m["layers"] =[{"name": "base", "role": "base", "depth": 0, "data": base}] + \
     terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},
     {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)},

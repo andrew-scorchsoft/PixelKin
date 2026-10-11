@@ -1615,7 +1615,8 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'THE NINTH LANTERN. The road up is starlight or nothing. Lamps out of respect; hearts lit out of spite.' },
   ],
   'sign.penumbra_starwell': [
-    { text: 'EAST — THE STARWELL. Where a star fell and did not go out. Step soft on the dark.' },
+    { text: 'EAST — THE STARWELL. Where a star fell and did not go out: the only one that never went cold.' },
+    { text: 'Nobody knows why. The Hollowing never touched it. Step soft on the dark.' },
   ],
   'npc.penumbra_tended_row': [
     { text: 'Two null-lanterns, tended and swept, holding no light with great care. Someone still walks this row.' },
@@ -1858,6 +1859,7 @@ export const DIALOGUE: DialogueRegistry = {
   'npc.starfall_witness': [
     { speaker: 'WITNESS', text: 'Did you SEE it? Not a star going out — we\'ve all watched plenty of those. This one came DOWN. Shed itself, trailing gold, away off east.' },
     { speaker: 'WITNESS', text: 'Nightreach is beside itself. Watcher Oriel had the great eyepiece on it before it landed. Go up and ask her — she reads the sky for a living, and she\'s never read anything like THIS.' },
+    { speaker: 'WITNESS', text: 'Last time they fell, they came down cold, and we were frightened of them. These come down warm. I\'ve decided that\'s the same thing, forgiven.' },
   ],
   // The blocked_ref on every Vigil-site host warp, until its reading is held —
   // the scar of starlight is visible post-dawn, sealed until read (the watchers' voice).
