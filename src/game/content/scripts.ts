@@ -2834,7 +2834,7 @@ export const SCRIPTS: ScriptRegistry = {
 
   // --- Hushfrost Pass I — the snow canyon's three route sight trainers -------
   'script.hushfrost_lampman': [
-    { op: 'say', speaker: 'DUNSTAN', text: 'Hold there, Wayfarer! That fog at the throat has been beating my lamp back a season at a time — so the pass has one rule now. Every flame that means to face it gets weighed first. By me.' },
+    { op: 'say', speaker: 'DUNSTAN', text: 'Hold there, Wayfarer! That fog at the throat has been beating my lamp back a season at a time — so the pass has one rule now. Every flame that means to face it gets trimmed first. By me.' },
     { op: 'battle', trainer: 'hushfrost_lampman' },
     { op: 'say', speaker: 'DUNSTAN', text: 'That will burn through, I reckon. The throat is west — walk warded, and do not stop to listen to the fog. It has nothing kind to say.' },
     { op: 'setFlag', flag: 'flag:hushfrost_lampman_beaten' },
@@ -2959,7 +2959,9 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'tint', color: '#ffd089', alpha: 0.3, ms: 900 },
     { op: 'musicCrossfade', key: 'sunken-solarium-b', ms: 1200 },
     { op: 'narrate', text: 'Once a year, the Solarium gathers to spend the last warm day before the dark — daylight saved all season, spent all at once, on purpose, together.' },
+    { op: 'face', actor: 'player', facing: 'up' },
     { op: 'say', speaker: 'FESTIVAL ELDER', text: 'Sit, Wayfarer. Eat something warm. The dark gets the whole rest of the year — today is OURS, and we spend it where it can see us.' },
+    { op: 'action', actor: 'player', action: 'sit' },
     { op: 'narrate', text: 'Somebody presses bread into your hands, oven-warm. Nobody asks if you have earned it. That is the whole custom: warmth, spent freely, knowing it fades.' },
     { op: 'tint', color: '#ffd089', alpha: 0, ms: 1100 },
     { op: 'letterbox', on: false, ms: 320 },
@@ -2999,6 +3001,7 @@ export const SCRIPTS: ScriptRegistry = {
   // lighting — a purely visual Sunsketch foreshadow.)
   'script.brazier_1': [
     { op: 'narrate', text: 'You pour the first phial into the cold brazier. For a breath, nothing — then the stored daylight takes the coals all at once.' },
+    { op: 'action', actor: 'player', action: 'raiseLamp' },
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'tint', color: '#ffd089', alpha: 0.22, ms: 700 },
     { op: 'narrate', text: 'Gold light climbs the broken proscenium. Along the stage rim, a row of shut night-flowers stirs — and BLOOMS, leaning into the warmth like an audience leaning forward.' },
@@ -3006,6 +3009,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'Across the water, the troupe has gone very quiet. One of them is gripping another\'s arm. One brazier burns. Out in the drowned halls, something else has begun to glimmer.' },
   ],
   'script.brazier_2': [
+    { op: 'action', actor: 'player', action: 'raiseLamp' },
     { op: 'narrate', text: 'The second phial. The brazier drinks it and FLARES — and this time the light reaches the costumes, the gilt, the painted sun on the backdrop nobody has seen lit in forty years.' },
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'tint', color: '#ffd089', alpha: 0.28, ms: 800 },
@@ -3017,6 +3021,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'letterbox', on: true, ms: 320 },
     { op: 'narrate', text: 'The last phial, into the last brazier. You stand back.' },
     { op: 'silence', ms: 900 },
+    { op: 'action', actor: 'player', action: 'raiseLamp' },
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'tint', color: '#ffd089', alpha: 0.36, ms: 1000 },
     { op: 'narrate', text: 'The Heliarium stage lights WHOLE — three crowns of stored daylight, the proscenium gold rim to rim, the final row of night-flowers blooming so fast you hear it, a soft sound like rain starting.' },
@@ -3032,21 +3037,25 @@ export const SCRIPTS: ScriptRegistry = {
   // fire-warm — the Arc D pivot's payoff after the coldest regions.
   'script.lumenary_solarium': [
     { op: 'face', actor: 'player', facing: 'up' },
-    { op: 'say', speaker: 'LUCAN PYRE', text: 'Centre stage, apprentice — the light loves you, do not argue with it. Spark by spark you woke my theatre; now show me the bond that did it.' },
-    { op: 'say', speaker: 'LUCAN PYRE', text: 'The closing scene of the Last-Warm-Day, played on a lit stage, for the first time since the night fell. Places... and BEGIN!' },
+    { op: 'face', actor: 'lucan_ready', facing: 'down' },
+    { op: 'say', speaker: 'LUCAN PYRE', portrait: 'lucan', expr: 'grand', text: 'Centre stage, apprentice — the light loves you, do not argue with it. Spark by spark you woke my theatre; now show me the bond that did it.' },
+    { op: 'wait', ms: 500 },
+    { op: 'say', speaker: 'LUCAN PYRE', portrait: 'lucan', expr: 'grand', text: 'The closing scene of the Last-Warm-Day, played on a lit stage, for the first time since the night fell. Places... and begin!' },
     { op: 'battle', trainer: 'lucan_pyre' },
     { op: 'musicFade', ms: 500 },
     { op: 'silence', ms: 1000 },
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'tint', color: '#ffd089', alpha: 0.4, ms: 800 },
-    { op: 'narrate', text: 'Lucan raises his lamp like a curtain call — and every stored-daylight lantern on the terrace lifts with it, a hundred small suns offered up over the drowned garden. And overhead, the SUN\'S OWN constellation takes the light.' },
+    { op: 'narrate', text: 'Lucan raises his lamp like a curtain call — and every stored-daylight lantern on the terrace lifts with it, a hundred small suns offered up over the drowned garden. And overhead, the Sun\'s own constellation remembers how to shine.' },
     { op: 'gleam', element: 'solar' },
     { op: 'musicCrossfade', key: 'gleam-emotional', ms: 900 },
     { op: 'tint', color: '#ffd089', alpha: 0, ms: 900 },
-    { op: 'say', speaker: 'LUCAN PYRE', text: 'The SOLAR GLEAM stands! Seven relit — listen to the house! Forty years we played "The Sun Returns" to a dark sky, and tonight the sky read the script!' },
+    { op: 'say', speaker: 'LUCAN PYRE', portrait: 'lucan', expr: 'grand', text: 'The Solar Gleam stands! Seven relit — listen to the HOUSE! Forty years we played "The Sun Returns" to a dark sky, and tonight the sky read the script!' },
     { op: 'say', speaker: 'LUCAN PYRE', text: 'And no performer leaves my stage unpaid. The Sunsketch — a pocket of daylight, yours to release. Shut night-flowers bloom into bridges at its touch.' },
-    { op: 'say', speaker: 'LUCAN PYRE', text: 'The sun-vine bridge on the Climb west of here has been shut since the night fell — it will open UNDER YOUR FEET now. And the sealed Helia Vault off the high terraces... ah, but that would be telling. Some doors deserve their reveal.' },
-    { op: 'say', speaker: 'LUCAN PYRE', text: 'Go and spend what is left of the warm day with us first, apprentice. Encores are short. That is what makes them encores.' },
+    { op: 'say', speaker: 'LUCAN PYRE', text: 'The sun-vine bridge on the Climb west of here has been shut since the night fell — it will open under your feet now. And the sealed Helia Vault off the high terraces... ah, but that would be telling. Some doors deserve their reveal.' },
+    { op: 'wait', ms: 600 },
+    { op: 'say', speaker: 'LUCAN PYRE', portrait: 'lucan', expr: 'bittersweet', text: 'Go and spend what is left of the warm day with us first, apprentice. Encores are short. That is what makes them encores.' },
+    { op: 'action', actor: 'player', action: 'bow' },
   ],
 
   // X2 "The Troupe's Sun-mask" — the post-stage troupe player's ask.
@@ -3132,9 +3141,9 @@ export const SCRIPTS: ScriptRegistry = {
 
   // --- Sunvault Climb — the golden road's two sight trainers + the kit -------
   'script.sunvault_terracer': [
-    { op: 'say', speaker: 'BEL', text: 'Mind the beds! These terraces fed a garden by sunlight once — now they make do with mine. Every lamp that climbs through gets weighed against the gold. Custom of the road.' },
+    { op: 'say', speaker: 'BEL', text: 'Mind the beds! These terraces fed a garden by sunlight once — now they make do with mine. Every lamp that climbs through gets measured against the gold. Custom of the road.' },
     { op: 'battle', trainer: 'sunvault_terracer' },
-    { op: 'say', speaker: 'BEL', text: 'Weighed, and the garden approves — the overgrowth leaned toward you the whole bout. It has never once done that for me, and I PRUNE it.' },
+    { op: 'say', speaker: 'BEL', text: 'Measured, and the garden approves — the overgrowth leaned toward you the whole bout. It has never once done that for me, and I PRUNE it.' },
     { op: 'setFlag', flag: 'flag:sunvault_terracer_beaten' },
   ],
   'script.sunvault_skywatcher': [
@@ -3246,9 +3255,20 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'The passage opens, and the works show you what they are.' },
     { op: 'tint', color: '#202430', alpha: 0.42, ms: 900 },
     { op: 'narrate', text: 'Rows of null-lanterns on swept gantries — dozens of them, hung in clean lines, each one holding its little piece of dark. Not one is broken. Not one is dusty. Somebody still tends the collars.' },
+    { op: 'narrate', text: 'Each null-lantern\'s collar holds a chip of dark stone, cold, faintly blue in its cracks. Not fuel. Company.' },
     { op: 'narrate', text: 'At the far wall stands the engine of it: a bell of held dark on cradle-pipes, polished like a font. It is not running. It does not need to be. The fen outside is the proof of its work.' },
     { op: 'silence', ms: 1200 },
     { op: 'narrate', text: 'There is a gauge on the casing, brass-rimmed, lovingly kept. Its needle rests at zero, and has for years — because zero, here, is the finished number. Zero is what the light comes to.' },
+    // W-2 — Còr, wordless: the figure on the far gantry sweeps two tiles,
+    // stops, turns, bows (a held wait) and walks out of frame. No line.
+    { op: 'cameraFocus', actor: 'stillworks_cor', ms: 900 },
+    { op: 'move', actor: 'stillworks_cor', to: { tx: 16, ty: 4 }, speed: 0.5 },
+    { op: 'wait', ms: 600 },
+    { op: 'face', actor: 'stillworks_cor', facing: 'down' },
+    { op: 'wait', ms: 800 },
+    { op: 'face', actor: 'stillworks_cor', facing: 'up' },
+    { op: 'move', actor: 'stillworks_cor', to: { tx: 19, ty: 2 }, speed: 0.5 },
+    { op: 'cameraReset', ms: 800 },
     { op: 'tint', color: '#202430', alpha: 0, ms: 1100 },
     { op: 'narrate', text: 'No one stops you. No one hurries you. The works are quiet the way a sleeping ward is quiet — and someone, gently, has seen to it that they stay that way.' },
     { op: 'letterbox', on: false, ms: 420 },
@@ -3320,6 +3340,7 @@ export const SCRIPTS: ScriptRegistry = {
   // Lamp 1 — EMBER: Tinderwick's hearths, where the Wayfaring began.
   'script.west_lamp_1': [
     { op: 'narrate', text: 'The first watch-lamp, polished and cold. You set the old watcher\'s striker to the wick and strike — once, twice — and the spark takes, ember-orange, the colour of home.' },
+    { op: 'action', actor: 'player', action: 'raiseLamp' },
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'tint', color: '#ff8a3d', alpha: 0.22, ms: 700 },
     { op: 'narrate', text: 'Ember-light. Tinderwick: a beacon on a bluff, a wick-key three hundred years old, a town that danced under strung lanterns because a small flame is no lesser thing. Far to the south, over the people who taught you that, its constellation burns on.' },
@@ -3329,6 +3350,7 @@ export const SCRIPTS: ScriptRegistry = {
   // Lamp 2 — TIDE: Pearlmoor's bell, and the water that parts for the asking.
   'script.west_lamp_2': [
     { op: 'narrate', text: 'The second lamp takes your flame and stands it up cool and silver — and the light sways, faintly, the way lamplight sways on harbour water.' },
+    { op: 'action', actor: 'player', action: 'raiseLamp' },
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'tint', color: '#4fb4ff', alpha: 0.22, ms: 700 },
     { op: 'narrate', text: 'Tide-light. Pearlmoor: a bell that hung silent until you carried its rope home, buoys answering mast by mast, the whole quay singing the going-out song to the boats. Tides go out so they can come back. You have been coming back ever since.' },
@@ -3338,6 +3360,7 @@ export const SCRIPTS: ScriptRegistry = {
   // Lamp 3 — VERDANT: Lowleaf's moss, the kept light that vouches.
   'script.west_lamp_3': [
     { op: 'narrate', text: 'The third lamp catches green-gold, and holds it soft — not a blaze but a glow, the kind that comes up out of old moss when the dark is kind.' },
+    { op: 'action', actor: 'player', action: 'raiseLamp' },
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'tint', color: '#9fe8b8', alpha: 0.22, ms: 700 },
     { op: 'narrate', text: 'Verdant-light. Lowleaf: an Elder Bed grey at its own festival, warmed back rim to rim like a rumour through a crowd, and a child saying, very clearly, "it was SLEEPING." The moss keeps a little light where it can. Be like the moss.' },
@@ -3347,6 +3370,7 @@ export const SCRIPTS: ScriptRegistry = {
   // Lamp 4 — STONE: Cinderhead's vigil, the flame carried through the dark.
   'script.west_lamp_4': [
     { op: 'narrate', text: 'The fourth lamp is heavier ironwork than its sisters, miner-made. Your flame crosses into it and steadies at once, patient as the rock.' },
+    { op: 'action', actor: 'player', action: 'raiseLamp' },
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'tint', color: '#caa46a', alpha: 0.22, ms: 700 },
     { op: 'narrate', text: 'Stone-light. Cinderhead: a vigil-lamp burning alone in the third gallery, carried up through the leaning dark without once going out — because anyone can LIGHT a lamp; carrying one is the trick of the whole thing. The lowered lamps rose for you that night.' },
@@ -3356,16 +3380,22 @@ export const SCRIPTS: ScriptRegistry = {
   // Lamp 5 — FROST: the aurora — and C4, Fenn's counsel. He lights it WITH
   // you; portrait + quiet, no swell. He does not march; he sends you up clear.
   'script.fenn_counsel': [
+    { op: 'face', actor: 'fenn_counsel', facing: 'down' },
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'Child. I hoped I would catch you at this one. The frost-lamp was always my favourite of the seven — it burns the colour of patience.' },
     { op: 'narrate', text: 'You tip the oil together, his old hand steadying the well while yours brings the flame. The wick takes pale and cool — aurora-light, indoors.' },
+    { op: 'action', actor: 'player', action: 'raiseLamp' },
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'tint', color: '#a8f0d0', alpha: 0.22, ms: 700 },
     { op: 'narrate', text: 'Frost-light. Pale Vault: seven brackets walked in order, none hurried; a town standing out on black ice, each holding one chosen flame under the slow green roads of the sky. Calm as any quieted valley — except every light was lit on purpose.' },
     { op: 'tint', color: '#a8f0d0', alpha: 0, ms: 700 },
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'grave', text: 'Eight stars, nearly. When the Crown closes, the dark will part and the Spire will open its roads. You won\'t beat him up there, apprentice. You\'ll just have to remember harder than he\'s forgotten.' },
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'grave', text: 'He will ask you his question again, at the top of the world, with everything he has built standing behind it. And every lamp on this walk — every lamp on your whole long road — is a word of your answer, already lit.' },
+    { op: 'face', actor: 'fenn_counsel', facing: 'up' },
+    { op: 'wait', ms: 700 },
+    { op: 'face', actor: 'fenn_counsel', facing: 'down' },
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'I will not climb with you. An old man on the stair would only give you something else to carry — and besides, somebody should be watching from here when the sky finishes. I have waited forty years for that particular view.' },
     { op: 'narrate', text: 'He presses your shoulder once, the way he did at the waystone, a Wayfaring ago. Five of seven. He stays by the lamp as you walk on — and does not stop looking up.' },
+    { op: 'face', actor: 'fenn_counsel', facing: 'up' },
   ],
   // Lamp 6 — STORM: the kites — and A5, Wren resolved (the warm mirror of A4).
   // The ribbon line fires only if N3 was kept (flag:q_north_ribbon_placed —
@@ -3373,6 +3403,8 @@ export const SCRIPTS: ScriptRegistry = {
   // part of the reunion: A2's register, returned.
   'script.wren_nightreach': [
     { op: 'narrate', text: 'Somebody is sitting under the sixth watch-lamp with their back against the post, flying nothing, easy as a harbour evening.' },
+    { op: 'face', actor: 'wren_return', facing: 'left' },
+    { op: 'emote', actor: 'wren_return', emote: 'music' },
     { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'neutral', text: 'Took you long enough. I counted four lamps come on down the walk and thought — that walk, I know that walk. Same one as the coast road.' },
     { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'neutral', text: 'I went and looked at the quiet, like Còr wanted. Properly looked. Sat in one of his valleys a whole day with my lamp shut. It\'s peaceful, all right. Peaceful as a held breath. ...I\'d rather breathe.' },
     { op: 'say', if_flag: 'flag:q_north_ribbon_placed', speaker: 'WREN', portrait: 'wren', expr: 'soft', text: 'And — the ledge on the second stair. My ribbon, under a stone, where I\'d been sitting being sorry for myself. No note. No waiting around to be thanked. ...It smelled of festival smoke the whole way down the mountain. That was you, and you\'re not allowed to deny it.' },
@@ -3380,11 +3412,13 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'battle', trainer: 'wren_nightreach' },
     { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'soft', text: 'Ha. There it is. THAT\'s the thing the quiet doesn\'t have — and Còr can keep every silent valley in Vesperholm, he\'s not getting that one.' },
     { op: 'narrate', text: 'You light the sixth lamp together, Wren\'s hand over yours on the striker, laughing at nothing the way you did at the start.' },
+    { op: 'action', actor: 'player', action: 'raiseLamp' },
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'tint', color: '#ffd089', alpha: 0.22, ms: 700 },
     { op: 'narrate', text: 'Storm-light. Galehigh: a whole hill paying out string at once, a hundred small flames climbing the dark on kite-tails — so the stars have something to climb back up. Daft, maybe. The night is shorter for it.' },
     { op: 'tint', color: '#ffd089', alpha: 0, ms: 700 },
     { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'eager', text: 'Six of seven. Come on — let\'s go light the last one.' },
+    { op: 'hop', actor: 'wren_return' },
     { op: 'setFlag', flag: 'flag:wren_nightreach_battled' },
   ],
   // Lamp 7 — SOLAR: the stage — and B4, THE GREAT NULL NAMED. The information
@@ -3393,32 +3427,58 @@ export const SCRIPTS: ScriptRegistry = {
   // flag:q_west_lamp_7 + flag:q_west_vigil_kept + flag:great_null_known.)
   'script.great_null_named': [
     { op: 'narrate', text: 'Nessa Cole is waiting at the seventh lamp, beside the great telescope she has carried out onto the terrace. She watches you light it — sun-gold, the warmest of the seven, the colour of a drowned garden remembering.' },
+    { op: 'action', actor: 'player', action: 'raiseLamp' },
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'tint', color: '#ffd089', alpha: 0.24, ms: 700 },
     { op: 'narrate', text: 'Solar-light. The Solarium: three braziers fed spark by spark out of the flood, a troupe walking onto a lit stage after forty years, a festival spending its last warm day where the dark could watch. Seven of seven. The Astral Walk stands lit, end to end, under seven answering stars.' },
     { op: 'tint', color: '#ffd089', alpha: 0, ms: 700 },
     { op: 'letterbox', on: true, ms: 420 },
     { op: 'musicFade', ms: 800 },
-    { op: 'say', speaker: 'NESSA COLE', text: 'Seven kept flames. Thank you, Wayfarer. I needed to see the walk lit before I showed you this — so you would know, exactly, the size of what I am about to say.' },
-    { op: 'narrate', text: 'She steps to the great telescope and swings it — not up, but ACROSS, levelling it at the darkened mountain at the centre of the world.' },
-    { op: 'say', speaker: 'NESSA COLE', text: 'Look. The Umbral Spire\'s crown. The scaffolding on the north face — there, where no light catches. He has been building it for two years. My charts watched it grow the way you watch a storm come in over water: slowly, then all at once.' },
-    { op: 'say', if_flag: 'flag:seen_stillworks', speaker: 'NESSA COLE', text: 'You have walked the Hollowfen, I think — you carry the look of it. The rows of sleeping lanterns. The font with its gauge at zero. Then you have already seen this thing\'s little sister, Wayfarer. The works were the rehearsal.' },
-    { op: 'say', speaker: 'NESSA COLE', text: 'He calls it the Great Null. A lantern that holds no light — aimed at the Keystar, the one we all rekindle from. Snuff that, and the sky stops being able to remember itself.' },
+    { op: 'face', actor: 'nessa_at_seven', facing: 'down' },
+    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'reverent', text: 'Seven kept flames. Thank you, Wayfarer. I needed to see the walk lit before I showed you this — so you would know, exactly, the size of what I am about to say.' },
+    { op: 'face', actor: 'nessa_at_seven', facing: 'left' },
+    { op: 'narrate', text: 'She steps to the great telescope and swings it — not up, but across, levelling it at the darkened mountain at the centre of the world.' },
+    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: 'Look. The Umbral Spire\'s crown. The scaffolding on the north face — there, where no light catches. He has been building it for two years. My charts watched it grow the way you watch a storm come in over water: slowly, then all at once.' },
+    { op: 'say', if_flag: 'flag:seen_stillworks', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: 'You have walked the Hollowfen, I think — you carry the look of it. The rows of sleeping lanterns. The font with its gauge at zero. Then you have already seen this thing\'s little sister, Wayfarer. The works were the rehearsal.' },
+    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: 'He calls it the Great Null. A lantern that holds no light — aimed at the Keystar, the one we all rekindle from. Snuff that, and the sky stops being able to remember itself.' },
     { op: 'silence', ms: 1600 },
     { op: 'tint', color: '#2a3550', alpha: 0.4, ms: 900 },
     { op: 'narrate', text: 'Every constellation you have relit, relit because the Keystar held. Every lamp on the walk behind you, lit from a sky that can still remember. One star anchors all of it — and the gentlest man in Vesperholm has built a dark to fit it exactly.' },
     { op: 'tint', color: '#2a3550', alpha: 0, ms: 1100 },
-    { op: 'say', speaker: 'NESSA COLE', text: '...I knew him, once. He was the gentlest of us. That\'s the part that keeps me awake.' },
-    { op: 'say', speaker: 'NESSA COLE', text: 'The Crown wants one more star, and the roads to the Spire open with it. Come down to the hall when you are ready, Wayfarer. The vigil is kept; the eighth is yours to ask for — and after tonight, I think the asking had better not wait.' },
+    // W-1 — THE EMBER FLICKERS: the story's turn against the player. The
+    // Keystar slips for a breath and the youngest star in the sky — your
+    // first Gleam — goes dark, then catches again. (Witness stages at
+    // Tinderwick key on flag:great_null_known and heal at gleam:lunar.)
+    { op: 'silence', ms: 1200 },
+    { op: 'cameraFocus', to: { tx: 15, ty: 29 }, ms: 900 },
+    { op: 'narrate', text: 'Far to the south, low on the rim of the world, the Ember — your first Gleam, the one you watched Brisa wake — stutters. Dims. Is gone for one long heartbeat.' },
+    { op: 'sfx', key: 'world-star-gutter' },
+    { op: 'tint', color: '#0b1026', alpha: 0.5, ms: 400 },
+    { op: 'shake', ms: 300, intensity: 0.004 },
+    { op: 'wait', ms: 1100 },
+    { op: 'tint', color: '#0b1026', alpha: 0, ms: 1400 },
+    { op: 'narrate', text: 'Then it catches again.' },
+    { op: 'cameraReset', ms: 800 },
+    { op: 'face', actor: 'nessa_at_seven', facing: 'down' },
+    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: 'The Keystar slipped. Only for a breath — but every star leans on it, and when it slips, the youngest slip first. Yours is the youngest in the sky.' },
+    { op: 'wait', ms: 800 },
+    { op: 'face', actor: 'nessa_at_seven', facing: 'left' },
+    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: '...I knew him, once. He was the gentlest of us. That\'s the part that keeps me awake.' },
+    // W-3 — X-1 dose 2: the third ladder (never the name — not before dawn)
+    { op: 'wait', ms: 700 },
+    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: 'Ask Fenn about the third ladder. ...No. Don\'t ask. He\'ll tell you when he can bear to.' },
+    { op: 'face', actor: 'nessa_at_seven', facing: 'down' },
+    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'reverent', text: 'The Crown wants one more star, and the roads to the Spire open with it. Come down to the hall when you are ready, Wayfarer. The vigil is kept; the eighth is yours to ask for — and after tonight, I think the asking had better not wait.' },
+    { op: 'face', actor: 'nessa_at_seven', facing: 'left' },
     { op: 'narrate', text: 'She looks back along the lit walk — seven flames, seven stars — and for a moment the haunted look eases into something older and steadier. The vigil of the seven is kept. The eighth watch waits below.' },
     { op: 'letterbox', on: false, ms: 420 },
   ],
 
   // The Astral Walk's two junior-watcher SIGHT keepers (keeper class).
   'script.junior_watcher_a': [
-    { op: 'say', speaker: 'LIRA', text: 'Hold the walk, please! Seven lamps, seven stars, and a junior watcher to keep the order of it. Nobody crosses my stretch unweighed — even the senior watchers. ESPECIALLY the senior watchers.' },
+    { op: 'say', speaker: 'LIRA', text: 'Hold the walk, please! Seven lamps, seven stars, and a junior watcher to keep the order of it. Nobody crosses my stretch unread — even the senior watchers. ESPECIALLY the senior watchers.' },
     { op: 'battle', trainer: 'junior_watcher_a' },
-    { op: 'say', speaker: 'LIRA', text: 'Weighed and recorded. ...In my own ledger, which nobody reads. Keep the order, Wayfarer — ember-light first, sun-light last.' },
+    { op: 'say', speaker: 'LIRA', text: 'Read and recorded. ...In my own ledger, which nobody reads. Keep the order, Wayfarer — ember-light first, sun-light last.' },
     { op: 'setFlag', flag: 'flag:junior_watcher_a_beaten' },
   ],
   'script.junior_watcher_b': [
@@ -3430,7 +3490,7 @@ export const SCRIPTS: ScriptRegistry = {
 
   // X3 "Charting the Dark" — Lira's quest (her beaten swap is the giver).
   'script.chart_quest': [
-    { op: 'say', speaker: 'LIRA', text: 'Wayfarer — a proper asking, now the weighing\'s done. I\'m charting the sky as it COMES BACK. Nobody has ever had the chance before; nobody may again. Seven constellations relit in one lifetime — in one YEAR — and the senior watchers are all too busy watching the eighth to write any of it down.' },
+    { op: 'say', speaker: 'LIRA', text: 'Wayfarer — a proper asking, now the reading\'s done. I\'m charting the sky as it COMES BACK. Nobody has ever had the chance before; nobody may again. Seven constellations relit in one lifetime — in one YEAR — and the senior watchers are all too busy watching the eighth to write any of it down.' },
     { op: 'say', speaker: 'LIRA', text: 'I need readings from three high points my watch rota will never let me reach: the Sunvault terrace on the climb you came up, our own roof terrace past the scree, and — for the brave, and ONLY the brave — the survey cairn over the Coldfog Marches, where the sky gives nothing back at all.' },
     { op: 'say', speaker: 'LIRA', text: 'Stand in them. Look properly — long enough to be cold. The first two will finish the chart; the third would make it TRUE. Bring me what the sky does, and I\'ll press the rest.' },
     { op: 'setFlag', flag: 'flag:q_west_chart' },
@@ -3489,8 +3549,10 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'Seven of the watchers stand apart, lamps LIT — one for each constellation that has come home. Theirs lit the moment "their" star did; some have held them burning for half a year.' },
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'tint', color: '#9fd4ff', alpha: 0.18, ms: 900 },
+    { op: 'face', actor: 'player', facing: 'up' },
     { op: 'narrate', text: 'A watcher meets your eye and inclines her head — toward the eighth row, where the unlit lamps wait. An empty place stands at the row\'s end. Nobody says it is yours. Everybody knows it is.' },
     { op: 'tint', color: '#9fd4ff', alpha: 0, ms: 900 },
+    { op: 'wait', ms: 900 },
     { op: 'narrate', text: 'You stand the watch a while, under seven answered stars and one long-waiting dark. The vigil asks nothing else: only that somebody is watching when the sky remembers.' },
     { op: 'letterbox', on: false, ms: 420 },
     { op: 'setFlag', flag: 'flag:star_vigil_seen' },
@@ -3502,15 +3564,17 @@ export const SCRIPTS: ScriptRegistry = {
   // eighth constellation lights, each watcher's lamp a small flashColor.
   'script.lumenary_nightreach': [
     { op: 'face', actor: 'player', facing: 'up' },
-    { op: 'say', speaker: 'NESSA COLE', text: 'The walk is lit, the vigil is kept, and the eighth star has waited longest of all. One asking remains, Wayfarer — mine.' },
-    { op: 'say', speaker: 'NESSA COLE', text: 'My kin keep the dream-hours: the soft dark, the kind that closes your eyes for you. Còr would tell you that is mercy. Stay awake through it... and we will go and wake the sky together.' },
+    { op: 'face', actor: 'nessa_ready', facing: 'down' },
+    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'reverent', text: 'The walk is lit, the vigil is kept, and the eighth star has waited longest of all. One asking remains, Wayfarer — mine.' },
+    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'neutral', text: 'My kin keep the dream-hours: the soft dark, the kind that closes your eyes for you. Còr would tell you that is mercy. Stay awake through it... and we will go and wake the sky together.' },
     { op: 'battle', trainer: 'nessa_cole' },
     { op: 'musicFade', ms: 600 },
     { op: 'silence', ms: 1800 },
-    { op: 'narrate', text: 'Nessa says nothing. She crosses to the eighth watch-lamp beside the great eyepiece — the one no striker has touched — and waits, her hand NOT on it, her face turned up to the dome.' },
+    { op: 'narrate', text: 'Nessa says nothing. She crosses to the eighth watch-lamp beside the great eyepiece — the one no striker has touched — and waits, her hand not on it, her face turned up to the dome.' },
+    { op: 'face', actor: 'nessa_ready', facing: 'up' },
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'tint', color: '#9fd4ff', alpha: 0.3, ms: 1100 },
-    { op: 'narrate', text: 'And the eighth watch-lamp lights ITSELF — kindled from above, as the eighth constellation answers your bond and takes its place in the sky.' },
+    { op: 'narrate', text: 'And the eighth watch-lamp lights itself — kindled from above, as the eighth constellation answers your bond and remembers how to shine.' },
     { op: 'gleam', element: 'lunar' },
     { op: 'narrate', text: 'Outside, down the temple steps, the Star-vigil crests in perfect silence: lamp after lamp after lamp catching light in watching hands, the whole town kindling person by person under a finished sky.' },
     { op: 'flashColor', color: '#cfe8ff', ms: 260 },
@@ -3518,9 +3582,10 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'flashColor', color: '#ffd089', ms: 300 },
     { op: 'musicCrossfade', key: 'gleam-emotional', ms: 1200 },
     { op: 'tint', color: '#9fd4ff', alpha: 0, ms: 1200 },
-    { op: 'narrate', text: 'Eight stars. The Skyweave Crown closes overhead, quiet as snowfall — and far away at the centre of the world, the Penumbra PARTS: the four cardinal roads opening inward at the Crossroads, toward the mountain, toward him.' },
+    { op: 'narrate', text: 'Eight stars. The Skyweave Crown closes overhead, quiet as snowfall — and far away at the centre of the world, the Penumbra parts: the four cardinal roads opening inward at the Crossroads, toward the mountain, toward him.' },
     { op: 'narrate', if_flag: 'flag:wren_nightreach_battled', text: 'At the hall door, Wren is leaning on the frame with their lamp held up among all the others, grinning like the coast road. They do not come in. They do not need to. Same road, different lamps — all the way to the end of the sky.' },
-    { op: 'say', speaker: 'NESSA COLE', text: 'The Lunar Gleam, Wayfarer — and the whole Crown standing with it. I have watched this sky my entire life, and tonight is the first time it has ever watched back.' },
+    { op: 'face', actor: 'nessa_ready', facing: 'down' },
+    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'reverent', text: 'The Lunar Gleam, Wayfarer — and the whole Crown standing with it. I have watched this sky my entire life, and tonight is the first time it has ever watched back.' },
     { op: 'say', speaker: 'NESSA COLE', text: 'Take the Starreach. Starlight, drawn down to stand on — a stride across the short voids of pure dark. The Penumbra\'s last crossings will hold under you now... all the way up the Spire\'s roads.' },
     { op: 'say', speaker: 'NESSA COLE', text: 'Stand the vigil\'s end with us before you go down to the Crossroads. Eight lamps, eight stars, one night with nothing missing. Even the dark deserves to see what it is being asked to give back.' },
   ],
@@ -5117,7 +5182,9 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', unless_flag: 'flag:dusk_begins', speaker: 'TAMSIN', text: "It didn't make a sound. That's the bit I keep thinking about. Just light, then the trees were burning, then it was dark again." },
     { op: 'say', unless_flag: 'flag:dusk_begins', speaker: 'TAMSIN', text: "Grandad says stars don't fall. Grandad also says he isn't crying. Grandad says a lot of things." },
     { op: 'say', if_flag: 'flag:dusk_begins', unless_flag: 'gleam:ember', speaker: 'TAMSIN', text: "Did you see it go? Out over the sea. Another one. Mum says we're keeping the lamps lit all night now, every night, just in case." },
-    { op: 'say', if_flag: 'gleam:ember', unless_flag: 'flag:dawn', speaker: 'TAMSIN', text: "There's shoots coming up in the burn! I'm not allowed to water them. I've been watering them." },
+    { op: 'say', if_flag: 'gleam:ember', unless_flag: 'flag:great_null_known', speaker: 'TAMSIN', text: "There's shoots coming up in the burn! I'm not allowed to water them. I've been watering them." },
+    { op: 'say', if_flag: 'flag:great_null_known', unless_flag: 'gleam:lunar', speaker: 'TAMSIN', text: 'The stone in the burn went cold again. Just for a minute. Grandad sat down.' },
+    { op: 'say', if_flag: 'gleam:lunar', unless_flag: 'flag:dawn', speaker: 'TAMSIN', text: "There's shoots coming up in the burn! I'm not allowed to water them. I've been watering them." },
     { op: 'say', if_flag: 'flag:dawn', speaker: 'TAMSIN', text: "The stone woke up! It's all bright now, like it remembered. Grandad says we're keeping it. I say we're keeping it AND naming it." },
   ],
 
@@ -5127,7 +5194,9 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', unless_flag: 'flag:dusk_begins', speaker: 'NEIGHBOUR', text: "The night the star came down on Wendel's trees — did you hear it? No. Nor did anyone. That's what's wrong with it." },
     { op: 'say', unless_flag: 'flag:dusk_begins', speaker: 'NEIGHBOUR', text: "I've started leaving a lamp in the window all night. Can't tell you why. It just feels like manners." },
     { op: 'say', if_flag: 'flag:dusk_begins', unless_flag: 'gleam:ember', speaker: 'NEIGHBOUR', text: 'Another went out over the sea, they say. The whole street keeps lamps in the windows now. We look like a festival that forgot to start.' },
-    { op: 'say', if_flag: 'gleam:ember', unless_flag: 'flag:dawn', speaker: 'NEIGHBOUR', text: 'The Ember, back over the beacon! I blew my window lamp out last night for the first time in a month. And I slept.' },
+    { op: 'say', if_flag: 'gleam:ember', unless_flag: 'flag:great_null_known', speaker: 'NEIGHBOUR', text: 'The Ember, back over the beacon! I blew my window lamp out last night for the first time in a month. And I slept.' },
+    { op: 'say', if_flag: 'flag:great_null_known', unless_flag: 'gleam:lunar', speaker: 'NEIGHBOUR', text: "Window lamps back in every house. Don't tell me why. I know why." },
+    { op: 'say', if_flag: 'gleam:lunar', unless_flag: 'flag:dawn', speaker: 'NEIGHBOUR', text: 'The Ember, steady over the beacon again. I blew my window lamp out last night. And I slept.' },
     { op: 'say', if_flag: 'flag:dawn', speaker: 'NEIGHBOUR', text: "Daylight on the square. I keep looking up to check the sky's still there. It always is. I'll stop checking eventually." },
   ],
 
@@ -5172,6 +5241,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', unless_flag: 'flag:great_null_known', speaker: 'LEDGER-KEEPER', text: "Every light that's gone out since the Dusk began, I've written down. Two hundred and six. Somebody ought to remember them by name, and the sky's not doing it." },
     { op: 'say', unless_flag: 'flag:great_null_known', speaker: 'LEDGER-KEEPER', text: 'Eleven years, one column. It only ever goes the one way.' },
     { op: 'say', if_flag: 'flag:great_null_known', unless_flag: 'gleam:lunar', speaker: 'LEDGER-KEEPER', text: "Nessa says they mean to put out the Keystar. I've ruled a line at the bottom of the page for it. I can't make my hand write anything on it." },
+    { op: 'say', if_flag: 'flag:great_null_known', unless_flag: 'gleam:lunar', speaker: 'LEDGER-KEEPER', text: "There's a mark I've started making beside some of the names. FELL. Thirty-one of them, so far. All since the Dusk. All nearer the mountain." },
     { op: 'say', if_flag: 'gleam:lunar', unless_flag: 'flag:dawn', speaker: 'LEDGER-KEEPER', text: "Tonight I opened a second column. RELIT. I had to sit down to do it. Look at that: eight lines, all yours." },
     { op: 'say', if_flag: 'flag:dawn', speaker: 'LEDGER-KEEPER', text: "I've stopped counting the dark ones. I'm counting mornings instead. So far: a few. Lovely number." },
   ],
