@@ -11,7 +11,7 @@
  */
 import Phaser from 'phaser';
 import { loadAudio } from './loadAudio';
-import { sfxMasterGain } from '@game/ui/preferences';
+import { sfxMasterGain, musicMasterGain } from '@game/ui/preferences';
 import sfxManifest from '../../../../public/assets/audio/sfx/sfx.manifest.json';
 
 const SFX_DIR = 'assets/audio/sfx/';
@@ -29,6 +29,8 @@ const DEDUPE_MS = 90;
 const CUE_DEDUPE_MS: Record<string, number> = { 'ui-text-blip': 70 };
 const CUE_TRIM: Record<string, number> = { 'ui-text-blip': 0.45 };
 const lastPlayed = new Map<string, number>();
+/** The score's base level (MusicDirector's default `baseVolume`) for `asMusic` jingles. */
+const MUSIC_LEVEL = 0.45;
 
 /** All rendered SFX stems (filenames without extension). */
 const STEMS = new Set<string>((sfxManifest as { stems: string[] }).stems);
@@ -85,8 +87,8 @@ export class Sfx {
    * lullaby over the black screen. `maxMs` caps the wait in case the backend never
    * reports completion.
    */
-  async playToEnd(key: string, maxMs = 6000): Promise<void> {
-    const sound = await this.start(key);
+  async playToEnd(key: string, maxMs = 6000, opts: { asMusic?: boolean } = {}): Promise<void> {
+    const sound = await this.start(key, opts.asMusic);
     if (!sound) return;
     await new Promise<void>((resolve) => {
       let done = false;
@@ -102,8 +104,11 @@ export class Sfx {
   }
 
   /** Resolve, load and start one effect; the playing sound, or null if silent. */
-  private async start(key: string): Promise<Phaser.Sound.BaseSound | null> {
-    const gain = sfxMasterGain();
+  private async start(key: string, asMusic = false): Promise<Phaser.Sound.BaseSound | null> {
+    // A musical jingle that stands in for the score (the rest lullaby) rides the
+    // MUSIC setting at the score's own level, not the effects trim — so it's never
+    // louder or quieter than the music it replaces (owner's call, 2026-10).
+    const gain = asMusic ? musicMasterGain() : sfxMasterGain();
     if (gain <= 0) return null; // OFF: true silence, skip the one-shot entirely
     const now = Date.now();
     // Dedupe on the BASE cue, so play('x') and playVariant('x', …) count as one.
@@ -116,7 +121,8 @@ export class Sfx {
     if (!ok) return null;
     // add + play (not sound.play) so the caller can wait on this instance; Phaser
     // frees it on completion.
-    const sound = this.scene.sound.add(stem, { volume: this.volume * gain * (CUE_TRIM[base] ?? 1) });
+    const level = asMusic ? MUSIC_LEVEL : this.volume * (CUE_TRIM[base] ?? 1);
+    const sound = this.scene.sound.add(stem, { volume: level * gain });
     sound.once(Phaser.Sound.Events.COMPLETE, () => sound.destroy());
     sound.play();
     return sound;

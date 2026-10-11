@@ -502,7 +502,7 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   mid-story forced heal you don't want to wake at. Thread `respawn` through any new save-load path
   (`WorldSceneData` → `create()`; it's already in `continueData`/import-reload/`buildSnapshot`).
 - **A rest `heal` op SLEEPS (2026-10):** the runner fades music + screen to black, plays the
-  `world-rest-b` goodnight lullaby, heals, then `resumeMapMusic` + fade in — so rest scripts carry
+  `world-rest-b` goodnight lullaby (at the MUSIC level/setting — `Sfx.playToEnd(…, {asMusic})`), heals, then `resumeMapMusic` + fade in — so rest scripts carry
   NO fade/wait steps of their own (don't add them back: it double-fades). `rest:false` (mid-story
   kindness) or `sleep:false` (a rest point that isn't a bed: the summit Round, the inn ceremony) keep
   the quick `world-heal` chime. Key items get `world-keyitem`, wicks `world-wicks` (sfx-cookbook §6B).

@@ -465,7 +465,7 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       if (step.sleep ?? rest) {
         await Promise.all([ctx.music.fadeToSilence(SLEEP_FADE_MS), fadeOut(scene, SLEEP_FADE_MS)]);
         ctx.onHealParty?.(rest);
-        await Promise.all([ctx.sfx.playToEnd(REST_JINGLE), delay(scene, SLEEP_MIN_HOLD_MS)]);
+        await Promise.all([ctx.sfx.playToEnd(REST_JINGLE, 6000, { asMusic: true }), delay(scene, SLEEP_MIN_HOLD_MS)]);
         await delay(scene, SLEEP_WAKE_BEAT_MS);
         ctx.resumeMapMusic?.();
         await fadeIn(scene, SLEEP_FADE_MS);
