@@ -634,7 +634,7 @@ export const DIALOGUE: DialogueRegistry = {
   // --- Saltreach Fen I (the marsh route) ----------------------------------------
   'npc.fen_warden': [
     { speaker: 'FEN-WARDEN', text: "Mind the planks after dark — the fen's friendly, but it doesn't like to be hurried." },
-    { speaker: 'FEN-WARDEN', text: 'Odd thing, though. The eastern woods have gone quiet of late. Quiet like held breath, not like sleep.' },
+    { speaker: 'FEN-WARDEN', text: 'Odd thing, though. The eastern woods have gone quiet of late. Quiet like a room somebody has just left, not like sleep.' },
   ],
   'npc.fen_wader_a_after': [
     { speaker: 'MARIGOLD', text: 'The reeds north of here run right over the causeway — no way round but through. Mind your step and your lamp.' },
@@ -684,7 +684,7 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'The near lantern-reed burns amber and steady, a small kept light over the black water.', style: 'narrate' },
   ],
   'npc.reed_lit_b': [
-    { text: 'The mid-water reed glows warm. Below it, quick silver shapes circle the light like a held breath let out.', style: 'narrate' },
+    { text: 'The mid-water reed glows warm. Below it, quick silver shapes circle the light like a sigh let out.', style: 'narrate' },
   ],
   'npc.reed_dark_third': [
     { text: 'The far reed stands dark. Your flame would not take, and you somehow know it will not take twice.', style: 'narrate' },
@@ -948,16 +948,16 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // Otho's giver stages (his hall) — the Descent Vigil loop's grammar
   'npc.otho_waiting': [
-    { speaker: 'OTHO GRIST', text: 'Lamp still up here, is it? The vigil-lamp is THREE galleries down, still burning. Bring it up. Then we talk.' },
+    { speaker: 'OTHO GRIST', portrait: 'otho', expr: 'neutral', text: 'Lamp still up here, is it? The vigil-lamp is THREE galleries down, still burning. Bring it up. Then we talk.' },
   ],
   'npc.otho_ready': [
-    { speaker: 'OTHO GRIST', text: 'You carried it up still lit. Through all that dark. ...Then we are ready, you and I. Step to the aisle when your kin are.' },
+    { speaker: 'OTHO GRIST', portrait: 'otho', expr: 'warm', text: 'You carried it up still lit. Through all that dark. ...Then we are ready, you and I. Step to the aisle when your kin are.' },
   ],
   'npc.otho_after': [
-    { speaker: 'OTHO GRIST', text: 'The Stone is yours, and the eastern crown with it. Galehigh waits up the deep and out the far side — keep your light steady, the wind up there is not.' },
+    { speaker: 'OTHO GRIST', portrait: 'otho', expr: 'warm', text: 'The Stone is yours, and the eastern crown with it. Galehigh waits up the deep and out the far side — keep your light steady, the wind up there is not.' },
   ],
   'npc.otho_not_ready': [
-    { speaker: 'OTHO GRIST', text: "No vigil-lamp, no bond-test. I don't hand a Gleam to a lamp I've not seen cross the dark. Down you go." },
+    { speaker: 'OTHO GRIST', portrait: 'otho', expr: 'grave', text: "No vigil-lamp, no bond-test. I don't hand a Gleam to a lamp I've not seen cross the dark. Down you go." },
   ],
   // E3 The Foreman's Ledger
   'npc.ledger_waiting': [

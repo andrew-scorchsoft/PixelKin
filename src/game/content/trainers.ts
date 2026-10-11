@@ -1278,12 +1278,12 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
     { speaker: 'SABLE QUILL', text: 'The Verdant Gleam is yours — the moss vouched for you, and the moss has never once been wrong about a person.' },
   ],
   'trainer.lampwarden_cinderhead.intro': [
-    { speaker: 'OTHO GRIST', text: 'No rush in my kin and no rush in me. We are the mountain, Wayfarer. We OUTLAST.' },
-    { speaker: 'OTHO GRIST', text: 'Show me a light that does not gutter when the rock leans in. That is all a Gleam ever was.' },
+    { speaker: 'OTHO GRIST', portrait: 'otho', expr: 'neutral', text: 'No rush in my kin and no rush in me. We are the mountain, Wayfarer. We OUTLAST.' },
+    { speaker: 'OTHO GRIST', portrait: 'otho', expr: 'grave', text: 'Show me a light that does not gutter when the rock leans in. That is all a Gleam ever was.' },
   ],
   'trainer.lampwarden_cinderhead.defeat': [
-    { speaker: 'OTHO GRIST', text: 'Hah. You did not out-hit them. You out-LASTED them. ...That, I respect. That is the deep way.' },
-    { speaker: 'OTHO GRIST', text: 'A steady light. The Stone remembers it. Come — let the vigil see what you carried up.' },
+    { speaker: 'OTHO GRIST', portrait: 'otho', expr: 'proud', text: 'Hah. You did not out-hit them. You out-LASTED them. ...That, I respect. That is the deep way.' },
+    { speaker: 'OTHO GRIST', portrait: 'otho', expr: 'warm', text: 'A steady light. The Stone remembers it. Come — let the vigil see what you carried up.' },
   ],
   'trainer.gallery_miner_a.intro': [
     { speaker: 'DRUSE', text: 'Wick against wick, Wayfarer. Crew rule. You do not pass the gallery till you have weighed it.' },

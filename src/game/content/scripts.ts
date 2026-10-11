@@ -1592,12 +1592,19 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'tint', color: '#202430', alpha: 0.4, ms: 600 }, // the drained cold
     { op: 'cameraFocus', to: { tx: 17, ty: 8 }, ms: 900 },
     { op: 'narrate', text: 'At the heart of it a Fennlight lies curled in the dead moss, dim as a coal under ash. It is not hurt. It is not waking. Beside it stands a lantern built to hold nothing at all.' },
+    { op: 'face', actor: 'acolyte_a', facing: 'left' },
+    { op: 'emote', actor: 'acolyte_a', emote: 'alert' },
     { op: 'say', speaker: 'ACOLYTE', text: 'Oh — a Wayfarer. Please, tread soft. She is not hurt. She is RESTING.' },
+    { op: 'action', actor: 'acolyte_a', action: 'bow' },
     { op: 'say', speaker: 'ACOLYTE', text: 'Does the quiet not look gentle, after all that flickering? No more guttering. No more going out. Just... rest.' },
     { op: 'say', speaker: 'ACOLYTE', text: 'We are the Hollowing. Our Warden Còr teaches that the dark asks nothing of anyone. We only help the tired lights lie down.' },
+    { op: 'emote', actor: 'player', emote: 'question' },
     { op: 'cameraFocus', to: { tx: 20, ty: 7 }, ms: 800 },
+    { op: 'face', actor: 'cowled_figure', facing: 'left' },
+    { op: 'wait', ms: 700 },
     { op: 'sfx', key: 'world-star-gutter' },
     { op: 'narrate', text: 'At the chamber\'s far edge a cowled figure stands very still, watching you. It bows its head — sorrowing, almost kind — then turns, and is gone into the dark.' },
+    { op: 'face', actor: 'cowled_figure', facing: 'up' },
     { op: 'cameraReset', ms: 600 },
     { op: 'tint', color: '#202430', alpha: 0, ms: 900 },
     { op: 'narrate', text: 'The null-lantern waits beside the sleeping kin, holding its little piece of dark. Your vesperlamp leans toward it like a struck note.' },
@@ -1611,12 +1618,28 @@ export const SCRIPTS: ScriptRegistry = {
   'script.glowmoss_relight': [
     { op: 'cameraFocus', to: { tx: 18, ty: 8 }, ms: 700 },
     { op: 'narrate', text: 'The null-lantern stands cold at the chamber\'s heart. You raise your vesperlamp and touch flame to the hollow wick.' },
+    { op: 'face', actor: 'player', facing: 'up' },
+    { op: 'action', actor: 'player', action: 'raiseLamp' },
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'tint', color: '#9fe8b8', alpha: 0.3, ms: 600 }, // a small green-gold bloom
     { op: 'narrate', text: 'It takes — small, stubborn, certain. Colour climbs back through the moss-beds like water finding old roots.' },
     { op: 'tint', color: '#9fe8b8', alpha: 0, ms: 900 },
+    { op: 'emote', actor: 'sleeping_fennlight', emote: 'alert' },
     { op: 'narrate', text: 'In the green hush, the Fennlight stirs — blinks — and lifts into the air, trailing light like pollen.' },
+    // E-1 (story panel): the law made VISIBLE — waking the kin brings its star back.
+    { op: 'cameraFocus', to: { tx: 19, ty: 5 }, ms: 900 },
+    { op: 'wait', ms: 500 },
+    { op: 'flashColor', color: '#dfe6ff', ms: 500 },
+    { op: 'setFlag', flag: 'flag:glowmoss_star_back' }, // the root-gap star object appears
+    { op: 'sfx', key: 'world-gleam-a' },
+    { op: 'narrate', text: 'Far above, through a split in the roots where the wood lets in the night, a small star you had not noticed was missing comes back — faint, then certain.' },
+    { op: 'cameraReset', ms: 600 },
+    { op: 'face', actor: 'acolyte_a', facing: 'down' },
+    { op: 'emote', actor: 'acolyte_b', emote: 'ellipsis' },
     { op: 'narrate', text: 'The acolytes gather their grey bundles without a word. The last of them pauses at the passage mouth, bows to the waking glow, and follows the dark out.' },
+    { op: 'action', actor: 'acolyte_a', action: 'bow' },
+    { op: 'wait', ms: 400 },
+    { op: 'narrate', text: 'Something drops from the last bundle as she goes: a dark stone the size of a plum, cold, faintly blue in its cracks. She does not come back for it.' },
     { op: 'setFlag', flag: 'flag:met_hollowing' },
     { op: 'cameraReset', ms: 600 },
   ],
@@ -1860,9 +1883,9 @@ export const SCRIPTS: ScriptRegistry = {
 
   // The bloom-warden sight trainers on the fen-wood lane (keeper class).
   'script.bloom_warden_a': [
-    { op: 'say', speaker: 'IVY', text: 'Hold the lane! Past me are the fringe beds — festival or no festival, every lamp that walks them gets weighed.' },
+    { op: 'say', speaker: 'IVY', text: 'Hold the lane! Past me are the fringe beds — festival or no festival, every lamp that walks them gets its wick trimmed.' },
     { op: 'battle', trainer: 'bloom_warden_a' },
-    { op: 'say', speaker: 'IVY', text: 'Weighed and welcome. The dry fen-wood is stacked under the far ferns — mind where the moss is sleeping.' },
+    { op: 'say', speaker: 'IVY', text: 'Trimmed and welcome. The dry fen-wood is stacked under the far ferns — mind where the moss is sleeping.' },
     { op: 'setFlag', flag: 'flag:bloom_warden_a_beaten' },
   ],
   'script.bloom_warden_b': [
@@ -1881,12 +1904,18 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'SABLE QUILL', portrait: 'sable', expr: 'neutral', text: 'So I won\'t make a speech either. The moss vouches for you. Now show me it\'s right.' },
     { op: 'battle', trainer: 'lampwarden_lowleaf' },
     { op: 'musicFade', ms: 500 },
+    { op: 'wait', ms: 600 },
+    { op: 'face', actor: 'sable', facing: 'up' },
     { op: 'tint', color: '#9fe8b8', alpha: 0.36, ms: 600 },
     { op: 'narrate', text: 'Sable opens the hall doors wide. Outside, the Elder Bed answers her hall-moss glow for glow — and overhead, threading green-gold between the stars, the VERDANT remembers how to shine.' },
+    { op: 'action', actor: 'player', action: 'raiseLamp' },
     { op: 'gleam', element: 'verdant' },
     { op: 'musicCrossfade', key: 'gleam-emotional', ms: 900 },
     { op: 'tint', color: '#9fe8b8', alpha: 0, ms: 900 },
+    { op: 'face', actor: 'sable', facing: 'down' },
     { op: 'say', speaker: 'SABLE QUILL', portrait: 'sable', expr: 'warm', text: 'The moss doesn\'t shine FOR anyone. It just... keeps a little light where it can. Be like the moss. Here — this\'ll let you walk where it\'s dark.' },
+    { op: 'face', actor: 'sable', facing: 'left' },
+    { op: 'wait', ms: 500 },
     { op: 'say', speaker: 'SABLE QUILL', portrait: 'sable', expr: 'shy', text: 'The Glimmerstep. The deep wood north of town has been shut to me my whole life — too dark past the first bough. Your lamp won\'t mind it now. ...Tell me what grows in there. Please.' },
   ],
 
@@ -2003,9 +2032,12 @@ export const SCRIPTS: ScriptRegistry = {
   // Otho's hook — the vigil-lamp errand (the loop's collinear descent; sends the
   // player through the 24-27 galleries before the wall, the §4 gap-closer).
   'script.otho_quest': [
-    { op: 'say', speaker: 'OTHO GRIST', text: "You'll be the Wayfarer the vigil's been muttering about. Come for a Gleam, have you." },
-    { op: 'say', speaker: 'OTHO GRIST', text: "Down here, light's not GIVEN. It's kept. My crew left the vigil-lamp at the third gallery when the dark came up — still lit, if they did their job." },
-    { op: 'say', speaker: 'OTHO GRIST', text: "Bring it back up STILL BURNING. Then I'll know your light holds when the rock leans in, and we'll talk about a Gleam. Not before." },
+    { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'neutral', text: "You'll be the Wayfarer the vigil's been muttering about. Come for a Gleam, have you." },
+    { op: 'face', actor: 'otho_quest', facing: 'up' },
+    { op: 'wait', ms: 600 },
+    { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'grave', text: "Down here, light's not GIVEN. It's kept. My crew left the vigil-lamp at the third gallery when the dark came up — still lit, if they did their job." },
+    { op: 'face', actor: 'otho_quest', facing: 'down' },
+    { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'neutral', text: "Bring it back up STILL BURNING. Then I'll know your light holds when the rock leans in, and we'll talk about a Gleam. Not before." },
     { op: 'setFlag', flag: 'flag:q_east_vigil' },
   ],
 
@@ -2014,7 +2046,9 @@ export const SCRIPTS: ScriptRegistry = {
   'script.take_vigil_lamp': [
     { op: 'letterbox', on: true, ms: 320 },
     { op: 'narrate', text: 'The vigil-lamp sits where the crew left it — a small steady flame in a cage of old brass, burning yet, after all this dark. Somebody kept it fed in their heart, and so it kept.' },
+    { op: 'action', actor: 'player', action: 'kneel', holdMs: 700 },
     { op: 'silence', ms: 900 },
+    { op: 'action', actor: 'player', action: 'raiseLamp' },
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'tint', color: '#ffd089', alpha: 0.30, ms: 700 },
     { op: 'narrate', text: 'You lift it carefully, cupping the flame. It does not gutter. As you turn for the long climb, the gallery lamps you passed seem to lean toward it — waiting their turn.' },
@@ -2029,19 +2063,24 @@ export const SCRIPTS: ScriptRegistry = {
   'script.lumenary_cinderhead': [
     { op: 'face', actor: 'player', facing: 'up' },
     { op: 'face', actor: 'otho', facing: 'down' },
-    { op: 'say', speaker: 'OTHO GRIST', text: "You carried it up still burning. Through the deep galleries, in the dark, without letting it go out." },
-    { op: 'say', speaker: 'OTHO GRIST', text: "Anyone can LIGHT a lamp. Carrying one through the dark without dropping it — that's the trick of the whole thing. Now show me your kin can do it too." },
+    { op: 'wait', ms: 500 },
+    { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'grave', text: "You carried it up still burning. Through the deep galleries, in the dark, without letting it go out." },
+    { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'neutral', text: "Anyone can LIGHT a lamp. Carrying one through the dark without dropping it — that's the trick of the whole thing. Now show me your kin can do it too." },
     { op: 'battle', trainer: 'lampwarden_cinderhead' },
     { op: 'musicFade', ms: 600 },
     { op: 'silence', ms: 1100 },
+    { op: 'face', actor: 'otho', facing: 'up' },
+    { op: 'wait', ms: 700 },
     { op: 'narrate', text: 'Otho says nothing for a long moment. Then he lifts the vigil-lamp from its cage — and one by one, all through the town behind him, the lowered lamps begin to rise.' },
+    { op: 'action', actor: 'player', action: 'raiseLamp' },
     { op: 'tint', color: '#caa46a', alpha: 0.34, ms: 800 },
-    { op: 'narrate', text: 'And overhead, through a fault in the cavern roof no miner ever marked, the STONE constellation steadies in the dark — patient, unhurried, the way the mountain is.' },
+    { op: 'narrate', text: 'And overhead, through a fault in the cavern roof no miner ever marked, the STONE constellation steadies in the dark and remembers how to shine — patient, unhurried, the way the mountain is.' },
     { op: 'gleam', element: 'stone' },
     { op: 'musicCrossfade', key: 'gleam-emotional', ms: 1000 },
     { op: 'tint', color: '#caa46a', alpha: 0, ms: 900 },
-    { op: 'say', speaker: 'OTHO GRIST', text: "The Stone Gleam. Four constellations relit — and the southern and eastern crowns both yours now. The mountain remembers a steady light." },
-    { op: 'say', speaker: 'OTHO GRIST', text: "Galehigh's up the deep galleries and out the far side. Cold wind, high ledges — a different kind of dark. You'll do. Mind the lamp." },
+    { op: 'face', actor: 'otho', facing: 'down' },
+    { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'proud', text: "The Stone Gleam. Four constellations relit — and the southern and eastern crowns both yours now. The mountain remembers a steady light." },
+    { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'warm', text: "Galehigh's up the deep galleries and out the far side. Cold wind, high ledges — a different kind of dark. You'll do. Mind the lamp." },
   ],
 
   // The vigil-fire rest (the town's full heal — the standing per-region kit).
@@ -2206,7 +2245,7 @@ export const SCRIPTS: ScriptRegistry = {
 
   // The two vigil-miner SIGHT trainers holding the Descent Vigil leg (keeper class).
   'script.gallery_miner_a': [
-    { op: 'say', speaker: 'DRUSE', text: "Hold up. Nobody walks my gallery toward the vigil-lamp without weighing their wick against mine. Crew rule, old as the seam." },
+    { op: 'say', speaker: 'DRUSE', text: "Hold up. Nobody walks my gallery toward the vigil-lamp without sounding their wick against mine. Crew rule, old as the seam." },
     { op: 'battle', trainer: 'gallery_miner_a' },
     { op: 'say', speaker: 'DRUSE', text: "Steady light. Go on — the lamp's two chambers down, still burning if I know my crew." },
     { op: 'setFlag', flag: 'flag:gallery_miner_a_beaten' },
@@ -4427,7 +4466,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:q_post_letter_lowleaf' },
   ],
   'script.post_letter_cinderhead': [
-    { op: 'say', speaker: 'OTHO GRIST', text: 'Mail, up from the morning. The deep way\'s the same as ever — but the walk OUT ends in daylight now, and the crews keep finding reasons to make it.' },
+    { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'warm', text: 'Mail, up from the morning. The deep way\'s the same as ever — but the walk OUT ends in daylight now, and the crews keep finding reasons to make it.' },
     { op: 'narrate', text: 'Otho stamps the reply with the pit-seal — the eastern quadrant\'s thanks, kept.' },
     { op: 'giveItem', item: 'dawn_stamp', count: 1 },
     { op: 'setFlag', flag: 'flag:q_post_letter_cinderhead' },
