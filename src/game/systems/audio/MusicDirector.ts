@@ -39,6 +39,9 @@ const lastHeard = new Map<string, { pos: number; at: number }>();
 export interface PlayOptions {
   /** Pick the track up where it was last left (if recently), instead of from its top. */
   resume?: boolean;
+  /** Always the classic chip render, whatever Settings → Soundtrack says (the attract
+   *  duel: the owner prefers the chip take there; the battle itself keeps the remaster). */
+  classic?: boolean;
 }
 
 /** What to actually load for a requested (classic) key + url. */
@@ -138,7 +141,7 @@ export class MusicDirector {
   private current?: Bed;
   private currentKey?: string;
   /** The classic key/url last asked for — re-resolved when the style flips. */
-  private requested?: { key: string; url: string };
+  private requested?: { key: string; url: string; classic?: boolean };
   private readonly unsubscribe: () => void;
   private readonly unsubscribeStyle: () => void;
 
@@ -152,7 +155,7 @@ export class MusicDirector {
     // Soundtrack style flipped in Settings: swap the current bed to the other score.
     this.unsubscribeStyle = onMusicStyleChange(() => {
       const r = this.requested;
-      if (r && this.current) void this.crossfade(r.key, r.url, 500);
+      if (r && this.current && !r.classic) void this.crossfade(r.key, r.url, 500);
     });
     // Tear the subscriptions down with the scene so we don't leak across restarts.
     const off = (): void => {
@@ -178,16 +181,16 @@ export class MusicDirector {
   }
 
   /** Map a classic track (`assets/audio/music/<id>.mp3`) to the selected score. */
-  private resolve(key: string, url: string): Resolved {
+  private resolve(key: string, url: string, classic = false): Resolved {
     const id = url.split('/').pop()?.replace(/\.mp3$/i, '') ?? key;
-    const r = getMusicStyle() === 'remastered' ? REMASTERED[id] : undefined;
+    const r = getMusicStyle() === 'remastered' && !classic ? REMASTERED[id] : undefined;
     if (!r) return { key, url, loopStart: 0 };
     return { key: `${key}@remaster`, url: `${REMASTER_DIR}${id}.mp3`, loopStart: r.loop_start ?? 0 };
   }
 
   /** Load the resolved track, falling back to the classic file if a remaster is missing. */
-  private async load(key: string, url: string): Promise<Resolved | undefined> {
-    const r = this.resolve(key, url);
+  private async load(key: string, url: string, classic = false): Promise<Resolved | undefined> {
+    const r = this.resolve(key, url, classic);
     if (await loadAudio(this.scene, r.key, r.url)) return r;
     if (r.key !== key && (await loadAudio(this.scene, key, url))) return { key, url, loopStart: 0 };
     return undefined;
@@ -195,17 +198,17 @@ export class MusicDirector {
 
   /** Play a loop by key (loading `url` if needed). No-op if already on this key. */
   async play(key: string, url: string, opts: PlayOptions = {}): Promise<void> {
-    const want = this.resolve(key, url).key;
+    const want = this.resolve(key, url, opts.classic).key;
     if (this.currentKey === want && this.current?.isPlaying) return;
-    this.requested = { key, url };
-    const r = await this.load(key, url);
+    this.requested = { key, url, classic: opts.classic };
+    const r = await this.load(key, url, opts.classic);
     if (!r) return;
     this.stop();
     const from = opts.resume ? this.resumePoint(r.key) : 0;
     // A resume lands mid-phrase: ease it in rather than clicking on.
     this.current = new Bed(this.scene, r.key, r.loopStart, from > 0 ? 0 : this.volume, from);
     this.currentKey = r.key;
-    this.requested = { key, url };
+    this.requested = { key, url, classic: opts.classic };
     if (from > 0) void this.tweenVolume(this.current, this.volume, RESUME_FADE_MS);
   }
 

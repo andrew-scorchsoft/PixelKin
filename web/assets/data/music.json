@@ -560,7 +560,7 @@
     {
      "id": "battle-main-dusk-duel",
      "title": "Battle — wild kin & trainers",
-     "where": "Every wild kin battle (the default battle bed) and the attract-mode trailer duel",
+     "where": "Every wild kin battle (the default battle bed); the attract-mode trailer duel keeps the classic chip render",
      "mood": "The fight you hear a thousand times — urgent, catchy and winnable: a minor-key chase that bursts into a heroic major lift.",
      "classic": "play/assets/audio/music/battle-main-dusk-duel.mp3",
      "remaster": "play/assets/audio/music/remaster/battle-main-dusk-duel.mp3",
