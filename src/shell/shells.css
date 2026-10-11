@@ -537,6 +537,21 @@ body.pk-shell-overlay .pk-controls {
 body.pk-controls-unavailable .pk-controls-help {
   bottom: calc(max(env(safe-area-inset-bottom), 14px) + 40px);
 }
+/* Portrait DEVICE shell: the bottom of the deck is the thumbs' zone (d-pad, A/B,
+   START), so a help link there gets hit by accident (playtest, 2026-10). Park it at
+   the TOP-RIGHT of the deck instead — just under the screen, in the dead space no
+   thumb reaches. The screen's bottom edge mirrors the #game-root portrait sizing. */
+@media (orientation: portrait) {
+  body.pk-shell-device:not(.pk-controls-unavailable) .pk-controls-help {
+    --pk-top: max(env(safe-area-inset-top), 8px);
+    --pk-bottom: clamp(calc(108px * var(--pk-cs) + 36px), 34vh, 320px);
+    top: calc(var(--pk-top) + min(100vw, calc(100dvh - var(--pk-top) - var(--pk-bottom)) * 3 / 2) * 2 / 3 + 30px);
+    bottom: auto;
+    left: auto;
+    right: max(env(safe-area-inset-right), 12px);
+    transform: none;
+  }
+}
 
 /* The explanatory overlay (hidden until .pk-open). Dim backdrop + centred panel. */
 .pk-help-overlay {
