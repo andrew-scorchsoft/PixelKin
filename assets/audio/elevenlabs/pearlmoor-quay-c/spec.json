@@ -15,7 +15,7 @@
   "lively accordion-like pulse-wave lead with quick grace-note runs",
   "busy bell-buoy chimes and bright sparkle on phrase ends",
   "bouncy oom-pah-pah waltz bass",
-  "light tambourine on beats two and three, brush on the downbeat",
+  "tambourine and brushed snare on the waltz offbeats, a soft bass drum on each downbeat only",
   "seaside festival dance, celebratory, playful and a little cheeky",
   "strong singable melody",
   "authentic 16-bit game music sound",
@@ -23,7 +23,9 @@
  ],
  "negative_styles": [
   "vocals",
-  "modern electronic dance production",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
   "drum and bass",
   "heavy sub bass",
   "electric guitar",
@@ -80,5 +82,5 @@
    ]
   }
  ],
- "_note": "2026-10 retro + tempo pass: motif dropped (it pinned the take to ~90 BPM); era-first anchor, retro kit/bass; opening shape chosen per scene."
+ "_note": "2026-10 retro + tempo pass: motif dropped (it pinned the take to ~90 BPM); era-first anchor, retro kit/bass; opening shape chosen per scene. | 2026-10 EDM pass: 'kick on a brisk beat' gave a four-on-the-floor + pumping EDM feel (edm_check.py); percussion now retro (snare backbeat, toms, timpani, tambourine, brushes)."
 }

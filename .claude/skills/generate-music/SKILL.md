@@ -119,6 +119,14 @@ by cross-correlation, never trust plan milliseconds for a splice.
   drum kit: dry snare and kick on a steady rock/march beat, crash cymbals on the
   downbeats", "plucked sampled bass in octaves". `--check-spec` rejects modern-genre
   cue words (slap, breakbeat, four-on-the-floor, sidechain, 808, sub-bass, trap…).
+- **"Kick" is the EDM trap word.** "sampled snare and kick on a brisk beat" gave a
+  four-on-the-floor kick + pumping that the owner heard as EDM ("not enough like retro
+  music") on five cues. Retro game percussion = snare backbeat, tom fills, timpani,
+  tambourine, brushes, march snare — at most "a light kick on beats one and three" or
+  "a soft bass drum on each downbeat". Put "EDM", "four-on-the-floor kick", "sidechain
+  pumping" in `negative_styles`. `tools/audio/edm_check.py` scores kick regularity,
+  beat-locked pumping, hi-hat rate and sub-bass — ADVISORY only (a waltz's oom-pah reads
+  as "pumping"), so listen before re-rolling on its say-so.
 - **Retro instruments that read as the era:** square/pulse-wave leads, sampled brass
   stabs, sampled strings and choir pads, pipe organ, music box, celesta and glass
   bells, harp arpeggios, timpani, plucked sampled bass, a dry sampled kit.

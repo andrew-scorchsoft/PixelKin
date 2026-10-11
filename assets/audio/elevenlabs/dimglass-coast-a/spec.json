@@ -15,7 +15,7 @@
   "plucked harp arpeggios like chiming buoys",
   "warm string pad",
   "bouncy plucked sampled bass rocking root and fifth",
-  "light sampled 16-bit snare brushes and soft kick on a walking beat",
+  "light brushed snare on two and four with a soft tambourine shimmer",
   "adventurous walking theme for the first route of a journey",
   "melody built on the hometown tune's rising three-note lift, now springing forward",
   "strong singable melody",
@@ -24,7 +24,9 @@
  ],
  "negative_styles": [
   "vocals",
-  "modern electronic dance production",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
   "drum and bass",
   "heavy sub bass",
   "electric guitar",
@@ -82,5 +84,5 @@
    ]
   }
  ],
- "_note": "2026-10 retro + tempo pass: motif dropped (it pinned the take to ~90 BPM); era-first anchor, retro kit/bass; opening shape chosen per scene."
+ "_note": "2026-10 retro + tempo pass: motif dropped (it pinned the take to ~90 BPM); era-first anchor, retro kit/bass; opening shape chosen per scene. | 2026-10 EDM pass: 'kick on a brisk beat' gave a four-on-the-floor + pumping EDM feel (edm_check.py); percussion now retro (snare backbeat, toms, timpani, tambourine, brushes)."
 }

@@ -1,7 +1,7 @@
 {
  "chunks": [
   {
-   "song_id": "7v6TVCeuVb0aeFvDDbM3",
+   "song_id": "LFuGuOEs4sg0R8OlTHfN",
    "range": {
     "start_ms": 42668,
     "end_ms": 62668
@@ -19,7 +19,7 @@
     "bright staccato pulse-wave lead that springs up on the downbeat and skips back down",
     "fast flickering broken-triad arpeggio shimmering above like a kite tail",
     "plucked sampled bass walking in steady eighths",
-    "sampled 16-bit snare and kick on a brisk skipping beat with a light shaker",
+    "skipping sampled snare and tambourine with timpani accents on the gusts",
     "white-noise wind gust swells that rise and cut every four bars",
     "high-altitude cliff-town overworld theme, wind and kites at sunset",
     "strong singable melody",
@@ -38,7 +38,7 @@
    "context_adherence": "high"
   },
   {
-   "song_id": "7v6TVCeuVb0aeFvDDbM3",
+   "song_id": "LFuGuOEs4sg0R8OlTHfN",
    "range": {
     "start_ms": 6957,
     "end_ms": 16957

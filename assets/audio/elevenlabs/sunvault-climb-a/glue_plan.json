@@ -1,10 +1,10 @@
 {
  "chunks": [
   {
-   "song_id": "fN8JfYK15YwvrcSb7byb",
+   "song_id": "R1DxaWCFC3MIOHmkcH4u",
    "range": {
-    "start_ms": 56500,
-    "end_ms": 76500
+    "start_ms": 57244,
+    "end_ms": 77244
    }
   },
   {
@@ -19,7 +19,7 @@
     "fast shimmering harp arpeggios rolling upward",
     "warm string pad",
     "purposeful walking plucked sampled bass",
-    "sampled 16-bit snare and kick on a brisk walking beat",
+    "brushed sampled snare and tambourine walking pattern with timpani on each climb",
     "warm, hopeful, climbing adventure route theme",
     "strong singable melody",
     "authentic 16-bit game music sound",
@@ -37,7 +37,7 @@
    "context_adherence": "high"
   },
   {
-   "song_id": "fN8JfYK15YwvrcSb7byb",
+   "song_id": "R1DxaWCFC3MIOHmkcH4u",
    "range": {
     "start_ms": 8571,
     "end_ms": 18571

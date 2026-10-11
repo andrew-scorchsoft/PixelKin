@@ -1,7 +1,7 @@
 {
  "chunks": [
   {
-   "song_id": "RW42iiTGCJfp91uOm8Su",
+   "song_id": "WIeZX72eXrSmUkewcah1",
    "range": {
     "start_ms": 31827,
     "end_ms": 51827
@@ -18,7 +18,7 @@
     "4/4",
     "cocky bouncy syncopated pulse-wave lead melody",
     "plucked sampled electric bass walking in octaves",
-    "sampled 16-bit drum kit: dry snare and kick on a bouncy rock beat, crash cymbals on the downbeats",
+    "sampled snare backbeat and tom fills over a light kick on beats one and three, crash cymbal on each phrase start",
     "bright brass stabs",
     "quick twin-lead harmonies",
     "competitive rival battle theme, spirited and playful with a heart of friendship",
@@ -38,7 +38,7 @@
    "context_adherence": "high"
   },
   {
-   "song_id": "RW42iiTGCJfp91uOm8Su",
+   "song_id": "WIeZX72eXrSmUkewcah1",
    "range": {
     "start_ms": 4444,
     "end_ms": 14444

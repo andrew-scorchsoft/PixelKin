@@ -38,7 +38,7 @@
      "mood": "The road that teaches you to wander — brisk, salt-aired, optimistic; the hometown tune breaking into a stride.",
      "classic": "play/assets/audio/music/dimglass-coast-a.mp3",
      "remaster": "play/assets/audio/music/remaster/dimglass-coast-a.mp3",
-     "loop_start": 10.983
+     "loop_start": 9.218
     },
     {
      "id": "dimglass-coast-c",
@@ -74,7 +74,7 @@
      "mood": "Festival of the floating lights — the quay waltz in its happiest dress, quick, ornamented and playful.",
      "classic": "play/assets/audio/music/pearlmoor-quay-c.mp3",
      "remaster": "play/assets/audio/music/remaster/pearlmoor-quay-c.mp3",
-     "loop_start": 10.101
+     "loop_start": 10.194
     }
    ]
   },
@@ -174,7 +174,7 @@
      "mood": "Updraft — giddy, wind-buffeted propulsion on the cliff-farms, kites snapping overhead in the last fire-light before the climb.",
      "classic": "play/assets/audio/music/galehigh-terraces-a.mp3",
      "remaster": "play/assets/audio/music/remaster/galehigh-terraces-a.mp3",
-     "loop_start": 9.776
+     "loop_start": 7.755
     },
     {
      "id": "galehigh-terraces-b",
@@ -269,7 +269,7 @@
      "mood": "Vines to the Sky: warm, ascending, hopeful - every phrase climbs like the terraces; the sunniest route in the West.",
      "classic": "play/assets/audio/music/sunvault-climb-a.mp3",
      "remaster": "play/assets/audio/music/remaster/sunvault-climb-a.mp3",
-     "loop_start": 8.568
+     "loop_start": 8.963
     },
     {
      "id": "sunvault-climb-c",
@@ -442,7 +442,7 @@
      "mood": "The rival who grew up beside you — cocky, quick, competitive and fond: a grin across the field, and the friendship under it.",
      "classic": "play/assets/audio/music/battle-veil.mp3",
      "remaster": "play/assets/audio/music/remaster/battle-veil.mp3",
-     "loop_start": 5.921
+     "loop_start": 7.082
     }
    ]
   },

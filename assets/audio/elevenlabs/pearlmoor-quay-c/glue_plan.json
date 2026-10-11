@@ -1,10 +1,10 @@
 {
  "chunks": [
   {
-   "song_id": "mP55wTgNZ9QaFzFFVBnF",
+   "song_id": "TEavF9Vrkseg82xhJrUA",
    "range": {
-    "start_ms": 53500,
-    "end_ms": 73500
+    "start_ms": 54000,
+    "end_ms": 74000
    }
   },
   {
@@ -19,7 +19,7 @@
     "lively accordion-like pulse-wave lead with quick grace-note runs",
     "busy bell-buoy chimes and bright sparkle on phrase ends",
     "bouncy oom-pah-pah waltz bass",
-    "light tambourine on beats two and three, brush on the downbeat",
+    "tambourine and brushed snare on the waltz offbeats, a soft bass drum on each downbeat only",
     "seaside festival dance, celebratory, playful and a little cheeky",
     "strong singable melody",
     "authentic 16-bit game music sound",
@@ -37,7 +37,7 @@
    "context_adherence": "high"
   },
   {
-   "song_id": "mP55wTgNZ9QaFzFFVBnF",
+   "song_id": "TEavF9Vrkseg82xhJrUA",
    "range": {
     "start_ms": 6207,
     "end_ms": 16207

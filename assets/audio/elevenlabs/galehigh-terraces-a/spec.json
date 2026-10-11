@@ -15,7 +15,7 @@
   "bright staccato pulse-wave lead that springs up on the downbeat and skips back down",
   "fast flickering broken-triad arpeggio shimmering above like a kite tail",
   "plucked sampled bass walking in steady eighths",
-  "sampled 16-bit snare and kick on a brisk skipping beat with a light shaker",
+  "skipping sampled snare and tambourine with timpani accents on the gusts",
   "white-noise wind gust swells that rise and cut every four bars",
   "high-altitude cliff-town overworld theme, wind and kites at sunset",
   "strong singable melody",
@@ -24,7 +24,9 @@
  ],
  "negative_styles": [
   "vocals",
-  "modern electronic dance production",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
   "drum and bass",
   "heavy sub bass",
   "electric guitar",
@@ -87,5 +89,5 @@
    ]
   }
  ],
- "_note": "2026-10 retro + tempo pass: motif dropped (it pinned the take to ~90 BPM); era-first anchor, retro kit/bass; opening shape chosen per scene."
+ "_note": "2026-10 retro + tempo pass: motif dropped (it pinned the take to ~90 BPM); era-first anchor, retro kit/bass; opening shape chosen per scene. | 2026-10 EDM pass: 'kick on a brisk beat' gave a four-on-the-floor + pumping EDM feel (edm_check.py); percussion now retro (snare backbeat, toms, timpani, tambourine, brushes)."
 }

@@ -32,8 +32,8 @@
    "mood": "The fight in the deepening dark — cold, uneasy and solemn: an enemy who believes in the gentle night, sorrow under the steel."
   },
   "battle-veil": {
-   "loop_start": 5.921,
-   "duration": 57.287,
+   "loop_start": 7.082,
+   "duration": 58.488,
    "where": "Rival battles with Wren (Pale Vault, Nightreach, and the post-game rematch)",
    "mood": "The rival who grew up beside you — cocky, quick, competitive and fond: a grin across the field, and the friendship under it."
   },
@@ -80,8 +80,8 @@
    "mood": "The lullaby in full — the hometown theme finally meeting the sun, radiant, confident and a little teary."
   },
   "dimglass-coast-a": {
-   "loop_start": 10.983,
-   "duration": 79.02,
+   "loop_start": 9.218,
+   "duration": 77.244,
    "where": "Dimglass Coast (the first road out of town)",
    "mood": "The road that teaches you to wander — brisk, salt-aired, optimistic; the hometown tune breaking into a stride."
   },
@@ -98,8 +98,8 @@
    "mood": "The Road Remembered: a warm medley walking back down the whole journey in memory, every road leading home to the hometown theme in daylight."
   },
   "galehigh-terraces-a": {
-   "loop_start": 9.776,
-   "duration": 66.9,
+   "loop_start": 7.755,
+   "duration": 67.5,
    "where": "Galehigh Terraces (the kite-strung cliff town outdoors + the Skyloft; returns after the Kite-rising)",
    "mood": "Updraft — giddy, wind-buffeted propulsion on the cliff-farms, kites snapping overhead in the last fire-light before the climb."
   },
@@ -188,8 +188,8 @@
    "mood": "Low tide, lantern strings — the quay waltz late and quiet, a lonely-but-cosy sway on the edge of town."
   },
   "pearlmoor-quay-c": {
-   "loop_start": 10.101,
-   "duration": 81.45,
+   "loop_start": 10.194,
+   "duration": 82.051,
    "where": "The top of the Old Light on Pearlmoor Point — the joke-tower's punchline lantern room and its celebratory send-off",
    "mood": "Festival of the floating lights — the quay waltz in its happiest dress, quick, ornamented and playful."
   },
@@ -242,8 +242,8 @@
    "mood": "Sunsketch Bloom: the relit reading - daylight surging back into the drowned garden, the motif sung twice and the second time brighter; the score reaching toward dawn."
   },
   "sunvault-climb-a": {
-   "loop_start": 8.568,
-   "duration": 79.02,
+   "loop_start": 8.963,
+   "duration": 81.633,
    "where": "Sunvault Climb I & II (golden vine terraces up to Nightreach) + the Sunfall vigil site",
    "mood": "Vines to the Sky: warm, ascending, hopeful - every phrase climbs like the terraces; the sunniest route in the West."
   },
