@@ -58,7 +58,8 @@ import type {
  * map with that object glows — no per-map art or JSON edit.
  */
 export const LIGHT_SOURCES: Record<string, { hx: number; hy: number; radius: number; color: number }> = {
-  tinderwick_lamp_post: { hx: 8, hy: 8, radius: 16, color: 0xffc46b },
+  tinderwick_lamp_post: { hx: 8, hy: 10, radius: 16, color: 0xffc46b },
+  tinderwick_tree_c: { hx: 36, hy: 47, radius: 10, color: 0xffc46b }, // the lantern hung on the tall tree variant
   penumbra_way_lamp: { hx: 8, hy: 8, radius: 15, color: 0xffd089 },
   interior_brazier: { hx: 8, hy: 8, radius: 13, color: 0xff9a4a },
   hourfold_brazier_lit: { hx: 16, hy: 12, radius: 18, color: 0xff9a4a },
