@@ -858,6 +858,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **Talk ACROSS counters (2026-10).** `WorldScene.npcAcrossDesk`: facing a counter/stall/altar/desk
   object (`DESK_SPRITE`) reaches the NPC behind it, up to two desk tiles deep — the genre convention.
   Name a new desk-like prop so it matches the regex, or keepers behind it become unreachable to talk to.
+  Likewise a furniture-sized object (≤ `OBJECT_REACH_TILES`=6 tiles: beds, the Elder Bed) answers Confirm
+  on ANY of its tiles from any side (`triggerOnObjectAt`), so one interact trigger per bed is enough; and an
+  ambient kin can be greeted while you stand ON it (they never block you).
 - **Battle backdrops are a per-map data edit.** A battle's background is chosen from the
   map's `battle_backdrops` list in `data/world/maps.ts` (random variant), preloaded in
   `PreloadScene`, drawn behind the battlers in `BattleScene`. New area = add 240×160 WebPs

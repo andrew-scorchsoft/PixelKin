@@ -148,6 +148,8 @@ const STAIR_WARP_ID = /^(?:(?:up|down)_stairs|stair_(?:up|down)|ladder_(?:up|dow
 
 /** Object sprites the player can talk ACROSS (see `WorldScene.npcAcrossDesk`). */
 const DESK_SPRITE = /(counter|desk|stall|altar|lectern)/;
+/** Objects up to this many tiles answer Confirm on every tile (see triggerOnObjectAt). */
+const OBJECT_REACH_TILES = 6;
 
 /** Banked once the version notice has shown the "Return to rest point" hint. */
 const REST_TIP_FLAG = 'flag:tip_restpoint_seen';
@@ -973,6 +975,31 @@ export class WorldScene extends Phaser.Scene {
     return this.npcs.find((n) => n.tx === tx && n.ty === ty);
   }
 
+  /**
+   * A furniture-sized object (a bed, the Elder Bed, a sleeping kin — at most
+   * OBJECT_REACH_TILES tiles) answers Confirm on ANY of its tiles, from any side:
+   * its interact trigger usually sits on one tile only (the apprentice's bed was
+   * bottom-left), which made the rest feel broken from the other half or the side.
+   * Buildings are too big to qualify, so a sign tucked in a footprint stays local.
+   */
+  private triggerOnObjectAt(tx: number, ty: number): EventTrigger | undefined {
+    const obj = (this.map.def.objects ?? []).find(
+      (o) =>
+        o.w * o.h <= OBJECT_REACH_TILES &&
+        this.objectVisible(o) &&
+        tx >= o.at.tx && tx < o.at.tx + o.w &&
+        ty >= o.at.ty && ty < o.at.ty + o.h,
+    );
+    if (!obj) return undefined;
+    return this.map.def.triggers.find(
+      (t) =>
+        t.activation === 'interact' &&
+        t.at.tx >= obj.at.tx && t.at.tx < obj.at.tx + obj.w &&
+        t.at.ty >= obj.at.ty && t.at.ty < obj.at.ty + obj.h &&
+        this.triggerActive(t),
+    );
+  }
+
   /** Whether a desk-like object (counter, stall, altar, desk) covers this tile. */
   private deskAt(tx: number, ty: number): boolean {
     return (this.map.def.objects ?? []).some(
@@ -1045,20 +1072,22 @@ export class WorldScene extends Phaser.Scene {
       return;
     }
 
-    // A grazing ambient kin on the faced tile: greet it (its cry + a line).
-    const kin = this.ambience?.kinAt(ahead.tx, ahead.ty);
+    // A grazing ambient kin on the faced tile — or under your feet, since they never
+    // block you and you can walk right over one: greet it (its cry + a line).
+    const kin = this.ambience?.kinAt(ahead.tx, ahead.ty) ?? this.ambience?.kinAt(this.player.tx, this.player.ty);
     if (kin) {
       await this.greetAmbientKin(kin);
       return;
     }
 
-    const trigger = this.map.def.triggers.find(
-      (t) =>
-        t.activation === 'interact' &&
-        t.at.tx === ahead.tx &&
-        t.at.ty === ahead.ty &&
-        this.triggerActive(t),
-    );
+    const trigger =
+      this.map.def.triggers.find(
+        (t) =>
+          t.activation === 'interact' &&
+          t.at.tx === ahead.tx &&
+          t.at.ty === ahead.ty &&
+          this.triggerActive(t),
+      ) ?? this.triggerOnObjectAt(ahead.tx, ahead.ty);
     if (trigger) {
       await this.handleTrigger(trigger);
       return;
