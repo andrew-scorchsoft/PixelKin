@@ -104,7 +104,7 @@ const DEPTH = {
 
 // A world-feel palette (not UI chrome — theme.ts tokens are for screens).
 const STREAK = {
-  dusk: { trail: 0x7f8aa6, head: 0xdfe6f5 }, // cold cinder, the Long Dusk
+  dusk: { trail: 0x9aa8cc, head: 0xf4f8ff }, // cold cinder, the Long Dusk
   dawn: { trail: 0xffb347, head: 0xfff3c0 }, // the Starfall mirror after flag:dawn
 };
 const LEAF_FLECK = [0x7bdc6b, 0x4a9a55, 0x9fd36b];
@@ -201,6 +201,9 @@ function groundYOf(_tx: number, ty: number): number {
 
 // ------------------------------------------------------------- ambient kin --
 
+/** Ambient (wild, grazing) kin draw at this fraction of their 32px overworld view. */
+const AMBIENT_KIN_SCALE = 0.7;
+
 /** The kin id behind an ambient sprite key (`kin_<id>_overworld`), or null. */
 function ambientKinId(sprite: string): number | null {
   const m = /^kin_(\d+)_overworld$/.exec(sprite);
@@ -227,9 +230,13 @@ class AmbientKin {
     this.radius = Math.max(0, placement.wander_radius ?? 2);
     const x = this.tx * TILE_SIZE + TILE_SIZE / 2;
     const y = groundYOf(this.tx, this.ty);
-    this.shadow = scene.add.ellipse(x, y - 0.5, 18, 5, 0x000000, 0.3).setVisible(false);
+    this.shadow = scene.add.ellipse(x, y - 0.5, 13, 4, 0x000000, 0.3).setVisible(false);
     // Hidden until the kin's packed view lands — a missing sprite is simply absent.
-    this.sprite = scene.add.image(x, y, '__MISSING').setOrigin(0.5, 1).setVisible(false);
+    // Drawn at AMBIENT_KIN_SCALE: the 32px overworld view is sized for a kin
+    // standing in for a person; a grazing wild kin should read smaller than the
+    // ~28px player (the pilot's full-size Brinelet towered over them).
+    this.sprite = scene.add.image(x, y, '__MISSING').setOrigin(0.5, 1).setVisible(false)
+      .setScale(AMBIENT_KIN_SCALE);
     this.nextAt = scene.time.now + rand(1200, 3500);
     const id = ambientKinId(placement.sprite);
     if (id === null) return;
@@ -692,7 +699,7 @@ export class Ambience {
     const sx = fromLeft ? rand(24, 120) : rand(120, 216);
     const sy = rand(6, 34);
     const dir = fromLeft ? 1 : -1;
-    const len = rand(90, 130);
+    const len = rand(110, 160);
     const ang = rand(0.32, 0.5); // radians below horizontal (stays in the upper sky)
     const dx = Math.cos(ang) * len * dir;
     const dy = Math.sin(ang) * len;
@@ -712,19 +719,32 @@ export class Ambience {
           const hx = sx + dx * e;
           const hy = sy + dy * e;
           g.clear();
-          const segs = 10;
-          const tail = Math.min(e, 0.42);
+          // The game's signature motif: it must be unmistakable at a glance, so a
+          // long tapering tail, a bright 3px head with a soft halo, and a few
+          // sparks shed behind it (deterministic per segment — no flicker noise).
+          const segs = 14;
+          const tail = Math.min(e, 0.6);
           for (let i = 0; i < segs; i++) {
             const a0 = e - (tail * i) / segs;
             const a1 = e - (tail * (i + 1)) / segs;
             if (a1 < 0) break;
-            g.lineStyle(i < 3 ? 1.5 : 1, i < 2 ? pal.head : pal.trail, (1 - i / segs) * 0.95 * fadeA);
+            const w = i < 2 ? 2.5 : i < 5 ? 2 : i < 9 ? 1.5 : 1;
+            g.lineStyle(w, i < 3 ? pal.head : pal.trail, (1 - i / segs) * fadeA);
             g.lineBetween(sx + dx * a0, sy + dy * a0, sx + dx * a1, sy + dy * a1);
           }
-          g.fillStyle(pal.trail, 0.35 * fadeA);
-          g.fillCircle(hx, hy, 2.2);
+          for (let k = 1; k <= 4; k++) {
+            const a = e - tail * (k / 5);
+            if (a < 0) break;
+            const off = ((k * 37) % 5) - 2;
+            g.fillStyle(pal.head, (0.7 - k * 0.12) * fadeA);
+            g.fillRect(Math.round(sx + dx * a) + off, Math.round(sy + dy * a) + 2, 1, 1);
+          }
+          g.fillStyle(pal.trail, 0.28 * fadeA);
+          g.fillCircle(hx, hy, 4.5);
+          g.fillStyle(pal.head, 0.55 * fadeA);
+          g.fillCircle(hx, hy, 2.5);
           g.fillStyle(pal.head, fadeA);
-          g.fillRect(Math.round(hx) - 1, Math.round(hy) - 1, 2, 2);
+          g.fillRect(Math.round(hx) - 1, Math.round(hy) - 1, 3, 3);
         },
         onComplete: () => {
           g.clear();
