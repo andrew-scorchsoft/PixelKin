@@ -1,0 +1,46 @@
+{
+  "title": "PixelKin - A Trainer Spots You (the startle)",
+  "_note": "The PLAY-ONCE head of trainer-eyes: one 4/4 bar at 152 BPM (~1.58 s). Eyes meet: a brass E7 hit + crash on the downbeat while the lead SHOOTS up an E7 arpeggio in sixteenths, a pulse glide sweeps two octaves up underneath (the alarm whoosh), a high G#-to-B 'eek' crests on beat 3 with a second hit, and a two-note pickup (B4-D5) tips into the loop body's A-minor downbeat. Ends on the harmonic-minor dominant, never resolved - the resolution is the loop starting. Stitched in front of trainer-eyes-loop by tools/audio/stitch_intro_loop.py; loop_start = the end of this bar. Original (VISION.md).",
+  "era": "snes",
+  "tempo": 152,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "A minor (on its E7 dominant)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 5,
+      "gain": 0.95,
+      "notes": "E5s G#5s B5s D6s F6s E6s F6s G#6s B6e@120 re re B4s D5s"
+    },
+    {
+      "name": "sweep",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.5,
+      "notes": "E4~E6h B5e re rq"
+    },
+    {
+      "name": "bass",
+      "voice": "bass",
+      "octave": 2,
+      "gain": 0.9,
+      "notes": "E2e re rq E2e E3e E2s E2s G#2s B2s"
+    },
+    {
+      "name": "stab",
+      "voice": "brass",
+      "octave": 3,
+      "gain": 0.72,
+      "notes": "E3+G#3+B3+D4e re rq E3+G#3+B3+D4e re rq"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.66,
+      "notes": "s kick+crash hat hat hat hat hat hat hat kick+snare+crash hat snare hat tom tom snare snare"
+    }
+  ]
+}

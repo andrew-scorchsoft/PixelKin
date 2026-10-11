@@ -1,0 +1,46 @@
+{
+  "title": "PixelKin - A Trainer Spots You (get ready)",
+  "_note": "The LOOPING body of trainer-eyes: 8 bars of 4/4 at 152 BPM (~12.6 s), played under the trainer's walk-up and challenge lines until the battle theme takes over. A natural minor with a harmonic-minor E dominant - the battle cues' own key (dusk-duel and emberfall are both A minor), so the hand-off to the fight lands in the same tonal room. Chords Am F G E | Am F Dm E; bar 8 sits on E to slam back into the Am downbeat. The hook opens with the Vesper rising leap in its battle treatment (E-A-B: the lift overshoots the tonic and the settle is withheld), restless and bright on a pulse lead; a sixteenth broken-chord arp, a pumping root-fifth bass, brass stabs on 1 and the and-of-2 ('get-ready' hits) and a driving beat with fills on bars 4 and 8. Tight and urgent but light - a dare, not a threat. Original (VISION.md).",
+  "era": "snes",
+  "tempo": 152,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "A minor (Aeolian + harmonic-minor dominant)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 5,
+      "gain": 0.9,
+      "notes": "E5e A5e B5e C6e B5e A5e E5q | C6e A5e F5e A5e C6q B5e A5e | B5e G5e D5e G5e B5q D6e B5e | G#5q E5e B4e G#5e B5e D6q | E5e A5e B5e C6e B5e A5e E5q | C6e A5e F5e A5e C6q E6e C6e | D6e A5e F5e A5e D6e F6e E6e D6e | C6e B5e A5e G#5e B5q E5q"
+    },
+    {
+      "name": "arp",
+      "voice": "pulse12",
+      "octave": 3,
+      "gain": 0.42,
+      "notes": "s A3 C4 E4 A4 A3 C4 E4 A4 A3 C4 E4 A4 A3 C4 E4 A4 | F3 A3 C4 F4 F3 A3 C4 F4 F3 A3 C4 F4 F3 A3 C4 F4 | G3 B3 D4 G4 G3 B3 D4 G4 G3 B3 D4 G4 G3 B3 D4 G4 | E3 G#3 B3 E4 E3 G#3 B3 E4 E3 G#3 B3 E4 E3 G#3 B3 E4 | A3 C4 E4 A4 A3 C4 E4 A4 A3 C4 E4 A4 A3 C4 E4 A4 | F3 A3 C4 F4 F3 A3 C4 F4 F3 A3 C4 F4 F3 A3 C4 F4 | D3 F3 A3 D4 D3 F3 A3 D4 D3 F3 A3 D4 D3 F3 A3 D4 | E3 G#3 B3 E4 E3 G#3 B3 E4 E3 G#3 B3 D4 E3 G#3 B3 D4"
+    },
+    {
+      "name": "bass",
+      "voice": "bass",
+      "octave": 2,
+      "gain": 0.92,
+      "notes": "A2e E3e A2e E3e A2e E3e A2e E3e | F2e C3e F2e C3e F2e C3e F2e C3e | G2e D3e G2e D3e G2e D3e G2e D3e | E2e B2e E2e B2e E2e B2e E2e B2e | A2e E3e A2e E3e A2e E3e A2e E3e | F2e C3e F2e C3e F2e C3e F2e C3e | D2e A2e D2e A2e D2e A2e D2e A2e | E2e B2e E2e B2e E2e G#2e B2e D3e"
+    },
+    {
+      "name": "stab",
+      "voice": "brass",
+      "octave": 3,
+      "gain": 0.6,
+      "notes": "A3+C4+E4e re re A3+C4+E4e rh | F3+A3+C4e re re F3+A3+C4e rh | G3+B3+D4e re re G3+B3+D4e rh | E3+G#3+B3e re re E3+G#3+B3e rh | A3+C4+E4e re re A3+C4+E4e rh | F3+A3+C4e re re F3+A3+C4e rh | D3+F3+A3e re re D3+F3+A3e rh | E3+G#3+B3e re E3+G#3+B3e re E3+G#3+B3e E3+G#3+B3e E3+G#3+B3e E3+G#3+B3e"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.62,
+      "notes": "e kick+crash hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare snare | kick+crash hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat hat snare+hat hat kick+hat kick snare+hat hat | kick+hat snare kick snare tom tom snare snare"
+    }
+  ]
+}

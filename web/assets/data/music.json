@@ -10,6 +10,7 @@
      "where": "Tinderwick · Hearthfall",
      "mood": "The hometown lullaby — lanterns in the dark, cosy and a little homesick. The source of the Vesper motif.",
      "classic": "play/assets/audio/music/tinderwick-a.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/tinderwick-a.mp3",
      "loop_start": 10.336,
      "note": null
@@ -20,6 +21,7 @@
      "where": "Apprentice's House",
      "mood": "Embers banked low — the hometown lullaby gone indoors at night, a 6/8 sway by the coals, homesick and safe.",
      "classic": "play/assets/audio/music/tinderwick-b.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/tinderwick-b.mp3",
      "loop_start": 6.316,
      "note": null
@@ -30,6 +32,7 @@
      "where": "Duskapple Orchard",
      "mood": "First light on the water — the hometown tune's rising half asked under orchard boughs, Lydian wonder with a thread of mystery.",
      "classic": "play/assets/audio/music/tinderwick-c.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/tinderwick-c.mp3",
      "loop_start": 8.638,
      "note": null
@@ -40,6 +43,7 @@
      "where": "Duskapple Orchard",
      "mood": "The Fallen Star — the hometown lullaby gone cold in C minor, slowed to half time among charred boughs; a distant bell for the strike, and a cinder that still glows.",
      "classic": "play/assets/audio/music/duskapple-orchard.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/duskapple-orchard.mp3",
      "loop_start": 6.989,
      "note": null
@@ -50,6 +54,7 @@
      "where": "The Beacon — Floor I · The Beacon — Floor II · The Beacon — Lantern Room",
      "mood": "The Beacon Stair — a bass that climbs a step every bar, a determined call, brass like banked embers and a bell glinting from the lamp far above.",
      "classic": "play/assets/audio/music/beacon-stair.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/beacon-stair.mp3",
      "loop_start": 4.574,
      "note": null
@@ -60,6 +65,7 @@
      "where": "Dimglass Coast",
      "mood": "The road that teaches you to wander — brisk, salt-aired, optimistic; the hometown tune breaking into a stride.",
      "classic": "play/assets/audio/music/dimglass-coast-a.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/dimglass-coast-a.mp3",
      "loop_start": 9.218,
      "note": null
@@ -70,6 +76,7 @@
      "where": "Wrackline Path · Lanternfall Road · Gullcry Rock",
      "mood": "Salt wind, last light — the coast road's pensive sibling: a longer, lonelier walk at dusk with the sea going dark beside you.",
      "classic": "play/assets/audio/music/dimglass-coast-b.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/dimglass-coast-b.mp3",
      "loop_start": 0,
      "note": null
@@ -80,6 +87,7 @@
      "where": "The Sounding Cave · Tideglass Cavern · Tideglass Gallery · The Under-Lane",
      "mood": "Buoy-light drift — a becalmed, glittering sea-cave; the coast road's tune reduced to a glint over dripping water.",
      "classic": "play/assets/audio/music/dimglass-coast-c.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/dimglass-coast-c.mp3",
      "loop_start": 10.472,
      "note": null
@@ -90,6 +98,7 @@
      "where": "The Tide-blessing festival on Pearlmoor Quay (the cutscene after the Tide Gleam is relit)",
      "mood": "The going-out song — lantern boats on moonlit water; the quay waltz turned into a cool, glowing, sure ceremony.",
      "classic": "play/assets/audio/music/pearlmoor-blessing.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/pearlmoor-blessing.mp3",
      "loop_start": 10.217,
      "note": null
@@ -100,6 +109,7 @@
      "where": "Pearlmoor Quay",
      "mood": "A waltz on wet boardwalks under a cyan moon — the lamplit harbour at night, nets mended, boats rocking, the whole quay humming along.",
      "classic": "play/assets/audio/music/pearlmoor-quay-a.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/pearlmoor-quay-a.mp3",
      "loop_start": 7.198,
      "note": null
@@ -110,6 +120,7 @@
      "where": "Pearlmoor Breakwater · Hillside Allotments · Lightkeeper's Point",
      "mood": "Low tide, lantern strings — the quay waltz late and quiet, a lonely-but-cosy sway on the edge of town.",
      "classic": "play/assets/audio/music/pearlmoor-quay-b.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/pearlmoor-quay-b.mp3",
      "loop_start": 11.308,
      "note": null
@@ -120,6 +131,7 @@
      "where": "The Old Light — The Winding Room",
      "mood": "Festival of the floating lights — the quay waltz in its happiest dress, quick, ornamented and playful.",
      "classic": "play/assets/audio/music/pearlmoor-quay-c.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/pearlmoor-quay-c.mp3",
      "loop_start": 10.194,
      "note": null
@@ -135,6 +147,7 @@
      "where": "Saltreach Fen",
      "mood": "A slow drift through reed shallows — a breathy woodwind wanders and the lapping water answers; melancholy, never sad.",
      "classic": "play/assets/audio/music/saltreach-fen-a.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/saltreach-fen-a.mp3",
      "loop_start": 0.65,
      "note": null
@@ -145,6 +158,7 @@
      "where": "Saltreach Deeps",
      "mood": "The same fen lonelier and further in — a boat-rocking 6/8 through bone-white mist, one questioning phrase at a time.",
      "classic": "play/assets/audio/music/saltreach-fen-b.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/saltreach-fen-b.mp3",
      "loop_start": 2.622,
      "note": null
@@ -155,6 +169,7 @@
      "where": "Sunkbell Shallows",
      "mood": "The fen relit — open water, a drowned shrine bell ringing under the ripples, a warmer lilting waltz you've earned.",
      "classic": "play/assets/audio/music/saltreach-fen-c.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/saltreach-fen-c.mp3",
      "loop_start": 10.031,
      "note": null
@@ -165,6 +180,7 @@
      "where": "Lowleaf Hollow · Gloamwood Dell",
      "mood": "A dim-green glowmoss forest where every dewdrop catches cyan light — Lydian wonder, enchanted and curious.",
      "classic": "play/assets/audio/music/lowleaf-hollow-a.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/lowleaf-hollow-a.mp3",
      "loop_start": 8.081,
      "note": null
@@ -175,6 +191,7 @@
      "where": "The Wanderwood · The Far Side · Lowleaf Verdant Lumenary",
      "mood": "The safe glow at the heart of the dark forest — a lantern-lit music-box lullaby in a gentle waltz; hearth over wonder.",
      "classic": "play/assets/audio/music/lowleaf-hollow-b.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/lowleaf-hollow-b.mp3",
      "loop_start": 7.994,
      "note": null
@@ -185,6 +202,7 @@
      "where": "Glowmoss Deep · Glowmoss Deep B1F · Spore Grotto · Grovefall",
      "mood": "The glowing-dark deep forest — a glassy bell melody whose echoes answer across the black, sparse and cathedral-like, with a drained grey shadow in it.",
      "classic": "play/assets/audio/music/lowleaf-hollow-c.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/lowleaf-hollow-c.mp3",
      "loop_start": 14.652,
      "note": null
@@ -195,6 +213,7 @@
      "where": "Cinderhead Mine",
      "mood": "Ink-black galleries where crystal veins and lamp-fire are the only light — a slow miners' hymn, melancholy but faintly warm.",
      "classic": "play/assets/audio/music/cinderhead-mine-a.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/cinderhead-mine-a.mp3",
      "loop_start": 12.492,
      "note": null
@@ -205,6 +224,7 @@
      "where": "Cinderhead Stone Lumenary",
      "mood": "The mine under pressure — groaning timbers, charged air, a terse staccato motif over a driving low walk; held-breath tension before the wall.",
      "classic": "play/assets/audio/music/cinderhead-mine-b.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/cinderhead-mine-b.mp3",
      "loop_start": 11.215,
      "note": null
@@ -215,6 +235,7 @@
      "where": "Cinderhead Deep · Cinderhead Deep B1F · Cinderhead Deep B2F",
      "mood": "The deep galleries where dense crystal turns the dark luminous — a sparkle-led descent, minor warming to its relative major.",
      "classic": "play/assets/audio/music/cinderhead-mine-c.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/cinderhead-mine-c.mp3",
      "loop_start": 11.029,
      "note": null
@@ -230,6 +251,7 @@
      "where": "Galehigh Terraces · Galehigh Skyloft",
      "mood": "Updraft — giddy, wind-buffeted propulsion on the cliff-farms, kites snapping overhead in the last fire-light before the climb.",
      "classic": "play/assets/audio/music/galehigh-terraces-a.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/galehigh-terraces-a.mp3",
      "loop_start": 7.755,
      "note": null
@@ -240,6 +262,7 @@
      "where": "Galehigh Storm Lumenary",
      "mood": "Lanterns on the Wind — the windy cliff seen from inside the warm farmstead at dusk: cosy, a touch wistful, the wind a sigh at the shutters.",
      "classic": "play/assets/audio/music/galehigh-terraces-b.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/galehigh-terraces-b.mp3",
      "loop_start": 6.182,
      "note": null
@@ -250,6 +273,7 @@
      "where": "Windward Stair · The Wind-Eye · Thunderroost · Stormfall",
      "mood": "The Long Climb — airy, building, breath-quickening; each phrase re-launches a step higher so the loop feels like ascent.",
      "classic": "play/assets/audio/music/windward-stair-a.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/windward-stair-a.mp3",
      "loop_start": 4.925,
      "note": null
@@ -260,6 +284,7 @@
      "where": "Pale Vault Glacier",
      "mood": "Aurora Vault — glacial, shimmering, lonely-beautiful; the stillest, most tender place in the north, suspended and never quite resolving.",
      "classic": "play/assets/audio/music/pale-vault-glacier-a.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/pale-vault-glacier-a.mp3",
      "loop_start": 6.425,
      "note": null
@@ -270,6 +295,7 @@
      "where": "Pale Vault Frost Lumenary",
      "mood": "Snow-Hushed Town — a small warm song against the cold: people and lanterns indoors, melancholy and intimate, hope that is fragile.",
      "classic": "play/assets/audio/music/pale-vault-glacier-b.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/pale-vault-glacier-b.mp3",
      "loop_start": 7.964,
      "note": null
@@ -280,6 +306,7 @@
      "where": "Pale Vault Undercroft · The Hourfold",
      "mood": "Glasslight — the glacier as a lush luminous reverie: ringing suspended chords, bell entries blooming and dissolving into echo; vast, sacred, still.",
      "classic": "play/assets/audio/music/pale-vault-glacier-c.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/pale-vault-glacier-c.mp3",
      "loop_start": 7.036,
      "note": null
@@ -295,6 +322,7 @@
      "where": "Hushfrost Pass · Aurora Hollow",
      "mood": "Lamp in the Canyon — a lone lamp in a frozen canyon, the cold at your back: sparse and tender enough to keep walking, hope holding on.",
      "classic": "play/assets/audio/music/hushfrost-pass-a.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/hushfrost-pass-a.mp3",
      "loop_start": 8.266,
      "note": null
@@ -305,6 +333,7 @@
      "where": "The Old Light — The Lobby of Groaners · The Old Light — The Late Laugh · The Old Light — Intermission · The Old Light — The Backwards Inn · Sunken Solarium",
      "mood": "Remembered Summer: stored daylight glowing up through the water - warm, nostalgic, everything in the past tense; the first real warmth since the south.",
      "classic": "play/assets/audio/music/sunken-solarium-a.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/sunken-solarium-a.mp3",
      "loop_start": 9.868,
      "note": null
@@ -315,6 +344,7 @@
      "where": "Solar Lumenary",
      "mood": "Drowned Halls: the same sun-garden with the water winning - cooler, lonelier, a summer theme recoloured into its relative minor; bittersweet warmth spent knowing it fades.",
      "classic": "play/assets/audio/music/sunken-solarium-b.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/sunken-solarium-b.mp3",
      "loop_start": 8.363,
      "note": null
@@ -325,6 +355,7 @@
      "where": "The Old Light — The Gallery of Confident Facts · The Unrisen Stair",
      "mood": "Sunsketch Bloom: the relit reading - daylight surging back into the drowned garden, the motif sung twice and the second time brighter; the score reaching toward dawn.",
      "classic": "play/assets/audio/music/sunken-solarium-c.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/sunken-solarium-c.mp3",
      "loop_start": 8.595,
      "note": null
@@ -335,6 +366,7 @@
      "where": "Sunvault Climb · Sunfall",
      "mood": "Vines to the Sky: warm, ascending, hopeful - every phrase climbs like the terraces; the sunniest route in the West.",
      "classic": "play/assets/audio/music/sunvault-climb-a.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/sunvault-climb-a.mp3",
      "loop_start": 8.963,
      "note": null
@@ -345,6 +377,7 @@
      "where": "Helia Vault",
      "mood": "First Light at the Top: Solar warmth meets the first true starlight - the climbing hook at its highest, doubled in bells, inside a sunlit reliquary of blooms and sun-mirrors.",
      "classic": "play/assets/audio/music/sunvault-climb-c.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/sunvault-climb-c.mp3",
      "loop_start": 9.358,
      "note": null
@@ -355,6 +388,7 @@
      "where": "Nightreach Observatory",
      "mood": "Under the Whole Sky: vast, lonely, wondrous - a single voice under every star, faint telescope clockwork, minor lifting toward major like hope dawning.",
      "classic": "play/assets/audio/music/nightreach-observatory-a.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/nightreach-observatory-a.mp3",
      "loop_start": 8.684,
      "note": null
@@ -365,6 +399,7 @@
      "where": "Lunar Lumenary",
      "mood": "The Haunted Lumenary: the loneliest room in Vesperholm - a minor lullaby that reaches up and never quite comes home, a clock running down; hope present but not yet earned.",
      "classic": "play/assets/audio/music/nightreach-observatory-b.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/nightreach-observatory-b.mp3",
      "loop_start": 4.328,
      "note": null
@@ -380,6 +415,7 @@
      "where": "Vesper Crossroads",
      "mood": "The Signpost Tune — all roads meet here: a road-folk waystation band strikes up the home tune, lute, reed and tambourine on the front porch of the world.",
      "classic": "play/assets/audio/music/vesper-crossroads-a.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/vesper-crossroads-a.mp3",
      "loop_start": 4.174,
      "note": null
@@ -390,6 +426,7 @@
      "where": "Coldfog Marches · Drownlight Beacon · Murkfall",
      "mood": "Snuffed — a drained marsh where the lanterns went out; a lone melody that keeps reaching for home and guttering before it gets there.",
      "classic": "play/assets/audio/music/coldfog-marches-a.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/coldfog-marches-a.mp3",
      "loop_start": 7.221,
      "note": null
@@ -400,6 +437,7 @@
      "where": "Lanternway · Tinderwick Spoke · Lanternway · Lowleaf Spoke · Lanternway · Galehigh Spoke · Lanternway · Nightreach Spoke",
      "mood": "The Walking Tune — the safe road home: a strolling shuffle of flute and reed, walking pizzicato and brushes, lamplight glinting on every post.",
      "classic": "play/assets/audio/music/lanternway-a.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/lanternway-a.mp3",
      "loop_start": 4.389,
      "note": null
@@ -415,6 +453,7 @@
      "where": "Penumbra Ring · Starwell",
      "mood": "Wall of Ink: the last dark, crossed on starlight; a held breath, your heartbeat and one lonely lamp-note, hope leaking in at the edges.",
      "classic": "play/assets/audio/music/penumbra-ring-a.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/penumbra-ring-a.mp3",
      "loop_start": 11.703,
      "note": null
@@ -425,6 +464,7 @@
      "where": "Umbral Spire — Summit",
      "mood": "Crown of Null: the summit under the Keystar; grave, sorrowful grandeur and driving resolve, the hometown motif boomed in minor and promised its major.",
      "classic": "play/assets/audio/music/umbral-spire-a.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/umbral-spire-a.mp3",
      "loop_start": 12.353,
      "note": null
@@ -435,6 +475,7 @@
      "where": "Umbral Spire · Umbral Spire — Null-Works · Umbral Spire — High Gallery",
      "mood": "The Black Ascent: the climb through the dead Lumenary, null-lanterns leaking anti-light; relentless minor drive, all tension and no release.",
      "classic": "play/assets/audio/music/umbral-spire-b.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/umbral-spire-b.mp3",
      "loop_start": 10.844,
      "note": null
@@ -445,6 +486,7 @@
      "where": "Umbral Spire summit, the Keystar relight cutscene",
      "mood": "First True Dawn: the Keystar catches and the whole sky lights; the hometown motif stated whole in radiant major, triumphant with a tear in it.",
      "classic": "play/assets/audio/music/umbral-spire-c.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/umbral-spire-c.mp3",
      "loop_start": 10.449,
      "note": null
@@ -460,6 +502,7 @@
      "where": "Dawnstead",
      "mood": "The lullaby in full — the hometown theme finally meeting the sun, radiant, confident and a little teary.",
      "classic": "play/assets/audio/music/dawnstead-a.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/dawnstead-a.mp3",
      "loop_start": 10.008,
      "note": null
@@ -470,6 +513,7 @@
      "where": "The ending cinematic (dawn breaks over Vesperholm)",
      "mood": "The long night ends: first light walking across every valley; the hometown lullaby finally meets the sun, radiant and tender.",
      "classic": "play/assets/audio/music/dawn-breaks.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/dawn-breaks.mp3",
      "loop_start": 12.678,
      "note": null
@@ -480,6 +524,7 @@
      "where": "The ending credits roll",
      "mood": "The Road Remembered: a warm medley walking back down the whole journey in memory, every road leading home to the hometown theme in daylight.",
      "classic": "play/assets/audio/music/ending-credits.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/ending-credits.mp3",
      "loop_start": 13.584,
      "note": null
@@ -495,6 +540,7 @@
      "where": "Terrace Cottage",
      "mood": "Kettle on, a cat by the stove — a bright, bouncing little home tune for rooms where folk are glad you came.",
      "classic": "play/assets/audio/music/interior-hearth.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/interior-hearth.mp3",
      "loop_start": 9.242,
      "note": null
@@ -505,6 +551,7 @@
      "where": "The Lifting House · Georgina's Cottage",
      "mood": "Sunny rooms with a wink — a sprightly, cheeky little ocarina tune that skips about the furniture.",
      "classic": "play/assets/audio/music/interior-sunny.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/interior-sunny.mp3",
      "loop_start": 7.663,
      "note": null
@@ -515,6 +562,7 @@
      "where": "Glacier Cottage",
      "mood": "Lamplit rooms — an unhurried, conversational little tune that sits under a chat by the stove and never asks for attention.",
      "classic": "play/assets/audio/music/interior-lamplit.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/interior-lamplit.mp3",
      "loop_start": 4.164,
      "note": null
@@ -525,6 +573,7 @@
      "where": "Watcher's Cottage",
      "mood": "Charts and Lenses — a ticking, curious little room of ground glass and inked stars, gently absorbed in its work.",
      "classic": "play/assets/audio/music/interior-study.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/interior-study.mp3",
      "loop_start": 2.786,
      "note": null
@@ -535,6 +584,7 @@
      "where": "Apprentice's House",
      "mood": "The Quiet After — the hometown lullaby played softly in a frightened house; the fire still lit, a music box that keeps trying to rise.",
      "classic": "play/assets/audio/music/interior-hush.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/interior-hush.mp3",
      "loop_start": 4.087,
      "note": null
@@ -545,6 +595,7 @@
      "where": "Hollowfen Stillworks",
      "mood": "Cold Hearth — glass tones and a music box winding down in a room the warmth has left; eerie, beautiful, and strangely gentle.",
      "classic": "play/assets/audio/music/interior-unease.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/interior-unease.mp3",
      "loop_start": 8.978,
      "note": null
@@ -555,6 +606,7 @@
      "where": "Tinderwick General Store · Pearlmoor Chandlery · The Kite-Maker's",
      "mood": "The Counter Bell — a bouncy little shop tune with a doorbell for a hook; browse as long as you like.",
      "classic": "play/assets/audio/music/shop-counter.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/shop-counter.mp3",
      "loop_start": 4.458,
      "note": null
@@ -565,6 +617,7 @@
      "where": "Pearlmoor Quayside Inn · Vesper Crossroads Inn · Lowleaf Guest-bower · The Steady Gust Inn · The Held Flame Inn · The Long Watch Inn",
      "mood": "Rest a while — a fire's glow, a full kettle and a warm bed; the hometown tune settled into a contented waltz.",
      "classic": "play/assets/audio/music/inn-rest.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/inn-rest.mp3",
      "loop_start": 8.382,
      "note": null
@@ -575,6 +628,7 @@
      "where": "Tinderwick Lumenary · Pearlmoor Tide Lumenary",
      "mood": "The hush before the duel — a stately processional between lamp-lit pillars, organ and choir in cool stone, walking toward the warden who will test you.",
      "classic": "play/assets/audio/music/lumenary-hall.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/lumenary-hall.mp3",
      "loop_start": 6.757,
      "note": null
@@ -585,11 +639,23 @@
    "title": "Battles",
    "tracks": [
     {
+     "id": "trainer-eyes",
+     "title": "Battle — a trainer spots you",
+     "where": "",
+     "mood": "",
+     "classic": "play/assets/audio/music/trainer-eyes.mp3",
+     "classic_loop_start": 1.5789,
+     "remaster": null,
+     "loop_start": null,
+     "note": "Battles keep the original chip score"
+    },
+    {
      "id": "battle-boss-eclipse",
      "title": "Battle — the last stand",
      "where": "",
      "mood": "",
      "classic": "play/assets/audio/music/battle-boss-eclipse.mp3",
+     "classic_loop_start": null,
      "remaster": null,
      "loop_start": null,
      "note": "Battles keep the original chip score"
@@ -600,6 +666,7 @@
      "where": "",
      "mood": "",
      "classic": "play/assets/audio/music/battle-emberfall.mp3",
+     "classic_loop_start": null,
      "remaster": null,
      "loop_start": null,
      "note": "Battles keep the original chip score"
@@ -610,6 +677,7 @@
      "where": "",
      "mood": "",
      "classic": "play/assets/audio/music/battle-hours.mp3",
+     "classic_loop_start": null,
      "remaster": null,
      "loop_start": null,
      "note": "Battles keep the original chip score"
@@ -620,6 +688,7 @@
      "where": "",
      "mood": "",
      "classic": "play/assets/audio/music/battle-main-dusk-duel.mp3",
+     "classic_loop_start": null,
      "remaster": null,
      "loop_start": null,
      "note": "Battles keep the original chip score"
@@ -630,6 +699,7 @@
      "where": "",
      "mood": "",
      "classic": "play/assets/audio/music/battle-nightfall.mp3",
+     "classic_loop_start": null,
      "remaster": null,
      "loop_start": null,
      "note": "Battles keep the original chip score"
@@ -640,6 +710,7 @@
      "where": "",
      "mood": "",
      "classic": "play/assets/audio/music/battle-veil.mp3",
+     "classic_loop_start": null,
      "remaster": null,
      "loop_start": null,
      "note": "Battles keep the original chip score"
@@ -655,6 +726,7 @@
      "where": "Title screen",
      "mood": "The calling card: a lone lantern-tune in the dark explodes into a heroic minor adventure anthem; the Long Dusk, and the journey rising against it.",
      "classic": "play/assets/audio/music/title.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/title.mp3",
      "loop_start": 8.104,
      "note": null
@@ -665,6 +737,7 @@
      "where": "The cold-open cinematic (the Long Dusk falls; a star winks out)",
      "mood": "The Long Dusk falling: hushed foreboding under a sky losing its lanterns, a fragile hopeful phrase that reaches up and is never answered.",
      "classic": "play/assets/audio/music/coldopen-foreboding.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/coldopen-foreboding.mp3",
      "loop_start": 2.635,
      "note": null
@@ -675,6 +748,7 @@
      "where": "Every Gleam payoff — the moment a constellation relights and the town begins to celebrate (and the dawn)",
      "mood": "Belonging, not a trophy: the motif heard in the long dusk's minor, then blooming into warm major as the sky answers.",
      "classic": "play/assets/audio/music/gleam-emotional.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/gleam-emotional.mp3",
      "loop_start": 12.608,
      "note": null
@@ -685,6 +759,7 @@
      "where": "The Gleam moment — a constellation relit (played as a sting by the cutscene's gleam op)",
      "mood": "A lantern lifted to the sky: a short triumphant fanfare that quotes the hometown motif and lands firmly home.",
      "classic": "play/assets/audio/music/gleam-fanfare.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/gleam-fanfare.mp3",
      "loop_start": null,
      "note": null
@@ -695,6 +770,7 @@
      "where": "The Three Hours' threshold — the moment an Hour is met, just before its set-piece battle",
      "mood": "A single great bell tolls the hour: deep, awed, with a long shimmering tail.",
      "classic": "play/assets/audio/music/sting-hour.mp3",
+     "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/sting-hour.mp3",
      "loop_start": null,
      "note": null

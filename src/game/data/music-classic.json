@@ -1,0 +1,9 @@
+{
+  "_generated": "tools/audio/stitch_intro_loop.py — classic cues with a play-once intro",
+  "tracks": {
+    "trainer-eyes": {
+      "loop_start": 1.5789,
+      "duration": 14.2105
+    }
+  }
+}

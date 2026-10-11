@@ -36,7 +36,7 @@ import { ChartView } from '@game/ui/ChartView';
 import { fadeIn, fadeOut, letterbox, clearCinematicFx } from '@game/ui/Transitions';
 import { CROWN_INTERLUDES, INTERLUDES_CLOSED_BY } from '@game/content/interludes';
 import type { CrownInterlude } from '@game/content/interludes';
-import { getAmbientMotion, getCannotDie } from '@game/ui/preferences';
+import { getAmbientMotion, getCannotDie, musicMasterGain } from '@game/ui/preferences';
 import { KinInstance } from '@game/systems/party/KinInstance';
 import { MAX_PARTY } from '@game/systems/party/Party';
 import { InputController, InputAction } from '@game/systems/input/InputController';
@@ -48,6 +48,7 @@ import { EncounterSystem } from '@game/systems/world/EncounterSystem';
 import { loadCreatureSprite } from '@game/systems/sprites/CreatureSprites';
 import type { BattleRequest, BattleResult } from '@game/scenes/BattleScene';
 import { MusicDirector } from '@game/systems/audio/MusicDirector';
+import { TRAINER_EYES_KEY, TRAINER_EYES_URL, opensWithChallenge } from '@game/systems/audio/trainerCue';
 import { Sfx } from '@game/systems/audio/Sfx';
 import { FlagStore } from '@game/systems/flags/FlagStore';
 import { Player } from '@game/entities/Player';
@@ -270,6 +271,9 @@ export class WorldScene extends Phaser.Scene {
       this.dexCaught.add(k.species_id);
     }
     this.music = new MusicDirector(this);
+    // The trainer-spots-you cue must hit ON the '!' — warm it once the map's own
+    // bed has had first claim on the loader.
+    this.time.delayedCall(1500, () => this.music.prefetch(TRAINER_EYES_KEY, TRAINER_EYES_URL));
     this.sfx = new Sfx(this);
     this.debug = new DebugOverlay(this);
     this.cameras.main.setBackgroundColor(COLORS.night);
@@ -1025,7 +1029,9 @@ export class WorldScene extends Phaser.Scene {
         const steps = getScript(npc.dialogueRef);
         if (steps) {
           this.modal = true;
+          const cue = this.startChallengeCue(steps);
           const completed = await runCutscene(this.cutsceneContext(), steps);
+          if (cue) this.endChallengeCue();
           if (completed) void this.persist();
           this.modal = false;
           this.turnBackToPost(npc);
@@ -1145,7 +1151,9 @@ export class WorldScene extends Phaser.Scene {
       const steps = getScript(trigger.ref);
       if (!steps) return;
       this.modal = true;
+      const cue = this.startChallengeCue(steps);
       const completed = await runCutscene(this.cutsceneContext(), steps);
+      if (cue) this.endChallengeCue();
       // Only bank progress if the scene actually finished (a lost battle aborts it).
       if (completed) {
         this.flags.setMany(trigger.sets_flags);
@@ -1393,7 +1401,12 @@ export class WorldScene extends Phaser.Scene {
     const steps = getScript(npc.dialogueRef ?? '');
     if (!steps) return;
     this.modal = true;
-    void this.sfx.play('world-spotted'); // the eye-contact '!' sting
+    // Eyes meet: the trainer cue's startle lands with the '!' and its "get ready"
+    // loop carries the walk-up and the challenge until the battle theme takes
+    // over. The plain '!' sting stands in when the cue can't (the trainer's scene
+    // scores itself, or the music is switched off).
+    const cue = this.startChallengeCue(steps);
+    if (!cue || musicMasterGain() <= 0) void this.sfx.play('world-spotted');
     await npc.showEmote('alert');
     // march to the tile adjacent to the player along the (axis-aligned) line,
     // then face off before the script's first line
@@ -1407,12 +1420,32 @@ export class WorldScene extends Phaser.Scene {
       { op: 'face', actor: 'player', facing: playerFacing },
     ];
     const completed = await runCutscene(this.cutsceneContext(), [...approach, ...steps]);
+    if (cue) this.endChallengeCue();
     if (completed) {
       if (npc.placement.defeated_flag) this.flags.set(npc.placement.defeated_flag, true);
       void this.persist();
     }
     this.modal = false;
     this.refreshNpcs();
+  }
+
+  /**
+   * Start the trainer-spots-you cue if this scene is a plain challenge (an
+   * unguarded trainer battle, no music beat of its own before it — see
+   * `opensWithChallenge`). Hard cut on purpose: the startle IS the cut. The map
+   * bed's place is remembered, so it resumes where it was after the fight.
+   */
+  private startChallengeCue(steps: readonly CutsceneStep[]): boolean {
+    if (!opensWithChallenge(steps)) return false;
+    void this.music.play(TRAINER_EYES_KEY, TRAINER_EYES_URL);
+    return true;
+  }
+
+  /** The scene ended without the battle taking the soundtrack (an aborted or
+   *  talked-down challenge): bring the map's own bed back. A fought battle
+   *  already restored it (`startBattle`), so this is then a no-op. */
+  private endChallengeCue(): void {
+    if (this.music.wantedKey === TRAINER_EYES_KEY) this.playMapMusic();
   }
 
   // --- Step-on (on arrival) -----------------------------------------------
