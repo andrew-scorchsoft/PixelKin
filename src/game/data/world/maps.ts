@@ -119,18 +119,29 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/beacon-stair.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/beacon-stair-a.webp',
+      'assets/backgrounds/battle/beacon-stair-b.webp',
+    ],
   },
   tinderwick_beacon_ii: {
     json: 'assets/maps/tinderwick_beacon_ii.json',
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/beacon-stair.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/beacon-stair-a.webp',
+      'assets/backgrounds/battle/beacon-stair-b.webp',
+    ],
   },
   tinderwick_beacon_top: {
     json: 'assets/maps/tinderwick_beacon_top.json',
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/beacon-stair.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/beacon-lantern-a.webp',
+    ],
   },
   dimglass_coast: {
     json: 'assets/maps/dimglass_coast.json',
@@ -169,18 +180,29 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'route',
     music: 'assets/audio/music/dimglass-coast-b.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/wrackline-path-a.webp',
+      'assets/backgrounds/battle/wrackline-path-b.webp',
+    ],
   },
   sounding_cave: {
     json: 'assets/maps/sounding_cave.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
     music: 'assets/audio/music/dimglass-coast-c.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/tideglass-gallery-a.webp',
+    ],
   },
   lanternfall_road: {
     json: 'assets/maps/lanternfall_road.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'route',
     music: 'assets/audio/music/dimglass-coast-b.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/wrackline-path-a.webp',
+      'assets/backgrounds/battle/wrackline-path-b.webp',
+    ],
   },
   // The Causeway Bell's walk: the foot causeway out to the Moor-bell shrine
   // (gated on the netmender's rope; reuses Pearlmoor's music + backdrops).
@@ -203,6 +225,10 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'route',
     music: 'assets/audio/music/pearlmoor-quay-b.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/pearlmoor-quay-a.webp',
+      'assets/backgrounds/battle/pearlmoor-quay-b.webp',
+    ],
   },
   pearlmoor_wanderwood: {
     json: 'assets/maps/pearlmoor_wanderwood.json',
@@ -246,12 +272,20 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'route',
     music: 'assets/audio/music/pearlmoor-quay-b.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/pearlmoor-quay-a.webp',
+      'assets/backgrounds/battle/pearlmoor-quay-b.webp',
+    ],
   },
   pearlmoor_oldlight_1: {
     json: 'assets/maps/pearlmoor_oldlight_1.json',
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/sunken-solarium-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/beacon-stair-a.webp',
+      'assets/backgrounds/battle/beacon-stair-b.webp',
+    ],
   },
   pearlmoor_oldlight_2: {
     json: 'assets/maps/pearlmoor_oldlight_2.json',
@@ -268,6 +302,10 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/sunken-solarium-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/beacon-stair-a.webp',
+      'assets/backgrounds/battle/beacon-stair-b.webp',
+    ],
   },
   pearlmoor_oldlight_4: {
     json: 'assets/maps/pearlmoor_oldlight_4.json',
@@ -284,17 +322,28 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/sunken-solarium-c.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/beacon-stair-a.webp',
+      'assets/backgrounds/battle/beacon-stair-b.webp',
+    ],
   },
   pearlmoor_oldlight_6: {
     json: 'assets/maps/pearlmoor_oldlight_6.json',
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
+    battle_backdrops: [
+      'assets/backgrounds/battle/beacon-stair-a.webp',
+      'assets/backgrounds/battle/beacon-stair-b.webp',
+    ],
   },
   pearlmoor_oldlight_top: {
     json: 'assets/maps/pearlmoor_oldlight_top.json',
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/pearlmoor-quay-c.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/beacon-lantern-a.webp',
+    ],
   },
   pearlmoor_shop: {
     json: 'assets/maps/pearlmoor_shop.json',
@@ -352,6 +401,10 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'hub',
     music: 'assets/audio/music/vesper-crossroads-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/vesper-crossroads-a.webp',
+      'assets/backgrounds/battle/vesper-crossroads-b.webp',
+    ],
   },
   // The Vesper Crossroads waystation inn — the concept art's central house, now
   // enterable (the C2 'Inn's Empty Lamps' innkeeper lives inside).
@@ -371,12 +424,20 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'route',
     music: 'assets/audio/music/lanternway-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/lanternway-a.webp',
+      'assets/backgrounds/battle/lanternway-b.webp',
+    ],
   },
   lanternway_lowleaf: {
     json: 'assets/maps/lanternway_lowleaf.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'route',
     music: 'assets/audio/music/lanternway-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/lanternway-a.webp',
+      'assets/backgrounds/battle/lanternway-b.webp',
+    ],
   },
   // The Under-Lane — the lamped cave beneath the Lowleaf spoke's bank: the
   // spoke L's up, ducks UNDER its own lane, and comes out on the upper shelf
@@ -387,18 +448,30 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'cave',
     dark: true,
     music: 'assets/audio/music/dimglass-coast-c.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/glowmoss-deep-a.webp',
+      'assets/backgrounds/battle/glowmoss-deep-b.webp',
+    ],
   },
   lanternway_galehigh: {
     json: 'assets/maps/lanternway_galehigh.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'route',
     music: 'assets/audio/music/lanternway-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/lanternway-a.webp',
+      'assets/backgrounds/battle/lanternway-b.webp',
+    ],
   },
   lanternway_nightreach: {
     json: 'assets/maps/lanternway_nightreach.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'route',
     music: 'assets/audio/music/lanternway-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/lanternway-a.webp',
+      'assets/backgrounds/battle/lanternway-b.webp',
+    ],
   },
   // East: the first true cave dungeon — the hollow's dark interior past Lowleaf
   // (Glimmerstep-gated on Lowleaf's `to_deepwood` warp; B2 first Hollowing contact).
@@ -510,12 +583,19 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'route',
     music: 'assets/audio/music/lowleaf-hollow-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/lowleaf-hollow-a.webp',
+      'assets/backgrounds/battle/lowleaf-hollow-b.webp',
+    ],
   },
   georgina_cottage: {
     json: 'assets/maps/georgina_cottage.json',
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/interior-sunny.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/georgina-cottage-a.webp',
+    ],
   },
   // Cinderhead Mine — the gem-mine settlement (Lumenary 4, Stone: Otho Grist);
   // the Lamp-down vigil festival + the Descent Vigil earned loop (the §4 wall).
@@ -606,6 +686,9 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/galehigh-terraces-b.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/galehigh-lumenary-a.webp',
+    ],
   },
   galehigh_inn: {
     json: 'assets/maps/galehigh_inn.json',
@@ -703,6 +786,9 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/pale-vault-glacier-b.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/pale-vault-lumenary-a.webp',
+    ],
   },
   pale_vault_inn: {
     json: 'assets/maps/pale_vault_inn.json',
@@ -783,6 +869,9 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/sunken-solarium-b.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/sunken-solarium-lumenary-a.webp',
+    ],
   },
   // The Unrisen Stair — the Dawn-that-waited's processional ruin off the
   // Solarium's deepest fold (the Three Hours, Site III): the First-Light
@@ -911,6 +1000,10 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/nightreach-observatory-b.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/nightreach-lumenary-a.webp',
+      'assets/backgrounds/battle/nightreach-lumenary-b.webp',
+    ],
   },
   nightreach_inn: {
     json: 'assets/maps/nightreach_inn.json',
