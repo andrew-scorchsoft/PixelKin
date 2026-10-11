@@ -138,7 +138,7 @@ export const INTERLUDE_SCRIPTS: ScriptRegistry = {
     { op: 'face', actor: 'interlude_cor', facing: 'up' },
     { op: 'wait', ms: 600 },
     { op: 'move', actor: 'interlude_cor', to: { tx: 9, ty: 10 }, speed: 0.6 },
-    { op: 'narrate', text: 'Then he walks on north, towards the mountain, like a man who has made this walk many times.' },
+    { op: 'narrate', text: 'Then he walks on towards the mountain, like a man who has made this walk many times.' },
     { op: 'wait', ms: 500 },
   ],
 
@@ -187,7 +187,7 @@ export const INTERLUDE_SCRIPTS: ScriptRegistry = {
     { op: 'action', actor: 'interlude_cor', action: 'gift', holdMs: 900 },
     { op: 'narrate', text: 'Còr lays his hand on the lever and leaves it there a long time. The dark bell above him is silent.' },
     { op: 'wait', ms: 1000 },
-    { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'grave', text: 'Not yet. The apprentice is still on the stair. I will wait for them.' },
+    { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'grave', text: 'Not yet. The apprentice is still on the road. I will wait for them.' },
     { op: 'action', actor: 'interlude_cor', action: 'bow', holdMs: 1100 },
     { op: 'narrate', text: 'He takes his hand away, one finger at a time.' },
     { op: 'wait', ms: 500 },
