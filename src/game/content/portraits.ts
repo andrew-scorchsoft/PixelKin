@@ -8,7 +8,9 @@
  * back to a name-only box (today's behaviour), so portraits are purely additive.
  *
  * Adding a character = drop a 32×N sheet under public/assets/portraits/ and add
- * an entry here. The served path drops the `public/` prefix (see CLAUDE.md).
+ * an entry here. Sheets are built from 1024px masters in assets/portraits/_masters/
+ * by assets/portraits/build_strips.py; a new expression is APPENDED as the last
+ * frame (never reorder — scripts reference these indices). The served path drops the `public/` prefix (see CLAUDE.md).
  */
 
 export interface PortraitDef {
@@ -36,7 +38,7 @@ export const PORTRAITS: Record<string, PortraitDef> = {
   wren: {
     id: 'portrait_wren',
     path: 'assets/portraits/wren.png',
-    expressions: { neutral: 0, eager: 1, unsure: 2, resolved: 3 },
+    expressions: { neutral: 0, eager: 1, unsure: 2, resolved: 3, soft: 4 },
   },
   brisa: {
     id: 'portrait_brisa',
@@ -46,7 +48,7 @@ export const PORTRAITS: Record<string, PortraitDef> = {
   reyl: {
     id: 'portrait_reyl',
     path: 'assets/portraits/reyl.png',
-    expressions: { neutral: 0, weathered: 1, proud: 2 },
+    expressions: { neutral: 0, weathered: 1, proud: 2, grave: 3 },
   },
   lamplighter: {
     id: 'portrait_lamplighter',
@@ -103,6 +105,13 @@ export const PORTRAITS: Record<string, PortraitDef> = {
     id: 'portrait_nessa',
     path: 'assets/portraits/nessa.png',
     expressions: { neutral: 0, haunted: 1, reverent: 2 },
+  },
+  // Otho Grist — the Stone Lampwarden of Cinderhead Mine; gruff, fair, the curve's
+  // deliberate wall. Miner's cap + brass cap-lamp, slate coat, crystal pendant.
+  otho: {
+    id: 'portrait_otho',
+    path: 'assets/portraits/otho.png',
+    expressions: { neutral: 0, grave: 1, proud: 2, warm: 3 },
   },
 };
 
