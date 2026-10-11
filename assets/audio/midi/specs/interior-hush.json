@@ -1,0 +1,44 @@
+{
+  "title": "The Quiet After - stock interior, SOMBER A (SNES register)",
+  "_note": "Stock interior cue for tender worry and grief inside a home - warmth still there, someone frightened (first use: the apprentice's house in Tinderwick between the coast omen and the first Gleam). Quotes the VESPER MOTIF in D minor (lift A3-D4-E4, settle F4-E4-D4) slow and plain, 3/4 at 90 BPM, long notes. pulse25 lead almost alone for the first phrase over a breathing tri_bass; a soft STRINGS bed enters bar 3; in A' a BELL music-box line keeps trying to rise (each attempt reaches a step higher, then falls back); B turns to relative F major - the composure in Gran's voice - and the last bar sits on A (V) to lead home. No drums. 24 bars.",
+  "era": "snes",
+  "tempo": 90,
+  "time_signature": [
+    3,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "D minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.9,
+      "notes": "A3q D4h | E4h. | F4q E4q D4q | E4h. | A3q D4h | E4q F4q G4q | F4h E4q | E4h C#4q | A3q D4h | E4h. | F4q E4q D4q | D4h. | C4q F4h | G4h. | G4q F4q E4q | E4h. | F4q A4h | G4h E4q | F4q E4q D4q | D4h. | C4q F4q A4q | G4h. | F4q E4q D4q | E4h C#4q"
+    },
+    {
+      "name": "strings",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.24,
+      "notes": "rh. | rh. | D3+F3+Bb3h. | C#3+E3+A3h. | D3+F3+A3h. | D3+G3+Bb3h. | D3+F3+Bb3h. | C#3+E3+A3h. | D3+F3+A3h. | D3+F3+A3h. | D3+F3+Bb3h. | D3+G3+Bb3h. | C3+F3+A3h. | C3+E3+G3h. | D3+G3+Bb3h. | C#3+E3+A3h. | C3+F3+A3h. | C3+E3+G3h. | D3+F3+A3h. | D3+F3+Bb3h. | C3+F3+A3h. | C3+E3+G3h. | D3+F3+Bb3h. | C#3+E3+A3h."
+    },
+    {
+      "name": "musicbox",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.3,
+      "_note": "the line that keeps trying to rise",
+      "notes": "rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rq A4e D5e E5q | rh. | rq A4e D5e F5q | E5h. | rq A4e D5e G5q | F5q E5q rq | rh. | rh. | rq C5e F5e A5q | G5h. | rh. | rh. | rq C5e F5e Bb5q | A5h rq | rh."
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.8,
+      "notes": "D2h. | D2h. | Bb1h. | A1h. | D2h. | G1h. | Bb1h. | A1h. | D2h. | D2h. | Bb1h. | G1h. | F1h. | C2h. | G1h. | A1h. | F1h. | C2h. | D2h. | Bb1h. | F1h. | C2h. | Bb1h. | A1h."
+    }
+  ]
+}

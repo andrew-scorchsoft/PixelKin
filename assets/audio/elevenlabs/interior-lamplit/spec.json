@@ -1,0 +1,62 @@
+{
+ "id": "interior-lamplit",
+ "kind": "loop",
+ "where": "Everyday houses — first Pale Vault's Glacier Cottage; the stock neutral home interior",
+ "mood": "Lamplit rooms — an unhurried, conversational little tune that sits under a chat by the stove and never asks for attention.",
+ "bpm": 90,
+ "beats_per_bar": 4,
+ "_note": "Matches the classic spec: 90 BPM 4/4, G major with an E-minor lean (B section). Motif low.",
+ "motif": {"strength": "low"},
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "90 BPM",
+  "4/4 time, gentle and unhurried",
+  "G major with an E minor lean",
+  "soft sampled electric piano and harp carrying a conversational melody",
+  "light string pad",
+  "walking plucked bass in quarter notes",
+  "a sparse flute answering each phrase",
+  "calm everyday lamplit home, intimate small room",
+  "easygoing background melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals", "singing", "EDM", "four-on-the-floor kick", "sidechain pumping", "fade out", "ritardando", "ending",
+  "drums", "electric guitar", "epic orchestral", "dramatic", "jazz solo", "ambient drone"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{a lamp turned up: a soft electric piano chord and a harp arpeggio, the walking bass steps in and the melody begins}",
+   "styles": ["gentle opening", "settled and calm"]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the easygoing melody in G major on electric piano and harp, short phrases with space at each end, the plucked bass walking underneath}",
+   "styles": ["main theme", "memorable hook", "conversational"]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the melody again with a soft flute answering in each gap, the string pad a touch warmer}",
+   "styles": ["flute answers", "call and response"]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a gentle lean into E minor, thoughtful and a little wistful, through C and D major, then easing home}",
+   "styles": ["E minor", "thoughtful", "contrasting section"],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the melody returns in G major, settled and warm; the last bar rests on D and walks straight back into the main theme}",
+   "styles": ["main theme returns", "seamless loop back to the start of the theme"]
+  }
+ ]
+}

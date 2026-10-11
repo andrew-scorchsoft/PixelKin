@@ -1,0 +1,94 @@
+{
+ "id": "interior-unease",
+ "kind": "loop",
+ "where": "Stock interior (rooms where something is wrong; Hollowing-touched places) — first heard in Hollowfen Stillworks, Coldfog Marches",
+ "mood": "Cold Hearth — glass tones and a music box winding down in a room the warmth has left; eerie, beautiful, and strangely gentle.",
+ "bpm": 66,
+ "beats_per_bar": 4,
+ "_note": "Same cue as the classic spec (assets/audio/midi/specs/interior-unease.json): 66 BPM 4/4, C# minor with whole-tone colour, no motif conditioning (the classic keeps only the motif's rising leap, unresolved). Sparse by design, but a held tone is always sounding.",
+ "motif": null,
+ "max_stall": 4.0,
+ "_stall_note": "deliberately sparse interior at 66 BPM (a bar is 3.6 s): one held-tone hush up to ~4 s is allowed; anything longer is dead air",
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "66 BPM",
+  "C# minor with whole-tone and augmented chord colour",
+  "glass harmonica tones holding long eerie notes",
+  "low sustained string chords",
+  "a music box slowly winding down",
+  "a distant mechanical tick and soft clank, like old machinery",
+  "a breath of air between phrases",
+  "an abandoned works where the hearth has gone cold, eerie and beautiful, sympathetic and gentle",
+  "short room reverb, close and quiet",
+  "a slow haunting melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "fade out",
+  "ritardando",
+  "ending",
+  "horror",
+  "jump scare",
+  "drums",
+  "epic orchestral",
+  "cheerful",
+  "industrial noise"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{a music box already playing, a little slow, over a low held string chord; a distant tick; a glass harmonica tone rises out of the hush}",
+   "styles": [
+    "eerie opening",
+    "music box"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 6,
+   "text": "{the haunting melody in C# minor on glass harmonica: a rising leap that reaches for home and drifts onto a whole-tone chord instead, low strings holding, the tick far away}",
+   "styles": [
+    "main theme",
+    "haunting melody",
+    "unresolved"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 6,
+   "text": "{the melody again; the music box beneath it winds slowly down, its notes spacing out, a soft mechanical clank, a breath of air between the phrases}",
+   "styles": [
+    "music box winding down",
+    "eerie beauty"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 4,
+   "text": "{contrast: a brief warm A major chord on the strings, like a memory of the fire, the glass tone gentle and sad, then the whole-tone colour returns}",
+   "styles": [
+    "A major",
+    "a memory of warmth",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 6,
+   "text": "{the haunting C# minor melody returns, the music box wound again; the last bar hangs on an augmented chord that leads straight back into the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

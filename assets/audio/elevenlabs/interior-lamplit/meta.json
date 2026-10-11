@@ -1,0 +1,17 @@
+{
+ "id": "interior-lamplit",
+ "kind": "loop",
+ "where": "Everyday houses \u2014 first Pale Vault's Glacier Cottage; the stock neutral home interior",
+ "mood": "Lamplit rooms \u2014 an unhurried, conversational little tune that sits under a chat by the stove and never asks for attention.",
+ "duration": 90.821,
+ "loop_start": 4.164,
+ "seam": 0.218,
+ "bpm_est": 89.1,
+ "song_id": "7YzEdZB9jHfOaL8qifMd",
+ "raw_ms": 88000,
+ "motif": "low",
+ "lufs": -17.5,
+ "edits": [
+  "trimmed 2.500s of head"
+ ]
+}

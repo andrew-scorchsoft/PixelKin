@@ -1,0 +1,50 @@
+{
+  "title": "Sunny Rooms (stock happy/comic interior, SNES register)",
+  "_note": "Stock HAPPY-B playful interior (Georgina's cottage, the Lifting House on Pearlmoor Quay). 126 BPM 4/4, C major, 32 bars: A (8) -> A' (8) -> B (8, F major then a D7-G7 cheeky turnaround) -> A'' (8, last bar walks up F# to G to lead back). Ocarina-ish triangle lead with staccato skips and chromatic neighbour notes (the wink), staccato sampled bass (bassoon-ish oom-pah eighths), pizzicato offbeat dyads, xylophone (bell) fills in the lead's rests, tambourine on hat/ohat. Cheeky but warm, never manic. No motif.",
+  "era": "snes",
+  "tempo": 126,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "triangle",
+      "octave": 4,
+      "gain": 0.95,
+      "notes": "G4e re C5e re B4e C5e re G4e | A4e G4e F#4e G4e E4q rq | F4e re A4e re G#4e A4e re F4e | G4e F4e E4e D4e C4q rq | G4e re C5e re B4e C5e re E5e | D5e C5e B4e A4e G4q rq | F4e A4e C5e A4e B4e D5e G4e B4e | C5q G4q C4q rq | G4e re C5e re B4e C5e re G4e | A4e G4e F#4e G4e E4q rq | F4e re A4e re G#4e A4e re F4e | G4e F4e E4e D4e C4q rq | G4e re C5e re B4e C5e re E5e | D5e C5e B4e A4e G4q rq | F4e E4e D4e F4e E4e D4e C4e B3e | C4q E4e G4e C5q rq | A4q. G4e F4q A4q | C5q. Bb4e A4h | G4e re Bb4e re A4e G4e F4e E4e | F4h rh | D4e F4e A4e D5e C5e A4e F#4e A4e | G4q. F4e E4q D4q | B3e D4e G4e B4e A4e F4e D4e B3e | G4q rq G4e A4e B4e D5e | G4e re C5e re B4e C5e re G4e | A4e G4e F#4e G4e E4q rq | F4e re A4e re G#4e A4e re F4e | G4e F4e E4e D4e C4q rq | G4e re C5e re B4e C5e re E5e | D5e C5e B4e A4e G4q rq | F4e A4e C5e A4e B4e D5e G4e B4e | C5q G4e E4e D4e E4e F#4e re"
+    },
+    {
+      "name": "pizz",
+      "voice": "pluck",
+      "octave": 3,
+      "gain": 0.38,
+      "notes": "re E3+G3e re E3+G3e re E3+G3e re E3+G3e | re B3+D4e re B3+D4e re E3+G3e re E3+G3e | re A3+C4e re A3+C4e re A3+C4e re A3+C4e | re B3+D4e re B3+D4e re E3+G3e re E3+G3e | re E3+G3e re E3+G3e re E3+G3e re E3+G3e | re B3+D4e re B3+D4e re B3+D4e re B3+D4e | re A3+C4e re A3+C4e re B3+D4e re B3+D4e | re E3+G3e re E3+G3e re E3+G3e re E3+G3e | re E3+G3e re E3+G3e re E3+G3e re E3+G3e | re B3+D4e re B3+D4e re E3+G3e re E3+G3e | re A3+C4e re A3+C4e re A3+C4e re A3+C4e | re B3+D4e re B3+D4e re E3+G3e re E3+G3e | re E3+G3e re E3+G3e re E3+G3e re E3+G3e | re B3+D4e re B3+D4e re B3+D4e re B3+D4e | re F3+A3e re F3+A3e re B3+D4e re B3+D4e | re E3+G3e re E3+G3e re E3+G3e re E3+G3e | re A3+C4e re A3+C4e re A3+C4e re A3+C4e | re A3+C4e re A3+C4e re A3+C4e re A3+C4e | re E3+G3e re E3+G3e re A3+C4e re A3+C4e | re A3+C4e re A3+C4e re A3+C4e re A3+C4e | re F#3+A3e re F#3+A3e re F#3+A3e re F#3+A3e | re B3+D4e re B3+D4e re B3+D4e re B3+D4e | re B3+D4e re B3+D4e re B3+D4e re B3+D4e | re B3+D4e re B3+D4e re B3+D4e re B3+D4e | re E3+G3e re E3+G3e re E3+G3e re E3+G3e | re B3+D4e re B3+D4e re E3+G3e re E3+G3e | re A3+C4e re A3+C4e re A3+C4e re A3+C4e | re B3+D4e re B3+D4e re E3+G3e re E3+G3e | re E3+G3e re E3+G3e re E3+G3e re E3+G3e | re B3+D4e re B3+D4e re B3+D4e re B3+D4e | re A3+C4e re A3+C4e re B3+D4e re B3+D4e | re E3+G3e re E3+G3e re B3+D4e re B3+D4e"
+    },
+    {
+      "name": "xylo",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.3,
+      "notes": "rw | rh rq E5e C5e | rw | rh rq G5s F5s E5s D5s | rw | rh rq E5e C5e | rw | rh rq C6s G5s E5s C5s | rw | rh rq E5e C5e | rw | rh rq G5s F5s E5s D5s | rw | rh rq E5e C5e | rw | rh rq C5e G5e | rw | rw | rw | rh F5e A5e C6e A5e | rw | rw | rw | rw | rw | rh rq E5e C5e | rw | rh rq G5s F5s E5s D5s | rw | rh rq E5e C5e | rw | rw"
+    },
+    {
+      "name": "bass",
+      "voice": "bass",
+      "octave": 2,
+      "gain": 0.6,
+      "notes": "C2e re G2e re C3e re G2e re | G2e re D3e re C2e re G2e re | F2e re C3e re F3e re C3e re | G2e re D3e re C2e re G2e re | C2e re G2e re C3e re G2e re | G2e re D3e re G3e re D3e re | F2e re C3e re G2e re D3e re | C2e re G2e re C3e re G2e re | C2e re G2e re C3e re G2e re | G2e re D3e re C2e re G2e re | F2e re C3e re F3e re C3e re | G2e re D3e re C2e re G2e re | C2e re G2e re C3e re G2e re | G2e re D3e re G3e re D3e re | D2e re A2e re G2e re D3e re | C2e re G2e re C3e re G2e re | F2e re C3e re F3e re C3e re | F2e re C3e re F3e re C3e re | C2e re G2e re F2e re C3e re | F2e re C3e re F3e re C3e re | D2e re A2e re D3e re A2e re | G2e re D3e re G3e re D3e re | G2e re D3e re G3e re D3e re | G2e re D3e re G3e re D3e re | C2e re G2e re C3e re G2e re | G2e re D3e re C2e re G2e re | F2e re C3e re F3e re C3e re | G2e re D3e re C2e re G2e re | C2e re G2e re C3e re G2e re | G2e re D3e re G3e re D3e re | F2e re C3e re G2e re D3e re | C2e re G2e re G2e re D3e re"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.3,
+      "_note": "Tambourine shake (hat/ohat), nothing heavier.",
+      "notes": "e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat | e hat r ohat r hat r ohat hat"
+    }
+  ]
+}

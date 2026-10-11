@@ -1,0 +1,63 @@
+{
+ "id": "interior-hearth",
+ "kind": "loop",
+ "where": "Happy family homes — first Galehigh's Terrace Cottage; the stock warm-home interior",
+ "mood": "Kettle on, a cat by the stove — a bright, bouncing little home tune for rooms where folk are glad you came.",
+ "bpm": 90,
+ "beats_per_bar": 4,
+ "_note": "Matches the classic spec: 90 BPM 4/4, F major, A / A' / B (Bb, Gm, Dm) form. Motif medium.",
+ "motif": {"strength": "medium"},
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "90 BPM",
+  "4/4 time with a gentle bounce",
+  "F major",
+  "soft clarinet-like reed lead singing a smiling melody",
+  "twinkling celesta answers",
+  "pizzicato strings and harp arpeggios",
+  "round bouncing synth bass on root and fifth",
+  "soft brushes on beats two and four",
+  "warm, bright, homely cottage kitchen, intimate small room",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals", "singing", "EDM", "four-on-the-floor kick", "sidechain pumping", "fade out", "ritardando", "ending",
+  "drum kit", "electric guitar", "epic orchestral", "dark", "sad", "ambient drone"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{the kettle starts to sing: a bright celesta flourish over a plucked harp chord, the bass bounces in and the reed's first notes lead into the theme}",
+   "styles": ["cheerful welcoming opening", "homely"]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the smiling reed melody in F major, a hopeful little lift that settles home, over bouncing pizzicato and harp; clear and hummable}",
+   "styles": ["main theme", "memorable hook", "gentle bounce"]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the melody again, climbing a little higher, celesta answering each phrase like a cat's bell, the harp fuller}",
+   "styles": ["celesta answers", "fuller arrangement"]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a warm middle in B-flat and D minor, the reed tender and storytelling, a grandparent's memory by the stove, then brightening back}",
+   "styles": ["B-flat major", "tender", "contrasting section"],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the smiling theme returns in F major, cosy and bright; the last bar bounces straight back into the main theme}",
+   "styles": ["main theme returns", "seamless loop back to the start of the theme"]
+  }
+ ]
+}

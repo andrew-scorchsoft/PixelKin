@@ -1,0 +1,63 @@
+{
+ "id": "interior-sunny",
+ "kind": "loop",
+ "where": "Playful houses — Georgina's cottage (the Sunniest House in the Dark) and the Lifting House on Pearlmoor Quay",
+ "mood": "Sunny rooms with a wink — a sprightly, cheeky little ocarina tune that skips about the furniture.",
+ "bpm": 126,
+ "beats_per_bar": 4,
+ "_note": "Matches the classic spec: 126 BPM 4/4, C major, A / A' / B (F major, D7-G7 turn) / A'' form. No motif (tempo is the point).",
+ "motif": null,
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "126 BPM",
+  "4/4 time, bouncy and sprightly",
+  "C major with cheeky chromatic grace notes",
+  "ocarina-like whistle lead with skipping staccato phrases",
+  "staccato bassoon-like bass hopping on root and fifth",
+  "xylophone runs answering the melody",
+  "pizzicato strings on the offbeats",
+  "light tambourine shakes",
+  "playful, quirky, comic and warm, a cosy small room",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals", "singing", "EDM", "four-on-the-floor kick", "sidechain pumping", "fade out", "ritardando", "ending",
+  "drum kit", "electric guitar", "frantic", "circus", "dark", "epic orchestral"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{a cheeky xylophone run tumbles down, a tambourine shake, and the staccato bass hops straight into the bounce}",
+   "styles": ["playful opening", "full presence from the first beat"]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the sprightly ocarina melody in C major, skipping staccato notes with a winking chromatic step, over the hopping bassoon bass and offbeat pizzicato}",
+   "styles": ["main theme", "memorable hook", "cheeky"]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the tune again, xylophone answering each phrase with a little run, the tambourine brighter}",
+   "styles": ["xylophone answers", "fuller arrangement"]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a sunny lift to F major, the ocarina sings longer notes, then a sly turnaround through D7 and G7 like a wink}",
+   "styles": ["F major", "contrasting section", "sly turnaround"],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the skipping theme returns in C major, warm and cheeky; the last bar walks up a semitone straight back into the main theme}",
+   "styles": ["main theme returns", "seamless loop back to the start of the theme"]
+  }
+ ]
+}

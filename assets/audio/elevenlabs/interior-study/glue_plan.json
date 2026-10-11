@@ -1,0 +1,48 @@
+{
+ "chunks": [
+  {
+   "song_id": "35KusWM7VTrzhXMdJyAR",
+   "range": {
+    "start_ms": 63000,
+    "end_ms": 83000
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "96 BPM",
+    "A Dorian, curious and bright-minor",
+    "steady ticking woodblock clock ostinato on every beat",
+    "soft marimba playing even broken-chord eighth notes",
+    "music box melody, inquisitive phrases that end on a question",
+    "bassoon-like reed counter-melody answering the tune",
+    "soft sustained string chords",
+    "intimate small-room interior, a workshop full of lenses and star-charts, thoughtful and absorbed",
+    "short warm room reverb, close and quiet",
+    "strong singable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "35KusWM7VTrzhXMdJyAR",
+   "range": {
+    "start_ms": 5000,
+    "end_ms": 15000
+   }
+  }
+ ]
+}

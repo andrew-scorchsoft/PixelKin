@@ -1,0 +1,92 @@
+{
+ "id": "interior-study",
+ "kind": "loop",
+ "where": "Stock interior (thoughtful rooms: workshops, studies, star-chart cottages) — first heard in Nightreach's Watcher's Cottage",
+ "mood": "Charts and Lenses — a ticking, curious little room of ground glass and inked stars, gently absorbed in its work.",
+ "bpm": 96,
+ "beats_per_bar": 4,
+ "_note": "Same cue as the classic spec (assets/audio/midi/specs/interior-study.json): 96 BPM 4/4, A Dorian, A-B-A' form, no motif (the tempo and the clockwork are the point). Stock interior: small room, 4-5 instruments.",
+ "motif": null,
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "96 BPM",
+  "A Dorian, curious and bright-minor",
+  "steady ticking woodblock clock ostinato on every beat",
+  "soft marimba playing even broken-chord eighth notes",
+  "music box melody, inquisitive phrases that end on a question",
+  "bassoon-like reed counter-melody answering the tune",
+  "soft sustained string chords",
+  "intimate small-room interior, a workshop full of lenses and star-charts, thoughtful and absorbed",
+  "short warm room reverb, close and quiet",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "fade out",
+  "ritardando",
+  "ending",
+  "full drum kit",
+  "epic orchestral",
+  "cathedral reverb",
+  "electric guitar",
+  "ambient drone",
+  "sad"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{a woodblock clock starts ticking on the first beat, the marimba picks up its even broken-chord eighths beside it, and the first music-box note leans in}",
+   "styles": [
+    "clockwork opening",
+    "pulse from the first beat"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the curious melody in A Dorian on music box: little climbing phrases that end on an upward question, over the ticking clock and marimba, the bright D major chord lifting it}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "inquisitive"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the same melody again, now a bassoon-like reed counter-line answers each phrase from below, soft strings under it, like two minds working the same problem}",
+   "styles": [
+    "reed counter-melody",
+    "call and response"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: the tune moves to C major and G major, slower longer notes, a moment of quiet discovery as a lens comes into focus, the clock still ticking under it}",
+   "styles": [
+    "C major",
+    "discovery",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the curious A Dorian melody returns on music box with the reed answering; the last bar steps straight back into the main theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

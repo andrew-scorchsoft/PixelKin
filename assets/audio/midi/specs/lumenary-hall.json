@@ -1,0 +1,62 @@
+{
+  "title": "The Lamp Hall (stock Lumenary interior, SNES register)",
+  "_note": "Stock Lumenary hall interior (Tinderwick/Brisa, Pearlmoor/Reyl, any later hall without a bespoke cue). 90 BPM 4/4, D minor -> F major bridge, 24 bars. A (8, Dm, organ processional melody) -> A' (8, cadences home on D) -> B (8, F major brass chorale, turns on A major to lead back). Choir pad carries real chords, processional root-fifth half-note bass, a timpani (tom) roll leading every 4-bar phrase, one bell glint per phrase end. Bar 1 opens on the awed hit (crash + timpani) then settles: the 'hit then settle' shape. Reverent, never battle-busy.",
+  "era": "snes",
+  "tempo": 90,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "D minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "organ",
+      "octave": 4,
+      "gain": 0.62,
+      "_note": "Pipe-organ processional melody; rests through the brass bridge.",
+      "notes": "D4h A4h | G4q F4q E4q F4q | D4h. C4q | D4w | F4h A4h | Bb4q A4q G4q A4q | F4h E4q. D4e | C#4h E4h | D4h A4h | G4q F4q E4q F4q | D4h. C4q | D4w | F4h A4h | C5q Bb4q A4q G4q | F4q E4q D4q E4q | D4w | rw | rw | rw | rw | rw | rw | rw | rw"
+    },
+    {
+      "name": "brass",
+      "voice": "brass",
+      "octave": 4,
+      "gain": 0.5,
+      "_note": "Brass chorale bridge in F major, last bar on the dominant A to lead back to D minor.",
+      "notes": "rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | F4h A4h | C5h. Bb4q | A4h G4h | F4w | Bb4h A4h | G4h C5h | A4q G4q F4q E4q | E4h C#4h"
+    },
+    {
+      "name": "pad",
+      "voice": "pad",
+      "octave": 3,
+      "gain": 0.28,
+      "_note": "Choir-pad bed, one chord per bar.",
+      "notes": "D3+F3+A3w | G3+Bb3+D4w | Bb2+D3+F3w | D3+F3+A3w | F3+A3+C4w | G3+Bb3+D4w | D3+F3+A3w | A3+C#4+E4w | D3+F3+A3w | G3+Bb3+D4w | Bb2+D3+F3w | D3+F3+A3w | F3+A3+C4w | G3+Bb3+D4h C3+E3+G3h | D3+F3+A3h A3+C#4+E4h | D3+F3+A3w | F3+A3+C4w | F3+A3+C4w | C3+E3+G3w | F3+A3+C4w | Bb2+D3+F3w | C3+E3+G3w | F3+A3+C4h C3+E3+G3h | A3+C#4+E4w"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.85,
+      "_note": "Processional root-fifth halves.",
+      "notes": "D2h A2h | G2h D3h | Bb2h F3h | D2h A2h | F2h C3h | G2h D3h | D2h A2h | A2h E3h | D2h A2h | G2h D3h | Bb2h F3h | D2h A2h | F2h C3h | G2h C2h | D2h A2h | D2h A2h | F2h C3h | F2h C3h | C2h G2h | F2h C3h | Bb2h F3h | C2h G2h | F2h C2h | A2h E3h"
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.3,
+      "_note": "Lamp-bell glint at each phrase end.",
+      "notes": "rw | rw | rw | rh rq A5q | rw | rw | rw | rh rq E5q | rw | rw | rw | rh rq F5q | rw | rw | rw | rh rq D5q | rw | rw | rw | rh rq C6q | rw | rw | rw | rh rq E5q"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.5,
+      "_note": "Timpani: the opening hit, then a soft tom roll into every phrase.",
+      "notes": "h crash+tom rh | rw | rw | rh rq s tom tom tom tom | h tom rh | rw | rw | rh rq s tom tom tom tom | h tom rh | rw | rw | rh rq s tom tom tom tom | h tom rh | rw | rw | rh rq s tom tom tom tom | h tom rh | rw | rw | rh rq s tom tom tom tom | h tom rh | rw | rw | rh rq s tom tom tom tom"
+    }
+  ]
+}

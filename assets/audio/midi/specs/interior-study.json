@@ -1,0 +1,65 @@
+{
+  "title": "Charts and Lenses - stock interior, NEUTRAL B (SNES register)",
+  "_note": "Stock interior cue for thoughtful, curious rooms: workshops, studies, a watcher's cottage full of star-charts (first use: Nightreach's Watcher's Cottage). No Vesper motif - a self-contained inquisitive tune. A Dorian (the raised 6th F# = the bright D-major IV: curiosity, not sorrow), 96 BPM 4/4, 24 bars A-B-A'. pulse25 lead asks questions (phrases end up on E/F#); tri_bass walks like clockwork; a PLUCK marimba ostinato in steady eighths; dry woodblock-clock ticks (hat) on every beat; 3rd+7th STRINGS shells; a BELL music-box glint at phrase ends; a TRIANGLE bassoon-like counter-line answers the lead through B and A'. snes era (small-room reverb). Last bar (Em, B) steps down into the A that opens bar 1.",
+  "era": "snes",
+  "tempo": 96,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "A Dorian",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.95,
+      "notes": "A4e B4e C5q E5q D5e C5e | B4q A4e F#4e A4h | A4e B4e C5q E5q G5e F#5e | E5h. rq | D5e C5e B4q D5q G4q | A4e B4e G4q E4h | C5q B4e A4e G4q E5q | D5q F#4q A4h | E5q. D5e C5q G4q | B4q. A4e G4h | G4e A4e B4e G4e E5q D5q | C5h. rq | E5q. D5e C5q E5q | F#5q. E5e D5h | B4e C5e D5e B4e G4q B4q | A4h B4h | A4e B4e C5q E5q D5e C5e | B4q A4e F#4e A4h | A4e B4e C5q E5q G5e F#5e | E5h. rq | D5e C5e B4q D5q G4q | A4e B4e G4q E4h | C5q B4e A4e G4q E5q | B4q. A4e G4q B4q"
+    },
+    {
+      "name": "counter",
+      "voice": "triangle",
+      "octave": 3,
+      "gain": 0.55,
+      "_note": "bassoon-like counter-line, enters in B",
+      "notes": "rw | rw | rw | rw | rw | rw | rw | rw | C4h G3h | D4h B3h | B3h. A3q | A3w | G3h E3h | A3h D4h | E4h D4h | B3h E4h | rw | C4h A3h | rw | A3h F#3h | B3h D4h | C4h B3h | rh E4q D4q | E4h B3h"
+    },
+    {
+      "name": "marimba",
+      "voice": "pluck",
+      "octave": 4,
+      "gain": 0.42,
+      "notes": "A3e C4e E4e G4e E4e C4e E4e C4e | D4e F#4e A4e C5e A4e F#4e A4e F#4e | A3e C4e E4e G4e E4e C4e E4e C4e | D4e F#4e A4e C5e A4e F#4e A4e F#4e | G3e B3e D4e F#4e D4e B3e D4e B3e | E3e G3e B3e D4e B3e G3e B3e G3e | C4e E4e G4e B4e G4e E4e G4e E4e | D4e F#4e A4e C5e A4e F#4e A4e F#4e | C4e E4e G4e B4e G4e E4e G4e E4e | G3e B3e D4e F#4e D4e B3e D4e B3e | E3e G3e B3e D4e B3e G3e B3e G3e | A3e C4e E4e G4e E4e C4e E4e C4e | C4e E4e G4e B4e G4e E4e G4e E4e | D4e F#4e A4e C5e A4e F#4e A4e F#4e | E3e G3e B3e D4e B3e G3e B3e G3e | E3e G#3e B3e D4e B3e G#3e B3e G#3e | A3e C4e E4e G4e E4e C4e E4e C4e | D4e F#4e A4e C5e A4e F#4e A4e F#4e | A3e C4e E4e G4e E4e C4e E4e C4e | D4e F#4e A4e C5e A4e F#4e A4e F#4e | G3e B3e D4e F#4e D4e B3e D4e B3e | E3e G3e B3e D4e B3e G3e B3e G3e | C4e E4e G4e B4e G4e E4e G4e E4e | E3e G3e B3e D4e B3e G3e B3e G3e"
+    },
+    {
+      "name": "strings",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.24,
+      "notes": "C3+G3w | C3+F#3w | C3+G3w | C3+F#3w | B2+F#3w | D3+G3w | E3+B3w | C3+F#3w | E3+B3w | B2+F#3w | D3+G3w | C3+G3w | E3+B3w | C3+F#3w | D3+G3w | D3+G#3w | C3+G3w | C3+F#3w | C3+G3w | C3+F#3w | B2+F#3w | D3+G3w | E3+B3w | D3+G3w"
+    },
+    {
+      "name": "musicbox",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.3,
+      "notes": "rw | rw | rw | rh E5q A5q | rw | rw | rw | rh. F#5q | rw | rw | rw | rh E5q C6q | rw | rw | rw | rh. G#5q | rw | rw | rw | rh E5q A5q | rw | rw | rw | rh. B5q"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.85,
+      "notes": "A2q E3q A3q E3q | D2q A2q D3q A2q | A2q E3q A3q E3q | D2q A2q D2h | G2q D3q G3q D3q | E2q B2q E3q B2q | C2q G2q C3q G2q | D2q A2q D2h | C2q G2q C3q G2q | G2q D3q G3q D3q | E2q B2q E3q B2q | A2q E3q A2h | C2q G2q C3q G2q | D2q A2q D3q A2q | E2q B2q E3q B2q | E2q B2q E2h | A2q E3q A3q E3q | D2q A2q D3q A2q | A2q E3q A3q E3q | D2q A2q D2h | G2q D3q G3q D3q | E2q B2q E3q B2q | C2q G2q C3q G2q | E2q B2q E2h"
+    },
+    {
+      "name": "clock",
+      "voice": "drums",
+      "gain": 0.32,
+      "_note": "woodblock-clock tick on each beat; a soft tom 'tock' marks each 4-bar phrase",
+      "notes": "q tom hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q tom hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q tom hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q tom hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q tom hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q tom hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat"
+    }
+  ]
+}
