@@ -3,12 +3,11 @@
  "kind": "loop",
  "where": "The cold-open cinematic (the Long Dusk falls; a star winks out)",
  "mood": "The Long Dusk falling: hushed foreboding under a sky losing its lanterns, a fragile hopeful phrase that reaches up and is never answered.",
- "duration": 92.5,
- "loop_start": 10.472,
- "seam": 0.452,
- "bpm_est": 95.7,
+ "duration": 90.279,
+ "loop_start": 8.545,
+ "seam": 0.423,
+ "bpm_est": 152.0,
  "song_id": "oPBVzDXZgmmpurVvCbaW",
  "raw_ms": 84271,
- "motif": "low",
- "warning": "seam 0.452 > 0.45: listen to the join, consider --reglue"
+ "motif": "low"
 }

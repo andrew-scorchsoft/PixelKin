@@ -3,12 +3,12 @@
  "kind": "loop",
  "where": "The Hollowing's acolytes and Vigilants (incl. the summit guard), and the far-valley Lampwardens of the North and West (Mira Vael, Ysolde Frost, Lucan Pyre, Nessa Cole)",
  "mood": "The fight in the deepening dark \u2014 cold, uneasy and solemn: an enemy who believes in the gentle night, sorrow under the steel.",
- "duration": 62.746,
- "loop_start": 7.314,
- "seam": 0.93,
+ "duration": 64.81,
+ "loop_start": 9.776,
+ "seam": 0.822,
  "bpm_est": 60.1,
  "song_id": "O5vK4kFUgIE60bFeUmm9",
  "raw_ms": 57626,
  "motif": null,
- "warning": "seam 0.93 > 0.45: listen to the join, consider --reglue"
+ "warning": "seam 0.822 > 0.45: listen to the join, consider --reglue"
 }

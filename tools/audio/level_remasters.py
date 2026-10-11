@@ -30,6 +30,10 @@ ROOT = Path(__file__).resolve().parents[2]
 SERVED = ROOT / "public/assets/audio/music/remaster"
 SPECS = ROOT / "assets/audio/elevenlabs"
 TARGET_LUFS = -15.0
+# Deliberately sparse cues (a lone drone, a held-breath cold open) would sound
+# pushed at the house level: they sit a little under it, still within reach of a
+# neighbouring cue so a crossfade never drops away.
+QUIET = {"coldopen-foreboding": -19.0, "penumbra-ring-a": -18.0, "coldfog-marches-a": -18.0}
 TOLERANCE = 0.5
 CEILING = 0.89  # ~ -1 dBFS sample peak for the safety limiter
 
@@ -57,7 +61,7 @@ def main() -> int:
     files = [SERVED / f"{i}.mp3" for i in a.ids] if a.ids else sorted(SERVED.glob("*.mp3"))
     for f in files:
         lufs, peak = measure(f)
-        gain = TARGET_LUFS - lufs
+        gain = QUIET.get(f.stem, TARGET_LUFS) - lufs
         line = f"{f.stem:28s} {lufs:6.1f} LUFS  peak {peak:5.1f}"
         if a.report or (abs(gain) <= TOLERANCE and peak <= -0.9):
             print(line + ("" if a.report else "  ok"))
