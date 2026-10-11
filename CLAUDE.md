@@ -38,6 +38,7 @@ npm run build          # typecheck + production build to dist/ (full-fidelity au
 npm run build:dist     # build, then shrink dist/ audio to 64k mono + drop sourcemaps — the upload-ready bundle (ffmpeg from PATH, else the ffmpeg-static devDep)
 npm run preview        # serve the production build
 npm run typecheck      # tsc --noEmit
+npm run check          # EVERY CI gate locally (parses checks.yml; --fast skips the slow two) — run before every push/PR
 ```
 
 Python skills (image/music generation):
@@ -247,7 +248,8 @@ go digging on every task.
 | Mechanics design (start here) | `docs/mechanics/00-overview.md` |
 | Readable full dex (all 151) | `docs/mechanics/dex.md` |
 | Balance results | `docs/mechanics/balance-report.md` |
-| Expert panel reviews (first-hour; full-game; scale-out readiness) | `docs/reviews/` |
+| Expert panel reviews (first-hour; full-game; scale-out readiness; story depth; world craft; music) | `docs/reviews/` |
+| How to run a big multi-agent change (pilot→fan out, ownership, gates, shipping) | `docs/process/big-changes.md` |
 | Economy: wicks, shops, Star-charts, XP/battle budget | `docs/mechanics/10-economy.md` (+ `tools/balance/progression.mjs`) |
 | Cut-concept idea bank | `docs/mechanics/concepts/archive/` |
 | Authoritative game data | `src/game/data/` (chart, moves, species, world) |
@@ -352,7 +354,9 @@ free instead of re-deriving it.
 ## Git
 
 - Develop on the feature branch you were given; commit with clear messages;
-  push to that branch. Don't open PRs unless asked.
+  push to that branch. Don't open PRs unless asked. Run `npm run check` before every push/PR.
+- Big, multi-system change? Follow `docs/process/big-changes.md` (pilot first, one owner per
+  shared file, worktree agents must reset onto the feature branch — they start from `main`).
 - **Bump the game version at the end of every round of changes** (before the final push):
   `node tools/build/bump_version.mjs minor` (a patch for a tiny fix) — it updates `package.json`
   AND `src/game/version.ts` (shown on the title screen + browser tab), then refresh the lock with
