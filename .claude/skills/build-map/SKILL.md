@@ -57,7 +57,11 @@ scene the map joins.
    dict, and end with `mk.finalize(m)` — write → autotile expand → strip →
    render → `validate_map` → `audit_warps` → `audit_flow`. **All must
    PASS**; flow WARNs need a justification in the builder's comments (e.g.
-   `fenn_wave` is cosmetic — the NPC is directly interactable).
+   `fenn_wave` is cosmetic — the NPC is directly interactable). Then run
+   `python3 tools/maps/audit_journey.py` (seconds; also in CI): it replays the
+   whole game at TILE level with only the Gifts/flags earned so far, so a prop
+   sealing a warden's dais, a story band or a quest cache — or one reachable
+   only with a LATER Gift — FAILs and is named (map, tile, blocking object).
 4b. **Prove the LOOK, not just the play (2026-10, binding).** The play audits
    can pass on a map that reads as an empty green field with ruled boxes. Two gates:
    - `python3 tools/maps/audit_visual.py <map_id>` — FAILs a flat void (< 0.75
@@ -114,6 +118,7 @@ gids by range), `scatter_decor`, `fence_run`, `organic_border`, `finalize`.
 | `tools/maps/audit_warps.py` | the doors | wide-entrance coverage, landings, round trips |
 | `tools/maps/audit_flow.py` | one map's PLAY | reachability (FAIL), choke triggers, free-pass, loop/return asymmetry, dead-end payoff, screen pacing |
 | `tools/maps/audit_region.py` | the SCENE | graph⇄JSON sync (FAIL), Gift unlock waves, level-band cliffs, region topology (corridor vs circuit), route lengths |
+| `tools/maps/audit_journey.py` | the whole JOURNEY | tile-level cold-open→dawn replay: every golden beat/Gleam/Gift granted by its real NPC/trigger in canon Gift order, every map reached, every NPC/trigger/cache/warp reachable (FAIL) |
 
 `finalize()` runs the first three; run the region audit yourself whenever you
 add/move a warp, an encounter table, or a graph edge. FAILs block; WARNs are

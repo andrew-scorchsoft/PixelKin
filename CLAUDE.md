@@ -718,6 +718,14 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   causeway/board carve must start at the quay/sea SEAM, not one row inside the sea. Most
   orphan flags are tiny decorative gaps behind the border treeline (reported "minor"); a
   cluster ≥4 is worth an eyeball.
+- **`tools/maps/audit_journey.py` replays the WHOLE game at tile level (CI).** From the new-game
+  spawn with nothing held, it walks the real collision model (objects, ledges, static NPC bodies,
+  pushback bands, gated warps) and fires grants only when the granting NPC/trigger/cache itself is
+  reachable — scripts evaluated from the real content (dumped by `journey_content.mjs`). It FAILs
+  a golden beat/Gleam/Gift that's never granted or needs a LATER Gift than canon, any unreached
+  map/content/warp, and prints a ROOT CAUSE naming the blocking object/tile. Run it after ANY map,
+  warp, NPC or script edit; a moved grant = update its `GOLDEN` row; a deliberate permanent block =
+  an `ALLOW_UNREACHED` entry with its WHY.
 - **A story step_on band must cover the WHOLE cut — but only its WALKABLE tiles.** One
   trigger tile on a wide corridor is walk-aroundable (this bit `dusk_begins`); but a band
   tile on a solid/sealed cell now FAILS `audit_flow` as unreachable content (this bit the

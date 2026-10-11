@@ -49,6 +49,13 @@ jobs:
         run: python3 tools/maps/audit_flow.py
       - name: Warp audit (entrance coverage, landings, round trips)
         run: python3 tools/maps/audit_warps.py
+      # The whole journey at TILE level: cold open -> dawn with only the Gifts and
+      # flags earned so far; grants fire only when the granting NPC/trigger/cache
+      # is itself reachable. FAILs a prop sealing a warden/band/cache, a beat that
+      # needs a LATER Gift than canon, and any unreached map/content/warp. Uses
+      # node + esbuild (from npm ci) to dump the content registries.
+      - name: Journey audit (tile-level cold open -> dawn replay)
+        run: python3 tools/maps/audit_journey.py
       - name: Python tools compile (builders, runners, asset tools)
         run: python3 -m py_compile tools/maps/*.py tools/maps/worldcraft/*.py tools/assets/*.py .claude/skills/generate-sprite-sheet/scripts/*.py
       - name: Spatial audit (edge geometry)
