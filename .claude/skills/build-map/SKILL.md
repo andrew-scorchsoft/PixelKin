@@ -40,9 +40,15 @@ scene the map joins.
    Gift-gated promise this map plants or pays. Run
    `./venv/bin/python tools/maps/audit_region.py` before AND after — it
    prints the unlock waves, band borders, region topology and route lengths.
-3. **Copy the nearest worked example** from `tools/maps/`:
-   - town → `build_tinderwick.py` · route → `build_dimglass.py` /
-     `build_saltreach_fen_i.py` (the pattern-library showcase)
+3. **Copy the nearest worked example** from `tools/maps/` — copy the LOOK of
+   the strong South maps, not just the code. (2026-10: later regions that copied
+   `build_saltreach_fen_i.py` for its pattern calls inherited its flat-void look —
+   0.32 props per screen against the South's 2–5. Use it for the *pattern API*
+   only.)
+   - town → `build_tinderwick.py` / `build_pearlmoor.py` · route →
+     `build_dimglass.py` / `build_duskapple_orchard.py` (the visual bar: 5.3
+     props/screen, organic water, a landmark on every screen)
+   - pattern-API reference only → `build_saltreach_fen_i.py`
    - cave floor → `build_glowmoss_deep.py` (+ `_b1f.py` for a lower floor)
    - interior → `build_interiors.py` (all five room types, on **roomkit**)
      · tower floor → `build_beacon.py` · hub → `build_crossroads.py`
@@ -52,6 +58,19 @@ scene the map joins.
    render → `validate_map` → `audit_warps` → `audit_flow`. **All must
    PASS**; flow WARNs need a justification in the builder's comments (e.g.
    `fenn_wave` is cosmetic — the NPC is directly interactable).
+4b. **Prove the LOOK, not just the play (2026-10, binding).** The play audits
+   can pass on a map that reads as an empty green field with ruled boxes. Two gates:
+   - `python3 tools/maps/audit_visual.py <map_id>` — FAILs a flat void (< 0.75
+     objects/landmarks per 15×10 screen; the South bar is 2–5) and box pools (water
+     that fills its bounding box, ≥16 tiles — use `mapkit.blob`); WARNs sparse
+     maps, big bare squares and rectangular cliff slabs. No new FAILs, ever.
+   - **An in-game screenshot review** with `tools/shots/shoot.mjs` (see its
+     README): shoot 3+ positions across the map and LOOK at them next to a
+     Tinderwick/Dimglass shot. Every screen needs a focal point (a landmark,
+     building, crown tree, boulder cluster, a lit lamp), organic edges, and a
+     reason to walk to its far side. If a screen would bore you in a 1995 RPG,
+     it's not done. The render (`render_map.py`) is not a substitute — it shows
+     the whole map at once, which hides the per-screen emptiness the player sees.
 5. **Pay the content debts.** Stamps return the registry refs they create
    (`pt.report(owed)` prints them): scripts in `content/scripts.ts`, dialogue
    in `content/dialogue.ts`, trainers in `content/trainers.ts` (payout = class
