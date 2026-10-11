@@ -488,7 +488,20 @@
       "facing": "down",
       "sprite": "innkeeper",
       "movement": "static",
-      "dialogue_ref": "script.pale_vault_inn_rest"
+      "dialogue_ref": "script.pale_vault_inn_rest",
+      "hidden_when_flag": "gleam:frost"
+    },
+    {
+      "id": "innkeeper_lit",
+      "at": {
+        "tx": 6,
+        "ty": 4
+      },
+      "facing": "down",
+      "sprite": "innkeeper",
+      "movement": "static",
+      "dialogue_ref": "script.pale_vault_inn_rest_lit",
+      "requires_flag": "gleam:frost"
     },
     {
       "id": "guest",
@@ -499,7 +512,20 @@
       "facing": "right",
       "sprite": "frost_herder",
       "movement": "static",
-      "dialogue_ref": "npc.pale_vault_inn_guest"
+      "dialogue_ref": "npc.pale_vault_inn_guest",
+      "hidden_when_flag": "gleam:frost"
+    },
+    {
+      "id": "guest_lit",
+      "at": {
+        "tx": 3,
+        "ty": 6
+      },
+      "facing": "right",
+      "sprite": "frost_herder",
+      "movement": "static",
+      "dialogue_ref": "npc.pale_vault_inn_guest_lit",
+      "requires_flag": "gleam:frost"
     }
   ],
   "gates": [],

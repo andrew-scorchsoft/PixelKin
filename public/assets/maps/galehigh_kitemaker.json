@@ -442,7 +442,7 @@
       "facing": "down",
       "sprite": "market_trader",
       "movement": "static",
-      "dialogue_ref": "script.shop_galehigh",
+      "dialogue_ref": "script.shop_galehigh_staged",
       "requires_flag": "flag:galehigh_kit"
     }
   ],

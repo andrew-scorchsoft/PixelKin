@@ -714,7 +714,20 @@
       "facing": "down",
       "sprite": "lamplighter",
       "movement": "static",
-      "dialogue_ref": "npc.nightreach_hall_keeper"
+      "dialogue_ref": "npc.nightreach_hall_keeper",
+      "hidden_when_flag": "gleam:lunar"
+    },
+    {
+      "id": "hall_keeper_lit",
+      "at": {
+        "tx": 2,
+        "ty": 6
+      },
+      "facing": "down",
+      "sprite": "lamplighter",
+      "movement": "static",
+      "dialogue_ref": "npc.nightreach_hall_keeper_lit",
+      "requires_flag": "gleam:lunar"
     },
     {
       "id": "hall_festival",

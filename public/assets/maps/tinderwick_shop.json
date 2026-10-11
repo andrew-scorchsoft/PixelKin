@@ -469,7 +469,7 @@
       "facing": "down",
       "sprite": "npc_shopkeeper",
       "movement": "static",
-      "dialogue_ref": "script.shop_tinderwick",
+      "dialogue_ref": "script.shop_tinderwick_staged",
       "requires_flag": "flag:tinderwick_kit"
     }
   ],

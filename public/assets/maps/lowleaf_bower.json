@@ -478,7 +478,20 @@
       "facing": "down",
       "sprite": "innkeeper",
       "movement": "static",
-      "dialogue_ref": "script.lowleaf_rest"
+      "dialogue_ref": "script.lowleaf_rest",
+      "hidden_when_flag": "gleam:verdant"
+    },
+    {
+      "id": "bower_keeper_lit",
+      "at": {
+        "tx": 5,
+        "ty": 4
+      },
+      "facing": "down",
+      "sprite": "innkeeper",
+      "movement": "static",
+      "dialogue_ref": "script.lowleaf_rest_lit",
+      "requires_flag": "gleam:verdant"
     },
     {
       "id": "bloom_guest",
@@ -489,7 +502,20 @@
       "facing": "right",
       "sprite": "npc_man",
       "movement": "static",
-      "dialogue_ref": "npc.bower_guest"
+      "dialogue_ref": "npc.bower_guest",
+      "hidden_when_flag": "gleam:verdant"
+    },
+    {
+      "id": "bloom_guest_lit",
+      "at": {
+        "tx": 4,
+        "ty": 6
+      },
+      "facing": "right",
+      "sprite": "npc_man",
+      "movement": "static",
+      "dialogue_ref": "npc.bower_guest_lit",
+      "requires_flag": "gleam:verdant"
     }
   ],
   "gates": [],

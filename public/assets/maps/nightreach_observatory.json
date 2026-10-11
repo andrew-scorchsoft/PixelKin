@@ -1495,7 +1495,7 @@
       "facing": "up",
       "sprite": "npc_lampwarden",
       "movement": "static",
-      "dialogue_ref": "npc.star_vigil_warden_after",
+      "dialogue_ref": "script.star_vigil_warden_staged",
       "requires_flag": "flag:star_vigil_seen"
     },
     {
@@ -1507,7 +1507,20 @@
       "facing": "up",
       "sprite": "npc_old_woman",
       "movement": "static",
-      "dialogue_ref": "npc.nightreach_watcher_steps_a"
+      "dialogue_ref": "npc.nightreach_watcher_steps_a",
+      "hidden_when_flag": "gleam:lunar"
+    },
+    {
+      "id": "watcher_steps_a_lit",
+      "at": {
+        "tx": 18,
+        "ty": 16
+      },
+      "facing": "up",
+      "sprite": "npc_old_woman",
+      "movement": "static",
+      "dialogue_ref": "npc.nightreach_watcher_steps_a_lit",
+      "requires_flag": "gleam:lunar"
     },
     {
       "id": "watcher_steps_b",
@@ -1518,7 +1531,20 @@
       "facing": "up",
       "sprite": "npc_boy",
       "movement": "static",
-      "dialogue_ref": "npc.nightreach_watcher_steps_b"
+      "dialogue_ref": "npc.nightreach_watcher_steps_b",
+      "hidden_when_flag": "gleam:lunar"
+    },
+    {
+      "id": "watcher_steps_b_lit",
+      "at": {
+        "tx": 12,
+        "ty": 18
+      },
+      "facing": "up",
+      "sprite": "npc_boy",
+      "movement": "static",
+      "dialogue_ref": "npc.nightreach_watcher_steps_b_lit",
+      "requires_flag": "gleam:lunar"
     },
     {
       "id": "festival_lunar_a",

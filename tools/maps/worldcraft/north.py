@@ -23,7 +23,7 @@ import json
 import sys
 from pathlib import Path
 
-from ._kit import ambient_kin, particles  # noqa: F401
+from ._kit import add_words, ambient_kin, lit, particles  # noqa: F401
 
 MAPS = Path(__file__).resolve().parents[3] / "public" / "assets" / "maps"
 
@@ -267,3 +267,37 @@ PLACEMENTS: dict[str, dict] = {
     "pale_vault_home": {"npcs": recast("pale_vault_home", home_kid="village_child")},
     "pale_vault_lumenary": {"npcs": recast("pale_vault_lumenary", hall_festival="star_watcher")},
 }
+
+
+# ------------------------------------------------------------- AFTER-GLEAM
+# Galehigh and Pale Vault answer their Gleams (src/game/content/regions/north.ts).
+# Words only: `lit` twins share their original's tile, sheet and body; `talk`
+# re-points keep the id (the Kite-rising / Aurora-watch actors, the shop's kit
+# pair, the tallow-keeper's oil chain).
+STORM, FROST = "gleam:storm", "gleam:frost"
+add_words(PLACEMENTS, {
+    "galehigh_terraces": {
+        "after": [lit("terrace_farmer", STORM, "npc.galehigh_farmer_lit")],
+        "talk": {"festival_piper": "script.galehigh_piper_staged",
+                 "festival_kid": "script.galehigh_festival_kid_staged",
+                 "festival_goer": "script.galehigh_festival_goer_staged"},
+    },
+    "galehigh_lumenary": {"after": [lit("hall_keeper", STORM, "npc.galehigh_hall_keeper_lit")]},
+    "galehigh_inn": {"after": [lit("innkeeper", STORM, "script.galehigh_inn_rest_lit"),
+                               lit("guest", STORM, "npc.galehigh_inn_guest_lit")]},
+    "galehigh_home": {"after": [lit("home_elder", STORM, "npc.galehigh_home_elder_lit"),
+                                lit("home_kid", STORM, "npc.galehigh_home_kid_lit")]},
+    "galehigh_kitemaker": {"talk": {"keeper": "script.shop_galehigh_staged"}},
+    "lanternway_galehigh": {"after": [lit("lanternway_galehigh_lamplighter", STORM,
+                                          "npc.lanternway_galehigh_lamplighter_lit")]},
+    "pale_vault_glacier": {
+        "after": [lit("townsfolk_inn", FROST, "npc.pale_vault_townsfolk_lit")],
+        "talk": {"aurora_watcher_b": "script.aurora_watcher_b_staged",
+                 "tallow_keeper_after": "script.tallow_keeper_staged"},
+    },
+    "pale_vault_home": {"after": [lit("home_elder", FROST, "npc.pale_vault_home_elder_lit"),
+                                  lit("home_kid", FROST, "npc.pale_vault_home_kid_lit")]},
+    "pale_vault_inn": {"after": [lit("innkeeper", FROST, "script.pale_vault_inn_rest_lit"),
+                                 lit("guest", FROST, "npc.pale_vault_inn_guest_lit")]},
+    "pale_vault_lumenary": {"after": [lit("hall_keeper", FROST, "npc.pale_vault_hall_keeper_lit")]},
+})

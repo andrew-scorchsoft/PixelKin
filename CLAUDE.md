@@ -1252,6 +1252,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   drift; if one would revert your change, the change belongs in that runner's data (the Galehigh notice-reader precedent). New scripts go in
   `content/regions/<region>.ts`. On pre-Chickenpig maps the runner only accepts ambience, sprite
   swaps and props that pass `prove_off_lane` (no lane, no longer walks, no sealed dry lane).
+- **Towns answer their Gleam through world-craft WORDS (2026-10).** A module's `add_words`
+  block: `lit(id, 'gleam:x', ref)` makes a same-tile flag-pair twin (`<id>_lit`, original gains
+  `hidden_when_flag`); `talk: {id: 'script.*_staged'}` re-points an NPC whose flags are taken
+  (shop kit pairs, staged chains, cutscene actors) at an `unless_flag`/`if_flag` script whose
+  pre-Gleam branch is the ORIGINAL ref. Words only, so both are legal on pre-Chickenpig maps.
+  A new post-Gleam line = a region-file entry + one `lit`/`talk` row, never a dialogue.ts edit.
 - **The regional cast** (21 keys: fisher_*, miner_*, kite_weaver, hollowing_acolyte, innkeeper…)
   is registered in `Npc.ts` `SPRITE_SHEETS` with `REGIONAL_FALLBACK` to a generic sheet; no screen
   should show the same sheet twice.

@@ -1028,7 +1028,20 @@
       "facing": "right",
       "sprite": "npc_man",
       "movement": "static",
-      "dialogue_ref": "npc.bloom_piper"
+      "dialogue_ref": "npc.bloom_piper",
+      "hidden_when_flag": "gleam:verdant"
+    },
+    {
+      "id": "bloom_piper_lit",
+      "at": {
+        "tx": 12,
+        "ty": 15
+      },
+      "facing": "right",
+      "sprite": "npc_man",
+      "movement": "static",
+      "dialogue_ref": "npc.bloom_piper_lit",
+      "requires_flag": "gleam:verdant"
     },
     {
       "id": "bloom_fencer",
@@ -1039,7 +1052,20 @@
       "facing": "left",
       "sprite": "npc_old_woman",
       "movement": "static",
-      "dialogue_ref": "npc.bloom_fencer"
+      "dialogue_ref": "npc.bloom_fencer",
+      "hidden_when_flag": "gleam:verdant"
+    },
+    {
+      "id": "bloom_fencer_lit",
+      "at": {
+        "tx": 16,
+        "ty": 14
+      },
+      "facing": "left",
+      "sprite": "npc_old_woman",
+      "movement": "static",
+      "dialogue_ref": "npc.bloom_fencer_lit",
+      "requires_flag": "gleam:verdant"
     },
     {
       "id": "moss_kid",
@@ -1050,7 +1076,20 @@
       "facing": "down",
       "sprite": "npc_child",
       "movement": "wander",
-      "dialogue_ref": "npc.bloom_kid_a"
+      "dialogue_ref": "npc.bloom_kid_a",
+      "hidden_when_flag": "gleam:verdant"
+    },
+    {
+      "id": "moss_kid_lit",
+      "at": {
+        "tx": 17,
+        "ty": 12
+      },
+      "facing": "down",
+      "sprite": "npc_child",
+      "movement": "wander",
+      "dialogue_ref": "npc.bloom_kid_a_lit",
+      "requires_flag": "gleam:verdant"
     },
     {
       "id": "fern_kid",
@@ -1061,7 +1100,20 @@
       "facing": "down",
       "sprite": "village_child",
       "movement": "wander",
-      "dialogue_ref": "npc.bloom_kid_b"
+      "dialogue_ref": "npc.bloom_kid_b",
+      "hidden_when_flag": "gleam:verdant"
+    },
+    {
+      "id": "fern_kid_lit",
+      "at": {
+        "tx": 11,
+        "ty": 12
+      },
+      "facing": "down",
+      "sprite": "village_child",
+      "movement": "wander",
+      "dialogue_ref": "npc.bloom_kid_b_lit",
+      "requires_flag": "gleam:verdant"
     },
     {
       "id": "kindle_elder",
@@ -1119,7 +1171,7 @@
       "facing": "down",
       "sprite": "npc_shopkeeper",
       "movement": "static",
-      "dialogue_ref": "script.shop_lowleaf",
+      "dialogue_ref": "script.shop_lowleaf_staged",
       "requires_flag": "flag:lowleaf_kit"
     },
     {

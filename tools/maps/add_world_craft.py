@@ -16,8 +16,12 @@ map id to a spec (keys in worldcraft/_kit.py):
 Guards (a violation is an ERROR and nothing is written):
   * unknown ambience keys / particle kinds (typos would silently do nothing);
   * pre-Chickenpig maps take ONLY "ambience", ambient NPCs, "sprites" (cast swaps
-    on existing NPC ids) and "objects" that PROVE off-lane (prove_off_lane: no
-    lane/encounter/approach tile, reachability unchanged, no walk longer);
+    on existing NPC ids), "after"/"talk" (post-Gleam WORDS: a same-tile flag-pair
+    twin, or a dialogue re-point — no body moves) and "objects" that PROVE off-lane
+    (prove_off_lane: no lane/encounter/approach tile, reachability unchanged, no
+    walk longer);
+  * an "after" twin needs an original with no other hide flag and no requires
+    flag the Gleam doesn't imply (else use "talk" + a staged script);
   * an ambient kin must stand on foot-walkable ground (no Gifts), never on a
     warp or trigger tile, inside the map.
 
@@ -197,7 +201,7 @@ def lint(mid: str, m: dict, spec: dict) -> list[str]:
         for p in amb.get("particles", []):
             if p.get("kind") not in PARTICLE_KINDS:
                 errs.append(f"{mid}: unknown particle kind '{p.get('kind')}'")
-    extra = set(spec) - {"ambience", "npcs", "objects", "triggers", "signs", "sprites"}
+    extra = set(spec) - {"ambience", "npcs", "objects", "triggers", "signs", "sprites", "after", "talk"}
     if extra:
         errs.append(f"{mid}: unknown spec keys {sorted(extra)}")
     spec_ids = {o["id"] for o in spec.get("objects", [])}
@@ -253,7 +257,118 @@ def lint(mid: str, m: dict, spec: dict) -> list[str]:
             errs.append(f"{mid}: ambient '{n['id']}' at {at} sits on a warp/trigger tile")
         if not str(n.get("sprite", "")).startswith("kin_"):
             errs.append(f"{mid}: ambient '{n['id']}' should use a kin_<id>_overworld sprite")
+    errs += lint_words(mid, m, spec)
     return errs
+
+
+# ------------------------------------------------------------ AFTER-GLEAM words
+# "after": the flag-pair twin; "talk": a dialogue re-point (worldcraft/_kit.py).
+# Both change WORDS only: same tile, body, facing, movement — so both are legal on
+# pre-Chickenpig maps. Applied to the spec's own NPC items (so a module-authored
+# NPC never fights its own upsert) and, for builder/hand-placed NPCs, to the map.
+
+def lit_pair(orig: dict, a: dict) -> tuple[dict, dict]:
+    """(the shipped NPC hidden once `flag` is held, its `<id>_lit` twin shown then)."""
+    o = dict(orig)
+    o["hidden_when_flag"] = a["flag"]
+    t = {k: v for k, v in orig.items() if k != "hidden_when_flag"}
+    t["id"] = f"{orig['id']}_lit"
+    t["dialogue_ref"] = a["ref"]
+    t["requires_flag"] = a["flag"]
+    return o, t
+
+
+def lint_words(mid: str, m: dict, spec: dict) -> list[str]:
+    errs: list[str] = []
+    npcs = {n["id"]: n for n in m.get("npcs", [])}
+    npcs.update({n["id"]: n for n in spec.get("npcs", [])})
+    after = spec.get("after", [])
+    talk = spec.get("talk", {})
+    for a in after:
+        nid, flag = a["npc"], a["flag"]
+        n = npcs.get(nid)
+        if n is None:
+            errs.append(f"{mid}: after-twin for unknown NPC '{nid}'")
+            continue
+        if nid in talk:
+            errs.append(f"{mid}: '{nid}' has both an after-twin and a talk re-point — pick one")
+        if n.get("ambient") or n.get("sight_range") or n.get("sprite") == "item_cache":
+            errs.append(f"{mid}: '{nid}' is ambient/a trainer/a cache — not a talk NPC")
+        if n.get("hidden_when_flag") not in (None, flag):
+            errs.append(f"{mid}: '{nid}' already hides on '{n['hidden_when_flag']}' — use `talk`")
+        if n.get("requires_flag") not in (None, a.get("implies")):
+            errs.append(f"{mid}: '{nid}' requires '{n['requires_flag']}' — pass implies= if "
+                        f"'{flag}' guarantees it, else use `talk`")
+        tid = f"{nid}_lit"
+        if tid in npcs and npcs[tid].get("requires_flag") != flag:
+            errs.append(f"{mid}: twin id '{tid}' is already a different NPC")
+        if not a["ref"].startswith(("npc.", "script.")):
+            errs.append(f"{mid}: after-twin '{nid}' ref '{a['ref']}' is not npc.*/script.*")
+    for nid, ref in talk.items():
+        n = npcs.get(nid)
+        if n is None:
+            errs.append(f"{mid}: talk re-point for unknown NPC '{nid}'")
+        elif n.get("ambient") or n.get("sight_range") or n.get("sprite") == "item_cache":
+            errs.append(f"{mid}: '{nid}' is ambient/a trainer/a cache — not a talk NPC")
+        if not str(ref).startswith("script."):
+            errs.append(f"{mid}: talk re-point '{nid}' -> '{ref}' must be a staged script.*")
+    return errs
+
+
+def words_on_spec(spec: dict) -> tuple[dict, set[str]]:
+    """Apply after/talk to the spec's own NPC items; return (spec, ids handled)."""
+    after = {a["npc"]: a for a in spec.get("after", [])}
+    talk = spec.get("talk", {})
+    done: set[str] = set()
+    out = []
+    for n in spec.get("npcs", []):
+        if n["id"] in after:
+            out += list(lit_pair(n, after[n["id"]]))
+            done.add(n["id"])
+        elif n["id"] in talk:
+            out.append(dict(n, dialogue_ref=talk[n["id"]]))
+            done.add(n["id"])
+        else:
+            out.append(n)
+    if "npcs" in spec:
+        spec = dict(spec, npcs=out)
+    return spec, done
+
+
+def words_on_map(m: dict, spec: dict, done: set[str]) -> bool:
+    changed = False
+    lst = m.setdefault("npcs", [])
+    for nid, ref in spec.get("talk", {}).items():
+        if nid in done:
+            continue
+        for n in lst:
+            if n["id"] == nid and n.get("dialogue_ref") != ref:
+                n["dialogue_ref"] = ref
+                changed = True
+    for a in spec.get("after", []):
+        if a["npc"] in done:
+            # upserted from the spec: just keep the twin right after its original
+            # (a fresh rebuild and the shipped map must agree on list order)
+            i = next(i for i, n in enumerate(lst) if n["id"] == a["npc"])
+            j = next(j for j, n in enumerate(lst) if n["id"] == f"{a['npc']}_lit")
+            if j != i + 1:
+                t = lst.pop(j)
+                lst.insert(i + 1 if j > i else i, t)
+                changed = True
+            continue
+        i = next(i for i, n in enumerate(lst) if n["id"] == a["npc"])
+        o, t = lit_pair(lst[i], a)
+        if lst[i] != o:
+            lst[i] = o
+            changed = True
+        j = next((j for j, n in enumerate(lst) if n["id"] == t["id"]), None)
+        if j is None:
+            lst.insert(i + 1, t)
+            changed = True
+        elif lst[j] != t:
+            lst[j] = t
+            changed = True
+    return changed
 
 
 def apply(mid: str, spec: dict, write: bool) -> tuple[bool, list[str]]:
@@ -266,6 +381,7 @@ def apply(mid: str, spec: dict, write: bool) -> tuple[bool, list[str]]:
     errs = lint(mid, m, spec)
     if errs:
         return False, errs
+    spec, words_done = words_on_spec(spec)
     changed = False
     if "ambience" in spec:
         if m.get("ambience") != spec["ambience"]:
@@ -279,6 +395,8 @@ def apply(mid: str, spec: dict, write: bool) -> tuple[bool, list[str]]:
         if new and n.get("sprite") != new:
             n["sprite"] = new
             changed = True
+    # after the cast swaps, so a twin always wears its original's final sheet
+    changed |= words_on_map(m, spec, words_done)
     if spec.get("signs"):
         W = m["width"]
         deco = next(l for l in m["layers"] if l.get("role") == "deco")["data"]

@@ -1194,7 +1194,19 @@
       },
       "facing": "right",
       "sprite": "lamplighter",
-      "dialogue_ref": "npc.lanternway_galehigh_lamplighter"
+      "dialogue_ref": "npc.lanternway_galehigh_lamplighter",
+      "hidden_when_flag": "gleam:storm"
+    },
+    {
+      "id": "lanternway_galehigh_lamplighter_lit",
+      "at": {
+        "tx": 4,
+        "ty": 10
+      },
+      "facing": "right",
+      "sprite": "lamplighter",
+      "dialogue_ref": "npc.lanternway_galehigh_lamplighter_lit",
+      "requires_flag": "gleam:storm"
     }
   ],
   "gates": [],

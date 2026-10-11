@@ -1752,7 +1752,7 @@
       "facing": "down",
       "sprite": "npc_lampwarden",
       "movement": "look_around",
-      "dialogue_ref": "npc.lanternway_keeper",
+      "dialogue_ref": "script.waykeeper_staged",
       "hidden_when_flag": "flag:q_round_chart_taken"
     },
     {

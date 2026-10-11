@@ -2678,7 +2678,20 @@
       "sprite": "lamplighter",
       "movement": "static",
       "dialogue_ref": "npc.gatewarden_after",
-      "requires_flag": "flag:has_starter"
+      "requires_flag": "flag:has_starter",
+      "hidden_when_flag": "gleam:ember"
+    },
+    {
+      "id": "gatewarden_post_lit",
+      "at": {
+        "tx": 16,
+        "ty": 2
+      },
+      "facing": "left",
+      "sprite": "lamplighter",
+      "movement": "static",
+      "dialogue_ref": "npc.gatewarden_after_lit",
+      "requires_flag": "gleam:ember"
     },
     {
       "id": "cache_waxcake",

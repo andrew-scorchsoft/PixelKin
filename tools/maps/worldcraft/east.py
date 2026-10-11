@@ -22,7 +22,7 @@ import json
 import sys
 from pathlib import Path
 
-from ._kit import ambient_kin, gid, particles  # noqa: F401
+from ._kit import add_words, ambient_kin, gid, lit, particles  # noqa: F401
 
 _MAPS = Path(__file__).resolve().parents[3] / "public" / "assets" / "maps"
 
@@ -286,3 +286,29 @@ PLACEMENTS: dict[str, dict] = {
         "npcs": [npc("b2f_miner", (15, 12), "miner_woman", "script.b2f_miner", facing="left")],
     },
 }
+
+
+# ------------------------------------------------------------- AFTER-GLEAM
+# Lowleaf and Cinderhead answer their Gleams (src/game/content/regions/east.ts).
+# Words only: `lit` twins share their original's tile, sheet and body; `talk`
+# re-points keep the id (the shops' kit pairs).
+VERDANT, STONE = "gleam:verdant", "gleam:stone"
+add_words(PLACEMENTS, {
+    "lowleaf_hollow": {
+        "after": [lit("bloom_piper", VERDANT, "npc.bloom_piper_lit"),
+                  lit("bloom_fencer", VERDANT, "npc.bloom_fencer_lit"),
+                  lit("moss_kid", VERDANT, "npc.bloom_kid_a_lit"),
+                  lit("fern_kid", VERDANT, "npc.bloom_kid_b_lit")],
+        "talk": {"provisioner": "script.shop_lowleaf_staged"},
+    },
+    "lowleaf_bower": {"after": [lit("bower_keeper", VERDANT, "script.lowleaf_rest_lit"),
+                                lit("bloom_guest", VERDANT, "npc.bower_guest_lit")]},
+    "cinderhead_mine": {
+        "after": [lit("vigil_elder", STONE, "npc.vigil_elder_lit"),
+                  lit("vigil_miner_a", STONE, "npc.vigil_miner_a_lit"),
+                  lit("vigil_miner_b", STONE, "npc.vigil_miner_b_lit"),
+                  lit("vigil_cook", STONE, "script.cinderhead_rest_lit"),
+                  lit("deep_warden", STONE, "npc.cinderhead_deep_warden_lit")],
+        "talk": {"provisioner": "script.shop_cinderhead_staged"},
+    },
+})

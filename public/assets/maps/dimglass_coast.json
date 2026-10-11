@@ -2915,7 +2915,7 @@
       "facing": "right",
       "sprite": "wren",
       "movement": "static",
-      "dialogue_ref": "npc.dimglass_wayfarer",
+      "dialogue_ref": "script.wren_dimglass_staged",
       "requires_flag": "flag:wren_dimglass_battled"
     },
     {
@@ -2952,7 +2952,7 @@
       "facing": "up",
       "sprite": "lamplighter",
       "movement": "look_around",
-      "dialogue_ref": "npc.dimglass_witness",
+      "dialogue_ref": "script.dimglass_witness_staged",
       "requires_flag": "flag:has_beacon_wick"
     },
     {
