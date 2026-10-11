@@ -1,0 +1,28 @@
+{
+  "title": "SFX -- door (heavy creak + latch, alt)",
+  "_note": "Alternate heavy door: the creak falls instead of rising, the latch a tone lower. Render with --tail 0.08.",
+  "era": "sfx",
+  "tempo": 180,
+  "time_signature": [
+    4,
+    4
+  ],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "creak",
+      "voice": "noise",
+      "octave": 2,
+      "gain": 0.65,
+      "notes": "C3~F#2e@76"
+    },
+    {
+      "name": "latch",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.7,
+      "notes": "rs E2s@92"
+    }
+  ]
+}

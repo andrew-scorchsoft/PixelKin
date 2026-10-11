@@ -1,0 +1,28 @@
+{
+  "title": "SFX -- footstep on wood (hollow knock)",
+  "_note": "Floorboards/docks: a hollow knock \u2014 a short tri_bass tone (the board) under a quiet noise scuff. Render with --tail 0.02.",
+  "era": "sfx",
+  "tempo": 280,
+  "time_signature": [
+    4,
+    4
+  ],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "board",
+      "voice": "tri_bass",
+      "octave": 3,
+      "gain": 0.55,
+      "notes": "G3~E3s@80"
+    },
+    {
+      "name": "scuff",
+      "voice": "noise",
+      "octave": 3,
+      "gain": 0.35,
+      "notes": "D3s@58"
+    }
+  ]
+}

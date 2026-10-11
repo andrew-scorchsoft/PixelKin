@@ -1,0 +1,21 @@
+{
+  "title": "SFX -- footstep on sand (shush, alt)",
+  "_note": "Alternate sand step: slightly lower grain slide. Render with --tail 0.02.",
+  "era": "sfx",
+  "tempo": 280,
+  "time_signature": [
+    4,
+    4
+  ],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "step",
+      "voice": "noise",
+      "octave": 3,
+      "gain": 0.5,
+      "notes": "A3~D3s@66"
+    }
+  ]
+}

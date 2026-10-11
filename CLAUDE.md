@@ -400,6 +400,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **Don't hand-edit served assets.** Music `.mp3`s in `public/assets/audio/music/`
   are renders of `.mid` masters in `assets/audio/midi/` — edit the master and
   re-render. Same for sprites/tilesets (masters in `assets/`, packed into `public/`).
+- **Every served SFX must be listed in `public/assets/audio/sfx/sfx.manifest.json`** — `Sfx.has`/`play` and the
+  ambience bed loader skip anything absent (silence, not a 404). Looping `amb-*` beds are NOT chip renders:
+  re-render with `tools/audio/ambient_beds.py` (seamless-by-construction numpy synth; also rewrites the manifest).
 - **Area music ships in the richer `snes` register, not bare `gbc`.** Keep the
   Option-A tune's `pulse25` lead + `tri_bass` bass note-for-note, then open the
   band: `strings`/`pad` real chords, `pluck` harp arp, sparse `bell` (Light), an

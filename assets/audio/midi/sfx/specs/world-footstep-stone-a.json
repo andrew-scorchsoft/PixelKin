@@ -1,0 +1,28 @@
+{
+  "title": "SFX -- footstep on stone (tap)",
+  "_note": "Stone/cave/paved path: a harder, denser low noise tap with a faint tri_bass thunk for weight. Render with --tail 0.02.",
+  "era": "sfx",
+  "tempo": 280,
+  "time_signature": [
+    4,
+    4
+  ],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "tap",
+      "voice": "noise",
+      "octave": 2,
+      "gain": 0.7,
+      "notes": "B2s@92"
+    },
+    {
+      "name": "thunk",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.35,
+      "notes": "D2s@70"
+    }
+  ]
+}

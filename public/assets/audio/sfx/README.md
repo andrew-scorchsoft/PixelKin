@@ -18,3 +18,27 @@ produced by the **generate-midi** skill (era `sfx`). To change a cue, edit its
 The full catalog (every effect the game needs, with recipes) and naming
 convention are in
 [`.claude/skills/generate-midi/references/sfx-cookbook.md`](../../../../.claude/skills/generate-midi/references/sfx-cookbook.md).
+
+## Ambient beds (`amb-*.mp3`, looping)
+
+The quiet looping beds a map opts into with `ambience.sound_bed`
+(`amb-surf`, `amb-marsh`, `amb-wind`, `amb-drips`, `amb-crickets`) are NOT chip
+renders — they're synthesised by a small deterministic numpy script and are
+seamless by construction (circular noise/events/reverb over the loop length):
+
+```bash
+./venv/bin/python tools/audio/ambient_beds.py            # re-render all beds (+ refresh sfx.manifest.json)
+./venv/bin/python tools/audio/ambient_beds.py amb-surf   # just one
+```
+
+`Ambience.ts` loads the BARE stem (`assets/audio/sfx/<stem>.mp3`, no a/b
+variants) only if it's in `sfx.manifest.json`, loops it at 0.22 × the SFX
+volume, and pauses it while a battle has the World scene paused. Beds are
+mastered to −23 dBFS RMS so they sit ~16 dB under the area music.
+
+Surface footsteps (`world-footstep-<grass|sand|snow|stone|wood>-a/b`, picked by
+`WorldScene.footstepKey`) and `world-grass-rustle-a/b` are ordinary chip renders
+(specs in `assets/audio/midi/sfx/specs/`); the rustle is rendered to `.wav` and
+dropped −8 dB before encoding (it plays under the footstep on every grass step).
+Any new `.mp3` here must be added to `sfx.manifest.json` — the bed script
+rewrites it from the folder listing.

@@ -864,10 +864,22 @@ export class Ambience {
     try {
       this.bed = this.scene.sound.add(stem, { loop: true, volume: 0.22 * gain });
       this.bed.play();
+      // A battle pauses the World scene, but the sound manager is global — hush
+      // the bed under the battle music and pick it back up on return.
+      this.scene.events.on(Phaser.Scenes.Events.PAUSE, this.pauseBed);
+      this.scene.events.on(Phaser.Scenes.Events.RESUME, this.resumeBed);
     } catch {
       this.bed = undefined; // a missing/undecodable bed is silence
     }
   }
+
+  private pauseBed = (): void => {
+    if (this.bed?.isPlaying) this.bed.pause();
+  };
+
+  private resumeBed = (): void => {
+    if (this.bed?.isPaused) this.bed.resume();
+  };
 
   // ----------------------------------------------------------- ambient kin --
 
@@ -1287,6 +1299,8 @@ export class Ambience {
     this.streakGfx?.destroy();
     this.mist?.destroy();
     this.tintRect?.destroy();
+    this.scene.events.off(Phaser.Scenes.Events.PAUSE, this.pauseBed);
+    this.scene.events.off(Phaser.Scenes.Events.RESUME, this.resumeBed);
     if (this.bed) {
       this.bed.stop();
       this.bed.destroy();

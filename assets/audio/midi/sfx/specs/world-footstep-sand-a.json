@@ -1,0 +1,21 @@
+{
+  "title": "SFX -- footstep on sand (shush)",
+  "_note": "Sand: a breathy, brighter shush that slides down \u2014 no thunk, all grain. Render with --tail 0.02.",
+  "era": "sfx",
+  "tempo": 280,
+  "time_signature": [
+    4,
+    4
+  ],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "step",
+      "voice": "noise",
+      "octave": 3,
+      "gain": 0.5,
+      "notes": "B3~E3s@70"
+    }
+  ]
+}
