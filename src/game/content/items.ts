@@ -443,7 +443,7 @@ export const ITEMS: ItemRegistry = {
   starglass_shard: {
     id: 'starglass_shard',
     name: 'Starglass Shard',
-    desc: 'A sliver of sky-fallen glass that remembers a constellation. Collectors pay handsomely.',
+    desc: 'A warm fall from before the Dusk. Collectors pay well; the old folk won\'t sell.',
     category: 'valuable',
     sell: 1500,
   },
