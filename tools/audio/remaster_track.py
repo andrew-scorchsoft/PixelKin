@@ -124,7 +124,7 @@ def check_spec(spec: dict) -> list[str]:
         errs.append("anchor the era in the first core_styles: '16-bit … RPG soundtrack' + 'retro sampled-chip instruments'")
     blob = json.dumps(spec).lower()
     for brand in ("pokemon", "pokémon", "nintendo", "zelda", "final fantasy", "uematsu", "masuda", "kondo",
-                  "square", "capcom", "sega", "donkey kong", "mario", "chrono", "game freak"):
+                  "square enix", "squaresoft", "capcom", "sega", "donkey kong", "mario", "chrono", "game freak"):
         if brand in blob:
             errs.append(f"brand/composer name '{brand}' in spec — describe the era/craft instead (and the API rejects it)")
     return errs

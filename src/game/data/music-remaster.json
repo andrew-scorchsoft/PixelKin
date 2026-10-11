@@ -80,8 +80,8 @@
    "mood": "The lullaby in full — the hometown theme finally meeting the sun, radiant, confident and a little teary."
   },
   "dimglass-coast-a": {
-   "loop_start": 8.854,
-   "duration": 71.85,
+   "loop_start": 10.983,
+   "duration": 79.02,
    "where": "Dimglass Coast (the first road out of town)",
    "mood": "The road that teaches you to wander — brisk, salt-aired, optimistic; the hometown tune breaking into a stride."
   },
@@ -98,8 +98,8 @@
    "mood": "The Road Remembered: a warm medley walking back down the whole journey in memory, every road leading home to the hometown theme in daylight."
   },
   "galehigh-terraces-a": {
-   "loop_start": 8.684,
-   "duration": 62.746,
+   "loop_start": 9.776,
+   "duration": 66.9,
    "where": "Galehigh Terraces (the kite-strung cliff town outdoors + the Skyloft; returns after the Kite-rising)",
    "mood": "Updraft — giddy, wind-buffeted propulsion on the cliff-farms, kites snapping overhead in the last fire-light before the climb."
   },
@@ -188,14 +188,14 @@
    "mood": "Low tide, lantern strings — the quay waltz late and quiet, a lonely-but-cosy sway on the edge of town."
   },
   "pearlmoor-quay-c": {
-   "loop_start": 10.147,
-   "duration": 101.12,
+   "loop_start": 10.101,
+   "duration": 81.45,
    "where": "The top of the Old Light on Pearlmoor Point — the joke-tower's punchline lantern room and its celebratory send-off",
    "mood": "Festival of the floating lights — the quay waltz in its happiest dress, quick, ornamented and playful."
   },
   "penumbra-ring-a": {
-   "loop_start": 10.791,
-   "duration": 100.049,
+   "loop_start": 11.703,
+   "duration": 111.125,
    "where": "Penumbra Ring + Starwell (the last dark before the Umbral Spire)",
    "mood": "Wall of Ink: the last dark, crossed on starlight; a held breath, your heartbeat and one lonely lamp-note, hope leaking in at the edges."
   },
@@ -242,8 +242,8 @@
    "mood": "Sunsketch Bloom: the relit reading - daylight surging back into the drowned garden, the motif sung twice and the second time brighter; the score reaching toward dawn."
   },
   "sunvault-climb-a": {
-   "loop_start": 5.433,
-   "duration": 74.861,
+   "loop_start": 8.568,
+   "duration": 79.02,
    "where": "Sunvault Climb I & II (golden vine terraces up to Nightreach) + the Sunfall vigil site",
    "mood": "Vines to the Sky: warm, ascending, hopeful - every phrase climbs like the terraces; the sunniest route in the West."
   },
@@ -272,8 +272,8 @@
    "mood": "First light on the water — the hometown tune's rising half asked under orchard boughs, Lydian wonder with a thread of mystery."
   },
   "title": {
-   "loop_start": 5.039,
-   "duration": 58.227,
+   "loop_start": 4.83,
+   "duration": 58.358,
    "where": "Title screen",
    "mood": "The calling card: a lone lantern-tune in the dark explodes into a heroic minor adventure anthem; the Long Dusk, and the journey rising against it."
   },
@@ -296,8 +296,8 @@
    "mood": "First True Dawn: the Keystar catches and the whole sky lights; the hometown motif stated whole in radiant major, triumphant with a tear in it."
   },
   "windward-stair-a": {
-   "loop_start": 11.192,
-   "duration": 73.352,
+   "loop_start": 9.776,
+   "duration": 70.426,
    "where": "Windward Stair I & II (the switchback mountain route) + the Wind-Eye and Thunderroost spurs",
    "mood": "The Long Climb — airy, building, breath-quickening; each phrase re-launches a step higher so the loop feels like ascent."
   }

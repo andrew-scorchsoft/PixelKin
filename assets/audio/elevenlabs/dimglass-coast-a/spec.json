@@ -5,43 +5,39 @@
  "mood": "The road that teaches you to wander — brisk, salt-aired, optimistic; the hometown tune breaking into a stride.",
  "bpm": 120,
  "beats_per_bar": 4,
- "motif": {
-  "strength": "medium"
- },
+ "motif": null,
  "core_styles": [
-  "16-bit SNES-era RPG soundtrack",
-  "retro sampled-chip instruments",
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
   "120 BPM",
   "G major",
   "bright pulse-wave lead melody",
   "plucked harp arpeggios like chiming buoys",
   "warm string pad",
-  "bouncy synth bass rocking root and fifth",
-  "light brushy snare and soft kick like lapping foam",
+  "bouncy plucked sampled bass rocking root and fifth",
+  "light sampled 16-bit snare brushes and soft kick on a walking beat",
   "adventurous walking theme for the first route of a journey",
+  "melody built on the hometown tune's rising three-note lift, now springing forward",
   "strong singable melody",
-  "great production quality",
+  "authentic 16-bit game music sound",
   "instrumental"
  ],
  "negative_styles": [
   "vocals",
-  "singing",
-  "modern EDM drums",
-  "trap",
-  "dubstep",
+  "modern electronic dance production",
+  "drum and bass",
+  "heavy sub bass",
   "electric guitar",
-  "ambient drone",
-  "minimalist",
   "fade out",
-  "ritardando"
+  "melancholy"
  ],
  "sections": [
   {
-   "name": "Intro",
+   "name": "Setting Out",
    "bars": 4,
-   "text": "{a bold, bright opening call that announces the open road: a rising fanfare on the lead over a drum pickup, landing on a held chord that springs straight into the walking theme}",
+   "text": "{the lead alone sings the rising three-note lift of the hometown tune, then bass, harp and drums join and the road theme strides off}",
    "styles": [
-    "bold opening fanfare",
+    "solo lead call then the band joins",
     "sense of setting out"
    ]
   },
@@ -85,5 +81,6 @@
     "seamless loop back to the start of the theme"
    ]
   }
- ]
+ ],
+ "_note": "2026-10 retro + tempo pass: motif dropped (it pinned the take to ~90 BPM); era-first anchor, retro kit/bass; opening shape chosen per scene."
 }

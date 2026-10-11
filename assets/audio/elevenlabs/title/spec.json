@@ -5,40 +5,32 @@
  "mood": "The calling card: a lone lantern-tune in the dark explodes into a heroic minor adventure anthem; the Long Dusk, and the journey rising against it.",
  "bpm": 150,
  "beats_per_bar": 4,
- "motif": {
-  "strength": "high"
- },
+ "motif": null,
  "core_styles": [
-  "16-bit SNES-era RPG soundtrack",
-  "retro sampled-chip instruments",
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
   "150 BPM",
   "A minor",
   "epic heroic title theme",
   "cutting bright pulse-wave lead with wide leaping melody",
-  "punchy synth brass stabs",
-  "galloping driving bass ostinato",
-  "full driving drums with tom fills and crash cymbals",
+  "punchy sampled brass stabs",
+  "galloping plucked sampled bass ostinato",
+  "sampled 16-bit drum kit and timpani on a galloping rock beat, tom fills and crash cymbals",
   "heroic, adventurous, urgent and exciting",
+  "melody built on a bold rising three-note lift",
   "strong singable melody",
-  "great production quality",
+  "authentic 16-bit game music sound",
   "instrumental"
  ],
  "negative_styles": [
   "vocals",
-  "singing",
-  "modern EDM drums",
-  "trap",
-  "dubstep",
-  "fade out",
-  "ritardando",
-  "lullaby",
-  "nursery rhyme",
-  "cute",
-  "slow tempo",
-  "ambient drone",
-  "minimalist",
+  "modern electronic dance production",
+  "drum and bass",
+  "heavy sub bass",
   "electric guitar",
-  "heavy metal"
+  "fade out",
+  "lullaby",
+  "slow tempo"
  ],
  "sections": [
   {
@@ -102,5 +94,6 @@
     "seamless loop back to the start of the theme"
    ]
   }
- ]
+ ],
+ "_note": "2026-10 retro + tempo pass: motif dropped (it pinned the take to ~90 BPM); era-first anchor, retro kit/bass; opening shape chosen per scene."
 }

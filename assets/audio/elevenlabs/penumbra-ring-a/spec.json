@@ -5,41 +5,32 @@
  "mood": "Wall of Ink: the last dark, crossed on starlight; a held breath, your heartbeat and one lonely lamp-note, hope leaking in at the edges.",
  "bpm": 60,
  "beats_per_bar": 4,
- "motif": {
-  "strength": "low"
- },
+ "motif": null,
  "core_styles": [
-  "16-bit SNES-era RPG soundtrack",
-  "retro sampled-chip instruments",
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
   "60 BPM",
   "D minor",
   "dark slow-shifting synth fog pad, slightly detuned",
   "deep low pedal drone bass",
   "a sparse soft heartbeat kick every two bars",
-  "one lonely low pulse-wave lead note swelling out of the dark",
+  "one lonely low square-wave lead note swelling out of the dark",
   "oppressive hush with a fragile thread of hope",
   "haunting slow three-note rising figure as the hook",
   "spacious and sparse but clearly composed",
-  "great production quality",
+  "authentic 16-bit game music sound",
   "instrumental"
  ],
  "negative_styles": [
   "vocals",
-  "singing",
-  "modern EDM drums",
-  "trap",
-  "dubstep",
-  "fade out",
-  "ritardando",
-  "bright major key",
-  "happy",
-  "upbeat",
-  "busy percussion",
-  "fast tempo",
-  "full drum kit",
+  "modern electronic dance production",
+  "drum and bass",
+  "heavy sub bass",
   "electric guitar",
-  "orchestral bombast",
-  "horror jump scares"
+  "fade out",
+  "bright major key",
+  "busy percussion",
+  "fast tempo"
  ],
  "sections": [
   {
@@ -91,5 +82,6 @@
     "seamless loop back to the start of the theme"
    ]
   }
- ]
+ ],
+ "_note": "2026-10 retro + tempo pass: motif dropped (it pinned the take to ~90 BPM); era-first anchor, retro kit/bass; opening shape chosen per scene."
 }

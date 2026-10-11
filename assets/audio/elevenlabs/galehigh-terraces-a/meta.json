@@ -3,12 +3,12 @@
  "kind": "loop",
  "where": "Galehigh Terraces (the kite-strung cliff town outdoors + the Skyloft; returns after the Kite-rising)",
  "mood": "Updraft \u2014 giddy, wind-buffeted propulsion on the cliff-farms, kites snapping overhead in the last fire-light before the climb.",
- "duration": 62.746,
- "loop_start": 8.684,
- "seam": 0.155,
- "bpm_est": 89.1,
- "song_id": "Nw4BCpnCQwpPaRmjknT6",
- "raw_ms": 57000,
- "motif": "medium",
- "lufs": -15.4
+ "duration": 66.9,
+ "loop_start": 9.776,
+ "seam": 0.33,
+ "bpm_est": 92.3,
+ "song_id": "7v6TVCeuVb0aeFvDDbM3",
+ "raw_ms": 62668,
+ "motif": null,
+ "lufs": -15.3
 }

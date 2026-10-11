@@ -5,38 +5,29 @@
  "mood": "The Long Climb — airy, building, breath-quickening; each phrase re-launches a step higher so the loop feels like ascent.",
  "bpm": 132,
  "beats_per_bar": 4,
- "motif": {
-  "strength": "medium"
- },
+ "motif": null,
  "core_styles": [
-  "16-bit SNES-era RPG soundtrack",
-  "retro sampled-chip instruments",
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
   "132 BPM",
   "bright A major",
   "high pulse-wave lead climbing in stepwise terraces",
   "steady ascending arpeggio like footsteps on stone",
-  "firm even synth bass tread",
-  "steady marching kick and hi-hat",
+  "firm plucked sampled bass tread",
+  "sampled 16-bit marching snare and kick on a steady march beat",
   "white-noise wind swell cresting every four bars",
   "mountain climbing route theme, determined and airy, sunset thinning to cold blue",
   "strong singable melody",
-  "great production quality",
+  "authentic 16-bit game music sound",
   "instrumental"
  ],
  "negative_styles": [
   "vocals",
-  "singing",
-  "modern EDM drums",
-  "trap",
-  "dubstep",
-  "fade out",
-  "ritardando",
-  "ending",
+  "modern electronic dance production",
+  "drum and bass",
+  "heavy sub bass",
   "electric guitar",
-  "rock",
-  "orchestral film score",
-  "ambient drone",
-  "minimalist",
+  "fade out",
   "sad",
   "sluggish"
  ],
@@ -44,10 +35,10 @@
   {
    "name": "Intro",
    "bars": 4,
-   "text": "{a determined opening call: marching drums, then the lead strikes a rising climbing figure twice, a step higher each time, over a wind swell, landing on a held E chord}",
+   "text": "{two bars of sampled marching snare and kick alone set the pace, then the lead strikes the climbing figure and the theme begins}",
    "styles": [
-    "bold opening call",
-    "setting off uphill"
+    "drum-led march opening",
+    "determined"
    ]
   },
   {
@@ -92,5 +83,6 @@
     "seamless loop"
    ]
   }
- ]
+ ],
+ "_note": "2026-10 retro + tempo pass: motif dropped (it pinned the take to ~90 BPM); era-first anchor, retro kit/bass; opening shape chosen per scene."
 }
