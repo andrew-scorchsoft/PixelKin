@@ -303,7 +303,7 @@ export const BLOCKS = {
                             ${t.loop_start !== null ? `<button class="music-btn music-btn-sm" type="button" data-src="${e(t.remaster)}" data-loop-start="${e(String(t.loop_start ?? 0))}" data-mode="join" data-label="Loop point">&#8644; Loop point</button>` : ''}
                             <button class="music-btn music-btn-sm" type="button" data-src="${e(t.remaster)}" data-mode="once" data-label="Full once">&#8677; Full once</button>
                             <a class="music-dl" href="${e(t.remaster)}" download="pixelkin-${e(t.id)}-remastered.mp3" title="Download the remastered track">&#10515; Download</a>
-                        </div>` : '<span class="music-soon">Remaster coming</span>'}
+                        </div>` : `<span class="music-soon">${e(t.note ?? 'Remaster coming')}</span>`}
                     </div>
                     </div>
                 </li>`).join('')}

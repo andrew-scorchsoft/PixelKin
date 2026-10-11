@@ -542,3 +542,10 @@ techniques the cartridge-era scores rely on:
 cutting, and a bed heard in the last 150 s **resumes where it left off**
 (`MusicDirector` `{ resume: true }`), so stepping out of a shop or a battle doesn't replay
 the town's intro. Battles and cutscene cues always start from the top.
+
+**Battles stay on the chip score (owner's call, 2026-10).** After A/B-ing remastered battle
+takes (including one conditioned on the chip render itself), the owner preferred the original
+MIDI renders for every fight: they're more on-brand. The `battle-*` remasters are not served,
+so all battles (wild, trainers, Lampwardens, Wren, the Hollowing, the boss, the Three Hours)
+and the attract duel play the classic chip cue in both Soundtrack modes. Their ElevenLabs cue
+sheets stay in `assets/audio/elevenlabs/` if a future pass wants them.

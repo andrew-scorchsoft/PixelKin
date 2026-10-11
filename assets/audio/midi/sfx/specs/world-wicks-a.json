@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- wicks change hands (purse)",
+  "_note": "Wicks paid or received (shop counter buy/sell, a found purse, a quest reward, the pay op): a soft harp pluck into a small bell 'tuck' -- warmer and smaller than the pickup chirp. ~0.25 s. Render --tail 0.12 to .wav, then ffmpeg -af volume=-4dB -> .mp3.",
+  "era": "sfx",
+  "tempo": 220,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "A",
+  "tracks": [
+    { "name": "pluck", "voice": "pluck", "octave": 5, "gain": 0.8,  "notes": "E5s@92 A5e@96" },
+    { "name": "tuck",  "voice": "bell",  "octave": 6, "gain": 0.45, "notes": "rs A6e@64" }
+  ]
+}

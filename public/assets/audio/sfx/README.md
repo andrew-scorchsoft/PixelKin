@@ -42,3 +42,7 @@ Surface footsteps (`world-footstep-<grass|sand|snow|stone|wood>-a/b`, picked by
 dropped −8 dB before encoding (it plays under the footstep on every grass step).
 Any new `.mp3` here must be added to `sfx.manifest.json` — the bed script
 rewrites it from the folder listing.
+
+The gentle world cues added in 2026-10 (`world-rest`, `-spotted`, `-wicks`,
+`-keyitem`, `-chart`, `-splash`) are rendered to `.wav` then trimmed by the dB
+noted in each spec's `_note` before the mp3 encode — re-render them the same way.

@@ -415,7 +415,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   fails if either is stale. Never hand-cut a remaster's loop: the glue pass is what makes it seamless.
   A clean seam ≠ a good loop: `tools/audio/dead_air.py` (CI) catches the take-fades-out-mid-cue
   failure (the boss went silent 25 s); and never condition a battle/driving cue on the motif —
-  it pins the tempo to the lullaby's ~90 BPM.
+  it pins the tempo to the lullaby's ~90 BPM. **Battles are CLASSIC-ONLY (owner's call, 2026-10):**
+  the `battle-*` remasters are deliberately NOT served (cue sheets kept in `assets/audio/elevenlabs/`),
+  so the manifest omits them and every fight plays the chip render — don't re-add their mp3s.
 - **Volume is three layers (2026-10):** overall `Settings.masterVolume` (0..1 → Phaser's global
   `game.sound.volume` in `main.ts`; the portrait device deck's top-left slider `.pk-volume` + Settings →
   Volume, both via `ShellManager.setMasterVolume`) over Music / Effects levels. One-shots are trimmed in
@@ -498,6 +500,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `heal` op is a rest point unless tagged `{ op:'heal', rest:false }` — set `rest:false` for a
   mid-story forced heal you don't want to wake at. Thread `respawn` through any new save-load path
   (`WorldSceneData` → `create()`; it's already in `continueData`/import-reload/`buildSnapshot`).
+- **A rest `heal` op SLEEPS (2026-10):** the runner fades music + screen to black, plays the
+  `world-rest-b` goodnight lullaby, heals, then `resumeMapMusic` + fade in — so rest scripts carry
+  NO fade/wait steps of their own (don't add them back: it double-fades). `rest:false` (mid-story
+  kindness) or `sleep:false` (a rest point that isn't a bed: the summit Round, the inn ceremony) keep
+  the quick `world-heal` chime. Key items get `world-keyitem`, wicks `world-wicks` (sfx-cookbook §6B).
 - **Heal entrances wear a rest-lantern (the iconic "heal here" landmark).** `WorldScene.markHealEntrances`
   hangs a code-drawn glowing lantern (depth 22, above the building overhang) over every door whose
   `to_map` is in `HEAL_ENTRANCE_MAPS` (the door-entered healing interiors — inns, the apprentice's home,
@@ -847,12 +854,16 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   art stays chunky (NEAREST); `ui/Text.ts` sets each Text's `resolution` to `RENDER_SCALE`
   so glyphs get real pixels. Build text through `makeText` (it's the only place that sets
   resolution) — a raw `scene.add.text` will render blocky again.
+- **Talk ACROSS counters (2026-10).** `WorldScene.npcAcrossDesk`: facing a counter/stall/altar/desk
+  object (`DESK_SPRITE`) reaches the NPC behind it, up to two desk tiles deep — the genre convention.
+  Name a new desk-like prop so it matches the regex, or keepers behind it become unreachable to talk to.
 - **Battle backdrops are a per-map data edit.** A battle's background is chosen from the
   map's `battle_backdrops` list in `data/world/maps.ts` (random variant), preloaded in
   `PreloadScene`, drawn behind the battlers in `BattleScene`. New area = add 240×160 WebPs
-  under `public/assets/backgrounds/battle/` + list them on the map; no map with a list = it
-  keeps the plain night fill. Briefs/standards live in `docs/art-style.md` (§5-H). Keep them
-  subtle so sprites/plates stay readable.
+  under `public/assets/backgrounds/battle/` + list them on the map; a map with no list
+  borrows its KIND's default (`KIND_BACKDROPS` in `maps.ts` — the safety net; bespoke art always
+  wins). Briefs/standards live in `docs/art-style.md` (§5-H). Keep them subtle so sprites/plates
+  stay readable.
 - **Interiors are multi-room SNES compositions on roomkit (2026-06).** Build on
   `tools/maps/roomkit.py`: `faced_room` (cap + visible FACE walls, patterned floor, doormat)
   + at least one INTERNAL `partition_v/_h` (bed nook / storeroom / bunk room / shrine niches
@@ -955,7 +966,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   OPTIONAL colour (never gating), which is why they live as an engine hook, not in the map JSON;
   add a new one by appending an `EntryTutorial` row + a `script.*`. `runTutorial` banks the
   `seen_flag` so it never repeats.
-- **The South level curve is data-locked to the walkthrough:** Brisa ace 10 → Dimglass I wilds
+- **The South level curve is data-locked to the walkthrough** (and ENFORCED since 2026-10: Brisa's
+  coast-keeper holds Dimglass I's north cut until `gleam:ember` — `script.coast_keeper_gate`, a
+  pushback band + gated warps in `build_dimglass.py`; never re-open it): Brisa ace 10 → Dimglass I wilds
   3–5 (side pocket 5–6; + Wren's friendly battle A2 + the B1 `dusk_begins` beat) → Dimglass II
   wilds 8–10 + two route-trainer beats (Morrow 9/9, Elspeth 10/10) → Reyl 12–16. Route trainer
   beat = static NPC + `step_on` cutscene tile on a choked lane (`script.flats_trainer_*`

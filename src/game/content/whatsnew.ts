@@ -8,6 +8,11 @@
  * Gleams, the Wayfaring, the vesperlamp) — it's read by the fire, not a patch log.
  */
 export const WHATS_NEW: Record<string, string[]> = {
+  '1.11': [
+    'Rest at an inn or your own bed and the night really passes now: the lamps go out, a little lullaby plays, and you wake to the music you left.',
+    'Every fight has somewhere to stand, from the Lanternway verge to the high Lumenary halls, and the battles sing their old chip songs again.',
+    'Shopkeepers will talk to you across the counter. And on the coast road out of Tinderwick, one of Brisa\'s keepers now waits for those who have not yet lit the Beacon.',
+  ],
   '1.9': [
     'Step indoors and the music steps in with you — every inn, shop and hearth has its own tune now, and the Crossroads, the Lanternway and Pearlmoor sing their own songs.',
     'Some places remember what happened there. Walk the old orchard again, and listen.',

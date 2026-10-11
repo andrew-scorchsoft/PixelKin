@@ -121,6 +121,9 @@ for (const file of readdirSync(MUSIC).filter((f) => f.endsWith('.mp3')).sort()) 
         classic: `play/assets/audio/music/${id}.mp3`,
         remaster: r ? `play/assets/audio/music/remaster/${id}.mp3` : null,
         loop_start: r ? r.loop_start : null,
+        // Battles keep the chip score on purpose (owner's call, 2026-10) — say so,
+        // rather than promising a remaster that isn't coming.
+        note: !r && id.startsWith('battle-') ? 'Battles keep the original chip score' : null,
     });
 }
 

@@ -1,0 +1,42 @@
+{
+  "title": "SFX -- world rest (goodnight waltz, homesick)",
+  "_note": "Alternative rest jingle: a two-bar 3/4 lullaby that starts in A minor (the homesick catch) and settles into C major on the last note -- the Vesper settle stretched over a waltz. Bell + harp + pad + bass. ~3.9 s incl. ring-out. Render --tail 0.6 to .wav, then encode to .mp3 untrimmed (it plays over silence).",
+  "era": "snes",
+  "tempo": 104,
+  "time_signature": [
+    3,
+    4
+  ],
+  "loop": false,
+  "key": "A minor -> C major",
+  "tracks": [
+    {
+      "name": "musicbox",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.8,
+      "notes": "E5q@90 D5e@84 C5e@86 A4q@84 | G4e@80 A4e@82 B4q@84 C5q@86"
+    },
+    {
+      "name": "harp",
+      "voice": "pluck",
+      "octave": 3,
+      "gain": 0.55,
+      "notes": "A2e@68 E3e@62 C4e@64 F2e@66 C3e@60 A3e@62 | G2e@64 D3e@60 B3e@62 D4e@58 C3e@62 G3e@60"
+    },
+    {
+      "name": "pad",
+      "voice": "pad",
+      "octave": 3,
+      "gain": 0.35,
+      "notes": "A2+E3+C4q@54 F2+C3+A3h@54 | G2+D3+B3h@52 C3+G3+E4q@52"
+    },
+    {
+      "name": "hearth",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.5,
+      "notes": "A1q@62 F1h@60 | G1h@58 C2q@60"
+    }
+  ]
+}

@@ -87,6 +87,10 @@ export const DIALOGUE: DialogueRegistry = {
   'sign.house_shelf': [
     { text: 'A row of spare wicks and an old field-journal. Pages of half-lit constellations.' },
   ],
+  // Talking to the coast-keeper directly, and the gated north warps' blocked line.
+  'npc.coast_keeper_gate': [
+    { speaker: 'COAST-KEEPER', text: 'Not past me yet, apprentice. Light Brisa\'s Beacon first: the old tower above Tinderwick. Then the flats are yours.' },
+  ],
   'npc.house_parent': [
     { speaker: 'GRAN', text: 'Off on your Wayfaring at last — away to walk the dark valleys, befriend their kin, and relight the sky, the way every lamp-tender\'s apprentice must.' },
     { speaker: 'GRAN', text: 'Old Fenn left word — the Star-tender, love, who minds what is left of the stars. He waits at the Crossroads waystone, east along the Lanternway. That is the lit road out of town.' },

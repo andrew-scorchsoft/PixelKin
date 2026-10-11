@@ -248,8 +248,8 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
 ### Dimglass Coast I — *tidal cliffside route; the first road, and the first dark omen*
 
 **At a glance** — `dimglass_coast` · route · south · entry: south edge from Tinderwick
-`{tx:6,ty:32–33}`, exit: north edge to `dimglass_coast_ii` `{tx:7,ty:0}` · gate: none
-(ungated boundary) · Gleam: — (teases Tidecall + Glimmerstep) · rec. level: 5 → ~8.
+`{tx:6,ty:32–33}`, exit: north edge to `dimglass_coast_ii` `{tx:7,ty:0}` · gate: **`gleam:ember`**
+(Brisa's **coast-keeper** turns you back at the north cut until the Beacon is lit — 2026-10) · Gleam: — (teases Tidecall + Glimmerstep) · rec. level: 5 → ~8.
 
 1. **Main path** (south→north, alternating safe-strip ↔ grass beats per level-design §5):
    1. **Land on the south sand strip** from Tinderwick; cliff wall west, sea east. A continuous
@@ -266,7 +266,13 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
       friendly battle teaches **trainer battles** (Wren ~2 levels under the player).
    5. **The inciting incident (B1).** On the first nightfall here, a far constellation **winks
       out**; the buoys gutter for a beat. Sets the tone — and the plot — in motion.
-   6. **Continue through `grass_b/c/d`** to the north boundary and on to **Dimglass Coast II**.
+   6. **Continue through `grass_b/c/d`** to the north boundary — where **Brisa's coast-keeper**
+      (`coast_keeper`, `script.coast_keeper_gate`: a pushback band on row 1 x6–8 + the three
+      north warps `requires_flag:'gleam:ember'`, `blocked_ref:npc.coast_keeper_gate`) turns an
+      apprentice back until the **Beacon** is lit, naming the next step (the lamplighter's
+      wick-key, then the tower). With the Ember Gleam, on to **Dimglass Coast II**. (The order
+      the level curve always assumed: I 3–5 → Brisa ace 10 → II 8–10; playtest-caught that the
+      boundary was open and the tower skippable.)
 
 2. **Story beats**
    - **A2 — First friendly Wren battle.** Teaches trainer battles in a low-stakes, cosy frame.
@@ -309,7 +315,9 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
    - **Map id / kind:** `dimglass_coast` · route, 18×34, vertical.
    - **Entry/exit:** south land-in from Tinderwick `to_tinderwick` `{tx:6,ty:33}` (+ `_w {5,33}`,
      `_e {7,33}`) → `tinderwick {tx:14,ty:3}`; north `to_coast_ii` `step_on {tx:7,ty:0}` →
-     `dimglass_coast_ii {tx:7,ty:31}`, `facing:up`, `fade`.
+     `dimglass_coast_ii {tx:7,ty:31}`, `facing:up`, `fade` — all three north warps (x6–8)
+     **`requires_flag:'gleam:ember'`** + `blocked_ref:npc.coast_keeper_gate`, behind the
+     `coast_keeper_gate_{6,7,8}` pushback band at row 1 (`hidden_when_flag:'gleam:ember'`).
    - **Gated warps (teases):** `to_gullcry` `step_on {tx:14,ty:5}` **`requires_ability:tidecall`**
      → `gullcry_rock {tx:4,ty:8}`; `to_tideglass` `interact {tx:2,ty:9}`
      **`requires_ability:glimmerstep`** → `tideglass_cavern {tx:4,ty:8}`, `door`.

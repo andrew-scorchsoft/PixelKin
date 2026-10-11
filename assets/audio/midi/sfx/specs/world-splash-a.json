@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- splash (in/out of the water)",
+  "_note": "The vesperlamp carries you onto (or off) open water: a soft falling noise wash over a hollow wave plop. Plays on the swim/walk switch, so it stays small. ~0.2 s. Render --tail 0.05 to .wav, then ffmpeg -af volume=-7dB -> .mp3.",
+  "era": "sfx",
+  "tempo": 220,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C",
+  "tracks": [
+    { "name": "wash", "voice": "noise", "octave": 5, "gain": 0.4,  "notes": "G5~C4e@64" },
+    { "name": "plop", "voice": "wave",  "octave": 4, "gain": 0.45, "notes": "E4~A3s@66" }
+  ]
+}

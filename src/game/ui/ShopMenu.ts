@@ -407,12 +407,12 @@ export class ShopMenu {
       }
       this.money -= entry.wicks;
       this.inventory.items[entry.id] = (this.inventory.items[entry.id] ?? 0) + 1;
-      void this.sfx?.playVariant('world-pickup', ['a', 'b', 'c']);
+      void this.sfx?.play('world-wicks'); // wicks across the counter
     } else {
       this.money += entry.wicks;
       this.inventory.items[entry.id] = (this.inventory.items[entry.id] ?? 1) - 1;
       if (this.inventory.items[entry.id] <= 0) delete this.inventory.items[entry.id];
-      void this.sfx?.play(theme.cursor.confirmSfx);
+      void this.sfx?.play('world-wicks');
     }
     this.rebuild();
   }

@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- wicks change hands (two-clink)",
+  "_note": "Variant: two light bell clinks a fourth apart over a pluck -- a counted handful. ~0.25 s. Render --tail 0.12 to .wav, then ffmpeg -af volume=-4dB -> .mp3.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "A",
+  "tracks": [
+    { "name": "clink", "voice": "bell",  "octave": 6, "gain": 0.55, "notes": "E6s@78 A6e@72" },
+    { "name": "pluck", "voice": "pluck", "octave": 5, "gain": 0.6,  "notes": "A5s@84 rs" }
+  ]
+}

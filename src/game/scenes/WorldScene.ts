@@ -140,6 +140,14 @@ interface EntryTutorial {
   unless_flag?: WorldFlag;
 }
 
+/** Floor-to-floor warps (interior stairs, cave ladders, Spire shafts) by their
+ *  conventional ids: they climb with `world-stairs` rather than the lamp-warp
+ *  shimmer. Route edges merely NAMED for a stair (`to_stair_ii`) don't match. */
+const STAIR_WARP_ID = /^(?:(?:up|down)_stairs|stair_(?:up|down)|ladder_(?:up|down)|shaft_(?:up|down))$/;
+
+/** Object sprites the player can talk ACROSS (see `WorldScene.npcAcrossDesk`). */
+const DESK_SPRITE = /(counter|desk|stall|altar|lectern)/;
+
 export class WorldScene extends Phaser.Scene {
   private ready = false;
   private _modal = false;
@@ -957,6 +965,33 @@ export class WorldScene extends Phaser.Scene {
     return this.npcs.find((n) => n.tx === tx && n.ty === ty);
   }
 
+  /** Whether a desk-like object (counter, stall, altar, desk) covers this tile. */
+  private deskAt(tx: number, ty: number): boolean {
+    return (this.map.def.objects ?? []).some(
+      (o) =>
+        DESK_SPRITE.test(o.sprite) &&
+        o.solid !== false &&
+        this.objectVisible(o) &&
+        tx >= o.at.tx && tx < o.at.tx + o.w &&
+        ty >= o.at.ty && ty < o.at.ty + o.h,
+    );
+  }
+
+  /** The NPC on the far side of up to two desk tiles, starting at the faced tile. */
+  private npcAcrossDesk(tx: number, ty: number): Npc | undefined {
+    const dx = tx - this.player.tx;
+    const dy = ty - this.player.ty;
+    let x = tx;
+    let y = ty;
+    for (let i = 0; i < 2 && this.deskAt(x, y); i++) {
+      x += dx;
+      y += dy;
+      const npc = this.npcAt(x, y);
+      if (npc) return npc;
+    }
+    return undefined;
+  }
+
   private playerCanEnter = (tx: number, ty: number): boolean => {
     if (this.collision.isBlocked(tx, ty, this.abilities)) return false;
     if (this.npcAt(tx, ty)) return false;
@@ -975,7 +1010,10 @@ export class WorldScene extends Phaser.Scene {
   private async interact(): Promise<void> {
     const ahead = this.player.tileAhead();
 
-    const npc = this.npcAt(ahead.tx, ahead.ty);
+    // Talk ACROSS a counter (the genre convention): facing a shop counter, a stall
+    // or an altar with someone standing behind it reaches them, up to two desk
+    // tiles deep. Every keeper stays reachable from the customer's side.
+    const npc = this.npcAt(ahead.tx, ahead.ty) ?? this.npcAcrossDesk(ahead.tx, ahead.ty);
     if (npc) {
       npc.facePoint(this.player.tx, this.player.ty);
       // An NPC whose dialogue_ref is a script runs it as a cutscene (inn rest,
@@ -1200,6 +1238,9 @@ export class WorldScene extends Phaser.Scene {
         // a defeat carries you back to the nearest warm hearth, not to square one.
         if (rest) this.recordRespawn();
       },
+      // A sleep-heal faded the bed out; bring this map's own music back (resumes
+      // where it was left — the room didn't change while you slept).
+      resumeMapMusic: () => this.playMapMusic(),
       startTrainerBattle: async (trainer: string): Promise<boolean> => {
         const result = await this.startBattle({
           kind: 'trainer',
@@ -1349,7 +1390,7 @@ export class WorldScene extends Phaser.Scene {
     const steps = getScript(npc.dialogueRef ?? '');
     if (!steps) return;
     this.modal = true;
-    void this.sfx.playVariant('ui-confirm', ['a', 'b']);
+    void this.sfx.play('world-spotted'); // the eye-contact '!' sting
     await npc.showEmote('alert');
     // march to the tile adjacent to the player along the (axis-aligned) line,
     // then face off before the script's first line
@@ -1695,7 +1736,7 @@ export class WorldScene extends Phaser.Scene {
     if (!MAP_REGISTRY[warp.to_map]) return;
     this.modal = true;
     const door = warp.transition === 'door';
-    void this.sfx.play(door ? 'world-door-open' : 'world-warp');
+    void this.sfx.play(door ? 'world-door-open' : STAIR_WARP_ID.test(warp.id) ? 'world-stairs' : 'world-warp');
     // The door-open beat: the doorway darkens for a moment before the fade.
     if (door) await (this.ambience?.doorBeat(warp.at.tx, warp.at.ty) ?? Promise.resolve());
     await fadeOut(this, door ? theme.transition.doorMs : theme.transition.fadeMs);
@@ -1803,7 +1844,11 @@ export class WorldScene extends Phaser.Scene {
     // Standing on water the vesperlamp carries you over: the player swims rather
     // than walks (a swim sheet swap, with a procedural fallback — see Player).
     // Checked every frame so it survives warps, blackouts and cutscene walks.
+    const wasSwimming = this.player.isSwimming;
     this.player.setSwimming(this.map.hasTerrainAt(this.player.tx, this.player.ty, 'water'));
+    // A small splash as the lamp carries you onto (or off) open water — only on
+    // a free step, so a warp/cutscene landing in the water stays quiet.
+    if (this.player.isSwimming !== wasSwimming && !this.modal) void this.sfx.play('world-splash');
 
     this.player.syncDepth(ACTOR_DEPTH);
     for (const npc of this.npcs) npc.syncDepth(ACTOR_DEPTH);
@@ -1872,7 +1917,8 @@ export class WorldScene extends Phaser.Scene {
    */
   private async revealChart(chart: ChartEntry): Promise<void> {
     this.modal = true;
-    void this.sfx.playVariant('world-gleam', ['a', 'b', 'c']);
+    // A soft unfurl, not the Gleam bloom — that cue stays reserved for the big lights.
+    void this.sfx.play('world-chart');
     const view = new ChartView(this, { mode: 'reveal' });
     // Start the bloom immediately (alpha 0 this same tick, no black pop) while the
     // art loads in behind it, then hold once it's fully bloomed.
@@ -2011,6 +2057,9 @@ export class WorldScene extends Phaser.Scene {
   /** In-game pause menu (Start/Esc): Resume / Kin / Hearth / Items / Save / Settings. */
   private async openPauseMenu(): Promise<void> {
     this.modal = true;
+    // The menu's own blips voice every choice and the close (cancel); only the
+    // OPENING was silent.
+    void this.sfx.play('ui-menu-open');
     // A holder so the closure write in onImport survives TS flow analysis.
     const pending: { load: SaveGame | null; rest: RestPoint | null } = { load: null, rest: null };
     let open = true;
