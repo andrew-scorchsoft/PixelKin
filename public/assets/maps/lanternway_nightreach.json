@@ -1488,5 +1488,21 @@
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/tinderwick-a.mp3"
+  "music": "assets/audio/music/tinderwick-a.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "starglint",
+        "density": 0.8
+      },
+      {
+        "kind": "glowmotes",
+        "density": 0.3
+      }
+    ],
+    "starfall": {
+      "min_s": 30,
+      "max_s": 60
+    }
+  }
 }

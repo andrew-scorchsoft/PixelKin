@@ -1380,5 +1380,17 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "glowmotes",
+        "density": 0.5
+      }
+    ],
+    "tint": {
+      "color": "#a8f0d0",
+      "alpha": 0.08
+    }
+  }
 }

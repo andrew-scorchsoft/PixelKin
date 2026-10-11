@@ -2119,5 +2119,17 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "dust",
+        "density": 0.6
+      }
+    ],
+    "tint": {
+      "color": "#ffcf7a",
+      "alpha": 0.06
+    }
+  }
 }

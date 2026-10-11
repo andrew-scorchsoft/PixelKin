@@ -143,8 +143,12 @@ pt.ledge_run(deco, W, H, BLUFF.y1, BLUFF.x0 + 2, BLUFF.x1 - 2, rng, family="scre
 
 # ---- the dead shallows (murk — water-over-blight, NO life, NO zone) ----------------
 mk.blob(murk, W, H, 5.0, 18.5, 3.0, 2.2)               # west pool
+mk.blob(murk, W, H, 2.9, 20.4, 1.2, 0.8)               #  (R10: ragged lobes — never a
+mk.blob(murk, W, H, 7.0, 16.6, 1.0, 0.7)               #   ruled box, audit_visual)
 mk.blob(murk, W, H, 14.5, 17.5, 2.8, 1.9)              # east pool (the islet cache)
+mk.blob(murk, W, H, 12.4, 18.7, 0.9, 0.7)
 mk.blob(murk, W, H, 4.5, 8.5, 2.6, 2.0)                # north-west pool
+mk.blob(murk, W, H, 6.6, 9.8, 1.1, 0.7)
 mk.blob(murk, W, H, 12.5, 22.5, 1.7, 1.2)              # fringe-line pool
 # the islet (dry ground under the valuable cache — priced on Tidecall)
 for (x, y) in [(14, 17), (15, 17)]:
@@ -160,6 +164,11 @@ mk.rect(path, W, H, 7, 24, 8, 24)                      # one last tired jog
 # the MANDATORY crossing (§11 r7): full corridor, rows 12-13 (no lane to pause —
 # the road itself is gone; the fog bed IS the road)
 mk.rect(blighttuft, W, H, 2, 12, 17, 13)
+# R10: a wind-cut, ragged edge (not a ruled bar) — the corridor stays fully banded
+for (x, y) in []:  # (no additions: a row-classified band must not grow into the beds)
+    blighttuft[y * W + x] = 1
+for (x, y) in [(2, 13), (17, 12), (6, 12), (10, 13), (14, 12)]:  # notches only
+    blighttuft[y * W + x] = 0
 # optional beds: south of the crossing + under the bluff
 mk.blob(blighttuft, W, H, 13.0, 21.0, 2.4, 1.4)
 mk.blob(blighttuft, W, H, 6.0, 14.5, 2.0, 1.3)
@@ -266,6 +275,48 @@ m["objects"].append(
     {"id": "wayshrine_null", "sprite": "glowmoss_deep_null_lantern_shrine",
      "at": {"tx": 11, "ty": 18}, "w": 2, "h": 3, "overhang": 2})
 
+# ---- R10: DESOLATION, AUTHORED (world-craft panel §4 #5) -------------------------
+# Not empty — emptied. What the drained marsh lost is left where it was put
+# down: a table laid for three in a cottage with no walls, a boat pulled up
+# out of water that no longer moves, doused lamp-posts that take your flame for
+# a breath and gutter (Coldfog resists Lamplight — saying so makes it felt),
+# the Hollowing's gentle notice, a willow that has forgotten what green was.
+# Every one is optional colour: interacts only, nothing gates.
+m["objects"] += [
+    {"id": "set_table", "sprite": "coldfog_set_table", "at": {"tx": 2, "ty": 21},
+     "w": 4, "h": 3},
+    {"id": "beached_boat", "sprite": "coldfog_beached_boat", "at": {"tx": 2, "ty": 15},
+     "w": 3, "h": 2},
+    {"id": "doused_lamp_a", "sprite": "coldfog_doused_lamp", "at": {"tx": 8, "ty": 14},
+     "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    {"id": "doused_lamp_b", "sprite": "coldfog_doused_lamp", "at": {"tx": 16, "ty": 7},
+     "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    {"id": "quiet_notice", "sprite": "coldfog_hollowing_notice", "at": {"tx": 11, "ty": 21},
+     "w": 1, "h": 2, "overhang": 1, "walk_under": True},
+    {"id": "drained_willow", "sprite": "coldfog_dead_willow", "at": {"tx": 15, "ty": 23},
+     "w": 3, "h": 4, "overhang": 2, "walk_under": True},
+]
+m["triggers"] += [
+    {"id": "set_table_read", "kind": "script", "at": {"tx": 3, "ty": 23},
+     "activation": "interact", "ref": "script.coldfog_set_table"},
+    {"id": "set_table_read_b", "kind": "script", "at": {"tx": 4, "ty": 23},
+     "activation": "interact", "ref": "script.coldfog_set_table"},
+    {"id": "boat_read", "kind": "script", "at": {"tx": 3, "ty": 16},
+     "activation": "interact", "ref": "script.coldfog_boat"},
+    {"id": "doused_lamp_a_relight", "kind": "script", "at": {"tx": 8, "ty": 16},
+     "activation": "interact", "ref": "script.coldfog_relight"},
+    {"id": "doused_lamp_b_relight", "kind": "script", "at": {"tx": 16, "ty": 9},
+     "activation": "interact", "ref": "script.coldfog_relight"},
+    {"id": "quiet_notice_read", "kind": "script", "at": {"tx": 11, "ty": 22},
+     "activation": "interact", "ref": "script.coldfog_notice"},
+]
+# the one living voice on the fringe: a hollow-eyed villager who walks the
+# blight line and answers in half-sentences (gone home at dawn)
+m["npcs"].append(
+    {"id": "hollow_villager", "at": {"tx": 13, "ty": 25}, "facing": "left",
+     "sprite": "fen_folk", "movement": "wander", "wander_radius": 2,
+     "dialogue_ref": "script.coldfog_villager", "hidden_when_flag": "flag:dawn"})
+
 # ---- the bravest viewpoint (X3 leg 3 — the survey cairn on the bluff) ---------------
 m["objects"].append(
     {"id": "chart_cairn", "sprite": "windward_cairn",
@@ -340,6 +391,20 @@ for (x, y) in [(5, 22), (10, 19), (3, 13), (15, 15), (6, 9), (11, 9), (16, 22),
 for (x, y) in [(4, 16), (12, 8), (16, 13), (5, 25), (14, 23)]:
     if deco[y * W + x] == 0:
         deco[y * W + x] = gid("boulder")
+
+# R10: the drained ground keeps its litter — grey moss and loose stones scattered
+# (seeded, off every structure) so the blight reads as weathered, not blank.
+_busy = {(x, y) for y in range(H) for x in range(W)
+         if any(g[y * W + x] for g in (cliff, tree, murk, blighttuft, goldtuft, path, gold))}
+_busy |= {(x, y) for o in m["objects"]
+          for y in range(o["at"]["ty"], o["at"]["ty"] + o["h"])
+          for x in range(o["at"]["tx"], o["at"]["tx"] + o["w"])}
+_busy |= {(p["at"]["tx"], p["at"]["ty"]) for p in m["npcs"] + m["triggers"] + m["warps"]}
+_litter = [gid("greymoss_a"), gid("greymoss_b"), gid("g_pebble")]
+for y in range(2, 24):
+    for x in range(2, 18):
+        if (x, y) not in _busy and deco[y * W + x] == 0 and rng.random() < 0.10:
+            deco[y * W + x] = rng.choice(_litter)
 
 # ---- scatter on the LIVING fringe only (grass cells; the blight stays drab) ---------
 covered = {(x, y) for y in range(H) for x in range(W)
