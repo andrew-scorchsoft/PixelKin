@@ -1303,7 +1303,7 @@
         "ty": 20
       },
       "facing": "left",
-      "sprite": "pass_walker",
+      "sprite": "kite_weaver",
       "movement": "static",
       "dialogue_ref": "script.peril_notice_reader"
     },

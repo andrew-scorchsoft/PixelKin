@@ -199,7 +199,7 @@ PLACEMENTS: dict[str, dict] = {
             *recast("galehigh_terraces",
                     galehigh_kitehand="kite_weaver", galehigh_kitehand_after="kite_weaver",
                     festival_piper="market_trader", festival_kid="kite_child",
-                    festival_goer="star_watcher", peril_notice_reader="pass_walker",
+                    festival_goer="star_watcher", peril_notice_reader="kite_weaver",
                     kite_maker_lost="kite_weaver", kite_maker_build="kite_weaver",
                     kite_maker_after="kite_weaver", kite_maker_round="kite_weaver",
                     kite_maker_round_after="kite_weaver"),

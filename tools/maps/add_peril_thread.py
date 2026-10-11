@@ -79,7 +79,7 @@ PLACEMENTS: dict[str, dict] = {
     # can't decide whether to tear it down.
     "galehigh_terraces": {
         "signs": [("peril_quiet_notice", (8, 20), "sign.peril_quiet_notice")],
-        "npcs": [npc("peril_notice_reader", (9, 20), "npc_woman", "script.peril_notice_reader",
+        "npcs": [npc("peril_notice_reader", (9, 20), "kite_weaver", "script.peril_notice_reader",
                      facing="left")],
     },
     # N2 — the SECOND FALL: a fresh crater in the snow of Hushfrost Pass (the
