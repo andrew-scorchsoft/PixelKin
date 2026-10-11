@@ -1,12 +1,11 @@
 {
  "chunks": [
   {
-   "text": "[Title Fanfare]\n{at full volume on beat one: crash, timpani and a bold brass fanfare on the theme's rising first notes, then straight into the anthem}",
-   "duration_ms": 4800,
+   "text": "[Welcome]\n{a warm welcome that builds: shimmering sampled strings swell over a rising timpani roll as a horn sings the bold rising three-note lift, growing for four bars into the crash that launches the anthem}",
+   "duration_ms": 6400,
    "positive_styles": [
     "16-bit console RPG soundtrack from the mid-1990s",
     "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
-    "150 BPM",
     "A minor",
     "epic heroic title theme",
     "cutting bright pulse-wave lead with wide leaping melody",
@@ -18,9 +17,11 @@
     "strong singable melody",
     "authentic 16-bit game music sound",
     "instrumental",
-    "bold fanfare from the very first beat",
-    "full band at once",
-    "heroic"
+    "warm building opening",
+    "rising anticipation",
+    "horn melody over swelling strings",
+    "same tempo, key and instruments as the theme that follows",
+    "starts instantly on beat one"
    ],
    "negative_styles": [
     "vocals",
@@ -31,151 +32,17 @@
     "fade out",
     "lullaby",
     "slow tempo",
-    "fade in",
-    "slow intro",
-    "quiet opening",
-    "build-up",
-    "swell",
-    "ambient intro",
     "silence",
-    "music box",
-    "lone instrument"
+    "ambient drone"
    ],
    "context_adherence": "high"
   },
   {
-   "text": "[Main Theme]\n{the heroic A minor anthem: a wide leaping lead melody over the galloping bass and brass stabs, Am F G chords with a dramatic E major dominant, bold and memorable}",
-   "duration_ms": 12800,
-   "positive_styles": [
-    "16-bit console RPG soundtrack from the mid-1990s",
-    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
-    "150 BPM",
-    "A minor",
-    "epic heroic title theme",
-    "cutting bright pulse-wave lead with wide leaping melody",
-    "punchy sampled brass stabs",
-    "galloping plucked sampled bass ostinato",
-    "sampled 16-bit drum kit and timpani on a galloping rock beat, tom fills and crash cymbals",
-    "heroic, adventurous, urgent and exciting",
-    "melody built on a bold rising three-note lift",
-    "strong singable melody",
-    "authentic 16-bit game music sound",
-    "instrumental",
-    "main theme",
-    "memorable hook",
-    "heroic drive"
-   ],
-   "negative_styles": [
-    "vocals",
-    "modern electronic dance production",
-    "drum and bass",
-    "heavy sub bass",
-    "electric guitar",
-    "fade out",
-    "lullaby",
-    "slow tempo"
-   ],
-   "context_adherence": "high"
-  },
-  {
-   "text": "[Main Theme Reprise]\n{the anthem again, a second lead harmonising and the pulse arpeggio racing, fuller and higher}",
-   "duration_ms": 12800,
-   "positive_styles": [
-    "16-bit console RPG soundtrack from the mid-1990s",
-    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
-    "150 BPM",
-    "A minor",
-    "epic heroic title theme",
-    "cutting bright pulse-wave lead with wide leaping melody",
-    "punchy sampled brass stabs",
-    "galloping plucked sampled bass ostinato",
-    "sampled 16-bit drum kit and timpani on a galloping rock beat, tom fills and crash cymbals",
-    "heroic, adventurous, urgent and exciting",
-    "melody built on a bold rising three-note lift",
-    "strong singable melody",
-    "authentic 16-bit game music sound",
-    "instrumental",
-    "harmonised lead",
-    "fuller arrangement"
-   ],
-   "negative_styles": [
-    "vocals",
-    "modern electronic dance production",
-    "drum and bass",
-    "heavy sub bass",
-    "electric guitar",
-    "fade out",
-    "lullaby",
-    "slow tempo"
-   ],
-   "context_adherence": "high"
-  },
-  {
-   "text": "[Triumphant Lift]\n{contrast: a circle-of-fifths climb D minor, G, C, F up to a triumphant C major peak, the lead soaring to its highest notes, crash cymbals, the sense of a whole journey ahead}",
-   "duration_ms": 12800,
-   "positive_styles": [
-    "16-bit console RPG soundtrack from the mid-1990s",
-    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
-    "150 BPM",
-    "A minor",
-    "epic heroic title theme",
-    "cutting bright pulse-wave lead with wide leaping melody",
-    "punchy sampled brass stabs",
-    "galloping plucked sampled bass ostinato",
-    "sampled 16-bit drum kit and timpani on a galloping rock beat, tom fills and crash cymbals",
-    "heroic, adventurous, urgent and exciting",
-    "melody built on a bold rising three-note lift",
-    "strong singable melody",
-    "authentic 16-bit game music sound",
-    "instrumental",
-    "C major peak",
-    "triumphant",
-    "contrasting section"
-   ],
-   "negative_styles": [
-    "vocals",
-    "modern electronic dance production",
-    "drum and bass",
-    "heavy sub bass",
-    "electric guitar",
-    "fade out",
-    "lullaby",
-    "slow tempo"
-   ],
-   "context_adherence": "medium"
-  },
-  {
-   "text": "[Main Theme Return]\n{the heroic minor anthem returns; the last bar slams on the E major dominant straight back into the main theme}",
-   "duration_ms": 12800,
-   "positive_styles": [
-    "16-bit console RPG soundtrack from the mid-1990s",
-    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
-    "150 BPM",
-    "A minor",
-    "epic heroic title theme",
-    "cutting bright pulse-wave lead with wide leaping melody",
-    "punchy sampled brass stabs",
-    "galloping plucked sampled bass ostinato",
-    "sampled 16-bit drum kit and timpani on a galloping rock beat, tom fills and crash cymbals",
-    "heroic, adventurous, urgent and exciting",
-    "melody built on a bold rising three-note lift",
-    "strong singable melody",
-    "authentic 16-bit game music sound",
-    "instrumental",
-    "main theme returns",
-    "seamless loop back to the start of the theme"
-   ],
-   "negative_styles": [
-    "vocals",
-    "modern electronic dance production",
-    "drum and bass",
-    "heavy sub bass",
-    "electric guitar",
-    "fade out",
-    "lullaby",
-    "slow tempo"
-   ],
-   "context_adherence": "high"
+   "song_id": "0tG6J1ijZUC6Weedlv0l",
+   "range": {
+    "start_ms": 4800,
+    "end_ms": 54500
+   }
   }
  ]
 }

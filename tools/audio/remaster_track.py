@@ -258,6 +258,9 @@ def main() -> int:
                          "spec's first section, then re-glue — for an intro that's too slow without losing the cue")
     ap.add_argument("--work", default=None, help="scratch dir for raw takes (default: system temp)")
     ap.add_argument("--glue-tries", type=int, default=2)
+    ap.add_argument("--intro-at", type=float, default=None,
+                    help="where the THEME really starts in the take (s), when the model's intro ran long/short "
+                         "of the plan — the glue aims its turnaround there (use with --reglue)")
     a = ap.parse_args()
 
     d = SPECS / a.id
@@ -323,7 +326,7 @@ def main() -> int:
             if not song_id:
                 raise SystemExit("no song-id header returned; cannot glue")
             total_ms = int(round(duration(raw) * 1000))
-        intro_ms = plan["chunks"][0]["duration_ms"]
+        intro_ms = int(a.intro_at * 1000) if a.intro_at else plan["chunks"][0]["duration_ms"]
         # Takes FADE OUT at the end even when told not to; glue from where the music
         # still plays at full level, or the fade ends up inside the loop (dead air).
         music_ms = int(da.music_end(da.levels(raw), min_s=intro_ms / 1000 + 30) * 1000)

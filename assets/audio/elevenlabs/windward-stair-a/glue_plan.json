@@ -1,10 +1,10 @@
 {
  "chunks": [
   {
-   "song_id": "lIJH15RaCIWcmILQy9N1",
+   "song_id": "9a8kFHOSmFTpiXfM1DkN",
    "range": {
-    "start_ms": 44000,
-    "end_ms": 64000
+    "start_ms": 42500,
+    "end_ms": 62500
    }
   },
   {
@@ -13,14 +13,15 @@
    "positive_styles": [
     "16-bit console RPG soundtrack from the mid-1990s",
     "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
-    "132 BPM",
+    "116 BPM",
     "bright A major",
-    "high pulse-wave lead climbing in stepwise terraces",
-    "steady ascending arpeggio like footsteps on stone",
-    "firm plucked sampled bass tread",
-    "sampled 16-bit marching snare and kick on a steady march beat",
-    "white-noise wind swell cresting every four bars",
-    "mountain climbing route theme, determined and airy, sunset thinning to cold blue",
+    "4/4",
+    "noble sampled French horn melody climbing in stepwise terraces",
+    "warm sampled string section carrying the harmony",
+    "plucked sampled bass stepping like footsteps on stone",
+    "sampled snare and timpani in a marching cadence, footsteps rather than a dance beat",
+    "soft wind swell cresting every four bars",
+    "mountain climbing route theme, determined, airy and adventurous, sunset thinning to cold blue",
     "strong singable melody",
     "authentic 16-bit game music sound",
     "instrumental",
@@ -37,10 +38,10 @@
    "context_adherence": "high"
   },
   {
-   "song_id": "lIJH15RaCIWcmILQy9N1",
+   "song_id": "9a8kFHOSmFTpiXfM1DkN",
    "range": {
-    "start_ms": 7273,
-    "end_ms": 17273
+    "start_ms": 8000,
+    "end_ms": 18000
    }
   }
  ]

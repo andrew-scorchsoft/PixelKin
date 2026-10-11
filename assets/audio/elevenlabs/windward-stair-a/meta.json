@@ -3,12 +3,16 @@
  "kind": "loop",
  "where": "Windward Stair I & II (the switchback mountain route) + the Wind-Eye and Thunderroost spurs",
  "mood": "The Long Climb \u2014 airy, building, breath-quickening; each phrase re-launches a step higher so the loop feels like ascent.",
- "duration": 70.426,
- "loop_start": 9.776,
- "seam": 0.375,
- "bpm_est": 66.3,
- "song_id": "lIJH15RaCIWcmILQy9N1",
- "raw_ms": 64000,
+ "duration": 63.3,
+ "loop_start": 4.925,
+ "seam": 0.378,
+ "bpm_est": 117.5,
+ "song_id": "9a8kFHOSmFTpiXfM1DkN",
+ "raw_ms": 62500,
  "motif": null,
- "lufs": -15.7
+ "lufs": -15.4,
+ "edits": [
+  "cut stalled intro span 2.0-7.9s",
+  "cut stalled intro span 1.95-2.48s"
+ ]
 }

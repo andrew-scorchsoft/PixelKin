@@ -192,7 +192,7 @@
      "mood": "The Long Climb — airy, building, breath-quickening; each phrase re-launches a step higher so the loop feels like ascent.",
      "classic": "play/assets/audio/music/windward-stair-a.mp3",
      "remaster": "play/assets/audio/music/remaster/windward-stair-a.mp3",
-     "loop_start": 9.776
+     "loop_start": 4.925
     },
     {
      "id": "pale-vault-glacier-a",
@@ -456,7 +456,7 @@
      "mood": "The calling card: a lone lantern-tune in the dark explodes into a heroic minor adventure anthem; the Long Dusk, and the journey rising against it.",
      "classic": "play/assets/audio/music/title.mp3",
      "remaster": "play/assets/audio/music/remaster/title.mp3",
-     "loop_start": 4.83
+     "loop_start": 8.104
     },
     {
      "id": "coldopen-foreboding",

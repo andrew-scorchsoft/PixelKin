@@ -34,24 +34,17 @@
  ],
  "sections": [
   {
-   "name": "Title Fanfare",
-   "bars": 3,
-   "text": "{at full volume on beat one: crash, timpani and a bold brass fanfare on the theme's rising first notes, then straight into the anthem}",
+   "name": "Welcome",
+   "bars": 4,
+   "text": "{a warm welcome that builds: shimmering sampled strings swell over a rising timpani roll as a horn sings the bold rising three-note lift, growing for four bars into the crash that launches the anthem}",
    "styles": [
-    "bold fanfare from the very first beat",
-    "full band at once",
-    "heroic"
+    "warm building opening",
+    "rising anticipation",
+    "horn melody over swelling strings"
    ],
    "negative": [
-    "fade in",
-    "slow intro",
-    "quiet opening",
-    "build-up",
-    "swell",
-    "ambient intro",
     "silence",
-    "music box",
-    "lone instrument"
+    "ambient drone"
    ],
    "adherence": "high"
   },
@@ -95,5 +88,5 @@
    ]
   }
  ],
- "_note": "2026-10 retro + tempo pass: motif dropped (it pinned the take to ~90 BPM); era-first anchor, retro kit/bass; opening shape chosen per scene."
+ "_note": "2026-10 retro + tempo pass: motif dropped (it pinned the take to ~90 BPM); era-first anchor, retro kit/bass; opening shape chosen per scene. | 2026-10: owner: 'a bit too quickly into the battle music' — a 4-bar warm building welcome over the kept anthem (--new-intro)."
 }
