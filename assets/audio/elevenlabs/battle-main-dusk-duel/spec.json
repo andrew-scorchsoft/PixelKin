@@ -5,9 +5,7 @@
  "mood": "The fight you hear a thousand times — urgent, catchy and winnable: a minor-key chase that bursts into a heroic major lift.",
  "bpm": 158,
  "beats_per_bar": 4,
- "motif": {
-  "strength": "low"
- },
+ "motif": null,
  "core_styles": [
   "16-bit SNES-era RPG soundtrack",
   "retro sampled-chip instruments",
@@ -109,5 +107,6 @@
    ],
    "adherence": "high"
   }
- ]
+ ],
+ "_note": "motif dropped (2026-10): conditioning pulled the take onto the lullaby's ~90/180 BPM grid; driving cues keep their spec tempo unconditioned."
 }

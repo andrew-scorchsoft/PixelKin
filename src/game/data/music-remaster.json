@@ -2,8 +2,8 @@
  "_generated": "tools/audio/build_remaster_manifest.py — do not hand-edit",
  "tracks": {
   "battle-boss-eclipse": {
-   "loop_start": 6.687,
-   "duration": 77.322,
+   "loop_start": 8.261,
+   "duration": 78.873,
    "where": "The final battles: Warden Còr at the Umbral Spire summit, and Star-tender Fenn's post-game duel",
    "mood": "The last stand on the black mountain — grand, tragic and driving: a sorrowful antagonist who wants a gentle endless night, and the light that will not go out."
   },
@@ -32,8 +32,8 @@
    "mood": "The fight in the deepening dark — cold, uneasy and solemn: an enemy who believes in the gentle night, sorrow under the steel."
   },
   "battle-veil": {
-   "loop_start": 7.037,
-   "duration": 58.4,
+   "loop_start": 8.354,
+   "duration": 59.717,
    "where": "Rival battles with Wren (Pale Vault, Nightreach, and the post-game rematch)",
    "mood": "The rival who grew up beside you — cocky, quick, competitive and fond: a grin across the field, and the friendship under it."
   },
@@ -278,14 +278,14 @@
    "mood": "The calling card: a lone lantern-tune in the dark explodes into a heroic minor adventure anthem; the Long Dusk, and the journey rising against it."
   },
   "umbral-spire-a": {
-   "loop_start": 10.612,
-   "duration": 72.908,
+   "loop_start": 14.884,
+   "duration": 77.114,
    "where": "Umbral Spire summit (the Great Null, Warden Còr, the Keystar)",
    "mood": "Crown of Null: the summit under the Keystar; grave, sorrowful grandeur and driving resolve, the hometown motif boomed in minor and promised its major."
   },
   "umbral-spire-b": {
-   "loop_start": 6.711,
-   "duration": 79.36,
+   "loop_start": 4.918,
+   "duration": 77.504,
    "where": "Umbral Spire ascent (gatehouse, null-works, high gallery)",
    "mood": "The Black Ascent: the climb through the dead Lumenary, null-lanterns leaking anti-light; relentless minor drive, all tension and no release."
   },

@@ -3,15 +3,15 @@
  "kind": "loop",
  "where": "Rival battles with Wren (Pale Vault, Nightreach, and the post-game rematch)",
  "mood": "The rival who grew up beside you \u2014 cocky, quick, competitive and fond: a grin across the field, and the friendship under it.",
- "duration": 58.4,
- "loop_start": 7.037,
- "seam": 0.124,
- "bpm_est": 89.1,
- "song_id": "dlM7CQh9mh93qLuiBqU8",
+ "duration": 59.717,
+ "loop_start": 8.354,
+ "seam": 0.207,
+ "bpm_est": 80.7,
+ "song_id": "1XhbjusyGzzs5koXbKS6",
  "raw_ms": 51827,
- "motif": "low",
- "lufs": -15.4,
+ "motif": null,
+ "lufs": -15.3,
  "edits": [
-  "trimmed 0.602s of head"
+  "trimmed 0.005s of head"
  ]
 }

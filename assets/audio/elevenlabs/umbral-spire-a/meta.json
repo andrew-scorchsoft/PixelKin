@@ -3,12 +3,15 @@
  "kind": "loop",
  "where": "Umbral Spire summit (the Great Null, Warden C\u00f2r, the Keystar)",
  "mood": "Crown of Null: the summit under the Keystar; grave, sorrowful grandeur and driving resolve, the hometown motif boomed in minor and promised its major.",
- "duration": 72.908,
- "loop_start": 10.612,
- "seam": 0.118,
- "bpm_est": 89.1,
- "song_id": "0PJMr1PWqnVc7vEIANBh",
+ "duration": 77.114,
+ "loop_start": 14.884,
+ "seam": 0.185,
+ "bpm_est": 66.3,
+ "song_id": "dyuMpL5KF1KiB3aWu1N1",
  "raw_ms": 69198,
- "motif": "low",
- "lufs": -15.4
+ "motif": null,
+ "lufs": -15.4,
+ "edits": [
+  "trimmed 0.023s of head"
+ ]
 }

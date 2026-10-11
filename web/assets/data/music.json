@@ -333,7 +333,7 @@
      "mood": "Crown of Null: the summit under the Keystar; grave, sorrowful grandeur and driving resolve, the hometown motif boomed in minor and promised its major.",
      "classic": "play/assets/audio/music/umbral-spire-a.mp3",
      "remaster": "play/assets/audio/music/remaster/umbral-spire-a.mp3",
-     "loop_start": 10.612
+     "loop_start": 14.884
     },
     {
      "id": "umbral-spire-b",
@@ -342,7 +342,7 @@
      "mood": "The Black Ascent: the climb through the dead Lumenary, null-lanterns leaking anti-light; relentless minor drive, all tension and no release.",
      "classic": "play/assets/audio/music/umbral-spire-b.mp3",
      "remaster": "play/assets/audio/music/remaster/umbral-spire-b.mp3",
-     "loop_start": 6.711
+     "loop_start": 4.918
     },
     {
      "id": "umbral-spire-c",
@@ -397,7 +397,7 @@
      "mood": "The last stand on the black mountain — grand, tragic and driving: a sorrowful antagonist who wants a gentle endless night, and the light that will not go out.",
      "classic": "play/assets/audio/music/battle-boss-eclipse.mp3",
      "remaster": "play/assets/audio/music/remaster/battle-boss-eclipse.mp3",
-     "loop_start": 6.687
+     "loop_start": 8.261
     },
     {
      "id": "battle-emberfall",
@@ -442,7 +442,7 @@
      "mood": "The rival who grew up beside you — cocky, quick, competitive and fond: a grin across the field, and the friendship under it.",
      "classic": "play/assets/audio/music/battle-veil.mp3",
      "remaster": "play/assets/audio/music/remaster/battle-veil.mp3",
-     "loop_start": 7.037
+     "loop_start": 8.354
     }
    ]
   },

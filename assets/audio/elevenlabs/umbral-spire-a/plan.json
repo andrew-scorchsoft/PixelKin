@@ -36,15 +36,7 @@
     "ambient drone",
     "minimalist"
    ],
-   "context_adherence": "high",
-   "conditioning_ref": {
-    "song_id": "TOREmIgiwF3GKpN7UkLA",
-    "range": {
-     "start_ms": 10668,
-     "end_ms": 40668
-    }
-   },
-   "condition_strength": "low"
+   "context_adherence": "high"
   },
   {
    "text": "[Main Theme]\n{the noble minor melody boomed on the layered lead over driving bass and drums, a rising leap then a sorrowful stepwise fall, grave and unforgettable}",

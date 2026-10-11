@@ -41,7 +41,9 @@ cue feel iconic is **form + a shared motif + a seamless loop**, so:
    so the whole score shares one tune. **It also locks the TEMPO to the source's
    ~90 BPM grid (or 180/45)** whatever the spec asks — measured on every conditioned
    take; unconditioned takes hit their spec tempo exactly. So write motif cues at
-   90/180 BPM, or drop the motif where the tempo is the point. Conditioning carries PALETTE too: `high`
+   90/180 BPM, or drop the motif where the tempo is the point — **never condition a
+   battle or other driving cue on it**: the rival/boss/wild battles and the Spire came
+   out "chill" (~90 BPM, lullaby palette) and were re-composed unconditioned. Conditioning carries PALETTE too: `high`
    for hometown/dawn/ending/title/Gleam, `medium` towns + routes, `low` caves and
    drained places, `low`/none battles.
 3. **Run** `./venv/bin/python tools/audio/remaster_track.py <id>` (`--check-spec`
@@ -65,7 +67,7 @@ cue feel iconic is **form + a shared motif + a seamless loop**, so:
    **Then check it** (the model still loves a swell; it also ignored a brief "hush"
    once — measure the per-second level/onset profile, don't assume): if a punchy cue's intro
    builds or sags, `--new-intro` re-composes ONLY the intro over the kept body
-   (inpainting), and `tools/audio/trim_intro.py <id> --silence|--drop-intro` trims
+   (inpainting), and `tools/audio/trim_intro.py <id> --silence|--drop-intro|--cut A B` trims
    lead-in silence or opens straight on the theme — no new generation.
 4. **Engine contract:** `MusicDirector` maps `music/<id>.mp3` → `music/remaster/<id>.mp3`
    when the style is remastered and the manifest lists it; the intro plays ONCE

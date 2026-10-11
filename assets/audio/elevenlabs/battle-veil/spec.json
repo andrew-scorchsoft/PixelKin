@@ -5,9 +5,7 @@
  "mood": "The rival who grew up beside you — cocky, quick, competitive and fond: a grin across the field, and the friendship under it.",
  "bpm": 162,
  "beats_per_bar": 4,
- "motif": {
-  "strength": "low"
- },
+ "motif": null,
  "core_styles": [
   "16-bit SNES-era RPG soundtrack",
   "retro sampled-chip instruments",
@@ -106,5 +104,6 @@
    ],
    "adherence": "high"
   }
- ]
+ ],
+ "_note": "motif dropped (2026-10): conditioning on the lullaby pulled the take to ~90 BPM and a cosy palette — it played 'chill', not battle. Battles keep their spec tempo unconditioned."
 }

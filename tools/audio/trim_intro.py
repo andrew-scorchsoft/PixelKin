@@ -41,6 +41,9 @@ def main() -> int:
     g.add_argument("--silence", action="store_true")
     g.add_argument("--drop-intro", action="store_true")
     g.add_argument("--to", type=float)
+    g.add_argument("--cut", type=float, nargs=2, metavar=("FROM", "TO"),
+                   help="remove a stalled span inside the intro (e.g. a hit that decays to dead air): "
+                        "audio[FROM:TO] goes, the head end fades over 0.25 s, the theme lands sample-exact")
     a = ap.parse_args()
 
     f = SERVED / f"{a.id}.mp3"
@@ -48,6 +51,24 @@ def main() -> int:
     meta = json.loads(meta_p.read_text())
     x = pcm(f)
     ls = meta.get("loop_start") or 0.0
+    if a.cut:
+        c0, c1 = (int(round(t * SR)) for t in a.cut)
+        if not 0 < c0 < c1 or (ls and c1 > int(round(ls * SR))):
+            raise SystemExit(f"{a.id}: --cut must sit inside the intro (before loop_start {ls})")
+        head = x[:c0].copy()
+        fo = min(int(0.25 * SR), len(head))
+        head[-fo:] *= np.linspace(1, 0, fo, dtype=np.float32)[:, None]
+        y = np.concatenate([head, x[c1:]])
+        tmp = f.with_suffix(".trim.mp3")
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "f32le", "-ac", "2", "-ar", str(SR), "-i", "-",
+                        "-c:a", "libmp3lame", "-b:a", "128k", str(tmp)], input=y.tobytes(), check=True)
+        tmp.replace(f)
+        meta["loop_start"] = round(ls - (c1 - c0) / SR, 3)
+        meta["duration"] = round(len(y) / SR, 3)
+        meta.setdefault("edits", []).append(f"cut stalled intro span {a.cut[0]}-{a.cut[1]}s")
+        meta_p.write_text(json.dumps(meta, indent=1) + "\n")
+        print(f"{a.id}: cut {a.cut[0]}-{a.cut[1]}s -> loop_start {meta['loop_start']}  duration {meta['duration']}")
+        return 0
     if a.drop_intro:
         cut = int(round(ls * SR))
     elif a.to is not None:

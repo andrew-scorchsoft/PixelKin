@@ -38,15 +38,7 @@
     "heavy metal",
     "dubstep wobble"
    ],
-   "context_adherence": "high",
-   "conditioning_ref": {
-    "song_id": "TOREmIgiwF3GKpN7UkLA",
-    "range": {
-     "start_ms": 10668,
-     "end_ms": 40668
-    }
-   },
-   "condition_strength": "low"
+   "context_adherence": "high"
   },
   {
    "text": "[Main Theme]\n{the climbing minor melody on the pulse lead, a bold rising leap that overshoots and never settles home, urgent and memorable over the pounding bass}",

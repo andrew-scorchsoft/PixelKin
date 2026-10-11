@@ -5,11 +5,11 @@
  "mood": "The fight you hear a thousand times \u2014 urgent, catchy and winnable: a minor-key chase that bursts into a heroic major lift.",
  "duration": 52.64,
  "loop_start": 0.0,
- "seam": 0.084,
- "bpm_est": 89.1,
- "song_id": "MKniiuP6Sj6u2oJaeri2",
+ "seam": 0.194,
+ "bpm_est": 78.3,
+ "song_id": "qQqj9NfUFPsQ8rxRRFF0",
  "raw_ms": 53238,
- "motif": "low",
+ "motif": null,
  "lufs": -15.4,
  "edits": [
   "intro dropped: opens on the theme"

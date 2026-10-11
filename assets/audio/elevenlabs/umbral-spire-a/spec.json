@@ -5,9 +5,7 @@
  "mood": "Crown of Null: the summit under the Keystar; grave, sorrowful grandeur and driving resolve, the hometown motif boomed in minor and promised its major.",
  "bpm": 132,
  "beats_per_bar": 4,
- "motif": {
-  "strength": "low"
- },
+ "motif": null,
  "core_styles": [
   "16-bit SNES-era RPG soundtrack",
   "retro sampled-chip instruments",
@@ -88,5 +86,6 @@
     "seamless loop back to the start of the theme"
    ]
   }
- ]
+ ],
+ "_note": "motif dropped (2026-10): conditioning pulled the take onto the lullaby's ~90/180 BPM grid; driving cues keep their spec tempo unconditioned."
 }
