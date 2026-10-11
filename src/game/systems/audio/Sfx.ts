@@ -20,8 +20,14 @@ const SFX_DIR = 'assets/audio/sfx/';
  *  `sfx world-pickup` beside the `giveItem` that voices itself used to stack two
  *  random variants on one frame (a flammed, doubled-loud chirp). */
 const DEDUPE_MS = 90;
-/** Cues that are MEANT to fire faster than that (the per-character text tick). */
-const NO_DEDUPE = new Set(['ui-text-blip']);
+/**
+ * Per-cue overrides. The typewriter blip fires on every revealed character (30-60
+ * a second), so with no spacing its 80 ms copies stacked into one loud buzz — the
+ * playtest's "text beeping ignores the effects volume". It is spaced so copies never
+ * overlap, and trimmed ~7 dB: it's a near-full-scale square and the most-heard cue.
+ */
+const CUE_DEDUPE_MS: Record<string, number> = { 'ui-text-blip': 70 };
+const CUE_TRIM: Record<string, number> = { 'ui-text-blip': 0.45 };
 const lastPlayed = new Map<string, number>();
 
 /** All rendered SFX stems (filenames without extension). */
@@ -102,7 +108,7 @@ export class Sfx {
     const now = Date.now();
     // Dedupe on the BASE cue, so play('x') and playVariant('x', …) count as one.
     const base = /-[a-z]$/.test(key) && VARIANTS.has(key.slice(0, -2)) ? key.slice(0, -2) : key;
-    if (!NO_DEDUPE.has(base) && now - (lastPlayed.get(base) ?? -Infinity) < DEDUPE_MS) return null;
+    if (now - (lastPlayed.get(base) ?? -Infinity) < (CUE_DEDUPE_MS[base] ?? DEDUPE_MS)) return null;
     const stem = this.resolveStem(key);
     if (!stem) return null; // not a rendered effect — stay silent rather than 404
     lastPlayed.set(base, now);
@@ -110,7 +116,7 @@ export class Sfx {
     if (!ok) return null;
     // add + play (not sound.play) so the caller can wait on this instance; Phaser
     // frees it on completion.
-    const sound = this.scene.sound.add(stem, { volume: this.volume * gain });
+    const sound = this.scene.sound.add(stem, { volume: this.volume * gain * (CUE_TRIM[base] ?? 1) });
     sound.once(Phaser.Sound.Events.COMPLETE, () => sound.destroy());
     sound.play();
     return sound;

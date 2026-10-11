@@ -421,7 +421,8 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **Volume is three layers (2026-10):** overall `Settings.masterVolume` (0..1 → Phaser's global
   `game.sound.volume` in `main.ts`; the portrait device deck's top-left slider `.pk-volume` + Settings →
   Volume, both via `ShellManager.setMasterVolume`) over Music / Effects levels. One-shots are trimmed in
-  `Sfx` (0.3, was 0.6 — effects sat ~8 dB over the score). ShellManager saves only its OWN fields over
+  `Sfx` (0.3, was 0.6 — effects sat ~8 dB over the score); per-cue `CUE_TRIM`/`CUE_DEDUPE_MS` in
+  `Sfx.ts` tame rapid cues (the typewriter `ui-text-blip`: spaced 70 ms + ~-7 dB — it used to stack). ShellManager saves only its OWN fields over
   freshly loaded settings (`persist()`), so it never reverts what SettingsMenu wrote.
 - **Indoor music is a STOCK set, and maps can change music with the story (2026-10).** Shops →
   `shop-counter`, inns → `inn-rest`, generic Lumenaries → `lumenary-hall`, homes by mood →
