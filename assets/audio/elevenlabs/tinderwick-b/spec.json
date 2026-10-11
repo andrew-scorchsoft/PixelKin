@@ -1,0 +1,92 @@
+{
+ "id": "tinderwick-b",
+ "kind": "loop",
+ "where": "Tinderwick indoors — the apprentice's home and the village store",
+ "mood": "Embers banked low — the hometown lullaby gone indoors at night, a 6/8 sway by the coals, homesick and safe.",
+ "bpm": 80,
+ "beats_per_bar": 3,
+ "_note": "6/8 written as 3 quarter-beats per bar at quarter = 80 (the classic spec's tempo; 2.25 s/bar).",
+ "motif": {
+  "strength": "high"
+ },
+ "core_styles": [
+  "16-bit SNES-era RPG soundtrack",
+  "retro sampled-chip instruments",
+  "80 BPM",
+  "A minor resolving to C major",
+  "6/8 time, gentle rocking lullaby sway",
+  "soft pulse-wave lead with a sighing melody",
+  "rolling music-box arpeggios",
+  "warm low string pad",
+  "round soft synth bass breathing on the dotted pulse",
+  "intimate small-room cottage interior by a banked fire, warm and a little homesick",
+  "strong singable melody",
+  "great production quality",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "modern EDM drums",
+  "trap",
+  "dubstep",
+  "fade out",
+  "ritardando",
+  "drums",
+  "guitar",
+  "ambient drone",
+  "minimalist",
+  "upbeat",
+  "ending"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 3,
+   "text": "{stepping in from the cold: a soft music-box arpeggio rolls down like a door easing shut, one celesta glint, then the lead's first sighing notes settle into the theme}",
+   "styles": [
+    "gentle welcoming opening",
+    "cosy hush"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the lullaby melody in A minor, rocking in 6/8 over the music-box; the hopeful rising lift undershoots and lingers, more sigh than leap; clear and hummable}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "tender"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the same melody again, now with a soft flute counter-line woven under it and the strings a little warmer, like the fire catching again}",
+   "styles": [
+    "flute counter-melody",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: the melody turns to warm C major and moves higher, a cosy memory of daytime, music-box and celesta brighter, then sways back down toward the minor}",
+   "styles": [
+    "C major",
+    "warm reminiscence",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the lullaby returns in A minor, fuller and calm; the last bar sways straight back into the theme, no ending}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

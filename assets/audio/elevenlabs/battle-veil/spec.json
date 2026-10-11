@@ -1,0 +1,103 @@
+{
+ "id": "battle-veil",
+ "kind": "loop",
+ "where": "Rival battles with Wren (Pale Vault, Nightreach, and the post-game rematch)",
+ "mood": "The rival who grew up beside you — cocky, quick, competitive and fond: a grin across the field, and the friendship under it.",
+ "bpm": 162,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "low"
+ },
+ "core_styles": [
+  "16-bit SNES-era RPG soundtrack",
+  "retro sampled-chip instruments",
+  "162 BPM",
+  "E minor with a warm turn to G major",
+  "4/4",
+  "cocky bouncy syncopated pulse-wave lead melody",
+  "funky slap-style synth bass with octave jumps",
+  "punchy sampled drums with snappy snare and offbeat hi-hats",
+  "bright brass stabs",
+  "quick twin-lead harmonies",
+  "competitive rival battle theme, spirited and playful with a heart of friendship",
+  "strong catchy hummable melody",
+  "great production quality",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "choir",
+  "modern EDM drums",
+  "trap",
+  "dubstep",
+  "dubstep wobble",
+  "electric guitar distortion",
+  "rock guitar",
+  "orchestral film score",
+  "fade out",
+  "ritardando",
+  "ending",
+  "slow",
+  "dark horror",
+  "lullaby"
+ ],
+ "sections": [
+  {
+   "name": "Rival Appears",
+   "bars": 4,
+   "text": "{a cocky entrance: a snappy brass stab, a quick show-off lead run up and down, a drum break that kicks straight into the rival theme}",
+   "styles": [
+    "explosive battle intro",
+    "show-off lead run",
+    "drum break"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Rival Theme",
+   "bars": 8,
+   "text": "{the rival hook: a cheeky, bouncy syncopated melody with attitude, answered by brass stabs, the octave bass strutting underneath}",
+   "styles": [
+    "main rival hook",
+    "cheeky attitude",
+    "memorable riff"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Rival Theme Reprise",
+   "bars": 8,
+   "text": "{the hook again with a second lead harmonising a third below, like two friends racing neck and neck, a little faster-feeling}",
+   "styles": [
+    "twin lead harmony",
+    "friendly competition",
+    "fuller arrangement"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Friendship Bridge",
+   "bars": 8,
+   "text": "{contrast: a warm turn to G major, the melody broadens into a heartfelt line over sustained strings and brass — the bond between rivals, two lamps from the same hometown — then a quick drum fill revs back up}",
+   "styles": [
+    "G major",
+    "heartfelt warm bridge",
+    "nostalgic friendship",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Rival Theme Return",
+   "bars": 8,
+   "text": "{back to E minor, the cheeky rival hook at full speed; the last bar is a snappy drum fill leading straight back into the hook, no ending}",
+   "styles": [
+    "main rival hook returns",
+    "drum fill",
+    "seamless loop back to the start of the theme"
+   ],
+   "adherence": "high"
+  }
+ ]
+}

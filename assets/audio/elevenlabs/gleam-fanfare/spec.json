@@ -1,0 +1,65 @@
+{
+ "id": "gleam-fanfare",
+ "kind": "oneshot",
+ "where": "The Gleam moment — a constellation relit (played as a sting by the cutscene's gleam op)",
+ "mood": "A lantern lifted to the sky: a short triumphant fanfare that quotes the hometown motif and lands firmly home.",
+ "bpm": 140,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "medium"
+ },
+ "core_styles": [
+  "16-bit SNES-era RPG soundtrack",
+  "retro sampled-chip instruments",
+  "140 BPM",
+  "C major",
+  "4/4",
+  "bright triumphant pulse-wave lead fanfare",
+  "sparkling music-box arpeggio",
+  "warm sampled brass chords",
+  "bright celesta bell sparkle",
+  "short victory jingle quoting the hometown melody",
+  "complete musical phrase with a clear final cadence",
+  "great production quality",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "choir",
+  "modern EDM drums",
+  "trap",
+  "dubstep",
+  "dubstep wobble",
+  "electric guitar distortion",
+  "orchestral film score",
+  "loop",
+  "long intro",
+  "dark",
+  "minor key"
+ ],
+ "sections": [
+  {
+   "name": "Fanfare",
+   "bars": 2,
+   "text": "{a bright rising fanfare on lead and brass, the hometown melody's lifting leap soaring up to the octave, a quick sparkling arpeggio}",
+   "styles": [
+    "triumphant fanfare",
+    "rising leap",
+    "short jingle"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Home Chord",
+   "bars": 2,
+   "text": "{the melody settles step by step and lands firmly on a big C major chord with a bell sparkle, then rings out to silence — a final ending}",
+   "styles": [
+    "final cadence",
+    "held final chord ringing out",
+    "clean ending"
+   ],
+   "adherence": "high"
+  }
+ ]
+}

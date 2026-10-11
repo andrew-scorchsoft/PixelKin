@@ -1,0 +1,104 @@
+{
+ "id": "gleam-emotional",
+ "kind": "loop",
+ "where": "Every Gleam payoff — the moment a constellation relights and the town begins to celebrate (and the dawn)",
+ "mood": "Belonging, not a trophy: the motif heard in the long dusk's minor, then blooming into warm major as the sky answers.",
+ "bpm": 96,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "high"
+ },
+ "core_styles": [
+  "16-bit SNES-era RPG soundtrack",
+  "retro sampled-chip instruments",
+  "96 BPM",
+  "A minor resolving to A major",
+  "4/4",
+  "warm soft pulse-wave lead singing the hometown melody",
+  "swelling warm string pad chords",
+  "plucked harp arpeggios",
+  "bright celesta and bell melody sung out",
+  "round warm synth bass",
+  "gentle festive drums with soft snare",
+  "emotional swelling celebration, warm and triumphant but a touch bittersweet, lanterns relit in the night sky",
+  "strong singable melody",
+  "great production quality",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "choir",
+  "modern EDM drums",
+  "trap",
+  "dubstep",
+  "dubstep wobble",
+  "electric guitar distortion",
+  "rock guitar",
+  "orchestral film score",
+  "fade out",
+  "ritardando",
+  "ending",
+  "dark horror",
+  "aggressive",
+  "fast battle drums"
+ ],
+ "sections": [
+  {
+   "name": "The Long Dusk",
+   "bars": 4,
+   "text": "{hushed: a single bell and soft harp state the opening of the hometown melody in A minor, wistful and remembering the long night, then a rising swell into the light}",
+   "styles": [
+    "A minor",
+    "wistful and hushed",
+    "rising swell"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "The Light Catches",
+   "bars": 8,
+   "text": "{the same melody blooms in radiant A major on the warm lead over swelling strings and harp arpeggios — warmth returning, the stars relit}",
+   "styles": [
+    "A major",
+    "radiant bloom",
+    "main theme",
+    "belonging"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Festival Swell",
+   "bars": 8,
+   "text": "{the melody again, fuller and celebratory, bells singing the counter-line, gentle festive drums joining like a town gathering under the lanterns}",
+   "styles": [
+    "festive celebration",
+    "bell counter-melody",
+    "fuller arrangement"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Remembering",
+   "bars": 8,
+   "text": "{contrast: a tender, bittersweet turn to F sharp minor and D major, the melody slower and lower — remembering who was lost in the dark — then lifting back to the light}",
+   "styles": [
+    "bittersweet",
+    "tender",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "The Light Catches Return",
+   "bars": 8,
+   "text": "{the radiant A major melody returns in full, warm and complete; the last bar leads straight back into the melody, no ending}",
+   "styles": [
+    "main theme returns",
+    "radiant warmth",
+    "seamless loop back to the start of the theme"
+   ],
+   "adherence": "high"
+  }
+ ]
+}

@@ -1,0 +1,105 @@
+{
+ "id": "umbral-spire-b",
+ "kind": "loop",
+ "where": "Umbral Spire ascent (gatehouse, null-works, high gallery)",
+ "mood": "The Black Ascent: the climb through the dead Lumenary, null-lanterns leaking anti-light; relentless minor drive, all tension and no release.",
+ "bpm": 140,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "low"
+ },
+ "core_styles": [
+  "16-bit SNES-era RPG soundtrack",
+  "retro sampled-chip instruments",
+  "140 BPM",
+  "A minor",
+  "final dungeon theme",
+  "driving pulse-wave lead with an urgent climbing minor melody",
+  "pounding eighth-note synth bass, no rest",
+  "dark pipe-organ chords and tense string pad",
+  "eerie detuned high shimmer like light draining away",
+  "relentless driving drums with ratcheting fills",
+  "strong memorable melody",
+  "great production quality",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "modern EDM drums",
+  "trap",
+  "dubstep",
+  "fade out",
+  "ritardando",
+  "major key resolution",
+  "triumphant",
+  "cheerful",
+  "cosy",
+  "ambient drone",
+  "minimalist",
+  "electric guitar",
+  "heavy metal",
+  "dubstep wobble"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{a sudden ominous organ chord and a rising drum roll, the bass locks into its pounding eighths and the shimmer hisses in high above, launching straight into the climb}",
+   "styles": [
+    "ominous opening",
+    "sense of ascent"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the climbing minor melody on the pulse lead, a bold rising leap that overshoots and never settles home, urgent and memorable over the pounding bass}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "relentless drive"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the melody again, now chased by the darting counter-line and fuller organ chords, the drums pushing harder}",
+   "styles": [
+    "counter-melody",
+    "fuller arrangement",
+    "rising tension"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a grim sequence climbing through F and D minor, long held lead notes over stabbing organ, the detuned shimmer swelling like anti-light, building toward a dominant E}",
+   "styles": [
+    "climbing sequence",
+    "menacing",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Climb",
+   "bars": 8,
+   "text": "{the bass and drums drive on alone for a moment with a tense ostinato, then the lead re-enters fragment by fragment, ratcheting fills mounting}",
+   "styles": [
+    "tension build",
+    "ostinato"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the climbing minor melody returns at full force; the last bar drives on E straight back into the main theme, no release, no ending}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

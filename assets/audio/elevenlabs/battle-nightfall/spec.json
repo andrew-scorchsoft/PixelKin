@@ -1,0 +1,104 @@
+{
+ "id": "battle-nightfall",
+ "kind": "loop",
+ "where": "The Hollowing's acolytes and Vigilants (incl. the summit guard), and the far-valley Lampwardens of the North and West (Mira Vael, Ysolde Frost, Lucan Pyre, Nessa Cole)",
+ "mood": "The fight in the deepening dark — cold, uneasy and solemn: an enemy who believes in the gentle night, sorrow under the steel.",
+ "bpm": 150,
+ "beats_per_bar": 4,
+ "motif": null,
+ "core_styles": [
+  "16-bit SNES-era RPG soundtrack",
+  "retro sampled-chip instruments",
+  "150 BPM",
+  "C minor",
+  "4/4",
+  "ominous chromatic synth bass ostinato",
+  "solemn sampled pipe organ chords",
+  "cold minor-key sawtooth lead melody with tritone leaps",
+  "tight sampled drums with tom-heavy fills",
+  "low brass swells",
+  "icy bell accents",
+  "uneasy dark battle theme, solemn and sorrowful rather than evil",
+  "strong memorable melody",
+  "great production quality",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "choir",
+  "modern EDM drums",
+  "trap",
+  "dubstep",
+  "dubstep wobble",
+  "electric guitar distortion",
+  "rock guitar",
+  "orchestral film score",
+  "fade out",
+  "ritardando",
+  "ending",
+  "cartoonish villain",
+  "comedic",
+  "horror ambience",
+  "happy"
+ ],
+ "sections": [
+  {
+   "name": "Shadow Falls",
+   "bars": 4,
+   "text": "{the lanterns gutter: a low organ chord hit, a fast descending chromatic run in the bass and lead together, a tom roll that drops into the driving battle theme}",
+   "styles": [
+    "explosive dark battle intro",
+    "descending chromatic run",
+    "organ hit",
+    "tom roll"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Nightfall Theme",
+   "bars": 8,
+   "text": "{the main theme: a cold, sorrowful minor-key hook on the sawtooth lead over a creeping chromatic bass ostinato and solemn organ chords, driving and tense}",
+   "styles": [
+    "main battle hook",
+    "creeping chromatic bass",
+    "tense"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Nightfall Theme Reprise",
+   "bars": 8,
+   "text": "{the hook again with icy bell accents doubling the lead an octave up, low brass swells underneath, the drums tighter and more insistent}",
+   "styles": [
+    "icy bell doubling",
+    "low brass swells",
+    "rising dread"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Vigil Bridge",
+   "bars": 8,
+   "text": "{contrast: the drums thin to a steady tom pulse, a slow mournful melody over a borrowed major chord — the enemy's sorrow and conviction, almost beautiful — then a rising chromatic climb back into the fight}",
+   "styles": [
+    "sorrowful",
+    "mournful bridge",
+    "sympathetic sadness",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Nightfall Theme Return",
+   "bars": 8,
+   "text": "{the cold minor hook returns at full intensity; the last bar is a tom fill on the dominant leading straight back into the theme, no ending}",
+   "styles": [
+    "main battle hook returns",
+    "tom fill",
+    "seamless loop back to the start of the theme"
+   ],
+   "adherence": "high"
+  }
+ ]
+}

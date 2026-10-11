@@ -1,0 +1,94 @@
+{
+ "id": "saltreach-fen-c",
+ "kind": "loop",
+ "where": "Sunkbell Shallows (the flooded-shrine spur off Fen II, reached by Tidecall)",
+ "mood": "The fen relit — open water, a drowned shrine bell ringing under the ripples, a warmer lilting waltz you've earned.",
+ "bpm": 108,
+ "beats_per_bar": 2,
+ "motif": {
+  "strength": "medium"
+ },
+ "core_styles": [
+  "16-bit SNES-era RPG soundtrack",
+  "retro sampled-chip instruments",
+  "108 BPM",
+  "6/8 compound time, lilting",
+  "D major with a wistful minor turn",
+  "clear warm pulse-wave and flute lead in a lilting melody",
+  "ringing bell-buoy chime arpeggios of broken major chords",
+  "deep bell tolling softly beneath the water",
+  "rocking compound synth bass with gentle propulsion",
+  "soft kick on the downbeat and a light offbeat shaker",
+  "dewy, ringing, hopeful open-water discovery, a drowned shrine",
+  "strong singable melody",
+  "great production quality",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "modern EDM drums",
+  "trap",
+  "dubstep",
+  "electric guitar",
+  "fade out",
+  "ritardando",
+  "ambient drone",
+  "minimalist",
+  "dark",
+  "horror",
+  "epic orchestral"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 6,
+   "text": "{a deep sunken bell tolls once beneath the water, ripples of rising chime arpeggios bloom out of it, and the lead calls a bright rising phrase that lands on a held chord}",
+   "styles": [
+    "memorable opening",
+    "bell tolling under water",
+    "sense of discovery"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 16,
+   "text": "{the lilting melody in full: a hopeful rising leap that settles home warmly, chime arpeggios rippling underneath, the bass rocking forward like a boat on open water}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "lilting waltz feel"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 16,
+   "text": "{the melody again with a second bell voice in harmony a third above and a soft string pad, the sunken bell striking on the first beat of every fourth bar}",
+   "styles": [
+    "harmony bell line",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 16,
+   "text": "{contrast: a wistful turn to B minor over the drowned shrine roof, long breathy flute notes on sustained strings, drums drop to shaker only, then a rising chime run lifts back to D major}",
+   "styles": [
+    "B minor",
+    "wistful",
+    "reverent",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 16,
+   "text": "{the lilting melody returns, bright and confident; the last bar leads straight back into the main theme, no ending}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

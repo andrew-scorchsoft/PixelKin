@@ -1,0 +1,94 @@
+{
+ "id": "title",
+ "kind": "loop",
+ "where": "Title screen",
+ "mood": "The calling card: a lone lantern-tune in the dark explodes into a heroic minor adventure anthem; the Long Dusk, and the journey rising against it.",
+ "bpm": 150,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "high"
+ },
+ "core_styles": [
+  "16-bit SNES-era RPG soundtrack",
+  "retro sampled-chip instruments",
+  "150 BPM",
+  "A minor",
+  "epic heroic title theme",
+  "cutting bright pulse-wave lead with wide leaping melody",
+  "punchy synth brass stabs",
+  "galloping driving bass ostinato",
+  "full driving drums with tom fills and crash cymbals",
+  "heroic, adventurous, urgent and exciting",
+  "strong singable melody",
+  "great production quality",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "modern EDM drums",
+  "trap",
+  "dubstep",
+  "fade out",
+  "ritardando",
+  "lullaby",
+  "nursery rhyme",
+  "cute",
+  "slow tempo",
+  "ambient drone",
+  "minimalist",
+  "electric guitar",
+  "heavy metal"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 6,
+   "text": "{in the dark, a lone music box plays the first rising notes of the hometown theme slowly like a single lantern; then a timpani roll and drum fill explode into a bold brass fanfare call that slams into the main theme}",
+   "styles": [
+    "unforgettable opening",
+    "quiet then explosive",
+    "fanfare"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the heroic A minor anthem: a wide leaping lead melody over the galloping bass and brass stabs, Am F G chords with a dramatic E major dominant, bold and memorable}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "heroic drive"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the anthem again, a second lead harmonising and the pulse arpeggio racing, fuller and higher}",
+   "styles": [
+    "harmonised lead",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Triumphant Lift",
+   "bars": 8,
+   "text": "{contrast: a circle-of-fifths climb D minor, G, C, F up to a triumphant C major peak, the lead soaring to its highest notes, crash cymbals, the sense of a whole journey ahead}",
+   "styles": [
+    "C major peak",
+    "triumphant",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the heroic minor anthem returns; the last bar slams on the E major dominant straight back into the main theme, no ending}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}
