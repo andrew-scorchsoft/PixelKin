@@ -574,12 +574,33 @@
       "tw": 3,
       "th": 3
     },
+    "pearlmoor_anchor": {
+      "path": "assets/sprites/objects/pearlmoor_anchor.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "pearlmoor_boat": {
       "path": "assets/sprites/objects/pearlmoor_boat.webp",
       "width": 32,
       "height": 48,
       "tw": 2,
       "th": 3
+    },
+    "pearlmoor_crab_pots": {
+      "path": "assets/sprites/objects/pearlmoor_crab_pots.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "pearlmoor_driftwood": {
+      "path": "assets/sprites/objects/pearlmoor_driftwood.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
     },
     "pearlmoor_ferryhouse": {
       "path": "assets/sprites/objects/pearlmoor_ferryhouse.webp",
@@ -588,12 +609,40 @@
       "tw": 5,
       "th": 5
     },
+    "pearlmoor_fish_crates": {
+      "path": "assets/sprites/objects/pearlmoor_fish_crates.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "pearlmoor_fish_stall": {
+      "path": "assets/sprites/objects/pearlmoor_fish_stall.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "pearlmoor_gull_nest": {
+      "path": "assets/sprites/objects/pearlmoor_gull_nest.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
     "pearlmoor_inn": {
       "path": "assets/sprites/objects/pearlmoor_inn.webp",
       "width": 80,
       "height": 80,
       "tw": 5,
       "th": 5
+    },
+    "pearlmoor_lantern_string": {
+      "path": "assets/sprites/objects/pearlmoor_lantern_string.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
     },
     "pearlmoor_lifting_house": {
       "path": "assets/sprites/objects/pearlmoor_lifting_house.webp",
@@ -616,6 +665,13 @@
       "tw": 2,
       "th": 3
     },
+    "pearlmoor_net_rack": {
+      "path": "assets/sprites/objects/pearlmoor_net_rack.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
     "pearlmoor_oldlight_dark": {
       "path": "assets/sprites/objects/pearlmoor_oldlight_dark.webp",
       "width": 80,
@@ -630,12 +686,26 @@
       "tw": 5,
       "th": 8
     },
+    "pearlmoor_rowboat": {
+      "path": "assets/sprites/objects/pearlmoor_rowboat.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "pearlmoor_shop": {
       "path": "assets/sprites/objects/pearlmoor_shop.webp",
       "width": 80,
       "height": 64,
       "tw": 5,
       "th": 4
+    },
+    "pearlmoor_wreck_ribs": {
+      "path": "assets/sprites/objects/pearlmoor_wreck_ribs.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
     },
     "penumbra_spire_silhouette": {
       "path": "assets/sprites/objects/penumbra_spire_silhouette.webp",
@@ -959,12 +1029,26 @@
       "tw": 1,
       "th": 2
     },
+    "tinderwick_apple_crates": {
+      "path": "assets/sprites/objects/tinderwick_apple_crates.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
     "tinderwick_beacon": {
       "path": "assets/sprites/objects/tinderwick_beacon.webp",
       "width": 64,
       "height": 112,
       "tw": 4,
       "th": 7
+    },
+    "tinderwick_cinder_shard": {
+      "path": "assets/sprites/objects/tinderwick_cinder_shard.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
     },
     "tinderwick_cottage": {
       "path": "assets/sprites/objects/tinderwick_cottage.webp",
@@ -987,6 +1071,13 @@
       "tw": 6,
       "th": 6
     },
+    "tinderwick_notice_board": {
+      "path": "assets/sprites/objects/tinderwick_notice_board.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "tinderwick_shop": {
       "path": "assets/sprites/objects/tinderwick_shop.webp",
       "width": 80,
@@ -1000,6 +1091,20 @@
       "height": 64,
       "tw": 3,
       "th": 4
+    },
+    "tinderwick_well": {
+      "path": "assets/sprites/objects/tinderwick_well.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "tinderwick_woodpile": {
+      "path": "assets/sprites/objects/tinderwick_woodpile.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
     },
     "unrisen_basin_dry": {
       "path": "assets/sprites/objects/unrisen_basin_dry.webp",
