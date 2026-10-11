@@ -883,8 +883,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   "dodgy path" look. All three Lumenaries use `aisle_runner`.**
 - **Re-running `interiorforge.py` CLOBBERS the image-gen hero masters.** It rewrites every
   PNG in `assets/tilesets/interior/objects/` — including pieces `gen_interior_object.py`
-  re-rendered into the same paths. After adding a new piece, `git checkout` the masters you
-  didn't mean to regenerate BEFORE `pack_objects.py` (N7 got bitten). Lumenary identity:
+  re-rendered into the same paths. Add a new piece with `interiorforge.py --only <stem>` (2026-10);
+  after a full run, `git checkout` the masters you didn't mean to regenerate BEFORE
+  `pack_objects.py` (N7 got bitten). Lumenary identity:
   the halls are re-skinned per warden (wall-HUNG `kite_hung`/`banner_*` pieces +
   region outdoor objects like `pale_vault_brazier` — interiors.md mount-class table).
 - **A free-standing cavewall/cliff mass mid-floor reads as a dodgy black slab** (level-design

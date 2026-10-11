@@ -245,6 +245,51 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
 
 ---
 
+### Wickstead Green & the Lamp-school — *the village school; the basics, taught in-world* (2026-10, OPTIONAL)
+
+**At a glance** — `wickstead_green` (town, 24×18) + interior `wickstead_school` (16×12) ·
+one step WEST of `duskapple_orchard` (the orchard's ride runs on through a cart-gate at
+its west edge) · **optional, never gating** — the golden thread never comes this way ·
+reachable from the very first minute (before the starter too) · **safe ground**: no
+encounter zones on the green or in the school; the only grass on the way is the orchard's
+own lv 2–4 meadow, off the central ride (inert pre-starter). Music: `tinderwick-a`
+outdoors, the stock `interior-study` indoors. Builders: `tools/maps/build_wickstead_green.py`,
+`build_wickstead_school.py`; content: `src/game/content/regions/school.ts`.
+
+**What it's for.** A first-timer (or a player back after a month) can learn how Vesperholm
+works from friendly people, each teaching ONE mechanic through a re-askable `choice` menu,
+every claim checked against the code. The schoolhouse is a generated 7×4 object
+(`wickstead_school`, bell-cupola, `assets/tilesets/wickstead/objects/school.png`); the
+schoolroom's focal point is a drawn CHALKBOARD (interiorforge `chalkboard`, + school
+`desk`s), with the Hearth nook behind a partition (interiors.md rule B).
+
+| Where | Teacher (sprite) | Lesson | Script |
+|-------|------------------|--------|--------|
+| at the board | Mistress Pennyweather (`star_watcher`) | TYPES: the ten types, matchups (real chart pairs), the two MIRROR axes, dual types multiply, own-type ×1.5, the battle's effectiveness lines | `script.school_types` (+ the board: `sign.school_chalkboard`) |
+| west wall | Master Tolly (`npc_man`) | CATCHING: the free plain throw, wild-only, weaken to the red, statuses help, Glow/Beacon charges, a full lamp → the Hearth | `script.school_catching` |
+| by the lamps | Old Quennell (`npc_lampwarden`) | STATUSES: all seven (Scorch, Drench, Numb, Doze, Blight, Dazzle, Chill), one at a time, rest cures | `script.school_status` |
+| east of the desks | Tutor Fernly (`hollow_gardener`) | KINDLING (level; "not yet" re-offers), NEW MOVES (four max), BOND (wins + balms; NEW→KINDRED; Hearthkit) | `script.school_kindling` |
+| the Hearth nook | **the Hearthkeeper** (`npc_old_woman` + her portrait) | THE HEARTH: what it is, catch overflow, HEARTH menu DEPOSIT/WITHDRAW (keep ≥1, ≤6) — the early game's missing explanation | `script.school_hearth` |
+| the sick-bay cot | Master Mallow (`innkeeper`) | RESTING: what a rest heals, rest points + Settings "Return to rest point", the blackout tithe, "Cannot die"; A LIE-DOWN is a real `heal` (a rest point) | `script.school_rest` |
+| the tuck-shop stall (green) | Bunce (`market_trader`) | WICKS, SHOPS, SELLING (half price), STAR-CHARTS (compatibility, one use) | `script.school_wicks` |
+| by the pond (green) | Wayfarer Esk (`pass_walker`) | LANTERN GIFTS (the pond is night-water — the Tidecall lesson), LAMPLIGHT | `script.school_gifts` |
+| the green | Odo, a pupil (`village_child`) | the menus: JOURNAL, MAP, LORE, REGISTER/CHARTS, SAVE + backup, Andrew on the fences | `script.school_menus` |
+
+Colour: pupils Willa and Dob at their desks, Lark flying a kite in the yard; the notice
+board is the day's timetable (`sign.school_timetable`); a lost-property cache under the
+bluff (`script.pickup_school_lost_property`, 1 Tallow Balm). Every teacher banks
+`flag:school_visited`, which unlocks the LORE entry *the Wickstead Lamp-school* (plus two
+always-known entries: *Types & matchups*, *the seven troubles*).
+
+**Validation hooks** — orchard `to_wickstead`/`to_wickstead_s` `{0,8-9}` → `wickstead_green
+{23,8-9}` facing left; the green's `to_orchard(_s)` `{23,8-9}` → `{0,8-9}` facing right
+(compass-true: walk west, arrive on the east edge). School door `enter_school {10,6}` →
+`wickstead_school {8,10}`; doormat `to_green {8,11}` → `{10,7}`. No encounters, no
+trainers, no `requires_*` anywhere; `audit_journey` reaches both maps from the cold open.
+World map: node `wickstead_green` west of Tinderwick (`tools/maps/world_layout.py`).
+
+---
+
 ### Dimglass Coast I — *tidal cliffside route; the first road, and the first dark omen*
 
 **At a glance** — `dimglass_coast` · route · south · entry: south edge from Tinderwick

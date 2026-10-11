@@ -7,7 +7,7 @@
     {
      "id": "tinderwick-a",
      "title": "Tinderwick",
-     "where": "Tinderwick · Hearthfall",
+     "where": "Tinderwick · Wickstead Green · Hearthfall",
      "mood": "The hometown lullaby — lanterns in the dark, cosy and a little homesick. The source of the Vesper motif.",
      "classic": "play/assets/audio/music/tinderwick-a.mp3",
      "remaster": "play/assets/audio/music/remaster/tinderwick-a.mp3",
@@ -522,7 +522,7 @@
     {
      "id": "interior-study",
      "title": "Indoors — charts & lenses",
-     "where": "Watcher's Cottage",
+     "where": "Wickstead Lamp-school · Watcher's Cottage",
      "mood": "Charts and Lenses — a ticking, curious little room of ground glass and inked stars, gently absorbed in its work.",
      "classic": "play/assets/audio/music/interior-study.mp3",
      "remaster": "play/assets/audio/music/remaster/interior-study.mp3",

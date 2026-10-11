@@ -53,7 +53,9 @@ WALL_MOUNTED = {"hearth", "bookcase", "shelf", "dresser", "stove", "lamp_rack",
                 # wall-HUNG (no floor contact; mount with solid=False — the
                 # banners at the default face_row=1, kite_hung at face_row=0
                 # so it clears a 3x3 altar beneath it)
-                "banner_warm", "banner_ice", "kite_hung"}
+                "banner_warm", "banner_ice", "kite_hung",
+                # the Lamp-school's chalkboard (a solid wall piece, like the bookcase)
+                "chalkboard"}
 
 
 def grid(w, h, fill=0):

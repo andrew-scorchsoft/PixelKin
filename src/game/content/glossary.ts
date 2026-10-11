@@ -325,6 +325,23 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'A small winged dusk-cat that carries its own little sunrise — a coal of warm gold glowing in its chest. A night-cat loved without any fear of the dark is said to grow one. Georgina insists they are misunderstood: not creatures OF the gloom, but lights brought INTO it.',
     unlock_flag: 'flag:q_east_georgina_done',
   },
+  // --- The Wickstead Lamp-school (2026-10): the basics, in the lamp's keeping too ---
+  {
+    id: 'types',
+    term: 'Types & matchups',
+    desc: 'Ten types: the eight constellation elements (Ember, Tide, Verdant, Stone, Storm, Frost, Solar, Lunar) and the older Light and Dark. A move hits twice as hard where its type is strong, half as hard where it is weak; a kin with two types takes both, multiplied. Solar and Lunar, Light and Dark are mirrors — each strikes the other hard.',
+  },
+  {
+    id: 'troubles',
+    term: 'the seven troubles',
+    desc: 'Scorch, Drench, Numb, Doze, Blight, Dazzle and Chill — the statuses that can settle on a kin, one at a time. They outlast the battle; a good rest cures them all. A dozing or chilled wild kin is the easiest of all to lamp.',
+  },
+  {
+    id: 'lamp_school',
+    term: 'the Wickstead Lamp-school',
+    desc: 'The village school on Wickstead Green, west of Duskapple Orchard, where every apprentice in the South learns the Wayfaring — types and catching, the Hearth and resting, wicks and Gifts. Its door is open to Wayfarers of any age.',
+    unlock_flag: 'flag:school_visited',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */

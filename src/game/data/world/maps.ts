@@ -101,6 +101,21 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/tinderwick-b.webp',
     ],
   },
+  // The tutorial zone (2026-10): Wickstead Green, one step WEST of the orchard, and
+  // its lamp-school — optional and safe (no encounters); each teacher teaches one
+  // mechanic. No battle_backdrops: nothing is fought here.
+  wickstead_green: {
+    json: 'assets/maps/wickstead_green.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'town',
+    music: 'assets/audio/music/tinderwick-a.mp3',
+  },
+  wickstead_school: {
+    json: 'assets/maps/wickstead_school.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-study.mp3',
+  },
   tinderwick_lumenary: {
     json: 'assets/maps/tinderwick_lumenary.json',
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
