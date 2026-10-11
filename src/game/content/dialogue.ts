@@ -1394,7 +1394,7 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'THE SUNVAULT CLIMB. The old garden-roads rise toward the stars. Mind the overgrowth — it minds you back.' },
   ],
   'sign.sunvault_vines': [
-    { text: 'The bridge of sun-vines died with the long night. Shut flowers, forty years. A pocket of daylight would wake them.' },
+    { text: 'The bridge of sun-vines died with the long night. Shut flowers, eleven winters. A pocket of daylight would wake them.' },
   ],
   'npc.sunvault_terracer_after': [
     { speaker: 'BEL', text: 'The beds grow toward the boundary vines now, did you notice? The garden knows what\'s coming up the road. Gardens always do.' },
@@ -1404,7 +1404,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // The walkthrough's vine-tender line, verbatim.
   'npc.sunvault_vine_tender': [
-    { speaker: 'VINE-TENDER', text: 'Forty years shut, and your little pocket of daylight woke them like they\'d only dozed. ...Maybe nothing\'s gone for good. Maybe it\'s all just waiting for the right lamp.' },
+    { speaker: 'VINE-TENDER', text: 'Eleven winters shut, and your little pocket of daylight woke them like they\'d only dozed. ...Maybe nothing\'s gone for good. Maybe it\'s all just waiting for the right lamp.' },
   ],
   'npc.sunvault_skywatcher_after': [
     { speaker: 'TAM', text: 'The dome\'s ahead, the densest sky in Vesperholm above it. Walk in soft — the whole town is listening to the stars come home.' },
@@ -1575,7 +1575,7 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'WAYKEEPER', text: 'The west spoke sleeps yet, friend — its lamps answer the Lunar, and the Lunar has not come home. When the watchers\' star stands up, this road will light itself the same hour. Last spoke of my Round. I keep its wicks trimmed anyway.' },
   ],
   'npc.waykeeper_chart_hung': [
-    { speaker: 'WAYKEEPER', text: 'Forty years of guesswork charts, and now the true sky hangs on the Waystone where every road can see it. Travellers stop and look UP now, before they pick a direction. That is the whole Lanternway, working.' },
+    { speaker: 'WAYKEEPER', text: 'Eleven years of guesswork charts, and now the true sky hangs on the Waystone where every road can see it. Travellers stop and look UP now, before they pick a direction. That is the whole Lanternway, working.' },
   ],
 
   // ===========================================================================

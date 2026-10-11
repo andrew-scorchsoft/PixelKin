@@ -119,6 +119,9 @@ export const EAST_SCRIPTS: ScriptRegistry = {
   'script.cinderhead_fault_cinder': [
     { op: 'narrate', unless_flag: 'flag:dawn', text: 'A cinder the size of a fist, sunk in the cavern floor under a split in the roof. Nobody has swept around it. Nobody has swept it up, either.' },
     { op: 'narrate', if_flag: 'flag:dawn', text: 'The roof-fault cinder has woken into a shard. The miners have set a ring of pit-lamps round it, as if it might want the company.' },
+    // A fall for the pass-walker's map (West W-4): counts once, now or when it opens.
+    { op: 'run', unless_flag: 'flag:fall_seen_cinderhead', ref: 'script.passmap_tick' },
+    { op: 'setFlag', flag: 'flag:fall_seen_cinderhead' },
   ],
   'script.cinderhead_fault_miner': [
     { op: 'face', actor: 'fault_miner', facing: 'up' },

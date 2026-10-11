@@ -69,7 +69,7 @@ export const NORTH_SCRIPTS: ScriptRegistry = {
     { op: 'run', ref: 'script.windward_summit_short', unless_flag: 'flag:windward_cairn_head' },
   ],
   'script.windward_summit_short': [
-    { op: 'narrate', text: 'The summit cairn is taller than you are. A stone for every switchback, the crag-tender says — and one of yours is missing somewhere below.' },
+    { op: 'narrate', text: 'The summit cairn is taller than you are. A stone for every switchback, the crag-tender says — and some of yours are missing somewhere below.' },
   ],
   'script.windward_summit_all': [
     { op: 'narrate', text: 'The summit cairn is taller than you are, and the wind has gone round it so long that it hums.', unless_flag: 'flag:windward_cairns_all' },

@@ -18,6 +18,9 @@ const dawnPair = (speaker: string, before: string, after: string): CutsceneStep[
 ];
 
 export const CENTRAL_SCRIPTS: ScriptRegistry = {
+  // NPCs only run `script.*` refs (WorldScene); Oriel's `cutscene.starfall_begins`
+  // fell through to "..." and the whole Starfall Vigils chain was unreachable.
+  'script.starfall_begins': [{ op: 'run', ref: 'cutscene.starfall_begins' }],
   // ===========================================================================
   // C-1 THE CINDER HOARD (story panel rank 1) — umbral_spire_f3's R5, straight
   // off the arrival room. Còr walks out after every fall and fetches the cinder
@@ -30,7 +33,7 @@ export const CENTRAL_SCRIPTS: ScriptRegistry = {
     { op: 'silence', ms: 1400 },
     { op: 'cameraFocus', to: { tx: 21, ty: 8 }, ms: 1100 },
     { op: 'wait', ms: 600 },
-    { op: 'narrate', text: 'Rows of dark stones on clean linen, each with a paper tag in a careful hand. DUSKAPPLE ORCHARD. HUSHFROST, FOURTH FALL. GALEHIGH, KITE-RISING NIGHT. Dozens of them.' },
+    { op: 'narrate', text: 'Rows of dark stones on clean linen, each with a paper tag in a careful hand. DUSKAPPLE ORCHARD. HUSHFROST, A SPLINTER OF THE FOURTH FALL. GALEHIGH, KITE-RISING NIGHT. Dozens of them.' },
     { op: 'narrate', text: 'Shelves of them, dusted. Two niches, each holding a single stone as if it might wake. A cot with its blanket squared. A brass lamp, polished bright and never lit.' },
     { op: 'narrate', if_flag: 'flag:orchard_strike_seen', text: "You find Wendel's without looking for it: a splinter only. The heart of that one would not leave its pit." },
     { op: 'emote', actor: 'player', emote: 'ellipsis' },
@@ -85,7 +88,7 @@ export const CENTRAL_DIALOGUE: DialogueRegistry = {
     { text: 'There is no dust on any of them. Someone has been keeping it off.' },
   ],
   'npc.hoard_shelf_e': [
-    { text: 'More tags. CINDERHEAD, THE ROOF-FAULT. COLDFOG, THIRD MARCH. NIGHTREACH, FELL DURING THE WATCH. NESSA DID NOT SEE.' },
+    { text: 'More tags. CINDERHEAD, A CHIP FROM THE ROOF-FAULT. COLDFOG, THIRD MARCH. NIGHTREACH, FELL DURING THE WATCH. NESSA DID NOT SEE.' },
     { text: "Beside that last one, smaller: 'Better she didn't.'" },
   ],
   'npc.hoard_niche': [
@@ -93,7 +96,7 @@ export const CENTRAL_DIALOGUE: DialogueRegistry = {
     { text: "Under it, in the same hand: 'Carried up warm. It was cold by the ladder.'" },
   ],
   'npc.hoard_linen_a': [
-    { text: 'Rows of dark stones on clean linen. DUSKAPPLE ORCHARD: A SPLINTER, THE HEART WOULD NOT LEAVE ITS PIT. HUSHFROST, FOURTH FALL. GALEHIGH, KITE-RISING NIGHT.' },
+    { text: 'Rows of dark stones on clean linen. DUSKAPPLE ORCHARD: A SPLINTER, THE HEART WOULD NOT LEAVE ITS PIT. HUSHFROST, A SPLINTER OF THE FOURTH FALL. GALEHIGH, KITE-RISING NIGHT.' },
     { text: 'Each one lies exactly a hand from the next, the way graves are laid out by somebody who means to visit.' },
   ],
   'npc.hoard_linen_b': [

@@ -1639,7 +1639,7 @@
       "facing": "up",
       "sprite": "npc_woman",
       "movement": "static",
-      "dialogue_ref": "cutscene.starfall_begins",
+      "dialogue_ref": "script.starfall_begins",
       "requires_flag": "flag:dawn",
       "hidden_when_flag": "flag:starfall_begun"
     },

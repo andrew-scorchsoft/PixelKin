@@ -59,6 +59,10 @@ export const WEST_SCRIPTS: ScriptRegistry = {
   // (staged in scripts.ts), then the map. She walks on ahead once it is open.
   'script.passwalker': [
     { op: 'run', ref: 'script.peril_hushfrost_counter' },
+    // The map is a Long-Dusk errand: after dawn she has taken it down.
+    { op: 'run', unless_flag: 'flag:dawn', ref: 'script.passwalker_offer' },
+  ],
+  'script.passwalker_offer': [
     { op: 'wait', unless_flag: 'flag:q_west_passmap', ms: 600 },
     { op: 'say', unless_flag: 'flag:q_west_passmap', speaker: 'PASS-WALKER', text: 'You look at the crater properly. Most folk glance and hurry. Here — you should see this.' },
     { op: 'narrate', unless_flag: 'flag:q_west_passmap', text: 'She unrolls an oilcloth map on her knee and pins its corners with stones. Iron tacks mark two places: the orchard, far to the south, and here.' },
@@ -81,10 +85,14 @@ export const WEST_SCRIPTS: ScriptRegistry = {
   // At Nightreach (requires flag:q_west_passmap): not enough yet, the spiral,
   // or her quiet after-line.
   'script.passwalker_nightreach': [
-    { op: 'say', unless_flag: 'flag:passmap_3', speaker: 'PASS-WALKER', text: 'Two tacks make a line, and a line is only a road. Bring me one more fall. The Sunvault terraces had a scorch, folk said. The Coldfog will have worse.' },
+    { op: 'run', unless_flag: 'flag:dawn', ref: 'script.passwalker_ask' },
     { op: 'run', if_flag: 'flag:passmap_3', unless_flag: 'flag:q_west_passmap_done', ref: 'script.passmap_spiral' },
     { op: 'say', if_flag: 'flag:q_west_passmap_done', unless_flag: 'flag:dawn', speaker: 'PASS-WALKER', text: "I've stopped walking the pass. I sit up here and watch the middle of the map instead. Nothing's fallen tonight. I count that as news." },
     { op: 'say', if_flag: 'flag:dawn', speaker: 'PASS-WALKER', text: 'The cinder in my pass woke, they tell me. Bright as a hearth in the snow. I took the map down. Kept the tacks, though.' },
+  ],
+  // Not enough falls yet — only asked before dawn (after it, the map is down).
+  'script.passwalker_ask': [
+    { op: 'say', unless_flag: 'flag:passmap_3', speaker: 'PASS-WALKER', text: 'Two tacks make a line, and a line is only a road. Bring me one more fall. The Sunvault terraces had a scorch, folk said. The Coldfog will have worse.' },
   ],
   'script.passmap_spiral': [
     { op: 'letterbox', on: true, ms: 360 },
@@ -181,7 +189,8 @@ export const WEST_SCRIPTS: ScriptRegistry = {
   'script.brisa_after_staged': [
     { op: 'dialogue', unless_flag: 'flag:great_null_known', ref: 'npc.brisa_after' },
     { op: 'say', if_flag: 'flag:great_null_known', unless_flag: 'gleam:lunar', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'neutral', text: 'The beacon went out on its own last night, dear. Only for a breath. I relit it with my hands shaking — and I have lit that wick a thousand times.' },
-    { op: 'dialogue', if_flag: 'gleam:lunar', ref: 'npc.brisa_after' },
+    { op: 'say', if_flag: 'gleam:lunar', unless_flag: 'flag:dawn', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'warm', text: 'All eight, dear. The beacon has not so much as blinked since. I still check it twice a night. Old habits keep old lamps lit.' },
+    { op: 'say', if_flag: 'flag:dawn', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'proud', text: 'Morning, dear. I let the beacon go out at sunrise, on purpose, for the first time in my life. It felt like setting a bird free.' },
   ],
 };
 
