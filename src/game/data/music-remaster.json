@@ -2,8 +2,8 @@
  "_generated": "tools/audio/build_remaster_manifest.py — do not hand-edit",
  "tracks": {
   "battle-boss-eclipse": {
-   "loop_start": 7.616,
-   "duration": 78.263,
+   "loop_start": 6.687,
+   "duration": 77.322,
    "where": "The final battles: Warden Còr at the Umbral Spire summit, and Star-tender Fenn's post-game duel",
    "mood": "The last stand on the black mountain — grand, tragic and driving: a sorrowful antagonist who wants a gentle endless night, and the light that will not go out."
   },
@@ -26,14 +26,14 @@
    "mood": "The fight you hear a thousand times — urgent, catchy and winnable: a minor-key chase that bursts into a heroic major lift."
   },
   "battle-nightfall": {
-   "loop_start": 6.432,
-   "duration": 61.414,
+   "loop_start": 10.194,
+   "duration": 65.567,
    "where": "The Hollowing's acolytes and Vigilants (incl. the summit guard), and the far-valley Lampwardens of the North and West (Mira Vael, Ysolde Frost, Lucan Pyre, Nessa Cole)",
    "mood": "The fight in the deepening dark — cold, uneasy and solemn: an enemy who believes in the gentle night, sorrow under the steel."
   },
   "battle-veil": {
-   "loop_start": 0.0,
-   "duration": 51.362,
+   "loop_start": 7.037,
+   "duration": 58.4,
    "where": "Rival battles with Wren (Pale Vault, Nightreach, and the post-game rematch)",
    "mood": "The rival who grew up beside you — cocky, quick, competitive and fond: a grin across the field, and the friendship under it."
   },

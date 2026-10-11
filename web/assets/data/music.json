@@ -397,7 +397,7 @@
      "mood": "The last stand on the black mountain — grand, tragic and driving: a sorrowful antagonist who wants a gentle endless night, and the light that will not go out.",
      "classic": "play/assets/audio/music/battle-boss-eclipse.mp3",
      "remaster": "play/assets/audio/music/remaster/battle-boss-eclipse.mp3",
-     "loop_start": 7.616
+     "loop_start": 6.687
     },
     {
      "id": "battle-emberfall",
@@ -433,7 +433,7 @@
      "mood": "The fight in the deepening dark — cold, uneasy and solemn: an enemy who believes in the gentle night, sorrow under the steel.",
      "classic": "play/assets/audio/music/battle-nightfall.mp3",
      "remaster": "play/assets/audio/music/remaster/battle-nightfall.mp3",
-     "loop_start": 6.432
+     "loop_start": 10.194
     },
     {
      "id": "battle-veil",
@@ -442,7 +442,7 @@
      "mood": "The rival who grew up beside you — cocky, quick, competitive and fond: a grin across the field, and the friendship under it.",
      "classic": "play/assets/audio/music/battle-veil.mp3",
      "remaster": "play/assets/audio/music/remaster/battle-veil.mp3",
-     "loop_start": 0
+     "loop_start": 7.037
     }
    ]
   },

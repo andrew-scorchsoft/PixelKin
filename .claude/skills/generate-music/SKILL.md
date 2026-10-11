@@ -29,10 +29,7 @@ cue feel iconic is **form + a shared motif + a seamless loop**, so:
 1. **Write a cue sheet, not a prompt** — `assets/audio/elevenlabs/<id>/spec.json`
    (format at the top of `tools/audio/remaster_track.py`; worked examples
    `tinderwick-a`, `dimglass-coast-a`). Sections in order: a **play-once intro**
-   (2–4 bars; bold call for a town/route, quiet entrance for a cave, the percussive
-   "battle start" for a battle — battles, the title and fanfares must hit at FULL level
-   on beat one; write "full volume on beat one … no fade-in, no build-up" and add
-   fade in / slow intro / build-up to the section negatives) → **Theme → Theme reprise (+counter-melody) →
+   (2–4 bars) → **Theme → Theme reprise (+counter-melody) →
    contrasting Bridge (related mode) → Theme return** whose last bar leads back in.
    8–13 concrete `core_styles` (register first: "16-bit SNES-era RPG soundtrack",
    "retro sampled-chip instruments"; then BPM, key, metre, instruments + roles,
@@ -55,7 +52,18 @@ cue feel iconic is **form + a shared motif + a seamless loop**, so:
    0.06–0.17; one battle needed a fresh take at 0.82 — re-compose, don't ship a bad
    seam), then `level_remasters.py` sets -15 LUFS (sparse cues a little lower). Then `python3 tools/audio/build_remaster_manifest.py` and
    `node tools/build/build_music_data.mjs` (CI fails if either is stale).
-   **Check the opening** (the model still loves a swell): if a punchy cue's intro
+   **Design each OPENING on purpose — never one formula.** Pick its SHAPE for the
+   scene and vary it across related cues (the owner caught every battle drifting to
+   the same "stab + crash + fast run"): theme from beat one (the most-heard cue —
+   wild battle); the classic challenger stab-and-run (ONE cue owns it — trainers);
+   a creeping build where instruments join bar by bar (a sinister fight); a solo
+   drum break (swagger — the rival); a huge hit that drops to a held hush, then the
+   theme (aggressive → quiet → full — the final boss); hit then settle (awe); a
+   bold call over a pickup (a road); a lone instrument breathing in (a cave). The
+   only hard rule: an opening never STALLS — no dead air, no empty swell before
+   anything happens, and a fight has the pulse up within a bar or two.
+   **Then check it** (the model still loves a swell; it also ignored a brief "hush"
+   once — measure the per-second level/onset profile, don't assume): if a punchy cue's intro
    builds or sags, `--new-intro` re-composes ONLY the intro over the kept body
    (inpainting), and `tools/audio/trim_intro.py <id> --silence|--drop-intro` trims
    lead-in silence or opens straight on the theme — no new generation.

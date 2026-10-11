@@ -44,14 +44,19 @@
  ],
  "sections": [
   {
-   "name": "Shadow Falls",
+   "name": "The Lanterns Gutter",
    "bars": 4,
-   "text": "{the lanterns gutter: a low organ chord hit, a fast descending chromatic run in the bass and lead together, a tom roll that drops into the driving battle theme}",
+   "text": "{starts low and close, not quiet: the creeping chromatic bass ostinato alone, a ticking hi-hat joins, organ stabs creep in, then the full band slams into the theme}",
    "styles": [
-    "explosive dark battle intro",
-    "descending chromatic run",
-    "organ hit",
-    "tom roll"
+    "sinister creeping build",
+    "tension rising bar by bar",
+    "full band arrives with the theme"
+   ],
+   "negative": [
+    "fade in from silence",
+    "ambient intro",
+    "brass fanfare",
+    "crash on the first beat"
    ],
    "adherence": "high"
   },

@@ -1,7 +1,7 @@
 {
  "chunks": [
   {
-   "text": "[Rival Appears]\n{on beat one: a snappy brass stab and crash, a quick show-off lead run, drums already driving, straight into the rival theme}",
+   "text": "[Rival Appears]\n{a cocky solo drum break, snare and toms trading licks with a slap-bass pickup, then the rival theme kicks in on the downbeat}",
    "duration_ms": 4444,
    "positive_styles": [
     "16-bit SNES-era RPG soundtrack",
@@ -17,10 +17,9 @@
     "strong catchy hummable melody",
     "great production quality",
     "instrumental",
-    "explosive battle intro",
-    "full volume from the first beat",
-    "show-off lead run",
-    "driving drums",
+    "drum break intro",
+    "playful swagger",
+    "rhythm first",
     "same tempo, key and instruments as the theme that follows",
     "starts instantly on beat one"
    ],
@@ -41,21 +40,19 @@
     "slow",
     "dark horror",
     "lullaby",
-    "fade in",
+    "brass hit",
+    "crash",
+    "fanfare",
     "slow intro",
-    "quiet opening",
-    "build-up",
-    "swell",
-    "ambient intro",
-    "silence"
+    "fade in"
    ],
    "context_adherence": "high"
   },
   {
-   "song_id": "gITt0QYIaOAEL9l97j78",
+   "song_id": "oovUCaNwqJ4iCNBfT3Ih",
    "range": {
-    "start_ms": 5926,
-    "end_ms": 53316
+    "start_ms": 4444,
+    "end_ms": 51827
    }
   }
  ]

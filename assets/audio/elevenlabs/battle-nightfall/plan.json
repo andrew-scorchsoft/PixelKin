@@ -1,7 +1,7 @@
 {
  "chunks": [
   {
-   "text": "[Shadow Falls]\n{the lanterns gutter: a low organ chord hit, a fast descending chromatic run in the bass and lead together, a tom roll that drops into the driving battle theme}",
+   "text": "[The Lanterns Gutter]\n{starts low and close, not quiet: the creeping chromatic bass ostinato alone, a ticking hi-hat joins, organ stabs creep in, then the full band slams into the theme}",
    "duration_ms": 6400,
    "positive_styles": [
     "16-bit SNES-era RPG soundtrack",
@@ -19,10 +19,9 @@
     "strong memorable melody",
     "great production quality",
     "instrumental",
-    "explosive dark battle intro",
-    "descending chromatic run",
-    "organ hit",
-    "tom roll"
+    "sinister creeping build",
+    "tension rising bar by bar",
+    "full band arrives with the theme"
    ],
    "negative_styles": [
     "vocals",
@@ -41,7 +40,11 @@
     "cartoonish villain",
     "comedic",
     "horror ambience",
-    "happy"
+    "happy",
+    "fade in from silence",
+    "ambient intro",
+    "brass fanfare",
+    "crash on the first beat"
    ],
    "context_adherence": "high"
   },

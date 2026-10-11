@@ -46,21 +46,18 @@
   {
    "name": "Rival Appears",
    "bars": 3,
-   "text": "{on beat one: a snappy brass stab and crash, a quick show-off lead run, drums already driving, straight into the rival theme}",
+   "text": "{a cocky solo drum break, snare and toms trading licks with a slap-bass pickup, then the rival theme kicks in on the downbeat}",
    "styles": [
-    "explosive battle intro",
-    "full volume from the first beat",
-    "show-off lead run",
-    "driving drums"
+    "drum break intro",
+    "playful swagger",
+    "rhythm first"
    ],
    "negative": [
-    "fade in",
+    "brass hit",
+    "crash",
+    "fanfare",
     "slow intro",
-    "quiet opening",
-    "build-up",
-    "swell",
-    "ambient intro",
-    "silence"
+    "fade in"
    ],
    "adherence": "high"
   },
