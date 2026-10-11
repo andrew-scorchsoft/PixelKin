@@ -687,6 +687,100 @@ def oil_jars() -> Image.Image:
 
 
 # =============================================================================
+#  SCHOOL pieces (Wickstead Lamp-school, 2026-10) — the chalkboard is a WALL
+#  piece (front elevation, top row over the face, a chalk ledge on two short
+#  legs down to the floor contact); the desk is FREE-STANDING (top + front strip).
+# =============================================================================
+SLATE = [hx("#16261f"), hx("#20372c"), hx("#2c4a3b")]
+CHALK = hx("#e8ecdc")
+CHALK_DIM = hx("#9fb2a2")
+
+
+def chalkboard() -> Image.Image:
+    """4x2 schoolroom chalkboard: framed slate with the type-wheel drawn in
+    chalk (eight element dots in a ring, the two mirror axes crossing it), a
+    chalk ledge, and two stub legs down to the floor contact line."""
+    a = canvas(4, 2)
+    W, H = 64, 32
+    # frame + slate
+    fill(a, 1, 2, W - 2, 23, WOOD[1])
+    outline(a, 1, 2, W - 2, 23, INK)
+    a[3, 2:W - 2] = WOOD[3]
+    fill(a, 4, 5, W - 5, 20, SLATE[1])
+    noise(a, 4, 5, W - 5, 20, 4, 77)
+    a[5, 4:W - 4] = SLATE[0]
+    a[5:21, 4] = SLATE[0]
+    # the type-wheel: a ring of 8 dots (left half of the board)
+    cx, cy, r = 17, 12, 6
+    import math
+    for k in range(8):
+        t = k * math.pi / 4
+        x, y = round(cx + r * math.cos(t)), round(cy + r * 0.85 * math.sin(t))
+        fill(a, x, y, x + 1, y, CHALK)
+    for k in range(48):                           # faint ring stroke
+        t = k * math.pi / 24
+        x, y = round(cx + (r - 2) * math.cos(t)), round(cy + (r - 2) * 0.85 * math.sin(t))
+        a[y, x] = CHALK_DIM
+    # the two mirror axes (Solar<->Lunar, Light<->Dark): crossed double arrows
+    for i in range(-4, 5):
+        a[cy + i // 2, cx + i] = CHALK
+    a[cy - 2, cx - 4] = CHALK
+    a[cy + 2, cx + 4] = CHALK
+    # right half: three chalk "lines of notes" + an arrow and a big x2 tally
+    for (y, x0, x1) in ((8, 29, 44), (11, 29, 40), (14, 29, 46), (17, 29, 38)):
+        a[y, x0:x1] = CHALK_DIM
+        for x in range(x0, x1, 3):
+            a[y - 1, x] = CHALK_DIM
+    for (dx, dy) in ((0, 0), (1, 1), (2, 2), (2, 0), (0, 2)):   # a little 'x'
+        a[8 + dy, 50 + dx] = CHALK
+    for (dx, dy) in ((0, 0), (1, 0), (2, 1), (1, 2), (0, 3), (1, 3), (2, 3)):  # '2'
+        a[7 + dy, 54 + dx] = CHALK
+    fill(a, 49, 14, 57, 14, CHALK)                # an arrow
+    a[13, 56] = CHALK
+    a[15, 56] = CHALK
+    # chalk ledge with two sticks + a duster
+    fill(a, 2, 21, W - 3, 23, WOOD[2])
+    a[21, 3:W - 3] = WOOD[3]
+    a[23, 2:W - 2] = INK
+    fill(a, 10, 20, 13, 20, CHALK)
+    fill(a, 16, 20, 18, 20, CLOTH_TEAL[2])
+    fill(a, 44, 19, 50, 20, WOOD[0])
+    a[19, 44:51] = BONE[1]
+    # stub legs to the floor
+    for x in (5, W - 8):
+        fill(a, x, 24, x + 2, 29, WOOD[1])
+        a[24:30, x] = WOOD[2]
+    _wall_top_shadow(a, W)
+    a[H - 1, 5:8] = INK
+    a[H - 1, W - 8:W - 5] = INK
+    contact_shadow(a, 3, W - 4, H - 2)
+    return img(a)
+
+
+def desk() -> Image.Image:
+    """2x1 pupil's desk: a sloped lid with a slate + inkpot on top, a short
+    front face, two legs (free-standing — `place`, sits in rows)."""
+    a = canvas(2, 1)
+    W, H = 32, 16
+    fill(a, 1, 1, W - 2, 8, WOOD[2])              # lid
+    a[1, 2:W - 2] = WOOD[3]
+    outline(a, 1, 1, W - 2, 8, INK)
+    fill(a, 5, 3, 13, 6, SLATE[1])                # a little slate
+    outline(a, 5, 3, 13, 6, WOOD[0])
+    a[4, 7:11] = CHALK_DIM
+    fill(a, 22, 3, 24, 5, DEEPBLUE)               # inkpot
+    a[3, 22:25] = INK
+    a[2, 26:29] = BONE[2]                         # a quill
+    a[3, 25] = BONE[2]
+    fill(a, 2, 9, W - 3, 11, WOOD[1])             # front face
+    a[11, 2:W - 2] = INK
+    for x in (3, W - 5):                          # legs
+        fill(a, x, 12, x + 1, 13, WOOD[0])
+    contact_shadow(a, 2, W - 3, 14)
+    return img(a)
+
+
+# =============================================================================
 PIECES = {
     # wall-mounted (place with roomkit.wall_mount — top row over the wall face)
     "hearth": hearth, "bookcase": bookshelf, "shelf": shelf_wares,
@@ -698,17 +792,27 @@ PIECES = {
     "altar": altar, "brazier": brazier, "pew": pew, "oil_jars": oil_jars,
     # wall-hung (wall_mount with solid=False; the kite mounts at face_row=0)
     "banner_warm": banner_warm, "banner_ice": banner_ice, "kite_hung": kite_hung,
+    # the Lamp-school (wall-mounted chalkboard; free-standing desk)
+    "chalkboard": chalkboard, "desk": desk,
 }
 
 # which stems are wall-mounted (roomkit reads this); the last three are
 # wall-HUNG — no floor contact, always solid=False
 WALL_MOUNTED = {"hearth", "bookcase", "shelf", "dresser", "stove", "lamp_rack",
-                "banner_warm", "banner_ice", "kite_hung"}
+                "banner_warm", "banner_ice", "kite_hung", "chalkboard"}
 
 
 def main() -> None:
+    # `--only a,b` draws just those stems — the safe way to add a piece without
+    # clobbering the image-gen hero masters (see the WARNING above).
+    import sys
+    only = None
+    if "--only" in sys.argv:
+        only = set(sys.argv[sys.argv.index("--only") + 1].split(","))
     OBJDIR.mkdir(parents=True, exist_ok=True)
     for stem, fn in PIECES.items():
+        if only is not None and stem not in only:
+            continue
         im = fn()
         out = OBJDIR / f"{stem}.png"
         im.save(out)

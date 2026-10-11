@@ -861,6 +861,13 @@
       "tw": 1,
       "th": 2
     },
+    "interior_chalkboard": {
+      "path": "assets/sprites/objects/interior_chalkboard.webp",
+      "width": 64,
+      "height": 32,
+      "tw": 4,
+      "th": 2
+    },
     "interior_counter": {
       "path": "assets/sprites/objects/interior_counter.webp",
       "width": 64,
@@ -874,6 +881,13 @@
       "height": 32,
       "tw": 2,
       "th": 2
+    },
+    "interior_desk": {
+      "path": "assets/sprites/objects/interior_desk.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
     },
     "interior_dresser": {
       "path": "assets/sprites/objects/interior_dresser.webp",
@@ -1931,6 +1945,13 @@
       "height": 32,
       "tw": 2,
       "th": 2
+    },
+    "wickstead_school": {
+      "path": "assets/sprites/objects/wickstead_school.webp",
+      "width": 112,
+      "height": 64,
+      "tw": 7,
+      "th": 4
     },
     "windward_aerie": {
       "path": "assets/sprites/objects/windward_aerie.webp",

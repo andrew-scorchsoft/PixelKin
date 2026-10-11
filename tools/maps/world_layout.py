@@ -57,6 +57,9 @@ NODES: dict[str, tuple[int, int, str]] = {
     # --- south (bottom of the ring, west -> east) ---------------------------
     "dawnstead": (56, 128, "town"),
     "tinderwick": (80, 122, "town"),
+    # the optional lamp-school green, WEST of the orchard (which rides as a
+    # member of tinderwick) — the tutorial zone (build_wickstead_green.py)
+    "wickstead_green": (67, 117, "landmark"),
     "dimglass_coast": (101, 127, "route"),
     "dimglass_coast_ii": (122, 127, "route"),
     "tideglass_cavern": (111, 137, "landmark"),
@@ -112,6 +115,7 @@ NODES: dict[str, tuple[int, int, str]] = {
 ROADS: list[tuple[str, str, str]] = [
     # south rim
     ("tinderwick", "dimglass_coast", "road"),
+    ("tinderwick", "wickstead_green", "road"),   # via Duskapple Orchard's west gap
     ("dimglass_coast", "dimglass_coast_ii", "road"),
     ("dimglass_coast_ii", "pearlmoor_quay", "road"),
     ("dimglass_coast", "tideglass_cavern", "gate"),

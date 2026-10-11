@@ -11,6 +11,7 @@ import { EAST_DIALOGUE, EAST_SCRIPTS } from './east';
 import { NORTH_DIALOGUE, NORTH_SCRIPTS } from './north';
 import { WEST_DIALOGUE, WEST_SCRIPTS } from './west';
 import { CENTRAL_DIALOGUE, CENTRAL_SCRIPTS } from './central';
+import { SCHOOL_DIALOGUE, SCHOOL_SCRIPTS } from './school';
 
 export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SOUTH_SCRIPTS,
@@ -18,6 +19,7 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...NORTH_SCRIPTS,
   ...WEST_SCRIPTS,
   ...CENTRAL_SCRIPTS,
+  ...SCHOOL_SCRIPTS,
 };
 
 export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
@@ -26,4 +28,5 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...NORTH_DIALOGUE,
   ...WEST_DIALOGUE,
   ...CENTRAL_DIALOGUE,
+  ...SCHOOL_DIALOGUE,
 };

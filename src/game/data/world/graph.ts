@@ -79,6 +79,8 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'tinderwick_beacon_ii', region: 'south' }, // interior: the old beacon, stair floor II
     { map_id: 'tinderwick_beacon_top', region: 'south' }, // interior: the lantern room — the Ember bond-test
     { map_id: 'duskapple_orchard', region: 'south' }, // R8: the old orchard off the square's west gap (satchel detour)
+    { map_id: 'wickstead_green', region: 'south', optional: true, reward: 'the lamp-school: a teacher per mechanic (types, catching, statuses, kindling, the Hearth, resting, wicks, Gifts, menus)' }, // west of the orchard
+    { map_id: 'wickstead_school', region: 'south', optional: true }, // interior: the Wickstead Lamp-school
     { map_id: 'dimglass_coast', region: 'south' }, // route segment I: cliff path + shore (authored)
     { map_id: 'dimglass_coast_ii', region: 'south' }, // route: tidal flats
     { map_id: 'gullcry_rock', region: 'south', optional: true, reward: 'rare sea-bird kin + a Tide charm' },
@@ -191,6 +193,10 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'tinderwick', to_map: 'tinderwick_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
     // R8: west through the hedge gap to Duskapple Orchard (ungated, safe side area).
     { from_map: 'tinderwick', to_map: 'duskapple_orchard', via_warp: 'to_orchard', bidirectional: true },
+    // 2026-10: on WEST through the orchard's far gap to Wickstead Green (the optional
+    // tutorial lamp-school; ungated, safe from the very start).
+    { from_map: 'duskapple_orchard', to_map: 'wickstead_green', via_warp: 'to_wickstead', bidirectional: true },
+    { from_map: 'wickstead_green', to_map: 'wickstead_school', via_warp: 'enter_school', bidirectional: true },
     // The old beacon on the NE bluff — the earned first Gleam: door opens with the
     // wick-key from the Dimglass lamplighter, the floors carry wick-tender trainers,
     // and Brisa's bond-test waits in the lantern room at the top.
