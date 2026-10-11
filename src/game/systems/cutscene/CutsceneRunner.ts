@@ -102,10 +102,11 @@ const MUSIC_URL = (key: string): string => `assets/audio/music/${key}.mp3`;
  * The sleep-heal (`heal` at a rest point): bed + screen fade together, the
  * goodnight lullaby plays over the black (held at least SLEEP_MIN_HOLD_MS even
  * if audio is muted/missing, so the night still passes), a short wake beat, then
- * the map's music and the light come back. `world-rest-a` is pinned (one
- * recognisable lullaby, like the genre's); `-b` is the audition alternative.
+ * the map's music and the light come back. `world-rest-b` (the A-minor-to-C waltz,
+ * the owner's pick) is pinned — one recognisable lullaby, like the genre's;
+ * `-a` (the motif on music box) is the kept alternative.
  */
-const REST_JINGLE = 'world-rest-a';
+const REST_JINGLE = 'world-rest-b';
 const SLEEP_FADE_MS = 600;
 const SLEEP_MIN_HOLD_MS = 2200;
 const SLEEP_WAKE_BEAT_MS = 250;

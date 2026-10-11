@@ -190,7 +190,7 @@ type CutsceneStepBase =
   // it also banks this spot as your blackout wake-point — every rest point in the
   // game is somewhere you'd want to come round (set rest:false for a mid-story heal).
   // A rest heal also SLEEPS: the runner fades music + screen to black, plays the
-  // goodnight lullaby (`world-rest-a`), heals, then brings the map's music and
+  // goodnight lullaby (`world-rest-b`), heals, then brings the map's music and
   // the light back — so a rest script needs no fade/wait steps of its own.
   // `sleep` overrides: default = `rest`; `sleep:false` keeps a rest point's quick
   // chime (a mid-climb top-up, a ceremony's courtesy heal).

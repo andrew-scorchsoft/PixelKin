@@ -167,9 +167,9 @@ character · a recipe sketch*. Voices in **`sfx`** era unless noted; all
 - **world-rest** — **sleeping at a rest point** (inns, the apprentice's bed, hearths,
   camps — every `heal` op that is a rest). Not a blip: a **2-bar goodnight lullaby**
   (~3.8 s) the runner plays over a black screen while the map music is faded out.
-  `-a` (the pinned one): the Vesper contour on a music-box `bell` over a `pluck`
-  harp, soft `pad` and `tri_bass`, C major with a plagal C–F–C "goodnight" turn,
-  `era: "snes"` for the warm room. `-b`: a 3/4 A-minor→C waltz alternative.
+  `-b` (the pinned one — the owner's pick): a 3/4 A-minor→C waltz. `-a` (kept
+  alternative): the Vesper contour on a music-box `bell` over a `pluck` harp, soft
+  `pad` and `tri_bass`, C major with a plagal C–F–C "goodnight" turn, `era: "snes"`.
   `--tail 0.6`, untrimmed (it plays over silence). **Built.**
 - **world-spotted** — a sight trainer's eye-contact **"!"** (and every cutscene
   `emote: 'alert'`). A quick perk-up hop, alert not alarming. `pulse25 D5s A5e` +
