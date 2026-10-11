@@ -56,8 +56,8 @@ cue feel iconic is **form + a shared motif + a seamless loop**, so:
    to classic. Oneshots (`playSting`) never loop.
 
 **Size:** repo masters are 128k stereo (the source; never re-encode them); the
-deploy (`compress_dist_audio.mjs`) ships remasters at **80k joint stereo** (~1 MB per
-~100 s cue, ~45 MB for the full score) and the classic chip renders at 64k mono.
+deploy (`compress_dist_audio.mjs`) ships remasters at **60k ABR joint stereo** (~0.75 MB per
+~100 s cue, ~34 MB for the full score; owner's call, 2026-10) and the classic chip renders at 64k mono.
 Cloudflare Workers assets cap a FILE at 25 MiB — nowhere near — and players
 download a cue only when they reach its place.
 

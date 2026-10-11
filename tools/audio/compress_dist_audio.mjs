@@ -19,7 +19,9 @@ import { join, extname } from 'node:path';
 
 const DIST_AUDIO = 'dist/assets/audio';
 const BITRATE = '64k'; // mono; chiptune is a few square waves — 64k is plenty.
-const REMASTER_BITRATE = '80k'; // joint stereo, music/remaster/ (the composed score): ~1 MB per ~100 s cue
+const REMASTER_BITRATE = '60k'; // ABR joint stereo, music/remaster/ (the composed score): ~0.75 MB per ~100 s cue.
+// 60k is not a CBR MP3 rate (CBR would round to 56k), hence ABR. The repo keeps the
+// 128k masters in public/; only this deployed copy is shrunk — retune here, never regenerate.
 
 function works(bin) {
   try {
@@ -77,7 +79,7 @@ for (const f of files) {
   // The remastered score is real stereo arrangement (not chip squares): keep it
   // stereo at a higher rate; the classic chip renders stay 64k mono.
   const remaster = /[\\/]remaster[\\/]/.test(f);
-  const args = remaster ? ['-ac', '2', '-b:a', REMASTER_BITRATE] : ['-ac', '1', '-b:a', BITRATE];
+  const args = remaster ? ['-ac', '2', '-abr', '1', '-b:a', REMASTER_BITRATE] : ['-ac', '1', '-b:a', BITRATE];
   execFileSync(FFMPEG, ['-y', '-i', f, ...args, '-loglevel', 'error', tmp]);
   rmSync(f);
   renameSync(tmp, f);
