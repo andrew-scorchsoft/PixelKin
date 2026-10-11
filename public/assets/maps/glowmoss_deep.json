@@ -2608,6 +2608,55 @@
       "h": 2,
       "overhang": 1,
       "walk_under": true
+    },
+    {
+      "id": "acolyte_cinder",
+      "sprite": "fallenstar_cinder_star",
+      "at": {
+        "tx": 20,
+        "ty": 8
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "requires_flag": "flag:met_hollowing",
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "acolyte_cinder_woken",
+      "sprite": "vigil_star_shard",
+      "at": {
+        "tx": 20,
+        "ty": 8
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "root_gap_star",
+      "sprite": "penumbra_starglint_bright_a",
+      "at": {
+        "tx": 19,
+        "ty": 5
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "flag:glowmoss_star_back"
+    },
+    {
+      "id": "root_gap_star_b",
+      "sprite": "nightreach_starglint_a",
+      "at": {
+        "tx": 21,
+        "ty": 4
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "flag:glowmoss_star_back"
     }
   ],
   "warps": [
@@ -2766,6 +2815,26 @@
       "sets_flags": [
         "flag:met_hollowing"
       ]
+    },
+    {
+      "id": "acolyte_cinder",
+      "kind": "script",
+      "at": {
+        "tx": 20,
+        "ty": 9
+      },
+      "activation": "interact",
+      "ref": "script.glowmoss_cinder"
+    },
+    {
+      "id": "acolyte_cinder_e",
+      "kind": "script",
+      "at": {
+        "tx": 21,
+        "ty": 9
+      },
+      "activation": "interact",
+      "ref": "script.glowmoss_cinder"
     }
   ],
   "encounters": [
@@ -2903,7 +2972,7 @@
         "ty": 15
       },
       "facing": "down",
-      "sprite": "npc_man",
+      "sprite": "hollow_gardener",
       "movement": "static",
       "dialogue_ref": "script.glowmoss_keeper_a",
       "sight_range": 4,
@@ -2917,7 +2986,7 @@
         "ty": 15
       },
       "facing": "down",
-      "sprite": "npc_man",
+      "sprite": "hollow_gardener",
       "movement": "static",
       "dialogue_ref": "npc.glowmoss_keeper_a_after",
       "requires_flag": "flag:glowmoss_keeper_a_beaten"
@@ -2929,7 +2998,7 @@
         "ty": 14
       },
       "facing": "up",
-      "sprite": "npc_woman",
+      "sprite": "lamplighter",
       "movement": "static",
       "dialogue_ref": "script.glowmoss_keeper_b",
       "sight_range": 4,
@@ -2943,7 +3012,7 @@
         "ty": 14
       },
       "facing": "up",
-      "sprite": "npc_woman",
+      "sprite": "lamplighter",
       "movement": "look_around",
       "dialogue_ref": "npc.glowmoss_keeper_b_after",
       "requires_flag": "flag:glowmoss_keeper_b_beaten"
@@ -2955,7 +3024,7 @@
         "ty": 9
       },
       "facing": "right",
-      "sprite": "npc_woman",
+      "sprite": "hollowing_acolyte",
       "movement": "static",
       "dialogue_ref": "npc.glowmoss_acolyte_a",
       "hidden_when_flag": "flag:met_hollowing"
@@ -2967,7 +3036,7 @@
         "ty": 10
       },
       "facing": "up",
-      "sprite": "npc_man",
+      "sprite": "hollowing_acolyte",
       "movement": "static",
       "dialogue_ref": "npc.glowmoss_acolyte_b",
       "hidden_when_flag": "flag:met_hollowing"
@@ -2979,7 +3048,7 @@
         "ty": 7
       },
       "facing": "down",
-      "sprite": "npc_old_man",
+      "sprite": "hollowing_elder",
       "movement": "static",
       "dialogue_ref": "npc.glowmoss_cowled",
       "hidden_when_flag": "flag:met_hollowing"
@@ -3017,7 +3086,7 @@
       "facing": "left",
       "sprite": "wren",
       "movement": "static",
-      "dialogue_ref": "npc.wren_glowmoss",
+      "dialogue_ref": "script.wren_glowmoss",
       "requires_flag": "flag:met_hollowing"
     },
     {
@@ -3107,8 +3176,33 @@
       "dialogue_ref": "script.pickup_glowmoss_sidecell",
       "hidden_when_flag": "flag:picked_glowmoss_sidecell",
       "requires_flag": "flag:lamplight_brightlight"
+    },
+    {
+      "id": "amb_glimmoth",
+      "at": {
+        "tx": 7,
+        "ty": 20
+      },
+      "facing": "down",
+      "sprite": "kin_56_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/lowleaf-hollow-c.mp3"
+  "music": "assets/audio/music/lowleaf-hollow-c.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "glowmotes",
+        "density": 0.8
+      }
+    ],
+    "tint": {
+      "color": "#9fe8b8",
+      "alpha": 0.06
+    },
+    "sound_bed": "amb-drips"
+  }
 }

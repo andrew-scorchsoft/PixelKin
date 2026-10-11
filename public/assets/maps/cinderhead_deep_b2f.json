@@ -29,6 +29,18 @@
       "h": 2,
       "overhang": 1,
       "walk_under": true
+    },
+    {
+      "id": "b2f_ore_cart",
+      "sprite": "cinderhead_ore_cart",
+      "at": {
+        "tx": 7,
+        "ty": 12
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true
     }
   ],
   "warps": [
@@ -138,6 +150,17 @@
       "dialogue_ref": "script.pickup_cinderhead_alcove",
       "hidden_when_flag": "flag:picked_cinderhead_alcove",
       "requires_flag": "flag:lamplight_starlight"
+    },
+    {
+      "id": "b2f_miner",
+      "at": {
+        "tx": 15,
+        "ty": 12
+      },
+      "facing": "left",
+      "sprite": "miner_woman",
+      "movement": "static",
+      "dialogue_ref": "script.b2f_miner"
     }
   ],
   "gates": [],
@@ -1356,5 +1379,18 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "embers",
+        "density": 0.35
+      },
+      {
+        "kind": "ash",
+        "density": 0.3
+      }
+    ],
+    "sound_bed": "amb-drips"
+  }
 }

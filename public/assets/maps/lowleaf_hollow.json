@@ -989,7 +989,7 @@
         "ty": 12
       },
       "facing": "right",
-      "sprite": "npc_old_woman",
+      "sprite": "hollow_gardener",
       "movement": "static",
       "dialogue_ref": "npc.kilner_cold",
       "hidden_when_flag": "flag:picked_fenwood"
@@ -1001,7 +1001,7 @@
         "ty": 12
       },
       "facing": "right",
-      "sprite": "npc_old_woman",
+      "sprite": "hollow_gardener",
       "movement": "static",
       "dialogue_ref": "script.kiln_relight",
       "requires_flag": "flag:picked_fenwood",
@@ -1014,7 +1014,7 @@
         "ty": 12
       },
       "facing": "right",
-      "sprite": "npc_old_woman",
+      "sprite": "hollow_gardener",
       "movement": "look_around",
       "dialogue_ref": "npc.kilner_after",
       "requires_flag": "flag:q_east_hearthspore"
@@ -1059,7 +1059,7 @@
         "ty": 12
       },
       "facing": "down",
-      "sprite": "npc_child",
+      "sprite": "village_child",
       "movement": "wander",
       "dialogue_ref": "npc.bloom_kid_b"
     },
@@ -1093,7 +1093,7 @@
         "ty": 16
       },
       "facing": "down",
-      "sprite": "npc_man",
+      "sprite": "road_courier",
       "movement": "look_around",
       "dialogue_ref": "npc.bloom_crier",
       "requires_flag": "gleam:verdant"
@@ -1129,7 +1129,7 @@
         "ty": 15
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "market_trader",
       "movement": "static",
       "dialogue_ref": "script.stall_quest",
       "hidden_when_flag": "flag:q_east_spores"
@@ -1141,7 +1141,7 @@
         "ty": 15
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "market_trader",
       "movement": "static",
       "dialogue_ref": "npc.stall_waiting",
       "requires_flag": "flag:q_east_spores",
@@ -1154,7 +1154,7 @@
         "ty": 15
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "market_trader",
       "movement": "static",
       "dialogue_ref": "script.stall_reward",
       "requires_flag": "flag:spore_squatter_beaten",
@@ -1167,7 +1167,7 @@
         "ty": 15
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "market_trader",
       "movement": "static",
       "dialogue_ref": "npc.stall_after",
       "requires_flag": "flag:q_east_spores_done"
@@ -1179,7 +1179,7 @@
         "ty": 6
       },
       "facing": "left",
-      "sprite": "npc_woman",
+      "sprite": "fen_folk",
       "movement": "static",
       "dialogue_ref": "script.bloom_warden_a",
       "sight_range": 4,
@@ -1193,7 +1193,7 @@
         "ty": 6
       },
       "facing": "left",
-      "sprite": "npc_woman",
+      "sprite": "fen_folk",
       "movement": "look_around",
       "dialogue_ref": "npc.bloom_warden_a_after",
       "requires_flag": "flag:bloom_warden_a_beaten"
@@ -1320,6 +1320,30 @@
       "sprite": "andrew_ward",
       "movement": "look_around",
       "dialogue_ref": "script.andrew_road"
+    },
+    {
+      "id": "amb_fennlight",
+      "at": {
+        "tx": 3,
+        "ty": 17
+      },
+      "facing": "down",
+      "sprite": "kin_67_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
+    },
+    {
+      "id": "amb_sporeling",
+      "at": {
+        "tx": 24,
+        "ty": 28
+      },
+      "facing": "down",
+      "sprite": "kin_65_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 2
     }
   ],
   "gates": [],
@@ -4322,5 +4346,22 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "glowmotes",
+        "density": 0.9
+      },
+      {
+        "kind": "spores",
+        "density": 0.4
+      }
+    ],
+    "starfall": {
+      "min_s": 50,
+      "max_s": 110
+    },
+    "sound_bed": "amb-crickets"
+  }
 }

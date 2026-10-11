@@ -119,7 +119,7 @@
         "ty": 27
       },
       "facing": "down",
-      "sprite": "npc_old_woman",
+      "sprite": "fen_folk",
       "movement": "static",
       "dialogue_ref": "script.fen_fisher",
       "hidden_when_flag": "flag:q_east_reeds"
@@ -131,7 +131,7 @@
         "ty": 27
       },
       "facing": "down",
-      "sprite": "npc_old_woman",
+      "sprite": "fen_folk",
       "movement": "static",
       "dialogue_ref": "npc.fen_fisher_wait",
       "requires_flag": "flag:q_east_reeds",
@@ -144,7 +144,7 @@
         "ty": 27
       },
       "facing": "down",
-      "sprite": "npc_old_woman",
+      "sprite": "fen_folk",
       "movement": "static",
       "dialogue_ref": "script.fen_fisher_report",
       "requires_flag": "flag:q_east_reed_third",
@@ -157,7 +157,7 @@
         "ty": 27
       },
       "facing": "down",
-      "sprite": "npc_old_woman",
+      "sprite": "fen_folk",
       "movement": "look_around",
       "dialogue_ref": "npc.fen_fisher_after",
       "requires_flag": "flag:q_east_reeds_done"
@@ -169,7 +169,7 @@
         "ty": 3
       },
       "facing": "down",
-      "sprite": "npc_man",
+      "sprite": "lamplighter",
       "movement": "static",
       "dialogue_ref": "script.reed_lamplighter",
       "sight_range": 4,
@@ -183,7 +183,7 @@
         "ty": 3
       },
       "facing": "down",
-      "sprite": "npc_man",
+      "sprite": "lamplighter",
       "movement": "look_around",
       "dialogue_ref": "npc.reed_lamplighter_after",
       "requires_flag": "flag:reed_lamplighter_beaten"
@@ -223,6 +223,30 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_fen_ii_balm",
       "hidden_when_flag": "flag:picked_fen_ii_balm"
+    },
+    {
+      "id": "amb_lumpin",
+      "at": {
+        "tx": 9,
+        "ty": 40
+      },
+      "facing": "down",
+      "sprite": "kin_31_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 2
+    },
+    {
+      "id": "amb_brineroll",
+      "at": {
+        "tx": 12,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "kin_27_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 2
     }
   ],
   "gates": [],
@@ -815,6 +839,280 @@
       "w": 3,
       "h": 4,
       "overhang": 3,
+      "walk_under": true
+    },
+    {
+      "id": "lily_a",
+      "sprite": "saltreach_lilypads",
+      "at": {
+        "tx": 8,
+        "ty": 17
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false
+    },
+    {
+      "id": "lily_b",
+      "sprite": "saltreach_lilypads",
+      "at": {
+        "tx": 24,
+        "ty": 18
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false
+    },
+    {
+      "id": "lily_c",
+      "sprite": "saltreach_lilypads",
+      "at": {
+        "tx": 5,
+        "ty": 31
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false
+    },
+    {
+      "id": "lily_d",
+      "sprite": "saltreach_lilypads",
+      "at": {
+        "tx": 20,
+        "ty": 34
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false
+    },
+    {
+      "id": "lily_e",
+      "sprite": "saltreach_lilypads",
+      "at": {
+        "tx": 26,
+        "ty": 10
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false
+    },
+    {
+      "id": "reeds_a",
+      "sprite": "saltreach_cattails",
+      "at": {
+        "tx": 9,
+        "ty": 11
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "reeds_b",
+      "sprite": "saltreach_cattails",
+      "at": {
+        "tx": 17,
+        "ty": 11
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "reeds_c",
+      "sprite": "saltreach_cattails",
+      "at": {
+        "tx": 2,
+        "ty": 25
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "reeds_d",
+      "sprite": "saltreach_cattails",
+      "at": {
+        "tx": 13,
+        "ty": 26
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "reeds_e",
+      "sprite": "saltreach_cattails",
+      "at": {
+        "tx": 8,
+        "ty": 37
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "reeds_f",
+      "sprite": "saltreach_cattails",
+      "at": {
+        "tx": 22,
+        "ty": 37
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "reeds_g",
+      "sprite": "saltreach_cattails",
+      "at": {
+        "tx": 28,
+        "ty": 13
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "reeds_h",
+      "sprite": "saltreach_cattails",
+      "at": {
+        "tx": 3,
+        "ty": 3
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "eel_trap_a",
+      "sprite": "saltreach_eel_trap",
+      "at": {
+        "tx": 20,
+        "ty": 12
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "eel_trap_b",
+      "sprite": "saltreach_eel_trap",
+      "at": {
+        "tx": 11,
+        "ty": 31
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "drowned_lamp_a",
+      "sprite": "saltreach_sunken_lamp",
+      "at": {
+        "tx": 24,
+        "ty": 20
+      },
+      "w": 1,
+      "h": 3,
+      "solid": false,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "drowned_lamp_b",
+      "sprite": "saltreach_sunken_lamp",
+      "at": {
+        "tx": 27,
+        "ty": 22
+      },
+      "w": 1,
+      "h": 3,
+      "solid": false,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "fisher_punt",
+      "sprite": "saltreach_punt",
+      "at": {
+        "tx": 22,
+        "ty": 28
+      },
+      "w": 2,
+      "h": 3,
+      "solid": false
+    },
+    {
+      "id": "fisher_moorings",
+      "sprite": "saltreach_mooring_posts",
+      "at": {
+        "tx": 21,
+        "ty": 25
+      },
+      "w": 1,
+      "h": 2,
+      "solid": false,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "reeds_i",
+      "sprite": "saltreach_cattails",
+      "at": {
+        "tx": 13,
+        "ty": 19
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "reeds_j",
+      "sprite": "saltreach_cattails",
+      "at": {
+        "tx": 20,
+        "ty": 21
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "isle_stooks",
+      "sprite": "saltreach_reed_stooks",
+      "at": {
+        "tx": 15,
+        "ty": 19
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "overhang": 1,
       "walk_under": true
     }
   ],
@@ -5065,5 +5363,30 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "spray",
+        "density": 0.5
+      },
+      {
+        "kind": "glowmotes",
+        "density": 0.35
+      }
+    ],
+    "mist": {
+      "color": "#a8c8c0",
+      "alpha": 0.16,
+      "speed": 6
+    },
+    "starfall": {
+      "min_s": 45,
+      "max_s": 100
+    },
+    "sound_bed": "amb-marsh",
+    "bob_gids": [
+      120
+    ]
+  }
 }

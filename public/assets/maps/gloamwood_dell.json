@@ -906,5 +906,17 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "glowmotes",
+        "density": 0.6
+      }
+    ],
+    "starfall": {
+      "min_s": 40,
+      "max_s": 90
+    }
+  }
 }

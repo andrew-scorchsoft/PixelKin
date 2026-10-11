@@ -75,6 +75,18 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_grotto_drop",
       "hidden_when_flag": "flag:picked_grotto_drop"
+    },
+    {
+      "id": "amb_sporeling",
+      "at": {
+        "tx": 13,
+        "ty": 7
+      },
+      "facing": "down",
+      "sprite": "kin_65_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
     }
   ],
   "gates": [],
@@ -940,5 +952,18 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "spores",
+        "density": 1.0
+      },
+      {
+        "kind": "glowmotes",
+        "density": 0.3
+      }
+    ],
+    "sound_bed": "amb-drips"
+  }
 }

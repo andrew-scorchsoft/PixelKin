@@ -476,7 +476,7 @@
         "ty": 4
       },
       "facing": "down",
-      "sprite": "npc_shopkeeper",
+      "sprite": "innkeeper",
       "movement": "static",
       "dialogue_ref": "script.lowleaf_rest"
     },

@@ -966,5 +966,14 @@
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/dimglass-coast-c.mp3"
+  "music": "assets/audio/music/dimglass-coast-c.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "dust",
+        "density": 0.4
+      }
+    ],
+    "sound_bed": "amb-drips"
+  }
 }

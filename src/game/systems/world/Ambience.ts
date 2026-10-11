@@ -68,6 +68,8 @@ export const LIGHT_SOURCES: Record<string, { hx: number; hy: number; radius: num
   nightreach_watch_lamp_lit: { hx: 16, hy: 8, radius: 17, color: 0xdfe6ff },
   nightreach_vigil_lamp: { hx: 8, hy: 6, radius: 12, color: 0xdfe6ff },
   tideglass_wrecklamp_lit: { hx: 8, hy: 8, radius: 12, color: 0x9fe7ff },
+  // east
+  cinderhead_lamp_hooks: { hx: 40, hy: 24, radius: 22, color: 0xffb86b }, // Harl's seven lit hooks
 };
 
 /** Chimney tops keyed by building sprite (px offset of the stack's mouth). */
