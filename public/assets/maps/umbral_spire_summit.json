@@ -576,7 +576,7 @@
         "ty": 10
       },
       "facing": "right",
-      "sprite": "npc_old_woman",
+      "sprite": "kite_weaver",
       "movement": "static",
       "dialogue_ref": "npc.vigil_ondra_summit",
       "requires_flag": "flag:vigil_5_kept",
@@ -589,7 +589,7 @@
         "ty": 10
       },
       "facing": "right",
-      "sprite": "npc_woman",
+      "sprite": "sun_keeper",
       "movement": "static",
       "dialogue_ref": "npc.vigil_solenne_summit",
       "requires_flag": "flag:vigil_5_kept",
@@ -602,7 +602,7 @@
         "ty": 9
       },
       "facing": "left",
-      "sprite": "npc_lampwarden",
+      "sprite": "hollowing_elder",
       "movement": "static",
       "dialogue_ref": "npc.vigil_mer_summit",
       "requires_flag": "flag:vigil_5_kept",
@@ -619,6 +619,32 @@
       "movement": "static",
       "dialogue_ref": "script.last_lesson_again",
       "requires_flag": "flag:starfall_crown"
+    },
+    {
+      "id": "fenn_dawn",
+      "at": {
+        "tx": 17,
+        "ty": 19
+      },
+      "facing": "up",
+      "sprite": "npc_mentor",
+      "movement": "static",
+      "dialogue_ref": "npc.fenn_summit_dawn",
+      "requires_flag": "flag:keystar_relit",
+      "hidden_when_flag": "flag:dawnstead_arrived"
+    },
+    {
+      "id": "fenn_round",
+      "at": {
+        "tx": 13,
+        "ty": 13
+      },
+      "facing": "up",
+      "sprite": "npc_mentor",
+      "movement": "static",
+      "dialogue_ref": "npc.fenn_summit_round",
+      "requires_flag": "flag:vigil_5_kept",
+      "hidden_when_flag": "flag:starfall_lesson"
     }
   ],
   "gates": [],
@@ -2377,5 +2403,21 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "starglint",
+        "density": 0.6
+      },
+      {
+        "kind": "glowmotes",
+        "density": 0.3
+      }
+    ],
+    "tint": {
+      "color": "#0a0a22",
+      "alpha": 0.1
+    }
+  }
 }

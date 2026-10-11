@@ -3270,7 +3270,7 @@
         "ty": 8
       },
       "facing": "down",
-      "sprite": "npc_man",
+      "sprite": "innkeeper",
       "movement": "look_around",
       "dialogue_ref": "npc.dawnstead_piper",
       "requires_flag": "flag:dawn"
@@ -3282,7 +3282,7 @@
         "ty": 9
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "market_trader",
       "movement": "wander",
       "dialogue_ref": "npc.dawnstead_baker",
       "requires_flag": "flag:dawn"
@@ -3294,7 +3294,7 @@
         "ty": 9
       },
       "facing": "up",
-      "sprite": "npc_boy",
+      "sprite": "village_child",
       "movement": "look_around",
       "dialogue_ref": "npc.dawnstead_kid",
       "requires_flag": "flag:dawn"
@@ -3318,7 +3318,7 @@
         "ty": 11
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "star_watcher",
       "movement": "look_around",
       "dialogue_ref": "npc.starfall_witness",
       "requires_flag": "flag:dawn",
@@ -3342,12 +3342,46 @@
         "ty": 15
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "road_courier",
       "movement": "static",
       "dialogue_ref": "npc.peril_maudie_dawn",
       "requires_flag": "flag:dawn"
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/dawnstead-a.mp3"
+  "music": "assets/audio/music/dawnstead-a.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "motes",
+        "density": 0.6
+      },
+      {
+        "kind": "leaves",
+        "density": 0.25
+      }
+    ],
+    "tint": {
+      "color": "#ffd089",
+      "alpha": 0.08
+    },
+    "birds": {
+      "kind": "bird",
+      "flocks": [
+        {
+          "tx": 22,
+          "ty": 14
+        },
+        {
+          "tx": 6,
+          "ty": 25
+        }
+      ],
+      "flyover": true
+    },
+    "starfall": {
+      "min_s": 30,
+      "max_s": 70
+    }
+  }
 }

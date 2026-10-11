@@ -135,16 +135,16 @@ m: dict = {
         # WICK-MOTHER ESRA — three flag-disjoint placements (the Fenn-waystone
         # pattern): trial keeper -> kept (plain line) -> post-crown re-runnable bout.
         {"id": "esra_trial", "at": {"tx": KEEPER_AT[0], "ty": KEEPER_AT[1]},
-         "facing": "down", "sprite": "npc_old_woman", "movement": "static",
+         "facing": "down", "sprite": "lamplighter", "movement": "static",
          "dialogue_ref": "script.vigil_hearthfall",
          "hidden_when_flag": "flag:vigil_1_kept"},
         {"id": "esra_kept", "at": {"tx": KEEPER_AT[0], "ty": KEEPER_AT[1]},
-         "facing": "down", "sprite": "npc_old_woman", "movement": "static",
+         "facing": "down", "sprite": "lamplighter", "movement": "static",
          "dialogue_ref": "npc.vigil_hearthfall_kept",
          "requires_flag": "flag:vigil_1_kept",
          "hidden_when_flag": "flag:starfall_crown"},
         {"id": "esra_bout", "at": {"tx": KEEPER_AT[0], "ty": KEEPER_AT[1]},
-         "facing": "down", "sprite": "npc_old_woman", "movement": "static",
+         "facing": "down", "sprite": "lamplighter", "movement": "static",
          "dialogue_ref": "script.vigil_hearthfall_again",
          "requires_flag": "flag:starfall_crown"},
     ],
@@ -215,6 +215,22 @@ for (x, y, name) in [(13, 9, "g_daisy"), (8, 8, "flowers"), (14, 12, "g_tuft"),
 for (x, y) in [(20, 9), (18, 16), (22, 4)]:
     if water[y * W + x]:
         deco[y * W + x] = gid("buoy")
+
+# ---- WORLD-CRAFT dressing (2026-10; tools/maps/vigil_dress.py) -----------------------
+# Was 0.69 props/screen (audit_visual FAIL). Tinderwick's own kit, reused: a
+# second wind-bent tree on the sea shoulder, lamp-posts flanking the alcove
+# mouth and the lane (the Beacon town's lamps, followed up the seam), Esra's
+# keeper camp by the cache, and two warm-fall scars in the turf. The lane
+# (cols 10-13) and the trial band stay clear.
+from vigil_dress import dress, tree, lamp, camp, scar  # noqa: E402
+dress(m, deco, W, H, rng, blocked=[cliff, water, tuft],
+      props=[tree("sea_tree", (14, 8)),
+             lamp("alcove_lamp_w", (10, 3)), lamp("alcove_lamp_e", (13, 3)),
+             lamp("lane_lamp_w", (9, 13)), lamp("lane_lamp_e", (14, 12)),
+             camp("esra_camp", (6, 14)),
+             scar("warm_scar_a", (8, 8)), scar("warm_scar_b", (14, 15))],
+      drift=["g_daisy", "g_tuft", "g_pebble", "flowers", "g_patch"],
+      density=0.30, avoid=avoid | {(x, y) for x in range(10, 14) for y in range(7, 16)})
 
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},

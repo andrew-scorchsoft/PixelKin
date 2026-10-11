@@ -39,6 +39,60 @@
       "h": 2,
       "overhang": 1,
       "walk_under": true
+    },
+    {
+      "id": "teal_shrooms_e",
+      "sprite": "glowmoss_deep_glowshrooms_teal",
+      "at": {
+        "tx": 19,
+        "ty": 10
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "teal_shrooms_w",
+      "sprite": "glowmoss_deep_glowshrooms_teal",
+      "at": {
+        "tx": 9,
+        "ty": 7
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "keeper_camp",
+      "sprite": "penumbra_vigil_camp",
+      "at": {
+        "tx": 8,
+        "ty": 13
+      },
+      "w": 3,
+      "h": 2
+    },
+    {
+      "id": "warm_scar_a",
+      "sprite": "vigil_star_scar",
+      "at": {
+        "tx": 3,
+        "ty": 10
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "walk_under": true
+    },
+    {
+      "id": "warm_scar_b",
+      "sprite": "vigil_star_scar",
+      "at": {
+        "tx": 15,
+        "ty": 13
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "walk_under": true
     }
   ],
   "warps": [
@@ -200,7 +254,7 @@
         "ty": 4
       },
       "facing": "down",
-      "sprite": "npc_old_man",
+      "sprite": "miner_man",
       "movement": "static",
       "dialogue_ref": "script.vigil_grovefall",
       "hidden_when_flag": "flag:vigil_2_kept"
@@ -212,7 +266,7 @@
         "ty": 4
       },
       "facing": "down",
-      "sprite": "npc_old_man",
+      "sprite": "miner_man",
       "movement": "static",
       "dialogue_ref": "npc.vigil_grovefall_kept",
       "requires_flag": "flag:vigil_2_kept",
@@ -225,7 +279,7 @@
         "ty": 4
       },
       "facing": "down",
-      "sprite": "npc_old_man",
+      "sprite": "miner_man",
       "movement": "static",
       "dialogue_ref": "script.vigil_grovefall_again",
       "requires_flag": "flag:starfall_crown"
@@ -802,7 +856,7 @@
         0,
         0,
         0,
-        0,
+        180,
         0,
         0,
         0,
@@ -865,6 +919,10 @@
         0,
         0,
         0,
+        180,
+        179,
+        0,
+        0,
         0,
         179,
         0,
@@ -900,11 +958,8 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
         5,
+        179,
         0,
         0,
         0,
@@ -928,8 +983,7 @@
         0,
         0,
         0,
-        0,
-        0,
+        181,
         180,
         0,
         0,
@@ -973,7 +1027,7 @@
         0,
         0,
         179,
-        0,
+        181,
         0,
         0,
         0,
@@ -1063,12 +1117,12 @@
         0,
         0,
         0,
+        180,
         0,
         0,
         0,
         0,
-        0,
-        0,
+        180,
         0,
         0,
         0,
@@ -1567,5 +1621,21 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "spores",
+        "density": 0.5
+      },
+      {
+        "kind": "glowmotes",
+        "density": 0.4
+      }
+    ],
+    "tint": {
+      "color": "#0e2a1c",
+      "alpha": 0.1
+    }
+  }
 }

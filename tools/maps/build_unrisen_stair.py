@@ -87,14 +87,24 @@ def open_rect(x0, y0, x1, y1):
     mk.rect(cliff, W, H, x0, y0, x1, y1, 0)
 
 open_rect(4, 19, 15, 22)
-# WATER BAND A (rows 17-18) + its north cliff lip (row 16) pierced at vine A (x9)
+# WATER BAND A (rows 17-18) + its north cliff lip (row 16) pierced at vine A (x9).
+# WORLD-CRAFT (2026-10): the bands were ruler-drawn boxes (audit_visual FAIL);
+# their SOUTH shores now bite into the courts in two drowned bights each, so the
+# black water reads as a flooded stair, not a trough. The north lips, the vine
+# columns and every lane/trigger tile are unchanged (the crossing still spans
+# the full width; the bights only take open court ground).
 mk.rect(pool, W, H, 3, 17, 16, 18)
+mk.blob(pool, W, H, 5.0, 19.0, 1.8, 0.9)        # the west bight (foot court)
+mk.blob(pool, W, H, 14.5, 19.0, 1.6, 0.8)       # the east bight
 mk.rect(cliff, W, H, 3, 16, 16, 16)
 cliff[16 * W + 9] = 0
 # FLIGHT 2 (rows 12-15) + the mirror spur east
 open_rect(3, 12, 16, 15)
 # WATER BAND B (rows 9-11) + its north lip (row 8) pierced at the far vine (x12)
 mk.rect(pool, W, H, 3, 9, 16, 11)
+mk.blob(pool, W, H, 4.5, 12.0, 1.6, 0.8)        # the west bight (flight two)
+for (x, y) in [(15, 11), (16, 11)]:             # the mirror spur's shore stands proud
+    pool[y * W + x] = 0
 mk.rect(cliff, W, H, 3, 8, 16, 8)
 cliff[8 * W + 12] = 0
 # THE HEAD TERRACE (rows 4-7)
@@ -250,7 +260,7 @@ m["objects"] += [
      "w": 1, "h": 3, "overhang": 1, "walk_under": True},
     {"id": "column_e", "sprite": "solarium_column", "at": {"tx": 15, "ty": 4},
      "w": 1, "h": 3, "overhang": 1, "walk_under": True},
-    {"id": "column_court", "sprite": "solarium_column", "at": {"tx": 4, "ty": 19},
+    {"id": "column_court", "sprite": "solarium_column", "at": {"tx": 4, "ty": 20},
      "w": 1, "h": 3, "overhang": 1, "walk_under": True},
     # a second toppled capital pays the court's east edge its idea (§3a r5)
     {"id": "capital_court", "sprite": "solarium_column_fallen",
@@ -272,7 +282,7 @@ for y in range(H):
     for x in range(W):
         i = y * W + x
         if base[i] in gg and deco[i] == 0 and (x, y) not in avoid \
-                and rng.random() < 0.12:
+                and rng.random() < 0.40:
             deco[i] = rng.choice(blooms) if rng.random() < 0.5 else gid("g_pebble")
 for (x, y) in [(13, 20), (5, 13), (8, 7), (13, 6), (15, 22)]:
     if (x, y) not in avoid and deco[y * W + x] == 0:

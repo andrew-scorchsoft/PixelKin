@@ -369,7 +369,7 @@ def build_f1() -> dict:
     # down the 1-wide corridor — the beacon convention: the sight line seals
     # the crossing, the body never seals the lane) -------------------------------
     owed.extend(pt.trainer_beat(m, tid="hollowing_acolyte_a", at=(9, 10),
-                                facing="down", sight=5, sprite="npc_woman"))
+                                facing="down", sight=5, sprite="hollowing_acolyte"))
 
     # ---- Wren #1, just inside the gate (A5->A6 side-by-side) --------------------
     m["npcs"].append(
@@ -467,9 +467,9 @@ def build_f2() -> dict:
 
     # ---- the keepers of the works ------------------------------------------------
     owed.extend(pt.trainer_beat(m, tid="hollowing_acolyte_b", at=(12, 9),
-                                facing="down", sight=5, sprite="npc_man"))
+                                facing="down", sight=5, sprite="hollowing_acolyte"))
     owed.extend(pt.trainer_beat(m, tid="hollowing_acolyte_c", at=(24, 8),
-                                facing="left", sight=4, sprite="npc_old_woman"))
+                                facing="left", sight=4, sprite="hollowing_elder"))
 
     # ---- the drained kin asleep in the alcoves (grief, never battles) ------------
     sleeper(m, "a", "sleeper_nullmoth", (7, 4))
@@ -529,6 +529,8 @@ def build_f3() -> dict:
     mk.rect(floor, W, H, 5, 4, 16, 8)         # R3 — the antechamber (ladder up)
     mk.hline(floor, W, H, 12, 5, 9)           # C2 — the breather's way in
     mk.rect(floor, W, H, 2, 9, 4, 14)         # R4 — THE REST-LEDGE
+    mk.rect(floor, W, H, 19, 4, 24, 11)       # R5 — THE CINDER HOARD (story panel C-1)
+    mk.vline(floor, W, H, 21, 12, 13)         # ...its one doorway, straight off R1
     for i in range(W * H):
         if floor[i]:
             wall[i] = 0
@@ -574,9 +576,9 @@ def build_f3() -> dict:
     # ---- the hardest keeper pair, posted over the 2-wide climb (each seals
     # one column; together the crossing is unavoidable) ------------------------------
     owed.extend(pt.trainer_beat(m, tid="hollowing_acolyte_d", at=(10, 6),
-                                facing="down", sight=5, sprite="npc_old_man"))
+                                facing="down", sight=5, sprite="hollowing_elder"))
     owed.extend(pt.trainer_beat(m, tid="hollowing_acolyte_e", at=(11, 6),
-                                facing="down", sight=5, sprite="npc_woman"))
+                                facing="down", sight=5, sprite="hollowing_acolyte"))
 
     # ---- Wren #3, at the ledge ------------------------------------------------------
     m["npcs"].append(
@@ -607,9 +609,90 @@ def build_f3() -> dict:
         if deco[y * W + x] == 0:
             deco[y * W + x] = gid("boulder")
 
+    cinder_hoard(m)
+
     base = base_floor(W, H, rng)
     layers(m, base, wall, void, deco, W, H)
     return m
+
+
+def cinder_hoard(m: dict) -> None:
+    """R5 — THE CINDER HOARD (docs/reviews/story-depth-panel.md C-1; story-bible
+    §12 the cinder law). The room Còr keeps every fallen cinder he has fetched
+    home: rows of cold stones on swept linen and shelves, each with a paper tag
+    in a careful hand; a cot; a lamp kept unlit; the broom by the door. It sits
+    straight off F3's arrival room (the first doorway you see on the floor), a
+    dead-end whose payoff is the reading.
+
+    FLAG-FREE DECOR except the one swap the whole room exists for: at the
+    Keystar relight (`flag:keystar_relit`) every cold piece is replaced by its
+    GLOWING twin — same rect, same solidity (collision is flag-blind) — so a
+    player who walks back down after the dawn finds every cinder awake. The
+    cold state is listed SECOND so flag-blind QA renders show it on top.
+    The narrate band on the doorway (`cutscene.cinder_hoard` — a dead-end room
+    beat, not a choke: the `cutscene.` prefix keeps audit_flow's choke check, which
+    guards THROUGH-routes, off it) is atmosphere only;
+    `flag:cinder_hoard_seen` is presentational bookkeeping (nothing gates on it)."""
+    pairs = [  # (id, stem, at, w, h)
+        ("hoard_shelf_w", "shelf", (19, 3), 2, 3),
+        ("hoard_niche_a", "niche", (21, 3), 1, 2),
+        ("hoard_niche_b", "niche", (22, 3), 1, 2),
+        ("hoard_shelf_e", "shelf", (23, 3), 2, 3),
+        ("hoard_linen_a", "linen", (19, 7), 4, 2),
+        ("hoard_linen_b", "linen", (19, 9), 4, 2),
+    ]
+    for oid, stem, at, w, h in pairs:
+        m["objects"] += [
+            {"id": f"{oid}_woken", "sprite": f"hoard_{stem}_glow",
+             "at": {"tx": at[0], "ty": at[1]}, "w": w, "h": h,
+             "requires_flag": "flag:keystar_relit"},
+            {"id": oid, "sprite": f"hoard_{stem}_cold",
+             "at": {"tx": at[0], "ty": at[1]}, "w": w, "h": h,
+             "hidden_when_flag": "flag:keystar_relit"},
+        ]
+    m["objects"] += [
+        # the keeper's corner: a lamp he will not light, and the cot beside it
+        {"id": "hoard_lamp", "sprite": "hoard_lamp_unlit",
+         "at": {"tx": 24, "ty": 7}, "w": 1, "h": 3, "overhang": 1},
+        {"id": "hoard_cot", "sprite": "hoard_cot",
+         "at": {"tx": 24, "ty": 10}, "w": 1, "h": 2},
+        # the broom, leaning on the wall face beside the doorway (seen from R1)
+        {"id": "hoard_broom", "sprite": "hoard_broom",
+         "at": {"tx": 20, "ty": 12}, "w": 1, "h": 2},
+    ]
+    # the reading: interact triggers ON the solid pieces (the sign convention)
+    reads = [
+        ((19, 5), "npc.hoard_shelf_w"), ((20, 5), "npc.hoard_shelf_w"),
+        ((21, 4), "npc.hoard_niche"), ((22, 4), "npc.hoard_niche"),
+        ((23, 5), "npc.hoard_shelf_e"), ((24, 5), "npc.hoard_shelf_e"),
+        ((19, 7), "npc.hoard_linen_a"), ((20, 7), "npc.hoard_linen_a"),
+        ((21, 7), "npc.hoard_linen_a"), ((22, 7), "npc.hoard_linen_a"),
+        ((22, 8), "npc.hoard_linen_a"),
+        ((19, 10), "npc.hoard_linen_b"), ((20, 10), "npc.hoard_linen_b"),
+        ((21, 10), "npc.hoard_linen_b"), ((22, 10), "npc.hoard_linen_b"),
+        ((22, 9), "npc.hoard_linen_b"),
+        ((24, 9), "npc.hoard_lamp"), ((24, 10), "npc.hoard_cot"),
+        ((24, 11), "npc.hoard_cot"),
+    ]
+    for i, ((x, y), ref) in enumerate(reads):
+        # cold reads until the relight, woken reads after (exactly one plays)
+        m["triggers"] += [
+            {"id": f"hoard_read_{i}", "kind": "dialogue", "at": {"tx": x, "ty": y},
+             "activation": "interact", "ref": ref,
+             "hidden_when_flag": "flag:keystar_relit"},
+            {"id": f"hoard_read_woken_{i}", "kind": "dialogue", "at": {"tx": x, "ty": y},
+             "activation": "interact", "ref": f"{ref}_woken",
+             "requires_flag": "flag:keystar_relit"},
+        ]
+    # the doorway band — the room's one acted beat (narrate + Wren if joined)
+    for i, ty in enumerate((13, 12)):
+        m["triggers"].append(
+            {"id": f"cinder_hoard_{i}", "kind": "script",
+             "at": {"tx": 21, "ty": ty}, "activation": "step_on",
+             "ref": "cutscene.cinder_hoard",
+             "sets_flags": ["flag:cinder_hoard_seen"],
+             "hidden_when_flag": "flag:cinder_hoard_seen"})
+    owed.append("cutscene.cinder_hoard + npc.hoard_* reads (content/regions/central.ts)")
 
 
 # ======================================================================================
@@ -757,6 +840,12 @@ def build_summit() -> dict:
 # ======================================================================================
 if __name__ == "__main__":
     builders = [build_f1, build_f2, build_f3, build_summit]
+    # `--only f3` (repeatable) rebuilds just those floors — the shipped f2 and
+    # summit JSONs carry post-build additions this builder lacks (CLAUDE.md
+    # gotcha), so a one-floor change must not regress the others.
+    if "--only" in sys.argv:
+        want = {sys.argv[i + 1] for i, a in enumerate(sys.argv) if a == "--only"}
+        builders = [b for b in builders if b.__name__.removeprefix("build_") in want]
     ok = True
     OUT.mkdir(exist_ok=True)
     for b in builders:

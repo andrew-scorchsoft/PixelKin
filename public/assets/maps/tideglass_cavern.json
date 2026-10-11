@@ -2092,5 +2092,21 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "glowmotes",
+        "density": 0.4
+      },
+      {
+        "kind": "spray",
+        "density": 0.5
+      }
+    ],
+    "tint": {
+      "color": "#0a2238",
+      "alpha": 0.1
+    }
+  }
 }
