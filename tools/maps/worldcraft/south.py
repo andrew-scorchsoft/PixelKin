@@ -324,6 +324,16 @@ PLACEMENTS: dict[str, dict] = {
             "mist": {"color": "#a8c8b0", "alpha": 0.06, "speed": 4},
         },
         "npcs": [ambient_kin("amb_sporeling", (20, 13), 56, radius=1)],
+        # Review 2026-10: the wood read sparse (1.34 props/screen). Six crown trees on
+        # ground proven off every lane/approach (prove_off_lane); variants = vary_trees' pick.
+        "objects": [
+            {"id": "wander_tree_1", "sprite": "tinderwick_tree", "at": {"tx": 11, "ty": 5}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+            {"id": "wander_tree_2", "sprite": "tinderwick_tree_b", "at": {"tx": 24, "ty": 2}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+            {"id": "wander_tree_3", "sprite": "tinderwick_tree_c", "at": {"tx": 2, "ty": 12}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+            {"id": "wander_tree_4", "sprite": "tinderwick_tree", "at": {"tx": 16, "ty": 8}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+            {"id": "wander_tree_5", "sprite": "tinderwick_tree", "at": {"tx": 25, "ty": 12}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+            {"id": "wander_tree_6", "sprite": "tinderwick_tree", "at": {"tx": 17, "ty": 17}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+        ],
     },
     "pearlmoor_wanderwood_far": {
         "ambience": {

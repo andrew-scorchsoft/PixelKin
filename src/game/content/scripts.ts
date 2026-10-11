@@ -4241,6 +4241,9 @@ export const SCRIPTS: ScriptRegistry = {
     // Nullmajor (script.nullworks_nullmajor) consistent.
     { op: 'face', actor: 'player', facing: 'up' },
     { op: 'narrate', text: 'Behind you, the Great Null stands silent in the first light — and deep in its cold housing, where he packed the fallen ones close, something answers the sun.' },
+    // The works stood down with the dark: a first post-dawn visit to the Stillworks
+    // must not stage the Long-Dusk band, nor find Còr on the gantry (he's at Dawnstead).
+    { op: 'setFlag', flag: 'flag:seen_stillworks' },
     { op: 'cinematic', id: 'ending_credits' },
   ],
 
