@@ -851,19 +851,13 @@ export const SCRIPTS: ScriptRegistry = {
   // The inn: a paid-in-kindness full rest. The innkeep NPC's dialogue_ref runs this.
   'script.inn_rest': [
     { op: 'say', speaker: 'INNKEEP', text: 'Rest your feet, Wayfarer — and your kin. The hearth is warm and the boards are dry.' },
-    { op: 'fade', dir: 'out' },
-    { op: 'wait', ms: 700 },
     { op: 'heal' },
-    { op: 'fade', dir: 'in' },
     { op: 'say', speaker: 'INNKEEP', text: 'There. Lamps trimmed, kin bright-eyed. The dusk can wait on you a while yet.' },
   ],
   // Home: the bed in the apprentice's house. Free, always — home is home.
   'script.home_rest': [
     { op: 'say', text: 'Your own bed, under the old quilt. The lamp hums low...' },
-    { op: 'fade', dir: 'out' },
-    { op: 'wait', ms: 700 },
     { op: 'heal' },
-    { op: 'fade', dir: 'in' },
     { op: 'say', text: 'You wake warm. Your kin are rested and bright.' },
   ],
   // The roadside rest on the tidal flats (Dimglass Coast II, just past the seam
@@ -871,10 +865,7 @@ export const SCRIPTS: ScriptRegistry = {
   // a cockler's driftwood fire. Banks the respawn point like any rest.
   'script.flats_rest': [
     { op: 'say', speaker: 'COCKLER', text: 'Long road from Tinderwick, isn\'t it? Sit by the driftwood fire a while, dear. The tide won\'t turn without us.' },
-    { op: 'fade', dir: 'out' },
-    { op: 'wait', ms: 700 },
     { op: 'heal' },
-    { op: 'fade', dir: 'in' },
     { op: 'say', speaker: 'COCKLER', text: 'There — warm through, the lot of you. Keep to the dry trail if your lamp is low; the dune grass will wait for a brighter hour.' },
   ],
 
@@ -2033,10 +2024,7 @@ export const SCRIPTS: ScriptRegistry = {
   // The guest-bower's rest (the town's full heal — the standing kit).
   'script.lowleaf_rest': [
     { op: 'say', speaker: 'BOWER-KEEPER', text: 'Festival or fen-mud, every walker gets the same bower. In you go — the moss-bunks are warm and the lamps are low.' },
-    { op: 'fade', dir: 'out' },
-    { op: 'wait', ms: 700 },
     { op: 'heal' },
-    { op: 'fade', dir: 'in' },
     { op: 'say', speaker: 'BOWER-KEEPER', text: 'There. Kin bright-eyed, boots dry. The Bloom keeps till morning — it always does.' },
   ],
 
@@ -2131,10 +2119,7 @@ export const SCRIPTS: ScriptRegistry = {
   // The vigil-fire rest (the town's full heal — the standing per-region kit).
   'script.cinderhead_rest': [
     { op: 'say', speaker: 'VIGIL COOK', text: "Sit by the vigil-fire, Wayfarer. We keep it low — but we keep it. Warm your kin and your hands both." },
-    { op: 'fade', dir: 'out' },
-    { op: 'wait', ms: 700 },
     { op: 'heal' },
-    { op: 'fade', dir: 'in' },
     { op: 'say', speaker: 'VIGIL COOK', text: "There. Rested and ready. The dark's long — but the fire's longer." },
   ],
 
@@ -2444,10 +2429,7 @@ export const SCRIPTS: ScriptRegistry = {
   // Rest, kit and counter (the standing per-region kit).
   'script.galehigh_inn_rest': [
     { op: 'say', speaker: 'INNKEEP', text: 'In out of the gusts, Wayfarer. The fire\'s banked high and the shutters only rattle in a friendly way.' },
-    { op: 'fade', dir: 'out' },
-    { op: 'wait', ms: 700 },
     { op: 'heal' },
-    { op: 'fade', dir: 'in' },
     { op: 'say', speaker: 'INNKEEP', text: 'There. Kin bright-eyed and boots warm. The mountain will still be there in the morning — it\'s very reliable that way.' },
   ],
   'script.shop_kit_galehigh': [
@@ -2947,10 +2929,7 @@ export const SCRIPTS: ScriptRegistry = {
   // Pale Vault rest + caches (no shop here — the town is deliberately sparse).
   'script.pale_vault_inn_rest': [
     { op: 'say', speaker: 'INNKEEP', text: 'Come in quiet, Wayfarer. The hearth is low but it is LIT, and that is the house\'s whole boast.' },
-    { op: 'fade', dir: 'out' },
-    { op: 'wait', ms: 700 },
     { op: 'heal' },
-    { op: 'fade', dir: 'in' },
     { op: 'say', speaker: 'INNKEEP', text: 'Rested, and your kin with you. The watch keeps the night; you needn\'t.' },
   ],
   'script.pickup_pale_vault_balm': [
@@ -3267,10 +3246,7 @@ export const SCRIPTS: ScriptRegistry = {
   // the Solarium is a ruin, not a town: the matron's hearth IS the inn).
   'script.solarium_rest': [
     { op: 'say', speaker: 'MATRON', text: 'In off the water, pilgrim. The green room keeps a warm corner for every walker the festival washes up — that is what a tiring-house is FOR, whatever the players tell you.' },
-    { op: 'fade', dir: 'out' },
-    { op: 'wait', ms: 700 },
     { op: 'heal' },
-    { op: 'fade', dir: 'in' },
     { op: 'say', speaker: 'MATRON', text: 'There. Kin warm, boots dry, and the stage none the wiser. The warm day keeps a while yet.' },
   ],
 
@@ -3758,10 +3734,7 @@ export const SCRIPTS: ScriptRegistry = {
   // Rest + caches (the standing kit; "The Long Watch" inn).
   'script.nightreach_inn_rest': [
     { op: 'say', speaker: 'INNKEEP', text: 'In quietly, Wayfarer — half my guests sleep by day and watch by night, and the floorboards know which half. The hearth\'s low and the bunks are warm.' },
-    { op: 'fade', dir: 'out' },
-    { op: 'wait', ms: 700 },
     { op: 'heal' },
-    { op: 'fade', dir: 'in' },
     { op: 'say', speaker: 'INNKEEP', text: 'There. Rested, and your kin with you. The watch keeps the sky; you needn\'t — not tonight.' },
   ],
   'script.pickup_nightreach_shard': [
@@ -3856,10 +3829,7 @@ export const SCRIPTS: ScriptRegistry = {
   // opens the counter: the hub is the last shop and bed before the mountain.
   'script.inn_empty_lamps': [
     { op: 'say', speaker: 'INNKEEP', text: 'In you come, Wayfarer — the kettle\'s on and the bunks are warm. This inn has fed every road in Vesperholm at one time or another; the least it can do is feed you.' },
-    { op: 'fade', dir: 'out' },
-    { op: 'wait', ms: 700 },
     { op: 'heal' },
-    { op: 'fade', dir: 'in' },
     { op: 'say', speaker: 'INNKEEP', text: 'There. Rested, the lot of you. ...And since you\'re the sort who finishes things — look up a moment. Four lamp-brackets over my hearth, and all four empty since the night fell.' },
     { op: 'say', speaker: 'INNKEEP', text: 'One for each quadrant\'s festival, they were. The festivals are BACK now — thanks to somebody — and each one presses little wax lamp-tokens for its own. Bring me one from each: south first, the old order. Tide-blessing, Lamp-down, Aurora-watch, Star-vigil. Fill my brackets and I\'ll fill your hand, fair\'s fair.' },
     { op: 'setFlag', flag: 'flag:q_central_tokens' },
@@ -3868,10 +3838,7 @@ export const SCRIPTS: ScriptRegistry = {
   ],
   'script.inn_rest_waiting': [
     { op: 'say', speaker: 'INNKEEP', text: 'Back again! Bunks are yours, same as ever.' },
-    { op: 'fade', dir: 'out' },
-    { op: 'wait', ms: 700 },
     { op: 'heal' },
-    { op: 'fade', dir: 'in' },
     { op: 'say', speaker: 'INNKEEP', text: 'There. Rested, and your kin with you. ...The brackets are still counting, when you\'ve a festival road to walk: south, east, north, west — the old order. The festivals know their own; just ask at the lamp-lit end of each.' },
     { op: 'shop', shop: 'crossroads_inn' },
   ],
@@ -3887,7 +3854,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'giveItem', item: 'radiant_lamp', count: 1 },
     { op: 'say', text: 'Received the RADIANT LAMP!' },
     { op: 'setFlag', flag: 'flag:q_central_tokens_done' },
-    { op: 'heal' },
+    { op: 'heal', sleep: false }, // a courtesy top-up after the ceremony, not a bed
     { op: 'say', speaker: 'INNKEEP', text: 'Bunks and counter are yours whenever, Wayfarer. This hearth doesn\'t forget its lamp-fillers.' },
     { op: 'shop', shop: 'crossroads_inn' },
   ],
@@ -3895,10 +3862,7 @@ export const SCRIPTS: ScriptRegistry = {
   // warm send-off line (humour-sheet: innkeeper's patter; a smile, not a laugh).
   'script.inn_rest_crossroads': [
     { op: 'say', speaker: 'INNKEEP', text: 'In you come — four festivals over the hearth and the kettle never off. Bunks first, talk after.' },
-    { op: 'fade', dir: 'out' },
-    { op: 'wait', ms: 700 },
     { op: 'heal' },
-    { op: 'fade', dir: 'in' },
     { op: 'say', speaker: 'INNKEEP', text: 'There. Rested, and your kin with you. Off up the mountain, is it? Then mind you come back down — I\'ve started keeping your usual bunk free, and an empty bed is TERRIBLE for business.' },
     { op: 'shop', shop: 'crossroads_inn' },
   ],
@@ -4057,10 +4021,7 @@ export const SCRIPTS: ScriptRegistry = {
   'script.spire_wren_camp': [
     { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'resolved', text: 'So this is where the dusk lives. ...It\'s tidier than I expected. Stay close — I didn\'t climb all this way to lose you in the dark.' },
     { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'eager', text: 'I\'ve got the gatehouse brazier going — wick-tender\'s privilege, don\'t tell the management. Sit down a minute. Lamps and kin first; heroics keep.' },
-    { op: 'fade', dir: 'out' },
-    { op: 'wait', ms: 700 },
     { op: 'heal' },
-    { op: 'fade', dir: 'in' },
     { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'resolved', text: 'There. Whatever\'s waiting up there gets both of us at our best. Same road, different lamps — go on. I\'ll keep the fire.' },
   ],
 
@@ -4926,7 +4887,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'battle', trainer: 'vigilant_ondra_summit' },
     { op: 'battle', trainer: 'vigilant_solenne_summit' },
     { op: 'battle', trainer: 'vigilant_mer_summit' },
-    { op: 'heal' },
+    { op: 'heal', sleep: false }, // Fenn's breath between bouts — the summit keeps its music
     { op: 'say', speaker: 'STAR-TENDER FENN', text: 'I\'ll want you at your best. I have waited a very long time to be allowed mine.' },
     // P-1 — Fenn says her name (the third apprentice on the ladder)
     { op: 'action', actor: 'fenn_round', action: 'turnAway', holdMs: 1200 },

@@ -265,6 +265,8 @@
     "ui-toggle-b",
     "world-bump-a",
     "world-bump-b",
+    "world-chart-a",
+    "world-chart-b",
     "world-chest-a",
     "world-chest-b",
     "world-door-a",
@@ -292,6 +294,8 @@
     "world-grass-rustle-b",
     "world-heal-a",
     "world-heal-b",
+    "world-keyitem-a",
+    "world-keyitem-b",
     "world-lantern-light-a",
     "world-lantern-light-b",
     "world-ledge-hop-a",
@@ -301,6 +305,12 @@
     "world-pickup-a",
     "world-pickup-b",
     "world-pickup-c",
+    "world-rest-a",
+    "world-rest-b",
+    "world-splash-a",
+    "world-splash-b",
+    "world-spotted-a",
+    "world-spotted-b",
     "world-stairs-a",
     "world-stairs-b",
     "world-star-gutter-a",
@@ -309,6 +319,8 @@
     "world-transition-b",
     "world-transition-c",
     "world-warp-a",
-    "world-warp-b"
+    "world-warp-b",
+    "world-wicks-a",
+    "world-wicks-b"
   ]
 }

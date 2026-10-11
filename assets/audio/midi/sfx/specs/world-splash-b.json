@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- splash (in/out of the water, lighter)",
+  "_note": "Variant: a shorter, brighter lap -- a quick noise flick and a tiny upward wave bubble. ~0.15 s. Render --tail 0.05 to .wav, then ffmpeg -af volume=-7dB -> .mp3.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C",
+  "tracks": [
+    { "name": "wash",   "voice": "noise", "octave": 5, "gain": 0.35, "notes": "A5~D4s@60" },
+    { "name": "bubble", "voice": "wave",  "octave": 4, "gain": 0.4,  "notes": "rs C4~G4s@60" }
+  ]
+}

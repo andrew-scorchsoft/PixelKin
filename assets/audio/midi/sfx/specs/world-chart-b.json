@@ -1,0 +1,14 @@
+{
+  "title": "SFX -- new chart (unfurl, open fifth)",
+  "_note": "Variant: the swish then an open-fifth bell over a soft pluck -- a horizon opening. ~0.6 s. Render --tail 0.35 to .wav, then ffmpeg -af volume=-5dB -> .mp3.",
+  "era": "sfx",
+  "tempo": 180,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C",
+  "tracks": [
+    { "name": "swish", "voice": "noise", "octave": 4, "gain": 0.3,  "notes": "D4~A5e@58" },
+    { "name": "bell",  "voice": "bell",  "octave": 6, "gain": 0.5,  "notes": "re C6s@70 G6e@68" },
+    { "name": "pluck", "voice": "pluck", "octave": 5, "gain": 0.45, "notes": "re rs C5e@66" }
+  ]
+}

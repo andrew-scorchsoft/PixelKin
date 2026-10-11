@@ -1,0 +1,42 @@
+{
+  "title": "SFX -- world rest (goodnight lullaby, music-box)",
+  "_note": "The rest/sleep jingle the heal op plays over a black screen at every rest point (inns, the apprentice's bed, hearths). A tender two-bar statement of the Vesper contour (G-C-D lift ... E-D-C settle) on a music-box bell over a pluck harp, a soft pad and a hearth bass; the plagal C-F-C turn is the 'goodnight'. C major, Tinderwick's key. ~3.9 s incl. ring-out. Render --tail 0.6 to .wav, then encode to .mp3 untrimmed (it plays over silence).",
+  "era": "snes",
+  "tempo": 96,
+  "time_signature": [
+    5,
+    4
+  ],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "musicbox",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.8,
+      "notes": "G4e@84 C5e@88 D5q@92 | E5e@90 D5e@84 C5h@80"
+    },
+    {
+      "name": "harp",
+      "voice": "pluck",
+      "octave": 3,
+      "gain": 0.55,
+      "notes": "C3e@70 G3e@64 F3e@68 C4e@62 | E3e@66 B3e@60 C4h@64"
+    },
+    {
+      "name": "pad",
+      "voice": "pad",
+      "octave": 3,
+      "gain": 0.35,
+      "notes": "C3+E3+G3q@56 F3+A3+C4q@56 | E3+G3+C4e@54 G3+B3+D4e@52 C3+E3+G3h@50"
+    },
+    {
+      "name": "hearth",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.5,
+      "notes": "C2q@64 F2q@62 | E2e@60 G2e@58 C2h@58"
+    }
+  ]
+}

@@ -189,7 +189,12 @@ type CutsceneStepBase =
   // Fully restore the party (inn rest, hearthside kindness). Unless `rest:false`,
   // it also banks this spot as your blackout wake-point — every rest point in the
   // game is somewhere you'd want to come round (set rest:false for a mid-story heal).
-  | { op: 'heal'; rest?: boolean }
+  // A rest heal also SLEEPS: the runner fades music + screen to black, plays the
+  // goodnight lullaby (`world-rest-a`), heals, then brings the map's music and
+  // the light back — so a rest script needs no fade/wait steps of its own.
+  // `sleep` overrides: default = `rest`; `sleep:false` keeps a rest point's quick
+  // chime (a mid-climb top-up, a ceremony's courtesy heal).
+  | { op: 'heal'; rest?: boolean; sleep?: boolean }
   | { op: 'gleam'; element: string } // diegetic Gleam cue (relight the sky)
   | { op: 'giveMoney'; amount: number } // hand the player wicks (quest rewards, finds)
   // Take `amount` wicks IF the purse holds that many, and set `flag` to mark the

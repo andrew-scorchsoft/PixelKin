@@ -16,6 +16,14 @@ import sfxManifest from '../../../../public/assets/audio/sfx/sfx.manifest.json';
 
 const SFX_DIR = 'assets/audio/sfx/';
 
+/** Two requests for the same cue inside this window play once: a script's own
+ *  `sfx world-pickup` beside the `giveItem` that voices itself used to stack two
+ *  random variants on one frame (a flammed, doubled-loud chirp). */
+const DEDUPE_MS = 90;
+/** Cues that are MEANT to fire faster than that (the per-character text tick). */
+const NO_DEDUPE = new Set(['ui-text-blip']);
+const lastPlayed = new Map<string, number>();
+
 /** All rendered SFX stems (filenames without extension). */
 const STEMS = new Set<string>((sfxManifest as { stems: string[] }).stems);
 
@@ -62,13 +70,50 @@ export class Sfx {
 
   /** Play a single named effect (base key, no extension). Picks a variant if needed. */
   async play(key: string): Promise<void> {
+    await this.start(key);
+  }
+
+  /**
+   * Play an effect and resolve when it has finished (or straight away if it is
+   * silent, missing or muted) — for a jingle a beat must wait on, like the rest
+   * lullaby over the black screen. `maxMs` caps the wait in case the backend never
+   * reports completion.
+   */
+  async playToEnd(key: string, maxMs = 6000): Promise<void> {
+    const sound = await this.start(key);
+    if (!sound) return;
+    await new Promise<void>((resolve) => {
+      let done = false;
+      const finish = (): void => {
+        if (done) return;
+        done = true;
+        resolve();
+      };
+      sound.once(Phaser.Sound.Events.COMPLETE, finish);
+      sound.once(Phaser.Sound.Events.DESTROY, finish);
+      this.scene.time.delayedCall(maxMs, finish);
+    });
+  }
+
+  /** Resolve, load and start one effect; the playing sound, or null if silent. */
+  private async start(key: string): Promise<Phaser.Sound.BaseSound | null> {
     const gain = sfxMasterGain();
-    if (gain <= 0) return; // OFF: true silence, skip the one-shot entirely
+    if (gain <= 0) return null; // OFF: true silence, skip the one-shot entirely
+    const now = Date.now();
+    // Dedupe on the BASE cue, so play('x') and playVariant('x', …) count as one.
+    const base = /-[a-z]$/.test(key) && VARIANTS.has(key.slice(0, -2)) ? key.slice(0, -2) : key;
+    if (!NO_DEDUPE.has(base) && now - (lastPlayed.get(base) ?? -Infinity) < DEDUPE_MS) return null;
     const stem = this.resolveStem(key);
-    if (!stem) return; // not a rendered effect — stay silent rather than 404
+    if (!stem) return null; // not a rendered effect — stay silent rather than 404
+    lastPlayed.set(base, now);
     const ok = await loadAudio(this.scene, stem, `${SFX_DIR}${stem}.mp3`);
-    if (!ok) return;
-    this.scene.sound.play(stem, { volume: this.volume * gain });
+    if (!ok) return null;
+    // add + play (not sound.play) so the caller can wait on this instance; Phaser
+    // frees it on completion.
+    const sound = this.scene.sound.add(stem, { volume: this.volume * gain });
+    sound.once(Phaser.Sound.Events.COMPLETE, () => sound.destroy());
+    sound.play();
+    return sound;
   }
 
   /**

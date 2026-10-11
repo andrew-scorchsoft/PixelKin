@@ -17,6 +17,7 @@ import { fadeIn, fadeOut, flash, flashColor, shake, tint, letterbox, clearCinema
 import { hex } from '@game/ui/theme';
 import { getDialogue } from '@game/content/dialogue';
 import { getScript } from '@game/content/scripts';
+import { getItem } from '@game/content/items';
 import type { FlagStore } from '@game/systems/flags/FlagStore';
 import type { Sfx } from '@game/systems/audio/Sfx';
 import type { MusicDirector } from '@game/systems/audio/MusicDirector';
@@ -67,6 +68,9 @@ export interface CutsceneContext {
   /** Fully restore the party (the inn-rest / hearthside-heal op). `rest` (default
    *  true) also banks the spot as the blackout wake-point. */
   onHealParty?(rest: boolean): void;
+  /** Bring the map's own bed back after a sleep-heal faded it out (WorldScene's
+   *  playMapMusic: crossfade/resume to whatever this map plays now). */
+  resumeMapMusic?(): void;
   /** Hand the player wicks (quest rewards, found purses). */
   onGiveMoney?(amount: number): void;
   /** Take `amount` wicks if the purse holds them; true when paid (the `pay` op). */
@@ -93,6 +97,23 @@ export interface CutsceneContext {
 }
 
 const MUSIC_URL = (key: string): string => `assets/audio/music/${key}.mp3`;
+
+/**
+ * The sleep-heal (`heal` at a rest point): bed + screen fade together, the
+ * goodnight lullaby plays over the black (held at least SLEEP_MIN_HOLD_MS even
+ * if audio is muted/missing, so the night still passes), a short wake beat, then
+ * the map's music and the light come back. `world-rest-a` is pinned (one
+ * recognisable lullaby, like the genre's); `-b` is the audition alternative.
+ */
+const REST_JINGLE = 'world-rest-a';
+const SLEEP_FADE_MS = 600;
+const SLEEP_MIN_HOLD_MS = 2200;
+const SLEEP_WAKE_BEAT_MS = 250;
+
+/** The get-cue for a granted item: a KEY item earns the small jingle, the rest chirp. */
+function itemGetCue(item: string): string {
+  return getItem(item)?.category === 'key' ? 'world-keyitem' : 'world-pickup';
+}
 
 function delay(scene: Phaser.Scene, ms: number): Promise<void> {
   return new Promise((resolve) => scene.time.delayedCall(ms, () => resolve()));
@@ -292,6 +313,8 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       return true;
     }
     case 'emote': {
+      // The '!' bubble is the eye-contact beat — give it its little sting.
+      if (step.emote === 'alert') void ctx.sfx.play('world-spotted');
       await ctx.getActor(step.actor)?.showEmote(step.emote, step.holdMs);
       return true;
     }
@@ -320,14 +343,14 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
     }
     case 'giveItem':
       ctx.onGiveItem(step.item, step.count ?? 1);
-      void ctx.sfx.play('world-pickup');
+      void ctx.sfx.play(itemGetCue(step.item));
       return true;
     case 'ensureItem': {
       // Safety net for must-have set-piece items: grant only when the player
       // holds none (a spent Starlamp must not strand the Keylumen asking).
       if (ctx.hasItem?.(step.item)) return true;
       ctx.onGiveItem(step.item, step.count ?? 1);
-      void ctx.sfx.play('world-pickup');
+      void ctx.sfx.play(itemGetCue(step.item));
       if (step.text) await new DialogueBox(scene, ctx.sfx).run([{ text: step.text, style: 'narrate' }]);
       return true;
     }
@@ -432,20 +455,35 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       });
       return outcome === 'koed';
     }
-    case 'heal':
-      ctx.onHealParty?.(step.rest !== false);
+    case 'heal': {
+      const rest = step.rest !== false;
+      // A rest point SLEEPS by default: the bed fades out with the screen, the
+      // goodnight lullaby plays over the black, and the map's music comes back
+      // with the light. `rest:false` (a mid-story kindness) or `sleep:false` (a
+      // rest point that isn't a bed — a mid-climb top-up) keep the quick chime.
+      if (step.sleep ?? rest) {
+        await Promise.all([ctx.music.fadeToSilence(SLEEP_FADE_MS), fadeOut(scene, SLEEP_FADE_MS)]);
+        ctx.onHealParty?.(rest);
+        await Promise.all([ctx.sfx.playToEnd(REST_JINGLE), delay(scene, SLEEP_MIN_HOLD_MS)]);
+        await delay(scene, SLEEP_WAKE_BEAT_MS);
+        ctx.resumeMapMusic?.();
+        await fadeIn(scene, SLEEP_FADE_MS);
+        return true;
+      }
+      ctx.onHealParty?.(rest);
       void ctx.sfx.playVariant('world-heal', ['a', 'b']);
       return true;
+    }
     case 'giveMoney':
       ctx.onGiveMoney?.(step.amount);
-      void ctx.sfx.playVariant('world-pickup', ['a', 'b', 'c']);
+      void ctx.sfx.play('world-wicks');
       return true;
     case 'pay':
       // Paid → set the flag the script branches on; short → nothing happens.
       if (ctx.onPay?.(step.amount)) {
         ctx.flags.set(step.flag, true);
         ctx.onFlagSet?.();
-        void ctx.sfx.playVariant('world-pickup', ['a', 'b', 'c']);
+        void ctx.sfx.play('world-wicks');
       }
       return true;
     case 'shop':
@@ -493,10 +531,27 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
  *  false aborts. The pair lets a script express "exactly one of these" — hold
  *  this stage's flag, but not the next one's — which is how the wayfinding
  *  hints name a single current objective. */
+/** Whether a step's own guards let it play right now. */
+function stepRuns(ctx: CutsceneContext, step: CutsceneStep): boolean {
+  if (step.if_flag && !ctx.flags.get(step.if_flag)) return false;
+  if (step.unless_flag && ctx.flags.get(step.unless_flag)) return false;
+  return true;
+}
+
+/** Ops that voice their own get-cue (pickup chirp / key-item jingle / wicks). */
+const SELF_VOICED = new Set<CutsceneStep['op']>(['giveItem', 'ensureItem', 'giveMoney']);
+
 async function runSteps(ctx: CutsceneContext, steps: CutsceneStep[]): Promise<boolean> {
-  for (const step of steps) {
-    if (step.if_flag && !ctx.flags.get(step.if_flag)) continue;
-    if (step.unless_flag && ctx.flags.get(step.unless_flag)) continue;
+  for (let i = 0; i < steps.length; i++) {
+    const step = steps[i];
+    if (!stepRuns(ctx, step)) continue;
+    // Many pickup scripts open with an explicit `sfx world-pickup` before the
+    // grant; the grant now picks its own cue (a key item's jingle, the wicks
+    // tuck), so let it speak alone rather than layering a chirp under it.
+    const next = steps[i + 1];
+    if (step.op === 'sfx' && step.key === 'world-pickup' && next && SELF_VOICED.has(next.op) && stepRuns(ctx, next)) {
+      continue;
+    }
     if (!(await runStep(ctx, step))) return false;
   }
   return true;

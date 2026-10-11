@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- new chart (unfurl)",
+  "_note": "A Wayfarer's Chart is discovered (first steps into a new place): a soft paper swish up into two quiet music-box notes -- curiosity, not triumph (world-gleam is reserved for the Gleams and Gifts). ~0.6 s. Render --tail 0.35 to .wav, then ffmpeg -af volume=-5dB -> .mp3.",
+  "era": "sfx",
+  "tempo": 180,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "G",
+  "tracks": [
+    { "name": "swish", "voice": "noise", "octave": 4, "gain": 0.3,  "notes": "C4~G5e@60" },
+    { "name": "note",  "voice": "bell",  "octave": 6, "gain": 0.55, "notes": "re D6s@74 G6e@70" }
+  ]
+}

@@ -164,6 +164,41 @@ character · a recipe sketch*. Voices in **`sfx`** era unless noted; all
   (`G→C→D … E→D→C`). `pulse25 G4s C5s D5s G5s C6e` + `bell C6h+E6h` ·
   `--tail 0.7`. *Allowed to be ~1 s.*
 
+- **world-rest** — **sleeping at a rest point** (inns, the apprentice's bed, hearths,
+  camps — every `heal` op that is a rest). Not a blip: a **2-bar goodnight lullaby**
+  (~3.8 s) the runner plays over a black screen while the map music is faded out.
+  `-a` (the pinned one): the Vesper contour on a music-box `bell` over a `pluck`
+  harp, soft `pad` and `tri_bass`, C major with a plagal C–F–C "goodnight" turn,
+  `era: "snes"` for the warm room. `-b`: a 3/4 A-minor→C waltz alternative.
+  `--tail 0.6`, untrimmed (it plays over silence). **Built.**
+- **world-spotted** — a sight trainer's eye-contact **"!"** (and every cutscene
+  `emote: 'alert'`). A quick perk-up hop, alert not alarming. `pulse25 D5s A5e` +
+  `pulse12` glint · `--tail 0.04`, −4 dB. **Built.**
+- **world-wicks** — **wicks change hands** (shop buy/sell, `giveMoney`, `pay`). A
+  soft `pluck` + small `bell` tuck, smaller and warmer than the pickup chirp ·
+  `--tail 0.12`, −4 dB. **Built.**
+- **world-keyitem** — receiving a **key item** (`category: 'key'`; common items
+  keep `world-pickup`). The chirp grown into a small "da-da-DAA" with a bell
+  landing on the tonic, ~1 s — bigger than a pickup, far smaller than a Gleam ·
+  `--tail 0.35`, −3 dB. **Built.**
+- **world-chart** — a **Wayfarer's Chart** is discovered: a soft `noise` paper
+  swish into two quiet `bell` notes — curiosity, not triumph (`world-gleam` stays
+  reserved for Gleams and Lantern Gifts) · `--tail 0.35`, −5 dB. **Built.**
+- **world-splash** — the lamp carries you onto / off **open water** (the swim
+  switch, free steps only). Falling `noise` wash + a hollow `wave` plop ·
+  `--tail 0.05`, −7 dB. **Built.**
+
+> **Trims.** The renderer peaks every cue near −2 dBFS; the newer gentle cues are
+> rendered to `.wav` and dropped by the dB noted above before the mp3 encode
+> (`ffmpeg -af volume=<n>dB`), the same move as `world-grass-rustle`. Each spec's
+> `_note` records its tail + trim so a re-render reproduces it.
+>
+> **Wiring notes.** `world-stairs` now plays on floor-to-floor warps
+> (`up_stairs`/`down_stairs`/`stair_*`/`ladder_*`/`shaft_*` ids — `STAIR_WARP_ID`
+> in `WorldScene`); `ui-menu-open` voices the pause menu opening. `Sfx` plays a
+> repeated base cue only once inside 90 ms (except `ui-text-blip`), so a script's
+> `sfx world-pickup` beside a grant no longer doubles up.
+
 ### C · Battle (core, type-agnostic)
 - **battle-encounter** — wild battle starts. A rising tension **swoosh/sting**
   (noise up-glide + a pulse stab). `noise C3~C5e` + `pulse25 G3s C4s`.
