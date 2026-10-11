@@ -32,7 +32,7 @@ def _swap(mid: str, nid: str, **changes) -> dict:
 
 # ---- the ambience register, by place --------------------------------------------------
 # The falls are DENSEST at the Ring (min_s 20, the engine's clamp): every fall
-# lands nearer the mountain (story-bible §12). After flag:dawn the engine warms
+# lands nearer the mountain (story-bible §11). After flag:dawn the engine warms
 # every streak to gold automatically.
 SPIRE_AIR = {
     "particles": [particles("glowmotes", 0.45), particles("dust", 0.3)],

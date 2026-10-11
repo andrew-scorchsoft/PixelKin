@@ -153,9 +153,9 @@ trio, `flag:q_round_chart_taken` → `flag:q_round_chart`) landed with the W5 wi
 | Area | map id(s) | Status | Builder |
 |------|-----------|--------|---------|
 | Vesper Crossroads — endgame stages (C4 Fenn counsel · A5 Wren-joins band w/ the Starlamp · C1 Lampling's Trail · C2 inn + `crossroads_inn` counter · C3 Long Round · "now accessible" sign swap) | `vesper_crossroads` | ✅ | `build_crossroads.py` |
-| Penumbra Ring (the last dark, Starreach crossings; threshold band, two reads, two priced pockets) | `penumbra_ring` | ✅ | `build_penumbra_ring.py` |
-| Starwell (landmark — **Lunaveil #132** lv 54 `legendaryBattle`, cooldown 12) | `starwell` | ✅ | `build_starwell.py` |
-| Umbral Spire (4 floors: gatehouse → null-works → high gallery → summit; 5 acolyte keepers lv52–55 · Wren per-floor · the shaft compressor) | `umbral_spire` + `_f2`/`_f3`/`_summit` | ✅ | `build_umbral_spire.py` |
+| Penumbra Ring (the last dark, Starreach crossings; threshold band, two reads, two priced pockets; **2026-10:** eight memorial lamps + the gone-quiet camp + the forecourt sweeper, near-void ambience, densest starfall) | `penumbra_ring` | ✅ | `build_penumbra_ring.py` |
+| Starwell (landmark — **Lunaveil #132** lv 54 `legendaryBattle`, cooldown 12; **2026-10:** watchers' lamps, drift, star-motes) | `starwell` | ✅ | `build_starwell.py` |
+| Umbral Spire (4 floors: gatehouse → null-works → high gallery → summit; 5 acolyte keepers lv52–55 · Wren per-floor · the shaft compressor; **2026-10:** f3's **Cinder Hoard** room (C-1, glows at the relight), Hollowing cast sheets, glowmote ambience, summit staging NPCs `fenn_dawn`/`fenn_round`) | `umbral_spire` + `_f2`/`_f3`/`_summit` | ✅ | `build_umbral_spire.py` (`--only f3`) |
 
 **C3 WIRING ✅ (2026-06):** every ref the Central maps place resolves — the summit chain
 (`script.great_null` → **`script.warden_cor_final`** (ace 56, 6,720w, out-remembered not
@@ -231,8 +231,10 @@ four seats), P2 A Wick for Còr (beacon-top cache → lamp deco swap), P3 Day-fo
 (boolean-chain fallback — no party-check op). **Owed:** the Waykeeper's "all ten delivered"
 thanks (needs the quest-counter extension); `wren_rematch`/dawnstead mirrors into
 `progression.mjs` + `EXTRA_ENCOUNTERS` (lands with R3's economy/species pass).
+**2026-10 (Central package):** regional cast (market_trader / village_child / star_watcher / innkeeper; Maudie a road_courier), warm-mote + gold-tint ambience; P-1 — Còr's woken cinder and Senna's name in `cor_resolution`.
 
 ### R3 — The Starfall Vigils ✅ DONE (2026-06)
+**2026-10 (Central package):** the five vigil annexes dressed with their host regions' prop kits + keeper camps (`tools/maps/vigil_dress.py`; hearth/storm FAIL 0.69 props/screen → 3+), keepers in regional cast sheets, per-element ambience; Fenn names Senna before the Last Lesson.
 Full spec: [`06-postgame.md`](./06-postgame.md) §Starfall Vigils (written 2026-06, panel-grade):
 5 escalating trial sites (lv 58→70, first full 6-kin smart-AI battles) opened by riddle
 star-readings from the Nightreach junior watcher (Oriel), one-per-game rewards, and the

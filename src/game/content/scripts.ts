@@ -4413,7 +4413,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'tint', color: '#ffd98a', alpha: 0.14, ms: 1100 },
     { op: 'narrate', text: 'He tends the flame.' },
     { op: 'say', speaker: 'WARDEN CÒR', portrait: 'cor', expr: 'at_peace', text: 'It will fall again, you know. The night. I find I no longer mind. I\'ll be here to light it.' },
-    // P-1 — the cinder wakes; the name is said (X-1's last dose; story-bible §12)
+    // P-1 — the cinder wakes; the name is said (X-1's last dose; story-bible §11)
     { op: 'wait', ms: 900 },
     { op: 'narrate', text: 'Beside his lamp sits a stone no bigger than a plum, glowing gold through every crack.' },
     { op: 'say', speaker: 'WARDEN CÒR', portrait: 'cor', expr: 'at_peace', text: 'Our star. Hers, and Fenn\'s, and mine. It came down the winter Senna went. I carried it twenty years, cold. This morning it woke in my pocket.' },

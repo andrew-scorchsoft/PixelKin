@@ -240,6 +240,11 @@ whole story rather than a gimmick:
   keeps crossing your path; their arc is wrestling with whether the Hollowing have a point.
 - **The eight Lampwardens** — §4.
 - **Warden Còr & the Hollowing** — §7.
+- **Senna** — the third apprentice on the Ninth Lantern's ladder, forty years ago, with
+  Fenn and Còr. She filled the **Starlamp** "for the night we'll need it" while the two
+  boys laughed, kept the Ninth Lantern for twenty years, and died the winter it failed.
+  She is never seen and never on screen; she is the loss the whole story is shaped
+  around. Her name is **withheld until after the dawn** (§11, the Senna doses).
 
 > Starter kin and the full dex are **downstream** of this bible — note that the two existing
 > sample kin (`vulpyre` Fire, `brinix` Water) fit cleanly as early Ember / Tide kin.
@@ -263,7 +268,89 @@ whole story rather than a gimmick:
 
 ---
 
-## 11. Originality audit (per `VISION.md`)
+## 11. The cinder law: what a falling star *is* (canon, 2026-10)
+
+The falling stars are the game's dark through-line, the cold rhyme to the lanterns'
+warm one. Everything about them follows from five rules. Writers and map-makers
+should treat them as physics.
+
+1. **Every star has a kin carrying its spark.** The Skyweave is not folklore.
+   Each star is anchored to a gleaming kin on the ground (§2).
+2. **Sleeping kin starve their stars.** When the Hollowing put a luminous kin to
+   sleep in a null-lantern, its star stops being fed. Nobody is harmed and nothing
+   is broken, but the star begins, slowly, to go hungry. This is the Hollowing's
+   culpability: **indirect, gentle and real**. They never meant to hurt a star.
+3. **A starved star gutters, and sometimes its last cinder falls.** It comes
+   down cold and dark, with only a blue-grey glow in its cracks, but hot enough
+   on the way down to scorch what it strikes (the orchard crater, the Hushfrost
+   crater). Folk call it a once-in-a-lifetime thing. The old ones know it isn't.
+4. **Guttered light falls home to the Keystar.** The Keystar is the anchor
+   every constellation was first lit from, and spent light is drawn back to it.
+   As the Keystar weakens, its pull draws the falls in closer, so the falls
+   spiral inwards: **every fall lands nearer the mountain.** (The Pass-walker's
+   map plots the spiral; the Ledger's FELL column counts it.)
+5. **A cinder is never dead, only guttered.** Light it again and it wakes.
+
+**Còr and the cinders.** Còr cannot bear waste. After every fall he walks out,
+however far, and **fetches the cinder home**. He keeps them in a swept room high
+in the Spire, rows of them on clean linen, each with a paper tag in his careful
+hand: **the Cinder Hoard** (`umbral_spire_f3`, R5), kept "like a swept
+churchyard". His null-lanterns each hold a chip of one: "not fuel; company".
+The **first cinder he ever carried** fell the winter Senna died. It was the star
+the three apprentices named together. He has kept that one in his pocket for
+twenty years and never in the hoard. It is "the same thing, in the same season"
+that Fenn won't name.
+
+**What they turn out to be.** At the Keystar relight, every cinder in the hoard
+glows (`script.keystar_relight`). At `flag:dawn` the world's cinders wake into
+star-shards (08, built), and the one in Còr's pocket wakes gold (P-1,
+`cutscene.cor_resolution`). The post-game **Starfall** is the woken sky shedding
+*warm* shards. The Dusk's falls and the dawn's falls are the same matter,
+forgiven. A **Starglass Shard** (the valuable) is a warm fall from long before
+the Dusk. The **Starwell** is the one fall that never went cold; nobody knows
+why, and the Hollowing never touched it.
+
+**The escalation (one fall per region, binding on new content).** The motif
+must get worse, monotonically, until the player turns it back: it is *told*
+(cold open), then *seen after* (the orchard crater), *seen held* (Còr carries a
+cinder at the Pale Vault), *seen falling* (a live fall over the Kite-rising),
+*seen counted* (the Ledger's FELL column), *seen kept* (the Cinder Hoard) and
+finally *seen waking* (the relight, the dawn). The per-region table and its
+build owners live in [`walkthrough/08-the-peril-thread.md`](./walkthrough/08-the-peril-thread.md) §6.
+
+**The Senna doses.** Her story is paid out in four small doses, never as an
+exposition dump. (1) North: Fenn admits *"there were three of us on that
+ladder"*. (2) West: Nessa asks about *"the third ladder"*. (3) The summit: Còr
+recognises the Starlamp's brass (*"She filled it the winter we were
+apprentices"*), unnamed. (4) After the dawn, her name, said once by Còr and
+once by Fenn.
+
+---
+
+## 12. Dates: the timeline sheet (canon, 2026-10)
+
+All counts are **before the Wayfaring** (the player's present). Lines that give a
+number must agree with this sheet.
+
+| When | What | Who says it |
+|---|---|---|
+| ~40 years ago | Fenn, Còr and Senna are apprentices on the Ninth Lantern's ladder. Senna fills the **Starlamp**; Fenn carries it from then on ("forty years he kept it"). The **Sunken Solarium floods** ("the winter the water rose") and its stage goes dark: a private night decades older than the Dusk, which is why the Solarium alone counts *forty* years of dark. | Fenn, Còr, Lucan, the Solarium troupe |
+| 40 → 20 years ago | Senna keeps the Ninth Lantern. | Còr (*"She kept the Ninth Lantern twenty years"*) |
+| ~20 years ago | **The Ninth Lantern fails.** Senna dies that winter (remembered, never shown). The apprentices' star gutters and its cinder falls, the first Còr carries. Còr begins "twenty years of careful forgetting". | Còr (*"first time in twenty years I have let myself look"*) |
+| 20 → 11 years ago | Scattered falls and dimmings (*"it has happened before, in scattered places"*). Còr's grief becomes a philosophy, and the Hollowing gather. | the Bible §3 |
+| **11 winters ago** | **The Long Dusk proper:** night falls and won't lift. Reyl's Tam rows out into the fog; the Ledger's one column begins. | Reyl, the Ledger-keeper, Punchwheel |
+| 2 years ago | Scaffolding for the Great Null goes up on the summit. | Nessa, Còr (*"Two years I told myself…"*) |
+| this season | The Wayfaring. The falls quicken (*"third one this season"*). | the old lamplighter |
+
+Personal careers (Fenn's field-glass, a Waykeeper's forty years of trimming, a
+watcher's thirty years at the eyepiece) are lifetimes, not Dusk-counts, and may
+use any number. A line that says the **Dusk** or the **dark sky** has lasted
+longer than eleven winters is wrong, except in the Solarium, where the flood
+made the dark older.
+
+---
+
+## 13. Originality audit (per `VISION.md`)
 
 Checked against the non-negotiable rules in [`../../VISION.md`](../../VISION.md):
 

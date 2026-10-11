@@ -523,6 +523,12 @@ purpose *just before the end*.
 
 ---
 
+> **2026-10 (world-craft, Central package):** the Unrisen Stair's two water bands lost their
+> ruler-drawn edges (drowned bights on their south shores; the north lips, vine columns and every
+> trigger untouched) and its gold took a denser bloom drift; all three sites carry per-register
+> ambience (Tideglass: glowmotes + spray, ambience only — pre-Chickenpig; Hourfold: snow + glints;
+> the Stair: sun-motes).
+
 ## 7. Withdrawal — the cooldowns and the resting lines
 
 The cost of a miss is **battles WON**, not time — the player goes back out into the world

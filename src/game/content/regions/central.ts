@@ -5,8 +5,8 @@
  * tools/maps/worldcraft/central.py (run through tools/maps/add_world_craft.py) or
  * the region's builders (build_penumbra_ring.py, build_umbral_spire.py).
  *
- * Story canon these lines rest on: docs/world/story-bible.md §12 (the cinder law)
- * and §13 (the dates). Register: cosy-melancholy, zero humour at the Spire, the
+ * Story canon these lines rest on: docs/world/story-bible.md §11 (the cinder law)
+ * and §12 (the dates). Register: cosy-melancholy, zero humour at the Spire, the
  * Hollowing gentle and half-right, Còr never gloated over.
  */
 import type { CutsceneStep, DialogueRegistry, ScriptRegistry } from '../types';
@@ -68,7 +68,7 @@ export const CENTRAL_SCRIPTS: ScriptRegistry = {
   'script.penumbra_forecourt_sweeper': dawnPair(
     'GREY-ROBED SWEEPER',
     'Mind the row, please. I sweep it every dusk. The Warden says untidiness is only grief that has given up. ...He sweeps the high rooms himself. He will not let anyone else.',
-    "I came out to sweep and there was nothing to sweep it into. No dusk. I've been standing here with the broom for an hour, watching the light on the stone.",
+    "I came out at dusk to sweep, and there was no dusk. I've been standing here with the broom for an hour, watching the light on the stone.",
   ),
 };
 

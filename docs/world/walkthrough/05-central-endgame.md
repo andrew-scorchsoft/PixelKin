@@ -303,6 +303,11 @@ for the Waykeeper (west; the Round comes home). Tag every leg `[wakes with spoke
 - **No other content resides on the Ring** — no kin, no items beyond Starwell's reward (it's a
   barrier, not an explorable zone). Keep the backtrack web honest: the only optional node here is
   Starwell.
+- **2026-10 (world-craft):** the Ring is no longer empty of people. The gone-quiet from the marsh
+  villages camp on the east field round **eight memorial lamps** they set for the eight relit
+  constellations (element flames, a plaque per Lampwarden: an earned recap before the climax),
+  and a grey-robed sweeper keeps the forecourt's tended row. All dawn-staged colour; no gate, no
+  heal (the "no rest past the Crossroads" rule stands; the Spire f1 fire is the climb's rest).
 
 ### 5. Don't-miss callouts
 
@@ -410,6 +415,11 @@ subsection below so they read as one piece. This section covers the ascent's sup
   Starreach payoffs (**Starwell**, **Crystoll Vault**) live *outside* it and are flagged under the
   Penumbra Ring / Crossroads sections. Anything optional here is small flavour (a hidden item on a
   side landing — **[MISSABLE]** — reachable with the Gifts already held).
+- **The Cinder Hoard (2026-10, story panel C-1)** — f3's room R5, the first doorway off the arrival
+  room: where Còr keeps every cinder he has fetched home, on swept linen and shelves, each tagged in
+  his hand; a cot; a lamp he will not light. A once-only doorway beat (`cutscene.cinder_hoard`) and
+  a read on every piece. At the relight every cold stone swaps to its glowing twin
+  (`flag:keystar_relit`), and `script.keystar_relight` says so. Canon: story-bible §11.
 - **Keylumen** is **not** optional — it is the climax catch/relight (sets `flag:keystar_relit`),
   so it's main-path, not a tagged optional.
 
@@ -494,9 +504,13 @@ subsection below so they read as one piece. This section covers the ascent's sup
 > - Còr, as the Keystar wakes: *"...You're not arguing with me. You're *remembering* at me. All of
 >   it — every lamp, every name, every small goodbye you'd have me erase. ...I had forgotten it was
 >   worth the ache."*
-> - The resolution beat: *"The night breaks. Not into a victory — into a morning. Dusk will come
->   again, and that is the whole of it: the dawn is worth the dark precisely because we can lose
->   it."*
+> - The resolution beat now lives in the credits panel (*"not in a victory — in a morning"*);
+>   `dawn_breaks` ends on an image instead (C-2): *"Behind you, the Great Null stands silent in the
+>   first light — and deep in its cold housing, where he packed the fallen ones close, something
+>   answers the sun."*
+> - **Senna (X-1, the summit dose):** after the Keystar catches, Còr knows the Starlamp's brass —
+>   *"She filled it the winter we were apprentices"* — and *"counting its hours and calling it
+>   hope"* turns from argument into memory. Unnamed until after the dawn.
 > - Fenn, offering Còr a place again: *"You read the same sky I did, old friend. There's still a
 >   lamp lit for you. ...Come down and tend it with me."*
 

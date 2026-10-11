@@ -153,12 +153,21 @@ show the Hollowing *weaker* than an earlier region.
 | B4 Full scale | West | Coldfog Marches (the drained land) + Hollowfen Stillworks (the null-works set-piece); the **Great Null** aimed at the **Keystar** is named (`great_null_known`) |
 | B5 Climax | Umbral Spire | Confront the Great Null; relight the Keystar; resolve by *out-remembering*, not force |
 
+**The falling stars ride Arc B (2026-10).** The Hollowing's sleeping kin starve the stars;
+starved stars drop cold cinders, nearer the mountain each time; Còr fetches them home to the
+**Cinder Hoard**, and at the relight they all glow. The law and the per-region escalation are
+binding: [`../story-bible.md`](../story-bible.md) §11 and [`08-the-peril-thread.md`](./08-the-peril-thread.md) §6.
+
 ### Arc C — Star-tender Fenn (the mentor) & the shared past *(canon extension — see §8)*
 Fenn (reuse/rename the `professor_fenn` sprite) gifts the lamp and starter, then recurs at
 milestones to explain the **Skyweave** and the celestial calendar, and to hand over better
 Lamps/key items. **Canon extension locked here:** Fenn and Còr were once fellow star-tenders
 — two answers to the same loss (Fenn's quiet hope, Còr's grief). This gives the climax its
 weight and a reason Fenn understands Còr.
+The loss has a name: **Senna**, the third apprentice on the ladder, who filled the Starlamp
+forty years ago and died the winter the Ninth Lantern failed, twenty years ago. She is paid out
+in four doses (North → West → the summit → after the dawn, when her name is finally said);
+dates in [`../story-bible.md`](../story-bible.md) §12.
 
 | Beat | Area |
 |------|------|

@@ -618,7 +618,7 @@ def build_f3() -> dict:
 
 def cinder_hoard(m: dict) -> None:
     """R5 — THE CINDER HOARD (docs/reviews/story-depth-panel.md C-1; story-bible
-    §12 the cinder law). The room Còr keeps every fallen cinder he has fetched
+    §11 the cinder law). The room Còr keeps every fallen cinder he has fetched
     home: rows of cold stones on swept linen and shelves, each with a paper tag
     in a careful hand; a cot; a lamp kept unlit; the broom by the door. It sits
     straight off F3's arrival room (the first doorway you see on the floor), a
