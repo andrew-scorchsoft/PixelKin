@@ -174,7 +174,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/sounding_cave.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'cave',
-    music: 'assets/audio/music/lowleaf-hollow-c.mp3',
+    music: 'assets/audio/music/dimglass-coast-c.mp3',
   },
   lanternfall_road: {
     json: 'assets/maps/lanternfall_road.json',
@@ -188,7 +188,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/pearlmoor_breakwater.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'route',
-    music: 'assets/audio/music/dimglass-coast-a.mp3',
+    music: 'assets/audio/music/pearlmoor-quay-b.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/pearlmoor-quay-a.webp',
       'assets/backgrounds/battle/pearlmoor-quay-b.webp',
@@ -340,7 +340,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     json: 'assets/maps/gullcry_rock.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
     kind: 'route',
-    music: 'assets/audio/music/dimglass-coast-a.mp3',
+    music: 'assets/audio/music/dimglass-coast-b.mp3',
     // open-sea spur: the harbour backdrops carry the same moon-on-water read
     battle_backdrops: [
       'assets/backgrounds/battle/pearlmoor-quay-a.webp',

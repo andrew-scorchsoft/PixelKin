@@ -524,14 +524,19 @@ techniques the cartridge-era scores rely on:
    separate place: `beacon-stair` (the Beacon's three floors: a rising stair ostinato),
    plus three cues whose classic versions were already composed but never wired in —
    `vesper-crossroads-a` (the hub), `lanternway-a` (the safe lanes), `pearlmoor-quay-a`
-   (the town proper) — and `dimglass-coast-b` (the lonelier Wrackline / Lanternfall roads).
+   (the town proper) — and `dimglass-coast-b` (the lonelier Wrackline / Lanternfall roads and
+   the Gullcry Rock spur). Pearlmoor's satellites share `pearlmoor-quay-b` (the breakwater now
+   joins the allotment hill and the Point), and the Sounding Cave takes the sea-cave cue
+   (`dimglass-coast-c`) rather than Glowmoss's forest-cave one.
 3. **Story-state variants (`music_when`).** The same map sounds different once the world
    has changed: a rule in `data/world/maps.ts` (`{ flag?, unless?, music }`, first match
    wins) overrides the map's music. **Duskapple Orchard** plays `duskapple-orchard`, the
    hometown tune gone cold over the fallen star, until `gleam:ember`; then its old
    Lydian wonder (`tinderwick-c`) returns with the green shoots. **The apprentice's house**
    plays `interior-hush` from `flag:dusk_begins` (Gran's letter) until `gleam:ember`.
-   Rules resolve on map entry and after a battle, never mid-cutscene.
+   Rules resolve on map entry and after a battle, never mid-cutscene — so a cutscene that
+   hands the bed back (`musicCrossfade` at its end) must name the map's CURRENT cue
+   (`script.orchard_first_sight` restores `duskapple-orchard`, not `tinderwick-c`).
 
 **Engine behaviour that goes with this:** map changes **crossfade** (650 ms) instead of
 cutting, and a bed heard in the last 150 s **resumes where it left off**

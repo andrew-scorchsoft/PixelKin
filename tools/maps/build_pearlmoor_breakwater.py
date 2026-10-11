@@ -182,7 +182,7 @@ m = {
     "encounters": [],
     "npcs": m_npcs,
     "gates": [],
-    "music": "assets/audio/music/dimglass-coast-a.mp3",
+    "music": "assets/audio/music/pearlmoor-quay-b.mp3",
 }
 
 if __name__ == "__main__":

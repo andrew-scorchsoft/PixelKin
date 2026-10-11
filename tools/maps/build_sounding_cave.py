@@ -92,7 +92,7 @@ m = {
     "encounters": [],
     "npcs": [],
     "gates": [],
-    "music": "assets/audio/music/lowleaf-hollow-c.mp3",
+    "music": "assets/audio/music/dimglass-coast-c.mp3",
 }
 
 # ---- stamps (signs, cache) ------------------------------------------------------

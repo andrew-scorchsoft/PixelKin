@@ -299,7 +299,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'tint', color: '#4fb4ff', alpha: 0, ms: 900 },
     { op: 'narrate', text: 'Far back on the quay, an old man takes off his hat.', if_flag: 'flag:q_south_jest_done' },
     { op: 'narrate', text: 'The Tide-blessing has begun. Reyl Wash will be waiting at his sea-altar.' },
-    { op: 'musicCrossfade', key: 'dimglass-coast-a', ms: 900 },
+    { op: 'musicCrossfade', key: 'pearlmoor-quay-b', ms: 900 },
     { op: 'letterbox', on: false, ms: 320 },
   ],
 
@@ -5365,7 +5365,9 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'The grass is scorched in a ring. Two trees stand burnt to the bone. And where a third tree stood, a dark stone sits in a bowl of ash, still faintly, coldly aglow.' },
     { op: 'narrate', text: 'A star fell here. Or what was left of one.' },
     { op: 'cameraReset', ms: 800 },
-    { op: 'musicCrossfade', key: 'tinderwick-c', ms: 900 },
+    // Back to the orchard's own bed — the fallen-star cue until the first Gleam
+    // (maps.ts music_when); this scene only ever plays on the first visit.
+    { op: 'musicCrossfade', key: 'duskapple-orchard', ms: 900 },
     { op: 'letterbox', on: false, ms: 320 },
   ],
 
