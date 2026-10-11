@@ -403,6 +403,7 @@ export class Ambience {
 
   private streakGfx?: Phaser.GameObjects.Graphics;
   private streakBusy = false;
+  private streakDone: Promise<void> = Promise.resolve();
   private nextStreakAt = Number.POSITIVE_INFINITY;
   private streakMin = 40;
   private streakMax = 90;
@@ -725,8 +726,23 @@ export class Ambience {
    * Starfall mirror). Resolves when it has burned out. No-op (resolves at once)
    * with ambient motion off, or while another streak is still falling.
    */
-  starfall(opts: { from?: 'left' | 'right' } = {}): Promise<void> {
-    if (this.destroyed || this.streakBusy || !getAmbientMotion()) return Promise.resolve();
+  starfall(opts: { from?: 'left' | 'right' } = {}, scripted = false): Promise<void> {
+    if (this.destroyed || !getAmbientMotion()) return Promise.resolve();
+    if (this.streakBusy) {
+      // An ambient streak is mid-flight: the cadence just skips; a STORY fall waits
+      // for it to burn out and then falls (it must never be silently swallowed).
+      if (!scripted) return Promise.resolve();
+      return this.streakDone.then(() => (this.destroyed ? undefined : this.starfall(opts, true)));
+    }
+    if (scripted) {
+      // Keep the ambient cadence from stepping on the story beat right after it.
+      this.nextStreakAt = Math.max(this.nextStreakAt, this.scene.time.now + this.streakMin * 1000);
+    }
+    this.streakDone = this.launchStreak(opts);
+    return this.streakDone;
+  }
+
+  private launchStreak(opts: { from?: 'left' | 'right' }): Promise<void> {
     this.streakBusy = true;
     const g = (this.streakGfx ??= this.scene.add.graphics().setScrollFactor(0).setDepth(DEPTH.streak));
     const dawn = this.host.flag('flag:dawn');

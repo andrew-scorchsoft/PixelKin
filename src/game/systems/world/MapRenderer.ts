@@ -14,7 +14,7 @@ import Phaser from 'phaser';
 import { TILE_SIZE, COLORS } from '@game/config';
 import type { RuntimeMap, ResolvedTileset } from './MapLoader';
 import type { TileMeta } from './tileset';
-import { getAmbientMotion } from '@game/ui/preferences';
+import type { MapObject } from '@game/data/world/types';
 
 /** A placed tile that cycles through frames (water ripple, lamp flicker, glowmoss). */
 export interface AnimatedTilePlacement {
@@ -38,6 +38,8 @@ export interface MapRenderResult {
   objects: Phaser.GameObjects.Image[];
   /** Tiles lifted off their layer to bob (MapAmbience.bob_gids) — destroy on teardown. */
   bobbers: Phaser.GameObjects.Image[];
+  /** Everything that floats (lifted tiles + floating objects), ticked per frame. */
+  bobs: BobSpec[];
   pixelWidth: number;
   pixelHeight: number;
 }
@@ -47,26 +49,44 @@ const OBJECT_BODY_DEPTH = 9;
 const OBJECT_OVERHANG_DEPTH = 21;
 
 /**
- * Objects that float: a slow 1px sine bob on their sprites (boats, buoys). Keyed by
- * sprite-name pattern so every harbour gets it with no map edit. Visual only — the
- * footprint (collision) never moves. Stilled by Settings → Ambient motion: Off.
+ * Floating sprites bob 1px on a slow sine, driven per frame by `tickBobs` (no
+ * repeat:-1 tweens: those outlived their images on every warp, and couldn't
+ * follow Settings → Ambient motion live). Visual only — collision never moves.
  */
-const OBJECT_BOB: { match: RegExp; px: number; ms: number }[] = [
-  { match: /(^|_)boat(_|$)/, px: 1, ms: 1700 },
-  { match: /(^|_)buoy(_|$)/, px: 1, ms: 1300 },
-];
+export interface BobSpec {
+  img: Phaser.GameObjects.Image;
+  baseY: number;
+  px: number;
+  ms: number;
+  phase: number;
+}
 
-/** Start the 1px bob on a sprite (random start so a harbour never moves in unison). */
-function addBob(scene: Phaser.Scene, img: Phaser.GameObjects.Image, px: number, ms: number): void {
-  scene.tweens.add({
-    targets: img,
-    y: img.y - px,
-    duration: ms,
-    yoyo: true,
-    repeat: -1,
-    ease: 'Sine.inOut',
-    delay: Math.floor(Math.random() * ms),
-  });
+const OBJECT_BOB = { px: 1, ms: 1700 };
+/** Surfaces that count as water at an object's waterline (edge tiles carry the family). */
+const WET_SURFACES = new Set(['water', 'pond', 'murk']);
+
+/** Does this object float? An explicit `bob` wins; else most of its bottom row is water. */
+function floats(map: RuntimeMap, obj: MapObject): boolean {
+  if (obj.bob !== undefined) return obj.bob;
+  const y = obj.at.ty + obj.h - 1;
+  let wet = 0;
+  for (let x = obj.at.tx; x < obj.at.tx + obj.w; x++) {
+    if (map.hasTerrainAt(x, y, 'water') || WET_SURFACES.has(map.surfaceAt(x, y) ?? '')) wet++;
+  }
+  return wet * 2 >= obj.w;
+}
+
+function bobSpec(img: Phaser.GameObjects.Image, px: number, ms: number): BobSpec {
+  return { img, baseY: img.y, px, ms, phase: Math.floor(Math.random() * ms) };
+}
+
+/** Advance every bob for `timeMs`; with motion off they rest at their base. */
+export function tickBobs(bobs: BobSpec[], timeMs: number, motion: boolean): void {
+  for (const b of bobs) {
+    const off = motion ? Math.round(b.px * (0.5 - 0.5 * Math.cos((2 * Math.PI * (timeMs + b.phase)) / b.ms))) : 0;
+    const y = b.baseY - off;
+    if (b.img.y !== y) b.img.y = y;
+  }
 }
 
 /**
@@ -102,7 +122,7 @@ export function ensureTileFrame(
  * split so the top `overhang` rows render over the player (walk-behind eaves /
  * canopies) and the rest below. Footprint collision is handled by CollisionGrid.
  */
-function renderObjects(scene: Phaser.Scene, map: RuntimeMap): Phaser.GameObjects.Image[] {
+function renderObjects(scene: Phaser.Scene, map: RuntimeMap, bobs: BobSpec[]): Phaser.GameObjects.Image[] {
   const out: Phaser.GameObjects.Image[] = [];
   for (const obj of map.def.objects ?? []) {
     if (!scene.textures.exists(obj.sprite)) continue; // art not packed yet — collision still applies
@@ -118,16 +138,16 @@ function renderObjects(scene: Phaser.Scene, map: RuntimeMap): Phaser.GameObjects
     // objects (MapObject.requires_flag / hidden_when_flag) when flags change.
     body.setData('object_def', obj);
     out.push(body);
-    const bob = getAmbientMotion() ? OBJECT_BOB.find((b) => b.match.test(obj.sprite)) : undefined;
+    const bob = floats(map, obj) ? OBJECT_BOB : undefined;
 
     if (overhangPx > 0) {
       const over = scene.add.image(px, py, obj.sprite).setOrigin(0, 0).setDepth(OBJECT_OVERHANG_DEPTH);
       over.setCrop(0, 0, wpx, overhangPx);
       over.setData('object_def', obj);
       out.push(over);
-      if (bob) addBob(scene, over, bob.px, bob.ms);
+      if (bob) bobs.push(bobSpec(over, bob.px, bob.ms));
     }
-    if (bob) addBob(scene, body, bob.px, bob.ms);
+    if (bob) bobs.push(bobSpec(body, bob.px, bob.ms));
   }
   return out;
 }
@@ -293,12 +313,13 @@ export async function renderMap(scene: Phaser.Scene, map: RuntimeMap): Promise<M
     if (layerDef.role === 'above') aboveLayers.push(layer);
   }
 
-  const objects = renderObjects(scene, map);
-  const bobbers = liftBobTiles(scene, map, layers);
+  const bobs: BobSpec[] = [];
+  const objects = renderObjects(scene, map, bobs);
+  const bobbers = liftBobTiles(scene, map, layers, bobs);
 
   const pixelWidth = map.width * TILE_SIZE;
   const pixelHeight = map.height * TILE_SIZE;
-  return { tilemap, layers, aboveLayers, animatedTiles, objects, bobbers, pixelWidth, pixelHeight };
+  return { tilemap, layers, aboveLayers, animatedTiles, objects, bobbers, bobs, pixelWidth, pixelHeight };
 }
 
 /**
@@ -311,10 +332,13 @@ function liftBobTiles(
   scene: Phaser.Scene,
   map: RuntimeMap,
   layers: Phaser.Tilemaps.TilemapLayer[],
+  bobs: BobSpec[],
 ): Phaser.GameObjects.Image[] {
   const out: Phaser.GameObjects.Image[] = [];
   const gids = new Set(map.def.ambience?.bob_gids ?? []);
-  if (gids.size === 0 || !getAmbientMotion()) return out;
+  // Lifted regardless of the motion setting (a resting lifted tile looks the same),
+  // so turning Ambient motion on mid-map starts them bobbing.
+  if (gids.size === 0) return out;
   for (const layer of layers) {
     layer.forEachTile((tile) => {
       if (!gids.has(tile.index)) return;
@@ -325,7 +349,7 @@ function liftBobTiles(
         .setOrigin(0, 0)
         .setDepth(layer.depth + 0.01);
       layer.removeTileAt(tile.x, tile.y);
-      addBob(scene, img, 1, 1100 + Math.floor(Math.random() * 500));
+      bobs.push(bobSpec(img, 1, 1100 + Math.floor(Math.random() * 500)));
       out.push(img);
     });
   }

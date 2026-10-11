@@ -36,12 +36,12 @@ import { ChartView } from '@game/ui/ChartView';
 import { fadeIn, fadeOut, letterbox, clearCinematicFx } from '@game/ui/Transitions';
 import { CROWN_INTERLUDES, INTERLUDES_CLOSED_BY } from '@game/content/interludes';
 import type { CrownInterlude } from '@game/content/interludes';
-import { getCannotDie } from '@game/ui/preferences';
+import { getAmbientMotion, getCannotDie } from '@game/ui/preferences';
 import { KinInstance } from '@game/systems/party/KinInstance';
 import { MAX_PARTY } from '@game/systems/party/Party';
 import { InputController, InputAction } from '@game/systems/input/InputController';
 import { loadMap, RuntimeMap } from '@game/systems/world/MapLoader';
-import { renderMap, tickAnimatedTiles } from '@game/systems/world/MapRenderer';
+import { renderMap, tickAnimatedTiles, tickBobs } from '@game/systems/world/MapRenderer';
 import type { MapRenderResult } from '@game/systems/world/MapRenderer';
 import { CollisionGrid } from '@game/systems/world/CollisionGrid';
 import { EncounterSystem } from '@game/systems/world/EncounterSystem';
@@ -264,6 +264,11 @@ export class WorldScene extends Phaser.Scene {
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
       this.music.stop();
       this.controller.destroy();
+      // Leaving World (Title, the ending cinematic): the sound bed and every
+      // ambient tween go with it — they outlived the scene before.
+      this.ambience?.destroy();
+      this.ambience = undefined;
+      this.tweens.killAll();
     });
 
     const spawn = data.spawn ?? this.defaultSpawn(data.mapId);
@@ -336,7 +341,7 @@ export class WorldScene extends Phaser.Scene {
       // A missing/malformed map must not freeze the game on a black screen.
       console.error(`Failed to enter map "${mapId}":`, err);
       this.cameras.main.fadeIn(theme.transition.fadeMs, 0, 0, 0);
-      this.modal = false;
+      if (!this.staging) this.modal = false; // an interlude's finally re-enters home
     }
   }
 
@@ -394,7 +399,8 @@ export class WorldScene extends Phaser.Scene {
       respawn: this.respawn,
       rest_points: this.restPoints,
       player_name: this.playerName,
-      version_from: this.pendingVersionNotice,
+      // A reload mid-notice must not stamp it seen without showing it.
+      version_from: this.pendingVersionNotice ?? (this.lastVersion !== GAME_VERSION ? this.lastVersion : undefined),
     } satisfies WorldSceneData);
   }
 
@@ -803,6 +809,11 @@ export class WorldScene extends Phaser.Scene {
 
   private teardownMap(): void {
     this.cameras.main.stopFollow();
+    // Phaser keeps a repeat:-1 tween alive after its target is destroyed — kill the
+    // map's tweens first or they pile up on every warp (heal/crest markers glow forever).
+    const markerParts = [...this.healMarkers, ...this.crestMarkers].flatMap((m) =>
+      m instanceof Phaser.GameObjects.Container ? [m, ...m.list] : [m]);
+    this.tweens.killTweensOf([...markerParts, ...(this.render?.objects ?? []), ...(this.render?.bobbers ?? [])]);
     this.ambience?.destroy();
     this.ambience = undefined;
     this.nearbyLookers.clear();
@@ -1203,7 +1214,7 @@ export class WorldScene extends Phaser.Scene {
         void this.persist();
       },
       cameraFocusTile: (tx, ty, ms, zoom) => this.cameraFocusTile(tx, ty, ms, zoom),
-      starfall: (opts) => this.ambience?.starfall(opts) ?? Promise.resolve(),
+      starfall: (opts) => this.ambience?.starfall(opts, true) ?? Promise.resolve(),
       cameraReset: (ms) => this.cameraResetToPlayer(ms),
       startCinematic: async (id: string) => {
         // Bank everything FIRST (flags the script just set included) so a
@@ -1376,6 +1387,7 @@ export class WorldScene extends Phaser.Scene {
    * restores the free-roam state afterwards, exactly as an un-told encounter did.
    */
   private async encounterTellThenBattle(intent: NonNullable<ReturnType<EncounterSystem['roll']>>): Promise<void> {
+    this.player.stopWalking(); // modal stops Player.update, which is what settles the walk cycle
     this.modal = true;
     await (this.ambience?.encounterTell(this.player) ?? Promise.resolve());
     this.modal = false;
@@ -1652,7 +1664,10 @@ export class WorldScene extends Phaser.Scene {
     if (!this.ready) return;
     // Cycle water/lamp/etc. frames — keeps the world breathing even while a
     // dialogue or menu is open (movement is what a modal pauses, not the scenery).
-    if (this.render) tickAnimatedTiles(this.render.animatedTiles, time);
+    if (this.render) {
+      tickAnimatedTiles(this.render.animatedTiles, time);
+      tickBobs(this.render.bobs, time, getAmbientMotion());
+    }
     this.controller.update();
     // Debug refresh gesture: 10 fast START taps reload the current map in place
     // (re-fetches the map JSON — handy for testing edits without a hard refresh).
@@ -1730,7 +1745,8 @@ export class WorldScene extends Phaser.Scene {
 
     this.player.syncDepth(ACTOR_DEPTH);
     for (const npc of this.npcs) npc.syncDepth(ACTOR_DEPTH);
-    this.ambience?.update(time, delta, this.player, this.modal);
+    // Staged interludes hide the player at the camera tile: nothing should flee it.
+    this.ambience?.update(time, delta, this.staging ? undefined : this.player, this.modal);
     this.lamplight?.follow(this.player.sprite.x, this.player.sprite.y);
 
     this.debug.set([

@@ -283,6 +283,11 @@ export interface MapObject {
    */
   requires_flag?: WorldFlag;
   hidden_when_flag?: WorldFlag;
+  /**
+   * Float on water with a slow 1px bob (boats, buoys, punts). Omitted = decided by
+   * the terrain under the object's bottom (waterline) row; true/false overrides.
+   */
+  bob?: boolean;
 }
 
 export interface MapDefinition {
