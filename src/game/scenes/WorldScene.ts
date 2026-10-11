@@ -25,7 +25,7 @@ import { ChartsMenu } from '@game/ui/ChartsMenu';
 import { JournalMenu } from '@game/ui/JournalMenu';
 import { TravelMenu } from '@game/ui/TravelMenu';
 import { GAME_VERSION, GAME_VERSION_LABEL, compareVersions } from '@game/version';
-import { whatsNewFor } from '@game/content/whatsnew';
+import { whatsNewSince } from '@game/content/whatsnew';
 import {
   bankRestPoint,
   normaliseRestPoints,
@@ -1535,7 +1535,7 @@ export class WorldScene extends Phaser.Scene {
         style: 'narrate' as const,
         text: `While you rested, the world turned. Vesperholm has changed since you last walked it in ${then} - this is ${GAME_VERSION_LABEL}. Roads re-laid, new faces, and things to find where you've already been.`,
       },
-      ...whatsNewFor(GAME_VERSION).map((text) => ({ style: 'narrate' as const, text })),
+      ...whatsNewSince(from, GAME_VERSION).map((text) => ({ style: 'narrate' as const, text })),
       {
         style: 'narrate' as const,
         text: 'If a changed road ever leaves you stuck, open SETTINGS and choose "Return to rest point" - your vesperlamp remembers every hearth you have rested by.',
