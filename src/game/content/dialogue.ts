@@ -416,7 +416,7 @@ export const DIALOGUE: DialogueRegistry = {
   // A third blessing voice by the jetty — the going-out song, named and human.
   'npc.blessing_singer': [
     { speaker: 'BOAT-SINGER', text: '"Tides go out so they can come back—" sing it with me, Wayfarer, you of all people have the right tonight.' },
-    { speaker: 'BOAT-SINGER', text: 'My mother led the going-out song from that bow for thirty years, under a dark sky. Tonight I get to sing it under a LIT one. That is your doing.' },
+    { speaker: 'BOAT-SINGER', text: 'My mother led the going-out song from that bow for thirty years — the last eleven under a dark sky. Tonight I get to sing it under a LIT one. That is your doing.' },
   ],
   // --- The breakwater (the Causeway Bell's walk) -------------------------------
   'sign.breakwater_gate': [
@@ -1514,7 +1514,7 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'VIGIL WARDEN', text: 'Seven lamps burning on the steps, and the eighth row waiting. The town has watched half its life for this night, Wayfarer. We can watch a little longer — that is what watching IS.' },
   ],
   'npc.nightreach_watcher_steps_a': [
-    { speaker: 'OLD WATCHER', text: 'I held the Storm-watcher\'s lamp for thirty years before it lit. People ask was it worth the holding. They have never once had to ask anyone whose lamp is LIT.' },
+    { speaker: 'OLD WATCHER', text: 'I held the Storm-watcher\'s lamp eleven winters before it lit. People ask was it worth the holding. They have never once had to ask anyone whose lamp is LIT.' },
   ],
   'npc.nightreach_watcher_steps_b': [
     { speaker: 'WATCH KID', text: 'I\'m the eighth row\'s runner. When the last star comes home I run the steps ringing the little bell, fast as anything. I\'ve practised the route nine hundred times. Tonight could be the night. It could ALWAYS be the night.' },
