@@ -25,6 +25,11 @@ jobs:
       - run: npm ci
       - name: Typecheck
         run: npm run typecheck
+      # Every script/dialogue ref, portrait+expr, NPC/object sprite resolves; every
+      # flag read is set somewhere; no progression step hangs on an optional guard.
+      # (It caught the unreachable Starfall Vigils and Georgina's unfinishable quest.)
+      - name: Content integrity (refs, portraits, sprites, flags)
+        run: node tools/content/check_content.mjs
       - name: Roster schema + power budget + evolution lines
         run: node tools/balance/validate.mjs
       - name: Type chart fair-fight band

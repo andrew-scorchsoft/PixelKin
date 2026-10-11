@@ -1201,3 +1201,8 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   (map, tx, ty), touches only `sprite`, and `--check`s idempotence. A tree owned by
   `worldcraft/*.py` must carry the same pick there (east.py's spoke trees do). Object masters
   regenerated with gpt-image-2.5 use native alpha: `gen_interior_object.py --provider openai`.
+- **`node tools/content/check_content.mjs` gates content (CI, exit 1 on any E-*).** It bundles the
+  content modules and loads every map: dangling script/dialogue refs (NPCs only run `script.*` —
+  a `cutscene.*` dialogue_ref shows "..."), missing portrait expressions, unknown sprites, flags
+  read but never set, guarded progression steps. W-/I- lines are heuristics; read them, don't
+  chase them blindly. `--old <checkout>` compares pre-Chickenpig step/page counts.
