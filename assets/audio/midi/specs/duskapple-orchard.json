@@ -1,0 +1,60 @@
+{
+  "title": "Duskapple Orchard - The Fallen Star (SNES register)",
+  "_note": "The hometown lullaby, darkened: Tinderwick's Vesper statement (G3->C4->D4 lift, settle home) moved into the PARALLEL minor (C minor) and slowed into a half-time feel at 90 BPM, so every motif note is twice as long and the lift hangs in the cold air. Plays in Duskapple Orchard from the first visit until the first Gleam is relit (tinderwick-c, the hopeful sibling, takes over after). A star fell here: one distant low BELL toll at each phrase start (the strike), a glassy celesta ostinato for the cold, sparse low STRINGS. Bridge (bars 9-12): a faint warm glimmer - Ab and Eb major, a PLUCK harp warmth, the lead lifts to its highest note (the cinder still glows) - then sinks back to the G dominant before the return. snes era (warm reverb). 90 BPM, 4/4, C minor, 16 bars AABA. Melancholy and beautiful, not horror.",
+  "era": "snes",
+  "tempo": 90,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "C minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.85,
+      "_note": "Muted low pulse lead. The Vesper contour in C minor at half time: A states the lift and the minor settle (Eb-D-C); A' half-cadences on D over G; B reaches up to G4 (the glimmer) and sinks; A'' returns, last bar C4->B3 leading back to the G3 downbeat.",
+      "notes": "G3h C4h | D4w | Eb4h D4h | C4h. rq | G3h C4h | D4h Eb4h | F4h. Eb4q | D4w | C4h Eb4h | G4w | Ab4h G4q F4q | D4h. rq | G3h C4h | D4w | Eb4h D4h | C4h B3h"
+    },
+    {
+      "name": "glass",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.22,
+      "_note": "Cold glassy celesta ostinato, slow quarter-note broken chords high above the lead (oct 5) - the frost on the charred boughs. Rests through the bridge so the warm pluck can glow, returns for A''.",
+      "notes": "G5q Eb5q C5q Eb5q | G5q D5q Bb4q D5q | Eb5q C5q D5q B4q | G5q Eb5q C5q rq | G5q Eb5q C5q Eb5q | F5q D5q G5q Eb5q | Ab5q Eb5q C5q Eb5q | B4q D5q G5q rq | rw | rw | rw | rw | G5q Eb5q C5q Eb5q | G5q D5q Bb4q D5q | Eb5q C5q D5q B4q | G5q Eb5q D5q B4q"
+    },
+    {
+      "name": "toll",
+      "voice": "bell",
+      "octave": 3,
+      "gain": 0.32,
+      "_note": "The strike: one distant low bell toll at each phrase start (bars 1, 5, 13), and a lower G toll as the bridge sinks (bar 12). Otherwise silent.",
+      "notes": "C3w | rw | rw | rw | C3w | rw | rw | rw | rw | rw | rw | G2w | C3w | rw | rw | rw"
+    },
+    {
+      "name": "pad",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.24,
+      "_note": "Sparse low strings. Absent for the lonely first phrase, then a soft chord bed: Cm - Bb/Eb - Ab - G | Ab - Eb - Fm - G | Cm - Gm - Ab/G - Cm/G.",
+      "notes": "rw | rw | rw | rw | C3+Eb3+G3w | D3+F3+Bb3h Eb3+G3+Bb3h | Eb3+Ab3+C4w | D3+G3+B3w | Eb3+Ab3+C4w | Eb3+G3+Bb3w | C3+F3+Ab3w | D3+G3+B3w | C3+Eb3+G3w | D3+G3+Bb3w | Eb3+Ab3+C4h D3+G3+B3h | C3+Eb3+G3h D3+G3+B3h"
+    },
+    {
+      "name": "ember",
+      "voice": "pluck",
+      "octave": 3,
+      "gain": 0.38,
+      "_note": "The cinder still glows: a warm plucked-harp arpeggio ONLY in the bridge (Ab, Eb, Fm), thinning out bar by bar as the glimmer sinks back to the G dominant.",
+      "notes": "rw | rw | rw | rw | rw | rw | rw | rw | Eb3e Ab3e C4e Ab3e Eb3e Ab3e C4e Ab3e | Eb3e G3e Bb3e G3e Eb3e G3e Bb3e G3e | F3e Ab3e C4e Ab3e F3e Ab3e rq | G3e B3e rh."
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.8,
+      "_note": "Half-time pillars, one root per bar (two at cadences). Last bar C->G voice-leads back to the C downbeat.",
+      "notes": "C2w | G2w | Ab2h G2h | C2w | C2w | Bb2h Eb2h | Ab2w | G2w | Ab2w | Eb2w | F2w | G2w | C2w | G2w | Ab2h G2h | C2h G2h"
+    }
+  ]
+}
