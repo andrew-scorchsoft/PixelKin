@@ -730,7 +730,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'battle', trainer: 'wren_dimglass' },
     // X-2: the laugh, then the wound — Wren turns away on "Mum" (no added page).
     { op: 'action', actor: 'wren', action: 'laugh' },
-    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'neutral', text: 'Same road, different lamps. Mine runs on north — Mum\'s village is past Pearlmoor, and her letters have gone very short. See you up the coast!' },
+    { op: 'say', speaker: 'WREN', portrait: 'wren', expr: 'neutral', text: 'Same road, different lamps. Mine goes north, to Mum\'s. Her letters have gone short. See you!' },
     { op: 'action', actor: 'wren', action: 'turnAway', holdMs: 700 },
     { op: 'setFlag', flag: 'flag:wren_dimglass_battled' },
   ],
@@ -755,7 +755,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'For a heartbeat, every lantern-buoy on the coast gutters, as if the sea itself flinched.' },
     { op: 'action', actor: 'player', action: 'raiseLamp', holdMs: 700 }, // your own small light held up against it
     { op: 'tint', color: '#0b1026', alpha: 0, ms: 700 },
-    { op: 'narrate', text: 'You think of the orchard — the scorched ring, the cold stone in the ash. This one did not fall. Not this time. The Long Dusk is deepening, and it is coming closer.' },
+    { op: 'narrate', text: 'You think of the orchard\'s scorched ring. This one did not fall. Not yet. The Long Dusk is coming closer.' },
     { op: 'musicCrossfade', key: 'dimglass-coast-a', ms: 900 }, // the bed returns, a shade uneasier
     { op: 'letterbox', on: false, ms: 320 },
   ],
@@ -2355,6 +2355,9 @@ export const SCRIPTS: ScriptRegistry = {
     // It goes down south, past the terraces: towards the mountain.
     { op: 'flashColor', color: '#cfe8ff', ms: 200 },
     { op: 'starfall', from: 'right' },
+    // N-4 counts on the pass-walker's map (West W-4), now or when it opens.
+    { op: 'run', unless_flag: 'flag:fall_seen_galehigh', ref: 'script.passmap_tick' },
+    { op: 'setFlag', flag: 'flag:fall_seen_galehigh' },
     { op: 'cameraFocus', to: { tx: 9, ty: 30 }, ms: 1100 },
     { op: 'narrate', text: 'A streak of cold light crosses the whole sky above the kites, silent, and goes down somewhere past the southern terraces — towards the mountain. Every kite-tail on the hill dips at once, as if the wind flinched.' },
     { op: 'emote', actor: 'festival_goer', emote: 'alert', holdMs: 500 },
@@ -3600,7 +3603,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'Then it catches again.' },
     { op: 'cameraReset', ms: 800 },
     { op: 'face', actor: 'nessa_at_seven', facing: 'down' },
-    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: 'The Keystar slipped. Only for a breath — but every star leans on it, and when it slips, the youngest slip first. Yours is the youngest in the sky.' },
+    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: 'The Keystar slipped. Only for a breath — but every star leans on it, and when it slips, the first lights relit feel it first. Yours was the first.' },
     { op: 'wait', ms: 800 },
     { op: 'face', actor: 'nessa_at_seven', facing: 'left' },
     { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: '...I knew him, once. He was the gentlest of us. That\'s the part that keeps me awake.' },
@@ -4189,7 +4192,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'Far below, in the swept gallery, every cold stone on the linen begins — all at once, quietly — to glow.' },
     { op: 'wait', ms: 1200 },
     { op: 'face', actor: 'warden_cor_after', facing: 'up' },
-    { op: 'narrate', text: 'Còr is looking at the starlamp in your hand.' },
+    { op: 'narrate', text: 'Còr is looking at the Starlamp\'s old brass cell in your lamp-bag.' },
     { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'sorrowful', text: "That cell. I know that brass. She filled it the winter we were apprentices. 'For the night we'll need it,' she said, and Fenn and I laughed at her." },
     { op: 'action', actor: 'warden_cor_after', action: 'turnAway', holdMs: 1400 },
     { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'sorrowful', text: 'She kept the Ninth Lantern twenty years. The winter it failed, I sat by her lamp while it burned down, counting its hours and calling it hope.' },
@@ -5379,8 +5382,8 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', unless_flag: 'flag:dusk_begins', speaker: 'TAMSIN', text: "Grandad says stars don't fall. Grandad also says he isn't crying. Grandad says a lot of things." },
     { op: 'say', if_flag: 'flag:dusk_begins', unless_flag: 'gleam:ember', speaker: 'TAMSIN', text: "Did you see it go? Out over the sea. Another one. Mum says we're keeping the lamps lit all night now, every night, just in case." },
     { op: 'say', if_flag: 'gleam:ember', unless_flag: 'flag:great_null_known', speaker: 'TAMSIN', text: "There's shoots coming up in the burn! I'm not allowed to water them. I've been watering them." },
-    { op: 'say', if_flag: 'flag:great_null_known', unless_flag: 'gleam:lunar', speaker: 'TAMSIN', text: 'The stone in the burn went cold again. Just for a minute. Grandad sat down.' },
-    { op: 'say', if_flag: 'gleam:lunar', unless_flag: 'flag:dawn', speaker: 'TAMSIN', text: "There's shoots coming up in the burn! I'm not allowed to water them. I've been watering them." },
+    { op: 'say', if_flag: 'flag:great_null_known', unless_flag: 'gleam:lunar', speaker: 'TAMSIN', text: 'The stone in the burn went dark — even the blue in its cracks. Just for a minute. Grandad sat down.' },
+    { op: 'say', if_flag: 'gleam:lunar', unless_flag: 'flag:dawn', speaker: 'TAMSIN', text: "The shoots in the burn came back. I'm still not allowed to water them." },
     { op: 'say', if_flag: 'flag:dawn', speaker: 'TAMSIN', text: "The stone woke up! It's all bright now, like it remembered. Grandad says we're keeping it. I say we're keeping it AND naming it." },
   ],
 
