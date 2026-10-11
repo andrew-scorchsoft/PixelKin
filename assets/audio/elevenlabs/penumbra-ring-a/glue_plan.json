@@ -1,0 +1,47 @@
+{
+ "chunks": [
+  {
+   "song_id": "87aRt6MQJdXluw1qL09z",
+   "range": {
+    "start_ms": 84046,
+    "end_ms": 104046
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "60 BPM",
+    "D minor",
+    "dark slow-shifting synth fog pad, slightly detuned",
+    "deep low pedal drone bass",
+    "a sparse soft heartbeat kick every two bars",
+    "one lonely low pulse-wave lead note swelling out of the dark",
+    "oppressive hush with a fragile thread of hope",
+    "haunting slow three-note rising figure as the hook",
+    "spacious and sparse but clearly composed",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "87aRt6MQJdXluw1qL09z",
+   "range": {
+    "start_ms": 8000,
+    "end_ms": 18000
+   }
+  }
+ ]
+}
