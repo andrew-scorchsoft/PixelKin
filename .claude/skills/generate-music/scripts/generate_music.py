@@ -12,10 +12,11 @@ API: POST https://api.elevenlabs.io/v1/music
   - Body:    { prompt, music_length_ms, model_id, force_instrumental, seed }
   - Returns: binary audio (mp3 by default) on success.
 
-Model note: the public API currently exposes only `music_v1`. Music v2 exists
-but is early-access-only on the API as of mid-2026. The model is therefore
-overridable without a code change via ELEVENLABS_MUSIC_MODEL or --model, so the
-day v2 opens up you just flip the env var. See SKILL.md.
+Model note (API reference re-checked 2026-10): model_id is one of `music_v1`
+(the API default), `music_v2`, `music_v2_5`. We default to `music_v2_5`, the best
+for prompt adherence and audio quality. Overridable via ELEVENLABS_MUSIC_MODEL or
+--model. The account allows 2 concurrent requests; 429s are retried with backoff.
+For loops, cut the render with tools/audio/make_loop.py. See SKILL.md.
 
 The script does NOT judge the result. The calling agent (Claude) is expected to
 listen to / inspect the output and re-invoke with an adjusted --prompt if it
@@ -37,7 +38,7 @@ PRESETS_PATH = SCRIPT_DIR / "presets.json"
 
 MUSIC_ENDPOINT = "https://api.elevenlabs.io/v1/music"
 
-DEFAULT_MODEL = os.environ.get("ELEVENLABS_MUSIC_MODEL", "music_v1")
+DEFAULT_MODEL = os.environ.get("ELEVENLABS_MUSIC_MODEL", "music_v2_5")
 # Default output format. mp3_44100_128 is available on all tiers; 192kbps needs
 # Creator tier or above. Overridable via --output-format.
 DEFAULT_OUTPUT_FORMAT = os.environ.get("ELEVENLABS_MUSIC_OUTPUT_FORMAT", "mp3_44100_128")
@@ -120,7 +121,7 @@ def _backoff_seconds(attempt: int, retry_after_header: str | None) -> float:
             return max(0.0, min(60.0, float(retry_after_header.strip())))
         except ValueError:
             pass
-    return float(2 ** attempt)
+    return float(5 * (attempt + 1))  # a 429 here is usually the 2-concurrent cap
 
 
 def compose_music(
@@ -209,7 +210,7 @@ def main() -> int:
         help="Allow vocals. Default is instrumental, which is what game loops want.",
     )
     p.add_argument("--seed", type=int, default=None, help="Seed for reproducible output.")
-    p.add_argument("--max-retries", type=int, default=2, help="Retry count for API errors.")
+    p.add_argument("--max-retries", type=int, default=6, help="Retry count for API errors.")
     p.add_argument("--list-presets", action="store_true")
     args = p.parse_args()
 

@@ -59,14 +59,19 @@ A short victory fanfare (jingle, not a loop):
 - `--preset` — appends a mood brief tuned to the game's style. Strongly
   preferred over free-form prompts so tracks stay consistent. See
   `scripts/presets.json`.
-- `--length SECONDS` — 3–600. Omit to let the model choose. Keep loop tracks
-  ~30–60s and jingles ~5–10s. (Composition plans cap at 300s; prompt mode at 600s.)
+- `--length SECONDS` — 3–600. Omit to let the model choose. For an area LOOP,
+  render LONGER than the loop you want (~80–90s) and cut the loop out with
+  `tools/audio/make_loop.py` (see "Making it loop"); jingles ~5–10s.
 - `--vocals` — off by default. Game loops should stay **instrumental**; only
   pass this if the user explicitly wants singing.
 - `--seed` — reproducible output; reuse a seed to iterate on a near-identical track.
-- `--model` — defaults to `music_v1` (the only model on the public API today).
-  Override with `--model` or `ELEVENLABS_MUSIC_MODEL` when Music v2 reaches the
-  API on this account — no code change needed.
+- `--model` — defaults to `music_v2_5` (checked against the API reference
+  2026-10: `music_v1` | `music_v2` | `music_v2_5`; the API's own default is still
+  v1, which is noticeably weaker). Override with `--model` or
+  `ELEVENLABS_MUSIC_MODEL`. **Re-check the live API reference before relying on
+  this** (`elevenlabs.io/docs/api-reference/music/compose`) — it moves fast.
+- **Concurrency:** this account allows **2 requests at once** (a third gets 429
+  `concurrent_limit_exceeded`). Generate in pairs; the script backs off on 429.
 - `--output-format` — defaults to `mp3_44100_128` (works on all tiers).
   `mp3_44100_192` needs Creator tier or above.
 
@@ -78,7 +83,29 @@ A short victory fanfare (jingle, not a loop):
 3. The script prints JSON (path, size, model, settings). **Listen to / check the
    result.** If it doesn't fit the brief, adjust the prompt or preset and
    re-run. The script does not self-verify.
-4. Queue the track in `PreloadScene` (`this.load.audio('overworld', 'assets/audio/music/overworld.mp3')`).
+4. For an area loop, cut it seamlessly (below) and A/B it against the current
+   track before wiring it in — never overwrite a served track unapproved.
+5. Queue the track in `PreloadScene` (`this.load.audio('overworld', 'assets/audio/music/overworld.mp3')`).
+
+## Making it loop
+
+The engine loops the WHOLE file end→start, and a text-to-music render is a
+performance (pickup, drifting level, a fade at the end) — not a loop. Prompt for
+loop-friendliness anyway (state BPM, key, bar count; "starts directly on the
+theme, no intro, no outro, no fade, no ritardando"; the docs' own loop advice is
+"state the bars, BPM, key and what's excluded"), then:
+
+```bash
+python3 tools/audio/make_loop.py raw.mp3 --report          # tempo, best loop points, seam score, head/tail level
+python3 tools/audio/make_loop.py raw.mp3 loop.mp3          # cut audio[s:e], blend the seam (250 ms)
+```
+
+It searches for a start/end pair whose next few seconds match (chroma + timbre +
+loudness), preferring whole multiples of 4 bars. Seam distance: a hand-built loop
+scores ~0.03; ≤0.4 is a clean ElevenLabs cut, >1 means pick another take. Ask for a
+tempo the model can hold (it hit 92 BPM exactly on the Tinderwick test). Preview
+the join by playing the loop twice (decode to PCM and concatenate — `-stream_loop`
+re-encoding adds an MP3 gap that isn't in the game).
 
 ## Style & licensing notes
 
