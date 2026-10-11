@@ -8,6 +8,10 @@
  * Gleams, the Wayfaring, the vesperlamp) — it's read by the fire, not a patch log.
  */
 export const WHATS_NEW: Record<string, string[]> = {
+  '1.8': [
+    'Vesperholm has a new voice. Every town, road, cave and battle has been scored afresh around one melody from home — and if you miss the old tunes, Settings → Soundtrack brings them back.',
+    'The kin in the grass will talk to you now. Walk up to a wandering one and press A — each has its own cry, and some have more to say than others.',
+  ],
   '1.7': [
     'Look away from your own road now and then. Between the chapters of your Wayfaring, someone else is busy in the dark — and he is very tidy about it.',
     'The world can be heard now: surf on the coast, wind on the high stairs, drips in the caves, crickets in the hollows, and your own feet on sand and snow.',

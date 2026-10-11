@@ -106,10 +106,13 @@ What's already in the repo:
   and tooling are in [`docs/mechanics/`](docs/mechanics/) and
   [`tools/balance/`](tools/balance/). Battles read their backdrop from the map —
   subtle, per-area scenes (with a few variants each) instead of flat black.
-- **An original soundtrack.** Loop-ready area and battle music for the world,
-  composed via the repo's music skills into
-  [`public/assets/audio/music/`](public/assets/audio/music/); the per-area plan
-  is in [`docs/world/music-direction.md`](docs/world/music-direction.md).
+- **An original soundtrack, in two styles.** Every area, battle and story cue
+  has a **remastered** score (the default — composed cue sheets built around one
+  shared hometown melody, each with a play-once intro and a seamless loop;
+  `tools/audio/remaster_track.py`) and the **classic** chip renders; Settings →
+  Soundtrack switches between them, and the website's
+  [music page](web/pages/music.html) plays both. The per-area plan is in
+  [`docs/world/music-direction.md`](docs/world/music-direction.md).
 - **A visual rulebook.** Canvas sizes, palette, anchors, and the sprite pipeline
   are binding in [`docs/art-style.md`](docs/art-style.md).
 

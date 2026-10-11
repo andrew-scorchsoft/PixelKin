@@ -261,3 +261,65 @@
         }
     }
 })();
+
+/* ---------------------------------------------------------------------------
+   Music page: play a cue the way the game does — the remastered tracks carry a
+   play-once intro, so they loop from data-loop-start (Web Audio loopStart, gapless);
+   classic tracks loop whole. One track at a time; click the playing button to stop.
+   --------------------------------------------------------------------------- */
+(function () {
+    var list = document.querySelector('.music-list');
+    if (!list) return;
+    var Ctx = window.AudioContext || window.webkitAudioContext;
+    var ctx = null, source = null, activeBtn = null, buffers = {};
+
+    function stop() {
+        if (source) { try { source.stop(); } catch (e) { /* already stopped */ } source.disconnect(); source = null; }
+        if (activeBtn) {
+            activeBtn.classList.remove('is-active');
+            activeBtn.innerHTML = '&#9654; ' + activeBtn.getAttribute('data-label');
+            activeBtn.closest('.music-track').classList.remove('is-playing');
+            activeBtn = null;
+        }
+    }
+
+    function load(src) {
+        if (buffers[src]) return buffers[src];
+        buffers[src] = fetch(src).then(function (r) {
+            if (!r.ok) throw new Error(r.status);
+            return r.arrayBuffer();
+        }).then(function (ab) {
+            return new Promise(function (res, rej) { ctx.decodeAudioData(ab, res, rej); });
+        });
+        buffers[src].catch(function () { delete buffers[src]; });
+        return buffers[src];
+    }
+
+    list.addEventListener('click', function (ev) {
+        var btn = ev.target.closest('.music-btn');
+        if (!btn) return;
+        if (btn === activeBtn) { stop(); return; }
+        stop();
+        if (!ctx) ctx = new Ctx();
+        if (ctx.state === 'suspended') ctx.resume();
+        activeBtn = btn;
+        btn.classList.add('is-active');
+        btn.innerHTML = '&#8230; ' + btn.getAttribute('data-label');
+        btn.closest('.music-track').classList.add('is-playing');
+        var mine = btn;
+        load(btn.getAttribute('data-src')).then(function (buf) {
+            if (activeBtn !== mine) return;
+            var ls = parseFloat(mine.getAttribute('data-loop-start') || '0') || 0;
+            source = ctx.createBufferSource();
+            source.buffer = buf;
+            source.loop = true;
+            source.loopStart = ls > 0 && ls < buf.duration - 1 ? ls : 0;
+            source.loopEnd = buf.duration;
+            source.connect(ctx.destination);
+            source.start();
+            mine.innerHTML = '&#9632; ' + mine.getAttribute('data-label');
+        }).catch(function () {
+            if (activeBtn === mine) { stop(); mine.innerHTML = '&#10007; ' + mine.getAttribute('data-label'); }
+        });
+    });
+})();

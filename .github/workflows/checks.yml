@@ -54,6 +54,10 @@ jobs:
       # is itself reachable. FAILs a prop sealing a warden/band/cache, a beat that
       # needs a LATER Gift than canon, and any unreached map/content/warp. Uses
       # node + esbuild (from npm ci) to dump the content registries.
+      - name: Remastered-music manifest + music page data are current
+        run: |
+          python3 tools/audio/build_remaster_manifest.py --check
+          node tools/build/build_music_data.mjs --check
       - name: Journey audit (tile-level cold open -> dawn replay)
         run: python3 tools/maps/audit_journey.py
       - name: Python tools compile (builders, runners, asset tools)

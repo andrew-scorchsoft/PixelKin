@@ -1228,3 +1228,34 @@ body.lb-open { overflow: hidden; }
     .prose { grid-template-columns: 1fr; }
     .lore-aside { position: static; }
 }
+
+/* ---------------------------------------------------------------- music page */
+.music-group { max-width: var(--maxw); margin: 0 auto 2.5rem; }
+.music-group-title {
+    font-family: var(--pixel); font-size: 13px; color: var(--diamond);
+    margin: 0 0 1rem; line-height: 1.6;
+}
+.music-tracks { list-style: none; display: grid; gap: 0.75rem; }
+.music-track {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    background: var(--panel); border: 1px solid var(--panel-edge); border-radius: 10px;
+    padding: 0.9rem 1.1rem;
+}
+.music-track.is-playing { border-color: var(--fire); box-shadow: 0 0 0 1px var(--fire) inset; }
+.music-title { font-family: var(--pixel); font-size: 11px; line-height: 1.6; color: var(--bone); }
+.music-where { color: var(--dim); font-size: 0.85rem; margin-top: 0.25rem; }
+.music-mood { color: var(--bone); opacity: 0.85; font-size: 0.9rem; margin-top: 0.35rem; font-style: italic; }
+.music-buttons { display: flex; gap: 0.5rem; flex-shrink: 0; }
+.music-btn {
+    font-family: var(--pixel); font-size: 9px; cursor: pointer; white-space: nowrap;
+    color: var(--bone); background: var(--deepblue); border: 1px solid var(--panel-edge);
+    border-radius: 6px; padding: 0.6rem 0.8rem;
+}
+.music-btn:hover { border-color: var(--diamond); }
+.music-btn-remaster { border-color: rgba(255, 138, 61, 0.55); }
+.music-btn.is-active { background: var(--fire); color: var(--night); border-color: var(--fire); }
+.music-soon { font-size: 0.8rem; color: var(--dim); align-self: center; }
+@media (max-width: 640px) {
+    .music-track { flex-direction: column; align-items: stretch; }
+    .music-buttons { justify-content: flex-start; flex-wrap: wrap; }
+}

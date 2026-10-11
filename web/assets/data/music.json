@@ -1,0 +1,500 @@
+{
+ "_generated": "tools/build/build_music_data.mjs",
+ "groups": [
+  {
+   "title": "South — the blue-hour start",
+   "tracks": [
+    {
+     "id": "tinderwick-a",
+     "title": "Tinderwick",
+     "where": "Tinderwick · Tinderwick Lumenary · The Beacon — Floor I · The Beacon — Floor II · The Beacon — Lantern Room · Vesper Crossroads · Vesper Crossroads Inn · Lanternway · Tinderwick Spoke · Lanternway · Lowleaf Spoke · Lanternway · Galehigh Spoke · Lanternway · Nightreach Spoke · Hearthfall",
+     "mood": "The hometown lullaby — lanterns in the dark, cosy and a little homesick. The source of the Vesper motif.",
+     "classic": "play/assets/audio/music/tinderwick-a.mp3",
+     "remaster": "play/assets/audio/music/remaster/tinderwick-a.mp3",
+     "loop_start": 13.0264
+    },
+    {
+     "id": "tinderwick-b",
+     "title": "Apprentice's House",
+     "where": "Apprentice's House · Tinderwick General Store",
+     "mood": "",
+     "classic": "play/assets/audio/music/tinderwick-b.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "tinderwick-c",
+     "title": "Duskapple Orchard",
+     "where": "Duskapple Orchard",
+     "mood": "",
+     "classic": "play/assets/audio/music/tinderwick-c.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "dimglass-coast-a",
+     "title": "Dimglass Coast",
+     "where": "Dimglass Coast · Pearlmoor Quay · Wrackline Path · Lanternfall Road · Pearlmoor Breakwater · Pearlmoor Tide Lumenary · Pearlmoor Chandlery · Pearlmoor Quayside Inn · The Lifting House · Gullcry Rock",
+     "mood": "The road that teaches you to wander — brisk, salt-aired, optimistic; the hometown tune breaking into a stride.",
+     "classic": "play/assets/audio/music/dimglass-coast-a.mp3",
+     "remaster": "play/assets/audio/music/remaster/dimglass-coast-a.mp3",
+     "loop_start": 11.819
+    },
+    {
+     "id": "dimglass-coast-c",
+     "title": "Tideglass Cavern",
+     "where": "Tideglass Cavern · Tideglass Gallery · The Under-Lane",
+     "mood": "",
+     "classic": "play/assets/audio/music/dimglass-coast-c.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "pearlmoor-blessing",
+     "title": "The Tide blessing",
+     "where": "",
+     "mood": "",
+     "classic": "play/assets/audio/music/pearlmoor-blessing.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "pearlmoor-quay-b",
+     "title": "Hillside Allotments",
+     "where": "Hillside Allotments · Lightkeeper's Point",
+     "mood": "",
+     "classic": "play/assets/audio/music/pearlmoor-quay-b.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "pearlmoor-quay-c",
+     "title": "The Old Light — The Winding Room",
+     "where": "The Old Light — The Winding Room",
+     "mood": "",
+     "classic": "play/assets/audio/music/pearlmoor-quay-c.mp3",
+     "remaster": null,
+     "loop_start": null
+    }
+   ]
+  },
+  {
+   "title": "East — wonder & discovery",
+   "tracks": [
+    {
+     "id": "saltreach-fen-a",
+     "title": "Saltreach Fen",
+     "where": "Saltreach Fen",
+     "mood": "",
+     "classic": "play/assets/audio/music/saltreach-fen-a.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "saltreach-fen-b",
+     "title": "Saltreach Deeps",
+     "where": "Saltreach Deeps",
+     "mood": "",
+     "classic": "play/assets/audio/music/saltreach-fen-b.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "saltreach-fen-c",
+     "title": "Sunkbell Shallows",
+     "where": "Sunkbell Shallows",
+     "mood": "",
+     "classic": "play/assets/audio/music/saltreach-fen-c.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "lowleaf-hollow-a",
+     "title": "Lowleaf Hollow",
+     "where": "Lowleaf Hollow · Gloamwood Dell",
+     "mood": "",
+     "classic": "play/assets/audio/music/lowleaf-hollow-a.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "lowleaf-hollow-b",
+     "title": "The Wanderwood",
+     "where": "The Wanderwood · The Far Side · Lowleaf Verdant Lumenary · Lowleaf Guest-bower · Georgina's Cottage",
+     "mood": "",
+     "classic": "play/assets/audio/music/lowleaf-hollow-b.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "lowleaf-hollow-c",
+     "title": "The Sounding Cave",
+     "where": "The Sounding Cave · Glowmoss Deep · Glowmoss Deep B1F · Spore Grotto · Grovefall",
+     "mood": "",
+     "classic": "play/assets/audio/music/lowleaf-hollow-c.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "cinderhead-mine-a",
+     "title": "Cinderhead Mine",
+     "where": "Cinderhead Mine",
+     "mood": "",
+     "classic": "play/assets/audio/music/cinderhead-mine-a.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "cinderhead-mine-b",
+     "title": "Cinderhead Stone Lumenary",
+     "where": "Cinderhead Stone Lumenary",
+     "mood": "",
+     "classic": "play/assets/audio/music/cinderhead-mine-b.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "cinderhead-mine-c",
+     "title": "Cinderhead Deep",
+     "where": "Cinderhead Deep · Cinderhead Deep B1F · Cinderhead Deep B2F",
+     "mood": "",
+     "classic": "play/assets/audio/music/cinderhead-mine-c.mp3",
+     "remaster": null,
+     "loop_start": null
+    }
+   ]
+  },
+  {
+   "title": "North — energy & cold beauty",
+   "tracks": [
+    {
+     "id": "galehigh-terraces-a",
+     "title": "Galehigh Terraces",
+     "where": "Galehigh Terraces · Galehigh Skyloft",
+     "mood": "",
+     "classic": "play/assets/audio/music/galehigh-terraces-a.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "galehigh-terraces-b",
+     "title": "Galehigh Storm Lumenary",
+     "where": "Galehigh Storm Lumenary · The Steady Gust Inn · Terrace Cottage · The Kite-Maker's",
+     "mood": "",
+     "classic": "play/assets/audio/music/galehigh-terraces-b.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "windward-stair-a",
+     "title": "Windward Stair",
+     "where": "Windward Stair · The Wind-Eye · Thunderroost · Stormfall",
+     "mood": "",
+     "classic": "play/assets/audio/music/windward-stair-a.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "pale-vault-glacier-a",
+     "title": "Pale Vault Glacier",
+     "where": "Pale Vault Glacier",
+     "mood": "",
+     "classic": "play/assets/audio/music/pale-vault-glacier-a.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "pale-vault-glacier-b",
+     "title": "Pale Vault Frost Lumenary",
+     "where": "Pale Vault Frost Lumenary · The Held Flame Inn · Glacier Cottage",
+     "mood": "",
+     "classic": "play/assets/audio/music/pale-vault-glacier-b.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "pale-vault-glacier-c",
+     "title": "Pale Vault Undercroft",
+     "where": "Pale Vault Undercroft · The Hourfold",
+     "mood": "",
+     "classic": "play/assets/audio/music/pale-vault-glacier-c.mp3",
+     "remaster": null,
+     "loop_start": null
+    }
+   ]
+  },
+  {
+   "title": "West — reaching for dawn",
+   "tracks": [
+    {
+     "id": "hushfrost-pass-a",
+     "title": "Hushfrost Pass",
+     "where": "Hushfrost Pass · Aurora Hollow",
+     "mood": "",
+     "classic": "play/assets/audio/music/hushfrost-pass-a.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "sunken-solarium-a",
+     "title": "The Old Light — The Lobby of Groaners",
+     "where": "The Old Light — The Lobby of Groaners · The Old Light — The Late Laugh · The Old Light — Intermission · The Old Light — The Backwards Inn · Sunken Solarium",
+     "mood": "",
+     "classic": "play/assets/audio/music/sunken-solarium-a.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "sunken-solarium-b",
+     "title": "Solar Lumenary",
+     "where": "Solar Lumenary",
+     "mood": "",
+     "classic": "play/assets/audio/music/sunken-solarium-b.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "sunken-solarium-c",
+     "title": "The Old Light — The Gallery of Confident Facts",
+     "where": "The Old Light — The Gallery of Confident Facts · The Unrisen Stair",
+     "mood": "",
+     "classic": "play/assets/audio/music/sunken-solarium-c.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "sunvault-climb-a",
+     "title": "Sunvault Climb",
+     "where": "Sunvault Climb · Sunfall",
+     "mood": "",
+     "classic": "play/assets/audio/music/sunvault-climb-a.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "sunvault-climb-c",
+     "title": "Helia Vault",
+     "where": "Helia Vault",
+     "mood": "",
+     "classic": "play/assets/audio/music/sunvault-climb-c.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "nightreach-observatory-a",
+     "title": "Nightreach Observatory",
+     "where": "Nightreach Observatory",
+     "mood": "",
+     "classic": "play/assets/audio/music/nightreach-observatory-a.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "nightreach-observatory-b",
+     "title": "Lunar Lumenary",
+     "where": "Lunar Lumenary · The Long Watch Inn · Watcher's Cottage",
+     "mood": "",
+     "classic": "play/assets/audio/music/nightreach-observatory-b.mp3",
+     "remaster": null,
+     "loop_start": null
+    }
+   ]
+  },
+  {
+   "title": "The outer ring",
+   "tracks": [
+    {
+     "id": "coldfog-marches-a",
+     "title": "Coldfog Marches",
+     "where": "Coldfog Marches · Drownlight Beacon · Hollowfen Stillworks · Murkfall",
+     "mood": "",
+     "classic": "play/assets/audio/music/coldfog-marches-a.mp3",
+     "remaster": null,
+     "loop_start": null
+    }
+   ]
+  },
+  {
+   "title": "Central — darkest, then the turn",
+   "tracks": [
+    {
+     "id": "penumbra-ring-a",
+     "title": "Penumbra Ring",
+     "where": "Penumbra Ring · Starwell",
+     "mood": "",
+     "classic": "play/assets/audio/music/penumbra-ring-a.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "umbral-spire-a",
+     "title": "Umbral Spire — Summit",
+     "where": "Umbral Spire — Summit",
+     "mood": "",
+     "classic": "play/assets/audio/music/umbral-spire-a.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "umbral-spire-b",
+     "title": "Umbral Spire",
+     "where": "Umbral Spire · Umbral Spire — Null-Works · Umbral Spire — High Gallery",
+     "mood": "",
+     "classic": "play/assets/audio/music/umbral-spire-b.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "umbral-spire-c",
+     "title": "Umbral Spire",
+     "where": "",
+     "mood": "",
+     "classic": "play/assets/audio/music/umbral-spire-c.mp3",
+     "remaster": null,
+     "loop_start": null
+    }
+   ]
+  },
+  {
+   "title": "Epilogue",
+   "tracks": [
+    {
+     "id": "dawnstead-a",
+     "title": "Dawnstead",
+     "where": "Dawnstead",
+     "mood": "",
+     "classic": "play/assets/audio/music/dawnstead-a.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "dawn-breaks",
+     "title": "Dawn breaks",
+     "where": "",
+     "mood": "",
+     "classic": "play/assets/audio/music/dawn-breaks.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "ending-credits",
+     "title": "Ending credits",
+     "where": "",
+     "mood": "",
+     "classic": "play/assets/audio/music/ending-credits.mp3",
+     "remaster": null,
+     "loop_start": null
+    }
+   ]
+  },
+  {
+   "title": "Battles",
+   "tracks": [
+    {
+     "id": "battle-boss-eclipse",
+     "title": "Battle — the last stand",
+     "where": "",
+     "mood": "",
+     "classic": "play/assets/audio/music/battle-boss-eclipse.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "battle-emberfall",
+     "title": "Battle — route trainers & Lampwardens",
+     "where": "",
+     "mood": "",
+     "classic": "play/assets/audio/music/battle-emberfall.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "battle-hours",
+     "title": "Battle — the Three Hours",
+     "where": "",
+     "mood": "",
+     "classic": "play/assets/audio/music/battle-hours.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "battle-main-dusk-duel",
+     "title": "Battle — wild kin & trainers",
+     "where": "",
+     "mood": "",
+     "classic": "play/assets/audio/music/battle-main-dusk-duel.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "battle-nightfall",
+     "title": "Battle — Vigilants & the Hollowing",
+     "where": "",
+     "mood": "",
+     "classic": "play/assets/audio/music/battle-nightfall.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "battle-veil",
+     "title": "Battle — Wren, your rival",
+     "where": "",
+     "mood": "",
+     "classic": "play/assets/audio/music/battle-veil.mp3",
+     "remaster": null,
+     "loop_start": null
+    }
+   ]
+  },
+  {
+   "title": "Story & fanfares",
+   "tracks": [
+    {
+     "id": "title",
+     "title": "Title screen",
+     "where": "",
+     "mood": "",
+     "classic": "play/assets/audio/music/title.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "coldopen-foreboding",
+     "title": "The cold open",
+     "where": "",
+     "mood": "",
+     "classic": "play/assets/audio/music/coldopen-foreboding.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "gleam-emotional",
+     "title": "A Gleam relit",
+     "where": "",
+     "mood": "",
+     "classic": "play/assets/audio/music/gleam-emotional.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "gleam-fanfare",
+     "title": "A Gleam relit (fanfare)",
+     "where": "",
+     "mood": "",
+     "classic": "play/assets/audio/music/gleam-fanfare.mp3",
+     "remaster": null,
+     "loop_start": null
+    },
+    {
+     "id": "sting-hour",
+     "title": "The Hours (sting)",
+     "where": "",
+     "mood": "",
+     "classic": "play/assets/audio/music/sting-hour.mp3",
+     "remaster": null,
+     "loop_start": null
+    }
+   ]
+  }
+ ]
+}

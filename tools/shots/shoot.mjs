@@ -404,6 +404,20 @@ async function shoot(page, url, shot) {
     });
     if (at.map !== shot.map) throw new Error(`landed on ${at.map}, expected ${shot.map}`);
 
+    if (process.env.PROBE_MUSIC) {
+      // Debug aid: report the music bed (intro + looping body for a remaster).
+      for (const t of [0, Number(process.env.PROBE_MUSIC) || 0]) {
+        if (t) await page.waitForTimeout(t);
+        const state = await page.evaluate(() =>
+          window.__pixelkin.sound.getAllPlaying().map((snd) => ({
+            key: snd.key, marker: snd.currentMarker?.name ?? null, loop: snd.loop,
+            seek: Math.round(snd.seek * 100) / 100, volume: Math.round(snd.volume * 100) / 100,
+          })),
+        );
+        console.log(`  music @+${t}ms: ${JSON.stringify(state)}`);
+      }
+    }
+
     for (const step of shot.steps) await walk(page, step);
 
     if (shot.greet) {

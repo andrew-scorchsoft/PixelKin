@@ -18,6 +18,51 @@ ElevenLabs Music API; this document tells you when and how to use it.
 Do **not** use this for: sound effects (menu blips, hit sounds, cries) or
 spoken dialogue — those are different ElevenLabs products, not the Music API.
 
+## The remastered score — the house method (use this for ANY game cue)
+
+Every area/battle/story cue in the game has a **remastered** version composed with
+this method (the Settings → Soundtrack default; `classic` = the chip renders from
+generate-midi). A one-line prompt gives a texture that idles ("ambient, minimalist,
+repetitive" was ElevenLabs' own read-back of our first good take); what makes a
+cue feel iconic is **form + a shared motif + a seamless loop**, so:
+
+1. **Write a cue sheet, not a prompt** — `assets/audio/elevenlabs/<id>/spec.json`
+   (format at the top of `tools/audio/remaster_track.py`; worked examples
+   `tinderwick-a`, `dimglass-coast-a`). Sections in order: a **play-once intro**
+   (2–4 bars; bold call for a town/route, quiet entrance for a cave, the percussive
+   "battle start" for a battle) → **Theme → Theme reprise (+counter-melody) →
+   contrasting Bridge (related mode) → Theme return** whose last bar leads back in.
+   8–13 concrete `core_styles` (register first: "16-bit SNES-era RPG soundtrack",
+   "retro sampled-chip instruments"; then BPM, key, metre, instruments + roles,
+   mood words, "strong singable melody"). Mood brief = `docs/world/music-direction.md`
+   + WHERE the cue plays (grep the id in `maps.ts`/content) + the classic spec's
+   tempo/key/metre. Never a franchise/composer name (the checker rejects them).
+2. **The leitmotif.** `motif.json` points at the stored Tinderwick theme. A spec's
+   `motif: {strength}` conditions its first chunk on it (API cap: 30 s reference),
+   so the whole score shares one tune. Conditioning carries PALETTE too: `high`
+   for hometown/dawn/ending/title/Gleam, `medium` towns + routes, `low` caves and
+   drained places, `low`/none battles.
+3. **Run** `./venv/bin/python tools/audio/remaster_track.py <id>` (`--check-spec`
+   first). It composes the take (stored for inpainting), then the cheap LOOP GLUE:
+   re-renders only the last 20 s + a generated 4 s `[Turnaround]` + the theme's
+   opening, splices that back onto the take, and `make_loop.py --keep-intro` cuts
+   the file to intro + body and records `loop_start` (seam ≤ 0.45; ours land
+   0.06–0.17). Then `python3 tools/audio/build_remaster_manifest.py` and
+   `node tools/build/build_music_data.mjs` (CI fails if either is stale).
+4. **Engine contract:** `MusicDirector` maps `music/<id>.mp3` → `music/remaster/<id>.mp3`
+   when the style is remastered and the manifest lists it; the intro plays ONCE
+   (two sounds on one buffer, the body scheduled `delay: loop_start` on the audio
+   clock), re-entering a map never restarts it, and a missing remaster falls back
+   to classic. Oneshots (`playSting`) never loop.
+
+**Cost + limits (checked 2026-10):** ~20 credits per generated second; a remaster
+is ≈ 80–100 s take + ≈ 34 s glue ≈ 2,300 credits. 2 concurrent requests per
+account — `generate_music.py` holds a machine-wide 2-slot lock, so any number of
+agents can run the pipeline in parallel without 429s. Check the balance with
+`GET /v1/user/subscription` and `GET /v1/usage/character-stats` (music counter lags).
+Reference chunks are RE-SYNTHESISED, not sample-copied (tens-of-ms drift) — align
+by cross-correlation, never trust plan milliseconds for a splice.
+
 ## Prerequisites
 
 - `ELEVENLABS_API_KEY` must be set in the environment (or a `.env` at the repo

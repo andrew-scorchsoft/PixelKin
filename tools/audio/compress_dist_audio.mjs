@@ -19,6 +19,7 @@ import { join, extname } from 'node:path';
 
 const DIST_AUDIO = 'dist/assets/audio';
 const BITRATE = '64k'; // mono; chiptune is a few square waves — 64k is plenty.
+const REMASTER_BITRATE = '96k'; // stereo, for music/remaster/ (the composed score)
 
 function works(bin) {
   try {
@@ -73,13 +74,17 @@ let after = 0;
 for (const f of files) {
   before += statSync(f).size;
   const tmp = `${f}.tmp.mp3`;
-  execFileSync(FFMPEG, ['-y', '-i', f, '-ac', '1', '-b:a', BITRATE, '-loglevel', 'error', tmp]);
+  // The remastered score is real stereo arrangement (not chip squares): keep it
+  // stereo at a higher rate; the classic chip renders stay 64k mono.
+  const remaster = /[\\/]remaster[\\/]/.test(f);
+  const args = remaster ? ['-ac', '2', '-b:a', REMASTER_BITRATE] : ['-ac', '1', '-b:a', BITRATE];
+  execFileSync(FFMPEG, ['-y', '-i', f, ...args, '-loglevel', 'error', tmp]);
   rmSync(f);
   renameSync(tmp, f);
   after += statSync(f).size;
 }
 
 console.log(
-  `compress_dist_audio: ${files.length} mp3 @ ${BITRATE} mono — ` +
+  `compress_dist_audio: ${files.length} mp3 @ ${BITRATE} mono (remaster ${REMASTER_BITRATE} stereo) — ` +
     `${mb(before)} MB -> ${mb(after)} MB (saved ${mb(before - after)} MB)`,
 );
