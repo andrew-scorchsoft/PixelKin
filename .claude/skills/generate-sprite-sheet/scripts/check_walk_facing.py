@@ -4,11 +4,13 @@ when the walk CYCLES (a stray cell in the left row facing right/forward, an up
 row cell that shows a face).
 
 Per side-row frame we ask two independent questions:
-  1. Head-lean: where does the head's visible bulk sit relative to the body
-     axis? A profile pushes the face/nose forward; the sign must match the
-     row's direction for every cell.
-  2. Mirror-consistency: is the frame more like its row-mates than like their
-     MIRRORS? A cell drawn facing the other way is closer to the mirrors.
+  1. Whole-row direction (WARN only): which side of the head the face sits on
+     (or, with no skin showing, the head's lean). Calibrated 2026-10 against the
+     shipped cast, pixel tests mis-call this both ways (hair buns, packs, hands,
+     pale hair), so the whole-row direction is confirmed by EYE in the GIF.
+  2. Mirror-consistency (ERROR): is the frame more like its row-mates than like
+     their MIRRORS? A cell drawn facing the other way is closer to the mirrors.
+     This is THE walk-cycle bug (one stray cell) and it is reliable.
   3. Symmetry: a side-row cell that's nearly its own mirror is a FRONT view
      smuggled into a profile row.
 The up row gets a skin-tone WARNING only (hair colour fools pixel tests —
@@ -63,6 +65,36 @@ def head_lean(im):
     return cx(y0, hy) - cx(hy, y1)
 
 
+def face_side(im):
+    """Signed x offset of the head band's SKIN centroid from the head band's
+    opaque centroid (negative = the face sits on the left = facing left), or
+    None when too little skin shows (helmets, hoods, back views). A profile's
+    face is on the leading side; hair buns, hoods and packs trail behind it,
+    which is why this beats raw head-lean when skin is visible."""
+    a = im.split()[3]; bb = a.getbbox()
+    if not bb:
+        return None
+    x0, y0, x1, y1 = bb
+    hy = y0 + max(1, int((y1 - y0) * 0.4))
+    rgba = im.convert("RGBA").load()
+    sx = sn = ox = on = 0
+    for y in range(y0, hy):
+        for x in range(x0, x1):
+            r, g, b, al = rgba[x, y]
+            if al == 0:
+                continue
+            ox += x; on += 1
+            if _is_skin(r, g, b):
+                sx += x; sn += 1
+    if sn < 4 or not on:
+        return None
+    return sx / sn - ox / on
+
+
+def _is_skin(r, g, b):
+    return r > 150 and g > 95 and b > 65 and r > g > b and 35 < r - b < 120 and g - b > 15
+
+
 def skin_ratio(im):
     """Fraction of head-band pixels that look like a lit skin tone (warm, mid-light)."""
     a = im.split()[3]; bb = a.getbbox()
@@ -78,7 +110,7 @@ def skin_ratio(im):
             if al == 0:
                 continue
             tot += 1
-            if r > 150 and g > 95 and b > 65 and r > g > b and 35 < r - b < 120 and g - b > 15:
+            if _is_skin(r, g, b):
                 sk += 1
     return sk / tot if tot else 0.0
 
@@ -106,8 +138,19 @@ def check(path, fw=32, fh=32):
                     errs.append(f"{name} row cell {ci}: nearly symmetric (sym={sym:.1f}) — a FRONT/BACK "
                                 f"view in a profile row")
             mean_lean = sum(leans) / len(leans)
-            if abs(mean_lean) >= 0.4 and (mean_lean > 0) != (want > 0):
-                errs.append(f"{name} row leans {'right' if mean_lean > 0 else 'left'} "
+            faces = [v for v in (face_side(f) for f in row) if v is not None]
+            detail[name]["face_side"] = [round(v, 2) for v in faces]
+            if len(faces) >= 2:
+                # The face is visible: trust which side it's on over the head's bulk
+                # (a hair bun / hood / pack trails behind and skews the lean).
+                mean_face = sum(faces) / len(faces)
+                if abs(mean_face) >= 0.5 and (mean_face > 0) != (want > 0):
+                    warns.append(f"{name} row: the face may sit on the {'right' if mean_face > 0 else 'left'} "
+                                f"of the head ({mean_face:+.2f}px) — the whole row faces the wrong way")
+                elif abs(mean_face) < 0.5:
+                    warns.append(f"{name} row face-side is ambiguous ({mean_face:+.2f}px) — eyeball the GIF")
+            elif abs(mean_lean) >= 0.4 and (mean_lean > 0) != (want > 0):
+                warns.append(f"{name} row leans {'right' if mean_lean > 0 else 'left'} "
                             f"(head centroid {mean_lean:+.2f}px) — the whole row may face the wrong way")
             elif abs(mean_lean) < 0.4:
                 warns.append(f"{name} row head-lean is ambiguous ({mean_lean:+.2f}px) — eyeball the GIF")
