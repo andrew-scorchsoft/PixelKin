@@ -73,7 +73,7 @@ m: dict = {
     "warps": [
         # the notch back to Glowmoss Deep B1F (lands beside its grotto mouth)
         {"id": "to_b1f", "at": {"tx": RETURN_DOOR[0], "ty": RETURN_DOOR[1]},
-         "trigger": "interact", "to_map": "glowmoss_deep_b1f", "to": {"tx": 6, "ty": 17},
+         "trigger": "step_on", "to_map": "glowmoss_deep_b1f", "to": {"tx": 6, "ty": 17},
          "facing": "up", "transition": "door"},
     ],
     "npcs": [],

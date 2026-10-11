@@ -91,7 +91,7 @@ Lamp-down vigil, Coldfog's drained land).
   The shared tile set stays frozen. Tile fills can't draw a strike (they square off into a
   patch that reads as a texture error), so the crater is one drawn decal.
 - **E1–P1** are surgical adds to shipped maps via [`tools/maps/add_peril_thread.py`](../../../tools/maps/add_peril_thread.py),
-  an idempotent, id-keyed upsert in the add_vigil_scars pattern. **Re-run it after rebuilding
+  an idempotent, id-keyed upsert (the `add_hand_placed.py` pattern). **Re-run it after rebuilding
   any of those maps.** Use `--check` to report drift without writing.
 - **Words**: the `THE PERIL THREAD (R9)` blocks in `content/scripts.ts` and
   `content/dialogue.ts`, plus the LORE entry `fallen_stars` in `content/glossary.ts`. Each

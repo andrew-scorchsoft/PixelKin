@@ -1127,12 +1127,16 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   the same trainer twice (the "fights you twice" bug — hit every sight/script trainer: beacon
   keepers, Wren, route beats). The enclosing handler (`engageTrainer`/`handleTrigger`/`interact`)
   clears `modal` once the whole scene finishes.
-- **Shipped map JSONs carry post-build surgical additions their builders DON'T (2026-06):**
-  the R3 vigil host warps (tinderwick/spore_grotto/thunderroost/sunvault_climb_ii/
-  coldfog_marches_ii), the R4 day-form zone pairs (22 maps) and hand-added NPCs/triggers
-  (P1 letter recipients, Oriel's terrace set, the summit re-dress). Re-running an old
-  builder REGRESSES them — diff the rebuilt JSON against git HEAD and re-apply, or edit
-  the shipped JSON surgically instead.
+- **The map pipeline REPRODUCES every shipped map — keep it that way (2026-10).** Shipped JSONs
+  are written by the builder, then four id-keyed runners IN THIS ORDER: `add_hand_placed.py`
+  (data `hand_placed_data.py`: R3 vigil host warps, R4 day-form zone pairs, post-build zone
+  retunes, P1 letters, Oriel, the summit/Spire re-dress, Andrew, purses, egg trail, Worry Club,
+  S4/S5 pieces) → `add_peril_thread.py` → `add_world_craft.py` → `vary_trees.py`.
+  `python3 tools/maps/check_rebuild.py` (~50 s, in CI) rebuilds ALL of it in a scratch worktree
+  and FAILs any map that differs from shipped (per-entry diff). NEVER hand-edit a shipped map:
+  put the change in its builder or the owning runner's data. A builder tweak that must not
+  reshuffle rng-rolled deco goes AFTER the scatter pass (the Dimglass easing pattern); a hand-
+  picked tile variant rides `mk.finalize(pin_base={(x, y): name})`.
 - **Map audits grant ALL Gifts for reachability — so a foot-only dead-end is invisible to them.**
   `audit_flow`/`audit_region`'s reach pass BFS with every Lantern Gift, which hid a real progression
   blocker: in `dimglass_coast` a one-way return ledge + a canopy tree's solid trunk footprint
@@ -1178,11 +1182,10 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   box pools (water filling its bounding box, ≥16 tiles); it's at 0 FAIL / 0 warn across all 46
   outdoor maps — keep it there. Plus an in-game shot review (`tools/shots/shoot.mjs`). Reviews
   behind this pass: `docs/reviews/world-craft-panel.md`, `docs/reviews/story-depth-panel.md`.
-- **World-craft lives in per-region upsert modules — shipped maps are written by THREE runners.**
-  `tools/maps/worldcraft/<region>.py` (ambience, regional-cast `sprites` swaps, props, NPCs) via
-  `add_world_craft.py --region <r>`; the peril thread via `add_peril_thread.py`; builders. After
-  ANY map edit, both runners' `--check` must show 0 drift; if one would revert your change, the
-  change belongs in that runner's data (the Galehigh notice-reader precedent). New scripts go in
+- **World-craft lives in per-region upsert modules** (`tools/maps/worldcraft/<region>.py`:
+  ambience, regional-cast `sprites` swaps, props, NPCs) via `add_world_craft.py --region <r>` —
+  one of the four runners above. After ANY map edit, every runner's `--check` must show 0
+  drift; if one would revert your change, the change belongs in that runner's data (the Galehigh notice-reader precedent). New scripts go in
   `content/regions/<region>.ts`. On pre-Chickenpig maps the runner only accepts ambience, sprite
   swaps and props that pass `prove_off_lane` (no lane, no longer walks, no sealed dry lane).
 - **The regional cast** (21 keys: fisher_*, miner_*, kite_weaver, hollowing_acolyte, innkeeper…)

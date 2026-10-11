@@ -174,7 +174,8 @@ def scatter_decor(deco, base, w, h, rng, *, density=0.10, avoid=None, flowers=0.
 
 
 # ---- the standing build pipeline --------------------------------------------
-def finalize(m: dict, *, scale: int = 3, render: bool = True) -> bool:
+def finalize(m: dict, *, scale: int = 3, render: bool = True,
+             pin_base: dict[tuple[int, int], str] | None = None) -> bool:
     """Write the map, expand terrain -> base (variant autotiling), strip the terrain
     layers (runtime wants plain gids), re-write, render a QA PNG, validate, run the
     cross-map WARP AUDIT (wide-entrance coverage, landings, round trips) and the
@@ -193,6 +194,13 @@ def finalize(m: dict, *, scale: int = 3, render: bool = True) -> bool:
     # strip terrain layers — the engine reads plain gids; terrain layers were authoring-only.
     m2 = json.loads(map_path.read_text())
     m2["layers"] = [ly for ly in m2["layers"] if ly.get("role") != "terrain"]
+    # `pin_base`: {(x, y): tile name} written over the EXPANDED base — for the few
+    # cells a shipped map hand-picked (a variant, a mown tile) that the autotiler
+    # wouldn't choose, so a rebuild reproduces the shipped map exactly.
+    if pin_base:
+        base = next(ly for ly in m2["layers"] if ly.get("role") == "base")["data"]
+        for (x, y), name in pin_base.items():
+            base[y * m2["width"] + x] = gid(name)
     map_path.write_text(json.dumps(m2, indent=2) + "\n")
 
     if render:

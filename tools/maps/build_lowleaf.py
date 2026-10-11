@@ -184,27 +184,36 @@ m: dict = {
         {"id": "to_fen_ii_e", "at": {"tx": 15, "ty": 31}, "trigger": "step_on",
          "to_map": "saltreach_fen_ii", "to": {"tx": 16, "ty": 1}, "facing": "down",
          "transition": "fade"},
-        # west: the Lanternway spoke to the Vesper Crossroads (graph.ts)
+        # west: the Lanternway spoke (its real lane map, lanternway_lowleaf) home
+        # to the Vesper Crossroads (graph.ts)
         {"id": "to_crossroads", "at": {"tx": 0, "ty": 14}, "trigger": "step_on",
-         "to_map": "vesper_crossroads", "to": {"tx": 19, "ty": 3}, "facing": "left",
+         "to_map": "lanternway_lowleaf", "to": {"tx": 25, "ty": 4}, "facing": "left",
          "transition": "fade"},
         {"id": "to_crossroads_s", "at": {"tx": 0, "ty": 15}, "trigger": "step_on",
-         "to_map": "vesper_crossroads", "to": {"tx": 19, "ty": 4}, "facing": "left",
+         "to_map": "lanternway_lowleaf", "to": {"tx": 25, "ty": 5}, "facing": "left",
          "transition": "fade"},
         # The Lumenary's double door. This cottage is drawn in 3/4 view, so the door
         # art sits LEFT of centre (cols 1-2 = tiles (9,8)/(10,8)); both art tiles warp
         # in. (Earlier the twin sat at (11,8) — a wall tile right of the door, a
         # phantom entry — while the door's own left half (9,8) stayed solid.)
-        {"id": "to_lumenary", "at": {"tx": 10, "ty": 8}, "trigger": "interact",
+        {"id": "to_lumenary", "at": {"tx": 10, "ty": 8}, "trigger": "step_on",
          "to_map": "lowleaf_lumenary", "to": {"tx": 8, "ty": 10}, "facing": "down",
-         "requires_flag": "flag:has_starter", "transition": "door"},
-        {"id": "to_lumenary_e", "at": {"tx": 9, "ty": 8}, "trigger": "interact",
+         "requires_flag": "flag:has_starter", "transition": "door",
+         "blocked_ref": "door.locked_lumenary"},
+        {"id": "to_lumenary_e", "at": {"tx": 9, "ty": 8}, "trigger": "step_on",
          "to_map": "lowleaf_lumenary", "to": {"tx": 8, "ty": 10}, "facing": "down",
-         "requires_flag": "flag:has_starter", "transition": "door"},
+         "requires_flag": "flag:has_starter", "transition": "door",
+         "blocked_ref": "door.locked_lumenary"},
         # the guest-bower (the town's rest point)
-        {"id": "to_bower", "at": {"tx": 24, "ty": 22}, "trigger": "interact",
+        {"id": "to_bower", "at": {"tx": 24, "ty": 22}, "trigger": "step_on",
          "to_map": "lowleaf_bower", "to": {"tx": 7, "ty": 9}, "facing": "down",
          "transition": "door"},
+        # E4 "The Sunniest House in the Dark": the NE path-mouth up to the
+        # Gloamwood Dell, opened by the hollow-neighbour's hook (post-Verdant)
+        {"id": "to_gloamwood", "at": {"tx": 26, "ty": 2}, "trigger": "step_on",
+         "to_map": "gloamwood_dell", "to": {"tx": 9, "ty": 12}, "facing": "up",
+         "requires_flag": "flag:q_east_georgina", "blocked_ref": "sign.lowleaf_gloamwood",
+         "transition": "fade"},
     ],
     "triggers": [
         # the ARRIVAL band — the Bloom reveal + grey-bed tease, on every

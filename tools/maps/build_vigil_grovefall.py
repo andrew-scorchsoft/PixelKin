@@ -12,7 +12,7 @@ glowmoss encounter zones in the 60-62 band (MYCOVAST #70 very rare — the
 register ledger's eastern single) · one starglass cache · NO rest point.
 
 Rooms are carved as overlapping RECTs joined by explicit corridors (the
-blob-edge-adjacency gotcha). Host edit (add_vigil_scars.py): spore_grotto
+blob-edge-adjacency gotcha). Host edit (add_hand_placed.py VIGIL_SCARS): spore_grotto
 (15,9) `to_vigil_grove`, `requires_flag: flag:vigil_reading_2`. Reuse:
 lowleaf-hollow-c loop + glowmoss-deep backdrops (the host's keys).
 

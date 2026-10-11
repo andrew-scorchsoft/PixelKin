@@ -15,7 +15,7 @@ BOGVAST #146 very rare — the register ledger's mirror-axis trio) · one
 starglass cache · NO rest point.
 
 Stacks the `coldfog_set` ACCENT tileset (fogcrag border — the host cluster's
-family). Host edit (add_vigil_scars.py): coldfog_marches_ii (14,23)
+family). Host edit (add_hand_placed.py VIGIL_SCARS): coldfog_marches_ii (14,23)
 `to_vigil_murk`, `requires_flag: flag:vigil_reading_5`. Reuse:
 coldfog-marches-a loop + backdrops (the host's keys).
 

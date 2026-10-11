@@ -107,14 +107,15 @@ PLACEMENTS: dict[str, dict] = {
             tall("ww_shrine_ledge", "windward_wind_shrine", (2, 14)),
             tall("ww_pine_ledge", "windward_bent_pine", (20, 14)),
             obj("ww_wreck_ledge", "windward_kite_wreck_b", (2, 17), 2, 2),
-            # the head: the lookout, a pine, a shrine below the wind-gap, flags, drifts
-            obj("ww_spyglass", "windward_spyglass", (10, 6), 2, 2),
+            # the head: a pine, a shrine below the wind-gap, flags, drifts — and the
+            # lookout (listed last: it was added after, and list order is shipped order)
             tall("ww_pine_head", "windward_bent_pine", (2, 7)),
             tall("ww_shrine_head", "windward_wind_shrine", (2, 4)),
             flags_line("ww_flags_head", (14, 6)),
             drift("ww_drift_head_a", (19, 9)),
             drift("ww_drift_head_b", (3, 12)),
             drift("ww_drift_head_c", (17, 12)),
+            obj("ww_spyglass", "windward_spyglass", (10, 6), 2, 2),
         ],
         "triggers": [
             cutscene("ww_cairn_foot", (4, 34), "script.windward_cairn_foot"),
@@ -123,9 +124,9 @@ PLACEMENTS: dict[str, dict] = {
             cutscene("ww_cairn_head", (6, 7), "script.windward_cairn_head"),
             cutscene("ww_cairn_summit", (18, 7), "script.windward_cairn_summit"),
             cutscene("ww_shelter_sit", (4, 31), "script.windward_shelter"),
-            cutscene("ww_spyglass_look", (10, 7), "script.windward_spyglass"),
             cutscene("ww_shrine_foot_look", (6, 34), "script.windward_shrine"),
             cutscene("ww_shrine_head_look", (3, 6), "script.windward_shrine"),
+            cutscene("ww_spyglass_look", (10, 7), "script.windward_spyglass"),
         ],
         "npcs": [
             ambient_kin("amb_flintbeak", (20, 34), 89, radius=1),

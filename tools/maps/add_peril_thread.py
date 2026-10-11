@@ -7,7 +7,7 @@ The thread's first beat (the fallen star in Duskapple Orchard) lives in that
 map's own builder (`build_duskapple_orchard.py`). Every LATER beat sits on a
 shipped map whose JSON carries post-build additions its builder doesn't (see
 CLAUDE.md), so they are applied here instead: an idempotent, id-keyed upsert of
-NPCs / objects / sign triggers (+ the sign's deco tile), the add_vigil_scars.py
+NPCs / objects / sign triggers (+ the sign's deco tile), the add_hand_placed.py
 pattern. Re-run it after ANY rebuild of one of these maps.
 
 Every beat is OPTIONAL COLOUR: nothing here gates a warp, blocks a lane or sets a

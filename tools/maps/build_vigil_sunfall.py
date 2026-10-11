@@ -14,7 +14,7 @@ encounter zones in the 64-66 band (DAWNWATCHER #129 and HELITHORN #119 very
 rare — the register ledger's western pair) · one starglass cache · NO rest
 point.
 
-Host edit (add_vigil_scars.py): sunvault_climb_ii (27,2) `to_vigil_sun`,
+Host edit (add_hand_placed.py VIGIL_SCARS): sunvault_climb_ii (27,2) `to_vigil_sun`,
 `requires_flag: flag:vigil_reading_4`. Reuse: sunvault-climb-a loop +
 backdrops (the host's keys).
 

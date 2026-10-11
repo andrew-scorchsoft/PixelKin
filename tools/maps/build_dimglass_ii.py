@@ -162,6 +162,15 @@ for (x, y) in sign_xy.values():
     deco[y * W + x] = gid("sign")
 mk.scatter_decor(deco, base, W, H, rng, density=0.14, avoid=avoid)
 
+# ---- the 2026-10 easing: the dark trail runs UNBROKEN through dune_crossing
+# (cols 9-10; the dunegrass band stays, optional — level-design §11 r7 waiver).
+# After the scatter pass on purpose: its rng stream (and so the shipped deco)
+# predates the easing (tools/maps/check_rebuild.py). Don't re-seal the lane.
+for y in (16, 17):
+    for x in (9, 10):
+        path[y * W + x] = 1
+        dunegrass[y * W + x] = 0
+
 # ---- assemble -------------------------------------------------------------------
 m = {
     "id": "dimglass_coast_ii", "display_name": "Dimglass Coast", "width": W, "height": H,
@@ -193,13 +202,13 @@ m = {
         {"id": "to_gullcry", "at": {"tx": 15, "ty": 12}, "trigger": "step_on",
          "to_map": "gullcry_rock", "to": {"tx": 4, "ty": 8}, "facing": "up",
          "requires_ability": "tidecall", "transition": "fade"},
-        # NOTE (Hours pass, 2026-06): the shipped JSON has drifted AHEAD of this
-        # builder (door-convention pass: step_on + blocked_ref) — reconcile
-        # before any re-run. facing is 'right': tideglass_cavern is BUILT and
-        # its interior opens EAST of the pinned (4,8) landing.
-        {"id": "to_tideglass", "at": {"tx": 2, "ty": 13}, "trigger": "interact",
+        # (door convention: walk-onto + a diegetic locked line). facing is
+        # 'right': tideglass_cavern is BUILT and its interior opens EAST of the
+        # pinned (4,8) landing.
+        {"id": "to_tideglass", "at": {"tx": 2, "ty": 13}, "trigger": "step_on",
          "to_map": "tideglass_cavern", "to": {"tx": 4, "ty": 8}, "facing": "right",
-         "requires_ability": "glimmerstep", "transition": "door"},
+         "requires_ability": "glimmerstep", "transition": "door",
+         "blocked_ref": "door.locked_glimmerstep"},
     ],
     "triggers": [
         {"id": "sign_gullcry", "kind": "sign", "at": {"tx": sign_xy["sign_gullcry"][0], "ty": sign_xy["sign_gullcry"][1]},

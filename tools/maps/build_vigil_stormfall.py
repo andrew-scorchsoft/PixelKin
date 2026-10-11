@@ -13,7 +13,7 @@ ledger's northern single) · one cache (`starglass_shard` x2 — the
 storm-tithe's second half; the script also pays the 5,000w jackpot) · NO
 rest point.
 
-Host edit (add_vigil_scars.py): thunderroost (5,2) `to_vigil_storm`,
+Host edit (add_hand_placed.py VIGIL_SCARS): thunderroost (5,2) `to_vigil_storm`,
 `requires_flag: flag:vigil_reading_3`. Reuse: windward-stair-a loop +
 backdrops (the host's keys).
 
@@ -92,8 +92,11 @@ m: dict = {
         {"id": "star_shard", "sprite": "vigil_star_shard",
          "at": {"tx": SHARD_AT[0], "ty": SHARD_AT[1]}, "w": 2, "h": 2, "overhang": 1},
         # the old fliers' cairn on the shelf approach (the wind country's marker)
+        # (laid 1x2 here: the deco drift below was rolled around that footprint
+        # and the shipped deco is the truth — it is widened to the manifest's 2x3
+        # once the dressing is done, see SHELF_CAIRN_FOOTPRINT)
         {"id": "shelf_cairn", "sprite": "windward_cairn", "at": {"tx": 4, "ty": 9},
-         "w": 2, "h": 3, "overhang": 1},   # the manifest's 2x3 (was 1x2: drawn != collided)
+         "w": 1, "h": 2},
     ],
     "warps": [
         # the drop back to the roost — lands ON thunderroost's to_vigil_storm
@@ -185,6 +188,12 @@ dress(m, deco, W, H, rng, blocked=[glacier, tuft],
              scar("warm_scar_a", (9, 8)), scar("warm_scar_b", (18, 12))],
       drift=["g_pebble", "greymoss_a", "greymoss_b", "g_pebble"],
       density=0.30, avoid=avoid | {(x, y) for x in range(10, 14) for y in range(7, 16)})
+
+# the shelf cairn collides on the sprite's real 2x3 footprint (was 1x2: drawn !=
+# collided). Applied AFTER both deco passes so their rng stream — and so the
+# shipped deco — is unchanged by the fix (tools/maps/check_rebuild.py).
+SHELF_CAIRN_FOOTPRINT = {"w": 2, "h": 3, "overhang": 1}
+next(o for o in m["objects"] if o["id"] == "shelf_cairn").update(SHELF_CAIRN_FOOTPRINT)
 
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},

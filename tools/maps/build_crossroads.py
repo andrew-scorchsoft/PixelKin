@@ -456,7 +456,7 @@ m = {
         # SYNC 2026-06 (Three Hours wiring, 07-the-three §6): the after-stage
         # is now a script — it wraps npc.fenn_counsel_after and adds Fenn's
         # third-watch payoff on flag:three_dawn_met. Mirrored into the shipped
-        # vesper_crossroads.json by hand — reconcile before re-running.
+        # vesper_crossroads.json — a rebuild reproduces it (check_rebuild.py).
         {"id": "fenn_counsel_after", "at": {"tx": CX + 1, "ty": CY + 1}, "facing": "up",
          "sprite": "npc_mentor", "movement": "static",
          "dialogue_ref": "script.fenn_counsel_after",

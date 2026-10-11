@@ -14,7 +14,7 @@ two encounter zones in the 58-60 band (dawntuft bed + the Tidecall shore:
 EMBRALUX #33 and TIDEVEIL #34 very rare — the register ledger's southern
 pair) · one starglass cache · NO rest point.
 
-Host edit (tools/maps/add_vigil_scars.py): tinderwick (25,7) `to_vigil_hearth`,
+Host edit (add_hand_placed.py VIGIL_SCARS): tinderwick (25,7) `to_vigil_hearth`,
 `requires_flag: flag:vigil_reading_1`. Reuse: tinderwick-a loop + backdrops.
 
 audit_flow note — a one-portal dead-end annex (like thunderroost): no

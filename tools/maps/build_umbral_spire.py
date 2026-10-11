@@ -840,9 +840,9 @@ def build_summit() -> dict:
 # ======================================================================================
 if __name__ == "__main__":
     builders = [build_f1, build_f2, build_f3, build_summit]
-    # `--only f3` (repeatable) rebuilds just those floors — the shipped f2 and
-    # summit JSONs carry post-build additions this builder lacks (CLAUDE.md
-    # gotcha), so a one-floor change must not regress the others.
+    # `--only f3` (repeatable) rebuilds just those floors. (The f2/summit
+    # post-build additions ride tools/maps/add_hand_placed.py — re-run the
+    # runners after ANY rebuild; check_rebuild.py proves the full pipeline.)
     if "--only" in sys.argv:
         want = {sys.argv[i + 1] for i, a in enumerate(sys.argv) if a == "--only"}
         builders = [b for b in builders if b.__name__.removeprefix("build_") in want]

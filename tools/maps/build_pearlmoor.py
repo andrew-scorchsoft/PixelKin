@@ -11,9 +11,9 @@ Per spine §0 rule 1 the TOWN and the LUMENARY are NOT gated by Tidecall — the
 on foot. The Tidecall-gated content is the harbour `water` zone (an AbilityGate make_passable
 over the open water, exactly like Dimglass's tide_shallows) which carries the rarer Tide kin.
 
-DOOR ALIGNMENT (the core rule): every enterable building's interact-warp sits on its actual
+DOOR ALIGNMENT (the core rule): every enterable building's door warp (walk-onto) sits on its actual
 door-art tile, with the tile directly BELOW it walkable and on the path.
-  * lumenary (6 wide): arched door straddles cols 2-3 -> col 2 is the interact-warp tile,
+  * lumenary (6 wide): arched door straddles cols 2-3 -> col 2 is the door-warp tile,
     col 3 is the twin walkable approach; the boardwalk runs directly below both.
   * shop     (5 wide): door art = col 2 -> door tile (tx0+2, ty_bottom); approach below it.
   * inn      (5 wide): door art = col 2 -> door tile (tx0+2, ty_bottom); approach below it.
@@ -160,8 +160,10 @@ objects = [
      "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "tree_f", "sprite": "tinderwick_tree", "at": {"tx": 3, "ty": 2},
      "w": 3, "h": 4, "overhang": 3, "walk_under": True},
-    {"id": "tree_g", "sprite": "tinderwick_tree", "at": {"tx": 23, "ty": 1},
-     "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+    # S4 "The Booji-Wooji Man": the Lifting House at the TOP of the quay (where
+    # tree_g once stood) — its door pair is (21,4)/(22,4), see the warps below.
+    {"id": "lifting_house", "sprite": "pearlmoor_lifting_house", "at": {"tx": 19, "ty": 0},
+     "w": 5, "h": 5, "overhang": 3},
     {"id": "lamp_a", "sprite": "tinderwick_lamp_post", "at": {"tx": 12, "ty": 9},
      "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "lamp_b", "sprite": "tinderwick_lamp_post", "at": {"tx": 15, "ty": 13},
@@ -250,6 +252,20 @@ deco_avoid = avoid | {(x, y) for y in range(H) for x in range(W) if (x, y) not i
 deco_avoid |= {(x, y) for (x, y) in dock_cells}
 mk.scatter_decor(deco, base, W, H, rng, density=0.15, avoid=deco_avoid)
 
+# ---- later carves (after the scatter on purpose: its rng stream — and so the
+# shipped deco — predates them; tools/maps/check_rebuild.py) ------------------
+# the gap in the north tree-line up to the allotment (warps to_allotment/_e)
+for (x, y) in [(17, 0), (18, 0), (17, 1), (18, 1)]:
+    tree[y * W + x] = 0
+# R9: the west beach path out to Lightkeeper's Point (warps to_point_*)
+for x in range(0, 7):
+    path[15 * W + x] = 1
+    deco[15 * W + x] = 0
+# the cells whose shipped tile differs from the autotiler's own pick
+QUAY_PINS = {(17, 0): "grass0", (18, 0): "grass0", (17, 1): "grass0", (18, 1): "grass0",
+             (19, 0): "tree_fill", (19, 1): "tree_edge_s_v1",
+             (23, 17): "water_corner_nw", (24, 17): "sand_edge_w", (25, 17): "sand_edge_e"}
+
 # ---- the Tide-blessing band (Arc E) -------------------------------------------
 # Row 10 is the one horizontal cut between the Lumenary forecourt and the rest
 # of the quay: every post-Gleam walk back into town crosses it. Band EVERY
@@ -294,19 +310,25 @@ m = {
         # Lumenary GRAND DOUBLE DOOR — the arch straddles cols 2-3, so BOTH art tiles
         # warp in (one warp alone strands players on the solid half of the arch).
         # Reachable WITHOUT Tidecall (spine §0 rule 1); soft-gated on holding a starter.
-        {"id": "to_lumenary", "at": {"tx": lum_door[0], "ty": lum_door[1]}, "trigger": "interact",
+        {"id": "to_lumenary", "at": {"tx": lum_door[0], "ty": lum_door[1]}, "trigger": "step_on",
          "to_map": "pearlmoor_lumenary", "to": {"tx": 8, "ty": 10}, "facing": "down",
-         "requires_flag": "flag:has_starter", "transition": "door"},
-        {"id": "to_lumenary_e", "at": {"tx": lum_door_r[0], "ty": lum_door_r[1]}, "trigger": "interact",
+         "requires_flag": "flag:has_starter", "transition": "door",
+         "blocked_ref": "door.locked_lumenary"},
+        {"id": "to_lumenary_e", "at": {"tx": lum_door_r[0], "ty": lum_door_r[1]}, "trigger": "step_on",
          "to_map": "pearlmoor_lumenary", "to": {"tx": 8, "ty": 10}, "facing": "down",
-         "requires_flag": "flag:has_starter", "transition": "door"},
-        # Shop door — interact on the chandlery's door-art tile (col 2).
-        {"id": "to_shop", "at": {"tx": shop_door[0], "ty": shop_door[1]}, "trigger": "interact",
+         "requires_flag": "flag:has_starter", "transition": "door",
+         "blocked_ref": "door.locked_lumenary"},
+        # Shop door — walk onto the chandlery's door-art tile (col 2).
+        {"id": "to_shop", "at": {"tx": shop_door[0], "ty": shop_door[1]}, "trigger": "step_on",
          "to_map": "pearlmoor_shop", "to": {"tx": 7, "ty": 8}, "facing": "down", "transition": "door"},
-        # Inn door — interact on the inn's door-art tile (col 2).
+        # Inn door — walk onto the inn's door-art tile (col 2).
         # The inn room is 14 wide -> its doormat column is 7, not the shops' 6.
-        {"id": "to_inn", "at": {"tx": inn_door[0], "ty": inn_door[1]}, "trigger": "interact",
+        {"id": "to_inn", "at": {"tx": inn_door[0], "ty": inn_door[1]}, "trigger": "step_on",
          "to_map": "pearlmoor_inn", "to": {"tx": 8, "ty": 10}, "facing": "down", "transition": "door"},
+        # The Lifting House (S4) — a 2-wide door, both art tiles walk in.
+        *[{"id": wid, "at": {"tx": x, "ty": 4}, "trigger": "step_on",
+           "to_map": "pearlmoor_lifting_house", "to": {"tx": 7, "ty": 8}, "facing": "down",
+           "transition": "door"} for (wid, x) in (("to_lifting_house", 21), ("to_lifting_house_e", 22))],
         # THE MOOR-GATE — the breakwater causeway's seaward end (the Causeway
         # Bell loop). Gated on the netmender's rope, with her own "not yet"
         # line; lands ON the breakwater's return pair. Both root columns warp.
@@ -318,13 +340,10 @@ m = {
          "to_map": "pearlmoor_breakwater", "to": {"tx": 6, "ty": 0}, "facing": "down",
          "requires_flag": "flag:q_south_has_rope", "blocked_ref": "npc.netmender_gate",
          "transition": "fade"},
-        # The Lanternway west spoke -> lanternway_pearlmoor -> Vesper Crossroads
-        # (topology fix, mirrored from the shipped JSON). Land one tile IN from the
-        # lane's east-edge return warp (23,12) so a player who turns straight back
-        # RIGHT steps onto it and re-enters town — landing ON the edge warp left
-        # "press right to go home" blocked by the map edge (the re-entry bug).
+        # The west road -> the Wrackline Path (and on to the Lanternway and the
+        # Vesper Crossroads); the id keeps its graph name.
         {"id": "to_crossroads", "at": {"tx": 0, "ty": 12}, "trigger": "step_on",
-         "to_map": "lanternway_pearlmoor", "to": {"tx": 22, "ty": 12}, "facing": "left",
+         "to_map": "wrackline_path", "to": {"tx": 14, "ty": 5}, "facing": "left",
          "transition": "fade"},
         # R9: the west beach runs on out to Lightkeeper's Point (the Old Light).
         # (Shipped JSON carries these surgically too — see build_pearlmoor_point.py.)
@@ -335,6 +354,10 @@ m = {
         {"id": "to_fen", "at": {"tx": W - 1, "ty": 12}, "trigger": "step_on",
          "to_map": "saltreach_fen_i", "to": {"tx": 1, "ty": 38}, "facing": "right",
          "transition": "fade"},
+        # through the tree-line gap at the top: the allotment (pearlmoor_allotment)
+        *[{"id": wid, "at": {"tx": x, "ty": 0}, "trigger": "step_on",
+           "to_map": "pearlmoor_allotment", "to": {"tx": tx, "ty": 14}, "facing": "up",
+           "transition": "fade"} for (wid, x, tx) in (("to_allotment", 17, 9), ("to_allotment_e", 18, 10))],
     ],
     # E — the Tide-blessing set-piece (Arc E, the cool mirror of the Lantern-
     # fair): banded across every WALKABLE tile of row 10 (see blessing_cols
@@ -485,6 +508,6 @@ m = {
 }
 
 if __name__ == "__main__":
-    ok = mk.finalize(m, scale=3)
+    ok = mk.finalize(m, scale=3, pin_base=QUAY_PINS)
     print("PASS" if ok else "FAIL")
     raise SystemExit(0 if ok else 1)

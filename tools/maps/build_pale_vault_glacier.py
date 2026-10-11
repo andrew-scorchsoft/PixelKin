@@ -484,7 +484,7 @@ m["npcs"] += [
     # SYNC 2026-06 (Three Hours wiring, 07-the-three §5): watcher A becomes
     # H2's rumour-giver once gleam:frost stands (plain -> hours -> after, a
     # three-stage swap on the same tile). Mirrored into the shipped
-    # pale_vault_glacier.json by hand — reconcile before re-running.
+    # pale_vault_glacier.json — a rebuild reproduces it (check_rebuild.py).
     {"id": "aurora_watcher_a", "at": {"tx": 25, "ty": 12}, "facing": "up",
      "sprite": "npc_woman", "movement": "static",
      "dialogue_ref": "npc.aurora_watcher_a",
