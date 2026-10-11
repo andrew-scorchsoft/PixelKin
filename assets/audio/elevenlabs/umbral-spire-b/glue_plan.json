@@ -1,0 +1,47 @@
+{
+ "chunks": [
+  {
+   "song_id": "SOzaoTQayomjPDuCEaRY",
+   "range": {
+    "start_ms": 55468,
+    "end_ms": 75468
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "140 BPM",
+    "A minor",
+    "final dungeon theme",
+    "driving pulse-wave lead with an urgent climbing minor melody",
+    "pounding eighth-note synth bass, no rest",
+    "dark pipe-organ chords and tense string pad",
+    "eerie detuned high shimmer like light draining away",
+    "relentless driving drums with ratcheting fills",
+    "strong memorable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "SOzaoTQayomjPDuCEaRY",
+   "range": {
+    "start_ms": 6857,
+    "end_ms": 16857
+   }
+  }
+ ]
+}
