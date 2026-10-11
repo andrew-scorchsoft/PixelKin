@@ -78,6 +78,8 @@ export const CHIMNEYS: Record<string, { x: number; y: number }> = {
   tinderwick_shop: { x: 61, y: 2 },
   pearlmoor_inn: { x: 60, y: 2 },
   vesper_crossroads_inn: { x: 58, y: 6 },
+  // east
+  cinderhead_miner_cottage: { x: 66, y: 8 },
 };
 
 /** Map kinds that are "under the sky" (the starfall default + bird fly-overs). */

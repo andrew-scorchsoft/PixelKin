@@ -105,7 +105,7 @@ PLACEMENTS: dict[str, dict] = {
             decor("reeds_h", "saltreach_cattails", (3, 3), 2, 2),
             decor("reeds_i", "saltreach_cattails", (13, 19), 2, 2),
             decor("reeds_j", "saltreach_cattails", (20, 21), 2, 2),
-            decor("isle_stooks", "saltreach_reed_stooks", (15, 19), 2, 2),
+            decor("isle_stooks", "saltreach_reed_stooks", (14, 21), 2, 2),
             decor("eel_trap_a", "saltreach_eel_trap", (20, 12), 2, 2),
             decor("eel_trap_b", "saltreach_eel_trap", (11, 31), 2, 2),
             decor("drowned_lamp_a", "saltreach_sunken_lamp", (24, 20), 1, 3),
@@ -239,6 +239,9 @@ PLACEMENTS: dict[str, dict] = {
         }) + [npc("fault_miner", (24, 12), "miner_woman", "script.cinderhead_fault_miner",
                   facing="left", movement="look_around")],
         "objects": [
+            # the miners' row cottages replace the Tinderwick stand-ins (same footprint)
+            obj("cottage_a", "cinderhead_miner_cottage", (2, 15), 5, 5, overhang=3),
+            obj("cottage_b", "cinderhead_miner_cottage", (20, 3), 5, 5, overhang=3),
             obj("harl_hooks", "cinderhead_lamp_hooks", (7, 18), 5, 2, overhang=1,
                 walk_under=True),
             obj("fault_cinder", "fallenstar_cinder_star", (22, 10), 2, 2, solid=False,

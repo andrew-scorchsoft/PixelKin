@@ -31,7 +31,7 @@
     },
     {
       "id": "cottage_a",
-      "sprite": "tinderwick_cottage",
+      "sprite": "cinderhead_miner_cottage",
       "at": {
         "tx": 2,
         "ty": 15
@@ -42,7 +42,7 @@
     },
     {
       "id": "cottage_b",
-      "sprite": "tinderwick_cottage",
+      "sprite": "cinderhead_miner_cottage",
       "at": {
         "tx": 20,
         "ty": 3

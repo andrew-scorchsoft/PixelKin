@@ -21,6 +21,13 @@
       "tw": 6,
       "th": 7
     },
+    "cinderhead_miner_cottage": {
+      "path": "assets/sprites/objects/cinderhead_miner_cottage.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
     "cinderhead_ore_cart": {
       "path": "assets/sprites/objects/cinderhead_ore_cart.webp",
       "width": 32,
