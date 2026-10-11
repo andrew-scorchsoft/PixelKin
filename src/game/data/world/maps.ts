@@ -1097,20 +1097,43 @@ export const UPCOMING_BATTLE_BACKDROPS: Record<string, string[]> = {
 };
 
 /** Every distinct battle-backdrop image across the registry (for preloading). */
+/**
+ * The safety net: a map with no `battle_backdrops` of its own borrows a backdrop
+ * for its KIND, so a fight never lands on the bare night fill (a playtest caught
+ * the Lanternway verge doing exactly that). Bespoke art on the map always wins.
+ */
+const B = 'assets/backgrounds/battle/';
+const KIND_BACKDROPS: Record<MapKind, string[]> = {
+  town: [`${B}tinderwick-a.webp`, `${B}tinderwick-b.webp`],
+  hub: [`${B}vesper-crossroads-a.webp`, `${B}vesper-crossroads-b.webp`],
+  route: [`${B}dimglass-coast-a.webp`, `${B}tinderwick-b.webp`],
+  water: [`${B}pearlmoor-quay-a.webp`, `${B}pearlmoor-quay-b.webp`],
+  cave: [`${B}glowmoss-deep-a.webp`, `${B}glowmoss-deep-b.webp`],
+  interior: [`${B}tinderwick-house-a.webp`, `${B}tinderwick-house-b.webp`],
+};
+
+/** The variants a map's battles draw from: its own list, else its kind's default. */
+function backdropsFor(mapId: string | undefined): string[] {
+  const entry = mapId ? MAP_REGISTRY[mapId] : undefined;
+  if (!entry) return [];
+  return entry.battle_backdrops?.length ? entry.battle_backdrops : KIND_BACKDROPS[entry.kind] ?? [];
+}
+
 export function allBattleBackdrops(): string[] {
   const seen = new Set<string>();
   for (const entry of Object.values(MAP_REGISTRY)) {
     for (const path of entry.battle_backdrops ?? []) seen.add(path);
   }
+  for (const list of Object.values(KIND_BACKDROPS)) for (const path of list) seen.add(path);
   return [...seen];
 }
 
 /**
- * Pick a battle backdrop for a map (random variant), or null if the map has none
- * — in which case the battle keeps its plain night fill.
+ * Pick a battle backdrop for a map (random variant): its own, else its kind's
+ * default (`KIND_BACKDROPS`). Null only for an unknown map id.
  */
 export function resolveBattleBackdrop(mapId: string | undefined): string | null {
-  const variants = (mapId && MAP_REGISTRY[mapId]?.battle_backdrops) || [];
+  const variants = backdropsFor(mapId);
   if (variants.length === 0) return null;
   return variants[Math.floor(Math.random() * variants.length)];
 }

@@ -140,6 +140,9 @@ interface EntryTutorial {
   unless_flag?: WorldFlag;
 }
 
+/** Object sprites the player can talk ACROSS (see `WorldScene.npcAcrossDesk`). */
+const DESK_SPRITE = /(counter|desk|stall|altar|lectern)/;
+
 export class WorldScene extends Phaser.Scene {
   private ready = false;
   private _modal = false;
@@ -957,6 +960,33 @@ export class WorldScene extends Phaser.Scene {
     return this.npcs.find((n) => n.tx === tx && n.ty === ty);
   }
 
+  /** Whether a desk-like object (counter, stall, altar, desk) covers this tile. */
+  private deskAt(tx: number, ty: number): boolean {
+    return (this.map.def.objects ?? []).some(
+      (o) =>
+        DESK_SPRITE.test(o.sprite) &&
+        o.solid !== false &&
+        this.objectVisible(o) &&
+        tx >= o.at.tx && tx < o.at.tx + o.w &&
+        ty >= o.at.ty && ty < o.at.ty + o.h,
+    );
+  }
+
+  /** The NPC on the far side of up to two desk tiles, starting at the faced tile. */
+  private npcAcrossDesk(tx: number, ty: number): Npc | undefined {
+    const dx = tx - this.player.tx;
+    const dy = ty - this.player.ty;
+    let x = tx;
+    let y = ty;
+    for (let i = 0; i < 2 && this.deskAt(x, y); i++) {
+      x += dx;
+      y += dy;
+      const npc = this.npcAt(x, y);
+      if (npc) return npc;
+    }
+    return undefined;
+  }
+
   private playerCanEnter = (tx: number, ty: number): boolean => {
     if (this.collision.isBlocked(tx, ty, this.abilities)) return false;
     if (this.npcAt(tx, ty)) return false;
@@ -975,7 +1005,10 @@ export class WorldScene extends Phaser.Scene {
   private async interact(): Promise<void> {
     const ahead = this.player.tileAhead();
 
-    const npc = this.npcAt(ahead.tx, ahead.ty);
+    // Talk ACROSS a counter (the genre convention): facing a shop counter, a stall
+    // or an altar with someone standing behind it reaches them, up to two desk
+    // tiles deep. Every keeper stays reachable from the customer's side.
+    const npc = this.npcAt(ahead.tx, ahead.ty) ?? this.npcAcrossDesk(ahead.tx, ahead.ty);
     if (npc) {
       npc.facePoint(this.player.tx, this.player.ty);
       // An NPC whose dialogue_ref is a script runs it as a cutscene (inn rest,

@@ -847,12 +847,16 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   art stays chunky (NEAREST); `ui/Text.ts` sets each Text's `resolution` to `RENDER_SCALE`
   so glyphs get real pixels. Build text through `makeText` (it's the only place that sets
   resolution) — a raw `scene.add.text` will render blocky again.
+- **Talk ACROSS counters (2026-10).** `WorldScene.npcAcrossDesk`: facing a counter/stall/altar/desk
+  object (`DESK_SPRITE`) reaches the NPC behind it, up to two desk tiles deep — the genre convention.
+  Name a new desk-like prop so it matches the regex, or keepers behind it become unreachable to talk to.
 - **Battle backdrops are a per-map data edit.** A battle's background is chosen from the
   map's `battle_backdrops` list in `data/world/maps.ts` (random variant), preloaded in
   `PreloadScene`, drawn behind the battlers in `BattleScene`. New area = add 240×160 WebPs
-  under `public/assets/backgrounds/battle/` + list them on the map; no map with a list = it
-  keeps the plain night fill. Briefs/standards live in `docs/art-style.md` (§5-H). Keep them
-  subtle so sprites/plates stay readable.
+  under `public/assets/backgrounds/battle/` + list them on the map; a map with no list
+  borrows its KIND's default (`KIND_BACKDROPS` in `maps.ts` — the safety net; bespoke art always
+  wins). Briefs/standards live in `docs/art-style.md` (§5-H). Keep them subtle so sprites/plates
+  stay readable.
 - **Interiors are multi-room SNES compositions on roomkit (2026-06).** Build on
   `tools/maps/roomkit.py`: `faced_room` (cap + visible FACE walls, patterned floor, doormat)
   + at least one INTERNAL `partition_v/_h` (bed nook / storeroom / bunk room / shrine niches
