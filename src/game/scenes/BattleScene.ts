@@ -27,6 +27,7 @@ import type { MenuOption } from '@game/ui/Menu';
 import { DialogueBox } from '@game/ui/DialogueBox';
 import { fadeIn } from '@game/ui/Transitions';
 import { Sfx } from '@game/systems/audio/Sfx';
+import { playCry } from '@game/systems/audio/cries';
 import { MusicDirector } from '@game/systems/audio/MusicDirector';
 import { Party } from '@game/systems/party/Party';
 import { KinInstance } from '@game/systems/party/KinInstance';
@@ -237,10 +238,14 @@ export class BattleScene extends Phaser.Scene {
         await new DialogueBox(this, this.sfx).run(intro);
         this.msg.setVisible(true);
       }
+      playCry(this.sfx, this.engine.foe.species.id);
       await this.msg.show(`${trainer?.name ?? 'Foe'} sent out ${this.engine.foe.displayName}!`);
     } else {
+      // The wild kin calls out as it appears (its cry lands over the encounter sting).
+      this.time.delayedCall(260, () => playCry(this.sfx, this.engine.foe.species.id));
       await this.msg.show(`A wild ${this.engine.foe.displayName} appeared!`);
     }
+    playCry(this.sfx, this.engine.player.species.id);
     await this.msg.show(`Go, ${this.engine.player.displayName}!`, { wait: false });
 
     await this.loop();
@@ -662,6 +667,8 @@ export class BattleScene extends Phaser.Scene {
         return;
       case 'catch-success':
         void this.sfx.playVariant('capture-success', ['a', 'b', 'c']);
+        // …and the caught kin answers from inside the lamp.
+        this.time.delayedCall(700, () => playCry(this.sfx, this.engine.foe.species.id));
         // isFull is still true here — the add happens in complete() — so it
         // correctly predicts whether this catch will overflow to the Hearth.
         if (this.playerParty.isFull) {
@@ -726,12 +733,14 @@ export class BattleScene extends Phaser.Scene {
       this.playerBattler.setSpecies(this, incoming.species, 'player');
       this.playerBattler.container.setAlpha(1).setY(PLAYER_POS.y);
       this.playerHp.setKin(incoming);
+      playCry(this.sfx, incoming.species.id);
       await this.msg.show(`Go, ${incoming.displayName}!`, { wait: false });
     } else {
       this.dexSeen.add(incoming.species.id);
       this.foeBattler.setSpecies(this, incoming.species, 'foe');
       this.foeBattler.container.setAlpha(1).setY(FOE_POS.y);
       this.foeHp.setKin(incoming);
+      playCry(this.sfx, incoming.species.id);
       const trainer = this.request.kind === 'trainer' ? getTrainer(this.request.trainer) : undefined;
       await this.msg.show(`${trainer?.name ?? 'Foe'} sent out ${incoming.displayName}!`);
     }

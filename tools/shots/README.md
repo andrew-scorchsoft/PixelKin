@@ -30,6 +30,7 @@ node tools/shots/shoot.mjs --batch shots.json   # one server + browser for every
 | `--keep-hud` | Don't wait for the area-name banner / SAVED glyph to fade. |
 | `--version-from v` | Save `last_version` (default = current `GAME_VERSION`, so no notice). |
 | `--no-idle` / `--confirms N` | Shoot a scene that plays on load (a crown interlude) `--wait` ms after CONTINUE, then page it with N Confirm taps. Without `--no-idle` the four `interlude_*_seen` flags are seeded so crown-holding shots stay quiet. |
+| `--greet ID` | Step beside that ambient kin (wherever it grazed), face it and Confirm — shoots its greeting mid-dialogue; `--confirms N` pages on (REGISTER note, its event). |
 | `--no-defaults` | Skip the quiet flags (all `chart:*` so no reveal pops, tutorials seen, `has_starter`). |
 | `--url` | Use an already-running dev server instead of starting one. |
 

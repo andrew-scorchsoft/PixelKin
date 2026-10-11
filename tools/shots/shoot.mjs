@@ -36,6 +36,9 @@ world options:
   --level N                     level for "starter" (default 5)
   --steps "right,right,up"      walk these steps after spawning (one tile each)
   --battle <kin_id>[:LV]        open a wild battle vs that kin on the map
+  --greet <placement_id>        step beside that AMBIENT kin (wherever it grazed to),
+                                face it and press Confirm — shoots the greeting
+                                (cry + kinchatter line) mid-dialogue
   --keep-hud                    don't wait for the area-name banner / SAVED glyph
                                 to fade (default waits)
   --version-from <v>            write an older save last_version (e.g. 1.0, or ""
@@ -44,7 +47,7 @@ world options:
   --no-idle                     don't wait for the world to go idle after CONTINUE:
                                 shoot --wait ms after the World starts (for a scene
                                 that plays on load, e.g. a crown interlude)
-  --confirms N                  with --no-idle: then tap Confirm N times (1.4s
+  --confirms N                  with --no-idle (or --greet): then tap Confirm N times (1.4s
                                 apart) to page through the scene's lines
   --no-defaults                 don't auto-add the quiet flags (chart reveals,
                                 tutorials seen, has_starter)
@@ -103,6 +106,7 @@ function normaliseSpec(raw, index = 0) {
     keepHud: Boolean(s['keep-hud'] ?? s.keepHud),
     noIdle: Boolean(s['no-idle'] ?? s.noIdle),
     confirms: Number(s.confirms ?? 0),
+    greet: s.greet,
     versionFrom:
       s['version-from'] !== undefined || s.versionFrom !== undefined
         ? String(s['version-from'] ?? s.versionFrom)
@@ -402,7 +406,36 @@ async function shoot(page, url, shot) {
 
     for (const step of shot.steps) await walk(page, step);
 
-    if (shot.battle) {
+    if (shot.greet) {
+      await waitFor(page, worldIdleHudClear, undefined, { timeout: 15000, what: 'HUD banner to fade' }).catch((e) =>
+        console.warn(`  ! ${e.message}`),
+      );
+      // Teleport beside the ambient kin's CURRENT tile, face it, Confirm.
+      const ok = await page.evaluate(async (pid) => {
+        const w = window.__pixelkin.scene.getScene('World');
+        const k = w.ambience?.kin?.find((a) => a.placement.id === pid);
+        if (!k) return false;
+        const sides = [['left', 1, 0], ['right', -1, 0], ['up', 0, 1], ['down', 0, -1]];
+        for (const [facing, dx, dy] of sides) {
+          const tx = k.tx + dx;
+          const ty = k.ty + dy;
+          if (!w.playerCanEnter(tx, ty)) continue;
+          w.player.tx = tx;
+          w.player.ty = ty;
+          w.player.sprite.setPosition(tx * 16 + 8, ty * 16 + 16);
+          w.player.setFacing(facing);
+          void w.interact(); // resolves only once the box closes — don't wait on it
+          return true;
+        }
+        return false;
+      }, shot.greet);
+      if (!ok) throw new Error(`no ambient kin "${shot.greet}" to greet (or boxed in)`);
+      // --confirms N pages on through the greeting (REGISTER note, the event).
+      for (let i = 0; i < shot.confirms; i++) {
+        await page.waitForTimeout(1400);
+        await tap(page, 'z');
+      }
+    } else if (shot.battle) {
       const [id, lv] = shot.battle.split(':');
       await page.evaluate(
         ({ id, lv }) => {

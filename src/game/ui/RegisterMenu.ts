@@ -8,6 +8,7 @@
  * scroll the full 159, the pane below shows the selected kin — icon (lazy-loaded
  * via CreatureSprites; silhouetted until caught), types, dex category and, once
  * caught, the full register entry. The header keeps the score: SEEN n · KEPT m.
+ * Confirm on a caught kin plays its cry (systems/audio/cries.ts); Cancel closes.
  * Read-only and promise-based; built from the shared kit + theme tokens.
  */
 import Phaser from 'phaser';
@@ -18,6 +19,7 @@ import { Panel } from './Panel';
 import { Cursor } from './Cursor';
 import { InputController, InputAction } from '@game/systems/input/InputController';
 import { loadCreatureSprite, hasCreatureSprite } from '@game/systems/sprites/CreatureSprites';
+import { playCry } from '@game/systems/audio/cries';
 import { SPECIES } from '@game/data/dex';
 import type { Species } from '@game/data/dex';
 import type { DexProgress } from '@game/systems/save/types';
@@ -199,7 +201,10 @@ export class RegisterMenu {
         else if (input.justPressed(InputAction.Down)) this.move(1);
         else if (input.justPressed(InputAction.Left)) this.move(-this.visibleRows);
         else if (input.justPressed(InputAction.Right)) this.move(this.visibleRows);
-        else if (input.justPressed(InputAction.Cancel) || input.justPressed(InputAction.Confirm)) {
+        else if (input.justPressed(InputAction.Confirm) && this.rows[this.index]?.caught) {
+          // A kin that walks with you: Confirm plays its cry (Cancel closes).
+          playCry(this.sfx, this.rows[this.index].species.id);
+        } else if (input.justPressed(InputAction.Cancel) || input.justPressed(InputAction.Confirm)) {
           void this.sfx?.play(theme.cursor.cancelSfx);
           this.scene.events.off(Phaser.Scenes.Events.UPDATE, tick);
           input.destroy();

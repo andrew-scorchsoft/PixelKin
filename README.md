@@ -144,7 +144,9 @@ and audited. What it has *not* had is human hands: no playtests, no device QA.
   Hearth, register/dex, items, LORE codex, concept-art gallery), and the
   save/flag layer behind the platform seam.
 - **All 162 kin with real packed sprite art** (5 views each), the full
-  **original soundtrack** (~195 area/battle/jingle tracks + SFX), per-map
+  **original soundtrack** (~195 area/battle/jingle tracks + SFX), a unique
+  procedural **cry for every kin** (battle, catch, register, and the grazing
+  ambient kin you can now greet — `content/kinchatter.ts`), per-map
   battle backdrops, and the empirically balanced battle maths (Monte Carlo
   win-rates, a journey-long XP/economy model — all gated in CI).
 

@@ -7,6 +7,7 @@ import type { ScriptRegistry } from './types';
 import { OLDLIGHT_SCRIPTS } from './oldlight';
 import { REGION_EXTRA_SCRIPTS } from './regions';
 import { INTERLUDE_SCRIPTS } from './interludes';
+import { KINCHAT_SCRIPTS } from './kinchatter';
 
 export const SCRIPTS: ScriptRegistry = {
   // --- The opening: the satchel errand at the Vesper Crossroads -----------------
@@ -5494,6 +5495,7 @@ export const SCRIPTS: ScriptRegistry = {
   ...OLDLIGHT_SCRIPTS,
   ...REGION_EXTRA_SCRIPTS,
   ...INTERLUDE_SCRIPTS, // X-4 crown interludes (content/interludes.ts)
+  ...KINCHAT_SCRIPTS, // ambient-kin greeting events (content/kinchatter.ts)
 };
 
 export function getScript(ref: string): import('./types').CutsceneStep[] | undefined {

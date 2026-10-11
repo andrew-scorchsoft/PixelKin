@@ -1065,6 +1065,18 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   audits are blind to them by design. Pick the kin from the map's OWN encounter table and park it
   OFF the lane (the runner lints foot-walkable + not on a warp/trigger). New cutscene acting ops:
   `hop`, `shakeActor`, `spin`, `starfall` and `move.speed` (sprite tweens only — tiles never move).
+- **Ambient kin are GREETABLE, and every kin has a CRY (2026-10).** Face an ambient kin from
+  the next tile + Confirm → `WorldScene.greetAmbientKin` (`Ambience.kinAt` → `engage`/`release`/
+  `follow`): it turns, does its `react` beat, plays `playCry` (`systems/audio/cries.ts`), and the
+  box shows `<NAME>: <line>` from **`content/kinchatter.ts`** (bespoke `KIN_CHATTER` for every
+  species placed ambient — ADD ONE when you place a new species — else `TYPE_CHATTER`; `dawn`
+  lines after `flag:dawn`; ≤1 `event` per entry, once-flag banked by the ENGINE, scripts
+  `script.kinchat_*` spread into SCRIPTS, never progression/wicks). First greet marks it SEEN.
+  Fairness: a kin startles only after you LINGER within 2 (`NOTICE_MS`), and holds
+  `GREET_GRACE_MS` while you face it adjacent. They stay non-colliding (audits stay blind).
+  Cries: `python3 tools/audio/kin_cries.py [ids]` → `cry-NNN.mp3` (3-digit — a 1-char suffix
+  reads as an a/b/c variant) + manifest; re-run when a kin is added. Shoot a greeting with
+  `shoot.mjs --greet <placement_id> [--confirms N]`.
 - **Every rest point is REMEMBERED: SETTINGS → "Return to rest point" (2026-10).** The `heal`
   op's `recordRespawn` also banks `WorldSnapshot.rest_points` (additive optional; one per map,
   latest coords, label = the map's `display_name`; old saves seed from `respawn` in

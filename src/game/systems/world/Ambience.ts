@@ -25,7 +25,10 @@
  *    grass rustle + leaf fleck, an item-cache glint, an NPC breathing bob and the
  *    player's idle glance.
  *  - AMBIENT KIN (`NpcPlacement.ambient`): overworld kin that graze near their
- *    post, never collide, never interact, and hop away when you come within 2.
+ *    post, never collide, and hop away when you linger within 2. Facing one
+ *    from the next tile holds it (a short grace) so Confirm can GREET it —
+ *    WorldScene asks `kinAt()`, then `engage()`/`release()` around the kin's cry
+ *    and its content/kinchatter.ts line (and `follow()` for the tag-along event).
  *  - One-shot beats WorldScene calls: footprints, the encounter tell, the
  *    door-open beat, a pickup puff, ledge-hop dust.
  *
@@ -246,14 +249,46 @@ function ambientKinId(sprite: string): number | null {
   return m ? Number(m[1]) : null;
 }
 
-class AmbientKin {
+/** What a player looks like to an ambient kin (tile + where they face). */
+interface KinWatcher {
+  tx: number;
+  ty: number;
+  ahead: TileCoord;
+}
+
+/** How long a kin waits on someone facing it from the next tile before it hops off. */
+const GREET_GRACE_MS = 1300;
+/** A moment to notice anyone else who comes within 2 before it startles. */
+const NOTICE_MS = 700;
+
+/** The greetable face of an ambient kin, handed to WorldScene by `Ambience.kinAt`. */
+export interface AmbientKinHandle {
+  readonly speciesId: number;
+  readonly placementId: string;
+  /** Stop grazing, turn to (px,py) and do its little beat (a hop, a shake, a
+   *  twirl, or just the turn). Resolves once the beat is done. */
+  engage(px: number, py: number, react: 'turn' | 'hop' | 'shake' | 'twirl'): Promise<void>;
+  /** Back to grazing (it may still startle off, as usual). */
+  release(): void;
+  /** Tag along behind the player for `ms`, then wander home to its post. */
+  follow(ms: number): void;
+}
+
+class AmbientKin implements AmbientKinHandle {
   readonly sprite: Phaser.GameObjects.Image;
   readonly shadow: Phaser.GameObjects.Ellipse;
+  readonly speciesId: number;
   tx: number;
   ty: number;
   private busy = false;
+  private engaged = false;
   private nextAt: number;
   private calmAt = 0;
+  /** When the player came within 2 (undefined = not near). */
+  private nearSince?: number;
+  /** When the player started facing it from the next tile. */
+  private facedSince?: number;
+  private followUntil = 0;
   private readonly radius: number;
 
   constructor(
@@ -275,6 +310,7 @@ class AmbientKin {
       .setScale(AMBIENT_KIN_SCALE);
     this.nextAt = scene.time.now + rand(1200, 3500);
     const id = ambientKinId(placement.sprite);
+    this.speciesId = id ?? 0;
     if (id === null) return;
     const key = creatureTextureKey(id, 'overworld');
     const show = (k: string | null): void => {
@@ -286,13 +322,22 @@ class AmbientKin {
     else void loadCreatureSprite(scene, id, 'overworld').then(show);
   }
 
+  get placementId(): string {
+    return this.placement.id;
+  }
+
+  /** Shown and standing (greetable). */
+  get present(): boolean {
+    return this.sprite.visible && this.sprite.active;
+  }
+
   private inLeash(tx: number, ty: number): boolean {
     const { at } = this.placement;
     return Math.max(Math.abs(tx - at.tx), Math.abs(ty - at.ty)) <= this.radius;
   }
 
   /** Hop to (tx,ty) — a little arc. Pure tween; nothing collides with an ambient kin. */
-  private hopTo(tx: number, ty: number, ms: number, lift: number): void {
+  private hopTo(tx: number, ty: number, ms: number, lift: number, onDone?: () => void): void {
     this.busy = true;
     const fx = this.sprite.x;
     const fy = this.sprite.y;
@@ -316,18 +361,134 @@ class AmbientKin {
         this.sprite.setPosition(toX, toY);
         this.shadow.setPosition(toX, toY - 0.5).setScale(1);
         this.busy = false;
+        onDone?.();
       },
     });
   }
 
-  update(time: number, player: { tx: number; ty: number } | undefined, motion: boolean): void {
+  engage(px: number, _py: number, react: 'turn' | 'hop' | 'shake' | 'twirl'): Promise<void> {
+    this.engaged = true;
+    this.followUntil = 0;
+    return new Promise((resolve) => {
+      const go = (): void => {
+        if (!this.sprite.active) return resolve();
+        // Turn to the player (the overworld view faces left; flip to face right).
+        const pxW = px * TILE_SIZE + TILE_SIZE / 2;
+        const toward = pxW > this.sprite.x;
+        if (pxW !== this.sprite.x) this.sprite.setFlipX(toward);
+        if (!getAmbientMotion() || react === 'turn') return resolve();
+        if (react === 'hop') {
+          this.hopTo(this.tx, this.ty, 220, 5, () => this.hopTo(this.tx, this.ty, 200, 3, resolve));
+        } else if (react === 'shake') {
+          const x0 = this.sprite.x;
+          this.scene.tweens.add({
+            targets: this.sprite,
+            x: x0 + 1.5,
+            duration: 45,
+            yoyo: true,
+            repeat: 4,
+            onComplete: () => {
+              this.sprite.x = x0;
+              resolve();
+            },
+          });
+        } else {
+          // twirl: look all around, ending on the player
+          let n = 0;
+          this.scene.time.addEvent({
+            delay: 110,
+            repeat: 4,
+            callback: () => {
+              n++;
+              if (!this.sprite.active) return;
+              this.sprite.setFlipX(n === 5 ? toward : !this.sprite.flipX);
+              if (n === 5) resolve();
+            },
+          });
+        }
+      };
+      // Mid-hop? Let it land first, then turn.
+      if (this.busy) this.scene.time.delayedCall(380, go);
+      else go();
+    });
+  }
+
+  release(): void {
+    this.engaged = false;
+    const now = this.scene.time.now;
+    // A moment's calm after a greeting, then it is a wild thing again.
+    this.calmAt = now + 900;
+    this.nearSince = now + 400 - NOTICE_MS;
+    this.facedSince = undefined;
+    this.nextAt = now + rand(900, 1600);
+  }
+
+  follow(ms: number): void {
+    this.followUntil = this.scene.time.now + ms;
+  }
+
+  update(time: number, player: KinWatcher | undefined, motion: boolean): void {
     this.sprite.setDepth(10 + this.sprite.y * 0.001);
     this.shadow.setDepth(this.sprite.depth - 0.0002);
-    if (this.busy || !this.sprite.visible) return;
-    // Spooked: the player came within 2 tiles — hop to the farthest leashed tile.
+    if (this.engaged || this.busy || !this.sprite.visible) return;
+
+    // Tagging along (a kinchatter event): hop to the tile beside the player.
+    if (player && time < this.followUntil) {
+      const d = Math.abs(player.tx - this.tx) + Math.abs(player.ty - this.ty);
+      if (d > 1 && time >= this.nextAt) {
+        this.nextAt = time + 140;
+        let best: TileCoord | undefined;
+        let bestD = d;
+        for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]] as const) {
+          const nx = this.tx + dx;
+          const ny = this.ty + dy;
+          if ((nx === player.tx && ny === player.ty) || !this.ok(nx, ny)) continue;
+          const nd = Math.abs(player.tx - nx) + Math.abs(player.ty - ny);
+          if (nd < bestD) {
+            bestD = nd;
+            best = { tx: nx, ty: ny };
+          }
+        }
+        if (best) this.hopTo(best.tx, best.ty, 220, motion ? 3 : 0);
+      }
+      return;
+    }
+
+    // Strayed off its leash (after tagging along): wander home a hop at a time.
+    if (!this.inLeash(this.tx, this.ty)) {
+      if (time < this.nextAt) return;
+      this.nextAt = time + 320;
+      const { at } = this.placement;
+      const sx = Math.sign(at.tx - this.tx);
+      const sy = Math.sign(at.ty - this.ty);
+      const steps: [number, number][] = sx && sy ? [[sx, 0], [0, sy]] : [[sx, sy]];
+      const step = steps.find(([dx, dy]) => this.ok(this.tx + dx, this.ty + dy)
+        && !(player && player.tx === this.tx + dx && player.ty === this.ty + dy));
+      if (step) this.hopTo(this.tx + step[0], this.ty + step[1], 260, motion ? 2 : 0);
+      else if (!player || Math.abs(player.tx - at.tx) + Math.abs(player.ty - at.ty) > 1) {
+        // Boxed in on the way home: it slips back to its post unseen.
+        this.tx = at.tx;
+        this.ty = at.ty;
+        this.sprite.setPosition(at.tx * TILE_SIZE + TILE_SIZE / 2, groundYOf(at.tx, at.ty));
+        this.shadow.setPosition(this.sprite.x, this.sprite.y - 0.5);
+      }
+      return;
+    }
+
+    // Spooked: the player LINGERS within 2 tiles — hop to the farthest leashed
+    // tile. Fair to greet: someone facing it from the next tile gets a grace
+    // (GREET_GRACE_MS) before it goes; anyone else a short notice (NOTICE_MS).
     if (player && time >= this.calmAt) {
       const d = Math.abs(player.tx - this.tx) + Math.abs(player.ty - this.ty);
       if (d <= 2) {
+        this.nearSince ??= time;
+        const facing = d === 1 && player.ahead.tx === this.tx && player.ahead.ty === this.ty;
+        if (facing) this.facedSince ??= time;
+        else this.facedSince = undefined;
+        const due = this.facedSince !== undefined
+          ? this.facedSince + GREET_GRACE_MS
+          : this.nearSince + NOTICE_MS;
+        if (time < due) return; // watching you, ears up
         let best: TileCoord | undefined;
         let bestD = d;
         for (let dy = -2; dy <= 2; dy++) {
@@ -345,10 +506,14 @@ class AmbientKin {
         }
         this.calmAt = time + 1100;
         this.nextAt = time + rand(2500, 4500);
+        this.nearSince = undefined;
+        this.facedSince = undefined;
         if (best) this.hopTo(best.tx, best.ty, 280, motion ? 6 : 0);
         else this.hopTo(this.tx, this.ty, 240, motion ? 5 : 0); // cornered: a startled hop in place
         return;
       }
+      this.nearSince = undefined;
+      this.facedSince = undefined;
     }
     if (time < this.nextAt) return;
     this.nextAt = time + rand(2200, 5200);
@@ -907,6 +1072,11 @@ export class Ambience {
 
   // ----------------------------------------------------------- ambient kin --
 
+  /** The greetable ambient kin standing on (tx,ty), if any (WorldScene's Confirm). */
+  kinAt(tx: number, ty: number): AmbientKinHandle | undefined {
+    return this.kin.find((k) => k.present && k.speciesId > 0 && k.tx === tx && k.ty === ty);
+  }
+
   /** Spawn the map's `ambient: true` placements (non-colliding grazing kin). */
   spawnAmbientKin(placements: NpcPlacement[]): void {
     for (const p of placements) {
@@ -1151,7 +1321,7 @@ export class Ambience {
     const view = cam.worldView;
 
     for (const f of this.follows) this.syncFollow(f, time, motion, modal, player);
-    const pos = player ? { tx: player.tx, ty: player.ty } : undefined;
+    const pos = player ? { tx: player.tx, ty: player.ty, ahead: player.tileAhead() } : undefined;
     for (const k of this.kin) k.update(time, pos, motion);
 
     this.tickParticles(dt, view, motion);
