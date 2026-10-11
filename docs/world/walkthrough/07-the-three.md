@@ -433,7 +433,7 @@ purpose *just before the end*.
    1. **Nessa's reading.** After her Gleam, Nessa Cole keeps hearing something through the
       great telescope that isn't a star (`script.nessa_hours` → `flag:three_dawn_rumour`).
       Sincere, not dry — she is the haunted one:
-      > Nessa: "Every chart says the morning bell should hang due west of here. There is no
+      > Nessa: "Every chart says the morning bell should hang due south of here. There is no
       > morning bell. There has been no morning. And yet three nights running I have heard
       > a bell that hasn't rung — *waiting* makes a sound, you know, if it goes on long
       > enough."

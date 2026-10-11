@@ -46,7 +46,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'face', actor: 'coast_keeper', facing: 'left' },
     { op: 'face', actor: 'player', facing: 'right' },
     { op: 'say', speaker: 'COAST-KEEPER', text: 'Hold up there, apprentice! Past this point the flats run with the tide in the dark, and the lanterns out there will not answer an unproven lamp.' },
-    { op: 'say', speaker: 'COAST-KEEPER', text: 'Brisa asked me to keep this road until her Beacon burns again. Earn your first Gleam at the old tower above Tinderwick, and I will wave you through myself.' },
+    { op: 'say', speaker: 'COAST-KEEPER', text: 'Brisa asked me to keep this road until her Beacon burns again. Earn your first Gleam at the old tower on Tinderwick\'s bluff, back down the road, and I will wave you through myself.' },
     { op: 'say', speaker: 'COAST-KEEPER', text: 'The tower door wants a wick-key. The old lamplighter has it, down the shore where the star went out. Ask him.', unless_flag: 'flag:has_beacon_wick' },
     { op: 'say', speaker: 'COAST-KEEPER', text: 'You have the wick-key already? Then the Beacon is waiting for you. Back south through Tinderwick, up on the north-east bluff.', if_flag: 'flag:has_beacon_wick' },
     { op: 'say', speaker: 'COAST-KEEPER', text: 'A letter for the sky-watcher on the flats? It will keep. Gran\'s words travel better by Beacon-light anyway.', if_flag: 'flag:q_south_letter', unless_flag: 'flag:q_south_letter_given' },
@@ -803,7 +803,7 @@ export const SCRIPTS: ScriptRegistry = {
   'script.brisa_quest': [
     { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'warm', text: 'So you have made your first friend. Good. Then hear the truth of it, dear — the EMBER, the south\'s own constellation, is not relit from this hall.' },
     { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'neutral', text: 'It is relit from the OLD BEACON, on the bluff east of the square. And the beacon has stood dark since its wick-key was lost on the coast road.' },
-    { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'neutral', text: 'The old lamplighter who carried it walks Dimglass Coast still, up by the north boundary. Find him. Bring the key home.' },
+    { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'neutral', text: 'The old lamplighter who carried it walks Dimglass Coast still — just up the coast road, past the north gate. Find him. Bring the key home.' },
     { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'warm', text: 'Mind the grass, mind the dark — and come back stronger than you leave. The lantern asks a steady flame.' },
     { op: 'setFlag', flag: 'flag:beacon_quest' },
   ],
@@ -4420,8 +4420,8 @@ export const SCRIPTS: ScriptRegistry = {
   // dry line with the First-Light Phial.
   'script.nessa_hours': [
     { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: 'Wayfarer. Come up to the eyepiece — no, you needn\'t look. Listening is the trouble, tonight.' },
-    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: 'Every chart says the morning bell should hang due west of here. There is no morning bell. There has been no morning. And yet three nights running I have heard a bell that hasn\'t rung — WAITING makes a sound, you know, if it goes on long enough.' },
-    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'reverent', text: 'Due west is the Solarium\'s drowned garden — and off its deepest fold, the old processional stair no one has climbed since the sky kept hours. If something waits there for a morning... it has been waiting longest of anything alive.' },
+    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: 'Every chart says the morning bell should hang due south of here. There is no morning bell. There has been no morning. And yet three nights running I have heard a bell that hasn\'t rung — WAITING makes a sound, you know, if it goes on long enough.' },
+    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'reverent', text: 'Due south, down the Sunvault Climb, is the Solarium\'s drowned garden — and off its deepest fold, the old processional stair no one has climbed since the sky kept hours. If something waits there for a morning... it has been waiting longest of anything alive.' },
     { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'neutral', text: 'Lucan kept the last warm day. Ask him whether anyone thought to keep the last MORNING. If anyone would know, it is the man who hoards daylight.' },
     { op: 'setFlag', flag: 'flag:three_dawn_rumour' },
   ],
@@ -5061,7 +5061,7 @@ export const SCRIPTS: ScriptRegistry = {
     // --- The opening errand (before the lamp and the first kin). --------------
     {
       op: 'say', unless_flag: 'flag:fenn_errand', speaker: 'ANDREW',
-      text: 'Star-tender Fenn. He\'s out at the Vesper Crossroads waystone — east up the Lanternway, past the north gate. Been stood there two days asking after you. Go and be asked after.',
+      text: 'Star-tender Fenn. He\'s out at the Vesper Crossroads waystone — out the east side of town and along the Lanternway. Been stood there two days asking after you. Go and be asked after.',
     },
     {
       op: 'say', if_flag: 'flag:fenn_errand', unless_flag: 'flag:has_satchel', speaker: 'ANDREW',
@@ -5083,7 +5083,7 @@ export const SCRIPTS: ScriptRegistry = {
     },
     {
       op: 'say', if_flag: 'flag:beacon_quest', unless_flag: 'flag:has_beacon_wick', speaker: 'ANDREW',
-      text: 'The old Beacon wants its wick-key, and the lamplighter down on the Dimglass Coast has it. South out of town, follow the cliff path down. You can\'t miss her — she\'s the only lit thing on that road.',
+      text: 'The old Beacon wants its wick-key, and the old lamplighter on the Dimglass Coast has it. North out of town, through the gate and up the coast road. You can\'t miss him — he\'s the only lit thing on that road.',
     },
     {
       op: 'say', if_flag: 'flag:has_beacon_wick', unless_flag: 'gleam:ember', speaker: 'ANDREW',
@@ -5166,7 +5166,7 @@ export const SCRIPTS: ScriptRegistry = {
     },
     {
       op: 'say', unless_flag: 'flag:q_south_bell', speaker: 'ANDREW',
-      text: 'South now. Down the coast, over the tidal flats, till the road runs out of land — that\'s Pearlmoor Quay. See Reyl Wash at the Lumenary first. He keeps the Tide, and he\'ll have a job for you.',
+      text: 'North now. Up the coast road, over the tidal flats, till the road runs out of land — that\'s Pearlmoor Quay. See Reyl Wash at the Lumenary first. He keeps the Tide, and he\'ll have a job for you.',
     },
   ],
 
@@ -5234,7 +5234,7 @@ export const SCRIPTS: ScriptRegistry = {
     },
     {
       op: 'say', unless_flag: 'gleam:ember', speaker: 'ANDREW',
-      text: 'All I\'ll say is: it\'s a long way south, where the land gives up and the town carries on regardless. Get your first Gleam and the road will take you most of the way.',
+      text: 'All I\'ll say is: it\'s a long way up the coast, where the land gives up and the town carries on regardless. Get your first Gleam and the road will take you most of the way.',
     },
     // B
     {

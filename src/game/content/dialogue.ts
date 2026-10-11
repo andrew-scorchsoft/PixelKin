@@ -89,7 +89,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // Talking to the coast-keeper directly, and the gated north warps' blocked line.
   'npc.coast_keeper_gate': [
-    { speaker: 'COAST-KEEPER', text: 'Not past me yet, apprentice. Light Brisa\'s Beacon first: the old tower above Tinderwick. Then the flats are yours.' },
+    { speaker: 'COAST-KEEPER', text: 'Not past me yet, apprentice. Light Brisa\'s Beacon first: the old tower on Tinderwick\'s bluff, back down the road. Then the flats are yours.' },
   ],
   'npc.house_parent': [
     { speaker: 'GRAN', text: 'Off on your Wayfaring at last — away to walk the dark valleys, befriend their kin, and relight the sky, the way every lamp-tender\'s apprentice must.' },
@@ -155,7 +155,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // --- The Beacon (interiors) ---
   'sign.beacon_door': [
-    { text: 'THE OLD BEACON\nThe foot door is wick-locked. Its key walked away down the coast road, years ago.' },
+    { text: 'THE OLD BEACON\nThe foot door is wick-locked. Its key walked away up the coast road, years ago.' },
   ],
   'sign.beacon_floor_i': [
     { text: 'Stair-litany, floor the first: "A flame is carried, never kept."' },
@@ -825,7 +825,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // --- Vesper Crossroads (the Lanternway hub) ---------------------------------
   'sign.crossroads': [
-    { text: 'VESPER CROSSROADS\nAll the Lanternway meets here. SOUTH-WEST: Tinderwick. SOUTH-EAST: Pearlmoor Quay — its lamps wake with the Tide. The other roads sleep, unlit.' },
+    { text: 'VESPER CROSSROADS\nAll the Lanternway meets here. WEST: Tinderwick. EAST: Pearlmoor Quay — its lamps wake with the Tide. The other roads sleep, unlit.' },
   ],
   'sign.crossroads_spire': [
     { text: 'The inward road. Eight braziers stand cold around its gate — one for each constellation. The mountain waits.' },
@@ -1804,7 +1804,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // Nessa, once her reading is shared (consumes flag:three_dawn_rumour).
   'npc.nessa_hours_after': [
-    { speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: 'The bell that hasn\'t rung is still there, due west, under everything. I hear it most on clear nights. ...Go gently, Wayfarer. Whatever has waited that long for a morning deserves not to be startled.' },
+    { speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: 'The bell that hasn\'t rung is still there, due south, under everything. I hear it most on clear nights. ...Go gently, Wayfarer. Whatever has waited that long for a morning deserves not to be startled.' },
   ],
   // Lucan, once the phial is given (consumes flag:three_dawn_phial).
   'npc.lucan_phial_after': [
@@ -1940,12 +1940,12 @@ export const DIALOGUE: DialogueRegistry = {
   // says what it IS — the joke only lands if the player goes and finds out.
   // ---------------------------------------------------------------------------
   'npc.egg_hint_coast': [
-    { speaker: 'WALKER', text: 'Heading south? Good. Keep your lamp up and your wits about you — and keep your eyes open besides.' },
+    { speaker: 'WALKER', text: 'Heading north? Good. Keep your lamp up and your wits about you — and keep your eyes open besides.' },
     { speaker: 'WALKER', text: 'There\'s an easter egg hidden somewhere in Vesperholm. I\'ve never found it. My cousin swears blind she has, but my cousin also swears she once out-argued a Lampwarden.' },
   ],
   'npc.egg_hint_flats': [
     { speaker: 'NET-MENDER', text: 'You\'ve the look of someone hunting for something that isn\'t on the road.' },
-    { speaker: 'NET-MENDER', text: 'The easter egg, is it? Everyone asks eventually. All I\'ll say is: it\'s in the quay town down the coast, and it\'s NOT at the water\'s edge. Look uphill.' },
+    { speaker: 'NET-MENDER', text: 'The easter egg, is it? Everyone asks eventually. All I\'ll say is: it\'s in the quay town up the coast, and it\'s NOT at the water\'s edge. Look uphill.' },
   ],
   'npc.egg_hint_crossroads': [
     { speaker: 'ROAD-TELLER', text: 'Waystone\'s a good place to sit. Every road in the valley eventually walks past you and tells you something.' },
