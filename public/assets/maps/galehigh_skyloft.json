@@ -41,6 +41,28 @@
       "h": 3,
       "overhang": 2,
       "walk_under": true
+    },
+    {
+      "id": "sl_kite_rack",
+      "sprite": "galehigh_kite_rack",
+      "at": {
+        "tx": 4,
+        "ty": 8
+      },
+      "w": 3,
+      "h": 2
+    },
+    {
+      "id": "sl_wind_vane",
+      "sprite": "galehigh_wind_vane",
+      "at": {
+        "tx": 16,
+        "ty": 5
+      },
+      "w": 1,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
     }
   ],
   "warps": [
@@ -123,7 +145,7 @@
         "ty": 6
       },
       "facing": "right",
-      "sprite": "npc_woman",
+      "sprite": "kite_weaver",
       "movement": "static",
       "dialogue_ref": "script.skyloft_ward_a",
       "sight_range": 4,
@@ -137,7 +159,7 @@
         "ty": 6
       },
       "facing": "right",
-      "sprite": "npc_woman",
+      "sprite": "kite_weaver",
       "movement": "look_around",
       "dialogue_ref": "npc.skyloft_ward_a_after",
       "requires_flag": "flag:skyloft_ward_a_beaten"
@@ -857,5 +879,26 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "leaves",
+        "density": 0.6
+      },
+      {
+        "kind": "motes",
+        "density": 1.0
+      }
+    ],
+    "starfall": {
+      "min_s": 30,
+      "max_s": 70
+    },
+    "birds": {
+      "kind": "bird",
+      "flyover": true
+    },
+    "sound_bed": "amb-wind"
+  }
 }

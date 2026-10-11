@@ -91,6 +91,87 @@
       "h": 3,
       "overhang": 2,
       "walk_under": true
+    },
+    {
+      "id": "w2_shrine",
+      "sprite": "windward_wind_shrine",
+      "at": {
+        "tx": 22,
+        "ty": 17
+      },
+      "w": 2,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "w2_pine_e",
+      "sprite": "windward_bent_pine",
+      "at": {
+        "tx": 24,
+        "ty": 18
+      },
+      "w": 2,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "w2_pine_n",
+      "sprite": "windward_bent_pine",
+      "at": {
+        "tx": 22,
+        "ty": 2
+      },
+      "w": 2,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "w2_flags",
+      "sprite": "windward_prayer_flags",
+      "at": {
+        "tx": 11,
+        "ty": 16
+      },
+      "w": 4,
+      "h": 2,
+      "overhang": 2,
+      "walk_under": true,
+      "solid": false
+    },
+    {
+      "id": "w2_woodpile",
+      "sprite": "pale_vault_woodpile",
+      "at": {
+        "tx": 6,
+        "ty": 18
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "w2_drift_a",
+      "sprite": "windward_snow_drift",
+      "at": {
+        "tx": 20,
+        "ty": 21
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "w2_drift_b",
+      "sprite": "windward_snow_drift",
+      "at": {
+        "tx": 3,
+        "ty": 5
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
     }
   ],
   "warps": [
@@ -352,6 +433,16 @@
       },
       "activation": "interact",
       "ref": "sign.windward_roost"
+    },
+    {
+      "id": "w2_shrine_look",
+      "kind": "script",
+      "at": {
+        "tx": 22,
+        "ty": 19
+      },
+      "activation": "interact",
+      "ref": "script.windward_shrine"
     }
   ],
   "encounters": [
@@ -794,6 +885,18 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_windward_kit",
       "hidden_when_flag": "flag:picked_windward_kit"
+    },
+    {
+      "id": "amb_geolace",
+      "at": {
+        "tx": 21,
+        "ty": 3
+      },
+      "facing": "down",
+      "sprite": "kin_74_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
     }
   ],
   "gates": [],
@@ -2840,5 +2943,31 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "snow",
+        "density": 0.8
+      },
+      {
+        "kind": "motes",
+        "density": 0.8
+      }
+    ],
+    "mist": {
+      "color": "#e6eef8",
+      "alpha": 0.12,
+      "speed": 12
+    },
+    "starfall": {
+      "min_s": 25,
+      "max_s": 60
+    },
+    "birds": {
+      "kind": "bird",
+      "flyover": true
+    },
+    "sound_bed": "amb-wind"
+  }
 }

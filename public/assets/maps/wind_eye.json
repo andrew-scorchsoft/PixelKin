@@ -1571,5 +1571,22 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "mist": {
+      "color": "#e8f0ff",
+      "alpha": 0.18,
+      "speed": 8
+    },
+    "particles": [
+      {
+        "kind": "motes",
+        "density": 0.8
+      },
+      {
+        "kind": "starglint",
+        "density": 0.4
+      }
+    ]
+  }
 }

@@ -85,6 +85,9 @@ export const LIGHT_SOURCES: Record<string, { hx: number; hy: number; radius: num
   penumbra_memorial_solar: { hx: 8, hy: 7, radius: 12, color: 0xffd76b },
   penumbra_memorial_lunar: { hx: 8, hy: 7, radius: 12, color: 0x8aa0ff },
   penumbra_vigil_camp: { hx: 24, hy: 15, radius: 20, color: 0xffb05a },
+  // north
+  pale_vault_ice_lantern: { hx: 8, hy: 9, radius: 12, color: 0x9fe7ff },
+  windward_wind_shrine: { hx: 16, hy: 18, radius: 9, color: 0xffc46b },
 };
 
 /** Chimney tops keyed by building sprite (px offset of the stack's mouth). */
@@ -95,6 +98,9 @@ export const CHIMNEYS: Record<string, { x: number; y: number }> = {
   vesper_crossroads_inn: { x: 58, y: 6 },
   // east
   cinderhead_miner_cottage: { x: 66, y: 8 },
+  // north
+  pale_vault_home: { x: 20, y: 14 },
+  galehigh_cottage: { x: 22, y: 34 },
 };
 
 /** Map kinds that are "under the sky" (the starfall default + bird fly-overs). */

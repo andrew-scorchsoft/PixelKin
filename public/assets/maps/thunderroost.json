@@ -54,6 +54,38 @@
       "h": 1,
       "solid": false,
       "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "roost_rod",
+      "sprite": "windward_lightning_rod",
+      "at": {
+        "tx": 13,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "roost_struck",
+      "sprite": "windward_struck_rock",
+      "at": {
+        "tx": 12,
+        "ty": 7
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "roost_wreck",
+      "sprite": "windward_kite_wreck_b",
+      "at": {
+        "tx": 9,
+        "ty": 8
+      },
+      "w": 2,
+      "h": 2
     }
   ],
   "warps": [
@@ -175,6 +207,18 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_roost_prize",
       "hidden_when_flag": "flag:picked_roost_prize"
+    },
+    {
+      "id": "amb_strikeaven",
+      "at": {
+        "tx": 11,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "kin_90_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
     }
   ],
   "gates": [],
@@ -781,5 +825,35 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "snow",
+        "density": 0.5
+      },
+      {
+        "kind": "motes",
+        "density": 1.0
+      }
+    ],
+    "tint": {
+      "color": "#1b2440",
+      "alpha": 0.16
+    },
+    "mist": {
+      "color": "#9aa3b8",
+      "alpha": 0.14,
+      "speed": 16
+    },
+    "starfall": {
+      "min_s": 25,
+      "max_s": 55
+    },
+    "birds": {
+      "kind": "bird",
+      "flyover": true
+    },
+    "sound_bed": "amb-wind"
+  }
 }

@@ -205,6 +205,62 @@
       "h": 3,
       "overhang": 2,
       "walk_under": true
+    },
+    {
+      "id": "pv_fur_rack",
+      "sprite": "pale_vault_fur_rack",
+      "at": {
+        "tx": 2,
+        "ty": 26
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "pv_sled",
+      "sprite": "pale_vault_herder_sled",
+      "at": {
+        "tx": 9,
+        "ty": 24
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "pv_ice_lantern_w",
+      "sprite": "pale_vault_ice_lantern",
+      "at": {
+        "tx": 10,
+        "ty": 12
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "pv_ice_lantern_e",
+      "sprite": "pale_vault_ice_lantern",
+      "at": {
+        "tx": 22,
+        "ty": 12
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "pv_ice_lantern_s",
+      "sprite": "pale_vault_ice_lantern",
+      "at": {
+        "tx": 16,
+        "ty": 25
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true
     }
   ],
   "warps": [
@@ -1110,7 +1166,7 @@
         "ty": 11
       },
       "facing": "up",
-      "sprite": "npc_old_man",
+      "sprite": "lamplighter",
       "movement": "static",
       "dialogue_ref": "script.pale_vault_aurora_watch",
       "hidden_when_flag": "flag:aurora_watch_seen"
@@ -1122,7 +1178,7 @@
         "ty": 11
       },
       "facing": "up",
-      "sprite": "npc_old_man",
+      "sprite": "lamplighter",
       "movement": "static",
       "dialogue_ref": "npc.vigil_keeper_after",
       "requires_flag": "flag:aurora_watch_seen"
@@ -1134,7 +1190,7 @@
         "ty": 12
       },
       "facing": "up",
-      "sprite": "npc_woman",
+      "sprite": "frost_herder",
       "movement": "static",
       "dialogue_ref": "npc.aurora_watcher_a",
       "hidden_when_flag": "gleam:frost"
@@ -1146,7 +1202,7 @@
         "ty": 12
       },
       "facing": "up",
-      "sprite": "npc_woman",
+      "sprite": "frost_herder",
       "movement": "static",
       "dialogue_ref": "script.aurorawatcher_hours",
       "requires_flag": "gleam:frost",
@@ -1159,7 +1215,7 @@
         "ty": 12
       },
       "facing": "up",
-      "sprite": "npc_woman",
+      "sprite": "frost_herder",
       "movement": "static",
       "dialogue_ref": "npc.aurorawatcher_after",
       "requires_flag": "flag:three_mid_rumour"
@@ -1171,7 +1227,7 @@
         "ty": 14
       },
       "facing": "up",
-      "sprite": "npc_man",
+      "sprite": "star_watcher",
       "movement": "static",
       "dialogue_ref": "npc.aurora_watcher_b"
     },
@@ -1244,7 +1300,7 @@
         "ty": 10
       },
       "facing": "down",
-      "sprite": "npc_man",
+      "sprite": "frost_herder",
       "movement": "look_around",
       "dialogue_ref": "npc.pale_vault_townsfolk"
     },
@@ -1280,7 +1336,7 @@
         "ty": 11
       },
       "facing": "up",
-      "sprite": "npc_child",
+      "sprite": "village_child",
       "movement": "wander",
       "dialogue_ref": "npc.pale_vault_gleam_kid",
       "requires_flag": "gleam:frost"
@@ -1308,6 +1364,42 @@
       "sprite": "andrew_ward",
       "movement": "look_around",
       "dialogue_ref": "script.andrew_road"
+    },
+    {
+      "id": "amb_snowcune",
+      "at": {
+        "tx": 20,
+        "ty": 24
+      },
+      "facing": "down",
+      "sprite": "kin_80_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
+    },
+    {
+      "id": "amb_iceling",
+      "at": {
+        "tx": 28,
+        "ty": 13
+      },
+      "facing": "down",
+      "sprite": "kin_71_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
+    },
+    {
+      "id": "cor_acolyte",
+      "at": {
+        "tx": 2,
+        "ty": 18
+      },
+      "facing": "right",
+      "sprite": "hollowing_acolyte",
+      "dialogue_ref": "npc.cor_acolyte",
+      "requires_flag": "flag:q_north_lampline",
+      "hidden_when_flag": "flag:met_cor"
     }
   ],
   "gates": [
@@ -4230,5 +4322,27 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "snow",
+        "density": 1.0
+      },
+      {
+        "kind": "starglint",
+        "density": 0.4
+      }
+    ],
+    "tint": {
+      "color": "#7fe0c0",
+      "alpha": 0.06
+    },
+    "starfall": {
+      "min_s": 25,
+      "max_s": 55
+    },
+    "footprints": "all",
+    "sound_bed": "amb-wind"
+  }
 }

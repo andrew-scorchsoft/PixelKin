@@ -133,6 +133,13 @@
       "tw": 2,
       "th": 3
     },
+    "galehigh_kite_rack": {
+      "path": "assets/sprites/objects/galehigh_kite_rack.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
     "galehigh_lumenary": {
       "path": "assets/sprites/objects/galehigh_lumenary.webp",
       "width": 96,
@@ -160,6 +167,13 @@
       "height": 80,
       "tw": 4,
       "th": 5
+    },
+    "galehigh_wind_vane": {
+      "path": "assets/sprites/objects/galehigh_wind_vane.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
     },
     "glowmoss_deep_glowshrooms_ember": {
       "path": "assets/sprites/objects/glowmoss_deep_glowshrooms_ember.webp",
@@ -616,12 +630,33 @@
       "tw": 3,
       "th": 2
     },
+    "pale_vault_fur_rack": {
+      "path": "assets/sprites/objects/pale_vault_fur_rack.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "pale_vault_herder_sled": {
+      "path": "assets/sprites/objects/pale_vault_herder_sled.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "pale_vault_home": {
       "path": "assets/sprites/objects/pale_vault_home.webp",
       "width": 64,
       "height": 64,
       "tw": 4,
       "th": 4
+    },
+    "pale_vault_ice_lantern": {
+      "path": "assets/sprites/objects/pale_vault_ice_lantern.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
     },
     "pale_vault_ice_spire": {
       "path": "assets/sprites/objects/pale_vault_ice_spire.webp",
@@ -650,6 +685,13 @@
       "height": 48,
       "tw": 3,
       "th": 3
+    },
+    "pale_vault_woodpile": {
+      "path": "assets/sprites/objects/pale_vault_woodpile.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
     },
     "pearlmoor_anchor": {
       "path": "assets/sprites/objects/pearlmoor_anchor.webp",
@@ -1365,6 +1407,13 @@
       "tw": 3,
       "th": 3
     },
+    "windward_bent_pine": {
+      "path": "assets/sprites/objects/windward_bent_pine.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
     "windward_cairn": {
       "path": "assets/sprites/objects/windward_cairn.webp",
       "width": 32,
@@ -1374,6 +1423,48 @@
     },
     "windward_kite_wreck": {
       "path": "assets/sprites/objects/windward_kite_wreck.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "windward_kite_wreck_b": {
+      "path": "assets/sprites/objects/windward_kite_wreck_b.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "windward_lightning_rod": {
+      "path": "assets/sprites/objects/windward_lightning_rod.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    },
+    "windward_prayer_flags": {
+      "path": "assets/sprites/objects/windward_prayer_flags.webp",
+      "width": 64,
+      "height": 32,
+      "tw": 4,
+      "th": 2
+    },
+    "windward_rest_shelter": {
+      "path": "assets/sprites/objects/windward_rest_shelter.webp",
+      "width": 64,
+      "height": 48,
+      "tw": 4,
+      "th": 3
+    },
+    "windward_snow_drift": {
+      "path": "assets/sprites/objects/windward_snow_drift.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "windward_spyglass": {
+      "path": "assets/sprites/objects/windward_spyglass.webp",
       "width": 32,
       "height": 32,
       "tw": 2,
@@ -1393,8 +1484,22 @@
       "tw": 1,
       "th": 1
     },
+    "windward_struck_rock": {
+      "path": "assets/sprites/objects/windward_struck_rock.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "windward_updraft": {
       "path": "assets/sprites/objects/windward_updraft.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "windward_wind_shrine": {
+      "path": "assets/sprites/objects/windward_wind_shrine.webp",
       "width": 32,
       "height": 48,
       "tw": 2,
