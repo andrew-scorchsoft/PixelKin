@@ -415,7 +415,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   fails if either is stale. Never hand-cut a remaster's loop: the glue pass is what makes it seamless.
   A clean seam ≠ a good loop: `tools/audio/dead_air.py` (CI) catches the take-fades-out-mid-cue
   failure (the boss went silent 25 s); and never condition a battle/driving cue on the motif —
-  it pins the tempo to the lullaby's ~90 BPM.
+  it pins the tempo to the lullaby's ~90 BPM. **Battles are CLASSIC-ONLY (owner's call, 2026-10):**
+  the `battle-*` remasters are deliberately NOT served (cue sheets kept in `assets/audio/elevenlabs/`),
+  so the manifest omits them and every fight plays the chip render — don't re-add their mp3s.
 - **Volume is three layers (2026-10):** overall `Settings.masterVolume` (0..1 → Phaser's global
   `game.sound.volume` in `main.ts`; the portrait device deck's top-left slider `.pk-volume` + Settings →
   Volume, both via `ShellManager.setMasterVolume`) over Music / Effects levels. One-shots are trimmed in

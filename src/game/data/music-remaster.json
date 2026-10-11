@@ -1,42 +1,6 @@
 {
  "_generated": "tools/audio/build_remaster_manifest.py — do not hand-edit",
  "tracks": {
-  "battle-boss-eclipse": {
-   "loop_start": 6.943,
-   "duration": 77.793,
-   "where": "The final battles: Warden Còr at the Umbral Spire summit, and Star-tender Fenn's post-game duel",
-   "mood": "The last stand on the black mountain — grand, tragic and driving: a sorrowful antagonist who wants a gentle endless night, and the light that will not go out."
-  },
-  "battle-emberfall": {
-   "loop_start": 5.735,
-   "duration": 56.738,
-   "where": "Trainer battles: every Lampwarden duel for a Gleam (Brisa, Reyl, Sable, Otho), the Beacon and route trainers, and Wren's first friendly bout",
-   "mood": "The arena duel — proud, rousing and fair: a respected challenger in the lantern-light, the fight that earns a constellation."
-  },
-  "battle-hours": {
-   "loop_start": 7.709,
-   "duration": 87.589,
-   "where": "The Three Hours set-piece battles (Gloamber, Noctilune, Erstmorn — the legendary trio)",
-   "mood": "Fighting a keeper of the sky's turning — awed, patient and vast, like a great clock: a jammed wheel rocking toward the next hour."
-  },
-  "battle-main-dusk-duel": {
-   "loop_start": 6.896,
-   "duration": 53.682,
-   "where": "Every wild kin battle (the default battle bed); the attract-mode trailer duel keeps the classic chip render",
-   "mood": "The fight you hear a thousand times — urgent, catchy and winnable: a minor-key chase that bursts into a heroic major lift."
-  },
-  "battle-nightfall": {
-   "loop_start": 10.24,
-   "duration": 65.437,
-   "where": "The Hollowing's acolytes and Vigilants (incl. the summit guard), and the far-valley Lampwardens of the North and West (Mira Vael, Ysolde Frost, Lucan Pyre, Nessa Cole)",
-   "mood": "The fight in the deepening dark — cold, uneasy and solemn: an enemy who believes in the gentle night, sorrow under the steel."
-  },
-  "battle-veil": {
-   "loop_start": 7.082,
-   "duration": 58.488,
-   "where": "Rival battles with Wren (Pale Vault, Nightreach, and the post-game rematch)",
-   "mood": "The rival who grew up beside you — cocky, quick, competitive and fond: a grin across the field, and the friendship under it."
-  },
   "beacon-stair": {
    "loop_start": 4.574,
    "duration": 81.998,
