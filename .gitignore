@@ -37,3 +37,6 @@ assets/audio/midi/soundfonts/
 
 # Wrangler local state (wrangler dev)
 .wrangler/
+
+# Agent worktrees (isolated scratch checkouts)
+.claude/worktrees/
