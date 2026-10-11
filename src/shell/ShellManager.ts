@@ -28,6 +28,8 @@ import {
   setMusicVolume,
   setSfxVolume,
   setCannotDie,
+  setAmbientMotion,
+  prefersReducedMotion,
 } from '@game/ui/preferences';
 
 /** The abstract directional/button actions the on-screen controls emit. */
@@ -99,6 +101,7 @@ class ShellManagerImpl {
     setMusicVolume(this.settings.musicVolume ?? 'full');
     setSfxVolume(this.settings.sfxVolume ?? 'full');
     setCannotDie(this.settings.cannotDie ?? false);
+    setAmbientMotion(this.settings.ambientMotion ?? !prefersReducedMotion());
     this.applyControlSize();
     this.render();
   }

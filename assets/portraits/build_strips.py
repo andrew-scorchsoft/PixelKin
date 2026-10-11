@@ -22,11 +22,13 @@ TOP_PAD = 1
 FILL = (SIZE - TOP_PAD) / SIZE
 
 # character -> ordered list of (expression-suffix) matching the frame index order.
+# APPEND new expressions at the END of a list — never reorder: the index is the
+# frame scripts already reference via portraits.ts.
 STRIPS = {
     "fenn": ["neutral", "warm", "grave", "smile", "peace"],
-    "wren": ["neutral", "eager", "unsure", "resolved"],
+    "wren": ["neutral", "eager", "unsure", "resolved", "soft"],
     "brisa": ["neutral", "warm", "proud"],
-    "reyl": ["neutral", "weathered", "proud"],
+    "reyl": ["neutral", "weathered", "proud", "grave"],
     "lamplighter": ["neutral", "grave"],
     "hearthkeeper": ["neutral", "warm"],
     "cor": ["neutral", "grave", "gentle", "sorrowful", "at_peace"],
@@ -35,6 +37,7 @@ STRIPS = {
     "ysolde": ["neutral", "serene", "warm"],
     "lucan": ["neutral", "grand", "bittersweet"],
     "nessa": ["neutral", "haunted", "reverent"],
+    "otho": ["neutral", "grave", "proud", "warm"],
 }
 
 

@@ -15,6 +15,13 @@
  *   - deps.onImport(save): called with a freshly imported SaveGame so the
  *     orchestrator can persist + apply it (SettingsMenu doesn't own world state).
  *   - deps.sfx?: optional Sfx for menu blips + the save chime ('ui-save').
+ *   - deps.restPoints?() / deps.onRestTravel?(point): in the world only — the
+ *     "Return to rest point" row (absent on the title). The row opens
+ *     RestPointMenu; a confirmed pick is handed to onRestTravel and SETTINGS
+ *     closes so the host can make the journey.
+ *
+ * The list outgrew the 160px budget at 12 rows, so it is WINDOWED (Menu
+ * `maxVisible: 11`, ▲/▼ hints) and re-opens on the row you last touched.
  */
 import Phaser from 'phaser';
 import { theme } from './theme';
@@ -36,11 +43,18 @@ import {
   setMusicVolume,
   setSfxVolume,
   setCannotDie,
+  setAmbientMotion,
+  getAmbientMotion,
   type TextSpeed,
   type BattlePace,
   type VolumeLevel,
 } from './preferences';
 import { GAME_WIDTH, GAME_HEIGHT } from '@game/config';
+import type { RestPoint } from '@game/data/world/types';
+import { RestPointMenu } from './RestPointMenu';
+
+/** Rows the settings list shows at once (11 x 12px + padding from y 14 = 158). */
+const SETTINGS_VISIBLE_ROWS = 11;
 
 export interface SettingsMenuDeps {
   /** Current save to export (null if none exists yet). */
@@ -48,6 +62,10 @@ export interface SettingsMenuDeps {
   /** Called with an imported save so the host can persist + apply it. */
   onImport: (save: SaveGame) => void | Promise<void>;
   sfx?: Sfx;
+  /** Travellable rest points, newest first (world only; omit on the title). */
+  restPoints?: () => RestPoint[];
+  /** Called with a confirmed rest point; SETTINGS then closes so the host travels. */
+  onRestTravel?: (point: RestPoint) => void;
 }
 
 const SHELL_LABEL: Record<ShellMode, string> = {
@@ -89,6 +107,8 @@ function nextShell(mode: ShellMode): ShellMode {
 
 export class SettingsMenu {
   private settings: Settings = { shell: 'device', controlsVisible: true };
+  /** The row last chosen, so a toggle re-opens the windowed list in place. */
+  private lastValue?: string;
 
   constructor(
     private readonly scene: Phaser.Scene,
@@ -101,12 +121,15 @@ export class SettingsMenu {
     let open = true;
     while (open) {
       const choice = await this.openOnce();
+      if (choice !== null) this.lastValue = choice;
       open = await this.handle(choice);
     }
   }
 
   private buildOptions(): MenuOption[] {
     return [
+      // First, so a player stranded by a changed road finds it at a glance. World only.
+      ...(this.deps.restPoints ? [{ label: 'Return to rest point', value: 'rest' }] : []),
       { label: `Shell: ${SHELL_LABEL[this.settings.shell]}`, value: 'shell' },
       {
         // One control for the touch buttons: their size, plus Hidden as the last
@@ -125,6 +148,7 @@ export class SettingsMenu {
       { label: `Music: ${VOLUME_LABEL[this.settings.musicVolume ?? 'full']}`, value: 'music' },
       { label: `Sfx: ${VOLUME_LABEL[this.settings.sfxVolume ?? 'full']}`, value: 'sfx' },
       { label: `Cannot die: ${this.settings.cannotDie ? 'On' : 'Off'}`, value: 'nodie' },
+      { label: `Ambient motion: ${getAmbientMotion() ? 'On' : 'Off'}`, value: 'motion' },
       { label: 'Backup / restore', value: 'backup' },
       { label: 'Back', value: 'back' },
     ];
@@ -137,16 +161,19 @@ export class SettingsMenu {
       .setScrollFactor(0)
       .setDepth(theme.depth.text);
 
-    const menu = new Menu(this.scene, this.buildOptions(), {
+    const options = this.buildOptions();
+    const menu = new Menu(this.scene, options, {
       x: 24,
-      // The list is height-budgeted (one row per setting + Backup/restore + Back):
-      // 11 rows x 12px + padding from y 14 ends at 158 — inside the 160px screen,
-      // just under the title. A 12th row needs a sub-screen, not a smaller y.
+      // The list is height-budgeted: 11 rows x 12px + padding from y 14 ends at
+      // 158 — inside the 160px screen, just under the title. Past 11 rows it
+      // scrolls (maxVisible) rather than shrinking y.
       y: 14,
       width: GAME_WIDTH - 48,
       sfx: this.deps.sfx,
       cancellable: true,
       fixed: true,
+      maxVisible: SETTINGS_VISIBLE_ROWS,
+      initialIndex: Math.max(0, options.findIndex((o) => o.value === this.lastValue)),
     });
 
     return menu.run().then((value) => {
@@ -301,9 +328,26 @@ export class SettingsMenu {
         void this.deps.sfx?.play('ui-toggle');
         return true;
       }
+      case 'motion': {
+        // Particles / falling stars / birds / bobbing — off for motion-sensitive
+        // players. Live: Ambience reads the getter every frame.
+        const ambientMotion = !getAmbientMotion();
+        this.settings = { ...this.settings, ambientMotion };
+        setAmbientMotion(ambientMotion);
+        await SaveManager.saveSettings(this.settings);
+        void this.deps.sfx?.play('ui-toggle');
+        return true;
+      }
       case 'backup': {
         await this.openBackup();
         return true;
+      }
+      case 'rest': {
+        const points = this.deps.restPoints?.() ?? [];
+        const picked = await new RestPointMenu(this.scene, points, this.deps.sfx).run();
+        if (!picked) return true;
+        this.deps.onRestTravel?.(picked);
+        return false; // close SETTINGS — the host makes the journey
       }
       case 'back':
       case null:

@@ -1492,6 +1492,17 @@
       "h": 2,
       "overhang": 1,
       "walk_under": true
+    },
+    {
+      "id": "doused_lantern",
+      "sprite": "glowmoss_deep_null_lantern_shrine",
+      "at": {
+        "tx": 9,
+        "ty": 9
+      },
+      "w": 2,
+      "h": 3,
+      "overhang": 1
     }
   ],
   "warps": [
@@ -1622,8 +1633,46 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_b1f_chart",
       "hidden_when_flag": "flag:picked_b1f_chart"
+    },
+    {
+      "id": "b1f_acolyte",
+      "at": {
+        "tx": 9,
+        "ty": 12
+      },
+      "facing": "up",
+      "sprite": "hollowing_acolyte",
+      "movement": "static",
+      "dialogue_ref": "script.b1f_acolyte",
+      "requires_flag": "flag:met_hollowing",
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "amb_fennlight",
+      "at": {
+        "tx": 20,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "kin_67_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/lowleaf-hollow-c.mp3"
+  "music": "assets/audio/music/lowleaf-hollow-c.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "glowmotes",
+        "density": 0.6
+      }
+    ],
+    "tint": {
+      "color": "#9fe8b8",
+      "alpha": 0.05
+    },
+    "sound_bed": "amb-drips"
+  }
 }

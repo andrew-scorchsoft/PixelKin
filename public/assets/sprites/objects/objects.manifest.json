@@ -7,6 +7,13 @@
       "tw": 2,
       "th": 2
     },
+    "cinderhead_lamp_hooks": {
+      "path": "assets/sprites/objects/cinderhead_lamp_hooks.webp",
+      "width": 80,
+      "height": 32,
+      "tw": 5,
+      "th": 2
+    },
     "cinderhead_lumenary": {
       "path": "assets/sprites/objects/cinderhead_lumenary.webp",
       "width": 96,
@@ -14,11 +21,46 @@
       "tw": 6,
       "th": 7
     },
+    "cinderhead_miner_cottage": {
+      "path": "assets/sprites/objects/cinderhead_miner_cottage.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
     "cinderhead_ore_cart": {
       "path": "assets/sprites/objects/cinderhead_ore_cart.webp",
       "width": 32,
       "height": 32,
       "tw": 2,
+      "th": 2
+    },
+    "coldfog_beached_boat": {
+      "path": "assets/sprites/objects/coldfog_beached_boat.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "coldfog_dead_willow": {
+      "path": "assets/sprites/objects/coldfog_dead_willow.webp",
+      "width": 48,
+      "height": 64,
+      "tw": 3,
+      "th": 4
+    },
+    "coldfog_doused_lamp": {
+      "path": "assets/sprites/objects/coldfog_doused_lamp.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    },
+    "coldfog_hollowing_notice": {
+      "path": "assets/sprites/objects/coldfog_hollowing_notice.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
       "th": 2
     },
     "coldfog_lighthouse": {
@@ -49,12 +91,33 @@
       "tw": 3,
       "th": 2
     },
+    "coldfog_set_table": {
+      "path": "assets/sprites/objects/coldfog_set_table.webp",
+      "width": 64,
+      "height": 48,
+      "tw": 4,
+      "th": 3
+    },
     "coldfog_works_front": {
       "path": "assets/sprites/objects/coldfog_works_front.webp",
       "width": 96,
       "height": 80,
       "tw": 6,
       "th": 5
+    },
+    "dawnstead_cottage": {
+      "path": "assets/sprites/objects/dawnstead_cottage.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "dawnstead_shop": {
+      "path": "assets/sprites/objects/dawnstead_shop.webp",
+      "width": 80,
+      "height": 64,
+      "tw": 5,
+      "th": 4
     },
     "fallenstar_cinder_star": {
       "path": "assets/sprites/objects/fallenstar_cinder_star.webp",
@@ -119,6 +182,13 @@
       "tw": 2,
       "th": 3
     },
+    "galehigh_kite_rack": {
+      "path": "assets/sprites/objects/galehigh_kite_rack.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
     "galehigh_lumenary": {
       "path": "assets/sprites/objects/galehigh_lumenary.webp",
       "width": 96,
@@ -147,6 +217,13 @@
       "tw": 4,
       "th": 5
     },
+    "galehigh_wind_vane": {
+      "path": "assets/sprites/objects/galehigh_wind_vane.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    },
     "glowmoss_deep_glowshrooms_ember": {
       "path": "assets/sprites/objects/glowmoss_deep_glowshrooms_ember.webp",
       "width": 32,
@@ -170,6 +247,69 @@
     },
     "glowmoss_deep_null_lantern_shrine": {
       "path": "assets/sprites/objects/glowmoss_deep_null_lantern_shrine.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "hoard_broom": {
+      "path": "assets/sprites/objects/hoard_broom.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "hoard_cot": {
+      "path": "assets/sprites/objects/hoard_cot.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "hoard_lamp_unlit": {
+      "path": "assets/sprites/objects/hoard_lamp_unlit.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    },
+    "hoard_linen_cold": {
+      "path": "assets/sprites/objects/hoard_linen_cold.webp",
+      "width": 64,
+      "height": 32,
+      "tw": 4,
+      "th": 2
+    },
+    "hoard_linen_glow": {
+      "path": "assets/sprites/objects/hoard_linen_glow.webp",
+      "width": 64,
+      "height": 32,
+      "tw": 4,
+      "th": 2
+    },
+    "hoard_niche_cold": {
+      "path": "assets/sprites/objects/hoard_niche_cold.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "hoard_niche_glow": {
+      "path": "assets/sprites/objects/hoard_niche_glow.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "hoard_shelf_cold": {
+      "path": "assets/sprites/objects/hoard_shelf_cold.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "hoard_shelf_glow": {
+      "path": "assets/sprites/objects/hoard_shelf_glow.webp",
       "width": 32,
       "height": 48,
       "tw": 2,
@@ -210,6 +350,209 @@
       "tw": 3,
       "th": 3
     },
+    "hushfrost_crest_1": {
+      "path": "assets/sprites/objects/hushfrost_crest_1.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_10": {
+      "path": "assets/sprites/objects/hushfrost_crest_10.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_11": {
+      "path": "assets/sprites/objects/hushfrost_crest_11.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_12": {
+      "path": "assets/sprites/objects/hushfrost_crest_12.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_13": {
+      "path": "assets/sprites/objects/hushfrost_crest_13.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_14": {
+      "path": "assets/sprites/objects/hushfrost_crest_14.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_15": {
+      "path": "assets/sprites/objects/hushfrost_crest_15.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_15_v1": {
+      "path": "assets/sprites/objects/hushfrost_crest_15_v1.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_15_v2": {
+      "path": "assets/sprites/objects/hushfrost_crest_15_v2.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_2": {
+      "path": "assets/sprites/objects/hushfrost_crest_2.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_3": {
+      "path": "assets/sprites/objects/hushfrost_crest_3.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_4": {
+      "path": "assets/sprites/objects/hushfrost_crest_4.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_5": {
+      "path": "assets/sprites/objects/hushfrost_crest_5.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_6": {
+      "path": "assets/sprites/objects/hushfrost_crest_6.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_7": {
+      "path": "assets/sprites/objects/hushfrost_crest_7.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_8": {
+      "path": "assets/sprites/objects/hushfrost_crest_8.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_crest_9": {
+      "path": "assets/sprites/objects/hushfrost_crest_9.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_dead_tree": {
+      "path": "assets/sprites/objects/hushfrost_dead_tree.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "hushfrost_drift_a": {
+      "path": "assets/sprites/objects/hushfrost_drift_a.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "hushfrost_drift_b": {
+      "path": "assets/sprites/objects/hushfrost_drift_b.webp",
+      "width": 64,
+      "height": 32,
+      "tw": 4,
+      "th": 2
+    },
+    "hushfrost_drift_c": {
+      "path": "assets/sprites/objects/hushfrost_drift_c.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "hushfrost_frozen_falls": {
+      "path": "assets/sprites/objects/hushfrost_frozen_falls.webp",
+      "width": 48,
+      "height": 64,
+      "tw": 3,
+      "th": 4
+    },
+    "hushfrost_frozen_shrub": {
+      "path": "assets/sprites/objects/hushfrost_frozen_shrub.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_iced_cart": {
+      "path": "assets/sprites/objects/hushfrost_iced_cart.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "hushfrost_icicle_outcrop": {
+      "path": "assets/sprites/objects/hushfrost_icicle_outcrop.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "hushfrost_icicles_a": {
+      "path": "assets/sprites/objects/hushfrost_icicles_a.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_icicles_b": {
+      "path": "assets/sprites/objects/hushfrost_icicles_b.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_mist_a": {
+      "path": "assets/sprites/objects/hushfrost_mist_a.webp",
+      "width": 96,
+      "height": 16,
+      "tw": 6,
+      "th": 1
+    },
+    "hushfrost_mist_b": {
+      "path": "assets/sprites/objects/hushfrost_mist_b.webp",
+      "width": 64,
+      "height": 16,
+      "tw": 4,
+      "th": 1
+    },
     "hushfrost_numbed_kin": {
       "path": "assets/sprites/objects/hushfrost_numbed_kin.webp",
       "width": 32,
@@ -224,12 +567,243 @@
       "tw": 2,
       "th": 2
     },
+    "hushfrost_rock_outcrop_a": {
+      "path": "assets/sprites/objects/hushfrost_rock_outcrop_a.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "hushfrost_rock_outcrop_b": {
+      "path": "assets/sprites/objects/hushfrost_rock_outcrop_b.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "hushfrost_scree_a": {
+      "path": "assets/sprites/objects/hushfrost_scree_a.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "hushfrost_scree_b": {
+      "path": "assets/sprites/objects/hushfrost_scree_b.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
     "hushfrost_shelter": {
       "path": "assets/sprites/objects/hushfrost_shelter.webp",
       "width": 64,
       "height": 64,
       "tw": 4,
       "th": 4
+    },
+    "hushfrost_snow_boulders": {
+      "path": "assets/sprites/objects/hushfrost_snow_boulders.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "hushfrost_snow_pine": {
+      "path": "assets/sprites/objects/hushfrost_snow_pine.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "hushfrost_snow_pine_big": {
+      "path": "assets/sprites/objects/hushfrost_snow_pine_big.webp",
+      "width": 48,
+      "height": 64,
+      "tw": 3,
+      "th": 4
+    },
+    "hushfrost_snowdrift": {
+      "path": "assets/sprites/objects/hushfrost_snowdrift.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "hushfrost_tracks_d": {
+      "path": "assets/sprites/objects/hushfrost_tracks_d.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "hushfrost_tracks_h": {
+      "path": "assets/sprites/objects/hushfrost_tracks_h.webp",
+      "width": 64,
+      "height": 16,
+      "tw": 4,
+      "th": 1
+    },
+    "hushfrost_tracks_v": {
+      "path": "assets/sprites/objects/hushfrost_tracks_v.webp",
+      "width": 16,
+      "height": 64,
+      "tw": 1,
+      "th": 4
+    },
+    "hushfrost_tuft_a": {
+      "path": "assets/sprites/objects/hushfrost_tuft_a.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuft_b": {
+      "path": "assets/sprites/objects/hushfrost_tuft_b.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuft_c": {
+      "path": "assets/sprites/objects/hushfrost_tuft_c.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_0": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_0.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_1": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_1.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_10": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_10.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_11": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_11.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_12": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_12.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_13": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_13.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_14": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_14.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_15": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_15.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_15_v1": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_15_v1.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_15_v2": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_15_v2.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_2": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_2.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_3": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_3.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_4": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_4.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_5": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_5.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_6": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_6.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_7": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_7.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_8": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_8.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_tuftbed_9": {
+      "path": "assets/sprites/objects/hushfrost_tuftbed_9.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "hushfrost_walker_camp": {
+      "path": "assets/sprites/objects/hushfrost_walker_camp.webp",
+      "width": 64,
+      "height": 48,
+      "tw": 4,
+      "th": 3
     },
     "interior_altar": {
       "path": "assets/sprites/objects/interior_altar.webp",
@@ -455,6 +1029,20 @@
       "tw": 3,
       "th": 3
     },
+    "nightreach_home": {
+      "path": "assets/sprites/objects/nightreach_home.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "nightreach_inn": {
+      "path": "assets/sprites/objects/nightreach_inn.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
     "nightreach_lumenary": {
       "path": "assets/sprites/objects/nightreach_lumenary.webp",
       "width": 96,
@@ -539,12 +1127,33 @@
       "tw": 3,
       "th": 2
     },
+    "pale_vault_fur_rack": {
+      "path": "assets/sprites/objects/pale_vault_fur_rack.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "pale_vault_herder_sled": {
+      "path": "assets/sprites/objects/pale_vault_herder_sled.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "pale_vault_home": {
       "path": "assets/sprites/objects/pale_vault_home.webp",
       "width": 64,
       "height": 64,
       "tw": 4,
       "th": 4
+    },
+    "pale_vault_ice_lantern": {
+      "path": "assets/sprites/objects/pale_vault_ice_lantern.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
     },
     "pale_vault_ice_spire": {
       "path": "assets/sprites/objects/pale_vault_ice_spire.webp",
@@ -574,12 +1183,40 @@
       "tw": 3,
       "th": 3
     },
+    "pale_vault_woodpile": {
+      "path": "assets/sprites/objects/pale_vault_woodpile.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "pearlmoor_anchor": {
+      "path": "assets/sprites/objects/pearlmoor_anchor.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "pearlmoor_boat": {
       "path": "assets/sprites/objects/pearlmoor_boat.webp",
       "width": 32,
       "height": 48,
       "tw": 2,
       "th": 3
+    },
+    "pearlmoor_crab_pots": {
+      "path": "assets/sprites/objects/pearlmoor_crab_pots.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "pearlmoor_driftwood": {
+      "path": "assets/sprites/objects/pearlmoor_driftwood.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
     },
     "pearlmoor_ferryhouse": {
       "path": "assets/sprites/objects/pearlmoor_ferryhouse.webp",
@@ -588,12 +1225,40 @@
       "tw": 5,
       "th": 5
     },
+    "pearlmoor_fish_crates": {
+      "path": "assets/sprites/objects/pearlmoor_fish_crates.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "pearlmoor_fish_stall": {
+      "path": "assets/sprites/objects/pearlmoor_fish_stall.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "pearlmoor_gull_nest": {
+      "path": "assets/sprites/objects/pearlmoor_gull_nest.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
     "pearlmoor_inn": {
       "path": "assets/sprites/objects/pearlmoor_inn.webp",
       "width": 80,
       "height": 80,
       "tw": 5,
       "th": 5
+    },
+    "pearlmoor_lantern_string": {
+      "path": "assets/sprites/objects/pearlmoor_lantern_string.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
     },
     "pearlmoor_lifting_house": {
       "path": "assets/sprites/objects/pearlmoor_lifting_house.webp",
@@ -616,6 +1281,13 @@
       "tw": 2,
       "th": 3
     },
+    "pearlmoor_net_rack": {
+      "path": "assets/sprites/objects/pearlmoor_net_rack.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
     "pearlmoor_oldlight_dark": {
       "path": "assets/sprites/objects/pearlmoor_oldlight_dark.webp",
       "width": 80,
@@ -630,12 +1302,82 @@
       "tw": 5,
       "th": 8
     },
+    "pearlmoor_rowboat": {
+      "path": "assets/sprites/objects/pearlmoor_rowboat.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "pearlmoor_shop": {
       "path": "assets/sprites/objects/pearlmoor_shop.webp",
       "width": 80,
       "height": 64,
       "tw": 5,
       "th": 4
+    },
+    "pearlmoor_wreck_ribs": {
+      "path": "assets/sprites/objects/pearlmoor_wreck_ribs.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "penumbra_memorial_ember": {
+      "path": "assets/sprites/objects/penumbra_memorial_ember.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "penumbra_memorial_frost": {
+      "path": "assets/sprites/objects/penumbra_memorial_frost.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "penumbra_memorial_lunar": {
+      "path": "assets/sprites/objects/penumbra_memorial_lunar.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "penumbra_memorial_solar": {
+      "path": "assets/sprites/objects/penumbra_memorial_solar.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "penumbra_memorial_stone": {
+      "path": "assets/sprites/objects/penumbra_memorial_stone.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "penumbra_memorial_storm": {
+      "path": "assets/sprites/objects/penumbra_memorial_storm.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "penumbra_memorial_tide": {
+      "path": "assets/sprites/objects/penumbra_memorial_tide.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "penumbra_memorial_verdant": {
+      "path": "assets/sprites/objects/penumbra_memorial_verdant.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
     },
     "penumbra_spire_silhouette": {
       "path": "assets/sprites/objects/penumbra_spire_silhouette.webp",
@@ -665,11 +1407,67 @@
       "tw": 4,
       "th": 4
     },
+    "penumbra_vigil_camp": {
+      "path": "assets/sprites/objects/penumbra_vigil_camp.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
     "penumbra_way_lamp": {
       "path": "assets/sprites/objects/penumbra_way_lamp.webp",
       "width": 16,
       "height": 48,
       "tw": 1,
+      "th": 3
+    },
+    "saltreach_cattails": {
+      "path": "assets/sprites/objects/saltreach_cattails.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "saltreach_drowned_cottage": {
+      "path": "assets/sprites/objects/saltreach_drowned_cottage.webp",
+      "width": 64,
+      "height": 64,
+      "tw": 4,
+      "th": 4
+    },
+    "saltreach_eel_trap": {
+      "path": "assets/sprites/objects/saltreach_eel_trap.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "saltreach_lilypads": {
+      "path": "assets/sprites/objects/saltreach_lilypads.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "saltreach_mooring_posts": {
+      "path": "assets/sprites/objects/saltreach_mooring_posts.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "saltreach_net_rack": {
+      "path": "assets/sprites/objects/saltreach_net_rack.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "saltreach_punt": {
+      "path": "assets/sprites/objects/saltreach_punt.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
       "th": 3
     },
     "saltreach_reed_lantern_dark": {
@@ -685,6 +1483,27 @@
       "height": 32,
       "tw": 1,
       "th": 2
+    },
+    "saltreach_reed_stooks": {
+      "path": "assets/sprites/objects/saltreach_reed_stooks.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "saltreach_reedcutter_hut": {
+      "path": "assets/sprites/objects/saltreach_reedcutter_hut.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "saltreach_sunken_lamp": {
+      "path": "assets/sprites/objects/saltreach_sunken_lamp.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
     },
     "solarium_brazier_dead": {
       "path": "assets/sprites/objects/solarium_brazier_dead.webp",
@@ -840,6 +1659,20 @@
       "tw": 3,
       "th": 3
     },
+    "sunvault_colonnade": {
+      "path": "assets/sprites/objects/sunvault_colonnade.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "sunvault_masonry": {
+      "path": "assets/sprites/objects/sunvault_masonry.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "sunvault_mirror_alight": {
       "path": "assets/sprites/objects/sunvault_mirror_alight.webp",
       "width": 16,
@@ -860,6 +1693,13 @@
       "height": 48,
       "tw": 3,
       "th": 3
+    },
+    "sunvault_sundial_fallen": {
+      "path": "assets/sprites/objects/sunvault_sundial_fallen.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
     },
     "sunvault_vine_far_bloomed": {
       "path": "assets/sprites/objects/sunvault_vine_far_bloomed.webp",
@@ -959,12 +1799,26 @@
       "tw": 1,
       "th": 2
     },
+    "tinderwick_apple_crates": {
+      "path": "assets/sprites/objects/tinderwick_apple_crates.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
     "tinderwick_beacon": {
       "path": "assets/sprites/objects/tinderwick_beacon.webp",
       "width": 64,
       "height": 112,
       "tw": 4,
       "th": 7
+    },
+    "tinderwick_cinder_shard": {
+      "path": "assets/sprites/objects/tinderwick_cinder_shard.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
     },
     "tinderwick_cottage": {
       "path": "assets/sprites/objects/tinderwick_cottage.webp",
@@ -987,6 +1841,13 @@
       "tw": 6,
       "th": 6
     },
+    "tinderwick_notice_board": {
+      "path": "assets/sprites/objects/tinderwick_notice_board.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "tinderwick_shop": {
       "path": "assets/sprites/objects/tinderwick_shop.webp",
       "width": 80,
@@ -1000,6 +1861,34 @@
       "height": 64,
       "tw": 3,
       "th": 4
+    },
+    "tinderwick_tree_b": {
+      "path": "assets/sprites/objects/tinderwick_tree_b.webp",
+      "width": 48,
+      "height": 64,
+      "tw": 3,
+      "th": 4
+    },
+    "tinderwick_tree_c": {
+      "path": "assets/sprites/objects/tinderwick_tree_c.webp",
+      "width": 48,
+      "height": 64,
+      "tw": 3,
+      "th": 4
+    },
+    "tinderwick_well": {
+      "path": "assets/sprites/objects/tinderwick_well.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "tinderwick_woodpile": {
+      "path": "assets/sprites/objects/tinderwick_woodpile.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
     },
     "unrisen_basin_dry": {
       "path": "assets/sprites/objects/unrisen_basin_dry.webp",
@@ -1050,6 +1939,13 @@
       "tw": 3,
       "th": 3
     },
+    "windward_bent_pine": {
+      "path": "assets/sprites/objects/windward_bent_pine.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
     "windward_cairn": {
       "path": "assets/sprites/objects/windward_cairn.webp",
       "width": 32,
@@ -1059,6 +1955,48 @@
     },
     "windward_kite_wreck": {
       "path": "assets/sprites/objects/windward_kite_wreck.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "windward_kite_wreck_b": {
+      "path": "assets/sprites/objects/windward_kite_wreck_b.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "windward_lightning_rod": {
+      "path": "assets/sprites/objects/windward_lightning_rod.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    },
+    "windward_prayer_flags": {
+      "path": "assets/sprites/objects/windward_prayer_flags.webp",
+      "width": 64,
+      "height": 32,
+      "tw": 4,
+      "th": 2
+    },
+    "windward_rest_shelter": {
+      "path": "assets/sprites/objects/windward_rest_shelter.webp",
+      "width": 64,
+      "height": 48,
+      "tw": 4,
+      "th": 3
+    },
+    "windward_snow_drift": {
+      "path": "assets/sprites/objects/windward_snow_drift.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "windward_spyglass": {
+      "path": "assets/sprites/objects/windward_spyglass.webp",
       "width": 32,
       "height": 32,
       "tw": 2,
@@ -1078,8 +2016,22 @@
       "tw": 1,
       "th": 1
     },
+    "windward_struck_rock": {
+      "path": "assets/sprites/objects/windward_struck_rock.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "windward_updraft": {
       "path": "assets/sprites/objects/windward_updraft.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "windward_wind_shrine": {
+      "path": "assets/sprites/objects/windward_wind_shrine.webp",
       "width": 32,
       "height": 48,
       "tw": 2,

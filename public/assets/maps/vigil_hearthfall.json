@@ -39,6 +39,100 @@
       "h": 4,
       "overhang": 3,
       "walk_under": true
+    },
+    {
+      "id": "sea_tree",
+      "sprite": "tinderwick_tree",
+      "at": {
+        "tx": 14,
+        "ty": 8
+      },
+      "w": 3,
+      "h": 4,
+      "overhang": 3,
+      "walk_under": true
+    },
+    {
+      "id": "alcove_lamp_w",
+      "sprite": "tinderwick_lamp_post",
+      "at": {
+        "tx": 10,
+        "ty": 3
+      },
+      "w": 1,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "alcove_lamp_e",
+      "sprite": "tinderwick_lamp_post",
+      "at": {
+        "tx": 13,
+        "ty": 3
+      },
+      "w": 1,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "lane_lamp_w",
+      "sprite": "tinderwick_lamp_post",
+      "at": {
+        "tx": 9,
+        "ty": 13
+      },
+      "w": 1,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "lane_lamp_e",
+      "sprite": "tinderwick_lamp_post",
+      "at": {
+        "tx": 14,
+        "ty": 12
+      },
+      "w": 1,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "esra_camp",
+      "sprite": "penumbra_vigil_camp",
+      "at": {
+        "tx": 6,
+        "ty": 14
+      },
+      "w": 3,
+      "h": 2
+    },
+    {
+      "id": "warm_scar_a",
+      "sprite": "vigil_star_scar",
+      "at": {
+        "tx": 8,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "walk_under": true
+    },
+    {
+      "id": "warm_scar_b",
+      "sprite": "vigil_star_scar",
+      "at": {
+        "tx": 14,
+        "ty": 15
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "walk_under": true
     }
   ],
   "warps": [
@@ -177,7 +271,7 @@
         "ty": 4
       },
       "facing": "down",
-      "sprite": "npc_old_woman",
+      "sprite": "lamplighter",
       "movement": "static",
       "dialogue_ref": "script.vigil_hearthfall",
       "hidden_when_flag": "flag:vigil_1_kept"
@@ -189,7 +283,7 @@
         "ty": 4
       },
       "facing": "down",
-      "sprite": "npc_old_woman",
+      "sprite": "lamplighter",
       "movement": "static",
       "dialogue_ref": "npc.vigil_hearthfall_kept",
       "requires_flag": "flag:vigil_1_kept",
@@ -202,7 +296,7 @@
         "ty": 4
       },
       "facing": "down",
-      "sprite": "npc_old_woman",
+      "sprite": "lamplighter",
       "movement": "static",
       "dialogue_ref": "script.vigil_hearthfall_again",
       "requires_flag": "flag:starfall_crown"
@@ -982,7 +1076,7 @@
         8,
         0,
         0,
-        0,
+        6,
         0,
         0,
         0,
@@ -1007,7 +1101,7 @@
         0,
         0,
         0,
-        0,
+        6,
         0,
         0,
         0,
@@ -1031,6 +1125,7 @@
         0,
         0,
         5,
+        8,
         0,
         0,
         0,
@@ -1040,36 +1135,18 @@
         0,
         0,
         0,
+        5,
+        0,
+        0,
+        0,
+        8,
         0,
         0,
         0,
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
+        7,
         116,
         0,
         0,
@@ -1086,6 +1163,18 @@
         0,
         0,
         0,
+        8,
+        116,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        6,
+        6,
         0,
         0,
         0,
@@ -1096,6 +1185,11 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        8,
         0,
         0,
         0,
@@ -1104,7 +1198,7 @@
         0,
         0,
         0,
-        0,
+        6,
         0,
         120,
         0,
@@ -1210,8 +1304,8 @@
         0,
         0,
         0,
-        0,
-        0,
+        5,
+        116,
         0,
         0,
         0,
@@ -1743,5 +1837,34 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "embers",
+        "density": 0.35
+      },
+      {
+        "kind": "spray",
+        "density": 0.6
+      }
+    ],
+    "birds": {
+      "kind": "gull",
+      "flocks": [
+        {
+          "tx": 16,
+          "ty": 9
+        }
+      ],
+      "flyover": true
+    },
+    "bob_gids": [
+      120
+    ],
+    "starfall": {
+      "min_s": 22,
+      "max_s": 45
+    }
+  }
 }

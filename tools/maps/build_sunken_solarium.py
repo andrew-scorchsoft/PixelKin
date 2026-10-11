@@ -386,7 +386,7 @@ m["npcs"] += [
     # SYNC 2026-06 (Three Hours wiring, 07-the-three §6): Lucan's after-stage
     # now hides once Nessa's rumour stands, and the First-Light Phial stages
     # take the tile (after -> phial -> phial_after). Mirrored into the shipped
-    # sunken_solarium.json by hand — reconcile before re-running.
+    # sunken_solarium.json — a rebuild reproduces it (check_rebuild.py).
     {"id": "lucan_after", "at": {"tx": 14, "ty": 16}, "facing": "down",
      "sprite": "lucan_pyre", "movement": "static",
      "dialogue_ref": "npc.lucan_after",

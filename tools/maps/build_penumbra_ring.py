@@ -315,6 +315,71 @@ for (x, y) in [(3, 17), (4, 18), (23, 25), (24, 26), (23, 26)]:
     if deco[y * W + x] == 0 and not wall[y * W + x] and not void[y * W + x]:
         deco[y * W + x] = gid("boulder")
 
+# ---- WORLD-CRAFT (2026-10, the Central package; world-craft panel §4 #6) --------------
+# The Ring was the thinnest leg before the climax (0 encounters, 1 NPC, 85% bare).
+# The fix is richness, not length: the GONE-QUIET have come in from the marsh
+# villages to see whether the Spire is real, and they have set EIGHT MEMORIAL
+# LAMPS in a ring on the east field — one for each constellation you relit,
+# each in its element's flame, each with a little plaque for its Lampwarden
+# (an earned recap before the climax). The peril-thread marsh-villager
+# (add_peril_thread.py, `peril_gone_quiet` at (21,19)) stands at the ring's
+# heart. Their camp keeps a lamp lit "for you at the ring". All optional
+# colour: no flag, no gate, no lane blocked (the ring sits east of the
+# walked S-bend; audit_flow/render_walkable prove it).
+MEMORIALS = [  # (element, warden, at) — clockwise from the Spire side
+    ("ember", "brisa", (20, 13)), ("tide", "reyl", (23, 14)),
+    ("verdant", "sable", (24, 18)), ("stone", "otho", (23, 22)),
+    ("storm", "mira", (20, 24)), ("frost", "ysolde", (17, 22)),
+    ("solar", "lucan", (17, 18)), ("lunar", "nessa", (17, 14)),
+]
+for el, _warden, (x, y) in MEMORIALS:
+    m["objects"].append(
+        {"id": f"memorial_{el}", "sprite": f"penumbra_memorial_{el}",
+         "at": {"tx": x, "ty": y}, "w": 1, "h": 2, "overhang": 1})
+    m["triggers"].append(
+        {"id": f"memorial_{el}_read", "kind": "dialogue",
+         "at": {"tx": x, "ty": y + 1}, "activation": "interact",
+         "ref": f"npc.penumbra_memorial_{el}"})
+owed += ["npc.penumbra_memorial_* (eight plaques — content/regions/central.ts)"]
+# the marsh-folk's camp, its fire kept up (the lamp "kept lit for you at the ring")
+m["objects"].append(
+    {"id": "gone_quiet_camp", "sprite": "penumbra_vigil_camp",
+     "at": {"tx": 17, "ty": 25}, "w": 3, "h": 2})
+# the gone-quiet, come to look at the Spire (each runs one staged script)
+for (nid, at, facing, sprite) in [
+        ("gone_quiet_elder", (19, 20), "up", "hollowing_elder"),
+        ("gone_quiet_walker", (23, 17), "up", "pass_walker"),
+        ("gone_quiet_child", (20, 22), "up", "village_child"),
+        ("gone_quiet_mender", (20, 26), "left", "lamplighter"),
+]:
+    m["npcs"].append(
+        {"id": nid, "at": {"tx": at[0], "ty": at[1]}, "facing": facing,
+         "sprite": sprite, "movement": "static",
+         "dialogue_ref": f"script.penumbra_{nid}"})
+# the forecourt's tender — the one who still walks the tended row (pre-dawn)
+m["npcs"].append(
+    {"id": "forecourt_sweeper", "at": {"tx": 7, "ty": 6}, "facing": "left",
+     "sprite": "hollowing_acolyte", "movement": "static",
+     "dialogue_ref": "script.penumbra_forecourt_sweeper"})
+owed += ["script.penumbra_gone_quiet_* + script.penumbra_forecourt_sweeper"]
+
+# drained dressing, thickened (the bare basalt read as an empty slab: greymoss
+# and grit drift across the receded ground, glowshroom flecks where the dark
+# pulled back — never on a lamp, NPC, trigger or warp tile)
+busy = {(o["at"]["tx"] + dx, o["at"]["ty"] + dy) for o in m["objects"]
+        for dx in range(o["w"]) for dy in range(o["h"])}
+busy |= {(p["at"]["tx"], p["at"]["ty"]) for p in m["npcs"] + m["triggers"] + m["warps"]}
+busy |= {(21, 19)}                                   # the peril villager's post
+drift = [gid("greymoss_a"), gid("greymoss_b"), gid("g_pebble"), gid("g_pebble"),
+         gid("glowshroom_a")]
+for y in range(5, 32):
+    for x in range(2, 26):
+        i = y * W + x
+        if wall[i] or void[i] or deco[i] or (x, y) in busy:
+            continue
+        if rng.random() < 0.34:
+            deco[i] = rng.choice(drift)
+
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + \
     terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},

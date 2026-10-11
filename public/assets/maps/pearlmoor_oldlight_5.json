@@ -601,5 +601,13 @@
   "encounters": [],
   "npcs": [],
   "gates": [],
-  "music": "assets/audio/music/sunken-solarium-c.mp3"
+  "music": "assets/audio/music/sunken-solarium-c.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "dust",
+        "density": 0.6
+      }
+    ]
+  }
 }

@@ -1,0 +1,21 @@
+{
+  "title": "SFX -- footstep on grass (soft tap)",
+  "_note": "Soft earthy step on open ground: a low, gentle noise tick with a hair of downward glide. Render with --tail 0.02.",
+  "era": "sfx",
+  "tempo": 280,
+  "time_signature": [
+    4,
+    4
+  ],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "step",
+      "voice": "noise",
+      "octave": 3,
+      "gain": 0.6,
+      "notes": "E3~C3s@72"
+    }
+  ]
+}

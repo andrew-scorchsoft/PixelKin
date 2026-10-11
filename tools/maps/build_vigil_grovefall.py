@@ -12,7 +12,7 @@ glowmoss encounter zones in the 60-62 band (MYCOVAST #70 very rare — the
 register ledger's eastern single) · one starglass cache · NO rest point.
 
 Rooms are carved as overlapping RECTs joined by explicit corridors (the
-blob-edge-adjacency gotcha). Host edit (add_vigil_scars.py): spore_grotto
+blob-edge-adjacency gotcha). Host edit (add_hand_placed.py VIGIL_SCARS): spore_grotto
 (15,9) `to_vigil_grove`, `requires_flag: flag:vigil_reading_2`. Reuse:
 lowleaf-hollow-c loop + glowmoss-deep backdrops (the host's keys).
 
@@ -103,16 +103,16 @@ m: dict = {
     "npcs": [
         # OLD FOREMAN BRAMM — trial -> kept -> post-crown re-runnable bout
         {"id": "bramm_trial", "at": {"tx": KEEPER_AT[0], "ty": KEEPER_AT[1]},
-         "facing": "down", "sprite": "npc_old_man", "movement": "static",
+         "facing": "down", "sprite": "miner_man", "movement": "static",
          "dialogue_ref": "script.vigil_grovefall",
          "hidden_when_flag": "flag:vigil_2_kept"},
         {"id": "bramm_kept", "at": {"tx": KEEPER_AT[0], "ty": KEEPER_AT[1]},
-         "facing": "down", "sprite": "npc_old_man", "movement": "static",
+         "facing": "down", "sprite": "miner_man", "movement": "static",
          "dialogue_ref": "npc.vigil_grovefall_kept",
          "requires_flag": "flag:vigil_2_kept",
          "hidden_when_flag": "flag:starfall_crown"},
         {"id": "bramm_bout", "at": {"tx": KEEPER_AT[0], "ty": KEEPER_AT[1]},
-         "facing": "down", "sprite": "npc_old_man", "movement": "static",
+         "facing": "down", "sprite": "miner_man", "movement": "static",
          "dialogue_ref": "script.vigil_grovefall_again",
          "requires_flag": "flag:starfall_crown"},
     ],
@@ -154,6 +154,19 @@ for (x, y, name) in [(4, 7, "glowshroom_a"), (9, 12, "glowshroom_b"), (14, 11, "
     i = y * W + x
     if floor[i] and not glow[i] and (x, y) not in avoid and deco[i] == 0:
         deco[i] = gid(name)
+
+# ---- WORLD-CRAFT dressing (2026-10; tools/maps/vigil_dress.py) -----------------------
+# The grotto's own kit, reused: two more glowshroom clusters, the keeper's camp,
+# two warm-fall scars. Lane cols 11-12
+# and the trial band stay clear.
+from vigil_dress import dress, prop, camp, scar  # noqa: E402
+dress(m, deco, W, H, rng, blocked=[wall, glow],
+      props=[prop("teal_shrooms_e", "glowmoss_deep_glowshrooms_teal", (19, 10), 2, 2),
+             prop("teal_shrooms_w", "glowmoss_deep_glowshrooms_teal", (9, 7), 2, 2),
+             camp("keeper_camp", (8, 13)),
+             scar("warm_scar_a", (3, 10)), scar("warm_scar_b", (15, 13))],
+      drift=["greymoss_a", "glowshroom_a", "glowshroom_b", "g_pebble"],
+      density=0.18, avoid=avoid | {(x, y) for x in range(11, 13) for y in range(7, 16)})
 
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},

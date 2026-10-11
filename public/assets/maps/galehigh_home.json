@@ -362,7 +362,7 @@
         "ty": 6
       },
       "facing": "left",
-      "sprite": "npc_child",
+      "sprite": "kite_child",
       "movement": "wander",
       "dialogue_ref": "npc.galehigh_home_kid"
     }

@@ -151,6 +151,80 @@ export interface NpcPlacement {
   defeated_flag?: WorldFlag;
   requires_flag?: WorldFlag; // only present once the flag is set
   hidden_when_flag?: WorldFlag; // removed once the flag is set
+  /**
+   * AMBIENT set-dressing, not a character: an overworld kin (or critter) that
+   * idles/wanders near `at`, never collides, never talks, never runs a script,
+   * and hops away when the player comes within 2 tiles. Spawned by the
+   * Ambience system (systems/world/Ambience.ts), not as an Npc — so it can never
+   * block a lane, swallow a Confirm, or be addressed by a cutscene. The map
+   * audits (tools/maps/worldmodel.py) ignore ambient placements entirely.
+   * `sprite` is normally `kin_<id>_overworld` (pick from the map's own table).
+   */
+  ambient?: boolean;
+  /** Leash for `wander` (and ambient kin): never stray more than this many tiles
+   *  (Chebyshev) from `at`. Omitted = unleashed for NPCs, 2 for ambient kin. */
+  wander_radius?: number;
+}
+
+// ---- Ambience (the "every screen moves" kit, WP0 2026-10) -------------------
+
+/** A code-drawn particle family (no art needed — Ambience.ts draws each as 1–2px shapes). */
+export type AmbienceParticleKind =
+  | 'snow'
+  | 'ash'
+  | 'embers'
+  | 'glowmotes'
+  | 'spores'
+  | 'spray'
+  | 'motes' // drifting cold motes (Coldfog)
+  | 'leaves'
+  | 'starglint'
+  | 'dust'; // dust motes in still air (the Old Light's window shafts)
+
+/** One particle emitter. Every emitter shares ONE global cap (~40 alive). */
+export interface AmbienceParticles {
+  kind: AmbienceParticleKind;
+  /** 0..1 share of the kind's base count (default 1). */
+  density?: number;
+  /**
+   * Where particles spawn: 'screen' (the visible view — weather), 'water_edge'
+   * (water tiles touching dry ground — sea spray) or a tile rect. Default per kind
+   * ('spray' → 'water_edge', everything else → 'screen').
+   */
+  area?: 'screen' | 'water_edge' | { tx: number; ty: number; w: number; h: number };
+}
+
+/**
+ * Optional per-map ambience block (`MapDefinition.ambience`). Everything here is
+ * VISUAL/aural colour — it never touches collision, encounters, triggers or warps,
+ * and everything degrades silently (no art required; a missing sfx is silence).
+ * The Settings toggle "Ambient motion: Off" stills particles, streaks, birds and
+ * bobbing for motion-sensitive players. Author it via tools/maps/add_world_craft.py
+ * (per-region modules in tools/maps/worldcraft/) — docs/art-style.md §12b.
+ */
+export interface MapAmbience {
+  particles?: AmbienceParticles[];
+  /** A slow translucent drifting strip (fog / cloud shadow). */
+  mist?: { color?: string; alpha?: number; speed?: number };
+  /** A persistent full-screen colour wash so the region reads at a glance. */
+  tint?: { color: string; alpha: number };
+  /**
+   * The falling-star streak (the game's motif). Default: ON for outdoor maps
+   * (town/route/hub/water), OFF for interiors and caves. `false` opts out; an
+   * object retunes the interval (seconds; min clamped to 20).
+   */
+  starfall?: boolean | { min_s?: number; max_s?: number };
+  /** Gulls/birds: perched flocks that lift off as you approach + occasional fly-overs. */
+  birds?: { kind?: 'gull' | 'bird'; flocks?: TileCoord[]; flyover?: boolean };
+  /** Extra light pools beyond the sprite-keyed LIGHT_SOURCES table (a window, a campfire). */
+  light_sources_extra?: { at: TileCoord; radius?: number; color?: string }[];
+  /** A quiet looped sfx bed under the music (sfx stem, e.g. 'amb-surf'); silent if missing. */
+  sound_bed?: string;
+  /** Footprints: 'auto' (sand/trail/snow-tagged terrain, default), 'all' (any open
+   *  ground — a snowfield map whose base tiles carry no terrain tag) or 'none'. */
+  footprints?: 'auto' | 'all' | 'none';
+  /** Global gids lifted off their layer and bobbed 1px (buoys); `MapRenderer`. */
+  bob_gids?: number[];
 }
 
 export type AbilityGateEffect = 'make_passable' | 'remove_tile' | 'set_flag';
@@ -209,6 +283,11 @@ export interface MapObject {
    */
   requires_flag?: WorldFlag;
   hidden_when_flag?: WorldFlag;
+  /**
+   * Float on water with a slow 1px bob (boats, buoys, punts). Omitted = decided by
+   * the terrain under the object's bottom (waterline) row; true/false overrides.
+   */
+  bob?: boolean;
 }
 
 export interface MapDefinition {
@@ -232,6 +311,18 @@ export interface MapDefinition {
   gates: AbilityGate[];
   /** Music key (mp3 in public/assets/audio/music/), keyed to the area's midi brief. */
   music?: string;
+  /** Optional ambience (particles, mist, tint, starfall, birds, light) — see MapAmbience. */
+  ambience?: MapAmbience;
+}
+
+/** A remembered rest point (inn / home / camp fire) — see WorldSnapshot.rest_points. */
+export interface RestPoint {
+  map: string;
+  tx: number;
+  ty: number;
+  facing: Facing;
+  /** Friendly place name (the map's display_name when banked). */
+  label: string;
 }
 
 /** Persistent world progress, serialised through the platform storage seam (key 'world'). */
@@ -246,6 +337,13 @@ export interface WorldSnapshot {
    * an additive field, no schema bump (the bond / battles_won precedent).
    */
   respawn?: { map: string; tx: number; ty: number; facing: Facing };
+  /**
+   * Every rest point the player has EVER rested at (one per map, latest coords,
+   * oldest first) — the list SETTINGS → "Return to a rest point" travels to.
+   * Banked alongside `respawn` by every resting `heal`; old saves seed it from
+   * `respawn`. Additive + optional, no schema bump (the respawn precedent).
+   */
+  rest_points?: RestPoint[];
   abilities: AbilityId[];
   /** Unlocked warps/areas/honours and fired triggers. */
   flags: Record<WorldFlag, boolean>;

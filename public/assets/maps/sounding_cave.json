@@ -923,6 +923,16 @@
       },
       "activation": "interact",
       "ref": "sign.sounding_mouth"
+    },
+    {
+      "id": "wc_sounding_stone",
+      "kind": "dialogue",
+      "at": {
+        "tx": 16,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "npc.sounding_stone"
     }
   ],
   "encounters": [
@@ -970,8 +980,28 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_sounding_amber",
       "hidden_when_flag": "flag:picked_sounding_amber"
+    },
+    {
+      "id": "amb_oreling",
+      "at": {
+        "tx": 3,
+        "ty": 9
+      },
+      "facing": "down",
+      "sprite": "kin_53_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/lowleaf-hollow-c.mp3"
+  "music": "assets/audio/music/lowleaf-hollow-c.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "motes",
+        "density": 0.5
+      }
+    ]
+  }
 }

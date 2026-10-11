@@ -100,6 +100,78 @@
       "h": 4,
       "overhang": 3,
       "walk_under": true
+    },
+    {
+      "id": "wander_tree_1",
+      "sprite": "tinderwick_tree",
+      "at": {
+        "tx": 11,
+        "ty": 5
+      },
+      "w": 3,
+      "h": 4,
+      "overhang": 3,
+      "walk_under": true
+    },
+    {
+      "id": "wander_tree_2",
+      "sprite": "tinderwick_tree_b",
+      "at": {
+        "tx": 24,
+        "ty": 2
+      },
+      "w": 3,
+      "h": 4,
+      "overhang": 3,
+      "walk_under": true
+    },
+    {
+      "id": "wander_tree_3",
+      "sprite": "tinderwick_tree_c",
+      "at": {
+        "tx": 2,
+        "ty": 12
+      },
+      "w": 3,
+      "h": 4,
+      "overhang": 3,
+      "walk_under": true
+    },
+    {
+      "id": "wander_tree_4",
+      "sprite": "tinderwick_tree",
+      "at": {
+        "tx": 16,
+        "ty": 8
+      },
+      "w": 3,
+      "h": 4,
+      "overhang": 3,
+      "walk_under": true
+    },
+    {
+      "id": "wander_tree_5",
+      "sprite": "tinderwick_tree",
+      "at": {
+        "tx": 25,
+        "ty": 12
+      },
+      "w": 3,
+      "h": 4,
+      "overhang": 3,
+      "walk_under": true
+    },
+    {
+      "id": "wander_tree_6",
+      "sprite": "tinderwick_tree",
+      "at": {
+        "tx": 17,
+        "ty": 17
+      },
+      "w": 3,
+      "h": 4,
+      "overhang": 3,
+      "walk_under": true
     }
   ],
   "warps": [
@@ -418,6 +490,18 @@
       "sprite": "andrew_ward",
       "movement": "static",
       "dialogue_ref": "script.andrew_wood"
+    },
+    {
+      "id": "amb_sporeling",
+      "at": {
+        "tx": 20,
+        "ty": 13
+      },
+      "facing": "down",
+      "sprite": "kin_56_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
     }
   ],
   "gates": [],
@@ -2460,5 +2544,22 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "spores",
+        "density": 0.5
+      },
+      {
+        "kind": "glowmotes",
+        "density": 0.4
+      }
+    ],
+    "mist": {
+      "color": "#a8c8b0",
+      "alpha": 0.06,
+      "speed": 4
+    }
+  }
 }

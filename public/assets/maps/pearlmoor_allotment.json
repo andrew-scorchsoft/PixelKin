@@ -109,7 +109,7 @@
     },
     {
       "id": "tree_a",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_c",
       "at": {
         "tx": 15,
         "ty": 2
@@ -1254,5 +1254,17 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "leaves",
+        "density": 0.3
+      },
+      {
+        "kind": "glowmotes",
+        "density": 0.3
+      }
+    ]
+  }
 }

@@ -48,6 +48,13 @@ gold, only a cold blue-grey glow in its cracks. At `flag:dawn` every cinder **wa
 a star shard (`vigil_star_shard`), because it was never dead, only guttered. (LORE:
 `fallen_stars`, unlocked by `flag:orchard_strike_seen`.)
 
+**Why, and whose (2026-10).** The full law now lives in the story bible
+([`../story-bible.md`](../story-bible.md) §11): sleeping kin starve their stars; a
+starved star gutters and sometimes its last cinder falls; guttered light falls home
+to the Keystar, which is why every fall lands nearer the mountain; Còr walks out and
+fetches every cinder home to the **Cinder Hoard** in the Spire; and the first one he
+ever carried fell the winter Senna died. The dates are in the bible's §12.
+
 ## 2. The beats
 
 | # | Region · map | Keyed on | The mark | The face (sample line) | Healing |
@@ -84,7 +91,7 @@ Lamp-down vigil, Coldfog's drained land).
   The shared tile set stays frozen. Tile fills can't draw a strike (they square off into a
   patch that reads as a texture error), so the crater is one drawn decal.
 - **E1–P1** are surgical adds to shipped maps via [`tools/maps/add_peril_thread.py`](../../../tools/maps/add_peril_thread.py),
-  an idempotent, id-keyed upsert in the add_vigil_scars pattern. **Re-run it after rebuilding
+  an idempotent, id-keyed upsert (the `add_hand_placed.py` pattern). **Re-run it after rebuilding
   any of those maps.** Use `--check` to report drift without writing.
 - **Words**: the `THE PERIL THREAD (R9)` blocks in `content/scripts.ts` and
   `content/dialogue.ts`, plus the LORE entry `fallen_stars` in `content/glossary.ts`. Each
@@ -115,3 +122,24 @@ After placing them, re-run `audit_warps`/`audit_flow` on the map.
   sealed a 5-tile orphan.
 - `audit_region` and `audit_spatial` PASS (no warp or graph edits).
 - No encounters and no money were added, so the balance gates are untouched.
+
+## 6. One fall per region: the escalation (story panel §5.2, 2026-10)
+
+The motif's arc is monotonic, as Arc B requires: **told → seen after → seen held →
+seen falling → seen counted → seen kept → seen waking.** Each region's package owns
+its own beats; this table is the cross-region contract. "Built" means shipped before
+the 2026-10 regional pass.
+
+| Region | Beat (panel id) | Stage | Owner |
+|---|---|---|---|
+| South | Cold-open line plants the falls on frame one (S-1); the orchard crater, mandatory (S1, built); the `dusk_begins` echo (S-3) | told → seen after | South package (S-1, S-3 are line swaps; S1 built) |
+| East | An acolyte's dropped cinder; a star returning over the Fennlight (E-1); the Cinderhead roof-fault cinder (E-3) | seen after (cause shown) | East package |
+| North | **Còr holds a cinder** at B3 (N-1); a **live fall** over the Kite-rising (N-4); the Hushfrost crater (N2, built) | seen held → seen falling | North package (N2 built) |
+| West | Stillworks lantern chips, "not fuel; company" (W-2); the Ledger's FELL column (W-3); the Pass-walker's spiral (W-4); **the Ember flickers** (W-1) | seen counted | West package |
+| Central | **The Cinder Hoard**, and every cinder glowing at the relight (C-1); the Null answering the sun (C-2) | seen kept → seen waking | Central package: **BUILT 2026-10** (`umbral_spire_f3` R5, `cutscene.cinder_hoard`, `script.keystar_relight`, `script.dawn_breaks`) |
+| Post-game | Còr's cinder wakes gold and Senna's name is said; the Starfall contrast line (P-1); the orchard in flower (P1, built) | seen waking | Central package: **BUILT 2026-10** (`cutscene.cor_resolution`, `script.starfall_round`, `npc.starfall_witness`) |
+
+The Penumbra Ring's C1 beat (above) now has company: the gone-quiet camp, eight
+memorial lamps (one per Gleam, set by the marsh-folk) and a grey-robed sweeper on
+the forecourt, all built into `tools/maps/build_penumbra_ring.py`.
+

@@ -1,0 +1,21 @@
+{
+  "title": "SFX -- tall-grass rustle (alt)",
+  "_note": "Alternate brush: two quick blade-flicks, lower and softer. Render to .wav with --tail 0.02, then ffmpeg -af volume=-8dB -> .mp3 (it sits under the footstep on every grass step).",
+  "era": "sfx",
+  "tempo": 220,
+  "time_signature": [
+    4,
+    4
+  ],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "brush",
+      "voice": "noise",
+      "octave": 5,
+      "gain": 0.4,
+      "notes": "C5~A4st@52 F#4~D4st@44"
+    }
+  ]
+}

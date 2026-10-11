@@ -63,11 +63,18 @@ main-road patches, crossings 0.10→0.08; II: 11→10 / 10→9, rate 0.10→0.09
 only heal between the towns. Mirrors: `build_species.py`, `progression.mjs` (PASS, checkpoints
 unchanged), `01-south.md`.
 
+**2026-10 — world-craft WP2 (look/feel only before the Chickenpig):** ambience on all 35 South
+maps (`tools/maps/worldcraft/south.py`), regional cast swaps, a 15-piece prop kit
+(`assets/tilesets/pearlmoor|tinderwick/objects/`) placed only where `add_world_craft.py`'s
+`prove_off_lane` proves no lane/encounter/approach tile, no lost reach and no longer walk (dry
+lane included); X-2 acting ops in the South's key scenes (no added pages); Gullcry Rock dressed
+(was 0 props) + optional inspect-only finds on Wrackline, Sounding Cave and the far Wanderwood.
+
 ## East — Gleams 3–4 (`crown_east`) ✅
 
 | Area | map id(s) | Status | Builder |
 |------|-----------|--------|---------|
-| Saltreach Fen I | `saltreach_fen_i` | ✅ | `build_saltreach_fen_i.py` |
+| Saltreach Fen I | `saltreach_fen_i` | ✅ recomposed 2026-10 (stilt hut, Staithe line, eel-wife) | `build_saltreach_fen_i.py` |
 | Saltreach Fen II (+ E1 reeds) | `saltreach_fen_ii` | ✅ | `build_saltreach_fen_ii.py` |
 | Sunkbell Shallows (Tidecall spur) | `sunkbell_shallows` | ✅ | `build_sunkbell.py` |
 | Lowleaf Hollow (Verdant · Sable · Glimmerstep) | `lowleaf_hollow` + lumenary/bower | ✅ | `build_lowleaf*.py` |
@@ -80,6 +87,8 @@ Festivals: Glowmoss Bloom, **Lamp-down vigil**. Arcs delivered: A3 (Wren shaken)
 (`met_hollowing` + Còr foreshadow), E. Earned loops: The Tended Bed (#3), **The Descent
 Vigil (#4)**. Quests: E1 Quiet Reeds, E2 Spores for the Stall, **E3 The Foreman's Ledger**,
 R3 Moss for the Quay. Crystoll Vault left as a `[LATER]` Starreach tease (void-gap signed).
+**World-craft pass (2026-10):** ambience/cast/props on every East map (`worldcraft/east.py`), story
+panel E-1/E-2/E-3 + the East X-2 acting pass; see `02-east.md` § World-craft pass.
 
 ## North — Gleams 5–6 (`crown_north`) ✅ (built 2026-06)
 
@@ -101,6 +110,10 @@ N2 Aurora Sketcher (Aurora Charm = conditional charge ×2.5 on Frost-met kin),
 N3 Wren's Ribbon (pays off at Nightreach lamp 6 — West owes the line), R4 Waystone Kite.
 Expert panel: **SHIP-READY** (`docs/reviews/north-region-panel.md`); all minors fixed
 (Lumenary re-skins, Windward rest shelf, 32–34 entry verge, Wind-Eye starglints).
+World-craft + story depth (2026-10): Windward Stair I made a journey (cairn-count, shelter,
+shrines, prayer flags, spyglass fall) + 15-piece North prop kit; snow/gust/aurora/mist ambience
+on 9 maps; regional cast; story items N-1–N-4 + the X-2 acting pass (`worldcraft/north.py`,
+`content/regions/north.ts`).
 
 ## West — Gleams 7–8 (`crown_west`) ✅ (maps; wiring pass owed)
 
@@ -114,6 +127,11 @@ Expert panel: **SHIP-READY** (`docs/reviews/north-region-panel.md`); all minors 
 | Helia Vault (Sunsketch PUZZLE micro-dungeon: 3 sequential blooms + the sun-mirror redirect; Heliovast's first wild bed) | `helia_vault` | ✅ 2026-06 | `build_helia_vault.py` |
 | Coldfog Marches I→II + Drownlight Beacon + Hollowfen Stillworks (B4 shown half: the drained land; X3 leg 3 cairn; the charged-husk Whorlix cradle; first ACCENT tileset `coldfog_set`/fogcrag; NO trainers/rest by design) | `coldfog_marches_i/ii`, `drownlight_beacon`, `hollowfen_stillworks` | ✅ 2026-06 | `build_coldfog_*.py`, `build_drownlight_beacon.py`, `build_hollowfen_stillworks.py` (objects: `draw_coldfog_objects.py`) |
 | Nightreach Observatory (Lunar · Nessa · Starreach; the Vigil of the Seven loop #8 — seven watch-lamps `flag:q_west_lamp_1..7` carrying C4 Fenn / A5 Wren / B4 the Great Null at lamps 5/6/7; Star-vigil; X3 giver + roof viewpoint; R5 giver; the Lanternway spoke landed at the crossroads, gleam:lunar-gated) | `nightreach_observatory` + `nightreach_lumenary`/`_inn`/`_home` | ✅ 2026-06 | `build_nightreach.py`, `build_nightreach_interiors.py` (objects: `draw_nightreach_objects.py` + the image-gen dome) |
+
+**R10 West depth pass ✅ (2026-10):** West prop kit (14 masters); Hushfrost I recomposed, II
+de-laned; Coldfog I/II, Drownlight, Sunvault I/II, Unrisen dressed (audit_visual: 0 FAIL/0 warn
+on every West map); worldcraft ambience + regional cast on all 18 West maps; W-1..W-4, X-2/X-5
+on the West scenes; timeline aligned to story-bible §12 (Dusk = 11 winters). See 04-west.md.
 
 **W5 WIRING ✅ (2026-06):** every script./npc./sign./trainer. ref the sixteen West maps (and
 the crossroads spoke) place now resolves — scripts (the Lit Stage chain, the Vigil of the
@@ -153,9 +171,9 @@ trio, `flag:q_round_chart_taken` → `flag:q_round_chart`) landed with the W5 wi
 | Area | map id(s) | Status | Builder |
 |------|-----------|--------|---------|
 | Vesper Crossroads — endgame stages (C4 Fenn counsel · A5 Wren-joins band w/ the Starlamp · C1 Lampling's Trail · C2 inn + `crossroads_inn` counter · C3 Long Round · "now accessible" sign swap) | `vesper_crossroads` | ✅ | `build_crossroads.py` |
-| Penumbra Ring (the last dark, Starreach crossings; threshold band, two reads, two priced pockets) | `penumbra_ring` | ✅ | `build_penumbra_ring.py` |
-| Starwell (landmark — **Lunaveil #132** lv 54 `legendaryBattle`, cooldown 12) | `starwell` | ✅ | `build_starwell.py` |
-| Umbral Spire (4 floors: gatehouse → null-works → high gallery → summit; 5 acolyte keepers lv52–55 · Wren per-floor · the shaft compressor) | `umbral_spire` + `_f2`/`_f3`/`_summit` | ✅ | `build_umbral_spire.py` |
+| Penumbra Ring (the last dark, Starreach crossings; threshold band, two reads, two priced pockets; **2026-10:** eight memorial lamps + the gone-quiet camp + the forecourt sweeper, near-void ambience, densest starfall) | `penumbra_ring` | ✅ | `build_penumbra_ring.py` |
+| Starwell (landmark — **Lunaveil #132** lv 54 `legendaryBattle`, cooldown 12; **2026-10:** watchers' lamps, drift, star-motes) | `starwell` | ✅ | `build_starwell.py` |
+| Umbral Spire (4 floors: gatehouse → null-works → high gallery → summit; 5 acolyte keepers lv52–55 · Wren per-floor · the shaft compressor; **2026-10:** f3's **Cinder Hoard** room (C-1, glows at the relight), Hollowing cast sheets, glowmote ambience, summit staging NPCs `fenn_dawn`/`fenn_round`) | `umbral_spire` + `_f2`/`_f3`/`_summit` | ✅ | `build_umbral_spire.py` (`--only f3`) |
 
 **C3 WIRING ✅ (2026-06):** every ref the Central maps place resolves — the summit chain
 (`script.great_null` → **`script.warden_cor_final`** (ace 56, 6,720w, out-remembered not
@@ -231,8 +249,10 @@ four seats), P2 A Wick for Còr (beacon-top cache → lamp deco swap), P3 Day-fo
 (boolean-chain fallback — no party-check op). **Owed:** the Waykeeper's "all ten delivered"
 thanks (needs the quest-counter extension); `wren_rematch`/dawnstead mirrors into
 `progression.mjs` + `EXTRA_ENCOUNTERS` (lands with R3's economy/species pass).
+**2026-10 (Central package):** regional cast (market_trader / village_child / star_watcher / innkeeper; Maudie a road_courier), warm-mote + gold-tint ambience; P-1 — Còr's woken cinder and Senna's name in `cor_resolution`.
 
 ### R3 — The Starfall Vigils ✅ DONE (2026-06)
+**2026-10 (Central package):** the five vigil annexes dressed with their host regions' prop kits + keeper camps (`tools/maps/vigil_dress.py`; hearth/storm FAIL 0.69 props/screen → 3+), keepers in regional cast sheets, per-element ambience; Fenn names Senna before the Last Lesson.
 Full spec: [`06-postgame.md`](./06-postgame.md) §Starfall Vigils (written 2026-06, panel-grade):
 5 escalating trial sites (lv 58→70, first full 6-kin smart-AI battles) opened by riddle
 star-readings from the Nightreach junior watcher (Oriel), one-per-game rewards, and the
@@ -359,8 +379,8 @@ gone-quiet at the Penumbra Ring (C1), and Maudie in Dawnstead sending you home (
 canon fact is *fallen stars* (the Dusk's cold cinders, the dark twin of the post-game
 Starfall shards), with a LORE entry. The art is `draw_fallenstar_objects.py`, and the
 placements are the orchard builder plus `add_peril_thread.py` (idempotent; re-run after any
-rebuild). **Owed:** two South placements in Tinderwick and Pearlmoor (words written; spec in
-08 §4).
+rebuild). The two South placements (Tinderwick neighbour, Pearlmoor harbour notice) are
+placed (08 §4).
 ### R9 — "The Old Light" (Pearlmoor's joke-tower) ✅ DONE (2026-10)
 
 The Causeway Bell now runs `script.reyl_quest` (`flag:q_south_bell`) → **the Old Light**

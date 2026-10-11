@@ -2092,7 +2092,7 @@
     },
     {
       "id": "tree_a",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_b",
       "at": {
         "tx": 8,
         "ty": 9
@@ -2138,7 +2138,7 @@
     },
     {
       "id": "tree_c",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_c",
       "at": {
         "tx": 18,
         "ty": 3
@@ -2174,7 +2174,7 @@
     },
     {
       "id": "tree_f",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_c",
       "at": {
         "tx": 3,
         "ty": 2
@@ -2254,6 +2254,51 @@
       "h": 3,
       "overhang": 2,
       "walk_under": true
+    },
+    {
+      "id": "wc_fishstall",
+      "sprite": "pearlmoor_fish_stall",
+      "at": {
+        "tx": 24,
+        "ty": 4
+      },
+      "w": 3,
+      "h": 3,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "wc_crabpots",
+      "sprite": "pearlmoor_crab_pots",
+      "at": {
+        "tx": 21,
+        "ty": 15
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "wc_crates",
+      "sprite": "pearlmoor_fish_crates",
+      "at": {
+        "tx": 19,
+        "ty": 14
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "wc_lanterns",
+      "sprite": "pearlmoor_lantern_string",
+      "at": {
+        "tx": 7,
+        "ty": 15
+      },
+      "w": 3,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "solid": false
     }
   ],
   "warps": [
@@ -3045,7 +3090,7 @@
         "ty": 13
       },
       "facing": "left",
-      "sprite": "wren",
+      "sprite": "fisher_man",
       "movement": "look_around",
       "dialogue_ref": "npc.pearlmoor_fisher"
     },
@@ -3171,7 +3216,7 @@
         "ty": 13
       },
       "facing": "down",
-      "sprite": "npc_shopkeeper",
+      "sprite": "old_salt",
       "movement": "static",
       "dialogue_ref": "npc.blessing_elder",
       "requires_flag": "gleam:tide"
@@ -3183,7 +3228,7 @@
         "ty": 13
       },
       "facing": "down",
-      "sprite": "npc_child",
+      "sprite": "village_child",
       "movement": "wander",
       "dialogue_ref": "npc.blessing_kid",
       "requires_flag": "gleam:tide"
@@ -3256,7 +3301,7 @@
         "ty": 14
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "fisher_woman",
       "movement": "static",
       "dialogue_ref": "script.oldlight_hint_beach"
     },
@@ -3270,6 +3315,30 @@
       "sprite": "npc_old_man",
       "movement": "static",
       "dialogue_ref": "script.oldlight_hint_luddite"
+    },
+    {
+      "id": "amb_lumpin",
+      "at": {
+        "tx": 16,
+        "ty": 17
+      },
+      "facing": "down",
+      "sprite": "kin_31_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 2
+    },
+    {
+      "id": "amb_brinelet",
+      "at": {
+        "tx": 23,
+        "ty": 6
+      },
+      "facing": "down",
+      "sprite": "kin_26_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
     }
   ],
   "gates": [
@@ -3314,5 +3383,51 @@
       22,
       11
     ]
+  },
+  "ambience": {
+    "particles": [
+      {
+        "kind": "spray",
+        "density": 0.5
+      }
+    ],
+    "birds": {
+      "kind": "gull",
+      "flocks": [
+        {
+          "tx": 24,
+          "ty": 16
+        }
+      ],
+      "flyover": true
+    },
+    "light_sources_extra": [
+      {
+        "at": {
+          "tx": 13,
+          "ty": 7
+        },
+        "radius": 15,
+        "color": "#9fe7ff"
+      },
+      {
+        "at": {
+          "tx": 22,
+          "ty": 12
+        },
+        "radius": 10
+      },
+      {
+        "at": {
+          "tx": 5,
+          "ty": 12
+        },
+        "radius": 10
+      }
+    ],
+    "bob_gids": [
+      120
+    ],
+    "sound_bed": "amb-surf"
   }
 }

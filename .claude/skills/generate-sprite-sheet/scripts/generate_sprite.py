@@ -39,7 +39,11 @@ SPECS_PATH = SCRIPT_DIR / "sprite-specs.json"
 # The sibling generate-image skill does the actual API call.
 GENERATE_IMAGE = SCRIPT_DIR.parent.parent / "generate-image" / "scripts" / "generate.py"
 
-# Default provider. Google Nano Banana Pro is the default: it handles
+# Default provider. NOTE (2026-10): for HUMAN walk sheets prefer
+# `--provider openai` — gpt-image-2.5-sunburst draws the strongest FF-era
+# chibi reads (true back view, real stride, native alpha); pair it with the
+# spec's fill (0.88) and `--resample box` for crisp clusters at 32px.
+# Google Nano Banana Pro remains the default: it handles
 # transparency and reference-image fidelity best and is reliable here. OpenAI
 # gpt-image-2 is available via --provider openai, but it has no native
 # transparent mode (we chroma-key a magenta field instead) and its safety
@@ -55,6 +59,15 @@ try:
     from generate import chroma_key_to_alpha  # type: ignore
 except Exception:  # pragma: no cover - helper is optional at import time
     chroma_key_to_alpha = None  # type: ignore
+
+def _openai_alpha_ok() -> bool:
+    """Does the OpenAI model generate-image will use accept background=transparent?"""
+    try:
+        from generate import TRANSPARENT_OPENAI_MODEL, openai_model_supports_alpha  # type: ignore
+        return openai_model_supports_alpha(TRANSPARENT_OPENAI_MODEL)
+    except Exception:  # pragma: no cover - older generate.py
+        return False
+
 
 CHROMA_PREAMBLE = (
     "Paint the sprite on a SOLID FLAT UNIFORM pure magenta background, hex "
@@ -200,11 +213,24 @@ def resize_rgba(src: Image.Image, size: tuple[int, int], resample: str) -> Image
     return Image.fromarray(res, "RGBA")
 
 
+def content_bbox(img: Image.Image, cut: int = 64):
+    """Bbox of the SOLID subject: alpha >= `cut`. Native-alpha gens (gpt-image-2.5)
+    leave a faint alpha haze (alpha 1-30) scattered across the canvas; a plain
+    getbbox() counts it, so every frame's box balloons to the cell edge and the
+    shared sheet scale shrank figures to ~21px instead of the ~28px fill target."""
+    return img.split()[3].point(lambda v: 255 if v >= cut else 0).getbbox()
+
+
 def fit_to_frame(src: Image.Image, fw: int, fh: int, anchor: str,
-                 fill: float, resample: str) -> Image.Image:
-    """Trim transparent margins, scale to the fill fraction, composite at anchor."""
+                 fill: float, resample: str, scale: float | None = None) -> Image.Image:
+    """Trim transparent margins, scale to the fill fraction, composite at anchor.
+
+    `scale` (optional) forces one factor instead of fitting this frame alone —
+    snap_sheet passes a SHEET-wide factor so every frame of a walk cycle is the
+    same size (per-frame fitting shrank wide stride/lantern frames, so the
+    character pulsed as it walked)."""
     src = src.convert("RGBA")
-    bbox = src.split()[3].getbbox()  # bbox of non-transparent pixels
+    bbox = content_bbox(src)  # bbox of the solid (non-haze) subject
     if bbox:
         src = src.crop(bbox)
     cw, ch = src.size
@@ -212,7 +238,10 @@ def fit_to_frame(src: Image.Image, fw: int, fh: int, anchor: str,
         return Image.new("RGBA", (fw, fh), (0, 0, 0, 0))
 
     # Scale so the content fits inside fill*frame in both dimensions (aspect kept).
-    scale = min((fw * fill) / cw, (fh * fill) / ch)
+    if scale is None:
+        scale = min((fw * fill) / cw, (fh * fill) / ch)
+    # Never overflow the frame, even under a shared sheet scale.
+    scale = min(scale, fw / cw, (fh - 1) / ch)
     nw, nh = max(1, round(cw * scale)), max(1, round(ch * scale))
     src = resize_rgba(src, (nw, nh), resample)
 
@@ -236,6 +265,16 @@ def snap_single(src: Image.Image, spec: dict, resample: str) -> Image.Image:
     if spec["anchor"] == "top-left" and spec["fill"] >= 1.0:
         return resize_rgba(src, (fw, fh), resample)
     return fit_to_frame(src, fw, fh, spec["anchor"], spec["fill"], resample)
+
+
+def harden_alpha(img: Image.Image, cut: int = 96) -> Image.Image:
+    """Snap alpha to 0/255 (16-bit sprites have no partial pixels). Partial
+    edge alpha from the downscale reads as a pale halo/murk on the dark world;
+    keeping pixels above a LOW cut preserves the dark outline ring."""
+    img = img.convert("RGBA")
+    r, g, b, a = img.split()
+    a = a.point(lambda v: 255 if v >= cut else 0)
+    return Image.merge("RGBA", (r, g, b, a))
 
 
 def mirror_side_rows(sheet: Image.Image, spec: dict) -> Image.Image:
@@ -273,11 +312,22 @@ def snap_sheet(src: Image.Image, spec: dict, resample: str, align: bool) -> Imag
     src = src.convert("RGBA")
     sw, sh = src.size
     cell_w, cell_h = sw // cols, sh // rows
+    cells = [[src.crop((c * cell_w, r * cell_h, (c + 1) * cell_w, (r + 1) * cell_h))
+              for c in range(cols)] for r in range(rows)]
+    # One scale for the whole sheet, from the tallest/widest frame, so the
+    # character never changes size between frames.
+    boxes = [content_bbox(cell) for row in cells for cell in row]
+    boxes = [b for b in boxes if b]
+    shared = None
+    if boxes:
+        max_w = max(b[2] - b[0] for b in boxes)
+        max_h = max(b[3] - b[1] for b in boxes)
+        shared = min((fw * spec["fill"]) / max_w, (fh * spec["fill"]) / max_h)
     for r in range(rows):
         for c in range(cols):
-            cell = src.crop((c * cell_w, r * cell_h,
-                             (c + 1) * cell_w, (r + 1) * cell_h))
-            frame = fit_to_frame(cell, fw, fh, spec["anchor"], spec["fill"], resample)
+            cell = cells[r][c]
+            frame = fit_to_frame(cell, fw, fh, spec["anchor"], spec["fill"], resample,
+                                 scale=shared)
             out.alpha_composite(frame, (c * fw, r * fh))
     return out
 
@@ -405,7 +455,9 @@ def main() -> int:
     gen_info: dict = {}
     # OpenAI gpt-image-2 has no native alpha: render on magenta and key it out.
     # Google's transparent path returns real alpha directly.
-    chroma_path = args.provider == "openai"
+    # gpt-image-2.5 (the OpenAI default) renders native alpha; only a pinned
+    # no-alpha model (gpt-image-2) still needs the magenta chroma-key field.
+    chroma_path = args.provider == "openai" and not _openai_alpha_ok()
     transparency_method = "chroma_key" if chroma_path else "native"
 
     walk_sheet = bool(spec.get("viewpoint_rows")) and spec["rows"] == 4
@@ -452,6 +504,9 @@ def main() -> int:
         # the authored retro convention — the RIGHT row is the exact horizontal
         # mirror of the LEFT row — so every generated sheet is animation-correct by
         # construction (the validator's walk-viewpoint check verifies this).
+        # Human sheets ship hard-edged (the 16-bit chibi read): no partial alpha.
+        if args.type.startswith("human"):
+            result = harden_alpha(result)
         if walk_sheet and not args.keep_side_rows:
             result = mirror_side_rows(result, spec)
             gen_info["right_row_mirrored_from_left"] = True

@@ -1185,8 +1185,34 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_lane_galehigh",
       "hidden_when_flag": "flag:picked_lane_galehigh"
+    },
+    {
+      "id": "lanternway_galehigh_lamplighter",
+      "at": {
+        "tx": 4,
+        "ty": 10
+      },
+      "facing": "right",
+      "sprite": "lamplighter",
+      "dialogue_ref": "npc.lanternway_galehigh_lamplighter"
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/tinderwick-a.mp3"
+  "music": "assets/audio/music/tinderwick-a.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "leaves",
+        "density": 0.5
+      },
+      {
+        "kind": "motes",
+        "density": 0.5
+      }
+    ],
+    "starfall": {
+      "min_s": 35,
+      "max_s": 75
+    }
+  }
 }

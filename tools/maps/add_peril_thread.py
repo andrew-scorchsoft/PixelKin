@@ -7,7 +7,7 @@ The thread's first beat (the fallen star in Duskapple Orchard) lives in that
 map's own builder (`build_duskapple_orchard.py`). Every LATER beat sits on a
 shipped map whose JSON carries post-build additions its builder doesn't (see
 CLAUDE.md), so they are applied here instead: an idempotent, id-keyed upsert of
-NPCs / objects / sign triggers (+ the sign's deco tile), the add_vigil_scars.py
+NPCs / objects / sign triggers (+ the sign's deco tile), the add_hand_placed.py
 pattern. Re-run it after ANY rebuild of one of these maps.
 
 Every beat is OPTIONAL COLOUR: nothing here gates a warp, blocks a lane or sets a
@@ -63,7 +63,7 @@ PLACEMENTS: dict[str, dict] = {
                   # quay rebuild re-dresses it with the rest of the surgical signs)
                   ("sign_point_way", (12, 14), "sign.pearlmoor_point_way")],
         # (also not peril — R9 Old Light hint-givers, see script.oldlight_hint_*)
-        "npcs": [npc("oldlight_hint_beach", (9, 14), "npc_woman", "script.oldlight_hint_beach", facing="down"),
+        "npcs": [npc("oldlight_hint_beach", (9, 14), "fisher_woman", "script.oldlight_hint_beach", facing="down"),
                  npc("oldlight_hint_luddite", (10, 8), "npc_old_man", "script.oldlight_hint_luddite", facing="down")],
     },
     # E1 — the fen family leaving (Saltreach Fen I, by the landing). Bundles go
@@ -79,7 +79,7 @@ PLACEMENTS: dict[str, dict] = {
     # can't decide whether to tear it down.
     "galehigh_terraces": {
         "signs": [("peril_quiet_notice", (8, 20), "sign.peril_quiet_notice")],
-        "npcs": [npc("peril_notice_reader", (9, 20), "npc_woman", "script.peril_notice_reader",
+        "npcs": [npc("peril_notice_reader", (9, 20), "kite_weaver", "script.peril_notice_reader",
                      facing="left")],
     },
     # N2 — the SECOND FALL: a fresh crater in the snow of Hushfrost Pass (the
@@ -93,8 +93,12 @@ PLACEMENTS: dict[str, dict] = {
                     obj("peril_cinder_star_woken", "vigil_star_shard", (17, 23), 2, 2,
                         overhang=1, requires_flag="flag:dawn")],
         "clear_deco": [(15, 22, 6, 4)],
-        "npcs": [npc("peril_hushfrost_counter", (21, 22), "npc_old_woman",
-                     "script.peril_hushfrost_counter", facing="left")],
+        # (R10 West: she is the PASS-WALKER — her camp stands beside her; her
+        # script runs these peril lines, then opens W-4 "The Pass-walker's Map"
+        # and walks on ahead to Nightreach, where worldcraft/west.py places her)
+        "npcs": [npc("peril_hushfrost_counter", (21, 22), "pass_walker",
+                     "script.passwalker", facing="left",
+                     hidden="flag:q_west_passmap_left")],
     },
     # W1 — the family who chose the quiet (Sunvault Climb I, by the gorge mouth):
     # they put their own brazier out. It is lit again once the Solar Gleam is
@@ -114,13 +118,13 @@ PLACEMENTS: dict[str, dict] = {
     },
     # C1 — the gone-quiet, come to the ring to see the Spire for themselves.
     "penumbra_ring": {
-        "npcs": [npc("peril_gone_quiet", (21, 19), "npc_woman", "script.peril_gone_quiet",
+        "npcs": [npc("peril_gone_quiet", (21, 19), "fen_folk", "script.peril_gone_quiet",
                      facing="up")],
     },
     # P1 — the bookend: Maudie in Dawnstead, with the orchard's news (sends the
     # post-game player home to see the crater flower).
     "dawnstead": {
-        "npcs": [npc("peril_maudie_dawn", (11, 15), "npc_woman", "npc.peril_maudie_dawn",
+        "npcs": [npc("peril_maudie_dawn", (11, 15), "road_courier", "npc.peril_maudie_dawn",
                      facing="down", requires="flag:dawn")],
     },
 }

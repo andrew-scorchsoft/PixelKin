@@ -520,3 +520,19 @@ A player leaving East via `cinderhead_deep → galehigh_terraces` should hold:
 North/West content. The only edges East owns and gates are listed in the per-area Validation
 hooks; the East→North boundary (`to_terraces`) is intentionally **ungated** so the curve crosses
 cleanly with no level or Gift cliff.
+
+---
+
+## World-craft pass (2026-10, WP3)
+
+Optional colour only — no new required step, gate, table or level change. Saltreach Fen I was
+**recomposed** (organic pools + reed channels, the reed-cutter's stilt hut, the drowned
+lamp-post road; `build_saltreach_fen_i.py` now owns the purse cache) with two optional beats:
+the **eel-wife** + her net-weights find (`flag:fen_netweights_seen` → `picked_fen_netweights`)
+and the **Lantern Staithe** line (`flag:fen_lostreed_1..3`, lit from the landing outward, reads
+the drowned cottage's name). Story panel items: **E-1** (the relight brings a star back —
+`flag:glowmoss_star_back` shows it in the root-gap — and the acolyte's dropped cinder lies at
+the shrine, waking at dawn), **E-2** (`script.wren_glowmoss`: Mum's village went quiet), **E-3**
+(Harl's hook rail + the roof-fault cinder in Cinderhead; Cass on Deep B2F). Vignettes: an
+acolyte at a doused null-lantern on Glowmoss B1F. Ambience, ambient kin, cast swaps and Fen II /
+Sunkbell props ride `tools/maps/worldcraft/east.py`; scripts live in `content/regions/east.ts`.

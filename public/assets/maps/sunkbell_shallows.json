@@ -60,6 +60,104 @@
       "w": 3,
       "h": 3,
       "overhang": 1
+    },
+    {
+      "id": "lily_a",
+      "sprite": "saltreach_lilypads",
+      "at": {
+        "tx": 3,
+        "ty": 10
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false
+    },
+    {
+      "id": "lily_b",
+      "sprite": "saltreach_lilypads",
+      "at": {
+        "tx": 15,
+        "ty": 3
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false
+    },
+    {
+      "id": "lily_c",
+      "sprite": "saltreach_lilypads",
+      "at": {
+        "tx": 8,
+        "ty": 12
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false
+    },
+    {
+      "id": "reeds_a",
+      "sprite": "saltreach_cattails",
+      "at": {
+        "tx": 13,
+        "ty": 5
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "reeds_b",
+      "sprite": "saltreach_cattails",
+      "at": {
+        "tx": 2,
+        "ty": 3
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "drowned_lamp_a",
+      "sprite": "saltreach_sunken_lamp",
+      "at": {
+        "tx": 5,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 3,
+      "solid": false,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "drowned_lamp_b",
+      "sprite": "saltreach_sunken_lamp",
+      "at": {
+        "tx": 16,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 3,
+      "solid": false,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "moorings",
+      "sprite": "saltreach_mooring_posts",
+      "at": {
+        "tx": 6,
+        "ty": 11
+      },
+      "w": 1,
+      "h": 2,
+      "solid": false,
+      "overhang": 1,
+      "walk_under": true
     }
   ],
   "triggers": [
@@ -1180,5 +1278,27 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "spray",
+        "density": 0.35
+      },
+      {
+        "kind": "glowmotes",
+        "density": 0.5
+      }
+    ],
+    "mist": {
+      "color": "#b8d4e0",
+      "alpha": 0.2,
+      "speed": 4
+    },
+    "starfall": {
+      "min_s": 45,
+      "max_s": 100
+    },
+    "sound_bed": "amb-marsh"
+  }
 }

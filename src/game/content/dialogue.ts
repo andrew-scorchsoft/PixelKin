@@ -7,6 +7,7 @@
  */
 import type { DialogueLine, DialogueRegistry } from './types';
 import { OLDLIGHT_DIALOGUE } from './oldlight';
+import { REGION_EXTRA_DIALOGUE } from './regions';
 
 export const DIALOGUE: DialogueRegistry = {
   // --- Georgina's cottage (gloamwood_dell) — ambient cats + a hand-lettered sign ---
@@ -291,8 +292,9 @@ export const DIALOGUE: DialogueRegistry = {
   // C2 — Fenn finds the player after `dusk_begins` and names the Skyweave
   // (walkthrough/01-south: this may land here at the head of II).
   'npc.flats_sky_watcher': [
-    { speaker: 'STAR-TENDER FENN', text: 'You saw it too, then. The sky and the ground hold hands here, child — snuff a kin\'s light and a star goes dark with it.' },
-    { speaker: 'STAR-TENDER FENN', text: 'That is what we walk against. Relight the constellations, one Gleam at a time. Pearlmoor keeps the second.' },
+    { speaker: 'STAR-TENDER FENN', portrait: 'fenn', expr: 'grave', text: 'You saw it go. Then hear the old law plainly, child, because nobody says it plainly any more: every star up there has a kin down here carrying its spark.' },
+    { speaker: 'STAR-TENDER FENN', portrait: 'fenn', expr: 'grave', text: 'Put that kin to sleep and its star goes hungry. Starve a star long enough and it gutters — and sometimes what\'s left of it falls. Wendel\'s orchard was one.' },
+    { speaker: 'STAR-TENDER FENN', portrait: 'fenn', expr: 'warm', text: 'So we walk the other way. Wake what sleeps; relight what gutters. Pearlmoor keeps the second Gleam.' },
   ],
   // Fenn on the flats once Gran's letter is delivered (S2 closed).
   'npc.flats_sky_watcher_after': [
@@ -414,7 +416,7 @@ export const DIALOGUE: DialogueRegistry = {
   // A third blessing voice by the jetty — the going-out song, named and human.
   'npc.blessing_singer': [
     { speaker: 'BOAT-SINGER', text: '"Tides go out so they can come back—" sing it with me, Wayfarer, you of all people have the right tonight.' },
-    { speaker: 'BOAT-SINGER', text: 'My mother led the going-out song from that bow for thirty years, under a dark sky. Tonight I get to sing it under a LIT one. That is your doing.' },
+    { speaker: 'BOAT-SINGER', text: 'My mother led the going-out song from that bow for thirty years — the last eleven under a dark sky. Tonight I get to sing it under a LIT one. That is your doing.' },
   ],
   // --- The breakwater (the Causeway Bell's walk) -------------------------------
   'sign.breakwater_gate': [
@@ -632,7 +634,7 @@ export const DIALOGUE: DialogueRegistry = {
   // --- Saltreach Fen I (the marsh route) ----------------------------------------
   'npc.fen_warden': [
     { speaker: 'FEN-WARDEN', text: "Mind the planks after dark — the fen's friendly, but it doesn't like to be hurried." },
-    { speaker: 'FEN-WARDEN', text: 'Odd thing, though. The eastern woods have gone quiet of late. Quiet like held breath, not like sleep.' },
+    { speaker: 'FEN-WARDEN', text: 'Odd thing, though. The eastern woods have gone quiet of late. Quiet like a room somebody has just left, not like sleep.' },
   ],
   'npc.fen_wader_a_after': [
     { speaker: 'MARIGOLD', text: 'The reeds north of here run right over the causeway — no way round but through. Mind your step and your lamp.' },
@@ -682,7 +684,7 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'The near lantern-reed burns amber and steady, a small kept light over the black water.', style: 'narrate' },
   ],
   'npc.reed_lit_b': [
-    { text: 'The mid-water reed glows warm. Below it, quick silver shapes circle the light like a held breath let out.', style: 'narrate' },
+    { text: 'The mid-water reed glows warm. Below it, quick silver shapes circle the light like a sigh let out.', style: 'narrate' },
   ],
   'npc.reed_dark_third': [
     { text: 'The far reed stands dark. Your flame would not take, and you somehow know it will not take twice.', style: 'narrate' },
@@ -946,16 +948,16 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // Otho's giver stages (his hall) — the Descent Vigil loop's grammar
   'npc.otho_waiting': [
-    { speaker: 'OTHO GRIST', text: 'Lamp still up here, is it? The vigil-lamp is THREE galleries down, still burning. Bring it up. Then we talk.' },
+    { speaker: 'OTHO GRIST', portrait: 'otho', expr: 'neutral', text: 'Lamp still up here, is it? The vigil-lamp is THREE galleries down, still burning. Bring it up. Then we talk.' },
   ],
   'npc.otho_ready': [
-    { speaker: 'OTHO GRIST', text: 'You carried it up still lit. Through all that dark. ...Then we are ready, you and I. Step to the aisle when your kin are.' },
+    { speaker: 'OTHO GRIST', portrait: 'otho', expr: 'warm', text: 'You carried it up still lit. Through all that dark. ...Then we are ready, you and I. Step to the aisle when your kin are.' },
   ],
   'npc.otho_after': [
-    { speaker: 'OTHO GRIST', text: 'The Stone is yours, and the eastern crown with it. Galehigh waits up the deep and out the far side — keep your light steady, the wind up there is not.' },
+    { speaker: 'OTHO GRIST', portrait: 'otho', expr: 'warm', text: 'The Stone is yours, and the eastern crown with it. Galehigh waits up the deep and out the far side — keep your light steady, the wind up there is not.' },
   ],
   'npc.otho_not_ready': [
-    { speaker: 'OTHO GRIST', text: "No vigil-lamp, no bond-test. I don't hand a Gleam to a lamp I've not seen cross the dark. Down you go." },
+    { speaker: 'OTHO GRIST', portrait: 'otho', expr: 'grave', text: "No vigil-lamp, no bond-test. I don't hand a Gleam to a lamp I've not seen cross the dark. Down you go." },
   ],
   // E3 The Foreman's Ledger
   'npc.ledger_waiting': [
@@ -1021,7 +1023,7 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'FESTIVAL KID', text: 'My kite\'s got NINE lamps on the tail. Talo\'s only has six. It\'s not a contest, Gran says. Gran counted them for me though.' },
   ],
   'npc.galehigh_festival_goer': [
-    { speaker: 'FESTIVAL-GOER', text: 'We fly the kites so the stars have something to climb back up. Daft, maybe. But the night\'s a little less long when the whole hill\'s lit.' },
+    { speaker: 'FESTIVAL-GOER', text: 'Every tail carries a wick-lamp, see? My gran said the stars need a ladder of little lights to find their way back up. I just like how the hill looks with all of us on it.' },
   ],
   'npc.galehigh_quest_witness': [
     { speaker: 'TERRACE AUNTIE', text: 'Mira shouted the whole asking down from the ledge, didn\'t she. She does that. We\'ve given up sending letters up the winch — she answers them off the cliff at volume.' },
@@ -1392,7 +1394,7 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'THE SUNVAULT CLIMB. The old garden-roads rise toward the stars. Mind the overgrowth — it minds you back.' },
   ],
   'sign.sunvault_vines': [
-    { text: 'The bridge of sun-vines died with the long night. Shut flowers, forty years. A pocket of daylight would wake them.' },
+    { text: 'The bridge of sun-vines died with the long night. Shut flowers, eleven winters. A pocket of daylight would wake them.' },
   ],
   'npc.sunvault_terracer_after': [
     { speaker: 'BEL', text: 'The beds grow toward the boundary vines now, did you notice? The garden knows what\'s coming up the road. Gardens always do.' },
@@ -1402,7 +1404,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // The walkthrough's vine-tender line, verbatim.
   'npc.sunvault_vine_tender': [
-    { speaker: 'VINE-TENDER', text: 'Forty years shut, and your little pocket of daylight woke them like they\'d only dozed. ...Maybe nothing\'s gone for good. Maybe it\'s all just waiting for the right lamp.' },
+    { speaker: 'VINE-TENDER', text: 'Eleven winters shut, and your little pocket of daylight woke them like they\'d only dozed. ...Maybe nothing\'s gone for good. Maybe it\'s all just waiting for the right lamp.' },
   ],
   'npc.sunvault_skywatcher_after': [
     { speaker: 'TAM', text: 'The dome\'s ahead, the densest sky in Vesperholm above it. Walk in soft — the whole town is listening to the stars come home.' },
@@ -1499,7 +1501,7 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'NESSA COLE', text: 'The seventh lamp is yours to light, Wayfarer. And then... there is something I have been watching grow on the mountain, and the time for watching it alone is over.' },
   ],
   'npc.junior_watcher_b_after': [
-    { speaker: 'OS', text: 'Lira\'s charting the sky as it comes back, you know. First watcher in forty years with something NEW to write. Don\'t tell her I said it was brilliant. She logs compliments.' },
+    { speaker: 'OS', text: 'Lira\'s charting the sky as it comes back, you know. First watcher in eleven years with something NEW to write. Don\'t tell her I said it was brilliant. She logs compliments.' },
   ],
   'npc.junior_watcher_working': [
     { speaker: 'LIRA', text: 'The Sunvault terrace, our roof past the scree — and the Coldfog cairn only if your nerve runs that deep; the chart finishes without it. Look PROPERLY. Long enough to be cold. I\'ll know if you skimmed.' },
@@ -1512,7 +1514,7 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'VIGIL WARDEN', text: 'Seven lamps burning on the steps, and the eighth row waiting. The town has watched half its life for this night, Wayfarer. We can watch a little longer — that is what watching IS.' },
   ],
   'npc.nightreach_watcher_steps_a': [
-    { speaker: 'OLD WATCHER', text: 'I held the Storm-watcher\'s lamp for thirty years before it lit. People ask was it worth the holding. They have never once had to ask anyone whose lamp is LIT.' },
+    { speaker: 'OLD WATCHER', text: 'I held the Storm-watcher\'s lamp eleven winters before it lit. People ask was it worth the holding. They have never once had to ask anyone whose lamp is LIT.' },
   ],
   'npc.nightreach_watcher_steps_b': [
     { speaker: 'WATCH KID', text: 'I\'m the eighth row\'s runner. When the last star comes home I run the steps ringing the little bell, fast as anything. I\'ve practised the route nine hundred times. Tonight could be the night. It could ALWAYS be the night.' },
@@ -1544,7 +1546,7 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'NESSA COLE', text: 'Remember harder than he has forgotten, Wayfarer. And when it is done... come back one clear night. I will show you eight constellations from this chair, and we will not say anything at all.' },
   ],
   'npc.nightreach_hall_keeper': [
-    { speaker: 'NIGHT-CLERK', text: 'The star-ledger: every watch ever kept under this dome, every star lost and every star come home. The "lost" column has had forty years of custom. I have ruled a fresh page for tonight, just in case. ...I rule one every night. Just in case.' },
+    { speaker: 'NIGHT-CLERK', text: 'The star-ledger: every watch ever kept under this dome, every star lost and every star come home. The "lost" column has had eleven years of custom. I have ruled a fresh page for tonight, just in case. ...I rule one every night. Just in case.' },
   ],
   'npc.nightreach_hall_festival': [
     { speaker: 'WATCHER', text: 'The eighth watch-lamp lit ITSELF. I was here. I saw the wick take with no hand near it — the sky reached down and kept its own vigil. I shall be telling this for the rest of my life, and it will never once need improving.' },
@@ -1573,7 +1575,7 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'WAYKEEPER', text: 'The west spoke sleeps yet, friend — its lamps answer the Lunar, and the Lunar has not come home. When the watchers\' star stands up, this road will light itself the same hour. Last spoke of my Round. I keep its wicks trimmed anyway.' },
   ],
   'npc.waykeeper_chart_hung': [
-    { speaker: 'WAYKEEPER', text: 'Forty years of guesswork charts, and now the true sky hangs on the Waystone where every road can see it. Travellers stop and look UP now, before they pick a direction. That is the whole Lanternway, working.' },
+    { speaker: 'WAYKEEPER', text: 'Eleven years of guesswork charts, and now the true sky hangs on the Waystone where every road can see it. Travellers stop and look UP now, before they pick a direction. That is the whole Lanternway, working.' },
   ],
 
   // ===========================================================================
@@ -1613,7 +1615,8 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'THE NINTH LANTERN. The road up is starlight or nothing. Lamps out of respect; hearts lit out of spite.' },
   ],
   'sign.penumbra_starwell': [
-    { text: 'EAST — THE STARWELL. Where a star fell and did not go out. Step soft on the dark.' },
+    { text: 'EAST — THE STARWELL. Where a star fell and did not go out: the only one that never went cold.' },
+    { text: 'Nobody knows why. The Hollowing never touched it. Step soft on the dark.' },
   ],
   'npc.penumbra_tended_row': [
     { text: 'Two null-lanterns, tended and swept, holding no light with great care. Someone still walks this row.' },
@@ -1856,6 +1859,7 @@ export const DIALOGUE: DialogueRegistry = {
   'npc.starfall_witness': [
     { speaker: 'WITNESS', text: 'Did you SEE it? Not a star going out — we\'ve all watched plenty of those. This one came DOWN. Shed itself, trailing gold, away off east.' },
     { speaker: 'WITNESS', text: 'Nightreach is beside itself. Watcher Oriel had the great eyepiece on it before it landed. Go up and ask her — she reads the sky for a living, and she\'s never read anything like THIS.' },
+    { speaker: 'WITNESS', text: 'Last time they fell, they came down cold, and we were frightened of them. These come down warm. I\'ve decided that\'s the same thing, forgiven.' },
   ],
   // The blocked_ref on every Vigil-site host warp, until its reading is held —
   // the scar of starlight is visible post-dawn, sealed until read (the watchers' voice).
@@ -1968,6 +1972,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // R9 "The Old Light" — Lightkeeper's Point + the joke-tower (content/oldlight.ts).
   ...OLDLIGHT_DIALOGUE,
+  ...REGION_EXTRA_DIALOGUE,
 };
 
 const FALLBACK: DialogueLine[] = [{ text: '...' }];

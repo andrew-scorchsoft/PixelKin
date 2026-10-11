@@ -239,7 +239,7 @@
     },
     {
       "id": "tree_c",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_b",
       "at": {
         "tx": 28,
         "ty": 17
@@ -260,6 +260,28 @@
       "h": 4,
       "overhang": 3,
       "walk_under": true
+    },
+    {
+      "id": "gh_wind_vane",
+      "sprite": "galehigh_wind_vane",
+      "at": {
+        "tx": 3,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "gh_kite_rack",
+      "sprite": "galehigh_kite_rack",
+      "at": {
+        "tx": 6,
+        "ty": 2
+      },
+      "w": 3,
+      "h": 2
     }
   ],
   "warps": [
@@ -889,7 +911,7 @@
         "ty": 2
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "kite_weaver",
       "movement": "static",
       "dialogue_ref": "script.galehigh_kitehand",
       "sight_range": 4,
@@ -903,7 +925,7 @@
         "ty": 2
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "kite_weaver",
       "movement": "look_around",
       "dialogue_ref": "npc.galehigh_kitehand_after",
       "requires_flag": "flag:galehigh_kitehand_beaten"
@@ -1027,7 +1049,7 @@
         "ty": 17
       },
       "facing": "down",
-      "sprite": "npc_shopkeeper",
+      "sprite": "market_trader",
       "movement": "look_around",
       "dialogue_ref": "npc.galehigh_festival_piper"
     },
@@ -1038,7 +1060,7 @@
         "ty": 18
       },
       "facing": "up",
-      "sprite": "npc_child",
+      "sprite": "kite_child",
       "movement": "wander",
       "dialogue_ref": "npc.galehigh_festival_kid"
     },
@@ -1049,7 +1071,7 @@
         "ty": 18
       },
       "facing": "right",
-      "sprite": "npc_woman",
+      "sprite": "star_watcher",
       "movement": "static",
       "dialogue_ref": "npc.galehigh_festival_goer"
     },
@@ -1121,7 +1143,7 @@
         "ty": 25
       },
       "facing": "left",
-      "sprite": "npc_woman",
+      "sprite": "kite_weaver",
       "movement": "static",
       "dialogue_ref": "npc.kite_maker_lost",
       "hidden_when_flag": "flag:picked_kite_c"
@@ -1133,7 +1155,7 @@
         "ty": 25
       },
       "facing": "left",
-      "sprite": "npc_woman",
+      "sprite": "kite_weaver",
       "movement": "static",
       "dialogue_ref": "script.kite_built",
       "requires_flag": "flag:picked_kite_c",
@@ -1146,7 +1168,7 @@
         "ty": 25
       },
       "facing": "left",
-      "sprite": "npc_woman",
+      "sprite": "kite_weaver",
       "movement": "static",
       "dialogue_ref": "npc.kite_maker_after",
       "requires_flag": "flag:q_north_kite_ready",
@@ -1159,7 +1181,7 @@
         "ty": 25
       },
       "facing": "left",
-      "sprite": "npc_woman",
+      "sprite": "kite_weaver",
       "movement": "static",
       "dialogue_ref": "script.round_kite",
       "requires_flag": "gleam:storm",
@@ -1172,7 +1194,7 @@
         "ty": 25
       },
       "facing": "left",
-      "sprite": "npc_woman",
+      "sprite": "kite_weaver",
       "movement": "static",
       "dialogue_ref": "npc.kite_maker_round_after",
       "requires_flag": "flag:q_round_kite_taken"
@@ -1281,9 +1303,33 @@
         "ty": 20
       },
       "facing": "left",
-      "sprite": "npc_woman",
+      "sprite": "kite_weaver",
       "movement": "static",
       "dialogue_ref": "script.peril_notice_reader"
+    },
+    {
+      "id": "amb_sparrowcaw",
+      "at": {
+        "tx": 8,
+        "ty": 6
+      },
+      "facing": "down",
+      "sprite": "kin_88_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 2
+    },
+    {
+      "id": "amb_cirruff",
+      "at": {
+        "tx": 27,
+        "ty": 20
+      },
+      "facing": "down",
+      "sprite": "kin_91_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
     }
   ],
   "gates": [
@@ -4398,5 +4444,37 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "leaves",
+        "density": 0.8
+      },
+      {
+        "kind": "motes",
+        "density": 0.6
+      }
+    ],
+    "mist": {
+      "color": "#2a3550",
+      "alpha": 0.07,
+      "speed": 6
+    },
+    "starfall": {
+      "min_s": 40,
+      "max_s": 80
+    },
+    "birds": {
+      "kind": "bird",
+      "flocks": [
+        {
+          "tx": 8,
+          "ty": 3
+        }
+      ],
+      "flyover": true
+    },
+    "sound_bed": "amb-wind"
+  }
 }

@@ -621,7 +621,7 @@
         "ty": 6
       },
       "facing": "right",
-      "sprite": "npc_old_woman",
+      "sprite": "innkeeper",
       "movement": "static",
       "dialogue_ref": "script.solarium_rest"
     },
@@ -661,5 +661,17 @@
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/sunken-solarium-b.mp3"
+  "music": "assets/audio/music/sunken-solarium-b.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "dust",
+        "density": 0.5
+      }
+    ],
+    "tint": {
+      "color": "#ffd089",
+      "alpha": 0.05
+    }
+  }
 }

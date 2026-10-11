@@ -166,6 +166,28 @@ m["objects"].append(
 # ---- the keeper's cache (touch #3 — the ONE paid find, on the islet) ----------------
 owed += pt.cache(m, cid="coldfog_keepers_cache", at=(11, 13))
 
+# R10 — the drowned light's shore, authored (world-craft panel §4 #5): the last
+# keeper's boat pulled up the shingle, a doused post that takes a flame for a
+# breath, a willow gone grey, and the Hollowing's courteous notice.
+m["objects"] += [
+    {"id": "beached_boat", "sprite": "coldfog_beached_boat", "at": {"tx": 3, "ty": 9},
+     "w": 3, "h": 2},
+    {"id": "doused_lamp", "sprite": "coldfog_doused_lamp", "at": {"tx": 12, "ty": 1},
+     "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    {"id": "drained_willow", "sprite": "coldfog_dead_willow", "at": {"tx": 13, "ty": 2},
+     "w": 3, "h": 4, "overhang": 2, "walk_under": True},
+    {"id": "quiet_notice", "sprite": "coldfog_hollowing_notice", "at": {"tx": 7, "ty": 9},
+     "w": 1, "h": 2, "overhang": 1, "walk_under": True},
+]
+m["triggers"] += [
+    {"id": "boat_read", "kind": "script", "at": {"tx": 4, "ty": 10},
+     "activation": "interact", "ref": "script.drownlight_boat"},
+    {"id": "doused_lamp_relight", "kind": "script", "at": {"tx": 12, "ty": 3},
+     "activation": "interact", "ref": "script.coldfog_relight"},
+    {"id": "quiet_notice_read", "kind": "script", "at": {"tx": 7, "ty": 10},
+     "activation": "interact", "ref": "script.coldfog_notice"},
+]
+
 # ---- encounters (the rare Dark bed; band 48-50; murk dead) ---------------------------
 TABLE_BEACON = [
     {"kin_id": 138, "weight": 30, "min_level": 49, "max_level": 50},  # Voidmantle
@@ -188,6 +210,21 @@ for (x, y) in [(9, 9), (12, 5), (7, 11), (14, 10), (10, 3), (3, 10)]:
 for (x, y) in [(8, 10), (14, 7), (10, 4), (2, 6)]:
     if deco[y * W + x] == 0:
         deco[y * W + x] = gid("boulder")
+
+# R10 LITTER: seeded scatter on the open ground (off every structure, object,
+# NPC, trigger and warp) so the ground reads weathered, not blank (audit_visual).
+_busy = {(x, y) for y in range(H) for x in range(W)
+         if any(g[y * W + x] for g in (crag,murk,blighttuft,))}
+_busy |= {(x, y) for o in m["objects"]
+          for y in range(o["at"]["ty"], o["at"]["ty"] + o["h"])
+          for x in range(o["at"]["tx"], o["at"]["tx"] + o["w"])}
+_busy |= {(p["at"]["tx"], p["at"]["ty"]) for p in m["npcs"] + m["triggers"] + m["warps"]}
+_busy |= {(p["to"]["tx"], p["to"]["ty"]) for p in m["warps"]}
+_litter = [gid("greymoss_a"), gid("greymoss_b"), gid("g_pebble")]
+for y in range(1, 12):
+    for x in range(2, 16):
+        if (x, y) not in _busy and deco[y * W + x] == 0 and rng.random() < 0.12:
+            deco[y * W + x] = rng.choice(_litter)
 
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},

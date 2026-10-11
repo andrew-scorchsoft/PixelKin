@@ -14,6 +14,7 @@ import Phaser from 'phaser';
 import { TILE_SIZE, COLORS } from '@game/config';
 import type { RuntimeMap, ResolvedTileset } from './MapLoader';
 import type { TileMeta } from './tileset';
+import type { MapObject } from '@game/data/world/types';
 
 /** A placed tile that cycles through frames (water ripple, lamp flicker, glowmoss). */
 export interface AnimatedTilePlacement {
@@ -22,6 +23,8 @@ export interface AnimatedTilePlacement {
   frames: number[];
   /** Milliseconds each frame is shown. */
   frameMs: number;
+  /** Per-tile clock offset (ms) so a sea glitters instead of blinking in lockstep. */
+  phase: number;
 }
 
 export interface MapRenderResult {
@@ -33,6 +36,10 @@ export interface MapRenderResult {
   animatedTiles: AnimatedTilePlacement[];
   /** Whole-structure object sprites (buildings, trees, lamps) — destroy on teardown. */
   objects: Phaser.GameObjects.Image[];
+  /** Tiles lifted off their layer to bob (MapAmbience.bob_gids) — destroy on teardown. */
+  bobbers: Phaser.GameObjects.Image[];
+  /** Everything that floats (lifted tiles + floating objects), ticked per frame. */
+  bobs: BobSpec[];
   pixelWidth: number;
   pixelHeight: number;
 }
@@ -42,11 +49,80 @@ const OBJECT_BODY_DEPTH = 9;
 const OBJECT_OVERHANG_DEPTH = 21;
 
 /**
+ * Floating sprites bob 1px on a slow sine, driven per frame by `tickBobs` (no
+ * repeat:-1 tweens: those outlived their images on every warp, and couldn't
+ * follow Settings → Ambient motion live). Visual only — collision never moves.
+ */
+export interface BobSpec {
+  img: Phaser.GameObjects.Image;
+  baseY: number;
+  px: number;
+  ms: number;
+  phase: number;
+}
+
+const OBJECT_BOB = { px: 1, ms: 1700 };
+/** Surfaces that count as water at an object's waterline (edge tiles carry the family). */
+const WET_SURFACES = new Set(['water', 'pond', 'murk']);
+
+/** Does this object float? An explicit `bob` wins; else most of its bottom row is water. */
+function floats(map: RuntimeMap, obj: MapObject): boolean {
+  if (obj.bob !== undefined) return obj.bob;
+  const y = obj.at.ty + obj.h - 1;
+  let wet = 0;
+  for (let x = obj.at.tx; x < obj.at.tx + obj.w; x++) {
+    if (map.hasTerrainAt(x, y, 'water') || WET_SURFACES.has(map.surfaceAt(x, y) ?? '')) wet++;
+  }
+  return wet * 2 >= obj.w;
+}
+
+function bobSpec(img: Phaser.GameObjects.Image, px: number, ms: number): BobSpec {
+  return { img, baseY: img.y, px, ms, phase: Math.floor(Math.random() * ms) };
+}
+
+/** Advance every bob for `timeMs`; with motion off they rest at their base. */
+export function tickBobs(bobs: BobSpec[], timeMs: number, motion: boolean): void {
+  for (const b of bobs) {
+    const off = motion ? Math.round(b.px * (0.5 - 0.5 * Math.cos((2 * Math.PI * (timeMs + b.phase)) / b.ms))) : 0;
+    const y = b.baseY - off;
+    if (b.img.y !== y) b.img.y = y;
+  }
+}
+
+/**
+ * Make sure the tileset texture behind `gid` has a named 16×16 frame for it (a
+ * packed atlas is loaded as ONE image, so per-tile frames are added on demand).
+ * Returns the texture key + frame name, or null for an unresolvable gid. Used by
+ * the bob lift below and by Ambience (the tall-grass legs overlay re-draws the
+ * real grass tile over an actor's legs, so it needs no art of its own).
+ */
+export function ensureTileFrame(
+  scene: Phaser.Scene,
+  map: RuntimeMap,
+  gid: number,
+): { key: string; frame: string } | null {
+  const look = map.lookupGid(gid);
+  if (!look) return null;
+  const ref = look.tileset.ref;
+  const key = ref.name;
+  if (!scene.textures.exists(key)) return null;
+  const local = gid - ref.first_gid;
+  const frame = `t${local}`;
+  const tex = scene.textures.get(key);
+  if (!tex.has(frame)) {
+    const cx = (local % ref.columns) * ref.tile_width;
+    const cy = Math.floor(local / ref.columns) * ref.tile_height;
+    tex.add(frame, 0, cx, cy, ref.tile_width, ref.tile_height);
+  }
+  return { key, frame };
+}
+
+/**
  * Place each whole-structure object (art-style §14b) as one transparent sprite,
  * split so the top `overhang` rows render over the player (walk-behind eaves /
  * canopies) and the rest below. Footprint collision is handled by CollisionGrid.
  */
-function renderObjects(scene: Phaser.Scene, map: RuntimeMap): Phaser.GameObjects.Image[] {
+function renderObjects(scene: Phaser.Scene, map: RuntimeMap, bobs: BobSpec[]): Phaser.GameObjects.Image[] {
   const out: Phaser.GameObjects.Image[] = [];
   for (const obj of map.def.objects ?? []) {
     if (!scene.textures.exists(obj.sprite)) continue; // art not packed yet — collision still applies
@@ -62,13 +138,16 @@ function renderObjects(scene: Phaser.Scene, map: RuntimeMap): Phaser.GameObjects
     // objects (MapObject.requires_flag / hidden_when_flag) when flags change.
     body.setData('object_def', obj);
     out.push(body);
+    const bob = floats(map, obj) ? OBJECT_BOB : undefined;
 
     if (overhangPx > 0) {
       const over = scene.add.image(px, py, obj.sprite).setOrigin(0, 0).setDepth(OBJECT_OVERHANG_DEPTH);
       over.setCrop(0, 0, wpx, overhangPx);
       over.setData('object_def', obj);
       out.push(over);
+      if (bob) bobs.push(bobSpec(over, bob.px, bob.ms));
     }
+    if (bob) bobs.push(bobSpec(body, bob.px, bob.ms));
   }
   return out;
 }
@@ -76,12 +155,13 @@ function renderObjects(scene: Phaser.Scene, map: RuntimeMap): Phaser.GameObjects
 /**
  * Advance animated tiles to the frame for `timeMs` (call once per frame from the
  * owning scene's update). Frames are derived from each tile's
- * `animation.frames`/`duration_ms` in the tileset sidecar; the cycle is purely a
- * function of wall-clock time, so all tiles of a kind ripple in sync.
+ * `animation.frames`/`duration_ms` in the tileset sidecar; the cycle is a function
+ * of wall-clock time plus each tile's `phase` (hashed from its x,y), so a sea
+ * glitters out of lockstep instead of blinking all at once.
  */
 export function tickAnimatedTiles(animated: AnimatedTilePlacement[], timeMs: number): void {
   for (const a of animated) {
-    const idx = Math.floor(timeMs / a.frameMs) % a.frames.length;
+    const idx = Math.floor((timeMs + a.phase) / a.frameMs) % a.frames.length;
     const gid = a.frames[idx];
     if (a.tile.index !== gid) a.tile.index = gid;
   }
@@ -217,10 +297,14 @@ export async function renderMap(scene: Phaser.Scene, map: RuntimeMap): Promise<M
         const look = map.lookupGid(gid);
         const anim = look?.meta.animation;
         if (tile && look && anim && anim.frames.length > 1 && anim.duration_ms > 0) {
+          const frameMs = anim.duration_ms / anim.frames.length;
           animatedTiles.push({
             tile,
             frames: anim.frames.map((f) => look.tileset.ref.first_gid + f),
-            frameMs: anim.duration_ms / anim.frames.length,
+            frameMs,
+            // A cheap spatial hash → a whole-frame-ish offset per tile, so the
+            // ripple travels across the water rather than strobing in unison.
+            phase: Math.floor((((tx * 7 + ty * 13) % 11) / 11) * anim.duration_ms),
           });
         }
       }
@@ -229,9 +313,45 @@ export async function renderMap(scene: Phaser.Scene, map: RuntimeMap): Promise<M
     if (layerDef.role === 'above') aboveLayers.push(layer);
   }
 
-  const objects = renderObjects(scene, map);
+  const bobs: BobSpec[] = [];
+  const objects = renderObjects(scene, map, bobs);
+  const bobbers = liftBobTiles(scene, map, layers, bobs);
 
   const pixelWidth = map.width * TILE_SIZE;
   const pixelHeight = map.height * TILE_SIZE;
-  return { tilemap, layers, aboveLayers, animatedTiles, objects, pixelWidth, pixelHeight };
+  return { tilemap, layers, aboveLayers, animatedTiles, objects, bobbers, bobs, pixelWidth, pixelHeight };
+}
+
+/**
+ * MapAmbience.bob_gids: lift each matching (non-animated) tile off its layer into
+ * an Image at the same spot and depth, then bob it 1px — buoys riding the swell.
+ * The tile's collision/terrain is untouched (the engine reads those from the map
+ * data, never the drawn layer). No-op with ambient motion off or no texture.
+ */
+function liftBobTiles(
+  scene: Phaser.Scene,
+  map: RuntimeMap,
+  layers: Phaser.Tilemaps.TilemapLayer[],
+  bobs: BobSpec[],
+): Phaser.GameObjects.Image[] {
+  const out: Phaser.GameObjects.Image[] = [];
+  const gids = new Set(map.def.ambience?.bob_gids ?? []);
+  // Lifted regardless of the motion setting (a resting lifted tile looks the same),
+  // so turning Ambient motion on mid-map starts them bobbing.
+  if (gids.size === 0) return out;
+  for (const layer of layers) {
+    layer.forEachTile((tile) => {
+      if (!gids.has(tile.index)) return;
+      const tf = ensureTileFrame(scene, map, tile.index);
+      if (!tf) return;
+      const img = scene.add
+        .image(tile.pixelX, tile.pixelY, tf.key, tf.frame)
+        .setOrigin(0, 0)
+        .setDepth(layer.depth + 0.01);
+      layer.removeTileAt(tile.x, tile.y);
+      bobs.push(bobSpec(img, 1, 1100 + Math.floor(Math.random() * 500)));
+      out.push(img);
+    });
+  }
+  return out;
 }

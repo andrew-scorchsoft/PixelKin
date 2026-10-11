@@ -86,6 +86,34 @@ export class RuntimeMap {
     }
     return false;
   }
+
+  /** The gid at (tx,ty) that carries this encounter terrain (topmost first), or 0.
+   *  Ambience re-draws it over an actor's legs (the "in the grass" cue). */
+  terrainGidAt(tx: number, ty: number, terrain: EncounterTerrain): number {
+    const gids = this.gidsAt(tx, ty);
+    for (let i = gids.length - 1; i >= 0; i--) {
+      if (this.lookupGid(gids[i])?.meta.encounter_terrain === terrain) return gids[i];
+    }
+    return 0;
+  }
+
+  /**
+   * What the ground at (tx,ty) is made of, for feel (footprints, footstep timbre):
+   * the topmost stacked tile's autotile `terrain` group ('sand', 'snowtrail', …),
+   * else its authoring `role` ('ground', 'floor', …). Sidecar-driven, like
+   * `hasTerrainAt`. Undefined off-map or on an empty cell.
+   */
+  surfaceAt(tx: number, ty: number): string | undefined {
+    const gids = this.gidsAt(tx, ty);
+    let role: string | undefined;
+    for (let i = gids.length - 1; i >= 0; i--) {
+      const meta = this.lookupGid(gids[i])?.meta;
+      if (!meta) continue;
+      if (meta.terrain) return meta.terrain;
+      if (!role && meta.role && meta.role !== 'decor') role = meta.role;
+    }
+    return role;
+  }
 }
 
 async function fetchJson<T>(path: string): Promise<T | null> {

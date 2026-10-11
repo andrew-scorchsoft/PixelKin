@@ -120,9 +120,14 @@ class MapModel:
         # NPC bodies (dedupe flag-pair swaps sharing an anchor). Static bodies
         # are deliberate geometry (the gate-warden pattern); wanderers move, so
         # they never count as walls. Reach checks pass through ALL of them.
+        # AMBIENT placements (`ambient: true` — grazing kin, WP0 world-craft) are
+        # set dressing the engine never collides with or talks to, so the model
+        # drops them entirely: never blockers, never "content" to reach.
         self.npc_tiles: set[tuple[int, int]] = set()
         self.static_npc_tiles: set[tuple[int, int]] = set()
-        for npc in m.get("npcs", []):
+        live_npcs = [n for n in m.get("npcs", []) if not n.get("ambient")]
+        self.ambient_npcs = [n for n in m.get("npcs", []) if n.get("ambient")]
+        for npc in live_npcs:
             at = (npc["at"]["tx"], npc["at"]["ty"])
             self.npc_tiles.add(at)
             if npc.get("movement", "static") == "static":
@@ -130,7 +135,7 @@ class MapModel:
 
         self.warps = m.get("warps", [])
         self.triggers = m.get("triggers", [])
-        self.npcs = m.get("npcs", [])
+        self.npcs = live_npcs
 
     # ---- cells -------------------------------------------------------------
     def in_bounds(self, x: int, y: int) -> bool:

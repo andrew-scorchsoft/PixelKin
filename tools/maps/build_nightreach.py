@@ -95,9 +95,9 @@ HANDSHAKES (all three contracts verbatim):
       sign.nightreach_fogroad. A blight fringe stains the gate mouth (Arc D:
       the fog road is drained ground; it does not brighten).
   (c) Lanternway spoke `to_crossroads`/`_s` at (4,29)/(5,29) lands
-      vesper_crossroads (3,1)/(4,1) — the crossroads' new NW-corner spoke
-      (its side gleam:lunar-gated per the Galehigh pattern; see
-      build_crossroads.py). Crossroads' `to_nightreach`/`_e` land at OUR
+      lanternway_nightreach (4,0)/(5,0) — the real lane map to the
+      crossroads (its side gleam:lunar-gated per the Galehigh pattern; see
+      build_lanternway.py). The lane's `to_nightreach`/`_e` land at OUR
       (4,28)/(5,28).
 
 Encounter picks (band 48-52, approach grass ONLY — none in town; continuous
@@ -276,11 +276,11 @@ m["warps"].append({"id": "to_lumenary_e", "at": {"tx": 16, "ty": 9},
 # Galehigh highland-stone masters are the register reuse (wind-braced stone
 # on a high hilltop; the brief's bespoke list is dome/lamps/eyepiece/
 # dressing — reuse everywhere else)
-pt.building(m, ruin, W, H, oid="inn", sprite="galehigh_inn",
+pt.building(m, ruin, W, H, oid="inn", sprite="nightreach_inn",
             at=(4, 15), overhang=2, door_col=2,
             to_map="nightreach_inn", to=(7, 10))
 m["warps"][-1]["id"] = "to_inn"
-pt.building(m, ruin, W, H, oid="home", sprite="galehigh_cottage",
+pt.building(m, ruin, W, H, oid="home", sprite="nightreach_home",
             at=(22, 15), overhang=2, door_col=2,
             to_map="nightreach_home", to=(6, 8))
 m["warps"][-1]["id"] = "to_home"
@@ -294,13 +294,13 @@ m["warps"] += [
     {"id": "to_climb_ii_e", "at": {"tx": 16, "ty": 29}, "trigger": "step_on",
      "to_map": "sunvault_climb_ii", "to": {"tx": 23, "ty": 1}, "facing": "down",
      "transition": "fade"},
-    # SOUTH B <-> vesper_crossroads (`to_crossroads` — the Lanternway spoke;
-    # the crossroads side is gleam:lunar-gated, the Galehigh pattern)
+    # SOUTH B <-> the Lanternway spoke's real lane map (lanternway_nightreach;
+    # `to_crossroads` — the crossroads side is gleam:lunar-gated, the Galehigh pattern)
     {"id": "to_crossroads", "at": {"tx": 4, "ty": 29}, "trigger": "step_on",
-     "to_map": "vesper_crossroads", "to": {"tx": 3, "ty": 1}, "facing": "down",
+     "to_map": "lanternway_nightreach", "to": {"tx": 4, "ty": 0}, "facing": "down",
      "transition": "fade"},
     {"id": "to_crossroads_s", "at": {"tx": 5, "ty": 29}, "trigger": "step_on",
-     "to_map": "vesper_crossroads", "to": {"tx": 4, "ty": 1}, "facing": "down",
+     "to_map": "lanternway_nightreach", "to": {"tx": 5, "ty": 0}, "facing": "down",
      "transition": "fade"},
     # EAST <-> coldfog_marches_ii (`to_observatory_fog`'s return — Emberward
     # OUR side too, per the W3 contract; the OPTIONAL back-door)
@@ -409,8 +409,8 @@ m["npcs"] += [
     # SYNC 2026-06 (Three Hours wiring, 07-the-three §6): after her Gleam,
     # Nessa keeps hearing the unrung morning bell — H3's rumour stages at the
     # same eyepiece (gleam:lunar postdates lamp 7, so the windows are
-    # disjoint). Mirrored into the shipped nightreach_observatory.json by
-    # hand — reconcile before re-running.
+    # disjoint). Mirrored into the shipped nightreach_observatory.json — a
+    # rebuild reproduces it (check_rebuild.py).
     {"id": "nessa_hours", "at": {"tx": 22, "ty": 9}, "facing": "left",
      "sprite": "nessa_cole", "movement": "static",
      "dialogue_ref": "script.nessa_hours",

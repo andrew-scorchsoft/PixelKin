@@ -61,7 +61,7 @@ def build_cottage():
     npcs = [
         {"id": "georgina_intro", "at": {"tx": door_x, "ty": 5}, "facing": "down",
          "sprite": "georgina", "movement": "static",
-         "dialogue_ref": "script.georgina_intro",
+         "dialogue_ref": "script.georgina_meet",
          "hidden_when_flag": "flag:q_east_georgina_met"},
         {"id": "georgina_waiting", "at": {"tx": door_x, "ty": 5}, "facing": "down",
          "sprite": "georgina", "movement": "static",

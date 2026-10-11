@@ -341,7 +341,7 @@
         "ty": 13
       },
       "facing": "down",
-      "sprite": "npc_man",
+      "sprite": "npc_old_man",
       "movement": "static",
       "dialogue_ref": "npc.cinderhead_sealed_miner",
       "requires_flag": "flag:shortcut_mine"
@@ -365,7 +365,7 @@
         "ty": 7
       },
       "facing": "down",
-      "sprite": "npc_man",
+      "sprite": "miner_man",
       "movement": "static",
       "dialogue_ref": "script.gallery_miner_a",
       "sight_range": 4,
@@ -379,7 +379,7 @@
         "ty": 7
       },
       "facing": "down",
-      "sprite": "npc_man",
+      "sprite": "miner_man",
       "movement": "look_around",
       "dialogue_ref": "npc.gallery_miner_a_after",
       "requires_flag": "flag:gallery_miner_a_beaten"
@@ -2261,5 +2261,18 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "ash",
+        "density": 0.5
+      },
+      {
+        "kind": "embers",
+        "density": 0.2
+      }
+    ],
+    "sound_bed": "amb-drips"
+  }
 }

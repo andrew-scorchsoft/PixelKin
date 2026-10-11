@@ -367,7 +367,7 @@ def build_lifting_house():
          "hidden_when_flag": "flag:q_south_booji_done"},
         {"id": "andy_after", "at": dict(andy_at), "facing": "down",
          "sprite": "lifter_andy", "movement": "look_around",
-         "dialogue_ref": "npc.booji_andy_after",
+         "dialogue_ref": "script.booji_andy_after",
          "requires_flag": "flag:q_south_booji_done"},
         # Abdul/Sid give clues but no longer GATE Paul (any lifter opens him). Their
         # clue is available from the start; their own flag just advances them to the
@@ -538,7 +538,7 @@ def all_maps():
                             "hidden_when_flag": "gleam:ember"},
                            {"id": "brisa_fair", "at": "dais", "facing": "down",
                             "sprite": "brisa", "movement": "static",
-                            "dialogue_ref": "npc.brisa_after",
+                            "dialogue_ref": "script.brisa_after_staged",  # W-1 witness stage (content/regions/west.ts)
                             "requires_flag": "gleam:ember"},
                        ]),
         # The Tide Lumenary: the bond-test is EARNED (the Causeway Bell loop,

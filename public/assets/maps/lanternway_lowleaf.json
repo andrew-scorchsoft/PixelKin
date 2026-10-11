@@ -2431,7 +2431,7 @@
     },
     {
       "id": "crown_low",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_c",
       "at": {
         "tx": 9,
         "ty": 18
@@ -2451,6 +2451,93 @@
       "w": 3,
       "h": 4,
       "overhang": 3,
+      "walk_under": true
+    },
+    {
+      "id": "spoke_lamp_a",
+      "sprite": "tinderwick_lamp_post",
+      "at": {
+        "tx": 12,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "spoke_lamp_b",
+      "sprite": "tinderwick_lamp_post",
+      "at": {
+        "tx": 8,
+        "ty": 22
+      },
+      "w": 1,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
+      "id": "spoke_tree_a",
+      "sprite": "tinderwick_tree_b",
+      "at": {
+        "tx": 2,
+        "ty": 13
+      },
+      "w": 3,
+      "h": 4,
+      "overhang": 3,
+      "walk_under": true
+    },
+    {
+      "id": "spoke_tree_b",
+      "sprite": "tinderwick_tree_b",
+      "at": {
+        "tx": 20,
+        "ty": 22
+      },
+      "w": 3,
+      "h": 4,
+      "overhang": 3,
+      "walk_under": true
+    },
+    {
+      "id": "spoke_reeds_a",
+      "sprite": "saltreach_cattails",
+      "at": {
+        "tx": 5,
+        "ty": 15
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "spoke_reeds_b",
+      "sprite": "saltreach_cattails",
+      "at": {
+        "tx": 15,
+        "ty": 19
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "spoke_stooks",
+      "sprite": "saltreach_reed_stooks",
+      "at": {
+        "tx": 10,
+        "ty": 25
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "overhang": 1,
       "walk_under": true
     }
   ],
@@ -2604,5 +2691,13 @@
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/tinderwick-a.mp3"
+  "music": "assets/audio/music/tinderwick-a.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "glowmotes",
+        "density": 0.4
+      }
+    ]
+  }
 }

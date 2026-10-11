@@ -734,6 +734,12 @@ netmender's keeping.
 
 ---
 
+### World-craft pass (2026-10, look/feel only — the path to the Chickenpig is unchanged)
+
+Every South map carries an `ambience` block, the regional cast and (where a screen was bare)
+proven off-lane props; the key scenes gained acting ops with no added pages. Source:
+`tools/maps/worldcraft/south.py` → `add_world_craft.py --region south` (re-run after any rebuild).
+
 ## Region handoff (to [`02-east.md`](./02-east.md))
 
 Player leaves South at **~level 16**, party of **2–3**, holding **Tidecall**, with

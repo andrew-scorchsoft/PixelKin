@@ -188,6 +188,21 @@ for y in range(H):
 scatter_avoid = avoid | {(x, y) for y in range(H) for x in range(W) if (x, y) not in near_path}
 mk.scatter_decor(deco, base, W, H, rng, density=0.12, avoid=scatter_avoid)
 
+# ---- the 2026-10 easing (a first-timer kept blacking out on the coast road) ---
+# The dirt lane runs UNBROKEN through crossing_a (cols 8-9 — the band stays, but
+# is optional) and the ledge-gap choke {10-11, 22} is mown. Applied AFTER the
+# scatter pass on purpose: the scatter's rng stream (and so the shipped deco) was
+# rolled before the easing, and the shipped map is the truth
+# (tools/maps/check_rebuild.py). Don't re-seal these.
+for y in range(CROSSINGS[0][0], CROSSINGS[0][1] + 1):
+    for x in (8, 9):
+        path[y * W + x] = 1
+        tallgrass[y * W + x] = 0
+for x in (10, 11):
+    tallgrass[22 * W + x] = 0
+# the variants the hand-carve picked (the autotiler's own pick differs by a cell)
+EASED_PINS = {(8, 8): "path_edge_w", (9, 9): "path_edge_e_v1", (11, 22): "grass2"}
+
 # ---- assemble ---------------------------------------------------------------
 m = {
     "id": "dimglass_coast", "display_name": "Dimglass Coast", "width": W, "height": H,
@@ -338,6 +353,6 @@ m = {
 }
 
 if __name__ == "__main__":
-    ok = mk.finalize(m, scale=3)
+    ok = mk.finalize(m, scale=3, pin_base=EASED_PINS)
     print("PASS" if ok else "FAIL")
     raise SystemExit(0 if ok else 1)

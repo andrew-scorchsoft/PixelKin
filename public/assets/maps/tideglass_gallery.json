@@ -847,5 +847,22 @@
   "music": "assets/audio/music/dimglass-coast-c.mp3",
   "battle_backdrops": [
     "assets/backgrounds/battle/tideglass-gallery-a.webp"
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "glowmotes",
+        "density": 0.6
+      }
+    ],
+    "mist": {
+      "color": "#0d2a40",
+      "alpha": 0.2,
+      "speed": 2
+    },
+    "tint": {
+      "color": "#08203a",
+      "alpha": 0.14
+    }
+  }
 }

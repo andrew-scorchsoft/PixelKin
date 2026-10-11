@@ -1,0 +1,28 @@
+{
+  "title": "SFX -- door (heavy creak + latch)",
+  "_note": "A weighty old door in a tower: slow low noise creak rising, then a dull tri_bass latch thunk. Render with --tail 0.08.",
+  "era": "sfx",
+  "tempo": 180,
+  "time_signature": [
+    4,
+    4
+  ],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "creak",
+      "voice": "noise",
+      "octave": 2,
+      "gain": 0.65,
+      "notes": "G2~C3e@78"
+    },
+    {
+      "name": "latch",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.7,
+      "notes": "rs F2s@96"
+    }
+  ]
+}

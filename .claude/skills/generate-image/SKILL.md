@@ -1,6 +1,6 @@
 ---
 name: generate-image
-description: Generate brand-aligned images for the product and e-learning content via Google Nano Banana Pro (preferred) or OpenAI gpt-image-2. Use whenever the user asks for an image, illustration, infographic, hero, icon, or any visual asset that should be saved into the repo. Accepts optional input images for edit / restyle / compose / reference workflows. Strips standard EXIF/XMP metadata, re-encodes to WebP for repo-friendly size, and supports a brand-aligned style preset library.
+description: Generate brand-aligned images for the product and e-learning content via Google Nano Banana Pro (preferred) or OpenAI gpt-image-2.5-sunburst (native transparency). Use whenever the user asks for an image, illustration, infographic, hero, icon, or any visual asset that should be saved into the repo. Accepts optional input images for edit / restyle / compose / reference workflows. Strips standard EXIF/XMP metadata, re-encodes to WebP for repo-friendly size, and supports a brand-aligned style preset library.
 ---
 
 # generate-image
@@ -24,7 +24,7 @@ At least one provider key must be set in the environment:
 | Env var                    | Provider | Model (default)              | Notes                |
 |----------------------------|----------|------------------------------|----------------------|
 | `GOOGLE_AI_STUDIO_API_KEY` | Google   | `gemini-3-pro-image-preview` | Nano Banana Pro. **Preferred** when both are set. |
-| `OPENAI_API_KEY`           | OpenAI   | `gpt-image-2`                | Fallback.            |
+| `OPENAI_API_KEY`           | OpenAI   | `gpt-image-2.5-sunburst`     | Native alpha; the pick for characters/sprites. |
 
 Optional overrides: `GOOGLE_IMAGE_MODEL`, `OPENAI_IMAGE_MODEL`.
 
@@ -56,8 +56,8 @@ It prints a JSON summary on success (path, dimensions, bytes, provider, model).
 - `--lossless` — switch to lossless WebP. Use only when the user explicitly needs it; files get much larger.
 - `--max-dim` — longest edge in pixels; the image is downscaled if larger. Default 2048. Set `0` to disable.
 - `--provider` — force `google` or `openai`. Skip this unless the user asks.
-- `--transparent` — produce a real alpha-channel transparent background. Requires `.png` or `.webp` output. When set, the script auto-prefers OpenAI over Google (Google has no native alpha) and auto-selects `gpt-image-1` instead of the default `gpt-image-2` (only `gpt-image-1` accepts `background=transparent`). Both auto-selections are skipped if the caller hard-pins via `--provider` or `OPENAI_IMAGE_MODEL`. Behaviour differs by provider:
-  - **OpenAI**: native — passes `background=transparent` to `gpt-image-1`, which returns a PNG with real alpha.
+- `--transparent` — produce a real alpha-channel transparent background. Requires `.png` or `.webp` output. When set, the script auto-prefers OpenAI over Google (Google has no native alpha) and uses `gpt-image-2.5-sunburst`, which accepts `background=transparent` (a pinned `OPENAI_IMAGE_MODEL=gpt-image-2`, which can't, is upgraded automatically). Both auto-selections are skipped if the caller hard-pins via `--provider` or `OPENAI_IMAGE_MODEL`. Behaviour differs by provider:
+  - **OpenAI**: native — passes `background=transparent` to `gpt-image-2.5-sunburst`, which returns a PNG with real alpha (no chroma key).
   - **Google Nano Banana / Gemini**: the image endpoint does **not** support native alpha output. The script prepends an anti-checkerboard preamble asking the model to render on pure magenta `#FF00FF`, then chroma-keys that colour out with feathered edges in post-processing. Side effects: do not ask for magenta/pink elements inside the subject (they'll be deleted), and verify the output with `Read` — the chroma-key occasionally leaves a faint pink halo on soft edges; regenerate with a request for crisper edges if it does. The JSON summary reports `transparency_method: "chroma_key"` vs `"native"` so you know which path ran. **Failure mode:** the model sometimes ignores the magenta instruction and bakes an OPAQUE background (white / grey / a checkerboard) the key can't strip — the script then prints a loud `⚠️ TRANSPARENCY LIKELY FAILED` warning. When you see it, **don't ship the result**: regenerate with native alpha (let it default to OpenAI — don't force `--provider google`) and add *"fully transparent background, render nothing behind it, NO checkerboard / grey squares / grid"* to the prompt. **Prefer native alpha for any object that must drop cleanly onto a map.**
 - `--input-image` — path to a local image file to feed into the model as visual context. **Repeat the flag for multiple inputs** (e.g. `--input-image hero.png --input-image logo.png`). Accepts `.png`, `.jpg`, `.jpeg`, `.webp` up to 20 MiB each. See "Using existing images as input" below.
 - `--openai-route` — `edits` (default) or `responses`. Only relevant when `--input-image` is set and the provider is OpenAI. See "Using existing images as input" below.
@@ -73,7 +73,7 @@ Both providers accept image input alongside the text prompt. The image isn't nec
 
 | Route | Endpoint | Model | When to use |
 |-------|----------|-------|-------------|
-| `edits` *(default)* | `/v1/images/edits` | `gpt-image-2` (or `gpt-image-1` if `--transparent`) | **One-shot** generation with reference/edit images. The endpoint is named "edits" but with `gpt-image-1`/`gpt-image-2` it accepts up to 16 input images as references — the prompt decides whether they're edited, restyled, composed, or just used for style/colour/mood guidance. Best when you want to pin the image model explicitly. |
+| `edits` *(default)* | `/v1/images/edits` | `gpt-image-2.5-sunburst` (native alpha with `--transparent`) | **One-shot** generation with reference/edit images. The endpoint is named "edits" but with `gpt-image-1`/`gpt-image-2` it accepts up to 16 input images as references — the prompt decides whether they're edited, restyled, composed, or just used for style/colour/mood guidance. Best when you want to pin the image model explicitly. |
 | `responses` | `/v1/responses` | `gpt-5` (override via `OPENAI_RESPONSES_MODEL`) | **Multimodal context.** The input images become real visual context on a text model, which then calls the `image_generation` tool to produce the output. Better mental model when the images are *background context* (mood board, brand guidelines, layout inspiration) rather than the subject of an edit. |
 
 For day-to-day use, leave `--openai-route` at its default `edits`. Reach for `responses` when you want the model to reason over the inputs as conversational context — e.g. "look at these three brand boards and synthesise something in that direction" — rather than treating any one of them as the canvas to modify.

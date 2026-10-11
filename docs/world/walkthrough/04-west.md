@@ -11,6 +11,21 @@
 > per [`VISION.md`](../../../VISION.md); canon vocabulary throughout
 > (**kin, Lumenary, Lampwarden, Gleam, Lantern Gift, vesperlamp, kindling, the Hollowing**).
 
+> **R10 (2026-10, the depth pass):** Hushfrost I recomposed as a real pass (carved banks,
+> trackless snow, frozen falls, the pass-walker's camp); Coldfog/Drownlight desolation
+> authored (the table laid for three, beached boats, doused posts, the Hollowing's notice);
+> story beats W-1 the Ember flickers (`great_null_named`), W-2 Còr at the Stillworks, W-3 the
+> third ladder + the Ledger's FELL column, W-4 *The Pass-walker's Map* (`flag:fall_seen_*`,
+> `script.passmap_tick`, spiral at Nightreach). Content: `content/regions/west.ts`;
+> placements: `tools/maps/worldcraft/west.py` + the West builders.
+> **R10 polish (Hushfrost I + II):** the pass's ground is DRAWN decal craft over the frozen
+> tileset (`tools/maps/draw_hushfrost_objects.py` → `hushfrost_tuftbed_*` tufts-on-snow over
+> every encounter cell, `crest_*` frost-crust on the bank tops, icicles on the faces, drift
+> ridges / scree / old tracks / loose tufts, lee mist over the player) + snow-laden pines,
+> a dead tree, an icicle crag and frozen shrubs (gpt-image-2.5) only on already-solid or
+> off-lane ground. Both builders end with `hushfrost_craft.carry_over` (the shipped zones,
+> day twins, Radiant cache and runner items survive a rebuild).
+
 ---
 
 ## Region at a glance

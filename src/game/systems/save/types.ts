@@ -92,4 +92,11 @@ export interface SaveGame {
    * precedent set by `bond` / `battles_won`, no migration needed.
    */
   player_name?: string;
+  /**
+   * The GAME_VERSION (version.ts) this journey was last played on, stamped on
+   * every persist. Loading a save whose stamp is older (or missing = from before
+   * tracking) shows the one-time "the world has changed" notice. Additive +
+   * optional, no schema bump.
+   */
+  last_version?: string;
 }

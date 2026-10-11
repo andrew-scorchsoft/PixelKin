@@ -31,7 +31,7 @@
     },
     {
       "id": "cottage_a",
-      "sprite": "tinderwick_cottage",
+      "sprite": "cinderhead_miner_cottage",
       "at": {
         "tx": 2,
         "ty": 15
@@ -42,7 +42,7 @@
     },
     {
       "id": "cottage_b",
-      "sprite": "tinderwick_cottage",
+      "sprite": "cinderhead_miner_cottage",
       "at": {
         "tx": 20,
         "ty": 3
@@ -156,6 +156,42 @@
       "h": 3,
       "overhang": 2,
       "walk_under": true
+    },
+    {
+      "id": "harl_hooks",
+      "sprite": "cinderhead_lamp_hooks",
+      "at": {
+        "tx": 7,
+        "ty": 18
+      },
+      "w": 5,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "fault_cinder",
+      "sprite": "fallenstar_cinder_star",
+      "at": {
+        "tx": 22,
+        "ty": 10
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "fault_cinder_woken",
+      "sprite": "vigil_star_shard",
+      "at": {
+        "tx": 22,
+        "ty": 10
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "requires_flag": "flag:dawn"
     }
   ],
   "warps": [
@@ -269,6 +305,26 @@
       },
       "activation": "interact",
       "ref": "sign.cinderhead_lumenary"
+    },
+    {
+      "id": "harl_hooks",
+      "kind": "sign",
+      "at": {
+        "tx": 9,
+        "ty": 19
+      },
+      "activation": "interact",
+      "ref": "sign.cinderhead_hooks"
+    },
+    {
+      "id": "fault_cinder",
+      "kind": "script",
+      "at": {
+        "tx": 22,
+        "ty": 11
+      },
+      "activation": "interact",
+      "ref": "script.cinderhead_fault_cinder"
     }
   ],
   "encounters": [
@@ -335,7 +391,7 @@
         "ty": 14
       },
       "facing": "right",
-      "sprite": "npc_man",
+      "sprite": "miner_man",
       "movement": "static",
       "dialogue_ref": "npc.vigil_miner_a"
     },
@@ -346,7 +402,7 @@
         "ty": 11
       },
       "facing": "left",
-      "sprite": "npc_woman",
+      "sprite": "miner_woman",
       "movement": "static",
       "dialogue_ref": "npc.vigil_miner_b"
     },
@@ -357,7 +413,7 @@
         "ty": 11
       },
       "facing": "down",
-      "sprite": "npc_shopkeeper",
+      "sprite": "innkeeper",
       "movement": "static",
       "dialogue_ref": "script.cinderhead_rest"
     },
@@ -455,7 +511,7 @@
         "ty": 12
       },
       "facing": "down",
-      "sprite": "npc_shopkeeper",
+      "sprite": "market_trader",
       "movement": "static",
       "dialogue_ref": "script.shop_kit_cinderhead",
       "hidden_when_flag": "flag:cinderhead_kit"
@@ -467,7 +523,7 @@
         "ty": 12
       },
       "facing": "down",
-      "sprite": "npc_shopkeeper",
+      "sprite": "market_trader",
       "movement": "static",
       "dialogue_ref": "script.shop_cinderhead",
       "requires_flag": "flag:cinderhead_kit"
@@ -542,6 +598,17 @@
       "sprite": "andrew_ward",
       "movement": "look_around",
       "dialogue_ref": "script.andrew_road"
+    },
+    {
+      "id": "fault_miner",
+      "at": {
+        "tx": 24,
+        "ty": 12
+      },
+      "facing": "left",
+      "sprite": "miner_woman",
+      "movement": "look_around",
+      "dialogue_ref": "script.cinderhead_fault_miner"
     }
   ],
   "gates": [],
@@ -2588,5 +2655,28 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "ash",
+        "density": 0.6
+      },
+      {
+        "kind": "embers",
+        "density": 0.3
+      }
+    ],
+    "sound_bed": "amb-drips",
+    "light_sources_extra": [
+      {
+        "at": {
+          "tx": 23,
+          "ty": 11
+        },
+        "radius": 14,
+        "color": "#9fc4ff"
+      }
+    ]
+  }
 }

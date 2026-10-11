@@ -1,0 +1,28 @@
+{
+  "title": "SFX -- footstep on stone (tap, alt)",
+  "_note": "Alternate stone step: a shade lower tap and thunk. Render with --tail 0.02.",
+  "era": "sfx",
+  "tempo": 280,
+  "time_signature": [
+    4,
+    4
+  ],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "tap",
+      "voice": "noise",
+      "octave": 2,
+      "gain": 0.7,
+      "notes": "A2s@88"
+    },
+    {
+      "name": "thunk",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.35,
+      "notes": "C2s@66"
+    }
+  ]
+}

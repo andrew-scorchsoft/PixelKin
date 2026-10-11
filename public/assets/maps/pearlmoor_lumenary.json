@@ -639,5 +639,13 @@
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/dimglass-coast-a.mp3"
+  "music": "assets/audio/music/dimglass-coast-a.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "motes",
+        "density": 0.5
+      }
+    ]
+  }
 }

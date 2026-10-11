@@ -7,7 +7,7 @@
  */
 import Phaser from 'phaser';
 import type { CutsceneStep, ActorRef } from '@game/content/types';
-import type { Actor } from '@game/entities/Actor';
+import { Actor, STEP_MS } from '@game/entities/Actor';
 import type { Facing, EncounterTerrain } from '@game/data/world/types';
 import { DialogueBox } from '@game/ui/DialogueBox';
 import { StarterSelect } from '@game/ui/StarterSelect';
@@ -88,6 +88,8 @@ export interface CutsceneContext {
    * remaining steps, so the op belongs at the very end of a script.
    */
   startCinematic?(id: string): Promise<void>;
+  /** Call a falling-star streak across the sky (Ambience.starfall); resolves when it burns out. */
+  starfall?(opts: { from?: 'left' | 'right' }): Promise<void>;
 }
 
 const MUSIC_URL = (key: string): string => `assets/audio/music/${key}.mp3`;
@@ -97,11 +99,79 @@ function delay(scene: Phaser.Scene, ms: number): Promise<void> {
 }
 
 /** Step one tile and resolve when the move finishes (false if it was blocked). */
-function stepAsync(actor: Actor, facing: Facing, canEnter: (tx: number, ty: number) => boolean): Promise<boolean> {
+function stepAsync(
+  actor: Actor,
+  facing: Facing,
+  canEnter: (tx: number, ty: number) => boolean,
+  durationMs = STEP_MS,
+): Promise<boolean> {
   return new Promise((resolve) => {
-    const started = actor.step(facing, canEnter, () => resolve(true));
+    const started = actor.step(facing, canEnter, () => resolve(true), durationMs);
     if (!started) resolve(false);
   });
+}
+
+// ---- sprite acting (tweens on the sprite only; the actor's tile never changes) --
+
+/** The sprite's resting position on its tile (acting always returns it here). */
+function restOf(actor: Actor): { x: number; y: number } {
+  return Actor.tileToWorld(actor.tx, actor.ty);
+}
+
+/** A startled jump in place: `times` little hops of `height` px. */
+async function hopInPlace(scene: Phaser.Scene, actor: Actor, times: number, height: number): Promise<void> {
+  if (actor.isMoving) return;
+  const rest = restOf(actor);
+  for (let i = 0; i < times; i++) {
+    await new Promise<void>((resolve) =>
+      scene.tweens.addCounter({
+        from: 0,
+        to: 1,
+        duration: 220,
+        onUpdate: (tw) => {
+          const t = tw.getValue() ?? 0;
+          actor.sprite.y = rest.y - height * 4 * t * (1 - t);
+        },
+        onComplete: () => resolve(),
+      }),
+    );
+  }
+  actor.sprite.setPosition(rest.x, rest.y);
+}
+
+/** A shudder: the sprite jitters ±px on x for `ms`. */
+async function shakeActorSprite(scene: Phaser.Scene, actor: Actor, ms: number, px: number): Promise<void> {
+  if (actor.isMoving) return;
+  const rest = restOf(actor);
+  const start = scene.time.now;
+  await new Promise<void>((resolve) => {
+    const ev = scene.time.addEvent({
+      delay: 40,
+      loop: true,
+      callback: () => {
+        if (scene.time.now - start >= ms || !actor.sprite.active) {
+          ev.remove();
+          resolve();
+          return;
+        }
+        actor.sprite.x = rest.x + (actor.sprite.x > rest.x ? -px : px);
+      },
+    });
+  });
+  if (actor.sprite.active) actor.sprite.setPosition(rest.x, rest.y);
+}
+
+/** Look all around: step through the four facings `turns` times, then settle. */
+async function spinActor(scene: Phaser.Scene, actor: Actor, turns: number, ms: number, end?: Facing): Promise<void> {
+  const order: Facing[] = ['down', 'left', 'up', 'right'];
+  const from = actor.facing;
+  let i = order.indexOf(from);
+  for (let n = 0; n < turns * 4; n++) {
+    i = (i + 1) % 4;
+    actor.setFacing(order[i]);
+    await delay(scene, ms);
+  }
+  actor.setFacing(end ?? from);
 }
 
 /** Walk an actor toward a tile (x then y), stopping if blocked. */
@@ -110,7 +180,11 @@ async function walkTo(
   tx: number,
   ty: number,
   canEnter: (tx: number, ty: number) => boolean,
+  speed = 1,
 ): Promise<void> {
+  const ms = Math.round(STEP_MS / Math.max(0.25, Math.min(4, speed || 1)));
+  const scale = actor.sprite.anims.timeScale;
+  actor.sprite.anims.timeScale = STEP_MS / ms; // the stride keeps time with the pace
   for (let guard = 0; guard < 64; guard++) {
     if (actor.tx === tx && actor.ty === ty) break;
     let facing: Facing;
@@ -118,9 +192,10 @@ async function walkTo(
     else if (actor.tx > tx) facing = 'left';
     else if (actor.ty < ty) facing = 'down';
     else facing = 'up';
-    const ok = await stepAsync(actor, facing, canEnter);
+    const ok = await stepAsync(actor, facing, canEnter, ms);
     if (!ok) break;
   }
+  actor.sprite.anims.timeScale = scale;
   // Settle the walk cycle onto the idle pose. The continuous-run loop relies on the
   // per-frame `stopWalking()` in the world update, which is gated off while a scene
   // runs — so without this the actor jogs in place until the world loop resumes.
@@ -188,7 +263,28 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       return true;
     case 'move': {
       const actor = ctx.getActor(step.actor);
-      if (actor) await walkTo(actor, step.to.tx, step.to.ty, ctx.canEnter);
+      if (actor) await walkTo(actor, step.to.tx, step.to.ty, ctx.canEnter, step.speed);
+      return true;
+    }
+    case 'hop': {
+      const actor = ctx.getActor(step.actor);
+      if (actor) await hopInPlace(scene, actor, Math.max(1, step.times ?? 1), step.height ?? 5);
+      return true;
+    }
+    case 'shakeActor': {
+      const actor = ctx.getActor(step.actor);
+      if (actor) await shakeActorSprite(scene, actor, step.ms ?? 360, step.px ?? 1);
+      return true;
+    }
+    case 'spin': {
+      const actor = ctx.getActor(step.actor);
+      if (actor) await spinActor(scene, actor, Math.max(1, step.turns ?? 1), step.ms ?? 110, step.end);
+      return true;
+    }
+    case 'starfall': {
+      // Pure colour: no host / ambient motion off → a silent no-op.
+      const fall = ctx.starfall?.({ from: step.from }) ?? Promise.resolve();
+      if (step.wait) await fall;
       return true;
     }
     case 'face': {

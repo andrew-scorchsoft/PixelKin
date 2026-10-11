@@ -1,0 +1,21 @@
+{
+  "title": "SFX -- footstep on snow (crunch, alt)",
+  "_note": "Alternate snow step: the crunch grains in a lower order. Render with --tail 0.015.",
+  "era": "sfx",
+  "tempo": 280,
+  "time_signature": [
+    4,
+    4
+  ],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "crunch",
+      "voice": "noise",
+      "octave": 4,
+      "gain": 0.5,
+      "notes": "B3st@74 F3st@60"
+    }
+  ]
+}

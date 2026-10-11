@@ -1,0 +1,21 @@
+{
+  "title": "SFX -- footstep on snow (crunch)",
+  "_note": "Snow/ice: a crisp two-grain crunch \u2014 two very short bright noise ticks. Render with --tail 0.015.",
+  "era": "sfx",
+  "tempo": 280,
+  "time_signature": [
+    4,
+    4
+  ],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "crunch",
+      "voice": "noise",
+      "octave": 4,
+      "gain": 0.5,
+      "notes": "C#4st@78 G3st@62"
+    }
+  ]
+}

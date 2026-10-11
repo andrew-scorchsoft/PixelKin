@@ -2103,7 +2103,7 @@
     },
     {
       "id": "tree_a",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_b",
       "at": {
         "tx": 9,
         "ty": 12
@@ -2127,7 +2127,7 @@
     },
     {
       "id": "tree_c",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_b",
       "at": {
         "tx": 0,
         "ty": 4
@@ -2151,7 +2151,7 @@
     },
     {
       "id": "tree_e",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_c",
       "at": {
         "tx": 1,
         "ty": 11
@@ -2163,7 +2163,7 @@
     },
     {
       "id": "tree_f",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_b",
       "at": {
         "tx": 25,
         "ty": 7
@@ -2175,7 +2175,7 @@
     },
     {
       "id": "tree_g",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_c",
       "at": {
         "tx": 8,
         "ty": 0
@@ -2256,6 +2256,69 @@
       "h": 1,
       "solid": false,
       "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "wc_well",
+      "sprite": "tinderwick_well",
+      "at": {
+        "tx": 17,
+        "ty": 10
+      },
+      "w": 2,
+      "h": 3,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "wc_notice",
+      "sprite": "tinderwick_notice_board",
+      "at": {
+        "tx": 10,
+        "ty": 4
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "wc_woodpile",
+      "sprite": "tinderwick_woodpile",
+      "at": {
+        "tx": 10,
+        "ty": 17
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "wc_rowboat",
+      "sprite": "pearlmoor_rowboat",
+      "at": {
+        "tx": 6,
+        "ty": 20
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "wc_crabpots",
+      "sprite": "pearlmoor_crab_pots",
+      "at": {
+        "tx": 9,
+        "ty": 21
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "wc_netrack",
+      "sprite": "pearlmoor_net_rack",
+      "at": {
+        "tx": 12,
+        "ty": 20
+      },
+      "w": 2,
+      "h": 1
     }
   ],
   "warps": [
@@ -2600,7 +2663,7 @@
         "ty": 1
       },
       "facing": "down",
-      "sprite": "npc_lampwarden",
+      "sprite": "lamplighter",
       "movement": "static",
       "dialogue_ref": "script.gate_warden",
       "hidden_when_flag": "flag:has_starter"
@@ -2612,7 +2675,7 @@
         "ty": 2
       },
       "facing": "left",
-      "sprite": "npc_lampwarden",
+      "sprite": "lamplighter",
       "movement": "static",
       "dialogue_ref": "npc.gatewarden_after",
       "requires_flag": "flag:has_starter"
@@ -2636,7 +2699,7 @@
         "ty": 9
       },
       "facing": "down",
-      "sprite": "npc_shopkeeper",
+      "sprite": "market_trader",
       "movement": "look_around",
       "dialogue_ref": "npc.fair_piper",
       "requires_flag": "gleam:ember"
@@ -2648,7 +2711,7 @@
         "ty": 9
       },
       "facing": "up",
-      "sprite": "npc_child",
+      "sprite": "village_child",
       "movement": "wander",
       "dialogue_ref": "npc.fair_kid",
       "requires_flag": "gleam:ember"
@@ -2720,7 +2783,7 @@
         "ty": 10
       },
       "facing": "up",
-      "sprite": "npc_old_woman",
+      "sprite": "orchard_farmer",
       "movement": "static",
       "dialogue_ref": "script.peril_tinderwick_neighbour"
     },
@@ -2735,6 +2798,30 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_tinderwick_purse",
       "hidden_when_flag": "flag:picked_tinderwick_purse"
+    },
+    {
+      "id": "amb_tallowpup",
+      "at": {
+        "tx": 24,
+        "ty": 20
+      },
+      "facing": "down",
+      "sprite": "kin_10_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
+    },
+    {
+      "id": "amb_wickmoth",
+      "at": {
+        "tx": 5,
+        "ty": 12
+      },
+      "facing": "down",
+      "sprite": "kin_16_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
     }
   ],
   "gates": [],
@@ -2756,5 +2843,54 @@
       5,
       7
     ]
+  },
+  "ambience": {
+    "particles": [
+      {
+        "kind": "glowmotes",
+        "density": 0.35
+      },
+      {
+        "kind": "leaves",
+        "density": 0.25
+      }
+    ],
+    "birds": {
+      "kind": "gull",
+      "flocks": [
+        {
+          "tx": 20,
+          "ty": 20
+        }
+      ],
+      "flyover": true
+    },
+    "light_sources_extra": [
+      {
+        "at": {
+          "tx": 5,
+          "ty": 8
+        },
+        "radius": 11
+      },
+      {
+        "at": {
+          "tx": 19,
+          "ty": 8
+        },
+        "radius": 14
+      },
+      {
+        "at": {
+          "tx": 6,
+          "ty": 17
+        },
+        "radius": 10
+      }
+    ],
+    "bob_gids": [
+      120
+    ],
+    "sound_bed": "amb-surf"
   }
 }

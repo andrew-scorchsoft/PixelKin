@@ -1879,7 +1879,7 @@
   "objects": [
     {
       "id": "tree_a",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_c",
       "at": {
         "tx": 10,
         "ty": 6
@@ -1903,7 +1903,7 @@
     },
     {
       "id": "tree_c",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_c",
       "at": {
         "tx": 2,
         "ty": 11
@@ -2886,7 +2886,7 @@
         "ty": 29
       },
       "facing": "up",
-      "sprite": "npc_shopkeeper",
+      "sprite": "lamplighter",
       "movement": "static",
       "dialogue_ref": "script.give_wick",
       "requires_flag": "flag:dusk_begins",
@@ -2899,7 +2899,7 @@
         "ty": 29
       },
       "facing": "up",
-      "sprite": "npc_shopkeeper",
+      "sprite": "lamplighter",
       "movement": "look_around",
       "dialogue_ref": "npc.dimglass_witness",
       "requires_flag": "flag:has_beacon_wick"
@@ -2935,7 +2935,7 @@
         "ty": 3
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "fisher_woman",
       "movement": "look_around",
       "dialogue_ref": "npc.egg_hint_coast"
     },
@@ -2946,7 +2946,7 @@
         "ty": 30
       },
       "facing": "right",
-      "sprite": "npc_old_man",
+      "sprite": "old_salt",
       "movement": "static",
       "dialogue_ref": "npc.egg_hint_flats"
     },
@@ -2995,6 +2995,18 @@
       "movement": "look_around",
       "dialogue_ref": "script.wink_trade",
       "requires_flag": "flag:has_starter"
+    },
+    {
+      "id": "amb_brinelet",
+      "at": {
+        "tx": 12,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "kin_26_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
     }
   ],
   "gates": [
@@ -3010,5 +3022,31 @@
       }
     }
   ],
-  "music": "assets/audio/music/dimglass-coast-a.mp3"
+  "music": "assets/audio/music/dimglass-coast-a.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "spray",
+        "density": 0.8
+      }
+    ],
+    "starfall": {
+      "min_s": 40,
+      "max_s": 90
+    },
+    "birds": {
+      "kind": "gull",
+      "flocks": [
+        {
+          "tx": 12,
+          "ty": 7
+        }
+      ],
+      "flyover": true
+    },
+    "bob_gids": [
+      120
+    ],
+    "sound_bed": "amb-surf"
+  }
 }

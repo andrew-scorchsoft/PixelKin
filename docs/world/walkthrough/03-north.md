@@ -253,6 +253,13 @@ kind route · region north · **enter** from `galehigh_terraces` **→ exit** to
   hold Updraft), a dead-end you must choose to fly to. Tag it hard.
 - **Windward→Galehigh drop shortcut** — **[MUST-DO]** to *trigger* (it sets the flag just by
   reaching the crags); using it is optional convenience.
+- **The Stair as a journey (world-craft, 2026-10)** — optional colour, never gating: the
+  **cairn-count** (add a stone at the foot, kettle, halfway and wind-gap cairns —
+  `flag:windward_cairn_*`; the summit cairn notices all four → `flag:windward_cairns_all`), the
+  halfway **climbers' shelter** (a sit, not a heal), wind-shrines, prayer-flag lines over the lane,
+  and the head-shelf **spyglass** that shows a star falling towards the mountain
+  (`flag:windward_spyglass_seen`). Scripts in `content/regions/north.ts`; placements in
+  `tools/maps/worldcraft/north.py`.
 
 ### 5. Don't-miss callouts
 
@@ -444,6 +451,10 @@ deep-ice spurs), **NOT** the town or Lumenary · **Gleam:** Frost (Ysolde Frost,
   battle); Star-tender Fenn (C3); Wren (A4 hard battle); Aurora-watch festival cutscene +
   flag-gated NPCs. Dialogue/script refs: `npc.ysolde_frost`, `cutscene.cor_appears`,
   `cutscene.fenn_shared_past`, `trainer.wren_pale_vault`, `cutscene.pale_vault_aurora_watch`.
+- **Story-depth pass (2026-10):** Còr holds a cinder and bows (N-1, with a silent Hollowing
+  acolyte on the shelf); Fenn says "three of us on that ladder" — the third stays unnamed until
+  dawn (N-2); Wren's wobble is acted and names Mum's quiet village, then walks off (N-3); the
+  Kite-rising ends on one live fall towards the mountain while the music plays on (N-4).
 
 ---
 

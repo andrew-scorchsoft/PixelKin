@@ -601,5 +601,23 @@
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/tinderwick-b.mp3"
+  "music": "assets/audio/music/tinderwick-b.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "dust",
+        "density": 0.3
+      },
+      {
+        "kind": "embers",
+        "density": 0.25,
+        "area": {
+          "tx": 1,
+          "ty": 1,
+          "w": 4,
+          "h": 2
+        }
+      }
+    ]
+  }
 }

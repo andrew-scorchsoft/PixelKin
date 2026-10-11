@@ -1375,7 +1375,7 @@
     },
     {
       "id": "crown_0",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_c",
       "at": {
         "tx": 5,
         "ty": 2
@@ -1387,7 +1387,7 @@
     },
     {
       "id": "crown_1",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_b",
       "at": {
         "tx": 17,
         "ty": 14
@@ -1519,12 +1519,48 @@
         "ty": 11
       },
       "facing": "down",
-      "sprite": "npc_man",
+      "sprite": "pass_walker",
       "movement": "look_around",
       "dialogue_ref": "npc.lane_fenn_hint",
       "hidden_when_flag": "flag:has_starter"
+    },
+    {
+      "id": "amb_wickmoth",
+      "at": {
+        "tx": 4,
+        "ty": 3
+      },
+      "facing": "down",
+      "sprite": "kin_16_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 2
+    },
+    {
+      "id": "amb_tallowpup",
+      "at": {
+        "tx": 19,
+        "ty": 9
+      },
+      "facing": "down",
+      "sprite": "kin_10_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 2
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/tinderwick-a.mp3"
+  "music": "assets/audio/music/tinderwick-a.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "glowmotes",
+        "density": 0.6
+      }
+    ],
+    "starfall": {
+      "min_s": 25,
+      "max_s": 55
+    }
+  }
 }

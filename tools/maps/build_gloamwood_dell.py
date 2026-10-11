@@ -105,7 +105,7 @@ m["warps"] += [
 # appears once Georgina has ASKED (q_east_georgina_met), gone once carried home.
 m["npcs"] += [
     {"id": "lost_kitten", "at": {"tx": 3, "ty": 9}, "facing": "down",
-     "sprite": "lost_kitten", "movement": "look_around",
+     "sprite": "kin_164_overworld", "movement": "look_around",
      "dialogue_ref": "script.georgina_kitten_found",
      "requires_flag": "flag:q_east_georgina_met",
      "hidden_when_flag": "flag:q_east_georgina_kitten"},

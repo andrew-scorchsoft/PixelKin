@@ -28,6 +28,15 @@ export interface MenuConfig {
   sfx?: Sfx;
   /** Pin to camera (HUD/modal). Default true. */
   fixed?: boolean;
+  /**
+   * Window the list: show at most this many rows at once and scroll as the
+   * cursor moves, with ▲/▼ hints when rows hide above/below. Omit for the
+   * classic all-rows-visible menu (every existing caller). For lists that
+   * outgrow the 160px screen (the settings list, the rest-point list).
+   */
+  maxVisible?: number;
+  /** Row the cursor starts on (clamped; skips disabled rows). Default 0. */
+  initialIndex?: number;
 }
 
 const ROW_H = 12;
@@ -39,6 +48,11 @@ export class Menu {
   private readonly cursor: Cursor;
   private readonly rows: Phaser.GameObjects.Text[] = [];
   private index = 0;
+  /** First visible row when windowed (`maxVisible`). */
+  private top = 0;
+  private readonly visibleRows: number;
+  private moreUp?: Phaser.GameObjects.Text;
+  private moreDown?: Phaser.GameObjects.Text;
 
   constructor(
     private readonly scene: Phaser.Scene,
@@ -48,7 +62,8 @@ export class Menu {
     const charW = 8;
     const longest = Math.max(...options.map((o) => o.label.length));
     const width = config.width ?? PAD * 2 + CURSOR_GAP + longest * charW;
-    const height = PAD * 2 + options.length * ROW_H;
+    this.visibleRows = Math.max(1, Math.min(options.length, config.maxVisible ?? options.length));
+    const height = PAD * 2 + this.visibleRows * ROW_H;
     this.panel = new Panel(scene, config.x, config.y, width, height);
 
     options.forEach((opt, i) => {
@@ -63,6 +78,17 @@ export class Menu {
       this.rows.push(t);
     });
 
+    if (this.visibleRows < options.length) {
+      // Scroll hints at the panel's right edge (the caret glyph, flipped for up).
+      // Centred origin so the up hint is a clean 180° turn of the same glyph.
+      this.moreUp = makeText(scene, width - PAD - 2, PAD, '▼', theme.text.accent)
+        .setOrigin(0.5)
+        .setAngle(180);
+      this.moreDown = makeText(scene, width - PAD - 2, height - PAD, '▼', theme.text.accent).setOrigin(0.5);
+      this.panel.add(this.moreUp);
+      this.panel.add(this.moreDown);
+    }
+
     this.cursor = new Cursor(scene);
     this.panel.add(this.cursor.sprite);
     // re-add so cursor renders above rows within the container
@@ -72,7 +98,8 @@ export class Menu {
       this.panel.fixedToCamera();
       this.cursor.setScrollFactor0();
     }
-    this.index = this.firstEnabled(0, 1);
+    const start = Phaser.Math.Clamp(config.initialIndex ?? 0, 0, Math.max(0, options.length - 1));
+    this.index = this.firstEnabled(start, 1);
     this.placeCursor();
   }
 
@@ -86,8 +113,18 @@ export class Menu {
   }
 
   private placeCursor(): void {
+    // Keep the cursor's row inside the visible window (a no-op when unwindowed).
+    if (this.index < this.top) this.top = this.index;
+    else if (this.index >= this.top + this.visibleRows) this.top = this.index - this.visibleRows + 1;
+    this.rows.forEach((row, i) => {
+      const slot = i - this.top;
+      row.setVisible(slot >= 0 && slot < this.visibleRows);
+      row.setY(PAD + slot * ROW_H);
+    });
+    this.moreUp?.setVisible(this.top > 0);
+    this.moreDown?.setVisible(this.top + this.visibleRows < this.options.length);
     // Cursor is a child of the panel container → use local coords.
-    this.cursor.moveTo(PAD, PAD + this.index * ROW_H + 4);
+    this.cursor.moveTo(PAD, PAD + (this.index - this.top) * ROW_H + 4);
   }
 
   private move(dir: number): void {

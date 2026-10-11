@@ -1,6 +1,6 @@
 ---
 name: generate-sprite-sheet
-description: Generate consistent, standard-compliant PixelKin sprites and sprite sheets (creature battle/icon/overworld/portrait art, NPC walk sheets, battle effects, world tiles) from original briefs. Uses Google Nano Banana Pro by default (best for transparency and reference fidelity), with OpenAI gpt-image-2 as a selectable fallback, via the generate-image skill — then deterministically snaps every result to the exact canvas size and anchor defined in docs/art-style.md. Use whenever the user wants a creature sprite, character sprite, walk sheet, battle effect, tile, icon, or portrait for the game.
+description: Generate consistent, standard-compliant PixelKin sprites and sprite sheets (creature battle/icon/overworld/portrait art, NPC walk sheets, battle effects, world tiles) from original briefs. Uses Google Nano Banana Pro by default (best for transparency and reference fidelity), with OpenAI gpt-image-2.5-sunburst (native alpha; the best choice for HUMAN walk sheets) via --provider openai, through the generate-image skill — then deterministically snaps every result to the exact canvas size and anchor defined in docs/art-style.md. Use whenever the user wants a creature sprite, character sprite, walk sheet, battle effect, tile, icon, or portrait for the game.
 ---
 
 # generate-sprite-sheet
@@ -44,22 +44,47 @@ Do **not** use it for: UI chrome you can build in CSS/HTML, the logo (already in
 
 ## Image model
 
-**Default: Google Nano Banana Pro** (`gemini-3-pro-image-preview`). It renders
-on a magenta field that the generate-image skill keys out to a transparent PNG,
-and it's the most reliable here — it handles transparency cleanly and stays
-faithful to a **reference image** (important for matching the logo creatures).
+**Two good providers; pick by asset (2026-10):**
 
-**Fallback: OpenAI `gpt-image-2`** (`--provider openai`). Two caveats made it
-the fallback rather than the default:
+- **OpenAI `gpt-image-2.5-sunburst`** (`--provider openai`) — the house pick for
+  **human walk sheets, action poses and characters**. Tested side by side against
+  gpt-image-2 and 2.5-flare on the same brief, it draws the strongest 16-bit chibi
+  read: rounded volumes, a real stride in the walk frames, a true back-of-head up
+  row. It supports **native transparent backgrounds** (`background=transparent`),
+  so there is **no magenta chroma key** on this path any more. `2.5-flare` is the
+  faster, lighter variant (fine for quick drafts, visibly less detailed).
+- **Google Nano Banana Pro** (`gemini-3-pro-image-preview`, the script default) —
+  strong reference fidelity for **creatures** matched to the logo art. It has no
+  native alpha: it renders on magenta and the skill keys it out.
 
-- gpt-image-2 has **no native transparent mode** (only the older gpt-image-1
-  does), so the skill renders it on a flat **magenta `#FF00FF`** field and
-  chroma-keys it out itself.
-- its **safety filter can reject benign prompts** (it blocked plain
-  cute-creature briefs in testing). If you hit a `400 rejected by the safety
-  system`, that's why — switch to the default Google path.
+Only a pinned `OPENAI_IMAGE_MODEL=gpt-image-2` (no alpha) still falls back to the
+magenta chroma-key path; the script detects this automatically. If OpenAI's safety
+filter rejects a benign brief (`400 rejected by the safety system`), rephrase or
+switch provider.
 
-See docs/art-style.md §6 for the transparency pipeline.
+### The human walk-sheet standard (2026-10 — binding)
+
+```bash
+./venv/bin/python .claude/skills/generate-sprite-sheet/scripts/generate_sprite.py \
+  --type human-overworld --provider openai --resample box --keep-temp \
+  --reference assets/trainers/<existing or a cast-mate>.png \
+  --subject "<who they are, 2-3 signature colours, one prop>" --output <TEMP>.png
+./venv/bin/python .claude/skills/generate-sprite-sheet/scripts/check_walk_facing.py <TEMP>.png --gif <TEMP>.gif
+```
+
+- **Proportions:** `fill 0.88` → a ~28px figure in the 32px cell (~1.75 tiles tall,
+  the classic 16-bit RPG ratio). The old 0.7 made every character thin and murky.
+- **One scale per sheet:** `snap_sheet` scales every frame by one shared factor, so a
+  stride or a swung lantern never shrinks that frame (no pulsing while walking).
+- **Hard alpha:** human sheets are snapped to 0/255 alpha (no pale halo on the dark world).
+- **`--resample box`** keeps crisp clusters at 32px (lanczos softens, nearest jags).
+- **Facing gate (mandatory):** a sheet can look right as a grid and still break when the
+  walk CYCLES — one left-row cell facing right or forward. `check_walk_facing.py` must
+  PASS (exit 0), and you must eyeball each row's four frames cycling (the GIF) and confirm
+  the up row is the back of the head in all four cells (that test is warn-only — hair
+  colour fools pixel checks). The right row is auto-mirrored from the left, so a bad left
+  cell is a bad right cell too: re-roll, don't hand-patch.
+- Generate to a TEMP path; copy over a master only after both gates pass.
 
 ## Prerequisites
 
@@ -77,11 +102,11 @@ For each asset the script:
 1. Builds a prompt = shared **style preamble** + **originality clause** + the
    locked **per-type template** (`sprite-specs.json`) + your **subject** (plus a
    magenta chroma-key preamble only on the OpenAI path).
-2. Calls `generate-image`. **Default Google Nano Banana Pro** returns native
-   transparency; the OpenAI path renders on flat magenta and **keys it out**.
+2. Calls `generate-image`. The OpenAI 2.5 path returns **native alpha**; the Google
+   path renders on flat magenta and the skill **keys it out**.
 3. **Snaps** it to the type's exact pixel canvas: alpha-trim → scale to the fill
    fraction → composite at the type's anchor. Multi-frame sheets are aligned
-   **per cell**, so every frame shares a baseline (feet line up).
+   **per cell** with ONE shared scale, so every frame shares a baseline and a size.
 4. Saves a transparent **PNG**, and for creatures writes/updates `metadata.json`.
 
 ## How to call it
@@ -356,7 +381,7 @@ object** with real shape, then slice only for placement (art-style §14b):
 ```bash
 GI=.claude/skills/generate-image/scripts/generate.py
 # Transparent objects: DO NOT force --provider google. Omit --provider so it
-# routes to OpenAI gpt-image-1, which returns a REAL alpha channel natively
+# routes to OpenAI gpt-image-2.5-sunburst, which returns a REAL alpha channel natively
 # (clean, deterministic). Google has no native alpha — it chroma-keys a magenta
 # fill, and the model sometimes ignores that and bakes an OPAQUE background
 # (white/grey/checkerboard) that survives the key and ships as a dirty box.

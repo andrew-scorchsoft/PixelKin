@@ -428,7 +428,7 @@
         "ty": 2
       },
       "facing": "down",
-      "sprite": "npc_shopkeeper",
+      "sprite": "market_trader",
       "movement": "static",
       "dialogue_ref": "script.shop_kit_galehigh",
       "hidden_when_flag": "flag:galehigh_kit"
@@ -440,7 +440,7 @@
         "ty": 2
       },
       "facing": "down",
-      "sprite": "npc_shopkeeper",
+      "sprite": "market_trader",
       "movement": "static",
       "dialogue_ref": "script.shop_galehigh",
       "requires_flag": "flag:galehigh_kit"

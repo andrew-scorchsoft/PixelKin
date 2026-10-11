@@ -7,6 +7,7 @@
 import Phaser from 'phaser';
 import {
   Actor,
+  actionTextureKey,
   type ActorFrames,
   ensurePlaceholderCharacter,
   HUMAN_WALK_FRAMES,
@@ -78,6 +79,61 @@ const SPRITE_SHEETS: Record<string, string> = {
   npc_girl: 'npc_girl',
   // 'npc_child' is the long-standing generic-kid key; point it at the boy sheet.
   npc_child: 'npc_boy',
+  // The REGIONAL CAST (2026-10): townsfolk dressed for where they live, so a
+  // miner reads as a miner and the Quay looks like a harbour. Each key falls
+  // back to a generic archetype (REGIONAL_FALLBACK) until its sheet is packed.
+  orchard_farmer: 'orchard_farmer',
+  fisher_man: 'fisher_man',
+  fisher_woman: 'fisher_woman',
+  fen_folk: 'fen_folk',
+  hollow_gardener: 'hollow_gardener',
+  miner_man: 'miner_man',
+  miner_woman: 'miner_woman',
+  kite_weaver: 'kite_weaver',
+  frost_herder: 'frost_herder',
+  pass_walker: 'pass_walker',
+  sun_keeper: 'sun_keeper',
+  star_watcher: 'star_watcher',
+  hollowing_acolyte: 'hollowing_acolyte',
+  old_salt: 'old_salt',
+  village_child: 'village_child',
+  // Georgina's cottage cats (Smudge, Other Smudge…) — ordinary house cats.
+  cottage_cat: 'cottage_cat',
+  lamplighter: 'lamplighter',
+  market_trader: 'market_trader',
+  innkeeper: 'innkeeper',
+  road_courier: 'road_courier',
+  hollowing_elder: 'hollowing_elder',
+  kite_child: 'kite_child',
+};
+
+/**
+ * A regional-cast key whose own sheet isn't packed yet borrows a generic
+ * archetype's sheet (never the coloured-box placeholder — a half-landed art
+ * pass must not put boxes in towns).
+ */
+const REGIONAL_FALLBACK: Record<string, string> = {
+  orchard_farmer: 'npc_old_man',
+  fisher_man: 'npc_man',
+  fisher_woman: 'npc_woman',
+  fen_folk: 'npc_woman',
+  hollow_gardener: 'npc_woman',
+  miner_man: 'npc_man',
+  miner_woman: 'npc_woman',
+  kite_weaver: 'npc_woman',
+  frost_herder: 'npc_man',
+  pass_walker: 'npc_woman',
+  sun_keeper: 'npc_man',
+  star_watcher: 'npc_woman',
+  hollowing_acolyte: 'npc_lampwarden',
+  old_salt: 'npc_old_man',
+  village_child: 'npc_girl',
+  lamplighter: 'npc_man',
+  market_trader: 'npc_woman',
+  innkeeper: 'npc_shopkeeper',
+  road_courier: 'npc_man',
+  hollowing_elder: 'npc_old_man',
+  kite_child: 'npc_girl',
 };
 
 /** Placeholder body colours so distinct NPCs read apart before real walk-sheets. */
@@ -168,7 +224,7 @@ export class Npc extends Actor {
   private static resolveSheet(
     scene: Phaser.Scene,
     placement: NpcPlacement,
-  ): [string, ActorFrames?] {
+  ): [string, ActorFrames?, string?] {
     if (placement.sprite === 'item_cache') {
       ensureItemCacheSprite(scene, 'npc_item_cache');
       return ['npc_item_cache'];
@@ -181,11 +237,26 @@ export class Npc extends Actor {
       if (scene.textures.exists(key)) return [key, STATIC_FRAMES];
     }
     const sheet = SPRITE_SHEETS[placement.sprite];
-    if (sheet && scene.textures.exists(sheet)) return [sheet, HUMAN_WALK_FRAMES];
+    if (sheet && scene.textures.exists(sheet)) return [sheet, HUMAN_WALK_FRAMES, Npc.actionsFor(scene, sheet)];
+    const fallback = REGIONAL_FALLBACK[placement.sprite];
+    if (fallback && scene.textures.exists(fallback)) {
+      return [fallback, HUMAN_WALK_FRAMES, Npc.actionsFor(scene, fallback)];
+    }
     const color = SPRITE_COLORS[placement.sprite] ?? COLORS.fire;
     const key = `npc_placeholder_${placement.sprite}`;
     ensurePlaceholderCharacter(scene, key, color);
     return [key];
+  }
+
+  /**
+   * The layer-3 action texture (`<sheet>_actions`) for a walk sheet, when one was
+   * packed + loaded — so a cutscene's `{op:'action', actor:'<npc id>', …}` can
+   * make a story NPC bow, laugh or kneel (docs/art-style.md §A2). Undefined →
+   * `playAction` is a no-op for this NPC.
+   */
+  private static actionsFor(scene: Phaser.Scene, sheet: string): string | undefined {
+    const key = actionTextureKey(sheet);
+    return scene.textures.exists(key) ? key : undefined;
   }
 
   get id(): string {

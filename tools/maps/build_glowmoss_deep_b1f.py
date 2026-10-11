@@ -114,8 +114,9 @@ m = {
         # the Spore Grotto's true mouth (graph.ts `to_grotto`) — a floor down,
         # so the spur's rare bed is EARNED by the descent.
         {"id": "to_grotto", "at": {"tx": GROTTO_MOUTH[0], "ty": GROTTO_MOUTH[1]},
-         "trigger": "interact", "to_map": "spore_grotto", "to": {"tx": 5, "ty": 8},
-         "facing": "down", "requires_ability": "glimmerstep", "transition": "door"},
+         "trigger": "step_on", "to_map": "spore_grotto", "to": {"tx": 5, "ty": 8},
+         "facing": "down", "requires_ability": "glimmerstep", "transition": "door",
+         "blocked_ref": "door.locked_glimmerstep"},
     ],
     "triggers": [
         {"id": "sign_grotto", "kind": "sign",

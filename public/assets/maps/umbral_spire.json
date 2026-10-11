@@ -249,7 +249,7 @@
         "ty": 10
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "hollowing_acolyte",
       "movement": "static",
       "dialogue_ref": "script.hollowing_acolyte_a",
       "sight_range": 5,
@@ -263,7 +263,7 @@
         "ty": 10
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "hollowing_acolyte",
       "movement": "look_around",
       "dialogue_ref": "npc.hollowing_acolyte_a_after",
       "requires_flag": "flag:hollowing_acolyte_a_beaten"
@@ -3008,5 +3008,26 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "glowmotes",
+        "density": 0.45
+      },
+      {
+        "kind": "dust",
+        "density": 0.3
+      }
+    ],
+    "mist": {
+      "color": "#0d0b1c",
+      "alpha": 0.22,
+      "speed": 3
+    },
+    "tint": {
+      "color": "#08061a",
+      "alpha": 0.16
+    }
+  }
 }

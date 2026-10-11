@@ -142,7 +142,7 @@
         "ty": 6
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "miner_woman",
       "movement": "static",
       "dialogue_ref": "script.gallery_miner_b",
       "sight_range": 4,
@@ -156,7 +156,7 @@
         "ty": 6
       },
       "facing": "down",
-      "sprite": "npc_woman",
+      "sprite": "miner_woman",
       "movement": "look_around",
       "dialogue_ref": "npc.gallery_miner_b_after",
       "requires_flag": "flag:gallery_miner_b_beaten"
@@ -1630,5 +1630,18 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "ash",
+        "density": 0.4
+      },
+      {
+        "kind": "embers",
+        "density": 0.2
+      }
+    ],
+    "sound_bed": "amb-drips"
+  }
 }

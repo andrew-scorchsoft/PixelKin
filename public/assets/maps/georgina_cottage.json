@@ -587,7 +587,7 @@
       "facing": "down",
       "sprite": "georgina",
       "movement": "static",
-      "dialogue_ref": "script.georgina_intro",
+      "dialogue_ref": "script.georgina_meet",
       "hidden_when_flag": "flag:q_east_georgina_met"
     },
     {

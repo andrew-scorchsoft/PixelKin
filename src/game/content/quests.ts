@@ -233,6 +233,16 @@ export const QUESTS: QuestRegistry = [
     stage_flags: ['flag:q_west_chart_1', 'flag:q_west_chart_2', 'flag:q_west_chart_3'],
     done_flag: 'flag:q_west_chart_done',
   },
+  {
+    id: 'x4_pass_walkers_map',
+    name: "The Pass-walker's Map",
+    region: 'west',
+    giver: 'the pass-walker',
+    blurb: 'The pass-walker marks every fallen star she hears of. Stand by another fall — a scorch, a cold cinder — then find her at Nightreach and spread the map.',
+    start_flag: 'flag:q_west_passmap',
+    stage_flags: ['flag:passmap_3'],
+    done_flag: 'flag:q_west_passmap_done',
+  },
 
   // ===== CENTRAL =============================================================
   {

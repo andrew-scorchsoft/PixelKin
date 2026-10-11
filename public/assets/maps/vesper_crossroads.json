@@ -1123,7 +1123,7 @@
   "objects": [
     {
       "id": "tree_a",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_c",
       "at": {
         "tx": 2,
         "ty": 2
@@ -1135,7 +1135,7 @@
     },
     {
       "id": "tree_c",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_c",
       "at": {
         "tx": 3,
         "ty": 12
@@ -1851,7 +1851,7 @@
         "ty": 11
       },
       "facing": "up",
-      "sprite": "npc_boy",
+      "sprite": "kite_child",
       "movement": "static",
       "dialogue_ref": "script.round_kite_deliver",
       "requires_flag": "flag:q_round_kite_taken",
@@ -1864,7 +1864,7 @@
         "ty": 11
       },
       "facing": "up",
-      "sprite": "npc_boy",
+      "sprite": "kite_child",
       "movement": "wander",
       "dialogue_ref": "npc.waystone_kid_kite",
       "requires_flag": "flag:q_round_kite",
@@ -1915,7 +1915,7 @@
         "ty": 7
       },
       "facing": "right",
-      "sprite": "npc_boy",
+      "sprite": "kite_child",
       "movement": "static",
       "dialogue_ref": "script.lampling_trail_start",
       "requires_flag": "flag:hub_unlocked",
@@ -1928,7 +1928,7 @@
         "ty": 7
       },
       "facing": "right",
-      "sprite": "npc_boy",
+      "sprite": "kite_child",
       "movement": "static",
       "dialogue_ref": "npc.waystone_kid_trail",
       "requires_flag": "flag:q_central_trail",
@@ -1941,7 +1941,7 @@
         "ty": 7
       },
       "facing": "right",
-      "sprite": "npc_boy",
+      "sprite": "kite_child",
       "movement": "wander",
       "dialogue_ref": "npc.waystone_kid_trail_done",
       "requires_flag": "flag:q_central_trail_done"
@@ -1979,7 +1979,7 @@
         "ty": 9
       },
       "facing": "left",
-      "sprite": "npc_old_woman",
+      "sprite": "star_watcher",
       "movement": "look_around",
       "dialogue_ref": "npc.egg_hint_crossroads"
     },
@@ -2007,5 +2007,30 @@
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/tinderwick-a.mp3"
+  "music": "assets/audio/music/tinderwick-a.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "glowmotes",
+        "density": 0.3
+      }
+    ],
+    "light_sources_extra": [
+      {
+        "at": {
+          "tx": 12,
+          "ty": 9
+        },
+        "radius": 18,
+        "color": "#9fe7ff"
+      },
+      {
+        "at": {
+          "tx": 15,
+          "ty": 15
+        },
+        "radius": 12
+      }
+    ]
+  }
 }

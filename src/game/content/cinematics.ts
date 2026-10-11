@@ -77,7 +77,7 @@ export const COLDOPEN_SOUTH: CinematicScript = {
       fx: 'flash',
       music: null,
       lines: [
-        'Then, one by one, the lights began to go out.',
+        'Then, one by one, the lights began to go out. Some only dimmed. Some, going out, fell.',
         'They call it the Long Dusk: a night that fell, and will not lift.',
       ],
     },
@@ -137,7 +137,7 @@ export const ENDING_CREDITS: CinematicScript = {
       panel: PANEL('dawnbreak-03'),
       lines: [
         'Galehigh flew every kite it owned with no flame on a single tail — daylight carried them instead. On the Pale Vault ice, the silent watch finally talked, all of them at once, about nothing.',
-        'The Solarium\'s drowned garden steamed gold in the sun, forty years of stored warmth giving way to the real thing. And at Nightreach the watchers slept — actually slept — under a sky that could mind itself for one morning.',
+        'The Solarium\'s drowned garden steamed gold in the sun, its long-stored warmth giving way to the real thing. And at Nightreach the watchers slept — actually slept — under a sky that could mind itself for one morning.',
       ],
     },
     {

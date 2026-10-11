@@ -1,0 +1,21 @@
+{
+  "title": "SFX -- footstep on grass (soft tap, alt)",
+  "_note": "Alternate grass step, a semitone darker and a touch softer so repeated steps don't machine-gun. Render with --tail 0.02.",
+  "era": "sfx",
+  "tempo": 280,
+  "time_signature": [
+    4,
+    4
+  ],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "step",
+      "voice": "noise",
+      "octave": 3,
+      "gain": 0.6,
+      "notes": "D#3~B2s@66"
+    }
+  ]
+}

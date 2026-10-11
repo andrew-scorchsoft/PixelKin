@@ -14,7 +14,7 @@ encounter zones in the 64-66 band (DAWNWATCHER #129 and HELITHORN #119 very
 rare — the register ledger's western pair) · one starglass cache · NO rest
 point.
 
-Host edit (add_vigil_scars.py): sunvault_climb_ii (27,2) `to_vigil_sun`,
+Host edit (add_hand_placed.py VIGIL_SCARS): sunvault_climb_ii (27,2) `to_vigil_sun`,
 `requires_flag: flag:vigil_reading_4`. Reuse: sunvault-climb-a loop +
 backdrops (the host's keys).
 
@@ -132,16 +132,16 @@ m: dict = {
     "npcs": [
         # DAME SOLENNE — trial -> kept -> post-crown re-runnable bout
         {"id": "solenne_trial", "at": {"tx": KEEPER_AT[0], "ty": KEEPER_AT[1]},
-         "facing": "down", "sprite": "npc_old_woman", "movement": "static",
+         "facing": "down", "sprite": "sun_keeper", "movement": "static",
          "dialogue_ref": "script.vigil_sunfall",
          "hidden_when_flag": "flag:vigil_4_kept"},
         {"id": "solenne_kept", "at": {"tx": KEEPER_AT[0], "ty": KEEPER_AT[1]},
-         "facing": "down", "sprite": "npc_old_woman", "movement": "static",
+         "facing": "down", "sprite": "sun_keeper", "movement": "static",
          "dialogue_ref": "npc.vigil_sunfall_kept",
          "requires_flag": "flag:vigil_4_kept",
          "hidden_when_flag": "flag:starfall_crown"},
         {"id": "solenne_bout", "at": {"tx": KEEPER_AT[0], "ty": KEEPER_AT[1]},
-         "facing": "down", "sprite": "npc_old_woman", "movement": "static",
+         "facing": "down", "sprite": "sun_keeper", "movement": "static",
          "dialogue_ref": "script.vigil_sunfall_again",
          "requires_flag": "flag:starfall_crown"},
     ],
@@ -183,6 +183,21 @@ for (x, y, name) in [(8, 9, "flowers"), (14, 9, "g_daisy"), (4, 8, "flowerbed_a"
     i = y * W + x
     if not (cliff[i] or ruin[i] or pool[i] or tuft[i]) and (x, y) not in avoid and deco[i] == 0:
         deco[i] = gid(name)
+
+# ---- WORLD-CRAFT dressing (2026-10; tools/maps/vigil_dress.py) -----------------------
+# Was 69% bare gold (audit_visual warn). The Sunvault's own kit, reused: a lit
+# brazier keeping the fall's warmth at the court's corner, a sun-mirror bloomed
+# open, a standing column, the keeper's camp, two warm-fall scars and a drift of
+# gold blooms. The lane (cols 10-13) and the trial band stay clear.
+from vigil_dress import dress, prop, camp, scar  # noqa: E402
+dress(m, deco, W, H, rng, blocked=[cliff, pool, tuft],
+      props=[prop("brazier_w", "solarium_brazier_lit", (3, 7), 2, 3, overhang=1),
+             prop("sun_mirror", "sunvault_mirror_alight", (16, 8), 1, 2, overhang=1),
+             prop("court_col_s", "solarium_column", (7, 7), 1, 3, overhang=1, walk_under=True),
+             camp("keeper_camp", (5, 14)),
+             scar("warm_scar_a", (9, 13)), scar("warm_scar_b", (20, 12))],
+      drift=["flowerbed_a", "flowerbed_b", "g_pebble", "g_daisy"],
+      density=0.30, avoid=avoid | {(x, y) for x in range(10, 14) for y in range(7, 16)})
 
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},

@@ -1,0 +1,21 @@
+{
+  "title": "SFX -- tall-grass rustle",
+  "_note": "Wading through tall grass: a quiet, airy high-noise brush that sweeps down. Plays on EVERY grass step, so it stays soft and tiny. Render to .wav with --tail 0.02, then ffmpeg -af volume=-8dB -> .mp3 (it sits under the footstep on every grass step).",
+  "era": "sfx",
+  "tempo": 220,
+  "time_signature": [
+    4,
+    4
+  ],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "brush",
+      "voice": "noise",
+      "octave": 5,
+      "gain": 0.4,
+      "notes": "D5~G4s@56"
+    }
+  ]
+}

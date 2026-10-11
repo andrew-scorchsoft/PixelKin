@@ -129,7 +129,14 @@ without touching game logic.
 3. **Music** — feed the area's music brief to the `generate-midi` skill; write the mp3 loop
    to `public/assets/audio/music/` and key it to the map's `music` field.
 4. **Map JSON** — author `public/assets/maps/<area>.json` to the `MapDefinition` schema
-   (layers, warps, triggers, encounters, npcs, gates).
+   (layers, warps, triggers, encounters, npcs, gates). Maps are GENERATED, never hand-edited:
+   a builder (`tools/maps/build_<area>.py`, the `build-map` skill) writes the map, then four
+   id-keyed runners layer on what was added later, in this order —
+   `add_hand_placed.py` (quest/postgame placements, day-form zones, zone retunes; data in
+   `hand_placed_data.py`) → `add_peril_thread.py` → `add_world_craft.py` (per-region
+   ambience/cast/props) → `vary_trees.py`. A change goes in the builder or runner that owns
+   it; `python3 tools/maps/check_rebuild.py` (~1 min) re-runs the whole pipeline in a scratch
+   worktree and fails on any map it doesn't reproduce exactly.
 5. **Register** the map in [`../../src/game/data/world/maps.ts`](../../src/game/data/world/maps.ts)
    and wire its connections into the world graph in
    [`graph.ts`](../../src/game/data/world/graph.ts).

@@ -377,7 +377,7 @@ export const ITEMS: ItemRegistry = {
   first_light_phial: {
     id: 'first_light_phial',
     name: 'First-Light Phial',
-    desc: 'One cupful of daylight, drawn the morning before the Long Dusk fell and kept forty years against a day worth spending it on. It beats faintly through the glass.',
+    desc: 'One cupful of daylight, drawn the morning before the Solarium flooded and kept forty years against a day worth spending it on. It beats faintly through the glass.',
     category: 'key',
   },
 
@@ -443,7 +443,7 @@ export const ITEMS: ItemRegistry = {
   starglass_shard: {
     id: 'starglass_shard',
     name: 'Starglass Shard',
-    desc: 'A sliver of sky-fallen glass that remembers a constellation. Collectors pay handsomely.',
+    desc: 'A warm fall from before the Dusk. Collectors pay well; the old folk won\'t sell.',
     category: 'valuable',
     sell: 1500,
   },

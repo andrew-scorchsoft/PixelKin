@@ -19,8 +19,68 @@
       "width": 128,
       "height": 128
     },
+    "cottage_cat": {
+      "path": "assets/sprites/trainers/cottage_cat.webp",
+      "width": 128,
+      "height": 128
+    },
+    "fen_folk": {
+      "path": "assets/sprites/trainers/fen_folk.webp",
+      "width": 128,
+      "height": 128
+    },
+    "fisher_man": {
+      "path": "assets/sprites/trainers/fisher_man.webp",
+      "width": 128,
+      "height": 128
+    },
+    "fisher_woman": {
+      "path": "assets/sprites/trainers/fisher_woman.webp",
+      "width": 128,
+      "height": 128
+    },
+    "frost_herder": {
+      "path": "assets/sprites/trainers/frost_herder.webp",
+      "width": 128,
+      "height": 128
+    },
     "georgina": {
       "path": "assets/sprites/trainers/georgina.webp",
+      "width": 128,
+      "height": 128
+    },
+    "hollow_gardener": {
+      "path": "assets/sprites/trainers/hollow_gardener.webp",
+      "width": 128,
+      "height": 128
+    },
+    "hollowing_acolyte": {
+      "path": "assets/sprites/trainers/hollowing_acolyte.webp",
+      "width": 128,
+      "height": 128
+    },
+    "hollowing_elder": {
+      "path": "assets/sprites/trainers/hollowing_elder.webp",
+      "width": 128,
+      "height": 128
+    },
+    "innkeeper": {
+      "path": "assets/sprites/trainers/innkeeper.webp",
+      "width": 128,
+      "height": 128
+    },
+    "kite_child": {
+      "path": "assets/sprites/trainers/kite_child.webp",
+      "width": 128,
+      "height": 128
+    },
+    "kite_weaver": {
+      "path": "assets/sprites/trainers/kite_weaver.webp",
+      "width": 128,
+      "height": 128
+    },
+    "lamplighter": {
+      "path": "assets/sprites/trainers/lamplighter.webp",
       "width": 128,
       "height": 128
     },
@@ -51,6 +111,21 @@
     },
     "lucan_pyre": {
       "path": "assets/sprites/trainers/lucan_pyre.webp",
+      "width": 128,
+      "height": 128
+    },
+    "market_trader": {
+      "path": "assets/sprites/trainers/market_trader.webp",
+      "width": 128,
+      "height": 128
+    },
+    "miner_man": {
+      "path": "assets/sprites/trainers/miner_man.webp",
+      "width": 128,
+      "height": 128
+    },
+    "miner_woman": {
+      "path": "assets/sprites/trainers/miner_woman.webp",
       "width": 128,
       "height": 128
     },
@@ -109,6 +184,21 @@
       "width": 128,
       "height": 128
     },
+    "old_salt": {
+      "path": "assets/sprites/trainers/old_salt.webp",
+      "width": 128,
+      "height": 128
+    },
+    "orchard_farmer": {
+      "path": "assets/sprites/trainers/orchard_farmer.webp",
+      "width": 128,
+      "height": 128
+    },
+    "pass_walker": {
+      "path": "assets/sprites/trainers/pass_walker.webp",
+      "width": 128,
+      "height": 128
+    },
     "player_indi": {
       "path": "assets/sprites/trainers/player_indi.webp",
       "width": 128,
@@ -116,9 +206,9 @@
       "actions": {
         "path": "assets/sprites/trainers/player_indi_actions.webp",
         "width": 128,
-        "height": 64,
+        "height": 128,
         "cols": 4,
-        "rows": 2
+        "rows": 4
       }
     },
     "player_indi_swim": {
@@ -129,17 +219,58 @@
     "professor_fenn": {
       "path": "assets/sprites/trainers/professor_fenn.webp",
       "width": 128,
+      "height": 128,
+      "actions": {
+        "path": "assets/sprites/trainers/professor_fenn_actions.webp",
+        "width": 128,
+        "height": 128,
+        "cols": 4,
+        "rows": 4
+      }
+    },
+    "road_courier": {
+      "path": "assets/sprites/trainers/road_courier.webp",
+      "width": 128,
+      "height": 128
+    },
+    "star_watcher": {
+      "path": "assets/sprites/trainers/star_watcher.webp",
+      "width": 128,
+      "height": 128
+    },
+    "sun_keeper": {
+      "path": "assets/sprites/trainers/sun_keeper.webp",
+      "width": 128,
+      "height": 128
+    },
+    "village_child": {
+      "path": "assets/sprites/trainers/village_child.webp",
+      "width": 128,
       "height": 128
     },
     "warden_cor": {
       "path": "assets/sprites/trainers/warden_cor.webp",
       "width": 128,
-      "height": 128
+      "height": 128,
+      "actions": {
+        "path": "assets/sprites/trainers/warden_cor_actions.webp",
+        "width": 128,
+        "height": 128,
+        "cols": 4,
+        "rows": 4
+      }
     },
     "wren": {
       "path": "assets/sprites/trainers/wren.webp",
       "width": 128,
-      "height": 128
+      "height": 128,
+      "actions": {
+        "path": "assets/sprites/trainers/wren_actions.webp",
+        "width": 128,
+        "height": 128,
+        "cols": 4,
+        "rows": 4
+      }
     },
     "ysolde_frost": {
       "path": "assets/sprites/trainers/ysolde_frost.webp",

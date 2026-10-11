@@ -51,6 +51,12 @@ export class Sfx {
     return null;
   }
 
+  /** Whether a key resolves to a rendered effect (bare stem or a/b/c variants) —
+   *  lets callers prefer a specific cue (e.g. 'world-footstep-sand') and fall back. */
+  has(key: string): boolean {
+    return STEMS.has(key) || (VARIANTS.get(key)?.length ?? 0) > 0;
+  }
+
   /** Play a single named effect (base key, no extension). Picks a variant if needed. */
   async play(key: string): Promise<void> {
     const gain = sfxMasterGain();

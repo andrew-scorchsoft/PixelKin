@@ -664,7 +664,60 @@
       ]
     }
   ],
-  "objects": [],
+  "objects": [
+    {
+      "id": "wc_wreck",
+      "sprite": "pearlmoor_wreck_ribs",
+      "at": {
+        "tx": 4,
+        "ty": 3
+      },
+      "w": 3,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "wc_anchor",
+      "sprite": "pearlmoor_anchor",
+      "at": {
+        "tx": 9,
+        "ty": 3
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "wc_nest_e",
+      "sprite": "pearlmoor_gull_nest",
+      "at": {
+        "tx": 11,
+        "ty": 6
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "wc_nest_w",
+      "sprite": "pearlmoor_gull_nest",
+      "at": {
+        "tx": 3,
+        "ty": 7
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "wc_driftwood",
+      "sprite": "pearlmoor_driftwood",
+      "at": {
+        "tx": 7,
+        "ty": 8
+      },
+      "w": 2,
+      "h": 1
+    }
+  ],
   "warps": [
     {
       "id": "to_flats",
@@ -692,6 +745,16 @@
       },
       "activation": "interact",
       "ref": "sign.gullcry_rock"
+    },
+    {
+      "id": "wc_read_wreck",
+      "kind": "dialogue",
+      "at": {
+        "tx": 5,
+        "ty": 4
+      },
+      "activation": "interact",
+      "ref": "npc.gullcry_wreck"
     }
   ],
   "encounters": [
@@ -786,6 +849,18 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_gullcry_charm",
       "hidden_when_flag": "flag:picked_gullcry_charm"
+    },
+    {
+      "id": "amb_glostern",
+      "at": {
+        "tx": 10,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "kin_29_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
     }
   ],
   "gates": [
@@ -1021,5 +1096,36 @@
       }
     }
   ],
-  "music": "assets/audio/music/dimglass-coast-a.mp3"
+  "music": "assets/audio/music/dimglass-coast-a.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "spray",
+        "density": 1.0
+      }
+    ],
+    "mist": {
+      "color": "#cfe0ff",
+      "alpha": 0.07,
+      "speed": 6
+    },
+    "birds": {
+      "kind": "gull",
+      "flocks": [
+        {
+          "tx": 6,
+          "ty": 5
+        },
+        {
+          "tx": 10,
+          "ty": 7
+        }
+      ],
+      "flyover": true
+    },
+    "bob_gids": [
+      120
+    ],
+    "sound_bed": "amb-surf"
+  }
 }

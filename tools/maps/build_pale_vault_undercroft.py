@@ -182,8 +182,8 @@ m["npcs"].append(
 # SYNC 2026-06 (Three Hours wiring, 07-the-three §5): Ysolde returns to the
 # heart for H2's Vigil Snuffer hand-over (requires the rumour — itself gated
 # on gleam:frost, so this never co-spawns with ysolde_vault above). Mirrored
-# into the shipped pale_vault_undercroft.json by hand — reconcile before
-# re-running.
+# into the shipped pale_vault_undercroft.json — a rebuild reproduces it
+# (check_rebuild.py).
 m["npcs"].append(
     {"id": "ysolde_snuffer", "at": {"tx": 4, "ty": 12}, "facing": "down",
      "sprite": "ysolde_frost", "movement": "static",

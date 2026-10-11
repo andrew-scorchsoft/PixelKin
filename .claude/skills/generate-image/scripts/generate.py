@@ -4,7 +4,7 @@ Image generation helper for the generate-image skill.
 
 Picks provider from environment:
   - GOOGLE_AI_STUDIO_API_KEY -> Google Gemini "Nano Banana Pro"  (preferred)
-  - OPENAI_API_KEY           -> OpenAI gpt-image-2               (fallback)
+  - OPENAI_API_KEY           -> OpenAI gpt-image-2.5-sunburst      (native alpha)
 
 Supports optional --input-image flags for image-as-context workflows: edit,
 restyle, composition, or pure visual reference. Google routes input images
@@ -129,11 +129,26 @@ def _load_env_files() -> None:
 _load_env_files()
 
 _OPENAI_MODEL_OVERRIDE = os.environ.get("OPENAI_IMAGE_MODEL")
-DEFAULT_OPENAI_MODEL = _OPENAI_MODEL_OVERRIDE or "gpt-image-2"
-# gpt-image-2 does not support background=transparent; gpt-image-1 does. When
-# --transparent is requested and the caller hasn't hard-pinned a model (via
-# OPENAI_IMAGE_MODEL), fall back to gpt-image-1 automatically.
-TRANSPARENT_OPENAI_MODEL = _OPENAI_MODEL_OVERRIDE or "gpt-image-1"
+# gpt-image-2.5 (2026-09) is the house default: crisper pixel clusters, real
+# stride in walk cycles, and — unlike gpt-image-2 — NATIVE transparent
+# backgrounds. "sunburst" is the high-fidelity variant (the one to use for
+# sprites); "flare" is the faster/lighter one.
+DEFAULT_OPENAI_MODEL = _OPENAI_MODEL_OVERRIDE or "gpt-image-2.5-sunburst"
+# Models that reject background=transparent. If the env pins one of these, a
+# --transparent request quietly upgrades to the 2.5 default instead of failing.
+_NO_ALPHA_MODELS = {"gpt-image-2", "gpt-image-2-2026-04-21"}
+TRANSPARENT_OPENAI_MODEL = (
+    _OPENAI_MODEL_OVERRIDE
+    if _OPENAI_MODEL_OVERRIDE and _OPENAI_MODEL_OVERRIDE not in _NO_ALPHA_MODELS
+    else "gpt-image-2.5-sunburst"
+)
+
+
+def openai_model_supports_alpha(model: str) -> bool:
+    """True when `model` accepts background=transparent (gpt-image-1, 2.5+)."""
+    return model not in _NO_ALPHA_MODELS
+
+
 DEFAULT_GOOGLE_MODEL = os.environ.get("GOOGLE_IMAGE_MODEL", "gemini-3-pro-image-preview")
 # Multimodal text model used by the --openai-route=responses path. It needs
 # to be a model that "sees" input_image parts and supports the

@@ -1,0 +1,28 @@
+{
+  "title": "SFX -- footstep on wood (hollow knock, alt)",
+  "_note": "Alternate board step: a lower plank. Render with --tail 0.02.",
+  "era": "sfx",
+  "tempo": 280,
+  "time_signature": [
+    4,
+    4
+  ],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "board",
+      "voice": "tri_bass",
+      "octave": 3,
+      "gain": 0.55,
+      "notes": "E3~C#3s@78"
+    },
+    {
+      "name": "scuff",
+      "voice": "noise",
+      "octave": 3,
+      "gain": 0.35,
+      "notes": "C#3s@54"
+    }
+  ]
+}

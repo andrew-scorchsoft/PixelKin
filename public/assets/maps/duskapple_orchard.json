@@ -43,7 +43,7 @@
     },
     {
       "id": "apple_4",
-      "sprite": "tinderwick_tree",
+      "sprite": "tinderwick_tree_b",
       "at": {
         "tx": 11,
         "ty": 12
@@ -187,6 +187,16 @@
       "h": 3,
       "overhang": 2,
       "walk_under": true
+    },
+    {
+      "id": "wc_apples",
+      "sprite": "tinderwick_apple_crates",
+      "at": {
+        "tx": 14,
+        "ty": 3
+      },
+      "w": 2,
+      "h": 1
     }
   ],
   "warps": [
@@ -386,7 +396,7 @@
         "ty": 11
       },
       "facing": "left",
-      "sprite": "npc_woman",
+      "sprite": "road_courier",
       "movement": "static",
       "dialogue_ref": "npc.orchard_courier",
       "hidden_when_flag": "flag:fenn_errand"
@@ -398,7 +408,7 @@
         "ty": 11
       },
       "facing": "left",
-      "sprite": "npc_woman",
+      "sprite": "road_courier",
       "movement": "static",
       "dialogue_ref": "npc.orchard_courier_errand",
       "requires_flag": "flag:fenn_errand",
@@ -411,7 +421,7 @@
         "ty": 11
       },
       "facing": "left",
-      "sprite": "npc_woman",
+      "sprite": "road_courier",
       "movement": "static",
       "dialogue_ref": "npc.orchard_courier_after",
       "requires_flag": "flag:has_satchel"
@@ -423,7 +433,7 @@
         "ty": 6
       },
       "facing": "left",
-      "sprite": "npc_old_man",
+      "sprite": "orchard_farmer",
       "movement": "look_around",
       "dialogue_ref": "script.orchard_wendel",
       "hidden_when_flag": "flag:dawn"
@@ -435,7 +445,7 @@
         "ty": 6
       },
       "facing": "left",
-      "sprite": "npc_old_man",
+      "sprite": "orchard_farmer",
       "movement": "look_around",
       "dialogue_ref": "npc.orchard_wendel_dawn",
       "requires_flag": "flag:dawn"
@@ -462,6 +472,30 @@
       "movement": "wander",
       "dialogue_ref": "npc.wren_intro",
       "hidden_when_flag": "flag:has_starter"
+    },
+    {
+      "id": "amb_glimflit",
+      "at": {
+        "tx": 16,
+        "ty": 3
+      },
+      "facing": "down",
+      "sprite": "kin_8_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
+    },
+    {
+      "id": "amb_tallowpup",
+      "at": {
+        "tx": 12,
+        "ty": 14
+      },
+      "facing": "down",
+      "sprite": "kin_10_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
     }
   ],
   "gates": [],
@@ -1676,5 +1710,37 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "leaves",
+        "density": 0.6
+      },
+      {
+        "kind": "motes",
+        "density": 0.8,
+        "area": {
+          "tx": 5,
+          "ty": 3,
+          "w": 6,
+          "h": 4
+        }
+      },
+      {
+        "kind": "glowmotes",
+        "density": 0.25
+      }
+    ],
+    "light_sources_extra": [
+      {
+        "at": {
+          "tx": 8,
+          "ty": 5
+        },
+        "radius": 22,
+        "color": "#8fa6d6"
+      }
+    ]
+  }
 }

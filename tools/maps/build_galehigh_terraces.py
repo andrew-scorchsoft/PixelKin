@@ -32,8 +32,8 @@ a hidden valuable) sits behind an updraft AbilityGate — optional only, signed.
 Wires to: cinderhead_deep `to_terraces` lands {1,14}/{1,15} (our return warps
 to_cinderhead at {0,14}/{0,15} -> deep {26,12}/{26,13}); `to_stair` north
 (windward_stair_i — N2 authors the far side; its return pair must land at our
-(14,1)/(15,1)); `to_crossroads` south (the Lanternway spoke, lands crossroads
-{1,3}/{1,4}); `shortcut_galehigh` (Windward II's late drop) should land on the
+(14,1)/(15,1)); `to_crossroads` south (the Lanternway spoke, lands lanternway_galehigh
+{6,0}/{7,0}); `shortcut_galehigh` (Windward II's late drop) should land on the
 upper route around (18..21, 3) — N2's builder owns that warp's far half.
 
 Suggested sign copy (the wiring agent writes dialogue.ts; humour sheet: signs
@@ -318,13 +318,14 @@ m["warps"] += [
     {"id": "to_stair_e", "at": {"tx": 15, "ty": 0}, "trigger": "step_on",
      "to_map": "windward_stair_i", "to": {"tx": 15, "ty": 38}, "facing": "up",
      "transition": "fade"},
-    # SOUTH -> the Lanternway spoke (graph `to_crossroads`; the hub's return
-    # half wakes with gleam:storm — the R4 "[wakes with spoke]" pattern)
+    # SOUTH -> the Lanternway spoke's real lane map (lanternway_galehigh; graph
+    # `to_crossroads`; the hub's return half wakes with gleam:storm — the R4
+    # "[wakes with spoke]" pattern)
     {"id": "to_crossroads", "at": {"tx": 15, "ty": 31}, "trigger": "step_on",
-     "to_map": "vesper_crossroads", "to": {"tx": 1, "ty": 3}, "facing": "right",
+     "to_map": "lanternway_galehigh", "to": {"tx": 6, "ty": 0}, "facing": "down",
      "transition": "fade"},
     {"id": "to_crossroads_e", "at": {"tx": 16, "ty": 31}, "trigger": "step_on",
-     "to_map": "vesper_crossroads", "to": {"tx": 1, "ty": 4}, "facing": "right",
+     "to_map": "lanternway_galehigh", "to": {"tx": 7, "ty": 0}, "facing": "down",
      "transition": "fade"},
     # THE WINCH up to the skyloft — festival-flag-gated, NEVER Updraft (§0 r1)
     {"id": "to_skyloft", "at": {"tx": 21, "ty": 18}, "trigger": "step_on",

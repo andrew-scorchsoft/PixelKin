@@ -163,6 +163,12 @@ gate: **post-game (`flag:dawn`)** · Gleam: none (all eight held) · rec. level:
 
 ---
 
+> **2026-10 (P-1, Central package):** in `cutscene.cor_resolution`, after *"I'll be here to
+> light it"*, a plum-sized stone glows gold beside Còr's lamp: *"Our star. Hers, and Fenn's, and
+> mine. It came down the winter Senna went. I carried it twenty years, cold. This morning it woke
+> in my pocket."* Her name is said here for the first time (story-bible §11). Dawnstead's
+> townsfolk wear the regional cast; the town has warm-mote ambience and a gold wash.
+
 ### The post-dawn world & day-forms — *the relit sky wakes new kin*
 
 This is the **Arc D / celestial-calendar payoff** as a mapwide collecting layer. It is not a
@@ -729,6 +735,12 @@ trigger `requires_flag: flag:vigil_5_kept` · band **67–70** · the hardest fi
 6. **Validation hooks** — gathered in the chain master list below.
 
 ---
+
+> **2026-10 (Central package):** Fenn stands for the Last Lesson (`fenn_round`, the vigilants'
+> flag window) and says Senna's name before the battle (P-1); the starfall witness closes the
+> motif (*"These come down warm. I've decided that's the same thing, forgiven."*). The five
+> annexes are dressed with their host regions' prop kits + keeper camps (`vigil_dress.py`), the
+> keepers wear regional cast sheets, and each carries per-element ambience.
 
 ### Validation hooks — the chain master list (build agents copy verbatim)
 

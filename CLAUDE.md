@@ -400,6 +400,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **Don't hand-edit served assets.** Music `.mp3`s in `public/assets/audio/music/`
   are renders of `.mid` masters in `assets/audio/midi/` — edit the master and
   re-render. Same for sprites/tilesets (masters in `assets/`, packed into `public/`).
+- **Every served SFX must be listed in `public/assets/audio/sfx/sfx.manifest.json`** — `Sfx.has`/`play` and the
+  ambience bed loader skip anything absent (silence, not a 404). Looping `amb-*` beds are NOT chip renders:
+  re-render with `tools/audio/ambient_beds.py` (seamless-by-construction numpy synth; also rewrites the manifest).
 - **Area music ships in the richer `snes` register, not bare `gbc`.** Keep the
   Option-A tune's `pulse25` lead + `tri_bass` bass note-for-note, then open the
   band: `strings`/`pad` real chords, `pluck` harp arp, sparse `bell` (Light), an
@@ -575,6 +578,16 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   / `Actor.showEmote()` drive layers 3/2; `pack_trainers.py` packs all three + the manifest.
   **Build an action sheet from single `human-pose` gens + `assemble_action_sheet.py`** — never
   one-shot the 8-cell grid (the model subdivides cells and repeats stances).
+- **Action sheets are 4×4 = 16 cells and NPCs can act (2026-10).** Cells 0–7 are the old
+  set (raiseLamp/toss/gift/sit/hurt), 8–15 the cutscene ACTING poses (`bow`/`laugh`/`shock`/
+  `sad`/`kneel`/`turnAway`, `HUMAN_ACTION_FRAMES`); `Npc` passes `<sheet>_actions` to the Actor
+  when packed, so `{op:'action', actor:'<npc id>', action:'bow'}` works on story NPCs. A legacy
+  8-cell sheet still loads — poses it lacks no-op. Scale poses off the STANDING height (a kneel
+  is shorter, never blown up to fill the cell). Cast standard: docs/art-style.md §A note.
+- **Walk sheets must PASS `check_walk_facing.py SHEET --gif out.gif` + a GIF eyeball before
+  packing** (a grid can look fine while one left-row cell faces right/forward and breaks the
+  cycle; the up row's back-of-head is eyeball-only). Fix a bad cell by re-generating, or for a
+  likeness sheet by reusing/flipping its own left cells and re-mirroring right (lifter_rod).
 - **Walk-sheet rows must be true DIFFERENT viewpoints, not one front pose ×4.** The engine maps
   rows down/left/right/up (`HUMAN_WALK_FRAMES`); if the art draws a forward-facing face in the
   left/right/up rows the character looks like it's "facing you" while walking sideways/up (this
@@ -705,6 +718,14 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   causeway/board carve must start at the quay/sea SEAM, not one row inside the sea. Most
   orphan flags are tiny decorative gaps behind the border treeline (reported "minor"); a
   cluster ≥4 is worth an eyeball.
+- **`tools/maps/audit_journey.py` replays the WHOLE game at tile level (CI).** From the new-game
+  spawn with nothing held, it walks the real collision model (objects, ledges, static NPC bodies,
+  pushback bands, gated warps) and fires grants only when the granting NPC/trigger/cache itself is
+  reachable — scripts evaluated from the real content (dumped by `journey_content.mjs`). It FAILs
+  a golden beat/Gleam/Gift that's never granted or needs a LATER Gift than canon, any unreached
+  map/content/warp, and prints a ROOT CAUSE naming the blocking object/tile. Run it after ANY map,
+  warp, NPC or script edit; a moved grant = update its `GOLDEN` row; a deliberate permanent block =
+  an `ALLOW_UNREACHED` entry with its WHY.
 - **A story step_on band must cover the WHOLE cut — but only its WALKABLE tiles.** One
   trigger tile on a wide corridor is walk-aroundable (this bit `dusk_begins`); but a band
   tile on a solid/sealed cell now FAILS `audit_flow` as unreachable content (this bit the
@@ -865,11 +886,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   strip (downscale to 160 tall + append an h-flipped copy → guaranteed wrap). `TitleScene`
   caps the 4:3 logo by **height** (`LOGO_MAX_HEIGHT`), not just width — capping by width alone
   made it ~144px tall and overlapped the menu (logo gets the top band, menu the bottom).
-- **`--transparent` image gens need `OPENAI_IMAGE_MODEL=gpt-image-1`.** The managed env pins
-  `OPENAI_IMAGE_MODEL=gpt-image-2`, which the generate-image script honours but which rejects
-  `background=transparent`. Prefix the one transparent call:
-  `OPENAI_IMAGE_MODEL=gpt-image-1 ./venv/bin/python …/generate.py --transparent …` (Google
-  has no native alpha, so transparent always routes to OpenAI).
+- **OpenAI images default to `gpt-image-2.5-sunburst` (2026-10), which has NATIVE alpha** —
+  `--transparent` needs no model prefix and no chroma key (a pinned `gpt-image-2`, which rejects
+  `background=transparent`, is auto-upgraded). Human walk sheets: `--provider openai --resample
+  box`, fill 0.88, then `check_walk_facing.py` must PASS + a GIF eyeball (the generate-sprite-sheet
+  SKILL.md "human walk-sheet standard"). Google has no native alpha (magenta key).
 - **The peril thread (R9) — the Long Dusk made visible — is `docs/world/walkthrough/08-the-peril-thread.md`.**
   Duskapple's fallen-star crater lives in its builder; every later beat is an id-keyed upsert in
   `tools/maps/add_peril_thread.py` — re-run it after rebuilding any map it touches, or the beat
@@ -1026,8 +1047,37 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   getCannotDie()`; `WorldScene.blackout` then heals the party and RE-ENTERS the current map at the
   player's own tile (no rest-point warp, no wick tithe) — the re-entry is what resets actors a lost
   scene walked off-post, a marched-up sight trainer, and a focused camera; don't shortcut it. A lost scripted battle still ends its scene, so the fight simply waits to be
-  retried. The settings list is now 11 rows from y 14 — at its 160px budget; a 12th row needs a
-  sub-screen.
+  retried. The settings list is now 13 rows (+ Ambient motion), windowed to 11 visible (`Menu.maxVisible`).
+- **World ambience is `systems/world/Ambience.ts`, one per map (WP0, 2026-10) — art-style §12b.**
+  Map-level colour rides `MapDefinition.ambience` (particles/mist/tint/starfall/birds/bob_gids…);
+  lamp pools + chimney smoke are SPRITE-KEYED tables (`LIGHT_SOURCES`/`CHIMNEYS`, the
+  HEAL_ENTRANCE_MAPS pattern); shadows, legs-in-grass, glints and the NPC bob are FOLLOWERS
+  WorldScene attaches from outside (the entity classes stay untouched). Author ambience blocks and
+  ambient kin ONLY via `tools/maps/worldcraft/<region>.py` + `add_world_craft.py` (idempotent,
+  re-run after any rebuild; it REFUSES non-ambient additions on pre-Chickenpig maps). Everything
+  obeys Settings → "Ambient motion" (`preferences.getAmbientMotion`, live).
+- **`ambient: true` NPCs are NOT Npcs.** WorldScene never spawns them as actors (no collision, no
+  Confirm, no cutscene addressing) — the Ambience grazes them; `worldmodel.py` drops them, so the
+  audits are blind to them by design. Pick the kin from the map's OWN encounter table and park it
+  OFF the lane (the runner lints foot-walkable + not on a warp/trigger). New cutscene acting ops:
+  `hop`, `shakeActor`, `spin`, `starfall` and `move.speed` (sprite tweens only — tiles never move).
+- **Every rest point is REMEMBERED: SETTINGS → "Return to rest point" (2026-10).** The `heal`
+  op's `recordRespawn` also banks `WorldSnapshot.rest_points` (additive optional; one per map,
+  latest coords, label = the map's `display_name`; old saves seed from `respawn` in
+  `systems/world/restPoints.ts`). The row is FIRST in Settings (world only — absent on the title),
+  never gated (it's the anti-softlock hatch) → `ui/RestPointMenu` (newest first + confirm) →
+  `WorldScene.travelToRestPoint` (persist, fade, `enterMap(..., footFirst)` which re-validates
+  stale coords to the nearest ON-FOOT, NPC-free tile). The settings list is now 12 rows, so it is
+  WINDOWED (`Menu.maxVisible: 11`, ▲/▼ hints, `initialIndex`) — reuse `maxVisible` for any long
+  list rather than another sub-screen. Thread `rest_points` like `respawn` on any new load path.
+  (Not in the pause menu: it's already at the 160px budget.)
+- **"The world has changed" notice + `SaveGame.last_version` (2026-10).** Every persist stamps
+  GAME_VERSION; Continue / LOAD FILE / in-game import pass `version_from: save.last_version ?? ''`
+  in `WorldSceneData` (undefined = new game/debug reload = no check). If older, a narrated notice
+  plays on the first idle frame (+ `content/whatsnew.ts` lines keyed by the CURRENT GAME_VERSION —
+  edit that entry when you bump), and only THEN is the new version stamped. The device-level
+  `last_seen_version` storage key drives the title's pulsing NEW beside the version label. Any
+  crafted test save without `last_version` WILL show the notice (the world stays modal).
 - **Stuck players are answered in-world by ANDREW, on a fence in every rim town** (2026-08).
   `script.andrew_hint` is the wayfinding chain — one `say` per journey stage, each guarded
   `if_flag: <stage>` + `unless_flag: <next stage>`, so exactly one line plays and it names the
@@ -1070,6 +1120,13 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   persists FIRST, stops world music, and hands to CinematicScene; nothing after the op plays, so
   it must be a script's LAST step). `ENDING_CREDITS` (dawnbreak panels + credits) routes → Title;
   Continue resumes at the summit with `flag:dawn` held — the post-game's door.
+- **Crown interludes cut AWAY to Còr, then return (X-4, `content/interludes.ts`).** On the
+  first idle frame a crown's `requires` are held, `WorldScene.runCrownInterlude` stages the
+  script on a REMOTE map (`this.staging`: cast-only NPCs, hidden player, no music/banner/
+  chart/save — `persist()`/`reloadMap()`/`refreshNpcs()` no-op while staged) and re-enters the
+  player's exact tile. Only the LATEST due one plays and banks all earlier ones (no backlog
+  for old saves); entering the Spire banks them unplayed. Interlude scripts must never
+  `setFlag` or `cameraReset`. Shoot one with `shoot.mjs --no-idle --confirms N`.
 - **A cutscene-launched battle must NOT clear `modal` itself.** `WorldScene.startBattle` runs for
   both wild encounters (fired from a free step, `modal` false) AND trainer battles (one step
   INSIDE a cutscene, `modal` already true). It now RESTORES the prior `modal` on completion, not a
@@ -1078,12 +1135,16 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   the same trainer twice (the "fights you twice" bug — hit every sight/script trainer: beacon
   keepers, Wren, route beats). The enclosing handler (`engageTrainer`/`handleTrigger`/`interact`)
   clears `modal` once the whole scene finishes.
-- **Shipped map JSONs carry post-build surgical additions their builders DON'T (2026-06):**
-  the R3 vigil host warps (tinderwick/spore_grotto/thunderroost/sunvault_climb_ii/
-  coldfog_marches_ii), the R4 day-form zone pairs (22 maps) and hand-added NPCs/triggers
-  (P1 letter recipients, Oriel's terrace set, the summit re-dress). Re-running an old
-  builder REGRESSES them — diff the rebuilt JSON against git HEAD and re-apply, or edit
-  the shipped JSON surgically instead.
+- **The map pipeline REPRODUCES every shipped map — keep it that way (2026-10).** Shipped JSONs
+  are written by the builder, then four id-keyed runners IN THIS ORDER: `add_hand_placed.py`
+  (data `hand_placed_data.py`: R3 vigil host warps, R4 day-form zone pairs, post-build zone
+  retunes, P1 letters, Oriel, the summit/Spire re-dress, Andrew, purses, egg trail, Worry Club,
+  S4/S5 pieces) → `add_peril_thread.py` → `add_world_craft.py` → `vary_trees.py`.
+  `python3 tools/maps/check_rebuild.py` (~50 s, in CI) rebuilds ALL of it in a scratch worktree
+  and FAILs any map that differs from shipped (per-entry diff). NEVER hand-edit a shipped map:
+  put the change in its builder or the owning runner's data. A builder tweak that must not
+  reshuffle rng-rolled deco goes AFTER the scatter pass (the Dimglass easing pattern); a hand-
+  picked tile variant rides `mk.finalize(pin_base={(x, y): name})`.
 - **Map audits grant ALL Gifts for reachability — so a foot-only dead-end is invisible to them.**
   `audit_flow`/`audit_region`'s reach pass BFS with every Lantern Gift, which hid a real progression
   blocker: in `dimglass_coast` a one-way return ledge + a canopy tree's solid trunk footprint
@@ -1124,3 +1185,35 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   lightbox (world gallery, Lumenaries, the first-50 kin grid). Site imagery is copied into
   `web/assets/img/` and the kin grid reads a generated `web/assets/data/kin.json` so the site deploys
   standalone — refresh recipes are in `web/README.md`.
+- **Maps must pass the LOOK gate, not just the play audits (2026-10).** `tools/maps/audit_visual.py
+  --all` FAILs a flat void (< 0.75 props/landmarks per 15×10 screen — the South bar is 2–5) and
+  box pools (water filling its bounding box, ≥16 tiles); it's at 0 FAIL / 0 warn across all 46
+  outdoor maps — keep it there. Plus an in-game shot review (`tools/shots/shoot.mjs`). Reviews
+  behind this pass: `docs/reviews/world-craft-panel.md`, `docs/reviews/story-depth-panel.md`.
+- **World-craft lives in per-region upsert modules** (`tools/maps/worldcraft/<region>.py`:
+  ambience, regional-cast `sprites` swaps, props, NPCs) via `add_world_craft.py --region <r>` —
+  one of the four runners above. After ANY map edit, every runner's `--check` must show 0
+  drift; if one would revert your change, the change belongs in that runner's data (the Galehigh notice-reader precedent). New scripts go in
+  `content/regions/<region>.ts`. On pre-Chickenpig maps the runner only accepts ambience, sprite
+  swaps and props that pass `prove_off_lane` (no lane, no longer walks, no sealed dry lane).
+- **The regional cast** (21 keys: fisher_*, miner_*, kite_weaver, hollowing_acolyte, innkeeper…)
+  is registered in `Npc.ts` `SPRITE_SHEETS` with `REGIONAL_FALLBACK` to a generic sheet; no screen
+  should show the same sheet twice.
+- **Older sprites carried a magenta chroma-key halo; `tools/assets/defringe.py` fixes MASTERS
+  losslessly** (drops faint alpha, re-inks near-magenta edge px; design pinks with r>>b kept), then
+  re-pack. New gpt-image-2.5 art has native alpha — never run it on those (it eats real lavenders).
+- **The Senna thread is dosed; her NAME is post-dawn only.** North (Fenn: "three of us on that
+  ladder"), West (Nessa), the summit (Còr knows the Starlamp's brass) all leave her unnamed;
+  `cor_resolution`/the Last Lesson say it. The cinder law + timeline (the Long Dusk = 11 winters)
+  are canon in `docs/world/story-bible.md` §11–§12 — check new lines against them.
+- **Overworld trees come in three crowns; re-run `tools/maps/vary_trees.py` after placing any.**
+  `tinderwick_tree` / `_b` (round) / `_c` (tall, hung lantern, has a LIGHT_SOURCES row) share
+  the 48×64 canvas, overhang 3 and trunk row; the script picks the sprite by crc32 of
+  (map, tx, ty), touches only `sprite`, and `--check`s idempotence. A tree owned by
+  `worldcraft/*.py` must carry the same pick there (east.py's spoke trees do). Object masters
+  regenerated with gpt-image-2.5 use native alpha: `gen_interior_object.py --provider openai`.
+- **`node tools/content/check_content.mjs` gates content (CI, exit 1 on any E-*).** It bundles the
+  content modules and loads every map: dangling script/dialogue refs (NPCs only run `script.*` —
+  a `cutscene.*` dialogue_ref shows "..."), missing portrait expressions, unknown sprites, flags
+  read but never set, guarded progression steps. W-/I- lines are heuristics; read them, don't
+  chase them blindly. `--old <checkout>` compares pre-Chickenpig step/page counts.

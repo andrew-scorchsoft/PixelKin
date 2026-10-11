@@ -654,7 +654,7 @@
         "ty": 7
       },
       "facing": "left",
-      "sprite": "npc_woman",
+      "sprite": "star_watcher",
       "movement": "look_around",
       "dialogue_ref": "npc.pale_vault_hall_festival",
       "requires_flag": "gleam:frost"
