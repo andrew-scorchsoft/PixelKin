@@ -35,6 +35,27 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'face', actor: 'gatewarden_pre', facing: 'down' },
   ],
 
+  // The coast-keeper holds the top of Dimglass Coast I until the Beacon is lit
+  // (gleam:ember): the flats beyond are Dimglass II's band (8-10) and the road to
+  // Reyl, so a player who hasn't climbed the tower is turned back — kindly, and
+  // told the next step. A pushback band (row 1, x6-8) + gated warps; the keeper stands
+  // aside for good once the first Gleam is earned.
+  'script.coast_keeper_gate': [
+    { op: 'emote', actor: 'coast_keeper', emote: 'alert' },
+    { op: 'move', actor: 'coast_keeper', to: { tx: 9, ty: 2 }, speed: 2 },
+    { op: 'face', actor: 'coast_keeper', facing: 'left' },
+    { op: 'face', actor: 'player', facing: 'right' },
+    { op: 'say', speaker: 'COAST-KEEPER', text: 'Hold up there, apprentice! Past this point the flats run with the tide in the dark, and the lanterns out there will not answer an unproven lamp.' },
+    { op: 'say', speaker: 'COAST-KEEPER', text: 'Brisa asked me to keep this road until her Beacon burns again. Earn your first Gleam at the old tower above Tinderwick, and I will wave you through myself.' },
+    { op: 'say', speaker: 'COAST-KEEPER', text: 'The tower door wants a wick-key. The old lamplighter has it, down the shore where the star went out. Ask him.', unless_flag: 'flag:has_beacon_wick' },
+    { op: 'say', speaker: 'COAST-KEEPER', text: 'You have the wick-key already? Then the Beacon is waiting for you. Back south through Tinderwick, up on the north-east bluff.', if_flag: 'flag:has_beacon_wick' },
+    { op: 'say', speaker: 'COAST-KEEPER', text: 'A letter for the sky-watcher on the flats? It will keep. Gran\'s words travel better by Beacon-light anyway.', if_flag: 'flag:q_south_letter', unless_flag: 'flag:q_south_letter_given' },
+    { op: 'move', actor: 'player', to: { tx: 7, ty: 3 } },
+    { op: 'face', actor: 'player', facing: 'down' },
+    { op: 'move', actor: 'coast_keeper', to: { tx: 10, ty: 5 } },
+    { op: 'face', actor: 'coast_keeper', facing: 'left' },
+  ],
+
   // Crossing into the waystone plaza for the first time: Fenn hails the player
   // from across the clearing so there's no "who do I talk to?" beat to fumble.
   'script.fenn_wave': [

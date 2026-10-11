@@ -959,7 +959,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   OPTIONAL colour (never gating), which is why they live as an engine hook, not in the map JSON;
   add a new one by appending an `EntryTutorial` row + a `script.*`. `runTutorial` banks the
   `seen_flag` so it never repeats.
-- **The South level curve is data-locked to the walkthrough:** Brisa ace 10 → Dimglass I wilds
+- **The South level curve is data-locked to the walkthrough** (and ENFORCED since 2026-10: Brisa's
+  coast-keeper holds Dimglass I's north cut until `gleam:ember` — `script.coast_keeper_gate`, a
+  pushback band + gated warps in `build_dimglass.py`; never re-open it): Brisa ace 10 → Dimglass I wilds
   3–5 (side pocket 5–6; + Wren's friendly battle A2 + the B1 `dusk_begins` beat) → Dimglass II
   wilds 8–10 + two route-trainer beats (Morrow 9/9, Elspeth 10/10) → Reyl 12–16. Route trainer
   beat = static NPC + `step_on` cutscene tile on a choked lane (`script.flats_trainer_*`

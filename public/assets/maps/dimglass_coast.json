@@ -2048,7 +2048,9 @@
         "ty": 31
       },
       "facing": "up",
-      "transition": "fade"
+      "transition": "fade",
+      "requires_flag": "gleam:ember",
+      "blocked_ref": "npc.coast_keeper_gate"
     },
     {
       "id": "to_coast_ii",
@@ -2063,7 +2065,9 @@
         "ty": 31
       },
       "facing": "up",
-      "transition": "fade"
+      "transition": "fade",
+      "requires_flag": "gleam:ember",
+      "blocked_ref": "npc.coast_keeper_gate"
     },
     {
       "id": "to_coast_ii_e",
@@ -2078,7 +2082,9 @@
         "ty": 31
       },
       "facing": "up",
-      "transition": "fade"
+      "transition": "fade",
+      "requires_flag": "gleam:ember",
+      "blocked_ref": "npc.coast_keeper_gate"
     },
     {
       "id": "to_tideglass",
@@ -2138,6 +2144,39 @@
       },
       "activation": "interact",
       "ref": "sign.dimglass_to_pearlmoor"
+    },
+    {
+      "id": "coast_keeper_gate_6",
+      "kind": "cutscene",
+      "at": {
+        "tx": 6,
+        "ty": 1
+      },
+      "activation": "step_on",
+      "ref": "script.coast_keeper_gate",
+      "hidden_when_flag": "gleam:ember"
+    },
+    {
+      "id": "coast_keeper_gate_7",
+      "kind": "cutscene",
+      "at": {
+        "tx": 7,
+        "ty": 1
+      },
+      "activation": "step_on",
+      "ref": "script.coast_keeper_gate",
+      "hidden_when_flag": "gleam:ember"
+    },
+    {
+      "id": "coast_keeper_gate_8",
+      "kind": "cutscene",
+      "at": {
+        "tx": 8,
+        "ty": 1
+      },
+      "activation": "step_on",
+      "ref": "script.coast_keeper_gate",
+      "hidden_when_flag": "gleam:ember"
     },
     {
       "id": "dusk_begins_4",
@@ -2828,6 +2867,7 @@
         "h": 4
       },
       "encounter_rate": 0.06,
+      "requires_ability": "tidecall",
       "table": [
         {
           "kin_id": 2,
@@ -2848,7 +2888,6 @@
           "max_level": 62
         }
       ],
-      "requires_ability": "tidecall",
       "requires_flag": "flag:dawn"
     }
   ],
@@ -2878,6 +2917,18 @@
       "movement": "static",
       "dialogue_ref": "npc.dimglass_wayfarer",
       "requires_flag": "flag:wren_dimglass_battled"
+    },
+    {
+      "id": "coast_keeper",
+      "at": {
+        "tx": 10,
+        "ty": 5
+      },
+      "facing": "left",
+      "sprite": "npc_lampwarden",
+      "movement": "static",
+      "dialogue_ref": "npc.coast_keeper_gate",
+      "hidden_when_flag": "gleam:ember"
     },
     {
       "id": "witness",

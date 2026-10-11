@@ -226,11 +226,14 @@ m = {
         # North exit continues onto the tidal flats of Dimglass Coast II (the canon
         # segment chain: I -> II -> Pearlmoor); 3-wide gap, 3 warps.
         {"id": "to_coast_ii_w", "at": {"tx": 6, "ty": 0}, "trigger": "step_on",
-         "to_map": "dimglass_coast_ii", "to": {"tx": 6, "ty": 31}, "facing": "up", "transition": "fade"},
+         "to_map": "dimglass_coast_ii", "to": {"tx": 6, "ty": 31}, "facing": "up", "transition": "fade",
+         "requires_flag": "gleam:ember", "blocked_ref": "npc.coast_keeper_gate"},
         {"id": "to_coast_ii", "at": {"tx": 7, "ty": 0}, "trigger": "step_on",
-         "to_map": "dimglass_coast_ii", "to": {"tx": 7, "ty": 31}, "facing": "up", "transition": "fade"},
+         "to_map": "dimglass_coast_ii", "to": {"tx": 7, "ty": 31}, "facing": "up", "transition": "fade",
+         "requires_flag": "gleam:ember", "blocked_ref": "npc.coast_keeper_gate"},
         {"id": "to_coast_ii_e", "at": {"tx": 8, "ty": 0}, "trigger": "step_on",
-         "to_map": "dimglass_coast_ii", "to": {"tx": 8, "ty": 31}, "facing": "up", "transition": "fade"},
+         "to_map": "dimglass_coast_ii", "to": {"tx": 8, "ty": 31}, "facing": "up", "transition": "fade",
+         "requires_flag": "gleam:ember", "blocked_ref": "npc.coast_keeper_gate"},
         # The cavern mouth's LOWER tile: (2,10) had no standable neighbour (the
         # cliff edging seals that row — audit_flow caught it), so the door sits
         # at (2,11), interacted from the open grass at (3,11) facing left.
@@ -260,6 +263,13 @@ m = {
         # (audit_flow proved the single tile at (8,28) was walk-aroundable). Band
         # the whole row; triggers on solid cells are inert, and the flag pair
         # hides the band once the beat has fired.
+        # The coast-keeper's pushback band: row 1 is the full 3-wide cut (x6-8) to
+        # Dimglass II. Until the first Gleam (the Beacon) it turns the player back;
+        # the north warps carry the same gate as a backstop.
+        *[{"id": f"coast_keeper_gate_{tx}", "kind": "cutscene", "at": {"tx": tx, "ty": 1},
+           "activation": "step_on", "ref": "script.coast_keeper_gate",
+           "hidden_when_flag": "gleam:ember"}
+          for tx in range(6, 9)],
         *[{"id": f"dusk_begins_{tx}", "kind": "cutscene", "at": {"tx": tx, "ty": 28},
            "activation": "step_on", "ref": "script.dusk_begins", "once": True,
            "sets_flags": ["flag:dusk_begins"],
@@ -326,6 +336,12 @@ m = {
         {"id": "wren_after", "at": {"tx": 5, "ty": 11}, "facing": "right", "sprite": "wren",
          "movement": "static", "dialogue_ref": "npc.dimglass_wayfarer",
          "requires_flag": "flag:wren_dimglass_battled"},
+        # Brisa's coast-keeper (script.coast_keeper_gate): posted just off the lane
+        # below the north cut until the first Gleam; the keeper hurries over to turn back
+        # an apprentice who hasn't lit the Beacon.
+        {"id": "coast_keeper", "at": {"tx": 10, "ty": 5}, "facing": "left",
+         "sprite": "npc_lampwarden", "movement": "static",
+         "dialogue_ref": "npc.coast_keeper_gate", "hidden_when_flag": "gleam:ember"},
         # B1 witness — the old lamplighter appears near the beat once dusk_begins has
         # fired. He KEEPS THE BEACON'S WICK-KEY (the Tinderwick ascent quest): his
         # first talk hands it over, then the plain witness placement swaps in.
