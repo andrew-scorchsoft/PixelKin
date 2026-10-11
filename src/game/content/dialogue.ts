@@ -7,6 +7,7 @@
  */
 import type { DialogueLine, DialogueRegistry } from './types';
 import { OLDLIGHT_DIALOGUE } from './oldlight';
+import { REGION_EXTRA_DIALOGUE } from './regions';
 
 export const DIALOGUE: DialogueRegistry = {
   // --- Georgina's cottage (gloamwood_dell) — ambient cats + a hand-lettered sign ---
@@ -1969,6 +1970,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // R9 "The Old Light" — Lightkeeper's Point + the joke-tower (content/oldlight.ts).
   ...OLDLIGHT_DIALOGUE,
+  ...REGION_EXTRA_DIALOGUE,
 };
 
 const FALLBACK: DialogueLine[] = [{ text: '...' }];

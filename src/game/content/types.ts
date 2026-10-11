@@ -118,7 +118,15 @@ type CutsceneStepBase =
   | { op: 'narrate'; text: string } // un-attributed, full-width prose (a say with style:'narrate')
   | { op: 'dialogue'; ref: string }
   | { op: 'wait'; ms: number }
-  | { op: 'move'; actor: ActorRef; to: TileCoord }
+  // `speed` multiplies the walk pace (2 = a run, 0.5 = a slow, heavy walk; default 1).
+  | { op: 'move'; actor: ActorRef; to: TileCoord; speed?: number }
+  // Sprite ACTING (no art needed — tweens on the actor's sprite, never its tile):
+  | { op: 'hop'; actor: ActorRef; times?: number; height?: number } // a startled jump in place
+  | { op: 'shakeActor'; actor: ActorRef; ms?: number; px?: number } // a shudder (fear, cold, laughter)
+  | { op: 'spin'; actor: ActorRef; turns?: number; ms?: number; end?: Facing } // look all around; ends facing `end` (default: where it started)
+  // A falling star crosses the sky on cue (the game's motif; Ambience.starfall).
+  // `wait` holds the scene until it burns out (default false: the scene carries on).
+  | { op: 'starfall'; wait?: boolean; from?: 'left' | 'right' }
   | { op: 'face'; actor: ActorRef; facing: Facing }
   | { op: 'emote'; actor: ActorRef; emote: EmoteName; holdMs?: number } // pop a bubble above an actor
   | { op: 'action'; actor: ActorRef; action: ActionName; holdMs?: number } // play a one-shot pose

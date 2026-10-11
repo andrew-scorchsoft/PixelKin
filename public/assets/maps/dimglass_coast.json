@@ -2995,6 +2995,18 @@
       "movement": "look_around",
       "dialogue_ref": "script.wink_trade",
       "requires_flag": "flag:has_starter"
+    },
+    {
+      "id": "amb_brinelet",
+      "at": {
+        "tx": 12,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "kin_26_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
     }
   ],
   "gates": [
@@ -3010,5 +3022,31 @@
       }
     }
   ],
-  "music": "assets/audio/music/dimglass-coast-a.mp3"
+  "music": "assets/audio/music/dimglass-coast-a.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "spray",
+        "density": 0.8
+      }
+    ],
+    "starfall": {
+      "min_s": 40,
+      "max_s": 90
+    },
+    "birds": {
+      "kind": "gull",
+      "flocks": [
+        {
+          "tx": 12,
+          "ty": 7
+        }
+      ],
+      "flyover": true
+    },
+    "bob_gids": [
+      120
+    ],
+    "sound_bed": "amb-surf"
+  }
 }

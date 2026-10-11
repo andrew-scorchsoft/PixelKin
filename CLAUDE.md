@@ -1036,7 +1036,20 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   getCannotDie()`; `WorldScene.blackout` then heals the party and RE-ENTERS the current map at the
   player's own tile (no rest-point warp, no wick tithe) — the re-entry is what resets actors a lost
   scene walked off-post, a marched-up sight trainer, and a focused camera; don't shortcut it. A lost scripted battle still ends its scene, so the fight simply waits to be
-  retried. The settings list is now 12 rows, windowed to 11 visible (`Menu.maxVisible`).
+  retried. The settings list is now 13 rows (+ Ambient motion), windowed to 11 visible (`Menu.maxVisible`).
+- **World ambience is `systems/world/Ambience.ts`, one per map (WP0, 2026-10) — art-style §12b.**
+  Map-level colour rides `MapDefinition.ambience` (particles/mist/tint/starfall/birds/bob_gids…);
+  lamp pools + chimney smoke are SPRITE-KEYED tables (`LIGHT_SOURCES`/`CHIMNEYS`, the
+  HEAL_ENTRANCE_MAPS pattern); shadows, legs-in-grass, glints and the NPC bob are FOLLOWERS
+  WorldScene attaches from outside (the entity classes stay untouched). Author ambience blocks and
+  ambient kin ONLY via `tools/maps/worldcraft/<region>.py` + `add_world_craft.py` (idempotent,
+  re-run after any rebuild; it REFUSES non-ambient additions on pre-Chickenpig maps). Everything
+  obeys Settings → "Ambient motion" (`preferences.getAmbientMotion`, live).
+- **`ambient: true` NPCs are NOT Npcs.** WorldScene never spawns them as actors (no collision, no
+  Confirm, no cutscene addressing) — the Ambience grazes them; `worldmodel.py` drops them, so the
+  audits are blind to them by design. Pick the kin from the map's OWN encounter table and park it
+  OFF the lane (the runner lints foot-walkable + not on a warp/trigger). New cutscene acting ops:
+  `hop`, `shakeActor`, `spin`, `starfall` and `move.speed` (sprite tweens only — tiles never move).
 - **Every rest point is REMEMBERED: SETTINGS → "Return to rest point" (2026-10).** The `heal`
   op's `recordRespawn` also banks `WorldSnapshot.rest_points` (additive optional; one per map,
   latest coords, label = the map's `display_name`; old saves seed from `respawn` in

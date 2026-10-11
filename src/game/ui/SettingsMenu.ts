@@ -43,6 +43,8 @@ import {
   setMusicVolume,
   setSfxVolume,
   setCannotDie,
+  setAmbientMotion,
+  getAmbientMotion,
   type TextSpeed,
   type BattlePace,
   type VolumeLevel,
@@ -146,6 +148,7 @@ export class SettingsMenu {
       { label: `Music: ${VOLUME_LABEL[this.settings.musicVolume ?? 'full']}`, value: 'music' },
       { label: `Sfx: ${VOLUME_LABEL[this.settings.sfxVolume ?? 'full']}`, value: 'sfx' },
       { label: `Cannot die: ${this.settings.cannotDie ? 'On' : 'Off'}`, value: 'nodie' },
+      { label: `Ambient motion: ${getAmbientMotion() ? 'On' : 'Off'}`, value: 'motion' },
       { label: 'Backup / restore', value: 'backup' },
       { label: 'Back', value: 'back' },
     ];
@@ -321,6 +324,16 @@ export class SettingsMenu {
         const cannotDie = !this.settings.cannotDie;
         this.settings = { ...this.settings, cannotDie };
         setCannotDie(cannotDie);
+        await SaveManager.saveSettings(this.settings);
+        void this.deps.sfx?.play('ui-toggle');
+        return true;
+      }
+      case 'motion': {
+        // Particles / falling stars / birds / bobbing — off for motion-sensitive
+        // players. Live: Ambience reads the getter every frame.
+        const ambientMotion = !getAmbientMotion();
+        this.settings = { ...this.settings, ambientMotion };
+        setAmbientMotion(ambientMotion);
         await SaveManager.saveSettings(this.settings);
         void this.deps.sfx?.play('ui-toggle');
         return true;

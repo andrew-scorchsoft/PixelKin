@@ -5,6 +5,7 @@
  */
 import type { ScriptRegistry } from './types';
 import { OLDLIGHT_SCRIPTS } from './oldlight';
+import { REGION_EXTRA_SCRIPTS } from './regions';
 
 export const SCRIPTS: ScriptRegistry = {
   // --- The opening: the satchel errand at the Vesper Crossroads -----------------
@@ -727,6 +728,9 @@ export const SCRIPTS: ScriptRegistry = {
   'script.dusk_begins': [
     { op: 'letterbox', on: true, ms: 320 },
     { op: 'silence', ms: 1200 }, // the held quiet before the light fails
+    // The motif's debut: a cinder star streaks over the water as the line lands
+    // (non-blocking colour — no added line or length; a no-op with motion off).
+    { op: 'starfall', from: 'right' },
     { op: 'narrate', text: 'Far out over the water, a constellation flickers — and goes dark.' },
     { op: 'sfx', key: 'world-star-gutter' },
     { op: 'tint', color: '#0b1026', alpha: 0.55, ms: 180 }, // the dark presses in
@@ -5216,6 +5220,7 @@ export const SCRIPTS: ScriptRegistry = {
   ],
 
   ...OLDLIGHT_SCRIPTS,
+  ...REGION_EXTRA_SCRIPTS,
 };
 
 export function getScript(ref: string): import('./types').CutsceneStep[] | undefined {

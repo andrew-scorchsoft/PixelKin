@@ -13,6 +13,7 @@ import { makeText } from '@game/ui/Text';
 import { DebugOverlay } from '@game/ui/DebugOverlay';
 import { DialogueBox } from '@game/ui/DialogueBox';
 import { Menu } from '@game/ui/Menu';
+import { Panel } from '@game/ui/Panel';
 import { PartyMenu } from '@game/ui/PartyMenu';
 import { ItemsMenu } from '@game/ui/ItemsMenu';
 import { HearthMenu } from '@game/ui/HearthMenu';
@@ -50,6 +51,7 @@ import { FlagStore } from '@game/systems/flags/FlagStore';
 import { Player } from '@game/entities/Player';
 import { Npc } from '@game/entities/Npc';
 import type { Actor } from '@game/entities/Actor';
+import { STEP_MS } from '@game/entities/Actor';
 import { getDialogue } from '@game/content/dialogue';
 import { getScript } from '@game/content/scripts';
 import { getShop } from '@game/content/shops';
@@ -70,7 +72,9 @@ import { SaveCodec } from '@game/systems/save/SaveCodec';
 import type { WorldSnapshot } from '@game/data/world/types';
 import { MAP_REGISTRY } from '@game/data/world/maps';
 import { LamplightMask } from '@game/systems/world/LamplightMask';
+import { Ambience } from '@game/systems/world/Ambience';
 import { VESPERHOLM_GRAPH } from '@game/data/world/graph';
+import type { Region } from '@game/data/world/graph';
 import type { AbilityId, Facing, Warp, EventTrigger, NpcPlacement, MapObject, EncounterTerrain, WorldFlag, RestPoint } from '@game/data/world/types';
 
 export interface WorldSceneData {
@@ -148,6 +152,11 @@ export class WorldScene extends Phaser.Scene {
   private npcs: Npc[] = [];
   /** The spine §5 reveal mask — present only on maps flagged `dark`. */
   private lamplight?: LamplightMask;
+  /** The map's ambient kit (particles, starfall, light pools, shadows, legs-in-grass,
+   *  ambient kin…) — systems/world/Ambience.ts. Rebuilt per map. */
+  private ambience?: Ambience;
+  /** look_around NPCs currently glancing at a nearby player (enter-range edge). */
+  private nearbyLookers = new Set<Npc>();
 
   private party: KinInstanceData[] = [];
   /** Kin kept at the Hearth (storage); overflow from a full lamp lands here. */
@@ -296,6 +305,7 @@ export class WorldScene extends Phaser.Scene {
       this.refreshObjects();
       this.markHealEntrances();
       this.markLumenaryCrests();
+      this.buildAmbience();
       // Dark terrain (spine §5): partial dusk beyond the vesperlamp's circle.
       // Additive only — the main lane is lit and the dusk is never opaque.
       if (MAP_REGISTRY[mapId]?.dark) {
@@ -307,7 +317,7 @@ export class WorldScene extends Phaser.Scene {
 
       if (initial) this.cameras.main.fadeIn(theme.transition.fadeMs, 0, 0, 0);
       this.ready = true;
-      this.flashLocationBanner(map.def.display_name);
+      this.flashLocationBanner(map.def.display_name, mapId);
       this.noteChartDiscovery(mapId);
       this.maybeQueueTutorial(mapId);
       void this.persist(); // autosave on entering any map (so Continue always works)
@@ -437,31 +447,96 @@ export class WorldScene extends Phaser.Scene {
     });
   }
 
-  private locationBanner?: Phaser.GameObjects.Text;
+  /** The area-name plate (or the quiet re-entry banner) — `locationBanner` is the
+   *  name the screenshot harness waits on, so it stays the field for both. */
+  private locationBanner?: Phaser.GameObjects.Container | Phaser.GameObjects.Text;
   private lastBanneredMap?: string;
-  /** Flash the area name in the bottom-left for a beat when we step into a new
-   *  map — opposite the SAVED corner glyph, so on a map-entry autosave the two
-   *  sit either side. Skipped when re-entering the same-named map. */
-  private flashLocationBanner(displayName: string): void {
+  /** Maps whose framed plate has already shown this session (re-entry is quieter). */
+  private platedMaps = new Set<string>();
+
+  /** How the plate's second line names each region. */
+  private static readonly REGION_LABEL: Record<Region, string> = {
+    south: 'the South',
+    east: 'the East',
+    north: 'the North',
+    west: 'the West',
+    central: 'the Centre',
+    outer: 'the Outer Ring',
+  };
+
+  /**
+   * Announce the area on entry. The FIRST outdoor entry to a map this session gets
+   * the framed PLATE — the name over its region ("DIMGLASS COAST · the South"),
+   * sliding in top-left on the theme panel; interiors and re-entries get the quiet
+   * bottom-left name. Never blocks input (no modal, no await). Skipped when
+   * re-entering the same-named map (walking between halves of one area).
+   */
+  private flashLocationBanner(displayName: string, mapId?: string): void {
     if (!displayName || displayName === this.lastBanneredMap) return;
     this.lastBanneredMap = displayName;
     this.locationBanner?.destroy();
+    this.locationBanner = undefined;
+    const kind = this.map?.def.kind;
+    const region = mapId ? VESPERHOLM_GRAPH.nodes.find((n) => n.map_id === mapId)?.region : undefined;
+    if (mapId && region && kind !== 'interior' && !this.platedMaps.has(mapId)) {
+      this.platedMaps.add(mapId);
+      this.showAreaPlate(displayName, WorldScene.REGION_LABEL[region]);
+      return;
+    }
     const { height } = this.cameras.main;
-    this.locationBanner = makeText(this, 4, height - 4, displayName, theme.text.accent)
+    const banner = makeText(this, 4, height - 4, displayName, theme.text.accent)
       .setOrigin(0, 1)
       .setScrollFactor(0)
       .setDepth(theme.depth.overlayDim + 1)
       .setAlpha(0);
+    this.locationBanner = banner;
     this.tweens.add({
-      targets: this.locationBanner,
+      targets: banner,
       alpha: 1,
       duration: 250,
       yoyo: true,
       hold: 1100,
       onComplete: () => {
-        this.locationBanner?.destroy();
-        this.locationBanner = undefined;
+        banner.destroy();
+        if (this.locationBanner === banner) this.locationBanner = undefined;
       },
+    });
+  }
+
+  /** The framed area plate: theme panel + name (accent) + region (dim), slid in. */
+  private showAreaPlate(name: string, region: string): void {
+    const pad = theme.space.lg;
+    const title = makeText(this, pad, pad - 1, name.toUpperCase(), theme.text.accent);
+    const sub = makeText(this, pad, pad + 9, region, theme.text.dim);
+    const w = Math.ceil(Math.max(title.width, sub.width)) + pad * 2;
+    const h = 26;
+    const panel = new Panel(this, 0, 0, w, h);
+    panel.add(title);
+    panel.add(sub);
+    const x0 = -w - 2;
+    const x1 = theme.space.md;
+    const plate = panel.container
+      .setPosition(x0, theme.space.md)
+      .setScrollFactor(0)
+      .setDepth(theme.depth.overlayDim + 1);
+    this.locationBanner = plate;
+    this.tweens.add({
+      targets: plate,
+      x: x1,
+      duration: 260,
+      ease: 'Back.out',
+      onComplete: () =>
+        this.tweens.add({
+          targets: plate,
+          x: x0,
+          delay: 1900,
+          duration: 240,
+          ease: 'Sine.in',
+          onComplete: () => {
+            plate.destroy();
+            if (this.locationBanner === plate) this.locationBanner = undefined;
+          },
+        }),
     });
   }
 
@@ -618,8 +693,38 @@ export class WorldScene extends Phaser.Scene {
     return c;
   }
 
+  /**
+   * Build the map's ambient kit (systems/world/Ambience.ts): the map block's
+   * particles/mist/tint/starfall/birds, sprite-keyed light pools + chimney smoke,
+   * the grazing ambient kin, and followers (shadow, legs-in-grass, glint, bob) on
+   * the player and every NPC. Pure colour — collision/encounters never see it.
+   */
+  private buildAmbience(): void {
+    const none = new Set<AbilityId>();
+    this.ambience = new Ambience(this, this.map, {
+      flag: (f) => this.flags.get(f),
+      walkable: (tx, ty) => this.map.inBounds(tx, ty) && !this.collision.isBlocked(tx, ty, none),
+      objectVisible: (obj) => this.objectVisible(obj),
+      hasSfx: (stem) => this.sfx.has(stem),
+    });
+    this.ambience.attach(this.player, 'player');
+    for (const npc of this.npcs) this.attachNpcAmbience(npc);
+    this.ambience.spawnAmbientKin(
+      this.map.def.npcs.filter((p) => p.ambient && this.npcVisible(p)),
+    );
+  }
+
+  private attachNpcAmbience(npc: Npc): void {
+    const sprite = npc.placement.sprite;
+    this.ambience?.attach(npc, sprite === 'item_cache' ? 'cache' : /^kin_\d+_overworld$/.test(sprite) ? 'kin' : 'npc');
+  }
+
   private teardownMap(): void {
     this.cameras.main.stopFollow();
+    this.ambience?.destroy();
+    this.ambience = undefined;
+    this.nearbyLookers.clear();
+    for (const b of this.render?.bobbers ?? []) b.destroy();
     for (const m of this.healMarkers) m.destroy();
     this.healMarkers = [];
     for (const m of this.crestMarkers) m.destroy();
@@ -662,7 +767,7 @@ export class WorldScene extends Phaser.Scene {
   private findFootTile(tx: number, ty: number): { tx: number; ty: number } | undefined {
     const none = new Set<AbilityId>();
     const posts = new Set(
-      this.map.def.npcs.filter((n) => this.npcVisible(n)).map((n) => `${n.at.tx},${n.at.ty}`),
+      this.map.def.npcs.filter((n) => !n.ambient && this.npcVisible(n)).map((n) => `${n.at.tx},${n.at.ty}`),
     );
     const ok = (x: number, y: number): boolean =>
       this.map.inBounds(x, y) && !this.collision.isBlocked(x, y, none) && !posts.has(`${x},${y}`);
@@ -692,8 +797,11 @@ export class WorldScene extends Phaser.Scene {
     return !(trigger.hidden_when_flag && this.flags.get(trigger.hidden_when_flag));
   }
 
+  /** Spawn the map's characters. `ambient` placements are NOT Npcs — the
+   *  Ambience system grazes them (no collision, no interact, no scripts). */
   private spawnNpcs(): void {
     for (const placement of this.map.def.npcs) {
+      if (placement.ambient) continue;
       if (this.npcVisible(placement)) this.npcs.push(new Npc(this, placement));
     }
   }
@@ -712,6 +820,7 @@ export class WorldScene extends Phaser.Scene {
       const def = img.getData('object_def') as MapObject | undefined;
       if (def && (def.requires_flag || def.hidden_when_flag)) img.setVisible(this.objectVisible(def));
     }
+    this.ambience?.refreshLights();
   }
 
   /** Re-evaluate flag-conditional NPCs after flags change (a picked-up item
@@ -725,13 +834,17 @@ export class WorldScene extends Phaser.Scene {
     this.lamplight?.setBrightness(this.flags.countHeld('gleam:'));
     this.npcs = this.npcs.filter((npc) => {
       if (this.npcVisible(npc.placement)) return true;
+      this.ambience?.detach(npc); // a picked-up cache pops with a puff
+      this.nearbyLookers.delete(npc);
       npc.destroy();
       return false;
     });
     for (const placement of this.map.def.npcs) {
-      if (!this.npcVisible(placement)) continue;
+      if (placement.ambient || !this.npcVisible(placement)) continue;
       if (this.npcs.some((n) => n.placement === placement)) continue;
-      this.npcs.push(new Npc(this, placement));
+      const npc = new Npc(this, placement);
+      this.npcs.push(npc);
+      this.attachNpcAmbience(npc);
     }
   }
 
@@ -769,11 +882,13 @@ export class WorldScene extends Phaser.Scene {
           const completed = await runCutscene(this.cutsceneContext(), steps);
           if (completed) void this.persist();
           this.modal = false;
+          this.turnBackToPost(npc);
           this.refreshNpcs();
         }
         return;
       }
       await this.runDialogue(npc.dialogueRef);
+      this.turnBackToPost(npc);
       return;
     }
 
@@ -801,6 +916,17 @@ export class WorldScene extends Phaser.Scene {
         (w.trigger === 'interact' || w.transition === 'door'),
     );
     if (warp) await this.executeWarp(warp);
+  }
+
+  /** After a talk, a STATIC NPC still standing on its post turns back to the way
+   *  it was facing (the shopkeeper returns to the counter) — the classic beat. */
+  private turnBackToPost(npc: Npc): void {
+    const p = npc.placement;
+    if (p.movement !== 'static' || !npc.sprite.active) return;
+    if (npc.tx !== p.at.tx || npc.ty !== p.at.ty) return; // a scene walked it elsewhere
+    this.time.delayedCall(260, () => {
+      if (npc.sprite.active && !npc.isMoving) npc.setFacing(p.facing);
+    });
   }
 
   private async runDialogue(ref: string | undefined): Promise<void> {
@@ -995,6 +1121,7 @@ export class WorldScene extends Phaser.Scene {
         void this.persist();
       },
       cameraFocusTile: (tx, ty, ms, zoom) => this.cameraFocusTile(tx, ty, ms, zoom),
+      starfall: (opts) => this.ambience?.starfall(opts) ?? Promise.resolve(),
       cameraReset: (ms) => this.cameraResetToPlayer(ms),
       startCinematic: async (id: string) => {
         // Bank everything FIRST (flags the script just set included) so a
@@ -1091,9 +1218,32 @@ export class WorldScene extends Phaser.Scene {
 
   // --- Step-on (on arrival) -----------------------------------------------
 
+  /** Footstep timbre by surface: 'world-footstep-<surface>' when WP1 has rendered
+   *  one (sand, snow, stone, wood…), else the one shared footstep. */
+  private footstepKey(tx: number, ty: number): string {
+    const surf = this.map.surfaceAt(tx, ty);
+    const family: Record<string, string> = {
+      sand: 'sand', trail: 'sand', dunegrass: 'sand',
+      snow: 'snow', snowpatch: 'snow', snowtrail: 'snow', ice: 'snow',
+      cavefloor: 'stone', basalt: 'stone', ruinfloor: 'stone', path: 'stone',
+      floor: 'wood', tallgrass: 'grass', ground: 'grass',
+    };
+    const key = surf && family[surf] ? `world-footstep-${family[surf]}` : '';
+    return key && this.sfx.has(key) ? key : 'world-footstep';
+  }
+
   private onPlayerArrive = (tx: number, ty: number): void => {
     if (this.modal) return; // a warp/cutscene/battle is already in progress
-    void this.sfx.playVariant('world-footstep', ['a', 'b']);
+    void this.sfx.play(this.footstepKey(tx, ty));
+    // Feel, never logic: a print on the tile just left (sand/snow), and a rustle
+    // + leaf fleck when the step lands in tall grass.
+    const back: Record<Facing, [number, number]> = { down: [0, -1], up: [0, 1], left: [1, 0], right: [-1, 0] };
+    const [bx, by] = back[this.player.facing];
+    this.ambience?.footprint(tx + bx, ty + by, this.player.facing);
+    if (this.map.hasTerrainAt(tx, ty, 'tall_grass')) {
+      this.ambience?.rustle(this.player);
+      if (this.sfx.has('world-grass-rustle')) void this.sfx.play('world-grass-rustle');
+    }
 
     // First time a Lantern Gift carries you onto its gated ground, mark the
     // moment — the lamp raised, a wash of its light. Once per Gift.
@@ -1132,21 +1282,34 @@ export class WorldScene extends Phaser.Scene {
     if (this.hasHealthyKin()) {
       const intent = this.encounters.roll(tx, ty, this.abilities, (flag) => this.flags.get(flag));
       if (intent) {
-        void this.startBattle({
-          kind: 'wild',
-          species_id: intent.species_id,
-          level: intent.level,
-          terrain: intent.terrain,
-          party: this.party,
-          box: this.box,
-          inventory: this.inventory,
-          dex_caught: [...this.dexCaught],
-        }).then((result) => {
-          if (result.outcome === 'lose') void this.blackout();
-        });
+        void this.encounterTellThenBattle(intent);
       }
     }
   };
+
+  /**
+   * The encounter tell: the grass you're standing in shivers for a beat, THEN the
+   * battle swoosh. Movement is held through the beat; modal is released again just
+   * before `startBattle` (synchronously, no frame between) so the battle still
+   * restores the free-roam state afterwards, exactly as an un-told encounter did.
+   */
+  private async encounterTellThenBattle(intent: NonNullable<ReturnType<EncounterSystem['roll']>>): Promise<void> {
+    this.modal = true;
+    await (this.ambience?.encounterTell(this.player) ?? Promise.resolve());
+    this.modal = false;
+    void this.startBattle({
+      kind: 'wild',
+      species_id: intent.species_id,
+      level: intent.level,
+      terrain: intent.terrain,
+      party: this.party,
+      box: this.box,
+      inventory: this.inventory,
+      dex_caught: [...this.dexCaught],
+    }).then((result) => {
+      if (result.outcome === 'lose') void this.blackout();
+    });
+  }
 
   private hasHealthyKin(): boolean {
     return this.party.some((k) => k.hp > 0);
@@ -1375,9 +1538,13 @@ export class WorldScene extends Phaser.Scene {
     // Tolerant: ignore warps whose target map isn't authored/registered yet.
     if (!MAP_REGISTRY[warp.to_map]) return;
     this.modal = true;
-    void this.sfx.play(warp.transition === 'door' ? 'world-door-open' : 'world-warp');
-    await fadeOut(this, warp.transition === 'door' ? theme.transition.doorMs : theme.transition.fadeMs);
+    const door = warp.transition === 'door';
+    void this.sfx.play(door ? 'world-door-open' : 'world-warp');
+    // The door-open beat: the doorway darkens for a moment before the fade.
+    if (door) await (this.ambience?.doorBeat(warp.at.tx, warp.at.ty) ?? Promise.resolve());
+    await fadeOut(this, door ? theme.transition.doorMs : theme.transition.fadeMs);
     await this.enterMap(warp.to_map, warp.to, warp.facing, false);
+    if (door) void this.sfx.play('world-door-close'); // and it shuts behind you
     await fadeIn(this, theme.transition.fadeMs);
     this.modal = false;
   }
@@ -1430,6 +1597,10 @@ export class WorldScene extends Phaser.Scene {
         void this.runTutorial(tut);
         return;
       }
+      // Any press cancels the player's idle glance (so Confirm faces where they meant).
+      if (this.controller.heldDirection() !== null || this.controller.justPressed(InputAction.Confirm)) {
+        this.ambience?.wake(this.player);
+      }
       if (this.controller.justPressed(InputAction.Menu)) {
         void this.openPauseMenu();
       } else if (!this.player.isMoving && this.controller.justPressed(InputAction.Confirm)) {
@@ -1441,10 +1612,32 @@ export class WorldScene extends Phaser.Scene {
           this.onPlayerArrive,
           this.onBump,
           (tx, ty) => this.collision.ledgeAt(tx, ty),
-          () => void this.sfx.playVariant('world-ledge-hop', ['a', 'b']),
+          () => {
+            void this.sfx.playVariant('world-ledge-hop', ['a', 'b']);
+            this.ambience?.noteHop(this.player, this.player.facing, STEP_MS * 2);
+          },
         );
       }
-      for (const npc of this.npcs) npc.update(delta, this.npcCanEnter);
+      for (const npc of this.npcs) {
+        const r = npc.placement.wander_radius;
+        // The wander leash: a wanderer never strays more than `wander_radius` from its post.
+        npc.update(
+          delta,
+          r === undefined
+            ? this.npcCanEnter
+            : (tx, ty) =>
+                Math.max(Math.abs(tx - npc.placement.at.tx), Math.abs(ty - npc.placement.at.ty)) <= r &&
+                this.npcCanEnter(tx, ty),
+        );
+        // look_around folk glance at you as you pass within 2 tiles (once per pass).
+        if (npc.placement.movement === 'look_around' && !npc.isMoving) {
+          const near = Math.abs(npc.tx - this.player.tx) + Math.abs(npc.ty - this.player.ty) <= 2;
+          if (near && !this.nearbyLookers.has(npc)) {
+            this.nearbyLookers.add(npc);
+            npc.facePoint(this.player.tx, this.player.ty);
+          } else if (!near) this.nearbyLookers.delete(npc);
+        }
+      }
     }
 
     // Standing on water the vesperlamp carries you over: the player swims rather
@@ -1454,6 +1647,7 @@ export class WorldScene extends Phaser.Scene {
 
     this.player.syncDepth(ACTOR_DEPTH);
     for (const npc of this.npcs) npc.syncDepth(ACTOR_DEPTH);
+    this.ambience?.update(time, delta, this.player, this.modal);
     this.lamplight?.follow(this.player.sprite.x, this.player.sprite.y);
 
     this.debug.set([

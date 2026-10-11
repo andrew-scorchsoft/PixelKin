@@ -933,6 +933,17 @@ family (path-over-sand, drawn by gbaforge); Dimglass II's dune lane uses it. The
 pattern (add a context-correct family, appended to the shared set so indices hold)
 is the standing answer for any new ground-pair seam.
 
+9. **Every screen moves (the ambient kit, WP0 2026-10).** A still map reads as a
+   picture, not a place. Every outdoor map gets an `ambience` block (art-style §12b):
+   a particle family that fits the place (spray on a coast, snow on a pass, ash in a
+   mine, glowmotes in a wood), the starfall streak (on by default outdoors), and —
+   on routes — at least one **ambient kin** from the map's OWN encounter table,
+   grazing OFF the lane (it never collides, but a kin parked in a 1-wide choke still
+   reads as a blocker). Lamp pools, chimney smoke, shadows, legs-in-grass and
+   footprints come for free from sprite/terrain tables — don't hand-place them. Author
+   through `tools/maps/worldcraft/<region>.py` + `add_world_craft.py`, never by hand in
+   the JSON; on the pre-Chickenpig path the runner allows ambience + ambient kin ONLY.
+
 ---
 
 > **In one line:** design screen-by-screen for the 15×10 window, lead the eye with light,

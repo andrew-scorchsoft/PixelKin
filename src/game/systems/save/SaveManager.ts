@@ -69,6 +69,9 @@ export interface Settings {
   /** Cannot-die mode: a lost battle restores the party where you stand (no
    *  warp to the last rest point, no wick tithe). */
   cannotDie?: boolean;
+  /** Ambient motion (particles / falling stars / birds / bobbing). Unset = the
+   *  OS reduced-motion preference decides (see preferences.prefersReducedMotion). */
+  ambientMotion?: boolean;
 }
 
 /** The defaults a brand-new player gets before they touch the Settings menu. */

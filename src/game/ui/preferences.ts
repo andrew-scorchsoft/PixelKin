@@ -17,6 +17,7 @@ let battlePace: BattlePace = 'cosy';
 let musicVolume: VolumeLevel = 'full';
 let sfxVolume: VolumeLevel = 'full';
 let cannotDie = false;
+let ambientMotion = true;
 
 /** OFF/LOW/MID/FULL -> 0/0.33/0.66/1. */
 const VOLUME_GAIN: Record<VolumeLevel, number> = {
@@ -67,6 +68,32 @@ export function setCannotDie(on: boolean): void {
 
 export function getCannotDie(): boolean {
   return cannotDie;
+}
+
+// ------------------------------------------------------------- ambient motion --
+
+/**
+ * Ambient motion (Settings → "Ambient motion"): world particles, falling-star
+ * streaks, birds and object bobbing. Off for motion-sensitive players; light
+ * pools, shadows and footprints stay (they're still, not motion). Ambience.ts
+ * reads this every frame, so the toggle applies live.
+ */
+export function setAmbientMotion(on: boolean): void {
+  ambientMotion = on;
+}
+
+export function getAmbientMotion(): boolean {
+  return ambientMotion;
+}
+
+/** The default when the player never touched the row: honour the OS's
+ *  reduced-motion preference (a browser without matchMedia → motion on). */
+export function prefersReducedMotion(): boolean {
+  try {
+    return typeof window !== 'undefined' && !!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  } catch {
+    return false;
+  }
 }
 
 // ----------------------------------------------------------------- battle pace --

@@ -607,6 +607,49 @@ sidecar (`animation: { frames: [...], duration_ms }`, see
   the ripple shifted, then slice. Frames generated in isolation jump.
 - The whole family (base + extra frames) packs into one atlas; the base tile's
   `animation.frames` lists the local indices to cycle.
+- Animated tiles run **out of lockstep**: `MapRenderer` gives each placed tile a
+  phase offset hashed from its x,y, so a sea glitters instead of blinking at once.
+
+---
+
+## 12b. Ambience (the "every screen moves" kit)
+
+All world ambience is **code-drawn overlay** in `src/game/systems/world/Ambience.ts`
+— no tiles appended (the shared set stays frozen), no art required, and every piece
+degrades silently. Settings → **Ambient motion: Off** (default follows the OS
+reduced-motion preference) stills particles, mist drift, streaks, birds, smoke,
+flicker, flecks and bobbing; the still pieces (pools, shadows, prints) stay.
+
+**Automatic (sprite/terrain tables — no map edit):**
+
+| Piece | Source | Look |
+|---|---|---|
+| Light pools | `LIGHT_SOURCES` (object sprite → flame offset, radius, colour) | 3 stepped additive ellipses on the ground (depth 8: above ground, below objects/actors) + a flame halo; slow flicker |
+| Chimney smoke | `CHIMNEYS` (building sprite → stack mouth) | grey puffs rising and fading (depth 22) |
+| Drop shadows | every actor (WorldScene attaches) | 13×4 black ellipse at α .3 centred on the sole line; stays on the ground and shrinks through a ledge hop |
+| Legs in grass | any tile tagged `encounter_terrain: tall_grass` | the actor's own grass tile, bottom 6px, redrawn over its feet |
+| Rustle / encounter tell | tall-grass steps | the overlay shudders + 1–3 leaf flecks; the tell holds 300 ms before the battle |
+| Footprints | sidecar `terrain` ∈ sand/trail/dunegrass/snowpatch/snowtrail | 2 marks on the tile left, fade ≤4 s, ≤12 alive |
+| Cache glint, door beat, pickup puff, ledge dust | item caches / door warps | small one-shots |
+| Boats/buoy objects bob | `OBJECT_BOB` in MapRenderer (`*_boat`, `*_buoy`) | 1 px sine |
+
+**Per map (`MapDefinition.ambience`, typed `MapAmbience` in `data/world/types.ts`):**
+`particles` (`snow`, `ash`, `embers`, `glowmotes`, `spores`, `spray`, `motes`,
+`leaves`, `starglint`, `dust`; `density` 0..1; `area` screen / water_edge / tile
+rect — ONE cap of 40 alive), `mist` (`color`, `alpha` ≤.6, `speed`), `tint`
+(`color`, `alpha`), `starfall` (default ON outdoors / OFF in interiors + caves;
+`{min_s,max_s}`, min clamped to 20 s — cinder blue-grey before `flag:dawn`, gold
+after), `birds` (`kind` gull/bird, perched `flocks` that lift within 3 tiles,
+`flyover`), `light_sources_extra`, `sound_bed` (a bare sfx stem; silent until it's
+rendered), `footprints` (`auto`/`all`/`none` — `all` for a snowfield whose base tiles
+carry no terrain tag) and `bob_gids` (tile gids lifted off the layer and bobbed —
+buoys). **Ambient kin** are `NpcPlacement.ambient: true` (+ `wander_radius`, default
+2): `kin_<id>_overworld` sprites that graze, never collide or talk, and hop away
+when the player is within 2 tiles; the map audits ignore them.
+
+Author blocks via `tools/maps/worldcraft/<region>.py` (helpers in `_kit.py`) and
+`python3 tools/maps/add_world_craft.py --region <r>`; Dimglass Coast I is the
+worked pilot. The `starfall` cutscene op calls a streak on cue (`dusk_begins`).
 
 ---
 
