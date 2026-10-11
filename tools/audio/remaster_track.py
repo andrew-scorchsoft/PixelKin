@@ -87,6 +87,9 @@ def check_spec(spec: dict) -> list[str]:
         total += d
         if not 3000 <= d <= 120000:
             errs.append(f"section {s.get('name')}: {d:.0f} ms outside 3000..120000 (bars x tempo)")
+        for line in (s.get("text") or "").split("\n"):
+            if len(line) > 200:
+                errs.append(f"section {s.get('name')}: a text line is {len(line)} chars; the API rejects >200 (422)")
         if s.get("adherence", "high") not in ("low", "medium", "high"):
             errs.append(f"section {s.get('name')}: adherence low|medium|high")
     if spec.get("kind") == "loop" and not 40000 <= total <= 240000:

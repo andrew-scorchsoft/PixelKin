@@ -1,0 +1,47 @@
+{
+ "chunks": [
+  {
+   "song_id": "pWoqqGmf01Hpvxkuzgg1",
+   "range": {
+    "start_ms": 58811,
+    "end_ms": 78811
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments",
+    "80 BPM",
+    "A minor resolving to C major",
+    "6/8 time, gentle rocking lullaby sway",
+    "soft pulse-wave lead with a sighing melody",
+    "rolling music-box arpeggios",
+    "warm low string pad",
+    "round soft synth bass breathing on the dotted pulse",
+    "intimate small-room cottage interior by a banked fire, warm and a little homesick",
+    "strong singable melody",
+    "great production quality",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "pWoqqGmf01Hpvxkuzgg1",
+   "range": {
+    "start_ms": 6750,
+    "end_ms": 16750
+   }
+  }
+ ]
+}
