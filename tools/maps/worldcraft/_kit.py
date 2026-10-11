@@ -10,7 +10,8 @@ A module's `PLACEMENTS` maps a shipped map id to a spec:
       "signs":    [(id, (x, y), "sign.ref"), ...],  # trigger + the sign deco tile
     }
 
-Pre-Chickenpig maps (PRE_CHICKENPIG) accept ONLY "ambience" and ambient NPCs —
+Pre-Chickenpig maps (PRE_CHICKENPIG) accept ONLY "ambience", ambient NPCs, "sprites"
+(cast swaps on existing NPC ids) and "objects" the runner PROVES off-lane —
 the runner refuses anything else there (the world-craft panel's hard rule).
 """
 from __future__ import annotations
@@ -53,7 +54,8 @@ def particles(kind: str, density: float | None = None, area=None) -> dict:
 
 
 # The pre-Chickenpig path (world-craft panel §4 hard rule): visual/ambient/feel
-# changes ONLY — the runner refuses non-ambient NPCs, objects, triggers or signs.
+# changes ONLY — the runner refuses non-ambient NPCs, triggers and signs, and
+# admits a prop only through prove_off_lane (add_world_craft.py).
 PRE_CHICKENPIG = {
     "tinderwick", "tinderwick_house", "tinderwick_shop", "tinderwick_lumenary",
     "tinderwick_beacon_i", "tinderwick_beacon_ii", "tinderwick_beacon_top",
