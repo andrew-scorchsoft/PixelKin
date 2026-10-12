@@ -851,7 +851,10 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   // the far mouth glows Solarium-gold. The loneliest road in the game.
   hushfrost_pass_i: {
     json: 'assets/maps/hushfrost_pass_i.json',
-    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',   // the glare pool (traversal pass 2026-10)
+    },
     kind: 'route',
     music: 'assets/audio/music/hushfrost-pass-a.mp3',
     battle_backdrops: [

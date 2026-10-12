@@ -15,6 +15,15 @@
       "first_gid": 1,
       "columns": 12,
       "tile_count": 386
+    },
+    {
+      "name": "traverse_set",
+      "image": "assets/tilesets/traverse_set.webp",
+      "tile_width": 16,
+      "tile_height": 16,
+      "first_gid": 387,
+      "columns": 8,
+      "tile_count": 52
     }
   ],
   "objects": [
@@ -3508,17 +3517,6 @@
       "solid": false
     },
     {
-      "id": "hf1_drift_nw",
-      "sprite": "hushfrost_drift_b",
-      "at": {
-        "tx": 8,
-        "ty": 5
-      },
-      "w": 4,
-      "h": 2,
-      "solid": false
-    },
-    {
       "id": "hf1_drift_mid",
       "sprite": "hushfrost_drift_a",
       "at": {
@@ -3585,17 +3583,6 @@
       "solid": false
     },
     {
-      "id": "hf1_scree_n",
-      "sprite": "hushfrost_scree_b",
-      "at": {
-        "tx": 12,
-        "ty": 6
-      },
-      "w": 3,
-      "h": 2,
-      "solid": false
-    },
-    {
       "id": "hf1_scree_c",
       "sprite": "hushfrost_scree_a",
       "at": {
@@ -3648,17 +3635,6 @@
       },
       "w": 1,
       "h": 4,
-      "solid": false
-    },
-    {
-      "id": "hf1_tracks_n",
-      "sprite": "hushfrost_tracks_h",
-      "at": {
-        "tx": 8,
-        "ty": 7
-      },
-      "w": 4,
-      "h": 1,
       "solid": false
     },
     {
@@ -4975,6 +4951,102 @@
     "assets/backgrounds/battle/hushfrost-pass-a.webp",
     "assets/backgrounds/battle/hushfrost-pass-b.webp"
   ],
+  "flows": [
+    {
+      "id": "glare_pool",
+      "kind": "ice",
+      "tiles": [
+        {
+          "tx": 9,
+          "ty": 5
+        },
+        {
+          "tx": 12,
+          "ty": 5
+        },
+        {
+          "tx": 16,
+          "ty": 5
+        },
+        {
+          "tx": 17,
+          "ty": 5
+        },
+        {
+          "tx": 18,
+          "ty": 5
+        },
+        {
+          "tx": 9,
+          "ty": 6
+        },
+        {
+          "tx": 10,
+          "ty": 6
+        },
+        {
+          "tx": 11,
+          "ty": 6
+        },
+        {
+          "tx": 12,
+          "ty": 6
+        },
+        {
+          "tx": 13,
+          "ty": 6
+        },
+        {
+          "tx": 15,
+          "ty": 6
+        },
+        {
+          "tx": 17,
+          "ty": 6
+        },
+        {
+          "tx": 18,
+          "ty": 6
+        },
+        {
+          "tx": 9,
+          "ty": 7
+        },
+        {
+          "tx": 11,
+          "ty": 7
+        },
+        {
+          "tx": 12,
+          "ty": 7
+        },
+        {
+          "tx": 13,
+          "ty": 7
+        },
+        {
+          "tx": 14,
+          "ty": 7
+        },
+        {
+          "tx": 15,
+          "ty": 7
+        },
+        {
+          "tx": 16,
+          "ty": 7
+        },
+        {
+          "tx": 17,
+          "ty": 7
+        },
+        {
+          "tx": 18,
+          "ty": 7
+        }
+      ]
+    }
+  ],
   "ambience": {
     "particles": [
       {
@@ -5172,16 +5244,16 @@
         197,
         197,
         197,
-        198,
+        428,
         200,
         200,
-        197,
+        429,
         197,
         199,
         197,
-        197,
-        200,
-        200,
+        429,
+        428,
+        429,
         199,
         258,
         263,
@@ -5204,16 +5276,16 @@
         197,
         198,
         197,
-        199,
-        197,
-        197,
-        197,
-        197,
+        429,
+        428,
+        429,
+        428,
+        429,
         200,
-        197,
+        429,
         200,
-        197,
-        198,
+        429,
+        428,
         197,
         197,
         255,
@@ -5236,16 +5308,16 @@
         197,
         197,
         199,
+        428,
         197,
-        197,
-        197,
-        198,
-        197,
-        197,
-        197,
-        200,
-        199,
-        197,
+        428,
+        429,
+        428,
+        429,
+        428,
+        429,
+        428,
+        429,
         197,
         252,
         261,
@@ -6112,13 +6184,9 @@
         0,
         0,
         0,
+        124,
         0,
-        0,
-        0,
-        5,
-        0,
-        0,
-        0,
+        124,
         0,
         0,
         0,
@@ -6144,8 +6212,12 @@
         0,
         0,
         0,
+        124,
         0,
-        5,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
