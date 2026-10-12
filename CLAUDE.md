@@ -899,7 +899,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   the equipment is DRAWN by `tools/maps/gymforge.py` → `gym_*` objects (its own master folder, like
   paulforge). Andy runs on a treadmill via `NpcPlacement.in_place_walk` (static body, looping walk
   cycle) — reuse it for any running-in-place NPC; the treadmill's belt is a separate solid:false object
-  under him so the footing audit passes.
+  under him so the footing audit passes. Gym folk face the CAMERA at rest (owner's call: you want to see
+  their sprites) and turn to you when spoken to; WorldScene skips the NPC tick on the frame a talk goes
+  modal, or an in-place runner snaps back to his stride before he can look at you.
 - **Talk ACROSS counters (2026-10).** `WorldScene.npcAcrossDesk`: facing a counter/stall/altar/desk
   object (`DESK_SPRITE`) reaches the NPC behind it, up to two desk tiles deep — the genre convention.
   Name a new desk-like prop so it matches the regex, or keepers behind it become unreachable to talk to.

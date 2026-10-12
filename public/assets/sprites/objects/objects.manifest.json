@@ -315,15 +315,15 @@
       "tw": 3,
       "th": 3
     },
-    "gym_treadmill_belt": {
-      "path": "assets/sprites/objects/gym_treadmill_belt.webp",
+    "gym_treadmill_belt_s": {
+      "path": "assets/sprites/objects/gym_treadmill_belt_s.webp",
       "width": 16,
       "height": 32,
       "tw": 1,
       "th": 2
     },
-    "gym_treadmill_console": {
-      "path": "assets/sprites/objects/gym_treadmill_console.webp",
+    "gym_treadmill_console_s": {
+      "path": "assets/sprites/objects/gym_treadmill_console_s.webp",
       "width": 16,
       "height": 16,
       "tw": 1,
