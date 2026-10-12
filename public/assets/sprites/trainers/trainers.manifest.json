@@ -211,6 +211,11 @@
         "rows": 4
       }
     },
+    "player_indi_runner": {
+      "path": "assets/sprites/trainers/player_indi_runner.webp",
+      "width": 128,
+      "height": 128
+    },
     "player_indi_swim": {
       "path": "assets/sprites/trainers/player_indi_swim.webp",
       "width": 128,
