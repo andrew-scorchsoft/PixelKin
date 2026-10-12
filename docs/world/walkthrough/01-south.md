@@ -644,6 +644,18 @@ netmender's keeping.
      game) and **6** (a friend's book read across two seas). Same grass table as the wood
      (WANDERWOOD rows, `CURATED_AREAS`). **Andrew** waits at the wood's hub (`andrew_wood`,
      (11,20), `script.andrew_wood`) — the last of his easter eggs.
+     **The Wayward Arms (2026-10):** past the glade lamp a narrow path leaves the wood's NORTH
+     edge (`to_rise`, cols 19-20) onto **`wayward_rise`** (24×22, `build_wayward_rise.py`, world
+     (3,-152), between the wood and the Lowleaf lane): a lamplit green with an old stone country
+     hotel, a pub garden, a well and a dark pond. No encounters. Inside, **`wayward_arms`**
+     (`build_wayward_arms.py`): an open bar (the back-bar's TOP shelf keeps the good bottles),
+     a fireside snug, and a well-dressed STRANGER standing by the corner chair — never named,
+     never explained (friend? long-lost brother?). `script.wayward_stranger`
+     (`content/regions/hotel.ts`): sit with him → "We've been told we can help ourselves" → you
+     take the bourbon down from the top shelf → the night talked away → a `heal` rest (the Arms
+     is a rest point; rest-lantern on its door) → "Sometimes it's good to experience the fine and
+     unexpected qualities of life." Later visits play a short version (`flag:wayward_night`,
+     which also unlocks the LORE entry). Pure reward; gates nothing.
    - **S6 "The Tin Rower"** — **[BUILT R9, 2026-10]** giver: **Aldous Wink** ("Wink's Wind-Ups
      — toys, tales, trades"), `npc_old_man` on the **Dimglass Coast I** south sand strip at (12,30),
      his auction board `sign.wink_auction` at (12,29) (`requires_flag: flag:has_starter`). Lot 1 is

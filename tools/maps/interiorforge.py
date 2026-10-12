@@ -870,6 +870,197 @@ def stairs_down() -> Image.Image:
 
 
 # =============================================================================
+#  THE WAYWARD ARMS (2026-10) — the country hotel's bar, north of the Wanderwood
+# =============================================================================
+DARKWOOD = [hx("#24140e"), hx("#4a2a1a"), hx("#6e4128"), hx("#9a6238")]
+AMBER = [hx("#5a2e0e"), hx("#a85a1c"), hx("#e09a3a"), hx("#ffd27a")]
+BOTTLE_GREEN = [hx("#14301c"), hx("#2a5a34"), hx("#4f8a58")]
+BOTTLE_CLEAR = [hx("#5a7078"), hx("#9ab8c0"), hx("#dff0f4")]
+BOTTLE_WINE = [hx("#2a0e18"), hx("#5a1a2a"), hx("#8a3448")]
+
+
+def _bottle(a, cx, base_y, h, body, cap, wide=False):
+    """One front-on bottle standing on a shelf board at `base_y` (exclusive)."""
+    bw = 2 if wide else 1                     # half-width of the body
+    neck = max(2, h // 3)
+    y_top = base_y - h
+    fill(a, cx - bw, y_top + neck, cx + bw, base_y - 1, body[1])
+    a[y_top + neck:base_y, cx - bw] = body[0]  # shadowed side
+    if wide:
+        a[y_top + neck + 1:base_y - 1, cx + bw - 1] = body[2]  # glint
+    else:
+        a[y_top + neck + 1:base_y - 1, cx + bw] = body[2]
+    a[y_top + 1:y_top + neck, cx] = body[1]   # the neck
+    a[y_top, cx] = cap                         # stopper / cap
+
+
+def bar_back() -> Image.Image:
+    """4x3 back-bar shelving, front-on, flush to the wall: a mirror strip, three
+    shelves of bottles — the TOP shelf keeps the good stuff (squat amber
+    bottles with brass caps, one of them the bourbon of the Wayward Arms
+    scene) — and a cupboard rail of glasses at the bottom."""
+    a = canvas(4, 3)
+    W, H = 64, 48
+    fill(a, 0, 0, W - 1, H - 1, DARKWOOD[1])
+    noise(a, 0, 0, W - 1, H - 1, 4, 401)
+    outline(a, 0, 0, W - 1, H - 1, INK)
+    fill(a, 1, 1, W - 2, 3, DARKWOOD[2])      # carved cornice
+    a[1, 1:W - 1] = DARKWOOD[3]
+    for x in range(4, W - 4, 8):
+        a[2, x] = BRASS[2]                    # brass studs along the cornice
+    for x in (1, W - 2):
+        a[4:H - 2, x] = DARKWOOD[2]           # side stiles
+    # three bays: top (y 5-15), middle (17-27), bottom cupboard (29-45)
+    bays = ((5, 15), (17, 27))
+    for (y0, y1) in bays:
+        fill(a, 2, y0, W - 3, y1, DARKWOOD[0])
+        # a dim mirror behind the bottles (the back-bar's glint)
+        fill(a, 4, y0 + 1, W - 5, y1 - 3, hx("#2c3446"))
+        for x in range(6, W - 6, 9):
+            a[y0 + 2, x:x + 3] = hx("#5a6a80")
+        a[y1, 2:W - 2] = DARKWOOD[3]          # the shelf board
+        a[y1 - 1, 2:W - 2] = DARKWOOD[2]
+    # TOP SHELF — the good bottles: squat amber, brass caps, one standing proud
+    top_base = bays[0][1] - 1
+    for i, cx in enumerate((7, 14, 21, 32, 43, 50, 57)):
+        if cx == 32:                           # the bourbon: wider, a paper label
+            _bottle(a, cx, top_base, 9, AMBER, BRASS[3], wide=True)
+            fill(a, cx - 1, top_base - 4, cx + 1, top_base - 3, BONE[3])
+            continue
+        body = AMBER if i % 2 == 0 else BOTTLE_WINE
+        _bottle(a, cx, top_base, 8, body, BRASS[2], wide=(i % 3 == 0))
+    # MIDDLE SHELF — the everyday bottles, a mix of greens and clears
+    mid_base = bays[1][1] - 1
+    mixes = (BOTTLE_GREEN, BOTTLE_CLEAR, AMBER, BOTTLE_GREEN, BOTTLE_CLEAR,
+             BOTTLE_WINE, BOTTLE_GREEN, BOTTLE_CLEAR, AMBER)
+    for i, cx in enumerate(range(6, W - 5, 6)):
+        _bottle(a, cx, mid_base, 7 + (i % 2), mixes[i % len(mixes)], INK)
+    # the cupboard: two panelled doors + a rail of upturned glasses
+    fill(a, 2, 29, W - 3, H - 3, DARKWOOD[1])
+    a[29, 2:W - 2] = DARKWOOD[3]
+    for (x0, x1) in ((4, W // 2 - 2), (W // 2 + 1, W - 5)):
+        outline(a, x0, 35, x1, H - 5, DARKWOOD[0])
+        fill(a, (x0 + x1) // 2, 40, (x0 + x1) // 2 + 1, 41, BRASS[2])
+    for cx in range(6, W - 5, 5):              # upturned tumblers on the ledge
+        fill(a, cx - 1, 30, cx + 1, 33, BOTTLE_CLEAR[1])
+        a[30, cx - 1:cx + 2] = BOTTLE_CLEAR[2]
+        a[33, cx - 1:cx + 2] = BOTTLE_CLEAR[0]
+    _wall_top_shadow(a, W)
+    _wall_floor_contact(a, W, H)
+    return img(a)
+
+
+def bar_counter() -> Image.Image:
+    """6x2 long bar, straight-on: a polished dark top with a brass edge, a
+    panelled front, a brass foot-rail, and two tumblers + a lamp on the top."""
+    a = canvas(6, 2)
+    W, H = 96, 32
+    fill(a, 0, 5, W - 1, 13, DARKWOOD[2])     # the polished top
+    a[5, :W] = DARKWOOD[3]
+    a[6, :W] = DARKWOOD[3]
+    for x in range(3, W - 3, 11):
+        a[8, x:x + 4] = DARKWOOD[3]           # the polish's long reflections
+    a[13, :W] = BRASS[2]                      # brass bar edge
+    outline(a, 0, 5, W - 1, 13, INK)
+    fill(a, 0, 14, W - 1, H - 3, DARKWOOD[1])  # the panelled front
+    for x in range(0, W, 16):
+        outline(a, x + 2, 16, x + 13, H - 7, DARKWOOD[0])
+        a[17, x + 3:x + 13] = DARKWOOD[2]
+    noise(a, 0, 14, W - 1, H - 4, 4, 411)
+    a[H - 5, 1:W - 1] = BRASS[2]              # the foot-rail
+    a[H - 4, 1:W - 1] = BRASS[1]
+    for x in range(8, W, 24):
+        a[H - 6:H - 3, x] = BRASS[0]          # rail brackets
+    a[H - 3, :W] = INK
+    # on the bar: two tumblers and a little brass lamp
+    for cx in (20, 26):
+        fill(a, cx - 1, 2, cx + 1, 6, BOTTLE_CLEAR[1])
+        a[2, cx - 1:cx + 2] = BOTTLE_CLEAR[2]
+        a[5:7, cx - 1:cx + 2] = AMBER[2]
+    fill(a, 70, 0, 74, 6, BRASS[1])
+    a[0, 71:74] = BRASS[3]
+    fill(a, 71, 2, 73, 4, FIRE[3])
+    contact_shadow(a, 0, W - 1, H - 2)
+    return img(a)
+
+
+def _armchair(cloth) -> Image.Image:
+    """1x2 wing-back armchair facing the room (south), front-on: the high
+    buttoned back fills the top tile (it stands against the wall face), the
+    seat cushion + rolled arms + turned legs the bottom tile. Placed as a raw
+    object at the face row, NON-solid on its seat so a sitter can take it."""
+    a = canvas(1, 2)
+    W, H = 16, 32
+    fill(a, 2, 2, W - 3, 19, cloth[1])         # the high back
+    a[2, 3:W - 3] = cloth[2]
+    a[3, 2:W - 2] = cloth[2]
+    for (bx, by) in ((5, 8), (10, 8), (5, 13), (10, 13), (7, 10), (8, 15)):
+        a[by, bx] = cloth[0]                  # buttons
+    outline(a, 2, 2, W - 3, 19, INK)
+    a[1, 4:W - 4] = INK                       # the rounded crest
+    fill(a, 4, 1, W - 5, 2, cloth[2])
+    fill(a, 0, 12, 2, 25, cloth[1])           # rolled wings / arms
+    fill(a, W - 3, 12, W - 1, 25, cloth[1])
+    a[12, 0:3] = cloth[2]
+    a[12, W - 3:W] = cloth[2]
+    outline(a, 0, 12, 2, 25, INK)
+    outline(a, W - 3, 12, W - 1, 25, INK)
+    fill(a, 3, 20, W - 4, 25, cloth[2])       # the seat cushion
+    a[20, 3:W - 3] = LINEN[0]
+    outline(a, 3, 19, W - 4, 25, INK)
+    fill(a, 1, 26, W - 2, 27, cloth[0])       # the skirt
+    a[27, 1:W - 1] = INK
+    for x in (2, W - 4):                       # turned legs
+        fill(a, x, 28, x + 1, 30, DARKWOOD[2])
+        a[30, x:x + 2] = INK
+    contact_shadow(a, 1, W - 2, 31)
+    return img(a)
+
+
+def armchair() -> Image.Image:
+    return _armchair(CLOTH_WINE)
+
+
+def armchair_green() -> Image.Image:
+    return _armchair([hx("#1e3a26"), hx("#2f5a3a"), hx("#4a7e52")])
+
+
+def stair_up() -> Image.Image:
+    """2x3 staircase rising INTO the wall (front-on, wall-mounted): treads
+    narrowing and darkening as they climb to a shadowed landing, a turned
+    banister on the open side — the rooms upstairs, suggested."""
+    a = canvas(2, 3)
+    W, H = 32, 48
+    fill(a, 0, 0, W - 1, H - 1, DARKWOOD[0])
+    fill(a, 3, 0, W - 4, 6, INK)               # the dark landing above
+    steps = 7
+    for i in range(steps):                     # bottom tread first
+        y1 = H - 3 - i * 6
+        y0 = y1 - 5
+        inset = i                              # perspective: higher = narrower
+        shade = DARKWOOD[3] if i < 2 else DARKWOOD[2] if i < 5 else DARKWOOD[1]
+        fill(a, 3 + inset, y0 + 2, W - 6 - inset, y1, DARKWOOD[1])  # riser
+        fill(a, 3 + inset, y0, W - 6 - inset, y0 + 1, shade)        # tread nose
+        if y0 + 1 < H:
+            a[y1, 3 + inset:W - 5 - inset] = DARKWOOD[0]
+    # the runner carpet up the middle
+    for i in range(steps):
+        y1 = H - 3 - i * 6
+        fill(a, 12, y1 - 5, 18, y1, CLOTH_WINE[1] if i % 2 == 0 else CLOTH_WINE[2])
+    # banister: newel post + rail climbing up the right side
+    fill(a, W - 5, 18, W - 3, H - 3, DARKWOOD[3])
+    a[17, W - 6:W - 2] = BRASS[2]
+    for y in range(4, 18):
+        a[y, W - 4] = DARKWOOD[3]
+    for y in range(20, H - 4, 4):
+        a[y:y + 2, W - 6] = DARKWOOD[2]        # balusters
+    outline(a, 0, 0, W - 1, H - 1, INK)
+    _wall_top_shadow(a, W)
+    _wall_floor_contact(a, W, H)
+    return img(a)
+
+
+# =============================================================================
 PIECES = {
     # wall-mounted (place with roomkit.wall_mount — top row over the wall face)
     "hearth": hearth, "bookcase": bookshelf, "shelf": shelf_wares,
@@ -887,12 +1078,17 @@ PIECES = {
     "computer": computer,
     # tower stairs (the Old Light, the Beacon): free-standing, solid=False
     "stairs_up": stairs_up, "stairs_down": stairs_down,
+    # the Wayward Arms bar (2026-10): wall-mounted back-bar + stair, the long
+    # bar, and the wing-back armchairs (raw-placed at the face row, seat open)
+    "bar_back": bar_back, "stair_up": stair_up, "bar_counter": bar_counter,
+    "armchair": armchair, "armchair_green": armchair_green,
 }
 
 # which stems are wall-mounted (roomkit reads this); the last three are
 # wall-HUNG — no floor contact, always solid=False
 WALL_MOUNTED = {"hearth", "bookcase", "shelf", "dresser", "stove", "lamp_rack",
-                "banner_warm", "banner_ice", "kite_hung", "chalkboard"}
+                "banner_warm", "banner_ice", "kite_hung", "chalkboard",
+                "bar_back", "stair_up"}
 
 
 def main() -> None:

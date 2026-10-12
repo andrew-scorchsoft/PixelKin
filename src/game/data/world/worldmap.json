@@ -77,6 +77,14 @@
       "name": "The Wanderwood"
     },
     {
+      "id": "wayward_rise",
+      "x": 71,
+      "y": 349,
+      "kind": "landmark",
+      "region": "south",
+      "name": "Wayward Rise"
+    },
+    {
       "id": "dawnstead",
       "x": 135,
       "y": 410,
@@ -564,6 +572,11 @@
       "kind": "road"
     },
     {
+      "a": "pearlmoor_wanderwood",
+      "b": "wayward_rise",
+      "kind": "road"
+    },
+    {
       "a": "umbral_spire",
       "b": "dawnstead",
       "kind": "gate"
@@ -998,6 +1011,8 @@
     "vigil_murkfall": "coldfog_marches_ii",
     "vigil_stormfall": "thunderroost",
     "vigil_sunfall": "sunvault_climb_ii",
+    "wayward_arms": "wayward_rise",
+    "wayward_rise": "wayward_rise",
     "wickrun_chute": "wickrun_chute",
     "wickrun_crest": "wickrun_crest",
     "wickrun_foot": "wickrun_foot",

@@ -199,7 +199,7 @@
     {
      "id": "lowleaf-hollow-b",
      "title": "The Wanderwood",
-     "where": "The Wanderwood · The Far Side · Lowleaf Verdant Lumenary",
+     "where": "The Wanderwood · The Far Side · Wayward Rise · Lowleaf Verdant Lumenary",
      "mood": "The safe glow at the heart of the dark forest — a lantern-lit music-box lullaby in a gentle waltz; hearth over wonder.",
      "classic": "play/assets/audio/music/lowleaf-hollow-b.mp3",
      "classic_loop_start": null,
@@ -702,7 +702,7 @@
     {
      "id": "inn-rest",
      "title": "Inns — rest a while",
-     "where": "Pearlmoor Quayside Inn · Vesper Crossroads Inn · Lowleaf Guest-bower · The Steady Gust Inn · The Held Flame Inn · The Long Watch Inn",
+     "where": "The Wayward Arms · Pearlmoor Quayside Inn · Vesper Crossroads Inn · Lowleaf Guest-bower · The Steady Gust Inn · The Held Flame Inn · The Long Watch Inn",
      "mood": "Rest a while — a fire's glow, a full kettle and a warm bed; the hometown tune settled into a contented waltz.",
      "classic": "play/assets/audio/music/inn-rest.mp3",
      "classic_loop_start": null,

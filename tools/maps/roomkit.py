@@ -55,7 +55,9 @@ WALL_MOUNTED = {"hearth", "bookcase", "shelf", "dresser", "stove", "lamp_rack",
                 # so it clears a 3x3 altar beneath it)
                 "banner_warm", "banner_ice", "kite_hung",
                 # the Lamp-school's chalkboard (a solid wall piece, like the bookcase)
-                "chalkboard"}
+                "chalkboard",
+                # the Wayward Arms' back-bar shelving + the stair to the rooms
+                "bar_back", "stair_up"}
 
 
 def grid(w, h, fill=0):

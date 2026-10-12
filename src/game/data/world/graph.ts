@@ -103,6 +103,8 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'pearlmoor_oldlight_6', region: 'south' }, // interior: F6 — the One Joke
     { map_id: 'pearlmoor_oldlight_top', region: 'south' }, // interior: the Winding Room — Tam's card, the net-floats (flag:q_south_jest_done)
     { map_id: 'pearlmoor_wanderwood_far', region: 'south', optional: true, reward: 'S5: the Far Side — Mags\'s griddle, the Answering Lamp, the glass steps (all optional)' },
+    { map_id: 'wayward_rise', region: 'south', optional: true, reward: 'the Wayward Arms: an open bar, a corner chair, a stranger, a night talked away (a rest point)' }, // north of the Wanderwood
+    { map_id: 'wayward_arms', region: 'south', optional: true }, // interior: the Wayward Arms' bar + snug
     // ---- East: Saltreach Fen (2 segments) -> Lowleaf forest -> Cinderhead cave -------
     { map_id: 'saltreach_fen_i', region: 'east' }, // route: open marsh
     { map_id: 'saltreach_fen_ii', region: 'east' }, // route: deep channels
@@ -247,6 +249,9 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // The Wanderwood's far side: one optional loop, two roads off its west edge
     // (to_far low / to_far_n high) — out one, back in the other.
     { from_map: 'pearlmoor_wanderwood', to_map: 'pearlmoor_wanderwood_far', via_warp: 'to_far', bidirectional: true },
+    // ... and north out of the glade, up onto Wayward Rise and the old hotel (2026-10).
+    { from_map: 'pearlmoor_wanderwood', to_map: 'wayward_rise', via_warp: 'to_rise', bidirectional: true },
+    { from_map: 'wayward_rise', to_map: 'wayward_arms', via_warp: 'enter_hotel', bidirectional: true },
     // R9 "The Old Light": the west beach runs out to Lightkeeper's Point; Reyl's
     // hook (flag:q_south_bell) opens the tower door; each floor's up-stair waits on
     // its riddle (flag:oldlight_N_solved); the top's slide drops back to the Point

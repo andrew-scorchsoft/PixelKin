@@ -672,6 +672,7 @@ export class WorldScene extends Phaser.Scene {
     'nightreach_inn',
     'sunken_solarium_lumenary',
     'wickstead_school', // Master Mallow's lie-down in the lamp-school
+    'wayward_arms', // the corner chair: a night talked away (content/regions/hotel.ts)
   ]);
 
   /**
