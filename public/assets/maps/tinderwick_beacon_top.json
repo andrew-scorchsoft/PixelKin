@@ -304,6 +304,17 @@
       "w": 1,
       "h": 2,
       "overhang": 1
+    },
+    {
+      "id": "stairs_down_sprite",
+      "sprite": "interior_stairs_down",
+      "at": {
+        "tx": 1,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
     }
   ],
   "warps": [

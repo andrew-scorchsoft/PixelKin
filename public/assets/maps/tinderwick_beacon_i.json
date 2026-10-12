@@ -303,6 +303,17 @@
       },
       "w": 2,
       "h": 1
+    },
+    {
+      "id": "stairs_up_sprite",
+      "sprite": "interior_stairs_up",
+      "at": {
+        "tx": 10,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 2,
+      "solid": false
     }
   ],
   "warps": [

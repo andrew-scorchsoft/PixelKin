@@ -208,8 +208,28 @@ def obj(id_, sprite, tx, ty, w, h, overhang=0, solid=True):
     return o
 
 
+def dress_tower_stairs(m: dict) -> None:
+    """A tower floor's `up_stairs` / `down_stairs` warps (the Beacon, the Old
+    Light) get a real stair sprite on their pad: the UP-stair climbs the wall
+    face from the pad (1x2, top row over the wall), the DOWN-stair is a
+    stairwell sunk in the floor (1x1). Both non-solid — the step_on warp rides
+    the pad as before. (A plain doormat square read as nothing in particular.)"""
+    have = {o["id"] for o in m.get("objects", [])}
+    for w in m.get("warps", []):
+        x, y = w["at"]["tx"], w["at"]["ty"]
+        if w["id"] == "up_stairs" and "stairs_up_sprite" not in have:
+            m.setdefault("objects", []).append(
+                {"id": "stairs_up_sprite", "sprite": "interior_stairs_up",
+                 "at": {"tx": x, "ty": y - 1}, "w": 1, "h": 2, "solid": False})
+        elif w["id"] == "down_stairs" and "stairs_down_sprite" not in have:
+            m.setdefault("objects", []).append(
+                {"id": "stairs_down_sprite", "sprite": "interior_stairs_down",
+                 "at": {"tx": x, "ty": y}, "w": 1, "h": 1, "solid": False})
+
+
 def finish(m: dict, *, scale: int = 5) -> bool:
     """Write, render, and run the flow audit's reach check. Returns ok."""
+    dress_tower_stairs(m)
     path = MAPS / f"{m['id']}.json"
     path.write_text(json.dumps(m, indent=2) + "\n")
     out = Path("/tmp") / f"{m['id']}.png"

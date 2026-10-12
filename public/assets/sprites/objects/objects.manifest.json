@@ -1008,6 +1008,20 @@
       "tw": 2,
       "th": 3
     },
+    "interior_stairs_down": {
+      "path": "assets/sprites/objects/interior_stairs_down.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "interior_stairs_up": {
+      "path": "assets/sprites/objects/interior_stairs_up.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
     "interior_star_window": {
       "path": "assets/sprites/objects/interior_star_window.webp",
       "width": 32,

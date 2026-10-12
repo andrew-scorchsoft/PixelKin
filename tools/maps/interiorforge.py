@@ -834,6 +834,41 @@ def computer() -> Image.Image:
     return img(a)
 
 
+def stairs_up() -> Image.Image:
+    """1x2 an UP-stair against the north wall: stone steps start on the floor
+    tile (bottom) and climb the wall face (top tile) into a dark doorway —
+    lit treads, shaded risers, narrowing as they recede. Place with its top
+    row over the wall face, solid=False (the step_on warp rides the floor tile)."""
+    a = canvas(1, 2)
+    fill(a, 1, 0, 14, 31, STONE[0])                  # the stair's side walls
+    fill(a, 3, 0, 12, 5, INK)                        # the dark doorway above
+    a[0, 3:13] = STONE[1]
+    steps = [(26, 31, 2, 13), (21, 25, 2, 13), (16, 20, 3, 12), (11, 15, 3, 12), (6, 10, 4, 11)]
+    for (y0, y1, x0, x1) in steps:
+        fill(a, x0, y0, x1, y1, STONE[1])            # riser
+        fill(a, x0, y0, x1, y0 + 1, STONE[3])        # lit tread nosing
+        a[y0 + 2, x0:x1 + 1] = STONE[2]
+    for y in range(0, 32):                           # a brass handrail up the right
+        a[y, 13] = BRASS[1] if y % 4 else BRASS[2]
+    outline(a, 1, 0, 14, 31, INK)
+    return img(a)
+
+
+def stairs_down() -> Image.Image:
+    """1x1 a DOWN-stair: a stairwell cut in the floor, steps sinking away to
+    the north into shadow — the nearest tread lit, each further one darker."""
+    a = canvas(1, 1)
+    fill(a, 0, 0, 15, 15, STONE[0])
+    shades = [INK, INK, STONE[0], STONE[1], STONE[2]]
+    for i, (y0, y1) in enumerate([(1, 3), (4, 6), (7, 9), (10, 12), (13, 15)]):
+        fill(a, 2, y0, 13, y1, shades[i])
+        if i >= 2:
+            a[y0, 2:14] = STONE[min(3, i)]           # each tread's lit nosing
+    outline(a, 1, 0, 14, 15, INK)
+    a[15, 1:15] = STONE[3]                           # the floor's lit lip
+    return img(a)
+
+
 # =============================================================================
 PIECES = {
     # wall-mounted (place with roomkit.wall_mount — top row over the wall face)
@@ -850,6 +885,8 @@ PIECES = {
     "chalkboard": chalkboard, "desk": desk,
     # the Old Light's anachronism (free-standing)
     "computer": computer,
+    # tower stairs (the Old Light, the Beacon): free-standing, solid=False
+    "stairs_up": stairs_up, "stairs_down": stairs_down,
 }
 
 # which stems are wall-mounted (roomkit reads this); the last three are
