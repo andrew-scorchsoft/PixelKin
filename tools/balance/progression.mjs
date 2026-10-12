@@ -494,6 +494,10 @@ const BUILT_PAYOUTS = {
   // THE WILD WAYS (09-the-wild-ways.md, 2026-10) — optional areas, one block per lane
   runner_vess: ['route', 48, 768], // the Wick-Run chute
   runner_dace: ['route', 49, 784],
+  // the Mirelights (B)
+  mire_eelcatcher: ['route', 40, 640], // the landing
+  mire_lampdiver: ['route', 42, 672], // the Glassmere
+  mire_acolyte: ['route', 43, 688], // the drowned chapel
 };
 const failures = [];
 for (const [id, [klass, ace, authored]] of Object.entries(BUILT_PAYOUTS)) {

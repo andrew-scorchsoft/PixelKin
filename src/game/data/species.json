@@ -1906,6 +1906,34 @@
      "rarity": "rare",
      "min": 18,
      "max": 20
+    },
+    {
+     "area": "mirelight_glassmere",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 40,
+     "max": 42
+    },
+    {
+     "area": "mirelight_glassmere",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 63
+    },
+    {
+     "area": "mirelight_chapel",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 41,
+     "max": 43
+    },
+    {
+     "area": "mirelight_chapel",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 58,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -1986,7 +2014,50 @@
     "weight_kg": 8,
     "habitat": "south"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "mirelight_landing",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 39,
+     "max": 41
+    },
+    {
+     "area": "mirelight_landing",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 56,
+     "max": 62
+    },
+    {
+     "area": "mirelight_glassmere",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 40,
+     "max": 42
+    },
+    {
+     "area": "mirelight_glassmere",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 57,
+     "max": 63
+    },
+    {
+     "area": "mirelight_chapel",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 41,
+     "max": 43
+    },
+    {
+     "area": "mirelight_chapel",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 58,
+     "max": 64
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Tall, translucent humanoid sprite of flowing water and moonlight \u2014 silver-white with luminous aqua veins, streaming ribbon-limbs, a face of pure calm radiance, and a cascading tail of moon-foam.",
@@ -2606,6 +2677,20 @@
      "rarity": "common",
      "min": 56,
      "max": 62
+    },
+    {
+     "area": "mirelight_landing",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 38,
+     "max": 40
+    },
+    {
+     "area": "mirelight_landing",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 55,
+     "max": 61
     }
    ],
    "scripted": false,
@@ -2779,6 +2864,20 @@
      "rarity": "common",
      "min": 58,
      "max": 65
+    },
+    {
+     "area": "mirelight_glassmere",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 40,
+     "max": 41
+    },
+    {
+     "area": "mirelight_glassmere",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -3034,6 +3133,48 @@
      "rarity": "common",
      "min": 56,
      "max": 63
+    },
+    {
+     "area": "mirelight_landing",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 38,
+     "max": 40
+    },
+    {
+     "area": "mirelight_landing",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 55,
+     "max": 61
+    },
+    {
+     "area": "mirelight_glassmere",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 40,
+     "max": 42
+    },
+    {
+     "area": "mirelight_glassmere",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 63
+    },
+    {
+     "area": "mirelight_chapel",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 41,
+     "max": 43
+    },
+    {
+     "area": "mirelight_chapel",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 58,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -3114,7 +3255,36 @@
     "weight_kg": 28,
     "habitat": "south"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "mirelight_glassmere",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 41,
+     "max": 42
+    },
+    {
+     "area": "mirelight_glassmere",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 58,
+     "max": 63
+    },
+    {
+     "area": "mirelight_chapel",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 41,
+     "max": 43
+    },
+    {
+     "area": "mirelight_chapel",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 64
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Wide flat disc-shell patterned with concentric gold-and-aqua rings, textured like hammered moonstone. The creature beneath is plump and soft-looking with a single large circular eye at the shell's centre aperture.",
@@ -5772,6 +5942,20 @@
      "rarity": "common",
      "min": 57,
      "max": 64
+    },
+    {
+     "area": "mirelight_landing",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 39,
+     "max": 40
+    },
+    {
+     "area": "mirelight_landing",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 61
     }
    ],
    "scripted": false,
@@ -6465,6 +6649,34 @@
      "rarity": "uncommon",
      "min": 22,
      "max": 23
+    },
+    {
+     "area": "mirelight_landing",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 38,
+     "max": 41
+    },
+    {
+     "area": "mirelight_landing",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 55,
+     "max": 62
+    },
+    {
+     "area": "mirelight_chapel",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 41,
+     "max": 42
+    },
+    {
+     "area": "mirelight_chapel",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 58,
+     "max": 63
     }
    ],
    "scripted": false,
@@ -14680,7 +14892,36 @@
     "weight_kg": 3.8,
     "habitat": "central"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "mirelight_glassmere",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 42,
+     "max": 42
+    },
+    {
+     "area": "mirelight_glassmere",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 59,
+     "max": 63
+    },
+    {
+     "area": "mirelight_chapel",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 43,
+     "max": 43
+    },
+    {
+     "area": "mirelight_chapel",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 60,
+     "max": 64
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "Squat, teardrop-shaped body of burnished brass, a round glass-chimney belly filled with warm amber glow; two small mitten-like hands grip the base; tiny curled feet; a brass hood sits slightly askew like a jaunty cap; warm cream light pools at its base; instantly iconic at 32px \u2014 fat oval + hat silhouette.",

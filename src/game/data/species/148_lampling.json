@@ -59,7 +59,36 @@
     "weight_kg": 3.8,
     "habitat": "central"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "mirelight_glassmere",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 42,
+      "max": 42
+    },
+    {
+      "area": "mirelight_glassmere",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 59,
+      "max": 63
+    },
+    {
+      "area": "mirelight_chapel",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 43,
+      "max": 43
+    },
+    {
+      "area": "mirelight_chapel",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 60,
+      "max": 64
+    }
+  ],
   "scripted": true,
   "art": {
     "silhouette": "Squat, teardrop-shaped body of burnished brass, a round glass-chimney belly filled with warm amber glow; two small mitten-like hands grip the base; tiny curled feet; a brass hood sits slightly askew like a jaunty cap; warm cream light pools at its base; instantly iconic at 32px \u2014 fat oval + hat silhouette.",

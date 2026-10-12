@@ -109,6 +109,57 @@ lens → he ferries you (`flag:mirelight_ferry`).
 | `mirelight_chapel` | 30×44 | 119..149, -116..-72 | The drowned bell-chapel: underpass/bridge loops, Tobin found (alive, lost, embarrassed), the null-lantern. |
 | `lanthorne_hollow` | cave | (portal) | The legendary's rest: wake **Lanthorne** (#165, Tide/Light) from the null-lantern; `legendaryBattle` lv 45, cooldown 12 won. |
 
+**As built (2026-10, Lane B).** Builders `tools/maps/build_mirelight_landing.py`,
+`_glassmere.py`, `_chapel.py`, `build_lanthorne_hollow.py` (shared pieces in
+`tools/maps/mirelight_common.py`); content `src/game/content/regions/mirelight.ts`.
+
+- **The gate** (`build_saltreach_fen_i.py`): a ferry stage at Fen I's east edge (rows 23-24,
+  `mirelight_ferry_stage`) on a carved inlet, marsh-lights over the water. **Old Ansel**
+  (`script.mirelight_ansel`) names his price (`flag:q_mirelight_ansel`); with
+  `flag:has_frostglass_lens` he looks through it and sets `flag:mirelight_ferry`. The edge
+  warps `to_mirelight`/`_s` carry `requires_flag` + `blocked_ref: npc.mirelight_ansel_blocked`;
+  the first crossing is a once-only step_on beat on the stage (`script.mirelight_ferry_ride`,
+  `flag:mirelight_crossed`) that hands you across with the `travel` op. The eel-wife now runs
+  `script.mirelight_eelwife` (her own `script.fen_eelwife`, then the Tobin ask,
+  `flag:q_mirelight_begun`). `GRANTS["saltreach_fen_i"]` += `flag:mirelight_ferry`.
+- **The deep.** Out here every early Gift is held, so the Glassmere is **deep water**
+  (`deepwater_set`, the reserved `deepdive`): `mirelight_common.deep_layer` makes every pond
+  cell deep unless it is within one tile of *walkable* shore (a tree border is not a shore,
+  so no shelf sneaks round a channel's end). Tidecall swims the shelves; only boards cross.
+  The Glassmere builder ASSERTS no island swims to another without a board.
+- **The false lights.** Every walk is a `plank` span with a blue will-light at its far end
+  (they all look alike). Through the Lens (objects `requires_flag: flag:has_frostglass_lens`)
+  the causeway-reed at each walk's MOUTH tells the truth: LIT = sound boards, DEAD = a lie.
+  A false walk stops short over the deep; its last board is a step_on beat
+  (`script.mirelight_dunk_<id>`: splash, then `travel` back to the mouth). Landing: three
+  walks over the first arm (the middle is true — the teaching screen). Glassmere: islands
+  I0→I1→I2→I3→I4, ten walks (five true).
+- **Currents** (`flows[]` `slope` over shallow water, `mirelight_common.current`): I3's south
+  shelf runs DOWN to the diver's islet (the **Glassmere Pearl**, valuable, current-only) whose
+  only way off is a long true walk back to I1 — a one-way loop; and the RETURN current sweeps
+  from I2's west shelf back down to I0.
+- **The chapel.** Over then under: the entry bank crosses the sunk street on a 7×2 trestle
+  (`deck under=True`, `above` layer) — you see Tobin below in the street's north end — then
+  the east bank, a **ladder** down its cliff, the acolyte's one-row shelf (Brother Ives,
+  sight 1 — unavoidable), the meadow, and north up the street **under** the trestle to
+  Tobin (`flag:mirelight_tobin_found`, 2 Beacon charges; he goes home to Fen I). The chapel's
+  walk-onto door (on its flooded porch step) is held on Tobin's flag. The acolyte's camp is
+  the Mirelights' **rest point** (`script.mirelight_camp_rest`).
+- **The set-piece** (`script.mirelight_lanthorne`, 07's staging): letterbox, silence, the lens
+  lets a TRUE light through the null-glass, `sting-hour` → `battle-hours`, `legendaryBattle`
+  lanthorne #165 lv 45, cooldown 12, `npc.lanthorne_resting`; on the catch the lantern stands
+  empty, a `starfall` and the star over the fen burns brighter.
+- **Kin** (mirrored in `build_species.py` `_MIRE_TABLES`): night 38-43 — Lumpin, Fennlight,
+  Brineroll, Poolfrond, Tidmaren, Glostern, + the Mirelights' own Tidwraith #22 / Lumplass
+  #32 (rare-ish) and Lampling #148 (rare, Glassmere + chapel); by day the same species
+  +17 levels. The grown D-tier forms are the trainers': Moss (eel-catcher, ace 40), Odo
+  (lamp-diver, ace 42), Brother Ives (Hollowing acolyte, ace 43), all route class.
+- **Flags** (owned): `flag:q_mirelight_begun`, `flag:q_mirelight_ansel`, `flag:mirelight_ferry`,
+  `flag:mirelight_crossed`, `flag:mirelight_tobin_found`, `flag:lanthorne_caught` (+ the
+  trainers' `_beaten` and caches' `picked_*`). Read: `flag:has_frostglass_lens` (Isel).
+  LORE `mirelights` (unlock `flag:mirelight_ferry`) + `lanthorne`; JOURNAL
+  `mirelight_lights`.
+
 ### C · The Rimeway (north of Pale Vault → Coldfog Marches II)
 
 **Lore.** The old star-tenders' high road between the Pale Vault and the Nightreach

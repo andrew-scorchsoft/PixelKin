@@ -191,7 +191,11 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // the Wick-Run (A): Sunvault Climb I's south road -> the crest -> downhill to Lightkeeper's Point
     { map_id: 'wickrun_crest', region: 'west', optional: true, reward: 'the runner rental + the Tallow Lift (frees the lift home)' },
     { map_id: 'wickrun_chute', region: 'west', optional: true, reward: 'run-only Tallowcrest/Wickmere/Warmantis + a kicker-only Lumen Drop' },
-    // the Mirelights (B)
+    // the Mirelights (B): over Ansel's ferry (the Frostglass Lens from Pale Vault), east of Saltreach Fen I
+    { map_id: 'mirelight_landing', region: 'east', optional: true, unlocked_by_flag: 'flag:mirelight_ferry', reward: 'Nell\'s lore, Tobin\'s boat, the first false-light boards; exclusive Tidwraith/Lumplass' },
+    { map_id: 'mirelight_glassmere', region: 'east', optional: true, unlocked_by_flag: 'flag:mirelight_ferry', reward: 'the false-lights maze + currents; the Glassmere Pearl; rare Lampling' },
+    { map_id: 'mirelight_chapel', region: 'east', optional: true, unlocked_by_flag: 'flag:mirelight_ferry', reward: 'Tobin found; the acolyte\'s camp (rest point); the chapel door' },
+    { map_id: 'lanthorne_hollow', region: 'east', optional: true, unlocked_by_flag: 'flag:mirelight_tobin_found', reward: 'LANTHORNE #165 (legendary, lv 45)' },
     // the Rimeway (C)
     // the Old Seams (D)
     // Sunvault Climb rebuild (S)
@@ -386,7 +390,11 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'sunvault_climb_i', to_map: 'wickrun_crest', via_warp: 'to_wickrun', bidirectional: true },
     { from_map: 'wickrun_crest', to_map: 'wickrun_chute', via_warp: 'to_chute', requires_flag: 'flag:wickrun_riding', bidirectional: true },
     { from_map: 'wickrun_chute', to_map: 'wickrun_trestles', via_warp: 'to_trestles', bidirectional: false },
-    // the Mirelights (B)
+    // the Mirelights (B): Ansel's ferry is an honest edge link held by his flag
+    { from_map: 'saltreach_fen_i', to_map: 'mirelight_landing', via_warp: 'to_mirelight', requires_flag: 'flag:mirelight_ferry', bidirectional: true },
+    { from_map: 'mirelight_landing', to_map: 'mirelight_glassmere', via_warp: 'to_glassmere', bidirectional: true },
+    { from_map: 'mirelight_glassmere', to_map: 'mirelight_chapel', via_warp: 'to_chapel', bidirectional: true },
+    { from_map: 'mirelight_chapel', to_map: 'lanthorne_hollow', via_warp: 'to_hollow', requires_flag: 'flag:mirelight_tobin_found', bidirectional: true },
     // the Rimeway (C)
     // the Old Seams (D)
     // Sunvault Climb rebuild (S)

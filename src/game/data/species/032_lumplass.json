@@ -68,7 +68,36 @@
     "weight_kg": 28,
     "habitat": "south"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "mirelight_glassmere",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 41,
+      "max": 42
+    },
+    {
+      "area": "mirelight_glassmere",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 58,
+      "max": 63
+    },
+    {
+      "area": "mirelight_chapel",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 41,
+      "max": 43
+    },
+    {
+      "area": "mirelight_chapel",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 58,
+      "max": 64
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Wide flat disc-shell patterned with concentric gold-and-aqua rings, textured like hammered moonstone. The creature beneath is plump and soft-looking with a single large circular eye at the shell's centre aperture.",

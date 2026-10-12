@@ -25,6 +25,7 @@ Legend — **Gleam** = the region's constellation reward; **Gift** = the Lantern
 | **Central/Endgame** (05) | — | ✅ **complete** (C1 maps + C2 Spire + C3 wiring, 2026-06; panel SHIP-READY; C6 polish landed c15217d) | — |
 | **The Three Hours** (07) | — | ✅ **complete** (sites + wiring + encounters + the hour-bell music, 2026-06) | — |
 | **Post-game** (06) | — | ✅ **complete** (R2 Dawnstead + R3 Vigils + R4 day-forms, 2026-06) | — |
+| **Wild Ways · B the Mirelights** (09) | — | ✅ **built** (2026-10: Fen I's ferry stage + `mirelight_landing`/`_glassmere`/`_chapel` + `lanthorne_hollow`; builders `build_mirelight_*.py`/`build_lanthorne_hollow.py`, content `regions/mirelight.ts`) | opens once Isel's Frostglass Lens (Rimeway lane, Pale Vault) is merged |
 
 **Playable runway today: the game is CONTENT-COMPLETE — cold open → dawn → post-game.**
 The post-game shipped 2026-06: Dawnstead (R2), the Starfall Vigils chain to the Last

@@ -468,6 +468,14 @@ export const ITEMS: ItemRegistry = {
     category: 'valuable',
     sell: 600,
   },
+  // The Mirelights (09-the-wild-ways §2 B): the Glassmere's current-only cache.
+  glassmere_pearl: {
+    id: 'glassmere_pearl',
+    name: 'Glassmere Pearl',
+    desc: 'A fen-pearl with a small blue light turning inside, like a lost dream.',
+    category: 'valuable',
+    sell: 1200,
+  },
   murk_pearl: {
     id: 'murk_pearl',
     name: 'Murk Pearl',

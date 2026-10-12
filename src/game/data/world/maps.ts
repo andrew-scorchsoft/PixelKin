@@ -1233,7 +1233,54 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     music: 'assets/audio/music/wickrun.mp3',
     battle_backdrops: ['assets/backgrounds/battle/wickrun-a.webp', 'assets/backgrounds/battle/wickrun-b.webp'],
   },
-  // the Mirelights (B)
+  // the Mirelights (B): east of Saltreach Fen I over Ansel's ferry. Planks + the
+  // deep Glassmere (deepwater_set: no Gift swims it) + currents + the trestle.
+  mirelight_landing: {
+    json: 'assets/maps/mirelight_landing.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/mirelight.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/mirelight-a.webp', 'assets/backgrounds/battle/mirelight-b.webp'],
+  },
+  mirelight_glassmere: {
+    json: 'assets/maps/mirelight_glassmere.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/mirelight.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/mirelight-a.webp', 'assets/backgrounds/battle/mirelight-b.webp'],
+  },
+  mirelight_chapel: {
+    json: 'assets/maps/mirelight_chapel.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/mirelight.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/mirelight-b.webp', 'assets/backgrounds/battle/mirelight-a.webp'],
+  },
+  // Lanthorne's crypt under the chapel — the legendary's rest (dark: the lamp's reveal mask)
+  lanthorne_hollow: {
+    json: 'assets/maps/lanthorne_hollow.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/mirelight.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/mirelight-b.webp'],
+  },
   // the Rimeway (C)
   // the Old Seams (D)
   // Sunvault Climb rebuild (S)

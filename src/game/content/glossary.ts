@@ -348,6 +348,19 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'The village school on Wickstead Green, west of Duskapple Orchard, where every apprentice in the South learns the Wayfaring — types and catching, the Hearth and resting, wicks and Gifts. Its door is open to Wayfarers of any age.',
     unlock_flag: 'flag:school_visited',
   },
+  // --- The Wild Ways (09-the-wild-ways.md) ---
+  {
+    id: 'mirelights',
+    term: 'the Mirelights',
+    desc: 'The blue lights over the Glassmere, east of Saltreach Fen, where the old causeway-village drowned. They were once one light — the fen\'s own lamp, a kin that walked ahead of the boats and brought them home — until the Hollowing put it gently to sleep. These are its dreams, and dreams do not know the way.',
+    unlock_flag: 'flag:mirelight_ferry',
+  },
+  {
+    id: 'lanthorne',
+    term: 'Lanthorne',
+    desc: 'The Mirelight: the fen\'s lamp, woken from its null-lantern under the drowned chapel. Since it woke, the blue lights on the Glassmere have been going out one by one, and a small star over the fen burns a little brighter.',
+    unlock_flag: 'flag:lanthorne_caught',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */

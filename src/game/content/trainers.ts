@@ -1260,6 +1260,37 @@ export const TRAINERS: TrainerRegistry = {
     payout: 784, // route 16 × ace 49
   },
   // the Mirelights (B)
+  mire_eelcatcher: {
+    id: 'mire_eelcatcher',
+    name: 'MOSS',
+    title: 'Eel-catcher',
+    party: [
+      { species_id: 28, level: 39 }, // Brinewrath — Tide
+      { species_id: 61, level: 40 }, // Tidalarch — Verdant/Tide (ace)
+    ],
+    payout: 640, // route 16 × ace 40
+  },
+  mire_lampdiver: {
+    id: 'mire_lampdiver',
+    name: 'ODO',
+    title: 'Lamp-diver',
+    party: [
+      { species_id: 32, level: 40 }, // Lumplass — Tide/Light
+      { species_id: 68, level: 41 }, // Fernlance — Verdant/Light
+      { species_id: 22, level: 42 }, // Tidwraith — Tide/Light (ace)
+    ],
+    payout: 672, // route 16 × ace 42
+  },
+  mire_acolyte: {
+    id: 'mire_acolyte',
+    name: 'BROTHER IVES',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 22, level: 41 }, // Tidwraith — Tide/Light
+      { species_id: 32, level: 43 }, // Lumplass — Tide/Light (ace)
+    ],
+    payout: 688, // route 16 × ace 43
+  },
   // the Rimeway (C)
   // the Old Seams (D)
   // Sunvault Climb rebuild (S)

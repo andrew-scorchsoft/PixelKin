@@ -403,6 +403,30 @@
       "kind": "landmark",
       "region": "outer",
       "name": "Hollowfen Stillworks"
+    },
+    {
+      "id": "mirelight_landing",
+      "x": 131,
+      "y": 315,
+      "kind": "route",
+      "region": "east",
+      "name": "The Mirelights"
+    },
+    {
+      "id": "mirelight_glassmere",
+      "x": 165,
+      "y": 315,
+      "kind": "route",
+      "region": "east",
+      "name": "The Glassmere"
+    },
+    {
+      "id": "mirelight_chapel",
+      "x": 199,
+      "y": 315,
+      "kind": "landmark",
+      "region": "east",
+      "name": "The Drowned Chapel"
     }
   ],
   "roads": [
@@ -647,6 +671,21 @@
       "kind": "gate"
     },
     {
+      "a": "saltreach_fen_i",
+      "b": "mirelight_landing",
+      "kind": "gate"
+    },
+    {
+      "a": "mirelight_landing",
+      "b": "mirelight_glassmere",
+      "kind": "road"
+    },
+    {
+      "a": "mirelight_glassmere",
+      "b": "mirelight_chapel",
+      "kind": "road"
+    },
+    {
       "a": "lanternway_lowleaf",
       "b": "vesper_crossroads",
       "kind": "car"
@@ -724,9 +763,13 @@
     "lanternway_nightreach": "lanternway_nightreach",
     "lanternway_tinderwick": "lanternway_tinderwick",
     "lanternway_undercut": "lanternway_lowleaf",
+    "lanthorne_hollow": "mirelight_chapel",
     "lowleaf_bower": "lowleaf_hollow",
     "lowleaf_hollow": "lowleaf_hollow",
     "lowleaf_lumenary": "lowleaf_hollow",
+    "mirelight_chapel": "mirelight_chapel",
+    "mirelight_glassmere": "mirelight_glassmere",
+    "mirelight_landing": "mirelight_landing",
     "nightreach_home": "nightreach_observatory",
     "nightreach_inn": "nightreach_observatory",
     "nightreach_lumenary": "nightreach_observatory",
@@ -787,6 +830,8 @@
     "vigil_murkfall": "coldfog_marches_ii",
     "vigil_stormfall": "thunderroost",
     "vigil_sunfall": "sunvault_climb_ii",
+    "wickrun_chute": "sunvault_climb_i",
+    "wickrun_crest": "sunvault_climb_i",
     "wickstead_green": "wickstead_green",
     "wickstead_school": "wickstead_green",
     "wind_eye": "wind_eye",

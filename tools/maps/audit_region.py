@@ -108,6 +108,10 @@ GRANTS["vigil_sunfall"] = ["flag:vigil_4_kept", "flag:vigil_reading_5"]
 GRANTS["vigil_murkfall"] = ["flag:vigil_5_kept"]
 # ---- THE WILD WAYS (09-the-wild-ways.md, 2026-10) — one line per area lane
 GRANTS["wickrun_crest"] = ["flag:wickrun_riding", "flag:tallow_lift_freed"]   # Pell's rental, the brake
+# the Mirelights (B): Ansel ferries you once he's seen the Frostglass Lens
+# (flag:has_frostglass_lens — Isel, credited to pale_vault_glacier by the Rimeway lane)
+GRANTS.setdefault("saltreach_fen_i", []).append("flag:mirelight_ferry")
+GRANTS["mirelight_chapel"] = ["flag:mirelight_tobin_found"]                  # Tobin found
 POSTGAME_FLAGS = {"flag:dawn"}
 
 

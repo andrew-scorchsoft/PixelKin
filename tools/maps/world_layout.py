@@ -80,6 +80,8 @@ NODE_KINDS: dict[str, str] = {
     # the marshes (off Nightreach)
     "coldfog_marches_ii": "route", "coldfog_marches_i": "route", "drownlight_beacon": "landmark",
     "hollowfen_stillworks": "landmark",
+    # THE WILD WAYS — the Mirelights (east of Saltreach Fen I, over Ansel's ferry)
+    "mirelight_landing": "route", "mirelight_glassmere": "route", "mirelight_chapel": "landmark",
 }
 # places hung off a stacked interior chain, pinned near their anchor (tiles)
 ANCHORED: dict[str, tuple[str, float, float]] = {
@@ -193,6 +195,10 @@ ROADS: list[tuple[str, str, str]] = [
     ("coldfog_marches_ii", "coldfog_marches_i", "gate"),
     ("coldfog_marches_i", "drownlight_beacon", "gate"),
     ("coldfog_marches_ii", "hollowfen_stillworks", "gate"),
+    # THE WILD WAYS — the Mirelights: the ferry is flag-gated, the boards are walked
+    ("saltreach_fen_i", "mirelight_landing", "gate"),
+    ("mirelight_landing", "mirelight_glassmere", "road"),
+    ("mirelight_glassmere", "mirelight_chapel", "road"),
     # THE LANTERN-CAR (rides, not roads) + the Cinderhead ore-hoist
     ("lanternway_lowleaf", "vesper_crossroads", "car"),
     ("lanternway_galehigh", "vesper_crossroads", "car"),

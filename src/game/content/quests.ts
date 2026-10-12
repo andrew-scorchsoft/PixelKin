@@ -323,6 +323,23 @@ export const QUESTS: QuestRegistry = [
     ],
     done_flag: 'flag:starfall_crown',
   },
+  // The Wild Ways (09-the-wild-ways §2 B): seen at lv ~17 off the fen, opened by
+  // a lens from the ice village (Isel, Pale Vault), ended at the null-lantern.
+  {
+    id: 'mirelight_lights',
+    name: 'The Lights on the Glassmere',
+    region: 'east',
+    giver: 'the eel-wife',
+    blurb: 'Tobin rowed out after the blue lights east of Saltreach Fen. Old Ansel won\'t ferry anyone across without a Pale Vault true-eye to tell the true lights from the lies.',
+    start_flag: 'flag:q_mirelight_begun',
+    stage_flags: [
+      'flag:q_mirelight_ansel',
+      'flag:has_frostglass_lens',
+      'flag:mirelight_ferry',
+      'flag:mirelight_tobin_found',
+    ],
+    done_flag: 'flag:lanthorne_caught',
+  },
 ];
 
 /** Lookup by id. */
