@@ -324,7 +324,7 @@ def build_lowleaf_spoke(owed):
             cliff[i] = 0
 
     base = base_grid(W, H, rng)
-    objects = [lamp("lamp_low", 4, 22), lamp("lamp_turn", 18, 21),
+    objects = [lamp("lamp_low", 6, 22), lamp("lamp_turn", 18, 21),
                lamp("lamp_mouth", 23, 16), lamp("lamp_shelf", 11, 2),
                tree_obj("crown_low", 9, 18), tree_obj("crown_shelf", 17, 7)]
 

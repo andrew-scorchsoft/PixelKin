@@ -251,6 +251,7 @@ export class WorldScene extends Phaser.Scene {
     this.modal = false;
     this.pendingReveal = undefined;
     this.pendingTutorial = undefined;
+    this.deepWarnedOn = '';
     this.controller = new InputController(this);
     this.flags = new FlagStore(data.flags);
     this.abilities = new Set(data.abilities ?? []);
@@ -309,7 +310,8 @@ export class WorldScene extends Phaser.Scene {
         ty: VESPERHOLM_GRAPH.start_at.ty,
         facing: 'down' as Facing,
       };
-      void this.enterMap(home.map, { tx: home.tx, ty: home.ty }, home.facing, true);
+      // footFirst: stored rest coords may predate this release's map rebuilds.
+      void this.enterMap(home.map, { tx: home.tx, ty: home.ty }, home.facing, true, true);
       return;
     }
 

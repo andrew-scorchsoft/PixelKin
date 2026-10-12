@@ -206,7 +206,16 @@ export class WorldMapMenu {
     this.select.setPosition(Math.round(cx), Math.round(cy)).setSize(w + 2, h + 2);
     const here = node.id === this.playerNode?.id ? '  *HERE*' : '';
     const region = REGION_LABEL[node.region] ?? node.region.toUpperCase();
-    this.strip.setText(`${node.name.toUpperCase()} · ${region}${here}`);
+    // Fit the strip inside the panel: drop the region first, then ellipsize
+    // the name (long names like "Lanternway · Tinderwick Spoke" overran it).
+    const maxW = GAME_WIDTH - 8 - PAD * 2;
+    let name = node.name.toUpperCase();
+    this.strip.setText(`${name} · ${region}${here}`);
+    if (this.strip.width > maxW) this.strip.setText(`${name}${here}`);
+    while (this.strip.width > maxW && name.length > 4) {
+      name = name.slice(0, -1);
+      this.strip.setText(`${name.trimEnd()}..${here}`);
+    }
   }
 
   /** Hop the cursor to the nearest node in the pressed direction. */

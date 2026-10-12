@@ -47,7 +47,7 @@ export const SOUTH_SCRIPTS: ScriptRegistry = {
           ops: [
             { op: 'sfx', key: 'world-lantern-light' },
             { op: 'narrate', text: 'The green lamp catches. The car swings out over the bay and climbs, the Crossroads\' lights shrinking below, the fen-mist rolling past...' },
-            { op: 'travel', map: 'lanternway_lowleaf', to: { tx: 3, ty: 24 }, facing: 'right' },
+            { op: 'travel', map: 'lanternway_lowleaf', to: { tx: 3, ty: 24 }, facing: 'up' },
           ],
         },
         {
