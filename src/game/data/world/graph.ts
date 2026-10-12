@@ -195,7 +195,11 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'wickrun_traverse', region: 'west', optional: true, reward: 'the rock garden + the ramp line + a Beacon charge in the cart wreck' },
     { map_id: 'wickrun_lower', region: 'west', optional: true, reward: 'Rook, the Runners\' captain + the rare Chandrek + a kicker-only Wax Cake cache' },
     { map_id: 'wickrun_foot', region: 'south', optional: true, reward: 'the finish (time-trial prizes, Rook\'s ribbon) + the Tallow Lift\'s foot station' },
-    // the Mirelights (B)
+    // the Mirelights (B): over Ansel's ferry (the Frostglass Lens from Pale Vault), east of Saltreach Fen I
+    { map_id: 'mirelight_landing', region: 'east', optional: true, unlocked_by_flag: 'flag:mirelight_ferry', reward: 'Nell\'s lore, Tobin\'s boat, the first false-light boards; exclusive Tidwraith/Lumplass' },
+    { map_id: 'mirelight_glassmere', region: 'east', optional: true, unlocked_by_flag: 'flag:mirelight_ferry', reward: 'the false-lights maze + currents; the Glassmere Pearl; rare Lampling' },
+    { map_id: 'mirelight_chapel', region: 'east', optional: true, unlocked_by_flag: 'flag:mirelight_ferry', reward: 'Tobin found; the acolyte\'s camp (rest point); the chapel door' },
+    { map_id: 'lanthorne_hollow', region: 'east', optional: true, unlocked_by_flag: 'flag:mirelight_tobin_found', reward: 'LANTHORNE #165 (legendary, lv 45)' },
     // the Rimeway (C)
     // the Old Seams (D): Cinderhead Mine's seam-door (Otho, post-Stone) -> three floors down -> the first star
     { map_id: 'old_seams_i', region: 'east', optional: true, reward: 'the Shaft Benches: planks + ladders, Orebound beds, a pillar-islet charge' },
@@ -398,7 +402,11 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'wickrun_traverse', to_map: 'wickrun_lower', via_warp: 'to_lower', bidirectional: false },
     { from_map: 'wickrun_lower', to_map: 'wickrun_foot', via_warp: 'to_foot', bidirectional: false },
     { from_map: 'wickrun_foot', to_map: 'pearlmoor_point', via_warp: 'to_point', bidirectional: true },
-    // the Mirelights (B)
+    // the Mirelights (B): Ansel's ferry is an honest edge link held by his flag
+    { from_map: 'saltreach_fen_i', to_map: 'mirelight_landing', via_warp: 'to_mirelight', requires_flag: 'flag:mirelight_ferry', bidirectional: true },
+    { from_map: 'mirelight_landing', to_map: 'mirelight_glassmere', via_warp: 'to_glassmere', bidirectional: true },
+    { from_map: 'mirelight_glassmere', to_map: 'mirelight_chapel', via_warp: 'to_chapel', bidirectional: true },
+    { from_map: 'mirelight_chapel', to_map: 'lanthorne_hollow', via_warp: 'to_hollow', requires_flag: 'flag:mirelight_tobin_found', bidirectional: true },
     // the Rimeway (C)
     // the Old Seams (D): floors stacked by ladders (portals — they never touch surface geometry)
     { from_map: 'cinderhead_mine', to_map: 'old_seams_i', via_warp: 'to_old_seams', requires_flag: 'flag:old_seams_open', bidirectional: true },

@@ -114,6 +114,10 @@ GRANTS["cinderhead_mine"] += ["flag:old_seams_told", "flag:old_seams_open"]  # O
 # the Lamplight Starlight tier is DERIVED at six Gleams (FlagStore.derive); the
 # sixth in canon order is Frost, earned at the undercroft — model it there.
 GRANTS["pale_vault_undercroft"].append("flag:lamplight_starlight")
+# the Mirelights (B): Ansel ferries you once he's seen the Frostglass Lens
+# (flag:has_frostglass_lens — Isel, credited to pale_vault_glacier by the Rimeway lane)
+GRANTS.setdefault("saltreach_fen_i", []).append("flag:mirelight_ferry")
+GRANTS["mirelight_chapel"] = ["flag:mirelight_tobin_found"]                  # Tobin found
 POSTGAME_FLAGS = {"flag:dawn"}
 
 

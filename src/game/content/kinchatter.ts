@@ -164,6 +164,19 @@ export const KIN_CHATTER: Record<number, KinChatterEntry> = {
       { text: '"Mmp!" It clamps to its rock, then relaxes when it sees your lamp.', react: 'shake' },
     ],
   },
+  // The Wild Ways — the Mirelights' own (the Glassmere)
+  22: { // Tidwraith — the will-light wraith (the Glassmere)
+    lines: [
+      { text: '"Hoooo." It drifts a little way off, then waits, as if you were meant to follow.' },
+      { text: '"Hh-oo?" Its glow flickers toward the water. You stay on the boards.', react: 'twirl' },
+    ],
+  },
+  32: { // Lumplass — the grown lighthouse-limpet (the Glassmere, the chapel)
+    lines: [
+      { text: '"Pomm. Pomm." Its beacon pulses steady and slow, like a lamp left in a window.' },
+      { text: '"Mm!" It shines a little brighter at your lamp, then settles, satisfied.', react: 'hop' },
+    ],
+  },
   47: { // Pebbit — the bouncing pebble (Dimglass II)
     lines: [
       { text: '"Tok!" It bounces once, twice, and lands exactly where it started.', react: 'hop' },

@@ -102,6 +102,13 @@ to II, not this segment) · Gleam: none · rec. level ~16.
    - NPC: `fen_warden` (`look_around`, `dialogue_ref:'npc.fen_warden'`); route sign +
      boundary sign (`kind:'sign'`, `interact`).
    - no `sets_flags` triggers.
+7. **The Glassmere ferry (2026-10, [09 §2 B](./09-the-wild-ways.md))** — the east edge is Old
+   Ansel's ferry stage (rows 23-24), the blue Mirelights flickering on the inlet beyond. The
+   eel-wife (`script.mirelight_eelwife`, her own story first) asks you to look for her boy
+   Tobin; Ansel won't cross without a Pale Vault true-eye. Seen here at lv ~17; opened at ~40
+   by the Frostglass Lens (`flag:has_frostglass_lens`, Isel at Pale Vault) →
+   `flag:mirelight_ferry` → edge `to_mirelight` → `mirelight_landing`. JOURNAL "The Lights on
+   the Glassmere". Tobin stands by his mother's step once found.
 
 ---
 

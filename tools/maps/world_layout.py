@@ -83,6 +83,8 @@ NODE_KINDS: dict[str, str] = {
     # THE WILD WAYS — the Wick-Run (09 §2 A): Sunvault Climb I down the west flank to the sea
     "wickrun_crest": "route", "wickrun_chute": "route", "wickrun_trestles": "route",
     "wickrun_traverse": "route", "wickrun_lower": "route", "wickrun_foot": "route",
+    # THE WILD WAYS — the Mirelights (east of Saltreach Fen I, over Ansel's ferry)
+    "mirelight_landing": "route", "mirelight_glassmere": "route", "mirelight_chapel": "landmark",
 }
 # places hung off a stacked interior chain, pinned near their anchor (tiles)
 ANCHORED: dict[str, tuple[str, float, float]] = {
@@ -204,6 +206,10 @@ ROADS: list[tuple[str, str, str]] = [
     ("wickrun_traverse", "wickrun_lower", "road"),
     ("wickrun_lower", "wickrun_foot", "road"),
     ("wickrun_foot", "pearlmoor_quay", "road"),      # the beach road round Lightkeeper's Point
+    # THE WILD WAYS — the Mirelights: the ferry is flag-gated, the boards are walked
+    ("saltreach_fen_i", "mirelight_landing", "gate"),
+    ("mirelight_landing", "mirelight_glassmere", "road"),
+    ("mirelight_glassmere", "mirelight_chapel", "road"),
     # THE LANTERN-CAR (rides, not roads) + the Cinderhead ore-hoist
     ("lanternway_lowleaf", "vesper_crossroads", "car"),
     ("lanternway_galehigh", "vesper_crossroads", "car"),

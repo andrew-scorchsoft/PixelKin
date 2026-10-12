@@ -375,6 +375,19 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'At the root of Cinderhead the mountain is built around a star that fell before anyone was here to see it. It never guttered. The warm black cinder-coal the miners dig is its breath, cooling very slowly in the stone, and its kin, Emberroot, sleeps curled at its foot.',
     unlock_flag: 'flag:emberroot_heart_seen',
   },
+  // --- The Wild Ways (09-the-wild-ways.md) ---
+  {
+    id: 'mirelights',
+    term: 'the Mirelights',
+    desc: 'The blue lights over the Glassmere, east of Saltreach Fen, where the old causeway-village drowned. They were once one light — the fen\'s own lamp, a kin that walked ahead of the boats and brought them home — until the Hollowing put it gently to sleep. These are its dreams, and dreams do not know the way.',
+    unlock_flag: 'flag:mirelight_ferry',
+  },
+  {
+    id: 'lanthorne',
+    term: 'Lanthorne',
+    desc: 'The Mirelight: the fen\'s lamp, woken from its null-lantern under the drowned chapel. Since it woke, the blue lights on the Glassmere have been going out one by one, and a small star over the fen burns a little brighter.',
+    unlock_flag: 'flag:lanthorne_caught',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */

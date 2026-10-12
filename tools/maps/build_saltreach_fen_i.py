@@ -136,6 +136,21 @@ for (x, y) in [(0, 37), (0, 38), (1, 37), (1, 38), (15, 0), (16, 0), (15, 1), (1
                (20, H - 2), (21, H - 2), (20, H - 1), (21, H - 1)]:
     tree[y * W + x] = 0
 
+# THE GLASSMERE FERRY (09-the-wild-ways §2 B, 2026-10): the east edge opens on
+# the Glassmere. A short stage juts into an inlet of fen water (rows 23-24 dry,
+# the inlet above and below it) and the marsh-lights hang over the water beyond
+# — seen at lv ~17, crossed at ~40 once Old Ansel trusts a Pale Vault lens.
+for y in range(19, 28):
+    for x in range(28, W):
+        tree[y * W + x] = 0
+for y in list(range(20, 23)) + list(range(25, 28)):
+    for x in range(29, W):
+        pond[y * W + x] = 1
+mk.hline(path, W, H, 22, 18, 25)          # the ferry path, east under the bank's lip
+mk.vline(path, W, H, 25, 22, 24)
+mk.hline(path, W, H, 23, 25, W - 1)       # the approach + the stage boards
+mk.hline(path, W, H, 24, 25, W - 1)
+
 # keep dry: the islet under its cache, the hut-pool's east shore by the
 # eel-wife, the lantern-reed footings + the ruin's reading spot, the trainer
 # sight lines, and the cache/sign tiles
@@ -239,7 +254,8 @@ m.update({
         # the fishing-stilt nook (world-craft §4 #1b): the reed-cutter's eel-wife
         {"id": "fen_eelwife", "at": {"tx": 9, "ty": 25}, "facing": "left",
          "sprite": "fen_folk", "movement": "look_around",
-         "dialogue_ref": "script.fen_eelwife"},
+         # (2026-10: the Mirelights' wrapper — her own story first, then Tobin)
+         "dialogue_ref": "script.mirelight_eelwife"},
     ],
     "gates": [],
     "encounters": [],
@@ -271,6 +287,35 @@ owed += pt.sign(m, deco, W, sid="fen_landing", at=(3, 39))
 owed += pt.sign(m, deco, W, sid="fen_channel", at=(20, 29))
 owed += pt.sign(m, deco, W, sid="fen_boundary", at=(14, 6))
 owed += pt.sign(m, deco, W, sid="fen_drowned_road", at=(22, 40))   # on the wall above, never on, the lost-village link (22,41)
+
+# --- the Glassmere ferry: Old Ansel's stage (09-the-wild-ways §2 B) ---
+# The crossing is an honest EDGE link (x=31 -> mirelight_landing's west edge,
+# same rows), held by the flag Ansel sets once you show him the Frostglass
+# Lens; until then his blocked line answers. The first crossing is narrated by
+# a once-only step_on beat on the stage (it hands you across itself).
+for i, y in enumerate((23, 24)):
+    m["warps"].append({"id": "to_mirelight" + ("_s" if i else ""), "at": {"tx": W - 1, "ty": y},
+                       "trigger": "step_on", "to_map": "mirelight_landing",
+                       "to": {"tx": 0, "ty": y}, "facing": "right", "transition": "fade",
+                       "requires_flag": "flag:mirelight_ferry",
+                       "blocked_ref": "npc.mirelight_ansel_blocked"})
+    m["triggers"].append({"id": f"ferry_ride_{y}", "kind": "cutscene",
+                          "at": {"tx": W - 2, "ty": y}, "activation": "step_on",
+                          "ref": "script.mirelight_ferry_ride",
+                          "requires_flag": "flag:mirelight_ferry",
+                          "hidden_when_flag": "flag:mirelight_crossed"})
+m["npcs"].append({"id": "ansel", "at": {"tx": 28, "ty": 22}, "facing": "down",
+                  "sprite": "old_salt", "movement": "look_around",
+                  "dialogue_ref": "script.mirelight_ansel"})
+# Tobin, home again once you've found him on the Glassmere — by his mother's step
+m["npcs"].append({"id": "tobin_home", "at": {"tx": 10, "ty": 24}, "facing": "left",
+                  "sprite": "village_child", "movement": "static",
+                  "dialogue_ref": "script.mirelight_tobin_home",
+                  "requires_flag": "flag:mirelight_tobin_found"})
+owed += ["script.mirelight_ansel", "script.mirelight_ferry_ride",
+         "npc.mirelight_ansel_blocked", "script.mirelight_eelwife",
+         "script.mirelight_tobin_home"]
+owed += pt.sign(m, deco, W, sid="mirelight_ferry", at=(26, 25))
 
 # encounter zones — the SHIPPED tables, verbatim (night tables + the R4
 # day-form pairs; mirrored in build_species EXTRA_ENCOUNTERS — never retune
@@ -361,6 +406,14 @@ m["triggers"].append({"id": "net_weights", "kind": "script", "at": {"tx": 6, "ty
 # square corners (the pond family has no inner corners — props round them)
 for k, (x, y) in enumerate([(4, 6), (14, 27), (20, 35), (23, 8), (15, 40), (26, 9)]):
     obj(f"lily_{k}", "saltreach_lilypads", (x, y), 2, 2, solid=False)
+
+# the ferry stage (its deck walks to the edge) + the marsh-lights over the
+# Glassmere beyond: the blue will-lights that lie, flickering on the water
+obj("ferry_stage", "mirelight_ferry_stage", (29, 23), 3, 2, solid=False)
+for k, (x, y) in enumerate([(30, 21), (31, 20), (30, 26), (31, 27), (29, 27)]):
+    obj(f"marsh_light_{k}", "mirelight_marsh_light", (x, y), 1, 1, solid=False)
+obj("ferry_moorings", "saltreach_mooring_posts", (29, 20), 1, 2, overhang=1, walk_under=True,
+    solid=False)
 
 busy = {(n["at"]["tx"], n["at"]["ty"]) for n in m["npcs"]}
 busy |= {(t["at"]["tx"], t["at"]["ty"]) for t in m["triggers"]}

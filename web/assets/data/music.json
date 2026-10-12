@@ -176,8 +176,8 @@
     },
     {
      "id": "mirelight",
-     "title": "Mirelight",
-     "where": "The Mirelights (the Glassmere: a drowned causeway-field of wandering false blue lights over a still mere)",
+     "title": "The Mirelights",
+     "where": "The Mirelights · The Glassmere · The Drowned Chapel · Lanthorne Hollow",
      "mood": "Eerie but tender: false blue lights drifting over still water, the echoes of a lost kin-light that once led travellers home.",
      "classic": "play/assets/audio/music/mirelight.mp3",
      "classic_loop_start": null,

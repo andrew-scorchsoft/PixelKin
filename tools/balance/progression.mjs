@@ -518,6 +518,10 @@ const BUILT_PAYOUTS = {
   seams_miner_tam: ['route', 31, 496],
   seams_miner_penhal: ['route', 33, 528],
   seams_miner_jory: ['route', 33, 528],
+  // the Mirelights (B)
+  mire_eelcatcher: ['route', 40, 640], // the landing
+  mire_lampdiver: ['route', 42, 672], // the Glassmere
+  mire_acolyte: ['route', 43, 688], // the drowned chapel
 };
 const failures = [];
 for (const [id, [klass, ace, authored]] of Object.entries(BUILT_PAYOUTS)) {

@@ -866,6 +866,39 @@ OLD_SEAMS_TABLES = {
 for _area, _tbl in OLD_SEAMS_TABLES.items():
     for _slug, _rows_ in _seam_rows(_area, _tbl).items():
         EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
+# ---- THE WILD WAYS: the Mirelights (09-the-wild-ways §2 B) — mirrors of the
+# built in-map tables (tools/maps/mirelight_common.py — the truth; weights ->
+# rarity: >=20 common, 10-19 uncommon, 5-9 rare, <5 very_rare). Night 38-43,
+# day-forms 55-64. Tidwraith/Lumplass are the Mirelights' own; Lampling (the
+# C1 trail's scripted catch) also drifts here, rarely, as a lost light.
+_MIRE_SLUG = {31: "lumpin", 67: "fennlight", 27: "brineroll", 60: "poolfrond", 22: "tidwraith",
+              21: "tidmaren", 29: "glostern", 32: "lumplass", 148: "lampling"}
+# (area, [(kin, weight, night_min, night_max)], day shift) — the SAME species by
+# day (the R4 day-form convention: the woken forms of the same water), +shift
+# levels and four wider. The night beds sit at the lv-40 beds' BST (~400), the
+# grown D-tier forms being the trainers'.
+_MIRE_TABLES = [
+    ("mirelight_landing", [(31, 30, 38, 40), (67, 24, 38, 41), (27, 22, 38, 40),
+                           (60, 16, 39, 40), (22, 8, 39, 41)], 17),
+    ("mirelight_glassmere", [(31, 30, 40, 42), (21, 24, 40, 42), (29, 22, 40, 41),
+                             (22, 9, 40, 42), (32, 9, 41, 42), (148, 6, 42, 42)], 17),
+    ("mirelight_chapel", [(31, 28, 41, 43), (67, 22, 41, 42), (21, 20, 41, 43),
+                          (32, 12, 41, 43), (22, 9, 41, 43), (148, 9, 43, 43)], 17),
+]
+
+
+def _mire_rarity(w):
+    return "common" if w >= 20 else "uncommon" if w >= 10 else "rare" if w >= 5 else "very_rare"
+
+
+MIRELIGHT_ENCOUNTERS: dict = {}
+for _area, _tab, _shift in _MIRE_TABLES:
+    for (_k, _w, _lo, _hi) in _tab:
+        MIRELIGHT_ENCOUNTERS.setdefault(_MIRE_SLUG[_k], []).extend(
+            _rows(_area, [(_lo, _hi, _mire_rarity(_w)),
+                          (_lo + _shift, _hi + _shift + 4, _mire_rarity(_w))]))
+for _slug, _rows_ in MIRELIGHT_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
 
 # Areas whose encounter tables are BUILT into the map JSONs (the in-map zones
 # are the truth, mirrored above). Generated region defaults — and stale rows
@@ -919,6 +952,9 @@ CURATED_AREAS = {
     # THE WILD WAYS — the Old Seams (D): three cave floors (mirrored above,
     # OLD_SEAMS_TABLES); the heart is encounter-free by design (Emberroot's room).
     "old_seams_i", "old_seams_ii", "old_seams_iii", "emberroot_heart",
+    # THE WILD WAYS — the Mirelights (mirrored above, MIRELIGHT_ENCOUNTERS);
+    # the hollow is the legendary's room, listed so nothing generated claims it
+    "mirelight_landing", "mirelight_glassmere", "mirelight_chapel", "lanthorne_hollow",
 }
 
 # Kin that are FIXED quest catches (a legendaryBattle set-piece), even though

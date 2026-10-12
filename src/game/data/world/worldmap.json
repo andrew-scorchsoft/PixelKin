@@ -451,6 +451,30 @@
       "kind": "route",
       "region": "south",
       "name": "Wick-Run Foot"
+    },
+    {
+      "id": "mirelight_landing",
+      "x": 135,
+      "y": 300,
+      "kind": "route",
+      "region": "east",
+      "name": "The Mirelights"
+    },
+    {
+      "id": "mirelight_glassmere",
+      "x": 167,
+      "y": 300,
+      "kind": "route",
+      "region": "east",
+      "name": "The Glassmere"
+    },
+    {
+      "id": "mirelight_chapel",
+      "x": 200,
+      "y": 300,
+      "kind": "landmark",
+      "region": "east",
+      "name": "The Drowned Chapel"
     }
   ],
   "roads": [
@@ -730,6 +754,21 @@
       "kind": "road"
     },
     {
+      "a": "saltreach_fen_i",
+      "b": "mirelight_landing",
+      "kind": "gate"
+    },
+    {
+      "a": "mirelight_landing",
+      "b": "mirelight_glassmere",
+      "kind": "road"
+    },
+    {
+      "a": "mirelight_glassmere",
+      "b": "mirelight_chapel",
+      "kind": "road"
+    },
+    {
       "a": "lanternway_lowleaf",
       "b": "vesper_crossroads",
       "kind": "car"
@@ -813,9 +852,13 @@
     "lanternway_nightreach": "lanternway_nightreach",
     "lanternway_tinderwick": "lanternway_tinderwick",
     "lanternway_undercut": "lanternway_lowleaf",
+    "lanthorne_hollow": "mirelight_chapel",
     "lowleaf_bower": "lowleaf_hollow",
     "lowleaf_hollow": "lowleaf_hollow",
     "lowleaf_lumenary": "lowleaf_hollow",
+    "mirelight_chapel": "mirelight_chapel",
+    "mirelight_glassmere": "mirelight_glassmere",
+    "mirelight_landing": "mirelight_landing",
     "nightreach_home": "nightreach_observatory",
     "nightreach_inn": "nightreach_observatory",
     "nightreach_lumenary": "nightreach_observatory",
