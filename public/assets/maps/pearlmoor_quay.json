@@ -3116,7 +3116,7 @@
     {
       "id": "netmender_pre",
       "at": {
-        "tx": 23,
+        "tx": 22,
         "ty": 17
       },
       "facing": "down",
@@ -3128,7 +3128,7 @@
     {
       "id": "netmender_floats",
       "at": {
-        "tx": 23,
+        "tx": 22,
         "ty": 17
       },
       "facing": "down",
@@ -3141,7 +3141,7 @@
     {
       "id": "netmender_sent",
       "at": {
-        "tx": 23,
+        "tx": 22,
         "ty": 17
       },
       "facing": "down",
@@ -3154,7 +3154,7 @@
     {
       "id": "netmender_rung",
       "at": {
-        "tx": 23,
+        "tx": 22,
         "ty": 17
       },
       "facing": "down",
@@ -3167,7 +3167,7 @@
     {
       "id": "netmender_buoys",
       "at": {
-        "tx": 23,
+        "tx": 22,
         "ty": 17
       },
       "facing": "down",
@@ -3180,7 +3180,7 @@
     {
       "id": "netmender_buoys_wait",
       "at": {
-        "tx": 23,
+        "tx": 22,
         "ty": 17
       },
       "facing": "down",
@@ -3193,7 +3193,7 @@
     {
       "id": "netmender_drift",
       "at": {
-        "tx": 23,
+        "tx": 22,
         "ty": 17
       },
       "facing": "down",
@@ -3206,7 +3206,7 @@
     {
       "id": "netmender_done",
       "at": {
-        "tx": 23,
+        "tx": 22,
         "ty": 17
       },
       "facing": "down",
@@ -3219,7 +3219,7 @@
     {
       "id": "netmender_hours_after",
       "at": {
-        "tx": 23,
+        "tx": 22,
         "ty": 17
       },
       "facing": "down",

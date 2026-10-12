@@ -1751,7 +1751,7 @@
       "id": "waystone_kid",
       "at": {
         "tx": 7,
-        "ty": 11
+        "ty": 12
       },
       "facing": "up",
       "sprite": "kite_child",
@@ -1764,7 +1764,7 @@
       "id": "waystone_kid_kite",
       "at": {
         "tx": 7,
-        "ty": 11
+        "ty": 12
       },
       "facing": "up",
       "sprite": "kite_child",

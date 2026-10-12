@@ -191,7 +191,7 @@ for nid, ref, req, hide in [
     ("hob", "npc.wanderwood_hob", None, "flag:q_south_wander_lamp"),
     ("hob_done", "npc.wanderwood_hob_done", "flag:q_south_wander_lamp", None),
 ]:
-    n = {"id": nid, "at": {"tx": 24, "ty": 12}, "facing": "left", "sprite": "npc_man",
+    n = {"id": nid, "at": {"tx": 24, "ty": 13}, "facing": "left", "sprite": "npc_man",
          "movement": "look_around", "dialogue_ref": ref}
     if req:
         n["requires_flag"] = req

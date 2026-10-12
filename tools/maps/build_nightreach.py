@@ -494,11 +494,11 @@ owed += [
 # ---- the Star-vigil on the temple steps (Arc E — belonging as witness) --------------
 m["npcs"] += [
     # the vigil-warden keeps the steps; her cutscene is the festival's frame
-    {"id": "star_vigil_warden", "at": {"tx": 13, "ty": 15}, "facing": "up",
+    {"id": "star_vigil_warden", "at": {"tx": 14, "ty": 15}, "facing": "up",
      "sprite": "npc_lampwarden", "movement": "static",
      "dialogue_ref": "script.nightreach_star_vigil",
      "hidden_when_flag": "flag:star_vigil_seen"},
-    {"id": "star_vigil_warden_after", "at": {"tx": 13, "ty": 15}, "facing": "up",
+    {"id": "star_vigil_warden_after", "at": {"tx": 14, "ty": 15}, "facing": "up",
      "sprite": "npc_lampwarden", "movement": "static",
      "dialogue_ref": "npc.star_vigil_warden_after",
      "requires_flag": "flag:star_vigil_seen"},
@@ -521,7 +521,7 @@ m["npcs"] += [
      "sprite": "npc_girl", "movement": "wander",
      "dialogue_ref": "npc.nightreach_festival_a",
      "requires_flag": "flag:q_token_west"},
-    {"id": "festival_lunar_b", "at": {"tx": 14, "ty": 17}, "facing": "up",
+    {"id": "festival_lunar_b", "at": {"tx": 13, "ty": 17}, "facing": "up",
      "sprite": "npc_man", "movement": "static",
      "dialogue_ref": "npc.nightreach_festival_b",
      "requires_flag": "gleam:lunar"},

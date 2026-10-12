@@ -375,14 +375,14 @@ m = {
         # The kid waits for the kite (flag:q_round_kite_taken — set when the
         # kite-maker hands it over); delivery sets flag:q_round_kite and the
         # kid flies the kite thereafter.
-        {"id": "waystone_kid", "at": {"tx": CX - 2, "ty": CY + 2}, "facing": "up",
+        {"id": "waystone_kid", "at": {"tx": CX - 2, "ty": CY + 3}, "facing": "up",
          "sprite": "npc_boy", "movement": "static",
          "dialogue_ref": "script.round_kite_deliver",
          "requires_flag": "flag:q_round_kite_taken",
          "hidden_when_flag": "flag:q_round_kite"},
         # At endgame the kid trades the kite for the lamp-flickers (C1 below) —
         # hidden once the hub opens so the trail chain owns the cast slot.
-        {"id": "waystone_kid_kite", "at": {"tx": CX - 2, "ty": CY + 2}, "facing": "up",
+        {"id": "waystone_kid_kite", "at": {"tx": CX - 2, "ty": CY + 3}, "facing": "up",
          "sprite": "npc_boy", "movement": "wander",
          "dialogue_ref": "npc.waystone_kid_kite",
          "requires_flag": "flag:q_round_kite",

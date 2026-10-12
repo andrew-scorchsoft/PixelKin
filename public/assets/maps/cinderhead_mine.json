@@ -538,7 +538,7 @@
     {
       "id": "vigil_raised_b",
       "at": {
-        "tx": 11,
+        "tx": 12,
         "ty": 12
       },
       "facing": "right",
@@ -661,8 +661,8 @@
     {
       "id": "cache_cinderhead_crystal",
       "at": {
-        "tx": 24,
-        "ty": 5
+        "tx": 25,
+        "ty": 4
       },
       "facing": "down",
       "sprite": "item_cache",

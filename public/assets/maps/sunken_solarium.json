@@ -1574,7 +1574,7 @@
       "id": "cache_solarium_charge",
       "at": {
         "tx": 15,
-        "ty": 24
+        "ty": 25
       },
       "facing": "down",
       "sprite": "item_cache",

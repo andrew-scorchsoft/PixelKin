@@ -1153,7 +1153,7 @@
       "id": "fenn_c3",
       "at": {
         "tx": 13,
-        "ty": 20
+        "ty": 21
       },
       "facing": "right",
       "sprite": "npc_mentor",

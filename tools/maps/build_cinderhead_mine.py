@@ -219,7 +219,7 @@ m: dict = {
          "sprite": "npc_old_man", "movement": "look_around",
          "dialogue_ref": "npc.vigil_raised_a",
          "requires_flag": "flag:q_token_east"},
-        {"id": "vigil_raised_b", "at": {"tx": 11, "ty": 12}, "facing": "right",
+        {"id": "vigil_raised_b", "at": {"tx": 12, "ty": 12}, "facing": "right",
          "sprite": "npc_child", "movement": "wander",
          "dialogue_ref": "npc.vigil_raised_b",
          "requires_flag": "gleam:stone"},
@@ -277,7 +277,7 @@ owed += pt.sign(m, deco, W, sid="cinderhead_deep_mouth", at=(15, 20))
 owed += pt.sign(m, deco, W, sid="cinderhead_lumenary", at=(13, 9))
 
 # caches (variety rule: a valuable crystal off the lane, loose wicks, a balm)
-owed += pt.cache(m, cid="cinderhead_crystal", at=(24, 5))   # the working gallery's prize
+owed += pt.cache(m, cid="cinderhead_crystal", at=(25, 4))   # the working gallery's prize (the alley behind cottage_b — off its footprint)
 owed += pt.cache(m, cid="cinderhead_wicks", at=(4, 4))      # a takings-tin in the NW pocket (pays the detour)
 owed += pt.cache(m, cid="cinderhead_balm", at=(23, 18))
 

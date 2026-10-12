@@ -53,6 +53,11 @@ jobs:
       # tile, or a marker object (draw_warp_markers.py) covering it or right north.
       - name: Warp marker audit (no invisible mid-map warps)
         run: python3 tools/maps/audit_warp_markers.py
+      # Every non-ambient NPC stands on foot-standable ground (not water, a wall,
+      # a tree trunk or a prop's base — Andrew was found in the sea) and has a
+      # reachable tile to be talked to from (incl. across a counter). ALLOW = WHY.
+      - name: NPC footing audit (no NPCs in the sea or a wall; all talkable)
+        run: python3 tools/maps/audit_npc_footing.py
       # The traversal kit (chutes, ice, rails, bridges/underpasses, ladders, ramps)
       # lives in the engine's Traversal.ts AND the audits' worldmodel.py: re-walk
       # every kit map (+ a fixture) with both and FAIL on any disagreement.
