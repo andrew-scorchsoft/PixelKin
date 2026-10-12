@@ -21,6 +21,8 @@ import { SUNVAULT_DIALOGUE, SUNVAULT_SCRIPTS } from './sunvault';
 import { RECKONWORKS_DIALOGUE, RECKONWORKS_SCRIPTS } from './reckonworks';
 // The Wayward Arms (2026-10): the hotel on the rise north of the Wanderwood.
 import { HOTEL_DIALOGUE, HOTEL_SCRIPTS } from './hotel';
+// The kitchens (2026-10): Percy's moka brew-stand (Duskapple) + Marisol's kitchen (Lowleaf).
+import { KITCHENS_DIALOGUE, KITCHENS_SCRIPTS } from './kitchens';
 
 export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SOUTH_SCRIPTS,
@@ -36,6 +38,7 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SUNVAULT_SCRIPTS,
   ...RECKONWORKS_SCRIPTS,
   ...HOTEL_SCRIPTS,
+  ...KITCHENS_SCRIPTS,
 };
 
 export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
@@ -52,4 +55,5 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...SUNVAULT_DIALOGUE,
   ...RECKONWORKS_DIALOGUE,
   ...HOTEL_DIALOGUE,
+  ...KITCHENS_DIALOGUE,
 };

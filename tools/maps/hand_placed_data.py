@@ -231,6 +231,16 @@ PLACEMENTS: dict[str, dict] = {
             },
         },
     },
+    "duskapple_orchard": {
+        # The kitchens (content/regions/kitchens.ts): Percy's moka brew-stand by the
+        # courier's cart — a drawn prop (tools/maps/draw_moka_stall.py), optional colour.
+        "objects": [
+            {"id": "moka_stall", "sprite": "kitchens_moka_stall", "at": {"tx": 12, "ty": 10}, "w": 2, "h": 2, "overhang": 1},
+        ],
+        "npcs": [
+            {"id": "percy", "at": {"tx": 14, "ty": 11}, "facing": "left", "sprite": "innkeeper", "movement": "static", "dialogue_ref": "script.moka_percy"},
+        ],
+    },
     "lowleaf_hollow": {
         "patch": {
             "encounters": {
@@ -240,7 +250,14 @@ PLACEMENTS: dict[str, dict] = {
         "day": {
             "fringe_a": T((56, 28, 56, 62), (67, 28, 56, 63), (38, 22, 56, 63), (62, 14, 56, 62), (66, 8, 58, 65), (65, 12, 56, 63)),
         },
+        "objects": [
+            # The kitchens: Marisol's stall (chile strings, the comal) + her pozole pot
+            {"id": "cantina_stall", "sprite": "kitchens_cantina_stall", "at": {"tx": 6, "ty": 26}, "w": 3, "h": 3, "overhang": 1},
+            {"id": "pozole_pot", "sprite": "kitchens_pozole_pot", "at": {"tx": 10, "ty": 26}, "w": 2, "h": 2, "overhang": 1},
+        ],
         "npcs": [
+            # The kitchens: Marisol's kitchen (script.cantina_marisol)
+            {"id": "marisol", "at": {"tx": 9, "ty": 27}, "facing": "down", "sprite": "market_trader", "movement": "static", "dialogue_ref": "script.cantina_marisol"},
             # P1 postgame: a letter recipient (script.post_letter_*)
             {"id": "letter_sable", "at": {"tx": 14, "ty": 15}, "facing": "down", "sprite": "npc_lampwarden", "movement": "static", "dialogue_ref": "script.post_letter_lowleaf", "requires_flag": "flag:q_post_letters", "hidden_when_flag": "flag:q_post_letter_lowleaf"},
             # E4: the hook to Georgina's side quest

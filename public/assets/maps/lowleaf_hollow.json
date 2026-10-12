@@ -213,6 +213,28 @@
       "h": 4,
       "overhang": 3,
       "walk_under": true
+    },
+    {
+      "id": "cantina_stall",
+      "sprite": "kitchens_cantina_stall",
+      "at": {
+        "tx": 6,
+        "ty": 26
+      },
+      "w": 3,
+      "h": 3,
+      "overhang": 1
+    },
+    {
+      "id": "pozole_pot",
+      "sprite": "kitchens_pozole_pot",
+      "at": {
+        "tx": 10,
+        "ty": 26
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1
     }
   ],
   "warps": [
@@ -1323,6 +1345,17 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_lowleaf_charge",
       "hidden_when_flag": "flag:picked_lowleaf_charge"
+    },
+    {
+      "id": "marisol",
+      "at": {
+        "tx": 9,
+        "ty": 27
+      },
+      "facing": "down",
+      "sprite": "market_trader",
+      "movement": "static",
+      "dialogue_ref": "script.cantina_marisol"
     },
     {
       "id": "letter_sable",

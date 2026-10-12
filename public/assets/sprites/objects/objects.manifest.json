@@ -1092,6 +1092,27 @@
       "tw": 3,
       "th": 2
     },
+    "kitchens_cantina_stall": {
+      "path": "assets/sprites/objects/kitchens_cantina_stall.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "kitchens_moka_stall": {
+      "path": "assets/sprites/objects/kitchens_moka_stall.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "kitchens_pozole_pot": {
+      "path": "assets/sprites/objects/kitchens_pozole_pot.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "lowleaf_cottage": {
       "path": "assets/sprites/objects/lowleaf_cottage.webp",
       "width": 80,

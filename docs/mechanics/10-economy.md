@@ -58,6 +58,7 @@ Prices live on `ItemDef.price` (`content/items.ts`); one price everywhere.
 | Star-charts | teach a move | 800–4,000w by tier (§6) | everywhere |
 | Hooded Lamp | key item; toggle — wild encounter rate ×0.5 while hooded | 600w | Pearlmoor chandlery, once `gleam:tide` is held (flag-gated stock) |
 | Tin Rower | key item; toggle — wild encounter rate ×0.5 while wound (the lowest active toggle factor applies; they never stack) | 12,000w **or a story** | Aldous Wink, Dimglass Coast I (R9, once `flag:has_starter`) — a one-time optional via the `pay` cutscene op, outside every solvency leg |
+| A plate at Marisol's | restores the whole party (a courtesy heal, not a rest point) + her food talk; the first plate adds a Salsa Roja (heal 60, once) | 60w | Marisol's kitchen, Lowleaf Hollow — the `pay` op (`content/regions/kitchens.ts`), optional colour outside every solvency leg |
 
 Key items leave a shop's shelf once held (`ShopMenu`), so a toggle can't be bought
 twice. The Tin Rower's 12,000w reserve is set *not* to be met: the free path (Wink's

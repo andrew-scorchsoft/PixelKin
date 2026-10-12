@@ -64,6 +64,10 @@ const PRICES = {
   // one-time optional; the free path is a story, so it never enters a solvency
   // leg). Mirrored in 10-economy.md and script.wink_buy.
   tin_rower: 12000,
+  // The kitchens: a plate at Marisol's (Lowleaf Hollow) — the `pay` op, a courtesy
+  // heal + her food talk; pure optional colour, never in a solvency leg.
+  // Mirrored in 10-economy.md and content/regions/kitchens.ts CANTINA_PRICE.
+  cantina_dish: 60,
 };
 
 // ---------------------------------------------------------------------------
