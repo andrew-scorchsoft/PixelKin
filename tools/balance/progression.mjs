@@ -491,6 +491,9 @@ const BUILT_PAYOUTS = {
   vigilant_solenne_summit: ['vigilant', 69, 5520],
   vigilant_mer_summit: ['vigilant', 69, 5520],
   startender_fenn: ['cor', 70, 8400],
+  // THE WILD WAYS (09-the-wild-ways.md, 2026-10) — optional areas, one block per lane
+  runner_vess: ['route', 48, 768], // the Wick-Run chute
+  runner_dace: ['route', 49, 784],
 };
 const failures = [];
 for (const [id, [klass, ace, authored]] of Object.entries(BUILT_PAYOUTS)) {

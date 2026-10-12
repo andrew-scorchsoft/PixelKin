@@ -1211,6 +1211,32 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
   // Their battle backdrops are already rendered — see UPCOMING_BATTLE_BACKDROPS below.
+  // ---- THE WILD WAYS (09-the-wild-ways.md, 2026-10) — one block per area lane ----
+  // the Wick-Run (A): stacks the traverse_set accent kit (chutes, ramps, decks).
+  wickrun_crest: {
+    json: 'assets/maps/wickrun_crest.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/sunvault-climb-a.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/wickrun-a.webp', 'assets/backgrounds/battle/wickrun-b.webp'],
+  },
+  wickrun_chute: {
+    json: 'assets/maps/wickrun_chute.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/sunvault-climb-a.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/wickrun-a.webp', 'assets/backgrounds/battle/wickrun-b.webp'],
+  },
+  // the Mirelights (B)
+  // the Rimeway (C)
+  // the Old Seams (D)
+  // Sunvault Climb rebuild (S)
 };
 
 /**

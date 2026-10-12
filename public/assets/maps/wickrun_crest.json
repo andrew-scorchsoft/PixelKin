@@ -2705,7 +2705,7 @@
     },
     {
       "id": "crest_tree_b",
-      "sprite": "tinderwick_tree_b",
+      "sprite": "tinderwick_tree",
       "at": {
         "tx": 3,
         "ty": 15

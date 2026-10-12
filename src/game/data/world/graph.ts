@@ -187,6 +187,14 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'vigil_stormfall', region: 'north', optional: true, reward: 'Vigil III: NULLHUSK #144 register bed (62-64) + the storm-tithe' },
     { map_id: 'vigil_sunfall', region: 'west', optional: true, reward: 'Vigil IV: DAWNWATCHER #129 + HELITHORN #119 register beds (64-66) + Star-chart: Sunburst Nova' },
     { map_id: 'vigil_murkfall', region: 'outer', optional: true, reward: 'Vigil V: SOLARMOURN #128 / CINDERVAST #145 / BOGVAST #146 register beds (66-68) + the Morrow Charm' },
+    // ---- THE WILD WAYS (09-the-wild-ways.md, 2026-10) — one block per area lane
+    // the Wick-Run (A): Sunvault Climb I's south road -> the crest -> downhill to Lightkeeper's Point
+    { map_id: 'wickrun_crest', region: 'west', optional: true, reward: 'the runner rental + the Tallow Lift (frees the lift home)' },
+    { map_id: 'wickrun_chute', region: 'west', optional: true, reward: 'run-only Tallowcrest/Wickmere/Warmantis + a kicker-only Lumen Drop' },
+    // the Mirelights (B)
+    // the Rimeway (C)
+    // the Old Seams (D)
+    // Sunvault Climb rebuild (S)
   ],
   edges: [
     // ---- Tinderwick interiors (door warps, both ways) --------------------------------
@@ -373,6 +381,15 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'thunderroost', to_map: 'vigil_stormfall', via_warp: 'to_vigil_storm', requires_flag: 'flag:vigil_reading_3', bidirectional: true },
     { from_map: 'sunvault_climb_ii', to_map: 'vigil_sunfall', via_warp: 'to_vigil_sun', requires_flag: 'flag:vigil_reading_4', bidirectional: true },
     { from_map: 'coldfog_marches_ii', to_map: 'vigil_murkfall', via_warp: 'to_vigil_murk', requires_flag: 'flag:vigil_reading_5', bidirectional: true },
+    // ---- THE WILD WAYS (09-the-wild-ways.md) — one block per area lane
+    // the Wick-Run (A): downhill only (chutes can't be climbed); the Tallow Lift is a ride, not an edge
+    { from_map: 'sunvault_climb_i', to_map: 'wickrun_crest', via_warp: 'to_wickrun', bidirectional: true },
+    { from_map: 'wickrun_crest', to_map: 'wickrun_chute', via_warp: 'to_chute', requires_flag: 'flag:wickrun_riding', bidirectional: true },
+    { from_map: 'wickrun_chute', to_map: 'wickrun_trestles', via_warp: 'to_trestles', bidirectional: false },
+    // the Mirelights (B)
+    // the Rimeway (C)
+    // the Old Seams (D)
+    // Sunvault Climb rebuild (S)
   ],
   hub: {
     map_id: 'vesper_crossroads',

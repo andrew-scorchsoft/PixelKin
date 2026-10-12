@@ -1236,6 +1236,33 @@ export const TRAINERS: TrainerRegistry = {
     music: 'battle-emberfall',
     ai: 'smart',
   },
+  // ---- THE WILD WAYS (09-the-wild-ways.md) — one block per area lane ----------
+  // the Wick-Run (A)
+  runner_vess: {
+    id: 'runner_vess',
+    name: 'VESS',
+    title: 'Runner',
+    party: [
+      { species_id: 11, level: 47 }, // Tallowcrest — Ember
+      { species_id: 118, level: 48 }, // Helicore — Solar (ace)
+    ],
+    payout: 768, // route 16 × ace 48
+  },
+  runner_dace: {
+    id: 'runner_dace',
+    name: 'DACE',
+    title: 'Runner',
+    party: [
+      { species_id: 6, level: 47 }, // Wickmere — Light/Ember
+      { species_id: 115, level: 48 }, // Solvyne — Solar/Verdant
+      { species_id: 19, level: 49 }, // Warmantis — Ember/Light (ace)
+    ],
+    payout: 784, // route 16 × ace 49
+  },
+  // the Mirelights (B)
+  // the Rimeway (C)
+  // the Old Seams (D)
+  // Sunvault Climb rebuild (S)
 };
 
 /** Intro/defeat dialogue for trainers, kept beside the roster they belong to. */

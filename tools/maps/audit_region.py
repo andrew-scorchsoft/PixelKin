@@ -106,6 +106,8 @@ GRANTS["vigil_grovefall"] = ["flag:vigil_2_kept", "flag:vigil_reading_3"]
 GRANTS["vigil_stormfall"] = ["flag:vigil_3_kept", "flag:vigil_reading_4"]
 GRANTS["vigil_sunfall"] = ["flag:vigil_4_kept", "flag:vigil_reading_5"]
 GRANTS["vigil_murkfall"] = ["flag:vigil_5_kept"]
+# ---- THE WILD WAYS (09-the-wild-ways.md, 2026-10) — one line per area lane
+GRANTS["wickrun_crest"] = ["flag:wickrun_riding", "flag:tallow_lift_freed"]   # Pell's rental, the brake
 POSTGAME_FLAGS = {"flag:dawn"}
 
 

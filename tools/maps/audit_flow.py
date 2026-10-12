@@ -94,6 +94,10 @@ def audit_map(mm: MapModel, start_at: tuple[int, int] | None) -> list[dict]:
             break
         others = set().union(*(a for a in anchors if a != p["stand"]))
         if others and not (mm.bfs(others, abilities=GIFTS).keys() & p["stand"]):
+            # A one-way map (a downhill chute, a rail line): its upstream door is
+            # an ENTRY you can't walk back to — legitimate iff it leads on.
+            if mm.one_way and (mm.bfs(p["stand"], abilities=GIFTS).keys() & others):
+                continue
             orphans.append(f"portal -> {p['to_map']} ({sorted(p['tiles'])[0]})")
     if orphans:
         add("reach", "FAIL", "unreachable content (even with all Gifts): "
