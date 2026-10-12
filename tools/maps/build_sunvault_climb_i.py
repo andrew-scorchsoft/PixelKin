@@ -106,6 +106,11 @@ mk.rect(cliff, W, H, 8, 11, 10, 11, 0)        # the hop lands on tier A's top ro
 for y in (18, 19):
     for x in (24, 25):
         cliff[y * W + x] = 0
+# SOUTH gap — the WICK-RUN (09-the-wild-ways §2 A, 2026-10): the old wax road
+# leaves the lower garden through the south wall at cols 14-15 for the crest.
+for y in (24, 25):
+    for x in (14, 15):
+        cliff[y * W + x] = 0
 
 # ---- the garden-road (ruinfloor lanes; §3a r11 S-bends) -----------------------------
 mk.rect(ruin, W, H, 6, 14, 29, 15)            # the entry road west
@@ -119,6 +124,10 @@ mk.rect(ruin, W, H, 12, 13, 14, 13)
 mk.rect(ruin, W, H, 17, 16, 19, 16)
 mk.rect(ruin, W, H, 10, 7, 12, 7)
 mk.rect(ruin, W, H, 16, 10, 17, 10)
+# the wax road: through the pocket pierce, west along the garden, out south
+mk.rect(ruin, W, H, 24, 18, 25, 22)
+mk.rect(ruin, W, H, 14, 22, 25, 22)
+mk.rect(ruin, W, H, 14, 22, 15, 25)
 
 # ---- encounter terrain --------------------------------------------------------------
 mk.blob(goldtuft, W, H, 14.0, 21.5, 3.4, 1.8)  # the south pocket bed (optional)
@@ -172,6 +181,13 @@ m: dict = {
 
 # ---- warps (graph.ts edge ids verbatim) ---------------------------------------------
 m["warps"] += [
+    # SOUTH <-> the Wick-Run crest (UNGATED; the run itself is rental-gated there)
+    {"id": "to_wickrun", "at": {"tx": 14, "ty": 25}, "trigger": "step_on",
+     "to_map": "wickrun_crest", "to": {"tx": 14, "ty": 0}, "facing": "down",
+     "transition": "fade"},
+    {"id": "to_wickrun_e", "at": {"tx": 15, "ty": 25}, "trigger": "step_on",
+     "to_map": "wickrun_crest", "to": {"tx": 15, "ty": 0}, "facing": "down",
+     "transition": "fade"},
     # EAST <-> sunken_solarium (UNGATED both ways)
     {"id": "to_solarium", "at": {"tx": 29, "ty": 14}, "trigger": "step_on",
      "to_map": "sunken_solarium", "to": {"tx": 1, "ty": 28}, "facing": "right",
