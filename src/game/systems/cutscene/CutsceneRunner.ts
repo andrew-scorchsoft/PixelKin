@@ -33,6 +33,12 @@ export interface CutsceneContext {
   /** Hand the player a specific kin at a level (a gift kin); joins party or Hearth. */
   onGiveKin?(speciesId: number, level: number): void;
   onGiveItem(item: string, count: number): void;
+  /** Take an item back from the pack (no-op if absent). */
+  onTakeItem?(item: string, count: number): void;
+  /** Start a run clock (the time trial HUD). */
+  timerStart?(id: string): void;
+  /** Stop a run clock: elapsed ms, or undefined if that clock wasn't running. */
+  timerStop?(id: string): number | undefined;
   /** Whether the player currently holds at least one of `item` (ensureItem's gate). */
   hasItem?(item: string): boolean;
   /** Run a trainer battle; resolves true if the player won (false aborts the scene). */
@@ -492,6 +498,30 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
     case 'shop':
       await ctx.openShop?.(step.shop);
       return true;
+    case 'takeItem':
+      ctx.onTakeItem?.(step.item, step.count ?? 1);
+      return true;
+    case 'timer': {
+      if (step.action === 'start') {
+        ctx.timerStart?.(step.id);
+        return true;
+      }
+      const ms = ctx.timerStop?.(step.id);
+      if (step.action === 'cancel' || ms === undefined) return true;
+      const secs = (ms / 1000).toFixed(1);
+      const beat = (step.tiers ?? []).filter((t) => ms <= t.ms);
+      for (const t of beat) ctx.flags.set(t.flag, true);
+      if (beat.length) ctx.onFlagSet?.();
+      // The best tier beaten names the run (tiers are authored fastest first).
+      const best = beat[0];
+      await new DialogueBox(scene, ctx.sfx).run([
+        {
+          text: best ? `Time: ${secs} seconds. That's a ${best.label} run!` : `Time: ${secs} seconds.`,
+          style: 'narrate',
+        },
+      ]);
+      return true;
+    }
     case 'gleam': {
       void ctx.sfx.playVariant('world-gleam', ['a', 'b', 'c']);
       // A short triumphant fanfare for relighting a constellation (one-shot, over the bed).

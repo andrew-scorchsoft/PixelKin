@@ -122,6 +122,19 @@ export const ITEMS: ItemRegistry = {
       turn_off: 'You hold the oars still. The ferryman stops, nods once, and waits. The wilds look your way again.',
     },
   },
+  runner: {
+    id: 'runner',
+    name: 'Runner',
+    // ≤ ~80 chars — the pack's detail pane is three lines and does not scroll.
+    desc: 'A rented two-wheeled runner. Rides the Wick-Run; handed back at the foot.',
+    category: 'key',
+  },
+  frostglass_lens: {
+    id: 'frostglass_lens',
+    name: 'Frostglass Lens',
+    desc: 'Clear ice cut true by a Pale Vault grinder. A false light looks false through it.',
+    category: 'key',
+  },
   fenn_satchel: {
     id: 'fenn_satchel',
     name: "Fenn's Satchel",

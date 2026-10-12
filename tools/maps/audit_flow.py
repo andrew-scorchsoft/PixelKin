@@ -172,7 +172,7 @@ def audit_map(mm: MapModel, start_at: tuple[int, int] | None) -> list[dict]:
                  else "every crossing rolls encounters (mid/late-route pacing)"))
 
     # ---- LOOP: return-trip asymmetry -----------------------------------------
-    has_ledge = any(mm.ledge[i] for i in range(mm.w * mm.h))
+    has_ledge = mm.one_way   # ledges, chutes, rails, ramps (the traversal kit)
     if mm.kind in ("route", "cave") and pair:
         d_fwd = min((mm.bfs(pair[0], abilities=GIFTS).get(t, 10**9) for t in pair[1]),
                     default=10**9)

@@ -318,6 +318,63 @@ export interface MapDefinition {
   music?: string;
   /** Optional ambience (particles, mist, tint, starfall, birds, light) — see MapAmbience. */
   ambience?: MapAmbience;
+  /** Forced-movement zones: steep chutes, glare ice, ore-cart rails (the traversal kit). */
+  flows?: FlowZone[];
+  /** Axis-bound walkways: bridges (optionally passable UNDER), ladders, rope planks. */
+  spans?: SpanZone[];
+  /** Ramps a rider clears in one leap (only while riding a runner). */
+  jumps?: JumpPad[];
+  /** The map is ridden: holding the rented runner, the player rides at bike speed. */
+  ride?: boolean;
+}
+
+/**
+ * THE TRAVERSAL KIT (2026-10, docs/world/walkthrough/09-the-wild-ways.md §1).
+ * Everything is MAP DATA (the shared overworld set is frozen); the art is the
+ * `traverse_set` accent tileset. `tools/maps/worldmodel.py` mirrors every rule, so
+ * the reach/flow/journey audits see the same world the player walks.
+ */
+export type TileRect = { tx: number; ty: number; w: number; h: number };
+
+export type FlowKind =
+  /** A steep chute: carried `dir` each step, left/right steers, never enterable moving against `dir`. */
+  | 'slope'
+  /** Glare ice: you keep sliding the way you stepped on until something stops you. */
+  | 'ice'
+  /** An ore-cart rail: carried `dir`, no steering, never enterable moving against `dir`. */
+  | 'rail';
+
+export interface FlowZone {
+  id: string;
+  kind: FlowKind;
+  /** Covered tiles: a rect and/or an explicit list (the union). */
+  rect?: TileRect;
+  tiles?: TileCoord[];
+  /** Carry direction (slope/rail). Ignored for ice. */
+  dir?: Facing;
+  /** Only active while this flag is held (a lever-switched junction). */
+  requires_flag?: WorldFlag;
+  /** Inactive once this flag is held (the other half of a switch pair). */
+  hidden_when_flag?: WorldFlag;
+}
+
+export interface SpanZone {
+  id: string;
+  kind: 'bridge' | 'ladder' | 'plank';
+  rect: TileRect;
+  /** The walkable axis: 'h' = east–west deck, 'v' = north–south (ladders are 'v'). */
+  axis: 'h' | 'v';
+  /** A bridge you can also pass beneath, crossing the axis (the underpass). */
+  under?: boolean;
+}
+
+export interface JumpPad {
+  id: string;
+  /** The ramp tile. Riding onto it heading `dir` launches the leap. */
+  at: TileCoord;
+  dir: Facing;
+  /** Tiles travelled from the ramp to the landing (default 3). */
+  length?: number;
 }
 
 /** A remembered rest point (inn / home / camp fire) — see WorldSnapshot.rest_points. */

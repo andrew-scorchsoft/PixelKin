@@ -183,6 +183,12 @@ export class Actor {
    * current, or its texture never loaded, this is a no-op so callers can ask for
    * it every frame without guarding.
    */
+  /** Show the walk cycle of `facing` without changing the logical facing (a
+   *  ladder is climbed facing the rungs whichever way you go). */
+  protected playWalkAs(facing: Facing): void {
+    if (this.frames.walk) this.sprite.play(`${this.textureKey}__walk_${facing}`, true);
+  }
+
   protected setWalkSheet(key: string, frames: ActorFrames): void {
     if (this.textureKey === key || !this.scene.textures.exists(key)) return;
     if (frames.walk) Actor.ensureWalkAnims(this.scene, key, frames.walk);
@@ -279,12 +285,16 @@ export class Actor {
     facing: Facing,
     onArrive?: (tx: number, ty: number) => void,
     durationMs = STEP_MS * 2,
+    /** Tiles travelled (a ledge is 2; a rider's ramp leap is longer). */
+    distance = 2,
+    /** Peak height of the arc, px. */
+    lift = 6,
   ): boolean {
     if (this.moving || this.acting) return false;
     this.setFacing(facing);
     const d = FACING_DELTA[facing];
-    const nx = this.tx + d.dx * 2;
-    const ny = this.ty + d.dy * 2;
+    const nx = this.tx + d.dx * distance;
+    const ny = this.ty + d.dy * distance;
 
     this.moving = true;
     this.tx = nx;
@@ -294,7 +304,6 @@ export class Actor {
     // Linear travel + a little parabolic lift so the leap reads as a jump.
     const fromX = this.sprite.x;
     const fromY = this.sprite.y;
-    const lift = 6;
     this.scene.tweens.addCounter({
       from: 0,
       to: 1,
@@ -310,6 +319,38 @@ export class Actor {
         this.moving = false;
         this.stopWalking();
         onArrive?.(nx, ny);
+      },
+    });
+    return true;
+  }
+
+  /**
+   * Walk straight through a run of tiles in one move (the underpass beneath a
+   * bridge deck): no stopping part-way, `onArrive` fires once at the last tile.
+   */
+  passThrough(
+    facing: Facing,
+    tiles: ReadonlyArray<{ tx: number; ty: number }>,
+    onArrive?: (tx: number, ty: number) => void,
+    msPerTile = STEP_MS,
+  ): boolean {
+    if (this.moving || this.acting || tiles.length === 0) return false;
+    this.setFacing(facing);
+    const last = tiles[tiles.length - 1];
+    this.moving = true;
+    this.tx = last.tx;
+    this.ty = last.ty;
+    if (this.frames.walk) this.sprite.play(`${this.textureKey}__walk_${facing}`, true);
+    const { x, y } = Actor.tileToWorld(last.tx, last.ty);
+    this.scene.tweens.add({
+      targets: this.sprite,
+      x,
+      y,
+      duration: msPerTile * tiles.length,
+      ease: 'Linear',
+      onComplete: () => {
+        this.moving = false;
+        onArrive?.(last.tx, last.ty);
       },
     });
     return true;

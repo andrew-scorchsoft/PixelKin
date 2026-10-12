@@ -891,6 +891,9 @@ export const DIALOGUE: DialogueRegistry = {
 
   // Swimming the shallows into DEEP water (the darker sea): Tidecall stills the
   // shallows, not the deep. Played once per map visit (WorldScene.onBump).
+  'world.too_steep': [
+    { text: "Too steep to climb back up. The only way on is down." },
+  ],
   'world.too_deep': [
     { text: 'The water falls away beneath you here — dark, cold, and far too deep to swim. The current pulls toward open sea. Back to the shallows.' },
   ],

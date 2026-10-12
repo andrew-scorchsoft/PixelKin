@@ -49,6 +49,11 @@ jobs:
         run: python3 tools/maps/audit_flow.py
       - name: Warp audit (entrance coverage, landings, round trips)
         run: python3 tools/maps/audit_warps.py
+      # The traversal kit (chutes, ice, rails, bridges/underpasses, ladders, ramps)
+      # lives in the engine's Traversal.ts AND the audits' worldmodel.py: re-walk
+      # every kit map (+ a fixture) with both and FAIL on any disagreement.
+      - name: Traversal kit parity (engine rules == audit model)
+        run: node tools/maps/check_traversal.mjs
       # The whole journey at TILE level: cold open -> dawn with only the Gifts and
       # flags earned so far; grants fire only when the granting NPC/trigger/cache
       # is itself reachable. FAILs a prop sealing a warden/band/cache, a beat that
