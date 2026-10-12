@@ -95,7 +95,7 @@ What's already in the repo:
   a gentle permanent dark. Full cast, lore, and the 14-area world map live in
   [`docs/world/`](docs/world/) — each area illustrated with a pixel-art **concept
   mood-piece** ([`assets/concept-art/`](assets/concept-art/)).
-- **Creatures & battles.** **162 original *kin*** across **10 elemental types**
+- **Creatures & battles.** **166 original *kin*** across **10 elemental types**
   (Ember, Tide, Verdant, Stone, Storm, Frost, Solar, Lunar, Light, Dark), with
   six stats, ~94 moves + 28 abilities, capture via **Lamps**, and evolution via
   **Kindling**. The roster was curated from ~463 concepts (151), rounded out by
@@ -148,7 +148,7 @@ and audited. What it has *not* had is human hands: no playtests, no device QA.
   **economy** (shops, Star-charts, payouts), the pause-menu suite (party,
   Hearth, register/dex, items, LORE codex, concept-art gallery), and the
   save/flag layer behind the platform seam.
-- **All 162 kin with real packed sprite art** (5 views each), the full
+- **All 166 kin with real packed sprite art** (5 views each), the full
   **original soundtrack** (~195 area/battle/jingle tracks + SFX), a unique
   procedural **cry for every kin** (battle, catch, register, and the grazing
   ambient kin you can now greet — `content/kinchatter.ts`), per-map
@@ -266,7 +266,7 @@ python3 -m venv venv && ./venv/bin/pip install -r requirements.txt   # one-time
 | Full walkthrough / user journey | [`docs/world/walkthrough/`](docs/world/walkthrough/README.md) |
 | Soundtrack plan | [`docs/world/music-direction.md`](docs/world/music-direction.md) |
 | Mechanics & balance (start here) | [`docs/mechanics/00-overview.md`](docs/mechanics/00-overview.md) |
-| The full dex (all 164 kin) | [`docs/mechanics/dex.md`](docs/mechanics/dex.md) |
+| The full dex (all 166 kin) | [`docs/mechanics/dex.md`](docs/mechanics/dex.md) |
 | Art & sprite standards | [`docs/art-style.md`](docs/art-style.md) |
 
 ## Project layout

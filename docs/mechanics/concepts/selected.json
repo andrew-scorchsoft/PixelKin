@@ -4623,5 +4623,55 @@
   "hook": "Sunshine in goth clothing. Content and unbothered, wholly at home in the dark, head up and eyes warm. Gothic-cosy, never spooky: it LIKES the night, and it brought a light. Georgina the Cat-keeper's pride, and the kitten she gifts a kind Wayfarer.",
   "dex_id": 164,
   "line_primary_type": "Lunar"
+ },
+ {
+  "concept_id": "X-LANTHORNE",
+  "name": "Lanthorne",
+  "types": [
+   "Tide",
+   "Light"
+  ],
+  "role": "Special Wall",
+  "tier": "E",
+  "region": "east",
+  "rarity": "very_rare",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "concept": "The Mirelight \u2014 the fen's own lamp, which once walked the drowned causeway ahead of lost boats and brought them home. A null-lantern put it to sleep long ago; the blue lights that still wander the Glassmere are only its dreams, and dreams do not know the way.",
+  "visual": "A long, gentle eel-like kin that rises upright out of still water like a lantern on a pole: a slender sea-glass body coiling down into the mere, a soft fin-veil at the neck, and a head shaped like an old hooded lamp \u2014 a glass-paned hood around a calm face, one steady blue-white flame held inside it. Faint wisps of blue light drift off the tail like echoes. At 64px it reads as a lamp that is also a creature, rising out of dark water.",
+  "size_cm": 340,
+  "weight_kg": 140,
+  "hook": "Eerie but tender \u2014 a guide, not a ghost. Calm, half-lidded eyes, head bowed as if looking for someone on the water. It should look like something that would wait all night at the edge of a marsh to walk you home, and has been made to forget how.",
+  "dex_id": 165,
+  "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "X-EMBERROOT",
+  "name": "Emberroot",
+  "types": [
+   "Stone",
+   "Ember"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "E",
+  "region": "north",
+  "rarity": "very_rare",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "concept": "The first star that ever fell into Vesperholm, so long ago the mountain grew up around it. It has slept at the root of Cinderhead ever since, and the warm black cinder-coal the miners dig is only its breath, cooling very slowly in the stone.",
+  "visual": "A vast, ancient, low-slung beast half-made of the mountain: a broad tortoise-like body under a humped shell of dark basalt strata, heavy legs ending in root-like claws that spread into the rock. Deep cracks run across the shell and shoulders, each glowing a slow molten amber from within; at the crown of the shell a star-shaped core shows through the stone like a banked coal. A small heavy head with eyes like embers in a kiln-mouth. At 64px it reads as a glowing, cracked boulder that is breathing.",
+  "size_cm": 640,
+  "weight_kg": 2400,
+  "hook": "Ancient, patient, rooted \u2014 the oldest thing in the world, asleep, not angry. Its weight should be felt: grounded, enormous, slow. The glowing cracks are breath, not wounds; the star inside is still warm.",
+  "dex_id": 166,
+  "line_primary_type": "Stone"
  }
 ]

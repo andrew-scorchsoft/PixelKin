@@ -4591,6 +4591,62 @@
         "width": 96,
         "height": 96
       }
+    },
+    "165": {
+      "slug": "lanthorne",
+      "front": {
+        "path": "assets/sprites/creatures/165_lanthorne/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/165_lanthorne/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/165_lanthorne/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/165_lanthorne/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/165_lanthorne/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "166": {
+      "slug": "emberroot",
+      "front": {
+        "path": "assets/sprites/creatures/166_emberroot/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/166_emberroot/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/166_emberroot/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/166_emberroot/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/166_emberroot/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
     }
   }
 }

@@ -960,6 +960,44 @@ CANON = {
             "direction": "Sunshine in goth clothing. The pose is content and unbothered — a happy little creature wholly at home in the dark, head up, eyes warm, a small proud arch to the wings. Gothic-cosy, never spooky: it LIKES the night, and it brought a light.",
         },
     },
+    # The Wild Ways legendaries (#165-166) — docs/world/walkthrough/09-the-wild-ways.md
+    # §2B/§2D. The Three Hours' treatment: tier E, very_rare -> scripted (no
+    # open-table rows; legendaryBattle set-pieces), stats NOT pinned
+    # (make_stats(role, 558, name)), abilities/dex/kits/art pinned. Kits come
+    # from the existing pool, no signature moves.
+    "lanthorne": {
+        # the Tide-E default is phoenix: wrong for a lamp that leads you home.
+        # tidecaller = it mends in its own mere; mistveil = the false lights.
+        "ability": "tidecaller", "hidden_ability": "mistveil",
+        "entry": "The Mirelight — the fen's own lamp, which once walked the drowned causeway ahead of lost boats and brought them home. A null-lantern put it to sleep long ago; the blue lights that still wander the Glassmere are only its dreams, and dreams do not know the way.",
+        "category": "Mirelight Kin",
+        # as met at lv 45: tide_pulse / dazzle_flash / light_pulse / mend
+        "levelup": [(1, "mist_spray"), (9, "spark_mote"), (16, "drench_song"),
+                    (24, "tide_pulse"), (30, "dazzle_flash"), (37, "light_pulse"),
+                    (42, "mend"), (50, "lightspire"), (56, "maelstrom")],
+        "art": {
+            "silhouette": "A long, gentle eel-like kin rising upright out of still water like a lantern on a pole: a slender sea-glass body coiling down into the mere, a soft fin-veil at the neck, and a head shaped like an old hooded lamp — a glass-paned hood around a calm face, one steady blue-white flame held inside it. Faint wisps of blue light drift off the tail like echoes. At 64px it reads as a lamp that is also a creature, rising out of dark water.",
+            "palette": "Deep fen-teal and night-blue (#13205a) body shading to translucent sea-glass at the fins; the lantern-hood in tarnished brass and pale glass; the inner flame a cool blue-white (#9fe7ff), the brightest pixel; the echo-wisps a fainter, colder blue; soft ink (#1a1430) outlines.",
+            "direction": "Eerie but tender — a guide, not a ghost. Calm, half-lidded eyes, head bowed as if looking for someone on the water. It should look like something that would wait all night at the edge of a marsh to walk you home, and has been made to forget how.",
+        },
+    },
+    "emberroot": {
+        # the Stone-E default is phoenix: wrong for the oldest, most patient
+        # thing in the world. stonehide = the mountain grown round it;
+        # cinderveil = the coal is its own breath.
+        "ability": "stonehide", "hidden_ability": "cinderveil",
+        "entry": "The first star that ever fell into Vesperholm, so long ago the mountain grew up around it. It has slept at the root of Cinderhead ever since, and the warm black cinder-coal the miners dig is only its breath, cooling very slowly in the stone.",
+        "category": "First-Star Kin",
+        # as met at lv 46: rock_hurl / stone_wall / pyre_slam / boulder_smash
+        "levelup": [(1, "pebble_toss"), (9, "cinderclaw"), (16, "gritfist"),
+                    (24, "flame_lash"), (30, "rock_hurl"), (36, "stone_wall"),
+                    (41, "pyre_slam"), (46, "boulder_smash"), (54, "throes")],
+        "art": {
+            "silhouette": "A vast, ancient, low-slung beast half-made of the mountain: a broad tortoise-like body under a humped shell of dark basalt strata, heavy legs ending in root-like claws that spread into the rock. Deep cracks run across the shell and shoulders, each glowing a slow molten amber from within; at the crown of the shell a star-shaped core shows through the stone like a banked coal. A small heavy head with eyes like embers in a kiln-mouth. At 64px it reads as a glowing, cracked boulder that is breathing.",
+            "palette": "Basalt charcoal and ink (#1a1430) stone with cool grey strata bands; glowing seams of ember amber (#ff8a3d) deepening to red at their edges; the star-core a pale gold-white, the brightest pixel; ash-grey dust on the root-claws.",
+            "direction": "Ancient, patient, rooted — the oldest thing in the world, asleep, not angry. Its weight should be felt: grounded, enormous, slow. The glowing cracks are breath, not wounds; the star inside is still warm.",
+        },
+    },
 }
 
 def slugify(name):
