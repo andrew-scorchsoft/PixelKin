@@ -442,9 +442,9 @@ PLACEMENTS: dict[str, dict] = {
         ],
         "triggers": [
             # the Starfall Vigils (postgame)
-            {"id": "starfall_round_0", "kind": "cutscene", "at": {"tx": 10, "ty": 7}, "activation": "interact", "ref": "script.starfall_round", "requires_flag": "flag:vigil_5_kept", "hidden_when_flag": "flag:starfall_lesson"},
-            {"id": "starfall_round_1", "kind": "cutscene", "at": {"tx": 11, "ty": 7}, "activation": "interact", "ref": "script.starfall_round", "requires_flag": "flag:vigil_5_kept", "hidden_when_flag": "flag:starfall_lesson"},
-            {"id": "starfall_round_2", "kind": "cutscene", "at": {"tx": 12, "ty": 7}, "activation": "interact", "ref": "script.starfall_round", "requires_flag": "flag:vigil_5_kept", "hidden_when_flag": "flag:starfall_lesson"},
+            {"id": "starfall_round_0", "kind": "cutscene", "at": {"tx": 10, "ty": 7}, "activation": "interact", "ref": "script.starfall_round", "requires_flag": "flag:vigil_5_kept", "blocked_ref": "npc.starfall_round_waiting", "hidden_when_flag": "flag:starfall_lesson"},
+            {"id": "starfall_round_1", "kind": "cutscene", "at": {"tx": 11, "ty": 7}, "activation": "interact", "ref": "script.starfall_round", "requires_flag": "flag:vigil_5_kept", "blocked_ref": "npc.starfall_round_waiting", "hidden_when_flag": "flag:starfall_lesson"},
+            {"id": "starfall_round_2", "kind": "cutscene", "at": {"tx": 12, "ty": 7}, "activation": "interact", "ref": "script.starfall_round", "requires_flag": "flag:vigil_5_kept", "blocked_ref": "npc.starfall_round_waiting", "hidden_when_flag": "flag:starfall_lesson"},
             # the summit re-dress (postgame)
             {"id": "dawnbrael_wakes_0", "kind": "cutscene", "at": {"tx": 10, "ty": 7}, "activation": "interact", "ref": "cutscene.dawnbrael_wakes", "requires_flag": "flag:starfall_lesson", "hidden_when_flag": "flag:dawnbrael_caught"},
             {"id": "dawnbrael_wakes_1", "kind": "cutscene", "at": {"tx": 11, "ty": 7}, "activation": "interact", "ref": "cutscene.dawnbrael_wakes", "requires_flag": "flag:starfall_lesson", "hidden_when_flag": "flag:dawnbrael_caught"},

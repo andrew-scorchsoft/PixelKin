@@ -1,0 +1,56 @@
+{
+  "title": "The Old Light F6 - The One Joke",
+  "_note": "Old Light floor 6 (pearlmoor_oldlight_6), the emotional heart: Tam's joke written for someone who never came home. The theme collapsed to a slow, detuned music-box in F harmonic minor (A->Ab, D->Db): a bell lead an octave up, a second quieter bell a sixteenth behind it that SAGS a semitone on every held note (the detune), a lower comb picking slow broken chords, a faint string bed. No laughs - where they were, the box just holds; once (bar 8) a ghost of the \"ha-ha\" falls, soft. The mechanism ticks each beat and falters in the last two bars as the spring runs down, stopping on the dominant (G over C7) - the unfinished punchline - which leans back into bar 1. 66 BPM, 4/4, F minor, 16 bars.",
+  "era": "snes",
+  "tempo": 66,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "F harmonic minor",
+  "tracks": [
+    {
+      "name": "music box",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.9,
+      "notes": "C5e F5e G5q Ab5e G5e F5q rq Ab5e Bb5e C6q. Ab5e Bb5e Ab5e G5e F5e E5e F5e G5q C5h. rq C5e F5e G5q Ab5e G5e F5q rq Ab5e Bb5e C6q. Db6e C6e Bb5e Ab5e G5e Ab5q G5q F5h. rq Db6e C6e Bb5e Ab5e Bb5q F5q C6e Bb5e Ab5e G5e Ab5q F5q G5e Ab5e Bb5e C6e Db6q Bb5q C6w C5e F5e G5q Ab5e G5e F5q rq Ab5e Bb5e C6q. Ab5e Bb5q Ab5q G5q E5q G5h rh"
+    },
+    {
+      "name": "detuned twin",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.4,
+      "notes": "rs C5e@70 F5e@70 G5q@70 Ab5e@70 G5e@70 F5q@70 rq Ab5e@70 Bb5e@70 C6q.@70 Ab5e@70 Bb5e@70 Ab5e@70 G5e@70 F5e@70 E5e@70 F5e@70 G5q@70 C5~B4h.@70 rq C5e@70 F5e@70 G5q@70 Ab5e@70 G5e@70 F5q@70 rq Ab5e@70 Bb5e@70 C6q.@70 Db6e@70 C6e@70 Bb5e@70 Ab5e@70 G5e@70 Ab5q@70 G5q@70 F5~E5h.@70 rq Db6e@70 C6e@70 Bb5e@70 Ab5e@70 Bb5q@70 F5q@70 C6e@70 Bb5e@70 Ab5e@70 G5e@70 Ab5q@70 F5q@70 G5e@70 Ab5e@70 Bb5e@70 C6e@70 Db6q@70 Bb5q@70 C6~B5w@70 C5e@70 F5e@70 G5q@70 Ab5e@70 G5e@70 F5q@70 rq Ab5e@70 Bb5e@70 C6q.@70 Ab5e@70 Bb5q@70 Ab5q@70 G5q@70 E5q@70 G5~Gb5h@70 rq. rs"
+    },
+    {
+      "name": "lower comb",
+      "voice": "pluck",
+      "octave": 3,
+      "gain": 0.42,
+      "notes": "F3q@76 C4q@64 F3q@76 C4q@64 F3q@76 C4q@64 Db4q@76 Ab4q@64 Bb3q@76 F4q@64 C4q@76 G4q@64 C4q@76 G4q@64 C4q@76 G4q@64 F3q@76 C4q@64 F3q@76 C4q@64 F3q@76 C4q@64 Db4q@76 Ab4q@64 Bb3q@76 F4q@64 C4q@76 G4q@64 F3q@76 C4q@64 F3q@76 C4q@64 Bb3q@76 F4q@64 Bb3q@76 F4q@64 F3q@76 C4q@64 F3q@76 C4q@64 Bb3q@76 F4q@64 Bb3q@76 F4q@64 C4q@76 G4q@64 C4q@76 G4q@64 F3q@76 C4q@64 F3q@76 C4q@64 F3q@76 C4q@64 Db4q@76 Ab4q@64 Bb3q@76 F4q@64 C4q@76 rq C4q@76 G4q@64 C4q@76 rq"
+    },
+    {
+      "name": "string bed",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.16,
+      "notes": "F3+Ab3+C4w@50 F3+Ab3+C4w@50 F3+Bb3+Db4w@50 G3+Bb3+E4w@50 F3+Ab3+C4w@50 F3+Ab3+C4w@50 F3+Bb3+Db4w@50 F3+Ab3+C4w@50 F3+Bb3+Db4w@50 F3+Ab3+C4w@50 F3+Bb3+Db4w@50 G3+Bb3+E4w@50 F3+Ab3+C4w@50 F3+Ab3+C4w@50 F3+Bb3+Db4w@50 G3+Bb3+E4w@50"
+    },
+    {
+      "name": "ghost laugh",
+      "voice": "pulse12",
+      "octave": 5,
+      "gain": 0.3,
+      "notes": "rw rw rw rw rw rw rw rh. Ab5~F5e@50 F5~C5e@40 rw rw rw rw rw rw rw rw"
+    },
+    {
+      "name": "mechanism",
+      "voice": "drums",
+      "gain": 0.14,
+      "notes": "hatq@52 hatq@40 hatq@40 hatq@40 hatq@52 hatq@40 hatq@40 hatq@40 hatq@52 hatq@40 hatq@40 hatq@40 hatq@52 hatq@40 hatq@40 hatq@40 hatq@52 hatq@40 hatq@40 hatq@40 hatq@52 hatq@40 hatq@40 hatq@40 hatq@52 hatq@40 hatq@40 hatq@40 hatq@52 hatq@40 hatq@40 hatq@40 hatq@52 hatq@40 hatq@40 hatq@40 hatq@52 hatq@40 hatq@40 hatq@40 hatq@52 hatq@40 hatq@40 hatq@40 hatq@52 hatq@40 hatq@40 hatq@40 hatq@52 hatq@40 hatq@40 hatq@40 hatq@52 hatq@40 hatq@40 hatq@40 hatq@52 hatq@40 rq hatq@40 hatq@52 rq hatq@40 rq"
+    }
+  ]
+}

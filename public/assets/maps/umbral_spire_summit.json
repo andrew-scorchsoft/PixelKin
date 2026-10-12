@@ -456,6 +456,7 @@
       "activation": "interact",
       "ref": "script.starfall_round",
       "requires_flag": "flag:vigil_5_kept",
+      "blocked_ref": "npc.starfall_round_waiting",
       "hidden_when_flag": "flag:starfall_lesson"
     },
     {
@@ -468,6 +469,7 @@
       "activation": "interact",
       "ref": "script.starfall_round",
       "requires_flag": "flag:vigil_5_kept",
+      "blocked_ref": "npc.starfall_round_waiting",
       "hidden_when_flag": "flag:starfall_lesson"
     },
     {
@@ -480,6 +482,7 @@
       "activation": "interact",
       "ref": "script.starfall_round",
       "requires_flag": "flag:vigil_5_kept",
+      "blocked_ref": "npc.starfall_round_waiting",
       "hidden_when_flag": "flag:starfall_lesson"
     },
     {

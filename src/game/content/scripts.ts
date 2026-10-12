@@ -458,6 +458,7 @@ export const SCRIPTS: ScriptRegistry = {
   'script.allotment_anth': [
     { op: 'dialogue', ref: 'npc.allotment_anth' },
     { op: 'say', unless_flag: 'gleam:tide', speaker: 'ANTH', text: 'And if it\'s the woods past the waystone you\'re after — not yet, love. Those trees won\'t open for anyone fresh to the quay. Your business is down at the Lumenary with Reyl Wash.' },
+    { op: 'say', if_flag: 'gleam:tide', speaker: 'ANTH', text: 'The woods past the waystone? They open for whoever the old man sends up. Out past the bell on the breakwater, with his dark lamp. Get to know him first, then ask him about wandering.' },
   ],
   // S4 "The Booji-Wooji Man" — the Lifting House quest line. The quay's gym crew
   // each hold one piece of the old man; none of the pieces agree, and that is the
@@ -525,6 +526,12 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'PAUL', text: 'Made before the Dusk, by folk who knew the world\'s too odd to draw honestly — so they drew it odder. The polished stuff hangs in Lumenaries. The ALIVE stuff hides in folios like this. Seemed like yours.' },
     { op: 'say', speaker: 'PAUL', text: 'The Registry business? We\'ll talk about it over a cup of something. Some night.' },
     { op: 'narrate', text: 'You are fairly sure there will never be a cup. You are fairly sure that is the point.' },
+    // The invitation (owner, 2026-10): after the bout he tells you about his
+    // house and asks you round — WHERE in a hint, and WHAT it takes as a riddle,
+    // never the waystone's word itself.
+    { op: 'say', speaker: 'PAUL', text: 'You should come by the house sometime. Crooked thing, up on the Rise past the old wood behind the quay — up the hill, past Rod\'s marrows. My granddaughter will talk your ear clean off. Bring the ear anyway.' },
+    { op: 'say', speaker: 'PAUL', text: 'Mind, the wood\'s particular. There\'s a stone at its edge that won\'t let a soul by till they give it the last word of an old line about wanderers. A good word. The one thing I\'ve never been.' },
+    { op: 'say', speaker: 'PAUL', text: 'Ask me sometime whether I ever get lost. I\'ll take you there myself — once you\'ve a bit more company in that lamp of yours.' },
     { op: 'setFlag', flag: 'flag:q_south_booji_met' },
     // The Chickenpig is the S4 payoff and must never be missed: the first meeting
     // ends by pointing straight at it, with a plain now-or-later offer. "Later"
@@ -642,6 +649,8 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'An old waystone, furred with lichen. Words are cut deep into its face, as if somebody wanted them to outlast the person who cut them:' },
     { op: 'narrate', text: 'NOT ALL THOSE WHO WANDER ARE ____' },
     { op: 'narrate', unless_flag: 'flag:q_south_wander', text: 'The last word has been worn away by a great many hands. Behind the stone, the trees stand very close together, as if waiting.' },
+    // (2026-10) what opens it, as a pointer not an answer: the one who walks here
+    { op: 'narrate', unless_flag: 'flag:q_south_wander', text: 'Somebody must still know the end of the line — somebody who walks these trees often. On the quay they say an old man keeps a dark lamp out at the very end of the breakwater, and comes up this way of an evening.' },
     { op: 'narrate', if_flag: 'flag:q_south_wander_open', text: 'The trees behind the stone stand apart now. The path through them is open.' },
     { op: 'narrate', if_flag: 'flag:q_south_wander', unless_flag: 'flag:q_south_wander_word', text: 'The last word is worn smooth. Paul said to tell the stone. You put your hand to it.' },
     {
@@ -2421,6 +2430,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'PERRIN', text: 'Hold the lane, Wayfarer! Festival rule — every lamp that crosses the terraces gets tested against the wind. I AM the wind\'s representative.' },
     { op: 'battle', trainer: 'galehigh_kitehand' },
     { op: 'say', speaker: 'PERRIN', text: 'Tested, and the wind approves. The kite-maker\'s stall is down the steps — tell her Perrin still owes her a spar.' },
+    { op: 'say', speaker: 'PERRIN', unless_flag: 'gleam:storm', text: 'And the Stair beyond me\'s a climber\'s road — wild kin with the wind in them. Fly at the Rising first, before you try it.' },
     { op: 'setFlag', flag: 'flag:galehigh_kitehand_beaten' },
   ],
   'script.galehigh_terracer': [
@@ -5101,11 +5111,11 @@ export const SCRIPTS: ScriptRegistry = {
     // --- The opening errand (before the lamp and the first kin). --------------
     {
       op: 'say', unless_flag: 'flag:fenn_errand', speaker: 'ANDREW',
-      text: 'Star-tender Fenn. He\'s out at the Vesper Crossroads waystone — out the east side of town and along the Lanternway. Been stood there two days asking after you. Go and be asked after.',
+      text: 'Star-tender Fenn\'s waiting on you at the Vesper Crossroads waystone. Not there yet? Out the east side of Tinderwick and along the Lanternway. Been stood there two days asking after you. Go and be asked after.',
     },
     {
       op: 'say', if_flag: 'flag:fenn_errand', unless_flag: 'flag:has_satchel', speaker: 'ANDREW',
-      text: 'His satchel, wasn\'t it. Not on the shop counter any more — the trade-cart courier carted it off with her parcels. WEST out of the square, through the gap in the hedge to Duskapple Orchard. It\'ll be riding on her cart.',
+      text: 'His satchel, wasn\'t it. Not on the shop counter any more — the trade-cart courier carted it off with her parcels to Duskapple Orchard. It\'ll be riding on her cart. Not there yet? WEST out of Tinderwick\'s square, through the gap in the hedge.',
     },
     {
       op: 'say', if_flag: 'flag:has_satchel', unless_flag: 'flag:has_starter', speaker: 'ANDREW',
@@ -5119,15 +5129,15 @@ export const SCRIPTS: ScriptRegistry = {
     },
     {
       op: 'say', if_flag: 'flag:caught_first_kin', unless_flag: 'flag:beacon_quest', speaker: 'ANDREW',
-      text: 'Up to the Lumenary and see Brisa Tallow — she keeps the Ember. She\'ll have an errand for you first. She always has an errand first.',
+      text: 'Brisa Tallow keeps the Ember, up in Tinderwick\'s Lumenary. Go and see her — she\'ll have an errand for you first. She always has an errand first.',
     },
     {
       op: 'say', if_flag: 'flag:beacon_quest', unless_flag: 'flag:has_beacon_wick', speaker: 'ANDREW',
-      text: 'The old Beacon wants its wick-key, and the old lamplighter on the Dimglass Coast has it. North out of town, through the gate and up the coast road. You can\'t miss him — he\'s the only lit thing on that road.',
+      text: 'The old Beacon wants its wick-key, and the old lamplighter on the Dimglass Coast has it — you can\'t miss him, he\'s the only lit thing on that road. Not on the coast yet? North out of Tinderwick, through the gate.',
     },
     {
       op: 'say', if_flag: 'flag:has_beacon_wick', unless_flag: 'gleam:ember', speaker: 'ANDREW',
-      text: 'You\'ve the wick, so it\'s up the Beacon on the bluff — all the way to the lantern room at the top. The keepers on the stairs will each want a battle out of you on the way.',
+      text: 'You\'ve the wick, so it\'s up the Beacon on Tinderwick\'s north-east bluff — all the way to the lantern room at the top. The keepers on the stairs will each want a battle out of you on the way.',
     },
 
     // --- The eight Gleams, in journey order. ----------------------------------
@@ -5142,33 +5152,33 @@ export const SCRIPTS: ScriptRegistry = {
     },
     {
       op: 'say', if_flag: 'gleam:tide', unless_flag: 'gleam:verdant', speaker: 'ANDREW',
-      text: 'East out of Pearlmoor on the fen road. Tidecall will walk you over the deep channels that stopped you before. Lowleaf Hollow\'s at the far end — ask for Sable Quill.',
+      text: 'Sable Quill keeps the Verdant, at Lowleaf Hollow. Not there yet? East out of Pearlmoor on the fen road — Tidecall walks you over the deep channels that stopped you before — and Lowleaf\'s at the far end.',
     },
     {
       op: 'say', if_flag: 'gleam:verdant', unless_flag: 'gleam:stone', speaker: 'ANDREW',
-      text: 'Into the deep wood behind Lowleaf — Glimmerstep opens that dark now — and out the far side at Cinderhead Mine. Otho Grist has the Stone. Honest word: he WILL flatten you. Go down into the deep galleries first and come back a few levels heavier.',
+      text: 'Otho Grist keeps the Stone, in the headframe hall at Cinderhead Mine — talk to him before you go wandering his galleries. Not there yet? Through the deep wood behind Lowleaf; Glimmerstep opens its dark. Honest word: he WILL flatten you, so come back a few levels heavier.',
     },
     {
       op: 'say', if_flag: 'gleam:stone', unless_flag: 'gleam:storm', speaker: 'ANDREW',
-      text: 'Back through the mine, out the deep\'s far door, and up Cinderwind Scarp. It tops out on the Galehigh Terraces — all wind and washing-lines. Mira Vael has the Storm up there.',
+      text: 'Mira Vael keeps the Storm, up over the Galehigh Terraces — all wind and washing-lines. Ask the town about the Kite-Rising. Not there yet? Back through the mine, out the Deep\'s far door and up Cinderwind Scarp.',
     },
     {
       op: 'say', if_flag: 'gleam:storm', unless_flag: 'gleam:frost', speaker: 'ANDREW',
-      text: 'Up the Windward Stair. The Kite gets you past the high crags now — and over the top of them is the Pale Vault Glacier. Ysolde Frost. Wrap up.',
+      text: 'Ysolde Frost keeps the Frost, at the Pale Vault Glacier — you\'ll find her by the undercroft door. Not there yet? Up the Windward Stair; the Kite gets you past the high crags now. Wrap up.',
     },
     {
       op: 'say', if_flag: 'gleam:frost', unless_flag: 'gleam:solar', speaker: 'ANDREW',
-      text: 'West through Hushfrost Pass. There\'s a throat of coldfog in it that nothing gets through without Emberward — and you\'ve got Emberward. The Sunken Solarium\'s beyond it. Lucan Pyre.',
+      text: 'Lucan Pyre keeps the Solar, in the Sunken Solarium — he\'ll be pacing his stage; hear his speech out. Not there yet? West through Hushfrost Pass. There\'s a throat of coldfog in it, and you\'ve got Emberward.',
     },
     {
       op: 'say', if_flag: 'gleam:solar', unless_flag: 'gleam:lunar', speaker: 'ANDREW',
-      text: 'Up the Sunvault Climb — Sunsketch blooms the vine bridges as you go. Nightreach Observatory sits at the top of it. Nessa Cole, the Lunar. That\'s your eighth, if you\'re counting. I\'m counting.',
+      text: 'Nessa Cole keeps the Lunar, at Nightreach Observatory on top of the Sunvault Climb. Not there yet? Up the Climb — Sunsketch blooms the vine bridges as you go. That\'s your eighth, if you\'re counting. I\'m counting.',
     },
 
     // --- The Crown, the Spire, and after. -------------------------------------
     {
       op: 'say', if_flag: 'gleam:lunar', unless_flag: 'flag:keystar_relit', speaker: 'ANDREW',
-      text: 'Eight. The Crown\'s whole, and the Penumbra\'s parted for you. Get yourself to the Vesper Crossroads — car, waystone or boots — and take the mountain road north. The Spire\'s been waiting the whole time, and it isn\'t a patient sort of waiting.',
+      text: 'Eight. The Crown\'s whole, and the Penumbra\'s parted for you. The Spire\'s up the mountain road, north from the Vesper Crossroads — car, waystone or boots if you\'re not there already. It\'s been waiting the whole time, and it isn\'t a patient sort of waiting.',
     },
     {
       op: 'say', if_flag: 'flag:keystar_relit', unless_flag: 'flag:dawn', speaker: 'ANDREW',
@@ -5176,7 +5186,7 @@ export const SCRIPTS: ScriptRegistry = {
     },
     {
       op: 'say', if_flag: 'flag:dawn', speaker: 'ANDREW',
-      text: 'Next? Nothing. Nothing at all, {name}. Look UP. Then walk down to Dawnstead and see what the valley looks like with the morning on it — I\'ll be along presently, once I\'ve finished looking.',
+      text: 'Next? Nothing. Nothing at all, {name}. Look UP. Then, if you\'re not there already, walk down to Dawnstead and see the valley with the morning on it — and the great glass at Nightreach still has a few fallen stars to read, they say.',
     },
   ],
 
@@ -5300,7 +5310,7 @@ export const SCRIPTS: ScriptRegistry = {
     },
     {
       op: 'say', if_flag: 'flag:q_south_booji', unless_flag: 'flag:q_south_has_rope', speaker: 'ANDREW',
-      text: 'Gate chained? It opens for the netmender\'s rope, and you earn that through Reyl at the Lumenary — he sends you up the Old Light, west along the beach. Ask me THESE ROADS any time and I\'ll tell you the next step.',
+      text: 'Gate chained? It opens for the netmender\'s rope, and you earn that through Reyl at the Lumenary — he sends you up the Old Light, west along the beach. Ask me WHERE NEXT? any time and I\'ll tell you the next step.',
     },
     // D
     {

@@ -1332,7 +1332,6 @@
       "sprite": "item_cache",
       "movement": "static",
       "dialogue_ref": "script.sunmote_1",
-      "requires_flag": "flag:q_west_stage",
       "hidden_when_flag": "flag:q_west_mote_1"
     },
     {

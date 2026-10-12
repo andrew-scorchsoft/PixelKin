@@ -49,6 +49,7 @@ export const WICKRUN_SCRIPTS: ScriptRegistry = {
   // ---- the crest ------------------------------------------------------------
   'script.wickrun_rental': [
     { op: 'say', speaker: 'PELL', unless_flag: RIDING, text: 'Runners! Two wheels, one brake, no regrets. The Wick-Run\'s the old wax road — top of the mountain to the sea, if your nerve holds.' },
+    { op: 'say', speaker: 'PELL', unless_flag: RIDING, text: 'Fair warning: the kin on the run are mountain-fed — tougher than the Solarium\'s garden lot — and there\'s no pedalling back up. Lucan\'s lit stage first, if I were you.' },
     { op: 'say', speaker: 'PELL', if_flag: RIDING, text: 'You\'ve got one of mine already. Off you go — through the gate and down. Hand it in at the foot; the lift-keeper sends them home.' },
     {
       op: 'choice',

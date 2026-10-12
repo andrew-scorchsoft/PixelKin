@@ -1,0 +1,56 @@
+{
+  "title": "The Old Light F3 - Intermission",
+  "_note": "Old Light floor 3, the tea-urn rest floor (pearlmoor_oldlight_3). The same theme as an interval-music lounge number: transposed to Bb major, the eighths swung to triplet feel, a breathy flute lead that SCOOPS up a semitone into every long note (the woozy bit), a walking bass with chromatic approaches, soft organ 7th chords, brushed hats. Where F1 laughs, the vibes (bell) give two sleepy \"heh\"s and the tea-urn hisses up to the boil (a rising noise swell). 100 BPM, 4/4 swung, Bb major, 24 bars; the walking bass approaches bar 1's Bb from bar 24.",
+  "era": "snes",
+  "tempo": 100,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "Bb major (swung)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "flute",
+      "octave": 4,
+      "gain": 0.95,
+      "notes": "F4qt Bb4et B4~C5q D5qt C5et A4~Bb4q rq D5qt Eb5et E5~F5q. rst D5et Eb5qt D5et C5qt Bb4et A4qt Bb4et B4~C5q E4~F4q rh. F4qt Bb4et B4~C5q D5qt C5et A4~Bb4q rq D5qt Eb5et E5~F5q. rst G5et F5qt Eb5et D5qt C5et Db5~D5q B4~C5q A4~Bb4q rh. G5qt F5et Eb5qt D5et D5~Eb5q A4~Bb4q F5qt Eb5et D5qt C5et Db5~D5q A4~Bb4q C5qt D5et E5qt F5et Gb5~G5q Eb5~E5q E5~F5q rh. G5qt F5et Eb5qt D5et D5~Eb5q Gb5~G5q Gb5qt G5et A5qt Gb5et Db5~D5q rq G5qt Bb5et A5qt G5et E5~F5q D5~Eb5q B4~C5q rh. F4qt Bb4et B4~C5q D5qt C5et A4~Bb4q rq D5qt Eb5et E5~F5q. rst D5et Eb5qt D5et C5qt Bb4et A4qt Bb4et B4~C5q E4~F4q rh. F4qt Bb4et B4~C5q D5qt C5et A4~Bb4q rq D5qt Eb5et E5~F5q. rst G5et Bb5qt A5et G5qt F5et Eb5qt C5et A4qt F4et A4~Bb4q rh."
+    },
+    {
+      "name": "vibes heh",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.45,
+      "notes": "rw rw rw rh C6~A5et@86 ret A5~F5et@78 rw rw rw rh. Bb5~F5et@86 ret F5~D5et@78 rw rw rw rh. C6~A5et@86 ret A5~F5et@78 rw rw rw rh. C6~A5et@86 ret A5~F5et@78 rw rw rw rh. C6~A5et@86 ret A5~F5et@78 rw rw rw rh. C6~A5et@86 ret A5~F5et@78 rq"
+    },
+    {
+      "name": "tea urn",
+      "voice": "noise",
+      "octave": 3,
+      "gain": 0.16,
+      "notes": "rw rw rw rh C3~G3h@60 rw rw rw rh C3~G3h@60 rw rw rw rh C3~G3h@60 rw rw rw rh C3~G3h@60 rw rw rw rh C3~G3h@60 rw rw rw rh C3~G3h@60"
+    },
+    {
+      "name": "organ",
+      "voice": "organ",
+      "octave": 3,
+      "gain": 0.2,
+      "notes": "D3+F3+A3q.@70 re D3+F3+A3q.@70 re D3+F3+A3q.@70 re D3+F3+B3q.@70 re Eb3+G3+Bb3q.@70 re Eb3+A3+C4q.@70 re Eb3+A3+C4q.@70 re Eb3+A3+C4q.@70 re D3+F3+A3q.@70 re D3+F3+A3q.@70 re D3+F3+A3q.@70 re D3+F3+B3q.@70 re Eb3+G3+Bb3q.@70 re Eb3+A3+C4q.@70 re D3+F3+A3q.@70 re D3+F3+A3q.@70 re D3+G3+Bb3q.@70 re D3+G3+Bb3q.@70 re D3+F3+A3q.@70 re D3+F3+A3q.@70 re E3+G3+Bb3q.@70 re E3+G3+Bb3q.@70 re Eb3+A3+C4q.@70 re Eb3+A3+C4q.@70 re D3+G3+Bb3q.@70 re D3+G3+Bb3q.@70 re Gb3+A3+C4q.@70 re Gb3+A3+C4q.@70 re D3+F3+Bb3q.@70 re Eb3+A3+C4q.@70 re Eb3+A3+C4q.@70 re Eb3+A3+C4q.@70 re D3+F3+A3q.@70 re D3+F3+A3q.@70 re D3+F3+A3q.@70 re D3+F3+B3q.@70 re Eb3+G3+Bb3q.@70 re Eb3+A3+C4q.@70 re Eb3+A3+C4q.@70 re Eb3+A3+C4q.@70 re D3+F3+A3q.@70 re D3+F3+A3q.@70 re D3+F3+A3q.@70 re D3+F3+B3q.@70 re Eb3+G3+Bb3q.@70 re Eb3+A3+C4q.@70 re D3+F3+A3q.@70 re Eb3+A3+C4q.@70 re"
+    },
+    {
+      "name": "bass",
+      "voice": "bass",
+      "octave": 2,
+      "gain": 0.85,
+      "notes": "Bb2q@100 D3q@84 F2q@84 A2q@84 Bb2q@100 F2q@84 G2q@84 Db3q@84 C3q@100 G2q@84 F2q@84 E2q@84 F2q@100 A2q@84 C3q@84 B2q@84 Bb2q@100 D3q@84 F2q@84 A2q@84 Bb2q@100 F2q@84 G2q@84 Db3q@84 C3q@100 G2q@84 F2q@84 A2q@84 Bb2q@100 D3q@84 F2q@84 E3q@84 Eb3q@100 G2q@84 Bb2q@84 A2q@84 Bb2q@100 D3q@84 F2q@84 Db3q@84 C3q@100 E2q@84 G2q@84 E2q@84 F2q@100 A2q@84 C3q@84 E3q@84 Eb3q@100 G2q@84 Bb2q@84 Db3q@84 D3q@100 Gb2q@84 A2q@84 Ab2q@84 G2q@100 D3q@84 F2q@84 E2q@84 F2q@100 A2q@84 C3q@84 B2q@84 Bb2q@100 D3q@84 F2q@84 A2q@84 Bb2q@100 F2q@84 G2q@84 Db3q@84 C3q@100 G2q@84 F2q@84 E2q@84 F2q@100 A2q@84 C3q@84 B2q@84 Bb2q@100 D3q@84 F2q@84 A2q@84 Bb2q@100 F2q@84 G2q@84 Db3q@84 C3q@100 G2q@84 F2q@84 A2q@84 Bb2q@100 F2q@84 F2q@84 B2q@84"
+    },
+    {
+      "name": "brushes",
+      "voice": "drums",
+      "gain": 0.3,
+      "notes": "kickq hatqt hatet hatq hatqt hatet kickq hatqt hatet hatq hatqt hatet kickq hatqt hatet hatq hatqt hatet kickq hatqt hatet hatq hatqt hatet kickq hatqt hatet hatq hatqt hatet kickq hatqt hatet hatq hatqt hatet kickq hatqt hatet hatq hatqt hatet kickq hatqt hatet snareq rq kickq hatqt hatet hatq hatqt hatet kickq hatqt hatet hatq hatqt hatet kickq hatqt hatet hatq hatqt hatet kickq hatqt hatet hatq hatqt hatet kickq hatqt hatet hatq hatqt hatet kickq hatqt hatet hatq hatqt hatet kickq hatqt hatet hatq hatqt hatet kickq hatqt hatet snareq rq kickq hatqt hatet hatq hatqt hatet kickq hatqt hatet hatq hatqt hatet kickq hatqt hatet hatq hatqt hatet kickq hatqt hatet hatq hatqt hatet kickq hatqt hatet hatq hatqt hatet kickq hatqt hatet hatq hatqt hatet kickq hatqt hatet hatq hatqt hatet kickq hatqt hatet snareq rq"
+    }
+  ]
+}

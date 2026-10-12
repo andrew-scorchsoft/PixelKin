@@ -1512,6 +1512,167 @@
       "tw": 2,
       "th": 2
     },
+    "oldlight_applause_sign": {
+      "path": "assets/sprites/objects/oldlight_applause_sign.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "oldlight_banana": {
+      "path": "assets/sprites/objects/oldlight_banana.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "oldlight_bunting": {
+      "path": "assets/sprites/objects/oldlight_bunting.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "oldlight_clock_backwards": {
+      "path": "assets/sprites/objects/oldlight_clock_backwards.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "oldlight_clown_shoes": {
+      "path": "assets/sprites/objects/oldlight_clown_shoes.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "oldlight_cog_heap": {
+      "path": "assets/sprites/objects/oldlight_cog_heap.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "oldlight_confetti": {
+      "path": "assets/sprites/objects/oldlight_confetti.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "oldlight_funhouse_mirror": {
+      "path": "assets/sprites/objects/oldlight_funhouse_mirror.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "oldlight_jack_box": {
+      "path": "assets/sprites/objects/oldlight_jack_box.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "oldlight_joke_lectern": {
+      "path": "assets/sprites/objects/oldlight_joke_lectern.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "oldlight_laugh_dolls": {
+      "path": "assets/sprites/objects/oldlight_laugh_dolls.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "oldlight_laugh_meter": {
+      "path": "assets/sprites/objects/oldlight_laugh_meter.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "oldlight_mallet": {
+      "path": "assets/sprites/objects/oldlight_mallet.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "oldlight_mask_wall": {
+      "path": "assets/sprites/objects/oldlight_mask_wall.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "oldlight_pie_table": {
+      "path": "assets/sprites/objects/oldlight_pie_table.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "oldlight_rubber_chickens": {
+      "path": "assets/sprites/objects/oldlight_rubber_chickens.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "oldlight_spotlight": {
+      "path": "assets/sprites/objects/oldlight_spotlight.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "oldlight_spring_can": {
+      "path": "assets/sprites/objects/oldlight_spring_can.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "oldlight_tea_urn": {
+      "path": "assets/sprites/objects/oldlight_tea_urn.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "oldlight_teacups": {
+      "path": "assets/sprites/objects/oldlight_teacups.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "oldlight_unicycle": {
+      "path": "assets/sprites/objects/oldlight_unicycle.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "oldlight_upside_chair": {
+      "path": "assets/sprites/objects/oldlight_upside_chair.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "oldlight_whoopee": {
+      "path": "assets/sprites/objects/oldlight_whoopee.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
     "pale_vault_bracket_dark": {
       "path": "assets/sprites/objects/pale_vault_bracket_dark.webp",
       "width": 16,

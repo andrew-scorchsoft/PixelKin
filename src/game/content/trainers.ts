@@ -259,6 +259,66 @@ export const TRAINERS: TrainerRegistry = {
     payout: 260, // keeper 20 × ace 13
     music: 'battle-emberfall',
   },
+  // R10: the jest-house REGULARS — optional sight trainers waiting in each
+  // floor's alcove (F1-F5), rising 10 -> 14 so the climb is the grind bed before
+  // Reyl (16) and the fen. Balanced, never hard: two-to-three kin, no Tide.
+  oldlight_usher: {
+    id: 'oldlight_usher',
+    name: 'THE USHER',
+    title: 'Jest-house regular',
+    party: [
+      { species_id: 8, level: 10 }, // Glimflit — Light
+      { species_id: 16, level: 11 }, // Wickmoth — Ember (ace)
+    ],
+    defeat_ref: 'trainer.oldlight_usher.defeat',
+    payout: 176, // route 16 × ace 11
+  },
+  oldlight_juggler: {
+    id: 'oldlight_juggler',
+    name: 'THE JUGGLER',
+    title: 'Jest-house regular',
+    party: [
+      { species_id: 31, level: 11 }, // Lumpin — Tide/Light
+      { species_id: 47, level: 11 }, // Pebbit — Stone
+      { species_id: 8, level: 12 }, // Glimflit — Light (ace)
+    ],
+    defeat_ref: 'trainer.oldlight_juggler.defeat',
+    payout: 192, // route 16 × ace 12
+  },
+  oldlight_pie_thrower: {
+    id: 'oldlight_pie_thrower',
+    name: 'THE PIE-THROWER',
+    title: 'Jest-house regular',
+    party: [
+      { species_id: 26, level: 12 }, // Brinelet — Tide
+      { species_id: 16, level: 12 }, // Wickmoth — Ember (ace)
+    ],
+    defeat_ref: 'trainer.oldlight_pie_thrower.defeat',
+    payout: 192, // route 16 × ace 12
+  },
+  oldlight_mirror: {
+    id: 'oldlight_mirror',
+    name: 'THE MIRROR',
+    title: 'Jest-house regular',
+    party: [
+      { species_id: 69, level: 12 }, // Riddlestone — Stone
+      { species_id: 69, level: 13 }, // Riddlestone — Stone (ace) — of course
+    ],
+    defeat_ref: 'trainer.oldlight_mirror.defeat',
+    payout: 208, // route 16 × ace 13
+  },
+  oldlight_critic: {
+    id: 'oldlight_critic',
+    name: 'THE CRITIC',
+    title: 'Jest-house regular',
+    party: [
+      { species_id: 111, level: 13 }, // Spirlet — Lunar
+      { species_id: 105, level: 13 }, // Snoozlet — Lunar
+      { species_id: 69, level: 14 }, // Riddlestone — Stone (ace)
+    ],
+    defeat_ref: 'trainer.oldlight_critic.defeat',
+    payout: 224, // route 16 × ace 14
+  },
 
   // S4 "The Booji-Wooji Man" — Paul, the Lifting House's mystery, fought at the
   // breakwater's end (script.booji_paul; OPTIONAL side-quest bout, route class).

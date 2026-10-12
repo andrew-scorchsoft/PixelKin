@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-THE OLD LIGHT ("the Guffaw") — Pearlmoor's second lighthouse, seven floors (R9).
+THE OLD LIGHT ("the Guffaw") — Pearlmoor's second lighthouse, seven floors (R9, R10).
 
 Eleven winters ago Reyl Wash took the lamp out of this tower and put Tam's
 clockwork joke-engine, MR. PUNCHWHEEL, where the light had been. The climb is
@@ -9,81 +9,158 @@ sets flag:q_south_bell (opens the door on Lightkeeper's Point) -> seven floors o
 increasingly strange jokes -> the top floor sets flag:picked_net_floats +
 flag:q_south_jest_done -> the netmender's rope.
 
-Tower pattern = the Beacon's (build_beacon.py), rebuilt on roomkit: stair rooms
-whose stairs ALTERNATE corners floor by floor (a spiral read), each up-stair a
-step_on warp gated on that floor's `flag:oldlight_N_solved` with a stair-gate
-`blocked_ref`. The riddle runs as a step_on cutscene band on the ONE walkable
-approach tile below the up-stair (the speaking-tube object blocks the side
-approach) and as an interact on the speaking-tube itself; both vanish once
-solved (hidden_when_flag) and the tube gets a post-solve line. Down-stairs are
-always open; solved flags persist. No wild encounters anywhere.
+R10 (2026-10, playtest: "the ground floor was empty and not a funny place"):
+the floors are BIG now (22x15, the haunted-tower pattern) and every one makes
+you WALK it. You arrive in one north corner; the way up is in the other; a
+divider splits the north strip and a long wall splits it from the hall below,
+so the climb runs arrival room -> side door -> the hall -> far door -> the
+stair room (F1: in from the street door, west and up, then east along the top).
+The HALL carries the floor's wild encounters (a whimsical tower table rising
+10 -> 15, the grind bed before the fen's 16s) and an optional sight trainer
+waiting in an ALCOVE off the main line (step into its mouth and they see you).
+Two rest points: the tea-urn (F3) and the two cups (F6). Each floor wears its
+own warped tileset (oldlight_fN_set, build_oldlight_sets.py — the same gids as
+the interior kits, more deranged the higher you go), its own Punchwheel cue
+(oldlight-fN.mp3, more unhinged per floor) and the drawn joke props of
+oldlightforge.py (`oldlight_*`).
 
-  F1 pearlmoor_oldlight_1   The Lobby of Groaners   warm  up NE   (door below)
-  F2 pearlmoor_oldlight_2   The Late Laugh          cool  dn NE / up NW  — the HECKLER
-  F3 pearlmoor_oldlight_3   Intermission            warm  dn NW / up NE  — tea-urn REST + the COMPUTER
-  F4 pearlmoor_oldlight_4   The Backwards Inn       cool  dn NE / up NW  — the RINGMASTER
-  F5 pearlmoor_oldlight_5   The Gallery of Confident Facts  cool  dn NW / up NE
-  F6 pearlmoor_oldlight_6   The One Joke            warm  dn NE / up NW  (no gate)
-  TOP pearlmoor_oldlight_top The Winding Room       warm  dn NW + the SLIDE
+Tower mechanics are unchanged: stairs ALTERNATE corners (a spiral read), each
+up-stair a step_on warp gated on `flag:oldlight_N_solved` with a stair-gate
+`blocked_ref`; the riddle runs as a step_on band on the ONE walkable tile below
+the up-stair (the speaking-tube blocks the side) and as an interact on the
+tube; both vanish once solved. Down-stairs are always open; solved flags persist.
 
-Every stair pair lands ON the partner floor's own return stair column, one row
-below it (the Beacon convention). The top's SLIDE (7,9) drops to the Point
-(7,8); the Point's chute-mouth (7,7) climbs back up to (7,8) here.
+  F1 The Lobby of Groaners          f1 (warm)  up NE   (street door below)
+  F2 The Late Laugh                 f2 (cool)  dn NE / up NW  — the HECKLER (gate)
+  F3 Intermission                   f3 (warm)  dn NW / up NE  — tea-urn REST + the COMPUTER
+  F4 The Backwards Inn              f4 (cool)  dn NE / up NW  — the RINGMASTER (gate)
+  F5 The Gallery of Confident Facts f5 (cool)  dn NW / up NE
+  F6 The One Joke                   f6 (warm)  dn NE / up NW  (no gate) — the two-cups REST
+  TOP The Winding Room              f7 (warm)  dn NW + the SLIDE
 
 Run:  python3 tools/maps/build_pearlmoor_oldlight.py
 """
 from __future__ import annotations
 
+from pathlib import Path
+
 from roomkit import (COOL_SET, WARM_SET, DOORMAT, FLOOR, CAP_N, WINDOW,
                      aisle_runner, faced_room, finish, mapdef, partition_h,
                      partition_v, place, wall_mount, windows)
 
-STAGE = "assets/audio/music/sunken-solarium-a.mp3"
-GALLERY = "assets/audio/music/sunken-solarium-c.mp3"
-ATTIC = "assets/audio/music/pearlmoor-quay-c.mp3"
-
+REPO = Path(__file__).resolve().parents[2]
 POINT_DOOR = (3, 7)       # the Old Light's door on pearlmoor_point
 TUBE = "solarium_sun_mask"  # Punchwheel's brass speaking-tube mouth (1x1)
+
+W, H = 22, 15             # the big floors (the top stays 14x11)
+MID = 7                   # the long wall's FACE row (its band is row 6)
+NDIV = W // 2             # the north strip's divider column
+WEST_DOOR, EAST_DOOR = 3, W - 4
+HALL = (1, MID + 1, W - 2, H - 2 - MID)  # rect of the hall below the long wall
+
+
+def music(n: int) -> str:
+    return f"assets/audio/music/oldlight-f{n}.mp3"
+
+
+def tileset(n: int, base: dict) -> dict:
+    """The floor's warped kit (same gids as `base`). Falls back to the plain kit
+    only if the warped sidecar hasn't been drawn yet (fresh checkout mid-build)."""
+    name = f"oldlight_f{n}_set"
+    if not (REPO / f"public/assets/tilesets/{name}.tileset.json").is_file():
+        return base
+    return dict(base, name=name, image=f"assets/tilesets/{name}.webp")
 
 
 def mid(n: int) -> str:
     return "pearlmoor_oldlight_top" if n == 7 else f"pearlmoor_oldlight_{n}"
 
 
-def corner_x(W: int, c: str) -> int:
-    return W - 2 if c == "ne" else 1
+def corner_x(w: int, c: str) -> int:
+    return w - 2 if c == "ne" else 1
 
 
-def shell(W, H, tileset, *, door=False):
-    base, over = faced_room(W, H, W // 2)
-    if not door:  # a tower floor has no bottom door: wall the doormat back up
-        base[(H - 1) * W + W // 2] = FLOOR
-        over[(H - 1) * W + W // 2] = CAP_N
+# --- the drawn joke kit (oldlightforge.py): stem -> (w, h, mount) ---------------------------
+OL = {
+    "jack_box": (1, 1, "free"), "rubber_chickens": (1, 2, "free"), "pie_table": (2, 1, "free"),
+    "clown_shoes": (2, 1, "free"), "joke_lectern": (1, 2, "free"), "mallet": (1, 2, "free"),
+    "laugh_dolls": (2, 2, "free"), "laugh_meter": (1, 2, "free"), "teacups": (1, 2, "free"),
+    "unicycle": (1, 2, "free"), "spring_can": (1, 1, "free"), "upside_chair": (1, 1, "free"),
+    "spotlight": (1, 2, "free"), "cog_heap": (2, 1, "free"), "tea_urn": (2, 2, "free"),
+    "whoopee": (1, 1, "decal"), "banana": (1, 1, "decal"), "confetti": (1, 1, "decal"),
+    "mask_wall": (1, 1, "hung"), "applause_sign": (2, 1, "hung"), "bunting": (2, 1, "hung"),
+    "clock_backwards": (1, 1, "hung"), "funhouse_mirror": (1, 2, "wall"),
+}
+
+
+def ol(objects, stem, x, y, oid=None):
+    """Place an oldlightforge piece by its contract footprint + mount class."""
+    w, h, mount = OL[stem]
+    o = {"id": oid or stem, "sprite": f"oldlight_{stem}", "at": {"tx": x, "ty": y}, "w": w, "h": h}
+    if mount in ("decal", "hung"):
+        o["solid"] = False
+    elif mount == "wall":  # stands against the wall: top row drawn over the face
+        o["overhang"] = 1
+        o["walk_under"] = True
+    objects.append(o)
+    return o
+
+
+def shell(tileset_, *, door=False, w=W, h=H):
+    base, over = faced_room(w, h, w // 2)
+    if not door:  # a tower floor has no street door: wall the doormat back up
+        base[(h - 1) * w + w // 2] = FLOOR
+        over[(h - 1) * w + w // 2] = CAP_N
     return base, over
 
 
-def stairs(n, W, base, objects, warps, triggers, *, down, up, gate=True,
+def tower_walls(base, over, *, f1=False):
+    """The haunted-tower plan: a long wall splits the north strip from the hall
+    (doors at both ends — or only the west one on F1), and a divider splits the
+    north strip into the arrival room and the stair room (F1: a doorway at row 4,
+    since you come in from the street instead)."""
+    partition_h(base, over, W, MID, 1, W - 2,
+                doors=(WEST_DOOR,) if f1 else (WEST_DOOR, EAST_DOOR))
+    partition_v(over, W, NDIV, 1, MID - 2, lip="w", doors=(4,) if f1 else ())
+
+
+def alcove(over, c):
+    """A three-wide nook off the hall's south side (walls at c-2 and c+2, open to
+    the north): an optional trainer waits at its back, out of the main line."""
+    partition_v(over, W, c - 2, H - 4, H - 2, lip="e")
+    partition_v(over, W, c + 2, H - 4, H - 2, lip="w")
+
+
+def encounters(zone_id, table, rect=HALL, rate=0.07):
+    tx, ty, w, h = rect
+    return {"id": zone_id, "terrain": "cave", "rect": {"tx": tx, "ty": ty, "w": w, "h": h},
+            "encounter_rate": rate,
+            "table": [{"kin_id": k, "weight": wt, "min_level": lo, "max_level": hi}
+                      for k, wt, lo, hi in table]}
+
+
+def stairs(n, w, base, objects, warps, triggers, *, down, up, gate=True,
            band_requires=None, band_blocked=None, partner_w=None):
     """Lay floor n's stair pads + warps (+ the riddle band and the tube)."""
     pw = partner_w or {}
     if down:
-        dx = corner_x(W, down)
-        base[2 * W + dx] = DOORMAT
-        lw = pw.get(n - 1, 14)
+        dx = corner_x(w, down)
+        base[2 * w + dx] = DOORMAT
+        lw = pw.get(n - 1, W)
         warps.append({"id": "down_stairs", "at": {"tx": dx, "ty": 2}, "trigger": "step_on",
                       "to_map": mid(n - 1), "to": {"tx": corner_x(lw, down), "ty": 3},
                       "facing": "down", "transition": "fade"})
     if up:
-        ux = corner_x(W, up)
-        base[2 * W + ux] = DOORMAT
-        uw = pw.get(n + 1, 14)
-        w = {"id": "up_stairs", "at": {"tx": ux, "ty": 2}, "trigger": "step_on",
-             "to_map": mid(n + 1), "to": {"tx": corner_x(uw, up), "ty": 3},
-             "facing": "down", "transition": "fade"}
+        ux = corner_x(w, up)
+        base[2 * w + ux] = DOORMAT
+        uw = pw.get(n + 1, W)
+        wp = {"id": "up_stairs", "at": {"tx": ux, "ty": 2}, "trigger": "step_on",
+              "to_map": mid(n + 1), "to": {"tx": corner_x(uw, up), "ty": 3},
+              "facing": "down", "transition": "fade"}
         if gate:
-            w["requires_flag"] = f"flag:oldlight_{n}_solved"
-            w["blocked_ref"] = "sign.oldlight_stairgate"
-        warps.append(w)
+            wp["requires_flag"] = f"flag:oldlight_{n}_solved"
+            wp["blocked_ref"] = "sign.oldlight_stairgate"
+        warps.append(wp)
         # the speaking-tube beside the stair (blocks the side approach, so the
         # stair is reached only across the band tile below it)
         tx = ux - 1 if up == "ne" else ux + 1
@@ -114,182 +191,258 @@ def sign_at(triggers, tid, x, y, ref, kind="sign"):
                      "activation": "interact", "ref": ref})
 
 
-def trainer(npcs, tid, x, y, facing, sprite):
+def talk(npcs, nid, x, y, sprite, ref, facing="down", movement="look_around"):
+    npcs.append({"id": nid, "at": {"tx": x, "ty": y}, "facing": facing, "sprite": sprite,
+                 "movement": movement, "dialogue_ref": ref})
+
+
+def trainer(npcs, tid, x, y, facing, sprite, sight=None):
+    """A jest-keeper: the challenge NPC (script.oldlight_<tid>) swapped for a
+    chatty after-stage once beaten. `sight` makes it a sight trainer (the
+    optional alcove regulars); without it you talk to them (the floor gates)."""
     flag = f"flag:oldlight_{tid}_beaten"
-    npcs += [
-        {"id": tid, "at": {"tx": x, "ty": y}, "facing": facing, "sprite": sprite,
-         "movement": "static", "dialogue_ref": f"script.oldlight_{tid}",
-         "defeated_flag": flag, "hidden_when_flag": flag},
-        {"id": f"{tid}_after", "at": {"tx": x, "ty": y}, "facing": facing, "sprite": sprite,
-         "movement": "look_around", "dialogue_ref": f"npc.oldlight_{tid}_after",
-         "requires_flag": flag},
-    ]
+    challenger = {"id": tid, "at": {"tx": x, "ty": y}, "facing": facing, "sprite": sprite,
+                  "movement": "static", "dialogue_ref": f"script.oldlight_{tid}",
+                  "defeated_flag": flag, "hidden_when_flag": flag}
+    if sight:
+        challenger["sight_range"] = sight
+    npcs += [challenger,
+             {"id": f"{tid}_after", "at": {"tx": x, "ty": y}, "facing": facing, "sprite": sprite,
+              "movement": "look_around", "dialogue_ref": f"npc.oldlight_{tid}_after",
+              "requires_flag": flag}]
     return flag
+
+
+def alcove_trainer(over, npcs, c, tid, sprite):
+    """An optional sight trainer at the back of an alcove, watching its mouth."""
+    alcove(over, c)
+    trainer(npcs, tid, c, H - 2, "up", sprite, sight=3)
 
 
 # ---- F1: The Lobby of Groaners ----------------------------------------------------------
 def floor_1():
-    W, H = 14, 11
-    base, over = shell(W, H, WARM_SET, door=True)
+    ts = tileset(1, WARM_SET)
+    base, over = shell(ts, door=True)
+    tower_walls(base, over, f1=True)
     objects, warps, triggers, npcs = [], [], [], []
-    # the CLOAKROOM west (rooms within the room): coats nobody came back for
-    partition_v(over, W, 4, 2, 5, lip="w")
+    door_x = W // 2
+    # --- the LOBBY (the hall: in from the street) ---------------------------------
+    # the banners + applause sign hang on the long wall's face behind the box office
+    wall_mount(objects, "banner_warm", 8, face_row=MID, oid="banner_l", solid=False)
+    wall_mount(objects, "banner_warm", 13, face_row=MID, oid="banner_r", solid=False)
+    ol(objects, "applause_sign", 15, MID, oid="applause")
+    ol(objects, "bunting", 5, MID, oid="bunting_w")
+    place(objects, "counter", 9, MID + 1, oid="box_office")
+    sign_at(triggers, "box_office_sign", 10, MID + 2, "sign.oldlight_box_office")
+    sign_at(triggers, "plaque", 14, MID, "sign.oldlight_plaque")
+    sign_at(triggers, "applause_sign", 16, MID, "sign.oldlight_applause")
+    # the cloakroom corner (coats nobody came back for) + the groaners' benches
     objects.append({"id": "coats", "sprite": "solarium_costume_rack",
-                    "at": {"tx": 1, "ty": 2}, "w": 2, "h": 2})
-    place(objects, "plant", 3, 5, oid="cloak_plant")
-    place(objects, "stool", 1, 6, oid="cloak_stool")
-    # the BOX OFFICE counter, top-centre: the focal point
-    # the banners hang on the wall BEHIND the counter: listed first, so the
-    # counter draws over their lower half (they used to drape over its top)
-    wall_mount(objects, "banner_warm", 5, oid="banner_l", solid=False)
-    wall_mount(objects, "banner_warm", 8, oid="banner_r", solid=False)
-    place(objects, "counter", 5, 2, oid="box_office")
-    windows(over, W, [10])
-    # THE PLAQUE on the face beside the box office (who wrote every joke here)
-    sign_at(triggers, "plaque", 9, 1, "sign.oldlight_plaque")
-    sign_at(triggers, "box_office_sign", 6, 3, "sign.oldlight_box_office")
-    # lobby benches + the aisle in from the door
-    aisle_runner(objects, 7, 4, 9)
-    place(objects, "pew", 3, 7, oid="bench_l")
-    place(objects, "pew", 9, 7, oid="bench_r")
-    place(objects, "brazier", 5, 8, oid="brazier_l")
-    place(objects, "brazier", 9, 8, oid="brazier_r")
-    warps.append({"id": "to_point", "at": {"tx": W // 2, "ty": H - 1}, "trigger": "step_on",
+                    "at": {"tx": 1, "ty": 9}, "w": 2, "h": 2})
+    sign_at(triggers, "coats_sign", 2, 11, "sign.oldlight_coats")
+    place(objects, "pew", 5, 11, oid="bench_l")
+    place(objects, "pew", 14, 11, oid="bench_r")
+    ol(objects, "rubber_chickens", 8, 11, oid="chicken_stand")
+    sign_at(triggers, "chickens", 8, 12, "sign.oldlight_chickens")
+    ol(objects, "laugh_meter", 12, 11, oid="laugh_meter")
+    sign_at(triggers, "laugh_meter_sign", 12, 12, "script.oldlight_laugh_meter", kind="cutscene")
+    ol(objects, "whoopee", 7, 9, oid="whoopee")
+    triggers.append({"id": "whoopee", "kind": "cutscene", "at": {"tx": 7, "ty": 9},
+                     "activation": "step_on", "ref": "script.oldlight_whoopee",
+                     "hidden_when_flag": "flag:oldlight_whoopee_sat"})
+    # the lobby's regulars: the GROANER (groans at everything) and the MIME
+    talk(npcs, "groaner", 6, 12, "npc_old_man", "npc.oldlight_groaner", facing="up",
+         movement="static")
+    talk(npcs, "mime", 17, 9, "npc_girl", "script.oldlight_mime")
+    # the USHER waits in the south-east alcove (optional): tickets, please
+    alcove_trainer(over, npcs, 18, "usher", "npc_man")
+    warps.append({"id": "to_point", "at": {"tx": door_x, "ty": H - 1}, "trigger": "step_on",
                   "to_map": "pearlmoor_point", "to": {"tx": POINT_DOOR[0], "ty": POINT_DOOR[1] + 1},
                   "facing": "down", "transition": "door"})
+    # Punchwheel's welcome rolls once, two steps in from the door (the lobby's
+    # mouth: every walkable tile of the row in front of the street door)
+    for x in (door_x - 1, door_x, door_x + 1):
+        triggers.append({"id": f"welcome_{x}", "kind": "cutscene", "at": {"tx": x, "ty": H - 3},
+                         "activation": "step_on", "ref": "script.oldlight_welcome",
+                         "hidden_when_flag": "flag:oldlight_welcomed"})
+    # --- the north strip: the HALL OF GROANS (west), the stair room (east) ---------
+    ol(objects, "laugh_dolls", 3, 2, oid="laugh_track")
+    sign_at(triggers, "laugh_track_sign", 4, 4, "script.oldlight_laugh_track", kind="cutscene")
+    ol(objects, "mask_wall", 7, 1, oid="masks")
+    sign_at(triggers, "masks_sign", 7, 1, "sign.oldlight_masks")
+    windows(over, W, [8, 15])
+    ol(objects, "jack_box", 9, 3, oid="jack_box")
+    sign_at(triggers, "jack_box_sign", 9, 3, "script.oldlight_jack_box", kind="cutscene")
+    ol(objects, "spotlight", 14, 2, oid="spotlight")
     stairs(1, W, base, objects, warps, triggers, down=None, up="ne")
-    # Punchwheel's welcome rolls once, three steps in from the door
-    triggers.append({"id": "welcome", "kind": "cutscene", "at": {"tx": 7, "ty": 8},
-                     "activation": "step_on", "ref": "script.oldlight_welcome",
-                     "hidden_when_flag": "flag:oldlight_welcomed"})
-    return mapdef(mid(1), "The Old Light — The Lobby of Groaners", W, H, WARM_SET,
-                  base, over, objects, warps, triggers, npcs, STAGE)
+    enc = [encounters("tower_f1", [(8, 40, 9, 11), (16, 35, 9, 11), (69, 25, 10, 11)],
+                      rect=(1, 2, W - 2, 4), rate=0.05)]
+    m = mapdef(mid(1), "The Old Light — The Lobby of Groaners", W, H, ts,
+               base, over, objects, warps, triggers, npcs, music(1))
+    m["encounters"] = enc
+    return m
 
 
 # ---- F2: The Room That Laughs a Beat Too Late --------------------------------------------
 def floor_2():
-    W, H = 14, 11
-    base, over = shell(W, H, COOL_SET)
+    ts = tileset(2, COOL_SET)
+    base, over = shell(ts)
+    tower_walls(base, over)
     objects, warps, triggers, npcs = [], [], [], []
-    # the little STAGE top-centre, braziers as footlights
+    # arrival (NE): the WINGS — the prop store behind the stage
+    place(objects, "crates", 14, 2, oid="props")
+    ol(objects, "unicycle", 17, 2, oid="unicycle")
+    sign_at(triggers, "unicycle_sign", 17, 3, "sign.oldlight_unicycle")
+    ol(objects, "clown_shoes", 13, 5, oid="clown_shoes")
+    sign_at(triggers, "shoes_sign", 13, 5, "sign.oldlight_clown_shoes")
+    # the HALL: the little stage against the long wall, footlights, the pews
     objects.append({"id": "stage", "sprite": "solarium_stage_arch",
-                    "at": {"tx": 5, "ty": 2}, "w": 5, "h": 3})
-    place(objects, "brazier", 4, 3, oid="footlight_l")
-    place(objects, "brazier", 10, 3, oid="footlight_r")
-    wall_mount(objects, "banner_ice", 3, oid="curtain_l", solid=False)
-    wall_mount(objects, "banner_ice", 11, oid="curtain_r", solid=False)
-    # the WINGS (east): a partition with the prop store behind it
-    partition_v(over, W, 10, 6, 9, lip="e")
-    place(objects, "crates", 11, 7, oid="props")
-    # the pews and the audience that laughs one line late
-    place(objects, "pew", 2, 6, oid="pew_a")
-    place(objects, "pew", 6, 6, oid="pew_b")
-    place(objects, "pew", 2, 8, oid="pew_c")
-    place(objects, "pew", 6, 8, oid="pew_d")
-    for nid, x, y, spr in (("late_a", 3, 7, "npc_old_woman"), ("late_b", 7, 7, "npc_man"),
-                           ("late_c", 8, 9, "npc_boy")):
+                    "at": {"tx": 9, "ty": MID + 1}, "w": 5, "h": 3})
+    place(objects, "brazier", 8, MID + 1, oid="footlight_l")
+    place(objects, "brazier", 14, MID + 1, oid="footlight_r")
+    wall_mount(objects, "banner_ice", 7, face_row=MID, oid="curtain_l", solid=False)
+    wall_mount(objects, "banner_ice", 15, face_row=MID, oid="curtain_r", solid=False)
+    ol(objects, "spotlight", 16, MID + 2, oid="spotlight")
+    place(objects, "pew", 9, 11, oid="pew_a")
+    place(objects, "pew", 13, 11, oid="pew_b")
+    # the audience that laughs one line late (stood behind the pews; the aisle
+    # along rows 12-13 is the hall's one lane east-west)
+    for nid, x, y, spr in (("late_a", 10, 12, "npc_old_woman"), ("late_b", 14, 12, "npc_man"),
+                           ("late_c", 12, 13, "npc_boy")):
         npcs.append({"id": nid, "at": {"tx": x, "ty": y}, "facing": "up", "sprite": spr,
                      "movement": "static", "dialogue_ref": f"npc.oldlight_{nid}"})
+    ol(objects, "laugh_dolls", 18, 11, oid="laugh_track")
+    sign_at(triggers, "laugh_track_sign", 18, 13, "script.oldlight_laugh_track_late", kind="cutscene")
+    # the JUGGLER in the south-west alcove (optional)
+    alcove_trainer(over, npcs, 5, "juggler", "village_child")
+    # the stair room (NW): the HECKLER guards the tube
+    ol(objects, "mask_wall", 5, 1, oid="masks")
+    sign_at(triggers, "masks_sign", 5, 1, "sign.oldlight_masks_late")
     stairs(2, W, base, objects, warps, triggers, down="ne", up="nw",
            band_requires="flag:oldlight_heckler_beaten",
            band_blocked="npc.oldlight_heckler_block")
-    trainer(npcs, "heckler", 2, 3, "left", "npc_man")
-    return mapdef(mid(2), "The Old Light — The Late Laugh", W, H, COOL_SET,
-                  base, over, objects, warps, triggers, npcs, STAGE)
+    trainer(npcs, "heckler", 4, 3, "left", "npc_man")
+    m = mapdef(mid(2), "The Old Light — The Late Laugh", W, H, ts,
+               base, over, objects, warps, triggers, npcs, music(2))
+    m["encounters"] = [encounters("tower_f2", [(8, 30, 10, 12), (111, 30, 10, 12),
+                                               (69, 25, 10, 12), (31, 15, 11, 12)])]
+    return m
 
 
 # ---- F3: Intermission (the soft floor, the tea-urn, the Hall of Mouths) ---------------------
 def floor_3():
-    W, H = 14, 11
-    base, over = shell(W, H, WARM_SET)
+    ts = tileset(3, WARM_SET)
+    base, over = shell(ts)
+    tower_walls(base, over)
     objects, warps, triggers, npcs = [], [], [], []
-    # the INTERVAL BAR west (you arrive in it): the tea-urn automaton + a stool
-    partition_v(over, W, 4, 2, 6, lip="w")
-    objects.append({"id": "tea_urn", "sprite": "tideglass_lens_lit",
-                    "at": {"tx": 1, "ty": 5}, "w": 2, "h": 2})
-    for y in (5, 6):
-        sign_at(triggers, f"urn_{y}", 2, y, "script.oldlight_urn", kind="cutscene")
-    place(objects, "stool", 3, 8, oid="bar_stool")
-    # the soft furniture with faces and opinions
-    wall_mount(objects, "stove", 6)            # the stove that laughs first
-    wall_mount(objects, "bookcase", 8)         # the bookcase that clears its throat
-    windows(over, W, [5, 10])
-    place(objects, "table", 6, 6, oid="table")
-    place(objects, "stool", 5, 7, oid="stool_l")
-    place(objects, "stool", 8, 7, oid="stool_r")
-    place(objects, "sacks", 10, 9, oid="sacks")
-    # the COMPUTER (an anachronism nobody can explain — the tower's own joke):
-    # off the riddle path in the east bay; Confirm on any tile -> ANDY-LAND
-    place(objects, "computer", 11, 6, oid="computer")
-    for x in (11, 12):
-        sign_at(triggers, f"computer_{x}", x, 7, "script.oldlight_computer", kind="cutscene")
-    sign_at(triggers, "stove", 6, 2, "npc.oldlight_stove")
-    sign_at(triggers, "stove_b", 7, 2, "npc.oldlight_stove")
-    sign_at(triggers, "bookcase", 8, 3, "npc.oldlight_bookcase")
-    sign_at(triggers, "bookcase_b", 9, 3, "npc.oldlight_bookcase")
-    sign_at(triggers, "p_note", 6, 6, "sign.oldlight_p_note")
-    # the three escaped PUNCHLINES, loose in the room
-    for nid, x, y, spr in (("punch_tuesday", 10, 5, "npc_girl"),
-                           ("punch_buns", 3, 7, "npc_child"),
-                           ("punch_ladder", 9, 8, "npc_boy")):
+    # arrival (NW): the INTERVAL BAR — the tea-urn automaton (the floor's REST)
+    ol(objects, "tea_urn", 4, 2, oid="tea_urn")
+    for x in (4, 5):
+        sign_at(triggers, f"urn_{x}", x, 3, "script.oldlight_urn", kind="cutscene")
+    ol(objects, "teacups", 7, 2, oid="teacups")
+    sign_at(triggers, "teacups_sign", 7, 3, "sign.oldlight_teacups")
+    place(objects, "stool", 3, 4, oid="bar_stool")
+    place(objects, "stool", 6, 4, oid="bar_stool_b")
+    # the HALL OF MOUTHS: soft furniture with faces and opinions on the long wall
+    wall_mount(objects, "stove", 6, face_row=MID)            # the stove that laughs first
+    wall_mount(objects, "bookcase", 9, face_row=MID)         # the bookcase that clears its throat
+    sign_at(triggers, "stove", 6, MID + 1, "npc.oldlight_stove")
+    sign_at(triggers, "stove_b", 7, MID + 1, "npc.oldlight_stove")
+    sign_at(triggers, "bookcase", 9, MID + 2, "npc.oldlight_bookcase")
+    sign_at(triggers, "bookcase_b", 10, MID + 2, "npc.oldlight_bookcase")
+    place(objects, "table", 8, 11, oid="table")
+    place(objects, "stool", 7, 12, oid="stool_l")
+    place(objects, "stool", 10, 12, oid="stool_r")
+    sign_at(triggers, "p_note", 8, 11, "sign.oldlight_p_note")
+    ol(objects, "pie_table", 3, 10, oid="pies")
+    sign_at(triggers, "pies_sign", 3, 11, "sign.oldlight_pies")
+    # the COMPUTER (an anachronism nobody can explain — the tower's own joke),
+    # off the line in the east of the hall; Confirm on its front -> ANDY-LAND
+    place(objects, "computer", 12, 8, oid="computer")
+    for x in (12, 13):
+        sign_at(triggers, f"computer_{x}", x, 10, "script.oldlight_computer", kind="cutscene")
+    # the three escaped PUNCHLINES, loose in the hall
+    for nid, x, y, spr in (("punch_tuesday", 15, 9, "npc_girl"),
+                           ("punch_buns", 6, 12, "npc_child"),
+                           ("punch_ladder", 10, 13, "npc_boy")):
         npcs.append({"id": nid, "at": {"tx": x, "ty": y}, "facing": "down", "sprite": spr,
                      "movement": "look_around", "dialogue_ref": f"npc.oldlight_{nid}"})
+    # the PIE-THROWER in the south-east alcove (optional)
+    alcove_trainer(over, npcs, 18, "pie_thrower", "market_trader")
+    # the stair room (NE)
+    ol(objects, "cog_heap", 14, 4, oid="cogs")
+    sign_at(triggers, "cogs_sign", 14, 4, "sign.oldlight_cogs")
+    windows(over, W, [15, 17])
     stairs(3, W, base, objects, warps, triggers, down="nw", up="ne")
-    return mapdef(mid(3), "The Old Light — Intermission", W, H, WARM_SET,
-                  base, over, objects, warps, triggers, npcs, STAGE)
+    m = mapdef(mid(3), "The Old Light — Intermission", W, H, ts,
+               base, over, objects, warps, triggers, npcs, music(3))
+    m["encounters"] = [encounters("tower_f3", [(105, 50, 10, 12), (111, 50, 11, 12)], rate=0.04)]
+    return m
 
 
 # ---- F4: The Backwards Inn (the lobby, mirrored) -----------------------------------------
 def floor_4():
-    W, H = 14, 11
-    base, over = shell(W, H, COOL_SET)
+    ts = tileset(4, COOL_SET)
+    base, over = shell(ts)
+    tower_walls(base, over)
     objects, warps, triggers, npcs = [], [], [], []
-    # the lobby turned inside out: the cloakroom is EAST now, the counter faces the wall
-    partition_v(over, W, 9, 2, 5, lip="e")
+    # arrival (NE): the cloakroom, mirrored — the coats hang the other way
     objects.append({"id": "coats", "sprite": "solarium_costume_rack",
-                    "at": {"tx": 10, "ty": 4}, "w": 2, "h": 2})
-    # the banners hang on the wall BEHIND the counter: listed first, so the
-    # counter draws over their lower half (they used to drape over its top)
-    wall_mount(objects, "banner_warm", 5, oid="banner_l", solid=False)
-    wall_mount(objects, "banner_warm", 8, oid="banner_r", solid=False)
-    place(objects, "counter", 5, 2, oid="box_office")
-    sign_at(triggers, "backwards_a", 4, 1, "sign.oldlight_backwards_a")
-    sign_at(triggers, "backwards_b", 7, 3, "sign.oldlight_backwards_b")
-    aisle_runner(objects, 7, 4, 9)
-    place(objects, "pew", 3, 7, oid="bench_l")
-    place(objects, "pew", 9, 6, oid="bench_r")
-    place(objects, "table", 10, 8, oid="carved_table")
-    sign_at(triggers, "reassess", 5, 3, "sign.oldlight_reassess")
-    sign_at(triggers, "reassess_b", 8, 3, "sign.oldlight_reassess")
+                    "at": {"tx": 13, "ty": 4}, "w": 2, "h": 2})
+    ol(objects, "clock_backwards", 15, 1, oid="clock")
+    sign_at(triggers, "clock_sign", 15, 1, "sign.oldlight_clock_backwards")
+    ol(objects, "upside_chair", 16, 3, oid="upside_chair")
+    sign_at(triggers, "chair_sign", 16, 3, "sign.oldlight_upside_chair")
+    # the floor's opener plays once on the only way out of the cloakroom
+    for y in (MID - 1, MID):
+        triggers.append({"id": f"backwards_opener_{y}", "kind": "cutscene",
+                         "at": {"tx": EAST_DOOR, "ty": y}, "activation": "step_on",
+                         "ref": "script.oldlight_backwards",
+                         "hidden_when_flag": "flag:oldlight_4_opened"})
+    # the HALL: the lobby turned inside out — the counter faces the wall
+    wall_mount(objects, "banner_warm", 8, face_row=MID, oid="banner_l", solid=False)
+    wall_mount(objects, "banner_warm", 13, face_row=MID, oid="banner_r", solid=False)
+    place(objects, "counter", 9, MID + 1, oid="box_office")
+    sign_at(triggers, "backwards_a", 7, MID, "sign.oldlight_backwards_a")
+    sign_at(triggers, "backwards_b", 11, MID + 3, "sign.oldlight_backwards_b")
+    sign_at(triggers, "reassess", 9, MID + 3, "sign.oldlight_reassess")
+    sign_at(triggers, "reassess_b", 12, MID + 3, "sign.oldlight_reassess")
+    sign_at(triggers, "box_office_sign", 10, MID + 3, "script.oldlight_lamps_out", kind="cutscene")
+    ol(objects, "funhouse_mirror", 5, MID, oid="mirror_a")
+    ol(objects, "funhouse_mirror", 16, MID, oid="mirror_b")
+    sign_at(triggers, "mirror_a_sign", 5, MID + 2, "sign.oldlight_funhouse")
+    sign_at(triggers, "mirror_b_sign", 16, MID + 2, "sign.oldlight_funhouse")
+    place(objects, "pew", 13, 12, oid="bench_r")
     objects.append({"id": "troupe_cart", "sprite": "solarium_troupe_cart",
-                    "at": {"tx": 2, "ty": 5}, "w": 3, "h": 2})
-    sign_at(triggers, "troupe_cart", 4, 5, "npc.oldlight_cart")
-    sign_at(triggers, "box_office_sign", 6, 3, "script.oldlight_lamps_out", kind="cutscene")
-    # the floor's opener plays once on the only way out of the east cloakroom
-    triggers.append({"id": "backwards_opener", "kind": "cutscene", "at": {"tx": 12, "ty": 5},
-                     "activation": "step_on", "ref": "script.oldlight_backwards",
-                     "hidden_when_flag": "flag:oldlight_4_opened"})
-    place(objects, "brazier", 5, 8, oid="brazier_l")
-    place(objects, "brazier", 8, 8, oid="brazier_r")
+                    "at": {"tx": 8, "ty": 12}, "w": 3, "h": 2})
+    sign_at(triggers, "troupe_cart", 11, 12, "npc.oldlight_cart")
+    place(objects, "brazier", 15, 10, oid="brazier_r")
+    # THE MIRROR in the south-west alcove (optional): a mimic, battles in pairs
+    alcove_trainer(over, npcs, 5, "mirror", "npc_shopkeeper")
+    # the stair room (NW): the RINGMASTER guards the tube
     stairs(4, W, base, objects, warps, triggers, down="ne", up="nw",
            band_requires="flag:oldlight_ringmaster_beaten",
            band_blocked="npc.oldlight_ringmaster_block")
-    trainer(npcs, "ringmaster", 2, 3, "left", "npc_shopkeeper")
-    return mapdef(mid(4), "The Old Light — The Backwards Inn", W, H, COOL_SET,
-                  base, over, objects, warps, triggers, npcs, STAGE)
+    trainer(npcs, "ringmaster", 4, 3, "left", "npc_shopkeeper")
+    ol(objects, "mallet", 8, 2, oid="mallet")
+    m = mapdef(mid(4), "The Old Light — The Backwards Inn", W, H, ts,
+               base, over, objects, warps, triggers, npcs, music(4))
+    m["encounters"] = [encounters("tower_f4", [(111, 35, 11, 13), (69, 35, 11, 13),
+                                               (16, 30, 12, 13)])]
+    return m
 
 
 # ---- F5: The Gallery of Confident Facts --------------------------------------------------
 def floor_5():
-    W, H = 14, 11
-    base, over = shell(W, H, COOL_SET)
+    ts = tileset(5, COOL_SET)
+    base, over = shell(ts)
+    tower_walls(base, over)
     objects, warps, triggers, npcs = [], [], [], []
-    # a hanging wall splits the gallery: the back room north, the front south
-    partition_h(base, over, W, 6, 1, 8, doors=(4,))
-    # six framed captions: three on the north face, three on the partition face
+    # six framed captions: three in the arrival room (north face), three on the
+    # long wall's face over the hall
     frames = [("cap_reyl", 3, 1, "banner_warm"), ("cap_tuesday", 6, 1, "banner_ice"),
-              ("cap_stars", 9, 1, None), ("cap_sea", 2, 6, "banner_ice"),
-              ("cap_gerald", 5, 6, "banner_warm"), ("cap_tam", 7, 6, "banner_warm")]
+              ("cap_stars", 9, 1, None), ("cap_sea", 5, MID, "banner_ice"),
+              ("cap_gerald", 10, MID, "banner_warm"), ("cap_tam", 15, MID, "banner_warm")]
     for fid, x, y, stem in frames:
         if stem:
             wall_mount(objects, stem, x, face_row=y, oid=f"frame_{fid}", solid=False)
@@ -297,51 +450,78 @@ def floor_5():
             objects.append({"id": f"frame_{fid}", "sprite": "nightreach_star_banner",
                             "at": {"tx": x, "ty": y}, "w": 1, "h": 2, "solid": False})
         sign_at(triggers, fid, x, y, f"sign.oldlight_{fid}")
-    place(objects, "brazier", 5, 2, oid="brazier_n")
-    place(objects, "brazier", 10, 7, oid="brazier_s")
-    place(objects, "pew", 4, 8, oid="viewing_bench")
-    place(objects, "plant", 12, 9, oid="plant")
+    place(objects, "brazier", 2, 3, oid="brazier_n")
+    place(objects, "brazier", 18, 9, oid="brazier_s")
+    place(objects, "pew", 8, 11, oid="viewing_bench")
+    place(objects, "plant", 1, 13, oid="plant")
+    ol(objects, "joke_lectern", 12, 10, oid="lectern")
+    sign_at(triggers, "lectern_sign", 12, 12, "script.oldlight_lectern", kind="cutscene")
+    ol(objects, "mallet", 3, 9, oid="mallet")
+    sign_at(triggers, "mallet_sign", 3, 11, "sign.oldlight_mallet")
+    # the banana peels: the gallery's one confident fact ("floors are safe")
+    for i, (x, y) in enumerate(((7, 9), (14, 13), (16, 10))):
+        ol(objects, "banana", x, y, oid=f"banana_{i}")
+    triggers.append({"id": "banana_slip", "kind": "cutscene", "at": {"tx": 7, "ty": 9},
+                     "activation": "step_on", "ref": "script.oldlight_banana",
+                     "hidden_when_flag": "flag:oldlight_banana_slipped"})
+    # THE CRITIC in the south-east alcove (optional)
+    alcove_trainer(over, npcs, 18, "critic", "npc_old_woman")
+    # the stair room (NE)
+    ol(objects, "laugh_meter", 14, 2, oid="laugh_meter")
+    sign_at(triggers, "laugh_meter_sign", 14, 4, "script.oldlight_laugh_meter", kind="cutscene")
     # (Punchwheel's never-told joke — the knock-knock loop — opens the riddle
     #  itself, once: script.oldlight_5 guards it on flag:oldlight_knock_done)
-    stairs(5, W, base, objects, warps, triggers, down="nw", up="ne",
-           partner_w={6: 12})
-    return mapdef(mid(5), "The Old Light — The Gallery of Confident Facts", W, H, COOL_SET,
-                  base, over, objects, warps, triggers, npcs, GALLERY)
+    stairs(5, W, base, objects, warps, triggers, down="nw", up="ne")
+    m = mapdef(mid(5), "The Old Light — The Gallery of Confident Facts", W, H, ts,
+               base, over, objects, warps, triggers, npcs, music(5))
+    m["encounters"] = [encounters("tower_f5", [(69, 40, 12, 14), (111, 30, 12, 14),
+                                               (105, 30, 13, 14)])]
+    return m
 
 
-# ---- F6: The One Joke (almost empty; the music drops out) --------------------------------
+# ---- F6: The One Joke (almost empty; the quiet in the middle of the noise) --------------
 def floor_6():
-    W, H = 12, 9
-    base, over = shell(W, H, WARM_SET)
+    ts = tileset(6, WARM_SET)
+    base, over = shell(ts)
+    tower_walls(base, over)
     objects, warps, triggers, npcs = [], [], [], []
-    windows(over, W, [6])
-    partition_v(over, W, 4, 2, 4, lip="w")      # the coat alcove
+    windows(over, W, [6, 16])
+    # arrival (NE): the coat alcove — one coat, one peg
     objects.append({"id": "coat_peg", "sprite": "solarium_costume_rack",
-                    "at": {"tx": 2, "ty": 4}, "w": 2, "h": 2})
-    sign_at(triggers, "coat", 2, 5, "sign.oldlight_coat")
-    sign_at(triggers, "coat_b", 3, 5, "sign.oldlight_coat")
-    place(objects, "table", 6, 4, oid="two_cups")
-    place(objects, "stool", 5, 5, oid="stool_l")
-    place(objects, "stool", 8, 5, oid="stool_r")
-    sign_at(triggers, "cups", 6, 4, "sign.oldlight_cups")
-    sign_at(triggers, "cups_b", 7, 4, "sign.oldlight_cups")
-    sign_at(triggers, "window", 6, 1, "sign.oldlight_window")
-    stairs(6, W, base, objects, warps, triggers, down="ne", up="nw", gate=False,
-           partner_w={5: 14, 7: 14})
-    # the loop: one band across the room's only crossing (every walkable tile
-    # of column 9's run between the arrival stair and the rest of the room)
-    for y in range(2, H - 1):
-        triggers.append({"id": f"one_joke_{y}", "kind": "cutscene", "at": {"tx": 9, "ty": y},
-                         "activation": "step_on", "ref": "script.oldlight_one_joke",
+                    "at": {"tx": 17, "ty": 3}, "w": 2, "h": 2})
+    sign_at(triggers, "coat", 17, 5, "sign.oldlight_coat")
+    sign_at(triggers, "coat_b", 18, 5, "sign.oldlight_coat")
+    sign_at(triggers, "window", 16, 1, "sign.oldlight_window")
+    # the loop: the One Joke plays on the only way out of the arrival room
+    for y in (MID - 1, MID):
+        triggers.append({"id": f"one_joke_{y}", "kind": "cutscene",
+                         "at": {"tx": EAST_DOOR, "ty": y}, "activation": "step_on",
+                         "ref": "script.oldlight_one_joke",
                          "hidden_when_flag": "flag:oldlight_6_heard"})
-    return mapdef(mid(6), "The Old Light — The One Joke", W, H, WARM_SET,
-                  base, over, objects, warps, triggers, npcs, None)
+    # the HALL: a long, nearly bare room — the table with two cups is its heart
+    # (and the floor's REST: sit across from the empty chair a while)
+    place(objects, "table", 10, 10, oid="two_cups")
+    place(objects, "stool", 9, 11, oid="stool_l")
+    place(objects, "stool", 12, 11, oid="stool_r")
+    sign_at(triggers, "cups", 10, 10, "script.oldlight_cups_rest", kind="cutscene")
+    sign_at(triggers, "cups_b", 11, 10, "script.oldlight_cups_rest", kind="cutscene")
+    ol(objects, "confetti", 4, 12, oid="confetti_old")
+    sign_at(triggers, "confetti_sign", 4, 12, "sign.oldlight_old_confetti")
+    ol(objects, "spring_can", 18, 12, oid="spring_can")
+    sign_at(triggers, "spring_can_sign", 18, 12, "sign.oldlight_spring_can")
+    stairs(6, W, base, objects, warps, triggers, down="ne", up="nw", gate=False,
+           partner_w={7: 14})
+    m = mapdef(mid(6), "The Old Light — The One Joke", W, H, ts,
+               base, over, objects, warps, triggers, npcs, music(6))
+    m["encounters"] = [encounters("tower_f6", [(111, 60, 13, 14), (105, 40, 13, 14)], rate=0.04)]
+    return m
 
 
 # ---- TOP: The Winding Room ---------------------------------------------------------------
 def floor_top():
-    W, H = 14, 11
-    base, over = shell(W, H, WARM_SET)
+    w, h = 14, 11
+    ts = tileset(7, WARM_SET)
+    base, over = shell(ts, w=w, h=h)
     objects, warps, triggers, npcs = [], [], [], []
     # MR. PUNCHWHEEL, half-stopped: the great winding drum + his brass face
     objects.append({"id": "punchwheel_drum", "sprite": "galehigh_winch",
@@ -364,9 +544,9 @@ def floor_top():
                          "activation": "step_on", "ref": "script.oldlight_top",
                          "hidden_when_flag": "flag:q_south_jest_done"})
     # the sill with the old rope, the keeper's cubby with Reyl's log
-    windows(over, W, [3])
+    over[1 * w + 3] = WINDOW
     sign_at(triggers, "rope_sill", 3, 1, "sign.oldlight_rope")
-    partition_v(over, W, 10, 5, 9, lip="e")
+    partition_v(over, w, 10, 5, 9, lip="e")
     place(objects, "table", 11, 6, oid="log_table")
     place(objects, "stool", 11, 8, oid="log_stool")
     for x in (11, 12):
@@ -374,9 +554,15 @@ def floor_top():
     wall_mount(objects, "lamp_rack", 11, solid=False)
     place(objects, "brazier", 3, 7, oid="brazier_w")
     place(objects, "oil_jars", 1, 9, oid="jars")
-    stairs(7, W, base, objects, warps, triggers, down="nw", up=None)
+    # the workshop clutter of a machine that wound itself too tight
+    ol(objects, "cog_heap", 2, 4, oid="cogs")
+    ol(objects, "spring_can", 4, 9, oid="spring_can")
+    ol(objects, "confetti", 9, 8, oid="confetti_a")
+    ol(objects, "confetti", 5, 9, oid="confetti_b")
+    ol(objects, "bunting", 6, 1, oid="bunting")
+    stairs(7, w, base, objects, warps, triggers, down="nw", up=None, partner_w={6: W})
     # THE SLIDE: the tower's last joke — a chute down to the Point
-    base[9 * W + 7] = DOORMAT
+    base[9 * w + 7] = DOORMAT
     warps.append({"id": "slide", "at": {"tx": 7, "ty": 9}, "trigger": "step_on",
                   "to_map": "pearlmoor_point", "to": {"tx": 7, "ty": 8},
                   "facing": "down", "transition": "fade",
@@ -387,8 +573,8 @@ def floor_top():
     objects.append({"id": "slide_hatch", "sprite": "markers_trapdoor",
                     "at": {"tx": 7, "ty": 9}, "w": 1, "h": 1, "solid": False,
                     "requires_flag": "flag:q_south_jest_done"})
-    return mapdef(mid(7), "The Old Light — The Winding Room", W, H, WARM_SET,
-                  base, over, objects, warps, triggers, npcs, ATTIC)
+    return mapdef(mid(7), "The Old Light — The Winding Room", w, h, ts,
+                  base, over, objects, warps, triggers, npcs, music(7))
 
 
 def all_maps():
@@ -398,8 +584,6 @@ def all_maps():
 if __name__ == "__main__":
     ok = True
     for m in all_maps():
-        if m.get("music") is None:
-            del m["music"]  # F6: the bed carries up from F5 and the band fades it out
         ok = finish(m) and ok
     print("PASS" if ok else "FAIL")
     raise SystemExit(0 if ok else 1)

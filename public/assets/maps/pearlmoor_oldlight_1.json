@@ -1,15 +1,15 @@
 {
   "id": "pearlmoor_oldlight_1",
   "display_name": "The Old Light \u2014 The Lobby of Groaners",
-  "width": 14,
-  "height": 11,
+  "width": 22,
+  "height": 15,
   "tile_width": 16,
   "tile_height": 16,
   "kind": "interior",
   "tilesets": [
     {
-      "name": "interior_set",
-      "image": "assets/tilesets/interior_set.webp",
+      "name": "oldlight_f1_set",
+      "image": "assets/tilesets/oldlight_f1_set.webp",
       "tile_width": 16,
       "tile_height": 16,
       "first_gid": 1,
@@ -53,6 +53,30 @@
         1,
         1,
         1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
         2,
         1,
         2,
@@ -78,26 +102,6 @@
         1,
         2,
         1,
-        1,
-        1,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        1,
-        2,
-        1,
-        2,
-        1,
         2,
         1,
         2,
@@ -108,6 +112,14 @@
         1,
         1,
         1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
         1,
         2,
         1,
@@ -134,6 +146,14 @@
         1,
         2,
         1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
         1,
         1,
         1,
@@ -149,6 +169,14 @@
         1,
         2,
         1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
         1,
         2,
         1,
@@ -161,6 +189,150 @@
         2,
         1,
         2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
         1,
         1,
         1,
@@ -171,6 +343,10 @@
         1,
         1,
         3,
+        1,
+        1,
+        1,
+        1,
         1,
         1,
         1,
@@ -188,7 +364,15 @@
         6,
         6,
         6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
         26,
+        6,
         6,
         6,
         6,
@@ -202,8 +386,6 @@
         4,
         4,
         4,
-        49,
-        4,
         4,
         4,
         4,
@@ -211,36 +393,25 @@
         5,
         4,
         4,
-        9,
-        8,
-        0,
-        0,
-        0,
         49,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
+        4,
+        4,
+        4,
+        5,
+        4,
+        4,
+        4,
+        4,
+        4,
         9,
         8,
         0,
         0,
         0,
-        49,
         0,
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
-        9,
-        8,
         0,
         0,
         0,
@@ -253,8 +424,16 @@
         0,
         0,
         0,
+        0,
         9,
         8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -267,19 +446,6 @@
         0,
         0,
         0,
-        9,
-        8,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         9,
         8,
@@ -291,12 +457,6 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
-        9,
-        8,
         0,
         0,
         0,
@@ -321,10 +481,198 @@
         0,
         0,
         0,
+        50,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         9,
+        19,
+        36,
+        42,
+        0,
+        48,
+        36,
+        36,
+        36,
+        36,
+        36,
+        36,
+        35,
+        36,
+        36,
+        36,
+        36,
+        36,
+        36,
+        36,
+        36,
+        36,
+        24,
+        8,
+        4,
+        54,
+        0,
+        53,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        50,
+        0,
+        0,
+        0,
+        13,
+        16,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        0,
+        0,
+        0,
+        9,
+        14,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        0,
+        0,
+        0,
+        9,
+        14,
         15,
+        7,
+        7,
+        7,
+        7,
         7,
         7,
         7,
@@ -336,48 +684,22 @@
         7,
         7,
         7,
+        17,
         7,
-        16
+        7,
+        7,
+        16,
+        14
       ]
     }
   ],
   "objects": [
     {
-      "id": "coats",
-      "sprite": "solarium_costume_rack",
-      "at": {
-        "tx": 1,
-        "ty": 2
-      },
-      "w": 2,
-      "h": 2
-    },
-    {
-      "id": "cloak_plant",
-      "sprite": "interior_plant",
-      "at": {
-        "tx": 3,
-        "ty": 5
-      },
-      "w": 1,
-      "h": 1
-    },
-    {
-      "id": "cloak_stool",
-      "sprite": "interior_stool",
-      "at": {
-        "tx": 1,
-        "ty": 6
-      },
-      "w": 1,
-      "h": 1
-    },
-    {
       "id": "banner_l",
       "sprite": "interior_banner_warm",
       "at": {
-        "tx": 5,
-        "ty": 1
+        "tx": 8,
+        "ty": 7
       },
       "w": 1,
       "h": 2,
@@ -389,8 +711,8 @@
       "id": "banner_r",
       "sprite": "interior_banner_warm",
       "at": {
-        "tx": 8,
-        "ty": 1
+        "tx": 13,
+        "ty": 7
       },
       "w": 1,
       "h": 2,
@@ -399,43 +721,53 @@
       "solid": false
     },
     {
+      "id": "applause",
+      "sprite": "oldlight_applause_sign",
+      "at": {
+        "tx": 15,
+        "ty": 7
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "bunting_w",
+      "sprite": "oldlight_bunting",
+      "at": {
+        "tx": 5,
+        "ty": 7
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
       "id": "box_office",
       "sprite": "interior_counter",
       "at": {
-        "tx": 5,
-        "ty": 2
+        "tx": 9,
+        "ty": 8
       },
       "w": 4,
       "h": 2
     },
     {
-      "id": "aisle_4",
-      "sprite": "interior_rug_runner",
+      "id": "coats",
+      "sprite": "solarium_costume_rack",
       "at": {
-        "tx": 7,
-        "ty": 4
+        "tx": 1,
+        "ty": 9
       },
-      "w": 1,
-      "h": 3,
-      "solid": false
-    },
-    {
-      "id": "aisle_7",
-      "sprite": "interior_rug_runner",
-      "at": {
-        "tx": 7,
-        "ty": 7
-      },
-      "w": 1,
-      "h": 3,
-      "solid": false
+      "w": 2,
+      "h": 2
     },
     {
       "id": "bench_l",
       "sprite": "interior_pew",
       "at": {
-        "tx": 3,
-        "ty": 7
+        "tx": 5,
+        "ty": 11
       },
       "w": 3,
       "h": 1
@@ -444,28 +776,80 @@
       "id": "bench_r",
       "sprite": "interior_pew",
       "at": {
-        "tx": 9,
-        "ty": 7
+        "tx": 14,
+        "ty": 11
       },
       "w": 3,
       "h": 1
     },
     {
-      "id": "brazier_l",
-      "sprite": "interior_brazier",
+      "id": "chicken_stand",
+      "sprite": "oldlight_rubber_chickens",
       "at": {
-        "tx": 5,
-        "ty": 8
+        "tx": 8,
+        "ty": 11
       },
       "w": 1,
       "h": 2
     },
     {
-      "id": "brazier_r",
-      "sprite": "interior_brazier",
+      "id": "laugh_meter",
+      "sprite": "oldlight_laugh_meter",
+      "at": {
+        "tx": 12,
+        "ty": 11
+      },
+      "w": 1,
+      "h": 2
+    },
+    {
+      "id": "whoopee",
+      "sprite": "oldlight_whoopee",
+      "at": {
+        "tx": 7,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "laugh_track",
+      "sprite": "oldlight_laugh_dolls",
+      "at": {
+        "tx": 3,
+        "ty": 2
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "masks",
+      "sprite": "oldlight_mask_wall",
+      "at": {
+        "tx": 7,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "jack_box",
+      "sprite": "oldlight_jack_box",
       "at": {
         "tx": 9,
-        "ty": 8
+        "ty": 3
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "spotlight",
+      "sprite": "oldlight_spotlight",
+      "at": {
+        "tx": 14,
+        "ty": 2
       },
       "w": 1,
       "h": 2
@@ -474,7 +858,7 @@
       "id": "speaking_tube",
       "sprite": "solarium_sun_mask",
       "at": {
-        "tx": 11,
+        "tx": 19,
         "ty": 2
       },
       "w": 1,
@@ -484,7 +868,7 @@
       "id": "stairs_up_sprite",
       "sprite": "interior_stairs_up",
       "at": {
-        "tx": 12,
+        "tx": 20,
         "ty": 1
       },
       "w": 1,
@@ -496,8 +880,8 @@
     {
       "id": "to_point",
       "at": {
-        "tx": 7,
-        "ty": 10
+        "tx": 11,
+        "ty": 14
       },
       "trigger": "step_on",
       "to_map": "pearlmoor_point",
@@ -511,13 +895,13 @@
     {
       "id": "up_stairs",
       "at": {
-        "tx": 12,
+        "tx": 20,
         "ty": 2
       },
       "trigger": "step_on",
       "to_map": "pearlmoor_oldlight_2",
       "to": {
-        "tx": 12,
+        "tx": 20,
         "ty": 3
       },
       "facing": "down",
@@ -528,30 +912,144 @@
   ],
   "triggers": [
     {
-      "id": "plaque",
-      "kind": "sign",
-      "at": {
-        "tx": 9,
-        "ty": 1
-      },
-      "activation": "interact",
-      "ref": "sign.oldlight_plaque"
-    },
-    {
       "id": "box_office_sign",
       "kind": "sign",
       "at": {
-        "tx": 6,
-        "ty": 3
+        "tx": 10,
+        "ty": 9
       },
       "activation": "interact",
       "ref": "sign.oldlight_box_office"
     },
     {
-      "id": "riddle_band",
+      "id": "plaque",
+      "kind": "sign",
+      "at": {
+        "tx": 14,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_plaque"
+    },
+    {
+      "id": "applause_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 16,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_applause"
+    },
+    {
+      "id": "coats_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 2,
+        "ty": 11
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_coats"
+    },
+    {
+      "id": "chickens",
+      "kind": "sign",
+      "at": {
+        "tx": 8,
+        "ty": 12
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_chickens"
+    },
+    {
+      "id": "laugh_meter_sign",
       "kind": "cutscene",
       "at": {
         "tx": 12,
+        "ty": 12
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_laugh_meter"
+    },
+    {
+      "id": "whoopee",
+      "kind": "cutscene",
+      "at": {
+        "tx": 7,
+        "ty": 9
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_whoopee",
+      "hidden_when_flag": "flag:oldlight_whoopee_sat"
+    },
+    {
+      "id": "welcome_10",
+      "kind": "cutscene",
+      "at": {
+        "tx": 10,
+        "ty": 12
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_welcome",
+      "hidden_when_flag": "flag:oldlight_welcomed"
+    },
+    {
+      "id": "welcome_11",
+      "kind": "cutscene",
+      "at": {
+        "tx": 11,
+        "ty": 12
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_welcome",
+      "hidden_when_flag": "flag:oldlight_welcomed"
+    },
+    {
+      "id": "welcome_12",
+      "kind": "cutscene",
+      "at": {
+        "tx": 12,
+        "ty": 12
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_welcome",
+      "hidden_when_flag": "flag:oldlight_welcomed"
+    },
+    {
+      "id": "laugh_track_sign",
+      "kind": "cutscene",
+      "at": {
+        "tx": 4,
+        "ty": 4
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_laugh_track"
+    },
+    {
+      "id": "masks_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 7,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_masks"
+    },
+    {
+      "id": "jack_box_sign",
+      "kind": "cutscene",
+      "at": {
+        "tx": 9,
+        "ty": 3
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_jack_box"
+    },
+    {
+      "id": "riddle_band",
+      "kind": "cutscene",
+      "at": {
+        "tx": 20,
         "ty": 3
       },
       "activation": "step_on",
@@ -562,7 +1060,7 @@
       "id": "tube",
       "kind": "cutscene",
       "at": {
-        "tx": 11,
+        "tx": 19,
         "ty": 2
       },
       "activation": "interact",
@@ -573,29 +1071,99 @@
       "id": "tube_after",
       "kind": "dialogue",
       "at": {
-        "tx": 11,
+        "tx": 19,
         "ty": 2
       },
       "activation": "interact",
       "ref": "npc.oldlight_tube_1",
       "requires_flag": "flag:oldlight_1_solved"
-    },
-    {
-      "id": "welcome",
-      "kind": "cutscene",
-      "at": {
-        "tx": 7,
-        "ty": 8
-      },
-      "activation": "step_on",
-      "ref": "script.oldlight_welcome",
-      "hidden_when_flag": "flag:oldlight_welcomed"
     }
   ],
-  "encounters": [],
-  "npcs": [],
+  "encounters": [
+    {
+      "id": "tower_f1",
+      "terrain": "cave",
+      "rect": {
+        "tx": 1,
+        "ty": 2,
+        "w": 20,
+        "h": 4
+      },
+      "encounter_rate": 0.05,
+      "table": [
+        {
+          "kin_id": 8,
+          "weight": 40,
+          "min_level": 9,
+          "max_level": 11
+        },
+        {
+          "kin_id": 16,
+          "weight": 35,
+          "min_level": 9,
+          "max_level": 11
+        },
+        {
+          "kin_id": 69,
+          "weight": 25,
+          "min_level": 10,
+          "max_level": 11
+        }
+      ]
+    }
+  ],
+  "npcs": [
+    {
+      "id": "groaner",
+      "at": {
+        "tx": 6,
+        "ty": 12
+      },
+      "facing": "up",
+      "sprite": "npc_old_man",
+      "movement": "static",
+      "dialogue_ref": "npc.oldlight_groaner"
+    },
+    {
+      "id": "mime",
+      "at": {
+        "tx": 17,
+        "ty": 9
+      },
+      "facing": "down",
+      "sprite": "npc_girl",
+      "movement": "look_around",
+      "dialogue_ref": "script.oldlight_mime"
+    },
+    {
+      "id": "usher",
+      "at": {
+        "tx": 18,
+        "ty": 13
+      },
+      "facing": "up",
+      "sprite": "npc_man",
+      "movement": "static",
+      "dialogue_ref": "script.oldlight_usher",
+      "defeated_flag": "flag:oldlight_usher_beaten",
+      "hidden_when_flag": "flag:oldlight_usher_beaten",
+      "sight_range": 3
+    },
+    {
+      "id": "usher_after",
+      "at": {
+        "tx": 18,
+        "ty": 13
+      },
+      "facing": "up",
+      "sprite": "npc_man",
+      "movement": "look_around",
+      "dialogue_ref": "npc.oldlight_usher_after",
+      "requires_flag": "flag:oldlight_usher_beaten"
+    }
+  ],
   "gates": [],
-  "music": "assets/audio/music/sunken-solarium-a.mp3",
+  "music": "assets/audio/music/oldlight-f1.mp3",
   "ambience": {
     "particles": [
       {

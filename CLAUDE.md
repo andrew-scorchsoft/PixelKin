@@ -1002,6 +1002,15 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   Anyone who sends the player out to Paul on the breakwater must also say HOW to get past the
   chained moor-gate (Reyl → Old Light → netmender's rope): the gym crew run the stage-aware
   `script.booji_gate_note` (playtest 2026-10: "go to the breakwater" alone left a player stuck).
+  **The Old Light is the R10 haunted-tower walk (2026-10):** seven 22x15 floors (top 14x11) where
+  you arrive in one north corner and the way up is in the other, so every floor is walked through
+  its hall; each hall rolls wild encounters (a whimsical tower table, 9→14 — Pearlmoor's grind bed
+  before Reyl and the fen) and an optional alcove regular (`oldlight_<id>` route trainers, F1–F5);
+  rests at the F3 tea-urn and the F6 two cups. Each floor wears its own warped kit
+  `oldlight_fN_set` (`build_oldlight_sets.py`, the interior gids — never change the order) and cue
+  `oldlight-fN` (one theme, more deranged per floor); props are drawn by `oldlightforge.py`
+  (`oldlight_*`); the cast's lines live in `content/regions/jesthouse.ts`. Pip on the Point runs
+  after you once (floats, no rope) so the breakwater is never missed.
   Pearlmoor's side roads say "not yet" before the Tide: the fen-warden calls it out once on your first
   step into Saltreach Fen I (`script.fen_warning_step`, `flag:fen_warned`), Anth does at the allotment,
   and Andrew's Ember→Tide hint adds "leave the fen east and the hill north for later". His lines must

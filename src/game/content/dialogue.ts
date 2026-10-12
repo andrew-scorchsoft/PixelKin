@@ -153,7 +153,7 @@ export const DIALOGUE: DialogueRegistry = {
   // Stage 4: post-Gleam, back in the hall, festival outside.
   'npc.brisa_after': [
     { speaker: 'BRISA TALLOW', text: 'Hear the square? They rang the fair-bell the moment the Ember stood up. That dance is yours, dear.' },
-    { speaker: 'BRISA TALLOW', text: 'When your feet itch again — the coast road runs north past the flats to Pearlmoor. Reyl Wash keeps the Tide. Tell the old ferryman I sent you.' },
+    { speaker: 'BRISA TALLOW', text: 'When your feet itch again — the coast road runs north past the flats to Pearlmoor. Reyl Wash keeps the Tide, in the Lumenary at the very top of the quay. He was a ferryman once — tell him I sent you.' },
   ],
   // --- The Beacon (interiors) ---
   'sign.beacon_door': [
@@ -307,7 +307,7 @@ export const DIALOGUE: DialogueRegistry = {
   // Fenn on the flats once Gran's letter is delivered (S2 closed).
   'npc.flats_sky_watcher_after': [
     { speaker: 'STAR-TENDER FENN', text: 'Did she laugh? At the letter? ...Good. A laugh in a dark kitchen is worth two relit stars, and you may tell the sky I said so.' },
-    { speaker: 'STAR-TENDER FENN', text: 'Pearlmoor keeps the second Gleam, child — the old ferryman reads water the way I read sky. Mind the bell.' },
+    { speaker: 'STAR-TENDER FENN', text: 'Pearlmoor keeps the second Gleam, child — Reyl Wash, up in the Lumenary at the top of the quay. That old ferryman reads water the way I read sky. Mind the bell.' },
   ],
 
   // --- Pearlmoor Quay (town) ---
@@ -506,6 +506,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   'sign.wander_gap': [
     { text: 'The trees here stand shoulder to shoulder. Something about the way they lean suggests they are waiting to be told something. The waystone, perhaps, knows what.' },
+    { text: 'Its last word is worn away. Whoever walks this wood every evening would know it — and the quay says that\'s the old man with the dark lamp, out past the bell on the breakwater.' },
   ],
   'sign.pearlmoor_allotment': [
     { text: 'HILLSIDE ALLOTMENTS\nPlot 4: R. & A.\nSQUIRRELS WILL BE PROSECUTED.' },
@@ -1009,6 +1010,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   'sign.galehigh_windeye': [
     { text: 'THE WIND-EYE\nOn a clear dusk the updraft column sings. The grotto keeps what the wind keeps — climbers say a sky-kin nests at the eye itself.' },
+    { text: 'Only a kite-rider reaches the eye.' },
   ],
   'sign.galehigh_lanternway': [
     { text: 'SOUTH: THE LANTERNWAY\nDown the lit lane to the Lantern-car station, and by cable on to the Vesper Crossroads.' },
@@ -1176,11 +1178,11 @@ export const DIALOGUE: DialogueRegistry = {
   // Ysolde's stages + the Lamp-Line's blocked lines (all in her voice or the
   // vault's).
   'npc.ysolde_waiting': [
-    { speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'serene', text: 'The oil first, wanderer. The tallow-keeper renders it in the approach hollows — though her hearth wants waking before her pans do. Storm-felled wood lies up toward the crags; the mountain is generous to the patient.' },
+    { speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'serene', text: 'The oil first, wanderer. The tallow-keeper renders it in the approach hollows — though her hearth wants waking before her pans do. Storm-felled wood drifts up against the south camp, by her hearth; the mountain is generous to the patient.' },
     { speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'neutral', text: 'There is no hurry. The brackets have been dark for years; they can be dark one evening more. But not, I think, two.' },
   ],
   'npc.ysolde_door_unlit': [
-    { speaker: 'YSOLDE FROST', text: 'The vault answers oil, wanderer, not eagerness. Come back with aurora-oil in hand, and the door will know you.' },
+    { speaker: 'YSOLDE FROST', text: 'The vault answers aurora-oil, wanderer, not eagerness. The tallow-keeper at the south camp renders it. Come and speak with me properly, and I will tell you why it matters.' },
   ],
   'npc.ysolde_vault': [
     { speaker: 'YSOLDE FROST', portrait: 'ysolde', expr: 'serene', text: 'Walk the line slowly, if you like. The cold has waited years; it can wait an evening. It is the meaning that must not be hurried, not the flame.' },
@@ -1204,7 +1206,7 @@ export const DIALOGUE: DialogueRegistry = {
   // The tallow-keeper's stages around script.render_oil.
   'npc.tallow_keeper_doused': [
     { speaker: 'TALLOW-KEEPER', text: 'Mind the camp, child — there\'s nothing on. The storm put my hearth out and the cold got into the stones, and a doused hearth renders nothing. Years of keeping the vault\'s oil, and now the vault waits on ME.' },
-    { speaker: 'TALLOW-KEEPER', text: 'Storm-felled wood would wake it — dry-hearted, the kind the gales stack along the upper hollows. My carrying days are done. Perhaps yours are just starting.' },
+    { speaker: 'TALLOW-KEEPER', text: 'Storm-felled wood would wake it — dry-hearted, the kind the gales drift up against this camp, just yonder. My carrying days are done. Perhaps yours are just starting.' },
   ],
   'npc.tallow_keeper_after': [
     { speaker: 'TALLOW-KEEPER', text: 'The kettle sings, the pans run pale and bright, and the vault has its oil again. Seven brackets, child — in ORDER. A line is a promise kept one lamp at a time.' },
@@ -1329,6 +1331,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   'npc.solarium_brazier_dead': [
     { text: 'The brazier is dead — and not merely out. The bowl is full of drowned daylight, cold as the deep water it sank in. It wants its own light back: a sunmote, fetched up from the halls.' },
+    { text: 'Lucan Pyre, pacing the stage-edge, looks very much like a man with a whole speech about it.' },
   ],
   'npc.lucan_not_ready': [
     { speaker: 'LUCAN PYRE', text: 'Eager! I admire it. But no, apprentice — nobody tests a bond on a DARK stage. The daylight\'s drowned and the braziers know it. Fetch it up, spark by spark, and then the boards are yours.' },
@@ -1536,6 +1539,7 @@ export const DIALOGUE: DialogueRegistry = {
   // --- Nightreach Lumenary --------------------------------------------------------
   'npc.nessa_not_ready': [
     { speaker: 'NESSA COLE', text: 'Not yet, Wayfarer. Seven watch-fires for seven stars — the walk is lit in the order they came home, and the eighth is not asked for over dark lamps. I will be here. I am always here.' },
+    { speaker: 'NESSA COLE', text: 'And if you have not heard me out properly yet — I am right here. Talk to me.' },
   ],
   'npc.nessa_keeping': [
     { speaker: 'NESSA COLE', text: 'The walk is yours; the order keeps itself if you let it. Ember-light first, sun-light last. ...I will know each one the moment it takes. I always do.' },
@@ -1734,6 +1738,7 @@ export const DIALOGUE: DialogueRegistry = {
   // The stair seam, sealed until lens C rings (warp blocked_ref).
   'npc.tideglass_stair_sealed': [
     { text: 'A seam in the glass breathes cold air. It is not open.', style: 'narrate' },
+    { text: 'The standing lenses round the pool all seem to lean toward this seam.', style: 'narrate' },
   ],
   // The Dusk Hour's withdrawal (cooldownRef — §7 verbatim).
   'npc.three_dusk_resting': [
@@ -1748,6 +1753,7 @@ export const DIALOGUE: DialogueRegistry = {
   // The sealed fold (host warp blocked_ref — §5 verbatim).
   'npc.hourfold_sealed': [
     { text: 'The fold is shut fast with ice that has opinions about visitors. Something in there is not ready to be looked at.', style: 'narrate' },
+    { text: 'Ysolde would know what keeps it.', style: 'narrate' },
   ],
   // The aurora names the snuffing order (§5: east, the water-ice, west).
   'sign.hourfold_aurora': [
@@ -1860,8 +1866,13 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // The blocked_ref on every Vigil-site host warp, until its reading is held —
   // the scar of starlight is visible post-dawn, sealed until read (the watchers' voice).
+  // (2026-10 audit) the summit dais after the relight, until the five Vigils are kept
+  'npc.starfall_round_waiting': [
+    { text: 'The Keystar burns steady. Around the dais, five empty sockets wait — for shards of stars that fell, each one kept by someone down in the valleys.' },
+  ],
   'npc.vigil_scar_sealed': [
     { text: 'A seam of starlight, shut tight. Whatever fell here is waiting to be read first.' },
+    { text: 'The star-reading at Nightreach\'s great glass names these scars one at a time. This one hasn\'t been read yet.' },
   ],
   // The kept placements — each Vigilant's plain line after their vigil is kept
   // (requires flag:vigil_<n>_kept, hidden once flag:starfall_crown swaps in the

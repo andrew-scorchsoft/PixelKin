@@ -319,8 +319,9 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   },
   // R9 "The Old Light": Lightkeeper's Point (off the quay's west beach) and the
   // seven-floor joke-tower Reyl sends every Wayfarer up (build_pearlmoor_oldlight.py).
-  // Safe ground throughout — no wild encounters. F6 has no music key on purpose:
-  // F5's bed carries up and the One Joke band fades it out.
+  // R10: each floor wears its own warped kit (oldlight_fN_set — the interior gids,
+  // more deranged per floor) and its own Punchwheel cue (oldlight-fN, more
+  // unhinged per floor); the halls carry wild encounters (the climb's grind bed).
   pearlmoor_point: {
     json: 'assets/maps/pearlmoor_point.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
@@ -333,9 +334,9 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   },
   pearlmoor_oldlight_1: {
     json: 'assets/maps/pearlmoor_oldlight_1.json',
-    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    tilesets: { oldlight_f1_set: 'assets/tilesets/oldlight_f1_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/sunken-solarium-a.mp3',
+    music: 'assets/audio/music/oldlight-f1.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/beacon-stair-a.webp',
       'assets/backgrounds/battle/beacon-stair-b.webp',
@@ -343,9 +344,9 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   },
   pearlmoor_oldlight_2: {
     json: 'assets/maps/pearlmoor_oldlight_2.json',
-    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    tilesets: { oldlight_f2_set: 'assets/tilesets/oldlight_f2_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/sunken-solarium-a.mp3',
+    music: 'assets/audio/music/oldlight-f2.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/pearlmoor-lumenary-a.webp',
       'assets/backgrounds/battle/pearlmoor-lumenary-b.webp',
@@ -353,9 +354,9 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   },
   pearlmoor_oldlight_3: {
     json: 'assets/maps/pearlmoor_oldlight_3.json',
-    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    tilesets: { oldlight_f3_set: 'assets/tilesets/oldlight_f3_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/sunken-solarium-a.mp3',
+    music: 'assets/audio/music/oldlight-f3.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/beacon-stair-a.webp',
       'assets/backgrounds/battle/beacon-stair-b.webp',
@@ -363,9 +364,9 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   },
   pearlmoor_oldlight_4: {
     json: 'assets/maps/pearlmoor_oldlight_4.json',
-    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    tilesets: { oldlight_f4_set: 'assets/tilesets/oldlight_f4_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/sunken-solarium-a.mp3',
+    music: 'assets/audio/music/oldlight-f4.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/pearlmoor-lumenary-a.webp',
       'assets/backgrounds/battle/pearlmoor-lumenary-b.webp',
@@ -373,9 +374,9 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   },
   pearlmoor_oldlight_5: {
     json: 'assets/maps/pearlmoor_oldlight_5.json',
-    tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
+    tilesets: { oldlight_f5_set: 'assets/tilesets/oldlight_f5_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/sunken-solarium-c.mp3',
+    music: 'assets/audio/music/oldlight-f5.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/beacon-stair-a.webp',
       'assets/backgrounds/battle/beacon-stair-b.webp',
@@ -383,8 +384,9 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   },
   pearlmoor_oldlight_6: {
     json: 'assets/maps/pearlmoor_oldlight_6.json',
-    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    tilesets: { oldlight_f6_set: 'assets/tilesets/oldlight_f6_set.webp' },
     kind: 'interior',
+    music: 'assets/audio/music/oldlight-f6.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/beacon-stair-a.webp',
       'assets/backgrounds/battle/beacon-stair-b.webp',
@@ -392,9 +394,9 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   },
   pearlmoor_oldlight_top: {
     json: 'assets/maps/pearlmoor_oldlight_top.json',
-    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    tilesets: { oldlight_f7_set: 'assets/tilesets/oldlight_f7_set.webp' },
     kind: 'interior',
-    music: 'assets/audio/music/pearlmoor-quay-c.mp3',
+    music: 'assets/audio/music/oldlight-f7.mp3',
     battle_backdrops: [
       'assets/backgrounds/battle/beacon-lantern-a.webp',
     ],

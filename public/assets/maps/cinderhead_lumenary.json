@@ -573,6 +573,17 @@
   ],
   "triggers": [
     {
+      "id": "otho_hook_step",
+      "kind": "cutscene",
+      "at": {
+        "tx": 8,
+        "ty": 6
+      },
+      "activation": "step_on",
+      "ref": "script.otho_quest",
+      "hidden_when_flag": "flag:q_east_vigil"
+    },
+    {
       "id": "lumenary_battle",
       "kind": "cutscene",
       "at": {

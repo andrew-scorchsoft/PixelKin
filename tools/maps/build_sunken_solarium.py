@@ -455,7 +455,9 @@ owed += ["npc.troupe_waiting (in costume beside the dark stage)",
 # ---- THE SUNMOTE PHIALS (the chain's caches — hand-rolled so the flags match
 # the hooks VERBATIM: flag:q_west_mote_1..3) -----------------------------------------
 for n, (cx, cy, req) in enumerate([
-        (8, 23, "flag:q_west_stage"),          # Pool A islet
+        # Pool A islet — always there (2026-10 audit: it used to wait on Lucan's
+        # hook, so a player sent "into the halls" by a brazier found nothing)
+        (8, 23, None),
         (16, 30, "flag:q_west_brazier_1"),     # the far-shore pocket past Pool B
         (24, 23, "flag:q_west_brazier_2")],    # Pool C shore-islet, by the chamber
         start=1):
@@ -463,7 +465,7 @@ for n, (cx, cy, req) in enumerate([
         "id": f"cache_sunmote_{n}", "at": {"tx": cx, "ty": cy}, "facing": "down",
         "sprite": "item_cache", "movement": "static",
         "dialogue_ref": f"script.sunmote_{n}",
-        "requires_flag": req,
+        **({"requires_flag": req} if req else {}),
         "hidden_when_flag": f"flag:q_west_mote_{n}"})
 owed += ["script.sunmote_1 (the phial glints on the islet; sets flag:q_west_mote_1)",
          "script.sunmote_2 (sets flag:q_west_mote_2 — appears once brazier 1 "

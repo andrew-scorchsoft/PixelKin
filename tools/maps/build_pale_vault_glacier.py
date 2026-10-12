@@ -393,10 +393,10 @@ owed += pt.sign(m, deco, W, sid="pale_vault_pass", at=(3, 9))
 owed += pt.sign(m, deco, W, sid="pale_vault_deepice", at=(28, 21))
 
 # ---- caches (variety: quest kindling, consumable, loose wicks, valuable) -----------
-owed += pt.cache(m, cid="stormwood", at=(10, 26))        # the Lamp-Line kindling
-for npc in m["npcs"]:
-    if npc["id"] == "cache_stormwood":
-        npc["requires_flag"] = "flag:q_north_lampline"
+# the Lamp-Line kindling — always there (2026-10 audit: it used to appear only
+# after Ysolde's hook, so a player sent by the tallow-keeper searched for wood
+# that wasn't drawn yet; the keeper's chain keys on picked_stormwood alone)
+owed += pt.cache(m, cid="stormwood", at=(10, 26))
 owed += pt.cache(m, cid="pale_vault_balm", at=(22, 26))  # consumable, E hollow
 owed += pt.cache(m, cid="pale_vault_wicks", at=(28, 15)) # loose wicks, lake shore
 owed += pt.cache(m, cid="pale_vault_shard", at=(29, 26)) # Starglass Shard, deep ice

@@ -1,0 +1,63 @@
+{
+  "title": "The Old Light F4 - The Backwards Inn",
+  "_note": "Old Light floor 4 (pearlmoor_oldlight_4). The theme back-to-front and upside-down. Bars 1-8: registers SWAPPED - the tune walks in the tri_bass an octave down while the oom-pah climbs up top as a flipped \"pah-oom\" (high roots on the off-beat), and the laughs run UP with an inhaled \"ffp\". Bars 9-16: the B section straight, so the ear keeps the tune. Bars 17-32: bars 1-16 played in RETROGRADE, every track mirrored note for note (the bass lands on the off-beats, laughs rise, rimshots go tss-dum-ba, glides reverse); it ends on the reversed first bar of B (Bb) which falls plagally into bar 1's F. 120 BPM, 4/4, F major, 32 bars.",
+  "era": "snes",
+  "tempo": 120,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "F major (retrograde)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "notes": "rw rw rw rw rw rw rw rw D5e C5e Bb4e A4e Bb4q F4q C5e Bb4e A4e G4e A4q F4q G4e A4e B4e C5e D5q B4q C5q rh. D5e C5e Bb4e A4e Bb4q D5q C#5e D5e E5e C#5e A4q rq D5e F5e E5e D5e C5q Bb4q G4q rw rh G4q Bb4q C5q D5e E5e F5e D5e rq A4q C#5e E5e D5e C#5e D5q Bb4q A4e Bb4e C5e D5e rh. C5q B4q D5q C5e B4e A4e G4e F4q A4q G4e A4e Bb4e C5e F4q Bb4q A4e Bb4e C5e D5e rh. F4q G4q A4q G4e A4e Bb4e C5e D5e C5q. Bb4e A4e rq F4q G4e A4e G4q F4e C4e rh. C4q G4q F4e E4e F4e G4e A4e Bb4e A4e C5q. Bb4e A4e rq F4q G4e A4e G4q F4e C4e"
+    },
+    {
+      "name": "high oom-pah",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.45,
+      "notes": "A4+C5e@84 re F4q@104 A4+C5e@84 re C5q@92 A4+C5e@84 re F4q@104 C5+Gb5e@84 re D5q@92 Bb4+D5e@84 re G4q@104 Bb4+E5e@84 re C5q@92 Bb4+E5e@84 re C5q@104 Bb4+E5e@84 re G4q@92 A4+C5e@84 re F4q@104 A4+C5e@84 re C5q@92 A4+C5e@84 re F4q@104 C5+Gb5e@84 re D5q@92 Bb4+D5e@84 re G4q@104 Bb4+E5e@84 re C5q@92 A4+C5e@84 re F4q@104 A4+C5e@84 re C5q@92 rw rw rw rw rw rw rw rw rw rw rw rw rw rw rw rw rw rw rw rw rw rw rw rw"
+    },
+    {
+      "name": "laugh",
+      "voice": "pulse12",
+      "octave": 5,
+      "gain": 0.58,
+      "notes": "rw rw rw rh Bb5~C6s@100 rs G5~Bb5s@92 rs E5~G5s@84 rw rw rw rh re. A5~C6s@100 rs F5~A5s@92 rs C5~F5s@84 rw rw rw rh re. C6~Bb5s@100 rs Bb5~G5s@92 rs G5~E5s@84 rw rw rw rh re. C6~Bb5s@100 rs Bb5~G5s@92 rs G5~E5s@84 rq. E5~G5s@84 rs G5~Bb5s@92 rs Bb5~C6s@100 rw rw rw rh re. E5~G5s@84 rs G5~Bb5s@92 rs Bb5~C6s@100 rw rw rw rh re. C5~F5s@84 rs F5~A5s@92 rs A5~C6s@100 rw rw rw rh re. E5~G5s@84 rs G5~Bb5s@92 rs Bb5~C6s@100 rw rw rw rh"
+    },
+    {
+      "name": "pfft",
+      "voice": "noise",
+      "octave": 5,
+      "gain": 0.3,
+      "notes": "rw rw rw rh. C4~C6s@80 rw rw rw rh.. rs C4~C6s@80 rw rw rw rw rs C6~C4s@88 rw rw rw rh.. rs C6~C4s@88 re C4~C6s@88 rw rw rw rh.. rs C4~C6s@88 rw rw rw rh.. rs C4~C6s@88 rw rw rw rh.. rs C4~C6s@88 rw rw rw rh.."
+    },
+    {
+      "name": "brass",
+      "voice": "brass",
+      "octave": 3,
+      "gain": 0.34,
+      "notes": "rw rw rw rw rw rw rw rw rq Bb2+D3+F3e@84 rq. Bb2+D3+F3e@84 rq. A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. B2+D3+F3e@84 rq. B2+D3+F3e@84 rq. Bb2+E3+G3e@84 rq. Bb2+E3+G3e@84 rq. Bb2+D3+F3e@84 rq. Bb2+D3+F3e@84 rq. Db3+E3+G3e@84 rq. Db3+E3+G3e@84 rq. A2+D3+F3e@84 rq. Bb2+E3+G3e@84 rq. Bb2+E3+G3e@84 rq. Bb2+E3+G3e@84 rq Bb2+E3+G3e@84 rq. Bb2+E3+G3e@84 rq. Bb2+E3+G3e@84 rq. A2+D3+F3e@84 rq. Db3+E3+G3e@84 rq. Db3+E3+G3e@84 rq. Bb2+D3+F3e@84 rq. Bb2+D3+F3e@84 rq. Bb2+E3+G3e@84 rq. Bb2+E3+G3e@84 rq. B2+D3+F3e@84 rq. B2+D3+F3e@84 rq. A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. Bb2+D3+F3e@84 rq. Bb2+D3+F3e@84 rq. A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. Bb2+E3+G3e@84 rq. Bb2+D3+G3e@84 rq. A2+C3+Gb3e@84 rq. A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. Bb2+E3+G3e@84 rq. Bb2+E3+G3e@84 rq. Bb2+E3+G3e@84 rq. Bb2+D3+G3e@84 rq. A2+C3+Gb3e@84 rq. A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. A2+C3+F3e@84 rq"
+    },
+    {
+      "name": "low tune + bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.95,
+      "notes": "C3e F3e G3q A3e G3e F3q rq A3e Bb3e C4q. A3e Bb3e A3e G3e F3e E3e F3e G3q C3q rh. C3e F3e G3q A3e G3e F3q rq A3e Bb3e C4q. D4e C4e Bb3e A3e G3e A3q G3q F3q rh. Bb2q@104 rq F2q@92 rq F2q@104 rq C3q@92 rq G2q@104 rq D3q@92 rq C3q@104 rq G2q@92 rq Bb2q@104 rq F2q@92 rq A2q@104 rq E2q@92 rq D3q@104 rq C3q@92 rq C3q@104 rq G2q@92 rh G2q@92 rq C3q@104 rq C3q@92 rq D3q@104 rq E2q@92 rq A2q@104 rq F2q@92 rq Bb2q@104 rq G2q@92 rq C3q@104 rq D3q@92 rq G2q@104 rq C3q@92 rq F2q@104 rq F2q@92 rq Bb2q@104 rq C3q@92 rq F2q@104 rq C3q@92 rq G2q@104 rq D3q@92 rq F2q@104 rq C3q@92 rq F2q@104 rq G2q@92 rq C3q@104 rq C3q@92 rq G2q@104 rq D3q@92 rq F2q@104 rq C3q@92 rq F2q@104"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.42,
+      "notes": "kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke rq. kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate tome tome crashq kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke rq. kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate tome tome crashq crashq tome tome hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke rq. kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke crashq tome tome hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke rq. kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke"
+    }
+  ]
+}

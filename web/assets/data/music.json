@@ -127,13 +127,90 @@
     },
     {
      "id": "pearlmoor-quay-c",
-     "title": "The Old Light — The Winding Room",
-     "where": "The Old Light — The Winding Room",
+     "title": "Pearlmoor Quay",
+     "where": "The top of the Old Light on Pearlmoor Point — the joke-tower's punchline lantern room and its celebratory send-off",
      "mood": "Festival of the floating lights — the quay waltz in its happiest dress, quick, ornamented and playful.",
      "classic": "play/assets/audio/music/pearlmoor-quay-c.mp3",
      "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/pearlmoor-quay-c.mp3",
      "loop_start": 10.194,
+     "note": null
+    },
+    {
+     "id": "oldlight-f1",
+     "title": "The Old Light — The Lobby of Groaners",
+     "where": "The Old Light — The Lobby of Groaners",
+     "mood": "",
+     "classic": "play/assets/audio/music/oldlight-f1.mp3",
+     "classic_loop_start": null,
+     "remaster": null,
+     "loop_start": null,
+     "note": null
+    },
+    {
+     "id": "oldlight-f2",
+     "title": "The Old Light — The Late Laugh",
+     "where": "The Old Light — The Late Laugh",
+     "mood": "",
+     "classic": "play/assets/audio/music/oldlight-f2.mp3",
+     "classic_loop_start": null,
+     "remaster": null,
+     "loop_start": null,
+     "note": null
+    },
+    {
+     "id": "oldlight-f3",
+     "title": "The Old Light — Intermission",
+     "where": "The Old Light — Intermission",
+     "mood": "",
+     "classic": "play/assets/audio/music/oldlight-f3.mp3",
+     "classic_loop_start": null,
+     "remaster": null,
+     "loop_start": null,
+     "note": null
+    },
+    {
+     "id": "oldlight-f4",
+     "title": "The Old Light — The Backwards Inn",
+     "where": "The Old Light — The Backwards Inn",
+     "mood": "",
+     "classic": "play/assets/audio/music/oldlight-f4.mp3",
+     "classic_loop_start": null,
+     "remaster": null,
+     "loop_start": null,
+     "note": null
+    },
+    {
+     "id": "oldlight-f5",
+     "title": "The Old Light — The Gallery of Confident Facts",
+     "where": "The Old Light — The Gallery of Confident Facts",
+     "mood": "",
+     "classic": "play/assets/audio/music/oldlight-f5.mp3",
+     "classic_loop_start": null,
+     "remaster": null,
+     "loop_start": null,
+     "note": null
+    },
+    {
+     "id": "oldlight-f6",
+     "title": "The Old Light — The One Joke",
+     "where": "The Old Light — The One Joke",
+     "mood": "",
+     "classic": "play/assets/audio/music/oldlight-f6.mp3",
+     "classic_loop_start": null,
+     "remaster": null,
+     "loop_start": null,
+     "note": null
+    },
+    {
+     "id": "oldlight-f7",
+     "title": "The Old Light — The Winding Room",
+     "where": "The Old Light — The Winding Room",
+     "mood": "",
+     "classic": "play/assets/audio/music/oldlight-f7.mp3",
+     "classic_loop_start": null,
+     "remaster": null,
+     "loop_start": null,
      "note": null
     }
    ]
@@ -384,8 +461,8 @@
     },
     {
      "id": "sunken-solarium-a",
-     "title": "The Old Light — The Lobby of Groaners",
-     "where": "The Old Light — The Lobby of Groaners · The Old Light — The Late Laugh · The Old Light — Intermission · The Old Light — The Backwards Inn · Sunken Solarium",
+     "title": "Sunken Solarium",
+     "where": "Sunken Solarium",
      "mood": "Remembered Summer: stored daylight glowing up through the water - warm, nostalgic, everything in the past tense; the first real warmth since the south.",
      "classic": "play/assets/audio/music/sunken-solarium-a.mp3",
      "classic_loop_start": null,
@@ -406,8 +483,8 @@
     },
     {
      "id": "sunken-solarium-c",
-     "title": "The Old Light — The Gallery of Confident Facts",
-     "where": "The Old Light — The Gallery of Confident Facts · The Unrisen Stair",
+     "title": "The Unrisen Stair",
+     "where": "The Unrisen Stair",
      "mood": "Sunsketch Bloom: the relit reading - daylight surging back into the drowned garden, the motif sung twice and the second time brighter; the score reaching toward dawn.",
      "classic": "play/assets/audio/music/sunken-solarium-c.mp3",
      "classic_loop_start": null,

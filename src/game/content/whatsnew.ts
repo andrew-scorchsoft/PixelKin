@@ -15,6 +15,11 @@
  * with the case. Changes there ship SILENTLY; announce only general things.
  */
 export const WHATS_NEW: Record<string, string[]> = {
+  '1.18': [
+    'The Old Light on Lightkeeper\'s Point has opened its doors properly: seven big floors to wander, a house full of regulars with jokes of their own, and a song that gets a little stranger with every flight of stairs.',
+    'Wild kin roam the tower\'s halls now, and a few of its regulars fancy a bout. There are tea and a quiet chair on the way up, if you need a rest.',
+    'Folk all over Vesperholm give clearer directions now: lost Wayfarers should find the next step easier to spot, and Andrew\'s advice holds true wherever he\'s leaning.',
+  ],
   '1.17': [
     'The build number now sits quietly at the bottom of the loading screens, and fullscreen comes back after you keep a copy of your save.',
   ],
