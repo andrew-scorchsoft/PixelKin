@@ -884,6 +884,10 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   art stays chunky (NEAREST); `ui/Text.ts` sets each Text's `resolution` to `RENDER_SCALE`
   so glyphs get real pixels. Build text through `makeText` (it's the only place that sets
   resolution) — a raw `scene.add.text` will render blocky again.
+- **Building roofs are WALK-BEHIND (2026-10).** A building sprite in `src/game/data/world/walk-behind.json`
+  frees its top roof row (capped at its overhang) so you slip along behind the peak instead of detouring
+  round it; the row still draws over the player. CollisionGrid + `worldmodel.solid_top` (audits) both read
+  that JSON — add a new house/hall sprite there, never special-case it in code.
 - **Talk ACROSS counters (2026-10).** `WorldScene.npcAcrossDesk`: facing a counter/stall/altar/desk
   object (`DESK_SPRITE`) reaches the NPC behind it, up to two desk tiles deep — the genre convention.
   Name a new desk-like prop so it matches the regex, or keepers behind it become unreachable to talk to.

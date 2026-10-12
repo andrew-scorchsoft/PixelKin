@@ -30,6 +30,9 @@ import json
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from worldmodel import solid_top  # noqa: E402  (the shared collision mirror)
+
 REPO = Path(__file__).resolve().parents[2]
 MAPS_DIR = REPO / "public/assets/maps"
 TILESETS_DIR = REPO / "public/assets/tilesets"
@@ -85,7 +88,7 @@ class Walkability:
         for o in m.get("objects", []):
             if o.get("solid") is False:
                 continue
-            top = o["at"]["ty"] + (o.get("overhang", 0) if o.get("walk_under") else 0)
+            top = solid_top(o)
             for ty in range(top, o["at"]["ty"] + o["h"]):
                 for tx in range(o["at"]["tx"], o["at"]["tx"] + o["w"]):
                     if 0 <= tx < self.w and 0 <= ty < self.h:
