@@ -551,7 +551,8 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   question; the tileset sidecar is the authority (maps carry only gids).
 - **The easter-egg trail points at S4 "The Booji-Wooji Man."** Andrew at the Tinderwick fence
   (`script.andrew_name`, sprite `andrew_ward` — NOT `lifter_andrew`, who is a different Andrew
-  in the Lifting House) names the thing; two Dimglass Coast walkers and the Crossroads
+  in the Lifting House; his road placements wear costume sheets `andrew_<frost|quay|miner|sunhat|party|coder|cyclist>`,
+  swapped via each region's worldcraft `sprites` key) names the thing; two Dimglass Coast walkers and the Crossroads
   road-teller (`npc.egg_hint_*`) narrow it to the building at the TOP of Pearlmoor Quay (the
   `pearlmoor_lifting_house` at (19,0)). Nobody ever says what it is — keep it that way.
   Every Andrew's **THE EASTER EGG** option runs ONE shared `script.andrew_egg` (2026-10): a

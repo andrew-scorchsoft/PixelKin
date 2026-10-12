@@ -1602,7 +1602,7 @@
         "ty": 8
       },
       "facing": "right",
-      "sprite": "andrew_ward",
+      "sprite": "andrew_sunhat",
       "movement": "look_around",
       "dialogue_ref": "script.andrew_road"
     }

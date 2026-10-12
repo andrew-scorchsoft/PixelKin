@@ -133,6 +133,7 @@ PLACEMENTS: dict[str, dict] = {
             ],
         },
         "sprites": {
+            "andrew_road": "andrew_coder",  # Andrew in costume (his fence, his look)
             **same("kite_child", "waystone_kid", "waystone_kid_kite",
                    "kid_trail", "kid_trail_during", "kid_trail_done"),
             "egg_teller": "star_watcher",
@@ -218,6 +219,7 @@ PLACEMENTS: dict[str, dict] = {
         "npcs": [ambient_kin("amb_lumpin", (16, 17), 31, radius=2),
                  ambient_kin("amb_brinelet", (23, 6), 26, radius=1)],
         "sprites": {
+            "andrew_road": "andrew_quay",  # Andrew in costume (his fence, his look)
             "fisher": "fisher_man",
             "blessing_elder": "old_salt",
             "blessing_kid": "village_child",

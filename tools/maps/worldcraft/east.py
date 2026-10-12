@@ -233,6 +233,7 @@ PLACEMENTS: dict[str, dict] = {
     # E-3: Harl's eight hooks (seven lamps, one empty) on the west terrace and
     # the roof-fault cinder with the miner who won't move it.
     "cinderhead_mine": {
+        "sprites": {"andrew_road": "andrew_miner"},  # Andrew in costume (his fence, his look)
         "ambience": {"particles": [particles("ash", 0.6), particles("embers", 0.3)],
                      "sound_bed": "amb-drips",
                      "light_sources_extra": [{"at": {"tx": 23, "ty": 11}, "radius": 14,

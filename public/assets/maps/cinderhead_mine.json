@@ -714,7 +714,7 @@
         "ty": 13
       },
       "facing": "left",
-      "sprite": "andrew_ward",
+      "sprite": "andrew_miner",
       "movement": "look_around",
       "dialogue_ref": "script.andrew_road"
     },

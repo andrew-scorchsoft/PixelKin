@@ -3309,7 +3309,7 @@
         "ty": 20
       },
       "facing": "down",
-      "sprite": "andrew_ward",
+      "sprite": "andrew_quay",
       "movement": "look_around",
       "dialogue_ref": "script.andrew_road"
     },
