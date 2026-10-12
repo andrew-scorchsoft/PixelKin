@@ -109,12 +109,24 @@ def windows(over, W, cols, tile=WINDOW):
 def partition_v(over, W, x, y0, y1, *, lip="w", doors=()):
     """A vertical internal wall: one column of the dark wall-top band, the lit
     lip facing the `lip` side ('w' = the room to the west). `doors` rows stay
-    open. Use it to split a bed nook, a bunk room, a storeroom off the room."""
+    open. Use it to split a bed nook, a bunk room, a storeroom off the room.
+
+    Read as a real wall (2026-10): the column JOINS the wall above it — where
+    the tile over its top is a wall FACE (the room's north face row, or a
+    partition_h face), that face tile becomes band so the ceiling runs into
+    the divider instead of passing behind it — and every segment's SOUTH end
+    is a FACE tile, the front of the pillar, the way the north wall shows its
+    face. Collision is unchanged (band and face both collide)."""
     cap = CAP_W if lip == "w" else CAP_E
-    for y in range(y0, y1 + 1):
-        if y in doors:
-            continue
+    rows = [y for y in range(y0, y1 + 1) if y not in doors]
+    for y in rows:
         over[y * W + x] = cap
+    if rows and y0 - 1 >= 0 and over[(y0 - 1) * W + x] in (FACE, WINDOW):
+        over[(y0 - 1) * W + x] = cap
+    # the south end of each run (before a door gap, and the last one)
+    for y in rows:
+        if y + 1 not in rows:
+            over[y * W + x] = FACE
 
 
 def partition_h(base, over, W, y, x0, x1, *, doors=(), face=True):
