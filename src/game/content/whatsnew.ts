@@ -8,6 +8,12 @@
  * Gleams, the Wayfaring, the vesperlamp) — it's read by the fire, not a patch log.
  */
 export const WHATS_NEW: Record<string, string[]> = {
+  '1.14': [
+    'Your whole lamp learns now: the kin that wins a fight keeps its full EXP, those who fought beside it take half, and the rest a quarter. (Settings → EXP share, if you prefer the old way.)',
+    'Beyond the old wood behind Pearlmoor, a lane climbs to a quiet hotel. The bar is open, they say, and someone is waiting in the corner.',
+    'High on the Rimeway there is a works that never stops counting. It might like to hear a story about a man who goes for walks.',
+    'The Old Light has a new machine on its tea floor, and its tower stairs now look like stairs.',
+  ],
   '1.13': [
     'The Sunvault is a real climb now: ladders up the sandstone, ledges to edge along, and a long way down the other side. At the foot of the climb an old wax road waits — rent a runner and ride it all the way to the sea.',
     'If you have ever wondered about the lift-house by Lightkeeper\'s Point: its car is stuck at the top. Someone up there would have to free the brake.',
