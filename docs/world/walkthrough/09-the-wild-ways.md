@@ -173,3 +173,49 @@ and a bridge/underpass on one South/East route. Every retrofit goes in the map's
 
 Battle backdrops (240×160 WebP): `wickrun`, `mirelight`, `rimeway`, `old_seams`. Sprites: the
 two legendaries (5 views each + cries), Runner trainer sheets, the runner (bike) sheet.
+
+**Built (2026-10):** both legendaries' 5 views + cries are packed; the backdrops are served as
+`wickrun-a/-b`, `mirelight-a/-b`, `rimeway-a/-b`, `old-seams-a/-b` (`public/assets/backgrounds/battle/`,
+raw masters `assets/backgrounds/battle/raw-*.webp`) and wait for their maps' `battle_backdrops`.
+
+## 5. The two legendaries (dossiers for the species pipeline — BUILT)
+
+The Three Hours' treatment ([07 §2](./07-the-three.md)): **tier E** · **BST 558** · **catchRate 24**
+· `rarity: very_rare` → `scripted: true`, `encounters: []`. Stats are the deterministic
+`make_stats(role, 558, name)` output (no stat pin); abilities, dex, kits and art are pinned in
+`build_species.py` `CANON`. Kits come from the existing pool, no signature moves. All four
+balance gates PASS with both in the roster.
+
+### #165 Lanthorne — *the Mirelight* (Tide/Light · Special Wall)
+
+- **Stats:** hp 112 · atk 44 · def 95 · spa 78 · spd 134 · spe 95
+- **Ability:** `tidecaller` (it mends in its own mere) · hidden `mistveil` (the false lights:
+  lowers the foe's accuracy on switch-in). *(CANON override; the Tide-E default is `phoenix`.)*
+- **Battle kit (as met, lv 45):** `tide_pulse` · `dazzle_flash` · `light_pulse` · `mend`. Pinned
+  rows: 1 `mist_spray` · 9 `spark_mote` · 16 `drench_song` · 24 `tide_pulse` · 30 `dazzle_flash`
+  · 37 `light_pulse` · 42 `mend` · 50 `lightspire` · 56 `maelstrom`.
+- **Catch design:** a special wall that dazzles and mends: physical pressure + a doze/chill for
+  the ×2.5 bonus; whittle slowly and it heals the work away.
+- **Dex:** "The Mirelight — the fen's own lamp, which once walked the drowned causeway ahead of
+  lost boats and brought them home. A null-lantern put it to sleep long ago; the blue lights
+  that still wander the Glassmere are only its dreams, and dreams do not know the way."
+- **Category:** Mirelight Kin · 340 cm · 140 kg · habitat east
+
+### #166 Emberroot — *the First Star* (Stone/Ember · Physical Bruiser)
+
+- **Stats:** hp 112 · atk 128 · def 100 · spa 50 · spd 84 · spe 84
+- **Ability:** `stonehide` (the mountain grown round it) · hidden `cinderveil` (Ember heals it:
+  the coal is its own breath). *(CANON override; the Stone-E default is `phoenix`.)*
+- **Battle kit (as met, lv 46):** `rock_hurl` · `stone_wall` · `pyre_slam` · `boulder_smash`.
+  Pinned rows: 1 `pebble_toss` · 9 `cinderclaw` · 16 `gritfist` · 24 `flame_lash` · 30 `rock_hurl`
+  · 36 `stone_wall` · 41 `pyre_slam` · 46 `boulder_smash` · 54 `throes`.
+- **Catch design:** it hunkers (`stone_wall`) and hits like the mountain; special Tide pressure
+  slips past `stonehide`, and the hidden `cinderveil` makes an Ember lead pointless.
+- **Dex:** "The first star that ever fell into Vesperholm, so long ago the mountain grew up
+  around it. It has slept at the root of Cinderhead ever since, and the warm black cinder-coal
+  the miners dig is only its breath, cooling very slowly in the stone."
+- **Category:** First-Star Kin · 640 cm · 2400 kg · habitat north
+
+**Owed with the maps (not built):** LORE/glossary entries keyed to the sites' own flags
+(`flag:mirelight_ferry`, `flag:old_seams_open` — adding them before content sets those flags
+fails `check_content` E-FLAG), the `legendaryBattle` scripts, cooldown lines.
