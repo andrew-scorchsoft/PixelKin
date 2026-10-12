@@ -247,6 +247,7 @@ export const DIALOGUE: DialogueRegistry = {
   // --- New Pearlmoor <-> Crossroads route: signs + beaten-trainer lines ---
   'sign.wrackline_view': [
     { text: 'WRACKLINE PATH\nThe sea gnaws the cliff to the west; the road home to the crossroads runs down and into the dark of the Sounding Cave.' },
+    { text: 'The wrack-haulers\' way: OVER the old trestle, round by the strand, and back UNDER it along the Wrack Cut. The cave is at the cut\'s head.' },
   ],
   'sign.wrackline_cave': [
     { text: 'THE SOUNDING CAVE — mind your lamp.\nThe sea hollowed it out and never left. They say it answers if you call. They say don\'t.' },

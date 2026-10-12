@@ -192,7 +192,10 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   // lane): Wrackline Path -> the Sounding Cave -> Lanternfall Road.
   wrackline_path: {
     json: 'assets/maps/wrackline_path.json',
-    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',   // the Wrack Cut trestle (traversal pass 2026-10)
+    },
     kind: 'route',
     music: 'assets/audio/music/dimglass-coast-b.mp3',
     battle_backdrops: [
