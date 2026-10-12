@@ -427,6 +427,16 @@
       "h": 1
     },
     {
+      "id": "computer",
+      "sprite": "interior_computer",
+      "at": {
+        "tx": 11,
+        "ty": 6
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
       "id": "speaking_tube",
       "sprite": "solarium_sun_mask",
       "at": {
@@ -491,6 +501,26 @@
       },
       "activation": "interact",
       "ref": "script.oldlight_urn"
+    },
+    {
+      "id": "computer_11",
+      "kind": "cutscene",
+      "at": {
+        "tx": 11,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_computer"
+    },
+    {
+      "id": "computer_12",
+      "kind": "cutscene",
+      "at": {
+        "tx": 12,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_computer"
     },
     {
       "id": "stove",
