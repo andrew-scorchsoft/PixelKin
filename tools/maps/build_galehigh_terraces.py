@@ -421,7 +421,7 @@ m["npcs"] += [
     {"id": "festival_kid", "at": {"tx": 16, "ty": 18}, "facing": "up",
      "sprite": "npc_child", "movement": "wander",
      "dialogue_ref": "npc.galehigh_festival_kid"},
-    {"id": "festival_goer", "at": {"tx": 12, "ty": 18}, "facing": "right",
+    {"id": "festival_goer", "at": {"tx": 11, "ty": 18}, "facing": "right",
      "sprite": "npc_woman", "movement": "static",
      "dialogue_ref": "npc.galehigh_festival_goer"},
     # witness beat: a festival-goer reacts once Mira's hook lands

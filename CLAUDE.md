@@ -772,6 +772,10 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   map/content/warp, and prints a ROOT CAUSE naming the blocking object/tile. Run it after ANY map,
   warp, NPC or script edit; a moved grant = update its `GOLDEN` row; a deliberate permanent block =
   an `ALLOW_UNREACHED` entry with its WHY.
+- **NPCs must stand on foot ground and be talkable — `tools/maps/audit_npc_footing.py` (CI).** It FAILs
+  any non-ambient NPC on water/a wall/a prop's solid base (a lamp post's or banner's bottom row, a tree
+  trunk) or with no reachable face-tile (counters count). Fix the placement in its builder/runner; a
+  deliberate perch (Georgina's cat on her cushion) goes in its ALLOW with a WHY.
 - **A story step_on band must cover the WHOLE cut — but only its WALKABLE tiles.** One
   trigger tile on a wide corridor is walk-aroundable (this bit `dusk_begins`); but a band
   tile on a solid/sealed cell now FAILS `audit_flow` as unreachable content (this bit the

@@ -478,7 +478,7 @@
       "id": "hob",
       "at": {
         "tx": 24,
-        "ty": 12
+        "ty": 13
       },
       "facing": "left",
       "sprite": "npc_man",
@@ -490,7 +490,7 @@
       "id": "hob_done",
       "at": {
         "tx": 24,
-        "ty": 12
+        "ty": 13
       },
       "facing": "left",
       "sprite": "npc_man",

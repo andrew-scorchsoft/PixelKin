@@ -419,7 +419,9 @@ m = {
         # picked_net_floats) -> q_south_has_rope ->
         # q_south_bell_rung -> gleam:tide -> q_south_buoys -> q_south_buoys_lit
         # -> q_south_buoys_done, so no two stages can coexist).
-        {"id": "netmender_pre", "at": {"tx": 23, "ty": 17}, "facing": "down",
+        # She sits on the quay's water edge at (22,17): (23,17) is open water and
+        # (23,16) is the causeway head's ONLY connector — never stand her there.
+        {"id": "netmender_pre", "at": {"tx": 22, "ty": 17}, "facing": "down",
          "sprite": "npc_old_woman", "movement": "static",
          "dialogue_ref": "npc.netmender_pre",
          "hidden_when_flag": "flag:q_south_bell"},
@@ -427,32 +429,32 @@ m = {
         # inside script.netmender_floats on flag:q_south_jest_done (the Old
         # Light) — so an old save holding the floats (or already the rope)
         # can never show two netmenders on one tile.
-        {"id": "netmender_floats", "at": {"tx": 23, "ty": 17}, "facing": "down",
+        {"id": "netmender_floats", "at": {"tx": 22, "ty": 17}, "facing": "down",
          "sprite": "npc_old_woman", "movement": "static",
          "dialogue_ref": "script.netmender_floats",
          "requires_flag": "flag:q_south_bell",
          "hidden_when_flag": "flag:q_south_has_rope"},
-        {"id": "netmender_sent", "at": {"tx": 23, "ty": 17}, "facing": "down",
+        {"id": "netmender_sent", "at": {"tx": 22, "ty": 17}, "facing": "down",
          "sprite": "npc_old_woman", "movement": "static",
          "dialogue_ref": "npc.netmender_sent",
          "requires_flag": "flag:q_south_has_rope",
          "hidden_when_flag": "flag:q_south_bell_rung"},
-        {"id": "netmender_rung", "at": {"tx": 23, "ty": 17}, "facing": "down",
+        {"id": "netmender_rung", "at": {"tx": 22, "ty": 17}, "facing": "down",
          "sprite": "npc_old_woman", "movement": "static",
          "dialogue_ref": "npc.netmender_rung",
          "requires_flag": "flag:q_south_bell_rung",
          "hidden_when_flag": "gleam:tide"},
-        {"id": "netmender_buoys", "at": {"tx": 23, "ty": 17}, "facing": "down",
+        {"id": "netmender_buoys", "at": {"tx": 22, "ty": 17}, "facing": "down",
          "sprite": "npc_old_woman", "movement": "static",
          "dialogue_ref": "script.netmender_buoys",
          "requires_flag": "gleam:tide",
          "hidden_when_flag": "flag:q_south_buoys"},
-        {"id": "netmender_buoys_wait", "at": {"tx": 23, "ty": 17}, "facing": "down",
+        {"id": "netmender_buoys_wait", "at": {"tx": 22, "ty": 17}, "facing": "down",
          "sprite": "npc_old_woman", "movement": "static",
          "dialogue_ref": "npc.netmender_buoys_wait",
          "requires_flag": "flag:q_south_buoys",
          "hidden_when_flag": "flag:q_south_buoys_lit"},
-        {"id": "netmender_drift", "at": {"tx": 23, "ty": 17}, "facing": "down",
+        {"id": "netmender_drift", "at": {"tx": 22, "ty": 17}, "facing": "down",
          "sprite": "npc_old_woman", "movement": "static",
          "dialogue_ref": "script.netmender_drift",
          "requires_flag": "flag:q_south_buoys_lit",
@@ -462,12 +464,12 @@ m = {
         # avoids a tenth co-spawnable placement), then swaps on the rumour flag.
         # Mirrored into the shipped pearlmoor_quay.json by hand — do not re-run
         # this builder without reconciling the shipped NPC list first.
-        {"id": "netmender_done", "at": {"tx": 23, "ty": 17}, "facing": "down",
+        {"id": "netmender_done", "at": {"tx": 22, "ty": 17}, "facing": "down",
          "sprite": "npc_old_woman", "movement": "static",
          "dialogue_ref": "script.netmender_hours",
          "requires_flag": "flag:q_south_buoys_done",
          "hidden_when_flag": "flag:three_dusk_rumour"},
-        {"id": "netmender_hours_after", "at": {"tx": 23, "ty": 17}, "facing": "down",
+        {"id": "netmender_hours_after", "at": {"tx": 22, "ty": 17}, "facing": "down",
          "sprite": "npc_old_woman", "movement": "static",
          "dialogue_ref": "npc.netmender_hours_after",
          "requires_flag": "flag:three_dusk_rumour"},

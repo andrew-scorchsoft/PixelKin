@@ -3045,7 +3045,7 @@
       "id": "cowled_figure",
       "at": {
         "tx": 20,
-        "ty": 7
+        "ty": 8
       },
       "facing": "down",
       "sprite": "hollowing_elder",

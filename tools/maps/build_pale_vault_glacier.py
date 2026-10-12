@@ -460,7 +460,7 @@ m["npcs"] += [
      "requires_flag": "flag:q_north_lampline",
      "hidden_when_flag": "flag:met_cor"},
     # --- C3 staging: Fenn beside the lane while the beat pends ------------------
-    {"id": "fenn_c3", "at": {"tx": 13, "ty": 20}, "facing": "right",
+    {"id": "fenn_c3", "at": {"tx": 13, "ty": 21}, "facing": "right",
      "sprite": "npc_mentor", "movement": "static",
      "dialogue_ref": "script.fenn_shared_past",
      "requires_flag": "flag:met_cor",
