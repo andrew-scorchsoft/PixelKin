@@ -16,6 +16,7 @@ import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT, COLORS } from '@game/config';
 import { theme, hex } from '@game/ui/theme';
 import { makeText } from '@game/ui/Text';
+import { addVersionStamp } from '@game/ui/VersionStamp';
 import { SHELL_INPUT_EVENT } from '@/shell/ShellManager';
 
 /** Where the kindling "stars" settle — a loose constellation above the name. */
@@ -132,6 +133,8 @@ export class SplashScene extends Phaser.Scene {
       hold: 0,
       onComplete: () => sweep.destroy(),
     });
+
+    addVersionStamp(this);
 
     // 4) The gate prompt — appears after the sting, blinks softly, holds for input.
     const prompt = makeText(this, cx, GAME_HEIGHT - 18, 'PRESS START', theme.text.dim)

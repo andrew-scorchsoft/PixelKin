@@ -330,7 +330,7 @@ m = {
          "to_map": "pearlmoor_inn", "to": {"tx": 8, "ty": 10}, "facing": "down", "transition": "door"},
         # The Lifting House (S4) — a 2-wide door, both art tiles walk in.
         *[{"id": wid, "at": {"tx": x, "ty": 4}, "trigger": "step_on",
-           "to_map": "pearlmoor_lifting_house", "to": {"tx": 7, "ty": 8}, "facing": "down",
+           "to_map": "pearlmoor_lifting_house", "to": {"tx": 9, "ty": 10}, "facing": "down",
            "transition": "door"} for (wid, x) in (("to_lifting_house", 21), ("to_lifting_house_e", 22))],
         # THE MOOR-GATE — the breakwater causeway's seaward end (the Causeway
         # Bell loop). Gated on the netmender's rope, with her own "not yet"

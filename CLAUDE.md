@@ -864,7 +864,13 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   Android, **unsupported on iOS Safari** (non-video). (2) **Installable PWA** —
   `public/manifest.webmanifest` + the `apple-mobile-web-app-*` meta in `index.html` make
   "Add to Home Screen" launch chrome-free; this is the ONLY address-bar fix on iOS. Icons are
-  square `public/assets/ui/icon-{192,512}.png` (logo padded on `#0b1026`).
+  square `public/assets/ui/icon-{192,512}.png` (logo padded on `#0b1026`). The toggle fires on
+  `click`, never `pointerdown` (a touch pointerdown isn't a user activation, so `requestFullscreen`
+  silently refuses); a save download (`FILE_DOWNLOAD_EVENT`) drops Android out of fullscreen, so the
+  shell re-arms the auto-reclaim for the next control press.
+- **`#game-root` must keep `min-height:0; overflow:hidden`** (device shell, `shells.css`): it's an
+  `aspect-ratio` box, and Phaser's autoCenter canvas margin otherwise grows it in a feedback loop — the
+  portrait screen's bottom edge crept up from below the volume slider for ~6 s of every load.
 - **Plain shell / Hidden controls can't trap a touch player — there's a rescue.** Both states
   remove the on-screen cluster, so a touch player would have no START to open the pause menu and
   reach Settings to undo it (a soft lock-out). `ShellManager` builds a once-only **"Show controls"**
@@ -888,6 +894,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   frees its top roof row (capped at its overhang) so you slip along behind the peak instead of detouring
   round it; the row still draws over the player. CollisionGrid + `worldmodel.solid_top` (audits) both read
   that JSON — add a new house/hall sprite there, never special-case it in code.
+- **The Lifting House is a two-floor GYM (2026-10).** `pearlmoor_lifting_house` (cardio hall, the
+  street door) + `pearlmoor_lifting_house_b1` (weights, down the stairs), both in `build_interiors.py`;
+  the equipment is DRAWN by `tools/maps/gymforge.py` → `gym_*` objects (its own master folder, like
+  paulforge). Andy runs on a treadmill via `NpcPlacement.in_place_walk` (static body, looping walk
+  cycle) — reuse it for any running-in-place NPC; the treadmill's belt is a separate solid:false object
+  under him so the footing audit passes.
 - **Talk ACROSS counters (2026-10).** `WorldScene.npcAcrossDesk`: facing a counter/stall/altar/desk
   object (`DESK_SPRITE`) reaches the NPC behind it, up to two desk tiles deep — the genre convention.
   Name a new desk-like prop so it matches the regex, or keepers behind it become unreachable to talk to.

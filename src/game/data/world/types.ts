@@ -169,6 +169,11 @@ export interface NpcPlacement {
   /** Leash for `wander` (and ambient kin): never stray more than this many tiles
    *  (Chebyshev) from `at`. Omitted = unleashed for NPCs, 2 for ambient kin. */
   wander_radius?: number;
+  /** Runs IN PLACE facing `facing` (a treadmill): the walk cycle loops but the
+   *  NPC never leaves its tile. Pair with `movement: 'static'` so the audits
+   *  still read the body as fixed geometry. He turns to face you while you
+   *  talk, then picks his stride back up. */
+  in_place_walk?: boolean;
 }
 
 // ---- Ambience (the "every screen moves" kit, WP0 2026-10) -------------------

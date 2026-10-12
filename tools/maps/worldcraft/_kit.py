@@ -98,7 +98,7 @@ PRE_CHICKENPIG = {
     "duskapple_orchard", "lanternway_tinderwick", "vesper_crossroads", "crossroads_inn",
     "dimglass_coast", "dimglass_coast_ii", "tideglass_cavern",
     "pearlmoor_quay", "pearlmoor_inn", "pearlmoor_shop", "pearlmoor_lumenary",
-    "pearlmoor_lifting_house", "pearlmoor_point", "pearlmoor_breakwater",
+    "pearlmoor_lifting_house", "pearlmoor_lifting_house_b1", "pearlmoor_point", "pearlmoor_breakwater",
     *(f"pearlmoor_oldlight_{n}" for n in (1, 2, 3, 4, 5, 6, "top")),
 }
 

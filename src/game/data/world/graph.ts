@@ -92,6 +92,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'pearlmoor_shop', region: 'south' }, // interior: the port chandlery
     { map_id: 'pearlmoor_inn', region: 'south' }, // interior: the quayside inn
     { map_id: 'pearlmoor_lifting_house', region: 'south', optional: true, reward: 'the Lifting House — the Booji-Wooji Man side quest' },
+    { map_id: 'pearlmoor_lifting_house_b1', region: 'south', optional: true }, // interior: the Lifting House's weights floor (down the stairs)
     { map_id: 'pearlmoor_allotment', region: 'south', optional: true, reward: 'Rod & Anth\'s plot + the waystone (S5 Not All Who Wander)' },
     { map_id: 'pearlmoor_wanderwood', region: 'south', optional: true, reward: 'S5: Paul\'s wood — the Chickenpig vs Omenire, and the cup' },
     { map_id: 'pearlmoor_point', region: 'south' }, // R9: Lightkeeper's Point — the Old Light's headland off the west beach
@@ -241,6 +242,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'pearlmoor_quay', to_map: 'pearlmoor_shop', via_warp: 'to_shop', bidirectional: true },
     { from_map: 'pearlmoor_quay', to_map: 'pearlmoor_inn', via_warp: 'to_inn', bidirectional: true },
     { from_map: 'pearlmoor_quay', to_map: 'pearlmoor_lifting_house', via_warp: 'to_lifting_house', bidirectional: true },
+    { from_map: 'pearlmoor_lifting_house', to_map: 'pearlmoor_lifting_house_b1', via_warp: 'down_stairs', bidirectional: true },
     { from_map: 'pearlmoor_quay', to_map: 'pearlmoor_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
     // The Causeway Bell: the moor-gate opens with the netmender's rope (the
     // earned second-Gleam loop; Reyl's bond-test waits on flag:q_south_bell_rung).

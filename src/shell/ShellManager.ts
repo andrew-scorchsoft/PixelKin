@@ -20,6 +20,7 @@
  */
 import './shells.css';
 import { SaveManager } from '@game/systems/save/SaveManager';
+import { FILE_DOWNLOAD_EVENT } from '@game/systems/save/SaveCodec';
 import type { ShellMode, ControlSize, Settings } from '@game/systems/save/SaveManager';
 import {
   setAlwaysRun,
@@ -92,6 +93,11 @@ class ShellManagerImpl {
   private helpEl: HTMLDivElement | null = null;
   private volumeEl: HTMLDivElement | null = null;
   private autoFsTried = false;
+  /** The player turned fullscreen OFF themselves (the toggle) — never auto-reclaim. */
+  private userLeftFs = false;
+  /** Until this time (ms), a fullscreen exit is the browser's doing (a save
+   *  download), not the player's — re-arm the auto-reclaim when it happens. */
+  private downloadExitUntil = 0;
   private readonly listeners = new Set<ActionListener>();
   private readonly held = new Set<ShellAction>();
 
@@ -447,6 +453,24 @@ class ShellManagerImpl {
     }
   }
 
+  /** The toggle button's tap. If the exit fails (the browser already left
+   *  fullscreen behind our back and the document is stale), ask to enter
+   *  instead, so the button is never a dead end. */
+  private async toggleFullscreen(): Promise<void> {
+    if (!this.isFullscreen()) {
+      this.userLeftFs = false;
+      this.autoFsTried = true; // an explicit request supersedes the auto attempt
+      await this.enterFullscreen();
+      return;
+    }
+    this.userLeftFs = true;
+    await this.exitFullscreen();
+    if (this.isFullscreen()) {
+      this.userLeftFs = false;
+      await this.enterFullscreen();
+    }
+  }
+
   /**
    * A small fullscreen toggle pinned to a free corner. Built once, only when the
    * Fullscreen API exists (so iOS — where tapping would do nothing — never shows a
@@ -468,11 +492,29 @@ class ShellManagerImpl {
     };
     sync();
 
-    btn.addEventListener('pointerdown', (e) => {
+    // Toggle on CLICK, not pointerdown: on a touch screen only the tap's END
+    // (pointerup/touchend → click) is a user-activation event, and
+    // requestFullscreen() refuses without one. A pointerdown handler worked only
+    // when an earlier tap's activation happened to still be live — so after a
+    // save download dropped us out of fullscreen, the button seemed dead.
+    btn.addEventListener('pointerdown', (e) => e.preventDefault());
+    btn.addEventListener('click', (e) => {
       e.preventDefault();
-      void (this.isFullscreen() ? this.exitFullscreen() : this.enterFullscreen());
+      void this.toggleFullscreen();
     });
-    document.addEventListener('fullscreenchange', sync);
+    document.addEventListener('fullscreenchange', () => {
+      sync();
+      // Dropped out by a save download (Android Chrome does this): take the
+      // screen back on the next control press, as on first play.
+      if (!this.isFullscreen() && performance.now() < this.downloadExitUntil && !this.userLeftFs) {
+        this.autoFsTried = false;
+      }
+    });
+    window.addEventListener(FILE_DOWNLOAD_EVENT, () => {
+      if (this.isFullscreen()) this.downloadExitUntil = performance.now() + 15000;
+    });
+    // A browser-level exit can leave the label stale; re-read it on resize too.
+    window.addEventListener('resize', sync);
 
     document.body.appendChild(btn);
     this.fsToggleEl = btn;
@@ -491,7 +533,11 @@ class ShellManagerImpl {
     const landscape = window.matchMedia?.('(orientation: landscape)').matches ?? false;
     if (!coarse || !landscape) return;
     this.autoFsTried = true;
-    void this.enterFullscreen();
+    void this.enterFullscreen().then(() => {
+      // Refused for want of a fresh gesture (a touch pointerdown isn't one) —
+      // try again on the next press/release rather than giving up for the session.
+      if (!this.isFullscreen() && !this.userLeftFs) this.autoFsTried = false;
+    });
   }
 
   /**
@@ -687,6 +733,8 @@ class ShellManagerImpl {
     } else {
       if (!this.held.has(action)) return;
       this.held.delete(action);
+      // The release (pointerup) is the touch gesture that grants activation.
+      this.maybeAutoFullscreen();
     }
     this.emit(action, isDown);
   }

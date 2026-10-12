@@ -252,6 +252,90 @@
       "tw": 2,
       "th": 3
     },
+    "gym_bench_press": {
+      "path": "assets/sprites/objects/gym_bench_press.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "gym_bike": {
+      "path": "assets/sprites/objects/gym_bike.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "gym_dumbbell_rack": {
+      "path": "assets/sprites/objects/gym_dumbbell_rack.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "gym_kettlebells": {
+      "path": "assets/sprites/objects/gym_kettlebells.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "gym_mat": {
+      "path": "assets/sprites/objects/gym_mat.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "gym_mirror": {
+      "path": "assets/sprites/objects/gym_mirror.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "gym_plate_tree": {
+      "path": "assets/sprites/objects/gym_plate_tree.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "gym_rower": {
+      "path": "assets/sprites/objects/gym_rower.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "gym_squat_rack": {
+      "path": "assets/sprites/objects/gym_squat_rack.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "gym_treadmill_belt": {
+      "path": "assets/sprites/objects/gym_treadmill_belt.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "gym_treadmill_console": {
+      "path": "assets/sprites/objects/gym_treadmill_console.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "gym_water_cooler": {
+      "path": "assets/sprites/objects/gym_water_cooler.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
     "hoard_broom": {
       "path": "assets/sprites/objects/hoard_broom.webp",
       "width": 16,
