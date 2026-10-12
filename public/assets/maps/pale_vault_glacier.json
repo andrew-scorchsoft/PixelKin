@@ -1477,6 +1477,19 @@
       "dialogue_ref": "npc.cor_acolyte",
       "requires_flag": "flag:q_north_lampline",
       "hidden_when_flag": "flag:met_cor"
+    },
+    {
+      "id": "works_wander_hollis",
+      "at": {
+        "tx": 5,
+        "ty": 18
+      },
+      "facing": "up",
+      "sprite": "npc_man",
+      "movement": "static",
+      "dialogue_ref": "script.works_wander_hollis",
+      "requires_flag": "flag:q_works_story",
+      "hidden_when_flag": "flag:works_found_hollis"
     }
   ],
   "gates": [

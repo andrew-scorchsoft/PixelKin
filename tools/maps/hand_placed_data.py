@@ -280,6 +280,9 @@ PLACEMENTS: dict[str, dict] = {
             {"id": "letter_ysolde", "at": {"tx": 17, "ty": 10}, "facing": "down", "sprite": "ysolde", "movement": "static", "dialogue_ref": "script.post_letter_pale_vault", "requires_flag": "flag:q_post_letters", "hidden_when_flag": "flag:q_post_letter_pale_vault"},
             # Andrew on his fence — wayfinding (script.andrew_road)
             {"id": "andrew_road", "at": {"tx": 14, "ty": 26}, "facing": "down", "sprite": "andrew_ward", "movement": "look_around", "dialogue_ref": "script.andrew_road"},
+            # 09 §C2 "Measured in Miles": the Reckoning-Works clerk who wandered all the
+            # way down to town after the Paul story, watching the aurora from the west ledge
+            {"id": "works_wander_hollis", "at": {"tx": 5, "ty": 18}, "facing": "up", "sprite": "npc_man", "movement": "static", "dialogue_ref": "script.works_wander_hollis", "requires_flag": "flag:q_works_story", "hidden_when_flag": "flag:works_found_hollis"},
         ],
     },
     "pearlmoor_breakwater": {

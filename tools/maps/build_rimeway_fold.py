@@ -28,6 +28,8 @@ HANDSHAKES:
   NORTH (6,0)/(7,0) `to_descent`/`_e` (requires flag:rime_gate_open, blocked_ref
         npc.rime_gate_barred) -> rimeway_descent (38,26)/(39,26); the Descent's
         `to_fold` (38,27)/(39,27) lands at our (6,1)/(7,1).
+  DOOR (24,19) `to_works` -> reckoning_works (7,12); its doormat lands here at (24,20)
+        (09 §C2, the Reckoning-Works — build_reckoning_works.py).
 Geometry (world_geometry frame): x 94..126, y -401..-357.
 
 Run:  python3 tools/maps/build_rimeway_fold.py
@@ -68,6 +70,7 @@ c.rect(26, 22, 27, 25, ".").rect(26, 26, 27, 26, "v")
 c.rect(28, 37, 29, 42, "=").rect(12, 37, 29, 38, "=").rect(10, 27, 11, 38, "=")   # lower
 c.rect(6, 3, 7, 20, "=").rect(6, 19, 10, 21, "=")                                 # gate road
 c.rect(8, 13, 27, 14, "=").rect(24, 7, 25, 13, "=")                               # to the refuge
+c.rect(28, 13, 29, 21, "=").rect(21, 20, 29, 21, "=")     # the Reckoning-Works' spur + apron (§C2)
 # frosttuft — the Fold's beds (Vaultclaw lives here)
 c.rect(16, 27, 17, 36, '"').rect(16, 39, 17, 42, '"')     # MANDATORY: the lower plateau
 c.rect(19, 27, 27, 33, '"')                   # the wind-bed (east)
@@ -140,6 +143,24 @@ for n, (x, y) in enumerate(LAMPS):
                              "at": {"tx": x, "ty": y - 1}, "w": 1, "h": 2, "overhang": 1,
                              "walk_under": True, flag: "flag:rime_gate_open"})
 
+# ---- THE RECKONING-WORKS (09 §C2, the side quest "Measured in Miles") --------------
+# A brass-and-punch-card works where clerks compute the star-tables. Door = col 3
+# of the 7x5 sprite -> (24,19); the interior's doormat lands you on (24,20).
+m["objects"].append({"id": "reckoning_works", "sprite": "rimeway_reckoning_works",
+                     "at": {"tx": 21, "ty": 15}, "w": 7, "h": 5, "overhang": 2})
+m["warps"].append({"id": "to_works", "at": {"tx": 24, "ty": 19}, "trigger": "step_on",
+                   "to_map": "reckoning_works", "to": {"tx": 7, "ty": 12}, "facing": "up",
+                   "transition": "door"})
+owed += pt.sign(m, deco, W, sid="reckoning_works", at=(20, 21))
+# Brann, wandered out after the Paul story: listening to the wind in a dead
+# rime-lamp on the lower plateau (down the ladder from the works)
+m["npcs"].append({"id": "works_wander_brann", "at": {"tx": 14, "ty": 35}, "facing": "left",
+                  "sprite": "npc_old_man", "movement": "static",
+                  "dialogue_ref": "script.works_wander_brann",
+                  "requires_flag": "flag:q_works_story",
+                  "hidden_when_flag": "flag:works_found_brann"})
+owed.append("script.works_wander_brann")
+
 # ---- trainers / caches / signs ------------------------------------------------------
 owed += pt.trainer_beat(m, tid="rimeway_walker_sef", at=(13, 42), facing="up",
                         sight=6, sprite="pass_walker")
@@ -182,11 +203,11 @@ m["encounters"] = fk.night_day(zones, DAY)
 m["objects"] += [
     {"id": "spire_a", "sprite": "pale_vault_ice_spire", "at": {"tx": 3, "ty": 8}, "w": 2, "h": 3},
     {"id": "spire_b", "sprite": "pale_vault_ice_spire", "at": {"tx": 22, "ty": 30 - 1}, "w": 2, "h": 3},
-    {"id": "pine_a", "sprite": "hushfrost_snow_pine", "at": {"tx": 27, "ty": 15}, "w": 2, "h": 3,
+    {"id": "pine_a", "sprite": "hushfrost_snow_pine", "at": {"tx": 27, "ty": 9}, "w": 2, "h": 3,
      "overhang": 2, "walk_under": True},
     {"id": "pine_b", "sprite": "hushfrost_snow_pine_big", "at": {"tx": 6, "ty": 27}, "w": 3, "h": 4,
      "overhang": 3, "walk_under": True},
-    {"id": "outcrop", "sprite": "hushfrost_rock_outcrop_a", "at": {"tx": 22, "ty": 17}, "w": 3, "h": 2},
+    {"id": "outcrop", "sprite": "hushfrost_rock_outcrop_a", "at": {"tx": 11, "ty": 15}, "w": 3, "h": 2},
     {"id": "drift", "sprite": "hushfrost_snowdrift", "at": {"tx": 12, "ty": 40}, "w": 3, "h": 2},
     {"id": "icicles", "sprite": "hushfrost_icicle_outcrop", "at": {"tx": 18, "ty": 2 + 3 - 1}, "w": 3, "h": 2,
      "solid": False},

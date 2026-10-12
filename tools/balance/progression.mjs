@@ -332,7 +332,9 @@ const JOURNEY = [
       T('Orsino (troupe player)', 'route', [K(44, 115), K(45, 120)]),
       T('Lucan Pyre', 'warden', [K(42, 117), K(43, 115), K(44, 104), K(44, 121), K(46, 123)]),
     ],
-    income: { quests: 300, valuables: 5700, finds: 550 },
+    // THE WILD WAYS (09 §C2, optional, Rimeway band 39-42 — this leg's era):
+    // quests += the Reckoning-Works' "consultancy fee" (800, script.works_k_finale).
+    income: { quests: 1100, valuables: 5700, finds: 550 },
     spend: { bright_balm: 2, beacon_charge: 2, chart_late: 1 },
     checkpoint: { name: 'Solar Gleam (Lucan)', rec: 42, ace: 46 },
   },

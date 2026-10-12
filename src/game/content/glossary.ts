@@ -396,6 +396,12 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     unlock_flag: 'flag:q_rimeway_gate',
   },
   {
+    id: 'star_tables',
+    term: 'the star-tables',
+    desc: 'Reckonings of when each lamp wants trimming and where each constellation rises, worked out to the minute on the brass engines of the Reckoning-Works, high on the Rimeway Fold, and carried down to the tenders. For eleven winters nobody came up the road for them, and nobody stopped making them.',
+    unlock_flag: 'flag:q_works_begun',
+  },
+  {
     id: 'sun_keepers',
     term: 'the sun-keepers',
     desc: 'The order who climbed the Sunvault face every dawn to wipe the frost from Nightreach\'s mirrors, on ladders and planks they pegged into the stone themselves. The watchers came down to meet them on the ledges. Two orders, one job: keep the lights.',

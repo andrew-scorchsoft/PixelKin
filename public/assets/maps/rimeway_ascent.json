@@ -1284,6 +1284,17 @@
       "w": 1,
       "h": 1,
       "solid": false
+    },
+    {
+      "id": "works_kin_tracks",
+      "sprite": "hushfrost_tracks_h",
+      "at": {
+        "tx": 20,
+        "ty": 23
+      },
+      "w": 4,
+      "h": 1,
+      "solid": false
     }
   ],
   "warps": [
@@ -2042,6 +2053,19 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_rimeway_tin",
       "hidden_when_flag": "flag:picked_rimeway_tin"
+    },
+    {
+      "id": "works_wander_teague",
+      "at": {
+        "tx": 24,
+        "ty": 23
+      },
+      "facing": "left",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "dialogue_ref": "script.works_wander_teague",
+      "requires_flag": "flag:q_works_story",
+      "hidden_when_flag": "flag:works_found_teague"
     }
   ],
   "gates": [],
