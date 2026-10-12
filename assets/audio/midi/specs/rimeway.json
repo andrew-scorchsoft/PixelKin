@@ -1,0 +1,78 @@
+{
+  "title": "PixelKin - The Rime-Lamps (SNES register)",
+  "_note": "The Rimeway (09-the-wild-ways §2C): the old star-tenders' high road over the frost col above the Pale Vault - a line of dead rime-lamps, wind, the glacier below. Lonely and grand. 92 BPM, 4/4, D minor with sus/quartal colour. Frost signature: quartal pluck arps (D-A-E stacked fifths), slow glassy bell chimes (the dead lamps), a noise 'aurora/wind' swell. Form A (lonely: lead alone over open fifths + wind + lamp chimes) -> B (grand: full strings, processional toms + crash, the leap WIDENED and sequenced upward a step each phrase, a Picardy D major before the turn) -> A' (lonely again, a flute answering from the next dead lamp). Vesper motif: frost = stretched & suspended - A4->D5->E5 hangs on a held E, the settle comes a bar late. Last bar C#-E over A leads into the A4 that opens the loop. 24 bars = ~62.6 s. Original (VISION.md).",
+  "era": "snes",
+  "tempo": 92,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "D minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "_note": "Lonely call (A), widened rising sequence (B), lonely call answered (A').",
+      "notes": "A4h. rq | D5q E5h. | F5q E5q D5h | C5h. rq | A4q D5q A5h | G5q F5q C5h | D5q. Bb4e G4h | A4w | F4q Bb4q C5h | G4q C5q D5h | C5q F5q G5h | A5h. G5e F5e | D5q F5q Bb5h | C6h. Bb5e G5e | A5q F#5q D5q F#5q | E5w | A4h. rq | D5q E5h. | F5q E5q D5h | C5h. rq | Bb4q D5q G5h | F5q D5q Bb4h | D5w | C#5h E5h"
+    },
+    {
+      "name": "flute",
+      "voice": "flute",
+      "octave": 5,
+      "gain": 0.45,
+      "_note": "A' only: a counter-call from the next lamp along the col.",
+      "notes": "rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rh A5h | G5w | rh E5q G5q | rw | rh F5q D5q | rw | rh A5h"
+    },
+    {
+      "name": "pad",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.28,
+      "_note": "Open fifths in A (lonely), full chords swelling in B (grand), settling in A'.",
+      "notes": "D3+A3w@64 | D3+A3w@64 | Bb2+F3w@64 | C3+G3w@64 | D3+A3w@64 | F3+C4w@64 | G2+D3w@64 | A2+D3+E3h@64 A2+C#3+E3h@64 | Bb2+D3+F3w@112 | C3+E3+G3w@112 | F3+A3+C4w@112 | D3+F3+A3w@112 | Bb2+D3+F3w@112 | C3+E3+G3w@112 | D3+F#3+A3w@112 | A2+C#3+E3w@112 | D3+F3+A3w@84 | D3+F3+A3w@84 | Bb2+D3+F3w@84 | C3+E3+G3w@84 | G2+Bb2+D3w@84 | Bb2+D3+F3w@84 | A2+D3+E3w@84 | A2+C#3+E3w@84"
+    },
+    {
+      "name": "harmony",
+      "voice": "pluck",
+      "octave": 4,
+      "gain": 0.32,
+      "_note": "Quartal/suspended eighth arps - the aurora shimmer.",
+      "notes": "D4e A4e E5e A4e D4e A4e E5e A4e | D4e A4e F4e A4e D4e A4e F4e A4e | Bb3e F4e D4e F4e Bb3e F4e D4e F4e | C4e G4e D5e G4e C4e G4e D5e G4e | D4e A4e F4e A4e D4e A4e F4e A4e | F4e C5e G4e C5e F4e C5e G4e C5e | G3e D4e Bb3e D4e G3e D4e Bb3e D4e | A3e E4e C#4e E4e A3e E4e C#4e E4e | Bb3e F4e D4e F4e Bb3e F4e D4e F4e | C4e G4e D5e G4e C4e G4e D5e G4e | F4e C5e G4e C5e F4e C5e G4e C5e | D4e A4e F4e A4e D4e A4e F4e A4e | Bb3e F4e D4e F4e Bb3e F4e D4e F4e | C4e G4e D5e G4e C4e G4e D5e G4e | D4e A4e F#4e A4e D4e A4e F#4e A4e | A3e E4e C#4e E4e A3e E4e C#4e E4e | D4e A4e F4e A4e D4e A4e F4e A4e | D4e A4e F4e A4e D4e A4e F4e A4e | Bb3e F4e D4e F4e Bb3e F4e D4e F4e | C4e G4e D5e G4e C4e G4e D5e G4e | G3e D4e Bb3e D4e G3e D4e Bb3e D4e | Bb3e F4e D4e F4e Bb3e F4e D4e F4e | A3e E4e D4e E4e A3e E4e D4e E4e | A3e E4e C#4e E4e A3e E4e C#4e E4e"
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 6,
+      "gain": 0.3,
+      "_note": "The dead rime-lamps: slow glassy chimes, A section only.",
+      "notes": "rh. A5q | rw | rh D6q rq | rw | rh. E6q | rw | rh A5q rq | rh. E6e D6e | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw"
+    },
+    {
+      "name": "wind",
+      "voice": "noise",
+      "octave": 4,
+      "gain": 0.14,
+      "_note": "Wind over the col: long rising/falling noise swells, A section only.",
+      "notes": "C4~F4w | F4~C4w | rw | rw | C4~G4w | G4~C4w | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.85,
+      "_note": "Root-fifth half notes, the slow tread up the col.",
+      "notes": "D2h A2h | D2h A2h | Bb1h F2h | C2h G2h | D2h A2h | F2h C3h | G1h D2h | A1h E2h | Bb1h F2h | C2h G2h | F2h C3h | D2h A2h | Bb1h F2h | C2h G2h | D2h A2h | A1h E2h | D2h A2h | D2h A2h | Bb1h F2h | C2h G2h | G1h D2h | Bb1h F2h | A1h E2h | A1h E2h"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.5,
+      "_note": "Silent in A; a processional tom tread + crashes in B; a single tom per bar in A'.",
+      "notes": "rw | rw | rw | rw | rw | rw | rw | rw | q crash rq tom rq | q tom rq tom rq | tom rq tom rq | tom rq tom rq | crash rq tom rq | tom rq tom rq | tom rq tom rq | tom tom e tom tom q crash | tomq rq rh | tomq rq rh | tomq rq rh | tomq rq rh | tomq rq rh | tomq rq rh | tomq rq rh | tomq rq rh"
+    }
+  ]
+}

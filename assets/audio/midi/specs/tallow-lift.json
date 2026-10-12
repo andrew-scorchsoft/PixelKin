@@ -1,0 +1,55 @@
+{
+  "title": "PixelKin - Tallow Lift (sting)",
+  "_note": "The Tallow Lift ride (09-the-wild-ways §2A): the wax-carters' cable car hauling up/down the dark mountain's west flank. A short, gentle one-shot over the travel fade: a creak of cable (short falling noise glides), a rising pluck arpeggio (the car climbing), a warm strings bed and a bell at the top. G major, 104 BPM, 2 bars = ~4.6 s + a 1.2 s ring-out (render --tail 1.2). Ends on the tonic. Classic-only (no remaster), played via the musicSting op like sting-hour. Original (VISION.md).",
+  "era": "snes",
+  "tempo": 104,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": false,
+  "key": "G major",
+  "tracks": [
+    {
+      "name": "climb",
+      "voice": "pluck",
+      "octave": 4,
+      "gain": 0.6,
+      "_note": "The car climbing: a rising arpeggio, settling on G.",
+      "notes": "G3e B3e D4e G4e B3e D4e G4e B4e | D4e G4e B4e D5e G5q rq"
+    },
+    {
+      "name": "pad",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.3,
+      "_note": "Warm bed: G, then C - G (plagal, gentle).",
+      "notes": "G3+B3+D4w@80 | C4+E4+G4h@84 B3+D4+G4h@84"
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.38,
+      "_note": "The top: two soft bells as the car arrives.",
+      "notes": "rw | rh D6q@70 G6q@80"
+    },
+    {
+      "name": "creak",
+      "voice": "noise",
+      "octave": 5,
+      "gain": 0.16,
+      "_note": "The cable creaking over the sheave: short falling noise glides.",
+      "notes": "re C6~A5e rq re C6~A5e rq | re C6~A5e rh."
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.7,
+      "_note": "Root under it: G, C, G.",
+      "notes": "G2w | C3h G2h"
+    }
+  ]
+}
