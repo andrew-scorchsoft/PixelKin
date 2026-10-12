@@ -76,8 +76,10 @@ mk.hline(path, W, H, 9, 8, 15)                                       # Lumenary 
 mk.vline(path, W, H, 10, 9, 11)                                      # forecourt -> plaza
 mk.hline(path, W, H, 6, 16, 26)                                      # fringe lane east
 mk.vline(path, W, H, 26, 2, 6)                                       # lane up to the wood-stack
-mk.vline(path, W, H, 24, 17, 22)                                     # lane to the bower door
-mk.hline(path, W, H, 17, 16, 24)
+mk.hline(path, W, H, 17, 16, 21)                                     # lane to the bower door:
+mk.vline(path, W, H, 21, 17, 23)                                     #   round the cottage's west side
+mk.hline(path, W, H, 23, 21, 24)                                     #   to the doorstep (never under the roof)
+mk.vline(path, W, H, 24, 22, 23)
 mk.vline(path, W, H, 19, 13, 13)                                     # kiln approach
 mk.hline(path, W, H, 13, 16, 19)
 

@@ -25,7 +25,7 @@ Legend — **Gleam** = the region's constellation reward; **Gift** = the Lantern
 | **Central/Endgame** (05) | — | ✅ **complete** (C1 maps + C2 Spire + C3 wiring, 2026-06; panel SHIP-READY; C6 polish landed c15217d) | — |
 | **The Three Hours** (07) | — | ✅ **complete** (sites + wiring + encounters + the hour-bell music, 2026-06) | — |
 | **Post-game** (06) | — | ✅ **complete** (R2 Dawnstead + R3 Vigils + R4 day-forms, 2026-06) | — |
-| **Wild Ways · B the Mirelights** (09) | — | ✅ **built** (2026-10: Fen I's ferry stage + `mirelight_landing`/`_glassmere`/`_chapel` + `lanthorne_hollow`; builders `build_mirelight_*.py`/`build_lanthorne_hollow.py`, content `regions/mirelight.ts`) | opens once Isel's Frostglass Lens (Rimeway lane, Pale Vault) is merged |
+| **Wild Ways · B the Mirelights** (09) | — | ✅ **built** (2026-10: Fen I's ferry stage + `mirelight_landing`/`_glassmere`/`_chapel` + `lanthorne_hollow`; builders `build_mirelight_*.py`/`build_lanthorne_hollow.py`, content `regions/mirelight.ts`) | — (opens via Isel's Frostglass Lens from the Rimeway) |
 
 **Playable runway today: the game is CONTENT-COMPLETE — cold open → dawn → post-game.**
 The post-game shipped 2026-06: Dawnstead (R2), the Starfall Vigils chain to the Last
@@ -401,6 +401,28 @@ bond-test, the Gleam narrate and the Tide-blessing. Old saves: floats-but-no-rop
 tower; rope-already saves are untouched (flag sweep verified). Content: `content/oldlight.ts`. Joke rubric + every scored draft: [`../oldlight-jokes.md`](../oldlight-jokes.md) (all AI-written, ≥85/100 each).
 The Point also hosts `worry_nettie` and Reyl's post-Gleam `script.reyl_tin_rower` hook (the Tin
 Rower, Worry Club, Andrew's chain + JOURNAL rows are the sibling R9 packages).
+
+### R11 — The Wild Ways + the side-content round (v1.13–1.15) ✅ DONE (2026-10)
+
+The non-linear expansion ([09-the-wild-ways.md](./09-the-wild-ways.md)) plus the owner's
+side-content asks. Every map below is reproduced by `check_rebuild.py`; the whole
+stitched world is `python3 tools/maps/render_world.py` (rendered art at true positions).
+
+| Piece | Where | Source of truth |
+|-------|-------|-----------------|
+| **Traversal kit** — slopes/ice/rails (`flows`), bridges/ladders/planks incl. underpasses (`spans`), rider `jumps`, `ride` + the rented `runner` | engine + 15 maps | `systems/world/Traversal.ts` ⇄ `worldmodel.py`; gate `check_traversal.mjs`; author with `wildkit.py` |
+| **A · the Wick-Run** — six-map downhill run Sunvault → Lightkeeper's Point; the Tallow Lift home (freed from the top), run clock + Runners | `wickrun_crest/_chute/_trestles/_traverse/_lower/_foot` | `build_wickrun_*.py`, `regions/wickrun.ts` |
+| **S · Sunvault Climb** — four-map mountain face | `sunvault_climb_i..iv` | see West table |
+| **C · the Rimeway** + the **Reckoning-Works** side quest "The Long Way Round" (tell the clerks about Paul; four wanderers) | `rimeway_*`, `reckoning_works` | `build_rimeway_*.py`, `build_reckoning_works.py`, `regions/reckonworks.ts` |
+| **B · the Mirelights** (Lanthorne #165) | `mirelight_*`, `lanthorne_hollow` | see roll-up row |
+| **D · the Old Seams** (Emberroot #166, the lever rail yard) | `old_seams_i..iii`, `emberroot_heart` | see East table |
+| **The Wayward Arms** — hotel on Wayward Rise past the Wanderwood: open bar, the corner chair, the stranger (a rest point) | `wayward_rise`, `wayward_arms` | `build_wayward_*.py`, `regions/hotel.ts` |
+| **Paul's House** — three floors (kitchen-hall, T-shirt museum, Lottie's attic); Lottie's Chickenpig scene (post-S4 only) | `paul_house_1..3` | `build_paul_house.py`, `paulforge.py`, `regions/paul.ts` |
+| **The kitchens** — Percy's moka brew-stand (Duskapple) + Marisol's kitchen (Lowleaf, 60w plates) | `duskapple_orchard`, `lowleaf_hollow` | `regions/kitchens.ts`, `draw_moka_stall.py`; price mirrored in `progression.mjs` |
+| **Old Light computer** (the east-bay anachronism) + tower stairs dressed | `pearlmoor_oldlight_*` | `content/oldlight.ts`, `roomkit.dress_tower_stairs` |
+| **Andrew's costumes** — a different look on each rim-town fence | `andrew_road` maps | worldcraft `sprites: {andrew_road: andrew_<look>}` |
+| **EXP share** (Settings, default ON) · **CONTINUE first** on the title · the auctioneer made nameless | engine | `BattleScene.awardExp`, `TitleScene`, `script.wink_*` |
+| **Polish gates** — warp markers, interior wall autotiling, NPC footing | all maps | `audit_warp_markers.py`, `roomkit.autotile_walls`, `audit_npc_footing.py` |
 
 ### R5 — Release ladder (verification, mostly cheap)
 - ✅ `npm run build` verified green (2026-06).

@@ -41,3 +41,8 @@ assets/audio/midi/soundfonts/
 # Agent worktrees (isolated scratch checkouts)
 .claude/worktrees/
 assets/trainers/_candidates/
+
+# render_world.py outputs (regenerate on demand; ~4 MB)
+tools/maps/out/world_full.png
+tools/maps/out/world_overview.png
+tools/maps/out/world_portals.png

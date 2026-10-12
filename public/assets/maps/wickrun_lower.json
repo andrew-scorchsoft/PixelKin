@@ -3947,8 +3947,8 @@
       "id": "camp_barrels",
       "sprite": "wickrun_wax_barrels",
       "at": {
-        "tx": 17,
-        "ty": 39
+        "tx": 18,
+        "ty": 37
       },
       "w": 2,
       "h": 1

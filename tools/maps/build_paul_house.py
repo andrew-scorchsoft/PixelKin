@@ -105,7 +105,6 @@ def ground() -> dict:
     stand(objects, "tea_bench", "tea_bench", 3, 2, 2, 2)
     place(objects, "table", 2, 6, oid="kitchen_table")
     place(objects, "stool", 1, 7, oid="stool_a")
-    place(objects, "stool", 4, 7, oid="stool_b")
     place(objects, "barrels", 1, 9, oid="kitchen_barrels")
     place(objects, "plant", 4, 9, oid="kitchen_plant")
     # the wall: WANTED, the hearth (focal), the sunny cape, the pin-board

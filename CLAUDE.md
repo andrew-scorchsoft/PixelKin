@@ -266,6 +266,7 @@ go digging on every task.
 | Map/world schema (TS) | `src/game/data/world/types.ts` |
 | World-map screen layout (generated) + spatial-embedding audit | `src/game/data/world/worldmap.json` ← `tools/maps/world_layout.py` |
 | The honest walked geometry (Lantern-car, deep water, the CI geometry gate) | `docs/world/geometry.md` ← `tools/maps/world_geometry.py --check` |
+| The whole world as RENDERED art, stitched at true positions (+ a portal-maps sheet) | `tools/maps/render_world.py` → `tools/maps/out/world_overview.png` |
 | Balance/roster tooling | `tools/balance/` |
 | Visual standards (binding) | `docs/art-style.md` |
 | Deploying to pixelk.in (Cloudflare Workers; FTP legacy) | `wrangler.jsonc` + `web/README.md` (FTP: `.claude/skills/deploy-ftp/SKILL.md`) |
@@ -549,6 +550,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   walk-sheet (same 4×4 layout) — or, with no such sheet, crops the sprite at the waterline and
   floats a wake ellipse. Use `RuntimeMap.hasTerrainAt` for any "what am I standing in?"
   question; the tileset sidecar is the authority (maps carry only gids).
+- **Working with the owner (2026-10):** make the design calls yourself ("use your initiative") —
+  ask only when blocked; send every new MP3 and art piece to chat (`SendUserFile`) for a listen/look.
+  Real people cameo (Andrew, Paul, Lottie): keep them warm. The beacon-road auctioneer
+  (`script.wink_*`, speaker MAN WITH A CASE) is a nameless stranger who vanishes after the Tin
+  Rower — NEVER call him or hint he's Paul.
 - **The easter-egg trail points at S4 "The Booji-Wooji Man."** Andrew at the Tinderwick fence
   (`script.andrew_name`, sprite `andrew_ward` — NOT `lifter_andrew`, who is a different Andrew
   in the Lifting House; his road placements wear costume sheets `andrew_<frost|quay|miner|sunhat|party|coder|cyclist>`,
@@ -763,7 +769,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   a row too low), making the bell a Tidecall-only island = circular softlock. Fix: the
   causeway/board carve must start at the quay/sea SEAM, not one row inside the sea. Most
   orphan flags are tiny decorative gaps behind the border treeline (reported "minor"); a
-  cluster ≥4 is worth an eyeball.
+  cluster ≥4 is worth an eyeball (flow/span tiles never count — a slide crosses them without
+  resting). **A pocket only FAILs if content is stranded in it, so a sealed nook that merely
+  LOOKS reachable ships green** — in a "can I get everywhere?" pass, eyeball every non-border
+  pocket ≥4 and every solid prop sitting on a lane's path FILL (2026-10 caught the Wick-Run
+  camp's grass+rack sealed by a barrel row, and Paul's kitchen nook sealed by a stool).
 - **`tools/maps/audit_journey.py` replays the WHOLE game at tile level (CI).** From the new-game
   spawn with nothing held, it walks the real collision model (objects, ledges, static NPC bodies,
   pushback bands, gated warps) and fires grants only when the granting NPC/trigger/cache itself is
@@ -1114,7 +1124,7 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   folder, never interiorforge's). Lottie's Chickenpig scene uses two reusable tricks: a `travel` to
   the SAME map/tile re-enters it mid-scene so a flag-gated NPC (the `kin_163_overworld` visitor) spawns
   (NPCs only refresh at scene end otherwise; `hideActor` + `setFlag value:false` sends it home), and a
-  bare `setLead` (no battle after it) leaves the kin leading — the scene SAYS so. Never name what the
+  bare `setLead` (no battle after it) is undone when the scene ends (`playScene` → `restoreLead`). Never name what the
   Booji-Wooji Man is there either; the bureau poster stays "a joke".
 - **Paying and toggles are DATA (R9, 2026-10).** The `pay` op (`{op:'pay', amount, flag}`) takes
   wicks only if the purse holds them and sets `flag` — branch with `if_flag`/`unless_flag`, never

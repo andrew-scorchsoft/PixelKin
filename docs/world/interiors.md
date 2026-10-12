@@ -132,6 +132,10 @@ Every interior has **one focal point at top-centre** and **one partition**:
    3-wide nook holds ONE); NPCs stand on floor, never on a table/altar/rack
    (a diner sits BESIDE the table); a wall-hung banner over a counter is
    listed BEFORE the counter so it hangs behind it.
+11. **No sealed floor**: every floor tile you can SEE is one you can walk to. Stools,
+   barrels and plants ringing a table can wall off the floor behind it (Paul's kitchen
+   did, 2026-10) — the reach gate passes because nothing is stranded there.
+   `render_walkable.py <id> --report-only` lists those pockets; leave a gap or drop a piece.
 
 ## 4. Build & QA pattern
 

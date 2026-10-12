@@ -429,16 +429,6 @@
       "h": 1
     },
     {
-      "id": "stool_b",
-      "sprite": "interior_stool",
-      "at": {
-        "tx": 4,
-        "ty": 7
-      },
-      "w": 1,
-      "h": 1
-    },
-    {
       "id": "kitchen_barrels",
       "sprite": "interior_barrels",
       "at": {

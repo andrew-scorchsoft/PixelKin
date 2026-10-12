@@ -208,7 +208,7 @@ owed += pt.cache(m, cid="mire_bank_balm", at=(2, 15))       # the west bank's fa
 obj("south_stooks", "saltreach_reed_stooks", (19, 40), 2, 2, overhang=1, walk_under=True)
 obj("south_traps", "saltreach_eel_trap", (24, 40), 2, 2, overhang=1, walk_under=True, solid=False)
 obj("south_moorings", "saltreach_mooring_posts", (5, 40), 1, 2, overhang=1, walk_under=True)
-obj("south_lamp", "coldfog_doused_lamp", (10, 38), 1, 3, overhang=2, walk_under=True)
+obj("south_lamp", "coldfog_doused_lamp", (11, 37), 1, 3, overhang=2, walk_under=True)
 pt.crown_tree(m, oid="willow_w", sprite="coldfog_dead_willow", at=(3, 12))
 pt.crown_tree(m, oid="willow_e", sprite="coldfog_dead_willow", at=(25, 9))
 pt.crown_tree(m, oid="tree_m", sprite="tinderwick_tree_c", at=(1, 30))

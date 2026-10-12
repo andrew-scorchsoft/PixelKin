@@ -155,7 +155,11 @@ def analyse(world: dict[str, dict], model: MapModel, start: dict | None = None) 
         for x in range(model.w)
         if model.standable(x, y, abilities=all_ab)
     }
-    orphans = walkable_all - reach_all
+    # Flow/span tiles (ice, slopes, rails, decks) are crossed, never stood on: a
+    # slide passes over them without resting, so they are never 'reached' as rest
+    # tiles — counting them made a single ice field read as a 195-tile orphan.
+    passed = {t for t in walkable_all if model.flow_at(*t) or model.span_at(*t)}
+    orphans = walkable_all - reach_all - passed
     orphan_clusters = clusters(orphans)
     major_orphans = [c for c in orphan_clusters if len(c) >= MAJOR_ORPHAN]
     # A pocket only STRANDS something if content lives in it: a non-ambient NPC,

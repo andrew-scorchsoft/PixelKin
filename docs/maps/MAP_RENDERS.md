@@ -4,6 +4,10 @@ Visual renders of every built map, in journey order. Each image is a 2× composi
 rendered by `tools/maps/render_all_maps.py` from the live map JSON — re-run that
 script after any map edit to refresh them.
 
+For the whole world in ONE image — every outdoor map stitched at its true walked position,
+north up — run `python3 tools/maps/render_world.py` (`--highlight <prefix>` outlines new maps,
+`--sheet "Title:id,id"` adds a sheet of door/cave-entered maps). Outputs land in `tools/maps/out/`.
+
 ---
 
 ## South — Tinderwick to Pearlmoor

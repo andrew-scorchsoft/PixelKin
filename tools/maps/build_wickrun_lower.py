@@ -156,7 +156,7 @@ obj("steps_pine", "windward_bent_pine", (16, 18), 2, 3, overhang=2, walk_under=T
 # the Runners' camp
 obj("camp_rack", "wickrun_runner_rack", (12, 37), 2, 2)
 obj("camp_fire", "solarium_brazier_lit", (15, 36), 2, 3, overhang=1)
-obj("camp_barrels", "wickrun_wax_barrels", (17, 39), 2, 1)
+obj("camp_barrels", "wickrun_wax_barrels", (18, 37), 2, 1)   # by the fire, out of Rook's sight line; never in row 39 (it sealed the west half)
 obj("camp_wood", "tinderwick_woodpile", (9, 39), 2, 1)
 obj("camp_wreck", "wickrun_wax_cart_wreck", (23, 38), 2, 2)
 obj("camp_tree", "tinderwick_tree_b", (5, 34), 3, 4, overhang=3, walk_under=True)
