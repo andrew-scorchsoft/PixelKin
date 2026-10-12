@@ -1,0 +1,62 @@
+{
+  "title": "PixelKin - Down the Wick-Run (SNES register)",
+  "_note": "The Wick-Run (09-the-wild-ways §2A): the old wax-carters' chute down the dark mountain's west flank, raced at night by the Runners on runner-wheels. Driving and reckless, all forward motion: 168 BPM, 4/4, E minor (Dorian lift through G/D in A'), galloping tri_bass eighths, rock drum kit, pulse25 hook in pushed eighths. SNES register per score bible §3.3: strings pad carries the real chords, pluck harp eighth-arps (the spokes), sparse bell at phrase ends = the lamps whipping past. Form A A' B A'': B is the JUMP - long airborne notes, half-time drums, pad swells - then the hook slams back in. Vesper motif: the climbing-route WIDENED leap (B4->E5->F#5 overshoot in bar 1's E5/B4/G5 figure; the settle is skipped - nobody settles on the Run). Last bar runs up B4-D#5-F#5-B5 into the E downbeat. 32 bars = ~45.7 s. Remaster is NEVER motif-conditioned (it would pin the tempo to the lullaby's ~90 BPM). Original (VISION.md).",
+  "era": "snes",
+  "tempo": 168,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "E minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 5,
+      "gain": 1.0,
+      "_note": "The hook. A: pushed-eighth crest figure; A': answer climbs to G; B: airborne long notes; A'': hook + run-up.",
+      "notes": "E5e E5e B4e E5e G5q F#5e E5e | D5e E5e B4q rq B4e D5e | E5e E5e C5e E5e G5e A5e G5e E5e | F#5q. E5e D5q A4q | E5e E5e B4e E5e G5q A5e B5e | B5q A5e G5e A5q rq | G5e F#5e E5e D5e C5e D5e E5e G5e | F#5h D#5q B4q | E5e E5e B4e E5e G5q F#5e E5e | D5e E5e B4q rq B4e D5e | E5e E5e C5e E5e G5e A5e G5e E5e | F#5q. G5e A5q D5q | B5e B5e G5e B5e D6q B5e A5e | A5q. F#5e D5q rq | E5e G5e E5e C5e B4e C5e E5e G5e | F#5q D#5e F#5e B5h | G5h. E5q | F#5q A5q D6h | B5h. A5e F#5e | G5w | E5q G5q C6q B5q | A5h. F#5q | D#6q B5q F#5q D#5q | F#5e F#5e F#5e F#5e A5e G5e F#5e D#5e | E5e E5e B4e E5e G5q F#5e E5e | D5e E5e B4q rq B4e D5e | E5e E5e C5e E5e G5e A5e G5e E5e | F#5q. E5e D5q A4q | E5e E5e B4e E5e G5q A5e B5e | C6q B5e G5e E5q G5q | F#5e G5e A5e F#5e D5q E5e F#5e | B4e B4e D#5e F#5e B5q rq"
+    },
+    {
+      "name": "pad",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.26,
+      "_note": "Real chords, one per bar (Em Em C D Em Em C B / ... G D C B / C D Bm Em C D B B / ...). Swells in B.",
+      "notes": "E3+G3+B3w@70 | E3+G3+B3w@70 | E3+G3+C4w@70 | D3+F#3+A3w@70 | E3+G3+B3w@70 | E3+G3+B3w@70 | E3+G3+C4w@70 | D#3+F#3+B3w@70 | E3+G3+B3w@90 | E3+G3+B3w@90 | E3+G3+C4w@90 | D3+F#3+A3w@90 | D3+G3+B3w@90 | D3+F#3+A3w@90 | E3+G3+C4w@90 | D#3+F#3+B3w@90 | E3+G3+C4w@110 | D3+F#3+A3w@110 | D3+F#3+B3w@110 | E3+G3+B3w@110 | E3+G3+C4w@110 | D3+F#3+A3w@110 | D#3+F#3+B3w@110 | D#3+F#3+B3w@110 | E3+G3+B3w@90 | E3+G3+B3w@90 | E3+G3+C4w@90 | D3+F#3+A3w@90 | E3+G3+B3w@90 | E3+G3+C4w@90 | D3+F#3+A3w@90 | D#3+F#3+B3w@90"
+    },
+    {
+      "name": "harmony",
+      "voice": "pluck",
+      "octave": 4,
+      "gain": 0.4,
+      "_note": "Spoke-blur eighth arps of each chord - the wheels turning.",
+      "notes": "E4e G4e B4e G4e E4e G4e B4e G4e | E4e G4e B4e G4e E4e G4e B4e G4e | C4e E4e G4e E4e C4e E4e G4e E4e | D4e F#4e A4e F#4e D4e F#4e A4e F#4e | E4e G4e B4e G4e E4e G4e B4e G4e | E4e G4e B4e G4e E4e G4e B4e G4e | C4e E4e G4e E4e C4e E4e G4e E4e | B3e D#4e F#4e D#4e B3e D#4e F#4e D#4e | E4e G4e B4e G4e E4e G4e B4e G4e | E4e G4e B4e G4e E4e G4e B4e G4e | C4e E4e G4e E4e C4e E4e G4e E4e | D4e F#4e A4e F#4e D4e F#4e A4e F#4e | G4e B4e D5e B4e G4e B4e D5e B4e | D4e F#4e A4e F#4e D4e F#4e A4e F#4e | C4e E4e G4e E4e C4e E4e G4e E4e | B3e D#4e F#4e D#4e B3e D#4e F#4e D#4e | C4e E4e G4e E4e C4e E4e G4e E4e | D4e F#4e A4e F#4e D4e F#4e A4e F#4e | B3e D4e F#4e D4e B3e D4e F#4e D4e | E4e G4e B4e G4e E4e G4e B4e G4e | C4e E4e G4e E4e C4e E4e G4e E4e | D4e F#4e A4e F#4e D4e F#4e A4e F#4e | B3e D#4e F#4e D#4e B3e D#4e F#4e D#4e | B3e D#4e F#4e D#4e B3e D#4e F#4e D#4e | E4e G4e B4e G4e E4e G4e B4e G4e | E4e G4e B4e G4e E4e G4e B4e G4e | C4e E4e G4e E4e C4e E4e G4e E4e | D4e F#4e A4e F#4e D4e F#4e A4e F#4e | E4e G4e B4e G4e E4e G4e B4e G4e | C4e E4e G4e E4e C4e E4e G4e E4e | D4e F#4e A4e F#4e D4e F#4e A4e F#4e | B3e D#4e F#4e D#4e B3e D#4e F#4e D#4e"
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 6,
+      "gain": 0.32,
+      "_note": "Lamps whipping past: phrase-end glints, and every other bar through the airborne B section.",
+      "notes": "rw | rw | rw | rw | rw | rw | rw | rh. B5q | rw | rw | rw | rw | rw | rw | rw | rh. B5q | G6q rh. | rw | F#6q rh. | rw | G6q rh. | rw | F#6q rh. | rh D#6e F#6e B6q | rw | rw | rw | rw | rw | rw | rw | rh. B5q"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.95,
+      "_note": "Galloping root/octave eighths; turnaround bars walk up B1-A2-A#2-B2-D#3 into the E downbeat.",
+      "notes": "E2e E2e E3e E2e E2e E2e E3e E2e | E2e E2e E3e E2e E2e E2e E3e E2e | C2e C2e C3e C2e C2e C2e C3e C2e | D2e D2e D3e D2e D2e D2e D3e D2e | E2e E2e E3e E2e E2e E2e E3e E2e | E2e E2e E3e E2e E2e E2e E3e E2e | C2e C2e C3e C2e C2e C2e C3e C2e | B1e B1e B2e B1e A2e A#2e B2e D#3e | E2e E2e E3e E2e E2e E2e E3e E2e | E2e E2e E3e E2e E2e E2e E3e E2e | C2e C2e C3e C2e C2e C2e C3e C2e | D2e D2e D3e D2e D2e D2e D3e D2e | G2e G2e G3e G2e G2e G2e G3e G2e | D2e D2e D3e D2e D2e D2e D3e D2e | C2e C2e C3e C2e C2e C2e C3e C2e | B1e B1e B2e B1e A2e A#2e B2e D#3e | C2e C2e C3e C2e C2e C2e C3e C2e | D2e D2e D3e D2e D2e D2e D3e D2e | B1e B1e B2e B1e B1e B1e B2e B1e | E2e E2e E3e E2e E2e E2e E3e E2e | C2e C2e C3e C2e C2e C2e C3e C2e | D2e D2e D3e D2e D2e D2e D3e D2e | B1e B1e B2e B1e B1e B1e B2e B1e | B1e B1e B2e B1e A2e A#2e B2e D#3e | E2e E2e E3e E2e E2e E2e E3e E2e | E2e E2e E3e E2e E2e E2e E3e E2e | C2e C2e C3e C2e C2e C2e C3e C2e | D2e D2e D3e D2e D2e D2e D3e D2e | E2e E2e E3e E2e E2e E2e E3e E2e | C2e C2e C3e C2e C2e C2e C3e C2e | D2e D2e D3e D2e D2e D2e D3e D2e | B1e B1e B2e B1e A2e A#2e B2e D#3e"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.62,
+      "_note": "Driving rock beat with a pushed kick on the 'and' of 2; crash on section downbeats; half-time air in B; tom fills.",
+      "notes": "e crash hat snare hat kick kick snare hat | kick hat snare hat kick kick snare hat | kick hat snare hat kick kick snare hat | kick hat snare hat kick kick snare hat | kick hat snare hat kick kick snare hat | kick hat snare hat kick kick snare hat | kick hat snare hat kick kick snare hat | kick hat snare hat tom tom snare snare | crash hat snare hat kick kick snare hat | kick hat snare hat kick kick snare hat | kick hat snare hat kick kick snare hat | kick hat snare hat kick kick snare hat | kick hat snare hat kick kick snare hat | kick hat snare hat kick kick snare hat | kick hat snare hat kick kick snare hat | kick hat snare hat tom tom snare snare | crash hat snare hat kick kick snare hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | kick hat hat hat snare hat hat hat | snare snare tom tom snare snare tom tom | crash hat snare hat kick kick snare hat | kick hat snare hat kick kick snare hat | kick hat snare hat kick kick snare hat | kick hat snare hat kick kick snare hat | kick hat snare hat kick kick snare hat | kick hat snare hat kick kick snare hat | kick hat snare hat kick kick snare hat | kick kick snare kick tom tom snare crash"
+    }
+  ]
+}

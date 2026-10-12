@@ -1,0 +1,203 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{a lone drip echoes down the shaft, then the deep breath swells up from below for the first time}",
+   "duration_ms": 6000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "80 BPM",
+    "C sharp minor with a dark Phrygian flat second",
+    "a low hollow pulse-wave lead moving slowly by steps",
+    "deep slow bass swells that rise and fall like enormous breathing",
+    "sparse high plinks like water dripping in a cavern",
+    "distant dry pick-taps and the faint clack of old rails",
+    "a dark warm organ pad far in the background",
+    "abandoned deep mine galleries in total darkness, ancient and vast",
+    "echoing cave reverb",
+    "strong slow melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "a lone instrument breathing in",
+    "deep shaft"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "cheerful",
+    "upbeat",
+    "busy drums",
+    "horror",
+    "jump scare",
+    "epic orchestral"
+   ],
+   "context_adherence": "high",
+   "conditioning_ref": {
+    "song_id": "TOREmIgiwF3GKpN7UkLA",
+    "range": {
+     "start_ms": 10668,
+     "end_ms": 40668
+    }
+   },
+   "condition_strength": "low"
+  },
+  {
+   "text": "[Main Theme]\n{the low hollow lead sounds only a rising leap and holds it, unresolved, over the slow breathing bass; drips and pick-taps in the silences}",
+   "duration_ms": 24000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "80 BPM",
+    "C sharp minor with a dark Phrygian flat second",
+    "a low hollow pulse-wave lead moving slowly by steps",
+    "deep slow bass swells that rise and fall like enormous breathing",
+    "sparse high plinks like water dripping in a cavern",
+    "distant dry pick-taps and the faint clack of old rails",
+    "a dark warm organ pad far in the background",
+    "abandoned deep mine galleries in total darkness, ancient and vast",
+    "echoing cave reverb",
+    "strong slow melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "main theme",
+    "memorable hook",
+    "sparse and echoing"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "cheerful",
+    "upbeat",
+    "busy drums",
+    "horror",
+    "jump scare",
+    "epic orchestral"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme Reprise]\n{the leap again, sinking a half step onto the dark flat second; the organ pad glows faintly beneath, the breath a little deeper}",
+   "duration_ms": 24000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "80 BPM",
+    "C sharp minor with a dark Phrygian flat second",
+    "a low hollow pulse-wave lead moving slowly by steps",
+    "deep slow bass swells that rise and fall like enormous breathing",
+    "sparse high plinks like water dripping in a cavern",
+    "distant dry pick-taps and the faint clack of old rails",
+    "a dark warm organ pad far in the background",
+    "abandoned deep mine galleries in total darkness, ancient and vast",
+    "echoing cave reverb",
+    "strong slow melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "darker colour",
+    "slightly fuller"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "cheerful",
+    "upbeat",
+    "busy drums",
+    "horror",
+    "jump scare",
+    "epic orchestral"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast, the rail yard: a slow ticking rail-clack ostinato, the lead falls quiet, and the vast breath swells louder and closer}",
+   "duration_ms": 18000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "80 BPM",
+    "C sharp minor with a dark Phrygian flat second",
+    "a low hollow pulse-wave lead moving slowly by steps",
+    "deep slow bass swells that rise and fall like enormous breathing",
+    "sparse high plinks like water dripping in a cavern",
+    "distant dry pick-taps and the faint clack of old rails",
+    "a dark warm organ pad far in the background",
+    "abandoned deep mine galleries in total darkness, ancient and vast",
+    "echoing cave reverb",
+    "strong slow melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "mechanical rail ostinato",
+    "contrasting section"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "cheerful",
+    "upbeat",
+    "busy drums",
+    "horror",
+    "jump scare",
+    "epic orchestral"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the low lead returns over the breathing bass and drips; the last bar leads straight back into the main theme}",
+   "duration_ms": 24000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "80 BPM",
+    "C sharp minor with a dark Phrygian flat second",
+    "a low hollow pulse-wave lead moving slowly by steps",
+    "deep slow bass swells that rise and fall like enormous breathing",
+    "sparse high plinks like water dripping in a cavern",
+    "distant dry pick-taps and the faint clack of old rails",
+    "a dark warm organ pad far in the background",
+    "abandoned deep mine galleries in total darkness, ancient and vast",
+    "echoing cave reverb",
+    "strong slow melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "cheerful",
+    "upbeat",
+    "busy drums",
+    "horror",
+    "jump scare",
+    "epic orchestral"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}

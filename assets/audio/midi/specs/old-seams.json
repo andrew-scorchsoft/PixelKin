@@ -1,0 +1,46 @@
+{
+  "title": "PixelKin - The Old Seams (bare gbc)",
+  "_note": "The Old Seams (09-the-wild-ways §2D): the sealed deep galleries under Cinderhead - plank bridges over shafts, ore-cart rails, water dripping, and far below the first fallen star (Emberroot) breathing as the coal. Bare 4-voice gbc is right here (deep cave, score bible §3.3). 80 BPM (the gbc floor; it reads as half-time), 4/4, C# minor with a Phrygian D natural for the deep. Stone signature: low pulse25 drone-lead, dry pick-tap toms, sparse. pulse12 = DRIPS (single high notes, each echoed fainter), turning to a slow rail-tick in the B section (the rail yard). tri_bass = THE BREATH: long bottom-register tones that swell and ebb by velocity, inhale/exhale every two bars, with silences between. Vesper motif: caves = fragmented - only the rising leap G#3->C#4->D#4 survives; the settle never arrives (it sinks to the Phrygian D instead). Silence is an instrument. 24 bars = 72 s. Original (VISION.md).",
+  "era": "gbc",
+  "tempo": 80,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "C# minor (Phrygian colour)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 3,
+      "gain": 0.85,
+      "_note": "Low drone-lead, the motif's rising leap only; long rests.",
+      "notes": "rw | rw | G#3h. C#4q | D#4w | rw | E4h D#4h | D4w | rw | G#3q C#4q D#4h | rw | E4q D#4q D4h | C#4h. rq | rw | rw | B3h C#4h | D#4w | rw | rw | A3h G#3h | rw | G#3h. C#4q | D#4w | E4h D4h | D4w"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 5,
+      "gain": 0.45,
+      "_note": "Drips with fainter echoes; in B a slow rail-tick ostinato.",
+      "notes": "rh. G#5e@70 re | rw | rq E6e@60 re rh | rh G#5e@60 G#5e@30 rq | rw | rh. C#6e@64 re | rw | rq G#5e@60 G#5e@28 rh | rw | rh. D#6e@62 re | rw | rq G#5e@64 re rh | rh. E6e@58 E6e@26 | rw | rq C#6e@60 re rh | rw | C#5e@40 rq. C#5e@34 rq. | C#5e@40 rq. C#5e@34 rq. | C#5e@40 rq. C#5e@34 rq. | C#5e@40 rq. D5e@34 rq. | rh. G#5e@64 re | rw | rq E6e@60 re rh | rh G#5e@58 G#5e@28 rq"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 1.0,
+      "_note": "Something vast breathing below: swelling/ebbing low tones.",
+      "notes": "C#2w@80 | C#2h@64 D2h@78 | C#2w@84 | G#1h@72 rh | C#2w@80 | C#2h@64 D2h@78 | C#2w@84 | G#1h@72 rh | C#2w@80 | C#2h@64 D2h@78 | C#2w@84 | G#1h@72 rh | C#2w@80 | C#2h@64 D2h@78 | C#2w@84 | G#1h@72 rh | C#2w@90 | D2w@84 | C#2w@90 | G#1w@80 | C#2w@80 | C#2h@64 D2h@78 | C#2w@84 | G#1h@72 rh"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.55,
+      "_note": "Distant pick-taps (tom) and a hat tick; in B the rail clack (hat pairs).",
+      "notes": "q tom@54 rq rh | rw | rh. hatq@40 | rw | tomq@54 rq rh | rq hat@36 rh | rw | rh tomq@40 rq | tomq@54 rq rh | rw | rh. hatq@40 | rw | tomq@54 rq rh | rq hat@36 rh | rw | rh tomq@40 rq | e hat@44 hat@30 rq rh | hate@44 hate@30 rq rh | hate@44 hate@30 rq tom@46 rq | hate@44 hate@30 rq rh | q tom@54 rq rh | rw | rh. hatq@40 | rh tomq@40 rq"
+    }
+  ]
+}
