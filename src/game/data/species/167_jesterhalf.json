@@ -1,0 +1,110 @@
+{
+  "id": 167,
+  "slug": "jesterhalf",
+  "name": "JesterHalf",
+  "types": [
+    "Light",
+    "Dark"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "A",
+  "stats": {
+    "hp": 56,
+    "atk": 53,
+    "def": 53,
+    "spa": 53,
+    "spd": 53,
+    "spe": 44
+  },
+  "bst": 312,
+  "ability": "mirrorlight",
+  "hidden_ability": "forager",
+  "catchRate": 210,
+  "kindling": {
+    "into": 168,
+    "trigger": {
+      "kind": "level",
+      "level": 24
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "glimmer"
+      },
+      {
+        "level": 9,
+        "move": "dazzle_flash"
+      },
+      {
+        "level": 13,
+        "move": "lumen_cut"
+      },
+      {
+        "level": 19,
+        "move": "duskmaw"
+      },
+      {
+        "level": 22,
+        "move": "radiant_strike"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A little two-faced tumbler that lives in the Old Light's halls. One half of it is bright and grinning, the other half dark and deadpan, and it only ever finishes half a joke: the bright side tells the setup, the dark side forgets the punchline. It practises its tumbles all night where nobody can see",
+    "category": "Light Wanderer Kin",
+    "size_cm": 40,
+    "weight_kg": 4.2,
+    "habitat": "jesthouse"
+  },
+  "encounters": [
+    {
+      "area": "pearlmoor_oldlight_2",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 10,
+      "max": 12
+    },
+    {
+      "area": "pearlmoor_oldlight_3",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 10,
+      "max": 12
+    },
+    {
+      "area": "pearlmoor_oldlight_4",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 11,
+      "max": 13
+    },
+    {
+      "area": "pearlmoor_oldlight_5",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 12,
+      "max": 14
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "A small round-bodied jester kin split straight down the middle: the left half cream-white with a gold diamond motley and a bright grinning eye, the right half deep indigo-black with a silver diamond and a sleepy deadpan eye. A two-pointed jester cap, one point gold with a tiny lit bell, one point indigo with a dark bell. Stubby arms, curly-toed shoes, a ruffled collar half gold, half indigo. At 64px it reads instantly as a cute half-light, half-dark harlequin ball.",
+    "palette": "A small round-bodied jester kin split straight down the middle: the left half cream-white with a gold diamond motley and a bright grinning eye, the right half deep indigo-black with a silver diamond and a sleepy deadpan eye. A two-pointed jester cap, one point gold with a tiny lit bell, one point indigo with a dark bell. Stubby arms, curly-toed shoes, a ruffled collar half gold, half indigo. At 64px it reads instantly as a cute half-light, half-dark harlequin ball.",
+    "direction": "Cheerful, mischievous, a little incomplete \u2014 always half a joke short. Cute, never creepy; the split must be clean and readable."
+  },
+  "provenance_concept_id": "X-JESTERHALF"
+}

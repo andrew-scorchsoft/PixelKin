@@ -252,7 +252,7 @@ export const TRAINERS: TrainerRegistry = {
     name: 'THE RINGMASTER',
     title: 'Jest-keeper',
     party: [
-      { species_id: 16, level: 12 }, // Wickmoth — Ember
+      { species_id: 167, level: 12 }, // JesterHalf — Light/Dark
       { species_id: 69, level: 13 }, // Riddlestone — Stone (ace)
     ],
     defeat_ref: 'trainer.oldlight_ringmaster.defeat',
@@ -261,13 +261,13 @@ export const TRAINERS: TrainerRegistry = {
   },
   // R10: the jest-house REGULARS — optional sight trainers waiting in each
   // floor's alcove (F1-F5), rising 10 -> 14 so the climb is the grind bed before
-  // Reyl (16) and the fen. Balanced, never hard: two-to-three kin, no Tide.
+  // Reyl (16) and the fen. Balanced, never hard: two-to-three kin; the house's own clowns (JesterHalf, The Smiler, McClownface) turn up in the bills.
   oldlight_usher: {
     id: 'oldlight_usher',
     name: 'THE USHER',
     title: 'Jest-house regular',
     party: [
-      { species_id: 8, level: 10 }, // Glimflit — Light
+      { species_id: 169, level: 10 }, // The Smiler — Light
       { species_id: 16, level: 11 }, // Wickmoth — Ember (ace)
     ],
     defeat_ref: 'trainer.oldlight_usher.defeat',
@@ -278,7 +278,7 @@ export const TRAINERS: TrainerRegistry = {
     name: 'THE JUGGLER',
     title: 'Jest-house regular',
     party: [
-      { species_id: 31, level: 11 }, // Lumpin — Tide/Light
+      { species_id: 167, level: 11 }, // JesterHalf — Light/Dark
       { species_id: 47, level: 11 }, // Pebbit — Stone
       { species_id: 8, level: 12 }, // Glimflit — Light (ace)
     ],
@@ -291,7 +291,7 @@ export const TRAINERS: TrainerRegistry = {
     title: 'Jest-house regular',
     party: [
       { species_id: 26, level: 12 }, // Brinelet — Tide
-      { species_id: 16, level: 12 }, // Wickmoth — Ember (ace)
+      { species_id: 171, level: 12 }, // McClownface — Tide/Light (ace)
     ],
     defeat_ref: 'trainer.oldlight_pie_thrower.defeat',
     payout: 192, // route 16 × ace 12

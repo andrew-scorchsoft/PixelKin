@@ -337,69 +337,49 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { oldlight_f1_set: 'assets/tilesets/oldlight_f1_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/oldlight-f1.mp3',
-    battle_backdrops: [
-      'assets/backgrounds/battle/beacon-stair-a.webp',
-      'assets/backgrounds/battle/beacon-stair-b.webp',
-    ],
+    battle_backdrops: ['assets/backgrounds/battle/oldlight-f1-a.webp'],
   },
   pearlmoor_oldlight_2: {
     json: 'assets/maps/pearlmoor_oldlight_2.json',
     tilesets: { oldlight_f2_set: 'assets/tilesets/oldlight_f2_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/oldlight-f2.mp3',
-    battle_backdrops: [
-      'assets/backgrounds/battle/pearlmoor-lumenary-a.webp',
-      'assets/backgrounds/battle/pearlmoor-lumenary-b.webp',
-    ],
+    battle_backdrops: ['assets/backgrounds/battle/oldlight-f2-a.webp'],
   },
   pearlmoor_oldlight_3: {
     json: 'assets/maps/pearlmoor_oldlight_3.json',
     tilesets: { oldlight_f3_set: 'assets/tilesets/oldlight_f3_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/oldlight-f3.mp3',
-    battle_backdrops: [
-      'assets/backgrounds/battle/beacon-stair-a.webp',
-      'assets/backgrounds/battle/beacon-stair-b.webp',
-    ],
+    battle_backdrops: ['assets/backgrounds/battle/oldlight-f3-a.webp'],
   },
   pearlmoor_oldlight_4: {
     json: 'assets/maps/pearlmoor_oldlight_4.json',
     tilesets: { oldlight_f4_set: 'assets/tilesets/oldlight_f4_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/oldlight-f4.mp3',
-    battle_backdrops: [
-      'assets/backgrounds/battle/pearlmoor-lumenary-a.webp',
-      'assets/backgrounds/battle/pearlmoor-lumenary-b.webp',
-    ],
+    battle_backdrops: ['assets/backgrounds/battle/oldlight-f4-a.webp'],
   },
   pearlmoor_oldlight_5: {
     json: 'assets/maps/pearlmoor_oldlight_5.json',
     tilesets: { oldlight_f5_set: 'assets/tilesets/oldlight_f5_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/oldlight-f5.mp3',
-    battle_backdrops: [
-      'assets/backgrounds/battle/beacon-stair-a.webp',
-      'assets/backgrounds/battle/beacon-stair-b.webp',
-    ],
+    battle_backdrops: ['assets/backgrounds/battle/oldlight-f5-a.webp'],
   },
   pearlmoor_oldlight_6: {
     json: 'assets/maps/pearlmoor_oldlight_6.json',
     tilesets: { oldlight_f6_set: 'assets/tilesets/oldlight_f6_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/oldlight-f6.mp3',
-    battle_backdrops: [
-      'assets/backgrounds/battle/beacon-stair-a.webp',
-      'assets/backgrounds/battle/beacon-stair-b.webp',
-    ],
+    battle_backdrops: ['assets/backgrounds/battle/oldlight-f6-a.webp'],
   },
   pearlmoor_oldlight_top: {
     json: 'assets/maps/pearlmoor_oldlight_top.json',
     tilesets: { oldlight_f7_set: 'assets/tilesets/oldlight_f7_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/oldlight-f7.mp3',
-    battle_backdrops: [
-      'assets/backgrounds/battle/beacon-lantern-a.webp',
-    ],
+    battle_backdrops: ['assets/backgrounds/battle/oldlight-top-a.webp'],
   },
   pearlmoor_shop: {
     json: 'assets/maps/pearlmoor_shop.json',

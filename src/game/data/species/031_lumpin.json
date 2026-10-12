@@ -192,6 +192,13 @@
       "rarity": "common",
       "min": 58,
       "max": 64
+    },
+    {
+      "area": "pearlmoor_oldlight_2",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 11,
+      "max": 12
     }
   ],
   "scripted": false,

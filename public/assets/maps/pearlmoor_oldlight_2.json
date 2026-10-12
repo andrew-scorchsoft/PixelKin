@@ -990,26 +990,32 @@
       "encounter_rate": 0.07,
       "table": [
         {
-          "kin_id": 8,
-          "weight": 30,
-          "min_level": 10,
-          "max_level": 12
-        },
-        {
-          "kin_id": 111,
-          "weight": 30,
-          "min_level": 10,
-          "max_level": 12
-        },
-        {
-          "kin_id": 69,
+          "kin_id": 169,
           "weight": 25,
           "min_level": 10,
           "max_level": 12
         },
         {
-          "kin_id": 31,
+          "kin_id": 167,
+          "weight": 30,
+          "min_level": 10,
+          "max_level": 12
+        },
+        {
+          "kin_id": 8,
+          "weight": 20,
+          "min_level": 10,
+          "max_level": 12
+        },
+        {
+          "kin_id": 111,
           "weight": 15,
+          "min_level": 10,
+          "max_level": 12
+        },
+        {
+          "kin_id": 31,
+          "weight": 10,
           "min_level": 11,
           "max_level": 12
         }
@@ -1100,6 +1106,18 @@
       "movement": "look_around",
       "dialogue_ref": "npc.oldlight_heckler_after",
       "requires_flag": "flag:oldlight_heckler_beaten"
+    },
+    {
+      "id": "moll",
+      "at": {
+        "tx": 20,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "fisher_woman",
+      "movement": "look_around",
+      "dialogue_ref": "npc.oldlight_moll_2",
+      "hidden_when_flag": "flag:oldlight_2_solved"
     }
   ],
   "gates": [],

@@ -1054,13 +1054,19 @@
       "table": [
         {
           "kin_id": 105,
-          "weight": 50,
+          "weight": 40,
+          "min_level": 10,
+          "max_level": 12
+        },
+        {
+          "kin_id": 167,
+          "weight": 30,
           "min_level": 10,
           "max_level": 12
         },
         {
           "kin_id": 111,
-          "weight": 50,
+          "weight": 30,
           "min_level": 11,
           "max_level": 12
         }
@@ -1126,6 +1132,18 @@
       "movement": "look_around",
       "dialogue_ref": "npc.oldlight_pie_thrower_after",
       "requires_flag": "flag:oldlight_pie_thrower_beaten"
+    },
+    {
+      "id": "moll",
+      "at": {
+        "tx": 1,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "fisher_woman",
+      "movement": "look_around",
+      "dialogue_ref": "npc.oldlight_moll_3",
+      "hidden_when_flag": "flag:oldlight_3_solved"
     }
   ],
   "gates": [],

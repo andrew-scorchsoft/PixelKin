@@ -19,6 +19,8 @@
  *               banana peel
  *  F6 One Joke  the two cups become a REST (sit across from the empty chair),
  *               the old confetti, the one spring-snake
+ *  Every floor  MOLL, Tam's old stage partner (non-fighting): one floor ahead,
+ *               cheering you on and telling Tam's story a piece at a time
  *  Point        PIP, the netmender's grandson, runs after you on the way out if
  *               you've the floats but not the rope (so the breakwater — and what
  *               waits at its end — is never missed)
@@ -251,5 +253,44 @@ export const JESTHOUSE_DIALOGUE: DialogueRegistry = {
   ],
   'sign.oldlight_spring_can': [
     sign('A can of spring-snakes with its lid popped. Only one snake jumped. The rest are still inside, waiting for a better audience.'),
+  ],
+
+  // ---- MOLL: Tam's old stage partner, always one floor ahead (build_pearlmoor_oldlight.py
+  // MOLL). Non-fighting: she cheers you on and tells Tam's story a floor at a time. The cut
+  // rope stays Reyl's log's to tell (TOP) — Moll only names it once you've read it.
+  'npc.oldlight_moll_1': [
+    line('MOLL', "Oh! A Wayfarer. Reyl sends one up now and then. I send myself, once a winter."),
+    line('MOLL', "I'm Moll. Forty years I was the straight half of a double act, right here in this lobby. Tam Wash was the funny half."),
+    line('MOLL', "She built that clattering joke-box upstairs so there'd still be jokes when she was out on the water. Go on, love, up you go. I'll be right behind you."),
+  ],
+  'npc.oldlight_moll_2': [
+    line('MOLL', "Don't ask how I got here first. Sixty years of knowing where the back stairs are."),
+    line('MOLL', "This was our stage. Winter nights the whole quay squeezed in. Tam rowed the late ferry, then came on still dripping in her oilskins and did twenty minutes."),
+    line('MOLL', "The audience laughed a beat late even then. 'Fog in their ears,' she said. You're doing grand. Keep climbing."),
+  ],
+  'npc.oldlight_moll_3': [
+    line('MOLL', "Interval! Tam's rule: nobody climbs on an empty stomach. She baked cheese-buns for the house. Two each. Three if you heckled well."),
+    line('MOLL', "She used to say a lighthouse and a joke want the same thing: somebody out in the dark, coming home toward them."),
+    line('MOLL', "Sit by the urn if you're flagging, love. I'm off up. My knees and I aren't on speaking terms."),
+  ],
+  'npc.oldlight_moll_4': [
+    line('MOLL', "Everything's backwards on this floor. Tam's idea. 'People look their best laughing at themselves, Moll.'"),
+    line('MOLL', "She'd pull faces at those mirrors till the mirrors gave up first."),
+    line('MOLL', "You've a good face for this. A face that keeps going. That's the whole trick of comedy, and of most things."),
+  ],
+  'npc.oldlight_moll_5': [
+    line('MOLL', "Her pictures, mostly. That's the old ferry. That's Reyl, young and scowling. He only ever smiled when he thought nobody was looking."),
+    line('MOLL', "Eleven winters back the fog came in thick as wool. Tam was out with the late boat. ...The boats came home. She didn't."),
+    line('MOLL', "Reyl rang that bell till his hands gave out. You'll understand more at the top. Go gently with him after, won't you? Nearly there."),
+  ],
+  'npc.oldlight_moll_6': [
+    line('MOLL', "Hear it? The same joke, round and round. He wrote it for her, for when she got home."),
+    line('MOLL', "I come up once a winter and sit with it a while. Somebody ought to laugh at it, and I never can."),
+    line('MOLL', "Go on up and finish it for her. I'll be along. The last flight's the steepest, and I like to take it slow."),
+  ],
+  'npc.oldlight_moll_top': [
+    line('MOLL', "(puffing) There. Made it. ...You finished her card, didn't you? I heard the drum stop turning."),
+    line('MOLL', "If you've read his log, you know about the rope. He thinks nobody knows. The whole quay knows, love. We just let him carry it his own way."),
+    line('MOLL', "Take those floats down to the netmender and ring that bell. Let the old man hear it rung by someone who laughed on the way up. ...Thank you. Truly."),
   ],
 };

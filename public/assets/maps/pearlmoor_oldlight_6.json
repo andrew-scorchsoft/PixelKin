@@ -938,20 +938,39 @@
       "table": [
         {
           "kin_id": 111,
-          "weight": 60,
+          "weight": 50,
           "min_level": 13,
           "max_level": 14
         },
         {
           "kin_id": 105,
-          "weight": 40,
+          "weight": 30,
+          "min_level": 13,
+          "max_level": 14
+        },
+        {
+          "kin_id": 171,
+          "weight": 20,
           "min_level": 13,
           "max_level": 14
         }
       ]
     }
   ],
-  "npcs": [],
+  "npcs": [
+    {
+      "id": "moll",
+      "at": {
+        "tx": 20,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "fisher_woman",
+      "movement": "look_around",
+      "dialogue_ref": "npc.oldlight_moll_6",
+      "hidden_when_flag": "flag:q_south_jest_done"
+    }
+  ],
   "gates": [],
   "music": "assets/audio/music/oldlight-f6.mp3",
   "ambience": {

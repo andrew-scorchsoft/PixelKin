@@ -1066,20 +1066,26 @@
       "encounter_rate": 0.07,
       "table": [
         {
-          "kin_id": 111,
-          "weight": 35,
+          "kin_id": 167,
+          "weight": 30,
           "min_level": 11,
           "max_level": 13
         },
         {
           "kin_id": 69,
-          "weight": 35,
+          "weight": 25,
           "min_level": 11,
           "max_level": 13
         },
         {
-          "kin_id": 16,
-          "weight": 30,
+          "kin_id": 111,
+          "weight": 25,
+          "min_level": 11,
+          "max_level": 13
+        },
+        {
+          "kin_id": 171,
+          "weight": 20,
           "min_level": 12,
           "max_level": 13
         }
@@ -1137,6 +1143,18 @@
       "movement": "look_around",
       "dialogue_ref": "npc.oldlight_ringmaster_after",
       "requires_flag": "flag:oldlight_ringmaster_beaten"
+    },
+    {
+      "id": "moll",
+      "at": {
+        "tx": 20,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "fisher_woman",
+      "movement": "look_around",
+      "dialogue_ref": "npc.oldlight_moll_4",
+      "hidden_when_flag": "flag:oldlight_4_solved"
     }
   ],
   "gates": [],

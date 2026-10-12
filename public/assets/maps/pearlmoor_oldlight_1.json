@@ -1093,19 +1093,25 @@
       "table": [
         {
           "kin_id": 8,
-          "weight": 40,
+          "weight": 30,
           "min_level": 9,
           "max_level": 11
         },
         {
-          "kin_id": 16,
+          "kin_id": 169,
           "weight": 35,
           "min_level": 9,
           "max_level": 11
         },
         {
+          "kin_id": 16,
+          "weight": 20,
+          "min_level": 9,
+          "max_level": 11
+        },
+        {
           "kin_id": 69,
-          "weight": 25,
+          "weight": 15,
           "min_level": 10,
           "max_level": 11
         }
@@ -1160,6 +1166,18 @@
       "movement": "look_around",
       "dialogue_ref": "npc.oldlight_usher_after",
       "requires_flag": "flag:oldlight_usher_beaten"
+    },
+    {
+      "id": "moll",
+      "at": {
+        "tx": 14,
+        "ty": 12
+      },
+      "facing": "down",
+      "sprite": "fisher_woman",
+      "movement": "look_around",
+      "dialogue_ref": "npc.oldlight_moll_1",
+      "hidden_when_flag": "flag:oldlight_1_solved"
     }
   ],
   "gates": [],

@@ -131,6 +131,19 @@ def alcove(over, c):
     partition_v(over, W, c + 2, H - 4, H - 2, lip="w")
 
 
+# the wild tables, floor by floor — MIRRORED by OLDLIGHT_TABLES in
+# tools/balance/build_species.py (slug rows there; keep the two in step).
+# The jest-house's own kin (JesterHalf #167, The Smiler #169, McClownface #171)
+# live only here; the regulars are the Point's lamplit flutterers.
+TOWER_TABLES = {
+    1: [(8, 30, 9, 11), (169, 35, 9, 11), (16, 20, 9, 11), (69, 15, 10, 11)],
+    2: [(169, 25, 10, 12), (167, 30, 10, 12), (8, 20, 10, 12), (111, 15, 10, 12), (31, 10, 11, 12)],
+    3: [(105, 40, 10, 12), (167, 30, 10, 12), (111, 30, 11, 12)],
+    4: [(167, 30, 11, 13), (69, 25, 11, 13), (111, 25, 11, 13), (171, 20, 12, 13)],
+    5: [(171, 25, 12, 14), (167, 25, 12, 14), (69, 25, 12, 14), (169, 25, 13, 14)],
+    6: [(111, 50, 13, 14), (105, 30, 13, 14), (171, 20, 13, 14)],
+}
+
 def encounters(zone_id, table, rect=HALL, rate=0.07):
     tx, ty, w, h = rect
     return {"id": zone_id, "terrain": "cave", "rect": {"tx": tx, "ty": ty, "w": w, "h": h},
@@ -275,7 +288,7 @@ def floor_1():
     sign_at(triggers, "jack_box_sign", 9, 3, "script.oldlight_jack_box", kind="cutscene")
     ol(objects, "spotlight", 14, 2, oid="spotlight")
     stairs(1, W, base, objects, warps, triggers, down=None, up="ne")
-    enc = [encounters("tower_f1", [(8, 40, 9, 11), (16, 35, 9, 11), (69, 25, 10, 11)],
+    enc = [encounters("tower_f1", TOWER_TABLES[1],
                       rect=(1, 2, W - 2, 4), rate=0.05)]
     m = mapdef(mid(1), "The Old Light — The Lobby of Groaners", W, H, ts,
                base, over, objects, warps, triggers, npcs, music(1))
@@ -324,8 +337,7 @@ def floor_2():
     trainer(npcs, "heckler", 4, 3, "left", "npc_man")
     m = mapdef(mid(2), "The Old Light — The Late Laugh", W, H, ts,
                base, over, objects, warps, triggers, npcs, music(2))
-    m["encounters"] = [encounters("tower_f2", [(8, 30, 10, 12), (111, 30, 10, 12),
-                                               (69, 25, 10, 12), (31, 15, 11, 12)])]
+    m["encounters"] = [encounters("tower_f2", TOWER_TABLES[2])]
     return m
 
 
@@ -376,7 +388,7 @@ def floor_3():
     stairs(3, W, base, objects, warps, triggers, down="nw", up="ne")
     m = mapdef(mid(3), "The Old Light — Intermission", W, H, ts,
                base, over, objects, warps, triggers, npcs, music(3))
-    m["encounters"] = [encounters("tower_f3", [(105, 50, 10, 12), (111, 50, 11, 12)], rate=0.04)]
+    m["encounters"] = [encounters("tower_f3", TOWER_TABLES[3], rate=0.04)]
     return m
 
 
@@ -427,8 +439,7 @@ def floor_4():
     ol(objects, "mallet", 8, 2, oid="mallet")
     m = mapdef(mid(4), "The Old Light — The Backwards Inn", W, H, ts,
                base, over, objects, warps, triggers, npcs, music(4))
-    m["encounters"] = [encounters("tower_f4", [(111, 35, 11, 13), (69, 35, 11, 13),
-                                               (16, 30, 12, 13)])]
+    m["encounters"] = [encounters("tower_f4", TOWER_TABLES[4])]
     return m
 
 
@@ -474,8 +485,7 @@ def floor_5():
     stairs(5, W, base, objects, warps, triggers, down="nw", up="ne")
     m = mapdef(mid(5), "The Old Light — The Gallery of Confident Facts", W, H, ts,
                base, over, objects, warps, triggers, npcs, music(5))
-    m["encounters"] = [encounters("tower_f5", [(69, 40, 12, 14), (111, 30, 12, 14),
-                                               (105, 30, 13, 14)])]
+    m["encounters"] = [encounters("tower_f5", TOWER_TABLES[5])]
     return m
 
 
@@ -513,7 +523,7 @@ def floor_6():
            partner_w={7: 14})
     m = mapdef(mid(6), "The Old Light — The One Joke", W, H, ts,
                base, over, objects, warps, triggers, npcs, music(6))
-    m["encounters"] = [encounters("tower_f6", [(111, 60, 13, 14), (105, 40, 13, 14)], rate=0.04)]
+    m["encounters"] = [encounters("tower_f6", TOWER_TABLES[6], rate=0.04)]
     return m
 
 
@@ -577,8 +587,39 @@ def floor_top():
                   base, over, objects, warps, triggers, npcs, music(7))
 
 
+# MOLL, Tam's old stage partner — the tower's one non-fighting companion. She
+# is always a floor AHEAD of you (each placement hides once that floor's stair
+# opens: "back stairs, love"), cheers you on, and tells Tam's story a piece per
+# floor (npc.oldlight_moll_*, regions/jesthouse.ts). She reaches the top only
+# after you've finished Tam's card. Parked in a corner by each arrival pad, off
+# the lane to the hall.
+MOLL = {
+    1: ((14, 12), "flag:oldlight_1_solved", None),
+    2: ((20, 5), "flag:oldlight_2_solved", None),
+    3: ((1, 5), "flag:oldlight_3_solved", None),
+    4: ((20, 5), "flag:oldlight_4_solved", None),
+    5: ((5, 3), "flag:oldlight_5_solved", None),
+    6: ((20, 5), "flag:q_south_jest_done", None),
+    7: ((4, 8), None, "flag:q_south_jest_done"),
+}
+
+
+def add_moll(n, m):
+    (x, y), hide, need = MOLL[n]
+    tag = "top" if n == 7 else str(n)
+    npc = {"id": "moll", "at": {"tx": x, "ty": y}, "facing": "down", "sprite": "fisher_woman",
+           "movement": "look_around", "dialogue_ref": f"npc.oldlight_moll_{tag}"}
+    if hide:
+        npc["hidden_when_flag"] = hide
+    if need:
+        npc["requires_flag"] = need
+    m["npcs"].append(npc)
+    return m
+
+
 def all_maps():
-    return [floor_1(), floor_2(), floor_3(), floor_4(), floor_5(), floor_6(), floor_top()]
+    floors = [floor_1(), floor_2(), floor_3(), floor_4(), floor_5(), floor_6(), floor_top()]
+    return [add_moll(n, m) for n, m in enumerate(floors, 1)]
 
 
 if __name__ == "__main__":

@@ -12,11 +12,11 @@
     "hp": 60,
     "atk": 50,
     "def": 55,
-    "spa": 110,
+    "spa": 98,
     "spd": 55,
-    "spe": 88
+    "spe": 84
   },
-  "bst": 418,
+  "bst": 402,
   "ability": "daybringer",
   "hidden_ability": "nightsight",
   "catchRate": 112,

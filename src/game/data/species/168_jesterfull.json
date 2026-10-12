@@ -1,0 +1,83 @@
+{
+  "id": 168,
+  "slug": "jesterfull",
+  "name": "JesterFull",
+  "types": [
+    "Light",
+    "Dark"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "D",
+  "stats": {
+    "hp": 84,
+    "atk": 84,
+    "def": 88,
+    "spa": 85,
+    "spd": 85,
+    "spe": 72
+  },
+  "bst": 498,
+  "ability": "mirrorlight",
+  "hidden_ability": "forager",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 167,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "glimmer"
+      },
+      {
+        "level": 9,
+        "move": "dazzle_flash"
+      },
+      {
+        "level": 13,
+        "move": "lumen_cut"
+      },
+      {
+        "level": 19,
+        "move": "duskmaw"
+      },
+      {
+        "level": 22,
+        "move": "radiant_strike"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      },
+      {
+        "level": 31,
+        "move": "prism_beam"
+      },
+      {
+        "level": 40,
+        "move": "dawnburst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "When a JesterHalf finally finishes a joke, its two halves stop arguing and it kindles whole. A JesterFull tells the setup with its bright side and lands the punchline with its dark side, and the timing is perfect. It bows after every battle, win or lose. Whole, poised, theatrical \u2014 the joke finally ",
+    "category": "Light Wanderer Kin",
+    "size_cm": 150,
+    "weight_kg": 38,
+    "habitat": "jesthouse"
+  },
+  "encounters": [],
+  "scripted": false,
+  "art": {
+    "silhouette": "A tall, graceful jester kin, now whole: a lithe figure in quartered motley (cream-gold and indigo-black diamonds checkered across it), a grand three-pointed cap with bells that glow gold and silver, a theatrical ruffled collar, long pointed sleeves, and a jester's sceptre topped with a little laughing-and-solemn double mask. Both eyes now open and bright. Poised mid-bow. At 64px: a dignified, balanced harlequin in gold and indigo.",
+    "palette": "A tall, graceful jester kin, now whole: a lithe figure in quartered motley (cream-gold and indigo-black diamonds checkered across it), a grand three-pointed cap with bells that glow gold and silver, a theatrical ruffled collar, long pointed sleeves, and a jester's sceptre topped with a little laughing-and-solemn double mask. Both eyes now open and bright. Poised mid-bow. At 64px: a dignified, balanced harlequin in gold and indigo.",
+    "direction": "Whole, poised, theatrical \u2014 the joke finally lands. Graceful, warm, a showman who respects the audience."
+  },
+  "provenance_concept_id": "X-JESTERFULL"
+}
