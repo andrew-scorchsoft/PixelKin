@@ -679,7 +679,10 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   // east mouth to Galehigh's west gate — three ledged tiers, lv 28-31.
   cinderwind_scarp: {
     json: 'assets/maps/cinderwind_scarp.json',
-    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',   // the haulers' ladders (traversal pass 2026-10)
+    },
     kind: 'route',
     music: 'assets/audio/music/windward-stair-a.mp3',
     battle_backdrops: [
