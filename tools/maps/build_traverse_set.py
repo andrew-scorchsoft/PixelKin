@@ -82,18 +82,19 @@ def rot(im: Image.Image, k: int) -> Image.Image:
 
 # ---- the wax-road chute ---------------------------------------------------------
 def chute_v(v: int = 0) -> Image.Image:
-    """Packed tallow-dark earth with two deep cart ruts down the fall line."""
+    """The wax road: packed, tallow-darkened earth, scored by short downhill
+    skid-streaks (the motion motif) and a little grit — never full-height ruts,
+    which tile into plank stripes."""
     a = flat(WAX)
-    rut = sh(WAX, 0.66)
-    rut_lit = sh(WAX, 1.22, 6)
-    for x0 in (4, 11):
-        for y in range(16):
-            a[y, x0, :3] = rut
-            a[y, x0 + 1, :3] = sh(WAX, 0.80)
-            if (y + 3 * v) % 6 == 0:
-                a[y, x0 - 1, :3] = rut_lit          # a lit rut lip, every 6px
-    # grit dots off the ruts (layout per variant)
-    for (x, y) in ([(1, 3), (8, 9), (14, 13)], [(2, 11), (8, 2), (14, 6)])[v % 2]:
+    streak = sh(WAX, 0.70)
+    lit = sh(WAX, 1.18, 6)
+    layout = ([(3, 1), (11, 4), (6, 9), (13, 11), (2, 13)],
+              [(9, 0), (4, 5), (12, 8), (7, 12), (1, 9)])[v % 2]
+    for (x, y) in layout:
+        for k in range(4):
+            put(a, [(x, y + k)], streak)
+        put(a, [(x + 1, y)], lit)                    # the streak's lit head
+    for (x, y) in ([(8, 3), (14, 14), (1, 6)], [(14, 3), (3, 15), (10, 6)])[v % 2]:
         put(a, [(x, y)], sh(WAX, 0.82))
         put(a, [(x, y - 1)], sh(WAX, 1.16, 4))
     return img(a)

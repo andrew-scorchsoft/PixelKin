@@ -1220,7 +1220,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       traverse_set: 'assets/tilesets/traverse_set.webp',
     },
     kind: 'route',
-    music: 'assets/audio/music/sunvault-climb-a.mp3',
+    music: 'assets/audio/music/wickrun.mp3',
     battle_backdrops: ['assets/backgrounds/battle/wickrun-a.webp', 'assets/backgrounds/battle/wickrun-b.webp'],
   },
   wickrun_chute: {
@@ -1230,7 +1230,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       traverse_set: 'assets/tilesets/traverse_set.webp',
     },
     kind: 'route',
-    music: 'assets/audio/music/sunvault-climb-a.mp3',
+    music: 'assets/audio/music/wickrun.mp3',
     battle_backdrops: ['assets/backgrounds/battle/wickrun-a.webp', 'assets/backgrounds/battle/wickrun-b.webp'],
   },
   // the Mirelights (B)

@@ -55,16 +55,16 @@ def carve(x0, y0, x1, y1):
 
 carve(10, 1, 17, 4)          # the start landing
 carve(13, 0, 14, 0)          # the gate from the crest
-carve(11, 5, 16, 12)         # chute A
-carve(5, 13, 22, 14)         # the steering bowl
-carve(5, 15, 9, 19)          # west line, upper
-carve(3, 20, 9, 25)          # west landing (flat)
-carve(5, 26, 9, 30)          # west line, lower
-carve(18, 15, 22, 30)        # east line
+carve(10, 5, 17, 12)         # chute A + its verges
+carve(4, 13, 23, 14)         # the steering bowl
+carve(4, 15, 10, 19)         # west line, upper
+carve(3, 20, 10, 25)         # west landing (flat)
+carve(4, 26, 10, 30)         # west line, lower
+carve(17, 15, 22, 30)        # east line (+ its west verge)
 carve(24, 16, 26, 20)        # the ledge pocket (flat)
 carve(25, 21, 25, 30)        # the ledge's drain chute
-carve(3, 31, 26, 35)         # the run-out shelf
-carve(3, 36, 7, 42)          # the last drop
+carve(2, 31, 26, 35)         # the run-out shelf
+carve(2, 36, 8, 42)          # the last drop + verges
 carve(4, 43, 5, 43)          # the exit
 for (x, y) in OPEN:
     tree[y * W + x] = 0
@@ -76,7 +76,7 @@ m: dict = {
     "tilesets": [mk.shared_tileset_ref()],
     "layers": [],
     "objects": [], "warps": [], "triggers": [], "encounters": [], "npcs": [], "gates": [],
-    "music": "assets/audio/music/sunvault-climb-a.mp3",
+    "music": "assets/audio/music/wickrun.mp3",
     "battle_backdrops": ["assets/backgrounds/battle/wickrun-a.webp",
                          "assets/backgrounds/battle/wickrun-b.webp"],
     "ride": True,
@@ -88,13 +88,13 @@ def cells(x0, y0, x1, y1):
     return {(x, y) for y in range(y0, y1 + 1) for x in range(x0, x1 + 1)}
 
 
-wk.chute(m, pin, deco, W, cells(11, 5, 16, 12), "down", fid="chute_a")
+wk.chute(m, pin, deco, W, cells(12, 5, 15, 12), "down", fid="chute_a")
 wk.chute(m, pin, deco, W, cells(5, 13, 22, 14), "down", fid="bowl", berms=False, chevrons=0)
-wk.chute(m, pin, deco, W, cells(5, 15, 9, 19), "down", fid="west_upper")
-wk.chute(m, pin, deco, W, cells(5, 26, 9, 30), "down", fid="west_lower")
+wk.chute(m, pin, deco, W, cells(6, 15, 8, 19), "down", fid="west_upper")
+wk.chute(m, pin, deco, W, cells(6, 26, 8, 30), "down", fid="west_lower")
 wk.chute(m, pin, deco, W, cells(18, 15, 22, 30), "down", fid="east_line")
 wk.chute(m, pin, deco, W, cells(25, 21, 25, 30), "down", fid="ledge_drain", berms=False, chevrons=3)
-wk.chute(m, pin, deco, W, cells(3, 36, 7, 42), "down", fid="last_drop")
+wk.chute(m, pin, deco, W, cells(4, 36, 6, 42), "down", fid="last_drop")
 
 # the kickers: a side-ramp off the east line onto the ledge (over the crevice
 # at x23), and a boulder-leap further down the line
@@ -158,6 +158,14 @@ obj("island_pine", "windward_bent_pine", (13, 17), 2, 3, overhang=2, walk_under=
 obj("island_tree", "tinderwick_tree_c", (12, 22), 3, 4, overhang=3, walk_under=True)
 obj("wreck", "solarium_troupe_cart", (10, 32), 3, 2)       # stand-in for the wax-cart wreck
 obj("runout_lamp", "tinderwick_lamp_post", (16, 31), 1, 3, overhang=2, walk_under=True)
+# the wax-road lanterns: a post on a verge every few rows, alternating sides —
+# the run reads as a lit line down the dark mountain (and from the lift)
+for i, (lx, ly) in enumerate([(10, 5), (17, 9), (4, 15), (10, 27), (17, 17), (17, 25),
+                              (2, 37), (8, 40)]):
+    obj(f"run_lamp_{i}", "tinderwick_lamp_post", (lx, ly), 1, 3, overhang=2, walk_under=True)
+obj("verge_pine_a", "windward_bent_pine", (4, 28), 2, 3, overhang=2, walk_under=True)
+obj("bowl_crates", "pearlmoor_fish_crates", (4, 13), 1, 1)
+obj("bowl_crates_b", "pearlmoor_fish_crates", (23, 14), 1, 1)
 for (x, y) in cells(10, 15, 17, 30):
     if (x, y) not in OPEN and rng.random() < 0.10:
         pass

@@ -93,7 +93,7 @@ m: dict = {
     "tilesets": [mk.shared_tileset_ref()],
     "layers": [],
     "objects": [], "warps": [], "triggers": [], "encounters": [], "npcs": [], "gates": [],
-    "music": "assets/audio/music/sunvault-climb-a.mp3",
+    "music": "assets/audio/music/wickrun.mp3",
     "ride": True,
 }
 wk.use_traverse(m)
