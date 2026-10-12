@@ -32,13 +32,13 @@ def build_cottage():
     partition_v(over, W, 11, 1, 5, lip="w")
 
     objects: list = []
-    # focal hearth top-centre; fairy-light lamp-racks either side (warm and busy)
+    # focal hearth top-centre; the fairy-light lamp-rack west (the nook is too
+    # narrow for a second over the cushion — the hearth is the other light)
     wall_mount(objects, "hearth", 7)
     wall_mount(objects, "lamp_rack", 2, solid=False)
-    wall_mount(objects, "lamp_rack", 13, oid="lamp_rack_e", solid=False)
     # the nook: the Gloampurr's cushion-bed + a fern keeping it company
     place(objects, "bed_inn", 12, 2, oid="cat_cushion")
-    place(objects, "plant", 15, 5, oid="nook_fern")
+    place(objects, "plant", 14, 5, oid="nook_fern")
     # the home: tea table + stools west, a rug, plants everywhere, sacks of cat-food
     place(objects, "table_long", 2, 5)
     place(objects, "stool", 2, 7, oid="stool_a")
@@ -48,6 +48,9 @@ def build_cottage():
     place(objects, "plant", 5, 3, oid="plant_a")
     place(objects, "plant", 10, 3, oid="plant_b")
     place(objects, "plant", 9, 8, oid="plant_c")
+    # the tea corner below the nook (the room's empty south-east quarter)
+    place(objects, "table", 12, 8, oid="tea_table")
+    place(objects, "stool", 14, 9, oid="tea_stool")
 
     warps = [
         {"id": "to_dell", "at": {"tx": door_x, "ty": H - 1}, "trigger": "step_on",

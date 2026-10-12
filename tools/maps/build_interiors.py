@@ -246,10 +246,12 @@ def build_crossroads_inn():
     wall_mount(objects, "hearth", 8)
     wall_mount(objects, "lamp_rack", 12, solid=False)
     place(objects, "brazier", 14, 2, oid="brazier_e")
-    place(objects, "counter", 9, 3, oid="counter")  # the innkeeper's bar
-    place(objects, "table_long", 11, 6)
-    place(objects, "stool", 11, 8, oid="stool_a")
-    place(objects, "stool", 13, 8, oid="stool_b")
+    # the innkeeper's bar, east of the hearth (its back row used to sit ON the
+    # hearth's floor row); she keeps its west end, before the fire
+    place(objects, "counter", 10, 4, oid="counter")
+    place(objects, "table_long", 11, 7)
+    place(objects, "stool", 11, 9, oid="stool_a")
+    place(objects, "stool", 13, 9, oid="stool_b")
     place(objects, "table", 2, 8, oid="table_round")
     place(objects, "stool", 1, 8, oid="stool_c")
     place(objects, "rug", 7, 8, solid=False)
@@ -577,6 +579,9 @@ def all_maps():
                    kit_script="script.shop_kit_pearlmoor", kit_flag="flag:pearlmoor_kit",
                    chandlery=True),
         build_inn(),
+        # (was never in this list — the shipped JSON had drifted from its builder
+        # and check_rebuild could not see it; 2026-10 interior pass)
+        build_crossroads_inn(),
         build_lifting_house(),
     ]
 

@@ -32,11 +32,24 @@ like two *different* homes.
 
 ## 1. The kits
 
-**Walls/floors** — two 13-tile register variants drawn by
+**Walls/floors** — two register variants drawn by
 `tools/maps/build_interior_walls.py`: **warm** `interior_set` (wood/plaster —
 homes, shops, inns) and **cool** `interior_stone_set` (stone/dark panel —
-Lumenaries). Tile roles: cap band (4 dirs + 4 corners), north face, window
-(warm) / banner (cool) insets, patterned floor + variant, doormat/runner.
+Lumenaries). Tile roles: the legacy 13 (cap band 4 dirs + 4 corners, north
+face, window (warm) / banner (cool) insets, patterned floor + variant,
+doormat/runner), then — APPENDED 2026-10, 55 tiles in all — the full 47-shape
+wall-band **blob** and three **face ends**. Builders only say *where* walls are
+(`faced_room`/`partition_v`/`partition_h` place provisional cap tiles);
+`roomkit.finish` runs **`autotile_walls`**, which redraws every band tile from
+its neighbourhood: a lit lip on each side that meets the room, an inner-corner
+nub where two walls meet round an open diagonal. So a divider **joins** the
+ceiling band (a T — no lip across its top), corners turn instead of crossing,
+a partition shows its edge on **both** sides, free ends and doorway jambs wrap,
+and a face that stops in the open (a pillar front, a partition's free end, a
+doorway in a `partition_h`) gets a shaded side. Never hand-place a specific
+band/corner gid — it is overwritten. New shapes = append to
+`roomkit.appended_tiles()` (never reorder; bump nothing by hand — `TILE_COUNT`
+and the set refs follow) and re-run `build_interior_walls.py`.
 
 **Furniture** — a two-stage pipeline, packed by `pack_objects.py` to
 `interior_<stem>` keys:
@@ -107,6 +120,18 @@ Every interior has **one focal point at top-centre** and **one partition**:
    involved (the rooms need room). Door on the **bottom edge**.
 8. **Collision**: walls + partitions + furniture collide; floor/rug/runner/
    doormat walk on; `lamp_rack` may be `solid:false` (lamps hang overhead).
+9. **Walls read as architecture** (2026-10 interior pass): every partition
+   either joins another wall or ends in its FACE (`partition_v` does both: it
+   turns the face above it into band, ends each run in a face, and runs
+   straight into the bottom wall when it reaches it); a `partition_h` door gap
+   is framed by wall ends on both sides. A run of 1 open tile between two
+   walls is a doorway, never a missing tile.
+10. **No overlaps, nothing on a wall**: no two pieces share a tile (a flag
+   swap pair excepted — they share a footprint by design); free-standing
+   pieces stay off the wall band (a bed 2 wide needs 2 clear columns — a
+   3-wide nook holds ONE); NPCs stand on floor, never on a table/altar/rack
+   (a diner sits BESIDE the table); a wall-hung banner over a counter is
+   listed BEFORE the counter so it hangs behind it.
 
 ## 4. Build & QA pattern
 

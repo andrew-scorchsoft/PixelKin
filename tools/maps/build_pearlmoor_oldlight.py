@@ -139,9 +139,11 @@ def floor_1():
     place(objects, "plant", 3, 5, oid="cloak_plant")
     place(objects, "stool", 1, 6, oid="cloak_stool")
     # the BOX OFFICE counter, top-centre: the focal point
-    place(objects, "counter", 5, 2, oid="box_office")
+    # the banners hang on the wall BEHIND the counter: listed first, so the
+    # counter draws over their lower half (they used to drape over its top)
     wall_mount(objects, "banner_warm", 5, oid="banner_l", solid=False)
     wall_mount(objects, "banner_warm", 8, oid="banner_r", solid=False)
+    place(objects, "counter", 5, 2, oid="box_office")
     windows(over, W, [10])
     # THE PLAQUE on the face beside the box office (who wrote every joke here)
     sign_at(triggers, "plaque", 9, 1, "sign.oldlight_plaque")
@@ -246,9 +248,11 @@ def floor_4():
     partition_v(over, W, 9, 2, 5, lip="e")
     objects.append({"id": "coats", "sprite": "solarium_costume_rack",
                     "at": {"tx": 10, "ty": 4}, "w": 2, "h": 2})
-    place(objects, "counter", 5, 2, oid="box_office")
+    # the banners hang on the wall BEHIND the counter: listed first, so the
+    # counter draws over their lower half (they used to drape over its top)
     wall_mount(objects, "banner_warm", 5, oid="banner_l", solid=False)
     wall_mount(objects, "banner_warm", 8, oid="banner_r", solid=False)
+    place(objects, "counter", 5, 2, oid="box_office")
     sign_at(triggers, "backwards_a", 4, 1, "sign.oldlight_backwards_a")
     sign_at(triggers, "backwards_b", 7, 3, "sign.oldlight_backwards_b")
     aisle_runner(objects, 7, 4, 9)

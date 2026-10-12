@@ -893,6 +893,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `roomkit.aisle_runner` (stacked drawn `interior_rug_runner` objects), NEVER `runner()` —
   the DOORMAT tile repeated vertically reads as a ladder (hard black cell borders), the
   "dodgy path" look. All three Lumenaries use `aisle_runner`.**
+- **Interior walls AUTOTILE (2026-10).** `roomkit.finish` → `autotile_walls` redraws every band/face
+  tile from its neighbours (the 55-tile kit: legacy 13 + the appended blob + face ends), so builders
+  only place walls — never hand-pick a cap/corner gid. A new wall shape = append to
+  `roomkit.appended_tiles()` + re-run `build_interior_walls.py`. `crossroads_inn` used to be an ORPHAN
+  (its builder wasn't in `build_interiors.all_maps()`, so check_rebuild couldn't see it drift) — any new
+  interior builder function must be listed there. Interior QA bar: `docs/world/interiors.md` §3 r9–r10.
 - **Re-running `interiorforge.py` CLOBBERS the image-gen hero masters.** It rewrites every
   PNG in `assets/tilesets/interior/objects/` — including pieces `gen_interior_object.py`
   re-rendered into the same paths. Add a new piece with `interiorforge.py --only <stem>` (2026-10);

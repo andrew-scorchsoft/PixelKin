@@ -16,7 +16,9 @@ replaces them with a drawn SNES-style wall SYSTEM, per docs/world/interiors.md:
     drawn as insets ON that face, not as standalone squares.
 
 Writes the masters into assets/tilesets/interior/tiles_{warm,cool}/, rewrites
-both manifests (13 tiles), and repacks interior_set + interior_stone_set.
+both manifests (the legacy 13 tiles + the APPENDED wall-band blob and face ends
+— roomkit.appended_tiles(), resolved per tile by roomkit.autotile_walls), and
+repacks interior_set + interior_stone_set.
 build_interiors.py's faced_room() places them. Deterministic; safe to re-run.
 
 Run:  python3 tools/maps/build_interior_walls.py   (then build_interiors.py)
@@ -28,6 +30,9 @@ import sys
 from pathlib import Path
 import numpy as np
 from PIL import Image
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from roomkit import appended_tiles  # noqa: E402  (the shared, append-only tile order)
 
 REPO = Path(__file__).resolve().parents[2]
 INT = REPO / "assets" / "tilesets" / "interior"
@@ -88,6 +93,42 @@ def cap_base_cool(seed=5):
             a[y, off] = seam
     n = rng.integers(-4, 5, size=(16, 16, 1))
     a[..., :3] = np.clip(a[..., :3] + n, 0, 255)
+    return a
+
+
+def band(base, sides, nubs, mid, light, outline):
+    """A wall-top band tile: the lit lip (mid step, light edge, 1px dark rim at
+    the very edge) along each open SIDE, and a corner NUB — the inner turn of
+    the lip — at each open diagonal between two walls. Distance-to-edge drives
+    the ramp, so lips meet cleanly: a convex corner wraps (min distance) and a
+    nub turns the neighbours' lips into each other (Chebyshev distance)."""
+    a = base.copy()
+    ramp = {0: outline, 1: light, 2: mid}
+    for y in range(16):
+        for x in range(16):
+            d = 99
+            if "n" in sides: d = min(d, y)
+            if "s" in sides: d = min(d, 15 - y)
+            if "w" in sides: d = min(d, x)
+            if "e" in sides: d = min(d, 15 - x)
+            if "ne" in nubs: d = min(d, max(15 - x, y))
+            if "nw" in nubs: d = min(d, max(x, y))
+            if "se" in nubs: d = min(d, max(15 - x, 15 - y))
+            if "sw" in nubs: d = min(d, max(x, 15 - y))
+            if d <= 2:
+                a[y, x] = ramp[d]
+    return a
+
+
+def face_end(face, sides, rim, shade=26):
+    """The wall FACE where it stops in the open (a pillar front, a partition's
+    free end, a doorway jamb): a 1px dark rim + a shaded strip on that side so
+    the face reads as the wall turning away, not a strip cut off mid-air."""
+    a = face.copy()
+    for side in sides:
+        rc, sc = (0, 1) if side == "w" else (15, 14)
+        a[:, sc, :3] = np.clip(a[:, sc, :3] - shade, 0, 255)
+        a[:, rc] = rim
     return a
 
 
@@ -187,13 +228,13 @@ KITS = {
         "set_name": "interior_set",
         "cap": cap_base_warm(), "face": face_warm(), "accent": window_warm(),
         "accent_name": "window",
-        "lip": (WOOD[1], WOOD[3], WOOD[0]),
+        "lip": (WOOD[1], WOOD[3], WOOD[0]), "rim": WOOD[0],
     },
     "tiles_cool": {
         "set_name": "interior_stone_set",
         "cap": cap_base_cool(), "face": face_cool(), "accent": banner_cool(),
         "accent_name": "banner",
-        "lip": (STONE[1], STONE[3], STONE[0]),
+        "lip": (STONE[1], STONE[3], STONE[0]), "rim": INKDARK,
     },
 }
 
@@ -212,7 +253,7 @@ for kit, spec in KITS.items():
     spec["face_im"].save(d / "face.png")
     img(spec["accent"]).save(d / f"{spec['accent_name']}.png")
     for nm, sides in LIPS.items():
-        img(with_lips(spec["cap"], sides, mid, light, outline)).save(d / f"{nm}.png")
+        img(band(spec["cap"], sides, (), mid, light, outline)).save(d / f"{nm}.png")
     tiles = []
     for nm in ORDER:
         if nm == "MAT":
@@ -223,13 +264,23 @@ for kit, spec in KITS.items():
             tiles.append({"file": f"{nm}.png"})
         else:
             tiles.append({"file": f"{nm}.png", "collides": True})
+    # APPENDED (2026-10): the rest of the wall-band blob + the face ends, in
+    # roomkit.appended_tiles() order — roomkit.autotile_walls picks them per
+    # tile from the neighbourhood. Append-only; never reorder.
+    for nm, sides, nubs in appended_tiles():
+        if sides is None:
+            ends = {"face_end_w": "w", "face_end_e": "e", "face_end_ew": "we"}[nm]
+            img(face_end(spec["face"], ends, spec["rim"])).save(d / f"{nm}.png")
+        else:
+            img(band(spec["cap"], sides, nubs, mid, light, outline)).save(d / f"{nm}.png")
+        tiles.append({"file": f"{nm}.png", "collides": True})
     manifest = {"name": spec["set_name"], "columns": 8, "tiles": tiles}
     (d / "tileset.manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     # remove superseded masters so the dir mirrors the manifest
     for old in ("wall_cap.png", "wall_face.png", "wall_corner.png", "wall_s.png"):
         if (d / old).exists():
             (d / old).unlink()
-    print(f"{kit}: 13-tile wall system written")
+    print(f"{kit}: {len(tiles)}-tile wall system written")
 
 for kit in KITS:
     res = subprocess.run([sys.executable, str(PACK), "--tiles-dir", str(INT / kit)],

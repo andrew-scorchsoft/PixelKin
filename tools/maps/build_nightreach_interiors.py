@@ -86,7 +86,7 @@ def build_lumenary():
 
     objects: list = []
     # the carpet aisle (drawn runner objects — never the doormat tile)
-    aisle_runner(objects, door_x, 6, H - 2)
+    aisle_runner(objects, door_x, 5, H - 2)   # the eyepiece's foot to the door
     # THE LUNAR IDENTITY: indigo banners on the face, THE GREAT EYEPIECE on
     # the dais, the EIGHTH WATCH-LAMP at its side (dark -> lit on gleam:lunar)
     wall_mount(objects, "banner_ice", 6, oid="banner_l", solid=False)
@@ -104,7 +104,7 @@ def build_lumenary():
          "requires_flag": "gleam:lunar"},
         # the pale-flame brazier — west flank (cold starlight, not hearth-fire)
         {"id": "brazier_w", "sprite": "pale_vault_brazier",
-         "at": {"tx": 4, "ty": 3}, "w": 2, "h": 3},
+         "at": {"tx": 5, "ty": 3}, "w": 2, "h": 3},
         # vigil lamps flank the door (the Star-vigil's small brave lights)
         {"id": "vigil_lamp_l", "sprite": "nightreach_vigil_lamp",
          "at": {"tx": 2, "ty": 9}, "w": 1, "h": 2},
@@ -127,12 +127,12 @@ def build_lumenary():
          "to_map": "nightreach_observatory", "to": {"tx": 15, "ty": 10},
          "facing": "down", "transition": "door"},
     ]
-    # THE BOND-TEST BAND — the dais cut: with the brazier (4-5) and the eighth
+    # THE BOND-TEST BAND — the dais cut: with the brazier (5-6) and the eighth
     # lamp (10-11) solid through row 5 and Nessa herself on (8,5), the only
-    # cells that reach the eyepiece are (6,5), (7,5) and (9,5). Band exactly
-    # those (the whole walkable cut, only walkable cells).
+    # cells that reach the eyepiece are (7,5) and (9,5). Band exactly those
+    # (the whole walkable cut, only walkable cells).
     triggers = []
-    for i, tx in enumerate((6, 7, 9)):
+    for i, tx in enumerate((7, 9)):
         triggers.append({
             "id": f"lumenary_battle_{i}", "kind": "cutscene",
             "at": {"tx": tx, "ty": 5}, "activation": "step_on",
@@ -169,7 +169,7 @@ def build_lumenary():
          "sprite": "npc_old_man", "movement": "static",
          "dialogue_ref": "npc.nightreach_hall_keeper"},
         # Arc E payoff: the hall answers the eighth Gleam (standing kit)
-        {"id": "hall_festival", "at": {"tx": 12, "ty": 8}, "facing": "left",
+        {"id": "hall_festival", "at": {"tx": 10, "ty": 7}, "facing": "left",
          "sprite": "npc_woman", "movement": "look_around",
          "dialogue_ref": "npc.nightreach_hall_festival",
          "requires_flag": "gleam:lunar"},
@@ -185,20 +185,20 @@ def build_inn():
     base, over = faced_room(W, H, door_x)
     windows(over, W, [4, 11])
     # the bunk room behind a partition — watchers sleep out the dawn-watch
-    partition_v(over, W, 9, 1, 5, lip="w")
+    partition_v(over, W, 8, 1, 5, lip="w")  # a 4-wide bunk room (two 2-wide beds)
 
     objects: list = []
     wall_mount(objects, "hearth", 5)
     wall_mount(objects, "lamp_rack", 2, solid=False)
-    place(objects, "bed_inn", 10, 2, oid="bunk_a")
-    place(objects, "bed_inn", 12, 2, oid="bunk_b")
-    place(objects, "plant", 10, 5, oid="nook_fern")
+    place(objects, "bed_inn", 9, 2, oid="bunk_a")
+    place(objects, "bed_inn", 11, 2, oid="bunk_b")
+    place(objects, "plant", 12, 5, oid="nook_fern")
     place(objects, "table_long", 2, 5)
     place(objects, "stool", 2, 7, oid="stool_a")
     place(objects, "stool", 4, 7, oid="stool_b")
     place(objects, "rug", 6, 7, solid=False)
     place(objects, "barrels", 1, 3, oid="cellar_casks")
-    place(objects, "sacks", 12, 8, oid="grain")
+    place(objects, "sacks", 11, 8, oid="grain")
 
     warps = [
         {"id": "to_town", "at": {"tx": door_x, "ty": H - 1}, "trigger": "step_on",
@@ -211,7 +211,7 @@ def build_inn():
          "sprite": "npc_shopkeeper", "movement": "static",
          "dialogue_ref": "script.nightreach_inn_rest"},
         # the ONE dry line lives here (see docstring) — nowhere else
-        {"id": "guest", "at": {"tx": 3, "ty": 6}, "facing": "right",
+        {"id": "guest", "at": {"tx": 3, "ty": 7}, "facing": "up",
          "sprite": "npc_man", "movement": "static",
          "dialogue_ref": "npc.nightreach_inn_guest"},
         {"id": "watcher_off_shift", "at": {"tx": 11, "ty": 6}, "facing": "left",
@@ -246,7 +246,7 @@ def build_home():
          "facing": "down", "transition": "door"},
     ]
     npcs = [
-        {"id": "home_elder", "at": {"tx": 4, "ty": 4}, "facing": "down",
+        {"id": "home_elder", "at": {"tx": 5, "ty": 4}, "facing": "left",
          "sprite": "npc_old_man", "movement": "static",
          "dialogue_ref": "npc.nightreach_home_elder"},
         {"id": "home_kid", "at": {"tx": 7, "ty": 6}, "facing": "left",
