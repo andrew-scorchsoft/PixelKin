@@ -238,6 +238,9 @@ m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + ter
 ]
 
 if __name__ == "__main__":
+    # deep water (2026-10): the open sea past the shallow shelf — Tidecall
+    # swims the shallows only (mapkit.deep_water; the reserved `deepdive` gate)
+    mk.deep_water(m)
     ok = mk.finalize(m, scale=3)
     pt.report(owed)
     print("PASS" if ok else "FAIL")

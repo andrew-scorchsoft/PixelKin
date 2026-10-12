@@ -1,0 +1,130 @@
+{
+  "name": "deepwater_set",
+  "columns": 6,
+  "tiles": [
+    {
+      "file": "000_deepwater_corner_nw.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "deepdive",
+      "terrain": "deepwater",
+      "autotile": "corner_nw"
+    },
+    {
+      "file": "001_deepwater_edge_n.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "deepdive",
+      "terrain": "deepwater",
+      "autotile": "edge_n"
+    },
+    {
+      "file": "002_deepwater_corner_ne.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "deepdive",
+      "terrain": "deepwater",
+      "autotile": "corner_ne"
+    },
+    {
+      "file": "003_deepwater_edge_w.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "deepdive",
+      "terrain": "deepwater",
+      "autotile": "edge_w"
+    },
+    {
+      "file": "004_deepwater_fill.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "deepdive",
+      "terrain": "deepwater",
+      "autotile": "fill",
+      "animation": {
+        "frames": [
+          4,
+          13,
+          14
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "file": "005_deepwater_edge_e.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "deepdive",
+      "terrain": "deepwater",
+      "autotile": "edge_e"
+    },
+    {
+      "file": "006_deepwater_corner_sw.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "deepdive",
+      "terrain": "deepwater",
+      "autotile": "corner_sw"
+    },
+    {
+      "file": "007_deepwater_edge_s.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "deepdive",
+      "terrain": "deepwater",
+      "autotile": "edge_s"
+    },
+    {
+      "file": "008_deepwater_corner_se.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "deepdive",
+      "terrain": "deepwater",
+      "autotile": "corner_se"
+    },
+    {
+      "file": "009_deepwater_inner_nw.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "deepdive",
+      "terrain": "deepwater",
+      "autotile": "inner_nw"
+    },
+    {
+      "file": "010_deepwater_inner_ne.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "deepdive",
+      "terrain": "deepwater",
+      "autotile": "inner_ne"
+    },
+    {
+      "file": "011_deepwater_inner_sw.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "deepdive",
+      "terrain": "deepwater",
+      "autotile": "inner_sw"
+    },
+    {
+      "file": "012_deepwater_inner_se.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "deepdive",
+      "terrain": "deepwater",
+      "autotile": "inner_se"
+    },
+    {
+      "file": "013_deepwater_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "deepdive"
+    },
+    {
+      "file": "014_deepwater_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "deepdive"
+    }
+  ]
+}

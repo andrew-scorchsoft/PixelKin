@@ -69,7 +69,15 @@
     "weight_kg": 48,
     "habitat": "east"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "cinderwind_scarp",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 28,
+      "max": 30
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Squat, wide-shouldered stone body with visible grey-white mineral veins along arms; amber eyes now set in a craggy brow ridge; four sturdy legs planted firmly.",

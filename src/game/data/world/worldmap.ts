@@ -8,11 +8,11 @@
 import layoutJson from './worldmap.json';
 
 export type WorldMapNodeKind = 'town' | 'route' | 'dungeon' | 'hub' | 'landmark';
-export type WorldMapRoadKind = 'road' | 'lane' | 'gate' | 'pass';
+export type WorldMapRoadKind = 'road' | 'lane' | 'gate' | 'pass' | 'car';
 
 export interface WorldMapNode {
   id: string; // the node's anchor map id
-  /** Centre position in the layout's 220x140 virtual box (x right, y down). */
+  /** Centre position in the layout's virtual box (x right, y down; see WORLD_MAP_BOX). */
   x: number;
   y: number;
   kind: WorldMapNodeKind;
@@ -27,6 +27,8 @@ export interface WorldMapRoad {
 }
 
 export interface WorldMapLayout {
+  /** The virtual box the coordinates live in (220 wide; height = the world's aspect). */
+  box?: { width: number; height: number };
   nodes: WorldMapNode[];
   roads: WorldMapRoad[];
   /** EVERY map id -> the node it belongs to (interiors -> their town,
@@ -34,10 +36,11 @@ export interface WorldMapLayout {
   members: Record<string, string>;
 }
 
-/** The layout's virtual-box size the node coordinates live in. */
-export const WORLD_MAP_BOX = { width: 220, height: 140 } as const;
-
 export const WORLD_MAP: WorldMapLayout = layoutJson as WorldMapLayout;
+
+/** The layout's virtual-box size the node coordinates live in (the honest
+ *  north-up world is TALL — the MAP screen fits the width and scrolls). */
+export const WORLD_MAP_BOX: { width: number; height: number } = WORLD_MAP.box ?? { width: 220, height: 140 };
 
 const NODE_BY_ID = new Map(WORLD_MAP.nodes.map((n) => [n.id, n]));
 

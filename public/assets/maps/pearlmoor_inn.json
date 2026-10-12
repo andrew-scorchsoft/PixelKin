@@ -595,7 +595,20 @@
       "facing": "down",
       "sprite": "innkeeper",
       "movement": "static",
-      "dialogue_ref": "script.inn_rest"
+      "dialogue_ref": "script.inn_rest",
+      "hidden_when_flag": "gleam:tide"
+    },
+    {
+      "id": "innkeep_lit",
+      "at": {
+        "tx": 9,
+        "ty": 4
+      },
+      "facing": "down",
+      "sprite": "innkeeper",
+      "movement": "static",
+      "dialogue_ref": "script.pearlmoor_inn_rest_lit",
+      "requires_flag": "gleam:tide"
     },
     {
       "id": "fisher",
@@ -606,7 +619,20 @@
       "facing": "left",
       "sprite": "fisher_man",
       "movement": "static",
-      "dialogue_ref": "npc.pearlmoor_fisher"
+      "dialogue_ref": "npc.pearlmoor_fisher",
+      "hidden_when_flag": "gleam:tide"
+    },
+    {
+      "id": "fisher_lit",
+      "at": {
+        "tx": 12,
+        "ty": 7
+      },
+      "facing": "left",
+      "sprite": "fisher_man",
+      "movement": "static",
+      "dialogue_ref": "npc.pearlmoor_fisher_inn_lit",
+      "requires_flag": "gleam:tide"
     },
     {
       "id": "old_fisher_pre",

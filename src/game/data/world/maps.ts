@@ -101,6 +101,21 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/tinderwick-b.webp',
     ],
   },
+  // The tutorial zone (2026-10): Wickstead Green, one step WEST of the orchard, and
+  // its lamp-school — optional and safe (no encounters); each teacher teaches one
+  // mechanic. No battle_backdrops: nothing is fought here.
+  wickstead_green: {
+    json: 'assets/maps/wickstead_green.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'town',
+    music: 'assets/audio/music/tinderwick-a.mp3',
+  },
+  wickstead_school: {
+    json: 'assets/maps/wickstead_school.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-study.mp3',
+  },
   tinderwick_lumenary: {
     json: 'assets/maps/tinderwick_lumenary.json',
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
@@ -660,6 +675,18 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   // Galehigh Terraces — the North's cliff-farm town (Lumenary 5, Storm: Mira
   // Vael) under the Kite-rising; the Kite-Rising Winch earned loop hauls the
   // player up to the skyloft for the bond-test at the launch ledge.
+  // Cinderwind Scarp (2026-10 geometry fix): the climb out of Cinderhead Deep's
+  // east mouth to Galehigh's west gate — three ledged tiers, lv 28-31.
+  cinderwind_scarp: {
+    json: 'assets/maps/cinderwind_scarp.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/windward-stair-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/windward-stair-a.webp',
+      'assets/backgrounds/battle/windward-stair-b.webp',
+    ],
+  },
   galehigh_terraces: {
     json: 'assets/maps/galehigh_terraces.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
@@ -1016,6 +1043,19 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/interior-study.mp3',
+  },
+  // The mountain road (2026-10 geometry fix): up from the Crossroads' north
+  // edge to the Penumbra Ring — grass foot -> drained shelf -> basalt
+  // shoulder, three Hollowing acolytes, the last wild kin (lv 50-53).
+  umbral_approach: {
+    json: 'assets/maps/umbral_approach.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/penumbra-ring-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/penumbra-ring-a.webp',
+      'assets/backgrounds/battle/penumbra-ring-b.webp',
+    ],
   },
   // C1 — the CENTRAL threshold (walkthrough 05): the innermost band of the
   // great dark, mostly receded by the time `flag:hub_unlocked` lets you in.

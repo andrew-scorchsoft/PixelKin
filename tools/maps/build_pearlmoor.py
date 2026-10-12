@@ -106,12 +106,14 @@ mk.vline(path, W, H, inn_door[0], inn_door[1] + 1, 12)
 # connect the promenade down across the quay to the sand jetty head (rows 12->17)
 mk.vline(path, W, H, 13, 12, 17)
 mk.vline(path, W, H, 14, 12, 17)
-# the Lanternway WEST to Vesper Crossroads + the EAST road tease toward Saltreach
-# Fen (East region; inert until authored — the engine no-ops unregistered warps).
-mk.hline(path, W, H, 12, 0, 4)
+# the west lane bends DOWN to the beach path (Lightkeeper's Point) — the
+# 2026-10 geometry fix moved the road to the Crossroads EAST, through Saltreach
+# Fen and down the bay's far shore; the EAST road is that way.
+mk.hline(path, W, H, 12, 2, 4)
+mk.vline(path, W, H, 2, 12, 15)
 mk.hline(path, W, H, 12, 23, W - 1)
-for x in (0, 1, 2):
-    tree[12 * W + x] = 0
+for (x, y) in [(2, 12), (2, 13), (2, 14)]:
+    tree[y * W + x] = 0
 for x in (25, 26, 27):
     tree[12 * W + x] = 0
 
@@ -218,7 +220,7 @@ sign_tiles = {
                                  # the sign sealing the whole west spoke), and
                                  # (5,14)/(6,14) hold the lamp trunk + flowerbed
     "sign_harbour": (15, 16),    # by the quay/boardwalk, facing the gated water
-    "sign_lanternway": (2, 11),  # beside the west lane, pointing to the Crossroads
+    "sign_lanternway": (3, 11),  # beside the west lane: the beach west, the Crossroads road east
     "sign_fen": (25, 11),        # beside the east lane, the sleeping Saltreach road
 }
 for (x, y) in sign_tiles.values():
@@ -339,11 +341,6 @@ m = {
         {"id": "to_breakwater_e", "at": {"tx": 25, "ty": 23}, "trigger": "step_on",
          "to_map": "pearlmoor_breakwater", "to": {"tx": 6, "ty": 0}, "facing": "down",
          "requires_flag": "flag:q_south_has_rope", "blocked_ref": "npc.netmender_gate",
-         "transition": "fade"},
-        # The west road -> the Wrackline Path (and on to the Lanternway and the
-        # Vesper Crossroads); the id keeps its graph name.
-        {"id": "to_crossroads", "at": {"tx": 0, "ty": 12}, "trigger": "step_on",
-         "to_map": "wrackline_path", "to": {"tx": 14, "ty": 5}, "facing": "left",
          "transition": "fade"},
         # R9: the west beach runs on out to Lightkeeper's Point (the Old Light).
         # (Shipped JSON carries these surgically too — see build_pearlmoor_point.py.)
@@ -508,6 +505,14 @@ m = {
 }
 
 if __name__ == "__main__":
+    # deep water (2026-10): the open sea past the shallow shelf — Tidecall
+    # swims the shallows only (mapkit.deep_water; the reserved `deepdive` gate)
+    # The harbour's two Tidecall gates ARE the designed swim (the rarer Tide kin
+    # live there), so their rects stay shallow; only the sea beyond runs deep.
+    mk.deep_water(m, keep_rects=[(g["rect"]["tx"], g["rect"]["ty"],
+                                  g["rect"]["tx"] + g["rect"]["w"] - 1,
+                                  g["rect"]["ty"] + g["rect"]["h"] - 1)
+                                 for g in m["gates"] if g["ability"] == "tidecall"])
     ok = mk.finalize(m, scale=3, pin_base=QUAY_PINS)
     print("PASS" if ok else "FAIL")
     raise SystemExit(0 if ok else 1)

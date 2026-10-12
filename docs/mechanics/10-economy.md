@@ -232,9 +232,9 @@ The JOURNEY table in `progression.mjs` is the contract; summarised:
 |---|---|--:|--:|---|
 | South *(built + breakwater pair + the Old Light)* | 11 — 4 route, 5 keeper (incl. R9's Old Light pair: the Heckler 11/12 → 240w, the Ringmaster 12/13 → 260w), 1 rival, 2 warden (+1 optional route: Paul, S4's one-time bout, 240w) | ~29 | 750w | Wax Cake |
 | East *(fen + Lowleaf built)* | 12 — 3 route, 7 keeper, 2 warden | ~36 | 1,550w | Moth-amber ×2 |
-| North | 13 — 6 route, 4 keeper, 1 rival (A4), 2 warden | ~21 | 1,600w + finds | Moth-amber ×2 |
+| North *(+ Cinderwind Scarp, 2026-10)* | 15 — 8 route (incl. the Scarp's Hobb-Ree 30 → 480w, Rue 31 → 496w), 4 keeper, 1 rival (A4), 2 warden | ~19 (the Scarp's strips stand in for two of Galehigh's) | 1,600w + finds | Moth-amber ×3 |
 | West *(built)* | 12 — 7 route, 2 keeper, 1 rival (A5), 2 warden | ~21 | 1,100w + finds | Starglass ×4 + Moth-amber ×3 (Coldfog's Embergloss/Murk Pearl ride the optional detour) |
-| Central *(built)* | 6 — 5 keeper (acolytes), Còr | ~10 (set-piece catches + spoke top-ups; no wild zones past the hub) | 0w quests + 1,400w finds (the quest pay is item-shaped: Radiant Lamp ×3.5, Way-lamp, the Lampling) | Starglass ×2 + Moth-amber |
+| Central *(built + the Umbral Approach, 2026-10)* | 9 — 8 keeper (the Approach's Orla 51 → 1,020w, Brenn 52 → 1,040w, Wynne 53 → 1,060w + the Spire's 5 acolytes), Còr | ~10 (the Approach's lv 50–53 beds + set-piece catches; no wild zones past the Ring) | 0w quests + 1,900w finds (the quest pay is item-shaped: Radiant Lamp ×3.5, Way-lamp, the Lampling) | Starglass ×3 + Moth-amber |
 | Post-game · Starfall Vigils *(built · R3)* | 9 — 8 vigilant (5 sites + the summit Round's 3), Fenn (cor) | ~14 (the five annex apex beds 58–68 + Dawnstead day-forms; one-time clears only — re-runnable bouts excluded from solvency) | first-clear ~50,500w payouts (25,600w sites + 24,960w Round) + the 5,000w storm-tithe; the two find-first nuke charts (Tremor Quake, Sunburst Nova) pay 0w | Starglass ×~6 (one cache/site bar Stormfall's ×2 tithe half) |
 
 Rules for region authors:

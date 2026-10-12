@@ -218,7 +218,9 @@ for the Waykeeper (west; the Round comes home). Tag every leg `[wakes with spoke
   (safe hub) — central signpost readable from spawn (level-design §2 hub pattern).
 - **Lanternway spoke warps (graph.ts, all ungated, bidir):** `tinderwick`, `pearlmoor_quay`,
   `lowleaf_hollow`, `galehigh_terraces`, `nightreach_observatory` ↔ `vesper_crossroads` via
-  `to_crossroads`; plus `vesper_crossroads → coldfog_marches_i` via `to_marsh` (bidir).
+  `to_crossroads`. *(2026-10 geometry pass: only Tinderwick's and the bay road still WALK in; the
+  far valleys ride the Lantern-car, the marsh road is retired, and the north road climbs the Umbral
+  Approach — `docs/world/geometry.md`.)*
 - **Late shortcut in:** `cinderhead_deep → vesper_crossroads` via `shortcut_crossroads`,
   **`requires_flag: flag:shortcut_mine`**, bidir (set in East; re-links the mine to the hub).
 - **Inward warp:** `vesper_crossroads → penumbra_ring` via `to_penumbra`, **`requires_flag:

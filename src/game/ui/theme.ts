@@ -64,6 +64,7 @@ export const theme = {
     lane: '#ffc378', // the Lanternway spokes (abstracted country lanes)
     gate: '#6e788f', // Gift/flag-gated passages
     pass: '#aa96dc', // through-cave passages
+    car: '#78d2ff', // the Lantern-car lines + the ore-hoist (rides, not roads)
     marker: '#ff8a3d',
   },
 

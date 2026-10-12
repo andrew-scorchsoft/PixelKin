@@ -57,7 +57,9 @@ report): the void-ringed ISLET in field A (a Starglass Shard — starlight
 made stone, the of-the-place valuable) and the void-sealed SE pocket
 (loose wicks). Both are Starreach-priced.
 
-HANDSHAKE (verified + re-aimed, both sides edited): the crossroads'
+HANDSHAKE (2026-10: the door in is now the Umbral Approach's top gap, which
+lands HERE at (13,33)/(14,33); our return pair lands at the approach's (15,1)/
+(16,1). History below.) The crossroads'
 `to_penumbra`/`to_penumbra_e` at crossroads (9,17)/(10,17) now land HERE at
 (13,33)/(14,33) facing up, ON our return pair `to_crossroads`/`_e`, which
 lands back at crossroads (9,17)/(10,17) facing up. (The old placeholder
@@ -194,12 +196,13 @@ m: dict = {
 
 # ---- warps (graph.ts edge ids verbatim) ----------------------------------------------
 m["warps"] += [
-    # SOUTH <-> vesper_crossroads (`to_penumbra` edge; the only door in)
+    # SOUTH <-> umbral_approach (the mountain road up from the Crossroads —
+    # 2026-10 geometry fix; the only door in). Down the road you came.
     {"id": "to_crossroads", "at": {"tx": 13, "ty": 33}, "trigger": "step_on",
-     "to_map": "vesper_crossroads", "to": {"tx": 9, "ty": 17}, "facing": "up",
+     "to_map": "umbral_approach", "to": {"tx": 15, "ty": 1}, "facing": "down",
      "transition": "fade"},
     {"id": "to_crossroads_e", "at": {"tx": 14, "ty": 33}, "trigger": "step_on",
-     "to_map": "vesper_crossroads", "to": {"tx": 10, "ty": 17}, "facing": "up",
+     "to_map": "umbral_approach", "to": {"tx": 16, "ty": 1}, "facing": "down",
      "transition": "fade"},
     # EAST <-> starwell (`to_starwell`, Starreach — the landmark, graph.ts:235)
     {"id": "to_starwell", "at": {"tx": 27, "ty": 13}, "trigger": "step_on",

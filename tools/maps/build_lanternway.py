@@ -187,8 +187,26 @@ def build_h_lane(*, map_id, display, seed, w_rows, e_rows, bend_x,
     return m
 
 
+def car_station(m, *, winch_at, line, owed, approach="below"):
+    """Hang a Lantern-car station on a lane: the kite-wrights' lamp-winch (the
+    Galehigh winch master, 4x5, walk-under top) and a Confirm trigger on each
+    tile of its solid base row — the ride down to the Crossroads
+    (`script.lantern_car_down_<line>`). The ride down always runs: the car
+    rolls downhill on its own; it's the ride UP that waits on a lit lamp."""
+    wx, wy = winch_at
+    ty = wy + 4 if approach == "below" else wy + 3   # the solid base row you face
+    m["objects"].append({"id": "car_winch", "sprite": "galehigh_winch",
+                         "at": {"tx": wx, "ty": wy}, "w": 4, "h": 5, "overhang": 3,
+                         "walk_under": True})
+    for tx in range(wx, wx + 4):
+        m["triggers"].append({"id": f"car_down_{tx}", "kind": "cutscene",
+                              "at": {"tx": tx, "ty": ty}, "activation": "interact",
+                              "ref": f"script.lantern_car_down_{line}"})
+    owed.append(f"script.lantern_car_down_{line}")
+
+
 def build_v_lane(*, map_id, display, seed, n_cols, s_cols, n_warps, s_warps,
-                 sign_id, cache_id, cache_at, pocket, lamps, trees, owed):
+                 sign_id, cache_id, cache_at, pocket, lamps, trees, owed, path_to=None):
     """A vertical lane (the due-north Galehigh spoke): a NARROW straight climb
     with a waist — deep tree flanks so no empty off-lane field reads as an
     unpaid pocket; the one clearing is the cache's."""
@@ -203,13 +221,17 @@ def build_v_lane(*, map_id, display, seed, n_cols, s_cols, n_warps, s_warps,
 
     path = mk.make_grid(W, H)
     for x in n_cols:
-        mk.vline(path, W, H, x, 0, H - 1)
+        mk.vline(path, W, H, x, 0, H - 1 if path_to is None else path_to)
     px0, py0, px1, py1 = pocket
     for y in range(py0, py1 + 1):
         for x in range(px0, px1 + 1):
             tree[y * W + x] = 0
     punch(tree, W, H, [(x, y) for x in n_cols for y in (0, 1)])
     punch(tree, W, H, [(x, y) for x in s_cols for y in (H - 1, H - 2)])
+    if path_to is not None:   # a car station closes the lane's foot: clear its apron
+        for y in range(path_to + 1, H - 2):
+            for x in range(n_cols[0] - 1, n_cols[-1] + 3):
+                tree[y * W + x] = 0
     for i in range(W * H):
         if path[i]:
             tree[i] = 0
@@ -279,7 +301,7 @@ def build_lowleaf_spoke(owed):
 
     path = mk.make_grid(W, H)
     # lower road: in from the hub, east, then the L up to the mouth
-    mk.hline(path, W, H, 24, 0, 20); mk.hline(path, W, H, 25, 0, 21)
+    mk.hline(path, W, H, 24, 1, 20); mk.hline(path, W, H, 25, 1, 21)
     mk.vline(path, W, H, 20, 16, 24); mk.vline(path, W, H, 21, 16, 25)
     mk.rect(path, W, H, 20, 15, 21, 15)  # the mouth's doorstep
     # upper road: from the knob's doorstep, east a step, north, then east out
@@ -287,8 +309,10 @@ def build_lowleaf_spoke(owed):
     mk.vline(path, W, H, 8, 4, 9); mk.vline(path, W, H, 9, 4, 9)
     mk.hline(path, W, H, 4, 8, W - 1); mk.hline(path, W, H, 5, 8, W - 1)
     # punch the borders at the two gates
-    punch(tree, W, H, [(x, y) for y in (24, 25) for x in (0, 1)])
+    # (2026-10) the lower road's WEST end is now the Lantern-car station, not a
+    # road off the edge — the west border stays shut; clear the station's apron
     punch(tree, W, H, [(x, y) for y in (4, 5) for x in (W - 1, W - 2)])
+    punch(tree, W, H, [(x, y) for y in range(19, 26) for x in (1, 2, 3, 4)])
 
     deco = mk.make_grid(W, H)
     # the shelf's one-way lip: hop down anywhere along the open run
@@ -300,7 +324,7 @@ def build_lowleaf_spoke(owed):
             cliff[i] = 0
 
     base = base_grid(W, H, rng)
-    objects = [lamp("lamp_low", 4, 22), lamp("lamp_turn", 18, 21),
+    objects = [lamp("lamp_low", 6, 22), lamp("lamp_turn", 18, 21),
                lamp("lamp_mouth", 23, 16), lamp("lamp_shelf", 11, 2),
                tree_obj("crown_low", 9, 18), tree_obj("crown_shelf", 17, 7)]
 
@@ -320,9 +344,6 @@ def build_lowleaf_spoke(owed):
                    {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)}],
         "objects": objects,
         "warps": [
-            # hub side (lower west)
-            W_("to_crossroads", 0, 24, "vesper_crossroads", (19, 3), "left"),
-            W_("to_crossroads_s", 0, 25, "vesper_crossroads", (19, 4), "left"),
             # the LOWER mouth into the Under-Lane (warps sit ON the dark cells)
             W_("to_undercut", 20, 14, "lanternway_undercut", (19, 6), "left"),
             W_("to_undercut_e", 21, 14, "lanternway_undercut", (19, 7), "left"),
@@ -337,6 +358,8 @@ def build_lowleaf_spoke(owed):
         "music": "assets/audio/music/lanternway-a.mp3",
     }
     owed += pt.sign(m, deco, W, sid="lanternway_lowleaf", at=(18, 17))
+    # the Lantern-car station at the lower road's west end (2026-10)
+    car_station(m, winch_at=(1, 19), line="lowleaf", owed=owed)
     # the shelf apron's drop-cache — pays the hop-off band before the ledge
     owed += pt.cache(m, cid="lane_lowleaf", at=(15, 10))
 
@@ -466,24 +489,27 @@ def main() -> int:
     # straight lamplit climb, galehigh's cliff country closing in.
     maps.append(build_v_lane(
         map_id="lanternway_galehigh", display="Lanternway · Galehigh Spoke",
-        seed=64, n_cols=(6, 7), s_cols=(6, 7),
+        seed=64, n_cols=(6, 7), s_cols=(), path_to=19,
         n_warps=[W_("to_galehigh", 6, 0, "galehigh_terraces", (15, 30), "up"),
                  W_("to_galehigh_e", 7, 0, "galehigh_terraces", (16, 30), "up")],
-        s_warps=[W_("to_crossroads", 6, 23, "vesper_crossroads", (3, 1), "down"),
-                 W_("to_crossroads_e", 7, 23, "vesper_crossroads", (4, 1), "down")],
+        s_warps=[],
         sign_id="lanternway_galehigh", cache_id="lane_galehigh",
         cache_at=(10, 5), pocket=(9, 4, 11, 6),
-        lamps=[(4, 4), (9, 14), (4, 19)], trees=[(9, 19)],
+        lamps=[(4, 4), (9, 14), (4, 17)], trees=[(9, 15)],
         owed=owed))
+    # the lane's foot is the Lantern-car station (2026-10): the winch stands
+    # across the lane's end, its cables running south toward the hub
+    car_station(maps[-1], winch_at=(5, 17), line="galehigh", owed=owed, approach="above")
 
-    # 5 · Nightreach spoke — the observatory road drops SOUTH into the lane,
-    # which bends EAST to the hub's west gate (the re-edged side).
+    # 5 · Nightreach spoke — (2026-10) the lane leaves the observatory's WEST
+    # gap, runs west, then climbs NORTH to the Lantern-car station on the
+    # hill's shoulder (the ride down to the Crossroads).
     maps.append(build_h_lane(
         map_id="lanternway_nightreach", display="Lanternway · Nightreach Spoke",
         seed=65, w_rows=(12, 13), e_rows=(12, 13), bend_x=4,
         w_warps=[],  # the west run is replaced by the NORTH drop below
-        e_warps=[W_("to_crossroads", 23, 12, "vesper_crossroads", (1, 3), "right"),
-                 W_("to_crossroads_s", 23, 13, "vesper_crossroads", (1, 4), "right")],
+        e_warps=[W_("to_nightreach", 23, 12, "nightreach_observatory", (1, 20), "right"),
+                 W_("to_nightreach_s", 23, 13, "nightreach_observatory", (1, 21), "right")],
         sign_id="lanternway_nightreach", cache_id="lane_nightreach",
         cache_at=(19, 4), pocket=(17, 3, 20, 5),
         accent="outcrop", lamps=[(7, 9), (14, 9), (20, 9)], trees=[(9, 2), (15, 14)],
@@ -494,19 +520,18 @@ def main() -> int:
     tree_l = next(l for l in n["layers"] if l["name"] == "t_tree")["data"]
     path_l = next(l for l in n["layers"] if l["name"] == "t_path")["data"]
     for x in (4, 5):
-        for y in range(0, 14):
+        for y in range(6, 14):
             path_l[y * W + x] = 1
             tree_l[y * W + x] = 0
-    for x in (4, 5):
-        for y in (0, 1):
+    for y in range(1, 6):          # the station's apron under the winch
+        for x in range(2, 8):
             tree_l[y * W + x] = 0
     # the W-edge stub the template punched isn't a road here — regrow the border
     for y in (12, 13):
         for x in (0, 1):
             tree_l[y * W + x] = 1
             path_l[y * W + x] = 0
-    n["warps"] = [W_("to_nightreach", 4, 0, "nightreach_observatory", (4, 28), "up"),
-                  W_("to_nightreach_e", 5, 0, "nightreach_observatory", (5, 28), "up")] + n["warps"]
+    car_station(n, winch_at=(3, 1), line="nightreach", owed=owed)
 
     ok = True
     for m in maps:

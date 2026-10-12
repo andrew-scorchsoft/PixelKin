@@ -623,7 +623,20 @@
       "facing": "down",
       "sprite": "npc_old_woman",
       "movement": "static",
-      "dialogue_ref": "npc.galehigh_hall_keeper"
+      "dialogue_ref": "npc.galehigh_hall_keeper",
+      "hidden_when_flag": "gleam:storm"
+    },
+    {
+      "id": "hall_keeper_lit",
+      "at": {
+        "tx": 8,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "npc_old_woman",
+      "movement": "static",
+      "dialogue_ref": "npc.galehigh_hall_keeper_lit",
+      "requires_flag": "gleam:storm"
     },
     {
       "id": "hall_festival",

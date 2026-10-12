@@ -46,7 +46,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'face', actor: 'coast_keeper', facing: 'left' },
     { op: 'face', actor: 'player', facing: 'right' },
     { op: 'say', speaker: 'COAST-KEEPER', text: 'Hold up there, apprentice! Past this point the flats run with the tide in the dark, and the lanterns out there will not answer an unproven lamp.' },
-    { op: 'say', speaker: 'COAST-KEEPER', text: 'Brisa asked me to keep this road until her Beacon burns again. Earn your first Gleam at the old tower above Tinderwick, and I will wave you through myself.' },
+    { op: 'say', speaker: 'COAST-KEEPER', text: 'Brisa asked me to keep this road until her Beacon burns again. Earn your first Gleam at the old tower on Tinderwick\'s bluff, back down the road, and I will wave you through myself.' },
     { op: 'say', speaker: 'COAST-KEEPER', text: 'The tower door wants a wick-key. The old lamplighter has it, down the shore where the star went out. Ask him.', unless_flag: 'flag:has_beacon_wick' },
     { op: 'say', speaker: 'COAST-KEEPER', text: 'You have the wick-key already? Then the Beacon is waiting for you. Back south through Tinderwick, up on the north-east bluff.', if_flag: 'flag:has_beacon_wick' },
     { op: 'say', speaker: 'COAST-KEEPER', text: 'A letter for the sky-watcher on the flats? It will keep. Gran\'s words travel better by Beacon-light anyway.', if_flag: 'flag:q_south_letter', unless_flag: 'flag:q_south_letter_given' },
@@ -65,24 +65,9 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'cameraReset', ms: 500 },
   ],
 
-  // Heading up the north (marsh) road: the one ungated road out of the Crossroads
-  // that climbs into far-higher country (the Coldfog Marches, North region). The
-  // Waykeeper steps up off her post to warn a young Wayfarer off — but she keeps the
-  // lamps, not the gate, so the warning is a NUDGE, never a wall: she says her piece
-  // and stands aside. Fires once (band hidden_when 'flag:warned_marsh_road'); if she's
-  // off her post (the Round chart swap), the actor ops no-op and the lines still play.
-  'script.crossroads_marsh_warn': [
-    { op: 'emote', actor: 'waykeeper', emote: 'alert' },
-    { op: 'move', actor: 'waykeeper', to: { tx: 9, ty: 6 } },
-    { op: 'face', actor: 'waykeeper', facing: 'up' },
-    { op: 'face', actor: 'player', facing: 'down' },
-    { op: 'say', speaker: 'WAYKEEPER', text: 'Hold a moment, young Wayfarer. That north road climbs to the Coldfog Marches — and the cold up there bites deeper than any lamp you carry yet.' },
-    { op: 'say', speaker: 'WAYKEEPER', text: 'The kin that haunt the marsh are hardened things, a long way from any hearth. It is no road for a new flame. Your Wayfaring runs the LIT ways — WEST to Tinderwick, EAST to Pearlmoor.' },
-    { op: 'say', speaker: 'WAYKEEPER', text: 'But I keep the lamps, not the gate. If you are set on a look, I will not bar your way — only tread careful, and turn back the moment the dark leans in.' },
-    { op: 'move', actor: 'waykeeper', to: { tx: 9, ty: 8 } },
-    { op: 'move', actor: 'waykeeper', to: { tx: 8, ty: 8 } },
-    { op: 'face', actor: 'waykeeper', facing: 'down' },
-  ],
+  // (The old north-marsh-road warning retired with the 2026-10 geometry fix — the
+  // Coldfog Marches hang off Nightreach now; the Waykeeper's first-visit nudge
+  // explains the Lantern-car instead: script.crossroads_car_intro, regions/south.ts.)
 
   // Fenn at the waystone: delight, then the small ask — his satchel, forgotten on
   // the Tinderwick store counter, with the whole Wayfaring packed inside it.
@@ -803,7 +788,7 @@ export const SCRIPTS: ScriptRegistry = {
   'script.brisa_quest': [
     { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'warm', text: 'So you have made your first friend. Good. Then hear the truth of it, dear — the EMBER, the south\'s own constellation, is not relit from this hall.' },
     { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'neutral', text: 'It is relit from the OLD BEACON, on the bluff east of the square. And the beacon has stood dark since its wick-key was lost on the coast road.' },
-    { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'neutral', text: 'The old lamplighter who carried it walks Dimglass Coast still, up by the north boundary. Find him. Bring the key home.' },
+    { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'neutral', text: 'The old lamplighter who carried it walks Dimglass Coast still — just up the coast road, past the north gate. Find him. Bring the key home.' },
     { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'warm', text: 'Mind the grass, mind the dark — and come back stronger than you leave. The lantern asks a steady flame.' },
     { op: 'setFlag', flag: 'flag:beacon_quest' },
   ],
@@ -2495,7 +2480,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'round_kite', count: 1 },
     { op: 'say', text: 'A small kite in Lanternway colours, wrapped against the road. Received the WAYSTONE KITE!' },
-    { op: 'say', speaker: 'KITE-MAKER', text: 'Built to survive an owner of eight, which is the hardest weather there is. Down the spoke to the Crossroads with it — and tell the kid: the string hand is everything. The kite already knows the rest.' },
+    { op: 'say', speaker: 'KITE-MAKER', text: 'Built to survive an owner of eight, which is the hardest weather there is. Down the lane and the Lantern-car to the Crossroads with it — and tell the kid: the string hand is everything. The kite already knows the rest.' },
     { op: 'setFlag', flag: 'flag:q_round_kite_taken' },
   ],
   'script.round_kite_deliver': [
@@ -3723,7 +3708,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'flashColor', color: '#ffd089', ms: 300 },
     { op: 'musicCrossfade', key: 'gleam-emotional', ms: 1200 },
     { op: 'tint', color: '#9fd4ff', alpha: 0, ms: 1200 },
-    { op: 'narrate', text: 'Eight stars. The Skyweave Crown closes overhead, quiet as snowfall — and far away at the centre of the world, the Penumbra parts: the four cardinal roads opening inward at the Crossroads, toward the mountain, toward him.' },
+    { op: 'narrate', text: 'Eight stars. The Skyweave Crown closes overhead, quiet as snowfall — and far away at the centre of the world, the Penumbra parts: the mountain road north of the Crossroads opening at last, up toward the Spire, toward him.' },
     { op: 'narrate', if_flag: 'flag:wren_nightreach_battled', text: 'At the hall door, Wren is leaning on the frame with their lamp held up among all the others, grinning like the coast road. They do not come in. They do not need to. Same road, different lamps — all the way to the end of the sky.' },
     { op: 'face', actor: 'nessa_ready', facing: 'down' },
     { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'reverent', text: 'The Lunar Gleam, Wayfarer — and the whole Crown standing with it. I have watched this sky my entire life, and tonight is the first time it has ever watched back.' },
@@ -4420,8 +4405,8 @@ export const SCRIPTS: ScriptRegistry = {
   // dry line with the First-Light Phial.
   'script.nessa_hours': [
     { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: 'Wayfarer. Come up to the eyepiece — no, you needn\'t look. Listening is the trouble, tonight.' },
-    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: 'Every chart says the morning bell should hang due west of here. There is no morning bell. There has been no morning. And yet three nights running I have heard a bell that hasn\'t rung — WAITING makes a sound, you know, if it goes on long enough.' },
-    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'reverent', text: 'Due west is the Solarium\'s drowned garden — and off its deepest fold, the old processional stair no one has climbed since the sky kept hours. If something waits there for a morning... it has been waiting longest of anything alive.' },
+    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: 'Every chart says the morning bell should hang due south of here. There is no morning bell. There has been no morning. And yet three nights running I have heard a bell that hasn\'t rung — WAITING makes a sound, you know, if it goes on long enough.' },
+    { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'reverent', text: 'Due south, down the Sunvault Climb, is the Solarium\'s drowned garden — and off its deepest fold, the old processional stair no one has climbed since the sky kept hours. If something waits there for a morning... it has been waiting longest of anything alive.' },
     { op: 'say', speaker: 'NESSA COLE', portrait: 'nessa', expr: 'neutral', text: 'Lucan kept the last warm day. Ask him whether anyone thought to keep the last MORNING. If anyone would know, it is the man who hoards daylight.' },
     { op: 'setFlag', flag: 'flag:three_dawn_rumour' },
   ],
@@ -5061,7 +5046,7 @@ export const SCRIPTS: ScriptRegistry = {
     // --- The opening errand (before the lamp and the first kin). --------------
     {
       op: 'say', unless_flag: 'flag:fenn_errand', speaker: 'ANDREW',
-      text: 'Star-tender Fenn. He\'s out at the Vesper Crossroads waystone — east up the Lanternway, past the north gate. Been stood there two days asking after you. Go and be asked after.',
+      text: 'Star-tender Fenn. He\'s out at the Vesper Crossroads waystone — out the east side of town and along the Lanternway. Been stood there two days asking after you. Go and be asked after.',
     },
     {
       op: 'say', if_flag: 'flag:fenn_errand', unless_flag: 'flag:has_satchel', speaker: 'ANDREW',
@@ -5083,7 +5068,7 @@ export const SCRIPTS: ScriptRegistry = {
     },
     {
       op: 'say', if_flag: 'flag:beacon_quest', unless_flag: 'flag:has_beacon_wick', speaker: 'ANDREW',
-      text: 'The old Beacon wants its wick-key, and the lamplighter down on the Dimglass Coast has it. South out of town, follow the cliff path down. You can\'t miss her — she\'s the only lit thing on that road.',
+      text: 'The old Beacon wants its wick-key, and the old lamplighter on the Dimglass Coast has it. North out of town, through the gate and up the coast road. You can\'t miss him — he\'s the only lit thing on that road.',
     },
     {
       op: 'say', if_flag: 'flag:has_beacon_wick', unless_flag: 'gleam:ember', speaker: 'ANDREW',
@@ -5106,7 +5091,7 @@ export const SCRIPTS: ScriptRegistry = {
     },
     {
       op: 'say', if_flag: 'gleam:stone', unless_flag: 'gleam:storm', speaker: 'ANDREW',
-      text: 'Back through the mine and out the deep\'s far door. It lets out under the Galehigh Terraces — all wind and washing-lines. Mira Vael has the Storm up there.',
+      text: 'Back through the mine, out the deep\'s far door, and up Cinderwind Scarp. It tops out on the Galehigh Terraces — all wind and washing-lines. Mira Vael has the Storm up there.',
     },
     {
       op: 'say', if_flag: 'gleam:storm', unless_flag: 'gleam:frost', speaker: 'ANDREW',
@@ -5124,7 +5109,7 @@ export const SCRIPTS: ScriptRegistry = {
     // --- The Crown, the Spire, and after. -------------------------------------
     {
       op: 'say', if_flag: 'gleam:lunar', unless_flag: 'flag:keystar_relit', speaker: 'ANDREW',
-      text: 'Eight. The Crown\'s whole, and the Penumbra\'s parted for you. Back to the Vesper Crossroads and take the inward road. The Spire\'s been waiting the whole time, and it isn\'t a patient sort of waiting.',
+      text: 'Eight. The Crown\'s whole, and the Penumbra\'s parted for you. Get yourself to the Vesper Crossroads — car, waystone or boots — and take the mountain road north. The Spire\'s been waiting the whole time, and it isn\'t a patient sort of waiting.',
     },
     {
       op: 'say', if_flag: 'flag:keystar_relit', unless_flag: 'flag:dawn', speaker: 'ANDREW',
@@ -5166,7 +5151,7 @@ export const SCRIPTS: ScriptRegistry = {
     },
     {
       op: 'say', unless_flag: 'flag:q_south_bell', speaker: 'ANDREW',
-      text: 'South now. Down the coast, over the tidal flats, till the road runs out of land — that\'s Pearlmoor Quay. See Reyl Wash at the Lumenary first. He keeps the Tide, and he\'ll have a job for you.',
+      text: 'North now. Up the coast road, over the tidal flats, till the road runs out of land — that\'s Pearlmoor Quay. See Reyl Wash at the Lumenary first. He keeps the Tide, and he\'ll have a job for you.',
     },
   ],
 
@@ -5234,7 +5219,7 @@ export const SCRIPTS: ScriptRegistry = {
     },
     {
       op: 'say', unless_flag: 'gleam:ember', speaker: 'ANDREW',
-      text: 'All I\'ll say is: it\'s a long way south, where the land gives up and the town carries on regardless. Get your first Gleam and the road will take you most of the way.',
+      text: 'All I\'ll say is: it\'s a long way up the coast, where the land gives up and the town carries on regardless. Get your first Gleam and the road will take you most of the way.',
     },
     // B
     {

@@ -42,101 +42,142 @@ OPP = {"n": "s", "s": "n", "e": "w", "w": "e"}
 STEP = {"n": (0, -1), "s": (0, 1), "e": (1, 0), "w": (-1, 0)}
 
 # ---------------------------------------------------------------------------
-# The canonical ring layout (atlas §1: rim clockwise around the central Spire,
-# Crossroads as the inner hub). Coordinates are node CENTRES in a 220x140
-# virtual box (x right, y down) — the in-game screen draws this 1:1 inside its
-# panel. Hand-authored: edit here to retune the world map's look.
+# THE HONEST NORTH-UP LAYOUT (2026-10 geometry fix). Node positions are no
+# longer hand-placed on a schematic ring: they are the REAL centres of the maps
+# as walked (world_geometry.py lays every outdoor map edge-to-edge at its true
+# tile size), so the MAP screen draws exactly what the player walks — leave a
+# map north and the next one IS north on the chart. Caves and landmarks that
+# hang off a mid-map mouth sit at that mouth's tile in their host map. The
+# world is tall (the long climb north), so the MAP screen fits the WIDTH and
+# scrolls with the cursor (ui/WorldMapMenu.ts); `box` in worldmap.json gives
+# the virtual size. Only the KIND of each node is authored here.
 #   kind: town / route / dungeon / hub / landmark (landmarks draw as small dots)
 # ---------------------------------------------------------------------------
-NODES: dict[str, tuple[int, int, str]] = {
-    # --- central spine ------------------------------------------------------
-    "umbral_spire": (110, 50, "dungeon"),
-    "penumbra_ring": (110, 68, "route"),
-    "starwell": (128, 60, "landmark"),
-    "vesper_crossroads": (110, 88, "hub"),
-    # --- south (bottom of the ring, west -> east) ---------------------------
-    "dawnstead": (56, 128, "town"),
-    "tinderwick": (80, 122, "town"),
-    "dimglass_coast": (101, 127, "route"),
-    "dimglass_coast_ii": (122, 127, "route"),
-    "tideglass_cavern": (111, 137, "landmark"),
-    "gullcry_rock": (133, 137, "landmark"),
-    "pearlmoor_quay": (144, 121, "town"),
-    "pearlmoor_breakwater": (152, 132, "landmark"),
-    # --- east (right side, bottom -> top) -----------------------------------
-    "saltreach_fen_i": (166, 110, "route"),
-    "saltreach_fen_ii": (174, 92, "route"),
-    "sunkbell_shallows": (190, 99, "landmark"),
-    "lowleaf_hollow": (175, 72, "town"),
-    "glowmoss_deep": (174, 53, "dungeon"),
-    "spore_grotto": (191, 48, "landmark"),
-    "cinderhead_mine": (166, 35, "town"),
-    "cinderhead_deep": (148, 26, "dungeon"),
-    # --- north (top, east -> west) -------------------------------------------
-    "galehigh_terraces": (128, 20, "town"),
-    "wind_eye": (139, 8, "landmark"),
-    "windward_stair_i": (107, 16, "route"),
-    "windward_stair_ii": (88, 13, "route"),
-    "thunderroost": (97, 4, "landmark"),
-    "pale_vault_glacier": (66, 17, "town"),
-    # --- west (left side, top -> bottom; the Sunvault stair CLIMBS back north
-    # to Nightreach, matching the shipped warp edges) --------------------------
-    "hushfrost_pass_i": (46, 25, "route"),
-    "hushfrost_pass_ii": (34, 41, "route"),
-    "aurora_hollow": (18, 33, "landmark"),
-    "sunken_solarium": (28, 58, "town"),
-    "unrisen_stair": (12, 52, "landmark"),
-    "sunvault_climb_i": (20, 110, "route"),
-    "sunvault_climb_ii": (28, 92, "route"),
-    "helia_vault": (12, 86, "landmark"),
-    "nightreach_observatory": (36, 74, "town"),
-    # --- outer marches (between Nightreach and the hub) -----------------------
-    "coldfog_marches_ii": (58, 82, "route"),
-    "coldfog_marches_i": (64, 102, "route"),
-    "drownlight_beacon": (46, 92, "landmark"),
-    "hollowfen_stillworks": (68, 68, "landmark"),
-    # --- the Lanternway spoke lanes (real maps, build_lanternway.py) ----------
-    "lanternway_tinderwick": (95, 106, "route"),
-    # The Pearlmoor <-> Crossroads route (replaced the lanternway_pearlmoor lane):
-    "wrackline_path": (138, 115, "route"),
-    "sounding_cave": (128, 104, "route"),
-    "lanternfall_road": (118, 95, "route"),
-    "lanternway_lowleaf": (144, 79, "route"),
-    "lanternway_galehigh": (124, 54, "route"),
-    "lanternway_nightreach": (80, 76, "route"),
+NODE_KINDS: dict[str, str] = {
+    # south
+    "tinderwick": "town", "wickstead_green": "landmark", "dimglass_coast": "route",
+    "dimglass_coast_ii": "route", "tideglass_cavern": "landmark", "gullcry_rock": "landmark",
+    "pearlmoor_quay": "town", "pearlmoor_breakwater": "landmark", "pearlmoor_wanderwood": "landmark",
+    "dawnstead": "town",
+    # the hub + the bay road home + the mountain road
+    "vesper_crossroads": "hub", "lanternway_tinderwick": "route",
+    "wrackline_path": "route", "sounding_cave": "route", "lanternfall_road": "route",
+    "umbral_approach": "route", "penumbra_ring": "route", "starwell": "landmark",
+    "umbral_spire": "dungeon",
+    # east
+    "saltreach_fen_i": "route", "saltreach_fen_ii": "route", "sunkbell_shallows": "landmark",
+    "lowleaf_hollow": "town", "lanternway_lowleaf": "route", "glowmoss_deep": "dungeon",
+    "spore_grotto": "landmark", "cinderhead_mine": "town", "cinderhead_deep": "dungeon",
+    # north
+    "cinderwind_scarp": "route", "galehigh_terraces": "town", "lanternway_galehigh": "route",
+    "wind_eye": "landmark", "windward_stair_i": "route", "windward_stair_ii": "route",
+    "thunderroost": "landmark", "pale_vault_glacier": "town",
+    # west
+    "hushfrost_pass_i": "route", "hushfrost_pass_ii": "route", "aurora_hollow": "landmark",
+    "sunken_solarium": "town", "unrisen_stair": "landmark", "sunvault_climb_i": "route",
+    "sunvault_climb_ii": "route", "helia_vault": "landmark", "nightreach_observatory": "town",
+    "lanternway_nightreach": "route",
+    # the marshes (off Nightreach)
+    "coldfog_marches_ii": "route", "coldfog_marches_i": "route", "drownlight_beacon": "landmark",
+    "hollowfen_stillworks": "landmark",
 }
+# places hung off a stacked interior chain, pinned near their anchor (tiles)
+ANCHORED: dict[str, tuple[str, float, float]] = {
+    "dawnstead": ("umbral_spire", 0.0, -22.0),   # the dawn town atop the mountain
+}
+BOX_W = 220            # virtual box width; height follows the world's aspect
+MARGIN = 8             # virtual units of air round the drawing
+NODES: dict[str, tuple[int, int, str]] = {}   # filled by compute_nodes()
+BOX: dict[str, int] = {"width": BOX_W, "height": 140}
+
+
+def compute_nodes(world: dict[str, dict]) -> None:
+    """Fill NODES from the true walked layout (world_geometry.place)."""
+    import world_geometry as wg
+    straight, _bent, portal = wg.collect(world)
+    pos, comp, _parent, _conf = wg.place(world, straight, "tinderwick")
+    main = comp["tinderwick"]
+    # components joined only by a lift/mouth (the Windward kite flight, cave
+    # mouths) hang off it at their landing tile — never off a late shortcut
+    wg.hang_components(world, pos, comp, portal)
+    centre: dict[str, tuple[float, float]] = {}
+    for mid, (x, y) in pos.items():
+        if comp.get(mid) == main:
+            centre[mid] = (x + world[mid]["width"] / 2, y + world[mid]["height"] / 2)
+    # portal-only places with no straight links of their own (a cave, a lone
+    # landmark) sit at their mouth tile in the host
+    # interiors-free world: the Spire's upper floors are 'cave' kind too, so
+    # collect() already listed their portals
+    for _ in range(8):
+        for r in portal:
+            a, b = r["a"], r["b"]
+            if a in centre and a in pos and b not in centre:
+                centre[b] = (pos[a][0] + r["at"][0] + 0.5, pos[a][1] + r["at"][1] + 0.5)
+                # its origin, so a cave chain (Glowmoss B1F -> Spore Grotto,
+                # the Spire's floors -> Dawnstead) can keep hanging off it
+                pos[b] = (pos[a][0] + r["at"][0] - r["to"][0], pos[a][1] + r["at"][1] - r["to"][1])
+    # a place reached through a stacked interior chain (Dawnstead, off the
+    # Spire's summit) has no meaningful offset of its own: pin it to its anchor
+    for n, (anchor, dx, dy) in ANCHORED.items():
+        if anchor in centre:
+            centre[n] = (centre[anchor][0] + dx, centre[anchor][1] + dy)
+    missing = [n for n in NODE_KINDS if n in world and n not in centre]
+    for n in missing:
+        print(f"  [W] unplaced     {n}: no straight link or placed portal reaches it")
+    pts = [centre[n] for n in NODE_KINDS if n in centre]
+    x0, x1 = min(p[0] for p in pts), max(p[0] for p in pts)
+    y0, y1 = min(p[1] for p in pts), max(p[1] for p in pts)
+    k = (BOX_W - 2 * MARGIN) / max(1.0, x1 - x0)
+    BOX["height"] = int(round((y1 - y0) * k + 2 * MARGIN))
+    for n, kind in NODE_KINDS.items():
+        if n in centre:
+            cx, cy = centre[n]
+            NODES[n] = (int(round(MARGIN + (cx - x0) * k)), int(round(MARGIN + (cy - y0) * k)), kind)
+
 
 # Roads drawn between nodes. kind: 'road' (walked route), 'lane' (Lanternway
 # spoke — abstracted country lane), 'gate' (Gift/flag-gated passage), 'pass'
 # (through-cave passage). Derived links are verified against shipped warps.
 ROADS: list[tuple[str, str, str]] = [
-    # south rim
+    # south
     ("tinderwick", "dimglass_coast", "road"),
+    ("tinderwick", "wickstead_green", "road"),   # via Duskapple Orchard's west gap
     ("dimglass_coast", "dimglass_coast_ii", "road"),
     ("dimglass_coast_ii", "pearlmoor_quay", "road"),
     ("dimglass_coast", "tideglass_cavern", "gate"),
     ("dimglass_coast_ii", "tideglass_cavern", "gate"),
     ("dimglass_coast_ii", "gullcry_rock", "gate"),
     ("pearlmoor_quay", "pearlmoor_breakwater", "gate"),
+    ("pearlmoor_quay", "pearlmoor_wanderwood", "road"),   # up through the allotment
     ("umbral_spire", "dawnstead", "gate"),
-    # east rim
+    # the bay road home (Saltreach Fen I's drowned road -> the Crossroads)
+    ("saltreach_fen_i", "wrackline_path", "road"),
+    ("wrackline_path", "sounding_cave", "pass"),
+    ("sounding_cave", "lanternfall_road", "pass"),
+    ("lanternfall_road", "vesper_crossroads", "road"),
+    ("tinderwick", "lanternway_tinderwick", "lane"),
+    ("lanternway_tinderwick", "vesper_crossroads", "lane"),
+    # east
     ("pearlmoor_quay", "saltreach_fen_i", "road"),
     ("saltreach_fen_i", "saltreach_fen_ii", "gate"),
     ("saltreach_fen_ii", "sunkbell_shallows", "gate"),
     ("saltreach_fen_ii", "lowleaf_hollow", "road"),
+    ("lowleaf_hollow", "lanternway_lowleaf", "lane"),
     ("lowleaf_hollow", "glowmoss_deep", "gate"),
     ("glowmoss_deep", "spore_grotto", "gate"),
     ("glowmoss_deep", "cinderhead_mine", "pass"),
     ("cinderhead_mine", "cinderhead_deep", "gate"),
-    ("cinderhead_deep", "galehigh_terraces", "pass"),
-    # north rim
+    ("cinderhead_deep", "cinderwind_scarp", "pass"),
+    # north
+    ("cinderwind_scarp", "galehigh_terraces", "road"),
+    ("galehigh_terraces", "lanternway_galehigh", "lane"),
     ("galehigh_terraces", "wind_eye", "gate"),
     ("galehigh_terraces", "windward_stair_i", "road"),
     ("windward_stair_i", "windward_stair_ii", "gate"),
     ("windward_stair_ii", "thunderroost", "gate"),
     ("windward_stair_ii", "pale_vault_glacier", "road"),
     ("windward_stair_ii", "galehigh_terraces", "gate"),  # late shortcut
-    # west rim
+    # west
     ("pale_vault_glacier", "hushfrost_pass_i", "road"),
     ("hushfrost_pass_i", "hushfrost_pass_ii", "gate"),
     ("hushfrost_pass_ii", "aurora_hollow", "gate"),
@@ -146,29 +187,20 @@ ROADS: list[tuple[str, str, str]] = [
     ("sunvault_climb_i", "sunvault_climb_ii", "gate"),
     ("sunvault_climb_ii", "helia_vault", "gate"),
     ("sunvault_climb_ii", "nightreach_observatory", "road"),
-    # outer marches
+    ("nightreach_observatory", "lanternway_nightreach", "lane"),
+    # the marshes (off Nightreach's east fog gate)
     ("nightreach_observatory", "coldfog_marches_ii", "gate"),
     ("coldfog_marches_ii", "coldfog_marches_i", "gate"),
-    ("coldfog_marches_i", "vesper_crossroads", "road"),
-    ("coldfog_marches_ii", "drownlight_beacon", "gate"),
+    ("coldfog_marches_i", "drownlight_beacon", "gate"),
     ("coldfog_marches_ii", "hollowfen_stillworks", "gate"),
-    # the Lanternway spokes (the hub-and-wheel) — each spoke is two hops
-    # through its real lane map (build_lanternway.py)
-    ("tinderwick", "lanternway_tinderwick", "lane"),
-    ("lanternway_tinderwick", "vesper_crossroads", "lane"),
-    ("pearlmoor_quay", "wrackline_path", "lane"),
-    ("wrackline_path", "sounding_cave", "lane"),
-    ("sounding_cave", "lanternfall_road", "lane"),
-    ("lanternfall_road", "vesper_crossroads", "lane"),
-    ("lowleaf_hollow", "lanternway_lowleaf", "lane"),
-    ("lanternway_lowleaf", "vesper_crossroads", "lane"),
-    ("galehigh_terraces", "lanternway_galehigh", "lane"),
-    ("lanternway_galehigh", "vesper_crossroads", "lane"),
-    ("nightreach_observatory", "lanternway_nightreach", "lane"),
-    ("lanternway_nightreach", "vesper_crossroads", "lane"),
-    ("cinderhead_deep", "vesper_crossroads", "gate"),  # late mine shortcut
-    # the centre
-    ("vesper_crossroads", "penumbra_ring", "gate"),
+    # THE LANTERN-CAR (rides, not roads) + the Cinderhead ore-hoist
+    ("lanternway_lowleaf", "vesper_crossroads", "car"),
+    ("lanternway_galehigh", "vesper_crossroads", "car"),
+    ("lanternway_nightreach", "vesper_crossroads", "car"),
+    ("cinderhead_deep", "vesper_crossroads", "car"),
+    # the mountain road
+    ("vesper_crossroads", "umbral_approach", "gate"),
+    ("umbral_approach", "penumbra_ring", "road"),
     ("penumbra_ring", "starwell", "gate"),
     ("penumbra_ring", "umbral_spire", "gate"),
 ]
@@ -270,7 +302,7 @@ def memberships(world: dict[str, dict]) -> dict[str, str]:
     q = deque(member)
     while q:
         cur = q.popleft()
-        for nxt in adj.get(cur, ()):  # BFS: nearest node wins
+        for nxt in sorted(adj.get(cur, ())):  # BFS: nearest node wins (sorted: seed-independent)
             if nxt not in member:
                 member[nxt] = member[cur]
                 q.append(nxt)
@@ -288,7 +320,7 @@ def render(world) -> None:
         return
     S = 5  # px per virtual unit
     PADX, PADY = 30, 26
-    img = Image.new("RGB", (220 * S + PADX * 2, 140 * S + PADY * 2), (11, 16, 38))
+    img = Image.new("RGB", (BOX["width"] * S + PADX * 2, BOX["height"] * S + PADY * 2), (11, 16, 38))
     dr = ImageDraw.Draw(img)
     fill = {"town": (244, 208, 110), "route": (123, 220, 107), "dungeon": (180, 160, 230),
             "hub": (255, 138, 61), "landmark": (159, 231, 255)}
@@ -312,6 +344,8 @@ def render(world) -> None:
             dr.line([pa, pb], fill=(200, 195, 215), width=3)
         elif kind == "lane":
             dashed(pa, pb, (255, 195, 120), 3)
+        elif kind == "car":
+            dashed(pa, pb, (120, 210, 255), 2)
         elif kind == "pass":
             dashed(pa, pb, (170, 150, 220), 3)
         else:
@@ -334,6 +368,7 @@ def render(world) -> None:
 
 def main() -> int:
     world = load_world()
+    compute_nodes(world)
     links = straight_links(world)
     fails: list[str] = []
 
@@ -349,6 +384,8 @@ def main() -> int:
     for a, b, exit_e, _pin, _spread in links:
         na, nb = member.get(a), member.get(b)
         if na is None or nb is None or na == nb:
+            continue
+        if na not in NODES or nb not in NODES:
             continue
         if frozenset((na, nb)) not in road_set:
             fails.append(f"missing road  {na} <-> {nb} (shipped warp {a} -> {b} has no road on the map)")
@@ -374,6 +411,7 @@ def main() -> int:
 
     # ---- emit ------------------------------------------------------------------
     layout = {
+        "box": dict(BOX),
         "nodes": [
             {"id": n, "x": x, "y": y, "kind": kind, "region": region_of(n),
              "name": world[n].get("display_name", n)}
@@ -381,11 +419,20 @@ def main() -> int:
         ],
         "roads": [{"a": a, "b": b, "kind": kind} for a, b, kind in ROADS
                   if a in world and b in world],
-        "members": member,
+        "members": dict(sorted(member.items())),
     }
-    OUT_JSON.write_text(json.dumps(layout, indent=2) + "\n")
-    print(f"  layout -> {OUT_JSON.relative_to(REPO)}")
-    render(world)
+    text = json.dumps(layout, indent=2) + "\n"
+    if "--check" in sys.argv:              # CI: fail if the shipped JSON is stale
+        if not OUT_JSON.exists() or OUT_JSON.read_text() != text:
+            fails.append(f"stale         {OUT_JSON.relative_to(REPO)} — re-run tools/maps/world_layout.py")
+        else:
+            print(f"  layout up to date: {OUT_JSON.relative_to(REPO)}")
+    else:
+        OUT_JSON.write_text(text)
+        print(f"  layout -> {OUT_JSON.relative_to(REPO)}")
+        render(world)
+    for f in fails[-1:] if fails and fails[-1].startswith("stale") else []:
+        print(f"  [F] {f}")
     print(f"{'FAIL' if fails else 'PASS'} — {len(fails)} failure(s), {len(bends)} bend note(s)")
     return 1 if fails else 0
 

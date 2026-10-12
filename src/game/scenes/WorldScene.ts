@@ -36,7 +36,7 @@ import { ChartView } from '@game/ui/ChartView';
 import { fadeIn, fadeOut, letterbox, clearCinematicFx } from '@game/ui/Transitions';
 import { CROWN_INTERLUDES, INTERLUDES_CLOSED_BY } from '@game/content/interludes';
 import type { CrownInterlude } from '@game/content/interludes';
-import { getAmbientMotion, getCannotDie } from '@game/ui/preferences';
+import { getAmbientMotion, getCannotDie, musicMasterGain } from '@game/ui/preferences';
 import { KinInstance } from '@game/systems/party/KinInstance';
 import { MAX_PARTY } from '@game/systems/party/Party';
 import { InputController, InputAction } from '@game/systems/input/InputController';
@@ -48,6 +48,7 @@ import { EncounterSystem } from '@game/systems/world/EncounterSystem';
 import { loadCreatureSprite } from '@game/systems/sprites/CreatureSprites';
 import type { BattleRequest, BattleResult } from '@game/scenes/BattleScene';
 import { MusicDirector } from '@game/systems/audio/MusicDirector';
+import { TRAINER_EYES_KEY, TRAINER_EYES_URL, opensWithChallenge } from '@game/systems/audio/trainerCue';
 import { Sfx } from '@game/systems/audio/Sfx';
 import { FlagStore } from '@game/systems/flags/FlagStore';
 import { Player } from '@game/entities/Player';
@@ -147,9 +148,17 @@ const STAIR_WARP_ID = /^(?:(?:up|down)_stairs|stair_(?:up|down)|ladder_(?:up|dow
 
 /** Object sprites the player can talk ACROSS (see `WorldScene.npcAcrossDesk`). */
 const DESK_SPRITE = /(counter|desk|stall|altar|lectern)/;
+/** Objects up to this many tiles answer Confirm on every tile (see triggerOnObjectAt). */
+const OBJECT_REACH_TILES = 6;
 
 /** Banked once the version notice has shown the "Return to rest point" hint. */
 const REST_TIP_FLAG = 'flag:tip_restpoint_seen';
+
+/** Maps that can only be LEFT with a given Gift: a save there without it
+ *  (made before a road was retired) wakes at the last rest point on load. */
+const STRANDED_WITHOUT: Record<string, AbilityId> = {
+  coldfog_marches_i: 'emberward',
+};
 
 export class WorldScene extends Phaser.Scene {
   private ready = false;
@@ -242,6 +251,7 @@ export class WorldScene extends Phaser.Scene {
     this.modal = false;
     this.pendingReveal = undefined;
     this.pendingTutorial = undefined;
+    this.deepWarnedOn = '';
     this.controller = new InputController(this);
     this.flags = new FlagStore(data.flags);
     this.abilities = new Set(data.abilities ?? []);
@@ -270,6 +280,9 @@ export class WorldScene extends Phaser.Scene {
       this.dexCaught.add(k.species_id);
     }
     this.music = new MusicDirector(this);
+    // The trainer-spots-you cue must hit ON the '!' — warm it once the map's own
+    // bed has had first claim on the loader.
+    this.time.delayedCall(1500, () => this.music.prefetch(TRAINER_EYES_KEY, TRAINER_EYES_URL));
     this.sfx = new Sfx(this);
     this.debug = new DebugOverlay(this);
     this.cameras.main.setBackgroundColor(COLORS.night);
@@ -285,6 +298,22 @@ export class WorldScene extends Phaser.Scene {
       this.ambience = undefined;
       this.tweens.killAll();
     });
+
+    // A save made on a map whose every exit later became Gift-gated (the 1.12
+    // world-geometry pass retired the Crossroads' marsh road) would load into a
+    // sealed pocket — wake those players at their last rest point instead.
+    const strandedBy = STRANDED_WITHOUT[data.mapId];
+    if (strandedBy && !this.abilities.has(strandedBy)) {
+      const home = this.respawn ?? {
+        map: VESPERHOLM_GRAPH.start_map,
+        tx: VESPERHOLM_GRAPH.start_at.tx,
+        ty: VESPERHOLM_GRAPH.start_at.ty,
+        facing: 'down' as Facing,
+      };
+      // footFirst: stored rest coords may predate this release's map rebuilds.
+      void this.enterMap(home.map, { tx: home.tx, ty: home.ty }, home.facing, true, true);
+      return;
+    }
 
     const spawn = data.spawn ?? this.defaultSpawn(data.mapId);
     void this.enterMap(data.mapId, spawn, spawn.facing, true);
@@ -598,6 +627,7 @@ export class WorldScene extends Phaser.Scene {
     'pale_vault_inn',
     'nightreach_inn',
     'sunken_solarium_lumenary',
+    'wickstead_school', // Master Mallow's lie-down in the lamp-school
   ]);
 
   /**
@@ -968,6 +998,31 @@ export class WorldScene extends Phaser.Scene {
     return this.npcs.find((n) => n.tx === tx && n.ty === ty);
   }
 
+  /**
+   * A furniture-sized object (a bed, the Elder Bed, a sleeping kin — at most
+   * OBJECT_REACH_TILES tiles) answers Confirm on ANY of its tiles, from any side:
+   * its interact trigger usually sits on one tile only (the apprentice's bed was
+   * bottom-left), which made the rest feel broken from the other half or the side.
+   * Buildings are too big to qualify, so a sign tucked in a footprint stays local.
+   */
+  private triggerOnObjectAt(tx: number, ty: number): EventTrigger | undefined {
+    const obj = (this.map.def.objects ?? []).find(
+      (o) =>
+        o.w * o.h <= OBJECT_REACH_TILES &&
+        this.objectVisible(o) &&
+        tx >= o.at.tx && tx < o.at.tx + o.w &&
+        ty >= o.at.ty && ty < o.at.ty + o.h,
+    );
+    if (!obj) return undefined;
+    return this.map.def.triggers.find(
+      (t) =>
+        t.activation === 'interact' &&
+        t.at.tx >= obj.at.tx && t.at.tx < obj.at.tx + obj.w &&
+        t.at.ty >= obj.at.ty && t.at.ty < obj.at.ty + obj.h &&
+        this.triggerActive(t),
+    );
+  }
+
   /** Whether a desk-like object (counter, stall, altar, desk) covers this tile. */
   private deskAt(tx: number, ty: number): boolean {
     return (this.map.def.objects ?? []).some(
@@ -1025,7 +1080,9 @@ export class WorldScene extends Phaser.Scene {
         const steps = getScript(npc.dialogueRef);
         if (steps) {
           this.modal = true;
+          const cue = this.startChallengeCue(steps);
           const completed = await runCutscene(this.cutsceneContext(), steps);
+          if (cue) this.endChallengeCue();
           if (completed) void this.persist();
           this.modal = false;
           this.turnBackToPost(npc);
@@ -1038,20 +1095,22 @@ export class WorldScene extends Phaser.Scene {
       return;
     }
 
-    // A grazing ambient kin on the faced tile: greet it (its cry + a line).
-    const kin = this.ambience?.kinAt(ahead.tx, ahead.ty);
+    // A grazing ambient kin on the faced tile — or under your feet, since they never
+    // block you and you can walk right over one: greet it (its cry + a line).
+    const kin = this.ambience?.kinAt(ahead.tx, ahead.ty) ?? this.ambience?.kinAt(this.player.tx, this.player.ty);
     if (kin) {
       await this.greetAmbientKin(kin);
       return;
     }
 
-    const trigger = this.map.def.triggers.find(
-      (t) =>
-        t.activation === 'interact' &&
-        t.at.tx === ahead.tx &&
-        t.at.ty === ahead.ty &&
-        this.triggerActive(t),
-    );
+    const trigger =
+      this.map.def.triggers.find(
+        (t) =>
+          t.activation === 'interact' &&
+          t.at.tx === ahead.tx &&
+          t.at.ty === ahead.ty &&
+          this.triggerActive(t),
+      ) ?? this.triggerOnObjectAt(ahead.tx, ahead.ty);
     if (trigger) {
       await this.handleTrigger(trigger);
       return;
@@ -1145,7 +1204,9 @@ export class WorldScene extends Phaser.Scene {
       const steps = getScript(trigger.ref);
       if (!steps) return;
       this.modal = true;
+      const cue = this.startChallengeCue(steps);
       const completed = await runCutscene(this.cutsceneContext(), steps);
+      if (cue) this.endChallengeCue();
       // Only bank progress if the scene actually finished (a lost battle aborts it).
       if (completed) {
         this.flags.setMany(trigger.sets_flags);
@@ -1322,6 +1383,23 @@ export class WorldScene extends Phaser.Scene {
       cameraFocusTile: (tx, ty, ms, zoom) => this.cameraFocusTile(tx, ty, ms, zoom),
       starfall: (opts) => this.ambience?.starfall(opts, true) ?? Promise.resolve(),
       cameraReset: (ms) => this.cameraResetToPlayer(ms),
+      travel: async (map, to, facing) => {
+        // A ride (the Lantern-car, the ore-lift): the travelTo path, mid-scene.
+        if (!MAP_REGISTRY[map]) {
+          console.warn(`travel: map "${map}" is not registered — ride skipped`);
+          return;
+        }
+        if (this.staging) return; // never ride out of a cut-away interlude
+        const from = { map: this.map.def.id, tx: this.player.tx, ty: this.player.ty, facing: this.player.facing };
+        await fadeOut(this, theme.transition.fadeMs);
+        this.cameras.main.setZoom(1); // an earlier cameraFocus zoom must not ride along
+        await this.enterMap(map, to, facing ?? 'down', false);
+        // a destination that fails to load must not strand the player on a
+        // torn-down scene: go back to where the ride started
+        if (!this.ready) await this.enterMap(from.map, { tx: from.tx, ty: from.ty }, from.facing, false);
+        this.modal = true; // the cutscene still owns the scene (enterMap's catch clears it)
+        await fadeIn(this, theme.transition.fadeMs);
+      },
       startCinematic: async (id: string) => {
         // Bank everything FIRST (flags the script just set included) so a
         // Continue after the roll resumes exactly here — then hand the screen
@@ -1393,7 +1471,12 @@ export class WorldScene extends Phaser.Scene {
     const steps = getScript(npc.dialogueRef ?? '');
     if (!steps) return;
     this.modal = true;
-    void this.sfx.play('world-spotted'); // the eye-contact '!' sting
+    // Eyes meet: the trainer cue's startle lands with the '!' and its "get ready"
+    // loop carries the walk-up and the challenge until the battle theme takes
+    // over. The plain '!' sting stands in when the cue can't (the trainer's scene
+    // scores itself, or the music is switched off).
+    const cue = this.startChallengeCue(steps);
+    if (!cue || musicMasterGain() <= 0) void this.sfx.play('world-spotted');
     await npc.showEmote('alert');
     // march to the tile adjacent to the player along the (axis-aligned) line,
     // then face off before the script's first line
@@ -1407,12 +1490,32 @@ export class WorldScene extends Phaser.Scene {
       { op: 'face', actor: 'player', facing: playerFacing },
     ];
     const completed = await runCutscene(this.cutsceneContext(), [...approach, ...steps]);
+    if (cue) this.endChallengeCue();
     if (completed) {
       if (npc.placement.defeated_flag) this.flags.set(npc.placement.defeated_flag, true);
       void this.persist();
     }
     this.modal = false;
     this.refreshNpcs();
+  }
+
+  /**
+   * Start the trainer-spots-you cue if this scene is a plain challenge (an
+   * unguarded trainer battle, no music beat of its own before it — see
+   * `opensWithChallenge`). Hard cut on purpose: the startle IS the cut. The map
+   * bed's place is remembered, so it resumes where it was after the fight.
+   */
+  private startChallengeCue(steps: readonly CutsceneStep[]): boolean {
+    if (!opensWithChallenge(steps)) return false;
+    void this.music.play(TRAINER_EYES_KEY, TRAINER_EYES_URL);
+    return true;
+  }
+
+  /** The scene ended without the battle taking the soundtrack (an aborted or
+   *  talked-down challenge): bring the map's own bed back. A fought battle
+   *  already restored it (`startBattle`), so this is then a no-op. */
+  private endChallengeCue(): void {
+    if (this.music.wantedKey === TRAINER_EYES_KEY) this.playMapMusic();
   }
 
   // --- Step-on (on arrival) -----------------------------------------------
@@ -1967,11 +2070,23 @@ export class WorldScene extends Phaser.Scene {
 
   /** Feedback when walking into a wall: a throttled bump sfx + a tiny squash. */
   private lastBumpAt = 0;
+  /** Map id where the "too deep" line last played (once per visit to a map). */
+  private deepWarnedOn = '';
   private onBump = (): void => {
     const now = this.time.now;
     if (now - this.lastBumpAt < 280) return;
     this.lastBumpAt = now;
     void this.sfx.playVariant('world-bump', ['a', 'b']);
+    // Swimming the shallows into DEEP water: say why, once per map visit.
+    const step: Record<Facing, [number, number]> = { down: [0, 1], up: [0, -1], left: [-1, 0], right: [1, 0] };
+    const [dx, dy] = step[this.player.facing];
+    if (!this.modal && this.player.isSwimming && this.deepWarnedOn !== this.map.def.id
+        && this.collision.gateAt(this.player.tx + dx, this.player.ty + dy) === 'deepdive'
+        && !this.abilities.has('deepdive')) {
+      this.deepWarnedOn = this.map.def.id;
+      this.modal = true;
+      void this.runDialogue('world.too_deep').then(() => { this.modal = false; });
+    }
     this.tweens.add({
       targets: this.player.sprite,
       scaleX: 0.9,

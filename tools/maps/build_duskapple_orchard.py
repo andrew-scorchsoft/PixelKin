@@ -33,6 +33,8 @@ A small, SAFE-feeling side area that earns its walk:
 Wiring: `to_tinderwick(_s)` (21, 8-9) -> tinderwick (0, 8-9) facing right;
 tinderwick's `to_orchard(_s)` (0, 8-9) lands ON (21, 8-9). Landings sit on the
 return warps (the engine never auto-fires a step_on warp on arrival).
+West (2026-10): `to_wickstead(_s)` (0, 8-9) -> wickstead_green (23, 8-9) facing
+left — the optional lamp-school green; its `to_orchard(_s)` lands ON (0, 8-9).
 
 Encounters are CURATED: mirrored as ORCHARD_ENCOUNTERS in
 tools/balance/build_species.py (+ `duskapple_orchard` in CURATED_AREAS).
@@ -226,6 +228,12 @@ for y, sfx in ((8, ""), (9, "_s")):
     m["warps"].append({"id": f"to_tinderwick{sfx}", "at": {"tx": W - 1, "ty": y},
                        "trigger": "step_on", "to_map": "tinderwick",
                        "to": {"tx": 0, "ty": y}, "facing": "right", "transition": "fade"})
+# ---- the west mouth on to Wickstead Green (the optional lamp-school) ------------------
+# compass-true: walk WEST out of the orchard, land on the green's EAST edge.
+for y, sfx in ((8, ""), (9, "_s")):
+    m["warps"].append({"id": f"to_wickstead{sfx}", "at": {"tx": 0, "ty": y},
+                       "trigger": "step_on", "to_map": "wickstead_green",
+                       "to": {"tx": 23, "ty": y}, "facing": "left", "transition": "fade"})
 
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},
@@ -241,6 +249,15 @@ mk.scatter_decor(deco, base, W, H, rng, density=0.16,
                                                 if path[y * W + x] or tree[y * W + x]
                                                 or tallgrass[y * W + x] or pond[y * W + x]},
                  flowers=0.35)
+# the WEST mouth (2026-10): the ride runs on through the hedge to Wickstead Green
+# and its lamp-school (build_wickstead_green.py) — rows 8-9, a plain cart-gate.
+# Cut AFTER the scatter pass so the rng-rolled decor elsewhere is unchanged.
+for y in (8, 9):
+    for x in (0, 1, 2):
+        tree[y * W + x] = 0
+        path[y * W + x] = 1
+        deco[y * W + x] = 0
+
 # a few windfall-heavy boulders where the old wall used to run
 for (x, y) in ((2, 10), (19, 15), (13, 15)):
     if not (tree[y * W + x] or pond[y * W + x]):

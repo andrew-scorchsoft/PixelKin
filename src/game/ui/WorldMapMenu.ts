@@ -1,10 +1,12 @@
 /**
  * WorldMapMenu — the vesperlamp's chart of Vesperholm (pause menu -> MAP).
  *
- * The classic handheld "town map": the whole region drawn schematically — the
- * ring of valleys around the Umbral Spire, towns/routes/dungeon mouths as
- * swatches, walked roads solid, gated passages and cave passes dashed, the
- * Lanternway spokes as warm dashed lanes — with a blinking you-are-here marker
+ * The classic handheld "town map", drawn HONESTLY north-up (2026-10): every
+ * place sits where it really is as walked — leave a map north and the next one
+ * is north on the chart. Towns/routes/dungeon mouths as swatches, walked roads
+ * solid, gated passages and cave passes dashed, the Lanternway lanes warm
+ * dashed, the Lantern-car lines sky-blue dotted. The world is tall, so the
+ * chart fits the width and scrolls with the cursor — with a blinking you-are-here marker
  * on the player's current area. D-pad hops the cursor between places (a detail
  * strip below names the selection); B or A backs out. Read-only and
  * promise-based, built from the shared kit + theme tokens. The layout itself is
@@ -40,7 +42,7 @@ const REGION_LABEL: Record<string, string> = {
   north: 'HIGH NORTH',
   west: 'WESTERN REACH',
   central: 'THE CENTRE',
-  outer: 'THE OUTER WAYS',
+  outer: 'OUTER WAYS',
 };
 
 export class WorldMapMenu {
@@ -67,36 +69,99 @@ export class WorldMapMenu {
     this.panel.add(makeText(scene, PAD, PAD - 2, 'VESPERHOLM', theme.text.accent));
     this.panel.add(makeText(scene, width - PAD, PAD - 2, 'B BACK', theme.text.dim).setOrigin(1, 0));
 
-    // Map viewport: fit the layout's virtual box, centred.
-    const viewX = PAD;
-    const viewY = PAD + HEADER_H;
-    const viewW = width - PAD * 2;
-    const viewH = height - viewY - STRIP_H - PAD;
-    const scale = Math.min(viewW / WORLD_MAP_BOX.width, viewH / WORLD_MAP_BOX.height);
-    const offX = viewX + (viewW - WORLD_MAP_BOX.width * scale) / 2;
-    const offY = viewY + (viewH - WORLD_MAP_BOX.height * scale) / 2;
-    const px = (n: WorldMapNode): [number, number] => [offX + n.x * scale, offY + n.y * scale];
+    // Map viewport. The honest north-up world is TALL (the long climb north),
+    // so the chart fits the WIDTH and scrolls vertically with the cursor — the
+    // classic scrolling region map. Everything is redrawn, clipped to the view,
+    // whenever it scrolls (no masks needed).
+    this.viewX = PAD;
+    this.viewY = PAD + HEADER_H;
+    this.viewW = width - PAD * 2;
+    this.viewH = height - this.viewY - STRIP_H - PAD;
+    this.scale = this.viewW / WORLD_MAP_BOX.width;
+    this.offX = this.viewX + (this.viewW - WORLD_MAP_BOX.width * this.scale) / 2;
+    this.maxScroll = Math.max(0, Math.round(WORLD_MAP_BOX.height * this.scale - this.viewH));
 
-    // Roads first (under the nodes). Dashes are drawn as short segments.
-    const g = scene.add.graphics();
+    this.g = scene.add.graphics();
+    this.panel.add(this.g);
+    // The blinking you-are-here marker.
+    if (this.playerNode) {
+      const [w, h] = NODE_SIZE[this.playerNode.kind] ?? NODE_SIZE.landmark;
+      this.marker = scene.add.rectangle(0, 0, w + 4, h + 4).setStrokeStyle(1, hex(theme.worldmap.marker));
+      this.panel.add(this.marker);
+      this.blink = scene.tweens.add({ targets: this.marker, alpha: 0.15, duration: 420, yoyo: true, repeat: -1 });
+    }
+    // The selection outline, the scroll hints + the name strip.
+    this.select = scene.add.rectangle(0, 0, 10, 10).setStrokeStyle(1, hex(theme.color.panelEdge));
+    this.panel.add(this.select);
+    // scroll hints ride the header row (never over a place on the chart)
+    this.upHint = makeText(scene, width / 2 - 2, PAD - 2, '\u25b2', theme.text.dim).setOrigin(1, 0);
+    this.downHint = makeText(scene, width / 2 + 2, PAD - 2, '\u25bc', theme.text.dim).setOrigin(0, 0);
+    this.panel.add(this.upHint);
+    this.panel.add(this.downHint);
+    this.strip = makeText(scene, PAD, height - STRIP_H - 1, '', theme.text.base);
+    this.panel.add(this.strip);
+    this.refresh();
+  }
+
+  private readonly viewX: number;
+  private readonly viewY: number;
+  private readonly viewW: number;
+  private readonly viewH: number;
+  private readonly scale: number;
+  private readonly offX: number;
+  private readonly maxScroll: number;
+  private scrollY = -1;
+  private readonly g: Phaser.GameObjects.Graphics;
+  private marker?: Phaser.GameObjects.Rectangle;
+  private readonly upHint: Phaser.GameObjects.Text;
+  private readonly downHint: Phaser.GameObjects.Text;
+
+  private toScreen(n: WorldMapNode): [number, number] {
+    return [this.offX + n.x * this.scale, this.viewY + n.y * this.scale - this.scrollY];
+  }
+
+  /** Redraw roads + nodes for the current scroll, clipped to the view. */
+  private draw(): void {
+    const g = this.g;
+    g.clear();
+    const top = this.viewY;
+    const bottom = this.viewY + this.viewH;
     const byId = new Map(this.nodes.map((n) => [n.id, n]));
+    // a segment clipped to the view's rows (x always fits: the chart fits the width)
+    const seg = (ax: number, ay: number, bx: number, by: number): void => {
+      let t0 = 0;
+      let t1 = 1;
+      const dy = by - ay;
+      if (dy === 0) {
+        if (ay < top || ay > bottom) return;
+      } else {
+        const ta = (top - ay) / dy;
+        const tb = (bottom - ay) / dy;
+        t0 = Math.max(t0, Math.min(ta, tb));
+        t1 = Math.min(t1, Math.max(ta, tb));
+        if (t0 > t1) return;
+      }
+      g.lineBetween(ax + (bx - ax) * t0, ay + dy * t0, ax + (bx - ax) * t1, ay + dy * t1);
+    };
     for (const road of WORLD_MAP.roads) {
       const a = byId.get(road.a);
       const b = byId.get(road.b);
       if (!a || !b) continue;
-      const [ax, ay] = px(a);
-      const [bx, by] = px(b);
+      const [ax, ay] = this.toScreen(a);
+      const [bx, by] = this.toScreen(b);
       if (road.kind === 'road') {
         g.lineStyle(1, hex(theme.worldmap.road), 0.9);
-        g.lineBetween(ax, ay, bx, by);
+        seg(ax, ay, bx, by);
       } else {
         const color =
-          road.kind === 'lane' ? theme.worldmap.lane : road.kind === 'pass' ? theme.worldmap.pass : theme.worldmap.gate;
-        g.lineStyle(1, hex(color), road.kind === 'lane' ? 0.9 : 0.7);
+          road.kind === 'lane' ? theme.worldmap.lane
+            : road.kind === 'pass' ? theme.worldmap.pass
+              : road.kind === 'car' ? theme.worldmap.car : theme.worldmap.gate;
+        g.lineStyle(1, hex(color), road.kind === 'lane' || road.kind === 'car' ? 0.9 : 0.7);
         const len = Phaser.Math.Distance.Between(ax, ay, bx, by);
-        const steps = Math.max(1, Math.floor(len / 4));
+        const steps = Math.max(1, Math.floor(len / (road.kind === 'car' ? 3 : 4)));
         for (let i = 0; i < steps; i += 2) {
-          g.lineBetween(
+          seg(
             ax + ((bx - ax) * i) / steps,
             ay + ((by - ay) * i) / steps,
             ax + ((bx - ax) * (i + 1)) / steps,
@@ -105,45 +170,52 @@ export class WorldMapMenu {
         }
       }
     }
-    // Node swatches on top.
     for (const node of this.nodes) {
       const [w, h] = NODE_SIZE[node.kind] ?? NODE_SIZE.landmark;
-      const [cx, cy] = px(node);
+      const [cx, cy] = this.toScreen(node);
+      if (cy - h / 2 < top || cy + h / 2 > bottom) continue;
       g.fillStyle(hex(theme.worldmap.node[node.kind] ?? theme.worldmap.node.landmark), 1);
       g.fillRect(Math.round(cx - w / 2), Math.round(cy - h / 2), w, h);
     }
-    this.panel.add(g);
-
-    // The blinking you-are-here marker.
-    if (this.playerNode) {
-      const [w, h] = NODE_SIZE[this.playerNode.kind] ?? NODE_SIZE.landmark;
-      const [cx, cy] = px(this.playerNode);
-      const marker = scene.add
-        .rectangle(Math.round(cx), Math.round(cy), w + 4, h + 4)
-        .setStrokeStyle(1, hex(theme.worldmap.marker));
-      this.panel.add(marker);
-      this.blink = scene.tweens.add({ targets: marker, alpha: 0.15, duration: 420, yoyo: true, repeat: -1 });
+    if (this.marker && this.playerNode) {
+      const [cx, cy] = this.toScreen(this.playerNode);
+      this.marker.setPosition(Math.round(cx), Math.round(cy));
+      const [, mh] = NODE_SIZE[this.playerNode.kind] ?? NODE_SIZE.landmark;
+      // the same fit test as the swatches (the marker is 2px proud of it)
+      this.marker.setVisible(cy - mh / 2 - 2 >= top && cy + mh / 2 + 2 <= bottom);
     }
-
-    // The selection outline + the name strip.
-    this.select = scene.add.rectangle(0, 0, 10, 10).setStrokeStyle(1, hex(theme.color.panelEdge));
-    this.panel.add(this.select);
-    this.strip = makeText(scene, PAD, height - STRIP_H - 1, '', theme.text.base);
-    this.panel.add(this.strip);
-    this.toScreen = px;
-    this.refresh();
+    this.upHint.setVisible(this.scrollY > 0);
+    this.downHint.setVisible(this.scrollY < this.maxScroll);
   }
-
-  private toScreen: (n: WorldMapNode) => [number, number];
 
   private refresh(): void {
     const node = this.nodes[this.index];
+    // keep the cursor's node comfortably inside the view (scroll in steps)
+    const ny = node.y * this.scale;
+    const margin = Math.min(24, this.viewH / 3);
+    let want = this.scrollY < 0 ? ny - this.viewH / 2 : this.scrollY;
+    if (ny - want < margin) want = ny - margin;
+    if (ny - want > this.viewH - margin) want = ny - (this.viewH - margin);
+    want = Math.round(Phaser.Math.Clamp(want, 0, this.maxScroll));
+    if (want !== this.scrollY) {
+      this.scrollY = want;
+      this.draw();
+    }
     const [w, h] = NODE_SIZE[node.kind] ?? NODE_SIZE.landmark;
     const [cx, cy] = this.toScreen(node);
     this.select.setPosition(Math.round(cx), Math.round(cy)).setSize(w + 2, h + 2);
     const here = node.id === this.playerNode?.id ? '  *HERE*' : '';
     const region = REGION_LABEL[node.region] ?? node.region.toUpperCase();
-    this.strip.setText(`${node.name.toUpperCase()} — ${region}${here}`);
+    // Fit the strip inside the panel: drop the region first, then ellipsize
+    // the name (long names like "Lanternway · Tinderwick Spoke" overran it).
+    const maxW = GAME_WIDTH - 8 - PAD * 2;
+    let name = node.name.toUpperCase();
+    this.strip.setText(`${name} · ${region}${here}`);
+    if (this.strip.width > maxW) this.strip.setText(`${name}${here}`);
+    while (this.strip.width > maxW && name.length > 4) {
+      name = name.slice(0, -1);
+      this.strip.setText(`${name.trimEnd()}..${here}`);
+    }
   }
 
   /** Hop the cursor to the nearest node in the pressed direction. */

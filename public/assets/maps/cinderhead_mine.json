@@ -382,7 +382,20 @@
       "facing": "down",
       "sprite": "npc_old_man",
       "movement": "static",
-      "dialogue_ref": "npc.vigil_elder"
+      "dialogue_ref": "npc.vigil_elder",
+      "hidden_when_flag": "gleam:stone"
+    },
+    {
+      "id": "vigil_elder_lit",
+      "at": {
+        "tx": 13,
+        "ty": 12
+      },
+      "facing": "down",
+      "sprite": "npc_old_man",
+      "movement": "static",
+      "dialogue_ref": "npc.vigil_elder_lit",
+      "requires_flag": "gleam:stone"
     },
     {
       "id": "vigil_miner_a",
@@ -393,7 +406,20 @@
       "facing": "right",
       "sprite": "miner_man",
       "movement": "static",
-      "dialogue_ref": "npc.vigil_miner_a"
+      "dialogue_ref": "npc.vigil_miner_a",
+      "hidden_when_flag": "gleam:stone"
+    },
+    {
+      "id": "vigil_miner_a_lit",
+      "at": {
+        "tx": 10,
+        "ty": 14
+      },
+      "facing": "right",
+      "sprite": "miner_man",
+      "movement": "static",
+      "dialogue_ref": "npc.vigil_miner_a_lit",
+      "requires_flag": "gleam:stone"
     },
     {
       "id": "vigil_miner_b",
@@ -404,7 +430,20 @@
       "facing": "left",
       "sprite": "miner_woman",
       "movement": "static",
-      "dialogue_ref": "npc.vigil_miner_b"
+      "dialogue_ref": "npc.vigil_miner_b",
+      "hidden_when_flag": "gleam:stone"
+    },
+    {
+      "id": "vigil_miner_b_lit",
+      "at": {
+        "tx": 17,
+        "ty": 11
+      },
+      "facing": "left",
+      "sprite": "miner_woman",
+      "movement": "static",
+      "dialogue_ref": "npc.vigil_miner_b_lit",
+      "requires_flag": "gleam:stone"
     },
     {
       "id": "vigil_cook",
@@ -415,7 +454,20 @@
       "facing": "down",
       "sprite": "innkeeper",
       "movement": "static",
-      "dialogue_ref": "script.cinderhead_rest"
+      "dialogue_ref": "script.cinderhead_rest",
+      "hidden_when_flag": "gleam:stone"
+    },
+    {
+      "id": "vigil_cook_lit",
+      "at": {
+        "tx": 6,
+        "ty": 11
+      },
+      "facing": "down",
+      "sprite": "innkeeper",
+      "movement": "static",
+      "dialogue_ref": "script.cinderhead_rest_lit",
+      "requires_flag": "gleam:stone"
     },
     {
       "id": "vigil_raised_a",
@@ -525,7 +577,7 @@
       "facing": "down",
       "sprite": "market_trader",
       "movement": "static",
-      "dialogue_ref": "script.shop_cinderhead",
+      "dialogue_ref": "script.shop_cinderhead_staged",
       "requires_flag": "flag:cinderhead_kit"
     },
     {
@@ -537,7 +589,20 @@
       "facing": "down",
       "sprite": "npc_lampwarden",
       "movement": "static",
-      "dialogue_ref": "npc.cinderhead_deep_warden"
+      "dialogue_ref": "npc.cinderhead_deep_warden",
+      "hidden_when_flag": "gleam:stone"
+    },
+    {
+      "id": "deep_warden_lit",
+      "at": {
+        "tx": 14,
+        "ty": 18
+      },
+      "facing": "down",
+      "sprite": "npc_lampwarden",
+      "movement": "static",
+      "dialogue_ref": "npc.cinderhead_deep_warden_lit",
+      "requires_flag": "gleam:stone"
     },
     {
       "id": "cache_cinderhead_crystal",
@@ -578,7 +643,7 @@
     {
       "id": "letter_otho",
       "at": {
-        "tx": 13,
+        "tx": 14,
         "ty": 12
       },
       "facing": "down",

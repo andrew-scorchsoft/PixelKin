@@ -15,7 +15,7 @@ Wanderwood) takes richer, optional set dressing and inspect-only finds.
 """
 from __future__ import annotations
 
-from ._kit import ambient_kin, gid, particles  # noqa: F401
+from ._kit import add_words, ambient_kin, gid, lit, particles  # noqa: F401
 
 SURF = "amb-surf"
 BUOY = [gid("buoy")]
@@ -176,7 +176,7 @@ PLACEMENTS: dict[str, dict] = {
             "sound_bed": SURF,
         },
         "objects": [
-            prop("wc_rowboat", "pearlmoor_rowboat", (12, 4), 2, 2),
+            prop("wc_rowboat", "pearlmoor_rowboat", (15, 4), 2, 2),   # moored out on the deep water
             prop("wc_driftwood", "pearlmoor_driftwood", (3, 19), 2, 1),
             prop("wc_netrack", "pearlmoor_net_rack", (9, 29), 2, 1),
             prop("wc_anchor", "pearlmoor_anchor", (2, 3), 2, 2, overhang=1),
@@ -294,19 +294,19 @@ PLACEMENTS: dict[str, dict] = {
         "objects": [
             prop("wc_crabpots", "pearlmoor_crab_pots", (6, 2), 1, 1),
             prop("wc_driftwood", "pearlmoor_driftwood", (2, 22), 2, 1),
-            prop("wc_nest", "pearlmoor_gull_nest", (13, 22), 1, 1),
+            prop("wc_nest", "pearlmoor_gull_nest", (11, 20), 1, 1),
         ],
         "triggers": [
             inspect("wc_wrack_pots", (6, 2), "npc.wrack_find_pots"),
             inspect("wc_wrack_drift", (2, 22), "npc.wrack_find_drift"),
-            inspect("wc_wrack_nest", (13, 22), "npc.wrack_find_nest"),
+            inspect("wc_wrack_nest", (11, 20), "npc.wrack_find_nest"),
         ],
         "npcs": [ambient_kin("amb_lumpin", (11, 3), 31, radius=2)],
     },
     "sounding_cave": {
         "ambience": {"particles": [particles("motes", 0.5)]},
-        "triggers": [inspect("wc_sounding_stone", (16, 6), "npc.sounding_stone")],
-        "npcs": [ambient_kin("amb_oreling", (3, 9), 53, radius=1)],
+        "triggers": [inspect("wc_sounding_stone", (7, 15), "npc.sounding_stone")],
+        "npcs": [ambient_kin("amb_oreling", (5, 16), 53, radius=1)],
     },
     "lanternfall_road": {
         "ambience": {
@@ -348,3 +348,27 @@ PLACEMENTS: dict[str, dict] = {
         "npcs": [ambient_kin("amb_snoozlet", (17, 4), 105, radius=1)],
     },
 }
+
+
+# ------------------------------------------------------------- AFTER-GLEAM
+# The South answers its Gleams (src/game/content/regions/south.ts). Words only:
+# `lit` twins share their original's tile, sheet and body; `talk` re-points keep
+# the id (shops, staged chains, cutscene actors). Allowed on pre-Chickenpig maps.
+EMBER, TIDE = "gleam:ember", "gleam:tide"
+add_words(PLACEMENTS, {
+    "tinderwick": {"after": [lit("gatewarden_post", EMBER, "npc.gatewarden_after_lit",
+                                 implies="flag:has_starter")]},
+    "tinderwick_shop": {"talk": {"shopkeeper": "script.shop_tinderwick_staged"}},
+    "vesper_crossroads": {"talk": {"waykeeper": "script.waykeeper_staged"}},
+    "crossroads_inn": {"talk": {"innkeeper_pre": "script.inn_rest_crossroads_early"}},
+    # witness_after shares its tile with the pre-wick witness: re-point, don't twin
+    "dimglass_coast": {"talk": {"witness_after": "script.dimglass_witness_staged",
+                                "wren_after": "script.wren_dimglass_staged"}},
+    "dimglass_coast_ii": {"talk": {"wayfarer_b_after": "script.flats_wayfarer_b_staged",
+                                   "sky_watcher_after": "script.flats_sky_watcher_staged"}},
+    "pearlmoor_quay": {"after": [lit("fisher", TIDE, "npc.pearlmoor_fisher_lit")]},
+    "pearlmoor_inn": {"after": [lit("fisher", TIDE, "npc.pearlmoor_fisher_inn_lit"),
+                                lit("innkeep", TIDE, "script.pearlmoor_inn_rest_lit")]},
+    "pearlmoor_shop": {"talk": {"chandler": "script.shop_pearlmoor_staged"}},
+    "pearlmoor_lifting_house": {"after": [lit("andrew", TIDE, "npc.booji_andrew_lit")]},
+})

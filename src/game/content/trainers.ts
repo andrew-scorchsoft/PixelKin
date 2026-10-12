@@ -875,6 +875,69 @@ export const TRAINERS: TrainerRegistry = {
     ai: 'smart',
   },
 
+  // --- Cinderwind Scarp (2026-10 geometry fix) — the climb from Cinderhead
+  // Deep to Galehigh: two route trainers on the turns (route 16 × ace).
+  scarp_hauler: {
+    id: 'scarp_hauler',
+    name: 'HOBB-REE',
+    title: 'Ore-hauler',
+    party: [
+      { species_id: 53, level: 28 }, // Oreling — Stone
+      { species_id: 48, level: 30 }, // Rubbol — Stone (ace)
+    ],
+    payout: 480, // route 16 × ace 30
+  },
+  scarp_kiterunner: {
+    id: 'scarp_kiterunner',
+    name: 'RUE',
+    title: 'Kite-runner',
+    party: [
+      { species_id: 100, level: 29 }, // Squallox — Storm
+      { species_id: 91, level: 29 }, // Cirruff — Storm/Light
+      { species_id: 101, level: 31 }, // Galefox — Storm (ace)
+    ],
+    payout: 496, // route 16 × ace 31
+  },
+
+  // --- The Umbral Approach (2026-10 geometry fix) — the mountain road up from
+  // the Crossroads. Three Hollowing acolytes keep its turns: keeper class like
+  // their Spire siblings, but plain AI (the climb warms you up; the Spire is
+  // where the hardest sustained run lives).
+  approach_acolyte_a: {
+    id: 'approach_acolyte_a',
+    name: 'ORLA',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 136, level: 50 }, // Mothdim — Dark
+      { species_id: 112, level: 51 }, // Nightwraith — Lunar (ace)
+    ],
+    payout: 1020, // keeper 20 × ace 51
+    music: 'battle-nightfall',
+  },
+  approach_acolyte_b: {
+    id: 'approach_acolyte_b',
+    name: 'BRENN',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 141, level: 51 }, // Cindersob — Dark/Ember
+      { species_id: 143, level: 52 }, // Whorlix — Storm/Dark (ace)
+    ],
+    payout: 1040, // keeper 20 × ace 52
+    music: 'battle-nightfall',
+  },
+  approach_acolyte_c: {
+    id: 'approach_acolyte_c',
+    name: 'WYNNE',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 133, level: 52 }, // Flutterwane — Dark/Light
+      { species_id: 134, level: 52 }, // Wispwane — Dark/Light
+      { species_id: 113, level: 53 }, // Omenire — Lunar/Dark (ace)
+    ],
+    payout: 1060, // keeper 20 × ace 53
+    music: 'battle-nightfall',
+  },
+
   // --- The Umbral Spire (05-central-endgame) — the endgame difficulty ramp. ---
   // The Hollowing's acolytes tend the null-works with drained Dark kin: each is
   // a PERSON doing a careful, terrible kindness (story-bible §7), keeper class,

@@ -675,8 +675,11 @@ held) · **Gleam:** none · **rec. level ~46–50.**
 ### 6. Validation hooks
 
 - **Map ids / kind:** `coldfog_marches_i`, `coldfog_marches_ii`, kind `route`, region `outer`.
-- **Entry (from hub):** `vesper_crossroads → coldfog_marches_i` via `to_marsh` (**ungated**,
-  bidir).
+- **Entry:** *(2026-10 geometry pass: the hub's `to_marsh` road is RETIRED — the marshes now
+  hang off Nightreach's east fog gate → Marches II → Marches I, with Drownlight Beacon off Marches
+  I's west flank; see `docs/world/geometry.md`. A pre-1.12 save inside Marches I without Emberward
+  wakes at its rest point — `WorldScene` `STRANDED_WITHOUT`.)* Formerly: `vesper_crossroads →
+  coldfog_marches_i` via `to_marsh` (ungated, bidir).
 - **Boundary warp (graph.ts):** `coldfog_marches_i → coldfog_marches_ii` via `to_marsh_ii`,
   **`requires_ability: emberward`** (held), bidir.
 - **Back-door warp:** `coldfog_marches_ii → nightreach_observatory` via `to_observatory_fog`,

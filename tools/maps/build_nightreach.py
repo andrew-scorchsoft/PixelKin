@@ -128,7 +128,7 @@ Suggested sign copy (wiring agent; sincere, reverent, zero humour):
                               ember-light first, sun-light last."
   sign.nightreach_fogroad    "EAST — THE FOG ROAD. Short, dark, and wrong.
                               Only a warded flame holds the coldfog off."
-  sign.nightreach_lanternway "SOUTH — THE LANTERNWAY. Every lit road in
+  sign.nightreach_lanternway "WEST — THE LANTERNWAY. Every lit road in
                               Vesperholm meets at the Waystone."
   npc.watch_lamp_unstruck    "The first watch-lamp waits, polished and cold.
                               Its wick wants the old watcher's striker — the
@@ -173,9 +173,11 @@ mk.organic_border(cliff, W, H, depth=0,
 for y in (28, 29):
     for x in (15, 16):
         cliff[y * W + x] = 0
-# SOUTH gap B — the Lanternway spoke (cols 4-5)
-for y in (28, 29):
-    for x in (4, 5):
+# WEST gap — the Lanternway lane to the Lantern-car station (rows 20-21; the
+# 2026-10 geometry fix moved it off the south rim, where it sat on top of the
+# Sunvault road). Cleared to col 3 so the border bump can't plug it.
+for y in (20, 21):
+    for x in (0, 1, 2, 3):
         cliff[y * W + x] = 0
 # EAST gap — the Coldfog back-door (rows 14-15; W3 lands (28,14)/(28,15))
 for x in (28, 29):
@@ -206,7 +208,7 @@ for (bx, by) in [(2, 10), (3, 11), (27, 10), (27, 11), (2, 11), (26, 11)]:
 # ---- the town lanes (bone paving on gold grass) -------------------------------------
 mk.rect(ruin, W, H, 15, 14, 16, 27)     # the main lane: steps -> rim gate
 mk.rect(ruin, W, H, 4, 20, 26, 21)      # the town street (inn west, home east)
-mk.rect(ruin, W, H, 4, 22, 5, 27)       # the Lanternway leg (street -> spoke)
+mk.rect(ruin, W, H, 0, 20, 3, 21)       # the town street runs on out the west gap (the car lane)
 mk.rect(ruin, W, H, 17, 14, 27, 15)     # the east lane -> the fog gate
 mk.rect(ruin, W, H, 12, 16, 15, 16)     # forecourt jog under the steps (west)
 mk.rect(ruin, W, H, 16, 17, 19, 17)     # forecourt jog (east) — the steps
@@ -294,13 +296,14 @@ m["warps"] += [
     {"id": "to_climb_ii_e", "at": {"tx": 16, "ty": 29}, "trigger": "step_on",
      "to_map": "sunvault_climb_ii", "to": {"tx": 23, "ty": 1}, "facing": "down",
      "transition": "fade"},
-    # SOUTH B <-> the Lanternway spoke's real lane map (lanternway_nightreach;
-    # `to_crossroads` — the crossroads side is gleam:lunar-gated, the Galehigh pattern)
-    {"id": "to_crossroads", "at": {"tx": 4, "ty": 29}, "trigger": "step_on",
-     "to_map": "lanternway_nightreach", "to": {"tx": 4, "ty": 0}, "facing": "down",
+    # WEST <-> the Lanternway lane (lanternway_nightreach) and its Lantern-car
+    # station — the ride down to the Crossroads (the cable's lamp answers the
+    # Lunar; the crossroads side rides up once gleam:lunar stands)
+    {"id": "to_crossroads", "at": {"tx": 0, "ty": 20}, "trigger": "step_on",
+     "to_map": "lanternway_nightreach", "to": {"tx": 22, "ty": 12}, "facing": "left",
      "transition": "fade"},
-    {"id": "to_crossroads_s", "at": {"tx": 5, "ty": 29}, "trigger": "step_on",
-     "to_map": "lanternway_nightreach", "to": {"tx": 5, "ty": 0}, "facing": "down",
+    {"id": "to_crossroads_s", "at": {"tx": 0, "ty": 21}, "trigger": "step_on",
+     "to_map": "lanternway_nightreach", "to": {"tx": 22, "ty": 13}, "facing": "left",
      "transition": "fade"},
     # EAST <-> coldfog_marches_ii (`to_observatory_fog`'s return — Emberward
     # OUR side too, per the W3 contract; the OPTIONAL back-door)
@@ -541,7 +544,7 @@ owed += [
 owed += pt.sign(m, deco, W, sid="nightreach_welcome", at=(17, 27))
 owed += pt.sign(m, deco, W, sid="nightreach_walk", at=(13, 13))
 owed += pt.sign(m, deco, W, sid="nightreach_fogroad", at=(26, 13))
-owed += pt.sign(m, deco, W, sid="nightreach_lanternway", at=(6, 27))
+owed += pt.sign(m, deco, W, sid="nightreach_lanternway", at=(4, 22))   # by the west gap
 # (sign.nightreach_fogroad doubles as the fog warps' blocked_ref)
 
 # ---- caches (variety: a valuable up top, loose wicks in the grass, a charge
@@ -595,8 +598,6 @@ m["objects"] += [
     # lamp posts beside (never on) the walked lanes
     {"id": "lamp_entry", "sprite": "tinderwick_lamp_post",
      "at": {"tx": 14, "ty": 25}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_spoke", "sprite": "tinderwick_lamp_post",
-     "at": {"tx": 3, "ty": 24}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "lamp_fog", "sprite": "tinderwick_lamp_post",
      "at": {"tx": 24, "ty": 12}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
 ]

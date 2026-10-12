@@ -217,7 +217,13 @@ type CutsceneStepBase =
    * CinematicScene; nothing after this step plays, so make it the script's LAST
    * step and set any progression flags (e.g. flag:dawn) BEFORE it.
    */
-  | { op: 'cinematic'; id: string };
+  | { op: 'cinematic'; id: string }
+  /**
+   * Carry the player to another map mid-scene (a ride: the Lantern-car, the
+   * ore-lift). Fades out, enters `map` at `to` facing `facing`, fades in; later
+   * steps play on the new map (narration only — the old map's actors are gone).
+   */
+  | { op: 'travel'; map: string; to: { tx: number; ty: number }; facing?: 'up' | 'down' | 'left' | 'right' };
 // (per-step `if_flag` guard rides the CutsceneStep intersection above)
 
 /** ref -> a cutscene's steps. */

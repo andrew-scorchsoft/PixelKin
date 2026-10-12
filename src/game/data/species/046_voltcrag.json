@@ -68,7 +68,15 @@
     "weight_kg": 220,
     "habitat": "east"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "cinderwind_scarp",
+      "terrain": "tall_grass",
+      "rarity": "very_rare",
+      "min": 31,
+      "max": 31
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Bear-sized quadruped; charcoal-black stone-dense hide with bright amber charge-lines tracing the mineral veins; mane of stiff iron-ore bristles along the neck; tail a coiled ore-spring that arcs sparks when lashing.",

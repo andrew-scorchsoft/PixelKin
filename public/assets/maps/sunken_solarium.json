@@ -1319,7 +1319,7 @@
       "facing": "up",
       "sprite": "npc_man",
       "movement": "static",
-      "dialogue_ref": "npc.solarium_witness",
+      "dialogue_ref": "script.solarium_witness_staged",
       "requires_flag": "flag:q_west_stage_lit"
     },
     {
@@ -1395,7 +1395,20 @@
       "facing": "down",
       "sprite": "npc_old_man",
       "movement": "static",
-      "dialogue_ref": "npc.solarium_festival_goer"
+      "dialogue_ref": "npc.solarium_festival_goer",
+      "hidden_when_flag": "gleam:solar"
+    },
+    {
+      "id": "festival_goer_lit",
+      "at": {
+        "tx": 11,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "npc_old_man",
+      "movement": "static",
+      "dialogue_ref": "npc.solarium_festival_goer_lit",
+      "requires_flag": "gleam:solar"
     },
     {
       "id": "bread_sharer",
@@ -1406,7 +1419,20 @@
       "facing": "left",
       "sprite": "market_trader",
       "movement": "look_around",
-      "dialogue_ref": "npc.solarium_bread"
+      "dialogue_ref": "npc.solarium_bread",
+      "hidden_when_flag": "gleam:solar"
+    },
+    {
+      "id": "bread_sharer_lit",
+      "at": {
+        "tx": 12,
+        "ty": 8
+      },
+      "facing": "left",
+      "sprite": "market_trader",
+      "movement": "look_around",
+      "dialogue_ref": "npc.solarium_bread_lit",
+      "requires_flag": "gleam:solar"
     },
     {
       "id": "festival_kid",
@@ -1417,7 +1443,20 @@
       "facing": "down",
       "sprite": "village_child",
       "movement": "wander",
-      "dialogue_ref": "npc.solarium_kid"
+      "dialogue_ref": "npc.solarium_kid",
+      "hidden_when_flag": "gleam:solar"
+    },
+    {
+      "id": "festival_kid_lit",
+      "at": {
+        "tx": 10,
+        "ty": 7
+      },
+      "facing": "down",
+      "sprite": "village_child",
+      "movement": "wander",
+      "dialogue_ref": "npc.solarium_kid_lit",
+      "requires_flag": "gleam:solar"
     },
     {
       "id": "gleam_watcher",

@@ -197,10 +197,49 @@ def audit(world: dict[str, dict], focus: str | None = None):
     return fails, warns, infos
 
 
+def audit_waystones(world) -> list[str]:
+    """TRAVEL landings (content/waystones.ts) must be standable, NPC-free tiles
+    with no warp/trigger on them — a rebuilt map can silently seal one, and the
+    engine's findSafeTile then drops the player somewhere arbitrary."""
+    import re
+    from worldmodel import MapModel, load_world as load_model_world
+    world = load_model_world()
+    src = (REPO / "src/game/content/waystones.ts").read_text()
+    out: list[str] = []
+    entries = len(re.findall(r"^\s*visited_flag:\s*'", src, re.M))
+    found = len(re.findall(r"map:\s*'([^']+)',\s*tx:\s*(\d+),\s*ty:\s*(\d+)", src))
+    if found != entries:                   # a re-ordered entry would slip past the regex
+        out.append(f"  [F] waystones.ts: parsed {found} landings but {entries} entries "
+                   "— keep each entry's map/tx/ty together, in that order")
+    for m in re.finditer(r"map:\s*'([^']+)',\s*tx:\s*(\d+),\s*ty:\s*(\d+)", src):
+        mid, tx, ty = m.group(1), int(m.group(2)), int(m.group(3))
+        d = world.get(mid)
+        if d is None:
+            out.append(f"  [F] waystone {mid}: map not found")
+            continue
+        model = MapModel(d)
+        busy = set()
+        for k in ("warps", "triggers"):
+            for t in d.get(k, []):
+                p = t.get("at") or t.get("position") or {}
+                busy.add((p.get("tx"), p.get("ty")))
+        for n in d.get("npcs", []):
+            p = n.get("at") or {}
+            if not n.get("ambient"):
+                busy.add((p.get("tx"), p.get("ty")))
+        if not model.standable(tx, ty):
+            out.append(f"  [F] waystone {mid} lands on a solid tile ({tx},{ty})")
+        elif (tx, ty) in busy:
+            out.append(f"  [F] waystone {mid} lands on a warp/trigger/NPC tile ({tx},{ty})")
+    return out
+
+
 def main():
     focus = sys.argv[1] if len(sys.argv) > 1 else None
     world = load_world()
     fails, warns, infos = audit(world, focus)
+    if focus is None:
+        fails += audit_waystones(world)
     print(f"Warp audit — {len(world)} maps" + (f" (focus: {focus})" if focus else ""))
     for line in fails + warns + infos:
         print(line)

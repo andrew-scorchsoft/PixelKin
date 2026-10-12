@@ -1,5 +1,9 @@
 # PixelKin — World Atlas: *The Long Dusk*
 
+
+> **2026-10:** the world's walked geometry (which map touches which edge, the Lantern-car,
+> deep water, the new Cinderwind Scarp and Umbral Approach) is canon in
+> [`geometry.md`](geometry.md); where this atlas's road sketches differ, geometry.md wins.
 > The map of **Vesperholm**: how the areas connect, how the central hub locks and
 > opens, which **Lantern Gift** gates each path, and — for every area — its graphics
 > direction, a ready-to-use **`generate-midi` music brief**, the kin found there, and

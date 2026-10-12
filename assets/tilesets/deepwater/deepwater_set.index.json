@@ -1,0 +1,17 @@
+{
+  "deepwater_corner_nw": 0,
+  "deepwater_edge_n": 1,
+  "deepwater_corner_ne": 2,
+  "deepwater_edge_w": 3,
+  "deepwater_fill": 4,
+  "deepwater_edge_e": 5,
+  "deepwater_corner_sw": 6,
+  "deepwater_edge_s": 7,
+  "deepwater_corner_se": 8,
+  "deepwater_inner_nw": 9,
+  "deepwater_inner_ne": 10,
+  "deepwater_inner_sw": 11,
+  "deepwater_inner_se": 12,
+  "deepwater_a2": 13,
+  "deepwater_a3": 14
+}

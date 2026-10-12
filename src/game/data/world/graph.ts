@@ -79,6 +79,8 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'tinderwick_beacon_ii', region: 'south' }, // interior: the old beacon, stair floor II
     { map_id: 'tinderwick_beacon_top', region: 'south' }, // interior: the lantern room — the Ember bond-test
     { map_id: 'duskapple_orchard', region: 'south' }, // R8: the old orchard off the square's west gap (satchel detour)
+    { map_id: 'wickstead_green', region: 'south', optional: true, reward: 'the lamp-school: a teacher per mechanic (types, catching, statuses, kindling, the Hearth, resting, wicks, Gifts, menus)' }, // west of the orchard
+    { map_id: 'wickstead_school', region: 'south', optional: true }, // interior: the Wickstead Lamp-school
     { map_id: 'dimglass_coast', region: 'south' }, // route segment I: cliff path + shore (authored)
     { map_id: 'dimglass_coast_ii', region: 'south' }, // route: tidal flats
     { map_id: 'gullcry_rock', region: 'south', optional: true, reward: 'rare sea-bird kin + a Tide charm' },
@@ -120,6 +122,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'cinderhead_deep_b2f', region: 'east' }, // the third gallery: the vigil-lamp (deepest)
     { map_id: 'crystoll_vault', region: 'east', optional: true, reward: 'late backtrack (Starreach): rare Stone/Light kin' },
     // ---- North: Galehigh -> Windward Stair (2 segments) -> Pale Vault ---------------
+    { map_id: 'cinderwind_scarp', region: 'north' }, // route: the climb out of the mine (2026-10)
     { map_id: 'galehigh_terraces', region: 'north' },
     { map_id: 'galehigh_skyloft', region: 'north' }, // the winch-festival top terrace: Mira's launch-ledge bond-test (Lumenary 5's venue)
     { map_id: 'galehigh_lumenary', region: 'north' }, // interior: the Storm hall (festival home — the battle is at the skyloft)
@@ -168,7 +171,8 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'lanternway_undercut', region: 'outer' }, // the cave beneath the Lowleaf spoke (its two mouths)
     { map_id: 'lanternway_galehigh', region: 'outer' },
     { map_id: 'lanternway_nightreach', region: 'outer' },
-    // ---- Central: Penumbra Ring -> Umbral Spire (+ a late landmark) -> Dawnstead -----
+    // ---- Central: the mountain road -> Penumbra Ring -> Umbral Spire (+ a late landmark) -> Dawnstead -----
+    { map_id: 'umbral_approach', region: 'central' }, // the mountain road up from the hub (2026-10)
     { map_id: 'penumbra_ring', region: 'central' },
     { map_id: 'starwell', region: 'central', optional: true, reward: 'post-Crown landmark (Starreach): a near-legendary kin' },
     { map_id: 'umbral_spire', region: 'central', unlocked_by_flag: 'flag:hub_unlocked' },
@@ -191,6 +195,10 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'tinderwick', to_map: 'tinderwick_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
     // R8: west through the hedge gap to Duskapple Orchard (ungated, safe side area).
     { from_map: 'tinderwick', to_map: 'duskapple_orchard', via_warp: 'to_orchard', bidirectional: true },
+    // 2026-10: on WEST through the orchard's far gap to Wickstead Green (the optional
+    // tutorial lamp-school; ungated, safe from the very start).
+    { from_map: 'duskapple_orchard', to_map: 'wickstead_green', via_warp: 'to_wickstead', bidirectional: true },
+    { from_map: 'wickstead_green', to_map: 'wickstead_school', via_warp: 'enter_school', bidirectional: true },
     // The old beacon on the NE bluff — the earned first Gleam: door opens with the
     // wick-key from the Dimglass lamplighter, the floors carry wick-tender trainers,
     // and Brisa's bond-test waits in the lantern room at the top.
@@ -247,7 +255,9 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'glowmoss_deep', to_map: 'cinderhead_mine', via_warp: 'to_mine', bidirectional: true },
     { from_map: 'cinderhead_mine', to_map: 'cinderhead_lumenary', via_warp: 'to_lumenary', bidirectional: true },
     { from_map: 'cinderhead_mine', to_map: 'cinderhead_deep', via_warp: 'to_deep', requires_ability: 'glimmerstep', bidirectional: true },
-    { from_map: 'cinderhead_deep', to_map: 'galehigh_terraces', via_warp: 'to_terraces', bidirectional: true },
+    // 2026-10: the Deep opens onto Cinderwind Scarp, the climb to the terraces
+    { from_map: 'cinderhead_deep', to_map: 'cinderwind_scarp', via_warp: 'to_terraces', bidirectional: true },
+    { from_map: 'cinderwind_scarp', to_map: 'galehigh_terraces', via_warp: 'to_terraces', bidirectional: true },
     // Galehigh interiors (door warps, both ways) + the Kite-Rising Winch: the
     // skyloft is gated by the FESTIVAL flag (the earned loop, spine §5 shape #5)
     // — never by Updraft Kite (§0 rule 1; Updraft is Mira's reward).
@@ -309,39 +319,40 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'windward_stair_ii', to_map: 'thunderroost', via_warp: 'to_roost', requires_ability: 'updraft_kite', bidirectional: true },
     { from_map: 'hushfrost_pass_ii', to_map: 'aurora_hollow', via_warp: 'to_aurora', requires_ability: 'emberward', bidirectional: true },
     { from_map: 'sunvault_climb_ii', to_map: 'helia_vault', via_warp: 'to_helia', requires_ability: 'sunsketch', bidirectional: true },
-    { from_map: 'coldfog_marches_ii', to_map: 'drownlight_beacon', via_warp: 'to_beacon', requires_ability: 'emberward', bidirectional: true },
+    { from_map: 'coldfog_marches_i', to_map: 'drownlight_beacon', via_warp: 'to_beacon', requires_ability: 'emberward', bidirectional: true },
     { from_map: 'coldfog_marches_ii', to_map: 'hollowfen_stillworks', via_warp: 'to_stillworks', requires_ability: 'glimmerstep', bidirectional: true },
     { from_map: 'penumbra_ring', to_map: 'starwell', via_warp: 'to_starwell', requires_ability: 'starreach', bidirectional: true },
 
-    // ---- Lanternway spokes: rim towns <-> lane maps <-> the outer-ring hub -----------
-    // Each spoke is a real bending lane (build_lanternway.py). The hub-side warp
-    // gates on the town's own Gleam (warp-level, stricter than the graph — the
-    // standing Lowleaf pattern); the town side stays open (return compression).
+    // ---- Lanternway: the roads that really touch the hub, + the far valleys' lanes --
+    // 2026-10 geometry fix: only Tinderwick (the lane) and the bay road home
+    // (Saltreach Fen I -> Wrackline -> Sounding Cave -> Lanternfall) WALK to the
+    // hub. Lowleaf, Galehigh and Nightreach sit far up the mountain's flanks:
+    // their lanes end at Lantern-car stations, and the car (script.lantern_car,
+    // a ride, not a warp — so not a graph edge, like waystone TRAVEL) runs each
+    // line once that valley's Gleam is relit. The hub-side gate still waits on
+    // the town's own Gleam; the ride down from a valley always runs.
     { from_map: 'tinderwick', to_map: 'lanternway_tinderwick', via_warp: 'to_crossroads', bidirectional: true },
     { from_map: 'lanternway_tinderwick', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
-    { from_map: 'pearlmoor_quay', to_map: 'wrackline_path', via_warp: 'to_crossroads', bidirectional: true },
+    { from_map: 'saltreach_fen_i', to_map: 'wrackline_path', via_warp: 'to_wrackline', bidirectional: true },
     { from_map: 'wrackline_path', to_map: 'sounding_cave', via_warp: 'to_cave', bidirectional: true },
     { from_map: 'sounding_cave', to_map: 'lanternfall_road', via_warp: 'to_lanternfall', bidirectional: true },
     { from_map: 'lanternfall_road', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
     { from_map: 'lowleaf_hollow', to_map: 'lanternway_lowleaf', via_warp: 'to_crossroads', bidirectional: true },
-    { from_map: 'lanternway_lowleaf', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
     // the Under-Lane's two mouths: lower road in, upper shelf out (the
     // interleave — the only way UP the spoke's bank; the ledge hops back down)
     { from_map: 'lanternway_lowleaf', to_map: 'lanternway_undercut', via_warp: 'to_undercut', bidirectional: true },
     { from_map: 'lanternway_lowleaf', to_map: 'lanternway_undercut', via_warp: 'to_undercut_high', bidirectional: true },
     { from_map: 'galehigh_terraces', to_map: 'lanternway_galehigh', via_warp: 'to_crossroads', bidirectional: true },
-    { from_map: 'lanternway_galehigh', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
     { from_map: 'nightreach_observatory', to_map: 'lanternway_nightreach', via_warp: 'to_crossroads', bidirectional: true },
-    { from_map: 'lanternway_nightreach', to_map: 'vesper_crossroads', via_warp: 'to_crossroads', bidirectional: true },
     { from_map: 'vesper_crossroads', to_map: 'crossroads_inn', via_warp: 'enter_inn', bidirectional: true },
-    { from_map: 'vesper_crossroads', to_map: 'coldfog_marches_i', via_warp: 'to_marsh', bidirectional: true },
 
     // ---- Late shortcuts: open from the far side, then permanently re-link to the hub --
     { from_map: 'windward_stair_ii', to_map: 'galehigh_terraces', via_warp: 'shortcut_galehigh', requires_flag: 'flag:shortcut_windward', bidirectional: true },
     { from_map: 'cinderhead_deep', to_map: 'vesper_crossroads', via_warp: 'shortcut_crossroads', requires_flag: 'flag:shortcut_mine', bidirectional: true },
 
     // ---- Hub -> centre, gated by the progressive crown flags -------------------------
-    { from_map: 'vesper_crossroads', to_map: 'penumbra_ring', via_warp: 'to_penumbra', requires_flag: 'flag:hub_unlocked', bidirectional: true },
+    { from_map: 'vesper_crossroads', to_map: 'umbral_approach', via_warp: 'to_penumbra', requires_flag: 'flag:hub_unlocked', bidirectional: true },
+    { from_map: 'umbral_approach', to_map: 'penumbra_ring', via_warp: 'to_penumbra', bidirectional: true },
     { from_map: 'penumbra_ring', to_map: 'umbral_spire', via_warp: 'to_spire', requires_ability: 'starreach', bidirectional: true },
     // The Spire is a 4-floor ascent (§2a Spire tier): gatehouse -> null-works ->
     // high gallery -> summit, joined by mutual ladder pairs. The high gallery's

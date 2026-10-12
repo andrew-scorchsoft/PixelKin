@@ -2,13 +2,16 @@
 """
 Build Wrackline Path — the Pearlmoor-side leg of the new Pearlmoor <-> Vesper
 Crossroads route (REPLACES the bare lanternway_pearlmoor lane). A coastal cliff
-path that descends south: sea off the WEST, a tree-cliff wall to the EAST holding
-the two warps (Pearlmoor at the top, the Sounding Cave mouth at the bottom). The
+path that descends south along the bay's EAST shore: sea off the WEST (the bay
+between Dimglass and here), a tree-cliff wall to the EAST. The 2026-10 geometry fix
+turned it into a true north->south leg: it comes in at the TOP from Saltreach Fen I
+(the old drowned road surfacing past the lagoon) and leaves at the BOTTOM into the
+Sounding Cave, so the loop home is compass-true. The
 lit lane winds down THROUGH two mandatory tall-grass crossings and a sight trainer
 posted in a choke, so the grass and the bout cannot be skirted (the design brief:
 unavoidable encounters, no bypass). Level band 15-18 (a notch above Pearlmoor).
 
-Chain:  pearlmoor_quay (west exit) -> wrackline_path -> sounding_cave -> ...
+Chain:  saltreach_fen_i (south exit) -> wrackline_path -> sounding_cave -> ...
 
 Run:  python3 tools/maps/build_wrackline_path.py   (after build_shared_overworld.py)
 """
@@ -28,11 +31,15 @@ tree = mk.make_grid(W, H)
 mk.organic_border(tree, W, H, top=1, right=1, depth=2,
                   bumps=[(13, 3, 1), (13, 12, 2), (12, 18, 1), (3, 1, 1)])
 mk.rect(tree, W, H, 0, H - 2, W - 1, H - 1)             # south border
-# punch the EAST-edge gaps: Pearlmoor (rows 4-5) and the cave mouth (rows 20-21)
-for y in (4, 5):
-    tree[y * W + (W - 1)] = 0; tree[y * W + (W - 2)] = 0
-for y in (20, 21):
-    tree[y * W + (W - 1)] = 0; tree[y * W + (W - 2)] = 0
+# punch the TOP gap (cols 8-9: down from Saltreach Fen I) and the BOTTOM gap
+# (cols 13-14: the Sounding Cave mouth)
+TOP, BOT = (8, 9), (13, 14)
+for x in TOP:
+    for y in (0, 1):
+        tree[y * W + x] = 0
+for x in BOT:
+    for y in (H - 2, H - 1):
+        tree[y * W + x] = 0
 
 water = mk.make_grid(W, H)
 mk.rect(water, W, H, 0, 2, 1, H - 3)                    # sea off the west
@@ -45,8 +52,8 @@ mk.blob(sand, W, H, 2, 13, 1.4, 2.0)
 
 # the descending lit lane (spine) — winds left/right as it drops
 path = mk.make_grid(W, H)
-# col per row from the Pearlmoor entry (row 5, east) down to the cave (row 21, east)
-spine = {5: 13, 6: 12, 7: 11, 8: 10, 9: 9, 10: 9, 11: 8, 12: 7, 13: 6, 14: 6,
+# col per row from the fen entry (top, cols 8-9) down to the cave (bottom, cols 13-14)
+spine = {5: 8, 6: 8, 7: 8, 8: 9, 9: 9, 10: 9, 11: 8, 12: 7, 13: 6, 14: 6,
          15: 7, 16: 8, 17: 9, 18: 10, 19: 11, 20: 12, 21: 13}
 # two MANDATORY tall-grass crossings — the lane is paused THROUGH them (the road
 # itself rolls); the sight-trainer choke at row 14 makes the bout unavoidable too.
@@ -57,10 +64,10 @@ for ty, cx in spine.items():
         continue
     path[ty * W + cx] = 1
     path[ty * W + cx + 1] = 1
-# connect the lane into the two east gaps
-for y in (4, 5):
-    path[y * W + 13] = 1; path[y * W + 14] = 1
-for y in (20, 21):
+# connect the lane up into the top gap and down into the bottom gap
+for y in range(0, 5):
+    path[y * W + 8] = 1; path[y * W + 9] = 1
+for y in range(20, H):
     path[y * W + 13] = 1; path[y * W + 14] = 1
 # the mandatory bands span the WHOLE walkable corridor (cols 3-13), lane paused
 for (y0, y1) in BANDS:
@@ -87,10 +94,10 @@ terrain_layers = [
 
 # ---- objects: crown trees + lamp breadcrumbs --------------------------------
 objects = [
-    {"id": "tree_a", "sprite": "tinderwick_tree", "at": {"tx": 10, "ty": 3}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
+    {"id": "tree_a", "sprite": "tinderwick_tree", "at": {"tx": 12, "ty": 3}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "tree_b", "sprite": "tinderwick_tree", "at": {"tx": 4, "ty": 12}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
     {"id": "tree_c", "sprite": "tinderwick_tree", "at": {"tx": 9, "ty": 22}, "w": 3, "h": 4, "overhang": 3, "walk_under": True},
-    {"id": "lamp_a", "sprite": "tinderwick_lamp_post", "at": {"tx": 13, "ty": 6}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    {"id": "lamp_a", "sprite": "tinderwick_lamp_post", "at": {"tx": 7, "ty": 4}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "lamp_b", "sprite": "tinderwick_lamp_post", "at": {"tx": 6, "ty": 14}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "lamp_c", "sprite": "tinderwick_lamp_post", "at": {"tx": 12, "ty": 20}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
 ]
@@ -103,8 +110,6 @@ avoid = covered | building_cells
 
 # ---- deco: cave mouth recess, signs, boulders, scatter ----------------------
 deco = mk.make_grid(W, H)
-for (x, y) in [(14, 20), (15, 20)]:                     # dark cave recess by the mouth
-    deco[y * W + x] = gid("cliff_fill")
 for (x, y) in [(3, 7), (11, 16), (4, 19), (12, 11)]:    # shore/verge boulders
     deco[y * W + x] = gid("boulder")
 
@@ -129,19 +134,17 @@ m = {
                {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)}],
     "objects": objects,
     "warps": [
-        # EAST top: <-> Pearlmoor Quay (the player came LEFT out of the quay). Land
-        # one tile IN from the edge so turning straight back RIGHT re-enters (the
-        # re-entry-bug lesson). 2-wide gap -> a warp on each walkable tile.
-        {"id": "to_pearlmoor", "at": {"tx": W - 1, "ty": 5}, "trigger": "step_on",
-         "to_map": "pearlmoor_quay", "to": {"tx": 1, "ty": 12}, "facing": "right", "transition": "fade"},
-        {"id": "to_pearlmoor_n", "at": {"tx": W - 1, "ty": 4}, "trigger": "step_on",
-         "to_map": "pearlmoor_quay", "to": {"tx": 1, "ty": 12}, "facing": "right", "transition": "fade"},
-        # EAST bottom: the Sounding Cave mouth (door). Lands one tile IN from the
-        # cave's west-edge return warp.
-        {"id": "to_cave", "at": {"tx": W - 1, "ty": 21}, "trigger": "step_on",
-         "to_map": "sounding_cave", "to": {"tx": 1, "ty": 7}, "facing": "right", "transition": "door"},
-        {"id": "to_cave_n", "at": {"tx": W - 1, "ty": 20}, "trigger": "step_on",
-         "to_map": "sounding_cave", "to": {"tx": 1, "ty": 7}, "facing": "right", "transition": "door"},
+        # TOP: <-> Saltreach Fen I's south exit (the drowned road). Lands one row
+        # IN from the fen's return warps; a warp on each tile of the 2-wide gap.
+        {"id": "to_fen", "at": {"tx": 8, "ty": 0}, "trigger": "step_on",
+         "to_map": "saltreach_fen_i", "to": {"tx": 20, "ty": 42}, "facing": "up", "transition": "fade"},
+        {"id": "to_fen_e", "at": {"tx": 9, "ty": 0}, "trigger": "step_on",
+         "to_map": "saltreach_fen_i", "to": {"tx": 21, "ty": 42}, "facing": "up", "transition": "fade"},
+        # BOTTOM: the Sounding Cave's north mouth (door). Lands one tile IN.
+        {"id": "to_cave", "at": {"tx": 13, "ty": H - 1}, "trigger": "step_on",
+         "to_map": "sounding_cave", "to": {"tx": 12, "ty": 1}, "facing": "down", "transition": "door"},
+        {"id": "to_cave_e", "at": {"tx": 14, "ty": H - 1}, "trigger": "step_on",
+         "to_map": "sounding_cave", "to": {"tx": 12, "ty": 1}, "facing": "down", "transition": "door"},
     ],
     "triggers": [],
     "encounters": [],
@@ -152,8 +155,8 @@ m = {
 
 # ---- stamps that need `m` (signs, cache, trainer) ---------------------------
 owed = []
-owed += pt.sign(m, deco, W, sid="wrackline_view", at=(13, 7))
-owed += pt.sign(m, deco, W, sid="wrackline_cave", at=(13, 19))
+owed += pt.sign(m, deco, W, sid="wrackline_view", at=(10, 5))
+owed += pt.sign(m, deco, W, sid="wrackline_cave", at=(12, 23))
 owed += pt.cache(m, cid="wrackline_balm", at=(10, 6))
 # the unavoidable sight trainer, posted in the row-14 choke facing UP the lane
 owed += pt.trainer_beat(m, tid="wrackline_drifter", at=(6, 14), facing="up", sight=4,

@@ -52,6 +52,10 @@ world options:
   --no-defaults                 don't auto-add the quiet flags (chart reveals,
                                 tutorials seen, has_starter)
 common:
+  --keys "Escape,ArrowDown,z"   after the world is idle, tap these keys in order
+                                (Playwright key names, ~300ms apart) — open menus;
+                                runs AFTER --confirms. Escape opens the pause menu
+                                (Enter is Confirm and does not)
   --out path.png                output (default ./shot.png)
   --scale N                     output = 240N x 160N px (default 4)
   --wait ms                     extra settle time before the shot (default 700;
@@ -106,6 +110,7 @@ function normaliseSpec(raw, index = 0) {
     keepHud: Boolean(s['keep-hud'] ?? s.keepHud),
     noIdle: Boolean(s['no-idle'] ?? s.noIdle),
     confirms: Number(s.confirms ?? 0),
+    keys: s.keys ? String(s.keys).split(',').map((k) => k.trim()).filter(Boolean) : [],
     greet: s.greet,
     versionFrom:
       s['version-from'] !== undefined || s.versionFrom !== undefined
@@ -396,6 +401,10 @@ async function shoot(page, url, shot) {
       await page.waitForTimeout(1500);
     } else {
       await waitFor(page, worldIdle, undefined, { timeout: 30000, what: 'world idle' });
+    }
+    for (const key of shot.keys ?? []) {
+      await tap(page, key);
+      await page.waitForTimeout(300);
     }
 
     const at = shot.noIdle ? { map: shot.map } : await page.evaluate(() => {

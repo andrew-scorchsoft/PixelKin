@@ -72,6 +72,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   'sign.tinderwick_orchard': [
     { text: 'WEST: DUSKAPPLE ORCHARD\nThrough the gap in the hedge. Mind the windfalls.' },
+    { text: 'BEYOND IT: WICKSTEAD GREEN & THE LAMP-SCHOOL\nNew to the road? The teachers there will show you the ropes.' },
   ],
   'sign.tinderwick_lumenary': [
     { text: 'TINDERWICK LUMENARY — the town\'s lantern-hall.\nLampwarden Brisa Tallow tends the Ember light. Bring a kin and a steady hand.' },
@@ -89,7 +90,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // Talking to the coast-keeper directly, and the gated north warps' blocked line.
   'npc.coast_keeper_gate': [
-    { speaker: 'COAST-KEEPER', text: 'Not past me yet, apprentice. Light Brisa\'s Beacon first: the old tower above Tinderwick. Then the flats are yours.' },
+    { speaker: 'COAST-KEEPER', text: 'Not past me yet, apprentice. Light Brisa\'s Beacon first: the old tower on Tinderwick\'s bluff, back down the road. Then the flats are yours.' },
   ],
   'npc.house_parent': [
     { speaker: 'GRAN', text: 'Off on your Wayfaring at last — away to walk the dark valleys, befriend their kin, and relight the sky, the way every lamp-tender\'s apprentice must.' },
@@ -103,6 +104,7 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'GRAN', text: 'Your grandfather trimmed every lamp on that square for forty years. Out at first bell, rain or starfall, that old brass trimmer in his coat — and he\'d sing to the stubborn wicks. Swore they burned longer for it.' },
     { text: 'She takes the worn brass wick-trimmer down from the shelf, folds your fingers around it, and pats them shut.', style: 'narrate' },
     { speaker: 'GRAN', text: 'He\'d have walked you to the gate, love. Since he can\'t — carry his trimmer, and sing to the stubborn ones. Now: north past the gate, and home before the bread\'s stale.' },
+    { speaker: 'GRAN', text: 'And if the kin-business puzzles you, the lamp-school at Wickstead is past the orchard, west. The Hearthkeeper\'s visiting this week: ask her where your extra kin go when your lamp is full.' },
   ],
   'npc.house_parent_wait': [
     { speaker: 'GRAN', text: 'Found him yet? The tidal flats, love — up past the coast road, where the buoys are. He\'ll be the untidy one watching the sky.' },
@@ -155,7 +157,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // --- The Beacon (interiors) ---
   'sign.beacon_door': [
-    { text: 'THE OLD BEACON\nThe foot door is wick-locked. Its key walked away down the coast road, years ago.' },
+    { text: 'THE OLD BEACON\nThe foot door is wick-locked. Its key walked away up the coast road, years ago.' },
   ],
   'sign.beacon_floor_i': [
     { text: 'Stair-litany, floor the first: "A flame is carried, never kept."' },
@@ -322,10 +324,10 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'THE HARBOUR SHALLOWS\nThe moon-water will not part for the unlit. Earn the Tidecall, and the islets and sea-shrine open to you.' },
   ],
   'sign.pearlmoor_lanternway': [
-    { text: 'WEST: THE LANTERNWAY\nThe lit road to the Vesper Crossroads, where every way in Vesperholm meets.' },
+    { text: 'WEST: the beach path to Lightkeeper\'s Point.\nThe road to the Vesper Crossroads runs EAST through Saltreach Fen, then south along the bay on the old drowned road.' },
   ],
   'sign.pearlmoor_to_fen': [
-    { text: 'EAST: SALTREACH FEN\nThe fen-road sleeps unlit. When the southern crown stands whole, the east wakes.' },
+    { text: 'EAST: SALTREACH FEN\nReed-country, older than the coast. Its drowned road bends south and round the bay toward the Lanternfall, and home.' },
   ],
   'sign.pearlmoor_shop': [
     { text: 'PEARLMOOR CHANDLERY\nNets, oil, salve, and tide-charms for the crossing. Step in out of the spray.' },
@@ -735,7 +737,7 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'NORTH: GLOWMOSS DEEP\nDark past the first bough — true dark, the kind a plain lamp cannot walk. Without a Glimmerstep, the wood keeps itself.' },
   ],
   'sign.lowleaf_lanternway': [
-    { text: 'WEST: THE LANTERNWAY\nThe lit road to the Vesper Crossroads, where every way in Vesperholm meets.' },
+    { text: 'WEST: THE LANTERNWAY\nThrough the Under-Lane to the Lantern-car station — the cable runs down to the Vesper Crossroads, where every way in Vesperholm meets.' },
   ],
   // The Elder Bed (interact states ride the trigger chain; see build_lowleaf).
   'npc.elder_bed_cold': [
@@ -825,7 +827,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // --- Vesper Crossroads (the Lanternway hub) ---------------------------------
   'sign.crossroads': [
-    { text: 'VESPER CROSSROADS\nAll the Lanternway meets here. SOUTH-WEST: Tinderwick. SOUTH-EAST: Pearlmoor Quay — its lamps wake with the Tide. The other roads sleep, unlit.' },
+    { text: 'VESPER CROSSROADS\nAll the Lanternway meets here. WEST: Tinderwick. NORTH-WEST: the bay road round to Pearlmoor — its lamps wake with the Tide. NORTH: the mountain road (shut). EAST: the Lantern-car to the far valleys.' },
   ],
   'sign.crossroads_spire': [
     { text: 'The inward road. Eight braziers stand cold around its gate — one for each constellation. The mountain waits.' },
@@ -834,18 +836,11 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'WAYKEEPER', text: 'Every road in Vesperholm touches this stone sooner or later. I keep the lamps lit on the ones that walk.' },
     // The come-round framing, from the one person whose whole job is the roads.
     { speaker: 'WAYKEEPER', text: 'You will walk a long way out and come back in at a gate you know. That is not you going wrong — the valleys sit in a crescent, and the way home is never the way you went out.' },
-    { speaker: 'WAYKEEPER', text: 'When more Gleams stand up in the sky, more roads wake. That is how the Lanternway has always worked.' },
+    { speaker: 'WAYKEEPER', text: 'When more Gleams stand up in the sky, more roads wake — and more of the Lantern-car\'s lines, out east on the platform. That is how the Lanternway has always worked.' },
     { speaker: 'WAYKEEPER', text: 'The inward road? Eight Gleams, Wayfarer. Eight. Do not hurry the dark.' },
   ],
   // The Lowleaf spoke — sleeping until the Verdant Gleam wakes it (its
   // blocked_ref below), then a lit road east-north to the Bloom.
-  'sign.crossroads_lowleaf': [
-    { text: 'EAST-NORTH: LOWLEAF HOLLOW\nThe forest spoke. Its lamps wake with the Verdant constellation — green road, green light.' },
-  ],
-  'npc.waykeeper_lowleaf_gate': [
-    { speaker: 'WAYKEEPER', text: 'The Lowleaf spoke sleeps yet, Wayfarer — its lamps answer the Verdant, and the Verdant is still dark.' },
-    { speaker: 'WAYKEEPER', text: 'The long way round is the fen-road east of Pearlmoor. Roads wake to Gleams; relight the green one and this one will carry you home after.' },
-  ],
   // --- The Lanternway lane milestones (one sign per spoke lane map; the
   // bend's marker stone — each names both ends so the turn never disorients).
   'sign.lanternway_tinderwick': [
@@ -871,30 +866,33 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'THE UNDER-LANE\nCut and lamped by the Waykeepers when the bank slipped. The lane you walked in on runs over your head.' },
   ],
   'sign.lanternway_galehigh': [
-    { text: 'THE LANTERNWAY — GALEHIGH SPOKE\nA straight climb north. The wind combs these hedges long before you see the terraces.' },
+    { text: 'THE LANTERNWAY — GALEHIGH LANE\nNorth to the terraces; south to the Lantern-car station. The wind combs these hedges long before you see either.' },
   ],
   'sign.lanternway_nightreach': [
-    { text: "THE LANTERNWAY — NIGHTREACH SPOKE\nThe watchers' road: north for the observatory hill, east for the Crossroads. The last lamps lit, and the proudest." },
+    { text: "THE LANTERNWAY — NIGHTREACH LANE\nThe watchers' road: east for the observatory, north up the hill for the Lantern-car station. The last lamps lit, and the proudest." },
   ],
   // The Pearlmoor spoke — sleeping until the Tide Gleam wakes it (the same
   // earned return-compressor as every other town spoke): the first journey to
   // the quay is the coast road, the lane home is the reward for relighting it.
   'npc.waykeeper_pearlmoor_gate': [
-    { speaker: 'WAYKEEPER', text: 'The Pearlmoor spoke sleeps yet, Wayfarer — its lamps answer the Tide, and the Tide is still dark.' },
-    { speaker: 'WAYKEEPER', text: 'The long way round is the coast road north of Tinderwick. Roads wake to Gleams; relight the Tide at the quay and this spoke will carry you home after.' },
+    { speaker: 'WAYKEEPER', text: 'The bay road sleeps yet, Wayfarer — its lamps answer the Tide, and the Tide is still dark.' },
+    { speaker: 'WAYKEEPER', text: 'The long way round is the coast road north of Tinderwick. Roads wake to Gleams; relight the Tide at the quay and this one will carry you home round the bay after.' },
   ],
 
   // The onward roads are shut to a Wayfarer with no kin yet — the opening's
   // soft wall, pointing a brand-new player back to Fenn at the Waystone (the
   // north marsh road gates on flag:has_starter, so this only ever fires pre-kin).
-  'crossroads.no_kin_yet': [
-    { text: 'No kin walks at your side yet, and the roads beyond the crossroads are no place to wander alone. Star-tender Fenn waits at the Waystone — see him, and take up your first lamp, before you set out.' },
-  ],
   // The inward (Spire) road's "not yet" — fires until all eight Gleams stand
   // (flag:hub_unlocked). Echoes sign.crossroads_spire so a new player learns it
   // is the endgame road, never the way out of the opening.
   'crossroads.spire_not_yet': [
     { text: 'The inward road runs to the dark mountain itself, and its gate stays shut till all eight Gleams stand lit in the sky. No road for a Wayfarer just setting out — the lit ways are yours first.' },
+  ],
+
+  // Swimming the shallows into DEEP water (the darker sea): Tidecall stills the
+  // shallows, not the deep. Played once per map visit (WorldScene.onBump).
+  'world.too_deep': [
+    { text: 'The water falls away beneath you here — dark, cold, and far too deep to swim. The current pulls toward open sea. Back to the shallows.' },
   ],
 
   // --- Locked-door lines (a gated door warp's blocked_ref) ---
@@ -1005,14 +1003,7 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'THE WIND-EYE\nOn a clear dusk the updraft column sings. The grotto keeps what the wind keeps — climbers say a sky-kin nests at the eye itself.' },
   ],
   'sign.galehigh_lanternway': [
-    { text: 'SOUTH: THE LANTERNWAY\nThe lit road to the Vesper Crossroads, where every way in Vesperholm meets.' },
-  ],
-  'sign.crossroads_galehigh': [
-    { text: 'NORTH: GALEHIGH TERRACES\nThe mountain spoke. Its lamps wake with the Storm constellation — high road, high wind.' },
-  ],
-  'npc.waykeeper_galehigh_gate': [
-    { speaker: 'WAYKEEPER', text: 'The Galehigh spoke sleeps yet, Wayfarer — its lamps answer the Storm, and the Storm is still dark.' },
-    { speaker: 'WAYKEEPER', text: 'The road north runs the long way for now: east through the fen, up through Cinderhead\'s deep, and out the mountain\'s far side. Relight the Storm and this spoke will carry you home after.' },
+    { text: 'SOUTH: THE LANTERNWAY\nDown the lit lane to the Lantern-car station, and by cable on to the Vesper Crossroads.' },
   ],
   'npc.waystone_kid_kite': [
     { speaker: 'WAYSTONE KID', text: 'LOOK at it go! The kite-maker put little LAMPS on the tail — Gran says if I\'m not careful I\'ll have the whole Lanternway lit. GOOD.' },
@@ -1060,7 +1051,7 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'KITE-MAKER', text: 'She flies TRUE — I watched the trim from here. Get to the winch terrace before the Rising peaks, Wayfarer. A town-built kite wants a town watching.' },
   ],
   'npc.kite_maker_round_after': [
-    { speaker: 'KITE-MAKER', text: 'Mind the cross-wind where the spoke meets the Crossroads — and tell the waystone kid what I told you. The string hand is everything. The kite already knows the rest.' },
+    { speaker: 'KITE-MAKER', text: 'Mind the cross-wind where the car-line meets the Crossroads — and tell the waystone kid what I told you. The string hand is everything. The kite already knows the rest.' },
   ],
   // Mira's town stages (post-Gleam callouts → the N3 ribbon-giver swap).
   'npc.mira_galehigh_after': [
@@ -1478,7 +1469,7 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'EAST — THE FOG ROAD. Short, dark, and wrong. Only a warded flame holds the coldfog off.' },
   ],
   'sign.nightreach_lanternway': [
-    { text: 'SOUTH — THE LANTERNWAY. Every lit road in Vesperholm meets at the Waystone.' },
+    { text: 'WEST — THE LANTERNWAY. Every lit road in Vesperholm meets at the Waystone.' },
   ],
   'npc.watch_lamp_unstruck': [
     { text: 'The first watch-lamp waits, polished and cold. Its wick wants the old watcher\'s striker — the one lost on the Sunvault road.' },
@@ -1546,7 +1537,7 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'NESSA COLE', text: 'When you are ready, step to the dais. The eighth star has waited longest of all — and after tonight, I would not make it wait politely much longer.' },
   ],
   'npc.nessa_after': [
-    { speaker: 'NESSA COLE', text: 'The Crown is whole, and the Penumbra is parting — my charts have never once shown me THAT. The Crossroads\' four inward roads will carry you to the Spire when you are ready.' },
+    { speaker: 'NESSA COLE', text: 'The Crown is whole, and the Penumbra is parting — my charts have never once shown me THAT. The mountain road north of the Crossroads will carry you to the Spire when you are ready.' },
     { speaker: 'NESSA COLE', text: 'Remember harder than he has forgotten, Wayfarer. And when it is done... come back one clear night. I will show you eight constellations from this chair, and we will not say anything at all.' },
   ],
   'npc.nightreach_hall_keeper': [
@@ -1572,12 +1563,6 @@ export const DIALOGUE: DialogueRegistry = {
   ],
 
   // --- The Crossroads' Nightreach spoke (W4's gate pair) + R5's hung chart ---------
-  'sign.crossroads_nightreach': [
-    { text: 'WEST — THE NIGHTREACH SPOKE. Dark until the Lunar Gleam stands: the last spoke lights when the last lamp does.' },
-  ],
-  'npc.waykeeper_nightreach_gate': [
-    { speaker: 'WAYKEEPER', text: 'The west spoke sleeps yet, friend — its lamps answer the Lunar, and the Lunar has not come home. When the watchers\' star stands up, this road will light itself the same hour. Last spoke of my Round. I keep its wicks trimmed anyway.' },
-  ],
   'npc.waykeeper_chart_hung': [
     { speaker: 'WAYKEEPER', text: 'Eleven years of guesswork charts, and now the true sky hangs on the Waystone where every road can see it. Travellers stop and look UP now, before they pick a direction. That is the whole Lanternway, working.' },
   ],
@@ -1804,7 +1789,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // Nessa, once her reading is shared (consumes flag:three_dawn_rumour).
   'npc.nessa_hours_after': [
-    { speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: 'The bell that hasn\'t rung is still there, due west, under everything. I hear it most on clear nights. ...Go gently, Wayfarer. Whatever has waited that long for a morning deserves not to be startled.' },
+    { speaker: 'NESSA COLE', portrait: 'nessa', expr: 'haunted', text: 'The bell that hasn\'t rung is still there, due south, under everything. I hear it most on clear nights. ...Go gently, Wayfarer. Whatever has waited that long for a morning deserves not to be startled.' },
   ],
   // Lucan, once the phial is given (consumes flag:three_dawn_phial).
   'npc.lucan_phial_after': [
@@ -1940,12 +1925,12 @@ export const DIALOGUE: DialogueRegistry = {
   // says what it IS — the joke only lands if the player goes and finds out.
   // ---------------------------------------------------------------------------
   'npc.egg_hint_coast': [
-    { speaker: 'WALKER', text: 'Heading south? Good. Keep your lamp up and your wits about you — and keep your eyes open besides.' },
+    { speaker: 'WALKER', text: 'Heading north? Good. Keep your lamp up and your wits about you — and keep your eyes open besides.' },
     { speaker: 'WALKER', text: 'There\'s an easter egg hidden somewhere in Vesperholm. I\'ve never found it. My cousin swears blind she has, but my cousin also swears she once out-argued a Lampwarden.' },
   ],
   'npc.egg_hint_flats': [
     { speaker: 'NET-MENDER', text: 'You\'ve the look of someone hunting for something that isn\'t on the road.' },
-    { speaker: 'NET-MENDER', text: 'The easter egg, is it? Everyone asks eventually. All I\'ll say is: it\'s in the quay town down the coast, and it\'s NOT at the water\'s edge. Look uphill.' },
+    { speaker: 'NET-MENDER', text: 'The easter egg, is it? Everyone asks eventually. All I\'ll say is: it\'s in the quay town up the coast, and it\'s NOT at the water\'s edge. Look uphill.' },
   ],
   'npc.egg_hint_crossroads': [
     { speaker: 'ROAD-TELLER', text: 'Waystone\'s a good place to sit. Every road in the valley eventually walks past you and tells you something.' },

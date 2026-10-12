@@ -162,6 +162,9 @@ export class BattleScene extends Phaser.Scene {
     this.music = new MusicDirector(this);
 
     this.playerParty = Party.fromData(data.party);
+    // A fainted kin in slot 0 never walks out to fight: lead with the first one
+    // still standing (playtest: a 0-HP lead was sent in and dropped at once).
+    if (this.playerParty.active?.isFainted) this.playerParty.promoteToHealthy();
     this.box = [...(data.box ?? [])];
     this.inventory = { items: { ...data.inventory.items } };
 

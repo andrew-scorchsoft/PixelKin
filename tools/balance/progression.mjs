@@ -253,7 +253,7 @@ const JOURNEY = [
 
   // ---- NORTH (BUILT — N4 wiring 2026-06; trainers mirror trainers.ts) -------
   {
-    name: 'Galehigh Terraces + skyloft',
+    name: 'Cinderwind Scarp → Galehigh Terraces + skyloft',
     // North onward the core team is set (see shareFor's design note) — the
     // built roster's species-true XP runs leaner than the old placeholder
     // budget, and the lead's share carries the difference.
@@ -261,16 +261,21 @@ const JOURNEY = [
     // BUILT (the Kite-Rising Winch loop): two terrace route trainers, the two
     // skyloft wind-wards, Mira. quests = the R4 Round-leg carriage fee (300);
     // finds = the festival takings-tin (200); valuables = the terrace
-    // Moth-amber (600).
-    wild: { areas: ['galehigh_terraces'], band: [27, 31], fights: { rusher: 5, mainline: 10, explorer: 16 } },
+    // Moth-amber (600). The Scarp (2026-10, the climb out of the Deep) adds
+    // its two route trainers, its lv 28-31 beds and a Moth-amber (600).
+    // (the Scarp's mandatory strips are part of this leg's walking, not extra to it:
+    // its two trainers' XP stands in for a couple of the old leg's wild fights)
+    wild: { areas: ['cinderwind_scarp', 'galehigh_terraces'], band: [27, 31], fights: { rusher: 4, mainline: 8, explorer: 14 } },
     trainers: [
+      T('Hobb-Ree (ore-hauler)', 'route', [K(28, 53), K(30, 48)]),
+      T('Rue (kite-runner)', 'route', [K(29, 100), K(29, 91), K(31, 101)]),
       T('Perrin (kite-hand)', 'route', [K(28, 88), K(29, 97)]),
       T('Sorrel (terrace-farmer)', 'route', [K(29, 91), K(30, 45)]),
       T('Tamsin (wind-ward)', 'keeper', [K(29, 97), K(30, 98)]),
       T('Bran (wind-ward)', 'keeper', [K(30, 91), K(31, 89)]),
       T('Mira Vael', 'warden', [K(30, 98), K(31, 95), K(32, 89), K(34, 90)]),
     ],
-    income: { quests: 300, valuables: 600, finds: 200 },
+    income: { quests: 300, valuables: 1200, finds: 200 },
     spend: { warm_balm: 3, beacon_charge: 2, chart_late: 1 },
     checkpoint: { name: 'Storm Gleam (Mira)', rec: 28, ace: 34 },
   },
@@ -351,13 +356,18 @@ const JOURNEY = [
   // retries (Lampling/Lunaveil/Keylumen) and pre-climb spoke top-ups.
   // Income is item-shaped by design (Radiant Lamp, Way-lamp, the Lampling) —
   // quests pay 0 wicks; finds = the Penumbra satchel (600) + the gallery
-  // toll-box (800); valuables = the Penumbra islet Starglass (1,500) + the
-  // [MISSABLE] spire-landing Starglass (1,500) + the Starwell Moth-amber (600).
+  // toll-box (800) + the Approach's wicks tin (500); valuables = the Penumbra
+  // islet Starglass (1,500) + the [MISSABLE] spire-landing Starglass (1,500) +
+  // the Starwell Moth-amber (600) + the Approach's Starglass (1,500). The
+  // Umbral Approach (2026-10) adds three keeper acolytes + its lv 50-53 beds.
   {
-    name: 'Penumbra Ring → Umbral Spire',
+    name: 'Umbral Approach → Penumbra Ring → Umbral Spire',
     leadShare: 1.00,
-    wild: { areas: ['umbral_spire', 'coldfog_marches'], band: [52, 56], fights: { rusher: 6, mainline: 10, explorer: 14 } },
+    wild: { areas: ['umbral_approach', 'umbral_spire', 'coldfog_marches'], band: [50, 56], fights: { rusher: 6, mainline: 10, explorer: 14 } },
     trainers: [
+      T('Orla (approach acolyte)', 'keeper', [K(50, 136), K(51, 112)]),
+      T('Brenn (approach acolyte)', 'keeper', [K(51, 141), K(52, 143)]),
+      T('Wynne (approach acolyte)', 'keeper', [K(52, 133), K(52, 134), K(53, 113)]),
       T('Merrin (Hollowing acolyte A)', 'keeper', [K(52, 136), K(53, 137)]),
       T('Tace (Hollowing acolyte B)', 'keeper', [K(52, 134), K(52, 133), K(53, 137)]),
       T('Ivorwen (Hollowing acolyte C)', 'keeper', [K(53, 141), K(54, 142)]),
@@ -365,7 +375,7 @@ const JOURNEY = [
       T('Sefa (Hollowing acolyte E)', 'keeper', [K(54, 135), K(55, 139)]),
       T('Warden Còr', 'cor', [K(53, 113), K(54, 85), K(54, 135), K(55, 138), K(55, 142), K(56, 150)]),
     ],
-    income: { quests: 0, valuables: 3600, finds: 1400 },
+    income: { quests: 0, valuables: 5100, finds: 1900 },
     spend: { bright_balm: 3, chart_end: 1 },
     checkpoint: { name: 'Warden Còr (climax)', rec: 54, ace: 56 },
   },
@@ -435,6 +445,8 @@ const BUILT_PAYOUTS = {
   gallery_miner_a: ['keeper', 25, 500],
   gallery_miner_b: ['keeper', 26, 520],
   lampwarden_cinderhead: ['warden', 28, 1680],
+  scarp_hauler: ['route', 30, 480], // Cinderwind Scarp (2026-10)
+  scarp_kiterunner: ['route', 31, 496],
   galehigh_kitehand: ['route', 29, 464],
   galehigh_terracer: ['route', 30, 480],
   skyloft_ward_a: ['keeper', 30, 600],
@@ -459,6 +471,9 @@ const BUILT_PAYOUTS = {
   junior_watcher_b: ['keeper', 51, 1020],
   wren_nightreach: ['rival', 50, 1200],
   nessa_cole: ['warden', 52, 3120],
+  approach_acolyte_a: ['keeper', 51, 1020], // the Umbral Approach (mountain road)
+  approach_acolyte_b: ['keeper', 52, 1040],
+  approach_acolyte_c: ['keeper', 53, 1060],
   hollowing_acolyte_a: ['keeper', 53, 1060],
   hollowing_acolyte_b: ['keeper', 53, 1060],
   hollowing_acolyte_c: ['keeper', 54, 1080],

@@ -371,10 +371,10 @@
         "ty": 14
       },
       "trigger": "step_on",
-      "to_map": "cinderhead_deep",
+      "to_map": "cinderwind_scarp",
       "to": {
-        "tx": 26,
-        "ty": 12
+        "tx": 22,
+        "ty": 4
       },
       "facing": "left",
       "transition": "fade"
@@ -386,10 +386,10 @@
         "ty": 15
       },
       "trigger": "step_on",
-      "to_map": "cinderhead_deep",
+      "to_map": "cinderwind_scarp",
       "to": {
-        "tx": 26,
-        "ty": 13
+        "tx": 22,
+        "ty": 5
       },
       "facing": "left",
       "transition": "fade"
@@ -1051,7 +1051,7 @@
       "facing": "down",
       "sprite": "market_trader",
       "movement": "look_around",
-      "dialogue_ref": "npc.galehigh_festival_piper"
+      "dialogue_ref": "script.galehigh_piper_staged"
     },
     {
       "id": "festival_kid",
@@ -1062,7 +1062,7 @@
       "facing": "up",
       "sprite": "kite_child",
       "movement": "wander",
-      "dialogue_ref": "npc.galehigh_festival_kid"
+      "dialogue_ref": "script.galehigh_festival_kid_staged"
     },
     {
       "id": "festival_goer",
@@ -1073,7 +1073,7 @@
       "facing": "right",
       "sprite": "star_watcher",
       "movement": "static",
-      "dialogue_ref": "npc.galehigh_festival_goer"
+      "dialogue_ref": "script.galehigh_festival_goer_staged"
     },
     {
       "id": "quest_witness",
@@ -1246,7 +1246,20 @@
       "facing": "left",
       "sprite": "npc_old_man",
       "movement": "static",
-      "dialogue_ref": "npc.galehigh_farmer"
+      "dialogue_ref": "npc.galehigh_farmer",
+      "hidden_when_flag": "gleam:storm"
+    },
+    {
+      "id": "terrace_farmer_lit",
+      "at": {
+        "tx": 26,
+        "ty": 14
+      },
+      "facing": "left",
+      "sprite": "npc_old_man",
+      "movement": "static",
+      "dialogue_ref": "npc.galehigh_farmer_lit",
+      "requires_flag": "gleam:storm"
     },
     {
       "id": "gleam_kid",

@@ -59,7 +59,13 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
   {
     id: 'lanternway',
     term: 'the Lanternway',
-    desc: 'The lit road that threads all nine valleys and knots at the Vesper Crossroads. Its spokes wake one by one as constellations relight, so the map you can walk keeps growing without ever changing shape.',
+    desc: 'The lit road that threads all nine valleys and knots at the Vesper Crossroads. The near roads you walk; the far valleys hang on the Lantern-car\'s cables, each line waking as its constellation relights — so the map you can cross keeps growing without ever changing shape.',
+  },
+  {
+    id: 'lantern_car',
+    term: 'the Lantern-car',
+    desc: 'The kite-wrights\' cable-car, strung from the Crossroads winch up the mountain\'s flanks to Lowleaf, Galehigh and Nightreach. Each line runs only while the lamp at its far end burns — so the cars wake one by one as their valleys\' Gleams are relit. The ride down always runs.',
+    unlock_flag: 'flag:crossroads_car_intro',
   },
   {
     id: 'coming_round',
@@ -147,7 +153,7 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
   {
     id: 'lanternway',
     term: 'the Lanternway',
-    desc: 'The lit road that rings Vesperholm, spoke to far-off spoke, meeting at the Vesper Crossroads. Its lamps wake region by region as the Gleams return.',
+    desc: 'The lit road that rings Vesperholm, meeting at the Vesper Crossroads — walked to the near valleys, ridden by Lantern-car to the far ones. Its lamps wake region by region as the Gleams return.',
     unlock_flag: 'flag:fenn_errand',
   },
   {
@@ -324,6 +330,23 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     term: 'Gloampurr (the dragon-cat)',
     desc: 'A small winged dusk-cat that carries its own little sunrise — a coal of warm gold glowing in its chest. A night-cat loved without any fear of the dark is said to grow one. Georgina insists they are misunderstood: not creatures OF the gloom, but lights brought INTO it.',
     unlock_flag: 'flag:q_east_georgina_done',
+  },
+  // --- The Wickstead Lamp-school (2026-10): the basics, in the lamp's keeping too ---
+  {
+    id: 'types',
+    term: 'Types & matchups',
+    desc: 'Ten types: the eight constellation elements (Ember, Tide, Verdant, Stone, Storm, Frost, Solar, Lunar) and the older Light and Dark. A move hits twice as hard where its type is strong, half as hard where it is weak; a kin with two types takes both, multiplied. Solar and Lunar, Light and Dark are mirrors — each strikes the other hard.',
+  },
+  {
+    id: 'troubles',
+    term: 'the seven troubles',
+    desc: 'Scorch, Drench, Numb, Doze, Blight, Dazzle and Chill — the statuses that can settle on a kin, one at a time. They outlast the battle; a good rest cures them all. A dozing or chilled wild kin is the easiest of all to lamp.',
+  },
+  {
+    id: 'lamp_school',
+    term: 'the Wickstead Lamp-school',
+    desc: 'The village school on Wickstead Green, west of Duskapple Orchard, where every apprentice in the South learns the Wayfaring — types and catching, the Hearth and resting, wicks and Gifts. Its door is open to Wayfarers of any age.',
+    unlock_flag: 'flag:school_visited',
   },
 ];
 

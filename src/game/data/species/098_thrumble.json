@@ -93,6 +93,13 @@
       "rarity": "uncommon",
       "min": 57,
       "max": 62
+    },
+    {
+      "area": "cinderwind_scarp",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 29,
+      "max": 31
     }
   ],
   "scripted": false,

@@ -74,7 +74,15 @@
     "weight_kg": 12.0,
     "habitat": "north"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "cinderwind_scarp",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 30,
+      "max": 31
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Larger barrel-chested dog, dense grey-and-white thundercloud fur, a visible inner-glow pulsing electric-gold, long windswept ears, silver underbelly; bold presence at 48px.",

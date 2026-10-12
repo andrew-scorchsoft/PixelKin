@@ -108,6 +108,15 @@ mk.hline(path, W, H, 10, 11, 15)         # north shore approach
 mk.vline(path, W, H, 15, 5, 9)           # to the channel's south shore
 mk.vline(path, W, H, 15, 1, 2)           # the far shore (reached by Tidecall)
 mk.vline(path, W, H, 16, 1, 2)
+# the DROWNED ROAD's dry bypass (2026-10 geometry fix): east off the landing
+# causeway, round the south pool's head and the lagoon's south shore past the
+# lantern-reeds, then out the BOTTOM edge (cols 20-21) — the old road south
+# along the bay to Wrackline Path, the Sounding Cave and the Crossroads.
+mk.hline(path, W, H, 38, 11, 15)
+mk.vline(path, W, H, 15, 38, 39)
+mk.hline(path, W, H, 39, 15, 21)
+mk.vline(path, W, H, 20, 39, H - 1)
+mk.vline(path, W, H, 21, 39, H - 1)
 
 # the raised EAST BANK: cliff rim, ledge lip south, entered via the west gap
 BANK = pt.Area(18, 13, 28, 21)
@@ -123,7 +132,8 @@ mk.blob(tallgrass, W, H, 3.5, 7, 1.6, 2.0)
 mk.blob(tallgrass, W, H, 3.5, 14, 1.5, 1.6)
 
 # warp openings carved out of the enclosure (west entry, north exit)
-for (x, y) in [(0, 37), (0, 38), (1, 37), (1, 38), (15, 0), (16, 0), (15, 1), (16, 1)]:
+for (x, y) in [(0, 37), (0, 38), (1, 37), (1, 38), (15, 0), (16, 0), (15, 1), (16, 1),
+               (20, H - 2), (21, H - 2), (20, H - 1), (21, H - 1)]:
     tree[y * W + x] = 0
 
 # keep dry: the islet under its cache, the hut-pool's east shore by the
@@ -209,6 +219,11 @@ m.update({
          "to_map": "pearlmoor_quay", "to": {"tx": 27, "ty": 12}, "facing": "left",
          "transition": "fade"},
         # north: across the Tidecall channel to Fen II
+        # BOTTOM: the drowned road south -> Wrackline Path (the loop home)
+        {"id": "to_wrackline", "at": {"tx": 20, "ty": H - 1}, "trigger": "step_on",
+         "to_map": "wrackline_path", "to": {"tx": 8, "ty": 1}, "facing": "down", "transition": "fade"},
+        {"id": "to_wrackline_e", "at": {"tx": 21, "ty": H - 1}, "trigger": "step_on",
+         "to_map": "wrackline_path", "to": {"tx": 9, "ty": 1}, "facing": "down", "transition": "fade"},
         {"id": "to_fen_ii", "at": {"tx": 15, "ty": 0}, "trigger": "step_on",
          "to_map": "saltreach_fen_ii", "to": {"tx": 15, "ty": 42}, "facing": "up",
          "transition": "fade"},
@@ -255,6 +270,7 @@ m["npcs"][-1]["requires_flag"] = "flag:fen_netweights_seen"
 owed += pt.sign(m, deco, W, sid="fen_landing", at=(3, 39))
 owed += pt.sign(m, deco, W, sid="fen_channel", at=(20, 29))
 owed += pt.sign(m, deco, W, sid="fen_boundary", at=(14, 6))
+owed += pt.sign(m, deco, W, sid="fen_drowned_road", at=(22, 40))   # on the wall above, never on, the lost-village link (22,41)
 
 # encounter zones — the SHIPPED tables, verbatim (night tables + the R4
 # day-form pairs; mirrored in build_species EXTRA_ENCOUNTERS — never retune
