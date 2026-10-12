@@ -125,7 +125,7 @@ PLACEMENTS: dict[str, dict] = {
             # the Starfall Vigils (postgame)
             {"id": "starfall_witness", "at": {"tx": 13, "ty": 11}, "facing": "down", "sprite": "star_watcher", "movement": "look_around", "dialogue_ref": "npc.starfall_witness", "requires_flag": "flag:dawn", "hidden_when_flag": "flag:starfall_begun"},
             # Andrew on his fence — wayfinding (script.andrew_road)
-            {"id": "andrew_road", "at": {"tx": 14, "ty": 27}, "facing": "down", "sprite": "andrew_ward", "movement": "look_around", "dialogue_ref": "script.andrew_road"},
+            {"id": "andrew_road", "at": {"tx": 12, "ty": 23}, "facing": "down", "sprite": "andrew_ward", "movement": "look_around", "dialogue_ref": "script.andrew_road"},
         ],
     },
     "dimglass_coast": {
@@ -324,7 +324,7 @@ PLACEMENTS: dict[str, dict] = {
             # a found cache
             {"id": "cache_purse", "at": {"tx": 1, "ty": 17}, "facing": "down", "sprite": "item_cache", "movement": "static", "dialogue_ref": "script.pickup_pearlmoor_purse", "hidden_when_flag": "flag:picked_pearlmoor_purse"},
             # Andrew on his fence — wayfinding (script.andrew_road)
-            {"id": "andrew_road", "at": {"tx": 12, "ty": 20}, "facing": "down", "sprite": "andrew_ward", "movement": "look_around", "dialogue_ref": "script.andrew_road"},
+            {"id": "andrew_road", "at": {"tx": 10, "ty": 17}, "facing": "down", "sprite": "andrew_ward", "movement": "look_around", "dialogue_ref": "script.andrew_road"},
         ],
     },
     "saltreach_fen_ii": {

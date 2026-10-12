@@ -3305,8 +3305,8 @@
     {
       "id": "andrew_road",
       "at": {
-        "tx": 12,
-        "ty": 20
+        "tx": 10,
+        "ty": 17
       },
       "facing": "down",
       "sprite": "andrew_quay",
