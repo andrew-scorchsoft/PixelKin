@@ -8,6 +8,10 @@
  */
 import type { AbilityGate, AbilityId, Facing, TileCoord } from '@game/data/world/types';
 import type { RuntimeMap } from './MapLoader';
+import walkBehind from '@game/data/world/walk-behind.json';
+
+/** Building sprite -> top roof rows the player can walk BEHIND (data/world/walk-behind.json). */
+const WALK_BEHIND_ROWS: Record<string, number> = walkBehind.rows;
 
 /**
  * The tiles a gate covers, from whichever form it uses: a `rect` region
@@ -70,9 +74,13 @@ export class CollisionGrid {
     // except the overhanging top rows the player walks under (art-style §14b).
     for (const obj of this.map.def.objects ?? []) {
       if (obj.solid === false) continue;
-      // Buildings collide on their whole footprint; only walk-under objects (trees,
-      // lamps) free their overhang rows so the player can pass beneath the canopy.
-      const startRow = obj.walk_under ? (obj.overhang ?? 0) : 0;
+      // Walk-under objects (trees, lamps) free their overhang rows so the player
+      // can pass beneath the canopy. Buildings collide on their footprint except
+      // their walk-behind roof peak (WALK_BEHIND_ROWS, capped at the overhang) —
+      // you can slip along behind a house rather than detour round it.
+      const startRow = obj.walk_under
+        ? (obj.overhang ?? 0)
+        : Math.min(WALK_BEHIND_ROWS[obj.sprite] ?? 0, obj.overhang ?? 0);
       for (let dy = startRow; dy < obj.h; dy++) {
         for (let dx = 0; dx < obj.w; dx++) {
           const tx = obj.at.tx + dx;

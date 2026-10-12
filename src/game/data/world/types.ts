@@ -277,6 +277,8 @@ export interface MapObject {
    * canopies, a lamp's arm). If false (default), the whole footprint is solid even
    * though the overhang rows still render over the player — buildings, where the
    * roof must draw above a player standing north of it but you can't walk into it.
+   * Exception: a building sprite listed in `walk-behind.json` frees its top roof
+   * row(s) so the player can slip along BEHIND the peak (CollisionGrid).
    */
   walk_under?: boolean;
   /**

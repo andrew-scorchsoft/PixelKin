@@ -8,6 +8,9 @@
  * Gleams, the Wayfaring, the vesperlamp) — it's read by the fire, not a patch log.
  */
 export const WHATS_NEW: Record<string, string[]> = {
+  '1.16': [
+    'Roofs are friendlier now: you can slip along behind the peak of a house or a hall instead of walking all the way round it.',
+  ],
   '1.15': [
     'Someone in Duskapple Orchard is brewing coffee in a little eight-sided pot, and would love to tell you everything about it. And at the foot of Lowleaf Hollow, Marisol is cooking something red.',
     'A crooked house has gone up beside the Wayward Arms, three floors full of t-shirts and tickets. Its owner is out walking; his granddaughter is very much in.',

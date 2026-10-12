@@ -36,6 +36,17 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[2]
 MAPS_DIR = REPO / "public/assets/maps"
 TILESETS_DIR = REPO / "public/assets/tilesets"
+WALK_BEHIND_ROWS: dict[str, int] = json.loads(
+    (REPO / "src/game/data/world/walk-behind.json").read_text())["rows"]
+
+
+def solid_top(o: dict) -> int:
+    """First footprint row that collides (mirror of CollisionGrid): walk-under
+    objects free their overhang; buildings free their walk-behind roof peak."""
+    ov = o.get("overhang", 0) or 0
+    if o.get("walk_under"):
+        return o["at"]["ty"] + ov
+    return o["at"]["ty"] + min(WALK_BEHIND_ROWS.get(o.get("sprite", ""), 0), ov)
 GRAPH_TS = REPO / "src/game/data/world/graph.ts"
 
 DIRS = {"up": (0, -1), "down": (0, 1), "left": (-1, 0), "right": (1, 0)}
@@ -98,7 +109,7 @@ class MapModel:
         for o in m.get("objects", []):
             if o.get("solid") is False:
                 continue
-            top = o["at"]["ty"] + (o.get("overhang", 0) if o.get("walk_under") else 0)
+            top = solid_top(o)
             for ty in range(top, o["at"]["ty"] + o["h"]):
                 for tx in range(o["at"]["tx"], o["at"]["tx"] + o["w"]):
                     if 0 <= tx < self.w and 0 <= ty < self.h:
