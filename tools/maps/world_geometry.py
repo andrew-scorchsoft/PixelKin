@@ -60,7 +60,7 @@ REGION_COL = {
 SOUTH_SET = [
     "tinderwick", "duskapple_orchard", "dimglass_coast", "dimglass_coast_ii",
     "pearlmoor_quay", "pearlmoor_breakwater", "pearlmoor_point", "pearlmoor_allotment",
-    "pearlmoor_wanderwood", "pearlmoor_wanderwood_far", "lanternway_tinderwick",
+    "pearlmoor_wanderwood", "pearlmoor_wanderwood_far", "wayward_rise", "lanternway_tinderwick",
     "lanternway_lowleaf", "lanternway_galehigh", "lanternway_nightreach",
     "vesper_crossroads", "wrackline_path", "sounding_cave", "lanternfall_road",
     "gullcry_rock", "saltreach_fen_i",

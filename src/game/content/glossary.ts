@@ -401,6 +401,13 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'The order who climbed the Sunvault face every dawn to wipe the frost from Nightreach\'s mirrors, on ladders and planks they pegged into the stone themselves. The watchers came down to meet them on the ledges. Two orders, one job: keep the lights.',
     unlock_flag: 'flag:sunvault_shelter_seen',
   },
+  // The Wayward Arms (2026-10) — the hotel north of the Wanderwood
+  {
+    id: 'wayward_arms',
+    term: 'the Wayward Arms',
+    desc: 'An old stone hotel on the green rise above the Wanderwood, older than the dark. The bar is open, the fire is lit, and there is always someone in the chair beside the corner one. Nobody remembers who keeps it.',
+    unlock_flag: 'flag:wayward_night',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */

@@ -270,6 +270,22 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/lowleaf-hollow-b.webp',
     ],
   },
+  // Wayward Rise + the Wayward Arms (2026-10): the hilltop north of the Wanderwood
+  // and its old country hotel — a quiet reward beyond S5 (the bar, the corner
+  // chair, the stranger; content/regions/hotel.ts). No encounters, no backdrops.
+  wayward_rise: {
+    json: 'assets/maps/wayward_rise.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'town',
+    // the wood's own bed carries on up the hill (it resumes, no restart)
+    music: 'assets/audio/music/lowleaf-hollow-b.mp3',
+  },
+  wayward_arms: {
+    json: 'assets/maps/wayward_arms.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/inn-rest.mp3',
+  },
   pearlmoor_lumenary: {
     json: 'assets/maps/pearlmoor_lumenary.json',
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
