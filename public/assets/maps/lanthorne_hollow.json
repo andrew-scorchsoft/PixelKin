@@ -910,32 +910,44 @@
       "kind": "cutscene",
       "at": {
         "tx": 8,
-        "ty": 5
+        "ty": 4
       },
       "activation": "interact",
       "ref": "script.mirelight_lanthorne",
       "hidden_when_flag": "flag:lanthorne_caught"
+    },
+    {
+      "id": "lantern_empty_8",
+      "kind": "script",
+      "at": {
+        "tx": 8,
+        "ty": 4
+      },
+      "activation": "interact",
+      "ref": "script.mirelight_lantern_empty",
+      "requires_flag": "flag:lanthorne_caught"
     },
     {
       "id": "lanthorne_9",
       "kind": "cutscene",
       "at": {
         "tx": 9,
-        "ty": 5
+        "ty": 4
       },
       "activation": "interact",
       "ref": "script.mirelight_lanthorne",
       "hidden_when_flag": "flag:lanthorne_caught"
     },
     {
-      "id": "lantern_empty",
+      "id": "lantern_empty_9",
       "kind": "script",
       "at": {
-        "tx": 10,
-        "ty": 5
+        "tx": 9,
+        "ty": 4
       },
       "activation": "interact",
-      "ref": "script.mirelight_lantern_empty"
+      "ref": "script.mirelight_lantern_empty",
+      "requires_flag": "flag:lanthorne_caught"
     },
     {
       "id": "sign_lanthorne_hollow",

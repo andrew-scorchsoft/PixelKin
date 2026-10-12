@@ -81,12 +81,14 @@ obj("null_lantern", "mirelight_null_lantern_big", (8, 2), 2, 3, overhang=1,
     hidden_when_flag="flag:lanthorne_caught")
 obj("null_lantern_empty", "glowmoss_deep_null_lantern_shrine", (8, 2), 2, 3, overhang=1,
     requires_flag="flag:lanthorne_caught")
+# interact triggers sit ON the lantern's base row (faced from the dais floor below)
 for x in (8, 9):
-    m["triggers"].append({"id": f"lanthorne_{x}", "kind": "cutscene", "at": {"tx": x, "ty": 5},
+    m["triggers"].append({"id": f"lanthorne_{x}", "kind": "cutscene", "at": {"tx": x, "ty": 4},
                           "activation": "interact", "ref": "script.mirelight_lanthorne",
                           "hidden_when_flag": "flag:lanthorne_caught"})
-m["triggers"].append({"id": "lantern_empty", "kind": "script", "at": {"tx": 10, "ty": 5},
-                      "activation": "interact", "ref": "script.mirelight_lantern_empty"})
+    m["triggers"].append({"id": f"lantern_empty_{x}", "kind": "script", "at": {"tx": x, "ty": 4},
+                          "activation": "interact", "ref": "script.mirelight_lantern_empty",
+                          "requires_flag": "flag:lanthorne_caught"})
 owed += ["script.mirelight_lanthorne", "script.mirelight_lantern_empty"]
 
 # the Hollowing's tending: doused null-lamps along the dais, offerings, a kept broom

@@ -197,7 +197,7 @@ owed += pt.cache(m, cid="mire_street_tin", at=(13, 3))
 owed += pt.trainer_beat(m, tid="mire_acolyte", at=(16, 26), facing="up", sight=1,
                         sprite="hollowing_acolyte")
 obj("acolyte_camp", "coldfog_quiet_camp", (19, 13), 3, 2)
-m["triggers"].append({"id": "acolyte_camp_rest", "kind": "cutscene", "at": {"tx": 20, "ty": 15},
+m["triggers"].append({"id": "acolyte_camp_rest", "kind": "cutscene", "at": {"tx": 20, "ty": 14},
                       "activation": "interact", "ref": "script.mirelight_camp_rest"})
 owed.append("script.mirelight_camp_rest")
 

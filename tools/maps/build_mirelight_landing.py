@@ -205,7 +205,7 @@ obj("village_lamp", "coldfog_doused_lamp", (12, 21), 1, 3, overhang=2, walk_unde
 
 # ---- 2. Tobin's boat --------------------------------------------------------------
 obj("tobins_boat", "coldfog_beached_boat", (15, 40), 3, 2)
-m["triggers"].append({"id": "tobins_boat", "kind": "script", "at": {"tx": 16, "ty": 39},
+m["triggers"].append({"id": "tobins_boat", "kind": "script", "at": {"tx": 16, "ty": 40},
                       "activation": "interact", "ref": "script.mirelight_tobins_boat"})
 owed.append("script.mirelight_tobins_boat")
 
