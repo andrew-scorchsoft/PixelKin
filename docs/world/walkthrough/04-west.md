@@ -716,3 +716,13 @@ held) is the final ascent. **Starreach** reopenings handed to Central/East: **Cr
 (Cinderhead Deep, East) and **Starwell** (Penumbra Ring). Arc beats still owed downstream: **B5**
 (confront the Great Null; relight the Keystar/Keylumen by *out-remembering*), and the **Dawn**
 (`flag:dawn`) → [`06-postgame.md`](./06-postgame.md).
+
+## Traversal pass (2026-10, 09-the-wild-ways §3) — Hushfrost Pass I's glare pool
+
+The frozen falls' plunge-pool now spans the north passage as **glare ice** (`flows` ice,
+`build_hushfrost_pass_i.py`): every way between the mid chamber and the west chamber crosses
+it, and on glare ice you slide until something stops you. Three wind-dropped stones are the
+stoppers; reading the falls means stopping under them at (18,5). The sheet is ringed by snow,
+so no stop strands you (checked: every reachable tile can reach both entrances). The
+shortest crossing is one slide down/up column 12. Warps, trainers, caches, the Emberward
+throat and the shipped encounter zones are unchanged. Before: open snow there.
