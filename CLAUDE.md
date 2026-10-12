@@ -1198,6 +1198,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   save (`flag:tip_restpoint_seen`) — the old notice replayed its boilerplate on every build. The device-level
   `last_seen_version` storage key drives the title's pulsing NEW beside the version label. Any
   crafted test save without `last_version` WILL show the notice (the world stays modal).
+  **`whatsnew.ts` must NEVER spoil the hidden real-people content** (owner's rule, 2026-10 — the
+  people it was built for read the notice): nothing about Paul or his things — the Booji-Wooji
+  Man / S4–S5, the Chickenpig, the Lifting House gym, Paul's house, the Wayward Arms, the
+  Reckoning Works' walking-man story, the beacon-road man with the case. Those changes ship
+  silently; an entry covers only general changes (and none at all is fine).
 - **Stuck players are answered in-world by ANDREW, on a fence in every rim town** (2026-08).
   `script.andrew_hint` is the wayfinding chain — one `say` per journey stage, each guarded
   `if_flag: <stage>` + `unless_flag: <next stage>`, so exactly one line plays and it names the

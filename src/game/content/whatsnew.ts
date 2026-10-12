@@ -6,10 +6,16 @@
  * after the opening line, one short page each. No entry for this version = the
  * notice simply skips them. Keep each line short, warm and in-canon (kin,
  * Gleams, the Wayfaring, the vesperlamp) — it's read by the fire, not a patch log.
+ *
+ * NO SPOILERS for the hidden, real-people content (owner's rule, 2026-10): this
+ * notice is read by the very people those places were built for. Never mention
+ * Paul or anything of his — the Booji-Wooji Man / S4–S5 line, the Chickenpig,
+ * the Lifting House (it's Paul's gym), Paul's house on Wayward Rise, the Wayward
+ * Arms hotel, the Reckoning Works' walking-man story — nor the beacon-road man
+ * with the case. Changes there ship SILENTLY; announce only general things.
  */
 export const WHATS_NEW: Record<string, string[]> = {
   '1.17': [
-    'The Lifting House on Pearlmoor Quay is a proper gym now: treadmills, bikes and rowers on the ground floor (Andy never gets off his treadmill), and the bench presses and squat racks down the stairs.',
     'The build number now sits quietly at the bottom of the loading screens, and fullscreen comes back after you keep a copy of your save.',
   ],
   '1.16': [
@@ -17,14 +23,11 @@ export const WHATS_NEW: Record<string, string[]> = {
   ],
   '1.15': [
     'Someone in Duskapple Orchard is brewing coffee in a little eight-sided pot, and would love to tell you everything about it. And at the foot of Lowleaf Hollow, Marisol is cooking something red.',
-    'A crooked house has gone up beside the Wayward Arms, three floors full of t-shirts and tickets. Its owner is out walking; his granddaughter is very much in.',
-    'Andrew has been dressing for the weather, wherever you meet him. The man with the case on the beacon road is gone, as if he was never there.',
+    'Andrew has been dressing for the weather, wherever you meet him.',
     'Holes, steps and ladders that lead somewhere now look like it, indoor walls meet their ceilings, and nobody is standing in the sea any more.',
   ],
   '1.14': [
     'Your whole lamp learns now: the kin that wins a fight keeps its full EXP, those who fought beside it take half, and the rest a quarter. (Settings → EXP share, if you prefer the old way.)',
-    'Beyond the old wood behind Pearlmoor, a lane climbs to a quiet hotel. The bar is open, they say, and someone is waiting in the corner.',
-    'High on the Rimeway there is a works that never stops counting. It might like to hear a story about a man who goes for walks.',
     'The Old Light has a new machine on its tea floor, and its tower stairs now look like stairs.',
   ],
   '1.13': [
@@ -49,7 +52,6 @@ export const WHATS_NEW: Record<string, string[]> = {
     'Step indoors and the music steps in with you — every inn, shop and hearth has its own tune now, and the Crossroads, the Lanternway and Pearlmoor sing their own songs.',
     'Some places remember what happened there. Walk the old orchard again, and listen.',
     'Turn the whole world up or down with the little slider under the screen, or in Settings. The bleeps and footsteps have been asked to speak a little softer.',
-    'Paul, Andrew and the strongmen of the Lifting House have had their portraits taken again, and stand a little taller for it.',
   ],
   '1.8': [
     'Vesperholm has a new voice. Every town, road, cave and battle has been scored afresh around one melody from home — and if you miss the old tunes, Settings → Soundtrack brings them back.',
