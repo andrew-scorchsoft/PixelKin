@@ -328,6 +328,12 @@ def floor_2():
                      "movement": "static", "dialogue_ref": f"npc.oldlight_{nid}"})
     ol(objects, "laugh_dolls", 18, 11, oid="laugh_track")
     sign_at(triggers, "laugh_track_sign", 18, 13, "script.oldlight_laugh_track_late", kind="cutscene")
+    # the LATE LAUGH, felt: cross the aisle past the audience and they laugh at
+    # you a beat after you've gone by (a once band on every walkable tile of the cut)
+    for y in (11, 12, 13):
+        triggers.append({"id": f"late_laugh_{y}", "kind": "cutscene", "at": {"tx": 16, "ty": y},
+                         "activation": "step_on", "ref": "script.oldlight_late_laugh",
+                         "hidden_when_flag": "flag:oldlight_late_laughed"})
     # the JUGGLER in the south-west alcove (optional)
     alcove_trainer(over, npcs, 5, "juggler", "village_child")
     # the stair room (NW): the HECKLER guards the tube
@@ -502,7 +508,7 @@ def floor_5():
     alcove_trainer(over, npcs, 18, "critic", "npc_old_woman")
     # the stair room (NE)
     ol(objects, "laugh_meter", 14, 2, oid="laugh_meter")
-    sign_at(triggers, "laugh_meter_sign", 14, 4, "script.oldlight_laugh_meter", kind="cutscene")
+    sign_at(triggers, "laugh_meter_sign", 14, 4, "script.oldlight_laugh_meter_f5", kind="cutscene")
     # (Punchwheel's never-told joke — the knock-knock loop — opens the riddle
     #  itself, once: script.oldlight_5 guards it on flag:oldlight_knock_done)
     stairs(5, W, base, objects, warps, triggers, down="nw", up="ne")

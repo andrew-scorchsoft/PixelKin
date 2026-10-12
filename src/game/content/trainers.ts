@@ -240,7 +240,7 @@ export const TRAINERS: TrainerRegistry = {
     name: 'THE HECKLER',
     title: 'Jest-keeper',
     party: [
-      { species_id: 47, level: 11 }, // Pebbit — Stone
+      { species_id: 167, level: 11 }, // JesterHalf — Light/Dark
       { species_id: 8, level: 12 }, // Glimflit — Light (ace)
     ],
     defeat_ref: 'trainer.oldlight_heckler.defeat',

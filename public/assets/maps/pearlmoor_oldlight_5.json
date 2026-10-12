@@ -1382,7 +1382,7 @@
         "ty": 4
       },
       "activation": "interact",
-      "ref": "script.oldlight_laugh_meter"
+      "ref": "script.oldlight_laugh_meter_f5"
     },
     {
       "id": "riddle_band",

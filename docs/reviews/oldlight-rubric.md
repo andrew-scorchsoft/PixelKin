@@ -37,3 +37,6 @@ The newest score is first.
 
 | Date | Iteration | Total | Notes |
 |------|-----------|------:|-------|
+| 2026-10-12 | R11 pass 3: wax-shine lane, real mirror maze, two-room F3, curtains on the stage, crisp Smiler, full-size JesterFull; then the late-laugh beat, an F5 meter line of its own, and JesterHalf in the Heckler's team | **86** | Independent reviewer. Still open: F2's hall shape, JesterFull's edge-to-edge canvas, Light's roster-wide same-tier rate. |
+| 2026-10-12 | R11 pass 2: all five kin packed, drawn drum, paintings and curtains, F4–F6 layouts, Moll at the climax, kinder forum jokes | 84 | Didn't clear the bar: the wax lane was invisible, the Smiler had a halo, the maze was too small, F3 was still the template. |
+| 2026-10-12 | R11 pass 1: new kin data, per-floor backdrops, Moll | 78 | JesterFull and the Exciter were not drawn yet, nothing was packed, and the F2–F6 layouts were all the same template. |

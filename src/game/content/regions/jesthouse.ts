@@ -185,6 +185,18 @@ export const JESTHOUSE_SCRIPTS: ScriptRegistry = {
     nar('Step onto the shine and you will skid until something stops you. The dry boards either side are slower, and far less fun.'),
     { op: 'setFlag', flag: 'flag:oldlight_waxed_seen' },
   ],
+  // ---- F2: the audience laughs at you, late; F5: the meter has opinions now ----------------
+  'script.oldlight_late_laugh': [
+    nar('You walk past the audience. Nothing. You take another step. Nothing.'),
+    { op: 'wait', ms: 700 },
+    nar('HA! HA HA HA! — they roar, all at once, at something you did three steps ago.'),
+    pw('(from the wings) They loved your walk. They will tell you so tomorrow.'),
+    { op: 'setFlag', flag: 'flag:oldlight_late_laughed' },
+  ],
+  'script.oldlight_laugh_meter_f5': [
+    nar('Another brass laugh meter, newer. Its dial reads: DOUBTFUL — PLAUSIBLE — TRUE — CONFIDENT. The needle is bent clean past CONFIDENT.'),
+    pw('This one measures how sure I am. It has never once gone below CONFIDENT. That is how you know it works.'),
+  ],
 };
 
 export const JESTHOUSE_DIALOGUE: DialogueRegistry = {

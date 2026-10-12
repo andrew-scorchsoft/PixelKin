@@ -906,6 +906,39 @@
       "ref": "script.oldlight_laugh_track_late"
     },
     {
+      "id": "late_laugh_11",
+      "kind": "cutscene",
+      "at": {
+        "tx": 16,
+        "ty": 11
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_late_laugh",
+      "hidden_when_flag": "flag:oldlight_late_laughed"
+    },
+    {
+      "id": "late_laugh_12",
+      "kind": "cutscene",
+      "at": {
+        "tx": 16,
+        "ty": 12
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_late_laugh",
+      "hidden_when_flag": "flag:oldlight_late_laughed"
+    },
+    {
+      "id": "late_laugh_13",
+      "kind": "cutscene",
+      "at": {
+        "tx": 16,
+        "ty": 13
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_late_laugh",
+      "hidden_when_flag": "flag:oldlight_late_laughed"
+    },
+    {
       "id": "masks_sign",
       "kind": "sign",
       "at": {
