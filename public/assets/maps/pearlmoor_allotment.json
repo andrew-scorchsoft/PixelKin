@@ -241,7 +241,7 @@
       "facing": "left",
       "sprite": "npc_old_woman",
       "movement": "look_around",
-      "dialogue_ref": "npc.allotment_anth",
+      "dialogue_ref": "script.allotment_anth",
       "hidden_when_flag": "flag:q_south_wander"
     },
     {

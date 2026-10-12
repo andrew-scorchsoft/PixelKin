@@ -417,6 +417,28 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:q_south_wrecklamp_done' },
   ],
 
+  // Wrong-way warnings on Pearlmoor's two side roads (playtest 2026-10: a player
+  // fresh off the Ember wandered east into the fen's 16+ kin and north up the
+  // hill, with no word that both are for later). Optional colour, pre-Tide only.
+  'script.fen_warden': [
+    { op: 'run', ref: 'script.fen_warden_warning', unless_flag: 'gleam:tide' },
+    { op: 'dialogue', ref: 'npc.fen_warden' },
+  ],
+  'script.fen_warden_warning': [
+    { op: 'say', speaker: 'FEN-WARDEN', text: 'Whoa there — fresh off the quay? Turn round a while. The fen\'s kin run strong out here, a good few levels past what Pearlmoor\'s grass will have shown you.' },
+    { op: 'say', speaker: 'FEN-WARDEN', text: 'And half the fen\'s across deep channels you can\'t cross yet anyway. Earn Reyl Wash\'s Tide at the Lumenary first — then come back and the water will carry you.' },
+  ],
+  // ...and he calls it out the first time you step in, so nobody has to think
+  // to ask him (a step_on band across the fen's mouth, once per save).
+  'script.fen_warning_step': [
+    { op: 'emote', actor: 'fen_warden', emote: 'alert', unless_flag: 'gleam:tide' },
+    { op: 'run', ref: 'script.fen_warden_warning', unless_flag: 'gleam:tide' },
+    { op: 'setFlag', flag: 'flag:fen_warned' },
+  ],
+  'script.allotment_anth': [
+    { op: 'dialogue', ref: 'npc.allotment_anth' },
+    { op: 'say', unless_flag: 'gleam:tide', speaker: 'ANTH', text: 'And if it\'s the woods past the waystone you\'re after — not yet, love. Those trees won\'t open for anyone fresh to the quay. Your business is down at the Lumenary with Reyl Wash.' },
+  ],
   // S4 "The Booji-Wooji Man" — the Lifting House quest line. The quay's gym crew
   // each hold one piece of the old man; none of the pieces agree, and that is the
   // point. Mystery and non-conformance, never the Hollowing: Paul keeps one lamp
@@ -5095,6 +5117,10 @@ export const SCRIPTS: ScriptRegistry = {
     // (e.g. the rope from before the tower existed).
     { op: 'run', ref: 'script.andrew_hint_tide', if_flag: 'gleam:ember', unless_flag: 'gleam:tide' },
     {
+      op: 'say', if_flag: 'gleam:ember', unless_flag: 'gleam:tide', speaker: 'ANDREW',
+      text: 'And a word to the wise: leave the fen road EAST of Pearlmoor and the hill path NORTH of it for later. The fen\'s kin will flatten you before the Tide, and the hill\'s a story for another day. Pearlmoor\'s own errand comes first.',
+    },
+    {
       op: 'say', if_flag: 'gleam:tide', unless_flag: 'gleam:verdant', speaker: 'ANDREW',
       text: 'East out of Pearlmoor on the fen road. Tidecall will walk you over the deep channels that stopped you before. Lowleaf Hollow\'s at the far end — ask for Sable Quill.',
     },
@@ -5164,7 +5190,7 @@ export const SCRIPTS: ScriptRegistry = {
     },
     {
       op: 'say', unless_flag: 'flag:q_south_bell', speaker: 'ANDREW',
-      text: 'North now. Up the coast road, over the tidal flats, till the road runs out of land — that\'s Pearlmoor Quay. See Reyl Wash at the Lumenary first. He keeps the Tide, and he\'ll have a job for you.',
+      text: 'Pearlmoor Quay next — the harbour town at the top of the coast road, where the land runs out. Once you\'re on the quay, go up to the LUMENARY at the very top and see Reyl Wash. He keeps the Tide, and he\'ll have a job for you.',
     },
   ],
 
