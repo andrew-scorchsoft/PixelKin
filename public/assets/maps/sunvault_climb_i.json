@@ -174,7 +174,7 @@
     },
     {
       "id": "lamp_entry",
-      "sprite": "tinderwick_lamp_post",
+      "sprite": "sunvault_sun_lamp",
       "at": {
         "tx": 26,
         "ty": 14
@@ -186,7 +186,7 @@
     },
     {
       "id": "lamp_gorge",
-      "sprite": "tinderwick_lamp_post",
+      "sprite": "sunvault_sun_lamp",
       "at": {
         "tx": 4,
         "ty": 6
@@ -198,7 +198,7 @@
     },
     {
       "id": "lamp_pitch",
-      "sprite": "tinderwick_lamp_post",
+      "sprite": "sunvault_sun_lamp",
       "at": {
         "tx": 22,
         "ty": 6
@@ -210,7 +210,7 @@
     },
     {
       "id": "lamp_pocket",
-      "sprite": "tinderwick_lamp_post",
+      "sprite": "sunvault_sun_lamp",
       "at": {
         "tx": 16,
         "ty": 21

@@ -145,7 +145,7 @@ m["objects"].append({"id": "lookout_dial", "sprite": "sunvault_sundial_fallen",
                      "at": {"tx": 13, "ty": 2}, "w": 3, "h": 2, "solid": False})
 for n, (x, y) in enumerate([(12, 3), (16, 2), (18, 4), (26, 7), (10, 2), (8, 6), (3, 4)]):
     m["objects"].append({"id": f"starglint_{n}", "sprite": rng.choice(
-        ["windward_starglint_a", "windward_starglint_b"]),
+        ["sunvault_sunmote_a", "sunvault_sunmote_b"]),
         "at": {"tx": x, "ty": y}, "w": 1, "h": 1, "solid": False})
 
 # ---- signs / NPCs / trainer / caches -------------------------------------------------
@@ -205,13 +205,13 @@ m["objects"] += [
      "at": {"tx": 5, "ty": 24}, "w": 3, "h": 1},
     {"id": "column_fallen_b", "sprite": "solarium_column_fallen",
      "at": {"tx": 23, "ty": 33}, "w": 3, "h": 1},
-    {"id": "lamp_entry", "sprite": "tinderwick_lamp_post",
+    {"id": "lamp_entry", "sprite": "sunvault_sun_lamp",
      "at": {"tx": 8, "ty": 35}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_mid", "sprite": "tinderwick_lamp_post",
+    {"id": "lamp_mid", "sprite": "sunvault_sun_lamp",
      "at": {"tx": 25, "ty": 22}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_north", "sprite": "tinderwick_lamp_post",
+    {"id": "lamp_north", "sprite": "sunvault_sun_lamp",
      "at": {"tx": 21, "ty": 6}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_ladder", "sprite": "tinderwick_lamp_post",
+    {"id": "lamp_ladder", "sprite": "sunvault_sun_lamp",
      "at": {"tx": 5, "ty": 12}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     # THE VINE-SHADE REST ARBOR (tier C west, the climb's halfway breath)
     {"id": "rest_arbor_col_w", "sprite": "solarium_column",

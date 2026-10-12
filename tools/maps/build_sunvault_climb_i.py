@@ -210,13 +210,13 @@ m["objects"] += [
      "at": {"tx": 9, "ty": 23}, "w": 3, "h": 1},
     {"id": "column_fallen_b", "sprite": "solarium_column_fallen",
      "at": {"tx": 19, "ty": 3}, "w": 3, "h": 1},
-    {"id": "lamp_entry", "sprite": "tinderwick_lamp_post",
+    {"id": "lamp_entry", "sprite": "sunvault_sun_lamp",
      "at": {"tx": 26, "ty": 14}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_gorge", "sprite": "tinderwick_lamp_post",
+    {"id": "lamp_gorge", "sprite": "sunvault_sun_lamp",
      "at": {"tx": 4, "ty": 6}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_pitch", "sprite": "tinderwick_lamp_post",
+    {"id": "lamp_pitch", "sprite": "sunvault_sun_lamp",
      "at": {"tx": 22, "ty": 6}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_pocket", "sprite": "tinderwick_lamp_post",
+    {"id": "lamp_pocket", "sprite": "sunvault_sun_lamp",
      "at": {"tx": 16, "ty": 21}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
 ]
 

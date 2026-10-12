@@ -88,7 +88,7 @@
     },
     {
       "id": "starglint_0",
-      "sprite": "windward_starglint_b",
+      "sprite": "sunvault_sunmote_b",
       "at": {
         "tx": 12,
         "ty": 3
@@ -99,7 +99,7 @@
     },
     {
       "id": "starglint_1",
-      "sprite": "windward_starglint_a",
+      "sprite": "sunvault_sunmote_a",
       "at": {
         "tx": 16,
         "ty": 2
@@ -110,7 +110,7 @@
     },
     {
       "id": "starglint_2",
-      "sprite": "windward_starglint_b",
+      "sprite": "sunvault_sunmote_b",
       "at": {
         "tx": 18,
         "ty": 4
@@ -121,7 +121,7 @@
     },
     {
       "id": "starglint_3",
-      "sprite": "windward_starglint_b",
+      "sprite": "sunvault_sunmote_b",
       "at": {
         "tx": 26,
         "ty": 7
@@ -132,7 +132,7 @@
     },
     {
       "id": "starglint_4",
-      "sprite": "windward_starglint_b",
+      "sprite": "sunvault_sunmote_b",
       "at": {
         "tx": 10,
         "ty": 2
@@ -143,7 +143,7 @@
     },
     {
       "id": "starglint_5",
-      "sprite": "windward_starglint_b",
+      "sprite": "sunvault_sunmote_b",
       "at": {
         "tx": 8,
         "ty": 6
@@ -154,7 +154,7 @@
     },
     {
       "id": "starglint_6",
-      "sprite": "windward_starglint_a",
+      "sprite": "sunvault_sunmote_a",
       "at": {
         "tx": 3,
         "ty": 4
@@ -209,7 +209,7 @@
     },
     {
       "id": "lamp_entry",
-      "sprite": "tinderwick_lamp_post",
+      "sprite": "sunvault_sun_lamp",
       "at": {
         "tx": 8,
         "ty": 35
@@ -221,7 +221,7 @@
     },
     {
       "id": "lamp_mid",
-      "sprite": "tinderwick_lamp_post",
+      "sprite": "sunvault_sun_lamp",
       "at": {
         "tx": 25,
         "ty": 22
@@ -233,7 +233,7 @@
     },
     {
       "id": "lamp_north",
-      "sprite": "tinderwick_lamp_post",
+      "sprite": "sunvault_sun_lamp",
       "at": {
         "tx": 21,
         "ty": 6
@@ -245,7 +245,7 @@
     },
     {
       "id": "lamp_ladder",
-      "sprite": "tinderwick_lamp_post",
+      "sprite": "sunvault_sun_lamp",
       "at": {
         "tx": 5,
         "ty": 12
