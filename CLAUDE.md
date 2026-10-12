@@ -187,7 +187,12 @@ go digging on every task.
   encounter rows like `pearlmoor_quay`).
 - **World structure:** 14 areas, 8 Lampwardens (Gleams collected in roughly a set
   order), 6 Lantern Gifts gating traversal, a four-way central hub (the **Umbral
-  Spire**) that opens once all 8 Gleams are earned. (`docs/world/atlas.md`)
+  Spire**) that opens once all 8 Gleams are earned. (`docs/world/atlas.md`) Plus **the Wild
+  Ways** (2026-10, optional, `walkthrough/09-the-wild-ways.md`): the Wick-Run (downhill runner
+  run, Sunvault → Lightkeeper's Point; the Tallow Lift is the ride home, freed from the top),
+  the Mirelights (east of Saltreach Fen I; the ferry wants Isel's Frostglass Lens from Pale
+  Vault), the Rimeway (Pale Vault ⇄ Coldfog II; the Rime Gate opens from the marsh side), the
+  Old Seams (under Cinderhead; the heart waits on Starlight), and Sunvault Climb as four maps.
 - **The journey is canon, written before the game.** `docs/world/walkthrough/` is the
   start-to-finish **user-journey blueprint** — golden thread, five interlocking arcs (Wren,
   the Hollowing/Còr, Fenn, the celestial calendar, festivals), the level curve, the

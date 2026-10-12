@@ -8,6 +8,12 @@
  * Gleams, the Wayfaring, the vesperlamp) — it's read by the fire, not a patch log.
  */
 export const WHATS_NEW: Record<string, string[]> = {
+  '1.13': [
+    'The Sunvault is a real climb now: ladders up the sandstone, ledges to edge along, and a long way down the other side. At the foot of the climb an old wax road waits — rent a runner and ride it all the way to the sea.',
+    'If you have ever wondered about the lift-house by Lightkeeper\'s Point: its car is stuck at the top. Someone up there would have to free the brake.',
+    'There are lights on the water east of Saltreach Fen, and a ferryman who will not row toward them. The lens-grinder in Pale Vault might know why.',
+    'High above the glacier, an old road climbs into the frost, and in Cinderhead, Otho has a door he has been meaning to show someone.',
+  ],
   '1.12': [
     'The roads of Vesperholm have been walked again and set true: leave a place to the north and you arrive somewhere north. The MAP now draws the world exactly as you walk it, and scrolls.',
     'From Pearlmoor, the road home runs round the bay — east into Saltreach Fen, then south down the old drowned road and the Wrackline shore.',
