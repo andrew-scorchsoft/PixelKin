@@ -83,6 +83,10 @@ mk.rect(tree, W, H, 28, 25, W - 1, H - 1)       # the wood closes the east side
 mk.blob(pond, W, H, 4.2, 21.6, 2.9, 1.6)
 mk.blob(pond, W, H, 6.6, 22.8, 1.8, 1.2)
 CHAPEL = (12, 33)                             # 5x5: door col 2 row 3, porch row 4
+# the chapel stands IN the mere: water both sides of it, up to the porch row
+for y in range(31, 38):
+    for x in range(9, 21):
+        pond[y * W + x] = 1
 for y in range(CHAPEL[1], CHAPEL[1] + 5):
     for x in range(CHAPEL[0], CHAPEL[0] + 5):
         pond[y * W + x] = 0
@@ -110,6 +114,11 @@ for (x, y) in LANE:
     path[y * W + x] = 1
     pond[y * W + x] = 0
     tree[y * W + x] = 0
+# the islet's south shore is a clean line along the porch apron (no stray
+# one-tile pools round the path loop)
+for y in range(38, H):
+    for x in range(W):
+        pond[y * W + x] = 0
 # the street's mouth at the bottom joins the lower meadow (rows 25-33)
 for y in range(25, 34):
     for x in range(STREET_X[0], STREET_X[1] + 1):
@@ -199,7 +208,7 @@ owed += pt.cache(m, cid="mire_bank_balm", at=(2, 15))       # the west bank's fa
 obj("south_stooks", "saltreach_reed_stooks", (19, 40), 2, 2, overhang=1, walk_under=True)
 obj("south_traps", "saltreach_eel_trap", (24, 40), 2, 2, overhang=1, walk_under=True, solid=False)
 obj("south_moorings", "saltreach_mooring_posts", (5, 40), 1, 2, overhang=1, walk_under=True)
-obj("south_lamp", "coldfog_doused_lamp", (11, 38), 1, 3, overhang=2, walk_under=True)
+obj("south_lamp", "coldfog_doused_lamp", (10, 38), 1, 3, overhang=2, walk_under=True)
 pt.crown_tree(m, oid="willow_w", sprite="coldfog_dead_willow", at=(3, 12))
 pt.crown_tree(m, oid="willow_e", sprite="coldfog_dead_willow", at=(25, 9))
 pt.crown_tree(m, oid="tree_m", sprite="tinderwick_tree_c", at=(1, 30))
@@ -214,7 +223,7 @@ obj("reeds_b", "saltreach_cattails", (19, 35), 2, 2, overhang=1, walk_under=True
 obj("reeds_c", "saltreach_cattails", (27, 20), 2, 2, overhang=1, walk_under=True, solid=False)
 obj("reeds_d", "saltreach_cattails", (4, 6), 2, 2, overhang=1, walk_under=True, solid=False)
 obj("lily_a", "saltreach_lilypads", (22, 30), 2, 2, solid=False)
-obj("lily_b", "saltreach_lilypads", (15, 38), 2, 2, solid=False)
+obj("lily_b", "saltreach_lilypads", (18, 33), 2, 2, solid=False)
 obj("street_stooks", "saltreach_reed_stooks", (13, 14), 2, 2, overhang=1, walk_under=True)
 obj("bank_stooks", "saltreach_reed_stooks", (8, 4), 2, 2, overhang=1, walk_under=True)
 obj("bank_lamp", "saltreach_reed_lantern_lit", (10, 7), 1, 2, overhang=1, walk_under=True)
