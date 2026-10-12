@@ -469,7 +469,7 @@ def main() -> int:
             "links": [{k: v for k, v in r.items() if k != "off"} for r in straight + bent],
             "conflicts": [{k: c[k] for k in ("a", "b", "id", "exit", "err", "mag")} for c in conflicts],
         }, indent=1))
-    if not args.no_png:
+    if not (args.no_png or args.check):        # --check is a pure gate: no files written
         try:
             render(world, reg, pos, comp, straight, bent, portal, conflicts, args.png, scale=6)
             render(world, reg, pos, comp, straight, bent, portal, conflicts, args.south_png,

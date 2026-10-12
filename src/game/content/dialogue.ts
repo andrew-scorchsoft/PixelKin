@@ -1537,7 +1537,7 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'NESSA COLE', text: 'When you are ready, step to the dais. The eighth star has waited longest of all — and after tonight, I would not make it wait politely much longer.' },
   ],
   'npc.nessa_after': [
-    { speaker: 'NESSA COLE', text: 'The Crown is whole, and the Penumbra is parting — my charts have never once shown me THAT. The Crossroads\' four inward roads will carry you to the Spire when you are ready.' },
+    { speaker: 'NESSA COLE', text: 'The Crown is whole, and the Penumbra is parting — my charts have never once shown me THAT. The mountain road north of the Crossroads will carry you to the Spire when you are ready.' },
     { speaker: 'NESSA COLE', text: 'Remember harder than he has forgotten, Wayfarer. And when it is done... come back one clear night. I will show you eight constellations from this chair, and we will not say anything at all.' },
   ],
   'npc.nightreach_hall_keeper': [

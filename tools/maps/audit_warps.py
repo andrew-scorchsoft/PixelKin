@@ -206,6 +206,11 @@ def audit_waystones(world) -> list[str]:
     world = load_model_world()
     src = (REPO / "src/game/content/waystones.ts").read_text()
     out: list[str] = []
+    entries = len(re.findall(r"^\s*visited_flag:\s*'", src, re.M))
+    found = len(re.findall(r"map:\s*'([^']+)',\s*tx:\s*(\d+),\s*ty:\s*(\d+)", src))
+    if found != entries:                   # a re-ordered entry would slip past the regex
+        out.append(f"  [F] waystones.ts: parsed {found} landings but {entries} entries "
+                   "— keep each entry's map/tx/ty together, in that order")
     for m in re.finditer(r"map:\s*'([^']+)',\s*tx:\s*(\d+),\s*ty:\s*(\d+)", src):
         mid, tx, ty = m.group(1), int(m.group(2)), int(m.group(3))
         d = world.get(mid)
@@ -217,11 +222,11 @@ def audit_waystones(world) -> list[str]:
         for k in ("warps", "triggers"):
             for t in d.get(k, []):
                 p = t.get("at") or t.get("position") or {}
-                busy.add((p.get("x"), p.get("y")))
+                busy.add((p.get("tx"), p.get("ty")))
         for n in d.get("npcs", []):
             p = n.get("at") or {}
             if not n.get("ambient"):
-                busy.add((p.get("x"), p.get("y")))
+                busy.add((p.get("tx"), p.get("ty")))
         if not model.standable(tx, ty):
             out.append(f"  [F] waystone {mid} lands on a solid tile ({tx},{ty})")
         elif (tx, ty) in busy:

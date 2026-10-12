@@ -270,7 +270,7 @@ m["npcs"][-1]["requires_flag"] = "flag:fen_netweights_seen"
 owed += pt.sign(m, deco, W, sid="fen_landing", at=(3, 39))
 owed += pt.sign(m, deco, W, sid="fen_channel", at=(20, 29))
 owed += pt.sign(m, deco, W, sid="fen_boundary", at=(14, 6))
-owed += pt.sign(m, deco, W, sid="fen_drowned_road", at=(19, 41))   # beside, never on, the lost-village link (22,41)
+owed += pt.sign(m, deco, W, sid="fen_drowned_road", at=(22, 40))   # on the wall above, never on, the lost-village link (22,41)
 
 # encounter zones — the SHIPPED tables, verbatim (night tables + the R4
 # day-form pairs; mirrored in build_species EXTRA_ENCOUNTERS — never retune

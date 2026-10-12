@@ -302,7 +302,7 @@ def memberships(world: dict[str, dict]) -> dict[str, str]:
     q = deque(member)
     while q:
         cur = q.popleft()
-        for nxt in adj.get(cur, ()):  # BFS: nearest node wins
+        for nxt in sorted(adj.get(cur, ())):  # BFS: nearest node wins (sorted: seed-independent)
             if nxt not in member:
                 member[nxt] = member[cur]
                 q.append(nxt)
