@@ -1235,7 +1235,55 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   },
   // the Mirelights (B)
   // the Rimeway (C)
-  // the Old Seams (D)
+  // the Old Seams (D): dark caves on the seams_set accent kit (shafts, cinder, rails)
+  // + traverse_set (planks, ladders, scree slopes).
+  old_seams_i: {
+    json: 'assets/maps/old_seams_i.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+      seams_set: 'assets/tilesets/seams_set.webp',
+    },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/old-seams.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/old-seams-a.webp', 'assets/backgrounds/battle/old-seams-b.webp'],
+  },
+  old_seams_ii: {
+    json: 'assets/maps/old_seams_ii.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+      seams_set: 'assets/tilesets/seams_set.webp',
+    },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/old-seams.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/old-seams-a.webp', 'assets/backgrounds/battle/old-seams-b.webp'],
+  },
+  old_seams_iii: {
+    json: 'assets/maps/old_seams_iii.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+      seams_set: 'assets/tilesets/seams_set.webp',
+    },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/old-seams.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/old-seams-a.webp', 'assets/backgrounds/battle/old-seams-b.webp'],
+  },
+  emberroot_heart: {
+    json: 'assets/maps/emberroot_heart.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      seams_set: 'assets/tilesets/seams_set.webp',
+    },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/old-seams.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/old-seams-a.webp', 'assets/backgrounds/battle/old-seams-b.webp'],
+  },
   // Sunvault Climb rebuild (S)
 };
 

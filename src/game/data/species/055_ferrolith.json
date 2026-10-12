@@ -67,7 +67,36 @@
     "weight_kg": 1100,
     "habitat": "east"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "old_seams_ii",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 31,
+      "max": 31
+    },
+    {
+      "area": "old_seams_ii",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 60,
+      "max": 65
+    },
+    {
+      "area": "old_seams_iii",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 32,
+      "max": 33
+    },
+    {
+      "area": "old_seams_iii",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 60,
+      "max": 65
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Imposing wide-shouldered biped; entire body studded with iron-ore protrusions and plates; massive stone fists each larger than a human torso; slow-burning orange eyes set deep in a craggy face; silhouette is pure power.",

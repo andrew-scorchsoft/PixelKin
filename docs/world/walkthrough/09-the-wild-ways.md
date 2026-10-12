@@ -133,15 +133,28 @@ memory. Its kin, **Emberroot** (#166, Stone/Ember), sleeps there, and the coal i
 breath (cinder law rule 5: a cinder is never dead, only guttered). The Foreman's Ledger (E3)
 already mentions "the seam we don't work".
 
-**Shape.** Opened after the Stone Gleam by Otho (`flag:old_seams_open`): a ladder down from
-Cinderhead Mine's north workings into `old_seams_i` (cave, 30×30, bands 27–29: plank
-bridges over shafts, ladders) → `old_seams_ii` (cave, 32×32, 29–31: **the rail yard** — ore-cart
-rails, lever-switched junctions, ride the right line to the far platform) → `old_seams_iii`
-(cave, 30×30, 31–33: dark, ice-slick flooded gallery? no — *cinder-scree* slopes down to the
-deep) → `emberroot_heart` (cave, legendary room). The heart is pitch-dark beyond any lamp until
-**Starlight** (6 Gleams, Lamplight — optional reveal) — so it's a return trip at ~lv 40;
-Emberroot lv 46, cooldown 12 won. Ladders between floors (portals), so the floors stack under
-the North without touching surface geometry.
+**BUILT (2026-10).** Four dark caves (`dark: true`, `old-seams` music, `old-seams-a/-b`
+backdrops), stacked by ladder portals under Cinderhead so they never touch surface geometry.
+Builders `tools/maps/build_old_seams_{i,ii,iii}.py` + `build_emberroot_heart.py` on a small
+shared kit (`seamskit.py`); the Seams' own surfaces are the **`seams_set`** accent tileset
+(`build_seams_set.py`: open SHAFT autotile family whose fill breathes cinder-glints, cinder-coal
+floor, raked scree, glowing veins, and redrawn ore-cart rails on true pixel rings) and the
+code-drawn **`old_seams_first_star`** object. Content: `src/game/content/regions/oldseams.ts`.
+
+| Map | Size | Band | What you do |
+|---|---|---|---|
+| `cinderhead_mine` (edited) | 28×24 | — | The **seam-door** in the north workings beside Otho's hall (`old_seams_sealed_door` ⇄ `_open`, a 3×3 flag swap). Locked line `npc.old_seams_sealed` ("THE SEAM WE DON'T WORK"). After `gleam:stone` Otho waits beside it (`script.old_seams_otho`, a beat for the E3 ledger if you returned it) and lifts the bar → `flag:old_seams_open`. |
+| `old_seams_i` — the Shaft Benches | 30×30 | 27–29 | Three benches stepping down the seam, each cut by open shafts. Arrive under the **headframe**; walk **planks** over the pits (one to a pillar islet cache); **timber ladders** up/down the rock bands (zig-zag: east, west, east); a boulder wall turns you; a one-way **cinder-scree spill** (slope) drops B→C at the east end — fast down, the long zig-zag back up. Seam-miner Kester. |
+| `old_seams_ii` — the Rail Yard | 32×32 | 29–31 | **The puzzle.** Four platforms round a sunk working, joined by ore-cart **rails** on rock ribs (rail flows: carried, no steering, never back up). Three **levers** (`flag:seams_lever_1..3`, `script.seams_lever_N`, a `traverse_lever_off/_on` swap) throw three **junctions** (a straight/turnout flow pair, `traverse_switch_a/_b` point-stands). Lever 3 is on the SW siding, which you only reach THROUGH the yard: throw 1 → ride to the siding → throw 3 → ride home → ride to the far platform. Every line ends on a platform in every lever state and every platform rails home (the builder asserts all 8 states). Seam-miners Wenna (siding), Tam (east stage); the siding's **Starglass Shard**. |
+| `old_seams_iii` — the Scree Galleries | 30×30 | 31–33 | Cinder-coal floor, veins brightest. Two **scree slopes** run one way down (west, then east) with a **ladder home** at the far end of each gallery; steer hard left at the top of the west scree for a ledge only riders reach (**Lumen Drop**). The foremen's **camp** (a brazier the coal has kept warm seventy winters) is the descent's **rest point**. The foremen's last ladder down is gated `requires_flag: flag:lamplight_starlight` (derived at six Gleams) with `blocked_ref: npc.emberroot_dark` — a deliberate return at ~lv 40. Seam-miners Penhal, Jory. |
+| `emberroot_heart` | 20×16 | — | The first star in its root-rock mound; the awe band (`script.emberroot_heart_enter`, once); **Emberroot** at its foot → `script.emberroot_wake` (letterbox, silence, `sting-hour`, `battle-hours`, `legendaryBattle` lv 46, cooldown 12 won, `npc.emberroot_resting`); the star answers Confirm before and after; the Foreman's Ledger's **last page**. |
+
+Wild kin (night; the `flag:dawn` day twins run 55–65): floor I Oreling/Coalump/Riddlestone/
+Gravelo + **Orebound**; floor II **Orebound**/Riddlestone/Sparkrat/**Pyrolith**/**Lithonyx** +
+**Ferrolith** (rare); floor III **Orebound**/Coalump/**Pyrolith**/**Lithonyx** + Ferrolith (rare) +
+**Prismara** (very rare). Mirrored in `build_species.py OLD_SEAMS_TABLES`; the three floors are in
+`progression.mjs TREND_SKIP_AREAS` (optional rich beds must not bend the mainline's BST trend).
+JOURNAL `wild_old_seams` ("The Seam We Don't Work"); LORE `old_seams` + `first_star`.
 
 ### S · Sunvault Climb, rebuilt as a mountain face
 
@@ -217,5 +230,6 @@ balance gates PASS with both in the roster.
 - **Category:** First-Star Kin · 640 cm · 2400 kg · habitat north
 
 **Owed with the maps (not built):** LORE/glossary entries keyed to the sites' own flags
-(`flag:mirelight_ferry`, `flag:old_seams_open` — adding them before content sets those flags
-fails `check_content` E-FLAG), the `legendaryBattle` scripts, cooldown lines.
+(`flag:mirelight_ferry` — adding them before content sets those flags fails `check_content`
+E-FLAG), the `legendaryBattle` scripts, cooldown lines. *Emberroot's are BUILT with the Old
+Seams (§2 D).*

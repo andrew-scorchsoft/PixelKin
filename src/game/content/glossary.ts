@@ -348,6 +348,20 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'The village school on Wickstead Green, west of Duskapple Orchard, where every apprentice in the South learns the Wayfaring — types and catching, the Hearth and resting, wicks and Gifts. Its door is open to Wayfarers of any age.',
     unlock_flag: 'flag:school_visited',
   },
+
+  // --- The Wild Ways (09-the-wild-ways.md) --------------------------------------
+  {
+    id: 'old_seams',
+    term: 'the Old Seams',
+    desc: 'The deep workings under Cinderhead that the foremen sealed seventy winters ago, with a chalk-mark and no reason given: "the seam we don\'t work". Below the door are planked shafts, an ore-cart yard of levers and points, and scree that runs only one way — down, toward the warm.',
+    unlock_flag: 'flag:old_seams_open',
+  },
+  {
+    id: 'first_star',
+    term: 'the First Star',
+    desc: 'At the root of Cinderhead the mountain is built around a star that fell before anyone was here to see it. It never guttered. The warm black cinder-coal the miners dig is its breath, cooling very slowly in the stone, and its kin, Emberroot, sleeps curled at its foot.',
+    unlock_flag: 'flag:emberroot_heart_seen',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */

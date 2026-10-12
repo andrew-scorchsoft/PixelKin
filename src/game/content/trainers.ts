@@ -1261,7 +1261,58 @@ export const TRAINERS: TrainerRegistry = {
   },
   // the Mirelights (B)
   // the Rimeway (C)
-  // the Old Seams (D)
+  // the Old Seams (D): the old hands Otho let down to see the seam their grandparents sealed
+  seams_miner_kester: {
+    id: 'seams_miner_kester',
+    name: 'KESTER',
+    title: 'Seam-miner',
+    party: [
+      { species_id: 49, level: 29 }, // Gravelo — Stone
+      { species_id: 54, level: 30 }, // Orebound — Stone (ace)
+    ],
+    payout: 480, // route 16 × ace 30
+  },
+  seams_miner_wenna: {
+    id: 'seams_miner_wenna',
+    name: 'WENNA',
+    title: 'Seam-miner',
+    party: [
+      { species_id: 43, level: 30 }, // Pyrolith — Ember/Stone
+      { species_id: 69, level: 31 }, // Riddlestone — Stone (ace)
+    ],
+    payout: 496, // route 16 × ace 31
+  },
+  seams_miner_tam: {
+    id: 'seams_miner_tam',
+    name: 'TAM',
+    title: 'Seam-miner',
+    party: [
+      { species_id: 45, level: 30 }, // Sparkrat — Stone/Storm
+      { species_id: 54, level: 31 }, // Orebound — Stone (ace)
+    ],
+    payout: 496, // route 16 × ace 31
+  },
+  seams_miner_penhal: {
+    id: 'seams_miner_penhal',
+    name: 'PENHAL',
+    title: 'Seam-miner',
+    party: [
+      { species_id: 42, level: 31 }, // Coalump — Ember
+      { species_id: 52, level: 32 }, // Lithonyx — Stone
+      { species_id: 43, level: 33 }, // Pyrolith — Ember/Stone (ace)
+    ],
+    payout: 528, // route 16 × ace 33
+  },
+  seams_miner_jory: {
+    id: 'seams_miner_jory',
+    name: 'JORY',
+    title: 'Seam-miner',
+    party: [
+      { species_id: 54, level: 32 }, // Orebound — Stone
+      { species_id: 55, level: 33 }, // Ferrolith — Stone (ace)
+    ],
+    payout: 528, // route 16 × ace 33
+  },
   // Sunvault Climb rebuild (S)
 };
 

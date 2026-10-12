@@ -73,6 +73,14 @@ const PRICES = {
 const RARITY_W = { common: 55, uncommon: 30, rare: 12, very_rare: 3, 'very rare': 3 };
 const areaBst = new Map(); // area -> { bstSum, wSum }
 const trend = []; // [midLevel, bst, weight]
+// THE WILD WAYS' optional areas (09-the-wild-ways.md) sit OFF the journey: their
+// beds are deliberately rich (rare lines, deep bands), and as dex rows they would
+// bend the level->BST trend every mainline trainer is costed from. They keep their
+// own areaBst (a leg that names them still reads them) but never enter the trend.
+// Each Wild Ways lane appends its encounter-bearing maps here.
+const TREND_SKIP_AREAS = new Set([
+  'old_seams_i', 'old_seams_ii', 'old_seams_iii', // the Old Seams (D)
+]);
 for (const s of SPECIES) {
   for (const e of s.encounters ?? []) {
     const w = RARITY_W[e.rarity] ?? 10;
@@ -80,6 +88,7 @@ for (const s of SPECIES) {
     cur.bstSum += s.bst * w;
     cur.wSum += w;
     areaBst.set(e.area, cur);
+    if (TREND_SKIP_AREAS.has(e.area)) continue;
     trend.push([(e.min + e.max) / 2, s.bst, w]);
   }
 }
@@ -494,6 +503,12 @@ const BUILT_PAYOUTS = {
   // THE WILD WAYS (09-the-wild-ways.md, 2026-10) — optional areas, one block per lane
   runner_vess: ['route', 48, 768], // the Wick-Run chute
   runner_dace: ['route', 49, 784],
+  // the Old Seams (D) — under Cinderhead, post-Stone
+  seams_miner_kester: ['route', 30, 480],
+  seams_miner_wenna: ['route', 31, 496],
+  seams_miner_tam: ['route', 31, 496],
+  seams_miner_penhal: ['route', 33, 528],
+  seams_miner_jory: ['route', 33, 528],
 };
 const failures = [];
 for (const [id, [klass, ace, authored]] of Object.entries(BUILT_PAYOUTS)) {

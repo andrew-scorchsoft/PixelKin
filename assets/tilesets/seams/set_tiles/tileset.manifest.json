@@ -1,0 +1,287 @@
+{
+  "name": "seams_set",
+  "columns": 8,
+  "tiles": [
+    {
+      "file": "000_shaft_corner_nw.png",
+      "role": "wall",
+      "collides": true,
+      "terrain": "shaft",
+      "autotile": "corner_nw"
+    },
+    {
+      "file": "001_shaft_edge_n.png",
+      "role": "wall",
+      "collides": true,
+      "terrain": "shaft",
+      "autotile": "edge_n"
+    },
+    {
+      "file": "002_shaft_corner_ne.png",
+      "role": "wall",
+      "collides": true,
+      "terrain": "shaft",
+      "autotile": "corner_ne"
+    },
+    {
+      "file": "003_shaft_edge_w.png",
+      "role": "wall",
+      "collides": true,
+      "terrain": "shaft",
+      "autotile": "edge_w"
+    },
+    {
+      "file": "004_shaft_fill.png",
+      "role": "wall",
+      "collides": true,
+      "terrain": "shaft",
+      "autotile": "fill",
+      "animation": {
+        "frames": [
+          4,
+          17,
+          18
+        ],
+        "duration_ms": 1400
+      }
+    },
+    {
+      "file": "005_shaft_edge_e.png",
+      "role": "wall",
+      "collides": true,
+      "terrain": "shaft",
+      "autotile": "edge_e"
+    },
+    {
+      "file": "006_shaft_corner_sw.png",
+      "role": "wall",
+      "collides": true,
+      "terrain": "shaft",
+      "autotile": "corner_sw"
+    },
+    {
+      "file": "007_shaft_edge_s.png",
+      "role": "wall",
+      "collides": true,
+      "terrain": "shaft",
+      "autotile": "edge_s"
+    },
+    {
+      "file": "008_shaft_corner_se.png",
+      "role": "wall",
+      "collides": true,
+      "terrain": "shaft",
+      "autotile": "corner_se"
+    },
+    {
+      "file": "009_shaft_inner_nw.png",
+      "role": "wall",
+      "collides": true,
+      "terrain": "shaft",
+      "autotile": "inner_nw"
+    },
+    {
+      "file": "010_shaft_inner_ne.png",
+      "role": "wall",
+      "collides": true,
+      "terrain": "shaft",
+      "autotile": "inner_ne"
+    },
+    {
+      "file": "011_shaft_inner_sw.png",
+      "role": "wall",
+      "collides": true,
+      "terrain": "shaft",
+      "autotile": "inner_sw"
+    },
+    {
+      "file": "012_shaft_inner_se.png",
+      "role": "wall",
+      "collides": true,
+      "terrain": "shaft",
+      "autotile": "inner_se"
+    },
+    {
+      "file": "013_shaft_strip_h.png",
+      "role": "wall",
+      "collides": true,
+      "terrain": "shaft",
+      "autotile": "strip_h"
+    },
+    {
+      "file": "014_shaft_strip_v.png",
+      "role": "wall",
+      "collides": true,
+      "terrain": "shaft",
+      "autotile": "strip_v"
+    },
+    {
+      "file": "015_shaft_fill_v1.png",
+      "role": "wall",
+      "collides": true,
+      "terrain": "shaft",
+      "autotile": "fill",
+      "animation": {
+        "frames": [
+          15,
+          19,
+          20
+        ],
+        "duration_ms": 1600
+      }
+    },
+    {
+      "file": "016_shaft_fill_v2.png",
+      "role": "wall",
+      "collides": true,
+      "terrain": "shaft",
+      "autotile": "fill",
+      "animation": {
+        "frames": [
+          16,
+          21,
+          22
+        ],
+        "duration_ms": 1800
+      }
+    },
+    {
+      "file": "017_shaft_v0_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "018_shaft_v0_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "019_shaft_v1_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "020_shaft_v1_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "021_shaft_v2_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "022_shaft_v2_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "023_cinder_0.png",
+      "role": "ground"
+    },
+    {
+      "file": "024_cinder_1.png",
+      "role": "ground"
+    },
+    {
+      "file": "025_cinder_2.png",
+      "role": "ground"
+    },
+    {
+      "file": "026_scree_v_0.png",
+      "role": "path"
+    },
+    {
+      "file": "027_scree_v_1.png",
+      "role": "path"
+    },
+    {
+      "file": "028_scree_h_0.png",
+      "role": "path"
+    },
+    {
+      "file": "029_scree_h_1.png",
+      "role": "path"
+    },
+    {
+      "file": "030_vein_a.png",
+      "role": "decor"
+    },
+    {
+      "file": "031_vein_b.png",
+      "role": "decor"
+    },
+    {
+      "file": "032_srail_h.png",
+      "role": "decor"
+    },
+    {
+      "file": "033_srail_v.png",
+      "role": "decor"
+    },
+    {
+      "file": "034_srail_ne.png",
+      "role": "decor"
+    },
+    {
+      "file": "035_srail_nw.png",
+      "role": "decor"
+    },
+    {
+      "file": "036_srail_se.png",
+      "role": "decor"
+    },
+    {
+      "file": "037_srail_sw.png",
+      "role": "decor"
+    },
+    {
+      "file": "038_srail_tee_h_ne.png",
+      "role": "decor"
+    },
+    {
+      "file": "039_srail_tee_h_nw.png",
+      "role": "decor"
+    },
+    {
+      "file": "040_srail_tee_h_se.png",
+      "role": "decor"
+    },
+    {
+      "file": "041_srail_tee_h_sw.png",
+      "role": "decor"
+    },
+    {
+      "file": "042_srail_tee_v_ne.png",
+      "role": "decor"
+    },
+    {
+      "file": "043_srail_tee_v_nw.png",
+      "role": "decor"
+    },
+    {
+      "file": "044_srail_tee_v_se.png",
+      "role": "decor"
+    },
+    {
+      "file": "045_srail_tee_v_sw.png",
+      "role": "decor"
+    },
+    {
+      "file": "046_srail_end_n.png",
+      "role": "decor"
+    },
+    {
+      "file": "047_srail_end_s.png",
+      "role": "decor"
+    },
+    {
+      "file": "048_srail_end_e.png",
+      "role": "decor"
+    },
+    {
+      "file": "049_srail_end_w.png",
+      "role": "decor"
+    }
+  ]
+}

@@ -175,6 +175,17 @@
      "note": null
     },
     {
+     "id": "mirelight",
+     "title": "Mirelight",
+     "where": "The Mirelights (the Glassmere: a drowned causeway-field of wandering false blue lights over a still mere)",
+     "mood": "Eerie but tender: false blue lights drifting over still water, the echoes of a lost kin-light that once led travellers home.",
+     "classic": "play/assets/audio/music/mirelight.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/mirelight.mp3",
+     "loop_start": 5.666,
+     "note": null
+    },
+    {
      "id": "lowleaf-hollow-a",
      "title": "Lowleaf Hollow",
      "where": "Lowleaf Hollow · Gloamwood Dell",
@@ -238,6 +249,17 @@
      "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/cinderhead-mine-c.mp3",
      "loop_start": 11.029,
+     "note": null
+    },
+    {
+     "id": "old-seams",
+     "title": "The Old Seams",
+     "where": "The Old Seams · The Old Seams: Rail Yard · The Old Seams: Scree Galleries · Emberroot's Heart",
+     "mood": "Abandoned deep galleries: rails and dripping water in the dark, and something vast breathing slowly far below.",
+     "classic": "play/assets/audio/music/old-seams.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/old-seams.mp3",
+     "loop_start": 5.248,
      "note": null
     }
    ]
@@ -310,6 +332,17 @@
      "remaster": "play/assets/audio/music/remaster/pale-vault-glacier-c.mp3",
      "loop_start": 7.036,
      "note": null
+    },
+    {
+     "id": "rimeway",
+     "title": "Rimeway",
+     "where": "The Rimeway (the star-tenders' high road over the frost col above the Pale Vault, a line of dead rime-lamps)",
+     "mood": "Lonely and grand: wind over a high frost col, a line of dead rime-lamps marching into the cold, the glacier far below.",
+     "classic": "play/assets/audio/music/rimeway.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/rimeway.mp3",
+     "loop_start": 9.915,
+     "note": null
     }
    ]
   },
@@ -380,6 +413,28 @@
      "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/sunvault-climb-c.mp3",
      "loop_start": 9.358,
+     "note": null
+    },
+    {
+     "id": "wickrun",
+     "title": "Wick-Run Crest",
+     "where": "Wick-Run Crest · The Wick-Run",
+     "mood": "Reckless and exhilarating: runner-wheels screaming down a graded chute in the dark, lamps whipping past, the air over the jumps.",
+     "classic": "play/assets/audio/music/wickrun.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/wickrun.mp3",
+     "loop_start": 9.706,
+     "note": null
+    },
+    {
+     "id": "tallow-lift",
+     "title": "The Tallow Lift (sting)",
+     "where": "",
+     "mood": "",
+     "classic": "play/assets/audio/music/tallow-lift.mp3",
+     "classic_loop_start": null,
+     "remaster": null,
+     "loop_start": null,
      "note": null
     },
     {

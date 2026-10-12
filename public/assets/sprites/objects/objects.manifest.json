@@ -1148,6 +1148,13 @@
       "tw": 2,
       "th": 2
     },
+    "old_seams_first_star": {
+      "path": "assets/sprites/objects/old_seams_first_star.webp",
+      "width": 64,
+      "height": 64,
+      "tw": 4,
+      "th": 4
+    },
     "old_seams_headframe": {
       "path": "assets/sprites/objects/old_seams_headframe.webp",
       "width": 48,

@@ -95,16 +95,24 @@ async function loadTraversal() {
   return import(pathToFileURL(out).href);
 }
 
-/** The engine's reach: BFS over (tile, heading) with Traversal's plan/forced, both lever states. */
+/** The engine's reach: BFS over (tile, heading) with Traversal's plan/forced, under
+ *  EVERY combination of the map's lever flags (a yard with several levers — the Old
+ *  Seams — can set each independently; the model's per-move union of switch states
+ *  reaches exactly the union over combinations). */
 function engineReach(T, d) {
   const npcs = new Set(d.npcs.map(([x, y]) => KEY(x, y)));
   const inb = (x, y) => x >= 0 && y >= 0 && x < d.w && y < d.h;
   const ground = (x, y) => inb(x, y) && d.ground[y][x];
   const reached = new Set();
-  const switches = d.flows.some((f) => f.requires_flag || f.hidden_when_flag) ? [false, true] : [false];
-  for (const thrown of switches) {
+  const levers = [...new Set(d.flows.flatMap((f) => [f.requires_flag, f.hidden_when_flag].filter(Boolean)))];
+  if (levers.length > 8) throw new Error(`${d.id}: ${levers.length} lever flags — too many combinations to walk`);
+  const combos = [];
+  for (let bits = 0; bits < 1 << levers.length; bits++) {
+    combos.push(new Set(levers.filter((_, i) => bits & (1 << i))));
+  }
+  for (const held of combos) {
     const def = { flows: d.flows, spans: d.spans, jumps: d.jumps };
-    const rules = new T.Traversal(def, () => thrown);
+    const rules = new T.Traversal(def, (flag) => held.has(flag));
     const ctx = {
       canEnter: (x, y) => ground(x, y) && !npcs.has(KEY(x, y)),
       occupied: (x, y) => npcs.has(KEY(x, y)),

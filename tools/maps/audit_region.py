@@ -108,6 +108,10 @@ GRANTS["vigil_sunfall"] = ["flag:vigil_4_kept", "flag:vigil_reading_5"]
 GRANTS["vigil_murkfall"] = ["flag:vigil_5_kept"]
 # ---- THE WILD WAYS (09-the-wild-ways.md, 2026-10) — one line per area lane
 GRANTS["wickrun_crest"] = ["flag:wickrun_riding", "flag:tallow_lift_freed"]   # Pell's rental, the brake
+GRANTS["cinderhead_mine"].append("flag:old_seams_open")   # Otho opens the seam-door (post-Stone)
+# the Lamplight Starlight tier is DERIVED at six Gleams (FlagStore.derive); the
+# sixth in canon order is Frost, earned at the undercroft — model it there.
+GRANTS["pale_vault_undercroft"].append("flag:lamplight_starlight")
 POSTGAME_FLAGS = {"flag:dawn"}
 
 

@@ -1299,6 +1299,13 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `traverse_set`, drawn by `build_traverse_set.py`); an underpass deck goes in the `above` layer.
   A one-way map's upstream door is a legal entry-only portal (audit_flow). New cutscene ops:
   `timer` (run clock) and `takeItem`.
+- **Lever puzzles (the Old Seams rail yard, 09 §2 D):** a junction = a straight flow with
+  `hidden_when_flag` + a turnout flow with `requires_flag`, listed LAST; a lever = a
+  `traverse_lever_off/_on` object swap + an interact `script.*` that flips its flag via a temp
+  copy (`content/regions/oldseams.ts lever()`). Every line must END on a platform in EVERY lever
+  state and every platform must rail home — `build_old_seams_ii.py` asserts all states;
+  `check_traversal` walks every flag combination. Pits are `seams_set` `shaft` terrain (collides).
+  Optional Wild Ways beds go in `progression.mjs TREND_SKIP_AREAS` or they bend the mainline trend.
 - **Rebuilding a SHIPPED map? Run the four runners after its builder** (`add_hand_placed.py`,
   `add_peril_thread.py`, `add_world_craft.py`, `vary_trees.py` — in that order) or you ship it
   without its day-form tables, peril beats and world-craft (check_rebuild catches it).
