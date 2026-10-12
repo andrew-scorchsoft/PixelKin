@@ -262,6 +262,19 @@
       "walk_under": true
     },
     {
+      "id": "crag_stair",
+      "sprite": "markers_steps_n",
+      "at": {
+        "tx": 21,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 2,
+      "solid": false,
+      "bob": false,
+      "requires_flag": "flag:shortcut_windward"
+    },
+    {
       "id": "gh_wind_vane",
       "sprite": "galehigh_wind_vane",
       "at": {
@@ -1067,7 +1080,7 @@
     {
       "id": "festival_goer",
       "at": {
-        "tx": 12,
+        "tx": 11,
         "ty": 18
       },
       "facing": "right",
@@ -1305,7 +1318,7 @@
         "ty": 14
       },
       "facing": "left",
-      "sprite": "andrew_ward",
+      "sprite": "andrew_cyclist",
       "movement": "look_around",
       "dialogue_ref": "script.andrew_road"
     },

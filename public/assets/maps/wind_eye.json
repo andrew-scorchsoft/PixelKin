@@ -91,6 +91,18 @@
       "h": 1,
       "solid": false,
       "walk_under": true
+    },
+    {
+      "id": "terrace_steps",
+      "sprite": "markers_steps_s",
+      "at": {
+        "tx": 9,
+        "ty": 17
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false
     }
   ],
   "warps": [

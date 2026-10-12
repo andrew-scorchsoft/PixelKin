@@ -181,6 +181,12 @@
    "where": "Lumenary halls — the Tinderwick Lumenary (Brisa) and the Pearlmoor Lumenary (Reyl), and any later Lampwarden's hall without its own cue",
    "mood": "The hush before the duel — a stately processional between lamp-lit pillars, organ and choir in cool stone, walking toward the warden who will test you."
   },
+  "mirelight": {
+   "loop_start": 5.666,
+   "duration": 100.18,
+   "where": "The Mirelights (the Glassmere: a drowned causeway-field of wandering false blue lights over a still mere)",
+   "mood": "Eerie but tender: false blue lights drifting over still water, the echoes of a lost kin-light that once led travellers home."
+  },
   "nightreach-observatory-a": {
    "loop_start": 8.684,
    "duration": 104.098,
@@ -192,6 +198,12 @@
    "duration": 74.267,
    "where": "Nightreach Lumenary (Nessa Cole's haunted hall)",
    "mood": "The Haunted Lumenary: the loneliest room in Vesperholm - a minor lullaby that reaches up and never quite comes home, a clock running down; hope present but not yet earned."
+  },
+  "old-seams": {
+   "loop_start": 5.248,
+   "duration": 99.242,
+   "where": "The Old Seams (the sealed deep galleries under Cinderhead: plank bridges, ore-cart rails, the first fallen star asleep below)",
+   "mood": "Abandoned deep galleries: rails and dripping water in the dark, and something vast breathing slowly far below."
   },
   "pale-vault-glacier-a": {
    "loop_start": 6.425,
@@ -240,6 +252,12 @@
    "duration": 111.125,
    "where": "Penumbra Ring + Starwell (the last dark before the Umbral Spire)",
    "mood": "Wall of Ink: the last dark, crossed on starlight; a held breath, your heartbeat and one lonely lamp-note, hope leaking in at the edges."
+  },
+  "rimeway": {
+   "loop_start": 9.915,
+   "duration": 96.967,
+   "where": "The Rimeway (the star-tenders' high road over the frost col above the Pale Vault, a line of dead rime-lamps)",
+   "mood": "Lonely and grand: wind over a high frost col, a line of dead rime-lamps marching into the cold, the glacier far below."
   },
   "saltreach-fen-a": {
    "loop_start": 0.65,
@@ -348,6 +366,12 @@
    "duration": 93.454,
    "where": "Vesper Crossroads — the Lanternway hub where the five lit lanes meet (waystone, waystation inn, fingerpost)",
    "mood": "The Signpost Tune — all roads meet here: a road-folk waystation band strikes up the home tune, lute, reed and tambourine on the front porch of the world."
+  },
+  "wickrun": {
+   "loop_start": 9.706,
+   "duration": 99.265,
+   "where": "The Wick-Run (the old wax-carters' chute down the dark mountain's west flank, raced by the Runners)",
+   "mood": "Reckless and exhilarating: runner-wheels screaming down a graded chute in the dark, lamps whipping past, the air over the jumps."
   },
   "windward-stair-a": {
    "loop_start": 4.925,

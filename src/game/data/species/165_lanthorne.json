@@ -1,0 +1,83 @@
+{
+  "id": 165,
+  "slug": "lanthorne",
+  "name": "Lanthorne",
+  "types": [
+    "Tide",
+    "Light"
+  ],
+  "role": "Special Wall",
+  "tier": "E",
+  "stats": {
+    "hp": 112,
+    "atk": 44,
+    "def": 95,
+    "spa": 78,
+    "spd": 134,
+    "spe": 95
+  },
+  "bst": 558,
+  "ability": "tidecaller",
+  "hidden_ability": "mistveil",
+  "catchRate": 24,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "mist_spray"
+      },
+      {
+        "level": 9,
+        "move": "spark_mote"
+      },
+      {
+        "level": 16,
+        "move": "drench_song"
+      },
+      {
+        "level": 24,
+        "move": "tide_pulse"
+      },
+      {
+        "level": 30,
+        "move": "dazzle_flash"
+      },
+      {
+        "level": 37,
+        "move": "light_pulse"
+      },
+      {
+        "level": 42,
+        "move": "mend"
+      },
+      {
+        "level": 50,
+        "move": "lightspire"
+      },
+      {
+        "level": 56,
+        "move": "maelstrom"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The Mirelight \u2014 the fen's own lamp, which once walked the drowned causeway ahead of lost boats and brought them home. A null-lantern put it to sleep long ago; the blue lights that still wander the Glassmere are only its dreams, and dreams do not know the way.",
+    "category": "Mirelight Kin",
+    "size_cm": 340,
+    "weight_kg": 140,
+    "habitat": "east"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "A long, gentle eel-like kin rising upright out of still water like a lantern on a pole: a slender sea-glass body coiling down into the mere, a soft fin-veil at the neck, and a head shaped like an old hooded lamp \u2014 a glass-paned hood around a calm face, one steady blue-white flame held inside it. Faint wisps of blue light drift off the tail like echoes. At 64px it reads as a lamp that is also a creature, rising out of dark water.",
+    "palette": "Deep fen-teal and night-blue (#13205a) body shading to translucent sea-glass at the fins; the lantern-hood in tarnished brass and pale glass; the inner flame a cool blue-white (#9fe7ff), the brightest pixel; the echo-wisps a fainter, colder blue; soft ink (#1a1430) outlines.",
+    "direction": "Eerie but tender \u2014 a guide, not a ghost. Calm, half-lidded eyes, head bowed as if looking for someone on the water. It should look like something that would wait all night at the edge of a marsh to walk you home, and has been made to forget how."
+  },
+  "provenance_concept_id": "X-LANTHORNE"
+}

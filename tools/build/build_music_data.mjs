@@ -26,9 +26,9 @@ const OUT = join(ROOT, 'web/assets/data/music.json');
 /** Region groups, in journey order. First matching prefix wins. */
 const GROUPS = [
     ['South — the blue-hour start', ['tinderwick', 'duskapple', 'beacon', 'dimglass-coast', 'pearlmoor']],
-    ['East — wonder & discovery', ['saltreach-fen', 'lowleaf-hollow', 'cinderhead-mine']],
-    ['North — energy & cold beauty', ['galehigh-terraces', 'windward-stair', 'pale-vault-glacier']],
-    ['West — reaching for dawn', ['hushfrost-pass', 'sunken-solarium', 'sunvault-climb', 'nightreach-observatory']],
+    ['East — wonder & discovery', ['saltreach-fen', 'mirelight', 'lowleaf-hollow', 'cinderhead-mine', 'old-seams']],
+    ['North — energy & cold beauty', ['galehigh-terraces', 'windward-stair', 'pale-vault-glacier', 'rimeway', 'reckoning']],
+    ['West — reaching for dawn', ['hushfrost-pass', 'sunken-solarium', 'sunvault-climb', 'wickrun', 'tallow-lift', 'nightreach-observatory']],
     ['The outer ring', ['vesper-crossroads', 'coldfog-marches', 'lanternway']],
     ['Central — darkest, then the turn', ['penumbra-ring', 'umbral-spire']],
     ['Epilogue', ['dawnstead', 'dawn-breaks', 'ending-credits']],
@@ -44,6 +44,7 @@ const CUE_NAMES = {
     'gleam-fanfare': 'A Gleam relit (fanfare)',
     'gleam-emotional': 'A Gleam relit',
     'sting-hour': 'The Hours (sting)',
+    'tallow-lift': 'The Tallow Lift (sting)',
     'dawn-breaks': 'Dawn breaks',
     'ending-credits': 'Ending credits',
     'trainer-eyes': 'Battle — a trainer spots you',
@@ -67,6 +68,8 @@ const CUE_NAMES = {
     'lumenary-hall': 'The Lumenary halls',
     'lanternway-a': 'The Lanternway',
     'dimglass-coast-b': 'The coast road, last light',
+    'reckoning-works': 'The Reckoning-Works — busy engines',
+    'reckoning-aurora': 'The Reckoning-Works — the Aurora Roll',
 };
 
 function walk(dir) {

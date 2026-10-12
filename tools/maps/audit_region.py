@@ -106,6 +106,31 @@ GRANTS["vigil_grovefall"] = ["flag:vigil_2_kept", "flag:vigil_reading_3"]
 GRANTS["vigil_stormfall"] = ["flag:vigil_3_kept", "flag:vigil_reading_4"]
 GRANTS["vigil_sunfall"] = ["flag:vigil_4_kept", "flag:vigil_reading_5"]
 GRANTS["vigil_murkfall"] = ["flag:vigil_5_kept"]
+# ---- THE WILD WAYS (09-the-wild-ways.md, 2026-10) — one line per area lane
+GRANTS["wickrun_crest"] = ["flag:wickrun_riding", "flag:tallow_lift_freed"]   # Pell's rental, the brake
+# the Rimeway (C): the Fold's frozen falls give the clear-ice core; Isel (Pale Vault) cuts the
+# Frostglass Lens from it; the Rime Gate is lifted from the Descent (the marsh side)
+GRANTS["rimeway_fold"] = ["flag:rimeway_ice_core"]
+GRANTS["pale_vault_glacier"].append("flag:has_frostglass_lens")
+GRANTS["rimeway_descent"] = ["flag:rime_gate_open"]
+# the Reckoning-Works (C2, "The Long Way Round"): Ketterly/Nib + the Paul story in the
+# works; the wandering clerks are found on the Fold, the Ascent and in Pale Vault
+GRANTS["reckoning_works"] = ["flag:q_works_begun", "flag:works_met_ketterly", "flag:q_works_nib",
+                             "flag:q_works_story", "flag:works_found_nib",
+                             "flag:works_all_found", "flag:q_works_done"]
+GRANTS["rimeway_fold"].append("flag:works_found_brann")
+GRANTS.setdefault("rimeway_ascent", []).append("flag:works_found_teague")
+GRANTS["pale_vault_glacier"].append("flag:works_found_hollis")
+GRANTS["wickrun_lower"] = ["flag:runner_rook_beaten"]                          # Rook (opens his foot NPC)
+GRANTS["wickrun_foot"] = ["flag:wickrun_gold", "flag:runner_ribbon"]           # the finish clock, Rook's ribbon
+GRANTS["cinderhead_mine"] += ["flag:old_seams_told", "flag:old_seams_open"]  # Otho (hall) -> his seam-door   # Otho opens the seam-door (post-Stone)
+# the Lamplight Starlight tier is DERIVED at six Gleams (FlagStore.derive); the
+# sixth in canon order is Frost, earned at the undercroft — model it there.
+GRANTS["pale_vault_undercroft"].append("flag:lamplight_starlight")
+# the Mirelights (B): Ansel ferries you once he's seen the Frostglass Lens
+# (flag:has_frostglass_lens — Isel, credited to pale_vault_glacier by the Rimeway lane)
+GRANTS.setdefault("saltreach_fen_i", []).append("flag:mirelight_ferry")
+GRANTS["mirelight_chapel"] = ["flag:mirelight_tobin_found"]                  # Tobin found
 POSTGAME_FLAGS = {"flag:dawn"}
 
 

@@ -125,7 +125,7 @@ PLACEMENTS: dict[str, dict] = {
             # the Starfall Vigils (postgame)
             {"id": "starfall_witness", "at": {"tx": 13, "ty": 11}, "facing": "down", "sprite": "star_watcher", "movement": "look_around", "dialogue_ref": "npc.starfall_witness", "requires_flag": "flag:dawn", "hidden_when_flag": "flag:starfall_begun"},
             # Andrew on his fence — wayfinding (script.andrew_road)
-            {"id": "andrew_road", "at": {"tx": 14, "ty": 27}, "facing": "down", "sprite": "andrew_ward", "movement": "look_around", "dialogue_ref": "script.andrew_road"},
+            {"id": "andrew_road", "at": {"tx": 12, "ty": 23}, "facing": "down", "sprite": "andrew_ward", "movement": "look_around", "dialogue_ref": "script.andrew_road"},
         ],
     },
     "dimglass_coast": {
@@ -162,7 +162,7 @@ PLACEMENTS: dict[str, dict] = {
             # the Worry Club (R9)
             {"id": "worry_pim", "at": {"tx": 12, "ty": 15}, "facing": "left", "sprite": "npc_man", "movement": "look_around", "dialogue_ref": "script.worry_pim"},
             # R9: Wink's Tin Rower auction
-            {"id": "wink", "at": {"tx": 12, "ty": 30}, "facing": "left", "sprite": "npc_old_man", "movement": "look_around", "dialogue_ref": "script.wink_trade", "requires_flag": "flag:has_starter"},
+            {"id": "wink", "at": {"tx": 12, "ty": 30}, "facing": "left", "sprite": "npc_old_man", "movement": "look_around", "dialogue_ref": "script.wink_trade", "requires_flag": "flag:has_starter", "hidden_when_flag": "flag:has_tin_rower"},
         ],
         "signs": [
             ("wink", (12, 29), "sign.wink_auction"),
@@ -231,6 +231,16 @@ PLACEMENTS: dict[str, dict] = {
             },
         },
     },
+    "duskapple_orchard": {
+        # The kitchens (content/regions/kitchens.ts): Percy's moka brew-stand by the
+        # courier's cart — a drawn prop (tools/maps/draw_moka_stall.py), optional colour.
+        "objects": [
+            {"id": "moka_stall", "sprite": "kitchens_moka_stall", "at": {"tx": 12, "ty": 10}, "w": 2, "h": 2, "overhang": 1},
+        ],
+        "npcs": [
+            {"id": "percy", "at": {"tx": 14, "ty": 11}, "facing": "left", "sprite": "innkeeper", "movement": "static", "dialogue_ref": "script.moka_percy"},
+        ],
+    },
     "lowleaf_hollow": {
         "patch": {
             "encounters": {
@@ -240,7 +250,14 @@ PLACEMENTS: dict[str, dict] = {
         "day": {
             "fringe_a": T((56, 28, 56, 62), (67, 28, 56, 63), (38, 22, 56, 63), (62, 14, 56, 62), (66, 8, 58, 65), (65, 12, 56, 63)),
         },
+        "objects": [
+            # The kitchens: Marisol's stall (chile strings, the comal) + her pozole pot
+            {"id": "cantina_stall", "sprite": "kitchens_cantina_stall", "at": {"tx": 6, "ty": 26}, "w": 3, "h": 3, "overhang": 1},
+            {"id": "pozole_pot", "sprite": "kitchens_pozole_pot", "at": {"tx": 10, "ty": 26}, "w": 2, "h": 2, "overhang": 1},
+        ],
         "npcs": [
+            # The kitchens: Marisol's kitchen (script.cantina_marisol)
+            {"id": "marisol", "at": {"tx": 9, "ty": 27}, "facing": "down", "sprite": "market_trader", "movement": "static", "dialogue_ref": "script.cantina_marisol"},
             # P1 postgame: a letter recipient (script.post_letter_*)
             {"id": "letter_sable", "at": {"tx": 14, "ty": 15}, "facing": "down", "sprite": "npc_lampwarden", "movement": "static", "dialogue_ref": "script.post_letter_lowleaf", "requires_flag": "flag:q_post_letters", "hidden_when_flag": "flag:q_post_letter_lowleaf"},
             # E4: the hook to Georgina's side quest
@@ -280,6 +297,9 @@ PLACEMENTS: dict[str, dict] = {
             {"id": "letter_ysolde", "at": {"tx": 17, "ty": 10}, "facing": "down", "sprite": "ysolde", "movement": "static", "dialogue_ref": "script.post_letter_pale_vault", "requires_flag": "flag:q_post_letters", "hidden_when_flag": "flag:q_post_letter_pale_vault"},
             # Andrew on his fence — wayfinding (script.andrew_road)
             {"id": "andrew_road", "at": {"tx": 14, "ty": 26}, "facing": "down", "sprite": "andrew_ward", "movement": "look_around", "dialogue_ref": "script.andrew_road"},
+            # 09 §C2 "Measured in Miles": the Reckoning-Works clerk who wandered all the
+            # way down to town after the Paul story, watching the aurora from the west ledge
+            {"id": "works_wander_hollis", "at": {"tx": 5, "ty": 18}, "facing": "up", "sprite": "npc_man", "movement": "static", "dialogue_ref": "script.works_wander_hollis", "requires_flag": "flag:q_works_story", "hidden_when_flag": "flag:works_found_hollis"},
         ],
     },
     "pearlmoor_breakwater": {
@@ -321,7 +341,7 @@ PLACEMENTS: dict[str, dict] = {
             # a found cache
             {"id": "cache_purse", "at": {"tx": 1, "ty": 17}, "facing": "down", "sprite": "item_cache", "movement": "static", "dialogue_ref": "script.pickup_pearlmoor_purse", "hidden_when_flag": "flag:picked_pearlmoor_purse"},
             # Andrew on his fence — wayfinding (script.andrew_road)
-            {"id": "andrew_road", "at": {"tx": 12, "ty": 20}, "facing": "down", "sprite": "andrew_ward", "movement": "look_around", "dialogue_ref": "script.andrew_road"},
+            {"id": "andrew_road", "at": {"tx": 10, "ty": 17}, "facing": "down", "sprite": "andrew_ward", "movement": "look_around", "dialogue_ref": "script.andrew_road"},
         ],
     },
     "saltreach_fen_ii": {
@@ -377,42 +397,6 @@ PLACEMENTS: dict[str, dict] = {
             # Andrew on his fence — wayfinding (script.andrew_road)
             {"id": "andrew_road", "at": {"tx": 28, "ty": 8}, "facing": "right", "sprite": "andrew_ward", "movement": "look_around", "dialogue_ref": "script.andrew_road"},
         ],
-    },
-    "sunvault_climb_i": {
-        "patch": {
-            "encounters": {
-                "terrace_a": {"table": T((114, 28, 46, 47), (117, 16, 46, 47), (120, 14, 46, 47), (115, 14, 46, 48), (118, 12, 46, 48), (103, 10, 46, 47), (104, 7, 47, 48), (116, 5, 47, 48), (121, 4, 47, 48))},
-                "terrace_b": {"table": T((114, 28, 46, 47), (117, 16, 46, 47), (120, 14, 46, 47), (115, 14, 46, 48), (118, 12, 46, 48), (103, 10, 46, 47), (104, 7, 47, 48), (116, 5, 47, 48), (121, 4, 47, 48))},
-                "terrace_c": {"table": T((114, 28, 46, 47), (117, 16, 46, 47), (120, 14, 46, 47), (115, 14, 46, 48), (118, 12, 46, 48), (103, 10, 46, 47), (104, 7, 47, 48), (116, 5, 47, 48), (121, 4, 47, 48))},
-                "crossing_a": {"table": T((114, 28, 46, 47), (117, 16, 46, 47), (120, 14, 46, 47), (115, 14, 46, 48), (118, 12, 46, 48), (103, 10, 46, 47), (104, 7, 47, 48), (116, 5, 47, 48), (121, 4, 47, 48))},
-            },
-        },
-        "day": {
-            "terrace_a": T((114, 18, 56, 62), (117, 16, 56, 62), (120, 14, 56, 63), (115, 14, 56, 63), (118, 12, 56, 63), (103, 10, 56, 62), (104, 7, 58, 64), (116, 5, 58, 64), (121, 4, 59, 65)),
-            "terrace_b": T((114, 18, 56, 62), (117, 16, 56, 62), (120, 14, 56, 63), (115, 14, 56, 63), (118, 12, 56, 63), (103, 10, 56, 62), (104, 7, 58, 64), (116, 5, 58, 64), (121, 4, 59, 65)),
-            "terrace_c": T((114, 18, 56, 62), (117, 16, 56, 62), (120, 14, 56, 63), (115, 14, 56, 63), (118, 12, 56, 63), (103, 10, 56, 62), (104, 7, 58, 64), (116, 5, 58, 64), (121, 4, 59, 65)),
-            "crossing_a": T((114, 18, 56, 62), (117, 16, 56, 62), (120, 14, 56, 63), (115, 14, 56, 63), (118, 12, 56, 63), (103, 10, 56, 62), (104, 7, 58, 64), (116, 5, 58, 64), (121, 4, 59, 65)),
-        },
-    },
-    "sunvault_climb_ii": {
-        "patch": {
-            "encounters": {
-                "terrace_a": {"table": T((115, 26, 47, 48), (118, 24, 47, 48), (120, 12, 47, 48), (117, 10, 47, 48), (104, 10, 47, 48), (126, 10, 47, 48), (116, 8, 47, 48), (121, 6, 47, 48), (127, 4, 48, 48))},
-                "terrace_b": {"table": T((115, 26, 47, 48), (118, 24, 47, 48), (120, 12, 47, 48), (117, 10, 47, 48), (104, 10, 47, 48), (126, 10, 47, 48), (116, 8, 47, 48), (121, 6, 47, 48), (127, 4, 48, 48))},
-                "terrace_c": {"table": T((115, 26, 47, 48), (118, 24, 47, 48), (120, 12, 47, 48), (117, 10, 47, 48), (104, 10, 47, 48), (126, 10, 47, 48), (116, 8, 47, 48), (121, 6, 47, 48), (127, 4, 48, 48))},
-                "terrace_d": {"table": T((115, 26, 47, 48), (118, 24, 47, 48), (120, 12, 47, 48), (117, 10, 47, 48), (104, 10, 47, 48), (126, 10, 47, 48), (116, 8, 47, 48), (121, 6, 47, 48), (127, 4, 48, 48))},
-                "terrace_e": {"table": T((115, 26, 47, 48), (118, 24, 47, 48), (120, 12, 47, 48), (117, 10, 47, 48), (104, 10, 47, 48), (126, 10, 47, 48), (116, 8, 47, 48), (121, 6, 47, 48), (127, 4, 48, 48))},
-                "crossing_a": {"table": T((115, 26, 47, 48), (118, 24, 47, 48), (120, 12, 47, 48), (117, 10, 47, 48), (104, 10, 47, 48), (126, 10, 47, 48), (116, 8, 47, 48), (121, 6, 47, 48), (127, 4, 48, 48))},
-            },
-        },
-        "day": {
-            "terrace_a": T((115, 18, 57, 63), (118, 16, 57, 63), (120, 12, 57, 64), (117, 10, 57, 63), (104, 10, 58, 64), (126, 14, 58, 64), (116, 8, 58, 64), (121, 6, 59, 65), (127, 6, 60, 65)),
-            "terrace_b": T((115, 18, 57, 63), (118, 16, 57, 63), (120, 12, 57, 64), (117, 10, 57, 63), (104, 10, 58, 64), (126, 14, 58, 64), (116, 8, 58, 64), (121, 6, 59, 65), (127, 6, 60, 65)),
-            "terrace_c": T((115, 18, 57, 63), (118, 16, 57, 63), (120, 12, 57, 64), (117, 10, 57, 63), (104, 10, 58, 64), (126, 14, 58, 64), (116, 8, 58, 64), (121, 6, 59, 65), (127, 6, 60, 65)),
-            "terrace_d": T((115, 18, 57, 63), (118, 16, 57, 63), (120, 12, 57, 64), (117, 10, 57, 63), (104, 10, 58, 64), (126, 14, 58, 64), (116, 8, 58, 64), (121, 6, 59, 65), (127, 6, 60, 65)),
-            "terrace_e": T((115, 18, 57, 63), (118, 16, 57, 63), (120, 12, 57, 64), (117, 10, 57, 63), (104, 10, 58, 64), (126, 14, 58, 64), (116, 8, 58, 64), (121, 6, 59, 65), (127, 6, 60, 65)),
-            "crossing_a": T((115, 18, 57, 63), (118, 16, 57, 63), (120, 12, 57, 64), (117, 10, 57, 63), (104, 10, 58, 64), (126, 14, 58, 64), (116, 8, 58, 64), (121, 6, 59, 65), (127, 6, 60, 65)),
-        },
     },
     "thunderroost": {
         "day": {

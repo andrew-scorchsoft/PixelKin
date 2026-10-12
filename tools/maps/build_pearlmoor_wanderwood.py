@@ -191,7 +191,7 @@ for nid, ref, req, hide in [
     ("hob", "npc.wanderwood_hob", None, "flag:q_south_wander_lamp"),
     ("hob_done", "npc.wanderwood_hob_done", "flag:q_south_wander_lamp", None),
 ]:
-    n = {"id": nid, "at": {"tx": 24, "ty": 12}, "facing": "left", "sprite": "npc_man",
+    n = {"id": nid, "at": {"tx": 24, "ty": 13}, "facing": "left", "sprite": "npc_man",
          "movement": "look_around", "dialogue_ref": ref}
     if req:
         n["requires_flag"] = req
@@ -243,6 +243,11 @@ for x, sfx in ((13, ""), (14, "_e")):
     m["warps"].append({"id": f"to_allotment{sfx}", "at": {"tx": x, "ty": H - 1}, "trigger": "step_on",
                        "to_map": "pearlmoor_allotment", "to": {"tx": x - 4, "ty": 1},
                        "facing": "down", "transition": "fade"})
+# ... and the way UP to Wayward Rise (the hotel): straight north, same columns
+for x, sfx in ((19, ""), (20, "_e")):
+    m["warps"].append({"id": f"to_rise{sfx}", "at": {"tx": x, "ty": 0}, "trigger": "step_on",
+                       "to_map": "wayward_rise", "to": {"tx": x, "ty": 20},
+                       "facing": "up", "transition": "fade"})
 
 for y, wid in ((16, "to_far"), (17, "to_far_b"), (8, "to_far_n"), (9, "to_far_n_b")):
     m["warps"].append({"id": wid, "at": {"tx": 0, "ty": y}, "trigger": "step_on",
@@ -262,6 +267,24 @@ mk.scatter_decor(deco, base, W, H, rng, density=0.10,
                  avoid=obj_cells | npc_cells | {(x, y) for y in range(H) for x in range(W)
                                                 if path[y * W + x] or tree[y * W + x]
                                                 or grass[y * W + x]})
+
+# THE RISE (2026-10): a narrow path out of the glade's north-east corner, past the
+# glade lamp, up through the frame to WAYWARD RISE and the Wayward Arms (its own
+# builder, build_wayward_rise.py). Two tiles wide at the edge (cols 19-20, rows
+# 0-1), a short trail back down to the glade's east arm. Carved AFTER the decor
+# scatter so the wood's rng-rolled dressing doesn't reshuffle (the terrain layers
+# hold these same grids, so the carve still lands).
+for y in range(0, 4):
+    for x in (19, 20):
+        tree[y * W + x] = 0
+trail([(17, 5), (19, 3), (19, 0)], r=1.0)
+for y in (0, 1):                 # keep the edge opening exactly two wide
+    for x in (18, 21):
+        tree[y * W + x] = 1
+        path[y * W + x] = 0
+for i in range(W * H):
+    if path[i]:
+        grass[i] = 0
 
 # audit_flow `loop` WARN (since the far-side roads gave the map >1 portal),
 # accepted: there's no one-way ledge, but the wood is a ring (two arms round the

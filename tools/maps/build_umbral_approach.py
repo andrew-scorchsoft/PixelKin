@@ -264,7 +264,7 @@ owed += pt.trainer_beat(m, tid="approach_acolyte_c", at=(10, 7), facing="down", 
 # ---- signs + caches -----------------------------------------------------------------
 owed += pt.sign(m, deco, W, sid="umbral_approach", at=(4, 30))
 owed += pt.sign(m, deco, W, sid="umbral_lookout", at=(21, 19))
-owed += pt.cache(m, cid="approach_shard", at=(21, 31))     # the foot's off-lane pocket
+owed += pt.cache(m, cid="approach_shard", at=(18, 31))     # the foot's off-lane pocket
 owed += pt.cache(m, cid="approach_wicks", at=(2, 15))      # under the shelf's west lip
 
 # ---- encounters (the foot's grass + the shelf's blight; the shoulder is quiet) ------

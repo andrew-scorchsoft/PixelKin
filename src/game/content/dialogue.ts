@@ -239,14 +239,15 @@ export const DIALOGUE: DialogueRegistry = {
   'sign.dimglass_to_pearlmoor': [
     { text: 'NORTH: PEARLMOOR QUAY\nThe tidal flats lie ahead, where the lamps stand in the water.' },
   ],
-  // R9 — Aldous Wink's auction board, beside his toy case on the south sand.
+  // R9 — the nameless toy-trader's auction board, beside his toy case on the south sand.
   'sign.wink_auction': [
-    { text: "WINK'S WIND-UPS — TOYS, TALES, TRADES\nLOT 1: ONE (1) WIND-UP FERRYMAN, TIN, WORKING." },
+    { text: "WIND-UPS — TOYS, TALES, TRADES\nLOT 1: ONE (1) WIND-UP FERRYMAN, TIN, WORKING." },
     { text: 'BOUND FOR THE PEARLMOOR TIDE-AUCTION.\nRESERVE: 12,000 WICKS. STORIES CONSIDERED.' },
   ],
   // --- New Pearlmoor <-> Crossroads route: signs + beaten-trainer lines ---
   'sign.wrackline_view': [
     { text: 'WRACKLINE PATH\nThe sea gnaws the cliff to the west; the road home to the crossroads runs down and into the dark of the Sounding Cave.' },
+    { text: 'The wrack-haulers\' way: OVER the old trestle, round by the strand, and back UNDER it along the Wrack Cut. The cave is at the cut\'s head.' },
   ],
   'sign.wrackline_cave': [
     { text: 'THE SOUNDING CAVE — mind your lamp.\nThe sea hollowed it out and never left. They say it answers if you call. They say don\'t.' },
@@ -256,6 +257,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   'sign.lanternfall_view': [
     { text: 'LANTERNFALL ROAD\nOut of the cave and down the lit steps. Every lamp below is one the Waykeeper trims; follow them to the crossroads.' },
+    { text: 'Three steps to the bottom. The lit drop on the east end is the quick way DOWN; coming back up, the ramps zig-zag — east, west, east.' },
   ],
   'sign.lanternfall_hub': [
     { text: 'VESPER CROSSROADS — just below.\nWhere all the lit roads meet. The kettle\'s on at the Waystation Inn, more often than not.' },
@@ -891,6 +893,9 @@ export const DIALOGUE: DialogueRegistry = {
 
   // Swimming the shallows into DEEP water (the darker sea): Tidecall stills the
   // shallows, not the deep. Played once per map visit (WorldScene.onBump).
+  'world.too_steep': [
+    { text: "Too steep to climb back up. The only way on is down." },
+  ],
   'world.too_deep': [
     { text: 'The water falls away beneath you here — dark, cold, and far too deep to swim. The current pulls toward open sea. Back to the shallows.' },
   ],

@@ -64,6 +64,10 @@ const PRICES = {
   // one-time optional; the free path is a story, so it never enters a solvency
   // leg). Mirrored in 10-economy.md and script.wink_buy.
   tin_rower: 12000,
+  // The kitchens: a plate at Marisol's (Lowleaf Hollow) — the `pay` op, a courtesy
+  // heal + her food talk; pure optional colour, never in a solvency leg.
+  // Mirrored in 10-economy.md and content/regions/kitchens.ts CANTINA_PRICE.
+  cantina_dish: 60,
 };
 
 // ---------------------------------------------------------------------------
@@ -73,6 +77,14 @@ const PRICES = {
 const RARITY_W = { common: 55, uncommon: 30, rare: 12, very_rare: 3, 'very rare': 3 };
 const areaBst = new Map(); // area -> { bstSum, wSum }
 const trend = []; // [midLevel, bst, weight]
+// THE WILD WAYS' optional areas (09-the-wild-ways.md) sit OFF the journey: their
+// beds are deliberately rich (rare lines, deep bands), and as dex rows they would
+// bend the level->BST trend every mainline trainer is costed from. They keep their
+// own areaBst (a leg that names them still reads them) but never enter the trend.
+// Each Wild Ways lane appends its encounter-bearing maps here.
+const TREND_SKIP_AREAS = new Set([
+  'old_seams_i', 'old_seams_ii', 'old_seams_iii', // the Old Seams (D)
+]);
 for (const s of SPECIES) {
   for (const e of s.encounters ?? []) {
     const w = RARITY_W[e.rarity] ?? 10;
@@ -80,6 +92,7 @@ for (const s of SPECIES) {
     cur.bstSum += s.bst * w;
     cur.wSum += w;
     areaBst.set(e.area, cur);
+    if (TREND_SKIP_AREAS.has(e.area)) continue;
     trend.push([(e.min + e.max) / 2, s.bst, w]);
   }
 }
@@ -323,7 +336,9 @@ const JOURNEY = [
       T('Orsino (troupe player)', 'route', [K(44, 115), K(45, 120)]),
       T('Lucan Pyre', 'warden', [K(42, 117), K(43, 115), K(44, 104), K(44, 121), K(46, 123)]),
     ],
-    income: { quests: 300, valuables: 5700, finds: 550 },
+    // THE WILD WAYS (09 §C2, optional, Rimeway band 39-42 — this leg's era):
+    // quests += the Reckoning-Works' "consultancy fee" (800, script.works_k_finale).
+    income: { quests: 1100, valuables: 5700, finds: 550 },
     spend: { bright_balm: 2, beacon_charge: 2, chart_late: 1 },
     checkpoint: { name: 'Solar Gleam (Lucan)', rec: 42, ace: 46 },
   },
@@ -336,16 +351,26 @@ const JOURNEY = [
     // chart-fund (400) + R5's Round rates (400); finds = the Sunvault +
     // Nightreach wicks caches (250 + 300); valuables = the Sunvault
     // Moth-amber + the roof-terrace Starglass Shard.
-    wild: { band: [45, 50], fights: { rusher: 6, mainline: 11, explorer: 16 } },
+    // (2026-10: the climb is four maps — two more of face, more wilds)
+    wild: { band: [45, 50], fights: { rusher: 7, mainline: 12, explorer: 17 } },
     trainers: [
       T('Bel (terrace-tender)', 'route', [K(46, 115), K(47, 121)]),
       T('Tam (sky-watcher)', 'route', [K(47, 126), K(48, 118)]),
+      // the Gilt Face + the Sun Ledges (09-the-wild-ways §2 S, 2026-10)
+      T('Imma (sun-keeper)', 'route', [K(48, 122), K(48, 118), K(49, 123)]),
+      T('Orrin (star-watcher)', 'route', [K(48, 126), K(48, 106), K(49, 127)]),
+      T('Pim (star-watcher)', 'route', [K(48, 124), K(49, 104)]),
       T('Lira (junior watcher)', 'keeper', [K(49, 106), K(50, 127)]),
       T('Os (junior watcher)', 'keeper', [K(50, 112), K(51, 125)]),
       T('Wren (A5 — resolved)', 'rival', [K(49, 9), K(49, 96), K(50, 28)]),
       T('Nessa Cole', 'warden', [K(48, 106), K(49, 112), K(50, 125), K(50, 127), K(52, 107)]),
     ],
-    income: { quests: 800, valuables: 2100, finds: 550 },
+    // THE WILD WAYS (09 §2 A, optional): the Wick-Run off Sunvault Climb I —
+    // finds += the trestles' wick-purse (300) + the time-trial prizes paid once
+    // each (bronze 200 / silver 400 / gold 600 = 1,200; WICKRUN_PRIZES in
+    // content/regions/wickrun.ts); valuables += the brake-hut's 2 Wax Cakes
+    // (2 x 250). Its six Runners are optional and left out of the trainer loop.
+    income: { quests: 800, valuables: 2600, finds: 2400 }, // + the Sun Ledges' tin (350, §S)
     spend: { bright_balm: 2, chart_end: 1 },
     checkpoint: { name: 'Lunar Gleam (Nessa)', rec: 48, ace: 52 },
   },
@@ -491,6 +516,29 @@ const BUILT_PAYOUTS = {
   vigilant_solenne_summit: ['vigilant', 69, 5520],
   vigilant_mer_summit: ['vigilant', 69, 5520],
   startender_fenn: ['cor', 70, 8400],
+  // THE WILD WAYS (09-the-wild-ways.md, 2026-10) — optional areas, one block per lane
+  runner_vess: ['route', 48, 768], // the Wick-Run chute
+  runner_dace: ['route', 49, 784],
+  rimeway_walker_ivo: ['route', 41, 656], // the Rimeway (C)
+  rimeway_walker_sef: ['route', 42, 672],
+  rimeway_fogwalker: ['route', 48, 768],
+  sunvault_suncaller: ['route', 49, 784], // the Sunvault face (S)
+  sunvault_stargazer: ['route', 49, 784],
+  sunvault_ledgewatcher: ['route', 49, 784],
+  runner_tamsin: ['route', 48, 768], // the trestles
+  runner_ossie: ['route', 48, 768],
+  runner_pip: ['route', 49, 784], // the traverse
+  runner_rook: ['route', 50, 800], // the lower run (the Runners' captain)
+  // the Old Seams (D) — under Cinderhead, post-Stone
+  seams_miner_kester: ['route', 30, 480],
+  seams_miner_wenna: ['route', 31, 496],
+  seams_miner_tam: ['route', 31, 496],
+  seams_miner_penhal: ['route', 33, 528],
+  seams_miner_jory: ['route', 33, 528],
+  // the Mirelights (B)
+  mire_eelcatcher: ['route', 40, 640], // the landing
+  mire_lampdiver: ['route', 42, 672], // the Glassmere
+  mire_acolyte: ['route', 43, 688], // the drowned chapel
 };
 const failures = [];
 for (const [id, [klass, ace, authored]] of Object.entries(BUILT_PAYOUTS)) {

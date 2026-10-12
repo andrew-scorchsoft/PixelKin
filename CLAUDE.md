@@ -157,7 +157,7 @@ go digging on every task.
 - **Stats — the genre's six:** hp/atk/def/spa/spd/spe. Power is costed against a
   shared budget (EPS) and **empirically balanced** by a Monte Carlo sim — all
   types land 46.7–53.3% win-rate. (`docs/mechanics/02-stats-and-balance.md`)
-- **Roster:** **164 kin** — the **151** curated from ~463 concepts via a panel-scored
+- **Roster:** **166 kin** — the **151** curated from ~463 concepts via a panel-scored
   pipeline (the ~312 cuts are archived as an idea bank), **plus appended additions**
   (later ids never renumber the original 1–151): the third starter line (#152–#153),
   the three starter middle stages (#154–#156), the apex kindlings #157 **Pharolux**
@@ -169,7 +169,10 @@ go digging on every task.
   (S4's scripted epilogue catch at the Pearlmoor breakwater — never gifted; it leads S5's
   glade fight), and #164 **Gloampurr**
   (the Lunar/Solar "sunshine-goth" dragon-cat of the optional East side quest "The
-  Sunniest House in the Dark"; Georgina's ace + the kitten she gifts you). Moves: **≤4 per kin**
+  Sunniest House in the Dark"; Georgina's ace + the kitten she gifts you), plus the Wild Ways
+  legendaries (`walkthrough/09-the-wild-ways.md`; Three Hours treatment, set-piece only):
+  #165 **Lanthorne** (Tide/Light, the Mirelight — the fen's lamp asleep in a null-lantern, lv 45)
+  and #166 **Emberroot** (Stone/Ember, the first star that fell; Cinderhead's coal is its breath, lv 46). Moves: **≤4 per kin**
   from a **125-move** shared pool (wave 2: full phys/spec ladders per type + 13 signature
   moves) + 28 abilities. (`docs/mechanics/dex.md` for the readable dex)
 - **Starters:** the founding trio is **complete** and every starter is a **three-stage
@@ -184,7 +187,12 @@ go digging on every task.
   encounter rows like `pearlmoor_quay`).
 - **World structure:** 14 areas, 8 Lampwardens (Gleams collected in roughly a set
   order), 6 Lantern Gifts gating traversal, a four-way central hub (the **Umbral
-  Spire**) that opens once all 8 Gleams are earned. (`docs/world/atlas.md`)
+  Spire**) that opens once all 8 Gleams are earned. (`docs/world/atlas.md`) Plus **the Wild
+  Ways** (2026-10, optional, `walkthrough/09-the-wild-ways.md`): the Wick-Run (downhill runner
+  run, Sunvault → Lightkeeper's Point; the Tallow Lift is the ride home, freed from the top),
+  the Mirelights (east of Saltreach Fen I; the ferry wants Isel's Frostglass Lens from Pale
+  Vault), the Rimeway (Pale Vault ⇄ Coldfog II; the Rime Gate opens from the marsh side), the
+  Old Seams (under Cinderhead; the heart waits on Starlight), and Sunvault Climb as four maps.
 - **The journey is canon, written before the game.** `docs/world/walkthrough/` is the
   start-to-finish **user-journey blueprint** — golden thread, five interlocking arcs (Wren,
   the Hollowing/Còr, Fenn, the celestial calendar, festivals), the level curve, the
@@ -208,7 +216,7 @@ go digging on every task.
   = class rate × ace (route 16 / keeper 20 / rival 24 /
   warden 60 / Còr 120); blackout keeps a 10% wick tithe and wakes you at your **last rest point**
   (not the start — see the respawn gotcha); XP yield is `bst·level/20`,
-  ×1.5 vs trainers, **catches pay like knock-outs**, and a **first-hours boost** (foe lv ≤8 ×1.5, 9–12 ×1.25 — `BattleScene.earlyExpBoost`, mirrored in the model). Design + per-region battle/earnings
+  ×1.5 vs trainers, **catches pay like knock-outs**, **EXP share** (Settings, default ON: the finisher keeps the full yield — the model's lead — kin that fought take ½, the bench ¼; `BattleScene.awardExp`), and a **first-hours boost** (foe lv ≤8 ×1.5, 9–12 ×1.25 — `BattleScene.earlyExpBoost`, mirrored in the model). Design + per-region battle/earnings
   budget: `docs/mechanics/10-economy.md`; executable model: `tools/balance/progression.mjs`.
 - **Catching = one vesperlamp + charges (2026-06, BUILT):** the vesperlamp is a key
   item (plain throw free, ×1.0); **charges** (`category:'charge'`, `catch_bonus`) are
@@ -258,6 +266,7 @@ go digging on every task.
 | Map/world schema (TS) | `src/game/data/world/types.ts` |
 | World-map screen layout (generated) + spatial-embedding audit | `src/game/data/world/worldmap.json` ← `tools/maps/world_layout.py` |
 | The honest walked geometry (Lantern-car, deep water, the CI geometry gate) | `docs/world/geometry.md` ← `tools/maps/world_geometry.py --check` |
+| The whole world as RENDERED art, stitched at true positions (+ a portal-maps sheet) | `tools/maps/render_world.py` → `tools/maps/out/world_overview.png` |
 | Balance/roster tooling | `tools/balance/` |
 | Visual standards (binding) | `docs/art-style.md` |
 | Deploying to pixelk.in (Cloudflare Workers; FTP legacy) | `wrangler.jsonc` + `web/README.md` (FTP: `.claude/skills/deploy-ftp/SKILL.md`) |
@@ -541,9 +550,15 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   walk-sheet (same 4×4 layout) — or, with no such sheet, crops the sprite at the waterline and
   floats a wake ellipse. Use `RuntimeMap.hasTerrainAt` for any "what am I standing in?"
   question; the tileset sidecar is the authority (maps carry only gids).
+- **Working with the owner (2026-10):** make the design calls yourself ("use your initiative") —
+  ask only when blocked; send every new MP3 and art piece to chat (`SendUserFile`) for a listen/look.
+  Real people cameo (Andrew, Paul, Lottie): keep them warm. The beacon-road auctioneer
+  (`script.wink_*`, speaker MAN WITH A CASE) is a nameless stranger who vanishes after the Tin
+  Rower — NEVER call him or hint he's Paul.
 - **The easter-egg trail points at S4 "The Booji-Wooji Man."** Andrew at the Tinderwick fence
   (`script.andrew_name`, sprite `andrew_ward` — NOT `lifter_andrew`, who is a different Andrew
-  in the Lifting House) names the thing; two Dimglass Coast walkers and the Crossroads
+  in the Lifting House; his road placements wear costume sheets `andrew_<frost|quay|miner|sunhat|party|coder|cyclist>`,
+  swapped via each region's worldcraft `sprites` key) names the thing; two Dimglass Coast walkers and the Crossroads
   road-teller (`npc.egg_hint_*`) narrow it to the building at the TOP of Pearlmoor Quay (the
   `pearlmoor_lifting_house` at (19,0)). Nobody ever says what it is — keep it that way.
   Every Andrew's **THE EASTER EGG** option runs ONE shared `script.andrew_egg` (2026-10): a
@@ -602,7 +617,7 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   separate creature path — `systems/sprites/CreatureSprites.ts` — is now wired into
   `StarterSelect`, `Battler` (battle), `PartyMenu`, and `AttractScene`: each lazy-loads a packed
   sprite keyed `kin_<id>_<view>` and falls back to the type-tinted placeholder **only** when a kin
-  isn't packed. **All 162 kin are packed** under `public/assets/sprites/creatures/NNN_slug/` —
+  isn't packed. **All 166 kin are packed** under `public/assets/sprites/creatures/NNN_slug/` —
   5 views each (battle_front/back, icon, overworld, portrait) listed in `creatures.manifest.json`.
   Regenerate any kin's full view set from its species `art` block with
   `./venv/bin/python tools/assets/gen_creature.py <id>` (supports `--provider openai` when Google
@@ -754,7 +769,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   a row too low), making the bell a Tidecall-only island = circular softlock. Fix: the
   causeway/board carve must start at the quay/sea SEAM, not one row inside the sea. Most
   orphan flags are tiny decorative gaps behind the border treeline (reported "minor"); a
-  cluster ≥4 is worth an eyeball.
+  cluster ≥4 is worth an eyeball (flow/span tiles never count — a slide crosses them without
+  resting). **A pocket only FAILs if content is stranded in it, so a sealed nook that merely
+  LOOKS reachable ships green** — in a "can I get everywhere?" pass, eyeball every non-border
+  pocket ≥4 and every solid prop sitting on a lane's path FILL (2026-10 caught the Wick-Run
+  camp's grass+rack sealed by a barrel row, and Paul's kitchen nook sealed by a stool).
 - **`tools/maps/audit_journey.py` replays the WHOLE game at tile level (CI).** From the new-game
   spawn with nothing held, it walks the real collision model (objects, ledges, static NPC bodies,
   pushback bands, gated warps) and fires grants only when the granting NPC/trigger/cache itself is
@@ -763,6 +782,10 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   map/content/warp, and prints a ROOT CAUSE naming the blocking object/tile. Run it after ANY map,
   warp, NPC or script edit; a moved grant = update its `GOLDEN` row; a deliberate permanent block =
   an `ALLOW_UNREACHED` entry with its WHY.
+- **NPCs must stand on foot ground and be talkable — `tools/maps/audit_npc_footing.py` (CI).** It FAILs
+  any non-ambient NPC on water/a wall/a prop's solid base (a lamp post's or banner's bottom row, a tree
+  trunk) or with no reachable face-tile (counters count). Fix the placement in its builder/runner; a
+  deliberate perch (Georgina's cat on her cushion) goes in its ALLOW with a WHY.
 - **A story step_on band must cover the WHOLE cut — but only its WALKABLE tiles.** One
   trigger tile on a wide corridor is walk-aroundable (this bit `dusk_begins`); but a band
   tile on a solid/sealed cell now FAILS `audit_flow` as unreachable content (this bit the
@@ -794,6 +817,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   it after ANY warp edit, not just new maps. A gated warp may carry `blocked_ref` (mirror
   of EventTrigger's) for a diegetic "not yet" line, step_on included — the Pearlmoor
   moor-gate (`npc.netmender_gate`) is the worked example.
+- **A mid-map warp must LOOK like a way through (2026-10, CI: `audit_warp_markers.py`).** Any
+  non-door warp off the map edge needs a ladder/shaft tile or a marker object covering it (or
+  directly north): a cave arch, side mouth, rock steps, rope ladder, pier skiff, Vigil seam,
+  trapdoor, updraft vent… — drawn in `tools/maps/draw_warp_markers.py` (`markers_<stem>`), placed
+  from the BUILDER via `warp_markers.marker()`, gated `requires_flag` = the warp's own flag.
 - **Doors are WALK-ONTO, not press-to-enter (convention, enforced).** A door is a
   `Warp` with `trigger:'step_on'` + `transition:'door'`; the player walks into the
   doorway tile and warps. `CollisionGrid` FREES every `transition:'door'` warp tile
@@ -885,6 +913,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `roomkit.aisle_runner` (stacked drawn `interior_rug_runner` objects), NEVER `runner()` —
   the DOORMAT tile repeated vertically reads as a ladder (hard black cell borders), the
   "dodgy path" look. All three Lumenaries use `aisle_runner`.**
+- **Interior walls AUTOTILE (2026-10).** `roomkit.finish` → `autotile_walls` redraws every band/face
+  tile from its neighbours (the 55-tile kit: legacy 13 + the appended blob + face ends), so builders
+  only place walls — never hand-pick a cap/corner gid. A new wall shape = append to
+  `roomkit.appended_tiles()` + re-run `build_interior_walls.py`. `crossroads_inn` used to be an ORPHAN
+  (its builder wasn't in `build_interiors.all_maps()`, so check_rebuild couldn't see it drift) — any new
+  interior builder function must be listed there. Interior QA bar: `docs/world/interiors.md` §3 r9–r10.
 - **Re-running `interiorforge.py` CLOBBERS the image-gen hero masters.** It rewrites every
   PNG in `assets/tilesets/interior/objects/` — including pieces `gen_interior_object.py`
   re-rendered into the same paths. Add a new piece with `interiorforge.py --only <stem>` (2026-10);
@@ -1083,8 +1117,15 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   set-piece with no LAMP and no RUN — `BattleRequest.catchable/can_run:false`). A `setFlag` step
   now refreshes flag-gated OBJECTS mid-scene (`ctx.onFlagSet`); an aborted scene lifts its own
   letterbox/tint (`clearCinematicFx`) and snaps the camera back (`ctx.resetView`); `setLead`'s swap
-  is undone after the set-piece (`WorldScene.restoreLead`); answers (`store:false`) match ignoring
+  is undone after the set-piece or when the scene ends (`WorldScene.restoreLead` via `playScene`); answers (`store:false`) match ignoring
   punctuation. The Chickenpig is NEVER gifted — S4 is the only way to it.
+- **Paul's House (2026-10) is post-Chickenpig by construction** (`wayward_rise`, `paul_house_1/2/3`,
+  `content/regions/paul.ts`, drawn kit `tools/maps/paulforge.py` → `paul_*` objects — its OWN master
+  folder, never interiorforge's). Lottie's Chickenpig scene uses two reusable tricks: a `travel` to
+  the SAME map/tile re-enters it mid-scene so a flag-gated NPC (the `kin_163_overworld` visitor) spawns
+  (NPCs only refresh at scene end otherwise; `hideActor` + `setFlag value:false` sends it home), and a
+  bare `setLead` (no battle after it) is undone when the scene ends (`playScene` → `restoreLead`). Never name what the
+  Booji-Wooji Man is there either; the bureau poster stays "a joke".
 - **Paying and toggles are DATA (R9, 2026-10).** The `pay` op (`{op:'pay', amount, flag}`) takes
   wicks only if the purse holds them and sets `flag` — branch with `if_flag`/`unless_flag`, never
   assume it paid (Wink's 12,000w Tin Rower is the worked example; mirror any price in
@@ -1286,6 +1327,29 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   a `cutscene.*` dialogue_ref shows "..."), missing portrait expressions, unknown sprites, flags
   read but never set, guarded progression steps. W-/I- lines are heuristics; read them, don't
   chase them blindly. `--old <checkout>` compares pre-Chickenpig step/page counts.
+- **The TRAVERSAL KIT is map data (2026-10, 09-the-wild-ways §1).** `flows[]` (slope: carried
+  `dir`, left/right steers, never entered/left uphill; ice: slide until stopped; rail: carried, no
+  steer; `requires_flag`/`hidden_when_flag` = lever-switched), `spans[]` (bridge/ladder/plank:
+  walked along `axis` only, deck collision ignored; `under:true` = pass beneath across the axis),
+  `jumps[]` (riders only), `ride:true` (+ the rented `runner` key item = bike speed). Rules live
+  in `systems/world/Traversal.ts`, mirrored in `worldmodel.py`; `check_traversal.mjs` (CI) proves
+  they agree. Author with `tools/maps/wildkit.py` (stamps art + data together; art =
+  `traverse_set`, drawn by `build_traverse_set.py`); an underpass deck goes in the `above` layer.
+  A one-way map's upstream door is a legal entry-only portal (audit_flow). New cutscene ops:
+  `timer` (run clock) and `takeItem`.
+- **Lever puzzles (the Old Seams rail yard, 09 §2 D):** a junction = a straight flow with
+  `hidden_when_flag` + a turnout flow with `requires_flag`, listed LAST; a lever = a
+  `traverse_lever_off/_on` object swap + an interact `script.*` that flips its flag via a temp
+  copy (`content/regions/oldseams.ts lever()`). Every line must END on a platform in EVERY lever
+  state and every platform must rail home — `build_old_seams_ii.py` asserts all states;
+  `check_traversal` walks every flag combination. Pits are `seams_set` `shaft` terrain (collides).
+  Optional Wild Ways beds go in `progression.mjs TREND_SKIP_AREAS` or they bend the mainline trend.
+- **Rebuilding a SHIPPED map? Run the four runners after its builder** (`add_hand_placed.py`,
+  `add_peril_thread.py`, `add_world_craft.py`, `vary_trees.py` — in that order) or you ship it
+  without its day-form tables, peril beats and world-craft (check_rebuild catches it).
+- **Tower stairs are DRESSED by `roomkit.finish` (2026-10):** any interior warp with id
+  `up_stairs`/`down_stairs` gets `interior_stairs_up` (1x2, climbing the wall face) /
+  `interior_stairs_down` (1x1 stairwell) on its pad — keep those ids for new tower floors.
 - **A trainer spotting you plays `trainer-eyes` (2026-10, chip-only):** a 1-bar startle played ONCE, then
   an 8-bar "get ready" loop under the walk-up + lines until the battle theme takes over. Classic cues
   may carry an intro via `src/game/data/music-classic.json` (GENERATED by `tools/audio/stitch_intro_loop.py`

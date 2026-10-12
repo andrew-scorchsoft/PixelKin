@@ -155,7 +155,11 @@ def analyse(world: dict[str, dict], model: MapModel, start: dict | None = None) 
         for x in range(model.w)
         if model.standable(x, y, abilities=all_ab)
     }
-    orphans = walkable_all - reach_all
+    # Flow/span tiles (ice, slopes, rails, decks) are crossed, never stood on: a
+    # slide passes over them without resting, so they are never 'reached' as rest
+    # tiles — counting them made a single ice field read as a 195-tile orphan.
+    passed = {t for t in walkable_all if model.flow_at(*t) or model.span_at(*t)}
+    orphans = walkable_all - reach_all - passed
     orphan_clusters = clusters(orphans)
     major_orphans = [c for c in orphan_clusters if len(c) >= MAJOR_ORPHAN]
     # A pocket only STRANDS something if content lives in it: a non-ambient NPC,
@@ -232,7 +236,11 @@ def render_overlay(model: MapModel, info: dict, scale: int, out_path: Path) -> N
             i = y * model.w + x
             box = cell(x, y)
             gated = model.ability[i]
-            if model.solid[i] and not model.ledge[i]:
+            if model.kit and model.span_at(x, y):
+                d.rectangle(box, fill=(60, 200, 230, 95))           # deck/ladder — cyan
+            elif model.kit and model.flow_at(x, y):
+                d.rectangle(box, fill=(250, 220, 60, 80))           # chute/ice/rail — yellow
+            elif model.solid[i] and not model.ledge[i]:
                 d.rectangle(box, fill=(220, 40, 40, 90))            # solid — red
             elif model.ledge[i]:
                 d.rectangle(box, fill=(255, 140, 0, 95))            # ledge — orange
@@ -277,6 +285,8 @@ def legend(img: Image.Image, scale: int) -> None:
         ((240, 220, 60), "reachable only with a Gift"),
         ((60, 170, 255), "Gift-gated tile (water/void)"),
         ((255, 140, 0), "ledge (one-way)"),
+        ((60, 200, 230), "deck / ladder (axis-bound)"),
+        ((250, 220, 60), "chute / ice / rail (carried)"),
         ((220, 40, 40), "solid"),
         ((255, 0, 220), "ORPHAN — cut off w/ all Gifts"),
         ((255, 30, 30), "softlocked warp (outline)"),

@@ -34,7 +34,7 @@
       "id": "lip_updraft",
       "sprite": "windward_updraft",
       "at": {
-        "tx": 0,
+        "tx": 1,
         "ty": 4
       },
       "w": 2,
@@ -42,6 +42,18 @@
       "overhang": 3,
       "solid": false,
       "walk_under": true
+    },
+    {
+      "id": "lip_vent",
+      "sprite": "markers_updraft_vent",
+      "at": {
+        "tx": 2,
+        "ty": 6
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false
     },
     {
       "id": "vigil_scar_stormfall",
@@ -54,6 +66,19 @@
       "h": 1,
       "solid": false,
       "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "vigil_seam_stormfall",
+      "sprite": "markers_vigil_seam",
+      "at": {
+        "tx": 5,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false,
+      "requires_flag": "flag:vigil_reading_3"
     },
     {
       "id": "roost_rod",

@@ -33,6 +33,7 @@ Run:  ./venv/bin/python tools/maps/build_wind_eye.py
 from __future__ import annotations
 import random
 import mapkit as mk
+import warp_markers as wm
 import patterns as pt
 from mapkit import gid
 
@@ -184,6 +185,8 @@ m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + ter
 ]
 
 if __name__ == "__main__":
+    # warp marker: the rock steps down and out to the terraces
+    wm.add(m, wm.marker("terrace_steps", "steps_s", 9, 17))
     ok = mk.finalize(m, scale=4)
     pt.report(owed)
     print("PASS" if ok else "FAIL")

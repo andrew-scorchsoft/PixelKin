@@ -30,6 +30,7 @@ Run:  ./venv/bin/python tools/maps/build_thunderroost.py
 from __future__ import annotations
 import random
 import mapkit as mk
+import warp_markers as wm
 import patterns as pt
 from mapkit import gid
 
@@ -83,7 +84,7 @@ m: dict = {
         {"id": "aerie", "sprite": "windward_aerie", "at": {"tx": 6, "ty": 2},
          "w": 3, "h": 3, "overhang": 1, "walk_under": False},
         # the thermal you rode up, streaming past the lip
-        {"id": "lip_updraft", "sprite": "windward_updraft", "at": {"tx": 0, "ty": 4},
+        {"id": "lip_updraft", "sprite": "windward_updraft", "at": {"tx": 1, "ty": 4},
          "w": 2, "h": 3, "overhang": 3, "solid": False, "walk_under": True},
     ],
     "warps": [
@@ -138,6 +139,8 @@ m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + ter
 ]
 
 if __name__ == "__main__":
+    # warp marker: the swirl the glide home lifts from, under the lip thermal
+    wm.add(m, wm.marker("lip_vent", "updraft_vent", 2, 6))
     ok = mk.finalize(m, scale=5)
     pt.report(owed)
     print("PASS" if ok else "FAIL")

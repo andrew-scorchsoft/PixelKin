@@ -32,7 +32,7 @@
 
 | | |
 |---|---|
-| **Areas** | Hushfrost Pass I → II (frozen route) · **Sunken Solarium** (ruin, Lumenary 7) · Sunvault Climb I → II (sun-garden route) · **Nightreach Observatory** (star-temple town, Lumenary 8) · outer detour **Coldfog Marches I → II** · spurs/landmarks **Aurora Hollow**, **Helia Vault**, **Drownlight Beacon**, **Hollowfen Stillworks** |
+| **Areas** | Hushfrost Pass I → II (frozen route) · **Sunken Solarium** (ruin, Lumenary 7) · Sunvault Climb I → II (sun-garden route) · **Nightreach Observatory** (star-temple town, Lumenary 8) · outer detour **Coldfog Marches I → II** · spurs/landmarks **Aurora Hollow**, **Helia Vault**, **Drownlight Beacon**, **Hollowfen Stillworks** · optional **the Wick-Run** (off Sunvault Climb I's south edge: crest → chute → trestles → traverse → lower run → the foot at the sea, lv 46–50, one-way downhill on a rented runner, the Tallow Lift home — [09 §2 A](./09-the-wild-ways.md)) |
 | **Reading order (MAIN PATH)** | `pale_vault_glacier` → **Hushfrost Pass I → II** → **Sunken Solarium** → **Sunvault Climb I → II** → **Nightreach Observatory** → `vesper_crossroads` (handed to Central). The **Coldfog Marches** detour is OPTIONAL and taken LATE, from the hub — not the road to Nightreach. |
 | **Entry state** (from North) | ~lv40 · holds **Tidecall + Glimmerstep + Updraft Kite + Emberward** · `gleam:storm` + `gleam:frost` · `flag:crown_north` · `flag:shortcut_windward` · narrative ledger `flag:dusk_begins` + `flag:met_hollowing` + `flag:met_cor` |
 | **Exit state** (to Central) | ~lv52 · holds **ALL SIX Lantern Gifts** (adds Sunsketch + Starreach) · **all eight Gleams** · `flag:crown_west` · `flag:hub_unlocked` · narrative ledger `flag:dusk_begins` + `flag:met_hollowing` + `flag:met_cor` + `flag:great_null_known`; the Spire is now openable |
@@ -330,7 +330,14 @@ Pyre, ace ~46) · **rec. level ~42 → 46.**
 
 ---
 
-## Sunvault Climb I → II — *golden terraces blooming open toward the stars*
+## Sunvault Climb I → IV — *golden terraces blooming open toward the stars*
+
+> **2026-10 rebuild ([09 §S](./09-the-wild-ways.md)):** the climb is now a four-map MOUNTAIN
+> FACE — `sunvault_climb_i` (the foot) → `_ii` (the sun-vine bridges, 30×40) → `_iii` the
+> Gilt Face (ladder pitches, the trestle over the gully, the keepers' shelter rest point) →
+> `_iv` the Sun Ledges (ledges + rope-planks to the observatory hill) → Nightreach. Bands
+> I 46-47 · II 47-48 · III 48-49 · IV 48-49. The beats below still hold; "exit to
+> Nightreach" now happens from IV.
 
 **At a glance** — `sunvault_climb_i` (overgrown terraces) → `sunvault_climb_ii` (sun-vine
 bridges) · kind route · region west · **enter** from `sunken_solarium` (ungated) **→ exit** to
@@ -401,16 +408,22 @@ bridges) · kind route · region west · **enter** from `sunken_solarium` (ungat
 
 ### 6. Validation hooks
 
-- **Map ids / kind:** `sunvault_climb_i`, `sunvault_climb_ii`, kind `route`, region `west`.
+- **Map ids / kind:** `sunvault_climb_i`, `sunvault_climb_ii`, `sunvault_climb_iii`,
+  `sunvault_climb_iv`, kind `route`, region `west` (traverse_set stacked for ladders/planks/decks).
+- **Chain (graph.ts, ungated past the vines):** `sunvault_climb_ii → sunvault_climb_iii` via
+  `to_climb_iii`, `sunvault_climb_iii → sunvault_climb_iv` via `to_climb_iv`, `sunvault_climb_iv →
+  nightreach_observatory` via `to_observatory` (all bidir; Nightreach's return pair is `to_sunvault`).
+- **Rest point:** the keepers' shelter on III (`script.sunvault_keepers_shelter`).
 - **Boundary warp (graph.ts):** `sunvault_climb_i → sunvault_climb_ii` via `to_climb_ii`,
   **`requires_ability: sunsketch`**, bidir.
 - **Entry/exit warps:** in from `sunken_solarium` via `to_climb` (**ungated**, bidir); out to
-  `nightreach_observatory` via `to_observatory` (**ungated**, bidir — the MAIN-PATH rim approach).
+  `nightreach_observatory` via `to_observatory` (**ungated**, bidir — the MAIN-PATH rim approach;
+  since 2026-10 this edge leaves from `sunvault_climb_iv`).
 - **Spur warp:** `sunvault_climb_ii → helia_vault` via `to_helia`, `requires_ability: sunsketch`,
   bidir.
 - **Encounter zones:** `tall_grass` — sun-seedling (Verdant/Solar), vine-serpent (Verdant),
-  glass-wing bee (Verdant/Light); level band 46–48 (continuous with Solarium ~46 and Nightreach
-  ~48). Helia Vault carries rare Solar kin at low weight.
+  glass-wing bee (Verdant/Light); level band 46–49 (continuous with Solarium ~46 and Nightreach
+  ~48; III/IV add Solray/Solreach/Lunveil/Petalune/Drowshorn/Spirlet). Helia Vault carries rare Solar kin at low weight.
 - **NPC:** vine-tender near the bloomed bridge; dialogue ref `npc.sunvault_vine_tender`.
 
 ---
@@ -716,3 +729,13 @@ held) is the final ascent. **Starreach** reopenings handed to Central/East: **Cr
 (Cinderhead Deep, East) and **Starwell** (Penumbra Ring). Arc beats still owed downstream: **B5**
 (confront the Great Null; relight the Keystar/Keylumen by *out-remembering*), and the **Dawn**
 (`flag:dawn`) → [`06-postgame.md`](./06-postgame.md).
+
+## Traversal pass (2026-10, 09-the-wild-ways §3) — Hushfrost Pass I's glare pool
+
+The frozen falls' plunge-pool now spans the north passage as **glare ice** (`flows` ice,
+`build_hushfrost_pass_i.py`): every way between the mid chamber and the west chamber crosses
+it, and on glare ice you slide until something stops you. Three wind-dropped stones are the
+stoppers; reading the falls means stopping under them at (18,5). The sheet is ringed by snow,
+so no stop strands you (checked: every reachable tile can reach both entrances). The
+shortest crossing is one slide down/up column 12. Warps, trainers, caches, the Emberward
+throat and the shipped encounter zones are unchanged. Before: open snow there.

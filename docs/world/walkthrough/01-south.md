@@ -304,7 +304,7 @@ World map: node `wickstead_green` west of Tinderwick (`tools/maps/world_layout.p
    3. **The teases.** Offshore **lantern-buoys** glow over shallows leading to **Gullcry Rock**
       (Tidecall, not yet) and a dark **cavern mouth** in the cliff → **Tideglass Cavern**
       (Glimmerstep, not yet). Both are signed: the *why* and the *come back* are explicit.
-   - *(R9)* On the south sand, just off the lane, **Aldous Wink** minds his toy case and
+   - *(R9)* On the south sand, just off the lane, **a nameless man** minds his toy case and
       auction board (S6 "The Tin Rower"); further up the strand **Pim Halloo** of the Worry Club
       waves a map of contradicting arrows.
    4. **Meet Wren again (A2).** The travelling Wayfarer NPC anchors the route; Wren's first
@@ -644,7 +644,37 @@ netmender's keeping.
      game) and **6** (a friend's book read across two seas). Same grass table as the wood
      (WANDERWOOD rows, `CURATED_AREAS`). **Andrew** waits at the wood's hub (`andrew_wood`,
      (11,20), `script.andrew_wood`) — the last of his easter eggs.
-   - **S6 "The Tin Rower"** — **[BUILT R9, 2026-10]** giver: **Aldous Wink** ("Wink's Wind-Ups
+     **The Wayward Arms (2026-10):** past the glade lamp a narrow path leaves the wood's NORTH
+     edge (`to_rise`, cols 19-20) onto **`wayward_rise`** (24×22, `build_wayward_rise.py`, world
+     (3,-152), between the wood and the Lowleaf lane): a lamplit green with an old stone country
+     hotel, a pub garden, a well and a dark pond. No encounters. Inside, **`wayward_arms`**
+     (`build_wayward_arms.py`): an open bar (the back-bar's TOP shelf keeps the good bottles),
+     a fireside snug, and a well-dressed STRANGER standing by the corner chair — never named,
+     never explained (friend? long-lost brother?). `script.wayward_stranger`
+     (`content/regions/hotel.ts`): sit with him → "We've been told we can help ourselves" → you
+     take the bourbon down from the top shelf → the night talked away → a `heal` rest (the Arms
+     is a rest point; rest-lantern on its door) → "Sometimes it's good to experience the fine and
+     unexpected qualities of life." Later visits play a short version (`flag:wayward_night`,
+     which also unlocks the LORE entry). Pure reward; gates nothing.
+     **Paul's House (2026-10):** beside the hotel, at the green's west end, stands Paul's crooked,
+     narrow three-storey house (generated `paul_house` 5×7, door (4,9); his gym-commute **bike**
+     leans by the door, t-shirts dry on a line). Never home: a note on the kitchen table says
+     he's gone walking (or, after S5, "gone to keep the dark company"). Three roomkit floors
+     (`build_paul_house.py`, drawn furniture `tools/maps/paulforge.py`, content
+     `content/regions/paul.ts`): **`paul_house_1`** the kitchen-hall (the hearth, the red-bush
+     tea tin, the carved antelope, the helmet + gym bag by the door, the pin-board of tickets,
+     the WANTED poster "from a far-off bureau" he swears is a joke); **`paul_house_2`** the
+     **T-shirt museum** (framed shirts with tiny stories, the maple country across the northern
+     sea — lake painting, antlers, paddle, plaid jacket, syrup tin — and the cape country far to
+     the south — protea, beadwork, hooped jersey, rugby ball, sunset over the flat-topped
+     mountain); **`paul_house_3`** **Lottie's attic** — his granddaughter. The Rise is only
+     reachable after the Chickenpig (S5 needs it), so her scene is the AFTER one: Chickenpig
+     drawings + a plush (`requires_flag: flag:chickenpig_caught`), a shriek, and — if the
+     Chickenpig is in your lamp (`setLead`) — it comes out to meet her (a `travel` re-entry spawns
+     the `kin_163_overworld` visitor on `flag:paul_lottie_cp_out`), they dance, and she gives you
+     **LOTTIE'S DRAWING** (key item). LORE "Paul's house" on `flag:paul_house_seen`. The
+     Booji-Wooji Man stays unexplained; the bureau story stays unconfirmed.
+   - **S6 "The Tin Rower"** — **[BUILT R9, 2026-10]** giver: **a nameless man with a toy case** (never named — he vanishes once the toy is yours) ("Wink's Wind-Ups
      — toys, tales, trades"), `npc_old_man` on the **Dimglass Coast I** south sand strip at (12,30),
      his auction board `sign.wink_auction` at (12,29) (`requires_flag: flag:has_starter`). Lot 1 is
      a wind-up tin ferryman, painted *SAME TIDE TOMORROW*, stamped *MADE TO ORDER — T.* — Tam
@@ -703,7 +733,10 @@ netmender's keeping.
      landing ON its return pair.
    - **The bell quest chain (all data, BUILT; R9 2026-10):** `script.reyl_quest` (hall,
      Reyl's dais stage — "nobody fights me till they've laughed") sets `flag:q_south_bell` →
-     **the Old Light** on Lightkeeper's Point (below): seven floors, one riddle each
+     **the Old Light** on Lightkeeper's Point (below; its west beach now runs on to the
+     **Wick-Run Foot** — the Wild Ways' downhill run ends here, and South-era players can
+     walk in and see the Tallow Lift's car chained far up at the crest; no encounters, see
+     [09 §2 A](./09-the-wild-ways.md)): seven floors, one riddle each
      (`flag:oldlight_1..5_solved`), the top sets **`flag:picked_net_floats` +
      `flag:q_south_jest_done`** → the netmender's ONE quay stage `netmender_floats`
      (`requires q_south_bell`, `hidden_when q_south_has_rope`, `script.netmender_floats`:

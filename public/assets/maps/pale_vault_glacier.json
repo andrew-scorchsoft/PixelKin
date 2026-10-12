@@ -294,9 +294,9 @@
         "ty": 11
       },
       "facing": "up",
-      "transition": "door",
       "requires_flag": "flag:has_starter",
-      "blocked_ref": "door.locked_lumenary"
+      "blocked_ref": "door.locked_lumenary",
+      "transition": "door"
     },
     {
       "id": "to_inn",
@@ -422,6 +422,36 @@
       "requires_flag": "flag:three_mid_snuffer",
       "blocked_ref": "npc.hourfold_sealed",
       "transition": "door"
+    },
+    {
+      "id": "to_rimeway",
+      "at": {
+        "tx": 23,
+        "ty": 0
+      },
+      "trigger": "step_on",
+      "to_map": "rimeway_ascent",
+      "to": {
+        "tx": 23,
+        "ty": 54
+      },
+      "facing": "up",
+      "transition": "fade"
+    },
+    {
+      "id": "to_rimeway_e",
+      "at": {
+        "tx": 24,
+        "ty": 0
+      },
+      "trigger": "step_on",
+      "to_map": "rimeway_ascent",
+      "to": {
+        "tx": 24,
+        "ty": 54
+      },
+      "facing": "up",
+      "transition": "fade"
     }
   ],
   "triggers": [
@@ -608,6 +638,16 @@
       },
       "activation": "interact",
       "ref": "sign.pale_vault_deepice"
+    },
+    {
+      "id": "sign_pale_vault_rimeway",
+      "kind": "sign",
+      "at": {
+        "tx": 25,
+        "ty": 2
+      },
+      "activation": "interact",
+      "ref": "sign.pale_vault_rimeway"
     }
   ],
   "encounters": [
@@ -1113,7 +1153,7 @@
       "id": "fenn_c3",
       "at": {
         "tx": 13,
-        "ty": 20
+        "ty": 21
       },
       "facing": "right",
       "sprite": "npc_mentor",
@@ -1355,6 +1395,30 @@
       "requires_flag": "gleam:frost"
     },
     {
+      "id": "isel",
+      "at": {
+        "tx": 22,
+        "ty": 3
+      },
+      "facing": "right",
+      "sprite": "market_trader",
+      "movement": "static",
+      "dialogue_ref": "script.isel_lens",
+      "hidden_when_flag": "flag:has_frostglass_lens"
+    },
+    {
+      "id": "isel_after",
+      "at": {
+        "tx": 22,
+        "ty": 3
+      },
+      "facing": "right",
+      "sprite": "market_trader",
+      "movement": "look_around",
+      "dialogue_ref": "npc.isel_after",
+      "requires_flag": "flag:has_frostglass_lens"
+    },
+    {
       "id": "letter_ysolde",
       "at": {
         "tx": 17,
@@ -1374,9 +1438,22 @@
         "ty": 26
       },
       "facing": "down",
-      "sprite": "andrew_ward",
+      "sprite": "andrew_frost",
       "movement": "look_around",
       "dialogue_ref": "script.andrew_road"
+    },
+    {
+      "id": "works_wander_hollis",
+      "at": {
+        "tx": 5,
+        "ty": 18
+      },
+      "facing": "up",
+      "sprite": "npc_man",
+      "movement": "static",
+      "dialogue_ref": "script.works_wander_hollis",
+      "requires_flag": "flag:q_works_story",
+      "hidden_when_flag": "flag:works_found_hollis"
     },
     {
       "id": "amb_snowcune",
@@ -1461,10 +1538,10 @@
         266,
         265,
         265,
-        265,
-        256,
-        266,
-        266,
+        257,
+        221,
+        223,
+        255,
         256,
         265,
         256,
@@ -1493,10 +1570,10 @@
         256,
         265,
         266,
-        264,
-        267,
-        259,
-        267,
+        257,
+        221,
+        223,
+        258,
         263,
         265,
         266,
@@ -1526,8 +1603,8 @@
         256,
         264,
         260,
-        197,
-        198,
+        224,
+        226,
         200,
         258,
         263,
@@ -2495,7 +2572,7 @@
         0,
         0,
         0,
-        0,
+        117,
         0,
         0,
         0,

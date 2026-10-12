@@ -16,6 +16,7 @@ Run:  python3 tools/maps/build_gullcry.py
 from __future__ import annotations
 import random
 import mapkit as mk
+import warp_markers as wm
 from mapkit import gid
 
 W, H = 16, 13
@@ -126,6 +127,8 @@ if __name__ == "__main__":
     # deep water (2026-10): the open sea past the shallow shelf — Tidecall
     # swims the shallows only (mapkit.deep_water; the reserved `deepdive` gate)
     mk.deep_water(m, shelf=3)
+    # warp marker: the little jetty you swim back from
+    wm.add(m, wm.marker("flats_jetty", "jetty", 4, 9))
     ok = mk.finalize(m, scale=3)
     print("PASS" if ok else "FAIL")
     raise SystemExit(0 if ok else 1)

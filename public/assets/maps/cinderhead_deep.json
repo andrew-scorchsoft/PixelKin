@@ -52,6 +52,43 @@
       "w": 2,
       "h": 2,
       "overhang": 0
+    },
+    {
+      "id": "mouth_mine",
+      "sprite": "markers_cave_mouth_wide",
+      "at": {
+        "tx": 13,
+        "ty": 0
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "bob": false
+    },
+    {
+      "id": "mouth_crystoll",
+      "sprite": "markers_cave_mouth",
+      "at": {
+        "tx": 24,
+        "ty": 4
+      },
+      "w": 1,
+      "h": 2,
+      "solid": false,
+      "bob": false
+    },
+    {
+      "id": "hoist_ladder",
+      "sprite": "markers_ladder_up",
+      "at": {
+        "tx": 22,
+        "ty": 15
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false,
+      "requires_flag": "flag:shortcut_mine"
     }
   ],
   "warps": [

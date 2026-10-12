@@ -121,6 +121,12 @@ for y in (0, 1):
 for x in (0, 1):
     for y in (3, 4):
         crag[y * W + x] = 0
+# EAST gap — THE RIMEWAY DESCENT (09-the-wild-ways §2 C, 2026-10): the old
+# star-tenders' road leaves the marsh east (rows 16-17) and climbs to the Rime
+# Gate the Hollowing barred from this side.
+for x in (28, 29):
+    for y in (16, 17):
+        crag[y * W + x] = 0
 
 # THE EAST SHELF — the one-way return, ANCHORED to the border crag (§11 r8:
 # never a free-standing slab mid-field; the hushfrost east-shelf pattern):
@@ -209,6 +215,13 @@ m["warps"] += [
      "to_map": "nightreach_observatory", "to": {"tx": 28, "ty": 15}, "facing": "left",
      "requires_ability": "emberward",
      "blocked_ref": "sign.coldfog_backdoor", "transition": "fade"},
+    # EAST -> rimeway_descent (the Rimeway's marsh end; Emberward got you here)
+    {"id": "to_rimeway", "at": {"tx": 29, "ty": 16}, "trigger": "step_on",
+     "to_map": "rimeway_descent", "to": {"tx": 1, "ty": 14}, "facing": "right",
+     "transition": "fade"},
+    {"id": "to_rimeway_s", "at": {"tx": 29, "ty": 17}, "trigger": "step_on",
+     "to_map": "rimeway_descent", "to": {"tx": 1, "ty": 15}, "facing": "right",
+     "transition": "fade"},
 ]
 
 # ---- THE WORKS (the landmark — B4's shown half, seen before it's entered) ------------

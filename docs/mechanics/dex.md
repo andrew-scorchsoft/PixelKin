@@ -1,9 +1,9 @@
-# PixelKin — The Dex (164)
+# PixelKin — The Dex (166)
 
 > Generated from `src/game/data/species.json` by `tools/balance/gen_docs.py`. Every entry is original (VISION.md). Lines show kindling chains (→).
 
-- **Total:** 164  |  **Tiers:** A:33 B:20 C:40 D:48 E:19 F:4
-- **Primary types:** Ember:18  Tide:18  Verdant:20  Stone:16  Storm:17  Frost:15  Solar:17  Lunar:15  Light:16  Dark:12
+- **Total:** 166  |  **Tiers:** A:33 B:20 C:40 D:48 E:21 F:4
+- **Primary types:** Ember:18  Tide:19  Verdant:20  Stone:17  Storm:17  Frost:15  Solar:17  Lunar:15  Light:16  Dark:12
 
 
 ## South — Tinderwick / coast (Ember, Tide)
@@ -94,6 +94,7 @@
 | <img src="../../public/assets/sprites/creatures/069_riddlestone/battle_front.webp" width="48" alt="Riddlestone"> | 69 | **Riddlestone** | Stone | C | Special Wall | 418 |  | 120 | 120cm/240kg | A sphinx-like cave construct that has formed naturally from layered sedimentary stone; i… |
 | <img src="../../public/assets/sprites/creatures/070_mycovast/battle_front.webp" width="48" alt="Mycovast"> | 70 | **Mycovast** | Verdant/Stone | E | Special Tank | 558 |  | 24 | 300cm/2200kg | The apex kin of Spore Grotto — a vast, ancient fungal titan that has been growing throug… |
 | <img src="../../public/assets/sprites/creatures/164_gloampurr/battle_front.webp" width="48" alt="Gloampurr"> | 164 | **Gloampurr** | Lunar/Solar | C | Special Sweeper | 418 |  | 112 | 42cm/9kg | A small winged cat the colour of a violet dusk, with a coal of warm gold burning low in … |
+| <img src="../../public/assets/sprites/creatures/165_lanthorne/battle_front.webp" width="48" alt="Lanthorne"> | 165 | **Lanthorne** | Tide/Light | E | Special Wall | 558 |  | 24 | 340cm/140kg | The Mirelight — the fen's own lamp, which once walked the drowned causeway ahead of lost… |
 
 ## North — Galehigh & Pale Vault (Storm, Frost)
 
@@ -132,6 +133,7 @@
 | <img src="../../public/assets/sprites/creatures/101_galefox/battle_front.webp" width="48" alt="Galefox"> | 101 | **Galefox** | Storm | C | Physical Sweeper | 418 | → Tempestail (L35) | 120 | 80cm/14.5kg | A sleek mid-stage gust-fox who now runs so fast it creates a visible bow-wave of compres… |
 | <img src="../../public/assets/sprites/creatures/102_tempestail/battle_front.webp" width="48" alt="Tempestail"> | 102 | **Tempestail** | Storm | D | Physical Sweeper | 498 | (from Galefox) | 57 | 145cm/40.0kg | The apex gust-fox — a lithe, white-silver predator whose tail is now a visible thunderst… |
 | <img src="../../public/assets/sprites/creatures/161_noctilune/battle_front.webp" width="48" alt="Noctilune"> | 161 | **Noctilune** | Lunar/Dark | E | Physical Wall | 558 |  | 24 | 260cm/420kg | The Still Hour — the keeper of midnight, standing the same unrelieved watch since the ni… |
+| <img src="../../public/assets/sprites/creatures/166_emberroot/battle_front.webp" width="48" alt="Emberroot"> | 166 | **Emberroot** | Stone/Ember | E | Physical Bruiser | 558 |  | 24 | 640cm/2400kg | The first star that ever fell into Vesperholm, so long ago the mountain grew up around i… |
 
 ## West — Solarium & Nightreach (Solar, Lunar)
 

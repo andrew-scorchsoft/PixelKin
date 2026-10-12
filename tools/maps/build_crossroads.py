@@ -45,6 +45,7 @@ Run:  python3 tools/maps/build_crossroads.py
 from __future__ import annotations
 import random
 import mapkit as mk
+import warp_markers as wm
 from mapkit import gid
 
 W, H = 20, 18
@@ -374,14 +375,14 @@ m = {
         # The kid waits for the kite (flag:q_round_kite_taken — set when the
         # kite-maker hands it over); delivery sets flag:q_round_kite and the
         # kid flies the kite thereafter.
-        {"id": "waystone_kid", "at": {"tx": CX - 2, "ty": CY + 2}, "facing": "up",
+        {"id": "waystone_kid", "at": {"tx": CX - 2, "ty": CY + 3}, "facing": "up",
          "sprite": "npc_boy", "movement": "static",
          "dialogue_ref": "script.round_kite_deliver",
          "requires_flag": "flag:q_round_kite_taken",
          "hidden_when_flag": "flag:q_round_kite"},
         # At endgame the kid trades the kite for the lamp-flickers (C1 below) —
         # hidden once the hub opens so the trail chain owns the cast slot.
-        {"id": "waystone_kid_kite", "at": {"tx": CX - 2, "ty": CY + 2}, "facing": "up",
+        {"id": "waystone_kid_kite", "at": {"tx": CX - 2, "ty": CY + 3}, "facing": "up",
          "sprite": "npc_boy", "movement": "wander",
          "dialogue_ref": "npc.waystone_kid_kite",
          "requires_flag": "flag:q_round_kite",
@@ -444,6 +445,8 @@ m = {
 }
 
 if __name__ == "__main__":
+    # warp marker: the cart-hoist shaft-head down to the Cinderhead Deep
+    wm.add(m, wm.marker("hoist_hatch", "mine_hatch", CX - 1, 16, requires_flag="flag:shortcut_mine"))
     ok = mk.finalize(m, scale=3)
     print("PASS" if ok else "FAIL")
     raise SystemExit(0 if ok else 1)

@@ -1,0 +1,223 @@
+{
+  "name": "traverse_set",
+  "columns": 8,
+  "tiles": [
+    {
+      "file": "000_chute_v_0.png",
+      "role": "path"
+    },
+    {
+      "file": "001_chute_v_1.png",
+      "role": "path"
+    },
+    {
+      "file": "002_chute_h_0.png",
+      "role": "path"
+    },
+    {
+      "file": "003_chute_h_1.png",
+      "role": "path"
+    },
+    {
+      "file": "004_chev_down.png",
+      "role": "decor"
+    },
+    {
+      "file": "005_chev_left.png",
+      "role": "decor"
+    },
+    {
+      "file": "006_chev_up.png",
+      "role": "decor"
+    },
+    {
+      "file": "007_chev_right.png",
+      "role": "decor"
+    },
+    {
+      "file": "008_berm_w.png",
+      "role": "decor"
+    },
+    {
+      "file": "009_berm_n.png",
+      "role": "decor"
+    },
+    {
+      "file": "010_berm_e.png",
+      "role": "decor"
+    },
+    {
+      "file": "011_berm_s.png",
+      "role": "decor"
+    },
+    {
+      "file": "012_ramp_down.png",
+      "role": "decor"
+    },
+    {
+      "file": "013_ramp_left.png",
+      "role": "decor"
+    },
+    {
+      "file": "014_ramp_up.png",
+      "role": "decor"
+    },
+    {
+      "file": "015_ramp_right.png",
+      "role": "decor"
+    },
+    {
+      "file": "016_deck_v.png",
+      "role": "decor"
+    },
+    {
+      "file": "017_deck_v_n.png",
+      "role": "decor"
+    },
+    {
+      "file": "018_deck_v_s.png",
+      "role": "decor"
+    },
+    {
+      "file": "019_deck_h.png",
+      "role": "decor"
+    },
+    {
+      "file": "020_deck_h_w.png",
+      "role": "decor"
+    },
+    {
+      "file": "021_deck_h_e.png",
+      "role": "decor"
+    },
+    {
+      "file": "022_under_shade.png",
+      "role": "decor"
+    },
+    {
+      "file": "023_ladder.png",
+      "role": "decor"
+    },
+    {
+      "file": "024_ladder_top.png",
+      "role": "decor"
+    },
+    {
+      "file": "025_plank_v.png",
+      "role": "decor"
+    },
+    {
+      "file": "026_plank_h.png",
+      "role": "decor"
+    },
+    {
+      "file": "027_rail_h.png",
+      "role": "decor"
+    },
+    {
+      "file": "028_rail_v.png",
+      "role": "decor"
+    },
+    {
+      "file": "029_rail_ne.png",
+      "role": "decor"
+    },
+    {
+      "file": "030_rail_nw.png",
+      "role": "decor"
+    },
+    {
+      "file": "031_rail_se.png",
+      "role": "decor"
+    },
+    {
+      "file": "032_rail_sw.png",
+      "role": "decor"
+    },
+    {
+      "file": "033_rail_tee_n.png",
+      "role": "decor"
+    },
+    {
+      "file": "034_rail_tee_s.png",
+      "role": "decor"
+    },
+    {
+      "file": "035_rail_tee_e.png",
+      "role": "decor"
+    },
+    {
+      "file": "036_rail_tee_w.png",
+      "role": "decor"
+    },
+    {
+      "file": "037_rail_end_n.png",
+      "role": "decor"
+    },
+    {
+      "file": "038_rail_end_s.png",
+      "role": "decor"
+    },
+    {
+      "file": "039_rail_end_e.png",
+      "role": "decor"
+    },
+    {
+      "file": "040_rail_end_w.png",
+      "role": "decor"
+    },
+    {
+      "file": "041_glare_0.png",
+      "role": "ground"
+    },
+    {
+      "file": "042_glare_1.png",
+      "role": "ground"
+    },
+    {
+      "file": "043_face_rock_0.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "044_face_rock_1.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "045_face_rock_foot.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "046_face_gold_0.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "047_face_gold_1.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "048_face_gold_foot.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "049_face_ice_0.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "050_face_ice_1.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "051_face_ice_foot.png",
+      "role": "wall",
+      "collides": true
+    }
+  ]
+}

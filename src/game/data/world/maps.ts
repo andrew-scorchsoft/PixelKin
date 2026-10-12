@@ -192,7 +192,10 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   // lane): Wrackline Path -> the Sounding Cave -> Lanternfall Road.
   wrackline_path: {
     json: 'assets/maps/wrackline_path.json',
-    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',   // the Wrack Cut trestle (traversal pass 2026-10)
+    },
     kind: 'route',
     music: 'assets/audio/music/dimglass-coast-b.mp3',
     battle_backdrops: [
@@ -266,6 +269,42 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/lowleaf-hollow-a.webp',
       'assets/backgrounds/battle/lowleaf-hollow-b.webp',
     ],
+  },
+  // Wayward Rise + the Wayward Arms (2026-10): the hilltop north of the Wanderwood
+  // and its old country hotel — a quiet reward beyond S5 (the bar, the corner
+  // chair, the stranger; content/regions/hotel.ts). No encounters, no backdrops.
+  wayward_rise: {
+    json: 'assets/maps/wayward_rise.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'town',
+    // the wood's own bed carries on up the hill (it resumes, no restart)
+    music: 'assets/audio/music/lowleaf-hollow-b.mp3',
+  },
+  wayward_arms: {
+    json: 'assets/maps/wayward_arms.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/inn-rest.mp3',
+  },
+  // Paul's House (2026-10): the Booji-Wooji Man's three-storey home beside the
+  // Arms (kitchen-hall / T-shirt museum / Lottie's attic; content/regions/paul.ts).
+  paul_house_1: { // the kitchen-hall
+    json: 'assets/maps/paul_house_1.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-sunny.mp3',
+  },
+  paul_house_2: { // the T-shirt museum
+    json: 'assets/maps/paul_house_2.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-sunny.mp3',
+  },
+  paul_house_3: { // Lottie's attic
+    json: 'assets/maps/paul_house_3.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-sunny.mp3',
   },
   pearlmoor_lumenary: {
     json: 'assets/maps/pearlmoor_lumenary.json',
@@ -679,7 +718,10 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   // east mouth to Galehigh's west gate — three ledged tiers, lv 28-31.
   cinderwind_scarp: {
     json: 'assets/maps/cinderwind_scarp.json',
-    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',   // the haulers' ladders (traversal pass 2026-10)
+    },
     kind: 'route',
     music: 'assets/audio/music/windward-stair-a.mp3',
     battle_backdrops: [
@@ -845,7 +887,10 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   // the far mouth glows Solarium-gold. The loneliest road in the game.
   hushfrost_pass_i: {
     json: 'assets/maps/hushfrost_pass_i.json',
-    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',   // the glare pool (traversal pass 2026-10)
+    },
     kind: 'route',
     music: 'assets/audio/music/hushfrost-pass-a.mp3',
     battle_backdrops: [
@@ -918,7 +963,10 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   // reliquary opens off segment II.
   sunvault_climb_i: {
     json: 'assets/maps/sunvault_climb_i.json',
-    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+    },
     kind: 'route',
     music: 'assets/audio/music/sunvault-climb-a.mp3',
     battle_backdrops: [
@@ -928,7 +976,10 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   },
   sunvault_climb_ii: {
     json: 'assets/maps/sunvault_climb_ii.json',
-    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+    },
     kind: 'route',
     music: 'assets/audio/music/sunvault-climb-a.mp3',
     battle_backdrops: [
@@ -1211,6 +1262,230 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   // Further areas are registered here as their JSON + tilesets are authored.
   // See docs/world/atlas.md for the full area list and their music/graphics briefs.
   // Their battle backdrops are already rendered — see UPCOMING_BATTLE_BACKDROPS below.
+  // ---- THE WILD WAYS (09-the-wild-ways.md, 2026-10) — one block per area lane ----
+  // the Wick-Run (A): stacks the traverse_set accent kit (chutes, ramps, decks).
+  wickrun_crest: {
+    json: 'assets/maps/wickrun_crest.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/wickrun.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/wickrun-a.webp', 'assets/backgrounds/battle/wickrun-b.webp'],
+  },
+  wickrun_chute: {
+    json: 'assets/maps/wickrun_chute.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/wickrun.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/wickrun-a.webp', 'assets/backgrounds/battle/wickrun-b.webp'],
+  },
+  wickrun_trestles: {
+    json: 'assets/maps/wickrun_trestles.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/wickrun.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/wickrun-a.webp', 'assets/backgrounds/battle/wickrun-b.webp'],
+  },
+  wickrun_traverse: {
+    json: 'assets/maps/wickrun_traverse.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/wickrun.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/wickrun-a.webp', 'assets/backgrounds/battle/wickrun-b.webp'],
+  },
+  wickrun_lower: {
+    json: 'assets/maps/wickrun_lower.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/wickrun.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/wickrun-a.webp', 'assets/backgrounds/battle/wickrun-b.webp'],
+  },
+  wickrun_foot: {
+    json: 'assets/maps/wickrun_foot.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/wickrun.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/wickrun-a.webp', 'assets/backgrounds/battle/wickrun-b.webp'],
+  },
+  // the Mirelights (B): east of Saltreach Fen I over Ansel's ferry. Planks + the
+  // deep Glassmere (deepwater_set: no Gift swims it) + currents + the trestle.
+  mirelight_landing: {
+    json: 'assets/maps/mirelight_landing.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/mirelight.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/mirelight-a.webp', 'assets/backgrounds/battle/mirelight-b.webp'],
+  },
+  mirelight_glassmere: {
+    json: 'assets/maps/mirelight_glassmere.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/mirelight.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/mirelight-a.webp', 'assets/backgrounds/battle/mirelight-b.webp'],
+  },
+  mirelight_chapel: {
+    json: 'assets/maps/mirelight_chapel.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/mirelight.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/mirelight-b.webp', 'assets/backgrounds/battle/mirelight-a.webp'],
+  },
+  // Lanthorne's crypt under the chapel — the legendary's rest (dark: the lamp's reveal mask)
+  lanthorne_hollow: {
+    json: 'assets/maps/lanthorne_hollow.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/mirelight.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/mirelight-b.webp'],
+  },
+  // the Rimeway (C): ladders up glacier bands, the Glare (ice slides), the Rime Gate
+  rimeway_ascent: {
+    json: 'assets/maps/rimeway_ascent.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/rimeway.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/rimeway-a.webp', 'assets/backgrounds/battle/rimeway-b.webp'],
+  },
+  rimeway_fold: {
+    json: 'assets/maps/rimeway_fold.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/rimeway.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/rimeway-a.webp', 'assets/backgrounds/battle/rimeway-b.webp'],
+  },
+  rimeway_descent: {
+    json: 'assets/maps/rimeway_descent.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+      coldfog_set: 'assets/tilesets/coldfog_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/rimeway.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/rimeway-a.webp', 'assets/backgrounds/battle/rimeway-b.webp'],
+  },
+  // the Reckoning-Works (C2, side quest "Measured in Miles"): the clerks' engine hall on
+  // the Fold. Busy clockwork until the quest's end; then the engines play the Aurora
+  // Roll (what the wandering clerks found) as the hall's bed.
+  reckoning_works: {
+    json: 'assets/maps/reckoning_works.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/reckoning-aurora.mp3',
+    music_when: [{ unless: 'flag:q_works_done', music: 'assets/audio/music/reckoning-works.mp3' }],
+  },
+  // the Old Seams (D): dark caves on the seams_set accent kit (shafts, cinder, rails)
+  // + traverse_set (planks, ladders, scree slopes).
+  old_seams_i: {
+    json: 'assets/maps/old_seams_i.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+      seams_set: 'assets/tilesets/seams_set.webp',
+    },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/old-seams.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/old-seams-a.webp', 'assets/backgrounds/battle/old-seams-b.webp'],
+  },
+  old_seams_ii: {
+    json: 'assets/maps/old_seams_ii.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+      seams_set: 'assets/tilesets/seams_set.webp',
+    },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/old-seams.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/old-seams-a.webp', 'assets/backgrounds/battle/old-seams-b.webp'],
+  },
+  old_seams_iii: {
+    json: 'assets/maps/old_seams_iii.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+      seams_set: 'assets/tilesets/seams_set.webp',
+    },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/old-seams.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/old-seams-a.webp', 'assets/backgrounds/battle/old-seams-b.webp'],
+  },
+  emberroot_heart: {
+    json: 'assets/maps/emberroot_heart.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      seams_set: 'assets/tilesets/seams_set.webp',
+    },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/old-seams.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/old-seams-a.webp', 'assets/backgrounds/battle/old-seams-b.webp'],
+  },
+  // Sunvault Climb rebuild (S): III the Gilt Face, IV the Sun Ledges (I/II re-registered above
+  // with the traverse_set for their ladders)
+  sunvault_climb_iii: {
+    json: 'assets/maps/sunvault_climb_iii.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/sunvault-climb-b.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/sunvault-climb-a.webp', 'assets/backgrounds/battle/sunvault-climb-b.webp'],
+  },
+  sunvault_climb_iv: {
+    json: 'assets/maps/sunvault_climb_iv.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/sunvault-climb-b.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/sunvault-climb-a.webp', 'assets/backgrounds/battle/sunvault-climb-b.webp'],
+  },
 };
 
 /**

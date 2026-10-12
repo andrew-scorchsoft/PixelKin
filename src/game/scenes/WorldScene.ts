@@ -43,6 +43,7 @@ import { InputController, InputAction } from '@game/systems/input/InputControlle
 import { loadMap, RuntimeMap } from '@game/systems/world/MapLoader';
 import { renderMap, tickAnimatedTiles, tickBobs } from '@game/systems/world/MapRenderer';
 import type { MapRenderResult } from '@game/systems/world/MapRenderer';
+import { Traversal } from '@game/systems/world/Traversal';
 import { CollisionGrid } from '@game/systems/world/CollisionGrid';
 import { EncounterSystem } from '@game/systems/world/EncounterSystem';
 import { loadCreatureSprite } from '@game/systems/sprites/CreatureSprites';
@@ -51,7 +52,7 @@ import { MusicDirector } from '@game/systems/audio/MusicDirector';
 import { TRAINER_EYES_KEY, TRAINER_EYES_URL, opensWithChallenge } from '@game/systems/audio/trainerCue';
 import { Sfx } from '@game/systems/audio/Sfx';
 import { FlagStore } from '@game/systems/flags/FlagStore';
-import { Player } from '@game/entities/Player';
+import { Player, type TraverseHooks } from '@game/entities/Player';
 import { Npc } from '@game/entities/Npc';
 import type { Actor } from '@game/entities/Actor';
 import { STEP_MS } from '@game/entities/Actor';
@@ -119,6 +120,8 @@ export interface WorldSceneData {
 
 /** Depth band for actors: above deco (5), below the 'above' layer (20). */
 const ACTOR_DEPTH = 10;
+/** The Wick-Run's rented bike (a key item; ride maps ride it). */
+const RUNNER_ITEM = 'runner';
 
 /**
  * A first-entry onboarding tutorial: the first time the player walks into `map`
@@ -172,6 +175,11 @@ export class WorldScene extends Phaser.Scene {
 
   private map!: RuntimeMap;
   private collision!: CollisionGrid;
+  /** The traversal kit's rules for this map (flows/spans/jumps — 09-the-wild-ways §1). */
+  private traversal?: Traversal;
+  private traverseHooks?: TraverseHooks;
+  /** Maps where the "too steep" line has played this visit (once per map). */
+  private steepWarnedOn = '';
   private encounters!: EncounterSystem;
   private render?: MapRenderResult;
   private player!: Player;
@@ -346,6 +354,8 @@ export class WorldScene extends Phaser.Scene {
       // current map while playtesting.
       document.title = `PixelKin — ${map.def.display_name}`;
       this.collision = new CollisionGrid(map);
+      this.traversal = new Traversal(map.def, (f) => this.flags.get(f));
+      this.traverseHooks = this.traversal.active ? this.makeTraverseHooks(this.traversal) : undefined;
       this.encounters = new EncounterSystem(map);
       this.render = await renderMap(this, map);
       this.cameras.main.setBounds(0, 0, this.render.pixelWidth, this.render.pixelHeight);
@@ -353,6 +363,7 @@ export class WorldScene extends Phaser.Scene {
       const safe = (footFirst ? this.findFootTile(spawn.tx, spawn.ty) : undefined) ??
         this.findSafeTile(spawn.tx, spawn.ty);
       this.player = new Player(this, safe.tx, safe.ty, facing ?? 'down');
+      this.player.settleOn(this.traversal);
       this.cameras.main.startFollow(this.player.sprite, true, 1, 1);
 
       const stage = this.staging;
@@ -496,6 +507,39 @@ export class WorldScene extends Phaser.Scene {
     this.flashSaveGlyph();
   }
 
+  /** A running time-trial clock (the `timer` op): which run, since when, its HUD. */
+  private runClock?: { id: string; startedAt: number; text: Phaser.GameObjects.Text };
+
+  private startRunClock(id: string): void {
+    this.runClock?.text.destroy();
+    const { width } = this.cameras.main;
+    const text = makeText(this, width - 4, 3, '0.0', theme.text.accent)
+      .setOrigin(1, 0)
+      .setScrollFactor(0)
+      .setDepth(theme.depth.overlayDim + 1);
+    this.runClock = { id, startedAt: this.time.now, text };
+  }
+
+  private stopRunClock(id: string): number | undefined {
+    const clock = this.runClock;
+    if (!clock || clock.id !== id) return undefined;
+    clock.text.destroy();
+    this.runClock = undefined;
+    return this.time.now - clock.startedAt;
+  }
+
+  /** Tick the time-trial HUD (a clock survives warps; the HUD is camera-fixed). */
+  private tickRunClock(): void {
+    const clock = this.runClock;
+    if (!clock) return;
+    if (!clock.text.active) {
+      this.startRunClock(clock.id);
+      if (this.runClock) this.runClock.startedAt = clock.startedAt;
+      return;
+    }
+    clock.text.setText(((this.time.now - clock.startedAt) / 1000).toFixed(1));
+  }
+
   private saveGlyph?: Phaser.GameObjects.Text;
   private flashSaveGlyph(): void {
     if (this.saveGlyph) return; // one at a time is plenty
@@ -628,6 +672,7 @@ export class WorldScene extends Phaser.Scene {
     'nightreach_inn',
     'sunken_solarium_lumenary',
     'wickstead_school', // Master Mallow's lie-down in the lamp-school
+    'wayward_arms', // the corner chair: a night talked away (content/regions/hotel.ts)
   ]);
 
   /**
@@ -676,7 +721,7 @@ export class WorldScene extends Phaser.Scene {
       return;
     }
     this.modal = true;
-    const completed = await runCutscene(this.cutsceneContext(), steps);
+    const completed = await this.playScene(steps);
     if (completed) {
       this.flags.set(t.seen_flag);
       void this.persist();
@@ -734,7 +779,7 @@ export class WorldScene extends Phaser.Scene {
         cam.stopFollow();
         cam.centerOn(it.stage.camera.tx * TILE_SIZE + TILE_SIZE / 2, it.stage.camera.ty * TILE_SIZE + TILE_SIZE / 2);
         await fadeIn(this, 700);
-        await runCutscene(this.cutsceneContext(), steps);
+        await this.playScene(steps);
         await fadeOut(this, 700);
       }
     } finally {
@@ -1056,6 +1101,42 @@ export class WorldScene extends Phaser.Scene {
     return true;
   };
 
+  /** On a ride map with the rented runner in the pack. */
+  private isRiding(): boolean {
+    return !!this.map?.def.ride && (this.inventory.items[RUNNER_ITEM] ?? 0) > 0;
+  }
+
+  /** The traversal kit's view of this scene: collision, bodies, the rider. */
+  private makeTraverseHooks(rules: Traversal): TraverseHooks {
+    const isRiding = (): boolean => this.isRiding();
+    return {
+      rules,
+      ctx: {
+        canEnter: (tx, ty) => this.playerCanEnter(tx, ty),
+        occupied: (tx, ty) => !!this.npcAt(tx, ty),
+        groundOpen: (tx, ty) => !this.collision.isBlocked(tx, ty, this.abilities),
+        get riding() {
+          return isRiding();
+        },
+      },
+      onLeap: () => {
+        void this.sfx.playVariant('world-ledge-hop', ['a', 'b']);
+        this.ambience?.noteHop(this.player, this.player.facing, STEP_MS * 3);
+      },
+      onSteep: () => {
+        if (this.modal || this.steepWarnedOn === this.map.def.id) {
+          void this.sfx.playVariant('world-bump', ['a', 'b']);
+          return;
+        }
+        this.steepWarnedOn = this.map.def.id;
+        this.modal = true;
+        void this.runDialogue('world.too_steep').then(() => {
+          this.modal = false;
+        });
+      },
+    };
+  }
+
   private npcCanEnter = (tx: number, ty: number): boolean => {
     if (this.collision.isBlocked(tx, ty, this.abilities)) return false;
     if (this.player && this.player.tx === tx && this.player.ty === ty) return false;
@@ -1081,7 +1162,7 @@ export class WorldScene extends Phaser.Scene {
         if (steps) {
           this.modal = true;
           const cue = this.startChallengeCue(steps);
-          const completed = await runCutscene(this.cutsceneContext(), steps);
+          const completed = await this.playScene(steps);
           if (cue) this.endChallengeCue();
           if (completed) void this.persist();
           this.modal = false;
@@ -1158,7 +1239,7 @@ export class WorldScene extends Phaser.Scene {
       let banked = firstMeet;
       if (event) {
         const steps = event.script ? getScript(event.script) : undefined;
-        const completed = steps ? await runCutscene(this.cutsceneContext(), steps) : true;
+        const completed = steps ? await this.playScene(steps) : true;
         if (completed) {
           this.flags.set(event.flag);
           following = event.follow_ms ?? 0;
@@ -1205,7 +1286,7 @@ export class WorldScene extends Phaser.Scene {
       if (!steps) return;
       this.modal = true;
       const cue = this.startChallengeCue(steps);
-      const completed = await runCutscene(this.cutsceneContext(), steps);
+      const completed = await this.playScene(steps);
       if (cue) this.endChallengeCue();
       // Only bank progress if the scene actually finished (a lost battle aborts it).
       if (completed) {
@@ -1268,6 +1349,13 @@ export class WorldScene extends Phaser.Scene {
       onGiveItem: (item, count) => {
         this.inventory.items[item] = (this.inventory.items[item] ?? 0) + count;
       },
+      onTakeItem: (item, count) => {
+        const left = (this.inventory.items[item] ?? 0) - count;
+        if (left > 0) this.inventory.items[item] = left;
+        else delete this.inventory.items[item];
+      },
+      timerStart: (id) => this.startRunClock(id),
+      timerStop: (id) => this.stopRunClock(id),
       hasItem: (item) => (this.inventory.items[item] ?? 0) > 0,
       onGiveMoney: (amount) => {
         this.money = Math.max(0, this.money + Math.floor(amount));
@@ -1489,7 +1577,7 @@ export class WorldScene extends Phaser.Scene {
       { op: 'face', actor: npc.id, facing: npcFacing },
       { op: 'face', actor: 'player', facing: playerFacing },
     ];
-    const completed = await runCutscene(this.cutsceneContext(), [...approach, ...steps]);
+    const completed = await this.playScene([...approach, ...steps]);
     if (cue) this.endChallengeCue();
     if (completed) {
       if (npc.placement.defeated_flag) this.flags.set(npc.placement.defeated_flag, true);
@@ -1812,6 +1900,16 @@ export class WorldScene extends Phaser.Scene {
     this.modal = false;
   }
 
+  /** Run a cutscene; any `setLead` swap it left standing (a scene that used the
+   *  lead for a meeting, not a fight) is undone when it ends. */
+  private async playScene(steps: Parameters<typeof runCutscene>[1]): Promise<boolean> {
+    try {
+      return await runCutscene(this.cutsceneContext(), steps);
+    } finally {
+      this.restoreLead();
+    }
+  }
+
   /** Undo a `setLead` swap once its set-piece is over — the fight opened with
    *  that kin in front, but the player's own lead order comes back after. */
   private restoreLead(): void {
@@ -1934,6 +2032,7 @@ export class WorldScene extends Phaser.Scene {
             void this.sfx.playVariant('world-ledge-hop', ['a', 'b']);
             this.ambience?.noteHop(this.player, this.player.facing, STEP_MS * 2);
           },
+          this.traverseHooks,
         );
       }
       for (const npc of this.npcs) {
@@ -1961,6 +2060,9 @@ export class WorldScene extends Phaser.Scene {
     // Standing on water the vesperlamp carries you over: the player swims rather
     // than walks (a swim sheet swap, with a procedural fallback — see Player).
     // Checked every frame so it survives warps, blackouts and cutscene walks.
+    this.tickRunClock();
+    // Ride maps (the Wick-Run): holding the rented runner, you ride it.
+    this.player.setRiding(this.isRiding());
     const wasSwimming = this.player.isSwimming;
     this.player.setSwimming(this.map.hasTerrainAt(this.player.tx, this.player.ty, 'water'));
     // A small splash as the lamp carries you onto (or off) open water — only on

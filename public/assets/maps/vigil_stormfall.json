@@ -116,6 +116,18 @@
       "h": 1,
       "solid": false,
       "walk_under": true
+    },
+    {
+      "id": "seam_home",
+      "sprite": "markers_vigil_seam",
+      "at": {
+        "tx": 11,
+        "ty": 16
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false
     }
   ],
   "warps": [

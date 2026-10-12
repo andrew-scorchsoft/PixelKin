@@ -261,6 +261,19 @@
       "requires_flag": "flag:dawn"
     },
     {
+      "id": "vigil_seam_murkfall",
+      "sprite": "markers_vigil_seam",
+      "at": {
+        "tx": 14,
+        "ty": 23
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false,
+      "requires_flag": "flag:vigil_reading_5"
+    },
+    {
       "id": "relit_lantern_0",
       "sprite": "saltreach_reed_lantern_lit",
       "at": {
@@ -380,6 +393,36 @@
       "facing": "left",
       "requires_ability": "emberward",
       "blocked_ref": "sign.coldfog_backdoor",
+      "transition": "fade"
+    },
+    {
+      "id": "to_rimeway",
+      "at": {
+        "tx": 29,
+        "ty": 16
+      },
+      "trigger": "step_on",
+      "to_map": "rimeway_descent",
+      "to": {
+        "tx": 1,
+        "ty": 14
+      },
+      "facing": "right",
+      "transition": "fade"
+    },
+    {
+      "id": "to_rimeway_s",
+      "at": {
+        "tx": 29,
+        "ty": 17
+      },
+      "trigger": "step_on",
+      "to_map": "rimeway_descent",
+      "to": {
+        "tx": 1,
+        "ty": 15
+      },
+      "facing": "right",
       "transition": "fade"
     },
     {
@@ -1618,8 +1661,8 @@
         305,
         302,
         305,
-        390,
-        401,
+        393,
+        402,
         400,
         392,
         302,
@@ -1648,8 +1691,8 @@
         302,
         302,
         302,
-        390,
-        401,
+        302,
+        302,
         401,
         392,
         305,
@@ -1678,8 +1721,8 @@
         303,
         302,
         303,
-        390,
-        391,
+        302,
+        303,
         391,
         397,
         389,
@@ -1708,8 +1751,8 @@
         302,
         302,
         387,
-        396,
-        400,
+        388,
+        388,
         400,
         400,
         397,

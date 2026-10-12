@@ -844,6 +844,30 @@
       "h": 2,
       "overhang": 1,
       "walk_under": true
+    },
+    {
+      "id": "spoke_mouth_low",
+      "sprite": "markers_side_mouth_e",
+      "at": {
+        "tx": 20,
+        "ty": 5
+      },
+      "w": 2,
+      "h": 3,
+      "solid": false,
+      "bob": false
+    },
+    {
+      "id": "spoke_mouth_high",
+      "sprite": "markers_side_mouth_w",
+      "at": {
+        "tx": 0,
+        "ty": 6
+      },
+      "w": 2,
+      "h": 3,
+      "solid": false,
+      "bob": false
     }
   ],
   "warps": [

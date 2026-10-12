@@ -76,7 +76,22 @@
     "weight_kg": 800,
     "habitat": "east"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "old_seams_iii",
+      "terrain": "cave",
+      "rarity": "very_rare",
+      "min": 33,
+      "max": 33
+    },
+    {
+      "area": "old_seams_iii",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 62,
+      "max": 65
+    }
+  ],
   "scripted": true,
   "art": {
     "silhouette": "Grand stag-form; body is smooth translucent white crystal shot through with a continuous rainbow refraction; diamond-branching antlers reach nearly to cave ceilings; four crystal-column legs; eyes emit soft white radiance; when still it is indistinguishable from a perfect crystal formation.",

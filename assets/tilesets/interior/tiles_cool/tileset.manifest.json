@@ -50,6 +50,174 @@
     {
       "file": "cap_br.png",
       "collides": true
+    },
+    {
+      "file": "band_x_x.png",
+      "collides": true
+    },
+    {
+      "file": "band_x_ne.png",
+      "collides": true
+    },
+    {
+      "file": "band_x_nw.png",
+      "collides": true
+    },
+    {
+      "file": "band_x_nenw.png",
+      "collides": true
+    },
+    {
+      "file": "band_x_se.png",
+      "collides": true
+    },
+    {
+      "file": "band_x_nese.png",
+      "collides": true
+    },
+    {
+      "file": "band_x_nwse.png",
+      "collides": true
+    },
+    {
+      "file": "band_x_nenwse.png",
+      "collides": true
+    },
+    {
+      "file": "band_x_sw.png",
+      "collides": true
+    },
+    {
+      "file": "band_x_nesw.png",
+      "collides": true
+    },
+    {
+      "file": "band_x_nwsw.png",
+      "collides": true
+    },
+    {
+      "file": "band_x_nenwsw.png",
+      "collides": true
+    },
+    {
+      "file": "band_x_sesw.png",
+      "collides": true
+    },
+    {
+      "file": "band_x_nesesw.png",
+      "collides": true
+    },
+    {
+      "file": "band_x_nwsesw.png",
+      "collides": true
+    },
+    {
+      "file": "band_x_nenwsesw.png",
+      "collides": true
+    },
+    {
+      "file": "band_n_se.png",
+      "collides": true
+    },
+    {
+      "file": "band_n_sw.png",
+      "collides": true
+    },
+    {
+      "file": "band_n_sesw.png",
+      "collides": true
+    },
+    {
+      "file": "band_s_ne.png",
+      "collides": true
+    },
+    {
+      "file": "band_s_nw.png",
+      "collides": true
+    },
+    {
+      "file": "band_s_nenw.png",
+      "collides": true
+    },
+    {
+      "file": "band_ns_x.png",
+      "collides": true
+    },
+    {
+      "file": "band_e_nw.png",
+      "collides": true
+    },
+    {
+      "file": "band_e_sw.png",
+      "collides": true
+    },
+    {
+      "file": "band_e_nwsw.png",
+      "collides": true
+    },
+    {
+      "file": "band_ne_sw.png",
+      "collides": true
+    },
+    {
+      "file": "band_se_nw.png",
+      "collides": true
+    },
+    {
+      "file": "band_nse_x.png",
+      "collides": true
+    },
+    {
+      "file": "band_w_ne.png",
+      "collides": true
+    },
+    {
+      "file": "band_w_se.png",
+      "collides": true
+    },
+    {
+      "file": "band_w_nese.png",
+      "collides": true
+    },
+    {
+      "file": "band_nw_se.png",
+      "collides": true
+    },
+    {
+      "file": "band_sw_ne.png",
+      "collides": true
+    },
+    {
+      "file": "band_nsw_x.png",
+      "collides": true
+    },
+    {
+      "file": "band_ew_x.png",
+      "collides": true
+    },
+    {
+      "file": "band_new_x.png",
+      "collides": true
+    },
+    {
+      "file": "band_sew_x.png",
+      "collides": true
+    },
+    {
+      "file": "band_nsew_x.png",
+      "collides": true
+    },
+    {
+      "file": "face_end_w.png",
+      "collides": true
+    },
+    {
+      "file": "face_end_e.png",
+      "collides": true
+    },
+    {
+      "file": "face_end_ew.png",
+      "collides": true
     }
   ]
 }

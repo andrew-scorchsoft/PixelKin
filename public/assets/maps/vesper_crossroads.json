@@ -1227,6 +1227,19 @@
       "h": 5,
       "overhang": 3,
       "walk_under": true
+    },
+    {
+      "id": "hoist_hatch",
+      "sprite": "markers_mine_hatch",
+      "at": {
+        "tx": 8,
+        "ty": 16
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false,
+      "requires_flag": "flag:shortcut_mine"
     }
   ],
   "warps": [
@@ -1738,7 +1751,7 @@
       "id": "waystone_kid",
       "at": {
         "tx": 7,
-        "ty": 11
+        "ty": 12
       },
       "facing": "up",
       "sprite": "kite_child",
@@ -1751,7 +1764,7 @@
       "id": "waystone_kid_kite",
       "at": {
         "tx": 7,
-        "ty": 11
+        "ty": 12
       },
       "facing": "up",
       "sprite": "kite_child",
@@ -1880,7 +1893,7 @@
         "ty": 8
       },
       "facing": "left",
-      "sprite": "andrew_ward",
+      "sprite": "andrew_coder",
       "movement": "look_around",
       "dialogue_ref": "script.andrew_road"
     },

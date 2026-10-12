@@ -577,7 +577,7 @@ owed += pt.cache(m, cid="solarium_amber", at=(26, 16))    # Moth-amber, ON the s
 owed += pt.cache(m, cid="solarium_wicks", at=(17, 4))     # loose wicks — pays the
                                                           # off-lane pocket north of
                                                           # the causeway (§3a r4)
-owed += pt.cache(m, cid="solarium_charge", at=(15, 24))   # a charge, Pool B islet
+owed += pt.cache(m, cid="solarium_charge", at=(15, 25))   # a charge, Pool B islet
 
 # ---- colonnade + garden dressing ----------------------------------------------------
 m["objects"] += [

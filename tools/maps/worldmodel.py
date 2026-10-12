@@ -16,6 +16,15 @@ Movement semantics mirror the engine (CollisionGrid/Player):
   * A `ledge` tile is hopped, never stood on: moving in its direction from the
     tile before it lands on the tile beyond it (one directed edge).
   * NPCs block their anchor tile (flag-pair swaps share a tile — dedupe).
+  * THE TRAVERSAL KIT (2026-10, mirror of src/game/systems/world/Traversal.ts):
+    `flows` (slope/rail: carried `dir`, never entered or left uphill, a slope
+    steers left/right; ice: a step onto ice slides on to its stop — modelled as
+    one macro move), `spans` (a deck tile is stood on regardless of its own
+    collision and walked along its axis only; `under` lets you pass beneath it
+    across the axis in one move), `jumps` (riders clear `length` tiles; a `ride`
+    map is assumed ridden — its rental gate is the content's job). A lever-
+    switched flow (`requires_flag`/`hidden_when_flag`) is modelled in BOTH
+    switch states (the union), so reach reflects every lever setting.
 """
 from __future__ import annotations
 
@@ -139,6 +148,161 @@ class MapModel:
         self.triggers = m.get("triggers", [])
         self.npcs = live_npcs
 
+        # ---- the traversal kit (Traversal.ts) ----
+        self.flows = m.get("flows", []) or []
+        self.spans = m.get("spans", []) or []
+        self.jumps = {(j["at"]["tx"], j["at"]["ty"]): j for j in (m.get("jumps", []) or [])}
+        self.riding = bool(m.get("ride"))
+        self.kit = bool(self.flows or self.spans or self.jumps)
+        self._flow_tiles = []
+        for f in self.flows:
+            cells = set()
+            r = f.get("rect")
+            if r:
+                cells |= {(x, y) for y in range(r["ty"], r["ty"] + r["h"])
+                          for x in range(r["tx"], r["tx"] + r["w"])}
+            cells |= {(t["tx"], t["ty"]) for t in f.get("tiles", []) or []}
+            self._flow_tiles.append((f, cells))
+        self._span_at = {}
+        for sp in self.spans:
+            r = sp["rect"]
+            for y in range(r["ty"], r["ty"] + r["h"]):
+                for x in range(r["tx"], r["tx"] + r["w"]):
+                    self._span_at.setdefault((x, y), sp)
+        # switch states to model: unconditional only, or every switch thrown
+        self._states = [False, True] if any(
+            f.get("requires_flag") or f.get("hidden_when_flag") for f in self.flows) else [False]
+
+    @property
+    def one_way(self) -> bool:
+        """Any one-way feature: ledges, chutes, rails or ramps."""
+        return any(self.ledge) or any(f.get("kind") in ("slope", "rail") for f in self.flows) \
+            or bool(self.jumps)
+
+    # ---- traversal kit helpers --------------------------------------------
+    def flow_at(self, x: int, y: int, thrown: bool = False):
+        for f, cells in reversed(self._flow_tiles):
+            if (x, y) not in cells:
+                continue
+            if f.get("requires_flag") and not thrown:
+                continue
+            if f.get("hidden_when_flag") and thrown:
+                continue
+            return f
+        return None
+
+    def span_at(self, x: int, y: int):
+        return self._span_at.get((x, y))
+
+    @staticmethod
+    def _along(sp, dx, dy) -> bool:
+        return (dy == 0) if sp["axis"] == "h" else (dx == 0)
+
+    def _ground_open(self, x, y, abilities, npc_block) -> bool:
+        if not self.in_bounds(x, y):
+            return False
+        i = y * self.w + x
+        if self.solid[i] or self.ledge[i]:
+            return False
+        if self.ability[i] is not None and self.ability[i] not in (abilities or set()):
+            return False
+        return not (npc_block and (x, y) in npc_block)
+
+    def _enterable(self, x, y, dx, dy, abilities, npc_block, thrown) -> bool:
+        if not self.in_bounds(x, y):
+            return False
+        f = self.flow_at(x, y, thrown)
+        if f and f.get("kind") != "ice" and LEDGE_DIR.get(f.get("dir")) == (-dx, -dy):
+            return False
+        sp = self.span_at(x, y)
+        if sp:
+            return self._along(sp, dx, dy) and not (npc_block and (x, y) in npc_block)
+        return self._ground_open(x, y, abilities, npc_block)
+
+    def _plan(self, x, y, dx, dy, abilities, npc_block, thrown):
+        """Traversal.plan: the tile a press toward (dx,dy) ends on, or None."""
+        here = self.span_at(x, y)
+        if here and not self._along(here, dx, dy):
+            return None
+        fh = self.flow_at(x, y, thrown)
+        if fh and fh.get("kind") != "ice" and LEDGE_DIR.get(fh.get("dir")) == (-dx, -dy):
+            return None
+        tx, ty = x + dx, y + dy
+        j = self.jumps.get((tx, ty)) if self.riding else None
+        if j and LEDGE_DIR.get(j["dir"]) == (dx, dy):
+            n = j.get("length", 3)
+            lx, ly = tx + dx * (n - 1), ty + dy * (n - 1)
+            if self._enterable(lx, ly, dx, dy, abilities, npc_block, thrown):
+                return lx, ly
+        sp = self.span_at(tx, ty)
+        if sp:
+            if self._along(sp, dx, dy):
+                return None if (npc_block and (tx, ty) in npc_block) else (tx, ty)
+            if not sp.get("under"):
+                return None
+            cx, cy = tx, ty
+            while True:
+                s2 = self.span_at(cx, cy)
+                if not (s2 and s2.get("under") and not self._along(s2, dx, dy)):
+                    break
+                if not self._ground_open(cx, cy, abilities, npc_block):
+                    return None
+                cx, cy = cx + dx, cy + dy
+            if self.span_at(cx, cy) or not self._enterable(cx, cy, dx, dy, abilities, npc_block, thrown):
+                return None
+            return cx, cy
+        if not self._enterable(tx, ty, dx, dy, abilities, npc_block, thrown):
+            return None
+        return tx, ty
+
+    def _slide(self, x, y, dx, dy, abilities, npc_block, thrown):
+        """Glare ice: from a tile just stepped onto, slide on to where it stops."""
+        seen = set()
+        while self.flow_at(x, y, thrown) and self.flow_at(x, y, thrown).get("kind") == "ice":
+            if (x, y) in seen:
+                break
+            seen.add((x, y))
+            nxt = self._plan(x, y, dx, dy, abilities, npc_block, thrown)
+            if nxt is None:
+                break
+            x, y = nxt
+        return x, y
+
+    def _kit_moves(self, x, y, abilities, npc_block):
+        out = set()
+        for thrown in self._states:
+            def go(dx, dy):
+                t = self._plan(x, y, dx, dy, abilities, npc_block, thrown)
+                if t is None:
+                    # a blocked press may still be a ledge hop
+                    lx, ly = x + dx, y + dy
+                    if self.in_bounds(lx, ly) and self.ledge[ly * self.w + lx] \
+                            and LEDGE_DIR.get(self.ledge[ly * self.w + lx]) == (dx, dy) \
+                            and self._ground_open(lx + dx, ly + dy, abilities, npc_block):
+                        return lx + dx, ly + dy
+                    return None
+                if t != (x + dx, y + dy) and abs(t[0] - x) + abs(t[1] - y) > 1:
+                    return t      # a leap / underpass lands where it lands
+                return self._slide(t[0], t[1], dx, dy, abilities, npc_block, thrown)
+
+            f = self.flow_at(x, y, thrown)
+            if f and f.get("kind") in ("slope", "rail") and f.get("dir") in LEDGE_DIR:
+                cdx, cdy = LEDGE_DIR[f["dir"]]
+                carried = go(cdx, cdy)
+                if carried is not None:
+                    out.add(carried)
+                    if f["kind"] == "slope":
+                        for sdx, sdy in ((cdy, cdx), (-cdy, -cdx)):
+                            t = go(sdx, sdy)
+                            if t is not None:
+                                out.add(t)
+                    continue
+            for dx, dy in DIRS.values():
+                t = go(dx, dy)
+                if t is not None:
+                    out.add(t)
+        return out
+
     # ---- cells -------------------------------------------------------------
     def in_bounds(self, x: int, y: int) -> bool:
         return 0 <= x < self.w and 0 <= y < self.h
@@ -148,6 +312,8 @@ class MapModel:
         """Can the player occupy this tile? Ledges are hopped, never stood on."""
         if not self.in_bounds(x, y):
             return False
+        if self.kit and (x, y) in self._span_at:
+            return not (npc_block and (x, y) in npc_block)   # a deck ignores what's under it
         i = y * self.w + x
         if self.solid[i] or self.ledge[i]:
             return False
@@ -159,7 +325,10 @@ class MapModel:
 
     def moves_from(self, x: int, y: int, *, abilities: set[str] | None = None,
                    npc_block: set[tuple[int, int]] | None = None):
-        """Directed moves out of (x,y): plain steps + ledge hops."""
+        """Directed moves out of (x,y): plain steps + ledge hops (+ the kit)."""
+        if self.kit:
+            yield from self._kit_moves(x, y, abilities, npc_block)
+            return
         for dname, (dx, dy) in DIRS.items():
             nx, ny = x + dx, y + dy
             if not self.in_bounds(nx, ny):

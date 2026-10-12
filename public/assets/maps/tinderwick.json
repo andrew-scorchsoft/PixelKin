@@ -2258,6 +2258,19 @@
       "requires_flag": "flag:dawn"
     },
     {
+      "id": "vigil_seam_hearthfall",
+      "sprite": "markers_vigil_seam",
+      "at": {
+        "tx": 25,
+        "ty": 7
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false,
+      "requires_flag": "flag:vigil_reading_1"
+    },
+    {
       "id": "wc_well",
       "sprite": "tinderwick_well",
       "at": {

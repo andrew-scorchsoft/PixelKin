@@ -73,6 +73,7 @@ Run:  ./venv/bin/python tools/maps/build_windward_stair_i.py
 from __future__ import annotations
 import random
 import mapkit as mk
+import warp_markers as wm
 import patterns as pt
 from mapkit import gid
 
@@ -262,7 +263,7 @@ m["objects"] += [
     {"id": "cairn_head_e", "sprite": "windward_cairn", "at": {"tx": 18, "ty": 5},
      "w": 2, "h": 3, "overhang": 2, "walk_under": False},
     # the updraft column rising out of the chasm beside the tongue
-    {"id": "windgap_updraft", "sprite": "windward_updraft", "at": {"tx": 10, "ty": 1},
+    {"id": "windgap_updraft", "sprite": "windward_updraft", "at": {"tx": 8, "ty": 1},
      "w": 2, "h": 3, "overhang": 3, "solid": False, "walk_under": True},
     # THE REST SHELF (leg 3, ~halfway): the crag-tender's lit kettle camp,
     # a wrecked kite beside it, the lamp-post tucked against bank C — with
@@ -376,6 +377,9 @@ m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + ter
 ]
 
 if __name__ == "__main__":
+    # warp markers: the swirl the thermal lifts from, under the updraft column
+    wm.add(m, wm.marker("windgap_vent", "updraft_vent", 8, 3),
+           wm.marker("windgap_vent_e", "updraft_vent", 9, 3))
     ok = mk.finalize(m, scale=3)
     pt.report(owed)
     print("PASS" if ok else "FAIL")

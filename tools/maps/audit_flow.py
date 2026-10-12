@@ -94,6 +94,10 @@ def audit_map(mm: MapModel, start_at: tuple[int, int] | None) -> list[dict]:
             break
         others = set().union(*(a for a in anchors if a != p["stand"]))
         if others and not (mm.bfs(others, abilities=GIFTS).keys() & p["stand"]):
+            # A one-way map (a downhill chute, a rail line): its upstream door is
+            # an ENTRY you can't walk back to — legitimate iff it leads on.
+            if mm.one_way and (mm.bfs(p["stand"], abilities=GIFTS).keys() & others):
+                continue
             orphans.append(f"portal -> {p['to_map']} ({sorted(p['tiles'])[0]})")
     if orphans:
         add("reach", "FAIL", "unreachable content (even with all Gifts): "
@@ -172,7 +176,7 @@ def audit_map(mm: MapModel, start_at: tuple[int, int] | None) -> list[dict]:
                  else "every crossing rolls encounters (mid/late-route pacing)"))
 
     # ---- LOOP: return-trip asymmetry -----------------------------------------
-    has_ledge = any(mm.ledge[i] for i in range(mm.w * mm.h))
+    has_ledge = mm.one_way   # ledges, chutes, rails, ramps (the traversal kit)
     if mm.kind in ("route", "cave") and pair:
         d_fwd = min((mm.bfs(pair[0], abilities=GIFTS).get(t, 10**9) for t in pair[1]),
                     default=10**9)

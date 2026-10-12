@@ -26,6 +26,7 @@ import { Menu } from '@game/ui/Menu';
 import type { MenuOption } from '@game/ui/Menu';
 import { DialogueBox } from '@game/ui/DialogueBox';
 import { fadeIn } from '@game/ui/Transitions';
+import { getExpShare } from '@game/ui/preferences';
 import { Sfx } from '@game/systems/audio/Sfx';
 import { playCry } from '@game/systems/audio/cries';
 import { MusicDirector } from '@game/systems/audio/MusicDirector';
@@ -809,10 +810,16 @@ export class BattleScene extends Phaser.Scene {
     }
   }
 
-  /** Grant exp to the active (and a share to other participants is out of scope). */
+  /**
+   * Grant the win's EXP. The kin that FINISHED the fight takes the full amount
+   * (exactly the classic single-kin rule — the journey model's level curve is
+   * built on it, so the lead's pace never changes). With EXP share on (the
+   * default, Settings -> EXP share) the rest of the lamp learns too: kin that
+   * fought earlier in this battle take half, the bench a quarter. Fainted kin
+   * learn nothing.
+   */
   private async awardExp(): Promise<void> {
     // Simple yield: summed over the foe party, weighted by level & BST tier.
-    const winner = this.playerParty.firstHealthy() ?? this.engine.player;
     let totalGain = 0;
     for (const defeated of this.engine.foeParty.all) {
       totalGain += this.expYield(defeated);
@@ -820,24 +827,58 @@ export class BattleScene extends Phaser.Scene {
     // The genre's trainer-battle bonus — raised kin teach more than wild ones.
     if (this.request.kind === 'trainer') totalGain = Math.floor(totalGain * 1.5);
     if (totalGain <= 0) return;
+    const finisher = this.engine.player.isFainted ? this.playerParty.firstHealthy() : this.engine.player;
+    if (!finisher) return;
 
     void this.sfx.play('battle-xp');
-    const before = winner.level;
-    const { learned, pending, kindleReady } = winner.gainExp(totalGain);
-    await this.msg.show(`${winner.displayName} gained ${totalGain} EXP!`);
-    await this.playerHp.animateTo();
+    await this.msg.show(`${finisher.displayName} gained ${totalGain} EXP!`);
+    await this.grantExp(finisher, totalGain);
 
-    if (winner.level > before) {
+    if (!getExpShare()) return;
+    const sharers = this.playerParty.all.filter((k) => k !== finisher && !k.isFainted);
+    if (sharers.length === 0) return;
+    const fought = sharers.filter((k) => this.participants.has(k));
+    const bench = sharers.filter((k) => !this.participants.has(k));
+    const half = Math.max(1, Math.floor(totalGain * BattleScene.SHARE_FOUGHT));
+    const quarter = Math.max(1, Math.floor(totalGain * BattleScene.SHARE_BENCH));
+    // One line for the whole lamp (a page per kin would make every win a chore).
+    if (fought.length && bench.length) {
+      await this.msg.show(`Your other kin shared the EXP — ${half} for those who fought, ${quarter} for the rest.`);
+    } else if (fought.length) {
+      await this.msg.show(`Your other kin who fought shared ${half} EXP.`);
+    } else {
+      await this.msg.show(`The rest of your lamp shared ${quarter} EXP.`);
+    }
+    for (const kin of fought) await this.grantExp(kin, half);
+    for (const kin of bench) await this.grantExp(kin, quarter);
+  }
+
+  /** EXP share fractions of the finisher's gain (see awardExp). */
+  private static readonly SHARE_FOUGHT = 0.5;
+  private static readonly SHARE_BENCH = 0.25;
+
+  /**
+   * Give one kin EXP and run whatever it earns: the level-up line, new moves
+   * (the MoveLearn prompt for a full kit) and a kindling offer — the same
+   * witnessed ceremonies for the finisher and the bench alike.
+   */
+  private async grantExp(kin: KinInstance, gain: number): Promise<void> {
+    const isActive = kin === this.engine.player;
+    const before = kin.level;
+    const { learned, pending, kindleReady } = kin.gainExp(gain);
+    if (isActive) await this.playerHp.animateTo();
+
+    if (kin.level > before) {
       void this.sfx.playVariant('progress-levelup', ['a', 'b']);
-      this.playerHp.refresh();
-      await this.msg.show(`${winner.displayName} grew to Lv${winner.level}!`);
+      if (isActive) this.playerHp.refresh();
+      await this.msg.show(`${kin.displayName} grew to Lv${kin.level}!`);
       for (const m of learned) {
-        await this.msg.show(`${winner.displayName} learned ${m.name}!`);
+        await this.msg.show(`${kin.displayName} learned ${m.name}!`);
       }
       // A full kit met a new move: the player chooses what to set aside.
       for (const m of pending) {
         this.msg.setVisible(false);
-        await new MoveLearnPrompt(this, winner, m, this.sfx).run();
+        await new MoveLearnPrompt(this, kin, m, this.sfx).run();
         this.msg.setVisible(true);
       }
     }
@@ -847,14 +888,12 @@ export class BattleScene extends Phaser.Scene {
     // again after its next level-up).
     if (kindleReady) {
       this.msg.setVisible(false);
-      const kindled = await new KindlePrompt(this, winner, kindleReady, this.sfx, () => {
-        if (winner === this.engine.player) {
-          this.playerBattler.setSpecies(this, winner.species, 'player');
-        }
+      const kindled = await new KindlePrompt(this, kin, kindleReady, this.sfx, () => {
+        if (isActive) this.playerBattler.setSpecies(this, kin.species, 'player');
       }).run();
       if (kindled) {
-        this.dexSeen.add(winner.species.id);
-        this.playerHp.refresh();
+        this.dexSeen.add(kin.species.id);
+        if (isActive) this.playerHp.refresh();
       }
       this.msg.setVisible(true);
     }

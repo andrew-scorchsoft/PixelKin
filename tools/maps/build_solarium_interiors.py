@@ -54,7 +54,6 @@ def build_lumenary():
     # THE SOLAR IDENTITY: warm banners, the stage braziers burning indoors
     wall_mount(objects, "banner_warm", 5, oid="banner_l", solid=False)
     wall_mount(objects, "banner_warm", 11, oid="banner_r", solid=False)
-    wall_mount(objects, "lamp_rack", 6, solid=False)
     # the sun-altar on its dais
     place(objects, "altar", door_x - 1, 2)
     objects += [
@@ -73,7 +72,7 @@ def build_lumenary():
     # east: the sun-ledger niche (every Last-Warm-Day, kept)
     wall_mount(objects, "bookcase", 13, oid="sun_ledger")
     place(objects, "table", 13, 7, oid="ledger_table")
-    place(objects, "stool", 12, 8, oid="ledger_stool")
+    place(objects, "stool", 12, 7, oid="ledger_stool")
     # pews where the pilgrims keep the warm day
     place(objects, "pew", 5, 8, oid="pew_l")
     place(objects, "pew", 10, 8, oid="pew_r")
@@ -89,7 +88,7 @@ def build_lumenary():
          "sprite": "npc_old_woman", "movement": "static",
          "dialogue_ref": "script.solarium_rest"},
         # the prompter in the green-room (humour slot 3)
-        {"id": "prompter", "at": {"tx": 2, "ty": 7}, "facing": "down",
+        {"id": "prompter", "at": {"tx": 3, "ty": 7}, "facing": "left",
          "sprite": "npc_man", "movement": "look_around",
          "dialogue_ref": "npc.solarium_prompter"},
         # the sun-ledger keeper at the niche

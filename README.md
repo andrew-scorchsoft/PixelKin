@@ -52,7 +52,14 @@ final asking that is out-remembered rather than defeated, the Keystar relight,
 post-game: the daylit epilogue town of **Dawnstead**, Wren and Còr's gentle
 resolutions, **day-form collecting** across the relit valleys, the **Three
 Hours** legendary trio, and the **Starfall Vigils** endgame trial chain ending
-in the hardest fight in the game. Along the way: eight earned Gleams (never
+in the hardest fight in the game. Off the main road, **the Wild Ways** make the
+world less of a corridor: the **Wick-Run** (a six-map downhill bike run from the
+Sunvault to the sea, with a time trial and the Tallow Lift cable car home), the
+**Mirelights** (a false-lights marsh off the fens, opened by a lens from the ice
+village), the **Rimeway** (a frost col looping Pale Vault back to the marshes
+through a gate barred from the far side) and the **Old Seams** (a rail-yard mine
+under Cinderhead) — two new legendaries, Lanthorne and Emberroot, and a traversal
+kit (chutes, ice slides, rails, ladders, bridges you pass under, bike ramps). Along the way: eight earned Gleams (never
 handed over flat), six traversal-gating **Lantern Gifts**, a working **wick
 economy** (shops, Star-charts, trainer payouts — tuned end-to-end by a journey
 model), seven battle statuses, Kindling and bond, the Hearth for kin storage,
@@ -95,7 +102,7 @@ What's already in the repo:
   a gentle permanent dark. Full cast, lore, and the 14-area world map live in
   [`docs/world/`](docs/world/) — each area illustrated with a pixel-art **concept
   mood-piece** ([`assets/concept-art/`](assets/concept-art/)).
-- **Creatures & battles.** **162 original *kin*** across **10 elemental types**
+- **Creatures & battles.** **166 original *kin*** across **10 elemental types**
   (Ember, Tide, Verdant, Stone, Storm, Frost, Solar, Lunar, Light, Dark), with
   six stats, ~94 moves + 28 abilities, capture via **Lamps**, and evolution via
   **Kindling**. The roster was curated from ~463 concepts (151), rounded out by
@@ -137,6 +144,10 @@ and audited. What it has *not* had is human hands: no playtests, no device QA.
   relight → **the dawn**, credits, and a post-game Continue. ~77 maps, all
   walkable, with the full audit stack (reachability, warps, flow, region
   topology, foot-path) green in CI.
+- **The Wild Ways** (2026-10, [`09-the-wild-ways.md`](docs/world/walkthrough/09-the-wild-ways.md)):
+  ~20 new maps of optional, non-linear content — the Wick-Run, the Mirelights, the
+  Rimeway, the Old Seams, a four-map Sunvault cliff climb — built on a data-driven
+  **traversal kit** (`flows`/`spans`/`jumps`, engine ⇄ audit parity gated in CI).
 - The **post-game**: Dawnstead (the daylit epilogue town; Wren and Còr's
   resolutions; quests), **day-form collecting** across 22 relit maps, the
   **Three Hours** legendary trio, the two Starreach landmarks, and the
@@ -148,7 +159,7 @@ and audited. What it has *not* had is human hands: no playtests, no device QA.
   **economy** (shops, Star-charts, payouts), the pause-menu suite (party,
   Hearth, register/dex, items, LORE codex, concept-art gallery), and the
   save/flag layer behind the platform seam.
-- **All 162 kin with real packed sprite art** (5 views each), the full
+- **All 166 kin with real packed sprite art** (5 views each), the full
   **original soundtrack** (~195 area/battle/jingle tracks + SFX), a unique
   procedural **cry for every kin** (battle, catch, register, and the grazing
   ambient kin you can now greet — `content/kinchatter.ts`), per-map
@@ -266,7 +277,7 @@ python3 -m venv venv && ./venv/bin/pip install -r requirements.txt   # one-time
 | Full walkthrough / user journey | [`docs/world/walkthrough/`](docs/world/walkthrough/README.md) |
 | Soundtrack plan | [`docs/world/music-direction.md`](docs/world/music-direction.md) |
 | Mechanics & balance (start here) | [`docs/mechanics/00-overview.md`](docs/mechanics/00-overview.md) |
-| The full dex (all 164 kin) | [`docs/mechanics/dex.md`](docs/mechanics/dex.md) |
+| The full dex (all 166 kin) | [`docs/mechanics/dex.md`](docs/mechanics/dex.md) |
 | Art & sprite standards | [`docs/art-style.md`](docs/art-style.md) |
 
 ## Project layout

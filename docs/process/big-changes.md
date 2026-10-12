@@ -47,6 +47,30 @@ start, and they build on the committed pilot.
   the same file by two agents lose work. Never commit another lane's
   half-finished files; commit by explicit path, not `git add -A`.
 
+### Merging lanes back (learned on the Wild Ways round, v1.13–1.15)
+- **Registry conflicts are unions.** `content/regions/index.ts`, `glossary.ts`,
+  `quests.ts`, `graph.ts`/`maps.ts` conflict on every merge because each lane appends
+  at the same spot: keep BOTH sides, mind the `},` between array entries, then `tsc`.
+- **Regenerate, don't merge, every generated file:** `objects.manifest.json`
+  (`pack_objects.py`), `worldmap.json` (`world_layout.py`), species/dex
+  (`build_species.py` → `gen_docs.py`), `web/assets/data/music.json`
+  (`build_music_data.mjs`), and any map JSON (its builder + the four runners).
+- **A lane that changes a shared KIT makes every other in-flight lane stale.** When the
+  interior pass grew the wall kit 13 → 55 tiles and made `roomkit.finish` autotile, the
+  Paul's-house lane (branched earlier) shipped maps built on the old kit;
+  `check_rebuild` showed it as `tile_count 13 -> 55` + gid diffs. Fix: re-run that
+  lane's builders + runners after the merge — never patch the JSON.
+- **Gates added mid-round don't run in older worktrees.** A lane that branched before
+  `audit_npc_footing` existed passes its own `npm run check` and fails yours. Always
+  run the FULL check on the merged branch, not trust the lane's report.
+- **Read a lane's caveats as work for you.** The Paul lane flagged "the Chickenpig stays
+  leading afterwards — an engine change would fix it". The fix was six lines
+  (`WorldScene.playScene`); lanes are told not to touch shared engine files, so the
+  coordinator owns those follow-ups.
+- **Show the result.** `tools/maps/render_world.py` stitches every outdoor map at its true
+  position (+ `--sheet` for portal maps) — the fastest way to review a round's geography,
+  and what the owner asks for at the end.
+
 ## 4. Gates: one command, mirrors CI
 - `npm run check` runs every CI gate locally (it parses
   `.github/workflows/checks.yml`, so new gates are picked up automatically).
@@ -55,6 +79,10 @@ start, and they build on the committed pilot.
 - **New class of bug → new gate, in CI the same day.** This round added
   `audit_visual`, `check_content`, `audit_journey`, `check_rebuild`, walkability,
   sprite standards and walk-facing. Each caught real bugs the old gates missed.
+- **Green gates ≠ "you can get everywhere".** The walkability gate fails only when CONTENT
+  is stranded; a sealed nook of grass or floor that looks inviting ships green. Before
+  calling a round done, run `render_walkable.py --all --report-only`, eyeball every
+  non-border pocket ≥ 4 tiles, and check props sitting on a lane's path fill.
 - **Prove a new gate catches the failure.** Plant the fault in a scratch worktree
   (a pew in front of a warden, a sealed cache) and confirm it FAILs, naming the
   fault.

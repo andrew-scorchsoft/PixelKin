@@ -23,6 +23,11 @@ back up (flag:q_east_vigil_lamp); only then does his bond-test open
 (requires_flag, blocked in his voice) and the Stone Gleam relight
 (gleam:stone -> the engine derives flag:crown_east, East's second quadrant).
 
+THE OLD SEAMS (09-the-wild-ways §2 D, 2026-10): the north workings carry the
+foremen's sealed seam-door (old_seams_sealed_door ⇄ _open at (15,1), walk-onto
+door warp `to_old_seams` (16,3) gated `flag:old_seams_open`); after the Stone
+Gleam Otho waits beside it (18,4) and opens it (script.old_seams_otho).
+
 Entry west from Glowmoss Deep (`to_mine` lands {1,12}/{1,13}); the way down is
 `to_deep` (Glimmerstep, graph.ts:166). Kind `cave` — cavewall border, carved
 settlement floor, a rough working gallery in the NE (the mine-mouth encounter
@@ -86,7 +91,8 @@ for (x, y, n) in [(2, 12, "glowshroom_a"), (5, 11, "glowshroom_b"), (9, 12, "glo
                   (21, 7, "glowshroom_a"), (23, 9, "glowshroom_b"), (19, 5, "glowshroom_a")]:
     put(x, y, n)
 # wave-worn boulders + cart rubble breaking the floor
-for (x, y) in [(6, 16), (10, 18), (17, 17), (22, 12), (4, 7), (24, 16), (16, 5)]:
+# (the old (16,5) boulder moved to (17,6): it stood square in the seam-door's approach)
+for (x, y) in [(6, 16), (10, 18), (17, 17), (22, 12), (4, 7), (24, 16), (17, 6)]:
     put(x, y, "boulder")
 for (x, y) in [(8, 14), (12, 16), (15, 13), (20, 18), (5, 18), (18, 8), (23, 6), (11, 6)]:
     put(x, y, "g_pebble")
@@ -123,6 +129,15 @@ objects = [
      "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "lamp_d", "sprite": "tinderwick_lamp_post", "at": {"tx": 22, "ty": 17},
      "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    # THE OLD SEAMS (09-the-wild-ways §2 D): the sealed seam-door in the north
+    # workings, cut into the rock face beside Otho's hall. A flag-visibility swap
+    # pair sharing one 3x3 solid footprint (rows 1-2 are rock anyway); the
+    # doorway (16,3) is freed by its `transition:'door'` warp. Opened by Otho
+    # after the Stone Gleam (script.old_seams_otho -> flag:old_seams_open).
+    {"id": "seam_door", "sprite": "old_seams_sealed_door", "at": {"tx": 15, "ty": 1},
+     "w": 3, "h": 3, "overhang": 0, "hidden_when_flag": "flag:old_seams_open"},
+    {"id": "seam_door_open", "sprite": "old_seams_sealed_door_open", "at": {"tx": 15, "ty": 1},
+     "w": 3, "h": 3, "overhang": 0, "requires_flag": "flag:old_seams_open"},
 ]
 
 m: dict = {
@@ -155,6 +170,13 @@ m: dict = {
         # a deliberate sign-guided entrance, not a two-tile straddle.
         {"id": "to_lumenary", "at": {"tx": 12, "ty": 8}, "trigger": "step_on",
          "to_map": "cinderhead_lumenary", "to": {"tx": 8, "ty": 10}, "facing": "down",
+         "transition": "door"},
+        # NORTH — the seam-door down to the Old Seams (graph.ts `to_old_seams`):
+        # walk-onto, locked until Otho opens it (the blocked line is the foreman's
+        # chalk-mark); lands on the headframe collar a floor below.
+        {"id": "to_old_seams", "at": {"tx": 16, "ty": 3}, "trigger": "step_on",
+         "to_map": "old_seams_i", "to": {"tx": 4, "ty": 4}, "facing": "down",
+         "requires_flag": "flag:old_seams_open", "blocked_ref": "npc.old_seams_sealed",
          "transition": "door"},
     ],
     "triggers": [],
@@ -197,7 +219,7 @@ m: dict = {
          "sprite": "npc_old_man", "movement": "look_around",
          "dialogue_ref": "npc.vigil_raised_a",
          "requires_flag": "flag:q_token_east"},
-        {"id": "vigil_raised_b", "at": {"tx": 11, "ty": 12}, "facing": "right",
+        {"id": "vigil_raised_b", "at": {"tx": 12, "ty": 12}, "facing": "right",
          "sprite": "npc_child", "movement": "wander",
          "dialogue_ref": "npc.vigil_raised_b",
          "requires_flag": "gleam:stone"},
@@ -230,6 +252,12 @@ m: dict = {
          "sprite": "npc_shopkeeper", "movement": "static",
          "dialogue_ref": "script.shop_cinderhead",
          "requires_flag": "flag:cinderhead_kit"},
+        # THE OLD SEAMS: after the Stone Gleam, Otho comes out to the seam-door he
+        # has kept shut — talk to him and he opens it (then he's back in his hall).
+        {"id": "otho_seams", "at": {"tx": 18, "ty": 4}, "facing": "left",
+         "sprite": "npc_lampwarden", "movement": "static",
+         "dialogue_ref": "script.old_seams_otho",
+         "requires_flag": "flag:old_seams_told", "hidden_when_flag": "flag:old_seams_open"},
         # Wren is gone east by now (A3 landed at Glowmoss Deep) — a miner mentions it
         {"id": "deep_warden", "at": {"tx": 14, "ty": 18}, "facing": "down",
          "sprite": "npc_lampwarden", "movement": "static",
@@ -249,7 +277,7 @@ owed += pt.sign(m, deco, W, sid="cinderhead_deep_mouth", at=(15, 20))
 owed += pt.sign(m, deco, W, sid="cinderhead_lumenary", at=(13, 9))
 
 # caches (variety rule: a valuable crystal off the lane, loose wicks, a balm)
-owed += pt.cache(m, cid="cinderhead_crystal", at=(24, 5))   # the working gallery's prize
+owed += pt.cache(m, cid="cinderhead_crystal", at=(25, 4))   # the working gallery's prize (the alley behind cottage_b — off its footprint)
 owed += pt.cache(m, cid="cinderhead_wicks", at=(4, 4))      # a takings-tin in the NW pocket (pays the detour)
 owed += pt.cache(m, cid="cinderhead_balm", at=(23, 18))
 

@@ -103,6 +103,11 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'pearlmoor_oldlight_6', region: 'south' }, // interior: F6 — the One Joke
     { map_id: 'pearlmoor_oldlight_top', region: 'south' }, // interior: the Winding Room — Tam's card, the net-floats (flag:q_south_jest_done)
     { map_id: 'pearlmoor_wanderwood_far', region: 'south', optional: true, reward: 'S5: the Far Side — Mags\'s griddle, the Answering Lamp, the glass steps (all optional)' },
+    { map_id: 'wayward_rise', region: 'south', optional: true, reward: 'the Wayward Arms: an open bar, a corner chair, a stranger, a night talked away (a rest point)' }, // north of the Wanderwood
+    { map_id: 'wayward_arms', region: 'south', optional: true }, // interior: the Wayward Arms' bar + snug
+    { map_id: 'paul_house_1', region: 'south', optional: true, reward: 'Paul\'s house: three floors of travel, t-shirts and a WANTED poster — and Lottie, who loves the Chickenpig' }, // interior: the kitchen-hall
+    { map_id: 'paul_house_2', region: 'south', optional: true }, // interior: the T-shirt museum
+    { map_id: 'paul_house_3', region: 'south', optional: true }, // interior: Lottie's attic
     // ---- East: Saltreach Fen (2 segments) -> Lowleaf forest -> Cinderhead cave -------
     { map_id: 'saltreach_fen_i', region: 'east' }, // route: open marsh
     { map_id: 'saltreach_fen_ii', region: 'east' }, // route: deep channels
@@ -146,8 +151,8 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'sunken_solarium', region: 'west' },
     { map_id: 'sunken_solarium_lumenary', region: 'west' }, // interior: the Solar hall (the troupe's green-room + the rest point — the battle is on the lit stage outdoors)
     { map_id: 'unrisen_stair', region: 'west', optional: true, reward: 'the Lost Hour (Erstmorn #162) atop the Sunsketch bloom ascent' },
-    { map_id: 'sunvault_climb_i', region: 'west' }, // route: overgrown terraces
-    { map_id: 'sunvault_climb_ii', region: 'west' }, // route: sun-vine bridges
+    { map_id: 'sunvault_climb_i', region: 'west' }, // route: the foot of the face (ladders, the west notch)
+    { map_id: 'sunvault_climb_ii', region: 'west' }, // route: sun-vine bridges up the face
     { map_id: 'helia_vault', region: 'west', optional: true, reward: 'rare Solar kin + item in a sealed reliquary' },
     { map_id: 'nightreach_observatory', region: 'west' },
     { map_id: 'nightreach_lumenary', region: 'west' }, // interior: the star-temple sanctum — Nessa's bond-test under the great eyepiece (the eighth Gleam; engine derives crown_west + hub_unlocked)
@@ -187,6 +192,32 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'vigil_stormfall', region: 'north', optional: true, reward: 'Vigil III: NULLHUSK #144 register bed (62-64) + the storm-tithe' },
     { map_id: 'vigil_sunfall', region: 'west', optional: true, reward: 'Vigil IV: DAWNWATCHER #129 + HELITHORN #119 register beds (64-66) + Star-chart: Sunburst Nova' },
     { map_id: 'vigil_murkfall', region: 'outer', optional: true, reward: 'Vigil V: SOLARMOURN #128 / CINDERVAST #145 / BOGVAST #146 register beds (66-68) + the Morrow Charm' },
+    // ---- THE WILD WAYS (09-the-wild-ways.md, 2026-10) — one block per area lane
+    // the Wick-Run (A): Sunvault Climb I's south road -> the crest -> downhill to Lightkeeper's Point
+    { map_id: 'wickrun_crest', region: 'west', optional: true, reward: 'the runner rental + the Tallow Lift (frees the lift home)' },
+    { map_id: 'wickrun_chute', region: 'west', optional: true, reward: 'run-only Tallowcrest/Wickmere/Warmantis + a kicker-only Lumen Drop' },
+    { map_id: 'wickrun_trestles', region: 'west', optional: true, reward: 'the Spiral trestle (over, round, under) + two Runners + a wick-purse' },
+    { map_id: 'wickrun_traverse', region: 'west', optional: true, reward: 'the rock garden + the ramp line + a Beacon charge in the cart wreck' },
+    { map_id: 'wickrun_lower', region: 'west', optional: true, reward: 'Rook, the Runners\' captain + the rare Chandrek + a kicker-only Wax Cake cache' },
+    { map_id: 'wickrun_foot', region: 'south', optional: true, reward: 'the finish (time-trial prizes, Rook\'s ribbon) + the Tallow Lift\'s foot station' },
+    // the Mirelights (B): over Ansel's ferry (the Frostglass Lens from Pale Vault), east of Saltreach Fen I
+    { map_id: 'mirelight_landing', region: 'east', optional: true, unlocked_by_flag: 'flag:mirelight_ferry', reward: 'Nell\'s lore, Tobin\'s boat, the first false-light boards; exclusive Tidwraith/Lumplass' },
+    { map_id: 'mirelight_glassmere', region: 'east', optional: true, unlocked_by_flag: 'flag:mirelight_ferry', reward: 'the false-lights maze + currents; the Glassmere Pearl; rare Lampling' },
+    { map_id: 'mirelight_chapel', region: 'east', optional: true, unlocked_by_flag: 'flag:mirelight_ferry', reward: 'Tobin found; the acolyte\'s camp (rest point); the chapel door' },
+    { map_id: 'lanthorne_hollow', region: 'east', optional: true, unlocked_by_flag: 'flag:mirelight_tobin_found', reward: 'LANTHORNE #165 (legendary, lv 45)' },
+    // the Rimeway (C): Pale Vault's north road -> the Fold -> the Rime Gate (barred from the marsh side)
+    { map_id: 'rimeway_ascent', region: 'north', optional: true, reward: 'the Glare (an ice-slide climb) + the cache pool' },
+    { map_id: 'rimeway_fold', region: 'north', optional: true, reward: 'Vaultclaw #76 (Fold-only) + the clear-ice core for Isel\'s Frostglass Lens' },
+    { map_id: 'rimeway_descent', region: 'outer', optional: true, reward: 'lifts the Rime Gate: a Coldfog <-> Pale Vault return road' },
+    { map_id: 'reckoning_works', region: 'north', optional: true, reward: 'side quest "Measured in Miles": the Aurora Card + wicks + Beacon charges' }, // interior: the Reckoning-Works (C2)
+    // the Old Seams (D): Cinderhead Mine's seam-door (Otho, post-Stone) -> three floors down -> the first star
+    { map_id: 'old_seams_i', region: 'east', optional: true, reward: 'the Shaft Benches: planks + ladders, Orebound beds, a pillar-islet charge' },
+    { map_id: 'old_seams_ii', region: 'east', optional: true, reward: 'the Rail Yard puzzle: rare Ferrolith, the siding\'s starglass' },
+    { map_id: 'old_seams_iii', region: 'east', optional: true, reward: 'the Scree Galleries: Pyrolith/Lithonyx, very rare Prismara, a scree-only Lumen Drop' },
+    { map_id: 'emberroot_heart', region: 'east', optional: true, reward: 'EMBERROOT #166 (lv 46, Starlight return) + the Ledger\'s last page' },
+    // Sunvault Climb rebuild (S)
+    { map_id: 'sunvault_climb_iii', region: 'west' }, // route: the Gilt Face (ladder pitches, the trestle over the gully)
+    { map_id: 'sunvault_climb_iv', region: 'west' }, // route: the Sun Ledges (planks + ledges to the observatory hill)
   ],
   edges: [
     // ---- Tinderwick interiors (door warps, both ways) --------------------------------
@@ -221,6 +252,12 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // The Wanderwood's far side: one optional loop, two roads off its west edge
     // (to_far low / to_far_n high) — out one, back in the other.
     { from_map: 'pearlmoor_wanderwood', to_map: 'pearlmoor_wanderwood_far', via_warp: 'to_far', bidirectional: true },
+    // ... and north out of the glade, up onto Wayward Rise and the old hotel (2026-10).
+    { from_map: 'pearlmoor_wanderwood', to_map: 'wayward_rise', via_warp: 'to_rise', bidirectional: true },
+    { from_map: 'wayward_rise', to_map: 'wayward_arms', via_warp: 'enter_hotel', bidirectional: true },
+    { from_map: 'wayward_rise', to_map: 'paul_house_1', via_warp: 'enter_paul_house', bidirectional: true },
+    { from_map: 'paul_house_1', to_map: 'paul_house_2', via_warp: 'up_stairs', bidirectional: true },
+    { from_map: 'paul_house_2', to_map: 'paul_house_3', via_warp: 'up_stairs', bidirectional: true },
     // R9 "The Old Light": the west beach runs out to Lightkeeper's Point; Reyl's
     // hook (flag:q_south_bell) opens the tower door; each floor's up-stair waits on
     // its riddle (flag:oldlight_N_solved); the top's slide drops back to the Point
@@ -283,7 +320,8 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'sunken_solarium', to_map: 'sunken_solarium_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
     { from_map: 'sunken_solarium', to_map: 'sunvault_climb_i', via_warp: 'to_climb', bidirectional: true },
     { from_map: 'sunvault_climb_i', to_map: 'sunvault_climb_ii', via_warp: 'to_climb_ii', requires_ability: 'sunsketch', bidirectional: true },
-    { from_map: 'sunvault_climb_ii', to_map: 'nightreach_observatory', via_warp: 'to_observatory', bidirectional: true },
+    // (2026-10, 09-the-wild-ways §2 S: the climb is four maps now — climb_ii -> the Gilt
+    // Face -> the Sun Ledges -> Nightreach; the edges live in the Wild Ways block below)
     // The Lunar hall is starter-gated like every Lumenary door (NEVER Emberward/Starreach — §0 rule 1).
     { from_map: 'nightreach_observatory', to_map: 'nightreach_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
     { from_map: 'nightreach_observatory', to_map: 'nightreach_inn', via_warp: 'to_inn', bidirectional: true },
@@ -373,6 +411,35 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'thunderroost', to_map: 'vigil_stormfall', via_warp: 'to_vigil_storm', requires_flag: 'flag:vigil_reading_3', bidirectional: true },
     { from_map: 'sunvault_climb_ii', to_map: 'vigil_sunfall', via_warp: 'to_vigil_sun', requires_flag: 'flag:vigil_reading_4', bidirectional: true },
     { from_map: 'coldfog_marches_ii', to_map: 'vigil_murkfall', via_warp: 'to_vigil_murk', requires_flag: 'flag:vigil_reading_5', bidirectional: true },
+    // ---- THE WILD WAYS (09-the-wild-ways.md) — one block per area lane
+    // the Wick-Run (A): downhill only (chutes can't be climbed); the Tallow Lift is a ride, not an edge
+    { from_map: 'sunvault_climb_i', to_map: 'wickrun_crest', via_warp: 'to_wickrun', bidirectional: true },
+    { from_map: 'wickrun_crest', to_map: 'wickrun_chute', via_warp: 'to_chute', requires_flag: 'flag:wickrun_riding', bidirectional: true },
+    { from_map: 'wickrun_chute', to_map: 'wickrun_trestles', via_warp: 'to_trestles', bidirectional: false },
+    { from_map: 'wickrun_trestles', to_map: 'wickrun_traverse', via_warp: 'to_traverse', bidirectional: false },
+    { from_map: 'wickrun_traverse', to_map: 'wickrun_lower', via_warp: 'to_lower', bidirectional: false },
+    { from_map: 'wickrun_lower', to_map: 'wickrun_foot', via_warp: 'to_foot', bidirectional: false },
+    { from_map: 'wickrun_foot', to_map: 'pearlmoor_point', via_warp: 'to_point', bidirectional: true },
+    // the Mirelights (B): Ansel's ferry is an honest edge link held by his flag
+    { from_map: 'saltreach_fen_i', to_map: 'mirelight_landing', via_warp: 'to_mirelight', requires_flag: 'flag:mirelight_ferry', bidirectional: true },
+    { from_map: 'mirelight_landing', to_map: 'mirelight_glassmere', via_warp: 'to_glassmere', bidirectional: true },
+    { from_map: 'mirelight_glassmere', to_map: 'mirelight_chapel', via_warp: 'to_chapel', bidirectional: true },
+    { from_map: 'mirelight_chapel', to_map: 'lanthorne_hollow', via_warp: 'to_hollow', requires_flag: 'flag:mirelight_tobin_found', bidirectional: true },
+    // the Rimeway (C): open from Pale Vault (North era); the Rime Gate is lifted from the Descent (West era)
+    { from_map: 'pale_vault_glacier', to_map: 'rimeway_ascent', via_warp: 'to_rimeway', bidirectional: true },
+    { from_map: 'rimeway_ascent', to_map: 'rimeway_fold', via_warp: 'to_fold', bidirectional: true },
+    { from_map: 'coldfog_marches_ii', to_map: 'rimeway_descent', via_warp: 'to_rimeway', bidirectional: true },
+    { from_map: 'rimeway_fold', to_map: 'rimeway_descent', via_warp: 'to_descent', requires_flag: 'flag:rime_gate_open', bidirectional: true },
+    { from_map: 'rimeway_fold', to_map: 'reckoning_works', via_warp: 'to_works', bidirectional: true },
+    // the Old Seams (D): floors stacked by ladders (portals — they never touch surface geometry)
+    { from_map: 'cinderhead_mine', to_map: 'old_seams_i', via_warp: 'to_old_seams', requires_flag: 'flag:old_seams_open', bidirectional: true },
+    { from_map: 'old_seams_i', to_map: 'old_seams_ii', via_warp: 'ladder_down', bidirectional: true },
+    { from_map: 'old_seams_ii', to_map: 'old_seams_iii', via_warp: 'ladder_down', bidirectional: true },
+    { from_map: 'old_seams_iii', to_map: 'emberroot_heart', via_warp: 'to_heart', requires_flag: 'flag:lamplight_starlight', bidirectional: true },
+    // Sunvault Climb rebuild (S): the climb is four maps (the main path, ungated past the vines)
+    { from_map: 'sunvault_climb_ii', to_map: 'sunvault_climb_iii', via_warp: 'to_climb_iii', bidirectional: true },
+    { from_map: 'sunvault_climb_iii', to_map: 'sunvault_climb_iv', via_warp: 'to_climb_iv', bidirectional: true },
+    { from_map: 'sunvault_climb_iv', to_map: 'nightreach_observatory', via_warp: 'to_observatory', bidirectional: true },
   ],
   hub: {
     map_id: 'vesper_crossroads',

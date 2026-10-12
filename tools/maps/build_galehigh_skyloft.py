@@ -21,6 +21,7 @@ Run:  ./venv/bin/python tools/maps/build_galehigh_skyloft.py
 from __future__ import annotations
 import random
 import mapkit as mk
+import warp_markers as wm
 import patterns as pt
 from mapkit import gid
 
@@ -154,6 +155,8 @@ m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + ter
 ]
 
 if __name__ == "__main__":
+    # warp marker: the winch's lift platform — the ride back down
+    wm.add(m, wm.marker("winch_lift", "lift_basket", 9, 10))
     ok = mk.finalize(m, scale=4)
     pt.report(owed)
     print("PASS" if ok else "FAIL")

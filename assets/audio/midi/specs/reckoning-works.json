@@ -1,0 +1,47 @@
+{
+  "title": "The Reckoning-Works - busy clockwork (C2, before the Paul story)",
+  "_note": "The over-productive engine hall on the Rimeway Fold. Comic, never menacing: D Mixolydian, 138 BPM, 16 bars A-A'-B-A. A staccato pulse12 'counting' lead with rests between every figure (the clerks never finish a thought); a PLUCK ostinato in relentless eighths (the card-belt); tri_bass oom-pah; woodblock-clock hats on every eighth; the output board's BELL dings at every phrase end. B (bars 9-12) is the board climbing: sixteenth-note turns stepping down, then a straight eighth-note scale up an octave. Bar 16 cadences C->D back into bar 1. snes era for the bell, 6 voices peak.",
+  "era": "snes",
+  "tempo": 138,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "D Mixolydian",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse12",
+      "octave": 5,
+      "gain": 0.8,
+      "notes": "D5e re A4e re D5e E5e F#5e re | G5e re F#5e re E5e D5e C5e re | D5e re A4e re D5e E5e F#5e A5e | G5q F#5e E5e D5q re re | D5e re A4e re D5e E5e F#5e re | A5e re G5e re F#5e E5e D5e re | C5e re E5e re G5e F#5e E5e C5e | D5q A4q D5q re re | F#5s G5s F#5s E5s D5e re F#5s G5s F#5s E5s D5e re | E5s F#5s E5s D5s C5e re E5s F#5s E5s D5s C5e re | D5s E5s D5s C5s B4e re D5s E5s D5s C5s B4e re | A4e B4e C5e D5e E5e F#5e G5e A5e | D5e re A4e re D5e E5e F#5e re | G5e re F#5e re E5e D5e C5e re | D5e re A4e re D5e E5e F#5e A5e | G5e F#5e E5e C5e D5q re re"
+    },
+    {
+      "name": "belt",
+      "voice": "pluck",
+      "octave": 4,
+      "gain": 0.45,
+      "notes": "D4e A4e D5e A4e D4e A4e D5e A4e | C4e G4e C5e G4e C4e G4e C5e G4e | D4e A4e D5e A4e D4e A4e D5e A4e | G3e D4e G4e D4e G3e D4e G4e D4e | D4e A4e D5e A4e D4e A4e D5e A4e | D4e A4e D5e A4e D4e A4e D5e A4e | C4e G4e C5e G4e C4e G4e C5e G4e | D4e A4e D5e A4e D4e A4e D5e A4e | D4e A4e D5e A4e D4e A4e D5e A4e | C4e G4e C5e G4e C4e G4e C5e G4e | G3e D4e G4e D4e G3e D4e G4e D4e | A3e E4e A4e E4e A3e E4e A4e E4e | D4e A4e D5e A4e D4e A4e D5e A4e | C4e G4e C5e G4e C4e G4e C5e G4e | D4e A4e D5e A4e D4e A4e D5e A4e | C4e G4e C5e G4e D4e A4e D5e A4e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.85,
+      "notes": "D2q A2q D2q A2q | C2q G2q C2q G2q | D2q A2q D2q A2q | G2q D2q G2q D2q | D2q A2q D2q A2q | D2q A2q D2q A2q | C2q G2q C2q G2q | D2q A2q D2q A2q | D2q A2q D2q A2q | C2q G2q C2q G2q | G2q D2q G2q D2q | A2q E2q A2q E2q | D2q A2q D2q A2q | C2q G2q C2q G2q | D2q A2q D2q A2q | C2q G2q D2q A2q"
+    },
+    {
+      "name": "ding",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.3,
+      "_note": "the output board's bell: a ding at every phrase end",
+      "notes": "rw | rw | rw | rh. A5q | rw | rw | rw | rh. D6q | rw | rw | rw | rh. A5q | rw | rw | rw | rh. D6q"
+    },
+    {
+      "name": "clock",
+      "voice": "drums",
+      "gain": 0.3,
+      "notes": "e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat tom hat tom tom snare+hat snare | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat"
+    }
+  ]
+}

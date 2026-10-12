@@ -185,6 +185,7 @@ PLACEMENTS: dict[str, dict] = {
     },
     # ------------------------------------------------------------------ Galehigh
     "galehigh_terraces": {
+        "sprites": {"andrew_road": "andrew_cyclist"},  # Andrew in costume (his fence, his look)
         "ambience": {
             "particles": [particles("leaves", 0.8), particles("motes", 0.6)],
             "mist": {"color": "#2a3550", "alpha": 0.07, "speed": 6},  # cloud shadow
@@ -235,6 +236,7 @@ PLACEMENTS: dict[str, dict] = {
     "galehigh_lumenary": {"npcs": recast("galehigh_lumenary", hall_festival="kite_weaver")},
     # ------------------------------------------------------------------ Pale Vault
     "pale_vault_glacier": {
+        "sprites": {"andrew_road": "andrew_frost"},  # Andrew in costume (his fence, his look)
         "ambience": {
             "particles": [particles("snow", 1.0), particles("starglint", 0.4)],
             "tint": {"color": "#7fe0c0", "alpha": 0.06},  # the aurora, always overhead

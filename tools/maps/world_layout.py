@@ -58,6 +58,7 @@ NODE_KINDS: dict[str, str] = {
     "tinderwick": "town", "wickstead_green": "landmark", "dimglass_coast": "route",
     "dimglass_coast_ii": "route", "tideglass_cavern": "landmark", "gullcry_rock": "landmark",
     "pearlmoor_quay": "town", "pearlmoor_breakwater": "landmark", "pearlmoor_wanderwood": "landmark",
+    "wayward_rise": "landmark",
     "dawnstead": "town",
     # the hub + the bay road home + the mountain road
     "vesper_crossroads": "hub", "lanternway_tinderwick": "route",
@@ -75,11 +76,18 @@ NODE_KINDS: dict[str, str] = {
     # west
     "hushfrost_pass_i": "route", "hushfrost_pass_ii": "route", "aurora_hollow": "landmark",
     "sunken_solarium": "town", "unrisen_stair": "landmark", "sunvault_climb_i": "route",
-    "sunvault_climb_ii": "route", "helia_vault": "landmark", "nightreach_observatory": "town",
+    "sunvault_climb_ii": "route", "sunvault_climb_iii": "route", "sunvault_climb_iv": "route",
+    "rimeway_ascent": "route", "rimeway_fold": "route", "rimeway_descent": "route",
+    "helia_vault": "landmark", "nightreach_observatory": "town",
     "lanternway_nightreach": "route",
     # the marshes (off Nightreach)
     "coldfog_marches_ii": "route", "coldfog_marches_i": "route", "drownlight_beacon": "landmark",
     "hollowfen_stillworks": "landmark",
+    # THE WILD WAYS — the Wick-Run (09 §2 A): Sunvault Climb I down the west flank to the sea
+    "wickrun_crest": "route", "wickrun_chute": "route", "wickrun_trestles": "route",
+    "wickrun_traverse": "route", "wickrun_lower": "route", "wickrun_foot": "route",
+    # THE WILD WAYS — the Mirelights (east of Saltreach Fen I, over Ansel's ferry)
+    "mirelight_landing": "route", "mirelight_glassmere": "route", "mirelight_chapel": "landmark",
 }
 # places hung off a stacked interior chain, pinned near their anchor (tiles)
 ANCHORED: dict[str, tuple[str, float, float]] = {
@@ -149,6 +157,7 @@ ROADS: list[tuple[str, str, str]] = [
     ("dimglass_coast_ii", "gullcry_rock", "gate"),
     ("pearlmoor_quay", "pearlmoor_breakwater", "gate"),
     ("pearlmoor_quay", "pearlmoor_wanderwood", "road"),   # up through the allotment
+    ("pearlmoor_wanderwood", "wayward_rise", "road"),     # north out of the glade
     ("umbral_spire", "dawnstead", "gate"),
     # the bay road home (Saltreach Fen I's drowned road -> the Crossroads)
     ("saltreach_fen_i", "wrackline_path", "road"),
@@ -186,18 +195,38 @@ ROADS: list[tuple[str, str, str]] = [
     ("sunken_solarium", "sunvault_climb_i", "road"),
     ("sunvault_climb_i", "sunvault_climb_ii", "gate"),
     ("sunvault_climb_ii", "helia_vault", "gate"),
-    ("sunvault_climb_ii", "nightreach_observatory", "road"),
+    ("sunvault_climb_ii", "sunvault_climb_iii", "road"),
+    ("sunvault_climb_iii", "sunvault_climb_iv", "road"),
+    ("sunvault_climb_iv", "nightreach_observatory", "road"),
     ("nightreach_observatory", "lanternway_nightreach", "lane"),
     # the marshes (off Nightreach's east fog gate)
     ("nightreach_observatory", "coldfog_marches_ii", "gate"),
     ("coldfog_marches_ii", "coldfog_marches_i", "gate"),
     ("coldfog_marches_i", "drownlight_beacon", "gate"),
     ("coldfog_marches_ii", "hollowfen_stillworks", "gate"),
+    # the Rimeway (09-the-wild-ways §2 C): Pale Vault -> the Fold -> the Rime Gate -> the marsh
+    ("pale_vault_glacier", "rimeway_ascent", "road"),
+    ("rimeway_ascent", "rimeway_fold", "road"),
+    ("rimeway_fold", "rimeway_descent", "gate"),
+    ("coldfog_marches_ii", "rimeway_descent", "road"),
+    # THE WILD WAYS — the Wick-Run (one-way chutes; the Tallow Lift is the ride home)
+    ("sunvault_climb_i", "wickrun_crest", "road"),
+    ("wickrun_crest", "wickrun_chute", "road"),
+    ("wickrun_chute", "wickrun_trestles", "road"),
+    ("wickrun_trestles", "wickrun_traverse", "road"),
+    ("wickrun_traverse", "wickrun_lower", "road"),
+    ("wickrun_lower", "wickrun_foot", "road"),
+    ("wickrun_foot", "pearlmoor_quay", "road"),      # the beach road round Lightkeeper's Point
+    # THE WILD WAYS — the Mirelights: the ferry is flag-gated, the boards are walked
+    ("saltreach_fen_i", "mirelight_landing", "gate"),
+    ("mirelight_landing", "mirelight_glassmere", "road"),
+    ("mirelight_glassmere", "mirelight_chapel", "road"),
     # THE LANTERN-CAR (rides, not roads) + the Cinderhead ore-hoist
     ("lanternway_lowleaf", "vesper_crossroads", "car"),
     ("lanternway_galehigh", "vesper_crossroads", "car"),
     ("lanternway_nightreach", "vesper_crossroads", "car"),
     ("cinderhead_deep", "vesper_crossroads", "car"),
+    ("wickrun_foot", "wickrun_crest", "car"),        # the Tallow Lift
     # the mountain road
     ("vesper_crossroads", "umbral_approach", "gate"),
     ("umbral_approach", "penumbra_ring", "road"),

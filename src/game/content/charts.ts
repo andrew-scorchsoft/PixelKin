@@ -176,7 +176,7 @@ export const CHARTS: readonly ChartEntry[] = [
     region: 'west',
     kind: 'route',
     art: AREA('sunvault-climb'),
-    maps: ['sunvault_climb_i', 'sunvault_climb_ii'],
+    maps: ['sunvault_climb_i', 'sunvault_climb_ii', 'sunvault_climb_iii', 'sunvault_climb_iv'],
   },
   {
     id: 'nightreach-observatory',

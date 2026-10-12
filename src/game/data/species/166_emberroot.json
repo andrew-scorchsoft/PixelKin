@@ -1,0 +1,83 @@
+{
+  "id": 166,
+  "slug": "emberroot",
+  "name": "Emberroot",
+  "types": [
+    "Stone",
+    "Ember"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "E",
+  "stats": {
+    "hp": 112,
+    "atk": 128,
+    "def": 100,
+    "spa": 50,
+    "spd": 84,
+    "spe": 84
+  },
+  "bst": 558,
+  "ability": "stonehide",
+  "hidden_ability": "cinderveil",
+  "catchRate": 24,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "pebble_toss"
+      },
+      {
+        "level": 9,
+        "move": "cinderclaw"
+      },
+      {
+        "level": 16,
+        "move": "gritfist"
+      },
+      {
+        "level": 24,
+        "move": "flame_lash"
+      },
+      {
+        "level": 30,
+        "move": "rock_hurl"
+      },
+      {
+        "level": 36,
+        "move": "stone_wall"
+      },
+      {
+        "level": 41,
+        "move": "pyre_slam"
+      },
+      {
+        "level": 46,
+        "move": "boulder_smash"
+      },
+      {
+        "level": 54,
+        "move": "throes"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The first star that ever fell into Vesperholm, so long ago the mountain grew up around it. It has slept at the root of Cinderhead ever since, and the warm black cinder-coal the miners dig is only its breath, cooling very slowly in the stone.",
+    "category": "First-Star Kin",
+    "size_cm": 640,
+    "weight_kg": 2400,
+    "habitat": "north"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "A vast, ancient, low-slung beast half-made of the mountain: a broad tortoise-like body under a humped shell of dark basalt strata, heavy legs ending in root-like claws that spread into the rock. Deep cracks run across the shell and shoulders, each glowing a slow molten amber from within; at the crown of the shell a star-shaped core shows through the stone like a banked coal. A small heavy head with eyes like embers in a kiln-mouth. At 64px it reads as a glowing, cracked boulder that is breathing.",
+    "palette": "Basalt charcoal and ink (#1a1430) stone with cool grey strata bands; glowing seams of ember amber (#ff8a3d) deepening to red at their edges; the star-core a pale gold-white, the brightest pixel; ash-grey dust on the root-claws.",
+    "direction": "Ancient, patient, rooted \u2014 the oldest thing in the world, asleep, not angry. Its weight should be felt: grounded, enormous, slow. The glowing cracks are breath, not wounds; the star inside is still warm."
+  },
+  "provenance_concept_id": "X-EMBERROOT"
+}

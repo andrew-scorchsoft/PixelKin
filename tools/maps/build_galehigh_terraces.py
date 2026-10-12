@@ -53,6 +53,7 @@ Run:  ./venv/bin/python tools/maps/build_galehigh_terraces.py
 from __future__ import annotations
 import random
 import mapkit as mk
+import warp_markers as wm
 import patterns as pt
 from mapkit import gid
 
@@ -420,7 +421,7 @@ m["npcs"] += [
     {"id": "festival_kid", "at": {"tx": 16, "ty": 18}, "facing": "up",
      "sprite": "npc_child", "movement": "wander",
      "dialogue_ref": "npc.galehigh_festival_kid"},
-    {"id": "festival_goer", "at": {"tx": 12, "ty": 18}, "facing": "right",
+    {"id": "festival_goer", "at": {"tx": 11, "ty": 18}, "facing": "right",
      "sprite": "npc_woman", "movement": "static",
      "dialogue_ref": "npc.galehigh_festival_goer"},
     # witness beat: a festival-goer reacts once Mira's hook lands
@@ -532,6 +533,8 @@ m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + ter
 ]
 
 if __name__ == "__main__":
+    # warp marker: the crag stair cut up the north lip once the shortcut opens
+    wm.add(m, wm.marker("crag_stair", "steps_n", 21, 2, requires_flag="flag:shortcut_windward"))
     ok = mk.finalize(m, scale=3)
     pt.report(owed)
     print("PASS" if ok else "FAIL")

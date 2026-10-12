@@ -398,6 +398,12 @@ deep-ice spurs), **NOT** the town or Lumenary · **Gleam:** Frost (Ysolde Frost,
   rare Frost kin. **[MISSABLE]** once Emberward is earned (don't leave the glacier without
   sweeping them). *(If authored as a separate node later, gate it `emberward`, not the town.)*
 
+- **The Rimeway** (2026-10, [09 §C](./09-the-wild-ways.md)) — Pale Vault's north road climbs
+  to the Fold (ladders, the Glare ice-slide, the frozen falls, the tenders' refuge) and the
+  **Rime Gate**, barred from the marsh side until the West era. Isel the lens-grinder (by the
+  north road) cuts the **Frostglass Lens** from the falls' clear-ice core — the Mirelights'
+  ferry key. Bands 39-42. **[OPTIONAL]**
+
 **Named quests** (spine §5 kit):
 - **N2 "The Aurora Sketcher"** — giver: a **painter NPC** at the Aurora-watch · steps:
   stand with her at three sketching viewpoints (interacts: a Windward II crag, the glacier
@@ -468,3 +474,14 @@ ledger **`flag:dusk_begins`** + **`flag:met_hollowing`** + **`flag:met_cor`** (a
 West onward path is open the moment the player arrives. **Aurora Hollow** (off Hushfrost II,
 Emberward) is West's to write. Arc beats still owed downstream: **A5** (Wren returns, resolved),
 **B4** (Great Null named), **C4** (Fenn's counsel before the Spire).
+
+## Traversal pass (2026-10, 09-the-wild-ways §3) — Cinderwind Scarp
+
+The scarp between Cinderhead Deep and Galehigh is **climbed by ladders** now: both tier bands
+are tall faces (rim + face + a rock-face foot row) with no walk-up gap, and the ore-haulers'
+ladders (`spans` ladder) sit at **opposite ends** — pitch A at the east end, pitch B at the
+west — so the way up zig-zags the whole face (in along the foot, up A, back west across the
+middle tier past the hauler, up B, east to the gate). Each band keeps a grass ledge at the
+other end, so the way down is two quick hops (62 steps up vs 36 down). No Gift involved;
+warps, trainers (hauler moved to watch the middle tier's full height), caches and tables
+unchanged. Before: two bands with walk-up gaps under the ledges (both ways ~37 steps).

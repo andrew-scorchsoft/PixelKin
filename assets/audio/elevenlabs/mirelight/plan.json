@@ -1,0 +1,198 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{a lone glass bell light appears over the water, then a second answers slightly off key, and a low bass note settles under them}",
+   "duration_ms": 6000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM",
+    "3/4 time, a slow lilting waltz pulse",
+    "B minor with drifting whole-tone colour",
+    "a lone soft pulse-wave lead with long held notes and wide spacing",
+    "wandering high glass bells and celesta that drift slightly out of key like will-o'-the-wisps",
+    "very soft sampled string pad",
+    "slow harp arpeggios",
+    "a low still bass note under each bar",
+    "eerie but tender, a drowned field of blue lights over still water at night",
+    "strong slow singable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "a lone instrument breathing in",
+    "still water"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "busy drums",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "horror",
+    "jump scare",
+    "cheerful",
+    "dense arrangement"
+   ],
+   "context_adherence": "high",
+   "conditioning_ref": {
+    "song_id": "TOREmIgiwF3GKpN7UkLA",
+    "range": {
+     "start_ms": 10668,
+     "end_ms": 40668
+    }
+   },
+   "condition_strength": "low"
+  },
+  {
+   "text": "[Main Theme]\n{a lone pulse-wave lantern call in slow 3/4: a rising leap that hangs unresolved, wide rests between phrases, bells drifting off the beat}",
+   "duration_ms": 24000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM",
+    "3/4 time, a slow lilting waltz pulse",
+    "B minor with drifting whole-tone colour",
+    "a lone soft pulse-wave lead with long held notes and wide spacing",
+    "wandering high glass bells and celesta that drift slightly out of key like will-o'-the-wisps",
+    "very soft sampled string pad",
+    "slow harp arpeggios",
+    "a low still bass note under each bar",
+    "eerie but tender, a drowned field of blue lights over still water at night",
+    "strong slow singable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "main theme",
+    "memorable hook",
+    "lonely and tender"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "busy drums",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "horror",
+    "jump scare",
+    "cheerful",
+    "dense arrangement"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme Reprise]\n{the call again, now the wandering bells lead it astray, harp arpeggios slowly turning beneath, the strings breathing in a little}",
+   "duration_ms": 24000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM",
+    "3/4 time, a slow lilting waltz pulse",
+    "B minor with drifting whole-tone colour",
+    "a lone soft pulse-wave lead with long held notes and wide spacing",
+    "wandering high glass bells and celesta that drift slightly out of key like will-o'-the-wisps",
+    "very soft sampled string pad",
+    "slow harp arpeggios",
+    "a low still bass note under each bar",
+    "eerie but tender, a drowned field of blue lights over still water at night",
+    "strong slow singable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "wandering bell counter-line",
+    "slightly fuller"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "busy drums",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "horror",
+    "jump scare",
+    "cheerful",
+    "dense arrangement"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast: the lights crowd closer, an uncanny shift to a C major chord in B minor, the bells circling; then one warm true note glows in key}",
+   "duration_ms": 20000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM",
+    "3/4 time, a slow lilting waltz pulse",
+    "B minor with drifting whole-tone colour",
+    "a lone soft pulse-wave lead with long held notes and wide spacing",
+    "wandering high glass bells and celesta that drift slightly out of key like will-o'-the-wisps",
+    "very soft sampled string pad",
+    "slow harp arpeggios",
+    "a low still bass note under each bar",
+    "eerie but tender, a drowned field of blue lights over still water at night",
+    "strong slow singable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "uncanny but gentle",
+    "contrasting section"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "busy drums",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "horror",
+    "jump scare",
+    "cheerful",
+    "dense arrangement"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the lantern call returns and this time settles home softly in D major, tender; the last bar drifts straight back into the theme}",
+   "duration_ms": 24000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM",
+    "3/4 time, a slow lilting waltz pulse",
+    "B minor with drifting whole-tone colour",
+    "a lone soft pulse-wave lead with long held notes and wide spacing",
+    "wandering high glass bells and celesta that drift slightly out of key like will-o'-the-wisps",
+    "very soft sampled string pad",
+    "slow harp arpeggios",
+    "a low still bass note under each bar",
+    "eerie but tender, a drowned field of blue lights over still water at night",
+    "strong slow singable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "busy drums",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "horror",
+    "jump scare",
+    "cheerful",
+    "dense arrangement"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}

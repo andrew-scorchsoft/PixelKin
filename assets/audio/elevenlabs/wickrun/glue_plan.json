@@ -1,0 +1,49 @@
+{
+ "chunks": [
+  {
+   "song_id": "5DU3RqCMp67Wrlq3iV9s",
+   "range": {
+    "start_ms": 71429,
+    "end_ms": 91429
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "168 BPM",
+    "E minor with a bright Dorian lift to G major",
+    "4/4",
+    "fast driving pulse-wave lead with a pushed syncopated eighth-note hook",
+    "galloping plucked sampled bass in octaves",
+    "sampled 16-bit drum kit: driving snare backbeat and tom fills, a light kick on beats one and three, crash cymbals on phrase starts",
+    "rapid harp arpeggios like spinning wheel spokes",
+    "warm sampled string chords",
+    "bright glass bell glints flashing past",
+    "reckless, exhilarating downhill race at night, wind in your face",
+    "strong catchy hummable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "5DU3RqCMp67Wrlq3iV9s",
+   "range": {
+    "start_ms": 5714,
+    "end_ms": 15714
+   }
+  }
+ ]
+}

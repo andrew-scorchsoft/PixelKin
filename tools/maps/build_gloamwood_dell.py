@@ -104,7 +104,7 @@ m["warps"] += [
 # ---- the lost kitten Pim — the fetch beat, in the deepest dark of the nook ----------
 # appears once Georgina has ASKED (q_east_georgina_met), gone once carried home.
 m["npcs"] += [
-    {"id": "lost_kitten", "at": {"tx": 3, "ty": 9}, "facing": "down",
+    {"id": "lost_kitten", "at": {"tx": 4, "ty": 9}, "facing": "down",
      "sprite": "kin_164_overworld", "movement": "look_around",
      "dialogue_ref": "script.georgina_kitten_found",
      "requires_flag": "flag:q_east_georgina_met",

@@ -101,7 +101,7 @@ export const ITEMS: ItemRegistry = {
       turn_off: 'You slide the hood back. The lamp brightens, and the wilds wake to it once more.',
     },
   },
-  // R9 "The Tin Rower" — Aldous Wink's lot on Dimglass Coast I, traded for a
+  // R9 "The Tin Rower" — the nameless toy-trader's lot on Dimglass Coast I, traded for a
   // story (or 12,000 wicks). A toggle key item like the Hooded Lamp: while WOUND
   // the wild kin follow the clicking toy instead of you (encounter rate ×0.5).
   // Handed over already wound. Also the Old Light tower's free riddle-hint.
@@ -121,6 +121,33 @@ export const ITEMS: ItemRegistry = {
       turn_on: 'You wind the brass key. Click, click — he rows off in his circle, and the wild kin turn to watch HIM.',
       turn_off: 'You hold the oars still. The ferryman stops, nods once, and waits. The wilds look your way again.',
     },
+  },
+  runner: {
+    id: 'runner',
+    name: 'Runner',
+    // ≤ ~80 chars — the pack's detail pane is three lines and does not scroll.
+    desc: 'A rented two-wheeled runner. Rides the Wick-Run; handed back at the foot.',
+    category: 'key',
+  },
+  runner_ribbon: {
+    id: 'runner_ribbon',
+    name: 'Runner\'s Ribbon',
+    // ≤ ~80 chars (three-line detail pane)
+    desc: 'Rook\'s red ribbon for a gold Wick-Run. Pell rents you runners for free.',
+    category: 'key',
+  },
+  frostglass_lens: {
+    id: 'frostglass_lens',
+    name: 'Frostglass Lens',
+    desc: 'Clear ice cut true by a Pale Vault grinder. A false light looks false through it.',
+    category: 'key',
+  },
+  // 09 §C2 "The Long Way Round" — the Reckoning-Works' thanks (a keepsake, no use)
+  aurora_card: {
+    id: 'aurora_card',
+    name: 'Aurora Card',
+    desc: 'A punched Reckoning-Works card. Fed through an engine, it plays the aurora.',
+    category: 'key',
   },
   fenn_satchel: {
     id: 'fenn_satchel',
@@ -156,6 +183,13 @@ export const ITEMS: ItemRegistry = {
     id: 'paul_cup',
     name: 'Paul\'s Tin Cup',
     desc: 'A dented tin cup, still warm. The cup of something, at last. The night: pending.',
+    category: 'key',
+  },
+  // Paul's House (2026-10): Lottie's keepsake, after the Chickenpig meets her.
+  lottie_drawing: {
+    id: 'lottie_drawing',
+    name: 'Lottie\'s Drawing',
+    desc: 'A crayon Chickenpig crowing at a crayon sun. Signed LOTTIE, very large.',
     category: 'key',
   },
   fenn_letter: {
@@ -268,6 +302,23 @@ export const ITEMS: ItemRegistry = {
     name: 'Ledge-herb',
     desc: 'A wind-burnt sprig from Galehigh\'s highest terrace, sharp and warm to the nose. The crag-tender swears by it for her kettle.',
     category: 'key',
+  },
+  // The kitchens (content/regions/kitchens.ts) — both GIVEN once, never sold.
+  // Percy's cup from the eight-sided moka pot (Duskapple Orchard).
+  moka_cup: {
+    id: 'moka_cup',
+    name: 'Moka Cup',
+    desc: 'A short, strong cup from the eight-sided moka pot. Restores some health.',
+    category: 'medicine',
+    heal: 40,
+  },
+  // Marisol's salsa, with your first plate at her kitchen (Lowleaf Hollow).
+  salsa_roja: {
+    id: 'salsa_roja',
+    name: 'Salsa Roja',
+    desc: 'Toasted chile and tomato, stoppered in a jar. Restores a good deal of health.',
+    category: 'medicine',
+    heal: 60,
   },
   warm_flask: {
     id: 'warm_flask',
@@ -454,6 +505,14 @@ export const ITEMS: ItemRegistry = {
     desc: 'A lacquered knot of old hearth-resin from a snuffed wayshrine, still faintly warm at the heart. Chandlers prize it for the finest wicks.',
     category: 'valuable',
     sell: 600,
+  },
+  // The Mirelights (09-the-wild-ways §2 B): the Glassmere's current-only cache.
+  glassmere_pearl: {
+    id: 'glassmere_pearl',
+    name: 'Glassmere Pearl',
+    desc: 'A fen-pearl with a small blue light turning inside, like a lost dream.',
+    category: 'valuable',
+    sell: 1200,
   },
   murk_pearl: {
     id: 'murk_pearl',

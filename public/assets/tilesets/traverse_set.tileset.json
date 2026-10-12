@@ -1,0 +1,227 @@
+{
+  "name": "traverse_set",
+  "image": "assets/tilesets/traverse_set.webp",
+  "tile_width": 16,
+  "tile_height": 16,
+  "columns": 8,
+  "tile_count": 52,
+  "tiles": [
+    {
+      "index": 0,
+      "role": "path"
+    },
+    {
+      "index": 1,
+      "role": "path"
+    },
+    {
+      "index": 2,
+      "role": "path"
+    },
+    {
+      "index": 3,
+      "role": "path"
+    },
+    {
+      "index": 4,
+      "role": "decor"
+    },
+    {
+      "index": 5,
+      "role": "decor"
+    },
+    {
+      "index": 6,
+      "role": "decor"
+    },
+    {
+      "index": 7,
+      "role": "decor"
+    },
+    {
+      "index": 8,
+      "role": "decor"
+    },
+    {
+      "index": 9,
+      "role": "decor"
+    },
+    {
+      "index": 10,
+      "role": "decor"
+    },
+    {
+      "index": 11,
+      "role": "decor"
+    },
+    {
+      "index": 12,
+      "role": "decor"
+    },
+    {
+      "index": 13,
+      "role": "decor"
+    },
+    {
+      "index": 14,
+      "role": "decor"
+    },
+    {
+      "index": 15,
+      "role": "decor"
+    },
+    {
+      "index": 16,
+      "role": "decor"
+    },
+    {
+      "index": 17,
+      "role": "decor"
+    },
+    {
+      "index": 18,
+      "role": "decor"
+    },
+    {
+      "index": 19,
+      "role": "decor"
+    },
+    {
+      "index": 20,
+      "role": "decor"
+    },
+    {
+      "index": 21,
+      "role": "decor"
+    },
+    {
+      "index": 22,
+      "role": "decor"
+    },
+    {
+      "index": 23,
+      "role": "decor"
+    },
+    {
+      "index": 24,
+      "role": "decor"
+    },
+    {
+      "index": 25,
+      "role": "decor"
+    },
+    {
+      "index": 26,
+      "role": "decor"
+    },
+    {
+      "index": 27,
+      "role": "decor"
+    },
+    {
+      "index": 28,
+      "role": "decor"
+    },
+    {
+      "index": 29,
+      "role": "decor"
+    },
+    {
+      "index": 30,
+      "role": "decor"
+    },
+    {
+      "index": 31,
+      "role": "decor"
+    },
+    {
+      "index": 32,
+      "role": "decor"
+    },
+    {
+      "index": 33,
+      "role": "decor"
+    },
+    {
+      "index": 34,
+      "role": "decor"
+    },
+    {
+      "index": 35,
+      "role": "decor"
+    },
+    {
+      "index": 36,
+      "role": "decor"
+    },
+    {
+      "index": 37,
+      "role": "decor"
+    },
+    {
+      "index": 38,
+      "role": "decor"
+    },
+    {
+      "index": 39,
+      "role": "decor"
+    },
+    {
+      "index": 40,
+      "role": "decor"
+    },
+    {
+      "index": 41,
+      "role": "ground"
+    },
+    {
+      "index": 42,
+      "role": "ground"
+    },
+    {
+      "index": 43,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 44,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 45,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 46,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 47,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 48,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 49,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 50,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 51,
+      "role": "wall",
+      "collides": true
+    }
+  ]
+}

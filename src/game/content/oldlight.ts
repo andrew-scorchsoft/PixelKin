@@ -214,6 +214,57 @@ export const OLDLIGHT_SCRIPTS: ScriptRegistry = {
     nar('(There is no bun. There has never been a bun. Your kin are mended anyway.)'), // JOKE: F3.URN
     { op: 'say', speaker: 'TEA-URN', text: 'Drink up, love. You look like the first half.' }, // JOKE: F3.URN
   ],
+  // The computer in the east bay: an anachronism nobody in Vesperholm can explain,
+  // so of course it's Punchwheel's — his "research" desk. Pure colour: no progression
+  // flags; flag:oldlight_mama_read only shortens the re-visit opener.
+  'script.oldlight_computer': [
+    nar('(A chunky box with a glowing glass face, humming on a little desk. Nobody in Vesperholm has ever seen one. It is very sure of itself anyway.)'),
+    nar('(A card is taped to the side: PROPERTY OF MR. PUNCHWHEEL. FOR JOKE RESEARCH. DO NOT LICK.)'),
+    {
+      op: 'choice',
+      prompt: 'A website is open: ANDY-LAND.CO.UK. Have a look?',
+      options: [
+        {
+          label: 'Yes.',
+          ops: [
+            { ...nar('Hmm... what have we got here? Some tricky videos...'), unless_flag: 'flag:oldlight_mama_read' },
+            { ...nar('The tricky videos are still there. You still do not trust them.'), if_flag: 'flag:oldlight_mama_read' },
+            nar('...Oh, wait a minute. A YOUR MAMA JOKES page!'),
+            {
+              op: 'choice',
+              prompt: 'Read the YOUR MAMA JOKES page?',
+              options: [
+                {
+                  label: 'Yes.',
+                  ops: [
+                    nar('ANDY-LAND.CO.UK > FORUM > YOUR MAMA JOKES (KIN EDITION)'),
+                    { op: 'say', speaker: 'LAMPLAD99', text: "Your mama's so slow, a Gravelo lapped her. Twice. It stopped for lunch in between." },
+                    { op: 'say', speaker: 'WICKZ', text: "Your mama snores so loud, a Snoozlet packed its bags and left Nightreach for a bit of peace and quiet." },
+                    { op: 'say', speaker: 'TIDECALLER_7', text: "Your mama used Tidecall and the sea called back to say it was busy." },
+                    { op: 'say', speaker: 'LAMPLAD99', text: "Your mama's so big, she's got her own constellation. They didn't even name it. It's just 'Mum'." },
+                    { op: 'say', speaker: 'GLEAMGIRL', text: "Your mama's so old, she remembers the Long Dusk back when it was just the Long Afternoon." },
+                    { op: 'say', speaker: 'WICKZ', text: "Your mama's so stingy, she charges the moths a wick to sit by her lamp." },
+                    { op: 'say', speaker: 'TIDECALLER_7', text: "Your mama threw her vesperlamp so wide, she caught the Hearthkeeper." },
+                    { op: 'say', speaker: 'GLEAMGIRL', text: "Your mama's so heavy, she trod on a Frostholm and the GLACIER said 'ow'." },
+                    { op: 'say', speaker: 'LAMPLAD99', text: "Your mama's so slow, her Pebbit kindled, retired, and wrote a book about it before she finished saying 'go'." },
+                    { op: 'say', speaker: 'WICKZ', text: "Your mama sat down for a rest in the Hearth. Now it's called the Hearth-and-a-Half." },
+                    { op: 'say', speaker: 'GLEAMGIRL', text: "Your mama talked so loud in the Lumenary, the Lampwarden handed her the Gleam just to make her leave." },
+                    { op: 'say', speaker: 'TIDECALLER_7', text: "Your mama's cooking is so bad, a Tallowpup buried the leftovers. Then it buried the SPOON." },
+                    { op: 'say', speaker: 'LAMPLAD99', text: "Your mama's so scary, the Booji-Wooji Man checks under HIS bed for her." },
+                    { op: 'say', speaker: 'MOD_HEARTHKEEPER', text: 'Lovely jokes, everyone. Remember: all mamas are welcome at the Hearth. Even the big ones. ESPECIALLY the big ones.' },
+                    nar('Hmm. Interesting.'),
+                    { op: 'setFlag', flag: 'flag:oldlight_mama_read' },
+                  ],
+                },
+                { label: 'No.', ops: [nar('You close the page. Somewhere, a forum full of jokes goes unread. It will cope.')] },
+              ],
+            },
+          ],
+        },
+        { label: 'No.', ops: [nar('You leave it humming. Some websites are best left open for the next Wayfarer.')] },
+      ],
+    },
+  ],
   'script.oldlight_3': [
     { op: 'say', speaker: 'THE MOUTH', text: 'HOW DOES A LAMPLIGHTER GET OVER A BROKEN HEART? ...Mm? Mm?' }, // JOKE: F3.MOUTH
     nar("(Its big rubbery lips pucker and wait for a punchline it hasn't got.)"), // JOKE: F3.MOUTH

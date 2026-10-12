@@ -2746,6 +2746,18 @@
       "h": 3,
       "overhang": 2,
       "requires_flag": "flag:q_post_wick_given"
+    },
+    {
+      "id": "pier_skiff",
+      "sprite": "markers_pier_end",
+      "at": {
+        "tx": 15,
+        "ty": 28
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "bob": false
     }
   ],
   "warps": [
@@ -3336,11 +3348,11 @@
     {
       "id": "andrew_road",
       "at": {
-        "tx": 14,
-        "ty": 27
+        "tx": 12,
+        "ty": 23
       },
       "facing": "down",
-      "sprite": "andrew_ward",
+      "sprite": "andrew_party",
       "movement": "look_around",
       "dialogue_ref": "script.andrew_road"
     },

@@ -766,6 +766,242 @@ GEOMETRY_ENCOUNTERS = {
 for _slug, _rows_ in GEOMETRY_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
 
+# The Wild Ways — Sunvault Climb rebuild (S, 09-the-wild-ways §2 S, 2026-10): the
+# Gilt Face + the Sun Ledges' BUILT in-map tables (tools/maps/build_sunvault_climb_iii/_iv.py),
+# night (48-49) + day twins. Same W6 weight->rarity rule.
+SUNVAULT_FACE_ENCOUNTERS: dict = {}
+SUNVAULT_FACE_ENCOUNTERS.setdefault("solvyne", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("helicore", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("solray", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("lunveil", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("helibud", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("dawnfawn", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "rare", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("goldmane", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "rare", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("auravane", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "rare", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("sunstag", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "rare", "min": 49, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("lunvane", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "rare", "min": 49, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("solreach", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "rare", "min": 49, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("solvyne", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("helicore", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("solray", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 64})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("lunveil", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 64})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("helibud", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("dawnfawn", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "rare", "min": 57, "max": 63})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("goldmane", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("auravane", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("sunstag", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "rare", "min": 59, "max": 65})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("lunvane", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "rare", "min": 60, "max": 65})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("solreach", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "rare", "min": 60, "max": 65})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("lunveil", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("solray", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("petalune", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("helicore", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("spirlet", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("drowshorn", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "rare", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("lunvane", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "rare", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("goldmane", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "rare", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("solreach", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "rare", "min": 49, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("crystalune", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "rare", "min": 49, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("lunveil", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 64})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("solray", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 64})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("petalune", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 64})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("helicore", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("spirlet", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("drowshorn", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("lunvane", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "rare", "min": 60, "max": 65})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("goldmane", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("solreach", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "rare", "min": 60, "max": 65})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("crystalune", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "rare", "min": 60, "max": 65})
+for _slug, _rows_ in SUNVAULT_FACE_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
+
+# The Wild Ways — the Rimeway (C, 09-the-wild-ways §2 C, 2026-10): the Ascent/Fold/Descent
+# BUILT in-map tables (tools/maps/build_rimeway_*.py), night + day twins; Vaultclaw #76
+# lives only up here. Same W6 weight->rarity rule.
+RIMEWAY_ENCOUNTERS: dict = {}
+RIMEWAY_ENCOUNTERS.setdefault("blizzrhare", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "common", "min": 39, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("geodrake", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("hushbore", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("prismcub", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 40})
+RIMEWAY_ENCOUNTERS.setdefault("geolace", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 40})
+RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "rare", "min": 40, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("vaultclaw", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "rare", "min": 41, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("blizzrhare", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("geodrake", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("hushbore", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("prismcub", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("geolace", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64})
+RIMEWAY_ENCOUNTERS.setdefault("vaultclaw", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "rare", "min": 60, "max": 65})
+RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "common", "min": 40, "max": 42})
+RIMEWAY_ENCOUNTERS.setdefault("geodrake", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 42})
+RIMEWAY_ENCOUNTERS.setdefault("blizzrhare", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("snowcune", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("geolace", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("chillpip", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("vaultclaw", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "rare", "min": 41, "max": 42})
+RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("geodrake", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("blizzrhare", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("snowcune", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("geolace", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("chillpip", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 61})
+RIMEWAY_ENCOUNTERS.setdefault("vaultclaw", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 64})
+RIMEWAY_ENCOUNTERS.setdefault("wispwane", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 47})
+RIMEWAY_ENCOUNTERS.setdefault("nullmoth", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 48})
+RIMEWAY_ENCOUNTERS.setdefault("wispwanenull", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 48})
+RIMEWAY_ENCOUNTERS.setdefault("mothdim", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 47})
+RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 47})
+RIMEWAY_ENCOUNTERS.setdefault("cindersob", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "rare", "min": 47, "max": 48})
+RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "rare", "min": 47, "max": 48})
+RIMEWAY_ENCOUNTERS.setdefault("embergone", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "rare", "min": 48, "max": 48})
+RIMEWAY_ENCOUNTERS.setdefault("wispwane", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("nullmoth", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("wispwanenull", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("mothdim", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("cindersob", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 64})
+RIMEWAY_ENCOUNTERS.setdefault("embergone", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64})
+for _slug, _rows_ in RIMEWAY_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
+
+# THE WILD WAYS (09-the-wild-ways.md, 2026-10) — the Wick-Run (A): mirrors of the
+# BUILT in-map tall-grass tables (tools/maps/build_wickrun_{chute,trestles,
+# traverse,lower}.py are the source): the night band (46-50, rising down the run)
+# + its flag:dawn day twin. Tallowcrest, Wickmere, Warmantis (and the rare
+# Chandrek's night rows) live nowhere else in the wild — the run's own kin.
+# Weights -> rarity by the W6 share rule (>=20 common, 10-19 uncommon, 5-9 rare,
+# <5 very rare). The crest and the foot are encounter-free.
+WICKRUN_ENCOUNTERS = {
+    "tallowcrest": [{"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 48},
+                   {"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 62},
+                   {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "common", "min": 47, "max": 48},
+                   {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 63},
+                   {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "common", "min": 47, "max": 49},
+                   {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 63},
+                   {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50},
+                   {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 64}],
+    "wickmere": [{"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 48},
+                {"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 62},
+                {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "common", "min": 47, "max": 48},
+                {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 63},
+                {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "common", "min": 47, "max": 49},
+                {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 63},
+                {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50},
+                {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 64}],
+    "solvyne": [{"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 48},
+               {"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62},
+               {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 48},
+               {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 63},
+               {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 49},
+               {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63},
+               {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 50},
+               {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 64}],
+    "dawnfawn": [{"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 48},
+                {"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62},
+                {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 48},
+                {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 63},
+                {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 49},
+                {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63},
+                {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 50},
+                {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 64}],
+    "helibud": [{"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 48},
+               {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 48},
+               {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 49},
+               {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 50}],
+    "warmantis": [{"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "rare", "min": 47, "max": 48},
+                 {"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 62},
+                 {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "rare", "min": 48, "max": 48},
+                 {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63},
+                 {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "rare", "min": 48, "max": 49},
+                 {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 63},
+                 {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "rare", "min": 49, "max": 50},
+                 {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 64}],
+    "chandrek": [{"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "very_rare", "min": 48, "max": 48},
+                {"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 62},
+                {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "very_rare", "min": 48, "max": 48},
+                {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 63},
+                {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "very_rare", "min": 49, "max": 49},
+                {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "rare", "min": 59, "max": 63},
+                {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "very_rare", "min": 50, "max": 50},
+                {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "rare", "min": 59, "max": 64}],
+    "wicklord": [{"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "rare", "min": 59, "max": 62},
+                {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "rare", "min": 59, "max": 63},
+                {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "rare", "min": 60, "max": 63},
+                {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "rare", "min": 60, "max": 64}],
+}
+for _slug, _rows_ in WICKRUN_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
+# THE WILD WAYS — the Old Seams (D, 2026-10): mirrors of the BUILT in-map cave
+# tables (tools/maps/build_old_seams_i/ii/iii.py are the source), night band +
+# its flag:dawn day twin. Weights -> rarity by the W6 share rule (>=20 common,
+# 10-19 uncommon, 5-9 rare, <5 very_rare). Orebound/Ferrolith/Pyrolith/Lithonyx/
+# Prismara are the Seams' own; the rest are the Cinderhead regulars, deeper.
+def _seam_rows(area, rows):
+    def rar(wt):
+        return "common" if wt >= 20 else "uncommon" if wt >= 10 else "rare" if wt >= 5 else "very_rare"
+    out = {}
+    for slug, wt, lo, hi in rows:
+        out.setdefault(slug, []).append({"area": area, "terrain": "cave", "rarity": rar(wt),
+                                         "min": lo, "max": hi})
+    return out
+OLD_SEAMS_TABLES = {
+    "old_seams_i": [
+        ("oreling", 30, 27, 29), ("coalump", 25, 27, 28), ("riddlestone", 20, 28, 29),
+        ("gravelo", 15, 27, 29), ("orebound", 10, 28, 29),
+        ("oreling", 26, 55, 60), ("coalump", 22, 56, 61), ("riddlestone", 20, 57, 62),
+        ("gravelo", 16, 55, 60), ("orebound", 16, 58, 63)],
+    "old_seams_ii": [
+        ("orebound", 30, 29, 31), ("riddlestone", 20, 29, 30), ("sparkrat", 20, 29, 30),
+        ("pyrolith", 15, 29, 31), ("lithonyx", 10, 30, 31), ("ferrolith", 5, 31, 31),
+        ("orebound", 26, 56, 61), ("riddlestone", 20, 56, 60), ("sparkrat", 18, 56, 60),
+        ("pyrolith", 16, 57, 62), ("lithonyx", 12, 58, 63), ("ferrolith", 8, 60, 65)],
+    "old_seams_iii": [
+        ("orebound", 26, 31, 33), ("coalump", 22, 31, 32), ("pyrolith", 20, 31, 33),
+        ("lithonyx", 14, 31, 33), ("ferrolith", 8, 32, 33), ("prismara", 4, 33, 33),
+        ("orebound", 24, 57, 62), ("coalump", 20, 56, 61), ("pyrolith", 20, 58, 63),
+        ("lithonyx", 14, 58, 63), ("ferrolith", 12, 60, 65), ("prismara", 6, 62, 65)],
+}
+for _area, _tbl in OLD_SEAMS_TABLES.items():
+    for _slug, _rows_ in _seam_rows(_area, _tbl).items():
+        EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
+# ---- THE WILD WAYS: the Mirelights (09-the-wild-ways §2 B) — mirrors of the
+# built in-map tables (tools/maps/mirelight_common.py — the truth; weights ->
+# rarity: >=20 common, 10-19 uncommon, 5-9 rare, <5 very_rare). Night 38-43,
+# day-forms 55-64. Tidwraith/Lumplass are the Mirelights' own; Lampling (the
+# C1 trail's scripted catch) also drifts here, rarely, as a lost light.
+_MIRE_SLUG = {31: "lumpin", 67: "fennlight", 27: "brineroll", 60: "poolfrond", 22: "tidwraith",
+              21: "tidmaren", 29: "glostern", 32: "lumplass", 148: "lampling"}
+# (area, [(kin, weight, night_min, night_max)], day shift) — the SAME species by
+# day (the R4 day-form convention: the woken forms of the same water), +shift
+# levels and four wider. The night beds sit at the lv-40 beds' BST (~400), the
+# grown D-tier forms being the trainers'.
+_MIRE_TABLES = [
+    ("mirelight_landing", [(31, 30, 38, 40), (67, 24, 38, 41), (27, 22, 38, 40),
+                           (60, 16, 39, 40), (22, 8, 39, 41)], 17),
+    ("mirelight_glassmere", [(31, 30, 40, 42), (21, 24, 40, 42), (29, 22, 40, 41),
+                             (22, 9, 40, 42), (32, 9, 41, 42), (148, 6, 42, 42)], 17),
+    ("mirelight_chapel", [(31, 28, 41, 43), (67, 22, 41, 42), (21, 20, 41, 43),
+                          (32, 12, 41, 43), (22, 9, 41, 43), (148, 9, 43, 43)], 17),
+]
+
+
+def _mire_rarity(w):
+    return "common" if w >= 20 else "uncommon" if w >= 10 else "rare" if w >= 5 else "very_rare"
+
+
+MIRELIGHT_ENCOUNTERS: dict = {}
+for _area, _tab, _shift in _MIRE_TABLES:
+    for (_k, _w, _lo, _hi) in _tab:
+        MIRELIGHT_ENCOUNTERS.setdefault(_MIRE_SLUG[_k], []).extend(
+            _rows(_area, [(_lo, _hi, _mire_rarity(_w)),
+                          (_lo + _shift, _hi + _shift + 4, _mire_rarity(_w))]))
+for _slug, _rows_ in MIRELIGHT_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
+
 # Areas whose encounter tables are BUILT into the map JSONs (the in-map zones
 # are the truth, mirrored above). Generated region defaults — and stale rows
 # carried in the previous per-species files — must not claim these areas:
@@ -811,6 +1047,20 @@ CURATED_AREAS = {
     "duskapple_orchard",
     # the 2026-10 geometry fix's new routes (mirrored above, GEOMETRY_ENCOUNTERS)
     "cinderwind_scarp", "umbral_approach",
+    # The Wild Ways — Sunvault Climb rebuild (S): the two new face maps
+    "sunvault_climb_iii", "sunvault_climb_iv",
+    # The Wild Ways — the Rimeway (C)
+    "rimeway_ascent", "rimeway_fold", "rimeway_descent",
+    # THE WILD WAYS — the Wick-Run (mirrored above, WICKRUN_ENCOUNTERS); the
+    # crest and the foot are encounter-free and listed so nothing claims them.
+    "wickrun_crest", "wickrun_chute", "wickrun_trestles", "wickrun_traverse",
+    "wickrun_lower", "wickrun_foot",
+    # THE WILD WAYS — the Old Seams (D): three cave floors (mirrored above,
+    # OLD_SEAMS_TABLES); the heart is encounter-free by design (Emberroot's room).
+    "old_seams_i", "old_seams_ii", "old_seams_iii", "emberroot_heart",
+    # THE WILD WAYS — the Mirelights (mirrored above, MIRELIGHT_ENCOUNTERS);
+    # the hollow is the legendary's room, listed so nothing generated claims it
+    "mirelight_landing", "mirelight_glassmere", "mirelight_chapel", "lanthorne_hollow",
 }
 
 # Kin that are FIXED quest catches (a legendaryBattle set-piece), even though
@@ -958,6 +1208,44 @@ CANON = {
             "silhouette": "A small, lithe winged cat sitting upright on its haunches, dragon-touched: pointed feline ears, a slim cat's muzzle, large round eyes, four neat paws and a long tail that ends in a soft tuft. From its shoulders rise a pair of small membranous dragon wings, half-folded like a cloak; faint ridge-scales run the spine and tail. At 64px the silhouette reads cat-first, dragon-second — a kitten that grew wings.",
             "palette": "Deep violet-and-plum fur shading to near-black at the wingtips and tail; a warm gold star-glow on the chest, the inner wings and the eyes, like a held-back sunrise; pale lilac muzzle and paw-tips; soft ink (#1a1430) outlines. Purple is the body, gold is the light it carries.",
             "direction": "Sunshine in goth clothing. The pose is content and unbothered — a happy little creature wholly at home in the dark, head up, eyes warm, a small proud arch to the wings. Gothic-cosy, never spooky: it LIKES the night, and it brought a light.",
+        },
+    },
+    # The Wild Ways legendaries (#165-166) — docs/world/walkthrough/09-the-wild-ways.md
+    # §2B/§2D. The Three Hours' treatment: tier E, very_rare -> scripted (no
+    # open-table rows; legendaryBattle set-pieces), stats NOT pinned
+    # (make_stats(role, 558, name)), abilities/dex/kits/art pinned. Kits come
+    # from the existing pool, no signature moves.
+    "lanthorne": {
+        # the Tide-E default is phoenix: wrong for a lamp that leads you home.
+        # tidecaller = it mends in its own mere; mistveil = the false lights.
+        "ability": "tidecaller", "hidden_ability": "mistveil",
+        "entry": "The Mirelight — the fen's own lamp, which once walked the drowned causeway ahead of lost boats and brought them home. A null-lantern put it to sleep long ago; the blue lights that still wander the Glassmere are only its dreams, and dreams do not know the way.",
+        "category": "Mirelight Kin",
+        # as met at lv 45: tide_pulse / dazzle_flash / light_pulse / mend
+        "levelup": [(1, "mist_spray"), (9, "spark_mote"), (16, "drench_song"),
+                    (24, "tide_pulse"), (30, "dazzle_flash"), (37, "light_pulse"),
+                    (42, "mend"), (50, "lightspire"), (56, "maelstrom")],
+        "art": {
+            "silhouette": "A long, gentle eel-like kin rising upright out of still water like a lantern on a pole: a slender sea-glass body coiling down into the mere, a soft fin-veil at the neck, and a head shaped like an old hooded lamp — a glass-paned hood around a calm face, one steady blue-white flame held inside it. Faint wisps of blue light drift off the tail like echoes. At 64px it reads as a lamp that is also a creature, rising out of dark water.",
+            "palette": "Deep fen-teal and night-blue (#13205a) body shading to translucent sea-glass at the fins; the lantern-hood in tarnished brass and pale glass; the inner flame a cool blue-white (#9fe7ff), the brightest pixel; the echo-wisps a fainter, colder blue; soft ink (#1a1430) outlines.",
+            "direction": "Eerie but tender — a guide, not a ghost. Calm, half-lidded eyes, head bowed as if looking for someone on the water. It should look like something that would wait all night at the edge of a marsh to walk you home, and has been made to forget how.",
+        },
+    },
+    "emberroot": {
+        # the Stone-E default is phoenix: wrong for the oldest, most patient
+        # thing in the world. stonehide = the mountain grown round it;
+        # cinderveil = the coal is its own breath.
+        "ability": "stonehide", "hidden_ability": "cinderveil",
+        "entry": "The first star that ever fell into Vesperholm, so long ago the mountain grew up around it. It has slept at the root of Cinderhead ever since, and the warm black cinder-coal the miners dig is only its breath, cooling very slowly in the stone.",
+        "category": "First-Star Kin",
+        # as met at lv 46: rock_hurl / stone_wall / pyre_slam / boulder_smash
+        "levelup": [(1, "pebble_toss"), (9, "cinderclaw"), (16, "gritfist"),
+                    (24, "flame_lash"), (30, "rock_hurl"), (36, "stone_wall"),
+                    (41, "pyre_slam"), (46, "boulder_smash"), (54, "throes")],
+        "art": {
+            "silhouette": "A vast, ancient, low-slung beast half-made of the mountain: a broad tortoise-like body under a humped shell of dark basalt strata, heavy legs ending in root-like claws that spread into the rock. Deep cracks run across the shell and shoulders, each glowing a slow molten amber from within; at the crown of the shell a star-shaped core shows through the stone like a banked coal. A small heavy head with eyes like embers in a kiln-mouth. At 64px it reads as a glowing, cracked boulder that is breathing.",
+            "palette": "Basalt charcoal and ink (#1a1430) stone with cool grey strata bands; glowing seams of ember amber (#ff8a3d) deepening to red at their edges; the star-core a pale gold-white, the brightest pixel; ash-grey dust on the root-claws.",
+            "direction": "Ancient, patient, rooted — the oldest thing in the world, asleep, not angry. Its weight should be felt: grounded, enormous, slow. The glowing cracks are breath, not wounds; the star inside is still warm.",
         },
     },
 }

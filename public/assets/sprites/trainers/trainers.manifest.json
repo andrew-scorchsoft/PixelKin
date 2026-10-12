@@ -4,6 +4,41 @@
   "cols": 4,
   "rows": 4,
   "trainers": {
+    "andrew_coder": {
+      "path": "assets/sprites/trainers/andrew_coder.webp",
+      "width": 128,
+      "height": 128
+    },
+    "andrew_cyclist": {
+      "path": "assets/sprites/trainers/andrew_cyclist.webp",
+      "width": 128,
+      "height": 128
+    },
+    "andrew_frost": {
+      "path": "assets/sprites/trainers/andrew_frost.webp",
+      "width": 128,
+      "height": 128
+    },
+    "andrew_miner": {
+      "path": "assets/sprites/trainers/andrew_miner.webp",
+      "width": 128,
+      "height": 128
+    },
+    "andrew_party": {
+      "path": "assets/sprites/trainers/andrew_party.webp",
+      "width": 128,
+      "height": 128
+    },
+    "andrew_quay": {
+      "path": "assets/sprites/trainers/andrew_quay.webp",
+      "width": 128,
+      "height": 128
+    },
+    "andrew_sunhat": {
+      "path": "assets/sprites/trainers/andrew_sunhat.webp",
+      "width": 128,
+      "height": 128
+    },
     "andrew_ward": {
       "path": "assets/sprites/trainers/andrew_ward.webp",
       "width": 128,
@@ -210,6 +245,11 @@
         "cols": 4,
         "rows": 4
       }
+    },
+    "player_indi_runner": {
+      "path": "assets/sprites/trainers/player_indi_runner.webp",
+      "width": 128,
+      "height": 128
     },
     "player_indi_swim": {
       "path": "assets/sprites/trainers/player_indi_swim.webp",

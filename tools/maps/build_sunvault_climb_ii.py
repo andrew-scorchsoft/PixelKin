@@ -1,193 +1,93 @@
 #!/usr/bin/env python3
 """
-Sunvault Climb II — the sun-vine bridges (walkthrough/04-west "Sunvault Climb
-I→II" beat 3; kind route, region west, band 47-48, the upper half). Living
-sun-vine bridges climb to the observatory hill; the densest starfield in the
-game sight-lines ahead (starglint decals at the north rim — the Arc D read:
-six relit constellations overhead, the sky paling).
+Sunvault Climb II — the sun-vine bridges (walkthrough/04-west "Sunvault Climb";
+09-the-wild-ways §2 S; kind route, region west, band 47-48). REBUILT 2026-10
+as the second stretch of the MOUNTAIN FACE: four tiers stacked up the gilt
+sandstone, each wall crossed a different way —
 
-Three signature touches (§8):
-  1. THE LIVING BRIDGES — two in-map sun-vine crossings (Sunsketch
-     AbilityGates through the terrace walls, vine-gate art swapping
-     withered->bloomed on gleam:solar — always bloomed in practice, since
-     Sunsketch is the only way onto this map; the withered state is the
-     honest pre-Gleam fiction).
-  2. THE X3 VIEWPOINT TERRACE — the high star-reading terrace
-     (script.chart_sunvault; "Charting the Dark" leg 1 — see the X3
-     CONTRACT below).
-  3. THE HELIA MOUTH — the sealed reliquary's door on the west wall
-     (Sunsketch spur, §3a r8: signed, breadcrumbed, MISSABLE).
-  4. THE VINE-SHADE REST TERRACE (W8 MIN-2 — the §3a mid-leg relief beat,
-     the N6/N7 Windward rest-shelf precedent): a sun-vine arbor off the mid
-     road shades a fallen-column seat at the end of the y17 jog (~halfway up
-     the ~62-step climb, beside lamp_mid). Encounter-free open ground, NO
-     heal — pressure relief, not an anchor; the jog now PAYS (§3a r4).
+  band 1 (rows 29-31): a LIVING SUN-VINE BRIDGE up the face (the Sunsketch
+          AbilityGate over the cut; vine art swaps withered->bloomed on
+          gleam:solar), the one-way NOTCH beside it for the trip home;
+  band 2 (rows 20-23): a LADDER pitch (east) and the west notch-ledge;
+  the CLEFT (tier C): a rope-PLANK over the chasm that splits the shelf;
+  band 3 (rows 9-13): the long LADDER (west) to the top tier, and the east
+          notch-ledge home.
 
-HANDSHAKE (W2-internal, built both sides): climb_i `to_climb_ii` at
-(6,0)/(7,0) lands HERE at (6,26)/(7,26); our return pair `to_climb_i` at
-(6,27)/(7,27) lands at climb_i (6,1)/(7,1) — both directions Sunsketch
-(the vines are the boundary; graph.ts `to_climb_ii` bidirectional).
-HANDSHAKE (W4, binding on the Nightreach builder): our `to_observatory`
-warps at (22,0)/(23,0) land at nightreach_observatory (15,28)/(16,28) —
-placeholder until W4 authors it (the engine no-ops). W4's map must keep
-those landings WALKABLE (SOUTH-edge entry, width ≥17, the MAIN-PATH rim
-approach, spine §0 rule 2) and its return pair must land at our
-(22,1)/(23,1). UNGATED both ways.
-SPUR (graph.ts verbatim): `to_helia` at (0,7)/(0,8), requires_ability
-sunsketch (held — the §3 'now accessible' callout sign sits beside it),
-landing helia_vault (23,10)/(23,11) ON its return pair, which lands back
-at our (1,7)/(1,8).
+Signature touches kept from the first build: THE LIVING BRIDGE; THE X3
+VIEWPOINT (script.chart_sunvault, requires flag:q_west_chart, sets
+flag:q_west_chart_1); THE HELIA MOUTH on the west wall (Sunsketch spur,
+missable); THE VINE-SHADE REST ARBOR (encounter-free breath, no heal); the
+NE striker pocket (script.pickup_striker -> flag:picked_striker, Nightreach
+lamp 1's errand) — which also hosts the R3 vigil scar (add_hand_placed.py
+VIGIL_SCARS: `to_vigil_sun` at (27,2), scar (27,1)).
 
-X3 CONTRACT (binding on the W4 Nightreach builder): the junior watcher's
-giver script (`script.chart_quest`) sets **flag:q_west_chart**; our
-viewpoint trigger here requires it, runs `script.chart_sunvault` and sets
-**flag:q_west_chart_1** (leg 1 of q_west_chart_1..3 -> q_west_chart_done;
-the N2 sequential-sketch pattern).
+HANDSHAKES:
+  SOUTH (6,39)/(7,39) `to_climb_i`/`_e` (Sunsketch) -> sunvault_climb_i (6,1)/(7,1);
+        climb_i's `to_climb_ii` lands at our (6,38)/(7,38).
+  NORTH (22,0)/(23,0) `to_climb_iii`/`_e` -> sunvault_climb_iii (22,42)/(23,42);
+        its return pair `to_climb_ii` at (22,43)/(23,43) lands at our (22,1)/(23,1).
+  WEST  (0,7)/(0,8) `to_helia`/`_s` (Sunsketch) -> helia_vault (23,10)/(23,11).
 
-THE VIGIL STRIKER (hooks verbatim): the old watcher's lost striker —
-Nightreach lamp 1's collinear errand — is the NE-pocket cache here:
-script.pickup_striker -> **flag:picked_striker** (band 48-50 ground, the
-road the player walks anyway).
+Trainer: sunvault_skywatcher "Sky-watcher Tam" (route, ace 48), tier C east,
+facing down his column — the road west to the plank crosses it.
 
-Trainer beat (route class, payout 16 x ace — wiring agent authors):
-  sunvault_skywatcher "Sky-watcher Tam", 2 kin lv47-48, ace 48, payout 768.
-
-Encounter picks (band 47-48, continuous with Climb I 46-47 and Nightreach
-~48-52): the stage-2 Solar/Verdant roster leads; Lunveil/Lunvane bleed in
-as the road nears Nightreach (their dex entries live there). Mirror into
-EXTRA_ENCOUNTERS = wiring agent.
-
-Suggested sign copy (wiring agent; sincere register):
-  sign.sunvault_helia       "HELIA VAULT. A reliquary sealed by night-
-                             flowers. What the Solarium drowned, this door
-                             kept dry." (the 'now accessible (Sunsketch)'
-                             callout + the spur warps' blocked_ref)
-  sign.sunvault_observatory "NORTH — NIGHTREACH OBSERVATORY. The watchers
-                             keep seven lamps for seven stars. Walk toward
-                             the brightest sky in Vesperholm."
-
-audit_flow notes — the NE striker pocket and the vine-gated amber shelf are
-paid dead ends (§3a r4); the two band ledges compress the return (§3a r1/r2).
-
-Run:  ./venv/bin/python tools/maps/build_sunvault_climb_ii.py
+Run:  python3 tools/maps/build_sunvault_climb_ii.py
 """
 from __future__ import annotations
+
 import random
+
+import facekit as fk
 import mapkit as mk
 import patterns as pt
 from mapkit import gid
 
-W, H = 30, 28
+W, H = 30, 40
 rng = random.Random(74)
 owed: list[str] = []
 
-# ---- terrain presence grids --------------------------------------------------------
-cliff = mk.make_grid(W, H)
-ruin = mk.make_grid(W, H)
-goldtuft = mk.make_grid(W, H)
-deco = mk.make_grid(W, H)
+c = fk.Canvas(W, H, ".")
+c.rect(0, 0, W - 1, 1, "#").rect(0, 0, 1, H - 1, "#").rect(28, 0, 29, H - 1, "#")
+c.rect(0, 39, W - 1, 39, "#")
+c.rect(22, 0, 23, 1, "=")                     # north: the Gilt Face
+c.rect(6, 39, 7, 39, "=")                     # south: the vine gorge
+c.rect(0, 7, 1, 8, "=")                       # west: the Helia mouth
+c.put([(2, 2), (2, 3), (27, 6), (2, 38), (3, 38), (27, 38), (26, 38), (2, 14), (27, 24)], "#")
 
-# BORDERS
-mk.rect(cliff, W, H, 0, 0, W - 1, 1)
-mk.rect(cliff, W, H, 0, 26, W - 1, H - 1)
-mk.rect(cliff, W, H, 0, 0, 1, H - 1)
-mk.rect(cliff, W, H, 28, 0, 29, H - 1)
-mk.organic_border(cliff, W, H, depth=0,
-                  bumps=[(12, 1, 2), (27, 13, 2), (1, 17, 2), (14, 26, 2),
-                         (28, 22, 2), (1, 3, 2)],
-                  rng=rng)
-# SOUTH gap — the climb_i boundary (cols 6-7)
-for y in (26, 27):
-    for x in (6, 7):
-        cliff[y * W + x] = 0
-# NORTH gap — the Nightreach rim approach (cols 22-23)
-for y in (0, 1):
-    for x in (22, 23):
-        cliff[y * W + x] = 0
-# WEST gap — the Helia Vault mouth (rows 7-8)
-for x in (0, 1):
-    for y in (7, 8):
-        cliff[y * W + x] = 0
+# ---- tier D (rows 2-8): the striker pocket (NE) + the amber shelf ------------------
+c.rect(24, 2, 24, 5, "#").rect(24, 5, 27, 5, "#")
+c.put([(24, 3)], ".")                          # the pocket's mouth
+c.rect(19, 2, 21, 5, "#").put([(20, 3), (20, 4)], ".")   # the shelf (vine cut at (20,5))
+# ---- band 3 (rows 9-13): the long ladder (west) + the east notch home -------------
+c.band(2, 27, 9, lip=2, face=3)
+c.ladder(4, 9, 13)
+c.rect(25, 9, 26, 12, ".").rect(25, 13, 26, 13, "v")
+# ---- tier C (rows 14-19) split by the cleft; the plank over it --------------------
+c.rect(14, 14, 15, 19, "#")
+c.plank([(14, 16), (15, 16)])
+# ---- band 2 (rows 20-23): the ladder pitch (east) + the west notch ----------------
+c.band(2, 27, 20, lip=2, face=2)
+c.ladder(24, 20, 23)
+c.rect(3, 20, 4, 22, ".").rect(3, 23, 4, 23, "v")
+# ---- band 1 (rows 29-31): the living bridge cut (x10-11) + the notch (x16-17) ------
+c.band(2, 27, 29, lip=2, face=1)
+c.rect(16, 29, 17, 30, ".").rect(16, 31, 17, 31, "v")
 
-# THE TERRACE BANDS: two cliff walls cut the climb into three zones; each is
-# crossed only on a sun-vine bridge (Sunsketch gate) — the LIVING BRIDGES
-mk.rect(cliff, W, H, 2, 19, 27, 20)           # band 1 (south/mid)
-mk.blob(cliff, W, H, 20.0, 19.0, 1.8, 1.0)
-mk.rect(cliff, W, H, 2, 11, 29, 12)           # band 2 (mid/upper)
-mk.blob(cliff, W, H, 15.0, 11.5, 1.8, 1.0)
-# bridge 1 pierce (cols 10-11) — the gate rides the cliff cells
-for y in (19, 20):
-    for x in (10, 11):
-        pass                                   # cliff stays; the gate opens it
-# bridge 2 pierce (cols 24-25) — same
-# band LEDGES (the one-way returns): band 1 at x16-17, band 2 at x6-7
-for x in (16, 17):
-    cliff[19 * W + x] = 0
-    cliff[20 * W + x] = 0
-pt.ledge_run(deco, W, H, 19, 16, 17, rng, family="sand")
-for x in (6, 7):
-    cliff[11 * W + x] = 0
-    cliff[12 * W + x] = 0
-pt.ledge_run(deco, W, H, 11, 6, 7, rng, family="sand")
-
-# THE X3 VIEWPOINT TERRACE (upper zone) — the star-reading high point
-view = pt.Area(11, 3, 17, 8)
-pt.terrace(cliff, deco, W, H, view, gap=(13, 14), gap_side="up", rim=1, rng=rng)
-# THE NE STRIKER POCKET — a cliff finger shelters the old watcher's drop
-# (entered off the north road at (24,3))
-mk.rect(cliff, W, H, 24, 5, 27, 5)
-mk.rect(cliff, W, H, 24, 2, 24, 5)
-cliff[3 * W + 24] = 0                          # the pocket's mouth
-# THE AMBER SHELF — sealed behind a 1-cell night-flower cut at (20,5)
-mk.rect(cliff, W, H, 19, 2, 21, 5)
-for (x, y) in ((20, 3), (20, 4)):
-    cliff[y * W + x] = 0                      # shelf interior
-cliff[5 * W + 20] = 1                          # the vine cut (gated below)
-
-# ---- the garden-road (S-bends per §3a r11) ------------------------------------------
-mk.rect(ruin, W, H, 6, 21, 7, 25)             # entry road north
-mk.rect(ruin, W, H, 7, 21, 10, 22)            # east to bridge 1
-mk.rect(ruin, W, H, 10, 18, 11, 22)           # bridge 1 approach + landing
-mk.rect(ruin, W, H, 10, 13, 11, 18)           # mid road north
-mk.rect(ruin, W, H, 11, 13, 25, 14)           # east to bridge 2
-mk.rect(ruin, W, H, 24, 9, 25, 13)            # bridge 2 + landing
-mk.rect(ruin, W, H, 9, 9, 25, 10)             # upper road west
-mk.rect(ruin, W, H, 22, 2, 23, 9)             # north to the observatory
-mk.rect(ruin, W, H, 2, 7, 8, 8)               # west to the Helia mouth
-# jogs
-mk.rect(ruin, W, H, 13, 17, 15, 17)
-mk.rect(ruin, W, H, 18, 15, 20, 15)
-mk.rect(ruin, W, H, 4, 22, 5, 23)
-
-# ---- encounter terrain --------------------------------------------------------------
-mk.blob(goldtuft, W, H, 18.0, 23.0, 3.0, 1.8)  # south garden (optional)
-mk.blob(goldtuft, W, H, 4.5, 14.5, 2.0, 1.6)   # mid west pocket (optional)
-mk.blob(goldtuft, W, H, 27.0, 8.0, 1.6, 1.2)   # upper east tuft
-mk.blob(goldtuft, W, H, 5.5, 3.5, 2.2, 1.4)    # NW high garden (pays the pocket)
-mk.blob(goldtuft, W, H, 3.0, 23.0, 1.8, 1.6)   # SW entry garden (pays the corner)
-# MANDATORY crossing (§11 r7): mid zone, wall to wall, the road paused
-pt.mandatory_band(goldtuft, ruin, W, H, y0=15, y1=16, x0=2, x1=27)
-
-# ---- precedence ---------------------------------------------------------------------
-for i in range(W * H):
-    if cliff[i]:
-        ruin[i] = 0
-        goldtuft[i] = 0
-    if ruin[i]:
-        goldtuft[i] = 0
-
-# ---- base ---------------------------------------------------------------------------
-gg = [gid("goldgrass0"), gid("goldgrass1"), gid("goldgrass2"), gid("goldgrass3")]
-base = [rng.choice(gg) if rng.random() < 0.5 else gg[0] for _ in range(W * H)]
-
-terrain_layers = [
-    {"name": "t_ruin", "role": "terrain", "terrain": "ruinfloor",
-     "set": "vesper_overworld_set", "depth": 0, "data": ruin},
-    {"name": "t_goldtuft", "role": "terrain", "terrain": "goldtuft",
-     "set": "vesper_overworld_set", "depth": 0, "data": goldtuft},
-    {"name": "t_cliff", "role": "terrain", "terrain": "cliff",
-     "set": "vesper_overworld_set", "depth": 0, "data": cliff},
-]
+# ---- roads ------------------------------------------------------------------------
+c.rect(6, 32, 7, 38, "=").rect(6, 32, 11, 33, "=")                 # tier A
+c.rect(10, 24, 11, 28, "=").rect(10, 24, 24, 25, "=")              # tier B
+c.rect(24, 19, 24, 19, "=").rect(16, 17, 24, 18, "=").rect(16, 16, 16, 18, "=")  # tier C east
+c.rect(4, 15, 13, 16, "=").rect(4, 14, 4, 15, "=")                 # tier C west
+c.rect(4, 6, 23, 7, "=").rect(4, 8, 4, 8, "=").rect(22, 2, 23, 7, "=").rect(2, 7, 4, 8, "=")
+# ---- encounter tuft ---------------------------------------------------------------
+c.rect(11, 14, 12, 19, '"')                   # MANDATORY: tier C west, full height
+c.rect(14, 34, 21, 37, '"')                   # the south garden (optional)
+c.rect(2, 34, 4, 37, '"')                     # the SW entry garden
+c.rect(19, 27, 23, 28, '"')                   # tier B's east bed
+c.rect(3, 26, 7, 28, '"')                     # tier B's west bed (under the notch)
+c.rect(2, 17, 3, 19, '"')                     # the west notch's lip-bed
+c.rect(5, 3, 9, 4, '"')                       # the NW high garden
+rows = c.rows()
 
 m: dict = {
     "id": "sunvault_climb_ii", "display_name": "Sunvault Climb",
@@ -195,13 +95,9 @@ m: dict = {
     "tilesets": [mk.shared_tileset_ref()],
     "objects": [], "warps": [], "triggers": [], "encounters": [], "npcs": [],
     "gates": [
-        # the two LIVING BRIDGES — Sunsketch opens the cliff cells under the
-        # vine-gate art (held by everyone here; the §5 'main-path bridges stay
-        # simple' rule: a single bloom that stays open)
+        # THE LIVING BRIDGE — Sunsketch opens the band cells under the vine art
         {"id": "bridge_1", "ability": "sunsketch",
-         "rect": {"tx": 10, "ty": 19, "w": 2, "h": 2}, "effect": "make_passable"},
-        {"id": "bridge_2", "ability": "sunsketch",
-         "rect": {"tx": 24, "ty": 11, "w": 2, "h": 2}, "effect": "make_passable"},
+         "rect": {"tx": 10, "ty": 29, "w": 2, "h": 3}, "effect": "make_passable"},
         # the amber shelf's night-flower cut (optional pocket)
         {"id": "amber_vines", "ability": "sunsketch",
          "rect": {"tx": 20, "ty": 5, "w": 1, "h": 1}, "effect": "make_passable"},
@@ -212,106 +108,63 @@ m: dict = {
         "assets/backgrounds/battle/sunvault-climb-b.webp",
     ],
 }
+deco = mk.make_grid(W, H)
+above = mk.make_grid(W, H)
+pin: dict = {}
+g = fk.paint(m, rows, deco=deco, above=above, pin=pin, face="gold", ledge="sand", rng=rng)
 
-# ---- warps (graph.ts edge ids verbatim) ---------------------------------------------
-m["warps"] += [
-    # SOUTH <-> sunvault_climb_i (both directions Sunsketch — the vines)
-    {"id": "to_climb_i", "at": {"tx": 6, "ty": 27}, "trigger": "step_on",
-     "to_map": "sunvault_climb_i", "to": {"tx": 6, "ty": 1}, "facing": "down",
-     "requires_ability": "sunsketch",
-     "blocked_ref": "sign.sunvault_vines", "transition": "fade"},
-    {"id": "to_climb_i_e", "at": {"tx": 7, "ty": 27}, "trigger": "step_on",
-     "to_map": "sunvault_climb_i", "to": {"tx": 7, "ty": 1}, "facing": "down",
-     "requires_ability": "sunsketch",
-     "blocked_ref": "sign.sunvault_vines", "transition": "fade"},
-    # NORTH -> nightreach_observatory (`to_observatory`, UNGATED — the
-    # MAIN-PATH rim approach; W4 authors the far side, landing is a
-    # placeholder the engine no-ops; W4's return pair must land at our
-    # (22,1)/(23,1))
-    {"id": "to_observatory", "at": {"tx": 22, "ty": 0}, "trigger": "step_on",
-     "to_map": "nightreach_observatory", "to": {"tx": 15, "ty": 28}, "facing": "up",
-     "transition": "fade"},
-    {"id": "to_observatory_e", "at": {"tx": 23, "ty": 0}, "trigger": "step_on",
-     "to_map": "nightreach_observatory", "to": {"tx": 16, "ty": 28}, "facing": "up",
-     "transition": "fade"},
-    # WEST — the Helia Vault mouth (`to_helia`, Sunsketch — held; the
-    # [MISSABLE] §3a r8 spur, signed beside it)
-    {"id": "to_helia", "at": {"tx": 0, "ty": 7}, "trigger": "step_on",
-     "to_map": "helia_vault", "to": {"tx": 23, "ty": 10}, "facing": "left",
-     "requires_ability": "sunsketch",
-     "blocked_ref": "sign.sunvault_helia", "transition": "door"},
-    {"id": "to_helia_s", "at": {"tx": 0, "ty": 8}, "trigger": "step_on",
-     "to_map": "helia_vault", "to": {"tx": 23, "ty": 11}, "facing": "left",
-     "requires_ability": "sunsketch",
-     "blocked_ref": "sign.sunvault_helia", "transition": "door"},
-]
+# ---- warps --------------------------------------------------------------------------
+fk.edge_warps(m, wid="to_climb_i", cells=[(6, 39), (7, 39)], to_map="sunvault_climb_i",
+              to=[(6, 1), (7, 1)], facing="down", requires_ability="sunsketch",
+              blocked_ref="sign.sunvault_vines")
+fk.edge_warps(m, wid="to_climb_iii", cells=[(22, 0), (23, 0)], to_map="sunvault_climb_iii",
+              to=[(22, 42), (23, 42)], facing="up")
+for n, y in enumerate((7, 8)):
+    m["warps"].append({"id": "to_helia" + ("_s" if n else ""), "at": {"tx": 0, "ty": y},
+                       "trigger": "step_on", "to_map": "helia_vault", "to": {"tx": 23, "ty": 10 + n},
+                       "facing": "left", "requires_ability": "sunsketch",
+                       "blocked_ref": "sign.sunvault_helia", "transition": "door"})
 
-# ---- the bridge + shelf vine art (flag-pair swaps on gleam:solar) -------------------
-m["objects"] += [
-    {"id": "bridge_1_bloomed", "sprite": "sunvault_vine_gate_bloomed",
-     "at": {"tx": 10, "ty": 18}, "w": 2, "h": 3, "solid": False,
-     "requires_flag": "gleam:solar"},
-    {"id": "bridge_1_withered", "sprite": "sunvault_vine_gate_withered",
-     "at": {"tx": 10, "ty": 18}, "w": 2, "h": 3, "solid": False,
-     "hidden_when_flag": "gleam:solar"},
-    {"id": "bridge_2_bloomed", "sprite": "sunvault_vine_gate_bloomed",
-     "at": {"tx": 24, "ty": 10}, "w": 2, "h": 3, "solid": False,
-     "requires_flag": "gleam:solar"},
-    {"id": "bridge_2_withered", "sprite": "sunvault_vine_gate_withered",
-     "at": {"tx": 24, "ty": 10}, "w": 2, "h": 3, "solid": False,
-     "hidden_when_flag": "gleam:solar"},
-    {"id": "amber_vine_bloomed", "sprite": "sunvault_vine_v_bloomed",
-     "at": {"tx": 20, "ty": 4}, "w": 1, "h": 3, "solid": False,
-     "requires_flag": "gleam:solar"},
-    {"id": "amber_vine_withered", "sprite": "sunvault_vine_v_withered",
-     "at": {"tx": 20, "ty": 4}, "w": 1, "h": 3, "solid": False,
-     "hidden_when_flag": "gleam:solar"},
-]
+# ---- vine art (flag-pair swaps on gleam:solar) --------------------------------------
+for oid, sprite, at, w, h in [("bridge_1", "sunvault_vine_gate", (10, 29), 2, 3),
+                              ("amber_vine", "sunvault_vine_v", (20, 4), 1, 3)]:
+    m["objects"] += [
+        {"id": f"{oid}_bloomed", "sprite": f"{sprite}_bloomed", "at": {"tx": at[0], "ty": at[1]},
+         "w": w, "h": h, "solid": False, "requires_flag": "gleam:solar"},
+        {"id": f"{oid}_withered", "sprite": f"{sprite}_withered", "at": {"tx": at[0], "ty": at[1]},
+         "w": w, "h": h, "solid": False, "hidden_when_flag": "gleam:solar"},
+    ]
 
-# ---- THE X3 VIEWPOINT (the high terrace; contract in the docstring) -----------------
+# ---- THE X3 VIEWPOINT (the top tier's lookout) --------------------------------------
 m["triggers"].append({
-    "id": "chart_sunvault", "kind": "script", "at": {"tx": 14, "ty": 5},
+    "id": "chart_sunvault", "kind": "script", "at": {"tx": 14, "ty": 3},
     "activation": "interact", "ref": "script.chart_sunvault", "once": True,
-    "requires_flag": "flag:q_west_chart",
-    "sets_flags": ["flag:q_west_chart_1"],
+    "requires_flag": "flag:q_west_chart", "sets_flags": ["flag:q_west_chart_1"],
     "hidden_when_flag": "flag:q_west_chart_1"})
-owed += ["script.chart_sunvault (X3 leg 1 — the star-reading from the high "
-         "terrace; requires flag:q_west_chart [set by W4's junior-watcher "
-         "giver]; sets flag:q_west_chart_1)"]
-# starglints over the terrace + the north rim (the densest-starfield read)
-for n, (x, y) in enumerate([(12, 4), (16, 6), (21, 2), (25, 1), (18, 1),
-                            (13, 7), (27, 3)]):
-    m["objects"].append({
-        "id": f"starglint_{n}", "sprite": rng.choice(
-            ["windward_starglint_a", "windward_starglint_b"]),
+m["objects"].append({"id": "lookout_dial", "sprite": "sunvault_sundial_fallen",
+                     "at": {"tx": 13, "ty": 2}, "w": 3, "h": 2, "solid": False})
+for n, (x, y) in enumerate([(12, 3), (16, 2), (18, 4), (26, 7), (10, 2), (8, 6), (3, 4)]):
+    m["objects"].append({"id": f"starglint_{n}", "sprite": rng.choice(
+        ["sunvault_sunmote_a", "sunvault_sunmote_b"]),
         "at": {"tx": x, "ty": y}, "w": 1, "h": 1, "solid": False})
 
-# ---- signs --------------------------------------------------------------------------
+# ---- signs / NPCs / trainer / caches -------------------------------------------------
 owed += pt.sign(m, deco, W, sid="sunvault_helia", at=(2, 6))
-owed += pt.sign(m, deco, W, sid="sunvault_observatory", at=(21, 3))
+owed += pt.sign(m, deco, W, sid="sunvault_observatory", at=(25, 7))
+owed += pt.sign(m, deco, W, sid="sunvault_cleft", at=(13, 17))
+m["npcs"].append({"id": "vine_tender", "at": {"tx": 12, "ty": 33}, "facing": "left",
+                  "sprite": "npc_old_woman", "movement": "static",
+                  "dialogue_ref": "npc.sunvault_vine_tender"})
+owed += pt.trainer_beat(m, tid="sunvault_skywatcher", at=(20, 14), facing="down",
+                        sight=5, sprite="npc_man")
+owed += pt.cache(m, cid="striker", at=(26, 3))
+owed += pt.cache(m, cid="sunvault_amber", at=(20, 3))
+owed += pt.cache(m, cid="sunvault_charge", at=(21, 36))
 
-# ---- the vine-tender (hooks verbatim: near the bloomed bridge) ----------------------
-m["npcs"].append({
-    "id": "vine_tender", "at": {"tx": 9, "ty": 21}, "facing": "down",
-    "sprite": "npc_old_woman", "movement": "static",
-    "dialogue_ref": "npc.sunvault_vine_tender"})
-owed += ["npc.sunvault_vine_tender (hooks verbatim: 'Forty years shut, and "
-         "your little pocket of daylight woke them like they'd only dozed...')"]
-
-# ---- trainer beat (posted at the mid road's head, facing down her column) ----------
-owed += pt.trainer_beat(m, tid="sunvault_skywatcher", at=(10, 13), facing="down",
-                        sight=4, sprite="npc_man")
-
-# ---- caches -------------------------------------------------------------------------
-owed += pt.cache(m, cid="striker", at=(26, 3))           # THE VIGIL STRIKER (NE
-                                                         # pocket; Nightreach lamp 1)
-owed += pt.cache(m, cid="sunvault_amber", at=(20, 3))    # Moth-amber, the vine shelf
-owed += pt.cache(m, cid="sunvault_charge", at=(24, 23))  # a charge, south garden
-
-# ---- encounters (band 47-48; the kindled roster leads, Lunar bleeds in) -------------
-TABLE_SV2 = [
-    {"kin_id": 115, "weight": 18, "min_level": 47, "max_level": 48},  # Solvyne
-    {"kin_id": 118, "weight": 16, "min_level": 47, "max_level": 48},  # Helicore
+# ---- encounters (band 47-48; night/day pairs) ---------------------------------------
+NIGHT = [
+    {"kin_id": 115, "weight": 26, "min_level": 47, "max_level": 48},  # Solvyne
+    {"kin_id": 118, "weight": 24, "min_level": 47, "max_level": 48},  # Helicore
     {"kin_id": 120, "weight": 12, "min_level": 47, "max_level": 48},  # Dawnfawn
     {"kin_id": 117, "weight": 10, "min_level": 47, "max_level": 48},  # Helibud
     {"kin_id": 104, "weight": 10, "min_level": 47, "max_level": 48},  # Goldmane
@@ -320,85 +173,94 @@ TABLE_SV2 = [
     {"kin_id": 121, "weight": 6, "min_level": 47, "max_level": 48},   # Sunstag
     {"kin_id": 127, "weight": 4, "min_level": 48, "max_level": 48},   # Lunvane
 ]
-band_grid = mk.make_grid(W, H)
-patch_grid = mk.make_grid(W, H)
+DAY = [
+    {"kin_id": 115, "weight": 18, "min_level": 57, "max_level": 63},
+    {"kin_id": 118, "weight": 16, "min_level": 57, "max_level": 63},
+    {"kin_id": 120, "weight": 12, "min_level": 57, "max_level": 64},
+    {"kin_id": 117, "weight": 10, "min_level": 57, "max_level": 63},
+    {"kin_id": 104, "weight": 10, "min_level": 58, "max_level": 64},
+    {"kin_id": 126, "weight": 14, "min_level": 58, "max_level": 64},
+    {"kin_id": 116, "weight": 8, "min_level": 58, "max_level": 64},
+    {"kin_id": 121, "weight": 6, "min_level": 59, "max_level": 65},
+    {"kin_id": 127, "weight": 6, "min_level": 60, "max_level": 65},
+]
+band = mk.make_grid(W, H)
+patch = mk.make_grid(W, H)
 for i in range(W * H):
-    if goldtuft[i]:
-        (band_grid if (i // W) in (15, 16) else patch_grid)[i] = 1
-m["encounters"] += pt.zones_from_grid(patch_grid, W, H, terrain="tall_grass",
-                                      rate=0.11, table=TABLE_SV2, id_prefix="terrace")
-m["encounters"] += pt.zones_from_grid(band_grid, W, H, terrain="tall_grass",
-                                      rate=0.05, table=TABLE_SV2, id_prefix="crossing")
+    if g["tuft"][i]:
+        (band if (i % W) in (11, 12) and 14 <= (i // W) <= 19 else patch)[i] = 1
+zones = pt.zones_from_grid(patch, W, H, terrain="tall_grass", rate=0.11, table=NIGHT,
+                           id_prefix="terrace")
+zones += pt.zones_from_grid(band, W, H, terrain="tall_grass", rate=0.05, table=NIGHT,
+                            id_prefix="crossing")
+m["encounters"] = fk.night_day(zones, DAY)
 
 # ---- dressing -----------------------------------------------------------------------
 m["objects"] += [
-    {"id": "column_a", "sprite": "solarium_column", "at": {"tx": 14, "ty": 21},
+    {"id": "column_a", "sprite": "solarium_column", "at": {"tx": 13, "ty": 32},
      "w": 1, "h": 3, "overhang": 1, "walk_under": True},
-    {"id": "column_b", "sprite": "solarium_column", "at": {"tx": 19, "ty": 8},
+    {"id": "column_b", "sprite": "solarium_column", "at": {"tx": 26, "ty": 25},
      "w": 1, "h": 3, "overhang": 1, "walk_under": True},
     {"id": "column_fallen_a", "sprite": "solarium_column_fallen",
-     "at": {"tx": 3, "ty": 17}, "w": 3, "h": 1},
+     "at": {"tx": 5, "ty": 24}, "w": 3, "h": 1},
     {"id": "column_fallen_b", "sprite": "solarium_column_fallen",
-     "at": {"tx": 25, "ty": 22}, "w": 3, "h": 1},
-    {"id": "lamp_entry", "sprite": "tinderwick_lamp_post",
-     "at": {"tx": 4, "ty": 24}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_mid", "sprite": "tinderwick_lamp_post",
-     "at": {"tx": 12, "ty": 16}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_north", "sprite": "tinderwick_lamp_post",
+     "at": {"tx": 23, "ty": 33}, "w": 3, "h": 1},
+    {"id": "lamp_entry", "sprite": "sunvault_sun_lamp",
+     "at": {"tx": 8, "ty": 35}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    {"id": "lamp_mid", "sprite": "sunvault_sun_lamp",
+     "at": {"tx": 25, "ty": 22}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    {"id": "lamp_north", "sprite": "sunvault_sun_lamp",
      "at": {"tx": 21, "ty": 6}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    # THE VINE-SHADE REST TERRACE (W8 MIN-2): a living arbor — two ruin
-    # columns carrying a bloomed sun-vine over the jog's mouth — and the
-    # fallen column it shades, a seat at the climb's halfway breath.
+    {"id": "lamp_ladder", "sprite": "sunvault_sun_lamp",
+     "at": {"tx": 5, "ty": 12}, "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    # THE VINE-SHADE REST ARBOR (tier C west, the climb's halfway breath)
     {"id": "rest_arbor_col_w", "sprite": "solarium_column",
-     "at": {"tx": 13, "ty": 14}, "w": 1, "h": 3, "overhang": 1, "walk_under": True},
+     "at": {"tx": 6, "ty": 16}, "w": 1, "h": 3, "overhang": 1, "walk_under": True},
     {"id": "rest_arbor_col_e", "sprite": "solarium_column",
-     "at": {"tx": 16, "ty": 14}, "w": 1, "h": 3, "overhang": 1, "walk_under": True},
+     "at": {"tx": 9, "ty": 16}, "w": 1, "h": 3, "overhang": 1, "walk_under": True},
     {"id": "rest_arbor_vine", "sprite": "sunvault_vine_h_bloomed",
-     "at": {"tx": 14, "ty": 14}, "w": 3, "h": 1, "solid": False},
+     "at": {"tx": 7, "ty": 16}, "w": 3, "h": 1, "solid": False},
     {"id": "rest_seat", "sprite": "solarium_column_fallen",
-     "at": {"tx": 13, "ty": 18}, "w": 3, "h": 1},
+     "at": {"tx": 6, "ty": 19}, "w": 3, "h": 1},
+    {"id": "masonry_c", "sprite": "sunvault_masonry", "at": {"tx": 26, "ty": 15},
+     "w": 2, "h": 2},
 ]
-covered = {(x, y) for y in range(H) for x in range(W)
-           if any(g[y * W + x] for g in (cliff, ruin, goldtuft))}
-object_cells = {(x, y) for o in m["objects"]
-                for y in range(o["at"]["ty"], o["at"]["ty"] + o["h"])
-                for x in range(o["at"]["tx"], o["at"]["tx"] + o["w"])}
-point_cells = {(p["at"]["tx"], p["at"]["ty"])
-               for p in m["npcs"] + m["triggers"] + m["warps"]}
-avoid = covered | object_cells | point_cells
+
+gg = [gid("goldgrass0"), gid("goldgrass1"), gid("goldgrass2"), gid("goldgrass3")]
+base = [rng.choice(gg) if rng.random() < 0.5 else gg[0] for _ in range(W * H)]
+avoid = fk.busy_cells(m) | set(pin) | {(27, 1), (27, 2)}
+avoid |= {(x, y) for y in range(H) for x in range(W) if rows[y][x] != "." or deco[y * W + x]}
+litter = [gid("g_tuft"), gid("g_pebble"), gid("g_daisy")]
 blooms = [gid("flowerbed_a"), gid("flowerbed_b")]
 for y in range(H):
     for x in range(W):
-        i = y * W + x
-        if base[i] in gg and deco[i] == 0 and (x, y) not in avoid \
-                and rng.random() < 0.12:
-            deco[i] = rng.choice(blooms) if rng.random() < 0.5 else gid("boulder")
-for (x, y) in [(3, 10), (27, 18), (15, 25), (8, 5), (27, 25)]:
-    if (x, y) not in avoid and deco[y * W + x] == 0:
-        deco[y * W + x] = gid("boulder")
+        if (x, y) in avoid:
+            continue
+        r = rng.random()
+        if r < 0.06:
+            deco[y * W + x] = rng.choice(blooms)
+        elif r < 0.08:
+            deco[y * W + x] = gid("boulder")
+        elif r < 0.26:
+            deco[y * W + x] = rng.choice(litter)
 
-# R10 LITTER: seeded scatter on the open ground (off every structure, object,
-# NPC, trigger and warp) so the ground reads weathered, not blank (audit_visual).
-_busy = {(x, y) for y in range(H) for x in range(W)
-         if any(g[y * W + x] for g in (cliff,ruin,goldtuft,))}
-_busy |= {(x, y) for o in m["objects"]
-          for y in range(o["at"]["ty"], o["at"]["ty"] + o["h"])
-          for x in range(o["at"]["tx"], o["at"]["tx"] + o["w"])}
-_busy |= {(p["at"]["tx"], p["at"]["ty"]) for p in m["npcs"] + m["triggers"] + m["warps"]}
-_busy |= {(p["to"]["tx"], p["to"]["ty"]) for p in m["warps"]}
-_litter = [gid("g_tuft"), gid("g_pebble"), gid("g_daisy")]
-for y in range(2, 26):
-    for x in range(2, 28):
-        if (x, y) not in _busy and deco[y * W + x] == 0 and rng.random() < 0.2:
-            deco[y * W + x] = rng.choice(_litter)
-
-m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
+m["layers"] = [
+    {"name": "base", "role": "base", "depth": 0, "data": base},
+    {"name": "t_ruin", "role": "terrain", "terrain": "ruinfloor",
+     "set": "vesper_overworld_set", "depth": 0, "data": g["road"]},
+    {"name": "t_goldtuft", "role": "terrain", "terrain": "goldtuft",
+     "set": "vesper_overworld_set", "depth": 0, "data": g["tuft"]},
+    {"name": "t_cliff", "role": "terrain", "terrain": "cliff",
+     "set": "vesper_overworld_set", "depth": 0, "data": g["cliff"]},
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},
-    {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)},
+    {"name": "above", "role": "above", "depth": 20, "data": above},
 ]
 
 if __name__ == "__main__":
-    ok = mk.finalize(m, scale=3)
+    import sys
+    if "--show" in sys.argv:
+        print("\n".join(f"{y:3d} {r}" for y, r in enumerate(rows)))
+    ok = mk.finalize(m, scale=3, pin_base=pin)
     pt.report(owed)
     print("PASS" if ok else "FAIL")
     raise SystemExit(0 if ok else 1)

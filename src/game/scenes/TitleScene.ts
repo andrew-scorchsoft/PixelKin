@@ -114,11 +114,15 @@ export class TitleScene extends Phaser.Scene {
     const slots = await SaveManager.loadAllSlots();
     const occupied = slots.filter((s) => s !== null).length;
 
+    // With a journey to resume, CONTINUE leads the list (and so holds the cursor)
+    // — a player mashing Confirm through the title should land back in their
+    // save, never in a fresh NEW GAME.
+    const newGame = { label: 'NEW GAME', value: 'new' };
+    const cont = { label: 'CONTINUE', value: 'continue', enabled: occupied > 0 };
     const menu = new Menu(
       this,
       [
-        { label: 'NEW GAME', value: 'new' },
-        { label: 'CONTINUE', value: 'continue', enabled: occupied > 0 },
+        ...(occupied > 0 ? [cont, newGame] : [newGame, cont]),
         // A journey can be resumed from a backup FILE as readily as from this
         // browser — the answer to a cleared cache or a move to a new device.
         { label: 'LOAD FILE', value: 'file' },

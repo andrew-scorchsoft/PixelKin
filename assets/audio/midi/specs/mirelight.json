@@ -1,0 +1,63 @@
+{
+  "title": "PixelKin - The Mirelights (SNES register)",
+  "_note": "The Mirelights / the Glassmere (09-the-wild-ways §2B): a drowned causeway-field where wandering false blue lights lure boats astray - the echoes of the fen's own lamp-kin, put to sleep in a null-lantern. Eerie but tender. 72 BPM, 3/4 (the Tide signature's lilting triple metre), B minor with a Neapolitan C in the B section. Sparse SNES register: pulse25 lead long-toned and widely spaced; the BELL track is the false lights - whole-tone motes (C D E F# G# A#) that drift off-key and off the beat; soft strings pad; a pluck harp only once the lights start leading you (B, A'); a slow noise breath = water at the stilts. Vesper motif: A states the lift F#4->B4->C#5 and WITHHOLDS the settle; A' lets it land, F#5-E5-D5 over D major, while the bell rings one single in-key D6 - the true light remembered. 24 bars = 60 s. Original (VISION.md).",
+  "era": "snes",
+  "tempo": 72,
+  "time_signature": [
+    3,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "B minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.9,
+      "_note": "A lone lantern-call; the motif's settle is withheld until bar 23.",
+      "notes": "F#4h. | B4q C#5q D5q | B4h rq | rh. | G4q B4q E5q | F#5h E#5q | F#5h. | rh. | D5q. E5e D5q | C#5h A4q | C#5q. D5e C#5q | B4h. | B4q D5q G5q | F#5h E5q | G5q E5h | F#5h. | F#4h. | B4q C#5q D5q | E5h D5q | B4h. | G4q B4q E5q | E5h C#5q | F#5q E5q D5q | C#5h."
+    },
+    {
+      "name": "pad",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.22,
+      "_note": "Bm Bm G G Em F# Bm Bm | G A F#m Bm G Em C(Neapolitan) F# | Bm Bm G G Em A D F#.",
+      "notes": "B2+D3+F#3h.@60 | B2+D3+F#3h.@60 | G2+B2+D3h.@60 | G2+B2+D3h.@60 | E3+G3+B3h.@60 | F#2+A#2+C#3h.@60 | B2+D3+F#3h.@60 | B2+D3+F#3h.@60 | G2+B2+D3h.@80 | A2+C#3+E3h.@80 | F#2+A2+C#3h.@80 | B2+D3+F#3h.@80 | G2+B2+D3h.@80 | E3+G3+B3h.@80 | C3+E3+G3h.@80 | F#2+A#2+C#3h.@80 | B2+D3+F#3h.@80 | B2+D3+F#3h.@80 | G2+B2+D3h.@80 | G2+B2+D3h.@80 | E3+G3+B3h.@80 | A2+C#3+E3h.@80 | D3+F#3+A3h.@80 | F#2+A#2+C#3h.@80"
+    },
+    {
+      "name": "harmony",
+      "voice": "pluck",
+      "octave": 4,
+      "gain": 0.34,
+      "_note": "Silent through A; slow quarter-note harp arps once the lights start leading you.",
+      "notes": "rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | G3q D4q B3q | A3q E4q C#4q | F#3q C#4q A3q | B3q F#4q D4q | G3q D4q B3q | E3q B3q G3q | C4q G4q E4q | F#3q C#4q A#3q | B3q F#4q D4q | B3q F#4q D4q | G3q D4q B3q | G3q D4q B3q | E3q B3q G3q | A3q E4q C#4q | D4q A4q F#4q | F#3q C#4q A#3q"
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 6,
+      "gain": 0.3,
+      "_note": "THE FALSE LIGHTS: whole-tone motes off the beat, never in key - except bar 23's single true D6.",
+      "notes": "rq C6e A#5e rq | rh. | re G#5e F#5e E5e rq | rq D6q. re | rh. | re C6e rq A#5q | rh. | rq E6e D6e C6e A#5e | G#5e A#5e C6e rq. | rh. | re E6e D6e C6e rq | rq F#5e G#5e A#5q | rh. | re D6e rq C6e A#5e | G#5e rq. F#5e E5e | rh. | rq C6e A#5e rq | rh. | re G#5e F#5e E5e rq | rq D6q. re | rh. | re C6e rq A#5q | D6q@70 rh | rh."
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.8,
+      "_note": "One low held root per bar - the still mere.",
+      "notes": "B1h. | B1h. | G1h. | G1h. | E2h. | F#1h. | B1h. | B1h. | G1h. | A1h. | F#1h. | B1h. | G1h. | E2h. | C2h. | F#1h. | B1h. | B1h. | G1h. | G1h. | E2h. | A1h. | D2h. | F#1h."
+    },
+    {
+      "name": "water",
+      "voice": "noise",
+      "octave": 4,
+      "gain": 0.12,
+      "_note": "A soft falling noise breath every fourth bar: water lapping at the drowned stilts.",
+      "notes": "rh. | rh. | rh. | G4~C4h. | rh. | rh. | rh. | G4~C4h. | rh. | rh. | rh. | G4~C4h. | rh. | rh. | rh. | G4~C4h. | rh. | rh. | rh. | G4~C4h. | rh. | rh. | rh. | G4~C4h."
+    }
+  ]
+}

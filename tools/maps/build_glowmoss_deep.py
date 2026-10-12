@@ -245,7 +245,7 @@ m = {
          "sprite": "npc_man", "movement": "static",
          "dialogue_ref": "npc.glowmoss_acolyte_b",
          "hidden_when_flag": "flag:met_hollowing"},
-        {"id": "cowled_figure", "at": {"tx": 20, "ty": 7}, "facing": "down",
+        {"id": "cowled_figure", "at": {"tx": 20, "ty": 8}, "facing": "down",
          "sprite": "npc_old_man", "movement": "static",
          "dialogue_ref": "npc.glowmoss_cowled",
          "hidden_when_flag": "flag:met_hollowing"},

@@ -1,0 +1,92 @@
+{
+ "id": "rimeway",
+ "kind": "loop",
+ "where": "The Rimeway (the star-tenders' high road over the frost col above the Pale Vault, a line of dead rime-lamps)",
+ "mood": "Lonely and grand: wind over a high frost col, a line of dead rime-lamps marching into the cold, the glacier far below.",
+ "bpm": 90,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "low"
+ },
+ "_motif_note": "Low strength keeps the Rimeway's own lonely-grand identity while sharing the score's tune; 90 BPM matches the motif's tempo grid.",
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "90 BPM",
+  "D minor with suspended and quartal chords",
+  "a lonely pulse-wave lead with long held notes, wide rising leaps",
+  "glassy suspended harp arpeggios in stacked fifths",
+  "slow glass bell chimes like cold lamps",
+  "broad sampled string chords that swell into grandeur",
+  "an airy flute answering from far away",
+  "soft timpani and processional tom rolls",
+  "lonely and grand, a high frozen mountain pass under aurora, wind across the snow",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "electric guitar",
+  "fade out",
+  "ritardando",
+  "cheerful",
+  "busy drums",
+  "horror",
+  "modern cinematic trailer"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 3,
+   "text": "{opens at once on a broad cold string chord and a ringing glass bell, like a lamp struck on the col, then thins to wind and harp for the lead}",
+   "styles": [
+    "hit then settle",
+    "full presence from the first beat",
+    "sense of vast cold space"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the lonely lead over open fifths: a wide rising leap held long on a suspended chord, then a slow step down; glass chimes at phrase ends}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "lonely"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the melody again, a distant flute answering each phrase, harp arpeggios in stacked fifths shimmering like aurora}",
+   "styles": [
+    "flute counter-melody",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast, grandeur: full strings and processional timpani, the leap widened and climbing a step each phrase in F major, ending on a bright D major}",
+   "styles": [
+    "F major",
+    "grand processional",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the lonely lead returns over the wind and cold chimes; the last bar leads straight back into the main theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

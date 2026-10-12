@@ -248,6 +248,9 @@ async function analyse(root, tag) {
         case 'pay':
           S(s.flag, ref);
           break;
+        case 'timer': // a run clock's `stop` sets each beaten tier's flag (the Wick-Run)
+          for (const t of s.tiers ?? []) S(t.flag, ref);
+          break;
         case 'askName':
           for (const m of s.matches ?? []) S(m.flag, ref);
           break;

@@ -48,7 +48,7 @@ def build():
     # two rows of pupils' desks facing the board; the aisle runs up to the door
     for i, (x, y) in enumerate([(2, 5), (5, 5), (2, 8), (5, 8)]):
         place(objects, "desk", x, y, oid=f"desk_{i}")
-    aisle_runner(objects, DOOR_X, 4, 9)
+    aisle_runner(objects, DOOR_X, 5, 10)   # up to the doormat, no bare gap
     place(objects, "plant", 10, 10, oid="plant_e")
     place(objects, "plant", 1, 10, oid="plant_w")
     place(objects, "crates", 3, 9)

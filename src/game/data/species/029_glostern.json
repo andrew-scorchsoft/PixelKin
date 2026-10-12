@@ -87,6 +87,20 @@
       "rarity": "common",
       "min": 58,
       "max": 65
+    },
+    {
+      "area": "mirelight_glassmere",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 40,
+      "max": 41
+    },
+    {
+      "area": "mirelight_glassmere",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 57,
+      "max": 62
     }
   ],
   "scripted": false,

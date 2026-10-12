@@ -53,7 +53,7 @@ def build_lumenary():
     place(objects, "plant", 5, 7, oid="planter_l1")
     place(objects, "plant", 11, 7, oid="planter_r1")
     place(objects, "plant", 5, 9, oid="planter_l2")
-    place(objects, "plant", 11, 9, oid="planter_r2")
+    place(objects, "plant", 13, 9, oid="planter_r2")
     place(objects, "pew", 10, 9, oid="visitors_bench")
 
     warps = [
@@ -105,19 +105,20 @@ def build_bower():
     base, over = faced_room(W, H, door_x)
     windows(over, W, [4, 11])
     # the bunk nook behind a partition — guests sleep off the common room
-    partition_v(over, W, 9, 1, 5, lip="w")
+    partition_v(over, W, 8, 1, 5, lip="w")  # a 4-wide bunk room (two 2-wide beds)
 
     objects: list = []
     wall_mount(objects, "hearth", 5)
     wall_mount(objects, "lamp_rack", 2, solid=False)
-    place(objects, "bed_inn", 10, 2, oid="bunk_a")
-    place(objects, "bed_inn", 12, 2, oid="bunk_b")
-    place(objects, "plant", 10, 5, oid="nook_fern")
+    place(objects, "bed_inn", 9, 2, oid="bunk_a")
+    place(objects, "bed_inn", 11, 2, oid="bunk_b")
+    place(objects, "plant", 12, 5, oid="nook_fern")
     place(objects, "table_long", 2, 5)
     place(objects, "stool", 2, 7, oid="stool_a")
     place(objects, "stool", 4, 7, oid="stool_b")
     place(objects, "rug", 6, 7, solid=False)
     place(objects, "barrels", 1, 3, oid="moss_ale")
+    place(objects, "sacks", 11, 8, oid="seed_sacks")
 
     warps = [
         {"id": "to_town", "at": {"tx": door_x, "ty": H - 1}, "trigger": "step_on",
@@ -131,7 +132,7 @@ def build_bower():
         {"id": "bower_keeper", "at": {"tx": 5, "ty": 4}, "facing": "down",
          "sprite": "npc_shopkeeper", "movement": "static",
          "dialogue_ref": "script.lowleaf_rest"},
-        {"id": "bloom_guest", "at": {"tx": 4, "ty": 6}, "facing": "right",
+        {"id": "bloom_guest", "at": {"tx": 3, "ty": 7}, "facing": "up",
          "sprite": "npc_man", "movement": "static",
          "dialogue_ref": "npc.bower_guest"},
     ]

@@ -85,9 +85,10 @@ R5 "A CHART FOR THE WAYKEEPER" (the Round, leg 5 — wakes with the spoke):
   nightreach spoke ONLY).
 
 HANDSHAKES (all three contracts verbatim):
-  (a) W2 sunvault_climb_ii `to_observatory` lands at OUR (15,28)/(16,28) —
-      south-edge entry, walkable; our return pair `to_climb_ii`/`_e` at
-      (15,29)/(16,29) lands sunvault (22,1)/(23,1). UNGATED both ways.
+  (a) sunvault_climb_iv (the Sun Ledges; climb_ii before the 2026-10 four-map
+      climb) `to_observatory` lands at OUR (15,28)/(16,28) — south-edge entry,
+      walkable; our return pair `to_sunvault`/`_e` at (15,29)/(16,29) lands
+      climb_iv (22,1)/(23,1). UNGATED both ways.
   (b) W3 coldfog_marches_ii `to_observatory_fog` lands at OUR (28,14)/(28,15)
       facing left — east edge, map 30 wide; our return pair `to_coldfog`/`_s`
       at (29,14)/(29,15) lands coldfog (1,3)/(1,4), requires_ability emberward
@@ -289,12 +290,14 @@ m["warps"][-1]["id"] = "to_home"
 
 # ---- warps (graph.ts edge ids verbatim) ---------------------------------------------
 m["warps"] += [
-    # SOUTH A <-> sunvault_climb_ii (the MAIN-PATH rim, UNGATED; W2 contract)
-    {"id": "to_climb_ii", "at": {"tx": 15, "ty": 29}, "trigger": "step_on",
-     "to_map": "sunvault_climb_ii", "to": {"tx": 22, "ty": 1}, "facing": "down",
+    # SOUTH A <-> sunvault_climb_iv, the Sun Ledges (the MAIN-PATH rim, UNGATED;
+    # 09-the-wild-ways §2 S re-pointed it from climb_ii when the climb grew to
+    # four maps; the ledges' `to_observatory` still lands at our (15,28)/(16,28))
+    {"id": "to_sunvault", "at": {"tx": 15, "ty": 29}, "trigger": "step_on",
+     "to_map": "sunvault_climb_iv", "to": {"tx": 22, "ty": 1}, "facing": "down",
      "transition": "fade"},
-    {"id": "to_climb_ii_e", "at": {"tx": 16, "ty": 29}, "trigger": "step_on",
-     "to_map": "sunvault_climb_ii", "to": {"tx": 23, "ty": 1}, "facing": "down",
+    {"id": "to_sunvault_e", "at": {"tx": 16, "ty": 29}, "trigger": "step_on",
+     "to_map": "sunvault_climb_iv", "to": {"tx": 23, "ty": 1}, "facing": "down",
      "transition": "fade"},
     # WEST <-> the Lanternway lane (lanternway_nightreach) and its Lantern-car
     # station — the ride down to the Crossroads (the cable's lamp answers the
@@ -491,11 +494,11 @@ owed += [
 # ---- the Star-vigil on the temple steps (Arc E — belonging as witness) --------------
 m["npcs"] += [
     # the vigil-warden keeps the steps; her cutscene is the festival's frame
-    {"id": "star_vigil_warden", "at": {"tx": 13, "ty": 15}, "facing": "up",
+    {"id": "star_vigil_warden", "at": {"tx": 14, "ty": 15}, "facing": "up",
      "sprite": "npc_lampwarden", "movement": "static",
      "dialogue_ref": "script.nightreach_star_vigil",
      "hidden_when_flag": "flag:star_vigil_seen"},
-    {"id": "star_vigil_warden_after", "at": {"tx": 13, "ty": 15}, "facing": "up",
+    {"id": "star_vigil_warden_after", "at": {"tx": 14, "ty": 15}, "facing": "up",
      "sprite": "npc_lampwarden", "movement": "static",
      "dialogue_ref": "npc.star_vigil_warden_after",
      "requires_flag": "flag:star_vigil_seen"},
@@ -518,7 +521,7 @@ m["npcs"] += [
      "sprite": "npc_girl", "movement": "wander",
      "dialogue_ref": "npc.nightreach_festival_a",
      "requires_flag": "flag:q_token_west"},
-    {"id": "festival_lunar_b", "at": {"tx": 14, "ty": 17}, "facing": "up",
+    {"id": "festival_lunar_b", "at": {"tx": 13, "ty": 17}, "facing": "up",
      "sprite": "npc_man", "movement": "static",
      "dialogue_ref": "npc.nightreach_festival_b",
      "requires_flag": "gleam:lunar"},

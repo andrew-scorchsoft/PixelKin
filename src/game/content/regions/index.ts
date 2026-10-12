@@ -12,6 +12,19 @@ import { NORTH_DIALOGUE, NORTH_SCRIPTS } from './north';
 import { WEST_DIALOGUE, WEST_SCRIPTS } from './west';
 import { CENTRAL_DIALOGUE, CENTRAL_SCRIPTS } from './central';
 import { SCHOOL_DIALOGUE, SCHOOL_SCRIPTS } from './school';
+// The Wild Ways (09-the-wild-ways.md): one module per new area.
+import { WICKRUN_DIALOGUE, WICKRUN_SCRIPTS } from './wickrun';
+import { MIRELIGHT_DIALOGUE, MIRELIGHT_SCRIPTS } from './mirelight';
+import { RIMEWAY_DIALOGUE, RIMEWAY_SCRIPTS } from './rimeway';
+import { OLDSEAMS_DIALOGUE, OLDSEAMS_SCRIPTS } from './oldseams';
+import { SUNVAULT_DIALOGUE, SUNVAULT_SCRIPTS } from './sunvault';
+import { RECKONWORKS_DIALOGUE, RECKONWORKS_SCRIPTS } from './reckonworks';
+// The Wayward Arms (2026-10): the hotel on the rise north of the Wanderwood.
+import { HOTEL_DIALOGUE, HOTEL_SCRIPTS } from './hotel';
+// The kitchens (2026-10): Percy's moka brew-stand (Duskapple) + Marisol's kitchen (Lowleaf).
+import { KITCHENS_DIALOGUE, KITCHENS_SCRIPTS } from './kitchens';
+// Paul's House (2026-10): the Booji-Wooji Man's home on Wayward Rise.
+import { PAUL_DIALOGUE, PAUL_SCRIPTS } from './paul';
 
 export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SOUTH_SCRIPTS,
@@ -20,6 +33,15 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...WEST_SCRIPTS,
   ...CENTRAL_SCRIPTS,
   ...SCHOOL_SCRIPTS,
+  ...WICKRUN_SCRIPTS,
+  ...MIRELIGHT_SCRIPTS,
+  ...RIMEWAY_SCRIPTS,
+  ...OLDSEAMS_SCRIPTS,
+  ...SUNVAULT_SCRIPTS,
+  ...RECKONWORKS_SCRIPTS,
+  ...HOTEL_SCRIPTS,
+  ...KITCHENS_SCRIPTS,
+  ...PAUL_SCRIPTS,
 };
 
 export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
@@ -29,4 +51,13 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...WEST_DIALOGUE,
   ...CENTRAL_DIALOGUE,
   ...SCHOOL_DIALOGUE,
+  ...WICKRUN_DIALOGUE,
+  ...MIRELIGHT_DIALOGUE,
+  ...RIMEWAY_DIALOGUE,
+  ...OLDSEAMS_DIALOGUE,
+  ...SUNVAULT_DIALOGUE,
+  ...RECKONWORKS_DIALOGUE,
+  ...HOTEL_DIALOGUE,
+  ...KITCHENS_DIALOGUE,
+  ...PAUL_DIALOGUE,
 };

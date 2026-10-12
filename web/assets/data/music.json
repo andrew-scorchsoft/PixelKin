@@ -175,6 +175,17 @@
      "note": null
     },
     {
+     "id": "mirelight",
+     "title": "The Mirelights",
+     "where": "The Mirelights · The Glassmere · The Drowned Chapel · Lanthorne Hollow",
+     "mood": "Eerie but tender: false blue lights drifting over still water, the echoes of a lost kin-light that once led travellers home.",
+     "classic": "play/assets/audio/music/mirelight.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/mirelight.mp3",
+     "loop_start": 5.666,
+     "note": null
+    },
+    {
      "id": "lowleaf-hollow-a",
      "title": "Lowleaf Hollow",
      "where": "Lowleaf Hollow · Gloamwood Dell",
@@ -188,7 +199,7 @@
     {
      "id": "lowleaf-hollow-b",
      "title": "The Wanderwood",
-     "where": "The Wanderwood · The Far Side · Lowleaf Verdant Lumenary",
+     "where": "The Wanderwood · The Far Side · Wayward Rise · Lowleaf Verdant Lumenary",
      "mood": "The safe glow at the heart of the dark forest — a lantern-lit music-box lullaby in a gentle waltz; hearth over wonder.",
      "classic": "play/assets/audio/music/lowleaf-hollow-b.mp3",
      "classic_loop_start": null,
@@ -238,6 +249,17 @@
      "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/cinderhead-mine-c.mp3",
      "loop_start": 11.029,
+     "note": null
+    },
+    {
+     "id": "old-seams",
+     "title": "The Old Seams",
+     "where": "The Old Seams · The Old Seams: Rail Yard · The Old Seams: Scree Galleries · Emberroot's Heart",
+     "mood": "Abandoned deep galleries: rails and dripping water in the dark, and something vast breathing slowly far below.",
+     "classic": "play/assets/audio/music/old-seams.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/old-seams.mp3",
+     "loop_start": 5.248,
      "note": null
     }
    ]
@@ -310,6 +332,39 @@
      "remaster": "play/assets/audio/music/remaster/pale-vault-glacier-c.mp3",
      "loop_start": 7.036,
      "note": null
+    },
+    {
+     "id": "rimeway",
+     "title": "The Rimeway",
+     "where": "The Rimeway · The Rimeway Fold",
+     "mood": "Lonely and grand: wind over a high frost col, a line of dead rime-lamps marching into the cold, the glacier far below.",
+     "classic": "play/assets/audio/music/rimeway.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/rimeway.mp3",
+     "loop_start": 9.915,
+     "note": null
+    },
+    {
+     "id": "reckoning-aurora",
+     "title": "The Reckoning-Works — the Aurora Roll",
+     "where": "The Reckoning-Works",
+     "mood": "",
+     "classic": "play/assets/audio/music/reckoning-aurora.mp3",
+     "classic_loop_start": null,
+     "remaster": null,
+     "loop_start": null,
+     "note": null
+    },
+    {
+     "id": "reckoning-works",
+     "title": "The Reckoning-Works — busy engines",
+     "where": "The Reckoning-Works",
+     "mood": "",
+     "classic": "play/assets/audio/music/reckoning-works.mp3",
+     "classic_loop_start": null,
+     "remaster": null,
+     "loop_start": null,
+     "note": null
     }
    ]
   },
@@ -372,6 +427,17 @@
      "note": null
     },
     {
+     "id": "sunvault-climb-b",
+     "title": "The Gilt Face",
+     "where": "The Gilt Face · The Sun Ledges",
+     "mood": "",
+     "classic": "play/assets/audio/music/sunvault-climb-b.mp3",
+     "classic_loop_start": null,
+     "remaster": null,
+     "loop_start": null,
+     "note": null
+    },
+    {
      "id": "sunvault-climb-c",
      "title": "Helia Vault",
      "where": "Helia Vault",
@@ -380,6 +446,28 @@
      "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/sunvault-climb-c.mp3",
      "loop_start": 9.358,
+     "note": null
+    },
+    {
+     "id": "wickrun",
+     "title": "Wick-Run Crest",
+     "where": "Wick-Run Crest · The Wick-Run · Wick-Run Foot",
+     "mood": "Reckless and exhilarating: runner-wheels screaming down a graded chute in the dark, lamps whipping past, the air over the jumps.",
+     "classic": "play/assets/audio/music/wickrun.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/wickrun.mp3",
+     "loop_start": 9.706,
+     "note": null
+    },
+    {
+     "id": "tallow-lift",
+     "title": "The Tallow Lift (sting)",
+     "where": "",
+     "mood": "",
+     "classic": "play/assets/audio/music/tallow-lift.mp3",
+     "classic_loop_start": null,
+     "remaster": null,
+     "loop_start": null,
      "note": null
     },
     {
@@ -548,7 +636,7 @@
     {
      "id": "interior-sunny",
      "title": "Indoors — sunny rooms",
-     "where": "The Lifting House · Georgina's Cottage",
+     "where": "Paul's House · Paul's House — The T-Shirt Museum · Paul's House — Lottie's Attic · The Lifting House · Georgina's Cottage",
      "mood": "Sunny rooms with a wink — a sprightly, cheeky little ocarina tune that skips about the furniture.",
      "classic": "play/assets/audio/music/interior-sunny.mp3",
      "classic_loop_start": null,
@@ -614,7 +702,7 @@
     {
      "id": "inn-rest",
      "title": "Inns — rest a while",
-     "where": "Pearlmoor Quayside Inn · Vesper Crossroads Inn · Lowleaf Guest-bower · The Steady Gust Inn · The Held Flame Inn · The Long Watch Inn",
+     "where": "The Wayward Arms · Pearlmoor Quayside Inn · Vesper Crossroads Inn · Lowleaf Guest-bower · The Steady Gust Inn · The Held Flame Inn · The Long Watch Inn",
      "mood": "Rest a while — a fire's glow, a full kettle and a warm bed; the hometown tune settled into a contented waltz.",
      "classic": "play/assets/audio/music/inn-rest.mp3",
      "classic_loop_start": null,

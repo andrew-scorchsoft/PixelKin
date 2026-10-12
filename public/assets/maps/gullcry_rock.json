@@ -675,6 +675,18 @@
   ],
   "objects": [
     {
+      "id": "flats_jetty",
+      "sprite": "markers_jetty",
+      "at": {
+        "tx": 4,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 2,
+      "solid": false,
+      "bob": false
+    },
+    {
       "id": "wc_wreck",
       "sprite": "pearlmoor_wreck_ribs",
       "at": {

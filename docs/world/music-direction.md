@@ -549,3 +549,46 @@ MIDI renders for every fight: they're more on-brand. The `battle-*` remasters ar
 so all battles (wild, trainers, Lampwardens, Wren, the Hollowing, the boss, the Three Hours)
 and the attract duel play the classic chip cue in both Soundtrack modes. Their ElevenLabs cue
 sheets stay in `assets/audio/elevenlabs/` if a future pass wants them.
+
+---
+
+## The Wild Ways (the non-linear expansion, 2026-10)
+
+Four new places from [`walkthrough/09-the-wild-ways.md`](./walkthrough/09-the-wild-ways.md) §4,
+each with one cue (the Option-A anchor, built straight away) plus the Tallow Lift's ride sting.
+Classic specs: `assets/audio/midi/specs/<id>.json`; remaster cue sheets:
+`assets/audio/elevenlabs/<id>/spec.json`. Not yet wired to maps (the map builders own that).
+
+| Cue | Mood | Where | Classic | Remaster |
+|---|---|---|---|---|
+| `wickrun` — *Down the Wick-Run* | driving, reckless, exhilarating | the six Wick-Run maps (crest → foot) | `snes`, 168 BPM | yes, **never motif-conditioned** |
+| `tallow-lift` — *Tallow Lift (sting)* | gentle creaking ascent, one-shot ~5.8 s | the lift ride (`musicSting` over the `travel` op) | `snes` one-shot | — (classic-only, like a battle) |
+| `mirelight` — *The False Lights* | eerie but tender, sparse | `mirelight_landing` / `_glassmere` / `_chapel` | `snes`, 72 BPM 3/4 | yes, motif `low` |
+| `rimeway` — *The Rime-Lamps* | lonely, then grand | `rimeway_ascent` / `_fold` / `_descent` | `snes`, 92 BPM | yes, motif `low` |
+| `old-seams` — *The Old Seams* | deep cave: rails, drips, a vast breath below | `old_seams_i`–`iii` (+ `emberroot_heart` until its fight) | bare `gbc`, 80 BPM | yes, motif `low` |
+
+**`wickrun` — "Down the Wick-Run".**
+`generate-midi` brief: *preset `overworld`→`battle` energy · era `snes` · 168 BPM, 4/4, E minor with a Dorian lift to G/D · **lead:** `pulse25` reckless pushed-eighth hook · **harmony/arp:** `pluck` eighth arps (the spinning spokes) + a `strings` pad carrying real chords · **bell:** lamps whipping past at phrase ends · **bass:** `tri_bass` galloping root/octave eighths · **percussion:** rock kit, crash on section downbeats, tom fills · form A A′ B A″, 32 bars (~46 s).*
+- **Concept:** the old wax-carters' chute raced in the dark by the Runners — all forward motion. B is *the jump*: half-time drums, long airborne notes, swelling strings, then the hook slams back on the landing.
+- **Vesper motif:** the climbing-route *widened* leap thrown downhill — nobody settles on the Run, so the settle is skipped; the last bar runs B–D♯–F♯–B up into the crest again.
+- **Remaster:** unconditioned on purpose (the motif pins a take to ~90 BPM); opens on a start-gate countdown of snare ticks, then launches.
+
+**`mirelight` — "The False Lights".**
+`generate-midi` brief: *preset `emotional`/ambient · era `snes` · 72 BPM, 3/4 (the Tide lilt), B minor with a Neapolitan C · **lead:** lone `pulse25` lantern-call, long tones, wide rests · **bell:** **the false lights** — whole-tone motes (C D E F♯ G♯ A♯) drifting off-key and off the beat · **pad:** very soft `strings` · **harp:** `pluck` only once the lights start leading you · **bass:** one held low root per bar · **water:** a soft `noise` breath every 4 bars · 24 bars (60 s).*
+- **Concept:** the Glassmere's wandering blue lights are echoes of the fen's own lamp-kin, put to sleep in a null-lantern. Uncanny, never scary.
+- **Vesper motif:** A states the lift (F♯→B→C♯) and withholds the settle; the return lets it land, F♯–E–D over D major, while the bell rings one in-key D — the true light remembered. The remaster carries the home tune faintly (motif `low`) for the same reason.
+
+**`rimeway` — "The Rime-Lamps".**
+`generate-midi` brief: *preset `emotional`→route · era `snes` · 92 BPM, 4/4, D minor with sus/quartal colour · **lead:** lonely `pulse25` call; a `flute` answers from the next lamp in A′ · **arp:** `pluck` stacked-fifth (quartal) eighths, the aurora shimmer · **bell:** slow glassy chimes = the dead rime-lamps · **wind:** long `noise` swells · **pad:** open fifths when lonely, full `strings` chords when grand · **percussion:** processional toms + crash in B only · A (lonely) B (grand) A′, 24 bars (~63 s).*
+- **Concept:** the star-tenders' high road over the col — the loneliness of a line of dead lamps, the grandeur of the height. B opens out to F major and a Picardy D major before the turn.
+- **Vesper motif:** frost = stretched and suspended (A→D→E held, the settle a bar late); in B the leap is widened and sequenced up a step each phrase — a climbing road.
+
+**`old-seams` — "The Old Seams".**
+`generate-midi` brief: *preset `cave` · era `gbc` (bare 4 voices) · 80 BPM (reads half-time), 4/4, C♯ minor with a Phrygian D · **lead:** low `pulse25` drone-lead, long rests · **harmony:** `pulse12` drips, each echoed fainter; a rail-tick ostinato in the rail-yard B section · **bass:** `tri_bass` **the breath** — long bottom-register tones that swell and ebb by velocity, inhale/exhale every two bars · **percussion:** distant pick-tap toms, hat rail-clacks · 24 bars (72 s).*
+- **Concept:** the sealed galleries under Cinderhead; the first fallen star (Emberroot) asleep below, the coal its slow breath. Silence is the instrument.
+- **Vesper motif:** caves = fragmented — only the rising leap (G♯→C♯→D♯) survives, and it sinks to the Phrygian D instead of settling.
+
+**`tallow-lift` — the ride sting.** `snes` one-shot, G major, 104 BPM, 2 bars + a 1.2 s ring-out
+(~5.8 s): short falling `noise` glides for the cable creak, a rising `pluck` arpeggio (the car
+climbing), a warm `strings` bed (G → C → G) and two soft bells as the car arrives. Lives in
+`music/` and plays through `musicSting`, exactly like `sting-hour`; classic-only.

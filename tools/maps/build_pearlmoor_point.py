@@ -26,6 +26,10 @@ Wiring:
   (gated flag:q_south_jest_done — the round-trip pair the warp audit wants).
   After gleam:tide the tower shows LIT (oldlight_dark/oldlight_lit swap, same
   footprint).
+  THE WILD WAYS (2026-10): the west tip's beach runs on round the headland to
+  the Wick-Run's foot — `to_wickrun`/`_s` (0,8)/(0,9) <-> wickrun_foot's
+  `to_point` (29,21)/(29,22) (each lands ON the other). South-era players can
+  walk to the foot and see the lift; the run itself only opens from the top.
 
 Run:  python3 tools/maps/build_pearlmoor_point.py
 """
@@ -51,6 +55,9 @@ mk.blob(water, W, H, 2.5, 12.5, 2.5, 1.6)
 mk.blob(water, W, H, 16, 12.2, 3.0, 1.4)
 # the beach ring the sea laps onto (water needs a SAND shore — context rule)
 mk.rect(sand, W, H, 1, 1, 1, 10)
+# the beach road west round the headland to the Wick-Run foot (the Wild Ways)
+water[8 * W + 0] = water[9 * W + 0] = 0
+mk.rect(sand, W, H, 0, 8, 0, 9)
 mk.rect(sand, W, H, 1, 9, W - 1, 10)
 mk.blob(sand, W, H, 9, 9.4, 3.2, 1.0)
 # two small bays bite into the beach (an organic shore, not a ruled edge)
@@ -123,7 +130,7 @@ m["warps"].append({"id": "to_oldlight", "at": {"tx": DOOR[0], "ty": DOOR[1]},
 
 # the slide's brass chute-mouth at the tower foot (non-solid prop; its warp
 # climbs back up the chute once the act is done — gated, with a line)
-m["objects"].append({"id": "chute_mouth", "sprite": "solarium_sun_mask",
+m["objects"].append({"id": "chute_mouth", "sprite": "markers_chute_mouth",
                      "at": {"tx": 7, "ty": 7}, "w": 1, "h": 1, "solid": False})
 m["warps"].append({"id": "up_chute", "at": {"tx": 7, "ty": 7}, "trigger": "step_on",
                    "to_map": "pearlmoor_oldlight_top", "to": {"tx": 7, "ty": 8},
@@ -171,6 +178,13 @@ for y, ly in ((7, 15), (8, 16), (9, 16)):
     m["warps"].append({"id": f"to_quay_{y}", "at": {"tx": W - 1, "ty": y},
                        "trigger": "step_on", "to_map": "pearlmoor_quay",
                        "to": {"tx": 1, "ty": ly}, "facing": "right",
+                       "transition": "fade"})
+
+# ---- the west beach road on to the Wick-Run foot (09-the-wild-ways §2 A) ----------
+for i, y in enumerate((8, 9)):
+    m["warps"].append({"id": "to_wickrun" + ("_s" if i else ""), "at": {"tx": 0, "ty": y},
+                       "trigger": "step_on", "to_map": "wickrun_foot",
+                       "to": {"tx": 29, "ty": y + 13}, "facing": "left",
                        "transition": "fade"})
 
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [

@@ -122,6 +122,7 @@ type CutsceneStepBase =
   | { op: 'move'; actor: ActorRef; to: TileCoord; speed?: number }
   // Sprite ACTING (no art needed — tweens on the actor's sprite, never its tile):
   | { op: 'hop'; actor: ActorRef; times?: number; height?: number } // a startled jump in place
+  | { op: 'hideActor'; actor: ActorRef } // vanish an NPC on the spot (gone for good once its flag swap refreshes at scene end)
   | { op: 'shakeActor'; actor: ActorRef; ms?: number; px?: number } // a shudder (fear, cold, laughter)
   | { op: 'spin'; actor: ActorRef; turns?: number; ms?: number; end?: Facing } // look all around; ends facing `end` (default: where it started)
   // A falling star crosses the sky on cue (the game's motif; Ambience.starfall).
@@ -166,6 +167,20 @@ type CutsceneStepBase =
   // the Keylumen dais re-offers the Starlamp with it, so the ending can never
   // dangle on a spent key item.
   | { op: 'ensureItem'; item: string; count?: number; text?: string }
+  /** Quietly take an item back (a rented runner handed in at the foot). No-op if absent. */
+  | { op: 'takeItem'; item: string; count?: number }
+  /**
+   * A run clock (the Wick-Run time trial). `start` shows a clock top-right; `stop`
+   * hides it, narrates the time and sets the flag of every tier beaten (`ms` is
+   * the tier's limit). `cancel` drops a running clock silently. Not saved — a
+   * reload mid-run simply has no clock running, and `stop` without one no-ops.
+   */
+  | {
+      op: 'timer';
+      id: string;
+      action: 'start' | 'stop' | 'cancel';
+      tiers?: { ms: number; flag: WorldFlag; label: string }[];
+    }
   | { op: 'sfx'; key: string }
   | { op: 'music'; key: string | null } // swap the bed (crossfades when one is playing)
   | { op: 'musicCrossfade'; key: string; ms?: number } // explicit crossfade to a new bed

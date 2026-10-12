@@ -1,0 +1,16 @@
+{
+ "id": "old-seams",
+ "kind": "loop",
+ "where": "The Old Seams (the sealed deep galleries under Cinderhead: plank bridges, ore-cart rails, the first fallen star asleep below)",
+ "mood": "Abandoned deep galleries: rails and dripping water in the dark, and something vast breathing slowly far below.",
+ "duration": 99.242,
+ "loop_start": 5.248,
+ "seam": 0.184,
+ "bpm_est": 89.1,
+ "song_id": "LS2EvXUB6Gx3IRQBoejQ",
+ "raw_ms": 96026,
+ "motif": "low",
+ "edits": [
+  "trimmed 2.090s of head"
+ ]
+}
