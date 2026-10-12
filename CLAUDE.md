@@ -1008,7 +1008,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   read true WHEREVER he stands — he leans on a fence in Pearlmoor too (no "go north to Pearlmoor").
   A Lumenary's step_on bond-test tile in front of the warden must never answer a quest-giver's
   walk-up with a bare "not yet": `build_lumenary(aisle_steps=…)` puts the warden's current stage on
-  the same tile AHEAD of the test (Reyl: hook → where-next), since the first active trigger wins.
+  the same tile AHEAD of the test (Reyl: hook → where-next), since the first active trigger wins;
+  `exit_steps=…` adds a call-back on the tile in front of the door so you can't LEAVE without the
+  errand either (`script.reyl_call_back`, hidden once `q_south_bell` is held).
 - **Tinderwick was deliberately RE-SHUFFLED for returning players (R8, 2026-10)** — store ⇄
   cottage swapped (door tiles too; spawn (5,8)), Wren + Fenn's satchel moved out to the new west
   side area `duskapple_orchard`, a couple of signs removed on purpose. Don't "restore" the old

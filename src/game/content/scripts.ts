@@ -238,6 +238,14 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:q_south_bell' },
   ],
 
+  // Leaving the hall before he's given you the errand (playtest 2026-10: the
+  // walk-up line read as the conversation, so a player left without the quest
+  // and found the Old Light locked). He calls you back and gives it there.
+  'script.reyl_call_back': [
+    { op: 'emote', actor: 'reyl_quest', emote: 'alert' },
+    { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'neutral', text: 'Hoi — Wayfarer! Not so fast. You came all this way up the quay; hear me out before you go.' },
+    { op: 'run', ref: 'script.reyl_quest' },
+  ],
   // Reyl mid-quest (the hall stage between the hook and the bell) — one line per
   // state of the R9 chain: the tower, then the netmender, then the moor-gate.
   'script.reyl_waiting': [

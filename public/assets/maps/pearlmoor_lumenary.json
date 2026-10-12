@@ -605,6 +605,17 @@
       },
       "activation": "interact",
       "ref": "sign.pearlmoor_lumenary"
+    },
+    {
+      "id": "reyl_call_back",
+      "kind": "cutscene",
+      "at": {
+        "tx": 8,
+        "ty": 10
+      },
+      "activation": "step_on",
+      "ref": "script.reyl_call_back",
+      "hidden_when_flag": "flag:q_south_bell"
     }
   ],
   "encounters": [],
