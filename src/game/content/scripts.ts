@@ -232,7 +232,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'grave', text: 'It has hung silent at the breakwater\'s end since the last storm carried its rope away. No bell, no Tide-blessing. No blessing, no bond-test. That is the order of things, and the sea keeps her orders.' },
     // R9: the Old Light slots in between the hook and the rope.
     { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'proud', text: 'And a house rule of my own: nobody fights me till they\'ve LAUGHED. Out past the west beach, on the Point, there\'s an old lighthouse with a brass grin where its lamp should be.' },
-    { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'neutral', text: 'The quay calls it the Guffaw. Up the Old Light with you — all the way to the top. Tell it Reyl sent you. Then the NETMENDER will see you about the rope.' },
+    { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'neutral', text: 'The quay calls it the Guffaw. Up the Old Light with you — all the way to the top. Tell it Reyl sent you. Then the NETMENDER will see you about the rope — she mends her nets on the quay, up from the moor-gate at its south end.' },
     { op: 'wait', ms: 700 }, // X-2: honour the ellipsis
     { op: 'say', speaker: 'REYL WASH', portrait: 'reyl', expr: 'weathered', text: '...I\'d come with you. I don\'t go up there.' },
     { op: 'setFlag', flag: 'flag:q_south_bell' },
@@ -421,21 +421,33 @@ export const SCRIPTS: ScriptRegistry = {
   // each hold one piece of the old man; none of the pieces agree, and that is the
   // point. Mystery and non-conformance, never the Hollowing: Paul keeps one lamp
   // dark for company, not for a cause. Closure is a question, not an answer.
+  // How to actually REACH Paul (playtest 2026-10: the crew all said "the
+  // breakwater" and a player stood at the chained moor-gate with no idea the
+  // rope comes from Reyl -> the Old Light -> the netmender). Every lifter who
+  // sends you out there runs this; it speaks only while the rope isn't yours.
+  'script.booji_gate_note': [
+    { op: 'say', unless_flag: 'flag:q_south_has_rope', speaker: 'ANDY', text: 'Getting out there is the trick. The moor-gate at the south end of the quay is chained, and only the NETMENDER\'s rope opens it.' },
+    { op: 'say', unless_flag: 'flag:q_south_bell', speaker: 'ANDY', text: 'Go and see REYL WASH at the Lumenary, top of the quay. He\'ll send you up the Old Light first. Do what he says and the netmender will hand you the rope.' },
+    { op: 'say', if_flag: 'flag:q_south_bell', unless_flag: 'flag:q_south_jest_done', speaker: 'ANDY', text: 'You\'re on it already, then: up the Old Light, west along the beach to the Point. Bring the netmender back whatever\'s up there and she\'ll give you the rope.' },
+    { op: 'say', if_flag: 'flag:q_south_jest_done', unless_flag: 'flag:q_south_has_rope', speaker: 'ANDY', text: 'Been up the Old Light? Then take the netmender her floats. She mends her nets on the quay, just up from the moor-gate. The rope\'s yours after that.' },
+  ],
   'script.booji_andy': [
-    { op: 'say', speaker: 'ANDY', text: 'Oh — a Wayfarer! Come in, come in. Mind the bench. I bench, you know. Every dusk. Well — every OTHER dusk. The knee, you see.' },
+    { op: 'say', speaker: 'ANDY', text: 'Oh — a Wayfarer! Come in, come in. Mind the belt. I run, you know. Every dusk. Well — every OTHER dusk. The knee, you see.' },
     { op: 'say', speaker: 'ANDY', text: 'You\'ll be here about the old man. Everyone comes in about the old man eventually. PAUL. Though that\'s not what the quay calls him.' },
     { op: 'say', speaker: 'ANDY', text: 'They call him the BOOJI-WOOJI MAN. Don\'t ask me what it means. I asked HIM once, and he asked me what I thought it meant, and I\'ve been thinking about it for two years now.' },
     { op: 'say', speaker: 'ANDY', text: 'He\'s seventy-something. Eighty-something? Numbers don\'t stick to him — he wears them the way some men wear collars, for other people\'s comfort. And he can still press the big harbour stone overhead. The one SID can\'t budge. Don\'t tell Sid I said that.' },
     { op: 'say', speaker: 'ANDY', text: 'Word is the Wardens\' Registry wanted him once. WANTED him, ink and seal. For what? He says he\'ll tell me over a cup of something, some night. There\'s never a cup. There\'s never a night.' },
-    { op: 'say', speaker: 'ANDY', text: 'Talk to ABDUL — he\'s seen where the old man goes. Then SID. Then come back and tell me everything, because nobody ever tells me everything.' },
+    { op: 'say', speaker: 'ANDY', text: 'He spends his evenings out at the very END of the breakwater. Talk to ABDUL by the bikes — he\'s seen him out there. SID\'s downstairs. Then come back and tell me everything, because nobody ever tells me everything.' },
+    { op: 'run', ref: 'script.booji_gate_note' },
     { op: 'setFlag', flag: 'flag:q_south_booji' },
   ],
   'script.booji_abdul': [
     { op: 'say', speaker: 'ABDUL', text: '...You\'re after Paul, then.' },
-    { op: 'narrate', text: 'He sets the stone down with more care than most people give their own names.' },
+    { op: 'narrate', text: 'He hangs his towel over the bike\'s bars with more care than most people give their own names.' },
     { op: 'say', speaker: 'ABDUL', text: 'I bench beside that man three dusks a week. In two years he has told me four stories about himself. All of them were different. All of them were true. I can\'t explain that.' },
     { op: 'say', speaker: 'ABDUL', text: 'Once he asked me: do you carry your lamp, or does your lamp carry you? I laughed. Then I didn\'t sleep.' },
-    { op: 'say', speaker: 'ABDUL', text: 'He walks the breakwater after the bell goes quiet. Past the shrine, right out where the boards run out. Sid saw him out there. Sid won\'t say what he saw. Ask him anyway.' },
+    { op: 'say', speaker: 'ABDUL', text: 'He walks the breakwater after the bell goes quiet. Past the shrine, right out where the boards run out. Sid saw him out there — Sid\'s downstairs with the weights. He won\'t say what he saw. Ask him anyway.' },
+    { op: 'say', unless_flag: 'flag:q_south_has_rope', speaker: 'ABDUL', text: 'You\'ll not get past the moor-gate without the netmender\'s rope. Reyl at the Lumenary starts you on that.' },
     // Any lifter can start you on Paul now (q_south_booji), so the order is free.
     { op: 'setFlag', flag: 'flag:q_south_booji' },
     { op: 'setFlag', flag: 'flag:q_south_booji_abdul' },
@@ -445,6 +457,8 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'SID', text: '...Saw him at the breakwater\'s end. Standing at a lamp that\'s gone dark. Not lighting it.' },
     { op: 'say', speaker: 'SID', text: 'A lamp-tender\'s country, and he just... let it sit dark. Said the dark needs somewhere to sit too, or it gets ideas.' },
     { op: 'say', speaker: 'SID', text: '...Then he pressed the mooring-stone. The BIG one. Set it down soft as a loaf. Go see him. I\'m not going back out there.' },
+    { op: 'say', unless_flag: 'flag:q_south_has_rope', speaker: 'SID', text: '...Gate\'s chained. Netmender\'s rope. Reyl first.' },
+    { op: 'narrate', unless_flag: 'flag:q_south_has_rope', text: 'For Sid, that is a speech. It means: see Reyl Wash at the Lumenary, and he will set you on to earning the netmender\'s rope.' },
     { op: 'setFlag', flag: 'flag:q_south_booji' },
     { op: 'setFlag', flag: 'flag:q_south_booji_sid' },
   ],
@@ -650,6 +664,11 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'PAUL', text: 'For the bird. It fought like it\'s already seen the dawn and wasn\'t impressed. I\'ll be back at my lamp — somebody has to keep the dark company. Seems you\'ve got the morning covered.' },
     { op: 'setFlag', flag: 'flag:q_south_wander_done' },
   ],
+  // Andy mid-trail (before you've met Paul): who to ask, and how to get out there.
+  'script.booji_andy_wait': [
+    { op: 'dialogue', ref: 'npc.booji_andy_wait' },
+    { op: 'run', ref: 'script.booji_gate_note' },
+  ],
   // Andy, once the cup exists. (Wraps his standing after-line.)
   'script.booji_andy_after': [
     { op: 'dialogue', ref: 'npc.booji_andy_after', unless_flag: 'flag:q_south_wander_done' },
@@ -681,6 +700,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'ROD', text: 'My Anth says I love that allotment more than I love her. I tell her there is NO contest. ...I am careful never to say which way. That\'s a joke, mind — don\'t you go telling Anth.' },
     { op: 'say', speaker: 'ROD', text: 'One thing out there I cannot beat: the squirrels. Thieving little stone-heads. I can press a mooring-block overhead and I cannot keep ONE off my marrows. There\'s a lesson in that. Seventy-two years and I have not found it.' },
     { op: 'say', speaker: 'ROD', text: 'You\'ll be after the old man. PAUL. He\'s not in the house, lad — he\'s out past the bell, the very end of the breakwater, where the boards give out. Stood at a lamp he won\'t light. Go and find him. He\'s worth the walk.' },
+    { op: 'say', unless_flag: 'flag:q_south_has_rope', speaker: 'ROD', text: 'Mind, the moor-gate\'s chained till the netmender trusts you with her rope. Reyl Wash up at the Lumenary sorts that — he\'ll send you up the Old Light first. Everybody goes up the Old Light first.' },
     { op: 'say', speaker: 'ROD', text: 'And keep your lamp up out there. Paul\'s got... company at that dark lamp. Something I\'ve no name for — and I have named every kin on this coast. Crows at the black like the morning\'s already its idea. Daft little thing. ...You bring it home, if it\'ll have you.' },
     { op: 'say', if_flag: 'flag:q_south_wander', unless_flag: 'flag:q_south_wander_done', speaker: 'ROD', text: 'Up the hill, is it? Through the gap behind the Lumenary. Past my plot, mind — and if my Anth hands you a hoe, you hoe. That\'s the toll.' },
     { op: 'setFlag', flag: 'flag:q_south_booji' },
@@ -5230,7 +5250,11 @@ export const SCRIPTS: ScriptRegistry = {
     },
     {
       op: 'say', if_flag: 'flag:q_south_booji', unless_flag: 'flag:q_south_booji_met', speaker: 'ANDREW',
-      text: 'He walks the breakwater, past the bell — right out where the boards give up. Ring the bell first if the gate won\'t let you by. Then go and meet him.',
+      text: 'He walks the breakwater, past the bell — right out where the boards give up. Go and meet him.',
+    },
+    {
+      op: 'say', if_flag: 'flag:q_south_booji', unless_flag: 'flag:q_south_has_rope', speaker: 'ANDREW',
+      text: 'Gate chained? It opens for the netmender\'s rope, and you earn that through Reyl at the Lumenary — he sends you up the Old Light, west along the beach. Ask me THESE ROADS any time and I\'ll tell you the next step.',
     },
     // D
     {

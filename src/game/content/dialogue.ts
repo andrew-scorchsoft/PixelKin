@@ -360,12 +360,14 @@ export const DIALOGUE: DialogueRegistry = {
   // --- The netmender (quay) — the Causeway Bell's keeper, then S1's giver ----
   'npc.netmender_pre': [
     { speaker: 'NETMENDER', text: 'Mind the coils, Wayfarer. Nets to mend, floats gone missing, and a bell-rope nobody\'s fit to carry. The sea took a whole storm out of MY year, I tell you.' },
+    { speaker: 'NETMENDER', text: 'The moor-gate at the south end of the quay stays chained till the moor-bell rings. Want out on the breakwater? Go and see Reyl Wash at the Lumenary, top of the quay. He decides who carries my rope.' },
   ],
   // R9: the floats stage now points UP the Old Light (it shows until
   // flag:q_south_jest_done — so an old save holding the floats climbs too).
   'npc.netmender_floats': [
     { speaker: 'NETMENDER', text: 'Reyl sent you for the rope? Hmph. The rope is spliced and waiting — but my FLOATS went missing in that storm, and something up the Old Light has been "collecting".' },
-    { speaker: 'NETMENDER', text: 'Climb it, Wayfarer. All the way. Then come back to me and the rope is yours. ...I\'d like to know what you find up there. I\'ve wondered eleven winters.' },
+    { speaker: 'NETMENDER', text: 'Climb it, Wayfarer. All the way to the top. It\'s west along the beach path, out on the Point — follow the cackling. Then come back to me and the rope is yours.' },
+    { speaker: 'NETMENDER', text: '...I\'d like to know what you find up there. I\'ve wondered eleven winters.' },
   ],
   'npc.netmender_sent': [
     { speaker: 'NETMENDER', text: 'The moor-gate\'s unchained — south end of the quay, where the boards run out. Hang the rope true and ring it LOUD, Wayfarer.' },
@@ -384,6 +386,7 @@ export const DIALOGUE: DialogueRegistry = {
   // The chained moor-gate (warp blocked_ref) — her voice, before the rope is earned.
   'npc.netmender_gate': [
     { speaker: 'NETMENDER', text: 'The moor-gate stays chained, Wayfarer — those boards have eaten bolder boots than yours. No one walks out to a silent bell without MY rope on their shoulder.' },
+    { speaker: 'NETMENDER', text: 'You earn it the Pearlmoor way: Reyl Wash at the Lumenary sends you up the Old Light, west along the beach. Bring me back what\'s up there, and the rope is yours.' },
   ],
   // S1's buoys, refused out of order (trigger blocked_refs on Dimglass II).
   'npc.buoy_dark': [
@@ -448,12 +451,12 @@ export const DIALOGUE: DialogueRegistry = {
     { text: 'HOUSE RULES\n1. Put the stones back.\n2. Spot whoever asks.\n3. If PAUL offers you advice, take it. If he offers you a story, count your pockets after.' },
   ],
   'npc.booji_andy_wait': [
-    { speaker: 'ANDY', text: 'Abdul first — he\'s seen where the old man goes. Then Sid, if you can get three words out of him. That\'s two more than usual.' },
+    { speaker: 'ANDY', text: 'Abdul first, by the bikes — he\'s seen where the old man goes. Then Sid downstairs, if you can get three words out of him. That\'s two more than usual.' },
     { speaker: 'ANDY', text: 'And if you find Paul — ask him about the Registry. For me. For all of us. Mostly for me.' },
   ],
   'npc.booji_andy_after': [
     { speaker: 'ANDY', text: 'Every dusk he doesn\'t come in, I tell a new lifter about him. Every dusk he DOES come in, I pretend I never talk about him at all.' },
-    { speaker: 'ANDY', text: 'Anyway. As I was saying. The bench. The knee. Have I told you about the knee?' },
+    { speaker: 'ANDY', text: 'Anyway. As I was saying. The treadmill. The knee. Have I told you about the knee?' },
   ],
   'npc.booji_abdul_pre': [
     { speaker: 'ABDUL', text: 'Stones don\'t lift themselves. ...That\'s it. That\'s the whole wisdom.' },

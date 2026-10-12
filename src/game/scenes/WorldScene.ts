@@ -2035,7 +2035,11 @@ export class WorldScene extends Phaser.Scene {
           this.traverseHooks,
         );
       }
-      for (const npc of this.npcs) {
+      // A Confirm earlier this frame may have just opened a conversation
+      // (interact() turns the NPC to you, then goes modal). Don't tick NPCs
+      // on that frame, or a treadmill runner snaps straight back to his
+      // stride and never looks at you.
+      for (const npc of this.modal ? [] : this.npcs) {
         const r = npc.placement.wander_radius;
         // The wander leash: a wanderer never strays more than `wander_radius` from its post.
         npc.update(

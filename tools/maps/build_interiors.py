@@ -321,10 +321,12 @@ def gym(objects: list, stem: str, tx: int, ty: int, *, oid: str | None = None,
 
 
 def treadmill(objects: list, tx: int, ty: int, oid: str, *, runner: bool = False) -> None:
-    """A 1x3 treadmill: the console (solid) over the belt. Under a runner the
-    belt is solid:false so he can stand ON it (and you can step up behind him)."""
-    gym(objects, "treadmill_console", tx, ty, oid=f"{oid}_console")
-    gym(objects, "treadmill_belt", tx, ty + 1, oid=f"{oid}_belt", solid=not runner)
+    """A 1x3 treadmill turned to FACE THE CAMERA: the belt on top, the console
+    (seen from behind, solid) at the near end, so a runner on it shows his
+    face. Under a runner the belt is solid:false so he can stand ON it (and
+    you can step up behind him)."""
+    gym(objects, "treadmill_belt_s", tx, ty, oid=f"{oid}_belt", solid=not runner)
+    gym(objects, "treadmill_console_s", tx, ty + 2, oid=f"{oid}_console")
 
 
 def build_lifting_house():
@@ -372,16 +374,18 @@ def build_lifting_house():
     # The Booji-Wooji Man side quest (S-line): Andy hooks it from the treadmill
     # (a stack of flag-disjoint stages on one tile, all running in place);
     # Abdul passes a clue along up here; Sid, Andrew and Rod lift downstairs.
-    andy_at = {"tx": 4, "ty": 3}     # on treadmill_1's belt, facing the console
+    # Everyone in the gym faces the CAMERA at rest (owner's call: you want to see
+    # them) and turns to whoever talks to them (Npc.facePoint).
+    andy_at = {"tx": 4, "ty": 3}     # on treadmill_1's belt, running toward the console
     abdul_at = {"tx": 12, "ty": 7}   # stretching in front of the bikes
-    andy = {"facing": "up", "sprite": "lifter_andy", "movement": "static",
+    andy = {"facing": "down", "sprite": "lifter_andy", "movement": "static",
             "in_place_walk": True}
     npcs = [
         {"id": "andy_hook", "at": dict(andy_at), **andy,
          "dialogue_ref": "script.booji_andy",
          "hidden_when_flag": "flag:q_south_booji"},
         {"id": "andy_wait", "at": dict(andy_at), **andy,
-         "dialogue_ref": "npc.booji_andy_wait",
+         "dialogue_ref": "script.booji_andy_wait",
          "requires_flag": "flag:q_south_booji",
          "hidden_when_flag": "flag:q_south_booji_met"},
         {"id": "andy_done", "at": dict(andy_at), **andy,
@@ -444,20 +448,20 @@ def build_lifting_house_b1():
     npcs = [
         # Andrew — the OTHER bench guy (not Andy; two separate lifters). Between
         # sets at bench_a, permanently; one flavour stage, no quest stack.
-        {"id": "andrew", "at": {"tx": 2, "ty": 8}, "facing": "up",
+        {"id": "andrew", "at": {"tx": 2, "ty": 8}, "facing": "down",
          "sprite": "lifter_andrew", "movement": "static",
          "dialogue_ref": "npc.booji_andrew"},
         # Rod — the house's strongest AND oldest (an allotment-keeper of 72 who
         # squats the big rack). One flavour stage; he points on to Paul and
         # seeds the Chickenpig (never naming it).
-        {"id": "rod", "at": {"tx": 12, "ty": 8}, "facing": "up",
+        {"id": "rod", "at": {"tx": 12, "ty": 8}, "facing": "down",
          "sprite": "lifter_rod", "movement": "static",
          "dialogue_ref": "script.booji_rod"},
-        {"id": "sid_clue", "at": dict(sid_at), "facing": "right",
+        {"id": "sid_clue", "at": dict(sid_at), "facing": "down",
          "sprite": "lifter_sid", "movement": "static",
          "dialogue_ref": "script.booji_sid",
          "hidden_when_flag": "flag:q_south_booji_sid"},
-        {"id": "sid_after", "at": dict(sid_at), "facing": "right",
+        {"id": "sid_after", "at": dict(sid_at), "facing": "down",
          "sprite": "lifter_sid", "movement": "static",
          "dialogue_ref": "npc.booji_sid_after",
          "requires_flag": "flag:q_south_booji_sid"},

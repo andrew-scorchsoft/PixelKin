@@ -605,7 +605,7 @@
         "tx": 2,
         "ty": 8
       },
-      "facing": "up",
+      "facing": "down",
       "sprite": "lifter_andrew",
       "movement": "static",
       "dialogue_ref": "npc.booji_andrew",
@@ -617,7 +617,7 @@
         "tx": 2,
         "ty": 8
       },
-      "facing": "up",
+      "facing": "down",
       "sprite": "lifter_andrew",
       "movement": "static",
       "dialogue_ref": "npc.booji_andrew_lit",
@@ -629,7 +629,7 @@
         "tx": 12,
         "ty": 8
       },
-      "facing": "up",
+      "facing": "down",
       "sprite": "lifter_rod",
       "movement": "static",
       "dialogue_ref": "script.booji_rod"
@@ -640,7 +640,7 @@
         "tx": 3,
         "ty": 3
       },
-      "facing": "right",
+      "facing": "down",
       "sprite": "lifter_sid",
       "movement": "static",
       "dialogue_ref": "script.booji_sid",
@@ -652,7 +652,7 @@
         "tx": 3,
         "ty": 3
       },
-      "facing": "right",
+      "facing": "down",
       "sprite": "lifter_sid",
       "movement": "static",
       "dialogue_ref": "npc.booji_sid_after",

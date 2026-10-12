@@ -545,85 +545,85 @@
       "walk_under": true
     },
     {
-      "id": "treadmill_0_console",
-      "sprite": "gym_treadmill_console",
+      "id": "treadmill_0_belt",
+      "sprite": "gym_treadmill_belt_s",
       "at": {
         "tx": 2,
         "ty": 2
-      },
-      "w": 1,
-      "h": 1
-    },
-    {
-      "id": "treadmill_0_belt",
-      "sprite": "gym_treadmill_belt",
-      "at": {
-        "tx": 2,
-        "ty": 3
       },
       "w": 1,
       "h": 2
     },
     {
-      "id": "treadmill_1_console",
-      "sprite": "gym_treadmill_console",
+      "id": "treadmill_0_console",
+      "sprite": "gym_treadmill_console_s",
       "at": {
-        "tx": 4,
-        "ty": 2
+        "tx": 2,
+        "ty": 4
       },
       "w": 1,
       "h": 1
     },
     {
       "id": "treadmill_1_belt",
-      "sprite": "gym_treadmill_belt",
+      "sprite": "gym_treadmill_belt_s",
       "at": {
         "tx": 4,
-        "ty": 3
+        "ty": 2
       },
       "w": 1,
       "h": 2,
       "solid": false
     },
     {
-      "id": "treadmill_2_console",
-      "sprite": "gym_treadmill_console",
+      "id": "treadmill_1_console",
+      "sprite": "gym_treadmill_console_s",
       "at": {
-        "tx": 6,
-        "ty": 2
+        "tx": 4,
+        "ty": 4
       },
       "w": 1,
       "h": 1
     },
     {
       "id": "treadmill_2_belt",
-      "sprite": "gym_treadmill_belt",
+      "sprite": "gym_treadmill_belt_s",
       "at": {
         "tx": 6,
-        "ty": 3
+        "ty": 2
       },
       "w": 1,
       "h": 2
     },
     {
-      "id": "treadmill_3_console",
-      "sprite": "gym_treadmill_console",
+      "id": "treadmill_2_console",
+      "sprite": "gym_treadmill_console_s",
       "at": {
-        "tx": 8,
-        "ty": 2
+        "tx": 6,
+        "ty": 4
       },
       "w": 1,
       "h": 1
     },
     {
       "id": "treadmill_3_belt",
-      "sprite": "gym_treadmill_belt",
+      "sprite": "gym_treadmill_belt_s",
       "at": {
         "tx": 8,
-        "ty": 3
+        "ty": 2
       },
       "w": 1,
       "h": 2
+    },
+    {
+      "id": "treadmill_3_console",
+      "sprite": "gym_treadmill_console_s",
+      "at": {
+        "tx": 8,
+        "ty": 4
+      },
+      "w": 1,
+      "h": 1
     },
     {
       "id": "bike_0",
@@ -788,7 +788,7 @@
         "tx": 4,
         "ty": 3
       },
-      "facing": "up",
+      "facing": "down",
       "sprite": "lifter_andy",
       "movement": "static",
       "in_place_walk": true,
@@ -801,11 +801,11 @@
         "tx": 4,
         "ty": 3
       },
-      "facing": "up",
+      "facing": "down",
       "sprite": "lifter_andy",
       "movement": "static",
       "in_place_walk": true,
-      "dialogue_ref": "npc.booji_andy_wait",
+      "dialogue_ref": "script.booji_andy_wait",
       "requires_flag": "flag:q_south_booji",
       "hidden_when_flag": "flag:q_south_booji_met"
     },
@@ -815,7 +815,7 @@
         "tx": 4,
         "ty": 3
       },
-      "facing": "up",
+      "facing": "down",
       "sprite": "lifter_andy",
       "movement": "static",
       "in_place_walk": true,
@@ -829,7 +829,7 @@
         "tx": 4,
         "ty": 3
       },
-      "facing": "up",
+      "facing": "down",
       "sprite": "lifter_andy",
       "movement": "static",
       "in_place_walk": true,

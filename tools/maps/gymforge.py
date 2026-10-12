@@ -15,8 +15,9 @@ Projection matches the interior kit: straight-on, top-down-frontal, 1px ink
 outline, a soft contact shadow on the floor row. Every piece is drawn in code
 (rects/lines/discs) so it is crisp and deterministic; re-run freely.
 
-  FREE-STANDING (solid):   treadmill_console + treadmill_belt (a 1x3 machine
-                           in two parts, so a runner can stand ON the belt),
+  FREE-STANDING (solid):   treadmill_belt_s + treadmill_console_s (a 1x3
+                           machine in two parts, console at the NEAR end so
+                           the runner faces the camera; he stands ON the belt),
                            bike, rower, bench_press, squat_rack, dumbbell_rack,
                            plate_tree, kettlebells, water_cooler
   FLOOR (solid:false):     mat (2x2 rubber tile, tiles seamlessly)
@@ -149,47 +150,44 @@ def img(a) -> Image.Image:
 # =============================================================================
 #  CARDIO (the street-level hall)
 # =============================================================================
-def treadmill_console():
-    """1x1 the treadmill's head: twin uprights, the console with its little
-    lit readout, the handrails, and the motor hood the belt runs out of."""
+
+
+
+
+def treadmill_console_s():
+    """1x1 the treadmill's head seen from BEHIND (the console at the near end,
+    so the runner faces the camera): the back of the panel with its vents,
+    twin uprights, handrails, and the motor hood the belt runs into."""
     a = canvas(1, 1)
-    # motor hood (the deck's head, bottom of the tile)
+    # motor hood at the base of the tile, on the floor
     inked(a, 1, 10, 14, 15, "I", hi="j", lo="i")
     rect(a, 3, 12, 12, 12, "i")
-    # uprights rising from the hood
+    # uprights
     rect(a, 2, 4, 3, 10, "k"); rect(a, 12, 4, 13, 10, "k")
     px(a, 2, 5, "j"); px(a, 12, 5, "j")
-    # console panel
+    # the back of the console panel (vents, no readout)
     inked(a, 1, 0, 14, 5, "i", hi="I")
-    rect(a, 4, 2, 11, 3, "b")
-    for x, ch in ((5, "l"), (6, "l"), (7, "l"), (9, "L"), (10, "L")):
-        px(a, x, 2, ch)
-    px(a, 6, 3, "l"); px(a, 9, 3, "L")
-    # handrails out to the sides
+    for x in range(4, 12, 2):
+        rect(a, x, 2, x, 3, "b")
+    # handrails
     rect(a, 0, 6, 1, 7, "k"); rect(a, 14, 6, 15, 7, "k")
     px(a, 0, 6, "j"); px(a, 15, 6, "j")
+    contact(a, 1, 14, 15)
     return img(a)
 
 
-def treadmill_belt():
-    """1x2 the running deck: side rails, the black belt with its slats, the
-    end roller and the floor shadow. (Solid on an empty machine; solid:false
-    under a runner.)"""
+def treadmill_belt_s():
+    """1x2 the running deck for a console-at-the-near-end machine: the end
+    roller at the FAR (north) end, the deck running down into the console."""
     a = canvas(1, 2)
     H = 32
-    # side rails
-    inked(a, 1, 0, 14, H - 3, "I", hi="j", lo="i")
-    # belt
-    rect(a, 3, 0, 12, H - 5, "d")
-    for y in range(1, H - 5, 4):
+    inked(a, 1, 1, 14, H - 1, "I", hi="j", lo="i")
+    rect(a, 3, 3, 12, H - 1, "d")
+    for y in range(5, H, 4):
         rect(a, 3, y, 12, y, "D")
-    # rail top glints
-    rect(a, 2, 0, 2, H - 4, "j")
-    rect(a, 13, 0, 13, H - 4, "i")
-    # end roller cap + feet
-    rect(a, 3, H - 4, 12, H - 4, "i")
-    rect(a, 2, H - 2, 3, H - 2, "k"); rect(a, 12, H - 2, 13, H - 2, "k")
-    contact(a, 1, 14, H - 1)
+    rect(a, 2, 2, 2, H - 1, "j")
+    rect(a, 13, 2, 13, H - 1, "i")
+    rect(a, 3, 2, 12, 2, "i")  # the far roller cap
     return img(a)
 
 
@@ -438,7 +436,7 @@ def mirror():
 
 
 PIECES = {
-    "treadmill_console": treadmill_console, "treadmill_belt": treadmill_belt,
+    "treadmill_console_s": treadmill_console_s, "treadmill_belt_s": treadmill_belt_s,
     "bike": bike, "rower": rower, "water_cooler": water_cooler,
     "bench_press": bench_press, "squat_rack": squat_rack,
     "dumbbell_rack": dumbbell_rack, "plate_tree": plate_tree,
