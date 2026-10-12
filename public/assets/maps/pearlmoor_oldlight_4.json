@@ -816,6 +816,36 @@
       "h": 2
     },
     {
+      "id": "maze_mirror_0",
+      "sprite": "oldlight_funhouse_mirror",
+      "at": {
+        "tx": 17,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 2
+    },
+    {
+      "id": "maze_mirror_1",
+      "sprite": "oldlight_funhouse_mirror",
+      "at": {
+        "tx": 19,
+        "ty": 11
+      },
+      "w": 1,
+      "h": 2
+    },
+    {
+      "id": "maze_mirror_2",
+      "sprite": "oldlight_funhouse_mirror",
+      "at": {
+        "tx": 13,
+        "ty": 10
+      },
+      "w": 1,
+      "h": 2
+    },
+    {
       "id": "speaking_tube",
       "sprite": "solarium_sun_mask",
       "at": {
@@ -1016,6 +1046,16 @@
       "ref": "npc.oldlight_cart"
     },
     {
+      "id": "maze_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 20,
+        "ty": 9
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_mirror_maze"
+    },
+    {
       "id": "riddle_band",
       "kind": "cutscene",
       "at": {
@@ -1100,7 +1140,7 @@
         "ty": 13
       },
       "facing": "up",
-      "sprite": "npc_shopkeeper",
+      "sprite": "player_indi",
       "movement": "static",
       "dialogue_ref": "script.oldlight_mirror",
       "defeated_flag": "flag:oldlight_mirror_beaten",
@@ -1114,7 +1154,7 @@
         "ty": 13
       },
       "facing": "up",
-      "sprite": "npc_shopkeeper",
+      "sprite": "player_indi",
       "movement": "look_around",
       "dialogue_ref": "npc.oldlight_mirror_after",
       "requires_flag": "flag:oldlight_mirror_beaten"
@@ -1153,7 +1193,7 @@
       "facing": "down",
       "sprite": "fisher_woman",
       "movement": "look_around",
-      "dialogue_ref": "npc.oldlight_moll_4",
+      "dialogue_ref": "script.oldlight_moll_4",
       "hidden_when_flag": "flag:oldlight_4_solved"
     }
   ],

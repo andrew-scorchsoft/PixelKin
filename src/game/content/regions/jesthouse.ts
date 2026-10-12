@@ -107,6 +107,7 @@ export const JESTHOUSE_SCRIPTS: ScriptRegistry = {
 
   // ---- F4: the Backwards Inn -------------------------------------------------------------------
   'script.oldlight_mirror': bout('mirror', 'THE MIRROR', [
+    'Nice coat. Same as mine. Same hair, same lamp, same face. Punchwheel built me to show visitors their best side.',
     'You\'re reaching for your lamp. I\'m reaching for my lamp. You blinked. I blinked.',
     '...Fine. I blinked first. BATTLE!',
   ], [
@@ -163,6 +164,26 @@ export const JESTHOUSE_SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'PIP', text: 'Take them to her on the quay, by her nets! She\'s got the bell-rope put by. Then you can walk the whole breakwater, right out to the bell.', unless_flag: 'flag:q_south_has_rope' },
     { op: 'say', speaker: 'PIP', text: 'And go all the way to the END. Everyone says there\'s somebody out past the bell who... I don\'t know what he is. Nobody does! Go and SEE!', unless_flag: 'flag:q_south_has_rope' },
     { op: 'setFlag', flag: 'flag:oldlight_rope_reminded' },
+  ],
+  // ---- MOLL's two floors that notice your wins (the rest are plain dialogue) ----------
+  'script.oldlight_moll_2': [
+    say('MOLL', "Don't ask how I got here first. Sixty years of knowing where the back stairs are."),
+    { ...say('MOLL', "And I heard you see off that heckler. Tam would've hired you on the spot."), if_flag: 'flag:oldlight_heckler_beaten' },
+    say('MOLL', "This was our stage. Winter nights the whole quay squeezed in. Tam rowed the late ferry, then came on still dripping in her oilskins and did twenty minutes."),
+    say('MOLL', "The audience laughed a beat late even then. 'Fog in their ears,' she said. You're doing grand. Keep climbing."),
+  ],
+  'script.oldlight_moll_4': [
+    { ...say('MOLL', "The Ringmaster's still sulking. Good. He's needed a proper audience for years."), if_flag: 'flag:oldlight_ringmaster_beaten' },
+    say('MOLL', "Everything's backwards on this floor. Tam's idea. 'People look their best laughing at themselves, Moll.'"),
+    say('MOLL', "She'd pull faces at those mirrors till the mirrors gave up first."),
+    say('MOLL', "You've a good face for this. A face that keeps going. That's the whole trick of comedy, and of most things."),
+  ],
+  // ---- F5: the waxed floor (a glare-ice flow across the hall's north lane) ----------------
+  'script.oldlight_waxed_floor': [
+    nar('The gallery floor gleams like a frozen pond. Someone has waxed it to a mirror shine.'),
+    pw('(from a speaking-tube) MIND THE FLOOR! I polished it for the critics. Then I left some bananas on it. For the critics.'),
+    nar('Step onto the shine and you will skid until something stops you. The dry boards either side are slower, and far less fun.'),
+    { op: 'setFlag', flag: 'flag:oldlight_waxed_seen' },
   ],
 };
 
@@ -263,20 +284,10 @@ export const JESTHOUSE_DIALOGUE: DialogueRegistry = {
     line('MOLL', "I'm Moll. Forty years I was the straight half of a double act, right here in this lobby. Tam Wash was the funny half."),
     line('MOLL', "She built that clattering joke-box upstairs so there'd still be jokes when she was out on the water. Go on, love, up you go. I'll be right behind you."),
   ],
-  'npc.oldlight_moll_2': [
-    line('MOLL', "Don't ask how I got here first. Sixty years of knowing where the back stairs are."),
-    line('MOLL', "This was our stage. Winter nights the whole quay squeezed in. Tam rowed the late ferry, then came on still dripping in her oilskins and did twenty minutes."),
-    line('MOLL', "The audience laughed a beat late even then. 'Fog in their ears,' she said. You're doing grand. Keep climbing."),
-  ],
   'npc.oldlight_moll_3': [
     line('MOLL', "Interval! Tam's rule: nobody climbs on an empty stomach. She baked cheese-buns for the house. Two each. Three if you heckled well."),
     line('MOLL', "She used to say a lighthouse and a joke want the same thing: somebody out in the dark, coming home toward them."),
     line('MOLL', "Sit by the urn if you're flagging, love. I'm off up. My knees and I aren't on speaking terms."),
-  ],
-  'npc.oldlight_moll_4': [
-    line('MOLL', "Everything's backwards on this floor. Tam's idea. 'People look their best laughing at themselves, Moll.'"),
-    line('MOLL', "She'd pull faces at those mirrors till the mirrors gave up first."),
-    line('MOLL', "You've a good face for this. A face that keeps going. That's the whole trick of comedy, and of most things."),
   ],
   'npc.oldlight_moll_5': [
     line('MOLL', "Her pictures, mostly. That's the old ferry. That's Reyl, young and scowling. He only ever smiled when he thought nobody was looking."),
@@ -287,6 +298,19 @@ export const JESTHOUSE_DIALOGUE: DialogueRegistry = {
     line('MOLL', "Hear it? The same joke, round and round. He wrote it for her, for when she got home."),
     line('MOLL', "I come up once a winter and sit with it a while. Somebody ought to laugh at it, and I never can."),
     line('MOLL', "Go on up and finish it for her. I'll be along. The last flight's the steepest, and I like to take it slow."),
+  ],
+  'sign.oldlight_mirror_maze': [
+    sign('A card on a stand: MIRROR MAZE (SMALL). EXIT: THAT WAY.'),
+    sign('Underneath, in the same hand: (THE OTHER THAT WAY.)'),
+  ],
+  'sign.oldlight_audience': [
+    sign('Rows of stools, set out for an audience. Every one has been dusted. Not one has been sat on.'),
+    sign('They all face the little table with the two cups.'),
+  ],
+  'npc.oldlight_moll_card': [
+    line('MOLL', "(puffing) Couldn't sit with it down there. Not this time."),
+    line('MOLL', "That's her card, jammed in the drum. Eleven winters it's been trying to finish her joke for her."),
+    line('MOLL', "Go on, love. You've laughed all the way up. I'll be right here."),
   ],
   'npc.oldlight_moll_top': [
     line('MOLL', "(puffing) There. Made it. ...You finished her card, didn't you? I heard the drum stop turning."),

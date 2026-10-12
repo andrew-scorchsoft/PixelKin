@@ -696,36 +696,32 @@
   "objects": [
     {
       "id": "frame_cap_reyl",
-      "sprite": "interior_banner_warm",
+      "sprite": "oldlight_painting_reyl",
       "at": {
         "tx": 3,
-        "ty": 1
+        "ty": 0
       },
       "w": 1,
       "h": 2,
-      "overhang": 1,
-      "walk_under": true,
       "solid": false
     },
     {
       "id": "frame_cap_tuesday",
-      "sprite": "interior_banner_ice",
+      "sprite": "oldlight_painting_tuesday",
       "at": {
         "tx": 6,
-        "ty": 1
+        "ty": 0
       },
       "w": 1,
       "h": 2,
-      "overhang": 1,
-      "walk_under": true,
       "solid": false
     },
     {
       "id": "frame_cap_stars",
-      "sprite": "nightreach_star_banner",
+      "sprite": "oldlight_painting_stars",
       "at": {
         "tx": 9,
-        "ty": 1
+        "ty": 0
       },
       "w": 1,
       "h": 2,
@@ -733,41 +729,35 @@
     },
     {
       "id": "frame_cap_sea",
-      "sprite": "interior_banner_ice",
+      "sprite": "oldlight_painting_sea",
       "at": {
         "tx": 5,
-        "ty": 7
+        "ty": 6
       },
       "w": 1,
       "h": 2,
-      "overhang": 1,
-      "walk_under": true,
       "solid": false
     },
     {
       "id": "frame_cap_gerald",
-      "sprite": "interior_banner_warm",
+      "sprite": "oldlight_painting_gerald",
       "at": {
         "tx": 10,
-        "ty": 7
+        "ty": 6
       },
       "w": 1,
       "h": 2,
-      "overhang": 1,
-      "walk_under": true,
       "solid": false
     },
     {
       "id": "frame_cap_tam",
-      "sprite": "interior_banner_warm",
+      "sprite": "oldlight_painting_ferry",
       "at": {
         "tx": 15,
-        "ty": 7
+        "ty": 6
       },
       "w": 1,
       "h": 2,
-      "overhang": 1,
-      "walk_under": true,
       "solid": false
     },
     {
@@ -831,11 +821,44 @@
       "h": 2
     },
     {
+      "id": "slick_banana_0",
+      "sprite": "oldlight_banana",
+      "at": {
+        "tx": 7,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "slick_banana_1",
+      "sprite": "oldlight_banana",
+      "at": {
+        "tx": 13,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "slick_banana_2",
+      "sprite": "oldlight_banana",
+      "at": {
+        "tx": 16,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
       "id": "banana_0",
       "sprite": "oldlight_banana",
       "at": {
         "tx": 7,
-        "ty": 9
+        "ty": 10
       },
       "w": 1,
       "h": 1,
@@ -1012,6 +1035,17 @@
       "ref": "script.oldlight_lectern"
     },
     {
+      "id": "waxed_floor_warn",
+      "kind": "cutscene",
+      "at": {
+        "tx": 3,
+        "ty": 7
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_waxed_floor",
+      "hidden_when_flag": "flag:oldlight_waxed_seen"
+    },
+    {
       "id": "mallet_sign",
       "kind": "sign",
       "at": {
@@ -1026,7 +1060,7 @@
       "kind": "cutscene",
       "at": {
         "tx": 7,
-        "ty": 9
+        "ty": 10
       },
       "activation": "step_on",
       "ref": "script.oldlight_banana",
@@ -1157,6 +1191,18 @@
   ],
   "gates": [],
   "music": "assets/audio/music/oldlight-f5.mp3",
+  "flows": [
+    {
+      "id": "waxed_floor",
+      "kind": "ice",
+      "rect": {
+        "tx": 4,
+        "ty": 8,
+        "w": 14,
+        "h": 2
+      }
+    }
+  ],
   "ambience": {
     "particles": [
       {

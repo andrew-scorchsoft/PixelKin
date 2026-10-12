@@ -1005,17 +1005,6 @@
       "hidden_when_flag": "flag:oldlight_welcomed"
     },
     {
-      "id": "welcome_12",
-      "kind": "cutscene",
-      "at": {
-        "tx": 12,
-        "ty": 12
-      },
-      "activation": "step_on",
-      "ref": "script.oldlight_welcome",
-      "hidden_when_flag": "flag:oldlight_welcomed"
-    },
-    {
       "id": "laugh_track_sign",
       "kind": "cutscene",
       "at": {

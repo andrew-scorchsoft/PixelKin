@@ -771,23 +771,38 @@ netmender's keeping.
        (landings `{18,7–9}` / quay `{1,15–16}`). The Old Light (bespoke
        `pearlmoor_oldlight_dark`, 5×8; `pearlmoor_oldlight_lit` swaps in on `gleam:tide`,
        same footprint) — door `to_oldlight` `{3,7}` **`requires_flag:flag:q_south_bell`**,
-       `blocked_ref:door.oldlight_locked` (the brass nose) → `pearlmoor_oldlight_1 {7,9}`.
+       `blocked_ref:door.oldlight_locked` (the brass nose) → `pearlmoor_oldlight_1 {11,13}`.
        The shuttered Wash ferry-house (`sign.wash_ferryhouse` at its door, mailbox sign),
        the sea-view bench, the jest-house sign, cache `pickup_point_rocks` `{1,2}`, the
        Worry Club's **`worry_nettie`** `{13,10}` (`script.worry_nettie`), and the slide's
        brass chute-mouth `up_chute` `{7,7}` (`requires q_south_jest_done`) beside the slide
        landing `{7,8}`.
-     - **The tower** — seven `roomkit` interiors, stairs alternating NE/NW (Beacon spiral):
-       F1 Lobby of Groaners (warm; door `{7,10}`; the plaque; the Laugh Turnstile — every
-       answer works) · F2 The Late Laugh (cool; stage + pews + late audience; **the Heckler**
-       keeper lv 11/12, 240w, gates the riddle) · F3 Intermission (warm; **tea-urn `heal`
-       rest point** in the interval bar; the Hall of Mouths + three escaped punchlines) · F4
-       The Backwards Inn (cool, the lobby mirrored; **the Ringmaster** keeper lv 12/13, 260w,
-       poses the riddle; answer TIDE) · F5 Gallery of Confident Facts (cool; six captions;
-       the once-only knock-knock loop → the tower's one lowercase line; pick the TRUE caption)
-       · F6 The One Joke (12×9, no gate; no music key — the band fades F5's bed) · TOP the
-       Winding Room (Reyl's log, the cut rope, Tam's card → `q_south_jest_done` + the floats;
-       the SLIDE `{7,9}` → Point `{7,8}`).
+     - **The tower (R10–R11, 2026-10)** — seven `roomkit` interiors, 22×15 (top 14×11), the
+       haunted-tower walk: arrive in one north corner, the up-stair is in the other, so every
+       floor is crossed through its hall. Each floor has its own warped tileset
+       (`oldlight_fN_set`), its own cue (`oldlight-fN`, one theme, madder per floor) and its
+       own battle backdrop (`oldlight-fN-a.webp`). F1 Lobby of Groaners (street door
+       `{11,14}`; the plaque, the Laugh Turnstile, whoopee/laugh-track/jack-box gags) · F2
+       The Late Laugh (stage + pews + an audience that laughs a beat late; **the Heckler**
+       keeper 11/12, 240w, gates the riddle) · F3 Intermission (**tea-urn `heal` rest
+       point**) · F4 The Backwards Inn (the lobby mirrored, a small **mirror maze**; **the
+       Ringmaster** keeper 12/13, 260w, poses the riddle; answer TIDE) · F5 Gallery of
+       Confident Facts (six captions, pick the TRUE one: Tam's ferry; the hall's north
+       lane is a **waxed glare-ice flow** with banana skins) · F6 The One Joke (no gate; the
+       band fades the music; rows of empty stools face the **two cups rest**) · TOP the
+       Winding Room (Reyl's log, the cut rope, Tam's card → `q_south_jest_done` + the
+       floats; the SLIDE → Point).
+     - **The house's people (non-battle):** **Moll**, Tam's old stage partner, waits one floor
+       ahead of you on every floor (`MOLL` in the builder; each placement hides once that
+       floor's stair opens), telling Tam's story a piece at a time and cheering you on; she
+       reaches the top for the card and says one line at the punchline. **Pip** runs after
+       you on the Point if you leave with the floats but not the rope.
+     - **Wild + optional fights (the grind bed before Reyl 16 and the fen):** each hall rolls
+       a tower table, lv 9→14 (`TOWER_TABLES`, mirrored in `build_species.py
+       OLDLIGHT_TABLES`) of the house's own clowns — **JesterHalf** #167 (→ JesterFull #168
+       at 24), **The Smiler** #169 (→ The Exciter #170 at 22), **McClownface** #171 — plus
+       Glimflit/Wickmoth/Riddlestone/Spirlet/Snoozlet. Five optional alcove regulars (F1–F5,
+       `oldlight_usher/juggler/pie_thrower/mirror/critic`, route tier, lv 10→14).
      - **Validation hooks:** up-stairs `up_stairs` **`requires_flag:flag:oldlight_N_solved`**
        + `blocked_ref:sign.oldlight_stairgate`; the riddle runs on the ONE walkable approach
        tile below each up-stair (`riddle_band`, step_on, `hidden_when` solved — the
@@ -796,7 +811,7 @@ netmender's keeping.
        Down-stairs always open. Riddles are `choice`s with layered retries (wrong → joke +
        re-offer; second miss → Punchwheel blurts the answer and the gate opens anyway;
        Cancel steps away and the band re-offers) and a `Wind the Tin Rower.` option
-       (`if_flag:flag:has_tin_rower`). No wild encounters anywhere in the tower.
+       (`if_flag:flag:has_tin_rower`).
    - **The Tide-blessing set-piece (Arc E, BUILT):** `script.tide_blessing` banded across
      every walkable tile of quay row 10 (the one cut between the Lumenary forecourt and
      town), `requires_flag:'gleam:tide'`, self-hiding via `flag:tide_blessing_seen`; its

@@ -756,28 +756,24 @@
     },
     {
       "id": "curtain_l",
-      "sprite": "interior_banner_ice",
+      "sprite": "oldlight_stage_curtain",
       "at": {
         "tx": 7,
-        "ty": 7
+        "ty": 6
       },
       "w": 1,
       "h": 2,
-      "overhang": 1,
-      "walk_under": true,
       "solid": false
     },
     {
       "id": "curtain_r",
-      "sprite": "interior_banner_ice",
+      "sprite": "oldlight_stage_curtain_r",
       "at": {
         "tx": 15,
-        "ty": 7
+        "ty": 6
       },
       "w": 1,
       "h": 2,
-      "overhang": 1,
-      "walk_under": true,
       "solid": false
     },
     {
@@ -1041,7 +1037,7 @@
         "ty": 12
       },
       "facing": "up",
-      "sprite": "npc_man",
+      "sprite": "fisher_man",
       "movement": "static",
       "dialogue_ref": "npc.oldlight_late_b"
     },
@@ -1116,7 +1112,7 @@
       "facing": "down",
       "sprite": "fisher_woman",
       "movement": "look_around",
-      "dialogue_ref": "npc.oldlight_moll_2",
+      "dialogue_ref": "script.oldlight_moll_2",
       "hidden_when_flag": "flag:oldlight_2_solved"
     }
   ],

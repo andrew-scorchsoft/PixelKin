@@ -273,8 +273,9 @@ def floor_1():
                   "to_map": "pearlmoor_point", "to": {"tx": POINT_DOOR[0], "ty": POINT_DOOR[1] + 1},
                   "facing": "down", "transition": "door"})
     # Punchwheel's welcome rolls once, two steps in from the door (the lobby's
-    # mouth: every walkable tile of the row in front of the street door)
-    for x in (door_x - 1, door_x, door_x + 1):
+    # mouth: every walkable tile of the row in front of the street door; the
+    # east one sits under the laugh meter's base, so it's left out)
+    for x in (door_x - 1, door_x):
         triggers.append({"id": f"welcome_{x}", "kind": "cutscene", "at": {"tx": x, "ty": H - 3},
                          "activation": "step_on", "ref": "script.oldlight_welcome",
                          "hidden_when_flag": "flag:oldlight_welcomed"})
@@ -313,14 +314,15 @@ def floor_2():
                     "at": {"tx": 9, "ty": MID + 1}, "w": 5, "h": 3})
     place(objects, "brazier", 8, MID + 1, oid="footlight_l")
     place(objects, "brazier", 14, MID + 1, oid="footlight_r")
-    wall_mount(objects, "banner_ice", 7, face_row=MID, oid="curtain_l", solid=False)
-    wall_mount(objects, "banner_ice", 15, face_row=MID, oid="curtain_r", solid=False)
+    for oid, stem, x in (("curtain_l", "stage_curtain", 7), ("curtain_r", "stage_curtain_r", 15)):
+        objects.append({"id": oid, "sprite": f"oldlight_{stem}", "at": {"tx": x, "ty": MID - 1},
+                        "w": 1, "h": 2, "solid": False})
     ol(objects, "spotlight", 16, MID + 2, oid="spotlight")
     place(objects, "pew", 9, 11, oid="pew_a")
     place(objects, "pew", 13, 11, oid="pew_b")
     # the audience that laughs one line late (stood behind the pews; the aisle
     # along rows 12-13 is the hall's one lane east-west)
-    for nid, x, y, spr in (("late_a", 10, 12, "npc_old_woman"), ("late_b", 14, 12, "npc_man"),
+    for nid, x, y, spr in (("late_a", 10, 12, "npc_old_woman"), ("late_b", 14, 12, "fisher_man"),
                            ("late_c", 12, 13, "npc_boy")):
         npcs.append({"id": nid, "at": {"tx": x, "ty": y}, "facing": "up", "sprite": spr,
                      "movement": "static", "dialogue_ref": f"npc.oldlight_{nid}"})
@@ -429,8 +431,14 @@ def floor_4():
                     "at": {"tx": 8, "ty": 12}, "w": 3, "h": 2})
     sign_at(triggers, "troupe_cart", 11, 12, "npc.oldlight_cart")
     place(objects, "brazier", 15, 10, oid="brazier_r")
+    # the MIRROR MAZE (small): free-standing funhouse glasses zig-zag the east
+    # hall, so the walk to the stair is a little dance with your reflections
+    for i, (x, y) in enumerate(((17, 9), (19, 11), (13, 10))):
+        objects.append({"id": f"maze_mirror_{i}", "sprite": "oldlight_funhouse_mirror",
+                        "at": {"tx": x, "ty": y}, "w": 1, "h": 2})
+    sign_at(triggers, "maze_sign", 20, 9, "sign.oldlight_mirror_maze")
     # THE MIRROR in the south-west alcove (optional): a mimic, battles in pairs
-    alcove_trainer(over, npcs, 5, "mirror", "npc_shopkeeper")
+    alcove_trainer(over, npcs, 5, "mirror", "player_indi")  # wears YOUR face
     # the stair room (NW): the RINGMASTER guards the tube
     stairs(4, W, base, objects, warps, triggers, down="ne", up="nw",
            band_requires="flag:oldlight_ringmaster_beaten",
@@ -451,15 +459,14 @@ def floor_5():
     objects, warps, triggers, npcs = [], [], [], []
     # six framed captions: three in the arrival room (north face), three on the
     # long wall's face over the hall
-    frames = [("cap_reyl", 3, 1, "banner_warm"), ("cap_tuesday", 6, 1, "banner_ice"),
-              ("cap_stars", 9, 1, None), ("cap_sea", 5, MID, "banner_ice"),
-              ("cap_gerald", 10, MID, "banner_warm"), ("cap_tam", 15, MID, "banner_warm")]
-    for fid, x, y, stem in frames:
-        if stem:
-            wall_mount(objects, stem, x, face_row=y, oid=f"frame_{fid}", solid=False)
-        else:  # the solid-black picture
-            objects.append({"id": f"frame_{fid}", "sprite": "nightreach_star_banner",
-                            "at": {"tx": x, "ty": y}, "w": 1, "h": 2, "solid": False})
+    frames = [("cap_reyl", 3, 1, "reyl"), ("cap_tuesday", 6, 1, "tuesday"),
+              ("cap_stars", 9, 1, "stars"), ("cap_sea", 5, MID, "sea"),
+              ("cap_gerald", 10, MID, "gerald"), ("cap_tam", 15, MID, "ferry")]
+    for fid, x, y, pic in frames:
+        # hung on the wall face (the cap row above + the face row), non-solid;
+        # the TRUE picture (cap_tam) is Tam's ferry in its plain dark frame
+        objects.append({"id": f"frame_{fid}", "sprite": f"oldlight_painting_{pic}",
+                        "at": {"tx": x, "ty": y - 1}, "w": 1, "h": 2, "solid": False})
         sign_at(triggers, fid, x, y, f"sign.oldlight_{fid}")
     place(objects, "brazier", 2, 3, oid="brazier_n")
     place(objects, "brazier", 18, 9, oid="brazier_s")
@@ -468,11 +475,20 @@ def floor_5():
     ol(objects, "joke_lectern", 12, 10, oid="lectern")
     sign_at(triggers, "lectern_sign", 12, 12, "script.oldlight_lectern", kind="cutscene")
     ol(objects, "mallet", 3, 9, oid="mallet")
+    # the GALLERY FLOOR, waxed to a mirror shine: the hall's north lane is a
+    # glare-ice FLOW (traversal kit: you skid until something stops you), with
+    # banana skins on it, because of course. Dry ground either side; never a trap.
+    m_flows = [{"id": "waxed_floor", "kind": "ice", "rect": {"tx": 4, "ty": 8, "w": 14, "h": 2}}]
+    for i, (x, y) in enumerate(((7, 8), (13, 9), (16, 8))):
+        ol(objects, "banana", x, y, oid=f"slick_banana_{i}")
+    triggers.append({"id": "waxed_floor_warn", "kind": "cutscene", "at": {"tx": 3, "ty": 7},
+                     "activation": "step_on", "ref": "script.oldlight_waxed_floor",
+                     "hidden_when_flag": "flag:oldlight_waxed_seen"})
     sign_at(triggers, "mallet_sign", 3, 11, "sign.oldlight_mallet")
     # the banana peels: the gallery's one confident fact ("floors are safe")
-    for i, (x, y) in enumerate(((7, 9), (14, 13), (16, 10))):
+    for i, (x, y) in enumerate(((7, 10), (14, 13), (16, 10))):
         ol(objects, "banana", x, y, oid=f"banana_{i}")
-    triggers.append({"id": "banana_slip", "kind": "cutscene", "at": {"tx": 7, "ty": 9},
+    triggers.append({"id": "banana_slip", "kind": "cutscene", "at": {"tx": 7, "ty": 10},
                      "activation": "step_on", "ref": "script.oldlight_banana",
                      "hidden_when_flag": "flag:oldlight_banana_slipped"})
     # THE CRITIC in the south-east alcove (optional)
@@ -486,6 +502,7 @@ def floor_5():
     m = mapdef(mid(5), "The Old Light — The Gallery of Confident Facts", W, H, ts,
                base, over, objects, warps, triggers, npcs, music(5))
     m["encounters"] = [encounters("tower_f5", TOWER_TABLES[5])]
+    m["flows"] = m_flows
     return m
 
 
@@ -515,6 +532,12 @@ def floor_6():
     place(objects, "stool", 12, 11, oid="stool_r")
     sign_at(triggers, "cups", 10, 10, "script.oldlight_cups_rest", kind="cutscene")
     sign_at(triggers, "cups_b", 11, 10, "script.oldlight_cups_rest", kind="cutscene")
+    # the AUDIENCE: twelve stools set out in rows facing the two cups, every
+    # one dusted, every one empty (the floor's shape: an aisle down the middle)
+    for i, (x, y) in enumerate((x, y) for y in (9, 12) for x in (3, 5, 7, 14, 16, 18)):
+        if (x, y) != (18, 12):  # the spring-can sits there
+            place(objects, "stool", x, y, oid=f"audience_{i}")
+    sign_at(triggers, "audience_sign", 7, 8, "sign.oldlight_audience")
     ol(objects, "confetti", 4, 12, oid="confetti_old")
     sign_at(triggers, "confetti_sign", 4, 12, "sign.oldlight_old_confetti")
     ol(objects, "spring_can", 18, 12, oid="spring_can")
@@ -534,7 +557,7 @@ def floor_top():
     base, over = shell(ts, w=w, h=h)
     objects, warps, triggers, npcs = [], [], [], []
     # MR. PUNCHWHEEL, half-stopped: the great winding drum + his brass face
-    objects.append({"id": "punchwheel_drum", "sprite": "galehigh_winch",
+    objects.append({"id": "punchwheel_drum", "sprite": "oldlight_punchwheel_drum",
                     "at": {"tx": 5, "ty": 2}, "w": 4, "h": 5})
     objects.append({"id": "punchwheel_face", "sprite": TUBE,
                     "at": {"tx": 9, "ty": 2}, "w": 1, "h": 1})
@@ -593,27 +616,30 @@ def floor_top():
 # floor (npc.oldlight_moll_*, regions/jesthouse.ts). She reaches the top only
 # after you've finished Tam's card. Parked in a corner by each arrival pad, off
 # the lane to the hall.
-MOLL = {
-    1: ((14, 12), "flag:oldlight_1_solved", None),
-    2: ((20, 5), "flag:oldlight_2_solved", None),
-    3: ((1, 5), "flag:oldlight_3_solved", None),
-    4: ((20, 5), "flag:oldlight_4_solved", None),
-    5: ((5, 3), "flag:oldlight_5_solved", None),
-    6: ((20, 5), "flag:q_south_jest_done", None),
-    7: ((4, 8), None, "flag:q_south_jest_done"),
-}
+MOLL = [  # (floor, id, tile, ref, hidden_when, requires)
+    (1, "moll", (14, 12), "npc.oldlight_moll_1", "flag:oldlight_1_solved", None),
+    (2, "moll", (20, 5), "script.oldlight_moll_2", "flag:oldlight_2_solved", None),
+    (3, "moll", (1, 5), "npc.oldlight_moll_3", "flag:oldlight_3_solved", None),
+    (4, "moll", (20, 5), "script.oldlight_moll_4", "flag:oldlight_4_solved", None),
+    (5, "moll", (5, 3), "npc.oldlight_moll_5", "flag:oldlight_5_solved", None),
+    (6, "moll", (20, 5), "npc.oldlight_moll_6", "flag:q_south_jest_done", None),
+    # the top: she's there for the card (by the stairhead), then after it
+    (7, "moll", (4, 8), "npc.oldlight_moll_card", "flag:q_south_jest_done", "flag:oldlight_6_heard"),
+    (7, "moll_after", (4, 8), "npc.oldlight_moll_top", None, "flag:q_south_jest_done"),
+]
 
 
 def add_moll(n, m):
-    (x, y), hide, need = MOLL[n]
-    tag = "top" if n == 7 else str(n)
-    npc = {"id": "moll", "at": {"tx": x, "ty": y}, "facing": "down", "sprite": "fisher_woman",
-           "movement": "look_around", "dialogue_ref": f"npc.oldlight_moll_{tag}"}
-    if hide:
-        npc["hidden_when_flag"] = hide
-    if need:
-        npc["requires_flag"] = need
-    m["npcs"].append(npc)
+    for floor, nid, (x, y), ref, hide, need in MOLL:
+        if floor != n:
+            continue
+        npc = {"id": nid, "at": {"tx": x, "ty": y}, "facing": "down", "sprite": "fisher_woman",
+               "movement": "look_around", "dialogue_ref": ref}
+        if hide:
+            npc["hidden_when_flag"] = hide
+        if need:
+            npc["requires_flag"] = need
+        m["npcs"].append(npc)
     return m
 
 

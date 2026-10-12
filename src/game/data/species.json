@@ -17919,12 +17919,12 @@
    "role": "Utility / Speedster",
    "tier": "A",
    "stats": {
-    "hp": 45,
-    "atk": 47,
-    "def": 47,
-    "spa": 47,
-    "spd": 47,
-    "spe": 79
+    "hp": 55,
+    "atk": 62,
+    "def": 50,
+    "spa": 30,
+    "spd": 45,
+    "spe": 70
    },
    "bst": 312,
    "ability": "mirrorlight",
@@ -17947,19 +17947,19 @@
      },
      {
       "level": 1,
-      "move": "spark_mote"
+      "move": "glimmer"
      },
      {
-      "level": 9,
+      "level": 7,
       "move": "dazzle_flash"
      },
      {
-      "level": 13,
-      "move": "light_pulse"
+      "level": 11,
+      "move": "lumen_cut"
      },
      {
-      "level": 24,
-      "move": "focus_mind"
+      "level": 20,
+      "move": "radiant_strike"
      }
     ],
     "kindling": [],

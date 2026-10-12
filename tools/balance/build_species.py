@@ -1221,6 +1221,16 @@ CANON = {
     # "The Sunniest House in the Dark" (Georgina's ace + the kitten she gifts).
     # SCRIPTED_KIN (no open-table rows). Stats PINNED (a fragile mirror-axis glass
     # cannon — high spa/spe, low bulk); ability/dex/art/learnset pinned too.
+    # #169 The Smiler (R11, the Old Light's clowns): the generated "Utility /
+    # Speedster" spread (47s + spe 79) sat at ~9% in the sim, the roster's floor.
+    # Same 312 BST re-cut as a physical clapper (it claps its foes silly) with a
+    # physical Light ladder from lv 1; best of the spreads probed (~12%, level
+    # with the other mono-Light A-tier babies such as Glimflit).
+    "the_smiler": {
+        "stats": {"hp": 55, "atk": 62, "def": 50, "spa": 30, "spd": 45, "spe": 70},
+        "levelup": [(1, "quick_jab"), (1, "glimmer"), (7, "dazzle_flash"),
+                    (11, "lumen_cut"), (20, "radiant_strike")],
+    },
     "gloampurr": {
         # (2026-10) spa 110->98, spe 88->84 (BST 418->402, inside the C band): it sat on the C-tier outlier line
         # (~61-65% vs the ~64.5% gate across seeds) before the R10 kin; this clears it at every seed tried.

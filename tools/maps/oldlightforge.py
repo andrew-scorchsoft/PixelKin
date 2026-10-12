@@ -962,6 +962,414 @@ def funhouse_mirror():
     return img(a)
 
 
+# =============================================================================
+#  THE HERO PIECE — Mr. Punchwheel himself (free-standing, solid)
+# =============================================================================
+def punchwheel_drum():
+    """4x5 MR. PUNCHWHEEL: Tam Wash's clockwork joke-engine, set where the
+    lamp used to be. A great varnished drum studded with brass pegs and
+    punched joke-cards turns on a wooden frame; cogs mesh at its left end, a
+    crank waits at its right, a red bellows wheezes underneath, three tin
+    lamplighters stand on the top rail, and over it all a cheeky brass grin
+    plate (dial eyes, a waxed moustache) beams at whoever is listening."""
+    a = canvas(4, 5)
+    W_, H_ = 64, 80
+    # --- the frame: two wooden uprights + a plinth --------------------------
+    for x0 in (4, 56):
+        rect(a, x0, 22, x0 + 3, 72, "k")
+        rect(a, x0 + 1, 23, x0 + 1, 71, "O")
+        rect(a, x0 + 2, 23, x0 + 2, 71, "o")
+        # brass bracket where the axle sits
+        rect(a, x0 - 1, 38, x0 + 4, 44, "k"); rect(a, x0, 39, x0 + 3, 43, "G")
+        rect(a, x0, 39, x0 + 3, 39, "y")
+    # the top rail (the tin lamplighters stand on it)
+    rect(a, 2, 20, 61, 24, "k"); rect(a, 3, 21, 60, 21, "O")
+    rect(a, 3, 22, 60, 23, "o"); rect(a, 3, 23, 60, 23, "W")
+    for x in range(6, 60, 8):
+        px(a, x, 22, "y")                              # brass rivets
+    # plinth (bottom row = floor contact)
+    rect(a, 1, 70, 62, 77, "k")
+    rect(a, 2, 71, 61, 71, "O"); rect(a, 2, 72, 61, 74, "o")
+    rect(a, 2, 75, 61, 76, "W")
+    rect(a, 2, 73, 61, 73, "G")                        # a brass inlay line
+    for x in range(5, 60, 6):
+        px(a, x, 73, "y")
+    # --- the bellows under the drum ------------------------------------------
+    for i, y in enumerate(range(56, 69, 2)):
+        inset = 2 if i % 2 else 0
+        rect(a, 18 + inset, y, 45 - inset, y + 1, "k")
+        rect(a, 19 + inset, y, 44 - inset, y, "r" if i % 2 else "s")
+        rect(a, 19 + inset, y + 1, 44 - inset, y + 1, "R")
+    rect(a, 16, 54, 47, 56, "k"); rect(a, 17, 55, 46, 55, "o")   # top board
+    rect(a, 16, 68, 47, 70, "k"); rect(a, 17, 69, 46, 69, "W")   # bottom board
+    # --- the drum --------------------------------------------------------------
+    dx0, dx1, dy0, dy1 = 10, 53, 29, 53
+    cy = (dy0 + dy1) / 2
+    ry = (dy1 - dy0) / 2
+    # body: shaded by height (a horizontal cylinder lit from above)
+    for y in range(dy0, dy1 + 1):
+        t = (y - dy0) / (dy1 - dy0)
+        ch = "O" if t < 0.18 else "o" if t < 0.55 else "W" if t < 0.85 else "w"
+        rect(a, dx0, y, dx1, y, ch)
+    rect(a, dx0, dy0 - 1, dx1, dy0 - 1, "k"); rect(a, dx0, dy1 + 1, dx1, dy1 + 1, "k")
+    # punched joke-cards wrapped round the drum (cream, with holes); squashed
+    # near the top/bottom where the drum turns away from us
+    cards = [(13, 0), (21, 1), (29, 0), (37, 1), (45, 0)]
+    for (cx0, ph) in cards:
+        top, bot = dy0 + 3 + ph * 2, dy1 - 4 + ph
+        rect(a, cx0, top, cx0 + 5, bot, "k")
+        rect(a, cx0 + 1, top + 1, cx0 + 4, bot - 1, "P")
+        rect(a, cx0 + 1, top + 1, cx0 + 4, top + 1, "n")
+        rect(a, cx0 + 4, top + 2, cx0 + 4, bot - 1, "q")
+        # the card turns away from us top and bottom: shade the ends
+        rect(a, cx0 + 1, bot - 3, cx0 + 4, bot - 1, "q")
+        rect(a, cx0 + 1, bot - 1, cx0 + 4, bot - 1, "H")
+        for y in range(top + 3, bot - 1, 3):
+            px(a, cx0 + 1 + ((y + cx0) % 3), y, "x")
+            if (y + ph) % 2:
+                px(a, cx0 + 3, y + 1, "x")
+    # brass pegs studded between the cards
+    for x in range(12, 53, 4):
+        for y in range(dy0 + 2, dy1 - 1, 4):
+            if a[y, x, 0] == rgba(PAL["P"])[0] or a[y, x, 0] == rgba(PAL["k"])[0]:
+                continue
+            px(a, x, y, "Y" if y < cy else "y")
+            px(a, x, y + 1, "g")
+    # brass hoops round each end of the drum
+    for x0 in (dx0 + 1, dx1 - 3):
+        for y in range(dy0, dy1 + 1):
+            t = (y - dy0) / (dy1 - dy0)
+            px(a, x0, y, "Y" if t < 0.3 else "y" if t < 0.6 else "G")
+            px(a, x0 + 1, y, "y" if t < 0.3 else "G" if t < 0.6 else "g")
+            px(a, x0 + 2, y, "k" if y in (dy0, dy1) else "g")
+    # end caps (the drum's round faces, seen almost edge-on)
+    shape(a, ellipse(dx0 - 1, cy, 2.6, ry + 0.8), "G", hi="y", lo="g",
+          box=(dx0 - 5, dy0 - 2, dx0 + 1, dy1 + 2))
+    shape(a, ellipse(dx1 + 1, cy, 2.6, ry + 0.8), "G", hi="y", lo="g",
+          box=(dx1 - 1, dy0 - 2, dx1 + 5, dy1 + 2))
+    # axle stubs into the brackets
+    px(a, 7, 41, "x"); px(a, 8, 41, "x"); px(a, 55, 41, "x"); px(a, 56, 41, "x")
+    # --- cogs meshing at the left end ------------------------------------------
+    gear(a, 8.0, 54.0, 5.4, 7, phase=0.2)
+    gear(a, 15.0, 62.0, 3.6, 6, fill="G", hi="y", lo="g", phase=0.5)
+    gear(a, 6.0, 64.5, 2.6, 5, fill="o", hi="O", lo="W", phase=0.0)
+    # --- the crank at the right end ---------------------------------------------
+    stamp(a, [
+        "kkk.....",
+        "kjJk....",
+        ".kjJk...",
+        "..kjJk..",
+        "...kjJk.",
+        "....kjkk",
+        ".....krk",
+        ".....krk",
+        ".....krk",
+        ".....kRk",
+        "......k.",
+    ], 56, 42)
+    # --- three tin lamplighters on the top rail ---------------------------------
+    for i, fx in enumerate((8, 48)):
+        _tin_lamplighter(a, fx, 7, raise_left=(i == 1))
+    # --- the brass grin plate (Mr. Punchwheel's face), centre top ----------------
+    face = lambda x, y: ((x - 31.5) / 13.5) ** 2 + ((y - 11.5) / 10.5) ** 2 <= 1.0
+    shape(a, face, "G", hi="y", lo="g", box=(16, 0, 47, 23))
+    # a polished highlight crescent
+    for y in range(3, 9):
+        px(a, 22 + (y - 3) // 2, y, "Y")
+    # dial eyes
+    for ex in (26, 37):
+        stamp(a, [".kkk.", "kPPPk", "kPkPk", "kPPkk", ".kkk."], ex - 2, 6)
+    # rosy cheeks
+    px(a, 21, 13, "s"); px(a, 22, 13, "s"); px(a, 41, 13, "s"); px(a, 42, 13, "s")
+    # waxed moustache curling up at the tips
+    stamp(a, [
+        "w..............w",
+        "ww............ww",
+        ".wwww......wwww.",
+        "..wWWww..wwWWw..",
+    ], 24, 11)
+    # the big cheeky grin (open, with a row of brass teeth)
+    stamp(a, [
+        "kk..........kk",
+        ".kkkkkkkkkkkk.",
+        ".knnnnnnnnnnk.",
+        "..kxxxxxxxxk..",
+        "...kkrrrrkk...",
+        ".....kkkk.....",
+    ], 25, 15)
+    # a brass winding key in the top of his head
+    stamp(a, ["kk.kk", "kykyk", ".kGk."], 29, 0)
+    # the third tin lamplighter stands on the plinth, minding the bellows
+    _tin_lamplighter(a, 48, 58)
+    # --- floor contact ------------------------------------------------------
+    contact(a, 0, 63, 79, alpha=110)
+    return img(a)
+
+
+def _tin_lamplighter(a, ox, oy, *, raise_left=False, small=False):
+    """A wee tin lamplighter figure (6-7px wide) holding up a lit lamp-pole."""
+    if small:
+        stamp(a, [
+            ".Y....",
+            "kyk...",
+            ".k.kk.",
+            "..kjjk",
+            "..kJjk",
+            ".kbbbk",
+        ], ox, oy)
+        return
+    fig = [
+        "....Y..",
+        "...kyk.",
+        "....k..",
+        "..kkk.k",
+        ".kxxxkk",
+        "..kJjkk",
+        "..kjjk.",
+        ".kbBbbk",
+        "kjbbbbk",
+        ".kbbbk.",
+        ".kbkbk.",
+        ".kk.kk.",
+    ]
+    stamp(a, fig, ox, oy, flip=raise_left)
+    # brass winding key in the back
+    px(a, ox + (7 if not raise_left else -1), oy + 8, "G")
+
+
+# =============================================================================
+#  THE GALLERY OF CONFIDENT FACTS (F5) — wall-hung 1x2 paintings
+# =============================================================================
+def _frame(a, *, gilt=True):
+    """Cord + nail + a 14x24 frame; returns the picture box (x0,y0,x1,y1)."""
+    # nail and picture cord
+    px(a, 7, 0, "k"); px(a, 8, 0, "k")
+    for t in range(0, 4):
+        px(a, 6 - t, 1 + t // 1 if t < 3 else 3, "q")
+        px(a, 9 + t, 1 + t // 1 if t < 3 else 3, "q")
+    x0, y0, x1, y1 = 1, 4, 14, 28
+    rect(a, x0, y0, x1, y1, "k")
+    if gilt:
+        rect(a, x0 + 1, y0 + 1, x1 - 1, y1 - 1, "G")
+        rect(a, x0 + 1, y0 + 1, x1 - 1, y0 + 1, "Y")
+        rect(a, x0 + 1, y0 + 1, x0 + 1, y1 - 1, "y")
+        rect(a, x0 + 1, y1 - 1, x1 - 1, y1 - 1, "g")
+        rect(a, x1 - 1, y0 + 2, x1 - 1, y1 - 1, "g")
+        # ornate corner knobs
+        for (cx, cy) in ((x0 + 1, y0 + 1), (x1 - 1, y0 + 1), (x0 + 1, y1 - 1), (x1 - 1, y1 - 1)):
+            px(a, cx, cy, "Y")
+    else:
+        rect(a, x0 + 1, y0 + 1, x1 - 1, y1 - 1, "W")
+        rect(a, x0 + 1, y0 + 1, x1 - 1, y0 + 1, "o")
+        rect(a, x0 + 1, y0 + 1, x0 + 1, y1 - 1, "o")
+        rect(a, x0 + 1, y1 - 1, x1 - 1, y1 - 1, "w")
+        rect(a, x1 - 1, y0 + 2, x1 - 1, y1 - 1, "w")
+    # inner ink line
+    rect(a, x0 + 2, y0 + 2, x1 - 2, y1 - 2, "k")
+    # the little brass caption plate under it
+    rect(a, 5, 29, 10, 31, "k"); rect(a, 6, 30, 9, 30, "y")
+    return (x0 + 3, y0 + 3, x1 - 3, y1 - 3)   # 3..12 x 7..25
+
+
+def painting_reyl():
+    """PORTRAIT OF REYL WASH, AGED 9, AS A LIGHTHOUSE: a red-and-cream
+    striped tower whose lamp room is a gap-toothed boy's grinning face,
+    a red dome hat on top, beams shining out of his ears."""
+    a = canvas(1, 2)
+    x0, y0, x1, y1 = _frame(a)
+    rect(a, x0, y0, x1, y1, "B")
+    px(a, 4, 22, "c"); px(a, 11, 20, "c")
+    rect(a, x0, y1 - 1, x1, y1, "b")              # sea
+    px(a, 4, y1 - 1, "c"); px(a, 11, y1, "c")
+    # the beams (soft yellow wedges either side of the lamp room)
+    for (x, y) in ((3, 12), (3, 13), (4, 12), (4, 13), (3, 14),
+                   (12, 12), (12, 13), (11, 12), (11, 13), (12, 11)):
+        px(a, x, y, "y")
+    px(a, 3, 13, "Y"); px(a, 12, 12, "Y")
+    # the tower: banded, widening toward the rock
+    for y in range(17, y1 - 1):
+        half = 1 if y < 21 else 2
+        ch = "r" if ((y - 17) // 2) % 2 == 0 else "P"
+        rect(a, 7 - half, y, 8 + half, y, ch)
+        px(a, 7 - half - 1, y, "k"); px(a, 8 + half + 1, y, "k")
+    # gallery rail
+    rect(a, 4, 16, 11, 16, "k"); rect(a, 5, 16, 10, 16, "j")
+    # the lamp room = his face
+    rect(a, 5, 11, 10, 15, "h")
+    px(a, 6, 12, "k"); px(a, 9, 12, "k")          # eyes
+    px(a, 5, 14, "s"); px(a, 10, 14, "s")         # freckly cheeks
+    rect(a, 6, 14, 9, 14, "k"); px(a, 8, 14, "n") # grin, one tooth missing
+    px(a, 7, 15, "H"); px(a, 8, 15, "H")
+    # the red dome roof as a hat, with a vane and his hair sticking out
+    rect(a, 5, 10, 10, 10, "k")
+    rect(a, 6, 9, 9, 9, "r"); px(a, 5, 9, "k"); px(a, 10, 9, "k")
+    rect(a, 7, 8, 8, 8, "R")
+    px(a, 7, 7, "k"); px(a, 8, 6, "y")
+    px(a, 4, 11, "w"); px(a, 11, 11, "w")         # tufts
+    return img(a)
+
+
+def painting_tuesday():
+    """A MAP OF TUESDAY: a parchment chart of an island shaped like a 'T',
+    a dotted route, an X, and a compass point."""
+    a = canvas(1, 2)
+    x0, y0, x1, y1 = _frame(a)
+    rect(a, x0, y0, x1, y1, "c")                  # sea
+    for (x, y) in ((4, 22), (11, 24), (10, 8)):
+        px(a, x, y, "b")
+    # the T-shaped island
+    shape(a, lambda x, y: (4 <= x <= 11 and 9 <= y <= 12) or (6 <= x <= 9 and 12 <= y <= 22),
+          "p", hi="P", lo="q", ink="o", box=(x0, y0, x1, y1))
+    # dotted route + the X
+    for (x, y) in ((5, 11), (7, 11), (8, 13), (8, 15), (7, 17), (8, 19)):
+        px(a, x, y, "r")
+    px(a, 7, 21, "R"); px(a, 8, 20, "R"); px(a, 8, 21, "R"); px(a, 7, 20, "R")
+    # a tiny tree, a compass point
+    px(a, 10, 10, "e"); px(a, 10, 11, "w")
+    px(a, 11, 18, "k"); px(a, 11, 17, "r"); px(a, 10, 19, "k"); px(a, 12, 19, "k"); px(a, 11, 20, "k")
+    return img(a)
+
+
+def painting_stars():
+    """PICTURES OF VESPERHOLM FROM ABOVE THE STARS: entirely black. (A faint
+    sheen says it is, technically, paint.)"""
+    a = canvas(1, 2)
+    x0, y0, x1, y1 = _frame(a)
+    rect(a, x0, y0, x1, y1, "x")
+    rect(a, x0, y0, x1, y0, "k")
+    # a glossy sheen stroke top-left, so it reads as a painted canvas
+    px(a, x0 + 1, y0 + 2, "i"); px(a, x0 + 2, y0 + 1, "i"); px(a, x0 + 1, y0 + 3, "i")
+    return img(a)
+
+
+def painting_sea():
+    """THE SEA (SMALL): a big cream canvas and, in the middle of it, the sea —
+    about two waves' worth."""
+    a = canvas(1, 2)
+    x0, y0, x1, y1 = _frame(a)
+    rect(a, x0, y0, x1, y1, "P")
+    rect(a, x0, y1, x1, y1, "p")
+    # the sea itself
+    stamp(a, [
+        ".kkk.",
+        "kbcbk",
+        "kBbbk",
+        ".kkk.",
+    ], 5, 14)
+    px(a, 7, 15, "n")
+    # a tiny boat bobbing on it
+    px(a, 8, 13, "w")
+    return img(a)
+
+
+def painting_gerald():
+    """KIN No. 0, 'GERALD': medium, Gerald-coloured, mostly Gerald — an
+    unremarkable beige blob with dot eyes, looking pleased to be discovered."""
+    a = canvas(1, 2)
+    x0, y0, x1, y1 = _frame(a)
+    rect(a, x0, y0, x1, y1, "e")
+    rect(a, x0, 20, x1, y1, "E")                  # a horizon of grass
+    shape(a, ellipse(7.5, 17.5, 3.6, 4.4), "H", hi="h", lo="o",
+          box=(x0, y0, x1, y1))
+    px(a, 6, 16, "k"); px(a, 9, 16, "k")         # dot eyes
+    px(a, 7, 18, "k"); px(a, 8, 18, "k")         # a contented little mouth
+    px(a, 6, 22, "k"); px(a, 9, 22, "k")         # two stubby feet
+    # a tiny gold "No. 0" rosette in the corner, because it's official
+    px(a, 11, 8, "y"); px(a, 10, 8, "r"); px(a, 11, 9, "r")
+    return img(a)
+
+
+def painting_ferry():
+    """TAM AND REYL WASH, FERRY 'SAME TIDE TOMORROW': the one true picture. A
+    finer dark-wood frame with a thin gilt slip; a little ferry on a night
+    sea, its bow lamp warm, two small figures aboard, a star overhead."""
+    a = canvas(1, 2)
+    x0, y0, x1, y1 = _frame(a, gilt=False)
+    # thin gilt slip inside the wood
+    rect(a, x0 - 1, y0 - 1, x1 + 1, y0 - 1, "y")
+    rect(a, x0 - 1, y0 - 1, x0 - 1, y1 + 1, "G")
+    rect(a, x0 - 1, y1 + 1, x1 + 1, y1 + 1, "g")
+    rect(a, x1 + 1, y0, x1 + 1, y1 + 1, "g")
+    # night sky (graded) and sea
+    for y in range(y0, y1 + 1):
+        rect(a, x0, y, x1, y, "x" if y < 10 else "B" if y < 12 or y > 18 else "b")
+    for (x, y) in ((4, 8), (9, 10), (11, 8), (3, 12)):
+        px(a, x, y, "c")
+    px(a, 6, 9, "Y")                              # the one bright star
+    # gentle wave crests
+    for (x, y) in ((4, 23), (5, 23), (7, 25), (8, 25), (6, 21)):
+        px(a, x, y, "c")
+    # the ferry: a little cabin with a lit window, two figures on deck
+    # (Tam's red scarf), and the bow lamp up on its pole
+    stamp(a, [
+        "......Y.",
+        ".....YnY",
+        ".PP...w.",
+        ".Py.h.w.",
+        "OOOOrhwO",
+        "kOOOOOok",
+        ".kWWWWk.",
+        "..kkkk..",
+    ], 4, 13)
+    for (x, y, ch) in ((10, 21, "y"), (9, 22, "G"), (10, 23, "y"), (9, 24, "g"), (10, 25, "g")):
+        px(a, x, y, ch)
+    return img(a)
+
+
+# =============================================================================
+#  THE STAGE — wall-hung velvet curtain swags (used as a mirrored pair)
+# =============================================================================
+def stage_curtain():
+    """1x2 a red velvet theatre curtain, gathered to the LEFT and tied back
+    with a gold rope and tassel, under a fringed pelmet."""
+    a = canvas(1, 2)
+    # the curtain body: drapes from the full top width, sweeping to the
+    # left edge where it's tied at y=18, then falling straight to the hem
+    def inside(x, y):
+        if y < 3 or y > 30:
+            return False
+        if y <= 18:
+            edge = 15 - (y - 3) * 10 / 15      # right edge sweeps left
+            return x <= edge
+        return x <= 5 + (y - 18) * 0.25
+    for y in range(3, 31):
+        for x in range(16):
+            if not inside(x, y):
+                continue
+            ch = "R" if (x % 4 == 3) else "r" if (x % 4 in (1, 2)) else "s"
+            if not inside(x + 1, y):
+                ch = "k"
+            px(a, x, y, ch)
+    # pleat shadow under the tie-back
+    rect(a, 0, 19, 4, 19, "R")
+    # gold rope + tassel at the tie
+    rect(a, 0, 17, 6, 18, "k"); rect(a, 0, 17, 5, 17, "y"); rect(a, 0, 18, 5, 18, "G")
+    stamp(a, [
+        ".kk.",
+        "kyGk",
+        ".kk.",
+        "kyyk",
+        "kyGk",
+        "kGgk",
+        ".kk.",
+    ], 5, 18)
+    # the pelmet across the top with a gold fringe
+    rect(a, 0, 0, 15, 3, "k"); rect(a, 0, 1, 15, 2, "R"); rect(a, 0, 1, 15, 1, "r")
+    for x in range(0, 16):
+        px(a, x, 4, "y" if x % 2 == 0 else "G")
+        if x % 2 == 0:
+            px(a, x, 5, "G")
+    # the hem
+    rect(a, 0, 31, 6, 31, "y")
+    return img(a)
+
+
+def stage_curtain_r():
+    """1x2 the mirror twin: gathered to the RIGHT."""
+    return stage_curtain().transpose(Image.FLIP_LEFT_RIGHT)
+
+
+
 PIECES = {
     # free-standing (solid)
     "jack_box": jack_box, "rubber_chickens": rubber_chickens, "pie_table": pie_table,
@@ -976,6 +1384,13 @@ PIECES = {
     "clock_backwards": clock_backwards,
     # wall-mounted (overhang 1, walk_under)
     "funhouse_mirror": funhouse_mirror,
+    # the hero piece (free-standing, solid)
+    "punchwheel_drum": punchwheel_drum,
+    # the F5 gallery + the stage (wall-hung, solid:false)
+    "painting_reyl": painting_reyl, "painting_tuesday": painting_tuesday,
+    "painting_stars": painting_stars, "painting_sea": painting_sea,
+    "painting_gerald": painting_gerald, "painting_ferry": painting_ferry,
+    "stage_curtain": stage_curtain, "stage_curtain_r": stage_curtain_r,
 }
 
 # the placement contract (w, h in tiles) — asserted on every draw
@@ -988,6 +1403,10 @@ FOOTPRINT = {
     "whoopee": (1, 1), "banana": (1, 1), "confetti": (1, 1),
     "mask_wall": (1, 1), "applause_sign": (2, 1), "bunting": (2, 1),
     "clock_backwards": (1, 1), "funhouse_mirror": (1, 2),
+    "punchwheel_drum": (4, 5),
+    "painting_reyl": (1, 2), "painting_tuesday": (1, 2), "painting_stars": (1, 2),
+    "painting_sea": (1, 2), "painting_gerald": (1, 2), "painting_ferry": (1, 2),
+    "stage_curtain": (1, 2), "stage_curtain_r": (1, 2),
 }
 
 

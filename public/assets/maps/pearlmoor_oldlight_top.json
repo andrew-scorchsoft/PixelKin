@@ -344,7 +344,7 @@
   "objects": [
     {
       "id": "punchwheel_drum",
-      "sprite": "galehigh_winch",
+      "sprite": "oldlight_punchwheel_drum",
       "at": {
         "tx": 5,
         "ty": 2
@@ -716,6 +716,19 @@
   "npcs": [
     {
       "id": "moll",
+      "at": {
+        "tx": 4,
+        "ty": 8
+      },
+      "facing": "down",
+      "sprite": "fisher_woman",
+      "movement": "look_around",
+      "dialogue_ref": "npc.oldlight_moll_card",
+      "hidden_when_flag": "flag:q_south_jest_done",
+      "requires_flag": "flag:oldlight_6_heard"
+    },
+    {
+      "id": "moll_after",
       "at": {
         "tx": 4,
         "ty": 8

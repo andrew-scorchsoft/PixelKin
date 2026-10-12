@@ -735,6 +735,116 @@
       "h": 1
     },
     {
+      "id": "audience_0",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 3,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "audience_1",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 5,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "audience_2",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 7,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "audience_3",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 14,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "audience_4",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 16,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "audience_5",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 18,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "audience_6",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 3,
+        "ty": 12
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "audience_7",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 5,
+        "ty": 12
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "audience_8",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 7,
+        "ty": 12
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "audience_9",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 14,
+        "ty": 12
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "audience_10",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 16,
+        "ty": 12
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
       "id": "confetti_old",
       "sprite": "oldlight_confetti",
       "at": {
@@ -892,6 +1002,16 @@
       },
       "activation": "interact",
       "ref": "script.oldlight_cups_rest"
+    },
+    {
+      "id": "audience_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 7,
+        "ty": 8
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_audience"
     },
     {
       "id": "confetti_sign",
