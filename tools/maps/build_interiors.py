@@ -385,7 +385,7 @@ def build_lifting_house():
          "dialogue_ref": "script.booji_andy",
          "hidden_when_flag": "flag:q_south_booji"},
         {"id": "andy_wait", "at": dict(andy_at), **andy,
-         "dialogue_ref": "npc.booji_andy_wait",
+         "dialogue_ref": "script.booji_andy_wait",
          "requires_flag": "flag:q_south_booji",
          "hidden_when_flag": "flag:q_south_booji_met"},
         {"id": "andy_done", "at": dict(andy_at), **andy,

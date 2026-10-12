@@ -436,6 +436,7 @@ export const OLDLIGHT_SCRIPTS: ScriptRegistry = {
         pw("Oh — and these. The netmender's. They washed up on my sill the night of the storm. I kept them for the act."), // DRAFT: top_floats
         { op: 'run', ref: 'script.pickup_net_floats', unless_flag: 'flag:picked_net_floats' },
         { ...pw("...You've already GOT her floats? Then I've been rehearsing with a spare. Typical. Take it to her anyway."), if_flag: 'flag:picked_net_floats' }, // DRAFT: top_floats_oldsave
+        pw("Take them back to her on the quay, by her nets up from the moor-gate. She'll trade you the bell-rope for them, and then it's out along the breakwater."),
         { op: 'setFlag', flag: 'flag:picked_net_floats' },
         { op: 'setFlag', flag: 'flag:q_south_jest_done' },
         { op: 'sfx', key: 'world-door' },

@@ -999,6 +999,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `picked_net_floats` + `q_south_jest_done` → the netmender's ONE stage (`script.netmender_floats`,
   branches on `q_south_jest_done`). Never split her floats/rope back into two NPCs (an old
   floats/rope save would show two netmenders on one tile); every tower joke is the machine's.
+  Anyone who sends the player out to Paul on the breakwater must also say HOW to get past the
+  chained moor-gate (Reyl → Old Light → netmender's rope): the gym crew run the stage-aware
+  `script.booji_gate_note` (playtest 2026-10: "go to the breakwater" alone left a player stuck).
 - **Tinderwick was deliberately RE-SHUFFLED for returning players (R8, 2026-10)** — store ⇄
   cottage swapped (door tiles too; spawn (5,8)), Wren + Fenn's satchel moved out to the new west
   side area `duskapple_orchard`, a couple of signs removed on purpose. Don't "restore" the old

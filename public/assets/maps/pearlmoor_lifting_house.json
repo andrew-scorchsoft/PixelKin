@@ -805,7 +805,7 @@
       "sprite": "lifter_andy",
       "movement": "static",
       "in_place_walk": true,
-      "dialogue_ref": "npc.booji_andy_wait",
+      "dialogue_ref": "script.booji_andy_wait",
       "requires_flag": "flag:q_south_booji",
       "hidden_when_flag": "flag:q_south_booji_met"
     },
