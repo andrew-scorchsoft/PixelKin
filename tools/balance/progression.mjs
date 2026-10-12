@@ -336,16 +336,21 @@ const JOURNEY = [
     // chart-fund (400) + R5's Round rates (400); finds = the Sunvault +
     // Nightreach wicks caches (250 + 300); valuables = the Sunvault
     // Moth-amber + the roof-terrace Starglass Shard.
-    wild: { band: [45, 50], fights: { rusher: 6, mainline: 11, explorer: 16 } },
+    // (2026-10: the climb is four maps — two more of face, more wilds)
+    wild: { band: [45, 50], fights: { rusher: 7, mainline: 12, explorer: 17 } },
     trainers: [
       T('Bel (terrace-tender)', 'route', [K(46, 115), K(47, 121)]),
       T('Tam (sky-watcher)', 'route', [K(47, 126), K(48, 118)]),
+      // the Gilt Face + the Sun Ledges (09-the-wild-ways §2 S, 2026-10)
+      T('Imma (sun-keeper)', 'route', [K(48, 122), K(48, 118), K(49, 123)]),
+      T('Orrin (star-watcher)', 'route', [K(48, 126), K(48, 106), K(49, 127)]),
+      T('Pim (star-watcher)', 'route', [K(48, 124), K(49, 104)]),
       T('Lira (junior watcher)', 'keeper', [K(49, 106), K(50, 127)]),
       T('Os (junior watcher)', 'keeper', [K(50, 112), K(51, 125)]),
       T('Wren (A5 — resolved)', 'rival', [K(49, 9), K(49, 96), K(50, 28)]),
       T('Nessa Cole', 'warden', [K(48, 106), K(49, 112), K(50, 125), K(50, 127), K(52, 107)]),
     ],
-    income: { quests: 800, valuables: 2100, finds: 550 },
+    income: { quests: 800, valuables: 2100, finds: 900 }, // finds += the Sun Ledges' tin (350)
     spend: { bright_balm: 2, chart_end: 1 },
     checkpoint: { name: 'Lunar Gleam (Nessa)', rec: 48, ace: 52 },
   },
@@ -494,6 +499,12 @@ const BUILT_PAYOUTS = {
   // THE WILD WAYS (09-the-wild-ways.md, 2026-10) — optional areas, one block per lane
   runner_vess: ['route', 48, 768], // the Wick-Run chute
   runner_dace: ['route', 49, 784],
+  rimeway_walker_ivo: ['route', 41, 656], // the Rimeway (C)
+  rimeway_walker_sef: ['route', 42, 672],
+  rimeway_fogwalker: ['route', 48, 768],
+  sunvault_suncaller: ['route', 49, 784], // the Sunvault face (S)
+  sunvault_stargazer: ['route', 49, 784],
+  sunvault_ledgewatcher: ['route', 49, 784],
 };
 const failures = [];
 for (const [id, [klass, ace, authored]] of Object.entries(BUILT_PAYOUTS)) {

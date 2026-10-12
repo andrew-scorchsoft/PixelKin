@@ -121,6 +121,13 @@ for y in (28, 29):
 for x in (0, 1):
     for y in (10, 11):
         glacier[y * W + x] = 0
+# NORTH exit gap — THE RIMEWAY (09-the-wild-ways §2 C, 2026-10): the old
+# star-tenders' high road climbs out of town between the dome and the home
+# (cols 23-24). Ungated: a North-era player (~lv 40) can climb to the Fold and
+# the Rime Gate's barred face.
+for y in (0, 1):
+    for x in (23, 24):
+        glacier[y * W + x] = 0
 
 # THE ROW 17-20 CHOKE BELT: glacier masses pinch the map between town and the
 # hollows so the lane (cols 14-15) + the shelf mouth are the ONLY way south —
@@ -565,6 +572,27 @@ owed += ["script.ysolde_quest (sets flag:q_north_lampline)",
          "sets flag:q_north_sketch_done)",
          "npc.sketcher_after", "npc.pale_vault_witness", "npc.pale_vault_townsfolk",
          "npc.pale_vault_gleam_watcher", "npc.pale_vault_gleam_kid"]
+
+# ---- THE RIMEWAY (09-the-wild-ways §2 C): the north road + Isel the lens-grinder ----
+for x in (23, 24):
+    for y in (0, 1, 2):
+        snowtrail[y * W + x] = 1
+for n, x in enumerate((23, 24)):
+    m["warps"].append({"id": "to_rimeway" + ("_e" if n else ""), "at": {"tx": x, "ty": 0},
+                       "trigger": "step_on", "to_map": "rimeway_ascent",
+                       "to": {"tx": x, "ty": 54}, "facing": "up", "transition": "fade"})
+owed += pt.sign(m, deco, W, sid="pale_vault_rimeway", at=(25, 2))
+# ISEL cuts lenses from clear glacier ice; with the Fold's clear-ice core she
+# cuts the Frostglass Lens (the key to the Mirelights' ferry — piece B).
+m["npcs"] += [
+    {"id": "isel", "at": {"tx": 22, "ty": 3}, "facing": "right",
+     "sprite": "market_trader", "movement": "static",
+     "dialogue_ref": "script.isel_lens", "hidden_when_flag": "flag:has_frostglass_lens"},
+    {"id": "isel_after", "at": {"tx": 22, "ty": 3}, "facing": "right",
+     "sprite": "market_trader", "movement": "look_around",
+     "dialogue_ref": "npc.isel_after", "requires_flag": "flag:has_frostglass_lens"},
+]
+owed += ["script.isel_lens", "npc.isel_after"]
 
 # ---- drained-shelf dressing (B3: grey, quiet — NO null-lantern props) --------------
 for (x, y, n) in [(5, 19, "greymoss_a"), (8, 18, "greymoss_b"), (4, 20, "greymoss_b"),

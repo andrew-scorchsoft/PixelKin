@@ -626,13 +626,13 @@
       "transition": "door"
     },
     {
-      "id": "to_climb_ii",
+      "id": "to_sunvault",
       "at": {
         "tx": 15,
         "ty": 29
       },
       "trigger": "step_on",
-      "to_map": "sunvault_climb_ii",
+      "to_map": "sunvault_climb_iv",
       "to": {
         "tx": 22,
         "ty": 1
@@ -641,13 +641,13 @@
       "transition": "fade"
     },
     {
-      "id": "to_climb_ii_e",
+      "id": "to_sunvault_e",
       "at": {
         "tx": 16,
         "ty": 29
       },
       "trigger": "step_on",
-      "to_map": "sunvault_climb_ii",
+      "to_map": "sunvault_climb_iv",
       "to": {
         "tx": 23,
         "ty": 1

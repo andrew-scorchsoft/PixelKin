@@ -72,7 +72,36 @@
     "weight_kg": 680,
     "habitat": "north"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "rimeway_ascent",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 41,
+      "max": 41
+    },
+    {
+      "area": "rimeway_ascent",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 60,
+      "max": 65
+    },
+    {
+      "area": "rimeway_fold",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 41,
+      "max": 42
+    },
+    {
+      "area": "rimeway_fold",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 58,
+      "max": 64
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Large, powerful crustacean body; the carapace is now a massive dome of geode and ice-crystal formations, towering above the body; huge armoured claws; a walking glacier-cave silhouette \u2014 dramatic and distinctive at 48px, dominated by the crystal dome above.",

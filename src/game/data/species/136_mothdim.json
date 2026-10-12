@@ -75,6 +75,20 @@
       "rarity": "uncommon",
       "min": 55,
       "max": 61
+    },
+    {
+      "area": "rimeway_descent",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 46,
+      "max": 47
+    },
+    {
+      "area": "rimeway_descent",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 62
     }
   ],
   "scripted": false,

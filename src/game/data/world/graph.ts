@@ -146,8 +146,8 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'sunken_solarium', region: 'west' },
     { map_id: 'sunken_solarium_lumenary', region: 'west' }, // interior: the Solar hall (the troupe's green-room + the rest point — the battle is on the lit stage outdoors)
     { map_id: 'unrisen_stair', region: 'west', optional: true, reward: 'the Lost Hour (Erstmorn #162) atop the Sunsketch bloom ascent' },
-    { map_id: 'sunvault_climb_i', region: 'west' }, // route: overgrown terraces
-    { map_id: 'sunvault_climb_ii', region: 'west' }, // route: sun-vine bridges
+    { map_id: 'sunvault_climb_i', region: 'west' }, // route: the foot of the face (ladders, the west notch)
+    { map_id: 'sunvault_climb_ii', region: 'west' }, // route: sun-vine bridges up the face
     { map_id: 'helia_vault', region: 'west', optional: true, reward: 'rare Solar kin + item in a sealed reliquary' },
     { map_id: 'nightreach_observatory', region: 'west' },
     { map_id: 'nightreach_lumenary', region: 'west' }, // interior: the star-temple sanctum — Nessa's bond-test under the great eyepiece (the eighth Gleam; engine derives crown_west + hub_unlocked)
@@ -192,9 +192,14 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'wickrun_crest', region: 'west', optional: true, reward: 'the runner rental + the Tallow Lift (frees the lift home)' },
     { map_id: 'wickrun_chute', region: 'west', optional: true, reward: 'run-only Tallowcrest/Wickmere/Warmantis + a kicker-only Lumen Drop' },
     // the Mirelights (B)
-    // the Rimeway (C)
+    // the Rimeway (C): Pale Vault's north road -> the Fold -> the Rime Gate (barred from the marsh side)
+    { map_id: 'rimeway_ascent', region: 'north', optional: true, reward: 'the Glare (an ice-slide climb) + the cache pool' },
+    { map_id: 'rimeway_fold', region: 'north', optional: true, reward: 'Vaultclaw #76 (Fold-only) + the clear-ice core for Isel\'s Frostglass Lens' },
+    { map_id: 'rimeway_descent', region: 'outer', optional: true, reward: 'lifts the Rime Gate: a Coldfog <-> Pale Vault return road' },
     // the Old Seams (D)
     // Sunvault Climb rebuild (S)
+    { map_id: 'sunvault_climb_iii', region: 'west' }, // route: the Gilt Face (ladder pitches, the trestle over the gully)
+    { map_id: 'sunvault_climb_iv', region: 'west' }, // route: the Sun Ledges (planks + ledges to the observatory hill)
   ],
   edges: [
     // ---- Tinderwick interiors (door warps, both ways) --------------------------------
@@ -291,7 +296,8 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'sunken_solarium', to_map: 'sunken_solarium_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
     { from_map: 'sunken_solarium', to_map: 'sunvault_climb_i', via_warp: 'to_climb', bidirectional: true },
     { from_map: 'sunvault_climb_i', to_map: 'sunvault_climb_ii', via_warp: 'to_climb_ii', requires_ability: 'sunsketch', bidirectional: true },
-    { from_map: 'sunvault_climb_ii', to_map: 'nightreach_observatory', via_warp: 'to_observatory', bidirectional: true },
+    // (2026-10, 09-the-wild-ways §2 S: the climb is four maps now — climb_ii -> the Gilt
+    // Face -> the Sun Ledges -> Nightreach; the edges live in the Wild Ways block below)
     // The Lunar hall is starter-gated like every Lumenary door (NEVER Emberward/Starreach — §0 rule 1).
     { from_map: 'nightreach_observatory', to_map: 'nightreach_lumenary', via_warp: 'to_lumenary', requires_flag: 'flag:has_starter', bidirectional: true },
     { from_map: 'nightreach_observatory', to_map: 'nightreach_inn', via_warp: 'to_inn', bidirectional: true },
@@ -387,9 +393,16 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'wickrun_crest', to_map: 'wickrun_chute', via_warp: 'to_chute', requires_flag: 'flag:wickrun_riding', bidirectional: true },
     { from_map: 'wickrun_chute', to_map: 'wickrun_trestles', via_warp: 'to_trestles', bidirectional: false },
     // the Mirelights (B)
-    // the Rimeway (C)
+    // the Rimeway (C): open from Pale Vault (North era); the Rime Gate is lifted from the Descent (West era)
+    { from_map: 'pale_vault_glacier', to_map: 'rimeway_ascent', via_warp: 'to_rimeway', bidirectional: true },
+    { from_map: 'rimeway_ascent', to_map: 'rimeway_fold', via_warp: 'to_fold', bidirectional: true },
+    { from_map: 'coldfog_marches_ii', to_map: 'rimeway_descent', via_warp: 'to_rimeway', bidirectional: true },
+    { from_map: 'rimeway_fold', to_map: 'rimeway_descent', via_warp: 'to_descent', requires_flag: 'flag:rime_gate_open', bidirectional: true },
     // the Old Seams (D)
-    // Sunvault Climb rebuild (S)
+    // Sunvault Climb rebuild (S): the climb is four maps (the main path, ungated past the vines)
+    { from_map: 'sunvault_climb_ii', to_map: 'sunvault_climb_iii', via_warp: 'to_climb_iii', bidirectional: true },
+    { from_map: 'sunvault_climb_iii', to_map: 'sunvault_climb_iv', via_warp: 'to_climb_iv', bidirectional: true },
+    { from_map: 'sunvault_climb_iv', to_map: 'nightreach_observatory', via_warp: 'to_observatory', bidirectional: true },
   ],
   hub: {
     map_id: 'vesper_crossroads',

@@ -766,6 +766,102 @@ GEOMETRY_ENCOUNTERS = {
 for _slug, _rows_ in GEOMETRY_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
 
+# The Wild Ways — Sunvault Climb rebuild (S, 09-the-wild-ways §2 S, 2026-10): the
+# Gilt Face + the Sun Ledges' BUILT in-map tables (tools/maps/build_sunvault_climb_iii/_iv.py),
+# night (48-49) + day twins. Same W6 weight->rarity rule.
+SUNVAULT_FACE_ENCOUNTERS: dict = {}
+SUNVAULT_FACE_ENCOUNTERS.setdefault("solvyne", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("helicore", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("solray", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("lunveil", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("goldmane", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("auravane", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "rare", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("sunstag", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "rare", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("lunvane", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "rare", "min": 49, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("solreach", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "rare", "min": 49, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("solvyne", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("helicore", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("solray", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 64})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("lunveil", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 64})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("goldmane", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 64})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("auravane", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("sunstag", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "rare", "min": 59, "max": 65})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("lunvane", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "rare", "min": 60, "max": 65})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("solreach", []).append({"area": "sunvault_climb_iii", "terrain": "tall_grass", "rarity": "rare", "min": 60, "max": 65})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("lunveil", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("solray", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("helicore", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("petalune", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("drowshorn", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("lunvane", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("goldmane", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "rare", "min": 48, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("solreach", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "rare", "min": 49, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("crystalune", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "rare", "min": 49, "max": 49})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("lunveil", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 64})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("solray", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 64})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("helicore", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("petalune", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 64})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("drowshorn", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("lunvane", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 60, "max": 65})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("goldmane", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 64})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("solreach", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "uncommon", "min": 60, "max": 65})
+SUNVAULT_FACE_ENCOUNTERS.setdefault("crystalune", []).append({"area": "sunvault_climb_iv", "terrain": "tall_grass", "rarity": "rare", "min": 60, "max": 65})
+for _slug, _rows_ in SUNVAULT_FACE_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
+
+# The Wild Ways — the Rimeway (C, 09-the-wild-ways §2 C, 2026-10): the Ascent/Fold/Descent
+# BUILT in-map tables (tools/maps/build_rimeway_*.py), night + day twins; Vaultclaw #76
+# lives only up here. Same W6 weight->rarity rule.
+RIMEWAY_ENCOUNTERS: dict = {}
+RIMEWAY_ENCOUNTERS.setdefault("blizzrhare", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "common", "min": 39, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("geodrake", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("hushbore", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("prismcub", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 40})
+RIMEWAY_ENCOUNTERS.setdefault("geolace", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 40})
+RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "rare", "min": 40, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("vaultclaw", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "rare", "min": 41, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("blizzrhare", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("geodrake", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("hushbore", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("prismcub", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("geolace", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64})
+RIMEWAY_ENCOUNTERS.setdefault("vaultclaw", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "rare", "min": 60, "max": 65})
+RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "common", "min": 40, "max": 42})
+RIMEWAY_ENCOUNTERS.setdefault("geodrake", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 42})
+RIMEWAY_ENCOUNTERS.setdefault("blizzrhare", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("snowcune", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("geolace", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("chillpip", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("vaultclaw", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "rare", "min": 41, "max": 42})
+RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("geodrake", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("blizzrhare", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("snowcune", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("geolace", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("chillpip", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 61})
+RIMEWAY_ENCOUNTERS.setdefault("vaultclaw", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 64})
+RIMEWAY_ENCOUNTERS.setdefault("wispwane", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 47})
+RIMEWAY_ENCOUNTERS.setdefault("nullmoth", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 48})
+RIMEWAY_ENCOUNTERS.setdefault("wispwanenull", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 48})
+RIMEWAY_ENCOUNTERS.setdefault("mothdim", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 47})
+RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 47})
+RIMEWAY_ENCOUNTERS.setdefault("cindersob", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "rare", "min": 47, "max": 48})
+RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "rare", "min": 47, "max": 48})
+RIMEWAY_ENCOUNTERS.setdefault("embergone", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "rare", "min": 48, "max": 48})
+RIMEWAY_ENCOUNTERS.setdefault("wispwane", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("nullmoth", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("wispwanenull", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("mothdim", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("cindersob", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 64})
+RIMEWAY_ENCOUNTERS.setdefault("embergone", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64})
+for _slug, _rows_ in RIMEWAY_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
+
 # Areas whose encounter tables are BUILT into the map JSONs (the in-map zones
 # are the truth, mirrored above). Generated region defaults — and stale rows
 # carried in the previous per-species files — must not claim these areas:
@@ -811,6 +907,10 @@ CURATED_AREAS = {
     "duskapple_orchard",
     # the 2026-10 geometry fix's new routes (mirrored above, GEOMETRY_ENCOUNTERS)
     "cinderwind_scarp", "umbral_approach",
+    # The Wild Ways — Sunvault Climb rebuild (S): the two new face maps
+    "sunvault_climb_iii", "sunvault_climb_iv",
+    # The Wild Ways — the Rimeway (C)
+    "rimeway_ascent", "rimeway_fold", "rimeway_descent",
 }
 
 # Kin that are FIXED quest catches (a legendaryBattle set-piece), even though

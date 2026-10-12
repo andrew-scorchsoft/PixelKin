@@ -121,6 +121,20 @@
       "rarity": "rare",
       "min": 59,
       "max": 65
+    },
+    {
+      "area": "sunvault_climb_iii",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 48,
+      "max": 49
+    },
+    {
+      "area": "sunvault_climb_iii",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 59,
+      "max": 65
     }
   ],
   "scripted": false,

@@ -323,6 +323,27 @@ export const QUESTS: QuestRegistry = [
     ],
     done_flag: 'flag:starfall_crown',
   },
+  // ===== THE WILD WAYS (09-the-wild-ways.md, 2026-10) =========================
+  // the Rimeway (C)
+  {
+    id: 'rimeway_true_eye',
+    name: 'A True-Eye',
+    region: 'north',
+    giver: 'Isel, lens-grinder',
+    blurb: 'Isel could cut a lens that shows a false light for what it is — given clear ice from the frozen falls up the Rimeway. A ferryman in the fens has waited years for one.',
+    start_flag: 'flag:q_rimeway_lens',
+    stage_flags: ['flag:rimeway_ice_core'],
+    done_flag: 'flag:has_frostglass_lens',
+  },
+  {
+    id: 'rimeway_gate',
+    name: 'The Rime Gate',
+    region: 'north',
+    giver: 'Hale, rime-tender',
+    blurb: 'The Wardens of the Quiet barred the star-tenders\' high road from the marsh side. Whoever comes up from the fog could lift the bar in a breath.',
+    start_flag: 'flag:q_rimeway_gate',
+    done_flag: 'flag:rime_gate_open',
+  },
 ];
 
 /** Lookup by id. */

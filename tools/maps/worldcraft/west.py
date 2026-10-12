@@ -110,6 +110,14 @@ PLACEMENTS: dict[str, dict] = {
             "vine_tender": "orchard_farmer",
             "sunvault_skywatcher": "star_watcher", "sunvault_skywatcher_after": "star_watcher"}),
     },
+    # the Gilt Face + the Sun Ledges (09-the-wild-ways §2 S): the same sun-motes;
+    # their cast (sun-keeper / star-watchers) is set in their builders
+    "sunvault_climb_iii": {"ambience": dict(SUN)},
+    "sunvault_climb_iv": {"ambience": {**SUN, "starfall": {"min_s": 30, "max_s": 60}}},
+    # the Rimeway (09-the-wild-ways §2 C): snow on the high road, the marsh's fog at its foot
+    "rimeway_ascent": {"ambience": dict(SNOW)},
+    "rimeway_fold": {"ambience": {**SNOW, "starfall": {"min_s": 25, "max_s": 55}}},
+    "rimeway_descent": {"ambience": dict(COLDFOG)},
     "helia_vault": {
         "ambience": {"particles": [particles("dust", 0.6)],
                      "tint": {"color": "#ffcf7a", "alpha": 0.06}},

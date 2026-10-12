@@ -108,6 +108,11 @@ GRANTS["vigil_sunfall"] = ["flag:vigil_4_kept", "flag:vigil_reading_5"]
 GRANTS["vigil_murkfall"] = ["flag:vigil_5_kept"]
 # ---- THE WILD WAYS (09-the-wild-ways.md, 2026-10) — one line per area lane
 GRANTS["wickrun_crest"] = ["flag:wickrun_riding", "flag:tallow_lift_freed"]   # Pell's rental, the brake
+# the Rimeway (C): the Fold's frozen falls give the clear-ice core; Isel (Pale Vault) cuts the
+# Frostglass Lens from it; the Rime Gate is lifted from the Descent (the marsh side)
+GRANTS["rimeway_fold"] = ["flag:rimeway_ice_core"]
+GRANTS["pale_vault_glacier"].append("flag:has_frostglass_lens")
+GRANTS["rimeway_descent"] = ["flag:rime_gate_open"]
 POSTGAME_FLAGS = {"flag:dawn"}
 
 

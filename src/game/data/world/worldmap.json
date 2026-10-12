@@ -1,13 +1,13 @@
 {
   "box": {
     "width": 220,
-    "height": 443
+    "height": 548
   },
   "nodes": [
     {
       "id": "tinderwick",
       "x": 63,
-      "y": 435,
+      "y": 540,
       "kind": "town",
       "region": "south",
       "name": "Tinderwick"
@@ -15,7 +15,7 @@
     {
       "id": "wickstead_green",
       "x": 8,
-      "y": 432,
+      "y": 536,
       "kind": "landmark",
       "region": "south",
       "name": "Wickstead Green"
@@ -23,7 +23,7 @@
     {
       "id": "dimglass_coast",
       "x": 64,
-      "y": 402,
+      "y": 507,
       "kind": "route",
       "region": "south",
       "name": "Dimglass Coast"
@@ -31,7 +31,7 @@
     {
       "id": "dimglass_coast_ii",
       "x": 64,
-      "y": 365,
+      "y": 469,
       "kind": "route",
       "region": "south",
       "name": "Dimglass Coast"
@@ -39,7 +39,7 @@
     {
       "id": "tideglass_cavern",
       "x": 56,
-      "y": 396,
+      "y": 501,
       "kind": "landmark",
       "region": "south",
       "name": "Tideglass Cavern"
@@ -47,7 +47,7 @@
     {
       "id": "gullcry_rock",
       "x": 71,
-      "y": 361,
+      "y": 465,
       "kind": "landmark",
       "region": "south",
       "name": "Gullcry Rock"
@@ -55,7 +55,7 @@
     {
       "id": "pearlmoor_quay",
       "x": 61,
-      "y": 333,
+      "y": 438,
       "kind": "town",
       "region": "south",
       "name": "Pearlmoor Quay"
@@ -63,7 +63,7 @@
     {
       "id": "pearlmoor_breakwater",
       "x": 74,
-      "y": 363,
+      "y": 467,
       "kind": "landmark",
       "region": "south",
       "name": "Pearlmoor Breakwater"
@@ -71,7 +71,7 @@
     {
       "id": "pearlmoor_wanderwood",
       "x": 66,
-      "y": 288,
+      "y": 392,
       "kind": "landmark",
       "region": "south",
       "name": "The Wanderwood"
@@ -79,7 +79,7 @@
     {
       "id": "dawnstead",
       "x": 131,
-      "y": 326,
+      "y": 430,
       "kind": "town",
       "region": "south",
       "name": "Dawnstead"
@@ -87,7 +87,7 @@
     {
       "id": "vesper_crossroads",
       "x": 117,
-      "y": 432,
+      "y": 536,
       "kind": "hub",
       "region": "outer",
       "name": "Vesper Crossroads"
@@ -95,7 +95,7 @@
     {
       "id": "lanternway_tinderwick",
       "x": 92,
-      "y": 435,
+      "y": 540,
       "kind": "route",
       "region": "outer",
       "name": "Lanternway \u00b7 Tinderwick Spoke"
@@ -103,7 +103,7 @@
     {
       "id": "wrackline_path",
       "x": 100,
-      "y": 355,
+      "y": 459,
       "kind": "route",
       "region": "south",
       "name": "Wrackline Path"
@@ -111,7 +111,7 @@
     {
       "id": "sounding_cave",
       "x": 100,
-      "y": 381,
+      "y": 485,
       "kind": "route",
       "region": "south",
       "name": "The Sounding Cave"
@@ -119,7 +119,7 @@
     {
       "id": "lanternfall_road",
       "x": 105,
-      "y": 407,
+      "y": 511,
       "kind": "route",
       "region": "south",
       "name": "Lanternfall Road"
@@ -127,7 +127,7 @@
     {
       "id": "umbral_approach",
       "x": 127,
-      "y": 402,
+      "y": 507,
       "kind": "route",
       "region": "central",
       "name": "The Umbral Approach"
@@ -135,7 +135,7 @@
     {
       "id": "penumbra_ring",
       "x": 132,
-      "y": 364,
+      "y": 468,
       "kind": "route",
       "region": "central",
       "name": "Penumbra Ring"
@@ -143,7 +143,7 @@
     {
       "id": "starwell",
       "x": 159,
-      "y": 360,
+      "y": 465,
       "kind": "landmark",
       "region": "central",
       "name": "Starwell"
@@ -151,7 +151,7 @@
     {
       "id": "umbral_spire",
       "x": 131,
-      "y": 351,
+      "y": 455,
       "kind": "dungeon",
       "region": "central",
       "name": "Umbral Spire"
@@ -159,7 +159,7 @@
     {
       "id": "saltreach_fen_i",
       "x": 96,
-      "y": 315,
+      "y": 419,
       "kind": "route",
       "region": "east",
       "name": "Saltreach Fen"
@@ -167,7 +167,7 @@
     {
       "id": "saltreach_fen_ii",
       "x": 96,
-      "y": 265,
+      "y": 369,
       "kind": "route",
       "region": "east",
       "name": "Saltreach Deeps"
@@ -175,7 +175,7 @@
     {
       "id": "sunkbell_shallows",
       "x": 125,
-      "y": 257,
+      "y": 361,
       "kind": "landmark",
       "region": "east",
       "name": "Sunkbell Shallows"
@@ -183,7 +183,7 @@
     {
       "id": "lowleaf_hollow",
       "x": 96,
-      "y": 222,
+      "y": 326,
       "kind": "town",
       "region": "east",
       "name": "Lowleaf Hollow"
@@ -191,7 +191,7 @@
     {
       "id": "lanternway_lowleaf",
       "x": 64,
-      "y": 232,
+      "y": 336,
       "kind": "route",
       "region": "outer",
       "name": "Lanternway \u00b7 Lowleaf Spoke"
@@ -199,7 +199,7 @@
     {
       "id": "glowmoss_deep",
       "x": 103,
-      "y": 188,
+      "y": 292,
       "kind": "dungeon",
       "region": "east",
       "name": "Glowmoss Deep"
@@ -207,7 +207,7 @@
     {
       "id": "spore_grotto",
       "x": 101,
-      "y": 214,
+      "y": 319,
       "kind": "landmark",
       "region": "east",
       "name": "Spore Grotto"
@@ -215,7 +215,7 @@
     {
       "id": "cinderhead_mine",
       "x": 136,
-      "y": 186,
+      "y": 291,
       "kind": "town",
       "region": "east",
       "name": "Cinderhead Mine"
@@ -223,7 +223,7 @@
     {
       "id": "cinderhead_deep",
       "x": 136,
-      "y": 213,
+      "y": 317,
       "kind": "dungeon",
       "region": "east",
       "name": "Cinderhead Deep"
@@ -231,7 +231,7 @@
     {
       "id": "cinderwind_scarp",
       "x": 166,
-      "y": 207,
+      "y": 311,
       "kind": "route",
       "region": "north",
       "name": "Cinderwind Scarp"
@@ -239,7 +239,7 @@
     {
       "id": "galehigh_terraces",
       "x": 198,
-      "y": 198,
+      "y": 302,
       "kind": "town",
       "region": "north",
       "name": "Galehigh Terraces"
@@ -247,7 +247,7 @@
     {
       "id": "lanternway_galehigh",
       "x": 198,
-      "y": 230,
+      "y": 334,
       "kind": "route",
       "region": "outer",
       "name": "Lanternway \u00b7 Galehigh Spoke"
@@ -255,7 +255,7 @@
     {
       "id": "wind_eye",
       "x": 212,
-      "y": 182,
+      "y": 287,
       "kind": "landmark",
       "region": "north",
       "name": "The Wind-Eye"
@@ -263,7 +263,7 @@
     {
       "id": "windward_stair_i",
       "x": 193,
-      "y": 157,
+      "y": 261,
       "kind": "route",
       "region": "north",
       "name": "Windward Stair"
@@ -271,7 +271,7 @@
     {
       "id": "windward_stair_ii",
       "x": 190,
-      "y": 127,
+      "y": 232,
       "kind": "route",
       "region": "north",
       "name": "Windward Stair"
@@ -279,7 +279,7 @@
     {
       "id": "thunderroost",
       "x": 203,
-      "y": 124,
+      "y": 229,
       "kind": "landmark",
       "region": "north",
       "name": "Thunderroost"
@@ -287,7 +287,7 @@
     {
       "id": "pale_vault_glacier",
       "x": 199,
-      "y": 97,
+      "y": 201,
       "kind": "town",
       "region": "north",
       "name": "Pale Vault Glacier"
@@ -295,7 +295,7 @@
     {
       "id": "hushfrost_pass_i",
       "x": 163,
-      "y": 96,
+      "y": 200,
       "kind": "route",
       "region": "west",
       "name": "Hushfrost Pass"
@@ -303,7 +303,7 @@
     {
       "id": "hushfrost_pass_ii",
       "x": 127,
-      "y": 90,
+      "y": 194,
       "kind": "route",
       "region": "west",
       "name": "Hushfrost Pass"
@@ -311,7 +311,7 @@
     {
       "id": "aurora_hollow",
       "x": 127,
-      "y": 77,
+      "y": 181,
       "kind": "landmark",
       "region": "west",
       "name": "Aurora Hollow"
@@ -319,7 +319,7 @@
     {
       "id": "sunken_solarium",
       "x": 93,
-      "y": 93,
+      "y": 198,
       "kind": "town",
       "region": "west",
       "name": "Sunken Solarium"
@@ -327,7 +327,7 @@
     {
       "id": "unrisen_stair",
       "x": 96,
-      "y": 107,
+      "y": 212,
       "kind": "landmark",
       "region": "west",
       "name": "The Unrisen Stair"
@@ -335,7 +335,7 @@
     {
       "id": "sunvault_climb_i",
       "x": 58,
-      "y": 105,
+      "y": 209,
       "kind": "route",
       "region": "west",
       "name": "Sunvault Climb"
@@ -343,15 +343,55 @@
     {
       "id": "sunvault_climb_ii",
       "x": 58,
-      "y": 74,
+      "y": 172,
       "kind": "route",
       "region": "west",
       "name": "Sunvault Climb"
     },
     {
+      "id": "sunvault_climb_iii",
+      "x": 58,
+      "y": 124,
+      "kind": "route",
+      "region": "west",
+      "name": "The Gilt Face"
+    },
+    {
+      "id": "sunvault_climb_iv",
+      "x": 58,
+      "y": 78,
+      "kind": "route",
+      "region": "west",
+      "name": "The Sun Ledges"
+    },
+    {
+      "id": "rimeway_ascent",
+      "x": 198,
+      "y": 152,
+      "kind": "route",
+      "region": "north",
+      "name": "The Rimeway"
+    },
+    {
+      "id": "rimeway_fold",
+      "x": 172,
+      "y": 96,
+      "kind": "route",
+      "region": "north",
+      "name": "The Rimeway Fold"
+    },
+    {
+      "id": "rimeway_descent",
+      "x": 141,
+      "y": 55,
+      "kind": "route",
+      "region": "outer",
+      "name": "The Rimeway"
+    },
+    {
       "id": "helia_vault",
       "x": 27,
-      "y": 67,
+      "y": 158,
       "kind": "landmark",
       "region": "west",
       "name": "Helia Vault"
@@ -618,6 +658,16 @@
     },
     {
       "a": "sunvault_climb_ii",
+      "b": "sunvault_climb_iii",
+      "kind": "road"
+    },
+    {
+      "a": "sunvault_climb_iii",
+      "b": "sunvault_climb_iv",
+      "kind": "road"
+    },
+    {
+      "a": "sunvault_climb_iv",
       "b": "nightreach_observatory",
       "kind": "road"
     },
@@ -645,6 +695,26 @@
       "a": "coldfog_marches_ii",
       "b": "hollowfen_stillworks",
       "kind": "gate"
+    },
+    {
+      "a": "pale_vault_glacier",
+      "b": "rimeway_ascent",
+      "kind": "road"
+    },
+    {
+      "a": "rimeway_ascent",
+      "b": "rimeway_fold",
+      "kind": "road"
+    },
+    {
+      "a": "rimeway_fold",
+      "b": "rimeway_descent",
+      "kind": "gate"
+    },
+    {
+      "a": "coldfog_marches_ii",
+      "b": "rimeway_descent",
+      "kind": "road"
     },
     {
       "a": "lanternway_lowleaf",
@@ -755,6 +825,9 @@
     "pearlmoor_wanderwood": "pearlmoor_wanderwood",
     "pearlmoor_wanderwood_far": "pearlmoor_wanderwood",
     "penumbra_ring": "penumbra_ring",
+    "rimeway_ascent": "rimeway_ascent",
+    "rimeway_descent": "rimeway_descent",
+    "rimeway_fold": "rimeway_fold",
     "saltreach_fen_i": "saltreach_fen_i",
     "saltreach_fen_ii": "saltreach_fen_ii",
     "sounding_cave": "sounding_cave",
@@ -765,6 +838,8 @@
     "sunken_solarium_lumenary": "sunken_solarium",
     "sunvault_climb_i": "sunvault_climb_i",
     "sunvault_climb_ii": "sunvault_climb_ii",
+    "sunvault_climb_iii": "sunvault_climb_iii",
+    "sunvault_climb_iv": "sunvault_climb_iv",
     "thunderroost": "thunderroost",
     "tideglass_cavern": "tideglass_cavern",
     "tideglass_gallery": "tideglass_cavern",
@@ -787,6 +862,8 @@
     "vigil_murkfall": "coldfog_marches_ii",
     "vigil_stormfall": "thunderroost",
     "vigil_sunfall": "sunvault_climb_ii",
+    "wickrun_chute": "sunvault_climb_i",
+    "wickrun_crest": "sunvault_climb_i",
     "wickstead_green": "wickstead_green",
     "wickstead_school": "wickstead_green",
     "wind_eye": "wind_eye",

@@ -348,6 +348,19 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'The village school on Wickstead Green, west of Duskapple Orchard, where every apprentice in the South learns the Wayfaring — types and catching, the Hearth and resting, wicks and Gifts. Its door is open to Wayfarers of any age.',
     unlock_flag: 'flag:school_visited',
   },
+  // THE WILD WAYS (09-the-wild-ways.md, 2026-10)
+  {
+    id: 'rimeway',
+    term: 'the Rimeway',
+    desc: 'The star-tenders\' high road from the Pale Vault over the Fold to the Nightreach marshes, lit every night by rime-lamps a tender carried oil to. The Wardens of the Quiet barred its gate from the marsh side, and the lamps went out one by one.',
+    unlock_flag: 'flag:q_rimeway_gate',
+  },
+  {
+    id: 'sun_keepers',
+    term: 'the sun-keepers',
+    desc: 'The order who climbed the Sunvault face every dawn to wipe the frost from Nightreach\'s mirrors, on ladders and planks they pegged into the stone themselves. The watchers came down to meet them on the ledges. Two orders, one job: keep the lights.',
+    unlock_flag: 'flag:sunvault_shelter_seen',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */

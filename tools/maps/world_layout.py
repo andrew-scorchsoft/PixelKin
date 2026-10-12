@@ -75,7 +75,9 @@ NODE_KINDS: dict[str, str] = {
     # west
     "hushfrost_pass_i": "route", "hushfrost_pass_ii": "route", "aurora_hollow": "landmark",
     "sunken_solarium": "town", "unrisen_stair": "landmark", "sunvault_climb_i": "route",
-    "sunvault_climb_ii": "route", "helia_vault": "landmark", "nightreach_observatory": "town",
+    "sunvault_climb_ii": "route", "sunvault_climb_iii": "route", "sunvault_climb_iv": "route",
+    "rimeway_ascent": "route", "rimeway_fold": "route", "rimeway_descent": "route",
+    "helia_vault": "landmark", "nightreach_observatory": "town",
     "lanternway_nightreach": "route",
     # the marshes (off Nightreach)
     "coldfog_marches_ii": "route", "coldfog_marches_i": "route", "drownlight_beacon": "landmark",
@@ -186,13 +188,20 @@ ROADS: list[tuple[str, str, str]] = [
     ("sunken_solarium", "sunvault_climb_i", "road"),
     ("sunvault_climb_i", "sunvault_climb_ii", "gate"),
     ("sunvault_climb_ii", "helia_vault", "gate"),
-    ("sunvault_climb_ii", "nightreach_observatory", "road"),
+    ("sunvault_climb_ii", "sunvault_climb_iii", "road"),
+    ("sunvault_climb_iii", "sunvault_climb_iv", "road"),
+    ("sunvault_climb_iv", "nightreach_observatory", "road"),
     ("nightreach_observatory", "lanternway_nightreach", "lane"),
     # the marshes (off Nightreach's east fog gate)
     ("nightreach_observatory", "coldfog_marches_ii", "gate"),
     ("coldfog_marches_ii", "coldfog_marches_i", "gate"),
     ("coldfog_marches_i", "drownlight_beacon", "gate"),
     ("coldfog_marches_ii", "hollowfen_stillworks", "gate"),
+    # the Rimeway (09-the-wild-ways §2 C): Pale Vault -> the Fold -> the Rime Gate -> the marsh
+    ("pale_vault_glacier", "rimeway_ascent", "road"),
+    ("rimeway_ascent", "rimeway_fold", "road"),
+    ("rimeway_fold", "rimeway_descent", "gate"),
+    ("coldfog_marches_ii", "rimeway_descent", "road"),
     # THE LANTERN-CAR (rides, not roads) + the Cinderhead ore-hoist
     ("lanternway_lowleaf", "vesper_crossroads", "car"),
     ("lanternway_galehigh", "vesper_crossroads", "car"),

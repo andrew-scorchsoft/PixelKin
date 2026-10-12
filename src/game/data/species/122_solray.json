@@ -68,6 +68,34 @@
       "rarity": "common",
       "min": 43,
       "max": 46
+    },
+    {
+      "area": "sunvault_climb_iii",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 48,
+      "max": 49
+    },
+    {
+      "area": "sunvault_climb_iii",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 57,
+      "max": 64
+    },
+    {
+      "area": "sunvault_climb_iv",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 48,
+      "max": 49
+    },
+    {
+      "area": "sunvault_climb_iv",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 57,
+      "max": 64
     }
   ],
   "scripted": false,

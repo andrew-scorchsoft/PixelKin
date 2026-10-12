@@ -1260,9 +1260,79 @@ export const TRAINERS: TrainerRegistry = {
     payout: 784, // route 16 × ace 49
   },
   // the Mirelights (B)
-  // the Rimeway (C)
+  // the Rimeway (C): two rime-walkers (North era, 40-42) + the fog-walker (West era, 46-48)
+  rimeway_walker_ivo: {
+    id: 'rimeway_walker_ivo',
+    name: 'IVO',
+    title: 'Rime-walker',
+    party: [
+      { species_id: 75, level: 40 }, // Geodrake — Frost/Stone
+      { species_id: 81, level: 41 }, // Blizzrhare — Frost (ace)
+    ],
+    payout: 656, // route 16 × ace 41
+    music: 'battle-emberfall',
+  },
+  rimeway_walker_sef: {
+    id: 'rimeway_walker_sef',
+    name: 'SEF',
+    title: 'Rime-walker',
+    party: [
+      { species_id: 74, level: 41 }, // Geolace — Frost/Stone
+      { species_id: 78, level: 41 }, // Crystarn — Frost
+      { species_id: 76, level: 42 }, // Vaultclaw — Frost/Stone (ace)
+    ],
+    payout: 672, // route 16 × ace 42
+    music: 'battle-emberfall',
+  },
+  rimeway_fogwalker: {
+    id: 'rimeway_fogwalker',
+    name: 'DUNNE',
+    title: 'Fog-walker',
+    party: [
+      { species_id: 134, level: 47 }, // Wispwane
+      { species_id: 79, level: 47 }, // Glacitern — Frost/Storm
+      { species_id: 85, level: 48 }, // Stillwarden — Frost/Dark (ace)
+    ],
+    payout: 768, // route 16 × ace 48
+    music: 'battle-emberfall',
+  },
   // the Old Seams (D)
-  // Sunvault Climb rebuild (S)
+  // Sunvault Climb rebuild (S): the Gilt Face + the Sun Ledges (48-49)
+  sunvault_suncaller: {
+    id: 'sunvault_suncaller',
+    name: 'IMMA',
+    title: 'Sun-keeper',
+    party: [
+      { species_id: 122, level: 48 }, // Solray — Solar
+      { species_id: 118, level: 48 }, // Helicore — Solar
+      { species_id: 123, level: 49 }, // Solreach — Solar (ace)
+    ],
+    payout: 784, // route 16 × ace 49
+    music: 'battle-emberfall',
+  },
+  sunvault_stargazer: {
+    id: 'sunvault_stargazer',
+    name: 'ORRIN',
+    title: 'Star-watcher',
+    party: [
+      { species_id: 126, level: 48 }, // Lunveil — Light/Lunar
+      { species_id: 106, level: 48 }, // Drowshorn — Lunar
+      { species_id: 127, level: 49 }, // Lunvane — Light/Lunar (ace)
+    ],
+    payout: 784, // route 16 × ace 49
+    music: 'battle-emberfall',
+  },
+  sunvault_ledgewatcher: {
+    id: 'sunvault_ledgewatcher',
+    name: 'PIM',
+    title: 'Star-watcher',
+    party: [
+      { species_id: 124, level: 48 }, // Petalune — Lunar/Frost
+      { species_id: 104, level: 49 }, // Goldmane — Solar/Stone (ace)
+    ],
+    payout: 784, // route 16 × ace 49
+    music: 'battle-emberfall',
+  },
 };
 
 /** Intro/defeat dialogue for trainers, kept beside the roster they belong to. */

@@ -918,7 +918,10 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   // reliquary opens off segment II.
   sunvault_climb_i: {
     json: 'assets/maps/sunvault_climb_i.json',
-    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+    },
     kind: 'route',
     music: 'assets/audio/music/sunvault-climb-a.mp3',
     battle_backdrops: [
@@ -928,7 +931,10 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   },
   sunvault_climb_ii: {
     json: 'assets/maps/sunvault_climb_ii.json',
-    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+    },
     kind: 'route',
     music: 'assets/audio/music/sunvault-climb-a.mp3',
     battle_backdrops: [
@@ -1234,9 +1240,61 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     battle_backdrops: ['assets/backgrounds/battle/wickrun-a.webp', 'assets/backgrounds/battle/wickrun-b.webp'],
   },
   // the Mirelights (B)
-  // the Rimeway (C)
+  // the Rimeway (C): ladders up glacier bands, the Glare (ice slides), the Rime Gate
+  rimeway_ascent: {
+    json: 'assets/maps/rimeway_ascent.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/rimeway.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/rimeway-a.webp', 'assets/backgrounds/battle/rimeway-b.webp'],
+  },
+  rimeway_fold: {
+    json: 'assets/maps/rimeway_fold.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/rimeway.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/rimeway-a.webp', 'assets/backgrounds/battle/rimeway-b.webp'],
+  },
+  rimeway_descent: {
+    json: 'assets/maps/rimeway_descent.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+      coldfog_set: 'assets/tilesets/coldfog_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/rimeway.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/rimeway-a.webp', 'assets/backgrounds/battle/rimeway-b.webp'],
+  },
   // the Old Seams (D)
-  // Sunvault Climb rebuild (S)
+  // Sunvault Climb rebuild (S): III the Gilt Face, IV the Sun Ledges (I/II re-registered above
+  // with the traverse_set for their ladders)
+  sunvault_climb_iii: {
+    json: 'assets/maps/sunvault_climb_iii.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/sunvault-climb-b.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/sunvault-climb-a.webp', 'assets/backgrounds/battle/sunvault-climb-b.webp'],
+  },
+  sunvault_climb_iv: {
+    json: 'assets/maps/sunvault_climb_iv.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/sunvault-climb-b.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/sunvault-climb-a.webp', 'assets/backgrounds/battle/sunvault-climb-b.webp'],
+  },
 };
 
 /**
