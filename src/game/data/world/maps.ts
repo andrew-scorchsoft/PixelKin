@@ -192,7 +192,10 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   // lane): Wrackline Path -> the Sounding Cave -> Lanternfall Road.
   wrackline_path: {
     json: 'assets/maps/wrackline_path.json',
-    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',   // the Wrack Cut trestle (traversal pass 2026-10)
+    },
     kind: 'route',
     music: 'assets/audio/music/dimglass-coast-b.mp3',
     battle_backdrops: [
@@ -679,7 +682,10 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   // east mouth to Galehigh's west gate — three ledged tiers, lv 28-31.
   cinderwind_scarp: {
     json: 'assets/maps/cinderwind_scarp.json',
-    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',   // the haulers' ladders (traversal pass 2026-10)
+    },
     kind: 'route',
     music: 'assets/audio/music/windward-stair-a.mp3',
     battle_backdrops: [
@@ -845,7 +851,10 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   // the far mouth glows Solarium-gold. The loneliest road in the game.
   hushfrost_pass_i: {
     json: 'assets/maps/hushfrost_pass_i.json',
-    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',   // the glare pool (traversal pass 2026-10)
+    },
     kind: 'route',
     music: 'assets/audio/music/hushfrost-pass-a.mp3',
     battle_backdrops: [

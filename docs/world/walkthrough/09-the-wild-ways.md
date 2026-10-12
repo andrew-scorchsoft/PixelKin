@@ -155,10 +155,24 @@ Rimeway is fitted to the result. Bands 46→49 (Nightreach 48–50, Nessa ace 52
 
 ## 3. Retrofits (existing routes that should *play*)
 
-A small, careful pass — optional lines only, never the golden path's beats: a ladder
-shortcut + ledge zig-zag on `cinderwind_scarp`, a glare-ice side pocket on `hushfrost_pass_i`,
-and a bridge/underpass on one South/East route. Every retrofit goes in the map's **builder**
-(check_rebuild), and `audit_journey` must still PASS unchanged.
+A small, careful pass — the golden path's beats untouched: every retrofit goes in the map's
+**builder** (check_rebuild), and `audit_journey` still PASSes with no GOLDEN edits. No map
+gained a Gift requirement; no warp, table, band or trainer roster changed.
+
+**Built (2026-10), four routes in three regions** — the mechanic is on the MAIN lane each time:
+
+| Map | Region | Mechanic | Before → after |
+|---|---|---|---|
+| `cinderwind_scarp` | North (Deep → Galehigh) | `spans` **ladders** up two tall scarp faces (wildkit `face_wall` foot rows); pitches at opposite ends; grass ledges at the other ends | walk-up gaps under the ledges, both ways ~37 steps → zig-zag climb 62 steps, two-hop descent 36 |
+| `hushfrost_pass_i` | West | `flows` **glare ice**: the falls' plunge-pool across the north passage, three stopper stones | open snow → every mid↔west crossing slides; reading the falls = stop under them |
+| `wrackline_path` | bay road (East → hub) | `spans` **trestle, `under:true`**: over the Wrack Cut, round the strand, back under it along the cut floor | straight grass corridor → the over/under loop (both directions) |
+| `lanternfall_road` | bay road | **ledge + ramp zig-zag**: three cliff steps, ramps alternating E/W/E, one lit one-way drop | no ledges ("no loop") → 52 steps up vs 33 down |
+
+Strand-proofing: every reachable tile on each map can reach every entrance again (a
+`worldmodel` BFS from each tile), `render_walkable --all` reports no softlocks, and
+`check_traversal.mjs` proves the engine and the audit model agree on all four. Signs on the
+scarp, Wrackline and Lanternfall name the mechanic in one line. Shots: `tools/shots/shoot.mjs`
+on the ladder pitches, the trestle deck and the underpass, the glare-pool slides, the drop.
 
 ## 4. Audio & art owed
 

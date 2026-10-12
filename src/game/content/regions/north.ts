@@ -93,6 +93,7 @@ const NORTH_AFTER_DIALOGUE: DialogueRegistry = {
   // --- Cinderwind Scarp (2026-10) ---
   'sign.cinderwind_scarp': [
     { text: 'CINDERWIND SCARP\nWEST: the Deep\'s mouth and the Cinderhead galleries. UP and EAST: Galehigh Terraces. Mind the gusts on the top tier.' },
+    { text: 'Scratched under it: "Ore goes DOWN, haulers go UP. Ladders at each end of the pitches — the grass lips are for coming down quick, not climbing."' },
   ],
   'npc.scarp_cairn': [
     { text: 'A wind cairn, every stone wrapped in a faded kite-ribbon. Galehigh folk build one wherever they first feel the updraught. This is where the mountain starts to breathe.' },

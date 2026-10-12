@@ -536,3 +536,21 @@ the shrine, waking at dawn), **E-2** (`script.wren_glowmoss`: Mum's village went
 (Harl's hook rail + the roof-fault cinder in Cinderhead; Cass on Deep B2F). Vignettes: an
 acolyte at a doused null-lantern on Glowmoss B1F. Ambience, ambient kin, cast swaps and Fen II /
 Sunkbell props ride `tools/maps/worldcraft/east.py`; scripts live in `content/regions/east.ts`.
+
+## Traversal pass (2026-10, 09-the-wild-ways §3) — the bay road home
+
+The road from Saltreach Fen I back to the crossroads now *plays* (no table, band, gate or Gift
+change; warps unchanged; `audit_journey` PASS with no GOLDEN edits):
+
+- **Wrackline Path — the Wrack Cut.** A sea-cut gully slices the headland; the wrack-haulers'
+  trestle spans it (`spans` bridge, `under:true`, deck in the `above` layer). The way down
+  crosses **over** the trestle, west across the south bank (a full-height grass band), north up
+  the strand into the cut's sea mouth, then east along the shingle floor **under** the trestle
+  to the cut's head, where Drifter Osk watches the ravine down to the Sounding Cave. Both
+  directions walk the same loop — nothing one-way, nothing to strand on. Before: a straight
+  grass corridor with two bands.
+- **Lanternfall Road — the Lantern Steps.** Three cliff steps cross the hill wall to wall, each
+  with one walk-up ramp alternating east / west / east, so the climb from the crossroads
+  zig-zags; coming down, a one-way grass drop on the middle step's east end runs the descent
+  straight down the east side (52 steps up vs 33 down). Lamp-Keeper Nell now watches the first
+  ramp's foot. Before: a winding lane with no ledges (audit_flow "no loop").

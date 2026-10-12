@@ -93,6 +93,7 @@ import math
 import random
 import mapkit as mk
 import patterns as pt
+import wildkit as wk
 from mapkit import gid
 import hushfrost_craft as hc
 
@@ -420,6 +421,34 @@ PROPS = [
 # flat blue bank stripes). Everything here is a drawn decal (solid:false — the
 # lanes, sight lines and reachability are untouched) or a prop on ground that was
 # already solid / off every lane (audit_flow + render_walkable prove it).
+# ---- TRAVERSAL PASS (2026-10, 09-the-wild-ways §3): THE GLARE POOL --------------
+# The frozen falls' plunge-pool spreads across the whole north passage as GLARE
+# ICE (wildkit.ice): every way between the mid chamber and the west chamber
+# crosses it, and on glare ice you slide until something stops you. Three
+# wind-dropped stones on the sheet are the stoppers. No stop strands you — the
+# sheet is ringed by snow on its north, south and west sides, and
+# tools/maps/audit_flow + render_walkable (worldmodel mirrors Traversal.ts) prove
+# both chambers stay mutually reachable. The shortest crossing is one slide down
+# (or up) col 12; reading the falls means stopping under them at (18,5).
+wk.use_traverse(m)
+GLARE_X, GLARE_Y = range(9, 19), range(5, 8)
+STOPPERS = [(10, 7), (16, 6), (14, 6)]
+solid_cells = {(x, y) for o in m["objects"] + PROPS if o.get("solid", True)
+               for y in range(o["at"]["ty"] + o.get("overhang", 0), o["at"]["ty"] + o["h"])
+               for x in range(o["at"]["tx"], o["at"]["tx"] + o["w"])}
+GLARE = {(x, y) for y in GLARE_Y for x in GLARE_X
+         if not glacier[y * W + x] and (x, y) not in solid_cells
+         and (x, y) not in STOPPERS}
+pin_glare: dict = {}
+wk.ice(m, pin_glare, GLARE, fid="glare_pool")
+for (x, y) in GLARE:
+    deco[y * W + x] = 0                     # no pebbles on polished ice
+for (x, y) in STOPPERS:
+    deco[y * W + x] = gid("boulder")
+GROUND = [d for d in GROUND
+          if not any((x, y) in GLARE for x in range(d[2], d[2] + d[4])
+                     for y in range(d[3], d[3] + d[5]))]
+
 m["objects"] = hc.surface_decals(W, H, glacier, frosttuft, prefix="hf1",
                                  reserved=object_cells | point_cells | reserved) + \
     [hc.decal(*d) for d in GROUND] + m["objects"] + PROPS + \
@@ -432,7 +461,7 @@ m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + ter
 ]
 
 if __name__ == "__main__":
-    ok = mk.finalize(m, scale=3)
+    ok = mk.finalize(m, scale=3, pin_base=pin_glare)
     pt.report(owed)
     print("PASS" if ok else "FAIL")
     raise SystemExit(0 if ok else 1)
