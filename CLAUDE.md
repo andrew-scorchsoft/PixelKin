@@ -1006,6 +1006,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   step into Saltreach Fen I (`script.fen_warning_step`, `flag:fen_warned`), Anth does at the allotment,
   and Andrew's Ember→Tide hint adds "leave the fen east and the hill north for later". His lines must
   read true WHEREVER he stands — he leans on a fence in Pearlmoor too (no "go north to Pearlmoor").
+  A Lumenary's step_on bond-test tile in front of the warden must never answer a quest-giver's
+  walk-up with a bare "not yet": `build_lumenary(aisle_steps=…)` puts the warden's current stage on
+  the same tile AHEAD of the test (Reyl: hook → where-next), since the first active trigger wins.
 - **Tinderwick was deliberately RE-SHUFFLED for returning players (R8, 2026-10)** — store ⇄
   cottage swapped (door tiles too; spawn (5,8)), Wren + Fenn's satchel moved out to the new west
   side area `duskapple_orchard`, a couple of signs removed on purpose. Don't "restore" the old
