@@ -646,7 +646,7 @@ def all_maps():
                        # bare blocked line, and never pressed A on Reyl — so the Old
                        # Light stayed locked. Now the walk-up itself gives his hook,
                        # then his where-next reminder, until the bell rings.
-                       aisle_steps=(("reyl_hook_step", "script.reyl_quest", "flag:q_south_bell"),
+                       aisle_steps=(("reyl_hook_step", "script.reyl_hook_step", "flag:q_south_bell"),
                                     ("reyl_waiting_step", "script.reyl_waiting",
                                      "flag:q_south_bell_rung")),
                        exit_steps=(("reyl_call_back", "script.reyl_call_back", "flag:q_south_bell"),),

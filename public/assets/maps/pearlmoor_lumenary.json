@@ -569,7 +569,7 @@
         "ty": 6
       },
       "activation": "step_on",
-      "ref": "script.reyl_quest",
+      "ref": "script.reyl_hook_step",
       "hidden_when_flag": "flag:q_south_bell"
     },
     {
