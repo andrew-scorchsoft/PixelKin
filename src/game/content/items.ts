@@ -129,6 +129,13 @@ export const ITEMS: ItemRegistry = {
     desc: 'A rented two-wheeled runner. Rides the Wick-Run; handed back at the foot.',
     category: 'key',
   },
+  runner_ribbon: {
+    id: 'runner_ribbon',
+    name: 'Runner\'s Ribbon',
+    // ≤ ~80 chars (three-line detail pane)
+    desc: 'Rook\'s red ribbon for a gold Wick-Run. Pell rents you runners for free.',
+    category: 'key',
+  },
   frostglass_lens: {
     id: 'frostglass_lens',
     name: 'Frostglass Lens',

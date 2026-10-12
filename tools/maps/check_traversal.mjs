@@ -111,8 +111,11 @@ function engineReach(T, d) {
       groundOpen: (x, y) => ground(x, y) && !npcs.has(KEY(x, y)),
       riding: d.ride,
     };
-    // Ledges aren't in the fixture/grid here (the Python side folds them in its
-    // base grid as blocked), so plan()'s blocked == blocked.
+    // Ledges: the base grid marks a ledge tile blocked (plan() refuses it), and
+    // — exactly as Player.updateTraverse does — a press that plan() blocks hops a
+    // ledge whose direction matches onto open ground beyond (canEnter).
+    const LEDGE_FACING = { down: 'down', up: 'up', left: 'left', right: 'right', s: 'down', n: 'up', w: 'left', e: 'right' };
+    const ledges = new Map((d.ledges ?? []).map(([x, y, dir]) => [KEY(x, y), LEDGE_FACING[dir] ?? dir]));
     const seen = new Set();
     const q = [];
     for (const [x, y] of d.starts) {
@@ -154,7 +157,13 @@ function engineReach(T, d) {
           continue;
         }
       }
-      for (const dir of Object.keys(DIRS)) push(rules.plan(from, dir, ctx), dir);
+      for (const dir of Object.keys(DIRS)) {
+        if (push(rules.plan(from, dir, ctx), dir)) continue;
+        const [dx, dy] = DIRS[dir];
+        if (ledges.get(KEY(x + dx, y + dy)) === dir && ctx.canEnter(x + 2 * dx, y + 2 * dy)) {
+          push({ kind: 'step', to: { tx: x + 2 * dx, ty: y + 2 * dy } }, dir);
+        }
+      }
     }
   }
   return reached;

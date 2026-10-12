@@ -214,6 +214,9 @@ class Scripts:
                 add(s["flag"])
             elif op == "pay":
                 add(s["flag"])
+            elif op == "timer":   # a run clock's stop: every tier is earnable (the Wick-Run)
+                for t in s.get("tiers", []) or []:
+                    add(t["flag"])
             elif op == "askName":
                 for mt in s.get("matches", []):
                     add(mt["flag"])

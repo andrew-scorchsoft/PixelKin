@@ -80,6 +80,9 @@ NODE_KINDS: dict[str, str] = {
     # the marshes (off Nightreach)
     "coldfog_marches_ii": "route", "coldfog_marches_i": "route", "drownlight_beacon": "landmark",
     "hollowfen_stillworks": "landmark",
+    # THE WILD WAYS — the Wick-Run (09 §2 A): Sunvault Climb I down the west flank to the sea
+    "wickrun_crest": "route", "wickrun_chute": "route", "wickrun_trestles": "route",
+    "wickrun_traverse": "route", "wickrun_lower": "route", "wickrun_foot": "route",
 }
 # places hung off a stacked interior chain, pinned near their anchor (tiles)
 ANCHORED: dict[str, tuple[str, float, float]] = {
@@ -193,11 +196,20 @@ ROADS: list[tuple[str, str, str]] = [
     ("coldfog_marches_ii", "coldfog_marches_i", "gate"),
     ("coldfog_marches_i", "drownlight_beacon", "gate"),
     ("coldfog_marches_ii", "hollowfen_stillworks", "gate"),
+    # THE WILD WAYS — the Wick-Run (one-way chutes; the Tallow Lift is the ride home)
+    ("sunvault_climb_i", "wickrun_crest", "road"),
+    ("wickrun_crest", "wickrun_chute", "road"),
+    ("wickrun_chute", "wickrun_trestles", "road"),
+    ("wickrun_trestles", "wickrun_traverse", "road"),
+    ("wickrun_traverse", "wickrun_lower", "road"),
+    ("wickrun_lower", "wickrun_foot", "road"),
+    ("wickrun_foot", "pearlmoor_quay", "road"),      # the beach road round Lightkeeper's Point
     # THE LANTERN-CAR (rides, not roads) + the Cinderhead ore-hoist
     ("lanternway_lowleaf", "vesper_crossroads", "car"),
     ("lanternway_galehigh", "vesper_crossroads", "car"),
     ("lanternway_nightreach", "vesper_crossroads", "car"),
     ("cinderhead_deep", "vesper_crossroads", "car"),
+    ("wickrun_foot", "wickrun_crest", "car"),        # the Tallow Lift
     # the mountain road
     ("vesper_crossroads", "umbral_approach", "gate"),
     ("umbral_approach", "penumbra_ring", "road"),

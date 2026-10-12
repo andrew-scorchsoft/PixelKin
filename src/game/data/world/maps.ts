@@ -1242,6 +1242,47 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     music: 'assets/audio/music/wickrun.mp3',
     battle_backdrops: ['assets/backgrounds/battle/wickrun-a.webp', 'assets/backgrounds/battle/wickrun-b.webp'],
   },
+  wickrun_trestles: {
+    json: 'assets/maps/wickrun_trestles.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/wickrun.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/wickrun-a.webp', 'assets/backgrounds/battle/wickrun-b.webp'],
+  },
+  wickrun_traverse: {
+    json: 'assets/maps/wickrun_traverse.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/wickrun.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/wickrun-a.webp', 'assets/backgrounds/battle/wickrun-b.webp'],
+  },
+  wickrun_lower: {
+    json: 'assets/maps/wickrun_lower.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/wickrun.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/wickrun-a.webp', 'assets/backgrounds/battle/wickrun-b.webp'],
+  },
+  wickrun_foot: {
+    json: 'assets/maps/wickrun_foot.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/wickrun.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/wickrun-a.webp', 'assets/backgrounds/battle/wickrun-b.webp'],
+  },
   // the Mirelights (B)
   // the Rimeway (C)
   // the Old Seams (D)

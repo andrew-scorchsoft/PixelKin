@@ -703,7 +703,10 @@ netmender's keeping.
      landing ON its return pair.
    - **The bell quest chain (all data, BUILT; R9 2026-10):** `script.reyl_quest` (hall,
      Reyl's dais stage — "nobody fights me till they've laughed") sets `flag:q_south_bell` →
-     **the Old Light** on Lightkeeper's Point (below): seven floors, one riddle each
+     **the Old Light** on Lightkeeper's Point (below; its west beach now runs on to the
+     **Wick-Run Foot** — the Wild Ways' downhill run ends here, and South-era players can
+     walk in and see the Tallow Lift's car chained far up at the crest; no encounters, see
+     [09 §2 A](./09-the-wild-ways.md)): seven floors, one riddle each
      (`flag:oldlight_1..5_solved`), the top sets **`flag:picked_net_floats` +
      `flag:q_south_jest_done`** → the netmender's ONE quay stage `netmender_floats`
      (`requires q_south_bell`, `hidden_when q_south_has_rope`, `script.netmender_floats`:

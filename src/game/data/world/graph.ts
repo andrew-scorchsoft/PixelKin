@@ -191,6 +191,10 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // the Wick-Run (A): Sunvault Climb I's south road -> the crest -> downhill to Lightkeeper's Point
     { map_id: 'wickrun_crest', region: 'west', optional: true, reward: 'the runner rental + the Tallow Lift (frees the lift home)' },
     { map_id: 'wickrun_chute', region: 'west', optional: true, reward: 'run-only Tallowcrest/Wickmere/Warmantis + a kicker-only Lumen Drop' },
+    { map_id: 'wickrun_trestles', region: 'west', optional: true, reward: 'the Spiral trestle (over, round, under) + two Runners + a wick-purse' },
+    { map_id: 'wickrun_traverse', region: 'west', optional: true, reward: 'the rock garden + the ramp line + a Beacon charge in the cart wreck' },
+    { map_id: 'wickrun_lower', region: 'west', optional: true, reward: 'Rook, the Runners\' captain + the rare Chandrek + a kicker-only Wax Cake cache' },
+    { map_id: 'wickrun_foot', region: 'south', optional: true, reward: 'the finish (time-trial prizes, Rook\'s ribbon) + the Tallow Lift\'s foot station' },
     // the Mirelights (B)
     // the Rimeway (C)
     // the Old Seams (D)
@@ -386,6 +390,10 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'sunvault_climb_i', to_map: 'wickrun_crest', via_warp: 'to_wickrun', bidirectional: true },
     { from_map: 'wickrun_crest', to_map: 'wickrun_chute', via_warp: 'to_chute', requires_flag: 'flag:wickrun_riding', bidirectional: true },
     { from_map: 'wickrun_chute', to_map: 'wickrun_trestles', via_warp: 'to_trestles', bidirectional: false },
+    { from_map: 'wickrun_trestles', to_map: 'wickrun_traverse', via_warp: 'to_traverse', bidirectional: false },
+    { from_map: 'wickrun_traverse', to_map: 'wickrun_lower', via_warp: 'to_lower', bidirectional: false },
+    { from_map: 'wickrun_lower', to_map: 'wickrun_foot', via_warp: 'to_foot', bidirectional: false },
+    { from_map: 'wickrun_foot', to_map: 'pearlmoor_point', via_warp: 'to_point', bidirectional: true },
     // the Mirelights (B)
     // the Rimeway (C)
     // the Old Seams (D)

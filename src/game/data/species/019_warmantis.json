@@ -72,7 +72,64 @@
     "weight_kg": 19.0,
     "habitat": "south"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "wickrun_chute",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 47,
+      "max": 48
+    },
+    {
+      "area": "wickrun_chute",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 57,
+      "max": 62
+    },
+    {
+      "area": "wickrun_trestles",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 48,
+      "max": 48
+    },
+    {
+      "area": "wickrun_trestles",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 57,
+      "max": 63
+    },
+    {
+      "area": "wickrun_traverse",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 48,
+      "max": 49
+    },
+    {
+      "area": "wickrun_traverse",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 58,
+      "max": 63
+    },
+    {
+      "area": "wickrun_lower",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 49,
+      "max": 50
+    },
+    {
+      "area": "wickrun_lower",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 58,
+      "max": 64
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Elegant long-bodied cat silhouette, warm gold-and-cream coat, a soft luminous aura halo, ember-tip tail; graceful and glowing at 64px.",

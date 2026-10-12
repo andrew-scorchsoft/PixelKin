@@ -156,7 +156,7 @@ obj("start_lamp_w", "tinderwick_lamp_post", (10, 1), 1, 3, overhang=2, walk_unde
 obj("start_lamp_e", "tinderwick_lamp_post", (17, 1), 1, 3, overhang=2, walk_under=True)
 obj("island_pine", "windward_bent_pine", (13, 17), 2, 3, overhang=2, walk_under=True)
 obj("island_tree", "tinderwick_tree_c", (12, 22), 3, 4, overhang=3, walk_under=True)
-obj("wreck", "solarium_troupe_cart", (10, 32), 3, 2)       # stand-in for the wax-cart wreck
+obj("wreck", "wickrun_wax_cart_wreck", (10, 32), 2, 2)     # a wax-cart that left the road
 obj("runout_lamp", "tinderwick_lamp_post", (16, 31), 1, 3, overhang=2, walk_under=True)
 # the wax-road lanterns: a post on a verge every few rows, alternating sides —
 # the run reads as a lit line down the dark mountain (and from the lift)
@@ -182,23 +182,27 @@ owed += pt.trainer_beat(m, tid="runner_dace", at=(19, 33), facing="left", sight=
 owed += pt.cache(m, cid="wickrun_ledge", at=(25, 17))
 owed += pt.sign(m, deco, W, sid="wickrun_runout", at=(14, 31))
 
+# Run tables (shared shape down the whole run, bands rising): the run-only kin
+# lead, with the Sunvault's lighter Solar/Verdant regulars. Average BST is kept
+# on the dex's level trend so the progression model's wild-XP fit isn't tilted
+# (tools/balance/progression.mjs `fit`) — the heavy hitters stay rare.
 TABLE = [
-    {"kin_id": 11, "weight": 26, "min_level": 46, "max_level": 48},   # Tallowcrest (run-only)
-    {"kin_id": 115, "weight": 20, "min_level": 46, "max_level": 47},  # Solvyne
-    {"kin_id": 6, "weight": 18, "min_level": 46, "max_level": 48},    # Wickmere (run-only)
-    {"kin_id": 118, "weight": 14, "min_level": 46, "max_level": 47},  # Helicore
-    {"kin_id": 120, "weight": 12, "min_level": 46, "max_level": 47},  # Dawnfawn
-    {"kin_id": 19, "weight": 6, "min_level": 47, "max_level": 48},    # Warmantis (run-only)
-    {"kin_id": 12, "weight": 4, "min_level": 48, "max_level": 48},    # Chandrek (rare)
+    {"kin_id": 11, "weight": 24, "min_level": 46, "max_level": 48},  # Tallowcrest (run-only)
+    {"kin_id": 6, "weight": 25, "min_level": 46, "max_level": 48},  # Wickmere (run-only)
+    {"kin_id": 115, "weight": 14, "min_level": 46, "max_level": 48},  # Solvyne
+    {"kin_id": 120, "weight": 12, "min_level": 46, "max_level": 48},  # Dawnfawn
+    {"kin_id": 117, "weight": 12, "min_level": 46, "max_level": 48},  # Helibud
+    {"kin_id": 19, "weight": 9, "min_level": 47, "max_level": 48},  # Warmantis (run-only)
+    {"kin_id": 12, "weight": 4, "min_level": 48, "max_level": 48},  # Chandrek (rare)
 ]
 DAY = [
-    {"kin_id": 11, "weight": 22, "min_level": 56, "max_level": 62},
-    {"kin_id": 115, "weight": 18, "min_level": 56, "max_level": 62},
-    {"kin_id": 6, "weight": 18, "min_level": 56, "max_level": 63},
-    {"kin_id": 118, "weight": 14, "min_level": 56, "max_level": 62},
-    {"kin_id": 19, "weight": 14, "min_level": 57, "max_level": 63},
-    {"kin_id": 12, "weight": 8, "min_level": 58, "max_level": 64},
-    {"kin_id": 7, "weight": 6, "min_level": 59, "max_level": 65},     # Wicklord (day only)
+    {"kin_id": 11, "weight": 22, "min_level": 56, "max_level": 62},  # Tallowcrest
+    {"kin_id": 6, "weight": 20, "min_level": 56, "max_level": 62},  # Wickmere
+    {"kin_id": 19, "weight": 16, "min_level": 57, "max_level": 62},  # Warmantis
+    {"kin_id": 115, "weight": 14, "min_level": 56, "max_level": 62},  # Solvyne
+    {"kin_id": 120, "weight": 12, "min_level": 56, "max_level": 62},  # Dawnfawn
+    {"kin_id": 12, "weight": 8, "min_level": 58, "max_level": 62},  # Chandrek
+    {"kin_id": 7, "weight": 8, "min_level": 59, "max_level": 62},  # Wicklord (day only)
 ]
 night = pt.zones_from_grid(tallgrass, W, H, terrain="tall_grass", rate=0.10,
                            id_prefix="run", table=TABLE)

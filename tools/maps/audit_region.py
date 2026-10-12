@@ -108,6 +108,8 @@ GRANTS["vigil_sunfall"] = ["flag:vigil_4_kept", "flag:vigil_reading_5"]
 GRANTS["vigil_murkfall"] = ["flag:vigil_5_kept"]
 # ---- THE WILD WAYS (09-the-wild-ways.md, 2026-10) — one line per area lane
 GRANTS["wickrun_crest"] = ["flag:wickrun_riding", "flag:tallow_lift_freed"]   # Pell's rental, the brake
+GRANTS["wickrun_lower"] = ["flag:runner_rook_beaten"]                          # Rook (opens his foot NPC)
+GRANTS["wickrun_foot"] = ["flag:wickrun_gold", "flag:runner_ribbon"]           # the finish clock, Rook's ribbon
 POSTGAME_FLAGS = {"flag:dawn"}
 
 
