@@ -84,6 +84,38 @@ ledge, a Beacon charge in the cart wreck, a wick purse. **Time trial:** gold/sil
 ribbons (`flag:wickrun_gold` …) pay wicks once each and Rook gives the **Runner's Ribbon** key
 item for gold (cosmetic + bragging; the free rental).
 
+**BUILT (2026-10) — what each map does.** Builders `tools/maps/build_wickrun_*.py`; content
+`src/game/content/regions/wickrun.ts`.
+
+| Map | The idea on it |
+|---|---|
+| `wickrun_trestles` | **The Slalom**: a full-width chute staked with three wax-barrel barriers, gaps alternating right/left/right (steer, you can't brake uphill). **The Spiral Trestle**: a flat trestle-head landing (Runner TAMSIN, grass, a sign), a 2-wide drop onto a vertical timber deck (`spans` bridge, `under:true`, in the `above` layer, shade below) that carries you OVER the gully; off its foot round the knoll (dry lane + grass, Runner OSSIE's sight line), back up the inside of the bend, and a west-carrying chute takes you UNDER the same deck. **The Steps**: three terraces dropped by one-way ledges whose hop-off is barred (boulders/fence) on alternating ends — the zig-zag down to the traverse; the wick-purse (300w) in a nook off terrace one. |
+| `wickrun_traverse` | The road turns WEST (`slope dir:left`). **The Rock Garden**: a 12×14 west-carrying chute strewn with stopper boulders (spaced so every stop leaves a sidestep) funnelling to one gap; Runner PIP watches the entry pad. **The Cart-Wreck Shelf**: steer DOWN off the garden onto a flat grass pocket — the wax-cart wreck holds the **Beacon charge**. **The Ramp Line**: two kickers clear a rockfall, the road turns DOWN the west wall, two more clear a boulder bank (its flanks are wall, so you only ever meet a kicker head-on). |
+| `wickrun_lower` | **The Long Straight** (14 rows, the run's fastest): a mid-road kicker over a boulder pair, and a side-kicker off the east verge onto the carters' brake-hut shelf (ramp-only cache: 2 Wax Cakes) that drains back into the run. **The Steps** (two full-width ledges) onto **the Cross-Slope** (`dir:right`) with a steer-down **cart siding** (grass, the rare Chandrek), round the corner down the second straight (another kicker) to **the Runners' Camp** — ROOK stands where every rider's arrival row is in his sight. |
+| `wickrun_foot` | `region:'south'`, NO encounters. The last drop under a finish arch; its final row is the finish band (`script.wickrun_finish`: `timer` stop → tier flags → each tier's one-time prize → the lift-keeper takes the runner, `flag:wickrun_riding` cleared → Rook's ribbon if gold). The Tallow Lift's foot station (`script.tallow_lift_foot`: closed until `flag:tallow_lift_freed`, then the `travel` ride to `LIFT_TOP`), the yard bench (rest point), the wax-yard (yard-hand lore: every wick began on this mountain), Rook after he's beaten. East beach → Lightkeeper's Point's west edge (0,8)/(0,9). |
+
+**One-way, proven.** Every map's upstream door is unreachable from below (a full-width chute
+band, a west-carrying chute or a ledge line between them) and no reachable tile is a trap —
+checked per map with the worldmodel (`moves_from` BFS from the exit tiles / from every
+reached tile). The Tallow Lift is the only way up. On the lift's DOWN ride from the crest a
+held runner is handed back to Pell (`script.wickrun_hand_in_top`), so nobody arrives at the
+foot holding one.
+
+**Time-trial tiers (measured).** The fastest line (Dijkstra over the worldmodel, 64 ms a tile
+at runner speed — slope carry runs at min(ride, run) = 64 ms; leaps +60 ms) is chute 3.0 s +
+trestles 7.1 s + traverse 2.9 s + lower 3.6 s + foot 0.5 s ≈ **17.1 s of riding**, plus four map
+changes at ~1.5 s ≈ **23 s** flat out. Tiers (`WICKRUN_TIERS`): **gold ≤ 26.0 s**, **silver ≤
+32.5 s** (+25%), **bronze ≤ 41.5 s** (+60%). Prizes once each: 600 / 400 / 200 wicks (modelled in
+`progression.mjs`, West leg finds). A trainer battle mid-run counts against the clock — race
+once the Runners are beaten. Rook's record is 24 s (the crest kid says so).
+
+**Kin tables.** The same shape all the way down (bands rising 46–48 → 48–50; day twins 56–64):
+Tallowcrest + Wickmere common, Solvyne/Dawnfawn/Helibud the Sunvault regulars, Warmantis rare,
+Chandrek very rare; by day Warmantis, Chandrek and Wicklord come out. The average BST is kept
+on the dex's level trend on purpose — `progression.mjs` fits wild BST against level over every
+encounter row, and the Storm Gleam checkpoint sits on its +4 edge, so a heavy optional table
+tips the whole curve.
+
 ### B · The Mirelights (east of Saltreach Fen I) — *seen early, opened from the ice village*
 
 **Lore.** East of the fen lies the **Glassmere**, a drowned field where the fen-folk's old
@@ -108,6 +140,57 @@ lens → he ferries you (`flag:mirelight_ferry`).
 | `mirelight_glassmere` | 30×44 | 89..119, -116..-72 | **The false-lights maze**: plank walks and causeway stones over the mere; with the Lens, false lights read as false (some plank walks are illusions that only exist in the lights' lie — flag-swapped spans/objects). Currents (`slope` on water) pull swimmers. |
 | `mirelight_chapel` | 30×44 | 119..149, -116..-72 | The drowned bell-chapel: underpass/bridge loops, Tobin found (alive, lost, embarrassed), the null-lantern. |
 | `lanthorne_hollow` | cave | (portal) | The legendary's rest: wake **Lanthorne** (#165, Tide/Light) from the null-lantern; `legendaryBattle` lv 45, cooldown 12 won. |
+
+**As built (2026-10, Lane B).** Builders `tools/maps/build_mirelight_landing.py`,
+`_glassmere.py`, `_chapel.py`, `build_lanthorne_hollow.py` (shared pieces in
+`tools/maps/mirelight_common.py`); content `src/game/content/regions/mirelight.ts`.
+
+- **The gate** (`build_saltreach_fen_i.py`): a ferry stage at Fen I's east edge (rows 23-24,
+  `mirelight_ferry_stage`) on a carved inlet, marsh-lights over the water. **Old Ansel**
+  (`script.mirelight_ansel`) names his price (`flag:q_mirelight_ansel`); with
+  `flag:has_frostglass_lens` he looks through it and sets `flag:mirelight_ferry`. The edge
+  warps `to_mirelight`/`_s` carry `requires_flag` + `blocked_ref: npc.mirelight_ansel_blocked`;
+  the first crossing is a once-only step_on beat on the stage (`script.mirelight_ferry_ride`,
+  `flag:mirelight_crossed`) that hands you across with the `travel` op. The eel-wife now runs
+  `script.mirelight_eelwife` (her own `script.fen_eelwife`, then the Tobin ask,
+  `flag:q_mirelight_begun`). `GRANTS["saltreach_fen_i"]` += `flag:mirelight_ferry`.
+- **The deep.** Out here every early Gift is held, so the Glassmere is **deep water**
+  (`deepwater_set`, the reserved `deepdive`): `mirelight_common.deep_layer` makes every pond
+  cell deep unless it is within one tile of *walkable* shore (a tree border is not a shore,
+  so no shelf sneaks round a channel's end). Tidecall swims the shelves; only boards cross.
+  The Glassmere builder ASSERTS no island swims to another without a board.
+- **The false lights.** Every walk is a `plank` span with a blue will-light at its far end
+  (they all look alike). Through the Lens (objects `requires_flag: flag:has_frostglass_lens`)
+  the causeway-reed at each walk's MOUTH tells the truth: LIT = sound boards, DEAD = a lie.
+  A false walk stops short over the deep; its last board is a step_on beat
+  (`script.mirelight_dunk_<id>`: splash, then `travel` back to the mouth). Landing: three
+  walks over the first arm (the middle is true — the teaching screen). Glassmere: islands
+  I0→I1→I2→I3→I4, ten walks (five true).
+- **Currents** (`flows[]` `slope` over shallow water, `mirelight_common.current`): I3's south
+  shelf runs DOWN to the diver's islet (the **Glassmere Pearl**, valuable, current-only) whose
+  only way off is a long true walk back to I1 — a one-way loop; and the RETURN current sweeps
+  from I2's west shelf back down to I0.
+- **The chapel.** Over then under: the entry bank crosses the sunk street on a 7×2 trestle
+  (`deck under=True`, `above` layer) — you see Tobin below in the street's north end — then
+  the east bank, a **ladder** down its cliff, the acolyte's one-row shelf (Brother Ives,
+  sight 1 — unavoidable), the meadow, and north up the street **under** the trestle to
+  Tobin (`flag:mirelight_tobin_found`, 2 Beacon charges; he goes home to Fen I). The chapel's
+  walk-onto door (on its flooded porch step) is held on Tobin's flag. The acolyte's camp is
+  the Mirelights' **rest point** (`script.mirelight_camp_rest`).
+- **The set-piece** (`script.mirelight_lanthorne`, 07's staging): letterbox, silence, the lens
+  lets a TRUE light through the null-glass, `sting-hour` → `battle-hours`, `legendaryBattle`
+  lanthorne #165 lv 45, cooldown 12, `npc.lanthorne_resting`; on the catch the lantern stands
+  empty, a `starfall` and the star over the fen burns brighter.
+- **Kin** (mirrored in `build_species.py` `_MIRE_TABLES`): night 38-43 — Lumpin, Fennlight,
+  Brineroll, Poolfrond, Tidmaren, Glostern, + the Mirelights' own Tidwraith #22 / Lumplass
+  #32 (rare-ish) and Lampling #148 (rare, Glassmere + chapel); by day the same species
+  +17 levels. The grown D-tier forms are the trainers': Moss (eel-catcher, ace 40), Odo
+  (lamp-diver, ace 42), Brother Ives (Hollowing acolyte, ace 43), all route class.
+- **Flags** (owned): `flag:q_mirelight_begun`, `flag:q_mirelight_ansel`, `flag:mirelight_ferry`,
+  `flag:mirelight_crossed`, `flag:mirelight_tobin_found`, `flag:lanthorne_caught` (+ the
+  trainers' `_beaten` and caches' `picked_*`). Read: `flag:has_frostglass_lens` (Isel).
+  LORE `mirelights` (unlock `flag:mirelight_ferry`) + `lanthorne`; JOURNAL
+  `mirelight_lights`.
 
 ### C · The Rimeway (north of Pale Vault → Coldfog Marches II) — **BUILT 2026-10**
 
@@ -151,15 +234,28 @@ memory. Its kin, **Emberroot** (#166, Stone/Ember), sleeps there, and the coal i
 breath (cinder law rule 5: a cinder is never dead, only guttered). The Foreman's Ledger (E3)
 already mentions "the seam we don't work".
 
-**Shape.** Opened after the Stone Gleam by Otho (`flag:old_seams_open`): a ladder down from
-Cinderhead Mine's north workings into `old_seams_i` (cave, 30×30, bands 27–29: plank
-bridges over shafts, ladders) → `old_seams_ii` (cave, 32×32, 29–31: **the rail yard** — ore-cart
-rails, lever-switched junctions, ride the right line to the far platform) → `old_seams_iii`
-(cave, 30×30, 31–33: dark, ice-slick flooded gallery? no — *cinder-scree* slopes down to the
-deep) → `emberroot_heart` (cave, legendary room). The heart is pitch-dark beyond any lamp until
-**Starlight** (6 Gleams, Lamplight — optional reveal) — so it's a return trip at ~lv 40;
-Emberroot lv 46, cooldown 12 won. Ladders between floors (portals), so the floors stack under
-the North without touching surface geometry.
+**BUILT (2026-10).** Four dark caves (`dark: true`, `old-seams` music, `old-seams-a/-b`
+backdrops), stacked by ladder portals under Cinderhead so they never touch surface geometry.
+Builders `tools/maps/build_old_seams_{i,ii,iii}.py` + `build_emberroot_heart.py` on a small
+shared kit (`seamskit.py`); the Seams' own surfaces are the **`seams_set`** accent tileset
+(`build_seams_set.py`: open SHAFT autotile family whose fill breathes cinder-glints, cinder-coal
+floor, raked scree, glowing veins, and redrawn ore-cart rails on true pixel rings) and the
+code-drawn **`old_seams_first_star`** object. Content: `src/game/content/regions/oldseams.ts`.
+
+| Map | Size | Band | What you do |
+|---|---|---|---|
+| `cinderhead_mine` (edited) | 28×24 | — | The **seam-door** in the north workings beside Otho's hall (`old_seams_sealed_door` ⇄ `_open`, a 3×3 flag swap). Locked line `npc.old_seams_sealed` ("THE SEAM WE DON'T WORK"). After `gleam:stone` Otho waits beside it (`script.old_seams_otho`, a beat for the E3 ledger if you returned it) and lifts the bar → `flag:old_seams_open`. |
+| `old_seams_i` — the Shaft Benches | 30×30 | 27–29 | Three benches stepping down the seam, each cut by open shafts. Arrive under the **headframe**; walk **planks** over the pits (one to a pillar islet cache); **timber ladders** up/down the rock bands (zig-zag: east, west, east); a boulder wall turns you; a one-way **cinder-scree spill** (slope) drops B→C at the east end — fast down, the long zig-zag back up. Seam-miner Kester. |
+| `old_seams_ii` — the Rail Yard | 32×32 | 29–31 | **The puzzle.** Four platforms round a sunk working, joined by ore-cart **rails** on rock ribs (rail flows: carried, no steering, never back up). Three **levers** (`flag:seams_lever_1..3`, `script.seams_lever_N`, a `traverse_lever_off/_on` swap) throw three **junctions** (a straight/turnout flow pair, `traverse_switch_a/_b` point-stands). Lever 3 is on the SW siding, which you only reach THROUGH the yard: throw 1 → ride to the siding → throw 3 → ride home → ride to the far platform. Every line ends on a platform in every lever state and every platform rails home (the builder asserts all 8 states). Seam-miners Wenna (siding), Tam (east stage); the siding's **Starglass Shard**. |
+| `old_seams_iii` — the Scree Galleries | 30×30 | 31–33 | Cinder-coal floor, veins brightest. Two **scree slopes** run one way down (west, then east) with a **ladder home** at the far end of each gallery; steer hard left at the top of the west scree for a ledge only riders reach (**Lumen Drop**). The foremen's **camp** (a brazier the coal has kept warm seventy winters) is the descent's **rest point**. The foremen's last ladder down is gated `requires_flag: flag:lamplight_starlight` (derived at six Gleams) with `blocked_ref: npc.emberroot_dark` — a deliberate return at ~lv 40. Seam-miners Penhal, Jory. |
+| `emberroot_heart` | 20×16 | — | The first star in its root-rock mound; the awe band (`script.emberroot_heart_enter`, once); **Emberroot** at its foot → `script.emberroot_wake` (letterbox, silence, `sting-hour`, `battle-hours`, `legendaryBattle` lv 46, cooldown 12 won, `npc.emberroot_resting`); the star answers Confirm before and after; the Foreman's Ledger's **last page**. |
+
+Wild kin (night; the `flag:dawn` day twins run 55–65): floor I Oreling/Coalump/Riddlestone/
+Gravelo + **Orebound**; floor II **Orebound**/Riddlestone/Sparkrat/**Pyrolith**/**Lithonyx** +
+**Ferrolith** (rare); floor III **Orebound**/Coalump/**Pyrolith**/**Lithonyx** + Ferrolith (rare) +
+**Prismara** (very rare). Mirrored in `build_species.py OLD_SEAMS_TABLES`; the three floors are in
+`progression.mjs TREND_SKIP_AREAS` (optional rich beds must not bend the mainline's BST trend).
+JOURNAL `wild_old_seams` ("The Seam We Don't Work"); LORE `old_seams` + `first_star`.
 
 ### S · Sunvault Climb, rebuilt as a mountain face — **BUILT 2026-10**
 
@@ -183,10 +279,24 @@ LORE "the sun-keepers". Climb III/IV music `sunvault-climb-b`.
 
 ## 3. Retrofits (existing routes that should *play*)
 
-A small, careful pass — optional lines only, never the golden path's beats: a ladder
-shortcut + ledge zig-zag on `cinderwind_scarp`, a glare-ice side pocket on `hushfrost_pass_i`,
-and a bridge/underpass on one South/East route. Every retrofit goes in the map's **builder**
-(check_rebuild), and `audit_journey` must still PASS unchanged.
+A small, careful pass — the golden path's beats untouched: every retrofit goes in the map's
+**builder** (check_rebuild), and `audit_journey` still PASSes with no GOLDEN edits. No map
+gained a Gift requirement; no warp, table, band or trainer roster changed.
+
+**Built (2026-10), four routes in three regions** — the mechanic is on the MAIN lane each time:
+
+| Map | Region | Mechanic | Before → after |
+|---|---|---|---|
+| `cinderwind_scarp` | North (Deep → Galehigh) | `spans` **ladders** up two tall scarp faces (wildkit `face_wall` foot rows); pitches at opposite ends; grass ledges at the other ends | walk-up gaps under the ledges, both ways ~37 steps → zig-zag climb 62 steps, two-hop descent 36 |
+| `hushfrost_pass_i` | West | `flows` **glare ice**: the falls' plunge-pool across the north passage, three stopper stones | open snow → every mid↔west crossing slides; reading the falls = stop under them |
+| `wrackline_path` | bay road (East → hub) | `spans` **trestle, `under:true`**: over the Wrack Cut, round the strand, back under it along the cut floor | straight grass corridor → the over/under loop (both directions) |
+| `lanternfall_road` | bay road | **ledge + ramp zig-zag**: three cliff steps, ramps alternating E/W/E, one lit one-way drop | no ledges ("no loop") → 52 steps up vs 33 down |
+
+Strand-proofing: every reachable tile on each map can reach every entrance again (a
+`worldmodel` BFS from each tile), `render_walkable --all` reports no softlocks, and
+`check_traversal.mjs` proves the engine and the audit model agree on all four. Signs on the
+scarp, Wrackline and Lanternfall name the mechanic in one line. Shots: `tools/shots/shoot.mjs`
+on the ladder pitches, the trestle deck and the underpass, the glare-pool slides, the drop.
 
 ## 4. Audio & art owed
 
@@ -245,5 +355,6 @@ balance gates PASS with both in the roster.
 - **Category:** First-Star Kin · 640 cm · 2400 kg · habitat north
 
 **Owed with the maps (not built):** LORE/glossary entries keyed to the sites' own flags
-(`flag:mirelight_ferry`, `flag:old_seams_open` — adding them before content sets those flags
-fails `check_content` E-FLAG), the `legendaryBattle` scripts, cooldown lines.
+(`flag:mirelight_ferry` — adding them before content sets those flags fails `check_content`
+E-FLAG), the `legendaryBattle` scripts, cooldown lines. *Emberroot's are BUILT with the Old
+Seams (§2 D).*

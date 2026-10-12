@@ -36,7 +36,10 @@ def dump(m: dict) -> dict:
     return {"id": m["id"], "w": mm.w, "h": mm.h, "ground": ground,
             "npcs": sorted(mm.static_npc_tiles), "starts": starts, "reach": reach,
             "flows": m.get("flows", []), "spans": m.get("spans", []),
-            "jumps": m.get("jumps", []), "ride": bool(m.get("ride"))}
+            "jumps": m.get("jumps", []), "ride": bool(m.get("ride")),
+            # one-way ledges (tile -> hop direction): the engine hops them on a kit
+            # map exactly as anywhere (Player.updateTraverse's blocked-press path)
+            "ledges": [[i % mm.w, i // mm.w, d] for i, d in enumerate(mm.ledge) if d]}
 
 
 def main() -> int:

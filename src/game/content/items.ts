@@ -129,6 +129,13 @@ export const ITEMS: ItemRegistry = {
     desc: 'A rented two-wheeled runner. Rides the Wick-Run; handed back at the foot.',
     category: 'key',
   },
+  runner_ribbon: {
+    id: 'runner_ribbon',
+    name: 'Runner\'s Ribbon',
+    // ≤ ~80 chars (three-line detail pane)
+    desc: 'Rook\'s red ribbon for a gold Wick-Run. Pell rents you runners for free.',
+    category: 'key',
+  },
   frostglass_lens: {
     id: 'frostglass_lens',
     name: 'Frostglass Lens',
@@ -467,6 +474,14 @@ export const ITEMS: ItemRegistry = {
     desc: 'A lacquered knot of old hearth-resin from a snuffed wayshrine, still faintly warm at the heart. Chandlers prize it for the finest wicks.',
     category: 'valuable',
     sell: 600,
+  },
+  // The Mirelights (09-the-wild-ways §2 B): the Glassmere's current-only cache.
+  glassmere_pearl: {
+    id: 'glassmere_pearl',
+    name: 'Glassmere Pearl',
+    desc: 'A fen-pearl with a small blue light turning inside, like a lost dream.',
+    category: 'valuable',
+    sell: 1200,
   },
   murk_pearl: {
     id: 'murk_pearl',

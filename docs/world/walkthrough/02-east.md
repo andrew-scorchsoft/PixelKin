@@ -102,6 +102,13 @@ to II, not this segment) · Gleam: none · rec. level ~16.
    - NPC: `fen_warden` (`look_around`, `dialogue_ref:'npc.fen_warden'`); route sign +
      boundary sign (`kind:'sign'`, `interact`).
    - no `sets_flags` triggers.
+7. **The Glassmere ferry (2026-10, [09 §2 B](./09-the-wild-ways.md))** — the east edge is Old
+   Ansel's ferry stage (rows 23-24), the blue Mirelights flickering on the inlet beyond. The
+   eel-wife (`script.mirelight_eelwife`, her own story first) asks you to look for her boy
+   Tobin; Ansel won't cross without a Pale Vault true-eye. Seen here at lv ~17; opened at ~40
+   by the Frostglass Lens (`flag:has_frostglass_lens`, Isel at Pale Vault) →
+   `flag:mirelight_ferry` → edge `to_mirelight` → `mirelight_landing`. JOURNAL "The Lights on
+   the Glassmere". Tobin stands by his mother's step once found.
 
 ---
 
@@ -422,7 +429,12 @@ Stone** (→ `flag:crown_east`) · rec. level ~22.
      back · flags: `flag:q_east_ledger` → `flag:q_east_ledger_found` · reward: a high-band
      **crystal item** (folds in the existing grind-reward bullet) · maps: `cinderhead_mine`,
      `cinderhead_deep` · `[MISSABLE]`; the ledger's last page hints at the far galleries —
-     a second page sits beyond the lamp's reach `[LATER: Lamplight ≥ Starlight]`.
+     a second page sits beyond the lamp's reach `[LATER: Lamplight ≥ Starlight]` —
+     **BUILT (2026-10)** as the Old Seams: after the Stone Gleam Otho opens the mine's
+     sealed seam-door ("the seam we don't work", `flag:old_seams_open`), three floors down
+     to the first star and Emberroot; the last page (`script.pickup_seams_ledger_page`) lies
+     in Emberroot's Heart behind the Starlight-gated ladder. See
+     [09 §2 D](./09-the-wild-ways.md).
    - **E1 "The Quiet Reeds"** — see Saltreach Fen II's Named-quests entry (giver lives
      there); listed here for the regional slate count (E1 · E2 · E3 · R3).
 5. **Don't-miss callouts** — **Grind the deep galleries before Otho.** The wall is intentional;
@@ -536,3 +548,21 @@ the shrine, waking at dawn), **E-2** (`script.wren_glowmoss`: Mum's village went
 (Harl's hook rail + the roof-fault cinder in Cinderhead; Cass on Deep B2F). Vignettes: an
 acolyte at a doused null-lantern on Glowmoss B1F. Ambience, ambient kin, cast swaps and Fen II /
 Sunkbell props ride `tools/maps/worldcraft/east.py`; scripts live in `content/regions/east.ts`.
+
+## Traversal pass (2026-10, 09-the-wild-ways §3) — the bay road home
+
+The road from Saltreach Fen I back to the crossroads now *plays* (no table, band, gate or Gift
+change; warps unchanged; `audit_journey` PASS with no GOLDEN edits):
+
+- **Wrackline Path — the Wrack Cut.** A sea-cut gully slices the headland; the wrack-haulers'
+  trestle spans it (`spans` bridge, `under:true`, deck in the `above` layer). The way down
+  crosses **over** the trestle, west across the south bank (a full-height grass band), north up
+  the strand into the cut's sea mouth, then east along the shingle floor **under** the trestle
+  to the cut's head, where Drifter Osk watches the ravine down to the Sounding Cave. Both
+  directions walk the same loop — nothing one-way, nothing to strand on. Before: a straight
+  grass corridor with two bands.
+- **Lanternfall Road — the Lantern Steps.** Three cliff steps cross the hill wall to wall, each
+  with one walk-up ramp alternating east / west / east, so the climb from the crossroads
+  zig-zags; coming down, a one-way grass drop on the middle step's east end runs the descent
+  straight down the east side (52 steps up vs 33 down). Lamp-Keeper Nell now watches the first
+  ramp's foot. Before: a winding lane with no ledges (audit_flow "no loop").

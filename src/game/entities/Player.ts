@@ -198,7 +198,17 @@ export class Player extends Actor {
 
   /** Re-derive deck elevation for the tile we stand on (after a warp/cutscene). */
   settleOn(rules: Traversal | undefined): void {
-    this.elevated = !!rules?.spanAt(this.tx, this.ty);
+    this.elevated = Player.drawnOverDeck(rules, this.tx, this.ty);
+  }
+
+  /**
+   * Drawn above the deck layer: ON a deck, or standing just SOUTH of an
+   * underpass deck (you're in front of it, so your head overlaps it from the
+   * camera's side). Never while passing beneath one (execute clears it).
+   */
+  private static drawnOverDeck(rules: Traversal | undefined, x: number, y: number): boolean {
+    if (!rules) return false;
+    return !!rules.spanAt(x, y) || !!rules.spanAt(x, y - 1)?.under;
   }
 
   override destroy(): void {
@@ -333,7 +343,7 @@ export class Player extends Actor {
     const done = (x: number, y: number) => this.arrived(x, y, dir, t, onArrive);
     if (p.kind === 'step') {
       if (!this.step(dir, () => true, done, ms)) return false;
-      if (p.deck) this.elevated = true;
+      if (p.deck || Player.drawnOverDeck(t.rules, p.to.tx, p.to.ty)) this.elevated = true;
       if (p.deck?.kind === 'ladder') this.playWalkAs('up');
       return true;
     }
@@ -358,7 +368,7 @@ export class Player extends Actor {
   ): void {
     this.lastDir = dir;
     const span = t.rules.spanAt(x, y);
-    this.elevated = !!span;
+    this.elevated = Player.drawnOverDeck(t.rules, x, y);
     if (span?.kind === 'ladder') this.setFacing('up');
     onArrive(x, y);
   }

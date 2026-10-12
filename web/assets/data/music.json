@@ -176,8 +176,8 @@
     },
     {
      "id": "mirelight",
-     "title": "Mirelight",
-     "where": "The Mirelights (the Glassmere: a drowned causeway-field of wandering false blue lights over a still mere)",
+     "title": "The Mirelights",
+     "where": "The Mirelights · The Glassmere · The Drowned Chapel · Lanthorne Hollow",
      "mood": "Eerie but tender: false blue lights drifting over still water, the echoes of a lost kin-light that once led travellers home.",
      "classic": "play/assets/audio/music/mirelight.mp3",
      "classic_loop_start": null,
@@ -249,6 +249,17 @@
      "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/cinderhead-mine-c.mp3",
      "loop_start": 11.029,
+     "note": null
+    },
+    {
+     "id": "old-seams",
+     "title": "The Old Seams",
+     "where": "The Old Seams · The Old Seams: Rail Yard · The Old Seams: Scree Galleries · Emberroot's Heart",
+     "mood": "Abandoned deep galleries: rails and dripping water in the dark, and something vast breathing slowly far below.",
+     "classic": "play/assets/audio/music/old-seams.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/old-seams.mp3",
+     "loop_start": 5.248,
      "note": null
     }
    ]
@@ -418,7 +429,7 @@
     {
      "id": "wickrun",
      "title": "Wick-Run Crest",
-     "where": "Wick-Run Crest · The Wick-Run",
+     "where": "Wick-Run Crest · The Wick-Run · Wick-Run Foot",
      "mood": "Reckless and exhilarating: runner-wheels screaming down a graded chute in the dark, lamps whipping past, the air over the jumps.",
      "classic": "play/assets/audio/music/wickrun.mp3",
      "classic_loop_start": null,

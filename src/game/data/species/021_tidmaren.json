@@ -77,6 +77,34 @@
       "rarity": "rare",
       "min": 18,
       "max": 20
+    },
+    {
+      "area": "mirelight_glassmere",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 40,
+      "max": 42
+    },
+    {
+      "area": "mirelight_glassmere",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 57,
+      "max": 63
+    },
+    {
+      "area": "mirelight_chapel",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 41,
+      "max": 43
+    },
+    {
+      "area": "mirelight_chapel",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 58,
+      "max": 64
     }
   ],
   "scripted": false,

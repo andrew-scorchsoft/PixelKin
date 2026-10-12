@@ -400,32 +400,44 @@
           "max_level": 49
         },
         {
-          "kin_id": 104,
+          "kin_id": 117,
           "weight": 10,
           "min_level": 48,
           "max_level": 49
         },
         {
-          "kin_id": 116,
+          "kin_id": 120,
           "weight": 8,
           "min_level": 48,
           "max_level": 49
         },
         {
-          "kin_id": 121,
+          "kin_id": 104,
           "weight": 6,
           "min_level": 48,
           "max_level": 49
         },
         {
+          "kin_id": 116,
+          "weight": 5,
+          "min_level": 48,
+          "max_level": 49
+        },
+        {
+          "kin_id": 121,
+          "weight": 4,
+          "min_level": 49,
+          "max_level": 49
+        },
+        {
           "kin_id": 127,
-          "weight": 6,
+          "weight": 3,
           "min_level": 49,
           "max_level": 49
         },
         {
           "kin_id": 123,
-          "weight": 4,
+          "weight": 3,
           "min_level": 49,
           "max_level": 49
         }
@@ -468,32 +480,44 @@
           "max_level": 49
         },
         {
-          "kin_id": 104,
+          "kin_id": 117,
           "weight": 10,
           "min_level": 48,
           "max_level": 49
         },
         {
-          "kin_id": 116,
+          "kin_id": 120,
           "weight": 8,
           "min_level": 48,
           "max_level": 49
         },
         {
-          "kin_id": 121,
+          "kin_id": 104,
           "weight": 6,
           "min_level": 48,
           "max_level": 49
         },
         {
+          "kin_id": 116,
+          "weight": 5,
+          "min_level": 48,
+          "max_level": 49
+        },
+        {
+          "kin_id": 121,
+          "weight": 4,
+          "min_level": 49,
+          "max_level": 49
+        },
+        {
           "kin_id": 127,
-          "weight": 6,
+          "weight": 3,
           "min_level": 49,
           "max_level": 49
         },
         {
           "kin_id": 123,
-          "weight": 4,
+          "weight": 3,
           "min_level": 49,
           "max_level": 49
         }
@@ -536,32 +560,44 @@
           "max_level": 49
         },
         {
-          "kin_id": 104,
+          "kin_id": 117,
           "weight": 10,
           "min_level": 48,
           "max_level": 49
         },
         {
-          "kin_id": 116,
+          "kin_id": 120,
           "weight": 8,
           "min_level": 48,
           "max_level": 49
         },
         {
-          "kin_id": 121,
+          "kin_id": 104,
           "weight": 6,
           "min_level": 48,
           "max_level": 49
         },
         {
+          "kin_id": 116,
+          "weight": 5,
+          "min_level": 48,
+          "max_level": 49
+        },
+        {
+          "kin_id": 121,
+          "weight": 4,
+          "min_level": 49,
+          "max_level": 49
+        },
+        {
           "kin_id": 127,
-          "weight": 6,
+          "weight": 3,
           "min_level": 49,
           "max_level": 49
         },
         {
           "kin_id": 123,
-          "weight": 4,
+          "weight": 3,
           "min_level": 49,
           "max_level": 49
         }
@@ -604,32 +640,44 @@
           "max_level": 49
         },
         {
-          "kin_id": 104,
+          "kin_id": 117,
           "weight": 10,
           "min_level": 48,
           "max_level": 49
         },
         {
-          "kin_id": 116,
+          "kin_id": 120,
           "weight": 8,
           "min_level": 48,
           "max_level": 49
         },
         {
-          "kin_id": 121,
+          "kin_id": 104,
           "weight": 6,
           "min_level": 48,
           "max_level": 49
         },
         {
+          "kin_id": 116,
+          "weight": 5,
+          "min_level": 48,
+          "max_level": 49
+        },
+        {
+          "kin_id": 121,
+          "weight": 4,
+          "min_level": 49,
+          "max_level": 49
+        },
+        {
           "kin_id": 127,
-          "weight": 6,
+          "weight": 3,
           "min_level": 49,
           "max_level": 49
         },
         {
           "kin_id": 123,
-          "weight": 4,
+          "weight": 3,
           "min_level": 49,
           "max_level": 49
         }
@@ -672,32 +720,44 @@
           "max_level": 49
         },
         {
-          "kin_id": 104,
+          "kin_id": 117,
           "weight": 10,
           "min_level": 48,
           "max_level": 49
         },
         {
-          "kin_id": 116,
+          "kin_id": 120,
           "weight": 8,
           "min_level": 48,
           "max_level": 49
         },
         {
-          "kin_id": 121,
+          "kin_id": 104,
           "weight": 6,
           "min_level": 48,
           "max_level": 49
         },
         {
+          "kin_id": 116,
+          "weight": 5,
+          "min_level": 48,
+          "max_level": 49
+        },
+        {
+          "kin_id": 121,
+          "weight": 4,
+          "min_level": 49,
+          "max_level": 49
+        },
+        {
           "kin_id": 127,
-          "weight": 6,
+          "weight": 3,
           "min_level": 49,
           "max_level": 49
         },
         {
           "kin_id": 123,
-          "weight": 4,
+          "weight": 3,
           "min_level": 49,
           "max_level": 49
         }
@@ -740,32 +800,44 @@
           "max_level": 49
         },
         {
-          "kin_id": 104,
+          "kin_id": 117,
           "weight": 10,
           "min_level": 48,
           "max_level": 49
         },
         {
-          "kin_id": 116,
+          "kin_id": 120,
           "weight": 8,
           "min_level": 48,
           "max_level": 49
         },
         {
-          "kin_id": 121,
+          "kin_id": 104,
           "weight": 6,
           "min_level": 48,
           "max_level": 49
         },
         {
+          "kin_id": 116,
+          "weight": 5,
+          "min_level": 48,
+          "max_level": 49
+        },
+        {
+          "kin_id": 121,
+          "weight": 4,
+          "min_level": 49,
+          "max_level": 49
+        },
+        {
           "kin_id": 127,
-          "weight": 6,
+          "weight": 3,
           "min_level": 49,
           "max_level": 49
         },
         {
           "kin_id": 123,
-          "weight": 4,
+          "weight": 3,
           "min_level": 49,
           "max_level": 49
         }
@@ -808,32 +880,44 @@
           "max_level": 49
         },
         {
-          "kin_id": 104,
+          "kin_id": 117,
           "weight": 10,
           "min_level": 48,
           "max_level": 49
         },
         {
-          "kin_id": 116,
+          "kin_id": 120,
           "weight": 8,
           "min_level": 48,
           "max_level": 49
         },
         {
-          "kin_id": 121,
+          "kin_id": 104,
           "weight": 6,
           "min_level": 48,
           "max_level": 49
         },
         {
+          "kin_id": 116,
+          "weight": 5,
+          "min_level": 48,
+          "max_level": 49
+        },
+        {
+          "kin_id": 121,
+          "weight": 4,
+          "min_level": 49,
+          "max_level": 49
+        },
+        {
           "kin_id": 127,
-          "weight": 6,
+          "weight": 3,
           "min_level": 49,
           "max_level": 49
         },
         {
           "kin_id": 123,
-          "weight": 4,
+          "weight": 3,
           "min_level": 49,
           "max_level": 49
         }
@@ -876,32 +960,44 @@
           "max_level": 64
         },
         {
-          "kin_id": 104,
+          "kin_id": 117,
           "weight": 10,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 120,
+          "weight": 8,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 104,
+          "weight": 8,
           "min_level": 58,
           "max_level": 64
         },
         {
           "kin_id": 116,
-          "weight": 8,
+          "weight": 6,
           "min_level": 58,
           "max_level": 64
         },
         {
           "kin_id": 121,
-          "weight": 8,
+          "weight": 6,
           "min_level": 59,
           "max_level": 65
         },
         {
           "kin_id": 127,
-          "weight": 8,
+          "weight": 5,
           "min_level": 60,
           "max_level": 65
         },
         {
           "kin_id": 123,
-          "weight": 8,
+          "weight": 5,
           "min_level": 60,
           "max_level": 65
         }
@@ -944,32 +1040,44 @@
           "max_level": 64
         },
         {
-          "kin_id": 104,
+          "kin_id": 117,
           "weight": 10,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 120,
+          "weight": 8,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 104,
+          "weight": 8,
           "min_level": 58,
           "max_level": 64
         },
         {
           "kin_id": 116,
-          "weight": 8,
+          "weight": 6,
           "min_level": 58,
           "max_level": 64
         },
         {
           "kin_id": 121,
-          "weight": 8,
+          "weight": 6,
           "min_level": 59,
           "max_level": 65
         },
         {
           "kin_id": 127,
-          "weight": 8,
+          "weight": 5,
           "min_level": 60,
           "max_level": 65
         },
         {
           "kin_id": 123,
-          "weight": 8,
+          "weight": 5,
           "min_level": 60,
           "max_level": 65
         }
@@ -1012,32 +1120,44 @@
           "max_level": 64
         },
         {
-          "kin_id": 104,
+          "kin_id": 117,
           "weight": 10,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 120,
+          "weight": 8,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 104,
+          "weight": 8,
           "min_level": 58,
           "max_level": 64
         },
         {
           "kin_id": 116,
-          "weight": 8,
+          "weight": 6,
           "min_level": 58,
           "max_level": 64
         },
         {
           "kin_id": 121,
-          "weight": 8,
+          "weight": 6,
           "min_level": 59,
           "max_level": 65
         },
         {
           "kin_id": 127,
-          "weight": 8,
+          "weight": 5,
           "min_level": 60,
           "max_level": 65
         },
         {
           "kin_id": 123,
-          "weight": 8,
+          "weight": 5,
           "min_level": 60,
           "max_level": 65
         }
@@ -1080,32 +1200,44 @@
           "max_level": 64
         },
         {
-          "kin_id": 104,
+          "kin_id": 117,
           "weight": 10,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 120,
+          "weight": 8,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 104,
+          "weight": 8,
           "min_level": 58,
           "max_level": 64
         },
         {
           "kin_id": 116,
-          "weight": 8,
+          "weight": 6,
           "min_level": 58,
           "max_level": 64
         },
         {
           "kin_id": 121,
-          "weight": 8,
+          "weight": 6,
           "min_level": 59,
           "max_level": 65
         },
         {
           "kin_id": 127,
-          "weight": 8,
+          "weight": 5,
           "min_level": 60,
           "max_level": 65
         },
         {
           "kin_id": 123,
-          "weight": 8,
+          "weight": 5,
           "min_level": 60,
           "max_level": 65
         }
@@ -1148,32 +1280,44 @@
           "max_level": 64
         },
         {
-          "kin_id": 104,
+          "kin_id": 117,
           "weight": 10,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 120,
+          "weight": 8,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 104,
+          "weight": 8,
           "min_level": 58,
           "max_level": 64
         },
         {
           "kin_id": 116,
-          "weight": 8,
+          "weight": 6,
           "min_level": 58,
           "max_level": 64
         },
         {
           "kin_id": 121,
-          "weight": 8,
+          "weight": 6,
           "min_level": 59,
           "max_level": 65
         },
         {
           "kin_id": 127,
-          "weight": 8,
+          "weight": 5,
           "min_level": 60,
           "max_level": 65
         },
         {
           "kin_id": 123,
-          "weight": 8,
+          "weight": 5,
           "min_level": 60,
           "max_level": 65
         }
@@ -1216,32 +1360,44 @@
           "max_level": 64
         },
         {
-          "kin_id": 104,
+          "kin_id": 117,
           "weight": 10,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 120,
+          "weight": 8,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 104,
+          "weight": 8,
           "min_level": 58,
           "max_level": 64
         },
         {
           "kin_id": 116,
-          "weight": 8,
+          "weight": 6,
           "min_level": 58,
           "max_level": 64
         },
         {
           "kin_id": 121,
-          "weight": 8,
+          "weight": 6,
           "min_level": 59,
           "max_level": 65
         },
         {
           "kin_id": 127,
-          "weight": 8,
+          "weight": 5,
           "min_level": 60,
           "max_level": 65
         },
         {
           "kin_id": 123,
-          "weight": 8,
+          "weight": 5,
           "min_level": 60,
           "max_level": 65
         }
@@ -1284,32 +1440,44 @@
           "max_level": 64
         },
         {
-          "kin_id": 104,
+          "kin_id": 117,
           "weight": 10,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 120,
+          "weight": 8,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 104,
+          "weight": 8,
           "min_level": 58,
           "max_level": 64
         },
         {
           "kin_id": 116,
-          "weight": 8,
+          "weight": 6,
           "min_level": 58,
           "max_level": 64
         },
         {
           "kin_id": 121,
-          "weight": 8,
+          "weight": 6,
           "min_level": 59,
           "max_level": 65
         },
         {
           "kin_id": 127,
-          "weight": 8,
+          "weight": 5,
           "min_level": 60,
           "max_level": 65
         },
         {
           "kin_id": 123,
-          "weight": 8,
+          "weight": 5,
           "min_level": 60,
           "max_level": 65
         }

@@ -32,7 +32,7 @@
 
 | | |
 |---|---|
-| **Areas** | Hushfrost Pass I → II (frozen route) · **Sunken Solarium** (ruin, Lumenary 7) · Sunvault Climb I → II (sun-garden route) · **Nightreach Observatory** (star-temple town, Lumenary 8) · outer detour **Coldfog Marches I → II** · spurs/landmarks **Aurora Hollow**, **Helia Vault**, **Drownlight Beacon**, **Hollowfen Stillworks** |
+| **Areas** | Hushfrost Pass I → II (frozen route) · **Sunken Solarium** (ruin, Lumenary 7) · Sunvault Climb I → II (sun-garden route) · **Nightreach Observatory** (star-temple town, Lumenary 8) · outer detour **Coldfog Marches I → II** · spurs/landmarks **Aurora Hollow**, **Helia Vault**, **Drownlight Beacon**, **Hollowfen Stillworks** · optional **the Wick-Run** (off Sunvault Climb I's south edge: crest → chute → trestles → traverse → lower run → the foot at the sea, lv 46–50, one-way downhill on a rented runner, the Tallow Lift home — [09 §2 A](./09-the-wild-ways.md)) |
 | **Reading order (MAIN PATH)** | `pale_vault_glacier` → **Hushfrost Pass I → II** → **Sunken Solarium** → **Sunvault Climb I → II** → **Nightreach Observatory** → `vesper_crossroads` (handed to Central). The **Coldfog Marches** detour is OPTIONAL and taken LATE, from the hub — not the road to Nightreach. |
 | **Entry state** (from North) | ~lv40 · holds **Tidecall + Glimmerstep + Updraft Kite + Emberward** · `gleam:storm` + `gleam:frost` · `flag:crown_north` · `flag:shortcut_windward` · narrative ledger `flag:dusk_begins` + `flag:met_hollowing` + `flag:met_cor` |
 | **Exit state** (to Central) | ~lv52 · holds **ALL SIX Lantern Gifts** (adds Sunsketch + Starreach) · **all eight Gleams** · `flag:crown_west` · `flag:hub_unlocked` · narrative ledger `flag:dusk_begins` + `flag:met_hollowing` + `flag:met_cor` + `flag:great_null_known`; the Spire is now openable |
@@ -423,7 +423,7 @@ bridges) · kind route · region west · **enter** from `sunken_solarium` (ungat
   bidir.
 - **Encounter zones:** `tall_grass` — sun-seedling (Verdant/Solar), vine-serpent (Verdant),
   glass-wing bee (Verdant/Light); level band 46–49 (continuous with Solarium ~46 and Nightreach
-  ~48; III/IV add Solray/Solreach/Lunveil/Petalune/Drowshorn). Helia Vault carries rare Solar kin at low weight.
+  ~48; III/IV add Solray/Solreach/Lunveil/Petalune/Drowshorn/Spirlet). Helia Vault carries rare Solar kin at low weight.
 - **NPC:** vine-tender near the bloomed bridge; dialogue ref `npc.sunvault_vine_tender`.
 
 ---
@@ -729,3 +729,13 @@ held) is the final ascent. **Starreach** reopenings handed to Central/East: **Cr
 (Cinderhead Deep, East) and **Starwell** (Penumbra Ring). Arc beats still owed downstream: **B5**
 (confront the Great Null; relight the Keystar/Keylumen by *out-remembering*), and the **Dawn**
 (`flag:dawn`) → [`06-postgame.md`](./06-postgame.md).
+
+## Traversal pass (2026-10, 09-the-wild-ways §3) — Hushfrost Pass I's glare pool
+
+The frozen falls' plunge-pool now spans the north passage as **glare ice** (`flows` ice,
+`build_hushfrost_pass_i.py`): every way between the mid chamber and the west chamber crosses
+it, and on glare ice you slide until something stops you. Three wind-dropped stones are the
+stoppers; reading the falls means stopping under them at (18,5). The sheet is ringed by snow,
+so no stop strands you (checked: every reachable tile can reach both entrances). The
+shortest crossing is one slide down/up column 12. Warps, trainers, caches, the Emberward
+throat and the shipped encounter zones are unchanged. Before: open snow there.

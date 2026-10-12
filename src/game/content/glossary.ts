@@ -348,7 +348,47 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'The village school on Wickstead Green, west of Duskapple Orchard, where every apprentice in the South learns the Wayfaring — types and catching, the Hearth and resting, wicks and Gifts. Its door is open to Wayfarers of any age.',
     unlock_flag: 'flag:school_visited',
   },
-  // THE WILD WAYS (09-the-wild-ways.md, 2026-10)
+  // --- THE WILD WAYS (09-the-wild-ways.md, 2026-10) ---
+  {
+    id: 'wickrun',
+    term: 'the Wick-Run',
+    desc: 'The old wax road down the Sunvault\'s west flank. Before the Long Dusk the chandleries rendered sun-vine tallow up top and ran it down to Pearlmoor in carts — every wick in Vesperholm began on that mountain. When the vines shut the wax stopped, and now the Runners race the chute on runner-wheels for the fun of it.',
+    unlock_flag: 'flag:wickrun_rented',
+  },
+  {
+    id: 'tallow_lift',
+    term: 'the Tallow Lift',
+    desc: 'The cable car that hauled the empty wax-carts back up from the sea to the Sunvault. Its brake was chained at the crest the winter the wax stopped; freed again, it runs both ways — the only way up a road nobody can climb.',
+    unlock_flag: 'flag:tallow_lift_freed',
+  },
+
+  // --- The Wild Ways (09-the-wild-ways.md) --------------------------------------
+  {
+    id: 'old_seams',
+    term: 'the Old Seams',
+    desc: 'The deep workings under Cinderhead that the foremen sealed seventy winters ago, with a chalk-mark and no reason given: "the seam we don\'t work". Below the door are planked shafts, an ore-cart yard of levers and points, and scree that runs only one way — down, toward the warm.',
+    unlock_flag: 'flag:old_seams_open',
+  },
+  {
+    id: 'first_star',
+    term: 'the First Star',
+    desc: 'At the root of Cinderhead the mountain is built around a star that fell before anyone was here to see it. It never guttered. The warm black cinder-coal the miners dig is its breath, cooling very slowly in the stone, and its kin, Emberroot, sleeps curled at its foot.',
+    unlock_flag: 'flag:emberroot_heart_seen',
+  },
+  // --- The Wild Ways (09-the-wild-ways.md) ---
+  {
+    id: 'mirelights',
+    term: 'the Mirelights',
+    desc: 'The blue lights over the Glassmere, east of Saltreach Fen, where the old causeway-village drowned. They were once one light — the fen\'s own lamp, a kin that walked ahead of the boats and brought them home — until the Hollowing put it gently to sleep. These are its dreams, and dreams do not know the way.',
+    unlock_flag: 'flag:mirelight_ferry',
+  },
+  {
+    id: 'lanthorne',
+    term: 'Lanthorne',
+    desc: 'The Mirelight: the fen\'s lamp, woken from its null-lantern under the drowned chapel. Since it woke, the blue lights on the Glassmere have been going out one by one, and a small star over the fen burns a little brighter.',
+    unlock_flag: 'flag:lanthorne_caught',
+  },
+  // THE WILD WAYS (09-the-wild-ways.md, 2026-10) — the Rimeway (C) + the Sunvault face (S)
   {
     id: 'rimeway',
     term: 'the Rimeway',

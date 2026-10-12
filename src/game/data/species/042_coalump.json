@@ -72,6 +72,34 @@
       "rarity": "rare",
       "min": 26,
       "max": 27
+    },
+    {
+      "area": "old_seams_i",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 27,
+      "max": 28
+    },
+    {
+      "area": "old_seams_i",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 56,
+      "max": 61
+    },
+    {
+      "area": "old_seams_iii",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 31,
+      "max": 32
+    },
+    {
+      "area": "old_seams_iii",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 56,
+      "max": 61
     }
   ],
   "scripted": false,

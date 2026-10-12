@@ -101,6 +101,34 @@
       "rarity": "uncommon",
       "min": 22,
       "max": 23
+    },
+    {
+      "area": "mirelight_landing",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 38,
+      "max": 41
+    },
+    {
+      "area": "mirelight_landing",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 55,
+      "max": 62
+    },
+    {
+      "area": "mirelight_chapel",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 41,
+      "max": 42
+    },
+    {
+      "area": "mirelight_chapel",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 58,
+      "max": 63
     }
   ],
   "scripted": false,

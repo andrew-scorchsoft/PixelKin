@@ -102,7 +102,7 @@
     {
       "area": "sunvault_climb_iv",
       "terrain": "tall_grass",
-      "rarity": "uncommon",
+      "rarity": "rare",
       "min": 60,
       "max": 65
     }

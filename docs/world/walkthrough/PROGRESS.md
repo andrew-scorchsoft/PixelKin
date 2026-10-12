@@ -25,6 +25,7 @@ Legend — **Gleam** = the region's constellation reward; **Gift** = the Lantern
 | **Central/Endgame** (05) | — | ✅ **complete** (C1 maps + C2 Spire + C3 wiring, 2026-06; panel SHIP-READY; C6 polish landed c15217d) | — |
 | **The Three Hours** (07) | — | ✅ **complete** (sites + wiring + encounters + the hour-bell music, 2026-06) | — |
 | **Post-game** (06) | — | ✅ **complete** (R2 Dawnstead + R3 Vigils + R4 day-forms, 2026-06) | — |
+| **Wild Ways · B the Mirelights** (09) | — | ✅ **built** (2026-10: Fen I's ferry stage + `mirelight_landing`/`_glassmere`/`_chapel` + `lanthorne_hollow`; builders `build_mirelight_*.py`/`build_lanthorne_hollow.py`, content `regions/mirelight.ts`) | opens once Isel's Frostglass Lens (Rimeway lane, Pale Vault) is merged |
 
 **Playable runway today: the game is CONTENT-COMPLETE — cold open → dawn → post-game.**
 The post-game shipped 2026-06: Dawnstead (R2), the Starfall Vigils chain to the Last
@@ -82,6 +83,7 @@ lane included); X-2 acting ops in the South's key scenes (no added pages); Gullc
 | Spore Grotto (Glimmerstep spur) | `spore_grotto` | ✅ | `build_spore_grotto.py` |
 | **Cinderhead Mine (Stone · Otho · Lamp-down vigil)** | `cinderhead_mine` + lumenary | ✅ 2026-06 | `build_cinderhead_mine*.py` |
 | **Cinderhead Deep — a 3-floor ladder maze** (fork → descent → vigil-lamp; `shortcut_mine`, → Galehigh) | `cinderhead_deep` + `_b1f` + `_b2f` | ✅ 2026-06 | `build_cinderhead_deep{,_b1f,_b2f}.py` |
+| **The Old Seams** (Wild Ways D, [09 §2 D](./09-the-wild-ways.md); Otho opens the mine's seam-door post-Stone → planked shaft benches 27–29 → the lever-switched RAIL YARD puzzle 29–31 → cinder-scree galleries + the foremen's camp rest 31–33 → **Emberroot #166** lv 46 behind a Starlight-gated ladder; 5 seam-miners, 8 caches, the Ledger's last page) | `old_seams_i/ii/iii`, `emberroot_heart` | ✅ 2026-10 | `build_old_seams_{i,ii,iii}.py`, `build_emberroot_heart.py` (kit: `seamskit.py`; tiles: `build_seams_set.py` → `seams_set` + the `old_seams_first_star` object) |
 
 Festivals: Glowmoss Bloom, **Lamp-down vigil**. Arcs delivered: A3 (Wren shaken), B2
 (`met_hollowing` + Còr foreshadow), E. Earned loops: The Tended Bed (#3), **The Descent

@@ -32,6 +32,7 @@ Crossroads** sits beside Tinderwick at the foot of the dark mountain, and the
 | Pearlmoor → home | Saltreach Fen I's *drowned road* (south edge) → Wrackline Path → Sounding Cave (upright) → Lanternfall Road → the Crossroads' north-west road | the loop round the bay (Pearlmoor's west road now runs to the Point beach) |
 | Cinderhead → Galehigh | Cinderhead Deep → **Cinderwind Scarp** → Galehigh | new route, lv 28–31; closes the level gap after the Deep |
 | Hub → Spire | the Crossroads' north road → **Umbral Approach** → Penumbra Ring → Spire | new route, lv 50–53; Wren's join band moves onto it |
+| The Wick-Run (Wild Ways A) | Sunvault Climb I (south edge) → **Wick-Run Crest** (-5,-266) → Chute (-8,-238) → Trestles (-27,-194) → Traverse (-57,-170, the road turns WEST) → Lower Run (-57,-140) → **Wick-Run Foot** (-51,-96) → Lightkeeper's Point's west beach (-21,-83) | ~200 tiles of one-way descent down the mountain's west flank to the sea; every leg is a straight edge link (closes with no misclosure). The way back up is the Tallow Lift — a `travel` ride, not an edge — so the walked map never claims you can climb it. |
 | Nightreach's marshes | Nightreach (east fog gate) → Coldfog Marches II → Marches I (north) → Drownlight Beacon (off Marches I's west flank) | the marsh road from the Crossroads is retired; an old save stranded in Marches I without Emberward wakes at its rest point (`STRANDED_WITHOUT` in `WorldScene`) |
 
 ## The Lantern-car (rides, not roads)

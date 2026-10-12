@@ -140,22 +140,26 @@ NIGHT = [
     {"kin_id": 118, "weight": 18, "min_level": 48, "max_level": 49},  # Helicore
     {"kin_id": 122, "weight": 14, "min_level": 48, "max_level": 49},  # Solray
     {"kin_id": 126, "weight": 12, "min_level": 48, "max_level": 49},  # Lunveil
-    {"kin_id": 104, "weight": 10, "min_level": 48, "max_level": 49},  # Goldmane
-    {"kin_id": 116, "weight": 8, "min_level": 48, "max_level": 49},   # Auravane
-    {"kin_id": 121, "weight": 6, "min_level": 48, "max_level": 49},   # Sunstag
-    {"kin_id": 127, "weight": 6, "min_level": 49, "max_level": 49},   # Lunvane
-    {"kin_id": 123, "weight": 4, "min_level": 49, "max_level": 49},   # Solreach
+    {"kin_id": 117, "weight": 10, "min_level": 48, "max_level": 49},  # Helibud
+    {"kin_id": 120, "weight": 8, "min_level": 48, "max_level": 49},  # Dawnfawn
+    {"kin_id": 104, "weight": 6, "min_level": 48, "max_level": 49},  # Goldmane
+    {"kin_id": 116, "weight": 5, "min_level": 48, "max_level": 49},  # Auravane
+    {"kin_id": 121, "weight": 4, "min_level": 49, "max_level": 49},  # Sunstag
+    {"kin_id": 127, "weight": 3, "min_level": 49, "max_level": 49},  # Lunvane
+    {"kin_id": 123, "weight": 3, "min_level": 49, "max_level": 49},  # Solreach
 ]
 DAY = [
-    {"kin_id": 115, "weight": 16, "min_level": 57, "max_level": 63},
-    {"kin_id": 118, "weight": 16, "min_level": 57, "max_level": 63},
-    {"kin_id": 122, "weight": 14, "min_level": 57, "max_level": 64},
-    {"kin_id": 126, "weight": 12, "min_level": 58, "max_level": 64},
-    {"kin_id": 104, "weight": 10, "min_level": 58, "max_level": 64},
-    {"kin_id": 116, "weight": 8, "min_level": 58, "max_level": 64},
-    {"kin_id": 121, "weight": 8, "min_level": 59, "max_level": 65},
-    {"kin_id": 127, "weight": 8, "min_level": 60, "max_level": 65},
-    {"kin_id": 123, "weight": 8, "min_level": 60, "max_level": 65},
+    {"kin_id": 115, "weight": 16, "min_level": 57, "max_level": 63},  # Solvyne
+    {"kin_id": 118, "weight": 16, "min_level": 57, "max_level": 63},  # Helicore
+    {"kin_id": 122, "weight": 14, "min_level": 57, "max_level": 64},  # Solray
+    {"kin_id": 126, "weight": 12, "min_level": 58, "max_level": 64},  # Lunveil
+    {"kin_id": 117, "weight": 10, "min_level": 57, "max_level": 63},  # Helibud
+    {"kin_id": 120, "weight": 8, "min_level": 57, "max_level": 63},  # Dawnfawn
+    {"kin_id": 104, "weight": 8, "min_level": 58, "max_level": 64},  # Goldmane
+    {"kin_id": 116, "weight": 6, "min_level": 58, "max_level": 64},  # Auravane
+    {"kin_id": 121, "weight": 6, "min_level": 59, "max_level": 65},  # Sunstag
+    {"kin_id": 127, "weight": 5, "min_level": 60, "max_level": 65},  # Lunvane
+    {"kin_id": 123, "weight": 5, "min_level": 60, "max_level": 65},  # Solreach
 ]
 band = mk.make_grid(W, H)
 patch = mk.make_grid(W, H)

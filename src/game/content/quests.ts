@@ -323,8 +323,55 @@ export const QUESTS: QuestRegistry = [
     ],
     done_flag: 'flag:starfall_crown',
   },
-  // ===== THE WILD WAYS (09-the-wild-ways.md, 2026-10) =========================
-  // the Rimeway (C)
+  // ===== THE WILD WAYS (09-the-wild-ways.md, 2026-10) ========================
+  // A · the Wick-Run: Pell's rental opens it; the brake, the three time-trial
+  // tiers and Rook are the stages; Rook's ribbon (a gold run) keeps it.
+  {
+    id: 'wickrun',
+    name: 'The Wick-Run',
+    region: 'west',
+    giver: 'Pell the wheelwright',
+    blurb: 'Ride the old wax road from the Sunvault crest down to the sea on a rented runner — and beat Rook\'s time to the foot for the Runners\' gold.',
+    start_flag: 'flag:wickrun_rented',
+    stage_flags: [
+      'flag:tallow_lift_freed',
+      'flag:runner_rook_beaten',
+      'flag:wickrun_bronze',
+      'flag:wickrun_silver',
+      'flag:wickrun_gold',
+    ],
+    done_flag: 'flag:runner_ribbon',
+  },
+  // The Wild Ways (09 §2 D): the Old Seams under Cinderhead. Otho opens the seam
+  // the foremen sealed; the bottom waits on a Starlight lamp (six Gleams).
+  {
+    id: 'wild_old_seams',
+    name: 'The Seam We Don\'t Work',
+    region: 'east',
+    giver: 'Otho Grist',
+    blurb: 'Below Cinderhead the coal is warm because something breathes on it. Go down through the old benches, the rail yard and the scree to the bottom of the mountain — with a lamp bright enough to see what\'s there.',
+    start_flag: 'flag:old_seams_open',
+    stage_flags: ['flag:emberroot_heart_seen'],
+    done_flag: 'flag:emberroot_caught',
+  },
+  // The Wild Ways (09-the-wild-ways §2 B): seen at lv ~17 off the fen, opened by
+  // a lens from the ice village (Isel, Pale Vault), ended at the null-lantern.
+  {
+    id: 'mirelight_lights',
+    name: 'The Lights on the Glassmere',
+    region: 'east',
+    giver: 'the eel-wife',
+    blurb: 'Tobin rowed out after the blue lights east of Saltreach Fen. Old Ansel won\'t ferry anyone across without a Pale Vault true-eye to tell the true lights from the lies.',
+    start_flag: 'flag:q_mirelight_begun',
+    stage_flags: [
+      'flag:q_mirelight_ansel',
+      'flag:has_frostglass_lens',
+      'flag:mirelight_ferry',
+      'flag:mirelight_tobin_found',
+    ],
+    done_flag: 'flag:lanthorne_caught',
+  },
+  // ===== THE WILD WAYS (09-the-wild-ways.md, 2026-10) — the Rimeway (C) =====
   {
     id: 'rimeway_true_eye',
     name: 'A True-Eye',

@@ -73,6 +73,14 @@ const PRICES = {
 const RARITY_W = { common: 55, uncommon: 30, rare: 12, very_rare: 3, 'very rare': 3 };
 const areaBst = new Map(); // area -> { bstSum, wSum }
 const trend = []; // [midLevel, bst, weight]
+// THE WILD WAYS' optional areas (09-the-wild-ways.md) sit OFF the journey: their
+// beds are deliberately rich (rare lines, deep bands), and as dex rows they would
+// bend the level->BST trend every mainline trainer is costed from. They keep their
+// own areaBst (a leg that names them still reads them) but never enter the trend.
+// Each Wild Ways lane appends its encounter-bearing maps here.
+const TREND_SKIP_AREAS = new Set([
+  'old_seams_i', 'old_seams_ii', 'old_seams_iii', // the Old Seams (D)
+]);
 for (const s of SPECIES) {
   for (const e of s.encounters ?? []) {
     const w = RARITY_W[e.rarity] ?? 10;
@@ -80,6 +88,7 @@ for (const s of SPECIES) {
     cur.bstSum += s.bst * w;
     cur.wSum += w;
     areaBst.set(e.area, cur);
+    if (TREND_SKIP_AREAS.has(e.area)) continue;
     trend.push([(e.min + e.max) / 2, s.bst, w]);
   }
 }
@@ -350,7 +359,12 @@ const JOURNEY = [
       T('Wren (A5 — resolved)', 'rival', [K(49, 9), K(49, 96), K(50, 28)]),
       T('Nessa Cole', 'warden', [K(48, 106), K(49, 112), K(50, 125), K(50, 127), K(52, 107)]),
     ],
-    income: { quests: 800, valuables: 2100, finds: 900 }, // finds += the Sun Ledges' tin (350)
+    // THE WILD WAYS (09 §2 A, optional): the Wick-Run off Sunvault Climb I —
+    // finds += the trestles' wick-purse (300) + the time-trial prizes paid once
+    // each (bronze 200 / silver 400 / gold 600 = 1,200; WICKRUN_PRIZES in
+    // content/regions/wickrun.ts); valuables += the brake-hut's 2 Wax Cakes
+    // (2 x 250). Its six Runners are optional and left out of the trainer loop.
+    income: { quests: 800, valuables: 2600, finds: 2400 }, // + the Sun Ledges' tin (350, §S)
     spend: { bright_balm: 2, chart_end: 1 },
     checkpoint: { name: 'Lunar Gleam (Nessa)', rec: 48, ace: 52 },
   },
@@ -505,6 +519,20 @@ const BUILT_PAYOUTS = {
   sunvault_suncaller: ['route', 49, 784], // the Sunvault face (S)
   sunvault_stargazer: ['route', 49, 784],
   sunvault_ledgewatcher: ['route', 49, 784],
+  runner_tamsin: ['route', 48, 768], // the trestles
+  runner_ossie: ['route', 48, 768],
+  runner_pip: ['route', 49, 784], // the traverse
+  runner_rook: ['route', 50, 800], // the lower run (the Runners' captain)
+  // the Old Seams (D) — under Cinderhead, post-Stone
+  seams_miner_kester: ['route', 30, 480],
+  seams_miner_wenna: ['route', 31, 496],
+  seams_miner_tam: ['route', 31, 496],
+  seams_miner_penhal: ['route', 33, 528],
+  seams_miner_jory: ['route', 33, 528],
+  // the Mirelights (B)
+  mire_eelcatcher: ['route', 40, 640], // the landing
+  mire_lampdiver: ['route', 42, 672], // the Glassmere
+  mire_acolyte: ['route', 43, 688], // the drowned chapel
 };
 const failures = [];
 for (const [id, [klass, ace, authored]] of Object.entries(BUILT_PAYOUTS)) {

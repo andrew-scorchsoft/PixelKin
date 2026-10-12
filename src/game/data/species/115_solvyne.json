@@ -137,6 +137,62 @@
       "rarity": "uncommon",
       "min": 57,
       "max": 63
+    },
+    {
+      "area": "wickrun_chute",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 46,
+      "max": 48
+    },
+    {
+      "area": "wickrun_chute",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 62
+    },
+    {
+      "area": "wickrun_trestles",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 47,
+      "max": 48
+    },
+    {
+      "area": "wickrun_trestles",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 63
+    },
+    {
+      "area": "wickrun_traverse",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 47,
+      "max": 49
+    },
+    {
+      "area": "wickrun_traverse",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 57,
+      "max": 63
+    },
+    {
+      "area": "wickrun_lower",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 48,
+      "max": 50
+    },
+    {
+      "area": "wickrun_lower",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 57,
+      "max": 64
     }
   ],
   "scripted": false,

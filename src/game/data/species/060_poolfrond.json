@@ -112,6 +112,20 @@
       "rarity": "common",
       "min": 57,
       "max": 64
+    },
+    {
+      "area": "mirelight_landing",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 39,
+      "max": 40
+    },
+    {
+      "area": "mirelight_landing",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 61
     }
   ],
   "scripted": false,

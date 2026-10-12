@@ -130,24 +130,26 @@ owed += pt.cache(m, cid="sunvault_brass", at=(3, 18))       # ledge B's west end
 NIGHT = [
     {"kin_id": 126, "weight": 18, "min_level": 48, "max_level": 49},  # Lunveil
     {"kin_id": 122, "weight": 16, "min_level": 48, "max_level": 49},  # Solray
-    {"kin_id": 118, "weight": 14, "min_level": 48, "max_level": 49},  # Helicore
-    {"kin_id": 124, "weight": 12, "min_level": 48, "max_level": 49},  # Petalune
-    {"kin_id": 106, "weight": 10, "min_level": 48, "max_level": 49},  # Drowshorn
-    {"kin_id": 127, "weight": 10, "min_level": 48, "max_level": 49},  # Lunvane
-    {"kin_id": 104, "weight": 8, "min_level": 48, "max_level": 49},   # Goldmane
-    {"kin_id": 123, "weight": 6, "min_level": 49, "max_level": 49},   # Solreach
-    {"kin_id": 125, "weight": 4, "min_level": 49, "max_level": 49},   # Crystalune
+    {"kin_id": 124, "weight": 14, "min_level": 48, "max_level": 49},  # Petalune
+    {"kin_id": 118, "weight": 12, "min_level": 48, "max_level": 49},  # Helicore
+    {"kin_id": 111, "weight": 10, "min_level": 48, "max_level": 49},  # Spirlet
+    {"kin_id": 106, "weight": 8, "min_level": 48, "max_level": 49},  # Drowshorn
+    {"kin_id": 127, "weight": 6, "min_level": 48, "max_level": 49},  # Lunvane
+    {"kin_id": 104, "weight": 5, "min_level": 48, "max_level": 49},  # Goldmane
+    {"kin_id": 123, "weight": 4, "min_level": 49, "max_level": 49},  # Solreach
+    {"kin_id": 125, "weight": 3, "min_level": 49, "max_level": 49},  # Crystalune
 ]
 DAY = [
-    {"kin_id": 126, "weight": 14, "min_level": 58, "max_level": 64},
-    {"kin_id": 122, "weight": 16, "min_level": 57, "max_level": 64},
-    {"kin_id": 118, "weight": 14, "min_level": 57, "max_level": 63},
-    {"kin_id": 124, "weight": 12, "min_level": 58, "max_level": 64},
-    {"kin_id": 106, "weight": 8, "min_level": 58, "max_level": 64},
-    {"kin_id": 127, "weight": 10, "min_level": 60, "max_level": 65},
-    {"kin_id": 104, "weight": 10, "min_level": 58, "max_level": 64},
-    {"kin_id": 123, "weight": 10, "min_level": 60, "max_level": 65},
-    {"kin_id": 125, "weight": 6, "min_level": 60, "max_level": 65},
+    {"kin_id": 126, "weight": 14, "min_level": 58, "max_level": 64},  # Lunveil
+    {"kin_id": 122, "weight": 16, "min_level": 57, "max_level": 64},  # Solray
+    {"kin_id": 124, "weight": 14, "min_level": 58, "max_level": 64},  # Petalune
+    {"kin_id": 118, "weight": 12, "min_level": 57, "max_level": 63},  # Helicore
+    {"kin_id": 111, "weight": 10, "min_level": 57, "max_level": 63},  # Spirlet
+    {"kin_id": 106, "weight": 8, "min_level": 58, "max_level": 64},  # Drowshorn
+    {"kin_id": 127, "weight": 8, "min_level": 60, "max_level": 65},  # Lunvane
+    {"kin_id": 104, "weight": 6, "min_level": 58, "max_level": 64},  # Goldmane
+    {"kin_id": 123, "weight": 6, "min_level": 60, "max_level": 65},  # Solreach
+    {"kin_id": 125, "weight": 5, "min_level": 60, "max_level": 65},  # Crystalune
 ]
 band = mk.make_grid(W, H)
 patch = mk.make_grid(W, H)

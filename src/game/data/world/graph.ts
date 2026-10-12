@@ -191,12 +191,24 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // the Wick-Run (A): Sunvault Climb I's south road -> the crest -> downhill to Lightkeeper's Point
     { map_id: 'wickrun_crest', region: 'west', optional: true, reward: 'the runner rental + the Tallow Lift (frees the lift home)' },
     { map_id: 'wickrun_chute', region: 'west', optional: true, reward: 'run-only Tallowcrest/Wickmere/Warmantis + a kicker-only Lumen Drop' },
-    // the Mirelights (B)
+    { map_id: 'wickrun_trestles', region: 'west', optional: true, reward: 'the Spiral trestle (over, round, under) + two Runners + a wick-purse' },
+    { map_id: 'wickrun_traverse', region: 'west', optional: true, reward: 'the rock garden + the ramp line + a Beacon charge in the cart wreck' },
+    { map_id: 'wickrun_lower', region: 'west', optional: true, reward: 'Rook, the Runners\' captain + the rare Chandrek + a kicker-only Wax Cake cache' },
+    { map_id: 'wickrun_foot', region: 'south', optional: true, reward: 'the finish (time-trial prizes, Rook\'s ribbon) + the Tallow Lift\'s foot station' },
+    // the Mirelights (B): over Ansel's ferry (the Frostglass Lens from Pale Vault), east of Saltreach Fen I
+    { map_id: 'mirelight_landing', region: 'east', optional: true, unlocked_by_flag: 'flag:mirelight_ferry', reward: 'Nell\'s lore, Tobin\'s boat, the first false-light boards; exclusive Tidwraith/Lumplass' },
+    { map_id: 'mirelight_glassmere', region: 'east', optional: true, unlocked_by_flag: 'flag:mirelight_ferry', reward: 'the false-lights maze + currents; the Glassmere Pearl; rare Lampling' },
+    { map_id: 'mirelight_chapel', region: 'east', optional: true, unlocked_by_flag: 'flag:mirelight_ferry', reward: 'Tobin found; the acolyte\'s camp (rest point); the chapel door' },
+    { map_id: 'lanthorne_hollow', region: 'east', optional: true, unlocked_by_flag: 'flag:mirelight_tobin_found', reward: 'LANTHORNE #165 (legendary, lv 45)' },
     // the Rimeway (C): Pale Vault's north road -> the Fold -> the Rime Gate (barred from the marsh side)
     { map_id: 'rimeway_ascent', region: 'north', optional: true, reward: 'the Glare (an ice-slide climb) + the cache pool' },
     { map_id: 'rimeway_fold', region: 'north', optional: true, reward: 'Vaultclaw #76 (Fold-only) + the clear-ice core for Isel\'s Frostglass Lens' },
     { map_id: 'rimeway_descent', region: 'outer', optional: true, reward: 'lifts the Rime Gate: a Coldfog <-> Pale Vault return road' },
-    // the Old Seams (D)
+    // the Old Seams (D): Cinderhead Mine's seam-door (Otho, post-Stone) -> three floors down -> the first star
+    { map_id: 'old_seams_i', region: 'east', optional: true, reward: 'the Shaft Benches: planks + ladders, Orebound beds, a pillar-islet charge' },
+    { map_id: 'old_seams_ii', region: 'east', optional: true, reward: 'the Rail Yard puzzle: rare Ferrolith, the siding\'s starglass' },
+    { map_id: 'old_seams_iii', region: 'east', optional: true, reward: 'the Scree Galleries: Pyrolith/Lithonyx, very rare Prismara, a scree-only Lumen Drop' },
+    { map_id: 'emberroot_heart', region: 'east', optional: true, reward: 'EMBERROOT #166 (lv 46, Starlight return) + the Ledger\'s last page' },
     // Sunvault Climb rebuild (S)
     { map_id: 'sunvault_climb_iii', region: 'west' }, // route: the Gilt Face (ladder pitches, the trestle over the gully)
     { map_id: 'sunvault_climb_iv', region: 'west' }, // route: the Sun Ledges (planks + ledges to the observatory hill)
@@ -392,13 +404,25 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'sunvault_climb_i', to_map: 'wickrun_crest', via_warp: 'to_wickrun', bidirectional: true },
     { from_map: 'wickrun_crest', to_map: 'wickrun_chute', via_warp: 'to_chute', requires_flag: 'flag:wickrun_riding', bidirectional: true },
     { from_map: 'wickrun_chute', to_map: 'wickrun_trestles', via_warp: 'to_trestles', bidirectional: false },
-    // the Mirelights (B)
+    { from_map: 'wickrun_trestles', to_map: 'wickrun_traverse', via_warp: 'to_traverse', bidirectional: false },
+    { from_map: 'wickrun_traverse', to_map: 'wickrun_lower', via_warp: 'to_lower', bidirectional: false },
+    { from_map: 'wickrun_lower', to_map: 'wickrun_foot', via_warp: 'to_foot', bidirectional: false },
+    { from_map: 'wickrun_foot', to_map: 'pearlmoor_point', via_warp: 'to_point', bidirectional: true },
+    // the Mirelights (B): Ansel's ferry is an honest edge link held by his flag
+    { from_map: 'saltreach_fen_i', to_map: 'mirelight_landing', via_warp: 'to_mirelight', requires_flag: 'flag:mirelight_ferry', bidirectional: true },
+    { from_map: 'mirelight_landing', to_map: 'mirelight_glassmere', via_warp: 'to_glassmere', bidirectional: true },
+    { from_map: 'mirelight_glassmere', to_map: 'mirelight_chapel', via_warp: 'to_chapel', bidirectional: true },
+    { from_map: 'mirelight_chapel', to_map: 'lanthorne_hollow', via_warp: 'to_hollow', requires_flag: 'flag:mirelight_tobin_found', bidirectional: true },
     // the Rimeway (C): open from Pale Vault (North era); the Rime Gate is lifted from the Descent (West era)
     { from_map: 'pale_vault_glacier', to_map: 'rimeway_ascent', via_warp: 'to_rimeway', bidirectional: true },
     { from_map: 'rimeway_ascent', to_map: 'rimeway_fold', via_warp: 'to_fold', bidirectional: true },
     { from_map: 'coldfog_marches_ii', to_map: 'rimeway_descent', via_warp: 'to_rimeway', bidirectional: true },
     { from_map: 'rimeway_fold', to_map: 'rimeway_descent', via_warp: 'to_descent', requires_flag: 'flag:rime_gate_open', bidirectional: true },
-    // the Old Seams (D)
+    // the Old Seams (D): floors stacked by ladders (portals — they never touch surface geometry)
+    { from_map: 'cinderhead_mine', to_map: 'old_seams_i', via_warp: 'to_old_seams', requires_flag: 'flag:old_seams_open', bidirectional: true },
+    { from_map: 'old_seams_i', to_map: 'old_seams_ii', via_warp: 'ladder_down', bidirectional: true },
+    { from_map: 'old_seams_ii', to_map: 'old_seams_iii', via_warp: 'ladder_down', bidirectional: true },
+    { from_map: 'old_seams_iii', to_map: 'emberroot_heart', via_warp: 'to_heart', requires_flag: 'flag:lamplight_starlight', bidirectional: true },
     // Sunvault Climb rebuild (S): the climb is four maps (the main path, ungated past the vines)
     { from_map: 'sunvault_climb_ii', to_map: 'sunvault_climb_iii', via_warp: 'to_climb_iii', bidirectional: true },
     { from_map: 'sunvault_climb_iii', to_map: 'sunvault_climb_iv', via_warp: 'to_climb_iv', bidirectional: true },

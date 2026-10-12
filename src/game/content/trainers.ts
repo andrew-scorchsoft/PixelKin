@@ -1259,7 +1259,80 @@ export const TRAINERS: TrainerRegistry = {
     ],
     payout: 784, // route 16 × ace 49
   },
+  runner_tamsin: {
+    id: 'runner_tamsin',
+    name: 'TAMSIN',
+    title: 'Runner',
+    party: [
+      { species_id: 11, level: 47 }, // Tallowcrest — Ember
+      { species_id: 116, level: 48 }, // Auravane — Verdant/Solar (ace)
+    ],
+    payout: 768, // route 16 × ace 48
+  },
+  runner_ossie: {
+    id: 'runner_ossie',
+    name: 'OSSIE',
+    title: 'Runner',
+    party: [
+      { species_id: 6, level: 47 }, // Wickmere — Light/Ember
+      { species_id: 121, level: 48 }, // Sunstag — Solar/Verdant (ace)
+    ],
+    payout: 768, // route 16 × ace 48
+  },
+  runner_pip: {
+    id: 'runner_pip',
+    name: 'PIP',
+    title: 'Runner',
+    party: [
+      { species_id: 115, level: 48 }, // Solvyne — Solar/Verdant
+      { species_id: 19, level: 49 }, // Warmantis — Ember/Light (ace)
+    ],
+    payout: 784, // route 16 × ace 49
+  },
+  runner_rook: {
+    id: 'runner_rook',
+    name: 'ROOK',
+    title: 'Runners\' Captain',
+    party: [
+      { species_id: 11, level: 48 }, // Tallowcrest — Ember
+      { species_id: 121, level: 49 }, // Sunstag — Solar/Verdant
+      { species_id: 12, level: 49 }, // Chandrek — Ember/Light
+      { species_id: 7, level: 50 }, // Wicklord — Light/Ember (ace)
+    ],
+    payout: 800, // route 16 × ace 50
+  },
   // the Mirelights (B)
+  mire_eelcatcher: {
+    id: 'mire_eelcatcher',
+    name: 'MOSS',
+    title: 'Eel-catcher',
+    party: [
+      { species_id: 28, level: 39 }, // Brinewrath — Tide
+      { species_id: 61, level: 40 }, // Tidalarch — Verdant/Tide (ace)
+    ],
+    payout: 640, // route 16 × ace 40
+  },
+  mire_lampdiver: {
+    id: 'mire_lampdiver',
+    name: 'ODO',
+    title: 'Lamp-diver',
+    party: [
+      { species_id: 32, level: 40 }, // Lumplass — Tide/Light
+      { species_id: 68, level: 41 }, // Fernlance — Verdant/Light
+      { species_id: 22, level: 42 }, // Tidwraith — Tide/Light (ace)
+    ],
+    payout: 672, // route 16 × ace 42
+  },
+  mire_acolyte: {
+    id: 'mire_acolyte',
+    name: 'BROTHER IVES',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 22, level: 41 }, // Tidwraith — Tide/Light
+      { species_id: 32, level: 43 }, // Lumplass — Tide/Light (ace)
+    ],
+    payout: 688, // route 16 × ace 43
+  },
   // the Rimeway (C): two rime-walkers (North era, 40-42) + the fog-walker (West era, 46-48)
   rimeway_walker_ivo: {
     id: 'rimeway_walker_ivo',
@@ -1296,7 +1369,58 @@ export const TRAINERS: TrainerRegistry = {
     payout: 768, // route 16 × ace 48
     music: 'battle-emberfall',
   },
-  // the Old Seams (D)
+  // the Old Seams (D): the old hands Otho let down to see the seam their grandparents sealed
+  seams_miner_kester: {
+    id: 'seams_miner_kester',
+    name: 'KESTER',
+    title: 'Seam-miner',
+    party: [
+      { species_id: 49, level: 29 }, // Gravelo — Stone
+      { species_id: 54, level: 30 }, // Orebound — Stone (ace)
+    ],
+    payout: 480, // route 16 × ace 30
+  },
+  seams_miner_wenna: {
+    id: 'seams_miner_wenna',
+    name: 'WENNA',
+    title: 'Seam-miner',
+    party: [
+      { species_id: 43, level: 30 }, // Pyrolith — Ember/Stone
+      { species_id: 69, level: 31 }, // Riddlestone — Stone (ace)
+    ],
+    payout: 496, // route 16 × ace 31
+  },
+  seams_miner_tam: {
+    id: 'seams_miner_tam',
+    name: 'TAM',
+    title: 'Seam-miner',
+    party: [
+      { species_id: 45, level: 30 }, // Sparkrat — Stone/Storm
+      { species_id: 54, level: 31 }, // Orebound — Stone (ace)
+    ],
+    payout: 496, // route 16 × ace 31
+  },
+  seams_miner_penhal: {
+    id: 'seams_miner_penhal',
+    name: 'PENHAL',
+    title: 'Seam-miner',
+    party: [
+      { species_id: 42, level: 31 }, // Coalump — Ember
+      { species_id: 52, level: 32 }, // Lithonyx — Stone
+      { species_id: 43, level: 33 }, // Pyrolith — Ember/Stone (ace)
+    ],
+    payout: 528, // route 16 × ace 33
+  },
+  seams_miner_jory: {
+    id: 'seams_miner_jory',
+    name: 'JORY',
+    title: 'Seam-miner',
+    party: [
+      { species_id: 54, level: 32 }, // Orebound — Stone
+      { species_id: 55, level: 33 }, // Ferrolith — Stone (ace)
+    ],
+    payout: 528, // route 16 × ace 33
+  },
   // Sunvault Climb rebuild (S): the Gilt Face + the Sun Ledges (48-49)
   sunvault_suncaller: {
     id: 'sunvault_suncaller',
