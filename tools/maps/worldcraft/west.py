@@ -87,6 +87,7 @@ PLACEMENTS: dict[str, dict] = {
     },
     # ---- the Sunken Solarium + its Lumenary — sun-motes and a warm wash
     "sunken_solarium": {
+        "sprites": {"andrew_road": "andrew_sunhat"},  # Andrew in costume (his fence, his look)
         "ambience": dict(SUN),
         "npcs": recast("sunken_solarium", {
             "gleam_elder": "sun_keeper", "bread_sharer": "market_trader",
@@ -142,6 +143,7 @@ PLACEMENTS: dict[str, dict] = {
     },
     # ---- Nightreach — the densest sky: star-glints, frequent streaks
     "nightreach_observatory": {
+        "sprites": {"andrew_road": "andrew_frost"},  # Andrew in costume (his fence, his look)
         "ambience": {"particles": [particles("starglint", 1.0)],
                      "tint": {"color": "#9fb0e8", "alpha": 0.04},
                      "starfall": {"min_s": 25, "max_s": 55}},

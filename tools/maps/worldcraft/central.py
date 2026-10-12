@@ -109,6 +109,7 @@ PLACEMENTS: dict[str, dict] = {
     },
     # DAWNSTEAD — the first true morning: warm motes, a gold wash, birds about.
     "dawnstead": {
+        "sprites": {"andrew_road": "andrew_party"},  # Andrew in costume (his fence, his look)
         "ambience": {
             "particles": [particles("motes", 0.6), particles("leaves", 0.25)],
             "tint": {"color": "#ffd089", "alpha": 0.08},

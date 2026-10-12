@@ -61,6 +61,15 @@ const SPRITE_SHEETS: Record<string, string> = {
   // Andrew at the Tinderwick fence — the naming beat + the easter-egg nudge.
   // Distinct from `lifter_andrew`, the bench-bound Andrew in the Lifting House.
   andrew_ward: 'andrew_ward',
+  // His costumes — the same Andrew dressed for the fence he's leaning on
+  // (each falls back to the classic `andrew_ward` sheet via REGIONAL_FALLBACK).
+  andrew_frost: 'andrew_frost', // bobble hat + scarf: the frost towns
+  andrew_quay: 'andrew_quay', // flat cap + waistcoat: Pearlmoor Quay
+  andrew_miner: 'andrew_miner', // lamp helmet: Cinderhead
+  andrew_sunhat: 'andrew_sunhat', // straw sun hat: the Sunken Solarium
+  andrew_party: 'andrew_party', // party hat: Dawnstead, the dawn
+  andrew_coder: 'andrew_coder', // hoodie + laptop: he runs a software studio
+  andrew_cyclist: 'andrew_cyclist', // helmet + jersey: the windy terraces
   lifter_andy: 'lifter_andy',
   lifter_andrew: 'lifter_andrew',
   lifter_abdul: 'lifter_abdul',
@@ -134,6 +143,13 @@ const REGIONAL_FALLBACK: Record<string, string> = {
   road_courier: 'npc_man',
   hollowing_elder: 'npc_old_man',
   kite_child: 'npc_girl',
+  andrew_frost: 'andrew_ward',
+  andrew_quay: 'andrew_ward',
+  andrew_miner: 'andrew_ward',
+  andrew_sunhat: 'andrew_ward',
+  andrew_party: 'andrew_ward',
+  andrew_coder: 'andrew_ward',
+  andrew_cyclist: 'andrew_ward',
 };
 
 /** Placeholder body colours so distinct NPCs read apart before real walk-sheets. */
