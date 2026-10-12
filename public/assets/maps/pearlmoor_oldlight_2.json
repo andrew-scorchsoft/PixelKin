@@ -735,31 +735,11 @@
       "h": 3
     },
     {
-      "id": "footlight_l",
-      "sprite": "interior_brazier",
-      "at": {
-        "tx": 8,
-        "ty": 8
-      },
-      "w": 1,
-      "h": 2
-    },
-    {
-      "id": "footlight_r",
-      "sprite": "interior_brazier",
-      "at": {
-        "tx": 14,
-        "ty": 8
-      },
-      "w": 1,
-      "h": 2
-    },
-    {
       "id": "curtain_l",
       "sprite": "oldlight_stage_curtain",
       "at": {
-        "tx": 7,
-        "ty": 6
+        "tx": 8,
+        "ty": 8
       },
       "w": 1,
       "h": 2,
@@ -769,8 +749,8 @@
       "id": "curtain_r",
       "sprite": "oldlight_stage_curtain_r",
       "at": {
-        "tx": 15,
-        "ty": 6
+        "tx": 14,
+        "ty": 8
       },
       "w": 1,
       "h": 2,

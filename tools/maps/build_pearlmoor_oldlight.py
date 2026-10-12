@@ -90,6 +90,7 @@ OL = {
     "whoopee": (1, 1, "decal"), "banana": (1, 1, "decal"), "confetti": (1, 1, "decal"),
     "mask_wall": (1, 1, "hung"), "applause_sign": (2, 1, "hung"), "bunting": (2, 1, "hung"),
     "clock_backwards": (1, 1, "hung"), "funhouse_mirror": (1, 2, "wall"),
+    "wax_shine": (1, 1, "decal"), "wax_shine_b": (1, 1, "decal"),
 }
 
 
@@ -312,10 +313,9 @@ def floor_2():
     # the HALL: the little stage against the long wall, footlights, the pews
     objects.append({"id": "stage", "sprite": "solarium_stage_arch",
                     "at": {"tx": 9, "ty": MID + 1}, "w": 5, "h": 3})
-    place(objects, "brazier", 8, MID + 1, oid="footlight_l")
-    place(objects, "brazier", 14, MID + 1, oid="footlight_r")
-    for oid, stem, x in (("curtain_l", "stage_curtain", 7), ("curtain_r", "stage_curtain_r", 15)):
-        objects.append({"id": oid, "sprite": f"oldlight_{stem}", "at": {"tx": x, "ty": MID - 1},
+    # the red curtains frame the stage arch itself (in place of the old footlight braziers)
+    for oid, stem, x in (("curtain_l", "stage_curtain", 8), ("curtain_r", "stage_curtain_r", 14)):
+        objects.append({"id": oid, "sprite": f"oldlight_{stem}", "at": {"tx": x, "ty": MID + 1},
                         "w": 1, "h": 2, "solid": False})
     ol(objects, "spotlight", 16, MID + 2, oid="spotlight")
     place(objects, "pew", 9, 11, oid="pew_a")
@@ -357,6 +357,9 @@ def floor_3():
     sign_at(triggers, "teacups_sign", 7, 3, "sign.oldlight_teacups")
     place(objects, "stool", 3, 4, oid="bar_stool")
     place(objects, "stool", 6, 4, oid="bar_stool_b")
+    # the hall is TWO rooms (the floor's own shape): the Hall of Mouths (west)
+    # and the computer room (east), one doorway between them at row 11
+    partition_v(over, W, 11, MID + 1, H - 2, lip="w", doors=(11,))
     # the HALL OF MOUTHS: soft furniture with faces and opinions on the long wall
     wall_mount(objects, "stove", 6, face_row=MID)            # the stove that laughs first
     wall_mount(objects, "bookcase", 9, face_row=MID)         # the bookcase that clears its throat
@@ -433,10 +436,11 @@ def floor_4():
     place(objects, "brazier", 15, 10, oid="brazier_r")
     # the MIRROR MAZE (small): free-standing funhouse glasses zig-zag the east
     # hall, so the walk to the stair is a little dance with your reflections
-    for i, (x, y) in enumerate(((17, 9), (19, 11), (13, 10))):
+    for i, (x, y) in enumerate(((17, 9), (19, 11), (13, 10), (17, 12), (19, 8))):
         objects.append({"id": f"maze_mirror_{i}", "sprite": "oldlight_funhouse_mirror",
                         "at": {"tx": x, "ty": y}, "w": 1, "h": 2})
     sign_at(triggers, "maze_sign", 20, 9, "sign.oldlight_mirror_maze")
+    sign_at(triggers, "maze_end", 19, 12, "sign.oldlight_maze_end")  # the dead end's glass
     # THE MIRROR in the south-west alcove (optional): a mimic, battles in pairs
     alcove_trainer(over, npcs, 5, "mirror", "player_indi")  # wears YOUR face
     # the stair room (NW): the RINGMASTER guards the tube
@@ -479,6 +483,9 @@ def floor_5():
     # glare-ice FLOW (traversal kit: you skid until something stops you), with
     # banana skins on it, because of course. Dry ground either side; never a trap.
     m_flows = [{"id": "waxed_floor", "kind": "ice", "rect": {"tx": 4, "ty": 8, "w": 14, "h": 2}}]
+    for y in (8, 9):  # the shine, painted over every tile of the flow
+        for x in range(4, 18):
+            ol(objects, "wax_shine" if (x + y) % 2 else "wax_shine_b", x, y, oid=f"wax_{x}_{y}")
     for i, (x, y) in enumerate(((7, 8), (13, 9), (16, 8))):
         ol(objects, "banana", x, y, oid=f"slick_banana_{i}")
     triggers.append({"id": "waxed_floor_warn", "kind": "cutscene", "at": {"tx": 3, "ty": 7},

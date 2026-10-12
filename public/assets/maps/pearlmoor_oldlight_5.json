@@ -821,6 +821,314 @@
       "h": 2
     },
     {
+      "id": "wax_4_8",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 4,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_5_8",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 5,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_6_8",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 6,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_7_8",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 7,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_8_8",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 8,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_9_8",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 9,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_10_8",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 10,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_11_8",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 11,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_12_8",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 12,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_13_8",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 13,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_14_8",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 14,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_15_8",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 15,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_16_8",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 16,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_17_8",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 17,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_4_9",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 4,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_5_9",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 5,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_6_9",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 6,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_7_9",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 7,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_8_9",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 8,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_9_9",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 9,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_10_9",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 10,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_11_9",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 11,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_12_9",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 12,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_13_9",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 13,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_14_9",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 14,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_15_9",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 15,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_16_9",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 16,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_17_9",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 17,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
       "id": "slick_banana_0",
       "sprite": "oldlight_banana",
       "at": {

@@ -15,6 +15,11 @@
  * with the case. Changes there ship SILENTLY; announce only general things.
  */
 export const WHATS_NEW: Record<string, string[]> = {
+  '1.19': [
+    'Five new kin have moved into the Old Light, and they are clowns: JesterHalf, The Smiler and McClownface roam its halls, and two of them kindle into something even sillier.',
+    'Every floor of the tower now has a look of its own in battle, and a few floors have changed shape. Mind the waxed gallery floor.',
+    'An old friend of the house climbs alongside you now, one floor ahead, with a story to tell on the way up.',
+  ],
   '1.18': [
     'The Old Light on Lightkeeper\'s Point has opened its doors properly: seven big floors to wander, a house full of regulars with jokes of their own, and a song that gets a little stranger with every flight of stairs.',
     'Wild kin roam the tower\'s halls now, and a few of its regulars fancy a bout. There are tea and a quiet chair on the way up, if you need a rest.',

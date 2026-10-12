@@ -828,6 +828,32 @@ def confetti():
     return img(a)
 
 
+def _wax(flip: bool):
+    a = canvas(1, 1)
+    # a thin wash of polish over the whole tile (reads as a wet sheen on any
+    # floor pattern) + two hard diagonal glints, one long, one short
+    a[:, :] = rgba("#dff4ff", 70)
+    long_ = [(2 + i, 12 - i) for i in range(8)]
+    short = [(9 + i, 14 - i) for i in range(4)]
+    for (x, y) in long_ + short:
+        if flip:
+            x = 15 - x
+        a[y, x] = rgba("#ffffff", 220)
+        if 0 <= y + 1 < 16:
+            a[y + 1, x] = rgba("#bfe6ff", 150)
+    return img(a)
+
+
+def wax_shine():
+    """1x1 a freshly waxed floor: a cool sheen + glints (F5's glare-ice lane)."""
+    return _wax(False)
+
+
+def wax_shine_b():
+    """1x1 the same polish, glints mirrored (alternate so the lane never tiles)."""
+    return _wax(True)
+
+
 # =============================================================================
 #  WALL-HUNG (face row, solid:false) — drawn inside the 16px wall-face band
 # =============================================================================
@@ -1379,6 +1405,7 @@ PIECES = {
     "spotlight": spotlight, "cog_heap": cog_heap, "tea_urn": tea_urn,
     # floor decals (solid:false, no shadow)
     "whoopee": whoopee, "banana": banana, "confetti": confetti,
+    "wax_shine": wax_shine, "wax_shine_b": wax_shine_b,
     # wall-hung (face row, solid:false)
     "mask_wall": mask_wall, "applause_sign": applause_sign, "bunting": bunting,
     "clock_backwards": clock_backwards,
@@ -1401,6 +1428,7 @@ FOOTPRINT = {
     "unicycle": (1, 2), "spring_can": (1, 1), "upside_chair": (1, 1),
     "spotlight": (1, 2), "cog_heap": (2, 1), "tea_urn": (2, 2),
     "whoopee": (1, 1), "banana": (1, 1), "confetti": (1, 1),
+    "wax_shine": (1, 1), "wax_shine_b": (1, 1),
     "mask_wall": (1, 1), "applause_sign": (2, 1), "bunting": (2, 1),
     "clock_backwards": (1, 1), "funhouse_mirror": (1, 2),
     "punchwheel_drum": (4, 5),

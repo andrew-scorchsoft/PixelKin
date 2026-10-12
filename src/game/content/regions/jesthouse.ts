@@ -303,6 +303,10 @@ export const JESTHOUSE_DIALOGUE: DialogueRegistry = {
     sign('A card on a stand: MIRROR MAZE (SMALL). EXIT: THAT WAY.'),
     sign('Underneath, in the same hand: (THE OTHER THAT WAY.)'),
   ],
+  'sign.oldlight_maze_end': [
+    sign('A dead end, and a tall mirror in it. Someone has chalked an arrow on the glass, pointing at you: EXIT.'),
+    sign('You are not the exit. You check twice.'),
+  ],
   'sign.oldlight_audience': [
     sign('Rows of stools, set out for an audience. Every one has been dusted. Not one has been sat on.'),
     sign('They all face the little table with the two cups.'),

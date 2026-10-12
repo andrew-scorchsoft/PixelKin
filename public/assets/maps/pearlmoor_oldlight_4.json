@@ -846,6 +846,26 @@
       "h": 2
     },
     {
+      "id": "maze_mirror_3",
+      "sprite": "oldlight_funhouse_mirror",
+      "at": {
+        "tx": 17,
+        "ty": 12
+      },
+      "w": 1,
+      "h": 2
+    },
+    {
+      "id": "maze_mirror_4",
+      "sprite": "oldlight_funhouse_mirror",
+      "at": {
+        "tx": 19,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 2
+    },
+    {
       "id": "speaking_tube",
       "sprite": "solarium_sun_mask",
       "at": {
@@ -1054,6 +1074,16 @@
       },
       "activation": "interact",
       "ref": "sign.oldlight_mirror_maze"
+    },
+    {
+      "id": "maze_end",
+      "kind": "sign",
+      "at": {
+        "tx": 19,
+        "ty": 12
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_maze_end"
     },
     {
       "id": "riddle_band",

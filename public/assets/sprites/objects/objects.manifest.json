@@ -1729,6 +1729,20 @@
       "tw": 1,
       "th": 1
     },
+    "oldlight_wax_shine": {
+      "path": "assets/sprites/objects/oldlight_wax_shine.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "oldlight_wax_shine_b": {
+      "path": "assets/sprites/objects/oldlight_wax_shine_b.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
     "oldlight_whoopee": {
       "path": "assets/sprites/objects/oldlight_whoopee.webp",
       "width": 16,
