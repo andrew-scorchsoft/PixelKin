@@ -52,13 +52,16 @@ above = mk.make_grid(W, H)
 mk.rect(cliff, W, H, 0, 0, W - 1, 1)
 mk.organic_border(tree, W, H, left=1, right=1, depth=2,
                   bumps=[(1, 6, 2), (28, 4, 1), (1, 17, 2), (28, 18, 2)], rng=rng)
-for y in range(19, H):
+for y in (19, 20):                          # the lip + its face...
     mk.hline(cliff, W, H, y, 0, W - 1)
+for y in range(21, H):                      # ...and the forest far below
+    mk.hline(tree, W, H, y, 0, W - 1)
 for x in (14, 15):                         # the notch from the Sunvault
     cliff[0 * W + x] = cliff[1 * W + x] = 0
 for y in range(19, H):                      # the start lane through the drop
     for x in (9, 10, 11, 12):
         cliff[y * W + x] = 0
+        tree[y * W + x] = 0
 for y in range(20, H):
     for x in (9, 12):
         tree[y * W + x] = 1                 # pines hem the lane as it drops
@@ -120,23 +123,23 @@ for i, x in enumerate((10, 11)):
 owed.append("npc.wickrun_gate_blocked")
 
 # ---- 1. the Tallow Lift's top house (east) ----------------------------------
-# (stand-in sprite until the wickrun object kit lands: the kite-wrights' winch
-# is the same engineering — 4x5, walk-under top three rows, solid base rows 3-4)
-LX, LY = 21, 9
-obj("lift_top", "galehigh_winch", (LX, LY), 4, 5, overhang=3, walk_under=True)
+# (the lift house: 4x4, a solid building; you work the brake from its front)
+LX, LY = 21, 10
+obj("lift_top", "wickrun_lift_house_top", (LX, LY), 4, 4, overhang=2)
 for tx in range(LX, LX + 4):
     m["triggers"].append({"id": f"lift_top_{tx}", "kind": "cutscene",
-                          "at": {"tx": tx, "ty": LY + 4}, "activation": "interact",
+                          "at": {"tx": tx, "ty": LY + 3}, "activation": "interact",
                           "ref": "script.tallow_lift_top"})
 owed.append("script.tallow_lift_top")
-LANE |= {(x, LY + 5) for x in range(LX, LX + 4)}
+LANE |= {(x, LY + 4) for x in range(LX, LX + 4)}
 for x in range(LX, LX + 4):
-    path[(LY + 5) * W + x] = 1
-    tree[(LY + 5) * W + x] = 0
+    path[(LY + 4) * W + x] = 1
+    tree[(LY + 4) * W + x] = 0
 obj("lift_lamp", "tinderwick_lamp_post", (26, 11), 1, 3, overhang=2, walk_under=True)
+obj("lift_pylon", "wickrun_lift_pylon", (26, 5), 1, 4, overhang=3, walk_under=True)
 
 # ---- 2. the rental ----------------------------------------------------------
-obj("runner_rack", "galehigh_kite_rack", (12, 13), 3, 2)
+obj("runner_rack", "wickrun_runner_rack", (12, 13), 2, 2)
 m["npcs"].append({"id": "pell", "at": {"tx": 15, "ty": 14}, "facing": "down",
                   "sprite": "npc_man", "movement": "static",
                   "dialogue_ref": "script.wickrun_rental"})
@@ -147,14 +150,12 @@ m["npcs"].append({"id": "runner_kid", "at": {"tx": 18, "ty": 16}, "facing": "lef
 owed.append("npc.wickrun_runner_kid")
 
 # ---- 3. the chandlery ruin + its cold hearth (a rest point) ------------------
-obj("chandlery_col", "sunvault_colonnade", (3, 3), 3, 3, overhang=1)
-obj("chandlery_masonry", "sunvault_masonry", (7, 4), 2, 2, overhang=1)
-obj("chandlery_fallen", "solarium_column_fallen", (2, 7), 3, 1)
+obj("chandlery", "wickrun_chandlery_ruin", (2, 3), 5, 4, overhang=2)
 obj("chandlery_hearth", "solarium_brazier_lit", (8, 7), 2, 3, overhang=1)
 m["triggers"].append({"id": "chandlery_rest", "kind": "cutscene", "at": {"tx": 8, "ty": 9},
                       "activation": "interact", "ref": "script.wickrun_crest_rest"})
 owed.append("script.wickrun_crest_rest")
-obj("wax_crates", "pearlmoor_fish_crates", (5, 8), 1, 1)
+obj("wax_barrels", "wickrun_wax_barrels", (4, 8), 2, 1)
 obj("wax_pile", "tinderwick_woodpile", (2, 13), 2, 1)
 
 # ---- the start gate + the view down ------------------------------------------
@@ -163,6 +164,8 @@ obj("start_lamp_w", "tinderwick_lamp_post", (8, 17), 1, 3, overhang=2, walk_unde
 obj("start_lamp_e", "tinderwick_lamp_post", (13, 17), 1, 3, overhang=2, walk_under=True)
 for x in (10, 11):
     deco[18 * W + x] = wk.T("chev_down")
+# the start gate's arch over the lane (decor: its posts stand in the pines)
+obj("start_gate", "wickrun_start_gate", (9, 19), 3, 2, overhang=1, solid=False)
 obj("crest_tree_a", "tinderwick_tree_c", (24, 2), 3, 4, overhang=3, walk_under=True)
 obj("crest_tree_b", "tinderwick_tree_b", (3, 15), 3, 4, overhang=3, walk_under=True)
 obj("crest_pine", "windward_bent_pine", (25, 15), 2, 3, overhang=2, walk_under=True)
