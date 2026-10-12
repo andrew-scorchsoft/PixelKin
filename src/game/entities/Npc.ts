@@ -289,6 +289,8 @@ export class Npc extends Actor {
     const dy = ty - this.ty;
     if (Math.abs(dx) > Math.abs(dy)) this.setFacing(dx > 0 ? 'right' : 'left');
     else this.setFacing(dy > 0 ? 'down' : 'up');
+    // a treadmill runner steps off his stride to talk (update() resumes it)
+    if (this.placement.in_place_walk) this.stopWalking();
   }
 
   /** Ambient movement. `canEnter` prevents walking into walls or onto the player. */
@@ -296,6 +298,12 @@ export class Npc extends Actor {
     if (this.isMoving) return;
     // Standing this frame: settle the walk cycle onto the idle pose. step()
     // below replays the cycle if this NPC actually moves.
+    if (this.placement.in_place_walk) {
+      // a treadmill runner: always back to his stride, facing the console
+      this.setFacing(this.placement.facing);
+      this.playWalkAs(this.placement.facing);
+      return;
+    }
     this.stopWalking();
     const move = this.placement.movement;
     if (move === 'static') return;

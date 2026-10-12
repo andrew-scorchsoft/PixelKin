@@ -14,6 +14,7 @@ import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT, COLORS } from '@game/config';
 import { theme, hex } from '@game/ui/theme';
 import { makeText } from '@game/ui/Text';
+import { addVersionStamp } from '@game/ui/VersionStamp';
 import { MusicDirector } from '@game/systems/audio/MusicDirector';
 import { Sfx } from '@game/systems/audio/Sfx';
 import {
@@ -107,6 +108,7 @@ export class AttractScene extends Phaser.Scene {
 
     makeText(this, GAME_WIDTH / 2, 18, 'PIXELKIN', theme.text.title).setOrigin(0.5);
     const prompt = makeText(this, GAME_WIDTH / 2, GAME_HEIGHT - 16, 'PRESS START', theme.text.dim).setOrigin(0.5);
+    addVersionStamp(this);
     this.tweens.add({ targets: prompt, alpha: 0.2, duration: 700, yoyo: true, repeat: -1 });
 
     // advance on any input, or after the demo plays out

@@ -8,6 +8,10 @@
  * Gleams, the Wayfaring, the vesperlamp) — it's read by the fire, not a patch log.
  */
 export const WHATS_NEW: Record<string, string[]> = {
+  '1.17': [
+    'The Lifting House on Pearlmoor Quay is a proper gym now: treadmills, bikes and rowers on the ground floor (Andy never gets off his treadmill), and the bench presses and squat racks down the stairs.',
+    'The build number now sits quietly at the bottom of the loading screens, and fullscreen comes back after you keep a copy of your save.',
+  ],
   '1.16': [
     'Roofs are friendlier now: you can slip along behind the peak of a house or a hall instead of walking all the way round it.',
   ],

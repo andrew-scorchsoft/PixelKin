@@ -73,6 +73,14 @@ body.pk-shell-device #game-root {
   transform: translateX(-50%);
   height: auto;
   aspect-ratio: 3 / 2;
+  /* Let the 3:2 ratio alone set the height. Phaser's autoCenter puts a top
+     margin on the canvas derived from THIS box's height; with the default
+     min-height:auto an aspect-ratio box grows to fit that margin, which grows
+     the margin, … — the screen's bottom edge crept up from below the volume
+     slider over the first seconds of loading. min-height:0 + clipping breaks
+     the loop: the box is exactly 3:2 from the first frame. */
+  min-height: 0;
+  overflow: hidden;
 }
 
 /* Portrait: full width, edge to edge — drop the left/right casing so the canvas

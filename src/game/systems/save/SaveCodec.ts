@@ -15,6 +15,13 @@
 import type { SaveGame } from './types';
 import { SAVE_SCHEMA_VERSION } from './types';
 
+/**
+ * Fired on `window` just before a save file download starts. On Android Chrome
+ * a download drops the page out of fullscreen; the shell listens so it can take
+ * the screen back on the player's next control press (ShellManager).
+ */
+export const FILE_DOWNLOAD_EVENT = 'pixelkin-file-download';
+
 /** A raw, not-yet-validated save shape carrying at least a schema version. */
 type RawSave = Partial<SaveGame> & { schema_version?: unknown };
 
@@ -147,6 +154,7 @@ export const SaveCodec = {
     a.download = name;
     a.style.display = 'none';
     document.body.appendChild(a);
+    window.dispatchEvent(new CustomEvent(FILE_DOWNLOAD_EVENT));
     a.click();
     document.body.removeChild(a);
     // Defer revoke so the click's navigation has a chance to start.

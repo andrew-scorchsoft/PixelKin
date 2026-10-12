@@ -236,6 +236,7 @@ PLACEMENTS: dict[str, dict] = {
     "pearlmoor_shop": interior(),
     "pearlmoor_lumenary": interior(particles("motes", 0.5)),
     "pearlmoor_lifting_house": interior(particles("dust", 0.45)),
+    "pearlmoor_lifting_house_b1": interior(particles("dust", 0.55)),
     "pearlmoor_point": {
         "ambience": {
             "particles": [particles("spray", 0.6)],
@@ -372,5 +373,5 @@ add_words(PLACEMENTS, {
     "pearlmoor_inn": {"after": [lit("fisher", TIDE, "npc.pearlmoor_fisher_inn_lit"),
                                 lit("innkeep", TIDE, "script.pearlmoor_inn_rest_lit")]},
     "pearlmoor_shop": {"talk": {"chandler": "script.shop_pearlmoor_staged"}},
-    "pearlmoor_lifting_house": {"after": [lit("andrew", TIDE, "npc.booji_andrew_lit")]},
+    "pearlmoor_lifting_house_b1": {"after": [lit("andrew", TIDE, "npc.booji_andrew_lit")]},
 })

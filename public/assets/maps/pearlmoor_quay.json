@@ -2426,8 +2426,8 @@
       "trigger": "step_on",
       "to_map": "pearlmoor_lifting_house",
       "to": {
-        "tx": 7,
-        "ty": 8
+        "tx": 9,
+        "ty": 10
       },
       "facing": "down",
       "transition": "door"
@@ -2441,8 +2441,8 @@
       "trigger": "step_on",
       "to_map": "pearlmoor_lifting_house",
       "to": {
-        "tx": 7,
-        "ty": 8
+        "tx": 9,
+        "ty": 10
       },
       "facing": "down",
       "transition": "door"

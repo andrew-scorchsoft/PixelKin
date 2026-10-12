@@ -10,6 +10,7 @@ import {
 } from '@game/systems/sprites/CreatureSprites';
 import { ACTIONS_KEY_SUFFIX, EMOTE_TEXTURE } from '@game/entities/Actor';
 import { ARENA_LAYER_PATHS } from './AttractScene';
+import { addVersionStamp } from '@game/ui/VersionStamp';
 import { CINEMATIC_PANEL_PATHS } from '@game/content/cinematics';
 import { PORTRAIT_SHEETS, PORTRAIT_FRAME } from '@game/content/portraits';
 
@@ -145,6 +146,8 @@ export class PreloadScene extends Phaser.Scene {
     const frame = this.add.graphics();
     frame.lineStyle(1, Phaser.Display.Color.HexStringToColor(COLORS.diamond).color, 1);
     frame.strokeRect(barX - 1, barY - 1, barWidth + 2, barHeight + 2);
+
+    addVersionStamp(this);
 
     const fill = this.add.graphics();
     this.load.on('progress', (value: number) => {

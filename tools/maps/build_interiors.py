@@ -297,83 +297,103 @@ def build_crossroads_inn():
 
 
 # =============================================================================
-#  GYM (warm) — pearlmoor_lifting_house: 14x10 lifting hall + a stone-store bay
+#  GYM (warm) — the Lifting House, two floors (gymforge.py draws the kit):
+#    pearlmoor_lifting_house     18x12 street-level CARDIO hall (you walk in here)
+#    pearlmoor_lifting_house_b1  15x10 the WEIGHTS floor down the stairs
 # =============================================================================
+_OBJ_MANIFEST = rk._MANIFEST
+
+
+def gym(objects: list, stem: str, tx: int, ty: int, *, oid: str | None = None,
+        solid: bool = True, overhang: int = 0, walk_under: bool = False) -> dict:
+    """Place a gymforge piece (`gym_<stem>`) by its manifest footprint."""
+    s = _OBJ_MANIFEST[f"gym_{stem}"]
+    o = {"id": oid or stem, "sprite": f"gym_{stem}",
+         "at": {"tx": tx, "ty": ty}, "w": s["tw"], "h": s["th"]}
+    if overhang:
+        o["overhang"] = overhang
+    if walk_under:
+        o["walk_under"] = True
+    if not solid:
+        o["solid"] = False
+    objects.append(o)
+    return o
+
+
+def treadmill(objects: list, tx: int, ty: int, oid: str, *, runner: bool = False) -> None:
+    """A 1x3 treadmill: the console (solid) over the belt. Under a runner the
+    belt is solid:false so he can stand ON it (and you can step up behind him)."""
+    gym(objects, "treadmill_console", tx, ty, oid=f"{oid}_console")
+    gym(objects, "treadmill_belt", tx, ty + 1, oid=f"{oid}_belt", solid=not runner)
+
+
 def build_lifting_house():
-    W, H = 14, 10
-    door_x = W // 2  # tx 7
+    W, H = 18, 12
+    door_x = W // 2  # tx 9
     base, over = faced_room(W, H, door_x)
-    windows(over, W, [4, 11])
-    # the stone-store: an eastern bay behind an internal wall, open at the
-    # south — the lifting stones and sand-sacks stacked where lifters can SEE
-    # the next weight up (the shop-storeroom pattern)
-    partition_v(over, W, 10, 1, 4, lip="w")
+    windows(over, W, [3, 5, 7])
 
     objects: list = []
-    # the hearth is the focal wall piece top-centre (the warm-up fire);
-    # the chalk-and-tackle shelf west of it, hanging lamps over the floor
-    wall_mount(objects, "hearth", 5)
-    wall_mount(objects, "shelf", 2, oid="tackle")
-    wall_mount(objects, "lamp_rack", 8, solid=False)
-    # the stone-store's stock: crated lifting stones + the barrel weights
-    place(objects, "crates", 11, 2, oid="stones")
-    place(objects, "barrels", 11, 4, oid="weights")
-    # sand-sacks by the west wall (the soft landing pile)
-    place(objects, "sacks", 1, 7, oid="sandsacks")
-    # lifting benches (pews pressed into service) mid-floor, on and off the rug
-    place(objects, "rug", 5, 5, solid=False)
-    place(objects, "pew", 2, 5, oid="bench_a")
-    place(objects, "pew", 8, 5, oid="bench_b")
-    place(objects, "pew", 4, 7, oid="bench_c")
+    # rubber matting under the bikes (laid first: drawn under; the treadmills
+    # stay on the boards — their dark belts vanish against the rubber)
+    for x in (11, 13, 15):
+        for y in (4, 5):
+            gym(objects, "mat", x, y, oid=f"mat_{x}_{y}", solid=False)
+    # the class timetable (the house rules) on the north face, over the bikes
+    wall_mount(objects, "chalkboard", 12, oid="timetable")
+    # the treadmill row along the north-west wall — Andy runs the second one
+    for i, x in enumerate((2, 4, 6, 8)):
+        treadmill(objects, x, 2, f"treadmill_{i}", runner=(x == 4))
+    # the bikes under the windows, east
+    for i, x in enumerate((11, 13, 15)):
+        gym(objects, "bike", x, 4, oid=f"bike_{i}")
+    # the rowing machines mid-floor, west
+    gym(objects, "rower", 2, 6, oid="rower_a")
+    gym(objects, "rower", 6, 6, oid="rower_b")
+    # the front desk by the door, the cooler, the towel crates, plants
+    place(objects, "counter", 2, 8, oid="front_desk")
+    gym(objects, "water_cooler", 16, 6, oid="cooler")
+    place(objects, "plant", 1, 2, oid="plant_nw")
+    place(objects, "plant", 16, 3, oid="plant_ne")
+    place(objects, "stool", 6, 9, oid="desk_stool")
 
     warps = [
         {"id": "to_town", "at": {"tx": door_x, "ty": H - 1}, "trigger": "step_on",
          "to_map": "pearlmoor_quay", "to": {"tx": 21, "ty": 5}, "facing": "down", "transition": "door"},
+        # the stairwell down to the weights floor (dressed by roomkit.finish)
+        {"id": "down_stairs", "at": {"tx": 15, "ty": 9}, "trigger": "step_on",
+         "to_map": "pearlmoor_lifting_house_b1", "to": {"tx": 13, "ty": 2}, "facing": "down"},
     ]
     triggers = [
-        # the house rules chalked on the tackle shelf's lower row
-        {"id": "sign_rules", "kind": "sign", "at": {"tx": 2, "ty": 3}, "activation": "interact",
+        # the house rules chalked on the timetable board
+        {"id": "sign_rules", "kind": "sign", "at": {"tx": 13, "ty": 2}, "activation": "interact",
          "ref": "sign.lifting_house_rules"},
     ]
-    # The Booji-Wooji Man side quest (S-line) — three lifters, each a stack of
-    # flag-disjoint stages on one tile: Andy hooks the quest, Abdul and Sid
-    # pass the clue along, Paul waits out on the breakwater.
-    andy_at = {"tx": 3, "ty": 4}     # north of bench_a
-    abdul_at = {"tx": 8, "ty": 4}    # north of bench_b
-    sid_at = {"tx": 11, "ty": 6}     # at the stone-store bay's mouth
+    # The Booji-Wooji Man side quest (S-line): Andy hooks it from the treadmill
+    # (a stack of flag-disjoint stages on one tile, all running in place);
+    # Abdul passes a clue along up here; Sid, Andrew and Rod lift downstairs.
+    andy_at = {"tx": 4, "ty": 3}     # on treadmill_1's belt, facing the console
+    abdul_at = {"tx": 12, "ty": 7}   # stretching in front of the bikes
+    andy = {"facing": "up", "sprite": "lifter_andy", "movement": "static",
+            "in_place_walk": True}
     npcs = [
-        # Andrew — the OTHER bench guy (not Andy; two separate lifters). Mid-set
-        # at bench_c, permanently; one flavour stage, no quest stack.
-        {"id": "andrew", "at": {"tx": 4, "ty": 8}, "facing": "up",
-         "sprite": "lifter_andrew", "movement": "static",
-         "dialogue_ref": "npc.booji_andrew"},
-        # Rod — the house's strongest AND oldest (an allotment-keeper of 72 who
-        # presses the big harbour-stone overhead). One flavour stage, no quest
-        # stack; he points on to Paul and seeds the Chickenpig (never naming it).
-        {"id": "rod", "at": {"tx": 9, "ty": 7}, "facing": "down",
-         "sprite": "lifter_rod", "movement": "static",
-         "dialogue_ref": "script.booji_rod"},
-        {"id": "andy_hook", "at": dict(andy_at), "facing": "down",
-         "sprite": "lifter_andy", "movement": "look_around",
+        {"id": "andy_hook", "at": dict(andy_at), **andy,
          "dialogue_ref": "script.booji_andy",
          "hidden_when_flag": "flag:q_south_booji"},
-        {"id": "andy_wait", "at": dict(andy_at), "facing": "down",
-         "sprite": "lifter_andy", "movement": "look_around",
+        {"id": "andy_wait", "at": dict(andy_at), **andy,
          "dialogue_ref": "npc.booji_andy_wait",
          "requires_flag": "flag:q_south_booji",
          "hidden_when_flag": "flag:q_south_booji_met"},
-        {"id": "andy_done", "at": dict(andy_at), "facing": "down",
-         "sprite": "lifter_andy", "movement": "look_around",
+        {"id": "andy_done", "at": dict(andy_at), **andy,
          "dialogue_ref": "script.booji_andy_done",
          "requires_flag": "flag:q_south_booji_met",
          "hidden_when_flag": "flag:q_south_booji_done"},
-        {"id": "andy_after", "at": dict(andy_at), "facing": "down",
-         "sprite": "lifter_andy", "movement": "look_around",
+        {"id": "andy_after", "at": dict(andy_at), **andy,
          "dialogue_ref": "script.booji_andy_after",
          "requires_flag": "flag:q_south_booji_done"},
         # Abdul/Sid give clues but no longer GATE Paul (any lifter opens him). Their
         # clue is available from the start; their own flag just advances them to the
-        # after-line. (No pre-stage now — the clue line reads fine as first contact.)
+        # after-line.
         {"id": "abdul_clue", "at": dict(abdul_at), "facing": "down",
          "sprite": "lifter_abdul", "movement": "static",
          "dialogue_ref": "script.booji_abdul",
@@ -382,17 +402,68 @@ def build_lifting_house():
          "sprite": "lifter_abdul", "movement": "static",
          "dialogue_ref": "npc.booji_abdul_after",
          "requires_flag": "flag:q_south_booji_abdul"},
-        {"id": "sid_clue", "at": dict(sid_at), "facing": "left",
+    ]
+    return mapdef("pearlmoor_lifting_house", "The Lifting House", W, H, WARM_SET,
+                  base, over, objects, warps, triggers, npcs,
+                  "assets/audio/music/interior-sunny.mp3")
+
+
+def build_lifting_house_b1():
+    W, H = 15, 10
+    base, over = faced_room(W, H, 7)
+    # no street door down here: close the doormat back into the bottom wall
+    base[(H - 1) * W + 7] = FLOOR
+    over[(H - 1) * W + 7] = CAP_N
+
+    objects: list = []
+    # the rubber lifting floor under the bench-press bay (laid first: drawn under)
+    for y in (4, 6, 7):
+        for x in (1, 3, 5):
+            gym(objects, "mat", x, y, oid=f"mat_{x}_{y}", solid=False)
+    # mirrors along the north face, over the dumbbells
+    for i, x in enumerate((1, 3, 5, 7, 9)):
+        gym(objects, "mirror", x, 1, oid=f"mirror_{i}", solid=False)
+    # the dumbbell rack under the mirrors, the plate tree + kettlebells beside it
+    gym(objects, "dumbbell_rack", 4, 2, oid="dumbbells")
+    gym(objects, "plate_tree", 8, 2, oid="plate_tree")
+    gym(objects, "kettlebells", 9, 3, oid="kettlebells")
+    gym(objects, "kettlebells", 1, 3, oid="kettlebells_w")
+    # WEST: the bench presses
+    gym(objects, "bench_press", 1, 5, oid="bench_a")
+    gym(objects, "bench_press", 4, 5, oid="bench_b")
+    # EAST: the squat racks (each on its own wooden platform)
+    gym(objects, "squat_rack", 8, 5, oid="rack_a")
+    gym(objects, "squat_rack", 11, 5, oid="rack_b")
+
+    warps = [
+        # the stair back up to the cardio hall (dressed by roomkit.finish)
+        {"id": "up_stairs", "at": {"tx": 13, "ty": 2}, "trigger": "step_on",
+         "to_map": "pearlmoor_lifting_house", "to": {"tx": 15, "ty": 9}, "facing": "left"},
+    ]
+    sid_at = {"tx": 3, "ty": 3}      # at the dumbbell rack's west end (off the lane)
+    npcs = [
+        # Andrew — the OTHER bench guy (not Andy; two separate lifters). Between
+        # sets at bench_a, permanently; one flavour stage, no quest stack.
+        {"id": "andrew", "at": {"tx": 2, "ty": 8}, "facing": "up",
+         "sprite": "lifter_andrew", "movement": "static",
+         "dialogue_ref": "npc.booji_andrew"},
+        # Rod — the house's strongest AND oldest (an allotment-keeper of 72 who
+        # squats the big rack). One flavour stage; he points on to Paul and
+        # seeds the Chickenpig (never naming it).
+        {"id": "rod", "at": {"tx": 12, "ty": 8}, "facing": "up",
+         "sprite": "lifter_rod", "movement": "static",
+         "dialogue_ref": "script.booji_rod"},
+        {"id": "sid_clue", "at": dict(sid_at), "facing": "right",
          "sprite": "lifter_sid", "movement": "static",
          "dialogue_ref": "script.booji_sid",
          "hidden_when_flag": "flag:q_south_booji_sid"},
-        {"id": "sid_after", "at": dict(sid_at), "facing": "left",
+        {"id": "sid_after", "at": dict(sid_at), "facing": "right",
          "sprite": "lifter_sid", "movement": "static",
          "dialogue_ref": "npc.booji_sid_after",
          "requires_flag": "flag:q_south_booji_sid"},
     ]
-    return mapdef("pearlmoor_lifting_house", "The Lifting House", W, H, WARM_SET,
-                  base, over, objects, warps, triggers, npcs,
+    return mapdef("pearlmoor_lifting_house_b1", "The Lifting House: Weights", W, H, WARM_SET,
+                  base, over, objects, warps, [], npcs,
                   "assets/audio/music/interior-sunny.mp3")
 
 
@@ -583,6 +654,7 @@ def all_maps():
         # and check_rebuild could not see it; 2026-10 interior pass)
         build_crossroads_inn(),
         build_lifting_house(),
+        build_lifting_house_b1(),
     ]
 
 
