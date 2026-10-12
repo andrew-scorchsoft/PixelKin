@@ -385,8 +385,8 @@ async function shoot(page, url, shot) {
   if (shot.scene === 'title') {
     await page.waitForTimeout(shot.wait);
   } else {
-    // Title menu: NEW GAME / CONTINUE / LOAD FILE / SETTINGS -> Down, Confirm.
-    await tap(page, 'ArrowDown');
+    // Title menu with a seeded save: CONTINUE / NEW GAME / LOAD FILE / SETTINGS —
+    // CONTINUE leads and holds the cursor, so just Confirm.
     await tap(page, 'z');
     await waitFor(page, sceneActive(), 'World', { what: 'World scene (CONTINUE)' });
     if (shot.noIdle) {
