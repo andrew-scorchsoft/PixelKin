@@ -656,6 +656,24 @@ netmender's keeping.
      is a rest point; rest-lantern on its door) → "Sometimes it's good to experience the fine and
      unexpected qualities of life." Later visits play a short version (`flag:wayward_night`,
      which also unlocks the LORE entry). Pure reward; gates nothing.
+     **Paul's House (2026-10):** beside the hotel, at the green's west end, stands Paul's crooked,
+     narrow three-storey house (generated `paul_house` 5×7, door (4,9); his gym-commute **bike**
+     leans by the door, t-shirts dry on a line). Never home: a note on the kitchen table says
+     he's gone walking (or, after S5, "gone to keep the dark company"). Three roomkit floors
+     (`build_paul_house.py`, drawn furniture `tools/maps/paulforge.py`, content
+     `content/regions/paul.ts`): **`paul_house_1`** the kitchen-hall (the hearth, the red-bush
+     tea tin, the carved antelope, the helmet + gym bag by the door, the pin-board of tickets,
+     the WANTED poster "from a far-off bureau" he swears is a joke); **`paul_house_2`** the
+     **T-shirt museum** (framed shirts with tiny stories, the maple country across the northern
+     sea — lake painting, antlers, paddle, plaid jacket, syrup tin — and the cape country far to
+     the south — protea, beadwork, hooped jersey, rugby ball, sunset over the flat-topped
+     mountain); **`paul_house_3`** **Lottie's attic** — his granddaughter. The Rise is only
+     reachable after the Chickenpig (S5 needs it), so her scene is the AFTER one: Chickenpig
+     drawings + a plush (`requires_flag: flag:chickenpig_caught`), a shriek, and — if the
+     Chickenpig is in your lamp (`setLead`) — it comes out to meet her (a `travel` re-entry spawns
+     the `kin_163_overworld` visitor on `flag:paul_lottie_cp_out`), they dance, and she gives you
+     **LOTTIE'S DRAWING** (key item). LORE "Paul's house" on `flag:paul_house_seen`. The
+     Booji-Wooji Man stays unexplained; the bureau story stays unconfirmed.
    - **S6 "The Tin Rower"** — **[BUILT R9, 2026-10]** giver: **a nameless man with a toy case** (never named — he vanishes once the toy is yours) ("Wink's Wind-Ups
      — toys, tales, trades"), `npc_old_man` on the **Dimglass Coast I** south sand strip at (12,30),
      his auction board `sign.wink_auction` at (12,29) (`requires_flag: flag:has_starter`). Lot 1 is

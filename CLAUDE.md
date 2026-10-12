@@ -1107,8 +1107,15 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   set-piece with no LAMP and no RUN — `BattleRequest.catchable/can_run:false`). A `setFlag` step
   now refreshes flag-gated OBJECTS mid-scene (`ctx.onFlagSet`); an aborted scene lifts its own
   letterbox/tint (`clearCinematicFx`) and snaps the camera back (`ctx.resetView`); `setLead`'s swap
-  is undone after the set-piece (`WorldScene.restoreLead`); answers (`store:false`) match ignoring
+  is undone after the set-piece or when the scene ends (`WorldScene.restoreLead` via `playScene`); answers (`store:false`) match ignoring
   punctuation. The Chickenpig is NEVER gifted — S4 is the only way to it.
+- **Paul's House (2026-10) is post-Chickenpig by construction** (`wayward_rise`, `paul_house_1/2/3`,
+  `content/regions/paul.ts`, drawn kit `tools/maps/paulforge.py` → `paul_*` objects — its OWN master
+  folder, never interiorforge's). Lottie's Chickenpig scene uses two reusable tricks: a `travel` to
+  the SAME map/tile re-enters it mid-scene so a flag-gated NPC (the `kin_163_overworld` visitor) spawns
+  (NPCs only refresh at scene end otherwise; `hideActor` + `setFlag value:false` sends it home), and a
+  bare `setLead` (no battle after it) leaves the kin leading — the scene SAYS so. Never name what the
+  Booji-Wooji Man is there either; the bureau poster stays "a joke".
 - **Paying and toggles are DATA (R9, 2026-10).** The `pay` op (`{op:'pay', amount, flag}`) takes
   wicks only if the purse holds them and sets `flag` — branch with `if_flag`/`unless_flag`, never
   assume it paid (Wink's 12,000w Tin Rower is the worked example; mirror any price in

@@ -721,7 +721,7 @@ export class WorldScene extends Phaser.Scene {
       return;
     }
     this.modal = true;
-    const completed = await runCutscene(this.cutsceneContext(), steps);
+    const completed = await this.playScene(steps);
     if (completed) {
       this.flags.set(t.seen_flag);
       void this.persist();
@@ -779,7 +779,7 @@ export class WorldScene extends Phaser.Scene {
         cam.stopFollow();
         cam.centerOn(it.stage.camera.tx * TILE_SIZE + TILE_SIZE / 2, it.stage.camera.ty * TILE_SIZE + TILE_SIZE / 2);
         await fadeIn(this, 700);
-        await runCutscene(this.cutsceneContext(), steps);
+        await this.playScene(steps);
         await fadeOut(this, 700);
       }
     } finally {
@@ -1162,7 +1162,7 @@ export class WorldScene extends Phaser.Scene {
         if (steps) {
           this.modal = true;
           const cue = this.startChallengeCue(steps);
-          const completed = await runCutscene(this.cutsceneContext(), steps);
+          const completed = await this.playScene(steps);
           if (cue) this.endChallengeCue();
           if (completed) void this.persist();
           this.modal = false;
@@ -1239,7 +1239,7 @@ export class WorldScene extends Phaser.Scene {
       let banked = firstMeet;
       if (event) {
         const steps = event.script ? getScript(event.script) : undefined;
-        const completed = steps ? await runCutscene(this.cutsceneContext(), steps) : true;
+        const completed = steps ? await this.playScene(steps) : true;
         if (completed) {
           this.flags.set(event.flag);
           following = event.follow_ms ?? 0;
@@ -1286,7 +1286,7 @@ export class WorldScene extends Phaser.Scene {
       if (!steps) return;
       this.modal = true;
       const cue = this.startChallengeCue(steps);
-      const completed = await runCutscene(this.cutsceneContext(), steps);
+      const completed = await this.playScene(steps);
       if (cue) this.endChallengeCue();
       // Only bank progress if the scene actually finished (a lost battle aborts it).
       if (completed) {
@@ -1577,7 +1577,7 @@ export class WorldScene extends Phaser.Scene {
       { op: 'face', actor: npc.id, facing: npcFacing },
       { op: 'face', actor: 'player', facing: playerFacing },
     ];
-    const completed = await runCutscene(this.cutsceneContext(), [...approach, ...steps]);
+    const completed = await this.playScene([...approach, ...steps]);
     if (cue) this.endChallengeCue();
     if (completed) {
       if (npc.placement.defeated_flag) this.flags.set(npc.placement.defeated_flag, true);
@@ -1898,6 +1898,16 @@ export class WorldScene extends Phaser.Scene {
     await this.enterMap(home.map, { tx: home.tx, ty: home.ty }, home.facing, false);
     await fadeIn(this);
     this.modal = false;
+  }
+
+  /** Run a cutscene; any `setLead` swap it left standing (a scene that used the
+   *  lead for a meeting, not a fight) is undone when it ends. */
+  private async playScene(steps: Parameters<typeof runCutscene>[1]): Promise<boolean> {
+    try {
+      return await runCutscene(this.cutsceneContext(), steps);
+    } finally {
+      this.restoreLead();
+    }
   }
 
   /** Undo a `setLead` swap once its set-piece is over — the fight opened with

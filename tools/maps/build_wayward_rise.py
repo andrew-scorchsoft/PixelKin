@@ -15,9 +15,12 @@ north of the glade lamp, and the trees give out onto a lamplit green.
     stranger standing beside it (script.wayward_stranger, content/regions/hotel.ts).
     The hotel is a REST POINT (the scene ends in a `heal`), so its door wears the
     rest-lantern (WorldScene.HEAL_ENTRANCE_MAPS).
+  * PAUL'S HOUSE (2026-10, `paul_house`, generated 5x7): the Booji-Wooji Man's
+    crooked three-storey home at the green's west end, his bike by the door and
+    a line of t-shirts in the side yard. Inside: build_paul_house.py.
   * the PUB GARDEN on the east lawn: festoon lanterns over two plank tables,
-    a fenced flower garden; the WELL and the woodpile on the west side; a
-    lily-dark pond with a boulder cluster in the south-west.
+    a fenced flower garden; the WELL, woodpile and apple crates in the yard
+    below the two houses; a lily-dark pond in the south-west.
   * the lane: up from the wood's mouth (19-20, 21), bending west to the door,
     lamp-posted and signed.
 
@@ -53,7 +56,7 @@ pond = mk.make_grid(W, H)
 
 # ---- the enclosure: deep wood on three sides, the wood's mouth in the south ----------
 mk.organic_border(tree, W, H, top=1, left=1, right=1, depth=2,
-                  bumps=[(2, 9, 2), (21, 6, 1), (2, 17, 1), (22, 14, 2)], rng=rng)
+                  bumps=[(1, 15, 2), (21, 6, 1), (2, 17, 1), (22, 14, 2)], rng=rng)
 mk.rect(tree, W, H, 0, H - 2, W - 1, H - 1)               # the Wanderwood's crown (south)
 # the mouth down into the wood (cols 19-20) + soft shoulders
 for y in range(H - 3, H):
@@ -93,6 +96,19 @@ assert approach == (11, 9), approach
 door = next(w for w in m["warps"] if w["id"] == "enter_hotel")
 m["warps"].append({**door, "id": "enter_hotel_e", "at": {"tx": 12, "ty": 8}})
 
+# PAUL'S HOUSE (2026-10) — the Booji-Wooji Man's crooked three-storey home, wedged
+# in beside the hotel at the green's west end (generated 5x7 `paul_house`, door on
+# its col 2). Inside: build_paul_house.py (kitchen-hall / T-shirt museum / Lottie's
+# attic; content/regions/paul.ts). His bike leans on the apron by the door, a line
+# of t-shirts dries in the side yard. Its apron joins the hotel's at col 7.
+PAUL_AT = (2, 3)
+paul_approach = pt.building(m, path, W, H, oid="paul_house", sprite="paul_house",
+                            at=PAUL_AT, overhang=5, door_col=2, to_map="paul_house_1",
+                            to=(8, 9), apron_rows=2)
+assert paul_approach == (4, 10), paul_approach
+for y in (10, 11):
+    path[y * W + 7] = 1                                  # the apron meets the hotel's
+
 
 def lane(points):
     """A 2-wide 4-connected dirt lane through the waypoints (a 2x2 brush)."""
@@ -115,7 +131,7 @@ def lane(points):
 lane([(19, H - 1), (19, 13), (12, 13), (12, 11)])
 
 # the dark pond in the south-west hollow (pond = Tidecall water: a look, not a road)
-mk.blob(pond, W, H, 5.5, 16.0, 3.3, 2.4)
+mk.blob(pond, W, H, 5.0, 17.0, 3.0, 1.8)
 
 for i in range(W * H):
     if tree[i] or cliff[i]:
@@ -141,14 +157,13 @@ deco = mk.make_grid(W, H)
 
 # ---- objects: crown trees, lamps, the pub garden, the well --------------------------
 for oid, sprite, at in [
-    ("tree_nw", "tinderwick_tree_b", (2, 2)),
-    ("tree_w", "tinderwick_tree", (1, 11)),
+    ("tree_w", "tinderwick_tree", (9, 15)),
     ("tree_ne", "tinderwick_tree", (19, 1)),
     ("tree_e", "tinderwick_tree_c", (21, 9)),
     ("tree_s", "tinderwick_tree_b", (12, 16)),
 ]:
     pt.crown_tree(m, oid=oid, sprite=sprite, at=at)
-for oid, at in [("lamp_door", (7, 8)), ("lamp_bend", (17, 10)), ("lamp_mouth", (21, 17))]:
+for oid, at in [("lamp_door", (7, 6)), ("lamp_bend", (17, 10)), ("lamp_mouth", (21, 17))]:
     m["objects"].append({"id": oid, "sprite": "tinderwick_lamp_post",
                          "at": {"tx": at[0], "ty": at[1]}, "w": 1, "h": 3, "overhang": 2,
                          "walk_under": True})
@@ -160,14 +175,26 @@ m["objects"] += [
      "w": 3, "h": 2},
     {"id": "garden_table_b", "sprite": "wayward_garden_table", "at": {"tx": 15, "ty": 16},
      "w": 3, "h": 2},
-    # the west yard: the well, the woodpile, apple crates by the kitchen end
-    {"id": "well", "sprite": "tinderwick_well", "at": {"tx": 4, "ty": 4},
+    # the yard below the two houses: the well, the woodpile, apple crates
+    {"id": "well", "sprite": "tinderwick_well", "at": {"tx": 8, "ty": 12},
      "w": 2, "h": 3, "overhang": 1, "walk_under": True},
-    {"id": "woodpile", "sprite": "tinderwick_woodpile", "at": {"tx": 5, "ty": 8},
+    {"id": "woodpile", "sprite": "tinderwick_woodpile", "at": {"tx": 6, "ty": 13},
      "w": 2, "h": 1},
-    {"id": "crates", "sprite": "tinderwick_apple_crates", "at": {"tx": 6, "ty": 10},
+    {"id": "crates", "sprite": "tinderwick_apple_crates", "at": {"tx": 10, "ty": 12},
      "w": 2, "h": 1},
+    # Paul's: the gym-commute bike leaning by his door, the t-shirts on the line
+    {"id": "paul_bike", "sprite": "paul_bike", "at": {"tx": 2, "ty": 10}, "w": 2, "h": 2},
+    {"id": "paul_washing_line", "sprite": "paul_washing_line", "at": {"tx": 2, "ty": 12},
+     "w": 4, "h": 2},
 ]
+m["triggers"] += [
+    {"id": "paul_bike", "kind": "sign", "at": {"tx": 3, "ty": 11},
+     "activation": "interact", "ref": "sign.paul_bike"},
+    {"id": "paul_line", "kind": "sign", "at": {"tx": 4, "ty": 13},
+     "activation": "interact", "ref": "sign.paul_washing_line"},
+]
+m["ambience"]["light_sources_extra"].append(
+    {"at": {"tx": 4, "ty": 8}, "radius": 2, "color": "#ffc070"})
 # the garden plot under the bluff's east end: fenced, flowerbeds inside
 mk.fence_run(deco, W, H, 16, 9, 20)
 for x in (17, 18, 19):
@@ -175,9 +202,12 @@ for x in (17, 18, 19):
 
 # the lane sign + a boulder cluster on the pond's bank and under the bluff
 owed += pt.sign(m, deco, W, sid="wayward_rise", at=(18, 16))
-for (x, y) in [(3, 13), (7, 17), (8, 14), (2, 15), (5, 2), (17, 2), (10, 13)]:
+_solid_objs = {(x, y) for o in m["objects"]
+               for y in range(o["at"]["ty"], o["at"]["ty"] + o.get("h", 1))
+               for x in range(o["at"]["tx"], o["at"]["tx"] + o.get("w", 1))}
+for (x, y) in [(3, 13), (7, 17), (8, 14), (2, 15), (5, 2), (17, 2), (10, 13), (11, 19)]:
     i = y * W + x
-    if not (tree[i] or pond[i] or cliff[i] or path[i]):
+    if not (tree[i] or pond[i] or cliff[i] or path[i]) and (x, y) not in _solid_objs:
         deco[i] = gid("boulder")
 
 # ---- warps: the mouth back down into the Wanderwood ---------------------------------

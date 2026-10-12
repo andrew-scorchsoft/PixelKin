@@ -23,6 +23,8 @@ import { RECKONWORKS_DIALOGUE, RECKONWORKS_SCRIPTS } from './reckonworks';
 import { HOTEL_DIALOGUE, HOTEL_SCRIPTS } from './hotel';
 // The kitchens (2026-10): Percy's moka brew-stand (Duskapple) + Marisol's kitchen (Lowleaf).
 import { KITCHENS_DIALOGUE, KITCHENS_SCRIPTS } from './kitchens';
+// Paul's House (2026-10): the Booji-Wooji Man's home on Wayward Rise.
+import { PAUL_DIALOGUE, PAUL_SCRIPTS } from './paul';
 
 export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SOUTH_SCRIPTS,
@@ -39,6 +41,7 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...RECKONWORKS_SCRIPTS,
   ...HOTEL_SCRIPTS,
   ...KITCHENS_SCRIPTS,
+  ...PAUL_SCRIPTS,
 };
 
 export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
@@ -56,4 +59,5 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...RECKONWORKS_DIALOGUE,
   ...HOTEL_DIALOGUE,
   ...KITCHENS_DIALOGUE,
+  ...PAUL_DIALOGUE,
 };

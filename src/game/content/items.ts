@@ -185,6 +185,13 @@ export const ITEMS: ItemRegistry = {
     desc: 'A dented tin cup, still warm. The cup of something, at last. The night: pending.',
     category: 'key',
   },
+  // Paul's House (2026-10): Lottie's keepsake, after the Chickenpig meets her.
+  lottie_drawing: {
+    id: 'lottie_drawing',
+    name: 'Lottie\'s Drawing',
+    desc: 'A crayon Chickenpig crowing at a crayon sun. Signed LOTTIE, very large.',
+    category: 'key',
+  },
   fenn_letter: {
     id: 'fenn_letter',
     name: "Gran's Letter",

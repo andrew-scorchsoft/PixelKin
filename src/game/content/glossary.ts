@@ -427,6 +427,13 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'A stall at the foot of Lowleaf Hollow, where Marisol cooks the red dishes of her sunny homeland far to the south: dried chiles toasted on the comal, tomato, and corn worked the old way with lime. Sixty wicks a plate, and you leave warm.',
     unlock_flag: 'flag:cantina_met',
   },
+  // Paul's House (2026-10) — the Booji-Wooji Man's home on Wayward Rise
+  {
+    id: 'pauls_house',
+    term: 'Paul\'s house',
+    desc: 'A tall, crooked house beside the Wayward Arms, three floors of evidence about one man, none of which agrees: tickets from the maple country and the cape country, a museum of t-shirts, a WANTED poster he swears is a joke. He is never in. His granddaughter Lottie usually is.',
+    unlock_flag: 'flag:paul_house_seen',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */

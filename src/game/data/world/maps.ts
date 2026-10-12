@@ -286,6 +286,26 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/inn-rest.mp3',
   },
+  // Paul's House (2026-10): the Booji-Wooji Man's three-storey home beside the
+  // Arms (kitchen-hall / T-shirt museum / Lottie's attic; content/regions/paul.ts).
+  paul_house_1: { // the kitchen-hall
+    json: 'assets/maps/paul_house_1.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-sunny.mp3',
+  },
+  paul_house_2: { // the T-shirt museum
+    json: 'assets/maps/paul_house_2.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-sunny.mp3',
+  },
+  paul_house_3: { // Lottie's attic
+    json: 'assets/maps/paul_house_3.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-sunny.mp3',
+  },
   pearlmoor_lumenary: {
     json: 'assets/maps/pearlmoor_lumenary.json',
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },
