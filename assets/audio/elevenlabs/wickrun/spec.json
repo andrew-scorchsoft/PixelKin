@@ -1,0 +1,94 @@
+{
+ "id": "wickrun",
+ "kind": "loop",
+ "where": "The Wick-Run (the old wax-carters' chute down the dark mountain's west flank, raced by the Runners)",
+ "mood": "Reckless and exhilarating: runner-wheels screaming down a graded chute in the dark, lamps whipping past, the air over the jumps.",
+ "bpm": 168,
+ "beats_per_bar": 4,
+ "motif": null,
+ "_motif_note": "Never motif-conditioned: the shared motif pins the take to the lullaby's ~90 BPM grid, and this cue's whole point is speed (generate-music SKILL.md).",
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "168 BPM",
+  "E minor with a bright Dorian lift to G major",
+  "4/4",
+  "fast driving pulse-wave lead with a pushed syncopated eighth-note hook",
+  "galloping plucked sampled bass in octaves",
+  "sampled 16-bit drum kit: driving snare backbeat and tom fills, a light kick on beats one and three, crash cymbals on phrase starts",
+  "rapid harp arpeggios like spinning wheel spokes",
+  "warm sampled string chords",
+  "bright glass bell glints flashing past",
+  "reckless, exhilarating downhill race at night, wind in your face",
+  "strong catchy hummable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "drum and bass",
+  "heavy sub bass",
+  "electric guitar",
+  "fade out",
+  "ritardando",
+  "lullaby",
+  "slow tempo",
+  "ticking clock",
+  "sparse breakdown",
+  "slow build"
+ ],
+ "sections": [
+  {
+   "name": "Start Gate",
+   "bars": 4,
+   "text": "{the start gate drops: a bold brass call over a snare roll and a fast rising bass pickup, full band at full speed from the first bar}",
+   "styles": [
+    "bold call over a pickup",
+    "full presence from the first beat",
+    "full tempo from the start"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 16,
+   "text": "{the reckless hook on the pulse-wave lead: pushed syncopated eighths that leap up a fourth and keep pressing forward over galloping bass}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "full speed"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 16,
+   "text": "{the hook again, a second lead answering in harmony a third above, harp spokes spinning, the answer phrase climbing bright into G major}",
+   "styles": [
+    "twin-lead harmony",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 12,
+   "text": "{contrast, the jump: the drums drop to half-time, the lead soars in long airborne notes over swelling strings and bell glints, weightless}",
+   "styles": [
+    "airborne half-time feel",
+    "soaring melody",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 16,
+   "text": "{the landing: the full beat slams back and the hook returns at full speed, full band to the last bar, which drives straight into the main theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

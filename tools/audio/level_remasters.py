@@ -38,7 +38,9 @@ QUIET = {"coldopen-foreboding": -19.0, "penumbra-ring-a": -18.0, "coldfog-marche
          # smaller, so rooms sit under the outdoor house level (a crossfade, not a drop).
          "interior-hearth": -16.5, "interior-sunny": -16.5, "interior-lamplit": -17.0,
          "interior-study": -17.0, "interior-hush": -18.0, "interior-unease": -18.0,
-         "shop-counter": -16.0, "inn-rest": -16.5, "lumenary-hall": -16.0}
+         "shop-counter": -16.0, "inn-rest": -16.5, "lumenary-hall": -16.0,
+         # The Wild Ways (09-the-wild-ways): the sparse places sit under the house level.
+         "mirelight": -16.5, "old-seams": -17.5}
 TOLERANCE = 0.5
 CEILING = 0.89  # ~ -1 dBFS sample peak for the safety limiter
 
