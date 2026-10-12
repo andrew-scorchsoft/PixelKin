@@ -8,6 +8,12 @@
  * Gleams, the Wayfaring, the vesperlamp) — it's read by the fire, not a patch log.
  */
 export const WHATS_NEW: Record<string, string[]> = {
+  '1.15': [
+    'Someone in Duskapple Orchard is brewing coffee in a little eight-sided pot, and would love to tell you everything about it. And at the foot of Lowleaf Hollow, Marisol is cooking something red.',
+    'A crooked house has gone up beside the Wayward Arms, three floors full of t-shirts and tickets. Its owner is out walking; his granddaughter is very much in.',
+    'Andrew has been dressing for the weather, wherever you meet him. The man with the case on the beacon road is gone, as if he was never there.',
+    'Holes, steps and ladders that lead somewhere now look like it, indoor walls meet their ceilings, and nobody is standing in the sea any more.',
+  ],
   '1.14': [
     'Your whole lamp learns now: the kin that wins a fight keeps its full EXP, those who fought beside it take half, and the rest a quarter. (Settings → EXP share, if you prefer the old way.)',
     'Beyond the old wood behind Pearlmoor, a lane climbs to a quiet hotel. The bar is open, they say, and someone is waiting in the corner.',
