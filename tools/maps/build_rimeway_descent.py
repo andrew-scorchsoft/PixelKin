@@ -28,7 +28,7 @@ HANDSHAKES:
   SOUTH (38,27)/(39,27) `to_fold`/`_e` (requires flag:rime_gate_open,
         blocked_ref npc.rime_gate_wrongside) -> rimeway_fold (6,1)/(7,1); the
         Fold's `to_descent` lands at our (38,26)/(39,26).
-Geometry (north component frame): x 14..56, y 32..60.
+Geometry (world_geometry frame): x 62..104, y -429..-401.
 
 Run:  python3 tools/maps/build_rimeway_descent.py
 """

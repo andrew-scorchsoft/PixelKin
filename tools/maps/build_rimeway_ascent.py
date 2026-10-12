@@ -25,7 +25,7 @@ HANDSHAKES:
         Pale Vault's `to_rimeway`/`_e` (23,0)/(24,0) land at our (23,54)/(24,54).
   NORTH (4,0)/(5,0) `to_fold`/`_e` -> rimeway_fold (28,42)/(29,42);
         the Fold's `to_ascent`/`_e` (28,43)/(29,43) land at our (4,1)/(5,1).
-Geometry (world_geometry frame of the north component): x 70..100, y 104..160.
+Geometry (world_geometry frame): x 118..148, y -357..-301.
 
 Trainer: rimeway_walker_ivo (route, ace 41) on shelf 2.
 

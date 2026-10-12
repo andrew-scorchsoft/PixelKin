@@ -201,14 +201,13 @@ to keep the coldfog in and the curious out; with no oil coming round, the lamps 
 one by one (cinder law: a light nobody keeps starves). Hale, the last rime-tender, still
 keeps one lamp at the Fold; a Hollowing acolyte still keeps the bar — and lets you lift it.
 
-**Shape (built).** Geometry is fitted to the rebuilt Sunvault (§S), in world_geometry's
-north-component frame:
+**Shape (built).** Geometry is fitted to the rebuilt Sunvault (§S) (world_geometry's frame, Tinderwick at 0,0):
 
 | Map | Size | Placement (x..x2, y..y2) | Role |
 |---|---|---|---|
-| `rimeway_ascent` | 30×56 | 70..100, 104..160 | Off Pale Vault's new north road (cols 23-24). Three glacier-wall bands (`glacierwall` lip + `face_ice` rows) climbed on ladders; **the Glare** — a full-width glare-ice sheet (shelf 1) whose only way off is the north-west ladder pad: a stopper-stone slide puzzle, **5 slides minimum, no trap** (searched with `facekit.ice_solve`; a full snow strip at its foot is the reset lane); a cache pool (second, optional slide); the west-notch ledge home. Band 39-41; trainer Ivo (rime-walker, ace 41). |
-| `rimeway_fold` | 32×44 | 46..78, 60..104 | The high plateau. **The frozen falls** (`rimeway_frozen_falls`) above a plunge pool of glare ice (5-slide puzzle) — the falls' foot runs `script.rimeway_ice_core` → `flag:rimeway_ice_core`. **The tenders' refuge** (`rimeway_tender_waystation`, a rest point) + Hale. **The Rime Gate** at the north edge (cols 6-7; `rimeway_rime_gate_barred/_open` swap on `flag:rime_gate_open`): from here it's a locked door with a line. Vaultclaw #76's only wild bed; trainer Sef (ace 42). Band 40-42. |
-| `rimeway_descent` | 42×28 | 14..56, 32..60 | Out of Coldfog Marches II's new east road (rows 16-17). The drained fen → ladder up onto the col ridge → ladder down to the gate yard; walking onto the yard before the gate **lifts the bar** (`script.rime_gate_lift`, step_on band, `flag:rime_gate_open`) and every rime-lamp on the road wakes (dead/lit swap pairs on the same flag, all three maps). The acolyte at the bar; trainer Dunne (fog-walker, ace 48). Band 46-48. |
+| `rimeway_ascent` | 30×56 | 118..148, -357..-301 | Off Pale Vault's new north road (cols 23-24). Three glacier-wall bands (`glacierwall` lip + `face_ice` rows) climbed on ladders; **the Glare** — a full-width glare-ice sheet (shelf 1) whose only way off is the north-west ladder pad: a stopper-stone slide puzzle, **5 slides minimum, no trap** (searched with `facekit.ice_solve`; a full snow strip at its foot is the reset lane); a cache pool (second, optional slide); the west-notch ledge home. Band 39-41; trainer Ivo (rime-walker, ace 41). |
+| `rimeway_fold` | 32×44 | 94..126, -401..-357 | The high plateau. **The frozen falls** (`rimeway_frozen_falls`) above a plunge pool of glare ice (5-slide puzzle) — the falls' foot runs `script.rimeway_ice_core` → `flag:rimeway_ice_core`. **The tenders' refuge** (`rimeway_tender_waystation`, a rest point) + Hale. **The Rime Gate** at the north edge (cols 6-7; `rimeway_rime_gate_barred/_open` swap on `flag:rime_gate_open`): from here it's a locked door with a line. Vaultclaw #76's only wild bed; trainer Sef (ace 42). Band 40-42. |
+| `rimeway_descent` | 42×28 | 62..104, -429..-401 | Out of Coldfog Marches II's new east road (rows 16-17). The drained fen → ladder up onto the col ridge → ladder down to the gate yard; walking onto the yard before the gate **lifts the bar** (`script.rime_gate_lift`, step_on band, `flag:rime_gate_open`) and every rime-lamp on the road wakes (dead/lit swap pairs on the same flag, all three maps). The acolyte at the bar; trainer Dunne (fog-walker, ace 48). Band 46-48. |
 
 **The one-way unlock.** North era (~lv 40): climb from Pale Vault to the Fold, see the
 descent and the fog through the grille, can't pass (`npc.rime_gate_barred`). West era
@@ -266,12 +265,12 @@ with `under:true`, sand-ledge notches as one-way returns).
 
 | Map | Size | Placement (x..x2, y..y2)* | Role |
 |---|---|---|---|
-| `sunvault_climb_i` | 30×26 (unchanged) | -53..-23, 169..195 | The foot: three tiers, ladders E (the first pitch) and W/E down to the old garden (a loop), the **west notch** ledge home; every handshake + runner placement kept (Solarium E, Wick-Run S, the vine gorge N). Band 46-47. |
-| `sunvault_climb_ii` | 30×40 (was 28) | -53..-23, 129..169 | The **living sun-vine bridge** up band 1 (Sunsketch gate), a ladder pitch, the **cleft plank** across tier C, the long west ladder; the X3 viewpoint, Helia mouth, striker pocket + vigil scar, rest arbor all kept. Band 47-48. |
-| `sunvault_climb_iii` | 30×44 (new) | -53..-23, 85..129 | **The Gilt Face**: four ladder pitches E/W/E/W, a mid-face ledge cache, **the trestle over the gully** (cross it going up; drop into the gully at its head and walk out UNDER it going home), the **keepers' shelter** rest point. Trainers Imma (sun-keeper) + Orrin (star-watcher), ace 49. Band 48-49. |
-| `sunvault_climb_iv` | 30×36 (new) | -53..-23, 49..85 | **The Sun Ledges**: three two-tile ledges broken by clefts and rope-planks, four ladders, two notch-ledges home, the observatory hill (spyglass, watchers' camp). Trainer Pim (star-watcher) posted over a plank, ace 49. Band 48-49. |
+| `sunvault_climb_i` | 30×26 (unchanged) | -5..25, -292..-266 | The foot: three tiers, ladders E (the first pitch) and W/E down to the old garden (a loop), the **west notch** ledge home; every handshake + runner placement kept (Solarium E, Wick-Run S, the vine gorge N). Band 46-47. |
+| `sunvault_climb_ii` | 30×40 (was 28) | -5..25, -332..-292 | The **living sun-vine bridge** up band 1 (Sunsketch gate), a ladder pitch, the **cleft plank** across tier C, the long west ladder; the X3 viewpoint, Helia mouth, striker pocket + vigil scar, rest arbor all kept. Band 47-48. |
+| `sunvault_climb_iii` | 30×44 (new) | -5..25, -376..-332 | **The Gilt Face**: four ladder pitches E/W/E/W, a mid-face ledge cache, **the trestle over the gully** (cross it going up; drop into the gully at its head and walk out UNDER it going home), the **keepers' shelter** rest point. Trainers Imma (sun-keeper) + Orrin (star-watcher), ace 49. Band 48-49. |
+| `sunvault_climb_iv` | 30×36 (new) | -5..25, -412..-376 | **The Sun Ledges**: three two-tile ledges broken by clefts and rope-planks, four ladders, two notch-ledges home, the observatory hill (spyglass, watchers' camp). Trainer Pim (star-watcher) posted over a plank, ace 49. Band 48-49. |
 
-*North-component frame of `world_geometry.py`. Nightreach and everything north of climb II
+*`world_geometry.py`'s frame (Tinderwick at 0,0; the Wick-Run joins the north to it). Nightreach and everything north of climb II
 (its lane, Coldfog, Drownlight) moved north by 92 tiles; `world_geometry --check` closes.
 Nightreach's south road (`to_sunvault`/`_e`) now lands on climb IV. Content (new signs,
 the three trainers, four caches, the shelter + spyglasses): `content/regions/sunvault.ts`;
