@@ -204,6 +204,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'rimeway_ascent', region: 'north', optional: true, reward: 'the Glare (an ice-slide climb) + the cache pool' },
     { map_id: 'rimeway_fold', region: 'north', optional: true, reward: 'Vaultclaw #76 (Fold-only) + the clear-ice core for Isel\'s Frostglass Lens' },
     { map_id: 'rimeway_descent', region: 'outer', optional: true, reward: 'lifts the Rime Gate: a Coldfog <-> Pale Vault return road' },
+    { map_id: 'reckoning_works', region: 'north', optional: true, reward: 'side quest "Measured in Miles": the Aurora Card + wicks + Beacon charges' }, // interior: the Reckoning-Works (C2)
     // the Old Seams (D): Cinderhead Mine's seam-door (Otho, post-Stone) -> three floors down -> the first star
     { map_id: 'old_seams_i', region: 'east', optional: true, reward: 'the Shaft Benches: planks + ladders, Orebound beds, a pillar-islet charge' },
     { map_id: 'old_seams_ii', region: 'east', optional: true, reward: 'the Rail Yard puzzle: rare Ferrolith, the siding\'s starglass' },
@@ -418,6 +419,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'rimeway_ascent', to_map: 'rimeway_fold', via_warp: 'to_fold', bidirectional: true },
     { from_map: 'coldfog_marches_ii', to_map: 'rimeway_descent', via_warp: 'to_rimeway', bidirectional: true },
     { from_map: 'rimeway_fold', to_map: 'rimeway_descent', via_warp: 'to_descent', requires_flag: 'flag:rime_gate_open', bidirectional: true },
+    { from_map: 'rimeway_fold', to_map: 'reckoning_works', via_warp: 'to_works', bidirectional: true },
     // the Old Seams (D): floors stacked by ladders (portals — they never touch surface geometry)
     { from_map: 'cinderhead_mine', to_map: 'old_seams_i', via_warp: 'to_old_seams', requires_flag: 'flag:old_seams_open', bidirectional: true },
     { from_map: 'old_seams_i', to_map: 'old_seams_ii', via_warp: 'ladder_down', bidirectional: true },

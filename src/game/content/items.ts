@@ -142,6 +142,13 @@ export const ITEMS: ItemRegistry = {
     desc: 'Clear ice cut true by a Pale Vault grinder. A false light looks false through it.',
     category: 'key',
   },
+  // 09 §C2 "The Long Way Round" — the Reckoning-Works' thanks (a keepsake, no use)
+  aurora_card: {
+    id: 'aurora_card',
+    name: 'Aurora Card',
+    desc: 'A punched Reckoning-Works card. Fed through an engine, it plays the aurora.',
+    category: 'key',
+  },
   fenn_satchel: {
     id: 'fenn_satchel',
     name: "Fenn's Satchel",

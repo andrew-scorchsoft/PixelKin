@@ -861,6 +861,20 @@
       "tw": 1,
       "th": 2
     },
+    "interior_card_belt": {
+      "path": "assets/sprites/objects/interior_card_belt.webp",
+      "width": 64,
+      "height": 16,
+      "tw": 4,
+      "th": 1
+    },
+    "interior_card_stacks": {
+      "path": "assets/sprites/objects/interior_card_stacks.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "interior_chalkboard": {
       "path": "assets/sprites/objects/interior_chalkboard.webp",
       "width": 64,
@@ -931,6 +945,20 @@
       "tw": 2,
       "th": 1
     },
+    "interior_output_board": {
+      "path": "assets/sprites/objects/interior_output_board.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "interior_output_board_after": {
+      "path": "assets/sprites/objects/interior_output_board_after.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
     "interior_pew": {
       "path": "assets/sprites/objects/interior_pew.webp",
       "width": 48,
@@ -944,6 +972,13 @@
       "height": 16,
       "tw": 1,
       "th": 1
+    },
+    "interior_reckoning_engine": {
+      "path": "assets/sprites/objects/interior_reckoning_engine.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
     },
     "interior_rug": {
       "path": "assets/sprites/objects/interior_rug.webp",
@@ -968,6 +1003,13 @@
     },
     "interior_shelf": {
       "path": "assets/sprites/objects/interior_shelf.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "interior_star_window": {
+      "path": "assets/sprites/objects/interior_star_window.webp",
       "width": 32,
       "height": 48,
       "tw": 2,
@@ -1525,6 +1567,13 @@
       "height": 48,
       "tw": 3,
       "th": 3
+    },
+    "rimeway_reckoning_works": {
+      "path": "assets/sprites/objects/rimeway_reckoning_works.webp",
+      "width": 112,
+      "height": 80,
+      "tw": 7,
+      "th": 5
     },
     "rimeway_rime_gate_barred": {
       "path": "assets/sprites/objects/rimeway_rime_gate_barred.webp",

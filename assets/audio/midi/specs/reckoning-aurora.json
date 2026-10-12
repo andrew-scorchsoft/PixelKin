@@ -1,0 +1,53 @@
+{
+  "title": "The Aurora Roll - the engines play what the clerks found (C2, after the Paul story)",
+  "_note": "The Reckoning-Works' engines, fed the four wander-finds, play music instead of counting. Each find is a part: Hollis's AURORA is the BELL music-box lead in 'three long folds, then a short one' (h h | h q r); Teague's Snowcune HOP-TRACK is the pluck rhythm (hop hop skiiid hop, rest); Brann's two notes from the rime-lamp's cage are the pad's question-and-answer (A3 -> D4, two bars each); Nib's FROST-FERNS are the pulse12 arpeggio that branches in at bar 9 (bars 9-16: the aurora 'changes its mind'). The engines still tick (soft hat on every beat) - same machines, same care, new meaning. D major, 84 BPM, 16 bars; bar 16 rests on D and the pad's A3 leads back to bar 1. snes era (reverb), 6 voices peak. Also used as the hall's bed once flag:q_works_done is held.",
+  "era": "snes",
+  "tempo": 84,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "D major",
+  "tracks": [
+    {
+      "name": "aurora",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.62,
+      "notes": "F#5h A5h | B5h A5q rq | G5h F#5h | E5h D5q rq | F#5h A5h | D6h C#6q rq | B5h A5h | A5h. rq | G5h B5h | A5h F#5q rq | E5h G5h | F#5h D5q rq | F#5h A5h | B5h D6q rq | C#6h E5h | D5h. rq"
+    },
+    {
+      "name": "hop_track",
+      "voice": "pluck",
+      "octave": 4,
+      "gain": 0.42,
+      "notes": "D4e A4e F#4q. D4e rq | G3e D4e B3q. G3e rq | E4e B4e G4q. E4e rq | A3e E4e C#4q. A3e rq | D4e A4e F#4q. D4e rq | B3e F#4e D4q. B3e rq | G3e D4e B3q. G3e rq | A3e E4e C#4q. A3e rq | G3e D4e B3q. G3e rq | D4e A4e F#4q. D4e rq | E4e B4e G4q. E4e rq | D4e A4e F#4q. D4e rq | D4e A4e F#4q. D4e rq | G3e D4e B3q. G3e rq | A3e E4e C#4q. A3e rq | D4e A4e F#4q. D4e rq"
+    },
+    {
+      "name": "lamp_notes",
+      "voice": "pad",
+      "octave": 3,
+      "gain": 0.22,
+      "notes": "A3w | A3w | D4w | D4w | A3w | A3w | D4w | D4w | A3w | A3w | D4w | D4w | A3w | A3w | D4w | A3w"
+    },
+    {
+      "name": "frost_fern",
+      "voice": "pulse12",
+      "octave": 5,
+      "gain": 0.28,
+      "notes": "rw | rw | rw | rw | rw | rw | rw | rw | G4e B4e D5e G5e D5e B4e D5e B4e | D5e F#5e A5e D6e A5e F#5e A5e F#5e | E4e G4e B4e E5e B4e G4e B4e G4e | D5e F#5e A5e D6e A5e F#5e A5e F#5e | D5e F#5e A5e D6e A5e F#5e A5e F#5e | G4e B4e D5e G5e D5e B4e D5e B4e | A4e C#5e E5e A5e E5e C#5e E5e C#5e | D5e F#5e A5e D6e A5e F#5e D5q"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.8,
+      "notes": "D2h A2h | G2h D2h | E2h B2h | A2h E2h | D2h A2h | B2h F#2h | G2h D2h | A2h E2h | G2h D2h | D2h A2h | E2h B2h | D2h A2h | D2h A2h | G2h D2h | A2h E2h | D2h A2h"
+    },
+    {
+      "name": "engines",
+      "voice": "drums",
+      "gain": 0.14,
+      "notes": "q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat | q hat hat hat hat"
+    }
+  ]
+}

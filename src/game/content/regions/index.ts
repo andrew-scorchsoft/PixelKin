@@ -18,6 +18,7 @@ import { MIRELIGHT_DIALOGUE, MIRELIGHT_SCRIPTS } from './mirelight';
 import { RIMEWAY_DIALOGUE, RIMEWAY_SCRIPTS } from './rimeway';
 import { OLDSEAMS_DIALOGUE, OLDSEAMS_SCRIPTS } from './oldseams';
 import { SUNVAULT_DIALOGUE, SUNVAULT_SCRIPTS } from './sunvault';
+import { RECKONWORKS_DIALOGUE, RECKONWORKS_SCRIPTS } from './reckonworks';
 
 export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SOUTH_SCRIPTS,
@@ -31,6 +32,7 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...RIMEWAY_SCRIPTS,
   ...OLDSEAMS_SCRIPTS,
   ...SUNVAULT_SCRIPTS,
+  ...RECKONWORKS_SCRIPTS,
 };
 
 export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
@@ -45,4 +47,5 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...RIMEWAY_DIALOGUE,
   ...OLDSEAMS_DIALOGUE,
   ...SUNVAULT_DIALOGUE,
+  ...RECKONWORKS_DIALOGUE,
 };

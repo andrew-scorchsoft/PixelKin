@@ -207,6 +207,21 @@ for y in range(H):
         elif r < 0.20:
             deco[y * W + x] = rng.choice(litter)
 
+# ---- the Reckoning-Works' wandering clerk (09 §C2, "Measured in Miles") -----------
+# Placed AFTER the scatter so it never reshuffles the rng-rolled litter. After the
+# Paul story Teague walks down off the Fold and stops on shelf 2, reading a
+# Snowcune's hop-track in the snow (a non-solid decal; the clerk is flag-gated).
+for (x, y) in [(20, 23), (21, 23), (22, 23), (23, 23), (24, 23)]:
+    deco[y * W + x] = 0
+m["objects"].append({"id": "works_kin_tracks", "sprite": "hushfrost_tracks_h",
+                     "at": {"tx": 20, "ty": 23}, "w": 4, "h": 1, "solid": False})
+m["npcs"].append({"id": "works_wander_teague", "at": {"tx": 24, "ty": 23}, "facing": "left",
+                  "sprite": "npc_woman", "movement": "static",
+                  "dialogue_ref": "script.works_wander_teague",
+                  "requires_flag": "flag:q_works_story",
+                  "hidden_when_flag": "flag:works_found_teague"})
+owed.append("script.works_wander_teague")
+
 m["layers"] = [
     {"name": "base", "role": "base", "depth": 0, "data": base},
     {"name": "t_trail", "role": "terrain", "terrain": "snowtrail",

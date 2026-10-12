@@ -343,6 +343,28 @@
      "remaster": "play/assets/audio/music/remaster/rimeway.mp3",
      "loop_start": 9.915,
      "note": null
+    },
+    {
+     "id": "reckoning-aurora",
+     "title": "The Reckoning-Works — the Aurora Roll",
+     "where": "The Reckoning-Works",
+     "mood": "",
+     "classic": "play/assets/audio/music/reckoning-aurora.mp3",
+     "classic_loop_start": null,
+     "remaster": null,
+     "loop_start": null,
+     "note": null
+    },
+    {
+     "id": "reckoning-works",
+     "title": "The Reckoning-Works — busy engines",
+     "where": "The Reckoning-Works",
+     "mood": "",
+     "classic": "play/assets/audio/music/reckoning-works.mp3",
+     "classic_loop_start": null,
+     "remaster": null,
+     "loop_start": null,
+     "note": null
     }
    ]
   },

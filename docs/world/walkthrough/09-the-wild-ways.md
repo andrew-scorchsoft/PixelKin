@@ -224,6 +224,44 @@ Gate" (`flag:q_rimeway_gate`, Hale → `flag:rime_gate_open`); LORE "the Rimeway
 Music `rimeway`; backdrops `rimeway-a/b`. Builders: `build_rimeway_ascent/_fold/_descent.py`
 (on `tools/maps/facekit.py`); content: `src/game/content/regions/rimeway.ts`.
 
+### C2 · The Reckoning-Works (on the Fold) — side quest "The Long Way Round" — **BUILT 2026-10**
+
+**Lore.** A brass-and-punch-card works on the Rimeway Fold where clerks and their kin run
+calculating engines that compute the **star-tables**: when each lamp wants trimming, where each
+constellation rises, to the minute, carried down the high road to the tenders. For **eleven
+winters** (the Long Dusk; the Rime Gate barred) nobody has come up for them, and nobody stopped
+making them. The engines run faster every winter, the output board climbs ("THIS WINTER: MORE"),
+the tables stack unread. The clerks' values (care, precision, pride in the craft) are good and
+stay intact; what they've lost is the *why*. The cure is Paul (S4/S5), the old man who wanders
+and is never lost, retold in the player's own words (never the S5 waystone's quote).
+
+**Place.** `reckoning_works` (interior, 20×14, warm register on roomkit): the **engine hall**
+(focal: the output board, flag-swapped to its chalk-drawn twin on `flag:q_works_done`; two
+calculating engines + a card-belt worked by a Chillpip and a Snowcune; desks; stacks of unread
+tables), the **overseer's office** (Ketterly, talked to across her desk) and, through it, the
+dusty **star-room** (the old observation window). The building (`rimeway_reckoning_works`, 7×5)
+stands on the Fold's upper plateau east of the gate road; door (24,19) with a snowtrail apron
+and spur off the refuge road. Music: `reckoning-works` (busy clockwork) until the quest's end,
+then `reckoning-aurora` (the engines playing the four finds), via `music_when`. Builders:
+`build_reckoning_works.py`, + edits to `build_rimeway_fold.py` / `build_rimeway_ascent.py`;
+Hollis's Pale Vault spot rides `hand_placed_data.py`. Content: `content/regions/reckonworks.ts`.
+
+**The quest (flags).** 1) Ketterly brushes you off with output figures (`flag:q_works_begun`,
+`flag:works_met_ketterly`; JOURNAL "The Long Way Round", LORE "the star-tables"). 2) Nib, the
+apprentice, is jammed on the same table for the hundredth time and offers you the floor
+(`flag:q_works_nib`) — a `choice`: **About Paul** / A number (a joke) / Not now. 3) The story
+(extra line if you've met Paul, `flag:q_south_booji_met`; another if you walked his wood,
+`flag:q_south_wander_done`); the clerks scoff, then one by one go for a walk
+(`flag:q_works_story`). 4) Find them: **Nib** at the star-room window (frost-ferns;
+`flag:works_found_nib`), **Brann** by a rime-lamp on the Fold's lower plateau (the wind's two
+notes; `_brann`), **Teague** on the Ascent's shelf 2 past the Glare (a Snowcune's hop-track;
+`_teague`), **Hollis** on Pale Vault's west ledge (the aurora; `_hollis`). Each one found comes
+home to the hall (`_back` placements). 5) Ketterly's tally chain sets `flag:works_all_found`; the
+finale feeds the finds into the engines, which play the aurora, the board is chalked anew — and
+the tables are checked and still exact (`flag:q_works_done`). 6) Reward: the **Aurora Card**
+(key keepsake), 800 wicks (mirrored in `progression.mjs`, Hushfrost→Solarium leg), 2 Beacon
+charges. The tables go down the mountain again.
+
 ### D · The Old Seams (deeper under Cinderhead)
 
 **Lore.** Cinderhead's miners dug *cinder-coal*: warm black stone that never quite cools. The

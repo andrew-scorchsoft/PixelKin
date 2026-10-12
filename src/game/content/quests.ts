@@ -391,6 +391,24 @@ export const QUESTS: QuestRegistry = [
     start_flag: 'flag:q_rimeway_gate',
     done_flag: 'flag:rime_gate_open',
   },
+  // 09 §C2 — the Reckoning-Works on the Fold (the clerks who forgot the why)
+  {
+    id: 'reckoning_works',
+    name: 'The Long Way Round',
+    region: 'north',
+    giver: 'Overseer Ketterly',
+    blurb: 'The Reckoning-Works on the Rimeway Fold computes the star-tables faster every winter, and nobody there remembers who they\'re for. Its clerks might need a story — and a walk.',
+    start_flag: 'flag:q_works_begun',
+    stage_flags: [
+      'flag:q_works_nib',
+      'flag:q_works_story',
+      'flag:works_found_nib',
+      'flag:works_found_hollis',
+      'flag:works_found_teague',
+      'flag:works_found_brann',
+    ],
+    done_flag: 'flag:q_works_done',
+  },
 ];
 
 /** Lookup by id. */

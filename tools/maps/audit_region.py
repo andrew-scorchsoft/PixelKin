@@ -113,6 +113,14 @@ GRANTS["wickrun_crest"] = ["flag:wickrun_riding", "flag:tallow_lift_freed"]   # 
 GRANTS["rimeway_fold"] = ["flag:rimeway_ice_core"]
 GRANTS["pale_vault_glacier"].append("flag:has_frostglass_lens")
 GRANTS["rimeway_descent"] = ["flag:rime_gate_open"]
+# the Reckoning-Works (C2, "The Long Way Round"): Ketterly/Nib + the Paul story in the
+# works; the wandering clerks are found on the Fold, the Ascent and in Pale Vault
+GRANTS["reckoning_works"] = ["flag:q_works_begun", "flag:works_met_ketterly", "flag:q_works_nib",
+                             "flag:q_works_story", "flag:works_found_nib",
+                             "flag:works_all_found", "flag:q_works_done"]
+GRANTS["rimeway_fold"].append("flag:works_found_brann")
+GRANTS.setdefault("rimeway_ascent", []).append("flag:works_found_teague")
+GRANTS["pale_vault_glacier"].append("flag:works_found_hollis")
 GRANTS["wickrun_lower"] = ["flag:runner_rook_beaten"]                          # Rook (opens his foot NPC)
 GRANTS["wickrun_foot"] = ["flag:wickrun_gold", "flag:runner_ribbon"]           # the finish clock, Rook's ribbon
 GRANTS["cinderhead_mine"] += ["flag:old_seams_told", "flag:old_seams_open"]  # Otho (hall) -> his seam-door   # Otho opens the seam-door (post-Stone)

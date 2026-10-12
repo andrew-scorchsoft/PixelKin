@@ -1369,6 +1369,16 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     music: 'assets/audio/music/rimeway.mp3',
     battle_backdrops: ['assets/backgrounds/battle/rimeway-a.webp', 'assets/backgrounds/battle/rimeway-b.webp'],
   },
+  // the Reckoning-Works (C2, side quest "Measured in Miles"): the clerks' engine hall on
+  // the Fold. Busy clockwork until the quest's end; then the engines play the Aurora
+  // Roll (what the wandering clerks found) as the hall's bed.
+  reckoning_works: {
+    json: 'assets/maps/reckoning_works.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/reckoning-aurora.mp3',
+    music_when: [{ unless: 'flag:q_works_done', music: 'assets/audio/music/reckoning-works.mp3' }],
+  },
   // the Old Seams (D): dark caves on the seams_set accent kit (shafts, cinder, rails)
   // + traverse_set (planks, ladders, scree slopes).
   old_seams_i: {
