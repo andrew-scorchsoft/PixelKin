@@ -43,6 +43,7 @@ import {
   setMusicVolume,
   setSfxVolume,
   setCannotDie,
+  setExpShare,
   setAmbientMotion,
   getAmbientMotion,
   setMusicStyle,
@@ -154,6 +155,7 @@ export class SettingsMenu {
       // mixed a little under the score's loud passages.
       { label: `Effects: ${VOLUME_LABEL[this.settings.sfxVolume ?? 'full']}`, value: 'sfx' },
       { label: `Cannot die: ${this.settings.cannotDie ? 'On' : 'Off'}`, value: 'nodie' },
+      { label: `EXP share: ${(this.settings.expShare ?? true) ? 'On' : 'Off'}`, value: 'expshare' },
       { label: `Ambient motion: ${getAmbientMotion() ? 'On' : 'Off'}`, value: 'motion' },
       { label: 'Backup / restore', value: 'backup' },
       { label: 'Back', value: 'back' },
@@ -351,6 +353,14 @@ export class SettingsMenu {
         const cannotDie = !this.settings.cannotDie;
         this.settings = { ...this.settings, cannotDie };
         setCannotDie(cannotDie);
+        await SaveManager.saveSettings(this.settings);
+        void this.deps.sfx?.play('ui-toggle');
+        return true;
+      }
+      case 'expshare': {
+        const expShare = !(this.settings.expShare ?? true);
+        this.settings = { ...this.settings, expShare };
+        setExpShare(expShare);
         await SaveManager.saveSettings(this.settings);
         void this.deps.sfx?.play('ui-toggle');
         return true;

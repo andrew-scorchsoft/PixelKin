@@ -196,10 +196,17 @@ Engine formulas (`KinInstance.ts`, `BattleScene.ts`):
   bond-test band) to absorb it.
 - **A catch pays the same XP as a knock-out** — collecting is the game's
   heart and must keep you *on* the curve, not punish you off it.
-- XP goes to the **active battler only**. The model's `leadShare` schedule
-  encodes the consequence: south/east players raise fresh catches (lead gets
-  ~45–55% of XP), north onward the core team is set (70–100%). If we ever add
-  an XP-share, re-tune the divisor down.
+- The **finisher** (the kin on the field when the fight is won) takes the full
+  yield. The model's `leadShare` schedule encodes who that is: south/east players
+  raise fresh catches (lead gets ~45–55% of XP), north onward the core team is set
+  (70–100%).
+- **EXP share (2026-10, Settings → EXP share, default ON):** on top of that, kin
+  that fought earlier in the battle take **½** of the yield and the standing bench
+  **¼** (fainted kin nothing). It is purely ADDITIVE — the finisher's gain is
+  unchanged, so the lead's curve (and every checkpoint below) is untouched; it only
+  stops the bench falling behind. That's why the /20 divisor was NOT re-tuned. Off =
+  the classic finisher-only rule. (`BattleScene.awardExp` / `SHARE_FOUGHT` /
+  `SHARE_BENCH`.)
 
 **Model results (2026-10 after R9's Old Light pair, all checks passing):**
 

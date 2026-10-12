@@ -73,6 +73,8 @@ export interface Settings {
   /** Cannot-die mode: a lost battle restores the party where you stand (no
    *  warp to the last rest point, no wick tithe). */
   cannotDie?: boolean;
+  /** EXP share: the bench learns a share of every win (default on). */
+  expShare?: boolean;
   /** Ambient motion (particles / falling stars / birds / bobbing). Unset = the
    *  OS reduced-motion preference decides (see preferences.prefersReducedMotion). */
   ambientMotion?: boolean;
@@ -91,6 +93,7 @@ export const DEFAULT_SETTINGS: Settings = {
   musicVolume: 'full',
   sfxVolume: 'full',
   cannotDie: false,
+  expShare: true,
 };
 
 export const SaveManager = {

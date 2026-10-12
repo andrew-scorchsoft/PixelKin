@@ -17,6 +17,7 @@ let battlePace: BattlePace = 'cosy';
 let musicVolume: VolumeLevel = 'full';
 let sfxVolume: VolumeLevel = 'full';
 let cannotDie = false;
+let expShare = true;
 let ambientMotion = true;
 
 /** OFF/LOW/MID/FULL -> 0/0.33/0.66/1. */
@@ -68,6 +69,21 @@ export function setCannotDie(on: boolean): void {
 
 export function getCannotDie(): boolean {
   return cannotDie;
+}
+
+// ------------------------------------------------------------------ exp share --
+
+/**
+ * EXP share (default ON): the kin that finished the fight still takes its full
+ * EXP; kin that fought earlier share half, and the rest of the lamp a quarter.
+ * Off = the classic rule (only the finisher learns). BattleScene.awardExp reads it.
+ */
+export function setExpShare(on: boolean): void {
+  expShare = on;
+}
+
+export function getExpShare(): boolean {
+  return expShare;
 }
 
 // ------------------------------------------------------------- ambient motion --

@@ -30,6 +30,7 @@ import {
   setSfxVolume,
   setMasterVolume as applyMasterVolumePref,
   setCannotDie,
+  setExpShare,
   setAmbientMotion,
   prefersReducedMotion,
 } from '@game/ui/preferences';
@@ -106,6 +107,7 @@ class ShellManagerImpl {
     setSfxVolume(this.settings.sfxVolume ?? 'full');
     applyMasterVolumePref(this.settings.masterVolume ?? 1);
     setCannotDie(this.settings.cannotDie ?? false);
+    setExpShare(this.settings.expShare ?? true);
     setAmbientMotion(this.settings.ambientMotion ?? !prefersReducedMotion());
     this.applyControlSize();
     this.render();
