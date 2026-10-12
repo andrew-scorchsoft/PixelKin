@@ -296,6 +296,14 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       if (actor) await walkTo(actor, step.to.tx, step.to.ty, ctx.canEnter, step.speed);
       return true;
     }
+    case 'hideActor': {
+      // A disappearance (the toy-trader, gone the moment you look up). Only the
+      // sprite hides — the NPC itself leaves when its hidden_when_flag is
+      // re-read as the scene ends, so pair this with that flag's setFlag.
+      const a = ctx.getActor(step.actor);
+      if (a && step.actor !== 'player') a.sprite.setVisible(false);
+      return true;
+    }
     case 'hop': {
       const actor = ctx.getActor(step.actor);
       if (actor) await hopInPlace(scene, actor, Math.max(1, step.times ?? 1), step.height ?? 5);

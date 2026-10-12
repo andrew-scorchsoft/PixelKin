@@ -304,7 +304,7 @@ World map: node `wickstead_green` west of Tinderwick (`tools/maps/world_layout.p
    3. **The teases.** Offshore **lantern-buoys** glow over shallows leading to **Gullcry Rock**
       (Tidecall, not yet) and a dark **cavern mouth** in the cliff → **Tideglass Cavern**
       (Glimmerstep, not yet). Both are signed: the *why* and the *come back* are explicit.
-   - *(R9)* On the south sand, just off the lane, **Aldous Wink** minds his toy case and
+   - *(R9)* On the south sand, just off the lane, **a nameless man** minds his toy case and
       auction board (S6 "The Tin Rower"); further up the strand **Pim Halloo** of the Worry Club
       waves a map of contradicting arrows.
    4. **Meet Wren again (A2).** The travelling Wayfarer NPC anchors the route; Wren's first
@@ -656,7 +656,7 @@ netmender's keeping.
      is a rest point; rest-lantern on its door) → "Sometimes it's good to experience the fine and
      unexpected qualities of life." Later visits play a short version (`flag:wayward_night`,
      which also unlocks the LORE entry). Pure reward; gates nothing.
-   - **S6 "The Tin Rower"** — **[BUILT R9, 2026-10]** giver: **Aldous Wink** ("Wink's Wind-Ups
+   - **S6 "The Tin Rower"** — **[BUILT R9, 2026-10]** giver: **a nameless man with a toy case** (never named — he vanishes once the toy is yours) ("Wink's Wind-Ups
      — toys, tales, trades"), `npc_old_man` on the **Dimglass Coast I** south sand strip at (12,30),
      his auction board `sign.wink_auction` at (12,29) (`requires_flag: flag:has_starter`). Lot 1 is
      a wind-up tin ferryman, painted *SAME TIDE TOMORROW*, stamped *MADE TO ORDER — T.* — Tam

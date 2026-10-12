@@ -162,7 +162,7 @@ PLACEMENTS: dict[str, dict] = {
             # the Worry Club (R9)
             {"id": "worry_pim", "at": {"tx": 12, "ty": 15}, "facing": "left", "sprite": "npc_man", "movement": "look_around", "dialogue_ref": "script.worry_pim"},
             # R9: Wink's Tin Rower auction
-            {"id": "wink", "at": {"tx": 12, "ty": 30}, "facing": "left", "sprite": "npc_old_man", "movement": "look_around", "dialogue_ref": "script.wink_trade", "requires_flag": "flag:has_starter"},
+            {"id": "wink", "at": {"tx": 12, "ty": 30}, "facing": "left", "sprite": "npc_old_man", "movement": "look_around", "dialogue_ref": "script.wink_trade", "requires_flag": "flag:has_starter", "hidden_when_flag": "flag:has_tin_rower"},
         ],
         "signs": [
             ("wink", (12, 29), "sign.wink_auction"),

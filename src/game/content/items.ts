@@ -101,7 +101,7 @@ export const ITEMS: ItemRegistry = {
       turn_off: 'You slide the hood back. The lamp brightens, and the wilds wake to it once more.',
     },
   },
-  // R9 "The Tin Rower" — Aldous Wink's lot on Dimglass Coast I, traded for a
+  // R9 "The Tin Rower" — the nameless toy-trader's lot on Dimglass Coast I, traded for a
   // story (or 12,000 wicks). A toggle key item like the Hooded Lamp: while WOUND
   // the wild kin follow the clicking toy instead of you (encounter rate ×0.5).
   // Handed over already wound. Also the Old Light tower's free riddle-hint.

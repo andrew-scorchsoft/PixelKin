@@ -855,13 +855,14 @@ export const SCRIPTS: ScriptRegistry = {
   ],
 
   // ---------------------------------------------------------------------------
-  // R9 "THE TIN ROWER" — Aldous Wink's lot on Dimglass Coast I.
+  // R9 "THE TIN ROWER" — the nameless man's lot on Dimglass Coast I (he never
+  // gives a name, and he's gone the moment the toy is yours).
   //
-  // A wind-up tin ferryman, made to order for Tam Wash and never collected. Wink
+  // A wind-up tin ferryman, made to order for Tam Wash and never collected. He
   // set the auction reserve (12,000w) SPECIFICALLY not to be met — he'd rather
   // trade him for a story. Two ways to him:
   //   TELL A STORY — a three-pick story-builder (opening / middle / ending). Each
-  //     pick sets a `flag:tin_story_*` (all cleared at the start) so Wink can
+  //     pick sets a `flag:tin_story_*` (all cleared at the start) so he can
   //     read it back; the one "auction ending" (sealed in a glass case) is turned
   //     down and only the good endings are re-offered.
   //   BUY HIM — the `pay` op: a full purse pays and sets `flag:tin_rower_bought`;
@@ -872,21 +873,19 @@ export const SCRIPTS: ScriptRegistry = {
   // ---------------------------------------------------------------------------
   'script.wink_trade': [
     { op: 'emote', actor: 'wink', emote: 'alert', unless_flag: 'flag:tin_rower_offered' },
-    { op: 'say', unless_flag: 'flag:tin_rower_offered', speaker: 'ALDOUS WINK', text: "Aldous Wink. Wink's Wind-Ups — toys, tales, trades. Mind the case; the case is older than me." },
-    { op: 'say', unless_flag: 'flag:tin_rower_offered', speaker: 'ALDOUS WINK', text: "That's Lot 1 on the sign. Up for auction eleven winters. Nobody's met the reserve. I set the reserve. I set it SPECIFICALLY not to be met." },
+    { op: 'say', unless_flag: 'flag:tin_rower_offered', speaker: 'MAN WITH A CASE', text: "Names? No, I don't think so. Toys, tales, trades. Mind the case; the case is older than me." },
+    { op: 'say', unless_flag: 'flag:tin_rower_offered', speaker: 'MAN WITH A CASE', text: "That's Lot 1 on the sign. Up for auction eleven winters. Nobody's met the reserve. I set the reserve. I set it SPECIFICALLY not to be met." },
     { op: 'setFlag', unless_flag: 'flag:tin_rower_offered', flag: 'flag:tin_rower_offered' },
     // After the Old Light — he worked out whose order it was.
     { op: 'emote', if_flag: 'flag:q_south_jest_done', unless_flag: 'flag:wink_tam_told', actor: 'wink', emote: 'ellipsis' },
-    { op: 'say', if_flag: 'flag:q_south_jest_done', unless_flag: 'flag:wink_tam_told', speaker: 'ALDOUS WINK', text: 'Tam Wash. I think I knew. I just liked not knowing.' },
+    { op: 'say', if_flag: 'flag:q_south_jest_done', unless_flag: 'flag:wink_tam_told', speaker: 'MAN WITH A CASE', text: 'Tam Wash. I think I knew. I just liked not knowing.' },
     { op: 'setFlag', if_flag: 'flag:q_south_jest_done', unless_flag: 'flag:wink_tam_told', flag: 'flag:wink_tam_told' },
-    // Already yours: a word about him, then off you go.
-    { op: 'say', if_flag: 'flag:has_tin_rower', speaker: 'ALDOUS WINK', text: "How's he rowing? Wind him twice before bed. He rows better when someone's watching." },
     { op: 'run', ref: 'script.wink_menu', unless_flag: 'flag:has_tin_rower' },
   ],
   'script.wink_menu': [
     {
       op: 'choice',
-      speaker: 'ALDOUS WINK',
+      speaker: 'MAN WITH A CASE',
       prompt: 'Lot 1. One tin ferryman, working. What will it be?',
       options: [
         { label: 'TELL A STORY', ops: [{ op: 'run', ref: 'script.wink_story' }] },
@@ -894,31 +893,31 @@ export const SCRIPTS: ScriptRegistry = {
         {
           label: "WHERE'S HE FROM?",
           ops: [
-            { op: 'say', speaker: 'ALDOUS WINK', text: "Made to order. A lady off Pearlmoor Quay, laugh you could hear across the harbour. Paid half. Said she'd be back with the rest 'when the fog lifts.'" },
-            { op: 'say', speaker: 'ALDOUS WINK', text: '...Long fog.' },
+            { op: 'say', speaker: 'MAN WITH A CASE', text: "Made to order. A lady off Pearlmoor Quay, laugh you could hear across the harbour. Paid half. Said she'd be back with the rest 'when the fog lifts.'" },
+            { op: 'say', speaker: 'MAN WITH A CASE', text: '...Long fog.' },
           ],
         },
-        { label: 'JUST LOOKING', ops: [{ op: 'say', speaker: 'ALDOUS WINK', text: "Looking's free. Looking's the best bit, mostly. He doesn't mind being looked at — he's a ferryman, he's used to it." }] },
+        { label: 'JUST LOOKING', ops: [{ op: 'say', speaker: 'MAN WITH A CASE', text: "Looking's free. Looking's the best bit, mostly. He doesn't mind being looked at — he's a ferryman, he's used to it." }] },
       ],
     },
   ],
   'script.wink_buy': [
-    { op: 'say', speaker: 'ALDOUS WINK', text: "Twelve thousand wicks. The reserve. You're sure? ...A story's free, and honestly? I'd rather." },
+    { op: 'say', speaker: 'MAN WITH A CASE', text: "Twelve thousand wicks. The reserve. You're sure? ...A story's free, and honestly? I'd rather." },
     {
       op: 'choice',
-      speaker: 'ALDOUS WINK',
+      speaker: 'MAN WITH A CASE',
       options: [
         {
           label: 'PAY 12,000W',
           ops: [
             { op: 'pay', amount: 12000, flag: 'flag:tin_rower_bought', unless_flag: 'flag:has_tin_rower' },
-            { op: 'say', if_flag: 'flag:tin_rower_bought', unless_flag: 'flag:has_tin_rower', speaker: 'ALDOUS WINK', text: 'Sold. To the Wayfarer with more wicks than sense. ...No, I mean it kindly. Mostly.' },
+            { op: 'say', if_flag: 'flag:tin_rower_bought', unless_flag: 'flag:has_tin_rower', speaker: 'MAN WITH A CASE', text: 'Sold. To the Wayfarer with more wicks than sense. ...No, I mean it kindly. Mostly.' },
             { op: 'run', ref: 'script.wink_handover', if_flag: 'flag:tin_rower_bought' },
-            { op: 'say', unless_flag: 'flag:tin_rower_bought', speaker: 'ALDOUS WINK', text: "Twelve thousand. ...You've a fair purse, but not that fair. A story's free, and honestly? I'd rather." },
+            { op: 'say', unless_flag: 'flag:tin_rower_bought', speaker: 'MAN WITH A CASE', text: "Twelve thousand. ...You've a fair purse, but not that fair. A story's free, and honestly? I'd rather." },
           ],
         },
         { label: 'TELL A STORY', ops: [{ op: 'run', ref: 'script.wink_story' }] },
-        { label: 'NOT TODAY', ops: [{ op: 'say', speaker: 'ALDOUS WINK', text: "Wise. He'll keep. He's kept eleven winters." }] },
+        { label: 'NOT TODAY', ops: [{ op: 'say', speaker: 'MAN WITH A CASE', text: "Wise. He'll keep. He's kept eleven winters." }] },
       ],
     },
   ],
@@ -926,11 +925,10 @@ export const SCRIPTS: ScriptRegistry = {
   // The story-builder. Picks set flags; a Cancel at any step ends the telling
   // (the next stage only runs once its `tin_story_has_*` marker is held).
   'script.wink_story': [
-    { op: 'say', speaker: 'ALDOUS WINK', text: 'Toys are only stories somebody can hold. Tell me one in three goes: how it starts, what goes wrong, how it ends.' },
+    { op: 'say', speaker: 'MAN WITH A CASE', text: 'Toys are only stories somebody can hold. Tell me one in three goes: how it starts, what goes wrong, how it ends.' },
     { op: 'setFlag', flag: 'flag:tin_story_open_ferry', value: false },
     { op: 'setFlag', flag: 'flag:tin_story_open_rooster', value: false },
     { op: 'setFlag', flag: 'flag:tin_story_open_bun', value: false },
-    { op: 'setFlag', flag: 'flag:tin_story_open_paul', value: false },
     { op: 'setFlag', flag: 'flag:tin_story_mid_fog', value: false },
     { op: 'setFlag', flag: 'flag:tin_story_mid_machine', value: false },
     { op: 'setFlag', flag: 'flag:tin_story_mid_stranger', value: false },
@@ -945,36 +943,28 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:tin_story_special', value: false },
     {
       op: 'choice',
-      speaker: 'ALDOUS WINK',
+      speaker: 'MAN WITH A CASE',
       prompt: 'How does it START?',
       options: [
         {
           label: 'A ferryman',
           ops: [
             { op: 'setFlag', flag: 'flag:tin_story_open_ferry' },
-            { op: 'say', speaker: 'ALDOUS WINK', text: '"A ferryman who could read the weather but not his own face." Ooh. Go on.' },
+            { op: 'say', speaker: 'MAN WITH A CASE', text: '"A ferryman who could read the weather but not his own face." Ooh. Go on.' },
           ],
         },
         {
           label: 'A hopeful rooster',
           ops: [
             { op: 'setFlag', flag: 'flag:tin_story_open_rooster' },
-            { op: 'say', speaker: 'ALDOUS WINK', text: '"A rooster who believed in morning when nobody else did." Brave bird. Go on.' },
+            { op: 'say', speaker: 'MAN WITH A CASE', text: '"A rooster who believed in morning when nobody else did." Brave bird. Go on.' },
           ],
         },
         {
           label: 'A huge cheese-bun',
           ops: [
             { op: 'setFlag', flag: 'flag:tin_story_open_bun' },
-            { op: 'say', speaker: 'ALDOUS WINK', text: '"Once, there was an enormous cheese-bun..." ...I wasn\'t ready for that. Go on.' },
-          ],
-        },
-        {
-          label: 'Paul got lost',
-          if_flag: 'flag:name_is_paul',
-          ops: [
-            { op: 'setFlag', flag: 'flag:tin_story_open_paul' },
-            { op: 'say', speaker: 'ALDOUS WINK', text: '"{name} got lost. On purpose." Ha! The best way. Go on.' },
+            { op: 'say', speaker: 'MAN WITH A CASE', text: '"Once, there was an enormous cheese-bun..." ...I wasn\'t ready for that. Go on.' },
           ],
         },
       ],
@@ -982,42 +972,41 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:tin_story_has_open', if_flag: 'flag:tin_story_open_ferry' },
     { op: 'setFlag', flag: 'flag:tin_story_has_open', if_flag: 'flag:tin_story_open_rooster' },
     { op: 'setFlag', flag: 'flag:tin_story_has_open', if_flag: 'flag:tin_story_open_bun' },
-    { op: 'setFlag', flag: 'flag:tin_story_has_open', if_flag: 'flag:tin_story_open_paul' },
     { op: 'run', ref: 'script.wink_story_mid', if_flag: 'flag:tin_story_has_open' },
-    { op: 'say', unless_flag: 'flag:tin_story_has_end', speaker: 'ALDOUS WINK', text: "Stories keep. Come back when it's got an end on it — he's not going anywhere. Not without someone to wind him." },
+    { op: 'say', unless_flag: 'flag:tin_story_has_end', speaker: 'MAN WITH A CASE', text: "Stories keep. Come back when it's got an end on it — he's not going anywhere. Not without someone to wind him." },
   ],
   'script.wink_story_mid': [
     {
       op: 'choice',
-      speaker: 'ALDOUS WINK',
+      speaker: 'MAN WITH A CASE',
       prompt: 'And what goes WRONG?',
       options: [
         {
           label: 'The fog came in',
           ops: [
             { op: 'setFlag', flag: 'flag:tin_story_mid_fog' },
-            { op: 'say', speaker: 'ALDOUS WINK', text: '"One night the fog came in and the bell went quiet." ...Hm. Yes. That does happen.' },
+            { op: 'say', speaker: 'MAN WITH A CASE', text: '"One night the fog came in and the bell went quiet." ...Hm. Yes. That does happen.' },
           ],
         },
         {
           label: 'A brass joke-machine',
           ops: [
             { op: 'setFlag', flag: 'flag:tin_story_mid_machine' },
-            { op: 'say', speaker: 'ALDOUS WINK', text: '"A brass machine told them a joke, and they laughed till the sea went out." Dangerous, that. Lovely, but dangerous.' },
+            { op: 'say', speaker: 'MAN WITH A CASE', text: '"A brass machine told them a joke, and they laughed till the sea went out." Dangerous, that. Lovely, but dangerous.' },
           ],
         },
         {
           label: 'An old stranger',
           ops: [
             { op: 'setFlag', flag: 'flag:tin_story_mid_stranger' },
-            { op: 'say', speaker: 'ALDOUS WINK', text: '"An old stranger pretended not to help them — and helped them all the way." I know the type. Wears a hat, I expect.' },
+            { op: 'say', speaker: 'MAN WITH A CASE', text: '"An old stranger pretended not to help them — and helped them all the way." I know the type. Wears a hat, I expect.' },
           ],
         },
         {
           label: 'Nothing. For years.',
           ops: [
             { op: 'setFlag', flag: 'flag:tin_story_mid_nothing' },
-            { op: 'say', speaker: 'ALDOUS WINK', text: '"Nothing happened. For eleven years." ...Bold. True, too, for some of us.' },
+            { op: 'say', speaker: 'MAN WITH A CASE', text: '"Nothing happened. For eleven years." ...Bold. True, too, for some of us.' },
           ],
         },
       ],
@@ -1031,7 +1020,7 @@ export const SCRIPTS: ScriptRegistry = {
   'script.wink_story_end': [
     {
       op: 'choice',
-      speaker: 'ALDOUS WINK',
+      speaker: 'MAN WITH A CASE',
       prompt: 'And how does it END?',
       options: [
         { label: 'They came home', ops: [{ op: 'run', ref: 'script.wink_end_home' }] },
@@ -1041,10 +1030,10 @@ export const SCRIPTS: ScriptRegistry = {
           label: 'A glass case',
           ops: [
             { op: 'setFlag', flag: 'flag:tin_story_end_glass' },
-            { op: 'say', speaker: 'ALDOUS WINK', text: '"...and it was sealed in a glass case, mint, and never walked again."' },
+            { op: 'say', speaker: 'MAN WITH A CASE', text: '"...and it was sealed in a glass case, mint, and never walked again."' },
             { op: 'emote', actor: 'wink', emote: 'sweat' },
-            { op: 'say', speaker: 'ALDOUS WINK', text: "Ooh. That's the auction ending. That's the one I'm trying to spare him." },
-            { op: 'say', speaker: 'ALDOUS WINK', text: "Beginnings are the hard part, and you've done those. Try the end again?" },
+            { op: 'say', speaker: 'MAN WITH A CASE', text: "Ooh. That's the auction ending. That's the one I'm trying to spare him." },
+            { op: 'say', speaker: 'MAN WITH A CASE', text: "Beginnings are the hard part, and you've done those. Try the end again?" },
           ],
         },
       ],
@@ -1056,7 +1045,7 @@ export const SCRIPTS: ScriptRegistry = {
   'script.wink_story_end_again': [
     {
       op: 'choice',
-      speaker: 'ALDOUS WINK',
+      speaker: 'MAN WITH A CASE',
       prompt: 'How does it END? (A kind one, this time.)',
       options: [
         { label: 'They came home', ops: [{ op: 'run', ref: 'script.wink_end_home' }] },
@@ -1068,26 +1057,25 @@ export const SCRIPTS: ScriptRegistry = {
   'script.wink_end_home': [
     { op: 'setFlag', flag: 'flag:tin_story_end_home' },
     { op: 'setFlag', flag: 'flag:tin_story_has_end' },
-    { op: 'say', speaker: 'ALDOUS WINK', text: '"...and they came home, a bit late, and nobody minded." Ahh. That\'s the one everybody wants.' },
+    { op: 'say', speaker: 'MAN WITH A CASE', text: '"...and they came home, a bit late, and nobody minded." Ahh. That\'s the one everybody wants.' },
   ],
   'script.wink_end_light': [
     { op: 'setFlag', flag: 'flag:tin_story_end_light' },
     { op: 'setFlag', flag: 'flag:tin_story_has_end' },
-    { op: 'say', speaker: 'ALDOUS WINK', text: '"...and they never came back, but somebody kept the light on anyway."' },
-    { op: 'say', speaker: 'ALDOUS WINK', text: "That's a true one. Those cost the most." },
+    { op: 'say', speaker: 'MAN WITH A CASE', text: '"...and they never came back, but somebody kept the light on anyway."' },
+    { op: 'say', speaker: 'MAN WITH A CASE', text: "That's a true one. Those cost the most." },
   ],
   'script.wink_end_wander': [
     { op: 'setFlag', flag: 'flag:tin_story_end_wander' },
     { op: 'setFlag', flag: 'flag:tin_story_has_end' },
-    { op: 'say', speaker: 'ALDOUS WINK', text: '"...and they\'re still wandering. But they\'re never lost." A story that won\'t sit down. I like it.' },
+    { op: 'say', speaker: 'MAN WITH A CASE', text: '"...and they\'re still wandering. But they\'re never lost." A story that won\'t sit down. I like it.' },
   ],
-  // Wink tells it back (so you know it was heard), reacts, and hands him over.
+  // He tells it back (so you know it was heard), reacts, and hands him over.
   'script.wink_story_finale': [
-    { op: 'say', speaker: 'ALDOUS WINK', text: "Right. Let me tell it back to you, so you know it's been heard." },
+    { op: 'say', speaker: 'MAN WITH A CASE', text: "Right. Let me tell it back to you, so you know it's been heard." },
     { op: 'narrate', if_flag: 'flag:tin_story_open_ferry', text: 'There was a ferryman who could read the weather but not his own face.' },
     { op: 'narrate', if_flag: 'flag:tin_story_open_rooster', text: 'There was a rooster who believed in morning when nobody else did.' },
     { op: 'narrate', if_flag: 'flag:tin_story_open_bun', text: 'Once, there was an enormous cheese-bun.' },
-    { op: 'narrate', if_flag: 'flag:tin_story_open_paul', text: '{name} got lost. On purpose.' },
     { op: 'narrate', if_flag: 'flag:tin_story_mid_fog', text: 'One night the fog came in, and the bell went quiet.' },
     { op: 'narrate', if_flag: 'flag:tin_story_mid_machine', text: 'A brass machine told them a joke, and they laughed till the sea went out.' },
     { op: 'narrate', if_flag: 'flag:tin_story_mid_stranger', text: 'An old stranger pretended not to help them — and helped them all the way.' },
@@ -1097,7 +1085,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'narrate', if_flag: 'flag:tin_story_end_wander', text: "And they're still wandering. But they're never lost." },
     // A bun that waits eleven years and comes home: the one he can't take.
     { op: 'run', ref: 'script.wink_react_bun', if_flag: 'flag:tin_story_open_bun' },
-    { op: 'say', unless_flag: 'flag:tin_story_special', speaker: 'ALDOUS WINK', text: "Bit lumpy in the middle. All the best ones are. He's yours." },
+    { op: 'say', unless_flag: 'flag:tin_story_special', speaker: 'MAN WITH A CASE', text: "Bit lumpy in the middle. All the best ones are. He's yours." },
     { op: 'run', ref: 'script.wink_handover' },
   ],
   'script.wink_react_bun': [
@@ -1105,21 +1093,26 @@ export const SCRIPTS: ScriptRegistry = {
   ],
   'script.wink_react_bun_years': [
     { op: 'emote', if_flag: 'flag:tin_story_end_home', actor: 'wink', emote: 'ellipsis' },
-    { op: 'say', if_flag: 'flag:tin_story_end_home', speaker: 'ALDOUS WINK', text: "...A bun that waited eleven years to come home. That's the saddest thing I've ever heard. Take it. I need a minute." },
+    { op: 'say', if_flag: 'flag:tin_story_end_home', speaker: 'MAN WITH A CASE', text: "...A bun that waited eleven years to come home. That's the saddest thing I've ever heard. Take it. I need a minute." },
     { op: 'setFlag', if_flag: 'flag:tin_story_end_home', flag: 'flag:tin_story_special' },
   ],
   // The hand-over (story or purse). Every step guarded on the toy not yet held;
   // `flag:has_tin_rower` is set LAST so the whole beat plays exactly once.
   'script.wink_handover': [
-    { op: 'narrate', unless_flag: 'flag:has_tin_rower', text: 'Wink lifts the ferryman out of his case: a hand-long tin boat with lithographed waves on the hull, a blue-coated rower, a glass-bead bow-lamp and a brass key in the stern.' },
+    { op: 'narrate', unless_flag: 'flag:has_tin_rower', text: 'The man lifts the ferryman out of his case: a hand-long tin boat with lithographed waves on the hull, a blue-coated rower, a glass-bead bow-lamp and a brass key in the stern.' },
     { op: 'narrate', unless_flag: 'flag:has_tin_rower', text: 'Painted along the side: SAME TIDE TOMORROW. Stamped underneath, small: MADE TO ORDER — T.' },
     { op: 'giveItem', unless_flag: 'flag:has_tin_rower', item: 'tin_rower' },
     { op: 'setFlag', unless_flag: 'flag:has_tin_rower', flag: 'flag:tin_rower_wound' },
     { op: 'say', unless_flag: 'flag:has_tin_rower', text: 'Received the TIN ROWER!' },
-    { op: 'say', unless_flag: 'flag:has_tin_rower', speaker: 'ALDOUS WINK', text: "I've given him a wind already — hear him clicking? While he rows, the wild kin follow HIM instead of you. Half as many bother you." },
-    { op: 'say', unless_flag: 'flag:has_tin_rower', speaker: 'ALDOUS WINK', text: 'Want them back? ITEMS, KEY pocket, and hold his oars still. Use him again to wind him up.' },
-    { op: 'say', unless_flag: 'flag:has_tin_rower', speaker: 'ALDOUS WINK', text: "Wind him twice before bed. He rows better when someone's watching." },
+    { op: 'say', unless_flag: 'flag:has_tin_rower', speaker: 'MAN WITH A CASE', text: "I've given him a wind already — hear him clicking? While he rows, the wild kin follow HIM instead of you. Half as many bother you." },
+    { op: 'say', unless_flag: 'flag:has_tin_rower', speaker: 'MAN WITH A CASE', text: 'Want them back? ITEMS, KEY pocket, and hold his oars still. Use him again to wind him up.' },
+    { op: 'say', unless_flag: 'flag:has_tin_rower', speaker: 'MAN WITH A CASE', text: "Wind him twice before bed. He rows better when someone's watching." },
+    { op: 'wait', unless_flag: 'flag:has_tin_rower', ms: 400 },
+    { op: 'fade', unless_flag: 'flag:has_tin_rower', dir: 'out', ms: 500 },
+    { op: 'hideActor', unless_flag: 'flag:has_tin_rower', actor: 'wink' },
     { op: 'setFlag', unless_flag: 'flag:has_tin_rower', flag: 'flag:has_tin_rower' },
+    { op: 'fade', dir: 'in', ms: 500 },
+    { op: 'narrate', text: 'You look up from the little rower to say thank you — but the sand is empty. No man, no case. Only his sign, and the tide coming in.' },
   ],
 
   // After the Tide Gleam, Reyl recognises the T. on the hull (once; 1 Lumen Drop).

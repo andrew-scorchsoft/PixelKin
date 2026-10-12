@@ -122,6 +122,7 @@ type CutsceneStepBase =
   | { op: 'move'; actor: ActorRef; to: TileCoord; speed?: number }
   // Sprite ACTING (no art needed — tweens on the actor's sprite, never its tile):
   | { op: 'hop'; actor: ActorRef; times?: number; height?: number } // a startled jump in place
+  | { op: 'hideActor'; actor: ActorRef } // vanish an NPC on the spot (gone for good once its flag swap refreshes at scene end)
   | { op: 'shakeActor'; actor: ActorRef; ms?: number; px?: number } // a shudder (fear, cold, laughter)
   | { op: 'spin'; actor: ActorRef; turns?: number; ms?: number; end?: Facing } // look all around; ends facing `end` (default: where it started)
   // A falling star crosses the sky on cue (the game's motif; Ambience.starfall).
