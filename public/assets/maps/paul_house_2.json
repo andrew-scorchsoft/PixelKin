@@ -1,0 +1,1063 @@
+{
+  "id": "paul_house_2",
+  "display_name": "Paul's House \u2014 The T-Shirt Museum",
+  "width": 18,
+  "height": 11,
+  "tile_width": 16,
+  "tile_height": 16,
+  "kind": "interior",
+  "tilesets": [
+    {
+      "name": "interior_set",
+      "image": "assets/tilesets/interior_set.webp",
+      "tile_width": 16,
+      "tile_height": 16,
+      "first_gid": 1,
+      "columns": 8,
+      "tile_count": 13
+    }
+  ],
+  "layers": [
+    {
+      "name": "base",
+      "role": "base",
+      "depth": 0,
+      "data": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        3,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        3,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "walls",
+      "role": "deco",
+      "depth": 5,
+      "data": [
+        10,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        11,
+        8,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        5,
+        4,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        6,
+        6,
+        6,
+        6,
+        0,
+        6,
+        6,
+        6,
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        4,
+        4,
+        4,
+        4,
+        0,
+        4,
+        4,
+        4,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        12,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        13
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "shirt_race",
+      "sprite": "paul_shirt_race",
+      "at": {
+        "tx": 2,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "shirt_sun",
+      "sprite": "paul_shirt_sun",
+      "at": {
+        "tx": 3,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "shirt_ferry",
+      "sprite": "paul_shirt_ferry",
+      "at": {
+        "tx": 4,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "shirt_leaf",
+      "sprite": "paul_shirt_leaf",
+      "at": {
+        "tx": 5,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "shirt_gym",
+      "sprite": "paul_shirt_gym",
+      "at": {
+        "tx": 6,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "lake",
+      "sprite": "paul_painting_lake",
+      "at": {
+        "tx": 7,
+        "ty": 1
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "lamp_rack",
+      "sprite": "interior_lamp_rack",
+      "at": {
+        "tx": 9,
+        "ty": 1
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "solid": false
+    },
+    {
+      "id": "antlers",
+      "sprite": "paul_antlers",
+      "at": {
+        "tx": 11,
+        "ty": 1
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "paddle",
+      "sprite": "paul_paddle",
+      "at": {
+        "tx": 13,
+        "ty": 1
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "rack",
+      "sprite": "paul_shirt_rack",
+      "at": {
+        "tx": 6,
+        "ty": 3
+      },
+      "w": 3,
+      "h": 2
+    },
+    {
+      "id": "rack_b",
+      "sprite": "paul_shirt_rack",
+      "at": {
+        "tx": 2,
+        "ty": 3
+      },
+      "w": 3,
+      "h": 2
+    },
+    {
+      "id": "folded_table",
+      "sprite": "interior_table",
+      "at": {
+        "tx": 11,
+        "ty": 3
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "museum_stool",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 13,
+        "ty": 3
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "protea",
+      "sprite": "paul_painting_protea",
+      "at": {
+        "tx": 1,
+        "ty": 7
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "beadwork",
+      "sprite": "paul_beadwork",
+      "at": {
+        "tx": 2,
+        "ty": 7
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "shirt_stripe",
+      "sprite": "paul_shirt_stripe",
+      "at": {
+        "tx": 3,
+        "ty": 7
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "shirt_boat",
+      "sprite": "paul_shirt_boat",
+      "at": {
+        "tx": 4,
+        "ty": 7
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "sunset",
+      "sprite": "paul_painting_cape",
+      "at": {
+        "tx": 6,
+        "ty": 7
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "shirt_star",
+      "sprite": "paul_shirt_star",
+      "at": {
+        "tx": 8,
+        "ty": 7
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "rugby",
+      "sprite": "paul_rugby_stand",
+      "at": {
+        "tx": 1,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "trunk",
+      "sprite": "paul_trunk",
+      "at": {
+        "tx": 6,
+        "ty": 9
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "globe",
+      "sprite": "paul_globe",
+      "at": {
+        "tx": 3,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "cape_brazier",
+      "sprite": "interior_brazier",
+      "at": {
+        "tx": 9,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 2
+    },
+    {
+      "id": "coat_stand",
+      "sprite": "paul_coat_stand",
+      "at": {
+        "tx": 15,
+        "ty": 5
+      },
+      "w": 1,
+      "h": 2
+    },
+    {
+      "id": "syrup",
+      "sprite": "paul_syrup_table",
+      "at": {
+        "tx": 13,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "maple_rug",
+      "sprite": "interior_rug",
+      "at": {
+        "tx": 11,
+        "ty": 6
+      },
+      "w": 3,
+      "h": 2,
+      "solid": false
+    },
+    {
+      "id": "maple_stool",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 12,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "maple_plant",
+      "sprite": "interior_plant",
+      "at": {
+        "tx": 16,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "stairs_down_sprite",
+      "sprite": "interior_stairs_down",
+      "at": {
+        "tx": 16,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "stairs_up_sprite",
+      "sprite": "interior_stairs_up",
+      "at": {
+        "tx": 1,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 2,
+      "solid": false
+    }
+  ],
+  "warps": [
+    {
+      "id": "down_stairs",
+      "at": {
+        "tx": 16,
+        "ty": 2
+      },
+      "trigger": "step_on",
+      "to_map": "paul_house_1",
+      "to": {
+        "tx": 14,
+        "ty": 3
+      },
+      "facing": "down",
+      "transition": "fade"
+    },
+    {
+      "id": "up_stairs",
+      "at": {
+        "tx": 1,
+        "ty": 2
+      },
+      "trigger": "step_on",
+      "to_map": "paul_house_3",
+      "to": {
+        "tx": 1,
+        "ty": 3
+      },
+      "facing": "down",
+      "transition": "fade"
+    }
+  ],
+  "triggers": [
+    {
+      "id": "shirt_race",
+      "kind": "sign",
+      "at": {
+        "tx": 2,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "sign.paul_shirt_race"
+    },
+    {
+      "id": "shirt_sun",
+      "kind": "sign",
+      "at": {
+        "tx": 3,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "sign.paul_shirt_sun"
+    },
+    {
+      "id": "shirt_ferry",
+      "kind": "sign",
+      "at": {
+        "tx": 4,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "sign.paul_shirt_ferry"
+    },
+    {
+      "id": "shirt_leaf",
+      "kind": "sign",
+      "at": {
+        "tx": 5,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "sign.paul_shirt_leaf"
+    },
+    {
+      "id": "shirt_gym",
+      "kind": "sign",
+      "at": {
+        "tx": 6,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "sign.paul_shirt_gym"
+    },
+    {
+      "id": "lake_7",
+      "kind": "sign",
+      "at": {
+        "tx": 7,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "sign.paul_lake"
+    },
+    {
+      "id": "lake_8",
+      "kind": "sign",
+      "at": {
+        "tx": 8,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "sign.paul_lake"
+    },
+    {
+      "id": "antlers_11",
+      "kind": "sign",
+      "at": {
+        "tx": 11,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "sign.paul_antlers"
+    },
+    {
+      "id": "antlers_12",
+      "kind": "sign",
+      "at": {
+        "tx": 12,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "sign.paul_antlers"
+    },
+    {
+      "id": "paddle_13",
+      "kind": "sign",
+      "at": {
+        "tx": 13,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "sign.paul_paddle"
+    },
+    {
+      "id": "paddle_14",
+      "kind": "sign",
+      "at": {
+        "tx": 14,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "sign.paul_paddle"
+    },
+    {
+      "id": "rack",
+      "kind": "sign",
+      "at": {
+        "tx": 7,
+        "ty": 4
+      },
+      "activation": "interact",
+      "ref": "sign.paul_rack"
+    },
+    {
+      "id": "rack_b",
+      "kind": "sign",
+      "at": {
+        "tx": 3,
+        "ty": 4
+      },
+      "activation": "interact",
+      "ref": "sign.paul_rack_b"
+    },
+    {
+      "id": "folded",
+      "kind": "sign",
+      "at": {
+        "tx": 11,
+        "ty": 4
+      },
+      "activation": "interact",
+      "ref": "sign.paul_folded"
+    },
+    {
+      "id": "c_protea",
+      "kind": "sign",
+      "at": {
+        "tx": 1,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "sign.paul_protea"
+    },
+    {
+      "id": "c_beadwork",
+      "kind": "sign",
+      "at": {
+        "tx": 2,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "sign.paul_beadwork"
+    },
+    {
+      "id": "c_shirt_stripe",
+      "kind": "sign",
+      "at": {
+        "tx": 3,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "sign.paul_shirt_stripe"
+    },
+    {
+      "id": "c_shirt_boat",
+      "kind": "sign",
+      "at": {
+        "tx": 4,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "sign.paul_shirt_boat"
+    },
+    {
+      "id": "c_shirt_star",
+      "kind": "sign",
+      "at": {
+        "tx": 8,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "sign.paul_shirt_star"
+    },
+    {
+      "id": "sunset_6",
+      "kind": "sign",
+      "at": {
+        "tx": 6,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "sign.paul_sunset"
+    },
+    {
+      "id": "sunset_7",
+      "kind": "sign",
+      "at": {
+        "tx": 7,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "sign.paul_sunset"
+    },
+    {
+      "id": "rugby",
+      "kind": "sign",
+      "at": {
+        "tx": 1,
+        "ty": 9
+      },
+      "activation": "interact",
+      "ref": "sign.paul_rugby"
+    },
+    {
+      "id": "trunk_m",
+      "kind": "sign",
+      "at": {
+        "tx": 6,
+        "ty": 9
+      },
+      "activation": "interact",
+      "ref": "sign.paul_trunk_stickers"
+    },
+    {
+      "id": "globe",
+      "kind": "sign",
+      "at": {
+        "tx": 3,
+        "ty": 9
+      },
+      "activation": "interact",
+      "ref": "sign.paul_globe"
+    },
+    {
+      "id": "coat",
+      "kind": "sign",
+      "at": {
+        "tx": 15,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "sign.paul_plaid"
+    },
+    {
+      "id": "syrup",
+      "kind": "sign",
+      "at": {
+        "tx": 13,
+        "ty": 8
+      },
+      "activation": "interact",
+      "ref": "sign.paul_syrup"
+    },
+    {
+      "id": "placard",
+      "kind": "cutscene",
+      "at": {
+        "tx": 16,
+        "ty": 3
+      },
+      "activation": "step_on",
+      "ref": "script.paul_museum",
+      "hidden_when_flag": "flag:paul_museum_seen"
+    }
+  ],
+  "encounters": [],
+  "npcs": [],
+  "gates": [],
+  "music": "assets/audio/music/interior-sunny.mp3"
+}

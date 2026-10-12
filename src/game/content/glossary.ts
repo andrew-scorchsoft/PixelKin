@@ -414,6 +414,13 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'An old stone hotel on the green rise above the Wanderwood, older than the dark. The bar is open, the fire is lit, and there is always someone in the chair beside the corner one. Nobody remembers who keeps it.',
     unlock_flag: 'flag:wayward_night',
   },
+  // Paul's House (2026-10) — the Booji-Wooji Man's home on Wayward Rise
+  {
+    id: 'pauls_house',
+    term: 'Paul\'s house',
+    desc: 'A tall, crooked house beside the Wayward Arms, three floors of evidence about one man, none of which agrees: tickets from the maple country and the cape country, a museum of t-shirts, a WANTED poster he swears is a joke. He is never in. His granddaughter Lottie usually is.',
+    unlock_flag: 'flag:paul_house_seen',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */

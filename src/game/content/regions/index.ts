@@ -21,6 +21,8 @@ import { SUNVAULT_DIALOGUE, SUNVAULT_SCRIPTS } from './sunvault';
 import { RECKONWORKS_DIALOGUE, RECKONWORKS_SCRIPTS } from './reckonworks';
 // The Wayward Arms (2026-10): the hotel on the rise north of the Wanderwood.
 import { HOTEL_DIALOGUE, HOTEL_SCRIPTS } from './hotel';
+// Paul's House (2026-10): the Booji-Wooji Man's home on Wayward Rise.
+import { PAUL_DIALOGUE, PAUL_SCRIPTS } from './paul';
 
 export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SOUTH_SCRIPTS,
@@ -36,6 +38,7 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SUNVAULT_SCRIPTS,
   ...RECKONWORKS_SCRIPTS,
   ...HOTEL_SCRIPTS,
+  ...PAUL_SCRIPTS,
 };
 
 export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
@@ -52,4 +55,5 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...SUNVAULT_DIALOGUE,
   ...RECKONWORKS_DIALOGUE,
   ...HOTEL_DIALOGUE,
+  ...PAUL_DIALOGUE,
 };

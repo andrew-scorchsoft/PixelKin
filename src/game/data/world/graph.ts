@@ -105,6 +105,9 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'pearlmoor_wanderwood_far', region: 'south', optional: true, reward: 'S5: the Far Side — Mags\'s griddle, the Answering Lamp, the glass steps (all optional)' },
     { map_id: 'wayward_rise', region: 'south', optional: true, reward: 'the Wayward Arms: an open bar, a corner chair, a stranger, a night talked away (a rest point)' }, // north of the Wanderwood
     { map_id: 'wayward_arms', region: 'south', optional: true }, // interior: the Wayward Arms' bar + snug
+    { map_id: 'paul_house_1', region: 'south', optional: true, reward: 'Paul\'s house: three floors of travel, t-shirts and a WANTED poster — and Lottie, who loves the Chickenpig' }, // interior: the kitchen-hall
+    { map_id: 'paul_house_2', region: 'south', optional: true }, // interior: the T-shirt museum
+    { map_id: 'paul_house_3', region: 'south', optional: true }, // interior: Lottie's attic
     // ---- East: Saltreach Fen (2 segments) -> Lowleaf forest -> Cinderhead cave -------
     { map_id: 'saltreach_fen_i', region: 'east' }, // route: open marsh
     { map_id: 'saltreach_fen_ii', region: 'east' }, // route: deep channels
@@ -252,6 +255,9 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // ... and north out of the glade, up onto Wayward Rise and the old hotel (2026-10).
     { from_map: 'pearlmoor_wanderwood', to_map: 'wayward_rise', via_warp: 'to_rise', bidirectional: true },
     { from_map: 'wayward_rise', to_map: 'wayward_arms', via_warp: 'enter_hotel', bidirectional: true },
+    { from_map: 'wayward_rise', to_map: 'paul_house_1', via_warp: 'enter_paul_house', bidirectional: true },
+    { from_map: 'paul_house_1', to_map: 'paul_house_2', via_warp: 'up_stairs', bidirectional: true },
+    { from_map: 'paul_house_2', to_map: 'paul_house_3', via_warp: 'up_stairs', bidirectional: true },
     // R9 "The Old Light": the west beach runs out to Lightkeeper's Point; Reyl's
     // hook (flag:q_south_bell) opens the tower door; each floor's up-stair waits on
     // its riddle (flag:oldlight_N_solved); the top's slide drops back to the Point

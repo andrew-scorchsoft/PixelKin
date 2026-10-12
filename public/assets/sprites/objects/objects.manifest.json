@@ -1379,6 +1379,258 @@
       "tw": 2,
       "th": 2
     },
+    "paul_antelope": {
+      "path": "assets/sprites/objects/paul_antelope.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "paul_antlers": {
+      "path": "assets/sprites/objects/paul_antlers.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "paul_beadwork": {
+      "path": "assets/sprites/objects/paul_beadwork.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "paul_bike": {
+      "path": "assets/sprites/objects/paul_bike.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "paul_coat_stand": {
+      "path": "assets/sprites/objects/paul_coat_stand.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "paul_cp_drawing_a": {
+      "path": "assets/sprites/objects/paul_cp_drawing_a.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "paul_cp_drawing_b": {
+      "path": "assets/sprites/objects/paul_cp_drawing_b.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "paul_cp_drawing_c": {
+      "path": "assets/sprites/objects/paul_cp_drawing_c.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "paul_cp_drawing_d": {
+      "path": "assets/sprites/objects/paul_cp_drawing_d.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "paul_drawing_bike": {
+      "path": "assets/sprites/objects/paul_drawing_bike.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "paul_drawing_sea": {
+      "path": "assets/sprites/objects/paul_drawing_sea.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "paul_globe": {
+      "path": "assets/sprites/objects/paul_globe.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "paul_gym_kit": {
+      "path": "assets/sprites/objects/paul_gym_kit.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "paul_house": {
+      "path": "assets/sprites/objects/paul_house.webp",
+      "width": 80,
+      "height": 112,
+      "tw": 5,
+      "th": 7
+    },
+    "paul_paddle": {
+      "path": "assets/sprites/objects/paul_paddle.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "paul_painting_cape": {
+      "path": "assets/sprites/objects/paul_painting_cape.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "paul_painting_cape_day": {
+      "path": "assets/sprites/objects/paul_painting_cape_day.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "paul_painting_lake": {
+      "path": "assets/sprites/objects/paul_painting_lake.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "paul_painting_protea": {
+      "path": "assets/sprites/objects/paul_painting_protea.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "paul_pinboard": {
+      "path": "assets/sprites/objects/paul_pinboard.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "paul_plush": {
+      "path": "assets/sprites/objects/paul_plush.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "paul_rugby_stand": {
+      "path": "assets/sprites/objects/paul_rugby_stand.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "paul_shirt_boat": {
+      "path": "assets/sprites/objects/paul_shirt_boat.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "paul_shirt_ferry": {
+      "path": "assets/sprites/objects/paul_shirt_ferry.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "paul_shirt_gym": {
+      "path": "assets/sprites/objects/paul_shirt_gym.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "paul_shirt_leaf": {
+      "path": "assets/sprites/objects/paul_shirt_leaf.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "paul_shirt_race": {
+      "path": "assets/sprites/objects/paul_shirt_race.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "paul_shirt_rack": {
+      "path": "assets/sprites/objects/paul_shirt_rack.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "paul_shirt_star": {
+      "path": "assets/sprites/objects/paul_shirt_star.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "paul_shirt_stripe": {
+      "path": "assets/sprites/objects/paul_shirt_stripe.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "paul_shirt_sun": {
+      "path": "assets/sprites/objects/paul_shirt_sun.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "paul_syrup_table": {
+      "path": "assets/sprites/objects/paul_syrup_table.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "paul_tea_bench": {
+      "path": "assets/sprites/objects/paul_tea_bench.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "paul_trunk": {
+      "path": "assets/sprites/objects/paul_trunk.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "paul_wanted": {
+      "path": "assets/sprites/objects/paul_wanted.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "paul_washing_line": {
+      "path": "assets/sprites/objects/paul_washing_line.webp",
+      "width": 64,
+      "height": 32,
+      "tw": 4,
+      "th": 2
+    },
     "pearlmoor_anchor": {
       "path": "assets/sprites/objects/pearlmoor_anchor.webp",
       "width": 32,
