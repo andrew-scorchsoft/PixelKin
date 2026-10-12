@@ -43,6 +43,18 @@
       "walk_under": true
     },
     {
+      "id": "winch_lift",
+      "sprite": "markers_lift_basket",
+      "at": {
+        "tx": 9,
+        "ty": 10
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false
+    },
+    {
       "id": "sl_kite_rack",
       "sprite": "galehigh_kite_rack",
       "at": {

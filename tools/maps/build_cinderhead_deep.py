@@ -28,6 +28,7 @@ re-link (set on first reaching the far side), the mid-dungeon shortcut per §2a.
 from __future__ import annotations
 import random
 import mapkit as mk
+import warp_markers as wm
 import patterns as pt
 from mapkit import gid
 
@@ -189,6 +190,11 @@ m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + ter
 ]
 
 if __name__ == "__main__":
+    # warp markers: the mine-road arch in the north wall, the arch behind the
+    # Crystoll crystals (Starreach reaches through), the cart-hoist ladder
+    wm.add(m, wm.marker("mouth_mine", "cave_mouth_wide", 13, 0),
+           wm.marker("mouth_crystoll", "cave_mouth", 24, 4),
+           wm.marker("hoist_ladder", "ladder_up", 22, 15, requires_flag="flag:shortcut_mine"))
     ok = mk.finalize(m, scale=3)
     pt.report(owed)
     print("PASS" if ok else "FAIL")

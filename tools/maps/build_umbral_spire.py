@@ -208,6 +208,7 @@ import sys
 from pathlib import Path
 
 import mapkit as mk
+import warp_markers as wm
 import patterns as pt
 from mapkit import gid
 
@@ -848,8 +849,20 @@ if __name__ == "__main__":
         builders = [b for b in builders if b.__name__.removeprefix("build_") in want]
     ok = True
     OUT.mkdir(exist_ok=True)
+    # warp markers: the rope ladder slung through the shaft (both ends, live once
+    # the hoist kindles) and the rock steps at the head of the dawn road
+    markers = {
+        "umbral_spire": [wm.marker("shaft_rope", "rope_ladder", 20, 8,
+                                   requires_flag="flag:spire_shaft")],
+        "umbral_spire_f3": [wm.marker("shaft_rope", "rope_ladder", 3, 11,
+                                      requires_flag="flag:spire_shaft")],
+        "umbral_spire_summit": [
+            wm.marker("dawn_steps", "steps_s", 16, 20, requires_flag="flag:dawn"),
+            wm.marker("dawn_steps_e", "steps_s", 17, 20, requires_flag="flag:dawn")],
+    }
     for b in builders:
         m = b()
+        wm.add(m, *markers.get(m["id"], []))
         good = mk.finalize(m, scale=3)
         ok = ok and good
         png = Path("/tmp") / f"{m['id']}.png"

@@ -321,6 +321,19 @@
       "h": 1,
       "solid": false,
       "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "vigil_seam_sunfall",
+      "sprite": "markers_vigil_seam",
+      "at": {
+        "tx": 27,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false,
+      "requires_flag": "flag:vigil_reading_4"
     }
   ],
   "warps": [

@@ -42,6 +42,7 @@ Run:  ./venv/bin/python tools/maps/build_windward_stair_ii.py
 from __future__ import annotations
 import random
 import mapkit as mk
+import warp_markers as wm
 import patterns as pt
 from mapkit import gid
 
@@ -240,10 +241,10 @@ m["objects"] += [
     {"id": "cairn_exit", "sprite": "windward_cairn", "at": {"tx": 17, "ty": 8},
      "w": 2, "h": 3, "overhang": 2, "walk_under": False},
     # the roost thermal rising past the east lip
-    {"id": "roost_updraft", "sprite": "windward_updraft", "at": {"tx": 26, "ty": 7},
+    {"id": "roost_updraft", "sprite": "windward_updraft", "at": {"tx": 24, "ty": 7},
      "w": 2, "h": 3, "overhang": 3, "solid": False, "walk_under": True},
     # the shelf thermal the arrival rides (drawn over the south notch)
-    {"id": "arrival_updraft", "sprite": "windward_updraft", "at": {"tx": 15, "ty": 20},
+    {"id": "arrival_updraft", "sprite": "windward_updraft", "at": {"tx": 13, "ty": 20},
      "w": 2, "h": 3, "overhang": 3, "solid": False, "walk_under": True},
     # a lamp post where the lane bends east
     {"id": "lamp_bend", "sprite": "tinderwick_lamp_post", "at": {"tx": 12, "ty": 9},
@@ -309,6 +310,12 @@ m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + ter
 ]
 
 if __name__ == "__main__":
+    # warp marker: the drop home — rock steps once the crags shortcut opens
+    wm.add(m, wm.marker("drop_steps", "steps_s", 4, 21, requires_flag="flag:shortcut_windward"))
+    # ...and the swirls the two thermals lift from, under their updraft columns
+    wm.add(m, wm.marker("arrival_vent", "updraft_vent", 13, 22),
+           wm.marker("arrival_vent_e", "updraft_vent", 14, 22),
+           wm.marker("roost_vent", "updraft_vent", 25, 9))
     ok = mk.finalize(m, scale=3)
     pt.report(owed)
     print("PASS" if ok else "FAIL")

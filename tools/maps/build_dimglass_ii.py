@@ -15,6 +15,7 @@ Run:  python3 tools/maps/build_dimglass_ii.py   (after build_shared_overworld.py
 from __future__ import annotations
 import random
 import mapkit as mk
+import warp_markers as wm
 import patterns as pt
 from mapkit import gid
 
@@ -327,6 +328,8 @@ if __name__ == "__main__":
     # deep water (2026-10): the open sea past the shallow shelf — Tidecall
     # swims the shallows only (mapkit.deep_water; the reserved `deepdive` gate)
     mk.deep_water(m, deep_cols=(14, 17))   # the bay strip it shares with the breakwater
+    # warp marker: the lit channel buoy on the swim-lane out to Gullcry Rock
+    wm.add(m, wm.marker("gullcry_buoy", "sea_buoy", 15, 12, bob=None))
     ok = mk.finalize(m, scale=3)
     print("PASS" if ok else "FAIL")
     raise SystemExit(0 if ok else 1)

@@ -53,6 +53,7 @@ Run:  ./venv/bin/python tools/maps/build_galehigh_terraces.py
 from __future__ import annotations
 import random
 import mapkit as mk
+import warp_markers as wm
 import patterns as pt
 from mapkit import gid
 
@@ -532,6 +533,8 @@ m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + ter
 ]
 
 if __name__ == "__main__":
+    # warp marker: the crag stair cut up the north lip once the shortcut opens
+    wm.add(m, wm.marker("crag_stair", "steps_n", 21, 2, requires_flag="flag:shortcut_windward"))
     ok = mk.finalize(m, scale=3)
     pt.report(owed)
     print("PASS" if ok else "FAIL")

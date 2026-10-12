@@ -130,7 +130,7 @@ m["warps"].append({"id": "to_oldlight", "at": {"tx": DOOR[0], "ty": DOOR[1]},
 
 # the slide's brass chute-mouth at the tower foot (non-solid prop; its warp
 # climbs back up the chute once the act is done — gated, with a line)
-m["objects"].append({"id": "chute_mouth", "sprite": "solarium_sun_mask",
+m["objects"].append({"id": "chute_mouth", "sprite": "markers_chute_mouth",
                      "at": {"tx": 7, "ty": 7}, "w": 1, "h": 1, "solid": False})
 m["warps"].append({"id": "up_chute", "at": {"tx": 7, "ty": 7}, "trigger": "step_on",
                    "to_map": "pearlmoor_oldlight_top", "to": {"tx": 7, "ty": 8},

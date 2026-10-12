@@ -195,6 +195,32 @@
       "h": 1,
       "solid": false,
       "walk_under": true
+    },
+    {
+      "id": "dawn_steps",
+      "sprite": "markers_steps_s",
+      "at": {
+        "tx": 16,
+        "ty": 20
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false,
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "dawn_steps_e",
+      "sprite": "markers_steps_s",
+      "at": {
+        "tx": 17,
+        "ty": 20
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false,
+      "requires_flag": "flag:dawn"
     }
   ],
   "warps": [

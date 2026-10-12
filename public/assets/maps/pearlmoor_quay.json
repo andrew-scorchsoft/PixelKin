@@ -2265,6 +2265,18 @@
       "walk_under": true
     },
     {
+      "id": "jetty_skiff",
+      "sprite": "markers_pier_end",
+      "at": {
+        "tx": 13,
+        "ty": 21
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "bob": false
+    },
+    {
       "id": "wc_fishstall",
       "sprite": "pearlmoor_fish_stall",
       "at": {

@@ -171,6 +171,19 @@
       "h": 1,
       "solid": false,
       "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "vigil_seam_grovefall",
+      "sprite": "markers_vigil_seam",
+      "at": {
+        "tx": 15,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false,
+      "requires_flag": "flag:vigil_reading_2"
     }
   ],
   "music": "assets/audio/music/lowleaf-hollow-c.mp3",

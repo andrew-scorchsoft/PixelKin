@@ -1839,6 +1839,17 @@
       "walk_under": true
     },
     {
+      "id": "gullcry_buoy",
+      "sprite": "markers_sea_buoy",
+      "at": {
+        "tx": 15,
+        "ty": 12
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
       "id": "wc_rowboat",
       "sprite": "pearlmoor_rowboat",
       "at": {

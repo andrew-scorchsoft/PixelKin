@@ -802,6 +802,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   it after ANY warp edit, not just new maps. A gated warp may carry `blocked_ref` (mirror
   of EventTrigger's) for a diegetic "not yet" line, step_on included — the Pearlmoor
   moor-gate (`npc.netmender_gate`) is the worked example.
+- **A mid-map warp must LOOK like a way through (2026-10, CI: `audit_warp_markers.py`).** Any
+  non-door warp off the map edge needs a ladder/shaft tile or a marker object covering it (or
+  directly north): a cave arch, side mouth, rock steps, rope ladder, pier skiff, Vigil seam,
+  trapdoor, updraft vent… — drawn in `tools/maps/draw_warp_markers.py` (`markers_<stem>`), placed
+  from the BUILDER via `warp_markers.marker()`, gated `requires_flag` = the warp's own flag.
 - **Doors are WALK-ONTO, not press-to-enter (convention, enforced).** A door is a
   `Warp` with `trigger:'step_on'` + `transition:'door'`; the player walks into the
   doorway tile and warps. `CollisionGrid` FREES every `transition:'door'` warp tile

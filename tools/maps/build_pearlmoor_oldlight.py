@@ -378,6 +378,11 @@ def floor_top():
                   "facing": "down", "transition": "fade",
                   "requires_flag": "flag:q_south_jest_done",
                   "blocked_ref": "sign.oldlight_slide_shut"})
+    # ...and it LOOKS like one: the hatch thrown open over the brass chute
+    # (drawn by draw_warp_markers.py), only once the slide is unbolted
+    objects.append({"id": "slide_hatch", "sprite": "markers_trapdoor",
+                    "at": {"tx": 7, "ty": 9}, "w": 1, "h": 1, "solid": False,
+                    "requires_flag": "flag:q_south_jest_done"})
     return mapdef(mid(7), "The Old Light — The Winding Room", W, H, WARM_SET,
                   base, over, objects, warps, triggers, npcs, ATTIC)
 

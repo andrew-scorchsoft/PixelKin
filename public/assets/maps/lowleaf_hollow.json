@@ -213,6 +213,19 @@
       "h": 4,
       "overhang": 3,
       "walk_under": true
+    },
+    {
+      "id": "gloamwood_arch",
+      "sprite": "markers_wood_arch",
+      "at": {
+        "tx": 26,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 2,
+      "solid": false,
+      "bob": false,
+      "requires_flag": "flag:q_east_georgina"
     }
   ],
   "warps": [
