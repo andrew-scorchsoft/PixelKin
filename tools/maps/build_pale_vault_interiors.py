@@ -55,7 +55,6 @@ def build_lumenary():
     # (pale_vault_brazier, 2x3 — the vigil's cold lamps, not hearth-fire)
     wall_mount(objects, "banner_ice", 5, oid="banner_l", solid=False)
     wall_mount(objects, "banner_ice", 11, oid="banner_r", solid=False)
-    wall_mount(objects, "lamp_rack", 6, solid=False)
     # the Frost altar on its dais
     place(objects, "altar", door_x - 1, 2)
     objects += [
@@ -76,7 +75,7 @@ def build_lumenary():
     # east: the star-ledger niche
     wall_mount(objects, "bookcase", 13, oid="star_ledger")
     place(objects, "table", 13, 7, oid="ledger_table")
-    place(objects, "stool", 12, 8, oid="ledger_stool")
+    place(objects, "stool", 12, 7, oid="ledger_stool")
     # pews where the town keeps the watch
     place(objects, "pew", 5, 8, oid="pew_l")
     place(objects, "pew", 10, 8, oid="pew_r")
@@ -92,7 +91,7 @@ def build_lumenary():
         {"id": "hall_keeper", "at": {"tx": door_x, "ty": 5}, "facing": "down",
          "sprite": "npc_old_woman", "movement": "static",
          "dialogue_ref": "npc.pale_vault_hall_keeper"},
-        {"id": "ysolde_after", "at": {"tx": door_x - 1, "ty": 4}, "facing": "down",
+        {"id": "ysolde_after", "at": {"tx": door_x - 1, "ty": 5}, "facing": "down",
          "sprite": "ysolde_frost", "movement": "static",
          "dialogue_ref": "npc.ysolde_hall_after",
          "requires_flag": "gleam:frost"},
@@ -112,20 +111,20 @@ def build_inn():
     base, over = faced_room(W, H, door_x)
     windows(over, W, [4, 11])
     # the bunk room behind a partition — watchers sleep before the vigil
-    partition_v(over, W, 9, 1, 5, lip="w")
+    partition_v(over, W, 8, 1, 5, lip="w")  # a 4-wide bunk room (two 2-wide beds)
 
     objects: list = []
     wall_mount(objects, "hearth", 5)
     wall_mount(objects, "lamp_rack", 2, solid=False)
-    place(objects, "bed_inn", 10, 2, oid="bunk_a")
-    place(objects, "bed_inn", 12, 2, oid="bunk_b")
-    place(objects, "plant", 10, 5, oid="nook_fern")
+    place(objects, "bed_inn", 9, 2, oid="bunk_a")
+    place(objects, "bed_inn", 11, 2, oid="bunk_b")
+    place(objects, "plant", 12, 5, oid="nook_fern")
     place(objects, "table_long", 2, 5)
     place(objects, "stool", 2, 7, oid="stool_a")
     place(objects, "stool", 4, 7, oid="stool_b")
     place(objects, "rug", 6, 7, solid=False)
     place(objects, "barrels", 1, 3, oid="cellar_casks")
-    place(objects, "sacks", 12, 8, oid="grain")
+    place(objects, "sacks", 11, 8, oid="grain")
 
     warps = [
         {"id": "to_town", "at": {"tx": door_x, "ty": H - 1}, "trigger": "step_on",
@@ -137,7 +136,7 @@ def build_inn():
         {"id": "innkeeper", "at": {"tx": 6, "ty": 4}, "facing": "down",
          "sprite": "npc_shopkeeper", "movement": "static",
          "dialogue_ref": "script.pale_vault_inn_rest"},
-        {"id": "guest", "at": {"tx": 3, "ty": 6}, "facing": "right",
+        {"id": "guest", "at": {"tx": 3, "ty": 7}, "facing": "up",
          "sprite": "npc_man", "movement": "static",
          "dialogue_ref": "npc.pale_vault_inn_guest"},
     ]
@@ -169,7 +168,7 @@ def build_home():
          "transition": "door"},
     ]
     npcs = [
-        {"id": "home_elder", "at": {"tx": 4, "ty": 4}, "facing": "down",
+        {"id": "home_elder", "at": {"tx": 5, "ty": 4}, "facing": "left",
          "sprite": "npc_old_man", "movement": "static",
          "dialogue_ref": "npc.pale_vault_home_elder"},
         {"id": "home_kid", "at": {"tx": 7, "ty": 6}, "facing": "left",

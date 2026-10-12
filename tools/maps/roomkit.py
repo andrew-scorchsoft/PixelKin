@@ -19,7 +19,9 @@ the walls. This kit makes an interior a COMPOSITION (docs/world/interiors.md):
   * `runner`          the aisle tiles;
   * `finish`          write → render → audit_flow (reach) — the interior QA.
 
-Tile indices match build_interior_walls.py's 13-tile kits (warm + cool).
+Tile indices match build_interior_walls.py's kits (warm + cool): the legacy
+13 tiles, then the APPENDED wall-band blob + face ends (`appended_tiles()`),
+which `finish` resolves from each wall tile's neighbourhood (`autotile_walls`).
 """
 from __future__ import annotations
 
@@ -32,20 +34,75 @@ REPO = Path(__file__).resolve().parents[2]
 MAPS = REPO / "public/assets/maps"
 SCRIPTS = REPO / ".claude/skills/generate-sprite-sheet/scripts"
 
-# ---- the two wall/floor kits (13 tiles each, same order) ----------------------
+# ---- the wall band blob set (shared with build_interior_walls.py) --------------
+# A wall-top BAND tile is drawn from its neighbourhood: a lit lip on every SIDE
+# whose neighbour is open (floor, doormat or a wall FACE), plus a corner NUB
+# where a diagonal is open but both sides beside it are wall — the inner turn
+# that joins two lips. The original 13-tile kit carried only the four single
+# sides + four convex corners, so a divider meeting the ceiling showed the
+# ceiling's lip running straight across its top, a room corner overshot into a
+# "+" and a partition's far side had no edge at all. The full 47-shape blob is
+# APPENDED after the original 13 (indices never move), then three FACE ends —
+# the wall face with a shaded side where it stops in the open (a pillar front,
+# a partition's free end, a doorway jamb).
+_SIDE_ORDER = "nsew"
+_CORNERS = (("ne", "n", "e"), ("nw", "n", "w"), ("se", "s", "e"), ("sw", "s", "w"))
+# the original kit's band tiles, by (open sides) — kept at their old gids
+_LEGACY_BANDS = {frozenset("s"): 6, frozenset("n"): 7, frozenset("e"): 8, frozenset("w"): 9,
+                 frozenset("se"): 10, frozenset("sw"): 11, frozenset("ne"): 12, frozenset("nw"): 13}
+
+
+def band_shapes():
+    """Every (sides, nubs) band shape, in a FIXED order: [(name, sides, nubs)].
+    The legacy eight are included (their gids come from _LEGACY_BANDS)."""
+    out = []
+    for mask in range(16):
+        sides = frozenset(s for i, s in enumerate(_SIDE_ORDER) if mask >> i & 1)
+        free = [c for c, a, b in _CORNERS if a not in sides and b not in sides]
+        for nm in range(1 << len(free)):
+            nubs = frozenset(c for i, c in enumerate(free) if nm >> i & 1)
+            name = ("band_" + ("".join(s for s in _SIDE_ORDER if s in sides) or "x")
+                    + "_" + ("".join(c for c, _, _ in _CORNERS if c in nubs) or "x"))
+            out.append((name, sides, nubs))
+    return out
+
+
+def appended_tiles():
+    """The tiles APPENDED after the legacy 13, in order: [(name, sides, nubs)]
+    for the new band shapes, then the three face ends (sides/nubs None).
+    Append-only: never reorder (every interior's gids ride these indices)."""
+    new = [(n, s, b) for (n, s, b) in band_shapes()
+           if not (s in _LEGACY_BANDS and not b)]
+    return new + [("face_end_w", None, None), ("face_end_e", None, None),
+                  ("face_end_ew", None, None)]
+
+
+_APPENDED = appended_tiles()
+TILE_COUNT = 13 + len(_APPENDED)
+BAND_GID = {(s, frozenset()): g for s, g in _LEGACY_BANDS.items()}
+for _i, (_n, _s, _b) in enumerate(_APPENDED):
+    if _s is not None:
+        BAND_GID[(_s, _b)] = 14 + _i
+FACE_END_W, FACE_END_E, FACE_END_EW = TILE_COUNT - 2, TILE_COUNT - 1, TILE_COUNT
+BAND_GIDS = set(BAND_GID.values())
+
+# ---- the two wall/floor kits (same order: legacy 13 + the appended blob) -------
 WARM_SET = {
     "name": "interior_set", "image": "assets/tilesets/interior_set.webp",
-    "tile_width": 16, "tile_height": 16, "first_gid": 1, "columns": 8, "tile_count": 13,
+    "tile_width": 16, "tile_height": 16, "first_gid": 1, "columns": 8,
+    "tile_count": TILE_COUNT,
 }
 COOL_SET = {
     "name": "interior_stone_set", "image": "assets/tilesets/interior_stone_set.webp",
-    "tile_width": 16, "tile_height": 16, "first_gid": 1, "columns": 8, "tile_count": 13,
+    "tile_width": 16, "tile_height": 16, "first_gid": 1, "columns": 8,
+    "tile_count": TILE_COUNT,
 }
 # gids = local index + 1
 FLOOR, FLOOR_B, DOORMAT, FACE, WINDOW = 1, 2, 3, 4, 5
 CAP_S, CAP_N, CAP_E, CAP_W = 6, 7, 8, 9
 CAP_TL, CAP_TR, CAP_BL, CAP_BR = 10, 11, 12, 13
 RUNNER, BANNER = 3, 5  # cool-set aliases
+FACE_GIDS = {FACE, FACE_END_W, FACE_END_E, FACE_END_EW}
 
 _MANIFEST = json.loads(
     (REPO / "public/assets/sprites/objects/objects.manifest.json").read_text())["objects"]
@@ -123,10 +180,16 @@ def partition_v(over, W, x, y0, y1, *, lip="w", doors=()):
         over[y * W + x] = cap
     if rows and y0 - 1 >= 0 and over[(y0 - 1) * W + x] in (FACE, WINDOW):
         over[(y0 - 1) * W + x] = cap
-    # the south end of each run (before a door gap, and the last one)
+    # the south end of each run (before a door gap, and the last one) shows
+    # its FACE — unless the run runs straight into another wall band below
+    # (the room's bottom wall): then it simply JOINS it, no face
     for y in rows:
         if y + 1 not in rows:
-            over[y * W + x] = FACE
+            i = (y + 1) * W + x
+            if not (i < len(over) and over[i] in BAND_GIDS):
+                over[y * W + x] = FACE
+    # (the lips are drawn by autotile_walls() at finish time — `lip` only
+    # picks the provisional tile; both sides of the wall get their edge)
 
 
 def partition_h(base, over, W, y, x0, x1, *, doors=(), face=True):
@@ -241,9 +304,50 @@ def dress_tower_stairs(m: dict) -> None:
                  "at": {"tx": x, "ty": y}, "w": 1, "h": 1, "solid": False})
 
 
+def autotile_walls(over: list, W: int, H: int) -> list:
+    """Re-draw every wall tile from its neighbourhood (in place; returns over).
+
+    BAND tiles (any cap/band gid) get the lit lip on each side that meets the
+    open room (floor, doormat, or a wall FACE) and a corner nub where two walls
+    meet around an open diagonal — so a divider JOINS the ceiling band (a T, no
+    lip across its top), room corners turn instead of crossing, a partition
+    shows its edge on BOTH sides and a free end wraps round. FACE tiles that
+    stop in the open get a shaded side (the face end / pillar front). Windows,
+    banners and any other overlay gid are left alone and count as face; out of
+    bounds counts as wall. Collision is unchanged: every band/face shape collides."""
+    def kind(x, y):
+        if not (0 <= x < W and 0 <= y < H):
+            return "band"
+        g = over[y * W + x]
+        if g == 0:
+            return "open"
+        return "band" if g in BAND_GIDS else "face"
+    diag = {"ne": (1, -1), "nw": (-1, -1), "se": (1, 1), "sw": (-1, 1)}
+    out = list(over)
+    for y in range(H):
+        for x in range(W):
+            g = over[y * W + x]
+            if g in BAND_GIDS:
+                nb = {"n": kind(x, y - 1), "s": kind(x, y + 1),
+                      "e": kind(x + 1, y), "w": kind(x - 1, y)}
+                sides = frozenset(d for d, k in nb.items() if k != "band")
+                nubs = frozenset(c for c, a, b in _CORNERS
+                                 if a not in sides and b not in sides
+                                 and kind(x + diag[c][0], y + diag[c][1]) != "band")
+                out[y * W + x] = BAND_GID[(sides, nubs)]
+            elif g in FACE_GIDS:
+                ow, oe = kind(x - 1, y) == "open", kind(x + 1, y) == "open"
+                out[y * W + x] = (FACE_END_EW if ow and oe else FACE_END_W if ow
+                                  else FACE_END_E if oe else FACE)
+    over[:] = out
+    return over
+
+
 def finish(m: dict, *, scale: int = 5) -> bool:
     """Write, render, and run the flow audit's reach check. Returns ok."""
     dress_tower_stairs(m)
+    walls = next(l for l in m["layers"] if l["name"] == "walls")
+    autotile_walls(walls["data"], m["width"], m["height"])
     path = MAPS / f"{m['id']}.json"
     path.write_text(json.dumps(m, indent=2) + "\n")
     out = Path("/tmp") / f"{m['id']}.png"

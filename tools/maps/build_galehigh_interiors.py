@@ -64,7 +64,7 @@ def build_lumenary():
     # east: the star-ledger niche
     wall_mount(objects, "bookcase", 13, oid="star_ledger")
     place(objects, "table", 13, 7, oid="ledger_table")
-    place(objects, "stool", 12, 8, oid="ledger_stool")
+    place(objects, "stool", 12, 7, oid="ledger_stool")
     # pews where the town gathers before the rising
     place(objects, "pew", 5, 8, oid="pew_l")
     place(objects, "pew", 10, 8, oid="pew_r")
@@ -97,20 +97,20 @@ def build_inn():
     base, over = faced_room(W, H, door_x)
     windows(over, W, [4, 11])
     # the bunk room behind a partition — festival guests sleep off the common room
-    partition_v(over, W, 9, 1, 5, lip="w")
+    partition_v(over, W, 8, 1, 5, lip="w")  # a 4-wide bunk room (two 2-wide beds)
 
     objects: list = []
     wall_mount(objects, "hearth", 5)
     wall_mount(objects, "lamp_rack", 2, solid=False)
-    place(objects, "bed_inn", 10, 2, oid="bunk_a")
-    place(objects, "bed_inn", 12, 2, oid="bunk_b")
-    place(objects, "plant", 10, 5, oid="nook_fern")
+    place(objects, "bed_inn", 9, 2, oid="bunk_a")
+    place(objects, "bed_inn", 11, 2, oid="bunk_b")
+    place(objects, "plant", 12, 5, oid="nook_fern")
     place(objects, "table_long", 2, 5)
     place(objects, "stool", 2, 7, oid="stool_a")
     place(objects, "stool", 4, 7, oid="stool_b")
     place(objects, "rug", 6, 7, solid=False)
     place(objects, "barrels", 1, 3, oid="cellar_ale")
-    place(objects, "sacks", 12, 8, oid="grain")
+    place(objects, "sacks", 11, 8, oid="grain")
 
     warps = [
         {"id": "to_town", "at": {"tx": door_x, "ty": H - 1}, "trigger": "step_on",
@@ -122,7 +122,7 @@ def build_inn():
         {"id": "innkeeper", "at": {"tx": 6, "ty": 4}, "facing": "down",
          "sprite": "npc_shopkeeper", "movement": "static",
          "dialogue_ref": "script.galehigh_inn_rest"},
-        {"id": "guest", "at": {"tx": 3, "ty": 6}, "facing": "right",
+        {"id": "guest", "at": {"tx": 3, "ty": 7}, "facing": "up",
          "sprite": "npc_man", "movement": "static",
          "dialogue_ref": "npc.galehigh_inn_guest"},
     ]
@@ -154,7 +154,7 @@ def build_home():
          "transition": "door"},
     ]
     npcs = [
-        {"id": "home_elder", "at": {"tx": 4, "ty": 4}, "facing": "down",
+        {"id": "home_elder", "at": {"tx": 5, "ty": 4}, "facing": "left",
          "sprite": "npc_old_man", "movement": "static",
          "dialogue_ref": "npc.galehigh_home_elder"},
         {"id": "home_kid", "at": {"tx": 7, "ty": 6}, "facing": "left",
@@ -176,14 +176,14 @@ def build_kitemaker():
 
     objects: list = []
     # the counter focal, keeper behind it
-    place(objects, "counter", 6, 3)
+    place(objects, "counter", 6, 4)          # clear of the wares shelf behind
     wall_mount(objects, "shelf", 8, oid="kite_wares")
     wall_mount(objects, "lamp_rack", 11, solid=False)
     # the storeroom: crates of spars + sail rolls
     place(objects, "crates", 1, 3, oid="spar_crates")
     place(objects, "barrels", 1, 6, oid="line_spools")
     place(objects, "sacks", 2, 8, oid="sail_rolls")
-    place(objects, "rug", 8, 6, solid=False)
+    place(objects, "rug", 8, 7, solid=False)
     place(objects, "plant", 12, 7, oid="door_fern")
 
     warps = [
@@ -194,11 +194,11 @@ def build_kitemaker():
     # the standing shop pattern: one-time kit -> the open counter (the shop
     # DATA — ShopDef 'galehigh', prices, stock — lands with the wiring agent)
     npcs = [
-        {"id": "keeper_kit", "at": {"tx": 7, "ty": 2}, "facing": "down",
+        {"id": "keeper_kit", "at": {"tx": 7, "ty": 3}, "facing": "down",
          "sprite": "npc_shopkeeper", "movement": "static",
          "dialogue_ref": "script.shop_kit_galehigh",
          "hidden_when_flag": "flag:galehigh_kit"},
-        {"id": "keeper", "at": {"tx": 7, "ty": 2}, "facing": "down",
+        {"id": "keeper", "at": {"tx": 7, "ty": 3}, "facing": "down",
          "sprite": "npc_shopkeeper", "movement": "static",
          "dialogue_ref": "script.shop_galehigh",
          "requires_flag": "flag:galehigh_kit"},

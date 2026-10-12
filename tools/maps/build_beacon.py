@@ -17,8 +17,9 @@ Run:  python3 tools/maps/build_beacon.py
 """
 from __future__ import annotations
 
-from build_interiors import (COOL_SET, FLOOR, DOORMAT, RUNNER, BANNER, CAP_N,
-                             faced_room, windows, mapdef, obj, write_and_render)
+from build_interiors import (COOL_SET, FLOOR, DOORMAT, BANNER, CAP_N,
+                             faced_room, windows, mapdef, obj, write_and_render,
+                             aisle_runner)
 
 MUSIC = "assets/audio/music/beacon-stair.mp3"
 
@@ -34,12 +35,11 @@ def stair_floor(id_, name, *, keeper_id, keeper_script, keeper_after,
     # the UP landing: a doormat pad in the NE corner (the stairwell)
     up_x, up_y = W - 2, 2
     base[up_y * W + up_x] = DOORMAT
-    # runner lane from the entrance up the middle (the climb's visual pull)
-    for y in range(3, H - 1):
-        base[y * W + door_x] = RUNNER
-
-    objects = [
-        obj("rug", "interior_rug", door_x - 1, 4, 3, 2, solid=False),
+    objects: list = []
+    # the carpet aisle from the entrance up the middle (the climb's visual
+    # pull) — drawn runner objects, never the doormat tile (the ladder look)
+    aisle_runner(objects, door_x, 2, H - 2)
+    objects += [
         # braziers light the stairwell corner + the west wall
         obj("brazier_stair", "interior_brazier", up_x - 1, up_y, 1, 2, overhang=1),
         obj("brazier_w", "interior_brazier", 1, 4, 1, 2, overhang=1),
@@ -47,6 +47,8 @@ def stair_floor(id_, name, *, keeper_id, keeper_script, keeper_after,
         # 2x3 front-elevation piece; top row over the face), barrels below
         obj("shelf", "interior_shelf", 1, 1, 2, 3, overhang=1),
         obj("barrels", "interior_barrels", 1, 7, 2, 1),
+        # the rug, off the aisle: warms the empty east floor under the keeper
+        obj("rug", "interior_rug", door_x + 2, 5, 3, 2, solid=False),
     ]
     warps = [down_warp]
     if up_warp:
@@ -82,8 +84,6 @@ def lantern_room():
     windows(over, W, [door_x - 2, door_x + 2], tile=BANNER)
     down_x, down_y = 1, 2
     base[down_y * W + down_x] = DOORMAT
-    for y in range(3, H - 2):
-        base[y * W + door_x] = RUNNER
 
     objects = [
         # THE LANTERN — the beacon's great lamp, top-centre (altar object)
