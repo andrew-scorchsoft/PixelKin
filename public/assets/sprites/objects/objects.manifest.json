@@ -1036,6 +1036,41 @@
       "tw": 2,
       "th": 2
     },
+    "mirelight_drowned_chapel": {
+      "path": "assets/sprites/objects/mirelight_drowned_chapel.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "mirelight_ferry_stage": {
+      "path": "assets/sprites/objects/mirelight_ferry_stage.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "mirelight_marsh_light": {
+      "path": "assets/sprites/objects/mirelight_marsh_light.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "mirelight_null_lantern_big": {
+      "path": "assets/sprites/objects/mirelight_null_lantern_big.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "mirelight_stilt_hut": {
+      "path": "assets/sprites/objects/mirelight_stilt_hut.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
     "nightreach_eyepiece": {
       "path": "assets/sprites/objects/nightreach_eyepiece.webp",
       "width": 48,
@@ -1105,6 +1140,41 @@
       "height": 48,
       "tw": 2,
       "th": 3
+    },
+    "old_seams_cinder_vein": {
+      "path": "assets/sprites/objects/old_seams_cinder_vein.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "old_seams_headframe": {
+      "path": "assets/sprites/objects/old_seams_headframe.webp",
+      "width": 48,
+      "height": 64,
+      "tw": 3,
+      "th": 4
+    },
+    "old_seams_sealed_door": {
+      "path": "assets/sprites/objects/old_seams_sealed_door.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "old_seams_sealed_door_open": {
+      "path": "assets/sprites/objects/old_seams_sealed_door_open.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "old_seams_timber_props": {
+      "path": "assets/sprites/objects/old_seams_timber_props.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
     },
     "pale_vault_bracket_dark": {
       "path": "assets/sprites/objects/pale_vault_bracket_dark.webp",
@@ -1433,6 +1503,48 @@
       "width": 16,
       "height": 48,
       "tw": 1,
+      "th": 3
+    },
+    "rimeway_frozen_falls": {
+      "path": "assets/sprites/objects/rimeway_frozen_falls.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "rimeway_rime_gate_barred": {
+      "path": "assets/sprites/objects/rimeway_rime_gate_barred.webp",
+      "width": 64,
+      "height": 48,
+      "tw": 4,
+      "th": 3
+    },
+    "rimeway_rime_gate_open": {
+      "path": "assets/sprites/objects/rimeway_rime_gate_open.webp",
+      "width": 64,
+      "height": 48,
+      "tw": 4,
+      "th": 3
+    },
+    "rimeway_rime_lamp_dead": {
+      "path": "assets/sprites/objects/rimeway_rime_lamp_dead.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "rimeway_rime_lamp_lit": {
+      "path": "assets/sprites/objects/rimeway_rime_lamp_lit.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "rimeway_tender_waystation": {
+      "path": "assets/sprites/objects/rimeway_tender_waystation.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
       "th": 3
     },
     "saltreach_cattails": {
@@ -1941,6 +2053,62 @@
     },
     "vigil_star_shard": {
       "path": "assets/sprites/objects/vigil_star_shard.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "wickrun_chandlery_ruin": {
+      "path": "assets/sprites/objects/wickrun_chandlery_ruin.webp",
+      "width": 80,
+      "height": 64,
+      "tw": 5,
+      "th": 4
+    },
+    "wickrun_lift_house_foot": {
+      "path": "assets/sprites/objects/wickrun_lift_house_foot.webp",
+      "width": 64,
+      "height": 64,
+      "tw": 4,
+      "th": 4
+    },
+    "wickrun_lift_house_top": {
+      "path": "assets/sprites/objects/wickrun_lift_house_top.webp",
+      "width": 64,
+      "height": 64,
+      "tw": 4,
+      "th": 4
+    },
+    "wickrun_lift_pylon": {
+      "path": "assets/sprites/objects/wickrun_lift_pylon.webp",
+      "width": 16,
+      "height": 64,
+      "tw": 1,
+      "th": 4
+    },
+    "wickrun_runner_rack": {
+      "path": "assets/sprites/objects/wickrun_runner_rack.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "wickrun_start_gate": {
+      "path": "assets/sprites/objects/wickrun_start_gate.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "wickrun_wax_barrels": {
+      "path": "assets/sprites/objects/wickrun_wax_barrels.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "wickrun_wax_cart_wreck": {
+      "path": "assets/sprites/objects/wickrun_wax_cart_wreck.webp",
       "width": 32,
       "height": 32,
       "tw": 2,
