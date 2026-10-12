@@ -250,7 +250,7 @@ m.update({
         # the travelling fen-warden (mood + the soft B-arc seed, hooks §6)
         {"id": "fen_warden", "at": {"tx": 4, "ty": 37}, "facing": "right",
          "sprite": "old_salt", "movement": "look_around",
-         "dialogue_ref": "npc.fen_warden"},
+         "dialogue_ref": "script.fen_warden"},
         # the fishing-stilt nook (world-craft §4 #1b): the reed-cutter's eel-wife
         {"id": "fen_eelwife", "at": {"tx": 9, "ty": 25}, "facing": "left",
          "sprite": "fen_folk", "movement": "look_around",
@@ -292,6 +292,15 @@ owed += pt.sign(m, deco, W, sid="fen_drowned_road", at=(22, 40))   # on the wall
 # The crossing is an honest EDGE link (x=31 -> mirelight_landing's west edge,
 # same rows), held by the flag Ansel sets once you show him the Frostglass
 # Lens; until then his blocked line answers. The first crossing is narrated by
+# The fen-warden's "not yet" (playtest 2026-10): a once-per-save step_on band
+# across the fen's mouth from the quay (the only two walkable tiles of the cut),
+# so a player fresh off the Ember hears that the fen is for after the Tide.
+for y in (37, 38):
+    m["triggers"].append({"id": f"fen_warning_{y}", "kind": "cutscene",
+                          "at": {"tx": 2, "ty": y}, "activation": "step_on",
+                          "ref": "script.fen_warning_step",
+                          "hidden_when_flag": "flag:fen_warned"})
+
 # a once-only step_on beat on the stage (it hands you across itself).
 for i, y in enumerate((23, 24)):
     m["warps"].append({"id": "to_mirelight" + ("_s" if i else ""), "at": {"tx": W - 1, "ty": y},

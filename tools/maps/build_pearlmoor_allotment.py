@@ -118,7 +118,7 @@ owed += pt.cache(m, cid="allotment_bench", at=(16, 8))
 
 # ---- Anth, tending the marrows (three flag-disjoint stages, one tile) --------------
 for nid, ref, req, hide in [
-    ("anth", "npc.allotment_anth", None, "flag:q_south_wander"),
+    ("anth", "script.allotment_anth", None, "flag:q_south_wander"),
     ("anth_wander", "npc.allotment_anth_wander", "flag:q_south_wander", "flag:q_south_wander_done"),
     ("anth_done", "npc.allotment_anth_done", "flag:q_south_wander_done", None),
 ]:

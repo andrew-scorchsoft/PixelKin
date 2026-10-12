@@ -453,6 +453,7 @@ export const OLDLIGHT_DIALOGUE: DialogueRegistry = {
   'door.oldlight_locked': [
     { text: 'The door\'s handle is a brass nose. It is cold, and it does not find you funny.' },
     { text: 'A card in the letter-slot: AUDIENCES BY APPOINTMENT. APPLY TO R. WASH, THE TIDE LUMENARY.' }, // DRAFT
+    { text: 'That\'s Reyl Wash, up in the Lumenary at the very top of Pearlmoor Quay. Talk to him, and the Old Light will open.' },
   ],
   'sign.oldlight': [
     { text: "THE OLD LIGHT — PEARLMOOR'S JEST-HOUSE.\nSHUT FOR REPAIRS (11 WINTERS). PLEASE DO NOT TICKLE THE DOOR." },

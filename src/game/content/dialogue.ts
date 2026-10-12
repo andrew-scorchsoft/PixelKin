@@ -345,7 +345,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // The bond-test trigger's "not yet" (blocked_ref) — Reyl's voice, until the bell rings.
   'npc.reyl_blocked': [
-    { speaker: 'REYL WASH', text: 'Easy, Wayfarer. The blessing waits on the moor-bell, and the moor-bell waits on you. Come speak with me first — the sea keeps her orders.' },
+    { speaker: 'REYL WASH', text: 'Easy, Wayfarer. The blessing waits on the moor-bell, and the moor-bell waits on you. Up the Old Light first — west along the beach, out on the Point — then the netmender\'s rope, then ring the bell.' },
   ],
   // Reyl mid-quest: the hook is given, the bell still silent.
   'npc.reyl_waiting': [

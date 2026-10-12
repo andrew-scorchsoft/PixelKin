@@ -36,7 +36,8 @@ import roomkit as rk
 #  LUMENARIES (cool register, shrine) — 16x12: nave + altar + side niches
 # =============================================================================
 def build_lumenary(id_, name, music, out_warp, script_ref, sign_ref, warden_id, warden_dialogue,
-                   gate_flag="flag:has_starter", blocked_ref=None, npcs_override=None):
+                   gate_flag="flag:has_starter", blocked_ref=None, npcs_override=None,
+                   aisle_steps=()):
     W, H = 16, 12
     door_x = W // 2  # tx 8
     base, over = faced_room(W, H, door_x)
@@ -83,6 +84,13 @@ def build_lumenary(id_, name, music, out_warp, script_ref, sign_ref, warden_id, 
         if blocked_ref:
             battle_trigger["blocked_ref"] = blocked_ref
         triggers.insert(0, battle_trigger)
+        # Story steps on the SAME aisle tile, ahead of the bond-test (the engine
+        # fires the first active step_on trigger): walking up to the warden
+        # before the test is open runs his current stage, instead of a bare
+        # "not yet" line a player mistakes for having spoken to him.
+        for i, (sid, ref, hidden) in enumerate(aisle_steps):
+            triggers.insert(i, {"id": sid, "kind": "cutscene", "at": {"tx": door_x, "ty": 6},
+                                "activation": "step_on", "ref": ref, "hidden_when_flag": hidden})
     if npcs_override is not None:
         npcs = [dict(n, at={"tx": door_x, "ty": 5}) if n.get("at") == "dais" else n
                 for n in npcs_override]
@@ -628,6 +636,13 @@ def all_maps():
                        "reyl", "npc.reyl_wash",
                        gate_flag="flag:q_south_bell_rung",
                        blocked_ref="npc.reyl_blocked",
+                       # playtest 2026-10: a player stepped up the aisle, heard the
+                       # bare blocked line, and never pressed A on Reyl — so the Old
+                       # Light stayed locked. Now the walk-up itself gives his hook,
+                       # then his where-next reminder, until the bell rings.
+                       aisle_steps=(("reyl_hook_step", "script.reyl_quest", "flag:q_south_bell"),
+                                    ("reyl_waiting_step", "script.reyl_waiting",
+                                     "flag:q_south_bell_rung")),
                        npcs_override=[
                            {"id": "reyl_quest", "at": "dais", "facing": "down",
                             "sprite": "npc_lampwarden", "movement": "static",

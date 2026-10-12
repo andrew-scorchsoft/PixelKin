@@ -562,6 +562,28 @@
   ],
   "triggers": [
     {
+      "id": "reyl_hook_step",
+      "kind": "cutscene",
+      "at": {
+        "tx": 8,
+        "ty": 6
+      },
+      "activation": "step_on",
+      "ref": "script.reyl_quest",
+      "hidden_when_flag": "flag:q_south_bell"
+    },
+    {
+      "id": "reyl_waiting_step",
+      "kind": "cutscene",
+      "at": {
+        "tx": 8,
+        "ty": 6
+      },
+      "activation": "step_on",
+      "ref": "script.reyl_waiting",
+      "hidden_when_flag": "flag:q_south_bell_rung"
+    },
+    {
       "id": "lumenary_battle",
       "kind": "cutscene",
       "at": {

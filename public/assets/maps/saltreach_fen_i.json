@@ -153,7 +153,7 @@
       "facing": "right",
       "sprite": "old_salt",
       "movement": "look_around",
-      "dialogue_ref": "npc.fen_warden"
+      "dialogue_ref": "script.fen_warden"
     },
     {
       "id": "fen_eelwife",
@@ -685,6 +685,28 @@
       },
       "activation": "interact",
       "ref": "sign.fen_drowned_road"
+    },
+    {
+      "id": "fen_warning_37",
+      "kind": "cutscene",
+      "at": {
+        "tx": 2,
+        "ty": 37
+      },
+      "activation": "step_on",
+      "ref": "script.fen_warning_step",
+      "hidden_when_flag": "flag:fen_warned"
+    },
+    {
+      "id": "fen_warning_38",
+      "kind": "cutscene",
+      "at": {
+        "tx": 2,
+        "ty": 38
+      },
+      "activation": "step_on",
+      "ref": "script.fen_warning_step",
+      "hidden_when_flag": "flag:fen_warned"
     },
     {
       "id": "ferry_ride_23",
