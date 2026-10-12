@@ -100,6 +100,8 @@ export const LIGHT_SOURCES: Record<string, { hx: number; hy: number; radius: num
   windward_wind_shrine: { hx: 16, hy: 18, radius: 9, color: 0xffc46b },
   // west
   hushfrost_walker_camp: { hx: 22, hy: 35, radius: 20, color: 0xffb05a }, // the pass-walker's fire
+  sunvault_sun_lamp: { hx: 8, hy: 7, radius: 16, color: 0xffd76b }, // the Sunvault Climb's brass sun-lamps
+  sunvault_climbers_camp: { hx: 32, hy: 22, radius: 16, color: 0xffc46b }, // the climbers' lantern
 };
 
 /** Chimney tops keyed by building sprite (px offset of the stack's mouth). */

@@ -29,7 +29,7 @@
   "objects": [
     {
       "id": "keepers_shelter",
-      "sprite": "windward_rest_shelter",
+      "sprite": "sunvault_rest_alcove",
       "at": {
         "tx": 13,
         "ty": 2
@@ -40,7 +40,7 @@
     },
     {
       "id": "lamp_foot",
-      "sprite": "tinderwick_lamp_post",
+      "sprite": "sunvault_sun_lamp",
       "at": {
         "tx": 24,
         "ty": 37
@@ -52,7 +52,7 @@
     },
     {
       "id": "lamp_s1",
-      "sprite": "tinderwick_lamp_post",
+      "sprite": "sunvault_sun_lamp",
       "at": {
         "tx": 24,
         "ty": 31
@@ -64,7 +64,7 @@
     },
     {
       "id": "lamp_trestle",
-      "sprite": "tinderwick_lamp_post",
+      "sprite": "sunvault_sun_lamp",
       "at": {
         "tx": 13,
         "ty": 20
@@ -76,7 +76,7 @@
     },
     {
       "id": "lamp_s3",
-      "sprite": "tinderwick_lamp_post",
+      "sprite": "sunvault_sun_lamp",
       "at": {
         "tx": 5,
         "ty": 11
@@ -88,7 +88,7 @@
     },
     {
       "id": "lamp_top",
-      "sprite": "tinderwick_lamp_post",
+      "sprite": "sunvault_sun_lamp",
       "at": {
         "tx": 11,
         "ty": 4
@@ -152,7 +152,7 @@
     },
     {
       "id": "spyglass_top",
-      "sprite": "windward_spyglass",
+      "sprite": "sunvault_sun_spyglass",
       "at": {
         "tx": 24,
         "ty": 4
@@ -162,7 +162,7 @@
     },
     {
       "id": "flags_top",
-      "sprite": "windward_prayer_flags",
+      "sprite": "sunvault_sun_pennants",
       "at": {
         "tx": 2,
         "ty": 4
@@ -175,7 +175,7 @@
     },
     {
       "id": "starglint_0",
-      "sprite": "windward_starglint_b",
+      "sprite": "sunvault_sunmote_b",
       "at": {
         "tx": 21,
         "ty": 2
@@ -186,7 +186,7 @@
     },
     {
       "id": "starglint_1",
-      "sprite": "windward_starglint_b",
+      "sprite": "sunvault_sunmote_b",
       "at": {
         "tx": 9,
         "ty": 2
@@ -197,7 +197,7 @@
     },
     {
       "id": "starglint_2",
-      "sprite": "windward_starglint_a",
+      "sprite": "sunvault_sunmote_a",
       "at": {
         "tx": 26,
         "ty": 8
@@ -208,7 +208,7 @@
     },
     {
       "id": "starglint_3",
-      "sprite": "windward_starglint_b",
+      "sprite": "sunvault_sunmote_b",
       "at": {
         "tx": 3,
         "ty": 13
@@ -219,7 +219,7 @@
     },
     {
       "id": "starglint_4",
-      "sprite": "windward_starglint_a",
+      "sprite": "sunvault_sunmote_a",
       "at": {
         "tx": 25,
         "ty": 27
