@@ -20,7 +20,7 @@ always open; solved flags persist. No wild encounters anywhere.
 
   F1 pearlmoor_oldlight_1   The Lobby of Groaners   warm  up NE   (door below)
   F2 pearlmoor_oldlight_2   The Late Laugh          cool  dn NE / up NW  — the HECKLER
-  F3 pearlmoor_oldlight_3   Intermission            warm  dn NW / up NE  — tea-urn REST
+  F3 pearlmoor_oldlight_3   Intermission            warm  dn NW / up NE  — tea-urn REST + the COMPUTER
   F4 pearlmoor_oldlight_4   The Backwards Inn       cool  dn NE / up NW  — the RINGMASTER
   F5 pearlmoor_oldlight_5   The Gallery of Confident Facts  cool  dn NW / up NE
   F6 pearlmoor_oldlight_6   The One Joke            warm  dn NE / up NW  (no gate)
@@ -216,6 +216,11 @@ def floor_3():
     place(objects, "stool", 5, 7, oid="stool_l")
     place(objects, "stool", 8, 7, oid="stool_r")
     place(objects, "sacks", 10, 9, oid="sacks")
+    # the COMPUTER (an anachronism nobody can explain — the tower's own joke):
+    # off the riddle path in the east bay; Confirm on any tile -> ANDY-LAND
+    place(objects, "computer", 11, 6, oid="computer")
+    for x in (11, 12):
+        sign_at(triggers, f"computer_{x}", x, 7, "script.oldlight_computer", kind="cutscene")
     sign_at(triggers, "stove", 6, 2, "npc.oldlight_stove")
     sign_at(triggers, "stove_b", 7, 2, "npc.oldlight_stove")
     sign_at(triggers, "bookcase", 8, 3, "npc.oldlight_bookcase")

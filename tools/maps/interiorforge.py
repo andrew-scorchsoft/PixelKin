@@ -780,6 +780,60 @@ def desk() -> Image.Image:
     return img(a)
 
 
+SCREEN = [hx("#08201e"), hx("#123c36"), hx("#2f8a72"), hx("#7af0c4")]
+
+
+def computer() -> Image.Image:
+    """2x2 the Old Light's anachronism: a chunky beige CRT (glowing screen,
+    a page of text-lines, power lamp) and a keyboard on a little wooden desk.
+    Free-standing (`place`) — the top-down-frontal split: desk TOP under the
+    monitor, a short front face, two legs, contact shadow."""
+    a = canvas(2, 2)
+    W, H = 32, 32
+    # the desk: lit top surface, front face, legs
+    fill(a, 1, 18, W - 2, 24, WOOD[2])
+    a[18, 2:W - 2] = WOOD[3]
+    outline(a, 1, 18, W - 2, 24, INK)
+    fill(a, 2, 25, W - 3, 27, WOOD[1])           # front face
+    a[25, 2:W - 2] = WOOD[0]
+    fill(a, 13, 26, 18, 26, WOOD[0])             # a drawer slot
+    a[26, 15:17] = BRASS[2]
+    a[27, 2:W - 2] = INK
+    for x in (3, W - 6):                         # legs
+        fill(a, x, 28, x + 2, 30, WOOD[0])
+        a[28:31, x] = WOOD[1]
+    # the CRT: a deep beige box on the desk's back edge
+    fill(a, 5, 1, W - 6, 17, BONE[1])
+    fill(a, 6, 2, W - 7, 4, BONE[2])             # lit top bevel
+    a[1, 6:W - 6] = BONE[3]
+    fill(a, 5, 15, W - 6, 17, BONE[0])           # shaded chin
+    outline(a, 5, 1, W - 6, 17, INK)
+    # the glowing screen, bulging bezel
+    fill(a, 8, 4, W - 9, 13, SCREEN[0])
+    fill(a, 9, 5, W - 10, 12, SCREEN[1])
+    outline(a, 8, 4, W - 9, 13, BONE[0])
+    for (y, x0, x1, c) in ((6, 10, 21, SCREEN[3]), (8, 10, 18, SCREEN[2]),
+                           (9, 10, 20, SCREEN[2]), (11, 10, 15, SCREEN[2])):
+        a[y, x0:x1] = c                          # a web page: title + lines
+    a[11, 16] = SCREEN[3]                        # the blinking cursor
+    a[5, 9:12] = SCREEN[2]                       # glass glint
+    a[5, 9] = SCREEN[3]
+    a[16, 21] = hx("#ff6a3d")                    # power lamp
+    a[16, 8:13] = BONE[1]                        # the badge strip
+    # neck + the keyboard on the desk top
+    fill(a, 13, 18, 18, 18, BONE[0])
+    fill(a, 7, 20, W - 8, 23, BONE[2])
+    outline(a, 7, 20, W - 8, 23, BONE[0])
+    for x in range(9, W - 9, 2):
+        a[21, x] = BONE[0]
+        a[22, x + 1] = BONE[0]
+    a[23, 7:W - 7] = INK
+    fill(a, W - 6, 21, W - 5, 22, BONE[2])       # the mouse
+    a[22, W - 5] = INK
+    contact_shadow(a, 2, W - 3, H - 1)
+    return img(a)
+
+
 # =============================================================================
 PIECES = {
     # wall-mounted (place with roomkit.wall_mount — top row over the wall face)
@@ -794,6 +848,8 @@ PIECES = {
     "banner_warm": banner_warm, "banner_ice": banner_ice, "kite_hung": kite_hung,
     # the Lamp-school (wall-mounted chalkboard; free-standing desk)
     "chalkboard": chalkboard, "desk": desk,
+    # the Old Light's anachronism (free-standing)
+    "computer": computer,
 }
 
 # which stems are wall-mounted (roomkit reads this); the last three are

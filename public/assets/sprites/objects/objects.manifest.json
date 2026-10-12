@@ -868,6 +868,13 @@
       "tw": 4,
       "th": 2
     },
+    "interior_computer": {
+      "path": "assets/sprites/objects/interior_computer.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "interior_counter": {
       "path": "assets/sprites/objects/interior_counter.webp",
       "width": 64,
