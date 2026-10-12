@@ -1904,6 +1904,41 @@
       "tw": 2,
       "th": 1
     },
+    "traverse_lever_off": {
+      "path": "assets/sprites/objects/traverse_lever_off.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "traverse_lever_on": {
+      "path": "assets/sprites/objects/traverse_lever_on.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "traverse_ore_cart": {
+      "path": "assets/sprites/objects/traverse_ore_cart.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "traverse_switch_a": {
+      "path": "assets/sprites/objects/traverse_switch_a.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "traverse_switch_b": {
+      "path": "assets/sprites/objects/traverse_switch_b.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
     "unrisen_basin_dry": {
       "path": "assets/sprites/objects/unrisen_basin_dry.webp",
       "width": 32,
