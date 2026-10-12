@@ -239,7 +239,7 @@ export const OLDLIGHT_SCRIPTS: ScriptRegistry = {
                   ops: [
                     nar('ANDY-LAND.CO.UK > FORUM > YOUR MAMA JOKES (KIN EDITION)'),
                     { op: 'say', speaker: 'LAMPLAD99', text: "Your mama's so slow, a Gravelo lapped her. Twice. It stopped for lunch in between." },
-                    { op: 'say', speaker: 'WICKZ', text: "Your mama snores so loud, a Snoozlet packed its bags and left the Nightreach for a bit of peace and quiet." },
+                    { op: 'say', speaker: 'WICKZ', text: "Your mama snores so loud, a Snoozlet packed its bags and left Nightreach for a bit of peace and quiet." },
                     { op: 'say', speaker: 'TIDECALLER_7', text: "Your mama used Tidecall and the sea called back to say it was busy." },
                     { op: 'say', speaker: 'LAMPLAD99', text: "Your mama's so big, she's got her own constellation. They didn't even name it. It's just 'Mum'." },
                     { op: 'say', speaker: 'GLEAMGIRL', text: "Your mama's so old, she remembers the Long Dusk back when it was just the Long Afternoon." },
