@@ -116,7 +116,7 @@ fk.edge_warps(m, wid="to_climb_iv", cells=[(6, 0), (7, 0)], to_map="sunvault_cli
               to=[(6, 34), (7, 34)], facing="up")
 
 # ---- the keepers' shelter (rest point) ----------------------------------------------
-m["objects"].append({"id": "keepers_shelter", "sprite": "windward_rest_shelter",
+m["objects"].append({"id": "keepers_shelter", "sprite": "sunvault_rest_alcove",
                      "at": {"tx": 13, "ty": 2}, "w": 4, "h": 3, "overhang": 1})
 for x in (13, 14, 15, 16):
     m["triggers"].append({"id": f"keepers_shelter_rest_{x}", "kind": "script",
@@ -174,15 +174,15 @@ m["encounters"] = fk.night_day(zones, DAY)
 
 # ---- dressing -----------------------------------------------------------------------
 m["objects"] += [
-    {"id": "lamp_foot", "sprite": "tinderwick_lamp_post", "at": {"tx": 24, "ty": 37},
+    {"id": "lamp_foot", "sprite": "sunvault_sun_lamp", "at": {"tx": 24, "ty": 37},
      "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_s1", "sprite": "tinderwick_lamp_post", "at": {"tx": 24, "ty": 31},
+    {"id": "lamp_s1", "sprite": "sunvault_sun_lamp", "at": {"tx": 24, "ty": 31},
      "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_trestle", "sprite": "tinderwick_lamp_post", "at": {"tx": 13, "ty": 20},
+    {"id": "lamp_trestle", "sprite": "sunvault_sun_lamp", "at": {"tx": 13, "ty": 20},
      "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_s3", "sprite": "tinderwick_lamp_post", "at": {"tx": 5, "ty": 11},
+    {"id": "lamp_s3", "sprite": "sunvault_sun_lamp", "at": {"tx": 5, "ty": 11},
      "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_top", "sprite": "tinderwick_lamp_post", "at": {"tx": 11, "ty": 4},
+    {"id": "lamp_top", "sprite": "sunvault_sun_lamp", "at": {"tx": 11, "ty": 4},
      "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "column_s2", "sprite": "solarium_column", "at": {"tx": 24, "ty": 22},
      "w": 1, "h": 3, "overhang": 1, "walk_under": True},
@@ -190,8 +190,8 @@ m["objects"] += [
     {"id": "masonry_s0", "sprite": "sunvault_masonry", "at": {"tx": 14, "ty": 40}, "w": 2, "h": 2},
     {"id": "fallen_s3", "sprite": "solarium_column_fallen", "at": {"tx": 9, "ty": 16}, "w": 3, "h": 1},
     {"id": "fallen_s2", "sprite": "solarium_column_fallen", "at": {"tx": 22, "ty": 25}, "w": 3, "h": 1},
-    {"id": "spyglass_top", "sprite": "windward_spyglass", "at": {"tx": 24, "ty": 4}, "w": 2, "h": 2},
-    {"id": "flags_top", "sprite": "windward_prayer_flags", "at": {"tx": 2, "ty": 4}, "w": 4, "h": 2,
+    {"id": "spyglass_top", "sprite": "sunvault_sun_spyglass", "at": {"tx": 24, "ty": 4}, "w": 2, "h": 2},
+    {"id": "flags_top", "sprite": "sunvault_sun_pennants", "at": {"tx": 2, "ty": 4}, "w": 4, "h": 2,
      "overhang": 2, "walk_under": True, "solid": False},
 ]
 m["triggers"].append({"id": "spyglass_look", "kind": "script", "at": {"tx": 24, "ty": 5},
@@ -199,7 +199,7 @@ m["triggers"].append({"id": "spyglass_look", "kind": "script", "at": {"tx": 24, 
 owed.append("script.sunvault_spyglass")
 for n, (x, y) in enumerate([(21, 2), (9, 2), (26, 8), (3, 13), (25, 27)]):
     m["objects"].append({"id": f"starglint_{n}", "sprite": rng.choice(
-        ["windward_starglint_a", "windward_starglint_b"]),
+        ["sunvault_sunmote_a", "sunvault_sunmote_b"]),
         "at": {"tx": x, "ty": y}, "w": 1, "h": 1, "solid": False})
 
 gg = [gid("goldgrass0"), gid("goldgrass1"), gid("goldgrass2"), gid("goldgrass3")]

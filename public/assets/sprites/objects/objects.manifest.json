@@ -1792,11 +1792,25 @@
       "tw": 3,
       "th": 3
     },
+    "sunvault_climbers_camp": {
+      "path": "assets/sprites/objects/sunvault_climbers_camp.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
     "sunvault_colonnade": {
       "path": "assets/sprites/objects/sunvault_colonnade.webp",
       "width": 48,
       "height": 48,
       "tw": 3,
+      "th": 3
+    },
+    "sunvault_gilt_tree": {
+      "path": "assets/sprites/objects/sunvault_gilt_tree.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
       "th": 3
     },
     "sunvault_masonry": {
@@ -1827,12 +1841,54 @@
       "tw": 3,
       "th": 3
     },
+    "sunvault_rest_alcove": {
+      "path": "assets/sprites/objects/sunvault_rest_alcove.webp",
+      "width": 64,
+      "height": 48,
+      "tw": 4,
+      "th": 3
+    },
+    "sunvault_sun_lamp": {
+      "path": "assets/sprites/objects/sunvault_sun_lamp.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    },
+    "sunvault_sun_pennants": {
+      "path": "assets/sprites/objects/sunvault_sun_pennants.webp",
+      "width": 64,
+      "height": 32,
+      "tw": 4,
+      "th": 2
+    },
+    "sunvault_sun_spyglass": {
+      "path": "assets/sprites/objects/sunvault_sun_spyglass.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "sunvault_sundial_fallen": {
       "path": "assets/sprites/objects/sunvault_sundial_fallen.webp",
       "width": 48,
       "height": 32,
       "tw": 3,
       "th": 2
+    },
+    "sunvault_sunmote_a": {
+      "path": "assets/sprites/objects/sunvault_sunmote_a.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "sunvault_sunmote_b": {
+      "path": "assets/sprites/objects/sunvault_sunmote_b.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
     },
     "sunvault_vine_far_bloomed": {
       "path": "assets/sprites/objects/sunvault_vine_far_bloomed.webp",

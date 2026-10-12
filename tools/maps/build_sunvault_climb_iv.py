@@ -9,7 +9,7 @@ densest sky in Vesperholm.
 
   the foot shelf -> ladder (W) -> ledge A, plank E -> ladder (E) -> ledge B,
   plank W (the ledge-watcher stands over it) -> ladder (W) -> ledge C, plank
-  E -> ladder -> THE HILL (spyglass, the watchers' prayer flags, the road
+  E -> ladder -> THE HILL (spyglass, the watchers' sun-pennants, the road
   north). Two notch-ledges (one-way) are the quick way home.
 
 Lore: the watchers' brass pegs, the sun-keepers' planks — the two orders
@@ -101,14 +101,14 @@ fk.edge_warps(m, wid="to_observatory", cells=[(22, 0), (23, 0)],
 
 # ---- the hill: the watchers' lookout ------------------------------------------------
 m["objects"] += [
-    {"id": "hill_spyglass", "sprite": "windward_spyglass", "at": {"tx": 13, "ty": 3}, "w": 2, "h": 2},
-    {"id": "hill_flags", "sprite": "windward_prayer_flags", "at": {"tx": 16, "ty": 2}, "w": 4, "h": 2,
+    {"id": "hill_spyglass", "sprite": "sunvault_sun_spyglass", "at": {"tx": 13, "ty": 3}, "w": 2, "h": 2},
+    {"id": "hill_flags", "sprite": "sunvault_sun_pennants", "at": {"tx": 16, "ty": 2}, "w": 4, "h": 2,
      "overhang": 2, "walk_under": True, "solid": False},
     {"id": "hill_banner_w", "sprite": "nightreach_star_banner", "at": {"tx": 19, "ty": 5}, "w": 1, "h": 2,
      "solid": False},
     {"id": "hill_banner_e", "sprite": "nightreach_star_banner", "at": {"tx": 24, "ty": 5}, "w": 1, "h": 2,
      "solid": False},
-    {"id": "hill_camp", "sprite": "pale_vault_camp_lit", "at": {"tx": 24, "ty": 3}, "w": 3, "h": 2},
+    {"id": "hill_camp", "sprite": "sunvault_climbers_camp", "at": {"tx": 24, "ty": 3}, "w": 3, "h": 2},
 ]
 m["triggers"].append({"id": "hill_spyglass_look", "kind": "script", "at": {"tx": 13, "ty": 4},
                       "activation": "interact", "ref": "script.sunvault_hill_spyglass"})
@@ -165,22 +165,22 @@ m["encounters"] = fk.night_day(zones, DAY)
 
 # ---- dressing -----------------------------------------------------------------------
 m["objects"] += [
-    {"id": "lamp_foot", "sprite": "tinderwick_lamp_post", "at": {"tx": 8, "ty": 31},
+    {"id": "lamp_foot", "sprite": "sunvault_sun_lamp", "at": {"tx": 8, "ty": 31},
      "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_a", "sprite": "tinderwick_lamp_post", "at": {"tx": 24, "ty": 23},
+    {"id": "lamp_a", "sprite": "sunvault_sun_lamp", "at": {"tx": 24, "ty": 23},
      "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_b", "sprite": "tinderwick_lamp_post", "at": {"tx": 6, "ty": 17},
+    {"id": "lamp_b", "sprite": "sunvault_sun_lamp", "at": {"tx": 6, "ty": 17},
      "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_c", "sprite": "tinderwick_lamp_post", "at": {"tx": 19, "ty": 11},
+    {"id": "lamp_c", "sprite": "sunvault_sun_lamp", "at": {"tx": 19, "ty": 11},
      "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "masonry_foot", "sprite": "sunvault_masonry", "at": {"tx": 22, "ty": 32}, "w": 2, "h": 2},
-    {"id": "pine_hill", "sprite": "windward_bent_pine", "at": {"tx": 9, "ty": 4}, "w": 2, "h": 3,
+    {"id": "pine_hill", "sprite": "sunvault_gilt_tree", "at": {"tx": 9, "ty": 4}, "w": 2, "h": 3,
      "overhang": 2, "walk_under": True},
 ]
 for n, (x, y) in enumerate([(11, 2), (5, 2), (17, 5), (26, 7), (9, 12), (14, 18), (2, 25),
                             (19, 24), (12, 31)]):
     m["objects"].append({"id": f"starglint_{n}", "sprite": rng.choice(
-        ["windward_starglint_a", "windward_starglint_b"]),
+        ["sunvault_sunmote_a", "sunvault_sunmote_b"]),
         "at": {"tx": x, "ty": y}, "w": 1, "h": 1, "solid": False})
 
 gg = [gid("goldgrass0"), gid("goldgrass1"), gid("goldgrass2"), gid("goldgrass3")]

@@ -29,7 +29,7 @@
   "objects": [
     {
       "id": "hill_spyglass",
-      "sprite": "windward_spyglass",
+      "sprite": "sunvault_sun_spyglass",
       "at": {
         "tx": 13,
         "ty": 3
@@ -39,7 +39,7 @@
     },
     {
       "id": "hill_flags",
-      "sprite": "windward_prayer_flags",
+      "sprite": "sunvault_sun_pennants",
       "at": {
         "tx": 16,
         "ty": 2
@@ -74,7 +74,7 @@
     },
     {
       "id": "hill_camp",
-      "sprite": "pale_vault_camp_lit",
+      "sprite": "sunvault_climbers_camp",
       "at": {
         "tx": 24,
         "ty": 3
@@ -84,7 +84,7 @@
     },
     {
       "id": "lamp_foot",
-      "sprite": "tinderwick_lamp_post",
+      "sprite": "sunvault_sun_lamp",
       "at": {
         "tx": 8,
         "ty": 31
@@ -96,7 +96,7 @@
     },
     {
       "id": "lamp_a",
-      "sprite": "tinderwick_lamp_post",
+      "sprite": "sunvault_sun_lamp",
       "at": {
         "tx": 24,
         "ty": 23
@@ -108,7 +108,7 @@
     },
     {
       "id": "lamp_b",
-      "sprite": "tinderwick_lamp_post",
+      "sprite": "sunvault_sun_lamp",
       "at": {
         "tx": 6,
         "ty": 17
@@ -120,7 +120,7 @@
     },
     {
       "id": "lamp_c",
-      "sprite": "tinderwick_lamp_post",
+      "sprite": "sunvault_sun_lamp",
       "at": {
         "tx": 19,
         "ty": 11
@@ -142,7 +142,7 @@
     },
     {
       "id": "pine_hill",
-      "sprite": "windward_bent_pine",
+      "sprite": "sunvault_gilt_tree",
       "at": {
         "tx": 9,
         "ty": 4
@@ -154,7 +154,7 @@
     },
     {
       "id": "starglint_0",
-      "sprite": "windward_starglint_b",
+      "sprite": "sunvault_sunmote_b",
       "at": {
         "tx": 11,
         "ty": 2
@@ -165,7 +165,7 @@
     },
     {
       "id": "starglint_1",
-      "sprite": "windward_starglint_a",
+      "sprite": "sunvault_sunmote_a",
       "at": {
         "tx": 5,
         "ty": 2
@@ -176,7 +176,7 @@
     },
     {
       "id": "starglint_2",
-      "sprite": "windward_starglint_b",
+      "sprite": "sunvault_sunmote_b",
       "at": {
         "tx": 17,
         "ty": 5
@@ -187,7 +187,7 @@
     },
     {
       "id": "starglint_3",
-      "sprite": "windward_starglint_a",
+      "sprite": "sunvault_sunmote_a",
       "at": {
         "tx": 26,
         "ty": 7
@@ -198,7 +198,7 @@
     },
     {
       "id": "starglint_4",
-      "sprite": "windward_starglint_b",
+      "sprite": "sunvault_sunmote_b",
       "at": {
         "tx": 9,
         "ty": 12
@@ -209,7 +209,7 @@
     },
     {
       "id": "starglint_5",
-      "sprite": "windward_starglint_b",
+      "sprite": "sunvault_sunmote_b",
       "at": {
         "tx": 14,
         "ty": 18
@@ -220,7 +220,7 @@
     },
     {
       "id": "starglint_6",
-      "sprite": "windward_starglint_b",
+      "sprite": "sunvault_sunmote_b",
       "at": {
         "tx": 2,
         "ty": 25
@@ -231,7 +231,7 @@
     },
     {
       "id": "starglint_7",
-      "sprite": "windward_starglint_b",
+      "sprite": "sunvault_sunmote_b",
       "at": {
         "tx": 19,
         "ty": 24
@@ -242,7 +242,7 @@
     },
     {
       "id": "starglint_8",
-      "sprite": "windward_starglint_a",
+      "sprite": "sunvault_sunmote_a",
       "at": {
         "tx": 12,
         "ty": 31
