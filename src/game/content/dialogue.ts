@@ -257,6 +257,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   'sign.lanternfall_view': [
     { text: 'LANTERNFALL ROAD\nOut of the cave and down the lit steps. Every lamp below is one the Waykeeper trims; follow them to the crossroads.' },
+    { text: 'Three steps to the bottom. The lit drop on the east end is the quick way DOWN; coming back up, the ramps zig-zag — east, west, east.' },
   ],
   'sign.lanternfall_hub': [
     { text: 'VESPER CROSSROADS — just below.\nWhere all the lit roads meet. The kettle\'s on at the Waystation Inn, more often than not.' },
