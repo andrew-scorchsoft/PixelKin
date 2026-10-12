@@ -189,6 +189,17 @@
       "walk_under": true
     },
     {
+      "id": "moka_stall",
+      "sprite": "kitchens_moka_stall",
+      "at": {
+        "tx": 12,
+        "ty": 10
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1
+    },
+    {
       "id": "wc_apples",
       "sprite": "tinderwick_apple_crates",
       "at": {
@@ -502,6 +513,17 @@
       "movement": "wander",
       "dialogue_ref": "npc.wren_intro",
       "hidden_when_flag": "flag:has_starter"
+    },
+    {
+      "id": "percy",
+      "at": {
+        "tx": 14,
+        "ty": 11
+      },
+      "facing": "left",
+      "sprite": "innkeeper",
+      "movement": "static",
+      "dialogue_ref": "script.moka_percy"
     },
     {
       "id": "amb_glimflit",

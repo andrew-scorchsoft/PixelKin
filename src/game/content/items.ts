@@ -296,6 +296,23 @@ export const ITEMS: ItemRegistry = {
     desc: 'A wind-burnt sprig from Galehigh\'s highest terrace, sharp and warm to the nose. The crag-tender swears by it for her kettle.',
     category: 'key',
   },
+  // The kitchens (content/regions/kitchens.ts) — both GIVEN once, never sold.
+  // Percy's cup from the eight-sided moka pot (Duskapple Orchard).
+  moka_cup: {
+    id: 'moka_cup',
+    name: 'Moka Cup',
+    desc: 'A short, strong cup from the eight-sided moka pot. Restores some health.',
+    category: 'medicine',
+    heal: 40,
+  },
+  // Marisol's salsa, with your first plate at her kitchen (Lowleaf Hollow).
+  salsa_roja: {
+    id: 'salsa_roja',
+    name: 'Salsa Roja',
+    desc: 'Toasted chile and tomato, stoppered in a jar. Restores a good deal of health.',
+    category: 'medicine',
+    heal: 60,
+  },
   warm_flask: {
     id: 'warm_flask',
     name: 'Warm Flask',

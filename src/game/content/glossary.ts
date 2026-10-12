@@ -414,6 +414,19 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'An old stone hotel on the green rise above the Wanderwood, older than the dark. The bar is open, the fire is lit, and there is always someone in the chair beside the corner one. Nobody remembers who keeps it.',
     unlock_flag: 'flag:wayward_night',
   },
+  // The kitchens (2026-10, content/regions/kitchens.ts) — optional colour
+  {
+    id: 'moka_pot',
+    term: 'the eight-sided pot',
+    desc: 'A little faceted moka pot from a hill-country far across the sea: water below, grounds in the middle, and coffee rising up top on its own steam. Never tamp it, never soap it, and take it off the flame when it gurgles. Or so Percy says. Often.',
+    unlock_flag: 'flag:moka_met',
+  },
+  {
+    id: 'marisols_kitchen',
+    term: "Marisol's kitchen",
+    desc: 'A stall at the foot of Lowleaf Hollow, where Marisol cooks the red dishes of her sunny homeland far to the south: dried chiles toasted on the comal, tomato, and corn worked the old way with lime. Sixty wicks a plate, and you leave warm.',
+    unlock_flag: 'flag:cantina_met',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */
