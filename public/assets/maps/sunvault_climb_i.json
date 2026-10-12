@@ -985,7 +985,7 @@
       "facing": "down",
       "sprite": "road_courier",
       "movement": "static",
-      "dialogue_ref": "npc.sunvault_wayfarer"
+      "dialogue_ref": "npc.sunvault_wayfarer_face"
     },
     {
       "id": "cache_sunvault_balm",

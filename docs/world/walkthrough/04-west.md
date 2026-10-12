@@ -330,7 +330,14 @@ Pyre, ace ~46) · **rec. level ~42 → 46.**
 
 ---
 
-## Sunvault Climb I → II — *golden terraces blooming open toward the stars*
+## Sunvault Climb I → IV — *golden terraces blooming open toward the stars*
+
+> **2026-10 rebuild ([09 §S](./09-the-wild-ways.md)):** the climb is now a four-map MOUNTAIN
+> FACE — `sunvault_climb_i` (the foot) → `_ii` (the sun-vine bridges, 30×40) → `_iii` the
+> Gilt Face (ladder pitches, the trestle over the gully, the keepers' shelter rest point) →
+> `_iv` the Sun Ledges (ledges + rope-planks to the observatory hill) → Nightreach. Bands
+> I 46-47 · II 47-48 · III 48-49 · IV 48-49. The beats below still hold; "exit to
+> Nightreach" now happens from IV.
 
 **At a glance** — `sunvault_climb_i` (overgrown terraces) → `sunvault_climb_ii` (sun-vine
 bridges) · kind route · region west · **enter** from `sunken_solarium` (ungated) **→ exit** to
@@ -401,16 +408,22 @@ bridges) · kind route · region west · **enter** from `sunken_solarium` (ungat
 
 ### 6. Validation hooks
 
-- **Map ids / kind:** `sunvault_climb_i`, `sunvault_climb_ii`, kind `route`, region `west`.
+- **Map ids / kind:** `sunvault_climb_i`, `sunvault_climb_ii`, `sunvault_climb_iii`,
+  `sunvault_climb_iv`, kind `route`, region `west` (traverse_set stacked for ladders/planks/decks).
+- **Chain (graph.ts, ungated past the vines):** `sunvault_climb_ii → sunvault_climb_iii` via
+  `to_climb_iii`, `sunvault_climb_iii → sunvault_climb_iv` via `to_climb_iv`, `sunvault_climb_iv →
+  nightreach_observatory` via `to_observatory` (all bidir; Nightreach's return pair is `to_sunvault`).
+- **Rest point:** the keepers' shelter on III (`script.sunvault_keepers_shelter`).
 - **Boundary warp (graph.ts):** `sunvault_climb_i → sunvault_climb_ii` via `to_climb_ii`,
   **`requires_ability: sunsketch`**, bidir.
 - **Entry/exit warps:** in from `sunken_solarium` via `to_climb` (**ungated**, bidir); out to
-  `nightreach_observatory` via `to_observatory` (**ungated**, bidir — the MAIN-PATH rim approach).
+  `nightreach_observatory` via `to_observatory` (**ungated**, bidir — the MAIN-PATH rim approach;
+  since 2026-10 this edge leaves from `sunvault_climb_iv`).
 - **Spur warp:** `sunvault_climb_ii → helia_vault` via `to_helia`, `requires_ability: sunsketch`,
   bidir.
 - **Encounter zones:** `tall_grass` — sun-seedling (Verdant/Solar), vine-serpent (Verdant),
-  glass-wing bee (Verdant/Light); level band 46–48 (continuous with Solarium ~46 and Nightreach
-  ~48). Helia Vault carries rare Solar kin at low weight.
+  glass-wing bee (Verdant/Light); level band 46–49 (continuous with Solarium ~46 and Nightreach
+  ~48; III/IV add Solray/Solreach/Lunveil/Petalune/Drowshorn). Helia Vault carries rare Solar kin at low weight.
 - **NPC:** vine-tender near the bloomed bridge; dialogue ref `npc.sunvault_vine_tender`.
 
 ---

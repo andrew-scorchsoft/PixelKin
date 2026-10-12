@@ -1092,7 +1092,7 @@
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/sunvault-climb-a.mp3",
+  "music": "assets/audio/music/sunvault-climb-b.mp3",
   "battle_backdrops": [
     "assets/backgrounds/battle/sunvault-climb-a.webp",
     "assets/backgrounds/battle/sunvault-climb-b.webp"
