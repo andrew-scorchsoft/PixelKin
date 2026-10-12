@@ -257,7 +257,7 @@ m: dict = {
         {"id": "otho_seams", "at": {"tx": 18, "ty": 4}, "facing": "left",
          "sprite": "npc_lampwarden", "movement": "static",
          "dialogue_ref": "script.old_seams_otho",
-         "requires_flag": "gleam:stone", "hidden_when_flag": "flag:old_seams_open"},
+         "requires_flag": "flag:old_seams_told", "hidden_when_flag": "flag:old_seams_open"},
         # Wren is gone east by now (A3 landed at Glowmoss Deep) — a miner mentions it
         {"id": "deep_warden", "at": {"tx": 14, "ty": 18}, "facing": "down",
          "sprite": "npc_lampwarden", "movement": "static",

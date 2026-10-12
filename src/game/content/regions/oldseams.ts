@@ -53,6 +53,14 @@ function find(flag: string, gives: CutsceneStep[], text: string): CutsceneStep[]
 
 export const OLDSEAMS_SCRIPTS: ScriptRegistry = {
   // ---- the seam-door (Cinderhead Mine) -----------------------------------------
+  // The hall's post-Gleam Otho: his usual word, then the seam — and off he goes
+  // to wait at its door (one Otho at a time; build_cinderhead_interiors.py).
+  'script.otho_after_seams': [
+    { op: 'dialogue', ref: 'npc.otho_after' },
+    { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'grave', text: 'One more thing, before you go. There\'s a door in the north workings that\'s been shut since my grandmother\'s day. I\'ve a mind to show it to someone with a steady lamp. Come and find me there, when you\'re ready.' },
+    { op: 'setFlag', flag: 'flag:old_seams_told' },
+    { op: 'narrate', text: 'Otho takes a hand-lamp from its hook and heads off toward the north workings.' },
+  ],
   'script.old_seams_otho': [
     { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'neutral', text: 'Found my door, have you. I\'ve stood here most nights since your Gleam, deciding.' },
     { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'grave', text: 'My grandmother\'s crew sealed this seam, seventy winters back. Not for damp. Not for gas. The ledger has a name for it — "the seam we don\'t work" — and no reason. Foremen never give reasons.' },

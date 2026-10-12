@@ -631,7 +631,7 @@
       "sprite": "npc_lampwarden",
       "movement": "static",
       "dialogue_ref": "script.old_seams_otho",
-      "requires_flag": "gleam:stone",
+      "requires_flag": "flag:old_seams_told",
       "hidden_when_flag": "flag:old_seams_open"
     },
     {

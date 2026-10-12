@@ -76,10 +76,18 @@ def build_lumenary():
          "dialogue_ref": "npc.otho_ready",
          "requires_flag": "flag:q_east_vigil_lamp",
          "hidden_when_flag": "gleam:stone"},
+        # after the Gleam he points you at the sealed seam and goes to wait at
+        # its door (the Old Seams, 09 §2 D) — one Otho at a time: the hall is
+        # empty while he's at the seam, and he's home again once it's open.
         {"id": "otho_after", "at": {"tx": door_x, "ty": 5}, "facing": "down",
          "sprite": "npc_lampwarden", "movement": "static",
+         "dialogue_ref": "script.otho_after_seams",
+         "requires_flag": "gleam:stone",
+         "hidden_when_flag": "flag:old_seams_told"},
+        {"id": "otho_home", "at": {"tx": door_x, "ty": 5}, "facing": "down",
+         "sprite": "npc_lampwarden", "movement": "static",
          "dialogue_ref": "npc.otho_after",
-         "requires_flag": "gleam:stone"},
+         "requires_flag": "flag:old_seams_open"},
     ]
     return mapdef("cinderhead_lumenary", "Cinderhead Stone Lumenary", W, H, COOL_SET,
                   base, over, objects, warps, triggers, npcs,
