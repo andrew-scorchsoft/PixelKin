@@ -422,7 +422,12 @@ Stone** (→ `flag:crown_east`) · rec. level ~22.
      back · flags: `flag:q_east_ledger` → `flag:q_east_ledger_found` · reward: a high-band
      **crystal item** (folds in the existing grind-reward bullet) · maps: `cinderhead_mine`,
      `cinderhead_deep` · `[MISSABLE]`; the ledger's last page hints at the far galleries —
-     a second page sits beyond the lamp's reach `[LATER: Lamplight ≥ Starlight]`.
+     a second page sits beyond the lamp's reach `[LATER: Lamplight ≥ Starlight]` —
+     **BUILT (2026-10)** as the Old Seams: after the Stone Gleam Otho opens the mine's
+     sealed seam-door ("the seam we don't work", `flag:old_seams_open`), three floors down
+     to the first star and Emberroot; the last page (`script.pickup_seams_ledger_page`) lies
+     in Emberroot's Heart behind the Starlight-gated ladder. See
+     [09 §2 D](./09-the-wild-ways.md).
    - **E1 "The Quiet Reeds"** — see Saltreach Fen II's Named-quests entry (giver lives
      there); listed here for the regional slate count (E1 · E2 · E3 · R3).
 5. **Don't-miss callouts** — **Grind the deep galleries before Otho.** The wall is intentional;

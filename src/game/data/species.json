@@ -3841,7 +3841,22 @@
     "weight_kg": 800,
     "habitat": "east"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "old_seams_iii",
+     "terrain": "cave",
+     "rarity": "very_rare",
+     "min": 33,
+     "max": 33
+    },
+    {
+     "area": "old_seams_iii",
+     "terrain": "cave",
+     "rarity": "rare",
+     "min": 62,
+     "max": 65
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "Grand stag-form; body is smooth translucent white crystal shot through with a continuous rainbow refraction; diamond-branching antlers reach nearly to cave ceilings; four crystal-column legs; eyes emit soft white radiance; when still it is indistinguishable from a perfect crystal formation.",
@@ -4295,6 +4310,34 @@
      "rarity": "rare",
      "min": 26,
      "max": 27
+    },
+    {
+     "area": "old_seams_i",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 27,
+     "max": 28
+    },
+    {
+     "area": "old_seams_i",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 56,
+     "max": 61
+    },
+    {
+     "area": "old_seams_iii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 31,
+     "max": 32
+    },
+    {
+     "area": "old_seams_iii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 56,
+     "max": 61
     }
    ],
    "scripted": false,
@@ -4375,7 +4418,36 @@
     "weight_kg": 320.0,
     "habitat": "east"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "old_seams_ii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 29,
+     "max": 31
+    },
+    {
+     "area": "old_seams_ii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 62
+    },
+    {
+     "area": "old_seams_iii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 31,
+     "max": 33
+    },
+    {
+     "area": "old_seams_iii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 58,
+     "max": 63
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Tall imposing angular silhouette, jet obsidian faceted body, a glowing diamond-orange core blazing through a transparent chest section, jutting shoulder-spurs; monolithic at 64px.",
@@ -4604,6 +4676,20 @@
      "rarity": "common",
      "min": 26,
      "max": 27
+    },
+    {
+     "area": "old_seams_ii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 29,
+     "max": 30
+    },
+    {
+     "area": "old_seams_ii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 60
     }
    ],
    "scripted": false,
@@ -4998,6 +5084,20 @@
      "rarity": "common",
      "min": 26,
      "max": 27
+    },
+    {
+     "area": "old_seams_i",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 27,
+     "max": 29
+    },
+    {
+     "area": "old_seams_i",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 55,
+     "max": 60
     }
    ],
    "scripted": false,
@@ -5249,7 +5349,36 @@
     "weight_kg": 650,
     "habitat": "east"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "old_seams_ii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 30,
+     "max": 31
+    },
+    {
+     "area": "old_seams_ii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 63
+    },
+    {
+     "area": "old_seams_iii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 31,
+     "max": 33
+    },
+    {
+     "area": "old_seams_iii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 63
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Large quadruped; thick ridged stone-white carapace with deep limestone-cream and grey layering; broad low head with two faintly glowing amber eyes; heavy armoured tail; primordial and formidable.",
@@ -5339,6 +5468,20 @@
      "rarity": "uncommon",
      "min": 26,
      "max": 27
+    },
+    {
+     "area": "old_seams_i",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 27,
+     "max": 29
+    },
+    {
+     "area": "old_seams_i",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 55,
+     "max": 60
     }
    ],
    "scripted": false,
@@ -5420,7 +5563,50 @@
     "weight_kg": 95,
     "habitat": "east"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "old_seams_i",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 28,
+     "max": 29
+    },
+    {
+     "area": "old_seams_i",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 63
+    },
+    {
+     "area": "old_seams_ii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 29,
+     "max": 31
+    },
+    {
+     "area": "old_seams_ii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 56,
+     "max": 61
+    },
+    {
+     "area": "old_seams_iii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 31,
+     "max": 33
+    },
+    {
+     "area": "old_seams_iii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 57,
+     "max": 62
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Short biped with a barrel chest; iron-ore growth on both fists and elbows like natural knuckledusters; shoulder ore-knobs; dark grey skin with metallic flecks; small determined face.",
@@ -5498,7 +5684,36 @@
     "weight_kg": 1100,
     "habitat": "east"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "old_seams_ii",
+     "terrain": "cave",
+     "rarity": "rare",
+     "min": 31,
+     "max": 31
+    },
+    {
+     "area": "old_seams_ii",
+     "terrain": "cave",
+     "rarity": "rare",
+     "min": 60,
+     "max": 65
+    },
+    {
+     "area": "old_seams_iii",
+     "terrain": "cave",
+     "rarity": "rare",
+     "min": 32,
+     "max": 33
+    },
+    {
+     "area": "old_seams_iii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 60,
+     "max": 65
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Imposing wide-shouldered biped; entire body studded with iron-ore protrusions and plates; massive stone fists each larger than a human torso; slow-burning orange eyes set deep in a craggy face; silhouette is pure power.",
@@ -6892,6 +7107,34 @@
      "rarity": "rare",
      "min": 26,
      "max": 27
+    },
+    {
+     "area": "old_seams_i",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 28,
+     "max": 29
+    },
+    {
+     "area": "old_seams_i",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 57,
+     "max": 62
+    },
+    {
+     "area": "old_seams_ii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 29,
+     "max": 30
+    },
+    {
+     "area": "old_seams_ii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 56,
+     "max": 60
     }
    ],
    "scripted": false,

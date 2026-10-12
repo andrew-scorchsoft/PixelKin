@@ -197,7 +197,11 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'wickrun_foot', region: 'south', optional: true, reward: 'the finish (time-trial prizes, Rook\'s ribbon) + the Tallow Lift\'s foot station' },
     // the Mirelights (B)
     // the Rimeway (C)
-    // the Old Seams (D)
+    // the Old Seams (D): Cinderhead Mine's seam-door (Otho, post-Stone) -> three floors down -> the first star
+    { map_id: 'old_seams_i', region: 'east', optional: true, reward: 'the Shaft Benches: planks + ladders, Orebound beds, a pillar-islet charge' },
+    { map_id: 'old_seams_ii', region: 'east', optional: true, reward: 'the Rail Yard puzzle: rare Ferrolith, the siding\'s starglass' },
+    { map_id: 'old_seams_iii', region: 'east', optional: true, reward: 'the Scree Galleries: Pyrolith/Lithonyx, very rare Prismara, a scree-only Lumen Drop' },
+    { map_id: 'emberroot_heart', region: 'east', optional: true, reward: 'EMBERROOT #166 (lv 46, Starlight return) + the Ledger\'s last page' },
     // Sunvault Climb rebuild (S)
   ],
   edges: [
@@ -396,7 +400,11 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'wickrun_foot', to_map: 'pearlmoor_point', via_warp: 'to_point', bidirectional: true },
     // the Mirelights (B)
     // the Rimeway (C)
-    // the Old Seams (D)
+    // the Old Seams (D): floors stacked by ladders (portals — they never touch surface geometry)
+    { from_map: 'cinderhead_mine', to_map: 'old_seams_i', via_warp: 'to_old_seams', requires_flag: 'flag:old_seams_open', bidirectional: true },
+    { from_map: 'old_seams_i', to_map: 'old_seams_ii', via_warp: 'ladder_down', bidirectional: true },
+    { from_map: 'old_seams_ii', to_map: 'old_seams_iii', via_warp: 'ladder_down', bidirectional: true },
+    { from_map: 'old_seams_iii', to_map: 'emberroot_heart', via_warp: 'to_heart', requires_flag: 'flag:lamplight_starlight', bidirectional: true },
     // Sunvault Climb rebuild (S)
   ],
   hub: {

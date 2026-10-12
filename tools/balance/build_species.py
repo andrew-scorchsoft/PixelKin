@@ -833,6 +833,39 @@ WICKRUN_ENCOUNTERS = {
 }
 for _slug, _rows_ in WICKRUN_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
+# THE WILD WAYS — the Old Seams (D, 2026-10): mirrors of the BUILT in-map cave
+# tables (tools/maps/build_old_seams_i/ii/iii.py are the source), night band +
+# its flag:dawn day twin. Weights -> rarity by the W6 share rule (>=20 common,
+# 10-19 uncommon, 5-9 rare, <5 very_rare). Orebound/Ferrolith/Pyrolith/Lithonyx/
+# Prismara are the Seams' own; the rest are the Cinderhead regulars, deeper.
+def _seam_rows(area, rows):
+    def rar(wt):
+        return "common" if wt >= 20 else "uncommon" if wt >= 10 else "rare" if wt >= 5 else "very_rare"
+    out = {}
+    for slug, wt, lo, hi in rows:
+        out.setdefault(slug, []).append({"area": area, "terrain": "cave", "rarity": rar(wt),
+                                         "min": lo, "max": hi})
+    return out
+OLD_SEAMS_TABLES = {
+    "old_seams_i": [
+        ("oreling", 30, 27, 29), ("coalump", 25, 27, 28), ("riddlestone", 20, 28, 29),
+        ("gravelo", 15, 27, 29), ("orebound", 10, 28, 29),
+        ("oreling", 26, 55, 60), ("coalump", 22, 56, 61), ("riddlestone", 20, 57, 62),
+        ("gravelo", 16, 55, 60), ("orebound", 16, 58, 63)],
+    "old_seams_ii": [
+        ("orebound", 30, 29, 31), ("riddlestone", 20, 29, 30), ("sparkrat", 20, 29, 30),
+        ("pyrolith", 15, 29, 31), ("lithonyx", 10, 30, 31), ("ferrolith", 5, 31, 31),
+        ("orebound", 26, 56, 61), ("riddlestone", 20, 56, 60), ("sparkrat", 18, 56, 60),
+        ("pyrolith", 16, 57, 62), ("lithonyx", 12, 58, 63), ("ferrolith", 8, 60, 65)],
+    "old_seams_iii": [
+        ("orebound", 26, 31, 33), ("coalump", 22, 31, 32), ("pyrolith", 20, 31, 33),
+        ("lithonyx", 14, 31, 33), ("ferrolith", 8, 32, 33), ("prismara", 4, 33, 33),
+        ("orebound", 24, 57, 62), ("coalump", 20, 56, 61), ("pyrolith", 20, 58, 63),
+        ("lithonyx", 14, 58, 63), ("ferrolith", 12, 60, 65), ("prismara", 6, 62, 65)],
+}
+for _area, _tbl in OLD_SEAMS_TABLES.items():
+    for _slug, _rows_ in _seam_rows(_area, _tbl).items():
+        EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
 
 # Areas whose encounter tables are BUILT into the map JSONs (the in-map zones
 # are the truth, mirrored above). Generated region defaults — and stale rows
@@ -883,6 +916,9 @@ CURATED_AREAS = {
     # crest and the foot are encounter-free and listed so nothing claims them.
     "wickrun_crest", "wickrun_chute", "wickrun_trestles", "wickrun_traverse",
     "wickrun_lower", "wickrun_foot",
+    # THE WILD WAYS — the Old Seams (D): three cave floors (mirrored above,
+    # OLD_SEAMS_TABLES); the heart is encounter-free by design (Emberroot's room).
+    "old_seams_i", "old_seams_ii", "old_seams_iii", "emberroot_heart",
 }
 
 # Kin that are FIXED quest catches (a legendaryBattle set-piece), even though

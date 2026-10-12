@@ -68,7 +68,36 @@
     "weight_kg": 320.0,
     "habitat": "east"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "old_seams_ii",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 29,
+      "max": 31
+    },
+    {
+      "area": "old_seams_ii",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 57,
+      "max": 62
+    },
+    {
+      "area": "old_seams_iii",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 31,
+      "max": 33
+    },
+    {
+      "area": "old_seams_iii",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 58,
+      "max": 63
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Tall imposing angular silhouette, jet obsidian faceted body, a glowing diamond-orange core blazing through a transparent chest section, jutting shoulder-spurs; monolithic at 64px.",

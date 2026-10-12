@@ -342,6 +342,18 @@ export const QUESTS: QuestRegistry = [
     ],
     done_flag: 'flag:runner_ribbon',
   },
+  // The Wild Ways (09 §2 D): the Old Seams under Cinderhead. Otho opens the seam
+  // the foremen sealed; the bottom waits on a Starlight lamp (six Gleams).
+  {
+    id: 'wild_old_seams',
+    name: 'The Seam We Don\'t Work',
+    region: 'east',
+    giver: 'Otho Grist',
+    blurb: 'Below Cinderhead the coal is warm because something breathes on it. Go down through the old benches, the rail yard and the scree to the bottom of the mountain — with a lamp bright enough to see what\'s there.',
+    start_flag: 'flag:old_seams_open',
+    stage_flags: ['flag:emberroot_heart_seen'],
+    done_flag: 'flag:emberroot_caught',
+  },
 ];
 
 /** Lookup by id. */

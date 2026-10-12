@@ -69,7 +69,50 @@
     "weight_kg": 95,
     "habitat": "east"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "old_seams_i",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 28,
+      "max": 29
+    },
+    {
+      "area": "old_seams_i",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 58,
+      "max": 63
+    },
+    {
+      "area": "old_seams_ii",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 29,
+      "max": 31
+    },
+    {
+      "area": "old_seams_ii",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 56,
+      "max": 61
+    },
+    {
+      "area": "old_seams_iii",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 31,
+      "max": 33
+    },
+    {
+      "area": "old_seams_iii",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 57,
+      "max": 62
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Short biped with a barrel chest; iron-ore growth on both fists and elbows like natural knuckledusters; shoulder ore-knobs; dark grey skin with metallic flecks; small determined face.",

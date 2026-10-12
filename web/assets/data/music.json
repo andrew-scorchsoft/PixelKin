@@ -250,6 +250,17 @@
      "remaster": "play/assets/audio/music/remaster/cinderhead-mine-c.mp3",
      "loop_start": 11.029,
      "note": null
+    },
+    {
+     "id": "old-seams",
+     "title": "The Old Seams",
+     "where": "The Old Seams · The Old Seams: Rail Yard · The Old Seams: Scree Galleries · Emberroot's Heart",
+     "mood": "Abandoned deep galleries: rails and dripping water in the dark, and something vast breathing slowly far below.",
+     "classic": "play/assets/audio/music/old-seams.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/old-seams.mp3",
+     "loop_start": 5.248,
+     "note": null
     }
    ]
   },

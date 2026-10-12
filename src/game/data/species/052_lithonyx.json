@@ -67,7 +67,36 @@
     "weight_kg": 650,
     "habitat": "east"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "old_seams_ii",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 30,
+      "max": 31
+    },
+    {
+      "area": "old_seams_ii",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 58,
+      "max": 63
+    },
+    {
+      "area": "old_seams_iii",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 31,
+      "max": 33
+    },
+    {
+      "area": "old_seams_iii",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 58,
+      "max": 63
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Large quadruped; thick ridged stone-white carapace with deep limestone-cream and grey layering; broad low head with two faintly glowing amber eyes; heavy armoured tail; primordial and formidable.",
