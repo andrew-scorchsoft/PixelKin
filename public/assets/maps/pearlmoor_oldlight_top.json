@@ -416,6 +416,18 @@
       "h": 1
     },
     {
+      "id": "slide_hatch",
+      "sprite": "markers_trapdoor",
+      "at": {
+        "tx": 7,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "flag:q_south_jest_done"
+    },
+    {
       "id": "stairs_down_sprite",
       "sprite": "interior_stairs_down",
       "at": {

@@ -51,6 +51,7 @@ Prereq: the shared set (python3 tools/maps/build_shared_overworld.py).
 from __future__ import annotations
 import random
 import mapkit as mk
+import warp_markers as wm
 from mapkit import gid
 
 W, H = 28, 30
@@ -386,6 +387,8 @@ if __name__ == "__main__":
     # deep water (2026-10): the open sea past the shallow shelf — Tidecall
     # swims the shallows only (mapkit.deep_water; the reserved `deepdive` gate)
     mk.deep_water(m)
+    # warp marker: the skiff moored at the pier end — the way back to the summit
+    wm.add(m, wm.marker("pier_skiff", "pier_end", 15, 28))
     ok = mk.finalize(m, scale=3)
     print("PASS" if ok else "FAIL")
     raise SystemExit(0 if ok else 1)

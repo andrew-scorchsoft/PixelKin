@@ -82,7 +82,7 @@
       "id": "windgap_updraft",
       "sprite": "windward_updraft",
       "at": {
-        "tx": 10,
+        "tx": 8,
         "ty": 1
       },
       "w": 2,
@@ -146,6 +146,30 @@
       "h": 3,
       "overhang": 2,
       "walk_under": true
+    },
+    {
+      "id": "windgap_vent",
+      "sprite": "markers_updraft_vent",
+      "at": {
+        "tx": 8,
+        "ty": 3
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false
+    },
+    {
+      "id": "windgap_vent_e",
+      "sprite": "markers_updraft_vent",
+      "at": {
+        "tx": 9,
+        "ty": 3
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false
     },
     {
       "id": "ww_shrine_foot",

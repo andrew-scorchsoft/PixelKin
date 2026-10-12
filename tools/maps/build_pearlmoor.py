@@ -25,6 +25,7 @@ Prereq: python3 tools/maps/build_shared_overworld.py (the shared set must exist)
 from __future__ import annotations
 import random
 import mapkit as mk
+import warp_markers as wm
 from mapkit import gid
 
 W, H = 28, 24
@@ -513,6 +514,8 @@ if __name__ == "__main__":
                                   g["rect"]["tx"] + g["rect"]["w"] - 1,
                                   g["rect"]["ty"] + g["rect"]["h"] - 1)
                                  for g in m["gates"] if g["ability"] == "tidecall"])
+    # warp marker: the skiff moored at the jetty tip — the road down the coast
+    wm.add(m, wm.marker("jetty_skiff", "pier_end", 13, 21))
     ok = mk.finalize(m, scale=3, pin_base=QUAY_PINS)
     print("PASS" if ok else "FAIL")
     raise SystemExit(0 if ok else 1)

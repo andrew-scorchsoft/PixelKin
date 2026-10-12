@@ -26,6 +26,7 @@ Run:  ./venv/bin/python tools/maps/build_vigil_sunfall.py
 from __future__ import annotations
 import random
 import mapkit as mk
+import warp_markers as wm
 import patterns as pt
 from mapkit import gid
 
@@ -205,6 +206,8 @@ m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + ter
 ]
 
 if __name__ == "__main__":
+    # warp marker: the seam of starlight you came up through, still open
+    wm.add(m, wm.marker("seam_home", "vigil_seam", ENTRY[0], ENTRY[1]))
     ok = mk.finalize(m, scale=3)
     pt.report(owed)
     print("PASS" if ok else "FAIL")

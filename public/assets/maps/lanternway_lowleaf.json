@@ -2466,6 +2466,30 @@
       "walk_under": true
     },
     {
+      "id": "undercut_mouth",
+      "sprite": "markers_cave_mouth_wide",
+      "at": {
+        "tx": 20,
+        "ty": 13
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "bob": false
+    },
+    {
+      "id": "undercut_mouth_high",
+      "sprite": "markers_cave_mouth_wide",
+      "at": {
+        "tx": 4,
+        "ty": 7
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "bob": false
+    },
+    {
       "id": "spoke_lamp_a",
       "sprite": "tinderwick_lamp_post",
       "at": {

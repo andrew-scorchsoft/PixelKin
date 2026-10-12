@@ -32,6 +32,7 @@ Run:  ./venv/bin/python tools/maps/build_lowleaf.py
 from __future__ import annotations
 import random
 import mapkit as mk
+import warp_markers as wm
 import patterns as pt
 from mapkit import gid
 
@@ -376,6 +377,8 @@ mk.scatter_decor(deco, base, W, H, rng, density=0.12,
                                          or tree[y * W + x]})
 
 if __name__ == "__main__":
+    # warp marker: the leafy path-mouth into the Gloamwood (opens with the quest)
+    wm.add(m, wm.marker("gloamwood_arch", "wood_arch", 26, 1, requires_flag="flag:q_east_georgina"))
     ok = mk.finalize(m, scale=3)
     pt.report(owed)
     print("PASS" if ok else "FAIL")

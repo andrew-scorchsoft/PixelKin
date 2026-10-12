@@ -49,6 +49,10 @@ jobs:
         run: python3 tools/maps/audit_flow.py
       - name: Warp audit (entrance coverage, landings, round trips)
         run: python3 tools/maps/audit_warps.py
+      # Every mid-map, non-door warp must LOOK like a way through: a ladder/shaft
+      # tile, or a marker object (draw_warp_markers.py) covering it or right north.
+      - name: Warp marker audit (no invisible mid-map warps)
+        run: python3 tools/maps/audit_warp_markers.py
       # The traversal kit (chutes, ice, rails, bridges/underpasses, ladders, ramps)
       # lives in the engine's Traversal.ts AND the audits' worldmodel.py: re-walk
       # every kit map (+ a fixture) with both and FAIL on any disagreement.

@@ -142,6 +142,19 @@
       "h": 1,
       "solid": false,
       "walk_under": true
+    },
+    {
+      "id": "shaft_rope",
+      "sprite": "markers_rope_ladder",
+      "at": {
+        "tx": 20,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 2,
+      "solid": false,
+      "bob": false,
+      "requires_flag": "flag:spire_shaft"
     }
   ],
   "warps": [

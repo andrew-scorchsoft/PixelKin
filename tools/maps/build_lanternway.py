@@ -32,6 +32,7 @@ Run:  ./venv/bin/python tools/maps/build_lanternway.py   (from the repo root)
 from __future__ import annotations
 import random
 import mapkit as mk
+import warp_markers as wm
 import patterns as pt
 from mapkit import gid
 
@@ -533,9 +534,18 @@ def main() -> int:
             path_l[y * W + x] = 0
     car_station(n, winch_at=(3, 1), line="nightreach", owed=owed)
 
+    # warp markers: the bank's two cave mouths down into the Under-Lane, and the
+    # Under-Lane's passages running back out through its east/west walls
+    markers = {
+        "lanternway_lowleaf": [wm.marker("undercut_mouth", "cave_mouth_wide", 20, 13),
+                               wm.marker("undercut_mouth_high", "cave_mouth_wide", 4, 7)],
+        "lanternway_undercut": [wm.marker("spoke_mouth_low", "side_mouth_e", 20, 5),
+                                wm.marker("spoke_mouth_high", "side_mouth_w", 0, 6)],
+    }
     ok = True
     for m in maps:
         print(f"=== {m['id']} ===")
+        wm.add(m, *markers.get(m["id"], []))
         ok = mk.finalize(m, scale=3) and ok
     pt.report(owed)
     print("PASS" if ok else "FAIL")

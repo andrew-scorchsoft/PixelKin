@@ -53,7 +53,7 @@
     },
     {
       "id": "chute_mouth",
-      "sprite": "solarium_sun_mask",
+      "sprite": "markers_chute_mouth",
       "at": {
         "tx": 7,
         "ty": 7

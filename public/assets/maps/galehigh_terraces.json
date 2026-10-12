@@ -262,6 +262,19 @@
       "walk_under": true
     },
     {
+      "id": "crag_stair",
+      "sprite": "markers_steps_n",
+      "at": {
+        "tx": 21,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 2,
+      "solid": false,
+      "bob": false,
+      "requires_flag": "flag:shortcut_windward"
+    },
+    {
       "id": "gh_wind_vane",
       "sprite": "galehigh_wind_vane",
       "at": {

@@ -1134,6 +1134,132 @@
       "tw": 2,
       "th": 2
     },
+    "markers_cave_mouth": {
+      "path": "assets/sprites/objects/markers_cave_mouth.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "markers_cave_mouth_wide": {
+      "path": "assets/sprites/objects/markers_cave_mouth_wide.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "markers_chute_mouth": {
+      "path": "assets/sprites/objects/markers_chute_mouth.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "markers_jetty": {
+      "path": "assets/sprites/objects/markers_jetty.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "markers_ladder_up": {
+      "path": "assets/sprites/objects/markers_ladder_up.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "markers_lift_basket": {
+      "path": "assets/sprites/objects/markers_lift_basket.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "markers_mine_hatch": {
+      "path": "assets/sprites/objects/markers_mine_hatch.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "markers_pier_end": {
+      "path": "assets/sprites/objects/markers_pier_end.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "markers_rope_ladder": {
+      "path": "assets/sprites/objects/markers_rope_ladder.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "markers_sea_buoy": {
+      "path": "assets/sprites/objects/markers_sea_buoy.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "markers_side_mouth_e": {
+      "path": "assets/sprites/objects/markers_side_mouth_e.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "markers_side_mouth_w": {
+      "path": "assets/sprites/objects/markers_side_mouth_w.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "markers_steps_n": {
+      "path": "assets/sprites/objects/markers_steps_n.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "markers_steps_s": {
+      "path": "assets/sprites/objects/markers_steps_s.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "markers_trapdoor": {
+      "path": "assets/sprites/objects/markers_trapdoor.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "markers_updraft_vent": {
+      "path": "assets/sprites/objects/markers_updraft_vent.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "markers_vigil_seam": {
+      "path": "assets/sprites/objects/markers_vigil_seam.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "markers_wood_arch": {
+      "path": "assets/sprites/objects/markers_wood_arch.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
     "mirelight_drowned_chapel": {
       "path": "assets/sprites/objects/mirelight_drowned_chapel.webp",
       "width": 80,

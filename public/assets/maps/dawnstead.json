@@ -2746,6 +2746,18 @@
       "h": 3,
       "overhang": 2,
       "requires_flag": "flag:q_post_wick_given"
+    },
+    {
+      "id": "pier_skiff",
+      "sprite": "markers_pier_end",
+      "at": {
+        "tx": 15,
+        "ty": 28
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false,
+      "bob": false
     }
   ],
   "warps": [

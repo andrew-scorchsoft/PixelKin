@@ -85,6 +85,12 @@ def vigil_items(host: str) -> dict[str, list[dict]]:
             "id": f"vigil_scar_{annex.split('_', 1)[1]}", "sprite": "vigil_star_scar",
             "at": {"tx": sx, "ty": sy}, "w": 1, "h": 1,
             "solid": False, "requires_flag": DAWN})
+        # the seam OPEN on the warp tile itself once the watchers have read it —
+        # the way up must LOOK like a way (audit_warp_markers.py)
+        out["objects"].append({
+            "id": f"vigil_seam_{annex.split('_', 1)[1]}", "sprite": "markers_vigil_seam",
+            "at": {"tx": hx, "ty": hy}, "w": 1, "h": 1,
+            "solid": False, "bob": False, "requires_flag": flag})
     return out
 
 

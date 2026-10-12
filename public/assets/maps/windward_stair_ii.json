@@ -58,7 +58,7 @@
       "id": "roost_updraft",
       "sprite": "windward_updraft",
       "at": {
-        "tx": 26,
+        "tx": 24,
         "ty": 7
       },
       "w": 2,
@@ -71,7 +71,7 @@
       "id": "arrival_updraft",
       "sprite": "windward_updraft",
       "at": {
-        "tx": 15,
+        "tx": 13,
         "ty": 20
       },
       "w": 2,
@@ -91,6 +91,55 @@
       "h": 3,
       "overhang": 2,
       "walk_under": true
+    },
+    {
+      "id": "drop_steps",
+      "sprite": "markers_steps_s",
+      "at": {
+        "tx": 4,
+        "ty": 21
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false,
+      "requires_flag": "flag:shortcut_windward"
+    },
+    {
+      "id": "arrival_vent",
+      "sprite": "markers_updraft_vent",
+      "at": {
+        "tx": 13,
+        "ty": 22
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false
+    },
+    {
+      "id": "arrival_vent_e",
+      "sprite": "markers_updraft_vent",
+      "at": {
+        "tx": 14,
+        "ty": 22
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false
+    },
+    {
+      "id": "roost_vent",
+      "sprite": "markers_updraft_vent",
+      "at": {
+        "tx": 25,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false
     },
     {
       "id": "w2_shrine",
