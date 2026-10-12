@@ -84,6 +84,38 @@ ledge, a Beacon charge in the cart wreck, a wick purse. **Time trial:** gold/sil
 ribbons (`flag:wickrun_gold` …) pay wicks once each and Rook gives the **Runner's Ribbon** key
 item for gold (cosmetic + bragging; the free rental).
 
+**BUILT (2026-10) — what each map does.** Builders `tools/maps/build_wickrun_*.py`; content
+`src/game/content/regions/wickrun.ts`.
+
+| Map | The idea on it |
+|---|---|
+| `wickrun_trestles` | **The Slalom**: a full-width chute staked with three wax-barrel barriers, gaps alternating right/left/right (steer, you can't brake uphill). **The Spiral Trestle**: a flat trestle-head landing (Runner TAMSIN, grass, a sign), a 2-wide drop onto a vertical timber deck (`spans` bridge, `under:true`, in the `above` layer, shade below) that carries you OVER the gully; off its foot round the knoll (dry lane + grass, Runner OSSIE's sight line), back up the inside of the bend, and a west-carrying chute takes you UNDER the same deck. **The Steps**: three terraces dropped by one-way ledges whose hop-off is barred (boulders/fence) on alternating ends — the zig-zag down to the traverse; the wick-purse (300w) in a nook off terrace one. |
+| `wickrun_traverse` | The road turns WEST (`slope dir:left`). **The Rock Garden**: a 12×14 west-carrying chute strewn with stopper boulders (spaced so every stop leaves a sidestep) funnelling to one gap; Runner PIP watches the entry pad. **The Cart-Wreck Shelf**: steer DOWN off the garden onto a flat grass pocket — the wax-cart wreck holds the **Beacon charge**. **The Ramp Line**: two kickers clear a rockfall, the road turns DOWN the west wall, two more clear a boulder bank (its flanks are wall, so you only ever meet a kicker head-on). |
+| `wickrun_lower` | **The Long Straight** (14 rows, the run's fastest): a mid-road kicker over a boulder pair, and a side-kicker off the east verge onto the carters' brake-hut shelf (ramp-only cache: 2 Wax Cakes) that drains back into the run. **The Steps** (two full-width ledges) onto **the Cross-Slope** (`dir:right`) with a steer-down **cart siding** (grass, the rare Chandrek), round the corner down the second straight (another kicker) to **the Runners' Camp** — ROOK stands where every rider's arrival row is in his sight. |
+| `wickrun_foot` | `region:'south'`, NO encounters. The last drop under a finish arch; its final row is the finish band (`script.wickrun_finish`: `timer` stop → tier flags → each tier's one-time prize → the lift-keeper takes the runner, `flag:wickrun_riding` cleared → Rook's ribbon if gold). The Tallow Lift's foot station (`script.tallow_lift_foot`: closed until `flag:tallow_lift_freed`, then the `travel` ride to `LIFT_TOP`), the yard bench (rest point), the wax-yard (yard-hand lore: every wick began on this mountain), Rook after he's beaten. East beach → Lightkeeper's Point's west edge (0,8)/(0,9). |
+
+**One-way, proven.** Every map's upstream door is unreachable from below (a full-width chute
+band, a west-carrying chute or a ledge line between them) and no reachable tile is a trap —
+checked per map with the worldmodel (`moves_from` BFS from the exit tiles / from every
+reached tile). The Tallow Lift is the only way up. On the lift's DOWN ride from the crest a
+held runner is handed back to Pell (`script.wickrun_hand_in_top`), so nobody arrives at the
+foot holding one.
+
+**Time-trial tiers (measured).** The fastest line (Dijkstra over the worldmodel, 64 ms a tile
+at runner speed — slope carry runs at min(ride, run) = 64 ms; leaps +60 ms) is chute 3.0 s +
+trestles 7.1 s + traverse 2.9 s + lower 3.6 s + foot 0.5 s ≈ **17.1 s of riding**, plus four map
+changes at ~1.5 s ≈ **23 s** flat out. Tiers (`WICKRUN_TIERS`): **gold ≤ 26.0 s**, **silver ≤
+32.5 s** (+25%), **bronze ≤ 41.5 s** (+60%). Prizes once each: 600 / 400 / 200 wicks (modelled in
+`progression.mjs`, West leg finds). A trainer battle mid-run counts against the clock — race
+once the Runners are beaten. Rook's record is 24 s (the crest kid says so).
+
+**Kin tables.** The same shape all the way down (bands rising 46–48 → 48–50; day twins 56–64):
+Tallowcrest + Wickmere common, Solvyne/Dawnfawn/Helibud the Sunvault regulars, Warmantis rare,
+Chandrek very rare; by day Warmantis, Chandrek and Wicklord come out. The average BST is kept
+on the dex's level trend on purpose — `progression.mjs` fits wild BST against level over every
+encounter row, and the Storm Gleam checkpoint sits on its +4 edge, so a heavy optional table
+tips the whole curve.
+
 ### B · The Mirelights (east of Saltreach Fen I) — *seen early, opened from the ice village*
 
 **Lore.** East of the fen lies the **Glassmere**, a drowned field where the fen-folk's old

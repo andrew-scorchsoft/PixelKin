@@ -66,7 +66,64 @@
     "weight_kg": 3.1,
     "habitat": "south"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "wickrun_chute",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 46,
+      "max": 48
+    },
+    {
+      "area": "wickrun_chute",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 56,
+      "max": 62
+    },
+    {
+      "area": "wickrun_trestles",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 47,
+      "max": 48
+    },
+    {
+      "area": "wickrun_trestles",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 56,
+      "max": 63
+    },
+    {
+      "area": "wickrun_traverse",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 47,
+      "max": 49
+    },
+    {
+      "area": "wickrun_traverse",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 57,
+      "max": 63
+    },
+    {
+      "area": "wickrun_lower",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 48,
+      "max": 50
+    },
+    {
+      "area": "wickrun_lower",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 57,
+      "max": 64
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Slender humanoid of ivory wax, three flames now crowning its head like a candelabra; half-melted wax drapes off shoulders like a cape; cheerful smiling face; rounded candle-base feet; reads clearly at 32px.",

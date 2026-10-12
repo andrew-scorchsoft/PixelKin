@@ -323,6 +323,25 @@ export const QUESTS: QuestRegistry = [
     ],
     done_flag: 'flag:starfall_crown',
   },
+  // ===== THE WILD WAYS (09-the-wild-ways.md, 2026-10) ========================
+  // A · the Wick-Run: Pell's rental opens it; the brake, the three time-trial
+  // tiers and Rook are the stages; Rook's ribbon (a gold run) keeps it.
+  {
+    id: 'wickrun',
+    name: 'The Wick-Run',
+    region: 'west',
+    giver: 'Pell the wheelwright',
+    blurb: 'Ride the old wax road from the Sunvault crest down to the sea on a rented runner — and beat Rook\'s time to the foot for the Runners\' gold.',
+    start_flag: 'flag:wickrun_rented',
+    stage_flags: [
+      'flag:tallow_lift_freed',
+      'flag:runner_rook_beaten',
+      'flag:wickrun_bronze',
+      'flag:wickrun_silver',
+      'flag:wickrun_gold',
+    ],
+    done_flag: 'flag:runner_ribbon',
+  },
 ];
 
 /** Lookup by id. */

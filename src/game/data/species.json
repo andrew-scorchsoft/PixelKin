@@ -527,7 +527,64 @@
     "weight_kg": 3.1,
     "habitat": "south"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "wickrun_chute",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 46,
+     "max": 48
+    },
+    {
+     "area": "wickrun_chute",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 62
+    },
+    {
+     "area": "wickrun_trestles",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 47,
+     "max": 48
+    },
+    {
+     "area": "wickrun_trestles",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 63
+    },
+    {
+     "area": "wickrun_traverse",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 47,
+     "max": 49
+    },
+    {
+     "area": "wickrun_traverse",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 63
+    },
+    {
+     "area": "wickrun_lower",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 48,
+     "max": 50
+    },
+    {
+     "area": "wickrun_lower",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 64
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Slender humanoid of ivory wax, three flames now crowning its head like a candelabra; half-melted wax drapes off shoulders like a cape; cheerful smiling face; rounded candle-base feet; reads clearly at 32px.",
@@ -620,6 +677,34 @@
      "rarity": "rare",
      "min": 60,
      "max": 65
+    },
+    {
+     "area": "wickrun_chute",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 59,
+     "max": 62
+    },
+    {
+     "area": "wickrun_trestles",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 59,
+     "max": 63
+    },
+    {
+     "area": "wickrun_traverse",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 60,
+     "max": 63
+    },
+    {
+     "area": "wickrun_lower",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 60,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -1003,7 +1088,64 @@
     "weight_kg": 14.5,
     "habitat": "south"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "wickrun_chute",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 46,
+     "max": 48
+    },
+    {
+     "area": "wickrun_chute",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 62
+    },
+    {
+     "area": "wickrun_trestles",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 47,
+     "max": 48
+    },
+    {
+     "area": "wickrun_trestles",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 63
+    },
+    {
+     "area": "wickrun_traverse",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 47,
+     "max": 49
+    },
+    {
+     "area": "wickrun_traverse",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 63
+    },
+    {
+     "area": "wickrun_lower",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 48,
+     "max": 50
+    },
+    {
+     "area": "wickrun_lower",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 64
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Robust tawny dog silhouette, wax-drip markings down the haunches, a starburst of five pastel-hued candle-flames crowning the head; distinct and bold at 48px.",
@@ -1096,6 +1238,62 @@
      "rarity": "uncommon",
      "min": 58,
      "max": 62
+    },
+    {
+     "area": "wickrun_chute",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 48,
+     "max": 48
+    },
+    {
+     "area": "wickrun_chute",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 58,
+     "max": 62
+    },
+    {
+     "area": "wickrun_trestles",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 48,
+     "max": 48
+    },
+    {
+     "area": "wickrun_trestles",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 58,
+     "max": 63
+    },
+    {
+     "area": "wickrun_traverse",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 49,
+     "max": 49
+    },
+    {
+     "area": "wickrun_traverse",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 59,
+     "max": 63
+    },
+    {
+     "area": "wickrun_lower",
+     "terrain": "tall_grass",
+     "rarity": "very_rare",
+     "min": 50,
+     "max": 50
+    },
+    {
+     "area": "wickrun_lower",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 59,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -1712,7 +1910,64 @@
     "weight_kg": 19.0,
     "habitat": "south"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "wickrun_chute",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 47,
+     "max": 48
+    },
+    {
+     "area": "wickrun_chute",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 62
+    },
+    {
+     "area": "wickrun_trestles",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 48,
+     "max": 48
+    },
+    {
+     "area": "wickrun_trestles",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 63
+    },
+    {
+     "area": "wickrun_traverse",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 48,
+     "max": 49
+    },
+    {
+     "area": "wickrun_traverse",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 63
+    },
+    {
+     "area": "wickrun_lower",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 49,
+     "max": 50
+    },
+    {
+     "area": "wickrun_lower",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 64
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Elegant long-bodied cat silhouette, warm gold-and-cream coat, a soft luminous aura halo, ember-tip tail; graceful and glowing at 64px.",
@@ -11404,6 +11659,62 @@
      "rarity": "uncommon",
      "min": 57,
      "max": 63
+    },
+    {
+     "area": "wickrun_chute",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 46,
+     "max": 48
+    },
+    {
+     "area": "wickrun_chute",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
+    },
+    {
+     "area": "wickrun_trestles",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 47,
+     "max": 48
+    },
+    {
+     "area": "wickrun_trestles",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 63
+    },
+    {
+     "area": "wickrun_traverse",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 47,
+     "max": 49
+    },
+    {
+     "area": "wickrun_traverse",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 63
+    },
+    {
+     "area": "wickrun_lower",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 48,
+     "max": 50
+    },
+    {
+     "area": "wickrun_lower",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -11641,6 +11952,34 @@
      "rarity": "uncommon",
      "min": 57,
      "max": 63
+    },
+    {
+     "area": "wickrun_chute",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 46,
+     "max": 48
+    },
+    {
+     "area": "wickrun_trestles",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 47,
+     "max": 48
+    },
+    {
+     "area": "wickrun_traverse",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 47,
+     "max": 49
+    },
+    {
+     "area": "wickrun_lower",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 48,
+     "max": 50
     }
    ],
    "scripted": false,
@@ -11962,6 +12301,62 @@
     },
     {
      "area": "sunvault_climb_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 64
+    },
+    {
+     "area": "wickrun_chute",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 46,
+     "max": 48
+    },
+    {
+     "area": "wickrun_chute",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
+    },
+    {
+     "area": "wickrun_trestles",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 47,
+     "max": 48
+    },
+    {
+     "area": "wickrun_trestles",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 63
+    },
+    {
+     "area": "wickrun_traverse",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 47,
+     "max": 49
+    },
+    {
+     "area": "wickrun_traverse",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 63
+    },
+    {
+     "area": "wickrun_lower",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 48,
+     "max": 50
+    },
+    {
+     "area": "wickrun_lower",
      "terrain": "tall_grass",
      "rarity": "uncommon",
      "min": 57,

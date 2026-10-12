@@ -766,6 +766,74 @@ GEOMETRY_ENCOUNTERS = {
 for _slug, _rows_ in GEOMETRY_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
 
+# THE WILD WAYS (09-the-wild-ways.md, 2026-10) — the Wick-Run (A): mirrors of the
+# BUILT in-map tall-grass tables (tools/maps/build_wickrun_{chute,trestles,
+# traverse,lower}.py are the source): the night band (46-50, rising down the run)
+# + its flag:dawn day twin. Tallowcrest, Wickmere, Warmantis (and the rare
+# Chandrek's night rows) live nowhere else in the wild — the run's own kin.
+# Weights -> rarity by the W6 share rule (>=20 common, 10-19 uncommon, 5-9 rare,
+# <5 very rare). The crest and the foot are encounter-free.
+WICKRUN_ENCOUNTERS = {
+    "tallowcrest": [{"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 48},
+                   {"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 62},
+                   {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "common", "min": 47, "max": 48},
+                   {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 63},
+                   {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "common", "min": 47, "max": 49},
+                   {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 63},
+                   {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50},
+                   {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 64}],
+    "wickmere": [{"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 48},
+                {"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 62},
+                {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "common", "min": 47, "max": 48},
+                {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 63},
+                {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "common", "min": 47, "max": 49},
+                {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 63},
+                {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50},
+                {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 64}],
+    "solvyne": [{"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 48},
+               {"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62},
+               {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 48},
+               {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 63},
+               {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 49},
+               {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63},
+               {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 50},
+               {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 64}],
+    "dawnfawn": [{"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 48},
+                {"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62},
+                {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 48},
+                {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 63},
+                {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 49},
+                {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63},
+                {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 50},
+                {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 64}],
+    "helibud": [{"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 48},
+               {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 48},
+               {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 49},
+               {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 50}],
+    "warmantis": [{"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "rare", "min": 47, "max": 48},
+                 {"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 62},
+                 {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "rare", "min": 48, "max": 48},
+                 {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63},
+                 {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "rare", "min": 48, "max": 49},
+                 {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 63},
+                 {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "rare", "min": 49, "max": 50},
+                 {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 64}],
+    "chandrek": [{"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "very_rare", "min": 48, "max": 48},
+                {"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 62},
+                {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "very_rare", "min": 48, "max": 48},
+                {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 63},
+                {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "very_rare", "min": 49, "max": 49},
+                {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "rare", "min": 59, "max": 63},
+                {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "very_rare", "min": 50, "max": 50},
+                {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "rare", "min": 59, "max": 64}],
+    "wicklord": [{"area": "wickrun_chute", "terrain": "tall_grass", "rarity": "rare", "min": 59, "max": 62},
+                {"area": "wickrun_trestles", "terrain": "tall_grass", "rarity": "rare", "min": 59, "max": 63},
+                {"area": "wickrun_traverse", "terrain": "tall_grass", "rarity": "rare", "min": 60, "max": 63},
+                {"area": "wickrun_lower", "terrain": "tall_grass", "rarity": "rare", "min": 60, "max": 64}],
+}
+for _slug, _rows_ in WICKRUN_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
+
 # Areas whose encounter tables are BUILT into the map JSONs (the in-map zones
 # are the truth, mirrored above). Generated region defaults — and stale rows
 # carried in the previous per-species files — must not claim these areas:
@@ -811,6 +879,10 @@ CURATED_AREAS = {
     "duskapple_orchard",
     # the 2026-10 geometry fix's new routes (mirrored above, GEOMETRY_ENCOUNTERS)
     "cinderwind_scarp", "umbral_approach",
+    # THE WILD WAYS — the Wick-Run (mirrored above, WICKRUN_ENCOUNTERS); the
+    # crest and the foot are encounter-free and listed so nothing claims them.
+    "wickrun_crest", "wickrun_chute", "wickrun_trestles", "wickrun_traverse",
+    "wickrun_lower", "wickrun_foot",
 }
 
 # Kin that are FIXED quest catches (a legendaryBattle set-piece), even though

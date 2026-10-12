@@ -1259,6 +1259,48 @@ export const TRAINERS: TrainerRegistry = {
     ],
     payout: 784, // route 16 × ace 49
   },
+  runner_tamsin: {
+    id: 'runner_tamsin',
+    name: 'TAMSIN',
+    title: 'Runner',
+    party: [
+      { species_id: 11, level: 47 }, // Tallowcrest — Ember
+      { species_id: 116, level: 48 }, // Auravane — Verdant/Solar (ace)
+    ],
+    payout: 768, // route 16 × ace 48
+  },
+  runner_ossie: {
+    id: 'runner_ossie',
+    name: 'OSSIE',
+    title: 'Runner',
+    party: [
+      { species_id: 6, level: 47 }, // Wickmere — Light/Ember
+      { species_id: 121, level: 48 }, // Sunstag — Solar/Verdant (ace)
+    ],
+    payout: 768, // route 16 × ace 48
+  },
+  runner_pip: {
+    id: 'runner_pip',
+    name: 'PIP',
+    title: 'Runner',
+    party: [
+      { species_id: 115, level: 48 }, // Solvyne — Solar/Verdant
+      { species_id: 19, level: 49 }, // Warmantis — Ember/Light (ace)
+    ],
+    payout: 784, // route 16 × ace 49
+  },
+  runner_rook: {
+    id: 'runner_rook',
+    name: 'ROOK',
+    title: 'Runners\' Captain',
+    party: [
+      { species_id: 11, level: 48 }, // Tallowcrest — Ember
+      { species_id: 121, level: 49 }, // Sunstag — Solar/Verdant
+      { species_id: 12, level: 49 }, // Chandrek — Ember/Light
+      { species_id: 7, level: 50 }, // Wicklord — Light/Ember (ace)
+    ],
+    payout: 800, // route 16 × ace 50
+  },
   // the Mirelights (B)
   // the Rimeway (C)
   // the Old Seams (D)

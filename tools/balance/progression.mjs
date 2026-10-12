@@ -345,7 +345,12 @@ const JOURNEY = [
       T('Wren (A5 — resolved)', 'rival', [K(49, 9), K(49, 96), K(50, 28)]),
       T('Nessa Cole', 'warden', [K(48, 106), K(49, 112), K(50, 125), K(50, 127), K(52, 107)]),
     ],
-    income: { quests: 800, valuables: 2100, finds: 550 },
+    // THE WILD WAYS (09 §2 A, optional): the Wick-Run off Sunvault Climb I —
+    // finds += the trestles' wick-purse (300) + the time-trial prizes paid once
+    // each (bronze 200 / silver 400 / gold 600 = 1,200; WICKRUN_PRIZES in
+    // content/regions/wickrun.ts); valuables += the brake-hut's 2 Wax Cakes
+    // (2 x 250). Its six Runners are optional and left out of the trainer loop.
+    income: { quests: 800, valuables: 2600, finds: 2050 },
     spend: { bright_balm: 2, chart_end: 1 },
     checkpoint: { name: 'Lunar Gleam (Nessa)', rec: 48, ace: 52 },
   },
@@ -494,6 +499,10 @@ const BUILT_PAYOUTS = {
   // THE WILD WAYS (09-the-wild-ways.md, 2026-10) — optional areas, one block per lane
   runner_vess: ['route', 48, 768], // the Wick-Run chute
   runner_dace: ['route', 49, 784],
+  runner_tamsin: ['route', 48, 768], // the trestles
+  runner_ossie: ['route', 48, 768],
+  runner_pip: ['route', 49, 784], // the traverse
+  runner_rook: ['route', 50, 800], // the lower run (the Runners' captain)
 };
 const failures = [];
 for (const [id, [klass, ace, authored]] of Object.entries(BUILT_PAYOUTS)) {

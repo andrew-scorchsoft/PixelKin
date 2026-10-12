@@ -82,6 +82,34 @@
       "rarity": "rare",
       "min": 60,
       "max": 65
+    },
+    {
+      "area": "wickrun_chute",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 59,
+      "max": 62
+    },
+    {
+      "area": "wickrun_trestles",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 59,
+      "max": 63
+    },
+    {
+      "area": "wickrun_traverse",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 60,
+      "max": 63
+    },
+    {
+      "area": "wickrun_lower",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 60,
+      "max": 64
     }
   ],
   "scripted": false,
