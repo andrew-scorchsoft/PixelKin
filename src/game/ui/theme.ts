@@ -34,6 +34,8 @@ export const theme = {
     hpHigh: COLORS.grass,
     hpMid: COLORS.fire,
     hpLow: '#ff5a5a',
+    /** The vesperlamp's light: a kin recalled into / sent out of the lamp (Battler). */
+    lampGlow: '#ffd98a',
   },
 
   /** Per-type accent colours for swatches/tags (the 8 elements + Light/Dark). */

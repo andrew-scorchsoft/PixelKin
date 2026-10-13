@@ -1,0 +1,14 @@
+{
+  "title": "SFX -- battle send-out a (kin released from the vesperlamp)",
+  "_note": "The lamp opens and the kin blooms out of its light: a noise whoosh UP with a pulse glide rising into a little two-note sparkle. Bright and hopeful.",
+  "era": "sfx",
+  "tempo": 240,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    { "name": "whoosh",  "voice": "noise",   "octave": 3, "gain": 0.6, "notes": "A3~E5e@85" },
+    { "name": "bloom",   "voice": "pulse25", "octave": 4, "gain": 0.85, "notes": "C4~G5e@100" },
+    { "name": "sparkle", "voice": "pulse12", "octave": 6, "gain": 0.6, "notes": "re E6s@95 G6s@105" }
+  ]
+}

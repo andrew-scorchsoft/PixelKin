@@ -823,7 +823,9 @@
         "ty": 9
       },
       "w": 1,
-      "h": 2
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true
     },
     {
       "id": "maze_mirror_1",
@@ -833,7 +835,9 @@
         "ty": 11
       },
       "w": 1,
-      "h": 2
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true
     },
     {
       "id": "maze_mirror_2",
@@ -843,7 +847,9 @@
         "ty": 10
       },
       "w": 1,
-      "h": 2
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true
     },
     {
       "id": "maze_mirror_3",
@@ -853,7 +859,9 @@
         "ty": 12
       },
       "w": 1,
-      "h": 2
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true
     },
     {
       "id": "maze_mirror_4",
@@ -863,7 +871,9 @@
         "ty": 8
       },
       "w": 1,
-      "h": 2
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true
     },
     {
       "id": "speaking_tube",
@@ -1040,17 +1050,17 @@
       "kind": "sign",
       "at": {
         "tx": 5,
-        "ty": 9
+        "ty": 8
       },
       "activation": "interact",
-      "ref": "sign.oldlight_funhouse"
+      "ref": "sign.oldlight_mirror_squat"
     },
     {
       "id": "mirror_b_sign",
       "kind": "sign",
       "at": {
         "tx": 16,
-        "ty": 9
+        "ty": 8
       },
       "activation": "interact",
       "ref": "sign.oldlight_funhouse"
@@ -1076,14 +1086,14 @@
       "ref": "sign.oldlight_brazier"
     },
     {
-      "id": "maze_sign",
+      "id": "maze_mirror_0_sign",
       "kind": "sign",
       "at": {
-        "tx": 20,
-        "ty": 9
+        "tx": 17,
+        "ty": 10
       },
       "activation": "interact",
-      "ref": "sign.oldlight_mirror_maze"
+      "ref": "sign.oldlight_mirror_upside"
     },
     {
       "id": "maze_end",
@@ -1094,6 +1104,46 @@
       },
       "activation": "interact",
       "ref": "sign.oldlight_maze_end"
+    },
+    {
+      "id": "maze_mirror_2_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 13,
+        "ty": 11
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_mirror_bighead"
+    },
+    {
+      "id": "maze_mirror_3_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 17,
+        "ty": 13
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_mirror_wavy"
+    },
+    {
+      "id": "maze_mirror_4_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 19,
+        "ty": 9
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_mirror_late"
+    },
+    {
+      "id": "maze_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 20,
+        "ty": 9
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_mirror_maze"
     },
     {
       "id": "riddle_band",

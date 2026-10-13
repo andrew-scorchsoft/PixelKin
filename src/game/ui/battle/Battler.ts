@@ -135,6 +135,79 @@ export class Battler {
     });
   }
 
+  /**
+   * Recall: the kin turns to lamplight and is drawn home — it flares warm,
+   * squeezes thin and shrinks down to a point, then the whole battler fades.
+   */
+  recall(scene: Phaser.Scene): Promise<void> {
+    const dur = 360 * battlePaceFactor();
+    this.sprite.setTintFill(hex(theme.color.lampGlow));
+    return new Promise((resolve) => {
+      scene.tweens.add({
+        targets: this.sprite,
+        scaleX: 0.05,
+        scaleY: 0.3,
+        y: 18,
+        duration: dur,
+        ease: 'Quad.in',
+      });
+      scene.tweens.add({
+        targets: this.container,
+        alpha: 0,
+        delay: dur * 0.6,
+        duration: dur * 0.4,
+        onComplete: () => {
+          this.sprite.clearTint().setScale(1).setY(0);
+          resolve();
+        },
+      });
+    });
+  }
+
+  /**
+   * Send-out: a burst of lamplight opens where the kin will stand and the kin
+   * blooms out of it — growing from a glowing point, then the glow clears to
+   * its real colours.
+   */
+  sendOut(scene: Phaser.Scene, y: number): Promise<void> {
+    const dur = 380 * battlePaceFactor();
+    this.container.setY(y).setAlpha(1);
+    this.sprite.setTintFill(hex(theme.color.lampGlow)).setScale(0.05, 0.3).setY(18);
+    // the lamp's light: a ring that swells and fades behind the kin
+    const ring = scene.add
+      .circle(this.container.x, y + 8, 4)
+      .setStrokeStyle(2, hex(theme.color.lampGlow), 1)
+      .setDepth(this.container.depth - 1)
+      .setScrollFactor(0);
+    scene.tweens.add({
+      targets: ring,
+      radius: 30,
+      alpha: 0,
+      duration: dur * 1.2,
+      ease: 'Quad.out',
+      onComplete: () => ring.destroy(),
+    });
+    return new Promise((resolve) => {
+      scene.tweens.add({
+        targets: this.sprite,
+        scaleX: 1,
+        scaleY: 1,
+        y: 0,
+        duration: dur,
+        ease: 'Back.out',
+        onComplete: () => {
+          scene.tweens.add({
+            targets: this.sprite,
+            alpha: { from: 0.4, to: 1 },
+            duration: 120,
+            onStart: () => this.sprite.clearTint(),
+            onComplete: () => resolve(),
+          });
+        },
+      });
+    });
+  }
+
   destroy(): void {
     this.container.destroy();
   }

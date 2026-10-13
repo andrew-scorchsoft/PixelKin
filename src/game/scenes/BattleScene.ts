@@ -147,6 +147,11 @@ export class BattleScene extends Phaser.Scene {
   /** Kin that have been the active player kin this battle — they warm their bond
    *  on a victory (the lead at send-out + everyone switched in). */
   private participants = new Set<KinInstance>();
+  /** The kin each battler is currently SHOWING — the engine has already swapped
+   *  its active slot by the time a 'switch' event plays, so the scene keeps its
+   *  own record of who is out there to call back. */
+  private shownPlayer?: KinInstance;
+  private shownFoe?: KinInstance;
 
   constructor() {
     super('Battle');
@@ -204,6 +209,8 @@ export class BattleScene extends Phaser.Scene {
     this.addBackdrop();
     this.foeBattler = new Battler(this, FOE_POS.x, FOE_POS.y, this.engine.foe.species, 'foe');
     this.playerBattler = new Battler(this, PLAYER_POS.x, PLAYER_POS.y, this.engine.player.species, 'player');
+    this.shownPlayer = this.engine.player;
+    this.shownFoe = this.engine.foe;
     this.foeHp = new HpPanel(this, 6, 8, this.engine.foe, false, 'left');
     this.playerHp = new HpPanel(this, GAME_WIDTH - 6, GAME_HEIGHT - 78, this.engine.player, true, 'right');
     this.msg = new BattleMessage(this);
@@ -778,22 +785,47 @@ export class BattleScene extends Phaser.Scene {
     await this.msg.show(`${who.displayName} fainted!`);
   }
 
+  /**
+   * A kin changes over. A kin still standing is CALLED BACK first — named, then
+   * drawn into the lamp — and the newcomer blooms out of its light. A fainted
+   * kin has already fallen, so its replacement simply comes out.
+   */
   private async playSwitch(side: 'player' | 'foe', incoming: KinInstance): Promise<void> {
-    if (side === 'player') {
-      this.playerBattler.setSpecies(this, incoming.species, 'player');
-      this.playerBattler.container.setAlpha(1).setY(PLAYER_POS.y);
-      this.playerHp.setKin(incoming);
-      playCry(this.sfx, incoming.species.id);
-      await this.msg.show(`Go, ${incoming.displayName}!`, { wait: false });
-    } else {
-      this.dexSeen.add(incoming.species.id);
-      this.foeBattler.setSpecies(this, incoming.species, 'foe');
-      this.foeBattler.container.setAlpha(1).setY(FOE_POS.y);
-      this.foeHp.setKin(incoming);
-      playCry(this.sfx, incoming.species.id);
-      const trainer = this.request.kind === 'trainer' ? getTrainer(this.request.trainer) : undefined;
-      await this.msg.show(`${trainer?.name ?? 'Foe'} sent out ${incoming.displayName}!`, { confirm: true });
+    const battler = side === 'player' ? this.playerBattler : this.foeBattler;
+    const hp = side === 'player' ? this.playerHp : this.foeHp;
+    const outgoing = side === 'player' ? this.shownPlayer : this.shownFoe;
+    const trainer = this.request.kind === 'trainer' ? getTrainer(this.request.trainer) : undefined;
+    const trainerName = trainer?.name ?? 'Foe';
+
+    if (outgoing && outgoing !== incoming && !outgoing.isFainted && battler.container.alpha > 0.5) {
+      await this.msg.show(
+        side === 'player'
+          ? `${outgoing.displayName}, come back!`
+          : `${trainerName} called back ${outgoing.displayName}!`,
+      );
+      void this.sfx.play('battle-recall');
+      await battler.recall(this);
+      hp.setVisible(false);
     }
+
+    if (side === 'player') this.shownPlayer = incoming;
+    else {
+      this.shownFoe = incoming;
+      this.dexSeen.add(incoming.species.id);
+    }
+    battler.setSpecies(this, incoming.species, side);
+    battler.container.setX(side === 'player' ? PLAYER_POS.x : FOE_POS.x);
+    hp.setKin(incoming);
+    const line = side === 'player'
+      ? `Go, ${incoming.displayName}!`
+      : `${trainerName} sent out ${incoming.displayName}!`;
+    this.msg.set(line);
+    void this.sfx.play('battle-sendout');
+    await battler.sendOut(this, side === 'player' ? PLAYER_POS.y : FOE_POS.y);
+    hp.setVisible(true);
+    playCry(this.sfx, incoming.species.id);
+    // the foe's send-out is trainer talk (waits for A); yours rolls straight on
+    await this.msg.show(line, side === 'foe' ? { confirm: true } : { wait: false });
   }
 
   // --- Win / lose / exit ---------------------------------------------------
