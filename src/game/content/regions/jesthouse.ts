@@ -135,6 +135,42 @@ export const JESTHOUSE_SCRIPTS: ScriptRegistry = {
   ]),
 
   // ---- F6: the One Joke — the two cups (the floor's rest) ------------------------------------
+  // ---- TOP: the headline act (the toll before the card — not the climax) ------------
+  // Punchwheel guards Tam's card: eleven winters of "no laughter detected" and he can't
+  // bear to hear it again. His three clowns stand in the only gap to the drum. Win and
+  // they step aside; the music falls away; the card (script.oldlight_top) is the crescendo.
+  'script.oldlight_headliners': [
+    { op: 'emote', actor: 'act_jester', emote: 'alert' },
+    pw('Ah-ah-AH. Not one step nearer the drum. That is her card in there.'),
+    pw('Eleven winters, everyone who reads it gets the same answer. No laughter detected. I am not hearing it again.'),
+    pw('So if you want the card, you sit through the act first. ALL of it. Ladies and lamp-tenders: MY HEADLINERS!'),
+    nar('The Smiler beams. McClownface honks a little brass horn. JesterHalf bows, and about half of the bow is sincere.'),
+    { op: 'battle', trainer: 'oldlight_headliners' },
+    nar('The act takes its bows (three bows, none of them at the same time) and shuffles aside.'),
+    { op: 'musicFade', ms: 1800 },
+    pw('...Hm. You laughed. Twice. I counted.'),
+    pw('Go on, then. The card is in the drum. She would have liked you.'),
+    { op: 'setFlag', flag: 'flag:oldlight_headliners_beaten' },
+  ],
+  // ---- TOP: the green room (a rest point before the headline act) ----------------------
+  'script.oldlight_greenroom': [
+    nar('A battered green-room armchair by the stairhead. A card pinned to it: PERFORMERS ONLY. Someone has crossed out PERFORMERS and written ANYONE TIRED.'),
+    {
+      op: 'choice',
+      prompt: 'Sit a while?',
+      options: [
+        {
+          label: 'Sit down.',
+          ops: [
+            nar('You sink into it. Somewhere below, the whole tower ticks and wheezes and laughs to itself. Your lamp warms.'),
+            { op: 'heal', sleep: false },
+            pw('(from the drum) Nerves before the big show? Everybody gets them. I get them, and I am mostly springs.'),
+          ],
+        },
+        { label: 'Not now.', ops: [] },
+      ],
+    },
+  ],
   'script.oldlight_cups_rest': [
     nar('Two cups on the table. One has been washed every day for a long time. The other has never been moved.'),
     {
@@ -157,12 +193,31 @@ export const JESTHOUSE_SCRIPTS: ScriptRegistry = {
   // ---- Lightkeeper's Point: PIP runs after you on the way out --------------------------------
   // Fires once, on the Point's one crossing back to the quay, if you've climbed the
   // tower (the floats are yours) but haven't had the rope yet.
+  // ---- ANDREW outside the Old Light, once the act is done (owner's beat, 2026-10) -------
+  // He runs up, says his piece about eggs and wonder, laughs and dashes off. Never says
+  // WHAT the egg is (CLAUDE.md); {name} is the player's name, whatever they chose.
+  'script.andrew_tower_wink': [
+    { op: 'emote', actor: 'andrew_tower', emote: 'alert' },
+    { op: 'move', actor: 'andrew_tower', to: { tx: 10, ty: 8 }, speed: 2 },
+    { op: 'face', actor: 'andrew_tower', facing: 'left' },
+    { op: 'face', actor: 'player', facing: 'right' },
+    { op: 'say', speaker: 'ANDREW', text: "{name}! There you are. Isn't it funny? All this time you've been chasing that Easter egg..." },
+    { op: 'say', speaker: 'ANDREW', text: "...when the whole game's been a little bit of an Easter egg all along, hasn't it? (wink, wink)" },
+    { op: 'say', speaker: 'ANDREW', text: "Keep playing, though. You're not AT the Easter egg yet." },
+    { op: 'say', speaker: 'ANDREW', text: "Isn't it funny? This game's been a bit of a wonder, hasn't it?" },
+    { op: 'say', speaker: 'ANDREW', text: 'And though you might aspire to make ME wonder... it is YOU who is the one wandering through MY world.' },
+    { op: 'action', actor: 'andrew_tower', action: 'laugh' },
+    { op: 'say', speaker: 'ANDREW', text: 'Ha! Ha ha ha ha!' },
+    { op: 'move', actor: 'andrew_tower', to: { tx: 19, ty: 8 }, speed: 2 },
+    { op: 'hideActor', actor: 'andrew_tower' },
+    { op: 'setFlag', flag: 'flag:andrew_tower_winked' },
+  ],
   'script.oldlight_rope_reminder': [
-    { op: 'emote', actor: 'pip', emote: 'alert', unless_flag: 'flag:q_south_has_rope' },
-    { op: 'move', actor: 'pip', to: { tx: 17, ty: 8 }, unless_flag: 'flag:q_south_has_rope' },
-    { op: 'say', speaker: 'PIP', text: 'WAIT! Wayfarer! Gran says you went UP the Old Light — all the way! Did you get her floats back off that machine?', unless_flag: 'flag:q_south_has_rope' },
-    { op: 'say', speaker: 'PIP', text: 'Take them to her on the quay, by her nets! She\'s got the bell-rope put by. Then you can walk the whole breakwater, right out to the bell.', unless_flag: 'flag:q_south_has_rope' },
-    { op: 'say', speaker: 'PIP', text: 'And go all the way to the END. Everyone says there\'s somebody out past the bell who... I don\'t know what he is. Nobody does! Go and SEE!', unless_flag: 'flag:q_south_has_rope' },
+    { op: 'emote', actor: 'pip', emote: 'alert', unless_flag: 'flag:q_south_rope_or_later' },
+    { op: 'move', actor: 'pip', to: { tx: 17, ty: 8 }, unless_flag: 'flag:q_south_rope_or_later' },
+    { op: 'say', speaker: 'PIP', text: 'WAIT! Wayfarer! Gran says you went UP the Old Light — all the way! Did you get her floats back off that machine?', unless_flag: 'flag:q_south_rope_or_later' },
+    { op: 'say', speaker: 'PIP', text: 'Take them to her on the quay, by her nets! She\'s got the bell-rope put by. Then you can walk the whole breakwater, right out to the bell.', unless_flag: 'flag:q_south_rope_or_later' },
+    { op: 'say', speaker: 'PIP', text: 'And go all the way to the END. Everyone says there\'s somebody out past the bell who... I don\'t know what he is. Nobody does! Go and SEE!', unless_flag: 'flag:q_south_rope_or_later' },
     { op: 'setFlag', flag: 'flag:oldlight_rope_reminded' },
   ],
   // ---- MOLL's two floors that notice your wins (the rest are plain dialogue) ----------
@@ -222,6 +277,14 @@ export const JESTHOUSE_DIALOGUE: DialogueRegistry = {
   'npc.oldlight_usher_after': [
     line('USHER', 'Best seats are upstairs. Worst jokes too. It\'s a package.'),
   ],
+  // the battle-screen OPENERS (trainer-intro beat): a fresh punchline once they're on the battle screen
+  'trainer.oldlight_heckler.intro': [line("THE HECKLER", "BOO! ...Sorry. Reflex. I heckle everything. Battles especially.")],
+  'trainer.oldlight_ringmaster.intro': [line("THE RINGMASTER", "Lamp-tenders and lamp-tenderesses! In THIS corner: me! In THAT corner: also quite good!")],
+  'trainer.oldlight_usher.intro': [line("THE USHER", "Your seat is right there, facing my kin. Kindly dim all lanterns. ...No? Fine. Bout it is.")],
+  'trainer.oldlight_juggler.intro': [line("THE JUGGLER", "Three balls, two hands, one battle. I've done worse sums.")],
+  'trainer.oldlight_pie_thrower.intro': [line("THE PIE-THROWER", "Custard first, questions after!")],
+  'trainer.oldlight_mirror.intro': [line("THE MIRROR", "Ready when you are. ...Ready when I am. ...Will you STOP copying me?")],
+  'trainer.oldlight_critic.intro': [line("THE CRITIC", "Two stars, and you haven't even started. Change my mind.")],
   'trainer.oldlight_usher.defeat': [line('USHER', 'Ticket stamped, guest seated, usher flattened. A full night\'s work.')],
 
   // ---- F2 ---------------------------------------------------------------------------------
@@ -326,6 +389,7 @@ export const JESTHOUSE_DIALOGUE: DialogueRegistry = {
   'npc.oldlight_moll_card': [
     line('MOLL', "(puffing) Couldn't sit with it down there. Not this time."),
     line('MOLL', "That's her card, jammed in the drum. Eleven winters it's been trying to finish her joke for her."),
+    line('MOLL', "His headline act's stood between you and the drum. He won't let anyone near her card, not since the last one who read it got no laugh. Have a sit in the green-room chair by the stairs first."),
     line('MOLL', "Go on, love. You've laughed all the way up. I'll be right here."),
   ],
   'npc.oldlight_moll_top': [

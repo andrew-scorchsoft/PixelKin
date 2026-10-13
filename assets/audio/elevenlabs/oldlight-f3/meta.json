@@ -1,0 +1,13 @@
+{
+ "id": "oldlight-f3",
+ "kind": "loop",
+ "where": "The Old Light, floor 3 \u2014 Intermission (the tea-urn floor, a rest point)",
+ "mood": "Intermission \u2014 a swung tea-room lounge tune; the urn whistles and the flute scoops into its long notes.",
+ "duration": 70.766,
+ "loop_start": 5.735,
+ "seam": 0.181,
+ "bpm_est": 129.2,
+ "song_id": "SI90DL3UxiI6WdRrO2jk",
+ "raw_ms": 64810,
+ "motif": "high"
+}

@@ -480,7 +480,7 @@
         "ty": 10
       },
       "facing": "up",
-      "requires_flag": "flag:q_north_kite_blessed",
+      "requires_flag": "flag:skyloft_open",
       "blocked_ref": "npc.winch_not_ready",
       "transition": "fade"
     },

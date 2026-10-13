@@ -1,0 +1,14 @@
+{
+ "id": "oldlight-f2",
+ "kind": "loop",
+ "where": "The Old Light, floor 2 \u2014 The Late Laugh (a stage whose audience laughs a beat late)",
+ "mood": "The Late Laugh \u2014 the same march with a lazy swing; every laugh arrives a beat after the joke.",
+ "duration": 70.452,
+ "loop_start": 5.503,
+ "seam": 0.197,
+ "bpm_est": 129.2,
+ "song_id": "blzVFg1pu080odpa6Y14",
+ "raw_ms": 64810,
+ "motif": "high",
+ "lufs": -15.4
+}

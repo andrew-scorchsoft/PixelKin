@@ -196,6 +196,7 @@ export const TRAINERS: TrainerRegistry = {
   spore_squatter: {
     id: 'spore_squatter',
     name: 'CROSS SPORELING',
+    solo_line: 'A very cross Sporeling puffs itself up and blocks the way!',
     party: [
       { species_id: 56, level: 21 }, // Sporeling — Verdant, cross as a wet cat
     ],
@@ -243,6 +244,7 @@ export const TRAINERS: TrainerRegistry = {
       { species_id: 167, level: 11 }, // JesterHalf — Light/Dark
       { species_id: 8, level: 12 }, // Glimflit — Light (ace)
     ],
+    intro_ref: 'trainer.oldlight_heckler.intro', // the battle-screen opener (trainer-intro beat)
     defeat_ref: 'trainer.oldlight_heckler.defeat',
     payout: 240, // keeper 20 × ace 12
     music: 'battle-emberfall',
@@ -255,9 +257,29 @@ export const TRAINERS: TrainerRegistry = {
       { species_id: 167, level: 12 }, // JesterHalf — Light/Dark
       { species_id: 69, level: 13 }, // Riddlestone — Stone (ace)
     ],
+    intro_ref: 'trainer.oldlight_ringmaster.intro', // the battle-screen opener (trainer-intro beat)
     defeat_ref: 'trainer.oldlight_ringmaster.defeat',
     payout: 260, // keeper 20 × ace 13
     music: 'battle-emberfall',
+  },
+  // R11: the top floor's BOSS — the TOLL before the card, not the climax. Mr.
+  // Punchwheel's headline act (the house's own three clowns) stands in the only gap
+  // to the drum, guarding Tam's card. Ace 15, one under Reyl (16) — the climb's capstone, the last
+  // stepping-stone before the Lumenary. Rest first in the green-room chair.
+  oldlight_headliners: {
+    id: 'oldlight_headliners',
+    name: 'MR. PUNCHWHEEL',
+    title: 'Jest-engine', // presents his headline act: the house's three clowns
+    party: [
+      { species_id: 169, level: 14 }, // The Smiler — Light
+      { species_id: 171, level: 14 }, // McClownface — Tide/Light
+      { species_id: 167, level: 15 }, // JesterHalf — Light/Dark (ace)
+    ],
+    intro_ref: 'trainer.oldlight_headliners.intro',
+    defeat_ref: 'trainer.oldlight_headliners.defeat',
+    payout: 300, // keeper 20 × ace 15
+    music: 'battle-jesthouse-boss',
+    ai: 'smart', // a boss: plays the matchup
   },
   // R10: the jest-house REGULARS — optional sight trainers waiting in each
   // floor's alcove (F1-F5), rising 10 -> 14 so the climb is the grind bed before
@@ -270,6 +292,7 @@ export const TRAINERS: TrainerRegistry = {
       { species_id: 169, level: 10 }, // The Smiler — Light
       { species_id: 16, level: 11 }, // Wickmoth — Ember (ace)
     ],
+    intro_ref: 'trainer.oldlight_usher.intro', // the battle-screen opener (trainer-intro beat)
     defeat_ref: 'trainer.oldlight_usher.defeat',
     payout: 176, // route 16 × ace 11
   },
@@ -282,6 +305,7 @@ export const TRAINERS: TrainerRegistry = {
       { species_id: 47, level: 11 }, // Pebbit — Stone
       { species_id: 8, level: 12 }, // Glimflit — Light (ace)
     ],
+    intro_ref: 'trainer.oldlight_juggler.intro', // the battle-screen opener (trainer-intro beat)
     defeat_ref: 'trainer.oldlight_juggler.defeat',
     payout: 192, // route 16 × ace 12
   },
@@ -293,6 +317,7 @@ export const TRAINERS: TrainerRegistry = {
       { species_id: 26, level: 12 }, // Brinelet — Tide
       { species_id: 171, level: 12 }, // McClownface — Tide/Light (ace)
     ],
+    intro_ref: 'trainer.oldlight_pie_thrower.intro', // the battle-screen opener (trainer-intro beat)
     defeat_ref: 'trainer.oldlight_pie_thrower.defeat',
     payout: 192, // route 16 × ace 12
   },
@@ -304,6 +329,7 @@ export const TRAINERS: TrainerRegistry = {
       { species_id: 69, level: 12 }, // Riddlestone — Stone
       { species_id: 69, level: 13 }, // Riddlestone — Stone (ace) — of course
     ],
+    intro_ref: 'trainer.oldlight_mirror.intro', // the battle-screen opener (trainer-intro beat)
     defeat_ref: 'trainer.oldlight_mirror.defeat',
     payout: 208, // route 16 × ace 13
   },
@@ -316,6 +342,7 @@ export const TRAINERS: TrainerRegistry = {
       { species_id: 105, level: 13 }, // Snoozlet — Lunar
       { species_id: 69, level: 14 }, // Riddlestone — Stone (ace)
     ],
+    intro_ref: 'trainer.oldlight_critic.intro', // the battle-screen opener (trainer-intro beat)
     defeat_ref: 'trainer.oldlight_critic.defeat',
     payout: 224, // route 16 × ace 14
   },
@@ -1593,6 +1620,12 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   'trainer.oldlight_heckler.defeat': [
     { speaker: 'HECKLER', text: "(flips to the last card) 'YOU WIN. THE HECKLER SITS DOWN QUIETLY.'" },
     { speaker: 'HECKLER', text: '...He even wrote me losing. (sits down, loudly) Here. Your wicks. He wrote those too.' },
+  ],
+  'trainer.oldlight_headliners.intro': [
+    { speaker: 'PUNCHWHEEL', text: 'Three clowns, one tune, NO refunds. Take it away, my darlings!' },
+  ],
+  'trainer.oldlight_headliners.defeat': [
+    { speaker: 'PUNCHWHEEL', text: '(clockwork applause, slightly sarcastic) A tough crowd. The toughest. They will be talking about this in the lift for weeks.' },
   ],
   'trainer.oldlight_ringmaster.defeat': [
     { speaker: 'RINGMASTER', text: "HELLO! Welcome, welcome! Pull up a stool by the fire, you're going to LOVE it here!" },

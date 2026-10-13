@@ -1,0 +1,102 @@
+{
+ "id": "oldlight-f7",
+ "kind": "loop",
+ "where": "The Old Light, top — The Winding Room (Mr. Punchwheel, the great joke-drum, flying apart)",
+ "mood": "The Winding Room — the joke machine at full delirium: the march in every key at once, lurching, melting, and snapping back.",
+ "bpm": 126,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "medium",
+  "source": "oldlight"
+ },
+ "_note": "R11 pass 2: the MOST broken rung, past F6's stuck record: the whole machine flying apart, polytonal clashes, lurching tempo feel, melting pitch, every two bars a new key, then the spring snaps it back. 126 grid, double-time feel. Never name the tune or mention the reference.",
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "126 BPM with a frantic double-time feel",
+  "the march in two clashing keys at once, brass a semitone apart",
+  "4/4 that lurches, rushing and dragging every phrase",
+  "steam calliope and brass band playing the march",
+  "melting pitch slides like a warped record",
+  "jumps to a new key every two bars",
+  "clockwork ratchets, bicycle horns, slide whistles and crashing cymbals",
+  "a spring boing that snaps everything back to F",
+  "delirious, unhinged, joyous chaos, a joke machine coming apart",
+  "strong singable melody, instantly hummable and pleasant on repeat",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "spoken word",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "fade out",
+  "ritardando",
+  "ending",
+  "electric guitar",
+  "heavy sub bass",
+  "hall reverb",
+  "ambient drone",
+  "silence",
+  "sparse",
+  "horror",
+  "creepy",
+  "sinister",
+  "stop-time breaks",
+  "slow",
+  "gentle"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{a wind-up key cranks and jams, then the whole band bursts in at once in two clashing keys}",
+   "styles": [
+    "jammed wind-up opening",
+    "explosive"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the tower's march tune at a double-time gallop on calliope and brass, the brass a semitone apart, jumping to a new key every two bars, ratchets speeding up}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "polytonal"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{again even wilder: the tempo lurches between rushing and dragging, pitch melting down then shooting up, bicycle horns and slide whistles on every beat}",
+   "styles": [
+    "lurching tempo",
+    "melting pitch",
+    "most broken"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: the joke-drum spins out, a whirling waltz-time lurch with cymbal crashes, the tune shattering into fragments in every key, then one huge spring boing}",
+   "styles": [
+    "whirling breakdown",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the march crashes back in F at full gallop, still clashing; the last bar's spring boing snaps straight back to the top of the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

@@ -147,6 +147,13 @@ DERIVED_CROWNS = [
     ("flag:crown_north", "gleam:storm", "gleam:frost"),
     ("flag:crown_west", "gleam:solar", "gleam:lunar"),
 ]
+# FlagStore ANY_OF gates (an old save past the quest step still opens them)
+DERIVED_ANY = [
+    ("flag:oldlight_open", ["flag:q_south_bell", "gleam:tide"]),
+    ("flag:q_south_rope_or_later", ["flag:q_south_has_rope", "gleam:tide"]),
+    ("flag:skyloft_open", ["flag:q_north_kite_blessed", "gleam:storm"]),
+    ("flag:undercroft_open", ["flag:q_north_aurora_oil", "gleam:frost"]),
+]
 LAMPLIGHT = [("flag:lamplight_warmlight", 2), ("flag:lamplight_brightlight", 4),
              ("flag:lamplight_starlight", 6), ("flag:lamplight_radiant", 8)]
 POST_LETTERS = ["wren", "fenn", "tinderwick", "pearlmoor", "lowleaf", "cinderhead",
@@ -520,6 +527,10 @@ class Replay:
             if a in held and b in held:
                 out.append((crown, "engine:derive"))
                 held.add(crown)
+        for gate, anyf in DERIVED_ANY:
+            if any(f in held for f in anyf):
+                out.append((gate, "engine:derive"))
+                held.add(gate)
         if all(c in held for c, _, _ in DERIVED_CROWNS):
             out.append(("flag:hub_unlocked", "engine:derive"))
         if all(f"flag:q_post_letter_{x}" in held for x in POST_LETTERS):

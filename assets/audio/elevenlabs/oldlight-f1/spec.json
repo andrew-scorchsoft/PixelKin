@@ -1,0 +1,97 @@
+{
+ "id": "oldlight-f1",
+ "kind": "loop",
+ "where": "The Old Light, floor 1 — The Lobby of Groaners (Pearlmoor's joke-tower)",
+ "mood": "Punchwheel's Patter — a cheeky music-hall march with brass pah-stabs and a slide-trombone laugh at every phrase end.",
+ "bpm": 126,
+ "beats_per_bar": 4,
+ "motif": null,
+ "_note": "Matches the classic oldlight-f1: 126 BPM, 4/4 march, F major. The laugh is instrumental: a slide-trombone 'wah-wah-wah' and a slide-whistle, then a rimshot ba-dum-tss with a bell ding. Opening shape: a bold brass call over the oom-pah pickup (the theme from bar one).",
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "126 BPM",
+  "F major",
+  "4/4 bouncy music-hall march",
+  "oom-pah tuba bass and brass pah-stabs on the offbeats",
+  "cheeky muted-trumpet lead melody",
+  "honky slide-trombone laugh figure and a slide whistle at phrase ends",
+  "snare rimshot ba-dum-tss with a little bell ding",
+  "comic, bouncy, warm, a lamplit old theatre lobby",
+  "strong singable melody, instantly hummable and pleasant on repeat",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "spoken word",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "fade out",
+  "ritardando",
+  "ending",
+  "electric guitar",
+  "heavy sub bass",
+  "hall reverb",
+  "ambient drone",
+  "silence",
+  "sparse",
+  "horror",
+  "creepy",
+  "sinister",
+  "dark"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{the house band strikes up at once: a bold muted-trumpet call over an oom-pah tuba pickup, a rimshot, and straight into the march}",
+   "styles": [
+    "bold brass call",
+    "welcoming",
+    "bouncy"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the cheeky march tune on muted trumpet over oom-pah tuba and brass pah-stabs; every fourth bar the tune stops and a slide-trombone laughs wah-wah-wah, then a rimshot ba-dum-tss and a bell ding}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "comic march"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the march again with clarinet doubling an octave up and a glockenspiel counter-line; the trombone laughs answer a beat louder; the oom-pah keeps bouncing all the way through}",
+   "styles": [
+    "clarinet counter-melody",
+    "slightly fuller"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a sly tiptoe in B-flat major, pizzicato and bassoon creeping on staccato, a slide whistle swooping up, then a drum roll hops home}",
+   "styles": [
+    "B-flat major",
+    "comic tiptoe",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the march returns full band in F major with its trombone laughs; the last bar's rimshot leads straight back into the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

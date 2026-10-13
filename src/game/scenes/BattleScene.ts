@@ -41,10 +41,12 @@ import { BattleMessage } from '@game/ui/battle/BattleMessage';
 import { MoveLearnPrompt } from '@game/ui/MoveLearnPrompt';
 import { KindlePrompt } from '@game/ui/KindlePrompt';
 import { getTrainer, getTrainerLines } from '@game/content/trainers';
+import { trainerArt, trainerBattleTexture, PLAYER_BACK_SPRITE } from '@game/content/trainerArt';
+import { TrainerStage } from '@game/ui/battle/TrainerStage';
 import { typeEffectiveness } from '@game/data/dex';
 import { getItem } from '@game/content/items';
 import { trainerPayout } from '@game/content/economy';
-import { resolveBattleBackdrop } from '@game/data/world/maps';
+import { resolveBattleBackdrop, resolveBattleMusic } from '@game/data/world/maps';
 import type { ItemDef } from '@game/content/types';
 import type { KinInstanceData, InventoryData } from '@game/systems/save/types';
 import type { WorldFlag, AbilityId, EncounterTerrain } from '@game/data/world/types';
@@ -126,6 +128,8 @@ export class BattleScene extends Phaser.Scene {
 
   private playerBattler!: Battler;
   private foeBattler!: Battler;
+  /** The trainer-intro beat (trainer battles only). */
+  private stage?: TrainerStage;
   private playerHp!: HpPanel;
   private foeHp!: HpPanel;
   private msg!: BattleMessage;
@@ -203,6 +207,18 @@ export class BattleScene extends Phaser.Scene {
     this.foeHp = new HpPanel(this, 6, 8, this.engine.foe, false, 'left');
     this.playerHp = new HpPanel(this, GAME_WIDTH - 6, GAME_HEIGHT - 78, this.engine.player, true, 'right');
     this.msg = new BattleMessage(this);
+    if (this.request.kind === 'trainer' && !getTrainer(this.request.trainer)?.solo_line) {
+      // The trainer-intro beat: nobody's kin is out yet — the trainer and your
+      // apprentice face off first (content/trainerArt.ts).
+      const art = trainerArt(getTrainer(this.request.trainer));
+      this.stage = new TrainerStage(this, { x: FOE_POS.x, y: FOE_POS.y + 32 },
+        { x: PLAYER_POS.x, y: PLAYER_POS.y + 34 },
+        art.sprite ? trainerBattleTexture(art.sprite) : undefined, trainerBattleTexture(PLAYER_BACK_SPRITE));
+      this.foeBattler.container.setAlpha(0);
+      this.playerBattler.container.setAlpha(0);
+      this.foeHp.setVisible(false);
+      this.playerHp.setVisible(false);
+    }
     this.cameras.main.fadeIn(theme.transition.fadeMs, 0, 0, 0);
   }
 
@@ -221,10 +237,18 @@ export class BattleScene extends Phaser.Scene {
   }
 
   private startMusic(): void {
+    // a trainer's own theme wins; else the map's battle cue; else the wild theme
+    const mapCue = resolveBattleMusic(this.request.mapId);
     const key = this.request.kind === 'trainer'
-      ? getTrainer(this.request.trainer)?.music ?? 'battle-main-dusk-duel'
-      : 'battle-main-dusk-duel';
+      ? getTrainer(this.request.trainer)?.music ?? mapCue ?? 'battle-main-dusk-duel'
+      : mapCue ?? 'battle-main-dusk-duel';
     void this.music.play(key, `${MUSIC_DIR}${key}.mp3`);
+  }
+
+  /** A kin pops onto the field (after its trainer has stepped aside). */
+  private revealBattler(b: Battler, y: number): void {
+    b.container.setAlpha(0).setY(y + 6);
+    this.tweens.add({ targets: b.container, alpha: 1, y, duration: 220, ease: 'Back.out' });
   }
 
   // --- Top-level flow ------------------------------------------------------
@@ -234,16 +258,33 @@ export class BattleScene extends Phaser.Scene {
     void this.sfx.play('battle-encounter');
     this.startMusic();
 
-    if (this.request.kind === 'trainer') {
+    const solo = this.request.kind === 'trainer' ? getTrainer(this.request.trainer)?.solo_line : undefined;
+    if (solo) {
+      // a lone kin, no trainer: it just appears, like a wild one
+      this.time.delayedCall(260, () => playCry(this.sfx, this.engine.foe.species.id));
+      await this.msg.show(solo);
+    } else if (this.request.kind === 'trainer') {
       const trainer = getTrainer(this.request.trainer);
-      const intro = getTrainerLines(trainer?.intro_ref);
+      const art = trainerArt(trainer);
+      await this.stage?.enter();
+      const who = trainer ? (trainer.title ? `${trainer.title} ${trainer.name}` : trainer.name) : 'A trainer';
+      await this.msg.show(`${who} wants to battle!`);
+      // authored lines win; a class trainer with none gets one in-voice quip
+      let intro = getTrainerLines(trainer?.intro_ref);
+      if (intro.length === 0 && art.introQuip) intro = [{ speaker: trainer?.name, text: art.introQuip }];
       if (intro.length > 0) {
         this.msg.setVisible(false);
         await new DialogueBox(this, this.sfx).run(intro);
         this.msg.setVisible(true);
       }
+      await this.stage?.exitFoe();
+      this.revealBattler(this.foeBattler, FOE_POS.y);
+      this.foeHp.setVisible(true);
       playCry(this.sfx, this.engine.foe.species.id);
       await this.msg.show(`${trainer?.name ?? 'Foe'} sent out ${this.engine.foe.displayName}!`);
+      await this.stage?.exitPlayer();
+      this.revealBattler(this.playerBattler, PLAYER_POS.y);
+      this.playerHp.setVisible(true);
     } else {
       // The wild kin calls out as it appears (its cry lands over the encounter sting).
       this.time.delayedCall(260, () => playCry(this.sfx, this.engine.foe.species.id));
@@ -762,7 +803,11 @@ export class BattleScene extends Phaser.Scene {
       await this.warmParticipantsBond();
       if (outcome === 'win' && this.request.kind === 'trainer') {
         const trainer = getTrainer(this.request.trainer);
-        const lines = getTrainerLines(trainer?.defeat_ref);
+        // the trainer steps back in for their closing words
+        await this.stage?.reenterFoe();
+        let lines = getTrainerLines(trainer?.defeat_ref);
+        const outro = trainerArt(trainer).outroQuip;
+        if (lines.length === 0 && outro) lines = [{ speaker: trainer?.name, text: outro }];
         if (lines.length > 0) {
           this.msg.setVisible(false);
           await new DialogueBox(this, this.sfx).run(lines);
@@ -952,6 +997,7 @@ export class BattleScene extends Phaser.Scene {
 
   private teardown(): void {
     this.playerBattler?.destroy();
+    this.stage?.destroy();
     this.foeBattler?.destroy();
     this.playerHp?.destroy();
     this.foeHp?.destroy();

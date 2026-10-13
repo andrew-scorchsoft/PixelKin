@@ -471,6 +471,7 @@ const BUILT_PAYOUTS = {
   oldlight_pie_thrower: ['route', 12, 192],
   oldlight_mirror: ['route', 13, 208],
   oldlight_critic: ['route', 14, 224],
+  oldlight_headliners: ['keeper', 15, 300], // R11 the Old Light's top-floor boss (mandatory, before Tam's card)
   breakwater_paul: ['route', 15, 240], // S4 optional side-quest bout (the Lifting House)
   wrackline_drifter: ['route', 18, 288], // Pearlmoor<->Crossroads route (Wrackline Path)
   lanternfall_warden: ['route', 20, 320], // Pearlmoor<->Crossroads route (Lanternfall Road)

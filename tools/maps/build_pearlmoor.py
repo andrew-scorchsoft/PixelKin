@@ -337,11 +337,11 @@ m = {
         # line; lands ON the breakwater's return pair. Both root columns warp.
         {"id": "to_breakwater", "at": {"tx": 24, "ty": 23}, "trigger": "step_on",
          "to_map": "pearlmoor_breakwater", "to": {"tx": 5, "ty": 0}, "facing": "down",
-         "requires_flag": "flag:q_south_has_rope", "blocked_ref": "npc.netmender_gate",
+         "requires_flag": "flag:q_south_rope_or_later", "blocked_ref": "npc.netmender_gate",
          "transition": "fade"},
         {"id": "to_breakwater_e", "at": {"tx": 25, "ty": 23}, "trigger": "step_on",
          "to_map": "pearlmoor_breakwater", "to": {"tx": 6, "ty": 0}, "facing": "down",
-         "requires_flag": "flag:q_south_has_rope", "blocked_ref": "npc.netmender_gate",
+         "requires_flag": "flag:q_south_rope_or_later", "blocked_ref": "npc.netmender_gate",
          "transition": "fade"},
         # R9: the west beach runs on out to Lightkeeper's Point (the Old Light).
         # (Shipped JSON carries these surgically too — see build_pearlmoor_point.py.)

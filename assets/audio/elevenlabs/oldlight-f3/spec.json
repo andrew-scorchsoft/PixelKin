@@ -1,0 +1,102 @@
+{
+ "id": "oldlight-f3",
+ "kind": "loop",
+ "where": "The Old Light, floor 3 — Intermission (the tea-urn floor, a rest point)",
+ "mood": "Intermission — a swung tea-room lounge tune; the urn whistles and the flute scoops into its long notes.",
+ "bpm": 126,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "high",
+  "source": "oldlight"
+ },
+ "_note": "Classic oldlight-f3: 100 swung, B-flat. Restful but still comic. Opening: a breathy flute trill like a whistling tea urn over a walking bass already moving. | Family pass (music-cue-family): conditioned on motif-oldlight (the f1 remaster's theme), strength high; tempo moved 100->126 because motif conditioning locks takes to the anchor's 126 grid (feel carries the half-time pace). | NEVER name the tune in the brief: 'Punchwheel's Patter' got every conditioned plan rejected as copyrighted_material_detected; describe it ('the tower's march tune') instead. | the core style 'carried from the reference' got this plan rejected (copyrighted_material_detected) even unconditioned; dropped.",
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "126 BPM",
+  "B-flat major",
+  "4/4 relaxed half-time swing feel",
+  "breathy flute lead that scoops up into its long notes",
+  "walking upright-style bass",
+  "soft organ seventh chords",
+  "brushes on snare",
+  "vibraphone giggle figures",
+  "cosy theatre interval bar, gentle and funny",
+  "strong singable melody, instantly hummable and pleasant on repeat",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "spoken word",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "fade out",
+  "ritardando",
+  "ending",
+  "electric guitar",
+  "heavy sub bass",
+  "hall reverb",
+  "ambient drone",
+  "silence",
+  "sparse",
+  "horror",
+  "creepy",
+  "sinister",
+  "dark",
+  "loud drums",
+  "fast"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{a breathy flute trill like a kettle whistling, over a walking bass and brushes that are already strolling}",
+   "styles": [
+    "kettle-whistle opening",
+    "relaxed"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the tower's march tune slowed to a swung lounge on flute over walking bass and soft organ sevenths; at phrase ends a pair of sleepy vibraphone giggles}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "lounge"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{again with a muted trumpet answering the flute softly, organ swells under, still relaxed}",
+   "styles": [
+    "muted trumpet counter-melody",
+    "slightly fuller"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a dreamy turn to E-flat major, celesta and flute trading little phrases, the bass ambling, then a vibraphone run home}",
+   "styles": [
+    "E-flat major",
+    "dreamy",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the lounge tune returns on flute; the last bar's walking bass strolls straight back into the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

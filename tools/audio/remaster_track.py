@@ -27,7 +27,8 @@ Spec shape (JSON):
     "id": "dimglass-coast-a", "kind": "loop" | "oneshot",
     "where": "Dimglass Coast", "mood": "one line for the music page",
     "bpm": 120, "beats_per_bar": 4,
-    "motif": {"strength": "low|medium|high|xhigh"} | null,
+    "motif": {"strength": "low|medium|high|xhigh", "source": "<family>"?} | null,
+             (source -> assets/audio/elevenlabs/motif-<family>.json; default motif.json)
     "core_styles": [...6-12 styles, the whole cue's palette...],
     "negative_styles": [...],
     "sections": [
@@ -100,6 +101,8 @@ def check_spec(spec: dict) -> list[str]:
     m = spec.get("motif")
     if m and m.get("strength") not in STRENGTHS:
         errs.append("motif.strength low|medium|high|xhigh")
+    if m and m.get("source") and not motif_path(m).exists():
+        errs.append(f"motif.source {m['source']!r}: no {motif_path(m).relative_to(ROOT)}")
     if len(spec.get("core_styles", [])) < 6:
         errs.append("give at least 6 core_styles (the first chunk sets the whole cue)")
     # ElevenLabs PROMPTING RULES (generate-music SKILL.md "Writing the brief"):
@@ -130,13 +133,21 @@ def check_spec(spec: dict) -> list[str]:
     return errs
 
 
+def motif_path(m: dict | None) -> Path:
+    """The world motif (motif.json) by default; a cue FAMILY may name its own
+    (`"motif": {"strength": …, "source": "oldlight"}` -> motif-oldlight.json), so
+    e.g. the Old Light's seven floors share Punchwheel's tune, not the Vesper one."""
+    src = (m or {}).get("source")
+    return SPECS / f"motif-{src}.json" if src else MOTIF
+
+
 def build_plan(spec: dict) -> dict:
     bm = bar_ms(spec)
     core = list(spec["core_styles"])
     neg = list(spec.get("negative_styles", [])) or ["vocals"]
     if "vocals" not in neg:
         neg.append("vocals")
-    motif = json.loads(MOTIF.read_text()) if spec.get("motif") else None
+    motif = json.loads(motif_path(spec.get("motif")).read_text()) if spec.get("motif") else None
     chunks = []
     for i, s in enumerate(spec["sections"]):
         text = f"[{s['name']}]"

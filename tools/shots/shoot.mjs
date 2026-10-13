@@ -37,6 +37,8 @@ world options:
   --level N                     level for "starter" (default 5)
   --steps "right,right,up"      walk these steps after spawning (one tile each)
   --battle <kin_id>[:LV]        open a wild battle vs that kin on the map
+  --trainer <trainer_id>        open a TRAINER battle (the trainer-intro beat); --confirms N
+                                then pages on (1.4s apart) before the shot
   --greet <placement_id>        step beside that AMBIENT kin (wherever it grazed to),
                                 face it and press Confirm — shoots the greeting
                                 (cry + kinchatter line) mid-dialogue
@@ -108,6 +110,7 @@ function normaliseSpec(raw, index = 0) {
     level: Number(s.level ?? 5),
     steps: list(s.steps),
     battle: s.battle !== undefined ? String(s.battle) : undefined,
+    trainer: s.trainer !== undefined ? String(s.trainer) : undefined,
     noDefaults: Boolean(s['no-defaults'] ?? s.noDefaults),
     keepHud: Boolean(s['keep-hud'] ?? s.keepHud),
     noIdle: Boolean(s['no-idle'] ?? s.noIdle),
@@ -131,7 +134,7 @@ function normaliseSpec(raw, index = 0) {
     throw new Error(`unknown --scene "${shot.scene}" (world needs --map; or --scene title)`);
   }
   if (!['down', 'up', 'left', 'right'].includes(shot.facing)) throw new Error(`bad --facing ${shot.facing}`);
-  if (shot.wait === undefined) shot.wait = shot.battle ? 2500 : 700;
+  if (shot.wait === undefined) shot.wait = shot.battle || shot.trainer ? 2500 : 700;
   return shot;
 }
 
@@ -466,6 +469,19 @@ async function shoot(page, url, shot) {
       }, shot.greet);
       if (!ok) throw new Error(`no ambient kin "${shot.greet}" to greet (or boxed in)`);
       // --confirms N pages on through the greeting (REGISTER note, the event).
+      for (let i = 0; i < shot.confirms; i++) {
+        await page.waitForTimeout(1400);
+        await tap(page, 'z');
+      }
+    } else if (shot.trainer) {
+      await page.evaluate((id) => {
+        const w = window.__pixelkin.scene.getScene('World');
+        void w.startBattle({
+          kind: 'trainer', trainer: id, party: w.party, box: w.box,
+          inventory: w.inventory, dex_caught: [...w.dexCaught],
+        });
+      }, shot.trainer);
+      await waitFor(page, sceneActive(), 'Battle', { what: 'Battle scene' });
       for (let i = 0; i < shot.confirms; i++) {
         await page.waitForTimeout(1400);
         await tap(page, 'z');

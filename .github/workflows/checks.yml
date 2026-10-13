@@ -107,6 +107,8 @@ jobs:
       # can only stand on by using a Gift) or a sealed pocket that strands content.
       - name: Walkability (softlocks, stranded content)
         run: python3 tools/maps/render_walkable.py --all --report-only
+      - name: Trainer battle sprites packed from their masters
+        run: python3 tools/assets/pack_trainer_battle.py --check
       - name: Sprite standards (canvas, alpha, anchors)
         run: python3 .claude/skills/generate-sprite-sheet/scripts/validate_sprites.py --all
       - name: Walk-cycle facing (no stray frame breaks the cycle)

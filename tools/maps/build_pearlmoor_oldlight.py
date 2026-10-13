@@ -602,6 +602,23 @@ def floor_top():
     place(objects, "oil_jars", 1, 9, oid="jars")
     # the workshop clutter of a machine that wound itself too tight
     ol(objects, "cog_heap", 2, 4, oid="cogs")
+    # the GREEN ROOM chair by the stairhead: the top floor's rest point, before the
+    # headline act at the drum (script.oldlight_greenroom; the boss is in script.oldlight_top)
+    place(objects, "armchair_green", 4, 2, oid="greenroom_chair")
+    sign_at(triggers, "greenroom", 4, 3, "script.oldlight_greenroom", kind="cutscene")
+    # the HEADLINE ACT bars the way to the drum: the only way from the stairhead
+    # side into the drum room is the x=5 gap (rows 7-8), and the three clowns stand
+    # in it. Punchwheel won't let anyone near Tam's card; beating his act is the toll,
+    # not the climax (the card is) — they step aside on flag:oldlight_headliners_beaten.
+    for nid, (x, y), spr in (("act_smiler", (5, 7), "kin_169_overworld"),
+                             ("act_clown", (5, 8), "kin_171_overworld"),
+                             ("act_jester", (6, 7), "kin_167_overworld")):
+        npcs.append({"id": nid, "at": {"tx": x, "ty": y}, "facing": "left", "sprite": spr,
+                     "movement": "static", "dialogue_ref": "script.oldlight_headliners",
+                     "hidden_when_flag": "flag:oldlight_headliners_beaten"})
+    triggers.append({"id": "headliners_band", "kind": "cutscene", "at": {"tx": 4, "ty": 7},
+                     "activation": "step_on", "ref": "script.oldlight_headliners",
+                     "hidden_when_flag": "flag:oldlight_headliners_beaten"})
     ol(objects, "spring_can", 4, 9, oid="spring_can")
     ol(objects, "confetti", 9, 8, oid="confetti_a")
     ol(objects, "confetti", 5, 9, oid="confetti_b")

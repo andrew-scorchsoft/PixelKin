@@ -331,7 +331,7 @@ m["warps"] += [
     # THE WINCH up to the skyloft — festival-flag-gated, NEVER Updraft (§0 r1)
     {"id": "to_skyloft", "at": {"tx": 21, "ty": 18}, "trigger": "step_on",
      "to_map": "galehigh_skyloft", "to": {"tx": 9, "ty": 10}, "facing": "up",
-     "requires_flag": "flag:q_north_kite_blessed",
+     "requires_flag": "flag:skyloft_open",  # ANY-OF: kite blessing or gleam:storm (FlagStore)
      "blocked_ref": "npc.winch_not_ready", "transition": "fade"},
     # THE DROP-HOME THERMAL back up to the Windward II crags (the return half
     # of `shortcut_galehigh` — N2's drop warp lands ON this tile; the ride up

@@ -558,7 +558,30 @@ cue, all built on ONE original theme, **"Punchwheel's Patter"** — a music-hall
 whose bar 1 states the Vesper motif whole and bounced (C–F–G lift, A–G–F settle). Every
 fourth bar the lead stops on beat 1 and leaves the gap for the **laugh**: three staccato
 falling `pulse12` glides ("ha-ha-ha") and a `noise` "pfft". Each floor up is a little more
-deranged. **Classic-only** (no remaster, like the battles): chip engine, `snes` register.
+deranged. Classic: chip engine, `snes` register. **Remastered too (R11, 2026-10):** each floor has a
+cue sheet `assets/audio/elevenlabs/oldlight-fN/spec.json` (unconditioned — the march tempos would be
+pinned to the motif's ~90 BPM; same tempo/key/derangement as the classic, the laugh played by
+slide-trombone/slide-whistle since the remasters are instrumental). The remasters share the TOWER's own
+motif, not the Vesper one: `oldlight-f1` (unconditioned) is the anchor, its theme is registered as
+`assets/audio/elevenlabs/motif-oldlight.json`, and floors 2–7 condition on it (`"motif": {"source": "oldlight"}`),
+high strength on the near floors, medium from F4 up. Conditioning locks tempo to the anchor's 126
+grid, so F3's lounge is a half-time feel and F7 a double-time one. The ladder only ever gets MORE broken
+(owner, 2026-10: the remastered F6 is not a tender music box like the classic one): straight → late →
+lounge → inverted → wrong-note → stuck, warped record (F6) → the machine flying apart, clashing keys and
+melting pitch (F7).
+Method: the `music-cue-family` skill.
+
+**The tower's battle cue, `battle-jesthouse` (classic only, like every fight):** the Wild Battle
+(Dusk Duel) riff note for note, played as a clowning-around circus gallop at 168 BPM: oom-pah bass,
+offbeat brass pah-stabs, a calliope arp, backbeat claps, a tritone bicycle-horn honk at each section
+top, slide whistles, the tower's ha-ha laugh glides and a pfft and bell at each half's end. Every fight
+on the seven floors plays it unless the trainer has a theme of their own (`battle_music` in `maps.ts`).
+Spec: `assets/audio/midi/specs/battle-jesthouse.json`.
+**And its boss, `battle-jesthouse-boss`:** the boss theme (`battle-boss-eclipse`, 176 BPM, D minor,
+36 bars) clowning around the same way: the boss lead kept note for note (extracted from the `.mid`),
+with an oom-pah gallop, pah-stabs, a calliope and a laugh or bicycle-horn honk in every gap. It is the
+headline act's `music` (the top-floor boss, `oldlight_headliners`); the scene fades to silence after it so
+Tam's card lands in quiet.
 Specs `assets/audio/midi/specs/oldlight-fN.json` → `assets/audio/midi/oldlight-fN.mid` →
 `music/oldlight-fN.mp3`.
 

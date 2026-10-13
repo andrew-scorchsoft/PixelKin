@@ -392,8 +392,8 @@ def main() -> int:
     p.add_argument("--palette", help="Shared palette description for the area's tile set (e.g. from "
                    "assets/tilesets/world-palette.json). Used with --area for cross-tile cohesion.")
     p.add_argument("--provider", choices=["google", "openai"], default=DEFAULT_PROVIDER,
-                   help="Image provider. 'google' (default) uses Nano Banana Pro's transparent "
-                        "path. 'openai' uses gpt-image-2 with a magenta chroma-key for transparency.")
+                   help="Image provider. 'openai' uses gpt-image-2.5-sunburst with NATIVE alpha (no "
+                        "chroma key, no purple halo; best for humans). 'google' keys a magenta field.")
     p.add_argument("--resample", choices=["lanczos", "box", "nearest"], default="lanczos",
                    help="Downscale filter. lanczos (default) reads cleanest at tiny sizes; nearest is hardest-edged.")
     p.add_argument("--fill", type=float, help="Override the type's subject fill fraction (0-1).")

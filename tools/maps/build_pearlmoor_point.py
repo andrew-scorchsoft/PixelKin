@@ -125,7 +125,9 @@ for oid, sprite, flagk in (("oldlight", "pearlmoor_oldlight_dark", "hidden_when_
 m["warps"].append({"id": "to_oldlight", "at": {"tx": DOOR[0], "ty": DOOR[1]},
                    "trigger": "step_on", "to_map": "pearlmoor_oldlight_1",
                    "to": {"tx": 11, "ty": 13}, "facing": "up", "transition": "door",
-                   "requires_flag": "flag:q_south_bell",
+                   # derived ANY-OF (FlagStore): q_south_bell or gleam:tide, so a save that
+                   # was already past Reyl before the tower opened is never locked out
+                   "requires_flag": "flag:oldlight_open",
                    "blocked_ref": "door.oldlight_locked"})
 
 # the slide's brass chute-mouth at the tower foot (non-solid prop; its warp
@@ -217,6 +219,22 @@ for y in (7, 8, 9):
                           "ref": "script.oldlight_rope_reminder",
                           "requires_flag": "flag:q_south_jest_done",
                           "hidden_when_flag": "flag:oldlight_rope_reminded"})
+
+# ANDREW, once the act is done (owner's beat, 2026-10): he waits by the shore and, the
+# first time you walk out from the tower's foot, runs up with a few words about eggs
+# and wonder, laughs and dashes off. A once band on every walkable tile of the lane
+# just east of the tower (x=9, rows 8-9) — west of Pip's band, so Andrew speaks first.
+m["npcs"].append({"id": "andrew_tower", "at": {"tx": 17, "ty": 9}, "facing": "left",
+                  "sprite": "andrew_quay", "movement": "look_around",
+                  "dialogue_ref": "script.andrew_tower_wink",
+                  "requires_flag": "flag:q_south_jest_done",
+                  "hidden_when_flag": "flag:andrew_tower_winked"})
+for y in (8, 9):
+    m["triggers"].append({"id": f"andrew_tower_{y}", "kind": "cutscene",
+                          "at": {"tx": 9, "ty": y}, "activation": "step_on",
+                          "ref": "script.andrew_tower_wink",
+                          "requires_flag": "flag:q_south_jest_done",
+                          "hidden_when_flag": "flag:andrew_tower_winked"})
 
 if __name__ == "__main__":
     # deep water (2026-10): the open sea past the shallow shelf — Tidecall

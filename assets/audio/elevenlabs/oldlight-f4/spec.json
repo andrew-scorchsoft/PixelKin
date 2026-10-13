@@ -1,0 +1,100 @@
+{
+ "id": "oldlight-f4",
+ "kind": "loop",
+ "where": "The Old Light, floor 4 — The Backwards Inn (a mirror maze, everything reversed)",
+ "mood": "The Backwards Inn — the march turned inside out: the tune walks in the tuba while the oom-pah flips to the top.",
+ "bpm": 126,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "medium",
+  "source": "oldlight"
+ },
+ "_note": "Classic oldlight-f4: 120, F, registers swapped then retrograde. Opening: the tuba plays the tune alone from beat one in the low register, the high 'pah-oom' answering. | Family pass (music-cue-family): conditioned on motif-oldlight (the f1 remaster's theme), strength medium; tempo moved 120->126 because motif conditioning locks takes to the anchor's 126 grid (feel carries the same pace). | NEVER name the tune in the brief: 'Punchwheel's Patter' got every conditioned plan rejected as copyrighted_material_detected; describe it ('the tower's march tune') instead.",
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "every section is built on the tower's own cheeky march tune, carried from the reference",
+  "126 BPM",
+  "F major",
+  "4/4 march turned upside down",
+  "tuba plays the melody low while piccolo and glockenspiel play the oom-pah offbeats up high",
+  "phrases that descend where the theme rose, mirror-image melody",
+  "reverse-cymbal swishes and backwards-sounding swells into downbeats",
+  "comic, topsy-turvy, a funhouse mirror room",
+  "strong singable melody, instantly hummable and pleasant on repeat",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "spoken word",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "fade out",
+  "ritardando",
+  "ending",
+  "electric guitar",
+  "heavy sub bass",
+  "hall reverb",
+  "ambient drone",
+  "silence",
+  "sparse",
+  "horror",
+  "creepy",
+  "sinister",
+  "dark",
+  "empty swell"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{the tuba blurts the tune straight away down low while piccolo plays a high pah-oom on the offbeats, everything upside down}",
+   "styles": [
+    "tuba melody opening",
+    "topsy-turvy"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the tower's march tune carried by tuba and bassoon in the low register, with piccolo and glockenspiel doing the oom-pah on top; a reverse-cymbal swish into each phrase}",
+   "styles": [
+    "main theme",
+    "inverted registers",
+    "memorable hook"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{now the right way up for a moment, muted trumpet on the tune, then it flips again mid-phrase, the melody turning into its mirror image}",
+   "styles": [
+    "mirror-image counter-melody",
+    "slightly fuller"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: the tune played as if backwards, phrases descending in D minor, plucked strings and woodblock ticking, backward swells into each bar, then a slide back home}",
+   "styles": [
+    "D minor",
+    "backwards-feeling",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the upside-down march returns, tuba on the tune; the last bar's reverse swell sucks straight back into the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

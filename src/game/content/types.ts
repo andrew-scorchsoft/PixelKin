@@ -470,6 +470,12 @@ export interface TrainerDef {
   title?: string;
   /** Battle-sprite/portrait key (optional in the first cut). */
   sprite?: string;
+  /**
+   * A lone kin set up as a 'trainer' (no human: the Cross Sporeling). The trainer-intro
+   * beat is skipped; the kin simply appears with `solo_line` (e.g. 'A cross Sporeling
+   * blocks the way!').
+   */
+  solo_line?: string;
   party: TrainerKin[];
   intro_ref?: string; // dialogue before the fight
   defeat_ref?: string; // dialogue after losing

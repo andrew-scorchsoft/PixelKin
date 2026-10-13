@@ -281,7 +281,7 @@ go digging on every task.
 
 ## Skills
 
-Seven skills live in `.claude/skills/`. Use them instead of hand-rolling:
+Eight skills live in `.claude/skills/`. Use them instead of hand-rolling:
 
 - **deploy-ftp** — LEGACY: pixelk.in now deploys via Cloudflare Workers Builds on push to
   `main` (see the marketing-site gotcha). The skill still syncs to an FTP host: asks scope
@@ -317,6 +317,10 @@ Seven skills live in `.claude/skills/`. Use them instead of hand-rolling:
   generate-music when you want a text-prompt render instead.
 - **copy-editing** — for any prose deliverable (docs, dialogue review,
   marketing copy).
+- **music-cue-family** — score a FAMILY of connected cues (tower floors, dungeon stages,
+  day/night variants) on ONE motif with an escalating variation ladder, classic + remastered;
+  a family can condition on its own motif (`motif-<family>.json`, spec `motif.source`). The Old
+  Light's seven floors (`motif-oldlight.json`, anchored on the `oldlight-f1` remaster) are the worked example.
 
 API keys are provided as environment variables in this project's managed
 environment (`GOOGLE_AI_STUDIO_API_KEY`, `OPENAI_API_KEY`, `ELEVENLABS_API_KEY`).
@@ -916,7 +920,8 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `PreloadScene`, drawn behind the battlers in `BattleScene`. New area = add 240×160 WebPs
   under `public/assets/backgrounds/battle/` + list them on the map; a map with no list
   borrows its KIND's default (`KIND_BACKDROPS` in `maps.ts` — the safety net; bespoke art always
-  wins). Briefs/standards live in `docs/art-style.md` (§5-H). Keep them subtle so sprites/plates
+  wins). A map may also set `battle_music` (e.g. the Old Light's clowning `battle-jesthouse`):
+  it plays for wild fights and any trainer without their own `music`. Briefs/standards live in `docs/art-style.md` (§5-H). Keep them subtle so sprites/plates
   stay readable.
 - **Interiors are multi-room SNES compositions on roomkit (2026-06).** Build on
   `tools/maps/roomkit.py`: `faced_room` (cap + visible FACE walls, patterned floor, doormat)
@@ -1009,9 +1014,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   you arrive in one north corner and the way up is in the other, so every floor is walked through
   its hall; each hall rolls wild encounters (a whimsical tower table, 9→14 — Pearlmoor's grind bed
   before Reyl and the fen) and an optional alcove regular (`oldlight_<id>` route trainers, F1–F5);
-  rests at the F3 tea-urn and the F6 two cups. Each floor wears its own warped kit
+  rests at the F3 tea-urn, the F6 two cups and the top's green-room chair; the top-floor BOSS (Punchwheel's
+  headline act, `oldlight_headliners`, ace 15, `battle-jesthouse-boss`) is the TOLL, not the climax: the
+  three clowns stand in the only gap to the drum guarding Tam's card, step aside when beaten, the music
+  falls away, and the CARD is the crescendo (owner's steer: a boss gates the story beat, never replaces it). Each floor wears its own warped kit
   `oldlight_fN_set` (`build_oldlight_sets.py`, the interior gids — never change the order) and cue
-  `oldlight-fN` (one theme, more deranged per floor); props are drawn by `oldlightforge.py`
+  `oldlight-fN` (one theme, more deranged per floor; classic chip + remastered cue sheets); props are drawn by `oldlightforge.py`
   (`oldlight_*`); the cast's lines live in `content/regions/jesthouse.ts`. Pip on the Point runs
   after you once (floats, no rope) so the breakwater is never missed.
   R11: the hall tables are the tower's OWN clowns (`TOWER_TABLES` in the builder ⇄ `OLDLIGHT_TABLES`
@@ -1401,6 +1409,22 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **Tower stairs are DRESSED by `roomkit.finish` (2026-10):** any interior warp with id
   `up_stairs`/`down_stairs` gets `interior_stairs_up` (1x2, climbing the wall face) /
   `interior_stairs_down` (1x1 stairwell) on its pad — keep those ids for new tower floors.
+- **Trainer battles open with the TRAINER-INTRO BEAT (2026-10).** `ui/battle/TrainerStage.ts`: the opponent's
+  64×64 battle sprite + your apprentice's back slide in, "<title> <NAME> wants to battle!" + their lines, then
+  each steps aside as the kin go in; after a win the trainer slides back for closing words. WHICH sprite and the
+  fallback quips live in `content/trainerArt.ts` (UNIQUE by trainer id for bosses/set-pieces/the Old Light;
+  15 shared CLASS sprites by `title`, each with in-voice intro/outro pools; authored `intro_ref`/`defeat_ref`
+  always win). A new trainer with a new title needs a `TITLE_CLASS` row (or a unique sprite). Art: masters +
+  `briefs.json` in `assets/trainers/battle/`, the recipe in generate-sprite-sheet SKILL.md, packed by
+  `tools/assets/pack_trainer_battle.py` (CI `--check`). Inspect with `shoot.mjs --trainer <id> --wait 600`.
+- **Gate on "this quest step OR any later milestone" — never lock an old save out (owner's rule, 2026-10).**
+  When an update hangs a door/warp on a mid-quest flag, players already past that point never got it. Gate on
+  a derived ANY-OF flag instead: a row in `FlagStore` `ANY_OF` (e.g. `flag:oldlight_open` = `q_south_bell` OR
+  `gleam:tide`), mirrored in `audit_journey.py` `DERIVED_ANY`. Live: the Old Light door, the breakwater
+  moor-gate, Galehigh's winch, the Pale Vault undercroft.
+- **Old chroma-keyed sprites carry a PURPLE RIM** (the owner saw it on the player): `tools/assets/fix_purple_rim.py`
+  re-tints the outer rim from the colour just inside it (subtler than `defringe.py`'s pink pass). New art via
+  `--provider openai` is native alpha (gpt-image-2.5), so it's clean; don't run either fixer on that.
 - **A trainer spotting you plays `trainer-eyes` (2026-10, chip-only):** a 1-bar startle played ONCE, then
   an 8-bar "get ready" loop under the walk-up + lines until the battle theme takes over. Classic cues
   may carry an intro via `src/game/data/music-classic.json` (GENERATED by `tools/audio/stitch_intro_loop.py`

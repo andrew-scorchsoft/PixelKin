@@ -790,8 +790,12 @@ netmender's keeping.
        Confident Facts (six captions, pick the TRUE one: Tam's ferry; the hall's north
        lane is a **waxed glare-ice flow** with banana skins) · F6 The One Joke (no gate; the
        band fades the music; rows of empty stools face the **two cups rest**) · TOP the
-       Winding Room (Reyl's log, the cut rope, Tam's card → `q_south_jest_done` + the
-       floats; the SLIDE → Point).
+       Winding Room (the **green-room chair** rest point by the stairhead; the boss, **Punchwheel's
+       headline act** (Smiler/McClownface/JesterHalf 14/14/15 → 300w, `battle-jesthouse-boss`), stands
+       in the only gap to the drum: he won't let anyone near Tam's card after eleven winters of "no
+       laughter detected". Beat it and they step aside, the music falls away, and the card is the
+       crescendo — `flag:oldlight_headliners_beaten`; then Reyl's log, the cut rope, Tam's
+       card → `q_south_jest_done` + the floats; the SLIDE → Point).
      - **The house's people (non-battle):** **Moll**, Tam's old stage partner, waits one floor
        ahead of you on every floor (`MOLL` in the builder; each placement hides once that
        floor's stair opens), telling Tam's story a piece at a time and cheering you on; she

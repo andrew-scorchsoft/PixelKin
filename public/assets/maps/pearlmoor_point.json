@@ -111,7 +111,7 @@
       },
       "facing": "up",
       "transition": "door",
-      "requires_flag": "flag:q_south_bell",
+      "requires_flag": "flag:oldlight_open",
       "blocked_ref": "door.oldlight_locked"
     },
     {
@@ -283,6 +283,30 @@
       "ref": "script.oldlight_rope_reminder",
       "requires_flag": "flag:q_south_jest_done",
       "hidden_when_flag": "flag:oldlight_rope_reminded"
+    },
+    {
+      "id": "andrew_tower_8",
+      "kind": "cutscene",
+      "at": {
+        "tx": 9,
+        "ty": 8
+      },
+      "activation": "step_on",
+      "ref": "script.andrew_tower_wink",
+      "requires_flag": "flag:q_south_jest_done",
+      "hidden_when_flag": "flag:andrew_tower_winked"
+    },
+    {
+      "id": "andrew_tower_9",
+      "kind": "cutscene",
+      "at": {
+        "tx": 9,
+        "ty": 9
+      },
+      "activation": "step_on",
+      "ref": "script.andrew_tower_wink",
+      "requires_flag": "flag:q_south_jest_done",
+      "hidden_when_flag": "flag:andrew_tower_winked"
     }
   ],
   "encounters": [],
@@ -322,6 +346,19 @@
       "dialogue_ref": "script.oldlight_rope_reminder",
       "requires_flag": "flag:q_south_jest_done",
       "hidden_when_flag": "flag:oldlight_rope_reminded"
+    },
+    {
+      "id": "andrew_tower",
+      "at": {
+        "tx": 17,
+        "ty": 9
+      },
+      "facing": "left",
+      "sprite": "andrew_quay",
+      "movement": "look_around",
+      "dialogue_ref": "script.andrew_tower_wink",
+      "requires_flag": "flag:q_south_jest_done",
+      "hidden_when_flag": "flag:andrew_tower_winked"
     }
   ],
   "gates": [],

@@ -36,7 +36,9 @@ cue feel iconic is **form + a shared motif + a seamless loop**, so:
    mood words, "strong singable melody"). Mood brief = `docs/world/music-direction.md`
    + WHERE the cue plays (grep the id in `maps.ts`/content) + the classic spec's
    tempo/key/metre. Never a franchise/composer name (the checker rejects them).
-2. **The leitmotif.** `motif.json` points at the stored Tinderwick theme. A spec's
+2. **The leitmotif.** `motif.json` points at the stored Tinderwick theme (a cue FAMILY — tower floors,
+   dungeon stages — may instead share its own: `"motif": {"strength":…, "source": "<family>"}` →
+   `motif-<family>.json`; see the `music-cue-family` skill). A spec's
    `motif: {strength}` conditions its first chunk on it (API cap: 30 s reference),
    so the whole score shares one tune. **It also locks the TEMPO to the source's
    ~90 BPM grid (or 180/45)** whatever the spec asks — measured on every conditioned

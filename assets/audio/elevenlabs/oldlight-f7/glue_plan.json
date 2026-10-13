@@ -1,0 +1,48 @@
+{
+ "chunks": [
+  {
+   "song_id": "6navCPN5MVgEmwbJil2R",
+   "range": {
+    "start_ms": 41500,
+    "end_ms": 61500
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "126 BPM with a frantic double-time feel",
+    "the march in two clashing keys at once, brass a semitone apart",
+    "4/4 that lurches, rushing and dragging every phrase",
+    "steam calliope and brass band playing the march",
+    "melting pitch slides like a warped record",
+    "jumps to a new key every two bars",
+    "clockwork ratchets, bicycle horns, slide whistles and crashing cymbals",
+    "a spring boing that snaps everything back to F",
+    "delirious, unhinged, joyous chaos, a joke machine coming apart",
+    "strong singable melody, instantly hummable and pleasant on repeat",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "6navCPN5MVgEmwbJil2R",
+   "range": {
+    "start_ms": 3810,
+    "end_ms": 13810
+   }
+  }
+ ]
+}
