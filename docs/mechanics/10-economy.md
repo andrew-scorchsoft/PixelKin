@@ -54,6 +54,7 @@ Prices live on `ItemDef.price` (`content/items.ts`); one price everywhere.
 | Warm Balm | heal 60 | 500w | Pearlmoor |
 | Bright Balm | full heal | 1,200w | Galehigh, once `gleam:storm` is held (Pale Vault keeps no counter) |
 | Hearth Coal | rouses a FAINTED kin at half HP (balms can't — a coal or a rest) | 1,500w | Pearlmoor onward (every counter that sells Warm Balm); also one in each of five balm caches (Pearlmoor breakwater, Glowmoss Deep, Cinderhead Deep, Windward Stair, Sunken Solarium) — insurance, never in a solvency leg |
+| Remember a move | Hesper Vane relearns one forgotten move (charged only if it takes) | 250w | every inn (`content/regions/innfolk.ts` HESPER_FEE), optional |
 | Glow Charge | one throw, catch ×1.5 | 200w | Tinderwick |
 | Beacon Charge | one throw, catch ×2.5 | 600w | everywhere, once `gleam:ember` is held (flag-gated stock) |
 | Star-charts | teach a move | 800–4,000w by tier (§6) | everywhere |

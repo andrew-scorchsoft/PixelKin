@@ -526,6 +526,17 @@
       "movement": "static",
       "dialogue_ref": "npc.bower_guest_lit",
       "requires_flag": "gleam:verdant"
+    },
+    {
+      "id": "hesper",
+      "at": {
+        "tx": 4,
+        "ty": 3
+      },
+      "facing": "right",
+      "sprite": "pass_walker",
+      "movement": "static",
+      "dialogue_ref": "script.hesper_lowleaf"
     }
   ],
   "gates": [],

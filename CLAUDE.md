@@ -561,6 +561,16 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   uses + the earned SUPER!/RESISTED verdict vs a caught foe, the move's `desc` in the strip) is
   OPT-IN (owner's call: it covers the foe) — hidden until RIGHT (`Menu.onSide`), LEFT hides it,
   the choice holds for that battle (`BattleScene.showMoveInfo`); `Menu.onHighlight` drives it.
+- **QoL kit (2026-10, v1.30).** Pause menu NEXT panel = `content/nextgoal.ts` (mirrors
+  `script.andrew_hint` stage-for-stage, LATEST first — add a stage to both); the Register's
+  "Found:" line reads species `encounters` through `worldMapNodeForMap`; battle plates carry a
+  status tag (`theme.status`), the player plate an EXP bar + low-HP pulse/beep; Menu rows take a
+  `right` note and `onSide`; ShopMenu asks HOW MANY; ITEMS > MEDS has HEAL ALL (cheapest first).
+  **Nicknames:** offered once after a catch (BattleScene) or a starter/gift (`pendingNickname`,
+  at scene end) and then KEPT; only Ottilie the Namewright (Wickstead school) renames. **Kin
+  services** = the `kinService` op (`ui/KinServices`: rename/relearn/forget/read); Hesper Vane
+  (`content/regions/innfolk.ts`, placed in every inn via hand_placed_data) runs relearn for
+  `HESPER_FEE` (mirrored in progression.mjs) and holds one memory per inn — six = a gift.
 - **The player SWIMS on water.** `WorldScene.update` asks `map.hasTerrainAt(tx,ty,'water')`
   every frame and calls `Player.setSwimming`, which swaps to the packed `player_indi_swim`
   walk-sheet (same 4×4 layout) — or, with no such sheet, crops the sprite at the waterline and

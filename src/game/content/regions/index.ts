@@ -27,6 +27,8 @@ import { KITCHENS_DIALOGUE, KITCHENS_SCRIPTS } from './kitchens';
 import { PAUL_DIALOGUE, PAUL_SCRIPTS } from './paul';
 // The Old Light, R10 (2026-10): the jest-house's regulars, props and Pip.
 import { JESTHOUSE_DIALOGUE, JESTHOUSE_SCRIPTS } from './jesthouse';
+// The inn folk (2026-10): Hesper the Echo-Reader (every inn) + Ottilie the Namewright.
+import { INNFOLK_DIALOGUE, INNFOLK_SCRIPTS } from './innfolk';
 
 export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SOUTH_SCRIPTS,
@@ -45,6 +47,7 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...KITCHENS_SCRIPTS,
   ...PAUL_SCRIPTS,
   ...JESTHOUSE_SCRIPTS,
+  ...INNFOLK_SCRIPTS,
 };
 
 export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
@@ -64,4 +67,5 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...KITCHENS_DIALOGUE,
   ...PAUL_DIALOGUE,
   ...JESTHOUSE_DIALOGUE,
+  ...INNFOLK_DIALOGUE,
 };

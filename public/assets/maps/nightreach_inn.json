@@ -550,6 +550,17 @@
       "movement": "static",
       "dialogue_ref": "npc.nightreach_inn_watcher_lit",
       "requires_flag": "gleam:lunar"
+    },
+    {
+      "id": "hesper",
+      "at": {
+        "tx": 4,
+        "ty": 3
+      },
+      "facing": "right",
+      "sprite": "pass_walker",
+      "movement": "static",
+      "dialogue_ref": "script.hesper_nightreach"
     }
   ],
   "gates": [],

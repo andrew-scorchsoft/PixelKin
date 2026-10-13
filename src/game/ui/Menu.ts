@@ -75,7 +75,9 @@ export class Menu {
     // A windowed list keeps a column at the right for its ▲/▼ hints, so a long
     // row never runs under them (the Settings "Soundtrack: Remastered" row did).
     const hintW = this.visibleRows < options.length ? charW : 0;
-    const width = config.width ?? PAD * 2 + CURSOR_GAP + longest * charW + hintW;
+    // A right-hand note column (uses left, a level, a type) gets its own width.
+    const noteChars = Math.max(0, ...options.map((o) => (o.right ? o.right.length + 1 : 0)));
+    const width = config.width ?? PAD * 2 + CURSOR_GAP + (longest + noteChars) * charW + hintW;
     const height = PAD * 2 + this.visibleRows * ROW_H;
     this.panel = new Panel(scene, config.x, config.y, width, height);
 

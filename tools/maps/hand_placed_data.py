@@ -493,3 +493,22 @@ PLACEMENTS: dict[str, dict] = {
         },
     },
 }
+
+# The inn folk (2026-10, content/regions/innfolk.ts): Hesper Vane the Echo-Reader by
+# the hearth in every inn (left of the fire; tiles proven not to block the room),
+# and Ottilie Penn the Namewright at the lamp-school's bookcase.
+_HESPER_SEATS = {
+    "crossroads_inn": ("crossroads", 7, 3),
+    "pearlmoor_inn": ("pearlmoor", 7, 3),
+    "lowleaf_bower": ("lowleaf", 4, 3),
+    "galehigh_inn": ("galehigh", 4, 3),
+    "pale_vault_inn": ("pale_vault", 4, 3),
+    "nightreach_inn": ("nightreach", 4, 3),
+}
+for _mid, (_inn, _x, _y) in _HESPER_SEATS.items():
+    PLACEMENTS.setdefault(_mid, {}).setdefault("npcs", []).append(
+        {"id": "hesper", "at": {"tx": _x, "ty": _y}, "facing": "right", "sprite": "pass_walker",
+         "movement": "static", "dialogue_ref": f"script.hesper_{_inn}"})
+PLACEMENTS.setdefault("wickstead_school", {}).setdefault("npcs", []).append(
+    {"id": "namewright", "at": {"tx": 3, "ty": 2}, "facing": "down", "sprite": "npc_old_man",
+     "movement": "static", "dialogue_ref": "script.namewright"})

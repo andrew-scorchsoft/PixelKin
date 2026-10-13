@@ -381,6 +381,12 @@ export class KinInstance {
     return true;
   }
 
+  /** Let a move go (the Echo-reader's service). A kin always keeps one. */
+  forgetMove(slot: number): void {
+    if (this.moves.length <= 1 || slot < 0 || slot >= this.moves.length) return;
+    this.moves.splice(slot, 1);
+  }
+
   /** Overwrite a known-move slot (the "forget which?" choice). */
   replaceMove(slot: number, move: Move): void {
     if (slot < 0 || slot >= this.moves.length) return;

@@ -38,6 +38,7 @@ import { effectivenessLabel } from '@game/systems/battle/types';
 import { Battler } from '@game/ui/battle/Battler';
 import { HpPanel } from '@game/ui/battle/HpPanel';
 import { MoveInfo } from '@game/ui/battle/MoveInfo';
+import { offerNickname } from '@game/ui/KinServices';
 import { BattleMessage } from '@game/ui/battle/BattleMessage';
 import { MoveLearnPrompt } from '@game/ui/MoveLearnPrompt';
 import { KindlePrompt, type KindleMusic } from '@game/ui/KindlePrompt';
@@ -957,6 +958,17 @@ export class BattleScene extends Phaser.Scene {
       }
     } else if (outcome === 'lose') {
       await this.msg.show('Your lamp guttered out... You hurry home to the hearth.');
+    }
+
+    // A new catch may take a name of its own (kept for good; the Namewright alone
+    // changes it after). The engine's instance is what complete() stores.
+    if (outcome === 'caught' && this.engine.caught) {
+      // It's in your lamp now: clear it (and its plate) off the field first.
+      this.foeBattler.container.setVisible(false);
+      this.foeHp.setVisible(false);
+      this.msg.setVisible(false);
+      await offerNickname(this, this.engine.caught, this.sfx);
+      this.msg.setVisible(true);
     }
 
     this.complete(outcome);

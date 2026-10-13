@@ -367,7 +367,7 @@ const BOND_TIERS: Array<{ word: string; min: number }> = [
   { word: 'NEW', min: 0 },
 ];
 
-function bondTier(bond: number): { word: string; min: number } {
+export function bondTier(bond: number): { word: string; min: number } {
   return BOND_TIERS.find((t) => bond >= t.min) ?? BOND_TIERS[BOND_TIERS.length - 1];
 }
 

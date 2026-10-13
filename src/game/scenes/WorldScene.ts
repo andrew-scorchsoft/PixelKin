@@ -40,6 +40,7 @@ import { CROWN_INTERLUDES, INTERLUDES_CLOSED_BY } from '@game/content/interludes
 import type { CrownInterlude } from '@game/content/interludes';
 import { getAmbientMotion, getCannotDie, musicMasterGain } from '@game/ui/preferences';
 import { KinInstance } from '@game/systems/party/KinInstance';
+import { runKinService, offerNickname } from '@game/ui/KinServices';
 import { MAX_PARTY } from '@game/systems/party/Party';
 import { InputController, InputAction } from '@game/systems/input/InputController';
 import { loadMap, RuntimeMap } from '@game/systems/world/MapLoader';
@@ -195,6 +196,8 @@ export class WorldScene extends Phaser.Scene {
   private nearbyLookers = new Set<Npc>();
 
   private party: KinInstanceData[] = [];
+  /** A starter/gift kin given mid-scene, to be offered a name when the scene ends. */
+  private pendingNickname?: KinInstanceData;
   /** Kin kept at the Hearth (storage); overflow from a full lamp lands here. */
   private box: KinInstanceData[] = [];
   private inventory: InventoryData = { items: {} };
@@ -1359,18 +1362,37 @@ export class WorldScene extends Phaser.Scene {
         ref === 'player' ? this.player : this.npcs.find((n) => n.id === ref),
       canEnter: (tx, ty) => this.playerCanEnter(tx, ty),
       onGiveStarter: (speciesId) => {
-        this.party.push(makeStarterKin(speciesId));
+        const kin = makeStarterKin(speciesId);
+        this.party.push(kin);
         this.dexSeen.add(speciesId);
         this.dexCaught.add(speciesId);
+        this.pendingNickname = kin;
       },
       onGiveKin: (speciesId, level) => {
         // A gift kin (e.g. Georgina's dragon-cat kitten): join the lamp, or rest
         // in the Hearth if the party is already full — never silently dropped.
         const kin = makeStarterKin(speciesId, level);
-        if (this.party.length < MAX_PARTY) this.party.push(kin);
-        else this.box.push(kin);
+        if (this.party.length < MAX_PARTY) {
+          this.party.push(kin);
+          this.pendingNickname = kin;
+        } else this.box.push(kin);
         this.dexSeen.add(speciesId);
         this.dexCaught.add(speciesId);
+      },
+      kinService: async (service, cost, speaker) => {
+        const live = this.party.map((d) => KinInstance.fromData(d));
+        await runKinService(this, service, live, this.sfx, {
+          cost,
+          speaker,
+          money: () => this.money,
+          pay: (n) => {
+            if (this.money < n) return false;
+            this.money -= n;
+            return true;
+          },
+        });
+        this.party = live.map((k) => k.toData());
+        void this.persist();
       },
       onGiveItem: (item, count) => {
         this.inventory.items[item] = (this.inventory.items[item] ?? 0) + count;
@@ -1943,7 +1965,21 @@ export class WorldScene extends Phaser.Scene {
       return await runCutscene(this.cutsceneContext(), steps);
     } finally {
       this.restoreLead();
+      await this.offerPendingNickname();
     }
+  }
+
+  /** A starter or gift kin handed over in that scene may take a name of its own,
+   *  asked once the scene's lines are done (a catch asks in the battle). */
+  private async offerPendingNickname(): Promise<void> {
+    const data = this.pendingNickname;
+    this.pendingNickname = undefined;
+    const idx = data ? this.party.indexOf(data) : -1;
+    if (!data || idx < 0) return;
+    const kin = KinInstance.fromData(data);
+    await offerNickname(this, kin, this.sfx);
+    this.party[idx] = kin.toData();
+    void this.persist();
   }
 
   /** Undo a `setLead` swap once its set-piece is over — the fight opened with

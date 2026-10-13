@@ -216,6 +216,9 @@ type CutsceneStepBase =
   // sale; a short purse is a silent no-op. Scripts branch on the outcome with the
   // ordinary per-step `if_flag`/`unless_flag` guards (no new conditional machinery).
   | { op: 'pay'; amount: number; flag: WorldFlag }
+  /** A counter service on one party kin (ui/KinServices): rename / relearn a move
+   *  (`cost` wicks, charged only if one is learned) / forget a move / read it. */
+  | { op: 'kinService'; service: 'rename' | 'relearn' | 'forget' | 'read'; cost?: number; speaker?: string }
   | { op: 'shop'; shop: string } // open a shop's buy/sell counter (content/shops.ts)
   // Run another named script's steps inline — composition, so a menu branch or a
   // wrapper can reuse a script without duplicating its ops.

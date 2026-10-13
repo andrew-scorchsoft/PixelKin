@@ -2,6 +2,17 @@
   "_note": "The player-facing changelog: the in-game \"the world has changed\" notice (content/whatsnew.ts) AND the website changelog page (web/site.mjs) both read this. Newest first. NO SPOILERS for the hidden real-people content - see whatsnew.ts.",
   "entries": [
     {
+      "version": "1.30",
+      "date": "2026-10-13",
+      "notes": [
+        "Pause the game and a NEXT note tells you where your Wayfaring goes from here. The Register now says where each kin you've seen can be found.",
+        "Battles show what ails a kin (dozing, numbed, chilled and the rest), warn you when your kin's health runs low, and fill an EXP bar as you go. FIGHT remembers your last move and shows how many uses each one has left.",
+        "Give a kin a name of its own when you catch it. Ottilie Penn, the Namewright at the Wickstead lamp-school, can change it later.",
+        "A traveller called Hesper Vane sits by the fire in every inn. She can bring back a move a kin has forgotten, help one go, or tell you how close your kin are to kindling. She has a story too, a little of it in each inn.",
+        "ITEMS can heal your whole party at once with your cheapest balms, and shops let you buy in bulk."
+      ]
+    },
+    {
       "version": "1.29",
       "date": "2026-10-13",
       "notes": [

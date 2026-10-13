@@ -63,6 +63,9 @@ const PRICES = {
   // The Hearth Coal (the revive): a dear insurance buy, never in a solvency leg —
   // a rest revives free, and five are found in caches. Pearlmoor onward.
   hearth_coal: 1500,
+  // Hesper Vane the Echo-Reader (every inn): coaxing back one forgotten move.
+  // An optional service, never in a solvency leg. Mirrors innfolk.ts HESPER_FEE.
+  hesper_remember: 250,
   // R9: Aldous Wink's Tin Rower — the cutscene `pay` op's 12,000w reserve (a
   // one-time optional; the free path is a story, so it never enters a solvency
   // leg). Mirrored in 10-economy.md and script.wink_buy.

@@ -30,6 +30,8 @@ export interface CutsceneContext {
   getActor(ref: ActorRef): Actor | undefined;
   canEnter(tx: number, ty: number): boolean;
   onGiveStarter(speciesId: number): void;
+  /** Run a kin counter service (the `kinService` op) on the live party. */
+  kinService?(service: 'rename' | 'relearn' | 'forget' | 'read', cost?: number, speaker?: string): Promise<void>;
   /** Hand the player a specific kin at a level (a gift kin); joins party or Hearth. */
   onGiveKin?(speciesId: number, level: number): void;
   onGiveItem(item: string, count: number): void;
@@ -505,6 +507,9 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       return true;
     case 'shop':
       await ctx.openShop?.(step.shop);
+      return true;
+    case 'kinService':
+      await ctx.kinService?.(step.service, step.cost, step.speaker);
       return true;
     case 'takeItem':
       ctx.onTakeItem?.(step.item, step.count ?? 1);
