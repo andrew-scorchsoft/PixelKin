@@ -207,7 +207,7 @@ export class BattleScene extends Phaser.Scene {
     this.foeHp = new HpPanel(this, 6, 8, this.engine.foe, false, 'left');
     this.playerHp = new HpPanel(this, GAME_WIDTH - 6, GAME_HEIGHT - 78, this.engine.player, true, 'right');
     this.msg = new BattleMessage(this);
-    if (this.request.kind === 'trainer') {
+    if (this.request.kind === 'trainer' && !getTrainer(this.request.trainer)?.solo_line) {
       // The trainer-intro beat: nobody's kin is out yet — the trainer and your
       // apprentice face off first (content/trainerArt.ts).
       const art = trainerArt(getTrainer(this.request.trainer));
@@ -258,7 +258,12 @@ export class BattleScene extends Phaser.Scene {
     void this.sfx.play('battle-encounter');
     this.startMusic();
 
-    if (this.request.kind === 'trainer') {
+    const solo = this.request.kind === 'trainer' ? getTrainer(this.request.trainer)?.solo_line : undefined;
+    if (solo) {
+      // a lone kin, no trainer: it just appears, like a wild one
+      this.time.delayedCall(260, () => playCry(this.sfx, this.engine.foe.species.id));
+      await this.msg.show(solo);
+    } else if (this.request.kind === 'trainer') {
       const trainer = getTrainer(this.request.trainer);
       const art = trainerArt(trainer);
       await this.stage?.enter();

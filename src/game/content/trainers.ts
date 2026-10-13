@@ -196,6 +196,7 @@ export const TRAINERS: TrainerRegistry = {
   spore_squatter: {
     id: 'spore_squatter',
     name: 'CROSS SPORELING',
+    solo_line: 'A very cross Sporeling puffs itself up and blocks the way!',
     party: [
       { species_id: 56, level: 21 }, // Sporeling — Verdant, cross as a wet cat
     ],
