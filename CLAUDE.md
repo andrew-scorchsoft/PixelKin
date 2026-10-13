@@ -157,7 +157,7 @@ go digging on every task.
 - **Stats — the genre's six:** hp/atk/def/spa/spd/spe. Power is costed against a
   shared budget (EPS) and **empirically balanced** by a Monte Carlo sim — all
   types land 46.7–53.3% win-rate. (`docs/mechanics/02-stats-and-balance.md`)
-- **Roster:** **166 kin** — the **151** curated from ~463 concepts via a panel-scored
+- **Roster:** **171 kin** — the **151** curated from ~463 concepts via a panel-scored
   pipeline (the ~312 cuts are archived as an idea bank), **plus appended additions**
   (later ids never renumber the original 1–151): the third starter line (#152–#153),
   the three starter middle stages (#154–#156), the apex kindlings #157 **Pharolux**
@@ -172,7 +172,10 @@ go digging on every task.
   Sunniest House in the Dark"; Georgina's ace + the kitten she gifts you), plus the Wild Ways
   legendaries (`walkthrough/09-the-wild-ways.md`; Three Hours treatment, set-piece only):
   #165 **Lanthorne** (Tide/Light, the Mirelight — the fen's lamp asleep in a null-lantern, lv 45)
-  and #166 **Emberroot** (Stone/Ember, the first star that fell; Cinderhead's coal is its breath, lv 46). Moves: **≤4 per kin**
+  and #166 **Emberroot** (Stone/Ember, the first star that fell; Cinderhead's coal is its breath, lv 46), and the Old Light's own **jest-house clowns** (R11,
+  region `jesthouse`, tower-only wild tables lv 9–14): #167 **JesterHalf** →lv 24→ #168 **JesterFull**
+  (Light/Dark), #169 **The Smiler** →lv 22→ #170 **The Exciter** (Light → Light/Storm), #171
+  **McClownface** (Tide/Light). Cute, never creepy. Moves: **≤4 per kin**
   from a **125-move** shared pool (wave 2: full phys/spec ladders per type + 13 signature
   moves) + 28 abilities. (`docs/mechanics/dex.md` for the readable dex)
 - **Starters:** the founding trio is **complete** and every starter is a **three-stage
@@ -617,7 +620,7 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   separate creature path — `systems/sprites/CreatureSprites.ts` — is now wired into
   `StarterSelect`, `Battler` (battle), `PartyMenu`, and `AttractScene`: each lazy-loads a packed
   sprite keyed `kin_<id>_<view>` and falls back to the type-tinted placeholder **only** when a kin
-  isn't packed. **All 166 kin are packed** under `public/assets/sprites/creatures/NNN_slug/` —
+  isn't packed. **All 171 kin are packed** under `public/assets/sprites/creatures/NNN_slug/` —
   5 views each (battle_front/back, icon, overworld, portrait) listed in `creatures.manifest.json`.
   Regenerate any kin's full view set from its species `art` block with
   `./venv/bin/python tools/assets/gen_creature.py <id>` (supports `--provider openai` when Google
@@ -1002,13 +1005,28 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   Anyone who sends the player out to Paul on the breakwater must also say HOW to get past the
   chained moor-gate (Reyl → Old Light → netmender's rope): the gym crew run the stage-aware
   `script.booji_gate_note` (playtest 2026-10: "go to the breakwater" alone left a player stuck).
+  **The Old Light is the R10 haunted-tower walk (2026-10):** seven 22x15 floors (top 14x11) where
+  you arrive in one north corner and the way up is in the other, so every floor is walked through
+  its hall; each hall rolls wild encounters (a whimsical tower table, 9→14 — Pearlmoor's grind bed
+  before Reyl and the fen) and an optional alcove regular (`oldlight_<id>` route trainers, F1–F5);
+  rests at the F3 tea-urn and the F6 two cups. Each floor wears its own warped kit
+  `oldlight_fN_set` (`build_oldlight_sets.py`, the interior gids — never change the order) and cue
+  `oldlight-fN` (one theme, more deranged per floor); props are drawn by `oldlightforge.py`
+  (`oldlight_*`); the cast's lines live in `content/regions/jesthouse.ts`. Pip on the Point runs
+  after you once (floats, no rope) so the breakwater is never missed.
+  R11: the hall tables are the tower's OWN clowns (`TOWER_TABLES` in the builder ⇄ `OLDLIGHT_TABLES`
+  in `build_species.py` — keep both in step), each floor has its own battle backdrop
+  (`oldlight-fN-a.webp`), and **Moll** (Tam's old stage partner, non-fighting, `MOLL` in the builder)
+  waits one floor ahead telling Tam's story. Score changes against `docs/reviews/oldlight-rubric.md`.
   Pearlmoor's side roads say "not yet" before the Tide: the fen-warden calls it out once on your first
   step into Saltreach Fen I (`script.fen_warning_step`, `flag:fen_warned`), Anth does at the allotment,
   and Andrew's Ember→Tide hint adds "leave the fen east and the hill north for later". His lines must
   read true WHEREVER he stands — he leans on a fence in Pearlmoor too (no "go north to Pearlmoor").
   A Lumenary's step_on bond-test tile in front of the warden must never answer a quest-giver's
   walk-up with a bare "not yet": `build_lumenary(aisle_steps=…)` puts the warden's current stage on
-  the same tile AHEAD of the test (Reyl: hook → where-next), since the first active trigger wins.
+  the same tile AHEAD of the test (Reyl: hook → where-next), since the first active trigger wins;
+  `exit_steps=…` adds a call-back on the tile in front of the door so you can't LEAVE without the
+  errand either (`script.reyl_call_back`, hidden once `q_south_bell` is held).
 - **Tinderwick was deliberately RE-SHUFFLED for returning players (R8, 2026-10)** — store ⇄
   cottage swapped (door tiles too; spawn (5,8)), Wren + Fenn's satchel moved out to the new west
   side area `duskapple_orchard`, a couple of signs removed on purpose. Don't "restore" the old

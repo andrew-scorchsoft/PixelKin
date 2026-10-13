@@ -1,15 +1,15 @@
 {
   "id": "pearlmoor_oldlight_5",
   "display_name": "The Old Light \u2014 The Gallery of Confident Facts",
-  "width": 14,
-  "height": 11,
+  "width": 22,
+  "height": 15,
   "tile_width": 16,
   "tile_height": 16,
   "kind": "interior",
   "tilesets": [
     {
-      "name": "interior_stone_set",
-      "image": "assets/tilesets/interior_stone_set.webp",
+      "name": "oldlight_f5_set",
+      "image": "assets/tilesets/oldlight_f5_set.webp",
       "tile_width": 16,
       "tile_height": 16,
       "first_gid": 1,
@@ -52,6 +52,22 @@
         1,
         1,
         1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
         3,
         2,
         1,
@@ -63,6 +79,14 @@
         1,
         2,
         1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
         3,
         1,
         1,
@@ -78,26 +102,6 @@
         1,
         2,
         1,
-        1,
-        1,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        1,
-        2,
-        1,
-        2,
-        1,
         2,
         1,
         2,
@@ -108,6 +112,14 @@
         1,
         1,
         1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
         1,
         2,
         1,
@@ -134,6 +146,14 @@
         1,
         2,
         1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
         1,
         1,
         1,
@@ -149,6 +169,14 @@
         1,
         2,
         1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
         1,
         2,
         1,
@@ -161,6 +189,154 @@
         2,
         1,
         2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
         1,
         1,
         1,
@@ -195,6 +371,14 @@
         6,
         6,
         6,
+        26,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
         6,
         6,
         22,
@@ -209,8 +393,16 @@
         4,
         4,
         4,
+        49,
         4,
         4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
         9,
         8,
         0,
@@ -223,6 +415,14 @@
         0,
         0,
         0,
+        49,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         9,
@@ -237,6 +437,14 @@
         0,
         0,
         0,
+        49,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         9,
@@ -244,6 +452,36 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
         0,
         0,
         0,
@@ -256,28 +494,66 @@
         9,
         19,
         36,
-        36,
         42,
         0,
         48,
         36,
         36,
+        36,
+        36,
+        36,
+        36,
+        35,
+        36,
+        36,
+        36,
+        36,
+        36,
         42,
         0,
-        0,
-        0,
-        0,
-        9,
+        48,
+        36,
+        24,
         8,
-        4,
         4,
         54,
         0,
         53,
         4,
         4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
         54,
         0,
+        53,
+        4,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -295,6 +571,14 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         9,
         8,
         0,
@@ -309,6 +593,14 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         9,
         8,
         0,
@@ -323,7 +615,59 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        50,
+        0,
+        0,
+        0,
+        13,
+        16,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        0,
+        0,
+        0,
         9,
+        14,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        0,
+        0,
+        0,
+        9,
+        14,
         15,
         7,
         7,
@@ -337,43 +681,47 @@
         7,
         7,
         7,
-        16
+        7,
+        7,
+        7,
+        17,
+        7,
+        7,
+        7,
+        16,
+        14
       ]
     }
   ],
   "objects": [
     {
       "id": "frame_cap_reyl",
-      "sprite": "interior_banner_warm",
+      "sprite": "oldlight_painting_reyl",
       "at": {
         "tx": 3,
-        "ty": 1
+        "ty": 0
       },
       "w": 1,
       "h": 2,
-      "overhang": 1,
-      "walk_under": true,
       "solid": false
     },
     {
       "id": "frame_cap_tuesday",
-      "sprite": "interior_banner_ice",
+      "sprite": "oldlight_painting_tuesday",
       "at": {
         "tx": 6,
-        "ty": 1
+        "ty": 0
       },
       "w": 1,
       "h": 2,
-      "overhang": 1,
-      "walk_under": true,
       "solid": false
     },
     {
       "id": "frame_cap_stars",
-      "sprite": "nightreach_star_banner",
+      "sprite": "oldlight_painting_stars",
       "at": {
         "tx": 9,
-        "ty": 1
+        "ty": 0
       },
       "w": 1,
       "h": 2,
@@ -381,49 +729,43 @@
     },
     {
       "id": "frame_cap_sea",
-      "sprite": "interior_banner_ice",
-      "at": {
-        "tx": 2,
-        "ty": 6
-      },
-      "w": 1,
-      "h": 2,
-      "overhang": 1,
-      "walk_under": true,
-      "solid": false
-    },
-    {
-      "id": "frame_cap_gerald",
-      "sprite": "interior_banner_warm",
+      "sprite": "oldlight_painting_sea",
       "at": {
         "tx": 5,
         "ty": 6
       },
       "w": 1,
       "h": 2,
-      "overhang": 1,
-      "walk_under": true,
       "solid": false
     },
     {
-      "id": "frame_cap_tam",
-      "sprite": "interior_banner_warm",
+      "id": "frame_cap_gerald",
+      "sprite": "oldlight_painting_gerald",
       "at": {
-        "tx": 7,
+        "tx": 10,
         "ty": 6
       },
       "w": 1,
       "h": 2,
-      "overhang": 1,
-      "walk_under": true,
+      "solid": false
+    },
+    {
+      "id": "frame_cap_tam",
+      "sprite": "oldlight_painting_ferry",
+      "at": {
+        "tx": 15,
+        "ty": 6
+      },
+      "w": 1,
+      "h": 2,
       "solid": false
     },
     {
       "id": "brazier_n",
       "sprite": "interior_brazier",
       "at": {
-        "tx": 5,
-        "ty": 2
+        "tx": 2,
+        "ty": 3
       },
       "w": 1,
       "h": 2
@@ -432,8 +774,8 @@
       "id": "brazier_s",
       "sprite": "interior_brazier",
       "at": {
-        "tx": 10,
-        "ty": 7
+        "tx": 18,
+        "ty": 9
       },
       "w": 1,
       "h": 2
@@ -442,8 +784,8 @@
       "id": "viewing_bench",
       "sprite": "interior_pew",
       "at": {
-        "tx": 4,
-        "ty": 8
+        "tx": 8,
+        "ty": 11
       },
       "w": 3,
       "h": 1
@@ -452,17 +794,421 @@
       "id": "plant",
       "sprite": "interior_plant",
       "at": {
-        "tx": 12,
-        "ty": 9
+        "tx": 1,
+        "ty": 13
       },
       "w": 1,
       "h": 1
     },
     {
+      "id": "lectern",
+      "sprite": "oldlight_joke_lectern",
+      "at": {
+        "tx": 12,
+        "ty": 10
+      },
+      "w": 1,
+      "h": 2
+    },
+    {
+      "id": "mallet",
+      "sprite": "oldlight_mallet",
+      "at": {
+        "tx": 3,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 2
+    },
+    {
+      "id": "wax_4_8",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 4,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_5_8",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 5,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_6_8",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 6,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_7_8",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 7,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_8_8",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 8,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_9_8",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 9,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_10_8",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 10,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_11_8",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 11,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_12_8",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 12,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_13_8",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 13,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_14_8",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 14,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_15_8",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 15,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_16_8",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 16,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_17_8",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 17,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_4_9",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 4,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_5_9",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 5,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_6_9",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 6,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_7_9",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 7,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_8_9",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 8,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_9_9",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 9,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_10_9",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 10,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_11_9",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 11,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_12_9",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 12,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_13_9",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 13,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_14_9",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 14,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_15_9",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 15,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_16_9",
+      "sprite": "oldlight_wax_shine",
+      "at": {
+        "tx": 16,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wax_17_9",
+      "sprite": "oldlight_wax_shine_b",
+      "at": {
+        "tx": 17,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "slick_banana_0",
+      "sprite": "oldlight_banana",
+      "at": {
+        "tx": 7,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "slick_banana_1",
+      "sprite": "oldlight_banana",
+      "at": {
+        "tx": 13,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "slick_banana_2",
+      "sprite": "oldlight_banana",
+      "at": {
+        "tx": 16,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "banana_0",
+      "sprite": "oldlight_banana",
+      "at": {
+        "tx": 7,
+        "ty": 10
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "banana_1",
+      "sprite": "oldlight_banana",
+      "at": {
+        "tx": 14,
+        "ty": 13
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "banana_2",
+      "sprite": "oldlight_banana",
+      "at": {
+        "tx": 16,
+        "ty": 10
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "laugh_meter",
+      "sprite": "oldlight_laugh_meter",
+      "at": {
+        "tx": 14,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 2
+    },
+    {
       "id": "speaking_tube",
       "sprite": "solarium_sun_mask",
       "at": {
-        "tx": 11,
+        "tx": 19,
         "ty": 2
       },
       "w": 1,
@@ -483,7 +1229,7 @@
       "id": "stairs_up_sprite",
       "sprite": "interior_stairs_up",
       "at": {
-        "tx": 12,
+        "tx": 20,
         "ty": 1
       },
       "w": 1,
@@ -510,13 +1256,13 @@
     {
       "id": "up_stairs",
       "at": {
-        "tx": 12,
+        "tx": 20,
         "ty": 2
       },
       "trigger": "step_on",
       "to_map": "pearlmoor_oldlight_6",
       "to": {
-        "tx": 10,
+        "tx": 20,
         "ty": 3
       },
       "facing": "down",
@@ -560,8 +1306,8 @@
       "id": "cap_sea",
       "kind": "sign",
       "at": {
-        "tx": 2,
-        "ty": 6
+        "tx": 5,
+        "ty": 7
       },
       "activation": "interact",
       "ref": "sign.oldlight_cap_sea"
@@ -570,8 +1316,8 @@
       "id": "cap_gerald",
       "kind": "sign",
       "at": {
-        "tx": 5,
-        "ty": 6
+        "tx": 10,
+        "ty": 7
       },
       "activation": "interact",
       "ref": "sign.oldlight_cap_gerald"
@@ -580,17 +1326,69 @@
       "id": "cap_tam",
       "kind": "sign",
       "at": {
-        "tx": 7,
-        "ty": 6
+        "tx": 15,
+        "ty": 7
       },
       "activation": "interact",
       "ref": "sign.oldlight_cap_tam"
     },
     {
-      "id": "riddle_band",
+      "id": "lectern_sign",
       "kind": "cutscene",
       "at": {
         "tx": 12,
+        "ty": 12
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_lectern"
+    },
+    {
+      "id": "waxed_floor_warn",
+      "kind": "cutscene",
+      "at": {
+        "tx": 3,
+        "ty": 7
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_waxed_floor",
+      "hidden_when_flag": "flag:oldlight_waxed_seen"
+    },
+    {
+      "id": "mallet_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 3,
+        "ty": 11
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_mallet"
+    },
+    {
+      "id": "banana_slip",
+      "kind": "cutscene",
+      "at": {
+        "tx": 7,
+        "ty": 10
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_banana",
+      "hidden_when_flag": "flag:oldlight_banana_slipped"
+    },
+    {
+      "id": "laugh_meter_sign",
+      "kind": "cutscene",
+      "at": {
+        "tx": 14,
+        "ty": 4
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_laugh_meter_f5"
+    },
+    {
+      "id": "riddle_band",
+      "kind": "cutscene",
+      "at": {
+        "tx": 20,
         "ty": 3
       },
       "activation": "step_on",
@@ -601,7 +1399,7 @@
       "id": "tube",
       "kind": "cutscene",
       "at": {
-        "tx": 11,
+        "tx": 19,
         "ty": 2
       },
       "activation": "interact",
@@ -612,7 +1410,7 @@
       "id": "tube_after",
       "kind": "dialogue",
       "at": {
-        "tx": 11,
+        "tx": 19,
         "ty": 2
       },
       "activation": "interact",
@@ -620,10 +1418,99 @@
       "requires_flag": "flag:oldlight_5_solved"
     }
   ],
-  "encounters": [],
-  "npcs": [],
+  "encounters": [
+    {
+      "id": "tower_f5",
+      "terrain": "cave",
+      "rect": {
+        "tx": 1,
+        "ty": 8,
+        "w": 20,
+        "h": 6
+      },
+      "encounter_rate": 0.07,
+      "table": [
+        {
+          "kin_id": 171,
+          "weight": 25,
+          "min_level": 12,
+          "max_level": 14
+        },
+        {
+          "kin_id": 167,
+          "weight": 25,
+          "min_level": 12,
+          "max_level": 14
+        },
+        {
+          "kin_id": 69,
+          "weight": 25,
+          "min_level": 12,
+          "max_level": 14
+        },
+        {
+          "kin_id": 169,
+          "weight": 25,
+          "min_level": 13,
+          "max_level": 14
+        }
+      ]
+    }
+  ],
+  "npcs": [
+    {
+      "id": "critic",
+      "at": {
+        "tx": 18,
+        "ty": 13
+      },
+      "facing": "up",
+      "sprite": "npc_old_woman",
+      "movement": "static",
+      "dialogue_ref": "script.oldlight_critic",
+      "defeated_flag": "flag:oldlight_critic_beaten",
+      "hidden_when_flag": "flag:oldlight_critic_beaten",
+      "sight_range": 3
+    },
+    {
+      "id": "critic_after",
+      "at": {
+        "tx": 18,
+        "ty": 13
+      },
+      "facing": "up",
+      "sprite": "npc_old_woman",
+      "movement": "look_around",
+      "dialogue_ref": "npc.oldlight_critic_after",
+      "requires_flag": "flag:oldlight_critic_beaten"
+    },
+    {
+      "id": "moll",
+      "at": {
+        "tx": 5,
+        "ty": 3
+      },
+      "facing": "down",
+      "sprite": "fisher_woman",
+      "movement": "look_around",
+      "dialogue_ref": "npc.oldlight_moll_5",
+      "hidden_when_flag": "flag:oldlight_5_solved"
+    }
+  ],
   "gates": [],
-  "music": "assets/audio/music/sunken-solarium-c.mp3",
+  "music": "assets/audio/music/oldlight-f5.mp3",
+  "flows": [
+    {
+      "id": "waxed_floor",
+      "kind": "ice",
+      "rect": {
+        "tx": 4,
+        "ty": 8,
+        "w": 14,
+        "h": 2
+      }
+    }
+  ],
   "ambience": {
     "particles": [
       {

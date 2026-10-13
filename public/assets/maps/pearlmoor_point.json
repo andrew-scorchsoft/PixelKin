@@ -106,8 +106,8 @@
       "trigger": "step_on",
       "to_map": "pearlmoor_oldlight_1",
       "to": {
-        "tx": 7,
-        "ty": 9
+        "tx": 11,
+        "ty": 13
       },
       "facing": "up",
       "transition": "door",
@@ -247,6 +247,42 @@
       },
       "activation": "interact",
       "ref": "sign.point_bench"
+    },
+    {
+      "id": "rope_reminder_7",
+      "kind": "cutscene",
+      "at": {
+        "tx": 18,
+        "ty": 7
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_rope_reminder",
+      "requires_flag": "flag:q_south_jest_done",
+      "hidden_when_flag": "flag:oldlight_rope_reminded"
+    },
+    {
+      "id": "rope_reminder_8",
+      "kind": "cutscene",
+      "at": {
+        "tx": 18,
+        "ty": 8
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_rope_reminder",
+      "requires_flag": "flag:q_south_jest_done",
+      "hidden_when_flag": "flag:oldlight_rope_reminded"
+    },
+    {
+      "id": "rope_reminder_9",
+      "kind": "cutscene",
+      "at": {
+        "tx": 18,
+        "ty": 9
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_rope_reminder",
+      "requires_flag": "flag:q_south_jest_done",
+      "hidden_when_flag": "flag:oldlight_rope_reminded"
     }
   ],
   "encounters": [],
@@ -273,6 +309,19 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_point_rocks",
       "hidden_when_flag": "flag:picked_point_rocks"
+    },
+    {
+      "id": "pip",
+      "at": {
+        "tx": 15,
+        "ty": 10
+      },
+      "facing": "up",
+      "sprite": "village_child",
+      "movement": "look_around",
+      "dialogue_ref": "script.oldlight_rope_reminder",
+      "requires_flag": "flag:q_south_jest_done",
+      "hidden_when_flag": "flag:oldlight_rope_reminded"
     }
   ],
   "gates": [],

@@ -4647,6 +4647,146 @@
         "width": 96,
         "height": 96
       }
+    },
+    "167": {
+      "slug": "jesterhalf",
+      "front": {
+        "path": "assets/sprites/creatures/167_jesterhalf/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/167_jesterhalf/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/167_jesterhalf/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/167_jesterhalf/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/167_jesterhalf/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "168": {
+      "slug": "jesterfull",
+      "front": {
+        "path": "assets/sprites/creatures/168_jesterfull/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/168_jesterfull/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/168_jesterfull/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/168_jesterfull/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/168_jesterfull/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "169": {
+      "slug": "the_smiler",
+      "front": {
+        "path": "assets/sprites/creatures/169_the_smiler/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/169_the_smiler/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/169_the_smiler/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/169_the_smiler/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/169_the_smiler/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "170": {
+      "slug": "the_exciter",
+      "front": {
+        "path": "assets/sprites/creatures/170_the_exciter/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/170_the_exciter/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/170_the_exciter/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/170_the_exciter/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/170_the_exciter/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "171": {
+      "slug": "mcclownface",
+      "front": {
+        "path": "assets/sprites/creatures/171_mcclownface/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/171_mcclownface/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/171_mcclownface/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/171_mcclownface/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/171_mcclownface/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
     }
   }
 }

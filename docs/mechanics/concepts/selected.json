@@ -4673,5 +4673,129 @@
   "hook": "Ancient, patient, rooted \u2014 the oldest thing in the world, asleep, not angry. Its weight should be felt: grounded, enormous, slow. The glowing cracks are breath, not wounds; the star inside is still warm.",
   "dex_id": 166,
   "line_primary_type": "Stone"
+ },
+ {
+  "concept_id": "X-JESTERHALF",
+  "name": "JesterHalf",
+  "types": [
+   "Light",
+   "Dark"
+  ],
+  "role": "Mixed Attacker",
+  "tier": "A",
+  "region": "jesthouse",
+  "rarity": "common",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "X-JESTERFULL",
+   "kindle_trigger": "level 24"
+  },
+  "concept": "A little two-faced tumbler that lives in the Old Light's halls. One half of it is bright and grinning, the other half dark and deadpan, and it only ever finishes half a joke: the bright side tells the setup, the dark side forgets the punchline. It practises its tumbles all night where nobody can see it fall.",
+  "visual": "A small round-bodied jester kin split straight down the middle: the left half cream-white with a gold diamond motley and a bright grinning eye, the right half deep indigo-black with a silver diamond and a sleepy deadpan eye. A two-pointed jester cap, one point gold with a tiny lit bell, one point indigo with a dark bell. Stubby arms, curly-toed shoes, a ruffled collar half gold, half indigo. At 64px it reads instantly as a cute half-light, half-dark harlequin ball.",
+  "size_cm": 40,
+  "weight_kg": 4.2,
+  "hook": "Cheerful, mischievous, a little incomplete \u2014 always half a joke short. Cute, never creepy; the split must be clean and readable.",
+  "dex_id": 167,
+  "line_primary_type": "Light"
+ },
+ {
+  "concept_id": "X-JESTERFULL",
+  "name": "JesterFull",
+  "types": [
+   "Light",
+   "Dark"
+  ],
+  "role": "Mixed Attacker",
+  "tier": "D",
+  "region": "jesthouse",
+  "rarity": "rare",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "concept": "When a JesterHalf finally finishes a joke, its two halves stop arguing and it kindles whole. A JesterFull tells the setup with its bright side and lands the punchline with its dark side, and the timing is perfect. It bows after every battle, win or lose.",
+  "visual": "A tall, graceful jester kin, now whole: a lithe figure in quartered motley (cream-gold and indigo-black diamonds checkered across it), a grand three-pointed cap with bells that glow gold and silver, a theatrical ruffled collar, long pointed sleeves, and a jester's sceptre topped with a little laughing-and-solemn double mask. Both eyes now open and bright. Poised mid-bow. At 64px: a dignified, balanced harlequin in gold and indigo.",
+  "size_cm": 150,
+  "weight_kg": 38,
+  "hook": "Whole, poised, theatrical \u2014 the joke finally lands. Graceful, warm, a showman who respects the audience.",
+  "dex_id": 168,
+  "line_primary_type": "Light"
+ },
+ {
+  "concept_id": "X-THESMILER",
+  "name": "The Smiler",
+  "types": [
+   "Light"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "A",
+  "region": "jesthouse",
+  "rarity": "common",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "X-THEEXCITER",
+   "kindle_trigger": "level 22"
+  },
+  "concept": "A round, beaming little kin that cannot stop smiling, even in its sleep. It drifts after anyone who looks glum and hovers at the edge of their vision, grinning, until they smile back. The Old Light's regulars swear it learned the trick from Mr. Punchwheel's painted face.",
+  "visual": "A small floating round kin like a cheerful lantern-moon: a soft cream-yellow sphere body with rosy painted cheeks and an enormous friendly crescent smile, two shining button eyes, a tiny red clown nose, and a little ruff of pastel-striped frill around its middle. Two small stubby hands that clap. A faint warm glow around it. At 64px it reads as a happy floating smiley-ball with a clown nose \u2014 cute, cosy, never sinister.",
+  "size_cm": 35,
+  "weight_kg": 1.1,
+  "hook": "Relentlessly cheerful and sweet. The joke is how determined its happiness is \u2014 keep it warm and huggable, NOT a creepy clown.",
+  "dex_id": 169,
+  "line_primary_type": "Light"
+ },
+ {
+  "concept_id": "X-THEEXCITER",
+  "name": "The Exciter",
+  "types": [
+   "Light",
+   "Storm"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "D",
+  "region": "jesthouse",
+  "rarity": "rare",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "concept": "A Smiler that got far too excited. Its smile has gone off like a firework: it fizzes, crackles and bounces off the walls, laughing in sparks, unable to keep still for even a second. It is thrilled about absolutely everything, especially you.",
+  "visual": "A larger bouncing kin on a big coiled spring instead of legs: a round cream-yellow face body with a HUGE ecstatic open-mouthed grin, wide sparkling starry eyes, a red clown nose, little crackling lightning-bolt sparks and confetti flying off it, a wild ruff of electric-blue and pastel striped frill, and arms flung up in delight. Little zig-zag spark lines around it. At 64px it reads as an overjoyed, electrified smiley on a spring \u2014 over the top, silly, lovable.",
+  "size_cm": 90,
+  "weight_kg": 14,
+  "hook": "Pure overexcitement: hyperactive, sparking, bouncing, delighted. Even more exuberant than the Smiler. Joyful chaos, never menacing.",
+  "dex_id": 170,
+  "line_primary_type": "Light"
+ },
+ {
+  "concept_id": "X-MCCLOWNFACE",
+  "name": "McClownface",
+  "types": [
+   "Tide",
+   "Light"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "B",
+  "region": "jesthouse",
+  "rarity": "uncommon",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "concept": "A stout, bumbling clown kin that carries its own water in a flower on its chest and squirts it at anything that looks too serious, including itself in mirrors. It honks a rubber horn instead of a cry. Fishers on the quay say a McClownface once put out a lamp by accident and has been apologising ever since.",
+  "visual": "A plump, waddling kin with a big round body in baggy polka-dot overalls (sea-blue with white dots), a squirting daisy-flower on its chest dripping water, a fluffy tuft of curly hair in bright tide-blue, a large round red clown nose, a wide painted grin, enormous floppy shoes, and a little brass rubber-bulb horn held in one hand. A small splash of water droplets around the flower. At 64px it reads as a cheerful chunky seaside clown with a squirting flower.",
+  "size_cm": 95,
+  "weight_kg": 48,
+  "hook": "Bumbling, good-natured slapstick \u2014 a seaside clown who means well. Silly, warm, physical comedy.",
+  "dex_id": 171,
+  "line_primary_type": "Tide"
  }
 ]

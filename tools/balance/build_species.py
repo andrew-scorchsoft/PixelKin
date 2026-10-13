@@ -170,8 +170,11 @@ REGION_AREA = {
     "outer": ("coldfog_marches", (46, 54)),
     "central": ("umbral_spire", (55, 62)),
     "post": ("dawnstead", (50, 70)),
+    # the Old Light's own kin (#167-171, R10): their default row names a curated
+    # tower floor, so it is dropped — only the mirrored tower tables place them
+    "jesthouse": ("pearlmoor_oldlight_1", (9, 14)),
 }
-TERRAIN = {"south":"tall_grass","east":"cave","north":"tall_grass","west":"water","outer":"tall_grass","central":"cave","post":"tall_grass"}
+TERRAIN = {"jesthouse":"cave","south":"tall_grass","east":"cave","north":"tall_grass","west":"water","outer":"tall_grass","central":"cave","post":"tall_grass"}
 
 def encounters(region, rarity, tier, stage, scripted):
     area, (blo, bhi) = REGION_AREA.get(region, ("dimglass_coast", (3, 12)))
@@ -1008,6 +1011,11 @@ for _slug, _rows_ in MIRELIGHT_ENCOUNTERS.items():
 # only EXTRA_ENCOUNTERS rows may. (North is the first fully-built region; its
 # default "galehigh_terraces" band rows predated the maps.)
 CURATED_AREAS = {
+    # the Old Light's seven floors (R10, 2026-10): the halls' tower tables are the
+    # truth (build_pearlmoor_oldlight.py), mirrored via OLDLIGHT_TABLES below
+    "pearlmoor_oldlight_1", "pearlmoor_oldlight_2", "pearlmoor_oldlight_3",
+    "pearlmoor_oldlight_4", "pearlmoor_oldlight_5", "pearlmoor_oldlight_6",
+    "pearlmoor_oldlight_top",
     "galehigh_terraces", "windward_stair_i", "windward_stair_ii", "wind_eye",
     "thunderroost", "pale_vault_glacier", "pale_vault_undercroft",
     # the West (W6): the 12 built encounter-bearing maps. "coldfog_marches"
@@ -1062,6 +1070,24 @@ CURATED_AREAS = {
     # the hollow is the legendary's room, listed so nothing generated claims it
     "mirelight_landing", "mirelight_glassmere", "mirelight_chapel", "lanthorne_hollow",
 }
+
+# The Old Light's hall tables (R10) — MIRROR of build_pearlmoor_oldlight.py's
+# `encounters(...)` rows (the map is the truth): floor -> (slug, weight, lo, hi).
+# Weight -> rarity as everywhere: >=30 common, >=15 uncommon, else rare.
+OLDLIGHT_TABLES = {
+    1: [("glimflit", 30, 9, 11), ("the_smiler", 35, 9, 11), ("wickmoth", 20, 9, 11), ("riddlestone", 15, 10, 11)],
+    2: [("the_smiler", 25, 10, 12), ("jesterhalf", 30, 10, 12), ("glimflit", 20, 10, 12), ("spirlet", 15, 10, 12), ("lumpin", 10, 11, 12)],
+    3: [("snoozlet", 40, 10, 12), ("jesterhalf", 30, 10, 12), ("spirlet", 30, 11, 12)],
+    4: [("jesterhalf", 30, 11, 13), ("riddlestone", 25, 11, 13), ("spirlet", 25, 11, 13), ("mcclownface", 20, 12, 13)],
+    5: [("mcclownface", 25, 12, 14), ("jesterhalf", 25, 12, 14), ("riddlestone", 25, 12, 14), ("the_smiler", 25, 13, 14)],
+    6: [("spirlet", 50, 13, 14), ("snoozlet", 30, 13, 14), ("mcclownface", 20, 13, 14)],
+}
+for _floor, _rows_ in OLDLIGHT_TABLES.items():
+    for _slug, _w, _lo, _hi in _rows_:
+        EXTRA_ENCOUNTERS.setdefault(_slug, []).append({
+            "area": f"pearlmoor_oldlight_{_floor}", "terrain": "cave",
+            "rarity": "common" if _w >= 30 else "uncommon" if _w >= 15 else "rare",
+            "min": _lo, "max": _hi})
 
 # Kin that are FIXED quest catches (a legendaryBattle set-piece), even though
 # tier/rarity alone wouldn't mark them scripted. #148 Lampling is C1
@@ -1195,8 +1221,20 @@ CANON = {
     # "The Sunniest House in the Dark" (Georgina's ace + the kitten she gifts).
     # SCRIPTED_KIN (no open-table rows). Stats PINNED (a fragile mirror-axis glass
     # cannon — high spa/spe, low bulk); ability/dex/art/learnset pinned too.
+    # #169 The Smiler (R11, the Old Light's clowns): the generated "Utility /
+    # Speedster" spread (47s + spe 79) sat at ~9% in the sim, the roster's floor.
+    # Same 312 BST re-cut as a physical clapper (it claps its foes silly) with a
+    # physical Light ladder from lv 1; best of the spreads probed (~12%, level
+    # with the other mono-Light A-tier babies such as Glimflit).
+    "the_smiler": {
+        "stats": {"hp": 55, "atk": 62, "def": 50, "spa": 30, "spd": 45, "spe": 70},
+        "levelup": [(1, "quick_jab"), (1, "glimmer"), (7, "dazzle_flash"),
+                    (11, "lumen_cut"), (20, "radiant_strike")],
+    },
     "gloampurr": {
-        "stats": {"hp": 60, "atk": 50, "def": 55, "spa": 110, "spd": 55, "spe": 88},
+        # (2026-10) spa 110->98, spe 88->84 (BST 418->402, inside the C band): it sat on the C-tier outlier line
+        # (~61-65% vs the ~64.5% gate across seeds) before the R10 kin; this clears it at every seed tried.
+        "stats": {"hp": 60, "atk": 50, "def": 55, "spa": 98, "spd": 55, "spe": 84},
         "ability": "daybringer", "hidden_ability": "nightsight",
         "entry": "A small winged cat the colour of a violet dusk, with a coal of warm gold burning low in its chest. It does not fear the dark — it curls up in the deepest of it and purrs until the gloom glows back, carrying its own little sunrise wherever the night is thickest.",
         "category": "Dusklight Cat Kin",

@@ -1,0 +1,63 @@
+{
+  "title": "The Old Light F5 - The Gallery of Confident Facts",
+  "_note": "Old Light floor 5 (pearlmoor_oldlight_5): the hall where Punchwheel states wrong facts with total conviction. Opens on a pompous 2-bar brass fanfare of the motif that MISFIRES - it lands on a confidently wrong Gb chord (Db in the lead) and deflates with a noise blat - then the theme is played with wrong notes held loud and proud: chromatic slips (F#, B natural, Ab) that resolve a beat later, a whole-tone tumble over an augmented C7 in place of the half cadence, a phrase that lurches UP a whole tone into G and back to F as if nothing happened, D minor declared major, and a final run home that overshoots to C# and lands on Gb before correcting to F. Laughs are whole-tone (no home key). Brass doubles the lead an octave down in the fanfare and the B section. 112 BPM, 4/4, F major (allegedly), 26 bars.",
+  "era": "snes",
+  "tempo": 112,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "F major (allegedly)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "notes": "C4et@110 C4et@100 C4et@100 F4q@118 G4q@112 A4q@118 C5et@110 C5et@100 C5et@100 Db5h.@124 C4e F4e G4q A4e G4e F#4q@122 rq A4e B4e C5q. Ab4e@118 Bb4e Ab4e F#4e E4e D4e E4e F#4q C4q rh. D4e G4e A4q B4e A4e G4q rq B4e C5e D5q. E5e C5e Bb4e A4e G4e A4q G4q F4q rh. D5e C5e Bb4e A4e Bb4q F4q C5e B4e A4e G4e A4q F#4q@120 G4e A4e B4e C5e D5q B4q C5q rh. D5e C5e Bb4e A4e Bb4q D5q C#5e D5e E5e C#5e A4q rq D5e F#5e E5e D5e C5q Bb4q G4q rh. C4e F4e G4q A4e G4e F4q rq A4e Bb4e C5q. A4e Bb4e Ab4e F#4e E4e D4e E4e F#4q C4q rh. C4e F4e G4q A4e G4e F4q rq A4e Bb4e C5q. D5e F5e E5e D5e C5e Bb4e G4e E4e C#4e@120 Gb4e@124 F4e rh."
+    },
+    {
+      "name": "pompous double",
+      "voice": "brass",
+      "octave": 3,
+      "gain": 0.42,
+      "notes": "C3et@96 C3et@96 C3et@96 F3q@96 G3q@96 A3q@96 C4et@96 C4et@96 C4et@96 Db4h.@96 rw rw rw rw rw rw rw rw D4e@96 C4e@96 Bb3e@96 A3e@96 Bb3q@96 F3q@96 C4e@96 B3e@96 A3e@96 G3e@96 A3q@96 Gb3q@96 G3e@96 A3e@96 B3e@96 C4e@96 D4q@96 B3q@96 C4q@96 rh. D4e@96 C4e@96 Bb3e@96 A3e@96 Bb3q@96 D4q@96 Db4e@96 D4e@96 E4e@96 Db4e@96 A3q@96 rq D4e@96 Gb4e@96 E4e@96 D4e@96 C4q@96 Bb3q@96 G3q@96 rw rw rw rw rw rw rw rw rh."
+    },
+    {
+      "name": "laugh",
+      "voice": "pulse12",
+      "octave": 5,
+      "gain": 0.6,
+      "notes": "rw rw rw rw rw rh Bb5~Ab5s@104 rs Ab5~F#5s@96 rs F#5~E5s@88 rw rw rw rh re. Bb5~Ab5s@104 rs Ab5~F#5s@96 rs F#5~E5s@88 rw rw rw rh re. Bb5~Ab5s@104 rs Ab5~F#5s@96 rs F#5~E5s@88 rw rw rw rh re. Bb5~Ab5s@104 rs Ab5~F#5s@96 rs F#5~E5s@88 rw rw rw rh re. Bb5~Ab5s@104 rs Ab5~F#5s@96 rs F#5~E5s@88 rw rw rw rh re. Bb5~Ab5s@104 rs Ab5~F#5s@96 rs F#5~E5s@88 re."
+    },
+    {
+      "name": "pfft",
+      "voice": "noise",
+      "octave": 5,
+      "gain": 0.32,
+      "notes": "rw rh. C5~C3q@96 rw rw rw rh.. C6~C4s@88 rw rw rw rh.. rs C6~C4s@88 rw rw rw rh.. rs C6~C4s@88 rw rw rw rh.. rs C6~C4s@88 rw rw rw rh.. rs C6~C4s@88 rw rw rw rh.. rs C6~C4s@88 rs"
+    },
+    {
+      "name": "brass stabs",
+      "voice": "brass",
+      "octave": 3,
+      "gain": 0.34,
+      "notes": "F3+A3+C4w@96 F3+A3+C4q@96 Gb3+Bb3+Db4h.@110 rq A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. A2+C3+Gb3e@84 rq. Bb2+E3+Ab3e@84 rq. Bb2+E3+Ab3e@84 rq. Bb2+E3+Ab3e@84 rq. Bb2+E3+Ab3e@84 rq. B2+D3+G3e@84 rq. B2+D3+G3e@84 rq. B2+D3+G3e@84 rq. B2+D3+Ab3e@84 rq. Bb2+D3+G3e@84 rq. Bb2+E3+G3e@84 rq. A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. Bb2+D3+F3e@84 rq. Bb2+D3+F3e@84 rq. A2+C3+F3e@84 rq. A2+C3+Gb3e@84 rq. B2+D3+F3e@84 rq. B2+D3+F3e@84 rq. Bb2+E3+G3e@84 rq. Bb2+E3+G3e@84 rq. Bb2+D3+F3e@84 rq. Bb2+D3+F3e@84 rq. Db3+E3+G3e@84 rq. Db3+E3+G3e@84 rq. A2+C3+Gb3e@84 rq. Bb2+E3+G3e@84 rq. Bb2+E3+G3e@84 rq. Bb2+E3+G3e@84 rq. A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. A2+C3+Gb3e@84 rq. Bb2+E3+Ab3e@84 rq. Bb2+E3+Ab3e@84 rq. Bb2+E3+Ab3e@84 rq. Bb2+E3+Ab3e@84 rq. A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. A2+C3+Gb3e@84 rq. Bb2+D3+G3e@84 rq. Bb2+E3+G3e@84 rq. A2+C3+F3e@84 rq. Bb2+E3+G3e@84 re"
+    },
+    {
+      "name": "bass",
+      "voice": "bass",
+      "octave": 2,
+      "gain": 0.85,
+      "notes": "F2h@110 C2h@100 F2q@110 Gb2h.@112 F2q@104 rq C3q@92 rq F2q@104 rq D3q@92 rq C3q@104 rq Ab2q@92 rq C3q@104 rq Ab2q@92 rq G2q@104 rq D3q@92 rq G2q@104 rq E2q@92 rq G2q@104 rq C3q@92 rq F2q@104 rq C3q@92 rq Bb2q@104 rq F2q@92 rq F2q@104 rq D3q@92 rq G2q@104 rq D3q@92 rq C3q@104 rq G2q@92 rq Bb2q@104 rq F2q@92 rq A2q@104 rq E2q@92 rq D3q@104 rq C3q@92 rq C3q@104 rq G2q@92 rq F2q@104 rq C3q@92 rq F2q@104 rq D3q@92 rq C3q@104 rq Ab2q@92 rq C3q@104 rq Ab2q@92 rq F2q@104 rq C3q@92 rq F2q@104 rq D3q@92 rq G2q@104 rq C3q@92 rq F2q@104 rq C3q@100 C2q@104"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.45,
+      "notes": "crashe tome tome tome tome tome kicke snaree kicke tome tome tome tomq crashq kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke rq. kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate tome tome crashq kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke rq. kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate tome tome crashq kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke rq. kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate tome tome crashq"
+    }
+  ]
+}

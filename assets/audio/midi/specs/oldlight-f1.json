@@ -1,0 +1,63 @@
+{
+  "title": "The Old Light F1 - The Lobby of Groaners",
+  "_note": "Pearlmoor Old Light, floor 1 (pearlmoor_oldlight_1). MR. PUNCHWHEEL's theme (\"Punchwheel's Patter\") played straight: a bouncy music-hall march, oom-pah bass + brass pah-stabs, a cheeky pulse25 lead, and at every 4th bar the lead stops so a pulse12 \"ha-ha-ha\" (three staccato falling glides) and a noise \"pfft\" fill the gap; a ba-dum-tss + bell ding closes each 8-bar section. Vesper motif bounced: C-F-G lift, A-G-F settle, stated whole in bar 1. snes register on the chip engine. 126 BPM, 4/4, F major, A(8) B(8) A'(8) = 24 bars. Bar 24 walks the bass C-D-E into bar 1's F.",
+  "era": "snes",
+  "tempo": 126,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "F major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "notes": "C4e F4e G4q A4e G4e F4q rq A4e Bb4e C5q. A4e Bb4e A4e G4e F4e E4e F4e G4q C4q rh. C4e F4e G4q A4e G4e F4q rq A4e Bb4e C5q. D5e C5e Bb4e A4e G4e A4q G4q F4q rh. D5e C5e Bb4e A4e Bb4q F4q C5e Bb4e A4e G4e A4q F4q G4e A4e B4e C5e D5q B4q C5q rh. D5e C5e Bb4e A4e Bb4q D5q C#5e D5e E5e C#5e A4q rq D5e F5e E5e D5e C5q Bb4q G4q rh. C4e F4e G4q A4e G4e F4q rq A4e Bb4e C5q. A4e Bb4e A4e G4e F4e E4e F4e G4q C4q rh. C4e F4e G4q A4e G4e F4q rq A4e Bb4e C5q. D5e F5e E5e D5e C5e Bb4e G4e E4e C4e F4q rh."
+    },
+    {
+      "name": "laugh",
+      "voice": "pulse12",
+      "octave": 5,
+      "gain": 0.62,
+      "notes": "rw rw rw rh C6~Bb5s@100 rs Bb5~G5s@92 rs G5~E5s@84 rw rw rw rh re. C6~A5s@100 rs A5~F5s@92 rs F5~C5s@84 rw rw rw rh re. C6~Bb5s@100 rs Bb5~G5s@92 rs G5~E5s@84 rw rw rw rh re. C6~Bb5s@100 rs Bb5~G5s@92 rs G5~E5s@84 rw rw rw rh re. C6~Bb5s@100 rs Bb5~G5s@92 rs G5~E5s@84 rw rw rw rh re. C6~Bb5s@100 rs Bb5~G5s@92 rs G5~E5s@84 re."
+    },
+    {
+      "name": "pfft",
+      "voice": "noise",
+      "octave": 5,
+      "gain": 0.3,
+      "notes": "rw rw rw rh.. C6~C4s@88 rw rw rw rh.. rs C6~C4s@88 rw rw rw rh.. rs C6~C4s@88 rw rw rw rh.. rs C6~C4s@88 rw rw rw rh.. rs C6~C4s@88 rw rw rw rh.. rs C6~C4s@88 rs"
+    },
+    {
+      "name": "brass",
+      "voice": "brass",
+      "octave": 3,
+      "gain": 0.36,
+      "notes": "rq A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. A2+C3+Gb3e@84 rq. Bb2+D3+G3e@84 rq. Bb2+E3+G3e@84 rq. Bb2+E3+G3e@84 rq. Bb2+E3+G3e@84 rq. A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. A2+C3+Gb3e@84 rq. Bb2+D3+G3e@84 rq. Bb2+E3+G3e@84 rq. A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. Bb2+D3+F3e@84 rq. Bb2+D3+F3e@84 rq. A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. B2+D3+F3e@84 rq. B2+D3+F3e@84 rq. Bb2+E3+G3e@84 rq. Bb2+E3+G3e@84 rq. Bb2+D3+F3e@84 rq. Bb2+D3+F3e@84 rq. Db3+E3+G3e@84 rq. Db3+E3+G3e@84 rq. A2+D3+F3e@84 rq. Bb2+E3+G3e@84 rq. Bb2+E3+G3e@84 rq. Bb2+E3+G3e@84 rq. A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. A2+C3+Gb3e@84 rq. Bb2+D3+G3e@84 rq. Bb2+E3+G3e@84 rq. Bb2+E3+G3e@84 rq. Bb2+E3+G3e@84 rq. A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. A2+C3+F3e@84 rq. A2+C3+Gb3e@84 rq. Bb2+D3+G3e@84 rq. Bb2+E3+G3e@84 rq. A2+C3+F3e@84 rq. Bb2+E3+G3e@84 re"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.92,
+      "notes": "F2q@104 rq C3q@92 rq F2q@104 rq D3q@92 rq G2q@104 rq C3q@92 rq C3q@104 rq G2q@92 rq F2q@104 rq C3q@92 rq F2q@104 rq D3q@92 rq G2q@104 rq C3q@92 rq F2q@104 rq C3q@92 rq Bb2q@104 rq F2q@92 rq F2q@104 rq C3q@92 rq G2q@104 rq D3q@92 rq C3q@104 rq G2q@92 rq Bb2q@104 rq F2q@92 rq A2q@104 rq E2q@92 rq D3q@104 rq C3q@92 rq C3q@104 rq G2q@92 rq F2q@104 rq C3q@92 rq F2q@104 rq D3q@92 rq G2q@104 rq C3q@92 rq C3q@104 rq G2q@92 rq F2q@104 rq C3q@92 rq F2q@104 rq D3q@92 rq G2q@104 rq C3q@92 rq F2q@104 rq C3e@96 D3e@96 E3q@100"
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 6,
+      "gain": 0.3,
+      "notes": "rw rw rw rw rw rw rw rh. F6q@80 rw rw rw rw rw rw rw rh. E6q@80 rw rw rw rw rw rw rw rh. F6q@80"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.42,
+      "notes": "kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke rq. kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate tome tome crashq kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke rq. kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate tome tome crashq kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke rq. kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate kicke hate snaree hate tome tome crashq"
+    }
+  ]
+}

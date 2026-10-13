@@ -1,9 +1,9 @@
-# PixelKin — The Dex (166)
+# PixelKin — The Dex (171)
 
 > Generated from `src/game/data/species.json` by `tools/balance/gen_docs.py`. Every entry is original (VISION.md). Lines show kindling chains (→).
 
-- **Total:** 166  |  **Tiers:** A:33 B:20 C:40 D:48 E:21 F:4
-- **Primary types:** Ember:18  Tide:19  Verdant:20  Stone:17  Storm:17  Frost:15  Solar:17  Lunar:15  Light:16  Dark:12
+- **Total:** 171  |  **Tiers:** A:35 B:21 C:40 D:50 E:21 F:4
+- **Primary types:** Ember:18  Tide:20  Verdant:20  Stone:17  Storm:17  Frost:15  Solar:17  Lunar:15  Light:20  Dark:12
 
 
 ## South — Tinderwick / coast (Ember, Tide)
@@ -93,7 +93,7 @@
 | <img src="../../public/assets/sprites/creatures/068_fernlance/battle_front.webp" width="48" alt="Fernlance"> | 68 | **Fernlance** | Verdant/Light | D | Special Sweeper | 498 | (from Fennlight) | 57 | 380cm/95kg | A fully adult fern-serpent, now as long as a felled tree, wreathed in blazing biolumines… |
 | <img src="../../public/assets/sprites/creatures/069_riddlestone/battle_front.webp" width="48" alt="Riddlestone"> | 69 | **Riddlestone** | Stone | C | Special Wall | 418 |  | 120 | 120cm/240kg | A sphinx-like cave construct that has formed naturally from layered sedimentary stone; i… |
 | <img src="../../public/assets/sprites/creatures/070_mycovast/battle_front.webp" width="48" alt="Mycovast"> | 70 | **Mycovast** | Verdant/Stone | E | Special Tank | 558 |  | 24 | 300cm/2200kg | The apex kin of Spore Grotto — a vast, ancient fungal titan that has been growing throug… |
-| <img src="../../public/assets/sprites/creatures/164_gloampurr/battle_front.webp" width="48" alt="Gloampurr"> | 164 | **Gloampurr** | Lunar/Solar | C | Special Sweeper | 418 |  | 112 | 42cm/9kg | A small winged cat the colour of a violet dusk, with a coal of warm gold burning low in … |
+| <img src="../../public/assets/sprites/creatures/164_gloampurr/battle_front.webp" width="48" alt="Gloampurr"> | 164 | **Gloampurr** | Lunar/Solar | C | Special Sweeper | 402 |  | 112 | 42cm/9kg | A small winged cat the colour of a violet dusk, with a coal of warm gold burning low in … |
 | <img src="../../public/assets/sprites/creatures/165_lanthorne/battle_front.webp" width="48" alt="Lanthorne"> | 165 | **Lanthorne** | Tide/Light | E | Special Wall | 558 |  | 24 | 340cm/140kg | The Mirelight — the fen's own lamp, which once walked the drowned causeway ahead of lost… |
 
 ## North — Galehigh & Pale Vault (Storm, Frost)

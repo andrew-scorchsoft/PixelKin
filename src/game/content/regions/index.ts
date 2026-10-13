@@ -25,6 +25,8 @@ import { HOTEL_DIALOGUE, HOTEL_SCRIPTS } from './hotel';
 import { KITCHENS_DIALOGUE, KITCHENS_SCRIPTS } from './kitchens';
 // Paul's House (2026-10): the Booji-Wooji Man's home on Wayward Rise.
 import { PAUL_DIALOGUE, PAUL_SCRIPTS } from './paul';
+// The Old Light, R10 (2026-10): the jest-house's regulars, props and Pip.
+import { JESTHOUSE_DIALOGUE, JESTHOUSE_SCRIPTS } from './jesthouse';
 
 export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SOUTH_SCRIPTS,
@@ -42,6 +44,7 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...HOTEL_SCRIPTS,
   ...KITCHENS_SCRIPTS,
   ...PAUL_SCRIPTS,
+  ...JESTHOUSE_SCRIPTS,
 };
 
 export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
@@ -60,4 +63,5 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...HOTEL_DIALOGUE,
   ...KITCHENS_DIALOGUE,
   ...PAUL_DIALOGUE,
+  ...JESTHOUSE_DIALOGUE,
 };

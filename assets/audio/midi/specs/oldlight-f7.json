@@ -1,0 +1,70 @@
+{
+  "title": "The Old Light F7 - The Winding Room",
+  "_note": "Old Light top floor (pearlmoor_oldlight_top), Punchwheel's winding room: full derangement that still loops. The theme runs in 8 four-bar phrases, each a minor third HIGHER than the last (F -> Ab -> B -> D, then the spring snaps back to F - a lead \"boing\" glide D6->F4 at the end of each winding - so the seam is just one more snap). Every phrase LURCHES: either drag-then-rush (its first bar augmented to half speed, the rest crammed into double time) or rush-then-drag, with the oom-pah stretching and squashing to match; under it a clockwork ratchet of hats accelerates quarters -> 8ths -> 16ths -> 16th-triplets each phrase (the wind-up). Each phrase's 4th bar stacks THREE laughs - pulse12 in key, a low pulse25 a tritone off, a bell a semitone off - and a double pfft. 144 BPM, 4/4, keys cycling by minor thirds from F, 32 bars.",
+  "era": "snes",
+  "tempo": 144,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "F -> Ab -> B -> D (minor-third cycle)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 1.0,
+      "notes": "C4q F4q G4h A4q G4q F4h re A4s Bb4s C5e. A4s Bb4s A4s G4s F4s E4s F4s G4e C4q rh. Eb4s Ab4s Bb4e C5s Bb4s Ab4e re C5s Db5s Eb5e. F5s Eb5q Db5q C5q Bb4q C5h Bb4h Ab4q rh. G#5q F#5q E5q D#5q E5h B4h F#5s E5s D#5s C#5s D#5e B4e C#5s D#5s F5s F#5s G#5e F5e F#5q rh. B5s A5s G5s Gb5s G5e B5e Bb5s B5s Db6s Bb5s Gb5e re B5q D6q Db6q B5q A5h G5h E5q rh D6~F4q@110 C4s F4s G4e A4s G4s F4e re A4s Bb4s C5e. A4s Bb4q A4q G4q F4q E4q F4q G4h C4q rh. Eb4q Ab4q Bb4h C5q Bb4q Ab4h re C5s Db5s Eb5e. F5s Ab5s G5s F5s Eb5s Db5s Bb4s G4s Eb4s Ab4q rh. G#5s F#5s E5s D#5s E5e B4e F#5s E5s D#5s C#5s D#5e B4e C#5q D#5q F5q F#5q G#5h F5h F#5q rh. B5q A5q G5q Gb5q G5h B5h Bb5s B5s Db6s Bb5s Gb5e re B5s D6s Db6s B5s A5e G5e E5q rh D6~F4q@110"
+    },
+    {
+      "name": "laugh",
+      "voice": "pulse12",
+      "octave": 5,
+      "gain": 0.55,
+      "notes": "rw rw rw rq C6~Bb5s@100 rs Bb5~G5s@92 rs G5~E5s@84 rw rw rw rh re. C6~Ab5s@100 rs Ab5~Eb5s@92 rs Eb5~C5s@84 rw rw rw rh re. Bb5~Gb5s@100 rs Gb5~E5s@92 rs E5~Db5s@84 rw rw rw rh re. A5~G5s@100 rs G5~E5s@92 rs E5~Db5s@84 rw rw rw rh re. C6~Bb5s@100 rs Bb5~G5s@92 rs G5~E5s@84 rw rw rw rh re. Bb5~G5s@100 rs G5~Eb5s@92 rs Eb5~Db5s@84 rw rw rw rh re. Bb5~Gb5s@100 rs Gb5~E5s@92 rs E5~Db5s@84 rw rw rw rh re. A5~G5s@100 rs G5~E5s@92 rs E5~Db5s@84 rq. rs"
+    },
+    {
+      "name": "laugh (tritone off)",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.4,
+      "notes": "rw rw rw rq. Bb4~Gb4s@92 rs Gb4~E4s@84 rs E4~Db4s@76 rw rw rw rh re. A4~Gb4s@92 rs Gb4~D4s@84 rs A4~Gb4s@76 rw rw rw rh re. C5~Bb4s@92 rs Bb4~G4s@84 rs G4~E4s@76 rw rw rw rh re. Bb4~G4s@92 rs G4~Eb4s@84 rs Eb4~Db4s@76 rw rw rw rh re. Bb4~Gb4s@92 rs Gb4~E4s@84 rs E4~Db4s@76 rw rw rw rh re. A4~G4s@92 rs G4~E4s@84 rs E4~Db4s@76 rw rw rw rh re. C5~Bb4s@92 rs Bb4~G4s@84 rs G4~E4s@76 rw rw rw rh re. Bb4~G4s@92 rs G4~Eb4s@84 rs Eb4~Db4s@76 rq rs"
+    },
+    {
+      "name": "laugh (semitone off)",
+      "voice": "bell",
+      "octave": 6,
+      "gain": 0.32,
+      "notes": "rw rw rw rh B6~Ab6s@80 rs Ab6~F6s@72 rs F6~Db6s@64 rw rw rw rh re. A6~E6s@80 rs E6~Db6s@72 rs A6~E6s@64 rw rw rw rh re. B6~G6s@80 rs G6~F6s@72 rs F6~D6s@64 rw rw rw rh re. Bb6~Ab6s@80 rs Ab6~F6s@72 rs F6~D6s@64 rw rw rw rh re. B6~Ab6s@80 rs Ab6~F6s@72 rs F6~Db6s@64 rw rw rw rh re. B6~Ab6s@80 rs Ab6~E6s@72 rs E6~D6s@64 rw rw rw rh re. B6~G6s@80 rs G6~F6s@72 rs F6~D6s@64 rw rw rw rh re. Bb6~Ab6s@80 rs Ab6~F6s@72 rs F6~D6s@64 re."
+    },
+    {
+      "name": "pfft",
+      "voice": "noise",
+      "octave": 5,
+      "gain": 0.3,
+      "notes": "rw rw rw rh. C6~C4s@88 rs D6~D4s@96 rw rw rw rh. rs C6~C4s@88 rs D6~D4s@96 rw rw rw rh. rs C6~C4s@88 rs D6~D4s@96 rw rw rw rh. rs C6~C4s@88 rw rw rw rh.. rs C6~C4s@88 rs D6~D4s@96 rw rw rw rh. rs C6~C4s@88 rs D6~D4s@96 rw rw rw rh. rs C6~C4s@88 rs D6~D4s@96 rw rw rw rh. rs C6~C4s@88 re."
+    },
+    {
+      "name": "brass",
+      "voice": "brass",
+      "octave": 3,
+      "gain": 0.32,
+      "notes": "rh A2+C3e@86 rh.. A2+C3e@86 rh A2+C3e@86 re C3+Gb3e@86 re Bb2+D3e@86 re Bb2+E3e@86 rw re C3+Eb3e@86 re C3+Eb3e@86 re C3+Eb3e@86 re A2+Eb3e@86 rh Db3+F3e@86 rh.. Db3+G3e@86 rw rh.. B2+G#3e@86 rh.. B2+G#3e@86 rh D#3+F#3e@86 re D#3+F#3e@86 re B2+F3e@86 re B2+F3e@86 rw re B2+D3e@86 re B2+D3e@86 re Bb2+E3e@86 re Bb2+E3e@86 rh D3+Gb3e@86 rh.. Db3+G3e@86 rw rh A2+C3e@86 re A2+C3e@86 re A2+C3e@86 re C3+Gb3e@86 rh Bb2+D3e@86 rh.. Bb2+E3e@86 rw rh.. C3+Eb3e@86 rh.. C3+Eb3e@86 rh C3+Eb3e@86 re A2+Eb3e@86 re Db3+F3e@86 re Db3+G3e@86 rw re B2+G#3e@86 re B2+G#3e@86 re D#3+F#3e@86 re D#3+F#3e@86 rh B2+F3e@86 rh.. B2+F3e@86 rw rh.. B2+D3e@86 rh.. B2+D3e@86 rh Bb2+E3e@86 re Bb2+E3e@86 re D3+Gb3e@86 re Db3+G3e@86 rw"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.92,
+      "notes": "F2h@106 rh F2h@106 rh F2e@106 re D3e@106 re G2e@106 re C3e@106 re C3q@106 rh. Ab2e@106 re Ab2e@106 re Ab2e@106 re F2e@106 re Bb2h@106 rh Eb3h@106 rh Ab2q@106 rh. E2h@106 rh E2h@106 rh B2e@106 re B2e@106 re C#3e@106 re C#3e@106 re F#2q@106 rh. G2e@106 re G2e@106 re Gb2e@106 re Gb2e@106 re B2h@106 rh A2h@106 rh A2q@106 rh. F2e@106 re F2e@106 re F2e@106 re D3e@106 re G2h@106 rh C3h@106 rh C3q@106 rh. Ab2h@106 rh Ab2h@106 rh Ab2e@106 re F2e@106 re Bb2e@106 re Eb3e@106 re Eb3q@106 rh. E2e@106 re E2e@106 re B2e@106 re B2e@106 re C#3h@106 rh C#3h@106 rh F#2q@106 rh. G2h@106 rh G2h@106 rh Gb2e@106 re Gb2e@106 re B2e@106 re A2e@106 re A2q@106 rh."
+    },
+    {
+      "name": "ratchet",
+      "voice": "drums",
+      "gain": 0.38,
+      "notes": "hat+kickq hat+snareq hat+kickq hat+snareq hat+kicke hate hat+snaree hate hat+kicke hate hat+snaree hate hat+kicks hats hats hats hat+snares hats hats hats hat+kicks hats hats hats hat+snares hats hats hats hatst hatst hatst hatst hatst hatst hatst hatst hatst hatst hatst hatst crashq kickq hat+kicks hats hats hats hat+snares hats hats hats hat+kicks hats hats hats hat+snares hats hats hats hat+kickst hatst hatst hatst hatst hatst hat+snarest hatst hatst hatst hatst hatst hat+kickst hatst hatst hatst hatst hatst hat+snarest hatst hatst hatst hatst hatst hat+kicke hate hat+snaree hate hat+kicke hate hat+snaree hate kicke tome tome tome crashq rq hat+kickq hat+snareq hat+kickq hat+snareq hat+kicke hate hat+snaree hate hat+kicke hate hat+snaree hate hat+kicks hats hats hats hat+snares hats hats hats hat+kicks hats hats hats hat+snares hats hats hats hatst hatst hatst hatst hatst hatst hatst hatst hatst hatst hatst hatst crashq kickq hat+kicks hats hats hats hat+snares hats hats hats hat+kicks hats hats hats hat+snares hats hats hats hat+kickst hatst hatst hatst hatst hatst hat+snarest hatst hatst hatst hatst hatst hat+kickst hatst hatst hatst hatst hatst hat+snarest hatst hatst hatst hatst hatst hat+kicke hate hat+snaree hate hat+kicke hate hat+snaree hate kicke tome tome tome crashq rq hat+kicks hats hats hats hat+snares hats hats hats hat+kicks hats hats hats hat+snares hats hats hats hat+kickst hatst hatst hatst hatst hatst hat+snarest hatst hatst hatst hatst hatst hat+kickst hatst hatst hatst hatst hatst hat+snarest hatst hatst hatst hatst hatst hat+kicke hate hat+snaree hate hat+kicke hate hat+snaree hate kicke tome tome tome crashq rq hat+kickq hat+snareq hat+kickq hat+snareq hat+kicke hate hat+snaree hate hat+kicke hate hat+snaree hate hat+kicks hats hats hats hat+snares hats hats hats hat+kicks hats hats hats hat+snares hats hats hats hatst hatst hatst hatst hatst hatst hatst hatst hatst hatst hatst hatst crashq kickq hat+kicks hats hats hats hat+snares hats hats hats hat+kicks hats hats hats hat+snares hats hats hats hat+kickst hatst hatst hatst hatst hatst hat+snarest hatst hatst hatst hatst hatst hat+kickst hatst hatst hatst hatst hatst hat+snarest hatst hatst hatst hatst hatst hat+kicke hate hat+snaree hate hat+kicke hate hat+snaree hate kicke tome tome tome crashq rq hat+kickq hat+snareq hat+kickq hat+snareq hat+kicke hate hat+snaree hate hat+kicke hate hat+snaree hate hat+kicks hats hats hats hat+snares hats hats hats hat+kicks hats hats hats hat+snares hats hats hats hatst hatst hatst hatst hatst hatst hatst hatst hatst hatst hatst hatst crashq kickq"
+    }
+  ]
+}

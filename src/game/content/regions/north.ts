@@ -42,6 +42,7 @@ const NORTH_AFTER_SCRIPTS: ScriptRegistry = {
   // --- Cinderwind Scarp (2026-10): the climb out of Cinderhead Deep ---
   'script.scarp_hauler': [
     { op: 'say', speaker: 'HOBB-REE', text: 'Up out of the Deep, are you? Then you\'ve earned a breather — and I\'ve earned a bout. Thirty years hauling ore up this scarp. Let\'s see what YOUR lot can carry.' },
+    { op: 'say', speaker: 'HOBB-REE', unless_flag: 'gleam:stone', text: 'Mind — Otho not tested you yet? Then this ridge\'ll test you worse. Win or lose here, go and see him in the headframe hall before you climb on.' },
     { op: 'battle', trainer: 'scarp_hauler' },
     { op: 'say', speaker: 'HOBB-REE', text: 'Ha! Strong backs, the lot of them. Galehigh\'s at the top — follow the wind. If your hat leaves first, let it go.' },
     { op: 'setFlag', flag: 'flag:scarp_hauler_beaten' },
@@ -94,6 +95,7 @@ const NORTH_AFTER_DIALOGUE: DialogueRegistry = {
   'sign.cinderwind_scarp': [
     { text: 'CINDERWIND SCARP\nWEST: the Deep\'s mouth and the Cinderhead galleries. UP and EAST: Galehigh Terraces. Mind the gusts on the top tier.' },
     { text: 'Scratched under it: "Ore goes DOWN, haulers go UP. Ladders at each end of the pitches — the grass lips are for coming down quick, not climbing."' },
+    { text: 'And under that, newer: "THE HAULERS\' RULE — NOBODY CLIMBS TILL OTHO\'S SEEN THEIR LAMP. THE WIND UP TOP BITES HARDER THAN THE DEEP."' },
   ],
   'npc.scarp_cairn': [
     { text: 'A wind cairn, every stone wrapped in a faded kite-ribbon. Galehigh folk build one wherever they first feel the updraught. This is where the mountain starts to breathe.' },

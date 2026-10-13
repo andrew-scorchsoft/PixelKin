@@ -25,7 +25,7 @@ const OUT = join(ROOT, 'web/assets/data/music.json');
 
 /** Region groups, in journey order. First matching prefix wins. */
 const GROUPS = [
-    ['South — the blue-hour start', ['tinderwick', 'duskapple', 'beacon', 'dimglass-coast', 'pearlmoor']],
+    ['South — the blue-hour start', ['tinderwick', 'duskapple', 'beacon', 'dimglass-coast', 'pearlmoor', 'oldlight']],
     ['East — wonder & discovery', ['saltreach-fen', 'mirelight', 'lowleaf-hollow', 'cinderhead-mine', 'old-seams']],
     ['North — energy & cold beauty', ['galehigh-terraces', 'windward-stair', 'pale-vault-glacier', 'rimeway', 'reckoning']],
     ['West — reaching for dawn', ['hushfrost-pass', 'sunken-solarium', 'sunvault-climb', 'wickrun', 'tallow-lift', 'nightreach-observatory']],

@@ -37,7 +37,7 @@ import roomkit as rk
 # =============================================================================
 def build_lumenary(id_, name, music, out_warp, script_ref, sign_ref, warden_id, warden_dialogue,
                    gate_flag="flag:has_starter", blocked_ref=None, npcs_override=None,
-                   aisle_steps=()):
+                   aisle_steps=(), exit_steps=()):
     W, H = 16, 12
     door_x = W // 2  # tx 8
     base, over = faced_room(W, H, door_x)
@@ -91,6 +91,12 @@ def build_lumenary(id_, name, music, out_warp, script_ref, sign_ref, warden_id, 
         for i, (sid, ref, hidden) in enumerate(aisle_steps):
             triggers.insert(i, {"id": sid, "kind": "cutscene", "at": {"tx": door_x, "ty": 6},
                                 "activation": "step_on", "ref": ref, "hidden_when_flag": hidden})
+    # ...and a call-back at the door: heading out (onto the tile in front of the
+    # doormat, the only way to it) before the warden has given you his errand
+    # stops you and he gives it there and then. It can't be missed.
+    for sid, ref, hidden in exit_steps:
+        triggers.append({"id": sid, "kind": "cutscene", "at": {"tx": door_x, "ty": H - 2},
+                         "activation": "step_on", "ref": ref, "hidden_when_flag": hidden})
     if npcs_override is not None:
         npcs = [dict(n, at={"tx": door_x, "ty": 5}) if n.get("at") == "dais" else n
                 for n in npcs_override]
@@ -640,9 +646,10 @@ def all_maps():
                        # bare blocked line, and never pressed A on Reyl — so the Old
                        # Light stayed locked. Now the walk-up itself gives his hook,
                        # then his where-next reminder, until the bell rings.
-                       aisle_steps=(("reyl_hook_step", "script.reyl_quest", "flag:q_south_bell"),
+                       aisle_steps=(("reyl_hook_step", "script.reyl_hook_step", "flag:q_south_bell"),
                                     ("reyl_waiting_step", "script.reyl_waiting",
                                      "flag:q_south_bell_rung")),
+                       exit_steps=(("reyl_call_back", "script.reyl_call_back", "flag:q_south_bell"),),
                        npcs_override=[
                            {"id": "reyl_quest", "at": "dais", "facing": "down",
                             "sprite": "npc_lampwarden", "movement": "static",

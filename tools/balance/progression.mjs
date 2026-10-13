@@ -186,6 +186,12 @@ const JOURNEY = [
   {
     name: 'Pearlmoor Quay + breakwater loop',
     leadShare: 0.42,
+    // R10: the Old Light's seven floors are now WHERE this leg's modelled wild
+    // fights actually happen (a whimsical tower table, 9 -> 14 up the floors;
+    // the quay's own verge is tiny). The counts stay put: the model already
+    // assumed them — the build simply gives them a place, so a real player
+    // arrives at Reyl and the fen levelled the way the curve always expected.
+    // (Its five optional alcove regulars are BUILT_PAYOUTS-only, like Paul.)
     wild: { areas: ['pearlmoor_quay'], band: [8, 11], fights: { rusher: 2, mainline: 6, explorer: 10 } },
     trainers: [
       // BUILT (the Causeway Bell loop): the breakwater's two net-hand sight
@@ -460,6 +466,11 @@ const BUILT_PAYOUTS = {
   net_hand_b: ['route', 14, 224],
   oldlight_heckler: ['keeper', 12, 240], // R9 the Old Light F2
   oldlight_ringmaster: ['keeper', 13, 260], // R9 the Old Light F4
+  oldlight_usher: ['route', 11, 176], // R10 the Old Light's optional alcove regulars (F1-F5)
+  oldlight_juggler: ['route', 12, 192],
+  oldlight_pie_thrower: ['route', 12, 192],
+  oldlight_mirror: ['route', 13, 208],
+  oldlight_critic: ['route', 14, 224],
   breakwater_paul: ['route', 15, 240], // S4 optional side-quest bout (the Lifting House)
   wrackline_drifter: ['route', 18, 288], // Pearlmoor<->Crossroads route (Wrackline Path)
   lanternfall_warden: ['route', 20, 320], // Pearlmoor<->Crossroads route (Lanternfall Road)

@@ -550,6 +550,34 @@ so all battles (wild, trainers, Lampwardens, Wren, the Hollowing, the boss, the 
 and the attract duel play the classic chip cue in both Soundtrack modes. Their ElevenLabs cue
 sheets stay in `assets/audio/elevenlabs/` if a future pass wants them.
 
+### The Old Light — seven floors, one tune, going gently mad (2026-10)
+
+Pearlmoor's joke-tower (`pearlmoor_oldlight_1`…`_6`, `pearlmoor_oldlight_top`) is run by
+MR. PUNCHWHEEL, a clockwork brass joke-machine with bellows lungs. Each floor gets its own
+cue, all built on ONE original theme, **"Punchwheel's Patter"** — a music-hall march in F
+whose bar 1 states the Vesper motif whole and bounced (C–F–G lift, A–G–F settle). Every
+fourth bar the lead stops on beat 1 and leaves the gap for the **laugh**: three staccato
+falling `pulse12` glides ("ha-ha-ha") and a `noise` "pfft". Each floor up is a little more
+deranged. **Classic-only** (no remaster, like the battles): chip engine, `snes` register.
+Specs `assets/audio/midi/specs/oldlight-fN.json` → `assets/audio/midi/oldlight-fN.mid` →
+`music/oldlight-fN.mp3`.
+
+| Cue | Floor | How it's deranged | Tempo · key · loop |
+|---|---|---|---|
+| `oldlight-f1` | *The Lobby of Groaners* | The theme played straight: oom-pah bass, brass pah-stabs, a cheeky lead, ha-ha-ha + pfft, and a ba-dum-tss with a bell ding at each section end. | 126 · F major · 24 bars, 45.7 s |
+| `oldlight-f2` | *The Late Laugh* | Every laugh starts a beat late and spills over the barline (the last one wraps round the loop seam). The pfft comes later still, the rimshot crash lands on the next downbeat, and a triangle echoes each answering phrase one beat behind. | 126 · F major · 24 bars, 45.7 s |
+| `oldlight-f3` | *Intermission* (the tea-urn floor) | Interval-music lounge: swung, a fourth up, a breathy flute that scoops up into its long notes, a walking bass, soft organ 7ths, brushes. Two sleepy vibes "heh"s and the urn's boil stand in for the laugh. | 100 swung · B♭ major · 24 bars, 57.6 s |
+| `oldlight-f4` | *The Backwards Inn* | Bars 1–8 swap registers: the tune walks in the bass while the oom-pah flips to a high "pah-oom", and the laughs rise into an inhaled "ffp". Bars 9–16 play B straight. Bars 17–32 play bars 1–16 in retrograde, every track mirrored (glides reverse, rimshots go tss-dum-ba). | 120 · F major · 32 bars, 64.0 s |
+| `oldlight-f5` | *The Gallery of Confident Facts* | A pompous brass fanfare that misfires onto a wrong G♭ chord. Wrong notes are held loud and proud (F♯, B♮, A♭), the half cadence becomes a whole-tone tumble, one phrase lurches up a whole tone and back, D minor is declared major, and the run home lands on G♭ before correcting. The laughs are whole-tone. | 112 · F major (allegedly) · 26 bars, 55.7 s |
+| `oldlight-f6` | *The One Joke* | The emotional heart: the tune as a slow music box in F harmonic minor, with a quieter twin bell a sixteenth behind that sags a semitone on held notes (the detune), a lower comb and a faint string bed. No laughs, except one soft ghost "ha-ha" in bar 8. The mechanism's tick falters as the spring runs down, and the cue stops on the dominant: the unfinished punchline. | 66 · F minor · 16 bars, 58.2 s |
+| `oldlight-f7` | *The Winding Room* (top) | Each 4-bar phrase climbs a minor third (F→A♭→B→D), then the spring snaps back to F with a lead "boing" (D6→F4), so the loop seam is just one more snap. Each phrase lurches between drag (augmented) and rush (diminished), the oom-pah stretches to match, and a clockwork hat ratchet speeds up from quarters to 16th-triplets. Three laughs stack in clashing keys (in key, a tritone off, a semitone off) over a double pfft. | 144 · F→A♭→B→D · 32 bars, 53.3 s |
+
+Rules that keep the derangement musical: the 4-bar phrase grid and the motif-first bar 1 never
+change, so the tune stays recognisable on every floor. Every derangement is written into the
+notes, not the engine: F7's tempo lurches are written-out augmentation and diminution at one
+MIDI tempo. Each loop's last bar leans into bar 1 (a bass walk, a dominant, or the spring's
+boing).
+
 ---
 
 ## The Wild Ways (the non-linear expansion, 2026-10)

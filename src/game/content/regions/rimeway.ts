@@ -141,6 +141,7 @@ export const RIMEWAY_DIALOGUE: DialogueRegistry = {
   ],
   'sign.rimeway_foot': [
     { text: 'THE RIMEWAY. Rime-lamps every hundred paces, oil every night. (The paint below is newer:) NO OIL SINCE THE DARK. CLIMB WITH YOUR OWN LIGHT.' },
+    { text: '(Chalked under it:) THE VAULT\'S WARDEN WALKS IT FIRST. SO SHOULD YOU.' },
   ],
   'sign.rimeway_glare': [
     { text: 'THE GLARE. Polished by the wind. Once you step onto it you go until something stops you — so pick what stops you. The ladder is at the far north-west.' },

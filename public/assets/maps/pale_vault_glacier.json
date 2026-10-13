@@ -1045,8 +1045,7 @@
       "sprite": "item_cache",
       "movement": "static",
       "dialogue_ref": "script.pickup_stormwood",
-      "hidden_when_flag": "flag:picked_stormwood",
-      "requires_flag": "flag:q_north_lampline"
+      "hidden_when_flag": "flag:picked_stormwood"
     },
     {
       "id": "cache_pale_vault_balm",

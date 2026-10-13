@@ -124,7 +124,7 @@ for oid, sprite, flagk in (("oldlight", "pearlmoor_oldlight_dark", "hidden_when_
                          "overhang": 5, flagk: "gleam:tide"})
 m["warps"].append({"id": "to_oldlight", "at": {"tx": DOOR[0], "ty": DOOR[1]},
                    "trigger": "step_on", "to_map": "pearlmoor_oldlight_1",
-                   "to": {"tx": 7, "ty": 9}, "facing": "up", "transition": "door",
+                   "to": {"tx": 11, "ty": 13}, "facing": "up", "transition": "door",
                    "requires_flag": "flag:q_south_bell",
                    "blocked_ref": "door.oldlight_locked"})
 
@@ -200,6 +200,23 @@ mk.scatter_decor(deco, base, W, H, rng, density=0.10,
                  avoid=obj_cells | npc_cells | {(x, y) for y in range(H) for x in range(W)
                                                 if path[y * W + x] or tree[y * W + x]
                                                 or sand[y * W + x] or water[y * W + x]})
+
+# ---- R10: PIP runs after you on the way out (after the scatter pass, so the deco
+# roll is untouched). The netmender's grandson waits on the shore below the lane
+# (15,10, dry beach) once the tower's top is done and the rope isn't yours yet; a once-only band on
+# the Point's one crossing back to the quay (column 18, rows 7-9 — every path to
+# the quay warps passes it) sends him running to you about the floats + rope.
+m["npcs"].append({"id": "pip", "at": {"tx": 15, "ty": 10}, "facing": "up",
+                  "sprite": "village_child", "movement": "look_around",
+                  "dialogue_ref": "script.oldlight_rope_reminder",
+                  "requires_flag": "flag:q_south_jest_done",
+                  "hidden_when_flag": "flag:oldlight_rope_reminded"})
+for y in (7, 8, 9):
+    m["triggers"].append({"id": f"rope_reminder_{y}", "kind": "cutscene",
+                          "at": {"tx": W - 2, "ty": y}, "activation": "step_on",
+                          "ref": "script.oldlight_rope_reminder",
+                          "requires_flag": "flag:q_south_jest_done",
+                          "hidden_when_flag": "flag:oldlight_rope_reminded"})
 
 if __name__ == "__main__":
     # deep water (2026-10): the open sea past the shallow shelf — Tidecall

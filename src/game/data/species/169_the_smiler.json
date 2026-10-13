@@ -1,0 +1,94 @@
+{
+  "id": 169,
+  "slug": "the_smiler",
+  "name": "The Smiler",
+  "types": [
+    "Light"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "A",
+  "stats": {
+    "hp": 55,
+    "atk": 62,
+    "def": 50,
+    "spa": 30,
+    "spd": 45,
+    "spe": 70
+  },
+  "bst": 312,
+  "ability": "mirrorlight",
+  "hidden_ability": "brisk",
+  "catchRate": 210,
+  "kindling": {
+    "into": 170,
+    "trigger": {
+      "kind": "level",
+      "level": 22
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "glimmer"
+      },
+      {
+        "level": 7,
+        "move": "dazzle_flash"
+      },
+      {
+        "level": 11,
+        "move": "lumen_cut"
+      },
+      {
+        "level": 20,
+        "move": "radiant_strike"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A round, beaming little kin that cannot stop smiling, even in its sleep. It drifts after anyone who looks glum and hovers at the edge of their vision, grinning, until they smile back. The Old Light's regulars swear it learned the trick from Mr. Punchwheel's painted face. Relentlessly cheerful and sw",
+    "category": "Light Courier Kin",
+    "size_cm": 35,
+    "weight_kg": 1.1,
+    "habitat": "jesthouse"
+  },
+  "encounters": [
+    {
+      "area": "pearlmoor_oldlight_1",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 9,
+      "max": 11
+    },
+    {
+      "area": "pearlmoor_oldlight_2",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 10,
+      "max": 12
+    },
+    {
+      "area": "pearlmoor_oldlight_5",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 13,
+      "max": 14
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "A small floating round kin like a cheerful lantern-moon: a soft cream-yellow sphere body with rosy painted cheeks and an enormous friendly crescent smile, two shining button eyes, a tiny red clown nose, and a little ruff of pastel-striped frill around its middle. Two small stubby hands that clap. A faint warm glow around it. At 64px it reads as a happy floating smiley-ball with a clown nose \u2014 cute, cosy, never sinister.",
+    "palette": "A small floating round kin like a cheerful lantern-moon: a soft cream-yellow sphere body with rosy painted cheeks and an enormous friendly crescent smile, two shining button eyes, a tiny red clown nose, and a little ruff of pastel-striped frill around its middle. Two small stubby hands that clap. A faint warm glow around it. At 64px it reads as a happy floating smiley-ball with a clown nose \u2014 cute, cosy, never sinister.",
+    "direction": "Relentlessly cheerful and sweet. The joke is how determined its happiness is \u2014 keep it warm and huggable, NOT a creepy clown."
+  },
+  "provenance_concept_id": "X-THESMILER"
+}

@@ -241,11 +241,11 @@ export const OLDLIGHT_SCRIPTS: ScriptRegistry = {
                     { op: 'say', speaker: 'LAMPLAD99', text: "Your mama's so slow, a Gravelo lapped her. Twice. It stopped for lunch in between." },
                     { op: 'say', speaker: 'WICKZ', text: "Your mama snores so loud, a Snoozlet packed its bags and left Nightreach for a bit of peace and quiet." },
                     { op: 'say', speaker: 'TIDECALLER_7', text: "Your mama used Tidecall and the sea called back to say it was busy." },
-                    { op: 'say', speaker: 'LAMPLAD99', text: "Your mama's so big, she's got her own constellation. They didn't even name it. It's just 'Mum'." },
+                    { op: 'say', speaker: 'LAMPLAD99', text: "Your mama's so bright, she's got her own constellation. They didn't even name it. It's just 'Mum'." },
                     { op: 'say', speaker: 'GLEAMGIRL', text: "Your mama's so old, she remembers the Long Dusk back when it was just the Long Afternoon." },
                     { op: 'say', speaker: 'WICKZ', text: "Your mama's so stingy, she charges the moths a wick to sit by her lamp." },
                     { op: 'say', speaker: 'TIDECALLER_7', text: "Your mama threw her vesperlamp so wide, she caught the Hearthkeeper." },
-                    { op: 'say', speaker: 'GLEAMGIRL', text: "Your mama's so heavy, she trod on a Frostholm and the GLACIER said 'ow'." },
+                    { op: 'say', speaker: 'GLEAMGIRL', text: "Your mama's so polite, she said sorry to a Frostholm and the GLACIER said 'no, after you'." },
                     { op: 'say', speaker: 'LAMPLAD99', text: "Your mama's so slow, her Pebbit kindled, retired, and wrote a book about it before she finished saying 'go'." },
                     { op: 'say', speaker: 'WICKZ', text: "Your mama sat down for a rest in the Hearth. Now it's called the Hearth-and-a-Half." },
                     { op: 'say', speaker: 'GLEAMGIRL', text: "Your mama talked so loud in the Lumenary, the Lampwarden handed her the Gleam just to make her leave." },
@@ -426,6 +426,8 @@ export const OLDLIGHT_SCRIPTS: ScriptRegistry = {
             nar('(The three tin lamplighters march. One enormous, warm laugh shakes the whole tower.)'), // JOKE: TOP.RIGHT
             pw('That one had never been told before. Eleven winters I tried to write it myself.'), // JOKE: TOP.RIGHT
             pw('Turns out it takes two. (ting.)'), // JOKE: TOP.RIGHT
+            // Moll waits by the stairhead for the card (build_pearlmoor_oldlight.py MOLL)
+            { op: 'say', speaker: 'MOLL', text: "(from the stairhead, very quietly) ...Oh, Tam. That's the one. That was always the one." },
           ],
         },
       ],

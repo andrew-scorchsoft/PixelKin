@@ -1,15 +1,15 @@
 {
   "id": "pearlmoor_oldlight_3",
   "display_name": "The Old Light \u2014 Intermission",
-  "width": 14,
-  "height": 11,
+  "width": 22,
+  "height": 15,
   "tile_width": 16,
   "tile_height": 16,
   "kind": "interior",
   "tilesets": [
     {
-      "name": "interior_set",
-      "image": "assets/tilesets/interior_set.webp",
+      "name": "oldlight_f3_set",
+      "image": "assets/tilesets/oldlight_f3_set.webp",
       "tile_width": 16,
       "tile_height": 16,
       "first_gid": 1,
@@ -52,6 +52,22 @@
         1,
         1,
         1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
         3,
         2,
         1,
@@ -63,6 +79,14 @@
         1,
         2,
         1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
         3,
         1,
         1,
@@ -78,26 +102,6 @@
         1,
         2,
         1,
-        1,
-        1,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        1,
-        2,
-        1,
-        2,
-        1,
         2,
         1,
         2,
@@ -108,6 +112,14 @@
         1,
         1,
         1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
         1,
         2,
         1,
@@ -134,6 +146,14 @@
         1,
         2,
         1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
         1,
         1,
         1,
@@ -149,6 +169,14 @@
         1,
         2,
         1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
         1,
         2,
         1,
@@ -161,6 +189,154 @@
         2,
         1,
         2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
         1,
         1,
         1,
@@ -188,7 +364,15 @@
         6,
         6,
         6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
         26,
+        6,
         6,
         6,
         6,
@@ -202,17 +386,32 @@
         4,
         4,
         4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
         49,
+        4,
+        4,
+        4,
+        5,
+        4,
         5,
         4,
         4,
         4,
-        4,
-        5,
-        4,
-        4,
         9,
         8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -225,8 +424,16 @@
         0,
         0,
         0,
+        0,
         9,
         8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -239,8 +446,16 @@
         0,
         0,
         0,
+        0,
         9,
         8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -253,8 +468,104 @@
         0,
         0,
         0,
+        0,
         9,
         8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        19,
+        36,
+        42,
+        0,
+        48,
+        36,
+        36,
+        36,
+        36,
+        36,
+        36,
+        29,
+        36,
+        36,
+        36,
+        36,
+        36,
+        42,
+        0,
+        48,
+        36,
+        24,
+        8,
+        4,
+        54,
+        0,
+        53,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        49,
+        4,
+        4,
+        4,
+        4,
+        4,
+        54,
+        0,
+        53,
+        4,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -267,8 +578,16 @@
         0,
         0,
         0,
+        0,
         9,
         8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -281,19 +600,6 @@
         0,
         0,
         0,
-        9,
-        8,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         9,
         8,
@@ -309,7 +615,15 @@
         0,
         0,
         0,
-        9,
+        0,
+        0,
+        0,
+        50,
+        0,
+        0,
+        0,
+        13,
+        16,
         8,
         0,
         0,
@@ -321,9 +635,39 @@
         0,
         0,
         0,
+        50,
+        0,
+        0,
+        0,
+        0,
+        49,
+        0,
         0,
         0,
         9,
+        14,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        49,
+        0,
+        0,
+        0,
+        0,
+        49,
+        0,
+        0,
+        0,
+        9,
+        14,
         15,
         7,
         7,
@@ -335,21 +679,39 @@
         7,
         7,
         7,
+        17,
         7,
         7,
-        16
+        7,
+        7,
+        17,
+        7,
+        7,
+        7,
+        16,
+        14
       ]
     }
   ],
   "objects": [
     {
       "id": "tea_urn",
-      "sprite": "tideglass_lens_lit",
+      "sprite": "oldlight_tea_urn",
       "at": {
-        "tx": 1,
-        "ty": 5
+        "tx": 4,
+        "ty": 2
       },
       "w": 2,
+      "h": 2
+    },
+    {
+      "id": "teacups",
+      "sprite": "oldlight_teacups",
+      "at": {
+        "tx": 7,
+        "ty": 2
+      },
+      "w": 1,
       "h": 2
     },
     {
@@ -357,7 +719,17 @@
       "sprite": "interior_stool",
       "at": {
         "tx": 3,
-        "ty": 8
+        "ty": 4
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "bar_stool_b",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 6,
+        "ty": 4
       },
       "w": 1,
       "h": 1
@@ -367,7 +739,7 @@
       "sprite": "interior_stove",
       "at": {
         "tx": 6,
-        "ty": 1
+        "ty": 7
       },
       "w": 2,
       "h": 2,
@@ -378,8 +750,8 @@
       "id": "bookcase",
       "sprite": "interior_bookcase",
       "at": {
-        "tx": 8,
-        "ty": 1
+        "tx": 9,
+        "ty": 7
       },
       "w": 2,
       "h": 3,
@@ -390,8 +762,8 @@
       "id": "table",
       "sprite": "interior_table",
       "at": {
-        "tx": 6,
-        "ty": 6
+        "tx": 8,
+        "ty": 11
       },
       "w": 2,
       "h": 2
@@ -400,8 +772,8 @@
       "id": "stool_l",
       "sprite": "interior_stool",
       "at": {
-        "tx": 5,
-        "ty": 7
+        "tx": 7,
+        "ty": 12
       },
       "w": 1,
       "h": 1
@@ -410,18 +782,18 @@
       "id": "stool_r",
       "sprite": "interior_stool",
       "at": {
-        "tx": 8,
-        "ty": 7
+        "tx": 10,
+        "ty": 12
       },
       "w": 1,
       "h": 1
     },
     {
-      "id": "sacks",
-      "sprite": "interior_sacks",
+      "id": "pies",
+      "sprite": "oldlight_pie_table",
       "at": {
-        "tx": 10,
-        "ty": 9
+        "tx": 3,
+        "ty": 10
       },
       "w": 2,
       "h": 1
@@ -430,17 +802,27 @@
       "id": "computer",
       "sprite": "interior_computer",
       "at": {
-        "tx": 11,
-        "ty": 6
+        "tx": 12,
+        "ty": 8
       },
       "w": 2,
       "h": 2
     },
     {
+      "id": "cogs",
+      "sprite": "oldlight_cog_heap",
+      "at": {
+        "tx": 14,
+        "ty": 4
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
       "id": "speaking_tube",
       "sprite": "solarium_sun_mask",
       "at": {
-        "tx": 11,
+        "tx": 19,
         "ty": 2
       },
       "w": 1,
@@ -461,7 +843,7 @@
       "id": "stairs_up_sprite",
       "sprite": "interior_stairs_up",
       "at": {
-        "tx": 12,
+        "tx": 20,
         "ty": 1
       },
       "w": 1,
@@ -488,13 +870,13 @@
     {
       "id": "up_stairs",
       "at": {
-        "tx": 12,
+        "tx": 20,
         "ty": 2
       },
       "trigger": "step_on",
       "to_map": "pearlmoor_oldlight_4",
       "to": {
-        "tx": 12,
+        "tx": 20,
         "ty": 3
       },
       "facing": "down",
@@ -505,51 +887,41 @@
   ],
   "triggers": [
     {
+      "id": "urn_4",
+      "kind": "cutscene",
+      "at": {
+        "tx": 4,
+        "ty": 3
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_urn"
+    },
+    {
       "id": "urn_5",
       "kind": "cutscene",
       "at": {
-        "tx": 2,
-        "ty": 5
+        "tx": 5,
+        "ty": 3
       },
       "activation": "interact",
       "ref": "script.oldlight_urn"
     },
     {
-      "id": "urn_6",
-      "kind": "cutscene",
+      "id": "teacups_sign",
+      "kind": "sign",
       "at": {
-        "tx": 2,
-        "ty": 6
+        "tx": 7,
+        "ty": 3
       },
       "activation": "interact",
-      "ref": "script.oldlight_urn"
-    },
-    {
-      "id": "computer_11",
-      "kind": "cutscene",
-      "at": {
-        "tx": 11,
-        "ty": 7
-      },
-      "activation": "interact",
-      "ref": "script.oldlight_computer"
-    },
-    {
-      "id": "computer_12",
-      "kind": "cutscene",
-      "at": {
-        "tx": 12,
-        "ty": 7
-      },
-      "activation": "interact",
-      "ref": "script.oldlight_computer"
+      "ref": "sign.oldlight_teacups"
     },
     {
       "id": "stove",
       "kind": "sign",
       "at": {
         "tx": 6,
-        "ty": 2
+        "ty": 8
       },
       "activation": "interact",
       "ref": "npc.oldlight_stove"
@@ -559,7 +931,7 @@
       "kind": "sign",
       "at": {
         "tx": 7,
-        "ty": 2
+        "ty": 8
       },
       "activation": "interact",
       "ref": "npc.oldlight_stove"
@@ -568,8 +940,8 @@
       "id": "bookcase",
       "kind": "sign",
       "at": {
-        "tx": 8,
-        "ty": 3
+        "tx": 9,
+        "ty": 9
       },
       "activation": "interact",
       "ref": "npc.oldlight_bookcase"
@@ -578,8 +950,8 @@
       "id": "bookcase_b",
       "kind": "sign",
       "at": {
-        "tx": 9,
-        "ty": 3
+        "tx": 10,
+        "ty": 9
       },
       "activation": "interact",
       "ref": "npc.oldlight_bookcase"
@@ -588,17 +960,57 @@
       "id": "p_note",
       "kind": "sign",
       "at": {
-        "tx": 6,
-        "ty": 6
+        "tx": 8,
+        "ty": 11
       },
       "activation": "interact",
       "ref": "sign.oldlight_p_note"
     },
     {
-      "id": "riddle_band",
+      "id": "pies_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 3,
+        "ty": 11
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_pies"
+    },
+    {
+      "id": "computer_12",
       "kind": "cutscene",
       "at": {
         "tx": 12,
+        "ty": 10
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_computer"
+    },
+    {
+      "id": "computer_13",
+      "kind": "cutscene",
+      "at": {
+        "tx": 13,
+        "ty": 10
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_computer"
+    },
+    {
+      "id": "cogs_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 14,
+        "ty": 4
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_cogs"
+    },
+    {
+      "id": "riddle_band",
+      "kind": "cutscene",
+      "at": {
+        "tx": 20,
         "ty": 3
       },
       "activation": "step_on",
@@ -609,7 +1021,7 @@
       "id": "tube",
       "kind": "cutscene",
       "at": {
-        "tx": 11,
+        "tx": 19,
         "ty": 2
       },
       "activation": "interact",
@@ -620,7 +1032,7 @@
       "id": "tube_after",
       "kind": "dialogue",
       "at": {
-        "tx": 11,
+        "tx": 19,
         "ty": 2
       },
       "activation": "interact",
@@ -628,13 +1040,45 @@
       "requires_flag": "flag:oldlight_3_solved"
     }
   ],
-  "encounters": [],
+  "encounters": [
+    {
+      "id": "tower_f3",
+      "terrain": "cave",
+      "rect": {
+        "tx": 1,
+        "ty": 8,
+        "w": 20,
+        "h": 6
+      },
+      "encounter_rate": 0.04,
+      "table": [
+        {
+          "kin_id": 105,
+          "weight": 40,
+          "min_level": 10,
+          "max_level": 12
+        },
+        {
+          "kin_id": 167,
+          "weight": 30,
+          "min_level": 10,
+          "max_level": 12
+        },
+        {
+          "kin_id": 111,
+          "weight": 30,
+          "min_level": 11,
+          "max_level": 12
+        }
+      ]
+    }
+  ],
   "npcs": [
     {
       "id": "punch_tuesday",
       "at": {
-        "tx": 10,
-        "ty": 5
+        "tx": 15,
+        "ty": 9
       },
       "facing": "down",
       "sprite": "npc_girl",
@@ -644,8 +1088,8 @@
     {
       "id": "punch_buns",
       "at": {
-        "tx": 3,
-        "ty": 7
+        "tx": 6,
+        "ty": 12
       },
       "facing": "down",
       "sprite": "npc_child",
@@ -655,17 +1099,55 @@
     {
       "id": "punch_ladder",
       "at": {
-        "tx": 9,
-        "ty": 8
+        "tx": 10,
+        "ty": 13
       },
       "facing": "down",
       "sprite": "npc_boy",
       "movement": "look_around",
       "dialogue_ref": "npc.oldlight_punch_ladder"
+    },
+    {
+      "id": "pie_thrower",
+      "at": {
+        "tx": 18,
+        "ty": 13
+      },
+      "facing": "up",
+      "sprite": "market_trader",
+      "movement": "static",
+      "dialogue_ref": "script.oldlight_pie_thrower",
+      "defeated_flag": "flag:oldlight_pie_thrower_beaten",
+      "hidden_when_flag": "flag:oldlight_pie_thrower_beaten",
+      "sight_range": 3
+    },
+    {
+      "id": "pie_thrower_after",
+      "at": {
+        "tx": 18,
+        "ty": 13
+      },
+      "facing": "up",
+      "sprite": "market_trader",
+      "movement": "look_around",
+      "dialogue_ref": "npc.oldlight_pie_thrower_after",
+      "requires_flag": "flag:oldlight_pie_thrower_beaten"
+    },
+    {
+      "id": "moll",
+      "at": {
+        "tx": 1,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "fisher_woman",
+      "movement": "look_around",
+      "dialogue_ref": "npc.oldlight_moll_3",
+      "hidden_when_flag": "flag:oldlight_3_solved"
     }
   ],
   "gates": [],
-  "music": "assets/audio/music/sunken-solarium-a.mp3",
+  "music": "assets/audio/music/oldlight-f3.mp3",
   "ambience": {
     "particles": [
       {

@@ -1,0 +1,97 @@
+{
+  "id": 171,
+  "slug": "mcclownface",
+  "name": "McClownface",
+  "types": [
+    "Tide",
+    "Light"
+  ],
+  "role": "Physical Bruiser",
+  "tier": "B",
+  "stats": {
+    "hp": 70,
+    "atk": 81,
+    "def": 63,
+    "spa": 32,
+    "spd": 52,
+    "spe": 52
+  },
+  "bst": 350,
+  "ability": "tidecaller",
+  "hidden_ability": "forager",
+  "catchRate": 175,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "brine_flick"
+      },
+      {
+        "level": 9,
+        "move": "drench_song"
+      },
+      {
+        "level": 13,
+        "move": "tidewhip"
+      },
+      {
+        "level": 19,
+        "move": "lumen_cut"
+      },
+      {
+        "level": 22,
+        "move": "wave_crash"
+      },
+      {
+        "level": 24,
+        "move": "hone"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A stout, bumbling clown kin that carries its own water in a flower on its chest and squirts it at anything that looks too serious, including itself in mirrors. It honks a rubber horn instead of a cry. Fishers on the quay say a McClownface once put out a lamp by accident and has been apologising ever",
+    "category": "Tide Brute Kin",
+    "size_cm": 95,
+    "weight_kg": 48,
+    "habitat": "jesthouse"
+  },
+  "encounters": [
+    {
+      "area": "pearlmoor_oldlight_4",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 12,
+      "max": 13
+    },
+    {
+      "area": "pearlmoor_oldlight_5",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 12,
+      "max": 14
+    },
+    {
+      "area": "pearlmoor_oldlight_6",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 13,
+      "max": 14
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "A plump, waddling kin with a big round body in baggy polka-dot overalls (sea-blue with white dots), a squirting daisy-flower on its chest dripping water, a fluffy tuft of curly hair in bright tide-blue, a large round red clown nose, a wide painted grin, enormous floppy shoes, and a little brass rubber-bulb horn held in one hand. A small splash of water droplets around the flower. At 64px it reads as a cheerful chunky seaside clown with a squirting flower.",
+    "palette": "A plump, waddling kin with a big round body in baggy polka-dot overalls (sea-blue with white dots), a squirting daisy-flower on its chest dripping water, a fluffy tuft of curly hair in bright tide-blue, a large round red clown nose, a wide painted grin, enormous floppy shoes, and a little brass rubber-bulb horn held in one hand. A small splash of water droplets around the flower. At 64px it reads as a cheerful chunky seaside clown with a squirting flower.",
+    "direction": "Bumbling, good-natured slapstick \u2014 a seaside clown who means well. Silly, warm, physical comedy."
+  },
+  "provenance_concept_id": "X-MCCLOWNFACE"
+}

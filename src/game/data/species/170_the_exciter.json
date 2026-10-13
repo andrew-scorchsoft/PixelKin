@@ -1,0 +1,79 @@
+{
+  "id": 170,
+  "slug": "the_exciter",
+  "name": "The Exciter",
+  "types": [
+    "Light",
+    "Storm"
+  ],
+  "role": "Utility / Speedster",
+  "tier": "D",
+  "stats": {
+    "hp": 69,
+    "atk": 75,
+    "def": 75,
+    "spa": 75,
+    "spd": 75,
+    "spe": 129
+  },
+  "bst": 498,
+  "ability": "mirrorlight",
+  "hidden_ability": "brisk",
+  "catchRate": 57,
+  "kindling": null,
+  "from": 169,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "spark_mote"
+      },
+      {
+        "level": 9,
+        "move": "dazzle_flash"
+      },
+      {
+        "level": 13,
+        "move": "light_pulse"
+      },
+      {
+        "level": 19,
+        "move": "static_jolt"
+      },
+      {
+        "level": 24,
+        "move": "focus_mind"
+      },
+      {
+        "level": 31,
+        "move": "lightspire"
+      },
+      {
+        "level": 40,
+        "move": "dawnburst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A Smiler that got far too excited. Its smile has gone off like a firework: it fizzes, crackles and bounces off the walls, laughing in sparks, unable to keep still for even a second. It is thrilled about absolutely everything, especially you. Pure overexcitement: hyperactive, sparking, bouncing, deli",
+    "category": "Light Courier Kin",
+    "size_cm": 90,
+    "weight_kg": 14,
+    "habitat": "jesthouse"
+  },
+  "encounters": [],
+  "scripted": false,
+  "art": {
+    "silhouette": "A larger bouncing kin on a big coiled spring instead of legs: a round cream-yellow face body with a HUGE ecstatic open-mouthed grin, wide sparkling starry eyes, a red clown nose, little crackling lightning-bolt sparks and confetti flying off it, a wild ruff of electric-blue and pastel striped frill, and arms flung up in delight. Little zig-zag spark lines around it. At 64px it reads as an overjoyed, electrified smiley on a spring \u2014 over the top, silly, lovable.",
+    "palette": "A larger bouncing kin on a big coiled spring instead of legs: a round cream-yellow face body with a HUGE ecstatic open-mouthed grin, wide sparkling starry eyes, a red clown nose, little crackling lightning-bolt sparks and confetti flying off it, a wild ruff of electric-blue and pastel striped frill, and arms flung up in delight. Little zig-zag spark lines around it. At 64px it reads as an overjoyed, electrified smiley on a spring \u2014 over the top, silly, lovable.",
+    "direction": "Pure overexcitement: hyperactive, sparking, bouncing, delighted. Even more exuberant than the Smiler. Joyful chaos, never menacing."
+  },
+  "provenance_concept_id": "X-THEEXCITER"
+}

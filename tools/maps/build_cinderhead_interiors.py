@@ -53,6 +53,14 @@ def build_lumenary():
          "transition": "door"},
     ]
     triggers = [
+        # (2026-10 audit) walking up the aisle before Otho has set the errand
+        # gives the errand itself: the first active step_on trigger wins, so
+        # this hook (gone once q_east_vigil is held) sits AHEAD of the test.
+        # Without it the not-ready line read as the whole conversation and a
+        # player went down the Deep with no vigil-lamp waiting there.
+        {"id": "otho_hook_step", "kind": "cutscene", "at": {"tx": door_x, "ty": 6},
+         "activation": "step_on", "ref": "script.otho_quest",
+         "hidden_when_flag": "flag:q_east_vigil"},
         # the bond-test, on the aisle south of the dais — gated on the Descent
         # Vigil (the vigil-lamp carried up), blocked in Otho's own voice (§5)
         {"id": "lumenary_battle", "kind": "cutscene", "at": {"tx": door_x, "ty": 6},

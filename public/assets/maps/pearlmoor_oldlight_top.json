@@ -8,8 +8,8 @@
   "kind": "interior",
   "tilesets": [
     {
-      "name": "interior_set",
-      "image": "assets/tilesets/interior_set.webp",
+      "name": "oldlight_f7_set",
+      "image": "assets/tilesets/oldlight_f7_set.webp",
       "tile_width": 16,
       "tile_height": 16,
       "first_gid": 1,
@@ -344,7 +344,7 @@
   "objects": [
     {
       "id": "punchwheel_drum",
-      "sprite": "galehigh_winch",
+      "sprite": "oldlight_punchwheel_drum",
       "at": {
         "tx": 5,
         "ty": 2
@@ -414,6 +414,59 @@
       },
       "w": 2,
       "h": 1
+    },
+    {
+      "id": "cogs",
+      "sprite": "oldlight_cog_heap",
+      "at": {
+        "tx": 2,
+        "ty": 4
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "spring_can",
+      "sprite": "oldlight_spring_can",
+      "at": {
+        "tx": 4,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "confetti_a",
+      "sprite": "oldlight_confetti",
+      "at": {
+        "tx": 9,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "confetti_b",
+      "sprite": "oldlight_confetti",
+      "at": {
+        "tx": 5,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "bunting",
+      "sprite": "oldlight_bunting",
+      "at": {
+        "tx": 6,
+        "ty": 1
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
     },
     {
       "id": "slide_hatch",
@@ -660,9 +713,35 @@
     }
   ],
   "encounters": [],
-  "npcs": [],
+  "npcs": [
+    {
+      "id": "moll",
+      "at": {
+        "tx": 4,
+        "ty": 8
+      },
+      "facing": "down",
+      "sprite": "fisher_woman",
+      "movement": "look_around",
+      "dialogue_ref": "npc.oldlight_moll_card",
+      "hidden_when_flag": "flag:q_south_jest_done",
+      "requires_flag": "flag:oldlight_6_heard"
+    },
+    {
+      "id": "moll_after",
+      "at": {
+        "tx": 4,
+        "ty": 8
+      },
+      "facing": "down",
+      "sprite": "fisher_woman",
+      "movement": "look_around",
+      "dialogue_ref": "npc.oldlight_moll_top",
+      "requires_flag": "flag:q_south_jest_done"
+    }
+  ],
   "gates": [],
-  "music": "assets/audio/music/pearlmoor-quay-c.mp3",
+  "music": "assets/audio/music/oldlight-f7.mp3",
   "ambience": {
     "particles": [
       {

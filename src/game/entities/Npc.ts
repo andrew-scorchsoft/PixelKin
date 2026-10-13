@@ -75,6 +75,8 @@ const SPRITE_SHEETS: Record<string, string> = {
   lifter_abdul: 'lifter_abdul',
   lifter_sid: 'lifter_sid',
   lifter_rod: 'lifter_rod',
+  // the Old Light's MIRROR wears the player's own sheet (the joke: you fight yourself)
+  player_indi: 'player_indi',
   // Generic, reusable townsfolk archetypes — drop these on any NpcPlacement.sprite.
   npc_man: 'npc_man',
   npc_woman: 'npc_woman',

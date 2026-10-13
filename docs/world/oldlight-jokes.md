@@ -612,3 +612,21 @@ Weighted total = sum(score x weight) / 10. **Ship bar: >= 85.** First drafts wer
 
 **40 shipped units. Average 87.0/100. Lowest 85.0.** Every shipped unit clears the 85 bar.
 
+
+
+---
+
+## R10 additions (2026-10): the house regulars and props
+
+Playtest: "the ground floor was empty and not a funny place." R10 rebuilt the floors big (the
+haunted-tower walk) and filled them: the GROANER, the MIME, five optional alcove regulars (the
+Usher, the Juggler, the Pie-Thrower, the Mirror, the Critic) and a prop gag on every floor
+(whoopee cushion, laugh track, jack-in-the-box, applause sign, rubber chickens, laugh meter,
+unicycle, clown shoes, teacup tower, custard pies, spare cogs, backwards clock, upside chair,
+funhouse mirrors, the Big Book of Facts, the mallet, the banana peel, the old confetti, the one
+spring-snake), plus Pip's run after you on the Point. Lines live in
+`src/game/content/regions/jesthouse.ts`. They hold the tower's rules: every joke is
+Punchwheel's or a regular reading his cards; Vesperholm-specific; the punch word last; F6
+stays the quiet heart (the two cups became a REST: sit across from the empty chair).
+They were written to this rubric in one revision pass, not the full multi-draft scoring the
+R9 set above went through — re-score and tighten any that land under the bar in playtest.
