@@ -153,6 +153,8 @@ export const SOUTH_SCRIPTS: ScriptRegistry = {
   'script.pearlmoor_inn_rest_lit': [
     { op: 'say', speaker: 'INNKEEP', text: "Rest your feet, Wayfarer. Mind the singers on the stair. They started the going-out song when the Tide stood up, and not one of them has gone out." },
     { op: 'heal' },
+    { op: 'say', speaker: 'INNKEEP', text: 'Morning! Sleep well? ...Can I ask you something. Have you ever considered taking a virtuous day?' },
+    { op: 'say', speaker: 'INNKEEP', text: "A day off. Not because you're poorly, mind. Just because you're being virtuous to yourself. The road will keep, I promise." },
     { op: 'say', speaker: 'INNKEEP', text: "There. Lamps trimmed, kin bright-eyed. Every room let and every guest awake. I've never been so tired, or so glad of it." },
   ],
 };
