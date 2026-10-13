@@ -40,6 +40,9 @@ export interface MenuConfig {
   /** Called with the highlighted row's index whenever the cursor lands on a row
    *  (on open, then on every move): drive a detail pane (the battle move info). */
   onHighlight?: (index: number) => void;
+  /** Called on Left (-1) / Right (+1): the list itself only moves up/down, so a
+   *  caller can use the side keys for its own toggle (the battle move info). */
+  onSide?: (dir: -1 | 1) => void;
 }
 
 const ROW_H = 12;
@@ -159,6 +162,8 @@ export class Menu {
         }
         if (input.justPressed(InputAction.Up)) this.move(-1);
         else if (input.justPressed(InputAction.Down)) this.move(1);
+        else if (this.config.onSide && input.justPressed(InputAction.Left)) this.config.onSide(-1);
+        else if (this.config.onSide && input.justPressed(InputAction.Right)) this.config.onSide(1);
         else if (input.justPressed(InputAction.Confirm)) {
           const opt = this.options[this.index];
           if (opt && opt.enabled !== false) {

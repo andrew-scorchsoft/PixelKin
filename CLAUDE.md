@@ -557,9 +557,10 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **The revive is the `hearth_coal`** (`ItemDef.revive` = share of max HP, 0.5): 1,500w at every
   counter that sells Warm Balm, plus one in five balm caches. **Balms can't rouse a fainted
   kin** (ItemsMenu blocks it): only a coal or a rest. Battle BAG/LAMP lists cap at 6 rows and
-  scroll (`MENU_MAX_ROWS`); the FIGHT menu pairs the move list with `ui/battle/MoveInfo`
-  (type/category/POW/ACC/uses + the earned SUPER!/RESISTED verdict vs a caught foe) and the
-  move's `desc` in the strip — `Menu.onHighlight` drives both.
+  scroll (`MENU_MAX_ROWS`); the FIGHT menu's `ui/battle/MoveInfo` pane (type/category/POW/ACC/
+  uses + the earned SUPER!/RESISTED verdict vs a caught foe, the move's `desc` in the strip) is
+  OPT-IN (owner's call: it covers the foe) — hidden until RIGHT (`Menu.onSide`), LEFT hides it,
+  the choice holds for that battle (`BattleScene.showMoveInfo`); `Menu.onHighlight` drives it.
 - **The player SWIMS on water.** `WorldScene.update` asks `map.hasTerrainAt(tx,ty,'water')`
   every frame and calls `Player.setSwimming`, which swaps to the packed `player_indi_swim`
   walk-sheet (same 4×4 layout) — or, with no such sheet, crops the sprite at the waterline and

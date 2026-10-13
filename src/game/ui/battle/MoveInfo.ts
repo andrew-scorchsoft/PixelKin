@@ -1,5 +1,8 @@
 /**
  * MoveInfo — the "what does this move do?" pane beside the battle FIGHT menu.
+ * OPT-IN (owner's call): it covers part of the foe, so FIGHT opens without it and
+ * RIGHT shows it / LEFT hides it (BattleScene.fightMenu; the choice holds for the
+ * rest of that battle).
  * As the cursor lands on a move it shows, in plain words: the move's type (in its
  * type colour), PHYSICAL / SPECIAL / STATUS, power, accuracy and the charges left,
  * and — only against a foe whose species you've CAUGHT (an earned hint, as before)
@@ -61,6 +64,11 @@ export class MoveInfo {
           : m.effect < 1 ? ['RESISTED', theme.color.danger]
             : ['NEUTRAL', theme.color.textAccent];
     eff.setText(verdict?.[0] ?? '').setColor(verdict?.[1] ?? theme.color.text);
+  }
+
+  /** Show/hide the pane (it's opt-in: hidden until the player asks with RIGHT). */
+  setVisible(v: boolean): void {
+    this.panel.container.setVisible(v);
   }
 
   destroy(): void {

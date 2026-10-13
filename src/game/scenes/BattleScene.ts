@@ -141,6 +141,8 @@ export class BattleScene extends Phaser.Scene {
   private dexSeen = new Set<number>();
   /** Species the player has caught — gates the fight menu's effectiveness hints. */
   private dexCaught = new Set<number>();
+  /** Whether the FIGHT menu's move-info pane is open (opt-in, per battle). */
+  private showMoveInfo = false;
   private finished = false;
   /** Turns already resolved — 0 while choosing the encounter's FIRST action
    *  (conditional charges with `first_turn` check this at throw time). */
@@ -471,9 +473,19 @@ export class BattleScene extends Phaser.Scene {
     const MENU_W = theme.space.lg * 2 + 8 + 15 * 8;
     const INFO_H = 60;
     const info = new MoveInfo(this, MENU_X + MENU_W, this.menuY(4), GAME_WIDTH - 4 - (MENU_X + MENU_W), INFO_H);
+    // OPT-IN: the pane covers part of the foe, so it starts hidden and the strip
+    // says how to ask for it. RIGHT shows it, LEFT hides it; the choice holds for
+    // the rest of this battle.
+    let current = 0;
     const describe = (i: number): void => {
+      current = i;
       const k = moves[i];
       if (!k) return;
+      info.setVisible(this.showMoveInfo);
+      if (!this.showMoveInfo) {
+        this.msg.set('Press RIGHT to see what each move does.');
+        return;
+      }
       info.show({
         type: k.move.type,
         category: k.move.category,
@@ -491,6 +503,13 @@ export class BattleScene extends Phaser.Scene {
       width: MENU_W,
       sfx: this.sfx,
       onHighlight: describe,
+      onSide: (dir) => {
+        const want = dir > 0;
+        if (want === this.showMoveInfo) return;
+        this.showMoveInfo = want;
+        void this.sfx.play(theme.cursor.moveSfx);
+        describe(current);
+      },
     }).run();
     info.destroy();
     this.msg.set('');
