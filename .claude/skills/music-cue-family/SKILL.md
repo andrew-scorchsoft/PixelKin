@@ -36,6 +36,10 @@ This skill sits on top of two others; read them for the mechanics:
 
    You can reorder the rungs, but each one must be recognisably the same tune. A rung that loses
    the motif is a bug.
+   **Keep the direction one way to the top.** On the Old Light the owner rejected a tender music-box
+   "heart" at F6: it broke the climb. A quiet rung belongs only where the family's brief asks for
+   one. Otherwise each rung must be MORE of the family's quality than the last (there: stuck record,
+   then the machine flying apart).
 3. **Tempo family.** Remastered takes conditioned on a motif **lock to the source's tempo grid**
    (×½, ×1, ×2), whatever the spec asks. So put the whole family on the anchor's BPM, and get
    speed and slowness from *feel*: "half-time lounge feel", "double-time frantic gallop". The

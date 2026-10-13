@@ -1,10 +1,10 @@
 {
  "chunks": [
   {
-   "song_id": "8rh0JXrKD8w7LE2MCsl0",
+   "song_id": "BhCSJLpEdkb3kCL5MBeo",
    "range": {
-    "start_ms": 108500,
-    "end_ms": 128500
+    "start_ms": 44810,
+    "end_ms": 64810
    }
   },
   {
@@ -13,15 +13,14 @@
    "positive_styles": [
     "16-bit console RPG soundtrack from the mid-1990s",
     "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
-    "63 BPM",
-    "F minor",
-    "4/4 slow and tender",
-    "a gently detuned music box playing the tower's tune",
-    "a soft warm string bed sustaining underneath every bar",
-    "celesta doubling a sixteenth behind like a quieter twin",
-    "a soft clockwork tick",
-    "bittersweet, tender, lamplit, a quiet lamplit room with an empty chair",
-    "melancholy but warm and comforting",
+    "126 BPM",
+    "F minor sliding into F major and back",
+    "4/4 march that keeps skipping like a stuck record",
+    "a warped music box and an out-of-tune honky-tonk piano playing the march",
+    "wobbling tape-speed pitch bends on the melody",
+    "a wheezing harmonium chord holding underneath every bar",
+    "a lopsided clock tick and a tuba that keeps losing its place",
+    "comic, unravelling, dizzy, a joke told too many times",
     "strong singable melody, instantly hummable and pleasant on repeat",
     "authentic 16-bit game music sound",
     "instrumental",
@@ -38,10 +37,10 @@
    "context_adherence": "high"
   },
   {
-   "song_id": "8rh0JXrKD8w7LE2MCsl0",
+   "song_id": "BhCSJLpEdkb3kCL5MBeo",
    "range": {
-    "start_ms": 7619,
-    "end_ms": 17619
+    "start_ms": 3810,
+    "end_ms": 13810
    }
   }
  ]

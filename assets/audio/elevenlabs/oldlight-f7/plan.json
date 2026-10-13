@@ -1,26 +1,25 @@
 {
  "chunks": [
   {
-   "text": "[Intro]\n{a clockwork ratchet winds up hard for one bar, then the calliope and full brass band crash straight into the tune}",
+   "text": "[Intro]\n{a wind-up key cranks and jams, then the whole band bursts in at once in two clashing keys}",
    "duration_ms": 3810,
    "positive_styles": [
     "16-bit console RPG soundtrack from the mid-1990s",
     "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
-    "every section is built on the tower's own cheeky march tune, carried from the reference",
-    "126 BPM",
-    "F major modulating up a minor third every phrase",
-    "4/4 double-time galloping music-hall march at full tilt",
-    "steam calliope and brass band playing the tune",
-    "clockwork ratchet and woodblocks speeding up",
-    "slide whistle and bicycle-horn honks",
-    "spring boing that snaps the key back down to F",
-    "delirious, joyous, whirling, a giant joke machine",
+    "126 BPM with a frantic double-time feel",
+    "the march in two clashing keys at once, brass a semitone apart",
+    "4/4 that lurches, rushing and dragging every phrase",
+    "steam calliope and brass band playing the march",
+    "melting pitch slides like a warped record",
+    "jumps to a new key every two bars",
+    "clockwork ratchets, bicycle horns, slide whistles and crashing cymbals",
+    "a spring boing that snaps everything back to F",
+    "delirious, unhinged, joyous chaos, a joke machine coming apart",
     "strong singable melody, instantly hummable and pleasant on repeat",
     "authentic 16-bit game music sound",
     "instrumental",
-    "wind-up opening",
-    "explosive",
-    "bouncy"
+    "jammed wind-up opening",
+    "explosive"
    ],
    "negative_styles": [
     "vocals",
@@ -41,7 +40,9 @@
     "horror",
     "creepy",
     "sinister",
-    "dark"
+    "stop-time breaks",
+    "slow",
+    "gentle"
    ],
    "context_adherence": "high",
    "conditioning_ref": {
@@ -54,26 +55,26 @@
    "condition_strength": "medium"
   },
   {
-   "text": "[Main Theme]\n{the tower's march tune at full gallop on steam calliope and brass, the oom-pah racing; after four bars the whole band jumps up a key}",
+   "text": "[Main Theme]\n{the tower's march tune at a double-time gallop on calliope and brass, the brass a semitone apart, jumping to a new key every two bars, ratchets speeding up}",
    "duration_ms": 15238,
    "positive_styles": [
     "16-bit console RPG soundtrack from the mid-1990s",
     "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
-    "every section is built on the tower's own cheeky march tune, carried from the reference",
-    "126 BPM",
-    "F major modulating up a minor third every phrase",
-    "4/4 double-time galloping music-hall march at full tilt",
-    "steam calliope and brass band playing the tune",
-    "clockwork ratchet and woodblocks speeding up",
-    "slide whistle and bicycle-horn honks",
-    "spring boing that snaps the key back down to F",
-    "delirious, joyous, whirling, a giant joke machine",
+    "126 BPM with a frantic double-time feel",
+    "the march in two clashing keys at once, brass a semitone apart",
+    "4/4 that lurches, rushing and dragging every phrase",
+    "steam calliope and brass band playing the march",
+    "melting pitch slides like a warped record",
+    "jumps to a new key every two bars",
+    "clockwork ratchets, bicycle horns, slide whistles and crashing cymbals",
+    "a spring boing that snaps everything back to F",
+    "delirious, unhinged, joyous chaos, a joke machine coming apart",
     "strong singable melody, instantly hummable and pleasant on repeat",
     "authentic 16-bit game music sound",
     "instrumental",
     "main theme",
     "memorable hook",
-    "key change"
+    "polytonal"
    ],
    "negative_styles": [
     "vocals",
@@ -94,31 +95,33 @@
     "horror",
     "creepy",
     "sinister",
-    "dark"
+    "stop-time breaks",
+    "slow",
+    "gentle"
    ],
    "context_adherence": "high"
   },
   {
-   "text": "[Main Theme Reprise]\n{again climbing another key, a xylophone and piccolo counter-line whirling, the ratchet ticking faster}",
+   "text": "[Main Theme Reprise]\n{again even wilder: the tempo lurches between rushing and dragging, pitch melting down then shooting up, bicycle horns and slide whistles on every beat}",
    "duration_ms": 15238,
    "positive_styles": [
     "16-bit console RPG soundtrack from the mid-1990s",
     "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
-    "every section is built on the tower's own cheeky march tune, carried from the reference",
-    "126 BPM",
-    "F major modulating up a minor third every phrase",
-    "4/4 double-time galloping music-hall march at full tilt",
-    "steam calliope and brass band playing the tune",
-    "clockwork ratchet and woodblocks speeding up",
-    "slide whistle and bicycle-horn honks",
-    "spring boing that snaps the key back down to F",
-    "delirious, joyous, whirling, a giant joke machine",
+    "126 BPM with a frantic double-time feel",
+    "the march in two clashing keys at once, brass a semitone apart",
+    "4/4 that lurches, rushing and dragging every phrase",
+    "steam calliope and brass band playing the march",
+    "melting pitch slides like a warped record",
+    "jumps to a new key every two bars",
+    "clockwork ratchets, bicycle horns, slide whistles and crashing cymbals",
+    "a spring boing that snaps everything back to F",
+    "delirious, unhinged, joyous chaos, a joke machine coming apart",
     "strong singable melody, instantly hummable and pleasant on repeat",
     "authentic 16-bit game music sound",
     "instrumental",
-    "climbing modulation",
-    "faster counter-melody",
-    "fuller"
+    "lurching tempo",
+    "melting pitch",
+    "most broken"
    ],
    "negative_styles": [
     "vocals",
@@ -139,30 +142,31 @@
     "horror",
     "creepy",
     "sinister",
-    "dark"
+    "stop-time breaks",
+    "slow",
+    "gentle"
    ],
    "context_adherence": "high"
   },
   {
-   "text": "[Bridge]\n{contrast: the joke-drum spins: a whirling waltz-time feel in D, calliope swirls and slide whistles, bicycle horns honking, then a big spring boing snaps back to F}",
+   "text": "[Bridge]\n{contrast: the joke-drum spins out, a whirling waltz-time lurch with cymbal crashes, the tune shattering into fragments in every key, then one huge spring boing}",
    "duration_ms": 15238,
    "positive_styles": [
     "16-bit console RPG soundtrack from the mid-1990s",
     "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
-    "every section is built on the tower's own cheeky march tune, carried from the reference",
-    "126 BPM",
-    "F major modulating up a minor third every phrase",
-    "4/4 double-time galloping music-hall march at full tilt",
-    "steam calliope and brass band playing the tune",
-    "clockwork ratchet and woodblocks speeding up",
-    "slide whistle and bicycle-horn honks",
-    "spring boing that snaps the key back down to F",
-    "delirious, joyous, whirling, a giant joke machine",
+    "126 BPM with a frantic double-time feel",
+    "the march in two clashing keys at once, brass a semitone apart",
+    "4/4 that lurches, rushing and dragging every phrase",
+    "steam calliope and brass band playing the march",
+    "melting pitch slides like a warped record",
+    "jumps to a new key every two bars",
+    "clockwork ratchets, bicycle horns, slide whistles and crashing cymbals",
+    "a spring boing that snaps everything back to F",
+    "delirious, unhinged, joyous chaos, a joke machine coming apart",
     "strong singable melody, instantly hummable and pleasant on repeat",
     "authentic 16-bit game music sound",
     "instrumental",
-    "whirling",
-    "spring boing",
+    "whirling breakdown",
     "contrasting section"
    ],
    "negative_styles": [
@@ -184,25 +188,27 @@
     "horror",
     "creepy",
     "sinister",
-    "dark"
+    "stop-time breaks",
+    "slow",
+    "gentle"
    ],
    "context_adherence": "medium"
   },
   {
-   "text": "[Main Theme Return]\n{the march returns in F at full tilt; the last bar's spring boing snaps straight back into the theme}",
+   "text": "[Main Theme Return]\n{the march crashes back in F at full gallop, still clashing; the last bar's spring boing snaps straight back to the top of the theme}",
    "duration_ms": 15238,
    "positive_styles": [
     "16-bit console RPG soundtrack from the mid-1990s",
     "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
-    "every section is built on the tower's own cheeky march tune, carried from the reference",
-    "126 BPM",
-    "F major modulating up a minor third every phrase",
-    "4/4 double-time galloping music-hall march at full tilt",
-    "steam calliope and brass band playing the tune",
-    "clockwork ratchet and woodblocks speeding up",
-    "slide whistle and bicycle-horn honks",
-    "spring boing that snaps the key back down to F",
-    "delirious, joyous, whirling, a giant joke machine",
+    "126 BPM with a frantic double-time feel",
+    "the march in two clashing keys at once, brass a semitone apart",
+    "4/4 that lurches, rushing and dragging every phrase",
+    "steam calliope and brass band playing the march",
+    "melting pitch slides like a warped record",
+    "jumps to a new key every two bars",
+    "clockwork ratchets, bicycle horns, slide whistles and crashing cymbals",
+    "a spring boing that snaps everything back to F",
+    "delirious, unhinged, joyous chaos, a joke machine coming apart",
     "strong singable melody, instantly hummable and pleasant on repeat",
     "authentic 16-bit game music sound",
     "instrumental",
@@ -228,7 +234,9 @@
     "horror",
     "creepy",
     "sinister",
-    "dark"
+    "stop-time breaks",
+    "slow",
+    "gentle"
    ],
    "context_adherence": "high"
   }

@@ -195,22 +195,22 @@
      "id": "oldlight-f6",
      "title": "The Old Light — The One Joke",
      "where": "The Old Light — The One Joke",
-     "mood": "The One Joke — the tower's tune slowed to a tender, slightly detuned music box: a joke written for someone who never came home.",
+     "mood": "The One Joke — the march stuck like a broken record: skipping, warping, wheezing round and round the same bar.",
      "classic": "play/assets/audio/music/oldlight-f6.mp3",
      "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/oldlight-f6.mp3",
-     "loop_start": 11.61,
+     "loop_start": 6.223,
      "note": null
     },
     {
      "id": "oldlight-f7",
      "title": "The Old Light — The Winding Room",
      "where": "The Old Light — The Winding Room",
-     "mood": "The Winding Room — the march at full delirium: every phrase climbs a key, the clockwork speeds up, then the spring snaps back.",
+     "mood": "The Winding Room — the joke machine at full delirium: the march in every key at once, lurching, melting, and snapping back.",
      "classic": "play/assets/audio/music/oldlight-f7.mp3",
      "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/oldlight-f7.mp3",
-     "loop_start": 5.759,
+     "loop_start": 5.224,
      "note": null
     }
    ]

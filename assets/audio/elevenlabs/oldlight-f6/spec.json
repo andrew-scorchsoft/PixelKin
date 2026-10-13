@@ -1,27 +1,26 @@
 {
  "id": "oldlight-f6",
  "kind": "loop",
- "where": "The Old Light, floor 6 — The One Joke (two cups, an empty chair; the emotional heart of the tower)",
- "mood": "The One Joke — the tower's tune slowed to a tender, slightly detuned music box: a joke written for someone who never came home.",
- "bpm": 63,
+ "where": "The Old Light, floor 6 — The One Joke (the same joke on repeat; the tower starting to come apart)",
+ "mood": "The One Joke — the march stuck like a broken record: skipping, warping, wheezing round and round the same bar.",
+ "bpm": 126,
  "beats_per_bar": 4,
  "motif": {
-  "strength": "high",
+  "strength": "medium",
   "source": "oldlight"
  },
- "_note": "Classic oldlight-f6: 66, F harmonic minor, a detuned music box over a faint string bed, stopping on the dominant. Tender, never creepy. A soft string bed keeps sound under every bar so there is never dead air. Opening: a lone music box breathing in, strings underneath from the first beat. | Family pass (music-cue-family): conditioned on motif-oldlight (the f1 remaster's theme), strength high; tempo moved 66->63 because motif conditioning locks takes to the anchor's 126 grid (feel carries the slow pace). | NEVER name the tune in the brief: 'Punchwheel's Patter' got every conditioned plan rejected as copyrighted_material_detected; describe it ('the tower's march tune') instead. | the core style 'carried from the reference' got this plan rejected (copyrighted_material_detected) even unconditioned; dropped.",
+ "_note": "R11 pass 2 (owner: 'F6 doesn't sound right; F6 and F7 must be progressively more broken'): the tender music box is gone. F6 is now a rung MORE broken than F5's wrong notes: a stuck, warped record of the march. On the 126 grid (motif conditioning). Never name the tune or mention the reference in the brief (copyrighted_material_detected).",
  "core_styles": [
   "16-bit console RPG soundtrack from the mid-1990s",
   "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
-  "63 BPM",
-  "F minor",
-  "4/4 slow and tender",
-  "a gently detuned music box playing the tower's tune",
-  "a soft warm string bed sustaining underneath every bar",
-  "celesta doubling a sixteenth behind like a quieter twin",
-  "a soft clockwork tick",
-  "bittersweet, tender, lamplit, a quiet lamplit room with an empty chair",
-  "melancholy but warm and comforting",
+  "126 BPM",
+  "F minor sliding into F major and back",
+  "4/4 march that keeps skipping like a stuck record",
+  "a warped music box and an out-of-tune honky-tonk piano playing the march",
+  "wobbling tape-speed pitch bends on the melody",
+  "a wheezing harmonium chord holding underneath every bar",
+  "a lopsided clock tick and a tuba that keeps losing its place",
+  "comic, unravelling, dizzy, a joke told too many times",
   "strong singable melody, instantly hummable and pleasant on repeat",
   "authentic 16-bit game music sound",
   "instrumental"
@@ -45,49 +44,46 @@
   "horror",
   "creepy",
   "sinister",
-  "dark",
-  "fast",
-  "loud drums",
-  "brass stabs",
-  "comic"
+  "stop-time breaks",
+  "tender",
+  "lullaby",
+  "calm"
  ],
  "sections": [
   {
    "name": "Intro",
    "bars": 2,
-   "text": "{a lone music box begins the tune softly with warm strings already sustaining beneath it}",
+   "text": "{a needle drops and the march's first bar skips three times over the wheezing harmonium, then lurches on}",
    "styles": [
-    "music box opening",
-    "tender"
+    "stuck-record opening",
+    "skipping"
    ]
   },
   {
    "name": "Main Theme",
    "bars": 8,
-   "text": "{the tower's march tune slowed into a tender music-box waltz-like lullaby in F minor, a celesta twin trailing a sixteenth behind, strings warm underneath}",
+   "text": "{the tower's march tune on a warped music box and honky-tonk piano, each phrase sticking and repeating its last note, the pitch wobbling as if the tape is stretching}",
    "styles": [
     "main theme",
     "memorable hook",
-    "tender"
+    "skipping record"
    ]
   },
   {
    "name": "Main Theme Reprise",
    "bars": 8,
-   "text": "{again with a solo cello singing a counter-melody beneath the music box, very gentle}",
+   "text": "{again, but the tuba comes in a beat out of step and the piano drifts flat, the record skips twice per phrase and the clock ticks unevenly}",
    "styles": [
-    "cello counter-melody",
-    "slightly fuller",
-    "warm"
+    "drifting out of tune",
+    "more broken"
    ]
   },
   {
    "name": "Bridge",
    "bars": 8,
-   "text": "{contrast: A-flat major, the strings swell softly with a warmer memory, the music box resting on long notes, a soft clockwork tick, then the minor returns}",
+   "text": "{contrast: the record slows and speeds like a hand on the turntable, the tune bending down and up in pitch over the wheezing harmonium, then it catches}",
    "styles": [
-    "A-flat major",
-    "warm memory",
+    "warped pitch bends",
     "contrasting section"
    ],
    "adherence": "medium"
@@ -95,7 +91,7 @@
   {
    "name": "Main Theme Return",
    "bars": 8,
-   "text": "{the music-box tune returns tender in F minor; the last bar rests on the dominant and the box starts the tune again}",
+   "text": "{the stuck march again, skipping on its last bar over and over until it jolts straight back to the top of the tune}",
    "styles": [
     "main theme returns",
     "seamless loop back to the start of the theme"

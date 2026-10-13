@@ -564,9 +564,11 @@ pinned to the motif's ~90 BPM; same tempo/key/derangement as the classic, the la
 slide-trombone/slide-whistle since the remasters are instrumental). The remasters share the TOWER's own
 motif, not the Vesper one: `oldlight-f1` (unconditioned) is the anchor, its theme is registered as
 `assets/audio/elevenlabs/motif-oldlight.json`, and floors 2–7 condition on it (`"motif": {"source": "oldlight"}`),
-high strength on the near floors and the F6 heart, medium on the wildest (F4/F5/F7). Conditioning locks
-tempo to the anchor's 126 grid, so F3's lounge is a half-time feel, F6 sits at 63 and F7 is a double-time
-feel. The ladder: straight → late → lounge → inverted → wrong-note → tender music box → everything at once.
+high strength on the near floors, medium from F4 up. Conditioning locks tempo to the anchor's 126
+grid, so F3's lounge is a half-time feel and F7 a double-time one. The ladder only ever gets MORE broken
+(owner, 2026-10: the remastered F6 is not a tender music box like the classic one): straight → late →
+lounge → inverted → wrong-note → stuck, warped record (F6) → the machine flying apart, clashing keys and
+melting pitch (F7).
 Method: the `music-cue-family` skill.
 Specs `assets/audio/midi/specs/oldlight-fN.json` → `assets/audio/midi/oldlight-fN.mid` →
 `music/oldlight-fN.mp3`.

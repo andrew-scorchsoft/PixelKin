@@ -1,14 +1,14 @@
 {
  "id": "oldlight-f7",
  "kind": "loop",
- "where": "The Old Light, top \u2014 The Winding Room (Mr. Punchwheel, the great joke-drum)",
- "mood": "The Winding Room \u2014 the march at full delirium: every phrase climbs a key, the clockwork speeds up, then the spring snaps back.",
- "duration": 69.512,
- "loop_start": 5.759,
- "seam": 0.2,
+ "where": "The Old Light, top \u2014 The Winding Room (Mr. Punchwheel, the great joke-drum, flying apart)",
+ "mood": "The Winding Room \u2014 the joke machine at full delirium: the march in every key at once, lurching, melting, and snapping back.",
+ "duration": 66.978,
+ "loop_start": 5.224,
+ "seam": 0.257,
  "bpm_est": 63.0,
- "song_id": "1JGphxLtrCP88S6uVOFF",
- "raw_ms": 63500,
+ "song_id": "6navCPN5MVgEmwbJil2R",
+ "raw_ms": 61500,
  "motif": "medium",
- "lufs": -15.4
+ "lufs": -15.3
 }
