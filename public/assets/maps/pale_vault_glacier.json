@@ -342,7 +342,7 @@
       },
       "facing": "up",
       "transition": "door",
-      "requires_flag": "flag:q_north_aurora_oil",
+      "requires_flag": "flag:undercroft_open",
       "blocked_ref": "npc.ysolde_door_unlit"
     },
     {

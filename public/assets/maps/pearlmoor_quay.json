@@ -2460,7 +2460,7 @@
         "ty": 0
       },
       "facing": "down",
-      "requires_flag": "flag:q_south_has_rope",
+      "requires_flag": "flag:q_south_rope_or_later",
       "blocked_ref": "npc.netmender_gate",
       "transition": "fade"
     },
@@ -2477,7 +2477,7 @@
         "ty": 0
       },
       "facing": "down",
-      "requires_flag": "flag:q_south_has_rope",
+      "requires_flag": "flag:q_south_rope_or_later",
       "blocked_ref": "npc.netmender_gate",
       "transition": "fade"
     },

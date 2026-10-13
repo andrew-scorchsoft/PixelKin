@@ -50,6 +50,23 @@ const POST_LETTER_FLAGS: WorldFlag[] = [
 ];
 const POST_LETTERS_ALL: WorldFlag = 'flag:q_post_letters_all';
 
+/**
+ * ANY-OF gate flags (2026-10, owner's rule: players on old saves must never be locked out
+ * of places a LATER update hung on a quest step they already went past). A gate keys on a
+ * derived flag that opens on its own quest step OR any later milestone, so a save made
+ * before the step existed still opens it. Add a row when you gate something new on a
+ * mid-quest flag; mirror it in tools/maps/audit_journey.py DERIVED_ANY.
+ */
+const ANY_OF: [WorldFlag, WorldFlag[]][] = [
+  // the Old Light's door: Reyl's errand, or you've already got past Reyl (pre-R9 saves)
+  ['flag:oldlight_open', ['flag:q_south_bell', 'gleam:tide']],
+  // the rope's in hand, or the bell's long since rung: nobody needs reminding about it
+  ['flag:q_south_rope_or_later', ['flag:q_south_has_rope', 'gleam:tide']], // + the breakwater gate
+  // Galehigh's winch to the skyloft, Pale Vault's undercroft arch
+  ['flag:skyloft_open', ['flag:q_north_kite_blessed', 'gleam:storm']],
+  ['flag:undercroft_open', ['flag:q_north_aurora_oil', 'gleam:frost']],
+];
+
 export class FlagStore {
   private flags: Record<WorldFlag, boolean>;
 
@@ -91,6 +108,9 @@ export class FlagStore {
     }
     if (CROWNS.every(([crown]) => this.flags[crown] === true)) {
       this.flags[HUB_FLAG] = true;
+    }
+    for (const [gate, any] of ANY_OF) {
+      if (any.some((f) => this.flags[f] === true)) this.flags[gate] = true;
     }
     if (POST_LETTER_FLAGS.every((f) => this.flags[f] === true)) {
       this.flags[POST_LETTERS_ALL] = true;

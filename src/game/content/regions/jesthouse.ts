@@ -193,12 +193,31 @@ export const JESTHOUSE_SCRIPTS: ScriptRegistry = {
   // ---- Lightkeeper's Point: PIP runs after you on the way out --------------------------------
   // Fires once, on the Point's one crossing back to the quay, if you've climbed the
   // tower (the floats are yours) but haven't had the rope yet.
+  // ---- ANDREW outside the Old Light, once the act is done (owner's beat, 2026-10) -------
+  // He runs up, says his piece about eggs and wonder, laughs and dashes off. Never says
+  // WHAT the egg is (CLAUDE.md); {name} is the player's name, whatever they chose.
+  'script.andrew_tower_wink': [
+    { op: 'emote', actor: 'andrew_tower', emote: 'alert' },
+    { op: 'move', actor: 'andrew_tower', to: { tx: 10, ty: 8 }, speed: 2 },
+    { op: 'face', actor: 'andrew_tower', facing: 'left' },
+    { op: 'face', actor: 'player', facing: 'right' },
+    { op: 'say', speaker: 'ANDREW', text: "{name}! There you are. Isn't it funny? All this time you've been chasing that Easter egg..." },
+    { op: 'say', speaker: 'ANDREW', text: "...when the whole game's been a little bit of an Easter egg all along, hasn't it? (wink, wink)" },
+    { op: 'say', speaker: 'ANDREW', text: "Keep playing, though. You're not AT the Easter egg yet." },
+    { op: 'say', speaker: 'ANDREW', text: "Isn't it funny? This game's been a bit of a wonder, hasn't it?" },
+    { op: 'say', speaker: 'ANDREW', text: 'And though you might aspire to make ME wonder... it is YOU who is the one wandering through MY world.' },
+    { op: 'action', actor: 'andrew_tower', action: 'laugh' },
+    { op: 'say', speaker: 'ANDREW', text: 'Ha! Ha ha ha ha!' },
+    { op: 'move', actor: 'andrew_tower', to: { tx: 19, ty: 8 }, speed: 2 },
+    { op: 'hideActor', actor: 'andrew_tower' },
+    { op: 'setFlag', flag: 'flag:andrew_tower_winked' },
+  ],
   'script.oldlight_rope_reminder': [
-    { op: 'emote', actor: 'pip', emote: 'alert', unless_flag: 'flag:q_south_has_rope' },
-    { op: 'move', actor: 'pip', to: { tx: 17, ty: 8 }, unless_flag: 'flag:q_south_has_rope' },
-    { op: 'say', speaker: 'PIP', text: 'WAIT! Wayfarer! Gran says you went UP the Old Light — all the way! Did you get her floats back off that machine?', unless_flag: 'flag:q_south_has_rope' },
-    { op: 'say', speaker: 'PIP', text: 'Take them to her on the quay, by her nets! She\'s got the bell-rope put by. Then you can walk the whole breakwater, right out to the bell.', unless_flag: 'flag:q_south_has_rope' },
-    { op: 'say', speaker: 'PIP', text: 'And go all the way to the END. Everyone says there\'s somebody out past the bell who... I don\'t know what he is. Nobody does! Go and SEE!', unless_flag: 'flag:q_south_has_rope' },
+    { op: 'emote', actor: 'pip', emote: 'alert', unless_flag: 'flag:q_south_rope_or_later' },
+    { op: 'move', actor: 'pip', to: { tx: 17, ty: 8 }, unless_flag: 'flag:q_south_rope_or_later' },
+    { op: 'say', speaker: 'PIP', text: 'WAIT! Wayfarer! Gran says you went UP the Old Light — all the way! Did you get her floats back off that machine?', unless_flag: 'flag:q_south_rope_or_later' },
+    { op: 'say', speaker: 'PIP', text: 'Take them to her on the quay, by her nets! She\'s got the bell-rope put by. Then you can walk the whole breakwater, right out to the bell.', unless_flag: 'flag:q_south_rope_or_later' },
+    { op: 'say', speaker: 'PIP', text: 'And go all the way to the END. Everyone says there\'s somebody out past the bell who... I don\'t know what he is. Nobody does! Go and SEE!', unless_flag: 'flag:q_south_rope_or_later' },
     { op: 'setFlag', flag: 'flag:oldlight_rope_reminded' },
   ],
   // ---- MOLL's two floors that notice your wins (the rest are plain dialogue) ----------

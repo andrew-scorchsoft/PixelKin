@@ -268,7 +268,8 @@ pt.building(m, path_for_aprons, W, H, oid="undercroft_arch",
             sprite="pale_vault_undercroft_arch", at=(18, 6), overhang=1,
             door_col=1, to_map="pale_vault_undercroft", to=(10, 0))
 m["warps"][-1].update({"id": "to_undercroft",
-                       "requires_flag": "flag:q_north_aurora_oil",
+                       # ANY-OF: the aurora oil or gleam:frost (FlagStore)
+                       "requires_flag": "flag:undercroft_open",
                        "blocked_ref": "npc.ysolde_door_unlit"})
 
 # ---- objects: braziers, the camp swap pair, spires, lamps --------------------------

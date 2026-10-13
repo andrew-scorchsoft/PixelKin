@@ -15,6 +15,10 @@
  * with the case. Changes there ship SILENTLY; announce only general things.
  */
 export const WHATS_NEW: Record<string, string[]> = {
+  '1.23': [
+    'Trainer battles now open the old way: your opponent steps out to face you, says their piece, and sends out their kin. Win, and they come back for a few closing words.',
+    'If you finished parts of the Wayfaring on an older build, places that later updates hung on quest steps you had already passed are now open to you.',
+  ],
   '1.22': [
     'At the top of the Old Light, someone very protective of the last joke has hired an act to keep you away from it. There is a comfy chair by the stairs to rest in first.',
   ],

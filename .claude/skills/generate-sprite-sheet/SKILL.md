@@ -209,9 +209,11 @@ $GEN/pack_trainers.py
   sprite when generating its back/icon). Repeat for multiple. Routed to
   `generate-image --input-image`; gpt-image-2 honours references via its edits
   route.
-- `--provider google|openai` — image provider. **`google` (default)** uses Nano
-  Banana Pro's native transparent path. `openai` uses gpt-image-2 + magenta
-  chroma-key (fallback; its safety filter can reject benign briefs).
+- `--provider google|openai` — image provider. `openai` uses **gpt-image-2.5-sunburst with NATIVE
+  alpha** (no chroma key, so no purple/pink halo): the default choice for anything human or
+  transparent, and what every trainer-battle sprite uses. `google` (Nano Banana Pro) still keys a
+  magenta field, so its edges can carry a purple rim. Clean such old art with
+  `tools/assets/fix_purple_rim.py` (the subtle mauve rim) or `tools/assets/defringe.py` (strong pink).
 - `--resample lanczos|box|nearest` — downscale filter. **`lanczos` (default)**
   reads cleanest at tiny sizes; `nearest` gives the hardest edges. (Rendering
   stays crisp regardless — Phaser nearest-upscales the small source.)
@@ -616,11 +618,10 @@ ring vs interior), and that rim *is* the grid when tiled. The fix is prompt + sa
     rim **8.9**) that fights tiling. Use OpenAI for pure fills *when it's behaving*.
   - **EDGES / DECOR / OBJECTS / anything transparent: Nano** — cleaner edge (rim 0.7 vs gpt 18)
     and native transparency; gpt's edge picked up a vignette.
-  - **Reliability caveat (today):** our sprite tooling routes OpenAI through opaque + magenta-
-    chroma + the *creature* preamble + retries, so gpt tiles are **slow and frequently fail** in
-    this env (the cliff fill fell back to Nano). Until the OpenAI tile path uses native
-    `background:transparent` + a tile-specific preamble + no retries, **default `--provider
-    google` for tiles**, and only reach for OpenAI on a stubborn uniform fill. Generate fills as
+  - **(2026-10) The OpenAI path is now native `background:transparent`** (gpt-image-2.5-sunburst;
+    the magenta chroma-key is only a fallback for a pinned no-alpha model), so there's no key halo.
+    Tiles are still drawn in code (gbaforge) wherever possible; for a generated tile prefer
+    `--provider google` only on a stubborn fill that OpenAI embellishes. Generate fills as
     a large flat field and `whole_downscale` regardless of model.
 
 The legacy per-area `_shared/` recipe below still documents the from-scratch generate flow;
