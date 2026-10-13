@@ -2232,6 +2232,7 @@ export class WorldScene extends Phaser.Scene {
     const result = await new ItemsMenu(this, this.inventory, this.party, this.sfx, this.money, {
       get: (f) => this.flags.get(f),
       set: (f, v) => this.flags.set(f, v),
+      kindleMusic: { director: this.music, restore: () => this.playMapMusic() },
     }).run();
     this.party = result.party;
     this.inventory = result.inventory;

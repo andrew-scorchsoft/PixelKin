@@ -1,0 +1,13 @@
+{
+  "title": "SFX -- kindle cancel a (the flame cupped: light settles back)",
+  "_note": "The player cups the flame mid-kindling: the rising shimmer deflates — a soft down-glide on wave with a breathy noise sigh under it. Gentle, not a failure buzzer: the kin is fine, it just isn't time yet.",
+  "era": "sfx",
+  "tempo": 150,
+  "time_signature": [4, 4],
+  "loop": false,
+  "key": "A minor",
+  "tracks": [
+    { "name": "fall",  "voice": "wave",  "octave": 5, "gain": 0.8, "notes": "E5~A4q@90 A4e@60" },
+    { "name": "sigh",  "voice": "noise", "octave": 4, "gain": 0.35, "notes": "C5~C3q@60" }
+  ]
+}

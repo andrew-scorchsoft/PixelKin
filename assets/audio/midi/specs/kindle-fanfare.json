@@ -1,0 +1,40 @@
+{
+  "title": "PixelKin - Kindled! (success fanfare)",
+  "_note": "One-shot, ~4 s incl. ring-out: plays the moment the bloom clears and the new kin is revealed. Answers the ceremony's A-minor tension by breaking into its relative C major — the light caught. A bouncing climb (the kin standing up in its new shape), a proud two-beat turn on F -> G, and a firm landing home with a bell sparkle (the Light signature). Deliberately different contour from the Gleam fanfare (which rises on the Vesper motif): this one leaps and dances.",
+  "era": "gbc",
+  "tempo": 152,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 5,
+      "gain": 1.0,
+      "notes": "G4e C5e E5e G5e E5e G5e C6q | A5e G5e F5e A5e G5q D5q | C6h. rq"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.5,
+      "notes": "C4s E4s G4s C5s C4s E4s G4s C5s E4s G4s C5s E5s E4s G4s C5s E5s | F4s A4s C5s F5s F4s A4s C5s F5s G4s B4s D5s G5s G4s B4s D5s F5s | E5s G5s C6s E6s C5h. "
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.95,
+      "notes": "C2q G2q C3q G2q | F2q F2q G2q G2q | C2h. rq"
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 6,
+      "gain": 0.65,
+      "notes": "rw | rw | C6e E6e G6e C7e rh"
+    }
+  ]
+}

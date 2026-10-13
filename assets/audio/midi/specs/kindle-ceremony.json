@@ -1,0 +1,39 @@
+{
+  "title": "PixelKin - Kindling (the ceremony)",
+  "_note": "Plays while a kin kindles: the sprite flickers between its old shape and the new silhouette, faster and faster. 8 bars at 168 (~11.4 s) — KindlePrompt times the animation off this (BAR_MS), so the bloom lands on the bar-8 downbeat. The 'dum-dum-dum' is a pulsing tri_bass heartbeat that never lets up; above it a hushed pulse12 arp walks A minor -> Bb (the phrygian lift: something strange is happening) twice, then climbs C -> D -> E7 so the tension rises bar by bar into the bloom. The lead is a small questioning phrase that keeps reaching one step higher. Loops (Am answers E) as a safety net if the animation is ever held longer.",
+  "era": "gbc",
+  "tempo": 168,
+  "time_signature": [4, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "A minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 5,
+      "gain": 0.8,
+      "notes": "E5q. D5e E5h | F5q. E5e D5h | E5q. D5e E5q A5q | F5q. E5e D5q Bb4q | G5q. F5e G5q C6q | A5q. G5e A5q D6q | B5q G#5q B5q D6q | E6q D6q B5q G#5q"
+    },
+    {
+      "name": "harmony",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.45,
+      "notes": "A3s C4s E4s A4s E4s C4s A3s C4s E4s A4s E4s C4s A3s C4s E4s C4s | Bb3s D4s F4s Bb4s F4s D4s Bb3s D4s F4s Bb4s F4s D4s Bb3s D4s F4s D4s | A3s C4s E4s A4s E4s C4s A3s C4s E4s A4s E4s C4s A3s C4s E4s C4s | Bb3s D4s F4s Bb4s F4s D4s Bb3s D4s F4s Bb4s F4s D4s Bb3s D4s F4s D4s | C4s E4s G4s C5s G4s E4s C4s E4s G4s C5s G4s E4s C4s E4s G4s E4s | D4s F#4s A4s D5s A4s F#4s D4s F#4s A4s D5s A4s F#4s D4s F#4s A4s F#4s | E4s G#4s B4s E5s B4s G#4s E4s G#4s B4s E5s B4s G#4s E4s G#4s B4s G#4s | E4s G#4s B4s D5s E5s D5s B4s G#4s E4s G#4s B4s D5s E5s G#5s B5s E6s"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 1.0,
+      "notes": "A2e A2e A2q A2e A2e A2q | Bb2e Bb2e Bb2q Bb2e Bb2e Bb2q | A2e A2e A2q A2e A2e A2q | Bb2e Bb2e Bb2q Bb2e Bb2e Bb2q | C3e C3e C3q C3e C3e C3q | D3e D3e D3q D3e D3e D3q | E2e E2e E2q E2e E2e E2q | E2e E2e E3e E2e E2e E3e E2e E3e"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.35,
+      "notes": "e kick hat hat hat kick hat hat hat | kick hat hat hat kick hat hat hat | kick hat hat hat kick hat hat hat | kick hat hat hat kick hat hat hat | kick hat hat hat kick hat hat hat | kick hat hat hat kick hat hat hat | kick hat snare hat kick hat snare hat | kick hat snare hat s snare snare snare snare e snare snare"
+    }
+  ]
+}
