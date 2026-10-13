@@ -440,8 +440,9 @@ def floor_4():
     sign_at(triggers, "box_office_sign", 10, MID + 3, "script.oldlight_lamps_out", kind="cutscene")
     ol(objects, "funhouse_mirror", 5, MID, oid="mirror_a")
     ol(objects, "funhouse_mirror", 16, MID, oid="mirror_b")
-    sign_at(triggers, "mirror_a_sign", 5, MID + 2, "sign.oldlight_funhouse")
-    sign_at(triggers, "mirror_b_sign", 16, MID + 2, "sign.oldlight_funhouse")
+    # every glass bends you its own way: one line each, on the glass itself
+    sign_at(triggers, "mirror_a_sign", 5, MID + 1, "sign.oldlight_mirror_squat")
+    sign_at(triggers, "mirror_b_sign", 16, MID + 1, "sign.oldlight_funhouse")
     place(objects, "pew", 13, 12, oid="bench_r")
     objects.append({"id": "troupe_cart", "sprite": "solarium_troupe_cart",
                     "at": {"tx": 8, "ty": 12}, "w": 3, "h": 2})
@@ -449,12 +450,18 @@ def floor_4():
     place(objects, "brazier", 15, 10, oid="brazier_r")
     sign_at(triggers, "brazier_sign", 15, 11, "sign.oldlight_brazier")
     # the MIRROR MAZE (small): free-standing funhouse glasses zig-zag the east
-    # hall, so the walk to the stair is a little dance with your reflections
-    for i, (x, y) in enumerate(((17, 9), (19, 11), (13, 10), (17, 12), (19, 8))):
+    # hall, so the walk to the stair is a little dance with your reflections.
+    # Each glass's TOP row is walk-behind (you slip behind the frame's crown,
+    # drawn over you — depth), and each answers Confirm with its own distortion.
+    maze = (((17, 9), "sign.oldlight_mirror_upside"), ((19, 11), "sign.oldlight_maze_end"),
+            ((13, 10), "sign.oldlight_mirror_bighead"), ((17, 12), "sign.oldlight_mirror_wavy"),
+            ((19, 8), "sign.oldlight_mirror_late"))
+    for i, ((x, y), ref) in enumerate(maze):
         objects.append({"id": f"maze_mirror_{i}", "sprite": "oldlight_funhouse_mirror",
-                        "at": {"tx": x, "ty": y}, "w": 1, "h": 2})
+                        "at": {"tx": x, "ty": y}, "w": 1, "h": 2,
+                        "overhang": 1, "walk_under": True})
+        sign_at(triggers, "maze_end" if i == 1 else f"maze_mirror_{i}_sign", x, y + 1, ref)
     sign_at(triggers, "maze_sign", 20, 9, "sign.oldlight_mirror_maze")
-    sign_at(triggers, "maze_end", 19, 12, "sign.oldlight_maze_end")  # the dead end's glass
     # THE MIRROR in the south-west alcove (optional): a mimic, battles in pairs
     alcove_trainer(over, npcs, 5, "mirror", "player_indi")  # wears YOUR face
     # the stair room (NW): the RINGMASTER guards the tube

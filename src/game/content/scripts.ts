@@ -908,6 +908,8 @@ export const SCRIPTS: ScriptRegistry = {
   'script.inn_rest': [
     { op: 'say', speaker: 'INNKEEP', text: 'Rest your feet, Wayfarer — and your kin. The hearth is warm and the boards are dry.' },
     { op: 'heal' },
+    { op: 'say', speaker: 'INNKEEP', text: 'Morning! Sleep well? ...Can I ask you something. Have you ever considered taking a virtuous day?' },
+    { op: 'say', speaker: 'INNKEEP', text: "A day off. Not because you're poorly, mind. Just because you're being virtuous to yourself. The road will keep, I promise." },
     { op: 'say', speaker: 'INNKEEP', text: 'There. Lamps trimmed, kin bright-eyed. The dusk can wait on you a while yet.' },
   ],
   // Home: the bed in the apprentice's house. Free, always — home is home.

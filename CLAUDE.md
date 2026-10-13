@@ -1441,3 +1441,7 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   from an `-intro` + `-loop` master pair; `MusicDirector` loops from its `loop_start`). Which scenes get
   it is `systems/audio/trainerCue.opensWithChallenge` (route-tier trainer, ≤3 lead-in lines, no music
   op first — Lampwardens/rival/Hollowing/'smart' skip it); WorldScene restores the map bed if no fight.
+- **A battle switch is a changeover (2026-10):** `BattleScene.playSwitch` names the outgoing kin ("X, come back!"),
+  plays `Battler.recall` + `battle-recall`, then `Battler.sendOut` + `battle-sendout`. The engine has already
+  swapped the active slot when the event plays, so the scene keeps its own `shownPlayer`/`shownFoe` — a fainted
+  kin skips the recall. Free-standing props you can walk behind = `overhang: 1, walk_under: true` (the F4 mirrors).

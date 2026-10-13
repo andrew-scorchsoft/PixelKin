@@ -15,6 +15,10 @@
  * with the case. Changes there ship SILENTLY; announce only general things.
  */
 export const WHATS_NEW: Record<string, string[]> = {
+  '1.26': [
+    'Swapping kin mid-battle is a proper changeover now: you call your kin back into the lamp, and the next one blooms out of its light.',
+    'The Backwards Inn\'s funhouse mirrors have opinions. Go and look in each one, and slip behind them while you\'re at it.',
+  ],
   '1.25': [
     'Things you face and press A on now answer you properly: a few signs and curiosities (several in the Old Light) used to keep quiet unless you stood just so.',
     'A trainer\'s greeting in battle now waits for you to press A. Prefer it brisk? SETTINGS > Trainer talk: Auto.',

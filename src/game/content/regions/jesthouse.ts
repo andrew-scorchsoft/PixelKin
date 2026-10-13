@@ -346,6 +346,27 @@ export const JESTHOUSE_DIALOGUE: DialogueRegistry = {
   'sign.oldlight_funhouse': [
     sign('A wobbly carnival mirror. In it you are seven feet tall and one inch wide. Your reflection gives you a thumbs-up you did not give it.'),
   ],
+  // one distortion per glass (build_pearlmoor_oldlight.py floor_4): every mirror bends you its own way
+  'sign.oldlight_mirror_squat': [
+    sign('A squat carnival mirror. In it you are three feet tall and as wide as a door.'),
+    sign('You look very sturdy. Dependable, even. Your reflection would make an excellent wardrobe.'),
+  ],
+  'sign.oldlight_mirror_upside': [
+    sign('In this one you are standing on your head. Your reflection seems perfectly comfortable about it.'),
+    sign('It looks at you as though YOU are the one doing it wrong.'),
+  ],
+  'sign.oldlight_mirror_bighead': [
+    sign('Your head fills the whole glass, big as a harvest pumpkin. Somewhere far below it, two tiny legs are trying their best.'),
+    sign('The legs look worried. You would be too.'),
+  ],
+  'sign.oldlight_mirror_wavy': [
+    sign('This glass ripples. Your reflection flaps like washing on a windy line.'),
+    sign('It looks seasick. Now, so do you.'),
+  ],
+  'sign.oldlight_mirror_late': [
+    sign('A plain mirror, for once. You wave. ...A moment later, your reflection waves.'),
+    sign('You stop. It is still waving. It notices, goes red, and pretends it was swatting a fly.'),
+  ],
   'npc.oldlight_mirror_after': [
     line('THE MIRROR', 'Same time next week? ...I already said yes. You just hadn\'t asked yet.'),
   ],
@@ -417,7 +438,8 @@ export const JESTHOUSE_DIALOGUE: DialogueRegistry = {
     sign('Underneath, in the same hand: (THE OTHER THAT WAY.)'),
   ],
   'sign.oldlight_maze_end': [
-    sign('A dead end, and a tall mirror in it. Someone has chalked an arrow on the glass, pointing at you: EXIT.'),
+    sign('A dead end, and a tall mirror in it. Your reflection has its back to you, looking for the way out.'),
+    sign('Someone has chalked an arrow on the glass, pointing at you: EXIT.'),
     sign('You are not the exit. You check twice.'),
   ],
   'sign.oldlight_audience': [
