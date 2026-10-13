@@ -1011,7 +1011,7 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   before Reyl and the fen) and an optional alcove regular (`oldlight_<id>` route trainers, F1–F5);
   rests at the F3 tea-urn and the F6 two cups. Each floor wears its own warped kit
   `oldlight_fN_set` (`build_oldlight_sets.py`, the interior gids — never change the order) and cue
-  `oldlight-fN` (one theme, more deranged per floor); props are drawn by `oldlightforge.py`
+  `oldlight-fN` (one theme, more deranged per floor; classic chip + remastered cue sheets); props are drawn by `oldlightforge.py`
   (`oldlight_*`); the cast's lines live in `content/regions/jesthouse.ts`. Pip on the Point runs
   after you once (floats, no rope) so the breakwater is never missed.
   R11: the hall tables are the tower's OWN clowns (`TOWER_TABLES` in the builder ⇄ `OLDLIGHT_TABLES`

@@ -1,0 +1,98 @@
+{
+ "id": "oldlight-f7",
+ "kind": "loop",
+ "where": "The Old Light, top — The Winding Room (Mr. Punchwheel, the great joke-drum)",
+ "mood": "The Winding Room — the march at full delirium: every phrase climbs a key, the clockwork speeds up, then the spring snaps back.",
+ "bpm": 144,
+ "beats_per_bar": 4,
+ "motif": null,
+ "_note": "Classic oldlight-f7: 144, F→A♭→B→D then snap back. The tower's finale: joyous delirium, carnival-calliope energy, still cosy. Opening: a clockwork ratchet winding up for one bar, the full band crashing in on bar two.",
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "144 BPM",
+  "F major modulating up a minor third every phrase",
+  "4/4 galloping music-hall march at full tilt",
+  "steam calliope and brass band playing the tune",
+  "clockwork ratchet and woodblocks speeding up",
+  "slide whistle and bicycle-horn honks",
+  "spring boing that snaps the key back down to F",
+  "delirious, joyous, whirling, a giant joke machine",
+  "strong singable melody, instantly hummable and pleasant on repeat",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "spoken word",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "fade out",
+  "ritardando",
+  "ending",
+  "electric guitar",
+  "heavy sub bass",
+  "hall reverb",
+  "ambient drone",
+  "silence",
+  "sparse",
+  "horror",
+  "creepy",
+  "sinister",
+  "dark"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{a clockwork ratchet winds up hard for one bar, then the calliope and full brass band crash straight into the tune}",
+   "styles": [
+    "wind-up opening",
+    "explosive",
+    "bouncy"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the march tune at full gallop on steam calliope and brass, the oom-pah racing; after four bars the whole band jumps up a key}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "key change"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{again climbing another key, a xylophone and piccolo counter-line whirling, the ratchet ticking faster}",
+   "styles": [
+    "climbing modulation",
+    "faster counter-melody",
+    "fuller"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: the joke-drum spins: a whirling waltz-time feel in D, calliope swirls and slide whistles, bicycle horns honking, then a big spring boing snaps back to F}",
+   "styles": [
+    "whirling",
+    "spring boing",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the march returns in F at full tilt; the last bar's spring boing snaps straight back into the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

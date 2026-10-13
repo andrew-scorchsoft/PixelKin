@@ -558,7 +558,10 @@ cue, all built on ONE original theme, **"Punchwheel's Patter"** — a music-hall
 whose bar 1 states the Vesper motif whole and bounced (C–F–G lift, A–G–F settle). Every
 fourth bar the lead stops on beat 1 and leaves the gap for the **laugh**: three staccato
 falling `pulse12` glides ("ha-ha-ha") and a `noise` "pfft". Each floor up is a little more
-deranged. **Classic-only** (no remaster, like the battles): chip engine, `snes` register.
+deranged. Classic: chip engine, `snes` register. **Remastered too (R11, 2026-10):** each floor has a
+cue sheet `assets/audio/elevenlabs/oldlight-fN/spec.json` (unconditioned — the march tempos would be
+pinned to the motif's ~90 BPM; same tempo/key/derangement as the classic, the laugh played by
+slide-trombone/slide-whistle since the remasters are instrumental).
 Specs `assets/audio/midi/specs/oldlight-fN.json` → `assets/audio/midi/oldlight-fN.mid` →
 `music/oldlight-fN.mp3`.
 
