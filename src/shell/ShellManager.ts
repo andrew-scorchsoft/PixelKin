@@ -26,6 +26,7 @@ import {
   setAlwaysRun,
   setTextSpeed,
   setBattlePace,
+  setTrainerTalkAuto,
   setMusicVolume,
   setMusicStyle,
   setSfxVolume,
@@ -108,6 +109,7 @@ class ShellManagerImpl {
     setAlwaysRun(this.settings.alwaysRun ?? false);
     setTextSpeed(this.settings.textSpeed ?? 'cosy');
     setBattlePace(this.settings.battlePace ?? 'cosy');
+    setTrainerTalkAuto(this.settings.trainerTalkAuto ?? false);
     setMusicVolume(this.settings.musicVolume ?? 'full');
     setMusicStyle(this.settings.musicStyle ?? 'remastered');
     setSfxVolume(this.settings.sfxVolume ?? 'full');

@@ -267,13 +267,13 @@ export class BattleScene extends Phaser.Scene {
     if (solo) {
       // a lone kin, no trainer: it just appears, like a wild one
       this.time.delayedCall(260, () => playCry(this.sfx, this.engine.foe.species.id));
-      await this.msg.show(solo);
+      await this.msg.show(solo, { confirm: true });
     } else if (this.request.kind === 'trainer') {
       const trainer = getTrainer(this.request.trainer);
       const art = trainerArt(trainer);
       await this.stage?.enter();
       const who = trainer ? (trainer.title ? `${trainer.title} ${trainer.name}` : trainer.name) : 'A trainer';
-      await this.msg.show(`${who} wants to battle!`);
+      await this.msg.show(`${who} wants to battle!`, { confirm: true });
       // authored lines win; a class trainer with none gets one in-voice quip
       let intro = getTrainerLines(trainer?.intro_ref);
       if (intro.length === 0 && art.introQuip) intro = [{ speaker: trainer?.name, text: art.introQuip }];
@@ -286,7 +286,7 @@ export class BattleScene extends Phaser.Scene {
       this.revealBattler(this.foeBattler, FOE_POS.y);
       this.foeHp.setVisible(true);
       playCry(this.sfx, this.engine.foe.species.id);
-      await this.msg.show(`${trainer?.name ?? 'Foe'} sent out ${this.engine.foe.displayName}!`);
+      await this.msg.show(`${trainer?.name ?? 'Foe'} sent out ${this.engine.foe.displayName}!`, { confirm: true });
       await this.stage?.exitPlayer();
       this.revealBattler(this.playerBattler, PLAYER_POS.y);
       this.playerHp.setVisible(true);
@@ -792,7 +792,7 @@ export class BattleScene extends Phaser.Scene {
       this.foeHp.setKin(incoming);
       playCry(this.sfx, incoming.species.id);
       const trainer = this.request.kind === 'trainer' ? getTrainer(this.request.trainer) : undefined;
-      await this.msg.show(`${trainer?.name ?? 'Foe'} sent out ${incoming.displayName}!`);
+      await this.msg.show(`${trainer?.name ?? 'Foe'} sent out ${incoming.displayName}!`, { confirm: true });
     }
   }
 
@@ -824,7 +824,7 @@ export class BattleScene extends Phaser.Scene {
         if (payout > 0) {
           this.moneyEarned = payout;
           void this.sfx.playVariant('world-pickup', ['a', 'b', 'c']);
-          await this.msg.show(`You earned ${payout} wicks for the bout!`);
+          await this.msg.show(`You earned ${payout} wicks for the bout!`, { confirm: true });
         }
       }
     } else if (outcome === 'lose') {

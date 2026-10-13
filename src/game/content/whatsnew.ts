@@ -15,6 +15,11 @@
  * with the case. Changes there ship SILENTLY; announce only general things.
  */
 export const WHATS_NEW: Record<string, string[]> = {
+  '1.25': [
+    'Things you face and press A on now answer you properly: a few signs and curiosities (several in the Old Light) used to keep quiet unless you stood just so.',
+    'A trainer\'s greeting in battle now waits for you to press A. Prefer it brisk? SETTINGS > Trainer talk: Auto.',
+    'The Old Light\'s regulars have found some new material. Mind the bunting.',
+  ],
   '1.24': [
     'Kindling is a proper ceremony now: your kin glows and flickers between its old shape and its new one, to a tune of its own. Press B before the light blooms if you would rather it waited.',
   ],

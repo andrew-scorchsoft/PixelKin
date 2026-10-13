@@ -1066,6 +1066,16 @@
       "ref": "npc.oldlight_cart"
     },
     {
+      "id": "brazier_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 15,
+        "ty": 11
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_brazier"
+    },
+    {
       "id": "maze_sign",
       "kind": "sign",
       "at": {

@@ -1333,6 +1333,26 @@
       "ref": "sign.oldlight_cap_tam"
     },
     {
+      "id": "viewing_bench_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 9,
+        "ty": 11
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_viewing_bench"
+    },
+    {
+      "id": "plant_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 1,
+        "ty": 13
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_plant"
+    },
+    {
       "id": "lectern_sign",
       "kind": "cutscene",
       "at": {

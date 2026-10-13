@@ -40,6 +40,7 @@ import {
   setAlwaysRun,
   setTextSpeed,
   setBattlePace,
+  setTrainerTalkAuto,
   setMusicVolume,
   setSfxVolume,
   setCannotDie,
@@ -149,6 +150,7 @@ export class SettingsMenu {
       { label: `Pace: ${this.settings.alwaysRun ? 'Always run' : 'Walk'}`, value: 'run' },
       { label: `Text: ${TEXT_SPEED_LABEL[this.settings.textSpeed ?? 'cosy']}`, value: 'text' },
       { label: `Battle: ${BATTLE_PACE_LABEL[this.settings.battlePace ?? 'cosy']}`, value: 'battle' },
+      { label: `Trainer talk: ${this.settings.trainerTalkAuto ? 'Auto' : 'Press A'}`, value: 'trainertalk' },
       { label: `Music: ${VOLUME_LABEL[this.settings.musicVolume ?? 'full']}`, value: 'music' },
       { label: `Soundtrack: ${getMusicStyle() === 'classic' ? 'Classic' : 'Remastered'}`, value: 'style' },
       // Effects relative to the music (both sit under Volume). Full is already
@@ -306,6 +308,15 @@ export class SettingsMenu {
         const next: BattlePace = current === 'cosy' ? 'swift' : 'cosy';
         this.settings = { ...this.settings, battlePace: next };
         setBattlePace(next);
+        await SaveManager.saveSettings(this.settings);
+        void this.deps.sfx?.play('ui-toggle');
+        return true;
+      }
+      case 'trainertalk': {
+        // A trainer's arrival + "sent out" lines: wait for A (default) or roll on.
+        const trainerTalkAuto = !(this.settings.trainerTalkAuto ?? false);
+        this.settings = { ...this.settings, trainerTalkAuto };
+        setTrainerTalkAuto(trainerTalkAuto);
         await SaveManager.saveSettings(this.settings);
         void this.deps.sfx?.play('ui-toggle');
         return true;
