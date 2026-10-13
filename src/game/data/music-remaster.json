@@ -205,6 +205,48 @@
    "where": "The Old Seams (the sealed deep galleries under Cinderhead: plank bridges, ore-cart rails, the first fallen star asleep below)",
    "mood": "Abandoned deep galleries: rails and dripping water in the dark, and something vast breathing slowly far below."
   },
+  "oldlight-f1": {
+   "loop_start": 6.92,
+   "duration": 71.915,
+   "where": "The Old Light, floor 1 — The Lobby of Groaners (Pearlmoor's joke-tower)",
+   "mood": "Punchwheel's Patter — a cheeky music-hall march with brass pah-stabs and a slide-trombone laugh at every phrase end."
+  },
+  "oldlight-f2": {
+   "loop_start": 5.503,
+   "duration": 70.452,
+   "where": "The Old Light, floor 2 — The Late Laugh (a stage whose audience laughs a beat late)",
+   "mood": "The Late Laugh — the same march with a lazy swing; every laugh arrives a beat after the joke."
+  },
+  "oldlight-f3": {
+   "loop_start": 5.735,
+   "duration": 70.766,
+   "where": "The Old Light, floor 3 — Intermission (the tea-urn floor, a rest point)",
+   "mood": "Intermission — a swung tea-room lounge tune; the urn whistles and the flute scoops into its long notes."
+  },
+  "oldlight-f4": {
+   "loop_start": 6.223,
+   "duration": 67.971,
+   "where": "The Old Light, floor 4 — The Backwards Inn (a mirror maze, everything reversed)",
+   "mood": "The Backwards Inn — the march turned inside out: the tune walks in the tuba while the oom-pah flips to the top."
+  },
+  "oldlight-f5": {
+   "loop_start": 4.783,
+   "duration": 68.571,
+   "where": "The Old Light, floor 5 — The Gallery of Confident Facts (wrong captions, a waxed floor, banana skins)",
+   "mood": "Confident Facts — a pompous brass fanfare that keeps landing on proudly wrong notes."
+  },
+  "oldlight-f6": {
+   "loop_start": 11.61,
+   "duration": 136.359,
+   "where": "The Old Light, floor 6 — The One Joke (two cups, an empty chair; the emotional heart of the tower)",
+   "mood": "The One Joke — the tower's tune slowed to a tender, slightly detuned music box: a joke written for someone who never came home."
+  },
+  "oldlight-f7": {
+   "loop_start": 5.759,
+   "duration": 69.512,
+   "where": "The Old Light, top — The Winding Room (Mr. Punchwheel, the great joke-drum)",
+   "mood": "The Winding Room — the march at full delirium: every phrase climbs a key, the clockwork speeds up, then the spring snaps back."
+  },
   "pale-vault-glacier-a": {
    "loop_start": 6.425,
    "duration": 98.074,

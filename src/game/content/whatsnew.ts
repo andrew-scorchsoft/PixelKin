@@ -15,6 +15,9 @@
  * with the case. Changes there ship SILENTLY; announce only general things.
  */
 export const WHATS_NEW: Record<string, string[]> = {
+  '1.20': [
+    'The Old Light has its remastered score: one cheeky march that follows you up all seven floors, getting a little madder with every flight.',
+  ],
   '1.19': [
     'Five new kin have moved into the Old Light, and they are clowns: JesterHalf, The Smiler and McClownface roam its halls, and two of them kindle into something even sillier.',
     'Every floor of the tower now has a look of its own in battle, and a few floors have changed shape. Mind the waxed gallery floor.',

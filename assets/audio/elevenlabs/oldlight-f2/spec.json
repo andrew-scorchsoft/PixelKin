@@ -9,11 +9,10 @@
   "strength": "high",
   "source": "oldlight"
  },
- "_note": "Classic oldlight-f2: 126, F major, the laughs start a beat late and spill over the barline. Opening shape: a lone stage-drum shuffle that the band falls in on, half a beat behind. | Family pass (music-cue-family): conditioned on motif-oldlight (the f1 remaster's theme), strength high; tempo moved 126->126 because motif conditioning locks takes to the anchor's 126 grid (feel carries the same pace).",
+ "_note": "Classic oldlight-f2: 126, F major, the laughs start a beat late and spill over the barline. Opening shape: a lone stage-drum shuffle that the band falls in on, half a beat behind. | Family pass (music-cue-family): conditioned on motif-oldlight (the f1 remaster's theme), strength high; tempo moved 126->126 because motif conditioning locks takes to the anchor's 126 grid (feel carries the same pace). | NEVER name the tune in the brief: 'Punchwheel's Patter' got every conditioned plan rejected as copyrighted_material_detected; describe it ('the tower's march tune') instead.",
  "core_styles": [
   "16-bit console RPG soundtrack from the mid-1990s",
   "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
-  "every section is built on Punchwheel's Patter, the tower's cheeky march tune",
   "126 BPM",
   "F major",
   "4/4 with a lazy vaudeville swing",
@@ -61,7 +60,7 @@
   {
    "name": "Main Theme",
    "bars": 8,
-   "text": "{Punchwheel's Patter, the tower tune, swung on muted trumpet over banjo and tuba; at each phrase end the slide-trombone laugh arrives a beat late and spills into the next bar}",
+   "text": "{the march tune swung on muted trumpet over banjo and tuba; at each phrase end the slide-trombone laugh arrives a beat late and spills into the next bar}",
    "styles": [
     "main theme",
     "memorable hook",

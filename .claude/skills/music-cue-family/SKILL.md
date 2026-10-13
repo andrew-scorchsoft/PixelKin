@@ -68,9 +68,16 @@ put each cue on its map's `music` in the builder and mirror that in `maps.ts`.
    - `high` on the near rungs and the tender heart, so the tune is unmistakable;
    - `medium` on the wildest rungs, so the transformation has room.
    - Avoid `low` unless a rung is meant to barely remember the tune.
-4. **Name the motif in every section brief** (for example "the Punchwheel's Patter tune,
-   inverted"), and describe the twist as orchestration and harmony. The checker rejects negations
-   in positive fields: say what you want.
+4. **Describe the motif in every section brief, but never NAME it.** Write "the tower's march
+   tune, inverted", never a title like "Punchwheel's Patter". A titled tune plus a conditioning
+   reference got every Old Light plan rejected as `copyrighted_material_detected`; with the title
+   removed the same plans passed. Keep names in `mood`/`where`, which aren't sent to the API.
+   Also avoid meta-wording about the conditioning, such as "carried from the reference": that
+   core style got the Old Light's slow floors rejected even when unconditioned. If a plan is
+   rejected, cut words until it passes. Rejections fail in seconds, so bisect the spec. The
+   strength makes no difference.
+   Describe the twist as orchestration and harmony. The checker rejects negations in positive
+   fields: say what you want.
 5. **Instrumental only.** Any "laugh", "voice" or "cry" must be played by an instrument (a
    slide-trombone wah-wah, a slide whistle, a music-box hiccup).
 

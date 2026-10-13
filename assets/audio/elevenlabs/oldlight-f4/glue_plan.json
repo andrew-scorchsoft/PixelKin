@@ -1,0 +1,47 @@
+{
+ "chunks": [
+  {
+   "song_id": "sppnc8LveyqFhBYzhEaQ",
+   "range": {
+    "start_ms": 41500,
+    "end_ms": 61500
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "every section is built on the tower's own cheeky march tune, carried from the reference",
+    "126 BPM",
+    "F major",
+    "4/4 march turned upside down",
+    "tuba plays the melody low while piccolo and glockenspiel play the oom-pah offbeats up high",
+    "phrases that descend where the theme rose, mirror-image melody",
+    "reverse-cymbal swishes and backwards-sounding swells into downbeats",
+    "comic, topsy-turvy, a funhouse mirror room",
+    "strong singable melody, instantly hummable and pleasant on repeat",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "sppnc8LveyqFhBYzhEaQ",
+   "range": {
+    "start_ms": 3810,
+    "end_ms": 13810
+   }
+  }
+ ]
+}
