@@ -16,6 +16,8 @@ export interface MenuOption {
   label: string;
   value: string;
   enabled?: boolean;
+  /** Optional dim right-aligned note on the row (the battle move list's uses left). */
+  right?: string;
 }
 
 export interface MenuConfig {
@@ -37,6 +39,12 @@ export interface MenuConfig {
   maxVisible?: number;
   /** Row the cursor starts on (clamped; skips disabled rows). Default 0. */
   initialIndex?: number;
+  /** Called with the highlighted row's index whenever the cursor lands on a row
+   *  (on open, then on every move): drive a detail pane (the battle move info). */
+  onHighlight?: (index: number) => void;
+  /** Called on Left (-1) / Right (+1): the list itself only moves up/down, so a
+   *  caller can use the side keys for its own toggle (the battle move info). */
+  onSide?: (dir: -1 | 1) => void;
 }
 
 const ROW_H = 12;
@@ -47,6 +55,8 @@ export class Menu {
   private readonly panel: Panel;
   private readonly cursor: Cursor;
   private readonly rows: Phaser.GameObjects.Text[] = [];
+  /** Right-aligned notes, one per row (null where a row has none). */
+  private readonly notes: (Phaser.GameObjects.Text | null)[] = [];
   private index = 0;
   /** First visible row when windowed (`maxVisible`). */
   private top = 0;
@@ -61,8 +71,13 @@ export class Menu {
   ) {
     const charW = 8;
     const longest = Math.max(...options.map((o) => o.label.length));
-    const width = config.width ?? PAD * 2 + CURSOR_GAP + longest * charW;
     this.visibleRows = Math.max(1, Math.min(options.length, config.maxVisible ?? options.length));
+    // A windowed list keeps a column at the right for its ▲/▼ hints, so a long
+    // row never runs under them (the Settings "Soundtrack: Remastered" row did).
+    const hintW = this.visibleRows < options.length ? charW : 0;
+    // A right-hand note column (uses left, a level, a type) gets its own width.
+    const noteChars = Math.max(0, ...options.map((o) => (o.right ? o.right.length + 1 : 0)));
+    const width = config.width ?? PAD * 2 + CURSOR_GAP + (longest + noteChars) * charW + hintW;
     const height = PAD * 2 + this.visibleRows * ROW_H;
     this.panel = new Panel(scene, config.x, config.y, width, height);
 
@@ -76,6 +91,11 @@ export class Menu {
       );
       this.panel.add(t);
       this.rows.push(t);
+      const note = opt.right
+        ? makeText(scene, width - PAD - hintW, PAD + i * ROW_H, opt.right, theme.text.dim).setOrigin(1, 0)
+        : null;
+      if (note) this.panel.add(note);
+      this.notes.push(note);
     });
 
     if (this.visibleRows < options.length) {
@@ -118,13 +138,16 @@ export class Menu {
     else if (this.index >= this.top + this.visibleRows) this.top = this.index - this.visibleRows + 1;
     this.rows.forEach((row, i) => {
       const slot = i - this.top;
-      row.setVisible(slot >= 0 && slot < this.visibleRows);
+      const shown = slot >= 0 && slot < this.visibleRows;
+      row.setVisible(shown);
       row.setY(PAD + slot * ROW_H);
+      this.notes[i]?.setVisible(shown).setY(PAD + slot * ROW_H);
     });
     this.moreUp?.setVisible(this.top > 0);
     this.moreDown?.setVisible(this.top + this.visibleRows < this.options.length);
     // Cursor is a child of the panel container → use local coords.
     this.cursor.moveTo(PAD, PAD + (this.index - this.top) * ROW_H + 4);
+    this.config.onHighlight?.(this.index);
   }
 
   private move(dir: number): void {
@@ -152,6 +175,8 @@ export class Menu {
         }
         if (input.justPressed(InputAction.Up)) this.move(-1);
         else if (input.justPressed(InputAction.Down)) this.move(1);
+        else if (this.config.onSide && input.justPressed(InputAction.Left)) this.config.onSide(-1);
+        else if (this.config.onSide && input.justPressed(InputAction.Right)) this.config.onSide(1);
         else if (input.justPressed(InputAction.Confirm)) {
           const opt = this.options[this.index];
           if (opt && opt.enabled !== false) {

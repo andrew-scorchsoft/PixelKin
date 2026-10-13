@@ -33,7 +33,8 @@ world options:
                                 "gleam:ember", "chart:x" etc. pass through)
   --abilities tidecall,...      Lantern Gifts held
   --items runner,lumen_drop:2   pack items held (id[:count])
-  --party starter|none|ID[:LV],...  party (default "starter" = #1 Vulpyre lv 5)
+  --party starter|none|ID[:LV[:HP[:STATUS]]],...  party (default "starter" = #1 Vulpyre lv 5);
+                                HP 0 = fainted (test revives / FNT rows); STATUS e.g. numb
   --level N                     level for "starter" (default 5)
   --steps "right,right,up"      walk these steps after spawning (one tile each)
   --battle <kin_id>[:LV]        open a wild battle vs that kin on the map
@@ -55,10 +56,14 @@ world options:
   --no-defaults                 don't auto-add the quiet flags (chart reveals,
                                 tutorials seen, has_starter)
 common:
+  --battle-keys "z,ArrowDown"   with --battle: once the wild battle is up, tap these keys
+                                (~400ms apart) — open FIGHT/BAG, move the cursor
   --keys "Escape,ArrowDown,z"   after the world is idle, tap these keys in order
                                 (Playwright key names, ~300ms apart) — open menus;
                                 runs AFTER --confirms. Escape opens the pause menu
                                 (Enter is Confirm and does not)
+  --device WxH                  emulate a touch phone at WxH (e.g. 844x390 landscape) with
+                                the device shell + on-screen controls; shoots the WHOLE page
   --out path.png                output (default ./shot.png)
   --scale N                     output = 240N x 160N px (default 4)
   --wait ms                     extra settle time before the shot (default 700;
@@ -116,6 +121,7 @@ function normaliseSpec(raw, index = 0) {
     noIdle: Boolean(s['no-idle'] ?? s.noIdle),
     confirms: Number(s.confirms ?? 0),
     keys: s.keys ? String(s.keys).split(',').map((k) => k.trim()).filter(Boolean) : [],
+    battleKeys: s['battle-keys'] ? String(s['battle-keys']).split(',').map((k) => k.trim()).filter(Boolean) : [],
     greet: s.greet,
     versionFrom:
       s['version-from'] !== undefined || s.versionFrom !== undefined
@@ -123,6 +129,7 @@ function normaliseSpec(raw, index = 0) {
         : undefined,
     out: path.resolve(s.out ?? (index ? `shot-${index}.png` : 'shot.png')),
     scale: Number(s.scale ?? 4),
+    device: s.device ? String(s.device) : undefined,
     wait: s.wait !== undefined ? Number(s.wait) : undefined,
   };
   if (shot.scene === 'world') {
@@ -274,8 +281,11 @@ async function seedSave(page, shot) {
         .map((p) => p.trim())
         .filter(Boolean)
         .map((p) => {
-          const [id, lv] = p.split(':');
-          return makeStarterKin(Number(id), Number(lv ?? s.level));
+          const [id, lv, hp, status] = p.split(':');
+          const kin = makeStarterKin(Number(id), Number(lv ?? s.level));
+          if (hp !== undefined && hp !== '') kin.hp = Number(hp); // 0 = fainted
+          if (status) kin.status = status; // numb, doze, chill, …
+          return kin;
         });
 
     const flags = {};
@@ -504,6 +514,11 @@ async function shoot(page, url, shot) {
         { id: Number(id), lv: Number(lv ?? shot.level) },
       );
       await waitFor(page, sceneActive(), 'Battle', { what: 'Battle scene' });
+      if (shot.battleKeys.length) await page.waitForTimeout(2500); // the send-out beat
+      for (const key of shot.battleKeys) {
+        await tap(page, key);
+        await page.waitForTimeout(400);
+      }
     } else if (!shot.keepHud && shot.versionFrom === undefined && !shot.noIdle) {
       await waitFor(page, worldIdleHudClear, undefined, { timeout: 15000, what: 'HUD banner to fade' }).catch((e) =>
         console.warn(`  ! ${e.message}`),
@@ -512,11 +527,16 @@ async function shoot(page, url, shot) {
     if (!shot.noIdle) await page.waitForTimeout(shot.wait);
   }
 
-  await page.addStyleTag({ content: HIDE_CHROME_CSS });
   fs.mkdirSync(path.dirname(shot.out), { recursive: true });
-  const canvas = await page.$('#game-root canvas');
-  if (!canvas) throw new Error('no game canvas found');
-  await canvas.screenshot({ path: shot.out });
+  if (shot.device) {
+    // --device: the whole phone page — device shell, controls and all.
+    await page.screenshot({ path: shot.out });
+  } else {
+    await page.addStyleTag({ content: HIDE_CHROME_CSS });
+    const canvas = await page.$('#game-root canvas');
+    if (!canvas) throw new Error('no game canvas found');
+    await canvas.screenshot({ path: shot.out });
+  }
   const info =
     shot.scene === 'world'
       ? await page.evaluate(() => {
@@ -563,37 +583,39 @@ async function main() {
   let failures = 0;
   try {
     const pages = new Map();
-    const pageFor = async (scale) => {
-      if (pages.has(scale)) return pages.get(scale);
-      const ctx = await browser.newContext({
-        viewport: { width: 240 * scale, height: 160 * scale },
-        deviceScaleFactor: 1,
-      });
+    const pageFor = async (scale, device) => {
+      const key = device ?? scale;
+      if (pages.has(key)) return pages.get(key);
+      const [dw, dh] = device ? device.split('x').map(Number) : [];
+      const ctx = await browser.newContext(device
+        ? { viewport: { width: dw, height: dh }, deviceScaleFactor: 2, isMobile: true, hasTouch: true }
+        : { viewport: { width: 240 * scale, height: 160 * scale }, deviceScaleFactor: 1 });
+      const settings = device ? { ...SETTINGS, shell: 'device', controlsVisible: true } : SETTINGS;
       await ctx.addInitScript((settings) => {
         try {
           localStorage.setItem('pixelkin:settings', JSON.stringify(settings));
         } catch {
           /* ignore */
         }
-      }, SETTINGS);
+      }, settings);
       const page = await ctx.newPage();
       page.on('pageerror', (e) => console.warn(`  [pageerror] ${e.message}`));
       if (args.verbose) page.on('console', (m) => console.log(`  [${m.type()}] ${m.text()}`));
-      pages.set(scale, page);
+      pages.set(key, page);
       return page;
     };
 
     for (const shot of specs) {
       const t0 = Date.now();
       try {
-        const page = await pageFor(shot.scale);
+        const page = await pageFor(shot.scale, shot.device);
         const info = await shoot(page, url, shot);
         console.log(`ok  ${shot.out}  [${info}${shot.battle ? ` battle ${shot.battle}` : ''}] ${Date.now() - t0}ms`);
       } catch (err) {
         failures++;
         console.error(`ERR ${shot.out}: ${err.message}`);
         // Keep whatever is on screen for diagnosis.
-        const page = pages.get(shot.scale);
+        const page = pages.get(shot.device ?? shot.scale);
         const failOut = shot.out.replace(/\.png$/i, '') + '.fail.png';
         if (page) await page.screenshot({ path: failOut }).then(() => console.error(`    see ${failOut}`)).catch(() => {});
       }

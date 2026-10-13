@@ -21,6 +21,7 @@ import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT } from '@game/config';
 import { theme, hex } from './theme';
 import { makeText } from './Text';
+import { PagedText } from './PagedText';
 import { Panel } from './Panel';
 import { Cursor } from './Cursor';
 import { Menu, type MenuOption } from './Menu';
@@ -44,9 +45,13 @@ const TAB_ROW_Y = PAD + 10;
 const LIST_TOP = PAD + 22;
 /** One compact list row: name on the left, count on the right. */
 const ROW_H = 14;
-/** Detail pane geometry, anchored near the panel's bottom edge. */
-const DETAIL_LINES = 3;
+/** Detail pane geometry, anchored near the panel's bottom edge. A description
+ *  longer than DETAIL_LINES pages itself (ui/PagedText, with an "n/m" marker),
+ *  so nothing is ever cut off however long an item's text runs. */
+const DETAIL_LINES = 4;
 const DETAIL_LINE_H = 9;
+/** The MEDS tab's pseudo-row id for HEAL ALL (never an inventory key). */
+const HEAL_ALL = '__heal_all';
 
 /** The pack's category tabs, in display order. Every ItemCategory maps to one
  *  (chart→CHARTS, charge→CHARGES, medicine→MEDICINE, key→KEY; valuable/misc→GOODS),
@@ -96,6 +101,8 @@ interface PackEntry {
   desc: string;
   category: ItemCategory;
   heal?: number;
+  /** A revive (the Hearth Coal): rouses a fainted kin with this share of its HP. */
+  revive?: number;
   /** A level-up sweet (the Lumen Drop) rather than a healing salve. */
   level_up?: boolean;
   teach_move?: string;
@@ -121,6 +128,15 @@ export class ItemsMenu {
   /** Per-build row objects, destroyed and rebuilt when counts change. */
   private rowObjects: Phaser.GameObjects.GameObject[] = [];
   private names: Phaser.GameObjects.Text[] = [];
+  /** Each row's two texts (name, count), windowed by `top`. */
+  private rowTexts: Phaser.GameObjects.Text[][] = [];
+  /** First visible row of the (windowed) list, and how many rows fit. */
+  private top = 0;
+  private readonly visibleRows: number;
+  private readonly moreUp: Phaser.GameObjects.Text;
+  private readonly moreDown: Phaser.GameObjects.Text;
+  /** The description pane's pager (long text turns its own pages). */
+  private readonly pager: PagedText;
   private index = 0;
   /** The active category tab. */
   private tab = 0;
@@ -148,6 +164,7 @@ export class ItemsMenu {
     this.width = GAME_WIDTH - 8;
     const height = GAME_HEIGHT - 8;
     this.detailTop = height - PAD - DETAIL_LINES * DETAIL_LINE_H;
+    this.visibleRows = Math.max(1, Math.floor((this.detailTop - 6 - LIST_TOP) / ROW_H));
     this.panel = new Panel(scene, 4, 4, this.width, height).fixedToCamera();
 
     // The title row is 220px wide and the wallet is variable-length, so it gets
@@ -189,6 +206,16 @@ export class ItemsMenu {
     this.detail = makeText(scene, PAD, this.detailTop, '', theme.text.dim);
     this.detail.setWordWrapWidth(this.width - PAD * 2);
     this.panel.add(this.detail);
+    this.pager = new PagedText(scene, this.detail, DETAIL_LINES, DETAIL_LINE_H, {
+      x: this.width - PAD, y: this.detailTop - 4,
+    });
+    this.panel.add(this.pager.marker);
+    // Scroll hints for a list longer than the window (the Menu's ▼ glyph, flipped for up).
+    const midX = Math.round(this.width / 2);
+    this.moreUp = makeText(scene, midX, LIST_TOP - 1, '▼', theme.text.accent).setOrigin(0.5).setAngle(180);
+    this.moreDown = makeText(scene, midX, LIST_TOP + this.visibleRows * ROW_H + 1, '▼', theme.text.accent).setOrigin(0.5);
+    this.panel.add(this.moreUp);
+    this.panel.add(this.moreDown);
 
     this.cursor = new Cursor(scene).setScrollFactor0();
     this.panel.add(this.cursor.sprite);
@@ -212,6 +239,7 @@ export class ItemsMenu {
         desc: def.desc,
         category: def.category,
         heal: def.heal,
+        revive: def.revive,
         level_up: def.level_up,
         teach_move: def.teach_move,
         toggle_flag: def.toggle_flag,
@@ -220,7 +248,83 @@ export class ItemsMenu {
       });
     }
     out.sort((a, b) => a.name.localeCompare(b.name));
+    // MEDS opens with HEAL ALL while a waking kin is hurt and a balm can mend it.
+    if (tab === TAB_OF_CATEGORY.medicine && this.healAllPlan()) {
+      out.unshift({
+        id: HEAL_ALL,
+        name: 'Heal all',
+        desc: 'Tend every hurt kin at once, using your cheapest balms first.',
+        category: 'medicine',
+        count: 0,
+      });
+    }
     return out;
+  }
+
+  /**
+   * Which balms HEAL ALL would spend: each hurt, waking kin takes the cheapest
+   * balm left, again and again until it's whole or the balms run out. Null when
+   * there's nothing to do.
+   */
+  private healAllPlan(): { uses: Record<string, number>; hp: number[] } | null {
+    const stock = Object.entries(this.inventory.items)
+      .map(([id, n]) => ({ id, n, heal: getItem(id)?.heal ?? 0, item: getItem(id) }))
+      .filter((b) => b.n > 0 && b.heal > 0 && b.item?.category === 'medicine' && !b.item.level_up)
+      .sort((a, b) => a.heal - b.heal);
+    if (stock.length === 0) return null;
+    const left = new Map(stock.map((b) => [b.id, b.n]));
+    const uses: Record<string, number> = {};
+    const hp = this.members.map((k) => k.hp);
+    let any = false;
+    this.members.forEach((k, i) => {
+      if (k.isFainted) return;
+      while (hp[i] < k.maxHp) {
+        const avail = stock.filter((b) => (left.get(b.id) ?? 0) > 0);
+        if (avail.length === 0) return;
+        // Cheapest first: the smallest balm is the cheapest per point of health
+        // (Tallow 6w/hp, Warm ~8, Bright dearer still), so lean on it until gone.
+        const pick = avail[0];
+        left.set(pick.id, (left.get(pick.id) ?? 0) - 1);
+        uses[pick.id] = (uses[pick.id] ?? 0) + 1;
+        hp[i] = Math.min(k.maxHp, hp[i] + pick.heal);
+        any = true;
+      }
+    });
+    return any ? { uses, hp } : null;
+  }
+
+  /** HEAL ALL: show what it would spend, and do it on YES. */
+  private async healAll(): Promise<void> {
+    const plan = this.healAllPlan();
+    if (!plan) return;
+    const spend = Object.entries(plan.uses)
+      .map(([id, n]) => `${n} ${getItem(id)?.name ?? id}`)
+      .join(', ');
+    await new DialogueBox(this.scene, this.sfx).run([{ text: `Use ${spend}?` }]);
+    const ok = await new Menu(this.scene, [
+      { label: 'YES', value: 'yes' },
+      { label: 'NO', value: 'no' },
+    ], { x: 8, y: 8, sfx: this.sfx }).run();
+    if (ok !== 'yes') return;
+    for (const [id, n] of Object.entries(plan.uses)) {
+      this.inventory.items[id] = (this.inventory.items[id] ?? n) - n;
+      if (this.inventory.items[id] <= 0) delete this.inventory.items[id];
+    }
+    const kindlings: [KinInstance, NonNullable<ReturnType<KinInstance['raiseBond']>>][] = [];
+    this.members.forEach((k, i) => {
+      if (plan.hp[i] === k.hp) return;
+      k.heal(plan.hp[i] - k.hp);
+      const kindling = k.raiseBond(ItemsMenu.BOND_PER_TEND);
+      if (kindling) kindlings.push([k, kindling]);
+    });
+    void this.sfx?.playVariant('world-heal', ['a', 'b']);
+    await new DialogueBox(this.scene, this.sfx).run([{ text: 'Your kin are tended.' }]);
+    for (const [kin, kindling] of kindlings) {
+      this.setOverlayVisible(false);
+      await new KindlePrompt(this.scene, kin, kindling, this.sfx, undefined, this.flags?.kindleMusic).run();
+      this.setOverlayVisible(true);
+    }
+    this.rebuild();
   }
 
   /** Reflect the active tab in the strip's colours. */
@@ -245,6 +349,7 @@ export class ItemsMenu {
     for (const o of this.rowObjects) o.destroy();
     this.rowObjects = [];
     this.names = [];
+    this.rowTexts = [];
     this.entries = this.entriesForTab(this.tab);
     this.index = Math.max(0, Math.min(this.index, this.entries.length - 1));
 
@@ -258,9 +363,10 @@ export class ItemsMenu {
         this.names.push(name);
         // Key items are unique — a toggle shows its state rather than a count.
         const right = this.rowRightLabel(entry);
-        this.track(
+        const count = this.track(
           makeText(this.scene, this.width - PAD, rowY + 3, right, theme.text.base).setOrigin(1, 0),
         );
+        this.rowTexts.push([name, count]);
       });
     }
     this.panel.container.bringToTop(this.cursor.sprite);
@@ -273,7 +379,7 @@ export class ItemsMenu {
     if (entry.toggle_flag && entry.toggle_text) {
       return this.toggleOn(entry) ? entry.toggle_text.on : entry.toggle_text.off;
     }
-    return `x${entry.count}`;
+    return entry.id === HEAL_ALL ? '' : `x${entry.count}`;
   }
 
   /** Whether a toggle item is currently switched on (reads its world flag). */
@@ -289,13 +395,23 @@ export class ItemsMenu {
 
   /** Reflect the current selection: cursor, highlighted name, description. */
   private refresh(): void {
+    // Keep the cursor's row inside the window, then lay the visible rows out.
+    if (this.index < this.top) this.top = this.index;
+    else if (this.index >= this.top + this.visibleRows) this.top = this.index - this.visibleRows + 1;
+    this.top = Math.max(0, Math.min(this.top, Math.max(0, this.entries.length - this.visibleRows)));
+    this.rowTexts.forEach((texts, i) => {
+      const slot = i - this.top;
+      for (const t of texts) t.setVisible(slot >= 0 && slot < this.visibleRows).setY(LIST_TOP + slot * ROW_H + 3);
+    });
+    this.moreUp.setVisible(this.top > 0);
+    this.moreDown.setVisible(this.top + this.visibleRows < this.entries.length);
     if (this.entries.length === 0) {
       this.cursor.sprite.setVisible(false);
-      this.detail.setText('');
+      this.showDetail('');
       return;
     }
     this.cursor.sprite.setVisible(true);
-    this.cursor.moveTo(PAD, LIST_TOP + this.index * ROW_H + ROW_H / 2);
+    this.cursor.moveTo(PAD, LIST_TOP + (this.index - this.top) * ROW_H + ROW_H / 2);
     this.names.forEach((name, i) =>
       name.setColor(i === this.index ? theme.text.accent.color : theme.text.base.color),
     );
@@ -304,7 +420,12 @@ export class ItemsMenu {
     if (entry.toggle_flag && entry.toggle_text) {
       desc += '  ' + (this.toggleOn(entry) ? entry.toggle_text.on_note : entry.toggle_text.off_note);
     }
-    this.detail.setText(desc);
+    this.showDetail(desc);
+  }
+
+  /** Put a description in the pane (it pages itself past DETAIL_LINES). */
+  private showDetail(desc: string): void {
+    this.pager.set(desc);
   }
 
   private move(dir: number): void {
@@ -369,6 +490,10 @@ export class ItemsMenu {
 
   /** Use one item: medicines heal a kin; Star-charts teach one; the rest stay packed. */
   private async useEntry(entry: PackEntry): Promise<void> {
+    if (entry.id === HEAL_ALL) {
+      await this.healAll();
+      return;
+    }
     if (entry.toggle_flag) {
       await this.flipToggle(entry);
       return;
@@ -381,6 +506,10 @@ export class ItemsMenu {
       await this.studyChart(entry);
       return;
     }
+    if (entry.revive) {
+      await this.rouseKin(entry);
+      return;
+    }
     if (entry.category !== 'medicine' || !entry.heal) {
       await new DialogueBox(this.scene, this.sfx).run([{ text: `You can't use the ${entry.name} out here.` }]);
       return;
@@ -390,7 +519,17 @@ export class ItemsMenu {
       return;
     }
 
-    const target = await this.pickKin();
+    if (this.members.every((k) => k.isFainted || k.hp >= k.maxHp)) {
+      const fainted = this.members.some((k) => k.isFainted);
+      await new DialogueBox(this.scene, this.sfx).run([
+        { text: fainted
+          ? 'A balm can\'t rouse a fainted kin. A Hearth Coal can, or a night\'s rest.'
+          : 'Every kin with you is already at full health.' },
+      ]);
+      return;
+    }
+    // A balm mends the waking: a fainted kin needs a Hearth Coal (or a rest).
+    const target = await this.pickKin((k) => !k.isFainted && k.hp < k.maxHp);
     if (target === null) return;
     const kin = this.members[target];
     const restored = kin.heal(entry.heal);
@@ -545,6 +684,33 @@ export class ItemsMenu {
     this.rebuild();
   }
 
+  /** The Hearth Coal: pick a FAINTED kin; it wakes with `revive` of its max HP. */
+  private async rouseKin(entry: PackEntry): Promise<void> {
+    if (!this.members.some((k) => k.isFainted)) {
+      await new DialogueBox(this.scene, this.sfx).run([
+        { text: 'None of your kin has fainted. Keep the coal warm for when one does.' },
+      ]);
+      return;
+    }
+    const target = await this.pickKin((k) => k.isFainted);
+    if (target === null) return;
+    const kin = this.members[target];
+    const restored = kin.revive(entry.revive ?? 0.5);
+    this.inventory.items[entry.id] = (this.inventory.items[entry.id] ?? 1) - 1;
+    if (this.inventory.items[entry.id] <= 0) delete this.inventory.items[entry.id];
+    void this.sfx?.playVariant('world-heal', ['a', 'b']);
+    await new DialogueBox(this.scene, this.sfx).run([
+      { text: `The coal glows warm against ${kin.displayName}. ${kin.displayName} stirred, and is up again with ${restored} HP!` },
+    ]);
+    const kindling = kin.raiseBond(ItemsMenu.BOND_PER_TEND);
+    if (kindling) {
+      this.setOverlayVisible(false);
+      await new KindlePrompt(this.scene, kin, kindling, this.sfx, undefined, this.flags?.kindleMusic).run();
+      this.setOverlayVisible(true);
+    }
+    this.rebuild();
+  }
+
   /** A kin picker (re-using Menu), showing each member's HP. Resolves index or null. */
   private pickKin(enabled: (k: KinInstance) => boolean = (k) => k.hp < k.maxHp): Promise<number | null> {
     const opts: MenuOption[] = this.members.map((k, i) => ({
@@ -558,6 +724,7 @@ export class ItemsMenu {
   }
 
   destroy(): void {
+    this.pager.destroy();
     this.cursor.destroy();
     this.panel.destroy();
     this.dim.destroy();

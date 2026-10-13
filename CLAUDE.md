@@ -550,8 +550,27 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   carrying `level_up: true`, used from ITEMS (`ItemsMenu.feedLumenDrop`) — it grants exactly
   the exp owed for the next level and then runs the battle path's own MoveLearn/Kindle
   prompts. **Never give it a `price`** (a buyable level would wreck the wick economy); it is
-  found (Spore Grotto, Wind-Eye, Duskapple Orchard) or given. Item descriptions must fit ~80 chars / 3 wrapped
-  lines — the pack's detail pane is fixed at 3 and does not scroll.
+  found (Spore Grotto, Wind-Eye, Duskapple Orchard) or given. The pack's detail pane shows 4 lines
+  and auto-PAGES anything longer ("n/m", `ItemsMenu.showDetail`), and its list scrolls — so any
+  length works, but ~110 chars (one page) reads best. The battle BAG never shows `desc`: it
+  shows `battleItemNote` (BattleScene), a generated one-liner from the item's numbers.
+- **The revive is the `hearth_coal`** (`ItemDef.revive` = share of max HP, 0.5): 1,500w at every
+  counter that sells Warm Balm, plus one in five balm caches. **Balms can't rouse a fainted
+  kin** (ItemsMenu blocks it): only a coal or a rest. Battle BAG/LAMP lists cap at 6 rows and
+  scroll (`MENU_MAX_ROWS`); the FIGHT menu's `ui/battle/MoveInfo` pane (type/category/POW/ACC/
+  uses + the earned SUPER!/RESISTED verdict vs a caught foe, the move's `desc` in the strip) is
+  OPT-IN (owner's call: it covers the foe) — hidden until RIGHT (`Menu.onSide`), LEFT hides it,
+  the choice holds for that battle (`BattleScene.showMoveInfo`); `Menu.onHighlight` drives it.
+- **QoL kit (2026-10, v1.30).** Pause menu NEXT panel = `content/nextgoal.ts` (mirrors
+  `script.andrew_hint` stage-for-stage, LATEST first — add a stage to both); the Register's
+  "Found:" line reads species `encounters` through `worldMapNodeForMap`; battle plates carry a
+  status tag (`theme.status`), the player plate an EXP bar + low-HP pulse/beep; Menu rows take a
+  `right` note and `onSide`; ShopMenu asks HOW MANY; ITEMS > MEDS has HEAL ALL (cheapest first).
+  **Nicknames:** offered once after a catch (BattleScene) or a starter/gift (`pendingNickname`,
+  at scene end) and then KEPT; only Ottilie the Namewright (Wickstead school) renames. **Kin
+  services** = the `kinService` op (`ui/KinServices`: rename/relearn/forget/read); Hesper Vane
+  (`content/regions/innfolk.ts`, placed in every inn via hand_placed_data) runs relearn for
+  `HESPER_FEE` (mirrored in progression.mjs) and holds one memory per inn — six = a gift.
 - **The player SWIMS on water.** `WorldScene.update` asks `map.hasTerrainAt(tx,ty,'water')`
   every frame and calls `Player.setSwimming`, which swaps to the packed `player_indi_swim`
   walk-sheet (same 4×4 layout) — or, with no such sheet, crops the sprite at the waterline and
@@ -875,6 +894,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `click`, never `pointerdown` (a touch pointerdown isn't a user activation, so `requestFullscreen`
   silently refuses); a save download (`FILE_DOWNLOAD_EVENT`) drops Android out of fullscreen, so the
   shell re-arms the auto-reclaim for the next control press.
+- **Landscape device shell keeps side RAILS for the controls (2026-10).** `#game-root`'s width
+  subtracts `--pk-rail` (the A·B cluster's width at the current `--pk-cs`) while controls show, so
+  the d-pad/B never overlap the picture; `main.ts` re-fits Phaser via a `ResizeObserver` on
+  `#game-root` (Phaser only listens to WINDOW resizes — without it the canvas crops). Check
+  phones with `shoot.mjs --device 844x390` (whole page, touch, device shell).
 - **`#game-root` must keep `min-height:0; overflow:hidden`** (device shell, `shells.css`): it's an
   `aspect-ratio` box, and Phaser's autoCenter canvas margin otherwise grows it in a feedback loop — the
   portrait screen's bottom edge crept up from below the volume slider for ~6 s of every load.
@@ -1019,7 +1043,7 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   you arrive in one north corner and the way up is in the other, so every floor is walked through
   its hall; each hall rolls wild encounters (a whimsical tower table, 9→14 — Pearlmoor's grind bed
   before Reyl and the fen) and an optional alcove regular (`oldlight_<id>` route trainers, F1–F5);
-  rests at the F3 tea-urn, the F6 two cups and the top's green-room chair; the top-floor BOSS (Punchwheel's
+  rests at the F3 tea-urn, its backwards twin beside the F4 Ringmaster, the F6 two cups and the top's green-room chair; the top-floor BOSS (Punchwheel's
   headline act, `oldlight_headliners`, ace 15, `battle-jesthouse-boss`) is the TOLL, not the climax: the
   three clowns stand in the only gap to the drum guarding Tam's card, step aside when beaten, the music
   falls away, and the CARD is the crescendo (owner's steer: a boss gates the story beat, never replaces it). Each floor wears its own warped kit
@@ -1235,14 +1259,17 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **"The world has changed" notice + `SaveGame.last_version` (2026-10).** Every persist stamps
   GAME_VERSION; Continue / LOAD FILE / in-game import pass `version_from: save.last_version ?? ''`
   in `WorldSceneData` (undefined = new game/debug reload = no check). If older, a narrated notice
-  plays on the first idle frame (+ `content/whatsnew.ts` lines of every version AFTER the save's own
-  `last_version` — add an entry when you bump), and only THEN is the new version stamped. A save with
+  plays on the first idle frame, and only THEN is the new version stamped. **The changelog is ONE file,
+  `src/game/data/changelog.json`** (newest first, `{version, date, notes[]}` — add an entry when you bump):
+  the notice reads it via `content/whatsnew.ts` and stays SHORT however many versions were missed (a count +
+  the newest 3 notes + "the rest are at pixelk.in/changelog"), and the website's `changelog` page renders the
+  whole thing from the same file at build time (`web/site.mjs loadChangelog`). A save with
   nothing new since its version gets NO notice (stamped silently); the rest-point hint shows once per
   save (`flag:tip_restpoint_seen`) — the old notice replayed its boilerplate on every build. The device-level
   `last_seen_version` storage key drives the title's pulsing NEW beside the version label. Any
   crafted test save without `last_version` WILL show the notice (the world stays modal).
-  **`whatsnew.ts` must NEVER spoil the hidden real-people content** (owner's rule, 2026-10 — the
-  people it was built for read the notice): nothing about Paul or his things — the Booji-Wooji
+  **The changelog must NEVER spoil the hidden real-people content** (owner's rule, 2026-10 — the
+  people it was built for read the notice AND the website): nothing about Paul or his things — the Booji-Wooji
   Man / S4–S5, the Chickenpig, the Lifting House gym, Paul's house, the Wayward Arms, the
   Reckoning Works' walking-man story, the beacon-road man with the case. Those changes ship
   silently; an entry covers only general changes (and none at all is fine).

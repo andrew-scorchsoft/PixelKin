@@ -63,6 +63,15 @@ const applyMasterVolume = (): void => {
 applyMasterVolume();
 onMasterVolumeChange(applyMasterVolume);
 
+// Phaser re-fits on WINDOW resizes only, but the screen box also changes size on
+// its own: the landscape device shell keeps side rails for the on-screen controls
+// (shells.css) that come and go with the controls / shell / size settings. Re-fit
+// whenever #game-root itself changes size, or the canvas is cropped in its box.
+const root = document.getElementById('game-root');
+if (root && typeof ResizeObserver !== 'undefined') {
+  new ResizeObserver(() => game.scale.refresh()).observe(root);
+}
+
 // Dev-only handle so automated verification (and console poking) can read scene
 // state. Stripped from production builds (import.meta.env.DEV is compile-time).
 if (import.meta.env.DEV) {

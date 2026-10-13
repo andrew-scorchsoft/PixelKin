@@ -749,6 +749,17 @@
       "sprite": "npc_boy",
       "movement": "static",
       "dialogue_ref": "npc.school_pupil_dob"
+    },
+    {
+      "id": "namewright",
+      "at": {
+        "tx": 3,
+        "ty": 2
+      },
+      "facing": "down",
+      "sprite": "npc_old_man",
+      "movement": "static",
+      "dialogue_ref": "script.namewright"
     }
   ],
   "gates": [],

@@ -171,6 +171,13 @@ export const JESTHOUSE_SCRIPTS: ScriptRegistry = {
       ],
     },
   ],
+  // F4's rest, beside the Ringmaster (playtest: the bout came a long walk after F3's urn).
+  'script.oldlight_urn_backwards': [
+    { op: 'say', speaker: 'TEA-URN', text: 'NUB A YUB! ...SETUNIM YTNEWT! LAVRETNI!' },
+    nar('(It is the tea-urn from downstairs, only backwards. The tea goes in before you are thirsty.)'),
+    { op: 'heal', sleep: false },
+    nar('Your kin are mended. The Ringmaster pretends he did not see a thing.'),
+  ],
   'script.oldlight_cups_rest': [
     nar('Two cups on the table. One has been washed every day for a long time. The other has never been moved.'),
     {

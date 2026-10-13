@@ -31,6 +31,12 @@ const PAD = theme.space.lg;
 const ROWS_TOP = 16;
 const ROW_H = 22;
 
+/** A status condition as one plain word for the party list. */
+const STATUS_WORD: Record<string, string> = {
+  scorch: 'Scorched', drench: 'Drenched', numb: 'Numbed', doze: 'Dozing',
+  blight: 'Blighted', dazzle: 'Dazzled', chill: 'Chilled',
+};
+
 export class PartyMenu {
   private readonly dim: Phaser.GameObjects.Rectangle;
   private readonly panel: Panel;
@@ -119,7 +125,13 @@ export class PartyMenu {
 
     const name = this.track(makeText(scene, 30, rowY + 1, kin.displayName, theme.text.base));
     this.nameTexts.push(name);
-    this.track(makeText(scene, 30, rowY + 11, kin.species.types.join('/'), theme.text.dim));
+    // Under the name: its types — or, while a condition holds, that condition in
+    // its own colour (the types are on the SUMMARY card), so a dozing or chilled
+    // kin is spotted before you lead with it.
+    const st = theme.status[kin.status];
+    this.track(st && !kin.isFainted
+      ? makeText(scene, 30, rowY + 11, STATUS_WORD[kin.status] ?? st.tag, theme.text.base).setColor(st.color)
+      : makeText(scene, 30, rowY + 11, kin.species.types.join('/'), theme.text.dim));
     this.track(makeText(scene, 124, rowY + 1, `Lv${kin.level}`, theme.text.base));
 
     const fainted = kin.isFainted;
@@ -309,13 +321,13 @@ export class PartyMenu {
 
     // Known moves with remaining charges.
     card.add(makeText(scene, 10, 92, 'MOVES', theme.text.accent));
+    // Four rows at a 10px pitch end inside the 144px card (at 11px the fourth
+    // ran off its bottom edge, under a 'B BACK' hint that sat on the third).
     kin.moves.forEach((m, i) => {
-      const y = 104 + i * 11;
+      const y = 103 + i * 10;
       card.add(makeText(scene, 10, y, m.move.name, theme.text.base));
-      card.add(makeText(scene, 150, y, `${m.charges}/${m.move.charges}`, theme.text.dim));
+      card.add(makeText(scene, innerW - PAD, y, `${m.charges}/${m.move.charges}`, theme.text.dim).setOrigin(1, 0));
     });
-
-    card.add(makeText(scene, innerW - PAD, innerH - PAD, 'B BACK', theme.text.dim).setOrigin(1, 1));
 
     return new Promise((resolve) => {
       const input = new InputController(scene);
@@ -355,7 +367,7 @@ const BOND_TIERS: Array<{ word: string; min: number }> = [
   { word: 'NEW', min: 0 },
 ];
 
-function bondTier(bond: number): { word: string; min: number } {
+export function bondTier(bond: number): { word: string; min: number } {
   return BOND_TIERS.find((t) => bond >= t.min) ?? BOND_TIERS[BOND_TIERS.length - 1];
 }
 

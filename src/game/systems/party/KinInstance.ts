@@ -200,6 +200,16 @@ export class KinInstance {
     return this.hp - before;
   }
 
+  /**
+   * Rouse a fainted kin (the Hearth Coal) with `share` of its max HP. A faint
+   * ends any condition it carried, so it wakes clear. Returns hp restored.
+   */
+  revive(share: number): number {
+    if (!this.isFainted) return 0;
+    this.status = 'none';
+    return this.heal(Math.max(1, Math.floor(this.maxHp * share)));
+  }
+
   fullHeal(): void {
     this.hp = this.maxHp;
     this.status = 'none';
@@ -379,6 +389,12 @@ export class KinInstance {
     if (this.knowsMove(move.id) || this.moves.length >= MAX_MOVES) return false;
     this.moves.push({ move, charges: move.charges });
     return true;
+  }
+
+  /** Let a move go (the Echo-reader's service). A kin always keeps one. */
+  forgetMove(slot: number): void {
+    if (this.moves.length <= 1 || slot < 0 || slot >= this.moves.length) return;
+    this.moves.splice(slot, 1);
   }
 
   /** Overwrite a known-move slot (the "forget which?" choice). */

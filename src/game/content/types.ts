@@ -216,6 +216,9 @@ type CutsceneStepBase =
   // sale; a short purse is a silent no-op. Scripts branch on the outcome with the
   // ordinary per-step `if_flag`/`unless_flag` guards (no new conditional machinery).
   | { op: 'pay'; amount: number; flag: WorldFlag }
+  /** A counter service on one party kin (ui/KinServices): rename / relearn a move
+   *  (`cost` wicks, charged only if one is learned) / forget a move / read it. */
+  | { op: 'kinService'; service: 'rename' | 'relearn' | 'forget' | 'read'; cost?: number; speaker?: string }
   | { op: 'shop'; shop: string } // open a shop's buy/sell counter (content/shops.ts)
   // Run another named script's steps inline — composition, so a menu branch or a
   // wrapper can reuse a script without duplicating its ops.
@@ -284,6 +287,12 @@ export interface ItemDef {
   kindle_stone?: boolean;
   /** HP restored for 'medicine' items. */
   heal?: number;
+  /**
+   * A 'medicine' that rouses a FAINTED kin (the genre's revive — PixelKin's Hearth
+   * Coal): the share of max HP it wakes with (0.5 = half). Balms can't do this —
+   * a fainted kin answers only a coal, or a rest.
+   */
+  revive?: number;
   /**
    * A 'medicine' that raises a kin ONE whole level instead of healing it (the
    * genre's level-up sweet — PixelKin's Lumen Drop). Used from the pack like any

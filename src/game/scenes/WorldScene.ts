@@ -14,6 +14,8 @@ import { DebugOverlay } from '@game/ui/DebugOverlay';
 import { DialogueBox } from '@game/ui/DialogueBox';
 import { Menu } from '@game/ui/Menu';
 import { Panel } from '@game/ui/Panel';
+import { PagedText } from '@game/ui/PagedText';
+import { nextGoal } from '@game/content/nextgoal';
 import { PartyMenu } from '@game/ui/PartyMenu';
 import { ItemsMenu } from '@game/ui/ItemsMenu';
 import { HearthMenu } from '@game/ui/HearthMenu';
@@ -25,7 +27,7 @@ import { ChartsMenu } from '@game/ui/ChartsMenu';
 import { JournalMenu } from '@game/ui/JournalMenu';
 import { TravelMenu } from '@game/ui/TravelMenu';
 import { GAME_VERSION, GAME_VERSION_LABEL, compareVersions } from '@game/version';
-import { whatsNewSince } from '@game/content/whatsnew';
+import { CHANGELOG_URL, summariseSince } from '@game/content/whatsnew';
 import {
   bankRestPoint,
   normaliseRestPoints,
@@ -38,6 +40,7 @@ import { CROWN_INTERLUDES, INTERLUDES_CLOSED_BY } from '@game/content/interludes
 import type { CrownInterlude } from '@game/content/interludes';
 import { getAmbientMotion, getCannotDie, musicMasterGain } from '@game/ui/preferences';
 import { KinInstance } from '@game/systems/party/KinInstance';
+import { runKinService, offerNickname } from '@game/ui/KinServices';
 import { MAX_PARTY } from '@game/systems/party/Party';
 import { InputController, InputAction } from '@game/systems/input/InputController';
 import { loadMap, RuntimeMap } from '@game/systems/world/MapLoader';
@@ -193,6 +196,9 @@ export class WorldScene extends Phaser.Scene {
   private nearbyLookers = new Set<Npc>();
 
   private party: KinInstanceData[] = [];
+  /** A starter/gift kin given mid-scene (its species), offered a name when the scene
+   *  ends. By species, not object identity: a later step may rebuild the party list. */
+  private pendingNickname?: number;
   /** Kin kept at the Hearth (storage); overflow from a full lamp lands here. */
   private box: KinInstanceData[] = [];
   private inventory: InventoryData = { items: {} };
@@ -1357,18 +1363,37 @@ export class WorldScene extends Phaser.Scene {
         ref === 'player' ? this.player : this.npcs.find((n) => n.id === ref),
       canEnter: (tx, ty) => this.playerCanEnter(tx, ty),
       onGiveStarter: (speciesId) => {
-        this.party.push(makeStarterKin(speciesId));
+        const kin = makeStarterKin(speciesId);
+        this.party.push(kin);
         this.dexSeen.add(speciesId);
         this.dexCaught.add(speciesId);
+        this.pendingNickname = speciesId;
       },
       onGiveKin: (speciesId, level) => {
         // A gift kin (e.g. Georgina's dragon-cat kitten): join the lamp, or rest
         // in the Hearth if the party is already full — never silently dropped.
         const kin = makeStarterKin(speciesId, level);
-        if (this.party.length < MAX_PARTY) this.party.push(kin);
-        else this.box.push(kin);
+        if (this.party.length < MAX_PARTY) {
+          this.party.push(kin);
+          this.pendingNickname = speciesId;
+        } else this.box.push(kin);
         this.dexSeen.add(speciesId);
         this.dexCaught.add(speciesId);
+      },
+      kinService: async (service, cost, speaker) => {
+        const live = this.party.map((d) => KinInstance.fromData(d));
+        await runKinService(this, service, live, this.sfx, {
+          cost,
+          speaker,
+          money: () => this.money,
+          pay: (n) => {
+            if (this.money < n) return false;
+            this.money -= n;
+            return true;
+          },
+        });
+        this.party = live.map((k) => k.toData());
+        void this.persist();
       },
       onGiveItem: (item, count) => {
         this.inventory.items[item] = (this.inventory.items[item] ?? 0) + count;
@@ -1844,15 +1869,16 @@ export class WorldScene extends Phaser.Scene {
    * The "the world has changed" notice for a journey last played on an older build.
    * It reads ONLY what's new since this save's own `last_version` (content/whatsnew.ts,
    * every version after it up to this one) — a version with nothing to tell passes
-   * silently. The rest-point hint rides along once per save (`flag:tip_restpoint_seen`),
+   * silently. However many updates were missed it stays short: a count, the newest
+   * few notes (`NOTICE_NOTES`), and a pointer to the full log on the website. The rest-point hint rides along once per save (`flag:tip_restpoint_seen`),
    * not on every update. Then the new version is stamped into the save so none of it
    * repeats (playtest: the boilerplate replayed on every build, reading as "the whole
    * thing again").
    */
   private async showVersionNotice(from: string): Promise<void> {
-    const news = whatsNewSince(from, GAME_VERSION);
+    const news = summariseSince(from, GAME_VERSION);
     const tipDue = !this.flags.get(REST_TIP_FLAG);
-    if (news.length === 0) {
+    if (news.total === 0) {
       // Nothing new to tell this save: just bring it up to date, quietly.
       this.lastVersion = GAME_VERSION;
       void this.persist();
@@ -1864,7 +1890,16 @@ export class WorldScene extends Phaser.Scene {
     const then = from ? `v${from}` : 'an older lamp-light';
     const lines = [
       { style: 'narrate' as const, text: `While you rested, the world turned (${then} to ${GAME_VERSION_LABEL}).` },
-      ...news.map((text) => ({ style: 'narrate' as const, text })),
+      ...(news.more
+        ? [{
+            style: 'narrate' as const,
+            text: `${news.updates === 1 ? 'One update' : `${news.updates} updates`} came and went, with ${news.total} changes in all. Here are the newest ${['one', 'two', 'three', 'four', 'five'][news.latest.length - 1] ?? news.latest.length}.`,
+          }]
+        : []),
+      ...news.latest.map((text) => ({ style: 'narrate' as const, text })),
+      ...(news.more
+        ? [{ style: 'narrate' as const, text: `The rest are written up at ${CHANGELOG_URL}, for whenever you fancy a read.` }]
+        : []),
       ...(tipDue
         ? [{
             style: 'narrate' as const,
@@ -1931,7 +1966,26 @@ export class WorldScene extends Phaser.Scene {
       return await runCutscene(this.cutsceneContext(), steps);
     } finally {
       this.restoreLead();
+      await this.offerPendingNickname();
     }
+  }
+
+  /** A starter or gift kin handed over in that scene may take a name of its own,
+   *  asked once the scene's lines are done (a catch asks in the battle). */
+  private async offerPendingNickname(): Promise<void> {
+    const speciesId = this.pendingNickname;
+    this.pendingNickname = undefined;
+    if (speciesId === undefined) return;
+    // The newest un-named party kin of that species (the one just handed over).
+    let idx = -1;
+    this.party.forEach((d, i) => {
+      if (d.species_id === speciesId && !d.nickname) idx = i;
+    });
+    if (idx < 0) return;
+    const kin = KinInstance.fromData(this.party[idx]);
+    await offerNickname(this, kin, this.sfx);
+    this.party[idx] = kin.toData();
+    void this.persist();
   }
 
   /** Undo a `setLead` swap once its set-piece is over — the fight opened with
@@ -2315,6 +2369,26 @@ export class WorldScene extends Phaser.Scene {
   }
 
   /** In-game pause menu (Start/Esc): Resume / Kin / Hearth / Items / Save / Settings. */
+  /**
+   * The NEXT panel beside the pause menu: the main journey's current step
+   * (content/nextgoal.ts), so "where now?" is one button away. Long lines page.
+   */
+  private nextGoalPanel(top: number): { destroy(): void } {
+    const x = 112;
+    const w = this.cameras.main.width - x - 4;
+    const lines = 9; // the longest goal wraps to ~8 lines at this width
+    const h = theme.space.lg * 2 + 11 + lines * 9;
+    const panel = new Panel(this, x, Math.max(4, top), w, h).fixedToCamera().setDepth(theme.depth.panel);
+    panel.add(makeText(this, theme.space.lg, theme.space.lg - 2, 'NEXT', theme.text.accent));
+    const body = makeText(this, theme.space.lg, theme.space.lg + 9, '', theme.text.base);
+    body.setWordWrapWidth(w - theme.space.lg * 2);
+    panel.add(body);
+    const pager = new PagedText(this, body, lines, 9, { x: w - theme.space.lg, y: theme.space.lg + 2 });
+    panel.add(pager.marker);
+    pager.set(nextGoal((f) => this.flags.get(f)));
+    return { destroy: () => { pager.destroy(); panel.destroy(); } };
+  }
+
   private async openPauseMenu(): Promise<void> {
     this.modal = true;
     // The menu's own blips voice every choice and the close (cancel); only the
@@ -2342,11 +2416,16 @@ export class WorldScene extends Phaser.Scene {
         { label: 'SAVE', value: 'save' },
         { label: 'SETTINGS', value: 'settings' },
       ];
-      // With MAP (and late-game TRAVEL) the list can outgrow y=8 on the 160px
-      // screen — slide the panel up just enough so the last row never clips.
-      const menuH = theme.space.lg * 2 + entries.length * 12;
+      // With MAP (and late-game GLEAMS + TRAVEL) the list can outgrow the 160px
+      // screen: slide the panel up just enough so the last row never clips, and
+      // past what fits at all (13 rows late game cut RESUME off the top), scroll.
+      const fits = Math.floor((this.cameras.main.height - 4 - theme.space.lg * 2) / 12);
+      const rows = Math.min(entries.length, fits);
+      const menuH = theme.space.lg * 2 + rows * 12;
       const menuY = Math.min(8, this.cameras.main.height - menuH - 2);
-      const choice = await new Menu(this, entries, { x: 8, y: menuY, sfx: this.sfx }).run();
+      const goal = this.nextGoalPanel(menuY);
+      const choice = await new Menu(this, entries, { x: 8, y: menuY, sfx: this.sfx, maxVisible: rows }).run();
+      goal.destroy();
 
       if (choice === 'map') {
         await new WorldMapMenu(this, this.map.def.id, this.sfx).run();

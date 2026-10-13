@@ -45,6 +45,7 @@ export const PAGES = [
     { stem: 'story', title: 'The World', desc: 'The story of PixelKin: night fell over Vesperholm and won\'t lift. Play a lamp-tender\'s apprentice relighting the sky, befriend the kin, and meet the Hollowing — a cult that would let the dark stay.' },
     { stem: 'creatures', title: 'Kin', desc: 'Meet the kin of PixelKin — over 150 original creatures across ten elements, from the ember-fox Vulpyre to the tide-hum Brinix and the lucky Cloverkit. An empirically balanced roster, a copy of nothing.' },
     { stem: 'music', title: 'Music', desc: 'Listen to the PixelKin soundtrack, place by place — every town, road, cave and battle of Vesperholm, in both the classic chip renders and the remastered score, each built around one hometown melody.' },
+    { stem: 'changelog', title: 'Changelog', desc: 'What\'s new in PixelKin: every update to the game, newest first. New places, kin, music and quality-of-life changes across Vesperholm, written up by the fire.' },
     { stem: 'faq', title: 'FAQ', desc: 'Answers to common questions about playing PixelKin — how to start, the controls, saving your progress, catching and raising kin, and what makes this original creature-collecting adventure tick.' },
     { stem: 'license', title: 'Licensing', desc: 'Interested in licensing PixelKin, its world, characters, music or artwork? PixelKin is created and owned by Scorchsoft — get in touch through the Scorchsoft contact form to discuss licensing and partnerships.' },
     { stem: 'privacy', title: 'Privacy Policy', updated: 'June 2026', desc: 'How PixelKin and Scorchsoft handle your data. The PixelKin website is informational and the game stores your progress locally in your own browser — we do not collect personal information through it.' },
@@ -62,6 +63,7 @@ export const NAV = [
     ['The World', 'story'],
     ['Kin', 'creatures'],
     ['Music', 'music'],
+    ['Updates', 'changelog'],
     ['FAQ', 'faq'],
     ['Licensing', 'license'],
 ];
@@ -149,6 +151,23 @@ export function loadMusic() {
     return existsSync(path) ? JSON.parse(readFileSync(path, 'utf8')).groups : [];
 }
 
+/** The player-facing changelog, newest first. Read straight from the GAME's own
+ *  src/game/data/changelog.json at build time (the in-game "the world has changed"
+ *  notice reads the same file), so the two can never drift. */
+export function loadChangelog() {
+    const path = `${HERE}../src/game/data/changelog.json`;
+    if (!existsSync(path)) return [];
+    const ver = (v) => v.split('.').map((n) => Number.parseInt(n, 10) || 0);
+    const cmp = (a, b) => { const pa = ver(a), pb = ver(b); for (let i = 0; i < Math.max(pa.length, pb.length); i++) { const d = (pa[i] ?? 0) - (pb[i] ?? 0); if (d) return d; } return 0; };
+    return JSON.parse(readFileSync(path, 'utf8')).entries
+        .filter((x) => x.notes?.length)
+        .sort((a, b) => cmp(b.version, a.version));
+}
+
+/** "2026-10-13" → "13 October 2026" (fixed, not locale-dependent). */
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const longDate = (iso) => { const [y, m, d] = iso.split('-').map(Number); return `${d} ${MONTHS[m - 1]} ${y}`; };
+
 /** The founding trio — canon (the three kin on the logo). Mirrors
  *  src/game/content/starters.ts. Image stems live under assets/img/kin/. */
 export const STARTERS = [
@@ -206,6 +225,17 @@ export function tokens(page) {
 
 /** Data-driven sections, keyed by the <!-- block:name --> marker. */
 export const BLOCKS = {
+    'changelog': () => loadChangelog().map((c, i) => `
+        <article class="change-entry${i === 0 ? ' change-latest' : ''}" id="v${e(c.version)}">
+            <header class="change-head">
+                <h2 class="change-version"><a href="#v${e(c.version)}">v${e(c.version)}</a></h2>
+                ${i === 0 ? '<span class="change-badge">Latest</span>' : ''}
+                ${c.date ? `<time class="change-date" datetime="${e(c.date)}">${e(longDate(c.date))}</time>` : ''}
+            </header>
+            <ul class="change-notes">${c.notes.map((n) => `
+                <li>${e(n)}</li>`).join('')}
+            </ul>
+        </article>`).join(''),
     'world-gallery': () => WORLD_GALLERY.map((w) => `
             <figure class="shot" tabindex="0" role="button"
                     data-lb data-lb-group="world"

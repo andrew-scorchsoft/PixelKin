@@ -526,6 +526,17 @@
       "movement": "static",
       "dialogue_ref": "npc.pale_vault_inn_guest_lit",
       "requires_flag": "gleam:frost"
+    },
+    {
+      "id": "hesper",
+      "at": {
+        "tx": 4,
+        "ty": 3
+      },
+      "facing": "right",
+      "sprite": "pass_walker",
+      "movement": "static",
+      "dialogue_ref": "script.hesper_pale_vault"
     }
   ],
   "gates": [],

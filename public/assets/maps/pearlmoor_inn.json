@@ -696,6 +696,17 @@
       "movement": "static",
       "dialogue_ref": "npc.old_fisher_after",
       "requires_flag": "flag:q_south_wrecklamp_done"
+    },
+    {
+      "id": "hesper",
+      "at": {
+        "tx": 7,
+        "ty": 3
+      },
+      "facing": "right",
+      "sprite": "pass_walker",
+      "movement": "static",
+      "dialogue_ref": "script.hesper_pearlmoor"
     }
   ],
   "gates": [],

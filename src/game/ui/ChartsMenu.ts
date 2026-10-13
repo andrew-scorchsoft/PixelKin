@@ -17,6 +17,7 @@ import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT } from '@game/config';
 import { theme, hex } from './theme';
 import { makeText } from './Text';
+import { PagedText } from './PagedText';
 import { Panel } from './Panel';
 import { Cursor } from './Cursor';
 import { ChartView } from './ChartView';
@@ -45,6 +46,7 @@ export class ChartsMenu {
   private readonly discovered: ChartEntry[] = [];
   private readonly rowTexts: Phaser.GameObjects.Text[] = [];
   private readonly detail: Phaser.GameObjects.Text;
+  private readonly pager: PagedText;
   private readonly moreUp: Phaser.GameObjects.Text;
   private readonly moreDown: Phaser.GameObjects.Text;
   private readonly listTop: number;
@@ -111,6 +113,9 @@ export class ChartsMenu {
     this.detail = makeText(scene, PAD, detailTop, '', theme.text.dim);
     this.detail.setWordWrapWidth(width - PAD * 2);
     this.panel.add(this.detail);
+    // Long text pages itself rather than spilling off the pane (ui/PagedText).
+    this.pager = new PagedText(scene, this.detail, DETAIL_LINES, DETAIL_LINE_H, { x: width - PAD - 12, y: sepY });
+    this.panel.add(this.pager.marker);
 
     this.cursor = new Cursor(scene).setScrollFactor0();
     this.panel.add(this.cursor.sprite);
@@ -146,9 +151,9 @@ export class ChartsMenu {
 
     const item = this.items[this.sel];
     if (item && item.kind === 'entry') {
-      this.detail.setText(item.discovered ? item.chart.subtitle : LOCKED_DESC);
+      this.pager.set(item.discovered ? item.chart.subtitle : LOCKED_DESC);
     } else {
-      this.detail.setText('');
+      this.pager.set('');
     }
 
     this.moreUp.setVisible(this.scroll > 0);
@@ -262,6 +267,7 @@ export class ChartsMenu {
 
   destroy(): void {
     this.cursor.destroy();
+    this.pager.destroy();
     this.panel.destroy();
   }
 }
