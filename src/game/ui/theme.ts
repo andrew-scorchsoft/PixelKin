@@ -38,6 +38,20 @@ export const theme = {
     lampGlow: '#ffd98a',
   },
 
+  /** The seven status conditions as short plate tags (battle HpPanel, KIN list):
+   *  three letters, each in the colour of what it does. */
+  status: {
+    scorch: { tag: 'SCR', color: '#ff8a3d' },
+    drench: { tag: 'DRN', color: '#4fb4ff' },
+    numb: { tag: 'NMB', color: '#ffd76b' },
+    doze: { tag: 'DOZ', color: '#b9b3c9' },
+    blight: { tag: 'BLT', color: '#9be06b' },
+    dazzle: { tag: 'DAZ', color: '#f0a8ff' },
+    chill: { tag: 'CHL', color: '#a9e8ff' },
+  } as Record<string, { tag: string; color: string }>,
+  /** The player plate's EXP bar fill. */
+  expBar: '#78d2ff',
+
   /** Per-type accent colours for swatches/tags (the 8 elements + Light/Dark). */
   typeColor: {
     Ember: '#ff8a3d',

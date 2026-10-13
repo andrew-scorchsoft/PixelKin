@@ -31,6 +31,12 @@ const PAD = theme.space.lg;
 const ROWS_TOP = 16;
 const ROW_H = 22;
 
+/** A status condition as one plain word for the party list. */
+const STATUS_WORD: Record<string, string> = {
+  scorch: 'Scorched', drench: 'Drenched', numb: 'Numbed', doze: 'Dozing',
+  blight: 'Blighted', dazzle: 'Dazzled', chill: 'Chilled',
+};
+
 export class PartyMenu {
   private readonly dim: Phaser.GameObjects.Rectangle;
   private readonly panel: Panel;
@@ -119,7 +125,13 @@ export class PartyMenu {
 
     const name = this.track(makeText(scene, 30, rowY + 1, kin.displayName, theme.text.base));
     this.nameTexts.push(name);
-    this.track(makeText(scene, 30, rowY + 11, kin.species.types.join('/'), theme.text.dim));
+    // Under the name: its types — or, while a condition holds, that condition in
+    // its own colour (the types are on the SUMMARY card), so a dozing or chilled
+    // kin is spotted before you lead with it.
+    const st = theme.status[kin.status];
+    this.track(st && !kin.isFainted
+      ? makeText(scene, 30, rowY + 11, STATUS_WORD[kin.status] ?? st.tag, theme.text.base).setColor(st.color)
+      : makeText(scene, 30, rowY + 11, kin.species.types.join('/'), theme.text.dim));
     this.track(makeText(scene, 124, rowY + 1, `Lv${kin.level}`, theme.text.base));
 
     const fainted = kin.isFainted;

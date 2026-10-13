@@ -141,6 +141,9 @@ export class BattleScene extends Phaser.Scene {
   private dexSeen = new Set<number>();
   /** Species the player has caught — gates the fight menu's effectiveness hints. */
   private dexCaught = new Set<number>();
+  /** The FIGHT/BAG cursor memory: each kin's last move, and the last item used. */
+  private readonly lastMove = new Map<KinInstance, number>();
+  private lastItem?: string;
   /** Whether the FIGHT menu's move-info pane is open (opt-in, per battle). */
   private showMoveInfo = false;
   private finished = false;
@@ -216,6 +219,14 @@ export class BattleScene extends Phaser.Scene {
     this.shownFoe = this.engine.foe;
     this.foeHp = new HpPanel(this, 6, 8, this.engine.foe, false, 'left', (id) => this.dexCaught.has(id));
     this.playerHp = new HpPanel(this, GAME_WIDTH - 6, GAME_HEIGHT - 78, this.engine.player, true, 'right');
+    // Low health: the plate pulses on its own; the warning beep sounds twice on
+    // the way in (the genre's cue to heal or switch, without nagging all fight).
+    this.playerHp.onLow = (low) => {
+      if (!low) return;
+      void this.sfx.playVariant('battle-hp-low', ['a', 'b']);
+      this.time.delayedCall(420, () => void this.sfx.playVariant('battle-hp-low', ['a', 'b']));
+    };
+    this.playerHp.refresh();
     this.msg = new BattleMessage(this);
     if (this.request.kind === 'trainer' && !getTrainer(this.request.trainer)?.solo_line) {
       // The trainer-intro beat: nobody's kin is out yet — the trainer and your
@@ -461,6 +472,7 @@ export class BattleScene extends Phaser.Scene {
       label: k.move.name,
       value: String(i),
       enabled: k.charges > 0,
+      right: String(k.charges), // uses left (the full n/m is in the info pane)
     }));
     if (opts.length === 0 || opts.every((o) => o.enabled === false)) {
       await this.msg.show(`${this.engine.player.displayName} has no charges left!`);
@@ -470,9 +482,12 @@ export class BattleScene extends Phaser.Scene {
     // message strip, which carries the highlighted move's description. Fixed
     // widths so the layout never jumps between kin (15 = the longest move name).
     const MENU_X = 4;
-    const MENU_W = theme.space.lg * 2 + 8 + 15 * 8;
+    // 15 = the longest move name, + a 3-char column for the uses left. The info
+    // pane sits over that column when open (it shows USES n/m itself).
+    const MENU_W = theme.space.lg * 2 + 8 + 15 * 8 + 3 * 8;
+    const INFO_X = MENU_X + theme.space.lg * 2 + 8 + 15 * 8;
     const INFO_H = 60;
-    const info = new MoveInfo(this, MENU_X + MENU_W, this.menuY(4), GAME_WIDTH - 4 - (MENU_X + MENU_W), INFO_H);
+    const info = new MoveInfo(this, INFO_X, this.menuY(4), GAME_WIDTH - 4 - INFO_X, INFO_H);
     // OPT-IN: the pane covers part of the foe, so it starts hidden and the strip
     // says how to ask for it. RIGHT shows it, LEFT hides it; the choice holds for
     // the rest of this battle.
@@ -502,6 +517,8 @@ export class BattleScene extends Phaser.Scene {
       y: this.menuY(opts.length),
       width: MENU_W,
       sfx: this.sfx,
+      // Opens on the move you used last (if this kin still has it and it has uses).
+      initialIndex: this.lastMove.get(this.engine.player) ?? 0,
       onHighlight: describe,
       onSide: (dir) => {
         const want = dir > 0;
@@ -514,6 +531,7 @@ export class BattleScene extends Phaser.Scene {
     info.destroy();
     this.msg.set('');
     if (choice === null) return null;
+    this.lastMove.set(this.engine.player, Number(choice));
     return this.engine.takeTurn({ kind: 'move', moveIndex: Number(choice) });
   }
 
@@ -559,6 +577,7 @@ export class BattleScene extends Phaser.Scene {
     }
     const choice = await new Menu(this, opts, {
       x: 6, y: this.menuY(Math.min(opts.length, MENU_MAX_ROWS)), sfx: this.sfx, maxVisible: MENU_MAX_ROWS,
+      initialIndex: Math.max(0, opts.findIndex((o) => o.value === this.lastItem)),
       // The highlighted item's description in the strip, so the BAG explains itself too.
       onHighlight: (i) => this.msg.set(battleItemNote(getItem(opts[i]?.value ?? ''))),
     }).run();
@@ -567,6 +586,7 @@ export class BattleScene extends Phaser.Scene {
 
     const def = getItem(choice);
     if (!def) return null;
+    this.lastItem = choice;
 
     if (def.category === 'charge') {
       if (this.request.kind !== 'wild') {
@@ -647,6 +667,9 @@ export class BattleScene extends Phaser.Scene {
   private async playEvents(events: BattleEvent[]): Promise<void> {
     for (const ev of events) {
       await this.playEvent(ev);
+      // Any event can land or lift a status: keep both plates' tags true.
+      this.playerHp.refreshStatus();
+      this.foeHp.refreshStatus();
     }
   }
 

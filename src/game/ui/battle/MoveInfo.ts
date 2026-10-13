@@ -39,7 +39,8 @@ export class MoveInfo {
   private readonly lines: Phaser.GameObjects.Text[] = [];
 
   constructor(scene: Phaser.Scene, x: number, y: number, width: number, height: number) {
-    this.panel = new Panel(scene, x, y, width, height).fixedToCamera().setDepth(theme.depth.panel);
+    // One band above the move list: when open it sits over the list's uses column.
+    this.panel = new Panel(scene, x, y, width, height).fixedToCamera().setDepth(theme.depth.panel + 1);
     for (let i = 0; i < 6; i++) {
       const t = makeText(scene, PAD, TOP + i * LINE_H, '', theme.text.base);
       this.panel.add(t);

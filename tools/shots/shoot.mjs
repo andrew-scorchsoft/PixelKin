@@ -33,8 +33,8 @@ world options:
                                 "gleam:ember", "chart:x" etc. pass through)
   --abilities tidecall,...      Lantern Gifts held
   --items runner,lumen_drop:2   pack items held (id[:count])
-  --party starter|none|ID[:LV[:HP]],...  party (default "starter" = #1 Vulpyre lv 5);
-                                HP 0 = fainted (test revives / FNT rows)
+  --party starter|none|ID[:LV[:HP[:STATUS]]],...  party (default "starter" = #1 Vulpyre lv 5);
+                                HP 0 = fainted (test revives / FNT rows); STATUS e.g. numb
   --level N                     level for "starter" (default 5)
   --steps "right,right,up"      walk these steps after spawning (one tile each)
   --battle <kin_id>[:LV]        open a wild battle vs that kin on the map
@@ -281,9 +281,10 @@ async function seedSave(page, shot) {
         .map((p) => p.trim())
         .filter(Boolean)
         .map((p) => {
-          const [id, lv, hp] = p.split(':');
+          const [id, lv, hp, status] = p.split(':');
           const kin = makeStarterKin(Number(id), Number(lv ?? s.level));
           if (hp !== undefined && hp !== '') kin.hp = Number(hp); // 0 = fainted
+          if (status) kin.status = status; // numb, doze, chill, …
           return kin;
         });
 

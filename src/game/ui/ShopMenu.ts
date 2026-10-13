@@ -40,6 +40,8 @@ const NAME_X = PAD + 10; // left edge of the name column (cursor sits at PAD)
 const COL_GAP = 5; // minimum gap between the name column and the price column
 const MARQUEE_TAIL = '   •   '; // separator looped into a scrolling clipped name
 const MARQUEE_EVERY = 6; // advance the marquee one glyph every N frames
+/** The most of one line bought/sold in a single trade. */
+const MAX_QTY = 99;
 
 export interface ShopMenuResult {
   inventory: InventoryData;
@@ -376,16 +378,24 @@ export class ShopMenu {
         input.destroy();
         resolve();
       };
+      let busy = false; // the quantity picker owns the input while it's open
       const tick = (): void => {
         input.update();
         this.tickMarquee();
+        if (busy) return;
         if (!armed) {
           if (!input.isDown(InputAction.Confirm) && !input.isDown(InputAction.Cancel)) armed = true;
           return;
         }
         if (input.justPressed(InputAction.Up)) this.move(-1);
         else if (input.justPressed(InputAction.Down)) this.move(1);
-        else if (input.justPressed(InputAction.Confirm)) this.tradeOne();
+        else if (input.justPressed(InputAction.Confirm)) {
+          busy = true;
+          void this.chooseAndTrade().then(() => {
+            busy = false;
+            armed = false; // the picker's own Confirm must not re-fire here
+          });
+        }
         else if (input.justPressed(InputAction.Cancel)) {
           void this.sfx?.play(theme.cursor.cancelSfx);
           finish();
@@ -395,25 +405,91 @@ export class ShopMenu {
     });
   }
 
-  /** Trade exactly one of the selected entry (the wallet/header narrate the result). */
-  private tradeOne(): void {
+  /**
+   * Confirm on a row: ask HOW MANY (bulk buying, playtest 2026-10 — ten Glow
+   * Charges used to be ten trips), then trade them. A key item, or a line you
+   * can only afford / only hold one of, trades one straight away.
+   */
+  private async chooseAndTrade(): Promise<void> {
     if (this.entries.length === 0) return;
     const entry = this.entries[this.index];
-
-    if (this.mode === 'buy') {
-      if (entry.wicks > this.money) {
-        void this.sfx?.play(theme.cursor.cancelSfx);
-        return; // can't afford — the dim row already says so
-      }
-      this.money -= entry.wicks;
-      this.inventory.items[entry.id] = (this.inventory.items[entry.id] ?? 0) + 1;
-      void this.sfx?.play('world-wicks'); // wicks across the counter
-    } else {
-      this.money += entry.wicks;
-      this.inventory.items[entry.id] = (this.inventory.items[entry.id] ?? 1) - 1;
-      if (this.inventory.items[entry.id] <= 0) delete this.inventory.items[entry.id];
-      void this.sfx?.play('world-wicks');
+    const isKey = getItem(entry.id)?.category === 'key';
+    const max = this.mode === 'buy'
+      ? Math.min(MAX_QTY, isKey ? 1 : Math.floor(this.money / Math.max(1, entry.wicks)))
+      : Math.min(MAX_QTY, entry.held);
+    if (max <= 0) {
+      void this.sfx?.play(theme.cursor.cancelSfx);
+      return; // can't afford — the dim row already says so
     }
+    const qty = max === 1 ? 1 : await this.pickQuantity(entry, max);
+    if (qty) this.trade(entry, qty);
+  }
+
+  /** The "how many?" box: LEFT/RIGHT ±1, UP/DOWN ±10, Confirm takes it, Cancel backs out. */
+  private pickQuantity(entry: CounterEntry, max: number): Promise<number | null> {
+    const w = 96;
+    const h = 30;
+    const box = new Panel(this.scene, GAME_WIDTH - 4 - w - 4, this.detailTop - h + 2, w, h)
+      .fixedToCamera()
+      .setDepth(theme.depth.panel + 1);
+    const qtyText = makeText(this.scene, PAD, PAD - 2, '', theme.text.accent);
+    const costText = makeText(this.scene, PAD, PAD + 8, '', theme.text.base);
+    box.add(qtyText);
+    box.add(costText);
+    let qty = 1;
+    const show = (): void => {
+      qtyText.setText(`< x${qty} >`);
+      costText.setText(formatWicks(qty * entry.wicks));
+    };
+    show();
+    const input = new InputController(this.scene);
+    let armed = false;
+    return new Promise((resolve) => {
+      const finish = (v: number | null): void => {
+        this.scene.events.off(Phaser.Scenes.Events.UPDATE, tick);
+        input.destroy();
+        box.destroy();
+        resolve(v);
+      };
+      const step = (d: number): void => {
+        const next = Phaser.Math.Clamp(qty + d, 1, max);
+        if (next !== qty) {
+          qty = next;
+          show();
+          void this.sfx?.play(theme.cursor.moveSfx);
+        }
+      };
+      const tick = (): void => {
+        input.update();
+        if (!armed) {
+          if (!input.isDown(InputAction.Confirm) && !input.isDown(InputAction.Cancel)) armed = true;
+          return;
+        }
+        if (input.justPressed(InputAction.Right)) step(1);
+        else if (input.justPressed(InputAction.Left)) step(-1);
+        else if (input.justPressed(InputAction.Up)) step(10);
+        else if (input.justPressed(InputAction.Down)) step(-10);
+        else if (input.justPressed(InputAction.Confirm)) finish(qty);
+        else if (input.justPressed(InputAction.Cancel)) {
+          void this.sfx?.play(theme.cursor.cancelSfx);
+          finish(null);
+        }
+      };
+      this.scene.events.on(Phaser.Scenes.Events.UPDATE, tick);
+    });
+  }
+
+  /** Trade `qty` of an entry (the wallet/header narrate the result). */
+  private trade(entry: CounterEntry, qty: number): void {
+    if (this.mode === 'buy') {
+      this.money -= entry.wicks * qty;
+      this.inventory.items[entry.id] = (this.inventory.items[entry.id] ?? 0) + qty;
+    } else {
+      this.money += entry.wicks * qty;
+      this.inventory.items[entry.id] = (this.inventory.items[entry.id] ?? qty) - qty;
+      if (this.inventory.items[entry.id] <= 0) delete this.inventory.items[entry.id];
+    }
+    void this.sfx?.play('world-wicks'); // wicks across the counter
     this.rebuild();
   }
 

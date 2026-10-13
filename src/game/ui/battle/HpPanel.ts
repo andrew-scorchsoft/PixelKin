@@ -8,6 +8,11 @@
  * the bar when that species is already in your Register as caught (the genre's
  * "you've got one of these" cue). Pass `isCaught`; it's re-asked on every
  * refresh, so a trainer's next kin gets the right mark after a switch.
+ *
+ * Both plates carry a STATUS TAG (DOZ, NMB, …, theme.status) on the bar row while
+ * a condition holds. The player's plate also has a thin EXP bar under its HP
+ * numbers and a LOW-HEALTH warning: under 20% the bar pulses and `onLow` fires
+ * once on the way in (BattleScene plays the warning beep).
  */
 import Phaser from 'phaser';
 import { COLORS } from '@game/config';
@@ -15,7 +20,7 @@ import { theme, hex } from '@game/ui/theme';
 import { makeText } from '@game/ui/Text';
 import { Panel } from '@game/ui/Panel';
 import { battlePaceFactor } from '@game/ui/preferences';
-import type { KinInstance } from '@game/systems/party/KinInstance';
+import { expForLevel, MAX_LEVEL, type KinInstance } from '@game/systems/party/KinInstance';
 
 const BAR_W = 48;
 const BAR_H = 4;
@@ -24,6 +29,16 @@ const PAD = theme.space.lg;
 const MIN_W = PAD * 2 + BAR_W;
 /** The lamp mark: a 7x9 pixel vesperlamp drawn just right of the bar. */
 const MARK_GAP = 4;
+/** Below this share of max HP the player's plate pulses and warns. */
+const LOW_HP = 0.2;
+
+/** How far a kin is from its current level toward the next (0..1). */
+function expRatio(kin: KinInstance): number {
+  if (kin.level >= MAX_LEVEL) return 1;
+  const lo = expForLevel(kin.level);
+  const hi = expForLevel(kin.level + 1);
+  return Phaser.Math.Clamp((kin.exp - lo) / Math.max(1, hi - lo), 0, 1);
+}
 const MARK_W = 7;
 const LAMP_MARK = [
   '..mmm..',
@@ -53,6 +68,13 @@ export class HpPanel {
   private readonly hpText?: Phaser.GameObjects.Text;
   private readonly height: number;
   private readonly mark?: Phaser.GameObjects.Graphics;
+  private readonly statusTag: Phaser.GameObjects.Text;
+  private readonly expBg?: Phaser.GameObjects.Rectangle;
+  private readonly expBar?: Phaser.GameObjects.Rectangle;
+  private lowPulse?: Phaser.Tweens.Tween;
+  private wasLow = false;
+  /** Fires when the plate's kin drops into (true) / climbs out of (false) the low band. */
+  onLow?: (low: boolean) => void;
   private kin: KinInstance;
 
   constructor(
@@ -67,7 +89,7 @@ export class HpPanel {
     private readonly isCaught?: (speciesId: number) => boolean,
   ) {
     this.kin = kin;
-    this.height = showNumbers ? 34 : 26;
+    this.height = showNumbers ? 37 : 26;
     this.panel = new Panel(scene, anchorX, this.y, MIN_W, this.height).fixedToCamera();
 
     this.nameText = makeText(scene, PAD, theme.space.md, '', theme.text.base);
@@ -90,9 +112,24 @@ export class HpPanel {
       this.panel.add(this.mark);
     }
 
+    // Status tag: on the bar row, right of the bar (and of the lamp mark).
+    this.statusTag = makeText(scene, 0, barY - 2, '', theme.text.base).setVisible(false);
+    this.panel.add(this.statusTag);
+
     if (showNumbers) {
       this.hpText = makeText(scene, PAD, barY + 6, '', theme.text.dim);
       this.panel.add(this.hpText);
+      // EXP toward the next level: a thin bar along the plate's foot.
+      this.expBg = scene.add
+        .rectangle(PAD, this.height - 5, BAR_W, 2, hex(theme.color.panelShadow))
+        .setOrigin(0, 0)
+        .setScrollFactor(0);
+      this.expBar = scene.add
+        .rectangle(PAD, this.height - 5, 0, 2, hex(theme.expBar))
+        .setOrigin(0, 0)
+        .setScrollFactor(0);
+      this.panel.add(this.expBg);
+      this.panel.add(this.expBar);
     }
 
     this.refresh();
@@ -112,7 +149,36 @@ export class HpPanel {
     this.bar.fillColor = this.colorFor(ratio);
     this.hpText?.setText(`${Math.max(0, this.kin.hp)}/${this.kin.maxHp}`);
     this.mark?.setVisible(this.isCaught?.(this.kin.species.id) ?? false);
+    if (this.expBar) this.expBar.width = Math.round(BAR_W * expRatio(this.kin));
+    this.refreshStatus();
+    this.checkLow(ratio);
+  }
+
+  /** Re-read the status tag (after any battle event: a status can land or lift). */
+  refreshStatus(): void {
+    const st = theme.status[this.kin.status];
+    this.statusTag.setVisible(!!st && !this.kin.isFainted);
+    if (st) this.statusTag.setText(st.tag).setColor(st.color);
     this.layout();
+  }
+
+  /** Start/stop the low-health pulse (player plate only) as the ratio crosses 20%. */
+  private checkLow(ratio: number): void {
+    if (!this.hpText) return;
+    const low = ratio > 0 && ratio <= LOW_HP;
+    if (low && !this.lowPulse) {
+      this.lowPulse = this.scene.tweens.add({
+        targets: this.bar, alpha: 0.35, duration: 380, yoyo: true, repeat: -1,
+      });
+    } else if (!low && this.lowPulse) {
+      this.lowPulse.stop();
+      this.lowPulse = undefined;
+      this.bar.setAlpha(1);
+    }
+    if (low !== this.wasLow) {
+      this.wasLow = low;
+      this.onLow?.(low);
+    }
   }
 
   /** The lamp mark, pixel by pixel: brass frame (m), warm glow (g), a bright wick (w). */
@@ -133,7 +199,10 @@ export class HpPanel {
   /** Grow the frame to fit the name+level line and re-pin it to its anchor edge. */
   private layout(): void {
     const markW = this.mark?.visible ? MARK_GAP + MARK_W : 0;
-    const w = Math.max(MIN_W + markW, Math.ceil(this.nameText.width) + PAD * 2);
+    const tagX = PAD + BAR_W + markW + 4;
+    this.statusTag.setX(tagX);
+    const tagW = this.statusTag.visible ? 4 + Math.ceil(this.statusTag.width) : 0;
+    const w = Math.max(MIN_W + markW + tagW, Math.ceil(this.nameText.width) + PAD * 2);
     this.panel.bg.setSize(w, this.height);
     const x = this.align === 'right' ? this.anchorX - w : this.anchorX;
     this.panel.container.setPosition(x, this.y);
@@ -152,6 +221,17 @@ export class HpPanel {
       const target = Math.max(0, Math.round(BAR_W * ratio));
       this.bar.fillColor = this.colorFor(ratio);
       this.hpText?.setText(`${Math.max(0, this.kin.hp)}/${this.kin.maxHp}`);
+      this.refreshStatus();
+      this.checkLow(ratio);
+      if (this.expBar) {
+        // EXP fills smoothly toward its new share (a level-up refresh snaps it back).
+        this.scene.tweens.add({
+          targets: this.expBar,
+          width: Math.round(BAR_W * expRatio(this.kin)),
+          duration: 360 * battlePaceFactor(),
+          ease: 'Quad.out',
+        });
+      }
       this.scene.tweens.add({
         targets: this.bar,
         width: target,
@@ -173,7 +253,11 @@ export class HpPanel {
   }
 
   destroy(): void {
+    this.lowPulse?.stop();
     this.mark?.destroy();
+    this.statusTag.destroy();
+    this.expBar?.destroy();
+    this.expBg?.destroy();
     this.bar.destroy();
     this.barBg.destroy();
     this.panel.destroy();

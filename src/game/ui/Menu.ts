@@ -16,6 +16,8 @@ export interface MenuOption {
   label: string;
   value: string;
   enabled?: boolean;
+  /** Optional dim right-aligned note on the row (the battle move list's uses left). */
+  right?: string;
 }
 
 export interface MenuConfig {
@@ -53,6 +55,8 @@ export class Menu {
   private readonly panel: Panel;
   private readonly cursor: Cursor;
   private readonly rows: Phaser.GameObjects.Text[] = [];
+  /** Right-aligned notes, one per row (null where a row has none). */
+  private readonly notes: (Phaser.GameObjects.Text | null)[] = [];
   private index = 0;
   /** First visible row when windowed (`maxVisible`). */
   private top = 0;
@@ -85,6 +89,11 @@ export class Menu {
       );
       this.panel.add(t);
       this.rows.push(t);
+      const note = opt.right
+        ? makeText(scene, width - PAD - hintW, PAD + i * ROW_H, opt.right, theme.text.dim).setOrigin(1, 0)
+        : null;
+      if (note) this.panel.add(note);
+      this.notes.push(note);
     });
 
     if (this.visibleRows < options.length) {
@@ -127,8 +136,10 @@ export class Menu {
     else if (this.index >= this.top + this.visibleRows) this.top = this.index - this.visibleRows + 1;
     this.rows.forEach((row, i) => {
       const slot = i - this.top;
-      row.setVisible(slot >= 0 && slot < this.visibleRows);
+      const shown = slot >= 0 && slot < this.visibleRows;
+      row.setVisible(shown);
       row.setY(PAD + slot * ROW_H);
+      this.notes[i]?.setVisible(shown).setY(PAD + slot * ROW_H);
     });
     this.moreUp?.setVisible(this.top > 0);
     this.moreDown?.setVisible(this.top + this.visibleRows < this.options.length);
