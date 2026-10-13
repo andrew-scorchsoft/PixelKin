@@ -3,14 +3,18 @@
  "kind": "loop",
  "where": "The Old Light, floor 4 — The Backwards Inn (a mirror maze, everything reversed)",
  "mood": "The Backwards Inn — the march turned inside out: the tune walks in the tuba while the oom-pah flips to the top.",
- "bpm": 120,
+ "bpm": 126,
  "beats_per_bar": 4,
- "motif": null,
- "_note": "Classic oldlight-f4: 120, F, registers swapped then retrograde. Opening: the tuba plays the tune alone from beat one in the low register, the high 'pah-oom' answering.",
+ "motif": {
+  "strength": "medium",
+  "source": "oldlight"
+ },
+ "_note": "Classic oldlight-f4: 120, F, registers swapped then retrograde. Opening: the tuba plays the tune alone from beat one in the low register, the high 'pah-oom' answering. | Family pass (music-cue-family): conditioned on motif-oldlight (the f1 remaster's theme), strength medium; tempo moved 120->126 because motif conditioning locks takes to the anchor's 126 grid (feel carries the same pace).",
  "core_styles": [
   "16-bit console RPG soundtrack from the mid-1990s",
   "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
-  "120 BPM",
+  "every section is built on Punchwheel's Patter, the tower's cheeky march tune",
+  "126 BPM",
   "F major",
   "4/4 march turned upside down",
   "tuba plays the melody low while piccolo and glockenspiel play the oom-pah offbeats up high",
@@ -56,7 +60,7 @@
   {
    "name": "Main Theme",
    "bars": 8,
-   "text": "{the march tune carried by tuba and bassoon in the low register, with piccolo and glockenspiel doing the oom-pah on top; a reverse-cymbal swish into each phrase}",
+   "text": "{Punchwheel's Patter, the tower tune, carried by tuba and bassoon in the low register, with piccolo and glockenspiel doing the oom-pah on top; a reverse-cymbal swish into each phrase}",
    "styles": [
     "main theme",
     "inverted registers",

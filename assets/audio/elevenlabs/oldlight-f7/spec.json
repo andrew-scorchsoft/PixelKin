@@ -3,16 +3,20 @@
  "kind": "loop",
  "where": "The Old Light, top — The Winding Room (Mr. Punchwheel, the great joke-drum)",
  "mood": "The Winding Room — the march at full delirium: every phrase climbs a key, the clockwork speeds up, then the spring snaps back.",
- "bpm": 144,
+ "bpm": 126,
  "beats_per_bar": 4,
- "motif": null,
- "_note": "Classic oldlight-f7: 144, F→A♭→B→D then snap back. The tower's finale: joyous delirium, carnival-calliope energy, still cosy. Opening: a clockwork ratchet winding up for one bar, the full band crashing in on bar two.",
+ "motif": {
+  "strength": "medium",
+  "source": "oldlight"
+ },
+ "_note": "Classic oldlight-f7: 144, F→A♭→B→D then snap back. The tower's finale: joyous delirium, carnival-calliope energy, still cosy. Opening: a clockwork ratchet winding up for one bar, the full band crashing in on bar two. | Family pass (music-cue-family): conditioned on motif-oldlight (the f1 remaster's theme), strength medium; tempo moved 144->126 because motif conditioning locks takes to the anchor's 126 grid (feel carries the double-time pace).",
  "core_styles": [
   "16-bit console RPG soundtrack from the mid-1990s",
   "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
-  "144 BPM",
+  "every section is built on Punchwheel's Patter, the tower's cheeky march tune",
+  "126 BPM",
   "F major modulating up a minor third every phrase",
-  "4/4 galloping music-hall march at full tilt",
+  "4/4 double-time galloping music-hall march at full tilt",
   "steam calliope and brass band playing the tune",
   "clockwork ratchet and woodblocks speeding up",
   "slide whistle and bicycle-horn honks",
@@ -57,7 +61,7 @@
   {
    "name": "Main Theme",
    "bars": 8,
-   "text": "{the march tune at full gallop on steam calliope and brass, the oom-pah racing; after four bars the whole band jumps up a key}",
+   "text": "{Punchwheel's Patter, the tower tune, at full gallop on steam calliope and brass, the oom-pah racing; after four bars the whole band jumps up a key}",
    "styles": [
     "main theme",
     "memorable hook",

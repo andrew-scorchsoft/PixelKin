@@ -1,0 +1,5 @@
+{
+ "song_id": "WOXJmNrO3Pdo3x69MOjl",
+ "range": {"start_ms": 3800, "end_ms": 33800},
+ "note": "THE OLD LIGHT FAMILY MOTIF ('Punchwheel's Patter'): the oldlight-f1 remaster's stored take (unconditioned anchor, 126 BPM, F major music-hall march); range = its Main Theme + Reprise opening after the 2-bar intro (30 s API cap). Floors 2-7 condition on this via \"motif\": {\"source\": \"oldlight\"} so every floor plays the same tune, each more deranged (music-cue-family skill). Re-upload public/assets/audio/music/remaster/oldlight-f1.mp3 via generate_music.py --upload if the stored song is ever dropped."
+}

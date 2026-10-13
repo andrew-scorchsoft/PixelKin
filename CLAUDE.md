@@ -281,7 +281,7 @@ go digging on every task.
 
 ## Skills
 
-Seven skills live in `.claude/skills/`. Use them instead of hand-rolling:
+Eight skills live in `.claude/skills/`. Use them instead of hand-rolling:
 
 - **deploy-ftp** — LEGACY: pixelk.in now deploys via Cloudflare Workers Builds on push to
   `main` (see the marketing-site gotcha). The skill still syncs to an FTP host: asks scope
@@ -317,6 +317,10 @@ Seven skills live in `.claude/skills/`. Use them instead of hand-rolling:
   generate-music when you want a text-prompt render instead.
 - **copy-editing** — for any prose deliverable (docs, dialogue review,
   marketing copy).
+- **music-cue-family** — score a FAMILY of connected cues (tower floors, dungeon stages,
+  day/night variants) on ONE motif with an escalating variation ladder, classic + remastered;
+  a family can condition on its own motif (`motif-<family>.json`, spec `motif.source`). The Old
+  Light's seven floors (`motif-oldlight.json`, anchored on the `oldlight-f1` remaster) are the worked example.
 
 API keys are provided as environment variables in this project's managed
 environment (`GOOGLE_AI_STUDIO_API_KEY`, `OPENAI_API_KEY`, `ELEVENLABS_API_KEY`).

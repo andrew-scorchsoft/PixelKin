@@ -561,7 +561,13 @@ falling `pulse12` glides ("ha-ha-ha") and a `noise` "pfft". Each floor up is a l
 deranged. Classic: chip engine, `snes` register. **Remastered too (R11, 2026-10):** each floor has a
 cue sheet `assets/audio/elevenlabs/oldlight-fN/spec.json` (unconditioned — the march tempos would be
 pinned to the motif's ~90 BPM; same tempo/key/derangement as the classic, the laugh played by
-slide-trombone/slide-whistle since the remasters are instrumental).
+slide-trombone/slide-whistle since the remasters are instrumental). The remasters share the TOWER's own
+motif, not the Vesper one: `oldlight-f1` (unconditioned) is the anchor, its theme is registered as
+`assets/audio/elevenlabs/motif-oldlight.json`, and floors 2–7 condition on it (`"motif": {"source": "oldlight"}`),
+high strength on the near floors and the F6 heart, medium on the wildest (F4/F5/F7). Conditioning locks
+tempo to the anchor's 126 grid, so F3's lounge is a half-time feel, F6 sits at 63 and F7 is a double-time
+feel. The ladder: straight → late → lounge → inverted → wrong-note → tender music box → everything at once.
+Method: the `music-cue-family` skill.
 Specs `assets/audio/midi/specs/oldlight-fN.json` → `assets/audio/midi/oldlight-fN.mid` →
 `music/oldlight-fN.mp3`.
 
