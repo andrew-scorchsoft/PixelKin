@@ -3,6 +3,11 @@
  * shared Panel + Text so it matches the rest of the game. The bar tweens to a
  * new value (so a hit reads as a smooth drain) and recolours green → amber → red
  * as the kin weakens. The player's plate also shows the numeric HP.
+ *
+ * The foe's plate can carry the LAMP MARK: a tiny code-drawn vesperlamp beside
+ * the bar when that species is already in your Register as caught (the genre's
+ * "you've got one of these" cue). Pass `isCaught`; it's re-asked on every
+ * refresh, so a trainer's next kin gets the right mark after a switch.
  */
 import Phaser from 'phaser';
 import { COLORS } from '@game/config';
@@ -17,6 +22,20 @@ const BAR_H = 4;
 const PAD = theme.space.lg;
 /** Floor so the bar (and HP numbers) always fit even for very short names. */
 const MIN_W = PAD * 2 + BAR_W;
+/** The lamp mark: a 7x9 pixel vesperlamp drawn just right of the bar. */
+const MARK_GAP = 4;
+const MARK_W = 7;
+const LAMP_MARK = [
+  '..mmm..',
+  '.m...m.',
+  'mmmmmmm',
+  '.mgggm.',
+  '.mgwgm.',
+  '.mgggm.',
+  '.mgggm.',
+  'mmmmmmm',
+  '..mmm..',
+];
 
 /**
  * Where the panel is pinned. The foe plate hugs the top-left and grows
@@ -33,6 +52,7 @@ export class HpPanel {
   private readonly nameText: Phaser.GameObjects.Text;
   private readonly hpText?: Phaser.GameObjects.Text;
   private readonly height: number;
+  private readonly mark?: Phaser.GameObjects.Graphics;
   private kin: KinInstance;
 
   constructor(
@@ -43,6 +63,8 @@ export class HpPanel {
     kin: KinInstance,
     showNumbers: boolean,
     private readonly align: HpPanelAlign = 'left',
+    /** Is this species already caught? Shows the lamp mark beside the bar. */
+    private readonly isCaught?: (speciesId: number) => boolean,
   ) {
     this.kin = kin;
     this.height = showNumbers ? 34 : 26;
@@ -62,6 +84,11 @@ export class HpPanel {
       .setScrollFactor(0);
     this.panel.add(this.barBg);
     this.panel.add(this.bar);
+
+    if (isCaught) {
+      this.mark = this.drawLampMark(PAD + BAR_W + MARK_GAP, barY - 3);
+      this.panel.add(this.mark);
+    }
 
     if (showNumbers) {
       this.hpText = makeText(scene, PAD, barY + 6, '', theme.text.dim);
@@ -84,12 +111,29 @@ export class HpPanel {
     this.bar.width = Math.max(0, Math.round(BAR_W * ratio));
     this.bar.fillColor = this.colorFor(ratio);
     this.hpText?.setText(`${Math.max(0, this.kin.hp)}/${this.kin.maxHp}`);
+    this.mark?.setVisible(this.isCaught?.(this.kin.species.id) ?? false);
     this.layout();
+  }
+
+  /** The lamp mark, pixel by pixel: brass frame (m), warm glow (g), a bright wick (w). */
+  private drawLampMark(x: number, y: number): Phaser.GameObjects.Graphics {
+    const g = this.scene.add.graphics().setScrollFactor(0).setPosition(x, y);
+    const fill: Record<string, number> = {
+      m: hex(theme.color.textDim),
+      g: hex(theme.color.lampGlow),
+      w: hex(theme.color.text),
+    };
+    LAMP_MARK.forEach((row, py) => [...row].forEach((c, px) => {
+      if (fill[c] === undefined) return;
+      g.fillStyle(fill[c], 1).fillRect(px, py, 1, 1);
+    }));
+    return g;
   }
 
   /** Grow the frame to fit the name+level line and re-pin it to its anchor edge. */
   private layout(): void {
-    const w = Math.max(MIN_W, Math.ceil(this.nameText.width) + PAD * 2);
+    const markW = this.mark?.visible ? MARK_GAP + MARK_W : 0;
+    const w = Math.max(MIN_W + markW, Math.ceil(this.nameText.width) + PAD * 2);
     this.panel.bg.setSize(w, this.height);
     const x = this.align === 'right' ? this.anchorX - w : this.anchorX;
     this.panel.container.setPosition(x, this.y);
@@ -129,6 +173,7 @@ export class HpPanel {
   }
 
   destroy(): void {
+    this.mark?.destroy();
     this.bar.destroy();
     this.barBg.destroy();
     this.panel.destroy();

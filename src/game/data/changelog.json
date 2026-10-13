@@ -2,6 +2,13 @@
   "_note": "The player-facing changelog: the in-game \"the world has changed\" notice (content/whatsnew.ts) AND the website changelog page (web/site.mjs) both read this. Newest first. NO SPOILERS for the hidden real-people content - see whatsnew.ts.",
   "entries": [
     {
+      "version": "1.28",
+      "date": "2026-10-13",
+      "notes": [
+        "Met a wild kin you already keep? A little lamp now glows beside its name in battle, so you know at a glance whether it's one for the Register."
+      ]
+    },
+    {
       "version": "1.27",
       "date": "2026-10-13",
       "notes": [

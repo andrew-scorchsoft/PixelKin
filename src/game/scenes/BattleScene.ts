@@ -211,7 +211,7 @@ export class BattleScene extends Phaser.Scene {
     this.playerBattler = new Battler(this, PLAYER_POS.x, PLAYER_POS.y, this.engine.player.species, 'player');
     this.shownPlayer = this.engine.player;
     this.shownFoe = this.engine.foe;
-    this.foeHp = new HpPanel(this, 6, 8, this.engine.foe, false, 'left');
+    this.foeHp = new HpPanel(this, 6, 8, this.engine.foe, false, 'left', (id) => this.dexCaught.has(id));
     this.playerHp = new HpPanel(this, GAME_WIDTH - 6, GAME_HEIGHT - 78, this.engine.player, true, 'right');
     this.msg = new BattleMessage(this);
     if (this.request.kind === 'trainer' && !getTrainer(this.request.trainer)?.solo_line) {
