@@ -15,6 +15,9 @@
  * with the case. Changes there ship SILENTLY; announce only general things.
  */
 export const WHATS_NEW: Record<string, string[]> = {
+  '1.22': [
+    'The top of the Old Light has a headline act waiting before the last joke, and a comfy chair by the stairs to rest in first.',
+  ],
   '1.21': [
     'Fights inside the Old Light have a battle tune of their own now. It does not take itself seriously.',
   ],

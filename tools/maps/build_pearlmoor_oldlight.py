@@ -602,6 +602,10 @@ def floor_top():
     place(objects, "oil_jars", 1, 9, oid="jars")
     # the workshop clutter of a machine that wound itself too tight
     ol(objects, "cog_heap", 2, 4, oid="cogs")
+    # the GREEN ROOM chair by the stairhead: the top floor's rest point, before the
+    # headline act at the drum (script.oldlight_greenroom; the boss is in script.oldlight_top)
+    place(objects, "armchair_green", 4, 2, oid="greenroom_chair")
+    sign_at(triggers, "greenroom", 4, 3, "script.oldlight_greenroom", kind="cutscene")
     ol(objects, "spring_can", 4, 9, oid="spring_can")
     ol(objects, "confetti", 9, 8, oid="confetti_a")
     ol(objects, "confetti", 5, 9, oid="confetti_b")

@@ -259,6 +259,25 @@ export const TRAINERS: TrainerRegistry = {
     payout: 260, // keeper 20 × ace 13
     music: 'battle-emberfall',
   },
+  // R11: the top floor's BOSS. Before Tam's card, Mr. Punchwheel puts on his
+  // headline act: the three tin lamplighters off the drum, fielding the house's
+  // own clowns. Ace 15, one under Reyl (16) — the climb's capstone, the last
+  // stepping-stone before the Lumenary. Rest first in the green-room chair.
+  oldlight_headliners: {
+    id: 'oldlight_headliners',
+    name: 'THE TIN LAMPLIGHTERS',
+    title: "Punchwheel's headline act",
+    party: [
+      { species_id: 169, level: 14 }, // The Smiler — Light
+      { species_id: 171, level: 14 }, // McClownface — Tide/Light
+      { species_id: 167, level: 15 }, // JesterHalf — Light/Dark (ace)
+    ],
+    intro_ref: 'trainer.oldlight_headliners.intro',
+    defeat_ref: 'trainer.oldlight_headliners.defeat',
+    payout: 300, // keeper 20 × ace 15
+    music: 'battle-jesthouse-boss',
+    ai: 'smart', // a boss: plays the matchup
+  },
   // R10: the jest-house REGULARS — optional sight trainers waiting in each
   // floor's alcove (F1-F5), rising 10 -> 14 so the climb is the grind bed before
   // Reyl (16) and the fen. Balanced, never hard: two-to-three kin; the house's own clowns (JesterHalf, The Smiler, McClownface) turn up in the bills.
@@ -1593,6 +1612,12 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   'trainer.oldlight_heckler.defeat': [
     { speaker: 'HECKLER', text: "(flips to the last card) 'YOU WIN. THE HECKLER SITS DOWN QUIETLY.'" },
     { speaker: 'HECKLER', text: '...He even wrote me losing. (sits down, loudly) Here. Your wicks. He wrote those too.' },
+  ],
+  'trainer.oldlight_headliners.intro': [
+    { speaker: 'PUNCHWHEEL', text: 'And now, from the top of the drum, three tin hearts, one tune, NO refunds: THE TIN LAMPLIGHTERS!' },
+  ],
+  'trainer.oldlight_headliners.defeat': [
+    { speaker: 'PUNCHWHEEL', text: '(clockwork applause, slightly sarcastic) A tough crowd. The toughest. They will be talking about this in the lift for weeks.' },
   ],
   'trainer.oldlight_ringmaster.defeat': [
     { speaker: 'RINGMASTER', text: "HELLO! Welcome, welcome! Pull up a stool by the fire, you're going to LOVE it here!" },

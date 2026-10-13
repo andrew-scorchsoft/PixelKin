@@ -859,6 +859,17 @@
      "note": "Battles keep the original chip score"
     },
     {
+     "id": "battle-jesthouse-boss",
+     "title": "Battle Jesthouse Boss",
+     "where": "",
+     "mood": "",
+     "classic": "play/assets/audio/music/battle-jesthouse-boss.mp3",
+     "classic_loop_start": null,
+     "remaster": null,
+     "loop_start": null,
+     "note": "Battles keep the original chip score"
+    },
+    {
      "id": "battle-main-dusk-duel",
      "title": "Battle — wild kin & trainers",
      "where": "",

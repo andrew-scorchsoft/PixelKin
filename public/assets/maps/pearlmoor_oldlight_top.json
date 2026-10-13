@@ -426,6 +426,16 @@
       "h": 1
     },
     {
+      "id": "greenroom_chair",
+      "sprite": "interior_armchair_green",
+      "at": {
+        "tx": 4,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 2
+    },
+    {
       "id": "spring_can",
       "sprite": "oldlight_spring_can",
       "at": {
@@ -710,6 +720,16 @@
       },
       "activation": "interact",
       "ref": "script.oldlight_log"
+    },
+    {
+      "id": "greenroom",
+      "kind": "cutscene",
+      "at": {
+        "tx": 4,
+        "ty": 3
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_greenroom"
     }
   ],
   "encounters": [],

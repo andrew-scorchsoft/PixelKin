@@ -1,0 +1,85 @@
+{
+  "title": "PixelKin - Jest-House Boss (The Headline Act)",
+  "_note": "The Old Light's top-floor boss cue (oldlight_headliners: Punchwheel's three tin lamplighters, before Tam's card). It is the BOSS theme (battle-boss-eclipse, 176 BPM, D minor, 36 bars) clowning around, the way battle-jesthouse is the wild theme clowning around: the boss's saw lead kept NOTE FOR NOTE (extracted from the .mid) on a honky pulse25, so it reads as a real boss fight, but the pumping eighth bass becomes a galloping oom-pah (root on 1, fifth on 3), the strings become offbeat brass pah-stabs, a calliope arp runs the chords, claps sit on the backbeat, and every gap in the lead's riff bars gets a gag in turn: the tower's ha-ha laugh glides, or a two-note tritone bicycle-horn honk. Slide whistles up/down every 8 bars, crash on each section top, a pfft at the 12- and 36-bar cadences and a high bell ding closing each section. 176 BPM, D minor -> E minor -> D minor. snes register on the chip engine; classic-only like every battle cue.",
+  "era": "snes",
+  "tempo": 176,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "D minor (E minor middle section)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 5,
+      "gain": 0.95,
+      "_note": "battle-boss-eclipse's lead, unchanged.",
+      "notes": "D5h A5q D6q | C#6h A5q E6q | F6q E6q D6q C#6q | D6h A5q F5q | D5e F5e A5e D6e A5q rq | A#5e A5e F5e A5e A#5q rq | C6e D6e E6e F6e A6q rq | G6e F6e E6e D6e C#6q rq | D5e F5e A5e D6e A5q rq | A#5e A5e F5e A5e A#5q rq | C6e D6e E6e F6e G6q rq | A6e G6e F6e E6e D6q A6q | F6q E6q D6q C6q | A#5q C6q D6q F6q | G6q F6q E6q D6q | C6h A5q F5q | D6q F6q A6q F6q | G6q F6q E6q D6q | E6q G6q A6q G6q | A6h G6q F6q | E5e G5e B5e E6e B5q rq | C6e B5e G5e B5e C6q rq | D6e E6e F#6e G6e B6q rq | A6e G6e F#6e E6e D#6q rq | E5e G5e B5e E6e B5q rq | C6e B5e G5e B5e C6q rq | D6e E6e F#6e G6e A6q rq | B6e A6e G6e F#6e E6q B6q | D5e F5e A5e D6e A5q rq | A#5e A5e F5e A5e A#5q rq | C6e D6e E6e F6e A6q rq | G6e F6e E6e D6e C#6q rq | D6q F6q A6q F6q | G6q F6q E6q D6q | C#6q E6q G6q E6q | A6e G6e F6e E6e D6q A5q"
+    },
+    {
+      "name": "calliope",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.34,
+      "notes": "D4e F4e A4e F4e D4e F4e A4e F4e | A3e C#4e E4e C#4e A3e C#4e E4e C#4e | D4e F4e A4e F4e A3e C#4e E4e C#4e | D4e F4e A4e F4e D4e F4e A4e F4e | D4e F4e A4e F4e D4e F4e A4e F4e | A#3e D4e F4e D4e A#3e D4e F4e D4e | C4e E4e G4e E4e C4e E4e G4e E4e | A3e C#4e E4e C#4e A3e C#4e E4e C#4e | D4e F4e A4e F4e D4e F4e A4e F4e | A#3e D4e F4e D4e A#3e D4e F4e D4e | C4e E4e G4e E4e C4e E4e G4e E4e | A3e C#4e E4e C#4e A3e C#4e E4e C#4e | F4e A4e C5e A4e F4e A4e C5e A4e | A#3e D4e F4e D4e A#3e D4e F4e D4e | G3e A#3e D4e A#3e G3e A#3e D4e A#3e | F4e A4e C5e A4e F4e A4e C5e A4e | D4e F4e A4e F4e D4e F4e A4e F4e | G3e A#3e D4e A#3e G3e A#3e D4e A#3e | A3e C#4e E4e C#4e A3e C#4e E4e C#4e | A3e C#4e E4e C#4e A3e C#4e E4e C#4e | E4e G4e B4e G4e E4e G4e B4e G4e | C4e E4e G4e E4e C4e E4e G4e E4e | D4e F#4e A4e F#4e D4e F#4e A4e F#4e | B3e D#4e F#4e D#4e B3e D#4e F#4e D#4e | E4e G4e B4e G4e E4e G4e B4e G4e | C4e E4e G4e E4e C4e E4e G4e E4e | D4e F#4e A4e F#4e D4e F#4e A4e F#4e | B3e D#4e F#4e D#4e B3e D#4e F#4e D#4e | D4e F4e A4e F4e D4e F4e A4e F4e | A#3e D4e F4e D4e A#3e D4e F4e D4e | C4e E4e G4e E4e C4e E4e G4e E4e | A3e C#4e E4e C#4e A3e C#4e E4e C#4e | D4e F4e A4e F4e D4e F4e A4e F4e | G3e A#3e D4e A#3e G3e A#3e D4e A#3e | A3e C#4e E4e C#4e A3e C#4e E4e C#4e | A3e C#4e E4e C#4e A3e C#4e E4e C#4e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.95,
+      "notes": "D2q@110 rq A2q@98 rq | A1q@110 rq E2q@98 rq | D2q@110 rq A1q@98 rq | D2q@110 rq A2q@98 rq | D2q@110 rq A2q@98 rq | A#1q@110 rq F2q@98 rq | C2q@110 rq G2q@98 rq | A1q@110 rq E2q@98 rq | D2q@110 rq A2q@98 rq | A#1q@110 rq F2q@98 rq | C2q@110 rq G2q@98 rq | A1q@110 rq E2q@98 rq | F2q@110 rq C3q@98 rq | A#1q@110 rq F2q@98 rq | G1q@110 rq D2q@98 rq | F2q@110 rq C3q@98 rq | D2q@110 rq A2q@98 rq | G1q@110 rq D2q@98 rq | A1q@110 rq E2q@98 rq | A1q@110 rq E2q@98 rq | E2q@110 rq B2q@98 rq | C2q@110 rq G2q@98 rq | D2q@110 rq A2q@98 rq | B1q@110 rq F#2q@98 rq | E2q@110 rq B2q@98 rq | C2q@110 rq G2q@98 rq | D2q@110 rq A2q@98 rq | B1q@110 rq F#2q@98 rq | D2q@110 rq A2q@98 rq | A#1q@110 rq F2q@98 rq | C2q@110 rq G2q@98 rq | A1q@110 rq E2q@98 rq | D2q@110 rq A2q@98 rq | G1q@110 rq D2q@98 rq | A1q@110 rq E2q@98 rq | A1q@110 rq E2q@98 rq"
+    },
+    {
+      "name": "pah",
+      "voice": "brass",
+      "octave": 3,
+      "gain": 0.48,
+      "notes": "rq D3+F3+A3e@84 re rq D3+F3+A3e@84 re | rq A2+C#3+E3e@84 re rq A2+C#3+E3e@84 re | rq D3+F3+A3e@84 re rq A2+C#3+E3e@84 re | rq D3+F3+A3e@84 re rq D3+F3+A3e@84 re | rq D3+F3+A3e@84 re rq D3+F3+A3e@84 re | rq A#2+D3+F3e@84 re rq A#2+D3+F3e@84 re | rq C3+E3+G3e@84 re rq C3+E3+G3e@84 re | rq A2+C#3+E3e@84 re rq A2+C#3+E3e@84 re | rq D3+F3+A3e@84 re rq D3+F3+A3e@84 re | rq A#2+D3+F3e@84 re rq A#2+D3+F3e@84 re | rq C3+E3+G3e@84 re rq C3+E3+G3e@84 re | rq A2+C#3+E3e@84 re rq A2+C#3+E3e@84 re | rq F3+A3+C4e@84 re rq F3+A3+C4e@84 re | rq A#2+D3+F3e@84 re rq A#2+D3+F3e@84 re | rq G2+A#2+D3e@84 re rq G2+A#2+D3e@84 re | rq F3+A3+C4e@84 re rq F3+A3+C4e@84 re | rq D3+F3+A3e@84 re rq D3+F3+A3e@84 re | rq G2+A#2+D3e@84 re rq G2+A#2+D3e@84 re | rq A2+C#3+E3e@84 re rq A2+C#3+E3e@84 re | rq A2+C#3+E3e@84 re rq A2+C#3+E3e@84 re | rq E3+G3+B3e@84 re rq E3+G3+B3e@84 re | rq C3+E3+G3e@84 re rq C3+E3+G3e@84 re | rq D3+F#3+A3e@84 re rq D3+F#3+A3e@84 re | rq B2+D#3+F#3e@84 re rq B2+D#3+F#3e@84 re | rq E3+G3+B3e@84 re rq E3+G3+B3e@84 re | rq C3+E3+G3e@84 re rq C3+E3+G3e@84 re | rq D3+F#3+A3e@84 re rq D3+F#3+A3e@84 re | rq B2+D#3+F#3e@84 re rq B2+D#3+F#3e@84 re | rq D3+F3+A3e@84 re rq D3+F3+A3e@84 re | rq A#2+D3+F3e@84 re rq A#2+D3+F3e@84 re | rq C3+E3+G3e@84 re rq C3+E3+G3e@84 re | rq A2+C#3+E3e@84 re rq A2+C#3+E3e@84 re | rq D3+F3+A3e@84 re rq D3+F3+A3e@84 re | rq G2+A#2+D3e@84 re rq G2+A#2+D3e@84 re | rq A2+C#3+E3e@84 re rq A2+C#3+E3e@84 re | rq A2+C#3+E3e@84 re rq A2+C#3+E3e@84 re"
+    },
+    {
+      "name": "whistle",
+      "voice": "pulse12",
+      "octave": 5,
+      "gain": 0.42,
+      "notes": "rw | rw | rw | rh. D5~D6q@92 | rw | rw | rw | rw | rw | rw | rw | rh. D6~D5q@88 | rw | rw | rw | rw | rw | rw | rw | rh. D5~D6q@92 | rw | rw | rw | rw | rw | rw | rw | rh. D6~D5q@88 | rw | rw | rw | rw | rw | rw | rw | rw"
+    },
+    {
+      "name": "laugh",
+      "voice": "pulse12",
+      "octave": 6,
+      "gain": 0.6,
+      "notes": "rw | rw | rw | rw | rh. F6~D6s@100 rs D6~A5s@92 rs | rw | rh. F6~D6s@100 rs D6~A5s@92 rs | rw | rh. F6~D6s@100 rs D6~A5s@92 rs | rw | rh. F6~D6s@100 rs D6~A5s@92 rs | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rh. F6~D6s@100 rs D6~A5s@92 rs | rw | rh. F6~D6s@100 rs D6~A5s@92 rs | rw | rh. F6~D6s@100 rs D6~A5s@92 rs | rw | rw | rh. F6~D6s@100 rs D6~A5s@92 rs | rw | rh. F6~D6s@100 rs D6~A5s@92 rs | rw | rw | rw | rw | rw"
+    },
+    {
+      "name": "honk",
+      "voice": "brass",
+      "octave": 3,
+      "gain": 0.55,
+      "notes": "rw | rw | rw | rw | rw | rh. G#3+D4e@104 G#3+D4e@96 | rw | rh. G#3+D4e@104 G#3+D4e@96 | rw | rh. G#3+D4e@104 G#3+D4e@96 | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rh. G#3+D4e@104 G#3+D4e@96 | rw | rh. G#3+D4e@104 G#3+D4e@96 | rw | rh. G#3+D4e@104 G#3+D4e@96 | rw | rh. G#3+D4e@104 G#3+D4e@96 | rw | rw | rh. G#3+D4e@104 G#3+D4e@96 | rw | rh. G#3+D4e@104 G#3+D4e@96 | rw | rw | rw | rw"
+    },
+    {
+      "name": "pfft",
+      "voice": "noise",
+      "octave": 5,
+      "gain": 0.3,
+      "notes": "rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rh. C6~C4q@88 | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rh. C6~C4q@88"
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 6,
+      "gain": 0.3,
+      "notes": "rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rh. D7q@84 | rw | rw | rw | rw | rw | rw | rw | rh. D7q@84 | rw | rw | rw | rw | rw | rw | rw | rh. D7q@84 | rw | rw | rw | rw | rw | rw | rw | rh. D7q@84"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.62,
+      "notes": "e kick+crash hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat s snare snare e snare+hat crash | e kick+crash hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat s snare snare e snare+hat crash | e kick+crash hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat s snare snare e snare+hat crash | e kick+crash hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat s snare snare e snare+hat crash | e kick+crash hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat s snare snare e snare+hat crash"
+    }
+  ]
+}

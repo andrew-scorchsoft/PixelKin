@@ -135,6 +135,25 @@ export const JESTHOUSE_SCRIPTS: ScriptRegistry = {
   ]),
 
   // ---- F6: the One Joke — the two cups (the floor's rest) ------------------------------------
+  // ---- TOP: the green room (a rest point before the headline act) ----------------------
+  'script.oldlight_greenroom': [
+    nar('A battered green-room armchair by the stairhead. A card pinned to it: PERFORMERS ONLY. Someone has crossed out PERFORMERS and written ANYONE TIRED.'),
+    {
+      op: 'choice',
+      prompt: 'Sit a while?',
+      options: [
+        {
+          label: 'Sit down.',
+          ops: [
+            nar('You sink into it. Somewhere below, the whole tower ticks and wheezes and laughs to itself. Your lamp warms.'),
+            { op: 'heal', sleep: false },
+            pw('(from the drum) Nerves before the big show? Everybody gets them. I get them, and I am mostly springs.'),
+          ],
+        },
+        { label: 'Not now.', ops: [] },
+      ],
+    },
+  ],
   'script.oldlight_cups_rest': [
     nar('Two cups on the table. One has been washed every day for a long time. The other has never been moved.'),
     {
@@ -326,6 +345,7 @@ export const JESTHOUSE_DIALOGUE: DialogueRegistry = {
   'npc.oldlight_moll_card': [
     line('MOLL', "(puffing) Couldn't sit with it down there. Not this time."),
     line('MOLL', "That's her card, jammed in the drum. Eleven winters it's been trying to finish her joke for her."),
+    line('MOLL', "Mind, he'll want to show off his headline act first. He always does. Have a sit in the green-room chair by the stairs before you go up to the drum."),
     line('MOLL', "Go on, love. You've laughed all the way up. I'll be right here."),
   ],
   'npc.oldlight_moll_top': [

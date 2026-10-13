@@ -400,6 +400,13 @@ export const OLDLIGHT_SCRIPTS: ScriptRegistry = {
     pw('He sends me audiences. I think they are apologies.'), // JOKE: TOP.APOLOGIES
   ],
   'script.oldlight_top': [
+    // R11: the headline act first (once). Lose and the scene simply ends: rest in the
+    // green-room chair (script.oldlight_greenroom) and come back to the drum.
+    { ...pw("WAIT! Nobody reads that card without seeing the HEADLINE ACT first. It's in their contract. I wrote it."), unless_flag: 'flag:oldlight_headliners_beaten' },
+    { ...nar('Three tin lamplighters clatter down off the drum, wind themselves up, and raise their little vesperlamps at you.'), unless_flag: 'flag:oldlight_headliners_beaten' },
+    { op: 'battle', trainer: 'oldlight_headliners', unless_flag: 'flag:oldlight_headliners_beaten' },
+    { ...pw('...Very well. The card.'), unless_flag: 'flag:oldlight_headliners_beaten' },
+    { op: 'setFlag', flag: 'flag:oldlight_headliners_beaten' },
     { op: 'letterbox', on: true, ms: 320 },
     { op: 'musicFade', ms: 800 },
     nar("Tam's card, jammed in the drum: WHY DOES A FERRYMAN NEVER SAY GOODBYE? —"), // JOKE: TOP.ATTEMPTS
