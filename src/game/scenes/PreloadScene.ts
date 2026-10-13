@@ -13,6 +13,8 @@ import { ARENA_LAYER_PATHS } from './AttractScene';
 import { addVersionStamp } from '@game/ui/VersionStamp';
 import { CINEMATIC_PANEL_PATHS } from '@game/content/cinematics';
 import { PORTRAIT_SHEETS, PORTRAIT_FRAME } from '@game/content/portraits';
+import trainerBattle from '@game/data/trainer-battle.json';
+import { trainerBattleTexture } from '@game/content/trainerArt';
 
 interface SheetEntry {
   path: string;
@@ -88,6 +90,13 @@ export class PreloadScene extends Phaser.Scene {
     // Keyed by the registry id; a missing sheet falls back to a name-only box.
     for (const p of PORTRAIT_SHEETS) {
       this.load.spritesheet(p.key, p.path, PORTRAIT_FRAME);
+    }
+
+    // Trainer battle sprites (64x64, the trainer-intro beat): tiny, so loaded eagerly.
+    // Packed by tools/assets/pack_trainer_battle.py; a trainer without one just gets
+    // the banner + lines (content/trainerArt.ts).
+    for (const key of trainerBattle.keys) {
+      this.load.image(trainerBattleTexture(key), `assets/sprites/trainer_battle/${key}.webp`);
     }
 
     // Per-map battle backdrops (240x160 WebP). Keyed by their asset path so the

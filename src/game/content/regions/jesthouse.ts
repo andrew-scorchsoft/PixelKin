@@ -258,6 +258,14 @@ export const JESTHOUSE_DIALOGUE: DialogueRegistry = {
   'npc.oldlight_usher_after': [
     line('USHER', 'Best seats are upstairs. Worst jokes too. It\'s a package.'),
   ],
+  // the battle-screen OPENERS (trainer-intro beat): a fresh punchline once they're on the battle screen
+  'trainer.oldlight_heckler.intro': [line("THE HECKLER", "BOO! ...Sorry. Reflex. I heckle everything. Battles especially.")],
+  'trainer.oldlight_ringmaster.intro': [line("THE RINGMASTER", "Lamp-tenders and lamp-tenderesses! In THIS corner: me! In THAT corner: also quite good!")],
+  'trainer.oldlight_usher.intro': [line("THE USHER", "Your seat is right there, facing my kin. Kindly dim all lanterns. ...No? Fine. Bout it is.")],
+  'trainer.oldlight_juggler.intro': [line("THE JUGGLER", "Three balls, two hands, one battle. I've done worse sums.")],
+  'trainer.oldlight_pie_thrower.intro': [line("THE PIE-THROWER", "Custard first, questions after!")],
+  'trainer.oldlight_mirror.intro': [line("THE MIRROR", "Ready when you are. ...Ready when I am. ...Will you STOP copying me?")],
+  'trainer.oldlight_critic.intro': [line("THE CRITIC", "Two stars, and you haven't even started. Change my mind.")],
   'trainer.oldlight_usher.defeat': [line('USHER', 'Ticket stamped, guest seated, usher flattened. A full night\'s work.')],
 
   // ---- F2 ---------------------------------------------------------------------------------

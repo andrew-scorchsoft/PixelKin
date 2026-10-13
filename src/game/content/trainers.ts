@@ -243,6 +243,7 @@ export const TRAINERS: TrainerRegistry = {
       { species_id: 167, level: 11 }, // JesterHalf — Light/Dark
       { species_id: 8, level: 12 }, // Glimflit — Light (ace)
     ],
+    intro_ref: 'trainer.oldlight_heckler.intro', // the battle-screen opener (trainer-intro beat)
     defeat_ref: 'trainer.oldlight_heckler.defeat',
     payout: 240, // keeper 20 × ace 12
     music: 'battle-emberfall',
@@ -255,6 +256,7 @@ export const TRAINERS: TrainerRegistry = {
       { species_id: 167, level: 12 }, // JesterHalf — Light/Dark
       { species_id: 69, level: 13 }, // Riddlestone — Stone (ace)
     ],
+    intro_ref: 'trainer.oldlight_ringmaster.intro', // the battle-screen opener (trainer-intro beat)
     defeat_ref: 'trainer.oldlight_ringmaster.defeat',
     payout: 260, // keeper 20 × ace 13
     music: 'battle-emberfall',
@@ -265,8 +267,8 @@ export const TRAINERS: TrainerRegistry = {
   // stepping-stone before the Lumenary. Rest first in the green-room chair.
   oldlight_headliners: {
     id: 'oldlight_headliners',
-    name: 'THE HEADLINE ACT',
-    title: "Mr. Punchwheel's",
+    name: 'MR. PUNCHWHEEL',
+    title: 'Jest-engine', // presents his headline act: the house's three clowns
     party: [
       { species_id: 169, level: 14 }, // The Smiler — Light
       { species_id: 171, level: 14 }, // McClownface — Tide/Light
@@ -289,6 +291,7 @@ export const TRAINERS: TrainerRegistry = {
       { species_id: 169, level: 10 }, // The Smiler — Light
       { species_id: 16, level: 11 }, // Wickmoth — Ember (ace)
     ],
+    intro_ref: 'trainer.oldlight_usher.intro', // the battle-screen opener (trainer-intro beat)
     defeat_ref: 'trainer.oldlight_usher.defeat',
     payout: 176, // route 16 × ace 11
   },
@@ -301,6 +304,7 @@ export const TRAINERS: TrainerRegistry = {
       { species_id: 47, level: 11 }, // Pebbit — Stone
       { species_id: 8, level: 12 }, // Glimflit — Light (ace)
     ],
+    intro_ref: 'trainer.oldlight_juggler.intro', // the battle-screen opener (trainer-intro beat)
     defeat_ref: 'trainer.oldlight_juggler.defeat',
     payout: 192, // route 16 × ace 12
   },
@@ -312,6 +316,7 @@ export const TRAINERS: TrainerRegistry = {
       { species_id: 26, level: 12 }, // Brinelet — Tide
       { species_id: 171, level: 12 }, // McClownface — Tide/Light (ace)
     ],
+    intro_ref: 'trainer.oldlight_pie_thrower.intro', // the battle-screen opener (trainer-intro beat)
     defeat_ref: 'trainer.oldlight_pie_thrower.defeat',
     payout: 192, // route 16 × ace 12
   },
@@ -323,6 +328,7 @@ export const TRAINERS: TrainerRegistry = {
       { species_id: 69, level: 12 }, // Riddlestone — Stone
       { species_id: 69, level: 13 }, // Riddlestone — Stone (ace) — of course
     ],
+    intro_ref: 'trainer.oldlight_mirror.intro', // the battle-screen opener (trainer-intro beat)
     defeat_ref: 'trainer.oldlight_mirror.defeat',
     payout: 208, // route 16 × ace 13
   },
@@ -335,6 +341,7 @@ export const TRAINERS: TrainerRegistry = {
       { species_id: 105, level: 13 }, // Snoozlet — Lunar
       { species_id: 69, level: 14 }, // Riddlestone — Stone (ace)
     ],
+    intro_ref: 'trainer.oldlight_critic.intro', // the battle-screen opener (trainer-intro beat)
     defeat_ref: 'trainer.oldlight_critic.defeat',
     payout: 224, // route 16 × ace 14
   },

@@ -1,0 +1,320 @@
+{
+ "wayfarer": {
+  "kind": "class",
+  "subject": "a young Wayfarer on the road: travel coat, scarf, satchel with a little lantern clipped to the strap, pointing forward eagerly, ready for a bout",
+  "references": [
+   "assets/trainers/npc_man.png"
+  ],
+  "done": true
+ },
+ "wick_tender": {
+  "kind": "class",
+  "subject": "a lamplighter in a long dark coat and brimmed hat, holding a tall brass wick-pole with a lit flame at its tip, calm and proud",
+  "references": [
+   "assets/trainers/lamplighter.png"
+  ],
+  "done": true
+ },
+ "courier": {
+  "kind": "class",
+  "subject": "a cheerful road courier with a cap, a bulging parcel satchel and a rolled map, one hand on hip, grinning; mustard-yellow and brick-red clothes, the rolled map held up, no lantern",
+  "references": [
+   "assets/trainers/road_courier.png"
+  ],
+  "done": true
+ },
+ "moss_warden": {
+  "kind": "class",
+  "subject": "a woodland gardener-warden in a mossy green smock and wide straw hat with flowers tucked in the band, holding a trowel, kind smile",
+  "references": [
+   "assets/trainers/hollow_gardener.png"
+  ],
+  "done": true
+ },
+ "fen_folk": {
+  "kind": "class",
+  "subject": "a fen-wader in tall waders and an oilskin coat, holding a lantern on a pole, reeds in the hat band, cheerful and weathered",
+  "references": [
+   "assets/trainers/fen_folk.png"
+  ],
+  "done": true
+ },
+ "net_hand": {
+  "kind": "class",
+  "subject": "a harbour fisher with a coiled net over one shoulder, a knitted cap, sleeves rolled, salty and cheerful; navy and sea-blue striped jumper, teal knitted cap, a net with cork floats over the shoulder, no lantern",
+  "references": [
+   "assets/trainers/fisher_woman.png"
+  ],
+  "done": true
+ },
+ "miner": {
+  "kind": "class",
+  "subject": "a miner with a brass helmet-lamp shining, soot-smudged cheeks, a pickaxe over one shoulder, sturdy and friendly",
+  "references": [
+   "assets/trainers/miner_man.png"
+  ],
+  "done": true
+ },
+ "kite_hand": {
+  "kind": "class",
+  "subject": "a windswept highland kite-hand with brass goggles pushed up, a long scarf streaming sideways, holding a small kite spool and string",
+  "references": [
+   "assets/trainers/kite_weaver.png"
+  ],
+  "done": true
+ },
+ "frost_ward": {
+  "kind": "class",
+  "subject": "a frost-walker bundled in a fur-lined hood, thick mittens and snow boots, breath steaming, holding up a frosted lantern",
+  "references": [
+   "assets/trainers/frost_herder.png"
+  ],
+  "done": true
+ },
+ "troupe_player": {
+  "kind": "class",
+  "subject": "a travelling theatre player in a patched velvet cape, holding a comedy mask on a stick, mid-bow, theatrical",
+  "references": [
+   "assets/trainers/npc_woman.png"
+  ],
+  "done": true
+ },
+ "sky_watcher": {
+  "kind": "class",
+  "subject": "a star-watcher in a deep blue robe patterned with little stars, holding a brass spyglass, dreamy",
+  "references": [
+   "assets/trainers/star_watcher.png"
+  ],
+  "done": true
+ },
+ "sun_keeper": {
+  "kind": "class",
+  "subject": "a sun-keeper in warm golden robes and a sun-disc pendant, holding a sun-lantern high, serene and bright",
+  "references": [
+   "assets/trainers/sun_keeper.png"
+  ],
+  "done": true
+ },
+ "junior": {
+  "kind": "class",
+  "subject": "an excited child stargazer in a too-big coat with a toy telescope, standing on tiptoe, big grin",
+  "references": [
+   "assets/trainers/village_child.png"
+  ],
+  "done": true
+ },
+ "acolyte": {
+  "kind": "class",
+  "subject": "a Hollowing acolyte: a calm, solemn figure in a hooded ash-grey robe holding a lantern with its shutter half-closed (a soft dim glow); gentle and sad, never villainous, face visible in the hood",
+  "references": [
+   "assets/trainers/hollowing_acolyte.png"
+  ],
+  "done": true
+ },
+ "runner": {
+  "kind": "class",
+  "subject": "a downhill wax-road runner in a padded jacket, goggles on the forehead, knee pads, a little runner sled-board under one arm, eager grin",
+  "references": [
+   "assets/trainers/npc_girl.png"
+  ],
+  "done": true
+ },
+ "brisa": {
+  "kind": "unique",
+  "subject": "BRISA TALLOW, the first Lampwarden (Tinderwick, Ember): read her look from the references; she raises a glowing ember-lantern, warm and proud",
+  "references": [
+   "assets/trainers/brisa.png",
+   "assets/portraits/_masters/brisa_proud.png"
+  ]
+ },
+ "reyl": {
+  "kind": "unique",
+  "subject": "REYL WASH, the Tide Lampwarden of Pearlmoor: an old weathered ferryman in an oilskin coat and cap, grey beard, rope coiled at his belt, steady and gruff with a kind eye",
+  "references": [
+   "assets/portraits/_masters/reyl_proud.png"
+  ]
+ },
+ "sable": {
+  "kind": "unique",
+  "subject": "SABLE QUILL, the Verdant Lampwarden of Lowleaf: read her look from the reference; holding a leafy quill-staff, poised",
+  "references": [
+   "assets/portraits/_masters/sable_neutral.png"
+  ]
+ },
+ "otho": {
+  "kind": "unique",
+  "subject": "OTHO GRIST, the Lampwarden of Cinderhead's mine: read his look from the reference; broad, soot and ember, a heavy miner's lamp held out",
+  "references": [
+   "assets/portraits/_masters/otho_proud.png"
+  ]
+ },
+ "mira": {
+  "kind": "unique",
+  "subject": "MIRA VAEL, the Storm Lampwarden of Galehigh: read her look from the references; wind-whipped, a kite-lantern on a line",
+  "references": [
+   "assets/trainers/mira_vael.png",
+   "assets/portraits/_masters/mira_bright.png"
+  ]
+ },
+ "ysolde": {
+  "kind": "unique",
+  "subject": "YSOLDE FROST, the Frost Lampwarden of Pale Vault: read her look from the reference; cool, poised, a crystal lantern",
+  "references": [
+   "assets/trainers/ysolde_frost.png"
+  ]
+ },
+ "lucan": {
+  "kind": "unique",
+  "subject": "LUCAN PYRE, the Solar Lampwarden: read his look from the references; grand, theatrical, a sunburst lantern",
+  "references": [
+   "assets/trainers/lucan_pyre.png",
+   "assets/portraits/_masters/lucan_grand.png"
+  ]
+ },
+ "nessa": {
+  "kind": "unique",
+  "subject": "NESSA COLE, the Lunar Lampwarden of Nightreach: read her look from the references; quiet, reverent, a moon-lantern",
+  "references": [
+   "assets/trainers/nessa_cole.png",
+   "assets/portraits/_masters/nessa_reverent.png"
+  ]
+ },
+ "wren": {
+  "kind": "unique",
+  "subject": "WREN, the player's rival and friend: read their look from the reference; eager, competitive grin, lantern raised in challenge",
+  "references": [
+   "assets/trainers/wren.png"
+  ]
+ },
+ "cor": {
+  "kind": "unique",
+  "subject": "WARDEN CÒR, gentle leader of the Hollowing: read their look from the references; tall, robed, a lantern held low and dimmed, sorrowful dignity, never cartoonish",
+  "references": [
+   "assets/trainers/warden_cor.png",
+   "assets/portraits/_masters/cor_grave.png"
+  ]
+ },
+ "fenn": {
+  "kind": "unique",
+  "subject": "STAR-TENDER FENN, the player's old mentor: read his look from the references; elderly, kindly, a brass star-lamp and a long coat",
+  "references": [
+   "assets/trainers/professor_fenn.png",
+   "assets/portraits/_masters/fenn_warm.png"
+  ]
+ },
+ "georgina": {
+  "kind": "unique",
+  "subject": "GEORGINA the Cat-keeper, a cheerful 'sunshine goth': read her look from the reference; a small dragon-cat perched on her shoulder",
+  "references": [
+   "assets/trainers/georgina.png"
+  ]
+ },
+ "paul": {
+  "kind": "unique",
+  "subject": "PAUL, read his look from the reference exactly (a real person's cameo, keep him warm and recognisable); a confident friendly grin, ready for a bout",
+  "references": [
+   "assets/trainers/booji_paul.png"
+  ]
+ },
+ "esra": {
+  "kind": "unique",
+  "subject": "WICK-MOTHER ESRA, a Starfall Vigilant: an elderly wick-maker in a long shawl, braids of wax-wick at her belt, a candle-lantern",
+  "references": [
+   "assets/trainers/lamplighter.png"
+  ]
+ },
+ "bramm": {
+  "kind": "unique",
+  "subject": "OLD FOREMAN BRAMM, a Starfall Vigilant: an old mining foreman, white moustache, helmet-lamp, a heavy hammer, gruff and fond",
+  "references": [
+   "assets/trainers/miner_man.png"
+  ]
+ },
+ "ondra": {
+  "kind": "unique",
+  "subject": "ONDRA VAEL, a Starfall Vigilant of the high winds: a veteran kite-flier in a storm cloak with a great kite-lantern behind her",
+  "references": [
+   "assets/trainers/kite_weaver.png"
+  ]
+ },
+ "solenne": {
+  "kind": "unique",
+  "subject": "DAME SOLENNE, a Starfall Vigilant of the sun: a stately older woman in gold and white robes, a sunburst halo-lantern",
+  "references": [
+   "assets/trainers/sun_keeper.png"
+  ]
+ },
+ "mer": {
+  "kind": "unique",
+  "subject": "WARDEN MER, a Starfall Vigilant who once walked with the Hollowing: an elder in a grey hooded robe trimmed with silver stars, a lantern relit",
+  "references": [
+   "assets/trainers/hollowing_elder.png"
+  ]
+ },
+ "heckler": {
+  "kind": "unique",
+  "subject": "THE HECKLER of a cosy comedy lighthouse: same build as the reference man, in a rumpled checked suit and a squashed bowler hat, cupping one hand to his mouth to heckle, cheeky grin",
+  "references": [
+   "assets/trainers/npc_man.png"
+  ]
+ },
+ "usher": {
+  "kind": "unique",
+  "subject": "THE USHER of a cosy comedy lighthouse theatre: same build as the reference man, in a smart burgundy usher's uniform with brass buttons and a pillbox cap, holding out a ticket and a small torch",
+  "references": [
+   "assets/trainers/npc_man.png"
+  ]
+ },
+ "juggler": {
+  "kind": "unique",
+  "subject": "THE JUGGLER: the young person from the reference in a bright patchwork tunic and pointed shoes, juggling three coloured balls in an arc above their head, delighted",
+  "references": [
+   "assets/trainers/village_child.png"
+  ]
+ },
+ "pie_thrower": {
+  "kind": "unique",
+  "subject": "THE PIE-THROWER: the market trader from the reference in a baker's apron and floppy chef's hat, winding up to throw a custard pie, mischievous",
+  "references": [
+   "assets/trainers/market_trader.png"
+  ]
+ },
+ "critic": {
+  "kind": "unique",
+  "subject": "THE CRITIC: the old woman from the reference in a severe purple coat with a lorgnette (opera glasses on a stick) raised to one eye and a notebook, one eyebrow arched, secretly amused",
+  "references": [
+   "assets/trainers/npc_old_woman.png"
+  ]
+ },
+ "player_front": {
+  "kind": "unique",
+  "subject": "the young lamp-tender's apprentice from the references (same hair, same green coat and satchel), front-facing, holding up a small glowing brass vesperlamp, confident (used for THE MIRROR, who wears your face)",
+  "references": [
+   "assets/trainers/player_indi.png",
+   "/tmp/claude-0/tb/player_back.png"
+  ]
+ },
+ "punchwheel": {
+  "kind": "unique",
+  "subject": "MR. PUNCHWHEEL, a clockwork brass joke-machine automaton with a big grinning brass face-plate (dial eyes, rosy cheeks, waxed moustache, toothy grin), a winding key in its head, a red pleated bellows body on a little wheeled brass base, one spindly arm raised like a showman; cheeky, never creepy",
+  "references": [
+   "assets/tilesets/oldlight/objects/punchwheel_drum.png"
+  ]
+ },
+ "ringmaster": {
+  "kind": "unique",
+  "subject": "(done — pilot)",
+  "references": [
+   "assets/trainers/npc_shopkeeper.png"
+  ],
+  "done": true
+ },
+ "player_back": {
+  "kind": "player",
+  "subject": "(done — pilot)",
+  "references": [
+   "assets/trainers/player_indi.png"
+  ],
+  "done": true
+ }
+}

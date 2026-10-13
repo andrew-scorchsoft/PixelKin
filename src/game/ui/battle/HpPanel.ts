@@ -123,6 +123,11 @@ export class HpPanel {
     });
   }
 
+  /** Hide/show the plate (hidden during the trainer-intro beat, before a kin is out). */
+  setVisible(v: boolean): void {
+    this.panel.container.setVisible(v);
+  }
+
   destroy(): void {
     this.bar.destroy();
     this.barBg.destroy();
