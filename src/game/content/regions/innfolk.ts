@@ -5,8 +5,9 @@
  *  * HESPER VANE, THE ECHO-READER — sits by the hearth in EVERY inn (Crossroads,
  *    Pearlmoor, Lowleaf, Galehigh, Pale Vault, Nightreach). A retired lamp-tender
  *    who reads the "echoes" a kin's moves leave in lamp-light. Running gag: she is
- *    always a car ahead of you ("Before you ask: the Lantern-car. I take the early
- *    one."). Services: REMEMBER A MOVE (HESPER_FEE wicks, charged only if a move is
+ *    always a step ahead of you (on foot to Pearlmoor; "Before you ask: the
+ *    Lantern-car. I take the early one." in Lowleaf, a car valley — the cars only
+ *    serve the far valleys, docs/world/geometry.md). Services: REMEMBER A MOVE (HESPER_FEE wicks, charged only if a move is
  *    learned; mirrored in tools/balance/progression.mjs PRICES + 10-economy.md),
  *    LET A MOVE GO, READ MY KIN (kindling forecast + bond warmth). Each inn holds
  *    one memory of her old kin Sorrel (`flag:hesper_<inn>`, any order); hear all
@@ -36,12 +37,12 @@ const INNS: Array<{ id: string; quip: string; memory: string }> = [
   },
   {
     id: 'pearlmoor',
-    quip: 'Before you ask: the Lantern-car. I take the early one. You walk; I sit. We both get here.',
+    quip: 'Before you ask: I set off before you did, and I don\'t stop for every wild kin in the grass. Old legs, long strides.',
     memory: 'Sorrel loved the quay. She\'d sit on the bollards and glare at the gulls. When the Dusk came, she forgot every move she had, all in one night. Lamps went dim, and so did she.',
   },
   {
     id: 'lowleaf',
-    quip: 'Lowleaf! They do a mushroom broth here that I would cross the whole crescent for. I nearly have.',
+    quip: 'Before you ask: the Lantern-car. I take the early one. You walk; I sit. And Lowleaf does a mushroom broth I would cross the whole crescent for.',
     memory: 'That\'s how I learned to read echoes. Every move a kin has known leaves a little light behind, like a warm cup leaves a ring. I sat with Sorrel\'s lamp every night and coaxed hers back, one by one.',
   },
   {
@@ -152,7 +153,7 @@ export const INNFOLK_SCRIPTS: ScriptRegistry = {
           label: 'WHY NAMES?',
           ops: [
             n('In the old days, a lamp-tender named a kin before they ever lit for it. If you know what to call something, you can call it home.'),
-            n('Leave it blank and I\'ll write the old name back. No shame in that. It was a good name when you found it.'),
+            n('Write the old name in again, or leave just a space, and I\'ll put it back. No shame in that. It was a good name when you found it.'),
           ],
         },
         { label: 'NOTHING', ops: [n('Come back with a story. I\'ll find it a name.')] },

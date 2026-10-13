@@ -695,7 +695,7 @@ export class ItemsMenu {
     const target = await this.pickKin((k) => k.isFainted);
     if (target === null) return;
     const kin = this.members[target];
-    const restored = kin.heal(Math.max(1, Math.floor(kin.maxHp * (entry.revive ?? 0.5))));
+    const restored = kin.revive(entry.revive ?? 0.5);
     this.inventory.items[entry.id] = (this.inventory.items[entry.id] ?? 1) - 1;
     if (this.inventory.items[entry.id] <= 0) delete this.inventory.items[entry.id];
     void this.sfx?.playVariant('world-heal', ['a', 'b']);

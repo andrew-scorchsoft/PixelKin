@@ -138,6 +138,8 @@ export class HpPanel {
   /** Point the panel at a different kin (after a switch). */
   setKin(kin: KinInstance): void {
     this.kin = kin;
+    // A fresh kin on the plate: a low one switching in warns again.
+    this.wasLow = false;
     this.refresh();
   }
 
@@ -175,9 +177,12 @@ export class HpPanel {
       this.lowPulse = undefined;
       this.bar.setAlpha(1);
     }
-    if (low !== this.wasLow) {
+    // Only latch once someone is listening: the constructor's first refresh runs
+    // before BattleScene attaches `onLow`, and latching there swallowed the warning
+    // for a kin that starts the battle already low.
+    if (low !== this.wasLow && this.onLow) {
       this.wasLow = low;
-      this.onLow?.(low);
+      this.onLow(low);
     }
   }
 

@@ -39,21 +39,11 @@ export const CHANGELOG_URL = 'pixelk.in/changelog';
 /** How many notes the in-game notice reads before pointing at the website. */
 export const NOTICE_NOTES = 3;
 
-/** The notes for a given version (empty when there's nothing to tell). */
-export function whatsNewFor(version: string): string[] {
-  return CHANGELOG.find((e) => e.version === version)?.notes ?? [];
-}
-
 /** The entries a returning player missed: every version newer than `from`, up to `current`, newest first. */
 export function entriesSince(from: string, current: string): ChangelogEntry[] {
   return CHANGELOG.filter(
     (e) => e.notes.length > 0 && compareVersions(e.version, from) > 0 && compareVersions(e.version, current) <= 0,
   );
-}
-
-/** Every note a returning player missed, newest first, capped. */
-export function whatsNewSince(from: string, current: string, cap = Infinity): string[] {
-  return entriesSince(from, current).flatMap((e) => e.notes).slice(0, cap);
 }
 
 export interface ChangeSummary {

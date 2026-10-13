@@ -142,8 +142,9 @@ export class BattleScene extends Phaser.Scene {
   private dexSeen = new Set<number>();
   /** Species the player has caught — gates the fight menu's effectiveness hints. */
   private dexCaught = new Set<number>();
-  /** The FIGHT/BAG cursor memory: each kin's last move, and the last item used. */
-  private readonly lastMove = new Map<KinInstance, number>();
+  /** The FIGHT/BAG cursor memory: each kin's last move (by id, so a move learned
+   *  over a slot mid-battle never leaves the cursor on the wrong one), and the last item used. */
+  private readonly lastMove = new Map<KinInstance, string>();
   private lastItem?: string;
   /** Whether the FIGHT menu's move-info pane is open (opt-in, per battle). */
   private showMoveInfo = false;
@@ -519,7 +520,7 @@ export class BattleScene extends Phaser.Scene {
       width: MENU_W,
       sfx: this.sfx,
       // Opens on the move you used last (if this kin still has it and it has uses).
-      initialIndex: this.lastMove.get(this.engine.player) ?? 0,
+      initialIndex: Math.max(0, moves.findIndex((k) => k.move.id === this.lastMove.get(this.engine.player))),
       onHighlight: describe,
       onSide: (dir) => {
         const want = dir > 0;
@@ -532,7 +533,8 @@ export class BattleScene extends Phaser.Scene {
     info.destroy();
     this.msg.set('');
     if (choice === null) return null;
-    this.lastMove.set(this.engine.player, Number(choice));
+    const chosen = moves[Number(choice)];
+    if (chosen) this.lastMove.set(this.engine.player, chosen.move.id);
     return this.engine.takeTurn({ kind: 'move', moveIndex: Number(choice) });
   }
 
@@ -616,9 +618,12 @@ export class BattleScene extends Phaser.Scene {
         value: String(i),
         enabled: k.isFainted,
       })), { x: 6, y: this.menuY(this.playerParty.all.length), sfx: this.sfx }).run();
-      if (pick === null) return null;
+      if (pick === null) {
+        this.msg.set('');
+        return null;
+      }
       const kin = this.playerParty.all[Number(pick)];
-      const restored = kin.heal(Math.max(1, Math.floor(kin.maxHp * def.revive)));
+      const restored = kin.revive(def.revive);
       this.consumeItem(choice);
       await this.msg.show(`Used a ${def.name}. ${kin.displayName} stirred, and is up again with ${restored} HP!`);
       return this.engine.takeTurn({ kind: 'item', itemId: choice });

@@ -128,7 +128,7 @@ export function readKin(kin: KinInstance): string[] {
     const gap = k.trigger.level - kin.level;
     lines.push(gap > 0
       ? `${kin.displayName} will kindle into ${into} at level ${k.trigger.level}. That's ${gap} level${gap === 1 ? '' : 's'} to go.`
-      : `${kin.displayName} is ready to kindle into ${into}. Win a fight and it will ask you.`);
+      : `${kin.displayName} is ready to kindle into ${into}. The next time it grows a level, it will ask you.`);
   } else if (k.trigger.kind === 'bond') {
     const need = k.trigger.min ?? 160;
     lines.push(kin.bond >= need
@@ -150,7 +150,8 @@ export function readKin(kin: KinInstance): string[] {
 
 /**
  * The "give it a name?" ask, for a new catch or a gift. YES opens the name box
- * (empty = keep the species name). A name set here is kept; only the
+ * (NameEntry never commits an EMPTY box: a lone space, or the species name itself,
+ * keeps the species name). A name set here is kept; only the
  * Namewright changes it after.
  */
 export async function offerNickname(scene: Phaser.Scene, kin: KinInstance, sfx?: Sfx): Promise<void> {

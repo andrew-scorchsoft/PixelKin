@@ -200,6 +200,16 @@ export class KinInstance {
     return this.hp - before;
   }
 
+  /**
+   * Rouse a fainted kin (the Hearth Coal) with `share` of its max HP. A faint
+   * ends any condition it carried, so it wakes clear. Returns hp restored.
+   */
+  revive(share: number): number {
+    if (!this.isFainted) return 0;
+    this.status = 'none';
+    return this.heal(Math.max(1, Math.floor(this.maxHp * share)));
+  }
+
   fullHeal(): void {
     this.hp = this.maxHp;
     this.status = 'none';

@@ -196,8 +196,9 @@ export class WorldScene extends Phaser.Scene {
   private nearbyLookers = new Set<Npc>();
 
   private party: KinInstanceData[] = [];
-  /** A starter/gift kin given mid-scene, to be offered a name when the scene ends. */
-  private pendingNickname?: KinInstanceData;
+  /** A starter/gift kin given mid-scene (its species), offered a name when the scene
+   *  ends. By species, not object identity: a later step may rebuild the party list. */
+  private pendingNickname?: number;
   /** Kin kept at the Hearth (storage); overflow from a full lamp lands here. */
   private box: KinInstanceData[] = [];
   private inventory: InventoryData = { items: {} };
@@ -1366,7 +1367,7 @@ export class WorldScene extends Phaser.Scene {
         this.party.push(kin);
         this.dexSeen.add(speciesId);
         this.dexCaught.add(speciesId);
-        this.pendingNickname = kin;
+        this.pendingNickname = speciesId;
       },
       onGiveKin: (speciesId, level) => {
         // A gift kin (e.g. Georgina's dragon-cat kitten): join the lamp, or rest
@@ -1374,7 +1375,7 @@ export class WorldScene extends Phaser.Scene {
         const kin = makeStarterKin(speciesId, level);
         if (this.party.length < MAX_PARTY) {
           this.party.push(kin);
-          this.pendingNickname = kin;
+          this.pendingNickname = speciesId;
         } else this.box.push(kin);
         this.dexSeen.add(speciesId);
         this.dexCaught.add(speciesId);
@@ -1972,11 +1973,16 @@ export class WorldScene extends Phaser.Scene {
   /** A starter or gift kin handed over in that scene may take a name of its own,
    *  asked once the scene's lines are done (a catch asks in the battle). */
   private async offerPendingNickname(): Promise<void> {
-    const data = this.pendingNickname;
+    const speciesId = this.pendingNickname;
     this.pendingNickname = undefined;
-    const idx = data ? this.party.indexOf(data) : -1;
-    if (!data || idx < 0) return;
-    const kin = KinInstance.fromData(data);
+    if (speciesId === undefined) return;
+    // The newest un-named party kin of that species (the one just handed over).
+    let idx = -1;
+    this.party.forEach((d, i) => {
+      if (d.species_id === speciesId && !d.nickname) idx = i;
+    });
+    if (idx < 0) return;
+    const kin = KinInstance.fromData(this.party[idx]);
     await offerNickname(this, kin, this.sfx);
     this.party[idx] = kin.toData();
     void this.persist();
