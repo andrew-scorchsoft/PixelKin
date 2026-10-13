@@ -1235,14 +1235,17 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **"The world has changed" notice + `SaveGame.last_version` (2026-10).** Every persist stamps
   GAME_VERSION; Continue / LOAD FILE / in-game import pass `version_from: save.last_version ?? ''`
   in `WorldSceneData` (undefined = new game/debug reload = no check). If older, a narrated notice
-  plays on the first idle frame (+ `content/whatsnew.ts` lines of every version AFTER the save's own
-  `last_version` — add an entry when you bump), and only THEN is the new version stamped. A save with
+  plays on the first idle frame, and only THEN is the new version stamped. **The changelog is ONE file,
+  `src/game/data/changelog.json`** (newest first, `{version, date, notes[]}` — add an entry when you bump):
+  the notice reads it via `content/whatsnew.ts` and stays SHORT however many versions were missed (a count +
+  the newest 3 notes + "the rest are at pixelk.in/changelog"), and the website's `changelog` page renders the
+  whole thing from the same file at build time (`web/site.mjs loadChangelog`). A save with
   nothing new since its version gets NO notice (stamped silently); the rest-point hint shows once per
   save (`flag:tip_restpoint_seen`) — the old notice replayed its boilerplate on every build. The device-level
   `last_seen_version` storage key drives the title's pulsing NEW beside the version label. Any
   crafted test save without `last_version` WILL show the notice (the world stays modal).
-  **`whatsnew.ts` must NEVER spoil the hidden real-people content** (owner's rule, 2026-10 — the
-  people it was built for read the notice): nothing about Paul or his things — the Booji-Wooji
+  **The changelog must NEVER spoil the hidden real-people content** (owner's rule, 2026-10 — the
+  people it was built for read the notice AND the website): nothing about Paul or his things — the Booji-Wooji
   Man / S4–S5, the Chickenpig, the Lifting House gym, Paul's house, the Wayward Arms, the
   Reckoning Works' walking-man story, the beacon-road man with the case. Those changes ship
   silently; an entry covers only general changes (and none at all is fine).

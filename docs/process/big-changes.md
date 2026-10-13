@@ -97,7 +97,7 @@ start, and they build on the committed pilot.
 - Generate to temp paths; compare in-game before replacing a master.
 
 ## 6. Shipping
-- **Bump the version at the end of every round** and add a `whatsnew.ts` entry.
+- **Bump the version at the end of every round** and add a `src/game/data/changelog.json` entry (the in-game notice and the website's changelog both read it).
   Returning players hear everything since their save's version.
 - **PR → GitHub CI → merge → Cloudflare deploys `main` in a few minutes.** A tab
   opened before the deploy shows the old build until it's reloaded (HTML is

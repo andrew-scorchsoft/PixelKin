@@ -25,7 +25,7 @@ import { ChartsMenu } from '@game/ui/ChartsMenu';
 import { JournalMenu } from '@game/ui/JournalMenu';
 import { TravelMenu } from '@game/ui/TravelMenu';
 import { GAME_VERSION, GAME_VERSION_LABEL, compareVersions } from '@game/version';
-import { whatsNewSince } from '@game/content/whatsnew';
+import { CHANGELOG_URL, summariseSince } from '@game/content/whatsnew';
 import {
   bankRestPoint,
   normaliseRestPoints,
@@ -1844,15 +1844,16 @@ export class WorldScene extends Phaser.Scene {
    * The "the world has changed" notice for a journey last played on an older build.
    * It reads ONLY what's new since this save's own `last_version` (content/whatsnew.ts,
    * every version after it up to this one) — a version with nothing to tell passes
-   * silently. The rest-point hint rides along once per save (`flag:tip_restpoint_seen`),
+   * silently. However many updates were missed it stays short: a count, the newest
+   * few notes (`NOTICE_NOTES`), and a pointer to the full log on the website. The rest-point hint rides along once per save (`flag:tip_restpoint_seen`),
    * not on every update. Then the new version is stamped into the save so none of it
    * repeats (playtest: the boilerplate replayed on every build, reading as "the whole
    * thing again").
    */
   private async showVersionNotice(from: string): Promise<void> {
-    const news = whatsNewSince(from, GAME_VERSION);
+    const news = summariseSince(from, GAME_VERSION);
     const tipDue = !this.flags.get(REST_TIP_FLAG);
-    if (news.length === 0) {
+    if (news.total === 0) {
       // Nothing new to tell this save: just bring it up to date, quietly.
       this.lastVersion = GAME_VERSION;
       void this.persist();
@@ -1864,7 +1865,16 @@ export class WorldScene extends Phaser.Scene {
     const then = from ? `v${from}` : 'an older lamp-light';
     const lines = [
       { style: 'narrate' as const, text: `While you rested, the world turned (${then} to ${GAME_VERSION_LABEL}).` },
-      ...news.map((text) => ({ style: 'narrate' as const, text })),
+      ...(news.more
+        ? [{
+            style: 'narrate' as const,
+            text: `${news.updates === 1 ? 'One update' : `${news.updates} updates`} came and went, with ${news.total} changes in all. Here are the newest ${['one', 'two', 'three', 'four', 'five'][news.latest.length - 1] ?? news.latest.length}.`,
+          }]
+        : []),
+      ...news.latest.map((text) => ({ style: 'narrate' as const, text })),
+      ...(news.more
+        ? [{ style: 'narrate' as const, text: `The rest are written up at ${CHANGELOG_URL}, for whenever you fancy a read.` }]
+        : []),
       ...(tipDue
         ? [{
             style: 'narrate' as const,

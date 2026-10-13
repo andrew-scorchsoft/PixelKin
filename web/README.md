@@ -21,6 +21,8 @@ web/
     index.html    #   landing (parallax hero, world gallery, features, starter trio, CTA)
     story.html    #   The Long Dusk — world & story + the eight Lumenaries
     creatures.html#   the starter trio + a clickable grid of the first 50 kin
+    changelog.html#   "What's New": every update, newest first, rendered from the GAME's
+                  #     src/game/data/changelog.json (the in-game notice reads the same file)
     faq.html      #   player FAQ (native <details> accordion)
     license.html  #   licensing & partnerships → Scorchsoft contact form
     privacy.html  #   privacy policy

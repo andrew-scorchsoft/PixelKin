@@ -208,7 +208,9 @@ A small static landing site lives in [`web/`](web/README.md) — on-brand with
 the game (same palette and pixel font), separate from the game build. A Node
 script renders it to plain HTML (no PHP, no server), and **pixelk.in is served
 by a Cloudflare Worker** (static assets only, `wrangler.jsonc`): the site at
-the root, the game at `/play/`.
+the root, the game at `/play/`. Its **Updates** page (`/changelog`) renders the
+game's own `src/game/data/changelog.json`, the same file the in-game "the world
+has changed" notice summarises for returning players.
 
 ```bash
 npm run release         # build the game + assemble release/ (site at /, game at /play/)

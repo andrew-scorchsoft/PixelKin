@@ -1271,3 +1271,37 @@ body.lb-open { overflow: hidden; }
     .music-buttons { justify-content: flex-start; }
     .music-label { text-align: left; min-width: 0; width: 100%; }
 }
+
+/* Changelog ------------------------------------------------------------------ */
+.changelog { max-width: 800px; display: flex; flex-direction: column; gap: 1rem; }
+.change-entry {
+    background: var(--panel);
+    border: 1px solid var(--panel-edge);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 1.1rem 1.25rem 1.2rem;
+    scroll-margin-top: calc(var(--nav-h) + 1rem);
+}
+.change-latest { border-color: rgba(255, 138, 61, 0.55); }
+.change-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.4rem 0.75rem;
+    margin-bottom: 0.6rem;
+}
+.change-version { font-family: var(--pixel); font-size: 14px; line-height: 1.5; }
+.change-version a { color: var(--diamond); text-decoration: none; }
+.change-version a:hover { text-decoration: underline; }
+.change-badge {
+    font-family: var(--pixel);
+    font-size: 9px;
+    color: var(--night);
+    background: var(--fire);
+    border-radius: 4px;
+    padding: 0.25rem 0.45rem;
+}
+.change-date { color: var(--dim); font-size: 0.9rem; margin-left: auto; }
+.change-notes { padding-left: 1.2rem; margin: 0; }
+.change-notes li { color: #d8d2e8; line-height: 1.6; margin-bottom: 0.4rem; }
+.change-notes li:last-child { margin-bottom: 0; }
