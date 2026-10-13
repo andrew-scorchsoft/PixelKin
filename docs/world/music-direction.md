@@ -580,7 +580,8 @@ Spec: `assets/audio/midi/specs/battle-jesthouse.json`.
 **And its boss, `battle-jesthouse-boss`:** the boss theme (`battle-boss-eclipse`, 176 BPM, D minor,
 36 bars) clowning around the same way: the boss lead kept note for note (extracted from the `.mid`),
 with an oom-pah gallop, pah-stabs, a calliope and a laugh or bicycle-horn honk in every gap. It is the
-Tin Lamplighters' `music` (the top-floor boss, `oldlight_headliners`).
+headline act's `music` (the top-floor boss, `oldlight_headliners`); the scene fades to silence after it so
+Tam's card lands in quiet.
 Specs `assets/audio/midi/specs/oldlight-fN.json` → `assets/audio/midi/oldlight-fN.mid` →
 `music/oldlight-fN.mp3`.
 

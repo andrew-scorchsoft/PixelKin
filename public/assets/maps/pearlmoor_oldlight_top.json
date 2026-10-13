@@ -730,10 +730,57 @@
       },
       "activation": "interact",
       "ref": "script.oldlight_greenroom"
+    },
+    {
+      "id": "headliners_band",
+      "kind": "cutscene",
+      "at": {
+        "tx": 4,
+        "ty": 7
+      },
+      "activation": "step_on",
+      "ref": "script.oldlight_headliners",
+      "hidden_when_flag": "flag:oldlight_headliners_beaten"
     }
   ],
   "encounters": [],
   "npcs": [
+    {
+      "id": "act_smiler",
+      "at": {
+        "tx": 5,
+        "ty": 7
+      },
+      "facing": "left",
+      "sprite": "kin_169_overworld",
+      "movement": "static",
+      "dialogue_ref": "script.oldlight_headliners",
+      "hidden_when_flag": "flag:oldlight_headliners_beaten"
+    },
+    {
+      "id": "act_clown",
+      "at": {
+        "tx": 5,
+        "ty": 8
+      },
+      "facing": "left",
+      "sprite": "kin_171_overworld",
+      "movement": "static",
+      "dialogue_ref": "script.oldlight_headliners",
+      "hidden_when_flag": "flag:oldlight_headliners_beaten"
+    },
+    {
+      "id": "act_jester",
+      "at": {
+        "tx": 6,
+        "ty": 7
+      },
+      "facing": "left",
+      "sprite": "kin_167_overworld",
+      "movement": "static",
+      "dialogue_ref": "script.oldlight_headliners",
+      "hidden_when_flag": "flag:oldlight_headliners_beaten"
+    },
     {
       "id": "moll",
       "at": {

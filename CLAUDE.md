@@ -1014,8 +1014,10 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   you arrive in one north corner and the way up is in the other, so every floor is walked through
   its hall; each hall rolls wild encounters (a whimsical tower table, 9→14 — Pearlmoor's grind bed
   before Reyl and the fen) and an optional alcove regular (`oldlight_<id>` route trainers, F1–F5);
-  rests at the F3 tea-urn, the F6 two cups and the top's green-room chair; the top-floor BOSS (the Tin
-  Lamplighters, `oldlight_headliners`, ace 15, `battle-jesthouse-boss`) plays once before Tam's card. Each floor wears its own warped kit
+  rests at the F3 tea-urn, the F6 two cups and the top's green-room chair; the top-floor BOSS (Punchwheel's
+  headline act, `oldlight_headliners`, ace 15, `battle-jesthouse-boss`) is the TOLL, not the climax: the
+  three clowns stand in the only gap to the drum guarding Tam's card, step aside when beaten, the music
+  falls away, and the CARD is the crescendo (owner's steer: a boss gates the story beat, never replaces it). Each floor wears its own warped kit
   `oldlight_fN_set` (`build_oldlight_sets.py`, the interior gids — never change the order) and cue
   `oldlight-fN` (one theme, more deranged per floor; classic chip + remastered cue sheets); props are drawn by `oldlightforge.py`
   (`oldlight_*`); the cast's lines live in `content/regions/jesthouse.ts`. Pip on the Point runs

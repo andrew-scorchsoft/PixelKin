@@ -259,14 +259,14 @@ export const TRAINERS: TrainerRegistry = {
     payout: 260, // keeper 20 × ace 13
     music: 'battle-emberfall',
   },
-  // R11: the top floor's BOSS. Before Tam's card, Mr. Punchwheel puts on his
-  // headline act: the three tin lamplighters off the drum, fielding the house's
-  // own clowns. Ace 15, one under Reyl (16) — the climb's capstone, the last
+  // R11: the top floor's BOSS — the TOLL before the card, not the climax. Mr.
+  // Punchwheel's headline act (the house's own three clowns) stands in the only gap
+  // to the drum, guarding Tam's card. Ace 15, one under Reyl (16) — the climb's capstone, the last
   // stepping-stone before the Lumenary. Rest first in the green-room chair.
   oldlight_headliners: {
     id: 'oldlight_headliners',
-    name: 'THE TIN LAMPLIGHTERS',
-    title: "Punchwheel's headline act",
+    name: 'THE HEADLINE ACT',
+    title: "Mr. Punchwheel's",
     party: [
       { species_id: 169, level: 14 }, // The Smiler — Light
       { species_id: 171, level: 14 }, // McClownface — Tide/Light
@@ -1614,7 +1614,7 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
     { speaker: 'HECKLER', text: '...He even wrote me losing. (sits down, loudly) Here. Your wicks. He wrote those too.' },
   ],
   'trainer.oldlight_headliners.intro': [
-    { speaker: 'PUNCHWHEEL', text: 'And now, from the top of the drum, three tin hearts, one tune, NO refunds: THE TIN LAMPLIGHTERS!' },
+    { speaker: 'PUNCHWHEEL', text: 'Three clowns, one tune, NO refunds. Take it away, my darlings!' },
   ],
   'trainer.oldlight_headliners.defeat': [
     { speaker: 'PUNCHWHEEL', text: '(clockwork applause, slightly sarcastic) A tough crowd. The toughest. They will be talking about this in the lift for weeks.' },

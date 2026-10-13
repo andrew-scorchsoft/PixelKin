@@ -135,6 +135,23 @@ export const JESTHOUSE_SCRIPTS: ScriptRegistry = {
   ]),
 
   // ---- F6: the One Joke — the two cups (the floor's rest) ------------------------------------
+  // ---- TOP: the headline act (the toll before the card — not the climax) ------------
+  // Punchwheel guards Tam's card: eleven winters of "no laughter detected" and he can't
+  // bear to hear it again. His three clowns stand in the only gap to the drum. Win and
+  // they step aside; the music falls away; the card (script.oldlight_top) is the crescendo.
+  'script.oldlight_headliners': [
+    { op: 'emote', actor: 'act_jester', emote: 'alert' },
+    pw('Ah-ah-AH. Not one step nearer the drum. That is her card in there.'),
+    pw('Eleven winters, everyone who reads it gets the same answer. No laughter detected. I am not hearing it again.'),
+    pw('So if you want the card, you sit through the act first. ALL of it. Ladies and lamp-tenders: MY HEADLINERS!'),
+    nar('The Smiler beams. McClownface honks a little brass horn. JesterHalf bows, and about half of the bow is sincere.'),
+    { op: 'battle', trainer: 'oldlight_headliners' },
+    nar('The act takes its bows (three bows, none of them at the same time) and shuffles aside.'),
+    { op: 'musicFade', ms: 1800 },
+    pw('...Hm. You laughed. Twice. I counted.'),
+    pw('Go on, then. The card is in the drum. She would have liked you.'),
+    { op: 'setFlag', flag: 'flag:oldlight_headliners_beaten' },
+  ],
   // ---- TOP: the green room (a rest point before the headline act) ----------------------
   'script.oldlight_greenroom': [
     nar('A battered green-room armchair by the stairhead. A card pinned to it: PERFORMERS ONLY. Someone has crossed out PERFORMERS and written ANYONE TIRED.'),
@@ -345,7 +362,7 @@ export const JESTHOUSE_DIALOGUE: DialogueRegistry = {
   'npc.oldlight_moll_card': [
     line('MOLL', "(puffing) Couldn't sit with it down there. Not this time."),
     line('MOLL', "That's her card, jammed in the drum. Eleven winters it's been trying to finish her joke for her."),
-    line('MOLL', "Mind, he'll want to show off his headline act first. He always does. Have a sit in the green-room chair by the stairs before you go up to the drum."),
+    line('MOLL', "His headline act's stood between you and the drum. He won't let anyone near her card, not since the last one who read it got no laugh. Have a sit in the green-room chair by the stairs first."),
     line('MOLL', "Go on, love. You've laughed all the way up. I'll be right here."),
   ],
   'npc.oldlight_moll_top': [
