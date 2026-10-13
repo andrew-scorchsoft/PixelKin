@@ -570,6 +570,13 @@ grid, so F3's lounge is a half-time feel and F7 a double-time one. The ladder on
 lounge → inverted → wrong-note → stuck, warped record (F6) → the machine flying apart, clashing keys and
 melting pitch (F7).
 Method: the `music-cue-family` skill.
+
+**The tower's battle cue, `battle-jesthouse` (classic only, like every fight):** the Wild Battle
+(Dusk Duel) riff note for note, played as a clowning-around circus gallop at 168 BPM: oom-pah bass,
+offbeat brass pah-stabs, a calliope arp, backbeat claps, a tritone bicycle-horn honk at each section
+top, slide whistles, the tower's ha-ha laugh glides and a pfft and bell at each half's end. Every fight
+on the seven floors plays it unless the trainer has a theme of their own (`battle_music` in `maps.ts`).
+Spec: `assets/audio/midi/specs/battle-jesthouse.json`.
 Specs `assets/audio/midi/specs/oldlight-fN.json` → `assets/audio/midi/oldlight-fN.mid` →
 `music/oldlight-fN.mp3`.
 

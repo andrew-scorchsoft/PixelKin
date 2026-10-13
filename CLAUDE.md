@@ -920,7 +920,8 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `PreloadScene`, drawn behind the battlers in `BattleScene`. New area = add 240×160 WebPs
   under `public/assets/backgrounds/battle/` + list them on the map; a map with no list
   borrows its KIND's default (`KIND_BACKDROPS` in `maps.ts` — the safety net; bespoke art always
-  wins). Briefs/standards live in `docs/art-style.md` (§5-H). Keep them subtle so sprites/plates
+  wins). A map may also set `battle_music` (e.g. the Old Light's clowning `battle-jesthouse`):
+  it plays for wild fights and any trainer without their own `music`. Briefs/standards live in `docs/art-style.md` (§5-H). Keep them subtle so sprites/plates
   stay readable.
 - **Interiors are multi-room SNES compositions on roomkit (2026-06).** Build on
   `tools/maps/roomkit.py`: `faced_room` (cap + visible FACE walls, patterned floor, doormat)

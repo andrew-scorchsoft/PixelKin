@@ -34,6 +34,12 @@ export interface MapRegistryEntry {
    */
   battle_backdrops?: string[];
   /**
+   * The battle cue for fights on this map (a music id under assets/audio/music/),
+   * for wild battles and any trainer without a `music` of their own. Unset = the
+   * default wild theme. (The Old Light's floors clown around: `battle-jesthouse`.)
+   */
+  battle_music?: string;
+  /**
    * Dark terrain (walkthrough spine §5, Lamplight): WorldScene draws the reveal
    * mask here — partial dusk beyond the vesperlamp's lit circle, whose radius
    * grows with Gleams held. ADDITIVE ONLY: the main lane stays diegetically lit
@@ -338,6 +344,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/oldlight-f1.mp3',
     battle_backdrops: ['assets/backgrounds/battle/oldlight-f1-a.webp'],
+    battle_music: 'battle-jesthouse',
   },
   pearlmoor_oldlight_2: {
     json: 'assets/maps/pearlmoor_oldlight_2.json',
@@ -345,6 +352,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/oldlight-f2.mp3',
     battle_backdrops: ['assets/backgrounds/battle/oldlight-f2-a.webp'],
+    battle_music: 'battle-jesthouse',
   },
   pearlmoor_oldlight_3: {
     json: 'assets/maps/pearlmoor_oldlight_3.json',
@@ -352,6 +360,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/oldlight-f3.mp3',
     battle_backdrops: ['assets/backgrounds/battle/oldlight-f3-a.webp'],
+    battle_music: 'battle-jesthouse',
   },
   pearlmoor_oldlight_4: {
     json: 'assets/maps/pearlmoor_oldlight_4.json',
@@ -359,6 +368,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/oldlight-f4.mp3',
     battle_backdrops: ['assets/backgrounds/battle/oldlight-f4-a.webp'],
+    battle_music: 'battle-jesthouse',
   },
   pearlmoor_oldlight_5: {
     json: 'assets/maps/pearlmoor_oldlight_5.json',
@@ -366,6 +376,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/oldlight-f5.mp3',
     battle_backdrops: ['assets/backgrounds/battle/oldlight-f5-a.webp'],
+    battle_music: 'battle-jesthouse',
   },
   pearlmoor_oldlight_6: {
     json: 'assets/maps/pearlmoor_oldlight_6.json',
@@ -373,6 +384,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/oldlight-f6.mp3',
     battle_backdrops: ['assets/backgrounds/battle/oldlight-f6-a.webp'],
+    battle_music: 'battle-jesthouse',
   },
   pearlmoor_oldlight_top: {
     json: 'assets/maps/pearlmoor_oldlight_top.json',
@@ -380,6 +392,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/oldlight-f7.mp3',
     battle_backdrops: ['assets/backgrounds/battle/oldlight-top-a.webp'],
+    battle_music: 'battle-jesthouse',
   },
   pearlmoor_shop: {
     json: 'assets/maps/pearlmoor_shop.json',
@@ -1529,6 +1542,11 @@ export function allBattleBackdrops(): string[] {
  * Pick a battle backdrop for a map (random variant): its own, else its kind's
  * default (`KIND_BACKDROPS`). Null only for an unknown map id.
  */
+/** The map's own battle cue, if it has one (`battle_music`). */
+export function resolveBattleMusic(mapId: string | undefined): string | undefined {
+  return mapId ? MAP_REGISTRY[mapId]?.battle_music : undefined;
+}
+
 export function resolveBattleBackdrop(mapId: string | undefined): string | null {
   const variants = backdropsFor(mapId);
   if (variants.length === 0) return null;

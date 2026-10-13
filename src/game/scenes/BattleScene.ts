@@ -44,7 +44,7 @@ import { getTrainer, getTrainerLines } from '@game/content/trainers';
 import { typeEffectiveness } from '@game/data/dex';
 import { getItem } from '@game/content/items';
 import { trainerPayout } from '@game/content/economy';
-import { resolveBattleBackdrop } from '@game/data/world/maps';
+import { resolveBattleBackdrop, resolveBattleMusic } from '@game/data/world/maps';
 import type { ItemDef } from '@game/content/types';
 import type { KinInstanceData, InventoryData } from '@game/systems/save/types';
 import type { WorldFlag, AbilityId, EncounterTerrain } from '@game/data/world/types';
@@ -221,9 +221,11 @@ export class BattleScene extends Phaser.Scene {
   }
 
   private startMusic(): void {
+    // a trainer's own theme wins; else the map's battle cue; else the wild theme
+    const mapCue = resolveBattleMusic(this.request.mapId);
     const key = this.request.kind === 'trainer'
-      ? getTrainer(this.request.trainer)?.music ?? 'battle-main-dusk-duel'
-      : 'battle-main-dusk-duel';
+      ? getTrainer(this.request.trainer)?.music ?? mapCue ?? 'battle-main-dusk-duel'
+      : mapCue ?? 'battle-main-dusk-duel';
     void this.music.play(key, `${MUSIC_DIR}${key}.mp3`);
   }
 

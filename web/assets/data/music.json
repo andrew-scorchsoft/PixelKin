@@ -848,6 +848,17 @@
      "note": "Battles keep the original chip score"
     },
     {
+     "id": "battle-jesthouse",
+     "title": "The Old Light — The Lobby of Groaners",
+     "where": "The Old Light — The Lobby of Groaners · The Old Light — The Late Laugh · The Old Light — Intermission · The Old Light — The Backwards Inn · The Old Light — The Gallery of Confident Facts · The Old Light — The One Joke · The Old Light — The Winding Room",
+     "mood": "",
+     "classic": "play/assets/audio/music/battle-jesthouse.mp3",
+     "classic_loop_start": null,
+     "remaster": null,
+     "loop_start": null,
+     "note": "Battles keep the original chip score"
+    },
+    {
      "id": "battle-main-dusk-duel",
      "title": "Battle — wild kin & trainers",
      "where": "",

@@ -1,0 +1,80 @@
+{
+  "title": "PixelKin - Jest-House Battle (Clowning Around)",
+  "_note": "The Old Light's battle cue (every fight on pearlmoor_oldlight_1..6 + _top that has no theme of its own, via maps.ts battle_music). It is the Wild Battle (Dusk Duel) clowning around: the SAME A-minor riff note for note (bars 1-16, so it reads as the fight you know), but as a circus gallop at 168: oom-pah bass on 1 and 3 with brass pah-stabs on the offbeats of 2 and 4, a calliope arp on top, claps on the backbeat, a tritone bicycle-horn honk at the top of each section, slide whistles up and down every 4 bars, the tower's pulse12 'ha-ha' laugh glides in the gaps of bars 4 and 12, and a ba-dum pfft + bell ding closing each 8-bar half. The B-section keeps the heroic C-major lift. Bar 16 walks the bass E-G#-B-E back into bar 1. 168 BPM, A minor, 16 bars (~23 s). snes register on the chip engine; classic-only like every battle cue.",
+  "era": "snes",
+  "tempo": 168,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "A minor (harmonic-minor dominant), lifting to C major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.95,
+      "_note": "The Dusk Duel riff, unchanged except the last beat of bars 4/8/12/16 left open for the gags.",
+      "notes": "A4e A4e E5q C5e A4e E5q | F5e E5e D5e C5e B4q E5q | A4e A4e F5q D5e C5e A4q | G4e G4e D5q B4e G4e rq | A4e A4e E5q C5e A4e E5q | F5e E5e D5e C5e A4q F4q | D5e F5e A5e F5e D5e C5e B4e A4e | E5e D5e C5e B4e G#4q rq | C5e E5e G5q E5e C5e G5q | D5e G5e B5q G5e D5e B5q | C5e A4e E5q A5e E5e C5q | A4e C5e F5q A5e F5e rq | G5e E5e C6q G5e E5e C6q | D5e G5e B5e D6e B5q G5q | E5e D5e C5e B4e G#4q B4q | E5e B4e G#4e B4e E5q rq"
+    },
+    {
+      "name": "calliope",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.38,
+      "notes": "A4e C5e E5e C5e A4e C5e E5e C5e | A4e C5e E5e C5e A4e C5e E5e C5e | F4e A4e C5e A4e F4e A4e C5e A4e | G4e B4e D5e B4e G4e B4e D5e B4e | A4e C5e E5e C5e A4e C5e E5e C5e | F4e A4e C5e A4e F4e A4e C5e A4e | D4e F4e A4e F4e D4e F4e A4e F4e | E4e G#4e B4e G#4e E4e G#4e B4e G#4e | C5e E5e G5e E5e C5e E5e G5e E5e | G4e B4e D5e B4e G4e B4e D5e B4e | A4e C5e E5e C5e A4e C5e E5e C5e | F4e A4e C5e A4e F4e A4e C5e A4e | C5e E5e G5e E5e C5e E5e G5e E5e | G4e B4e D5e B4e G4e B4e D5e B4e | E4e G#4e B4e G#4e E4e G#4e B4e G#4e | E4e G#4e B4e G#4e E4e G#4e B4e G#4e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.92,
+      "_note": "Oom-pah: root on 1, fifth on 3.",
+      "notes": "A2q@108 rq E3q@96 rq | A2q@108 rq E3q@96 rq | F2q@108 rq C3q@96 rq | G2q@108 rq D3q@96 rq | A2q@108 rq E3q@96 rq | F2q@108 rq C3q@96 rq | D2q@108 rq A2q@96 rq | E2q@108 rq B2q@96 rq | C2q@108 rq G2q@96 rq | G2q@108 rq D3q@96 rq | A2q@108 rq E3q@96 rq | F2q@108 rq C3q@96 rq | C2q@108 rq G2q@96 rq | G2q@108 rq D3q@96 rq | E2q@108 rq B2q@96 rq | E2q@108 G#2q@100 B2q@104 E3q@110"
+    },
+    {
+      "name": "pah",
+      "voice": "brass",
+      "octave": 3,
+      "gain": 0.5,
+      "_note": "Pah-stabs on the offbeats; a tritone honk opens each half.",
+      "notes": "F3+B3e@104 re A3+C4+E4e@84 re rq A3+C4+E4e@84 re | rq A3+C4+E4e@84 re rq A3+C4+E4e@84 re | rq F3+A3+C4e@84 re rq F3+A3+C4e@84 re | rq G3+B3+D4e@84 re rq G3+B3+D4e@84 re | rq A3+C4+E4e@84 re rq A3+C4+E4e@84 re | rq F3+A3+C4e@84 re rq F3+A3+C4e@84 re | rq D3+F3+A3e@84 re rq D3+F3+A3e@84 re | rq E3+G#3+B3e@84 re rq E3+G#3+B3e@84 re | F3+B3e@104 re C4+E4+G4e@84 re rq C4+E4+G4e@84 re | rq G3+B3+D4e@84 re rq G3+B3+D4e@84 re | rq A3+C4+E4e@84 re rq A3+C4+E4e@84 re | rq F3+A3+C4e@84 re rq F3+A3+C4e@84 re | rq C4+E4+G4e@84 re rq C4+E4+G4e@84 re | rq G3+B3+D4e@84 re rq G3+B3+D4e@84 re | rq E3+G#3+B3e@84 re rq E3+G#3+B3e@84 re | rq E3+G#3+B3e@84 re rq E3+G#3+B3e@84 re"
+    },
+    {
+      "name": "whistle",
+      "voice": "pulse12",
+      "octave": 5,
+      "gain": 0.42,
+      "notes": "rw | rh. C5~C6q@90 | rw | rw | rw | rh. C6~C5q@86 | rw | rw | rw | rh. C5~C6q@90 | rw | rw | rw | rh. C6~C5q@86 | rw | rw"
+    },
+    {
+      "name": "laugh",
+      "voice": "pulse12",
+      "octave": 5,
+      "gain": 0.6,
+      "notes": "rw | rw | rw | rh. E6~C6s@100 rs C6~A5s@92 rs | rw | rw | rw | rw | rw | rw | rw | rh. E6~C6s@100 rs C6~A5s@92 rs | rw | rw | rw | rw"
+    },
+    {
+      "name": "pfft",
+      "voice": "noise",
+      "octave": 5,
+      "gain": 0.3,
+      "notes": "rw | rw | rw | rw | rw | rw | rw | rh. C6~C4q@88 | rw | rw | rw | rw | rw | rw | rw | rh. C6~C4q@88"
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 6,
+      "gain": 0.32,
+      "notes": "rw | rw | rw | rw | rw | rw | rw | rh. E6q@84 | rw | rw | rw | rw | rw | rw | rw | rh. E6q@84"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.6,
+      "notes": "e kick+crash hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat s snare snare e snare+hat crash | e kick+crash hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat hat snare+clap+hat hat | e kick+hat hat snare+clap+hat hat kick+hat s snare snare e snare+hat crash"
+    }
+  ]
+}
