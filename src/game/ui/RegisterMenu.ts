@@ -15,6 +15,7 @@ import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT } from '@game/config';
 import { theme, hex } from './theme';
 import { makeText } from './Text';
+import { PagedText } from './PagedText';
 import { Panel } from './Panel';
 import { Cursor } from './Cursor';
 import { InputController, InputAction } from '@game/systems/input/InputController';
@@ -45,6 +46,7 @@ export class RegisterMenu {
   private readonly rows: Row[];
   private readonly rowTexts: Phaser.GameObjects.Text[] = [];
   private readonly detail: Phaser.GameObjects.Text;
+  private readonly pager: PagedText;
   private readonly detailIcon: Phaser.GameObjects.Image;
   private readonly moreUp: Phaser.GameObjects.Text;
   private readonly moreDown: Phaser.GameObjects.Text;
@@ -81,7 +83,7 @@ export class RegisterMenu {
 
     const seenCount = this.rows.filter((r) => r.seen).length;
     const caughtCount = this.rows.filter((r) => r.caught).length;
-    this.panel.add(makeText(scene, PAD, PAD - 2, 'THE REGISTER', theme.text.accent));
+    this.panel.add(makeText(scene, PAD, PAD - 2, 'REGISTER', theme.text.accent));
     this.panel.add(
       makeText(scene, width - PAD, PAD - 2, `SEEN ${seenCount} · KEPT ${caughtCount}`, theme.text.dim).setOrigin(1, 0),
     );
@@ -111,6 +113,9 @@ export class RegisterMenu {
     this.detail = makeText(scene, PAD + ICON_BOX + 6, detailTop, '', theme.text.dim);
     this.detail.setWordWrapWidth(width - PAD * 2 - ICON_BOX - 6);
     this.panel.add(this.detail);
+    // Long text pages itself rather than spilling off the pane (ui/PagedText).
+    this.pager = new PagedText(scene, this.detail, DETAIL_LINES, DETAIL_LINE_H, { x: width - PAD - 12, y: sepY });
+    this.panel.add(this.pager.marker);
 
     this.cursor = new Cursor(scene).setScrollFactor0();
     this.panel.add(this.cursor.sprite);
@@ -151,16 +156,16 @@ export class RegisterMenu {
     const row = this.rows[this.index];
     this.detailIcon.setVisible(false);
     if (!row || !row.seen) {
-      this.detail.setText(row ? 'Not yet met. Somewhere in the dusk, it is waiting.' : '');
+      this.pager.set(row ? 'Not yet met. Somewhere in the dusk, it is waiting.' : '');
       return;
     }
 
     const s = row.species;
     const types = s.types.join(' / ');
     if (row.caught) {
-      this.detail.setText(`${s.name} — ${s.dex.category}\n${types}\n${s.dex.entry}`);
+      this.pager.set(`${s.name} — ${s.dex.category}\n${types}\n${s.dex.entry}`);
     } else {
-      this.detail.setText(`${s.name} — ${s.dex.category}\n${types}\nCatch one, and the register will hold its story.`);
+      this.pager.set(`${s.name} — ${s.dex.category}\n${types}\nCatch one, and the register will hold its story.`);
     }
 
     // Lazy icon: full colour once caught, a dark silhouette when merely seen.
@@ -219,6 +224,7 @@ export class RegisterMenu {
   destroy(): void {
     this.destroyed = true;
     this.cursor.destroy();
+    this.pager.destroy();
     this.panel.destroy();
   }
 }

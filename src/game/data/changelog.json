@@ -2,6 +2,16 @@
   "_note": "The player-facing changelog: the in-game \"the world has changed\" notice (content/whatsnew.ts) AND the website changelog page (web/site.mjs) both read this. Newest first. NO SPOILERS for the hidden real-people content - see whatsnew.ts.",
   "entries": [
     {
+      "version": "1.29",
+      "date": "2026-10-13",
+      "notes": [
+        "In battle, FIGHT now tells you what each move does: its type, power, accuracy and uses left, with a description underneath. Against kin you have caught, it also says whether the move will land well.",
+        "New in the shops from Pearlmoor on: the Hearth Coal, a live coal that rouses a fainted kin. Balms no longer can; only a coal or a good rest will. Coals are not cheap, so keep an eye out for the few tucked away in caches.",
+        "Found items are wrapped in red ribbon now, so they are easier to spot. The pack and the battle bag scroll and page properly, and on a phone held sideways the buttons no longer cover the screen.",
+        "The Backwards Inn has a tea-urn of its own, right beside the Ringmaster."
+      ]
+    },
+    {
       "version": "1.28",
       "date": "2026-10-13",
       "notes": [

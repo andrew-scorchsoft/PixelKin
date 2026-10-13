@@ -54,6 +54,8 @@ export class HearthMenu {
   private readonly cursor: Cursor;
   private readonly header: Phaser.GameObjects.Text;
   private readonly footer: Phaser.GameObjects.Text;
+  /** Where the selected kin is (IN LAMP / RESTING), right-aligned so a dual type + HP never pushes it off the panel. */
+  private readonly footerWhere: Phaser.GameObjects.Text;
   private readonly width: number;
   private readonly party: KinInstance[];
   private readonly box: KinInstance[];
@@ -88,6 +90,8 @@ export class HearthMenu {
 
     this.footer = makeText(scene, PAD, height - PAD - 4, '', theme.text.dim);
     this.panel.add(this.footer);
+    this.footerWhere = makeText(scene, this.width - PAD, height - PAD - 4, '', theme.text.dim).setOrigin(1, 0);
+    this.panel.add(this.footerWhere);
 
     this.cursor = new Cursor(scene).setScrollFactor0();
     this.panel.add(this.cursor.sprite);
@@ -129,6 +133,7 @@ export class HearthMenu {
       this.track(makeText(this.scene, PAD, LIST_TOP + 4, 'You have no kin yet.', theme.text.dim));
       this.cursor.sprite.setVisible(false);
       this.footer.setText('');
+      this.footerWhere.setText('');
       this.panel.container.bringToTop(this.cursor.sprite);
       return;
     }
@@ -164,8 +169,8 @@ export class HearthMenu {
     this.cursor.moveTo(PAD, LIST_TOP + (this.index - this.scrollTop) * ROW_H + ROW_H / 2);
 
     const sel = this.entries[this.index].kin;
-    const where = this.entries[this.index].origin === 'party' ? 'In your lamp' : 'Resting';
-    this.footer.setText(`${sel.species.types.join('/')}  HP ${Math.max(0, sel.hp)}/${sel.maxHp}  ${where}`);
+    this.footer.setText(`${sel.species.types.join('/')} ${Math.max(0, sel.hp)}/${sel.maxHp}`);
+    this.footerWhere.setText(this.entries[this.index].origin === 'party' ? 'IN LAMP' : 'RESTING');
     this.panel.container.bringToTop(this.cursor.sprite);
   }
 

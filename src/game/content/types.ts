@@ -285,6 +285,12 @@ export interface ItemDef {
   /** HP restored for 'medicine' items. */
   heal?: number;
   /**
+   * A 'medicine' that rouses a FAINTED kin (the genre's revive — PixelKin's Hearth
+   * Coal): the share of max HP it wakes with (0.5 = half). Balms can't do this —
+   * a fainted kin answers only a coal, or a rest.
+   */
+  revive?: number;
+  /**
    * A 'medicine' that raises a kin ONE whole level instead of healing it (the
    * genre's level-up sweet — PixelKin's Lumen Drop). Used from the pack like any
    * other medicine: pick a kin, it grows a level, and the normal move-learn /

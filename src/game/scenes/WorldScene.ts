@@ -2352,11 +2352,14 @@ export class WorldScene extends Phaser.Scene {
         { label: 'SAVE', value: 'save' },
         { label: 'SETTINGS', value: 'settings' },
       ];
-      // With MAP (and late-game TRAVEL) the list can outgrow y=8 on the 160px
-      // screen — slide the panel up just enough so the last row never clips.
-      const menuH = theme.space.lg * 2 + entries.length * 12;
+      // With MAP (and late-game GLEAMS + TRAVEL) the list can outgrow the 160px
+      // screen: slide the panel up just enough so the last row never clips, and
+      // past what fits at all (13 rows late game cut RESUME off the top), scroll.
+      const fits = Math.floor((this.cameras.main.height - 4 - theme.space.lg * 2) / 12);
+      const rows = Math.min(entries.length, fits);
+      const menuH = theme.space.lg * 2 + rows * 12;
       const menuY = Math.min(8, this.cameras.main.height - menuH - 2);
-      const choice = await new Menu(this, entries, { x: 8, y: menuY, sfx: this.sfx }).run();
+      const choice = await new Menu(this, entries, { x: 8, y: menuY, sfx: this.sfx, maxVisible: rows }).run();
 
       if (choice === 'map') {
         await new WorldMapMenu(this, this.map.def.id, this.sfx).run();

@@ -37,6 +37,7 @@ import type { BattleEvent } from '@game/systems/battle/types';
 import { effectivenessLabel } from '@game/systems/battle/types';
 import { Battler } from '@game/ui/battle/Battler';
 import { HpPanel } from '@game/ui/battle/HpPanel';
+import { MoveInfo } from '@game/ui/battle/MoveInfo';
 import { BattleMessage } from '@game/ui/battle/BattleMessage';
 import { MoveLearnPrompt } from '@game/ui/MoveLearnPrompt';
 import { KindlePrompt, type KindleMusic } from '@game/ui/KindlePrompt';
@@ -374,7 +375,13 @@ export class BattleScene extends Phaser.Scene {
       { label: 'PLAIN THROW', value: 'plain' },
       ...charges.map((c) => ({ label: `${c.def.name.toUpperCase()} x${c.count}`, value: c.def.id })),
     ];
-    const choice = await new Menu(this, opts, { x: 6, y: this.menuY(opts.length), sfx: this.sfx }).run();
+    const choice = await new Menu(this, opts, {
+      x: 6, y: this.menuY(Math.min(opts.length, MENU_MAX_ROWS)), sfx: this.sfx, maxVisible: MENU_MAX_ROWS,
+      onHighlight: (i) => this.msg.set(opts[i]?.value === 'plain'
+        ? 'Raise the vesperlamp as it is. Always free.'
+        : battleItemNote(getItem(opts[i]?.value ?? ''))),
+    }).run();
+    this.msg.set('');
     if (choice === null) return null;
     if (choice === 'plain') return this.engine.catchWithBonus('vesperlamp', 1.0);
 
@@ -449,9 +456,7 @@ export class BattleScene extends Phaser.Scene {
     // player has already caught (you've studied one up close).
     const showHints = this.dexCaught.has(this.engine.foe.species.id);
     const opts: MenuOption[] = moves.map((k, i) => ({
-      label: `${k.move.name}  ${k.charges}/${k.move.charges}${
-        showHints ? this.effectivenessGlyph(k.move) : ''
-      }`,
+      label: k.move.name,
       value: String(i),
       enabled: k.charges > 0,
     }));
@@ -459,27 +464,43 @@ export class BattleScene extends Phaser.Scene {
       await this.msg.show(`${this.engine.player.displayName} has no charges left!`);
       return null;
     }
-    const choice = await new Menu(this, opts, { x: 6, y: this.menuY(opts.length), sfx: this.sfx }).run();
+    // The move list (left) + the MoveInfo pane (right), both bottom-aligned on the
+    // message strip, which carries the highlighted move's description. Fixed
+    // widths so the layout never jumps between kin (15 = the longest move name).
+    const MENU_X = 4;
+    const MENU_W = theme.space.lg * 2 + 8 + 15 * 8;
+    const INFO_H = 60;
+    const info = new MoveInfo(this, MENU_X + MENU_W, this.menuY(4), GAME_WIDTH - 4 - (MENU_X + MENU_W), INFO_H);
+    const describe = (i: number): void => {
+      const k = moves[i];
+      if (!k) return;
+      info.show({
+        type: k.move.type,
+        category: k.move.category,
+        power: k.move.power,
+        accuracy: k.move.accuracy,
+        charges: k.charges,
+        maxCharges: k.move.charges,
+        effect: showHints ? this.effectiveness(k.move) : undefined,
+      });
+      this.msg.set(moveBlurb(k.move.desc ?? ''));
+    };
+    const choice = await new Menu(this, opts, {
+      x: MENU_X,
+      y: this.menuY(opts.length),
+      width: MENU_W,
+      sfx: this.sfx,
+      onHighlight: describe,
+    }).run();
+    info.destroy();
+    this.msg.set('');
     if (choice === null) return null;
     return this.engine.takeTurn({ kind: 'move', moveIndex: Number(choice) });
   }
 
-  /**
-   * The effectiveness suffix glyph for a move vs the current foe, shown only when
-   * the foe's species is already in the player's register (caught). Status moves
-   * (no power) get no marker — the hint is about *damage*. The glyphs read cleanly
-   * at the 8px pixel font: ' >>' super, ' >' normal, ' <' resisted, ' x' immune.
-   */
-  private effectivenessGlyph(move: { category: string; type: string; power: number }): string {
-    if (move.category === 'status' || move.power <= 0) return '';
-    const mult = typeEffectiveness(
-      move.type as Parameters<typeof typeEffectiveness>[0],
-      this.engine.foe.species.types,
-    );
-    if (mult === 0) return ' x';
-    if (mult > 1) return ' >>';
-    if (mult < 1) return ' <';
-    return ' >';
+  /** The damage multiplier of a move vs the current foe's types. */
+  private effectiveness(move: { type: string }): number {
+    return typeEffectiveness(move.type as Parameters<typeof typeEffectiveness>[0], this.engine.foe.species.types);
   }
 
   /**
@@ -503,16 +524,26 @@ export class BattleScene extends Phaser.Scene {
 
   /** Bag (medicine + lamps). Returns engine events if an action was taken. */
   private async bagMenu(): Promise<BattleEvent[] | null> {
-    const owned = Object.entries(this.inventory.items).filter(([, n]) => n > 0);
+    // Only what can matter mid-fight: medicine and lamp charges (key items, charts
+    // and goods are never usable here, and a late-game pack ran off the screen).
+    const owned = Object.entries(this.inventory.items).filter(([id, n]) => {
+      const cat = getItem(id)?.category;
+      return n > 0 && (cat === 'medicine' || cat === 'charge');
+    });
     const opts: MenuOption[] = owned.map(([id, n]) => {
       const def = getItem(id);
       return { label: `${def?.name ?? id} x${n}`, value: id, enabled: this.itemUsable(id) };
     });
     if (opts.length === 0) {
-      await this.msg.show('Your bag is empty.');
+      await this.msg.show('Nothing in your bag helps in a fight.');
       return null;
     }
-    const choice = await new Menu(this, opts, { x: 6, y: this.menuY(opts.length), sfx: this.sfx }).run();
+    const choice = await new Menu(this, opts, {
+      x: 6, y: this.menuY(Math.min(opts.length, MENU_MAX_ROWS)), sfx: this.sfx, maxVisible: MENU_MAX_ROWS,
+      // The highlighted item's description in the strip, so the BAG explains itself too.
+      onHighlight: (i) => this.msg.set(battleItemNote(getItem(opts[i]?.value ?? ''))),
+    }).run();
+    this.msg.set('');
     if (choice === null) return null;
 
     const def = getItem(choice);
@@ -529,6 +560,28 @@ export class BattleScene extends Phaser.Scene {
       }
       this.consumeItem(choice);
       return this.engine.catchWithBonus(choice, this.effectiveCatchBonus(def));
+    }
+
+    if (def.category === 'medicine' && def.revive) {
+      // The Hearth Coal: rouse a fainted kin on the bench (the active one is never
+      // fainted at a menu), then the foe takes its turn as for any item.
+      const fainted = this.playerParty.all.filter((k) => k.isFainted);
+      if (fainted.length === 0) {
+        await this.msg.show('None of your kin has fainted.');
+        return null;
+      }
+      this.msg.set('Rouse which kin?');
+      const pick = await new Menu(this, this.playerParty.all.map((k, i) => ({
+        label: `${k.displayName} Lv${k.level} ${k.isFainted ? 'FNT' : `${k.hp}/${k.maxHp}`}`,
+        value: String(i),
+        enabled: k.isFainted,
+      })), { x: 6, y: this.menuY(this.playerParty.all.length), sfx: this.sfx }).run();
+      if (pick === null) return null;
+      const kin = this.playerParty.all[Number(pick)];
+      const restored = kin.heal(Math.max(1, Math.floor(kin.maxHp * def.revive)));
+      this.consumeItem(choice);
+      await this.msg.show(`Used a ${def.name}. ${kin.displayName} stirred, and is up again with ${restored} HP!`);
+      return this.engine.takeTurn({ kind: 'item', itemId: choice });
     }
 
     if (def.category === 'medicine' && def.heal) {
@@ -553,7 +606,8 @@ export class BattleScene extends Phaser.Scene {
     const def = getItem(id);
     if (!def) return false;
     if (def.category === 'charge') return this.request.kind === 'wild' && this.request.catchable !== false;
-    if (def.category === 'medicine') return true;
+    if (def.category === 'medicine' && def.revive) return this.playerParty.all.some((k) => k.isFainted);
+    if (def.category === 'medicine') return !def.level_up;
     return false;
   }
 
@@ -1079,4 +1133,47 @@ export function earlyExpBoost(level: number): number {
   if (level <= 8) return 1.5;
   if (level <= 12) return 1.25;
   return 1;
+}
+
+/** The tallest a battle list grows before it scrolls: six rows clear the foe's plate. */
+const MENU_MAX_ROWS = 6;
+
+/** What a charge's condition asks of the target, in a few plain words. */
+function conditionNote(c: NonNullable<ItemDef['condition']>): string {
+  switch (c.kind) {
+    case 'terrain': return `on kin met in ${c.terrain.replace('_', ' ')}`;
+    case 'hp_below': return `once its health is below ${Math.round(c.ratio * 100)}%`;
+    case 'status': return `on a ${c.status} kin`;
+    case 'any_status': return 'on a kin with any status';
+    case 'defender_type': return `on ${c.types.join('/')} kin`;
+    case 'first_turn': return 'on the first turn only';
+  }
+}
+
+/**
+ * A battle-strip summary of a medicine or charge: exactly what it does, short
+ * enough for the strip's three lines (full descriptions live in ITEMS and can
+ * run to ten lines).
+ */
+function battleItemNote(def: ItemDef | undefined): string {
+  if (!def) return '';
+  if (def.revive) return `Rouses a fainted kin with ${Math.round(def.revive * 100)}% of its health.`;
+  if (def.level_up) return 'Raises a kin one level. Use it from ITEMS, out of battle.';
+  if (def.heal) return def.heal >= 999 ? 'Fully restores your kin\'s health.' : `Restores ${def.heal} health to your kin.`;
+  if (def.category === 'charge' && def.catch_bonus) {
+    if (def.catch_bonus >= 255) return 'One throw. The kin always comes.';
+    const odds = `catch odds x${def.catch_bonus}`;
+    return def.condition ? `One throw: ${odds} ${conditionNote(def.condition)}, else x1.` : `One throw: ${odds}.`;
+  }
+  return def.desc;
+}
+
+/**
+ * A move's description as the battle strip shows it: signature moves drop their
+ * "Vulpyre's signature: " lead-in (the owner is on screen already) so every
+ * description fits the strip's three lines.
+ */
+function moveBlurb(desc: string): string {
+  const body = desc.replace(/^[A-Z][a-z]+'s signature: /, '');
+  return body.charAt(0).toUpperCase() + body.slice(1);
 }

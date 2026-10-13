@@ -17,6 +17,7 @@ import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT } from '@game/config';
 import { theme, hex } from './theme';
 import { makeText } from './Text';
+import { PagedText } from './PagedText';
 import { Panel } from './Panel';
 import { loadImage } from '@game/systems/sprites/loadImage';
 import { InputController, InputAction } from '@game/systems/input/InputController';
@@ -53,7 +54,7 @@ export class GleamsMenu {
   private readonly cells: Cell[] = [];
   private readonly select: Phaser.GameObjects.Arc;
   private readonly detailTitle: Phaser.GameObjects.Text;
-  private readonly detailFrom: Phaser.GameObjects.Text;
+  private readonly pager: PagedText;
   private readonly detailBlurb: Phaser.GameObjects.Text;
   private index = 0;
 
@@ -106,13 +107,15 @@ export class GleamsMenu {
       .setOrigin(0, 0)
       .setAlpha(0.5);
     this.panel.add(sep);
+    // The constellation's name, then where it was relit + its blurb as ONE paged
+    // block (3 lines): the old fixed lines ran off the right edge and the bottom.
     this.detailTitle = makeText(scene, PAD, sepY + 4, '', theme.text.accent);
-    this.detailFrom = makeText(scene, PAD, sepY + 15, '', theme.text.dim);
-    this.detailBlurb = makeText(scene, PAD, sepY + 25, '', theme.text.narrate);
+    this.detailBlurb = makeText(scene, PAD, sepY + 14, '', theme.text.narrate);
     this.detailBlurb.setWordWrapWidth(width - PAD * 2);
     this.panel.add(this.detailTitle);
-    this.panel.add(this.detailFrom);
     this.panel.add(this.detailBlurb);
+    this.pager = new PagedText(scene, this.detailBlurb, 3, 9, { x: width - PAD, y: sepY });
+    this.panel.add(this.pager.marker);
 
     this.refresh();
   }
@@ -157,14 +160,11 @@ export class GleamsMenu {
     const cell = this.cells[this.index];
     this.select.setPosition(cell.cx, cell.cy);
     const g = cell.gleam;
-    this.detailTitle.setText(`${g.constellation.toUpperCase()} - ${g.element.toUpperCase()} GLEAM`);
-    if (cell.earned) {
-      this.detailFrom.setText(`Relit at ${g.lumenary} - granted by ${g.warden}.`);
-      this.detailBlurb.setText(g.blurb);
-    } else {
-      this.detailFrom.setText(`Not yet relit - ${g.lumenary}'s Lumenary (${g.region}).`);
-      this.detailBlurb.setText("A constellation still dark. Earn its Lampwarden's trust to light it home.");
-    }
+    this.detailTitle.setText(g.constellation.toUpperCase());
+    const gleam = `The ${g.element} Gleam`;
+    this.pager.set(cell.earned
+      ? `${gleam}, relit at ${g.lumenary} - granted by ${g.warden}. ${g.blurb}`
+      : `${gleam}: not yet relit - ${g.lumenary}'s Lumenary (${g.region}). A constellation still dark. Earn its Lampwarden's trust to light it home.`);
   }
 
   /** Move within the 4x2 grid: col = floor(i/2), row = i%2. */
@@ -209,6 +209,7 @@ export class GleamsMenu {
   }
 
   destroy(): void {
+    this.pager.destroy();
     this.panel.destroy();
   }
 }

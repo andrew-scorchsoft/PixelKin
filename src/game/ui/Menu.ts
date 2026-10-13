@@ -37,6 +37,9 @@ export interface MenuConfig {
   maxVisible?: number;
   /** Row the cursor starts on (clamped; skips disabled rows). Default 0. */
   initialIndex?: number;
+  /** Called with the highlighted row's index whenever the cursor lands on a row
+   *  (on open, then on every move): drive a detail pane (the battle move info). */
+  onHighlight?: (index: number) => void;
 }
 
 const ROW_H = 12;
@@ -61,8 +64,11 @@ export class Menu {
   ) {
     const charW = 8;
     const longest = Math.max(...options.map((o) => o.label.length));
-    const width = config.width ?? PAD * 2 + CURSOR_GAP + longest * charW;
     this.visibleRows = Math.max(1, Math.min(options.length, config.maxVisible ?? options.length));
+    // A windowed list keeps a column at the right for its ▲/▼ hints, so a long
+    // row never runs under them (the Settings "Soundtrack: Remastered" row did).
+    const hintW = this.visibleRows < options.length ? charW : 0;
+    const width = config.width ?? PAD * 2 + CURSOR_GAP + longest * charW + hintW;
     const height = PAD * 2 + this.visibleRows * ROW_H;
     this.panel = new Panel(scene, config.x, config.y, width, height);
 
@@ -125,6 +131,7 @@ export class Menu {
     this.moreDown?.setVisible(this.top + this.visibleRows < this.options.length);
     // Cursor is a child of the panel container → use local coords.
     this.cursor.moveTo(PAD, PAD + (this.index - this.top) * ROW_H + 4);
+    this.config.onHighlight?.(this.index);
   }
 
   private move(dir: number): void {

@@ -1518,8 +1518,9 @@ export const SCRIPTS: ScriptRegistry = {
   ],
   // Breakwater caches (off the lane, the standing kit).
   'script.pickup_breakwater_balm': [
+    { op: 'giveItem', item: 'hearth_coal', count: 1 },
     { op: 'giveItem', item: 'warm_balm', count: 1 },
-    { op: 'say', text: 'Lashed dry under a coil of old net, against the spray. Found a WARM BALM!' },
+    { op: 'say', text: 'Lashed dry under a coil of old net, against the spray. Found a WARM BALM, and a HEARTH COAL kept alight in a tin!' },
     { op: 'setFlag', flag: 'flag:picked_breakwater_balm' },
   ],
   // S5 caches — the allotment's potting-bench corner and the Wanderwood's
@@ -1741,8 +1742,9 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:picked_glowmoss_amber' },
   ],
   'script.pickup_glowmoss_balm': [
+    { op: 'giveItem', item: 'hearth_coal', count: 1 },
     { op: 'giveItem', item: 'warm_balm', count: 1 },
-    { op: 'say', text: 'A waxed tin left where the moss grows thickest, still warm to the touch. Found a WARM BALM!' },
+    { op: 'say', text: 'A waxed tin left where the moss grows thickest, still warm to the touch. Found a WARM BALM and a HEARTH COAL!' },
     { op: 'setFlag', flag: 'flag:picked_glowmoss_balm' },
   ],
   'script.pickup_glowmoss_wicks': [
@@ -2308,9 +2310,10 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:picked_cinderhead_wicks_deep' },
   ],
   'script.pickup_cinderhead_balm_deep': [
+    { op: 'giveItem', item: 'hearth_coal', count: 1 },
     { op: 'giveItem', item: 'warm_balm', count: 2 },
     { op: 'giveItem', item: 'glow_charge', count: 1 },
-    { op: 'say', text: 'A vigil-relief cache by the down-ladder — balms and a charge for the long climb back. Took them!' },
+    { op: 'say', text: 'A vigil-relief cache by the down-ladder — balms, a charge and a HEARTH COAL for the long climb back. Took them!' },
     { op: 'setFlag', flag: 'flag:picked_cinderhead_balm_deep' },
   ],
   // Lamplight reveal (spine §5, Starlight+): the third gallery's late alcove —
@@ -2624,8 +2627,9 @@ export const SCRIPTS: ScriptRegistry = {
 
   // Windward caches (stair I: balm / wicks / valuable; stair II: amber + kit).
   'script.pickup_windward_balm': [
+    { op: 'giveItem', item: 'hearth_coal', count: 1 },
     { op: 'giveItem', item: 'warm_balm', count: 1 },
-    { op: 'say', text: 'A climber\'s cache in the lee of the cairn, wax seal sound. Found a WARM BALM!' },
+    { op: 'say', text: 'A climber\'s cache in the lee of the cairn, wax seal sound. Found a WARM BALM and a HEARTH COAL!' },
     { op: 'setFlag', flag: 'flag:picked_windward_balm' },
   ],
   'script.pickup_windward_wicks': [
@@ -3304,8 +3308,9 @@ export const SCRIPTS: ScriptRegistry = {
 
   // Solarium caches (the standing variety; the shard is the flooded missable).
   'script.pickup_solarium_balm': [
+    { op: 'giveItem', item: 'hearth_coal', count: 1 },
     { op: 'giveItem', item: 'warm_balm', count: 1 },
-    { op: 'say', text: 'A festival hamper, set above the waterline and forgotten. Found a WARM BALM!' },
+    { op: 'say', text: 'A festival hamper, set above the waterline and forgotten. Found a WARM BALM and a HEARTH COAL!' },
     { op: 'setFlag', flag: 'flag:picked_solarium_balm' },
   ],
   'script.pickup_solarium_amber': [

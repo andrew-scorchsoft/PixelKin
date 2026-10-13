@@ -37,6 +37,7 @@ export const SHOPS: ShopRegistry = {
     stock: [
       'tallow_balm',
       'warm_balm',
+      'hearth_coal',
       'glow_charge',
       { item: 'beacon_charge', requires_flag: 'gleam:ember' },
       { item: 'hooded_lamp', requires_flag: 'gleam:tide' },
@@ -55,6 +56,7 @@ export const SHOPS: ShopRegistry = {
     stock: [
       'tallow_balm',
       'warm_balm',
+      'hearth_coal',
       'glow_charge',
       { item: 'beacon_charge', requires_flag: 'gleam:ember' },
       'chart_spore_puff',
@@ -73,6 +75,7 @@ export const SHOPS: ShopRegistry = {
     stock: [
       'tallow_balm',
       'warm_balm',
+      'hearth_coal',
       'glow_charge',
       { item: 'beacon_charge', requires_flag: 'gleam:ember' },
       'chart_focus_mind',
@@ -90,6 +93,7 @@ export const SHOPS: ShopRegistry = {
     stock: [
       'tallow_balm',
       'warm_balm',
+      'hearth_coal',
       { item: 'bright_balm', requires_flag: 'gleam:storm' },
       'glow_charge',
       { item: 'beacon_charge', requires_flag: 'gleam:ember' },
@@ -109,6 +113,7 @@ export const SHOPS: ShopRegistry = {
     stock: [
       'tallow_balm',
       'warm_balm',
+      'hearth_coal',
       { item: 'bright_balm', requires_flag: 'gleam:storm' },
       'glow_charge',
       { item: 'beacon_charge', requires_flag: 'gleam:ember' },

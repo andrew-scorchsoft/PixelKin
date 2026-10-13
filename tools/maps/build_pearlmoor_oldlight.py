@@ -18,7 +18,7 @@ stair room (F1: in from the street door, west and up, then east along the top).
 The HALL carries the floor's wild encounters (a whimsical tower table rising
 10 -> 15, the grind bed before the fen's 16s) and an optional sight trainer
 waiting in an ALCOVE off the main line (step into its mouth and they see you).
-Two rest points: the tea-urn (F3) and the two cups (F6). Each floor wears its
+Rest points: the tea-urn (F3), its backwards twin beside the Ringmaster (F4) and the two cups (F6). Each floor wears its
 own warped tileset (oldlight_fN_set, build_oldlight_sets.py — the same gids as
 the interior kits, more deranged the higher you go), its own Punchwheel cue
 (oldlight-fN.mp3, more unhinged per floor) and the drawn joke props of
@@ -470,6 +470,11 @@ def floor_4():
            band_blocked="npc.oldlight_ringmaster_block")
     trainer(npcs, "ringmaster", 4, 3, "left", "npc_shopkeeper")
     ol(objects, "mallet", 8, 2, oid="mallet")
+    # the BACKWARDS URN: the tea-urn's twin pours the interval at the START, so you
+    # can mend your kin right beside the Ringmaster before (and after) the bout
+    ol(objects, "tea_urn", 6, 2, oid="tea_urn_backwards")
+    for x in (6, 7):
+        sign_at(triggers, f"urn_backwards_{x}", x, 3, "script.oldlight_urn_backwards", kind="cutscene")
     m = mapdef(mid(4), "The Old Light — The Backwards Inn", W, H, ts,
                base, over, objects, warps, triggers, npcs, music(4))
     m["encounters"] = [encounters("tower_f4", TOWER_TABLES[4])]

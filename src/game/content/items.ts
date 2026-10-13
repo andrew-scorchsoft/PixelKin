@@ -68,6 +68,17 @@ export const ITEMS: ItemRegistry = {
     heal: 999,
     price: 1200,
   },
+  // The revive (the genre's phoenix feather, ours): a live coal carried from a
+  // hearth, pressed into a fainted kin's paws. Dear on purpose — a rest is free,
+  // a coal is for when the fight is still on (docs/mechanics/10-economy.md).
+  hearth_coal: {
+    id: 'hearth_coal',
+    name: 'Hearth Coal',
+    desc: 'A live coal from a hearth, still glowing. Rouses a fainted kin with half its health.',
+    category: 'medicine',
+    revive: 0.5,
+    price: 1500,
+  },
   // The level-up sweet (the genre's rare candy, ours): a bead of pressed lamp-honey
   // that a kin eats in one gulp and comes out of a whole level older. Never sold —
   // found, earned, or given, so the wick economy stays honest.

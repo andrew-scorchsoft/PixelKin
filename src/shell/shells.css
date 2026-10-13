@@ -104,13 +104,21 @@ body.pk-shell-device #game-root {
 
 /* Landscape: maximise the screen. Centre the largest 3:2 that fits the full
    viewport height (minus safe areas) — taller AND wider than the old top-pinned
-   layout — and let the controls flank it in the side margins (see below). */
+   layout — and let the controls flank it in the side margins (see below). While
+   the on-screen controls are showing, each side keeps a RAIL as wide as the
+   widest cluster (A·B: 116px×--pk-cs + its 16px inset + the 12px casing and a gap), so on a short,
+   wide phone the d-pad and B no longer poke into the picture (playtest, 2026-10). */
 @media (orientation: landscape) {
   body.pk-shell-device #game-root {
     --pk-ins: max(env(safe-area-inset-top), env(safe-area-inset-bottom), 8px);
+    --pk-rail: 12px;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: min(calc(100vw - 12px), calc(100dvh - 2 * var(--pk-ins)) * 3 / 2);
+    width: min(calc(100vw - 2 * var(--pk-rail)), calc(100dvh - 2 * var(--pk-ins)) * 3 / 2);
+  }
+  body.pk-shell-device:not(.pk-controls-unavailable) #game-root {
+    --pk-rail: calc(116px * var(--pk-cs) + 16px + 20px
+      + max(env(safe-area-inset-left), env(safe-area-inset-right)));
   }
 }
 
@@ -557,6 +565,17 @@ body.pk-controls-unavailable .pk-controls-help {
     bottom: auto;
     left: auto;
     right: max(env(safe-area-inset-right), 12px);
+    transform: none;
+  }
+}
+
+/* Landscape DEVICE shell: bottom-centre is the screen itself now, so the link sat
+   over the picture. Park it in the left rail, just under the size toggle. */
+@media (orientation: landscape) {
+  body.pk-shell-device:not(.pk-controls-unavailable) .pk-controls-help {
+    top: calc(max(env(safe-area-inset-top), 6px) + 38px);
+    bottom: auto;
+    left: max(env(safe-area-inset-left), 6px);
     transform: none;
   }
 }

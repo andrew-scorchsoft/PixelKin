@@ -896,6 +896,16 @@
       "h": 2
     },
     {
+      "id": "tea_urn_backwards",
+      "sprite": "oldlight_tea_urn",
+      "at": {
+        "tx": 6,
+        "ty": 2
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
       "id": "stairs_down_sprite",
       "sprite": "interior_stairs_down",
       "at": {
@@ -1181,6 +1191,26 @@
       "activation": "interact",
       "ref": "npc.oldlight_tube_4",
       "requires_flag": "flag:oldlight_4_solved"
+    },
+    {
+      "id": "urn_backwards_6",
+      "kind": "cutscene",
+      "at": {
+        "tx": 6,
+        "ty": 3
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_urn_backwards"
+    },
+    {
+      "id": "urn_backwards_7",
+      "kind": "cutscene",
+      "at": {
+        "tx": 7,
+        "ty": 3
+      },
+      "activation": "interact",
+      "ref": "script.oldlight_urn_backwards"
     }
   ],
   "encounters": [

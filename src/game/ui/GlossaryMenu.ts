@@ -14,6 +14,7 @@ import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT } from '@game/config';
 import { theme, hex } from './theme';
 import { makeText } from './Text';
+import { PagedText } from './PagedText';
 import { Panel } from './Panel';
 import { Cursor } from './Cursor';
 import { InputController, InputAction } from '@game/systems/input/InputController';
@@ -43,6 +44,7 @@ export class GlossaryMenu {
   private readonly rows: Row[];
   private readonly rowTexts: Phaser.GameObjects.Text[] = [];
   private readonly detail: Phaser.GameObjects.Text;
+  private readonly pager: PagedText;
   private readonly moreUp: Phaser.GameObjects.Text;
   private readonly moreDown: Phaser.GameObjects.Text;
   private readonly listTop: number;
@@ -99,6 +101,9 @@ export class GlossaryMenu {
     this.detail = makeText(scene, PAD, detailTop, '', theme.text.dim);
     this.detail.setWordWrapWidth(width - PAD * 2);
     this.panel.add(this.detail);
+    // Long text pages itself rather than spilling off the pane (ui/PagedText).
+    this.pager = new PagedText(scene, this.detail, DETAIL_LINES, DETAIL_LINE_H, { x: width - PAD - 12, y: sepY });
+    this.panel.add(this.pager.marker);
 
     this.cursor = new Cursor(scene).setScrollFactor0();
     this.panel.add(this.cursor.sprite);
@@ -127,7 +132,7 @@ export class GlossaryMenu {
     this.cursor.moveTo(PAD, this.listTop + (this.index - this.scroll) * ROW_H + ROW_H / 2);
 
     const row = this.rows[this.index];
-    this.detail.setText(row ? (row.unlocked ? row.entry.desc : LOCKED_DESC) : '');
+    this.pager.set(row ? (row.unlocked ? row.entry.desc : LOCKED_DESC) : '');
 
     this.moreUp.setVisible(this.scroll > 0);
     this.moreDown.setVisible(this.scroll + this.visibleRows < this.rows.length);
@@ -169,6 +174,7 @@ export class GlossaryMenu {
 
   destroy(): void {
     this.cursor.destroy();
+    this.pager.destroy();
     this.panel.destroy();
   }
 }

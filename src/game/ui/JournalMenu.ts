@@ -15,6 +15,7 @@ import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT } from '@game/config';
 import { theme, hex } from './theme';
 import { makeText } from './Text';
+import { PagedText } from './PagedText';
 import { Panel } from './Panel';
 import { Cursor } from './Cursor';
 import { InputController, InputAction } from '@game/systems/input/InputController';
@@ -51,6 +52,7 @@ export class JournalMenu {
   private readonly items: Item[] = [];
   private readonly rowTexts: Phaser.GameObjects.Text[] = [];
   private readonly detail: Phaser.GameObjects.Text;
+  private readonly pager: PagedText;
   private readonly moreUp: Phaser.GameObjects.Text;
   private readonly moreDown: Phaser.GameObjects.Text;
   private readonly listTop: number;
@@ -111,7 +113,7 @@ export class JournalMenu {
     this.visibleRows = Math.max(1, Math.floor(listSpace / ROW_H));
 
     this.panel = new Panel(scene, 4, 4, width, height).fixedToCamera().setDepth(theme.depth.panel);
-    this.panel.add(makeText(scene, PAD, PAD - 2, "THE WAYFARER'S JOURNAL", theme.text.accent));
+    this.panel.add(makeText(scene, PAD, PAD - 2, "WAYFARER'S JOURNAL", theme.text.accent));
     this.panel.add(makeText(scene, width - PAD, PAD - 2, 'B BACK', theme.text.dim).setOrigin(1, 0));
 
     for (let i = 0; i < this.visibleRows; i++) {
@@ -133,6 +135,9 @@ export class JournalMenu {
     this.detail = makeText(scene, PAD, detailTop, '', theme.text.dim);
     this.detail.setWordWrapWidth(width - PAD * 2);
     this.panel.add(this.detail);
+    // Long text pages itself rather than spilling off the pane (ui/PagedText).
+    this.pager = new PagedText(scene, this.detail, DETAIL_LINES, DETAIL_LINE_H, { x: width - PAD - 12, y: sepY });
+    this.panel.add(this.pager.marker);
 
     this.cursor = new Cursor(scene).setScrollFactor0();
     this.panel.add(this.cursor.sprite);
@@ -151,7 +156,7 @@ export class JournalMenu {
   private refresh(): void {
     if (this.empty) {
       this.rowTexts.forEach((t) => t.setText(''));
-      this.detail.setText(EMPTY_LINE);
+      this.pager.set(EMPTY_LINE);
       this.moreUp.setVisible(false);
       this.moreDown.setVisible(false);
       return;
@@ -195,9 +200,9 @@ export class JournalMenu {
           : item.row.kept
             ? '  (kept)'
             : '';
-      this.detail.setText(`${q.blurb}\nGiven by ${q.giver}.${progress}`);
+      this.pager.set(`${q.blurb}\nGiven by ${q.giver}.${progress}`);
     } else {
-      this.detail.setText('');
+      this.pager.set('');
     }
 
     this.moreUp.setVisible(this.scroll > 0);
@@ -248,6 +253,7 @@ export class JournalMenu {
 
   destroy(): void {
     this.cursor.destroy();
+    this.pager.destroy();
     this.panel.destroy();
   }
 }

@@ -550,8 +550,16 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   carrying `level_up: true`, used from ITEMS (`ItemsMenu.feedLumenDrop`) — it grants exactly
   the exp owed for the next level and then runs the battle path's own MoveLearn/Kindle
   prompts. **Never give it a `price`** (a buyable level would wreck the wick economy); it is
-  found (Spore Grotto, Wind-Eye, Duskapple Orchard) or given. Item descriptions must fit ~80 chars / 3 wrapped
-  lines — the pack's detail pane is fixed at 3 and does not scroll.
+  found (Spore Grotto, Wind-Eye, Duskapple Orchard) or given. The pack's detail pane shows 4 lines
+  and auto-PAGES anything longer ("n/m", `ItemsMenu.showDetail`), and its list scrolls — so any
+  length works, but ~110 chars (one page) reads best. The battle BAG never shows `desc`: it
+  shows `battleItemNote` (BattleScene), a generated one-liner from the item's numbers.
+- **The revive is the `hearth_coal`** (`ItemDef.revive` = share of max HP, 0.5): 1,500w at every
+  counter that sells Warm Balm, plus one in five balm caches. **Balms can't rouse a fainted
+  kin** (ItemsMenu blocks it): only a coal or a rest. Battle BAG/LAMP lists cap at 6 rows and
+  scroll (`MENU_MAX_ROWS`); the FIGHT menu pairs the move list with `ui/battle/MoveInfo`
+  (type/category/POW/ACC/uses + the earned SUPER!/RESISTED verdict vs a caught foe) and the
+  move's `desc` in the strip — `Menu.onHighlight` drives both.
 - **The player SWIMS on water.** `WorldScene.update` asks `map.hasTerrainAt(tx,ty,'water')`
   every frame and calls `Player.setSwimming`, which swaps to the packed `player_indi_swim`
   walk-sheet (same 4×4 layout) — or, with no such sheet, crops the sprite at the waterline and
@@ -875,6 +883,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `click`, never `pointerdown` (a touch pointerdown isn't a user activation, so `requestFullscreen`
   silently refuses); a save download (`FILE_DOWNLOAD_EVENT`) drops Android out of fullscreen, so the
   shell re-arms the auto-reclaim for the next control press.
+- **Landscape device shell keeps side RAILS for the controls (2026-10).** `#game-root`'s width
+  subtracts `--pk-rail` (the A·B cluster's width at the current `--pk-cs`) while controls show, so
+  the d-pad/B never overlap the picture; `main.ts` re-fits Phaser via a `ResizeObserver` on
+  `#game-root` (Phaser only listens to WINDOW resizes — without it the canvas crops). Check
+  phones with `shoot.mjs --device 844x390` (whole page, touch, device shell).
 - **`#game-root` must keep `min-height:0; overflow:hidden`** (device shell, `shells.css`): it's an
   `aspect-ratio` box, and Phaser's autoCenter canvas margin otherwise grows it in a feedback loop — the
   portrait screen's bottom edge crept up from below the volume slider for ~6 s of every load.
@@ -1019,7 +1032,7 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   you arrive in one north corner and the way up is in the other, so every floor is walked through
   its hall; each hall rolls wild encounters (a whimsical tower table, 9→14 — Pearlmoor's grind bed
   before Reyl and the fen) and an optional alcove regular (`oldlight_<id>` route trainers, F1–F5);
-  rests at the F3 tea-urn, the F6 two cups and the top's green-room chair; the top-floor BOSS (Punchwheel's
+  rests at the F3 tea-urn, its backwards twin beside the F4 Ringmaster, the F6 two cups and the top's green-room chair; the top-floor BOSS (Punchwheel's
   headline act, `oldlight_headliners`, ace 15, `battle-jesthouse-boss`) is the TOLL, not the climax: the
   three clowns stand in the only gap to the drum guarding Tam's card, step aside when beaten, the music
   falls away, and the CARD is the crescendo (owner's steer: a boss gates the story beat, never replaces it). Each floor wears its own warped kit
