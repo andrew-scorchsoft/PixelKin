@@ -309,13 +309,13 @@ export class PartyMenu {
 
     // Known moves with remaining charges.
     card.add(makeText(scene, 10, 92, 'MOVES', theme.text.accent));
+    // Four rows at a 10px pitch end inside the 144px card (at 11px the fourth
+    // ran off its bottom edge, under a 'B BACK' hint that sat on the third).
     kin.moves.forEach((m, i) => {
-      const y = 104 + i * 11;
+      const y = 103 + i * 10;
       card.add(makeText(scene, 10, y, m.move.name, theme.text.base));
-      card.add(makeText(scene, 150, y, `${m.charges}/${m.move.charges}`, theme.text.dim));
+      card.add(makeText(scene, innerW - PAD, y, `${m.charges}/${m.move.charges}`, theme.text.dim).setOrigin(1, 0));
     });
-
-    card.add(makeText(scene, innerW - PAD, innerH - PAD, 'B BACK', theme.text.dim).setOrigin(1, 1));
 
     return new Promise((resolve) => {
       const input = new InputController(scene);
