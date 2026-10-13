@@ -23,6 +23,7 @@ import { loadCreatureSprite, hasCreatureSprite } from '@game/systems/sprites/Cre
 import { playCry } from '@game/systems/audio/cries';
 import { SPECIES } from '@game/data/dex';
 import type { Species } from '@game/data/dex';
+import { worldMapNodeForMap } from '@game/data/world/worldmap';
 import type { DexProgress } from '@game/systems/save/types';
 import type { Sfx } from '@game/systems/audio/Sfx';
 
@@ -38,6 +39,22 @@ interface Row {
   species: Species;
   seen: boolean;
   caught: boolean;
+}
+
+/**
+ * "Found: Dimglass Coast, Pearlmoor Quay." — the places a species' wild tables
+ * roll it, named as the world MAP names them (data/world/worldmap.json), first
+ * seen first. A kin no table rolls is met another way (gifted, a set-piece).
+ */
+function habitatLine(s: Species): string {
+  const places: string[] = [];
+  for (const e of s.encounters ?? []) {
+    const name = e.area.startsWith('pearlmoor_oldlight')
+      ? 'the Old Light'
+      : worldMapNodeForMap(e.area)?.name ?? null;
+    if (name && !places.includes(name)) places.push(name);
+  }
+  return places.length ? `Found: ${places.join(', ')}.` : 'Not found in the wild. It must be met another way.';
 }
 
 export class RegisterMenu {
@@ -162,10 +179,13 @@ export class RegisterMenu {
 
     const s = row.species;
     const types = s.types.join(' / ');
+    // Where it lives (playtest: collecting had no "where do I look?"): once seen,
+    // the places its wild tables roll it, by name.
+    const where = habitatLine(s);
     if (row.caught) {
-      this.pager.set(`${s.name} — ${s.dex.category}\n${types}\n${s.dex.entry}`);
+      this.pager.set(`${s.name} — ${s.dex.category}\n${types}\n${where}\n${s.dex.entry}`);
     } else {
-      this.pager.set(`${s.name} — ${s.dex.category}\n${types}\nCatch one, and the register will hold its story.`);
+      this.pager.set(`${s.name} — ${s.dex.category}\n${types}\n${where}\nCatch one, and the register will hold its story.`);
     }
 
     // Lazy icon: full colour once caught, a dark silhouette when merely seen.

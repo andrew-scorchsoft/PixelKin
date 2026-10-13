@@ -14,6 +14,8 @@ import { DebugOverlay } from '@game/ui/DebugOverlay';
 import { DialogueBox } from '@game/ui/DialogueBox';
 import { Menu } from '@game/ui/Menu';
 import { Panel } from '@game/ui/Panel';
+import { PagedText } from '@game/ui/PagedText';
+import { nextGoal } from '@game/content/nextgoal';
 import { PartyMenu } from '@game/ui/PartyMenu';
 import { ItemsMenu } from '@game/ui/ItemsMenu';
 import { HearthMenu } from '@game/ui/HearthMenu';
@@ -2325,6 +2327,26 @@ export class WorldScene extends Phaser.Scene {
   }
 
   /** In-game pause menu (Start/Esc): Resume / Kin / Hearth / Items / Save / Settings. */
+  /**
+   * The NEXT panel beside the pause menu: the main journey's current step
+   * (content/nextgoal.ts), so "where now?" is one button away. Long lines page.
+   */
+  private nextGoalPanel(top: number): { destroy(): void } {
+    const x = 112;
+    const w = this.cameras.main.width - x - 4;
+    const lines = 9; // the longest goal wraps to ~8 lines at this width
+    const h = theme.space.lg * 2 + 11 + lines * 9;
+    const panel = new Panel(this, x, Math.max(4, top), w, h).fixedToCamera().setDepth(theme.depth.panel);
+    panel.add(makeText(this, theme.space.lg, theme.space.lg - 2, 'NEXT', theme.text.accent));
+    const body = makeText(this, theme.space.lg, theme.space.lg + 9, '', theme.text.base);
+    body.setWordWrapWidth(w - theme.space.lg * 2);
+    panel.add(body);
+    const pager = new PagedText(this, body, lines, 9, { x: w - theme.space.lg, y: theme.space.lg + 2 });
+    panel.add(pager.marker);
+    pager.set(nextGoal((f) => this.flags.get(f)));
+    return { destroy: () => { pager.destroy(); panel.destroy(); } };
+  }
+
   private async openPauseMenu(): Promise<void> {
     this.modal = true;
     // The menu's own blips voice every choice and the close (cancel); only the
@@ -2359,7 +2381,9 @@ export class WorldScene extends Phaser.Scene {
       const rows = Math.min(entries.length, fits);
       const menuH = theme.space.lg * 2 + rows * 12;
       const menuY = Math.min(8, this.cameras.main.height - menuH - 2);
+      const goal = this.nextGoalPanel(menuY);
       const choice = await new Menu(this, entries, { x: 8, y: menuY, sfx: this.sfx, maxVisible: rows }).run();
+      goal.destroy();
 
       if (choice === 'map') {
         await new WorldMapMenu(this, this.map.def.id, this.sfx).run();
