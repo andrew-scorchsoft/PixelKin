@@ -961,6 +961,28 @@
      "remaster": "play/assets/audio/music/remaster/sting-hour.mp3",
      "loop_start": null,
      "note": null
+    },
+    {
+     "id": "kindle-ceremony",
+     "title": "Kindle Ceremony",
+     "where": "",
+     "mood": "",
+     "classic": "play/assets/audio/music/kindle-ceremony.mp3",
+     "classic_loop_start": null,
+     "remaster": null,
+     "loop_start": null,
+     "note": null
+    },
+    {
+     "id": "kindle-fanfare",
+     "title": "Kindle Fanfare",
+     "where": "",
+     "mood": "",
+     "classic": "play/assets/audio/music/kindle-fanfare.mp3",
+     "classic_loop_start": null,
+     "remaster": null,
+     "loop_start": null,
+     "note": null
     }
    ]
   }

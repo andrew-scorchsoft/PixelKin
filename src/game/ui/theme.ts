@@ -95,6 +95,16 @@ export const theme = {
   /** Cinematic / cutscene presentation timings (ms). */
   cinematic: { dissolveMs: 900, letterboxMs: 320, holdMs: 700, crossfadeMs: 700 },
 
+  /** The kindling ceremony's stage (ui/KindlePrompt): night sky, the warm glow
+   *  behind the kin, its white silhouette mid-change, the bloom wash, rising motes. */
+  kindle: {
+    sky: COLORS.night,
+    glow: '#ffd98a',
+    silhouette: '#fff6dc',
+    bloom: '#fff3d0',
+    mote: COLORS.bone,
+  },
+
   /** The pointing cursor's look + the sfx keys it plays. */
   cursor: {
     blinkMs: 420,

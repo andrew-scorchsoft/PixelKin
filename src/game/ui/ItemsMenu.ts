@@ -26,7 +26,7 @@ import { Cursor } from './Cursor';
 import { Menu, type MenuOption } from './Menu';
 import { DialogueBox } from './DialogueBox';
 import { MoveLearnPrompt } from './MoveLearnPrompt';
-import { KindlePrompt } from './KindlePrompt';
+import { KindlePrompt, type KindleMusic } from './KindlePrompt';
 import { InputController, InputAction } from '@game/systems/input/InputController';
 import { KinInstance, MAX_LEVEL, expForLevel } from '@game/systems/party/KinInstance';
 import { MOVE_BY_ID } from '@game/data/dex';
@@ -85,6 +85,8 @@ export interface ItemsMenuResult {
 export interface ItemsMenuFlags {
   get(flag: WorldFlag): boolean;
   set(flag: WorldFlag, value: boolean): void;
+  /** The world's music, lent to a kindling ceremony (a Kindlestone or a Lumen Drop). */
+  kindleMusic?: KindleMusic;
 }
 
 /** One carried item, resolved to its definition for display + use. */
@@ -411,7 +413,7 @@ export class ItemsMenu {
     const kindling = kin.raiseBond(ItemsMenu.BOND_PER_TEND);
     if (kindling) {
       this.setOverlayVisible(false);
-      await new KindlePrompt(this.scene, kin, kindling, this.sfx).run();
+      await new KindlePrompt(this.scene, kin, kindling, this.sfx, undefined, this.flags?.kindleMusic).run();
       this.setOverlayVisible(true);
     }
     this.rebuild();
@@ -461,7 +463,7 @@ export class ItemsMenu {
     }
     if (kindleReady) {
       this.setOverlayVisible(false);
-      await new KindlePrompt(this.scene, kin, kindleReady, this.sfx).run();
+      await new KindlePrompt(this.scene, kin, kindleReady, this.sfx, undefined, this.flags?.kindleMusic).run();
       this.setOverlayVisible(true);
     }
     this.rebuild();

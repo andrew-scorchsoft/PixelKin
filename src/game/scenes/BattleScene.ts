@@ -39,7 +39,7 @@ import { Battler } from '@game/ui/battle/Battler';
 import { HpPanel } from '@game/ui/battle/HpPanel';
 import { BattleMessage } from '@game/ui/battle/BattleMessage';
 import { MoveLearnPrompt } from '@game/ui/MoveLearnPrompt';
-import { KindlePrompt } from '@game/ui/KindlePrompt';
+import { KindlePrompt, type KindleMusic } from '@game/ui/KindlePrompt';
 import { getTrainer, getTrainerLines } from '@game/content/trainers';
 import { trainerArt, trainerBattleTexture, PLAYER_BACK_SPRITE } from '@game/content/trainerArt';
 import { TrainerStage } from '@game/ui/battle/TrainerStage';
@@ -236,13 +236,18 @@ export class BattleScene extends Phaser.Scene {
       .setScrollFactor(0);
   }
 
-  private startMusic(): void {
+  /** Lend the battle's bed to a kindling ceremony; it comes back where it left off. */
+  private kindleMusic(): KindleMusic {
+    return { director: this.music, restore: () => this.startMusic(true) };
+  }
+
+  private startMusic(resume = false): void {
     // a trainer's own theme wins; else the map's battle cue; else the wild theme
     const mapCue = resolveBattleMusic(this.request.mapId);
     const key = this.request.kind === 'trainer'
       ? getTrainer(this.request.trainer)?.music ?? mapCue ?? 'battle-main-dusk-duel'
       : mapCue ?? 'battle-main-dusk-duel';
-    void this.music.play(key, `${MUSIC_DIR}${key}.mp3`);
+    void this.music.play(key, `${MUSIC_DIR}${key}.mp3`, { resume });
   }
 
   /** A kin pops onto the field (after its trainer has stepped aside). */
@@ -846,7 +851,7 @@ export class BattleScene extends Phaser.Scene {
       const isActive = kin === this.engine.player;
       const kindled = await new KindlePrompt(this, kin, kindling, this.sfx, () => {
         if (isActive) this.playerBattler.setSpecies(this, kin.species, 'player');
-      }).run();
+      }, this.kindleMusic()).run();
       if (kindled) {
         this.dexSeen.add(kin.species.id);
         if (isActive) this.playerHp.refresh();
@@ -935,7 +940,7 @@ export class BattleScene extends Phaser.Scene {
       this.msg.setVisible(false);
       const kindled = await new KindlePrompt(this, kin, kindleReady, this.sfx, () => {
         if (isActive) this.playerBattler.setSpecies(this, kin.species, 'player');
-      }).run();
+      }, this.kindleMusic()).run();
       if (kindled) {
         this.dexSeen.add(kin.species.id);
         if (isActive) this.playerHp.refresh();

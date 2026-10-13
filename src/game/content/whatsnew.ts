@@ -15,6 +15,9 @@
  * with the case. Changes there ship SILENTLY; announce only general things.
  */
 export const WHATS_NEW: Record<string, string[]> = {
+  '1.24': [
+    'Kindling is a proper ceremony now: your kin glows and flickers between its old shape and its new one, to a tune of its own. Press B before the light blooms if you would rather it waited.',
+  ],
   '1.23': [
     'Trainer battles now open the old way: your opponent steps out to face you, says their piece, and sends out their kin. Win, and they come back for a few closing words.',
     'If you finished parts of the Wayfaring on an older build, places that later updates hung on quest steps you had already passed are now open to you.',
