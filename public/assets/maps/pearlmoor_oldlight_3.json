@@ -917,6 +917,16 @@
       "ref": "sign.oldlight_teacups"
     },
     {
+      "id": "bar_stool_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 3,
+        "ty": 4
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_bar_stool"
+    },
+    {
       "id": "stove",
       "kind": "sign",
       "at": {
@@ -981,7 +991,7 @@
       "kind": "cutscene",
       "at": {
         "tx": 12,
-        "ty": 10
+        "ty": 9
       },
       "activation": "interact",
       "ref": "script.oldlight_computer"
@@ -991,7 +1001,7 @@
       "kind": "cutscene",
       "at": {
         "tx": 13,
-        "ty": 10
+        "ty": 9
       },
       "activation": "interact",
       "ref": "script.oldlight_computer"

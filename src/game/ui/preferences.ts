@@ -112,6 +112,20 @@ export function prefersReducedMotion(): boolean {
   }
 }
 
+// ----------------------------------------------------------- trainer talk --
+
+/** Trainer talk in battle ("X wants to battle!", "X sent out Y!", the payout):
+ *  false (the default) = wait for A, like the classics; true = auto-advance. */
+let trainerTalkAuto = false;
+
+export function setTrainerTalkAuto(auto: boolean): void {
+  trainerTalkAuto = auto;
+}
+
+export function getTrainerTalkAuto(): boolean {
+  return trainerTalkAuto;
+}
+
 // ----------------------------------------------------------------- battle pace --
 
 export function setBattlePace(pace: BattlePace): void {

@@ -269,6 +269,16 @@ export const JESTHOUSE_DIALOGUE: DialogueRegistry = {
   'sign.oldlight_masks': [
     sign('Two masks on the wall, one laughing, one weeping. Somebody has drawn a tiny moustache on the weeping one. It looks much happier.'),
   ],
+  'sign.oldlight_bench_reserved': [
+    sign('A bench with a card: RESERVED FOR LAUGHTER. It has been reserved for eleven winters. Laughter never turned up. It didn\'t even send word.'),
+  ],
+  'sign.oldlight_spotlight': [
+    sign('A spotlight, aimed with great care at the one spot on the floor where nobody has ever stood.'),
+    sign('You stand in it. It swings away, embarrassed.'),
+  ],
+  'sign.oldlight_bunting': [
+    sign('Bunting spelling out GRAND OPENING. One flag has fallen, so it reads GRAND OPEN NG. Everyone has noticed. Nobody has said anything.'),
+  ],
   'npc.oldlight_groaner': [
     line('GROANER', 'Ohhhhh. ...Sorry. Reflex.'),
     line('GROANER', 'I\'m the house groaner. Every good jest-house keeps one. When the machine lands a pun, somebody has to make the noise it deserves.'),
@@ -297,6 +307,13 @@ export const JESTHOUSE_DIALOGUE: DialogueRegistry = {
   ],
   'sign.oldlight_masks_late': [
     sign('Two masks. The weeping one is wincing at a joke the laughing one hasn\'t heard yet.'),
+  ],
+  'sign.oldlight_props': [
+    sign('A crate stencilled PROPS. Inside it, a smaller crate stencilled MORE PROPS. Inside that, a note: STOP LOOKING AT THE PROPS.'),
+  ],
+  'sign.oldlight_spotlight_late': [
+    sign('This spotlight is following you. Slowly. About a step and a half behind.'),
+    sign('It\'s on the late floor. It\'ll catch up.'),
   ],
   'npc.oldlight_juggler_after': [
     line('JUGGLER', 'Want to see me juggle three kin? ...Neither do they. They\'ve made that very clear.'),
@@ -344,6 +361,27 @@ export const JESTHOUSE_DIALOGUE: DialogueRegistry = {
   'trainer.oldlight_critic.defeat': [line('THE CRITIC', 'Five stars. Don\'t let it go to your head. I give the stairs five stars too.')],
 
   // ---- F6 ---------------------------------------------------------------------------------
+  // ---- F3/F4/F5/TOP: the extra props (2026-10, more jokes) -----------------------------------
+  'sign.oldlight_bar_stool': [
+    sign('A bar stool. You sit on it. It spins you round once, very slowly, and stops with you facing the wall.'),
+    sign('It does this to everybody. It thinks it\'s a bit.'),
+  ],
+  'sign.oldlight_brazier': [
+    sign('A brazier, burning merrily. It gives off no heat at all. A tag on it reads: FOR DRAMATIC EFFECT ONLY. DO NOT WARM HANDS.'),
+  ],
+  'sign.oldlight_viewing_bench': [
+    sign('A bench labelled VIEWING BENCH. You sit and view. The gallery views you back.'),
+    sign('Somewhere, the Critic writes: two stars.'),
+  ],
+  'sign.oldlight_plant': [
+    sign('A potted plant. Its card reads: FACT: THIS IS A TREE.'),
+    sign('It is not a tree. It knows. It\'s doing its best.'),
+  ],
+  'sign.oldlight_jars': [
+    sign('Three oil jars labelled FUNNY, FUNNIER and NOT FOR LAMPS. The NOT FOR LAMPS one is empty.'),
+    sign('Several lamps on this floor are laughing quietly to themselves.'),
+  ],
+
   'sign.oldlight_old_confetti': [
     sign('A small heap of very old confetti, swept into a corner and then, it seems, never swept away. Somebody was keeping it for a celebration that hasn\'t come yet.'),
   ],

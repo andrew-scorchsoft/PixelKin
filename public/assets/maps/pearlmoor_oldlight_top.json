@@ -722,6 +722,16 @@
       "ref": "script.oldlight_log"
     },
     {
+      "id": "jars_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 1,
+        "ty": 9
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_jars"
+    },
+    {
       "id": "greenroom",
       "kind": "cutscene",
       "at": {

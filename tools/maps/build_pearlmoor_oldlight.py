@@ -246,6 +246,7 @@ def floor_1():
     wall_mount(objects, "banner_warm", 13, face_row=MID, oid="banner_r", solid=False)
     ol(objects, "applause_sign", 15, MID, oid="applause")
     ol(objects, "bunting", 5, MID, oid="bunting_w")
+    sign_at(triggers, "bunting_sign", 5, MID, "sign.oldlight_bunting")
     place(objects, "counter", 9, MID + 1, oid="box_office")
     sign_at(triggers, "box_office_sign", 10, MID + 2, "sign.oldlight_box_office")
     sign_at(triggers, "plaque", 14, MID, "sign.oldlight_plaque")
@@ -256,6 +257,7 @@ def floor_1():
     sign_at(triggers, "coats_sign", 2, 11, "sign.oldlight_coats")
     place(objects, "pew", 5, 11, oid="bench_l")
     place(objects, "pew", 14, 11, oid="bench_r")
+    sign_at(triggers, "bench_l_sign", 6, 11, "sign.oldlight_bench_reserved")
     ol(objects, "rubber_chickens", 8, 11, oid="chicken_stand")
     sign_at(triggers, "chickens", 8, 12, "sign.oldlight_chickens")
     ol(objects, "laugh_meter", 12, 11, oid="laugh_meter")
@@ -289,6 +291,7 @@ def floor_1():
     ol(objects, "jack_box", 9, 3, oid="jack_box")
     sign_at(triggers, "jack_box_sign", 9, 3, "script.oldlight_jack_box", kind="cutscene")
     ol(objects, "spotlight", 14, 2, oid="spotlight")
+    sign_at(triggers, "spotlight_sign", 14, 3, "sign.oldlight_spotlight")
     stairs(1, W, base, objects, warps, triggers, down=None, up="ne")
     enc = [encounters("tower_f1", TOWER_TABLES[1],
                       rect=(1, 2, W - 2, 4), rate=0.05)]
@@ -306,6 +309,7 @@ def floor_2():
     objects, warps, triggers, npcs = [], [], [], []
     # arrival (NE): the WINGS — the prop store behind the stage
     place(objects, "crates", 14, 2, oid="props")
+    sign_at(triggers, "props_sign", 14, 3, "sign.oldlight_props")
     ol(objects, "unicycle", 17, 2, oid="unicycle")
     sign_at(triggers, "unicycle_sign", 17, 3, "sign.oldlight_unicycle")
     ol(objects, "clown_shoes", 13, 5, oid="clown_shoes")
@@ -318,6 +322,7 @@ def floor_2():
         objects.append({"id": oid, "sprite": f"oldlight_{stem}", "at": {"tx": x, "ty": MID + 1},
                         "w": 1, "h": 2, "solid": False})
     ol(objects, "spotlight", 16, MID + 2, oid="spotlight")
+    sign_at(triggers, "spotlight_sign", 16, MID + 3, "sign.oldlight_spotlight_late")
     place(objects, "pew", 9, 11, oid="pew_a")
     place(objects, "pew", 13, 11, oid="pew_b")
     # the audience that laughs one line late (stood behind the pews; the aisle
@@ -362,6 +367,7 @@ def floor_3():
     ol(objects, "teacups", 7, 2, oid="teacups")
     sign_at(triggers, "teacups_sign", 7, 3, "sign.oldlight_teacups")
     place(objects, "stool", 3, 4, oid="bar_stool")
+    sign_at(triggers, "bar_stool_sign", 3, 4, "sign.oldlight_bar_stool")
     place(objects, "stool", 6, 4, oid="bar_stool_b")
     # the hall is TWO rooms (the floor's own shape): the Hall of Mouths (west)
     # and the computer room (east), one doorway between them at row 11
@@ -380,10 +386,11 @@ def floor_3():
     ol(objects, "pie_table", 3, 10, oid="pies")
     sign_at(triggers, "pies_sign", 3, 11, "sign.oldlight_pies")
     # the COMPUTER (an anachronism nobody can explain — the tower's own joke),
-    # off the line in the east of the hall; Confirm on its front -> ANDY-LAND
+    # off the line in the east of the hall; Confirm facing its front row -> ANDY-LAND
+    # (the triggers sit ON the object, row 9: one row lower = facing bare floor)
     place(objects, "computer", 12, 8, oid="computer")
     for x in (12, 13):
-        sign_at(triggers, f"computer_{x}", x, 10, "script.oldlight_computer", kind="cutscene")
+        sign_at(triggers, f"computer_{x}", x, 9, "script.oldlight_computer", kind="cutscene")
     # the three escaped PUNCHLINES, loose in the hall
     for nid, x, y, spr in (("punch_tuesday", 15, 9, "npc_girl"),
                            ("punch_buns", 6, 12, "npc_child"),
@@ -440,6 +447,7 @@ def floor_4():
                     "at": {"tx": 8, "ty": 12}, "w": 3, "h": 2})
     sign_at(triggers, "troupe_cart", 11, 12, "npc.oldlight_cart")
     place(objects, "brazier", 15, 10, oid="brazier_r")
+    sign_at(triggers, "brazier_sign", 15, 11, "sign.oldlight_brazier")
     # the MIRROR MAZE (small): free-standing funhouse glasses zig-zag the east
     # hall, so the walk to the stair is a little dance with your reflections
     for i, (x, y) in enumerate(((17, 9), (19, 11), (13, 10), (17, 12), (19, 8))):
@@ -481,7 +489,9 @@ def floor_5():
     place(objects, "brazier", 2, 3, oid="brazier_n")
     place(objects, "brazier", 18, 9, oid="brazier_s")
     place(objects, "pew", 8, 11, oid="viewing_bench")
+    sign_at(triggers, "viewing_bench_sign", 9, 11, "sign.oldlight_viewing_bench")
     place(objects, "plant", 1, 13, oid="plant")
+    sign_at(triggers, "plant_sign", 1, 13, "sign.oldlight_plant")
     ol(objects, "joke_lectern", 12, 10, oid="lectern")
     sign_at(triggers, "lectern_sign", 12, 12, "script.oldlight_lectern", kind="cutscene")
     ol(objects, "mallet", 3, 9, oid="mallet")
@@ -600,6 +610,7 @@ def floor_top():
     wall_mount(objects, "lamp_rack", 11, solid=False)
     place(objects, "brazier", 3, 7, oid="brazier_w")
     place(objects, "oil_jars", 1, 9, oid="jars")
+    sign_at(triggers, "jars_sign", 1, 9, "sign.oldlight_jars")
     # the workshop clutter of a machine that wound itself too tight
     ol(objects, "cog_heap", 2, 4, oid="cogs")
     # the GREEN ROOM chair by the stairhead: the top floor's rest point, before the

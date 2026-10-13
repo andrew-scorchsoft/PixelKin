@@ -876,6 +876,16 @@
   ],
   "triggers": [
     {
+      "id": "props_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 14,
+        "ty": 3
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_props"
+    },
+    {
       "id": "unicycle_sign",
       "kind": "sign",
       "at": {
@@ -894,6 +904,16 @@
       },
       "activation": "interact",
       "ref": "sign.oldlight_clown_shoes"
+    },
+    {
+      "id": "spotlight_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 16,
+        "ty": 10
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_spotlight_late"
     },
     {
       "id": "laugh_track_sign",

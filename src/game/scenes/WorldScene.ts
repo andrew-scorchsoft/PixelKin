@@ -1068,6 +1068,30 @@ export class WorldScene extends Phaser.Scene {
     );
   }
 
+  /**
+   * Many "read this" triggers were authored on the floor tile IN FRONT of their
+   * object (the Old Light's computer, coat rack, box office; shrines, the Starwell
+   * basin…), so standing there and facing the object — what every player does —
+   * found nothing. Facing a visible object with no trigger of its own answers with
+   * an interact trigger on the tile you're standing on.
+   */
+  private triggerInFrontOf(tx: number, ty: number): EventTrigger | undefined {
+    const facingObject = (this.map.def.objects ?? []).some(
+      (o) =>
+        this.objectVisible(o) &&
+        tx >= o.at.tx && tx < o.at.tx + o.w &&
+        ty >= o.at.ty && ty < o.at.ty + o.h,
+    );
+    if (!facingObject) return undefined;
+    return this.map.def.triggers.find(
+      (t) =>
+        t.activation === 'interact' &&
+        t.at.tx === this.player.tx &&
+        t.at.ty === this.player.ty &&
+        this.triggerActive(t),
+    );
+  }
+
   /** Whether a desk-like object (counter, stall, altar, desk) covers this tile. */
   private deskAt(tx: number, ty: number): boolean {
     return (this.map.def.objects ?? []).some(
@@ -1191,7 +1215,7 @@ export class WorldScene extends Phaser.Scene {
           t.at.tx === ahead.tx &&
           t.at.ty === ahead.ty &&
           this.triggerActive(t),
-      ) ?? this.triggerOnObjectAt(ahead.tx, ahead.ty);
+      ) ?? this.triggerOnObjectAt(ahead.tx, ahead.ty) ?? this.triggerInFrontOf(ahead.tx, ahead.ty);
     if (trigger) {
       await this.handleTrigger(trigger);
       return;

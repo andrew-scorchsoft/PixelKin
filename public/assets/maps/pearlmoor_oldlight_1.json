@@ -912,6 +912,16 @@
   ],
   "triggers": [
     {
+      "id": "bunting_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 5,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_bunting"
+    },
+    {
       "id": "box_office_sign",
       "kind": "sign",
       "at": {
@@ -950,6 +960,16 @@
       },
       "activation": "interact",
       "ref": "sign.oldlight_coats"
+    },
+    {
+      "id": "bench_l_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 6,
+        "ty": 11
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_bench_reserved"
     },
     {
       "id": "chickens",
@@ -1033,6 +1053,16 @@
       },
       "activation": "interact",
       "ref": "script.oldlight_jack_box"
+    },
+    {
+      "id": "spotlight_sign",
+      "kind": "sign",
+      "at": {
+        "tx": 14,
+        "ty": 3
+      },
+      "activation": "interact",
+      "ref": "sign.oldlight_spotlight"
     },
     {
       "id": "riddle_band",

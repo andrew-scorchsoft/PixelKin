@@ -62,6 +62,8 @@ export interface Settings {
   textSpeed?: 'cosy' | 'brisk' | 'instant';
   /** Battle wait/tween pace: 'cosy' = full, 'swift' = half-length. */
   battlePace?: 'cosy' | 'swift';
+  /** Trainer talk in battle auto-advances (true) or waits for A (false, default). */
+  trainerTalkAuto?: boolean;
   /** Overall volume 0..1 (the shell slider / Settings → Volume); unset = 1. */
   masterVolume?: number;
   /** Stepped master volume for background music (OFF/LOW/MID/FULL). */
@@ -89,6 +91,7 @@ export const DEFAULT_SETTINGS: Settings = {
   alwaysRun: false,
   textSpeed: 'cosy',
   battlePace: 'cosy',
+  trainerTalkAuto: false,
   masterVolume: 1,
   musicVolume: 'full',
   sfxVolume: 'full',
