@@ -75,6 +75,7 @@ export const LIGHT_SOURCES: Record<string, { hx: number; hy: number; radius: num
   // north — the Ashfall Shelf (10 Part II)
   ashfall_brazier: { hx: 16, hy: 12, radius: 18, color: 0xff9a4a },
   ashfall_pane_lamp_lit: { hx: 8, hy: 8, radius: 15, color: 0xffd089 },
+  ashfall_kiln_furnace: { hx: 32, hy: 28, radius: 30, color: 0xff8a3a }, // lit once the Last Pane is taken
   // outer — the Undertide + the Drowned Lamp (10 Part I)
   undertide_tidelamp_lit: { hx: 8, hy: 8, radius: 14, color: 0xffd890 },
   undertide_lamp_lit: { hx: 32, hy: 34, radius: 40, color: 0xffd890 },
