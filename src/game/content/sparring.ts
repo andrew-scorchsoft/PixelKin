@@ -18,6 +18,7 @@ export const SPAR_COOLDOWN = 3;
 
 interface Hall {
   hall: string; // the Lumenary interior map id (without _lumenary)
+  title: string; // the hall's own trainer class (its battle sprite, TITLE_CLASS)
   name: string;
   gleam: string;
   party: [number, number][]; // [species_id, level], ace last
@@ -26,7 +27,7 @@ interface Hall {
 
 const HALLS: Hall[] = [
   {
-    hall: 'tinderwick', name: 'ROSIE WICKERS', gleam: 'gleam:ember',
+    hall: 'tinderwick', title: 'Wick-tender', name: 'ROSIE WICKERS', gleam: 'gleam:ember',
     party: [[16, 8], [10, 8], [18, 9]],
     voice: [
       'Brisa says I need the practice. Spar with me? I\'ll pay out of my own wick-tin, fair and square.',
@@ -35,7 +36,7 @@ const HALLS: Hall[] = [
     ],
   },
   {
-    hall: 'pearlmoor', name: 'TOMAS SPRAT', gleam: 'gleam:tide',
+    hall: 'pearlmoor', title: 'Net-hand', name: 'TOMAS SPRAT', gleam: 'gleam:tide',
     party: [[26, 13], [27, 14], [24, 15]],
     voice: [
       'Reyl has me sparring every comer who\'s earned the Tide. One bout? The hall pays the winner.',
@@ -44,7 +45,7 @@ const HALLS: Hall[] = [
     ],
   },
   {
-    hall: 'lowleaf', name: 'HAZEL ALDER', gleam: 'gleam:verdant',
+    hall: 'lowleaf', title: 'Moss-tender', name: 'HAZEL ALDER', gleam: 'gleam:verdant',
     party: [[56, 19], [59, 20], [66, 21]],
     voice: [
       'Sable likes the hall to keep growing. A friendly bout? There are wicks in it for whoever wins.',
@@ -53,7 +54,7 @@ const HALLS: Hall[] = [
     ],
   },
   {
-    hall: 'cinderhead', name: 'COBB COLLIER', gleam: 'gleam:stone',
+    hall: 'cinderhead', title: 'Seam-miner', name: 'COBB COLLIER', gleam: 'gleam:stone',
     party: [[48, 25], [46, 26], [55, 27]],
     voice: [
       'Otho says a wall that\'s never hit forgets it\'s a wall. Hit mine? The hall pays a fair rate.',
@@ -62,7 +63,7 @@ const HALLS: Hall[] = [
     ],
   },
   {
-    hall: 'galehigh', name: 'KESTREL TOWE', gleam: 'gleam:storm',
+    hall: 'galehigh', title: 'Kite-hand', name: 'KESTREL TOWE', gleam: 'gleam:storm',
     party: [[98, 31], [89, 32], [90, 33]],
     voice: [
       'Mira wants her kites tested in any weather. You\'re weather. Spar? Purse to the winner.',
@@ -71,7 +72,7 @@ const HALLS: Hall[] = [
     ],
   },
   {
-    hall: 'pale_vault', name: 'INGA SNELL', gleam: 'gleam:frost',
+    hall: 'pale_vault', title: 'Frost-ward', name: 'INGA SNELL', gleam: 'gleam:frost',
     party: [[72, 37], [84, 38], [87, 39]],
     voice: [
       'Ysolde says the cold is patient. I am not. Spar with me? The hall pays in wicks.',
@@ -80,7 +81,7 @@ const HALLS: Hall[] = [
     ],
   },
   {
-    hall: 'sunken_solarium', name: 'LIO BRASS', gleam: 'gleam:solar',
+    hall: 'sunken_solarium', title: 'Sun-keeper', name: 'LIO BRASS', gleam: 'gleam:solar',
     party: [[117, 43], [104, 44], [123, 45]],
     voice: [
       'Lucan says every understudy needs an audience. Be mine? There\'s a purse for the winner.',
@@ -89,7 +90,7 @@ const HALLS: Hall[] = [
     ],
   },
   {
-    hall: 'nightreach', name: 'MAB HOLLOWAY', gleam: 'gleam:lunar',
+    hall: 'nightreach', title: 'Star-watcher', name: 'MAB HOLLOWAY', gleam: 'gleam:lunar',
     party: [[106, 49], [112, 50], [107, 51]],
     voice: [
       'Nessa keeps me sharp on anyone who reaches the dome. Spar under the stars? The purse is good.',
@@ -107,7 +108,7 @@ export const SPAR_TRAINERS: Record<string, TrainerDef> = Object.fromEntries(
     const def: TrainerDef = {
       id: `spar_${h.hall}`,
       name: h.name,
-      title: 'Hall Sparrer',
+      title: h.title,
       party: h.party.map(([species_id, level]) => ({ species_id, level })),
       payout: PAYOUT_RATE_KEEPER * ace, // keeper 20 × ace, every win (repeatable)
     };
