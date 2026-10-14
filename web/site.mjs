@@ -63,6 +63,7 @@ export const NAV = [
     ['The World', 'story'],
     ['Kin', 'creatures'],
     ['Music', 'music'],
+    ['Guide', 'guide'],
     ['Updates', 'changelog'],
     ['FAQ', 'faq'],
     ['Licensing', 'license'],

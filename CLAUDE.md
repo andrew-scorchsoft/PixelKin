@@ -1394,6 +1394,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   lightbox (world gallery, Lumenaries, the first-50 kin grid). Site imagery is copied into
   `web/assets/img/` and the kin grid reads a generated `web/assets/data/kin.json` so the site deploys
   standalone — refresh recipes are in `web/README.md`.
+- **The website's player GUIDE is compiled from `docs/guide/*.md` (2026-10) — one source of truth.**
+  Front-matter `title/section/order/desc/spoilers`; `section` must be one of `GUIDE_SECTIONS` in
+  `tools/build/guide.mjs`; `[[slug|label]]` links chapters; `<!-- block:name -->` reuses site blocks.
+  `build_site.mjs` renders `guide.html` + `guide-<slug>.html` (CI). The build FAILS on any hidden
+  real-people term (`FORBIDDEN` there) — the guide must never mention Paul's content. When content
+  changes, update the matching chapter in the same commit (the design walkthrough is `docs/world/walkthrough/`).
 - **Maps must pass the LOOK gate, not just the play audits (2026-10).** `tools/maps/audit_visual.py
   --all` FAILs a flat void (< 0.75 props/landmarks per 15×10 screen — the South bar is 2–5) and
   box pools (water filling its bounding box, ≥16 tiles); it's at 0 FAIL / 0 warn across all 46

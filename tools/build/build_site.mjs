@@ -20,14 +20,20 @@ import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PAGES, BLOCKS, tokens, typeColor } from '../../web/site.mjs';
 import { header, footer } from '../../web/layout.mjs';
+import { loadGuide, chapterBody, indexBody } from './guide.mjs';
 
 const ROOT = resolve(fileURLToPath(new URL('../../', import.meta.url)));
 const WEB = join(ROOT, 'web');
 const OUT = resolve(process.argv[2] ?? join(ROOT, 'release'));
 const KEEP = new Set(['play']);
 
-function render(page) {
-    let body = readFileSync(join(WEB, 'pages', `${page.stem}.html`), 'utf8');
+function render(page, bodyOverride) {
+    let body = bodyOverride ?? readFileSync(join(WEB, 'pages', `${page.stem}.html`), 'utf8');
+    return header(page) + '\n' + expand(page, body) + '\n' + footer();
+}
+
+/** Blocks (`<!-- block:x -->`) and {{TOKENS}} — shared by pages and guide chapters. */
+function expand(page, body) {
     body = body.replace(/<!-- block:([\w-]+) -->/g, (_, name) => {
         if (!BLOCKS[name]) throw new Error(`${page.stem}: unknown block "${name}"`);
         return BLOCKS[name]().replace(/^\n/, '');
@@ -38,7 +44,7 @@ function render(page) {
         if (!(key in vals)) throw new Error(`${page.stem}: unknown token {{${key}}}`);
         return vals[key];
     });
-    return header(page) + '\n' + body + '\n' + footer();
+    return body;
 }
 
 // Refresh everything except the staged game build.
@@ -49,4 +55,15 @@ mkdirSync(OUT, { recursive: true });
 cpSync(join(WEB, 'assets'), join(OUT, 'assets'), { recursive: true });
 for (const f of ['_redirects', '.htaccess', '.assetsignore']) cpSync(join(WEB, f), join(OUT, f));
 for (const page of PAGES) writeFileSync(join(OUT, `${page.stem}.html`), render(page));
-console.log(`  · site   → ${OUT}  (${PAGES.length} pages)`);
+
+// The Wayfarer's Guide: docs/guide/*.md -> guide.html + guide-<slug>.html (tools/build/guide.mjs).
+const chapters = loadGuide(ROOT);
+if (chapters.length) {
+    const indexPage = { stem: 'guide', title: "The Wayfarer's Guide", desc: 'The PixelKin walkthrough: how to play, the main journey chapter by chapter, side areas and secrets, the post-game, and reference tables.' };
+    writeFileSync(join(OUT, 'guide.html'), render(indexPage, indexBody(chapters)));
+    for (const c of chapters) {
+        const page = { stem: c.stem, title: c.title, desc: c.desc };
+        writeFileSync(join(OUT, `${c.stem}.html`), render(page, chapterBody(c, chapters, (html) => expand(page, html))));
+    }
+}
+console.log(`  · site   → ${OUT}  (${PAGES.length} pages + guide: ${chapters.length} chapters)`);

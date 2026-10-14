@@ -30,6 +30,10 @@ jobs:
       # (It caught the unreachable Starfall Vigils and Georgina's unfinishable quest.)
       - name: Content integrity (refs, portraits, sprites, flags)
         run: node tools/content/check_content.mjs
+      # The website + player guide render from docs/guide/*.md; the build refuses any
+      # chapter that names the hidden real-people content (tools/build/guide.mjs FORBIDDEN).
+      - name: Site + guide build (spoiler gate)
+        run: node tools/build/build_site.mjs "$(mktemp -d)"
       - name: Roster schema + power budget + evolution lines
         run: node tools/balance/validate.mjs
       - name: Type chart fair-fight band
