@@ -248,7 +248,7 @@ PLACEMENTS: dict[str, dict] = {
             },
         },
         "day": {
-            "fringe_a": T((56, 28, 56, 62), (67, 28, 56, 63), (38, 22, 56, 63), (62, 14, 56, 62), (66, 8, 58, 65), (65, 12, 56, 63)),
+            "fringe_a": T((56, 28, 56, 62), (67, 28, 56, 63), (38, 22, 56, 63), (62, 14, 56, 62), (68, 8, 58, 65), (65, 12, 56, 63)),  # FC3: Fernlance (was Lumournis, now Fields-only)
         },
         "objects": [
             # The kitchens: Marisol's stall (chile strings, the comal) + her pozole pot

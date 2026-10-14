@@ -86,6 +86,34 @@
       "rarity": "rare",
       "min": 58,
       "max": 64
+    },
+    {
+      "area": "rimeway_ascent",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 39,
+      "max": 41
+    },
+    {
+      "area": "rimeway_ascent",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 62
+    },
+    {
+      "area": "rimeway_fold",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 40,
+      "max": 41
+    },
+    {
+      "area": "rimeway_fold",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 62
     }
   ],
   "scripted": false,

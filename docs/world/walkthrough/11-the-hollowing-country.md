@@ -156,6 +156,15 @@ Knot** (terrace cache) is a toggle key item (`flag:harvest_knot_hung`, encounter
 strongest damper; key, so never sold). At dawn the shrine swaps to `field_shrine_lit` (all five
 candles burning, a light pool), and the shrine and the tender each get a dawn line.
 
+**Third review pass (FC3, 2026-10-14):** the Brook Piece has gone back to **long grass** (an L of
+tuft round Tussock's last square of stubble) and is the Fields' own bed: **Lumournis** (#66,
+Verdant/Light, the leaf-winged moth that "calms wild kin and soothes blight") rolls there and
+**nowhere else in the wild** (rare 51–52 by dusk, uncommon 59–62 at dawn). Lowleaf's dawn rare,
+where it used to sit, is now Fernlance (its own dex calls it Lowleaf's signature rare). The marker
+stone's third line and the tender's dawn line ("It never once came to any other field") hint at
+it. The loop's south road, the Rimeway (Ascent, Fold, Descent), now rolls final forms only: the
+Descent's moths are Liminalux, Voidmantle, Wisprestored and Lullwing, never base forms past kindling.
+
 ## D · The Penumbra Underways — the last road (endgame)
 
 The genre's "last road" before the climax is missing. Two portal cave floors under the Penumbra

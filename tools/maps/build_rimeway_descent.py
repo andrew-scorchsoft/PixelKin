@@ -173,25 +173,26 @@ m["triggers"].append({"id": "notice_read", "kind": "dialogue", "at": {"tx": 35, 
 owed.append("sign.rimeway_hollowing_notice")
 
 # ---- encounters (46-48; night/day pairs) --------------------------------------------
+# FC3 (2026-10-14, third review): FINAL forms only. The old tables rolled base forms
+# 10-40 levels past their kindling (Crystarn at 41, Mothdim at 62); every line is now
+# its kindled form, the Rimeway keeping its frost/stone (and, below, its moth) voice.
 NIGHT = [
-    {"kin_id": 134, "weight": 23, "min_level": 46, "max_level": 47},  # Wispwane
-    {"kin_id": 137, "weight": 20, "min_level": 46, "max_level": 48},  # Nullmoth
-    {"kin_id": 139, "weight": 14, "min_level": 46, "max_level": 48},  # WispwaneNull
-    {"kin_id": 136, "weight": 12, "min_level": 46, "max_level": 47},  # Mothdim
-    {"kin_id": 78, "weight": 10, "min_level": 46, "max_level": 47},  # Crystarn
-    {"kin_id": 141, "weight": 8, "min_level": 47, "max_level": 48},  # Cindersob
+    {"kin_id": 135, "weight": 23, "min_level": 46, "max_level": 47},  # Liminalux (was Wispwane)
+    {"kin_id": 138, "weight": 20, "min_level": 46, "max_level": 48},  # Voidmantle (was Nullmoth)
+    {"kin_id": 140, "weight": 14, "min_level": 46, "max_level": 48},  # Wisprestored (was WispwaneNull)
+    {"kin_id": 180, "weight": 12, "min_level": 46, "max_level": 47},  # Lullwing (was Mothdim)
+    {"kin_id": 85, "weight": 10, "min_level": 46, "max_level": 47},  # Stillwarden (was Crystarn)
+    {"kin_id": 142, "weight": 12, "min_level": 47, "max_level": 48},  # Embergone (was Cindersob)
     {"kin_id": 79, "weight": 7, "min_level": 47, "max_level": 48},  # Glacitern
-    {"kin_id": 142, "weight": 6, "min_level": 48, "max_level": 48},  # Embergone
 ]
 DAY = [
-    {"kin_id": 134, "weight": 18, "min_level": 56, "max_level": 62},  # Wispwane
-    {"kin_id": 137, "weight": 16, "min_level": 57, "max_level": 63},  # Nullmoth
-    {"kin_id": 139, "weight": 14, "min_level": 57, "max_level": 63},  # WispwaneNull
-    {"kin_id": 136, "weight": 12, "min_level": 56, "max_level": 62},  # Mothdim
-    {"kin_id": 78, "weight": 12, "min_level": 57, "max_level": 63},  # Crystarn
-    {"kin_id": 141, "weight": 10, "min_level": 57, "max_level": 63},  # Cindersob
+    {"kin_id": 135, "weight": 18, "min_level": 56, "max_level": 62},  # Liminalux
+    {"kin_id": 138, "weight": 16, "min_level": 57, "max_level": 63},  # Voidmantle
+    {"kin_id": 140, "weight": 14, "min_level": 57, "max_level": 63},  # Wisprestored
+    {"kin_id": 180, "weight": 12, "min_level": 56, "max_level": 62},  # Lullwing
+    {"kin_id": 85, "weight": 12, "min_level": 57, "max_level": 63},  # Stillwarden
+    {"kin_id": 142, "weight": 14, "min_level": 57, "max_level": 64},  # Embergone
     {"kin_id": 79, "weight": 10, "min_level": 58, "max_level": 64},  # Glacitern
-    {"kin_id": 142, "weight": 8, "min_level": 58, "max_level": 64},  # Embergone
 ]
 band = mk.make_grid(W, H)
 patch = mk.make_grid(W, H)

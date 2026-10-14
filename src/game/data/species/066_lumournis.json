@@ -70,11 +70,18 @@
   },
   "encounters": [
     {
-      "area": "lowleaf_hollow",
+      "area": "mourning_fields",
       "terrain": "tall_grass",
       "rarity": "rare",
-      "min": 58,
-      "max": 65
+      "min": 51,
+      "max": 52
+    },
+    {
+      "area": "mourning_fields",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 59,
+      "max": 62
     }
   ],
   "scripted": false,

@@ -531,7 +531,9 @@ R4_DAYFORM_ENCOUNTERS = {
     "sporeling":  [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 62}],
     "mossglow":   [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 63}],
     "barkhelm":   [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62}],
-    "lumournis":  [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 65}],
+    # FC3 (2026-10-14): Lowleaf's dawn rare is Fernlance (its dex: "the Lowleaf Hollow
+    # signature rare"); Lumournis moved to the Mourning Fields' Brook Piece, its only wild home.
+    "fernlance":  [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 65}],
     "tidalarch":  [{"area": "sunkbell_shallows", "terrain": "water", "rarity": "uncommon", "min": 58, "max": 65}],
     # ---- North day rows ----
     "sparrowcaw": [{"area": "galehigh_terraces", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 60}],
@@ -847,54 +849,49 @@ for _slug, _rows_ in SUNVAULT_FACE_ENCOUNTERS.items():
 
 # The Wild Ways — the Rimeway (C, 09-the-wild-ways §2 C, 2026-10): the Ascent/Fold/Descent
 # BUILT in-map tables (tools/maps/build_rimeway_*.py), night + day twins; Vaultclaw #76
-# lives only up here. Same W6 weight->rarity rule.
+# is the Fold's own. Same W6 weight->rarity rule. FC3 (2026-10-14): FINAL forms only
+# (the old rows rolled base forms 10-40 levels past their kindling).
 RIMEWAY_ENCOUNTERS: dict = {}
-RIMEWAY_ENCOUNTERS.setdefault("blizzrhare", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "common", "min": 39, "max": 41})
-RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 41})
-RIMEWAY_ENCOUNTERS.setdefault("geodrake", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 41})
-RIMEWAY_ENCOUNTERS.setdefault("hushbore", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 41})
-RIMEWAY_ENCOUNTERS.setdefault("prismcub", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 40})
-RIMEWAY_ENCOUNTERS.setdefault("geolace", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 40})
-RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "rare", "min": 40, "max": 41})
-RIMEWAY_ENCOUNTERS.setdefault("vaultclaw", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "rare", "min": 41, "max": 41})
-RIMEWAY_ENCOUNTERS.setdefault("blizzrhare", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
-RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 63})
-RIMEWAY_ENCOUNTERS.setdefault("geodrake", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
-RIMEWAY_ENCOUNTERS.setdefault("hushbore", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
-RIMEWAY_ENCOUNTERS.setdefault("prismcub", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
-RIMEWAY_ENCOUNTERS.setdefault("geolace", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
-RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64})
+RIMEWAY_ENCOUNTERS.setdefault("vortexlope", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "common", "min": 39, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("stillwarden", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("prismantus", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 40})
+RIMEWAY_ENCOUNTERS.setdefault("frigalance", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 40})
+RIMEWAY_ENCOUNTERS.setdefault("crystalune", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 40})
+RIMEWAY_ENCOUNTERS.setdefault("vaultclaw", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "very_rare", "min": 41, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("vortexlope", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("stillwarden", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("prismantus", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("frigalance", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("crystalune", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
 RIMEWAY_ENCOUNTERS.setdefault("vaultclaw", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "rare", "min": 60, "max": 65})
-RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "common", "min": 40, "max": 42})
-RIMEWAY_ENCOUNTERS.setdefault("geodrake", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 42})
-RIMEWAY_ENCOUNTERS.setdefault("blizzrhare", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
-RIMEWAY_ENCOUNTERS.setdefault("snowcune", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
-RIMEWAY_ENCOUNTERS.setdefault("geolace", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
-RIMEWAY_ENCOUNTERS.setdefault("chillpip", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
-RIMEWAY_ENCOUNTERS.setdefault("vaultclaw", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "rare", "min": 41, "max": 42})
-RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
-RIMEWAY_ENCOUNTERS.setdefault("geodrake", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
-RIMEWAY_ENCOUNTERS.setdefault("blizzrhare", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
-RIMEWAY_ENCOUNTERS.setdefault("snowcune", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
-RIMEWAY_ENCOUNTERS.setdefault("geolace", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
-RIMEWAY_ENCOUNTERS.setdefault("chillpip", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 61})
-RIMEWAY_ENCOUNTERS.setdefault("vaultclaw", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 64})
-RIMEWAY_ENCOUNTERS.setdefault("wispwane", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 47})
-RIMEWAY_ENCOUNTERS.setdefault("nullmoth", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 48})
-RIMEWAY_ENCOUNTERS.setdefault("wispwanenull", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 48})
-RIMEWAY_ENCOUNTERS.setdefault("mothdim", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 47})
-RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 47})
-RIMEWAY_ENCOUNTERS.setdefault("cindersob", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "rare", "min": 47, "max": 48})
+RIMEWAY_ENCOUNTERS.setdefault("vaultclaw", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "common", "min": 40, "max": 42})
+RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 42})
+RIMEWAY_ENCOUNTERS.setdefault("vortexlope", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("stillwarden", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("frigalance", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("prismantus", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("vaultclaw", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("vortexlope", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("stillwarden", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("frigalance", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("prismantus", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 61})
+RIMEWAY_ENCOUNTERS.setdefault("liminalux", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 47})
+RIMEWAY_ENCOUNTERS.setdefault("voidmantle", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 48})
+RIMEWAY_ENCOUNTERS.setdefault("wisprestored", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 48})
+RIMEWAY_ENCOUNTERS.setdefault("lullwing", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 47})
+RIMEWAY_ENCOUNTERS.setdefault("stillwarden", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 47})
+RIMEWAY_ENCOUNTERS.setdefault("embergone", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 48})
 RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "rare", "min": 47, "max": 48})
-RIMEWAY_ENCOUNTERS.setdefault("embergone", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "rare", "min": 48, "max": 48})
-RIMEWAY_ENCOUNTERS.setdefault("wispwane", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
-RIMEWAY_ENCOUNTERS.setdefault("nullmoth", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
-RIMEWAY_ENCOUNTERS.setdefault("wispwanenull", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
-RIMEWAY_ENCOUNTERS.setdefault("mothdim", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
-RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
-RIMEWAY_ENCOUNTERS.setdefault("cindersob", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("liminalux", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("voidmantle", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("wisprestored", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("lullwing", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("stillwarden", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("embergone", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 64})
 RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 64})
-RIMEWAY_ENCOUNTERS.setdefault("embergone", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64})
 for _slug, _rows_ in RIMEWAY_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
 
@@ -1311,6 +1308,12 @@ MOURNING_TABLES = [
     ("mourning_fields", "tall_grass", [(127, 22, 56, 61), (58, 18, 56, 61), (125, 16, 57, 62),
                                        (107, 14, 57, 62), (140, 14, 56, 61), (9, 10, 57, 62),
                                        (129, 6, 60, 62)]),
+    # FC3 (2026-10-14): the Brook Piece's long grass, night then day; LUMOURNIS (#66)
+    # is wild ONLY here (the Fields' kin of its own)
+    ("mourning_fields", "tall_grass", [(180, 30, 48, 51), (58, 24, 49, 51), (125, 20, 48, 50),
+                                       (113, 18, 48, 50), (66, 8, 51, 52)]),
+    ("mourning_fields", "tall_grass", [(127, 26, 56, 61), (58, 24, 56, 61), (107, 20, 57, 62),
+                                       (9, 16, 57, 62), (66, 14, 59, 62)]),
     # the Underways (build_penumbra_underways.py): night tables, then the post-dawn
     # `_day` twins; B1's warm-stones pocket is the only pre-dawn Embralux (#33) ground,
     # and (FD2, 2026-10-14) the ONLY wild JesterFull (#168, Light/Dark) anywhere

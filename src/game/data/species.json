@@ -923,6 +923,13 @@
      "rarity": "uncommon",
      "min": 57,
      "max": 62
+    },
+    {
+     "area": "mourning_fields",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -7026,6 +7033,20 @@
      "rarity": "uncommon",
      "min": 56,
      "max": 61
+    },
+    {
+     "area": "mourning_fields",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 49,
+     "max": 51
+    },
+    {
+     "area": "mourning_fields",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 61
     }
    ],
    "scripted": false,
@@ -7944,11 +7965,18 @@
    },
    "encounters": [
     {
-     "area": "lowleaf_hollow",
+     "area": "mourning_fields",
      "terrain": "tall_grass",
      "rarity": "rare",
-     "min": 58,
-     "max": 65
+     "min": 51,
+     "max": 52
+    },
+    {
+     "area": "mourning_fields",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 59,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -8177,6 +8205,13 @@
      "rarity": "uncommon",
      "min": 60,
      "max": 62
+    },
+    {
+     "area": "lowleaf_hollow",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 58,
+     "max": 65
     }
    ],
    "scripted": false,
@@ -8832,34 +8867,6 @@
      "rarity": "uncommon",
      "min": 56,
      "max": 62
-    },
-    {
-     "area": "rimeway_ascent",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 39,
-     "max": 40
-    },
-    {
-     "area": "rimeway_ascent",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 56,
-     "max": 62
-    },
-    {
-     "area": "rimeway_fold",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 40,
-     "max": 41
-    },
-    {
-     "area": "rimeway_fold",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 56,
-     "max": 62
     }
    ],
    "scripted": false,
@@ -8960,34 +8967,6 @@
      "rarity": "uncommon",
      "min": 56,
      "max": 62
-    },
-    {
-     "area": "rimeway_ascent",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 39,
-     "max": 41
-    },
-    {
-     "area": "rimeway_ascent",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 57,
-     "max": 63
-    },
-    {
-     "area": "rimeway_fold",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 40,
-     "max": 42
-    },
-    {
-     "area": "rimeway_fold",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 57,
-     "max": 63
     }
    ],
    "scripted": false,
@@ -9076,7 +9055,7 @@
     {
      "area": "rimeway_ascent",
      "terrain": "tall_grass",
-     "rarity": "rare",
+     "rarity": "very_rare",
      "min": 41,
      "max": 41
     },
@@ -9090,16 +9069,16 @@
     {
      "area": "rimeway_fold",
      "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 41,
+     "rarity": "common",
+     "min": 40,
      "max": 42
     },
     {
      "area": "rimeway_fold",
      "terrain": "tall_grass",
      "rarity": "uncommon",
-     "min": 58,
-     "max": 64
+     "min": 57,
+     "max": 63
     },
     {
      "area": "farlamp_gullwrack",
@@ -9194,20 +9173,6 @@
     },
     {
      "area": "windward_stair_i",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 56,
-     "max": 61
-    },
-    {
-     "area": "rimeway_fold",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 40,
-     "max": 41
-    },
-    {
-     "area": "rimeway_fold",
      "terrain": "tall_grass",
      "rarity": "uncommon",
      "min": 56,
@@ -9335,48 +9300,6 @@
      "rarity": "common",
      "min": 57,
      "max": 63
-    },
-    {
-     "area": "rimeway_ascent",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 39,
-     "max": 41
-    },
-    {
-     "area": "rimeway_ascent",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 56,
-     "max": 63
-    },
-    {
-     "area": "rimeway_fold",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 40,
-     "max": 42
-    },
-    {
-     "area": "rimeway_fold",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 57,
-     "max": 63
-    },
-    {
-     "area": "rimeway_descent",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 46,
-     "max": 47
-    },
-    {
-     "area": "rimeway_descent",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 57,
-     "max": 63
     }
    ],
    "scripted": false,
@@ -9486,16 +9409,30 @@
     {
      "area": "rimeway_ascent",
      "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 40,
+     "rarity": "uncommon",
+     "min": 39,
      "max": 41
     },
     {
      "area": "rimeway_ascent",
      "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 58,
-     "max": 64
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 63
+    },
+    {
+     "area": "rimeway_fold",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 40,
+     "max": 42
+    },
+    {
+     "area": "rimeway_fold",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 63
     },
     {
      "area": "rimeway_descent",
@@ -9600,20 +9537,6 @@
     },
     {
      "area": "pale_vault_glacier",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 56,
-     "max": 62
-    },
-    {
-     "area": "rimeway_fold",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 40,
-     "max": 41
-    },
-    {
-     "area": "rimeway_fold",
      "terrain": "tall_grass",
      "rarity": "uncommon",
      "min": 56,
@@ -9737,34 +9660,6 @@
      "rarity": "uncommon",
      "min": 57,
      "max": 63
-    },
-    {
-     "area": "rimeway_ascent",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 39,
-     "max": 41
-    },
-    {
-     "area": "rimeway_ascent",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 56,
-     "max": 62
-    },
-    {
-     "area": "rimeway_fold",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 40,
-     "max": 41
-    },
-    {
-     "area": "rimeway_fold",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 56,
-     "max": 62
     }
    ],
    "scripted": false,
@@ -9863,6 +9758,34 @@
      "rarity": "rare",
      "min": 58,
      "max": 64
+    },
+    {
+     "area": "rimeway_ascent",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 39,
+     "max": 41
+    },
+    {
+     "area": "rimeway_ascent",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
+    },
+    {
+     "area": "rimeway_fold",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 40,
+     "max": 41
+    },
+    {
+     "area": "rimeway_fold",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -10069,20 +9992,6 @@
      "rarity": "rare",
      "min": 57,
      "max": 62
-    },
-    {
-     "area": "rimeway_ascent",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 39,
-     "max": 41
-    },
-    {
-     "area": "rimeway_ascent",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 56,
-     "max": 62
     }
    ],
    "scripted": false,
@@ -10205,6 +10114,48 @@
      "rarity": "common",
      "min": 57,
      "max": 64
+    },
+    {
+     "area": "rimeway_ascent",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 39,
+     "max": 41
+    },
+    {
+     "area": "rimeway_ascent",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
+    },
+    {
+     "area": "rimeway_fold",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 40,
+     "max": 41
+    },
+    {
+     "area": "rimeway_fold",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
+    },
+    {
+     "area": "rimeway_descent",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 46,
+     "max": 47
+    },
+    {
+     "area": "rimeway_descent",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 63
     },
     {
      "area": "undertide_i",
@@ -10441,20 +10392,6 @@
      "rarity": "common",
      "min": 57,
      "max": 63
-    },
-    {
-     "area": "rimeway_ascent",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 39,
-     "max": 40
-    },
-    {
-     "area": "rimeway_ascent",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 56,
-     "max": 62
     }
    ],
    "scripted": false,
@@ -10588,6 +10525,34 @@
      "rarity": "common",
      "min": 58,
      "max": 65
+    },
+    {
+     "area": "rimeway_ascent",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 39,
+     "max": 40
+    },
+    {
+     "area": "rimeway_ascent",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
+    },
+    {
+     "area": "rimeway_fold",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 40,
+     "max": 41
+    },
+    {
+     "area": "rimeway_fold",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 61
     },
     {
      "area": "drownlight_f2",
@@ -11569,6 +11534,34 @@
      "rarity": "rare",
      "min": 58,
      "max": 64
+    },
+    {
+     "area": "rimeway_ascent",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 39,
+     "max": 40
+    },
+    {
+     "area": "rimeway_ascent",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 63
+    },
+    {
+     "area": "rimeway_fold",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 40,
+     "max": 41
+    },
+    {
+     "area": "rimeway_fold",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
     },
     {
      "area": "farlamp_sound",
@@ -12758,6 +12751,13 @@
      "max": 62
     },
     {
+     "area": "mourning_fields",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 62
+    },
+    {
      "area": "penumbra_underways",
      "terrain": "tall_grass",
      "rarity": "common",
@@ -13401,6 +13401,13 @@
      "rarity": "common",
      "min": 50,
      "max": 53
+    },
+    {
+     "area": "mourning_fields",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 48,
+     "max": 50
     },
     {
      "area": "mourning_fields",
@@ -15069,6 +15076,20 @@
      "max": 65
     },
     {
+     "area": "rimeway_ascent",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 39,
+     "max": 40
+    },
+    {
+     "area": "rimeway_ascent",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
+    },
+    {
      "area": "mourning_fields",
      "terrain": "tall_grass",
      "rarity": "uncommon",
@@ -15081,6 +15102,13 @@
      "rarity": "uncommon",
      "min": 57,
      "max": 62
+    },
+    {
+     "area": "mourning_fields",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 48,
+     "max": 50
     }
    ],
    "scripted": false,
@@ -15351,6 +15379,13 @@
      "rarity": "rare",
      "min": 60,
      "max": 65
+    },
+    {
+     "area": "mourning_fields",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 61
     },
     {
      "area": "mourning_fields",
@@ -16023,22 +16058,7 @@
     "weight_kg": 1.4,
     "habitat": "outer"
    },
-   "encounters": [
-    {
-     "area": "rimeway_descent",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 46,
-     "max": 47
-    },
-    {
-     "area": "rimeway_descent",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 56,
-     "max": 62
-    }
-   ],
+   "encounters": [],
    "scripted": false,
    "art": {
     "silhouette": "Elongated wisp with a clear left/right split: the light half is warm ivory-gold with a faint inner shimmer; the dark half is deep indigo-void with null-mist tendrils; the division is a crackling seam of sparks.",
@@ -16124,6 +16144,20 @@
      "rarity": "uncommon",
      "min": 51,
      "max": 53
+    },
+    {
+     "area": "rimeway_descent",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 46,
+     "max": 47
+    },
+    {
+     "area": "rimeway_descent",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
     },
     {
      "area": "drownlight_f1",
@@ -16325,20 +16359,6 @@
    },
    "encounters": [
     {
-     "area": "rimeway_descent",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 46,
-     "max": 47
-    },
-    {
-     "area": "rimeway_descent",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 56,
-     "max": 62
-    },
-    {
      "area": "glowmoss_deep",
      "terrain": "cave",
      "rarity": "uncommon",
@@ -16428,20 +16448,6 @@
      "rarity": "common",
      "min": 48,
      "max": 50
-    },
-    {
-     "area": "rimeway_descent",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 46,
-     "max": 48
-    },
-    {
-     "area": "rimeway_descent",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 57,
-     "max": 63
     }
    ],
    "scripted": false,
@@ -16531,6 +16537,20 @@
      "rarity": "common",
      "min": 50,
      "max": 53
+    },
+    {
+     "area": "rimeway_descent",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 46,
+     "max": 48
+    },
+    {
+     "area": "rimeway_descent",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 63
     },
     {
      "area": "undertide_ii",
@@ -16735,20 +16755,6 @@
      "rarity": "common",
      "min": 48,
      "max": 50
-    },
-    {
-     "area": "rimeway_descent",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 46,
-     "max": 48
-    },
-    {
-     "area": "rimeway_descent",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 57,
-     "max": 63
     }
    ],
    "scripted": false,
@@ -16835,6 +16841,20 @@
      "rarity": "uncommon",
      "min": 66,
      "max": 68
+    },
+    {
+     "area": "rimeway_descent",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 46,
+     "max": 48
+    },
+    {
+     "area": "rimeway_descent",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 63
     },
     {
      "area": "mourning_fields",
@@ -17001,20 +17021,6 @@
      "rarity": "rare",
      "min": 57,
      "max": 63
-    },
-    {
-     "area": "rimeway_descent",
-     "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 47,
-     "max": 48
-    },
-    {
-     "area": "rimeway_descent",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 57,
-     "max": 63
     }
    ],
    "scripted": false,
@@ -17117,15 +17123,15 @@
     {
      "area": "rimeway_descent",
      "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 48,
+     "rarity": "uncommon",
+     "min": 47,
      "max": 48
     },
     {
      "area": "rimeway_descent",
      "terrain": "tall_grass",
-     "rarity": "rare",
-     "min": 58,
+     "rarity": "uncommon",
+     "min": 57,
      "max": 64
     },
     {
@@ -20977,6 +20983,20 @@
    },
    "encounters": [
     {
+     "area": "rimeway_descent",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 46,
+     "max": 47
+    },
+    {
+     "area": "rimeway_descent",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
+    },
+    {
      "area": "drownlight_f1",
      "terrain": "cave",
      "rarity": "uncommon",
@@ -21010,6 +21030,13 @@
      "rarity": "common",
      "min": 46,
      "max": 48
+    },
+    {
+     "area": "mourning_fields",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 48,
+     "max": 51
     },
     {
      "area": "penumbra_underways_b1",

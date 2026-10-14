@@ -170,23 +170,24 @@ m["objects"].append({"id": "cairn_west", "sprite": "windward_cairn", "at": {"tx"
                      "w": 2, "h": 3, "overhang": 1})
 
 # ---- encounters (40-42; night/day pairs; VAULTCLAW #76 lives only here) ---------------
+# FC3 (2026-10-14, third review): FINAL forms only. The old tables rolled base forms
+# 10-40 levels past their kindling (Crystarn at 41, Mothdim at 62); every line is now
+# its kindled form, the Rimeway keeping its frost/stone (and, below, its moth) voice.
 NIGHT = [
-    {"kin_id": 78, "weight": 21, "min_level": 40, "max_level": 42},  # Crystarn
-    {"kin_id": 75, "weight": 18, "min_level": 40, "max_level": 42},  # Geodrake
-    {"kin_id": 81, "weight": 16, "min_level": 40, "max_level": 41},  # Blizzrhare
-    {"kin_id": 80, "weight": 14, "min_level": 40, "max_level": 41},  # Snowcune
-    {"kin_id": 74, "weight": 12, "min_level": 40, "max_level": 41},  # Geolace
-    {"kin_id": 77, "weight": 10, "min_level": 40, "max_level": 41},  # Chillpip
-    {"kin_id": 76, "weight": 9, "min_level": 41, "max_level": 42},  # Vaultclaw (Fold-exclusive)
+    {"kin_id": 76, "weight": 21, "min_level": 40, "max_level": 42},  # Vaultclaw (the Fold's own: common only here)
+    {"kin_id": 79, "weight": 18, "min_level": 40, "max_level": 42},  # Glacitern (was Crystarn)
+    {"kin_id": 82, "weight": 16, "min_level": 40, "max_level": 41},  # Vortexlope (was Blizzrhare/Snowcune)
+    {"kin_id": 85, "weight": 14, "min_level": 40, "max_level": 41},  # Stillwarden
+    {"kin_id": 96, "weight": 12, "min_level": 40, "max_level": 41},  # Frigalance
+    {"kin_id": 87, "weight": 10, "min_level": 40, "max_level": 41},  # Prismantus
 ]
 DAY = [
-    {"kin_id": 78, "weight": 18, "min_level": 57, "max_level": 63},  # Crystarn
-    {"kin_id": 75, "weight": 16, "min_level": 57, "max_level": 63},  # Geodrake
-    {"kin_id": 81, "weight": 14, "min_level": 56, "max_level": 62},  # Blizzrhare
-    {"kin_id": 80, "weight": 14, "min_level": 56, "max_level": 62},  # Snowcune
-    {"kin_id": 74, "weight": 12, "min_level": 56, "max_level": 62},  # Geolace
-    {"kin_id": 77, "weight": 12, "min_level": 56, "max_level": 61},  # Chillpip
-    {"kin_id": 76, "weight": 14, "min_level": 58, "max_level": 64},  # Vaultclaw
+    {"kin_id": 76, "weight": 18, "min_level": 57, "max_level": 63},  # Vaultclaw
+    {"kin_id": 79, "weight": 16, "min_level": 57, "max_level": 63},  # Glacitern
+    {"kin_id": 82, "weight": 14, "min_level": 56, "max_level": 62},  # Vortexlope
+    {"kin_id": 85, "weight": 14, "min_level": 56, "max_level": 62},  # Stillwarden
+    {"kin_id": 96, "weight": 12, "min_level": 56, "max_level": 62},  # Frigalance
+    {"kin_id": 87, "weight": 12, "min_level": 56, "max_level": 61},  # Prismantus
 ]
 band = mk.make_grid(W, H)
 patch = mk.make_grid(W, H)

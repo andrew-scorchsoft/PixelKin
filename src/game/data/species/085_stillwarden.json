@@ -112,6 +112,48 @@
       "max": 64
     },
     {
+      "area": "rimeway_ascent",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 39,
+      "max": 41
+    },
+    {
+      "area": "rimeway_ascent",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 62
+    },
+    {
+      "area": "rimeway_fold",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 40,
+      "max": 41
+    },
+    {
+      "area": "rimeway_fold",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 62
+    },
+    {
+      "area": "rimeway_descent",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 46,
+      "max": 47
+    },
+    {
+      "area": "rimeway_descent",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 57,
+      "max": 63
+    },
+    {
       "area": "undertide_i",
       "terrain": "cave",
       "rarity": "uncommon",

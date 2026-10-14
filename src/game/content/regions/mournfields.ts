@@ -112,6 +112,7 @@ export const MOURNFIELDS_SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'FIELD-TENDER', text: 'Look at them. Up before me, the lazy things. They\'ve been at the stooks all morning.' },
     { op: 'say', speaker: 'FIELD-TENDER', text: 'I kept the blankets. I fold them every evening anyway. Habit. Or maybe in case.' },
     { op: 'say', speaker: 'FIELD-TENDER', text: 'Somebody\'s lit all five candles at the shrine. I went up at first light and read the names out, one field at a time, like the old harvest-home. Silly. I cried at the Brook Piece.' },
+    { op: 'say', speaker: 'FIELD-TENDER', text: 'The green moth\'s still down in the Brook Piece\'s long grass, did you see? Leaf wings, glows like a lamp through a hedge. Sat up with my Tussock every night he slept. It never once came to any other field.', if_flag: 'flag:mournfields_brook_met' },
     { op: 'run', ref: 'script.mournfields_tender_knot', if_flag: 'flag:picked_mournfields_terrace', unless_flag: 'flag:mournfields_knot_noted' },
     { op: 'say', speaker: 'FIELD-TENDER', text: 'Thank you. I don\'t know how else to say it, so I\'ll just say it the once and then go back to work.', unless_flag: 'flag:mournfields_tender_gift' },
     { op: 'run', ref: 'script.mournfields_tender_gift', unless_flag: 'flag:mournfields_tender_gift' },
@@ -166,6 +167,7 @@ export const MOURNFIELDS_DIALOGUE: DialogueRegistry = {
   'sign.mournfields_brook': [
     { text: 'A marker stone, freshly scrubbed:\nTHE BROOK PIECE.\nThe brook went under in the second winter and never came back up.' },
     { text: 'Scratched below, small: "T. sleeps here. Mind the hedge, it\'s for the wind, not for you."' },
+    { text: 'And under that, older: "Let the long grass be. The big green moth with the leaf wings comes down to it some nights and sits up with him. It never goes to any other field. Let it."' },
   ],
   'sign.mournfields_notice': [
     { text: 'A notice in the Hollowing\'s careful hand:\n"THESE KIN ARE SLEEPING. Please do not wake them. Please do not lift the blankets."' },

@@ -122,25 +122,26 @@ owed += pt.cache(m, cid="rimeway_pool", at=(23, 18))
 owed += pt.cache(m, cid="rimeway_tin", at=(27, 4))
 
 # ---- encounters (39-41; night/day pairs) --------------------------------------------
+# FC3 (2026-10-14, third review): FINAL forms only. The old tables rolled base forms
+# 10-40 levels past their kindling (Crystarn at 41, Mothdim at 62); every line is now
+# its kindled form, the Rimeway keeping its frost/stone (and, below, its moth) voice.
 NIGHT = [
-    {"kin_id": 81, "weight": 22, "min_level": 39, "max_level": 41},   # Blizzrhare
-    {"kin_id": 78, "weight": 18, "min_level": 39, "max_level": 41},   # Crystarn
-    {"kin_id": 75, "weight": 16, "min_level": 39, "max_level": 41},   # Geodrake
-    {"kin_id": 84, "weight": 14, "min_level": 39, "max_level": 41},   # Hushbore
-    {"kin_id": 86, "weight": 12, "min_level": 39, "max_level": 40},   # Prismcub
-    {"kin_id": 74, "weight": 10, "min_level": 39, "max_level": 40},   # Geolace
-    {"kin_id": 79, "weight": 6, "min_level": 40, "max_level": 41},    # Glacitern
-    {"kin_id": 76, "weight": 2, "min_level": 41, "max_level": 41},    # Vaultclaw (the Fold's own)
+    {"kin_id": 82, "weight": 22, "min_level": 39, "max_level": 41},  # Vortexlope (was Blizzrhare)
+    {"kin_id": 79, "weight": 18, "min_level": 39, "max_level": 41},  # Glacitern (was Crystarn)
+    {"kin_id": 85, "weight": 16, "min_level": 39, "max_level": 41},  # Stillwarden (was Hushbore)
+    {"kin_id": 87, "weight": 14, "min_level": 39, "max_level": 40},  # Prismantus (was Prismcub)
+    {"kin_id": 96, "weight": 12, "min_level": 39, "max_level": 40},  # Frigalance
+    {"kin_id": 125, "weight": 10, "min_level": 39, "max_level": 40},  # Crystalune
+    {"kin_id": 76, "weight": 4, "min_level": 41, "max_level": 41},  # Vaultclaw (the Fold's own)
 ]
 DAY = [
-    {"kin_id": 81, "weight": 18, "min_level": 56, "max_level": 62},
-    {"kin_id": 78, "weight": 18, "min_level": 56, "max_level": 63},
-    {"kin_id": 75, "weight": 16, "min_level": 57, "max_level": 63},
-    {"kin_id": 84, "weight": 14, "min_level": 56, "max_level": 62},
-    {"kin_id": 86, "weight": 12, "min_level": 56, "max_level": 62},
-    {"kin_id": 74, "weight": 10, "min_level": 56, "max_level": 62},
-    {"kin_id": 79, "weight": 8, "min_level": 58, "max_level": 64},
-    {"kin_id": 76, "weight": 4, "min_level": 60, "max_level": 65},
+    {"kin_id": 82, "weight": 18, "min_level": 56, "max_level": 62},  # Vortexlope
+    {"kin_id": 79, "weight": 18, "min_level": 56, "max_level": 63},  # Glacitern
+    {"kin_id": 85, "weight": 14, "min_level": 56, "max_level": 62},  # Stillwarden
+    {"kin_id": 87, "weight": 12, "min_level": 56, "max_level": 62},  # Prismantus
+    {"kin_id": 96, "weight": 12, "min_level": 57, "max_level": 63},  # Frigalance
+    {"kin_id": 125, "weight": 10, "min_level": 56, "max_level": 62},  # Crystalune
+    {"kin_id": 76, "weight": 6, "min_level": 60, "max_level": 65},  # Vaultclaw
 ]
 band = mk.make_grid(W, H)
 patch = mk.make_grid(W, H)

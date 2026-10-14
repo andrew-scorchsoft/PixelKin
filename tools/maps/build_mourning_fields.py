@@ -196,6 +196,13 @@ for k, x in enumerate(range(2, 24)):
 mk.blob(tuft, W, H, 20.5, 4.8, 2.2, 1.6)               # upper terrace grind bed (optional)
 mk.blob(tuft, W, H, 4.2, 6.2, 2.3, 1.5)                # the north mouth's verge: the low Dousecap bed
 mk.blob(tuft, W, H, 2.8, 7.4, 1.2, 1.0)
+# FC3 (2026-10-14, third review): the Brook Piece has gone back to LONG GRASS. Nobody has
+# cut the fifth field since Tussock was tucked in: an L of tuft round his last square of
+# stubble (the west walk-in column + the bottom row), the Fields' own encounter bed
+# (BROOK below: Lumournis, wild nowhere else).
+BROOK_GRASS = [(4, 26), (5, 26), (4, 27), (5, 27), (4, 28), (5, 28), (6, 28), (7, 28)]
+for (x, y) in BROOK_GRASS:
+    tuft[y * W + x] = 1
 
 # ---- precedence ------------------------------------------------------------------------
 for i in range(W * H):
@@ -408,13 +415,35 @@ DOUSE = [
     {"kin_id": 180, "weight": 25, "min_level": 46, "max_level": 48},  # Lullwing
     {"kin_id": 179, "weight": 15, "min_level": 47, "max_level": 49},  # Shutterwick
 ]
+# THE BROOK PIECE's long grass (FC3): the Fields' ONE kin of its own. Lumournis (#66,
+# Verdant/Light, the leaf-winged moth whose light "calms wild kin and soothes blight")
+# comes down to the field nobody cuts and keeps the watch by Tussock; it is wild nowhere
+# else (Lowleaf's dawn rare is now Fernlance, its own dex's "signature rare"). Hinted by
+# the marker stone and the field-tender. A rare by dusk, uncommon once the sky is back.
+BROOK = [
+    {"kin_id": 180, "weight": 30, "min_level": 48, "max_level": 51},  # Lullwing (the grey dream-moth)
+    {"kin_id": 58, "weight": 24, "min_level": 49, "max_level": 51},   # Mycelarch (the fallow's own)
+    {"kin_id": 125, "weight": 20, "min_level": 48, "max_level": 50},  # Crystalune
+    {"kin_id": 113, "weight": 18, "min_level": 48, "max_level": 50},  # Omenire
+    {"kin_id": 66, "weight": 8, "min_level": 51, "max_level": 52},    # LUMOURNIS (Fields-only)
+]
+BROOK_DAY = [
+    {"kin_id": 127, "weight": 26, "min_level": 56, "max_level": 61},  # Lunvane
+    {"kin_id": 58, "weight": 24, "min_level": 56, "max_level": 61},   # Mycelarch
+    {"kin_id": 107, "weight": 20, "min_level": 57, "max_level": 62},  # Lunarbel
+    {"kin_id": 9, "weight": 16, "min_level": 57, "max_level": 62},    # Glimscout
+    {"kin_id": 66, "weight": 14, "min_level": 59, "max_level": 62},   # LUMOURNIS (Fields-only)
+]
 band = mk.make_grid(W, H)
 patch = mk.make_grid(W, H)
 verge = mk.make_grid(W, H)
+brook = mk.make_grid(W, H)
 for i in range(W * H):
     if tuft[i]:
         x, y = i % W, i // W
-        if (8 <= x <= 11 and 12 <= y <= 21) or cross[i]:
+        if (x, y) in BROOK_GRASS:
+            brook[i] = 1
+        elif (8 <= x <= 11 and 12 <= y <= 21) or cross[i]:
             band[i] = 1
         elif x <= 6 and y <= 8:
             verge[i] = 1
@@ -427,6 +456,9 @@ zones += pt.zones_from_grid(band, W, H, terrain="tall_grass", rate=0.08, table=N
 zones += pt.zones_from_grid(verge, W, H, terrain="tall_grass", rate=0.12, table=DOUSE,
                             id_prefix="verge")
 m["encounters"] = fk.night_day(zones, DAY)
+m["encounters"] += fk.night_day(
+    pt.zones_from_grid(brook, W, H, terrain="tall_grass", rate=0.12, table=BROOK,
+                       id_prefix="brook"), BROOK_DAY)
 
 # ---- dressing ------------------------------------------------------------------------------
 avoid = fk.busy_cells(m)

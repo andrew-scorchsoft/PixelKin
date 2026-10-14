@@ -78,6 +78,20 @@
   },
   "encounters": [
     {
+      "area": "rimeway_descent",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 46,
+      "max": 47
+    },
+    {
+      "area": "rimeway_descent",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 62
+    },
+    {
       "area": "drownlight_f1",
       "terrain": "cave",
       "rarity": "uncommon",
@@ -111,6 +125,13 @@
       "rarity": "common",
       "min": 46,
       "max": 48
+    },
+    {
+      "area": "mourning_fields",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 48,
+      "max": 51
     },
     {
       "area": "penumbra_underways_b1",

@@ -108,6 +108,9 @@ const TREND_SKIP_AREAS = new Set([
   'stillwater',
   // Lane N2 (walkthrough/11 Part B): the Drownlight's two floors (optional, lv 50-53)
   'drownlight_f1', 'drownlight_f2',
+  // the Rimeway (09-the-wild-ways §2 C, optional, 39-48): FC3 moved its beds to final
+  // forms (the old base forms sat 10-40 lv past kindling), so it now bends the trend too
+  'rimeway_ascent', 'rimeway_fold', 'rimeway_descent',
 ]);
 for (const s of SPECIES) {
   for (const e of s.encounters ?? []) {
