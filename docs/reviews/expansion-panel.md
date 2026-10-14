@@ -313,3 +313,185 @@ The newest score is first.
 | 2026-10-14 | Farlamp Isles | plan v1 | 83.5 | |
 | 2026-10-14 | Tinderwick South | plan v1 | 58 | A second Gullcry |
 | 2026-10-14 | Ashfall Shelf | plan v1 | 71 | |
+
+---
+
+## Plan 4 — independent review (the Hollowing's Country, 2026-10-14)
+
+A reviewer who hadn't seen the lanes' self-scores (81–84) rendered all 16 maps
+(`render_map.py --grid`), took 12 in-game shots (`shoot.mjs --batch`: the square, the mere,
+dawn, the Quiet Hall, both field terraces, the foot, F1, F2, the Lantern Room, both Underways
+floors), read the four region files, and ran the gates: `audit_visual --all` 0 FAIL;
+`audit_flow` 0 FAIL on every map (warnings: `drownlight_beacon` free-pass + loop,
+`penumbra_underways` loop); `audit_journey` PASS, golden thread 40/40 in canon order, the
+whole north arriving at wave 47 (`gleam:solar`) and the Underways at 56 (hub + starreach);
+`check_content` no E-lines; `progression.mjs` PASS; `validate.mjs` 180 species 0 errors;
+NPC footing and warp markers clean. The thread is clean: nothing here gates the main path,
+grants a Gleam, a Gift or a crown, or touches the Spire. Senna is never named. The vocabulary
+is canon. #178–#180 have good sprites and cries and sit in Stillwater, the Fields (#179, #180)
+and both Drownlight floors.
+
+**No part clears 85.** The writing is the round's strength (the Shutterkeeper's tale and
+Keeper Wenna's NOT YET are among the best scenes in the game). The weakness is the ground the
+writing stands on: flat fills, boxy water and plots, generic interior kit, and thin rewards.
+
+### Scores
+
+| # | Dimension (wt) | A · Stillwater + Coldfog | B · Drownlight | C · Mourning Fields | D · Underways |
+|---|---|--:|--:|--:|--:|
+| 1 | Exploration (15) | 7: willow hollow, far-shore lamp and yard pay, but wide bare grey margins and a symmetric grid of lanes | 7: rich reads (logs, slates, sea-pink), but rooms are stock house kit on one checkerboard floor | 7: the shrine is seen before it's reached, but the plots are flat mustard rectangles | 6: the shaft and the fire are good; ~60% of both floors is flat dark floor, 16 props on 30×22 |
+| 2 | Navigation (15) | 7: the hub closes the loop; the town is a symmetric cross of lanes | 8: a proven 2- then 3-crank shutter puzzle (9-step solution on F2); F2 is six identical boxes | 8: a real loop, a one-way bank (72% asymmetry), a return to the Rimeway | 7: in W, down, out E, plus the slump drop; the rooms are rectangles and F1 walks back the way it came |
+| 3 | Reward (15) | 7: Starglass, Lumen Drop + 1,500w, the Hooded Lamp shop; Tessaly's Lamp is ONE throw for a 4-map escort | 7: Drop + Shard; the relight is the "oh!"; the capstone Shutter Charm is also one throw | 6: two Beacon Charges + a Hearth Coal, all buyable; nothing unique | 7: the last Drop + a coal, a Shard, the rest |
+| 4 | Story (10) | 9: the antagonists as people; the doubter; minus name clashes (below) | 9: the best scene in the round; Còr perfectly dosed; minus the two Maudrys | 8: the tender and the five field-candles | 8: Maudry taught Còr his letters, which clashes with B |
+| 5 | Return (10) | 8: every resident gets a dawn line, the window, two shore lamps; but no waystone | 9: come back at dawn and relight it; buoys wake | 7: sleepers wake, lanterns unhood, day tables | 7: the shaft fills with morning; two lines |
+| 6 | Pacing (10) | 8: 46–52 with the inn | 8: 50–53, cot rest, keeper ace 54 | 8: 48–52, Stillwater's inn next door | 9: 52–56 straight into Còr (ace 56), with a rest |
+| 7 | Creature (10) | 7: the family's home beds; the rest reuse Coldfog's roster | 7: Dousecap wild at 50–53, though it kindles at 44 | 7: #179/#180 + day-forms; no #178 | 6: no new or unique kin; Approach/Solarium species again |
+| 8 | Clarity (5) | 8: three journal quests; Wenna's partial-progress line can be wrong | 6: the glare explains itself; the dawn relight can skip the keeper (bug) | 8: the trader explains the bank | 7: the gate speaks; nothing outside the Ring points here |
+| 9 | Originality (5) | 9 | 9 | 8 | 8 |
+| 10 | Cost (5) | 7: six maps; home A and home B are near-mirrors | 8 | 8 | 8 |
+| | **Total** | **75.5** | **77.5** | **73.5** | **71.5** |
+
+None is under 6 on any dimension, but none reaches the bar.
+
+### Bugs found
+
+1. **The Drownlight relight skips the Shutterkeeper, and she can give two Shutter Charms.**
+   `script.drownlight_lamp` runs `drownlight_relight_offer` on `if_flag: DAWN, unless_flag:
+   RELIT` with no BEATEN guard. The lamp tiles (6–9,6) are reachable without talking to her
+   (she's static, not a sight trainer). So after the dawn a player can relight before the
+   battle, skipping her whole tale; her "The crank's where I said it would be" refers to a talk
+   that never happened. Then talking to her runs the battle, and her last step `run
+   relight_offer if_flag: DAWN` (no `unless_flag: RELIT`) offers the relight AGAIN, giving a
+   second Shutter Charm. **Fix (`content/regions/drownlight.ts`):** give the lamp's offer
+   `if_flag: BEATEN` (and before the battle at dawn, a line pointing at her). Add
+   `unless_flag: RELIT` to the offer in `script.drownlight_keeper`. (check_content's OVERLAP
+   line on `script.drownlight_lamp` was pointing at this.)
+2. **Name collisions that break canon.**
+   - **TAM** (Stillwater, the old couple `stillwater.ts:423`) is Reyl's lost Tam, the Old
+     Light's whole subject. A player meeting "Tam, who came up from the coast" will read it as
+     *that* Tam.
+   - **PIP** (Stillwater's candle child) duplicates Pip on Pearlmoor Point.
+   - **INES** is both the Stillwater wife and the Mourning Fields acolyte one map away.
+   - **MAUDRY** is both Maudry Kell, the Shutterkeeper (B), who meets Còr as a stranger ("a
+     quiet man… climbed those stairs one winter"), and Old Maudry of the Underways (D), who
+     "taught him his letters". If they're one woman, the stories contradict; if they're two,
+     players can't tell.
+
+   **Fix:** rename the Stillwater couple and child and the Underways Maudry (speaker strings,
+   the `trainers.ts` comments, `quests.ts`/`glossary.ts` if they're cited). Keep Maudry Kell.
+3. **The interiors contradict the lore.** Spec and dialogue (Hallam: "a hearth with its face
+   to the wall") say Stillwater's hearths are turned away, but the inn and both homes have
+   open, blazing `interior_hearth`s. **Fix:** draw a banked or screened hearth variant
+   (`stillwaterforge.py`) and place it in `build_stillwater_interiors.py`. Keep the open
+   hearth only post-dawn (a flag-pair, same footprint).
+4. **Small dialogue bug:** in `script.still_hall_keeper_partial`, if you've found lamps 1 and 3
+   but not 2, Wenna says "the near fog and the deep fog", naming one you've already found.
+   Branch on each missing lamp instead.
+5. **Noise, not a softlock:** `audit_journey`'s 11 "sealed at the end" lines on
+   `drownlight_f1/f2` come from its add-only flag replay meeting toggle cranks. The builder's
+   `prove()` shows the state graph is reversible and softlock-free. **Fix:** teach
+   `audit_journey` that `flag:drownlight_shutter_*` are toggles, or allow-list them with a
+   WHY, so real warnings aren't buried.
+
+### Fix list (prioritised)
+
+**A · Stillwater + Coldfog** (`tools/maps/build_stillwater.py`,
+`build_stillwater_interiors.py`, `content/regions/stillwater.ts`)
+1. Bugs 2–4 above.
+2. **The Still Water reads as a stepped box pool.** The blob union renders as hard
+   rectangular steps, because the murk has no shore transition. Give it a proper shore edge
+   (an autotiled murk/`pond`-style family, or reed and stone-lip decor along every edge cell).
+   Break the north side with the crag. Add a jetty or a boat so the mere is a place, not a
+   hole.
+3. **The crag border is a flat slate blanket** with straight runs (the same "flat wall-top"
+   finding as the Ashfall R1). Draw a visible S-face lip (level-design §11 r8). Add crag
+   boulders, a dead tree or two, and shuttered lamp silhouettes on the rim.
+4. **Bare grey margins:** the W edge (x 2–4, rows 13–22), the SE corner and the square's
+   flanks. Add yard dressing: woodpiles, wash-lines, wool baskets, more blanket-kin. Vary the
+   lane grid: the four straight stone arms read as a template.
+5. **Interiors:** home A and home B are near-mirrors (same bed, desk, stool and hearth
+   layout). Give each a story prop: Pip's nook with the candle sill, the couple's old-kin
+   basket. The Quiet Hall's shutter-wall renders as a bank of black windows; draw it as
+   painted grey louvres with name-plates and dried sprigs.
+6. **Rewards:** make **Tessaly's Lamp a key-item lamp** (reusable, like the vesperlamp tiers),
+   or give it with 3 charges plus a restock at Tessaly's shop. One single throw doesn't repay
+   a four-map escort.
+7. **Add a Stillwater waystone** (`content/waystones.ts`). Its post-dawn return is the
+   region's best payoff, and it's a long walk.
+8. **Coldfog tables** (`build_species.py` + both Coldfog builders): base forms run far above
+   their kindle levels (Flutterwane/Mothdim lv 46–62, kindling at 22/20). Swap to the kindled
+   forms at these bands.
+
+**B · The Drownlight** (`tools/maps/build_drownlight_tower.py`, `drownlightforge.py`,
+`content/regions/drownlight.ts`)
+1. Bug 1 (relight bypass + double charm). Then bug 2: rename the Underways' Maudry, not this
+   one.
+2. **The floors are stock house kit:** bookcase, crates, barrels, sacks, stools and a pew on
+   the cool checkerboard. Draw a lighthouse kit: a spiral-stair newel, oil-tank cisterns,
+   clockwork weight-chains running down a light-well, a log-book lectern, coiled rope, a
+   foghorn, a buoy under repair. Give F1 (oil stores) and F2 (lens gallery) distinct floor
+   patterns. The duplicated `drownlight_lens_spare` on F2 should become one lens plus a
+   lens-grinding bench.
+3. **F2 is six identical 6×5 boxes in a 3×2 grid.** Vary the room shapes (an L-gallery, a
+   round lens room, a narrow watch passage) while keeping the shutter graph. `prove()` will
+   re-verify.
+4. **Make the post-dawn beam visible on the foot** (`drownlight_beacon`): a rotating light
+   sweep across the shallows (an Ambience `when: drownlight_relit`). The relight is the
+   payoff, and it should be seen from below too.
+5. **Make the Shutter Charm a keepable reward:** a reusable Dark-only charge, or 3 charges.
+   One throw is too small for the tower's capstone.
+6. **Dousecap (#178) at 50–53 on both floors** sits above its kindle level (44). Either place
+   it at 42–44 (as the Stillwater yard does) or lean the floors to #179.
+
+**C · The Mourning Fields** (`tools/maps/build_mourning_fields.py`,
+`draw_mournfields_objects.py`)
+1. **The goldgrass plots are flat mustard rectangles** (`mk.rect(stubble…)` with no
+   transition family). Blob or lobe their outlines; ring each with a furrow, hedge or fence
+   row and goldtuft fringe. Use all four `goldgrass0-3` variants in motif layouts (not one
+   fill). Add drill rows, a plough and a stile.
+2. **The bank (row 10) is one straight ruled line** across the west half. Wiggle it (a step or
+   two), put boulders and a bramble on its lip, and stand the one walk-up stair on a visible
+   landmark.
+3. **The sleepers' blankets render as grey checkered slabs** that read as stone. Redraw them
+   as soft folded wool (rounded tops, a fringe, a visible rise and fall). Consider an Ambience
+   breathing bob.
+4. **The tall-grass bands are perfect rectangles** (the full-width band at rows 22–23 and the
+   column at x 9–10). Blob the edges (rule: hard-edged tuft fill is fine, but the outline
+   shouldn't be a ruler).
+5. **Rewards:** replace the buyable Beacon Charges/Hearth Coal with something field-specific:
+   a Star-chart only sold nowhere else, a Lumen Drop at the shrine shelf, or the field-tender's
+   post-dawn gift (a blanket key item, a bond boost?). Add a seen-before-reached cache on the
+   east terrace.
+6. **Add #178 (Dousecap) at 42–44 to `fields_*`** (spec: the family is wild here). Give
+   Ines a third kin; two is thin for a late sight trainer.
+7. **A chart or LORE entry** for the fields (`charts.ts`/`glossary.ts`), keyed to first entry.
+
+**D · The Penumbra Underways** (`tools/maps/build_penumbra_underways.py`,
+`content/regions/underways.ts`)
+1. Bug 2: rename Old Maudry (her letters story is lovely; she just can't be Maudry).
+2. **Large flat dark floors:** F1's NE and SE halls and B1's east third are empty. Carve
+   organic (blob) chambers instead of rectangles, and add Hollowing watch dressing: bedrolls,
+   lamp hooks with hooded lamps, a kettle shelf, a chalked watch-rota, root curtains, fallen
+   Spire masonry. Stop reusing the Coldfog `coldfog_quiet_camp` and `coldfog_doused_lamp`
+   props on both floors. Target 2–5 props per screen, like the overworld bar.
+3. **The glowmoss beds are rectangles:** blob them and fringe them with `greymoss`.
+4. **Give F1 its own one-way:** a ledge or slump on the west galleries so the walk back isn't
+   the walk in (flow warning).
+5. **Creature value:** give the Underways something you can't get elsewhere: a deep-only
+   #179 bed at 54–56, or a rare Light/Dark kin (a Shutterwick, or a Nullhusk on F1 too),
+   plus a dawn day-table pair.
+6. **Signpost it:** a Nessa or Fenn line, or Andrew's hint, once `hub_unlocked` ("the watch
+   keeps a fire under the Ring"), and a journal entry ("The Last Watch") that opens at the
+   mouth's "not yet".
+7. **Make the shaft "seen before reached":** a glint or a light-column object visible from
+   the Ring (`build_penumbra_ring.py`) above where the shaft sits, so the view up is
+   recognised from above.
+
+### Score history (append)
+
+| Date | Plan | Stage | Total | Notes |
+|---|---|---|--:|---|
+| 2026-10-14 | Hollowing's Country: Stillwater + Coldfog | built, independent r1 | 75.5 | box mere, flat crags, single-throw escort reward, name clashes |
+| 2026-10-14 | Hollowing's Country: Drownlight | built, independent r1 | 77.5 | relight-bypass/double-charm bug; stock interior kit |
+| 2026-10-14 | Hollowing's Country: Mourning Fields | built, independent r1 | 73.5 | mustard-rectangle plots, ruled bank, buyable rewards |
+| 2026-10-14 | Hollowing's Country: Underways | built, independent r1 | 71.5 | empty dark floors, no unique kin, unsignposted |
