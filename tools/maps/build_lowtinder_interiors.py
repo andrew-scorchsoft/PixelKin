@@ -65,7 +65,7 @@ def build_lamphouse():
         # Grandmother Ottery Tallow (one script, staged inside with if/unless —
         # the first meeting, the bell, the rest, the reef). Absent only while
         # she's been rowed out to her reef (flag:lowtinder_at_reef).
-        {"id": "ottery", "at": {"tx": 5, "ty": 6}, "facing": "down", "sprite": "npc_old_woman",
+        {"id": "ottery", "at": {"tx": 5, "ty": 6}, "facing": "down", "sprite": "ottery",
          "movement": "look_around", "dialogue_ref": "script.lowtinder_ottery",
          "hidden_when_flag": "flag:lowtinder_at_reef"},
     ]

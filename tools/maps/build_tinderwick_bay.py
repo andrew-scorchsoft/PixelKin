@@ -216,7 +216,7 @@ owed += pt.cache(m, cid="bay_reef", at=(5, 24))
 # Grandmother Tallow on her reef, only while she's been rowed out (the scene's
 # `travel` re-enters the map so this placement spawns — Lottie's trick).
 m["npcs"].append(
-    {"id": "ottery_reef", "at": {"tx": 18, "ty": 24}, "facing": "right", "sprite": "npc_old_woman",
+    {"id": "ottery_reef", "at": {"tx": 18, "ty": 24}, "facing": "right", "sprite": "ottery",
      "movement": "static", "dialogue_ref": "script.lowtinder_reef_ottery",
      "requires_flag": "flag:lowtinder_at_reef"})
 

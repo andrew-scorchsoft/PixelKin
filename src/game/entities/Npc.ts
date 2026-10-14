@@ -84,6 +84,8 @@ const SPRITE_SHEETS: Record<string, string> = {
   npc_old_woman: 'npc_old_woman',
   // Georgina, the Cat-keeper (gloamwood_dell / georgina_cottage) — bespoke sheet.
   georgina: 'georgina',
+  // Gran Ottery Tallow, Lowtinder's last Lampwarden (10 Part III) — bespoke sheet.
+  ottery: 'ottery',
   // Gran (tinderwick_house) — her own sheet, not the generic old-woman.
   npc_parent: 'npc_parent',
   npc_boy: 'npc_boy',
@@ -124,6 +126,7 @@ const SPRITE_SHEETS: Record<string, string> = {
  * pass must not put boxes in towns).
  */
 const REGIONAL_FALLBACK: Record<string, string> = {
+  ottery: 'npc_old_woman',
   orchard_farmer: 'npc_old_man',
   fisher_man: 'npc_man',
   fisher_woman: 'npc_woman',

@@ -519,7 +519,7 @@
         "ty": 6
       },
       "facing": "down",
-      "sprite": "npc_old_woman",
+      "sprite": "ottery",
       "movement": "look_around",
       "dialogue_ref": "script.lowtinder_ottery",
       "hidden_when_flag": "flag:lowtinder_at_reef"

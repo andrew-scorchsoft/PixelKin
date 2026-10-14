@@ -681,6 +681,7 @@ export class WorldScene extends Phaser.Scene {
     'wayward_arms', // the corner chair: a night talked away (content/regions/hotel.ts)
     'driftholm_inn', // the Farlamp Isles (10)
     'gullwrack_hut', // the keeper's hut on Gullwrack Isle (10)
+    'lowtinder_lamphouse', // Gran Tallow's fire under the bay (10 Part III)
   ]);
 
   /**
