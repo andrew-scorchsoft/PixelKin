@@ -8,8 +8,8 @@
   "kind": "interior",
   "tilesets": [
     {
-      "name": "interior_set",
-      "image": "assets/tilesets/interior_set.webp",
+      "name": "interior_sea_set",
+      "image": "assets/tilesets/interior_sea_set.webp",
       "tile_width": 16,
       "tile_height": 16,
       "first_gid": 1,
@@ -327,17 +327,27 @@
       "walk_under": true
     },
     {
-      "id": "lamp_rack",
-      "sprite": "interior_lamp_rack",
+      "id": "wares_net",
+      "sprite": "farlamp_net_hung",
       "at": {
-        "tx": 8,
+        "tx": 7,
         "ty": 1
       },
       "w": 2,
-      "h": 2,
+      "h": 1,
       "overhang": 1,
       "walk_under": true,
       "solid": false
+    },
+    {
+      "id": "lens_display",
+      "sprite": "farlamp_lamp_lens",
+      "at": {
+        "tx": 9,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 2
     },
     {
       "id": "counter",
@@ -370,6 +380,16 @@
       "h": 1
     },
     {
+      "id": "oars",
+      "sprite": "farlamp_oar_rack",
+      "at": {
+        "tx": 12,
+        "ty": 6
+      },
+      "w": 1,
+      "h": 2
+    },
+    {
       "id": "rug",
       "sprite": "interior_rug",
       "at": {
@@ -391,8 +411,8 @@
       "h": 1
     },
     {
-      "id": "plant",
-      "sprite": "interior_plant",
+      "id": "floats",
+      "sprite": "farlamp_float_basket",
       "at": {
         "tx": 12,
         "ty": 8

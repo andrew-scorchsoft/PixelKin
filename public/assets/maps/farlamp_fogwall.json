@@ -755,13 +755,13 @@
       "id": "to_shelf_15",
       "at": {
         "tx": 31,
-        "ty": 18
+        "ty": 19
       },
       "trigger": "step_on",
       "to_map": "farlamp_shelfwater",
       "to": {
         "tx": 1,
-        "ty": 18
+        "ty": 19
       },
       "facing": "right",
       "transition": "fade"
@@ -770,13 +770,13 @@
       "id": "to_shelf_16",
       "at": {
         "tx": 31,
-        "ty": 19
+        "ty": 20
       },
       "trigger": "step_on",
       "to_map": "farlamp_shelfwater",
       "to": {
         "tx": 1,
-        "ty": 19
+        "ty": 20
       },
       "facing": "right",
       "transition": "fade"
@@ -785,34 +785,19 @@
       "id": "to_shelf_17",
       "at": {
         "tx": 31,
-        "ty": 20
+        "ty": 21
       },
       "trigger": "step_on",
       "to_map": "farlamp_shelfwater",
       "to": {
         "tx": 1,
-        "ty": 20
+        "ty": 21
       },
       "facing": "right",
       "transition": "fade"
     },
     {
       "id": "to_shelf_18",
-      "at": {
-        "tx": 31,
-        "ty": 21
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_shelfwater",
-      "to": {
-        "tx": 1,
-        "ty": 21
-      },
-      "facing": "right",
-      "transition": "fade"
-    },
-    {
-      "id": "to_shelf_19",
       "at": {
         "tx": 31,
         "ty": 24

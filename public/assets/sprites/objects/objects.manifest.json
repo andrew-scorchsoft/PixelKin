@@ -287,12 +287,26 @@
       "tw": 5,
       "th": 5
     },
+    "farlamp_drift_table": {
+      "path": "assets/sprites/objects/farlamp_drift_table.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
     "farlamp_elder": {
       "path": "assets/sprites/objects/farlamp_elder.webp",
       "width": 112,
       "height": 64,
       "tw": 7,
       "th": 4
+    },
+    "farlamp_float_basket": {
+      "path": "assets/sprites/objects/farlamp_float_basket.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
     },
     "farlamp_fogbank_a": {
       "path": "assets/sprites/objects/farlamp_fogbank_a.webp",
@@ -322,6 +336,13 @@
       "tw": 6,
       "th": 6
     },
+    "farlamp_keel_trestle": {
+      "path": "assets/sprites/objects/farlamp_keel_trestle.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
     "farlamp_keeper_hut": {
       "path": "assets/sprites/objects/farlamp_keeper_hut.webp",
       "width": 64,
@@ -336,11 +357,25 @@
       "tw": 5,
       "th": 7
     },
+    "farlamp_kelp_bed": {
+      "path": "assets/sprites/objects/farlamp_kelp_bed.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
     "farlamp_kelp_rack": {
       "path": "assets/sprites/objects/farlamp_kelp_rack.webp",
       "width": 32,
       "height": 32,
       "tw": 2,
+      "th": 2
+    },
+    "farlamp_lamp_lens": {
+      "path": "assets/sprites/objects/farlamp_lamp_lens.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
       "th": 2
     },
     "farlamp_looking_glass": {
@@ -355,6 +390,27 @@
       "width": 32,
       "height": 32,
       "tw": 2,
+      "th": 2
+    },
+    "farlamp_net_hung": {
+      "path": "assets/sprites/objects/farlamp_net_hung.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "farlamp_oar_rack": {
+      "path": "assets/sprites/objects/farlamp_oar_rack.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "farlamp_oil_lamp": {
+      "path": "assets/sprites/objects/farlamp_oil_lamp.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
       "th": 2
     },
     "farlamp_ruin_pillar": {
@@ -377,6 +433,13 @@
       "height": 48,
       "tw": 3,
       "th": 3
+    },
+    "farlamp_ships_wheel": {
+      "path": "assets/sprites/objects/farlamp_ships_wheel.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
     },
     "farlamp_skerry_light": {
       "path": "assets/sprites/objects/farlamp_skerry_light.webp",

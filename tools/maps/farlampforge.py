@@ -572,7 +572,145 @@ def strand_shingle():
     return img(a)
 
 
+def kelp_bed():
+    """1x1: kelp fronds lying on the water's surface, a float bladder or two."""
+    a = canvas(1, 1)
+    rng = random.Random(11)
+    for x0 in (2, 6, 10, 13):
+        y0 = rng.randint(1, 5)
+        for y in range(y0, min(15, y0 + rng.randint(7, 11))):
+            sway = int(1.4 * np.sin((y + x0) / 2.2))
+            px(a, x0 + sway, y, "V")
+            px(a, x0 + sway + 1, y, "v" if y % 3 else "x")
+    for (x, y) in ((4, 6), (11, 10)):
+        px(a, x, y, "x"); px(a, x + 1, y, "M"); px(a, x, y + 1, "V")
+    return img(a)
+
+
+def keel_trestle():
+    """3x2: a boat hauled out and turned keel-up on two driftwood trestles,
+    tarred planking, the keel line catching the lamplight (Driftholm's quay)."""
+    a = canvas(3, 2)
+    for x0 in (8, 36):                                 # the trestles (A-legs)
+        for y in range(16, 30):
+            d = (y - 16) // 3
+            px(a, x0 - d, y, "b"); px(a, x0 + 3 + d, y, "b")
+        rect(a, x0 - 2, 15, x0 + 5, 16, "B")
+    ellipse(a, 23.5, 12, 22, 7, "k")                   # the upturned hull
+    ellipse(a, 23.5, 12, 21, 6, "b")
+    ellipse(a, 23.5, 11, 20, 4, "B")
+    for y in (9, 12, 15):                              # plank seams
+        for x in range(4, 44):
+            if a[y, x, 3] and x % 2 == 0:
+                px(a, x, y, "b")
+    rect(a, 3, 5, 44, 6, "k"); rect(a, 4, 5, 43, 5, "N")   # the keel, lit
+    rect(a, 2, 6, 4, 9, "k"); rect(a, 43, 6, 45, 9, "k")   # stem + stern posts
+    contact(a, 2, 45, 30); contact(a, 3, 44, 31, 90)
+    return img(a)
+
+
+# ---- island interior pieces (Driftholm's rooms + the Gullwrack bothy) --------
+def net_hung():
+    """2x1 wall-hung: a fishing net looped on two pegs with glass floats."""
+    a = canvas(2, 1)
+    px(a, 3, 2, "k"); px(a, 28, 2, "k")
+    for x in range(3, 29):                           # the swag
+        y = 2 + int(7 * np.sin((x - 3) / 25 * np.pi))
+        px(a, x, y, "n")
+        for yy in range(2, y, 3):
+            if x % 3 == 0:
+                px(a, x, yy, "B")
+    for x in range(3, 29, 3):                        # the mesh's diagonals
+        for d in range(0, 8):
+            if 2 + d < 2 + int(7 * np.sin((x + d - 3) / 25 * np.pi)):
+                px(a, x + d, 2 + d, "b")
+    for (cx, col) in ((9, "U"), (16, "x"), (23, "U")):
+        disc(a, cx, 10, 2.4, "k"); disc(a, cx, 10, 1.6, col); px(a, cx - 1, 9, "T")
+    return img(a)
+
+
+def ships_wheel():
+    """1x1 wall-hung: a ship's wheel, spokes and handles, brass hub."""
+    a = canvas(1, 1)
+    disc(a, 7.5, 7.5, 6.5, "k"); disc(a, 7.5, 7.5, 5.2, "B"); disc(a, 7.5, 7.5, 4.0, "k")
+    disc(a, 7.5, 7.5, 3.2, "q")
+    for (dx, dy) in ((0, -7), (0, 7), (-7, 0), (7, 0), (-5, -5), (5, 5), (-5, 5), (5, -5)):
+        for t in range(0, 8):
+            px(a, int(7.5 + dx * t / 7), int(7.5 + dy * t / 7), "n")
+    a[a[..., 3] == 0] = 0
+    disc(a, 7.5, 7.5, 1.6, "C"); px(a, 7, 7, "y")
+    return img(a)
+
+
+def lamp_lens():
+    """1x2: a ribbed keeper's lamp-lens on a brass stand (a Farlamp spare)."""
+    a = canvas(1, 2)
+    ellipse(a, 7.5, 9, 6.5, 8, "k")
+    ellipse(a, 7.5, 9, 5.5, 7, "U")
+    for y in range(3, 16, 3):                        # the prism ribs
+        for x in range(2, 14):
+            if a[y, x, 3] and abs(x - 7.5) < 5.5:
+                px(a, x, y, "T")
+    rect(a, 6, 7, 9, 10, "A"); px(a, 7, 8, "W")       # the bullseye catching the light
+    rect(a, 6, 17, 9, 27, "k"); rect(a, 7, 17, 8, 27, "C")
+    rect(a, 3, 27, 12, 30, "k"); rect(a, 4, 28, 11, 29, "c")
+    contact(a, 2, 13, 31)
+    return img(a)
+
+
+def oil_lamp():
+    """1x2: a fish-oil lamp on a driftwood post, a warm small flame."""
+    a = canvas(1, 2)
+    rect(a, 6, 12, 9, 29, "k"); rect(a, 7, 12, 8, 29, "n")
+    rect(a, 4, 29, 11, 30, "b")
+    ellipse(a, 7.5, 9, 4.5, 3, "k"); ellipse(a, 7.5, 9, 3.5, 2, "c")   # the oil dish
+    rect(a, 7, 3, 8, 6, "a"); px(a, 7, 4, "A"); px(a, 8, 2, "o")       # the flame
+    contact(a, 3, 12, 31)
+    return img(a)
+
+
+def drift_table():
+    """2x1: a table made of one silvered driftwood slab on two stump legs."""
+    a = canvas(2, 1)
+    inked(a, 1, 2, 30, 8, "t", hi="T", lo="S")
+    for x in range(4, 28, 5):
+        px(a, x, 5, "S"); px(a, x + 1, 5, "S")
+    rect(a, 4, 9, 7, 14, "k"); rect(a, 5, 9, 6, 14, "S")
+    rect(a, 24, 9, 27, 14, "k"); rect(a, 25, 9, 26, 14, "S")
+    stamp(a, ["wW", "gw"], 18, 3)                     # a shell on it
+    contact(a, 2, 29, 15)
+    return img(a)
+
+
+def float_basket():
+    """1x1: a wicker basket heaped with green and blue glass net-floats."""
+    a = canvas(1, 1)
+    inked(a, 2, 8, 13, 14, "B", hi="n", lo="b")
+    for x in range(3, 13, 2):
+        px(a, x, 11, "b")
+    for (cx, cy, col) in ((5, 7, "x"), (9, 6, "U"), (7, 4, "U"), (11, 8, "x"), (4, 9, "U")):
+        disc(a, cx, cy, 2.3, "k"); disc(a, cx, cy, 1.5, col); px(a, cx - 1, cy - 1, "T")
+    contact(a, 2, 13, 15)
+    return img(a)
+
+
+def oar_rack():
+    """1x2: three oars stood on end against a peg rail."""
+    a = canvas(1, 2)
+    for (x, top) in ((3, 2), (7, 0), (11, 3)):
+        rect(a, x, top, x + 1, top + 6, "k"); rect(a, x, top + 1, x + 1, top + 5, "n")  # blade
+        rect(a, x - 1, top + 1, x - 1, top + 5, "k"); rect(a, x + 2, top + 1, x + 2, top + 5, "k")
+        rect(a, x, top + 7, x + 1, 30, "B"); px(a, x, top + 8, "N")
+    rect(a, 1, 22, 14, 23, "k"); rect(a, 1, 22, 14, 22, "b")
+    contact(a, 1, 14, 31)
+    return img(a)
+
+
 PIECES = {
+    "kelp_bed": kelp_bed, "keel_trestle": keel_trestle,
+    "net_hung": net_hung, "ships_wheel": ships_wheel, "lamp_lens": lamp_lens,
+    "oil_lamp": oil_lamp, "drift_table": drift_table, "float_basket": float_basket,
+    "oar_rack": oar_rack,
     "strand_shells": strand_shells, "strand_wrack": strand_wrack, "strand_shingle": strand_shingle,
     "sea_arch": sea_arch, "nest_rock": nest_rock, "broken_arch": broken_arch,
     "buoy_lit": buoy_lit, "buoy_dark": buoy_dark, "skerry_light": skerry_light,
