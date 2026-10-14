@@ -98,7 +98,12 @@ export class Battler {
   /** Lazily load and swap in the packed creature sprite if one exists. */
   private applyRealSprite(scene: Phaser.Scene, species: Species): void {
     const view = viewFor(this.side);
-    if (!hasCreatureSprite(species.id, view)) return;
+    // The name label is the placeholder's caption: real art speaks for itself
+    // (the HP plate already names the kin), so it shows only without a sprite.
+    const label = this.container.list[1] as Phaser.GameObjects.Text | undefined;
+    const packed = hasCreatureSprite(species.id, view);
+    label?.setVisible(!packed);
+    if (!packed) return;
     const token = ++this.loadToken;
     void loadCreatureSprite(scene, species.id, view).then((key) => {
       if (key && token === this.loadToken && this.sprite.active) {
