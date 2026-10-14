@@ -59,7 +59,11 @@ Sunvault to the sea, with a time trial and the Tallow Lift cable car home), the
 village), the **Rimeway** (a frost col looping Pale Vault back to the marshes
 through a gate barred from the far side) and the **Old Seams** (a rail-yard mine
 under Cinderhead) — two new legendaries, Lanthorne and Emberroot, and a traversal
-kit (chutes, ice slides, rails, ladders, bridges you pass under, bike ramps). Along the way: eight earned Gleams (never
+kit (chutes, ice slides, rails, ladders, bridges you pass under, bike ramps). Back home,
+**Lowtinder** — old Tinderwick, drowned under the bay — opens to Tidecall mid-game; and after
+the dawn the **Farlamp Skiff** rows you out to the **Farlamp Isles**, an archipelago still lost
+in its own fog, with a sea-cave maze of bell-switched tide-races and a drowned lighthouse to
+relight. Along the way: eight earned Gleams (never
 handed over flat), six traversal-gating **Lantern Gifts**, a working **wick
 economy** (shops, Star-charts, trainer payouts — tuned end-to-end by a journey
 model), seven battle statuses, Kindling and bond, the Hearth for kin storage,
@@ -149,6 +153,12 @@ and audited. What it has *not* had is human hands: no playtests, no device QA.
   ~20 new maps of optional, non-linear content — the Wick-Run, the Mirelights, the
   Rimeway, the Old Seams, a four-map Sunvault cliff climb — built on a data-driven
   **traversal kit** (`flows`/`spans`/`jumps`, engine ⇄ audit parity gated in CI).
+- **The expansion round** (2026-10, [`10-the-farlamp-isles.md`](docs/world/walkthrough/10-the-farlamp-isles.md),
+  scored in [`expansion-panel.md`](docs/reviews/expansion-panel.md)): the **Ashfall Shelf** (a new
+  main-path map between Cinderhead and Galehigh), **Lowtinder & Tinderwick Bay**, and the
+  **Farlamp Isles** (three sea maps, two isles, Driftholm, the four-floor Undertide, the Drowned
+  Lamp) with six new kin (#172–177). Plus a kinder economy: a capped, forgiving blackout tithe
+  and two fair repeatable money sources (Lumenary sparring, the Wick-Run day purse).
 - The **post-game**: Dawnstead (the daylit epilogue town; Wren and Còr's
   resolutions; quests), **day-form collecting** across 22 relit maps, the
   **Three Hours** legendary trio, the two Starreach landmarks, and the
@@ -280,7 +290,7 @@ python3 -m venv venv && ./venv/bin/pip install -r requirements.txt   # one-time
 | Full walkthrough / user journey | [`docs/world/walkthrough/`](docs/world/walkthrough/README.md) |
 | Soundtrack plan | [`docs/world/music-direction.md`](docs/world/music-direction.md) |
 | Mechanics & balance (start here) | [`docs/mechanics/00-overview.md`](docs/mechanics/00-overview.md) |
-| The full dex (all 171 kin) | [`docs/mechanics/dex.md`](docs/mechanics/dex.md) |
+| The full dex (all 177 kin) | [`docs/mechanics/dex.md`](docs/mechanics/dex.md) |
 | Art & sprite standards | [`docs/art-style.md`](docs/art-style.md) |
 
 ## Project layout
