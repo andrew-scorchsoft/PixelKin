@@ -222,9 +222,11 @@ PLACEMENTS: dict[str, dict] = {
             "sound_bed": WIND_BED,
         },
         "npcs": [
-            ambient_kin("amb_gravelo", (13, 10), 49, radius=1),
-            ambient_kin("amb_stonebark", (17, 6), 63, radius=1),
-            ambient_kin("amb_flintbeak", (17, 16), 89, radius=1),
+            ambient_kin("amb_gravelo", (9, 6), 49, radius=1),
+            # the rare, teased in plain sight: grazing the gate shelf's grass, right
+            # beside the descent lane (greetable — KIN_CHATTER 63)
+            ambient_kin("amb_stonebark", (16, 18), 63, radius=1),
+            ambient_kin("amb_flintbeak", (17, 5), 89, radius=1),
         ],
     },
     "cinderwind_kiln": {

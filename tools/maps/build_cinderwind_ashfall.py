@@ -53,6 +53,7 @@ import random
 import mapkit as mk
 import patterns as pt
 import warp_markers as wm
+import wildkit as wk
 from mapkit import gid
 
 W, H = 24, 28
@@ -89,24 +90,37 @@ for x in range(W - 3, W):                                 # the gate shelf's sou
 
 # ---- the shelf band (rows 13-14) ----------------------------------------------------
 mk.rect(cliff, W, H, 2, 13, 21, 14)
-CUT_X = 4                                                # the slag cut — the climb (1 wide)
+CUT_X = 3                                                # the slag cut — the climb (1 wide, far WEST)
 DESCENT = (18, 19)                                       # the way down to the gate shelf
 NOOK = (11, 12)                                          # the ledge into the slag nook
 for x in (CUT_X, *DESCENT, *NOOK):
     cliff[13 * W + x] = cliff[14 * W + x] = 0
 pt.ledge_run(deco, W, H, 13, NOOK[0], NOOK[1], rng)      # shelf -> nook (one way)
 
-# ---- the slag nook + the divider ------------------------------------------------------
-mk.rect(cliff, W, H, 9, 15, 10, 18)                      # nook west wall
-mk.rect(cliff, W, H, 13, 15, 14, 26)                     # nook east wall = basin/gate divider
-mk.rect(cliff, W, H, 13, 14, 14, 14)
-pt.ledge_run(deco, W, H, 18, NOOK[0], NOOK[1], rng)      # nook -> basin (one way)
+# ---- the slag nook, the divider, and the basin's inner bank --------------------------
+# (second pass) The basin is TWO tiers: the lower basin (rows 22-26, the Scarp's
+# road in) and the upper basin (rows 15-19) under the cut, joined only by a gap
+# at x 7-8 in an inner bank (rows 20-21). The way UP folds: in at x 5-6, east to
+# the gap, up, then back WEST to the cut at x=3. The nook drops straight past
+# all of it — shelf -> nook -> lower basin — so the way DOWN skips the fold.
+mk.rect(cliff, W, H, 9, 15, 10, 21)                      # nook west wall
+mk.rect(cliff, W, H, 13, 14, 14, 26)                     # nook east wall = basin/gate divider
+mk.rect(cliff, W, H, 2, 20, 8, 21)                       # the basin's inner bank...
+for y in (20, 21):
+    for x in (7, 8):
+        cliff[y * W + x] = 0                             # ...and its one gap (the fold)
+pt.ledge_run(deco, W, H, 21, NOOK[0], NOOK[1], rng)      # nook -> lower basin (one way)
 
 # ---- lanes (green ground only; the ash keeps no road) --------------------------------
 LANE = set()
-for y in range(15, H):
-    LANE |= {(5, y), (6, y)}                             # basin: up from the Scarp
-LANE |= {(4, 15), (4, 16), (CUT_X, 13), (CUT_X, 14)}     # to the foot of the cut
+for y in range(22, H):
+    LANE |= {(5, y), (6, y)}                             # lower basin: up from the Scarp
+LANE |= {(7, 22), (8, 22)}                               # ...east to the bank's gap
+for y in range(15, 22):
+    LANE |= {(7, y), (8, y)}                             # up through the gap
+for x in range(CUT_X, 9):
+    LANE |= {(x, 15), (x, 16)}                           # back WEST along the upper basin
+LANE |= {(CUT_X, 13), (CUT_X, 14)}                       # the cut itself
 for y in range(15, 27):
     LANE |= {(18, y), (19, y)}                           # gate shelf: down from the descent
 for x in range(18, W):
@@ -115,14 +129,14 @@ for (x, y) in LANE:
     path[y * W + x] = 1
 
 # ---- encounter beds ------------------------------------------------------------------
-pt.mandatory_band(tallgrass, path, W, H, y0=21, y1=22, x0=2, x1=12)     # the basin crossing
+pt.mandatory_band(tallgrass, path, W, H, y0=23, y1=24, x0=2, x1=12)     # the lower-basin crossing
 mk.blob(tallgrass, W, H, 16.2, 19.5, 1.3, 2.2)                         # gate shelf: optional
-mk.blob(tallgrass, W, H, 3.2, 18.0, 1.3, 1.2)                          # basin west pocket
-# the top shelf's full-height ash crossing (x 14-16) + a grind pocket by the camp
+mk.blob(tallgrass, W, H, 3.6, 18.2, 1.6, 1.2)                          # upper basin pocket
+# the top shelf's full-height ash crossing (x 14-16) + a grind pocket on the lower lane
 for y in range(3, 13):
     for x in (14, 15, 16):
         ashtuft[y * W + x] = 1
-mk.blob(ashtuft, W, H, 6.0, 10.5, 2.2, 1.0)
+mk.blob(ashtuft, W, H, 9.0, 11.6, 1.6, 0.8)
 
 for i in range(W * H):
     if cliff[i]:
@@ -154,6 +168,7 @@ m: dict = {
     "music": "assets/audio/music/cinderwind-ashfall.mp3",
     "battle_backdrops": ["assets/backgrounds/battle/ashfall-a.webp"],
 }
+wk.use_traverse(m)   # the haulers' old ore track (rail tiles as dressing only — no flows)
 
 
 def obj(oid, sprite, at, w, h, **kw):
@@ -185,47 +200,72 @@ m["warps"] += [
 ]
 owed += ["npc.ashfall_windgap", "npc.ashfall_kiln_draught"]
 
-# ---- the top shelf ----------------------------------------------------------------------
-# the old kiln stack on the cliff lip (walk-behind; its base row is the solid one)
+# ---- the top shelf (second pass: a place you thread through) ----------------------------
+# Three lanes across the west ash, split by slag ridges and the haulers' old track:
+#   UPPER (rows 3-6)  the camp: lean-to, brazier (REST POINT), Oda;
+#   MIDDLE (rows 7-8) broken by two slag ridges — gaps at x 2-5, 9, 12-13;
+#   LOWER (rows 9-12) the old ore track (rail_h, a stranded cart) the cut opens onto.
+# East of the ash crossing: the kiln stack + its vent, a charred tree, the lookout.
 obj("kiln_stack", "ashfall_kiln_stack", (19, 0), 2, 4, overhang=3, walk_under=True)
-# the haulers' camp: lean-to + the brazier (the REST POINT — Confirm on any brazier tile)
-obj("haulers_camp", "ashfall_haulers_camp", (2, 4), 3, 2)
+obj("haulers_camp", "ashfall_haulers_camp", (2, 3), 3, 2)
 obj("camp_brazier", "ashfall_brazier", (6, 3), 2, 3, overhang=2, walk_under=True)
 m["triggers"].append({"id": "brazier_rest", "kind": "cutscene", "at": {"tx": 6, "ty": 5},
                       "activation": "interact", "ref": "script.ashfall_brazier_rest"})
 owed.append("script.ashfall_brazier_rest")
-obj("camp_cart", "cinderhead_ore_cart", (2, 7), 2, 2, overhang=1)
 obj("shelf_slag_a", "ashfall_slag_heap", (9, 3), 3, 2)
-obj("shelf_slag_b", "ashfall_slag_heap_b", (11, 9), 2, 2)
-obj("shelf_slag_c", "ashfall_slag_heap_b", (19, 9), 2, 2)
-obj("shelf_cullet", "ashfall_glass_cullet", (10, 6), 2, 2)
-obj("nook_slag", "ashfall_slag_heap_b", (11, 16), 2, 2)
-obj("shelf_lamp", "tinderwick_lamp_post", (8, 9), 1, 3, overhang=2, walk_under=True)
-# the Windward lookout — a wind cairn on the gap, and the view (Confirm on the cairn)
+obj("shelf_cullet", "ashfall_glass_cullet", (12, 3), 2, 2)
+# the middle ridges (CLUSTERS of slag + rock, never a wall island)
+obj("ridge_slag_a", "ashfall_slag_heap", (6, 7), 3, 2)
+obj("ridge_rock_a", "ashfall_rockfall_b", (10, 7), 2, 2)
+# the west pocket: walled by slag and rock, seen from the cut-head lane below, reached
+# only round by the camp (a hauler's lunch-tin with a hearth-coal still in it)
+obj("pocket_slag", "ashfall_slag_heap_b", (4, 6), 2, 2)
+obj("pocket_rocks", "ashfall_rockfall_b", (2, 8), 2, 2)
+owed += pt.cache(m, cid="ashfall_lunchtin", at=(2, 7))
+# the old ore track along the lower lane, a cart stranded on it
+for x in range(5, 14):
+    deco[10 * W + x] = wk.T("rail_h")
+deco[10 * W + 4] = wk.T("rail_end_w")
+deco[10 * W + 13] = wk.T("rail_end_e")
+obj("track_cart", "cinderhead_ore_cart", (6, 9), 2, 2, overhang=1)
+obj("shelf_lamp", "tinderwick_lamp_post", (12, 9), 1, 3, overhang=2, walk_under=True)
+# the century stone — a lore marker on the lower lane
+owed += pt.sign(m, deco, W, sid="ashfall_century", at=(4, 11))
+# east of the crossing
+obj("charred_tree", "fallenstar_tree_charred", (17, 8), 3, 4, overhang=3, walk_under=True)
+obj("east_slag", "ashfall_slag_heap_b", (20, 9), 2, 2)
 obj("windward_cairn", "windward_cairn", (20, 5), 2, 3, overhang=2)
 m["triggers"].append({"id": "windward_vista", "kind": "cutscene", "at": {"tx": 20, "ty": 7},
                       "activation": "interact", "ref": "script.ashfall_vista"})
 owed.append("script.ashfall_vista")
+# dressing the outer crags (cliff tops; solid anyway) so the rock mass isn't a blank
+obj("crag_slag_n", "ashfall_slag_heap", (5, 0), 3, 2)
+obj("crag_rocks_n", "ashfall_rockfall_b", (12, 0), 2, 2)
+obj("crag_rocks_w", "ashfall_rockfall_b", (0, 17), 2, 2)
+obj("crag_slag_w", "ashfall_slag_heap_b", (0, 23), 2, 2)
+obj("crag_rocks_e", "ashfall_rockfall_b", (22, 15), 2, 2)
+obj("crag_slag_e", "ashfall_slag_heap_b", (22, 20), 2, 2)
 
 # ---- the slag nook (the ash-buried cache) -----------------------------------------------
-owed += pt.cache(m, cid="ashfall_nook", at=(12, 15))
+owed += pt.cache(m, cid="ashfall_nook", at=(12, 16))
+deco[18 * W + 11] = gid("boulder")      # a slag lump in the nook (one column stays open)
 
-# ---- the basin + the gate shelf ----------------------------------------------------------
-obj("basin_slag", "ashfall_slag_heap", (8, 24), 3, 2)
-obj("basin_rocks", "ashfall_rockfall_b", (2, 15), 2, 2)
-obj("basin_lamp", "tinderwick_lamp_post", (7, 15), 1, 3, overhang=2, walk_under=True)
+# ---- the basins + the gate shelf ---------------------------------------------------------
+obj("basin_slag", "ashfall_slag_heap", (8, 25), 3, 2)
 obj("basin_tree", "tinderwick_tree", (2, 22), 3, 4, overhang=3, walk_under=True)
+obj("upper_rocks", "ashfall_rockfall_b", (5, 18), 2, 2)
+obj("basin_lamp", "tinderwick_lamp_post", (9, 22), 1, 3, overhang=2, walk_under=True)
 obj("gate_slag", "ashfall_slag_heap", (15, 23), 3, 2)
 obj("gate_cart", "cinderhead_ore_cart", (20, 17), 2, 2, overhang=1)
 obj("gate_rocks", "ashfall_rockfall_b", (15, 15), 2, 2)
 obj("gate_lamp", "tinderwick_lamp_post", (20, 22), 1, 3, overhang=2, walk_under=True)
 owed += pt.cache(m, cid="ashfall_tin", at=(21, 20))
-owed += pt.sign(m, deco, W, sid="cinderwind_ashfall", at=(7, 25))
+owed += pt.sign(m, deco, W, sid="cinderwind_ashfall", at=(7, 26))
 owed += pt.sign(m, deco, W, sid="ashfall_gate", at=(21, 24))
 
 # ---- trainers (route class; the beats ARE the chokes) -----------------------------------
 # the ash-picker watches the head of the cut (every climber comes up his column)
-owed += pt.trainer_beat(m, tid="ashfall_picker", at=(CUT_X, 9), facing="down", sight=3,
+owed += pt.trainer_beat(m, tid="ashfall_picker", at=(CUT_X, 11), facing="down", sight=1,
                         sprite="npc_man")
 # the gale-watch holds the descent's head (both lanes of it pass her)
 owed += pt.trainer_beat(m, tid="ashfall_galewatch", at=(20, 12), facing="left", sight=2,
@@ -234,10 +274,10 @@ owed += pt.trainer_beat(m, tid="ashfall_galewatch", at=(20, 12), facing="left", 
 # ---- NPCs at the camp ------------------------------------------------------------------
 m["npcs"] += [
     # Oda Kilnwright — the kiln-wright's family; "The Last Pane" (flag-staged script)
-    {"id": "oda_kilnwright", "at": {"tx": 8, "ty": 5}, "facing": "left",
+    {"id": "oda_kilnwright", "at": {"tx": 11, "ty": 6}, "facing": "left",
      "sprite": "npc_old_woman", "movement": "static", "dialogue_ref": "script.oda_kilnwright"},
     # a hauler warming his hands — the camp's colour
-    {"id": "camp_hauler", "at": {"tx": 5, "ty": 6}, "facing": "right",
+    {"id": "camp_hauler", "at": {"tx": 8, "ty": 3}, "facing": "left",
      "sprite": "npc_man", "movement": "look_around", "dialogue_ref": "npc.ashfall_camp_hauler"},
 ]
 owed += ["script.oda_kilnwright", "npc.ashfall_camp_hauler"]
@@ -272,10 +312,14 @@ for y in range(3, 13):
     for x in range(2, 22):
         if (x, y) not in avoid and rng.random() < 0.10 and (x, y) != (18, 4):
             deco[y * W + x] = rng.choice(ash_bits)
-for (x, y) in [(12, 4), (17, 10), (3, 9)]:
+for (x, y) in [(13, 8), (8, 6), (19, 6), (21, 11)]:
     if (x, y) not in avoid:
         deco[y * W + x] = gid("boulder")
 mk.scatter_decor(deco, base, W, H, rng, density=0.12, avoid=avoid)
+crag_bits = [gid("boulder"), gid("greymoss_a"), gid("greymoss_b")]
+for (x, y) in [(3, 1), (9, 0), (16, 1), (1, 6), (0, 12), (1, 27), (22, 2), (23, 11), (23, 22)]:
+    if cliff[y * W + x] and deco[y * W + x] == 0 and (x, y) not in object_cells:
+        deco[y * W + x] = rng.choice(crag_bits)
 
 m["layers"] = [
     {"name": "base", "role": "base", "depth": 0, "data": base},

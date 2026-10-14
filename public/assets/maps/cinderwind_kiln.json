@@ -1469,7 +1469,8 @@
           "min_level": 35,
           "max_level": 35
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "kiln_rooms",
@@ -1518,7 +1519,96 @@
           "min_level": 35,
           "max_level": 35
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "kiln_hall_day",
+      "terrain": "cave",
+      "rect": {
+        "tx": 3,
+        "ty": 5,
+        "w": 16,
+        "h": 5
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 37,
+          "weight": 25,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 69,
+          "weight": 25,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 55,
+          "weight": 20,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 43,
+          "weight": 20,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 52,
+          "weight": 10,
+          "min_level": 58,
+          "max_level": 63
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "kiln_rooms_day",
+      "terrain": "cave",
+      "rect": {
+        "tx": 1,
+        "ty": 11,
+        "w": 20,
+        "h": 5
+      },
+      "encounter_rate": 0.08,
+      "table": [
+        {
+          "kin_id": 37,
+          "weight": 25,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 69,
+          "weight": 25,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 55,
+          "weight": 20,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 43,
+          "weight": 20,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 52,
+          "weight": 10,
+          "min_level": 58,
+          "max_level": 63
+        }
+      ],
+      "requires_flag": "flag:dawn"
     }
   ],
   "npcs": [
