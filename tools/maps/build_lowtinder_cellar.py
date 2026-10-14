@@ -172,7 +172,7 @@ def build_b1() -> dict:
     owed += pt.cache(m, cid="cellar_oil", at=(21, 3))
     wm.add(m, wm.marker("cellar_up", "steps_n", ENTRY[0], ENTRY[1] - 1))
     m["ambience"] = {"particles": [{"kind": "dust", "density": 0.4}, {"kind": "motes", "density": 0.3}],
-                     "tint": {"color": "#10203a", "alpha": 0.18}}
+                     "tint": {"color": "#10203a", "alpha": 0.10}}
     pt.report(owed)
     return m
 
@@ -274,7 +274,7 @@ def build_b2() -> dict:
     owed += pt.cache(m, cid="belfry_lumen", at=(7, 19))      # the Lumen Drop (south vault)
     owed += pt.cache(m, cid="belfry_ledge", at=(21, 15))     # the east gallery's balms
     m["ambience"] = {"particles": [{"kind": "dust", "density": 0.35}, {"kind": "motes", "density": 0.4}],
-                     "tint": {"color": "#0c1830", "alpha": 0.26},
+                     "tint": {"color": "#0c1830", "alpha": 0.12},
                      "light_sources_extra": [{"at": {"tx": 3, "ty": 1}, "radius": 14, "color": "#cfe0ff"}]}
     pt.report(owed)
     return m

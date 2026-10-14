@@ -702,7 +702,7 @@
     {
      "id": "interior-hearth",
      "title": "Indoors — a warm home",
-     "where": "Terrace Cottage",
+     "where": "Terrace Cottage · The Old Lamp-house",
      "mood": "Kettle on, a cat by the stove — a bright, bouncing little home tune for rooms where folk are glad you came.",
      "classic": "play/assets/audio/music/interior-hearth.mp3",
      "classic_loop_start": null,
@@ -735,7 +735,7 @@
     {
      "id": "interior-study",
      "title": "Indoors — charts & lenses",
-     "where": "Wickstead Lamp-school · Watcher's Cottage",
+     "where": "Wickstead Lamp-school · Watcher's Cottage · The Old Lamp-school",
      "mood": "Charts and Lenses — a ticking, curious little room of ground glass and inked stars, gently absorbed in its work.",
      "classic": "play/assets/audio/music/interior-study.mp3",
      "classic_loop_start": null,
@@ -963,6 +963,17 @@
      "note": null
     },
     {
+     "id": "bell-cellar",
+     "title": "The Bell Cellar",
+     "where": "The Bell Cellar · The Bell Cellar — the Belfry Pit",
+     "mood": "A flooded stone cellar under the sea: dripping water, black still pools, and somewhere a huge old bell humming when the tide turns. Hushed, patient and a little sad, never horror.",
+     "classic": "play/assets/audio/music/bell-cellar.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/bell-cellar.mp3",
+     "loop_start": 7.988,
+     "note": null
+    },
+    {
      "id": "kindle-ceremony",
      "title": "Kindle Ceremony",
      "where": "",
@@ -982,6 +993,17 @@
      "classic_loop_start": null,
      "remaster": null,
      "loop_start": null,
+     "note": null
+    },
+    {
+     "id": "lowtinder",
+     "title": "Tinderwick Bay",
+     "where": "Tinderwick Bay · Lowtinder · The Moss-garden",
+     "mood": "The hometown lullaby, drowned: the same tune heard from under forty years of quiet sea. Cosy-melancholy, tender, a little haunted but never frightening; a music-box in an upstairs window.",
+     "classic": "play/assets/audio/music/lowtinder.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/lowtinder.mp3",
+     "loop_start": 9.288,
      "note": null
     }
    ]

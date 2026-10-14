@@ -229,6 +229,11 @@
       "width": 128,
       "height": 128
     },
+    "ottery": {
+      "path": "assets/sprites/trainers/ottery.webp",
+      "width": 128,
+      "height": 128
+    },
     "pass_walker": {
       "path": "assets/sprites/trainers/pass_walker.webp",
       "width": 128,

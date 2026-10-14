@@ -7,6 +7,12 @@
    "where": "The Tinderwick Beacon — all three floors of the wick-key ascent to the lantern room",
    "mood": "The Beacon Stair — a bass that climbs a step every bar, a determined call, brass like banked embers and a bell glinting from the lamp far above."
   },
+  "bell-cellar": {
+   "loop_start": 7.988,
+   "duration": 91.977,
+   "where": "The Bell Cellar (the flooded cellars and the drowned belfry pit under Lowtinder's lamp-house, where the old town bell lies in black water; a rope climbs the old shaft to Tinderwick's well)",
+   "mood": "A flooded stone cellar under the sea: dripping water, black still pools, and somewhere a huge old bell humming when the tide turns. Hushed, patient and a little sad, never horror."
+  },
   "cinderhead-mine-a": {
    "loop_start": 12.492,
    "duration": 102.766,
@@ -174,6 +180,12 @@
    "duration": 103.967,
    "where": "Glowmoss Deep (and its B1F), the Spore Grotto and the Grovefall vigil site",
    "mood": "The glowing-dark deep forest — a glassy bell melody whose echoes answer across the black, sparse and cathedral-like, with a drained grey shadow in it."
+  },
+  "lowtinder": {
+   "loop_start": 9.288,
+   "duration": 93.309,
+   "where": "Lowtinder and Tinderwick Bay (the drowned old Tinderwick under the bay, swum to with Tidecall; half-sunk roofs, a cold bell-tower, one warm window: Gran Tallow's lamp-house) + the lamp-school's moss-garden",
+   "mood": "The hometown lullaby, drowned: the same tune heard from under forty years of quiet sea. Cosy-melancholy, tender, a little haunted but never frightening; a music-box in an upstairs window."
   },
   "lumenary-hall": {
    "loop_start": 6.757,

@@ -1,0 +1,61 @@
+{
+  "title": "Lowtinder - the Lantern Lullaby, drowned",
+  "_note": "Tinderwick's theme (tinderwick-a) under forty years of sea. The SAME melody note-for-note, slowed from 92 to 72 BPM and re-harmonised into A minor (Am-F-C-G under the old C-major tune, so the homely line turns wistful). First pass: the lead on a soft TRIANGLE (underwater, no pulse bite) over a slow string bed, a slow surf hiss, bell glints at phrase ends. Second pass: the lead falls silent and a MUSIC-BOX bell carries the melody an octave up, as if from an upstairs window (Gran Tallow's lamp), over a slow harp. snes era, chip render. 32-bar loop.",
+  "era": "snes",
+  "tempo": 72,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "A minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "triangle",
+      "octave": 4,
+      "gain": 0.75,
+      "_note": "tinderwick-a's lead, note-for-note, on a soft triangle; silent in the music-box pass.",
+      "notes": "G3q C4q D4h | E4q D4q C4h | G3q C4q D4q E4q | D4h. C4q | G3q C4q D4h | E4q D4q C4h | A3q C4q E4q D4q | C4h. rq | E4q A3q C4h | D4q C4q B3h | F4q E4q D4q C4q | B3h. A3q | G3q C4q D4h | E4q D4q C4h | A3q C4q D4q E4q | D4q C4q G3h | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw"
+    },
+    {
+      "name": "musicbox",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.42,
+      "_note": "Pass 1: glints at phrase ends. Pass 2: the melody itself, an octave up \u2014 the music-box.",
+      "notes": "rw | rw | rw | rh rq E5e A5e | rw | rw | rw | rh rq C5e E5e | rw | rw | rw | rh rq B4e E5e | rw | rw | rw | rh rq D5e G5e | G4q C5q D5h | E5q D5q C5h | G4q C5q D5q E5q | D5h. C5q | G4q C5q D5h | E5q D5q C5h | A4q C5q E5q D5q | C5h. rq | E5q A4q C5h | D5q C5q B4h | F5q E5q D5q C5q | B4h. A4q | G4q C5q D5h | E5q D5q C5h | A4q C5q D5q E5q | D5q C5q G4h"
+    },
+    {
+      "name": "pad",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.24,
+      "notes": "A3+C4+E4w | F3+A3+C4w | C3+E3+G3w | G3+B3+D4w | A3+C4+E4w | F3+A3+C4w | A3+C4+E4w | C3+E3+G3w | A3+C4+E4w | E3+G3+B3w | F3+A3+C4w | G3+B3+D4w | A3+C4+E4w | F3+A3+C4w | F3+A3+C4w | G3+B3+D4w | A3+C4+E4w | F3+A3+C4w | C3+E3+G3w | G3+B3+D4w | A3+C4+E4w | F3+A3+C4w | A3+C4+E4w | C3+E3+G3w | A3+C4+E4w | E3+G3+B3w | F3+A3+C4w | G3+B3+D4w | A3+C4+E4w | F3+A3+C4w | F3+A3+C4w | G3+B3+D4w"
+    },
+    {
+      "name": "harp",
+      "voice": "pluck",
+      "octave": 4,
+      "gain": 0.32,
+      "_note": "slow broken chords, second pass only",
+      "notes": "rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | A3q C4q E4q C4q | F3q A3q C4q A3q | C4q E4q G4q E4q | G3q B3q D4q B3q | A3q C4q E4q C4q | F3q A3q C4q A3q | A3q C4q E4q C4q | C4q E4q G4q E4q | A3q C4q E4q C4q | E3q G3q B3q G3q | F3q A3q C4q A3q | G3q B3q D4q B3q | A3q C4q E4q C4q | F3q A3q C4q A3q | F3q A3q C4q A3q | G3q B3q D4q B3q"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.7,
+      "notes": "A2w | F2w | C2w | G2w | A2w | F2w | A2w | C2w | A2w | E2w | F2w | G2w | A2w | F2w | F2w | G2w | A2w | F2w | C2w | G2w | A2w | F2w | A2w | C2w | A2w | E2w | F2w | G2w | A2w | F2w | F2w | G2w"
+    },
+    {
+      "name": "surf",
+      "voice": "noise",
+      "octave": 3,
+      "gain": 0.1,
+      "_note": "the tide breathing in and out, every other bar",
+      "notes": "C3w | rw | C3w | rw | C3w | rw | C3w | rw | C3w | rw | C3w | rw | C3w | rw | C3w | rw | C3w | rw | C3w | rw | C3w | rw | C3w | rw | C3w | rw | C3w | rw | C3w | rw | C3w | rw"
+    }
+  ]
+}
