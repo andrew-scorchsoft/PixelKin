@@ -394,6 +394,8 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
   ],
   'script.bram_wait': [
     { op: 'say', speaker: 'BRAM', text: 'Bram Fathom. I kept the isles\' light beside the Farlamp, before the water took it. These days I keep the quay bell and a grudge.' },
+    { op: 'say', speaker: 'BRAM', unless_flag: 'flag:isles_dawn', text: 'Old Edda Marrow kept the Farlamp itself. The night the deep came up she went down the stair after her lamp. Nobody\'s seen her since, and don\'t you dare call her drowned.' },
+    { op: 'say', speaker: 'BRAM', if_flag: 'flag:isles_dawn', text: 'Edda came up the long stair this morning with her lamp lit, cool as you like, and asked who\'d been at her log. I had to sit down on the quay.' },
     { op: 'say', speaker: 'BRAM', unless_flag: ARRIVED, text: 'You came over in my sister\'s boat, didn\'t you? Ione. She always said she\'d finish it.' },
     { op: 'say', speaker: 'BRAM', text: 'You want a battle? Not in the dark, mainlander. My kin fight best by a lit lamp. Light the Farlamp, and I\'ll give you the best bout on these isles.' },
   ],

@@ -313,6 +313,7 @@ export const UNDERTIDE_SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'I felt it from Driftholm. Eleven winters I\'ve slept with my back to the sea, and this morning I woke facing it.' },
     { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'I came down the long stair the way I went up it, with a small lamp. Didn\'t need it. Every tide-lamp on the races was burning.' },
     { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'You read my log, I expect. All my hurrying. Look at her. Stubborn and lovely, same as ever. Thank you for coming all the way down.' },
+    { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'Tell Ione Fathom her lamp-boat came home, will you? Her and Bram learned their knots on my stair, the pair of them, forever fighting over the oars.' },
     { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'The light\'s woken the old races, too. There were islets on the Galleries and the Stair we used to row out to for the quiet. Go and see what the sea\'s kept on them.' },
   ],
 
