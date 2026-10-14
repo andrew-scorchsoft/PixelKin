@@ -67,6 +67,8 @@ const ANY_OF: [WorldFlag, WorldFlag[]][] = [
   ['flag:undercroft_open', ['flag:q_north_aurora_oil', 'gleam:frost']],
   // the Scarp's rockfall (10 Part II): cleared once you've come round by the Ashfall
   ['flag:scarp_short_open', ['flag:scarp_rockfall_clear', 'gleam:storm']],
+  // the climb out of Cinderhead Deep waits on Otho (or you're already past Mira)
+  ['flag:scarp_climb_open', ['gleam:stone', 'gleam:storm']],
 ];
 
 /** "N of these prefix flags" — e.g. three of the five driftletters (10 §3). */

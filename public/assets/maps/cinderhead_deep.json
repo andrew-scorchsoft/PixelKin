@@ -150,7 +150,9 @@
         "ty": 20
       },
       "facing": "right",
-      "transition": "fade"
+      "transition": "fade",
+      "requires_flag": "flag:scarp_climb_open",
+      "blocked_ref": "script.scarp_climb_chained"
     },
     {
       "id": "to_terraces_s",
@@ -165,7 +167,9 @@
         "ty": 21
       },
       "facing": "right",
-      "transition": "fade"
+      "transition": "fade",
+      "requires_flag": "flag:scarp_climb_open",
+      "blocked_ref": "script.scarp_climb_chained"
     },
     {
       "id": "to_crystoll",

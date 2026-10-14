@@ -154,6 +154,7 @@ DERIVED_ANY = [
     ("flag:skyloft_open", ["flag:q_north_kite_blessed", "gleam:storm"]),
     ("flag:undercroft_open", ["flag:q_north_aurora_oil", "gleam:frost"]),
     ("flag:scarp_short_open", ["flag:scarp_rockfall_clear", "gleam:storm"]),
+    ("flag:scarp_climb_open", ["gleam:stone", "gleam:storm"]),
 ]
 # FlagStore COUNT_AT_LEAST (mirrored): N held flags with a prefix derive a flag
 DERIVED_COUNT = [("flag:driftletters_3", "flag:driftletter_", 3)]

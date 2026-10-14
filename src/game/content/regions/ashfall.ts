@@ -22,6 +22,12 @@ const PANE = 'flag:q_north_pane';
 const DONE = 'flag:q_north_pane_done';
 
 export const ASHFALL_SCRIPTS: ScriptRegistry = {
+  // The gallery mouth out of Cinderhead Deep, chained until Otho's Gleam (2026-10:
+  // keeps the Stone Gleam on the thread — it used to be skippable).
+  'script.scarp_climb_chained': [
+    { op: 'narrate', text: 'A hauler\'s chain hangs across the gallery mouth, and a slate swings from it: NOBODY CLIMBS TILL OTHO\'S TESTED THEM. — the Haulers.' },
+    { op: 'narrate', text: 'Beyond it the old ore-road climbs toward the scarp and the wind. Otho Grist keeps the headframe hall, back up in the mine.' },
+  ],
   // ---- Cinderwind Scarp: the rockfall (the return compressor) -----------------------
   'script.scarp_rockfall_blocked': [
     { op: 'emote', actor: 'rockfall_hauler', emote: 'alert' },
