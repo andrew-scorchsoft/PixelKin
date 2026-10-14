@@ -335,10 +335,12 @@ def scarecrow_lamp(lit: bool) -> Image.Image:
     return img(a)
 
 
-def field_shrine() -> Image.Image:
+def field_shrine(lit: bool = False) -> Image.Image:
     """3x3 the field shrine: a little gabled wayside house on a stone step. Inside,
     a row of candles put out with care; at its foot, two folded blankets left as
-    offerings, and a sprig of grey-gold straw tied with ribbon."""
+    offerings, and a sprig of grey-gold straw tied with ribbon. `lit` (the dawn
+    twin, same footprint): all five candles burning, the niche warm behind them,
+    the finial star caught bright, and the blankets gone from the step."""
     a = canvas(3, 3)
     # the stone step
     fill(a, 4, 36, 43, 44, STONE[1])
@@ -352,6 +354,10 @@ def field_shrine() -> Image.Image:
     for py in range(18, 35, 4):
         a[py, 11:37] = POST[0]
     fill(a, 13, 19, 34, 33, hx("#1a1c24"))            # the niche, dark
+    if lit:                                            # ...or warm with candlelight
+        fill(a, 13, 19, 34, 33, hx("#3a2a1e"))
+        fill(a, 15, 22, 32, 33, hx("#5a3c22"))
+        fill(a, 17, 25, 30, 33, hx("#7a522a"))
     outline(a, 13, 19, 34, 33, INK)
     a[16:36, 10] = POST[2]
     a[16:36, 37] = POST[0]
@@ -368,15 +374,24 @@ def field_shrine() -> Image.Image:
         a[y, 18:30] = STONE[2]
     a[17, 2:46] = INK
     a[16, 3:45] = STONE[0]
-    # the ridge finial: a little iron star, unlit
-    a[1:4, 23:25] = IRON[3]
-    a[2, 22:26] = IRON[3]
-    # the candles, put out neat (five, grey wax, a thread of wick each)
+    # the ridge finial: a little iron star, unlit (at dawn it catches the light)
+    a[1:4, 23:25] = BRASS[2] if lit else IRON[3]
+    a[2, 22:26] = BRASS[2] if lit else IRON[3]
+    if lit:
+        a[2, 23:25] = (*STARPALE, 255)
+    # the candles, put out neat (five, grey wax, a thread of wick each) — or, at dawn,
+    # each one burning: a two-tone flame with a pale core over a blackened wick
     for i, cx in enumerate((16, 20, 24, 28, 32)):
         h = 5 + (i % 2)
-        fill(a, cx - 1, 32 - h, cx, 32, hx("#9c9890"))
-        a[32 - h, cx - 1:cx + 1] = hx("#bcb8ae")
-        a[31 - h, cx] = hx("#4a463e")
+        fill(a, cx - 1, 32 - h, cx, 32, hx("#d8cfb8") if lit else hx("#9c9890"))
+        a[32 - h, cx - 1:cx + 1] = hx("#f0e6cc") if lit else hx("#bcb8ae")
+        a[31 - h, cx] = hx("#2a2420") if lit else hx("#4a463e")
+        if lit:
+            ft = 31 - h
+            a[ft - 1, cx - 1:cx + 1] = FLAME[1]
+            a[ft - 2, cx - 1:cx + 1] = FLAME[2]
+            a[ft - 1, cx] = FLAME[3]
+            a[ft - 3, cx] = FLAME[2]
     a[33, 14:34] = BRASS[0]                            # the brass candle-board
     # the offerings at the foot: folded blankets + a tied straw sprig
     fill(a, 6, 38, 15, 42, WOOL[1])
@@ -628,6 +643,7 @@ def main() -> None:
         (FIELDS / "scarecrow_lamp.png", scarecrow_lamp(False)),
         (FIELDS / "scarecrow_lamp_lit.png", scarecrow_lamp(True)),
         (FIELDS / "field_shrine.png", field_shrine()),
+        (FIELDS / "field_shrine_lit.png", field_shrine(True)),
         (FIELDS / "stook.png", stook()),
         (FIELDS / "blanket_stack.png", blanket_stack()),
         (FIELDS / "plough.png", plough()),

@@ -40,6 +40,7 @@ SCRIPTS = REPO / ".claude/skills/generate-sprite-sheet/scripts"
 
 STUBBLE = (128, 116, 76)        # grey-gold harvest stubble (dimmer than the West's GOLD)
 EARTH = (70, 62, 50)            # turned soil: the drill furrows + the plot's rim
+CORNER_R = 7                    # convex-corner radius (gbaforge default 3 read as square)
 
 # Cut-stalk motif layouts (x, y, kind): 's' = a 1x2 stalk stub with a lit tip,
 # 'p' = a fallen straw (2px diagonal), 'd' = a pale chaff dot. Hand-placed in loose
@@ -99,8 +100,10 @@ def stubble_drill(v: int = 0):
 def stubble_tile(role: str, v: int = 0):
     if role == "fill":
         return stubble_fill(v)
+    # convex corners rounded to r=7 (2026-10-14 second pass): with one-tile plot steps
+    # the staircase reads as a curve, not a run of right angles
     return overlay_tile(role, stubble_fill(v), gbaforge.blight_fill(v),
-                        EARTH, shade_rgb=sh(STUBBLE, 0.86))
+                        EARTH, r=CORNER_R, shade_rgb=sh(STUBBLE, 0.86))
 
 
 ROLES = ["corner_nw", "edge_n", "corner_ne", "edge_w", "fill", "edge_e",

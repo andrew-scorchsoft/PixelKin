@@ -2177,6 +2177,13 @@
       "tw": 3,
       "th": 3
     },
+    "mournfields_field_shrine_lit": {
+      "path": "assets/sprites/objects/mournfields_field_shrine_lit.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
     "mournfields_plough": {
       "path": "assets/sprites/objects/mournfields_plough.webp",
       "width": 32,

@@ -141,6 +141,16 @@ the upper terrace and left by a ledge. The sleepers and the scarecrow-lamps have
 twins. Acolytes: Ines (ace 50), Corran (ace 51). Rimeway Descent's north road (cols 16–19)
 is the col.
 
+**Second review pass (2026-10-14):** the south crossing is a lobed drift (both edges wave, every
+column a contiguous wall-to-wall run, so it stays mandatory); the plots step one tile at a time
+and the stubble family's convex corners are rounded (r 7). The **Brook Piece**, the fifth name on
+the shrine board, is a bramble-walled nook in the col's west corner: seen from the Rimeway road,
+reached only through the long grass and under the snow pine. The field-tender's own old Hushvole,
+Tussock, sleeps there (a `flag:dawn` twin), with a marker stone and a Hearth Coal. The **Harvest
+Knot** (terrace cache) is a toggle key item (`flag:harvest_knot_hung`, encounter ×0.25, the
+strongest damper; key, so never sold). At dawn the shrine swaps to `field_shrine_lit` (all five
+candles burning, a light pool), and the shrine and the tender each get a dawn line.
+
 ## D · The Penumbra Underways — the last road (endgame)
 
 The genre's "last road" before the climax is missing. Two portal cave floors under the Penumbra

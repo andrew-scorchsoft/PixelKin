@@ -9,9 +9,13 @@
  *
  * Flags this file owns:
  *   flag:mournfields_ines_beaten / flag:mournfields_corran_beaten  the two acolytes
- *   flag:picked_mournfields_shelf / _plot / _terrace   the shrine shelf's cache (a Lumen
- *                                      Drop), the west plot's (Lullwool Charms), the east
- *                                      terrace's (a Harvest Knot) — Fields-only, never sold
+ *   flag:picked_mournfields_shelf / _plot / _terrace / _brook   the shrine shelf's cache (a
+ *                                      Lumen Drop), the west plot's (Lullwool Charms), the east
+ *                                      terrace's (the Harvest Knot, a toggle key item that hushes
+ *                                      wild kin ×0.25), the Brook Piece's (a Hearth Coal) — never sold
+ *   flag:harvest_knot_hung             the Harvest Knot's toggle (ITEMS → use; items.ts)
+ *   flag:mournfields_knot_noted        the field-tender has seen the knot on your lamp (once)
+ *   flag:mournfields_brook_met         first look at the Brook Piece's sleeper (longer lines)
  *   flag:mournfields_tender_gift       the field-tender's dawn gift (Lullwool Charms), once
  *   flag:mournfields_shrine_read       first read of the field shrine (longer narration)
  *   flag:mournfields_tender_met        the field-tender's first meeting (longer lines)
@@ -29,7 +33,10 @@ export const MOURNFIELDS_SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'Someone has written underneath, very neatly: "We put them to sleep one at a time, so nobody would wake to find the rest gone."', unless_flag: 'flag:mournfields_shrine_read' },
     { op: 'setFlag', flag: 'flag:mournfields_shrine_read' },
     { op: 'narrate', text: 'Five trimmed candles. Folded blankets left at the step, ready for whoever is cold.', unless_flag: DAWN },
-    { op: 'narrate', text: 'One of the five candles is burning again: THE TOP FIELD. Nobody has written anything new on the board. Nobody needed to.', if_flag: DAWN },
+    // the second dawn change (2026-10-14 second pass): all five burn, the names read out
+    { op: 'sfx', key: 'world-heal', if_flag: DAWN },
+    { op: 'narrate', text: 'All five candles are burning again. NETHERLEA. LONG ACRE. THE BROOK PIECE. MILLER\'S. THE TOP FIELD. The wax has run down over the names, warm and new.', if_flag: DAWN },
+    { op: 'narrate', text: 'Under the neat line, in a rounder hand, someone has added one word: "Morning."', if_flag: DAWN },
   ],
   // The Fields' finds are the Fields' own (2026-10-14 review: no shop-stock here).
   'script.pickup_mournfields_shelf': [
@@ -48,10 +55,34 @@ export const MOURNFIELDS_SCRIPTS: ScriptRegistry = {
   ],
 
   'script.pickup_mournfields_terrace': [
-    { op: 'sfx', key: 'world-pickup' },
+    { op: 'sfx', key: 'world-keyitem' },
     { op: 'giveItem', item: 'harvest_knot', count: 1 },
-    { op: 'say', text: 'Hung on the last post of the top field, out of reach of the wind: the year\'s last sheaf, plaited into a knot and tied with ribbon. Found a HARVEST KNOT!' },
+    { op: 'say', text: 'Hung on the last post of the top field, out of reach of the wind: the year\'s last sheaf, plaited into a knot and tied with ribbon. Found the HARVEST KNOT!' },
+    { op: 'say', text: 'Tie it to your lamp from ITEMS and the wild kin take you for the harvest coming home. They let the harvest by.' },
     { op: 'setFlag', flag: 'flag:picked_mournfields_terrace' },
+  ],
+
+  // ---- THE BROOK PIECE (the fifth field: the bramble nook under the col pine) -------
+  'script.pickup_mournfields_brook': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'hearth_coal', count: 1 },
+    { op: 'say', text: 'In a tin under the hedge, packed in ash so it would keep: a live coal, still glowing, "for if he wakes cold". Found a HEARTH COAL!' },
+    { op: 'setFlag', flag: 'flag:picked_mournfields_brook' },
+  ],
+  'script.mournfields_brook_sleeper': [
+    { op: 'run', ref: 'script.mournfields_brook_sleeper_dawn', if_flag: DAWN },
+    { op: 'run', ref: 'script.mournfields_brook_sleeper_dusk', unless_flag: DAWN },
+  ],
+  'script.mournfields_brook_sleeper_dusk': [
+    { op: 'narrate', text: 'An old grey Hushvole, asleep on his own in the smallest field, under the best blanket in the Fields. The hem is stitched with a name: TUSSOCK.', unless_flag: 'flag:mournfields_brook_met' },
+    { op: 'narrate', text: 'Every other sleeper is tucked in where the road can see them. This one is tucked in where nobody would ever step on him.', unless_flag: 'flag:mournfields_brook_met' },
+    { op: 'setFlag', flag: 'flag:mournfields_brook_met' },
+    { op: 'narrate', text: 'He breathes slow and even. One ear twitches at your lamp, then settles.' },
+  ],
+  'script.mournfields_brook_sleeper_dawn': [
+    { op: 'sfx', key: 'world-heal' },
+    { op: 'narrate', text: 'TUSSOCK is up, nose deep in the stubble. The blanket is folded beside him, very badly, the way only a Hushvole would fold it.' },
+    { op: 'narrate', text: 'He looks at you, then at the gap under the pine, as if to ask whether she knows he\'s awake.' },
   ],
 
   // ---- the field-tender (the sleepers' field) -----------------------------------------
@@ -67,11 +98,21 @@ export const MOURNFIELDS_SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'FIELD-TENDER', text: 'So when the Wardens said they could let them sleep, I said yes. I\'d say yes again. You\'d say yes too, if you\'d heard them.', unless_flag: 'flag:mournfields_tender_met' },
     { op: 'setFlag', flag: 'flag:mournfields_tender_met' },
     { op: 'say', speaker: 'FIELD-TENDER', text: 'You\'re the one lighting the sky back up, aren\'t you. I can see it on you. Well. Go gently past my sleepers, that\'s all I ask.' },
+    { op: 'run', ref: 'script.mournfields_tender_knot', if_flag: 'flag:picked_mournfields_terrace', unless_flag: 'flag:mournfields_knot_noted' },
+    { op: 'say', speaker: 'FIELD-TENDER', text: 'If you find my Tussock in the Brook Piece, don\'t wake him. He was the first I tucked in, and the hardest.', if_flag: 'flag:mournfields_brook_met' },
+  ],
+  // once: she sees the top field's knot on your lamp, and says keep it
+  'script.mournfields_tender_knot': [
+    { op: 'say', speaker: 'FIELD-TENDER', text: 'Is that the top field\'s knot? Off the last post? Well. Somebody ought to have it, and it ought to go somewhere.' },
+    { op: 'say', speaker: 'FIELD-TENDER', text: 'Keep it on your lamp. The wild ones will think you\'re the harvest coming home and let you by. They always did, for us.' },
+    { op: 'setFlag', flag: 'flag:mournfields_knot_noted' },
   ],
   'script.mournfields_tender_dawn': [
     { op: 'emote', actor: 'field_tender', emote: 'music' },
     { op: 'say', speaker: 'FIELD-TENDER', text: 'Look at them. Up before me, the lazy things. They\'ve been at the stooks all morning.' },
     { op: 'say', speaker: 'FIELD-TENDER', text: 'I kept the blankets. I fold them every evening anyway. Habit. Or maybe in case.' },
+    { op: 'say', speaker: 'FIELD-TENDER', text: 'Somebody\'s lit all five candles at the shrine. I went up at first light and read the names out, one field at a time, like the old harvest-home. Silly. I cried at the Brook Piece.' },
+    { op: 'run', ref: 'script.mournfields_tender_knot', if_flag: 'flag:picked_mournfields_terrace', unless_flag: 'flag:mournfields_knot_noted' },
     { op: 'say', speaker: 'FIELD-TENDER', text: 'Thank you. I don\'t know how else to say it, so I\'ll just say it the once and then go back to work.', unless_flag: 'flag:mournfields_tender_gift' },
     { op: 'run', ref: 'script.mournfields_tender_gift', unless_flag: 'flag:mournfields_tender_gift' },
     { op: 'say', speaker: 'FIELD-TENDER', text: 'Go on, then. They\'ve the whole day to make up for, and so have you.' },
@@ -121,6 +162,10 @@ export const MOURNFIELDS_DIALOGUE: DialogueRegistry = {
   ],
   'sign.mournfields_col': [
     { text: 'THE COL ROAD\nDown to the Rimeway and the high road home. The Rime Gate is lifted from the marsh side.' },
+  ],
+  'sign.mournfields_brook': [
+    { text: 'A marker stone, freshly scrubbed:\nTHE BROOK PIECE.\nThe brook went under in the second winter and never came back up.' },
+    { text: 'Scratched below, small: "T. sleeps here. Mind the hedge, it\'s for the wind, not for you."' },
   ],
   'sign.mournfields_notice': [
     { text: 'A notice in the Hollowing\'s careful hand:\n"THESE KIN ARE SLEEPING. Please do not wake them. Please do not lift the blankets."' },
