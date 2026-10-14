@@ -64,6 +64,7 @@ ABILITY_TINT = {
     "emberward": (255, 150, 90),     # coldfog — ember
     "sunsketch": (255, 215, 90),     # sun-vine — gold
     "starreach": (200, 150, 255),    # void — violet
+    "deepdive": (30, 70, 160),       # open deep — navy (the Farlamp skiff)
 }
 ABILITY_LETTER = {a: a[0].upper() for a in ALL_ABILITIES}
 
