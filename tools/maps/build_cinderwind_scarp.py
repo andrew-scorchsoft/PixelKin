@@ -29,9 +29,15 @@ across the middle tier past the hauler, up B, east along the top to the gate.
 The ledges sit at the other ends, so the way DOWN is two quick hops (62 steps
 up vs 36 down). No Gift involved; warps, trainers, caches and tables unchanged.
 
-Wild kin (lv 28-31, closing the Deep->Galehigh gap): Rubbol, Galefox,
+Wild kin (lv 28-30 since the Ashfall pass — the shelf above carries 30-33; closing the Deep->Galehigh gap): Rubbol, Galefox,
 Thrumble, Lumecite, Nimbruff, very rare Voltcrag. Four of them (Rubbol, Galefox,
 Lumecite, Nimbruff) were in no wild table before this road.
+
+ASHFALL PASS (Lane A, 2026-10, walkthrough/10 Part II): the top tier's crest
+wood opens north at x 5-6 onto the Ashfall Shelf (the kite-runner now keeps that
+gap); the east cut to Galehigh is a ROCKFALL — boulder dressing, a pushback band
+and both warps gated on flag:scarp_short_open — until the Galehigh haulers clear
+it the first time you arrive by the shelf. Then it's the short way home again.
 
 HANDSHAKE: cinderhead_deep `to_terraces`/`_s` at (27,12)/(27,13) land here at
 (1,20)/(1,21); our `to_deep`/`_s` at (0,20)/(0,21) land at the deep's
@@ -85,6 +91,13 @@ for y in (20, 21):                     # WEST gap: the Deep's east mouth (low)
 for y in (4, 5):                       # EAST gap: Galehigh's west gate (high)
     for x in (W - 3, W - 2, W - 1):
         cliff[y * W + x] = 0
+# NORTH gap (Lane A, 2026-10): the crest wood parts at x 5-6 onto the Ashfall
+# Shelf — the main way on now the east cut is a rockfall. The kite-runner keeps
+# the gap from (7,2), so the crossing is hers.
+for y in range(0, 4):
+    for x in (5, 6):
+        tree[y * W + x] = 0
+tree[2 * W + 7] = 0
 
 # THE TWO PITCHES (traversal pass 2026-10): each tier band is a TALL scarp face
 # now — two cliff rows (rim + lit face) over a third, pinned rock-face FOOT row —
@@ -126,7 +139,9 @@ for y in range(10, 12):
 for y in range(4, 7):
     LANE.add((LADDER_B, y))             # off the top of ladder B
 for x in range(LADDER_B, W):
-    LANE |= {(x, 4), (x, 5)}            # L3 east along the top tier to the terraces' gate
+    LANE |= {(x, 4), (x, 5)}            # L3 east along the top tier to the (fallen) gate
+for y in range(0, 6):
+    LANE |= {(5, y), (6, y)}            # L4 north through the crest wood to the Ashfall
 for (x, y) in LANE:
     path[y * W + x] = 1
 
@@ -167,11 +182,36 @@ m["warps"] += [
      "to_map": "cinderhead_deep", "to": {"tx": 26, "ty": 12}, "facing": "left", "transition": "door"},
     {"id": "to_deep_s", "at": {"tx": 0, "ty": 21}, "trigger": "step_on",
      "to_map": "cinderhead_deep", "to": {"tx": 26, "ty": 13}, "facing": "left", "transition": "door"},
+    # the east cut is a ROCKFALL until the Galehigh haulers clear it (Lane A):
+    # flag:scarp_short_open = scarp_rockfall_clear OR gleam:storm (FlagStore ANY_OF)
     {"id": "to_terraces", "at": {"tx": W - 1, "ty": 4}, "trigger": "step_on",
-     "to_map": "galehigh_terraces", "to": {"tx": 1, "ty": 14}, "facing": "right", "transition": "fade"},
+     "to_map": "galehigh_terraces", "to": {"tx": 1, "ty": 14}, "facing": "right", "transition": "fade",
+     "requires_flag": "flag:scarp_short_open", "blocked_ref": "script.scarp_rockfall_blocked"},
     {"id": "to_terraces_s", "at": {"tx": W - 1, "ty": 5}, "trigger": "step_on",
-     "to_map": "galehigh_terraces", "to": {"tx": 1, "ty": 15}, "facing": "right", "transition": "fade"},
+     "to_map": "galehigh_terraces", "to": {"tx": 1, "ty": 15}, "facing": "right", "transition": "fade",
+     "requires_flag": "flag:scarp_short_open", "blocked_ref": "script.scarp_rockfall_blocked"},
+    # NORTH -> the Ashfall Shelf (Lane A; Ashfall's `to_scarp` lands at (5,1)/(6,1))
+    {"id": "to_ashfall", "at": {"tx": 5, "ty": 0}, "trigger": "step_on",
+     "to_map": "cinderwind_ashfall", "to": {"tx": 5, "ty": 26}, "facing": "up", "transition": "fade"},
+    {"id": "to_ashfall_e", "at": {"tx": 6, "ty": 0}, "trigger": "step_on",
+     "to_map": "cinderwind_ashfall", "to": {"tx": 6, "ty": 26}, "facing": "up", "transition": "fade"},
 ]
+
+# THE ROCKFALL (Lane A): boulders across the east cut — set dressing only (an
+# object's collision is flag-blind), so a pushback band at x=20 does the turning
+# back and the gated warps are the backstop. A hauler stands by it; both go once
+# the cut is open.
+m["objects"].append({"id": "rockfall", "sprite": "ashfall_rockfall", "at": {"tx": 21, "ty": 2},
+                     "w": 3, "h": 4, "solid": False, "hidden_when_flag": "flag:scarp_short_open"})
+for ty in (2, 3, 4, 5, 6):                 # the whole walkable cut at x=20
+    m["triggers"].append({"id": f"rockfall_turn_{ty}", "kind": "cutscene", "at": {"tx": 20, "ty": ty},
+                          "activation": "step_on", "ref": "script.scarp_rockfall_blocked",
+                          "hidden_when_flag": "flag:scarp_short_open"})
+m["npcs"].append({"id": "rockfall_hauler", "at": {"tx": 21, "ty": 6}, "facing": "up",
+                  "sprite": "npc_man", "movement": "static",
+                  "dialogue_ref": "script.scarp_rockfall_hauler",
+                  "hidden_when_flag": "flag:scarp_short_open"})
+owed += ["script.scarp_rockfall_blocked", "script.scarp_rockfall_hauler"]
 
 
 def obj(oid, sprite, at, w, h, **kw):
@@ -206,7 +246,7 @@ for (x, y) in [(10, 25), (21, 14), (16, 11), (11, 6), (5, 25), (22, 19)]:
 # (every way west across it walks his column), the kite-runner the gate.
 owed += pt.trainer_beat(m, tid="scarp_hauler", at=(15, 10), facing="down", sight=4,
                         sprite="npc_man")
-owed += pt.trainer_beat(m, tid="scarp_kiterunner", at=(21, 3), facing="down", sight=3,
+owed += pt.trainer_beat(m, tid="scarp_kiterunner", at=(7, 2), facing="left", sight=2,
                         sprite="kite_weaver")
 
 owed += pt.sign(m, deco, W, sid="cinderwind_scarp", at=(3, 19))
@@ -215,11 +255,11 @@ owed += pt.cache(m, cid="scarp_balm", at=(2, 11))           # the middle tier, b
 
 TABLE = [
     {"kin_id": 48, "weight": 30, "min_level": 28, "max_level": 30},    # Rubbol
-    {"kin_id": 101, "weight": 25, "min_level": 28, "max_level": 31},   # Galefox
-    {"kin_id": 98, "weight": 20, "min_level": 29, "max_level": 31},    # Thrumble
-    {"kin_id": 36, "weight": 15, "min_level": 29, "max_level": 31},    # Lumecite
-    {"kin_id": 92, "weight": 8, "min_level": 30, "max_level": 31},     # Nimbruff
-    {"kin_id": 46, "weight": 2, "min_level": 31, "max_level": 31},     # Voltcrag (very rare)
+    {"kin_id": 101, "weight": 25, "min_level": 28, "max_level": 30},   # Galefox
+    {"kin_id": 98, "weight": 20, "min_level": 29, "max_level": 30},    # Thrumble
+    {"kin_id": 36, "weight": 15, "min_level": 29, "max_level": 30},    # Lumecite
+    {"kin_id": 92, "weight": 8, "min_level": 30, "max_level": 30},     # Nimbruff
+    {"kin_id": 46, "weight": 2, "min_level": 30, "max_level": 30},     # Voltcrag (very rare)
 ]
 m["encounters"] = pt.zones_from_grid(tallgrass, W, H, terrain="tall_grass", rate=0.10,
                                      id_prefix="scarp", table=TABLE)

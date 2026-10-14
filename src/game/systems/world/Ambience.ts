@@ -72,6 +72,14 @@ export const LIGHT_SOURCES: Record<string, { hx: number; hy: number; radius: num
   nightreach_watch_lamp_lit: { hx: 16, hy: 8, radius: 17, color: 0xdfe6ff },
   nightreach_vigil_lamp: { hx: 8, hy: 6, radius: 12, color: 0xdfe6ff },
   tideglass_wrecklamp_lit: { hx: 8, hy: 8, radius: 12, color: 0x9fe7ff },
+  // north — the Ashfall Shelf (10 Part II)
+  ashfall_brazier: { hx: 16, hy: 12, radius: 18, color: 0xff9a4a },
+  ashfall_pane_lamp_lit: { hx: 8, hy: 8, radius: 15, color: 0xffd089 },
+  // outer — the Undertide + the Drowned Lamp (10 Part I)
+  undertide_tidelamp_lit: { hx: 8, hy: 8, radius: 14, color: 0xffd890 },
+  undertide_lamp_lit: { hx: 32, hy: 34, radius: 40, color: 0xffd890 },
+  undertide_camp: { hx: 23, hy: 7, radius: 12, color: 0xffb060 },
+  undertide_niche: { hx: 24, hy: 14, radius: 10, color: 0xffc46b },
   // east
   cinderhead_lamp_hooks: { hx: 40, hy: 24, radius: 22, color: 0xffb86b }, // Harl's seven lit hooks
   // south

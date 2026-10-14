@@ -1,5 +1,96 @@
 {
   "objects": {
+    "ashfall_brazier": {
+      "path": "assets/sprites/objects/ashfall_brazier.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "ashfall_glass_cullet": {
+      "path": "assets/sprites/objects/ashfall_glass_cullet.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "ashfall_glass_rack": {
+      "path": "assets/sprites/objects/ashfall_glass_rack.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "ashfall_haulers_camp": {
+      "path": "assets/sprites/objects/ashfall_haulers_camp.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "ashfall_kiln_furnace": {
+      "path": "assets/sprites/objects/ashfall_kiln_furnace.webp",
+      "width": 64,
+      "height": 48,
+      "tw": 4,
+      "th": 3
+    },
+    "ashfall_kiln_stack": {
+      "path": "assets/sprites/objects/ashfall_kiln_stack.webp",
+      "width": 32,
+      "height": 64,
+      "tw": 2,
+      "th": 4
+    },
+    "ashfall_pane_frame": {
+      "path": "assets/sprites/objects/ashfall_pane_frame.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "ashfall_pane_lamp_dark": {
+      "path": "assets/sprites/objects/ashfall_pane_lamp_dark.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    },
+    "ashfall_pane_lamp_lit": {
+      "path": "assets/sprites/objects/ashfall_pane_lamp_lit.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    },
+    "ashfall_rockfall": {
+      "path": "assets/sprites/objects/ashfall_rockfall.webp",
+      "width": 48,
+      "height": 64,
+      "tw": 3,
+      "th": 4
+    },
+    "ashfall_rockfall_b": {
+      "path": "assets/sprites/objects/ashfall_rockfall_b.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "ashfall_slag_heap": {
+      "path": "assets/sprites/objects/ashfall_slag_heap.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "ashfall_slag_heap_b": {
+      "path": "assets/sprites/objects/ashfall_slag_heap_b.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "cinderhead_crystal_cluster": {
       "path": "assets/sprites/objects/cinderhead_crystal_cluster.webp",
       "width": 32,
@@ -3093,6 +3184,146 @@
       "height": 16,
       "tw": 1,
       "th": 1
+    },
+    "undertide_bell": {
+      "path": "assets/sprites/objects/undertide_bell.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "undertide_bell_rung": {
+      "path": "assets/sprites/objects/undertide_bell_rung.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "undertide_camp": {
+      "path": "assets/sprites/objects/undertide_camp.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "undertide_fogglass": {
+      "path": "assets/sprites/objects/undertide_fogglass.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "undertide_fogglass_empty": {
+      "path": "assets/sprites/objects/undertide_fogglass_empty.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "undertide_glassheap": {
+      "path": "assets/sprites/objects/undertide_glassheap.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "undertide_kelp": {
+      "path": "assets/sprites/objects/undertide_kelp.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "undertide_kelpcrown": {
+      "path": "assets/sprites/objects/undertide_kelpcrown.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "undertide_lamp_dark": {
+      "path": "assets/sprites/objects/undertide_lamp_dark.webp",
+      "width": 64,
+      "height": 80,
+      "tw": 4,
+      "th": 5
+    },
+    "undertide_lamp_lit": {
+      "path": "assets/sprites/objects/undertide_lamp_lit.webp",
+      "width": 64,
+      "height": 80,
+      "tw": 4,
+      "th": 5
+    },
+    "undertide_logbook": {
+      "path": "assets/sprites/objects/undertide_logbook.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "undertide_mast": {
+      "path": "assets/sprites/objects/undertide_mast.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    },
+    "undertide_niche": {
+      "path": "assets/sprites/objects/undertide_niche.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "undertide_pillar": {
+      "path": "assets/sprites/objects/undertide_pillar.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "undertide_post_red": {
+      "path": "assets/sprites/objects/undertide_post_red.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "undertide_post_white": {
+      "path": "assets/sprites/objects/undertide_post_white.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "undertide_stack": {
+      "path": "assets/sprites/objects/undertide_stack.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "undertide_tidelamp": {
+      "path": "assets/sprites/objects/undertide_tidelamp.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "undertide_tidelamp_lit": {
+      "path": "assets/sprites/objects/undertide_tidelamp_lit.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "undertide_wreck": {
+      "path": "assets/sprites/objects/undertide_wreck.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
     },
     "unrisen_basin_dry": {
       "path": "assets/sprites/objects/unrisen_basin_dry.webp",

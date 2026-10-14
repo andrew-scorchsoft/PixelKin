@@ -84,6 +84,48 @@
       "max": 65
     },
     {
+      "area": "undertide_i",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 62,
+      "max": 63
+    },
+    {
+      "area": "undertide_i",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 63,
+      "max": 64
+    },
+    {
+      "area": "undertide_ii",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 62,
+      "max": 64
+    },
+    {
+      "area": "undertide_ii",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 63,
+      "max": 65
+    },
+    {
+      "area": "undertide_iii",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 63,
+      "max": 64
+    },
+    {
+      "area": "undertide_iii",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 64,
+      "max": 65
+    },
+    {
       "area": "farlamp_sound",
       "terrain": "water",
       "rarity": "common",

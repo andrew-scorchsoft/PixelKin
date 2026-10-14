@@ -1491,6 +1491,84 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'route',
     music: 'assets/audio/music/sunvault-climb-b.mp3',
     battle_backdrops: ['assets/backgrounds/battle/sunvault-climb-a.webp', 'assets/backgrounds/battle/sunvault-climb-b.webp'],
+  },  // ---- Lane C2 (10-the-farlamp-isles.md Part I): the Undertide + the Drowned Lamp —
+  // portal caves under the isles on the undertide_set accent kit (surge, shallows, tide-races).
+  undertide_i: {
+    json: 'assets/maps/undertide_i.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      undertide_set: 'assets/tilesets/undertide_set.webp',
+    },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/undertide.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/undertide-a.webp'],
+  },
+  undertide_ii: {
+    json: 'assets/maps/undertide_ii.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      undertide_set: 'assets/tilesets/undertide_set.webp',
+    },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/undertide.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/undertide-a.webp'],
+  },
+  undertide_iii: {
+    json: 'assets/maps/undertide_iii.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      undertide_set: 'assets/tilesets/undertide_set.webp',
+    },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/undertide.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/undertide-a.webp'],
+  },
+  undertide_iv: {
+    json: 'assets/maps/undertide_iv.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      undertide_set: 'assets/tilesets/undertide_set.webp',
+    },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/undertide.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/undertide-a.webp'],
+  },
+  farlamp_drowned: {
+    json: 'assets/maps/farlamp_drowned.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      undertide_set: 'assets/tilesets/undertide_set.webp',
+    },
+    kind: 'cave',
+    music: 'assets/audio/music/undertide.mp3',
+    // the relight (I6): once the Farlamp burns again, its room plays the relit cue
+    music_when: [{ flag: 'flag:isles_dawn', music: 'assets/audio/music/farlamp-relit.mp3' }],
+    battle_backdrops: ['assets/backgrounds/battle/farlamp-drowned-a.webp'],
+  },
+  // ---- Lane A — the Ashfall Shelf (walkthrough/10 Part II, 2026-10) ----
+  // The main-path leg between Cinderwind Scarp and Galehigh: daylight after three caves.
+  cinderwind_ashfall: {
+    json: 'assets/maps/cinderwind_ashfall.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',   // the haulers' old ore track (dressing)
+    },
+    kind: 'route',
+    music: 'assets/audio/music/cinderwind-ashfall.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/ashfall-a.webp'],
+  },
+  // Kiln Gully: the cold lamp-glass kiln up the old stack's thermal (Updraft Kite).
+  cinderwind_kiln: {
+    json: 'assets/maps/cinderwind_kiln.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/cinderhead-mine-b.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/kiln-a.webp'],
   },
   // ---- THE FARLAMP ISLES (walkthrough/10 Part I, post-game) — Lane C1: the sea,
   // the two wild isles, Driftholm + its interiors (builders: build_farlamp_isles.py,

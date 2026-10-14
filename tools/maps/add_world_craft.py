@@ -48,7 +48,7 @@ from worldcraft._kit import AMBIENCE_KEYS, PARTICLE_KINDS, PRE_CHICKENPIG, gid  
 
 REPO = HERE.parents[1]
 MAPS = REPO / "public" / "assets" / "maps"
-REGIONS = ("south", "east", "north", "west", "central")
+REGIONS = ("south", "east", "north", "west", "central", "outer")  # outer: the Farlamp Isles' Undertide (lane C2)
 SIGN_GID = gid("sign")
 
 
@@ -147,7 +147,11 @@ def prove_off_lane(mid: str, m: dict, objects: list[dict]) -> list[str]:
         i = y * W + x
         if meta.get(base[i], {}).get("terrain") in LANE_TERRAINS:
             errs.append(f"{mid}: prop tile {(x, y)} sits on a lane (path/trail)")
-        if before.encounter[i]:
+        # Open DEEP sea rolls rowed encounters everywhere (10 §2): a buoy on it
+        # hides no bed the way a prop on a grass patch would.
+        deep_only = all(meta.get(l["data"][i], {}).get("encounter_terrain") in (None, "deep")
+                        for l in m["layers"] if l.get("data"))
+        if before.encounter[i] and not deep_only:
             errs.append(f"{mid}: prop tile {(x, y)} covers an encounter tile")
         if (x, y) in near:
             errs.append(f"{mid}: prop tile {(x, y)} on/next to a warp, trigger or NPC post")
@@ -195,12 +199,14 @@ def lint(mid: str, m: dict, spec: dict) -> list[str]:
     errs: list[str] = []
     amb = spec.get("ambience")
     if amb is not None:
-        for k in amb:
-            if k not in AMBIENCE_KEYS:
-                errs.append(f"{mid}: unknown ambience key '{k}'")
-        for p in amb.get("particles", []):
-            if p.get("kind") not in PARTICLE_KINDS:
-                errs.append(f"{mid}: unknown particle kind '{p.get('kind')}'")
+        # a story-state override (`when`: [{flag, ambience}]) is linted like the block itself
+        for blk in [amb] + [r.get("ambience", {}) for r in amb.get("when", [])]:
+            for k in blk:
+                if k not in AMBIENCE_KEYS:
+                    errs.append(f"{mid}: unknown ambience key '{k}'")
+            for p in blk.get("particles", []):
+                if p.get("kind") not in PARTICLE_KINDS:
+                    errs.append(f"{mid}: unknown particle kind '{p.get('kind')}'")
     extra = set(spec) - {"ambience", "npcs", "objects", "triggers", "signs", "sprites", "after", "talk"}
     if extra:
         errs.append(f"{mid}: unknown spec keys {sorted(extra)}")

@@ -1521,6 +1521,29 @@ export const TRAINERS: TrainerRegistry = {
     payout: 784, // route 16 × ace 49
     music: 'battle-emberfall',
   },
+
+  // ---- Lane A — the Ashfall Shelf (walkthrough/10 Part II): two route trainers on
+  // the shelf's chokes (route 16 × ace, 10-economy §4).
+  ashfall_picker: {
+    id: 'ashfall_picker',
+    name: 'SILE',
+    title: 'Ore-hauler',
+    party: [
+      { species_id: 45, level: 30 }, // Sparkrat — Stone/Storm
+      { species_id: 49, level: 32 }, // Gravelo — Stone (ace)
+    ],
+    payout: 512, // route 16 × ace 32
+  },
+  ashfall_galewatch: {
+    id: 'ashfall_galewatch',
+    name: 'PELL',
+    title: 'Gale-watch',
+    party: [
+      { species_id: 89, level: 31 }, // Flintbeak — Storm
+      { species_id: 46, level: 33 }, // Voltcrag — Stone/Storm (ace)
+    ],
+    payout: 528, // route 16 × ace 33
+  },
   sunvault_stargazer: {
     id: 'sunvault_stargazer',
     name: 'ORRIN',
@@ -1604,6 +1627,77 @@ export const TRAINERS: TrainerRegistry = {
     payout: 5760, // vigilant 80 × ace 72
     music: 'battle-nightfall',
     ai: 'smart',
+  // ---- Lane C2 (10-the-farlamp-isles.md Part I): the Undertide's divers + the
+  // Farlamp's second keeper (post-game, 61-66; route 16 / keeper 20 × ace).
+  undertide_diver_ness: {
+    id: 'undertide_diver_ness',
+    name: 'NESS',
+    title: 'Lamp-diver',
+    party: [
+      { species_id: 172, level: 60 }, // Fathomote — Tide/Light
+      { species_id: 29, level: 61 }, // Glostern — Tide/Light
+      { species_id: 173, level: 62 }, // Fathomere — Tide/Light (ace)
+    ],
+    payout: 992, // route 16 × ace 62
+  },
+  undertide_diver_corin: {
+    id: 'undertide_diver_corin',
+    name: 'CORIN',
+    title: 'Lamp-diver',
+    party: [
+      { species_id: 174, level: 61 }, // Hermiwick — Stone/Tide
+      { species_id: 28, level: 62 }, // Brinewrath — Tide
+      { species_id: 61, level: 63 }, // Tidalarch — Verdant/Tide (ace)
+    ],
+    payout: 1008, // route 16 × ace 63
+  },
+  undertide_nethand_bryn: {
+    id: 'undertide_nethand_bryn',
+    name: 'BRYN',
+    title: 'Net-hand',
+    party: [
+      { species_id: 85, level: 62 }, // Stillwarden — Frost/Dark
+      { species_id: 176, level: 63 }, // Fogwisp — Frost/Dark
+      { species_id: 175, level: 64 }, // Beaconclaw — Stone/Light (ace)
+    ],
+    payout: 1024, // route 16 × ace 64
+  },
+  undertide_keeper_isolde: {
+    id: 'undertide_keeper_isolde',
+    name: 'ISOLDE',
+    title: 'Wick-tender',
+    party: [
+      { species_id: 30, level: 63 }, // Glostrael — Tide/Light
+      { species_id: 25, level: 64 }, // Prismare — Tide/Light
+      { species_id: 176, level: 64 }, // Fogwisp — Frost/Dark
+      { species_id: 175, level: 65 }, // Beaconclaw — Stone/Light (ace)
+    ],
+    payout: 1300, // keeper 20 × ace 65
+  },
+  undertide_diver_marlo: {
+    id: 'undertide_diver_marlo',
+    name: 'MARLO',
+    title: 'Lamp-diver',
+    party: [
+      { species_id: 138, level: 64 }, // Voidmantle — Dark
+      { species_id: 173, level: 65 }, // Fathomere — Tide/Light
+      { species_id: 55, level: 66 }, // Ferrolith — Stone (ace)
+    ],
+    payout: 1056, // route 16 × ace 66
+  },
+  // After the isles' dawn: Ondine's re-runnable bout at the Drowned Stair's head
+  // (optional income, outside the one-time journey budget).
+  undertide_rematch_ondine: {
+    id: 'undertide_rematch_ondine',
+    name: 'ONDINE',
+    title: 'Lamp-diver',
+    party: [
+      { species_id: 30, level: 66 }, // Glostrael — Tide/Light
+      { species_id: 175, level: 66 }, // Beaconclaw — Stone/Light
+      { species_id: 176, level: 67 }, // Fogwisp — Frost/Dark
+      { species_id: 173, level: 67 }, // Fathomere — Tide/Light (ace)
+    ],
+    payout: 1072, // route 16 × ace 67
   },
 };
 

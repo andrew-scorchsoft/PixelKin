@@ -769,6 +769,42 @@ export const ITEMS: ItemRegistry = {
     catch_bonus: 3.0,
     condition: { kind: 'terrain', terrain: 'deep' },
     price: 900,
+  // ---- Lane A — the Ashfall Shelf + Kiln Gully (walkthrough/10 Part II, 2026-10) ----
+  // "The Last Pane": the last lamp-glass ever drawn at the Kilnwright kiln.
+  kiln_pane: {
+    id: 'kiln_pane',
+    name: 'The Last Pane',
+    desc: 'A pane of old amber lamp-glass, the last the Kilnwright kiln ever drew. Light goes into it plain and comes out warm. Galehigh\'s kite-stall lamp has a hole this exact size.',
+    category: 'key',
+  },
+  // Kiln Gully's find-first chart (never stocked: no counter ever pressed it).
+  chart_shardstorm: {
+    id: 'chart_shardstorm',
+    name: 'Star-chart: Shardstorm',
+    desc: 'A chart the glass-blowers pressed for luck, of the Stone\'s figure breaking into a hundred bright shards. Teaches a willing kin SHARDSTORM (Stone). One study burns it out.',
+    category: 'chart',
+    teach_move: 'shardstorm',
+    price: 2400,
+  },
+  // ---- Lane C2 (10-the-farlamp-isles.md Part I): the Undertide.
+  // I4 — the old keeper's lens from the Kelp Vaults' island; reading the Fogwall's
+  // buoy lane by it is what lets the skiff through to Driftholm (`flag:q_isles_fogglass`,
+  // set by the same pickup). A keepsake once the isles are lit.
+  fog_glass: {
+    id: 'fog_glass',
+    name: 'Fog-glass',
+    desc: 'Keeper Marrow\'s lens in a brass ring. Through it, fog goes thin and the buoys read true.',
+    category: 'key',
+  },
+  // The Drowned Lamp's store (the Keeper's Log's reward): the Tide end-tier chart,
+  // found-first like Tremor Quake (chart_end tier, 10-economy §6).
+  chart_maelstrom: {
+    id: 'chart_maelstrom',
+    name: 'Star-chart: Maelstrom',
+    desc: 'The Farlamp\'s own sea-chart, the whirl the boats were taught to steer round. Teaches a willing kin MAELSTROM (Tide). One study burns it out.',
+    category: 'chart',
+    teach_move: 'maelstrom',
+    price: 4000,
   },
 };
 

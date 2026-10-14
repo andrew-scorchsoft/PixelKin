@@ -758,11 +758,12 @@ def _rows(area, lo_hi_rarity):
 GEOMETRY_ENCOUNTERS = {
     # Cinderwind Scarp (lv 28-31): the climb from Cinderhead Deep to Galehigh
     "rubbol":   _rows("cinderwind_scarp", [(28, 30, "common")]),
-    "galefox":  _rows("cinderwind_scarp", [(28, 31, "common")]),
-    "thrumble": _rows("cinderwind_scarp", [(29, 31, "common")]),
-    "lumecite": _rows("cinderwind_scarp", [(29, 31, "uncommon")]),
-    "nimbruff": _rows("cinderwind_scarp", [(30, 31, "rare")]),
-    "voltcrag": _rows("cinderwind_scarp", [(31, 31, "very_rare")]),
+    # (Lane A, 2026-10: retuned to 28-30 — the Ashfall Shelf above carries 30-33)
+    "galefox":  _rows("cinderwind_scarp", [(28, 30, "common")]),
+    "thrumble": _rows("cinderwind_scarp", [(29, 30, "common")]),
+    "lumecite": _rows("cinderwind_scarp", [(29, 30, "uncommon")]),
+    "nimbruff": _rows("cinderwind_scarp", [(30, 30, "rare")]),
+    "voltcrag": _rows("cinderwind_scarp", [(30, 30, "very_rare")]),
     # The Umbral Approach (lv 50-53): the mountain road to the Penumbra
     "voidmantle":  _rows("umbral_approach", [(50, 53, "common")]),
     "omenire":     _rows("umbral_approach", [(50, 53, "common")]),
@@ -772,6 +773,46 @@ GEOMETRY_ENCOUNTERS = {
     "liminalux":   _rows("umbral_approach", [(51, 53, "uncommon")]),
 }
 for _slug, _rows_ in GEOMETRY_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
+
+# Lane A (walkthrough/10 Part II, 2026-10): the Ashfall Shelf (lv 30-33, the main
+# path between the Scarp and Galehigh) + Kiln Gully (lv 33-35, optional, the cold
+# lamp-glass kiln behind the Updraft vent) — mirrors of the BUILT in-map tables
+# (tools/maps/build_cinderwind_ashfall.py, build_cinderwind_kiln.py). Stonebark is
+# the shelf's own rare: never wild before, it grows in the grey ash-grass.
+def _cave(area, lo_hi_rarity):
+    return [{"area": area, "terrain": "cave", "rarity": r, "min": lo, "max": hi}
+            for (lo, hi, r) in lo_hi_rarity]
+ASHFALL_ENCOUNTERS = {
+    "gravelo":     _rows("cinderwind_ashfall", [(31, 33, "common")]),
+    "sparkrat":    _rows("cinderwind_ashfall", [(30, 31, "common")]),
+    "flintbeak":   _rows("cinderwind_ashfall", [(30, 32, "common")]),
+    "galefox":     _rows("cinderwind_ashfall", [(30, 32, "uncommon")]),
+    "pyrolith":    _rows("cinderwind_ashfall", [(32, 33, "uncommon")])
+                   + _cave("cinderwind_kiln", [(34, 35, "uncommon")]),
+    "stonebark":   _rows("cinderwind_ashfall", [(30, 31, "rare")]),
+    "lumecite":    _cave("cinderwind_kiln", [(33, 35, "common")]),
+    "riddlestone": _cave("cinderwind_kiln", [(33, 35, "common")]),
+    "orebound":    _cave("cinderwind_kiln", [(33, 33, "uncommon")]),
+    "pyriven":     _cave("cinderwind_kiln", [(34, 35, "uncommon")]),
+    "prismara":    _cave("cinderwind_kiln", [(35, 35, "rare")]),
+}
+for _slug, _rows_ in ASHFALL_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
+# ...and their post-dawn DAY-FORM twins (tools/maps/hand_placed_data.py, the R4 pattern)
+ASHFALL_DAY_ENCOUNTERS = {
+    "voltcrag":    _rows("cinderwind_ashfall", [(56, 61, "common")]),
+    "gravelo":     _rows("cinderwind_ashfall", [(56, 61, "common")]),
+    "strikeaven":  _rows("cinderwind_ashfall", [(57, 62, "common")]),
+    "tempestail":  _rows("cinderwind_ashfall", [(57, 62, "uncommon")]),
+    "rootwarden":  _rows("cinderwind_ashfall", [(58, 62, "uncommon")]),
+    "prismara":    _cave("cinderwind_kiln", [(57, 63, "common")]),
+    "riddlestone": _cave("cinderwind_kiln", [(56, 62, "common")]),
+    "ferrolith":   _cave("cinderwind_kiln", [(57, 63, "common")]),
+    "pyrolith":    _cave("cinderwind_kiln", [(56, 62, "common")]),
+    "lithonyx":    _cave("cinderwind_kiln", [(58, 63, "uncommon")]),
+}
+for _slug, _rows_ in ASHFALL_DAY_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
 
 # The Wild Ways — Sunvault Climb rebuild (S, 09-the-wild-ways §2 S, 2026-10): the
@@ -1010,6 +1051,68 @@ for _area, _tab, _shift in _MIRE_TABLES:
 for _slug, _rows_ in MIRELIGHT_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
 
+# ---- Lane C2 (10-the-farlamp-isles.md Part I): the Undertide — MIRRORS of the
+# built in-map tables (tools/maps/build_undertide_i/ii/iii/iv.py are the truth;
+# keep both in step). Post-game only (no night/day pair: the isles keep their own
+# dusk). Cave = rect-wide on the galleries; water = the shallows (tide-race lanes
+# never roll). Weights -> rarity: >=20 common, 10-19 uncommon, 5-9 rare, <5 very_rare.
+_UT_SLUG = {172: "fathomote", 173: "fathomere", 174: "hermiwick", 175: "beaconclaw",
+            176: "fogwisp", 25: "prismare", 28: "brinewrath", 29: "glostern",
+            30: "glostrael", 34: "tideveil", 52: "lithonyx", 55: "ferrolith",
+            61: "tidalarch", 85: "stillwarden", 138: "voidmantle"}
+UNDERTIDE_TABLES = {
+    "undertide_i": {
+        "cave": [(174, 30, 61, 63), (176, 26, 61, 63), (52, 20, 62, 63), (85, 14, 62, 63),
+                 (55, 10, 62, 63)],
+        "water": [(172, 34, 61, 63), (29, 24, 61, 62), (28, 20, 62, 63), (61, 14, 62, 63),
+                  (30, 8, 63, 63)]},
+    "undertide_ii": {
+        "cave": [(174, 28, 61, 64), (176, 24, 62, 64), (52, 18, 62, 63), (85, 14, 62, 64),
+                 (175, 6, 63, 64), (138, 10, 62, 64)],
+        "water": [(172, 32, 61, 63), (61, 22, 62, 64), (28, 20, 62, 64), (29, 16, 61, 63),
+                  (173, 6, 63, 64), (30, 4, 64, 64)]},
+    "undertide_iii": {
+        "cave": [(174, 26, 62, 65), (176, 24, 62, 65), (85, 16, 63, 64), (138, 14, 63, 65),
+                 (175, 10, 64, 65), (55, 10, 63, 65)],
+        "water": [(172, 30, 62, 64), (28, 20, 63, 65), (61, 18, 63, 64), (30, 12, 64, 65),
+                  (173, 12, 64, 65), (25, 8, 64, 65)]},
+    "undertide_iv": {
+        "cave": [(176, 26, 63, 66), (174, 22, 63, 65), (175, 14, 64, 66), (138, 14, 64, 66),
+                 (85, 14, 63, 65), (55, 10, 64, 66)],
+        "water": [(172, 26, 63, 65), (173, 18, 64, 66), (28, 18, 64, 66), (30, 14, 64, 66),
+                  (25, 14, 64, 66), (34, 4, 66, 66)]},
+}
+
+
+def _ut_rarity(w):
+    return "common" if w >= 20 else "uncommon" if w >= 10 else "rare" if w >= 5 else "very_rare"
+
+
+# The isles' DAWN (pass 2): each table's day-form twin rises at `flag:isles_dawn` —
+# the kindled forms of the same water, +1 level (MIRROR of undertidekit.DAY_SWAP /
+# day_table; keep both in step).
+UNDERTIDE_DAY_SWAP = {174: 175, 172: 173, 29: 30}
+
+
+def _ut_day(rows):
+    out = {}
+    for (k, w, lo, hi) in rows:
+        d = UNDERTIDE_DAY_SWAP.get(k, k)
+        lo, hi = min(lo + 1, 67), min(hi + 1, 67)
+        if d in out:
+            pw, plo, phi = out[d]
+            out[d] = (pw + w, min(plo, lo), max(phi, hi))
+        else:
+            out[d] = (w, lo, hi)
+    return [(k, w, lo, hi) for k, (w, lo, hi) in out.items()]
+
+
+for _area, _by_terrain in UNDERTIDE_TABLES.items():
+    for _terrain, _tab in _by_terrain.items():
+        for (_k, _w, _lo, _hi) in _tab + _ut_day(_tab):
+            EXTRA_ENCOUNTERS.setdefault(_UT_SLUG[_k], []).append(
+                {"area": _area, "terrain": _terrain, "rarity": _ut_rarity(_w), "min": _lo, "max": _hi})
+
 # Areas whose encounter tables are BUILT into the map JSONs (the in-map zones
 # are the truth, mirrored above). Generated region defaults — and stale rows
 # carried in the previous per-species files — must not claim these areas:
@@ -1060,6 +1163,8 @@ CURATED_AREAS = {
     "duskapple_orchard",
     # the 2026-10 geometry fix's new routes (mirrored above, GEOMETRY_ENCOUNTERS)
     "cinderwind_scarp", "umbral_approach",
+    # Lane A (walkthrough/10 Part II): the Ashfall Shelf + Kiln Gully (mirrored above)
+    "cinderwind_ashfall", "cinderwind_kiln",
     # The Wild Ways — Sunvault Climb rebuild (S): the two new face maps
     "sunvault_climb_iii", "sunvault_climb_iv",
     # The Wild Ways — the Rimeway (C)
@@ -1078,6 +1183,9 @@ CURATED_AREAS = {
     # Driftholm is a town (no encounters), listed so nothing generated claims it
     "farlamp_sound", "farlamp_shelfwater", "farlamp_fogwall", "farlamp_gullwrack",
     "farlamp_kelpcrown", "driftholm",
+    # Lane C2 — the Farlamp Isles' Undertide (mirrored above, UNDERTIDE_TABLES); the
+    # Drowned Lamp is Farlume's room, encounter-free, listed so nothing claims it.
+    "undertide_i", "undertide_ii", "undertide_iii", "undertide_iv", "farlamp_drowned",
 }
 
 # The Old Light's hall tables (R10) — MIRROR of build_pearlmoor_oldlight.py's

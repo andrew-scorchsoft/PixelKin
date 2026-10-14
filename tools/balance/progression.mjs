@@ -96,6 +96,9 @@ const TREND_SKIP_AREAS = new Set([
   'old_seams_i', 'old_seams_ii', 'old_seams_iii', // the Old Seams (D)
   // the Farlamp Isles (walkthrough/10 Part I, optional post-game — Lane C1)
   'farlamp_sound', 'farlamp_shelfwater', 'farlamp_fogwall', 'farlamp_gullwrack', 'farlamp_kelpcrown',
+  'cinderwind_kiln', // Lane A: Kiln Gully — optional, behind the Updraft vent (post-Mira)
+  // Lane C2 — the Farlamp Isles' Undertide (post-game, optional, lv 61-66)
+  'undertide_i', 'undertide_ii', 'undertide_iii', 'undertide_iv',
 ]);
 for (const s of SPECIES) {
   for (const e of s.encounters ?? []) {
@@ -296,19 +299,24 @@ const JOURNEY = [
     // its two route trainers, its lv 28-31 beds and a Moth-amber (600).
     // (the Scarp's mandatory strips are part of this leg's walking, not extra to it:
     // its two trainers' XP stands in for a couple of the old leg's wild fights)
-    wild: { areas: ['cinderwind_scarp', 'galehigh_terraces'], band: [27, 31], fights: { rusher: 4, mainline: 8, explorer: 14 } },
+    // Lane A (walkthrough/10 Part II, 2026-10): the ASHFALL SHELF now sits between
+    // the Scarp (retuned 28-30) and Galehigh — its 30-33 beds, two route trainers
+    // (Sile, Pell) and the slag nook's Starglass Shard (+1500 valuables).
+    wild: { areas: ['cinderwind_scarp', 'cinderwind_ashfall', 'galehigh_terraces'], band: [27, 31], fights: { rusher: 2, mainline: 4, explorer: 7 } },
     trainers: [
       T('Hobb-Ree (ore-hauler)', 'route', [K(28, 53), K(30, 48)]),
       T('Rue (kite-runner)', 'route', [K(29, 100), K(29, 91), K(31, 101)]),
+      T('Sile (ore-hauler)', 'route', [K(30, 45), K(32, 49)]),
+      T('Pell (gale-watch)', 'route', [K(31, 89), K(33, 46)]),
       T('Perrin (kite-hand)', 'route', [K(28, 88), K(29, 97)]),
       T('Sorrel (terrace-farmer)', 'route', [K(29, 91), K(30, 45)]),
       T('Tamsin (wind-ward)', 'keeper', [K(29, 97), K(30, 98)]),
       T('Bran (wind-ward)', 'keeper', [K(30, 91), K(31, 89)]),
       T('Mira Vael', 'warden', [K(30, 98), K(31, 95), K(32, 89), K(34, 90)]),
     ],
-    income: { quests: 300, valuables: 1200, finds: 200 },
+    income: { quests: 300, valuables: 2700, finds: 200 },
     spend: { warm_balm: 3, beacon_charge: 2, chart_late: 1 },
-    checkpoint: { name: 'Storm Gleam (Mira)', rec: 28, ace: 34 },
+    checkpoint: { name: 'Storm Gleam (Mira)', rec: 30, ace: 34 }, // rec 28 -> 30 (Lane A): the Scarp + Ashfall now carry 28-33
   },
   {
     name: 'Windward II → Pale Vault (+ Wren A4)',
@@ -451,7 +459,9 @@ const JOURNEY = [
       T('Warden Mer (Round)', 'vigilant', [K(68, 135), K(68, 138), K(68, 85), K(69, 140), K(69, 145), K(69, 146)]),
       T('Star-tender Fenn', 'cor', [K(68, 9), K(68, 107), K(68, 125), K(69, 87), K(69, 131), K(70, 129)]),
     ],
-    income: { quests: 0, valuables: 9000, finds: 5000 }, // Starglass caches + the storm-tithe; payouts come from the trainer loop
+    // Lane C2: + the Undertide keeper's purse (2,000w, undertide_iv's west nook) —
+    // the post-game's only modelled leg, so the isles' found money lands here.
+    income: { quests: 0, valuables: 9000, finds: 7000 }, // Starglass caches + the storm-tithe + the keeper's purse; payouts come from the trainer loop
     spend: { bright_balm: 4 },
     checkpoint: { name: 'The Last Lesson (Fenn)', rec: 67, ace: 70 },
   },
@@ -496,6 +506,8 @@ const BUILT_PAYOUTS = {
   lampwarden_cinderhead: ['warden', 28, 1680],
   scarp_hauler: ['route', 30, 480], // Cinderwind Scarp (2026-10)
   scarp_kiterunner: ['route', 31, 496],
+  ashfall_picker: ['route', 32, 512], // the Ashfall Shelf (Lane A, 2026-10)
+  ashfall_galewatch: ['route', 33, 528],
   galehigh_kitehand: ['route', 29, 464],
   galehigh_terracer: ['route', 30, 480],
   skyloft_ward_a: ['keeper', 30, 600],
@@ -570,6 +582,13 @@ const BUILT_PAYOUTS = {
   bram_fathom_rematch: ['vigilant', 72, 5760],
   mire_lampdiver: ['route', 42, 672], // the Glassmere
   mire_acolyte: ['route', 43, 688], // the drowned chapel
+  // Lane C2 — the Farlamp Isles' Undertide (post-game)
+  undertide_diver_ness: ['route', 62, 992],
+  undertide_diver_corin: ['route', 63, 1008],
+  undertide_nethand_bryn: ['route', 64, 1024],
+  undertide_keeper_isolde: ['keeper', 65, 1300],
+  undertide_diver_marlo: ['route', 66, 1056],
+  undertide_rematch_ondine: ['route', 67, 1072], // post-isles-dawn, re-runnable
 };
 const failures = [];
 for (const [id, [klass, ace, authored]] of Object.entries(BUILT_PAYOUTS)) {
@@ -584,7 +603,7 @@ if (!(PRICES.chart_early < PRICES.chart_mid && PRICES.chart_mid < PRICES.chart_l
 // Move-id sanity for the shipped charts (mirror items.ts teach_move values).
 for (const id of ['cinder_spit', 'mist_spray', 'gust_up', 'focus_mind', 'wave_crash', 'hearth_pulse',
   'spore_puff', 'root_strike', 'lifedrain', 'thunder_kick', 'volt_arc', 'gale_slam', 'swift_step', 'tempest',
-  'sunburst_nova', 'tremor_quake']) {
+  'sunburst_nova', 'tremor_quake', 'maelstrom']) {
   if (!MOVES.moves.some((m) => m.id === id)) failures.push(`chart teaches unknown move '${id}'`);
 }
 

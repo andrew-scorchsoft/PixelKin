@@ -301,6 +301,22 @@
       "name": "Pale Vault Glacier"
     },
     {
+      "id": "cinderwind_ashfall",
+      "x": 173,
+      "y": 237,
+      "kind": "route",
+      "region": "north",
+      "name": "The Ashfall Shelf"
+    },
+    {
+      "id": "cinderwind_kiln",
+      "x": 179,
+      "y": 227,
+      "kind": "landmark",
+      "region": "north",
+      "name": "Kiln Gully"
+    },
+    {
       "id": "hushfrost_pass_i",
       "x": 170,
       "y": 170,
@@ -712,7 +728,27 @@
     {
       "a": "cinderwind_scarp",
       "b": "galehigh_terraces",
+      "kind": "gate"
+    },
+    {
+      "a": "cinderwind_scarp",
+      "b": "cinderwind_ashfall",
       "kind": "road"
+    },
+    {
+      "a": "cinderwind_ashfall",
+      "b": "galehigh_terraces",
+      "kind": "road"
+    },
+    {
+      "a": "cinderwind_ashfall",
+      "b": "cinderwind_kiln",
+      "kind": "gate"
+    },
+    {
+      "a": "cinderwind_ashfall",
+      "b": "windward_stair_i",
+      "kind": "gate"
     },
     {
       "a": "galehigh_terraces",
@@ -992,6 +1028,8 @@
     "cinderhead_deep_b2f": "cinderhead_deep",
     "cinderhead_lumenary": "cinderhead_mine",
     "cinderhead_mine": "cinderhead_mine",
+    "cinderwind_ashfall": "cinderwind_ashfall",
+    "cinderwind_kiln": "cinderwind_kiln",
     "cinderwind_scarp": "cinderwind_scarp",
     "coldfog_marches_i": "coldfog_marches_i",
     "coldfog_marches_ii": "coldfog_marches_ii",
@@ -1007,6 +1045,7 @@
     "drownlight_beacon": "drownlight_beacon",
     "duskapple_orchard": "tinderwick",
     "emberroot_heart": "cinderhead_mine",
+    "farlamp_drowned": "driftholm",
     "farlamp_fogwall": "farlamp_fogwall",
     "farlamp_gullwrack": "farlamp_gullwrack",
     "farlamp_kelpcrown": "farlamp_kelpcrown",
@@ -1107,6 +1146,10 @@
     "umbral_spire_f2": "umbral_spire",
     "umbral_spire_f3": "umbral_spire",
     "umbral_spire_summit": "dawnstead",
+    "undertide_i": "farlamp_gullwrack",
+    "undertide_ii": "farlamp_kelpcrown",
+    "undertide_iii": "driftholm",
+    "undertide_iv": "driftholm",
     "unrisen_stair": "unrisen_stair",
     "vesper_crossroads": "vesper_crossroads",
     "vigil_grovefall": "spore_grotto",

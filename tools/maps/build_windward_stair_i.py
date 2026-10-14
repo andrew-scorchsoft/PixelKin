@@ -94,6 +94,12 @@ mk.rect(cliff, W, H, 0, 26, 1, H - 1)
 mk.rect(cliff, W, H, 22, 26, 23, H - 1)
 mk.rect(glacier, W, H, 0, 0, 1, 25)
 mk.rect(glacier, W, H, 22, 0, 23, 25)
+# (Lane A, 2026-10) THE ASHFALL THERMAL: a Kite-gated gap in the west face at
+# rows 29-30 — the far side of the Ashfall Shelf's Windward lookout (Ashfall
+# rows 7-8; the geometry offset is 22). Only the Updraft Kite crosses it.
+for y in (29, 30):
+    cliff[y * W + 0] = 0
+    cliff[y * W + 1] = 0
 
 # BOTTOM BORDER: glacier crag with the Galehigh gap at cols 14-15 (seam: the
 # snowtrail continues Galehigh's top-band lane tile-for-tile)
@@ -247,7 +253,18 @@ m["warps"] += [
      "to_map": "windward_stair_ii", "to": {"tx": 14, "ty": 21}, "facing": "up",
      "requires_ability": "updraft_kite",
      "blocked_ref": "sign.windward_windgap", "transition": "fade"},
+    # WEST -> cinderwind_ashfall (Lane A: the thermal down onto the shelf;
+    # Updraft-gated both ways — the Ashfall's `to_windward` lands at (1,29)/(1,30))
+    {"id": "to_ashfall", "at": {"tx": 0, "ty": 29}, "trigger": "step_on",
+     "to_map": "cinderwind_ashfall", "to": {"tx": 22, "ty": 7}, "facing": "left",
+     "requires_ability": "updraft_kite",
+     "blocked_ref": "npc.windward_ashfall_gap", "transition": "fade"},
+    {"id": "to_ashfall_s", "at": {"tx": 0, "ty": 30}, "trigger": "step_on",
+     "to_map": "cinderwind_ashfall", "to": {"tx": 22, "ty": 8}, "facing": "left",
+     "requires_ability": "updraft_kite",
+     "blocked_ref": "npc.windward_ashfall_gap", "transition": "fade"},
 ]
+owed += ["npc.windward_ashfall_gap"]
 
 # ---- objects: cairns at the bends, lamps by the lane, the updraft column -----------
 m["objects"] += [
@@ -379,7 +396,9 @@ m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + ter
 if __name__ == "__main__":
     # warp markers: the swirl the thermal lifts from, under the updraft column
     wm.add(m, wm.marker("windgap_vent", "updraft_vent", 8, 3),
-           wm.marker("windgap_vent_e", "updraft_vent", 9, 3))
+           wm.marker("windgap_vent_e", "updraft_vent", 9, 3),
+           wm.marker("ashgap_vent", "updraft_vent", 0, 29),
+           wm.marker("ashgap_vent_s", "updraft_vent", 0, 30))
     ok = mk.finalize(m, scale=3)
     pt.report(owed)
     print("PASS" if ok else "FAIL")

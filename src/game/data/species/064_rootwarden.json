@@ -81,6 +81,13 @@
       "max": 62
     },
     {
+      "area": "cinderwind_ashfall",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 58,
+      "max": 62
+    },
+    {
       "area": "farlamp_kelpcrown",
       "terrain": "tall_grass",
       "rarity": "uncommon",

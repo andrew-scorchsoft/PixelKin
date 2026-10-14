@@ -5188,7 +5188,7 @@ export const SCRIPTS: ScriptRegistry = {
     },
     {
       op: 'say', if_flag: 'gleam:stone', unless_flag: 'gleam:storm', speaker: 'ANDREW',
-      text: 'Mira Vael keeps the Storm, up over the Galehigh Terraces — all wind and washing-lines. Ask the town about the Kite-Rising. Not there yet? Back through the mine, out the Deep\'s far door and up Cinderwind Scarp.',
+      text: 'Mira Vael keeps the Storm, up over the Galehigh Terraces — all wind and washing-lines. Ask the town about the Kite-Rising. Not there yet? Back through the mine, out the Deep\'s far door, up Cinderwind Scarp and over the Ashfall Shelf.',
     },
     {
       op: 'say', if_flag: 'gleam:storm', unless_flag: 'gleam:frost', speaker: 'ANDREW',

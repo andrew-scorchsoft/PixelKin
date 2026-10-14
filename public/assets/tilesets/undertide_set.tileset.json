@@ -1,0 +1,1507 @@
+{
+  "name": "undertide_set",
+  "image": "assets/tilesets/undertide_set.webp",
+  "tile_width": 16,
+  "tile_height": 16,
+  "columns": 10,
+  "tile_count": 165,
+  "tiles": [
+    {
+      "index": 0,
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "corner_nw",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          0,
+          40,
+          41
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "index": 1,
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "edge_n",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          1,
+          42,
+          43
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "index": 2,
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "corner_ne",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          2,
+          44,
+          45
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "index": 3,
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "edge_w",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          3,
+          46,
+          47
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "index": 4,
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "fill",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          4,
+          48,
+          49
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "index": 5,
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "edge_e",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          5,
+          50,
+          51
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "index": 6,
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "corner_sw",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          6,
+          52,
+          53
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "index": 7,
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "edge_s",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          7,
+          54,
+          55
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "index": 8,
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "corner_se",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          8,
+          56,
+          57
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "index": 9,
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "inner_nw",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          9,
+          58,
+          59
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "index": 10,
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "inner_ne",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          10,
+          60,
+          61
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "index": 11,
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "inner_sw",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          11,
+          62,
+          63
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "index": 12,
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "inner_se",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          12,
+          64,
+          65
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "index": 13,
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "strip_h",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          13,
+          66,
+          67
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "index": 14,
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "strip_v",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          14,
+          68,
+          69
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "index": 15,
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "end_n",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          15,
+          70,
+          71
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "index": 16,
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "end_s",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          16,
+          72,
+          73
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "index": 17,
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "end_w",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          17,
+          74,
+          75
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "index": 18,
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "end_e",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          18,
+          76,
+          77
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "index": 19,
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "single",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          19,
+          78,
+          79
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "index": 20,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "corner_nw",
+      "collides": true,
+      "animation": {
+        "frames": [
+          20,
+          80,
+          81
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "index": 21,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "edge_n",
+      "collides": true,
+      "animation": {
+        "frames": [
+          21,
+          82,
+          83
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "index": 22,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "corner_ne",
+      "collides": true,
+      "animation": {
+        "frames": [
+          22,
+          84,
+          85
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "index": 23,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "edge_w",
+      "collides": true,
+      "animation": {
+        "frames": [
+          23,
+          86,
+          87
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "index": 24,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "fill",
+      "collides": true,
+      "animation": {
+        "frames": [
+          24,
+          88,
+          89
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "index": 25,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "edge_e",
+      "collides": true,
+      "animation": {
+        "frames": [
+          25,
+          90,
+          91
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "index": 26,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "corner_sw",
+      "collides": true,
+      "animation": {
+        "frames": [
+          26,
+          92,
+          93
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "index": 27,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "edge_s",
+      "collides": true,
+      "animation": {
+        "frames": [
+          27,
+          94,
+          95
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "index": 28,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "corner_se",
+      "collides": true,
+      "animation": {
+        "frames": [
+          28,
+          96,
+          97
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "index": 29,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "inner_nw",
+      "collides": true,
+      "animation": {
+        "frames": [
+          29,
+          98,
+          99
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "index": 30,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "inner_ne",
+      "collides": true,
+      "animation": {
+        "frames": [
+          30,
+          100,
+          101
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "index": 31,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "inner_sw",
+      "collides": true,
+      "animation": {
+        "frames": [
+          31,
+          102,
+          103
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "index": 32,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "inner_se",
+      "collides": true,
+      "animation": {
+        "frames": [
+          32,
+          104,
+          105
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "index": 33,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "strip_h",
+      "collides": true,
+      "animation": {
+        "frames": [
+          33,
+          106,
+          107
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "index": 34,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "strip_v",
+      "collides": true,
+      "animation": {
+        "frames": [
+          34,
+          108,
+          109
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "index": 35,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "end_n",
+      "collides": true,
+      "animation": {
+        "frames": [
+          35,
+          110,
+          111
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "index": 36,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "end_s",
+      "collides": true,
+      "animation": {
+        "frames": [
+          36,
+          112,
+          113
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "index": 37,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "end_w",
+      "collides": true,
+      "animation": {
+        "frames": [
+          37,
+          114,
+          115
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "index": 38,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "end_e",
+      "collides": true,
+      "animation": {
+        "frames": [
+          38,
+          116,
+          117
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "index": 39,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "single",
+      "collides": true,
+      "animation": {
+        "frames": [
+          39,
+          118,
+          119
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "index": 40,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 41,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 42,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 43,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 44,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 45,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 46,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 47,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 48,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 49,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 50,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 51,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 52,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 53,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 54,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 55,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 56,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 57,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 58,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 59,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 60,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 61,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 62,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 63,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 64,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 65,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 66,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 67,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 68,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 69,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 70,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 71,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 72,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 73,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 74,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 75,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 76,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 77,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 78,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 79,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 80,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 81,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 82,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 83,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 84,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 85,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 86,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 87,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 88,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 89,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 90,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 91,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 92,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 93,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 94,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 95,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 96,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 97,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 98,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 99,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 100,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 101,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 102,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 103,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 104,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 105,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 106,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 107,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 108,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 109,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 110,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 111,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 112,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 113,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 114,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 115,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 116,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 117,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 118,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 119,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 120,
+      "role": "water",
+      "terrain": "surge",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          120,
+          121,
+          122
+        ],
+        "duration_ms": 220
+      }
+    },
+    {
+      "index": 121,
+      "role": "water",
+      "terrain": "surge",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 122,
+      "role": "water",
+      "terrain": "surge",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 123,
+      "role": "water",
+      "terrain": "surge",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          123,
+          124,
+          125
+        ],
+        "duration_ms": 220
+      }
+    },
+    {
+      "index": 124,
+      "role": "water",
+      "terrain": "surge",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 125,
+      "role": "water",
+      "terrain": "surge",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 126,
+      "role": "water",
+      "terrain": "surge",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          126,
+          127,
+          128
+        ],
+        "duration_ms": 220
+      }
+    },
+    {
+      "index": 127,
+      "role": "water",
+      "terrain": "surge",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 128,
+      "role": "water",
+      "terrain": "surge",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 129,
+      "role": "water",
+      "terrain": "surge",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          129,
+          130,
+          131
+        ],
+        "duration_ms": 220
+      }
+    },
+    {
+      "index": 130,
+      "role": "water",
+      "terrain": "surge",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 131,
+      "role": "water",
+      "terrain": "surge",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 132,
+      "role": "water",
+      "terrain": "surge",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          132,
+          133,
+          134
+        ],
+        "duration_ms": 400
+      }
+    },
+    {
+      "index": 133,
+      "role": "water",
+      "terrain": "surge",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 134,
+      "role": "water",
+      "terrain": "surge",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 135,
+      "role": "ground"
+    },
+    {
+      "index": 136,
+      "role": "ground"
+    },
+    {
+      "index": 137,
+      "role": "ground"
+    },
+    {
+      "index": 138,
+      "role": "decor"
+    },
+    {
+      "index": 139,
+      "role": "decor"
+    },
+    {
+      "index": 140,
+      "role": "decor"
+    },
+    {
+      "index": 141,
+      "role": "decor"
+    },
+    {
+      "index": 142,
+      "role": "decor"
+    },
+    {
+      "index": 143,
+      "role": "decor"
+    },
+    {
+      "index": 144,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "fill",
+      "collides": true,
+      "animation": {
+        "frames": [
+          144,
+          145,
+          146
+        ],
+        "duration_ms": 710
+      }
+    },
+    {
+      "index": 145,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 146,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 147,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "fill",
+      "collides": true,
+      "animation": {
+        "frames": [
+          147,
+          148,
+          149
+        ],
+        "duration_ms": 770
+      }
+    },
+    {
+      "index": 148,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 149,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 150,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "edge_n",
+      "collides": true,
+      "animation": {
+        "frames": [
+          150,
+          151,
+          152
+        ],
+        "duration_ms": 700
+      }
+    },
+    {
+      "index": 151,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 152,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 153,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "edge_s",
+      "collides": true,
+      "animation": {
+        "frames": [
+          153,
+          154,
+          155
+        ],
+        "duration_ms": 700
+      }
+    },
+    {
+      "index": 154,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 155,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 156,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "edge_w",
+      "collides": true,
+      "animation": {
+        "frames": [
+          156,
+          157,
+          158
+        ],
+        "duration_ms": 700
+      }
+    },
+    {
+      "index": 157,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 158,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 159,
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "edge_e",
+      "collides": true,
+      "animation": {
+        "frames": [
+          159,
+          160,
+          161
+        ],
+        "duration_ms": 700
+      }
+    },
+    {
+      "index": 160,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 161,
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "index": 162,
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "fill",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall",
+      "animation": {
+        "frames": [
+          162,
+          163,
+          164
+        ],
+        "duration_ms": 1200
+      }
+    },
+    {
+      "index": 163,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 164,
+      "role": "water",
+      "collides": true,
+      "encounter_terrain": "water",
+      "requires_ability": "tidecall"
+    }
+  ]
+}

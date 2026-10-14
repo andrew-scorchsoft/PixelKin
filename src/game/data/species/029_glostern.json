@@ -101,6 +101,20 @@
       "rarity": "common",
       "min": 57,
       "max": 62
+    },
+    {
+      "area": "undertide_i",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 61,
+      "max": 62
+    },
+    {
+      "area": "undertide_ii",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 61,
+      "max": 63
     }
   ],
   "scripted": false,

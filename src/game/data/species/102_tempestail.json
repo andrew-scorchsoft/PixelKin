@@ -74,6 +74,13 @@
       "rarity": "uncommon",
       "min": 62,
       "max": 64
+    },
+    {
+      "area": "cinderwind_ashfall",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 57,
+      "max": 62
     }
   ],
   "scripted": false,
