@@ -129,6 +129,17 @@ signature Star-charts; a 2,000w purse; Bram Fathom's rematch payout; and Farlume
 - **Tide-bell Tuning**: a bell-ringer's child wants the three Bell Galleries bells rung in the
   old order; it pays a Lumen Drop and unlocks the shortcut race back to Driftholm.
 
+**Panel revisions (v2, adopted):**
+- **Ione names the coasts** (one line per shore). The journal entry reads letters n/5 with shore
+  hints. Bottles carry the cache glint.
+- **Sea-map density:** every 15×10 screen of a sea map carries an islet, wreck, trainer,
+  buoy-cache or ambient kin, and `audit_visual.py` must pass.
+- The **Fogwall turn-round** names its fix: "if only you had a glass to read the buoys by…"
+- **Deep backtrack** (lane E): 4–5 skiff-only caches in existing deep water (Gullcry,
+  Pearlmoor harbour, Dimglass II, Hearthfall, Tinderwick's outer reef). The skiff reopens the
+  old world like a Gift.
+- The Driftholm → Tinderwick sea strait is **cut** (padding); the Driftholm waystone does that job.
+
 **Audio** (classic chip via generate-midi + a remaster via `remaster_track.py`; battles stay
 classic-only): `farlamp-sound` (rowing on a long swell), `driftholm` (an island town hymn
 in a minor mode that turns major after `isles_dawn` via `music_when`), `undertide` (sea-cave
@@ -155,6 +166,16 @@ curve on a single screen of climbing. It's the thinnest stretch of the main path
 | `cinderwind_scarp` (kept) | Cinderwind Scarp | (93,-203) | 24×28 | Its north edge now opens into the Ashfall Shelf. Its east cut to Galehigh is blocked by a **rockfall** (gated warps + boulder objects, `blocked_ref` = a hauler's script: "up and round by the Ashfall, love"). | 28–30 |
 | `cinderwind_ashfall` (new) | The Ashfall Shelf | (93,-231) | 24×28 | Daylight after the caves: a high shelf where Cinderhead's slag was tipped for a century, so the grass grows grey out of the ash. The haulers' camp (brazier **rest point**), two sight trainers, a ledge loop, a cache. East edge joins Galehigh's west edge, Ashfall rows 18–27 ↔ Galehigh rows 0–9. | 30–33 |
 | `cinderwind_kiln` (new) | Kiln Gully | portal | 22×18 | An old lamp-glass kiln in the shelf's cliff, behind an **updraft vent** (`updraft_kite`), so you come back after Galehigh. Stone/Ember kin lv 33–35, a Beacon charge, a Star-chart, kiln lore. | 33–35 |
+
+**Panel revisions (v3, [`expansion-panel.md`](../../reviews/expansion-panel.md), adopted):**
+- **Stonebark (#63, Verdant/Stone, never wild until now)** is the Ashfall rare (about 5%).
+- **"The Last Pane"** side quest. The kiln-wright's family keep the cold kiln. Kiln Gully's last
+  pane of lamp-glass goes up to Galehigh's kite-maker; the reward is wicks plus the pane set in
+  Galehigh's lamp (a visible change). Flags `flag:q_north_pane`, `flag:q_north_pane_done`.
+- A **Windward vista** from the shelf, and a **Kite-gated crossing** from the shelf's upper east
+  edge (Ashfall rows 0–17 ↔ Windward Stair I rows 22–39) as a later shortcut.
+- A **hidden slag nook**: seen from the upper ledge, reached by a one-way drop, with an
+  ash-buried cache.
 
 **The rockfall is the return compressor.** The first time you reach Galehigh (the step_on band
 on the new west landing) the Galehigh haulers clear it: `flag:scarp_rockfall_clear`, derived
@@ -204,3 +225,86 @@ A lane may move its own side by ±2 tiles if the art forces it, and must then re
 **Flags:** as in §3. C2 sets `flag:isles_dawn` + `flag:q_isles_done`. C1 maps react to `flag:isles_dawn`: fog-bank objects get `hidden_when_flag`, day-form NPC swaps, `music_when`.
 
 **Levels:** as in §4. Isles beds go in `progression.mjs TREND_SKIP_AREAS` (optional post-game).
+
+---
+
+## Part III — Lowtinder & Tinderwick Bay (the reason to go home; Tidecall, mid-game)
+
+> Panel plan v3, scored 87.5 ([`expansion-panel.md`](../../reviews/expansion-panel.md)).
+
+### Lore
+Old Tinderwick stood on the shore until **the winter the water rose** (about 40 years ago,
+story-bible §12: the same winter the Sunken Solarium flooded). The town moved up the bluff and
+the old one went under the bay: **Lowtinder**. Its last Lampwarden, **Grandmother Ottery
+Tallow** (Brisa's grandmother), never left. She lives cosily in the dry upper floor of the old
+lamp-house, keeping a small lamp the town above forgot. Brisa visits on Sundays and doesn't
+talk about it.
+
+### The player promise
+1. **Seen from minute one.** Off Tinderwick's beach, roof-ridges and a drowned bell-tower show
+   above the water (objects on the bay's edge), and an old fisher on the sand says "that's where
+   the town *was*." Andrew's Tide-stage hint adds "and home's got a secret now you can swim."
+2. **Tidecall opens it** (gift 2): the first reason to walk back to the start.
+3. **Coming round at home:** the Bell Cellar's far end climbs up **Tinderwick's own old well**,
+   a one-way shortcut into the home town square (step_on from the cellar; the well is a solid
+   object in town).
+4. **The bell comes home.** "The Town Bell": raise the old bell from Cellar B2 (it needs the
+   cellar's winch-key from B1), and it hangs in Tinderwick's square. A flag-swapped object, a
+   short ceremony, Brisa's line, and the bell rings on the town's festival.
+5. **Three returns:**
+   1. **Tidecall** (about lv 17–22).
+   2. **Brightlight** (`flag:lamplight_brightlight`, 4 Gleams) reveals the lamp-school's
+      moss-garden room, with **Mossmantle** (#39, Light/Verdant, never wild until now).
+   3. **The skiff** (post-game) reaches the **outer deep reef**: row the grandmother out to see
+      the old Tinder Light, then battle her (ace 66, rematchable).
+
+### Maps (world coordinates; north-up)
+
+| id | name | kind | at | size | role | levels |
+|---|---|---|---|---|---|---|
+| `tinderwick_bay` | Tinderwick Bay | route (sea) | (0,24) | 28×28 | Its top edge is Tinderwick's beach, so Tinderwick's south-edge swim warps need Tidecall; build_tinderwick.py owns that side. Shallow reef islets, tide-pools, sea-grass `water` beds, two swimmer trainers, caches, drowned roof-ridges. East → Lowtinder. The OUTER rows are DEEP (the reef, skiff-only) with the grandmother's reef scene at a rocky islet. | 17–20 |
+| `lowtinder` | Lowtinder | route | (28,24) | 26×28 | Drowned streets on a tidal shelf: half-sunk houses, rooftops with one-way drops (a loop), the old lamp-school (Brightlight room) and the lamp-house with the grandmother. **Embrift** (#14) is the rare here. Bell Cellar mouth. | 18–21 |
+| `lowtinder_cellar` | The Bell Cellar | cave | portal | 24×20 | Flooded cellars under the lamp-house, with the winch-key. Ladder down. | 19–22 |
+| `lowtinder_cellar_b2` | The Bell Cellar — the Belfry Pit | cave | portal | 24×22 | The sunken belfry and the bell (the raise scene), a Lumen Drop, and the climb to **Tinderwick's well** (one-way out into the square). | 20–23 |
+| `lowtinder_school` | the old lamp-school | interior | — | roomkit | Its moss-garden room is shown by Brightlight. | — |
+
+Plus the grandmother's lamp-house interior (`lowtinder_lamphouse`, a rest point).
+
+**Flags:**
+- `flag:q_lowtinder` (first meeting with the grandmother)
+- `flag:lowtinder_winch_key`
+- `flag:q_lowtinder_bell` (bell raised)
+- `flag:q_lowtinder_bell_home` (hung in Tinderwick)
+- `flag:lowtinder_reef_rowed`
+- `flag:lowtinder_grandmother_beaten`
+
+Journal: "The Town Bell", "The Old Tinder Light" (post-game).
+
+**Audio:**
+- `lowtinder`: the Tinderwick theme drowned. The same melody, slowed and underwater-soft, with a
+  music-box bell (classic + remaster).
+- `bell-cellar` (sparse cave).
+- The reef battle uses an existing warden theme.
+
+**Art:**
+- Drowned roofs and the bell-tower.
+- Lowtinder houses (half-sunk).
+- The old bell (raised and hung).
+- The well (in Tinderwick).
+- Battle backdrops `lowtinder-a.webp`, `bell-cellar-a.webp`.
+- The grandmother's battle sprite (the trainer-intro beat, `content/trainerArt.ts`) and her walk-sheet.
+
+**Balance:** optional mid-game beds go in `TREND_SKIP_AREAS`; prices and payouts follow the class
+formula (her ace 66 = warden-class rematch).
+
+### Deep backtrack (part of this lane)
+Skiff-only caches in existing deep water. Each is an islet or a buoy-cache on deep water,
+`requires` nothing but reachability by `deepdive`, placed through the owning builder plus the
+four runners:
+- Gullcry Rock's outer deep
+- Pearlmoor harbour
+- Dimglass Coast II
+- Vigil Hearthfall
+- Tinderwick Bay's reef
+
+Lane: **E** (Tinderwick Bay, Lowtinder, cellar, the well, the bell, the grandmother, deep backtrack).
