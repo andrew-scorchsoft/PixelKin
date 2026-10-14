@@ -157,7 +157,7 @@ go digging on every task.
 - **Stats — the genre's six:** hp/atk/def/spa/spd/spe. Power is costed against a
   shared budget (EPS) and **empirically balanced** by a Monte Carlo sim — all
   types land 46.7–53.3% win-rate. (`docs/mechanics/02-stats-and-balance.md`)
-- **Roster:** **171 kin** — the **151** curated from ~463 concepts via a panel-scored
+- **Roster:** **177 kin** — the **151** curated from ~463 concepts via a panel-scored
   pipeline (the ~312 cuts are archived as an idea bank), **plus appended additions**
   (later ids never renumber the original 1–151): the third starter line (#152–#153),
   the three starter middle stages (#154–#156), the apex kindlings #157 **Pharolux**
@@ -175,7 +175,11 @@ go digging on every task.
   and #166 **Emberroot** (Stone/Ember, the first star that fell; Cinderhead's coal is its breath, lv 46), and the Old Light's own **jest-house clowns** (R11,
   region `jesthouse`, tower-only wild tables lv 9–14): #167 **JesterHalf** →lv 24→ #168 **JesterFull**
   (Light/Dark), #169 **The Smiler** →lv 22→ #170 **The Exciter** (Light → Light/Storm), #171
-  **McClownface** (Tide/Light). Cute, never creepy. Moves: **≤4 per kin**
+  **McClownface** (Tide/Light). Cute, never creepy. And the post-game **Farlamp Isles** kin
+  (`walkthrough/10-the-farlamp-isles.md`, region `isles`, placed ONLY by the isles' map tables —
+  `MAP_TABLE_ONLY_REGIONS`): #172 **Fathomote** →lv 40→ #173 **Fathomere** (Tide/Light lantern-fish),
+  #174 **Hermiwick** →lv 42→ #175 **Beaconclaw** (Stone/Tide → Stone/Light lamp-crab), #176 **Fogwisp**
+  (Frost/Dark fog-moth), #177 **Farlume** (Tide/Light, F-tier, the drowned lamp's set-piece catch, lv 68). Moves: **≤4 per kin**
   from a **125-move** shared pool (wave 2: full phys/spec ladders per type + 13 signature
   moves) + 28 abilities. (`docs/mechanics/dex.md` for the readable dex)
 - **Starters:** the founding trio is **complete** and every starter is a **three-stage
@@ -643,10 +647,10 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   separate creature path — `systems/sprites/CreatureSprites.ts` — is now wired into
   `StarterSelect`, `Battler` (battle), `PartyMenu`, and `AttractScene`: each lazy-loads a packed
   sprite keyed `kin_<id>_<view>` and falls back to the type-tinted placeholder **only** when a kin
-  isn't packed. **All 171 kin are packed** under `public/assets/sprites/creatures/NNN_slug/` —
+  isn't packed. **All 177 kin are packed** under `public/assets/sprites/creatures/NNN_slug/` —
   5 views each (battle_front/back, icon, overworld, portrait) listed in `creatures.manifest.json`.
   Regenerate any kin's full view set from its species `art` block with
-  `./venv/bin/python tools/assets/gen_creature.py <id>` (supports `--provider openai` when Google
+  `./venv/bin/python tools/assets/gen_creature.py <id>` (`--front-ref <earlier stage front.png>` keeps a kindled form on-line; supports `--provider openai` when Google
   is spend-capped), then re-run `pack_creatures.py`. The placeholder path remains as a safety net.
 - **Character animation is 3 layered sheets, not one big sheet** (docs/art-style.md §A/§A2/§A3):
   layer 1 = the 4×4 walk sheet (required; *running* is free — same frames, faster, so don't

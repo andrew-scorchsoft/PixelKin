@@ -173,8 +173,13 @@ REGION_AREA = {
     # the Old Light's own kin (#167-171, R10): their default row names a curated
     # tower floor, so it is dropped — only the mirrored tower tables place them
     "jesthouse": ("pearlmoor_oldlight_1", (9, 14)),
+    # Lane B (Farlamp Isles, #172-177): the isles' kin live ONLY in the isles'
+    # own map tables (mirrored into EXTRA_ENCOUNTERS by the map work), so
+    # MAP_TABLE_ONLY_REGIONS below suppresses the generated default row.
+    "isles": ("farlamp_sound", (58, 66)),
 }
-TERRAIN = {"jesthouse":"cave","south":"tall_grass","east":"cave","north":"tall_grass","west":"water","outer":"tall_grass","central":"cave","post":"tall_grass"}
+MAP_TABLE_ONLY_REGIONS = {"isles"}
+TERRAIN = {"isles":"water","jesthouse":"cave","south":"tall_grass","east":"cave","north":"tall_grass","west":"water","outer":"tall_grass","central":"cave","post":"tall_grass"}
 
 def encounters(region, rarity, tier, stage, scripted):
     area, (blo, bhi) = REGION_AREA.get(region, ("dimglass_coast", (3, 12)))
@@ -182,7 +187,7 @@ def encounters(region, rarity, tier, stage, scripted):
     bump = {"A":0,"B":3,"C":7,"D":12,"E":16,"F":20}[tier]
     lo = min(bhi-2, blo + bump + (stage-1)*3)
     hi = min(bhi, lo + 3)
-    if scripted:
+    if scripted or region in MAP_TABLE_ONLY_REGIONS:
         return []  # legendaries/very-rare apexes are scripted/landmark, not in open tables
     return [{"area": area, "terrain": TERRAIN.get(region, "tall_grass"), "rarity": rarity, "min": lo, "max": hi}]
 
@@ -1284,6 +1289,112 @@ CANON = {
             "silhouette": "A vast, ancient, low-slung beast half-made of the mountain: a broad tortoise-like body under a humped shell of dark basalt strata, heavy legs ending in root-like claws that spread into the rock. Deep cracks run across the shell and shoulders, each glowing a slow molten amber from within; at the crown of the shell a star-shaped core shows through the stone like a banked coal. A small heavy head with eyes like embers in a kiln-mouth. At 64px it reads as a glowing, cracked boulder that is breathing.",
             "palette": "Basalt charcoal and ink (#1a1430) stone with cool grey strata bands; glowing seams of ember amber (#ff8a3d) deepening to red at their edges; the star-core a pale gold-white, the brightest pixel; ash-grey dust on the root-claws.",
             "direction": "Ancient, patient, rooted — the oldest thing in the world, asleep, not angry. Its weight should be felt: grounded, enormous, slow. The glowing cracks are breath, not wounds; the star inside is still warm.",
+        },
+    },
+    # #135 Liminalux (2026-10, with the Farlamp kin): its generated spread sat on
+    # the D-tier outlier line (~82-84% vs the ~84.7% gate across seeds) and the
+    # six appended kin reshuffled the sim's pairings enough to tip it over at the
+    # CI seed. spa 112->100 (BST 498->486, inside the D band) clears it with margin.
+    "liminalux": {
+        "stats": {"hp": 99, "atk": 42, "def": 70, "spa": 100, "spd": 90, "spe": 85},
+    },
+    # ---- Lane B: the Farlamp Isles kin (#172-177) — docs/world/walkthrough/
+    # 10-the-farlamp-isles.md §4. Post-game, met at lv 58+, so every kit is
+    # pinned to climb past the generator's B-tier stop at lv 24 (a wild
+    # Fathomote at 60 must not carry a lv-13 kit). Stats are NOT pinned
+    # (make_stats on role/tier) unless the sim says otherwise. No signature
+    # moves: the Wild Ways legendary pattern (#165-166) uses the shared pool.
+    "fathomote": {
+        "entry": "A lantern-fish fry no longer than a hand, with a little glowing lure on a stalk over its nose. Shoals of them drift under the Farlamp Isles at night like spilled stars, and the old keepers set small lamps by the water so the fry have something to swim towards.",
+        "category": "Lantern-Fry Kin",
+        # pinned (sim): the generated 350 spread ran ~41% vs a ~31% B mean and
+        # pushed the B tier's floor kin over the gate; trimmed to 330
+        "stats": {"hp": 48, "atk": 30, "def": 42, "spa": 80, "spd": 50, "spe": 80},
+        # kindles at lv 40; met at 58+ knowing tide_pulse/focus_mind/light_pulse/swift_step
+        "levelup": [(1, "quick_jab"), (1, "mist_spray"), (6, "spark_mote"), (10, "drench_song"),
+                    (16, "tide_pulse"), (22, "focus_mind"), (28, "light_pulse"), (34, "swift_step")],
+        "art": {
+            "silhouette": "A tiny round-bodied lantern-fish fry seen side-on, swimming upright: a big head with huge round dark eyes, a small smiling underbite, stubby frilled pectoral fins and a short fanned tail. A thin curved stalk rises from its brow and ends in a round glowing lure-bulb held out in front of its face. At 64px it reads as a chubby baby fish carrying its own little lamp.",
+            "palette": "Deep sea-blue body (#13205a) with a paler water-blue (#4fb4ff) belly and fin-frills; tiny diamond-cyan (#9fe7ff) freckle-spots along the flank; the lure-bulb a warm bone-gold (#f5f0e1) glow, the brightest pixel; soft ink (#1a1430) outlines.",
+            "direction": "Wide-eyed, curious and brave in a small way: a baby that swims out into the dark because its own light says it can. Cute and round, never toothy. Must read as the same line as Fathomere: same lure-stalk, same blue, same spot row.",
+        },
+    },
+    "fathomere": {
+        "entry": "A grown lantern-fish whose lure lights a whole fathom of sea. Fishers lost in the Fogwall used to follow a Fathomere's glow down the buoy lanes, and Driftholm says it still swims the old route home every night, in case anyone is out there.",
+        "category": "Lantern-Fish Kin",
+        # met at 58+ knowing deepsurge/lightspire/mist_screen/maelstrom
+        "levelup": [(1, "quick_jab"), (1, "mist_spray"), (6, "spark_mote"), (10, "drench_song"),
+                    (16, "tide_pulse"), (22, "focus_mind"), (28, "light_pulse"), (34, "swift_step"),
+                    (40, "deepsurge"), (46, "lightspire"), (52, "mist_screen"), (58, "maelstrom")],
+        "art": {
+            "silhouette": "A long, graceful deep-sea lantern-fish seen side-on: a sleek tapering body with a row of small glowing spots along each flank, broad ribbon-like fins that trail like a veil, large calm eyes and a gentle closed mouth. A tall arching lure-stalk curves forward over its head and ends in a bright glass-like lamp-bulb. At 64px it reads as an elegant fish carrying a lantern before it.",
+            "palette": "Midnight body (#13205a deepening to #0b1026 along the back) with a water-blue (#4fb4ff) belly and translucent sea-blue fin-veils; the flank spot-row in diamond-cyan (#9fe7ff); the lure-bulb a warm bone-gold (#f5f0e1) lamp with a soft amber core, the brightest pixel; ink (#1a1430) outlines.",
+            "direction": "Calm, steady, a guide: the fry grown up into the light it once swam towards. Elegant and deep, never menacing, no teeth showing. Same lure-stalk, same spot row and same blues as Fathomote, now long and graceful.",
+        },
+    },
+    "hermiwick": {
+        "entry": "A small hermit crab that has made its home in the broken glass of a drowned lamp. It polishes the cracked panes every morning and backs into them at the first sign of trouble. Driftholm children say every Hermiwick is looking for the lamp its glass came from.",
+        "category": "Lamp-Glass Crab Kin",
+        # pinned (sim): the generated 350 wall ran ~36% vs a ~31% B mean; 336
+        "stats": {"hp": 64, "atk": 47, "def": 88, "spa": 25, "spd": 56, "spe": 56},
+        # kindles at lv 42; met at 58+ knowing guard_up/rock_hurl/wave_crash/bulwark
+        "levelup": [(1, "quick_jab"), (1, "pebble_toss"), (6, "brine_flick"), (10, "stone_wall"),
+                    (14, "gritfist"), (19, "tidewhip"), (24, "guard_up"), (29, "rock_hurl"),
+                    (35, "wave_crash"), (40, "bulwark")],
+        "art": {
+            "silhouette": "A small sturdy hermit crab, three-quarter view: a pebble-grey plated body, two mismatched claws (one big, one small), stalked eyes and short jointed legs. On its back, instead of a shell, it wears a little brass lantern housing with cracked, chipped glass panes and a dark unlit wick inside. At 64px it reads as a crab carrying a broken lantern as its home.",
+            "palette": "Pebble-grey and slate shell-plates with sandy-cream undersides; coral-orange claw tips; the lantern housing in tarnished brass with pale sea-glass panes (#9fe7ff tint) showing white crack-lines; the wick dark and unlit; ink (#1a1430) outlines.",
+            "direction": "Shy, stubborn and house-proud: a tiny keeper of a lamp that doesn't work yet. Plucky, never pitiful. The broken lantern-home is the whole design; Beaconclaw is the same crab with the same brass lantern made whole and lit.",
+        },
+    },
+    "beaconclaw": {
+        "entry": "When a Hermiwick finally finds a whole glass, it kindles into a Beaconclaw and the lamp on its back lights for the first time. It stands on the reef at the tide's edge and turns slowly all night, sweeping its beam across the water like a lighthouse with legs.",
+        "category": "Lighthouse Crab Kin",
+        # pinned (sim): the generated wall spread (atk 70) ran ~55% vs a ~66%
+        # D mean; same 498, re-cut so the claw actually hits
+        "stats": {"hp": 95, "atk": 95, "def": 120, "spa": 40, "spd": 80, "spe": 68},
+        # Stone/Tide -> Stone/Light (the Exciter precedent). Met at 58+ knowing
+        # radiant_strike/boulder_smash/dazzle_flash/prism_beam
+        "ability": "lumenward", "hidden_ability": "stonehide",
+        "levelup": [(1, "quick_jab"), (1, "pebble_toss"), (6, "brine_flick"), (10, "stone_wall"),
+                    (14, "gritfist"), (19, "tidewhip"), (24, "guard_up"), (29, "rock_hurl"),
+                    (35, "wave_crash"), (40, "bulwark"), (42, "radiant_strike"),
+                    (47, "boulder_smash"), (53, "dazzle_flash"), (59, "prism_beam")],
+        "art": {
+            "silhouette": "A big armoured crab built like a small lighthouse, three-quarter view: a broad stone-plated body on thick jointed legs, one huge rounded claw raised like a shield, stalked eyes. On its back stands a tall, whole lantern tower: a brass lantern room with clean glass panes and a bright lamp shining inside, under a little conical roof, with soft beams of light fanning out. At 64px it reads as a crab wearing a lit lighthouse.",
+            "palette": "Pebble-grey and slate shell-plates with sandy-cream undersides and coral-orange claw tips (Hermiwick's colours, bigger and bolder); the lantern room in polished brass with clear glass; the lamp a warm bone-gold (#f5f0e1) with a fire-amber (#ff8a3d) core, the brightest pixel; a white-and-red banded stripe on the tower base; ink (#1a1430) outlines.",
+            "direction": "Proud, protective and patient: the little crab grown into a lighthouse. Solid and kind, a guardian of the reef. Same crab, same brass lantern as Hermiwick, now whole and lit.",
+        },
+    },
+    "fogwisp": {
+        "entry": "A moth made of sea-fog, drawn to lamps it can never reach. Where Fogwisps settle the air turns cold and grey, and lights seem farther away than they are. Driftholm keepers don't chase them off: a Fogwisp is only lonely, they say, and lonely things go where the light is.",
+        "category": "Sea-Fog Moth Kin",
+        # a disruptor: chill + fog + a dark/frost special ladder; met at 60+
+        # knowing chill_mist/whiteout/mist_screen/gloomswell
+        "levelup": [(1, "quick_jab"), (1, "snow_veil"), (7, "gloom_spit"), (12, "blight_touch"),
+                    (18, "glacier_beam"), (24, "hollow_pulse"), (30, "focus_mind"),
+                    (36, "chill_mist"), (42, "whiteout"), (48, "mist_screen"), (54, "gloomswell")],
+        "art": {
+            "silhouette": "A soft, round-bodied moth that seems made of fog, front view with wings spread: a fluffy pale body, big feathery antennae, two pairs of wide frayed wings whose edges dissolve into curling wisps of mist, and two large dark gentle eyes. Little curls of fog trail off the wingtips. At 64px it reads as a fluffy misty moth drifting in the dark.",
+            "palette": "Fog-white and pale grey body and wings shading to a cool grey-violet; a faint frost-blue sheen (#9fe7ff) along the wing veins; dusky violet-grey eye-spots on the hind wings; the eyes deep night (#0b1026) with one bone (#f5f0e1) highlight each; ink (#1a1430) outlines kept soft.",
+            "direction": "Eerie-cosy: quiet, wistful, soft as breath on a window. A little sad, never sinister, no fangs, no skulls.",
+        },
+    },
+    "farlume": {
+        # Tide-F default is phoenix: wrong for the keeper of a drowned light.
+        # lumenward = the lamp it kept; tidecaller = the sea it waited in.
+        "ability": "lumenward", "hidden_ability": "tidecaller",
+        "entry": "The Farlamp's own keeper-kin, the light that lived inside Vesperholm's outermost sea-lamp. The night the deep came up it went down with the lamp and kept it burning on the sea floor as long as it could, then waited in the drowned tower for someone to bring the flame back.",
+        "category": "Drowned Lamp Kin",
+        # as met at lv 68 (set-piece): lightspire / mend / maelstrom / mist_screen
+        "levelup": [(1, "mist_spray"), (9, "spark_mote"), (16, "drench_song"),
+                    (24, "tide_pulse"), (32, "light_pulse"), (40, "deepsurge"),
+                    (48, "focus_mind"), (56, "lightspire"), (60, "mend"),
+                    (64, "maelstrom"), (68, "mist_screen"), (74, "dawnburst")],
+        "art": {
+            "silhouette": "A great, serene sea-serpent coiled upright around itself like the spiral stair of a lighthouse: a long body of deep sea-blue scales banded with pale stone-white rings, broad translucent fin-sails along its back, and a noble head crowned with a lantern room of brass and glass in which a steady flame burns. Light spills from the lantern down its coils. At 64px it reads as a living lighthouse coiled out of the sea.",
+            "palette": "Deep sea-blue (#13205a) scales with water-blue (#4fb4ff) highlights and bone-white (#f5f0e1) stone bands; translucent diamond-cyan (#9fe7ff) fin-sails; the lantern crown in warm brass; the flame a white-gold, the brightest pixel; ink (#1a1430) outlines.",
+            "direction": "Ancient, faithful and grieving, then hopeful: a keeper that never stopped tending its lamp. Majestic and gentle, calm eyes, the drowned light's guardian, never a monster.",
         },
     },
 }
