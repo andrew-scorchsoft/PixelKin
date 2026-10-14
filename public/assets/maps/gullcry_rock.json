@@ -872,6 +872,18 @@
       "hidden_when_flag": "flag:picked_gullcry_charm"
     },
     {
+      "id": "driftletter_2",
+      "at": {
+        "tx": 11,
+        "ty": 7
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_driftletter_2",
+      "hidden_when_flag": "flag:driftletter_2"
+    },
+    {
       "id": "amb_glostern",
       "at": {
         "tx": 10,

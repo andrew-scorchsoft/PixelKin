@@ -121,6 +121,22 @@ export const SHOPS: ShopRegistry = {
       'chart_swift_step',
     ],
   },
+
+  // The Farlamp Isles (Lane C1) — Creel & Daughter, Driftholm's chandlery: the
+  // post-game counter (top balms, the revive, both charges) + the isles' own
+  // Deep Charm once the Farlamp burns again (`flag:isles_dawn`).
+  driftholm_chandlery: {
+    id: 'driftholm_chandlery',
+    name: 'CREEL & DAUGHTER',
+    stock: [
+      'warm_balm',
+      'bright_balm',
+      'hearth_coal',
+      'glow_charge',
+      'beacon_charge',
+      { item: 'deep_charm', requires_flag: 'flag:isles_dawn' },
+    ],
+  },
 };
 
 export function getShop(id: string): ShopDef | undefined {

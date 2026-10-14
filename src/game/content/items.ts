@@ -749,6 +749,27 @@ export const ITEMS: ItemRegistry = {
     desc: 'A field-journal page in Fenn\'s careful hand: three day-forms, inked in morning light, and a note — "brighter lamps will show us more."',
     category: 'key',
   },
+  // ---- THE FARLAMP ISLES (walkthrough/10 Part I) — Lane C1 ----
+  // Ione Fathom's rebuilt lamp-boat, its prow-lamp lit from the Star-tender's
+  // light: holding it is what grants `deepdive` (script.ione_launch gives both).
+  farlamp_skiff: {
+    id: 'farlamp_skiff',
+    name: 'Farlamp Skiff',
+    desc: 'The Farlamp\'s old lamp-boat, rebuilt. Its prow-lamp lets you row the deep.',
+    category: 'key',
+  },
+  // The isles' conditional charge (the Drift Charm pattern): blazes over the open
+  // deep, plain anywhere else. Sold at the Driftholm chandlery once the isles'
+  // dawn breaks (mirrored in progression.mjs PRICES + 10-economy.md).
+  deep_charm: {
+    id: 'deep_charm',
+    name: 'Deep Charm',
+    desc: 'A lamp-cell steeped in sea-light. Over the open deep its throw burns threefold.',
+    category: 'charge',
+    catch_bonus: 3.0,
+    condition: { kind: 'terrain', terrain: 'deep' },
+    price: 900,
+  },
   // ---- Lane A — the Ashfall Shelf + Kiln Gully (walkthrough/10 Part II, 2026-10) ----
   // "The Last Pane": the last lamp-glass ever drawn at the Kilnwright kiln.
   kiln_pane: {

@@ -124,6 +124,8 @@ const TITLE_CLASS: Record<string, string> = {
   'Hollowing Acolyte': 'acolyte',
   Runner: 'runner', "Runners' Captain": 'runner',
   'Hall Sparrer': 'wick_tender', // the Lumenary sparring partners (content/sparring.ts)
+  // the Farlamp Isles (Lane C1)
+  Oarsman: 'net_hand', 'Kelp-farmer': 'net_hand', 'Isle Keeper': 'wick_tender',
 };
 
 /** Unique battle sprites, by trainer id (bosses, set-pieces, the Old Light's cast). */

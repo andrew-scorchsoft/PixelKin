@@ -3058,6 +3058,18 @@
       "hidden_when_flag": "flag:has_tin_rower"
     },
     {
+      "id": "driftletter_1",
+      "at": {
+        "tx": 13,
+        "ty": 14
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_driftletter_1",
+      "hidden_when_flag": "flag:driftletter_1"
+    },
+    {
       "id": "amb_brinelet",
       "at": {
         "tx": 12,

@@ -133,6 +133,27 @@
       "rarity": "common",
       "min": 64,
       "max": 67
+    },
+    {
+      "area": "farlamp_shelfwater",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 61,
+      "max": 62
+    },
+    {
+      "area": "farlamp_fogwall",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 62,
+      "max": 63
+    },
+    {
+      "area": "farlamp_kelpcrown",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 61,
+      "max": 63
     }
   ],
   "scripted": false,

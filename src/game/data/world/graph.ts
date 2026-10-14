@@ -219,6 +219,19 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // Sunvault Climb rebuild (S)
     { map_id: 'sunvault_climb_iii', region: 'west' }, // route: the Gilt Face (ladder pitches, the trestle over the gully)
     { map_id: 'sunvault_climb_iv', region: 'west' }, // route: the Sun Ledges (planks + ledges to the observatory hill)
+    // ---- THE FARLAMP ISLES (walkthrough/10 Part I, post-game) — Lane C1: the surface.
+    // Rowed from the Point's slip / the Wick-Run Foot once Ione's skiff is yours.
+    { map_id: 'farlamp_sound', region: 'south', optional: true, unlocked_by_flag: 'flag:q_isles_afloat', reward: 'the deep under the lighthouse: Fathomote/Hermiwick, a boat-trainer, a Hearth Coal' },
+    { map_id: 'farlamp_shelfwater', region: 'south', optional: true, unlocked_by_flag: 'flag:q_isles_afloat', reward: 'reef flats + the sunken hull (a Hearth Coal), a boat-trainer' },
+    { map_id: 'farlamp_fogwall', region: 'south', optional: true, unlocked_by_flag: 'flag:q_isles_afloat', reward: 'the far lamp; the fog turns you round without the fog-glass; Fogwisp' },
+    { map_id: 'farlamp_gullwrack', region: 'south', optional: true, unlocked_by_flag: 'flag:q_isles_afloat', reward: 'gull-cliffs, the keeper\'s bothy (rest), the Undertide I mouth' },
+    { map_id: 'farlamp_kelpcrown', region: 'south', optional: true, unlocked_by_flag: 'flag:q_isles_afloat', reward: 'the keepers\' ruins (a 2,000w purse), kelp terraces, the Undertide II mouth' },
+    { map_id: 'driftholm', region: 'south', optional: true, unlocked_by_flag: 'flag:q_isles_fogglass', reward: 'the island town: inn, chandlery (Deep Charm), Elder Creel, Bram Fathom (ace 70), Letters Home' },
+    { map_id: 'driftholm_inn', region: 'south', optional: true }, // interior: the Lamplighters' Rest (rest point)
+    { map_id: 'driftholm_chandlery', region: 'south', optional: true }, // interior: Creel & Daughter (shop)
+    { map_id: 'driftholm_elder', region: 'south', optional: true }, // interior: Elder Nan Creel (the well-stair key)
+    { map_id: 'driftholm_boathouse', region: 'south', optional: true }, // interior: the boathouse (a cache)
+    { map_id: 'gullwrack_hut', region: 'south', optional: true }, // interior: the keeper's bothy (rest point)
 
     // Lane A — the Ashfall Shelf (walkthrough/10 Part II): the main-path leg Scarp -> Ashfall -> Galehigh
     { map_id: 'cinderwind_ashfall', region: 'north' }, // route: the slag-tip shelf, the haulers' camp (rest point)
@@ -454,6 +467,21 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'sunvault_climb_ii', to_map: 'sunvault_climb_iii', via_warp: 'to_climb_iii', bidirectional: true },
     { from_map: 'sunvault_climb_iii', to_map: 'sunvault_climb_iv', via_warp: 'to_climb_iv', bidirectional: true },
     { from_map: 'sunvault_climb_iv', to_map: 'nightreach_observatory', via_warp: 'to_observatory', bidirectional: true },
+    // ---- THE FARLAMP ISLES (Lane C1): the launches, the sea seams, Driftholm's doors
+    // (the three cave mouths' edges are declared bidirectionally by Lane C2)
+    { from_map: 'pearlmoor_point', to_map: 'farlamp_sound', via_warp: 'to_sound_6', requires_flag: 'flag:q_isles_afloat', bidirectional: true },
+    { from_map: 'wickrun_foot', to_map: 'farlamp_shelfwater', via_warp: 'to_shelf_9', requires_flag: 'flag:q_isles_afloat', bidirectional: true },
+    { from_map: 'farlamp_sound', to_map: 'farlamp_shelfwater', via_warp: 'to_shelf_0', requires_ability: 'deepdive', bidirectional: true },
+    { from_map: 'farlamp_sound', to_map: 'farlamp_gullwrack', via_warp: 'to_gullwrack_0', requires_ability: 'deepdive', bidirectional: true },
+    { from_map: 'farlamp_shelfwater', to_map: 'farlamp_fogwall', via_warp: 'to_fogwall_0', requires_ability: 'deepdive', bidirectional: true },
+    { from_map: 'farlamp_shelfwater', to_map: 'farlamp_kelpcrown', via_warp: 'to_kelpcrown_0', requires_ability: 'deepdive', bidirectional: true },
+    { from_map: 'farlamp_gullwrack', to_map: 'farlamp_kelpcrown', via_warp: 'to_kelpcrown_0', requires_ability: 'deepdive', bidirectional: true },
+    { from_map: 'farlamp_fogwall', to_map: 'driftholm', via_warp: 'to_driftholm_16', requires_flag: 'flag:q_isles_fogglass', bidirectional: true },
+    { from_map: 'driftholm', to_map: 'driftholm_inn', via_warp: 'enter_inn_2', bidirectional: true },
+    { from_map: 'driftholm', to_map: 'driftholm_chandlery', via_warp: 'enter_chandlery', bidirectional: true },
+    { from_map: 'driftholm', to_map: 'driftholm_elder', via_warp: 'enter_elder', bidirectional: true },
+    { from_map: 'driftholm', to_map: 'driftholm_boathouse', via_warp: 'enter_boathouse_2', bidirectional: true },
+    { from_map: 'farlamp_gullwrack', to_map: 'gullwrack_hut', via_warp: 'to_hut', bidirectional: true },
 
     // Lane A — the Ashfall Shelf (walkthrough/10 Part II)
     { from_map: 'cinderwind_scarp', to_map: 'cinderwind_ashfall', via_warp: 'to_ashfall', bidirectional: true },

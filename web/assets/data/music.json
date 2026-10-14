@@ -724,7 +724,7 @@
     {
      "id": "interior-lamplit",
      "title": "Indoors — lamplit rooms",
-     "where": "Glacier Cottage",
+     "where": "Glacier Cottage · Elder Creel's House",
      "mood": "Lamplit rooms — an unhurried, conversational little tune that sits under a chat by the stove and never asks for attention.",
      "classic": "play/assets/audio/music/interior-lamplit.mp3",
      "classic_loop_start": null,
@@ -746,7 +746,7 @@
     {
      "id": "interior-hush",
      "title": "Indoors — the quiet after",
-     "where": "Apprentice's House",
+     "where": "Apprentice's House · The Boathouse · The Keeper's Bothy",
      "mood": "The Quiet After — the hometown lullaby played softly in a frightened house; the fire still lit, a music box that keeps trying to rise.",
      "classic": "play/assets/audio/music/interior-hush.mp3",
      "classic_loop_start": null,
@@ -768,7 +768,7 @@
     {
      "id": "shop-counter",
      "title": "Shops",
-     "where": "Tinderwick General Store · Pearlmoor Chandlery · The Kite-Maker's",
+     "where": "Tinderwick General Store · Pearlmoor Chandlery · The Kite-Maker's · Creel & Daughter, Chandlers",
      "mood": "The Counter Bell — a bouncy little shop tune with a doorbell for a hook; browse as long as you like.",
      "classic": "play/assets/audio/music/shop-counter.mp3",
      "classic_loop_start": null,
@@ -779,7 +779,7 @@
     {
      "id": "inn-rest",
      "title": "Inns — rest a while",
-     "where": "The Wayward Arms · Pearlmoor Quayside Inn · Vesper Crossroads Inn · Lowleaf Guest-bower · The Steady Gust Inn · The Held Flame Inn · The Long Watch Inn",
+     "where": "The Wayward Arms · Pearlmoor Quayside Inn · Vesper Crossroads Inn · Lowleaf Guest-bower · The Steady Gust Inn · The Held Flame Inn · The Long Watch Inn · The Lamplighters' Rest",
      "mood": "Rest a while — a fire's glow, a full kettle and a warm bed; the hometown tune settled into a contented waltz.",
      "classic": "play/assets/audio/music/inn-rest.mp3",
      "classic_loop_start": null,
@@ -976,12 +976,23 @@
     {
      "id": "driftholm",
      "title": "Driftholm",
-     "where": "Driftholm, the island town of the Farlamp Isles, cut off in the long dark for eleven winters",
+     "where": "Driftholm",
      "mood": "A sea-town hymn in the long dark: warm but lonely, small lamps kept alone in the windows.",
      "classic": "play/assets/audio/music/driftholm.mp3",
      "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/driftholm.mp3",
      "loop_start": 10.733,
+     "note": null
+    },
+    {
+     "id": "driftholm-dawn",
+     "title": "Driftholm",
+     "where": "Driftholm",
+     "mood": "The same island hymn turned major and full: a town that has its morning back.",
+     "classic": "play/assets/audio/music/driftholm-dawn.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/driftholm-dawn.mp3",
+     "loop_start": 10.1,
      "note": null
     },
     {
@@ -993,6 +1004,17 @@
      "classic_loop_start": 17.1429,
      "remaster": "play/assets/audio/music/remaster/farlamp-relit.mp3",
      "loop_start": 10.943,
+     "note": null
+    },
+    {
+     "id": "farlamp-sound",
+     "title": "Farlamp Sound",
+     "where": "Farlamp Sound · The Shelfwater · The Fogwall · Gullwrack Isle · Kelpcrown Isle",
+     "mood": "Rowing on a long swell in the fog: the isles' hymn as a lone line over the sea.",
+     "classic": "play/assets/audio/music/farlamp-sound.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/farlamp-sound.mp3",
+     "loop_start": 7.293,
      "note": null
     },
     {

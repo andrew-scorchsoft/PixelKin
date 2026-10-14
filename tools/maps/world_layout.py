@@ -89,6 +89,9 @@ NODE_KINDS: dict[str, str] = {
     "wickrun_traverse": "route", "wickrun_lower": "route", "wickrun_foot": "route",
     # THE WILD WAYS — the Mirelights (east of Saltreach Fen I, over Ansel's ferry)
     "mirelight_landing": "route", "mirelight_glassmere": "route", "mirelight_chapel": "landmark",
+    # THE FARLAMP ISLES (walkthrough/10 Part I, Lane C1): the sea south of the Point
+    "farlamp_sound": "route", "farlamp_shelfwater": "route", "farlamp_fogwall": "route",
+    "farlamp_gullwrack": "route", "farlamp_kelpcrown": "route", "driftholm": "town",
 }
 # places hung off a stacked interior chain, pinned near their anchor (tiles)
 ANCHORED: dict[str, tuple[str, float, float]] = {
@@ -226,6 +229,16 @@ ROADS: list[tuple[str, str, str]] = [
     ("saltreach_fen_i", "mirelight_landing", "gate"),
     ("mirelight_landing", "mirelight_glassmere", "road"),
     ("mirelight_glassmere", "mirelight_chapel", "road"),
+    # THE FARLAMP ISLES (Lane C1): rowed from the Point's slip / the Wick-Run's beach
+    # (gated on Ione's skiff); the fog lets you through to Driftholm only with the glass
+    ("pearlmoor_quay", "farlamp_sound", "gate"),      # the Point's launch slip
+    ("wickrun_foot", "farlamp_shelfwater", "gate"),
+    ("farlamp_sound", "farlamp_shelfwater", "road"),
+    ("farlamp_shelfwater", "farlamp_fogwall", "road"),
+    ("farlamp_sound", "farlamp_gullwrack", "road"),
+    ("farlamp_shelfwater", "farlamp_kelpcrown", "road"),
+    ("farlamp_gullwrack", "farlamp_kelpcrown", "road"),
+    ("farlamp_fogwall", "driftholm", "gate"),
     # THE LANTERN-CAR (rides, not roads) + the Cinderhead ore-hoist
     ("lanternway_lowleaf", "vesper_crossroads", "car"),
     ("lanternway_galehigh", "vesper_crossroads", "car"),

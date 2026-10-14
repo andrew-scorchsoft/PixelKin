@@ -513,6 +513,23 @@ PLACEMENTS.setdefault("wickstead_school", {}).setdefault("npcs", []).append(
     {"id": "namewright", "at": {"tx": 3, "ty": 2}, "facing": "down", "sprite": "npc_old_man",
      "movement": "static", "dialogue_ref": "script.namewright"})
 
+# THE FARLAMP ISLES (walkthrough/10 Part I, Lane C1): the five DRIFTLETTERS — bottles
+# washed up on five shores (Ione Fathom names them). Each is an item-cache glint
+# on foot ground at the waterline; its pickup script (content/regions/farlamp.ts)
+# sets `flag:driftletter_N` (three of them DERIVE flag:driftletters_3 in FlagStore).
+_DRIFTLETTERS = {
+    1: ("dimglass_coast", 13, 14),       # the Dimglass strand, south of Pearlmoor
+    2: ("gullcry_rock", 11, 7),          # Gullcry Rock's high stone
+    3: ("wickrun_foot", 23, 24),         # the beach at the Wick-Run's foot
+    4: ("mirelight_glassmere", 12, 19),  # the Glassmere shallows
+    5: ("drownlight_beacon", 4, 11),     # the shingle under the Drownlight Beacon
+}
+for _n, (_mid, _x, _y) in _DRIFTLETTERS.items():
+    PLACEMENTS.setdefault(_mid, {}).setdefault("npcs", []).append(
+        {"id": f"driftletter_{_n}", "at": {"tx": _x, "ty": _y}, "facing": "down",
+         "sprite": "item_cache", "movement": "static",
+         "dialogue_ref": f"script.pickup_driftletter_{_n}",
+         "hidden_when_flag": f"flag:driftletter_{_n}"})
 # ---- Lane A (walkthrough/10 Part II, 2026-10): the Ashfall Shelf + Kiln Gully day-forms.
 # After the dawn the ash-grass greens at the tips: Stonebark's line wakes as Rootwarden,
 # and the storm-birds come down off Windward. Mirrored in build_species.py

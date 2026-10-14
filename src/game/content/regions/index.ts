@@ -29,6 +29,8 @@ import { PAUL_DIALOGUE, PAUL_SCRIPTS } from './paul';
 import { JESTHOUSE_DIALOGUE, JESTHOUSE_SCRIPTS } from './jesthouse';
 // The inn folk (2026-10): Hesper the Echo-Reader (every inn) + Ottilie the Namewright.
 import { INNFOLK_DIALOGUE, INNFOLK_SCRIPTS } from './innfolk';
+// The Farlamp Isles (walkthrough/10 Part I) — Lane C1: the surface, Driftholm, the mainland hooks.
+import { FARLAMP_DIALOGUE, FARLAMP_SCRIPTS } from './farlamp';
 // Lane A (walkthrough/10 Part II): the Ashfall Shelf + Kiln Gully.
 import { ASHFALL_DIALOGUE, ASHFALL_SCRIPTS } from './ashfall';
 // The Farlamp Isles, lane C2 (2026-10): the Undertide + the Drowned Lamp.
@@ -54,6 +56,7 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...PAUL_SCRIPTS,
   ...JESTHOUSE_SCRIPTS,
   ...INNFOLK_SCRIPTS,
+  ...FARLAMP_SCRIPTS,
   ...ASHFALL_SCRIPTS,
   ...UNDERTIDE_SCRIPTS,
   ...SPARRING_SCRIPTS,
@@ -77,6 +80,7 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...PAUL_DIALOGUE,
   ...JESTHOUSE_DIALOGUE,
   ...INNFOLK_DIALOGUE,
+  ...FARLAMP_DIALOGUE,
   ...ASHFALL_DIALOGUE,
   ...UNDERTIDE_DIALOGUE,
   ...SPARRING_DIALOGUE,

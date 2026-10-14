@@ -74,6 +74,10 @@ const PRICES = {
   // heal + her food talk; pure optional colour, never in a solvency leg.
   // Mirrored in 10-economy.md and content/regions/kitchens.ts CANTINA_PRICE.
   cantina_dish: 60,
+  // The Farlamp Isles (Lane C1): the Deep Charm, Driftholm's chandlery once the
+  // isles' dawn breaks — a post-game optional buy, never in a solvency leg.
+  // Mirrored in items.ts and 10-economy.md.
+  deep_charm: 900,
 };
 
 // ---------------------------------------------------------------------------
@@ -90,6 +94,8 @@ const trend = []; // [midLevel, bst, weight]
 // Each Wild Ways lane appends its encounter-bearing maps here.
 const TREND_SKIP_AREAS = new Set([
   'old_seams_i', 'old_seams_ii', 'old_seams_iii', // the Old Seams (D)
+  // the Farlamp Isles (walkthrough/10 Part I, optional post-game — Lane C1)
+  'farlamp_sound', 'farlamp_shelfwater', 'farlamp_fogwall', 'farlamp_gullwrack', 'farlamp_kelpcrown',
   'cinderwind_kiln', // Lane A: Kiln Gully — optional, behind the Updraft vent (post-Mira)
   // Lane C2 — the Farlamp Isles' Undertide (post-game, optional, lv 61-66)
   'undertide_i', 'undertide_ii', 'undertide_iii', 'undertide_iv',
@@ -567,6 +573,13 @@ const BUILT_PAYOUTS = {
   seams_miner_jory: ['route', 33, 528],
   // the Mirelights (B)
   mire_eelcatcher: ['route', 40, 640], // the landing
+  // THE FARLAMP ISLES (walkthrough/10 Part I, Lane C1) — post-game, optional: the two
+  // boat-trainers + Bram Fathom, the isles' keeper (vigilant class; his rematch is
+  // re-runnable optional income, outside the solvency legs like the Round's)
+  sound_oarsman: ['route', 61, 976],
+  shelf_kelper: ['route', 62, 992],
+  bram_fathom: ['vigilant', 70, 5600],
+  bram_fathom_rematch: ['vigilant', 72, 5760],
   mire_lampdiver: ['route', 42, 672], // the Glassmere
   mire_acolyte: ['route', 43, 688], // the drowned chapel
   // Lane C2 — the Farlamp Isles' Undertide (post-game)

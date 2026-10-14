@@ -136,6 +136,13 @@
       "rarity": "common",
       "min": 64,
       "max": 67
+    },
+    {
+      "area": "farlamp_fogwall",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 60,
+      "max": 63
     }
   ],
   "scripted": false,

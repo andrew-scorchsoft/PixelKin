@@ -137,6 +137,20 @@
       "rarity": "uncommon",
       "min": 65,
       "max": 67
+    },
+    {
+      "area": "farlamp_sound",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 59,
+      "max": 61
+    },
+    {
+      "area": "farlamp_gullwrack",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 60,
+      "max": 62
     }
   ],
   "scripted": false,

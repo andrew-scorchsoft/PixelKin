@@ -24,6 +24,15 @@
       "first_gid": 387,
       "columns": 6,
       "tile_count": 15
+    },
+    {
+      "name": "farlamp_set",
+      "image": "assets/tilesets/farlamp_set.webp",
+      "tile_width": 16,
+      "tile_height": 16,
+      "first_gid": 402,
+      "columns": 3,
+      "tile_count": 6
     }
   ],
   "objects": [
@@ -94,6 +103,74 @@
       "h": 3,
       "overhang": 2,
       "walk_under": true
+    },
+    {
+      "id": "farlamp_hull",
+      "sprite": "farlamp_hull",
+      "at": {
+        "tx": 7,
+        "ty": 4
+      },
+      "w": 3,
+      "h": 2
+    },
+    {
+      "id": "looking_glass",
+      "sprite": "farlamp_looking_glass",
+      "at": {
+        "tx": 2,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 2
+    },
+    {
+      "id": "farlamp_slip",
+      "sprite": "farlamp_slip",
+      "at": {
+        "tx": 6,
+        "ty": 11
+      },
+      "w": 2,
+      "h": 3,
+      "solid": false,
+      "bob": false
+    },
+    {
+      "id": "fogbank_0",
+      "sprite": "farlamp_fogbank_a",
+      "at": {
+        "tx": 10,
+        "ty": 12
+      },
+      "w": 4,
+      "h": 2,
+      "solid": false,
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "fogbank_1",
+      "sprite": "farlamp_fogbank_b",
+      "at": {
+        "tx": 15,
+        "ty": 12
+      },
+      "w": 3,
+      "h": 2,
+      "solid": false,
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "fogbank_2",
+      "sprite": "farlamp_fogbank_b",
+      "at": {
+        "tx": 1,
+        "ty": 12
+      },
+      "w": 3,
+      "h": 2,
+      "solid": false,
+      "hidden_when_flag": "flag:isles_dawn"
     }
   ],
   "warps": [
@@ -205,6 +282,40 @@
       },
       "facing": "left",
       "transition": "fade"
+    },
+    {
+      "id": "to_sound_6",
+      "at": {
+        "tx": 6,
+        "ty": 13
+      },
+      "trigger": "step_on",
+      "to_map": "farlamp_sound",
+      "to": {
+        "tx": 6,
+        "ty": 1
+      },
+      "facing": "down",
+      "transition": "fade",
+      "requires_flag": "flag:q_isles_afloat",
+      "blocked_ref": "sign.point_slip_end"
+    },
+    {
+      "id": "to_sound_7",
+      "at": {
+        "tx": 7,
+        "ty": 13
+      },
+      "trigger": "step_on",
+      "to_map": "farlamp_sound",
+      "to": {
+        "tx": 7,
+        "ty": 1
+      },
+      "facing": "down",
+      "transition": "fade",
+      "requires_flag": "flag:q_isles_afloat",
+      "blocked_ref": "sign.point_slip_end"
     }
   ],
   "triggers": [
@@ -307,6 +418,16 @@
       "ref": "script.andrew_tower_wink",
       "requires_flag": "flag:q_south_jest_done",
       "hidden_when_flag": "flag:andrew_tower_winked"
+    },
+    {
+      "id": "looking_glass",
+      "kind": "cutscene",
+      "at": {
+        "tx": 2,
+        "ty": 10
+      },
+      "activation": "interact",
+      "ref": "script.point_looking_glass"
     }
   ],
   "encounters": [],
@@ -359,6 +480,17 @@
       "dialogue_ref": "script.andrew_tower_wink",
       "requires_flag": "flag:q_south_jest_done",
       "hidden_when_flag": "flag:andrew_tower_winked"
+    },
+    {
+      "id": "ione",
+      "at": {
+        "tx": 9,
+        "ty": 6
+      },
+      "facing": "down",
+      "sprite": "npc_old_woman",
+      "movement": "static",
+      "dialogue_ref": "script.ione"
     }
   ],
   "gates": [],
@@ -594,10 +726,10 @@
         62,
         61,
         67,
-        67,
-        60,
-        62,
-        62,
+        69,
+        35,
+        34,
+        59,
         61,
         60,
         61,
@@ -614,10 +746,10 @@
         67,
         67,
         67,
-        67,
-        67,
-        67,
-        67,
+        69,
+        35,
+        33,
+        66,
         67,
         67,
         67,
@@ -632,14 +764,14 @@
         388,
         388,
         388,
-        388,
-        388,
-        388,
-        388,
-        388,
-        388,
-        388,
-        388,
+        389,
+        67,
+        68,
+        34,
+        35,
+        65,
+        67,
+        387,
         388,
         388,
         388,
@@ -1216,7 +1348,7 @@
         0,
         0,
         0,
-        0,
+        405,
         0,
         0,
         0,

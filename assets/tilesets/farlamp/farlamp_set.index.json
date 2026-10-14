@@ -1,0 +1,8 @@
+{
+  "blink_lamp": 0,
+  "blink_lamp_wane": 1,
+  "blink_lamp_dark": 2,
+  "blink_far": 3,
+  "blink_far_wane": 4,
+  "blink_far_dark": 5
+}

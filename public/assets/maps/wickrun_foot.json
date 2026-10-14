@@ -799,10 +799,10 @@
         440,
         67,
         67,
-        67,
-        62,
-        61,
-        82,
+        69,
+        33,
+        35,
+        59,
         82,
         60,
         62,
@@ -829,10 +829,10 @@
         448,
         441,
         67,
-        67,
-        67,
-        67,
-        67,
+        70,
+        33,
+        35,
+        66,
         67,
         67,
         67,
@@ -857,14 +857,14 @@
         440,
         448,
         443,
-        449,
-        440,
-        440,
-        440,
-        440,
-        440,
-        440,
-        440,
+        444,
+        67,
+        70,
+        35,
+        34,
+        65,
+        67,
+        439,
         440,
         440,
         440,
@@ -887,6 +887,14 @@
         443,
         443,
         443,
+        444,
+        67,
+        68,
+        34,
+        34,
+        66,
+        67,
+        442,
         443,
         443,
         443,
@@ -909,22 +917,14 @@
         443,
         443,
         443,
-        443,
-        443,
-        443,
-        443,
-        443,
-        443,
-        443,
-        443,
-        443,
-        443,
-        443,
-        443,
-        443,
-        443,
-        443,
-        443,
+        444,
+        67,
+        69,
+        33,
+        35,
+        65,
+        67,
+        442,
         443,
         443,
         443,
@@ -3000,6 +3000,18 @@
       "h": 3,
       "overhang": 2,
       "walk_under": true
+    },
+    {
+      "id": "farlamp_slip",
+      "sprite": "farlamp_slip",
+      "at": {
+        "tx": 9,
+        "ty": 27
+      },
+      "w": 2,
+      "h": 3,
+      "solid": false,
+      "bob": false
     }
   ],
   "warps": [
@@ -3062,6 +3074,40 @@
       },
       "facing": "right",
       "transition": "fade"
+    },
+    {
+      "id": "to_shelf_9",
+      "at": {
+        "tx": 9,
+        "ty": 29
+      },
+      "trigger": "step_on",
+      "to_map": "farlamp_shelfwater",
+      "to": {
+        "tx": 9,
+        "ty": 1
+      },
+      "facing": "down",
+      "transition": "fade",
+      "requires_flag": "flag:q_isles_afloat",
+      "blocked_ref": "sign.foot_slip_end"
+    },
+    {
+      "id": "to_shelf_10",
+      "at": {
+        "tx": 10,
+        "ty": 29
+      },
+      "trigger": "step_on",
+      "to_map": "farlamp_shelfwater",
+      "to": {
+        "tx": 10,
+        "ty": 1
+      },
+      "facing": "down",
+      "transition": "fade",
+      "requires_flag": "flag:q_isles_afloat",
+      "blocked_ref": "sign.foot_slip_end"
     }
   ],
   "triggers": [
@@ -3171,6 +3217,18 @@
       "sprite": "fisher_woman",
       "movement": "look_around",
       "dialogue_ref": "npc.wickrun_yard_hand"
+    },
+    {
+      "id": "driftletter_3",
+      "at": {
+        "tx": 23,
+        "ty": 24
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_driftletter_3",
+      "hidden_when_flag": "flag:driftletter_3"
     }
   ],
   "gates": [],

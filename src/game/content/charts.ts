@@ -272,6 +272,27 @@ export const CHARTS: readonly ChartEntry[] = [
     art: LAND('starwell'),
     maps: ['starwell'],
   },
+
+  // ---- The Farlamp Isles (walkthrough/10 Part I, post-game) — Lane C1 ----------
+  {
+    id: 'farlamp-isles',
+    name: 'The Farlamp Isles',
+    subtitle: 'Black water, red buoys, and a blink in the fog that never quite went out.',
+    region: 'south',
+    kind: 'area',
+    art: AREA('farlamp-isles'),
+    maps: ['farlamp_sound', 'farlamp_shelfwater', 'farlamp_fogwall', 'farlamp_gullwrack',
+      'farlamp_kelpcrown'],
+  },
+  {
+    id: 'driftholm',
+    name: 'Driftholm',
+    subtitle: 'An island town that kept its small lamps lit for eleven winters, waiting for a boat.',
+    region: 'south',
+    kind: 'area',
+    art: AREA('driftholm'),
+    maps: ['driftholm'],
+  },
 ];
 
 /** Display order + label for each region group in the gallery. */

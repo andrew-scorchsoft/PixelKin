@@ -1179,6 +1179,10 @@ CURATED_AREAS = {
     # THE WILD WAYS — the Mirelights (mirrored above, MIRELIGHT_ENCOUNTERS);
     # the hollow is the legendary's room, listed so nothing generated claims it
     "mirelight_landing", "mirelight_glassmere", "mirelight_chapel", "lanthorne_hollow",
+    # THE FARLAMP ISLES — the surface (Lane C1; mirrored above, FARLAMP_TABLES);
+    # Driftholm is a town (no encounters), listed so nothing generated claims it
+    "farlamp_sound", "farlamp_shelfwater", "farlamp_fogwall", "farlamp_gullwrack",
+    "farlamp_kelpcrown", "driftholm",
     # Lane C2 — the Farlamp Isles' Undertide (mirrored above, UNDERTIDE_TABLES); the
     # Drowned Lamp is Farlume's room, encounter-free, listed so nothing claims it.
     "undertide_i", "undertide_ii", "undertide_iii", "undertide_iv", "farlamp_drowned",
@@ -1199,6 +1203,50 @@ for _floor, _rows_ in OLDLIGHT_TABLES.items():
     for _slug, _w, _lo, _hi in _rows_:
         EXTRA_ENCOUNTERS.setdefault(_slug, []).append({
             "area": f"pearlmoor_oldlight_{_floor}", "terrain": "cave",
+            "rarity": "common" if _w >= 30 else "uncommon" if _w >= 15 else "rare",
+            "min": _lo, "max": _hi})
+
+# THE FARLAMP ISLES (walkthrough/10 Part I, Lane C1) — MIRROR of the surface maps'
+# zone tables (tools/maps/build_farlamp_isles.py TABLES — the map is the truth):
+# area -> [(slug, weight, lo, hi, terrain)]. The deep (rowed) and the shallows
+# both read as "water" in the dex; the isles' tall sea-grass is "tall_grass".
+FARLAMP_TABLES = {
+    "farlamp_sound": [
+        ("fathomote", 35, 58, 61, "water"), ("hermiwick", 20, 58, 60, "water"),
+        ("brinewrath", 15, 59, 61, "water"), ("tidwraith", 12, 58, 61, "water"),
+        ("glostrael", 10, 59, 61, "water"), ("lumplass", 8, 58, 60, "water"),
+        ("lumplass", 30, 58, 60, "water"), ("tidalarch", 30, 58, 60, "water"),
+        ("hermiwick", 45, 58, 60, "tall_grass"), ("glacewing", 30, 58, 61, "tall_grass"),
+        ("voltcrag", 25, 58, 60, "tall_grass")],
+    "farlamp_shelfwater": [
+        ("fathomote", 35, 59, 62, "water"), ("hermiwick", 20, 59, 61, "water"),
+        ("tidalarch", 15, 60, 62, "water"), ("lumplass", 15, 59, 62, "water"),
+        ("brinewrath", 10, 60, 62, "water"), ("fathomere", 5, 61, 62, "water")],
+    "farlamp_fogwall": [
+        ("fogwisp", 35, 60, 63, "water"), ("fathomote", 25, 60, 62, "water"),
+        ("stillwarden", 15, 61, 63, "water"), ("glacitern", 10, 60, 63, "water"),
+        ("tidwraith", 10, 60, 62, "water"), ("fathomere", 5, 62, 63, "water")],
+    "farlamp_gullwrack": [
+        ("hermiwick", 30, 60, 62, "tall_grass"), ("glacewing", 20, 60, 62, "tall_grass"),
+        ("vaultclaw", 15, 60, 62, "tall_grass"), ("lithonyx", 15, 60, 62, "tall_grass"),
+        ("voltcrag", 15, 61, 62, "tall_grass"), ("beaconclaw", 5, 62, 62, "tall_grass"),
+        ("fathomote", 45, 60, 62, "water"), ("brinewrath", 30, 60, 62, "water"),
+        ("glostrael", 30, 60, 62, "water")],
+    "farlamp_kelpcrown": [
+        ("hermiwick", 25, 60, 63, "tall_grass"), ("tidalarch", 20, 60, 62, "tall_grass"),
+        ("rootwarden", 15, 61, 63, "tall_grass"), ("ferrolith", 15, 60, 62, "tall_grass"),
+        ("lumecite", 15, 60, 62, "tall_grass"), ("beaconclaw", 10, 62, 63, "tall_grass"),
+        ("fathomote", 45, 60, 63, "water"), ("lumplass", 35, 60, 62, "water"),
+        ("fathomere", 15, 61, 63, "water"), ("tidalarch", 15, 60, 62, "water")],
+}
+for _area, _rows_ in FARLAMP_TABLES.items():
+    _seen = set()
+    for _slug, _w, _lo, _hi, _terr in _rows_:
+        if (_slug, _terr) in _seen:      # one dex row per kin per terrain
+            continue
+        _seen.add((_slug, _terr))
+        EXTRA_ENCOUNTERS.setdefault(_slug, []).append({
+            "area": _area, "terrain": _terr,
             "rarity": "common" if _w >= 30 else "uncommon" if _w >= 15 else "rare",
             "min": _lo, "max": _hi})
 

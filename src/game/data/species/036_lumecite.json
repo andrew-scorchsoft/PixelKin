@@ -84,6 +84,13 @@
       "rarity": "common",
       "min": 33,
       "max": 35
+    },
+    {
+      "area": "farlamp_kelpcrown",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 60,
+      "max": 62
     }
   ],
   "scripted": false,

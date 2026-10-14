@@ -60,6 +60,7 @@ Prices live on `ItemDef.price` (`content/items.ts`); one price everywhere.
 | Star-charts | teach a move | 800–4,000w by tier (§6) | everywhere |
 | Hooded Lamp | key item; toggle — wild encounter rate ×0.5 while hooded | 600w | Pearlmoor chandlery, once `gleam:tide` is held (flag-gated stock) |
 | Tin Rower | key item; toggle — wild encounter rate ×0.5 while wound (the lowest active toggle factor applies; they never stack) | 12,000w **or a story** | Aldous Wink, Dimglass Coast I (R9, once `flag:has_starter`) — a one-time optional via the `pay` cutscene op, outside every solvency leg |
+| Deep Charm | one throw, catch ×3.0 on kin met over the open DEEP (a conditional charge; plain elsewhere) | 900w | the Driftholm chandlery (the Farlamp Isles), once `flag:isles_dawn` is held — post-game optional, outside every solvency leg; Nan Creel gives three for "Letters Home" |
 | A plate at Marisol's | restores the whole party (a courtesy heal, not a rest point) + her food talk; the first plate adds a Salsa Roja (heal 60, once) | 60w | Marisol's kitchen, Lowleaf Hollow — the `pay` op (`content/regions/kitchens.ts`), optional colour outside every solvency leg |
 
 Key items leave a shop's shelf once held (`ShopMenu`), so a toggle can't be bought
@@ -107,6 +108,11 @@ Vigilants pay 5,520w each (ace 69); the Last Lesson is `cor` class — Fenn at
 8,400w (ace 70). Post-crown re-runnable bouts are **optional income outside the
 solvency legs** (modelled as one-time in `progression.mjs`'s POSTGAME leg).
 
+**The Farlamp Isles (post-game, optional).** The two boat-trainers on the sea are
+`route` class (Calder 976w, ace 61; Rowan 992w, ace 62). Keeper **Bram Fathom** of
+Driftholm is `vigilant` class: 5,600w (ace 70), and his re-runnable rematch 5,760w
+(ace 72). All four sit in `BUILT_PAYOUTS`; none enters a solvency leg.
+
 ## 5. Shops — how they look and work
 
 **The counter (built — `ui/ShopMenu.ts`).** Talking to a keeper runs their
@@ -137,6 +143,7 @@ the region's element pair + one Plain utility. Planned counters:
 | Cinderhead pit-stores *(built)* | charts: Focus Mind, Gust Up (no Stone chart minted yet) |
 | Galehigh kite-stall *(built)* | Bright Balm (once `gleam:storm`), charts: Thunder Kick, Volt Arc, Gale Slam, Swift Step — **the whole cold leg's counter: Pale Vault deliberately keeps no shop** (resupply rides the Windward drop-shortcut); the find-first Tempest nuke chart is Thunderroost's prize |
 | ~~Pale Vault warm-house~~ | — (no counter; see Galehigh row) |
+| Driftholm chandlery *(built, post-game — the Farlamp Isles)* | Warm + Bright Balm, Hearth Coal, Glow + Beacon Charges, the **Deep Charm** once `flag:isles_dawn` |
 | ~~Solarium dig-counter~~ | — **dropped (2026-06, built):** the Solarium is a ruin — the festival trades in bread and stories; the Lumenary green room is the rest point, no counter (the Pale Vault precedent) |
 | ~~Nightreach last-counter~~ | — **dropped (2026-06, built):** the star-temple keeps a vigil, not a till; **the West ships no counter** — the Galehigh kite-stall (one hub-spoke away) remains the late counter, and the West's aspirational chart (Sunburst Nova, 4,000w tier) is the Helia Vault's find-first prize. The planned West charts may land on a Central/postgame counter instead |
 

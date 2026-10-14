@@ -434,6 +434,31 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'A tall, crooked house beside the Wayward Arms, three floors of evidence about one man, none of which agrees: tickets from the maple country and the cape country, a museum of t-shirts, a WANTED poster he swears is a joke. He is never in. His granddaughter Lottie usually is.',
     unlock_flag: 'flag:paul_house_seen',
   },
+  // ---- THE FARLAMP ISLES (walkthrough/10 Part I) — Lane C1 ----
+  {
+    id: 'the_farlamp',
+    term: 'the Farlamp',
+    desc: 'Vesperholm\'s outermost sea-light, on a skerry at the edge of the Fogwall. The night the Long Dusk fell the deep came up a fathom, and the Farlamp went under still burning. Something out there still blinks.',
+    unlock_flag: 'flag:isles_rumour',
+  },
+  {
+    id: 'driftletters',
+    term: 'driftletters',
+    desc: 'Letters in stoppered bottles, thrown from the isles and carried to the mainland by the current. Five shores catch them: the Dimglass strand, Gullcry Rock, the Wick-Run\'s beach, the Glassmere shallows and the Drownlight shingle.',
+    unlock_flag: 'flag:isles_rumour',
+  },
+  {
+    id: 'the_deep',
+    term: 'the deep',
+    desc: 'Open sea past the shallow shelf. Tidecall parts the moon-tides, but the deep doesn\'t answer to the moon, so no Lantern Gift can cross it. A boat whose prow-lamp is lit from the Keystar\'s own light can.',
+    unlock_flag: 'flag:q_isles',
+  },
+  {
+    id: 'driftholm',
+    term: 'Driftholm',
+    desc: 'The island town of lamp-keepers and kelp-farmers beyond the Fogwall. For eleven winters it kept small lamps alone, waiting for a boat.',
+    unlock_flag: 'flag:q_isles_driftholm',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */
